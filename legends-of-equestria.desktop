@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Legends of Equestria
+Categories=Game;RolePlaying;
+Comment=3D MMORPG/Adventure game
+Exec=/usr/bin/legends-of-equestria %u
+Type=Application
+Icon=legends-of-equestria

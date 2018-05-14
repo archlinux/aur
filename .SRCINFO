@@ -1,0 +1,24 @@
+pkgbase = legends-of-equestria
+	pkgdesc = A free 3D MMORPG/Adventure game
+	pkgver = latest
+	pkgrel = 1
+	url = https://www.legendsofequestria.com/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = nodejs
+	makedepends = yarn
+	options = strip
+	source = loe-fetch.js
+	source = package.json
+	source = launch.sh
+	source = icon.png
+	source = legends-of-equestria.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = legends-of-equestria
+

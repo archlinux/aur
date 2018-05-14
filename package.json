@@ -1,0 +1,14 @@
+{
+  "name": "legends-of-equestria",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "megajs": "^0.13.3",
+    "mkdirp": "^0.5.1",
+    "progress-stream": "^2.0.0",
+    "rimraf": "^2.6.2",
+    "simple-get": "^3.0.2",
+    "unzip": "^0.1.11",
+    "zero-fill": "^2.2.3"
+  }
+}
