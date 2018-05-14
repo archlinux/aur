@@ -4,7 +4,7 @@
 _launcher_ver=6
 pkgname=ungoogled-chromium-bin
 pkgver=66.0.3359.139
-pkgrel=1
+pkgrel=2
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -83,6 +83,7 @@ package() {
     ln -s /usr/lib/libwebp.so.7.0.2 ${pkgdir}/usr/lib/libwebp.so.6
     ln -s /usr/lib/libwebpmux.so.3.0.2 ${pkgdir}/usr/lib/libwebpmux.so.2
     ln -s /usr/lib/libvpx.so.5.0.0 ${pkgdir}/usr/lib/libvpx.so.4
+    ln -s /usr/lib/libavcodec.so.58.18.100 ${pkgdir}/usr/lib/libavcodec.so.57
 
     # Add link to chromedriver
     ln -s /usr/lib/chromium/chromedriver ${pkgdir}/usr/bin/chromedriver
