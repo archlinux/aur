@@ -1,0 +1,15 @@
+pkgbase = lonestar
+	pkgdesc = Installer for Rakudo Star Perl 6
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Tyil/lonestar
+	arch = any
+	license = AGPL3
+	depends = bash
+	provides = lonestar
+	backup = etc/lonestar/user.sh
+	source = lonestar-1.0.0.tar.gz::https://github.com/tyil/lonestar/archive/v1.0.0.tar.gz
+	sha512sums = 414c6dc92fd415994885779fc1b545fa15b681f8d201b0b042ed11d9a99f9953539d0f1301bb6ed54485d5eeecf8fcba8dbe4f94bf88876b574700f77f25e5cc
+
+pkgname = lonestar
+
