@@ -1,5 +1,5 @@
 pkgname=kvirc-git
-pkgver=4.3.2.r7317.bebefa0c2
+pkgver=4.3.2.r7319.ba07eae61
 _pkgver=4.3.2
 pkgrel=1
 pkgdesc="Qt5 based IRC-Client, compiled with kde5 support - Git Version"
