@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-glib-networking
 pkgver=2.56.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Network-related GIO modules for glib (mingw-w64)"
 arch=('any')
 url="https://git.gnome.org/browse/glib-networking"
@@ -25,8 +25,8 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}/glib-networking-${pkgver}/build-${_arch}"
     cd "${srcdir}/glib-networking-${pkgver}/build-${_arch}"
-    ${_arch}-meson "${srcdir}/glib-networking-${pkgver}" "${srcdir}/glib-networking-${pkgver}/build-${_arch}"
-    ninja -C "${srcdir}/glib-networking-${pkgver}/build-${_arch}" 
+    ${_arch}-meson .. 
+    ninja
   done
 }
 
