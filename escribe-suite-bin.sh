@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /opt/escribe-suite-bin/
+cd /opt/escribe-suite-bin/main/
 mono EScribe.exe

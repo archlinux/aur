@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=ECigStats
+GenericName=ECigStats
+Comment=Help tell the true story of electronic cigarettes
+Icon=accessories-calculator
+Exec=mono /opt/escribe-suite-bin/components/ecigstats.exe
+Categories=Science
+Path=/opt/escribe-suite-bin/
+
