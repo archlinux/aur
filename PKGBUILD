@@ -1,7 +1,7 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
 pkgname=xt7-player-mpv
-pkgver=0.27.392
+pkgver=0.28.3100
 #hotfix=-hotfix
 pkgrel=1
 _realname=xt7-player-mpv
@@ -29,7 +29,7 @@ depends=(
     'gambas3-gb-signal'
     'gambas3-gb-util-web'
     'gambas3-gb-web'
-    'mpv'
+    'mpv>=0.28'
     'taglib'
     'youtube-dl'
     'wget'
@@ -62,5 +62,5 @@ package() {
 
 }
 
-md5sums=('04353b96182aafe080c48ac522ba75ec'
+md5sums=('93bd33d861745129a3bf2448859aa8d5'
          'b6f1380e33b47d0ed95c7ba1b3f4ec73')
