@@ -2,7 +2,7 @@
 
 pkgname=legends-of-equestria
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="A free 3D MMORPG/Adventure game"
 arch=('i686' 'x86_64')
 url="https://www.legendsofequestria.com/"
@@ -22,6 +22,9 @@ PKGEXT='.pkg.tar.gz'
 
 package() {
   export YARN_CACHE_FOLDER="${srcdir}/yarn-cache"
+
+  cp --remove-destination "$(readlink "${srcdir}/package.json")" "${srcdir}/package.json"
+  cp --remove-destination "$(readlink "${srcdir}/loe-fetch.js")" "${srcdir}/loe-fetch.js"
 
   echo "Installing dependencies..."
   yarn install --non-interactive --no-lockfile --ignore-engines
