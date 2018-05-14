@@ -2,7 +2,7 @@
 
 pkgname=legends-of-equestria
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="A free 3D MMORPG/Adventure game"
 arch=('i686' 'x86_64')
 url="https://www.legendsofequestria.com/"
@@ -18,7 +18,7 @@ sha256sums=(
   'SKIP' 'SKIP' 'SKIP'
 )
 
-PKGEXT='.pkg.tar.gz'
+PKGEXT='.pkg.tar'
 
 package() {
   export YARN_CACHE_FOLDER="${srcdir}/yarn-cache"
