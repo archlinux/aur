@@ -1,6 +1,6 @@
 pkgbase = birdie-git
 	pkgdesc = Twitter client for Linux
-	pkgver = 1.1+git.81.g9e94e30
+	pkgver = 1.1+git.95.g9d7e4e5
 	pkgrel = 1
 	url = http://birdieapp.github.io
 	arch = i686

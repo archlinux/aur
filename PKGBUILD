@@ -2,7 +2,7 @@
 # Contributor : Ivo Nunes <ivoavnunes at gmail dot com>
 _pkgname="birdie"
 pkgname="${_pkgname}-git"
-pkgver=1.1+git.81.g9e94e30
+pkgver=1.1+git.95.g9d7e4e5
 pkgrel=1
 pkgdesc="Twitter client for Linux"
 arch=('i686' 'x86_64')
