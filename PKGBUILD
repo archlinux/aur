@@ -1,7 +1,7 @@
 # Maintainer: Ben DeCamp <ben_decamp@outlook.com>
 pkgname=mega-happy-sprite
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Sega Mega Drive (Genesis) Sprite Editor"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ url="http://theadesilva.com/mega/"
 license=()
 groups=()
 depends=('glibc' 'sdl')
-makedepends=('gendesk')
+makedepends=('gendesk' 'vim')
 checkdepends=()
 optdepends=()
 provides=()
