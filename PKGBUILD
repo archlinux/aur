@@ -1,7 +1,7 @@
 # Maintainer: Per Osbeck <per@osbeck.com>
 pkgname=perfops-cli
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple command line tool to interact with hundreds of servers around the world. Run benchmarks and debug your infrastructure without leaving your console."
 arch=(x86_64)
 url="https://perfops.net"
@@ -22,5 +22,5 @@ build() {
 package() {
 	cd "$pkgname"
 	install -Dm755 "release/perfops-linux-amd64" "$pkgdir/usr/bin/perfops-cli"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
