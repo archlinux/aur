@@ -2,12 +2,13 @@
 
 pkgname=stf
 pkgver=3.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Web application for debugging Android devices'
 arch=(any)
 url='https://openstf.io'
 license=(Apache)
-depends=('nodejs>=6.9<=9.11.1'
+depends=('nodejs>=6.9'
+         'nodejs<=9.11.1'
          'rethinkdb>=2.2'
          graphicsmagick
          zeromq
