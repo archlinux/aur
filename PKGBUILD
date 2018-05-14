@@ -4,13 +4,13 @@
 _launcher_ver=6
 pkgname=ungoogled-chromium-bin
 pkgver=66.0.3359.139
-pkgrel=3
+pkgrel=4
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
 license=("BSD")
 depends=("libjpeg6-turbo" "icu57" "libevent-compat" "nss" "libxss" "snappy" "gtk3" "minizip"
-        "libxslt" "ffmpeg" "re2" "ffmpeg-compat-57")
+        "libxslt" "re2" "ffmpeg-compat-57")
 provides=("chromium")
 conflicts=("chromium" "iridium" "ungoogled-chromium")
 optdepends=("gnome-keyring: for storing passwords in GNOME keyring"
