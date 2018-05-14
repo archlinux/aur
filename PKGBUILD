@@ -4,26 +4,36 @@
 
 set -u
 pkgname='uhubctl'
-# This allows future release 0.1, 1.0 to be newer than the current release
-pkgver='0.0.20170612'; _commit='93173f612a231d808f19f27428d8c87c05975ba4'
+pkgver='2.0.0'
 pkgrel='1'
 pkgdesc='control USB per-port power switching on smart USB hubs'
 arch=('x86_64')
-url='https://github.com/mvp/uhubctl'
+_github='mvp'
+url="https://github.com/${_github}/${pkgname}"
 license=('GPL')
 depends=('libusb>=1.0.12')
-_srcdir="${pkgname}-${_commit}"
-source=("${pkgname}-${pkgver}.tgz::https://github.com/mvp/uhubctl/archive/${_commit}.tar.gz")
-sha256sums=('fb1514fa55d277190ee7723b1e7a978ceceb91bfd49c6dc38ec98f2cc47c8847')
+_verwatch=("https://github.com/${_github}/${pkgname}/releases.atom" "\s\+<title>${pkgname}\sv*\([0-9\.]\+\)</title>.*" 'f')
+_srcdir="${pkgname}-${pkgver}"
+source=("${pkgname}-${pkgver}.tgz::https://github.com/${_github}/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('4c31278b2c03e5be5a696c3088bc86cf2557a70e00f697799c163aba18e3c40e')
+
+prepare() {
+  set -u
+  cd "${_srcdir}"
+  #cp Makefile{,.orig}
+  sed -e '#s/^GIT_VERSION :=/#&/g' \
+      -e 's:\(PROGRAM_VERSION=\)\(.*\):\1"\2":g' \
+    -i 'Makefile'
+  set +u
+}
 
 build() {
   set -u
   cd "${_srcdir}"
   CFLAGS="${CFLAGS} -Wformat-overflow=2" \
-  make -j1
+  make -j1 GIT_VERSION="${pkgver} (release)"
   set +u
 }
-
 
 package() {
   set -u
