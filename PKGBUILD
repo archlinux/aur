@@ -12,7 +12,7 @@ conflicts=('mt7610u_wifi_sta')
 depends=('linux')
 makedepends=('git' 'linux-headers')
 install="depmod.install"
-source=("mt7610u_wifi_sta"::"git+https://github.com/BZHDeveloper/mt7610u_wifi_sta_v3002_dpo_20130916.git")
+source=("mt7610u_wifi_sta-alt"::"git+https://github.com/BZHDeveloper/mt7610u_wifi_sta_v3002_dpo_20130916.git")
 md5sums=('SKIP')
 
 build() {
