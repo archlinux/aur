@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DSYSTEM_CLANG=On
+  cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DSYSTEM_CLANG=On -DUSE_SHARED_LLVM=on
   cmake --build build
 }
 
