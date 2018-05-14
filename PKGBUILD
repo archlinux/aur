@@ -24,6 +24,7 @@ source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         0001-GCC-compatibility-Ignore-the-fno-plt-flag.patch
         0002-Enable-SSP-and-PIE-by-default.patch
         0003-Fix-sanitizer-build-against-latest-glibc.patch
+        0004-Fix-gcc-8-compiler-error.patch
         disable-llvm-symbolizer-test.patch)
 sha256sums=('da783db1f82d516791179fe103c71706046561f7972b18f0049242dee6712b51'
             'SKIP'
@@ -34,6 +35,7 @@ sha256sums=('da783db1f82d516791179fe103c71706046561f7972b18f0049242dee6712b51'
             'ed4a1c3c73b31421caa0ba50d14cabc16de676a88f045d06b207bbb3006963ac'
             '79f1a409700a83d983d7237a907aeddf342c28aa810b87b28ee27b8c5560644a'
             '0afff7e5cf0f6df596517f63a9a9f085eab3b53f42a1eb14bbd83861c36c9fd7'
+            '080e90dabbd386fb8c4771ab7537acff157b72bb0f2591609805cacf684cceed'
             '6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359')
 validpgpkeys=('11E521D646982372EB577A1F8F0871F202119294')
 
@@ -55,6 +57,10 @@ prepare() {
   # Fix sanitizer build against latest glibc
   # https://reviews.llvm.org/D35246
   patch -Np0 -d projects/compiler-rt < ../0003-Fix-sanitizer-build-against-latest-glibc.patch
+
+  # Fix compiler error with gcc >= 8
+  # https://bugzilla.redhat.com/show_bug.cgi?id=1540620
+  patch -Np1 < ../0004-Fix-gcc-8-compiler-error.patch
 }
 
 build() {
