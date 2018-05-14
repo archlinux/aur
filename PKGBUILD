@@ -5,8 +5,8 @@
 
 _pkgname=xdg-utils
 pkgname=$_pkgname-mimeo
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/xdg-utils/"
@@ -24,18 +24,14 @@ optdepends=('kde-cli-tools: for KDE Plasma5 support in xdg-open'
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz #{,.asc}
-        lxqt.patch
         mimeo-detection.patch)
-sha1sums=('20cd4cc5cfaa904b12abf6d584deb568367f4d83'
-          'a8b5435d4ee217512a455d099344bdc2dc80da94'
-          '47f7127d594427006fcee51a5da90f135269859b')
+sha1sums=('98294cf332c341b85e481d98e9ea59357fe1efc7'
+          'dad883cf3d02787811a8a28852cf7c1b9fea3709')
 #validpgpkeys=('8B75CA7811367175D05F3B03C43570F80CC295E6') # "Per Olofsson <pelle@pqz.se>"
 
 
 prepare() {
 	cd $_pkgname-$pkgver
-	# lxde and lxqt are different
-	patch -Np1 -i ../lxqt.patch
 	patch -p1 -i "${srcdir}"/mimeo-detection.patch
 }
 

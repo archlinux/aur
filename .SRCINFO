@@ -1,7 +1,7 @@
 pkgbase = xdg-utils-mimeo
 	pkgdesc = Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo
-	pkgver = 1.1.2
-	pkgrel = 2
+	pkgver = 1.1.3
+	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/xdg-utils/
 	arch = any
 	license = MIT
@@ -21,12 +21,10 @@ pkgbase = xdg-utils-mimeo
 	optdepends = perl-x11-protocol: Perl X11 protocol used in xdg-screensaver
 	provides = xdg-utils
 	conflicts = xdg-utils
-	source = https://portland.freedesktop.org/download/xdg-utils-1.1.2.tar.gz
-	source = lxqt.patch
+	source = https://portland.freedesktop.org/download/xdg-utils-1.1.3.tar.gz
 	source = mimeo-detection.patch
-	sha1sums = 20cd4cc5cfaa904b12abf6d584deb568367f4d83
-	sha1sums = a8b5435d4ee217512a455d099344bdc2dc80da94
-	sha1sums = 47f7127d594427006fcee51a5da90f135269859b
+	sha1sums = 98294cf332c341b85e481d98e9ea59357fe1efc7
+	sha1sums = dad883cf3d02787811a8a28852cf7c1b9fea3709
 
 pkgname = xdg-utils-mimeo
 

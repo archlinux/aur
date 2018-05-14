@@ -1,4 +1,4 @@
-commit 9535ad85e547f437e1fc2ff7ee68a859c144e38d
+commit 4938d0bdf23c389b456b2a884d368e679be9951e
 Author: Narrat <autumn-wind@web.de>
 Date:   Mon May 8 21:12:37 2017 +0200
 
@@ -39,7 +39,7 @@ index 3614776..046bd39 100644
      open_generic "${mailto}"
      ;;
 diff --git a/scripts/xdg-mime.in b/scripts/xdg-mime.in
-index b67581c..04aa038 100644
+index 0e567c7..ff74d63 100644
 --- a/scripts/xdg-mime.in
 +++ b/scripts/xdg-mime.in
 @@ -93,6 +93,16 @@ info_gnome()
@@ -71,10 +71,10 @@ index b67581c..04aa038 100644
          info_generic "$filename"
          ;;
 diff --git a/scripts/xdg-open.in b/scripts/xdg-open.in
-index 9817c5f..6c95a11 100644
+index 630e63e..43110cc 100644
 --- a/scripts/xdg-open.in
 +++ b/scripts/xdg-open.in
-@@ -246,6 +246,17 @@ open_flatpak()
+@@ -261,6 +261,17 @@ open_flatpak()
      fi
  }
  
@@ -92,7 +92,7 @@ index 9817c5f..6c95a11 100644
  #-----------------------------------------
  # Recursively search .desktop file
  
-@@ -531,6 +542,10 @@ case "$DE" in
+@@ -568,6 +579,10 @@ case "$DE" in
      open_flatpak "$url"
      ;;
  
@@ -104,7 +104,7 @@ index 9817c5f..6c95a11 100644
      open_generic "$url"
      ;;
 diff --git a/scripts/xdg-screensaver.in b/scripts/xdg-screensaver.in
-index aecd8e3..c22909d 100644
+index 9e68196..58ef1ac 100644
 --- a/scripts/xdg-screensaver.in
 +++ b/scripts/xdg-screensaver.in
 @@ -118,7 +118,7 @@ perform_action()
@@ -117,10 +117,10 @@ index aecd8e3..c22909d 100644
        ;;
    esac
 diff --git a/scripts/xdg-settings.in b/scripts/xdg-settings.in
-index b65e659..304bd94 100644
+index 3781de8..6ec7c70 100644
 --- a/scripts/xdg-settings.in
 +++ b/scripts/xdg-settings.in
-@@ -463,6 +463,42 @@ set_browser_xfce()
+@@ -471,6 +471,42 @@ set_browser_xfce()
  }
  
  # }}} xfce
@@ -163,7 +163,7 @@ index b65e659..304bd94 100644
  # {{{ generic
  
  get_browser_generic()
-@@ -698,6 +734,24 @@ set_url_scheme_handler_xfce()
+@@ -713,6 +749,24 @@ set_url_scheme_handler_xfce()
  }
  
  # }}} xfce
@@ -188,7 +188,7 @@ index b65e659..304bd94 100644
  # {{{ generic
  
  get_url_scheme_handler_generic()
-@@ -852,6 +906,10 @@ case "$DE" in
+@@ -867,6 +921,10 @@ case "$DE" in
      dispatch_specific xfce "$@"
      ;;
  
@@ -200,10 +200,10 @@ index b65e659..304bd94 100644
      dispatch_specific generic "$@"
      ;;
 diff --git a/scripts/xdg-utils-common.in b/scripts/xdg-utils-common.in
-index 8b85883..817effe 100644
+index a8abed8..79a41fc 100644
 --- a/scripts/xdg-utils-common.in
 +++ b/scripts/xdg-utils-common.in
-@@ -316,6 +316,7 @@ detectDE()
+@@ -320,6 +320,7 @@ detectDE()
        elif xprop -root 2> /dev/null | grep -i '^xfce_desktop_window' >/dev/null 2>&1; then DE=xfce
        elif echo $DESKTOP | grep -q '^Enlightenment'; then DE=enlightenment;
        elif [ x"$LXQT_SESSION_CONFIG" != x"" ]; then DE=lxqt;
