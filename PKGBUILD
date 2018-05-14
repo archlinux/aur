@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=spotifyrecorder
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A Spotify recorder script"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('spotify'
             'kid3')
 source=("https://github.com/Bleuzen/spotifyrecorder/releases/download/${pkgver}/spotifyrecorder.cpython-36.opt-1.pyc"
         "spotifyrecorder")
-sha1sums=('0e6ddad09df7a28f82628d7732d6b177775ce9f9'
+sha1sums=('7ed1cec357ad0b04d23853f402542d541b02c940'
           'ba07da8c0c077ec6e74390ee29d0f358e184b227')
 
 package() {
