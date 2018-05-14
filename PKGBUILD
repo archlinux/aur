@@ -2,8 +2,8 @@
 
 pkgname=librm
 pkgver=2.0
-pkgrel=0
-pkgdesc="lib for roger-router"
+pkgrel=1
+pkgdesc="Router Manager library"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
 license=('GPL2')
