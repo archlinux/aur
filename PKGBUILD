@@ -1,8 +1,8 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=python-nine
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="Simple library to make working with STL files (and 3D objects in general) fast and easy."
+pkgrel=2
+pkgdesc="Python 2 and 3 compatibility library, such that your code looks more like Python 3"
 url="https://github.com/nandoflorestan/nine/"
 license=('Public Domain')
 depends=('python')
