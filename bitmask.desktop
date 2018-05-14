@@ -5,3 +5,4 @@ Terminal=false
 Type=Application
 Path=/opt/bitmask
 Categories=Network
+Icon=/opt/bitmask/icon.png
