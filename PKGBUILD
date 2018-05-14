@@ -7,7 +7,7 @@ pkgdesc="Meta search for NZB indexers"
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
 license=('Apache')
-depends=('python2' 'java-runtime-headless>=8')
+depends=('python2' 'java-runtime-headless=8')
 
 source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux.zip"
         "https://raw.githubusercontent.com/theotherp/nzbhydra2/master/other/wrapper/nzbhydra2wrapper.py"

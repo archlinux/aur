@@ -6,7 +6,7 @@ pkgbase = nzbhydra2
 	arch = any
 	license = Apache
 	depends = python2
-	depends = java-runtime-headless>=8
+	depends = java-runtime-headless=8
 	source = https://github.com/theotherp/nzbhydra2/releases/download/v1.4.13/nzbhydra2-1.4.13-linux.zip
 	source = https://raw.githubusercontent.com/theotherp/nzbhydra2/master/other/wrapper/nzbhydra2wrapper.py
 	source = nzbhydra2.service
