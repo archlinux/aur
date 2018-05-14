@@ -2,15 +2,15 @@
 
 _pkgname=prusacontrol
 pkgname=$_pkgname-git
-pkgver=r567.7f55be5
-pkgrel=2
+pkgver=r592.7c9877c
+pkgrel=1
 pkgdesc="Alternative user interface for Slic3r Prusa Edition"
 arch=('any')
 url="https://github.com/prusa3d/PrusaControl"
 license=('GPL3')
-depends=('python' 'python-pyqt4' 'python-numpy' 'python-numpy-stl' 'python-pyrr' 'slic3r-prusa3d' 'python-pillow' 'python-opengl' 'python-certifi')
+depends=('python' 'python-pyqt4' 'python-numpy' 'python-numpy-stl' 'python-pyrr' 'slic3r-prusa3d' 'python-pillow' 'python-opengl' 'python-certifi' 'python-zeroconf')
 conflicts=('prusacontrol')
-options=('!strip' '!emptydirs')
+options=('!strip' '!emptydirs' '!optipng')
 source=(
     "git+https://github.com/prusa3d/PrusaControl.git"
     "prusacontrol.desktop"
