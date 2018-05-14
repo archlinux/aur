@@ -1,40 +1,29 @@
 pkgbase = roger-router
 	pkgdesc = Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible
-	pkgver = 1.9.3
-	pkgrel = 7
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://www.tabos.org/
-	install = roger-router.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = intltool
 	makedepends = gobject-introspection
-	depends = curl
-	depends = dbus
-	depends = glib2
-	depends = libsndfile
-	depends = spandsp
-	depends = speex
-	depends = libxml2
+	makedepends = meson
+	makedepends = git
 	depends = gtk3
-	depends = isdn4k-utils
-	depends = libpeas
 	depends = libsoup
-	depends = gupnp
-	optdepends = cups: FAX printer
-	optdepends = evolution: Address book integration
-	optdepends = gstreamer: GStreamer support (recommended)
-	optdepends = libpulse: Pulse Audio support
+	depends = ghostscript
+	depends = librm
+	depends = poppler-glib
+	depends = libgdata
+	depends = libappindicator-gtk3
+	depends = evolution-data-server
 	optdepends = portaudio: PortAudio support
-	optdepends = libsecret: Store passwords in keyring (requires a compatible keyring application like gnome-keyring)
-	optdepends = libnotify: Desktop notifications
-	optdepends = libappindicator-gtk3: App indicator support
-	provides = roger
-	conflicts = roger
-	source = https://www.tabos.org/wp-content/uploads/tabos/roger-router-1.9.3.tar.xz
-	source = address-book.svg
-	sha1sums = b5c5a38ceb0e6db02684e552367deea981652875
-	sha1sums = eea8152ef5472bf2e52f05651485ba3c60eb8e3f
+	provides = rogerrouter=2.0.0 roger=2.0.0
+	conflicts = rogerrouter roger
+	options = !emptydirs
+	source = git+https://git.krueger-it.net/tabos.org/rogerrouter.git#tag=v2.0.0
+	sha1sums = SKIP
 
 pkgname = roger-router
 
