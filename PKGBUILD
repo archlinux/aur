@@ -1,7 +1,7 @@
 # Maintainer: Tilman BLUMENBACH <tilman+aur AT ax86 DOT net>
 
 pkgname=barrier
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Open-source KVM software based on Synergy"
 url="https://github.com/debauchee/barrier"
@@ -45,4 +45,4 @@ package() {
     install -m 644 doc/barrier.conf* "${pkgdir?}/usr/share/doc/${pkgname?}"
 }
 
-sha256sums=('713b0850895eac184ecf30b002da0be9bf90dda3ba0b68a0f6ba6c6ecc06806f')
+sha256sums=('4f37acfa6ec61bb4431b75ef4d7cb226c7aa9800a1d78fa1158c4ef461873af3')
