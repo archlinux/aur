@@ -1,5 +1,16 @@
 #!/bin/sh
 
+if [ -z ${CROSS_FILE} ]
+then
+  if [ -z ${NEED_WINE} ]
+  then
+    CROSS_FILE=/usr/share/mingw/toolchain-@TRIPLE@.meson
+  else
+    CROSS_FILE=/usr/share/mingw/toolchain-@TRIPLE@-wine.meson
+  fi
+fi
+
+
 meson setup \
   --prefix         /usr/@TRIPLE@ \
   --libdir         /usr/@TRIPLE@/lib \
@@ -17,7 +28,7 @@ meson setup \
   --buildtype      release \
   --wrap-mode      nofallback \
   --strip \
-  --cross-file /usr/share/mingw/toolchain-@TRIPLE@.meson \
-  --default-library both \
+  --cross-file ${CROSS_FILE} \
+  --default-library shared \
   "$@" \
   -D               b_lto=true
