@@ -31,7 +31,6 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-  rm -rf "${pkgdir}/etc/Wireless/RT2870STA"
   mkdir -p "${pkgdir}/etc/Wireless/RT2870STA"
   mkdir -p "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/net/wireless/os/linux"
 	install -m 644 -t "${pkgdir}/etc/Wireless/RT2870STA" RT2870STA.dat
