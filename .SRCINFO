@@ -1,0 +1,16 @@
+pkgbase = harmonize
+	pkgdesc = Create and synchronize transcoded copies of audio folders.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/nvllsvm/harmonize
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = ffmpeg
+	depends = flac
+	depends = python
+	source = https://files.pythonhosted.org/packages/23/19/c19bcbcfa3c24f9069899c4e142c8f8c9fb874832102d5d97e7545896c69/harmonize-0.1.2.tar.gz
+	sha256sums = d7dea0a7b1f832088568248486b465fa64c52a48fb81d90216df5e393aae7727
+
+pkgname = harmonize
+
