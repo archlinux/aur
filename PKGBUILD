@@ -6,7 +6,7 @@ pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'libsystemd-git')
 pkgdesc="systemd from git"
-pkgver=238.699
+pkgver=238.856
 pkgrel=1
 branch='master'
 arch=('i686' 'x86_64')
@@ -90,10 +90,10 @@ build() {
   ninja -C build
 }
 
-check() {
-  cd build
-  meson test
-}
+# check() {
+#   cd build
+#   meson test
+# }
 
 package_systemd-git() {
   pkgdesc="system and service manager from git"
