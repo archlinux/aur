@@ -1,7 +1,7 @@
 # Maintainer: Bandie <bandie@chaospott.de>
 
 pkgname=pam_panic-git
-pkgver=r117.a6be91e
+pkgver=r118.7e548bd
 pkgrel=1
 pkgdesc="A PAM module that protects sensitive data and provides a panic function for emergency situations."
 arch=('any')
