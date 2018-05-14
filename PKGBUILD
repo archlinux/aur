@@ -4,13 +4,13 @@
 _launcher_ver=6
 pkgname=ungoogled-chromium-bin
 pkgver=66.0.3359.139
-pkgrel=2
+pkgrel=3
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
 license=("BSD")
 depends=("libjpeg6-turbo" "icu57" "libevent-compat" "nss" "libxss" "snappy" "gtk3" "minizip"
-         "libxslt" "ffmpeg" "re2")
+        "libxslt" "ffmpeg" "re2" "ffmpeg-compat-57")
 provides=("chromium")
 conflicts=("chromium" "iridium" "ungoogled-chromium")
 optdepends=("gnome-keyring: for storing passwords in GNOME keyring"
@@ -83,7 +83,6 @@ package() {
     ln -s /usr/lib/libwebp.so.7.0.2 ${pkgdir}/usr/lib/libwebp.so.6
     ln -s /usr/lib/libwebpmux.so.3.0.2 ${pkgdir}/usr/lib/libwebpmux.so.2
     ln -s /usr/lib/libvpx.so.5.0.0 ${pkgdir}/usr/lib/libvpx.so.4
-    ln -s /usr/lib/libavcodec.so.58.18.100 ${pkgdir}/usr/lib/libavcodec.so.57
 
     # Add link to chromedriver
     ln -s /usr/lib/chromium/chromedriver ${pkgdir}/usr/bin/chromedriver
