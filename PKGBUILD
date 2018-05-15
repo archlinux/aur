@@ -5,7 +5,7 @@ pkgname=${_pkgname}-git
 _pkgver=0.2.3
 _branch=v${_pkgver}-dev
 pkgver=0.2.3+26+aca2d3b
-pkgrel=1
+pkgrel=2
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/ebruck/radiotray-ng"
@@ -25,6 +25,10 @@ pkgver() {
   printf '%s+%s+%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git describe --always)"
 }
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  sed -i 's:-Werror::' CMakeLists.txt
+}
 build() {
   cd "${srcdir}/${_pkgname}"
   [ -d build ] && rm -r build
