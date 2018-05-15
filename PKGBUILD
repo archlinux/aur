@@ -26,7 +26,7 @@ install=
 changelog=
 source=("http://victor3d.karelia.pro/arch/syn68k.tar.gz")
 noextract=()
-md5sums=()
+md5sums=('20a822f86b2a841d0bb4757fa8240b95')
 validpgpkeys=()
 
 prepare() {
