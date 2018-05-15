@@ -12,7 +12,7 @@ depends=('exiv2' 'graphicsmagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 
 # 'freeimage' 'devil-ilut'
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
-makedepends=('cmake' 'qt5-tools')
+makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules')
 source=(http://photoqt.org/pkgs/$pkgname-$pkgver.tar.gz)
 md5sums=('cef43bab96392542a15aaae10b7b6aeb')
 
