@@ -20,10 +20,11 @@ package_gdc-bin() {
 	provides=("d-compiler=$_dver" "gdc=$pkgver")
 	pkgdesc="Compiler for D programming language which uses gcc backend"
 
-	install -d -m64 $pkgdir/usr/include/d
+	install -d -m644 $pkgdir/usr/include/d
 	cp -dr --no-preserve=ownership $srcdir/$_target/lib/gcc/$_target/$_gccver/include/d $pkgdir/usr/include
 	install -D -m755 $srcdir/$_target/bin/gdc $pkgdir/usr/bin/gdc
 	install -D -m755 $srcdir/$_target/libexec/gcc/$_target/$_gccver/cc1d $pkgdir/usr/bin/cc1d
+	ln -s $pkgdir/usr/bin/cc1d $pkgdir/usr/bin/cc1 # Warning
 	install -D -m755 $srcdir/$_target/bin/gdmd $pkgdir/usr/bin/gdmd
 }
 
