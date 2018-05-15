@@ -5,7 +5,7 @@ pkgbase = pandoc-fignos
 	url = https://github.com/tomduck/pandoc-fignos
 	arch = any
 	license = GPL
-	depends = pandoc-xnos>=0.9.0
+	depends = pandoc-xnos>=0.15.0
 	source = https://github.com/tomduck/pandoc-fignos/archive/1.2.0.tar.gz
 	md5sums = 3b7f7b6b77dd66242cda8284e261dba9
 
