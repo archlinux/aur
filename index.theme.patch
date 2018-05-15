@@ -1,0 +1,10 @@
+--- index.theme	2018-05-16 06:26:41.632387274 +0900
++++ index.theme.patch	2018-05-16 06:28:37.572384440 +0900
+@@ -1,5 +1,6 @@
+ [Icon Theme]
+-Name=Windows
++Name=Windows Longhorn
++Comment=The Longhorn Icon theme for Linux
+ Example=folder
+ 
+ # KDE Specific Stuff
