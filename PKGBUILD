@@ -1,7 +1,7 @@
 # Maintainer: Danilo Pianini
 
 pkgname=opencorsairlink-git
-pkgver=20180513
+pkgver=20180515
 pkgrel=1
 pkgdesc="Linux® support for Corsair H100i and other water coolers of the same brand."
 arch=('x86_64')
