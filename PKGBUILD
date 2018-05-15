@@ -4,7 +4,7 @@
 
 _pkgname=electricsheep
 pkgname=${_pkgname}-git
-pkgref=c02c19b9364733fc73826e105fc983a89a8b4f40
+pkgref=51f33cae7c6694515ba806caa911e44010ab3294
 pkgzip=${pkgref}.zip
 pkgurl="https://github.com/scottdraves/electricsheep/archive/${pkgzip}"
 pkgver=3.0.git.${pkgref}
@@ -19,7 +19,7 @@ optdepends=('xscreensaver: to use electricsheep with xscreensaver')
 provides=('electricsheep')
 conflicts=('electricsheep' 'electricsheep-svn')
 source=(${pkgurl})
-sha512sums=('8a6a98f717d06baee71895739d73a0f1e795d454416adc88d8ffc86bfb576fcd34bddf9c3ab650aad3cfe2a986a08181d54d4fbabf0ca2480992a1be759b76e9')
+sha512sums=('76d7626a03320b075ea537270e9578cc07660905fa7cac04b66d36de3d61139f5f27b2d508929732b31f7f86c03669fe3646f3ecbb27fa0d8485bbfeb9bffeb6')
 
 prepare() {
   pushd "${srcdir}/${_pkgname}-${pkgref}/client_generic"

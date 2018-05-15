@@ -1,6 +1,6 @@
 pkgbase = electricsheep-git
 	pkgdesc = Electric Sheep is a collaborative abstract artwork founded by Scott Draves. (gold sheep supported!)
-	pkgver = 3.0.git.c02c19b9364733fc73826e105fc983a89a8b4f40
+	pkgver = 3.0.git.51f33cae7c6694515ba806caa911e44010ab3294
 	pkgrel = 1
 	url = http://gold.electricsheep.org/about
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = electricsheep-git
 	provides = electricsheep
 	conflicts = electricsheep
 	conflicts = electricsheep-svn
-	source = https://github.com/scottdraves/electricsheep/archive/c02c19b9364733fc73826e105fc983a89a8b4f40.zip
-	sha512sums = 8a6a98f717d06baee71895739d73a0f1e795d454416adc88d8ffc86bfb576fcd34bddf9c3ab650aad3cfe2a986a08181d54d4fbabf0ca2480992a1be759b76e9
+	source = https://github.com/scottdraves/electricsheep/archive/51f33cae7c6694515ba806caa911e44010ab3294.zip
+	sha512sums = 76d7626a03320b075ea537270e9578cc07660905fa7cac04b66d36de3d61139f5f27b2d508929732b31f7f86c03669fe3646f3ecbb27fa0d8485bbfeb9bffeb6
 
 pkgname = electricsheep-git
 
