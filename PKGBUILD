@@ -5,7 +5,7 @@
 
 pkgname=pacemaker-git
 _pkgname=pacemaker
-pkgver=2.0.0.rc2.r6.g42dc2bbce
+pkgver=2.0.0.rc4.r10.g922564d4a
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
@@ -17,7 +17,8 @@ depends=('gnutls' 'glib2' 'pam' 'libtool' 'python-lxml' 'python-yaml' 'libesmtp'
          'ha-glue' 'net-snmp')
 optdepends=('pssh: for use with some tools'
             'pdsh: for use with some tools'
-            'crmsh-git: for use with crm_report')
+            'crmsh-git: for use with crm_report'
+            'booth-git: for geo-clustering')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 install=${_pkgname}.install
