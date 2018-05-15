@@ -3,7 +3,7 @@
 
 pkgname=samus-scripts
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of scripts for the Chromebook Pixel (2015), codename Samus."
 arch=('any')
 url="https://gitlab.com/christianbundy/samus-scripts"
