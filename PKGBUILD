@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-cro-tls
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="TLS support for the Cro library for building distributed systems in Perl 6"
 arch=('any')
@@ -14,7 +14,7 @@ groups=('croservices' 'perl6')
 url="https://github.com/croservices/cro-tls"
 license=('PerlArtistic')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/croservices/${pkgname##perl6-}/tar.gz/release-$pkgver)
-sha256sums=('0c855f2fcab55994896fb3bafd4ba6fd7962b0a4fdf4db1510fe647de71628f1')
+sha256sums=('adcf5f9fa7dbf6da187a05e664384c783ed9b277bd5326ee2f60e777eda261d3')
 
 check() {
   cd "$srcdir/${pkgname##perl6-}-release-$pkgver"
