@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-cro-zeromq
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="ZeroMQ support for the Cro library for building distributed systems in Perl 6"
 arch=('any')
@@ -15,7 +15,7 @@ groups=('croservices' 'perl6')
 url="https://github.com/croservices/cro-zeromq"
 license=('PerlArtistic')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/croservices/${pkgname##perl6-}/tar.gz/release-$pkgver)
-sha256sums=('ddc081773bc1d0f9bc39f511138db4b1ab6fe2e7f4241b01eadf89bb8ee0c96c')
+sha256sums=('e743ae4764041617607fb597eb50a95184fc6dd06db82b35aa4085ffae979d7c')
 
 check() {
   cd "$srcdir/${pkgname##perl6-}-release-$pkgver"
