@@ -2,7 +2,7 @@
 
 pkgname=resource-agents
 pkgver=4.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="OCF resource agents for rgmanager and pacemaker"
 arch=('i686' 'x86_64')
 url='http://clusterlabs.org/'
@@ -43,8 +43,6 @@ package() {
   install -Dm644 /dev/null "${pkgdir}/usr/lib/tmpfiles.d/resource-agents.conf"
   ( echo "# /usr/lib/tmpfiles.d/resource-agents.conf"
     echo "d /var/lib/heartbeat/fifo 0755 root root -"
-    echo "# corosync installs this one"
-    echo "#d /var/log/cluster 0755 root root -"
     echo "d /run/resource-agents 0755 root root -"
     echo "d /run/heartbeat/rsctmp 0755 root root -"
   )>>"${pkgdir}/usr/lib/tmpfiles.d/resource-agents.conf"
