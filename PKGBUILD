@@ -5,7 +5,7 @@
 
 pkgname=pacemaker
 pkgver=1.1.18
-pkgrel=7
+pkgrel=8
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${pkgname}/"
@@ -16,7 +16,8 @@ depends=('gnutls' 'glib2' 'pam' 'libtool' 'python-lxml' 'python-yaml' 'libesmtp'
          'ha-glue' 'net-snmp')
 optdepends=('pssh: for use with some tools'
             'pdsh: for use with some tools'
-            'crmsh: for use with crm_report')
+            'crmsh: for use with crm_report'
+            'booth: for geo-clustering')
 install=${pkgname}.install
 source=("https://github.com/ClusterLabs/$pkgname/archive/Pacemaker-$pkgver.tar.gz"
         'crm_report.in'
