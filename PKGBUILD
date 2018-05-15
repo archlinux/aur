@@ -8,7 +8,8 @@ pkgdesc="Fast and highly configurable image viewer with a simple and nice interf
 arch=('x86_64')
 url="http://photoqt.org/"
 license=('GPL2')
-depends=('exiv2' 'graphicsmagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 'qt5-quickcontrols' 'libraw' 'qt5-graphicaleffects' 'hicolor-icon-theme' 'poppler-qt5' 'freeimage' 'devil-ilut' 'libarchive' 'kimageformats')
+depends=('exiv2' 'graphicsmagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 'qt5-quickcontrols' 'libraw' 'qt5-graphicaleffects' 'hicolor-icon-theme' 'poppler-qt5' 'libarchive' 'kimageformats')
+# 'freeimage' 'devil-ilut'
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt5-tools')
@@ -20,7 +21,7 @@ prepare() {
 
   # To build PhotoQt with less features, add -Dxxxx=OFF to
   # the next line (where xxxx is the respective CMake option).
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF
 }
 
 build() {
