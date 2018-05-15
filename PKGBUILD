@@ -2,7 +2,7 @@
 # Maintainer: Bijaya Dangol <dangoldbj23@gmail.com>
 pkgname=dupeguru
 pkgver=4.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Find duplicate files on your system"
 arch=(any)
 url="https://dupeguru.voltaicideas.net/"
@@ -33,6 +33,8 @@ build() {
 package() {
   cd "$srcdir"
   
+  cp -R "help" "build"
+  cp -R "locale" "build"
   python package.py --arch-pkg
   cd "build/${pkgname}-arch"
 
