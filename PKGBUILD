@@ -1,11 +1,13 @@
 # Maintainer: Michael Egger <michael.egger@tsn.at>
 pkgname=parity-ui-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Parity UI - The Parity Dapp shell, browser & launcher (Electron app)"
 arch=('x86_64')
 url="https://github.com/parity-js/shell"
 license=('GPLv3')
+provides=('parity-ui')
+conflicts=('parity-ui')
 depends=('parity>=1.10')
 source=("https://github.com/parity-js/shell/releases/download/v${pkgver}/parity-ui-${pkgver}.tar.xz"
         "parity-ui.desktop"
