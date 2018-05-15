@@ -4,6 +4,7 @@ pkgbase = bitcoin-core-git
 	pkgrel = 2
 	url = https://github.com/bitcoin/bitcoin
 	install = bitcoin.install
+	arch = aarch64
 	arch = armv6h
 	arch = armv7h
 	arch = i686
