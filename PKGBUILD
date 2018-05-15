@@ -22,15 +22,12 @@ pkgver() {
 }
 
 build() {
-	pwd
 	cd $srcdir/OpenCorsairLink
 	git checkout master
-	pwd
 	echo $LDFLAGS
 	export LDFLAGS="$LDFLAGS -lm"
 	echo $LDFLAGS
 	make
-	pwd
 }
 
 package() {
