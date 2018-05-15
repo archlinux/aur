@@ -1,28 +1,34 @@
 # Maintainer: Stephan Henrichs <stiepen22@gmx.de>
-pkgname=lockd
-pkgver=0.1
-pkgrel=2
+_pkgname=lockd
+pkgname=$_pkgname-git
+pkgver=0.2
+pkgrel=1
 pkgdesc="A simple utility for managing your lock screen on a tiling wm (like i3, dwm, xmonad or awesome)"
 arch=(i686 x86_64)
 url="https://github.com/Kilobyte22/lockd"
 license=('MIT')
-depends=(i3lock)
-makedepends=(git cargo)
+optdepends=(
+  'i3lock: screen locking with default config'
+)
+makedepends=(git rust)
 install=
-source=("lockd::git+https://github.com/Kilobyte22/lockd.git#tag=v$pkgver" "local://$pkgname.service")
+source=("lockd::git+https://github.com/Kilobyte22/lockd.git#branch=develop" "local://$_pkgname.service")
 noextract=()
 md5sums=('SKIP'
          '0f9e968b906d26cc0f4255afe30f2eaa')
+conflicts=(lockd)
+provides=(lockd)
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_pkgname"
     cargo build --release
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    mkdir -p $pkgdir/usr/bin
-    install $srcdir/$pkgname/target/release/lockd $pkgdir/usr/bin/lockd
-    install $srcdir/$pkgname/target/release/lockctl $pkgdir/usr/bin/lockctl
-    install -Dm644 $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/user/$pkgname.service
+    cd "$srcdir/$_pkgname"
+    install -Dm755 "$srcdir/$_pkgname/target/release/lockd" "$pkgdir/usr/bin/lockd"
+    install -Dm755 "$srcdir/$_pkgname/target/release/lockctl" "$pkgdir/usr/bin/lockctl"
+    install -Dm644 "$srcdir/$_pkgname/lockctl.1" "$pkgdir/usr/man/man1/lockctl.1"
+    install -Dm644 "$srcdir/$_pkgname/lockd.1" "$pkgdir/usr/man/man1/lockd.1"
+    install -Dm644 "$srcdir/$_pkgname.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
 }
