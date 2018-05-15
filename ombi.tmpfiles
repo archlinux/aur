@@ -2,3 +2,4 @@
 d /var/lib/ombi 0755 ombi ombi
 Z /var/lib/ombi - ombi ombi
 Z /usr/lib/ombi - ombi ombi
+L /var/log/ombi - - - - /var/lib/ombi/Logs
