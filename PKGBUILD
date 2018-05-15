@@ -22,7 +22,7 @@ package_gdc-bin() {
 
 	# compiler
 	install -D -m755 $srcdir/$_target/bin/gdc $pkgdir/usr/bin/gdc
-	install -D -m755 $srcdir/$_target/libexec/gcc/$_target/$_gccver/cc1d $pkgdir/usr/lib/gcc/$CHOST/cc1d
+	install -D -m755 $srcdir/$_target/libexec/gcc/$_target/$_gccver/cc1d $pkgdir/usr/bin/cc1d
 
 	# tools
 	install -D -m755 $srcdir/$_target/bin/gdmd $pkgdir/usr/bin/gdmd
