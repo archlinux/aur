@@ -1,4 +1,4 @@
-#Maintainer: Bandie <bandie@chaospott.de>
+# Maintainer: Bandie <bandie@chaospott.de>
 
 pkgname=pam_panic-git
 pkgver=r119.1a79d2a
