@@ -1,0 +1,17 @@
+pkgbase = perl6-json-pointer
+	pkgdesc = JSON Pointer implementation in Perl 6
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/croservices/json-pointer
+	arch = any
+	groups = croservices
+	groups = perl6
+	license = PerlArtistic
+	checkdepends = perl
+	makedepends = git
+	depends = perl6
+	source = perl6-json-pointer-1.0::git+https://github.com/croservices/json-pointer
+	sha256sums = SKIP
+
+pkgname = perl6-json-pointer
+
