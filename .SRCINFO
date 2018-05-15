@@ -8,6 +8,7 @@ pkgbase = minecraft-launcher
 	depends = java-runtime=8
 	depends = icu57
 	depends = xorg-xrandr
+	depends = libxss
 	source = https://launcher.mojang.com/mc-staging/download/Minecraft_staging.tar.gz
 	source = minecraft-launcher.desktop
 	source = minecraft-launcher.svg

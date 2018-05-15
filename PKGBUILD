@@ -8,7 +8,7 @@ pkgdesc="Official Minecraft Launcher"
 arch=('x86_64')
 url="https://mojang.com/"
 license=('All rights reserved')
-depends=('java-runtime=8' 'icu57' 'xorg-xrandr')
+depends=('java-runtime=8' 'icu57' 'xorg-xrandr' 'libxss')
 source=(
 https://launcher.mojang.com/mc-staging/download/Minecraft_staging.tar.gz
 minecraft-launcher.desktop
