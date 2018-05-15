@@ -5,7 +5,7 @@
 
 pkgname=pacemaker
 pkgver=1.1.18
-pkgrel=4
+pkgrel=6
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${pkgname}/"
@@ -19,12 +19,15 @@ optdepends=('pssh: for use with some tools'
             'crmsh: for use with crm_report')
 install=${pkgname}.install
 source=("https://github.com/ClusterLabs/$pkgname/archive/Pacemaker-$pkgver.tar.gz"
-        'crm_report.in')
+        'crm_report.in'
+        'makefile-chown.patch')
 sha512sums=('63c287888e5f0bd5f1a2f56450cb3d4da580df2d750ffa90b2212a4efcfa146e05e258a9d87fdcaacde5f8985b9730dae11c5d5ad22e811fd114e1640365c9aa'
-            '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64')
+            '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64'
+            'bbd4f0415bbc07dedc447cdedea8470ee5308631721c04d7a495e5d0dcad639754f26d7db5c2bdad13e9669346e83d9674607dc7349e1b59cb7e9a35b31b2d22')
 
 prepare() {
   cd ${pkgname}-Pacemaker-${pkgver}
+  patch -Np2 -b -z .orig <../makefile-chown.patch
   autoreconf -fiv
 #  ./autogen.sh
 }
@@ -67,12 +70,11 @@ package() {
   cd "$srcdir"
   install -Dm644 /dev/null "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
   cat>"$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"<<-EOF
-		d /var/log/pacemaker          0755 hacluster haclient
-		d /var/lib/pacemaker          0770 hacluster haclient
-		d /var/lib/pacemaker/blackbox 0770 hacluster haclient
-		d /var/lib/pacemaker/cib      0770 hacluster haclient
-		d /var/lib/pacemaker/cores    0770 hacluster haclient
-		d /var/lib/pacemaker/pengine  0770 hacluster haclient
+		d /var/lib/pacemaker          0750 hacluster haclient
+		d /var/lib/pacemaker/blackbox 0750 hacluster haclient
+		d /var/lib/pacemaker/cib      0750 hacluster haclient
+		d /var/lib/pacemaker/cores    0750 hacluster haclient
+		d /var/lib/pacemaker/pengine  0750 hacluster haclient
 	EOF
 # install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 # cat>"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"<<-EOF

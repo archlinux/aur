@@ -1,0 +1,36 @@
+diff -up src/pacemaker-Pacemaker-1.1.18/Makefile.am.orig src/pacemaker-Pacemaker-1.1.18/Makefile.am
+--- src/pacemaker-Pacemaker-1.1.18/Makefile.am.orig	2018-04-19 23:26:43.000000000 -0600
++++ src/pacemaker-Pacemaker-1.1.18/Makefile.am	2018-04-19 23:40:07.000000000 -0600
+@@ -67,13 +67,13 @@ install-exec-local:
+ 	$(INSTALL) -d -m 750 $(DESTDIR)/$(CRM_CONFIG_DIR)
+ 	$(INSTALL) -d -m 750 $(DESTDIR)/$(CRM_CORE_DIR)
+ 	$(INSTALL) -d -m 750 $(DESTDIR)/$(CRM_BLACKBOX_DIR)
+-	-chown $(CRM_DAEMON_USER):$(CRM_DAEMON_GROUP) $(DESTDIR)/$(CRM_CONFIG_DIR)
+-	-chown $(CRM_DAEMON_USER):$(CRM_DAEMON_GROUP) $(DESTDIR)/$(CRM_CORE_DIR)
+-	-chown $(CRM_DAEMON_USER):$(CRM_DAEMON_GROUP) $(DESTDIR)/$(CRM_BLACKBOX_DIR)
+ if BUILD_CS_PLUGIN
+ 	rm -f $(DESTDIR)$(LCRSODIR)/pacemaker.lcrso $(DESTDIR)$(LCRSODIR)/service_crm.so
+ 	cp $(DESTDIR)$(libdir)/service_crm.so $(DESTDIR)$(LCRSODIR)/pacemaker.lcrso
+ endif
++#	-chown $(CRM_DAEMON_USER):$(CRM_DAEMON_GROUP) $(DESTDIR)/$(CRM_CONFIG_DIR)
++#	-chown $(CRM_DAEMON_USER):$(CRM_DAEMON_GROUP) $(DESTDIR)/$(CRM_CORE_DIR)
++#	-chown $(CRM_DAEMON_USER):$(CRM_DAEMON_GROUP) $(DESTDIR)/$(CRM_BLACKBOX_DIR)
+ # Use chown because the user/group may not exist
+ 
+ clean-generic:
+diff -up src/pacemaker-Pacemaker-1.1.18/pengine/Makefile.am.orig src/pacemaker-Pacemaker-1.1.18/pengine/Makefile.am
+--- src/pacemaker-Pacemaker-1.1.18/pengine/Makefile.am.orig	2018-04-19 23:26:29.000000000 -0600
++++ src/pacemaker-Pacemaker-1.1.18/pengine/Makefile.am	2018-04-19 23:39:40.000000000 -0600
+@@ -80,9 +80,9 @@ pengine_SOURCES	= main.c
+ 
+ install-exec-local:
+ 	$(mkinstalldirs) $(DESTDIR)/$(PE_STATE_DIR)
+-	-chown $(CRM_DAEMON_USER) $(DESTDIR)/$(PE_STATE_DIR)
+-	-chgrp $(CRM_DAEMON_GROUP) $(DESTDIR)/$(PE_STATE_DIR)
+-	-chmod 750 $(DESTDIR)/$(PE_STATE_DIR)
++#	-chown $(CRM_DAEMON_USER) $(DESTDIR)/$(PE_STATE_DIR)
++#	-chgrp $(CRM_DAEMON_GROUP) $(DESTDIR)/$(PE_STATE_DIR)
++#	-chmod 750 $(DESTDIR)/$(PE_STATE_DIR)
+ 
+ uninstall-local:
+ 
