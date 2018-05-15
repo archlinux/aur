@@ -1,0 +1,18 @@
+pkgbase = uyap
+	pkgdesc = Uyap Belge Düzenleyici
+	pkgver = 4.1.10
+	pkgrel = 2
+	url = http://www.uyap.gov.tr/
+	arch = x86_64
+	license = GPL2
+	makedepends = innoextract
+	depends = opensc
+	source = http://www.uyap.gov.tr/destek/uyap.zip
+	source = uyap-editor.png
+	source = product_logo_32.xpm
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = uyap
+
