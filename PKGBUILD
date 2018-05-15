@@ -3,11 +3,11 @@
 pkgname=dcrseeder
 pkgver=20180515
 pkgrel=1
-pkgdesc="Decred daemon written in Go"
+pkgdesc="Decred DNS seeder"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 makedepends=('dep' 'git' 'go')
 groups=('decred')
-url="https://decred.org"
+url="https://github.com/decred/dcrseeder"
 license=('ISC')
 options=('!strip' '!emptydirs')
 source=(git+https://github.com/decred/dcrseeder)
