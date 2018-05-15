@@ -2,19 +2,19 @@
 
 pkgname=qcma
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Content Manager Assistant for the PS Vita"
 arch=("i686" "x86_64")
 url="https://github.com/codestation/qcma"
 license=('GPL')
 makedepends=('qt5-tools')
 depends=('qt5-base' 'libvitamtp>=2.5.9' 'ffmpeg' 'libnotify')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/codestation/${pkgname}/archive/v${pkgver}.tar.gz" "qcma.install")
-install=qcma.install
-sha256sums=('f107b6cfd69f7346cd1e7a1f125f866f12d1e1a63a22f44981043f58d8811f80' '775ee63487691792e3286d592193b65e7c6b1cd319985ef1ab18f0dc80e42fb6')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/codestation/${pkgname}/archive/v${pkgver}.tar.gz" "qcma-avdecoder.patch")
+sha256sums=('f107b6cfd69f7346cd1e7a1f125f866f12d1e1a63a22f44981043f58d8811f80' '1a8acfe28c5bb1ead66805da76b09d28cf858ea55858ccc5e6362b1c053fd9d9')
 
 prepare() {
    cd $pkgname-$pkgver
+   patch -Np1 -i "${srcdir}/qcma-avdecoder.patch"
 }
 
 build() {
