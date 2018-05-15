@@ -1,0 +1,21 @@
+pkgbase = has-git
+	pkgdesc = checks presence of various command line tools and their versions on the path
+	pkgver = r70.5443d4c
+	pkgrel = 1
+	url = https://github.com/kdabir/has
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = imagemagick
+	provides = has
+	provides = has
+	conflicts = has
+	conflicts = has
+	source = has-git::git+https://github.com/kdabir/has.git
+	md5sums = SKIP
+
+pkgname = has-git
+
