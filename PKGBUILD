@@ -4,7 +4,7 @@
 
 pkgname=dropbox
 pkgver=49.4.69
-pkgrel=1
+pkgrel=2
 pkgdesc="A free service that lets you bring your photos, docs, and videos anywhere and share them easily."
 arch=("i686" "x86_64")
 url="https://www.dropbox.com"
@@ -42,7 +42,7 @@ package() {
 
 	find "$pkgdir"/opt/dropbox/ -type f -exec chmod 644 {} \;
 	chmod 755 "$pkgdir"/opt/dropbox/dropboxd
-	chmod 755 "$pkgdir"/opt/dropbox/dropbox
+	chmod 755 "$pkgdir"/opt/dropbox/dropbox{,_py3}
 
 	install -d "$pkgdir"/usr/bin
 	ln -s ../../opt/dropbox/dropbox "$pkgdir"/usr/bin/dropbox
@@ -52,7 +52,4 @@ package() {
 	install -Dm644 "$srcdir"/terms.txt "$pkgdir"/usr/share/licenses/$pkgname/terms.txt
 	install -Dm644 "$srcdir"/dropbox.service "$pkgdir"/usr/lib/systemd/user/dropbox.service
 	install -Dm644 "$srcdir"/dropbox@.service "$pkgdir"/usr/lib/systemd/system/dropbox@.service
-
-	rm -f "$pkgdir"/opt/dropbox/library.zip
-	ln -s dropbox "$pkgdir"/opt/dropbox/library.zip
 }
