@@ -36,8 +36,7 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	CC='gcc -m32' ./configure --build=i686-pc-linux-gnu 
---host=i686-pc-linux-gnu --prefix=/usr
+	CC='gcc -m32' ./configure --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu --prefix=/usr
 	make
 }
 
