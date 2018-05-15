@@ -1,0 +1,27 @@
+pkgbase = gnome-calendar-linuxmint
+	pkgdesc = Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. With Linux Mint patches
+	pkgver = 3.28.2
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Calendar
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	makedepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = gtk-doc
+	makedepends = evolution
+	makedepends = evolution-data-server
+	depends = gsettings-desktop-schemas
+	depends = libdazzle
+	provides = gnome-calendar
+	conflicts = gnome-calendar
+	source = git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=c4d1f984758e77787ef97b71fe2dede8477809c2
+	source = null-icaltime.diff
+	source = add_cinnamon_settings_online_support.patch
+	sha256sums = SKIP
+	sha256sums = c1aa738a4ff275f725d0aa5406312600503b2b59270448a9e6b30b82a924dc27
+	sha256sums = 2445f754a044dd1ccb8c948b5d5b43248b61ec3570fc76416f74148abc5abf4d
+
+pkgname = gnome-calendar-linuxmint
+
