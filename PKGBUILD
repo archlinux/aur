@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-cro-core
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="The heart of the Cro library for building distributed systems in Perl 6, including pipeline composition and TCP support"
 arch=('any')
@@ -12,7 +12,7 @@ groups=('croservices' 'perl6')
 url="https://github.com/croservices/cro-core"
 license=('PerlArtistic')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/croservices/${pkgname##perl6-}/tar.gz/release-$pkgver)
-sha256sums=('485888c462d5a82d82a9c0f1945f69fd1ffe10fb9119a74fa93aae18aacfc39b')
+sha256sums=('5e10d05d382c87aec85dc41f2875e6943c2e77c4885cdbd46fc7e43fc9673535')
 
 check() {
   cd "$srcdir/${pkgname##perl6-}-release-$pkgver"
