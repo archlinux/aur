@@ -24,22 +24,14 @@ install=
 source=("$pkgname::git+https://gitlab.com/aplevich/dpic.git")
 noextract=()
 md5sums=('SKIP')
-sha1sums=('SKIP')
-sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-#prepare() {
-#  cd "$srcdir/$pkgname"
-#  ./autogen.sh
-#}
-
 build() {
   cd "$srcdir/$pkgname"
-  #./autogen.sh
   ./configure --prefix=/usr
   make
 }
