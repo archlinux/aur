@@ -1,0 +1,20 @@
+pkgbase = perl6-openapi-model
+	pkgdesc = Work with OpenAPI documents in terms of a set of Perl 6 objects
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/croservices/openapi-model
+	arch = any
+	groups = croservices
+	groups = perl6
+	license = PerlArtistic
+	checkdepends = perl
+	makedepends = git
+	depends = perl6
+	depends = perl6-json-fast
+	depends = perl6-json-pointer
+	depends = perl6-yamlish
+	source = perl6-openapi-model-1.0::git+https://github.com/croservices/openapi-model
+	sha256sums = SKIP
+
+pkgname = perl6-openapi-model
+
