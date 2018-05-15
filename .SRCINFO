@@ -1,6 +1,6 @@
 pkgbase = biblesync-git
 	pkgdesc = multicast shared co-navigation library for Bible programs
-	pkgver = 1.2.0.0.g588631b
+	pkgver = 2.0.1.1.gb16df42
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/karlkleinpaste/biblesync
@@ -10,8 +10,8 @@ pkgbase = biblesync-git
 	makedepends = git
 	depends = gcc-libs
 	depends = libutil-linux
-	provides = biblesync
-	conflicts = biblesync
+	provides = biblesync=2.0.1.1.gb16df42
+	conflicts = biblesync=2.0.1.1.gb16df42
 	source = git+https://github.com/karlkleinpaste/biblesync.git
 	md5sums = SKIP
 

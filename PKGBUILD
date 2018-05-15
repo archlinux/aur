@@ -2,7 +2,7 @@
 
 pkgname=biblesync-git
 epoch=1
-pkgver=1.2.0.0.g588631b
+pkgver=2.0.1.1.gb16df42
 pkgrel=1
 pkgdesc="multicast shared co-navigation library for Bible programs"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url=https://github.com/karlkleinpaste/biblesync""
 license=('GPL')
 depends=('gcc-libs' 'libutil-linux')
 makedepends=('git')
-provides=('biblesync')
-conflicts=('biblesync')
+provides=("biblesync=$pkgver")
+conflicts=("biblesync=$pkgver")
 source=("git+https://github.com/karlkleinpaste/biblesync.git")
 md5sums=('SKIP')
 _gitname="biblesync"
