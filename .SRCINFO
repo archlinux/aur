@@ -1,7 +1,7 @@
 pkgbase = motion
 	pkgdesc = A software motion detector which grabs images from video4linux devices and/or from webcams
 	pkgver = 4.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://motion-project.github.io
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,9 @@ pkgbase = motion
 	depends = ffmpeg
 	backup = etc/motion/motion.conf
 	source = motion-4.1.1.tar.gz::https://github.com/Motion-Project/motion/archive/release-4.1.1.tar.gz
+	source = ffmpeg.patch
 	sha256sums = 2074b935bdfe28f84c2c3233274b06908336778f303bb13530d4299c3f8aa4e2
+	sha256sums = 14302daa63c0cdc8b0f1e7a8c790e254797b6f97e25bf9b8fab0453029151cbc
 
 pkgname = motion
 
