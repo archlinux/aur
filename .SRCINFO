@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-zh-tw
 	pkgdesc = Standalone web browser from mozilla.org, nightly build (zh-TW)
-	pkgver = 59.0a1.20180122100120
+	pkgver = 62.0a1.20180514220126
 	pkgrel = 1
 	url = http://www.mozilla.org/projects/firefox
 	arch = x86_64

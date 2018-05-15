@@ -8,7 +8,7 @@ _lang=zh-TW
 _pkgver=62.0a1
 
 pkgname=${_pkgname}-${_channel}-${_lang/TW/tw}
-pkgver=59.0a1.20180122100120
+pkgver=62.0a1.20180514220126
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org, nightly build (zh-TW)'
 url='http://www.mozilla.org/projects/firefox'
@@ -43,11 +43,15 @@ package() {
   cp -r firefox $pkgdir/opt/firefox-nightly
   ln -s /opt/firefox-nightly/firefox $pkgdir/usr/bin/firefox-nightly
   install -Dm644 $srcdir/{${_pkgname}-${_channel}.desktop,${_pkgname}-${_channel}-safe.desktop} $pkgdir/usr/share/applications/
-  install -Dm644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$pkgname-icon.png
+  for size in 16 32 48 128; do
+    install -Dm644 $srcdir/firefox/browser/chrome/icons/default/default${size}.png $pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png
+  done
+
   
   _vendorjs="$pkgdir/opt/firefox-nightly/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 pref("browser.shell.checkDefaultBrowser", false);
+pref("browser.tabs.drawInTitlebar", true);
 END
 
 }
