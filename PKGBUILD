@@ -5,7 +5,7 @@
 # Contributor: mrxx <mrxx at cyberhome dot at>
 # Contributor: Jonhoo <jon at thesquareplanet.com>
 pkgname=signal
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
@@ -42,7 +42,8 @@ build() {
   
   # Download modules and build Signal
   yarn install
-  yarn pack-prod
+  yarn generate
+  yarn build-release --dir
   
   # Restore config
   npm config set prefix ${_npm_prefix}
@@ -53,7 +54,7 @@ package() {
   cd "${pkgname}-git-repo"
 
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  cp -r dist/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}/"
+  cp -r release/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}/"
       
   install -dm755 "${pkgdir}/usr/share/icons/hicolor"
   for i in 16 24 32 48 64 128 256 512; do
