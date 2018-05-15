@@ -1,0 +1,18 @@
+pkgbase = perl6-cro-http-test
+	pkgdesc = Write tests for HTTP services (whether or not they are built with Cro)
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/croservices/cro-http-test
+	arch = any
+	groups = croservices
+	groups = perl6
+	license = PerlArtistic
+	checkdepends = perl
+	makedepends = git
+	depends = perl6
+	depends = perl6-cro-http
+	source = perl6-cro-http-test-0.7.5.tar.gz::https://codeload.github.com/croservices/cro-http-test/tar.gz/release-0.7.5
+	sha256sums = 23a79e1222f777b53813e30951269011d9ad85406e452d70d1db8fe2012cd66b
+
+pkgname = perl6-cro-http-test
+
