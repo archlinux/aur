@@ -13,7 +13,7 @@ _build_stubdom=${build_stubdom:-false}
 pkgbase="xen"
 pkgname=("xen" "xen-docs")
 pkgver="4.10.1"
-pkgrel="2"
+pkgrel="3"
 arch=("x86_64") # TODO What about ARM?
 url="http://www.xenproject.org/"
 license=("GPL2")
@@ -65,6 +65,12 @@ source=(
   "ipxe-git.tar.gz::http://xenbits.xen.org/xen-extfiles/ipxe-git-356f6c1b64d7a97746d1816cef8ca22bdd8d0b5d.tar.gz"
 
   # XSA patches.
+  "https://xenbits.xen.org/xsa/xsa260-4.10/xsa260-1.patch"
+  "https://xenbits.xen.org/xsa/xsa260-4.10/xsa260-2.patch"
+  "https://xenbits.xen.org/xsa/xsa260-4.10/xsa260-3.patch"
+  "https://xenbits.xen.org/xsa/xsa260-4.10/xsa260-4.patch"
+  "https://xenbits.xen.org/xsa/xsa261.patch"
+  "https://xenbits.xen.org/xsa/xsa262-4.10.patch"
 
   # Helper and config files.
   "grub-mkconfig-helper"
@@ -92,6 +98,12 @@ sha256sums=(
   "251e5516d7de470c434ae5c393aacca2b61fb24d93770592a4a20add60b785c4"
 
   # XSA patches.
+  "ffac7ab75bf65f8286b37d21cb4a4401d898670a4e52af88d8202ce4fe66edef"
+  "fe85832a9b5b1076b3a9bdbd28a2f3be57cd019d66a725ce64698b1bd74145a8"
+  "1955aed73828e23da871ef10e5ec49670ce59bdd06af2772e978f8e817e0319f"
+  "8f504f8fcf100f8a00bece9c4df8b8933dceeaf29b50492317f9cbf74aaf4aa4"
+  "175501977204db84d08a6fd81d9fd4b69f97f70cbf6f65e6ce0abfeab03eae95"
+  "91d3b329131b6d434b268c0c55fd4900033fce8b2582bd9278ae967efc980fb0"
 
   # Helper and config files.
   "23c3b0eab4cb06260bd07324d2060356560c9bc52270aaaf6130e1c130fc6e5e"
@@ -163,6 +175,12 @@ prepare() {
 
   # XSA patches.
   msg2 'Applying XSA patches...'
+  patch -Np1 -i "${srcdir}/xsa260-1.patch"
+  patch -Np1 -i "${srcdir}/xsa260-2.patch"
+  patch -Np1 -i "${srcdir}/xsa260-3.patch"
+  patch -Np1 -i "${srcdir}/xsa260-4.patch"
+  patch -Np1 -i "${srcdir}/xsa261.patch"
+  patch -Np1 -i "${srcdir}/xsa262-4.10.patch"
 
   # Security patches and compile fixes (qemu-xen-traditional).
   msg2 'Applying tools patches (qemu-xen-traditional)...'
@@ -188,8 +206,8 @@ prepare() {
   patch -Np1 -i "${srcdir}/xen-gcc-8-tools-fix-format-truncation-warnings.patch"
 
   # Compile fix for ipxe package with gcc-8.
-  cp "${srcdir}/ipxe-git-use-no-pie-on-newer-versions-of-gcc.patch" "${srcdir}/xen-4.10.1/tools/firmware/etherboot/patches"
-  echo "ipxe-git-use-no-pie-on-newer-versions-of-gcc.patch" >> "${srcdir}/xen-4.10.1/tools/firmware/etherboot/patches/series"
+  cp "${srcdir}/ipxe-git-use-no-pie-on-newer-versions-of-gcc.patch" "${srcdir}/${pkgbase}-${pkgver}/tools/firmware/etherboot/patches"
+  echo "ipxe-git-use-no-pie-on-newer-versions-of-gcc.patch" >> "${srcdir}/${pkgbase}-${pkgver}/tools/firmware/etherboot/patches/series"
 
   # Fix Install Paths.
   msg2 'Fixing installation paths...'

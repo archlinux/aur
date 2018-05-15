@@ -1,4 +1,8 @@
 2018-05-15 Maik Broemme
+	* 4.10.1-3
+	Apply XSA patches: 260 261 262
+
+2018-05-15 Maik Broemme
 	* 4.10.1-2
 	Fix compilation issue with gcc-8
 
