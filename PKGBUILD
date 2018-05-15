@@ -1,6 +1,6 @@
 # $Id$
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
-# Contributor: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
+# Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Ruben Van Boxem <vanboxem.ruben@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 
@@ -12,18 +12,16 @@ pkgrel=2
 pkgdesc="The GNU Compiler Collection (5.x.x)"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
-url="http://gcc.gnu.org"
+url="https://gcc.gnu.org"
 depends=('glibc>=2.23' 'binutils>=2.26' 'libmpc')
-makedepends=('git')
 options=('!emptydirs')
-_commit=ba9cddfdab8b539b788cd6fe0171351ae43c32da
-source=(git+https://gcc.gnu.org/git/gcc.git#commit=${_commit}
+source=(https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
-sha512sums=('SKIP'
+sha512sums=('670ff52c2ae12c7852c12987e91798c5aa8bd6daf21f0d6e0cd57a4aa59cc4f06a837fe76426eaa1424cfddca937bed377680700eadc04d76b9180d462364fa1'
             '85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94')
 
 prepare() {
-  cd gcc
+  cd gcc-$pkgver
 
   # link isl for in-tree build
   ln -s ../isl-${_islver} isl
@@ -54,7 +52,7 @@ build() {
   CFLAGS=${CFLAGS/-fno-plt/}
   CXXFLAGS=${CXXFLAGS/-fno-plt/}
 
-  ${srcdir}/gcc/configure --prefix=/usr \
+  ${srcdir}/gcc-$pkgver/configure --prefix=/usr \
       --build=${CHOST} \
       --libdir=/usr/lib --libexecdir=/usr/lib \
       --mandir=/usr/share/man --infodir=/usr/share/info \
@@ -89,6 +87,6 @@ package() {
   [[ -d ${pkgdir}/usr/lib/gcc/${CHOST}/lib/ ]] && mv ${pkgdir}/usr/lib/gcc/${CHOST}/lib/lib* ${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/
 
   # Install Runtime Library Exception
-  install -Dm644 ${srcdir}/gcc/COPYING.RUNTIME \
+  install -Dm644 ${srcdir}/gcc-$pkgver/COPYING.RUNTIME \
     ${pkgdir}/usr/share/licenses/$pkgname/RUNTIME.LIBRARY.EXCEPTION
 }
