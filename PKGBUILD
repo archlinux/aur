@@ -2,7 +2,7 @@
 
 pkgname=resource-agents-git
 _pkgname=resource-agents
-pkgver=4.1.1.r38.gc33a72f4
+pkgver=4.1.1.r40.g6548e73a
 pkgrel=1
 pkgdesc="OCF resource agents for rgmanager and pacemaker"
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ url='http://clusterlabs.org/'
 license=('GPL2')
 makedepends=('git' 'libxslt' 'python' 'docbook-xsl')
 depends=('bash' 'perl')
+optdepends=('pacemaker-git: for these to be useful')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$pkgname::git+https://github.com/ClusterLabs/$_pkgname")
@@ -47,7 +48,11 @@ package() {
   rm -fr "${pkgdir}/etc/init.d"
   install -Dm644 /dev/null "${pkgdir}/usr/lib/tmpfiles.d/resource-agents.conf"
   ( echo "# /usr/lib/tmpfiles.d/resource-agents.conf"
+    echo "d /var/lib/heartbeat/fifo 0755 root root -"
+    echo "# corosync installs this one"
+    echo "#d /var/log/cluster 0755 root root -"
     echo "d /run/resource-agents 0755 root root -"
+    echo "d /run/heartbeat/rsctmp 0755 root root -"
   )>>"${pkgdir}/usr/lib/tmpfiles.d/resource-agents.conf"
 }
 
