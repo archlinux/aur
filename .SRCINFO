@@ -1,0 +1,21 @@
+pkgbase = dcrseeder
+	pkgdesc = Decred daemon written in Go
+	pkgver = 20180515
+	pkgrel = 1
+	url = https://decred.org
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	groups = decred
+	license = ISC
+	makedepends = dep
+	makedepends = git
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/decred/dcrseeder
+	sha256sums = SKIP
+
+pkgname = dcrseeder
+
