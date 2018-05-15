@@ -3,7 +3,7 @@
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        printf("Invalid arguments. Type \"man tick\" for help.\n");
+        puts("Invalid arguments. Type \"man tick\" for help.");
         return 0;
     }
     char cmd[strlen(argv[1]) + 1];
@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
     if (strcmp(cmd, "news") == 0) {
         if (argc == 3 && strlen(argv[2]) <= 32 && strlen(argv[2]) > 1)
             news_print_top_three(argv[2]);
-        else printf("Invalid symbol.\n");
+        else puts("Invalid input.");
     }
 
         //Encrypt/decrypt
@@ -73,16 +73,16 @@ int main(int argc, char* argv[]) {
     else if (strcmp(cmd, "set") == 0)
         modop = SET;
 
-    else printf("Invalid arguments. Type \"man tick\" for help.\n");
+    else puts("Invalid arguments. Type \"man tick\" for help.");
 
     // Portfolio Operations
     if (modop > -1) {
         if (argc != 5)
-            printf("Invalid arguments. Type \"man tick\" for help.\n");
-        else if (strlen(argv[2]) > 16)
-            printf("Invalid symbol.\n");
+            puts("Invalid arguments. Type \"man tick\" for help.");
+        else if (strlen(sym) > 16)
+            puts("Invalid symbol.");
         else if (strlen(argv[3]) > 16 || strlen(argv[4]) > 16)
-            printf("Value too large.\n");
+            puts("Value too large.");
         else {
             double qty = strtod(argv[3], NULL);
             size_t ulen = strlen(argv[4]);
@@ -102,11 +102,7 @@ int main(int argc, char* argv[]) {
             if (ea)
                 usd *= qty;
 
-            if (modop == REMOVE)
-                portfolio_modify(sym, qty, usd, REMOVE);
-            else if (modop == ADD)
-                portfolio_modify(sym, qty, usd, ADD);
-            else portfolio_modify(sym, qty, usd, SET);
+            portfolio_modify(sym, qty, usd, modop);
         }
     }
     free(portfolio_file);

@@ -16,6 +16,11 @@
     goto cleanup;\
 }
 
+#define EXIT_MSG(msg) {\
+    puts(msg);\
+    exit(EXIT_FAILURE);\
+}
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

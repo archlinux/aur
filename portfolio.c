@@ -57,14 +57,14 @@ String* portfolio_file_get_string(char** password) {
 
 void portfolio_modify(const char* ticker_name_string, double quantity_shares, double usd_spent, int option) {
     if (quantity_shares < 0 || usd_spent < 0) // Negative numbers
-    RET_MSG("You must use positive values.")
+        RET_MSG("You must use positive values.")
 
     if (option != SET && quantity_shares == 0 && usd_spent == 0) // Adding or removing 0
-    RET_MSG("You cannot add or remove values of 0.")
+        RET_MSG("You cannot add or remove values of 0.")
 
     FILE* fp = fopen(portfolio_file, "a"); // Creates empty file if portfolio doesn't exist
     if (fp == NULL) // If file exists, but cannot be opened, usually because of permissions
-    RET_MSG("Error opening porfolio.")
+        RET_MSG("Error opening porfolio.")
 
     fclose(fp);
     char* password = NULL; // If portfolio is encrypted, store password when decrypting for re-encryption
@@ -82,12 +82,12 @@ void portfolio_modify(const char* ticker_name_string, double quantity_shares, do
     int index = portfolio_symbol_index(ticker_name_string, jobj);
     if (index == -1) { // If security is not already contained in portfolio
         if (option == REMOVE) // If trying to remove a security they don't own
-        GOTO_CLEAN_MSG("You don't have any of this security to remove")
+            GOTO_CLEAN_MSG("You don't have any of this security to remove")
 
         if (strcmp("USD$", ticker_name_string) != 0) { // Check that the symbol is valid, except if it's USD
             double* data = api_get_current_price(ticker_name_string);
             if (data == NULL) // If NULL response from APIs, it's invalid
-            GOTO_CLEAN_MSG("Invalid symbol.")
+                GOTO_CLEAN_MSG("Invalid symbol.")
             else free(data);
         }
 
@@ -117,7 +117,7 @@ void portfolio_modify(const char* ticker_name_string, double quantity_shares, do
             current_shares -= quantity_shares;
             current_spent -= usd_spent;
             if (current_shares < 0 || current_spent < 0) // If you try to remove more than you have
-            GOTO_CLEAN_MSG("You don't have enough of this security to remove.")
+                GOTO_CLEAN_MSG("You don't have enough of this security to remove.")
 
             printf("Removed %lf %s bought for %lf to portfolio.\n", quantity_shares, ticker_name_string, usd_spent);
         }
@@ -258,12 +258,10 @@ void portfolio_print_all(int SORT) {
     SD* sec_data;
     char loading_str[32];
     pthread_t threads[sda_data->length];
-    for (size_t i = 0; i < sda_data->length; i++) { // Create one thread per security to collect API data
-        if (pthread_create(&threads[i], NULL, portfolio_store_api_data, sda_data->sec_data[i])) {
-            fprintf(stderr, "Error creating thread!\n");
-            exit(EXIT_FAILURE);
-        }
-    }
+    for (size_t i = 0; i < sda_data->length; i++) // Create one thread per security to collect API data
+        if (pthread_create(&threads[i], NULL, portfolio_store_api_data, sda_data->sec_data[i]))
+            EXIT_MSG("Error creating thread!")
+
     for (size_t i = 0; i < sda_data->length; i++) {
         if (i > 0)
             for (size_t j = 0; j < strlen(loading_str); j++)
@@ -271,10 +269,9 @@ void portfolio_print_all(int SORT) {
         sprintf(loading_str, "(%d/%d)", (int) i + 1, (int) sda_data->length); // Format: (5/23)
         printf("%s", loading_str); // Print loading string
         fflush(stdout); // Flush because no newline
-        if (pthread_join(threads[i], NULL)) { // Wait for each thread to finish collecting API data
-            fprintf(stderr, "Error joining thread!\n");
-            exit(EXIT_FAILURE);
-        }
+        if (pthread_join(threads[i], NULL)) // Wait for each thread to finish collecting API data
+            EXIT_MSG("Error joining thread!")
+
         sec_data = sda_data->sec_data[i];
         total_owned += sec_data->current_value; // Add collected values to totals
         total_spent += sec_data->total_spent;
@@ -302,23 +299,20 @@ void portfolio_print_stock(const char* ticker_name_string) {
         return;
 
     SD* sec_data = NULL;
-    for (size_t i = 0; i < sda_data->length; i++) {
-        if (strcmp(sda_data->sec_data[i]->symbol, ticker_name_string) == 0) {
-            sec_data = sda_data->sec_data[i];
-            break;
-        }
-    }
-    if (sec_data == NULL) {
-        printf("Your portfolio does not contain any %s.\n", ticker_name_string);
-        sda_destroy(&sda_data);
-        return;
-    }
+    size_t i = 0;
+    while (i < sda_data->length && strcmp(sda_data->sec_data[i]->symbol, ticker_name_string) != 0)
+        i++;
+    if (i != sda_data->length)
+        sec_data = sda_data->sec_data[i];
+    else GOTO_CLEAN_MSG("Your portfolio does not contain any of this security.")
+
     portfolio_store_api_data(sec_data);
-    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)      7D       (%%)\n");
-    printf("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount,
+    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)      7D       (%%)\n"
+           "%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount,
            sec_data->symbol, sec_data->current_value, sec_data->total_spent, sec_data->total_profit,
            sec_data->total_profit_percent, sec_data->one_day_profit, sec_data->one_day_profit_percent,
            sec_data->seven_day_profit, sec_data->seven_day_profit_percent);
+    cleanup:
     sda_destroy(&sda_data);
 }
 
