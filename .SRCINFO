@@ -12,17 +12,12 @@ pkgbase = gdc-bin
 
 pkgname = gdc-bin
 	pkgdesc = Compiler for D programming language which uses gcc backend
-	depends = gcc=6.3.0
+	depends = gcc=$_gccver
 	depends = perl
 	depends = binutils
 	depends = libgphobos
 	provides = d-compiler=_dver
 	provides = gdc=6.3.0+2.068.2
-
-pkgname = gcc
-	pkgdesc = The GNU Compiler Collection - C and C++ frontends
-	provides = gcc=6.3.0
-	provides = gcc-libs=6.3.0
 
 pkgname = libgphobos
 	pkgdesc = Standard library for D programming language, GDC port

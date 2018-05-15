@@ -4,7 +4,7 @@ _target=$CARCH-unknown-linux-gnu
 _gccver=6.3.0
 _dver=2.068.2
 
-pkgname=('gdc-bin' 'gcc' 'libgphobos' 'libgphobos-lib32')
+pkgname=('gdc-bin' 'libgphobos' 'libgphobos-lib32') # gcc
 pkgver=$_gccver+$_dver
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums_i686=('cc8dcd66b189245e39296b1382d0dfcc')
 md5sums_x86_64=('16d3067ebb3938dba46429a4d9f6178f')
 
 package_gdc-bin() {
-	depends=('gcc=6.3.0' 'perl' 'binutils' 'libgphobos')
+	depends=('gcc=$_gccver' 'perl' 'binutils' 'libgphobos')
 	provides=("d-compiler=_dver" "gdc=$pkgver")
 	pkgdesc="Compiler for D programming language which uses gcc backend"
 
@@ -28,18 +28,18 @@ package_gdc-bin() {
 	install -D -m755 $srcdir/$_target/bin/gdmd $pkgdir/usr/bin/gdmd
 }
 
-package_gcc() {
-	pkgdesc="The GNU Compiler Collection - C and C++ frontends"
-	provides=("gcc=$_gccver" "gcc-libs=$_gccver")
-	
-	install -D -m755 $srcdir/$_target/bin/gcc $pkgdir/usr/bin/gcc-$_gccver
-	install -d -m644 $pkgdir/include/c++/$_gccver
-	cp -dr --no-preserve=ownership $srcdir/$_target/include/c++/$_gccver $pkgdir/include/c++/$_gccver
-	install -d -m644 $pkgdir/lib/gcc/$CHOST/$_gccver
-	cp -dr --no-preserve=ownership $srcdir/$_target/lib/gcc/$_target/$_gccver $pkgdir/lib/gcc/$CHOST/$_gccver
-	install -d -m644 $pkgdir/libexec/gcc/$CHOST/$_gccver
-	cp -dr --no-preserve=ownership $srcdir/$_target/libexec/gcc/$_target/$_gccver $pkgdir/libexec/gcc/$CHOST/$_gccver
-}
+#package_gcc() {
+#	pkgdesc="The GNU Compiler Collection - C and C++ frontends"
+#	provides=("gcc=$_gccver" "gcc-libs=$_gccver")
+#	
+#	install -D -m755 $srcdir/$_target/bin/gcc $pkgdir/usr/bin/gcc-$_gccver
+#	install -d -m644 $pkgdir/include/c++/$_gccver
+#	cp -dr --no-preserve=ownership $srcdir/$_target/include/c++/$_gccver $pkgdir/include/c++/$_gccver
+#	install -d -m644 $pkgdir/lib/gcc/$CHOST/$_gccver
+#	cp -dr --no-preserve=ownership $srcdir/$_target/lib/gcc/$_target/$_gccver $pkgdir/lib/gcc/$CHOST/$_gccver
+#	install -d -m644 $pkgdir/libexec/gcc/$CHOST/$_gccver
+#	cp -dr --no-preserve=ownership $srcdir/$_target/libexec/gcc/$_target/$_gccver $pkgdir/libexec/gcc/$CHOST/$_gccver
+#}
 
 package_libgphobos() {
 	pkgdesc="Standard library for D programming language, GDC port"
