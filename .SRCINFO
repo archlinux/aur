@@ -1,7 +1,7 @@
 pkgbase = network-manager-applet-git
 	pkgdesc = Applet for managing network connections
 	pkgver = 1.8.11.dev.r65.gf8fea28f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnome.org/projects/NetworkManager/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = network-manager-applet-git
 	makedepends = libsecret
 	makedepends = libnotify
 	makedepends = gtk3
-	makedepends = libmm
+	makedepends = libnm
 	makedepends = gtk-doc
 	makedepends = intltool
 	makedepends = gobject-introspection
@@ -30,7 +30,7 @@ pkgbase = network-manager-applet-git
 
 pkgname = nm-connection-editor-git
 	pkgdesc = NetworkManager GUI connection editor and widgets
-	provides = libnm-gtk=1.8.11.dev.r65.gf8fea28f-1
+	provides = libnm-gtk=1.8.11.dev.r65.gf8fea28f-2
 	provides = nm-connection-editor
 	conflicts = libnm-gtk
 	conflicts = nm-connection-editor
