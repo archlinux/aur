@@ -65,7 +65,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.16.8
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -86,11 +86,12 @@ source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        # gcc cpu optimizatons from graysky and ck; forked by sir_lucjan
+        # gcc cpu optimizatons from graysky and ck
         "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         # bfq-mq patch
         "${_lucjanpath}/${_bfq_mq_patch}"
         "${_lucjanpath}/0005-objtool-add-gcc8-support.patch"
+        "${_lucjanpath}/0006-include-linux-add-gcc8-support.patch"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
          # the main kernel config files
         'config'
@@ -113,6 +114,7 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '3518ed9db96d7fc94ed69988c51f58356ccb639e3590cda5946086ee8739bd97'
             '265d3610ab286d42456ace9b817da567a5e741321906f103c40c374db432884b'
+            'dcdf569053b086db277ff085390085592ef5b9c71980ee6d4093e2f92f537ef5'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             'c9f776f7c743f48c43aeaa18851bde39e98db663b3320030deb3740a369903cd'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -152,6 +154,7 @@ prepare() {
    ### Fix gcc8 bogus warnings
         msg "Fix gcc8 bogus warnings"
         patch -Np1 -i ../0005-objtool-add-gcc8-support.patch
+        patch -Np1 -i ../0006-include-linux-add-gcc8-support.patch
    
    ### Patch source with BFQ-SQ-MQ
         _ver="$(cat Makefile | grep -m1 -e SUBLEVEL | grep -o "[[:digit:]]*")"
