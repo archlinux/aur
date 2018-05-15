@@ -1,14 +1,14 @@
 # Maintainer: Danilo Pianini
 
 pkgname=opencorsairlink-git
-pkgver=20171203
+pkgver=20180513
 pkgrel=1
 pkgdesc="Linux® support for Corsair H100i and other water coolers of the same brand."
 arch=('x86_64')
 url="https://github.com/audiohacked/OpenCorsairLink"
 license=('GPL')
 depends=(libusb)
-makedepends=(git libdrm)
+makedepends=(git libdrm pkg-config)
 #install=$pkgname.install
 #changelog=$pkgname.Changelog
 source=(git+https://github.com/audiohacked/OpenCorsairLink)
@@ -24,6 +24,7 @@ pkgver() {
 build() {
 	pwd
 	cd $srcdir/OpenCorsairLink
+	git checkout master
 	pwd
 	echo $LDFLAGS
 	export LDFLAGS="$LDFLAGS -lm"
