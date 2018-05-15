@@ -11,6 +11,8 @@ pkgbase = perl6-digest-xxhash
 	depends = libxxhash
 	depends = perl6
 	source = perl6-digest-xxhash-1.0.1::git+https://github.com/atweiden/digest-xxhash
+	source = git+https://github.com/atweiden/digest-xxhash.wiki
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = perl6-digest-xxhash
