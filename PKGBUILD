@@ -5,14 +5,14 @@ pkgver=4.0.3
 pkgrel=3
 pkgdesc="Find duplicate files on your system"
 arch=(any)
-url="http://www.hardcoded.net/dupeguru/"
+url="https://dupeguru.voltaicideas.net/"
 license=('BSD')
 depends=('python' 'python-pyqt5' 'libxkbcommon-x11' 'python-polib' 'python-send2trash' 'python-hsaudiotag3k')
 makedepends=(
     python-sphinx
 )
 source=(
-    http://download.hardcoded.net/$pkgname-src-$pkgver.tar.gz
+    https://download.hardcoded.net/$pkgname-src-$pkgver.tar.gz
 )
 md5sums=(
 'ed3b4a049c436cacb0a068438a8d6131'
