@@ -1,0 +1,14 @@
+pkgbase = samus-scripts
+	pkgdesc = A collection of scripts for the Chromebook Pixel (2015), codename Samus.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/christianbundy/samus-scripts
+	arch = x86_64
+	license = GPL2
+	depends = bash
+	optdepends = mxt-app
+	source = https://gitlab.com/christianbundy/samus-scripts/-/archive/v1.0.0/samus-scripts-v1.0.0.tar.gz
+	md5sums = 96d50a3a9d92a4dc6e198cc3690ebab5
+
+pkgname = samus-scripts
+
