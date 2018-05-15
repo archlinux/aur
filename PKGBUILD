@@ -5,7 +5,7 @@
 
 pkgbase=linux-x205ta
 _srcname=linux-4.16
-pkgver=4.16.3
+pkgver=4.16.8
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -22,9 +22,6 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   0003-Partially-revert-swiotlb-remove-various-exports.patch
-  0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
-  0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
-  0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
 
   https://raw.githubusercontent.com/harryharryharry/x205ta-iso2usb-files/master/brcmfmac43340-sdio.txt
   https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/i915-pm-Be-less-agressive-with-clockfreq-changes-on-Bay-Trail.patch
@@ -47,18 +44,15 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '336252cb15f2f2574461c1d3daabf5dc207842526085802270e1e5223f645db3'
+            '6fb2db1e38f762e6a028dfa5e6d094f0eb4324572667923aca3d64c87117772d'
             'SKIP'
-            'd88d7c7ae37de3d1a24e982a331acc47d657e2ef0bf6b55c1859b9f0f6df9137'
+            '171496fbf6c45a244dbd7fdd4d1d9db2183500daa82b96091d149f627e1009a3'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'a6119b46856ed2652c509fed380052e6df2be89c69a0d748cf7d8745bf35b871'
-            '545566a7358d711b8d4f9924df685e2410549e20d99e5d1c0dfaccdfeafda60d'
-            'bef6dd7b3a749ec072614ea4ed0bd5ea1d90519731f3438e4938d5b957032cc5'
-            'd647211e288436bcc010019a69f4ebf9a94c33b423c650aea8098969208ec836'
-            '6fb4fb81dab69ff432767e02585b3eb6a5a39c941e4bc2a6d4940ee17116c14e'
-            'd49a70d3b3f60c81d93735871f01ea60cafca87588d8d0d01801b2aec92e0e93'
+            '7fb607fe384dd814e9e45d7fc28f7b5b23a51d80784c54bf9209486ad428be14'
+            'ceaa19e0af3842c62eb666a4ac5c79d89b3e6d00593442f18d6508ca6d74bbaa'
+            '5b397cf9eccdad0c1f2865842c29ba6f4e32ad7dbe4e0c6ef6ca6f07d2963cea'
             'aea75c0b07673f701856e3c2a35db33c041fdaf0bd5ef2927fb25b1bce2c2b62'
             '5ad7e021452deffd387a5b81abcd0f608f8141eaab56fbdd162ca0b7966fc3b4'
             '3845aeb3744372b716c668283b23972d76e482d8c69b107e13a13669e5671d06'
@@ -86,15 +80,6 @@ prepare() {
 
   # NVIDIA driver compat
   patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
-
-  # https://bugs.archlinux.org/task/58153
-  patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
-
-  # https://bugs.archlinux.org/task/58158
-  patch -Np1 -i ../0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
-
-  # https://bugs.archlinux.org/task/58174
-  patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
 
   # Here start x205ta patches
   # Refer to https://github.com/harryharryharry/x205ta-patches for harryharryharry's gathered patches
