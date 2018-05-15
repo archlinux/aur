@@ -2,17 +2,17 @@
 
 pkgname=abricotine
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor with inline preview"
 arch=('x86_64')
 url="http://abricotine.brrd.fr"
 license=('GPL3')
-depends=('gconf')
+depends=('gconf' 'libxss')
 makedepends=('npm')
-source=("https://github.com/brrd/${pkgname}/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brrd/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop")
 sha256sums=('3725dfe19bc71e3dbd6040ba323999da8c24a3a68100f468ff8d77f627301f74'
-            'dba9226026a0afb735428bb3203360365939b1c802a120b616038edadea752f4')
+            '164d0042ffe461ca0418709a59be29b433055589b661be4d6555c07df42b383c')
 
 build() {
   cd "${srcdir}/${pkgname^}-${pkgver}"
