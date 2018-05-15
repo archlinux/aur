@@ -16,7 +16,7 @@ pkgname = gdc-bin
 	depends = perl
 	depends = binutils
 	depends = libgphobos
-	provides = d-compiler=_dver
+	provides = d-compiler=2.068.2
 	provides = gdc=6.3.0+2.068.2
 
 pkgname = libgphobos-lib32

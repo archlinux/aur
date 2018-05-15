@@ -17,7 +17,7 @@ md5sums_x86_64=('16d3067ebb3938dba46429a4d9f6178f')
 
 package_gdc-bin() {
 	depends=("gcc=$_gccver" 'perl' 'binutils' 'libgphobos')
-	provides=("d-compiler=_dver" "gdc=$pkgver")
+	provides=("d-compiler=$_dver" "gdc=$pkgver")
 	pkgdesc="Compiler for D programming language which uses gcc backend"
 
 	# compiler
