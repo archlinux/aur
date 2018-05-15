@@ -3,8 +3,8 @@
 
 pkgname=corosync-git
 _pkgname=corosync
-pkgver=2.4.4.r0.gb25b029f
-pkgrel=3
+pkgver=2.4.4.r8.g9c2a97f4
+pkgrel=1
 pkgdesc="Cluster engine for nodal communication systems with additional features for implementing high availability within applications."
 arch=('i686' 'x86_64')
 url="http://www.corosync.org/"
