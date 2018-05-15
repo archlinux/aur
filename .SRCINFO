@@ -1,13 +1,13 @@
 pkgbase = ms-office-online
 	pkgdesc = Microsoft Office Suite Online
-	pkgver = 18.04.1
+	pkgver = 18.04.4
 	pkgrel = 1
 	url = https://github.com/manjaro/ms-office-online-launcher
 	arch = any
 	license = GPL3
 	depends = jade-application-kit-git
-	source = https://github.com/manjaro/ms-office-online-launcher/archive/18.04.1.zip
-	sha512sums = 8f4f444c0cf885fcff64c2c4316e9643da0257d627a439fb391231ddcff5921610ef7afe1b3eb01ef632a4529e07d5fc5f91e687ddc6f886251fa220dee1bccb
+	source = https://github.com/manjaro/ms-office-online-launcher/archive/18.04.4.zip
+	sha512sums = 689b2609679a74f03704de4a3de6b3b9c87d328df1f3d966a6245eb940387a5383fd63a3add5fd480b99d2feddcde006a49d9fdb988cc7df65555fae2a0ad811
 
 pkgname = ms-office-online
 
