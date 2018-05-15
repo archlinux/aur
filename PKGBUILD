@@ -2,7 +2,7 @@
 # Contributor: andmars <andreas.marschall @ unitybox.de>
 # Contributor: SaThaRiel <sathariel74[at] gmail[dot]com>
 pkgname=angband-git
-pkgver=4.1.2.r5.g937dd435
+pkgver=4.1.2.r17.g92b8ebe4
 pkgrel=1
 pkgdesc="A roguelike dungeon-exploration game based on Tolkien's books"
 arch=('i686' 'x86_64')
@@ -22,6 +22,9 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   ./autogen.sh
+
+  # Fix detection of ncurses config script for ncurses 6.0
+  sed -i 's/ncursesw5-config/ncursesw6-config/g' acinclude.m4
 }
 
 build() {
@@ -30,6 +33,9 @@ build() {
     --prefix=/usr \
     --bindir=/usr/bin/ \
     --sysconfdir=/usr/share/angband \
+    --with-configpath=/usr/share/angband \
+    --with-libpath=/usr/share/angband \
+    --enable-gtk \
     --enable-sdl \
     --enable-sdl-mixer
   make
