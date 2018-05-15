@@ -2,6 +2,7 @@ pkgbase = decred-git
 	pkgver = 20180427
 	pkgrel = 1
 	url = https://decred.org
+	arch = aarch64
 	arch = armv6h
 	arch = armv7h
 	arch = i686
