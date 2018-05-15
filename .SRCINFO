@@ -19,6 +19,11 @@ pkgname = gdc-bin
 	provides = d-compiler=2.068.2
 	provides = gdc=6.3.0+2.068.2
 
+pkgname = gdc-gcc
+	pkgdesc = The GNU Compiler Collection - C and C++ frontends (from GDC, gdcproject.org)
+	provides = gcc=6.3.0
+	provides = gcc-libs=6.3.0
+
 pkgname = libgphobos-lib32
 	pkgdesc = Standard library for D programming language, GDC port
 	provides = d-runtime-lib32

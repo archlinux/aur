@@ -4,7 +4,7 @@ _target=$CARCH-unknown-linux-gnu
 _gccver=6.3.0
 _dver=2.068.2
 
-pkgname=('gdc-bin' 'libgphobos-lib32') # gcc, libgphobos
+pkgname=('gdc-bin' 'gdc-gcc' 'libgphobos-lib32') # libgphobos
 pkgver=$_gccver+$_dver
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -22,24 +22,30 @@ package_gdc-bin() {
 
 	# compiler
 	install -D -m755 $srcdir/$_target/bin/gdc $pkgdir/usr/bin/gdc
-	install -D -m755 $srcdir/$_target/libexec/gcc/$_target/$_gccver/cc1d $pkgdir/lib/gcc/$CHOST/cc1d
+	install -D -m755 $srcdir/$_target/libexec/gcc/$_target/$_gccver/cc1d $pkgdir/usr/lib/gcc/$CHOST/cc1d
 
 	# tools
 	install -D -m755 $srcdir/$_target/bin/gdmd $pkgdir/usr/bin/gdmd
 }
 
-#package_gcc() {
-#	pkgdesc="The GNU Compiler Collection - C and C++ frontends"
-#	provides=("gcc=$_gccver" "gcc-libs=$_gccver")
-#	
-#	install -D -m755 $srcdir/$_target/bin/gcc $pkgdir/usr/bin/gcc-$_gccver
-#	install -d -m644 $pkgdir/include/c++/$_gccver
-#	cp -dr --no-preserve=ownership $srcdir/$_target/include/c++/$_gccver $pkgdir/include/c++/$_gccver
-#	install -d -m644 $pkgdir/lib/gcc/$CHOST/$_gccver
-#	cp -dr --no-preserve=ownership $srcdir/$_target/lib/gcc/$_target/$_gccver $pkgdir/lib/gcc/$CHOST/$_gccver
-#	install -d -m644 $pkgdir/libexec/gcc/$CHOST/$_gccver
-#	cp -dr --no-preserve=ownership $srcdir/$_target/libexec/gcc/$_target/$_gccver $pkgdir/libexec/gcc/$CHOST/$_gccver
-#}
+package_gdc-gcc() {
+	pkgdesc="The GNU Compiler Collection - C and C++ frontends (from GDC, gdcproject.org)"
+	provides=("gcc=$_gccver" "gcc-libs=$_gccver")
+
+	install -D -m755 $srcdir/$_target/bin/c++ $pkgdir/usr/bin/gdc-c++
+	install -D -m755 $srcdir/$_target/bin/cc $pkgdir/usr/bin/gdc-cc
+	install -D -m755 $srcdir/$_target/bin/cpp $pkgdir/usr/bin/gdc-cpp
+	install -D -m755 $srcdir/$_target/bin/g++ $pkgdir/usr/bin/gdc-g++
+	install -D -m755 $srcdir/$_target/bin/gcc $pkgdir/usr/bin/gdc-gcc
+	install -D -m755 $srcdir/$_target/bin/gcov $pkgdir/usr/bin/gdc-gcov
+	install -D -m755 $srcdir/$_target/bin/gcov-tool $pkgdir/usr/bin/gdc-gcov-toll
+	install -d -m644 $pkgdir/usr/include/c++/$_gccver
+	cp -dr --no-preserve=ownership $srcdir/$_target/include/c++/$_gccver $pkgdir/usr/include/c++
+	install -d -m644 $pkgdir/usr/lib/gcc/$CHOST/$_gccver
+	cp -dr --no-preserve=ownership $srcdir/$_target/lib/gcc/$_target/$_gccver $pkgdir/usr/lib/gcc/$CHOST
+	install -d -m644 $pkgdir/usr/libexec/gcc/$CHOST/$_gccver
+	cp -dr --no-preserve=ownership $srcdir/$_target/libexec/gcc/$_target/$_gccver $pkgdir/usr/libexec/gcc/$CHOST
+}
 
 #package_libgphobos() {
 #	pkgdesc="Standard library for D programming language, GDC port"
