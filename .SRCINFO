@@ -1,0 +1,16 @@
+pkgbase = j2534-git
+	pkgdesc = j2534 driver for linux
+	pkgver = r9.5ffb718
+	pkgrel = 1
+	url = https://github.com/NikolaKozina/j2534
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = libusb
+	provides = j2534
+	conflicts = j2534
+	source = j2534::git+https://github.com/NikolaKozina/j2534
+	md5sums = SKIP
+
+pkgname = j2534-git
+
