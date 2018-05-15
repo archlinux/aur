@@ -1,14 +1,14 @@
 pkgbase = linuxptp
 	pkgdesc = An implementation of the Precision Time Protocol (PTP) according to IEEE standard 1588 for Linux.
-	pkgver = 1.8
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = http://linuxptp.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = https://sourceforge.net/projects/linuxptp/files/linuxptp-1.8.tgz/download
-	md5sums = 5688cdfe57932273e1dbf35b3b97b9a0
+	source = https://sourceforge.net/projects/linuxptp/files/linuxptp-1.9.2.tgz/download
+	md5sums = 7c6672c59b888fa92ffd31398221b243
 
 pkgname = linuxptp
 
