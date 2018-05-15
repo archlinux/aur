@@ -1,0 +1,13 @@
+pkgbase = gtk-theme-windows-longhorn-git
+	pkgdesc = Longhorn beta themes
+	pkgver = r95.8afdf4f
+	pkgrel = 1
+	url = https://github.com/Elbullazul/Longhorn-Collaboration
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/Elbullazul/Longhorn-Collaboration.git
+	md5sums = SKIP
+
+pkgname = gtk-theme-windows-longhorn-git
+
