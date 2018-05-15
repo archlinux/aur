@@ -17,7 +17,7 @@
 }
 
 #define EXIT_MSG(msg) {\
-    puts(msg);\
+    fprintf(stderr, "%s\n", msg);\
     exit(EXIT_FAILURE);\
 }
 
@@ -26,12 +26,10 @@
 #include <string.h>
 #include <ctype.h>
 
-struct string {
+typedef struct string {
     char* data;
     size_t len;
-};
-
-typedef struct string String;
+} String;
 
 typedef struct json_object Json;
 

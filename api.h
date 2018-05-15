@@ -16,7 +16,7 @@
 #include <json-c/json_tokener.h>
 #include "string-tick.h"
 
-struct info {
+typedef struct info {
     char* name; // Name of security (ex. Apple Inc.)
     char* symbol; // Symbol of security (ex. AAPL)
     double price; // Current price of security in USD (ex. 174.54)
@@ -24,9 +24,7 @@ struct info {
     double div_yield; // Percent dividend yield (ex. 1.46)
     long marketcap; // Market cap in USD (ex. 890489000000)
     long volume_1d; // Volume in shares of security (ex. 33812360)
-};
-
-typedef struct info Info;
+} Info;
 
 /**
  * Creates and returns an Info object. name and symbol are allocated 64 bytes. the doubles and long are set to EMPTY

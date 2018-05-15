@@ -17,27 +17,20 @@
 #define SORT_PROFIT_1D 3
 #define SORT_PROFIT_7D 4
 
-struct security_data {
+typedef struct security_data {
     char symbol[32];
     double amount;
     double total_spent;
     double current_value;
-    double total_profit;
-    double total_profit_percent;
-    double one_day_profit;
-    double one_day_profit_percent;
-    double seven_day_profit;
-    double seven_day_profit_percent;
-};
+    double total_profit, total_profit_percent;
+    double one_day_profit, one_day_profit_percent;
+    double seven_day_profit, seven_day_profit_percent;
+} SD;
 
-typedef struct security_data SD;
-
-struct security_data_array {
+typedef struct security_data_array {
     SD** sec_data;
     size_t length; // Elements in array
-};
-
-typedef struct security_data_array SDA;
+} SDA;
 
 extern char* portfolio_file;
 

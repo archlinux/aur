@@ -157,8 +157,9 @@ double* coinmarketcap_get_price(const char* ticker_name_string) {
 }
 
 double* api_get_hist_5y(const char* ticker_name_string) {
-    double* val;
-    val = iex_get_hist_5y(ticker_name_string); // First tries IEX
+    if (strlen(ticker_name_string) > 5) // Cryptocurrency
+        return NULL;
+    double* val = iex_get_hist_5y(ticker_name_string); // First tries IEX
     if (val != NULL)
         return val;
     val = morningstar_get_hist_5y(ticker_name_string); // Secondly tries Morningstar
@@ -179,11 +180,8 @@ double* iex_get_hist_5y(const char* ticker_name_string) {
     size_t len = json_object_array_length(jobj);
     double* api_data = calloc(len + 1, sizeof(double));
     pointer_alloc_check(api_data);
-    Json* temp;
-    for (int i = 0; i < (int) len; i++) {
-        temp = json_object_array_get_idx(jobj, (size_t) i);
-        api_data[i] = json_object_get_double(json_object_object_get(temp, "close"));
-    }
+    for (size_t i = 0; i < len; i++)
+        api_data[i] = json_object_get_double(json_object_object_get(json_object_array_get_idx(jobj, i), "close"));
     json_object_put(jobj);
     string_destroy(&pString);
     return api_data;

@@ -34,6 +34,8 @@ char* strip_char(char* string, char c) {
 
 void string_write_portfolio(String* pString) {
     FILE* fp = fopen(portfolio_file, "w");
+    if (fp == NULL)
+        RET_MSG("Error opening file.")
     if (fwrite(pString->data, sizeof(char), pString->len, fp) != pString->len)
         puts("Error writing file.");
     fclose(fp);
@@ -47,8 +49,6 @@ void string_destroy(String** phString) {
 }
 
 void pointer_alloc_check(void* alloced) {
-    if (alloced == NULL) {
-        fprintf(stderr, "alloc failed!\n");
-        exit(EXIT_FAILURE);
-    }
+    if (alloced == NULL)
+        EXIT_MSG("alloc failed!")
 }

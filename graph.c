@@ -1,16 +1,11 @@
 #include "graph.h"
 
-int zoom_months[9], zoom_change_x_months[9];
+int zoom_months[] = {60, 48, 36, 24, 12, 9, 6, 3, 1}, zoom_change_x_months[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
 
 void graph_main(const char* ticker_name_string) {
     double* price_data = api_get_hist_5y(ticker_name_string);
     if (price_data == NULL)  // If invalid symbol or cryptocurrency
         RET_MSG("Invalid symbol.")
-
-    int temp[] = {60, 48, 36, 24, 12, 9, 6, 3, 1};
-    memcpy(zoom_months, temp, sizeof(zoom_months));
-    int temp2[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
-    memcpy(zoom_change_x_months, temp2, sizeof(zoom_change_x_months));
 
     initscr();
     noecho(); // Don't echo keystrokes
@@ -34,11 +29,7 @@ void graph_main(const char* ticker_name_string) {
 
     graph_print(price_data, &start_date, zoom); // Initial graph of 5 year history
 
-    while (1) { // Main input loop
-        ch = getch();
-        if (ch == 'q') // Quits program on "q"
-            break;
-
+    while ((ch = getch()) != 'q') { // Main input loop -- end if keypress 'q'
         if ((ch == KEY_UP && zoom != ZOOM_1m) || (ch == KEY_DOWN && zoom != ZOOM_5y) ||
             (zoom != ZOOM_5y && (ch == KEY_LEFT || ch == KEY_RIGHT))) { // UP / DOWN / LEFT / RIGHT
             if (ch == KEY_UP) {
@@ -76,6 +67,7 @@ void graph_print(const double* points, struct tm* start_time, int zoom) {
     int cols, rows;
     getmaxyx(stdscr, rows, cols);
     cols -= 11; // 10 offset to give space for graph labels + 1 for right side
+    rows -= 3; // Make space for zoom indicator
     rows -= rows % ROWS_SPACING; // Round down to multiple of 5
     if (cols < 10 || rows < 10) // Exits if the terminal is too small
         RET_MSG("Terminal not large enough.")
