@@ -1,0 +1,20 @@
+diff -up src/booth-1.0/src/ticket.c.orig src/booth-1.0/src/ticket.c
+--- src/booth-1.0/src/ticket.c.orig	2018-05-15 14:14:26.000000000 -0600
++++ src/booth-1.0/src/ticket.c	2018-05-15 14:15:31.000000000 -0600
+@@ -508,14 +508,14 @@ static void log_reacquire_reason(struct
+ {
+ 	int valid;
+ 	const char *where_granted = "\0";
+-	char buff[64];
++	char buff[80];
+ 
+ 	valid = is_time_set(&tk->term_expires) && !is_past(&tk->term_expires);
+ 
+ 	if (tk->leader == local) {
+ 		where_granted = "granted here";
+ 	} else {
+-		snprintf(buff, sizeof(buff), "granted to %s",
++		snprintf(buff, sizeof(buff) - 1, "granted to %s",
+ 			site_string(tk->leader));
+ 		where_granted = buff;
+ 	}

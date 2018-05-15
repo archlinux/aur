@@ -1,0 +1,20 @@
+pkgbase = booth
+	pkgdesc = RAFT cluster ticket manager for pacemaker
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ClusterLabs/booth/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = pacemaker
+	optdepends = pcs: for cluster shell support
+	optdepends = crmsh: for cluster shell support
+	source = booth-1.0.tar.gz::https://github.com/ClusterLabs/booth/archive/v1.0.tar.gz
+	source = pcs.patch::https://patch-diff.githubusercontent.com/raw/ClusterLabs/booth/pull/41.patch
+	source = bufoverflow.patch
+	sha512sums = 0024f3dc0d15830a5835d5366b01d8700a391005c9ae1ee1ae8d970383d6d5d78e78bcac86610f65301c9441b452dce16d8c736d2363e6577c38dac928b576a8
+	sha512sums = 5b6297c444ef326c59705170717865572812639f8a9c6e23a02b73234ae6edd23b9337b9284fa12ae489f3a599fe538dd92c26db12a011ca0eac09c2b15289cb
+	sha512sums = b8bb3c1ac4b7778ff019855b342a76847a909485b9f5b723f37298e1b049dc5ef0351f649f378926f8a62c5a0db50508e6b25c74f7add8bd4244a11976d1f962
+
+pkgname = booth
+
