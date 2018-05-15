@@ -1,0 +1,23 @@
+pkgbase = viur-control
+	pkgdesc = A multi-platform GUI for managing Google App Engine projects
+	pkgver = 0.31.0
+	pkgrel = 1
+	url = https://github.com/viur-framework/control
+	arch = x86_64
+	license = GPLv3
+	makedepends = npm
+	makedepends = nodejs-lts-carbon
+	depends = git
+	depends = curl
+	depends = python2
+	depends = python2-pillow
+	depends = python2-pip
+	depends = python2-setuptools
+	optdepends = google-cloud-sdk: Google Cloud SDK.
+	source = https://github.com/viur-framework/control/archive/0.31.0.tar.gz
+	source = viur-control.desktop
+	md5sums = c6e19918e5713b88de1812d9d5589ec2
+	md5sums = aa71f12fbcdcf4d3c3376f42b07af942
+
+pkgname = viur-control
+

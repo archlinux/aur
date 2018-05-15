@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ViUR Control
+Comment=The better Google App Engine launcher
+Exec=/usr/bin/viur-control %U
+Terminal=false
+Type=Application
+Icon=/opt/viur-control/viur-control.png
+Categories=Development;
