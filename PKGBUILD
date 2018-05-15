@@ -5,14 +5,14 @@
 
 pkgbase=network-manager-applet-git
 pkgname=(nm-connection-editor-git network-manager-applet-git)
-pkgver=1.8.11.dev.r43.gb09a95c6
+pkgver=1.8.11.dev.r65.gf8fea28f
 pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url="http://www.gnome.org/projects/NetworkManager/"
-depends=(libnm-glib-git libgudev gtk3 mobile-broadband-provider-info iso-codes)
-makedepends=(meson libsecret libnotify libmm-glib intltool gobject-introspection git)
+depends=(libnm gcr libgudev gtk3 mobile-broadband-provider-info libnm-git iso-codes)
+makedepends=(meson libsecret libnotify gtk3 libmm gtk-doc intltool gobject-introspection git)
 options=('emptydirs')
 source=(git://git.gnome.org/network-manager-applet)
 sha256sums=('SKIP')
@@ -33,12 +33,13 @@ build() {
 	cd $srcdir/network-manager-applet
 	
 	arch-meson build \
-		-Dgtk_doc=true \
+	-Dgtk_doc=true \
+	-Dlibnm_gtk=false \
     -Dintrospection=true \
     -Dld_gc=true \
     -Dteam=true \
     -Dwwan=true \
-    -Dappindicator=false \
+    -Dappindicator=no \
     -Dselinux=false \
     -Db_lto=false
 
