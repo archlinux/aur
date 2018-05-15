@@ -4,7 +4,7 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=yabasic
-pkgver=2.79.0
+pkgver=2.79.2
 pkgrel=1
 pkgdesc="Yet Another Basic"
 arch=('i686' 'x86_64')
@@ -33,3 +33,4 @@ package() {
 }
 
 
+sha256sums=('9a819c570fe3986f14ec6b718f6eafb7caa627d192e22a865dcfe50b0ae2b175')
