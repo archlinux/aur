@@ -1,7 +1,7 @@
 # Maintainer: Felix Seidel <felix@seidel.me>
 
 pkgname=1password-cli
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="1Password command line tool"
 arch=('x86_64' 'i686' 'arm')
@@ -13,9 +13,9 @@ source_x86_64=("https://cache.agilebits.com/dist/1P/op/pkg/v$pkgver/op_linux_amd
 source_i686=("https://cache.agilebits.com/dist/1P/op/pkg/v$pkgver/op_linux_386_v$pkgver.zip")
 source_arm=("https://cache.agilebits.com/dist/1P/op/pkg/v$pkgver/op_linux_arm_v$pkgver.zip")
 
-sha256sums_x86_64=('421ca41fa376a6a6bc8e314c83959872e4658c5fbd3a20c0bf83a50922326b0b')
-sha256sums_i686=('e0ac90259ec0e49b517ca2afd3122523553c98f186af2f1fa0dfa18a989f3d43')
-sha256sums_arm=('0c32633587325e3874c19ba5e6e658eb1ba8b3354c15c3c9da3f9d9ef849d8ca')
+sha256sums_x86_64=('997676a84931b0206e9dcbb387bd58610d53272a961bc7f955c23debf8f7e474')
+sha256sums_i686=('334a5370f134bc904507d6142903d74c43fa240f70f28ad978bbc81cf6f36fd5')
+sha256sums_arm=('eded6146a8520dacee803c3b878a16694c5a95df6db4dea1ff2a017b4468d3f8')
 
 check() {
   gpg --verify-files ${srcdir}/op.sig
