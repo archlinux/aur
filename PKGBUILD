@@ -4,7 +4,7 @@ _target=$CARCH-unknown-linux-gnu
 _gccver=6.3.0
 _dver=2.068.2
 
-pkgname=('gdc-bin' 'libgphobos' 'libgphobos-lib32') # gcc
+pkgname=('gdc-bin' 'libgphobos-lib32') # gcc, libgphobos
 pkgver=$_gccver+$_dver
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -41,17 +41,17 @@ package_gdc-bin() {
 #	cp -dr --no-preserve=ownership $srcdir/$_target/libexec/gcc/$_target/$_gccver $pkgdir/libexec/gcc/$CHOST/$_gccver
 #}
 
-package_libgphobos() {
-	pkgdesc="Standard library for D programming language, GDC port"
-	provides=("d-runtime" "d-stdlib")
-	
-	install -D -m644 $srcdir/$_target/lib64/libgphobos.so $pkgdir/usr/lib/libgphobos.so
-	install -D -m644 $srcdir/$_target/lib64/libgphobos.so $pkgdir/usr/lib/libgphobos.so.68
-	install -D -m644 $srcdir/$_target/lib64/libgphobos.so $pkgdir/usr/lib/libgphobos.so.68.0.2
-	install -D -m644 $srcdir/$_target/lib64/libgphobos.so $pkgdir/usr/lib/libgphobos.spec
-	install -D -m644 $srcdir/$_target/lib64/libgphobos.so $pkgdir/usr/lib/libgphobos.a
-	install -D -m644 $srcdir/$_target/lib64/libgphobos.so $pkgdir/usr/lib/libgphobos.la
-}
+#package_libgphobos() {
+#	pkgdesc="Standard library for D programming language, GDC port"
+#	provides=("d-runtime" "d-stdlib")
+#	
+#	install -D -m644 $srcdir/$_target/lib64/libgphobos.so $pkgdir/usr/lib/libgphobos.so
+#	install -D -m644 $srcdir/$_target/lib64/libgphobos.so $pkgdir/usr/lib/libgphobos.so.68
+#	install -D -m644 $srcdir/$_target/lib64/libgphobos.so $pkgdir/usr/lib/libgphobos.so.68.0.2
+#	install -D -m644 $srcdir/$_target/lib64/libgphobos.so $pkgdir/usr/lib/libgphobos.spec
+#	install -D -m644 $srcdir/$_target/lib64/libgphobos.so $pkgdir/usr/lib/libgphobos.a
+#	install -D -m644 $srcdir/$_target/lib64/libgphobos.so $pkgdir/usr/lib/libgphobos.la
+#}
 
 package_libgphobos-lib32() {
 	pkgdesc="Standard library for D programming language, GDC port"

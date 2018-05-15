@@ -19,11 +19,6 @@ pkgname = gdc-bin
 	provides = d-compiler=_dver
 	provides = gdc=6.3.0+2.068.2
 
-pkgname = libgphobos
-	pkgdesc = Standard library for D programming language, GDC port
-	provides = d-runtime
-	provides = d-stdlib
-
 pkgname = libgphobos-lib32
 	pkgdesc = Standard library for D programming language, GDC port
 	provides = d-runtime-lib32
