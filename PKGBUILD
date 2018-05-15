@@ -11,7 +11,7 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-glib-git libnm-git)
-pkgver=1.11.2.r19808.ga18758522
+pkgver=1.11.3.r20184.gc905ee94f
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
@@ -21,8 +21,8 @@ depends=(dbus-glib libmm-glib libndp libnewt libnl libsoup libteam libutil-linux
     nss polkit wpa_supplicant)
 checkdepends=(libx11 python-dbus)
 _pppver=2.4.7
-makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
-             dbus-glib iproute2 nss polkit wpa_supplicant libsoup systemd libgudev libmm-glib
+makedepends=(meson ninja intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
+             dbus-glib iproute2 nss polkit wpa_supplicant iwd libsoup systemd libgudev libmm-glib
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
              glib2-docs)
 optdepends=( 'iwd: alternative way to connect to wifi'
@@ -58,83 +58,74 @@ pkgver() {
 
 prepare() {
      mkdir -p libnm{,-glib}/usr/{include,lib/{girepository-1.0,pkgconfig},share/{gir-1.0,gtk-doc/html,vala/vapi}}
-    cd $pkgname/
-    NOCONFIGURE=1 ./autogen.sh
+	 NOCONFIGURE=1 $srcdir/$pkgname/autogen.sh
 }
 
 build() {
     cd $pkgname/
-    ./configure \
-    --sysconfdir=/etc \
-    --prefix=/usr \
-    --localstatedir=/var \
-    runstatedir=/run \
-    --sbindir=/usr/bin \
-    --libexecdir=/usr/lib/NetworkManager \
-    --disable-ifcfg-rh \
-    --disable-ifcfg-suse \
-    --disable-ifnet \
-    --disable-ifupdown \
-    --disable-lto \
-    --disable-more-warnings \
-    --disable-static \
-    --enable-bluez5-dun \
-    --enable-concheck \
-    --enable-config-plugin-ibft \
-    --enable-gtk-doc \
-    --enable-introspection \
-    --enable-json-validation \
-    --enable-ld-gc \
-    --enable-modify-system \
-    --enable-polkit \
-    --enable-polkit-agent \
-    --enable-teamdctl \
-    --enable-wifi \
-    --with-config-dhcp-default=internal \
-    --with-config-dns-rc-manager-default=resolvconf \
-    --with-config-logging-backend-default=journal \
-    --with-config-plugins-default=keyfile,ibft \
-    --with-crypto=nss \
-    --with-dbus-sys-dir=/usr/share/dbus-1/system.d \
-    --with-dhclient=/usr/bin/dhclient \
-    --with-dist-version="$pkgver, Arch Linux" \
-    --with-dnsmasq=/usr/bin/dnsmasq \
-    --with-dnssec-trigger=/usr/lib/dnssec-trigger \
-    --with-hostname-persist=default \
-    --with-iptables=/usr/bin/iptables \
-    --with-kernel-firmware-dir=/usr/lib/firmware \
-    --with-libnm-glib \
-    --with-libsoup \
-    --with-modem-manager-1 \
-    --with-nmcli \
-    --with-nmtui \
-    --with-pppd-plugin-dir=/usr/lib/pppd/$_pppver \
-    --with-pppd=/usr/bin/pppd \
-    --with-resolvconf=/usr/bin/resolvconf \
-    --with-session-tracking=systemd \
-    --with-suspend-resume=systemd \
-    --with-system-ca-path=/etc/ssl/certs \
-    --with-systemd-journal \
-    --with-systemd-logind \
-    --with-systemdsystemunitdir=/usr/lib/systemd/system \
-    --with-udev-dir=/usr/lib/udev \
-    --with-wext \
-    --without-consolekit \
-    --without-dhcpcd \
-    --without-libaudit \
-    --without-netconfig \
-    --without-ofono \
-    --without-selinux \
-    --with-iwd=yes
+    arch-meson build \
+    -Difcfg_rh=false \
+    -Difcfg_suse=false \
+    -Difnet=false \
+    -Difupdown=false \
+    -Dmore_warnings=false \
+    -Dstatic=false \
+    -Dbluez5_dun=true \
+    -Dconcheck=true \
+    -Dibft=true \
+    -Ddocs=true \
+    -Dintrospection=true \
+    -Djson_validation=true \
+    -Dld_gc=false \
+    -Dmodify_system=true \
+    -Dpolkit=yes \
+    -Dpolkit_agent=true \
+    -Dteamdctl=true \
+	-Dovs=true \
+    -Dwifi=true \
+    -Dconfig_dhcp_default=internal \
+    -Dconfig_dns_rc_manager_default=resolvconf \
+    -Dconfig_logging_backend_default=journal \
+    -Dconfig_plugins_default=keyfile,ibft \
+    -Dcrypto=nss \
+    -Ddbus_sys_dir=/usr/share/dbus-1/system.d \
+    -Ddhclient=/usr/bin/dhclient \
+    -Ddist_version="$pkgver, Arch Linux" \
+    -Ddnsmasq=/usr/bin/dnsmasq \
+    -Ddnssec_trigger=/usr/lib/dnssec-trigger \
+    -Dhostname_persist=default \
+    -Diptables=/usr/bin/iptables \
+    -Dkernel_firmware_dir=/usr/lib/firmware \
+    -Dlibnm_glib=true \
+    -Dlibsoup=true \
+    -Dmodem_manager=true \
+    -Dnmcli=true \
+    -Dnmtui=true \
+    -Dpppd_plugin_dir=/usr/lib/pppd/$_pppver \
+    -Dpppd=/usr/bin/pppd \
+    -Dresolvconf=/usr/bin/resolvconf \
+    -Dsession_tracking=systemd \
+    -Dsuspend_resume=true \
+    -Dsystem_ca_path=/etc/ssl/certs \
+    -Dsystemd_journal=true \
+    -Dsystemd_logind=true \
+    -Dsystemdsystemunitdir=/usr/lib/systemd/system \
+    -Dudev_dir=/usr/lib/udev \
+    -Dwext=true \
+    -Dconsolekit=false \
+    -Dlibaudit=no \
+    -Dnetconfig=false \
+    -Dofono=false \
+    -Dselinux=false \
+    -Diwd=true
 
-     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
-
-    make
+    ninja -C build
 
 }
 
 check() {
-    make -kC $pkgname check
+	cd $srcdir/$pkgname
+    ninja -C build test
 }
 
 package_networkmanager-git() {
@@ -149,9 +140,10 @@ package_networkmanager-git() {
     backup=('etc/NetworkManager/NetworkManager.conf')
     conflicts=('networkmanager')
     provides=('networkmanager')
-    cd $srcdir/$pkgname
-    make -C $srcdir/$pkgname DESTDIR="$pkgdir" install
+	cd $srcdir/$pkgname
+    DESTDIR="$pkgdir" ninja -C build install
             install -dm700 "$pkgdir/etc/NetworkManager/system-connections"
+
   install -d "$pkgdir"/etc/NetworkManager/{conf,dnsmasq}.d
   install -m644 ../NetworkManager.conf "$pkgdir/etc/NetworkManager/"
   install -Dm644 ../20-connectivity.conf \
