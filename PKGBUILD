@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=dwarftherapist
-pkgver=39.3.1
+pkgver=40.0.0
 pkgrel=1
 pkgdesc="Heavily modified version of the original Dwarf Therapist."
 url="https://github.com/Dwarf-Therapist/Dwarf-Therapist"
@@ -11,8 +11,8 @@ depends=('qt5-declarative' 'hicolor-icon-theme' 'libcap')
 makedepends=('cmake')
 install="dwarftherapist.install"
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-md5sums=('26eee55ce5b31e7060ea72550d0c926d')
-sha256sums=('44504c8b0925c166bf98ab7bbd74396d965dbd26866ebe41b9a4cc4c89afd1fa')
+md5sums=('d8d3b5aee2660bad9195df4c652241e2')
+sha256sums=('7d28e214e722ad80e4ea58e0eae8a2da7cd91f4fcdd02239a6861f556667f748')
 
 build() {
   cd Dwarf-Therapist-${pkgver}
@@ -24,11 +24,6 @@ package() {
   cd Dwarf-Therapist-${pkgver}
   make DESTDIR="${pkgdir}" install
   
-  # Rename binary
-  mv "${pkgdir}/usr/bin/DwarfTherapist" "${pkgdir}/usr/bin/dwarftherapist"
-  # Fix .desktop
-  sed -i 's:DwarfTherapist:dwarftherapist:g' "${pkgdir}/usr/share/applications/dwarftherapist.desktop"
-
   # Link license to expected location
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s /usr/share/doc/dwarftherapist/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
