@@ -1,0 +1,22 @@
+pkgbase = perl6-cro-openapi-routes-from-definition
+	pkgdesc = Easily implement an existing OpenAPI definition, server side, using Cro
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/croservices/cro-openapi-routes-from-definition
+	arch = any
+	groups = croservices
+	groups = perl6
+	license = PerlArtistic
+	checkdepends = perl
+	makedepends = git
+	depends = perl6
+	depends = perl6-cro-http
+	depends = perl6-json-fast
+	depends = perl6-openapi-model
+	depends = perl6-openapi-schema-validate
+	depends = perl6-yamlish
+	source = perl6-cro-openapi-routes-from-definition-1.0.0::git+https://github.com/croservices/cro-openapi-routes-from-definition
+	sha256sums = SKIP
+
+pkgname = perl6-cro-openapi-routes-from-definition
+
