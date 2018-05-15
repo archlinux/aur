@@ -41,9 +41,9 @@ package_gdc-gcc() {
 	install -d -m644 $pkgdir/usr/include/c++/$_gccver
 	cp -dr --no-preserve=ownership $srcdir/$_target/include/c++/$_gccver $pkgdir/usr/include/c++
 	install -d -m644 $pkgdir/usr/lib/gcc/$CHOST/$_gccver
-	cp -dr --no-preserve=ownership $srcdir/$_target/lib/gcc/$_target/$_gccver $pkgdir/usr/lib/gcc/$CHOST
+	cp -dr --no-preserve=ownership $srcdir/$_target/lib/gcc/$_target/$_gccver $pkgdir/usr/lib/gcc/$_target
 	install -d -m644 $pkgdir/usr/libexec/gcc/$CHOST/$_gccver
-	cp -dr --no-preserve=ownership $srcdir/$_target/libexec/gcc/$_target/$_gccver $pkgdir/usr/libexec/gcc/$CHOST
+	cp -dr --no-preserve=ownership $srcdir/$_target/libexec/gcc/$_target/$_gccver $pkgdir/usr/libexec/gcc/$_target
 }
 
 #package_libgphobos() {
