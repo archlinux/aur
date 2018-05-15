@@ -1,0 +1,17 @@
+pkgbase = parity-ui-bin
+	pkgdesc = Parity UI - The Parity Dapp shell, browser & launcher (Electron app)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/parity-js/shell
+	arch = x86_64
+	license = GPLv3
+	depends = parity>=1.10
+	source = https://github.com/parity-js/shell/releases/download/v0.2.1/parity-ui-0.2.1.tar.xz
+	source = parity-ui.desktop
+	source = parity-ui.png
+	sha256sums = 506ba24d933e763cd621356e48675676c38caa17371b0943fde16611fdcbd501
+	sha256sums = 2a6e44f8ec0b0c620413cb2e2dbe4128d337a88d41c740447b347c88490c85a4
+	sha256sums = 512e6d56abe23dd9f27bd4d8c9adf8e6554fe8a1f884984ab7391d9c71354ad5
+
+pkgname = parity-ui-bin
+

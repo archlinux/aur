@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Parity UI
+Comment=The Electron app for Parity UI
+Exec="parity-ui" %U
+Terminal=false
+Type=Application
+Icon=parity-ui
+Categories=Utility;
