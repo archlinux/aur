@@ -1,0 +1,14 @@
+pkgbase = kube-spawn
+	pkgdesc = A tool for creating multi-node Kubernetes clusters on a Linux machine using kubeadm & systemd-nspawn. Brought to you by the Kinvolk team. https://kinvolk.io
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/kinvolk/kube-spawn
+	arch = any
+	license = Apache
+	makedepends = docker
+	depends = cni-plugins
+	source = https://github.com/kinvolk/kube-spawn/archive/v0.2.1.tar.gz
+	md5sums = 7c42f8c0ae240efabaf5f6ecf95721e1
+
+pkgname = kube-spawn
+
