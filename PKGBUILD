@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=1.0.14.r2.g885f6ee
+pkgver=1.0.15.r2.g2e9a4de
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam."
 arch=('x86_64')
