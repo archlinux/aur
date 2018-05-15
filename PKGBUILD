@@ -13,7 +13,7 @@ url="http://www.yabasic.de/"
 depends=('libx11' 'ncurses')
 makedepends=('libxt')
 source=("http://www.yabasic.de/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('9e37669e7ef0297c0961568c1e44624e3c90971e4a04ff2a42d1415816f1f7b6')
+sha256sums=('9a819c570fe3986f14ec6b718f6eafb7caa627d192e22a865dcfe50b0ae2b175')
 
 build() {
   cd $pkgname-$pkgver
@@ -32,5 +32,3 @@ package() {
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-
-sha256sums=('9a819c570fe3986f14ec6b718f6eafb7caa627d192e22a865dcfe50b0ae2b175')
