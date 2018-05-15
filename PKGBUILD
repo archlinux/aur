@@ -1,22 +1,23 @@
 # Maintainer: Marcel Radzio <info@nordgedanken.de>
 pkgbase=riot-desktop-git
-pkgver=v0.12.7.r0.gbf56a00d
+pkgver=v0.15.0.rc.5.r0.g50e430d8
 pkgrel=1
 pkgname=riot-desktop-git
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('any')
 url="https://riot.im"
 license=('Apache')
-depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'libvpx' 'libevent' 'ffmpeg')
+depends=('electron')
 makedepends=('git' 'npm')
-conflicts=('riot-desktop' 'riot-web')
+conflicts=('riot-desktop')
+provides=('riot-desktop')
 backup=("etc/riot/config.json")
-source=('riot-desktop-git::git://github.com/vector-im/riot-web.git'
+source=('riot-desktop-git::git://github.com/vector-im/riot-web.git#branch=develop'
         "riot-desktop.desktop"
         "riot-desktop.sh")
 sha256sums=('SKIP'
 	    'ae0654027f0646178961f6397322aefdc817d052625772dd297d636fe9726aff'
-            '45b5f26c39d2490bd03b52a38bdbe15cbaa5d661a511622eb831f98c63679306')
+            '0f8d896793e6f6f677febb5921b2256c9786fad67294cb32efd6d059ed21e04c')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -37,26 +38,12 @@ build() {
 	cd "$srcdir/${pkgname}"
 	npm install --cache "${srcdir}/npm-cache"
 
-        # Build matrix-js-sdk manualy as npm@5 doesn't trigger the build
-        cd "$srcdir/${pkgname}/node_modules/matrix-js-sdk"
-        npm install --cache "${srcdir}/npm-cache"
-        npm run build --cache "${srcdir}/npm-cache"
-
-        # Build matrix-react-sdk manualy as npm@5 doesn't trigger the build
-        cd "$srcdir/${pkgname}/node_modules/matrix-react-sdk"
-        npm install --cache "${srcdir}/npm-cache"
-	npm run build --cache "${srcdir}/npm-cache"
-
-
         cd "$srcdir/${pkgname}"
         npm run build --cache "${srcdir}/npm-cache"
 }
 
 package() {
 	cd "$srcdir/${pkgname}"
-	npm install -g --user root --prefix "$pkgdir/usr" electron --cache "${srcdir}/npm-cache"
-	mv "$pkgdir"/usr/bin/electron "$pkgdir"/usr/bin/electron-1_7_9
-	chmod -R go-w "$pkgdir"/usr
 
 	install -d "${pkgdir}"/{usr/share/webapps,etc/webapps}/riot
 
@@ -83,7 +70,7 @@ package() {
 	install -Dm644 "${srcdir}"/riot-desktop.desktop "${pkgdir}"/usr/share/applications/riot.desktop
 	install -Dm755 "${srcdir}"/riot-desktop.sh "${pkgdir}"/usr/bin/riot-desktop
 
-	install -Dm644 src/skins/vector/img/logos/riot-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/riot.svg
+	install -Dm644 res/themes/riot/img/logos/riot-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/riot.svg
 	for i in 16 24 48 64 96 128 256 512; do
 		install -Dm644 electron_app/build/icons/${i}x${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/riot.png
 	done
