@@ -63,10 +63,10 @@ package_libgphobos-lib32() {
 	pkgdesc="Standard library for D programming language, GDC port"
 	provides=("d-runtime-lib32" "d-stdlib-lib32")
 	
-	install -D -m644 $srcdir/$_target/lib32/libgphobos.so $pkgdir/usr/lib/libgphobos.so
-	install -D -m644 $srcdir/$_target/lib32/libgphobos.so $pkgdir/usr/lib/libgphobos.so.68
-	install -D -m644 $srcdir/$_target/lib32/libgphobos.so $pkgdir/usr/lib/libgphobos.so.68.0.2
-	install -D -m644 $srcdir/$_target/lib32/libgphobos.so $pkgdir/usr/lib/libgphobos.spec
-	install -D -m644 $srcdir/$_target/lib32/libgphobos.so $pkgdir/usr/lib/libgphobos.a
-	install -D -m644 $srcdir/$_target/lib32/libgphobos.so $pkgdir/usr/lib/libgphobos.la
+	install -D -m644 $srcdir/$_target/lib32/libgphobos.so $pkgdir/usr/lib32/libgphobos.so
+	install -D -m644 $srcdir/$_target/lib32/libgphobos.so $pkgdir/usr/lib32/libgphobos.so.68
+	install -D -m644 $srcdir/$_target/lib32/libgphobos.so $pkgdir/usr/lib32/libgphobos.so.68.0.2
+	install -D -m644 $srcdir/$_target/lib32/libgphobos.so $pkgdir/usr/lib32/libgphobos.spec
+	install -D -m644 $srcdir/$_target/lib32/libgphobos.so $pkgdir/usr/lib32/libgphobos.a
+	install -D -m644 $srcdir/$_target/lib32/libgphobos.so $pkgdir/usr/lib32/libgphobos.la
 }
