@@ -4,6 +4,7 @@ pkgbase = bitcoin-core
 	pkgrel = 4
 	url = https://bitcoin.org
 	install = bitcoin.install
+	arch = aarch64
 	arch = armv6h
 	arch = armv7h
 	arch = i686

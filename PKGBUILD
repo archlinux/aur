@@ -4,7 +4,7 @@ pkgname=bitcoin-core
 pkgver=0.16.0
 pkgrel=4
 pkgdesc="Bitcoin Core headless P2P node"
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://bitcoin.org"
 depends=('boost'
          'boost-libs'
