@@ -20,6 +20,7 @@ pkgbase = firefox-beta-bin
 	optdepends = pulseaudio: Sound
 	optdepends = upower: Battery API
 	provides = firefox=61.0b5
+	conflicts = firefox-beta
 	source = https://ftp.mozilla.org/pub/firefox/releases/61.0b5/linux-x86_64/en-US/firefox-61.0b5.tar.bz2
 	source = firefox-beta.sh
 	source = firefox-beta-bin.desktop
