@@ -4,7 +4,7 @@
 pkgname=tvheadend
 
 pkgver=4.2.6
-pkgrel=4
+pkgrel=5
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/projects/tvheadend"
@@ -17,35 +17,23 @@ optdepends=('xmltv: For an alternative source of programme listings'
 provides=('tvheadend')
 conflicts=('tvheadend-git')
 install=tvheadend.install
-_tagname="v${pkgver}"
 
-source=("git+https://github.com/tvheadend/tvheadend#tag=${_tagname}"
-	"tvheadend.override"
+source=("https://github.com/tvheadend/tvheadend/archive/v$pkgver.tar.gz"
+	"tvheadend-service.patch"
+	"0001-ffmpeg-3.5-fixes.patch"
 )
-sha256sums=('SKIP'
-            'bbb54ae46fbb1b00f987c0a8dde644ee9a0121fa173ee21cc6bf7a6a6fb12146')
-
-_backports=(
-  # ffmpeg 3.5 fixes
-  '3cb4f580565b307457f6e645f34bf113c2be54a4'
-)
- 
-_reverts=(
-)
+sha256sums=('09b4d4ff436a2006001ef3c3f38553dc4db3ea31bf9871b046a33180a0e8a8b9'
+            '23897afe6a6aa1382d0d37bf2c38bd4d04deabcb2bcc1f966b57323ffdc23f2c'
+            '0481d7ab443639d2ffc2e13e7f3207b1489fafbe605b9fbe50d3a8d44acf5a38')
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
-    # apply backports or reverts
-    local c
-    for c in "${_backports[@]}"; do
-      echo "Backporting commit $c"
-      git cherry-pick -n "$c"
-    done
-    for c in "${_reverts[@]}"; do
-      echo "Reverting commit $c"
-      git revert -n "$c"
-    done
+    # Patch tvheadend.service for Arch Linux
+    patch -p1 -i "${srcdir}/tvheadend-service.patch"
+
+    # Backport commit 3cb4f580565b307457f6e645f34bf113c2be54a4 to support ffmpeg 4.0
+    patch -p1 -i "${srcdir}/0001-ffmpeg-3.5-fixes.patch"
 
     ./configure --prefix=/usr --python=python3 \
         --disable-ffmpeg_static \
@@ -58,13 +46,13 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     # TODO: temporary fix to succeed compilation with GCC 8+
     make CFLAGS_NO_WERROR=yes
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR="$pkgdir" install
 
     # Fix permission mode of man-page
@@ -72,7 +60,4 @@ package() {
 
     # Install service file
     install -Dm644 "rpm/tvheadend.service" "$pkgdir/usr/lib/systemd/system/tvheadend.service"
-
-    # Install service override
-    install -Dm644 "$srcdir/tvheadend.override" "$pkgdir/usr/lib/systemd/system/tvheadend.service.d/override.conf"
 }

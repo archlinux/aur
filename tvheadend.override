@@ -1,4 +1,0 @@
-[Service]
-EnvironmentFile=
-ExecStart=
-ExecStart=/usr/bin/tvheadend -f -p /var/run/tvheadend.pid -C -u hts -g video

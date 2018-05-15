@@ -1,0 +1,14 @@
+diff --git a/rpm/tvheadend.service b/rpm/tvheadend.service
+index cd2ff3445..47f4183bb 100644
+--- a/rpm/tvheadend.service
++++ b/rpm/tvheadend.service
+@@ -3,8 +3,7 @@ Description=Tvheadend - a TV streaming server and DVR
+ After=syslog.target network.target auditd.service
+ 
+ [Service]
+-EnvironmentFile=/etc/sysconfig/tvheadend
+-ExecStart=/usr/bin/tvheadend -f -p /var/run/tvheadend.pid $OPTIONS
++ExecStart=/usr/bin/tvheadend -f -p /var/run/tvheadend.pid -C -u hts -g video
+ PIDFile=/var/run/tvheadend.pid
+ Type=forking
+ Restart=on-failure
