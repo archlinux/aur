@@ -1,8 +1,9 @@
 pkgbase = rofi-calc
 	pkgdesc = Do calculations in rofi
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/svenstaro/rofi-calc
+	install = rofi-calc.install
 	arch = x86_64
 	license = MIT
 	depends = rofi
