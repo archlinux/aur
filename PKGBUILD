@@ -1,7 +1,7 @@
 # Maintainer: Tobias Martin <tm-x at gmx dot net>
 
 pkgname=fritzctl
-pkgver=1.4.19
+pkgver=1.4.22
 pkgrel=1
 pkgdesc="A lightweight, easy to use console client for the AVM FRITZ!Box Home Automation."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 options=('!strip')
 source=("https://github.com/bpicode/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6bc48a08f3dc258d9c2acf68e7dd63e9e6808f37297fd02401bee1772a53cbbe')
+sha256sums=('ffd5de2d6580fa482f64bc7803bfcfd9ec7c13a68b33648c5bfd1edc718e0c10')
 
 prepare() {
   mkdir -p "${srcdir}/src/github.com/bpicode/"
