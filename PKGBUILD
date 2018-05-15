@@ -5,7 +5,7 @@
 
 pkgname=pacemaker
 pkgver=1.1.18
-pkgrel=6
+pkgrel=7
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${pkgname}/"
