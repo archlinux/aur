@@ -5,12 +5,12 @@ pkgname=m68k-atari-mint-gcc
 _pkgname=gcc
 _target="m68k-atari-mint"
 pkgver=4.6.4
-pkgrel=9
+pkgrel=10
 pkgdesc="The GNU Compiler Collection for the Motorola M68000 architecture"
 url="http://www.gnu.org/software/gcc/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('sh' "m68k-atari-mint-binutils")
+depends=('sh' 'mpfr' 'gmp' 'libmpc' "m68k-atari-mint-binutils")
 replaces=('cross-m68k-atari-mint-gcc')
 provides=('m68k-atari-mint-gcc-core')
 conflicts=('cross-m68k-atari-mint-gcc' 'cross-m68k-atari-mint-gcc-core' 'm68k-atari-mint-gcc-core')
@@ -25,6 +25,9 @@ prepare() {
 
         patch -Np1 < ../gcc-4.6.4-mint-20130415.patch
         patch -p0 < ../cfns.h.patch
+
+# alternatively, we could download mpfr/mpc/gmp with this command
+#        ./contrib/download_prerequisites || return 1
 }
 
 build() {
