@@ -21,6 +21,9 @@ int main(int argc, char* argv[]) {
     // Init portfolio path
     portfolio_file_init();
 
+    // Init cURL
+    curl_global_init(CURL_GLOBAL_ALL);
+
     // Portfolio modify operation
     int modop = -1;
 
@@ -108,5 +111,6 @@ int main(int argc, char* argv[]) {
     }
     free(portfolio_file);
     free(sym);
+    curl_global_cleanup();
     return 0;
 }

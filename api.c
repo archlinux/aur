@@ -32,30 +32,28 @@ String* api_curl_data(const char* url, const char* post_field) {
     String* pString = string_init();
     CURL* curl = curl_easy_init();
     CURLcode res;
-    curl_global_init(CURL_GLOBAL_DEFAULT);
-    if (curl) {
-        curl_easy_setopt(curl, CURLOPT_URL, url); // Set URL
-        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L); // Needed for HTTPS
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, api_string_writefunc); // Specify writefunc for return data
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &pString->data); // Specify object for return data
-        struct curl_slist* list = NULL;
-        if (url[12] == 'g') { //if using Google Urlshortener, a post field is needed
-            list = curl_slist_append(list, "Content-Type: application/json");
-            curl_easy_setopt(curl, CURLOPT_HTTPHEADER, list);
-            curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_field);
-            curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, strlen(post_field));
-        }
-        res = curl_easy_perform(curl);
-        if (url[12] == 'g')
-            curl_slist_free_all(list);
-        curl_easy_cleanup(curl);
-        if (res != CURLE_OK) {
-            puts("Error curling data.");
-            string_destroy(&pString);// Free and return NULL
-        }
-    } else {
-        puts("Error initializing curl.");
+    if (!curl) { // Error creating curl object
+        string_destroy(&pString);
+        RETNULL_MSG("Error initializing curl.")
+    }
+    curl_easy_setopt(curl, CURLOPT_URL, url); // Set URL
+    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L); // Needed for HTTPS
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, api_string_writefunc); // Specify writefunc for return data
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &pString->data); // Specify object for return data
+    struct curl_slist* list = NULL;
+    if (url[12] == 'g') { //if using Google Urlshortener, a post field is needed
+        list = curl_slist_append(list, "Content-Type: application/json");
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, list);
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_field);
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, strlen(post_field));
+    }
+    res = curl_easy_perform(curl);
+    if (url[12] == 'g')
+        curl_slist_free_all(list);
+    curl_easy_cleanup(curl);
+    if (res != CURLE_OK) {
         string_destroy(&pString);// Free and return NULL
+        RETNULL_MSG("Error curling data.")
     }
     return pString;
 }
