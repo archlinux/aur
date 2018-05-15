@@ -287,11 +287,13 @@ void api_print_info(const char* ticker_name_string) {
         if (ticker_info == NULL)
             RET_MSG("Invalid symbol!")
     }
-    ticker_info = iex_get_info(ticker_name_string);
-    if (ticker_info == NULL)
-        ticker_info = morningstar_get_info(ticker_name_string);
-    if (ticker_info == NULL)
-        RET_MSG("Invalid symbol!")
+    else {
+        ticker_info = iex_get_info(ticker_name_string);
+        if (ticker_info == NULL)
+            ticker_info = morningstar_get_info(ticker_name_string);
+        if (ticker_info == NULL)
+            RET_MSG("Invalid symbol!")
+    }
 
     if (strcmp(ticker_info->name, "") != 0)
         printf("Name: %s\n", ticker_info->name);
