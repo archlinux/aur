@@ -1,0 +1,20 @@
+pkgbase = perl6-openapi-schema-validate
+	pkgdesc = Validate a value or data structure against an OpenAPI schema
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/croservices/openapi-schema-validate
+	arch = any
+	groups = croservices
+	groups = perl6
+	license = PerlArtistic
+	checkdepends = perl
+	makedepends = git
+	depends = perl6
+	depends = perl6-cro-core
+	depends = perl6-datetime-parse
+	depends = perl6-json-pointer
+	source = perl6-openapi-schema-validate-1.0::git+https://github.com/croservices/openapi-schema-validate
+	sha256sums = SKIP
+
+pkgname = perl6-openapi-schema-validate
+
