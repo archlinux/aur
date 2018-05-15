@@ -1,11 +1,11 @@
 # Maintainer: Dea1993 <andrea.deangelis93@gmail.com>
 
 pkgname=snake_pygame
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A remake of classic Snake game written in Python"
 arch=('any')
-url="http://deasproject.altervista.org"
+url="https://openisfreedom.eu/2013/08/13/progetto-creiamo-il-nostro-snake-in-python-con-pygame/"
 license=('GPL2')
 depends=('python2-pygame' 'python2-numpy' 'python2-xdg')
 source=("snake_${pkgver}.7z"::"http://sourceforge.net/projects/snakepygame/files/snake_${pkgver}.7z/download")
