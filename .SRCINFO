@@ -1,0 +1,14 @@
+pkgbase = openfx-neatvideo-demo
+	pkgdesc = Video denoising plugin
+	pkgver = 4.7.2
+	pkgrel = 1
+	url = https://www.neatvideo.com/
+	arch = x86_64
+	license = custom
+	depends = fontconfig
+	depends = libxi
+	source = https://www.neatvideo.com/demo/nv4/ofxd/NeatVideoOFX.Demo.Intel64.tgz
+	sha512sums = f75b7c69307acd27eeb2bc006b8df861f3f760375570d33fdbe83d179434d92a20f14323ea4e76e54479668f7f549f2b01ccc68dfc4b62a3526f2cc2fc96b7d8
+
+pkgname = openfx-neatvideo-demo
+
