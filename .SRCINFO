@@ -5,7 +5,7 @@ pkgbase = pandoc-eqnos
 	url = https://github.com/tomduck/pandoc-eqnos
 	arch = any
 	license = GPL
-	depends = pandoc-xnos>=0.9.0
+	depends = pandoc-xnos>=0.15.0
 	source = https://github.com/tomduck/pandoc-eqnos/archive/1.2.0.tar.gz
 	md5sums = 3560ba8e7a65e23efab7c3d51cd06bf9
 

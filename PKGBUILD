@@ -5,7 +5,7 @@ pkgver=1.2.0
 pkgrel=1
 pkgdesc="Equation number filter for pandoc"
 url="https://github.com/tomduck/pandoc-eqnos"
-depends=('pandoc-xnos>=0.9.0')
+depends=('pandoc-xnos>=0.15.0')
 license=('GPL')
 arch=('any')
 source=("https://github.com/tomduck/pandoc-eqnos/archive/${pkgver}.tar.gz")
