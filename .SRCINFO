@@ -1,6 +1,6 @@
 pkgbase = simonpi-git
 	pkgdesc = A quick & dirty script to emulate Raspberry PI family devices on your laptop
-	pkgver = 1.0.7.r17.g2a9c851
+	pkgver = 1.0.9.r8.ga28b92e
 	pkgrel = 1
 	url = https://github.com/M0Rf30/simonpi
 	arch = any
@@ -15,6 +15,8 @@ pkgbase = simonpi-git
 	depends = iproute2
 	depends = iptables
 	depends = libarchive
+	depends = ovmf-arm
+	depends = ovmf-aarch64
 	depends = procps-ng
 	depends = qemu-headless-arch-extra
 	depends = sudo
