@@ -2,7 +2,7 @@
 
 pkgname=sequeler-git
 _gitname=sequeler
-pkgver=03b81b4
+pkgver=r331.66506cd
 pkgrel=1
 pkgdesc="SQL Client built in Vala and GTK3"
 arch=('i686' 'x86_64')
@@ -17,19 +17,17 @@ source=("git+https://github.com/Alecaddd/sequeler.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/sequeler"
-    git describe --always | sed 's/^v//;s/-/./g;s/_/./g;'
+    cd "${srcdir}/${_gitname}/"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "${srcdir}/${_gitname}/"
-    mkdir build/ && cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ../
-    make
+    meson . _build --prefix=/usr
+    ninja -C _build
 }
 
 package() {
     cd "${srcdir}/${_gitname}/"
-    cd build
-    make DESTDIR="$pkgdir" install
+    DESTDIR="${pkgdir}" ninja -C _build install
 }
