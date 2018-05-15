@@ -2,3 +2,4 @@
 d /var/lib/tautulli 0755 tautulli tautulli
 Z /var/lib/tautulli - tautulli tautulli
 Z /usr/lib/tautulli - tautulli tautulli
+L /var/log/tautulli - - - - /var/lib/tautulli/logs
