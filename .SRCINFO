@@ -1,7 +1,7 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 18.2.0_devel.102206.c879011c72
-	pkgrel = 1
+	pkgver = 18.2.0_devel.102242.dace607245
+	pkgrel = 3
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
 	license = custom
@@ -49,10 +49,8 @@ pkgbase = mesa-git
 	conflicts = wayland<1.14.93
 	source = mesa::git://anongit.freedesktop.org/mesa/mesa
 	source = LICENSE
-	source = opencl-autotools-Fix-linking-order-for-OpenCL-target.patch
 	sha512sums = SKIP
 	sha512sums = 25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2
-	sha512sums = f23e31e902e05f9102fdc3f3c7cc96306e04e297785bdc46f955f668588256c8ebfeb530a47bea9e9fea16f5c4e4e75cc0dceb71b042bed6a17a0ce320e234f1
 
 pkgname = mesa-git
 

@@ -12,8 +12,8 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.0_devel.102206.c879011c72
-pkgrel=1
+pkgver=18.2.0_devel.102242.dace607245
+pkgrel=3
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
@@ -27,16 +27,13 @@ url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
-        'opencl-autotools-Fix-linking-order-for-OpenCL-target.patch'
 )
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'f23e31e902e05f9102fdc3f3c7cc96306e04e297785bdc46f955f668588256c8ebfeb530a47bea9e9fea16f5c4e4e75cc0dceb71b042bed6a17a0ce320e234f1')
+)
 
 prepare() {
   cd mesa
-  # fixes opencl build failure, see https://bugs.freedesktop.org/show_bug.cgi?id=106209 and https://patchwork.freedesktop.org/patch/219763/
-  patch -Np1 -i ../opencl-autotools-Fix-linking-order-for-OpenCL-target.patch
   autoreconf -vfi
 }
 
