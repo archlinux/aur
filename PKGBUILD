@@ -2,14 +2,24 @@
 
 pkgname=crmsh-git
 _pkgname=crmsh
-pkgver=3.0.0.r422.g78999e05
-pkgrel=2
+pkgver=3.0.0.r430.gad74b5dd
+pkgrel=1
 pkgdesc="Command-line interface for high-availability cluster management on GNU/Linux systems"
 arch=('any')
 url="https://github.com/ClusterLabs/${_pkgname}/"
 license=('GPL2')
 makedepends=('git' 'asciidoc' 'python-setuptools')
-depends=('python-parallax' 'python-lxml' 'python-yaml' 'python-dateutil' 'gawk' 'csync2-git')
+depends=('pacemaker'
+         'csync2-git'
+         'python'
+         'python-parallax'
+         'python-pycurl'
+         'python-lxml'
+         'python-dateutil'
+         'python-yaml'
+         'python-urllib3'
+         'python-simplejson'
+         'gawk')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git")
