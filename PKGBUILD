@@ -1,9 +1,9 @@
-# Maintainer: Bandie <bandie@chaospott.de>
+#Maintainer: Bandie <bandie@chaospott.de>
 
 pkgname=pam_panic-git
 pkgver=r118.7e548bd
 pkgrel=4
-pkgdesc="A PAM module that protects sensitive data and provides a panic function for emergency situations."
+pkgdesc="A PAM module that protects sensitive data and provides a panic function for emergency situations. Authentication through passwords or removable media."
 arch=('any')
 url="https://github.com/pampanic/pam_panic"
 license=('GPL3')
