@@ -12,7 +12,7 @@ pkgbase = gdc-bin
 
 pkgname = gdc-bin
 	pkgdesc = Compiler for D programming language which uses gcc backend
-	depends = gcc=$_gccver
+	depends = gcc=6.3.0
 	depends = perl
 	depends = binutils
 	depends = libgphobos
