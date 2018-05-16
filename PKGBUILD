@@ -1,6 +1,6 @@
 # Maintainer: Marcel Radzio <info@nordgedanken.de>
 pkgbase=riot-desktop-git
-pkgver=v0.15.0.rc.5.r0.g50e430d8
+pkgver=v0.15.0.r0.g0a461424
 pkgrel=1
 pkgname=riot-desktop-git
 pkgdesc="A glossy Matrix collaboration client for the desktop."
