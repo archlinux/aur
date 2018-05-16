@@ -1,0 +1,13 @@
+pkgbase = dollar-sign
+	pkgdesc = $: command not found
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/fraction/dollar-sign
+	arch = any
+	license = 0BSD
+	depends = sh
+	source = https://github.com/fraction/dollar-sign/archive/v1.0.0.tar.gz
+	md5sums = 546bb2bb88ea1cca02854431a54fac81
+
+pkgname = dollar-sign
+
