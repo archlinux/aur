@@ -2,7 +2,7 @@
 
 _gitname=plasma-browser-integration
 pkgname=$_gitname-git
-pkgver=r275.bbcd7c9
+pkgver=r301.9d6056c
 pkgrel=1
 pkgdesc='Components necessary to integrate browsers into the Plasma Desktop'
 arch=(i686 x86_64)
@@ -38,6 +38,4 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
-
-  mv "$pkgdir"/usr/share/{chromium-browser,chromium}
 }
