@@ -1,0 +1,29 @@
+pkgbase = muffin36
+	pkgdesc = Cinnamon window manager based on Mutter (version 3.6.0)
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = https://github.com/linuxmint/muffin
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gnome-doc-utils
+	makedepends = gnome-common
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	depends = clutter
+	depends = gobject-introspection-runtime
+	depends = cinnamon-desktop
+	depends = libcanberra
+	depends = libsm
+	depends = startup-notification
+	depends = zenity
+	depends = dconf
+	provides = muffin
+	conflicts = muffin
+	options = !emptydirs
+	source = muffin-3.6.0.tar.gz::https://github.com/linuxmint/muffin/archive/3.6.0.tar.gz
+	sha256sums = b343b6bf86d83dad01dcfb12d224c7eb2d4b63e1fbbe8beb3240a618ffecf737
+
+pkgname = muffin36
+
