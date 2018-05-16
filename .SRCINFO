@@ -1,7 +1,7 @@
 pkgbase = lczero-nvidia-git
 	pkgdesc = This is an adaptation of GCP's Leela Zero repository to chess, using Stockfish's position representation and move generation.
-	pkgver = 0.9
-	pkgrel = 253
+	pkgver = 0.10
+	pkgrel = 299
 	url = https://github.com/glinscott/leela-chess
 	arch = i686
 	arch = x86_64
