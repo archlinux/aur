@@ -15,7 +15,7 @@ source_x86_64=("http://get.code-industry.net/public/master-pdf-editor-${pkgver}_
 sha1sums_x86_64=('e86f05f3141b3106856994471546bee53578a62f')
 
 package() {
-  depends=('gcc-libs' 'glibc' 'libgl' 'qt5-base' 'qt5-svg' 'sane')
+  depends=('gcc-libs' 'glibc' 'libgl' 'nspr' 'nss' 'qt5-base' 'qt5-svg' 'sane')
 
   install -d "$pkgdir"{/opt/,/usr/bin/}
   cp -a --no-preserve=ownership master-pdf-editor-${pkgver%%.*} "$pkgdir/opt/"
