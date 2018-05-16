@@ -1,7 +1,7 @@
-diff -ruN librsvg-2.42.3/Makefile.am librsvg-2.42.3-pathed/Makefile.am
---- librsvg-2.42.3/Makefile.am	2018-03-05 21:28:37.000000000 +0800
-+++ librsvg-2.42.3-pathed/Makefile.am	2018-03-12 10:37:43.367560025 +0800
-@@ -115,7 +115,7 @@
+diff -ruN librsvg-2.42.4/Makefile.am librsvg-2.42.4-patched/Makefile.am
+--- librsvg-2.42.4/Makefile.am	2018-05-08 02:33:46.000000000 +0800
++++ librsvg-2.42.4-patched/Makefile.am	2018-05-16 15:05:00.000000000 +0800
+@@ -117,7 +117,7 @@
  endif
  
  if CROSS_COMPILING
@@ -10,7 +10,7 @@ diff -ruN librsvg-2.42.3/Makefile.am librsvg-2.42.3-pathed/Makefile.am
  endif
  
  CARGO_VERBOSE = $(cargo_verbose_$(V))
-@@ -124,6 +124,7 @@
+@@ -126,6 +126,7 @@
  cargo_verbose_1 = --verbose
  
  RUST_LIB=@abs_top_builddir@/target/@RUST_TARGET_SUBDIR@/librsvg_internals.a
@@ -18,7 +18,7 @@ diff -ruN librsvg-2.42.3/Makefile.am librsvg-2.42.3-pathed/Makefile.am
  CARGO_TARGET_DIR=@abs_top_builddir@/target
  
  check-local:
-@@ -145,7 +146,8 @@
+@@ -147,7 +148,8 @@
  	PKG_CONFIG_ALLOW_CROSS=1						\
  	PKG_CONFIG='$(PKG_CONFIG)'						\
  	CARGO_TARGET_DIR=$(CARGO_TARGET_DIR)					\
@@ -28,7 +28,7 @@ diff -ruN librsvg-2.42.3/Makefile.am librsvg-2.42.3-pathed/Makefile.am
  
  librsvg_@RSVG_API_MAJOR_VERSION@_la_CPPFLAGS = \
  	-I$(top_srcdir) 			\
-@@ -171,8 +173,7 @@
+@@ -173,8 +175,7 @@
  
  librsvg_@RSVG_API_MAJOR_VERSION@_la_LIBADD = \
  	$(LIBRSVG_LIBS) 	\
@@ -38,9 +38,9 @@ diff -ruN librsvg-2.42.3/Makefile.am librsvg-2.42.3-pathed/Makefile.am
  
  librsvgincdir = $(includedir)/librsvg-$(RSVG_API_VERSION)/librsvg
  librsvginc_HEADERS =			\
-diff -ruN librsvg-2.42.3/Makefile.in librsvg-2.42.3-pathed/Makefile.in
---- librsvg-2.42.3/Makefile.in	2018-03-05 21:29:19.000000000 +0800
-+++ librsvg-2.42.3-pathed/Makefile.in	2018-03-12 10:37:43.367560025 +0800
+diff -ruN librsvg-2.42.4/Makefile.in librsvg-2.42.4-patched/Makefile.in
+--- librsvg-2.42.4/Makefile.in	2018-05-16 16:11:03.000000000 +0800
++++ librsvg-2.42.4-patched/Makefile.in	2018-05-16 15:05:00.000000000 +0800
 @@ -223,7 +223,7 @@
  LTLIBRARIES = $(lib_LTLIBRARIES)
  am__DEPENDENCIES_1 =
@@ -50,7 +50,7 @@ diff -ruN librsvg-2.42.3/Makefile.in librsvg-2.42.3-pathed/Makefile.in
  am__dirstamp = $(am__leading_dot)dirstamp
  am__objects_1 =
  am_librsvg_@RSVG_API_MAJOR_VERSION@_la_OBJECTS = librsvg/librsvg_@RSVG_API_MAJOR_VERSION@_la-librsvg-enum-types.lo \
-@@ -701,12 +702,13 @@
+@@ -703,12 +703,13 @@
  
  @DEBUG_RELEASE_FALSE@CARGO_RELEASE_ARGS = --release
  @DEBUG_RELEASE_TRUE@CARGO_RELEASE_ARGS = 
@@ -65,7 +65,7 @@ diff -ruN librsvg-2.42.3/Makefile.in librsvg-2.42.3-pathed/Makefile.in
  CARGO_TARGET_DIR = @abs_top_builddir@/target
  librsvg_@RSVG_API_MAJOR_VERSION@_la_CPPFLAGS = \
  	-I$(top_srcdir) 			\
-@@ -732,8 +734,7 @@
+@@ -734,8 +735,7 @@
  
  librsvg_@RSVG_API_MAJOR_VERSION@_la_LIBADD = \
  	$(LIBRSVG_LIBS) 	\
@@ -75,7 +75,7 @@ diff -ruN librsvg-2.42.3/Makefile.in librsvg-2.42.3-pathed/Makefile.in
  
  librsvgincdir = $(includedir)/librsvg-$(RSVG_API_VERSION)/librsvg
  librsvginc_HEADERS = \
-@@ -1050,8 +1051,8 @@
+@@ -1050,8 +1050,8 @@
  librsvg/librsvg_@RSVG_API_MAJOR_VERSION@_la-rsvg-xml.lo:  \
  	librsvg/$(am__dirstamp) librsvg/$(DEPDIR)/$(am__dirstamp)
  
@@ -86,7 +86,7 @@ diff -ruN librsvg-2.42.3/Makefile.in librsvg-2.42.3-pathed/Makefile.in
  install-binPROGRAMS: $(bin_PROGRAMS)
  	@$(NORMAL_INSTALL)
  	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
-@@ -1990,7 +1991,8 @@
+@@ -1982,7 +1982,8 @@
  	PKG_CONFIG_ALLOW_CROSS=1						\
  	PKG_CONFIG='$(PKG_CONFIG)'						\
  	CARGO_TARGET_DIR=$(CARGO_TARGET_DIR)					\
