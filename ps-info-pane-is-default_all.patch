@@ -1,0 +1,12 @@
+--- a/src/ui/download.cc	2015-09-03 21:03:30.000000000 +0200
++++ b/src/ui/download.cc	2018-05-16 00:24:40.000000000 +0200
+@@ -129,3 +129,3 @@
+ 
+-  element->set_entry(0, false);
++  element->set_entry(1, false); // 'Info' active by default
+ 
+@@ -216,3 +216,3 @@
+ 
+-  activate_display_menu(DISPLAY_PEER_LIST);
++  activate_display_menu(DISPLAY_INFO); // 'Info' active by default
+ }
