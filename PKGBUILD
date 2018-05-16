@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bisq
-pkgver=0.6.7
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
@@ -9,37 +9,25 @@ url="https://bitsquare.io/"
 license=('AGPL3')
 depends=('java-openjfx')
 makedepends=('maven' 'jdk8-openjdk' 'protobuf')
-source=("${pkgname}::git+https://github.com/bisq-network/exchange.git#tag=v${pkgver}"
+source=("${pkgname}::git+https://github.com/bisq-network/bisq-desktop.git#tag=v${pkgver}"
         "bisq.sh"
         "bisq.desktop")
 sha256sums=('SKIP'
             '175e18841dd216ca84391a89b0fba0b12bf575ec095d200ae9a3babc83693e31'
-            '8496c6f259873435591ff2106ce6a4e05a8c272b8a374f924c6090e48701b2d8')
-
-prepare() {
-  msg 'Fixing protoc path...'
-  sed -i 's#/usr/local/bin/protoc#/usr/bin/protoc#g' "$pkgname/common/pom.xml"
-}
+            '20d24db040983a6139e3300db7824b08b3e106150cb155480409b1ab7de68d17')
 
 build() {
-  # Use a temporary local maven repository.
-  local mvn_repo="$srcdir/mvn-repository"
-
   cd "${srcdir}/${pkgname}" || exit
   msg2 "Building bisq..."
-  mvn clean package verify -Dmaven.repo.local="$mvn_repo" -DskipTests -Dmaven.javadoc.skip=true
+  ./gradlew build
 }
 
 package() {
   # Install executable.
-  install -D -m755 "bisq.sh" "${pkgdir}/usr/bin/bisq"
-  install -D -m644 "${srcdir}/${pkgname}/gui/target/shaded.jar" "${pkgdir}/usr/share/java/bisq/shaded.jar"
-
-  install -D "${srcdir}/${pkgname}/gui/target/gui-${pkgver}.jar" "${pkgdir}/usr/share/java/bisq"
-
-  install -d "${pkgdir}/usr/share/java/bisq/lib"
-  install -D "${srcdir}/${pkgname}/gui/target/lib/bcpg-jdk15on.jar" "${pkgdir}/usr/share/java/bisq/lib"
-  install -D "${srcdir}/${pkgname}/gui/target/lib/bcprov-jdk15on.jar" "${pkgdir}/usr/share/java/bisq/lib"
+  install -d "${pkgdir}/opt/bisq"
+  cp -r "${srcdir}/${pkgname}/build/app/"/* "${pkgdir}/opt/bisq"
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/opt/bisq/bin/bisq-desktop" "${pkgdir}/usr/bin/bisq-desktop"
 
   # Install desktop launcher.
   install -Dm644 bisq.desktop "${pkgdir}/usr/share/applications/bisq.desktop"
