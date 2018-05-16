@@ -9,7 +9,8 @@ url='https://liri.io'
 license=('GPL3')
 depends=('qt5-tools' 'qt5-wayland' 'qt5-accountsservice-git' 'qt5-gsettings-git'
          'libqtxdg' 'pam' 'liri-wayland-git' 'libliri-git' 'vibe-git' 'liri-workspace-git'
-	 'liri-platformtheme-git' 'liri-materialdecoration-git'
+         'liri-platformtheme-git' 'liri-materialdecoration-git'
+         'glib2' 'dconf'
          'xorg-server-xwayland')
 optdepends=('weston: nested mode support')
 makedepends=('git' 'liri-qbs-shared-git')
@@ -18,6 +19,7 @@ conflicts=('hawaii-shell-git' 'papyros-shell-git' 'liri-shell')
 replaces=('hawaii-shell-git' 'papyros-shell-git' 'liri-shell')
 provides=('liri-shell')
 groups=('liri-git')
+install=$pkgname.install
 
 _gitroot="git://github.com/lirios/shell.git"
 _gitbranch=develop
