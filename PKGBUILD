@@ -5,7 +5,7 @@
 
 pkgbase=linux-covolunablu-gaming
 _srcname=linux-4.16
-pkgver=4.16.7
+pkgver=4.16.8
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -39,7 +39,7 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'f5ef83461054024814846eb816c76eba1b903f7e3e38c3417027b33070b60d91'
+            '6fb2db1e38f762e6a028dfa5e6d094f0eb4324572667923aca3d64c87117772d'
             'SKIP'
             '242fb87ff64e1a4e0b608239cadd46f49eb08ab751481a1fe7ac9e8f084b0959'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
