@@ -4,60 +4,63 @@
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: userwithuid <userwithuid@gmail.com>
 
-pkgname=mingw-w64-rust
 _pkgname=rust
-pkgver=1.25.0
+
+pkgname=mingw-w64-rust
+pkgver=1.26.0
 pkgrel=1
-pkgdesc="rust language prebuilt toolchain with mingw target (mingw-w64)"
-arch=('any')
-url='https://www.rust-lang.org/'
+pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
+arch=('x86_64')
+url="https://www.rust-lang.org"
 license=('MIT' 'Apache' 'custom')
-depends=('gcc-libs' 'curl' 'libgit2' 'mingw-w64-gcc')
+depends=('gcc-libs'
+         'curl'
+         'libgit2'
+         'mingw-w64-gcc')
 optdepends=('wine: for cargo test support')
-options=(!emptydirs staticlibs !strip)
-provides=()
-conflicts=()
-replaces=()
-makedepends=('rust' 'gdb' 'libffi' 'perl' 'python2' 'nodejs' 'cmake')
-
-source=("https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.xz"{,.asc}
-        mingw-config.toml)
-
-sha256sums=('14fcb82d5959df758aaf422539359300917217fa8420e34bd596e3fb6ed2de87'
+makedepends=('rust'
+             'gdb'
+             'libffi'
+             'perl'
+             'python2'
+             'nodejs'
+             'cmake')
+options=('!strip' 'staticlibs' '!buildflags')
+source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
+        "mingw-config.toml")
+sha256sums=('903b4727ad0c07e0edf9e27d5962c6e6f07f0f3c32e06c0f937bc79a087a32af'
             'SKIP'
-            '497b75a9dfd0f5890a37b1ab8706c52586c08684e47f281bb740686601a81dd3')
+            '8ab05c10084d8e2795aa9d5a954fb05913abc26033c1f9bbf564d0e495f043e4')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/${_pkgname}/cargo/config")
 PKGEXT=".pkg.tar.gz"
 
 prepare() {
-  cd "rustc-$pkgver-src"
+  cd "rustc-${pkgver}-src"
 
-  cp "$srcdir"/mingw-config.toml config.toml
+  cp "${srcdir}"/mingw-config.toml config.toml
   sed -i "s|\@PREFIX\@|/opt/${_pkgname}|" config.toml
 }
 
 build() {
-  cd "rustc-$pkgver-src"
+  cd "rustc-${pkgver}-src"
 
-  unset LDFLAGS
   export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   python2 ./x.py build
 }
 
 package() {
-  cd "rustc-$pkgver-src"
+  cd "rustc-${pkgver}-src"
 
   # rust will build install tools there
-  unset LDFLAGS
   export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   # TODO: find a way to disable packaging
   # use level 0 to speed up xz packaging
   sed -i 's|XzEncoder::new(create_new_file(tar_xz)?, 6)|XzEncoder::new(create_new_file(tar_xz)?, 0)|' "src/tools/rust-installer/src/tarballer.rs"
-  DESTDIR="$pkgdir" python2 ./x.py install
+  DESTDIR="${pkgdir}" python2 ./x.py install
 
   # license
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"{rust,cargo}
