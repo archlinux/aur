@@ -1,38 +1,20 @@
 # Maintainer: neodarz <neodarz@neodarz.net>
 
 pkgname=grv
-pkgver=r212.7e00d05
+pkgver=v0.1.3
 pkgrel=1
 pkgdesc="terminal interface for viewing git repositories"
 arch=('i686' 'x86_64')
 url="https://github.com/rgburke/$pkgname"
 license=('GPL-3.0')
 depends=(ncurses readline curl)
-makedepends=(cmake go)
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$pkgname"::"git+https://github.com/rgburke/$pkgname.git")
+source=("https://github.com/rgburke/grv/releases/download/$pkgver/grv_"$pkgver"_linux64")
 noextract=()
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
-
-build() {
-    export GOROOT=/usr/lib/go
-    export GOPATH="$srcdir"
-    go get -d github.com/rgburke/grv/cmd/grv
-    cd $GOPATH/src/github.com/rgburke/grv
-    make
-}
+sha512sums=('f65d558c0a5a9bfad6b34220b5df36584af7c021780758dbdc8714bb8fa5326a844f79e9a731aae3217ec22009583d6ca590dfe980dfccc1152573807952999a')
 
 package() {
-    export GOROOT="$GOPATH"
-    install -Dm755 "$(pwd)/src/github.com/rgburke/grv/grv" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "grv_"$pkgver"_linux64" "$pkgdir/usr/bin/$pkgname"
 }
 
