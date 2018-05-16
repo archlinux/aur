@@ -4,7 +4,7 @@
 pkgname=roundcube-rcmcarddav
 _plugin_name=rcmcarddav
 _name=carddav
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="CardDAV plugin for RoundCube Webmailer"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('roundcubemail')
 backup=("etc/webapps/roundcubemail/plugins/${_name}/config.inc.php")
 source=("https://github.com/blind-coder/${_plugin_name}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.bz2")
-sha512sums=('a9e87ebc747485f3c5804c95be2e09287597cf4acc729d1b774d6f4d9b16274658f5833b66a9fab1038ad334c7b7d19b9449f16f2e5f02e0d17c9f2e322f13e7')
+sha512sums=('9142fa58bb4e85483eda777bdca80fa26aa9f534332491f4abd37a59cf2f9df384dbac5a32a5eb3caf89b408c10517c84e7521e7accaae91ff29bd659307fa5a')
 
 prepare() {
   mv -v "${_name}" "${pkgname}-${pkgver}"
@@ -44,6 +44,8 @@ package() {
     -t "${pkgdir}/usr/share/webapps/roundcubemail/plugins/${_name}/dbmigrations/0003-fixtimestampdefaultvalue"
   install -vDm 644 dbmigrations/0004-fixtimestampdefaultvalue/*.sql \
     -t "${pkgdir}/usr/share/webapps/roundcubemail/plugins/${_name}/dbmigrations/0004-fixtimestampdefaultvalue"
+  install -vDm 644 dbmigrations/0005-changemysqlut8toutf8mb4/*.sql \
+    -t "${pkgdir}/usr/share/webapps/roundcubemail/plugins/${_name}/dbmigrations/0005-changemysqlut8toutf8mb4"
   # copy vendor files to plugin directory
   cp -av vendor \
     -t "${pkgdir}/usr/share/webapps/roundcubemail/plugins/${_name}/"
