@@ -2,8 +2,8 @@
 
 pkgbase=python-marshmallow
 pkgname=('python-marshmallow' 'python2-marshmallow')
-pkgver=2.13.6
-pkgrel=2
+pkgver=2.15.2
+pkgrel=1
 pkgdesc="A lightweight library for converting complex objects to and from simple Python datatypes."
 url="https://github.com/marshmallow-code/marshmallow"
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('python' 'python-setuptools'
              'python2' 'python2-setuptools')
 checkdepends=('python-tox')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marshmallow-code/marshmallow/archive/${pkgver}.tar.gz")
-sha256sums=('6ffa71ed89dc8cee74d68d6f1edc6012770f5404e8f1f0c76baaaaeb671e2166')
+sha256sums=('8c3e8b5ccfe727e360beb0cb194fe84e10d55f4e7165094b88dd9c5e054cbdd3')
 
 prepare() {
   cp -a marshmallow-$pkgver{,-py2}
