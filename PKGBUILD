@@ -2,7 +2,7 @@
 # package script file for archlinux
 # makepkg -p THISFILE
 pkgname=libllfat
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="library for low-level access to a FAT12/16/32 filesystem"
 license=(GPL3)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=('gcc' 'make')
 arch=('x86_64' 'i686')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sgerwk/libllfat/archive/v$pkgver.tar.gz")
-md5sums=('871e2aebd09818adb2cf9ff85ad082aa')
+md5sums=('0d5cfa12349e288afaacee9ec0fd2e74')
 
 build() {
         cd "$pkgname-$pkgver"
