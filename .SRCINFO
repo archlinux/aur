@@ -1,0 +1,19 @@
+pkgbase = splinterpy-git
+	pkgdesc = Library for multivariate function approximation with splines (B-spline, P-spline, and more) with interfaces to C++, C, Python and MATLAB - Git build
+	pkgver = v3.0.r9.gbce2916
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/bgrimstad/splinter/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = cmake
+	makedepends = boost
+	makedepends = git
+	makedepends = clang
+	options = !emptydirs
+	source = git+https://github.com/bgrimstad/splinter.git
+	sha512sums = SKIP
+
+pkgname = splinterpy-git
+
