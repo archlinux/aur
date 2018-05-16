@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=iwd-git
-pkgver=r1755.8bacbf0
+pkgver=r2423.5c5bfbb
 pkgrel=1
 pkgdesc='Internet Wireless Daemon'
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_gitname}"
 
-	./configure --prefix=/usr --sysconfdir=/etc
+	./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/iwd --localstatedir=/var
   make
 }
 
