@@ -8,7 +8,7 @@
 # Contributor: Daniel Kozak <kozzi11@gmail.com>
 
 pkgname=('gdc' 'libgphobos-devel' 'libgphobos')
-pkgver=7.3.1+20180312
+pkgver=8.1.0
 pkgrel=1
 _islver=0.18
 arch=('i686' 'x86_64')
@@ -17,14 +17,14 @@ url="https://github.com/D-Programming-GDC/GDC"
 makedepends=('binutils>=2.26' 'git')
 
 source=(
-	https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz
+	https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
 	http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
 	gdc::git+https://github.com/D-Programming-GDC/GDC.git
 	git+https://github.com/D-Programming-GDC/GDMD.git
 	paths.diff
 )
 sha256sums=(
-	'c52618f656f2102b3544419e7d0a8a4f4e6ff052783865202be73edf1a40e28b'
+	'1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153'
 	'6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
 	'SKIP'
 	'SKIP'
@@ -51,7 +51,7 @@ prepare() {
 
 	# GDC setup
 	cd $srcdir/gdc
-	git checkout gdc-7
+	git checkout gdc-8
 	git apply $srcdir/paths.diff
 	./setup-gcc.sh ../gcc
 
@@ -103,7 +103,7 @@ build() {
 
 package_gdc() {
 	depends=('gcc' 'perl' 'binutils' 'libgphobos-devel')
-	provides=("d-compiler=2.068.2")
+	provides=("d-compiler=2.076.1")
 	pkgdesc="Compiler for D programming language which uses gcc backend"
 
 	# compiler
