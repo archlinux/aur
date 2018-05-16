@@ -1,4 +1,5 @@
 #!/bin/sh
 
 # Launch pyfa
-python /usr/share/pyfa/pyfa.py "$@"
+/usr/bin/python /usr/share/pyfa/pyfa.py "$@"
+
