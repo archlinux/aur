@@ -1,8 +1,8 @@
 #Maintainer: Musikolo<musikolo {at} hotmail [dot] com>
 #Contributor: Martin špelina<shpelda [at]gmail[dot]com>
 pkgname=dbvis
-pkgver=10.0.11
-__pkgver_underscore=10_0_11
+pkgver=10.0.12
+__pkgver_underscore=10_0_12
 pkgrel=1
 pkgdesc="DbVisualizer free - The Universal Database Tool"
 url="http://www.dbvis.com/"
@@ -11,13 +11,14 @@ arch=('any')
 depends=('java-runtime')
 makedepends=(coreutils sed unzip)
 source=('http://www.dbvis.com/product_download/'$pkgname'-'$pkgver'/media/'$pkgname'_unix_'$__pkgver_underscore'.tar.gz')
-sha256sums=('b804e7ae58855d6d50a1872481f52eea2df7f2baba66a36a409f45e59cf7d67a')
+sha256sums=('9dbce8f71bb5709a8161330d6217ddd52c115d056c36523c5085c7952d02898d')
 
 package() {
 
     msg2 "Relocating files..."
     mkdir -p "$pkgdir/opt"
     mv "$srcdir/DbVisualizer" "$pkgdir/opt/$pkgname"
+    chmod a+x "$pkgdir/opt/$pkgname/dbvisgui.sh"
     mkdir -p "$pkgdir/usr/share/$pkgname"
     mv "$pkgdir/opt/$pkgname/doc" "$pkgdir/usr/share/$pkgname"
     mv "$pkgdir/opt/$pkgname/README.txt" "$pkgdir/usr/share/$pkgname/doc"
@@ -50,7 +51,7 @@ Name=DbVisualizer
 Version=$pkgver
 GenericName=The Universal Database Tool
 Comment=$pkgdesc
-Exec=/usr/bin/$pkgname
+Exec=/opt/$pkgname/dbvisgui.sh
 Icon=$pkgname
 Terminal=false
 Categories=Development
