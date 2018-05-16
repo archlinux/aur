@@ -7,7 +7,7 @@ arch=(arm armv6h armv7h aarch64 x86_64 i686)
 url="https://nanomsg.github.io/nng/"
 license=('MIT')
 depends=()
-makedepends=('git' 'cmake' 'ninja')
+makedepends=('git' 'cmake' 'ninja' 'asciidoctor')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=
@@ -35,11 +35,33 @@ check() {
     ninja test
 }
 
+generate_man() {
+	declare input=$1
+        declare name=nng
+        declare version=PREVIEW
+        declare MANSOURCE="NNG"
+        declare MANMANUAL="NNG Reference Manual"
+        declare pagename=${input#*.}
+        declare output=${input%.*}
+        output=${output##*/}
+        declare level=${pagename:0:1}
+        declare mandir="$pkgdir/usr/share/man/man$level"
+        install -d $mandir
+
+	asciidoctor -aversion-label=${name} -arevnumber=${version} \
+		-a mansource="${MANSOURCE}" -a manmanual="${MANMANUAL}" \
+		-d manpage -b manpage -o "$mandir/$output" $input
+}
+
 package() {
     cd "$srcdir/${pkgname%-git}"
     install -d "$pkgdir/usr/lib"
-    install -d "$pkgdir/usr/include/${pkgname%-git}"
     cp build/libnng* "$pkgdir/usr/lib"
-    install -Dm644 "src/${pkgname%-git}.h" "$pkgdir/usr/include/${pkgname%-git}/${pkgname%-git}.h"
+    for i in `find src -name "*.h"` ; do
+        install -Dm644 $i "$pkgdir/usr/include/${pkgname%-git}/${i#*/}"
+    done
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+    for i in docs/man/*.adoc ; do
+        generate_man $i
+    done
 }
