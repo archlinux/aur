@@ -2,7 +2,7 @@
 # Contributor: Kai Geißdörfer <kai.s.geissdoerfer at campus.tu-berlin.de>
 
 pkgname=ccstudio
-pkgver=7.4.0.00015
+pkgver=8.0.0.00016
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
 arch=('x86_64')
@@ -19,12 +19,12 @@ optdepends=('ttf-dejavu')
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS${pkgver}_linux-x64
-source=("http://software-dl.ti.com/ccs/esd/CCSv7/CCS_7_4_0/exports/${_archive}.tar.gz"
+source=("http://software-dl.ti.com/ccs/esd/CCSv8/CCS_8_0_0/exports/${_archive}.tar.gz"
         "LICENSE"
         "61-msp430uif.rules"
         "71-sd-permissions.rules")
 
-md5sums=('71ae53956f68e2a28d4fb89d5730bb61'
+md5sums=('37636805cd4c102872acc3a270daebca'
          'cf7222e486f8f1d2a0f99d3d946e1f01'
          '7c570e9f93da6f01986285db81d497ef'
          'af8a8c199be432919b4ca66106591c25')
@@ -33,24 +33,32 @@ install=$pkgname.install
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
-_desktop="Code Composer Studio 7.4.0.desktop"
+_desktop="Code Composer Studio 8.0.0.desktop"
 
 _destdir=opt
 _installdir=installdir
 _installpath=$_installdir/$_destdir/$pkgname
-_scriptsdir=$_installpath/ccsv7/install_scripts
+_scriptsdir=$_installpath/ccsv8/install_scripts
 
 build() {
     cd $srcdir/${_archive}
 
     echo ">>> Executing installer. You can monitor progress with:"
-    echo ">>>     tail -f ${srcdir}/${_installpath}/ccsv7/install_logs/*/ccs_setup_${pkgver}_install.log"
+    echo ">>>     tail -f ${srcdir}/${_installpath}/ccsv8/install_logs/*/ccs_setup_${pkgver}_install.log"
 
     # Can't run this in package, because running as fakeroot breaks it:
     #    CCS_INFO: error message: dlsym(acl_get_fd): /usr/lib32/libfakeroot/libfakeroot.so: undefined symbol: acl_get_fd
     # NOTE: ti_cgt_c2000_16.9.3.LTS_linux_installer_x86.bin is executed under fakeroot, this error is simply printed,
     #       but is not fatal. But, when the whole CCS installer is run under fakeroot is 
-    ./ccs_setup_linux64_${pkgver}.bin --mode unattended --apps-select-all true --prefix $srcdir/$_installpath
+
+    # Unattented install mode -- preferred (but broken with current version, see below)
+    #./ccs_setup_linux64_${pkgver}.bin --mode unattended --prefix $srcdir/$_installpath
+
+    # GUI installer -- must use because some components fail to get installed (likely because they
+    # suffer from the glibc version incompatibility), but can't specify components on the
+    # command line for unattented install (tried --disable-components with com.ti.xxx syntax
+    # and with CGT_C6000 syntax, nothing works)
+    ./ccs_setup_linux64_${pkgver}.bin --prefix $srcdir/$_installpath
 
     # Move .desktop out of the dir about to be copied (avoiding rm), and fix path
     mv "$srcdir/$_installpath/$_desktop" $srcdir/$pkgname.desktop
