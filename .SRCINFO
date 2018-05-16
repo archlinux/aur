@@ -1,7 +1,7 @@
 pkgbase = scilab
 	pkgdesc = A scientific software package for numerical computations.
 	pkgver = 6.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.scilab.org
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = scilab
 	license = GPL2
 	makedepends = java-environment>=8
 	makedepends = apache-ant>=1.9.0
+	makedepends = ocaml-findlib
 	makedepends = ocaml-num
 	makedepends = gcc-fortran
 	depends = suitesparse>=4.4.1
