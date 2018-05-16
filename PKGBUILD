@@ -1,5 +1,5 @@
 pkgname=simpleorcapluginsystem-git
-pkgver=1.0
+pkgver=1.01
 pkgrel=1
 pkgdesc="SOPS Provides a simple plugin system for orca include plugins"
 arch=(any)
