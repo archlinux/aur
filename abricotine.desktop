@@ -6,6 +6,6 @@ Exec=abricotine %F
 Icon=abricotine
 Terminal=false
 Type=Application
-Category=Office;TextEditor;
+Categories=Office;TextEditor;
 MimeType=text/markdown;
 Keywords=Text;Editor;Markdown;
