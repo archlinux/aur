@@ -1,0 +1,11 @@
+--- Cinnamon-3.8.2/files/usr/share/cinnamon/cinnamon-settings/modules/cs_themes.py	2018-05-07 00:13:24.000000000 +0900
++++ Cinnamon-3.8.2/files/usr/share/cinnamon/cinnamon-settings/modules/cs_themes.py.patched	2018-05-16 10:39:54.997455141 +0900
+@@ -322,7 +322,7 @@
+ 
+     def _load_metacity_themes(self):
+         dirs = ("/usr/share/themes", os.path.join(os.path.expanduser("~"), ".themes"))
+-        valid = walk_directories(dirs, lambda d: os.path.exists(os.path.join(d, "metacity-1/metacity-theme-3.xml")), return_directories=True)
++        valid = walk_directories(dirs, lambda d: os.path.exists(os.path.join(d, "metacity-1")), return_directories=True)
+         valid.sort(key=lambda a: a[0].lower())
+         res = []
+         for i in valid:
