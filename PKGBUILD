@@ -59,18 +59,18 @@ pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=4.16
 _srcname=linux-${_major}
-_minor=7
-_rtver=1
+_minor=8
+_rtver=2
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _rtpatchver=rt${_rtver}
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
-_bfq_sq_mq_ver='20180412'
+_bfq_sq_mq_ver='20180516'
 _bfq_sq_mq_patch="${_major}-bfq-sq-mq-git-${_bfq_sq_mq_ver}.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
@@ -421,11 +421,11 @@ done
 
 sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2d06317dc1683c51a472a9a631573a9b1e7258d6281a2ee189897827f14662'
             'SKIP'
-            '576c2b520d444e11a9ca45ed3ed03822007ab6ff778a1759aa0f65c96946fe3e169e71d48d11e6d3b8627a99cdc20abfb0c84d7b6c9b0d2afa4d5fee9ed3aa41'
+            '8bd521f5a14280c6893f6d85f46d12f97ba71abf3e149f1900aa5e1efa3a03a97df674c4b2b46553b8e9df55164894b6fcb510dbba8cab8ce47ee4b0186e27d0'
             'SKIP'
-            '5b3625ebb4eccce4e45a3925640a0b0cb91af07ae3d1fe879709c107aa1633bc89bfe7895f650a83cc75c109f11cfa3ee986f6ecfdb3af0b718509154a5ec027'
+            '609541e14f89d771ddf8c5cc5b7f4724f886f992511883aad021dca56ce905c34fe7f0215788928052e40d21f938f822fadd7cd4073890e809789263ef725aca'
             'SKIP'
-            '5b860dd67312af2327b9c6abc62d08e285cb81b5e64207f879178dac673cfe67249321ab9bf61e07e6fb855b0d7388061e8bbd4cead0e078886b91beb38599c9'
+            'd1dcba01d1e905dbc88346466be21845f0138c1ca635e5cc2b5d3225d6d15fe6a345ff11bf900c663c060d00746f8bcf4470121a501d612551a5168da2876ea4'
             'a10a546ecced915ee38075cc6c57eaebb0f8fa58e6af6669d7429ef4880b55bd5782e11dfbda75ce4f805fa5b2399421b4eade8bbbf6766e5aac24a542f1b7a7'
             '9737f30e748e043a1b6ab56bd0df6dc9607b4a2749243e599f5563b157aaf339ad43020a526a11a6fc809cc1abe50ac1cb12188bf5b367f6458fa0dbc2c1824d'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
