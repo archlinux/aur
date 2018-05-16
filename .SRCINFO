@@ -1,0 +1,14 @@
+pkgbase = nginx-h5bp-server-configs
+	pkgdesc = Nginx HTTP server boilerplate configs
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/h5bp/server-configs-nginx
+	arch = any
+	license = MIT
+	depends = nginx
+	provides = nginx-h5bp-server-configs
+	source = https://github.com/h5bp/server-configs-nginx/archive/2.0.0.tar.gz
+	sha1sums = 674b8084df61f72404ecedc2685c4267b7f17442
+
+pkgname = nginx-h5bp-server-configs
+
