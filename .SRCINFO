@@ -1,8 +1,8 @@
 pkgbase = vale
 	pkgdesc = A customizable, syntax-aware linter for prose.
-	pkgver = 0.10.1
+	pkgver = 0.11.2
 	pkgrel = 1
-	url = https://github.com/ValeLint/vale
+	url = https://github.com/errata-ai/vale
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -11,9 +11,9 @@ pkgbase = vale
 	makedepends = python-docutils
 	provides = vale
 	options = !emptydirs
-	source = https://github.com/ValeLint/vale/archive/0.10.1.zip
+	source = https://github.com/errata-ai/vale/archive/v0.11.2.zip
 	source = enable_local_build.patch
-	sha256sums = 8210ecea53c6715a3022dcb723f626f467072b8f7062fa9bb6d29a486278b6c8
+	sha256sums = 53be34227e45e5a1ff34e1becb605ae52efb0b01bf5e383021dc8426fa5183fc
 	sha256sums = 69f1efbd1f638cd601a0f5583b85a052aa5bbb6433a9d4a24dba11b29f703422
 
 pkgname = vale
