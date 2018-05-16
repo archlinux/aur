@@ -15,6 +15,6 @@ md5sums=('SKIP')
     
 package() {
   cd "${srcdir}/simple-orca-plugin-system"
-  mkdir -p "$pkgdir/usr/share/"
-  cp -r SOPS "$pkgdir/usr/share/"
+  mkdir -p "$pkgdir/usr/share/SOPS"
+  cp -r * "$pkgdir/usr/share/SOPS"
 }
