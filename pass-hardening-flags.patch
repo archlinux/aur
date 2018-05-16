@@ -1,0 +1,26 @@
+Description: Pass hardening CFLAGS, CPPFLAGS and LDFLAGS
+Note: adapted by karamaz0v from debian patch to use after applying Arch python2-call.patch
+Author: Graham Inggs <ginggs@debian.org>
+Forwarded: Yes
+Last-Update: 2017-12-02
+--- odpdom/Makefile
++++ odpdom/Makefile
+@@ -10,7 +10,7 @@
+ #	  -DNO_THROW
+ 
+ PYINCLUDE=`python2 -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
+-CFLAGS  += -fpic -g $(FLAGS) -I$(PYINCLUDE)  -Iinclude
++CFLAGS  += -fpic -g $(CPPFLAGS) $(FLAGS) -I$(PYINCLUDE)  -Iinclude
+ 
+ SWIGFLAGS = -python -c++ $(FLAGS)
+ 
+--- src/Configuration.mk
++++ src/Configuration.mk
+@@ -1,6 +1,6 @@
+ LIBS=  -L../odpdom -lODP $(shell fltk-config --use-gl --ldflags) -lGLU -lGL -lm -lpthread
+ CFLAGS?= -g -Wall
+-CFLAGS+= -fpic $(FLAGS) $(shell fltk-config --cxxflags) -I$(PYINCLUDE) \
++CFLAGS+= -fpic $(CPPFLAGS) $(FLAGS) $(shell fltk-config --cxxflags) -I$(PYINCLUDE) \
+         -Iinclude -I../odpdom/include
+ PYINCLUDE=`python2 -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
+ LDFLAGS+= -shared -L.

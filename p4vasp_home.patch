@@ -1,50 +1,25 @@
---- Makefile	2018-05-16 15:30:58.974859448
-+++ Makefile	2018-05-16 15:36:00.684482264
-@@ -14,6 +14,11 @@
- ######################################################################
- 
- -include install/Configuration.mk
-+P4VASP_HOME   = $(DESTDIR)
-+SITE_PACKAGES = $(P4VASP_HOME)/python-packages
-+INCLUDEDIR    = $(P4VASP_HOME)/include
-+LIBDIR        = $(P4VASP_HOME)/lib
-+BINDIR        = $(P4VASP_HOME)/bin
- 
- P4VCONFIG     = lib/p4vasp/config.py
- VINFO         = vinfo.py
-@@ -50,7 +55,7 @@
+--- Makefile	2018-05-16 17:24:55.841286901 +0200
++++ Makefile	2018-05-16 17:28:02.736120648 +0200
+@@ -50,7 +50,7 @@
  	cd odpdom && $(MAKE) libODP.a	
  	cd src && $(MAKE)
  p4vasp_config:
 -	echo "p4vasp_home='$(P4VASP_HOME)'" >$(P4VCONFIG)
-+	echo "p4vasp_home='/opt/p4vasp'" >$(P4VCONFIG)
++	echo "p4vasp_home='/usr/share/p4vasp'" >$(P4VCONFIG)
  	cat $(VINFO) >> $(P4VCONFIG)
  devver:
  	echo "name       ='p4vasp-devel'" > $(VINFO)
-@@ -146,7 +151,7 @@
- clean: clean_p4vasp clean_odpdom
- cleanall: cleanall_p4vasp cleanall_odpdom cleanall_doc
- 	
--install_pythonpkg:p4vasp
-+install_pythonpkg:
- 	mkdir -p $(SITE_PACKAGES)/p4vasp
- 	cd lib; cp -R p4vasp $(SITE_PACKAGES); cd ..
- 	chmod -R 755 $(SITE_PACKAGES)/p4vasp
-@@ -160,7 +165,7 @@
- 	chmod -R 755 $(SITE_PACKAGES)/p4vasp/piddle	
- 	cd src; install -m755  cp4vasp.py _cp4vasp.so $(SITE_PACKAGES); cd ..
- 	
--install_gui:install_pythonpkg uninstallsh launcher
-+install_gui:install_pythonpkg
- 	mkdir -p     $(P4VASP_HOME)
- 	cp -R data   $(P4VASP_HOME)
- 	cp -R utils  $(P4VASP_HOME)
-@@ -203,7 +208,7 @@
- 	chmod -R 755   $(P4VASP_HOME)/doc/intro
- 	chmod    644   $(P4VASP_HOME)/doc/intro/*
- 		
--install_devel:install_pythonpkg
-+install_devel:
- 	mkdir -p $(LIBDIR)
- 	mkdir -p $(INCLUDEDIR)/ODP
- 	mkdir -p $(INCLUDEDIR)/p4vasp
+@@ -63,11 +63,9 @@
+ launcher:
+ 	echo "#!`which sh`" >$(P4V)
+ 	echo "export LD_PRELOAD=libstdc++.so.6" >>$(P4V)
+-	echo "export PYTHONPATH=\$$PYTHONPATH:"$(SITE_PACKAGES) >>$(P4V)
+-	echo "#export APPMENU_DISPLAY_BOTH=1" >>$(P4V)
+ 	echo "export UBUNTU_MENUPROXY=0" >>$(P4V)
+-	echo "export P4VASP_HOME="$(P4VASP_HOME) >> $(P4V)
+-	echo "exec python2 "$(BINDIR)"/p4v.py \"\$$@\"" >>$(P4V)
++	echo "export P4VASP_HOME=/usr/share/p4vasp" >> $(P4V)
++	echo "exec /usr/bin/python2 /usr/bin/p4v.py \"\$$$$@@\"" >>$(P4V)
+ appletlist:
+ 	cd install && python2 makeappletlist.py
+ bashrc:setenvironment

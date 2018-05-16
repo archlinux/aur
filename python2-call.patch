@@ -734,3 +734,27 @@ Last-Update: 2014-03-02
  
  from p4vasp.Structure import *
  from sys import argv
+--- lib/p4vasp/applet/PhononDispersionApplet.py	2015-10-06 21:52:37.000000000 +0200
++++ lib/p4vasp/applet/PhononDispersionApplet.py	2018-05-16 18:03:58.028967774 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/PhononsCalculation.py	2015-10-06 21:52:37.000000000 +0200
++++ lib/p4vasp/PhononsCalculation.py	2018-05-16 18:07:01.127203455 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ import p4vasp.matrix as p4m
+ import numpy as np
+--- lib/p4vasp/applet/PhononApplet.py	2015-10-06 21:52:37.000000000 +0200
++++ lib/p4vasp/applet/PhononApplet.py	2018-05-16 18:07:54.730018418 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)

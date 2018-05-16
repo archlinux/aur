@@ -1,0 +1,20 @@
+Description: swig >2.0.4 returns a long but __len__() should return an int
+ Fix the following error when showing 'Bands' or 'DOS and Bands':
+ TypeError: __len__() should return an int
+Author: Graham Inggs <ginggs@debian.org>
+Forwarded: yes
+Last-Update: 2015-11-16
+--- lib/p4vasp/FArray.py
++++ lib/p4vasp/FArray.py
+@@ -74,9 +74,8 @@
+             else:
+                 cp4vasp.FArray2D.__init__(self,n,m)
+ 
+-    __len__=cp4vasp.FArray2D.sizeX
+-
+-
++    def __len__(self):
++        return int(cp4vasp.FArray2D.sizeX(self))
+     def __getitem__(self,i):
+         return FArray1D(pointer=self.getArray(i))
+     def __setitem__(self,i,l):

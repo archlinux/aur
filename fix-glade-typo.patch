@@ -1,0 +1,21 @@
+Description: Fix a typo in glade file name
+ Prevents the following warning when selecting
+ 'Electronic / View k-points' from the menu:
+ (p4v.py:7261): libglade-WARNING **: could not find glade file
+ '/usr/share/p4vasp/data/glade2/Applet.glade'
+Author: Graham Inggs <ginggs@debian.org>
+Forwarded: yes
+Last-Update: 2015-11-16
+--- lib/p4vasp/applet/Applet.py
++++ lib/p4vasp/applet/Applet.py
+@@ -151,8 +151,8 @@
+ 
+     def __init__(self):
+         self.name=self.__class__.__name__
+-        self.gladefile="Applet.glade"
+-        self.gladename="Applet"
++        self.gladefile="applet.glade"
++        self.gladename="applet_frame"
+         self.panel=None
+ #    self.appletnode=None
+         self.system=None

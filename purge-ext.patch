@@ -1,5 +1,5 @@
 Description: Don't build convenience libraries in ext
-Note: adapted by karamaz0v from debian patch to use after applying python2-call.patch
+Note: adapted by karamaz0v from debian patch to use after applying Arch python2-call.patch
 Author: Stefano Rivera <stefanor@ubuntu.com>
 Author: Graham Inggs <graham@nerve.org.za>
 Forwarded: not-needed

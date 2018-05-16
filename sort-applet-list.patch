@@ -1,0 +1,15 @@
+Description: sort applet list to make build reproducible
+Bug-Debian: https://bugs.debian.org/803140
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Last-Update: 2015-10-27
+--- install/makeappletlist.py
++++ install/makeappletlist.py
+@@ -10,7 +10,7 @@
+             l.append(s)
+             l.append(s)
+             modules.append(".".join(l))
+-    return modules
++    return sorted(modules)
+ 
+ f=open(join("..","lib","p4vasp","applet","appletlist.py"),"w")
+ f.write("def appletlist():\n")
