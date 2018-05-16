@@ -2,7 +2,7 @@
 
 pkgname=('zafiro-icon-theme')
 pkgver=0.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A icon pack flat with light colors."
 arch=('any')
 url="https://github.com/zayronxio/Zafiro-icons"
@@ -15,7 +15,6 @@ package() {
   dir=$srcdir/Zafiro-icons-$pkgver
   install -Dm644 $dir/LICENSE.md $pkgdir/usr/share/license/$pkgname/LICENSE
 
-  mv "$dir/previews/system apps.png" $dir/previews/system-apps.png
   cp -dr --no-preserve='ownership' $dir $pkgdir/usr/share/icons/$pkgname
 }
 
