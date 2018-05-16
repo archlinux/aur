@@ -3,7 +3,7 @@
 
 pkgname=galileo-dev
 pkgver=1.0dev
-pkgrel=2
+pkgrel=3
 pkgdesc='Utility to securely synchronize a Fitbit tracker with the Fitbit server. Development version, which supports synchronization without dongle, through bluetooth (experimental)'
 license=('LGPL3')
 url='https://bitbucket.org/benallard/galileo'

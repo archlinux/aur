@@ -3,6 +3,8 @@ post_upgrade() {
     getent passwd galileo &>/dev/null || useradd -U -r -s /usr/bin/nologin galileo >/dev/null
     echo "You should consider adding yourself to the group galileo to run it without root priviledges."
     echo "[sudo] gpasswd -a <yourself> galileo"
+    echo "For synchronizing without dongle, through bluetooth, run :"
+    echo "galileo --bluetooth PyDBUS --verbose --database RemoteRESTDatabase"
 }
 
 post_install() {
