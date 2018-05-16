@@ -1,7 +1,7 @@
 # Maintainer: neodarz <neodarz@neodarz.net>
 
 pkgname=grv
-pkgver=v0.1.3
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="terminal interface for viewing git repositories"
 arch=('i686' 'x86_64')
@@ -10,11 +10,23 @@ license=('GPL-3.0')
 depends=(ncurses readline curl)
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("https://github.com/rgburke/grv/releases/download/$pkgver/grv_"$pkgver"_linux64")
+source=("https://github.com/rgburke/grv/releases/download/v$pkgver/grv-$pkgver-src.tar.gz")
 noextract=()
-sha512sums=('f65d558c0a5a9bfad6b34220b5df36584af7c021780758dbdc8714bb8fa5326a844f79e9a731aae3217ec22009583d6ca590dfe980dfccc1152573807952999a')
+sha512sums=('5b579a8ddbe3e261301e22b7f1e9384ed2dbb2fa1c3355619da00bde2e81520822bf796828b5c56711074b9579aacd1178d661df787ef9636404c8fbada1f5aa')
+
+build() {
+    export GOPATH="$srcdir"
+    mkdir -p $GOPATH/src/github.com/rgburke
+    rm -rf $GOPATH/src/github.com/rgburke/$pkgname
+    mv $srcdir/$pkgname $GOPATH/src/github.com/rgburke
+
+    cd $GOPATH/src/github.com/rgburke/$pkgname
+    make build-libgit2
+
+}
 
 package() {
-    install -Dm755 "grv_"$pkgver"_linux64" "$pkgdir/usr/bin/$pkgname"
+    cd $GOPATH/src/github.com/rgburke/$pkgname
+    make install
 }
 
