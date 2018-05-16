@@ -2,61 +2,59 @@
 
 int zoom_months[] = {60, 48, 36, 24, 12, 9, 6, 3, 1}, zoom_change_x_months[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
 
-void graph_main(const char* ticker_name_string, const char* ticker_name_string2) {
+void graph_main(const char* symbol, const char* symbol2) {
     initscr();
-    if (ticker_name_string2 != NULL && !has_colors()) {
-        endwin();
-        puts("Your terminal does not support color.");
-        return;
+    if (symbol2 != NULL && !has_colors()) { // compare command will use two colors to differentiate, so color must
+        endwin();                           // be supported. Must endwin() before puts()
+        RET_MSG("Your terminal does not support color.");
     }
 
     puts("Loading data...");
-    double* price_data = api_get_hist_5y(ticker_name_string), * price_data2 = NULL;
+    double* price_data = api_get_hist_5y(symbol), * price_data2 = NULL;
     if (price_data == NULL) { // If invalid symbol or cryptocurrency
         endwin();
-        puts("Invalid symbol.");
-        return;
+        RET_MSG("Invalid symbol.");
     }
 
-    if (ticker_name_string2 != NULL) {
-        price_data2 = api_get_hist_5y(ticker_name_string2);
+    if (symbol2 != NULL) {
+        price_data2 = api_get_hist_5y(symbol2);
         if (price_data2 == NULL) { // If invalid symbol or cryptocurrency
             free(price_data);
             endwin();
-            puts("Invalid symbol.");
-            return;
+            RET_MSG("Invalid symbol.");
         }
     }
+
     noecho(); // Don't echo keystrokes
     keypad(stdscr, TRUE); // Enables extra keystrokes
     curs_set(0); // Hides cursor
-    if (ticker_name_string2 != NULL) {
-        start_color(); // Enable colors
-        init_pair(1, COLOR_RED, COLOR_BLACK);
-    }
+
     time_t now = time(NULL);
     struct tm today_date = *localtime(&now), start_date = today_date, furthest_back_date = today_date, end;
-    start_date.tm_year -= 5, furthest_back_date.tm_year -= 5;
-    int ch, zoom = ZOOM_5y;
-
+    start_date.tm_year -= 5, furthest_back_date.tm_year -= 5; // Go back five years
     double seconds = difftime(mktime(&today_date), mktime(&furthest_back_date));
-    int trading_days = (int) ((1.0 / DAYS_TO_BUSINESS_DAYS_RATIO) * seconds / 86400.0); // Total trading days to print
+
+    // Calculate total number of trading days between today and five years ago
+    int trading_days = (int) ((1.0 / DAYS_TO_BUSINESS_DAYS_RATIO) * seconds / 86400.0);
 
     int total_data_points = 0, total_data_points2 = 0;
-    for (int i = 0; price_data[i] != '\0'; i++)
-        total_data_points++;
+    for (int i = 0; price_data[i] != '\0'; i++) // Calculate total number of data points in the security. This may not
+        total_data_points++;                    // be equal to trading days if the security is younger than 5 years old
 
-    if (price_data2 != NULL)
-        for (int i = 0; price_data2[i] != '\0'; i++)
-            total_data_points2++;
-
-    if (trading_days - total_data_points > 0) // On initial print, scrub to make sure that there are 5 years worth of data points
+    if (trading_days - total_data_points > 0) // If younger than 5, realloc with num of trading days and fill with EMPTY
         price_data = graph_fill_empty(price_data, total_data_points, trading_days);
 
-    if (ticker_name_string2 != NULL && trading_days - total_data_points2 > 0) // On initial print, scrub to make sure that there are 5 years worth of data points
-        price_data2 = graph_fill_empty(price_data2, total_data_points2, trading_days);
+    if (symbol2 != NULL) {
+        start_color(); // Enable colors for comparison
+        init_pair(1, COLOR_RED, COLOR_BLACK); // Init color red
+        for (int i = 0; price_data2[i] != '\0'; i++)
+            total_data_points2++;
+        if (trading_days - total_data_points2 > 0)
+            price_data2 = graph_fill_empty(price_data2, total_data_points2, trading_days);
+    }
 
-    graph_print(price_data, price_data2, &start_date, zoom, ticker_name_string, ticker_name_string2); // Initial graph of 5 year history
+    int ch, zoom = ZOOM_5y;
+    graph_print(price_data, price_data2, &start_date, zoom, symbol, symbol2); // Initial graph of 5 year history
 
     while ((ch = getch()) != 'q') { // Main input loop -- end if keypress 'q'
         if ((ch == KEY_UP && zoom != ZOOM_1m) || (ch == KEY_DOWN && zoom != ZOOM_5y) ||
@@ -84,7 +82,7 @@ void graph_main(const char* ticker_name_string, const char* ticker_name_string2)
                 if (difftime(mktime(&start_date), mktime(&furthest_back_date)) < 0)
                     start_date = furthest_back_date; // Can't go back past furthest_date
             }
-            graph_print(price_data, price_data2, &start_date, zoom, ticker_name_string, ticker_name_string2);
+            graph_print(price_data, price_data2, &start_date, zoom, symbol, symbol2);
         }
     }
     endwin();
@@ -94,7 +92,7 @@ void graph_main(const char* ticker_name_string, const char* ticker_name_string2)
 }
 
 void graph_print(const double* points, const double* points2, struct tm* start_time, int zoom,
-                 const char* ticker_name_string, const char* ticker_name_string2) {
+                 const char* symbol, const char* symbol2) {
     move(0, 0); // Instead of clear()ing, move to the top left corner and re-print
     int cols, rows;
     getmaxyx(stdscr, rows, cols);
@@ -128,9 +126,9 @@ void graph_print(const double* points, const double* points2, struct tm* start_t
                 min = points[i];
         }
     }
-    double line_diff = (max - min) / rows, dat; // Each line includes data point up to line_diff below
+    double line_diff = (max - min) / rows, day_close; // Each line includes data point up to line_diff below
 
-    double max2 = 0, min2 = 0, line_diff2 = 0, dat2 = 0;
+    double max2 = 0, min2 = 0, line_diff2 = 0, day_close2 = 0;
     if (points2 != NULL) {
         max2 = points2[starting_index], min2 = points2[starting_index];
         k = 0;
@@ -146,31 +144,31 @@ void graph_print(const double* points, const double* points2, struct tm* start_t
                     min2 = points2[i];
             }
         }
-        line_diff2 = (max2 - min2) / rows;
+        line_diff2 = (max2 - min2) / rows; // Each line includes data point up to line_diff below
     }
 
     for (int i = rows; i >= 0; i--) {
         if (i % ROWS_SPACING == 0) // Print y-axis price labels with width 10
             printw("%9.2lf ", (max - ((rows - i) * line_diff)));
-        else if (points2 != NULL && (i - 1 ) % ROWS_SPACING == 0) {// Print y-axis price labels with width 10
+        else if (points2 != NULL && (i - 1) % ROWS_SPACING == 0) { // Print comparison price label above
             attron(COLOR_PAIR(1));
             printw("%9.2lf ", (max2 - ((rows - i) * line_diff2)));
             attroff(COLOR_PAIR(1));
-        }
-        else printw("          "); // Indent width 10
+        } else printw("          "); // Indent width 10 otherwise
+
         for (int j = 0; j < cols; j++) {
-            dat = points[starting_index + (int) ((double) j * trading_days / cols)];
+            day_close = points[starting_index + (int) ((double) j * trading_days / cols)]; // Get close prices
             if (points2 != NULL)
-                dat2 = points2[starting_index + (int) ((double) j * trading_days / cols)];
-            if (dat <= (max - ((rows - i) * line_diff)) && dat > (min + ((i - 1) * line_diff)))
-                addch(ACS_DIAMOND);
-            else if (points2 != NULL && dat2 <= (max2 - ((rows - i) * line_diff2)) &&
-                     dat2 > (min2 + ((i - 1) * line_diff2))) {
+                day_close2 = points2[starting_index + (int) ((double) j * trading_days / cols)];
+
+            if (day_close <= (max - ((rows - i) * line_diff)) && day_close > (min + ((i - 1) * line_diff)))
+                addch(ACS_DIAMOND); // Print diamond if close price is within line_diff
+            else if (points2 != NULL && day_close2 <= (max2 - ((rows - i) * line_diff2)) &&
+                     day_close2 > (min2 + ((i - 1) * line_diff2))) {
                 attron(COLOR_PAIR(1));
-                addch(ACS_DIAMOND);
+                addch(ACS_DIAMOND); // Print RED diamond if close price is within line_diff
                 attroff(COLOR_PAIR(1));
-            }
-            else if (i % ROWS_SPACING == 0 && j % COLS_SPACING == 0) // Cross on corners
+            } else if (i % ROWS_SPACING == 0 && j % COLS_SPACING == 0) // Cross on corners
                 addch(ACS_PLUS);
             else if (i % ROWS_SPACING == 0) // Horizontal line every ROWS_SPACING lines
                 addch(ACS_HLINE);
@@ -182,33 +180,32 @@ void graph_print(const double* points, const double* points2, struct tm* start_t
         addch('\n'); // Newline on line end
     }
 
-    printw("     "); // Use to center date labels
+    printw("     "); // Indent to center date labels
     char time_string[16];
-    double x = (DAYS_TO_BUSINESS_DAYS_RATIO * trading_days) / (cols / COLS_SPACING);
+    double days_per_col_spacing = (DAYS_TO_BUSINESS_DAYS_RATIO * trading_days) / (cols / COLS_SPACING);
     struct tm copy = *start_time;
     for (int i = 0; i < cols; i++) {
         if (i % (2 * COLS_SPACING) == 0 && cols - i > 5) { // Print x-axis date labels every two
             if (i != 0)
-                copy.tm_sec += x * 2.0 * 86400.0;
+                copy.tm_sec += days_per_col_spacing * 2.0 * 86400.0;
             mktime(&copy);
             strftime(time_string, 16, "%m/%d/%Y", &copy);
             printw("%s              ", time_string); // Width 2 * COLS_SPACING
         }
     }
 
-    printw("\n\n"); //  Empty line as spacing
-    printw(" %s", ticker_name_string);
+    printw("\n\n %s", symbol); // Empty line as spacing, then print key containing the symbol(s) and diamond with color
     addch(ACS_DIAMOND);
     if (points2 != NULL) {
         attron(COLOR_PAIR(1));
-        printw(" %s", ticker_name_string2);
+        printw(" %s", symbol2);
         addch(ACS_DIAMOND);
         attroff(COLOR_PAIR(1));
     }
     addch(' ');
-    size_t offset = (cols / 2) - (11 + strlen(ticker_name_string));
+    size_t offset = (cols / 2) - (11 + strlen(symbol)); // Center zoom level
     if (points2 != NULL)
-        offset -= strlen(ticker_name_string2) + 2;
+        offset -= strlen(symbol2) + 2;
     for (unsigned int i = 0; i < offset; i++)
         addch(' '); // Center text
     const char* str[9] = {"5y", "4y", "3y", "2y", "1y", "9m", "6m", "3m", "1m"}; // Zoom level

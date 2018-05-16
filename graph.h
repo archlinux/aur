@@ -24,27 +24,34 @@ extern int zoom_months[9], zoom_change_x_months[9];
 /**
  * -- Main input loop for graphing --
  *
- * Initially prints a five-year graph of the given security. The user may input keystrokes to manipulate the graph
+ * Gets the five year history of the given security(s) and calls graph_print to initially display a graph of it/them.
+ * If symbol2 is NULL, only displays the graph for symbol.
+ * The user may input keystrokes to manipulate the graph(s).
  * Valid keystrokes:
  * q: Quits program
  * UP: increase zoom level by one and moves start date forward by one year, three months, or two months.
  * DOWN: decreases zoom level by one and moves start date backward by one year, three months, or two months.
  * LEFT: moves start date backward by one year, three months, or one month.
  * RIGHT: moves start date forward by one year, three months, or one month.
- * @param ticker_name_string symbol
+ * @param symbol first symbol
+ * @param symbol2 second symbol
  */
-void graph_main(const char* ticker_name_string, const char* ticker_name_string2);
+void graph_main(const char* symbol, const char* symbol2);
 
 /**
  * Prints out a NCurses based graph given an array of daily close prices.
- * x-axis -- close price
- * y-axis -- date
- * @param points daily close prices of past five years
+ * If points2 if not NULL, also prints a graph of its data in a different color.
+ * x-axis -- date
+ * y-axis -- close price
+ * @param points daily close prices of past five years of first security
+ * @param points2 daily close prices of past five years of second security
  * @param start_time the starting date of prices to print
  * @param zoom the zoom level
+ * @param symbol first symbol
+ * @param symbol2 second symbol
  */
 void graph_print(const double* points, const double* points2, struct tm* start_time, int zoom,
-        const char* ticker_name_string, const char* ticker_name_string2);
+        const char* symbol, const char* symbol2);
 
 /**
  * Reallocates the given array with size trading days. Moves all values to end of the array and sets
