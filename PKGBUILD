@@ -12,6 +12,8 @@ md5sums=('3f28fd98011d2ec7a01703a1ef1dff45' SKIP SKIP SKIP SKIP SKIP SKIP SKIP S
 
 prepare() {
   cd "${srcdir}"/Assimulo-$pkgver
+
+  # https://trac.jmodelica.org/assimulo/changeset/845
   patch -p0 -i "${srcdir}"/r831.patch
   patch -p0 -i "${srcdir}"/r833.patch
   patch -p0 -i "${srcdir}"/r836.patch
