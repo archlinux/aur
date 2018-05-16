@@ -14,7 +14,7 @@ url="https://github.com/linuxmint/Cinnamon"
 license=('GPL2')
 depends=('accountsservice' 'caribou' 'cinnamon-control-center' 'cinnamon-menus' 'cinnamon-screensaver'
          'cinnamon-session' 'cinnamon-settings-daemon' 'cjs' 'clutter-gtk' 'gnome-backgrounds'
-         'gnome-themes-standard' 'gstreamer' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin'
+         'gnome-themes-standard' 'gstreamer' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin36'
          'network-manager-applet' 'nemo' 'polkit-gnome' 'python-cairo' 'python-dbus'
          'python-gobject' 'python-pam' 'python-pexpect' 'python-pillow' 'python-pyinotify' 'xapps')
 optdepends=('blueberry: Bluetooth support'
