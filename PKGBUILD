@@ -4,7 +4,7 @@
 pkgname=memsource-editor
 _pkg=MemsourceEditor
 _platform=ubuntu-14.04
-pkgver=6.212.2
+pkgver=6.213.0
 pkgrel=1
 pkgdesc="A CAT translation tool, requires Memsource subscription"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("http://download.memsource.com/production/updates/memsource-editor/linux
         "memsource"
         "license.desktop")
 
-sha256sums=('aaaad5d57390c13f430e22a7ff57785b57cc448411ab1af903754d196406aabb'
+sha256sums=('4afd285d42d61f91be80d2a0ad56898cc0d91ef7becdf76e0f82ae42503ba2cd'
             '943056f6643f110d94663e4bbf1650850d49ea0adb48cc0355ad5b4f6112da24'
             'dbe0e241bc352b170577725c6f8b86922b36757f1cc82b6d16f967fe5f398266'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
@@ -56,11 +56,6 @@ package() {
   install -d ${pkgdir}/opt/memsource-editor
   install -d ${pkgdir}/usr/{bin,share/{mime/packages,applications}}
   install -d ${pkgdir}/usr/share/licenses/memsource-editor
-
-  #install -Dm 775 ${srcdir}/build/memsource-editor/TranslationEditor ${pkgdir}/opt/memsource-editor/
-  #install -Dm 664 ${srcdir}/build/memsource-editor/fonts/*.ttf ${pkgdir}/opt/memsource-editor/fonts/
-  #install -Dm 664 ${srcdir}/build/memsource-editor/lib/*.* ${pkgdir}/opt/memsource-editor/lib/
-  #install -Dm 664 ${srcdir}/build/memsource-editor/lib/imageformats/* ${pkgdir}/opt/memsource-editor/lib/imageformats/
   install -Dm 755 ${srcdir}/memsource ${pkgdir}/usr/bin/
   install -Dm 644 ${srcdir}/memsource-editor.desktop ${pkgdir}/usr/share/applications/
   install -Dm 644 ${srcdir}/memsource-editor.xml ${pkgdir}/usr/share/mime/packages/
