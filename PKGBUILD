@@ -2,11 +2,11 @@
 pkgname=nerd-fonts-terminus
 pkgver=2.0.0
 pkgrel=1
-pkgdesc="Patched font Terminus from the nerd-fonts library"
+pkgdesc="Patched font Terminus (Terminess) from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
 license=('MIT')
-depends=('fontconfig')
+depends=('fontconfig' 'xorg-font-utils')
 provides=('nerd-fonts-terminus')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 groups=("nerd-fonts")
