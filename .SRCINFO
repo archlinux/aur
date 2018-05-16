@@ -1,0 +1,13 @@
+pkgbase = stripcmt
+	pkgdesc = Simple utility to remove comments from C, C++, and Java source files
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://www.bdc.cx/software/stripcmt/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.bdc.cx/download/stripcmt/stripcmt-0.1.2.tar.gz
+	sha256sums = d683c866c2139cd6948f43e7c8a8f259da14ad21594caf41cc004ae2188a571f
+
+pkgname = stripcmt
+
