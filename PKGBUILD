@@ -10,14 +10,16 @@ conflicts=("oni")
 provides=("oni")
 url='https://github.com/onivim/oni'
 license=('MIT')
-depends=('nodejs' 'gconf' 'libxss' 'hicolor-icon-theme' 'neovim')
-makedepends=('fontconfig' 'nss' 'nspr' 'gtk2' 'freetype2'
-        'ffmpeg' 'electron' 'cairo' 'alsa-lib' 'gdk-pixbuf2' 
-        'atk' 'pango' 'libxfixes' 'libxtst'  'libcups' 'libxrender'
-        'libxcomposite' 'libxrandr' 'libxi' 'libxkbfile' 'libxdamage' 'libxcursor')
+depends=('neovim' 'nodejs' 'gconf' 'alsa-lib' 'nss' 
+        'gtk2' 'libxss' 'libxkbfile' 'libxtst')
+makedepends=('fontconfig' 'nspr' 'freetype2' 'hicolor-icon-theme'
+            'cairo' 'gdk-pixbuf2' 'atk' 'pango' 'libxcomposite'
+            'libxfixes' 'libcups' 'libxrender' 
+            'libxrandr' 'libxi' 'libxdamage' 'libxcursor')
 optdepends=('clang-tools-extra'
             'python-language-server' 
-            'go-langserver-git')
+            'go-langserver-git'
+            'neovim')
 
 source=('https://raw.githubusercontent.com/onivim/oni/master/LICENSE'
         '16x16.png'
@@ -27,6 +29,7 @@ source=('https://raw.githubusercontent.com/onivim/oni/master/LICENSE'
         '256x256.png'
         '512x512.png'
         'oni.desktop')
+
 source_x86_64=("https://github.com/onivim/oni/releases/download/v$pkgver/Oni-$pkgver-x64-linux.tar.gz")
 
 sha256sums=('a446f219aabe3667850444bbd5f11b7e931889b4d5dbf3bc074fe00f25f1124c'
@@ -36,15 +39,22 @@ sha256sums=('a446f219aabe3667850444bbd5f11b7e931889b4d5dbf3bc074fe00f25f1124c'
             'e01bc685dd7e85bf7bae144812c421e7209538da9f6871d38ee3383b93b864fc'
             '396c174850dcabb2add952767fd35b860d5e368a75efba4576b8a0efdc8ea719'
             '5465269347564615deae17f69e3b11307082f886086ea523d0c09c4661d3e1f2'
-            'c45d6d498a797358765fce699efe7ea5a979be47d28bee65d9d3173cacd58a7c')
+            '72420b6c8588df601b973b715fc88f3d9e4d75ce53b633abff8c7ff848aed59a')
+
 sha256sums_x86_64=('61db303d270dac8d6fa34afdb3512a0027b8e7d67b1ff94e8c6f266bb17b58ea')
 
 package() {
+    # Create path
     install -dm755 $pkgdir/opt/$pkgname
+    install -dm755 $pkgdir/usr/bin
+    
     dir=$srcdir/Oni-$pkgver-x64-linux
-    install -Dm644 LICENSE $pkgdir/usr/share/license/$pkgname/LICENSE
-    install -Dm644  oni.desktop $pkgdir/usr/share/applications/oni.desktop
-    cp -dr --no-preserve='ownership' $dir/* $pkgdir/opt/$pkgname
+
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 oni.desktop $pkgdir/usr/share/applications/oni.desktop
+
+    cp -r $dir/* $pkgdir/opt/$pkgname
+    ln -s /opt/$pkgname/oni $pkgdir/usr/bin/oni
     
     for i in 16x16 32x32 64x64 128x128 256x256 512x512; do
         install -Dm644 $i.png $pkgdir/usr/share/icons/hicolor/$i/apps/oni.png

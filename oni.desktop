@@ -2,7 +2,7 @@
 Name=Oni
 GenericName=Text Editor
 Comment=An IDE powered by Neovim
-Exec=/opt/oni-bin/oni %F
+Exec=oni %F
 TryExec=oni
 Terminal=false
 Type=Application
