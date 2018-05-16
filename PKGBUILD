@@ -1,11 +1,10 @@
 # Maintainer: Fahad Hossain <8bit.demoncoder AT gmail.com>
 pkgname=vivaldi-codecs-ffmpeg-extra-bin
-pkgver=65.0.3325.181
-pkgrel=1
+pkgver=66.0.3359.139
+pkgver2=0ubuntu0.18.04.3
+pkgrel=0
 pkgdesc="Prebuilt ffmpeg-codecs package for vivaldi"
-arch=(
-  "x86_64"
-)
+arch=("x86_64")
 url="https://packages.ubuntu.com/artful/amd64/chromium-codecs-ffmpeg-extra/download"
 license=('LGPL')
 depends=('vivaldi')
@@ -16,11 +15,9 @@ conflicts=(
   'vivaldi-ffmpeg-codecs'
 )
 source=(
-  "http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-0ubuntu0.17.10.${pkgrel}_amd64.deb"
+  "http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-${pkgver2}_amd64.deb"
 )
-md5sums=(
-  "4c306a3b6dcdc4fd2c510a5a734bf57b"
-)
+md5sums=("bae1a91a198928c43e5838c57838adf5")
 
 prepare() {
   cd "$srcdir"
