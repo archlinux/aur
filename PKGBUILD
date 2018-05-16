@@ -3,11 +3,11 @@
 _pkgname=telegram-tdlib
 pkgname=${_pkgname}
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform library for building Telegram clients'
 arch=('i686' 'x86_64')
 url='https://core.telegram.org/tdlib'
-license=('BSL')
+license=('Boost')
 depends=('openssl' 'zlib')
 makedepends=('make' 'gcc' 'cmake' 'gperf')
 provides=('telegram-tdlib')
@@ -30,24 +30,24 @@ package() {
   mkdir -p $pkgdir/usr/include/td/tl
 
   # Libs
-  install build/libtdjson.so ${pkgdir}/usr/lib/
-  install build/libtdjson_static.a ${pkgdir}/usr/lib/
-  install build/libtdjson_private.a ${pkgdir}/usr/lib/
-  install build/libtdclient.a ${pkgdir}/usr/lib/
-  install build/libtdcore.a ${pkgdir}/usr/lib/
+  install -m 644 build/libtdjson.so ${pkgdir}/usr/lib/
+  install -m 644 build/libtdjson_static.a ${pkgdir}/usr/lib/
+  install -m 644 build/libtdjson_private.a ${pkgdir}/usr/lib/
+  install -m 644 build/libtdclient.a ${pkgdir}/usr/lib/
+  install -m 644 build/libtdcore.a ${pkgdir}/usr/lib/
 
-  install build/tdutils/libtdutils.a ${pkgdir}/usr/lib/
-  install build/tdactor/libtdactor.a ${pkgdir}/usr/lib/
-  install build/tdnet/libtdnet.a ${pkgdir}/usr/lib/
-  install build/sqlite/libtdsqlite.a ${pkgdir}/usr/lib/
-  install build/tddb/libtddb.a ${pkgdir}/usr/lib/
+  install -m 644 build/tdutils/libtdutils.a ${pkgdir}/usr/lib/
+  install -m 644 build/tdactor/libtdactor.a ${pkgdir}/usr/lib/
+  install -m 644 build/tdnet/libtdnet.a ${pkgdir}/usr/lib/
+  install -m 644 build/sqlite/libtdsqlite.a ${pkgdir}/usr/lib/
+  install -m 644 build/tddb/libtddb.a ${pkgdir}/usr/lib/
 
   # Headers
-  install td/telegram/td_json_client.h ${pkgdir}/usr/include/td/telegram
-  install td/telegram/td_log.h ${pkgdir}/usr/include/td/telegram
-  install build/td/telegram/tdjson_export.h ${pkgdir}/usr/include/td/telegram
-  install td/telegram/Client.h ${pkgdir}/usr/include/td/telegram
-  install td/telegram/Log.h ${pkgdir}/usr/include/td/telegram
-  install td/tl/TlObject.h ${pkgdir}/usr/include/td/tl
+  install -m 644 td/telegram/td_json_client.h ${pkgdir}/usr/include/td/telegram
+  install -m 644 td/telegram/td_log.h ${pkgdir}/usr/include/td/telegram
+  install -m 644 build/td/telegram/tdjson_export.h ${pkgdir}/usr/include/td/telegram
+  install -m 644 td/telegram/Client.h ${pkgdir}/usr/include/td/telegram
+  install -m 644 td/telegram/Log.h ${pkgdir}/usr/include/td/telegram
+  install -m 644 td/tl/TlObject.h ${pkgdir}/usr/include/td/tl
 }
 

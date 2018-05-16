@@ -1,11 +1,11 @@
 pkgbase = telegram-tdlib
 	pkgdesc = Cross-platform library for building Telegram clients
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://core.telegram.org/tdlib
 	arch = i686
 	arch = x86_64
-	license = BSL
+	license = Boost
 	makedepends = make
 	makedepends = gcc
 	makedepends = cmake
