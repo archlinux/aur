@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=miniserve
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Tool to serve files via HTTP"
 arch=('x86_64')
