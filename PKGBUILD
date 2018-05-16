@@ -1,7 +1,7 @@
 # Maintainer: arjan5 <aur@anymore.nl>
 
 pkgname=mailscanner
-pkgver=5.0.7_2
+pkgver=5.0.7_3
 pkgrel=1
 pkgdesc="Mail filter for spam, viruses, phishing, and other malicious content"
 arch=("x86_64" "i686")
@@ -44,7 +44,7 @@ optdepends=(
   clamav
 )
 source=(https://s3.amazonaws.com/msv5/release/MailScanner-${pkgver//_/-}.nix.tar.gz)
-sha256sums=('7774a0a9c1ed4ed92b00cf54ca6be91e51208becf4a23877dda24a24e2f6430a')
+sha256sums=('6ee2bbea51c77f5b4e8d870619dbc3ef09c403c5c00b82a0d65867ceaf804235')
 _srcname=MailScanner-${pkgver//_[0-9]*/}
 
 prepare() {
