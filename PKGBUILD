@@ -82,7 +82,12 @@ package() {
 
     for _rule in "${_rules[@]}"
     do
-        install -D -m0644 $srcdir/$_rule $pkgdir/usr/lib/udev/rules.d/$(basename $_rule)
+	if [ -e "$_rule" ]
+	then
+            install -D -m0644 $srcdir/$_rule $pkgdir/usr/lib/udev/rules.d/$(basename $_rule)
+	else
+	    echo ">>> udev rule $_rule not present, skipping."
+	fi
     done
 
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
