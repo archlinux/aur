@@ -1,6 +1,6 @@
 pkgbase = gimp-gtk3-git
 	pkgdesc = GNU Image Manipulation Program build against GTK3 from gtk3-port git-branch
-	pkgver = 2.10.0.r575.gb12904c879
+	pkgver = 2.10.0.r679.g6f28c5e192
 	pkgrel = 1
 	epoch = 1
 	url = http://www.gimp.org
@@ -23,8 +23,8 @@ pkgbase = gimp-gtk3-git
 	makedepends = python-cairo
 	makedepends = gtk-doc
 	makedepends = poppler-data
-	depends = babl-git
-	depends = gegl-git
+	depends = babl>=0.1.48
+	depends = gegl>=0.4
 	depends = lcms
 	depends = libxpm
 	depends = libwmf

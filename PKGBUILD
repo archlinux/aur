@@ -4,13 +4,13 @@
 
 pkgname=gimp-gtk3-git
 epoch=1
-pkgver=2.10.0.r575.gb12904c879
+pkgver=2.10.0.r679.g6f28c5e192
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program build against GTK3 from gtk3-port git-branch"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org"
 license=('GPL' 'LGPL')
-depends=('babl-git' 'gegl-git' 'lcms' 'libxpm' 'libwmf' 'libxmu' 'librsvg' 'libmng' 'libexif' 'gtk3'
+depends=('babl>=0.1.48' 'gegl>=0.4' 'lcms' 'libxpm' 'libwmf' 'libxmu' 'librsvg' 'libmng' 'libexif' 'gtk3'
 	 'jasper' 'desktop-file-utils' 'libgexiv2' 'hicolor-icon-theme' 'mypaint-brushes' 'aalib')
 makedepends=('git' 'glib-networking' 'intltool' 'poppler-glib' 'alsa-lib' 'iso-codes'
 	     'gobject-introspection' 'curl' 'ghostscript' 'libxslt' 'appstream-glib'
@@ -25,8 +25,8 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 	    'xorg-server-xvfb: for xvfb-run'
 	    'ghostscript: for postscript support')
 options=('!libtool' '!makeflags')
-provides=("gimp")
-conflicts=("gimp")
+provides=('gimp')
+conflicts=('gimp')
 source=(git+https://git.gnome.org/browse/gimp#branch=gtk3-port 'linux.gpl::https://git.archlinux.org/svntogit/packages.git/plain/trunk/linux.gpl?h=packages/gimp')
 md5sums=('SKIP'
          'bb27bc214261d36484093e857f015f38')
@@ -72,4 +72,3 @@ package() {
     mv "${pkgdir}"/usr/share/icons/hicolor/${_icon}x${_icon}/apps/gimp{,-${pkgver}}.png
   done
 }
-
