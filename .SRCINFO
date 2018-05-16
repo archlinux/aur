@@ -1,7 +1,7 @@
 pkgbase = git-crecord-git
 	pkgdesc = Git subcommand to interactively select changes to commit or stage
 	pkgver = 20161216.0.r4.g30c7f4c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andrewshadura/git-crecord
 	arch = any
 	license = GPL

@@ -1,7 +1,7 @@
 # Maintainer: bobpaul <aurpackage [at] bobpaul 'period' org>
 pkgname="git-crecord-git"
 pkgver=20161216.0.r4.g30c7f4c
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Git subcommand to interactively select changes to commit or stage"
 arch=(any)
@@ -29,22 +29,24 @@ validpgpkeys=()
 #	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
 #}
 
+
+builddir="${pkgname/-git/}"
 build() {
-	cd "$pkgname"
+	cd "$builddir"
     ./setup.py build
 }
 
 pkgver(){
-	cd "$pkgname"
+	cd "$builddir"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
-	cd "$pkgname"
+	cd "$builddir"
     ./setup.py test
 }
 
 package() {
-	cd "$pkgname"
+	cd "$builddir"
     ./setup.py install --prefix=/usr --root="${pkgdir}" -O1 --skip-build
 }
