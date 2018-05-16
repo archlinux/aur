@@ -2,7 +2,7 @@
 _pkgbase=ia32_aout
 pkgname=ia32_aout-dkms
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='ia32_aout kernel module, for running an a.out binary format (DKMS)'
 arch=('x86_64')
 depends=('dkms')
@@ -16,7 +16,7 @@ source=("https://raw.githubusercontent.com/torvalds/linux/v{$pkgver}/arch/x86/ia
         'dkms.conf')
 # updpkgsums
 sha1sums=('c635114660009c57014eb2a38e50e3abbb5f2e5f'
-          '0917bffa1791e7004e85b75e76a191d058d023d8'
+          '12bf91fd45d97f76316d242f482bd8b22c77d37e'
           '42244650cd11033033f49a7909e5825584afd0cb')
 
 package() {

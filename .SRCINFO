@@ -1,7 +1,7 @@
 pkgbase = ia32_aout-dkms
 	pkgdesc = ia32_aout kernel module, for running an a.out binary format (DKMS)
 	pkgver = 4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.kernel.org
 	arch = x86_64
 	license = GPLv3
@@ -13,7 +13,7 @@ pkgbase = ia32_aout-dkms
 	source = Makefile
 	source = dkms.conf
 	sha1sums = c635114660009c57014eb2a38e50e3abbb5f2e5f
-	sha1sums = 0917bffa1791e7004e85b75e76a191d058d023d8
+	sha1sums = 12bf91fd45d97f76316d242f482bd8b22c77d37e
 	sha1sums = 42244650cd11033033f49a7909e5825584afd0cb
 
 pkgname = ia32_aout-dkms
