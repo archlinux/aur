@@ -1,5 +1,5 @@
 pkgname=quantum-espresso
-pkgver=6.2
+pkgver=6.2.1
 pkgrel=1
 epoch=
 pkgdesc="Computer codes for electronic-structure calculations and materials modeling
@@ -20,18 +20,20 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://qe-forge.org/gf/download/frsrelease/244/1114/qe-6.2.tar.gz")
-noextract=()
-md5sums=('016e7f22dba2086cc80c0f98447ddf1b')
+source=("https://gitlab.com/QEF/q-e/-/archive/qe-$pkgver/q-e-qe-$pkgver.tar.gz"
+	"https://gitlab.com/QEF/q-e/uploads/edd91febdd3916ce1d527ea00f0a05f0/fox.tgz")
+noextract=("fox.tgz")
+md5sums=('769cc973382156bffd35254c3dbaf453' '3e4765d44ad77f65ed70c9c2992c0b84')
 validpgpkeys=()
 
 build() {
-	cd "$srcdir/qe-6.2"
+	cd "$srcdir/q-e-qe-$pkgver"
+	cp "$srcdir/fox.tgz" "$srcdir/q-e-qe-$pkgver/archive"
 	FFLAGS="-ffree-line-length-none" ./configure --prefix="$pkgdir/usr"
 	make all
 }
 
 package() {
-	cd "$srcdir/qe-6.2"
+	cd "$srcdir/q-e-qe-$pkgver"
 	make install
 }
