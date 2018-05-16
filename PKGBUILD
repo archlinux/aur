@@ -6,7 +6,7 @@
 # - Desktop entries are ran through desktop-file-validate.
 
 pkgname='lucas-simpsons-hit-and-run-mod-launcher'
-pkgver='1.17.1'
+pkgver='1.17.2'
 pkgrel='1'
 pkgdesc="Mod launcher for The Simpsons: Hit & Run."
 arch=(
@@ -25,10 +25,6 @@ depends=(
     'zenity'
     # Wine is needed to run the mod launcher.
     'wine'
-    # Wine's Mono implementation is needed for booting up an instance of Wine.
-    'wine-mono'
-    # Wine's Gecko implementation is needed for booting up an instance of Wine.
-    'wine_gecko'
     # Winetricks is needed to install the .NET 3.5 SP1 runtime required by the mod launcher.
     'winetricks'
 )
