@@ -3,29 +3,28 @@
 # Maintainer : karamaz0v
 
 pkgname=p4vasp
-pkgver=0.3.29
+pkgver=0.3.30
 pkgrel=1
 pkgdesc="A visualization suite for the Vienna Ab-initio Simulation Package (VASP)"
 url="http://www.p4vasp.at/"
 license=('GPL2')
-arch=("i686" "x86_64")
+arch=("x86_64")
 depends=('python2' 'mesa' 'fltk' 'glu' 'swig')
 options=(!strip staticlibs)
-source=("http://www.p4vasp.at/index.php/downloads/finish/2-source-code/16-p4vasp-0-3-29/${pkgname}-${pkgver}.tgz"
+source=("http://www.p4vasp.at/files/${pkgname}-${pkgver}.tgz"
         "${pkgname}.desktop" 
         "${pkgname}.png" 
         'python2-call.patch' 
         'purge-ext.patch' 
         'swig.patch' 
 	'p4vasp_home.patch')
-md5sums=('845063c013e726a1f695399825082bdd'
+md5sums=('3af30cc650cf4623b145138f92436b23'
          'f6cd7d2771e3e8cb83238542b486471b'
          '071dea8ea3223048466933a6e175a262'
-         '6af582aec9b6aee3070051c318de10d9'
-         '3420044e9a173caab2d0c30df0851e10'  
+         'd3c2a5db23b3f8d32d1317bd7a8bf931'
+         '04f68eff94b1fb3a049e45c32b318bb4'
          '33d9191f7a2e46ae9a292f07d67720a0'
-         '0eaf2bae665eae3da2c4f923218e5224')
-
+	 '78f6b4e79bd20b370d47d025f9554b19')
 
 prepare() {
         cd "$srcdir/$pkgname-$pkgver"

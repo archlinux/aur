@@ -402,7 +402,7 @@ Last-Update: 2014-03-02
  #
  # HappyDoc:docStringFormat='ClassicStructuredText'
  #
-@@ -95,7 +95,7 @@ Following calculation properties are ava
+@@ -98,7 +98,7 @@
  
    example:
  
@@ -421,7 +421,7 @@ Last-Update: 2014-03-02
  #
 --- Makefile	2014-02-18 17:07:00.000000000 -0300
 +++ Makefile	2014-03-02 15:58:56.500145994 -0300
-@@ -43,9 +43,9 @@ P4V           = p4v
+@@ -43,9 +43,9 @@
  
  all: p4vasp
  local:
@@ -433,12 +433,12 @@ Last-Update: 2014-03-02
  p4vasp: p4vasp_config uninstallsh fltk appletlist
  	cd odpdom && $(MAKE) libODP.a	
  	cd src && $(MAKE)
-@@ -66,9 +66,9 @@ launcher:
- 	echo "export PYTHONPATH=\$$PYTHONPATH:"$(SITE_PACKAGES) >>$(P4V)
- 	echo "export APPMENU_DISPLAY_BOTH=1" >>$(P4V)
+@@ -67,9 +67,9 @@
+ 	echo "#export APPMENU_DISPLAY_BOTH=1" >>$(P4V)
+ 	echo "export UBUNTU_MENUPROXY=0" >>$(P4V)
  	echo "export P4VASP_HOME="$(P4VASP_HOME) >> $(P4V)
--	echo "exec python "$(BINDIR)"/p4v.py \$$1 \$$2 \$$3" >>$(P4V)
-+	echo "exec python2 "$(BINDIR)"/p4v.py \$$1 \$$2 \$$3" >>$(P4V)
+-	echo "exec python "$(BINDIR)"/p4v.py \"\$$@\"" >>$(P4V)
++	echo "exec python2 "$(BINDIR)"/p4v.py \"\$$@\"" >>$(P4V)
  appletlist:
 -	cd install && python makeappletlist.py
 +	cd install && python2 makeappletlist.py
@@ -447,13 +447,13 @@ Last-Update: 2014-03-02
  	cat $(SETENVIRONMENT) >> ~/.bashrc
 --- odpdom/Makefile	2014-02-18 17:07:00.000000000 -0300
 +++ odpdom/Makefile	2014-03-02 15:58:56.506812765 -0300
-@@ -9,7 +9,7 @@ FLAGS   = -DPY_DOMEXC_MODULE="\"xml.dom.
+@@ -9,7 +9,7 @@
  #          -DNO_POS_CACHE
  #	  -DNO_THROW
  
 -PYINCLUDE=`python -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
 +PYINCLUDE=`python2 -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
- CFLAGS  = -fpic -g $(FLAGS) -I$(PYINCLUDE)  -Iinclude
+ CFLAGS  += -fpic -g $(FLAGS) -I$(PYINCLUDE)  -Iinclude
  
  SWIGFLAGS = -python -c++ $(FLAGS)
 --- odpdom/setup.py	2014-02-18 17:07:00.000000000 -0300
@@ -474,16 +474,18 @@ Last-Update: 2014-03-02
  from __future__ import generators
 --- src/Configuration.mk
 +++ src/Configuration.mk
-@@ -1,5 +1,5 @@
+@@ -1,6 +1,6 @@
 -LIBS=  -L../odpdom -lODP `python fltk-config.py --use-gl --ldstaticflags` -lpthread
--CFLAGS= -g -O0 -fpic  -Wall $(FLAGS) `python fltk-config.py --cxxflags` -I$(PYINCLUDE) \
 +LIBS=  -L../odpdom -lODP `python2 fltk-config.py --use-gl --ldstaticflags` -lpthread
-+CFLAGS= -g -O0 -fpic  -Wall $(FLAGS) `python2 fltk-config.py --cxxflags` -I$(PYINCLUDE) \
+ CFLAGS?= -g -Wall
+-CFLAGS+= -fpic $(FLAGS) `python fltk-config.py --cxxflags` -I$(PYINCLUDE) \
++CFLAGS+= -fpic $(FLAGS) `python2 fltk-config.py --cxxflags` -I$(PYINCLUDE) \
          -Iinclude -I../odpdom/include
 -PYINCLUDE=`python -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
-+PYINCLUDE=`python2 -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
- LDFLAGS= -shared -L.
+-LDFLAGS+= -shared -L.
 \ No newline at end of file
++PYINCLUDE=`python2 -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
++LDFLAGS+= -shared -L.
 --- src/fltk-config.py	2014-02-18 17:07:00.000000000 -0300
 +++ src/fltk-config.py	2014-03-02 15:58:56.360143799 -0300
 @@ -1,4 +1,4 @@
