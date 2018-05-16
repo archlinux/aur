@@ -7,7 +7,7 @@
 # Contributor: Hinrich Harms <arch hinrich de>
 
 pkgname=thunderbird-enigmail
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Thunderbird extension that enables sending and receiving signed and encrypted e-mail messages"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('zip' 'python2' 'perl>=5.8')
 source=("https://www.enigmail.net/download/source/enigmail-${pkgver}.tar.gz"{,.asc}) # gpg --recv-keys 9369CDF3 DD5F693B
 validpgpkeys=('10B2E4A0E718BB1B2791DAC4F040E41B9369CDF3'
               '4F9F89F5505AC1D1A260631CDB1187B9DD5F693B')
-sha512sums=('06f9f5573dddfb3563206b8fda6ff8861971ca5a6c2a64b7e425fb94ce07aaa994173e109faa0fd3a61cf9f43a2b45db389b7f6f6fe14540087531cda1d2c515'
+sha512sums=('eadcd6bfe42c43d8dd569a8085d82b7acf94f77e5fc2c7632e4148b9cc21389552de687a81a3e88e9b2639adad677c85d6db9b14a39f994f79c0524500de0b3b'
             'SKIP')
 
 build() {
