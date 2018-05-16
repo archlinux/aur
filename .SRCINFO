@@ -1,0 +1,13 @@
+pkgbase = rclone-arm64
+	pkgdesc = Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage. This is a precompiled build that doesn't depend on pandoc or haskell.
+	pkgver = 1.41
+	pkgrel = 1
+	url = http://rclone.org/
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	source = rclone-arm64-1.41.zip::https://github.com/ncw/rclone/releases/download/v1.41/rclone-v1.41-linux-arm64.zip
+	sha512sums = 4cf2fd6cacbb5760f099abd63d25eafb9ad70a1fdac3f680e5caeb643c1c5bcdc417eb50aed17d781c93d94f5b8158ff87691776eaa5560fef2b213685559ed4
+
+pkgname = rclone-arm64
+
