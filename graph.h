@@ -33,7 +33,7 @@ extern int zoom_months[9], zoom_change_x_months[9];
  * RIGHT: moves start date forward by one year, three months, or one month.
  * @param ticker_name_string symbol
  */
-void graph_main(const char* ticker_name_string);
+void graph_main(const char* ticker_name_string, const char* ticker_name_string2);
 
 /**
  * Prints out a NCurses based graph given an array of daily close prices.
@@ -43,7 +43,8 @@ void graph_main(const char* ticker_name_string);
  * @param start_time the starting date of prices to print
  * @param zoom the zoom level
  */
-void graph_print(const double* points, struct tm* start_time, int zoom);
+void graph_print(const double* points, const double* points2, struct tm* start_time, int zoom,
+        const char* ticker_name_string, const char* ticker_name_string2);
 
 /**
  * Reallocates the given array with size trading days. Moves all values to end of the array and sets
