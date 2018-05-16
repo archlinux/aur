@@ -9,7 +9,7 @@ url="https://www.github.com/fennerm/flashfocus"
 depends=('python-xcffib'
          'python-click'
          'python-xpybutil'
-         'python-schema'
+         'python-marshmallow'
          'python-yaml')
 makedepends=('git' 'python-setuptools')
 conflicts=('flashfocus')
