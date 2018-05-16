@@ -1,16 +1,17 @@
+# Maintainer Carmelo12341 <carmelo12341 at disroot dot com>
+
 pkgname=akasha-bin
-pkgver=0.5.2
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A Next-Generation Social Media Network powered by the Ethereum world computer (Alpha)"
 arch=("x86_64")
 provides=(akasha)
 url="https://akasha.world/"
 license=("custom")
-source=("https://github.com/AkashaProject/Alpha/releases/download/${pkgver}/AKASHA-linux-x64-${pkgver}.deb")
-sha256sums=("fab35557dfcaddcd2c361cbc8fb376ea543832b688667be58c67883e3aa1e398")
+source=("https://github.com/AkashaProject/dapp/releases/download/${pkgver}/AKASHA_${pkgver}_amd64.deb")
+sha256sums=("4799bda602324fa8ab3afa665abde0de60703ac926b1081efcf844a31689edc1")
 depends=("gconf"
          "alsa-lib"
-         "gcc-libs-multilib"
          "libxtst"
          "gtk2"
          "nss"
@@ -22,4 +23,7 @@ package() {
     chmod -R g-w usr
     mv opt "${pkgdir}"
     mv usr "${pkgdir}"
+    mkdir -p ${pkgdir}/usr/bin
+    ln -s /opt/AKASHA/akasha ${pkgdir}/usr/bin/akasha
 }
+
