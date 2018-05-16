@@ -1,0 +1,5 @@
+pkg/
+src/
+qt5-wayland/
+*.tar.xz
+

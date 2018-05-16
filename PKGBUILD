@@ -7,7 +7,7 @@
 
 _pkgname=qt5-wayland
 pkgname=$_pkgname-dev-backport-git
-pkgver=5.10.1.281e3d58 # If you want to update periodically - use changeling script (AUR) from aur with cron
+pkgver=5.10.1.281e3d58
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework (QtWayland)"
 arch=("i686" "x86_64")
@@ -21,23 +21,23 @@ sha256sums=('SKIP')
 
 # Definition with userside version of Qt5
 _qt5_userversion=`pkg-config --modversion Qt5Core`
-_branch=$(echo ${_qt5_userversion} | cut -d. -f1,2)
+_branch=dev-for-$(echo ${_qt5_userversion} | cut -d. -f1,2)
 
-source=("$_pkgname::git://github.com/johanhelsing/qtwayland-backports.git#branch=dev-for-${_branch}")
+source=("$_pkgname::git://github.com/johanhelsing/qtwayland-backports.git#branch=${_branch}")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
   echo "${_qt5_userversion}.$(git rev-parse --short HEAD)"
 }
 
-#prepare() {
-#  cd "$srcdir/$_pkgname"
-#  # Replace Qt version to user version (Qt)
-#  sed -i "3s/.*/MODULE_VERSION = ${_qt5_userversion}/" ./.qmake.conf
-#  if [ -d ./build ]; then
-#    rm -rf --one-file-system ./build
-#  fi
-#}
+prepare() {
+  cd "$srcdir/$_pkgname"
+  # Replace Qt version to user version (Qt)
+  sed -i "3s/.*/MODULE_VERSION = ${_qt5_userversion}/" ./.qmake.conf
+  if [ -d ./build ]; then
+    rm -rf --one-file-system ./build
+  fi
+}
 
 build() {
   cd "$srcdir/$_pkgname"
