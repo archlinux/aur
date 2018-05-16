@@ -2,9 +2,9 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=msodbcsql
-pkgver=17.0.1.1
+pkgver=17.1.0.1
 pkgrel=1
-_opensslver=1.0.2k-8
+_opensslver=1.0.2k-12
 pkgdesc="Microsoft® ODBC Driver 17 for SQL Server®"
 arch=('x86_64')
 url="https://blogs.msdn.microsoft.com/sqlnativeclient/"
@@ -14,8 +14,8 @@ makedepends=('patchelf')
 options=('!strip')
 source=(https://packages.microsoft.com/rhel/7/prod/msodbcsql17-$pkgver-1.x86_64.rpm
         http://mirror.centos.org/centos/7/os/x86_64/Packages/openssl-libs-$_opensslver.el7.x86_64.rpm)
-sha256sums=('1d116c5ccfbef4b07237aa8a4431273337c8e1fe4274cdd3aea2cc1d6224ad45'
-            '3e355d70d78d8578ccc1dc474948dc5a8fd4b4e4c9508ff7321488c0e4796bf1')
+sha256sums=('7f05b57d09ad3dcef41ab227dbefcbf1d138e7f66b416eb36bc3763800785d34'
+            'fee49e741f2b1e1af1871343fe0ac595e1ae48970f6d42b5a6f215e7aa47ded5')
 install=msodbcsql.install
 
 package() {
