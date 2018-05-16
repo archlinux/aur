@@ -8,3 +8,5 @@ all:
 .PHONY: clean
 
 clean:
+	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) clean
+
