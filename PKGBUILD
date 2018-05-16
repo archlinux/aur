@@ -3,7 +3,8 @@
 
 pkgbase=soccer-cli-git
 pkgname=('python2-soccer-cli-git' 'python-soccer-cli-git')
-pkgver=20180512_r267.990bdfd
+epoch=1
+pkgver=20170929_r267.990bdfd
 pkgrel=1
 pkgdesc="Soccer for Hackers - a CLI for all the football scores."
 arch=('any')
@@ -19,7 +20,7 @@ pkgver() {
   cd ${pkgbase%-git}
 
   # Get the version number.
-  printf "%s_r%s.%s" "$(date +%Y%m%d)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s_r%s.%s" "$(git log -1 --format="%cd" --date=short|tr -d - )" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
