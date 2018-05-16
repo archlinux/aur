@@ -3,7 +3,7 @@
 # PKGBUILD copied from https://github.com/greigdp/msp430-mspds
 # Contributor: Alexei Colin <ac@alexeicolin.com>
 pkgname=mspds
-pkgver=3.12.000.004
+pkgver=3.13.000.001
 pkgrel=1
 pkgdesc="MSP430 Debug Stack. Contains a dynamic link library as well as embedded firmware that runs on the MSP-FET430UIF or the eZ430 emulators."
 arch=('i686' 'x86_64')
@@ -14,12 +14,12 @@ group=('msp430')
 depends=('hidapi' 'boost')
 makedepends=('unzip' 'dos2unix')
 optdepends=('mspdebug')
-_release='slac460x'
+_release='slac460y'
 _releasefile="${_release}.zip"
 noextract=("${_releasefile}")
 source=("http://www.ti.com/lit/sw/${_release}/${_releasefile}"
         'hidapi.patch')
-sha256sums=('c6bf24338b50f6ce8f6f0127ec2673e10add251e0a89e894fd30897eaa4e0cbc'
+sha256sums=('d3c5a50444d8d6ab9456fecf2a8ebbc9a391fa9447120d20aaa76c62bc5cc9b8'
             'aa2bdb86118a84423f3df752f48d90d2ebcb1e1bbc5293bdfd7fb1c62f765a34')
 
 

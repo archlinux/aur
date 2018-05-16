@@ -1,6 +1,6 @@
 pkgbase = mspds
 	pkgdesc = MSP430 Debug Stack. Contains a dynamic link library as well as embedded firmware that runs on the MSP-FET430UIF or the eZ430 emulators.
-	pkgver = 3.12.000.004
+	pkgver = 3.13.000.001
 	pkgrel = 1
 	url = http://www.ti.com/tool/mspds
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = mspds
 	depends = hidapi
 	depends = boost
 	optdepends = mspdebug
-	noextract = slac460x.zip
-	source = http://www.ti.com/lit/sw/slac460x/slac460x.zip
+	noextract = slac460y.zip
+	source = http://www.ti.com/lit/sw/slac460y/slac460y.zip
 	source = hidapi.patch
-	sha256sums = c6bf24338b50f6ce8f6f0127ec2673e10add251e0a89e894fd30897eaa4e0cbc
+	sha256sums = d3c5a50444d8d6ab9456fecf2a8ebbc9a391fa9447120d20aaa76c62bc5cc9b8
 	sha256sums = aa2bdb86118a84423f3df752f48d90d2ebcb1e1bbc5293bdfd7fb1c62f765a34
 
 pkgname = mspds
