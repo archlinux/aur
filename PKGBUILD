@@ -2,7 +2,7 @@
 # Contributor: Bjorn Arild Maeland <bjorn.maeland at gmail dot com>
 
 pkgname=timbl
-pkgver=6.4.11
+pkgver=6.4.12
 pkgrel=1
 pkgdesc="Tilburg Memory-Based Learner, implementations of k-nearest neighbour classification "
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ install=timbl.install
 options=(!libtool)
 _gituser="LanguageMachines"
 _gitname="timbl"
-source=(https://github.com/LanguageMachines/timbl/archive/v6.4.11.tar.gz)
+source=(https://github.com/LanguageMachines/timbl/archive/v6.4.12.tar.gz)
 noextract=()
-md5sums=(590c2c6b99d2f1e217ec6a01370682d7)
+md5sums=(0aa6dbe94306c05a92b2474c5b9c94f9)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
