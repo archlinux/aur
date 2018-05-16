@@ -4,7 +4,7 @@ pkgname=sourcetrail
 _pkgname=Sourcetrail
 pkgver=2018.2.36
 _pkgver=${pkgver/\./\_}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform source explorer for C/C++ and Java'
 arch=('x86_64')
 url='https://www.sourcetrail.com'
@@ -29,6 +29,17 @@ prepare() {
 package() {
   rsync -rtl "${srcdir}/opt" "${pkgdir}"
 
+  # mimetypes icons setup
+  mkdir -p "${pkgdir}/usr/"
+  mv "${pkgdir}/opt/sourcetrail/setup/share" "${pkgdir}/usr/"
+
+  hicolor_dir="${pkgdir}/usr/share/icons/hicolor"
+  for icon_size in 128x128 256x256 512x512 64x64; do
+    mkdir "${hicolor_dir}/${icon_size}/mimetypes"
+    ln -s "${hicolor_dir}/${icon_size}/apps/${pkgname}.png" \
+      "${hicolor_dir}/${icon_size}/mimetypes/${pkgname}.png"
+  done
+
   mkdir -p "${pkgdir}/usr/bin/"
   mkdir -p "${pkgdir}/usr/share/applications/"
   mkdir -p "${pkgdir}/usr/share/pixmaps/"
@@ -37,10 +48,16 @@ package() {
   install -m 644 "${srcdir}/${pkgname}.desktop" \
             "${pkgdir}/usr/share/applications/"
 
+  # logo
   ln -s "/opt/${pkgname}/data/gui/icon/logo_1024_1024.png" \
             "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
+  # license
   ln -s "/opt/${pkgname}/EULA.txt" \
             "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  # binary
   ln -s "/opt/${pkgname}/${_pkgname}.sh" \
             "${pkgdir}/usr/bin/${pkgname}"
+
 }

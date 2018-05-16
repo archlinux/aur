@@ -1,7 +1,7 @@
 pkgbase = sourcetrail
 	pkgdesc = A cross-platform source explorer for C/C++ and Java
 	pkgver = 2018.2.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sourcetrail.com
 	arch = x86_64
 	license = custom
