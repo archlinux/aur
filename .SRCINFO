@@ -1,7 +1,7 @@
 pkgbase = mspds
 	pkgdesc = MSP430 Debug Stack. Contains a dynamic link library as well as embedded firmware that runs on the MSP-FET430UIF or the eZ430 emulators.
 	pkgver = 3.13.000.001
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ti.com/tool/mspds
 	arch = i686
 	arch = x86_64
