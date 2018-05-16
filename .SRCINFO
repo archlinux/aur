@@ -1,6 +1,6 @@
 pkgbase = spotifyrecorder
 	pkgdesc = A recorder script for the Spotify desktop client with PulseAudio
-	pkgver = 0.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Bleuzen/spotifyrecorder
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = spotifyrecorder
 	optdepends = spotify
 	optdepends = audacity
 	optdepends = kid3
-	source = https://github.com/Bleuzen/spotifyrecorder/releases/download/0.2/spotifyrecorder.cpython-36.opt-2.pyc
+	source = https://github.com/Bleuzen/spotifyrecorder/releases/download/0.3.0/spotifyrecorder.cpython-36.opt-2.pyc
 	source = spotifyrecorder
-	sha1sums = 27b57d4759639e669b435c4b640b9a952890b637
+	sha1sums = 375d164ed73a148652f1701c4128b554ffe6f3d7
 	sha1sums = 3a8bde845bd1139b1ad58d7bd1e3fb94dfd806ef
 
 pkgname = spotifyrecorder
