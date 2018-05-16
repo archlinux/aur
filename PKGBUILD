@@ -2,7 +2,7 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.16
-_pkgver=4.16.8
+_pkgver=4.16.9
 pkgver=${_pkgver}.a
 pkgrel=1
 url='https://github.com/anthraxx/linux-hardened'
@@ -27,11 +27,11 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
 replaces=('linux-grsec')
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '6fb2db1e38f762e6a028dfa5e6d094f0eb4324572667923aca3d64c87117772d'
+            '299b45a4f16f763ecf654e6642c020b6e9e461601d056ef44ecb21b54d736cbf'
             'SKIP'
-            '07b1933643a36d3c69ce2254309be95fbba5ba7a61dda6366e026b14a1197933'
+            'd23769536d49b8448bf627d4f5c276d4c9740891c47002b9c4dbd34f691a47ca'
             'SKIP'
-            '07e857b342c927f001f8e8c25469d154f8836ba6eb2e1cb6155d75233df6c2a5'
+            '031aeae1edccc97986bd031430da7a5540668e10ea457375d7b352e41f49691f'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
