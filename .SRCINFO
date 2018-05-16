@@ -38,7 +38,6 @@ pkgbase = stride
 	depends = libxtst
 	depends = nspr
 	depends = nss
-	depends = opera
 	depends = pango
 	optdepends = gir1.2-gnomekeyring-1.0
 	optdepends = libgnome-keyring
