@@ -5,3 +5,6 @@ PWD	:= $(shell pwd)
 all:
 	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules
 
+.PHONY: clean
+
+clean:
