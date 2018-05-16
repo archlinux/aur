@@ -3,7 +3,7 @@
 _pkgname=flashfocus
 pkgname=$_pkgname-git
 pkgrel=1
-pkgver=0.2.0
+pkgver=v0.3.6.r52.g519f89a
 pkgdesc="Simple Xorg window focus animations for tiling window managers"
 url="https://www.github.com/fennerm/flashfocus"
 depends=('python-xcffib'
