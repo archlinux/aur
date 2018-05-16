@@ -1,0 +1,16 @@
+pkgbase = pbrt-v3-git
+	pkgdesc = Physically based rendering system
+	pkgver = r677.63a0699
+	pkgrel = 1
+	url = pbrt.org
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	depends = zlib
+	depends = gcc-libs
+	source = pbrt-v3::git+https://github.com/mmp/pbrt-v3#branch=master
+	md5sums = SKIP
+
+pkgname = pbrt-v3-git
+
