@@ -4,7 +4,7 @@
 
 pkgname=scilab
 pkgver=6.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
 url='https://www.scilab.org'
@@ -31,6 +31,7 @@ source=("${url}/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}-type.patch"
         "${pkgname}-num.patch"
         "${pkgname}-size-node.patch"
+        "${pkgname}-LD_LIBRARY_PATH.patch"
         "${pkgname}-0004-Fix-build-with-ocaml-4.0.4.patch")
 sha256sums=('e459dd5a918626567e3513ab106a68bee5a1085a8713020cba214e5d4c075a4f'
             'f19f173e989f72bd55bda35e271b3c180ecef4e29da964df3f230fce8b1330fc'
@@ -41,6 +42,7 @@ sha256sums=('e459dd5a918626567e3513ab106a68bee5a1085a8713020cba214e5d4c075a4f'
             '93597034c6866c3a4aaa7ef92b4588d2753383545ed3366be6cdb404edf949bd'
             '31e757bdb2086e08e2477118fceddcdd50f3c2fcad5c86cf5de8ec06009f34ed'
             '984dd6e01631e5b30bde8587e435770c948f887c60d3d353c2e703e6d8b1fe99'
+            'a39277cb8cfc3d7929c73ce6d707dc24e3df4b8d8f2d587f075efebda79ff4db'
             '6712c6db2f3ba365d150e1feb1c71bf691f8aa3b45d5a872b05a42f0daf23392')
 
 prepare(){
@@ -60,6 +62,9 @@ prepare(){
   patch -p0 < "${srcdir}"/${pkgname}-type.patch
   # Size of node
   patch -p0 < "${srcdir}"/${pkgname}-size-node.patch
+  # Fix path, to avoid the following error:
+  # An error has been detected while loading /usr/share/scilab//modules/functions/.libs/libscifunctions.so: /usr/share/scilab//modules/functions/.libs/libscifunctions.so: cannot open shared object file: No such file or directory
+  patch -p0 < "${srcdir}"/${pkgname}-LD_LIBRARY_PATH.patch
   # OCaml
   patch -p0 < "${srcdir}"/${pkgname}-0004-Fix-build-with-ocaml-4.0.4.patch
   patch -p0 < "${srcdir}"/${pkgname}-num.patch
