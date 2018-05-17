@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=xine-ui-hg
-pkgver=0.99.10.r3321.efe11fb1562e
+pkgver=0.99.10.r3326.12aa9b3c98fb
 pkgrel=1
 pkgdesc='A free video player for Unix (Mercurial version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -13,14 +13,17 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'libcaca' 'libxft'
 makedepends=('libxt' 'mercurial')
 provides=('xine-ui')
 conflicts=('xine-ui')
-source=("$pkgname"::'hg+http://hg.debian.org/hg/xine-lib/xine-ui')
+source=("$pkgname"::'hg+http://hg.code.sf.net/p/xine/xine-ui')
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
     
-    # Mercurial
-    printf '%s.r%s.%s' "$(hg log -r '.' --template '{latesttag}')" \
+    # mercurial
+    printf '%s.r%s.%s' "$(hg log --rev='branch(default) and tag()' --template='{tags}\n' | \
+                              grep '^[0-9]*\(\.[0-9]*\(\.[0-9]*\(\.[0-9]*\)\?\)\?\)\?$'  | \
+                              sort -Vr | \
+                              head -n1)" \
                        "$(hg identify -n)" \
                        "$(hg identify -i)"
 }
