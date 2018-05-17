@@ -19,7 +19,7 @@ pkgrel=1
 pkgdesc="A NSS library to authenticate users against postgresql."
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://sourceforge.net/projects/authpgsql/"
+url="https://sourceforge.net/projects/authpgsql/"
 depends=('postgresql-libs')
 source=("http://download.sourceforge.net/${pkgname}/${_pkgname}-$pkgver.tar.gz")
 md5sums=('ddce846553a25d341ebba50d69748bdb')
@@ -30,7 +30,7 @@ build() {
   sed 's|pgsql/\(libpq-fe.h\)|\1|' < passwd.c > passwd.tmp && mv passwd.tmp passwd.c
   sed 's|pgsql/\(libpq-fe.h\)|\1|' < shadow.c > shadow.tmp && mv shadow.tmp shadow.c
   sed 's|pgsql/\(libpq-fe.h\)|\1|' < group.c > group.tmp && mv group.tmp group.c
-  
+
   make
 }
 
