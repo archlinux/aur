@@ -8,6 +8,9 @@ pkgbase = bin32-serialcloner
 	license = unknown
 	depends = lib32-gtk2
 	options = !strip
+	options = staticlibs
+	options = libtool
+	options = emptydirs
 	source = http://serialbasics.free.fr/Serial_Cloner-Download_files/SerialCloner2-6.tar.gz
 	md5sums = 3d29dcc0df72cf4793a6efcb76f8243b
 

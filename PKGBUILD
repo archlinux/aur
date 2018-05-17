@@ -13,7 +13,7 @@ license=('unknown')
 depends=("lib32-gtk2")
 source=("http://serialbasics.free.fr/Serial_Cloner-Download_files/${_name}${_version}.tar.gz")
 md5sums=('3d29dcc0df72cf4793a6efcb76f8243b')
-options=("!strip")
+options=("!strip" "staticlibs" "libtool" "emptydirs")
 
 package() {
 	mkdir -p $pkgdir/opt
