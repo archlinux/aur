@@ -2,30 +2,28 @@
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 pkgname=liri-terminal
-pkgver=0.0.0.20170213
-_commit=62acaf9f943e1cdf1b57c87eb8ca2abd1d24a75d
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Terminal for Liri"
 arch=("x86_64")
 url="https://github.com/lirios/terminal"
 license=("GPL")
-depends=("fluid" "vibe" "dconf")
-makedepends=("extra-cmake-modules")
+depends=('fluid' 'qt5-gsettings')
+makedepends=('liri-qbs-shared')
 replaces=('papyros-terminal')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/lirios/terminal/archive/$_commit.tar.gz")
-sha256sums=('90e2d52a7d54020bf97cca284eb36fb0b38ce5ea56aee4b6f966bd686f01af21')
-
-prepare() {
-  mkdir -p build
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/lirios/terminal/archive/v$pkgver.tar.gz")
+sha256sums=('6a99b3ff0d8b33a3a60b58d98fd9a82d89e09578cb73fcdf5d014e8feb30eb8d')
 
 build() {
-  cd build
-  cmake "$srcdir"/terminal-$_commit -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cd terminal-$pkgver
+  qbs setup-toolchains --type gcc /usr/bin/g++ gcc
+  qbs setup-qt /usr/bin/qmake-qt5 qt5
+  qbs config profiles.qt5.baseProfile gcc
+  qbs build --no-install -d build profile:qt5 modules.lirideployment.prefix:/usr \
+                                              modules.lirideployment.qmlDir:/usr/lib/qt/qml
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  cd terminal-$pkgver
+  qbs install -d build --no-build -v --install-root "$pkgdir" profile:qt5
 }
