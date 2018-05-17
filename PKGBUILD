@@ -11,7 +11,7 @@ url="http://rclone.org/"
 license=('MIT')
 depends=('glibc')
 source_aarch64=("$pkgname-$pkgver.zip::https://github.com/ncw/rclone/releases/download/v$pkgver/rclone-v$pkgver-linux-arm64.zip")
-sha512sums=('4cf2fd6cacbb5760f099abd63d25eafb9ad70a1fdac3f680e5caeb643c1c5bcdc417eb50aed17d781c93d94f5b8158ff87691776eaa5560fef2b213685559ed4')
+sha512sums_aarch64=('4cf2fd6cacbb5760f099abd63d25eafb9ad70a1fdac3f680e5caeb643c1c5bcdc417eb50aed17d781c93d94f5b8158ff87691776eaa5560fef2b213685559ed4')
 
 package() {
   cd rclone-v$pkgver-linux-arm64
