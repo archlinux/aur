@@ -1,38 +1,23 @@
 pkgbase = xorg-server-bug865
-	pkgver = 1.19.6+13+gd0d1a694f
-	pkgrel = 1
+	pkgver = 1.20.0
+	pkgrel = 2
 	url = http://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
 	license = custom
+	makedepends = xorgproto
 	makedepends = pixman
 	makedepends = libx11
 	makedepends = mesa
 	makedepends = mesa-libgl
-	makedepends = xf86driproto
-	makedepends = xcmiscproto
 	makedepends = xtrans
-	makedepends = bigreqsproto
-	makedepends = randrproto
-	makedepends = inputproto
-	makedepends = fontsproto
-	makedepends = videoproto
-	makedepends = presentproto
-	makedepends = compositeproto
-	makedepends = recordproto
-	makedepends = scrnsaverproto
-	makedepends = resourceproto
-	makedepends = xineramaproto
 	makedepends = libxkbfile
 	makedepends = libxfont2
-	makedepends = renderproto
 	makedepends = libpciaccess
 	makedepends = libxv
-	makedepends = xf86dgaproto
 	makedepends = libxmu
 	makedepends = libxrender
 	makedepends = libxi
-	makedepends = dmxproto
 	makedepends = libxaw
 	makedepends = libdmx
 	makedepends = libxtst
@@ -40,23 +25,20 @@ pkgbase = xorg-server-bug865
 	makedepends = xorg-xkbcomp
 	makedepends = xorg-util-macros
 	makedepends = xorg-font-util
-	makedepends = glproto
-	makedepends = dri2proto
-	makedepends = libgcrypt
 	makedepends = libepoxy
 	makedepends = xcb-util
 	makedepends = xcb-util-image
 	makedepends = xcb-util-renderutil
 	makedepends = xcb-util-wm
 	makedepends = xcb-util-keysyms
-	makedepends = dri3proto
 	makedepends = libxshmfence
 	makedepends = libunwind
 	makedepends = systemd
 	makedepends = wayland-protocols
-	makedepends = git
-	source = git+https://anongit.freedesktop.org/git/xorg/xserver.git#commit=d0d1a694f967af770fba0d36043fd5218ff20984
-	source = nvidia-add-modulepath-support.patch
+	makedepends = meson
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.0.tar.bz2
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.0.tar.bz2.sig
+	source = xwayland-config.h.meson.in
 	source = xserver-autobind-hotplug.patch
 	source = xvfb-run
 	source = xvfb-run.1
@@ -65,12 +47,13 @@ pkgbase = xorg-server-bug865
 	validpgpkeys = C383B778255613DFDB409D91DB221A6900000011
 	validpgpkeys = DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3
 	validpgpkeys = 995ED5C8A6138EB0961F18474C09DD83CAAA50B2
-	sha256sums = SKIP
-	sha256sums = 914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8
-	sha256sums = fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57
-	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
-	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
-	sha256sums = 460615227a7e42d124639d4ae02e55d1b2a250c7bdf539e018b46de71230364f
+	sha512sums = 1489e8511c9da682ef0460182dfeeddd241c72d4ef4d206d9706f1e39572c09953df851fab18cefb65a1ee4c6710c6ba13c63c9c9fc0bc1b5f12c50780412cde
+	sha512sums = SKIP
+	sha512sums = 4ed2a66dd98697accef34f84d44490594bf071232fa74640d514a170f1fbe760b292a0b53fe47080b73acf6083cea57e35f11cfd42ba9dc211b8e8dcac343dfc
+	sha512sums = d84f4d63a502b7af76ea49944d1b21e2030dfd250ac1e82878935cf631973310ac9ba1f0dfedf10980ec6c7431d61b7daa4b7bbaae9ee477b2c19812c1661a22
+	sha512sums = 55bbf520333f6e818b0125b37179a7039b69a0d3d2242b80a08da003d94cbf6c1fb912d880abcce318a85d7947e3eff8fbc4cdf57d7118572e8ebc56c4569af6
+	sha512sums = de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22
+	sha512sums = 81be7b0ecd9de850f0c740762d37c7489f12b34eb6adb19b3d3077f66d66e48e1206eff4bd29e50f5640509390a08fa138a4664b60d90878d4d17cb1f6919baf
 
 pkgname = xorg-server-bug865
 	pkgdesc = Xorg X server with the patch for freedesktop bug 865 (need to kick hotkeys on release, not press)
@@ -83,14 +66,15 @@ pkgname = xorg-server-bug865
 	depends = dbus
 	depends = libgl
 	depends = xf86-input-libinput
+	depends = nettle
 	depends = libpciaccess
 	depends = libdrm
 	depends = libxshmfence
-	provides = X-ABI-VIDEODRV_VERSION=23
+	provides = X-ABI-VIDEODRV_VERSION=24.0
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = x-server
-	provides = xorg-server=1.19.6
+	provides = xorg-server=1.20
 	conflicts = nvidia-utils<=331.20
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
