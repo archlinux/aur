@@ -2,35 +2,36 @@
 # Contributor: Renan Manola <rmanola@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Based on a modified version of the gcc PKGBUILD
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-# Maintainer: Joey Dumont <joey.dumont@gmail.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Joey Dumont <joey.dumont@gmail.com>
+# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgbase=gcc6
 _ver=6
 pkgname=('gcc6' 'gcc6-libs' 'gcc6-fortran' 'gcc6-objc' 'gcc6-ada' 'gcc6-go' 'gcc6-gcj')
 pkgver=6.4.1
-pkgrel=2
+pkgrel=5
 _islver=0.17
 _cloogver=0.18.4
-_snapshot=6-20170927
 pkgdesc="The GNU Compiler Collection"
-arch=('i686' 'x86_64')
-license=('GPL' 'LGPL' 'FDL' 'custom')
+arch=(x86_64)
+license=(GPL LGPL FDL custom)
 url="http://gcc.gnu.org"
-makedepends=('binutils>=2.28' 'libmpc'  'doxygen' 'gcc-ada' 'java-environment-common' 'zip' 'jdk8-openjdk' 'gtk2' 'libart-lgpl' 'libxtst')
+makedepends=(binutils libmpc doxygen gcc-ada git java-environment-common zip jdk8-openjdk gtk2 libart-lgpl libxtst)
 checkdepends=('dejagnu' 'inetutils')
 options=(!emptydirs)
-source=("http://gcc.skazkaforyou.com/snapshots/LATEST-6/gcc-${_snapshot}.tar.xz"
+_commit=878763634f0a75699559b3c0b90d466954a6510f
+source=(git+https://gcc.gnu.org/git/gcc.git#commit=${_commit}
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz)
-sha1sums=('cda991c759c02c9f714099036e9338a788bd61f5'
+sha1sums=('SKIP'
           '6243384d1b1d4b3043037698485a468a485b111a'
           '8f7568ca1873f8d55bb694c8b9b83f7f4c6c1aa5')
 
 _libdir="/usr/lib/gcc/$CHOST/$pkgver"
 
 prepare() {
-  cd "$srcdir"/gcc-${_snapshot}/
+  cd gcc
 
   # Link isl/cloog for in-tree builds
   ln -sf ../isl-${_islver} isl
@@ -48,51 +49,51 @@ prepare() {
   # Arch uses python version 3 as default python (for gcc6-gcj).
   sed -i '1s+python+python2+' libjava/contrib/aot-compile.in
 
-  mkdir -p ${srcdir}/gcc-${_snapshot}/gcc-build
+  mkdir -p "${srcdir}/gcc-build"
 
 }
 
 build() {
-
-  # Configure and build gcc.
-  cd ${srcdir}/gcc-${_snapshot}/gcc-build
+  cd gcc-build
 
   # using -pipe causes spurious test-suite failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
-  ../configure                          \
-      --prefix=/usr                     \
-      --libdir=/usr/lib                 \
-      --libexecdir=/usr/lib             \
-      --mandir=/usr/share/man           \
-      --infodir=/usr/share/info         \
+  "${srcdir}/gcc/configure" --prefix=/usr \
+      --libdir=/usr/lib \
+      --libexecdir=/usr/lib \
+      --mandir=/usr/share/man \
+      --infodir=/usr/share/info \
+      --with-bugurl=https://bugs.archlinux.org/ \
       --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,java \
-      --enable-shared                   \
-      --enable-threads=posix            \
-      --enable-libmpx                   \
-      --with-system-zlib                \
-      --with-isl                        \
-      --enable-__cxa_atexit             \
-      --disable-libunwind-exceptions    \
-      --enable-clocale=gnu              \
-      --disable-libstdcxx-pch           \
-      --disable-libssp                  \
-      --enable-gnu-unique-object        \
-      --enable-linker-build-id          \
-      --enable-lto                      \
-      --enable-plugin                   \
-      --with-linker-hash-style=gnu      \
-      --enable-gnu-indirect-function    \
-      --disable-multilib                \
-      --disable-werror                  \
-      --enable-checking=release         \
-      --enable-java-awt=gtk             \
-      --with-java-home="$JAVA_HOME"     \
-      --enable-libgcj-multifile         \
+      --enable-shared \
+      --enable-threads=posix \
+      --enable-libmpx \
+      --with-system-zlib \
+      --with-isl \
+      --enable-__cxa_atexit \
+      --disable-libunwind-exceptions \
+      --enable-clocale=gnu \
+      --disable-libstdcxx-pch \
+      --disable-libssp \
+      --enable-gnu-unique-object \
+      --enable-linker-build-id \
+      --enable-lto \
+      --enable-plugin \
+      --with-linker-hash-style=gnu \
+      --enable-gnu-indirect-function \
+      --disable-multilib \
+      --disable-werror \
+      --enable-checking=release \
+      --enable-java-awt=gtk \
+      --with-java-home="$JAVA_HOME" \
+      --enable-libgcj-multifile \
+      --enable-default-pie \
+      --enable-default-ssp \
       --enable-version-specific-runtime-libs \
-      --program-suffix=-${_ver}         \
+      --program-suffix=-${_ver} \
       --build="${CHOST}"
 
   make
@@ -101,51 +102,48 @@ build() {
   make -C ${CHOST}/libstdc++-v3/doc doc-man-doxygen
 }
 
-#check() {
-#  cd ${srcdir}/gcc-${_snapshot}/gcc-build
-#
-#  # increase stack size to prevent test failures
-#  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
-#  ulimit -s 32768
+check() {
+  cd gcc-build
 
-#  # do not abort on error as some are "expected"
-#  make -k check || true
-#  ${srcdir}/gcc/contrib/test_summary
-#}
+  # increase stack size to prevent test failures
+  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
+  ulimit -s 32768
+
+  # do not abort on error as some are "expected"
+  make -k check || true
+  ${srcdir}/gcc/contrib/test_summary
+}
 
 
 package_gcc6-libs() {
-
   pkgdesc="Runtime libraries shipped by GCC"
   depends=('glibc>=2.25')
   options=('!emptydirs' '!strip')
 
-  cd ${srcdir}/gcc-${_snapshot}/gcc-build
-
+  cd gcc-build
   make -C $CHOST/libgcc DESTDIR=${pkgdir} install-shared
   rm ${pkgdir}/${_libdir}/libgcc_eh.a
 
-  for lib in libatomic                \
-             libcilkrts               \
-	           libjava                  \
-             libgfortran              \
-             libgo                    \
-             libgomp                  \
-             libitm                   \
-             libquadmath              \
+  for lib in libatomic \
+             libcilkrts \
+             libjava \
+             libgfortran \
+             libgo \
+             libgomp \
+             libitm \
+             libquadmath \
              libsanitizer/{a,l,ub}san \
-             libstdc++-v3/src         \
+             libstdc++-v3/src \
              libvtv; do
      make -C $CHOST/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
    done
 
-   [[ $CARCH == "x86_64" ]] && \
+   if [[ $CARCH == "x86_64" ]]; then
      make -C $CHOST/libsanitizer/tsan DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
+   fi
 
    make -C $CHOST/libobjc DESTDIR=${pkgdir} install-libs
-
    make -C $CHOST/libstdc++-v3/po DESTDIR=${pkgdir} install
-
    make -C $CHOST/libmpx DESTDIR=${pkgdir} install
    rm ${pkgdir}/${_libdir}/libmpx.spec
 
@@ -162,17 +160,16 @@ package_gcc6-libs() {
    rm -rf ${pkgdir}/${_libdir}/libgo*
 
    # Install Runtime Library Exception
-   install -Dm644 ${srcdir}/gcc-${_snapshot}/COPYING.RUNTIME \
+   install -Dm644 ${srcdir}/gcc/COPYING.RUNTIME \
     ${pkgdir}/usr/share/licenses/$pkgname/RUNTIME.LIBRARY.EXCEPTION
 }
 
-package_gcc6()
-{
+package_gcc6() {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends"
   depends=("gcc6-libs=${pkgver}-${pkgrel}" 'binutils>=2.28' 'libmpc')
   options=('staticlibs')
 
-  cd ${srcdir}/gcc-${_snapshot}/gcc-build
+  cd gcc-build
 
   make -C gcc DESTDIR=${pkgdir} install-driver install-cpp install-gcc-ar \
     c++.install-common install-headers install-plugin install-lto-wrapper
@@ -183,7 +180,8 @@ package_gcc6()
   done
 
   make -C $CHOST/libgcc DESTDIR=${pkgdir} install
-  rm ${pkgdir}/usr/lib/gcc/${CHOST}/lib/libgcc_s.so*
+  rm -f ${pkgdir}/usr/lib/gcc/${CHOST}/lib/libgcc_s.so*
+  rm -f ${pkgdir}/${_libdir}/libgcc_s.so*
 
   make -C $CHOST/libstdc++-v3/src DESTDIR=${pkgdir} install
   make -C $CHOST/libstdc++-v3/include DESTDIR=${pkgdir} install
@@ -201,8 +199,7 @@ package_gcc6()
 
   make -C lto-plugin DESTDIR=${pkgdir} install
   install -dm755 ${pkgdir}/usr/lib/bfd-plugins/
-  ln -s ${_libdir}/liblto_plugin.so \
-    ${pkgdir}/usr/lib/bfd-plugins/
+  ln -s ${_libdir}/liblto_plugin.so ${pkgdir}/usr/lib/bfd-plugins/
 
   make -C $CHOST/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
     install-nodist_cilkincludeHEADERS
@@ -273,18 +270,17 @@ EOF
   install -Dm755 gcc/cc1plus ${pkgdir}/${_libdir}/cc1plus
 }
 
-package_gcc6-fortran()
-{
+package_gcc6-fortran() {
   pkgdesc="Fortran front-end for GCC"
   depends=("gcc6=$pkgver-$pkgrel")
   options=('!emptydirs')
 
-  cd ${srcdir}/gcc-${_snapshot}/gcc-build
+  cd gcc-build
   make -C $CHOST/libgfortran DESTDIR=$pkgdir install-cafexeclibLTLIBRARIES \
     install-{toolexeclibDATA,nodist_fincludeHEADERS}
   make -C $CHOST/libgomp DESTDIR=$pkgdir install-nodist_fincludeHEADERS
   make -C gcc DESTDIR=$pkgdir fortran.install-common
-  install -Dm755 gcc/f951 $pkgdir/${_libdir}/f951-${_ver}
+  install -Dm755 gcc/f951 $pkgdir/${_libdir}/f951
 
   ln -s gfortran-6 ${pkgdir}/usr/bin/f95-${_ver}
 
@@ -293,31 +289,29 @@ package_gcc6-fortran()
   ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/$pkgname/
 }
 
-package_gcc6-objc()
-{
+package_gcc6-objc() {
   pkgdesc="Objective-C front-end for GCC"
   depends=("gcc6=$pkgver-$pkgrel")
 
-  cd ${srcdir}/gcc-${_snapshot}/gcc-build
+  cd gcc-build
   make DESTDIR=$pkgdir -C $CHOST/libobjc install-headers
   install -dm755 $pkgdir/${_libdir}
-  install -m755 gcc/cc1obj     $pkgdir/${_libdir}/cc1obj-${_ver}
-  install -m755 gcc/cc1objplus $pkgdir/${_libdir}/cc1objplus-${_ver}
+  install -m755 gcc/cc1obj     $pkgdir/${_libdir}/cc1obj
+  install -m755 gcc/cc1objplus $pkgdir/${_libdir}/cc1objplus
 
   # Install Runtime Library Exception
   install -d ${pkgdir}/usr/share/licenses/$pkgname/
   ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/$pkgname/
 }
 
-package_gcc6-ada()
-{
+package_gcc6-ada() {
   pkgdesc="Ada front-end for GCC (GNAT)"
   depends=("gcc6=$pkgver-$pkgrel")
   options=('staticlibs' '!emptydirs')
 
-  cd ${srcdir}/gcc-${_snapshot}/gcc-build/gcc
+  cd gcc-build/gcc
   make DESTDIR=$pkgdir ada.install-common
-  install -m755 gnat1 $pkgdir/${_libdir}/gnat1-${_ver}
+  install -m755 gnat1 $pkgdir/${_libdir}/gnat1
 
   ln -s gcc-${_ver} ${pkgdir}/usr/bin/gnatgcc-${_ver}
 
@@ -332,19 +326,18 @@ package_gcc6-ada()
   ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/$pkgname/
 }
 
-package_gcc6-go()
-{
+package_gcc6-go() {
   pkgdesc="Go front-end for GCC"
   depends=("gcc6=$pkgver-$pkgrel")
   conflicts=('go')
   options=('!emptydirs')
 
-  cd ${srcdir}/gcc-${_snapshot}/gcc-build/
+  cd gcc-build/
 
   make -C $CHOST/libgo DESTDIR=$pkgdir install-exec-am
   rm ${pkgdir}/${_libdir}/libgo.so*
   make -C gcc DESTDIR=$pkgdir go.install-common
-  install -Dm755 gcc/go1 $pkgdir/${_libdir}/go1-${_ver}
+  install -Dm755 gcc/go1 $pkgdir/${_libdir}/go1
 
   make DESTDIR=${pkgdir} install-gotools
 
@@ -360,7 +353,7 @@ package_gcc6-gcj() {
   options=('!emptydirs')
 
   # Install libjava.
-  cd ${srcdir}/gcc-${_snapshot}/gcc-build
+  cd gcc-build
   make -j1 DESTDIR=${pkgdir} install-target-libjava
 
   # Install java-common.
@@ -371,7 +364,8 @@ package_gcc6-gcj() {
   install -m755 jvgenmain ${pkgdir}/${_libdir}/
 
   # Remove conflicting files.
-  rm ${pkgdir}/usr/lib/gcc/${CHOST}/lib/libgcc_s.so*
+  rm -f ${pkgdir}/usr/lib/gcc/${CHOST}/lib/libgcc_s.so*
+  rm -f ${pkgdir}/${_libdir}/libgcc_s.so*
   rm ${pkgdir}/${_libdir}/libg{cj,ij}*.so*
 
   # Rename two files to not conflict to classpath
