@@ -20,7 +20,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=59.0.2
+pkgver=60.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=d61b64679bb4
+_patchrev=847ae61baab6
 options=('!emptydirs'  'strip')
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -60,6 +60,9 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         pgo_fix_missing_kdejs.patch
         fix_pgo_bug1389436_explicitly_instantiate_gfxFont.patch
         no-crmf.diff
+
+        complete-csd-window-offset-mozilla-1457691.patch.xz
+        0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch.xz
 )
 
 
@@ -119,6 +122,13 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i ../no-crmf.diff
 
+  
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1283299#c158
+  patch -Np1 -i ../complete-csd-window-offset-mozilla-1457691.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1435212
+  patch -Np1 -i ../0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch
+
   # WebRTC build tries to execute "python" and expects Python 2
   mkdir -p "$srcdir/path"
   ln -sf /usr/bin/python2 "$srcdir/path/python"
@@ -152,8 +162,11 @@ build() {
 
   if [[ -n $_pgo ]]; then
     # Do PGO
-    DISPLAY=:99 MOZ_PGO=1 xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
-           ./mach build
+      DISPLAY=:99 MOZ_PGO=1 \
+             xvfb-run \
+             -a \
+             -s "-extension GLX -screen 0 1280x1024x24" \
+             ./mach build
   else
     ./mach build
   fi
@@ -210,17 +223,19 @@ END
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 md5sums=('SKIP'
-         '6e7ef23754f23c32adaf686a760d369a'
+         'ee8408a26641cefdec06e81d64b555bf'
          '14e0f6237a79b85e60256f4808163160'
          'c9385708f41599649e4e14fd3af506ce'
          '05bb69d25fb3572c618e3adf1ee7b670'
          '6e335a517c68488941340ee1c23f97b0'
          'df9f710c842d4847aae5bc667f97f4a2'
-         '1b373a938f8dd92fc93a31e4746f3609'
-         'e594a05742a6dbb1496e62563c4b87f8'
+         'dbf69e423c18e08536d9999f0d405a7a'
+         'd1f33934ce9574df158e252a9ae873b3'
          '0661e259fe57df87fca791f4aeb78da0'
-         'd75eda715db340eb28e3a0417e2846a2'
+         'd0bb97636b07d521f279c01233f0cbdb'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3fa8bd22d97248de529780f5797178af'
          'b358b5ed3726ecd4ed054bdc09901982'
-         '5223d4854f784003e3b575684cc004fe')
+         '5223d4854f784003e3b575684cc004fe'
+         '6c776f60394176fda2084bee667593f2'
+         'd16e8582bacf6fc98e669ed87f4d6f4a')
