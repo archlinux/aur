@@ -1,7 +1,7 @@
 # Maintainer: Matthias Riegler <matthias@xvzf.tech>
 pkgname=dataleech
 pkgdesc="Backup plan using ZFS..."
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 arch=("any")
 url="https://github.com/xvzf/dataleech"

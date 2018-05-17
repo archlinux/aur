@@ -1,6 +1,6 @@
 pkgbase = dataleech
 	pkgdesc = Backup plan using ZFS...
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/xvzf/dataleech
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = dataleech
 	provides = dataleech
 	provides = superman
 	backup = etc/dataleech/datasets
-	source = https://github.com/xvzf/dataleech/archive/1.0.2.tar.gz
+	source = https://github.com/xvzf/dataleech/archive/1.0.3.tar.gz
 	sha256sums = 128b48766d5283c0b25f57048566a55d8906294a44e91ae8a73c70322c405ee3
 
 pkgname = dataleech
