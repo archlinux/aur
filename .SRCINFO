@@ -1,0 +1,35 @@
+pkgbase = python37
+	pkgdesc = Next generation of the python high-level scripting language
+	pkgver = 3.7.0b4
+	pkgrel = 1
+	url = https://www.python.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = tk
+	makedepends = sqlite
+	makedepends = valgrind
+	makedepends = bluez-libs
+	makedepends = mpdecimal
+	makedepends = llvm
+	makedepends = gdb
+	makedepends = xorg-server-xvfb
+	depends = expat
+	depends = bzip2
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = zlib
+	depends = libnsl
+	optdepends = tk: for tkinter
+	optdepends = sqlite
+	optdepends = mpdecimal: for decimal
+	optdepends = xz: for lzma
+	options = !makeflags
+	source = https://www.python.org/ftp/python/3.7.0/Python-3.7.0b4.tar.xz
+	source = dont-make-libpython-readonly.patch
+	sha512sums = e97459a5467a984a5a2bfc08ed937dfeb899f3d4ff9a655878badffc19e722efc30112422c14f94fcf9f6c82ee01e9fe2bb538db83454e4c83b711d1a8444472
+	sha512sums = 500ea7f603f96f721d04ca64390f4bd9ddbab2c16b837b67f8a51ed9167a1d57c5b435be1ebe98b0c74eff728714033b3dcbb5ee978b9bf98086571399717f17
+
+pkgname = python37
+
