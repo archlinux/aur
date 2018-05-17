@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.5.r275.84a4671a0
+pkgver=0.0.5.r318.ae0f27a18
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
@@ -59,7 +59,7 @@ prepare() {
   git config submodule.xxHash ../xxHash
   git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
 
-  sed 's/999.666/6.0.0/' -i rpcs3/CMakeLists.txt
+  mkdir llvmlibs
 
   popd
 
@@ -79,7 +79,7 @@ build() {
     -DCMAKE_SKIP_RPATH='ON' \
     -DUSE_SYSTEM_FFMPEG='ON' \
     -DUSE_SYSTEM_LIBPNG='ON' \
-    -DBUILD_SHARED_LIBS='OFF'
+    -DBUILD_XXHSUM='OFF'
   make
 }
 
