@@ -2,15 +2,15 @@ pkgbase = gcc5
 	pkgdesc = The GNU Compiler Collection (5.x.x)
 	pkgver = 5.5.0
 	pkgrel = 2
-	url = https://gcc.gnu.org
+	url = https://gcc.gnu.org/gcc-5/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	license = FDL
 	license = custom
-	depends = glibc>=2.23
-	depends = binutils>=2.26
+	depends = glibc
+	depends = binutils
 	depends = libmpc
 	options = !emptydirs
 	source = https://gcc.gnu.org/pub/gcc/releases/gcc-5.5.0/gcc-5.5.0.tar.xz

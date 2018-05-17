@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Ruben Van Boxem <vanboxem.ruben@gmail.com>
@@ -6,14 +5,14 @@
 
 pkgname=('gcc5')
 pkgver=5.5.0
-_pkgver=5
+_ver=5
 _islver=0.18
 pkgrel=2
 pkgdesc="The GNU Compiler Collection (5.x.x)"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
-url="https://gcc.gnu.org"
-depends=('glibc>=2.23' 'binutils>=2.26' 'libmpc')
+url="https://gcc.gnu.org/gcc-5/"
+depends=('glibc' 'binutils' 'libmpc')
 options=('!emptydirs')
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
@@ -67,7 +66,7 @@ build() {
       --with-linker-hash-style=gnu --enable-gnu-indirect-function \
       --disable-multilib --disable-werror \
       --enable-checking=release \
-      --program-suffix=-${_pkgver} \
+      --program-suffix=-${_ver} \
       --enable-version-specific-runtime-libs
       #--enable-install-libiberty
 
