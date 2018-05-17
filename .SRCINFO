@@ -1,0 +1,17 @@
+pkgbase = tepl3
+	pkgdesc = Library that eases the development of GtkSourceView-based text editors and IDEs
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/Tepl
+	arch = x86_64
+	arch = i686
+	license = LGPL2.1
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = gtksourceview3
+	depends = uchardet
+	source = https://download.gnome.org/sources/tepl/3.0/tepl-3.0.0.tar.xz
+	sha256sums = 9eb6fceb0b521de7bf684508138a5b8428d9f575c395ba54f9e31597980fd0ef
+
+pkgname = tepl3
+
