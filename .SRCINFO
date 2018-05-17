@@ -25,10 +25,3 @@ pkgname = python-scipy-openblas
 	provides = python-scipy
 	conflicts = python-scipy
 
-pkgname = python2-scipy-openblas
-	depends = python2-numpy-openblas
-	depends = openblas-lapack
-	optdepends = python2-pillow: for image saving module
-	provides = python2-scipy
-	conflicts = python2-scipy
-
