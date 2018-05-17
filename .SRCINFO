@@ -1,16 +1,13 @@
 pkgbase = devkita64-bin
-	pkgdesc = Aarch64 toolchain for Nintendo Switch homebrew development (precompiled)
-	pkgver = r8
+	pkgdesc = AArch64 toolchain for Nintendo Switch homebrew development (precompiled)
+	pkgver = r9
 	pkgrel = 1
 	url = http://devkitpro.org
 	install = devkita64.install
 	arch = x86_64
 	license = GPL
 	depends = sh
-	depends = zlib
-	depends = lz4
-	optdepends = ncurses5-compat-libs: for aarch-none-elf-gdb
-	optdepends = expat: for aarch-none-elf-gdb
+	optdepends = ncurses5-compat-libs: for aarch64-none-elf-gdb
 	provides = devkita64
 	conflicts = devkita64
 	options = !strip
@@ -19,10 +16,10 @@ pkgbase = devkita64-bin
 	options = emptydirs
 	source = devkita64.sh
 	source = devkita64.fish
-	source = https://github.com/devkitPro/buildscripts/releases/download/devkitA64_r8/devkitA64_r8-x86_64-linux.tar.xz
+	source = https://github.com/devkitPro/buildscripts/releases/download/devkitA64_r9/devkitA64_r9-linux.tar.xz
 	sha256sums = c71d64c68947c25bf48a5141589f107f5d6269e38e37c4bf528f614ff37b8981
 	sha256sums = a068e1d2fbbd07f4f520824d256696244bcf85da7bf2142a1a0fe1bd550490e8
-	sha256sums = 1b84f056da8075172eba798376458f007ede14f9560554cfd0735f52e3254fd7
+	sha256sums = 207d445626dfdd4f0f789080e66eb6fea3c615b8eddf2c1b2068b4476ff747a4
 
 pkgname = devkita64-bin
 
