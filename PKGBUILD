@@ -5,8 +5,8 @@
 # Contributor: TheGuy <lowelink26381@gmail.com>
 
 pkgname=devkitarm-bin
-pkgver=r47
-pkgrel=3
+pkgver=r48
+pkgrel=1
 pkgdesc="ARM toolchain for GP32, Nintendo (3)DS and GBA homebrew development (precompiled)"
 arch=('x86_64')
 url="http://devkitpro.org"
@@ -14,17 +14,15 @@ license=('GPL')
 options=(!strip libtool staticlibs emptydirs)
 provides=("devkitarm")
 conflicts=("devkitarm")
-depends=('gcc-libs' 'sh' 'zlib' 'libusb')
-optdepends=('ncurses5-compat-libs: for arm-none-eabi-gdb'
-            'expat: for arm-none-eabi-gdb'
-            'libsystemd: for dfu-util')
+depends=('sh')
+optdepends=('ncurses5-compat-libs: for arm-none-eabi-gdb')
 install=devkitarm.install
 source=("devkitarm.sh"
         "devkitarm.fish"
-        "https://github.com/devkitPro/buildscripts/releases/download/devkitARM_$pkgver/devkitARM_$pkgver-$CARCH-linux.tar.bz2")
+        "https://github.com/devkitPro/buildscripts/releases/download/devkitARM_$pkgver/devkitARM_$pkgver-linux.tar.xz")
 sha256sums=('2162a4cf8ae8567b5ddff631474f28b6a0a5d0bce43915396b7dea602e2131e0'
             '13357e81de7ec8d7ad7f9fb37a78c23c4f99c6f7ca67d3a0070eedc388deb938'
-            '8173ec9e9ec53022e5a1c9a6376a010fdae6bc1446f2c5bd44cef1124f2a77db')
+            'a3e851cc38c04c3681741b0dd4741fcd6d7a53a118c6f3530e081651bc3f1b45')
 
 package() {
   install -d "$pkgdir"/opt/devkitpro
