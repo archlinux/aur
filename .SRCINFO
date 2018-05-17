@@ -4,7 +4,6 @@ pkgbase = devkitppc-bin
 	pkgrel = 1
 	url = http://devkitpro.org
 	install = devkitppc.install
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = sh
@@ -15,12 +14,12 @@ pkgbase = devkitppc-bin
 	options = libtool
 	options = staticlibs
 	options = emptydirs
-	source = https://github.com/devkitPro/buildscripts/releases/download/devkitPPC_r30/devkitPPC_r30-linux.tar.xz
 	source = devkitppc.sh
 	source = devkitppc.fish
-	sha256sums = 6f71cf2bdd9706f361c9f77fd5ebaea609765518ba45ad6a8e6ff2e1a5de734d
+	source = https://github.com/devkitPro/buildscripts/releases/download/devkitPPC_r30/devkitPPC_r30-linux.tar.xz
 	sha256sums = 69755d0b77c0c3233dee9255a5d897710410be18b9dcdfb8d9d6b18c6945ae34
 	sha256sums = 135a9cbe1fc28c96c2ce38b19cd305857ce49ed56e35bfb5bd96638a51c3ec6f
+	sha256sums = 6f71cf2bdd9706f361c9f77fd5ebaea609765518ba45ad6a8e6ff2e1a5de734d
 
 pkgname = devkitppc-bin
 
