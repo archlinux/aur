@@ -10,7 +10,7 @@ license=('LGPL2.1' 'GPL3')
 #options=("debug")
 depends=('qt5-webkit' 'qt5-script')
 makedepends=('git')
-source=("git+https://code.qt.io/qt/qtquick1.git")
+source=("git+https://github.com/qt/qtquick1")
 sha1sums=('SKIP')
 
 _prlfix() {

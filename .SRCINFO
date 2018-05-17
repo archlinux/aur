@@ -10,7 +10,7 @@ pkgbase = qt5-quick1
 	makedepends = git
 	depends = qt5-webkit
 	depends = qt5-script
-	source = git+https://code.qt.io/qt/qtquick1.git
+	source = git+https://github.com/qt/qtquick1
 	sha1sums = SKIP
 
 pkgname = qt5-quick1
