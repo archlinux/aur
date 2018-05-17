@@ -5,18 +5,18 @@
 _python="python2"
 _name="qr-tools"
 _subname="qrtools"
-_ubuntur="0~29~ubuntu17.10.1"
+_ubuntur="0~30~ubuntu18.04.1"
 pkgname="${_python}-${_subname}"
 pkgver="1.4"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="A high level library for reading and generating QR codes."
 url="https://launchpad.net/qr-tools"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=("${_python}" "${_python}-pillow" "${_python}-zbar" 'qrencode')
 provides=("${pkgname}")
-source=("https://launchpad.net/~${_name}-developers/+archive/ubuntu/daily/+files/python-${_subname}_${pkgver}-${_ubuntur}.tar.gz")
-sha256sums=('ccd7c666eaf1745f7af7e21cec1241283256fddcc780b254c3d1654e560a65cb')
+source=("https://launchpad.net/~${_name}-developers/+archive/ubuntu/${_name}-stable/+sourcefiles/python-${_subname}/${pkgver}-${_ubuntur}/python-${_subname}_${pkgver}-${_ubuntur}.tar.gz")
+sha256sums=('88d826e752bd3e3ee00244fc0713f8c21328543faf229c7aee9bdd9aac337ca7')
 
 build() {
     cd "python-${_subname}-${pkgver}"
