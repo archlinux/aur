@@ -2,35 +2,39 @@
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
-_pkgname="lambda-term"
-pkgname="ocaml-${_pkgname}"
-pkgver=1.10.1
+pkgname=ocaml-lambda-term
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='A cross-platform library for manipulating the terminal'
 arch=('i686' 'x86_64')
 url='https://github.com/diml/lambda-term'
 license=('BSD')
-depends=('ocaml' 'ocaml-lwt' 'ocaml-react' 'ocaml-zed')
-makedepends=('ocaml-findlib')
-source=("https://github.com/diml/lambda-term/archive/${pkgver}.tar.gz")
+depends=('ocaml' 'ocaml-lwt' 'ocaml-lwt_log' 'ocaml-react' 'ocaml-zed' 'ocaml-camomile')
+makedepends=('dune')
+source=("https://github.com/diml/lambda-term/archive/${pkgver}.tar.gz"
+        "lwt_log.patch")
 options=('!strip')
-md5sums=('1ad66f7e3f517f1f40528400d8cd00d9')
+md5sums=('6a6c7c948ed385c6f239b12c283d10de'
+         'baeb76a87738fef3a85c3efbfef25b61')
+
+prepare() {
+  cd "${srcdir}/lambda-term-${pkgver}"
+
+  patch -Np1 < "${srcdir}/lwt_log.patch"
+}
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    ./configure --prefix /usr --destdir "${pkgdir}"
+  cd "${srcdir}/lambda-term-${pkgver}"
 
-    env DESTDIR="${pkgdir}" \
-        OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)" \
-        make
+  jbuilder build
 }
 
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/lambda-term-${pkgver}"
 
-    export OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
-    install -dm755 "${OCAMLFIND_DESTDIR}/stublibs"
-    make install
-    install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm755 "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/man" "${pkgdir}/usr/share/"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
