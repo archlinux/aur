@@ -41,6 +41,6 @@ package() {
     cd REDasm
     install -D -m755 REDasm ${pkgdir}/usr/bin/REDasm
 
-    install -D -m644 README.md ${pkgdir}/usr/share/doc/${pgname}/README
-    install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pgname}/LICENSE
+    install -D -m644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README
+    install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
