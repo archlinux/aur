@@ -1,6 +1,6 @@
 # Maintainer: epitron <chris@ill-logic.com>
 pkgname="gitless"
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="A scientifically proven easier-to-use git interface"
 arch=("any")
@@ -12,7 +12,7 @@ source=(
   "versionless-deps.patch"
 )
 sha256sums=(
-  c93f8f558d05f41777ae36fab7434cfcdb13035ae2220893d5ee222ced1e7b9f
+  e1d009bf9d7c89428d7029394cc85a0d91bd2af73f019508ddc92c98faeed8e5
   8837f140b111caf2c1a8bbb589c83ae5801a6bca8977ccdafc6de40dfe7700fe
 )
 
