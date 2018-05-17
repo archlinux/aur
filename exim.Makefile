@@ -248,7 +248,7 @@ SUPPORT_MAILDIR=yes
 
 #------------------------------------------------------------------------------
 # See below for dynamic lookup modules.
-#
+# LOOKUP_MODULE_DIR=/usr/lib/exim/lookups/
 # If not using package management but using this anyway, then think about how
 # you perform upgrades and revert them. You should consider the benefit of
 # embedding the Exim version number into LOOKUP_MODULE_DIR, so that you can
@@ -293,16 +293,12 @@ CFLAGS_DYNAMIC=-shared -rdynamic -fPIC
 # Depending on where it is installed you may have to edit the CFLAGS
 # (often += -I/usr/local/include) and LDFLAGS (-lhiredis) lines.
 
-# If your system has pkg-config then the _INCLUDE/_LIBS setting can be
-# handled for you automatically by also defining the _PC variable to reference
-# the name of the pkg-config package, if such is available.
-
-LOOKUP_DBM=2
-LOOKUP_LSEARCH=2
-LOOKUP_DNSDB=2
+LOOKUP_DBM=yes
+LOOKUP_LSEARCH=yes
+LOOKUP_DNSDB=yes
 
 # LOOKUP_CDB=yes
-LOOKUP_DSEARCH=2
+LOOKUP_DSEARCH=yes
 # LOOKUP_IBASE=yes
 LOOKUP_LDAP=yes
 LOOKUP_MYSQL=2
@@ -315,7 +311,7 @@ LOOKUP_PASSWD=2
 LOOKUP_PGSQL=2
 LOOKUP_PGSQL_PC=libpq
 # LOOKUP_REDIS=yes
-LOOKUP_SQLITE=2
+LOOKUP_SQLITE=yes
 LOOKUP_SQLITE_PC=sqlite3
 # LOOKUP_WHOSON=yes
 
@@ -345,19 +341,16 @@ LDAP_LIB_TYPE=OPENLDAP2
 
 
 #------------------------------------------------------------------------------
-# The PCRE library is required for Exim.  There is no longer an embedded
+# The PCRE library is required for exim.  There is no longer an embedded
 # version of the PCRE library included with the source code, instead you
 # must use a system library or build your own copy of PCRE.
 # In either case you must specify the library link info here.  If the
 # PCRE header files are not in the standard search path you must also
 # modify the INCLUDE path (above)
-#
-# Use PCRE_CONFIG to query the pcre-config command (first found in $PATH)
-# to find the include files and libraries, else use PCRE_LIBS and set INCLUDE
-# too if needed.
+# The default setting of PCRE_LIBS should work on the vast majority of
+# systems
 
-PCRE_CONFIG=yes
-# PCRE_LIBS=-lpcre
+PCRE_LIBS=-lpcre
 
 
 #------------------------------------------------------------------------------
@@ -368,8 +361,8 @@ PCRE_CONFIG=yes
 # specified in INCLUDE. The settings below are just examples; -lpq is for
 # PostgreSQL, -lgds is for Interbase, -lsqlite3 is for SQLite.
 
-# LOOKUP_INCLUDE=-I/usr/include/mysql
-# LOOKUP_LIBS=-lldap -llber -lmysqlclient -lpq -lgds -lsqlite3
+# LOOKUP_INCLUDE=-I /usr/local/ldap/include -I /usr/local/mysql/include -I /usr/local/pgsql/include
+# LOOKUP_LIBS=-L/usr/local/lib -lldap -llber -lmysqlclient -lpq -lgds -lsqlite3
 
 
 #------------------------------------------------------------------------------
@@ -399,7 +392,6 @@ WITH_CONTENT_SCAN=yes
 
 WITH_OLD_DEMIME=yes
 
-#------------------------------------------------------------------------------
 # If you're using ClamAV and are backporting fixes to an old version, instead
 # of staying current (which is the more usual approach) then you may need to
 # use an older API which uses a STREAM command, now deprecated, instead of
@@ -409,9 +401,8 @@ WITH_OLD_DEMIME=yes
 #
 # WITH_OLD_CLAMAV_STREAM=yes
 
-
 #------------------------------------------------------------------------------
-# If built with TLS, Exim includes code to support DKIM (DomainKeys Identified
+# By default Exim includes code to support DKIM (DomainKeys Identified
 # Mail, RFC4871) signing and verification.  Verification of signatures is
 # turned on by default.  See the spec for information on conditionally
 # disabling it.  To disable the inclusion of the entire feature, set
@@ -1086,10 +1077,6 @@ SYSTEM_ALIASES_FILE=/etc/mail/aliases
 # dynamic loading library is not otherwise included.
 
 
-#------------------------------------------------------------------------------
-# Uncomment this setting to include IPv6 support.
-
-HAVE_IPV6=yes
 
 ###############################################################################
 #              THINGS YOU ALMOST NEVER NEED TO MENTION                        #
@@ -1389,6 +1376,10 @@ PID_FILE_PATH=/var/run/exim.pid
 
 # ENABLE_DISABLE_FSYNC=yes
 
-LDFLAGS += -ldl -lpam -lldap -llber -export-dynamic -rdynamic
+HAVE_IPV6=YES
+LOOKUP_LIBS=-lldap -llber -lsqlite3
+EXTRALIBS_EXIM=-lpam
 
+USE_GDBM=yes
+DBMLIB=-lgdbm
 # End of EDITME for Exim 4.
