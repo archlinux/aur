@@ -5,42 +5,31 @@
 
 _pkgname=lwt
 pkgname=ocaml-${_pkgname}
-pkgver=2.7.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A library for cooperative threads in OCaml"
 arch=('i686' 'x86_64')
-url="http://ocsigen.org/${_pkgname}/"
+url="http://ocsigen.org/lwt/"
 license=('custom:LGPL with OpenSSL linking exception')
-depends=('ocaml' 'camlp4' 'ocaml-ppx_tools' 'ocaml-react' 'ocaml-result' 'ocaml-ssl' 'libev' 'glib2')
-makedepends=('ocamlbuild' 'ocaml-findlib')
+depends=('libev' 'ocaml-migrate-parsetree' 'ocaml-ppx_tools_versioned' 'ocaml-react' 'ocaml-result')
+makedepends=('dune' 'cppo')
 source=("https://github.com/ocsigen/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('00419834e0c5601b3fee6ca9efb0e10ab797a9ff8f695bf2434d89395b7252ec')
+sha256sums=('97ff4892eea38b2cc3cb9bc764afa31948d7c345a2caf6c60848d5ce60b2de25')
 options=('!strip' '!makeflags' 'staticlibs')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  echo '<src/top/*.*>: use_compiler_libs' >> _tags
-  # What requires what?
-  # --enable-glib      glib2
-  # --enable-react     ocaml-react
-  # --enable-ssl       ocaml-ssl
-  ocaml setup.ml -configure --enable-react \
-                            --enable-glib \
-                            --enable-ssl \
-                            --enable-camlp4 \
-                            --enable-ppx \
-                            --disable-debug \
-                            --prefix "${pkgdir}/usr"
-  make
+  ocaml src/util/configure.ml -use-libev true
+  jbuilder build
 }
 
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  install -dm755 "${OCAMLFIND_DESTDIR}/stublibs"
-  make install
-  install -Dm 644 "doc/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -dm755 "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+  install -Dm644 "doc/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
