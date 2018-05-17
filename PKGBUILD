@@ -2,7 +2,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=libnftnl-git
-pkgver=1.0.9.r19.gf830fce
+pkgver=1.1.0.r2.g645036c
 pkgrel=1
 pkgdesc='Netfilter nf_tables infrastructure library that provides low level API for nftables to transform netlink messages to objects.'
 arch=(i686 x86_64)
