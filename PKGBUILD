@@ -2,39 +2,37 @@
 
 pkgname=minijail
 pkgdesc='Tool to run a process in jailed environment'
-pkgver=R41.6680
-_tag=release-${pkgver/\./-}.B
+pkgver=55.8872
+_tag=release-R${pkgver/\./-}.B
 pkgrel=1
-arch=(i686 x86_64)
-url='https://chromium.googlesource.com/chromiumos/platform/minijail'
+arch=(x86_64)
+url='https://chromium.googlesource.com/aosp/platform/external/minijail'
 license=('custom:chromiumos')
 depends=(libcap)
-source=(https://chromium.googlesource.com/chromiumos/platform2/+archive/refs/heads/$_tag.tar.gz)
-sha1sums=('SKIP')
+source=(https://chromium.googlesource.com/aosp/platform/external/minijail/+archive/refs/heads/$_tag.tar.gz
+        donotredefine_signals.patch)
+sha1sums=('f0d7efaba4e7f096a68638f97603ee11191a83da'
+          '83115d9e67cfbf47c964b89c84381fab54689b37')
 
 prepare() {
-  cd minijail
-  sed 's/-Werror//' -i common.mk
+  patch -p1 < donotredefine_signals.patch
 }
 
 build() {
-  cd minijail
   CC=gcc make
 }
 
 check() {
-  cd minijail
   CC=gcc make tests
   for t in `ls *_unittest`; do ./$t; done
 }
 
 package() {
-  cd minijail
   install -m755 -D minijail0 "$pkgdir"/usr/bin/minijail0
   install -m755 -D libminijail.so "$pkgdir"/usr/lib/libminijail.so
   install -m755 -D libminijailpreload.so "$pkgdir"/usr/lib/libminijailpreload.so
   install -m644 -D libminijail.h "$pkgdir"/usr/include/libminijail.h
   install -m644 -D minijail0.1 "$pkgdir"/usr/share/man/man1/minijail0.1
   install -m644 -D minijail0.5 "$pkgdir"/usr/share/man/man5/minijail0.5
-  install -m644 -D ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -m644 -D NOTICE "$pkgdir"/usr/share/licenses/$pkgname/NOTICE
 }

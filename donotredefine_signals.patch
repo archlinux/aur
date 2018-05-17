@@ -1,0 +1,16 @@
+diff --git a/signal_handler.c b/signal_handler.c
+index 5a5ae9c..083d8df 100644
+--- a/signal_handler.c
++++ b/signal_handler.c
+@@ -8,11 +8,6 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ 
+-#include <asm/siginfo.h>
+-#define __have_siginfo_t 1
+-#define __have_sigval_t 1
+-#define __have_sigevent_t 1
+-
+ #include <signal.h>
+ #include <string.h>
+ 
