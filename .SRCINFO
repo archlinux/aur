@@ -1,0 +1,14 @@
+pkgbase = gitprompt-rs
+	pkgdesc = Minimal X screenshot utility
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Streetwalrus/gitprompt-rs
+	arch = x86_64
+	license = MPL
+	makedepends = cargo
+	depends = git
+	source = https://github.com/Streetwalrus/gitprompt-rs/archive/0.1.0.tar.gz
+	md5sums = c3844b96a03a507de5b24bbd33751399
+
+pkgname = gitprompt-rs
+
