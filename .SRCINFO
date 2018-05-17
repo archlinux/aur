@@ -1,0 +1,21 @@
+pkgbase = redasm-git
+	pkgdesc = https://github.com/REDasmOrg/REDasm
+	pkgver = r474.e08b300
+	pkgrel = 1
+	url = Portable Reverse Engineering Framework
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	provides = redasm
+	conflicts = redasm
+	source = git+https://github.com/REDasmOrg/REDasm.git
+	source = git+https://github.com/Dax89/QHexEdit.git
+	source = git+https://github.com/aquynh/capstone.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = redasm-git
+
