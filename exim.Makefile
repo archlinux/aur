@@ -192,6 +192,11 @@ SPOOL_DIRECTORY=/var/spool/exim
 # least one type of lookup. You should consider whether you want to build
 # the Exim monitor or not.
 
+# If you need to override how pkg-config finds configuration files for
+# installed software, then you can set that here; wildcards will be expanded.
+
+# PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig : /opt/*/lib/pkgconfig
+
 
 #------------------------------------------------------------------------------
 # These settings determine which individual router drivers are included in the
@@ -248,12 +253,12 @@ SUPPORT_MAILDIR=yes
 
 #------------------------------------------------------------------------------
 # See below for dynamic lookup modules.
-# LOOKUP_MODULE_DIR=/usr/lib/exim/lookups/
+#
 # If not using package management but using this anyway, then think about how
 # you perform upgrades and revert them. You should consider the benefit of
 # embedding the Exim version number into LOOKUP_MODULE_DIR, so that you can
 # maintain two concurrent sets of modules.
-# 
+#
 # *BEWARE*: ability to modify the files in LOOKUP_MODULE_DIR is equivalent to
 # the ability to modify the Exim binary, which is often setuid root!  The Exim
 # developers only intend this functionality be used by OS software packagers
@@ -292,6 +297,10 @@ CFLAGS_DYNAMIC=-shared -rdynamic -fPIC
 # (https://github.com/redis/hiredis).
 # Depending on where it is installed you may have to edit the CFLAGS
 # (often += -I/usr/local/include) and LDFLAGS (-lhiredis) lines.
+
+# If your system has pkg-config then the _INCLUDE/_LIBS setting can be
+# handled for you automatically by also defining the _PC variable to reference
+# the name of the pkg-config package, if such is available.
 
 LOOKUP_DBM=yes
 LOOKUP_LSEARCH=yes
@@ -341,17 +350,26 @@ LDAP_LIB_TYPE=OPENLDAP2
 
 
 #------------------------------------------------------------------------------
-# The PCRE library is required for exim.  There is no longer an embedded
+# The PCRE library is required for Exim.  There is no longer an embedded
 # version of the PCRE library included with the source code, instead you
 # must use a system library or build your own copy of PCRE.
 # In either case you must specify the library link info here.  If the
 # PCRE header files are not in the standard search path you must also
 # modify the INCLUDE path (above)
-# The default setting of PCRE_LIBS should work on the vast majority of
-# systems
+#
+# Use PCRE_CONFIG to query the pcre-config command (first found in $PATH)
+# to find the include files and libraries, else use PCRE_LIBS and set INCLUDE
+# too if needed.
 
-PCRE_LIBS=-lpcre
+PCRE_CONFIG=yes
+# PCRE_LIBS=-lpcre
 
+
+#------------------------------------------------------------------------------
+# Uncomment the following line to add DANE support
+# Note: Enabling this unconditionally overrides DISABLE_DNSSEC
+# For DANE under GnuTLS we need an additional library.  See TLS_LIBS below.
+SUPPORT_DANE=yes
 
 #------------------------------------------------------------------------------
 # Additional libraries and include directories may be required for some
@@ -359,7 +377,10 @@ PCRE_LIBS=-lpcre
 # the command for linking Exim itself, not on any auxiliary programs. You
 # don't need to set LOOKUP_INCLUDE if the relevant directories are already
 # specified in INCLUDE. The settings below are just examples; -lpq is for
-# PostgreSQL, -lgds is for Interbase, -lsqlite3 is for SQLite.
+# PostgreSQL, -lgds is for Interbase, -lsqlite3 is for SQLite, -lhiredis
+# is for Redis.
+#
+# You do not need to use this for any lookup information added via pkg-config.
 
 # LOOKUP_INCLUDE=-I /usr/local/ldap/include -I /usr/local/mysql/include -I /usr/local/pgsql/include
 # LOOKUP_LIBS=-L/usr/local/lib -lldap -llber -lmysqlclient -lpq -lgds -lsqlite3
@@ -385,24 +406,28 @@ PCRE_LIBS=-lpcre
 
 WITH_CONTENT_SCAN=yes
 
-# If you want to use the deprecated "demime" condition in the DATA ACL,
-# uncomment the line below. Doing so will also explicitly turn on the
-# WITH_CONTENT_SCAN option. If possible, use the MIME ACL instead of
-# the "demime" condition.
+# If you have content scanning you may wish to only include some of the scanner
+# interfaces.  Uncomment any of these lines to remove that code.
 
-WITH_OLD_DEMIME=yes
+# DISABLE_MAL_FFROTD=yes
+# DISABLE_MAL_FFROT6D=yes
+# DISABLE_MAL_DRWEB=yes
+# DISABLE_MAL_FSECURE=yes
+# DISABLE_MAL_SOPHIE=yes
+# DISABLE_MAL_CLAM=yes
+# DISABLE_MAL_AVAST=yes
+# DISABLE_MAL_SOCK=yes
+# DISABLE_MAL_CMDLINE=yes
 
-# If you're using ClamAV and are backporting fixes to an old version, instead
-# of staying current (which is the more usual approach) then you may need to
-# use an older API which uses a STREAM command, now deprecated, instead of
-# zINSTREAM.  If you need to set this, please let the Exim developers know, as
-# if nobody reports a need for it, we'll remove this option and clean up the
-# code.  zINSTREAM was introduced with ClamAV 0.95.
-#
-# WITH_OLD_CLAMAV_STREAM=yes
+# These scanners are claimed to be no longer existent.
+
+DISABLE_MAL_AVE=yes
+DISABLE_MAL_KAV=yes
+DISABLE_MAL_MKS=yes
+
 
 #------------------------------------------------------------------------------
-# By default Exim includes code to support DKIM (DomainKeys Identified
+# If built with TLS, Exim includes code to support DKIM (DomainKeys Identified
 # Mail, RFC4871) signing and verification.  Verification of signatures is
 # turned on by default.  See the spec for information on conditionally
 # disabling it.  To disable the inclusion of the entire feature, set
@@ -426,7 +451,7 @@ WITH_OLD_DEMIME=yes
 # By default, Exim has support for checking the AD bit in a DNS response, to
 # determine if DNSSEC validation was successful.  If your system libraries
 # do not support that bit, then set DISABLE_DNSSEC to "yes"
-# Note: Enabling EXPERIMENTAL_DANE unconditionally overrides this setting.
+# Note: Enabling SUPPORT_DANE unconditionally overrides this setting.
 
 # DISABLE_DNSSEC=yes
 
@@ -446,14 +471,6 @@ WITH_OLD_DEMIME=yes
 
 # EXPERIMENTAL_DCC=yes
 
-# Uncomment the following lines to add SPF support. You need to have libspf2
-# installed on your system (www.libspf2.org). Depending on where it is installed
-# you may have to edit the CFLAGS and LDFLAGS lines.
-
-SUPPORT_SPF=yes
-# CFLAGS  += -I/usr/local/include
-LDFLAGS += -lspf2
-
 # Uncomment the following lines to add SRS (Sender rewriting scheme) support.
 # You need to have libsrs_alt installed on your system (srs.mirtol.com).
 # Depending on where it is installed you may have to edit the CFLAGS and
@@ -461,13 +478,18 @@ LDFLAGS += -lspf2
 
 EXPERIMENTAL_SRS=yes
 # CFLAGS  += -I/usr/local/include
-LDFLAGS += -lsrs_alt
+LOOKUP_LIBS += -lsrs_alt
 
 # Uncomment the following line to add DMARC checking capability, implemented
-# using libopendmarc libraries.  You must have SPF support enabled also.
+# using libopendmarc libraries. You must have SPF and DKIM support enabled also.
 EXPERIMENTAL_DMARC=yes
+# DMARC_TLD_FILE= /etc/exim/opendmarc.tlds
 # CFLAGS += -I/usr/local/include
-LDFLAGS += -lopendmarc
+LOOKUP_LIBS += -lopendmarc
+
+# Uncomment the following line to add ARC (Authenticated Received Chain)
+# support.  You must have SPF and DKIM support enabled also.
+# EXPERIMENTAL_ARC=yes
 
 # Uncomment the following lines to add Brightmail AntiSpam support. You need
 # to have the Brightmail client SDK installed. Please check the experimental
@@ -477,10 +499,6 @@ LDFLAGS += -lopendmarc
 # EXPERIMENTAL_BRIGHTMAIL=yes
 # CFLAGS  += -I/opt/brightmail/bsdk-6.0/include
 # LDFLAGS += -lxml2_single -lbmiclient_single -L/opt/brightmail/bsdk-6.0/lib
-
-# Uncomment the following line to add DANE support
-# Note: Enabling this unconditionally overrides DISABLE_DNSSEC
-SUPPORT_DANE=yes
 
 # Uncomment the following to include extra information in fail DSN message (bounces)
 # EXPERIMENTAL_DSN_INFO=yes
@@ -594,7 +612,7 @@ FIXED_NEVER_USERS=root
 # That shim can set macros before .include'ing your main configuration file.
 #
 # As a strictly transient measure to ease migration to 4.73, the
-# WHITELIST_D_MACROS value definies a colon-separated list of macro-names
+# WHITELIST_D_MACROS value defines a colon-separated list of macro-names
 # which are permitted to be overridden from the command-line which will be
 # honoured by the Exim user.  So these are macros that can persist to delivery
 # time.
@@ -626,10 +644,14 @@ AUTH_DOVECOT=yes
 # AUTH_GSASL_PC=libgsasl
 # AUTH_HEIMDAL_GSSAPI=yes
 # AUTH_HEIMDAL_GSSAPI_PC=heimdal-gssapi
+# AUTH_HEIMDAL_GSSAPI_PC=heimdal-gssapi heimdal-krb5
 AUTH_PLAINTEXT=yes
 AUTH_SPA=yes
 AUTH_TLS=yes
 
+# Heimdal through 1.5 required pkg-config 'heimdal-gssapi'; Heimdal 7.1
+# requires multiple pkg-config files to work with Exim, so the second example
+# above is needed.
 
 #------------------------------------------------------------------------------
 # If you specified AUTH_CYRUS_SASL above, you should ensure that you have the
@@ -682,6 +704,13 @@ HEADERS_CHARSET="ISO-8859-1"
 #
 # but of course there may need to be other things in CFLAGS and EXTRALIBS_EXIM
 # as well.
+#
+# nb: FreeBSD as of 4.89 defines LIBICONV_PLUG to pick up the system iconv
+# more reliably.  If you explicitly want the libiconv Port then as well
+# as adding -liconv you'll want to unset LIBICONV_PLUG.  If you actually need
+# this, let us know, but for now the Exim Maintainers are assuming that this
+# is uncommon and so you'll need to edit OS/os.h-FreeBSD yourself to remove
+# the define.
 
 
 #------------------------------------------------------------------------------
@@ -734,8 +763,8 @@ HEADERS_CHARSET="ISO-8859-1"
 SUPPORT_TLS=yes
 
 # Uncomment one of these settings if you are using OpenSSL; pkg-config vs not
-# USE_OPENSSL_PC=openssl
-TLS_LIBS=-lssl -lcrypto
+USE_OPENSSL_PC=openssl
+# TLS_LIBS=-lssl -lcrypto
 
 # Uncomment the first and either the second or the third of these if you
 # are using GnuTLS.  If you have pkg-config, then the second, else the third.
@@ -775,6 +804,9 @@ TLS_LIBS=-lssl -lcrypto
 # TLS_LIBS=-L/usr/local/openssl/lib -lssl -lcrypto
 # or
 # TLS_LIBS=-L/opt/gnu/lib -lgnutls -ltasn1 -lgcrypt
+
+# For DANE under GnuTLS we need an additional library.
+# TLS_LIBS += -lgnutls-dane
 
 # TLS_LIBS is included only on the command for linking Exim itself, not on any
 # auxiliary programs. If the include files are not in a standard place, you can
@@ -934,11 +966,25 @@ SUPPORT_PROXY=yes
 #
 # Uncomment the following to include Internationalisation features.  This is the
 # SMTPUTF8 ESMTP extension, and associated facilities for handling UTF8 domain
-# and localparts, per RFCs 5890, 6530 and 6533.
+# and localparts, per RFC 3490 (IDNA2003).
 # You need to have the IDN library installed.
+# If you want IDNA2008 mappings per RFCs 5890, 6530 and 6533, you additionally
+# need libidn2 and SUPPORT_I18N_2008.
 
 SUPPORT_I18N=yes
-LDFLAGS += -lidn
+# LDFLAGS += -lidn
+SUPPORT_I18N_2008=yes
+LOOKUP_LIBS += -lidn -lidn2
+
+
+#------------------------------------------------------------------------------
+# Uncomment the following lines to add SPF support. You need to have libspf2
+# installed on your system (www.libspf2.org). Depending on where it is installed
+# you may have to edit the CFLAGS and LDFLAGS lines.
+
+SUPPORT_SPF=yes
+# CFLAGS  += -I/usr/local/include
+LOOKUP_LIBS += -lspf2
 
 
 #------------------------------------------------------------------------------
@@ -1076,7 +1122,18 @@ SYSTEM_ALIASES_FILE=/etc/mail/aliases
 # Note that this option adds to the size of the Exim binary, because the
 # dynamic loading library is not otherwise included.
 
+# If libreadline is not in the normal library paths, then because Exim is
+# setuid you'll need to ensure that the correct directory is stamped into
+# the binary so that dlopen will find it.
+# Eg, on macOS/Darwin with a third-party install of libreadline, perhaps:
 
+# EXTRALIBS_EXIM+=-Wl,-rpath,/usr/local/opt/readline/lib
+
+
+#------------------------------------------------------------------------------
+# Uncomment this setting to include IPv6 support.
+
+HAVE_IPV6=yes
 
 ###############################################################################
 #              THINGS YOU ALMOST NEVER NEED TO MENTION                        #
@@ -1376,10 +1433,4 @@ PID_FILE_PATH=/var/run/exim.pid
 
 # ENABLE_DISABLE_FSYNC=yes
 
-HAVE_IPV6=YES
-LOOKUP_LIBS=-lldap -llber -lsqlite3
-EXTRALIBS_EXIM=-lpam
-
-USE_GDBM=yes
-DBMLIB=-lgdbm
-# End of EDITME for Exim 4.
+EXTRALIBS=-ldl -lpam -lldap -llber
