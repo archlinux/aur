@@ -3,8 +3,7 @@
 pkgname=rclone-bin
 pkgver=1.41
 pkgrel=1
-pkgdesc="Sync files to and from Google Drive, S3, Swift, Cloudfiles,
-Dropbox and Google Cloud Storage. This is a precompiled build that doesn't depend on pandoc or haskell."
+pkgdesc="Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage. This is a precompiled build that doesn't depend on pandoc or haskell."
 arch=('aarch64')
 provides=('rclone')
 url="http://rclone.org/"
