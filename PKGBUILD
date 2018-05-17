@@ -5,7 +5,7 @@
 # Contributor: AdriÃ¡n Chaves FernÃ¡ndez (Gallaecio) <adriyetichaves@gmail.com>
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
-pkgver=20331
+pkgver=21551
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://play0ad.com/"
@@ -32,6 +32,7 @@ build() {
   cd "$srcdir/${_pkgname}/build/workspaces"
 
   unset CPPFLAGS # for le spidermonkey
+  export SDL2_CONFIG="pkg-config sdl2"
 
   ./update-workspaces.sh \
       --bindir=/usr/bin \
