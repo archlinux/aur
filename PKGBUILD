@@ -1,4 +1,4 @@
-# Maintainer: Zulu
+# Maintainer: FFY00 <filipe.lains@gmail.com>
 
 pkgname=qt5-quick1
 pkgver=5.8.0.fa02271a
@@ -21,7 +21,7 @@ _prlfix() {
 
 pkgver() {
   cd "${srcdir}/qtquick1"
-  printf "%s.%s" "$(cat .qmake.conf | grep "MODULE_VERSION = " | sed "s/MODULE_VERSION = //")" "$(git rev-parse --short HEAD)"
+  printf "%s.%s" "$(cat .qmake.conf | grep 'MODULE_VERSION = ' | sed 's/MODULE_VERSION = //')" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
