@@ -18,7 +18,7 @@ pkgdesc="Generates DNS SSHFP-type records from SSH public keys from public keys 
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('python2' 'python2-dnspython')
-url="http://www.xelerance.com/software/sshfp/"
+url="https://github.com/xelerance/sshfp"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xelerance/$pkgname/archive/${pkgver}.tar.gz")
 md5sums=('3cedcc3463e72196ee2028543d03ebfc')
 
