@@ -1,7 +1,7 @@
 pkgbase = electra-desktop-bin
 	pkgdesc = Cross-platform Desktop Wallet for Electra blockchain.
 	pkgver = 1.0.8
-	pkgrel = 6
+	pkgrel = 7
 	url = https://electraproject.org/
 	install = electra-desktop-bin.install
 	arch = x86_64

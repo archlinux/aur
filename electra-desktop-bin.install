@@ -1,10 +1,9 @@
 post_install() {
     echo -e "";
-    echo -e "    >> To enable syncing with the network, copy the supplied config file to ~/.Electra/";
+    echo -e "    >> If you have trouble syncing, replace your config with the supplied config file in /opt/electra-desktop/Electra.conf.example";
     echo -e "";
     echo -e "    >> Example:";
     echo -e "    >> --------";
-    echo -e "    >> mkdir ~/.Electra/";
     echo -e "    >> cp /opt/electra-desktop/Electra.conf.example ~/.Electra/Electra.conf";
     echo -e "";
 }
