@@ -2,7 +2,7 @@
 # Contributor: ber532k <ber532k@gmx.de>
 pkgname=gcsvedit
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple text editor for CSV, TSV and other kinds of delimiter-separated values (DSV) files.'
 arch=('i686' 'x86_64')
 url="https://github.com/swilmet/gCSVedit"

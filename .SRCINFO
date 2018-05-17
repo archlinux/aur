@@ -1,7 +1,7 @@
 pkgbase = gcsvedit
 	pkgdesc = Simple text editor for CSV, TSV and other kinds of delimiter-separated values (DSV) files.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/swilmet/gCSVedit
 	arch = i686
 	arch = x86_64
