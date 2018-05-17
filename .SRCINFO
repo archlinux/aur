@@ -6,7 +6,7 @@ pkgbase = neon-wallet-bin
 	install = neon-wallet-bin.install
 	arch = x86_64
 	license = MIT
-	source_x86_64 = https://github.com/CityOfZion/neon-wallet/releases/download/0.2.5/Neon_0.2.5_amd64.Linux.deb
+	source_x86_64 = https://github.com/CityOfZion/neon-wallet/releases/download/0.2.5/Neon-0.2.5_amd64.Linux.deb
 	sha256sums_x86_64 = 5477c07d9014694efbd987ef8dccc7ffdf9bb4c888993cf7d69b274e6970e215
 
 pkgname = neon-wallet-bin

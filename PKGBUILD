@@ -7,7 +7,7 @@ url='https://github.com/CityOfZion/neon-wallet'
 pkgver=0.2.5
 pkgrel=1
 arch=('x86_64')
-deb_package="Neon_${pkgver}_amd64.Linux.deb"
+deb_package="Neon-${pkgver}_amd64.Linux.deb"
 source_x86_64=(
   "${url}/releases/download/${pkgver}/${deb_package}"
 )
