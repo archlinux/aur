@@ -20,6 +20,7 @@ package() {
 
   install -Dm755 rclone "$pkgdir/usr/bin/rclone"
 
+  install -Dm644 rclone.COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 rclone.1 "$pkgdir/usr/share/man/man1/rclone.1"
   install -d "$pkgdir/usr/share/doc/$pkgname"
   install -t "$pkgdir/usr/share/doc/$pkgname" -m644 README.html README.txt
