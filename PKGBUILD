@@ -1,7 +1,7 @@
 # Maintainer: Zulu
 
 pkgname=qt5-quick1
-pkgver=5.9.2
+pkgver=5.8.0.fa02271a
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
@@ -17,6 +17,11 @@ _prlfix() {
   # Fix wrong path in prl files
   find "${pkgdir}/usr/lib" -type f -name '*.prl' \
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/' {} \;
+}
+
+pkgver() {
+  cd "${srcdir}/qtquick1"
+  printf "%s.%s" "$(cat .qmake.conf | grep "MODULE_VERSION = " | sed "s/MODULE_VERSION = //")" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
