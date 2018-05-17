@@ -6,7 +6,7 @@
 
 pkgname=openclonk
 pkgver=8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Multiplayer-action-tactic-skill game'
 arch=('i686' 'x86_64')
 url='http://openclonk.org'
@@ -15,18 +15,18 @@ depends=('glew' 'freealut' 'libvorbis' 'qt5-base' 'sdl2' 'miniupnpc' 'hicolor-ic
 makedepends=('cmake' 'mesa')
 optdepends=('openclonk-music: proprietary music package')
 conflicts=('clonk_rage')
-source=("https://git.openclonk.org/openclonk.git/archive/$pkgname-release-$pkgver-src.tar.bz2"
+source=("https://github.com/openclonk/openclonk/archive/v$pkgver.tar.gz"
         'directories.patch')
-sha256sums=('337677f25457e7137eac7818adb4ad02992d562593386c19b885738aaec4b346'
+sha256sums=('fea0cd473334c9adf74a8930c42c78b8c2eb9255e267976a700910e07d2a0506'
             'b3104190549b35206158b58c61b80b26f300efd9dd30f507361234d7d70fd10a')
 
 prepare() {
-  cd ${pkgname}-release-${pkgver}-src
+  cd ${pkgname}-${pkgver}
   patch -p1 -i ../directories.patch
 }
 
 build() {
-  cd ${pkgname}-release-${pkgver}-src
+  cd ${pkgname}-${pkgver}
 
   [[ -d build ]] && rm -rf build
   mkdir build && cd build
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-release-${pkgver}-src/build
+  cd ${pkgname}-${pkgver}/build
   
   make DESTDIR="$pkgdir/" install
 

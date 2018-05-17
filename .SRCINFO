@@ -1,7 +1,7 @@
 pkgbase = openclonk
 	pkgdesc = Multiplayer-action-tactic-skill game
 	pkgver = 8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openclonk.org
 	arch = i686
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = openclonk
 	depends = hicolor-icon-theme
 	optdepends = openclonk-music: proprietary music package
 	conflicts = clonk_rage
-	source = https://git.openclonk.org/openclonk.git/archive/openclonk-release-8.1-src.tar.bz2
+	source = https://github.com/openclonk/openclonk/archive/v8.1.tar.gz
 	source = directories.patch
-	sha256sums = 337677f25457e7137eac7818adb4ad02992d562593386c19b885738aaec4b346
+	sha256sums = fea0cd473334c9adf74a8930c42c78b8c2eb9255e267976a700910e07d2a0506
 	sha256sums = b3104190549b35206158b58c61b80b26f300efd9dd30f507361234d7d70fd10a
 
 pkgname = openclonk
