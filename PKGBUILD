@@ -22,6 +22,8 @@ _prlfix() {
 prepare() {
   cd qtquick1
 
+  git checkout dev
+
   if [ ! -d include ]; then
     syncqt.pl-qt5 -version ${pkgver} sync.profile
   fi
