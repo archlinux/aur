@@ -2,7 +2,7 @@
 
 _hkgname=gtk
 pkgname=haskell-gtk2
-pkgver=0.14.7
+pkgver=0.14.9
 pkgrel=1
 pkgdesc="The core library of the Gtk2Hs suite of libraries for Haskell based on Gtk+."
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -11,7 +11,7 @@ license=('LGPL-2.1')
 makedepends=('ghc' 'haskell-gtk2hs-buildtools')
 depends=('ghc-libs' 'haskell-mtl' 'haskell-text' 'haskell-glib' 'haskell-pango' 'haskell-cairo' 'gtk2')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('9c837342d3dd2977e65dd214cd94b35130792e193b7ad37e26fd327d4d7ec5e24fb7d42b346d1c090925cc8feabe25344384cc48f22c709ba320cb06b5376437')
+sha512sums=('f29babcc0041d85c25d1fca7919f2e1e20f12184164ed32e6a273bf6e37db7f87b597dd5f04945c968c540d308d3620eab7612902eb28ab123b0c0a9d79b2c2d')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
