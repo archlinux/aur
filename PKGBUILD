@@ -22,7 +22,7 @@ depends=('openssl' 'libmcrypt')
 options=(!libtool)
 install="$pkgname.install"
 backup=('etc/nsca/nsca.cfg' 'etc/nsca/send_nsca.cfg')
-url="http://www.nagios.org/"
+url="https://www.nagios.org/"
 source=("http://downloads.sourceforge.net/nagios/nsca-$pkgver.tar.gz"
         'nsca.service')
 md5sums=('43f638c51367a3170476ed106fbb4858'
