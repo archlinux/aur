@@ -11,7 +11,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=perl-net-rabbitmq
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Interact with RabbitMQ over AMQP using librabbitmq"
 arch=('any')
@@ -20,10 +20,15 @@ license=('GPL' 'PerlArtistic')
 depends=('perl' )
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/J/JE/JESUS/Net--RabbitMQ-${pkgver}.tar.gz")
-md5sums=('1a429260ec4584642b670ba393350461')
+md5sums=('80d0f765fe44c9e0e0c9747e2e64c1d1')
 
 build() {
   cd "$srcdir"/Net--RabbitMQ-$pkgver
+
+  # remove files that shouldn't be in the tarball and mess with building
+  # refer: https://rt.cpan.org/Public/Bug/Display.html?id=78353
+  rm -f ._*
+
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   perl Makefile.PL INSTALLDIRS=vendor
