@@ -3,7 +3,7 @@
 
 pkgname=freerdp-git
 pkgdesc='Free RDP client - git checkout'
-pkgver=2.0.0.beta1.android11.r80.g38ca32873
+pkgver=2.0.0.rc2.r148.g9460f4292
 pkgrel=1
 depends=('openssl' 'libxcursor' 'libcups' 'alsa-lib' 'libxext' 'libxdamage'
          'ffmpeg' 'libxkbfile' 'libxinerama' 'libxv' 'openh264')
