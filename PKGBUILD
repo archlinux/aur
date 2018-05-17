@@ -2,7 +2,7 @@
 
 _target=i586-elf
 pkgname=$_target-binutils
-pkgver=2.25
+pkgver=2.30
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the i586-elf target'
 arch=(i586 x86_64)
@@ -10,7 +10,7 @@ url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib)
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2)
-sha256sums=('22defc65cfa3ef2a3395faaea75d6331c6e62ea5dfacfed3e2ec17b08c882923')
+sha256sums=('efeade848067e9a03f1918b1da0d37aaffa0b0127a06b5e9236229851d9d0c09')
 
 prepare() {
   cd binutils-$pkgver
