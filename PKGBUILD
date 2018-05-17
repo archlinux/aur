@@ -4,8 +4,8 @@
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=ghostwriter
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 pkgdesc="A cross-platform, aesthetic, distraction-free Markdown editor"
 arch=('i686' 'x86_64')
 url="https://github.com/wereturtle/ghostwriter"
@@ -16,7 +16,7 @@ optdepends=('multimarkdown: For alternative converter, superset of Markdown with
             'pandoc: For Pandoc supported Markdown flavors and export to various formats'
             'cmark: For processing and rendering CommonMark')
 source=("https://github.com/wereturtle/ghostwriter/archive/v${pkgver}.tar.gz")
-md5sums=('46788d672481f9750293eb71eced35b7')
+md5sums=('f799f8d8b27f82f41d605522643e51c6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
