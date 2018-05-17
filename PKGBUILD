@@ -16,7 +16,7 @@ pkgver=1.1.2
 pkgrel=4
 pkgdesc="Wallpaper rotator for Gnome using files found in ~/.gnome2/backgrounds.xml"
 arch=(any)
-url="https://www.sapphirepaw.org/projects/freshwall.html"
+url="https://pypi.org/project/freshwall/"
 license=('Apache')
 depends=('python2>=2.4')
 source=("https://pypi.python.org/packages/source/f/$pkgname/$pkgname-$pkgver.tar.gz")
@@ -28,11 +28,11 @@ package() {
   msg "Creating dirs..."
   install -dm755 "$pkgdir"/usr/bin/
   install -dm755 "$pkgdir"/usr/lib/python2.6/site-packages/$pkgname/
-  
+
   msg "Copying files..."
   cp bin/* "$pkgdir"/usr/bin/
   cp lib/$pkgname/* "$pkgdir"/usr/lib/python2.6/site-packages/$pkgname/
-  
+
   msg "Forcing usage of python2"
   sed -e 's|^#!/usr/bin/env python$|#!/usr/bin/python2|g' \
       -i "$pkgdir"/usr/bin/*
