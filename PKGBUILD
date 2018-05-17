@@ -3,14 +3,14 @@
 pkgname=mxnet
 _gitname=incubator-mxnet
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Flexible and Efficient Library for Deep Learning"
 arch=('x86_64')
 url="http://mxnet.io/"
 license=('Apache')
 depends=('hdf5' 'cblas' 'lapack' 'python-numpy' 'python-requests' 'intel-tbb-gcc6')
 optdepends=('cairo' 'cuda' 'cudnn' 'gtkglext' 'python-graphviz' 'opencv')
-makedepends=(${optdepends[@]} 'git' 'cython' 'gperftools')
+makedepends=(${optdepends[@]} 'git' 'cython')
 source=("git+https://github.com/apache/$_gitname")
 md5sums=('SKIP')
 
@@ -22,6 +22,11 @@ prepare() {
 		echo "USE_BLAS=blas"
 		echo "USE_LAPACK=1"
 		echo "ADD_LDFLAGS+=-lcblas"
+
+		# https://github.com/apache/incubator-mxnet/issues/8569
+		echo "USE_GPERFTOOLS=0"
+		echo "USE_JEMALLOC=0"
+
 		if (pacman -Q cuda &>/dev/null && pacman -Q cudnn &>/dev/null); then
 			msg2 "CUDA support enabled"
 			echo "USE_CUDA=1"
