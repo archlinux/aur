@@ -2,7 +2,7 @@ _pkgname=pocketsphinx
 pkbase=python-pocketsphinx
 pkgname=('python-pocketsphinx' 'python2-pocketsphinx')
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to CMU Sphinxbase and Pocketsphinx libraries"
 arch=('i686' 'x86_64')
 url="https://github.com/bambocher/pocketsphinx-python"
@@ -26,11 +26,13 @@ build() {
 package_python-pocketsphinx() {
   depends=('python')
   cd $srcdir/$_pkgname-$pkgver
-  python setup.py install --root=$pkgdir --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
+  rm -r "$pkgdir"/usr/lib/python3*/site-packages/sphinxbase/
 }
 
 package_python2-pocketsphinx() {
   depends=('python2')
   cd $srcdir/$_pkgname-$pkgver-py2
-  python2 setup.py install --root=$pkgdir --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  rm -r "$pkgdir"/usr/lib/python2*/site-packages/sphinxbase/
 }
