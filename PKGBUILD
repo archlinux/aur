@@ -1,24 +1,25 @@
 # Maintainer: SebRmv
 pkgname=ia32_aout
-pkgver=4.0
-pkgrel=3
+pkgver=4.16
+pkgrel=1
 pkgdesc='ia32_aout kernel module, for running an a.out binary format'
 arch=('x86_64')
-makedepends=('linux-headers' 'linux-api-headers' 'gzip')
+makedepends=('linux-headers' 'linux-api-headers' 'gzip' 'awk')
 url="https://www.kernel.org"
 license=("GPLv3")
 options=('!strip')
 source=("https://raw.githubusercontent.com/torvalds/linux/v{$pkgver}/arch/x86/ia32/ia32_aout.c"
         "Makefile")
-sha1sums=('c635114660009c57014eb2a38e50e3abbb5f2e5f'
-	  'e7443ceb823797ef7b1dfc3cebd7f3488b153230')
+sha1sums=('7b57d6699c98cbda0af10509e2811f1f9fd1e6dc'
+          '12bf91fd45d97f76316d242f482bd8b22c77d37e')
 install=ia32_aout.install
 
-_kernel_version_x64=4.4
+_kernel_version=$(uname -r)
+_kernel_version_x64=$(uname -r | awk -F . '{print $1"."$2}')
 
 build(){ 
   cd "$srcdir" 
-  make   
+  make KVERSION=${_kernel_version}  
 }
 
 package() {
