@@ -1,0 +1,25 @@
+pkgbase = python-nimfa
+	pkgdesc = Nonnegative matrix factorization in Python
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/meowklaski/nimfa
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-nimfa-1.3.2.tar.gz::https://pypi.io/packages/source/n/nimfa/nimfa-1.3.2.tar.gz
+	sha256sums = 87171493f5af8201297ea67938342e98277e7726ae8ff010b4c7738948ce0c47
+
+pkgname = python-nimfa
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+
+pkgname = python2-nimfa
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scipy
+
