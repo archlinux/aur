@@ -6,7 +6,7 @@ pkgver=0.9.16
 pkgrel=1
 pkgdesc="Automatic rolling backups for PostgreSQL"
 arch=('any')
-url="http://fukawi2.nl/index.php?page=code-pgsql-backup"
+url="https://github.com/fukawi2/pgsql-backup"
 license=('GPL')
 depends=('coreutils' 'postgresql')
 makedepends=('perl') # reqd for pod2man to make man page
