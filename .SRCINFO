@@ -1,0 +1,19 @@
+pkgbase = xpilot-ng
+	pkgdesc = A multi-player 2D spacewar game
+	pkgver = 4.7.3
+	pkgrel = 1
+	url = http://xpilot.sourceforge.net/
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = glu
+	depends = libxxf86misc
+	optdepends = openal
+	optdepends = freealut
+	source = https://cfhcable.dl.sourceforge.net/project/xpilot/xpilot-ng/xpilot-ng-4.7.3/xpilot-ng-4.7.3.tar.gz
+	sha256sums = f287093c757a71232000f210ee4a4edeccc9e8af0817d5be43084e84aebd4709
+
+pkgname = xpilot-ng
+
