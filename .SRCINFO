@@ -1,0 +1,23 @@
+pkgbase = pref-git
+	pkgdesc = https://pref.github.io/
+	pkgver = r575.5761543
+	pkgrel = 1
+	url = Portable Reverse Engineering Framework
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	provides = pref
+	conflicts = pref
+	source = git+https://github.com/PREF/PREF.git
+	source = git+https://github.com/PREF/PrefLib.git
+	source = git+https://github.com/Dax89/QHexEdit.git
+	source = git+https://github.com/PREF/BTVM.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = pref-git
+
