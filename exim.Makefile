@@ -450,7 +450,7 @@ WITH_OLD_DEMIME=yes
 # installed on your system (www.libspf2.org). Depending on where it is installed
 # you may have to edit the CFLAGS and LDFLAGS lines.
 
-EXPERIMENTAL_SPF=yes
+SUPPORT_SPF=yes
 # CFLAGS  += -I/usr/local/include
 LDFLAGS += -lspf2
 
@@ -480,7 +480,7 @@ LDFLAGS += -lopendmarc
 
 # Uncomment the following line to add DANE support
 # Note: Enabling this unconditionally overrides DISABLE_DNSSEC
-EXPERIMENTAL_DANE=yes
+SUPPORT_DANE=yes
 
 # Uncomment the following to include extra information in fail DSN message (bounces)
 # EXPERIMENTAL_DSN_INFO=yes

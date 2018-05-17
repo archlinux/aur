@@ -13,7 +13,7 @@ pkgname=(exim-heavy
          exim-lookup-pgsql)
 pkgname=exim-heavy
 pkgver=4.91
-pkgrel=1
+pkgrel=2
 pkgdesc='Message Transfer Agent with maximal-enabled features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.exim.org/'
@@ -35,7 +35,7 @@ sha512sums=('dbdae7e451988d0f5085a700875372d4978c37baa51f1b106b55045eac39a9c92a9
             'SKIP'
             'a91c6a9e5b3ac9d143741dba01e11616812ba44c3a8c768c8232364026460f0b8fdeeb120a2f2b86742a6e3ebbfc9d6335b86d108b044e43108b4a6f0374c9ad'
             'd8e3b466e0bba8175cfe762058dec49018495a260aa5efd139f4ef435284c305958cbd7fc514e81042146368b749ae38f0bf276fc0b4b91918ef33126900aa81'
-            '4086e401a21e80f92adadb0a637efcfb525a0c250e80e88f9b9a1f61cef463ecf89e769576331cd2b200ac1f4966efc5fa7fd44ac179cbf86a700faf5169e9bf'
+            '74c3ea8be4cfe68b000b5e58d924932739bc87ca218c83dd468f3720d9bc33117b8be8e161a59c3c9a0c6c26e693d663ab716ddbb331ba6f0cadbeefe51c6b81'
             'dc28698f15e8eaa4614ae81fc8cb76d92fed1110ce02f7a6ee8feace418dbb194711eb2d4dd444cf818628c11721e21d80b7b974879ab6ddd78cc717cce17c2f'
             'e2fc3966c320460a26fbbf83e98df725587dc126dfe9d7a84c3285eb4b22a061b30499425c70f3d73cf13aa81c194274004efd20ce1316836463b982117909f8'
             '11c8133ee15b3e5193c9b1c59aed66c81b6e045dd23310bede9fcde6c88905db5ef08afdb798b53b75a7465915ea1247e980edf95db07a7f9b7bb58ce95fbb5a'
