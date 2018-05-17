@@ -1,6 +1,6 @@
 pkgbase = thinlinc-server
 	pkgdesc = Cendio ThinLinc Linux remote desktop server
-	pkgver = 4.8.1
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = http://www.cendio.com/
 	install = thinlinc-server.install
@@ -24,17 +24,18 @@ pkgbase = thinlinc-server
 	optdepends = python2-ldap: LDAP integration tools
 	optdepends = apache: Web integration
 	optdepends = mod_nss: Web integration
-	source = tlserver://tl-4.8.1-server.zip
+	source = tlserver://tl-4.9.0-server.zip
 	source = LICENSE
 	source = tlwebaccess.service
 	source = tlwebadm.service
 	source = vsmagent.service
 	source = vsmserver.service
-	sha256sums = 8a05ee7115988b0deef3cc9cf7243826844cf39f7b643e7ce83b6bc69f8e08e4
-	sha265sums = 179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e
-	sha265sums = 8e70ef23f9716dcb100eba660932e7f5d05351d63074fb262cf925812dbdbb63
-	sha265sums = 5a92c5beac6c64487debd92a4d94b56074b9f9b0cd38d154a14a320105f3bccd
-	sha265sums = 292e6ef1295f329ab95d1d16c5bf7286f5c5c288d6637d0d736b9a144e85449d
-	sha265sums = a1fe20c565e7e468407d73a0f59c8c352318a7e4c8e85fe068d89cbb0afd5e71
+	sha256sums = 60dae3e29d8927223ed21b0cc094d17c73882f8a7160602d18d12dc1e157bf8b
+	sha256sums = 179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e
+	sha256sums = 8e70ef23f9716dcb100eba660932e7f5d05351d63074fb262cf925812dbdbb63
+	sha256sums = 5a92c5beac6c64487debd92a4d94b56074b9f9b0cd38d154a14a320105f3bccd
+	sha256sums = 292e6ef1295f329ab95d1d16c5bf7286f5c5c288d6637d0d736b9a144e85449d
+	sha256sums = a1fe20c565e7e468407d73a0f59c8c352318a7e4c8e85fe068d89cbb0afd5e71
 
 pkgname = thinlinc-server
+
