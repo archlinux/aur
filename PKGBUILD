@@ -1,6 +1,6 @@
 # Maintainer: Wes Barnett (aur AT wbarnett DOT us)
 pkgname=nordvpn
-pkgver=2018.03.30.09.23.13
+pkgver=2018.05.15.12.36.35
 pkgrel=1
 pkgdesc="NordVPN OpenVPN configuration files for use with openvpn-client@.service"
 url="https://www.nordvpn.com"

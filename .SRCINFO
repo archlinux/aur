@@ -1,6 +1,6 @@
 pkgbase = nordvpn
 	pkgdesc = NordVPN OpenVPN configuration files for use with openvpn-client@.service
-	pkgver = 2018.03.30.09.23.13
+	pkgver = 2018.05.15.12.36.35
 	pkgrel = 1
 	url = https://www.nordvpn.com
 	install = nordvpn.install
