@@ -1,0 +1,12 @@
+pkgbase = qobuz-desktop-player
+	pkgdesc = Qobuz desktop player
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nlarche/qobuz-desktop-player/releases
+	arch = x86_64
+	license = MIT
+	source = https://github.com/nlarche/qobuz-desktop-player/releases/download/v0.1.0/qobuz-desktop-player_0.1.0_amd64.deb
+	sha256sums = SKIP
+
+pkgname = qobuz-desktop-player
+
