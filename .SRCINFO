@@ -1,0 +1,21 @@
+pkgbase = dataleech
+	pkgdesc = Dataleech - a backup plan using ZFS...
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/xvzf/dataleech
+	arch = any
+	license = GPL3
+	depends = zfs-utils
+	depends = python
+	depends = python-click
+	depends = pv
+	depends = openssh
+	depends = cronie
+	provides = dataleech
+	provides = superman
+	backup = etc/dataleech/datasets
+	source = https://github.com/xvzf/dataleech/archive/1.0.1.tar.gz
+	sha256sums = ebe83d21439c1416d990aba10efd1b75efa0436446ff4bb94684dbd32ee1bf42
+
+pkgname = dataleech
+
