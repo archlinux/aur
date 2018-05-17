@@ -1,7 +1,7 @@
 pkgbase = gitprompt-rs
-	pkgdesc = Minimal X screenshot utility
+	pkgdesc = Simple Git prompt
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Streetwalrus/gitprompt-rs
 	arch = x86_64
 	license = MPL2

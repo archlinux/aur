@@ -1,8 +1,8 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=gitprompt-rs
 pkgver=0.1.0
-pkgrel=2
-pkgdesc="Minimal X screenshot utility"
+pkgrel=3
+pkgdesc="Simple Git prompt"
 arch=('x86_64')
 url="https://github.com/Streetwalrus/$pkgname"
 license=('MPL2')
