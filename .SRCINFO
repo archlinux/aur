@@ -8,6 +8,7 @@ pkgbase = crosvm-git
 	license = custom:chromiumos
 	makedepends = cargo
 	depends = minijail-git
+	depends = gcc-libs
 	source = git+https://chromium.googlesource.com/chromiumos/platform/crosvm
 	sha256sums = SKIP
 
