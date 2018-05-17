@@ -10,7 +10,7 @@ depends=("zfs-utils" "python" "python-click" "pv" "openssh" "cronie")
 provides=("dataleech" "superman")
 backup=("etc/dataleech/datasets")
 source=("https://github.com/xvzf/dataleech/archive/${pkgver}.tar.gz")
-sha256sums=("aa9606069904fe0257555d460c6afbab4589343a9705b5cc6e2d7c628c52758a")
+sha256sums=("128b48766d5283c0b25f57048566a55d8906294a44e91ae8a73c70322c405ee3")
 
 build() {
   cd "${srcdir}/dataleech-${pkgver}/"
