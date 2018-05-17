@@ -1,14 +1,14 @@
-# Maintainer: Brice Waegeneire <brice dot wge at gmail dot com>
+# Maintainer: Christopher Fair  <christopherpfair at comcast dot net>
 pkgname=git-subrepo
-pkgver=0.3.0
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Git Submodule Alternative"
 arch=('i686' 'x86_64')
-url="https://github.com/ingydotnet/git-subrepo"
+url="https://github.com/chrisfair/git-subrepo.git"
 license=('MIT')
 depends=('git')
 makedepends=('git')
-source=(git+https://github.com/ingydotnet/git-subrepo.git#tag=$pkgver)
+source=(git+https://github.com/chrisfair/git-subrepo.git#tag=$pkgver)
 sha256sums=('SKIP')
 
 
