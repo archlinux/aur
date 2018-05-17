@@ -7,7 +7,7 @@ pkgdesc='Simple text editor for CSV, TSV and other kinds of delimiter-separated 
 arch=('i686' 'x86_64')
 url="https://github.com/swilmet/gCSVedit"
 license=('GPL3')
-depends=('gtk3' 'libxml2' 'gtksourceview3' 'tepl>=3.0')
+depends=('gtk3' 'libxml2' 'gtksourceview3' 'tepl3')
 source=("https://github.com/swilmet/gCSVedit/releases/download/$pkgver/gcsvedit-$pkgver.tar.xz")
 md5sums=('48f3a206da966515592da7fca6df11bc')
 

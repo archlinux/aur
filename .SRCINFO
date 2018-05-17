@@ -9,7 +9,7 @@ pkgbase = gcsvedit
 	depends = gtk3
 	depends = libxml2
 	depends = gtksourceview3
-	depends = tepl
+	depends = tepl3
 	source = https://github.com/swilmet/gCSVedit/releases/download/0.6.0/gcsvedit-0.6.0.tar.xz
 	md5sums = 48f3a206da966515592da7fca6df11bc
 
