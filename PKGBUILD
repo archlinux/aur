@@ -3,7 +3,7 @@
 pkgname=electra-desktop-bin
 _pkgname=electra-desktop
 pkgver=1.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Cross-platform Desktop Wallet for Electra blockchain.'
 arch=('x86_64')
 url='https://electraproject.org/'
@@ -14,8 +14,12 @@ makedepends=('binutils' 'xz')
 _srcfile="${_pkgname}_${pkgver}_amd64.deb"
 noextract=("${_srcfile}")
 source=("https://github.com/Electra-project/electra-desktop/releases/download/v${pkgver}/${_srcfile}"
+        "Electra.conf"
+        "electra-desktop-bin.install"
         "point-desktop-file-to-correct-bin-location.patch")
 sha256sums=('a93b484da725d5d828d1b3a1824b26637396313038b134b376c4b04d61acd06b'
+            'ed9684c0610e93e4958541994cca12a98a0507896a11e17fbcd29cbe730d370e'
+            'ae251fc7d223b97e927f824650bc2e91ec83f80a16c3718e33931bcdf54ae5c7'
             '267c8aca4f0d3960dd12eb83ef919d339bfb093e77fbc37aa80fe6938ba1bd11')
 
 prepare() {
@@ -31,6 +35,9 @@ package() {
   # Copy deb contents to package
   mkdir "$pkgdir/opt"
   cp -R "opt/Electra Desktop/" "$pkgdir/opt/${_pkgname}"
+
+  # Copy example config file to package
+  cp Electra.conf "$pkgdir/opt/${_pkgname}/Electra.conf.example"
   
   # Copy icons
   mkdir -p "$pkgdir/usr/share/icons"
