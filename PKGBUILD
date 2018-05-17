@@ -1,6 +1,6 @@
 # Maintainer: Katy Moe <arch@katy.moe>
 pkgname=gnudos
-pkgver=1.11
+pkgver=1.11.4
 pkgrel=1
 pkgdesc="Library designed to help new users of the GNU system, who are coming from a DOS background, fit into the picture and start using the GNU system with ease"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ source=(
 	"https://ftp.gnu.org/gnu/gnudos/gnudos-$pkgver.tar.gz"
 	"https://ftp.gnu.org/gnu/gnudos/gnudos-$pkgver.tar.gz.sig"
 )
-sha256sums=('02585f0d1ec314ec661c7518a5742dbb47611c0433410b49b4437869031b0cc5'
+sha256sums=('1dedeb5f8807596e5d1feb48d9c09d5848e026aac77bdd6203ab6fe9a211b991'
             'SKIP')
 validpgpkeys=('893ECEDAE0BA2F86C2333F9928229E699E9C841A') # Mohammed Isam <yahoo: mohammed_isam1984>
 

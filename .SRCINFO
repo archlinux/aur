@@ -1,16 +1,16 @@
 pkgbase = gnudos
 	pkgdesc = Library designed to help new users of the GNU system, who are coming from a DOS background, fit into the picture and start using the GNU system with ease
-	pkgver = 1.11
+	pkgver = 1.11.4
 	pkgrel = 1
 	url = https://www.gnu.org/software/gnudos/
 	arch = x86_64
 	arch = i686
 	license = GPL
 	depends = glibc
-	source = https://ftp.gnu.org/gnu/gnudos/gnudos-1.11.tar.gz
-	source = https://ftp.gnu.org/gnu/gnudos/gnudos-1.11.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/gnudos/gnudos-1.11.4.tar.gz
+	source = https://ftp.gnu.org/gnu/gnudos/gnudos-1.11.4.tar.gz.sig
 	validpgpkeys = 893ECEDAE0BA2F86C2333F9928229E699E9C841A
-	sha256sums = 02585f0d1ec314ec661c7518a5742dbb47611c0433410b49b4437869031b0cc5
+	sha256sums = 1dedeb5f8807596e5d1feb48d9c09d5848e026aac77bdd6203ab6fe9a211b991
 	sha256sums = SKIP
 
 pkgname = gnudos
