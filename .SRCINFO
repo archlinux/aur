@@ -1,0 +1,15 @@
+pkgbase = executor
+	pkgdesc = old-school Macintosh Emulator
+	pkgver = 2
+	pkgrel = 0
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = sdl2
+	depends = sdl2
+	depends = qt5-base
+	source = http://victor3d.karelia.pro/arch/executor.tar.gz
+	md5sums = c932297b0906c746ea5b73bfe85b58b8
+
+pkgname = executor
+
