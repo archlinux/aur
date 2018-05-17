@@ -1,0 +1,16 @@
+pkgbase = multichain
+	pkgdesc = MultiChain open source platform for private blockchains
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/MultiChain/multichain
+	arch = x86_64
+	license = GPLv3
+	depends = db4.8
+	depends = boost
+	depends = openssl
+	provides = multichain
+	source = https://github.com/MultiChain/multichain/archive/2.0-release.tar.gz
+	md5sums = 766ac031265c6ae7c35c14400ea58c78
+
+pkgname = multichain
+
