@@ -1,4 +1,10 @@
 post_install() {
-    echo -e ">> To enable syncing with the network, copy the supplied config file to ~/.Electra/";
-    echo -e ">> cp --parents /opt/electra-desktop/Electra.conf.example ~/.Electra/Electra.conf";
+    echo -e "";
+    echo -e "    >> To enable syncing with the network, copy the supplied config file to ~/.Electra/";
+    echo -e "";
+    echo -e "    >> Example:";
+    echo -e "    >> --------";
+    echo -e "    >> mkdir ~/.Electra/";
+    echo -e "    >> cp /opt/electra-desktop/Electra.conf.example ~/.Electra/Electra.conf";
+    echo -e "";
 }

@@ -3,7 +3,7 @@
 pkgname=electra-desktop-bin
 _pkgname=electra-desktop
 pkgver=1.0.8
-pkgrel=5
+pkgrel=6
 pkgdesc='Cross-platform Desktop Wallet for Electra blockchain.'
 arch=('x86_64')
 url='https://electraproject.org/'
