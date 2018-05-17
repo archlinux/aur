@@ -12,7 +12,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=backupchecker
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="A fully automated backup checker"
 arch=(any)
@@ -20,7 +20,7 @@ url="https://github.com/backupchecker/backupchecker"
 license=('GPLv3')
 depends=('python>=3.4')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/backupchecker/backupchecker/archive/${pkgver}.tar.gz")
-md5sums=('3b316ca50b329906719432892db2433f')
+md5sums=('fef485daae1b15f1180974d1f75f30e0')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
