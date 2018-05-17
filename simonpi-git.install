@@ -1,0 +1,7 @@
+post_install() {
+	echo "allow rasp-br0" >> /etc/qemu/bridge.conf
+}
+
+post_remove() {
+	sed -i '/rasp-br0/d' /etc/qemu/bridge.conf
+}
