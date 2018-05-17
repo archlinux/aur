@@ -2,7 +2,7 @@
 _pkgbase=ia32_aout
 pkgname=ia32_aout-dkms
 pkgver=4.16
-pkgrel=1
+pkgrel=2
 pkgdesc='ia32_aout kernel module, for running an a.out binary format (DKMS)'
 arch=('x86_64')
 depends=('dkms')
@@ -11,7 +11,7 @@ conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
 license=("GPLv3")
 options=('!strip')
-source=("https://raw.githubusercontent.com/torvalds/linux/v{$pkgver}/arch/x86/ia32/ia32_aout.c"
+source=("https://raw.githubusercontent.com/torvalds/linux/v${pkgver}/arch/x86/ia32/ia32_aout.c"
         'Makefile'
         'dkms.conf')
 # updpkgsums
