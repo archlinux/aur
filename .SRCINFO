@@ -1,0 +1,23 @@
+pkgbase = gummi-gtk2-git
+	pkgdesc = Simple LaTex editor for GTK users (addtions to the original Gummi include: commenting functionality, cut/duplicate/delete line, reopening previously open files)
+	pkgver = 0.6.7
+	pkgrel = 3
+	url = http://github.com/florianbegusch/gummi
+	arch = x86_64
+	license = MIT
+	makedepends = glib2
+	makedepends = gtk2
+	makedepends = pango
+	makedepends = poppler
+	makedepends = intltool
+	makedepends = setconf
+	makedepends = git
+	depends = texlive-core
+	depends = gtkspell
+	depends = gtksourceview2
+	depends = poppler-glib
+	source = git+ssh://git@github.com/florianbegusch/gummi#tag=0.6.7
+	md5sums = SKIP
+
+pkgname = gummi-gtk2-git
+
