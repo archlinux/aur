@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=xine-lib-hg
-pkgver=1.2.8.r13412.8771dec9e368
+pkgver=1.2.9.r13885.1868bc14317c
 pkgrel=1
 pkgdesc='A multimedia playback engine (Mercurial version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -58,16 +58,25 @@ optdepends=('a52dec: for using the a52 plugin'
 )
 provides=('xine-lib')
 conflicts=('xine-lib')
-source=("$pkgname"::'hg+http://hg.debian.org/hg/xine-lib/xine-lib-1.2-vdpau')
+source=("$pkgname"::'hg+http://hg.code.sf.net/p/xine/xine-lib-1.2')
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
     
-    # Mercurial        
-    printf '%s.r%s.%s' "$(hg log -r '.' --template '{latesttag}')" \
-                       "$(hg identify -n)" \
-                       "$(hg identify -i)"
+    local _version_major="$(grep '^XINE_VERSION_MAJOR=' version.sh | sed 's/.*=//')"
+    local _version_minor="$(grep '^XINE_VERSION_MINOR=' version.sh | sed 's/.*=//')"
+    local _version_sub="$(  grep '^XINE_VERSION_SUB='   version.sh | sed 's/.*=//')"
+    local _version_patch="$(grep '^XINE_VERSION_PATCH=' version.sh | sed 's/.*=//')"
+    
+    local _version="$_version_major"
+    
+    for _number in "$_version_minor" "$_version_sub" "$_version_patch"
+    do
+        [ -n "$_number" ] && _version+=".${_number}"
+    done
+    
+    printf '%s.r%s.%s' "$_version" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 build() {
