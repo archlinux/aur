@@ -5,7 +5,7 @@ _branch=4.16
 _build_from=tarball
 #_build_from=git
 #_build_from=git-mirror
-pkgver=4.16.8
+pkgver=4.16.9
 pkgrel=1
 arch=('x86_64')
 url="https://git.uplinklabs.net/steven/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
@@ -21,7 +21,7 @@ case $_build_from in
             "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign")
     sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
                 'SKIP'
-                '6fb2db1e38f762e6a028dfa5e6d094f0eb4324572667923aca3d64c87117772d'
+                '299b45a4f16f763ecf654e6642c020b6e9e461601d056ef44ecb21b54d736cbf'
                 'SKIP')
     ;;
   git)
