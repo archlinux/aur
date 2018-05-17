@@ -32,9 +32,9 @@ _localmodcfg=
 
 pkgbase=linux-gc             # Build kernel with a different name
 _srcname=linux-4.16
-pkgver=4.16.8
+pkgver=4.16.9
 pkgrel=1
-_pdsversion=098o
+_pdsversion=098p
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -54,6 +54,7 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   0003-Partially-revert-swiotlb-remove-various-exports.patch
+  0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -61,17 +62,18 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '6fb2db1e38f762e6a028dfa5e6d094f0eb4324572667923aca3d64c87117772d'
+            '299b45a4f16f763ecf654e6642c020b6e9e461601d056ef44ecb21b54d736cbf'
             'SKIP'
-            '77433dedc32769dc628ae1c57c756dd33172eb2da170ae1769850b028fdd0b0d'
+            'de9895636eeb008717a0c3f2a3537ce1641c176001cc78be3a22c6d58a78a883'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            'e04b8f5e94d281e6e5e37fbdc8b8c9a6f8f14ec08989362279faf45716c36727'
-            '7fb607fe384dd814e9e45d7fc28f7b5b23a51d80784c54bf9209486ad428be14'
-            'ceaa19e0af3842c62eb666a4ac5c79d89b3e6d00593442f18d6508ca6d74bbaa'
-            '5b397cf9eccdad0c1f2865842c29ba6f4e32ad7dbe4e0c6ef6ca6f07d2963cea')
+            '5e421e0c3fc60706640c202612c9d6b2de0f04499c90798e5e3b153fc356e6ef'
+            '69241df4bd7897eb04db90e4d0a82c6e0b99b806019ba96bb885278ca8da89df'
+            '10728f672a83a515af540cafafde62346e9ccc2d14bf74e417fd2693865b1293'
+            'a81b612369e78d142ff80ec3adda36b3f94503e5a68d54282c508a112cc8dae0'
+            '052a39582f84c52b027c261fcec90325493f4d46f15647c274a58e39145deced')
 
 _kernelname=${pkgbase#linux}
 
@@ -92,6 +94,9 @@ prepare() {
 
   # NVIDIA driver compat
   patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+
+  # https://bugs.archlinux.org/task/58237
+  patch -Np1 -i ../0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
 
   # Patch source with PDS scheduler
   patch -Np1 -i "../${_psd_patch}"
