@@ -1,8 +1,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-vmware
-_commit=6b7dc2f9304298e669e7ac97594b948d1476ae52 # master
-pkgver=13.0.2+69+g6b7dc2f
+pkgver=13.3.0
 pkgrel=1
 pkgdesc="X.org vmware video driver"
 arch=(x86_64)
@@ -13,32 +12,20 @@ makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'git')
 conflicts=('xorg-server<1.20' 'X-ABI-VIDEODRV_VERSION<24' 'X-ABI-VIDEODRV_VERSION>=25')
 groups=('xorg-drivers')
 options=('!emptydirs')
-#source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2{,.sig})
-source=("git+https://anongit.freedesktop.org/git/xorg/driver/xf86-video-vmware#commit=$_commit"
-        0001-saa-Build-compatibility-with-xserver-1.20.patch
+source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2{,.sig}
         gcc8.diff)
-sha256sums=('SKIP'
-            'eb8fcf7b0b886e47c8d8deb12e7d33742223723f76de8122e6161b46fa052403'
-            '76ac76c213a3a27e757d62d59980ddd65b34ac02bd0e4efb00833fc69c01793e')
+sha512sums=('c318de893cae7b2b11e11c1b389ee47478b7c8d1f52c27099dbe453efec28f3e9da449217307a8c2251999eada66312f766996be1a6ead413b8b6dedc42c68ca'
+            'SKIP'
+            'd05522c84dfa1a88bb9e892087f0a67968142b87f1d7f902e8d77150eae7a26ef7f43cef256d2173be060042b86336123fa7c7f521b37ca98f8fb45871bf30ad')
 validpgpkeys=('90D027AEAF33CBABC140735BC1F5D3CDF5176580') #  Thomas Hellstrom (VMware) <thellstrom@vmware.com>
 
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/^xf86-video-vmware-//;s/-/+/g'
-}
-
 prepare() {
-  cd $pkgname
-  # xorg-server 1.20 build fix by FC
-  patch -Np1 -i ../0001-saa-Build-compatibility-with-xserver-1.20.patch
-  
+  cd $pkgname-${pkgver}
   patch -Np0 -i ../gcc8.diff
-  
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd ${pkgname} #-${pkgver}
+  cd ${pkgname}-${pkgver}
 
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
@@ -52,7 +39,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname} #-${pkgver}
+  cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
   
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
