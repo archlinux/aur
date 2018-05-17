@@ -1,3 +1,6 @@
+# Maintainer: Atte Lautanala <atte dot lautanala at gmail dot com>
+# Based on python and python35 PKGBUILD files
+
 pkgname=python37
 pkgver=3.7.0b4
 pkgrel=1
