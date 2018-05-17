@@ -2,7 +2,7 @@
 
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-wpilib-git
-pkgver=3016.1d6eb629a
+pkgver=3032.ef442d775
 pkgrel=1
 pkgdesc="The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain"
 arch=(i686 x86_64)
@@ -48,6 +48,30 @@ package() {
   unzip -u -q -j _M__GROUP_edu_wpi_first_hal_ID_hal-cpp_CLS-linuxx86-64.zip -d $pkgdir/usr/lib
   popd > /dev/null
 
+  # wpiutil
+  pushd wpiutil/build/outputs > /dev/null
+  unzip -u -q _GROUP_edu_wpi_first_wpiutil_ID_wpiutil-cpp_CLS-headers.zip -d $pkgdir/usr/${_target}/include
+  unzip -u -q _GROUP_edu_wpi_first_wpiutil_ID_wpiutil-cpp_CLS-headers.zip -d $pkgdir/usr/include
+  unzip -u -q -j _M__GROUP_edu_wpi_first_wpiutil_ID_wpiutil-cpp_CLS-linuxathena.zip -d $pkgdir/usr/${_target}/lib
+  unzip -u -q -j _M__GROUP_edu_wpi_first_wpiutil_ID_wpiutil-cpp_CLS-linuxx86-64.zip -d $pkgdir/usr/lib
+  popd > /dev/null
+
+  # ntcore
+  pushd ntcore/build/outputs > /dev/null
+  unzip -u -q _GROUP_edu_wpi_first_ntcore_ID_ntcore-cpp_CLS-headers.zip -d $pkgdir/usr/${_target}/include
+  unzip -u -q _GROUP_edu_wpi_first_ntcore_ID_ntcore-cpp_CLS-headers.zip -d $pkgdir/usr/include
+  unzip -u -q -j _M__GROUP_edu_wpi_first_ntcore_ID_ntcore-cpp_CLS-linuxathena.zip -d $pkgdir/usr/${_target}/lib
+  unzip -u -q -j _M__GROUP_edu_wpi_first_ntcore_ID_ntcore-cpp_CLS-linuxx86-64.zip -d $pkgdir/usr/lib
+  popd > /dev/null
+
+  # cscore
+  pushd cscore/build/outputs > /dev/null
+  unzip -u -q _GROUP_edu_wpi_first_cscore_ID_cscore-cpp_CLS-headers.zip -d $pkgdir/usr/${_target}/include
+  unzip -u -q _GROUP_edu_wpi_first_cscore_ID_cscore-cpp_CLS-headers.zip -d $pkgdir/usr/include
+  unzip -u -q -j _M__GROUP_edu_wpi_first_cscore_ID_cscore-cpp_CLS-linuxathena.zip -d $pkgdir/usr/${_target}/lib
+  unzip -u -q -j _M__GROUP_edu_wpi_first_cscore_ID_cscore-cpp_CLS-linuxx86-64.zip -d $pkgdir/usr/lib
+  popd > /dev/null
+
   # wpilibc
   pushd wpilibc/build/outputs > /dev/null
   unzip -u -q _GROUP_edu_wpi_first_wpilibc_ID_wpilibc_CLS-headers.zip -d $pkgdir/usr/${_target}/include
@@ -55,6 +79,21 @@ package() {
   unzip -u -q -j _GROUP_edu_wpi_first_wpilibc_ID_wpilibc-linkscripts_CLS-linuxathena.zip -d $pkgdir/usr/${_target}/lib
   unzip -u -q -j _M__GROUP_edu_wpi_first_wpilibc_ID_wpilibc_CLS-linuxathena.zip -d $pkgdir/usr/${_target}/lib
   unzip -u -q -j _M__GROUP_edu_wpi_first_wpilibc_ID_wpilibc_CLS-linuxx86-64.zip -d $pkgdir/usr/lib
+  popd > /dev/null
+
+  # cameraserver
+  pushd cameraserver/build/outputs > /dev/null
+  unzip -u -q _GROUP_edu_wpi_first_cameraserver_ID_cameraserver-cpp_CLS-headers.zip -d $pkgdir/usr/${_target}/include
+  unzip -u -q _GROUP_edu_wpi_first_cameraserver_ID_cameraserver-cpp_CLS-headers.zip -d $pkgdir/usr/include
+  unzip -u -q -j _M__GROUP_edu_wpi_first_cameraserver_ID_cameraserver-cpp_CLS-linuxathena.zip -d $pkgdir/usr/${_target}/lib
+  unzip -u -q -j _M__GROUP_edu_wpi_first_cameraserver_ID_cameraserver-cpp_CLS-linuxx86-64.zip -d $pkgdir/usr/lib
+  popd > /dev/null
+
+  # Dependencies
+  pushd build/dependencies > /dev/null
+  cp -r opencv-cpp/headers/opencv2 $pkgdir/usr/${_target}/include
+  cp -r opencv-cpp/linuxathena/linux/athena/shared/* $pkgdir/usr/${_target}/include
+  cp -r opencv-cpp/linuxathena/linux/athena/static/* $pkgdir/usr/${_target}/lib
   popd > /dev/null
 
   find $pkgdir -type f -name LICENSE.txt -exec rm {} \;
