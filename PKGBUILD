@@ -8,7 +8,7 @@ url="http://github.com/micha/jsawk"
 source=('jsawk-git::git+https://github.com/micha/jsawk.git#branch=master')
 md5sums=('SKIP')
 license=('unknown')
-depends=('js')
+depends=('js52')
 makedepends=('git')
 provides=('jsawk')
 conflicts=('jsawk')
@@ -23,6 +23,6 @@ package() {
   install -dm755 "${pkgdir}"/usr/bin/
   install -Dm755 jsawk "${pkgdir}"/usr/bin/jsawk
 
-  install -dm755 "${pkgdir}"/etc
-  echo "export JS=/usr/bin/js24" >> "${pkgdir}"/etc/jsawkrc
+  #install -dm755 "${pkgdir}"/etc
+  #echo "export JS=/usr/bin/js24" >> "${pkgdir}"/etc/jsawkrc
 }
