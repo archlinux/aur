@@ -11,7 +11,7 @@ license=('custom:chromiumos')
 depends=(libcap)
 source=(https://chromium.googlesource.com/aosp/platform/external/minijail/+archive/refs/heads/$_tag.tar.gz
         donotredefine_signals.patch)
-sha1sums=('f0d7efaba4e7f096a68638f97603ee11191a83da'
+sha1sums=('SKIP'
           '83115d9e67cfbf47c964b89c84381fab54689b37')
 
 prepare() {
