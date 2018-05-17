@@ -3,7 +3,7 @@
 pkgname=liri-calculator
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="The file manager for Liri"
+pkgdesc="More than a simple cross-platform Material Design calculator"
 arch=("x86_64")
 url="https://github.com/lirios/calculator"
 license=("GPL")
