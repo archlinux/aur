@@ -2,36 +2,31 @@
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
-_pkgname='zed'
-pkgname="ocaml-${_pkgname}"
-pkgver=1.4
+pkgname=ocaml-zed
+pkgver=1.6
 pkgrel=1
 pkgdesc="An abstract engine for text editing"
 arch=('i686' 'x86_64')
 url='https://github.com/diml/zed'
 license=('BSD')
 depends=('ocaml' 'ocaml-camomile' 'ocaml-react')
-makedepends=('ocaml-findlib')
+makedepends=('dune')
 options=('!strip')
 source=("https://github.com/diml/zed/archive/${pkgver}.tar.gz")
-md5sums=('47661250ed1b3e12c886d19c1a019675')
+md5sums=('db050d98f4b7051530e023a5e2c4f438')
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    ./configure
+  cd "${srcdir}/zed-${pkgver}"
 
-    env DESTDIR="${pkgdir}" \
-        OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)" \
-        make
+  jbuilder build
 }
 
 
 package() {
-    mkdir -p "${pkgdir}/$(ocamlfind printconf destdir)"
-    mkdir -p "${pkgdir}/$(ocamlfind printconf destdir)/stublibs"
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    env DESTDIR="${pkgdir}" \
-        OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)" \
-        make install
-    install -Dm 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd "${srcdir}/zed-${pkgver}"
+
+  mkdir -p "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
