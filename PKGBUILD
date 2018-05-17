@@ -1,20 +1,18 @@
-# $Id$
-# Maintainer:
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=bzrtp-git
 _pkgname=bzrtp
-pkgver=1.0.6.r18.g7515af9
+pkgver=1.0.6.r20.g1b943ed
 pkgrel=1
 pkgdesc="Opensource implementation of ZRTP keys exchange protocol"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/BelledonneCommunications/bzrtp"
 license=('GPL2')
 conflicts=('bzrtp')
 provides=('bzrtp')
 depends=('libxml2' 'mbedtls' 'bctoolbox-git')
 makedepends=('cmake')
-validpgpkeys=('9774BC1725758EB16D639F8B3ECD52DEE2F56985')
 source=("git+https://github.com/BelledonneCommunications/bzrtp.git")
 sha256sums=('SKIP')
 
@@ -26,6 +24,7 @@ build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DENABLE_STATIC=NO \
+      -DENABLE_STRICT=NO \
       -DCMAKE_INSTALL_LIBDIR="/usr/lib" .
   make
 }
