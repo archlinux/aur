@@ -1,6 +1,6 @@
 pkgbase = firefox-esr-bin
 	pkgdesc = Standalone web browser from mozilla.org - Extended Support Release
-	pkgver = 52.8.0
+	pkgver = 60.0.1
 	pkgrel = 1
 	url = http://www.mozilla.org/en-US/firefox/organizations/
 	install = firefox-esr.install
@@ -14,11 +14,11 @@ pkgbase = firefox-esr-bin
 	depends = libxt
 	depends = dbus-glib
 	depends = nss
-	provides = firefox=52
-	source = https://ftp.mozilla.org/pub/firefox/releases/52.8.0esr/linux-x86_64/en-US/firefox-52.8.0esr.tar.bz2
+	provides = firefox=60
+	source = https://ftp.mozilla.org/pub/firefox/releases/60.0.1esr/linux-x86_64/en-US/firefox-60.0.1esr.tar.bz2
 	source = firefox-esr.desktop
 	source = firefox-esr-safe.desktop
-	sha512sums = f9b7084c8ad779cb434f550e1b2f1437cbb200c90ef110aece263124f934e8e589d237e956614fd082275c6ced5ac530979d318c7399aec183c75c136cfef8ab
+	sha512sums = 739d2bd0c503ee8dea45220ab1cdd03e13d146199490af6fab96ee463a0be0d20bcce667dab4d66885c10dfccdf906b6e71a87027e163fd765f14b1f1d936b93
 	sha512sums = 2c2c70cb48202d47e7d3b376b8181e7398b23bb83f5da7724f6290709fe1ff3dca9d9c5666310982569beeeba39ec2d55a4372819f9914c79c6583de7eec06ba
 	sha512sums = 8942b11a7cb3761de1185491397185743adf49daa27a2806d14a328a2be8e2cb566c71dc6449016549cb3bd0d328cfe15944490be749a4add213194f6153c3d0
 
