@@ -1,8 +1,9 @@
 pkgbase = electra-desktop-bin
 	pkgdesc = Cross-platform Desktop Wallet for Electra blockchain.
 	pkgver = 1.0.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://electraproject.org/
+	install = electra-desktop-bin.install
 	arch = x86_64
 	license = MIT
 	makedepends = binutils
@@ -16,11 +17,9 @@ pkgbase = electra-desktop-bin
 	noextract = electra-desktop_1.0.8_amd64.deb
 	source = https://github.com/Electra-project/electra-desktop/releases/download/v1.0.8/electra-desktop_1.0.8_amd64.deb
 	source = Electra.conf
-	source = electra-desktop-bin.install
 	source = point-desktop-file-to-correct-bin-location.patch
 	sha256sums = a93b484da725d5d828d1b3a1824b26637396313038b134b376c4b04d61acd06b
 	sha256sums = ed9684c0610e93e4958541994cca12a98a0507896a11e17fbcd29cbe730d370e
-	sha256sums = ae251fc7d223b97e927f824650bc2e91ec83f80a16c3718e33931bcdf54ae5c7
 	sha256sums = 267c8aca4f0d3960dd12eb83ef919d339bfb093e77fbc37aa80fe6938ba1bd11
 
 pkgname = electra-desktop-bin
