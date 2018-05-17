@@ -51,6 +51,6 @@ package() {
   install -D -m755 PREF ${pkgdir}/usr/bin/PREF
   popd
 
-  install -D -m644 README.md ${pkgdir}/usr/share/doc/${pgname}/README
-  install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pgname}/LICENSE
+  install -D -m644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README
+  install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
