@@ -1,0 +1,15 @@
+pkgbase = otf-work-sans
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://weiweihuanghuang.github.io/Work-Sans/
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	provides = otf-work-sans-ibx
+	conflicts = otf-work-sans-ibx
+	replaces = otf-work-sans-ibx
+	source = https://github.com/weiweihuanghuang/Work-Sans/archive/v1.6.tar.gz
+	sha512sums = a8e37c867b188285d6145907b5b1deabfb8373a6ab73b0e5ff5159352cc6d3f083217b667fb53eb6637920ffb24467eb18cd26a347428ba6e9587e44f11974a4
+
+pkgname = otf-work-sans
+
