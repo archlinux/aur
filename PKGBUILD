@@ -2,7 +2,7 @@
 
 pkgname=fluid
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for QtQuick apps with Material Design and Universal"
 arch=('x86_64')
 url='https://github.com/lirios/fluid'
@@ -26,7 +26,8 @@ build() {
   qbs setup-toolchains --type gcc /usr/bin/g++ gcc
   qbs setup-qt /usr/bin/qmake-qt5 qt5
   qbs config profiles.qt5.baseProfile gcc
-  qbs build --no-install -d build profile:qt5 modules.lirideployment.prefix:/usr
+  qbs build --no-install -d build profile:qt5 modules.lirideployment.prefix:/usr \
+                                              modules.lirideployment.qmlDir:/usr/lib/qt/qml
 }
 
 package() {
