@@ -1,0 +1,18 @@
+pkgbase = stressapptest-git
+	pkgdesc = Stressful Application Test (or stressapptest, its unix name)
+	pkgver = 1.0.8.r10.gdd550fc
+	pkgrel = 1
+	url = https://github.com/stressapptest/stressapptest
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	depends = gcc-libs
+	depends = libaio
+	provides = stressapptest
+	conflicts = stressapptest
+	source = git+https://github.com/stressapptest/stressapptest
+	md5sums = SKIP
+
+pkgname = stressapptest-git
+
