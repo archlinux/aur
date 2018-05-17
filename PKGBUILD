@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://www.qupzilla.com"
 license=('GPL')
 depends=('qt5-webengine' 'qt5-x11extras' 'qt5-svg' 'hicolor-icon-theme' 'openssl>=1.1.0')
-makedepends=('git' 'qt5-tools' 'kwallet' 'libgnome-keyring')
+makedepends=('git' 'qt5-tools')
 provides=('qupzilla' 'qupzilla-qt5')
 conflicts=('qupzilla' 'qupzilla-qt5' 'qupzilla-qt5-git')
 optdepends=(
