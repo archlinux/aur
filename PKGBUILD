@@ -1,29 +1,39 @@
+# Maintainer: tocic <tocic at protonmail dot ch>
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
+
 pkgname=sdl2pp
-pkgver=0.12.0
+_pkgname=libSDL2pp
+pkgver=0.16.0
 pkgrel=1
-pkgdesc='SDL2 wrapper for C++11'
-arch=('x86_64' 'i686')
+pkgdesc="SDL2 wrapper for C++11"
+arch=('any')
 url="https://github.com/libSDL2pp/libSDL2pp"
 license=('zlib')
 depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer')
-makedepends=('cmake' 'git' 'ninja')
-source=("git://github.com/libSDL2pp/libSDL2pp#tag=$pkgver")
-md5sums=('SKIP')
+makedepends=('cmake')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/$pkgver.tar.gz")
+md5sums=('f5a1f41982421c0e0386960c5aff3d7a')
 
 build() {
-  mkdir -p build
-  cd build
-  cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_FLAGS=-w \
-    -GNinja \
-    "$srcdir/libSDL2pp"
-  ninja
+    cd "$srcdir/$_pkgname-$pkgver"
+
+    cmake -DCMAKE_INSTALL_PREFIX=/usr . \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DSDL2PP_WITH_EXAMPLES=false \
+          -DSDL2PP_WITH_TESTS=false \
+          -DSDL2PP_ENABLE_LIVE_TESTS=false
+
+    make
+}
+
+prepare() {
+    cd "$srcdir/$_pkgname-$pkgver"
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
-}
+    cd "$srcdir/$_pkgname-$pkgver"
 
-# vim:set ts=2 sw=2 et:
+    make DESTDIR="$pkgdir/" install
+
+    install -Dm644 ./COPYING.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+}
