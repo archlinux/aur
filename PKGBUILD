@@ -1,11 +1,11 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=gitprompt-rs
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal X screenshot utility"
 arch=('x86_64')
 url="https://github.com/Streetwalrus/$pkgname"
-license=('MPL')
+license=('MPL2')
 depends=('git')
 makedepends=('cargo')
 source=("https://github.com/Streetwalrus/$pkgname/archive/$pkgver.tar.gz")
