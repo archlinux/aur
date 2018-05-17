@@ -4,7 +4,7 @@ _pkgname=rust
 
 pkgname=mingw-w64-rust-bin
 pkgver=1.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)"
 arch=('x86_64')
 url="https://www.rust-lang.org"
@@ -14,7 +14,7 @@ depends=('gcc-libs'
          'mingw-w64-crt<5.0.3.20180112'
          'libgit2'
          'mingw-w64-gcc')
-optdepends=('wine: for cargo test support')
+optdepends=('mingw-w64-wine: for cargo test support')
 provides=("mingw-w64-rust=${pkgver}")
 conflicts=('mingw-w64-rust')
 options=('!strip' 'staticlibs' '!buildflags')
@@ -88,7 +88,7 @@ package() {
 linker = "/usr/bin/i686-w64-mingw32-gcc"
 ar = "/usr/i686-w64-mingw32/bin/ar"
 EOF
-  if pacman -T "wine" "mingw-w64-cmake>1-18" ; then
+  if pacman -T "mingw-w64-wine" ; then
     cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
 runner = "/usr/bin/i686-w64-mingw32-wine"
 EOF
@@ -111,7 +111,7 @@ EOF
 linker = "/usr/bin/x86_64-w64-mingw32-gcc"
 ar = "/usr/x86_64-w64-mingw32/bin/ar"
 EOF
-  if pacman -T "wine" "mingw-w64-cmake>1-18" ; then
+  if pacman -T "mingw-w64-wine" ; then
     cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
 runner = "/usr/bin/x86_64-w64-mingw32-wine"
 EOF

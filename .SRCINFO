@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-rust-bin
 	pkgdesc = Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)
 	pkgver = 1.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rust-lang.org
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-rust-bin
 	depends = mingw-w64-crt<5.0.3.20180112
 	depends = libgit2
 	depends = mingw-w64-gcc
-	optdepends = wine: for cargo test support
+	optdepends = mingw-w64-wine: for cargo test support
 	provides = mingw-w64-rust=1.26.0
 	conflicts = mingw-w64-rust
 	options = !strip
