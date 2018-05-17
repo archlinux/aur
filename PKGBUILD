@@ -64,7 +64,7 @@ _rtver=2
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _rtpatchver=rt${_rtver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -103,7 +103,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
-        '0003-Partially-revert-swiotlb-remove-various-exports.patch')
+        '0003-Partially-revert-swiotlb-remove-various-exports.patch'
+        '0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch')
         
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-rt-bfq}
@@ -130,6 +131,10 @@ prepare() {
     ### NVIDIA driver compat
         msg "NVIDIA driver compat"
         patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+    
+    ### Fix https://bugs.archlinux.org/task/58237
+        msg "Fix #58237"
+        patch -Np1 -i ../0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
     
     ### Fix gcc8 bogus warnings
         msg "Fix gcc8 bogus warnings"
@@ -436,9 +441,10 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '3c4b172d3a67897757706ecb4f98f8ded83223379332812ef633b3185e7b686509f40b1cae237f23bfc59a6e3cbcb8b8ebd68d1ba02549d525b97c63376cce6a'
-            '213c4223a25ea444857a9a289a454abd91d26b3da349b70d1ec9ccd2443cb2223815819e48c9efd3685c38df1445df532cf149af7d9326dc635ccd32ad135ecc'
-            'cb69ad1a79df45f1c2af8bacb58fb760651bd92154cf1fc495d4032a88e575e2eb4f2fc3a299ca000e87c51338c67cfcf2933a346d23130c215cd404524304dc')
+            'd4a5dadbdbbb8a2c2c3b4b5e77ea19664e0742825648d10635ce3b7642f01d71d51fd8ed58dcfd686981ef9c3f83965746686231b9bac1974809be1618e60373'
+            '071c38539db9660e743cca5514a5b2c10e79716c59435976f7cd18bd77254b39e1cdba6386ac6938c00c7585e1834508f85bc65f4d2af28246dae864b71b06b3'
+            '6c4bf0d5230e7a3e895f88cf6cc84d6df550fefa2c865e4d5853e02682e781c5a149fb4f853ac7513f335271415fae4a4edf13139de4ba067102e9d8083c22a0'
+            'f5a6e9e6244ed2bb336f359a65ba922226f76319c216eae3c1acca137084ab0c89372d8ec2299d0377ad909534a5d13d8db9a9376e357d600518c81811256d07')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
