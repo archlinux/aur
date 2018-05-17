@@ -4,32 +4,27 @@
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 pkgname=liri-files
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="The file manager for Liri"
 arch=("x86_64")
 url="https://github.com/lirios/files"
 license=("GPL")
-depends=("fluid" "taglib")
-makedepends=("extra-cmake-modules" "qt5-tools")
+depends=('fluid' 'taglib')
+makedepends=('liri-qbs-shared' 'qt5-tools')
 replaces=('papyros-files')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/lirios/files/archive/v$pkgver.tar.gz"
-        "fluid-0.10.patch::https://github.com/lirios/files/commit/aadbc5223f2699341aaf580153b823c41ee7a3d8.patch")
-sha256sums=('a5d302dcef97735a277473bcbfc3257dcfb444c0ad0be05961e46ca05cf315ae'
-            '9dfce5b5957aeb0fe17fed92ded87b86080a89b66338b9907b44d4457e77b124')
-
-prepare() {
-  (cd files-$pkgver; patch -p1 -i ../fluid-0.10.patch)
-  mkdir -p build
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/lirios/files/archive/v$pkgver.tar.gz")
+sha256sums=('a3c03d078af5cdf53e621bb41f0c09ab33cc5dcd51d5d6317ba4f845a4399383')
 
 build() {
-  cd build
-  cmake "$srcdir"/files-$pkgver -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cd files-$pkgver
+  qbs setup-toolchains --type gcc /usr/bin/g++ gcc
+  qbs setup-qt /usr/bin/qmake-qt5 qt5
+  qbs config profiles.qt5.baseProfile gcc
+  qbs build --no-install -d build profile:qt5 modules.lirideployment.prefix:/usr
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  cd files-$pkgver
+  qbs install -d build --no-build -v --install-root "$pkgdir" profile:qt5
 }
