@@ -1,0 +1,20 @@
+pkgbase = subutai-control-center
+	pkgdesc = Allows you to access peers, containers and Environments via SSH or RDesktop.
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://subutai.io/
+	arch = x86_64
+	license = GPL
+	makedepends = fakeroot
+	makedepends = make
+	makedepends = qt5-quickcontrols2
+	makedepends = gcc
+	makedepends = icu
+	makedepends = qt5-websockets
+	depends = icu
+	depends = qt5-websockets
+	source = git://github.com/subutai-io/control-center
+	md5sums = SKIP
+
+pkgname = subutai-control-center
+
