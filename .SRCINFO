@@ -1,0 +1,17 @@
+pkgbase = indicator-bulletin-git
+	pkgdesc = Clipboard manager featuring pinned items and infinite & searchable history.
+	pkgver = r13.f27ac20
+	pkgrel = 1
+	url = https://github.com/SergKolo/indicator-bulletin
+	arch = any
+	license = MIT
+	depends = zenity
+	depends = python
+	depends = libappindicator-gtk3
+	provides = indicator-bulletin
+	conflicts = indicator-bulletin
+	source = git+https://github.com/SergKolo/indicator-bulletin.git
+	md5sums = SKIP
+
+pkgname = indicator-bulletin-git
+
