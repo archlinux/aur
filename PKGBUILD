@@ -12,7 +12,7 @@ url="http://serialbasics.free.fr"
 license=('unknown')
 depends=("lib32-gtk2")
 source=("http://serialbasics.free.fr/Serial_Cloner-Download_files/${_name}${_version}.tar.gz")
-md5sums=("5f57b62089c3bfecae1bfcb6fc824ab9")
+md5sums=('3d29dcc0df72cf4793a6efcb76f8243b')
 options=("!strip")
 
 package() {
