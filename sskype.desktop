@@ -2,7 +2,7 @@
 Name=Secure Skype for Linux
 Comment=Skype - restricted acces
 Exec=sskype %U
-Icon=skype.png
+Icon=skypeforlinux
 Terminal=false
 Type=Application
 Encoding=UTF-8

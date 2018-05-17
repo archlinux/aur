@@ -4,8 +4,9 @@ post_install() {
   echo "add 'load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1'"
   echo "to ~/.config/pulse/default.pa"
   echo ""
-  echo "If you are upgrading from a version that worked without pulse,"
-  echo "completely uninstall skype-secure before installing it."
+  echo "For security reasons, only users in the group wheel does not need to enter a password,"
+  echo "please see https://wiki.archlinux.org/index.php/Users_and_groups#Group_list"
+
 }
 
 post_remove() {
