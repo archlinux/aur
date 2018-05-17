@@ -2,7 +2,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com> ([community] package)
 
 pkgname=remmina-git
-pkgver=1.2.0.rcgit.18.r51.g2c0a77e12
+pkgver=1.2.0.rcgit.29.fpbuild0.r118.ga9b431cb4
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(i686 x86_64)
@@ -18,7 +18,7 @@ replaces=('remmina-plugins')
 provides=('remmina' 'grdc' "grdc=${pkgver}" 'remmina-plugins')
 conflicts=('remmina' 'grdc')
 install=remmina.install
-source=('remmina::git://github.com/FreeRDP/Remmina.git#branch=next')
+source=('remmina::git://github.com/FreeRDP/Remmina.git')
 sha256sums=('SKIP')
 
 pkgver() {
