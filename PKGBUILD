@@ -5,23 +5,23 @@
 _pkgbase='firefox-i18n'
 _language='ca-valencia'
 pkgname=("${_pkgbase}-${_language}")
-pkgver=59.0
-pkgrel=2
+pkgver=60.0
+pkgrel=1
 pkgdesc="Valencian language pack for Firefox"
 arch=('any')
 url="http://www.softvalencia.org/guies/firefox-en-valencia/"
 license=('GPL' 'LGPL' 'MPL')
 provides=("${pkgname}")
 depends=("firefox>=$pkgver")
-source=("https://addons.mozilla.org/firefox/downloads/file/890458/valencian_catalan_language_pack_for_firefox-${pkgver}-fx.xpi")
-sha256sums=('d82c712205a1a18ea986b130c3e60f7434a505dc6ad9e7c3ed3e500ce4741ecb')
+source=("https://addons.mozilla.org/firefox/downloads/file/953386/firefox_en_valencia-${pkgver}-an+fx.xpi")
+sha256sums=('32ed364c59060d1c256751bdabc3d1357dd24522db06397530d2f3993274a678')
 
 # Don't extract xpi
-noextract=('valencian_catalan_language_pack_for_firefox-${pkgver}-fx.xpi')
+noextract=('firefox_en_valencia-${pkgver}-an+fx.xpi')
 
 package() {
     cd "${srcdir}"
-    install -Dm644 "valencian_catalan_language_pack_for_firefox-${pkgver}-fx.xpi" \
+    install -Dm644 "firefox_en_valencia-${pkgver}-an+fx.xpi" \
       "${pkgdir}/usr/lib/firefox/browser/extensions/langpack-${_language}@firefox.mozilla.org.xpi"
 }
 

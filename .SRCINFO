@@ -1,17 +1,17 @@
 pkgbase = firefox-i18n-ca-valencia
 	pkgdesc = Valencian language pack for Firefox
-	pkgver = 59.0
-	pkgrel = 2
+	pkgver = 60.0
+	pkgrel = 1
 	url = http://www.softvalencia.org/guies/firefox-en-valencia/
 	arch = any
 	license = GPL
 	license = LGPL
 	license = MPL
-	depends = firefox>=59.0
+	depends = firefox>=60.0
 	provides = firefox-i18n-ca-valencia
-	noextract = valencian_catalan_language_pack_for_firefox-${pkgver}-fx.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/890458/valencian_catalan_language_pack_for_firefox-59.0-fx.xpi
-	sha256sums = d82c712205a1a18ea986b130c3e60f7434a505dc6ad9e7c3ed3e500ce4741ecb
+	noextract = firefox_en_valencia-${pkgver}-an+fx.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/953386/firefox_en_valencia-60.0-an+fx.xpi
+	sha256sums = 32ed364c59060d1c256751bdabc3d1357dd24522db06397530d2f3993274a678
 
 pkgname = firefox-i18n-ca-valencia
 
