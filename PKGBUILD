@@ -1,7 +1,7 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=shotgun
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal X screenshot utility"
 arch=('x86_64')
 url="https://github.com/Streetwalrus/$pkgname"
@@ -18,10 +18,7 @@ build() {
 
 package() {
   cd "${srcdir}/$pkgname-$pkgver"
-  cargo install --root ${pkgdir}/usr
-  rm ${pkgdir}/usr/.crates.toml
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -d ${pkgdir}/usr/lib/udev/rules.d
+  install -Dm755 target/release/$pkgname ${pkgdir}/usr/bin/$pkgname
 }
 
 # vim:set ts=2 sw=2 et:
