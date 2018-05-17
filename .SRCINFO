@@ -1,0 +1,37 @@
+pkgbase = devkita64
+	pkgdesc = AArch64 toolchain for Nintendo Switch homebrew development
+	pkgver = r9
+	pkgrel = 1
+	url = http://devkitpro.org
+	install = devkita64.install
+	arch = x86_64
+	license = GPL
+	depends = flex
+	depends = libmpc
+	depends = python
+	depends = xz
+	noextract = binutils-2.30.tar.bz2
+	noextract = gcc-8.1.0.tar.xz
+	noextract = newlib-3.0.0.tar.gz
+	noextract = gdb-8.0.tar.xz
+	options = !strip
+	options = libtool
+	options = staticlibs
+	options = emptydirs
+	source = https://github.com/devkitPro/buildscripts/releases/download/v20180514/buildscripts-20180514.tar.bz2
+	source = https://github.com/devkitPro/buildscripts/releases/download/sources/binutils-2.30.tar.bz2
+	source = https://github.com/devkitPro/buildscripts/releases/download/sources/gcc-8.1.0.tar.xz
+	source = https://github.com/devkitPro/buildscripts/releases/download/sources/newlib-3.0.0.tar.gz
+	source = https://github.com/devkitPro/buildscripts/releases/download/sources/gdb-8.0.tar.xz
+	source = devkita64.sh
+	source = devkita64.fish
+	sha256sums = c7c11bacfdbcc634d2d70ac17785a0701d5eaaa6753762ca57a918c3841119ac
+	sha256sums = efeade848067e9a03f1918b1da0d37aaffa0b0127a06b5e9236229851d9d0c09
+	sha256sums = 1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153
+	sha256sums = c8566335ee74e5fcaeb8595b4ebd0400c4b043d6acb3263ecb1314f8f5501332
+	sha256sums = f6a24ffe4917e67014ef9273eb8b547cb96a13e5ca74895b06d683b391f3f4ee
+	sha256sums = c71d64c68947c25bf48a5141589f107f5d6269e38e37c4bf528f614ff37b8981
+	sha256sums = a068e1d2fbbd07f4f520824d256696244bcf85da7bf2142a1a0fe1bd550490e8
+
+pkgname = devkita64
+
