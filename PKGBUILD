@@ -31,8 +31,9 @@ provides=('ffmpeg' 'ffmpeg-libfdk_aac' 'qt-faststart' 'libavutil.so' 'libavcodec
 conflicts=(
     'ffmpeg' 'ffmpeg-full-nvenc' 'ffmpeg-nvenc' 'ffmpeg-libfdk_aac' 'ffmpeg-decklink'
     'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-semifull-git' 'ffmpeg-qsv-git')
-source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz")
-sha256sums=('ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f')
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz" 'LICENSE')
+sha256sums=('ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f'
+            '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
     cd "${_srcname}-${pkgver}"
@@ -45,7 +46,7 @@ build() {
 
     ./configure \
         --prefix='/usr' \
-		--extra-libs='-lpthread' \
+	--extra-libs='-lpthread' \
         --disable-debug \
         --disable-rpath \
         --enable-gpl \
@@ -56,7 +57,7 @@ build() {
         --enable-gray \
         --enable-avisynth \
         --enable-avresample \
-		--enable-alsa \
+	--enable-alsa \
         --enable-fontconfig \
         --enable-gmp \
         --enable-gnutls \
@@ -77,14 +78,14 @@ build() {
         --enable-libpulse \
         --enable-libsoxr \
         --enable-libspeex \
-		--enable-libsrt \
+	--enable-libsrt \
         --enable-libssh \
-		--enable-librsvg \
-		--enable-librtmp  \
-		--enable-libsmbclient \
+	--enable-librsvg \
+	--enable-librtmp  \
+	--enable-libsmbclient \
         --enable-libtheora \
-		--disable-libtls \
-		--enable-libtwolame \
+	--disable-libtls \
+	--enable-libtwolame \
         --enable-libv4l2 \
         --enable-libvidstab \
         --enable-libvorbis \
@@ -96,15 +97,15 @@ build() {
         --enable-libxcb \
         --enable-libxml2 \
         --enable-libxvid \
-		--enable-lzma \
+	--enable-lzma \
         --enable-libdrm \
-		--enable-xlib \
+	--enable-xlib \
         --enable-zlib \
         --enable-omx \
-		--enable-openal \
+	--enable-openal \
         --enable-opencl \
         --enable-opengl \
-		--disable-openssl \
+	--disable-openssl \
         --enable-libfdk_aac \
         --enable-libmfx \
         --enable-vaapi \
