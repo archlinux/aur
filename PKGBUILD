@@ -65,7 +65,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.16.9
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -105,7 +105,8 @@ source=(# mainline kernel patches
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
-        '0003-Partially-revert-swiotlb-remove-various-exports.patch')
+        '0003-Partially-revert-swiotlb-remove-various-exports.patch'
+        '0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch')
 
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
@@ -121,9 +122,10 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'd0940f68d0138169eba5e0c0add048d7df255bb2b13c3ad5920dc991573f3ff0'
-            'bead9915334759fa4c5f7ebebbf85b658d3423ba978ad4c6ee7d8271fa95b90a'
-            '68dd6a1ebf9fc53cdf8bf18fb6231d3730ee99a429a9153b5730e4f5c10a1359')
+            '69241df4bd7897eb04db90e4d0a82c6e0b99b806019ba96bb885278ca8da89df'
+            '10728f672a83a515af540cafafde62346e9ccc2d14bf74e417fd2693865b1293'
+            'a81b612369e78d142ff80ec3adda36b3f94503e5a68d54282c508a112cc8dae0'
+            '052a39582f84c52b027c261fcec90325493f4d46f15647c274a58e39145deced')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -146,6 +148,10 @@ prepare() {
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
         patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+    
+    ### Fix https://bugs.archlinux.org/task/58237
+        msg "Fix #58237"
+        patch -Np1 -i ../0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
     
     ### NVIDIA driver compat
         msg "NVIDIA driver compat"
