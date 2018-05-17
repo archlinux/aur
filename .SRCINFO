@@ -1,0 +1,30 @@
+pkgbase = protonmail-desktop-app
+	pkgdesc = Unofficial ProtonMail Desktop App
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/vladimiry/protonmail-desktop-app
+	install = protonmail-desktop-app.install
+	arch = x86_64
+	license = MIT
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libappindicator-gtk3
+	source = https://github.com/vladimiry/protonmail-desktop-app/releases/download/v0.4.1/protonmail-desktop-app-0.4.1-linux.pacman
+	source = LICENSE
+	md5sums = 6c371b22280e49f708f414d836776315
+	md5sums = 53426ccf90ae29c340d8ee14ecce9808
+
+pkgname = protonmail-desktop-app
+
