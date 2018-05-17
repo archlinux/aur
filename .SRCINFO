@@ -1,0 +1,22 @@
+pkgbase = chihaya-git
+	pkgdesc = Customizable, multi-protocol BitTorrent Tracker
+	pkgver = r1050.be555c3
+	pkgrel = 1
+	url = https://github.com/chihaya/chihaya
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	makedepends = dep
+	provides = chihaya
+	conflicts = chihaya
+	options = !strip
+	source = git+https://github.com/chihaya/chihaya.git
+	source = chihaya.service
+	source = chihaya.sysusers
+	sha256sums = SKIP
+	sha256sums = 5f2bdd78f224fc657ed69d46e0e08f400ab8932bba7d86a2a91fa7badc91c252
+	sha256sums = de424d50a9de3a63f45b064f78aa74075e65ce0a9f8b6b5a6bc84d12fd0a3e11
+
+pkgname = chihaya-git
+

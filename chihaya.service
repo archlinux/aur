@@ -1,0 +1,15 @@
+[Unit]
+Description=Chihaya BitTorrent Tracker
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=chihaya
+ExecStart=/usr/bin/chihaya
+
+ProtectHome=true
+ProtectSystem=full
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
