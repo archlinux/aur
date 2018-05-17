@@ -14,7 +14,7 @@
 pkgname=pgdbf
 pkgver=0.6.2
 pkgrel=1
-pkgdesc="Convert XBase databases - particularly FoxPro tables with memo files - into a format that PostgreSQL can directly import"
+pkgdesc="Convert XBase databases (particularly FoxPro tables) into a format that PostgreSQL can directly import"
 arch=('i686' 'x86_64')
 license=('GPLv3')
 url="https://github.com/kstrauser/pgdbf"
@@ -30,7 +30,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --enable-installdocs
-  
+
   # build
   make
 }
