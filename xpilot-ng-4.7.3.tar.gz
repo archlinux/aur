@@ -1,0 +1,1360 @@
+<!doctype html>
+<!-- Server: sfs-consume-8 -->
+<html class="no-js" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgQOV19AAQoJVlNT"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var b=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof b&&(this.bstStart=g.now())}),o.on(w,function(t,n){var e=t[0];e instanceof b&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(18)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(18)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(18)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(18)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(18)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var b=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,b),b.prototype=p.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],10:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!n.aborted){if(e.duration=a.now()-this.startTime,4===t.readyState){n.status=t.status;var i=o(t,this.lastSize);if(i&&(e.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;e.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime])}}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return h(r)}function i(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=h(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{f.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<d;s++)n.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),f.on("xhr-load-added",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],n)}),f.on("removeEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],n)}),f.on("fn-start",function(t,n,e){n instanceof m&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,n){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)})}},{}],11:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],12:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],13:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],14:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],15:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],16:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],17:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],18:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=h(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([g,e,r,a]),a}}function p(t,n){v[t]=h(t).concat(n)}function h(t){return v[t]||[]}function m(t){return d[t]=d[t]||o(e)}function w(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var v={},y={},g={on:p,emit:e,get:m,listeners:h,context:n,buffer:w,abort:a,aborted:!1};return g}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(15),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!x++){var t=b.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=l.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(15),u=t("ee"),d=window,l=d.document,p="addEventListener",h="attachEvent",m=d.XMLHttpRequest,w=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},g=m&&w&&w[p]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:v,features:{},xhrWrappable:g};t(12),l[p]?(l[p]("DOMContentLoaded",i,!1),d[p]("load",r,!1)):(l[h]("onreadystatechange",o),d[h]("onload",r)),c("mark",["firstbyte",s],null,"api");var x=0,E=t(17)},{}]},{},["loader",2,10,4,3]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":2,"licenseKey":"f516fac27e","agent":"","transactionName":"MVRXZBQHCBZRV0wIDAgec0UIBRIMX1oXEgVIUlpeFRMLAB5XVw8XFF5ZXAMUFUtCW1cVWTReWkQlCQgRQltUDQYUH1ZCAwcSAA==","applicationID":"999221","errorBeacon":"bam.nr-data.net","applicationTime":25}</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        
+        
+        <script type='text/javascript'>
+            /*global unescape, window, SF*/
+            // Setup our namespace
+            if (!window.SF) { window.SF = {}; }
+            if (!window.net) { window.net = {}; }
+            if (!window.net.sf) { window.net.sf = {}; }
+            SF.Ads = {};
+            SF.cdn = '//a.fsdn.com/con';
+            SF.deploy_time = '1526485194';
+            SF.sandiego = true;
+            SF.sandiego_chrome = true;
+            
+            SF.Breakpoints = {
+              small: 0,
+              medium: 640,
+              leaderboard: 743,
+              billboard: 985,
+              large: 1053,
+              xlarge: 1295,
+              xxlarge: 1366
+            };
+            SF.initial_breakpoints_visible = {};
+            for (var bp in SF.Breakpoints) {
+                if (!SF.Breakpoints.hasOwnProperty(bp)) {
+                    continue;
+                }
+                SF.initial_breakpoints_visible[bp] = !window.matchMedia || window.matchMedia('(min-width: ' + SF.Breakpoints[bp] + 'px)').matches;
+            }
+        </script>
+        
+        <link href='//fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//a.fsdn.com/con/css/sandiego.css?1526485194" type="text/css">
+        
+
+        
+        
+        <meta id="project_name" name="project_name" content="">
+        
+        <meta name="description" content="Free, secure and fast downloads from the largest Open Source applications and software directory - SourceForge.net">
+        <meta name="keywords" content="Open Source, Open Source Software, Development, Community, Source Code, Secure,  Downloads, Free Software">
+        <title>
+  Features - SourceForge
+</title>
+        <link rel="icon" sizes="180x180" href="//a.fsdn.com/con/img/sandiego/logo-180x180.png" type="image/png">
+<link rel="icon" sizes="any" href="//a.fsdn.com/con/img/sandiego/svg/originals/sf-icon-orange-no_sf.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="//a.fsdn.com/con/img/sandiego/logo-180x180.png">
+<link rel="mask-icon" href="//a.fsdn.com/con/img/sandiego/svg/originals/sf-icon-orange-no_sf.svg" color="#FF6600">
+        
+        <script type="text/javascript">
+            /*global unescape, window, console, jQuery, $, net, SF, DD_belatedPNG, ga */
+            if (!window.SF) {
+                window.SF = {};
+            }
+        </script>
+
+        <script type="text/javascript">
+            SF.EU_country_codes = ["BE", "FR", "BG", "DK", "VG", "WF", "HR", "BM", "DE", "HU", "JE", "FI", "FK", "YT", "NL", "PT", "CW", "NC", "LV", "RE", "LT", "LU", "PF", "GI", "TF", "RO", "PN", "TC", "PL", "PM", "GS", "GR", "GP", "EE", "IT", "GG", "CZ", "CY", "SX", "IO", "AT", "AW", "AX", "GL", "IE", "KY", "ES", "ME", "MF", "BL", "GF", "SK", "MT", "SI", "SH", "MQ", "MS", "AI", "SE", "GB"];
+            SF.unknown_country_codes = ["", "A1", "A2", "O1"];
+        </script>
+        
+<script src="//a.fsdn.com/con/js/sftheme/vendor/modernizr.3.3.1.custom.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/sticky.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/lib/jquery-2.2.4.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/shared_head.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme-typescript/compliance.js?1526485194" type="text/javascript"></script>
+
+
+
+        <style type="text/css">.e4ad2967feb23e7ba3c33d6f657fc91d5a336f4f8 { display: none !important; }</style>
+
+        
+<script type="text/javascript">
+    SF.adblock = true;
+</script> 
+
+        
+
+        
+<!-- CCM Tag -->
+<script type="text/javascript">
+  (function () {
+    /*global _ml:true, window */
+    _ml = window._ml || {};
+    _ml.eid = '771';
+
+    var s = document.getElementsByTagName('script')[0], cd = new Date(), mltag = document.createElement('script');
+    mltag.type = 'text/javascript'; mltag.async = true;
+    mltag.src = '//ml314.com/tag.aspx?' + cd.getDate() + cd.getMonth() + cd.getFullYear();
+    s.parentNode.insertBefore(mltag, s);
+  })();
+</script>
+<!-- End CCM Tag -->
+
+        
+        <script type="text/javascript" src="//a.fsdn.com/con/js/adframe.js?1526485194"></script>
+        <script type="text/javascript">
+
+            /*jshint ignore:start*/
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            /*jshint ignore:end*/
+
+            //var $ = jQuery.noConflict(); // jshint ignore:line
+        </script>
+        <script type="text/javascript">
+            SF.devicePixelRatio = Math.round(window.getDevicePixelRatio()*10)/10;
+                ga('create', 'UA-36130941-1', {
+                    'name': '1', 'sampleRate': 9});
+                ga('create', 'UA-36130941-1', 'auto', {   'sampleRate': 9});
+            /*global _ml:true */
+            if (typeof _ml !== 'undefined' && _ml.us) {
+                if (_ml.us.tp && _ml.us.tp.length > 0) {
+                    ga('set', 'dimension2', _ml.us.tp[0]);
+                }
+                if (_ml.us.pc && _ml.us.pc.length > 0) {
+                    ga('set', 'dimension7', _ml.us.pc[0]);
+                }
+                ga('set', 'dimension3', _ml.us.ind);
+                ga('set', 'dimension4', _ml.us.cr);
+                ga('set', 'dimension5', _ml.us.cs);
+                ga('set', 'dimension6', _ml.us.dm);
+                ga('set', 'dimension8', _ml.us.sn);
+            }
+
+            
+                ga('set', 'dimension10', 'pg_create');
+                    
+                ga('set', 'dimension13', 'Logged Out');
+                ga('set', 'dimension14', 'No');  
+                ga('set', 'dimension15', 'sandiego');
+                ga('set', 'dimension16', 'sync');
+                ga('set', 'dimension17', SF.devicePixelRatio);
+                ga('send', 'pageview');
+
+            
+        </script>
+        <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView', document.title, {
+            dimension2: 'pg_create',
+            dimension3: SF.devicePixelRatio
+        }]);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="//analytics.slashdotmedia.com/";
+            _paq.push(['setTrackerUrl', u+'sf.php']);
+            _paq.push(['setSiteId', 39]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'sf.js'; s.parentNode.insertBefore(g,s);
+        })();
+        </script>
+
+        <script type="text/javascript"> try{(function(){ var cb = new Date().getTime(); var s = document.createElement("script"); s.defer = true; s.src = "//tag.crsspxl.com/s1.js?d=2396&cb="+cb; var s0 = document.getElementsByTagName('script')[0]; s0.parentNode.insertBefore(s, s0); })();}catch(e){} </script>
+
+
+        
+    </head>
+    <body id="pg_create"
+          class="l-black-n-tan anonymous has-ads sandiego">
+        
+
+        <div id="busy-spinner"></div>
+        
+        
+<div id="messages">
+</div>
+
+
+
+        <div class="off-canvas position-right" id="offCanvas" data-off-canvas>
+    <!-- Menu -->
+    <ul class="header-nav-menulist">
+        <li class="highlight social row">
+            <span class="social-label">Connect</span>
+            <span class="social-icons">
+                
+<span></span>
+<a href="https://twitter.com/sourceforge" class="twitter" rel="nofollow" target="_blank">
+
+<svg  viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></a>
+<a href="https://www.facebook.com/sourceforgenet/" class="facebook" rel="nofollow" target="_blank">
+
+<svg  viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></a>
+<a href="https://plus.google.com/+sourceforge" class="google" rel="nofollow publisher" target="_blank">
+
+<svg   viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M896 786h725q12 67 12 128 0 217-91 387.5t-259.5 266.5-386.5 96q-157 0-299-60.5t-245-163.5-163.5-245-60.5-299 60.5-299 163.5-245 245-163.5 299-60.5q300 0 515 201l-209 201q-123-119-306-119-129 0-238.5 65t-173.5 176.5-64 243.5 64 243.5 173.5 176.5 238.5 65q87 0 160-24t120-60 82-82 51.5-87 22.5-78h-436v-264z"/></svg></a>
+<a href="https://www.linkedin.com/company/sourceforge.net" class="linkedin" rel="nofollow" target="_blank">
+
+<svg  viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></a>
+<span></span>
+            </span>
+        </li>
+        <li class="highlight search">
+            <form method="get" action="/directory/">
+        <input type="text" placeholder="Search for software or solutions" name="q" >
+        <label>
+        <input type="submit" class="bt" value="">
+            
+
+<svg  viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
+        </label>
+    </form>
+        </li>
+        
+    
+    
+    
+        <li class="highlight"><a href="/articles/">Articles</a></li>
+    
+    
+        <li class="highlight"><a href="/cloud-storage-providers/?source=sfnet_header">Cloud Storage</a></li>
+    
+    
+        <li class="highlight"><a href="/business-voip/?source=sfnet_header">Business VoIP</a></li>
+    
+    
+    
+        <li class="highlight"><a href="/speedtest/?source=sfnet_header">Internet Speed Test</a></li>
+    
+
+        
+        <li><a href="/directory/">Browse</a></li>
+        <li><a href="/blog" title="Blog">Blog</a></li>
+        <li><a href="https://deals.sourceforge.net/?utm_source=sourceforge&utm_medium=navbar&utm_campaign=homepage">Deals</a></li>
+        <li><a href="/support">Help</a></li>
+        <li><a href="/create">Create</a></li>
+        
+        <li><a href="https://sourceforge.net/auth/">Join/Login</a></li>
+        
+        <li><a href="/about">About</a></li>
+        <li><a href="/top">Top Downloaded Projects</a></li>
+        <li><a href="/blog/category/sitestatus/">Site Status</a></li>
+        <li><a href="https://twitter.com/sfnet_ops">@sfnet_ops</a></li>
+        <li><a href="https://twitter.com/sourceforge">@sourceforge</a></li>
+        <li><a href="https://p.sf.net/sourceforge/docs">Site Documentation</a></li>
+        <li><a href="/support">Support Request</a></li>
+        <li><a href="https://slashdotmedia.com/terms-of-use/">Terms</a></li>
+        <li><a href="https://slashdotmedia.com/privacy-statement/">Privacy</a></li>
+        <li><a href="https://slashdotmedia.com/opt-out-choices/">Opt Out</a></li>
+        <li><a href="https://slashdotmedia.com/">Advertise</a></li>
+    </ul>
+</div>
+
+        <div class="off-canvas-content" data-off-canvas-content>
+            
+            
+<script type="text/javascript">
+    SF.linkout_icon = '<svg  version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve"><polygon class="st0" points="243.2,243.2 56.8,243.2 56.8,56.8 123,56.8 123,9 9,9 9,291 291,291 291,179.4 243.2,179 "/><polygon class="st0" points="128.5,213 155,186.5 176,165.5 206.7,196.3 235.5,132.5 248.9,102.6 290.6,9.8 291,9 290.6,9.2 197.4,51.1 169.1,63.8 103.7,93.3 137,126.5 115.9,147.5 89.5,174 "/></svg>';
+</script>
+
+
+<div class="l-header-nav sticky sandiego">
+
+    <section class="sandiego l-header-nav-top show-for-large">
+        <div class="row">
+            <a href="/" title="Home" class="sf-logo">
+                
+
+<svg  version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"     viewBox="0 0 653 102.6" style="enable-background:new 0 0 653 102.6;" xml:space="preserve"><path class="st0" d="M66.9,54.5c0-19.1-6.8-27.8-10.4-31.1c-0.7-0.6-1.8-0.1-1.7,0.9c0.7,10.8-12.9,13.5-12.9,30.4h0    c0,0,0,0.1,0,0.1c0,10.3,7.8,18.7,17.4,18.7c9.6,0,17.4-8.4,17.4-18.7c0,0,0-0.1,0-0.1h0c0-4.8-1.8-9.4-3.6-12.8    c-0.4-0.7-1.4-0.4-1.3,0.2C75.1,56.7,66.9,65.7,66.9,54.5z"/><g>    <path class="st0" d="M46.2,94.8c-0.4,0-0.9-0.2-1.2-0.5L0.5,49.8c-0.6-0.6-0.6-1.7,0-2.4l47-47C47.8,0.2,48.2,0,48.6,0h13.5        c0.8,0,1.3,0.5,1.5,1c0.2,0.5,0.2,1.2-0.4,1.8L19.1,47c-0.9,0.9-0.9,2.3,0,3.2L54,85.2c0.6,0.6,0.6,1.7,0,2.4l-6.7,6.8        C47,94.6,46.6,94.8,46.2,94.8z"/></g><g>    <path class="st0" d="M55.1,102.6c-0.8,0-1.3-0.5-1.5-1c-0.2-0.5-0.2-1.2,0.4-1.8l44.2-44.2c0.4-0.4,0.7-1,0.7-1.6        c0-0.6-0.2-1.2-0.7-1.6L63.2,17.4c-0.6-0.6-0.6-1.7,0-2.4l6.8-6.8c0.3-0.3,0.7-0.5,1.2-0.5S72,8,72.3,8.3l44.4,44.5        c0.3,0.3,0.5,0.7,0.5,1.2s-0.2,0.9-0.5,1.2l-47,47c-0.3,0.3-0.7,0.5-1.2,0.5H55.1z"/></g><g>    <g>        <path class="st1" d="M167.2,32c-0.2,0.4-0.5,0.6-1,0.6c-0.3,0-0.7-0.2-1.2-0.7c-0.5-0.5-1.2-1-2-1.5c-0.9-0.6-1.9-1.1-3.2-1.5            c-1.3-0.5-2.9-0.7-4.8-0.7c-1.9,0-3.5,0.3-5,0.8c-1.4,0.5-2.6,1.3-3.6,2.2s-1.7,2-2.2,3.2c-0.5,1.2-0.8,2.5-0.8,3.8            c0,1.8,0.4,3.2,1.1,4.4c0.7,1.1,1.7,2.1,3,2.9c1.2,0.8,2.6,1.5,4.2,2c1.6,0.6,3.2,1.1,4.8,1.6c1.6,0.5,3.2,1.1,4.8,1.8            c1.6,0.6,2.9,1.5,4.2,2.4s2.2,2.2,3,3.6c0.7,1.4,1.1,3.2,1.1,5.3c0,2.2-0.4,4.2-1.1,6.1c-0.7,1.9-1.8,3.6-3.2,5            c-1.4,1.4-3.2,2.5-5.2,3.4c-2.1,0.8-4.4,1.2-7,1.2c-3.4,0-6.4-0.6-8.8-1.8c-2.5-1.2-4.6-2.9-6.5-5l1-1.6c0.3-0.4,0.6-0.5,1-0.5            c0.2,0,0.5,0.1,0.8,0.4c0.3,0.3,0.8,0.7,1.2,1.1c0.5,0.4,1.1,0.9,1.8,1.4c0.7,0.5,1.5,1,2.4,1.4c0.9,0.4,1.9,0.8,3.1,1.1            c1.2,0.3,2.5,0.4,4,0.4c2.1,0,3.9-0.3,5.5-0.9c1.6-0.6,3-1.5,4.1-2.5s2-2.4,2.6-3.8c0.6-1.5,0.9-3.1,0.9-4.7            c0-1.8-0.4-3.3-1.1-4.5c-0.7-1.2-1.7-2.2-3-3c-1.2-0.8-2.6-1.5-4.2-2c-1.6-0.5-3.2-1.1-4.8-1.6c-1.6-0.5-3.2-1.1-4.8-1.7            c-1.6-0.6-2.9-1.4-4.2-2.4c-1.2-1-2.2-2.2-3-3.7c-0.7-1.5-1.1-3.3-1.1-5.6c0-1.7,0.3-3.4,1-5c0.7-1.6,1.6-3,2.9-4.3            c1.3-1.2,2.8-2.2,4.7-3c1.9-0.7,4-1.1,6.4-1.1c2.7,0,5.1,0.4,7.3,1.3c2.1,0.9,4.1,2.2,5.9,3.9L167.2,32z"/>        <path class="st2" d="M152.9,78.8c-3.5,0-6.6-0.6-9.1-1.9c-2.5-1.2-4.8-3-6.7-5.1l-0.3-0.3l1.3-2c0.6-0.7,1.1-0.8,1.5-0.8            c0.4,0,0.8,0.2,1.2,0.6c0.3,0.3,0.8,0.7,1.3,1.1c0.5,0.4,1.1,0.9,1.7,1.4c0.7,0.5,1.4,0.9,2.3,1.3c0.9,0.4,1.9,0.8,3,1            c1.1,0.3,2.4,0.4,3.9,0.4c2,0,3.8-0.3,5.3-0.9c1.5-0.6,2.8-1.4,3.9-2.4c1-1,1.9-2.2,2.4-3.6c0.6-1.4,0.8-2.9,0.8-4.5            c0-1.7-0.3-3.1-1-4.2c-0.7-1.1-1.6-2-2.8-2.8c-1.2-0.8-2.5-1.4-4-1.9c-1.5-0.5-3.1-1.1-4.8-1.6c-1.7-0.5-3.3-1.1-4.8-1.7            c-1.6-0.7-3.1-1.5-4.3-2.5c-1.3-1-2.3-2.4-3.1-3.9c-0.8-1.6-1.2-3.5-1.2-5.8c0-1.8,0.3-3.6,1-5.3c0.7-1.7,1.7-3.2,3-4.5            c1.3-1.3,3-2.3,4.9-3.1c1.9-0.8,4.2-1.2,6.6-1.2c2.8,0,5.3,0.4,7.5,1.3c2.2,0.9,4.2,2.3,6.1,4.1l0.3,0.3l-1.1,2.1            c-0.6,1.1-1.7,1.4-3.1,0.1c-0.5-0.4-1.1-0.9-2-1.4c-0.8-0.5-1.9-1-3.1-1.5c-1.2-0.4-2.7-0.7-4.6-0.7c-1.8,0-3.4,0.3-4.8,0.8            c-1.3,0.5-2.5,1.2-3.4,2.1c-0.9,0.9-1.6,1.9-2.1,3c-0.5,1.1-0.7,2.4-0.7,3.6c0,1.6,0.3,3,1,4c0.7,1.1,1.6,2,2.8,2.8            c1.2,0.8,2.5,1.4,4,2c1.5,0.5,3.1,1.1,4.8,1.6c1.6,0.5,3.3,1.1,4.8,1.8c1.6,0.7,3.1,1.5,4.3,2.5c1.3,1,2.3,2.3,3.1,3.8            c0.8,1.5,1.2,3.4,1.2,5.6c0,2.2-0.4,4.4-1.2,6.4c-0.8,2-1.9,3.7-3.4,5.2c-1.5,1.5-3.3,2.6-5.4,3.5            C158.1,78.3,155.6,78.8,152.9,78.8z M138.4,71.3c1.7,1.9,3.7,3.4,6,4.5c2.4,1.2,5.3,1.8,8.6,1.8c2.5,0,4.8-0.4,6.8-1.2            c2-0.8,3.6-1.9,5-3.2c1.3-1.3,2.4-3,3.1-4.8c0.7-1.8,1.1-3.8,1.1-5.9c0-2-0.4-3.7-1-5.1c-0.7-1.3-1.6-2.5-2.8-3.4            c-1.2-0.9-2.5-1.7-4-2.4c-1.5-0.6-3.1-1.2-4.7-1.8c-1.6-0.5-3.2-1.1-4.8-1.6c-1.6-0.6-3-1.3-4.3-2.1c-1.3-0.8-2.3-1.9-3.1-3.1            c-0.8-1.2-1.2-2.8-1.2-4.7c0-1.4,0.3-2.8,0.8-4.1c0.5-1.3,1.3-2.5,2.3-3.4c1-1,2.3-1.8,3.8-2.3c1.5-0.6,3.3-0.8,5.2-0.8            c1.9,0,3.6,0.2,5,0.7c1.3,0.5,2.5,1,3.3,1.6c0.9,0.6,1.6,1.1,2.1,1.6c0.6,0.5,0.8,0.5,0.8,0.5c0.1,0,0.3,0,0.4-0.3l0.7-1.3            c-1.6-1.5-3.4-2.7-5.3-3.5c-2.1-0.8-4.4-1.2-7-1.2c-2.3,0-4.4,0.4-6.2,1.1c-1.8,0.7-3.3,1.7-4.5,2.8c-1.2,1.2-2.1,2.5-2.8,4.1            c-0.6,1.5-0.9,3.1-0.9,4.8c0,2.1,0.4,3.9,1.1,5.3c0.7,1.4,1.6,2.6,2.8,3.5c1.2,0.9,2.5,1.7,4,2.3c1.5,0.6,3.1,1.2,4.7,1.7            c1.6,0.5,3.2,1,4.8,1.6c1.6,0.6,3,1.2,4.3,2.1c1.3,0.8,2.4,1.9,3.1,3.2c0.8,1.3,1.2,2.9,1.2,4.9c0,1.8-0.3,3.4-0.9,5            c-0.6,1.6-1.5,2.9-2.7,4c-1.2,1.1-2.6,2-4.3,2.7c-1.7,0.6-3.6,1-5.7,1c-1.5,0-2.9-0.2-4.2-0.5c-1.2-0.3-2.3-0.7-3.2-1.1            c-0.9-0.4-1.8-0.9-2.5-1.5c-0.7-0.5-1.3-1-1.8-1.4c-0.5-0.4-0.9-0.8-1.2-1.1c-0.3-0.3-0.5-0.3-0.5-0.3c-0.1,0-0.3,0-0.5,0.3            L138.4,71.3z"/>    </g>    <g>        <path class="st1" d="M226.7,51.6c0,4-0.6,7.6-1.8,10.9c-1.2,3.3-2.9,6.1-5.1,8.4c-2.2,2.3-4.8,4.1-7.8,5.4            c-3,1.3-6.4,1.9-10.1,1.9c-3.6,0-7-0.6-10-1.9c-3-1.3-5.6-3-7.8-5.4c-2.2-2.3-3.9-5.1-5.1-8.4c-1.2-3.3-1.8-6.9-1.8-10.9            c0-4,0.6-7.6,1.8-10.9c1.2-3.3,2.9-6.1,5.1-8.4c2.2-2.3,4.8-4.1,7.8-5.4c3-1.3,6.4-1.9,10-1.9c3.7,0,7.1,0.6,10.1,1.9            c3,1.3,5.6,3,7.8,5.4c2.2,2.3,3.9,5.1,5.1,8.4C226.1,44,226.7,47.6,226.7,51.6z M222.8,51.6c0-3.6-0.5-6.9-1.5-9.8            c-1-2.9-2.4-5.3-4.2-7.3c-1.8-2-4-3.5-6.6-4.6c-2.6-1.1-5.4-1.6-8.5-1.6c-3.1,0-5.9,0.5-8.5,1.6c-2.6,1.1-4.8,2.6-6.6,4.6            c-1.8,2-3.3,4.4-4.3,7.3c-1,2.9-1.5,6.1-1.5,9.8c0,3.6,0.5,6.9,1.5,9.8c1,2.9,2.4,5.3,4.3,7.3c1.8,2,4,3.5,6.6,4.6            c2.6,1.1,5.4,1.6,8.5,1.6c3.1,0,6-0.5,8.5-1.6c2.6-1,4.8-2.6,6.6-4.6c1.8-2,3.2-4.4,4.2-7.3C222.3,58.5,222.8,55.3,222.8,51.6z"/>        <path class="st2" d="M202,78.7c-3.7,0-7.2-0.7-10.2-1.9c-3.1-1.3-5.8-3.1-8-5.5c-2.2-2.4-4-5.2-5.2-8.6c-1.2-3.3-1.9-7.1-1.9-11.1            c0-4,0.6-7.8,1.9-11.1c1.2-3.3,3-6.2,5.2-8.6c2.2-2.4,4.9-4.2,8-5.5c3.1-1.3,6.5-2,10.2-2c3.8,0,7.2,0.7,10.3,1.9            c3.1,1.3,5.8,3.1,8,5.5c2.2,2.4,4,5.3,5.2,8.6c1.2,3.3,1.8,7,1.8,11.1c0,4.1-0.6,7.8-1.8,11.1c-1.2,3.3-3,6.2-5.2,8.6            c-2.2,2.4-4.9,4.2-8,5.5C209.2,78.1,205.7,78.7,202,78.7z M202,25.7c-3.5,0-6.8,0.6-9.8,1.9c-2.9,1.2-5.5,3-7.6,5.2            c-2.1,2.2-3.8,5-4.9,8.2c-1.2,3.2-1.8,6.8-1.8,10.7c0,3.9,0.6,7.5,1.8,10.7c1.2,3.2,2.8,5.9,4.9,8.2c2.1,2.2,4.7,4,7.6,5.2            c2.9,1.2,6.2,1.8,9.8,1.8c3.6,0,6.9-0.6,9.8-1.8c2.9-1.2,5.5-3,7.6-5.2c2.1-2.2,3.8-5,4.9-8.1c1.2-3.2,1.8-6.8,1.8-10.7            c0-3.9-0.6-7.5-1.8-10.7c-1.2-3.2-2.8-5.9-4.9-8.2c-2.1-2.2-4.7-4-7.6-5.2C208.9,26.3,205.6,25.7,202,25.7z"/>    </g>    <g>        <path class="st1" d="M256.4,74.9c2.5,0,4.7-0.4,6.7-1.3c2-0.9,3.6-2.1,5-3.6c1.4-1.5,2.4-3.4,3.1-5.4c0.7-2.1,1.1-4.3,1.1-6.8            V25.7h3.7v32.1c0,2.9-0.5,5.5-1.4,8c-0.9,2.5-2.2,4.6-3.9,6.5c-1.7,1.8-3.8,3.3-6.2,4.3c-2.4,1-5.2,1.6-8.2,1.6            c-3,0-5.8-0.5-8.2-1.6c-2.4-1.1-4.5-2.5-6.2-4.3c-1.7-1.8-3-4-3.9-6.5c-0.9-2.5-1.4-5.2-1.4-8V25.7h3.8v32c0,2.4,0.4,4.7,1.1,6.8            c0.7,2.1,1.8,3.9,3.1,5.4c1.4,1.5,3,2.7,5,3.6C251.6,74.5,253.9,74.9,256.4,74.9z"/>        <path class="st2" d="M256.4,78.8c-3.1,0-5.9-0.5-8.4-1.6c-2.5-1.1-4.7-2.6-6.4-4.5c-1.7-1.9-3.1-4.2-4-6.7            c-0.9-2.5-1.4-5.3-1.4-8.2V25.1h5v32.7c0,2.3,0.4,4.5,1,6.6c0.7,2,1.7,3.8,3,5.2c1.3,1.5,2.9,2.6,4.8,3.5c1.9,0.8,4,1.3,6.4,1.3            c2.4,0,4.6-0.4,6.4-1.2c1.9-0.8,3.5-2,4.8-3.5c1.3-1.5,2.3-3.2,3-5.2c0.7-2,1-4.2,1-6.6V25.1h5v32.7c0,2.9-0.5,5.7-1.4,8.2            c-0.9,2.5-2.3,4.8-4,6.7c-1.7,1.9-3.9,3.4-6.4,4.5C262.3,78.3,259.5,78.8,256.4,78.8z M237.3,26.3v31.5c0,2.8,0.4,5.4,1.3,7.8            c0.9,2.4,2.1,4.5,3.8,6.3c1.6,1.8,3.6,3.2,6,4.2c2.3,1,5,1.5,8,1.5c2.9,0,5.6-0.5,8-1.5c2.3-1,4.4-2.4,6-4.2            c1.6-1.8,2.9-3.9,3.8-6.3c0.9-2.4,1.3-5,1.3-7.8V26.3h-2.5v31.5c0,2.5-0.4,4.8-1.1,7c-0.7,2.2-1.8,4.1-3.3,5.7            c-1.4,1.6-3.2,2.9-5.2,3.8c-2,0.9-4.4,1.4-6.9,1.4c-2.6,0-4.9-0.5-6.9-1.4c-2-0.9-3.8-2.2-5.2-3.8c-1.4-1.6-2.5-3.5-3.2-5.7            c-0.7-2.1-1.1-4.5-1.1-7V26.3H237.3z"/>    </g>    <g>        <path class="st1" d="M297.5,51.3c1,0,0.9,0,0.9,0l2.2,0c2.3,0,4.4-0.3,6.2-0.8c1.8-0.6,3.4-1.3,4.6-2.4c1.3-1,2.2-2.3,2.9-3.7            c0.7-1.4,1-3.1,1-4.9c0-3.7-1.2-6.4-3.6-8.2c-2.4-1.8-5.9-2.7-10.6-2.7h-9.5v22.7v2.8v23.5h-3.7V25.7h13.2c6,0,10.5,1.2,13.4,3.5            c3,2.3,4.4,5.7,4.4,10.2c0,2-0.3,3.8-1,5.4c-0.7,1.6-1.7,3.1-3,4.3c-1.3,1.2-2.8,2.3-4.6,3c-1.8,0.8-3.9,1.3-6.1,1.6            c0.6,0.4,1.1,0.9,1.6,1.5l17.9,22.4h-3.3c-0.4,0-0.7-0.1-1-0.2c-0.3-0.1-0.6-0.4-0.8-0.7l-16.6-21c-0.4-0.5-0.9-0.9-1.3-1.1            c-0.5-0.2-3.4-0.3-4.4-0.3C296.3,51.6,296.7,51.3,297.5,51.3z"/>        <path class="st2" d="M325,78.2h-4.5c-0.5,0-0.9-0.1-1.3-0.3c-0.4-0.2-0.7-0.5-1-0.9l-16.6-21c-0.4-0.5-0.7-0.8-1.1-1            c-0.4-0.1-2.8-0.3-4.1-0.3h-0.6v-2.6c0-0.9,0.2-1.4,1.8-1.4c0.9,0,1,0,1,0l2.2,0c2.2,0,4.2-0.3,6-0.8c1.7-0.5,3.2-1.3,4.4-2.3            c1.2-1,2.1-2.1,2.7-3.5c0.6-1.4,0.9-2.9,0.9-4.6c0-3.5-1.1-6-3.4-7.7c-2.3-1.7-5.7-2.6-10.2-2.6h-8.9v48.9h-5V25.1h13.9            c6.1,0,10.7,1.2,13.8,3.6c3.1,2.4,4.7,6,4.7,10.7c0,2.1-0.4,4-1.1,5.7c-0.7,1.7-1.8,3.2-3.1,4.5c-1.3,1.3-3,2.3-4.8,3.2            c-1.5,0.6-3.1,1.1-4.9,1.4c0.2,0.2,0.4,0.4,0.6,0.7L325,78.2z M296.9,53.5c1.1,0,3.4,0.1,4,0.4c0.6,0.3,1.1,0.7,1.6,1.3l16.6,21            c0.2,0.3,0.4,0.5,0.6,0.6c0.2,0.1,0.4,0.2,0.7,0.2h2l-17.1-21.4c-0.4-0.6-0.9-1-1.4-1.3l-1.5-0.9l1.8-0.2c2.2-0.2,4.2-0.7,5.9-1.5            c1.7-0.8,3.2-1.7,4.5-2.9c1.2-1.2,2.2-2.5,2.8-4.1c0.6-1.6,1-3.3,1-5.2c0-4.3-1.4-7.5-4.2-9.7c-2.8-2.2-7.2-3.3-13-3.3h-12.6V77            h2.5V28h10.1c4.7,0,8.4,0.9,10.9,2.8c2.6,1.9,3.9,4.8,3.9,8.7c0,1.9-0.4,3.6-1,5.1c-0.7,1.5-1.7,2.8-3.1,3.9            c-1.3,1.1-2.9,1.9-4.8,2.5c-1.9,0.6-4,0.9-6.4,0.9l-2.2,0c-0.1,0-0.2,0-0.9,0C297.3,51.9,297,51.9,296.9,53.5z"/>    </g>    <g>        <path class="st1" d="M367.6,68.8c0.2,0,0.5,0.1,0.6,0.3l1.5,1.6c-1.1,1.1-2.2,2.2-3.5,3.1c-1.3,0.9-2.7,1.7-4.2,2.3            c-1.5,0.6-3.2,1.1-4.9,1.5c-1.8,0.4-3.8,0.5-5.9,0.5c-3.6,0-6.9-0.6-9.9-1.9c-3-1.3-5.6-3-7.7-5.4c-2.1-2.3-3.8-5.1-5-8.4            c-1.2-3.3-1.8-6.9-1.8-10.9c0-3.9,0.6-7.5,1.9-10.8c1.2-3.3,3-6,5.2-8.4c2.2-2.3,4.9-4.1,8-5.4c3.1-1.3,6.6-1.9,10.3-1.9            c1.9,0,3.6,0.1,5.2,0.4c1.6,0.3,3,0.7,4.4,1.2c1.4,0.5,2.6,1.2,3.8,2c1.2,0.8,2.4,1.7,3.5,2.7l-1.1,1.6c-0.2,0.3-0.5,0.4-0.9,0.4            c-0.2,0-0.5-0.1-0.8-0.4c-0.3-0.3-0.8-0.6-1.3-1c-0.5-0.4-1.2-0.8-1.9-1.2c-0.7-0.5-1.6-0.9-2.7-1.2c-1-0.4-2.2-0.7-3.6-1            c-1.3-0.3-2.9-0.4-4.6-0.4c-3.2,0-6.1,0.5-8.7,1.6c-2.6,1.1-4.9,2.6-6.8,4.7c-1.9,2-3.4,4.5-4.5,7.3s-1.6,6.1-1.6,9.7            c0,3.7,0.5,6.9,1.6,9.8c1.1,2.9,2.5,5.3,4.4,7.3c1.9,2,4.1,3.5,6.6,4.6c2.5,1.1,5.3,1.6,8.2,1.6c1.9,0,3.5-0.1,5-0.4            c1.5-0.2,2.8-0.6,4-1.1c1.2-0.5,2.4-1.1,3.4-1.8c1.1-0.7,2.1-1.5,3.1-2.5c0.1-0.1,0.2-0.2,0.3-0.2            C367.3,68.9,367.5,68.8,367.6,68.8z"/>        <path class="st2" d="M351.1,78.8c-3.7,0-7.1-0.7-10.1-1.9c-3.1-1.3-5.7-3.1-7.9-5.5c-2.2-2.4-3.9-5.2-5.1-8.6            c-1.2-3.3-1.8-7.1-1.8-11.1c0-4,0.6-7.7,1.9-11c1.3-3.3,3.1-6.2,5.3-8.6c2.3-2.4,5.1-4.3,8.2-5.6c3.2-1.3,6.7-2,10.6-2            c1.9,0,3.7,0.1,5.3,0.4c1.6,0.3,3.1,0.7,4.5,1.2c1.4,0.5,2.7,1.2,3.9,2c1.2,0.8,2.4,1.7,3.6,2.8l0.4,0.4l-1.4,2.1            c-0.2,0.3-0.6,0.7-1.4,0.7c-0.4,0-0.7-0.2-1.2-0.5c-0.3-0.3-0.8-0.6-1.3-0.9c-0.5-0.4-1.1-0.8-1.9-1.2c-0.7-0.4-1.6-0.8-2.6-1.2            c-1-0.4-2.2-0.7-3.5-0.9c-1.3-0.2-2.8-0.4-4.5-0.4c-3.1,0-5.9,0.5-8.5,1.6c-2.5,1.1-4.8,2.6-6.6,4.5c-1.8,1.9-3.3,4.3-4.3,7.1            c-1,2.8-1.6,6-1.6,9.4c0,3.6,0.5,6.8,1.5,9.6c1,2.8,2.4,5.2,4.2,7.1c1.8,1.9,3.9,3.4,6.4,4.4c2.4,1,5.1,1.5,8,1.5            c1.8,0,3.5-0.1,4.9-0.4c1.4-0.2,2.7-0.6,3.9-1.1c1.2-0.5,2.3-1.1,3.3-1.7c1-0.7,2-1.5,3-2.4c0.2-0.2,0.3-0.2,0.5-0.3            c0.5-0.3,1.3-0.2,1.7,0.3l1.9,2l-0.4,0.4c-1.1,1.2-2.3,2.2-3.6,3.2c-1.3,0.9-2.7,1.8-4.3,2.4c-1.5,0.7-3.2,1.2-5.1,1.5            C355.3,78.6,353.3,78.8,351.1,78.8z M352.2,25.7c-3.7,0-7.1,0.6-10.1,1.9c-3,1.2-5.7,3-7.8,5.3c-2.2,2.3-3.9,5-5.1,8.2            c-1.2,3.2-1.8,6.7-1.8,10.6c0,3.9,0.6,7.5,1.8,10.7c1.2,3.2,2.8,5.9,4.9,8.2c2.1,2.2,4.6,4,7.5,5.2c2.9,1.2,6.1,1.8,9.6,1.8            c2.1,0,4-0.2,5.8-0.5c1.7-0.3,3.4-0.8,4.8-1.5c1.5-0.6,2.8-1.4,4-2.3c1.1-0.8,2.1-1.7,3-2.6l-1.1-1.2c-0.1-0.1-0.2-0.1-0.3,0            c-0.1,0-0.2,0.1-0.3,0.2c-1,0.9-2.1,1.8-3.2,2.5c-1.1,0.7-2.3,1.4-3.5,1.9c-1.3,0.5-2.7,0.9-4.1,1.1c-1.5,0.2-3.2,0.4-5.1,0.4            c-3,0-5.9-0.6-8.5-1.6c-2.6-1.1-4.9-2.7-6.8-4.7c-1.9-2-3.4-4.6-4.5-7.5c-1.1-2.9-1.6-6.3-1.6-10c0-3.6,0.5-6.9,1.6-9.9            c1.1-2.9,2.6-5.5,4.6-7.5c2-2.1,4.3-3.7,7-4.8c2.7-1.1,5.7-1.7,8.9-1.7c1.7,0,3.3,0.1,4.7,0.4c1.4,0.3,2.6,0.6,3.7,1            c1.1,0.4,2,0.8,2.8,1.3c0.8,0.5,1.4,0.9,1.9,1.3c0.5,0.4,1,0.7,1.3,1c0.3,0.3,0.5,0.3,0.5,0.3c0.3,0,0.4-0.1,0.4-0.2l0.8-1.2            c-1-0.9-2-1.6-3-2.3c-1.2-0.8-2.4-1.4-3.7-1.9c-1.3-0.5-2.8-0.9-4.3-1.2C355.7,25.9,354,25.7,352.2,25.7z"/>    </g>    <g>        <path class="st1" d="M410.3,25.7v3.1H383v21h22.7v3H383v21.6h27.3v3.1h-31.1V25.7H410.3z"/>        <path class="st2" d="M410.9,78.2h-32.3V25.1h32.3v4.3h-27.3v19.7h22.7v4.3h-22.7v20.4h27.3V78.2z M379.8,77h29.9v-1.9h-27.3V52.2            h22.7v-1.8h-22.7V28.2h27.3v-1.9h-29.9V77z"/>    </g>    <g>        <path class="st1" d="M456.8,25.1V33h-23.5v15.7h19.8v7.9h-19.8v21.6h-9.9v-53H456.8z"/>    </g>    <g>        <path class="st1" d="M514.3,51.6c0,3.9-0.6,7.5-1.9,10.8c-1.3,3.3-3.1,6.2-5.5,8.6c-2.3,2.4-5.2,4.3-8.5,5.7c-3.3,1.4-7,2-11,2            c-4,0-7.7-0.7-11-2c-3.3-1.4-6.1-3.2-8.5-5.7c-2.4-2.4-4.2-5.3-5.5-8.6s-1.9-6.9-1.9-10.8s0.6-7.5,1.9-10.8            c1.3-3.3,3.1-6.2,5.5-8.6c2.4-2.4,5.2-4.3,8.5-5.7c3.3-1.4,7-2,11-2c4,0,7.7,0.7,11,2.1c3.3,1.4,6.1,3.3,8.5,5.7            c2.3,2.4,4.2,5.3,5.5,8.6C513.6,44.1,514.3,47.7,514.3,51.6z M504.2,51.6c0-2.9-0.4-5.5-1.2-7.8c-0.8-2.3-1.9-4.3-3.3-5.9            c-1.4-1.6-3.2-2.8-5.3-3.7c-2.1-0.9-4.4-1.3-7-1.3c-2.6,0-4.9,0.4-7,1.3c-2.1,0.9-3.8,2.1-5.3,3.7c-1.5,1.6-2.6,3.6-3.4,5.9            c-0.8,2.3-1.2,4.9-1.2,7.8s0.4,5.5,1.2,7.8c0.8,2.3,1.9,4.3,3.4,5.9c1.5,1.6,3.2,2.8,5.3,3.7c2.1,0.9,4.4,1.3,7,1.3            c2.6,0,4.9-0.4,7-1.3c2.1-0.9,3.8-2.1,5.3-3.7c1.4-1.6,2.5-3.6,3.3-5.9C503.8,57.1,504.2,54.5,504.2,51.6z"/>    </g>    <g>        <path class="st1" d="M534.9,50.4l2.3,0c1.9,0,3.5-0.2,4.9-0.7c1.4-0.5,2.5-1.1,3.4-1.9c0.9-0.8,1.6-1.8,2-2.9            c0.4-1.1,0.7-2.4,0.7-3.7c0-2.7-0.9-4.8-2.7-6.2c-1.8-1.4-4.5-2.2-8.1-2.2H531v17.6v7.1v20.7h-9.9v-53h16.2c3.6,0,6.7,0.4,9.3,1.1            c2.6,0.7,4.7,1.8,6.3,3.1c1.6,1.3,2.9,3,3.6,4.8c0.8,1.9,1.2,3.9,1.2,6.2c0,1.8-0.3,3.5-0.8,5.1c-0.5,1.6-1.3,3-2.3,4.3            c-1,1.3-2.2,2.4-3.7,3.4c-1.5,1-3.1,1.8-5,2.3c1.2,0.7,2.3,1.7,3.2,3l13.3,19.6h-8.9c-0.9,0-1.6-0.2-2.2-0.5            c-0.6-0.3-1.1-0.8-1.5-1.5c0,0-11.1-17-11.1-17c-0.3-0.4-0.9-1.3-1.5-1.4c-1.2,0-2.4,0-3.5,0c0,0,0-6,0-6.4            C533.8,50.4,534.9,50.4,534.9,50.4z"/>    </g>    <g>        <path class="st1" d="M591.4,70.9c2.2,0,4.2-0.2,5.8-0.6c1.6-0.4,3.2-1,4.7-1.7v-12h-6.6c-0.6,0-1.1-0.2-1.5-0.5            c-0.4-0.4-0.6-0.8-0.6-1.3v-5.6h17.6V73c-1.3,1-2.7,1.8-4.2,2.5c-1.5,0.7-3,1.3-4.7,1.8c-1.7,0.5-3.4,0.8-5.3,1            c-1.9,0.2-3.9,0.3-6.1,0.3c-3.9,0-7.4-0.7-10.7-2c-3.3-1.3-6.1-3.2-8.4-5.6c-2.4-2.4-4.2-5.3-5.6-8.6c-1.3-3.3-2-7-2-10.9            c0-4,0.6-7.6,1.9-11c1.3-3.3,3.1-6.2,5.5-8.6c2.4-2.4,5.3-4.3,8.7-5.6c3.4-1.3,7.2-2,11.4-2c4.3,0,8.1,0.6,11.2,1.9            c3.2,1.3,5.8,3,8,5l-2.9,4.5c-0.6,0.9-1.3,1.4-2.2,1.4c-0.6,0-1.2-0.2-1.8-0.6c-0.8-0.5-1.6-0.9-2.4-1.4c-0.8-0.5-1.7-0.9-2.7-1.2            c-1-0.3-2.1-0.6-3.3-0.8c-1.2-0.2-2.7-0.3-4.3-0.3c-2.6,0-5,0.4-7.1,1.3c-2.1,0.9-3.9,2.1-5.4,3.8c-1.5,1.6-2.6,3.6-3.4,5.9            c-0.8,2.3-1.2,4.9-1.2,7.7c0,3.1,0.4,5.8,1.3,8.2c0.9,2.4,2.1,4.4,3.6,6s3.4,2.9,5.5,3.8S588.9,70.9,591.4,70.9z"/>    </g>    <g>        <path class="st1" d="M645.7,56.8h-16.1v13.4H653v7.9h-33.4v-53H653V33h-23.5v16.3H648v5.8C648,55.1,647.9,56.8,645.7,56.8z"/>    </g></g></svg>
+            </a>
+            <nav class="links">
+                
+                <div class="browse">
+                    <a href="/directory" title="Browse">Browse</a>
+                    <ul class="browse-dropdown">
+                        <li><a href="/directory/business-enterprise/financial/accounting/">Accounting</a></li>
+                        <li><a href="/directory/business-enterprise/enterprise/crm/">CRM</a></li>
+                        <li><a href="/directory/business-enterprise/enterprise/enterprisebi/">Business Intelligence</a></li>
+                        <li><a href="/directory/graphics/graphics/3dmodeling/">CAD</a></li>
+                        <li><a href="/directory/business-enterprise/enterprise/plm/">PLM</a></li>
+                        <li><a href="/directory/business-enterprise/enterprise/processmanagement/">BPM</a></li>
+                        <li><a href="/directory/business-enterprise/project-management/">Project Management</a></li>
+                        <li><a href="/directory/business-enterprise/knowledgemanagement/">Knowledge Management</a></li>
+                        <li><a href="/directory/development/">Development</a></li>
+                        <li><a href="/directory/business-enterprise/enterprise/sales/">Sales</a></li>
+                        <li><a href="/directory/business-enterprise/ecommerce/">E-Commerce</a></li>
+                        <li><a href="/directory/business-enterprise/enterprise/erp/">ERP</a></li>
+                        <li><a href="/directory/business-enterprise/enterprise/humanresources/">HR</a></li>
+                        <li><a href="/directory/system-administration/">IT Management</a></li>
+                        <li><a href="/directory/security-utilities/">IT Security</a></li>
+                        <li><a href="/directory/business-enterprise/suites/">Office</a></li>
+                        <li><a href="/directory/science-engineering/">Science & Engineering</a></li>
+                        <li><a href="/directory">All Software</a></li>
+                    </ul>
+                </div>
+                <a href="/blog" title="Blog">Blog</a>
+                <a href="//deals.sourceforge.net/?utm_source=sourceforge&amp;utm_medium=navbar&amp;utm_campaign=homepage" title="Deals">Deals</a>
+                <a href="/support" title="Help">Help</a>
+                <a href="/create" title="Create">Create</a>
+
+                
+                <a href="/user/registration/" title="Join" >Join</a>
+                <a href="https://sourceforge.net/auth/" title="Login">Login</a>
+                
+            </nav>
+        </div>
+    </section>
+
+    <section class="sandiego l-header-nav-top hide-for-large">
+        <div class="row">
+            <a href="/" title="Home" class="sf-logo">
+                
+
+<svg  version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"     viewBox="0 0 653 102.6" style="enable-background:new 0 0 653 102.6;" xml:space="preserve"><path class="st0" d="M66.9,54.5c0-19.1-6.8-27.8-10.4-31.1c-0.7-0.6-1.8-0.1-1.7,0.9c0.7,10.8-12.9,13.5-12.9,30.4h0    c0,0,0,0.1,0,0.1c0,10.3,7.8,18.7,17.4,18.7c9.6,0,17.4-8.4,17.4-18.7c0,0,0-0.1,0-0.1h0c0-4.8-1.8-9.4-3.6-12.8    c-0.4-0.7-1.4-0.4-1.3,0.2C75.1,56.7,66.9,65.7,66.9,54.5z"/><g>    <path class="st0" d="M46.2,94.8c-0.4,0-0.9-0.2-1.2-0.5L0.5,49.8c-0.6-0.6-0.6-1.7,0-2.4l47-47C47.8,0.2,48.2,0,48.6,0h13.5        c0.8,0,1.3,0.5,1.5,1c0.2,0.5,0.2,1.2-0.4,1.8L19.1,47c-0.9,0.9-0.9,2.3,0,3.2L54,85.2c0.6,0.6,0.6,1.7,0,2.4l-6.7,6.8        C47,94.6,46.6,94.8,46.2,94.8z"/></g><g>    <path class="st0" d="M55.1,102.6c-0.8,0-1.3-0.5-1.5-1c-0.2-0.5-0.2-1.2,0.4-1.8l44.2-44.2c0.4-0.4,0.7-1,0.7-1.6        c0-0.6-0.2-1.2-0.7-1.6L63.2,17.4c-0.6-0.6-0.6-1.7,0-2.4l6.8-6.8c0.3-0.3,0.7-0.5,1.2-0.5S72,8,72.3,8.3l44.4,44.5        c0.3,0.3,0.5,0.7,0.5,1.2s-0.2,0.9-0.5,1.2l-47,47c-0.3,0.3-0.7,0.5-1.2,0.5H55.1z"/></g><g>    <g>        <path class="st1" d="M167.2,32c-0.2,0.4-0.5,0.6-1,0.6c-0.3,0-0.7-0.2-1.2-0.7c-0.5-0.5-1.2-1-2-1.5c-0.9-0.6-1.9-1.1-3.2-1.5            c-1.3-0.5-2.9-0.7-4.8-0.7c-1.9,0-3.5,0.3-5,0.8c-1.4,0.5-2.6,1.3-3.6,2.2s-1.7,2-2.2,3.2c-0.5,1.2-0.8,2.5-0.8,3.8            c0,1.8,0.4,3.2,1.1,4.4c0.7,1.1,1.7,2.1,3,2.9c1.2,0.8,2.6,1.5,4.2,2c1.6,0.6,3.2,1.1,4.8,1.6c1.6,0.5,3.2,1.1,4.8,1.8            c1.6,0.6,2.9,1.5,4.2,2.4s2.2,2.2,3,3.6c0.7,1.4,1.1,3.2,1.1,5.3c0,2.2-0.4,4.2-1.1,6.1c-0.7,1.9-1.8,3.6-3.2,5            c-1.4,1.4-3.2,2.5-5.2,3.4c-2.1,0.8-4.4,1.2-7,1.2c-3.4,0-6.4-0.6-8.8-1.8c-2.5-1.2-4.6-2.9-6.5-5l1-1.6c0.3-0.4,0.6-0.5,1-0.5            c0.2,0,0.5,0.1,0.8,0.4c0.3,0.3,0.8,0.7,1.2,1.1c0.5,0.4,1.1,0.9,1.8,1.4c0.7,0.5,1.5,1,2.4,1.4c0.9,0.4,1.9,0.8,3.1,1.1            c1.2,0.3,2.5,0.4,4,0.4c2.1,0,3.9-0.3,5.5-0.9c1.6-0.6,3-1.5,4.1-2.5s2-2.4,2.6-3.8c0.6-1.5,0.9-3.1,0.9-4.7            c0-1.8-0.4-3.3-1.1-4.5c-0.7-1.2-1.7-2.2-3-3c-1.2-0.8-2.6-1.5-4.2-2c-1.6-0.5-3.2-1.1-4.8-1.6c-1.6-0.5-3.2-1.1-4.8-1.7            c-1.6-0.6-2.9-1.4-4.2-2.4c-1.2-1-2.2-2.2-3-3.7c-0.7-1.5-1.1-3.3-1.1-5.6c0-1.7,0.3-3.4,1-5c0.7-1.6,1.6-3,2.9-4.3            c1.3-1.2,2.8-2.2,4.7-3c1.9-0.7,4-1.1,6.4-1.1c2.7,0,5.1,0.4,7.3,1.3c2.1,0.9,4.1,2.2,5.9,3.9L167.2,32z"/>        <path class="st2" d="M152.9,78.8c-3.5,0-6.6-0.6-9.1-1.9c-2.5-1.2-4.8-3-6.7-5.1l-0.3-0.3l1.3-2c0.6-0.7,1.1-0.8,1.5-0.8            c0.4,0,0.8,0.2,1.2,0.6c0.3,0.3,0.8,0.7,1.3,1.1c0.5,0.4,1.1,0.9,1.7,1.4c0.7,0.5,1.4,0.9,2.3,1.3c0.9,0.4,1.9,0.8,3,1            c1.1,0.3,2.4,0.4,3.9,0.4c2,0,3.8-0.3,5.3-0.9c1.5-0.6,2.8-1.4,3.9-2.4c1-1,1.9-2.2,2.4-3.6c0.6-1.4,0.8-2.9,0.8-4.5            c0-1.7-0.3-3.1-1-4.2c-0.7-1.1-1.6-2-2.8-2.8c-1.2-0.8-2.5-1.4-4-1.9c-1.5-0.5-3.1-1.1-4.8-1.6c-1.7-0.5-3.3-1.1-4.8-1.7            c-1.6-0.7-3.1-1.5-4.3-2.5c-1.3-1-2.3-2.4-3.1-3.9c-0.8-1.6-1.2-3.5-1.2-5.8c0-1.8,0.3-3.6,1-5.3c0.7-1.7,1.7-3.2,3-4.5            c1.3-1.3,3-2.3,4.9-3.1c1.9-0.8,4.2-1.2,6.6-1.2c2.8,0,5.3,0.4,7.5,1.3c2.2,0.9,4.2,2.3,6.1,4.1l0.3,0.3l-1.1,2.1            c-0.6,1.1-1.7,1.4-3.1,0.1c-0.5-0.4-1.1-0.9-2-1.4c-0.8-0.5-1.9-1-3.1-1.5c-1.2-0.4-2.7-0.7-4.6-0.7c-1.8,0-3.4,0.3-4.8,0.8            c-1.3,0.5-2.5,1.2-3.4,2.1c-0.9,0.9-1.6,1.9-2.1,3c-0.5,1.1-0.7,2.4-0.7,3.6c0,1.6,0.3,3,1,4c0.7,1.1,1.6,2,2.8,2.8            c1.2,0.8,2.5,1.4,4,2c1.5,0.5,3.1,1.1,4.8,1.6c1.6,0.5,3.3,1.1,4.8,1.8c1.6,0.7,3.1,1.5,4.3,2.5c1.3,1,2.3,2.3,3.1,3.8            c0.8,1.5,1.2,3.4,1.2,5.6c0,2.2-0.4,4.4-1.2,6.4c-0.8,2-1.9,3.7-3.4,5.2c-1.5,1.5-3.3,2.6-5.4,3.5            C158.1,78.3,155.6,78.8,152.9,78.8z M138.4,71.3c1.7,1.9,3.7,3.4,6,4.5c2.4,1.2,5.3,1.8,8.6,1.8c2.5,0,4.8-0.4,6.8-1.2            c2-0.8,3.6-1.9,5-3.2c1.3-1.3,2.4-3,3.1-4.8c0.7-1.8,1.1-3.8,1.1-5.9c0-2-0.4-3.7-1-5.1c-0.7-1.3-1.6-2.5-2.8-3.4            c-1.2-0.9-2.5-1.7-4-2.4c-1.5-0.6-3.1-1.2-4.7-1.8c-1.6-0.5-3.2-1.1-4.8-1.6c-1.6-0.6-3-1.3-4.3-2.1c-1.3-0.8-2.3-1.9-3.1-3.1            c-0.8-1.2-1.2-2.8-1.2-4.7c0-1.4,0.3-2.8,0.8-4.1c0.5-1.3,1.3-2.5,2.3-3.4c1-1,2.3-1.8,3.8-2.3c1.5-0.6,3.3-0.8,5.2-0.8            c1.9,0,3.6,0.2,5,0.7c1.3,0.5,2.5,1,3.3,1.6c0.9,0.6,1.6,1.1,2.1,1.6c0.6,0.5,0.8,0.5,0.8,0.5c0.1,0,0.3,0,0.4-0.3l0.7-1.3            c-1.6-1.5-3.4-2.7-5.3-3.5c-2.1-0.8-4.4-1.2-7-1.2c-2.3,0-4.4,0.4-6.2,1.1c-1.8,0.7-3.3,1.7-4.5,2.8c-1.2,1.2-2.1,2.5-2.8,4.1            c-0.6,1.5-0.9,3.1-0.9,4.8c0,2.1,0.4,3.9,1.1,5.3c0.7,1.4,1.6,2.6,2.8,3.5c1.2,0.9,2.5,1.7,4,2.3c1.5,0.6,3.1,1.2,4.7,1.7            c1.6,0.5,3.2,1,4.8,1.6c1.6,0.6,3,1.2,4.3,2.1c1.3,0.8,2.4,1.9,3.1,3.2c0.8,1.3,1.2,2.9,1.2,4.9c0,1.8-0.3,3.4-0.9,5            c-0.6,1.6-1.5,2.9-2.7,4c-1.2,1.1-2.6,2-4.3,2.7c-1.7,0.6-3.6,1-5.7,1c-1.5,0-2.9-0.2-4.2-0.5c-1.2-0.3-2.3-0.7-3.2-1.1            c-0.9-0.4-1.8-0.9-2.5-1.5c-0.7-0.5-1.3-1-1.8-1.4c-0.5-0.4-0.9-0.8-1.2-1.1c-0.3-0.3-0.5-0.3-0.5-0.3c-0.1,0-0.3,0-0.5,0.3            L138.4,71.3z"/>    </g>    <g>        <path class="st1" d="M226.7,51.6c0,4-0.6,7.6-1.8,10.9c-1.2,3.3-2.9,6.1-5.1,8.4c-2.2,2.3-4.8,4.1-7.8,5.4            c-3,1.3-6.4,1.9-10.1,1.9c-3.6,0-7-0.6-10-1.9c-3-1.3-5.6-3-7.8-5.4c-2.2-2.3-3.9-5.1-5.1-8.4c-1.2-3.3-1.8-6.9-1.8-10.9            c0-4,0.6-7.6,1.8-10.9c1.2-3.3,2.9-6.1,5.1-8.4c2.2-2.3,4.8-4.1,7.8-5.4c3-1.3,6.4-1.9,10-1.9c3.7,0,7.1,0.6,10.1,1.9            c3,1.3,5.6,3,7.8,5.4c2.2,2.3,3.9,5.1,5.1,8.4C226.1,44,226.7,47.6,226.7,51.6z M222.8,51.6c0-3.6-0.5-6.9-1.5-9.8            c-1-2.9-2.4-5.3-4.2-7.3c-1.8-2-4-3.5-6.6-4.6c-2.6-1.1-5.4-1.6-8.5-1.6c-3.1,0-5.9,0.5-8.5,1.6c-2.6,1.1-4.8,2.6-6.6,4.6            c-1.8,2-3.3,4.4-4.3,7.3c-1,2.9-1.5,6.1-1.5,9.8c0,3.6,0.5,6.9,1.5,9.8c1,2.9,2.4,5.3,4.3,7.3c1.8,2,4,3.5,6.6,4.6            c2.6,1.1,5.4,1.6,8.5,1.6c3.1,0,6-0.5,8.5-1.6c2.6-1,4.8-2.6,6.6-4.6c1.8-2,3.2-4.4,4.2-7.3C222.3,58.5,222.8,55.3,222.8,51.6z"/>        <path class="st2" d="M202,78.7c-3.7,0-7.2-0.7-10.2-1.9c-3.1-1.3-5.8-3.1-8-5.5c-2.2-2.4-4-5.2-5.2-8.6c-1.2-3.3-1.9-7.1-1.9-11.1            c0-4,0.6-7.8,1.9-11.1c1.2-3.3,3-6.2,5.2-8.6c2.2-2.4,4.9-4.2,8-5.5c3.1-1.3,6.5-2,10.2-2c3.8,0,7.2,0.7,10.3,1.9            c3.1,1.3,5.8,3.1,8,5.5c2.2,2.4,4,5.3,5.2,8.6c1.2,3.3,1.8,7,1.8,11.1c0,4.1-0.6,7.8-1.8,11.1c-1.2,3.3-3,6.2-5.2,8.6            c-2.2,2.4-4.9,4.2-8,5.5C209.2,78.1,205.7,78.7,202,78.7z M202,25.7c-3.5,0-6.8,0.6-9.8,1.9c-2.9,1.2-5.5,3-7.6,5.2            c-2.1,2.2-3.8,5-4.9,8.2c-1.2,3.2-1.8,6.8-1.8,10.7c0,3.9,0.6,7.5,1.8,10.7c1.2,3.2,2.8,5.9,4.9,8.2c2.1,2.2,4.7,4,7.6,5.2            c2.9,1.2,6.2,1.8,9.8,1.8c3.6,0,6.9-0.6,9.8-1.8c2.9-1.2,5.5-3,7.6-5.2c2.1-2.2,3.8-5,4.9-8.1c1.2-3.2,1.8-6.8,1.8-10.7            c0-3.9-0.6-7.5-1.8-10.7c-1.2-3.2-2.8-5.9-4.9-8.2c-2.1-2.2-4.7-4-7.6-5.2C208.9,26.3,205.6,25.7,202,25.7z"/>    </g>    <g>        <path class="st1" d="M256.4,74.9c2.5,0,4.7-0.4,6.7-1.3c2-0.9,3.6-2.1,5-3.6c1.4-1.5,2.4-3.4,3.1-5.4c0.7-2.1,1.1-4.3,1.1-6.8            V25.7h3.7v32.1c0,2.9-0.5,5.5-1.4,8c-0.9,2.5-2.2,4.6-3.9,6.5c-1.7,1.8-3.8,3.3-6.2,4.3c-2.4,1-5.2,1.6-8.2,1.6            c-3,0-5.8-0.5-8.2-1.6c-2.4-1.1-4.5-2.5-6.2-4.3c-1.7-1.8-3-4-3.9-6.5c-0.9-2.5-1.4-5.2-1.4-8V25.7h3.8v32c0,2.4,0.4,4.7,1.1,6.8            c0.7,2.1,1.8,3.9,3.1,5.4c1.4,1.5,3,2.7,5,3.6C251.6,74.5,253.9,74.9,256.4,74.9z"/>        <path class="st2" d="M256.4,78.8c-3.1,0-5.9-0.5-8.4-1.6c-2.5-1.1-4.7-2.6-6.4-4.5c-1.7-1.9-3.1-4.2-4-6.7            c-0.9-2.5-1.4-5.3-1.4-8.2V25.1h5v32.7c0,2.3,0.4,4.5,1,6.6c0.7,2,1.7,3.8,3,5.2c1.3,1.5,2.9,2.6,4.8,3.5c1.9,0.8,4,1.3,6.4,1.3            c2.4,0,4.6-0.4,6.4-1.2c1.9-0.8,3.5-2,4.8-3.5c1.3-1.5,2.3-3.2,3-5.2c0.7-2,1-4.2,1-6.6V25.1h5v32.7c0,2.9-0.5,5.7-1.4,8.2            c-0.9,2.5-2.3,4.8-4,6.7c-1.7,1.9-3.9,3.4-6.4,4.5C262.3,78.3,259.5,78.8,256.4,78.8z M237.3,26.3v31.5c0,2.8,0.4,5.4,1.3,7.8            c0.9,2.4,2.1,4.5,3.8,6.3c1.6,1.8,3.6,3.2,6,4.2c2.3,1,5,1.5,8,1.5c2.9,0,5.6-0.5,8-1.5c2.3-1,4.4-2.4,6-4.2            c1.6-1.8,2.9-3.9,3.8-6.3c0.9-2.4,1.3-5,1.3-7.8V26.3h-2.5v31.5c0,2.5-0.4,4.8-1.1,7c-0.7,2.2-1.8,4.1-3.3,5.7            c-1.4,1.6-3.2,2.9-5.2,3.8c-2,0.9-4.4,1.4-6.9,1.4c-2.6,0-4.9-0.5-6.9-1.4c-2-0.9-3.8-2.2-5.2-3.8c-1.4-1.6-2.5-3.5-3.2-5.7            c-0.7-2.1-1.1-4.5-1.1-7V26.3H237.3z"/>    </g>    <g>        <path class="st1" d="M297.5,51.3c1,0,0.9,0,0.9,0l2.2,0c2.3,0,4.4-0.3,6.2-0.8c1.8-0.6,3.4-1.3,4.6-2.4c1.3-1,2.2-2.3,2.9-3.7            c0.7-1.4,1-3.1,1-4.9c0-3.7-1.2-6.4-3.6-8.2c-2.4-1.8-5.9-2.7-10.6-2.7h-9.5v22.7v2.8v23.5h-3.7V25.7h13.2c6,0,10.5,1.2,13.4,3.5            c3,2.3,4.4,5.7,4.4,10.2c0,2-0.3,3.8-1,5.4c-0.7,1.6-1.7,3.1-3,4.3c-1.3,1.2-2.8,2.3-4.6,3c-1.8,0.8-3.9,1.3-6.1,1.6            c0.6,0.4,1.1,0.9,1.6,1.5l17.9,22.4h-3.3c-0.4,0-0.7-0.1-1-0.2c-0.3-0.1-0.6-0.4-0.8-0.7l-16.6-21c-0.4-0.5-0.9-0.9-1.3-1.1            c-0.5-0.2-3.4-0.3-4.4-0.3C296.3,51.6,296.7,51.3,297.5,51.3z"/>        <path class="st2" d="M325,78.2h-4.5c-0.5,0-0.9-0.1-1.3-0.3c-0.4-0.2-0.7-0.5-1-0.9l-16.6-21c-0.4-0.5-0.7-0.8-1.1-1            c-0.4-0.1-2.8-0.3-4.1-0.3h-0.6v-2.6c0-0.9,0.2-1.4,1.8-1.4c0.9,0,1,0,1,0l2.2,0c2.2,0,4.2-0.3,6-0.8c1.7-0.5,3.2-1.3,4.4-2.3            c1.2-1,2.1-2.1,2.7-3.5c0.6-1.4,0.9-2.9,0.9-4.6c0-3.5-1.1-6-3.4-7.7c-2.3-1.7-5.7-2.6-10.2-2.6h-8.9v48.9h-5V25.1h13.9            c6.1,0,10.7,1.2,13.8,3.6c3.1,2.4,4.7,6,4.7,10.7c0,2.1-0.4,4-1.1,5.7c-0.7,1.7-1.8,3.2-3.1,4.5c-1.3,1.3-3,2.3-4.8,3.2            c-1.5,0.6-3.1,1.1-4.9,1.4c0.2,0.2,0.4,0.4,0.6,0.7L325,78.2z M296.9,53.5c1.1,0,3.4,0.1,4,0.4c0.6,0.3,1.1,0.7,1.6,1.3l16.6,21            c0.2,0.3,0.4,0.5,0.6,0.6c0.2,0.1,0.4,0.2,0.7,0.2h2l-17.1-21.4c-0.4-0.6-0.9-1-1.4-1.3l-1.5-0.9l1.8-0.2c2.2-0.2,4.2-0.7,5.9-1.5            c1.7-0.8,3.2-1.7,4.5-2.9c1.2-1.2,2.2-2.5,2.8-4.1c0.6-1.6,1-3.3,1-5.2c0-4.3-1.4-7.5-4.2-9.7c-2.8-2.2-7.2-3.3-13-3.3h-12.6V77            h2.5V28h10.1c4.7,0,8.4,0.9,10.9,2.8c2.6,1.9,3.9,4.8,3.9,8.7c0,1.9-0.4,3.6-1,5.1c-0.7,1.5-1.7,2.8-3.1,3.9            c-1.3,1.1-2.9,1.9-4.8,2.5c-1.9,0.6-4,0.9-6.4,0.9l-2.2,0c-0.1,0-0.2,0-0.9,0C297.3,51.9,297,51.9,296.9,53.5z"/>    </g>    <g>        <path class="st1" d="M367.6,68.8c0.2,0,0.5,0.1,0.6,0.3l1.5,1.6c-1.1,1.1-2.2,2.2-3.5,3.1c-1.3,0.9-2.7,1.7-4.2,2.3            c-1.5,0.6-3.2,1.1-4.9,1.5c-1.8,0.4-3.8,0.5-5.9,0.5c-3.6,0-6.9-0.6-9.9-1.9c-3-1.3-5.6-3-7.7-5.4c-2.1-2.3-3.8-5.1-5-8.4            c-1.2-3.3-1.8-6.9-1.8-10.9c0-3.9,0.6-7.5,1.9-10.8c1.2-3.3,3-6,5.2-8.4c2.2-2.3,4.9-4.1,8-5.4c3.1-1.3,6.6-1.9,10.3-1.9            c1.9,0,3.6,0.1,5.2,0.4c1.6,0.3,3,0.7,4.4,1.2c1.4,0.5,2.6,1.2,3.8,2c1.2,0.8,2.4,1.7,3.5,2.7l-1.1,1.6c-0.2,0.3-0.5,0.4-0.9,0.4            c-0.2,0-0.5-0.1-0.8-0.4c-0.3-0.3-0.8-0.6-1.3-1c-0.5-0.4-1.2-0.8-1.9-1.2c-0.7-0.5-1.6-0.9-2.7-1.2c-1-0.4-2.2-0.7-3.6-1            c-1.3-0.3-2.9-0.4-4.6-0.4c-3.2,0-6.1,0.5-8.7,1.6c-2.6,1.1-4.9,2.6-6.8,4.7c-1.9,2-3.4,4.5-4.5,7.3s-1.6,6.1-1.6,9.7            c0,3.7,0.5,6.9,1.6,9.8c1.1,2.9,2.5,5.3,4.4,7.3c1.9,2,4.1,3.5,6.6,4.6c2.5,1.1,5.3,1.6,8.2,1.6c1.9,0,3.5-0.1,5-0.4            c1.5-0.2,2.8-0.6,4-1.1c1.2-0.5,2.4-1.1,3.4-1.8c1.1-0.7,2.1-1.5,3.1-2.5c0.1-0.1,0.2-0.2,0.3-0.2            C367.3,68.9,367.5,68.8,367.6,68.8z"/>        <path class="st2" d="M351.1,78.8c-3.7,0-7.1-0.7-10.1-1.9c-3.1-1.3-5.7-3.1-7.9-5.5c-2.2-2.4-3.9-5.2-5.1-8.6            c-1.2-3.3-1.8-7.1-1.8-11.1c0-4,0.6-7.7,1.9-11c1.3-3.3,3.1-6.2,5.3-8.6c2.3-2.4,5.1-4.3,8.2-5.6c3.2-1.3,6.7-2,10.6-2            c1.9,0,3.7,0.1,5.3,0.4c1.6,0.3,3.1,0.7,4.5,1.2c1.4,0.5,2.7,1.2,3.9,2c1.2,0.8,2.4,1.7,3.6,2.8l0.4,0.4l-1.4,2.1            c-0.2,0.3-0.6,0.7-1.4,0.7c-0.4,0-0.7-0.2-1.2-0.5c-0.3-0.3-0.8-0.6-1.3-0.9c-0.5-0.4-1.1-0.8-1.9-1.2c-0.7-0.4-1.6-0.8-2.6-1.2            c-1-0.4-2.2-0.7-3.5-0.9c-1.3-0.2-2.8-0.4-4.5-0.4c-3.1,0-5.9,0.5-8.5,1.6c-2.5,1.1-4.8,2.6-6.6,4.5c-1.8,1.9-3.3,4.3-4.3,7.1            c-1,2.8-1.6,6-1.6,9.4c0,3.6,0.5,6.8,1.5,9.6c1,2.8,2.4,5.2,4.2,7.1c1.8,1.9,3.9,3.4,6.4,4.4c2.4,1,5.1,1.5,8,1.5            c1.8,0,3.5-0.1,4.9-0.4c1.4-0.2,2.7-0.6,3.9-1.1c1.2-0.5,2.3-1.1,3.3-1.7c1-0.7,2-1.5,3-2.4c0.2-0.2,0.3-0.2,0.5-0.3            c0.5-0.3,1.3-0.2,1.7,0.3l1.9,2l-0.4,0.4c-1.1,1.2-2.3,2.2-3.6,3.2c-1.3,0.9-2.7,1.8-4.3,2.4c-1.5,0.7-3.2,1.2-5.1,1.5            C355.3,78.6,353.3,78.8,351.1,78.8z M352.2,25.7c-3.7,0-7.1,0.6-10.1,1.9c-3,1.2-5.7,3-7.8,5.3c-2.2,2.3-3.9,5-5.1,8.2            c-1.2,3.2-1.8,6.7-1.8,10.6c0,3.9,0.6,7.5,1.8,10.7c1.2,3.2,2.8,5.9,4.9,8.2c2.1,2.2,4.6,4,7.5,5.2c2.9,1.2,6.1,1.8,9.6,1.8            c2.1,0,4-0.2,5.8-0.5c1.7-0.3,3.4-0.8,4.8-1.5c1.5-0.6,2.8-1.4,4-2.3c1.1-0.8,2.1-1.7,3-2.6l-1.1-1.2c-0.1-0.1-0.2-0.1-0.3,0            c-0.1,0-0.2,0.1-0.3,0.2c-1,0.9-2.1,1.8-3.2,2.5c-1.1,0.7-2.3,1.4-3.5,1.9c-1.3,0.5-2.7,0.9-4.1,1.1c-1.5,0.2-3.2,0.4-5.1,0.4            c-3,0-5.9-0.6-8.5-1.6c-2.6-1.1-4.9-2.7-6.8-4.7c-1.9-2-3.4-4.6-4.5-7.5c-1.1-2.9-1.6-6.3-1.6-10c0-3.6,0.5-6.9,1.6-9.9            c1.1-2.9,2.6-5.5,4.6-7.5c2-2.1,4.3-3.7,7-4.8c2.7-1.1,5.7-1.7,8.9-1.7c1.7,0,3.3,0.1,4.7,0.4c1.4,0.3,2.6,0.6,3.7,1            c1.1,0.4,2,0.8,2.8,1.3c0.8,0.5,1.4,0.9,1.9,1.3c0.5,0.4,1,0.7,1.3,1c0.3,0.3,0.5,0.3,0.5,0.3c0.3,0,0.4-0.1,0.4-0.2l0.8-1.2            c-1-0.9-2-1.6-3-2.3c-1.2-0.8-2.4-1.4-3.7-1.9c-1.3-0.5-2.8-0.9-4.3-1.2C355.7,25.9,354,25.7,352.2,25.7z"/>    </g>    <g>        <path class="st1" d="M410.3,25.7v3.1H383v21h22.7v3H383v21.6h27.3v3.1h-31.1V25.7H410.3z"/>        <path class="st2" d="M410.9,78.2h-32.3V25.1h32.3v4.3h-27.3v19.7h22.7v4.3h-22.7v20.4h27.3V78.2z M379.8,77h29.9v-1.9h-27.3V52.2            h22.7v-1.8h-22.7V28.2h27.3v-1.9h-29.9V77z"/>    </g>    <g>        <path class="st1" d="M456.8,25.1V33h-23.5v15.7h19.8v7.9h-19.8v21.6h-9.9v-53H456.8z"/>    </g>    <g>        <path class="st1" d="M514.3,51.6c0,3.9-0.6,7.5-1.9,10.8c-1.3,3.3-3.1,6.2-5.5,8.6c-2.3,2.4-5.2,4.3-8.5,5.7c-3.3,1.4-7,2-11,2            c-4,0-7.7-0.7-11-2c-3.3-1.4-6.1-3.2-8.5-5.7c-2.4-2.4-4.2-5.3-5.5-8.6s-1.9-6.9-1.9-10.8s0.6-7.5,1.9-10.8            c1.3-3.3,3.1-6.2,5.5-8.6c2.4-2.4,5.2-4.3,8.5-5.7c3.3-1.4,7-2,11-2c4,0,7.7,0.7,11,2.1c3.3,1.4,6.1,3.3,8.5,5.7            c2.3,2.4,4.2,5.3,5.5,8.6C513.6,44.1,514.3,47.7,514.3,51.6z M504.2,51.6c0-2.9-0.4-5.5-1.2-7.8c-0.8-2.3-1.9-4.3-3.3-5.9            c-1.4-1.6-3.2-2.8-5.3-3.7c-2.1-0.9-4.4-1.3-7-1.3c-2.6,0-4.9,0.4-7,1.3c-2.1,0.9-3.8,2.1-5.3,3.7c-1.5,1.6-2.6,3.6-3.4,5.9            c-0.8,2.3-1.2,4.9-1.2,7.8s0.4,5.5,1.2,7.8c0.8,2.3,1.9,4.3,3.4,5.9c1.5,1.6,3.2,2.8,5.3,3.7c2.1,0.9,4.4,1.3,7,1.3            c2.6,0,4.9-0.4,7-1.3c2.1-0.9,3.8-2.1,5.3-3.7c1.4-1.6,2.5-3.6,3.3-5.9C503.8,57.1,504.2,54.5,504.2,51.6z"/>    </g>    <g>        <path class="st1" d="M534.9,50.4l2.3,0c1.9,0,3.5-0.2,4.9-0.7c1.4-0.5,2.5-1.1,3.4-1.9c0.9-0.8,1.6-1.8,2-2.9            c0.4-1.1,0.7-2.4,0.7-3.7c0-2.7-0.9-4.8-2.7-6.2c-1.8-1.4-4.5-2.2-8.1-2.2H531v17.6v7.1v20.7h-9.9v-53h16.2c3.6,0,6.7,0.4,9.3,1.1            c2.6,0.7,4.7,1.8,6.3,3.1c1.6,1.3,2.9,3,3.6,4.8c0.8,1.9,1.2,3.9,1.2,6.2c0,1.8-0.3,3.5-0.8,5.1c-0.5,1.6-1.3,3-2.3,4.3            c-1,1.3-2.2,2.4-3.7,3.4c-1.5,1-3.1,1.8-5,2.3c1.2,0.7,2.3,1.7,3.2,3l13.3,19.6h-8.9c-0.9,0-1.6-0.2-2.2-0.5            c-0.6-0.3-1.1-0.8-1.5-1.5c0,0-11.1-17-11.1-17c-0.3-0.4-0.9-1.3-1.5-1.4c-1.2,0-2.4,0-3.5,0c0,0,0-6,0-6.4            C533.8,50.4,534.9,50.4,534.9,50.4z"/>    </g>    <g>        <path class="st1" d="M591.4,70.9c2.2,0,4.2-0.2,5.8-0.6c1.6-0.4,3.2-1,4.7-1.7v-12h-6.6c-0.6,0-1.1-0.2-1.5-0.5            c-0.4-0.4-0.6-0.8-0.6-1.3v-5.6h17.6V73c-1.3,1-2.7,1.8-4.2,2.5c-1.5,0.7-3,1.3-4.7,1.8c-1.7,0.5-3.4,0.8-5.3,1            c-1.9,0.2-3.9,0.3-6.1,0.3c-3.9,0-7.4-0.7-10.7-2c-3.3-1.3-6.1-3.2-8.4-5.6c-2.4-2.4-4.2-5.3-5.6-8.6c-1.3-3.3-2-7-2-10.9            c0-4,0.6-7.6,1.9-11c1.3-3.3,3.1-6.2,5.5-8.6c2.4-2.4,5.3-4.3,8.7-5.6c3.4-1.3,7.2-2,11.4-2c4.3,0,8.1,0.6,11.2,1.9            c3.2,1.3,5.8,3,8,5l-2.9,4.5c-0.6,0.9-1.3,1.4-2.2,1.4c-0.6,0-1.2-0.2-1.8-0.6c-0.8-0.5-1.6-0.9-2.4-1.4c-0.8-0.5-1.7-0.9-2.7-1.2            c-1-0.3-2.1-0.6-3.3-0.8c-1.2-0.2-2.7-0.3-4.3-0.3c-2.6,0-5,0.4-7.1,1.3c-2.1,0.9-3.9,2.1-5.4,3.8c-1.5,1.6-2.6,3.6-3.4,5.9            c-0.8,2.3-1.2,4.9-1.2,7.7c0,3.1,0.4,5.8,1.3,8.2c0.9,2.4,2.1,4.4,3.6,6s3.4,2.9,5.5,3.8S588.9,70.9,591.4,70.9z"/>    </g>    <g>        <path class="st1" d="M645.7,56.8h-16.1v13.4H653v7.9h-33.4v-53H653V33h-23.5v16.3H648v5.8C648,55.1,647.9,56.8,645.7,56.8z"/>    </g></g></svg>
+            </a>
+            <div class="title-bar-right">
+                <button type="button" class="menu-icon" data-toggle="offCanvas"></button>
+            </div>
+        </div>
+    </section>
+    <section class="sandiego l-header-nav-bottom">
+        <nav class="row">
+            <a href="/" title="Home" class="sf-logo">
+                
+
+<svg  version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"     viewBox="0 0 653 102.6" style="enable-background:new 0 0 653 102.6;" xml:space="preserve"><path class="st0" d="M66.9,54.5c0-19.1-6.8-27.8-10.4-31.1c-0.7-0.6-1.8-0.1-1.7,0.9c0.7,10.8-12.9,13.5-12.9,30.4h0    c0,0,0,0.1,0,0.1c0,10.3,7.8,18.7,17.4,18.7c9.6,0,17.4-8.4,17.4-18.7c0,0,0-0.1,0-0.1h0c0-4.8-1.8-9.4-3.6-12.8    c-0.4-0.7-1.4-0.4-1.3,0.2C75.1,56.7,66.9,65.7,66.9,54.5z"/><g>    <path class="st0" d="M46.2,94.8c-0.4,0-0.9-0.2-1.2-0.5L0.5,49.8c-0.6-0.6-0.6-1.7,0-2.4l47-47C47.8,0.2,48.2,0,48.6,0h13.5        c0.8,0,1.3,0.5,1.5,1c0.2,0.5,0.2,1.2-0.4,1.8L19.1,47c-0.9,0.9-0.9,2.3,0,3.2L54,85.2c0.6,0.6,0.6,1.7,0,2.4l-6.7,6.8        C47,94.6,46.6,94.8,46.2,94.8z"/></g><g>    <path class="st0" d="M55.1,102.6c-0.8,0-1.3-0.5-1.5-1c-0.2-0.5-0.2-1.2,0.4-1.8l44.2-44.2c0.4-0.4,0.7-1,0.7-1.6        c0-0.6-0.2-1.2-0.7-1.6L63.2,17.4c-0.6-0.6-0.6-1.7,0-2.4l6.8-6.8c0.3-0.3,0.7-0.5,1.2-0.5S72,8,72.3,8.3l44.4,44.5        c0.3,0.3,0.5,0.7,0.5,1.2s-0.2,0.9-0.5,1.2l-47,47c-0.3,0.3-0.7,0.5-1.2,0.5H55.1z"/></g><g>    <g>        <path class="st1" d="M167.2,32c-0.2,0.4-0.5,0.6-1,0.6c-0.3,0-0.7-0.2-1.2-0.7c-0.5-0.5-1.2-1-2-1.5c-0.9-0.6-1.9-1.1-3.2-1.5            c-1.3-0.5-2.9-0.7-4.8-0.7c-1.9,0-3.5,0.3-5,0.8c-1.4,0.5-2.6,1.3-3.6,2.2s-1.7,2-2.2,3.2c-0.5,1.2-0.8,2.5-0.8,3.8            c0,1.8,0.4,3.2,1.1,4.4c0.7,1.1,1.7,2.1,3,2.9c1.2,0.8,2.6,1.5,4.2,2c1.6,0.6,3.2,1.1,4.8,1.6c1.6,0.5,3.2,1.1,4.8,1.8            c1.6,0.6,2.9,1.5,4.2,2.4s2.2,2.2,3,3.6c0.7,1.4,1.1,3.2,1.1,5.3c0,2.2-0.4,4.2-1.1,6.1c-0.7,1.9-1.8,3.6-3.2,5            c-1.4,1.4-3.2,2.5-5.2,3.4c-2.1,0.8-4.4,1.2-7,1.2c-3.4,0-6.4-0.6-8.8-1.8c-2.5-1.2-4.6-2.9-6.5-5l1-1.6c0.3-0.4,0.6-0.5,1-0.5            c0.2,0,0.5,0.1,0.8,0.4c0.3,0.3,0.8,0.7,1.2,1.1c0.5,0.4,1.1,0.9,1.8,1.4c0.7,0.5,1.5,1,2.4,1.4c0.9,0.4,1.9,0.8,3.1,1.1            c1.2,0.3,2.5,0.4,4,0.4c2.1,0,3.9-0.3,5.5-0.9c1.6-0.6,3-1.5,4.1-2.5s2-2.4,2.6-3.8c0.6-1.5,0.9-3.1,0.9-4.7            c0-1.8-0.4-3.3-1.1-4.5c-0.7-1.2-1.7-2.2-3-3c-1.2-0.8-2.6-1.5-4.2-2c-1.6-0.5-3.2-1.1-4.8-1.6c-1.6-0.5-3.2-1.1-4.8-1.7            c-1.6-0.6-2.9-1.4-4.2-2.4c-1.2-1-2.2-2.2-3-3.7c-0.7-1.5-1.1-3.3-1.1-5.6c0-1.7,0.3-3.4,1-5c0.7-1.6,1.6-3,2.9-4.3            c1.3-1.2,2.8-2.2,4.7-3c1.9-0.7,4-1.1,6.4-1.1c2.7,0,5.1,0.4,7.3,1.3c2.1,0.9,4.1,2.2,5.9,3.9L167.2,32z"/>        <path class="st2" d="M152.9,78.8c-3.5,0-6.6-0.6-9.1-1.9c-2.5-1.2-4.8-3-6.7-5.1l-0.3-0.3l1.3-2c0.6-0.7,1.1-0.8,1.5-0.8            c0.4,0,0.8,0.2,1.2,0.6c0.3,0.3,0.8,0.7,1.3,1.1c0.5,0.4,1.1,0.9,1.7,1.4c0.7,0.5,1.4,0.9,2.3,1.3c0.9,0.4,1.9,0.8,3,1            c1.1,0.3,2.4,0.4,3.9,0.4c2,0,3.8-0.3,5.3-0.9c1.5-0.6,2.8-1.4,3.9-2.4c1-1,1.9-2.2,2.4-3.6c0.6-1.4,0.8-2.9,0.8-4.5            c0-1.7-0.3-3.1-1-4.2c-0.7-1.1-1.6-2-2.8-2.8c-1.2-0.8-2.5-1.4-4-1.9c-1.5-0.5-3.1-1.1-4.8-1.6c-1.7-0.5-3.3-1.1-4.8-1.7            c-1.6-0.7-3.1-1.5-4.3-2.5c-1.3-1-2.3-2.4-3.1-3.9c-0.8-1.6-1.2-3.5-1.2-5.8c0-1.8,0.3-3.6,1-5.3c0.7-1.7,1.7-3.2,3-4.5            c1.3-1.3,3-2.3,4.9-3.1c1.9-0.8,4.2-1.2,6.6-1.2c2.8,0,5.3,0.4,7.5,1.3c2.2,0.9,4.2,2.3,6.1,4.1l0.3,0.3l-1.1,2.1            c-0.6,1.1-1.7,1.4-3.1,0.1c-0.5-0.4-1.1-0.9-2-1.4c-0.8-0.5-1.9-1-3.1-1.5c-1.2-0.4-2.7-0.7-4.6-0.7c-1.8,0-3.4,0.3-4.8,0.8            c-1.3,0.5-2.5,1.2-3.4,2.1c-0.9,0.9-1.6,1.9-2.1,3c-0.5,1.1-0.7,2.4-0.7,3.6c0,1.6,0.3,3,1,4c0.7,1.1,1.6,2,2.8,2.8            c1.2,0.8,2.5,1.4,4,2c1.5,0.5,3.1,1.1,4.8,1.6c1.6,0.5,3.3,1.1,4.8,1.8c1.6,0.7,3.1,1.5,4.3,2.5c1.3,1,2.3,2.3,3.1,3.8            c0.8,1.5,1.2,3.4,1.2,5.6c0,2.2-0.4,4.4-1.2,6.4c-0.8,2-1.9,3.7-3.4,5.2c-1.5,1.5-3.3,2.6-5.4,3.5            C158.1,78.3,155.6,78.8,152.9,78.8z M138.4,71.3c1.7,1.9,3.7,3.4,6,4.5c2.4,1.2,5.3,1.8,8.6,1.8c2.5,0,4.8-0.4,6.8-1.2            c2-0.8,3.6-1.9,5-3.2c1.3-1.3,2.4-3,3.1-4.8c0.7-1.8,1.1-3.8,1.1-5.9c0-2-0.4-3.7-1-5.1c-0.7-1.3-1.6-2.5-2.8-3.4            c-1.2-0.9-2.5-1.7-4-2.4c-1.5-0.6-3.1-1.2-4.7-1.8c-1.6-0.5-3.2-1.1-4.8-1.6c-1.6-0.6-3-1.3-4.3-2.1c-1.3-0.8-2.3-1.9-3.1-3.1            c-0.8-1.2-1.2-2.8-1.2-4.7c0-1.4,0.3-2.8,0.8-4.1c0.5-1.3,1.3-2.5,2.3-3.4c1-1,2.3-1.8,3.8-2.3c1.5-0.6,3.3-0.8,5.2-0.8            c1.9,0,3.6,0.2,5,0.7c1.3,0.5,2.5,1,3.3,1.6c0.9,0.6,1.6,1.1,2.1,1.6c0.6,0.5,0.8,0.5,0.8,0.5c0.1,0,0.3,0,0.4-0.3l0.7-1.3            c-1.6-1.5-3.4-2.7-5.3-3.5c-2.1-0.8-4.4-1.2-7-1.2c-2.3,0-4.4,0.4-6.2,1.1c-1.8,0.7-3.3,1.7-4.5,2.8c-1.2,1.2-2.1,2.5-2.8,4.1            c-0.6,1.5-0.9,3.1-0.9,4.8c0,2.1,0.4,3.9,1.1,5.3c0.7,1.4,1.6,2.6,2.8,3.5c1.2,0.9,2.5,1.7,4,2.3c1.5,0.6,3.1,1.2,4.7,1.7            c1.6,0.5,3.2,1,4.8,1.6c1.6,0.6,3,1.2,4.3,2.1c1.3,0.8,2.4,1.9,3.1,3.2c0.8,1.3,1.2,2.9,1.2,4.9c0,1.8-0.3,3.4-0.9,5            c-0.6,1.6-1.5,2.9-2.7,4c-1.2,1.1-2.6,2-4.3,2.7c-1.7,0.6-3.6,1-5.7,1c-1.5,0-2.9-0.2-4.2-0.5c-1.2-0.3-2.3-0.7-3.2-1.1            c-0.9-0.4-1.8-0.9-2.5-1.5c-0.7-0.5-1.3-1-1.8-1.4c-0.5-0.4-0.9-0.8-1.2-1.1c-0.3-0.3-0.5-0.3-0.5-0.3c-0.1,0-0.3,0-0.5,0.3            L138.4,71.3z"/>    </g>    <g>        <path class="st1" d="M226.7,51.6c0,4-0.6,7.6-1.8,10.9c-1.2,3.3-2.9,6.1-5.1,8.4c-2.2,2.3-4.8,4.1-7.8,5.4            c-3,1.3-6.4,1.9-10.1,1.9c-3.6,0-7-0.6-10-1.9c-3-1.3-5.6-3-7.8-5.4c-2.2-2.3-3.9-5.1-5.1-8.4c-1.2-3.3-1.8-6.9-1.8-10.9            c0-4,0.6-7.6,1.8-10.9c1.2-3.3,2.9-6.1,5.1-8.4c2.2-2.3,4.8-4.1,7.8-5.4c3-1.3,6.4-1.9,10-1.9c3.7,0,7.1,0.6,10.1,1.9            c3,1.3,5.6,3,7.8,5.4c2.2,2.3,3.9,5.1,5.1,8.4C226.1,44,226.7,47.6,226.7,51.6z M222.8,51.6c0-3.6-0.5-6.9-1.5-9.8            c-1-2.9-2.4-5.3-4.2-7.3c-1.8-2-4-3.5-6.6-4.6c-2.6-1.1-5.4-1.6-8.5-1.6c-3.1,0-5.9,0.5-8.5,1.6c-2.6,1.1-4.8,2.6-6.6,4.6            c-1.8,2-3.3,4.4-4.3,7.3c-1,2.9-1.5,6.1-1.5,9.8c0,3.6,0.5,6.9,1.5,9.8c1,2.9,2.4,5.3,4.3,7.3c1.8,2,4,3.5,6.6,4.6            c2.6,1.1,5.4,1.6,8.5,1.6c3.1,0,6-0.5,8.5-1.6c2.6-1,4.8-2.6,6.6-4.6c1.8-2,3.2-4.4,4.2-7.3C222.3,58.5,222.8,55.3,222.8,51.6z"/>        <path class="st2" d="M202,78.7c-3.7,0-7.2-0.7-10.2-1.9c-3.1-1.3-5.8-3.1-8-5.5c-2.2-2.4-4-5.2-5.2-8.6c-1.2-3.3-1.9-7.1-1.9-11.1            c0-4,0.6-7.8,1.9-11.1c1.2-3.3,3-6.2,5.2-8.6c2.2-2.4,4.9-4.2,8-5.5c3.1-1.3,6.5-2,10.2-2c3.8,0,7.2,0.7,10.3,1.9            c3.1,1.3,5.8,3.1,8,5.5c2.2,2.4,4,5.3,5.2,8.6c1.2,3.3,1.8,7,1.8,11.1c0,4.1-0.6,7.8-1.8,11.1c-1.2,3.3-3,6.2-5.2,8.6            c-2.2,2.4-4.9,4.2-8,5.5C209.2,78.1,205.7,78.7,202,78.7z M202,25.7c-3.5,0-6.8,0.6-9.8,1.9c-2.9,1.2-5.5,3-7.6,5.2            c-2.1,2.2-3.8,5-4.9,8.2c-1.2,3.2-1.8,6.8-1.8,10.7c0,3.9,0.6,7.5,1.8,10.7c1.2,3.2,2.8,5.9,4.9,8.2c2.1,2.2,4.7,4,7.6,5.2            c2.9,1.2,6.2,1.8,9.8,1.8c3.6,0,6.9-0.6,9.8-1.8c2.9-1.2,5.5-3,7.6-5.2c2.1-2.2,3.8-5,4.9-8.1c1.2-3.2,1.8-6.8,1.8-10.7            c0-3.9-0.6-7.5-1.8-10.7c-1.2-3.2-2.8-5.9-4.9-8.2c-2.1-2.2-4.7-4-7.6-5.2C208.9,26.3,205.6,25.7,202,25.7z"/>    </g>    <g>        <path class="st1" d="M256.4,74.9c2.5,0,4.7-0.4,6.7-1.3c2-0.9,3.6-2.1,5-3.6c1.4-1.5,2.4-3.4,3.1-5.4c0.7-2.1,1.1-4.3,1.1-6.8            V25.7h3.7v32.1c0,2.9-0.5,5.5-1.4,8c-0.9,2.5-2.2,4.6-3.9,6.5c-1.7,1.8-3.8,3.3-6.2,4.3c-2.4,1-5.2,1.6-8.2,1.6            c-3,0-5.8-0.5-8.2-1.6c-2.4-1.1-4.5-2.5-6.2-4.3c-1.7-1.8-3-4-3.9-6.5c-0.9-2.5-1.4-5.2-1.4-8V25.7h3.8v32c0,2.4,0.4,4.7,1.1,6.8            c0.7,2.1,1.8,3.9,3.1,5.4c1.4,1.5,3,2.7,5,3.6C251.6,74.5,253.9,74.9,256.4,74.9z"/>        <path class="st2" d="M256.4,78.8c-3.1,0-5.9-0.5-8.4-1.6c-2.5-1.1-4.7-2.6-6.4-4.5c-1.7-1.9-3.1-4.2-4-6.7            c-0.9-2.5-1.4-5.3-1.4-8.2V25.1h5v32.7c0,2.3,0.4,4.5,1,6.6c0.7,2,1.7,3.8,3,5.2c1.3,1.5,2.9,2.6,4.8,3.5c1.9,0.8,4,1.3,6.4,1.3            c2.4,0,4.6-0.4,6.4-1.2c1.9-0.8,3.5-2,4.8-3.5c1.3-1.5,2.3-3.2,3-5.2c0.7-2,1-4.2,1-6.6V25.1h5v32.7c0,2.9-0.5,5.7-1.4,8.2            c-0.9,2.5-2.3,4.8-4,6.7c-1.7,1.9-3.9,3.4-6.4,4.5C262.3,78.3,259.5,78.8,256.4,78.8z M237.3,26.3v31.5c0,2.8,0.4,5.4,1.3,7.8            c0.9,2.4,2.1,4.5,3.8,6.3c1.6,1.8,3.6,3.2,6,4.2c2.3,1,5,1.5,8,1.5c2.9,0,5.6-0.5,8-1.5c2.3-1,4.4-2.4,6-4.2            c1.6-1.8,2.9-3.9,3.8-6.3c0.9-2.4,1.3-5,1.3-7.8V26.3h-2.5v31.5c0,2.5-0.4,4.8-1.1,7c-0.7,2.2-1.8,4.1-3.3,5.7            c-1.4,1.6-3.2,2.9-5.2,3.8c-2,0.9-4.4,1.4-6.9,1.4c-2.6,0-4.9-0.5-6.9-1.4c-2-0.9-3.8-2.2-5.2-3.8c-1.4-1.6-2.5-3.5-3.2-5.7            c-0.7-2.1-1.1-4.5-1.1-7V26.3H237.3z"/>    </g>    <g>        <path class="st1" d="M297.5,51.3c1,0,0.9,0,0.9,0l2.2,0c2.3,0,4.4-0.3,6.2-0.8c1.8-0.6,3.4-1.3,4.6-2.4c1.3-1,2.2-2.3,2.9-3.7            c0.7-1.4,1-3.1,1-4.9c0-3.7-1.2-6.4-3.6-8.2c-2.4-1.8-5.9-2.7-10.6-2.7h-9.5v22.7v2.8v23.5h-3.7V25.7h13.2c6,0,10.5,1.2,13.4,3.5            c3,2.3,4.4,5.7,4.4,10.2c0,2-0.3,3.8-1,5.4c-0.7,1.6-1.7,3.1-3,4.3c-1.3,1.2-2.8,2.3-4.6,3c-1.8,0.8-3.9,1.3-6.1,1.6            c0.6,0.4,1.1,0.9,1.6,1.5l17.9,22.4h-3.3c-0.4,0-0.7-0.1-1-0.2c-0.3-0.1-0.6-0.4-0.8-0.7l-16.6-21c-0.4-0.5-0.9-0.9-1.3-1.1            c-0.5-0.2-3.4-0.3-4.4-0.3C296.3,51.6,296.7,51.3,297.5,51.3z"/>        <path class="st2" d="M325,78.2h-4.5c-0.5,0-0.9-0.1-1.3-0.3c-0.4-0.2-0.7-0.5-1-0.9l-16.6-21c-0.4-0.5-0.7-0.8-1.1-1            c-0.4-0.1-2.8-0.3-4.1-0.3h-0.6v-2.6c0-0.9,0.2-1.4,1.8-1.4c0.9,0,1,0,1,0l2.2,0c2.2,0,4.2-0.3,6-0.8c1.7-0.5,3.2-1.3,4.4-2.3            c1.2-1,2.1-2.1,2.7-3.5c0.6-1.4,0.9-2.9,0.9-4.6c0-3.5-1.1-6-3.4-7.7c-2.3-1.7-5.7-2.6-10.2-2.6h-8.9v48.9h-5V25.1h13.9            c6.1,0,10.7,1.2,13.8,3.6c3.1,2.4,4.7,6,4.7,10.7c0,2.1-0.4,4-1.1,5.7c-0.7,1.7-1.8,3.2-3.1,4.5c-1.3,1.3-3,2.3-4.8,3.2            c-1.5,0.6-3.1,1.1-4.9,1.4c0.2,0.2,0.4,0.4,0.6,0.7L325,78.2z M296.9,53.5c1.1,0,3.4,0.1,4,0.4c0.6,0.3,1.1,0.7,1.6,1.3l16.6,21            c0.2,0.3,0.4,0.5,0.6,0.6c0.2,0.1,0.4,0.2,0.7,0.2h2l-17.1-21.4c-0.4-0.6-0.9-1-1.4-1.3l-1.5-0.9l1.8-0.2c2.2-0.2,4.2-0.7,5.9-1.5            c1.7-0.8,3.2-1.7,4.5-2.9c1.2-1.2,2.2-2.5,2.8-4.1c0.6-1.6,1-3.3,1-5.2c0-4.3-1.4-7.5-4.2-9.7c-2.8-2.2-7.2-3.3-13-3.3h-12.6V77            h2.5V28h10.1c4.7,0,8.4,0.9,10.9,2.8c2.6,1.9,3.9,4.8,3.9,8.7c0,1.9-0.4,3.6-1,5.1c-0.7,1.5-1.7,2.8-3.1,3.9            c-1.3,1.1-2.9,1.9-4.8,2.5c-1.9,0.6-4,0.9-6.4,0.9l-2.2,0c-0.1,0-0.2,0-0.9,0C297.3,51.9,297,51.9,296.9,53.5z"/>    </g>    <g>        <path class="st1" d="M367.6,68.8c0.2,0,0.5,0.1,0.6,0.3l1.5,1.6c-1.1,1.1-2.2,2.2-3.5,3.1c-1.3,0.9-2.7,1.7-4.2,2.3            c-1.5,0.6-3.2,1.1-4.9,1.5c-1.8,0.4-3.8,0.5-5.9,0.5c-3.6,0-6.9-0.6-9.9-1.9c-3-1.3-5.6-3-7.7-5.4c-2.1-2.3-3.8-5.1-5-8.4            c-1.2-3.3-1.8-6.9-1.8-10.9c0-3.9,0.6-7.5,1.9-10.8c1.2-3.3,3-6,5.2-8.4c2.2-2.3,4.9-4.1,8-5.4c3.1-1.3,6.6-1.9,10.3-1.9            c1.9,0,3.6,0.1,5.2,0.4c1.6,0.3,3,0.7,4.4,1.2c1.4,0.5,2.6,1.2,3.8,2c1.2,0.8,2.4,1.7,3.5,2.7l-1.1,1.6c-0.2,0.3-0.5,0.4-0.9,0.4            c-0.2,0-0.5-0.1-0.8-0.4c-0.3-0.3-0.8-0.6-1.3-1c-0.5-0.4-1.2-0.8-1.9-1.2c-0.7-0.5-1.6-0.9-2.7-1.2c-1-0.4-2.2-0.7-3.6-1            c-1.3-0.3-2.9-0.4-4.6-0.4c-3.2,0-6.1,0.5-8.7,1.6c-2.6,1.1-4.9,2.6-6.8,4.7c-1.9,2-3.4,4.5-4.5,7.3s-1.6,6.1-1.6,9.7            c0,3.7,0.5,6.9,1.6,9.8c1.1,2.9,2.5,5.3,4.4,7.3c1.9,2,4.1,3.5,6.6,4.6c2.5,1.1,5.3,1.6,8.2,1.6c1.9,0,3.5-0.1,5-0.4            c1.5-0.2,2.8-0.6,4-1.1c1.2-0.5,2.4-1.1,3.4-1.8c1.1-0.7,2.1-1.5,3.1-2.5c0.1-0.1,0.2-0.2,0.3-0.2            C367.3,68.9,367.5,68.8,367.6,68.8z"/>        <path class="st2" d="M351.1,78.8c-3.7,0-7.1-0.7-10.1-1.9c-3.1-1.3-5.7-3.1-7.9-5.5c-2.2-2.4-3.9-5.2-5.1-8.6            c-1.2-3.3-1.8-7.1-1.8-11.1c0-4,0.6-7.7,1.9-11c1.3-3.3,3.1-6.2,5.3-8.6c2.3-2.4,5.1-4.3,8.2-5.6c3.2-1.3,6.7-2,10.6-2            c1.9,0,3.7,0.1,5.3,0.4c1.6,0.3,3.1,0.7,4.5,1.2c1.4,0.5,2.7,1.2,3.9,2c1.2,0.8,2.4,1.7,3.6,2.8l0.4,0.4l-1.4,2.1            c-0.2,0.3-0.6,0.7-1.4,0.7c-0.4,0-0.7-0.2-1.2-0.5c-0.3-0.3-0.8-0.6-1.3-0.9c-0.5-0.4-1.1-0.8-1.9-1.2c-0.7-0.4-1.6-0.8-2.6-1.2            c-1-0.4-2.2-0.7-3.5-0.9c-1.3-0.2-2.8-0.4-4.5-0.4c-3.1,0-5.9,0.5-8.5,1.6c-2.5,1.1-4.8,2.6-6.6,4.5c-1.8,1.9-3.3,4.3-4.3,7.1            c-1,2.8-1.6,6-1.6,9.4c0,3.6,0.5,6.8,1.5,9.6c1,2.8,2.4,5.2,4.2,7.1c1.8,1.9,3.9,3.4,6.4,4.4c2.4,1,5.1,1.5,8,1.5            c1.8,0,3.5-0.1,4.9-0.4c1.4-0.2,2.7-0.6,3.9-1.1c1.2-0.5,2.3-1.1,3.3-1.7c1-0.7,2-1.5,3-2.4c0.2-0.2,0.3-0.2,0.5-0.3            c0.5-0.3,1.3-0.2,1.7,0.3l1.9,2l-0.4,0.4c-1.1,1.2-2.3,2.2-3.6,3.2c-1.3,0.9-2.7,1.8-4.3,2.4c-1.5,0.7-3.2,1.2-5.1,1.5            C355.3,78.6,353.3,78.8,351.1,78.8z M352.2,25.7c-3.7,0-7.1,0.6-10.1,1.9c-3,1.2-5.7,3-7.8,5.3c-2.2,2.3-3.9,5-5.1,8.2            c-1.2,3.2-1.8,6.7-1.8,10.6c0,3.9,0.6,7.5,1.8,10.7c1.2,3.2,2.8,5.9,4.9,8.2c2.1,2.2,4.6,4,7.5,5.2c2.9,1.2,6.1,1.8,9.6,1.8            c2.1,0,4-0.2,5.8-0.5c1.7-0.3,3.4-0.8,4.8-1.5c1.5-0.6,2.8-1.4,4-2.3c1.1-0.8,2.1-1.7,3-2.6l-1.1-1.2c-0.1-0.1-0.2-0.1-0.3,0            c-0.1,0-0.2,0.1-0.3,0.2c-1,0.9-2.1,1.8-3.2,2.5c-1.1,0.7-2.3,1.4-3.5,1.9c-1.3,0.5-2.7,0.9-4.1,1.1c-1.5,0.2-3.2,0.4-5.1,0.4            c-3,0-5.9-0.6-8.5-1.6c-2.6-1.1-4.9-2.7-6.8-4.7c-1.9-2-3.4-4.6-4.5-7.5c-1.1-2.9-1.6-6.3-1.6-10c0-3.6,0.5-6.9,1.6-9.9            c1.1-2.9,2.6-5.5,4.6-7.5c2-2.1,4.3-3.7,7-4.8c2.7-1.1,5.7-1.7,8.9-1.7c1.7,0,3.3,0.1,4.7,0.4c1.4,0.3,2.6,0.6,3.7,1            c1.1,0.4,2,0.8,2.8,1.3c0.8,0.5,1.4,0.9,1.9,1.3c0.5,0.4,1,0.7,1.3,1c0.3,0.3,0.5,0.3,0.5,0.3c0.3,0,0.4-0.1,0.4-0.2l0.8-1.2            c-1-0.9-2-1.6-3-2.3c-1.2-0.8-2.4-1.4-3.7-1.9c-1.3-0.5-2.8-0.9-4.3-1.2C355.7,25.9,354,25.7,352.2,25.7z"/>    </g>    <g>        <path class="st1" d="M410.3,25.7v3.1H383v21h22.7v3H383v21.6h27.3v3.1h-31.1V25.7H410.3z"/>        <path class="st2" d="M410.9,78.2h-32.3V25.1h32.3v4.3h-27.3v19.7h22.7v4.3h-22.7v20.4h27.3V78.2z M379.8,77h29.9v-1.9h-27.3V52.2            h22.7v-1.8h-22.7V28.2h27.3v-1.9h-29.9V77z"/>    </g>    <g>        <path class="st1" d="M456.8,25.1V33h-23.5v15.7h19.8v7.9h-19.8v21.6h-9.9v-53H456.8z"/>    </g>    <g>        <path class="st1" d="M514.3,51.6c0,3.9-0.6,7.5-1.9,10.8c-1.3,3.3-3.1,6.2-5.5,8.6c-2.3,2.4-5.2,4.3-8.5,5.7c-3.3,1.4-7,2-11,2            c-4,0-7.7-0.7-11-2c-3.3-1.4-6.1-3.2-8.5-5.7c-2.4-2.4-4.2-5.3-5.5-8.6s-1.9-6.9-1.9-10.8s0.6-7.5,1.9-10.8            c1.3-3.3,3.1-6.2,5.5-8.6c2.4-2.4,5.2-4.3,8.5-5.7c3.3-1.4,7-2,11-2c4,0,7.7,0.7,11,2.1c3.3,1.4,6.1,3.3,8.5,5.7            c2.3,2.4,4.2,5.3,5.5,8.6C513.6,44.1,514.3,47.7,514.3,51.6z M504.2,51.6c0-2.9-0.4-5.5-1.2-7.8c-0.8-2.3-1.9-4.3-3.3-5.9            c-1.4-1.6-3.2-2.8-5.3-3.7c-2.1-0.9-4.4-1.3-7-1.3c-2.6,0-4.9,0.4-7,1.3c-2.1,0.9-3.8,2.1-5.3,3.7c-1.5,1.6-2.6,3.6-3.4,5.9            c-0.8,2.3-1.2,4.9-1.2,7.8s0.4,5.5,1.2,7.8c0.8,2.3,1.9,4.3,3.4,5.9c1.5,1.6,3.2,2.8,5.3,3.7c2.1,0.9,4.4,1.3,7,1.3            c2.6,0,4.9-0.4,7-1.3c2.1-0.9,3.8-2.1,5.3-3.7c1.4-1.6,2.5-3.6,3.3-5.9C503.8,57.1,504.2,54.5,504.2,51.6z"/>    </g>    <g>        <path class="st1" d="M534.9,50.4l2.3,0c1.9,0,3.5-0.2,4.9-0.7c1.4-0.5,2.5-1.1,3.4-1.9c0.9-0.8,1.6-1.8,2-2.9            c0.4-1.1,0.7-2.4,0.7-3.7c0-2.7-0.9-4.8-2.7-6.2c-1.8-1.4-4.5-2.2-8.1-2.2H531v17.6v7.1v20.7h-9.9v-53h16.2c3.6,0,6.7,0.4,9.3,1.1            c2.6,0.7,4.7,1.8,6.3,3.1c1.6,1.3,2.9,3,3.6,4.8c0.8,1.9,1.2,3.9,1.2,6.2c0,1.8-0.3,3.5-0.8,5.1c-0.5,1.6-1.3,3-2.3,4.3            c-1,1.3-2.2,2.4-3.7,3.4c-1.5,1-3.1,1.8-5,2.3c1.2,0.7,2.3,1.7,3.2,3l13.3,19.6h-8.9c-0.9,0-1.6-0.2-2.2-0.5            c-0.6-0.3-1.1-0.8-1.5-1.5c0,0-11.1-17-11.1-17c-0.3-0.4-0.9-1.3-1.5-1.4c-1.2,0-2.4,0-3.5,0c0,0,0-6,0-6.4            C533.8,50.4,534.9,50.4,534.9,50.4z"/>    </g>    <g>        <path class="st1" d="M591.4,70.9c2.2,0,4.2-0.2,5.8-0.6c1.6-0.4,3.2-1,4.7-1.7v-12h-6.6c-0.6,0-1.1-0.2-1.5-0.5            c-0.4-0.4-0.6-0.8-0.6-1.3v-5.6h17.6V73c-1.3,1-2.7,1.8-4.2,2.5c-1.5,0.7-3,1.3-4.7,1.8c-1.7,0.5-3.4,0.8-5.3,1            c-1.9,0.2-3.9,0.3-6.1,0.3c-3.9,0-7.4-0.7-10.7-2c-3.3-1.3-6.1-3.2-8.4-5.6c-2.4-2.4-4.2-5.3-5.6-8.6c-1.3-3.3-2-7-2-10.9            c0-4,0.6-7.6,1.9-11c1.3-3.3,3.1-6.2,5.5-8.6c2.4-2.4,5.3-4.3,8.7-5.6c3.4-1.3,7.2-2,11.4-2c4.3,0,8.1,0.6,11.2,1.9            c3.2,1.3,5.8,3,8,5l-2.9,4.5c-0.6,0.9-1.3,1.4-2.2,1.4c-0.6,0-1.2-0.2-1.8-0.6c-0.8-0.5-1.6-0.9-2.4-1.4c-0.8-0.5-1.7-0.9-2.7-1.2            c-1-0.3-2.1-0.6-3.3-0.8c-1.2-0.2-2.7-0.3-4.3-0.3c-2.6,0-5,0.4-7.1,1.3c-2.1,0.9-3.9,2.1-5.4,3.8c-1.5,1.6-2.6,3.6-3.4,5.9            c-0.8,2.3-1.2,4.9-1.2,7.7c0,3.1,0.4,5.8,1.3,8.2c0.9,2.4,2.1,4.4,3.6,6s3.4,2.9,5.5,3.8S588.9,70.9,591.4,70.9z"/>    </g>    <g>        <path class="st1" d="M645.7,56.8h-16.1v13.4H653v7.9h-33.4v-53H653V33h-23.5v16.3H648v5.8C648,55.1,647.9,56.8,645.7,56.8z"/>    </g></g></svg>
+            </a>
+            <div class="links">
+                
+    
+    
+    
+        <a href="/articles/">Articles</a>
+    
+    
+        <a href="/cloud-storage-providers/?source=sfnet_header">Cloud Storage</a>
+    
+    
+        <a href="/business-voip/?source=sfnet_header">Business VoIP</a>
+    
+    
+    
+        <a href="/speedtest/?source=sfnet_header">Internet Speed Test</a>
+    
+
+                <div class="dev-menu-when-stuck">
+                    Menu
+                    <ul class="dev-menu-dropdown header-nav-menulist">
+                        <li><a href="/directory/">Browse</a></li>
+                        <li><a href="/blog" title="Blog">Blog</a></li>
+                        <li><a href="https://deals.sourceforge.net/?utm_source=sourceforge&utm_medium=navbar&utm_campaign=homepage">Deals</a></li>
+                        <li><a href="/support">Help</a></li>
+                        <li><a href="/create">Create</a></li>
+                        <li><a href="/user/registration/" title="Join" >Join</a></li>
+                        <li><a href="https://sourceforge.net/auth/" title="Login">Login</a></li>
+                    </ul>
+                </div>
+                <div class="search-toggle-when-stuck">
+                    <a class="search-toggle">
+                        
+
+<svg  viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="search">
+                <div class="social-icons">
+                    
+<span></span>
+<a href="https://twitter.com/sourceforge" class="twitter" rel="nofollow" target="_blank">
+
+<svg  viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></a>
+<a href="https://www.facebook.com/sourceforgenet/" class="facebook" rel="nofollow" target="_blank">
+
+<svg  viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></a>
+<a href="https://plus.google.com/+sourceforge" class="google" rel="nofollow publisher" target="_blank">
+
+<svg   viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M896 786h725q12 67 12 128 0 217-91 387.5t-259.5 266.5-386.5 96q-157 0-299-60.5t-245-163.5-163.5-245-60.5-299 60.5-299 163.5-245 245-163.5 299-60.5q300 0 515 201l-209 201q-123-119-306-119-129 0-238.5 65t-173.5 176.5-64 243.5 64 243.5 173.5 176.5 238.5 65q87 0 160-24t120-60 82-82 51.5-87 22.5-78h-436v-264z"/></svg></a>
+<a href="https://www.linkedin.com/company/sourceforge.net" class="linkedin" rel="nofollow" target="_blank">
+
+<svg  viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></a>
+<span></span>
+                </div>
+                <form method="get" action="/directory/">
+        <input type="text" placeholder="Search for software or solutions" name="q" >
+        <label>
+        <input type="submit" class="bt" value="">
+            
+
+<svg  viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
+        </label>
+    </form>
+            </div>
+        </nav>
+    </section>
+    
+</div>
+<div class="header">
+    <div class="row">
+        <div class="column">
+            <h1 class="page-title">Discover the New SourceForge</h1>
+            <p>Host your new project, distribute existing releases, or choose the individual features that fit your needs.
+                <span class="show-for-medium"><br>See all the possibilities here.</span>
+            </p>
+            <a class="button blue wide" href="/p/add_project">Create Your Project Now</a>
+            
+            <a class="button blue hollow" href="/p/import_project/github/" data-tooltip aria-haspopup="true" data-position="bottom" data-allow-html="true" data-tooltip-class="tooltip github-tooltip" data-tip-text="
+                <p>You can import your project from GitHub, and also automatically sync file releases on an ongoing basis.</p>
+                Importing from GitHub supports:
+                <ul>
+                    <li>Code
+                    <li>Releases
+                    <li>Issues
+                    <li>Wiki Pages
+                </ul>
+                Those items may be imported into existing projects as well.
+            ">
+                Import from GitHub <svg  class="svgico info-circle" version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200.2 200" style="enable-background:new 0 0 200.2 200;" xml:space="preserve"><circle class="st0" style="fill: #fff" cx="99.8" cy="100" r="89.8"/><g><path style="fill:#000;" class="foo-bar" d="M109,0.6c24.2,2.2,45.1,11.7,62,28.9c22.5,22.9,32.1,50.6,28.4,82.5c-3.1,26.9-15.5,49.4-37,65.8c-32.9,25.1-69,29.1-106.3,11.3c-30-14.3-47.8-39-54.2-71.7c-0.7-3.3-1-6.7-1.5-10.1c-0.5-4.7-0.5-9.6,0-14.8C0.7,90.3,1,88.1,1.3,86c3.4-23,13.5-42.6,30.4-58.5C46,13.8,63,5.3,82.5,1.8C86,1.2,93,0.1,98.6,0.1C104.6,0.1,109,0.6,109,0.6z M183,99.9c-0.2-46.1-37.4-82.9-84-82.4C53.8,18,17.1,55.1,17.7,101c0.6,45.2,37.7,81.9,83.7,81.3C146.6,181.6,182.7,145,183,99.9z"/><path style="fill:#000;" d="M107,75c9.2,0,13.8,5.6,11.4,15.1c-1.7,6.9-4.4,13.6-6.8,20.4c-2.9,8.1-6,16.2-9,24.3c-0.6,1.6-1,3.3-1.2,4.9c-0.1,0.9,0.3,2.2,0.9,2.6c0.6,0.4,2.1,0.4,2.7-0.1c2.5-1.8,4.8-3.8,7-6c2.3-2.3,4.3-4.8,6.6-7.1c0.5-0.5,1.7-1.2,2.4-0.9c0.1,0.1,0.2,0.2,0.3,0.3c0.6,0.7,0.9,1.7,1,2.6c0.1,0.8-0.5,1.8-1,2.5c-7.8,11-17.8,19.3-31,22.9c-3,0.8-6.3,0.7-9.4,0.3c-4.1-0.5-7.4-4.3-7.2-8.4c0.2-4.5,1.1-8.6,2.6-12.8c4.5-12.6,9.4-25.1,14.2-37.6c0.9-2.3,2-4.5,2.6-6.9c0.3-1.2,0.2-3.1-0.5-3.9c-0.5-0.6-2.8-0.3-3.7,0.3c-2.3,1.6-4.3,3.5-6.3,5.4c-2.3,2.4-4.4,5-6.6,7.4c-0.9,1-2.1,2.1-3.6,0.9c-1.5-1.1-1.2-2.6-0.3-3.9c8-11.1,17.5-20.2,31.9-22.3c0.3,0,0.6-0.1,0.9-0.1C105.6,75,106.3,75,107,75z"/><path style="fill:#000;" d="M128.9,54.8c0,9.9-10.3,16.8-19.5,13.1c-5.4-2.2-8.1-8.5-6.3-14.8c2.1-7.3,9.7-11.7,17.1-10C125.6,44.4,128.9,48.8,128.9,54.8z"/></g></svg></a>
+        </div>
+    </div>
+</div>
+
+        <div class="main-content-wrapper row">
+            <section id="feature-holder" class="main-content column">
+                <section class="feature">
+                    <section class="description">
+                        <h2>Downloads &amp; Statistics</h2>
+                        <p>Our free, managed, global mirror network provides a better experience for your downloaders.  And you get access to download statistics to find out who your users are.</p>
+                        <ul>
+                            <li>Unlimited bandwidth for Open Source projects</li>
+                            <li>Extensive worldwide mirror network</li>
+                            <li>Download statistics over time, by platform, and by region.</li>
+                            <li>Analytics are completely free, take no time to set up.  Learn how and where your software is downloaded.</li>
+                            <li>Automatic platform detection: Windows, Mac, and Linux users get the right release, and you get the stats!</li>
+                        </ul>
+                    </section>
+                    
+                    
+  
+  <section class="screenshot">
+    <a data-open="stats-newpng">
+        <img src="//a.fsdn.com/con/img/features/stats-new.png" alt="Download statistics">
+    </a>
+    <div class="reveal" data-reveal id="stats-newpng">
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img src="//a.fsdn.com/con/img/features/stats-new.png" alt="Download statistics" title="Download statistics"
+             srcset="//a.fsdn.com/con/img/features/stats-new.png 1425w, //a.fsdn.com/con/img/features/stats-new-2x.png 2850w"
+             sizes="(max-width: 640px) 100vw, 1425px">
+    </div>
+  </section>
+
+                </section>
+
+                <section class="feature">
+                    <section class="description">
+                        <h2>Open Source Directory</h2>
+                        <p>How will anyone know about your project if they can't find it? Your project is added to our
+                            Open Source Directory where potential users can browse and search for software.</p>
+                        <ul>
+                            <li>Categorize your project by topic, platform, license, etc</li>
+                            <li>We promote great projects as a staff pick, featured project, or project of the month.</li>
+                            <li>Users can review and recommend your project.</li>
+                            <li>Make your project stand out with screenshots and videos.</li>
+                            <li>Your project page can be shared with Twitter, Facebook, and Google+.</li>
+                        </ul>
+                    </section>
+                    
+                    
+  
+  <section class="screenshot">
+    <a data-open="directory-newpng">
+        <img src="//a.fsdn.com/con/img/features/directory-new.png" alt="Directory">
+    </a>
+    <div class="reveal" data-reveal id="directory-newpng">
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img src="//a.fsdn.com/con/img/features/directory-new.png" alt="Directory" title="Directory"
+             srcset="//a.fsdn.com/con/img/features/directory-new.png 1425w, //a.fsdn.com/con/img/features/directory-new-2x.png 2850w"
+             sizes="(max-width: 640px) 100vw, 1425px">
+    </div>
+  </section>
+
+                </section>
+
+                <section class="feature">
+                    <section class="description">
+                        <h2>Forums, Blogs & Mailing Lists</h2>
+                        <p>Discussion forums are a standard tool, and are the communication hub of many projects.</p>
+                        <ul>
+                            <li>Subscribe to forums by email or rss</li>
+                            <li>Reply to forum posts by email</li>
+                            <li>Project admins can moderate discussion posts</li>
+                            <li>Spam bot protection</li>
+                            <li>Allow anonymous posting, only logged in users, or even a specific list of users</li>
+                            <li>If you prefer, your project can have a traditional mailing list</li>
+                            <li>Blog tool with threaded discussion</li>
+                            <li>Set posts to draft mode while working on them</li>
+                            <li>Full threaded discussion on blog posts, linking to other artifacts, and markdown formatting just like other tools</li>
+                        </ul>
+                    </section>
+                    
+                    
+  
+  <section class="screenshot">
+    <a data-open="forums-newpng">
+        <img src="//a.fsdn.com/con/img/features/forums-new.png" alt="Threaded discussion">
+    </a>
+    <div class="reveal" data-reveal id="forums-newpng">
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img src="//a.fsdn.com/con/img/features/forums-new.png" alt="Threaded discussion" title="Threaded discussion"
+             srcset="//a.fsdn.com/con/img/features/forums-new.png 1101w, //a.fsdn.com/con/img/features/forums-new-2x.png 2202w"
+             sizes="(max-width: 640px) 100vw, 1101px">
+    </div>
+  </section>
+
+                </section>
+
+                <section class="feature">
+                    <section class="description">
+                        <h2>Integrated Issue Tracking</h2>
+                        <p>Issue tracking in SourceForge has been rethought from the ground up.  Some of the features we’re particularly proud of are:</p>
+                        <ul>
+                            <li>Tickets (and all other SourceForge tools) let you use Markdown for formatting, and attach files.</li>
+                            <li>You can organize tickets with milestones, custom fields, and labels</li>
+                            <li>In addition to simple search, an advanced search syntax is available. Favorite searches can be saved for frequent use.</li>
+                            <li>Threaded discussion on tickets</li>
+                            <li>Subscribe to tracker updates through email or rss</li>
+                            <li>Links and backlinks to other artifacts throughout SourceForge (all of our tools have this)</li>
+                        </ul>
+                    </section>
+                    
+                    
+  
+  <section class="screenshot">
+    <a data-open="tickets-newpng">
+        <img src="//a.fsdn.com/con/img/features/tickets-new.png" alt="Searching for tickets">
+    </a>
+    <div class="reveal" data-reveal id="tickets-newpng">
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img src="//a.fsdn.com/con/img/features/tickets-new.png" alt="Searching for tickets" title="Searching for tickets"
+             srcset="//a.fsdn.com/con/img/features/tickets-new.png 1101w, //a.fsdn.com/con/img/features/tickets-new-2x.png 2202w"
+             sizes="(max-width: 640px) 100vw, 1101px">
+    </div>
+  </section>
+
+                </section>
+
+                <section class="feature">
+                    <section class="description">
+                        <h2>Code Repositories</h2>
+                        <p>Of course the heart of your Open Source project is the source code, and this is an area where we really shine.</p>
+                        <ul>
+                            <li>Host code with git, Mercurial (hg), or Subversion (svn)</li>
+                            <li>Browser-based code browsing</li>
+                            <li>Link commits to tickets and other artifacts</li>
+                            <li>View color-coded commit diffs</li>
+                            <li>Forking and merge requests with git and hg</li>
+                            <li>View commit history as a graph</li>
+                        </ul>
+                    </section>
+                    
+                    
+  
+  <section class="screenshot">
+    <a data-open="code-newpng">
+        <img src="//a.fsdn.com/con/img/features/code-new.png" alt="Viewing a commit diff">
+    </a>
+    <div class="reveal" data-reveal id="code-newpng">
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img src="//a.fsdn.com/con/img/features/code-new.png" alt="Viewing a commit diff" title="Viewing a commit diff"
+             srcset="//a.fsdn.com/con/img/features/code-new.png 1101w, //a.fsdn.com/con/img/features/code-new-2x.png 2202w"
+             sizes="(max-width: 640px) 100vw, 1101px">
+    </div>
+  </section>
+
+                </section>
+
+                <section class="feature">
+                    <section class="description">
+                        <h2>Documentation</h2>
+                        <p>Helping your users use your product is as important as making it in the first place. So we offer several different ways to create your documentation. We start with a wiki, but you can install and use any tools that you want in your project web space.</p>
+                        <ul>
+                            <li>Make wiki pages with markdown, attachments, threaded discussion, artifact linking</li>
+                            <li>Syntax highlighting for code snippets</li>
+                            <li>Browse wiki pages by name or tags</li>
+                            <li>Custom wiki macros make common tasks easier</li>
+                        </ul>
+                    </section>
+                    
+                    
+  
+  <section class="screenshot">
+    <a data-open="wiki-newpng">
+        <img src="//a.fsdn.com/con/img/features/wiki-new.png" alt="Wiki page">
+    </a>
+    <div class="reveal" data-reveal id="wiki-newpng">
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img src="//a.fsdn.com/con/img/features/wiki-new.png" alt="Wiki page" title="Wiki page"
+             srcset="//a.fsdn.com/con/img/features/wiki-new.png 1101w, //a.fsdn.com/con/img/features/wiki-new-2x.png 2202w"
+             sizes="(max-width: 640px) 100vw, 1101px">
+    </div>
+  </section>
+
+                </section>
+
+                <section class="feature">
+                    <section class="description">
+                        <h2>And, it’s Open Source</h2>
+                        <p>And, as if all of that wasn’t enough, the SourceForge platform runs on <a href="https://allura.apache.org">Apache Allura</a> which itself is Open Source!
+                            You can download it, host your own forge, and make enhancements to the code.
+                            We would love to have you help contribute to the Allura platform.</p>
+                        <p>Since 1999, thousands of projects have chosen SourceForge to host not just their source code, but also their project communities. You'll be in great company.</p>
+                        <ul>
+                            <li><a href="/projects/openofficeorg.mirror/">Apache OpenOffice</a></li>
+                            <li><a href="/projects/filezilla/">FileZilla</a></li>
+                            <li><a href="/projects/portableapps/">PortableApps</a></li>
+                            <li><a href="/projects/keepass/">KeePass</a></li>
+                        </ul>
+                    </section>
+                    <section class="screenshot">
+                        <img src="//a.fsdn.com/con/img/features/os-full.png" alt="Open Source" title="Open Source" id="small-img">
+                    </section>
+                </section>
+
+                <section id="get-started">
+                    <h2>Ready? Let's get started.</h2>
+                    <a class="button blue wide" href="/p/add_project">Create Your Project Now</a>
+                </section>
+            </section>
+
+        </div>
+
+            
+
+<footer class="sandiego">
+    <section class="l-nav-top">
+        <nav class="row">
+            <div class="columns show-for-large large-2">
+                <a href="/about" title="About">About</a>
+                <a href="/blog/category/sitestatus/" title="Site Status">Site Status</a>
+                <a href="https://twitter.com/sfnet_ops" title="@sfnet_ops">@sfnet_ops</a>
+            </div>
+            <div class="columns show-for-large large-2">
+                <a href="/create" title="Create a Project">Create a Project</a>
+                <a href="/directory/" title="Software Directory">Software Directory</a>
+                <a href="/top" title="Top Downloaded Projects">Top Downloaded Projects</a>
+            </div>
+            <div class="columns show-for-large large-2">
+                <a href="/blog/" title="Blog">Blog</a>
+                <a href="https://twitter.com/sourceforge" title="@sourceforge">@sourceforge</a>
+                <a href="https://library.slashdotmedia.com/" title="Resources">Resources</a>
+            </div>
+            <div class="columns show-for-large large-2">
+                <a href="/articles/" title="Industry News">Articles</a>
+                <a href="https://p.sf.net/sourceforge/docs" title="Site Documentation">Site Documentation</a>
+                <a href="/support" title="Support Request">Support Request</a>
+                <!--<li><a href="#" title="Real-Time Support">Real-Time Support</a></li>-->
+            </div>
+
+            <div class="columns small-12 large-4 sf-logo">
+                <a href="/" title="Home" class="sf-logo">
+                    
+
+<svg  version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"     viewBox="0 0 653 102.6" style="enable-background:new 0 0 653 102.6;" xml:space="preserve"><path class="st0" d="M66.9,54.5c0-19.1-6.8-27.8-10.4-31.1c-0.7-0.6-1.8-0.1-1.7,0.9c0.7,10.8-12.9,13.5-12.9,30.4h0    c0,0,0,0.1,0,0.1c0,10.3,7.8,18.7,17.4,18.7c9.6,0,17.4-8.4,17.4-18.7c0,0,0-0.1,0-0.1h0c0-4.8-1.8-9.4-3.6-12.8    c-0.4-0.7-1.4-0.4-1.3,0.2C75.1,56.7,66.9,65.7,66.9,54.5z"/><g>    <path class="st0" d="M46.2,94.8c-0.4,0-0.9-0.2-1.2-0.5L0.5,49.8c-0.6-0.6-0.6-1.7,0-2.4l47-47C47.8,0.2,48.2,0,48.6,0h13.5        c0.8,0,1.3,0.5,1.5,1c0.2,0.5,0.2,1.2-0.4,1.8L19.1,47c-0.9,0.9-0.9,2.3,0,3.2L54,85.2c0.6,0.6,0.6,1.7,0,2.4l-6.7,6.8        C47,94.6,46.6,94.8,46.2,94.8z"/></g><g>    <path class="st0" d="M55.1,102.6c-0.8,0-1.3-0.5-1.5-1c-0.2-0.5-0.2-1.2,0.4-1.8l44.2-44.2c0.4-0.4,0.7-1,0.7-1.6        c0-0.6-0.2-1.2-0.7-1.6L63.2,17.4c-0.6-0.6-0.6-1.7,0-2.4l6.8-6.8c0.3-0.3,0.7-0.5,1.2-0.5S72,8,72.3,8.3l44.4,44.5        c0.3,0.3,0.5,0.7,0.5,1.2s-0.2,0.9-0.5,1.2l-47,47c-0.3,0.3-0.7,0.5-1.2,0.5H55.1z"/></g><g>    <g>        <path class="st1" d="M167.2,32c-0.2,0.4-0.5,0.6-1,0.6c-0.3,0-0.7-0.2-1.2-0.7c-0.5-0.5-1.2-1-2-1.5c-0.9-0.6-1.9-1.1-3.2-1.5            c-1.3-0.5-2.9-0.7-4.8-0.7c-1.9,0-3.5,0.3-5,0.8c-1.4,0.5-2.6,1.3-3.6,2.2s-1.7,2-2.2,3.2c-0.5,1.2-0.8,2.5-0.8,3.8            c0,1.8,0.4,3.2,1.1,4.4c0.7,1.1,1.7,2.1,3,2.9c1.2,0.8,2.6,1.5,4.2,2c1.6,0.6,3.2,1.1,4.8,1.6c1.6,0.5,3.2,1.1,4.8,1.8            c1.6,0.6,2.9,1.5,4.2,2.4s2.2,2.2,3,3.6c0.7,1.4,1.1,3.2,1.1,5.3c0,2.2-0.4,4.2-1.1,6.1c-0.7,1.9-1.8,3.6-3.2,5            c-1.4,1.4-3.2,2.5-5.2,3.4c-2.1,0.8-4.4,1.2-7,1.2c-3.4,0-6.4-0.6-8.8-1.8c-2.5-1.2-4.6-2.9-6.5-5l1-1.6c0.3-0.4,0.6-0.5,1-0.5            c0.2,0,0.5,0.1,0.8,0.4c0.3,0.3,0.8,0.7,1.2,1.1c0.5,0.4,1.1,0.9,1.8,1.4c0.7,0.5,1.5,1,2.4,1.4c0.9,0.4,1.9,0.8,3.1,1.1            c1.2,0.3,2.5,0.4,4,0.4c2.1,0,3.9-0.3,5.5-0.9c1.6-0.6,3-1.5,4.1-2.5s2-2.4,2.6-3.8c0.6-1.5,0.9-3.1,0.9-4.7            c0-1.8-0.4-3.3-1.1-4.5c-0.7-1.2-1.7-2.2-3-3c-1.2-0.8-2.6-1.5-4.2-2c-1.6-0.5-3.2-1.1-4.8-1.6c-1.6-0.5-3.2-1.1-4.8-1.7            c-1.6-0.6-2.9-1.4-4.2-2.4c-1.2-1-2.2-2.2-3-3.7c-0.7-1.5-1.1-3.3-1.1-5.6c0-1.7,0.3-3.4,1-5c0.7-1.6,1.6-3,2.9-4.3            c1.3-1.2,2.8-2.2,4.7-3c1.9-0.7,4-1.1,6.4-1.1c2.7,0,5.1,0.4,7.3,1.3c2.1,0.9,4.1,2.2,5.9,3.9L167.2,32z"/>        <path class="st2" d="M152.9,78.8c-3.5,0-6.6-0.6-9.1-1.9c-2.5-1.2-4.8-3-6.7-5.1l-0.3-0.3l1.3-2c0.6-0.7,1.1-0.8,1.5-0.8            c0.4,0,0.8,0.2,1.2,0.6c0.3,0.3,0.8,0.7,1.3,1.1c0.5,0.4,1.1,0.9,1.7,1.4c0.7,0.5,1.4,0.9,2.3,1.3c0.9,0.4,1.9,0.8,3,1            c1.1,0.3,2.4,0.4,3.9,0.4c2,0,3.8-0.3,5.3-0.9c1.5-0.6,2.8-1.4,3.9-2.4c1-1,1.9-2.2,2.4-3.6c0.6-1.4,0.8-2.9,0.8-4.5            c0-1.7-0.3-3.1-1-4.2c-0.7-1.1-1.6-2-2.8-2.8c-1.2-0.8-2.5-1.4-4-1.9c-1.5-0.5-3.1-1.1-4.8-1.6c-1.7-0.5-3.3-1.1-4.8-1.7            c-1.6-0.7-3.1-1.5-4.3-2.5c-1.3-1-2.3-2.4-3.1-3.9c-0.8-1.6-1.2-3.5-1.2-5.8c0-1.8,0.3-3.6,1-5.3c0.7-1.7,1.7-3.2,3-4.5            c1.3-1.3,3-2.3,4.9-3.1c1.9-0.8,4.2-1.2,6.6-1.2c2.8,0,5.3,0.4,7.5,1.3c2.2,0.9,4.2,2.3,6.1,4.1l0.3,0.3l-1.1,2.1            c-0.6,1.1-1.7,1.4-3.1,0.1c-0.5-0.4-1.1-0.9-2-1.4c-0.8-0.5-1.9-1-3.1-1.5c-1.2-0.4-2.7-0.7-4.6-0.7c-1.8,0-3.4,0.3-4.8,0.8            c-1.3,0.5-2.5,1.2-3.4,2.1c-0.9,0.9-1.6,1.9-2.1,3c-0.5,1.1-0.7,2.4-0.7,3.6c0,1.6,0.3,3,1,4c0.7,1.1,1.6,2,2.8,2.8            c1.2,0.8,2.5,1.4,4,2c1.5,0.5,3.1,1.1,4.8,1.6c1.6,0.5,3.3,1.1,4.8,1.8c1.6,0.7,3.1,1.5,4.3,2.5c1.3,1,2.3,2.3,3.1,3.8            c0.8,1.5,1.2,3.4,1.2,5.6c0,2.2-0.4,4.4-1.2,6.4c-0.8,2-1.9,3.7-3.4,5.2c-1.5,1.5-3.3,2.6-5.4,3.5            C158.1,78.3,155.6,78.8,152.9,78.8z M138.4,71.3c1.7,1.9,3.7,3.4,6,4.5c2.4,1.2,5.3,1.8,8.6,1.8c2.5,0,4.8-0.4,6.8-1.2            c2-0.8,3.6-1.9,5-3.2c1.3-1.3,2.4-3,3.1-4.8c0.7-1.8,1.1-3.8,1.1-5.9c0-2-0.4-3.7-1-5.1c-0.7-1.3-1.6-2.5-2.8-3.4            c-1.2-0.9-2.5-1.7-4-2.4c-1.5-0.6-3.1-1.2-4.7-1.8c-1.6-0.5-3.2-1.1-4.8-1.6c-1.6-0.6-3-1.3-4.3-2.1c-1.3-0.8-2.3-1.9-3.1-3.1            c-0.8-1.2-1.2-2.8-1.2-4.7c0-1.4,0.3-2.8,0.8-4.1c0.5-1.3,1.3-2.5,2.3-3.4c1-1,2.3-1.8,3.8-2.3c1.5-0.6,3.3-0.8,5.2-0.8            c1.9,0,3.6,0.2,5,0.7c1.3,0.5,2.5,1,3.3,1.6c0.9,0.6,1.6,1.1,2.1,1.6c0.6,0.5,0.8,0.5,0.8,0.5c0.1,0,0.3,0,0.4-0.3l0.7-1.3            c-1.6-1.5-3.4-2.7-5.3-3.5c-2.1-0.8-4.4-1.2-7-1.2c-2.3,0-4.4,0.4-6.2,1.1c-1.8,0.7-3.3,1.7-4.5,2.8c-1.2,1.2-2.1,2.5-2.8,4.1            c-0.6,1.5-0.9,3.1-0.9,4.8c0,2.1,0.4,3.9,1.1,5.3c0.7,1.4,1.6,2.6,2.8,3.5c1.2,0.9,2.5,1.7,4,2.3c1.5,0.6,3.1,1.2,4.7,1.7            c1.6,0.5,3.2,1,4.8,1.6c1.6,0.6,3,1.2,4.3,2.1c1.3,0.8,2.4,1.9,3.1,3.2c0.8,1.3,1.2,2.9,1.2,4.9c0,1.8-0.3,3.4-0.9,5            c-0.6,1.6-1.5,2.9-2.7,4c-1.2,1.1-2.6,2-4.3,2.7c-1.7,0.6-3.6,1-5.7,1c-1.5,0-2.9-0.2-4.2-0.5c-1.2-0.3-2.3-0.7-3.2-1.1            c-0.9-0.4-1.8-0.9-2.5-1.5c-0.7-0.5-1.3-1-1.8-1.4c-0.5-0.4-0.9-0.8-1.2-1.1c-0.3-0.3-0.5-0.3-0.5-0.3c-0.1,0-0.3,0-0.5,0.3            L138.4,71.3z"/>    </g>    <g>        <path class="st1" d="M226.7,51.6c0,4-0.6,7.6-1.8,10.9c-1.2,3.3-2.9,6.1-5.1,8.4c-2.2,2.3-4.8,4.1-7.8,5.4            c-3,1.3-6.4,1.9-10.1,1.9c-3.6,0-7-0.6-10-1.9c-3-1.3-5.6-3-7.8-5.4c-2.2-2.3-3.9-5.1-5.1-8.4c-1.2-3.3-1.8-6.9-1.8-10.9            c0-4,0.6-7.6,1.8-10.9c1.2-3.3,2.9-6.1,5.1-8.4c2.2-2.3,4.8-4.1,7.8-5.4c3-1.3,6.4-1.9,10-1.9c3.7,0,7.1,0.6,10.1,1.9            c3,1.3,5.6,3,7.8,5.4c2.2,2.3,3.9,5.1,5.1,8.4C226.1,44,226.7,47.6,226.7,51.6z M222.8,51.6c0-3.6-0.5-6.9-1.5-9.8            c-1-2.9-2.4-5.3-4.2-7.3c-1.8-2-4-3.5-6.6-4.6c-2.6-1.1-5.4-1.6-8.5-1.6c-3.1,0-5.9,0.5-8.5,1.6c-2.6,1.1-4.8,2.6-6.6,4.6            c-1.8,2-3.3,4.4-4.3,7.3c-1,2.9-1.5,6.1-1.5,9.8c0,3.6,0.5,6.9,1.5,9.8c1,2.9,2.4,5.3,4.3,7.3c1.8,2,4,3.5,6.6,4.6            c2.6,1.1,5.4,1.6,8.5,1.6c3.1,0,6-0.5,8.5-1.6c2.6-1,4.8-2.6,6.6-4.6c1.8-2,3.2-4.4,4.2-7.3C222.3,58.5,222.8,55.3,222.8,51.6z"/>        <path class="st2" d="M202,78.7c-3.7,0-7.2-0.7-10.2-1.9c-3.1-1.3-5.8-3.1-8-5.5c-2.2-2.4-4-5.2-5.2-8.6c-1.2-3.3-1.9-7.1-1.9-11.1            c0-4,0.6-7.8,1.9-11.1c1.2-3.3,3-6.2,5.2-8.6c2.2-2.4,4.9-4.2,8-5.5c3.1-1.3,6.5-2,10.2-2c3.8,0,7.2,0.7,10.3,1.9            c3.1,1.3,5.8,3.1,8,5.5c2.2,2.4,4,5.3,5.2,8.6c1.2,3.3,1.8,7,1.8,11.1c0,4.1-0.6,7.8-1.8,11.1c-1.2,3.3-3,6.2-5.2,8.6            c-2.2,2.4-4.9,4.2-8,5.5C209.2,78.1,205.7,78.7,202,78.7z M202,25.7c-3.5,0-6.8,0.6-9.8,1.9c-2.9,1.2-5.5,3-7.6,5.2            c-2.1,2.2-3.8,5-4.9,8.2c-1.2,3.2-1.8,6.8-1.8,10.7c0,3.9,0.6,7.5,1.8,10.7c1.2,3.2,2.8,5.9,4.9,8.2c2.1,2.2,4.7,4,7.6,5.2            c2.9,1.2,6.2,1.8,9.8,1.8c3.6,0,6.9-0.6,9.8-1.8c2.9-1.2,5.5-3,7.6-5.2c2.1-2.2,3.8-5,4.9-8.1c1.2-3.2,1.8-6.8,1.8-10.7            c0-3.9-0.6-7.5-1.8-10.7c-1.2-3.2-2.8-5.9-4.9-8.2c-2.1-2.2-4.7-4-7.6-5.2C208.9,26.3,205.6,25.7,202,25.7z"/>    </g>    <g>        <path class="st1" d="M256.4,74.9c2.5,0,4.7-0.4,6.7-1.3c2-0.9,3.6-2.1,5-3.6c1.4-1.5,2.4-3.4,3.1-5.4c0.7-2.1,1.1-4.3,1.1-6.8            V25.7h3.7v32.1c0,2.9-0.5,5.5-1.4,8c-0.9,2.5-2.2,4.6-3.9,6.5c-1.7,1.8-3.8,3.3-6.2,4.3c-2.4,1-5.2,1.6-8.2,1.6            c-3,0-5.8-0.5-8.2-1.6c-2.4-1.1-4.5-2.5-6.2-4.3c-1.7-1.8-3-4-3.9-6.5c-0.9-2.5-1.4-5.2-1.4-8V25.7h3.8v32c0,2.4,0.4,4.7,1.1,6.8            c0.7,2.1,1.8,3.9,3.1,5.4c1.4,1.5,3,2.7,5,3.6C251.6,74.5,253.9,74.9,256.4,74.9z"/>        <path class="st2" d="M256.4,78.8c-3.1,0-5.9-0.5-8.4-1.6c-2.5-1.1-4.7-2.6-6.4-4.5c-1.7-1.9-3.1-4.2-4-6.7            c-0.9-2.5-1.4-5.3-1.4-8.2V25.1h5v32.7c0,2.3,0.4,4.5,1,6.6c0.7,2,1.7,3.8,3,5.2c1.3,1.5,2.9,2.6,4.8,3.5c1.9,0.8,4,1.3,6.4,1.3            c2.4,0,4.6-0.4,6.4-1.2c1.9-0.8,3.5-2,4.8-3.5c1.3-1.5,2.3-3.2,3-5.2c0.7-2,1-4.2,1-6.6V25.1h5v32.7c0,2.9-0.5,5.7-1.4,8.2            c-0.9,2.5-2.3,4.8-4,6.7c-1.7,1.9-3.9,3.4-6.4,4.5C262.3,78.3,259.5,78.8,256.4,78.8z M237.3,26.3v31.5c0,2.8,0.4,5.4,1.3,7.8            c0.9,2.4,2.1,4.5,3.8,6.3c1.6,1.8,3.6,3.2,6,4.2c2.3,1,5,1.5,8,1.5c2.9,0,5.6-0.5,8-1.5c2.3-1,4.4-2.4,6-4.2            c1.6-1.8,2.9-3.9,3.8-6.3c0.9-2.4,1.3-5,1.3-7.8V26.3h-2.5v31.5c0,2.5-0.4,4.8-1.1,7c-0.7,2.2-1.8,4.1-3.3,5.7            c-1.4,1.6-3.2,2.9-5.2,3.8c-2,0.9-4.4,1.4-6.9,1.4c-2.6,0-4.9-0.5-6.9-1.4c-2-0.9-3.8-2.2-5.2-3.8c-1.4-1.6-2.5-3.5-3.2-5.7            c-0.7-2.1-1.1-4.5-1.1-7V26.3H237.3z"/>    </g>    <g>        <path class="st1" d="M297.5,51.3c1,0,0.9,0,0.9,0l2.2,0c2.3,0,4.4-0.3,6.2-0.8c1.8-0.6,3.4-1.3,4.6-2.4c1.3-1,2.2-2.3,2.9-3.7            c0.7-1.4,1-3.1,1-4.9c0-3.7-1.2-6.4-3.6-8.2c-2.4-1.8-5.9-2.7-10.6-2.7h-9.5v22.7v2.8v23.5h-3.7V25.7h13.2c6,0,10.5,1.2,13.4,3.5            c3,2.3,4.4,5.7,4.4,10.2c0,2-0.3,3.8-1,5.4c-0.7,1.6-1.7,3.1-3,4.3c-1.3,1.2-2.8,2.3-4.6,3c-1.8,0.8-3.9,1.3-6.1,1.6            c0.6,0.4,1.1,0.9,1.6,1.5l17.9,22.4h-3.3c-0.4,0-0.7-0.1-1-0.2c-0.3-0.1-0.6-0.4-0.8-0.7l-16.6-21c-0.4-0.5-0.9-0.9-1.3-1.1            c-0.5-0.2-3.4-0.3-4.4-0.3C296.3,51.6,296.7,51.3,297.5,51.3z"/>        <path class="st2" d="M325,78.2h-4.5c-0.5,0-0.9-0.1-1.3-0.3c-0.4-0.2-0.7-0.5-1-0.9l-16.6-21c-0.4-0.5-0.7-0.8-1.1-1            c-0.4-0.1-2.8-0.3-4.1-0.3h-0.6v-2.6c0-0.9,0.2-1.4,1.8-1.4c0.9,0,1,0,1,0l2.2,0c2.2,0,4.2-0.3,6-0.8c1.7-0.5,3.2-1.3,4.4-2.3            c1.2-1,2.1-2.1,2.7-3.5c0.6-1.4,0.9-2.9,0.9-4.6c0-3.5-1.1-6-3.4-7.7c-2.3-1.7-5.7-2.6-10.2-2.6h-8.9v48.9h-5V25.1h13.9            c6.1,0,10.7,1.2,13.8,3.6c3.1,2.4,4.7,6,4.7,10.7c0,2.1-0.4,4-1.1,5.7c-0.7,1.7-1.8,3.2-3.1,4.5c-1.3,1.3-3,2.3-4.8,3.2            c-1.5,0.6-3.1,1.1-4.9,1.4c0.2,0.2,0.4,0.4,0.6,0.7L325,78.2z M296.9,53.5c1.1,0,3.4,0.1,4,0.4c0.6,0.3,1.1,0.7,1.6,1.3l16.6,21            c0.2,0.3,0.4,0.5,0.6,0.6c0.2,0.1,0.4,0.2,0.7,0.2h2l-17.1-21.4c-0.4-0.6-0.9-1-1.4-1.3l-1.5-0.9l1.8-0.2c2.2-0.2,4.2-0.7,5.9-1.5            c1.7-0.8,3.2-1.7,4.5-2.9c1.2-1.2,2.2-2.5,2.8-4.1c0.6-1.6,1-3.3,1-5.2c0-4.3-1.4-7.5-4.2-9.7c-2.8-2.2-7.2-3.3-13-3.3h-12.6V77            h2.5V28h10.1c4.7,0,8.4,0.9,10.9,2.8c2.6,1.9,3.9,4.8,3.9,8.7c0,1.9-0.4,3.6-1,5.1c-0.7,1.5-1.7,2.8-3.1,3.9            c-1.3,1.1-2.9,1.9-4.8,2.5c-1.9,0.6-4,0.9-6.4,0.9l-2.2,0c-0.1,0-0.2,0-0.9,0C297.3,51.9,297,51.9,296.9,53.5z"/>    </g>    <g>        <path class="st1" d="M367.6,68.8c0.2,0,0.5,0.1,0.6,0.3l1.5,1.6c-1.1,1.1-2.2,2.2-3.5,3.1c-1.3,0.9-2.7,1.7-4.2,2.3            c-1.5,0.6-3.2,1.1-4.9,1.5c-1.8,0.4-3.8,0.5-5.9,0.5c-3.6,0-6.9-0.6-9.9-1.9c-3-1.3-5.6-3-7.7-5.4c-2.1-2.3-3.8-5.1-5-8.4            c-1.2-3.3-1.8-6.9-1.8-10.9c0-3.9,0.6-7.5,1.9-10.8c1.2-3.3,3-6,5.2-8.4c2.2-2.3,4.9-4.1,8-5.4c3.1-1.3,6.6-1.9,10.3-1.9            c1.9,0,3.6,0.1,5.2,0.4c1.6,0.3,3,0.7,4.4,1.2c1.4,0.5,2.6,1.2,3.8,2c1.2,0.8,2.4,1.7,3.5,2.7l-1.1,1.6c-0.2,0.3-0.5,0.4-0.9,0.4            c-0.2,0-0.5-0.1-0.8-0.4c-0.3-0.3-0.8-0.6-1.3-1c-0.5-0.4-1.2-0.8-1.9-1.2c-0.7-0.5-1.6-0.9-2.7-1.2c-1-0.4-2.2-0.7-3.6-1            c-1.3-0.3-2.9-0.4-4.6-0.4c-3.2,0-6.1,0.5-8.7,1.6c-2.6,1.1-4.9,2.6-6.8,4.7c-1.9,2-3.4,4.5-4.5,7.3s-1.6,6.1-1.6,9.7            c0,3.7,0.5,6.9,1.6,9.8c1.1,2.9,2.5,5.3,4.4,7.3c1.9,2,4.1,3.5,6.6,4.6c2.5,1.1,5.3,1.6,8.2,1.6c1.9,0,3.5-0.1,5-0.4            c1.5-0.2,2.8-0.6,4-1.1c1.2-0.5,2.4-1.1,3.4-1.8c1.1-0.7,2.1-1.5,3.1-2.5c0.1-0.1,0.2-0.2,0.3-0.2            C367.3,68.9,367.5,68.8,367.6,68.8z"/>        <path class="st2" d="M351.1,78.8c-3.7,0-7.1-0.7-10.1-1.9c-3.1-1.3-5.7-3.1-7.9-5.5c-2.2-2.4-3.9-5.2-5.1-8.6            c-1.2-3.3-1.8-7.1-1.8-11.1c0-4,0.6-7.7,1.9-11c1.3-3.3,3.1-6.2,5.3-8.6c2.3-2.4,5.1-4.3,8.2-5.6c3.2-1.3,6.7-2,10.6-2            c1.9,0,3.7,0.1,5.3,0.4c1.6,0.3,3.1,0.7,4.5,1.2c1.4,0.5,2.7,1.2,3.9,2c1.2,0.8,2.4,1.7,3.6,2.8l0.4,0.4l-1.4,2.1            c-0.2,0.3-0.6,0.7-1.4,0.7c-0.4,0-0.7-0.2-1.2-0.5c-0.3-0.3-0.8-0.6-1.3-0.9c-0.5-0.4-1.1-0.8-1.9-1.2c-0.7-0.4-1.6-0.8-2.6-1.2            c-1-0.4-2.2-0.7-3.5-0.9c-1.3-0.2-2.8-0.4-4.5-0.4c-3.1,0-5.9,0.5-8.5,1.6c-2.5,1.1-4.8,2.6-6.6,4.5c-1.8,1.9-3.3,4.3-4.3,7.1            c-1,2.8-1.6,6-1.6,9.4c0,3.6,0.5,6.8,1.5,9.6c1,2.8,2.4,5.2,4.2,7.1c1.8,1.9,3.9,3.4,6.4,4.4c2.4,1,5.1,1.5,8,1.5            c1.8,0,3.5-0.1,4.9-0.4c1.4-0.2,2.7-0.6,3.9-1.1c1.2-0.5,2.3-1.1,3.3-1.7c1-0.7,2-1.5,3-2.4c0.2-0.2,0.3-0.2,0.5-0.3            c0.5-0.3,1.3-0.2,1.7,0.3l1.9,2l-0.4,0.4c-1.1,1.2-2.3,2.2-3.6,3.2c-1.3,0.9-2.7,1.8-4.3,2.4c-1.5,0.7-3.2,1.2-5.1,1.5            C355.3,78.6,353.3,78.8,351.1,78.8z M352.2,25.7c-3.7,0-7.1,0.6-10.1,1.9c-3,1.2-5.7,3-7.8,5.3c-2.2,2.3-3.9,5-5.1,8.2            c-1.2,3.2-1.8,6.7-1.8,10.6c0,3.9,0.6,7.5,1.8,10.7c1.2,3.2,2.8,5.9,4.9,8.2c2.1,2.2,4.6,4,7.5,5.2c2.9,1.2,6.1,1.8,9.6,1.8            c2.1,0,4-0.2,5.8-0.5c1.7-0.3,3.4-0.8,4.8-1.5c1.5-0.6,2.8-1.4,4-2.3c1.1-0.8,2.1-1.7,3-2.6l-1.1-1.2c-0.1-0.1-0.2-0.1-0.3,0            c-0.1,0-0.2,0.1-0.3,0.2c-1,0.9-2.1,1.8-3.2,2.5c-1.1,0.7-2.3,1.4-3.5,1.9c-1.3,0.5-2.7,0.9-4.1,1.1c-1.5,0.2-3.2,0.4-5.1,0.4            c-3,0-5.9-0.6-8.5-1.6c-2.6-1.1-4.9-2.7-6.8-4.7c-1.9-2-3.4-4.6-4.5-7.5c-1.1-2.9-1.6-6.3-1.6-10c0-3.6,0.5-6.9,1.6-9.9            c1.1-2.9,2.6-5.5,4.6-7.5c2-2.1,4.3-3.7,7-4.8c2.7-1.1,5.7-1.7,8.9-1.7c1.7,0,3.3,0.1,4.7,0.4c1.4,0.3,2.6,0.6,3.7,1            c1.1,0.4,2,0.8,2.8,1.3c0.8,0.5,1.4,0.9,1.9,1.3c0.5,0.4,1,0.7,1.3,1c0.3,0.3,0.5,0.3,0.5,0.3c0.3,0,0.4-0.1,0.4-0.2l0.8-1.2            c-1-0.9-2-1.6-3-2.3c-1.2-0.8-2.4-1.4-3.7-1.9c-1.3-0.5-2.8-0.9-4.3-1.2C355.7,25.9,354,25.7,352.2,25.7z"/>    </g>    <g>        <path class="st1" d="M410.3,25.7v3.1H383v21h22.7v3H383v21.6h27.3v3.1h-31.1V25.7H410.3z"/>        <path class="st2" d="M410.9,78.2h-32.3V25.1h32.3v4.3h-27.3v19.7h22.7v4.3h-22.7v20.4h27.3V78.2z M379.8,77h29.9v-1.9h-27.3V52.2            h22.7v-1.8h-22.7V28.2h27.3v-1.9h-29.9V77z"/>    </g>    <g>        <path class="st1" d="M456.8,25.1V33h-23.5v15.7h19.8v7.9h-19.8v21.6h-9.9v-53H456.8z"/>    </g>    <g>        <path class="st1" d="M514.3,51.6c0,3.9-0.6,7.5-1.9,10.8c-1.3,3.3-3.1,6.2-5.5,8.6c-2.3,2.4-5.2,4.3-8.5,5.7c-3.3,1.4-7,2-11,2            c-4,0-7.7-0.7-11-2c-3.3-1.4-6.1-3.2-8.5-5.7c-2.4-2.4-4.2-5.3-5.5-8.6s-1.9-6.9-1.9-10.8s0.6-7.5,1.9-10.8            c1.3-3.3,3.1-6.2,5.5-8.6c2.4-2.4,5.2-4.3,8.5-5.7c3.3-1.4,7-2,11-2c4,0,7.7,0.7,11,2.1c3.3,1.4,6.1,3.3,8.5,5.7            c2.3,2.4,4.2,5.3,5.5,8.6C513.6,44.1,514.3,47.7,514.3,51.6z M504.2,51.6c0-2.9-0.4-5.5-1.2-7.8c-0.8-2.3-1.9-4.3-3.3-5.9            c-1.4-1.6-3.2-2.8-5.3-3.7c-2.1-0.9-4.4-1.3-7-1.3c-2.6,0-4.9,0.4-7,1.3c-2.1,0.9-3.8,2.1-5.3,3.7c-1.5,1.6-2.6,3.6-3.4,5.9            c-0.8,2.3-1.2,4.9-1.2,7.8s0.4,5.5,1.2,7.8c0.8,2.3,1.9,4.3,3.4,5.9c1.5,1.6,3.2,2.8,5.3,3.7c2.1,0.9,4.4,1.3,7,1.3            c2.6,0,4.9-0.4,7-1.3c2.1-0.9,3.8-2.1,5.3-3.7c1.4-1.6,2.5-3.6,3.3-5.9C503.8,57.1,504.2,54.5,504.2,51.6z"/>    </g>    <g>        <path class="st1" d="M534.9,50.4l2.3,0c1.9,0,3.5-0.2,4.9-0.7c1.4-0.5,2.5-1.1,3.4-1.9c0.9-0.8,1.6-1.8,2-2.9            c0.4-1.1,0.7-2.4,0.7-3.7c0-2.7-0.9-4.8-2.7-6.2c-1.8-1.4-4.5-2.2-8.1-2.2H531v17.6v7.1v20.7h-9.9v-53h16.2c3.6,0,6.7,0.4,9.3,1.1            c2.6,0.7,4.7,1.8,6.3,3.1c1.6,1.3,2.9,3,3.6,4.8c0.8,1.9,1.2,3.9,1.2,6.2c0,1.8-0.3,3.5-0.8,5.1c-0.5,1.6-1.3,3-2.3,4.3            c-1,1.3-2.2,2.4-3.7,3.4c-1.5,1-3.1,1.8-5,2.3c1.2,0.7,2.3,1.7,3.2,3l13.3,19.6h-8.9c-0.9,0-1.6-0.2-2.2-0.5            c-0.6-0.3-1.1-0.8-1.5-1.5c0,0-11.1-17-11.1-17c-0.3-0.4-0.9-1.3-1.5-1.4c-1.2,0-2.4,0-3.5,0c0,0,0-6,0-6.4            C533.8,50.4,534.9,50.4,534.9,50.4z"/>    </g>    <g>        <path class="st1" d="M591.4,70.9c2.2,0,4.2-0.2,5.8-0.6c1.6-0.4,3.2-1,4.7-1.7v-12h-6.6c-0.6,0-1.1-0.2-1.5-0.5            c-0.4-0.4-0.6-0.8-0.6-1.3v-5.6h17.6V73c-1.3,1-2.7,1.8-4.2,2.5c-1.5,0.7-3,1.3-4.7,1.8c-1.7,0.5-3.4,0.8-5.3,1            c-1.9,0.2-3.9,0.3-6.1,0.3c-3.9,0-7.4-0.7-10.7-2c-3.3-1.3-6.1-3.2-8.4-5.6c-2.4-2.4-4.2-5.3-5.6-8.6c-1.3-3.3-2-7-2-10.9            c0-4,0.6-7.6,1.9-11c1.3-3.3,3.1-6.2,5.5-8.6c2.4-2.4,5.3-4.3,8.7-5.6c3.4-1.3,7.2-2,11.4-2c4.3,0,8.1,0.6,11.2,1.9            c3.2,1.3,5.8,3,8,5l-2.9,4.5c-0.6,0.9-1.3,1.4-2.2,1.4c-0.6,0-1.2-0.2-1.8-0.6c-0.8-0.5-1.6-0.9-2.4-1.4c-0.8-0.5-1.7-0.9-2.7-1.2            c-1-0.3-2.1-0.6-3.3-0.8c-1.2-0.2-2.7-0.3-4.3-0.3c-2.6,0-5,0.4-7.1,1.3c-2.1,0.9-3.9,2.1-5.4,3.8c-1.5,1.6-2.6,3.6-3.4,5.9            c-0.8,2.3-1.2,4.9-1.2,7.7c0,3.1,0.4,5.8,1.3,8.2c0.9,2.4,2.1,4.4,3.6,6s3.4,2.9,5.5,3.8S588.9,70.9,591.4,70.9z"/>    </g>    <g>        <path class="st1" d="M645.7,56.8h-16.1v13.4H653v7.9h-33.4v-53H653V33h-23.5v16.3H648v5.8C648,55.1,647.9,56.8,645.7,56.8z"/>    </g></g></svg>
+                </a>
+            </div>
+        </nav>
+    </section>
+
+    <section class="l-nav-bottom">
+        <nav class="row">
+            <div class="columns small-12 large-6 copyright-notice">&copy; 2018 Slashdot Media. All Rights Reserved.</div>
+            <div class="columns large-6 links">
+                <span class="show-for-large">
+                    <a href="http://slashdotmedia.com/terms-of-use" title="Terms">Terms</a>
+                    <a href="http://slashdotmedia.com/privacy-statement/" title="Privacy">Privacy</a>
+                </span>
+                <span id='teconsent'></span>
+                <span class="show-for-large">
+                    <a href="http://slashdotmedia.com/opt-out-choices" title="Opt Out">Opt Out</a>
+                    <a href="http://slashdotmedia.com/" title="Advertise">Advertise</a>
+                </span>
+            </div>
+        </nav>
+    </section>
+</footer>
+
+        </div>
+
+        
+            
+    
+    
+    <div id="overlay-blockthis-wrapper" style="display: none;">
+        <div id="overlay-blockthis">
+            <h2>Thanks for helping keep SourceForge clean.</h2>
+            <a href="#" id="btn-blockthis-close">X</a>
+            <form class="dropzone small-12" action="/api/instrumentation/gpt" id="blockthisForm" method="POST">
+                <div class="row small-12">
+                    <div class="column description small-12">
+                        
+  <input type="hidden" name="_visit_cookie" value="79abb963-e7a5-421c-9860-25d6a2ec449b"/>
+                            <input type='hidden' name='timestamp' value='1526599580'/>
+                            <input type='hidden' name='spinner' value='X2Ju3S7_vxdSvkrVcnH_Q3z1JQtE'/>
+                            <p class='e4ad2967feb23e7ba3c33d6f657fc91d5a336f4f8'><label for='X3_PYJdqW9eTFEyLS_PhpzCB2T0s'>You seem to have CSS turned off.
+             Please don't fill out this field.</label><input id='X3_PYJdqW9eTFEyLS_PhpzCB2T0s' name='X3vPYJdqW9b4uBTs8G8bDwgJE2Ck' type=
+             'text'/></p>
+                            <p class='e4ad2967feb23e7ba3c33d6f657fc91d5a336f4f8'><label for='X3_PYJdqW9eXFEyLS_PhpzCB2T0s'>You seem to have CSS turned off.
+             Please don't fill out this field.</label><input id='X3_PYJdqW9eXFEyLS_PhpzCB2T0s' name='X3vPYJdqW9L4uBTs8G8bDwgJE2Ck' type=
+             'text'/></p>
+                        Briefly describe the problem (required):
+                        <input name="X0__SONydrKTb:9oy9v5HUV3O:8I" type="text" required>
+                    </div>
+                </div>
+                <div class="column small-12">
+                    <div class="upload-text">Upload screenshot of ad (required):</div>
+                    <div id='upload-it'>
+                        <a href="#" onclick="return false">Select a file</a>, or drag & drop file here.
+                    </div>
+                    <div id="upload-it-placeholder"></div> 
+
+                    <div class="dropzone-previews" style="display: none"></div>
+                    <div class="dz-message" style="display: none"></div> 
+                    
+                    <div id="dropzone-preview-template" style="display: none">
+                        <div class="dz-preview dz-file-preview">
+                            <img data-dz-thumbnail src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt=""/>
+                            <div class="dz-success-mark"><span>✔</span></div>
+                            <div class="dz-error-mark"><span>✘</span></div>
+                            <div class="dz-error-message"><span data-dz-errormessage></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column small-12">
+                    <u>Screenshot instructions:</u>
+                    
+                    <a data-external target=_blank href="https://access.redhat.com/solutions/2178">Red Hat Linux</a> &nbsp;
+                    <a data-external target=_blank href="https://help.ubuntu.com/stable/ubuntu-help/screen-shot-record.html">Ubuntu</a><br>
+                    
+                </div>
+                <div class="row small-12">
+                    <div class="column large-5 small-6">
+                        <p>
+                            <u>Click URL instructions:</u><br>
+                            Right-click on the ad, choose "Copy Link", then paste here &rarr;<br>
+                            (This may not be possible with some types of ads)
+                        </p>
+                        <a class="more-info" href="https://sourceforge.net/p/forge/documentation/Report%20a%20problem%20with%20Ad%20content/" target="_blank">More information about our ad policies</a>
+                    </div>
+                    <div class="column large-7 small-6">
+                        <p>Please provide the ad click URL, if possible:
+                        <input name="X0fjbItyEmqHd_t_dC_GwWIRaX:4" type="url">
+                        </p>
+                        <textarea id="gpt-info" name="X3P_WP96FREMh8jLlj2Lv0qexNXA"></textarea>
+                        <input class="button" type="submit" id="btn-blockthis-submit" value="Submit Report">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+        
+
+        <script type="text/javascript" src="//ads.pro-market.net/ads/scripts/site-143572.js"></script>
+        
+<div id="newsletter-floating" class="goth-form">
+    <h2>Get latest updates about Open Source Projects, Conferences and News.</h2>
+    <div class="teaser">
+    <input type="submit" value="Sign Up" class="bt">
+    </div>
+    <div class="form-itself">
+    
+
+
+<form action="/user/newsletters/subscribe" method="post" class="newsletter-subscribe-form compliance-form "  >
+
+    <div class="form">
+        <div class="fielderror"></div>
+        <input type="email" name="X3f7aKtaDr1U4HNXbJWzN4DDTuqY"  placeholder="email@address.com" value="" required>
+
+        <label class="input-set stacked input-set-country">
+            
+            <span class="input">
+<select id="country-floating" name="X3_jYPtGbt63FEyLS_PhpzCB2T0s" required class="use-placeholder-color">
+    <option value="">Select Country</option>
+    <option value="AF">Afghanistan</option>
+    <option value="AX">Aland Islands</option>
+    <option value="AL">Albania</option>
+    <option value="DZ">Algeria</option>
+    <option value="AS">American Samoa</option>
+    <option value="AD">Andorra</option>
+    <option value="AO">Angola</option>
+    <option value="AI">Anguilla</option>
+    <option value="AQ">Antarctica</option>
+    <option value="AG">Antigua and Barbuda</option>
+    <option value="AR">Argentina</option>
+    <option value="AM">Armenia</option>
+    <option value="AW">Aruba</option>
+    <option value="AU">Australia</option>
+    <option value="AT">Austria</option>
+    <option value="AZ">Azerbaijan</option>
+    <option value="BS">Bahamas</option>
+    <option value="BH">Bahrain</option>
+    <option value="BD">Bangladesh</option>
+    <option value="BB">Barbados</option>
+    <option value="BY">Belarus</option>
+    <option value="BE">Belgium</option>
+    <option value="BZ">Belize</option>
+    <option value="BJ">Benin</option>
+    <option value="BM">Bermuda</option>
+    <option value="BT">Bhutan</option>
+    <option value="BO">Bolivia</option>
+    <option value="BA">Bosnia and Herzegovina</option>
+    <option value="BW">Botswana</option>
+    <option value="BV">Bouvet Island</option>
+    <option value="BR">Brazil</option>
+    <option value="IO">British Indian Ocean Territory</option>
+    <option value="BN">Brunei Darussalam</option>
+    <option value="BG">Bulgaria</option>
+    <option value="BF">Burkina Faso</option>
+    <option value="BI">Burundi</option>
+    <option value="KH">Cambodia</option>
+    <option value="CM">Cameroon</option>
+    <option value="CA" selected>Canada</option>
+    <option value="CV">Cape Verde</option>
+    <option value="KY">Cayman Islands</option>
+    <option value="CF">Central African Republic</option>
+    <option value="TD">Chad</option>
+    <option value="CL">Chile</option>
+    <option value="CN">China</option>
+    <option value="CX">Christmas Island</option>
+    <option value="CC">Cocos (Keeling) Islands</option>
+    <option value="CO">Colombia</option>
+    <option value="KM">Comoros</option>
+    <option value="CG">Congo</option>
+    <option value="CD">Congo, The Democratic Republic of the</option>
+    <option value="CK">Cook Islands</option>
+    <option value="CR">Costa Rica</option>
+    <option value="CI">Cote D&#39;Ivoire</option>
+    <option value="HR">Croatia</option>
+    <option value="CU">Cuba</option>
+    <option value="CY">Cyprus</option>
+    <option value="CZ">Czech Republic</option>
+    <option value="DK">Denmark</option>
+    <option value="DJ">Djibouti</option>
+    <option value="DM">Dominica</option>
+    <option value="DO">Dominican Republic</option>
+    <option value="EC">Ecuador</option>
+    <option value="EG">Egypt</option>
+    <option value="SV">El Salvador</option>
+    <option value="GQ">Equatorial Guinea</option>
+    <option value="ER">Eritrea</option>
+    <option value="EE">Estonia</option>
+    <option value="ET">Ethiopia</option>
+    <option value="FK">Falkland Islands (Malvinas)</option>
+    <option value="FO">Faroe Islands</option>
+    <option value="FJ">Fiji</option>
+    <option value="FI">Finland</option>
+    <option value="FR">France</option>
+    <option value="GF">French Guiana</option>
+    <option value="PF">French Polynesia</option>
+    <option value="TF">French Southern Territories</option>
+    <option value="GA">Gabon</option>
+    <option value="GM">Gambia</option>
+    <option value="GE">Georgia</option>
+    <option value="DE">Germany</option>
+    <option value="GH">Ghana</option>
+    <option value="GI">Gibraltar</option>
+    <option value="GR">Greece</option>
+    <option value="GL">Greenland</option>
+    <option value="GD">Grenada</option>
+    <option value="GP">Guadeloupe</option>
+    <option value="GU">Guam</option>
+    <option value="GT">Guatemala</option>
+    <option value="GG">Guernsey</option>
+    <option value="GN">Guinea</option>
+    <option value="GW">Guinea-Bissau</option>
+    <option value="GY">Guyana</option>
+    <option value="HT">Haiti</option>
+    <option value="HM">Heard Island and McDonald Islands</option>
+    <option value="VA">Holy See (Vatican City State)</option>
+    <option value="HN">Honduras</option>
+    <option value="HK">Hong Kong</option>
+    <option value="HU">Hungary</option>
+    <option value="IS">Iceland</option>
+    <option value="IN">India</option>
+    <option value="ID">Indonesia</option>
+    <option value="IR">Iran, Islamic Republic of</option>
+    <option value="IQ">Iraq</option>
+    <option value="IE">Ireland</option>
+    <option value="IM">Isle of Man</option>
+    <option value="IL">Israel</option>
+    <option value="IT">Italy</option>
+    <option value="JM">Jamaica</option>
+    <option value="JP">Japan</option>
+    <option value="JE">Jersey</option>
+    <option value="JO">Jordan</option>
+    <option value="KZ">Kazakhstan</option>
+    <option value="KE">Kenya</option>
+    <option value="KI">Kiribati</option>
+    <option value="KP">Korea, Democratic People&#39;s Republic of</option>
+    <option value="KR">Korea, Republic of</option>
+    <option value="XK">Kosovo</option>
+    <option value="KW">Kuwait</option>
+    <option value="KG">Kyrgyzstan</option>
+    <option value="LA">Lao People&#39;s Democratic Republic</option>
+    <option value="LV">Latvia</option>
+    <option value="LB">Lebanon</option>
+    <option value="LS">Lesotho</option>
+    <option value="LR">Liberia</option>
+    <option value="LY">Libyan Arab Jamahiriya</option>
+    <option value="LI">Liechtenstein</option>
+    <option value="LT">Lithuania</option>
+    <option value="LU">Luxembourg</option>
+    <option value="MO">Macau</option>
+    <option value="MK">Macedonia</option>
+    <option value="MG">Madagascar</option>
+    <option value="MW">Malawi</option>
+    <option value="MY">Malaysia</option>
+    <option value="MV">Maldives</option>
+    <option value="ML">Mali</option>
+    <option value="MT">Malta</option>
+    <option value="MH">Marshall Islands</option>
+    <option value="MQ">Martinique</option>
+    <option value="MR">Mauritania</option>
+    <option value="MU">Mauritius</option>
+    <option value="YT">Mayotte</option>
+    <option value="MX">Mexico</option>
+    <option value="FM">Micronesia, Federated States of</option>
+    <option value="MD">Moldova, Republic of</option>
+    <option value="MC">Monaco</option>
+    <option value="MN">Mongolia</option>
+    <option value="ME">Montenegro</option>
+    <option value="MS">Montserrat</option>
+    <option value="MA">Morocco</option>
+    <option value="MZ">Mozambique</option>
+    <option value="MM">Myanmar</option>
+    <option value="NA">Namibia</option>
+    <option value="NR">Nauru</option>
+    <option value="NP">Nepal</option>
+    <option value="NL">Netherlands</option>
+    <option value="AN">Netherlands Antilles</option>
+    <option value="NC">New Caledonia</option>
+    <option value="NZ">New Zealand</option>
+    <option value="NI">Nicaragua</option>
+    <option value="NE">Niger</option>
+    <option value="NG">Nigeria</option>
+    <option value="NU">Niue</option>
+    <option value="NF">Norfolk Island</option>
+    <option value="MP">Northern Mariana Islands</option>
+    <option value="NO">Norway</option>
+    <option value="OM">Oman</option>
+    <option value="PK">Pakistan</option>
+    <option value="PW">Palau</option>
+    <option value="PS">Palestinian Territory</option>
+    <option value="PA">Panama</option>
+    <option value="PG">Papua New Guinea</option>
+    <option value="PY">Paraguay</option>
+    <option value="PE">Peru</option>
+    <option value="PH">Philippines</option>
+    <option value="PN">Pitcairn Islands</option>
+    <option value="PL">Poland</option>
+    <option value="PT">Portugal</option>
+    <option value="PR">Puerto Rico</option>
+    <option value="QA">Qatar</option>
+    <option value="RE">Reunion</option>
+    <option value="RO">Romania</option>
+    <option value="RU">Russian Federation</option>
+    <option value="RW">Rwanda</option>
+    <option value="BL">Saint Barthelemy</option>
+    <option value="SH">Saint Helena</option>
+    <option value="KN">Saint Kitts and Nevis</option>
+    <option value="LC">Saint Lucia</option>
+    <option value="MF">Saint Martin</option>
+    <option value="PM">Saint Pierre and Miquelon</option>
+    <option value="VC">Saint Vincent and the Grenadines</option>
+    <option value="WS">Samoa</option>
+    <option value="SM">San Marino</option>
+    <option value="ST">Sao Tome and Principe</option>
+    <option value="SA">Saudi Arabia</option>
+    <option value="SN">Senegal</option>
+    <option value="RS">Serbia</option>
+    <option value="SC">Seychelles</option>
+    <option value="SL">Sierra Leone</option>
+    <option value="SG">Singapore</option>
+    <option value="SK">Slovakia</option>
+    <option value="SI">Slovenia</option>
+    <option value="SB">Solomon Islands</option>
+    <option value="SO">Somalia</option>
+    <option value="ZA">South Africa</option>
+    <option value="GS">South Georgia and the South Sandwich Islands</option>
+    <option value="ES">Spain</option>
+    <option value="LK">Sri Lanka</option>
+    <option value="SD">Sudan</option>
+    <option value="SR">Suriname</option>
+    <option value="SJ">Svalbard and Jan Mayen</option>
+    <option value="SZ">Swaziland</option>
+    <option value="SE">Sweden</option>
+    <option value="CH">Switzerland</option>
+    <option value="SY">Syrian Arab Republic</option>
+    <option value="TW">Taiwan</option>
+    <option value="TJ">Tajikistan</option>
+    <option value="TZ">Tanzania, United Republic of</option>
+    <option value="TH">Thailand</option>
+    <option value="TL">Timor-Leste</option>
+    <option value="TG">Togo</option>
+    <option value="TK">Tokelau</option>
+    <option value="TO">Tonga</option>
+    <option value="TT">Trinidad and Tobago</option>
+    <option value="TN">Tunisia</option>
+    <option value="TR">Turkey</option>
+    <option value="TM">Turkmenistan</option>
+    <option value="TC">Turks and Caicos Islands</option>
+    <option value="TV">Tuvalu</option>
+    <option value="UG">Uganda</option>
+    <option value="UA">Ukraine</option>
+    <option value="AE">United Arab Emirates</option>
+    <option value="GB">United Kingdom</option>
+    <option value="US">United States</option>
+    <option value="UM">United States Minor Outlying Islands</option>
+    <option value="UY">Uruguay</option>
+    <option value="UZ">Uzbekistan</option>
+    <option value="VU">Vanuatu</option>
+    <option value="VE">Venezuela</option>
+    <option value="VN">Vietnam</option>
+    <option value="VG">Virgin Islands, British</option>
+    <option value="VI">Virgin Islands, U.S.</option>
+    <option value="WF">Wallis and Futuna</option>
+    <option value="EH">Western Sahara</option>
+    <option value="YE">Yemen</option>
+    <option value="ZM">Zambia</option>
+    <option value="ZW">Zimbabwe</option>
+</select>
+</span>
+        </label>
+        <label class="input-set stacked input-set-state">
+            
+            <span class="input">
+<select id="state-floating" name="X3ejDKsuKr1U4HNXbJWzN4DDTuqY"  class="use-placeholder-color">
+    <option value="">Select State</option>
+    <option value="AL">Alabama</option>
+    <option value="AK">Alaska</option>
+    <option value="AZ">Arizona</option>
+    <option value="AR">Arkansas</option>
+    <option value="CA">California</option>
+    <option value="CO">Colorado</option>
+    <option value="CT">Connecticut</option>
+    <option value="DE">Delaware</option>
+    <option value="DC">District of Columbia</option>
+    <option value="FL">Florida</option>
+    <option value="GA">Georgia</option>
+    <option value="HI">Hawaii</option>
+    <option value="ID">Idaho</option>
+    <option value="IL">Illinois</option>
+    <option value="IN">Indiana</option>
+    <option value="IA">Iowa</option>
+    <option value="KS">Kansas</option>
+    <option value="KY">Kentucky</option>
+    <option value="LA">Louisiana</option>
+    <option value="ME">Maine</option>
+    <option value="MD">Maryland</option>
+    <option value="MA">Massachusetts</option>
+    <option value="MI">Michigan</option>
+    <option value="MN">Minnesota</option>
+    <option value="MS">Mississippi</option>
+    <option value="MO">Missouri</option>
+    <option value="MT">Montana</option>
+    <option value="NE">Nebraska</option>
+    <option value="NV">Nevada</option>
+    <option value="NH">New Hampshire</option>
+    <option value="NJ">New Jersey</option>
+    <option value="NM">New Mexico</option>
+    <option value="NY">New York</option>
+    <option value="NC">North Carolina</option>
+    <option value="ND">North Dakota</option>
+    <option value="OH">Ohio</option>
+    <option value="OK">Oklahoma</option>
+    <option value="OR">Oregon</option>
+    <option value="PA">Pennsylvania</option>
+    <option value="PR">Puerto Rico</option>
+    <option value="RI">Rhode Island</option>
+    <option value="SC">South Carolina</option>
+    <option value="SD">South Dakota</option>
+    <option value="TN">Tennessee</option>
+    <option value="TX">Texas</option>
+    <option value="UT">Utah</option>
+    <option value="VT">Vermont</option>
+    <option value="VA">Virginia</option>
+    <option value="WA">Washington</option>
+    <option value="WV">West Virginia</option>
+    <option value="WI">Wisconsin</option>
+    <option value="WY">Wyoming</option>
+</select>
+</span>
+        </label>
+
+        
+
+<div class="gdpr-consent-requirement gdpr-consent-topics">
+    <h4>
+        Yes, also send me special offers about products &amp; services regarding:
+        </h4>
+
+        
+        
+ 
+
+<label class="input-set stacked inset">
+    <span class="checkbox"> <input type="checkbox" name="X1fTRLdqdtovb_cU1_wy6XqrHIlY" value="hardware"  data-consent-action data-consent-id=596517bdc14bed0737e41a4d ></span>
+    <span class="checkbox-label">Hardware</span>
+    
+
+</label>
+
+
+        
+        
+ 
+
+<label class="input-set stacked inset">
+    <span class="checkbox"> <input type="checkbox" name="X1fTRLdqdtovb_cU1_wy6XqrHIlY" value="network-security"  data-consent-action data-consent-id=596517bdc14bed0737e41a4e ></span>
+    <span class="checkbox-label">Network Security</span>
+    
+
+</label>
+
+
+        
+        
+ 
+
+<label class="input-set stacked inset">
+    <span class="checkbox"> <input type="checkbox" name="X1fTRLdqdtovb_cU1_wy6XqrHIlY" value="cloud"  data-consent-action data-consent-id=596517bdc14bed0737e41a4f ></span>
+    <span class="checkbox-label">Cloud</span>
+    
+
+</label>
+
+
+        
+        
+ 
+
+<label class="input-set stacked inset">
+    <span class="checkbox"> <input type="checkbox" name="X1fTRLdqdtovb_cU1_wy6XqrHIlY" value="software-development"  data-consent-action data-consent-id=596517bdc14bed0737e41a4c ></span>
+    <span class="checkbox-label">Software Development</span>
+    
+
+</label>
+
+
+        
+        
+ 
+
+<label class="input-set stacked inset">
+    <span class="checkbox"> <input type="checkbox" name="X1fTRLdqdtovb_cU1_wy6XqrHIlY" value="artificial-intelligence"  data-consent-action data-consent-id=596517bdc14bed0737e41a50 ></span>
+    <span class="checkbox-label">Artificial Intelligence</span>
+    
+
+</label>
+
+
+        
+</div>
+
+<div class="gdpr-consent-requirement gdpr-contact-methods">
+    <h4>
+    You can contact me via:
+    </h4>
+
+    
+ 
+
+<label class="input-set stacked inset input-set-consent-email minimum-explicit-required">
+    <span class="checkbox"> <input type="checkbox" name="X1_jYJcuOpqDw_9Ao9BC0rFfI1V8" value="email"  data-consent-action data-consent-id=59aed8e456585fa9603b60ec ></span>
+    <span class="checkbox-label">Email (required)</span>
+    
+
+</label>
+
+
+    
+ 
+
+<label class="input-set stacked inset prompt-phone">
+    <span class="checkbox"> <input type="checkbox" name="X1_jYJcuOpqDw_9Ao9BC0rFfI1V8" value="phone"  data-consent-action data-consent-id=596517bdc14bed0737e41a51 ></span>
+    <span class="checkbox-label">Phone</span>
+    
+
+</label>
+
+
+    
+ 
+
+<label class="input-set stacked inset prompt-phone">
+    <span class="checkbox"> <input type="checkbox" name="X1_jYJcuOpqDw_9Ao9BC0rFfI1V8" value="sms"  data-consent-action data-consent-id=596517bdc14bed0737e41a53 ></span>
+    <span class="checkbox-label">SMS</span>
+    
+
+</label>
+
+
+
+    <label class="input-set inset input-phone hide ">
+        <span class="label">Phone</span>
+        <span class="input">
+            <input type="tel" name="X3evfJNGKr1U4HNXbJWzN4DDTuqY" value="">
+        </span>
+        <span class="error-message"></span>
+    </label>
+</div>
+
+
+        
+
+      
+        
+    
+    <div class="js-required fielderror">JavaScript is required for this form.</div>
+    
+    <div class="g-recaptcha"
+          data-sitekey="6LeVgCEUAAAAACtawUTrPTBy0mTrGtjpPn_Xh-ZW"
+          data-badge="inline"
+          data-size="invisible"
+          >
+    </div>
+
+
+    </div>
+
+    <p class="details">
+    <span class="fielderror"></span>
+    <input type="hidden" name="X0_XSPMyDoKDb98cv9v5HUV3O:8I" value="sitewide" class="newsletter-optin-assume">
+    
+ 
+
+<label class="input-set input-set-agree-general allow-precheck">
+    <span class="checkbox"> <input type="checkbox" name="X3_jYJcyKq6DFEyLS_PhpzCB2T0s" value="consent"  data-consent-action data-consent-id=5a26cb73ecf83256408fd377 required></span>
+    <span class="checkbox-label">I agree to receive these communications from SourceForge.net.  I understand that I can withdraw my consent at anytime. Please refer to our <a href="http://slashdotmedia.com/terms-of-use">Terms of Use</a> and <a href="https://slashdotmedia.com/privacy-statement/">Privacy Policy</a> or <a href="/support">Contact Us</a> for more details.</span>
+    
+
+</label>
+
+
+            
+ 
+
+<label class="input-set input-set-agree-general-gdpr allow-precheck hide-initially">
+    <span class="checkbox"> <input type="checkbox" name="X3_jYJcyKq6DFEyLS_PhpzCB2T0s" value="consent"  data-consent-action data-consent-id=5a26cb73ecf83256408fd378 required></span>
+    <span class="checkbox-label">I agree to receive these communications from SourceForge.net via the means indicated above.  I understand that I can withdraw my consent at anytime. Please refer to our <a href="http://slashdotmedia.com/terms-of-use">Terms of Use</a> and <a href="https://slashdotmedia.com/privacy-statement/">Privacy Policy</a> or <a href="/support">Contact Us</a> for more details.</span>
+    
+
+</label>
+
+
+    </p>
+
+    <input type="submit" value="Subscribe" class="bt button blue">
+
+    <input type="hidden" name="source" value="floating">
+    <input type="hidden" name="Xy_jYPtGbt63w8do4:SCjsEg7IbQ" value="user">
+    <input type="hidden" name="X2_DaPtVuUlrPFQxPgUDdRcU:414" value="">
+
+
+  <input type="hidden" name="_visit_cookie" value="79abb963-e7a5-421c-9860-25d6a2ec449b"/>
+<input type='hidden' name='timestamp' value='1526599580'/>
+<input type='hidden' name='spinner' value='X2Ju3S7_vxdSvkrVcnH_Q3z1JQtE'/>
+<p class='e4ad2967feb23e7ba3c33d6f657fc91d5a336f4f8'><label for='X3_PYJdqW9OTFEyLS_PhpzCB2T0s'>You seem to have CSS turned off.
+             Please don't fill out this field.</label><input id='X3_PYJdqW9OTFEyLS_PhpzCB2T0s' name='X3vPYJdqW9b4uBTs8G8bDwgJE2Ck' type=
+             'text'/></p>
+<p class='e4ad2967feb23e7ba3c33d6f657fc91d5a336f4f8'><label for='X3_PYJdqW9OXFEyLS_PhpzCB2T0s'>You seem to have CSS turned off.
+             Please don't fill out this field.</label><input id='X3_PYJdqW9OXFEyLS_PhpzCB2T0s' name='X3vPYJdqW9L4uBTs8G8bDwgJE2Ck' type=
+             'text'/></p>
+</form>
+
+
+    </div>
+    <a id="btn-float-close">No, Thank you</a>
+</div>
+
+        
+    
+        
+<script src="//a.fsdn.com/con/js/sftheme/vendor/audero-sticky.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sandiego/chrome.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sandiego/utilities.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/dropzone-4.3.0.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/dragster.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/lib/jquery.cookie.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/lib/jquery.dotdotdot-1.8.3.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/jquery.notify.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/shared.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/widgets.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/global.js?1526485194" type="text/javascript"></script>
+
+
+        
+<script src="//a.fsdn.com/con/js/sftheme/vendor/foundation6/plugins/foundation.core.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/foundation6/plugins/foundation.util.mediaQuery.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/foundation6/plugins/foundation.util.keyboard.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/foundation6/plugins/foundation.util.box.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/foundation6/plugins/foundation.util.nest.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/foundation6/plugins/foundation.util.triggers.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/foundation6/plugins/foundation.offcanvas.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/foundation6/plugins/foundation.reveal.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/foundation6/plugins/foundation.dropdown.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/foundation6/plugins/foundation.dropdownMenu.min.js?1526485194" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/foundation6/plugins/foundation.toggler.min.js?1526485194" type="text/javascript"></script>
+
+
+    
+<script src="//a.fsdn.com/con/js/sftheme/vendor/foundation6/plugins/foundation.tooltip.min.js?1526485194" type="text/javascript"></script>
+
+
+
+        <script>
+            /* global Foundation */
+            $(document).foundation();
+            Foundation.Triggers.forceListenersNow();
+        </script>
+        <noscript><p><img src="//analytics.slashdotmedia.com/sf.php?idsite=39" style="border:0;" alt="" /></p></noscript><script src="https://www.google.com/recaptcha/api.js?onload=recaptchaLoadCallback&render=explicit" async defer></script><script type="text/javascript">
+            var _linkedin_data_partner_id = "97055";
+            </script><script type="text/javascript">
+            (function(){var s = document.getElementsByTagName("script")[0];
+            var b = document.createElement("script");
+            b.type = "text/javascript";b.async = true;
+            b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+            s.parentNode.insertBefore(b, s);})();
+            </script>
+            <noscript>
+            <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=97055&fmt=gif" />
+            </noscript>
+
+        
+        
+
+
+
+
+
+
+
+
+        
+    </body>
+</html>

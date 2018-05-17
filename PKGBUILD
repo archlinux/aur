@@ -8,7 +8,7 @@ license=('GPL2')
 depends=('sdl_ttf' 'sdl_image' 'glu' 'libxxf86misc')
 optdepends=('openal' 'freealut')
 makedepends=('gcc')
-source=("https://cfhcable.dl.sourceforge.net/project/xpilot/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('f287093c757a71232000f210ee4a4edeccc9e8af0817d5be43084e84aebd4709')
 
 build() {
