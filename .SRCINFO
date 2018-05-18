@@ -1,21 +1,22 @@
 pkgbase = mingw-w64-dlib
-	pkgdesc = Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. (mingw-w64)
-	pkgver = 19.10
+	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques (mingw-w64)
+	pkgver = 19.11
 	pkgrel = 1
-	url = http://www.dlib.net/
+	url = http://www.dlib.net
 	arch = any
-	license = Boost Software License
+	license = custom
 	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
 	optdepends = mingw-w64-giflib: for GIF support
 	optdepends = mingw-w64-lapack: for BLAS and LAPACK support
 	optdepends = mingw-w64-libjpeg: for JPEG support
 	optdepends = mingw-w64-libpng: for PNG support
 	optdepends = mingw-w64-sqlite: for sqlite support
-	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://downloads.sourceforge.net/project/dclib/dlib/v19.10/dlib-19.10.tar.bz2
-	sha512sums = 04b1513f09bf43677ad5b59d76fe7aa9cd96c6d7d1aac2fb0f431a555ccc670996a30660a8bf50eea082842f623b68f1ac019058b351750c0d86f8f0b355891b
+	options = !buildflags
+	source = https://downloads.sourceforge.net/project/dclib/dlib/v19.11/dlib-19.11.tar.bz2
+	sha256sums = 3acb7525d25f445b3f8bc33ebe46f056297cc97c635abf275e6c0e7ca09ef48b
 
 pkgname = mingw-w64-dlib
 
