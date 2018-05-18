@@ -4,8 +4,8 @@
 
 pkgbase=linux-threadripper               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.15
-pkgver=4.15.16
+_srcname=linux-4.16
+pkgver=4.16.9
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -21,24 +21,27 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  0003-restore-pci-bridge-configuration-space-on-bridge-reset.patch
+  0003-Partially-revert-swiotlb-remove-various-exports.patch
+  0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
+  0005-restore-pci-bridge-configuration-space-on-bridge-reset.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '7fe0dd8c07051e7c7b75a9e2aef60c577babedc4ad6e37886fb75cbd466b8696'
+            '299b45a4f16f763ecf654e6642c020b6e9e461601d056ef44ecb21b54d736cbf'
             'SKIP'
-            'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
+            '66e44d128ddbc6ca30127d7fca3947f0200146b451bf3d7376fc2ef985a4a89b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '19b17156ea5aec86e4eb87fc855789375a5184faf564b4ac2cd0f279de7b3bf9'
-            'f49e23e2a00357f8a5f6cc5caadd56a4df2b0a3e2b53d76a514ca508f25a62a7'
-            'b3437e2c9f6ebb90f293b24fa1a988a309eb05b61c5733c41ec8a3481e8c5d7f'
-            )
+            '69241df4bd7897eb04db90e4d0a82c6e0b99b806019ba96bb885278ca8da89df'
+            '10728f672a83a515af540cafafde62346e9ccc2d14bf74e417fd2693865b1293'
+            'a81b612369e78d142ff80ec3adda36b3f94503e5a68d54282c508a112cc8dae0'
+            '052a39582f84c52b027c261fcec90325493f4d46f15647c274a58e39145deced'
+            'b3437e2c9f6ebb90f293b24fa1a988a309eb05b61c5733c41ec8a3481e8c5d7f')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-THREADRIPPER}
@@ -58,7 +61,13 @@ prepare() {
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
-  patch -Np1 -i ../0003-restore-pci-bridge-configuration-space-on-bridge-reset.patch
+  # NVIDIA driver compat
+  patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+
+  # https://bugs.archlinux.org/task/58237
+  patch -Np1 -i ../0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
+
+  patch -Np1 -i ../0005-restore-pci-bridge-configuration-space-on-bridge-reset.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
@@ -172,9 +181,6 @@ _package-headers() {
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
