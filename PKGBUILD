@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-ss01
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 pkgdesc='A slender monospace typeface. Shape: Andale Mono.'
 arch=('any')
@@ -21,7 +21,7 @@ conflicts=('ttf-iosevka'
            'ttf-iosevka-ss11')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-ss01-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('1af2d2077ffa847a43e3a5013af5a5a20ef51d64d82733bb3eb376bf9ac4b0b0'
+sha256sums=('a16df4c94c6ffda2022d8813bff587d223634f5632510ba8bdfb54b48ee68643'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
