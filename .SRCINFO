@@ -1,6 +1,6 @@
 pkgbase = mongoose-os
 	pkgdesc = This package contains the Mongoose OS CLI tool.
-	pkgver = latest_201805141730+1b49b7f
+	pkgver = 201805141730+1b49b7f
 	pkgrel = 1
 	url = https://mongoose-os.com
 	arch = x86_64

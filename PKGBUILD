@@ -1,7 +1,7 @@
 # Maintainer: Hamza BENDALI BRAHAM <hbendali@ya.ru>
 # Contributor: Hamza BENDALI BRAHAM <hbendali@ya.ru>
 pkgname=mongoose-os
-pkgver=latest_201805141730+1b49b7f
+pkgver=201805141730+1b49b7f
 pkgrel=1
 pkgdesc="This package contains the Mongoose OS CLI tool."
 arch=('x86_64' 'i686')
