@@ -1,7 +1,7 @@
 # Maintainer: Christopher Fair  <christopherpfair at comcast dot net>
 pkgname=git-subrepo
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Git Submodule Alternative"
 arch=('i686' 'x86_64')
 url="https://github.com/chrisfair/git-subrepo.git"
