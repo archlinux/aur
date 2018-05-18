@@ -4,7 +4,7 @@
 # Contributor: Tony Lambiris <tony@critialstack.com>
 
 pkgname=apt
-pkgver=1.5.1
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Command-line package manager used on Debian-based systems"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://anonscm.debian.org/git/apt/apt.git#tag=${pkgver}")
+source=("git+https://salsa.debian.org/apt-team/apt.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
