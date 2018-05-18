@@ -1,0 +1,18 @@
+pkgbase = python-notedown
+	pkgdesc = Markdown <=> IPython Notebook
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/aaren/notedown
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = jupyter-nbformat
+	depends = jupyter-nbconvert
+	depends = pandoc-attributes
+	depends = python-six
+	source = notedown-1.5.1.tar.gz::https://files.pythonhosted.org/packages/58/1b/a926945216cb7d1d21abdbc975195bd7beb3bceafa41c186ecb95f8f9121/notedown-1.5.1.tar.gz
+	sha256sums = 36e033ebbbe5aca0fab031ffaf3611d5bc5c50237df68ff81bb95f8be353a1ee
+
+pkgname = python-notedown
+
