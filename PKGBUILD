@@ -4,7 +4,7 @@
 
 pkgname="clamav-unofficial-sigs"
 pkgver="5.6.2"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com"
 url="https://github.com/extremeshok/clamav-unofficial-sigs"
 arch=('any')
