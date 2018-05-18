@@ -1,6 +1,6 @@
 pkgbase = python-cli-ui
 	pkgdesc = Build nice user interfaces in the terminal
-	pkgver = 0.6.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = http://github.com/TankerApp/python-cli-ui
 	arch = any

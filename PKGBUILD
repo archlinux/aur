@@ -1,6 +1,6 @@
 # Maintainer: Dimitri Merejkowsky <d.merej@gmail.com>
 pkgname=python-cli-ui
-pkgver="0.6.0"
+pkgver="0.7.1"
 pkgrel=1
 pkgdesc="Build nice user interfaces in the terminal"
 url="http://github.com/TankerApp/python-cli-ui"
