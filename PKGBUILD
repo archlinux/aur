@@ -2,8 +2,8 @@
 # Contributor: perlawk
 
 pkgname=dlib
-pkgver=19.10
-pkgrel=2
+pkgver=19.11
+pkgrel=1
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques"
 arch=('x86_64')
 url="http://www.dlib.net"
@@ -19,7 +19,7 @@ optdepends=('blas: for BLAS support'
             'sqlite: for sqlite support')
 makedepends=('cmake' 'gcc6')
 source=("https://downloads.sourceforge.net/project/dclib/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('a0470f978125eea13076aa9557bf0e4990a030ad8de972225dba46b45b3b3bd1')
+sha256sums=('3acb7525d25f445b3f8bc33ebe46f056297cc97c635abf275e6c0e7ca09ef48b')
 
 build() {
   cd "${srcdir}"
