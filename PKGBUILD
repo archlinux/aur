@@ -11,12 +11,14 @@ arch=('any')
 license=('BSD')
 depends=('clamav' 'rsync' 'bind-tools' 'curl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/extremeshok/clamav-unofficial-sigs/archive/${pkgver}.tar.gz"
-    'logrotate'
+    'clamav-unofficial-sigs.logrotate'
     'clamav-unofficial-sigs.8'
+    'os.conf'
 )
 sha256sums=('233404d767fcb7d2b82defef831d584cbbcc7105f6bbc586d69a0a960bc0d4df'
             '0564ecac9ea02376b627fed158c9ea899c58b528d276d6d962f9e642e060239e'
-            '4bc5487486a2bc11ba827eeaf41bf866c5da34633bef7d801af34cbe7f8d1801')
+            '4bc5487486a2bc11ba827eeaf41bf866c5da34633bef7d801af34cbe7f8d1801'
+            '84b71e4db873b0aa85886b53ed46d1fc13323f04d8997b3e36b5acc524fb2d83')
 backup=('etc/clamav-unofficial-sigs/user.conf')
 install='clamav-unofficial-sigs.install'
 
@@ -27,18 +29,14 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm755 clamav-unofficial-sigs.sh "${pkgdir}/usr/bin/clamav-unofficial-sigs.sh"
-    install -Dm644 "${srcdir}/clamav-unofficial-sigs.8" "${pkgdir}/usr/share/man/man8/clamav-unofficial-sigs.8"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/clamav-unofficial-sigs/LICENSE"
+    install -Dm644 -t "${pkgdir}/etc/clamav-unofficial-sigs" "${srcdir}/os.conf" config/{master,user}.conf
+    install -Dm644 "${srcdir}/clamav-unofficial-sigs.logrotate" "${pkgdir}/etc/logrotate.d/clamav-unofficial-sigs"
+    install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" systemd/*
+    install -Dm644 -t "${pkgdir}/usr/share/man/man8" "${srcdir}/clamav-unofficial-sigs.8"
+    install -Dm755 -t "${pkgdir}/usr/bin" clamav-unofficial-sigs.sh
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/clamav-unofficial-sigs" LICENSE
     install -d -o clamav -g clamav "${pkgdir}/var/lib/clamav-unofficial-sigs"
     install -d -o clamav -g clamav "${pkgdir}/var/log/clamav-unofficial-sigs"
-    mkdir -p "${pkgdir}/etc/clamav-unofficial-sigs"
-    install -Dm644 config/master.conf "${pkgdir}/etc/clamav-unofficial-sigs/master.conf"
-    install -Dm644 config/os.archlinux.conf "${pkgdir}/etc/clamav-unofficial-sigs/os.conf"
-    install -Dm644 config/user.conf "${pkgdir}/etc/clamav-unofficial-sigs/user.conf"
-    install -Dm644 "${srcdir}/logrotate" "${pkgdir}/etc/logrotate.d/clamav-unofficial-sigs"
-    install -d "${pkgdir}/usr/lib/systemd/system"
-    install -Dm644 systemd/* "${pkgdir}/usr/lib/systemd/system/"
 }
 
 # vim:set ts=4 sw=2 ft=sh et syn=sh ft=sh:
