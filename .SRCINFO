@@ -1,0 +1,19 @@
+pkgbase = apio
+	pkgdesc = Experimental micro-ecosystem for open FPGAs
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://pypi.org/project/apio/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-pyserial
+	depends = python-semantic-version
+	depends = python-pyjwt
+	depends = python-colorama
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/a/apio/apio-0.3.3.tar.gz
+	md5sums = 6712e00149cbb1b36fd5bc50cb526409
+
+pkgname = apio
+
