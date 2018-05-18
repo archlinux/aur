@@ -2,7 +2,7 @@
 
 _npmname='@google/clasp'
 pkgname="nodejs-google-clasp"
-pkgver=1.1.5
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Develop Apps Script Projects locally'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('typescript: autocompletion and linting')
 install="$pkgname".install
 source=("https://registry.npmjs.org/$_npmname/-/${_npmname##*/}-$pkgver.tgz")
 noextract=("${_npmname##*/}-$pkgver.tgz")
-sha256sums=('7ac6a02c22554eed516505d4304b092c140df0e2742b339ba1e055a5f9eff45b')
+sha256sums=('fba6d7b54dd0cb1b3282693a4d920db2a8cb14b8b3d0ea7e14ef61f5cddaae92')
 
 package() {
     cd $srcdir
@@ -24,7 +24,6 @@ package() {
     # See https://github.com/npm/npm/issues/9359 for details.
     find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 
-    rmdir "${pkgdir}"/usr/etc
     # Rename command because clasp from [community] has /usr/bin/clasp
     mv "${pkgdir}"/usr/bin/{,g}clasp
 }
