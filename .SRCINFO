@@ -5,10 +5,10 @@ pkgbase = aspell-bn
 	url = http://aspell.net/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	depends = aspell
 	source = https://github.com/Pavel-Sayekat/aspell-bn/archive/master.zip
-	sha256sums = 1e774ffdc728def394fd11aefaa3b1f8128998e1ab54897e7fd3d622ab9a3cf80304f811c5ed73abe953cdb6eace9b847a713de2ffc9a883fc6546b528dd5eb4
+	sha256sums = 03a812d859bb133af7acd3246d973de3d4a7388d346ff2290df1e86e7d4bc382
 
 pkgname = aspell-bn
 
