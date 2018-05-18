@@ -7,7 +7,7 @@
 
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
-pkgver=5.4.10
+pkgver=5.4.12
 pkgrel=1
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
@@ -104,12 +104,12 @@ source=("https://github.com/OpenNebula/one/archive/release-${pkgver}.tar.gz"
         'set_locations.patch'
         'fix_kvm_emulator.patch'
         'opennebula.install')
-md5sums=('c7c3d8ae70fa776ff0a68595a8c3a6db' #package
+md5sums=('22b01bbbdd0f62bc300d6b592c2f71d6' #package
             '6d4b3b7c89371c2bd086525a6b5a0027' #opennebula.service
             'b576f9dd30d62dc4b3090878561ed3e6' #opennebula-scheduler.service
             '747f45e523315f391da604b08abafa16' #opennebula-sunstone.service
             'e0d276ff2a885679ac6a227e2e592509' #opennebula-econe.service
-            'a78a5b61825fb7e361c4999530893c01' #opennebula-oneflow.service
+            'bdccd7529afc2d87bcc3361c72259db2' #opennebula-oneflow.service
             'cb945dde4dbabde055d63bb59bff4cd4' #opennebula-onegate.service
             '3c38e24ef93de0982737f3dabbb9d251' #opennebula-novnc.service
             '8cbcd7b189f191554e5722a087a4fa22' #opennebula.conf

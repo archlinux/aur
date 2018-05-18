@@ -1,3 +1,9 @@
+2018-05-18 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
+
+  * 5.4.12-1:
+  New upstream release (5.4.12)
+  opennebula-oneflow.service updated to be closer to upstream
+
 2018-04-13 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
 
   * 5.4.10-1:
@@ -6,6 +12,7 @@
   Added dependencies to build sunstone files needed if building from gitub
 
 2018-02-03 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
+
   * 5.4.6-1:
   New upstream release (5.4.6)
 
