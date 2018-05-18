@@ -4,12 +4,12 @@
 _pkgbasename=gmidimonitor
 pkgname=${_pkgbasename}-git
 pkgver=3.6.r0.ga506126
-pkgrel=2
+pkgrel=3
 pkgdesc="A GTK+ application that shows MIDI events"
 arch=('i686' 'x86_64')
-url="http://home.gna.org/gmidimonitor/"
+url="http://repo.or.cz/gmidimonitor.git"
 license=('GPL')
-depends=('gtk2' 'alsa-lib' 'jack2')
+depends=('gtk2' 'alsa-lib' 'jack')
 makedepends=('git' 'python2')
 provides=("${_pkgbasename}")
 conflicts=("${_pkgbasename}")
