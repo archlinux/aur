@@ -1,7 +1,7 @@
 # Maintainer: Limao Luo <luolimao+AUR@gmail.com>
 
 pkgname=humanity-icon-theme
-pkgver=0.6.13
+pkgver=0.6.15
 pkgrel=1
 pkgdesc="Humanity icons from Ubuntu without modification"
 arch=(any)
@@ -10,8 +10,8 @@ license=(GPL2)
 conflicts=(humanity-icons)
 options=(!emptydirs)
 source=(https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_$pkgver.tar.xz)
-sha256sums=('fbc20e8b347b82404f78c56d9f3e1baf01de8e1c9bf6cc72f5fe78157e6a9acf')
-sha512sums=('26798291df0067760efd54d847bdbd4d34b3017327c181215306f53a6477c23deeb8409266882994678319e49937f8b1a693fbc389c1dd1c9af908abcb905df7')
+sha256sums=('9dbcb425c2ee2a58c70da1eda4c2c88e32e7ede4094fb59772726864c8214aa6')
+sha512sums=('dbdd94b03ebe132d193024d1c791b6fa0dd333f3d476954f8628dba8ef8e4cee8ca21e5d769de3f72b0b0d1054e1d4a610532e9d113da5323a14bb6752be9a66')
 
 package() {
     install -d "$pkgdir"/usr/share/icons/
