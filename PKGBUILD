@@ -4,12 +4,12 @@
 _pkgbasename=gmidimonitor
 pkgname=${_pkgbasename}-git
 pkgver=3.6.r0.ga506126
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK+ application that shows MIDI events"
 arch=('i686' 'x86_64')
 url="http://home.gna.org/gmidimonitor/"
 license=('GPL')
-depends=('gtk2' 'jack2')
+depends=('gtk2' 'alsa-lib' 'jack2')
 makedepends=('git' 'python2')
 provides=("${_pkgbasename}")
 conflicts=("${_pkgbasename}")
@@ -48,4 +48,3 @@ package() {
     install -Dm644 ../${_pkgbasename}.svg \
         "$pkgdir/usr/share/pixmaps/${_pkgbasename}.svg"
 }
-
