@@ -21,7 +21,7 @@ install=
 changelog=
 source=("http://victor3d.karelia.pro/arch/executor.tar.gz")
 noextract=()
-md5sums=("c932297b0906c746ea5b73bfe85b58b8")
+md5sums=("ab9650aa5215a569703741b427aab061")
 validpgpkeys=()
 
 prepare() {
