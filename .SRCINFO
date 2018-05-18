@@ -1,8 +1,8 @@
 pkgbase = gcc6
-	pkgdesc = The GNU Compiler Collection
+	pkgdesc = The GNU Compiler Collection (6.x.x)
 	pkgver = 6.4.1
 	pkgrel = 5
-	url = http://gcc.gnu.org
+	url = https://gcc.gnu.org/gcc-6/
 	arch = x86_64
 	license = GPL
 	license = LGPL
@@ -14,7 +14,7 @@ pkgbase = gcc6
 	makedepends = libmpc
 	makedepends = doxygen
 	makedepends = gcc-ada
-	makedepends = git
+	makedepends = svn
 	makedepends = java-environment-common
 	makedepends = zip
 	makedepends = jdk8-openjdk
@@ -22,12 +22,12 @@ pkgbase = gcc6
 	makedepends = libart-lgpl
 	makedepends = libxtst
 	options = !emptydirs
-	source = git+https://gcc.gnu.org/git/gcc.git#commit=878763634f0a75699559b3c0b90d466954a6510f
-	source = http://isl.gforge.inria.fr/isl-0.17.tar.bz2
+	source = gcc::svn://gcc.gnu.org/svn/gcc/branches/gcc-6-branch#revision=253363
+	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
 	source = http://www.bastoul.net/cloog/pages/download/cloog-0.18.4.tar.gz
-	sha1sums = SKIP
-	sha1sums = 6243384d1b1d4b3043037698485a468a485b111a
-	sha1sums = 8f7568ca1873f8d55bb694c8b9b83f7f4c6c1aa5
+	sha512sums = SKIP
+	sha512sums = 85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94
+	sha512sums = d35d67b08ffe13c1a010b65bfe4dd02b0ae013d5b489e330dc950bd3514defca8f734bd37781856dcedf0491ff6122c34eecb4b0fe32a22d7e6bdadea98c8c23
 
 pkgname = gcc6
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends

@@ -1,32 +1,32 @@
+# Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 # Contributor: frankspace
 # Contributor: Renan Manola <rmanola@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Based on a modified version of the gcc PKGBUILD
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Joey Dumont <joey.dumont@gmail.com>
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Allan McRae <allan@archlinux.org>
 
 pkgbase=gcc6
-_ver=6
 pkgname=('gcc6' 'gcc6-libs' 'gcc6-fortran' 'gcc6-objc' 'gcc6-ada' 'gcc6-go' 'gcc6-gcj')
 pkgver=6.4.1
-pkgrel=5
-_islver=0.17
+_ver=6
+_svnrev=253363
+_islver=0.18
 _cloogver=0.18.4
-pkgdesc="The GNU Compiler Collection"
+pkgrel=5
+pkgdesc="The GNU Compiler Collection (6.x.x)"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
-url="http://gcc.gnu.org"
-makedepends=(binutils libmpc doxygen gcc-ada git java-environment-common zip jdk8-openjdk gtk2 libart-lgpl libxtst)
+url="https://gcc.gnu.org/gcc-6/"
+makedepends=(binutils libmpc doxygen gcc-ada svn java-environment-common zip jdk8-openjdk gtk2 libart-lgpl libxtst)
 checkdepends=('dejagnu' 'inetutils')
 options=(!emptydirs)
-_commit=878763634f0a75699559b3c0b90d466954a6510f
-source=(git+https://gcc.gnu.org/git/gcc.git#commit=${_commit}
+source=(gcc::svn://gcc.gnu.org/svn/gcc/branches/gcc-${_ver}-branch#revision=$_svnrev
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz)
-sha1sums=('SKIP'
-          '6243384d1b1d4b3043037698485a468a485b111a'
-          '8f7568ca1873f8d55bb694c8b9b83f7f4c6c1aa5')
+sha512sums=('SKIP'
+            '85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94'
+            'd35d67b08ffe13c1a010b65bfe4dd02b0ae013d5b489e330dc950bd3514defca8f734bd37781856dcedf0491ff6122c34eecb4b0fe32a22d7e6bdadea98c8c23')
 
 _libdir="/usr/lib/gcc/$CHOST/$pkgver"
 
