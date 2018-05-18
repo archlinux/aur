@@ -1,6 +1,6 @@
 pkgbase = moc-svn
 	pkgdesc = A powerful & easy to use console audio player
-	pkgver = 2758
+	pkgver = r2963
 	pkgrel = 1
 	url = http://moc.daper.net
 	arch = i686
@@ -13,7 +13,6 @@ pkgbase = moc-svn
 	makedepends = wavpack
 	makedepends = libmodplug
 	makedepends = subversion
-	makedepends = sidplay2
 	makedepends = faad2
 	depends = libmad
 	depends = libid3tag
@@ -27,13 +26,14 @@ pkgbase = moc-svn
 	optdepends = libmpcdec: for using the musepack plugin
 	optdepends = wavpack: for using the wavpack plugin
 	optdepends = libmodplug: for using the modplug plugin
-	optdepends = sidplay2: for playing c64 sid files
 	optdepends = faad2: for use the aac plugin
 	provides = moc
 	conflicts = moc
 	options = !libtool
 	source = moc::svn://daper.net/moc/trunk
+	source = moc-ffmpeg4.patch
 	sha1sums = SKIP
+	sha1sums = 007a0580ac754e1c318a0d0b6f0d403883797eaf
 
 pkgname = moc-svn
 

@@ -1,25 +1,27 @@
-#Maintainer: Øyvind 'MrElendig' Heggstad <mrelendig@har-ikkje.net>
+#Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
+#Contributor: Øyvind 'MrElendig' Heggstad <mrelendig@har-ikkje.net>
 #Contributor: jsteel <mail at jsteel dot org>
 
 pkgname=moc-svn
-pkgver=2758
+pkgver=r2963
 pkgrel=1
 pkgdesc='A powerful & easy to use console audio player'
 url="http://moc.daper.net"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file')
-source=('moc::svn://daper.net/moc/trunk')
-sha1sums=('SKIP')
+source=('moc::svn://daper.net/moc/trunk'
+        'moc-ffmpeg4.patch')
+sha1sums=('SKIP'
+          '007a0580ac754e1c318a0d0b6f0d403883797eaf')
 makedepends=('speex' 'ffmpeg' 'taglib' 'libmpcdec' 'wavpack'
-             'libmodplug' 'subversion' 'sidplay2' 'faad2')
+             'libmodplug' 'subversion' 'faad2')
 optdepends=('speex: for using the speex plugin'
             'ffmpeg: for using the ffmpeg plugin'
             'taglib: for using the musepack plugin'
             'libmpcdec: for using the musepack plugin'
             'wavpack: for using the wavpack plugin'
             'libmodplug: for using the modplug plugin'
-            'sidplay2: for playing c64 sid files'
             'faad2: for use the aac plugin')
 conflicts=('moc')
 provides=('moc')
@@ -27,7 +29,14 @@ options=('!libtool')
 
 pkgver() {
   cd moc
-  svnversion
+  local ver="$(svnversion)"
+  printf "r%s" "${ver//[[:alpha:]]}"
+}
+
+
+prepare() {
+  cd moc
+  patch -p0 -i ../moc-ffmpeg4.patch # Fix build with ffmpeg 4
 }
 
 build() {
@@ -37,7 +46,7 @@ build() {
     --with-alsa --with-jack --with-aac --with-mp3 \
     --with-musepack --with-vorbis --with-flac --with-wavpack \
     --with-sndfile --with-modplug --with-ffmpeg --with-speex \
-    --with-samplerate --with-curl --with-sidplay2 --disable-debug
+    --with-samplerate --with-curl --disable-debug
   make
 }
 
