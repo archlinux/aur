@@ -12,7 +12,7 @@ source=("https://github.com/chrisfair/git-subrepo/archive/${pkgver}.tar.gz")
 sha256sums=('acb3667abadf859cefc36e95bcf4d4fa019ace7414d0fe8ddeadbc42de1fcf44')
 
 package() {
-  cd "${srcdir}/${pkgname}-${PKGVER}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   # git-subrepo
   install -d "${pkgdir}/usr/lib/git-core/"
