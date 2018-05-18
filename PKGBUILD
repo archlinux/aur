@@ -1,7 +1,7 @@
 # Maintainer: David Adler <david . jo . adler @GMAIL>
 pkgname=spectrojack
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="a little spectrogram/audiogram/sonogram/whatever for JACK"
 arch=('i686' 'x86_64')
 url="http://sed.free.fr/spectrojack/"
@@ -13,7 +13,7 @@ md5sums=('d8cbfc174c876150d66141020244fc8d')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/-fomit-frame-pointer$/& -lm/' Makefile
+  sed -i 's/-fomit-frame-pointer$/& -lm -lmvec/' Makefile
   sed -i 's/.*home.*/#&/' Makefile
 }
 

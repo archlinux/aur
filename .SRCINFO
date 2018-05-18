@@ -1,7 +1,7 @@
 pkgbase = spectrojack
 	pkgdesc = a little spectrogram/audiogram/sonogram/whatever for JACK
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sed.free.fr/spectrojack/
 	arch = i686
 	arch = x86_64
