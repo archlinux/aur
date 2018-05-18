@@ -4,30 +4,26 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=qtfm
-pkgver=5.9
-pkgrel=7
+pkgver=6.0.0_beta1
+pkgrel=1
 pkgdesc="A lightweight file manager"
 arch=('i686' 'x86_64')
 url="http://qt-apps.org/content/show.php/QtFM?content=158787"
 license=('GPL')
 depends=('file' 'qt5-base' 'desktop-file-utils')
-changelog=$pkgname.changelog
-source=(make_it_build_fixes.patch https://dl.opendesktop.org/api/files/downloadfile/id/1466643163/s/7e1e131b7045071f4cf4fd57b96b25dd/t/1520469280/u/265658/158787-qtfm.zip)
-sha256sums=('1a77d7699e60be1af8ba0aef779894599bd46f5bc3545347d3989154d0576642'
-            '07ffd61dd5d4aa7c16f1c544804517b621e3ef1a30eeda97c087219a3cb35128')
-
-prepare() {
-  cd $pkgname
-  patch -Np1 < "$srcdir"/make_it_build_fixes.patch
-}
+makedepends=('git')
+source=("$pkgname-${pkgver//_/-}.tar.gz::https://github.com/rodlie/qtfm/archive/${pkgver//_/-}/${pkgver//_/-}.tar.gz" make_it_build_fixes.patch)
+sha256sums=('425d463d552df24193fbdca68dcdbecc003cc056fd8d30c9fbf4c777227dd7ce'
+            '1a77d7699e60be1af8ba0aef779894599bd46f5bc3545347d3989154d0576642')
 
 build() {
-  cd $pkgname
+  cd $pkgname-${pkgver//_/-}
+  git clone https://github.com/rodlie/libdisks.git
   qmake
   make
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-${pkgver//_/-}
   make INSTALL_ROOT="${pkgdir}" install
 }
