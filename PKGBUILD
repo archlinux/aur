@@ -8,8 +8,8 @@
 
 pkgname=('python-dlib-cuda' 'python2-dlib-cuda')
 _pkgname='dlib'
-pkgver=19.10
-pkgrel=3
+pkgver=19.11
+pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
 url="http://www.dlib.net/"
@@ -24,7 +24,7 @@ optdepends=('cblas: for BLAS support'
             'neon: for neon support'
             'sqlite: for sqlite support')
 source=("http://dlib.net/files/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('800e83d66fddc5a4387eba6b69374388')
+md5sums=('6503152f4181edec67a68c1532e7b678')
 
 # Detecting whether certain cpu optimisations can be made
 _avx_available=()
