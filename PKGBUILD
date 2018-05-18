@@ -3,12 +3,12 @@
 # Maintainer: Thomas Guimbretiere <profmobius@mojang.com>
 pkgname=minecraft-launcher
 pkgver=2.0.1009
-pkgrel=2
+pkgrel=3
 pkgdesc="Official Minecraft Launcher"
 arch=('x86_64')
 url="https://mojang.com/"
 license=('All rights reserved')
-depends=('java-runtime=8' 'icu57' 'xorg-xrandr' 'libxss')
+depends=('java-runtime=8' 'icu57' 'xorg-xrandr' 'libxss' 'alsa-lib' 'gtk2' 'gconf' 'libxtst' 'nss')
 source=(
 https://launcher.mojang.com/mc-staging/download/Minecraft_staging.tar.gz
 minecraft-launcher.desktop
@@ -26,9 +26,7 @@ build() {
 
 }
 
-package ()
-
-{
+package () {
 
   cd "$pkgdir"
 
