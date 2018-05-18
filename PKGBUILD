@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=gnome-shell-extension-emoji-selector-git
-pkgver=3.r73.g1e1befe
+pkgver=11.r30.g0d6ec2c
 pkgrel=1
 pkgdesc="Gnome shell emoji picker Extension."
 arch=(any)
