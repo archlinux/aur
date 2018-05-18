@@ -1,7 +1,7 @@
 # Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
 
 pkgname=(gtk4-git)
-pkgver=3.93.0.r1441.gb20e68cc91
+pkgver=3.93.0.r1572.g84364a7ef4
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://www.gtk.org/"
 license=('LGPL')
 depends=('at-spi2-atk' 'cairo' 'atk-git>=2.15.1' 'dconf' 'glib2-git>=2.55.0' 'libepoxy>=1.4'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr' 'mesa'
-         'pango-git>=1.41.0' 'wayland-git>=1.14.91' 'graphene>=1.5.1' 'json-glib'
+         'pango-git>=1.41.0' 'wayland' 'graphene>=1.5.1' 'json-glib'
          'gdk-pixbuf2' 'wayland-protocols'
          'colord' 'libcups' 'rest' 'vulkan-icd-loader' 'gst-plugins-bad')
 makedepends=('gobject-introspection-git' 'gtk-doc' 'git' 'meson' 'ninja')
