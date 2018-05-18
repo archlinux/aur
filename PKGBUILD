@@ -12,7 +12,7 @@ source=("https://github.com/chrisfair/git-subrepo/archive/${pkgver}.tar.gz")
 sha256sums=('acb3667abadf859cefc36e95bcf4d4fa019ace7414d0fe8ddeadbc42de1fcf44')
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${PKGVER}"
 
   # git-subrepo
   install -d "${pkgdir}/usr/lib/git-core/"
@@ -28,4 +28,3 @@ package() {
   install -D -m644 License "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
