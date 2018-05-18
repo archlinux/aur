@@ -2,7 +2,7 @@
 # Contributor: Dylan Araps <dylan.araps@gmail.com>
 
 pkgname=neofetch
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   'xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dylanaraps/neofetch/archive/${pkgver}.tar.gz")
-sha256sums=('b2dae233007ac7d5717df7b1f8f742aebcb84289d5a048398eab3566a8204278')
+sha256sums=('a227e296547846296a19cc483ab6a3af5e3e9f2c2eba4563d060bad2c50f4fab')
 
 package() {
   cd "${pkgname}-${pkgver}/"
