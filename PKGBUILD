@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.2.r11225.g141d81d09
+pkgver=0.8.2.r11333.g93f8d9802
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
@@ -21,8 +21,6 @@ depends=(
             'python-requests' 'python-scipy' 'python-setuptools' 'python-six'
             'python-tornado' 'python-gflags' 'python-pyzmq'
     # AUR:
-        # not required but enabled in build:
-            'rocksdb'
         # python:
             'python-nvd3' 'python-scikit-image' 'python-glog' 'python-leveldb'
             'python-lmdb'
@@ -162,7 +160,7 @@ build() {
         \
         -DUSE_ACL:BOOL='OFF' \
         -DUSE_ASAN:BOOL='ON' \
-        -DUSE_ATEN:BOOL='ON' \
+        -DUSE_ATEN:BOOL='OFF' \
         -DUSE_CUDA:BOOL='OFF' \
         -DUSE_CUDNN:BOOL='OFF' \
         -DUSE_DISTRIBUTED:BOOL='ON' \
@@ -192,7 +190,7 @@ build() {
         -DUSE_OPENMP:BOOL='ON' \
         -DUSE_PROF:BOOL='OFF' \
         -DUSE_REDIS:BOOL='ON' \
-        -DUSE_ROCKSDB:BOOL='ON' \
+        -DUSE_ROCKSDB:BOOL='OFF' \
         -DUSE_SNPE:BOOL='OFF' \
         -DUSE_SYSTEM_NCCL:BOOL='OFF' \
         -DUSE_TENSORRT:BOOL='OFF' \
