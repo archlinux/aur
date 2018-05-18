@@ -3,7 +3,7 @@
 pkgname=mongoose-os
 pkgver=201805141730+1b49b7f
 pkgrel=1
-pkgdesc="This package contains the Mongoose OS CLI tool."
+pkgdesc="This package contains the Mongoose OS - IoT Firmware Development Framework."
 arch=('x86_64' 'i686')
 url="https://mongoose-os.com"
 license=('Apache 2.0')

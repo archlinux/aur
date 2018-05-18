@@ -1,5 +1,5 @@
 pkgbase = mongoose-os
-	pkgdesc = This package contains the Mongoose OS CLI tool.
+	pkgdesc = This package contains the Mongoose OS - IoT Firmware Development Framework.
 	pkgver = 201805141730+1b49b7f
 	pkgrel = 1
 	url = https://mongoose-os.com
