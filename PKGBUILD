@@ -9,7 +9,7 @@ license=('MIT')
 depends=('git')
 makedepends=('git')
 source=("https://github.com/chrisfair/git-subrepo/archive/${pkgver}.tar.gz")
-sha256sums=('acb3667abadf859cefc36e95bcf4d4fa019ace7414d0fe8ddeadbc42de1fcf44')
+sha256sums=('fd3c87736115c82c49c13dcfc3aa2a93752663240ae47083beb4ff232e208e18')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
