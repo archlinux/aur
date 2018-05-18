@@ -35,7 +35,7 @@ prepare() {
 build() {
 	cd $srcdir
 	cd feder
-	./build.sh
+	./scripts/build.sh
 }
 
 check() {
@@ -48,7 +48,7 @@ check() {
 package() {
 	cd $srcdir
 	cd feder
-	./install.sh "$pkgdir"
+	./scripts/install.sh "$pkgdir"
 	mkdir --parents "$pkgdir/usr/share/licenses/jfederc-git"
 	cp LICENSE "$pkgdir/usr/share/licenses/jfederc-git/"
 }
