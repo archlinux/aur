@@ -15,10 +15,12 @@ pkgbase = clamav-unofficial-sigs
 	source = clamav-unofficial-sigs.logrotate
 	source = clamav-unofficial-sigs.8
 	source = os.conf
+	source = custom_config.diff
 	sha256sums = 233404d767fcb7d2b82defef831d584cbbcc7105f6bbc586d69a0a960bc0d4df
 	sha256sums = 0564ecac9ea02376b627fed158c9ea899c58b528d276d6d962f9e642e060239e
 	sha256sums = 4bc5487486a2bc11ba827eeaf41bf866c5da34633bef7d801af34cbe7f8d1801
 	sha256sums = 84b71e4db873b0aa85886b53ed46d1fc13323f04d8997b3e36b5acc524fb2d83
+	sha256sums = 79a4349d187da2e04ceb08de810ff48c603b95e23eeab9ccb776832d215c6a95
 
 pkgname = clamav-unofficial-sigs
 

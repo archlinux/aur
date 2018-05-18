@@ -1,5 +1,13 @@
 post_install() {
-    echo '| You need to complete configuration'
-    echo '| and enable "user_configuration_complete"'
-    echo '| in /etc/clamav-unofficial-sigs/user.conf'
+    echo 'NOTE: Yara rules update is disabled due to reports of clamd crashing.'
+    echo 'NOTE: Remove /var/lib/clamav/*.yar files if clamd crashes.'
+    echo 'NOTE: You can still enable it by setting: enable_yararules="yes"'
+    echo 'NOTE:'
+    echo 'NOTE: Use /etc/clamav-unofficial-sigs/user.conf for your customization.'
+    echo 'NOTE:'
+    echo 'NOTE: Enable clamav-unofficial-sigs.timer for regular automatic updates.'
+}
+
+post_upgrade() {
+    post_install
 }
