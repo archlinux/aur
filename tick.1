@@ -1,4 +1,4 @@
-.TH TICK "1" "May 2018" "Tick 2.0.0" "User Commands"
+.TH TICK "1" "May 2018" "Tick 2.1.0" "User Commands"
 
 .SH NAME
 Tick - Command line stock and cryptocurrency portfolio tracker.
@@ -49,6 +49,11 @@ and volume.
 Prints a graph of the historic price of the given security. Cryptocurrencies aren't supported yet, due to API constraints.
 You may press the UP arrow key to zoom in, the DOWN arrow key to zoom out, the LEFT arrow to pan left, the RIGHT arrow
 to pan right, or the letter "q" to quit.
+
+.TP
+[cmp] [symbol] [symbol]
+Same functionality to "graph", but is intended for comparing two securities. The command takes two symbols as
+arguments. Both graphs will be displayed.
 
 .TP
 [news] [symbol]

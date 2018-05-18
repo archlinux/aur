@@ -70,7 +70,18 @@ API constraints. You may press the UP arrow key to zoom in, the DOWN arrow
 key to zoom out, the LEFT arrow to pan left, the RIGHT arrow to pan right,
 or the letter "q" to quit.
 ```bash
-$ tick graph tsla
+$ tick graph [symbol]
+```
+
+The cmp command has the same functionality as graph, but is intended for
+comparing two securities. The command takes two symbols as arguments.
+Both graphs will be displayed. To com
+```bash
+$ tick cmp [symbol] [symbol]
+```
+To compare the graphs of Tesla and Ford, run
+```bash
+$ tick cmp tsla f
 ```
 
 To get the top three news articles on a specific stock or cryptocurrency,
