@@ -1,6 +1,6 @@
 pkgbase = looking-glass-git
 	pkgdesc = An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough
-	pkgver = a10.r31.g859e984
+	pkgver = a10.r67.gf63c804
 	pkgrel = 1
 	url = https://looking-glass.hostfission.com
 	arch = x86_64
@@ -9,17 +9,24 @@ pkgbase = looking-glass-git
 	makedepends = sdl2_ttf
 	makedepends = spice-protocol
 	makedepends = libconfig
-	makedepends = libva
+	source = looking-glass::git+https://github.com/gnif/LookingGlass.git
+	source = dkms.conf
+	sha512sums = SKIP
+	sha512sums = e1f6cd6aabd336d2af97b44a2746e5a0b41d5d5942993379b1284d1cc8d4981fced0ae44d8105709f2bc45a939dfc7f229018c680b0742c3f0778fe28ba301f8
+
+pkgname = looking-glass-git
+	pkgdesc = A client application for accessing the LookingGlass IVSHMEM device of a VM
 	depends = sdl2_ttf
 	depends = glu
 	depends = openssl
 	depends = fontconfig
 	depends = libconfig
-	depends = libva
 	provides = looking-glass
 	conflicts = looking-glass
-	source = looking-glass::git+https://github.com/gnif/LookingGlass.git
-	sha512sums = SKIP
 
-pkgname = looking-glass-git
+pkgname = looking-glass-module-dkms-git
+	pkgdesc = A kernel module that implements a basic interface to the IVSHMEM device for when using LookingGlass in VM->VM mode
+	depends = dkms
+	provides = looking-glass-module-dkms
+	conflicts = looking-glass-module-dkms
 
