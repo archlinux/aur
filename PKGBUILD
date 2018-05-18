@@ -134,33 +134,31 @@ package_gcc6-libs() {
              libquadmath \
              libsanitizer/{a,l,ub}san \
              libstdc++-v3/src \
-             libvtv; do
-     make -C $CHOST/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
-   done
+             libvtv
+  do
+    make -C $CHOST/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
+  done
 
-   if [[ $CARCH == "x86_64" ]]; then
-     make -C $CHOST/libsanitizer/tsan DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
-   fi
+  make -C $CHOST/libsanitizer/tsan DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
 
-   make -C $CHOST/libobjc DESTDIR=${pkgdir} install-libs
-   make -C $CHOST/libstdc++-v3/po DESTDIR=${pkgdir} install
-   make -C $CHOST/libmpx DESTDIR=${pkgdir} install
-   rm ${pkgdir}/${_libdir}/libmpx.spec
+  make -C $CHOST/libobjc DESTDIR=${pkgdir} install-libs
+  make -C $CHOST/libstdc++-v3/po DESTDIR=${pkgdir} install
+  make -C $CHOST/libmpx DESTDIR=${pkgdir} install
+  rm ${pkgdir}/${_libdir}/libmpx.spec
 
-   for lib in libgomp     \
-              libitm      \
-              libquadmath; do
-     make -C $CHOST/$lib DESTDIR=${pkgdir} install-info
-   done
+  for lib in libgomp libitm libquadmath
+  do
+    make -C $CHOST/$lib DESTDIR=${pkgdir} install-info
+  done
 
-   # Lazy way of dealing with conflicting files...
-   rm -rf ${pkgdir}/usr/share/{info,locale,man}
+  # Lazy way of dealing with conflicting files...
+  rm -rf ${pkgdir}/usr/share/{info,locale,man}
 
-   # Remove libs that conflict with gcc6_go.
-   rm -rf ${pkgdir}/${_libdir}/libgo*
+  # Remove libs that conflict with gcc6_go.
+  rm -rf ${pkgdir}/${_libdir}/libgo*
 
-   # Install Runtime Library Exception
-   install -Dm644 ${srcdir}/gcc/COPYING.RUNTIME \
+  # Install Runtime Library Exception
+  install -Dm644 ${srcdir}/gcc/COPYING.RUNTIME \
     ${pkgdir}/usr/share/licenses/$pkgname/RUNTIME.LIBRARY.EXCEPTION
 }
 
