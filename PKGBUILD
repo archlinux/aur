@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2018-05-17
+#   Revision: 2018-05-18
 
 pkgname=keepass-pl
 pkgver=2.39
@@ -14,8 +14,8 @@ arch=(any)
 md5sums=('f16387f7251ff5752dee209296fe2743')
 
 package(){
-   mkdir -p "${pkgdir}"/usr/share/keepass
-   install -m644 Polish.lngx "${pkgdir}"/usr/share/keepass
+   mkdir -p "${pkgdir}"/usr/share/keepass/Languages
+   install -m644 Polish.lngx "${pkgdir}"/usr/share/keepass/Languages
 }
 
 
