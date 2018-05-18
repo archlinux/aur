@@ -1,21 +1,22 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# $Id$
+# Maintainer: Florian Maunier <fmaunier@gmail.com>
+# Contributor: Michael Straube <straubem@gmx.de>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Piotr Balcerowski <piotr@balcerowski.org>
-# Contributor: Florian Maunier <fmaunier@gmail.com>
 
 pkgname=libcurl-openssl-1.0
-pkgver=7.57.0
+pkgver=7.60.0
 pkgrel=1
-pkgdesc='An URL retrieval library (build against openssl-1.0)'
+pkgdesc='An URL retrieval library (without versioned symbols, built against openssl-1.0)'
 arch=('i686' 'x86_64')
 url='https://curl.haxx.se'
 license=('MIT')
 depends=('curl' 'glibc' 'krb5' 'openssl-1.0' 'libpsl' 'zlib' 'libssh2.so')
+provides=('libcurl-openssl-1.0.so')
 options=('strip')
 source=("https://curl.haxx.se/download/curl-${pkgver}.tar.gz"{,.asc})
-validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2'   # Daniel Stenberg
-              '914C533DF9B2ADA2204F586D78E11C6B279D5C91')  # Daniel Stenberg (old key)
-sha512sums=('1ce8138c708965d29628f9b3e37cb9cb5c586f82f42091d5e60ba66ddcebcd55dba874c5d903365af0ef94c5c1679430bdd8c0cefbffdf5f7f347d9055824648'
+validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
+sha512sums=('f25c8d79be87bfbcae93cd200b319f664efd62aea8f1a94bb441407a9e1489bd935943cfd1347f3b252f94b9a0286da8aeb04b407a2ba95ebfa717dff80e891b'
             'SKIP')
 
 build() {
@@ -28,6 +29,7 @@ build() {
     --disable-ldap \
     --disable-ldaps \
     --disable-manual \
+    --disable-versioned-symbols \
     --enable-ipv6 \
     --enable-threaded-resolver \
     --with-gssapi \
