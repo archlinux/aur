@@ -1,7 +1,7 @@
 pkgbase = caffe2-cpu
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (cpu only)
 	pkgver = 0.8.2.pytorch.0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://caffe2.ai/
 	arch = i686
 	arch = x86_64
@@ -42,7 +42,6 @@ pkgbase = caffe2-cpu
 	depends = python-tornado
 	depends = python-gflags
 	depends = python-pyzmq
-	depends = rocksdb
 	depends = python-nvd3
 	depends = python-scikit-image
 	depends = python-glog

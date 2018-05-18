@@ -33,7 +33,7 @@ _ptver=0.4.0 # pytorch stable release version
 
 pkgname=caffe2-cpu
 pkgver="0.8.2.pytorch.${_ptver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe2.ai/'
@@ -51,8 +51,6 @@ depends=(
             'python-requests' 'python-scipy' 'python-setuptools' 'python-six'
             'python-tornado' 'python-gflags' 'python-pyzmq'
     # AUR:
-        # not required but enabled in build:
-            'rocksdb'
         # python:
             'python-nvd3' 'python-scikit-image' 'python-glog' 'python-leveldb'
             'python-lmdb'
@@ -225,7 +223,7 @@ build() {
         -DUSE_OPENMP:BOOL='ON' \
         -DUSE_PROF:BOOL='OFF' \
         -DUSE_REDIS:BOOL='ON' \
-        -DUSE_ROCKSDB:BOOL='ON' \
+        -DUSE_ROCKSDB:BOOL='OFF' \
         -DUSE_SNPE:BOOL='OFF' \
         -DUSE_TENSORRT:BOOL='OFF' \
         -DUSE_ZMQ:BOOL='ON' \
