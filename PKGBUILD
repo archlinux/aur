@@ -1,11 +1,12 @@
 # $Id$
 # Maintainer: Enihcam <gmail: nanericwang>
 
-pkgname=r8168-ck
 _pkgname=r8168
+_kernver=$(pacman -Q linux-ck | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
+pkgname=r8168-ck
 pkgver=8.045.08
-pkgrel=1
-pkgdesc="A kernel module for Realtek 8168 network cards"
+pkgrel=2
+pkgdesc="A kernel module for Realtek 8168 network cards (linux-ck)"
 url="http://www.realtek.com.tw"
 license=("GPL")
 arch=('x86_64')
@@ -22,7 +23,6 @@ prepare() {
 }
 
 build() {
-	_kernver=$(pacman -Q linux-ck | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
 	KERNEL_VERSION=$(cat /usr/lib/modules/extramodules-$_kernver-ck/version)
 	msg2 "Kernel = $KERNEL_VERSION"
 
@@ -36,7 +36,6 @@ build() {
 }
 
 package() {
-	_kernver=$(pacman -Q linux-ck | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
 	depends=("linux-ck>=$_kernver" "linux-ck<${_kernver/.*}.$(expr ${_kernver/*.} + 1)")
 
 	cd "$_pkgname-$pkgver"
