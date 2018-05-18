@@ -2,7 +2,7 @@
 
 pkgname=pidgin-znchelper
 _pkgname=pidgin-znc-helper
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc='Pidgin plugin, removing double-timestamps when replaying messages from ZNC'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('pidgin')
 makedepends=('intltool')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/kgraefe/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('097797ec21a0a537acb10828b94e7957')
+md5sums=('18f863989b3ccfcc98a3c52634065708')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
