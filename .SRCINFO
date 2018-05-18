@@ -1,12 +1,13 @@
 pkgbase = share-moe-paste-git
 	pkgdesc = This is a command-line tool that makes a paste from a file, clipboard or standard input and uploads it to shr.moe
-	pkgver = 0.8.3.r0.33f91319
+	pkgver = 0.8.6.r0.1c78287e
 	pkgrel = 1
 	url = https://gitgud.io/rarity/share-moe-paste
 	arch = any
 	license = custom:The Unlicense
 	depends = curl
 	depends = xsel
+	optdepends = torsocks: upload pastes through Tor
 	options = !strip
 	source = git+https://gitgud.io/rarity/share-moe-paste.git
 	sha256sums = SKIP

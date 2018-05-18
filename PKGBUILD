@@ -1,13 +1,14 @@
 # Maintainer: <xris_pop@yahoo.ca>
 _pkgname=share-moe-paste
 pkgname=$_pkgname-git
-pkgver=0.8.3.r0.33f91319
+pkgver=0.8.6.r0.1c78287e
 pkgrel=1
 pkgdesc="This is a command-line tool that makes a paste from a file, clipboard or standard input and uploads it to shr.moe"
 arch=('any')
 url="https://gitgud.io/rarity/share-moe-paste"
 license=('custom:The Unlicense')
 depends=('curl' 'xsel')
+optdepends=('torsocks: upload pastes through Tor')
 options=('!strip')
 source=("git+https://gitgud.io/rarity/share-moe-paste.git")
 sha256sums=('SKIP')
