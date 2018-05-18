@@ -4,7 +4,7 @@
 # Contributor: Tony Lambiris <tony@critialstack.com>
 
 pkgname=apt-git
-pkgver=1.4.4.r0.g5dc951d7c
+pkgver=1.7.0_alpha0.r25.ge2e2c8c72
 pkgrel=1
 pkgdesc="Command-line package manager used on Debian-based systems (git-latest)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname::git+https://anonscm.debian.org/git/apt/apt.git")
+source=("$pkgname::git+https://salsa.debian.org/apt-team/apt.git")
 sha256sums=('SKIP')
 
 pkgver() {
