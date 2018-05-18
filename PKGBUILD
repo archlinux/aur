@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=gnome-shell-extension-datetime-format-git
-pkgver=r3.9773e76
+pkgver=r5.f660b1e
 pkgrel=1
 pkgdesc="Gnome extension which allows users to customise the datetime format on the status bar and date menu."
 arch=(any)
