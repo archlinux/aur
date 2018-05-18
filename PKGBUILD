@@ -1,7 +1,7 @@
 # Contributor: Daniel YC Lin <dlin (at) gmail.com>
 # Maintainer: Daniel YC Lin <dlin (at) gmail.com>
 pkgname=bcpp
-pkgver=20150811
+pkgver=20180401
 pkgrel=1
 pkgdesc="utility for indents C/C++ source programs"
 arch=('i686' 'x86_64' sh4)
@@ -24,4 +24,4 @@ package() {
   mkdir -p "$pkgdir/usr/share/licenses/bcpp"
   install -m644 COPYING "$pkgdir/usr/share/licenses/bcpp/"
 }
-md5sums=('bc67edacc3a8d43026529afda8102d39')
+md5sums=('c3559098a2af739aafdf7ca265c02d49')
