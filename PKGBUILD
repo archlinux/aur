@@ -3,8 +3,8 @@
 
 _plug=waifu2x-w2xc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.2.ge79bb45
-pkgrel=2
+pkgver=r6.7.g9cea4dd
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url="https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Waifu2x-w2xc/"
@@ -23,7 +23,8 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  ./configure --install=${pkgdir}/usr/lib/vapoursynth
+  ./autogen.sh
+  ./configure --prefix=/usr --libdir=/usr/lib/vapoursynth
   make
 }
 
