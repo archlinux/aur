@@ -4,12 +4,12 @@ _pkgname=looking-glass
 pkgbase="${_pkgname}-git"
 pkgname=("${_pkgname}-git" "${_pkgname}-module-dkms-git")
 pkgver=a10.r67.gf63c804
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.hostfission.com"
 arch=('x86_64')
 license=('GPL2')
-makedepends=('git' 'sdl2_ttf' 'spice-protocol' 'libconfig')
+makedepends=('git' 'sdl2_ttf' 'glu' 'fontconfig' 'libconfig' 'spice-protocol')
 source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git"
         "dkms.conf")
 sha512sums=('SKIP'
