@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-    cd $_pkgname
+    cd "$_pkgname"
     strfile fvl
     strfile fvl_vendor
 }
