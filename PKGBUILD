@@ -8,9 +8,8 @@ url="https://github.com/chrisfair/git-subrepo.git"
 license=('MIT')
 depends=('git')
 makedepends=('git')
-source=(git+https://github.com/chrisfair/git-subrepo.git#tag=$pkgver)
-sha256sums=('SKIP')
-
+source=("https://github.com/chrisfair/git-subrepo/archive/${pkgver}.tar.gz")
+sha256sums=('acb3667abadf859cefc36e95bcf4d4fa019ace7414d0fe8ddeadbc42de1fcf44')
 
 package() {
   cd "${srcdir}/${pkgname}"
