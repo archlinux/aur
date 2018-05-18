@@ -2,12 +2,12 @@
 # Maintainer: Daniel YC Lin <dlin.tw at gmail>
 
 pkgname=vim-tabular-git
-pkgver=r29.60f2564
+pkgver=1.0.0.r1.g00e1e7f
 pkgrel=1
 pkgdesc="Vim script for text filtering and alignment"
 arch=('any')
 url="https://github.com/godlygeek/tabular"
-license='custom:BSD 3-Clause'
+license=('custom:BSD 3-Clause')
 makedepends=('git')
 depends=('vim')
 provides=('vim-tabular')
