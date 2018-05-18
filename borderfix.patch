@@ -1,0 +1,29 @@
+diff --git a/panel/panel-window.c b/panel/panel-window.c
+index c21aac3..d0c91f0 100644
+--- a/panel/panel-window.c
++++ b/panel/panel-window.c
+@@ -2104,18 +2104,18 @@ panel_window_screen_layout_changed (GdkScreen   *screen,
+               || (window->struts_edge == STRUTS_EDGE_RIGHT
+                   && b.x + b.width > a.x + a.width))
+             {
+-              dest_y = MAX (a.y, b.y);
+-              dest_h = MIN (a.y + a.height, b.y + b.height) - dest_y;
+-              if (dest_h > 0)
++              dest_x = MAX (a.x, b.x);
++              dest_w = MIN (a.x + a.width, b.x + b.width) - dest_x;
++              if (dest_w > 0)
+                 window->struts_edge = STRUTS_EDGE_NONE;
+             }
+           else if ((window->struts_edge == STRUTS_EDGE_TOP && b.y < a.y)
+                    || (window->struts_edge == STRUTS_EDGE_BOTTOM
+                        && b.y + b.height > a.y + a.height))
+             {
+-              dest_x = MAX (a.x, b.x);
+-              dest_w = MIN (a.x + a.width, b.x + b.width) - dest_x;
+-              if (dest_w > 0)
++              dest_y = MAX (a.y, b.y);
++              dest_h = MIN (a.y + a.height, b.y + b.height) - dest_y;
++              if (dest_h > 0)
+                 window->struts_edge = STRUTS_EDGE_NONE;
+             }
+         }
