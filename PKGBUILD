@@ -1,4 +1,4 @@
-# Maintainer : Andrew Crerar <andrew (at) crerar (dot) io>
+# Maintainer: Andrew Crerar <crerar@archlinux.org>
 # Contributor: Rob McCathie <korrode at gmail>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
@@ -9,58 +9,93 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-git
-pkgver=4.0.0.r1410.g6049069905
+pkgver=4.0.0.r2923.g61a0224267
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
+url='https://www.videolan.org/vlc/'
 arch=('x86_64')
-url="http://www.videolan.org/vlc/"
-license=('LGPL2.1' 'GPL3')
-depends=('a52dec' 'faad2' 'ffmpeg' 'libdca' 'libdvbpsi' 'libdvdnav' 'libmad'
-         'libmatroska' 'libmpcdec' 'libmpeg2' 'libproxy' 'libshout' 'libtar'
-         'libtiger' 'libupnp' 'libxinerama' 'libxpm' 'lua' 'sdl_image'
-         'wayland-protocols' 'taglib' 'zvbi' 'libsecret' 'libarchive'
-         'qt5-x11extras' 'schroedinger' 'qt5-svg')
-makedepends=('aalib' 'flac' 'git' 'libavc1394' 'libbluray' 'libcaca' 'libdc1394'
-             'libdvdcss' 'libgme' 'libgoom2' 'libmtp' 'libnotify' 'librsvg'
-             'libssh2' 'lirc' 'live-media' 'opus' 'portaudio' 'projectm'
-             'twolame' 'vcdimager' 'xosd' 'smbclient')
-optdepends=('aalib: for ASCII art plugin'
-            'atk-git: for libnotify plugin'
-            'avahi: for service discovery using bonjour protocol'
-            'flac: for Free Lossless Audio Codec plugin'
+license=('LGPL2.1' 'GPL2')
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'libtiger' 'lua'
+         'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
+         'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
+         'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
+         'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
+         'wayland-protocols')
+makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
+             'flac' 'kdelibs' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
+             'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
+             'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
+             'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
+             'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
+             'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
+             'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
+             'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
+             'lirc' 'libgoom2' 'projectm' 'chromaprint')
+optdepends=('avahi: service discovery using bonjour protocol'
             'gst-plugins-base-libs: for libgst plugins'
-            'gtk2: for libnotify plugin'
+            'libdvdcss: decoding encrypted DVDs'
+            'libavc1394: devices using the 1394ta AV/C'
+            'libdc1394: IEEE 1394 access plugin'
             'kdelibs: KDE Solid hardware integration'
-            'libavc1394: for devices using the 1394ta AV/C'
-            'libbluray: for Blu-Ray support'
-            'libcaca: for colored ASCII art video output'
-            'libcddb: for libcdda plugin'
-            'libcdio: for audio CD playback support'
-            'libdc1394: for IEEE 1394 plugin'
-            'libdvdcss: for decoding encrypted DVDs'
-            'libgme: for libgme plugin'
-            'libgoom2: for libgoom plugin'
-            'libmtp: for MTP devices support'
-            'libnotify: for notification plugin'
-            'librsvg: for SVG plugin'
-            'libssh2: for sftp support'
-            'libva-intel-driver: back-end for intel cards'
-            'libva-vdpau-driver: vdpau back-end for nvidia'
-            'lirc: for lirc plugin'
-            'lua-socket: for http interface'
-            'ncurses: for ncurses interface support'
-            'opus: for opus support'
-            'portaudio: for portaudio support'
-            'projectm: for ProjectM visualisation plugin'
-            'protobuf: for chromecast plugin'
-            'smbclient: for SMB access plugin'
-            'ttf-dejavu: for subtitle font'
-            'ttf-freefont: for subtitle font'
-            'twolame: for TwoLAME mpeg2 encoder plugin'
-            'vcdimager: navigate VCD with libvcdinfo')
+            'kwallet: kwallet keystore'
+            'libva-vdpau-driver: vdpau backend nvidia'
+            'libva-intel-driver: video backend intel'
+            'libbluray: Blu-Ray video input'
+            'flac: Free Lossless Audio Codec plugin'
+            'twolame: TwoLAME mpeg2 encoder plugin'
+            'libgme: Game Music Emu plugin'
+            'vcdimager: navigate VCD with libvcdinfo'
+            'libmtp: MTP devices discovery'
+            'libsystemd: udev services discovery'
+            'smbclient: SMB access plugin'
+            'libcdio: audio CD playback'
+            'ttf-freefont: subtitle font '
+            'ttf-dejavu: subtitle font'
+            'libssh2: sftp access'
+            'libnfs: NFS access'
+            'mpg123: mpg123 codec'
+            'protobuf: chromecast streaming'
+            'libmicrodns: mDNS services discovery (chromecast etc)'
+            'lua-socket: http interface'
+            'live-media: RTSP input'
+            'libdvdread: DVD input module'
+            'libdvdnav: DVD with navigation input module'
+            'libogg: Ogg and OggSpots codec'
+            'libshout: shoutcast/icecast output plugin'
+            'libmodplug: MOD output plugin'
+            'libvpx: VP8 and VP9 codec'
+            'libvorbis: Vorbis decoder/encoder'
+            'speex: Speex codec'
+            'opus: opus codec'
+            'libtheora: theora codec'
+            'libpng: PNG support'
+            'libjpeg-turbo: JPEG support'
+            'librsvg: SVG plugin'
+            'libx264: H264 encoding'
+            'x265: HEVC/H.265 encoder'
+            'zvbi: VBI/Teletext decoding'
+            'libass: Subtitle support'
+            'libkate: Kate codec'
+            'libtiger: Tiger rendering for Kate streams'
+            'sdl_image: SDL image support'
+            'aalib: ASCII art video output'
+            'libcaca: colored ASCII art video output'
+            'libpulse: PulseAudio audio output'
+            'alsa-lib: ALSA audio output'
+            'jack: jack audio server'
+            'libsamplerate: audio Resampler'
+            'libsoxr: SoX audio Resampler'
+            'chromaprint: Chromaprint audio fingerprinter'
+            'lirc: lirc control'
+            'libgoom2: Goom visualization'
+            'projectm: ProjectM visualisation'
+            'ncurses: ncurses interface'
+            'libnotify: notification plugin'
+            'gtk3: notification plugin')
+
 _name=vlc
-conflicts=("$_name" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
-provides=("$_name=$pkgver")
+conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
+provides=("${_name}=${pkgver}")
 options=(!emptydirs)
 source=('git+https://github.com/videolan/vlc.git'
         'lua53_compat.patch'
@@ -70,59 +105,135 @@ sha512sums=('SKIP'
             '2f1015af384559bf4868bb989c06a7d281a8e32afb175ef397dbf1671bae3540a3a6b073a74ed77ed82e79a81f964a5a58a98c2a3f1b5e5cd5e9ea60d58c737f')
 
 pkgver() {
-  cd "$srcdir/$_name"
+  cd "${srcdir}/${_name}"
   printf "%s.r%s.g%s" "$(grep 'AC_INIT' configure.ac | sed 's/[^0-9\.]*//g')" "$(git describe --tags --long | cut -d '-' -f 3)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$_name"
-
-  sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
-  patch -p1 -i "$srcdir"/lua53_compat.patch
-}
-
-build() {
-  cd "$srcdir/$_name"
+  cd "${srcdir}/${_name}"
 
   ./bootstrap
 
+  sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
+  sed -e 's|-Werror-implicit-function-declaration||g' -i configure
+  patch -Np1 < "${srcdir}"/lua53_compat.patch
+  sed 's|whoami|echo builduser|g' -i configure
+  sed 's|hostname -f|echo arch|g' -i configure
+}
+
+build() {
+  cd "${srcdir}/${_name}"
+
   export CFLAGS+=" -I/usr/include/samba-4.0"
   export CPPFLAGS+=" -I/usr/include/samba-4.0"
-  export CXXFLAGS+=" -std=gnu++98"
+  export CXXFLAGS+=" -std=c++11"
   export LUAC=/usr/bin/luac
-  export LUA_LIBS="`pkg-config --libs lua`"
+  export LUA_LIBS="$(pkg-config --libs lua)"
   export RCC=/usr/bin/rcc-qt5
-
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --libexecdir=/usr/lib \
               --disable-rpath \
-              --disable-fribidi \
-              --enable-aa \
-              --enable-faad \
-              --enable-lirc \
-              --enable-ncurses \
               --enable-nls \
-              --enable-opus \
-              --enable-realrtsp \
+              --enable-archive \
+              --enable-live555 \
+              --enable-dc1394 \
+              --enable-dv1394 \
+              --enable-dvdread \
+              --enable-dvdnav \
+              --enable-bluray \
+              --disable-opencv \
+              --enable-smbclient \
               --enable-sftp \
-              --enable-upnp \
-              --enable-vcdx \
+              --enable-nfs \
+              --enable-realrtsp \
+              --enable-dvbpsi \
+              --enable-gme \
+              --enable-ogg \
+              --enable-shout \
+              --enable-matroska \
+              --enable-mod \
+              --enable-mpc \
+              --enable-mad \
+              --enable-mpg123 \
+              --enable-gst-decode \
+              --enable-avcodec \
+              --enable-libva \
+              --enable-avformat \
+              --enable-postproc \
+              --enable-faad \
+              --enable-vpx \
+              --enable-twolame \
+              --disable-fdkaac \
+              --enable-a52 \
+              --enable-dca \
+              --enable-flac \
+              --enable-libmpeg2 \
+              --enable-vorbis \
+              --enable-speex \
+              --enable-opus \
+              --enable-oggspots \
+              --disable-schroedinger \
+              --enable-png \
+              --enable-jpeg \
+              --enable-x264 \
+              --enable-x265 \
+              --enable-zvbi \
+              --enable-libass \
+              --enable-kate \
+              --enable-tiger \
+              --enable-vdpau \
               --enable-wayland \
-              --disable-opencv
+              --enable-sdl-image \
+              --enable-freetype \
+              --enable-fribidi \
+              --enable-harfbuzz \
+              --enable-fontconfig \
+              --enable-svg \
+              --enable-svgdec \
+              --enable-aa \
+              --enable-caca \
+              --enable-pulse \
+              --enable-alsa \
+              --enable-jack \
+              --enable-samplerate \
+              --enable-soxr \
+              --enable-chromaprint \
+              --enable-chromecast \
+              --enable-qt \
+              --enable-skins2 \
+              --enable-libtar \
+              --enable-ncurses \
+              --enable-lirc \
+              --enable-goom \
+              --enable-projectm \
+              --enable-avahi \
+              --enable-mtp \
+              --enable-upnp \
+              --enable-microdns \
+              --enable-libxml2 \
+              --disable-libgcrypt \
+              --enable-gnutls \
+              --enable-taglib \
+              --enable-secret \
+              --enable-kwallet \
+              --disable-update-check \
+              --enable-notify \
+              --enable-libplacebo \
+              --enable-vlc
   make
 }
 
 package() {
-  cd "$srcdir/$_name"
+  cd "${srcdir}/${_name}"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 
-  for res in 16 32 48 128; do
-    install -D -m644 "$srcdir"/"$_name"/share/icons/"${res}"x"${res}"/vlc.png \
-                     "$pkgdir"/usr/share/icons/hicolor/"${res}"x"${res}"/apps/vlc.png
+  for res in 16 32 48 128 256; do
+    install -Dm 644 "${srcdir}"/"${_name}"/share/icons/"${res}"x"${res}"/vlc.png \
+                     "${pkgdir}"/usr/share/icons/hicolor/"${res}"x"${res}"/apps/vlc.png
   done
 
-  install -Dm 644 "$srcdir"/update-vlc-plugin-cache.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  install -Dm 644 "${srcdir}"/update-vlc-plugin-cache.hook -t "${pkgdir}"/usr/share/libalpm/hooks
 }
