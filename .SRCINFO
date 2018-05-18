@@ -1,13 +1,15 @@
 pkgbase = pretixdesk-git
 	pkgdesc = Desktop application for attendee check-in with the pretix ticketing system
-	pkgver = r71.a61e9c1
+	pkgver = r100.b50a437
 	pkgrel = 1
 	url = https://pretix.eu
 	arch = x86_64
 	license = GPL
-	makedepends = jdk>=9
+	makedepends = jre8-openjdk
+	makedepends = java-openjfx
 	makedepends = gradle
-	depends = jdk>=9
+	depends = jre8-openjdk
+	depends = java-openjfx
 	depends = bash
 	depends = sqlite
 	provides = pretixdesk

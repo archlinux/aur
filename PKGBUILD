@@ -1,14 +1,14 @@
 # Maintainer: Raphael Michel <mail@raphaelmichel.de>
 _pkgname=pretixdesk
 pkgname=$_pkgname-git
-pkgver=r71.a61e9c1
+pkgver=r100.b50a437
 pkgrel=1
 pkgdesc="Desktop application for attendee check-in with the pretix ticketing system"
 arch=('x86_64')
 license=('GPL')
 url="https://pretix.eu"
-depends=('jdk>=9' 'bash' 'sqlite')
-makedepends=('jdk>=9' 'gradle')
+depends=('jre8-openjdk' 'java-openjfx' 'bash' 'sqlite')
+makedepends=('jre8-openjdk' 'java-openjfx' 'gradle')
 source=('git+https://github.com/pretix/pretixdesk.git' 'git+https://github.com/pretix/libpretixsync.git' 'launcher' 'pretixdesk.desktop')
 conflicts=('pretixdesk')
 provides=('pretixdesk')
