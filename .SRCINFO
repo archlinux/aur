@@ -1,0 +1,23 @@
+pkgbase = xpilot-atoms-git
+	pkgdesc = A multi-player 2D spacewar game
+	pkgver = v0.0.1.r0.g2097a61
+	pkgrel = 1
+	url = https://github.com/atoms118/xpilot-ng-git
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = make
+	makedepends = sh
+	makedepends = git
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = glu
+	depends = libxxf86misc
+	optdepends = openal
+	optdepends = freealut
+	optdepends = python
+	source = git+git://github.com/atoms118/xpilot-atoms.git
+	sha256sums = SKIP
+
+pkgname = xpilot-atoms-git
+
