@@ -3,13 +3,13 @@
 _pkgname=openboardview
 __pkgname=OpenBoardView
 pkgname=${_pkgname}-git
-pkgver=r567.d3e4daf
+pkgver=r594.dd4dbca
 pkgrel=1
 pkgdesc="Linux SDL/ImGui edition software for viewing .brd files"
 arch=('i686' 'x86_64')
 url="http://openboardview.org/"
 license=('MIT')
-depends=('sdl2' 'fontconfig' 'sqlite' 'gtk3')
+depends=('sdl2' 'fontconfig' 'sqlite' 'gtk3' 'mdbtools')
 makedepends=('git' 'cmake' 'sdl2' 'zlib' 'gtk3' 'fontconfig' 'sqlite' 'libpng' 'python')
 source=("${pkgname}::git+https://github.com/${__pkgname}/${__pkgname}.git#branch=master")
 sha512sums=('SKIP')
