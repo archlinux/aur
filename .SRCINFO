@@ -1,7 +1,7 @@
 pkgbase = jfederc-git
 	pkgdesc = A compiler for the Feder programming language
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 3
 	url = https://github.com/codefionn/feder
 	arch = any
 	license = ZLIB

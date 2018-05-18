@@ -1,7 +1,7 @@
 # Maintainer: Fionn Langhans <fionn.langhans@gmail.com>
 pkgname=jfederc-git
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=3
 epoch=
 
 pkgdesc="A compiler for the Feder programming language"
