@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
         api_print_info(sym);
     else if (strcmp(cmd, "graph") == 0 && argc == 3)
         graph_main(sym, NULL);
-    else if (strcmp(cmd, "compare") == 0 && argc == 4) {
+    else if (strcmp(cmd, "cmp") == 0 && argc == 4) {
         char sym2[strlen(argv[3]) + 1];
         strcpy(sym2, argv[3]);
         strtoupper(sym2);

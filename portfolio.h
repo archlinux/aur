@@ -43,11 +43,11 @@ void portfolio_file_init(void);
 /**
  * Reads the portfolio into a String object and returns it. If the file doesn't exist or it cannot be read return NULL.
  * If the stored String is encrypted, decrypt it before returning. Return NULL if given the wrong password to decrypt.
- * @param password Used as a return value. If not NULL, references a char* containing the password to the portfolio
+ * @param password_ref Used as a return value. If not NULL, references a char* containing the password to the portfolio
  * @return pointer to a allocated String containing the contents of the unencrypted portfolio or NULL on error opening
  * or reading portfolio
  */
-String* portfolio_file_get_string(char** password);
+String* portfolio_file_get_string(char** password_ref);
 
 /**
  * Creates or modifies the portfolio in JSON format. Each security is an object in an array. Each object contains the
@@ -68,12 +68,12 @@ String* portfolio_file_get_string(char** password);
  *
  * After this, overwrite the portfolio with the (encrypted or not) created/modified JSON array.
  *
- * @param ticker_name_string string containing the symbol of the security to add or name of the cryptocurrency
+ * @param symbol string containing the symbol of the security to add or name of the cryptocurrency
  * @param quantity_shares the number of shares to modify the portfolio by
  * @param usd_spent the amount of USD to modify the portfolio by
- * @param option SET, REMOVE, or ADD
+ * @param mod_option SET, REMOVE, or ADD
  */
-void portfolio_modify(const char* ticker_name_string, double quantity_shares, double usd_spent, int option);
+void portfolio_modify(const char* symbol, double quantity_shares, double usd_spent, int mod_option);
 
 /**
  * Returns an SDA array containing data from the portfolio.
@@ -97,31 +97,31 @@ void* portfolio_store_api_data(void* vsec_data);
  * SORT_ALPHA will sort the array lexicographically from least to greatest
  * SORT_VALUE, SORT_PROFIT, SORT_PROFIT_1D, and SORT_PROFIT_7D will sort the array from greatest to least
  * @param sda_data array to sort
- * @param SORT mode to sort
+ * @param sort_option mode to sort
  */
-void portfolio_sort(SDA* sda_data, int SORT);
+void portfolio_sort(SDA* sda_data, int sort_option);
 
 /**
  * Prints to stdout information about every security contained in the portfolio: symbol, number of shares, USD spent,
  * current value, profit, and 24h profit. Additionally, print a grand total with info from all securities.
  */
-void portfolio_print_all(int SORT);
+void portfolio_print_all(int sort_option);
 
 /**
  * Prints to stdout information about a specific security contained in the portfolio: symbol, number of shares, USD spent,
  * current value, profit, and 24h profit.
- * @param ticker_name_string the security to print
+ * @param symbol the security to print
  */
-void portfolio_print_stock(const char* ticker_name_string);
+void portfolio_print_stock(const char* symbol);
 
 /**
  * Goes through the given JSON array until the JSON object at the given index's key "Symbol" contains
  * the string ticker_name_string, then returns that index number.
- * @param ticker_name_string the security to return the index of
+ * @param symbol the security to return the index of
  * @param jarray the JSON array
  * @return -1 if not found, the index number otherwise
  */
-int portfolio_symbol_index(const char* ticker_name_string, const Json* jarray);
+int portfolio_symbol_index(const char* symbol, const Json* jarray);
 
 /**
  * Return if trying to encrypt an encrypted portfolio and trying to decrypt a non-encrypted portfolio.
@@ -130,9 +130,9 @@ int portfolio_symbol_index(const char* ticker_name_string, const Json* jarray);
  * encrypt the portfolio. If they don't match, return. Write the portfolio file with the encrypted String.
  *
  * If decrypting, decrypt the portfolio and write the decrypted String to the file.
- * @param CRYPT crypt option
+ * @param crypt_opt crypt option
  */
-void portfolio_encrypt_decrypt(int CRYPT);
+void portfolio_encrypt_decrypt(int crypt_opt);
 
 /**
  * Frees all memory associated with a SDA struct and sets the handle to NULL

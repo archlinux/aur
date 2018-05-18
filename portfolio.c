@@ -10,7 +10,7 @@ void portfolio_file_init(void) {
     portfolio_file = path;
 }
 
-String* portfolio_file_get_string(char** password) {
+String* portfolio_file_get_string(char** password_ref) {
     struct stat file_info;
     if (stat(portfolio_file, &file_info)) // If called from portfolio_modify, file should exist (possibly size 0)
         RETNULL_MSG("Portfolio file doesn't exist.");
@@ -34,39 +34,39 @@ String* portfolio_file_get_string(char** password) {
     }
 
     fclose(fp);
-    Json* jobj = json_tokener_parse(pString->data);
+    Json* jobj = json_tokener_parse(pString->data); // Make sure portfolio is JSON formatted
     if (jobj == NULL || !json_object_is_type(jobj, json_type_array)) { // Decrypt if not a JSON array
-        char* pw = rc4_getPassword();
+        char* password = rc4_getPassword();
         puts("Decrypting portfolio...");
-        rc4_encode_string(pString, pw); // Decode using password
+        rc4_encode_string(pString, password); // Decode using password
         jobj = json_tokener_parse(pString->data);
         if (jobj == NULL || !json_object_is_type(jobj, json_type_array)) { // Wrong pw if not JSON array after decrypt
-            free(pw);
+            free(password);
             json_object_put(jobj);
             string_destroy(&pString);
             RETNULL_MSG("Wrong password!")
         }
 
-        if (password != NULL) // If provided a string reference, set pointer to malloc'ed password
-            *password = pw;   // This is used for re-encrypting the portfolio when modifying
-        else free(pw);
+        if (password_ref != NULL) // If provided a string reference, set pointer to malloc'ed password_ref
+            *password_ref = password;   // This is used for re-encrypting the portfolio when modifying
+        else free(password);
     }
     json_object_put(jobj);
     return pString;
 }
 
-void portfolio_modify(const char* ticker_name_string, double quantity_shares, double usd_spent, int option) {
+void portfolio_modify(const char* symbol, double quantity_shares, double usd_spent, int mod_option) {
     if (quantity_shares < 0 || usd_spent < 0) // Negative numbers
         RET_MSG("You must use positive values.")
 
-    if (option != SET && quantity_shares == 0 && usd_spent == 0) // Adding or removing 0
+    if (mod_option != SET && quantity_shares == 0 && usd_spent == 0) // Adding or removing 0
         RET_MSG("You cannot add or remove values of 0.")
 
     FILE* fp = fopen(portfolio_file, "a"); // Creates empty file if portfolio doesn't exist
     if (fp == NULL) // If file exists, but cannot be opened, usually because of permissions
         RET_MSG("Error opening porfolio.")
-
     fclose(fp);
+
     char* password = NULL; // If portfolio is encrypted, store password when decrypting for re-encryption
     String* pString = portfolio_file_get_string(&password);
     if (pString == NULL) // Return if error or wrong password
@@ -79,13 +79,13 @@ void portfolio_modify(const char* ticker_name_string, double quantity_shares, do
         jobj = json_object_new_array();
     else jobj = json_tokener_parse(pString->data); // Otherwise parse
 
-    int index = portfolio_symbol_index(ticker_name_string, jobj);
+    int index = portfolio_symbol_index(symbol, jobj);
     if (index == -1) { // If security is not already contained in portfolio
-        if (option == REMOVE) // If trying to remove a security they don't own
+        if (mod_option == REMOVE) // If trying to remove a security they don't own
             GOTO_CLEAN_MSG("You don't have any of this security to remove")
 
-        if (strcmp("USD$", ticker_name_string) != 0) { // Check that the symbol is valid, except if it's USD
-            double* data = api_get_current_price(ticker_name_string);
+        if (strcmp("USD$", symbol) != 0) { // Check that the symbol is valid, except if it's USD
+            double* data = api_get_current_price(symbol);
             if (data == NULL) // If NULL response from APIs, it's invalid
                 GOTO_CLEAN_MSG("Invalid symbol.")
             else free(data);
@@ -93,10 +93,10 @@ void portfolio_modify(const char* ticker_name_string, double quantity_shares, do
 
         Json* new_object = json_object_new_object(); // Creates new array index and adds values to it
         json_object_array_add(jobj, new_object);
-        json_object_object_add(new_object, "Symbol", json_object_new_string(ticker_name_string));
+        json_object_object_add(new_object, "Symbol", json_object_new_string(symbol));
         json_object_object_add(new_object, "Shares", json_object_new_double(quantity_shares));
         json_object_object_add(new_object, "USD_Spent", json_object_new_double(usd_spent));
-        printf("Added %lf %s bought for %lf to portfolio.\n", quantity_shares, ticker_name_string, usd_spent);
+        printf("Added %lf %s bought for %lf to portfolio.\n", quantity_shares, symbol, usd_spent);
     } else { //if already in portfolio
         Json* current_index = json_object_array_get_idx(jobj, (size_t) index);
         // Store values already in portfolio to modify.
@@ -104,34 +104,33 @@ void portfolio_modify(const char* ticker_name_string, double quantity_shares, do
         double current_spent = json_object_get_double(json_object_object_get(current_index, "USD_Spent"));
         json_object_object_del(current_index, "Shares"); // Deletes the objects already there
         json_object_object_del(current_index, "USD_Spent");
-        if (option == SET) { // SET
+        if (mod_option == SET) { // SET
             current_shares = quantity_shares;
             current_spent = usd_spent;
-            printf("Set amount of %s in portfolio to %lf bought for %lf.\n", ticker_name_string, quantity_shares,
+            printf("Set amount of %s in portfolio to %lf bought for %lf.\n", symbol, quantity_shares,
                    usd_spent);
-        } else if (option == ADD) { // ADD
+        } else if (mod_option == ADD) { // ADD
             current_shares += quantity_shares;
             current_spent += usd_spent;
-            printf("Added %lf %s bought for %lf to portfolio.\n", quantity_shares, ticker_name_string, usd_spent);
+            printf("Added %lf %s bought for %lf to portfolio.\n", quantity_shares, symbol, usd_spent);
         } else { // REMOVE
             current_shares -= quantity_shares;
             current_spent -= usd_spent;
             if (current_shares < 0 || current_spent < 0) // If you try to remove more than you have
                 GOTO_CLEAN_MSG("You don't have enough of this security to remove.")
 
-            printf("Removed %lf %s bought for %lf to portfolio.\n", quantity_shares, ticker_name_string, usd_spent);
+            printf("Removed %lf %s bought for %lf to portfolio.\n", quantity_shares, symbol, usd_spent);
         }
         if (current_shares == 0 && usd_spent == 0) // Deletes index from portfolio if values are 0
             json_object_array_del_idx(jobj, (size_t) index, 1);
         else { // Adds computed values to index
-            json_object_object_add(current_index, "Shares", json_object_new_double(round(current_shares * 100) / 100));
-            json_object_object_add(current_index, "USD_Spent",
-                                   json_object_new_double(round(current_spent * 100) / 100));
+            json_object_object_add(current_index, "Shares", json_object_new_double(current_shares));
+            json_object_object_add(current_index, "USD_Spent", json_object_new_double(current_spent));
         }
     }
     const char* new_portfolio_str = json_object_to_json_string(jobj);
     pString->len = strlen(new_portfolio_str);
-    pString->data = realloc(pString->data, pString->len + 1); // Realloc string with
+    pString->data = realloc(pString->data, pString->len + 1); // Realloc string with size of new length
     pointer_alloc_check(pString->data);
     strcpy(pString->data, new_portfolio_str);
     if (password != NULL) { // If data must be re-encrypted
@@ -209,7 +208,7 @@ void* portfolio_store_api_data(void* vsec_data) {
     return NULL;
 }
 
-void portfolio_sort(SDA* sda_data, int SORT) {
+void portfolio_sort(SDA* sda_data, int sort_option) {
     int loop_flag = 1;
     double val1 = 0, val2 = 0;
     SD* sec_data1, * sec_data2, * temp;
@@ -218,23 +217,23 @@ void portfolio_sort(SDA* sda_data, int SORT) {
         for (size_t i = 0; i < sda_data->length - 1; i++) {
             sec_data1 = sda_data->sec_data[i];
             sec_data2 = sda_data->sec_data[i + 1];
-            if (SORT == SORT_ALPHA || SORT > SORT_PROFIT_7D) {
+            if (sort_option == SORT_ALPHA || sort_option > SORT_PROFIT_7D) {
                 if (strcmp(sec_data1->symbol, sec_data2->symbol) > 0) { // Least to greatest
                     temp = sda_data->sec_data[i]; // Swap
                     sda_data->sec_data[i] = sda_data->sec_data[i + 1];
                     sda_data->sec_data[i + 1] = temp;
                     loop_flag = 1;
                 }
-            } else if (SORT == SORT_VALUE) {
+            } else if (sort_option == SORT_VALUE) {
                 val1 = sec_data1->current_value;
                 val2 = sec_data2->current_value;
-            } else if (SORT == SORT_PROFIT) {
+            } else if (sort_option == SORT_PROFIT) {
                 val1 = sec_data1->total_profit;
                 val2 = sec_data2->total_profit;
-            } else if (SORT == SORT_PROFIT_1D) {
+            } else if (sort_option == SORT_PROFIT_1D) {
                 val1 = sec_data1->one_day_profit;
                 val2 = sec_data2->one_day_profit;
-            } else if (SORT == SORT_PROFIT_7D) {
+            } else if (sort_option == SORT_PROFIT_7D) {
                 val1 = sec_data1->seven_day_profit;
                 val2 = sec_data2->seven_day_profit;
             }
@@ -248,7 +247,7 @@ void portfolio_sort(SDA* sda_data, int SORT) {
     }
 }
 
-void portfolio_print_all(int SORT) {
+void portfolio_print_all(int sort_option) {
     SDA* sda_data = portfolio_get_data_array();
     if (sda_data == NULL) // Error reading portfolio, wrong password, empty portfolio array
         return;
@@ -278,7 +277,7 @@ void portfolio_print_all(int SORT) {
         total_profit_1d += sec_data->one_day_profit;
         total_profit_7d += sec_data->seven_day_profit;
     }
-    portfolio_sort(sda_data, SORT); // Sort security array
+    portfolio_sort(sda_data, sort_option); // Sort security array
     printf("\n  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)      7D       (%%)\n");
     for (size_t i = 0; i < sda_data->length; i++) {
         sec_data = sda_data->sec_data[i]; // Print security data one at a time
@@ -293,14 +292,14 @@ void portfolio_print_all(int SORT) {
     sda_destroy(&sda_data);
 }
 
-void portfolio_print_stock(const char* ticker_name_string) {
+void portfolio_print_stock(const char* symbol) {
     SDA* sda_data = portfolio_get_data_array();
     if (sda_data == NULL) // Error reading portfolio, wrong password, empty portfolio array
         return;
 
     SD* sec_data = NULL;
     size_t i = 0;
-    while (i < sda_data->length && strcmp(sda_data->sec_data[i]->symbol, ticker_name_string) != 0)
+    while (i < sda_data->length && strcmp(sda_data->sec_data[i]->symbol, symbol) != 0)
         i++;
     if (i != sda_data->length)
         sec_data = sda_data->sec_data[i];
@@ -316,31 +315,31 @@ void portfolio_print_stock(const char* ticker_name_string) {
     sda_destroy(&sda_data);
 }
 
-int portfolio_symbol_index(const char* ticker_name_string, const Json* jarray) {
+int portfolio_symbol_index(const char* symbol, const Json* jarray) {
     char string[32];
     for (int i = 0; i < (int) json_object_array_length(jarray); i++) {
         strcpy(string, json_object_to_json_string(
                 json_object_object_get(json_object_array_get_idx(jarray, (size_t) i), "Symbol")));
         strip_char(string, '\"');
-        if (strcmp(string, ticker_name_string) == 0)
+        if (strcmp(string, symbol) == 0)
             return i;
     }
     return -1;
 }
 
-void portfolio_encrypt_decrypt(int CRYPT) {
+void portfolio_encrypt_decrypt(int crypt_opt) {
     char* password = NULL;
     String* pString = portfolio_file_get_string(&password);
     if (pString == NULL) // Error reading portfolio or wrong password when decrypting
         return;
 
-    if (CRYPT == ENCRYPT && password != NULL)
+    if (crypt_opt == ENCRYPT && password != NULL) // Trying to encrypt an encrypted portfolio
         GOTO_CLEAN_MSG("Portfolio is already encrypted.")
 
-    if (CRYPT == DECRYPT && password == NULL)
+    if (crypt_opt == DECRYPT && password == NULL) // Trying to decrypt a plaintext portfolio
         GOTO_CLEAN_MSG("Portfolio isn't encrypted.")
 
-    if (CRYPT == DECRYPT) {
+    if (crypt_opt == DECRYPT) {
         string_write_portfolio(pString);
         GOTO_CLEAN_MSG("Decrypted successfully")
     }
@@ -348,16 +347,16 @@ void portfolio_encrypt_decrypt(int CRYPT) {
     // ENCRYPT
     password = rc4_getPassword();
     puts("You will be asked to enter your password again to make sure the entries match.");
-    sleep(2);
-    char* passwordCheck = rc4_getPassword();
-    if (strcmp(password, passwordCheck) != 0) {
-        free(passwordCheck);
+    sleep(2); // Sleep so user can read above message before ncurses initscr()
+    char* password_check = rc4_getPassword(); // Get password a second time
+    if (strcmp(password, password_check) != 0) { // Make sure the two passwords are the same
+        free(password_check);
         GOTO_CLEAN_MSG("Passwords do not match!")
     }
     rc4_encode_string(pString, password);
     string_write_portfolio(pString);
     puts("Encrypted successfully");
-    free(passwordCheck);
+    free(password_check);
     cleanup: // CLEANUP
     free(password);
     string_destroy(&pString);
