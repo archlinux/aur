@@ -2,7 +2,7 @@
 pkgname=postgis-src
 _pkgname=${pkgname}
 pkgver=2.4.4
-pkgrel=2
+pkgrel=4
 pkgdesc="Postgres GIS extensions (from source)"
 arch=('i686' 'x86_64')
 url="http://postgis.net/"
@@ -17,7 +17,7 @@ sha256sums=('0663efb589210d5048d95c817e5cf29552ec8180e16d4c6ef56c94255faca8c2')
 build() {
   cd postgis-${pkgver}
 
-  ./configure --without-json --prefix=/usr --with-gdalconfig=/usr/bin/gdal-config --with-gui
+  ./configure --prefix=/usr --with-gdalconfig=/usr/bin/gdal-config --with-gui
   make
 }
 
