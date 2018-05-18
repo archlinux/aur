@@ -1,51 +1,35 @@
-# Autopsy: Installer: Arch
-# Contributor: Chris Giles <Chris.G.27 (at) Gmail.com> & daschu117
-# Maintainer: m4xm4n <max@maxfierke.com>
-
+# Maintainer: Jaryl Chng <mrciku@gmail.com>
 pkgname=autopsy
-pkgver=2.24
-pkgrel=5
-pkgdesc="The Autopsy Forensic Browser is a GUI for The Sleuth Kit."
-arch=("any")
-url="http://www.sleuthkit.org/${pkgname}"
-license=("GPL2")
-depends=("perl" "sleuthkit")
-options=(!emptydirs)
-
-source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz ${pkgname}.pl)
-md5sums=('4ed18aa9f79453d74957b5db220d0d59'
-         'e5c67fdd92c6203c0c34ff5b07269aef')
+pkgver=4.7.0
+pkgrel=1
+pkgdesc='The Autopsy Forensic Browser is a GUI for The Sleuth Kit.'
+arch=(x86_64)
+url='http://www.sleuthkit.org/autopsy/'
+license=('MIT/Apache-2.0')
+provides=(autopsy)
+depends=(java-runtime testdisk)
+makedepends=()
+source=(https://github.com/sleuthkit/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip Autopsy.desktop)
+sha256sums=(de85415aef78236f6f135b6ab4376470e60c154f58b867d676bf5b11df40f766 be382bc92f5e98dfebbbf31dc927fc44af0fecee6911f7122ba8e7c55d281262)
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
 
-  echo "#!/usr/bin/perl -wT" > ${pkgname}
-  echo "use lib '/usr/lib/${pkgname}/';" >> ${pkgname}
-  echo "use lib '/usr/lib/${pkgname}/lib/';" >> ${pkgname}
-  cat base/${pkgname}.base >> ${pkgname} || return 1
-  sed -i 's:conf.pl:/etc/autopsy.pl:' ${pkgname} lib/Main.pm || return 1
+  mkdir $pkgdir/usr
+  mkdir $pkgdir/usr/bin
+  install -m755 bin/autopsy $pkgdir/usr/bin/autopsy
+  cp -r autopsy $pkgdir/usr/
+  cp -r docs $pkgdir/usr/
+  cp -r etc $pkgdir/usr/
+  cp -r gstreamer $pkgdir/usr/
+  cp -r harness $pkgdir/usr/
+  cp -r java $pkgdir/usr/
+  cp -r platform $pkgdir/usr/
 
-  mkdir -p ${pkgdir}/usr/lib/${pkgname}
-  cp ${pkgname} ${pkgdir}/usr/lib/${pkgname}/
-  chmod +x ${pkgdir}/usr/lib/${pkgname}/${pkgname}
+  mkdir $pkgdir/usr/share
+  mkdir $pkgdir/usr/share/pixmaps
+  cp icon.ico $pkgdir/usr/share/pixmaps/autopsy.ico
 
-  mkdir -p ${pkgdir}/etc
-  cp ${srcdir}/${pkgname}.pl ${pkgdir}/etc
-
-  mkdir -p ${pkgdir}/usr/lib/${pkgname}/help
-  cp -r help ${pkgdir}/usr/lib/${pkgname}/
-
-  mkdir -p ${pkgdir}/usr/lib/${pkgname}/lib
-  cp -r lib ${pkgdir}/usr/lib/${pkgname}/
-
-  mkdir -p ${pkgdir}/usr/man/man1
-  cp -r man ${pkgdir}/usr/
-
-  mkdir -p ${pkgdir}/usr/lib/${pkgname}/pict
-  cp -r pict ${pkgdir}/usr/lib/${pkgname}/
-
-  mkdir -p ${pkgdir}/usr/bin
-  cd ${pkgdir}/usr/bin
-  ln -s /usr/lib/${pkgname}/${pkgname} ${pkgname}
+  mkdir $pkgdir/usr/share/applications
+  install -Dm644 ../../Autopsy.desktop $pkgdir/usr/share/applications
 }
-
