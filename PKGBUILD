@@ -39,7 +39,7 @@ package() {
   cd "$srcdir"/Net--RabbitMQ-$pkgver
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   make DESTDIR="$pkgdir" install
-  chmod -R u=rwX,go=rwX "$pkgdir"
+  chmod -R u=rwX,go=rX "$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
