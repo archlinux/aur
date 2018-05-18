@@ -3,10 +3,10 @@
 # Contributor: redfish
 
 pkgname=i2pd-git
-pkgver=2.15.0.r142.g10085107
+pkgver=2.18.0.r136.gc13983d3
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/PurpleI2P/i2pd"
 license=('BSD')
 depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
@@ -22,6 +22,7 @@ conflicts=('${pkgname%%-git}')
 build() {
   cd $srcdir/${pkgname%%-git}
   cd build
+
   cmake . -DCMAKE_CXX_FLAGS="-w" \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DWITH_UPNP=ON -DWITH_PCH=OFF \
