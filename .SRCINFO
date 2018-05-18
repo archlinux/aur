@@ -1,13 +1,13 @@
 pkgbase = fortune-mod-fvl-git
 	pkgdesc = Fortune quotes by Felix von Leitner (Fefe)
-	pkgver = 20150208.r4.5bcd5db
+	pkgver = r4.5bcd5db
 	pkgrel = 1
-	url = https://github.com/yayachiken/_fortune-mod-fvl-git
+	url = https://github.com/yayachiken/fortune-mod-fvl
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = fortune-mod
-	source = git://github.com/yayachiken/fortune-mod-fvl.git
+	source = git+https://github.com/yayachiken/fortune-mod-fvl.git
 	sha256sums = SKIP
 
 pkgname = fortune-mod-fvl-git
