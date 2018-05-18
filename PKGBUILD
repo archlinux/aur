@@ -2,14 +2,14 @@
 #      Ralph Irving 2015-2016, ralph_irving@hotmail.com
 
 pkgname=squeezelite-git
-pkgver=v1.8.6_825.1b96b62
+pkgver=v1.9.0_1098.b2ed99e
 pkgrel=1
 pkgdesc='Lightweight headless squeezebox emulator'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/ralph-irving/squeezelite'
 license=(GPL3)
-makedepends=('ffmpeg')
-depends=('alsa-lib' 'faad2' 'flac' 'libmad' 'libvorbis' 'mpg123' 'libsoxr')
+makedepends=('git')
+depends=('alsa-lib' 'faad2' 'flac' 'libmad' 'libvorbis' 'mpg123' 'libsoxr' 'ffmpeg')
 provides=('squeezelite')
 conflicts=('squeezelite')
 source=('git+https://github.com/ralph-irving/squeezelite'
@@ -31,8 +31,7 @@ build() {
 	cd squeezelite
 
 	export LDFLAGS="${LDFLAGS} -lasound -lpthread -lm -lrt"
-	export CFLAGS="${CFLAGS} -DDSD -DRESAMPLE -DVISEXPORT -DFFMPEG"
-	export OPTS="${OPTS} -DIR"
+	export OPTS="${OPTS} -DDSD -DRESAMPLE -DVISEXPORT -DFFMPEG -DLINKALL"
 	make
 }
 
