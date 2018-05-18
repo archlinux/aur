@@ -1,0 +1,9 @@
+# Avoid accidentally commiting source files,
+*.jar
+
+# test build artifacts,
+pkg/
+src/
+
+# or test packages
+*.pkg.tar.xz
