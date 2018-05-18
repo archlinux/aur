@@ -1,0 +1,2 @@
+d /var/lib/clamav-unofficial-sigs 0700 clamav clamav -
+d /var/log/clamav-unofficial-sigs 0700 clamav clamav -
