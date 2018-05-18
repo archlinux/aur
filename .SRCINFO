@@ -13,7 +13,6 @@ pkgbase = gcc6
 	makedepends = binutils
 	makedepends = libmpc
 	makedepends = doxygen
-	makedepends = gcc-ada
 	makedepends = svn
 	makedepends = java-environment-common
 	makedepends = zip
@@ -50,12 +49,6 @@ pkgname = gcc6-fortran
 pkgname = gcc6-objc
 	pkgdesc = Objective-C front-end for GCC
 	depends = gcc6=6.4.1-5
-
-pkgname = gcc6-ada
-	pkgdesc = Ada front-end for GCC (GNAT)
-	depends = gcc6=6.4.1-5
-	options = staticlibs
-	options = !emptydirs
 
 pkgname = gcc6-go
 	pkgdesc = Go front-end for GCC

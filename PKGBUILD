@@ -7,7 +7,7 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgbase=gcc6
-pkgname=('gcc6' 'gcc6-libs' 'gcc6-fortran' 'gcc6-objc' 'gcc6-ada' 'gcc6-go' 'gcc6-gcj')
+pkgname=('gcc6' 'gcc6-libs' 'gcc6-fortran' 'gcc6-objc' 'gcc6-go' 'gcc6-gcj')
 pkgver=6.4.1
 _ver=6
 _svnrev=253363
@@ -18,7 +18,7 @@ pkgdesc="The GNU Compiler Collection (6.x.x)"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url="https://gcc.gnu.org/gcc-6/"
-makedepends=(binutils libmpc doxygen gcc-ada svn java-environment-common zip jdk8-openjdk gtk2 libart-lgpl libxtst)
+makedepends=(binutils libmpc doxygen svn java-environment-common zip jdk8-openjdk gtk2 libart-lgpl libxtst)
 checkdepends=('dejagnu' 'inetutils')
 options=(!emptydirs)
 source=(gcc::svn://gcc.gnu.org/svn/gcc/branches/gcc-${_ver}-branch#revision=$_svnrev
@@ -41,7 +41,7 @@ prepare() {
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
   # Arch Linux installs x86_64 libraries /lib
-  [[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+  sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
@@ -67,7 +67,7 @@ build() {
       --mandir=/usr/share/man \
       --infodir=/usr/share/info \
       --with-bugurl=https://bugs.archlinux.org/ \
-      --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,java \
+      --enable-languages=c,c++,fortran,go,lto,objc,obj-c++,java \
       --enable-shared \
       --enable-threads=posix \
       --enable-libmpx \
@@ -217,7 +217,7 @@ package_gcc6() {
 
   make -C gcc DESTDIR=${pkgdir} install-man install-info
   rm ${pkgdir}/usr/share/man/man1/{gccgo-${_ver},gfortran-${_ver}}.1
-  rm ${pkgdir}/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn}.info
+  rm ${pkgdir}/usr/share/info/{gccgo,gfortran}.info
 
   make -C libcpp DESTDIR=${pkgdir} install
   make -C gcc DESTDIR=${pkgdir} install-po
@@ -298,28 +298,6 @@ package_gcc6-objc() {
   install -dm755 $pkgdir/${_libdir}
   install -m755 gcc/cc1obj     $pkgdir/${_libdir}/cc1obj
   install -m755 gcc/cc1objplus $pkgdir/${_libdir}/cc1objplus
-
-  # Install Runtime Library Exception
-  install -d ${pkgdir}/usr/share/licenses/$pkgname/
-  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/$pkgname/
-}
-
-package_gcc6-ada() {
-  pkgdesc="Ada front-end for GCC (GNAT)"
-  depends=("gcc6=$pkgver-$pkgrel")
-  options=('staticlibs' '!emptydirs')
-
-  cd gcc-build/gcc
-  make DESTDIR=$pkgdir ada.install-common
-  install -m755 gnat1 $pkgdir/${_libdir}/gnat1
-
-  ln -s gcc-${_ver} ${pkgdir}/usr/bin/gnatgcc-${_ver}
-
-  # insist on dynamic linking, but keep static libraries because gnatmake complains
-  mv ${pkgdir}/${_libdir}/adalib/libgna{rl,t}-${_ver}.so ${pkgdir}/usr/lib
-  ln -s libgnarl-${_ver}.so ${pkgdir}/${_libdir}/libgnarl.so
-  ln -s libgnat-${_ver}.so  ${pkgdir}/${_libdir}/libgnat.so
-  #rm ${pkgdir}/${_libdir}/adalib/libgna{rl,t}-${_ver}.so
 
   # Install Runtime Library Exception
   install -d ${pkgdir}/usr/share/licenses/$pkgname/
