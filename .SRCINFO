@@ -1,16 +1,18 @@
 pkgbase = gnome-shell-communitheme-git
-	pkgdesc = GNOME Shell Ubuntu community theme communitheme
-	pkgver = a6ca20f
+	pkgdesc = GNOME Shell Ubuntu community theme "communitheme"
+	pkgver = r242.fe8cb17
 	pkgrel = 1
-	url = https://github.com/Ubuntu/gnome-shell-communitheme
+	url = https://community.ubuntu.com/c/desktop/theme-refresh
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	depends = gtk3
-	depends = gnome-shell
+	makedepends = sassc
 	source = gnome-shell-communitheme-git::git+https://github.com/Ubuntu/gnome-shell-communitheme.git
+	source = fix-install-dirs.patch
 	sha256sums = SKIP
+	sha256sums = d499d124a0c1836ee32e645600817f17b5946ecdaaf2c9e95a185a4aaec6e1de
 
 pkgname = gnome-shell-communitheme-git
 

@@ -1,7 +1,7 @@
 # Maintainer: https://aur.archlinux.org/account/JunioCalu
 # Contributor: https://aur.archlinux.org/account/devopsdeluxe
 
-pkgname='gnome-shell-communitheme'
+pkgname='gnome-shell-communitheme-git'
 pkgver=r242.fe8cb17
 pkgrel=1
 pkgdesc='GNOME Shell Ubuntu community theme "communitheme"'
