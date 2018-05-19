@@ -1,6 +1,6 @@
 pkgbase = gnome-keysign
-	pkgdesc = An easier way to sign OpenPGP keys over the local network.
-	pkgver = 0.9.6
+	pkgdesc = An easier way to sign OpenPGP keys over the local network or Bluetooth.
+	pkgver = 0.9.7.2
 	pkgrel = 1
 	url = https://github.com/gnome-keysign/gnome-keysign
 	install = gnome-keysign.install
@@ -23,10 +23,8 @@ pkgbase = gnome-keysign
 	depends = gst-plugins-bad
 	depends = zbar
 	optdepends = python-pybluez: Bluetooth support
-	source = git+https://gitlab.gnome.org/GNOME/gnome-keysign.git#commit=5d1c180dd9de8593036dbf05ab9990cb17534a2f
-	source = avoid_monkeysign.patch
+	source = git+https://gitlab.gnome.org/GNOME/gnome-keysign.git#commit=cfcb137edebd6b1b88a7d5a39c6435561ee27eed
 	sha256sums = SKIP
-	sha256sums = e3aa40aeff35a8f7fcc6b7e79a3a3efb643bc2767766cbdc340a9860484734f2
 
 pkgname = gnome-keysign
 
