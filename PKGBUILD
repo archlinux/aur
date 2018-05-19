@@ -2,7 +2,7 @@
 # Maintainer: Dan Fuhry <dan@fuhry.us>
 pkgname=kcrap-lnf
 pkgver=0.2.3+grawity1
-pkgrel=4
+pkgrel=5
 _krbver=1.16
 arch=('i686' 'x86_64')
 pkgdesc="Kerberos Challenge Response Authentication Protocol"
@@ -12,9 +12,12 @@ url="http://www.spock.org/kcrap/"
 conflicts=('kcrap')
 provides=("kcrap=${pkgver%+*}")
 replaces=('kcrap')
-source=("git://github.com/grawity/kcrap-lnf"
-        "git://github.com/krb5/krb5#tag=krb5-${_krbver}-final")
-sha1sums=(SKIP SKIP)
+source=("git+https://github.com/grawity/kcrap-lnf"
+        "git+https://github.com/krb5/krb5#tag=krb5-${_krbver}-final"
+        "kcrap.service")
+sha256sums=('SKIP'
+            'SKIP'
+            '100be82d33162072f2f1de79f4b7ac54baa6e1c673d986dee7ebf341920823d6')
 backup=('etc/kcrap_server.conf')
 
 prepare() {
@@ -43,6 +46,7 @@ package() {
   mv "${pkgdir}/usr/sbin/kcrap_server" "${pkgdir}/usr/bin/kcrap_server"
   rm -rf "${pkgdir}/usr/sbin"
   chmod -x "${pkgdir}/usr/include/kcrap.h"
+  install -Dm0644 "${srcdir}/kcrap.service" "${pkgdir}/usr/lib/systemd/system/kcrap.service"
 }
 
 # vim: ft=sh:ts=2:sw=2:et:
