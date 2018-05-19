@@ -1,7 +1,7 @@
 pkgbase = budgie-advanced-brightness-controller-applet
 	pkgdesc = Advanced Brightness Controller is a Budgie Desktop applet for productivity
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/serdarsen/budgie-advanced-brightness-controller
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = budgie-advanced-brightness-controller-applet
 	depends = budgie-desktop
 	depends = python
 	depends = python-gobject
+	depends = xorg-xrandr
 	source = https://github.com/serdarsen/budgie-advanced-brightness-controller/archive/v1.2.3.tar.gz
 	source = gsd-backlight-helper.patch
 	sha256sums = 207e57c25c936430447c1c80c8591f04540d9a0ffe9812016bea1398dfbbf1f3
