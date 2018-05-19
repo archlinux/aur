@@ -8,13 +8,13 @@ arch=('i686' 'x86_64')
 url="http://www.midish.org"
 license=('BSD')
 groups=()
-depends=(readline)
+depends=(alsa-lib readline)
 source=("http://www.midish.org/$pkgname.tar.gz")
 md5sums=('39a704e0d927a1de0d30867850a7a07c')
 
 build() {
 	cd "$pkgname"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --mandir=/usr/share/man
 	make
 }
 

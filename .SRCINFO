@@ -6,6 +6,7 @@ pkgbase = midish
 	arch = i686
 	arch = x86_64
 	license = BSD
+	depends = alsa-lib
 	depends = readline
 	source = http://www.midish.org/midish.tar.gz
 	md5sums = 39a704e0d927a1de0d30867850a7a07c
