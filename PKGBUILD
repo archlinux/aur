@@ -1,24 +1,23 @@
-# Maintainer: Oliver Mangold omangold at gmail dot com
+# Maintainer: Ekin Dursun <ekindursun@gmail.com>
+# Contributor: Oliver Mangold omangold at gmail dot com
 
 pkgname=python-xdis
-pkgver=3.8.0
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="Python cross-version byte-code disassembler and marshal routines."
 arch=('any')
 url="https://github.com/rocky/python-xdis/"
 license=('MIT')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools')
 depends=('python-click')
-source=('git+https://github.com/rocky/python-xdis.git#commit=e3940affc511131f96e17f37c29f1d1bfa94c86d'
-        'python-xdis-supports-3.6.5.patch')
-sha256sums=('SKIP'
-            'c3ed1a3c3fdd67d6c7ab75981367ad062a9ef44fe23f8617fc0585057479f5fa')
+_name=${pkgname#python-}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('e8548be5a386f51a6a0295e033984869ed71191879adc3d5aed17cd4a030ad8f')
 build() {
-    cd "$srcdir/$pkgname"
-    patch -p1 < "$srcdir/${source[1]}"
+    cd "$srcdir/$_name-$pkgver"
     python setup.py build
 }
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir"
 }
