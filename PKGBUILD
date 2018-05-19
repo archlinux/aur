@@ -1,11 +1,13 @@
 # $Id$
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Zachary Emmert <zack.emmert@gmail.com>
+# Contributor: eimis <eimantas@remote.solutions>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: namelessjon <jonathan.stott@gmail.com>
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 
 pkgname=mingw-w64-libsodium
 _pkgname=libsodium
-pkgver=1.0.10
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="P(ortable|ackageable) NaCl-based crypto library (mingw-w64)"
 arch=('any')
@@ -13,8 +15,8 @@ url="https://github.com/jedisct1/libsodium"
 license=('custom:ISC')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-configure')
-source=("http://download.dnscrypt.org/$_pkgname/releases/$_pkgname-${pkgver}.tar.gz")
-sha512sums=('ff52e7f25787cc858e8d26be10913c689bd3dd394c8e163133920141be67a292a1dba066a1037e83cf0ced155a1554f07f24c2f33a7a6aa52521d39f537cd515')
+source=("https://github.com/jedisct1/$_pkgname/releases/download/${pkgver}/$_pkgname-${pkgver}.tar.gz")
+sha512sums=('SKIP')
 options=(!strip !buildflags staticlibs)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
