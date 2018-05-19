@@ -1,0 +1,28 @@
+pkgbase = termite
+	pkgdesc = A simple VTE-based terminal (bépo version)
+	pkgver = 13
+	pkgrel = 3
+	url = https://github.com/thestinger/termite/
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = ncurses
+	makedepends = intltool
+	makedepends = gperf
+	makedepends = gtk-doc
+	depends = gtk3
+	depends = pcre2
+	depends = gnutls
+	depends = vte-common
+	depends = termite-terminfo
+	conflicts = termite
+	source = git+https://github.com/antoyo/termite
+	source = git+https://github.com/thestinger/vte-ng#tag=0.50.2.a
+	source = termite-util::git+https://github.com/thestinger/util
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = termite-bepo
+	backup = etc/xdg/termite/config
+

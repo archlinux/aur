@@ -1,0 +1,6 @@
+pkg
+src
+termite
+*.tar.xz
+termite-util
+vte-ng
