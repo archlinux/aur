@@ -1,6 +1,6 @@
 pkgbase = intel-media-driver
 	pkgdesc = Intel Media Driver for VAAPI
-	pkgver = 600.0132
+	pkgver = 2018.Q2.1
 	pkgrel = 1
 	url = https://github.com/intel/media-driver/
 	install = intel-media-driver.install
@@ -14,12 +14,12 @@ pkgbase = intel-media-driver
 	conflicts = intel-media-driver-git
 	options = !emptydirs
 	backup = etc/profile.d/intel-media.sh
-	source = intel-media-driver-600.0132.tar.gz::https://github.com/intel/media-driver/archive/intel-media-600.0132.tar.gz
-	source = gmmlib-git::git+https://github.com/intel/gmmlib.git#commit=b32d2124aa5187b20b64df24d2e83bcbe7a57d7d
-	source = fix-ult-link-error-on-arch-linux.patch
-	sha256sums = 0a4b2acccb1641419186739270a7452ca52176c0af27ca94c5cf3fdb4aa8e9cb
+	source = intel-media-driver-2018.Q2.1.tar.gz::https://github.com/intel/media-driver/archive/driver-for-Intel-Media-SDK-2018Q2.1.tar.gz
+	source = gmmlib-git::git+https://github.com/intel/gmmlib.git#commit=a5015343bc932e39747c57ea5dec0cbf28685465
+	source = intel-media-driver-support-libva-2.1.0.patch
+	sha256sums = f50a23af8a2e52a0895ddc24b10aff64b1077d2e783b33e743ec663371d3dd43
 	sha256sums = SKIP
-	sha256sums = 3e1407f4ba9d5616013d1b2a0bd3b10515f1ad268403bacef138bd0a75d45de8
+	sha256sums = 187e1eeadc223022195b3675f84e65014935976523ab5a37cc21658233273d55
 
 pkgname = intel-media-driver
 
