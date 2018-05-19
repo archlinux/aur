@@ -1,0 +1,17 @@
+pkgbase = openicp-br-git
+	pkgdesc = A program for digitally singing and verifying documents according to Brazilian Law.
+	pkgver = r113.b67332c
+	pkgrel = 1
+	url = github.comn/gjvnq/OpenICP-BR
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	depends = wxgtk2
+	provides = openicp-br
+	conflicts = openicp-br
+	conflicts = openicp-br-git
+	source = openicp-br-git::git+https://github.com/gjvnq/OpenICP-BR.git
+	md5sums = SKIP
+
+pkgname = openicp-br-git
+
