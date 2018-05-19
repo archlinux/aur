@@ -3,11 +3,11 @@
 _name='estool'
 pkgname="python-${_name}-git"
 pkgver=r13.2a95325
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of various Evolution Strategies, such as GA, PEPG, CMA-ES and OpenAI's ES using common interface"
 provides=(python-${_name})
 url="https://github.com/hardmaru/${_name}"
-depends=('python-gym-git' 'python-pybullet')
+depends=('python-gym-git' 'python-pybullet' 'python-pycma')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('x86_64')
