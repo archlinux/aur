@@ -1,7 +1,7 @@
 pkgbase = python-estool-git
 	pkgdesc = Implementation of various Evolution Strategies, such as GA, PEPG, CMA-ES and OpenAI's ES using common interface
 	pkgver = r13.2a95325
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hardmaru/estool
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = python-estool-git
 	depends = python-gym-git
 	depends = python-pybullet
 	depends = python-pycma
+	optdepends = roboschool: roboschool gym environments
 	provides = python-estool
 	source = git+https://github.com/hardmaru/estool.git
 	sha256sums = SKIP
