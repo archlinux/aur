@@ -1,6 +1,6 @@
 pkgbase = lubuntu-artwork
 	pkgdesc = artwork of Lubuntu
-	pkgver = 0.69
+	pkgver = 1.3
 	pkgrel = 1
 	url = http://wiki.ubuntu.com/Lubuntu/Artwork
 	arch = any
@@ -8,8 +8,9 @@ pkgbase = lubuntu-artwork
 	optdepends = gtk-engine-murrine: gtk2 theme support
 	optdepends = elementary-icon-theme: icons support
 	optdepends = gtk-engine-unico: gtk3 theme support
-	source = http://archive.ubuntu.com/ubuntu/pool/universe/l/lubuntu-artwork/lubuntu-artwork_0.69.tar.xz
-	sha512sums = aebb0bec4c86535844c081e895b9bbf363a40fab01e7e7878cdbcfa86f8b4d4432b58145b2b8264720490ad9670059b699eac05354f3fad5b5e180c9422db205
+	options = !strip
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/l/lubuntu-artwork/lubuntu-artwork_1.3.tar.xz
+	sha512sums = 7a3026e7a4c25838f2563510e738913de1052df02a54b560917b4313dcb9672121ac67f6c1a6021a096a27092ebc8ed862fc2fc3cbd8ad39780abcf161a8ef0d
 
 pkgname = lubuntu-artwork
 

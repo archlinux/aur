@@ -3,18 +3,19 @@
 # Contributor: 謝致邦<Yeking@Red54.com>
 
 pkgname=lubuntu-artwork
-pkgver=0.69
+pkgver=1.3
 pkgrel=1
 pkgdesc='artwork of Lubuntu'
 arch=('any')
+options=(!strip)
 url='http://wiki.ubuntu.com/Lubuntu/Artwork'
 license=('GPL')
 optdepends=('gtk-engine-murrine: gtk2 theme support'
             'elementary-icon-theme: icons support'
             'gtk-engine-unico: gtk3 theme support')
 source=("http://archive.ubuntu.com/ubuntu/pool/universe/l/${pkgname}/${pkgname}_${pkgver}.tar.xz")
-sha512sums=('aebb0bec4c86535844c081e895b9bbf363a40fab01e7e7878cdbcfa86f8b4d4432b58145b2b8264720490ad9670059b699eac05354f3fad5b5e180c9422db205')
+sha512sums=('7a3026e7a4c25838f2563510e738913de1052df02a54b560917b4313dcb9672121ac67f6c1a6021a096a27092ebc8ed862fc2fc3cbd8ad39780abcf161a8ef0d')
 
 package(){
-    cp -r "${srcdir}/${pkgname}-${pkgver}/src/usr" "${pkgdir}"
+    cp -r "${srcdir}/${pkgname}/src/usr" "${pkgdir}"
 }
