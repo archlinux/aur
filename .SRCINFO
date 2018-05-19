@@ -1,4 +1,4 @@
-pkgbase = termite
+pkgbase = termite-bepo
 	pkgdesc = A simple VTE-based terminal (bépo version)
 	pkgver = 13
 	pkgrel = 3
