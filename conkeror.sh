@@ -1,4 +1,4 @@
- #!/bin/sh
+#!/bin/sh
 
 # (C) Copyright 2015-2016 Ivy F. Foster
 #
