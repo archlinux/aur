@@ -1,8 +1,8 @@
 # Maintainer: Uffe Jakobsen _<_uffe_at_uffe_dot_org_>_
 pkgname=proploader
 _pkgname=PropLoader
-pkgver=1.0_33
-_pkgver=1.0-33
+pkgver=1.0_37
+_pkgver=1.0-37
 pkgrel=1
 pkgdesc="Parallax Propeller loader supporting both serial and wifi downloads"
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 source=("https://github.com/parallaxinc/${_pkgname}/archive/v${_pkgver}.tar.gz")
-md5sums=('a75b46ba82ba4d81bafd8f9794c49f59')
+md5sums=('d758a0bfe2f477ecbffb130159f58cb3')
 
 
 build()
