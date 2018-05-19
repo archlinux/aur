@@ -1,0 +1,14 @@
+pkgbase = pololu-usb-avr-programmer-v2
+	pkgdesc = Pololu USB AVR Programmer v2 Configuration Utility
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://www.pololu.com/docs/0J67
+	arch = x86_64
+	license = custom
+	source = https://www.pololu.com/file/0J1474/pololu-usb-avr-programmer-v2-1.1.0-linux-x86.tar.xz
+	source = pololu-usb-avr-programmer-v2.desktop
+	sha256sums = 40b596a8b2b88da632f12b4a62c42ad3c44dc182b33ea10a0ac42cbb043cef48
+	sha256sums = 8b951b57121b05b815e2b9b67b712b1d43b3d2ad33e68891d9066c00671b11a6
+
+pkgname = pololu-usb-avr-programmer-v2
+

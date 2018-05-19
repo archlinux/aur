@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=
+Type=Application
+Name=Pololu AVR Configuration Utility
+Icon=
+Exec=pavr2gui
+Comment=Pololu USB AVR Programmer v2 Configuration Utility
+Categories=Development;
+Terminal=false
