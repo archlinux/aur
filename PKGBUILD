@@ -1,7 +1,7 @@
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
 
 pkgname=kcore-meta
-pkgver=1.0.0
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Core packages'
 arch=('x86_64')
