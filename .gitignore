@@ -1,0 +1,9 @@
+# Blacklist:
+*
+
+# Whitelist:
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!openjk*.desktop
+!openjk*.png
