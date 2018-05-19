@@ -1,9 +1,7 @@
-# Contributor: Tamaasz
-
-# Před odesláním je nutné upravit proměnnou pkgname v .SRCINFO v tarballu.
+# Maintainer: Tomaash
 
 pkgbase=openttd-bin
-pkgver=1.5.1
+pkgver=1.8.0
 pkgrel=0
 pkgdesc='OpenTTD is an open source simulation game based upon the popular Microprose game "Transport Tycoon Deluxe". This package lets you have installed more versions simultaneously (simply change pkgver).'
 arch=('i686' 'x86_64')
@@ -20,26 +18,26 @@ else
 	_arch="i686"
 fi
 
-pkgname="openttd-bin-$pkgver"
+pkgname="$pkgbase-$pkgver"
 
 if [[ "$pkgver" =~ ^r ]]; then
-	src_slozka="openttd-trunk-${pkgver}-linux-generic-${_arch}"
+	source_basename="openttd-trunk-${pkgver}-linux-generic-${_arch}"
 	
-	nazev="openttd-trunk-${pkgver}-linux-generic-${_arch}.tar.xz"
-	adresa="http://binaries.openttd.org/nightlies/trunk/${pkgver}/${nazev}" #r25748/openttd-trunk-r25748-linux-generic-amd64.tar.xz
+	source_filename="openttd-trunk-${pkgver}-linux-generic-${_arch}.tar.xz"
+	source_url="http://binaries.openttd.org/nightlies/trunk/${pkgver}/${source_filename}" # r25748/openttd-trunk-r25748-linux-generic-amd64.tar.xz
 else
-	src_slozka="openttd-${pkgver}-linux-generic-${_arch}"
+	source_basename="openttd-${pkgver}-linux-generic-${_arch}"
 	
-	nazev="openttd-${pkgver}-linux-generic-${_arch}.tar.xz" #for old versions (< 1.1.0) change ".tar.xz" to ".tar.gz"
-	adresa="http://binaries.openttd.org/releases/${pkgver}/${nazev}"
+	source_filename="openttd-${pkgver}-linux-generic-${_arch}.tar.xz" # for old versions (< 1.1.0) change ".tar.xz" to ".tar.gz"
+	source_url="http://binaries.openttd.org/releases/${pkgver}/${source_filename}"
 fi
-source=("${adresa}")
+source=("${source_url}")
 
 md5sums=(SKIP)
 
 package()
 {
-	cd "${srcdir}/${src_slozka}"
+	cd "${srcdir}/${source_basename}"
 	name="openttd-${pkgver}"
 	
 	mkdir -p "${pkgdir}/usr/share/applications/"
