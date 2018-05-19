@@ -1,6 +1,6 @@
 pkgbase = passwordsafe
 	pkgdesc = Simple & Secure Password Management
-	pkgver = 1.04BETA
+	pkgver = 1.05BETA
 	pkgrel = 1
 	url = https://pwsafe.org/
 	arch = i686
@@ -21,10 +21,10 @@ pkgbase = passwordsafe
 	conflicts = passwordsafe-git
 	conflicts = pwsafe
 	conflicts = pwsafe-gui
-	source = https://github.com/pwsafe/pwsafe/archive/1.04BETA.tar.gz
-	source = https://github.com/pwsafe/pwsafe/releases/download/1.04BETA/1.04BETA.tar.gz.sig
+	source = https://github.com/pwsafe/pwsafe/archive/1.05BETA.tar.gz
+	source = https://github.com/pwsafe/pwsafe/releases/download/1.05BETA/1.05BETA.tar.gz.sig
 	validpgpkeys = C8876BE69A8EC6414C8C8729B131423D7F2F1BB9
-	sha1sums = f1d4f43048c1da6149a953628140fa95cc502572
+	sha1sums = eca61288f63181c9efca1d8d6bae966dcccf7e42
 	sha1sums = SKIP
 
 pkgname = passwordsafe
