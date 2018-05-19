@@ -1,0 +1,16 @@
+pkgbase = python-cothority
+	pkgdesc = Scalable collective authority prototype
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://pypi.org/project/cothority/
+	arch = any
+	license = AGPL3
+	makedepends = python-pip
+	depends = python
+	source = https://files.pythonhosted.org/packages/6d/6b/620b90cdfb4f3c0121589f20960f0623e892248cfeceea17752c7e395baf/cothority-0.1-py3-none-any.whl
+	sha256sums = bc863cd937e90ea817b75e9c9ffb29ecf5f93651336b49e7c83d565c4b693f70
+
+pkgname = python-cothority
+	depends = python
+	depends = python-websockets
+
