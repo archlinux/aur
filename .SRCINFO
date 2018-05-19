@@ -1,16 +1,15 @@
 pkgbase = xf86-video-intel-git
 	pkgdesc = X.org Intel i810/i830/i915/945G/G965+ video drivers
-	pkgver = 2.99.917+781+gc8990575
+	pkgver = 2.99.917+832+g35947721
 	pkgrel = 1
 	epoch = 1
 	url = https://01.org/linuxgraphics
 	install = xf86-video-intel-git.install
-	arch = i686
 	arch = x86_64
 	groups = xorg-drivers
 	license = custom
 	makedepends = xorg-server-devel
-	makedepends = X-ABI-VIDEODRV_VERSION=23
+	makedepends = X-ABI-VIDEODRV_VERSION=24.0
 	makedepends = libx11
 	makedepends = libxrender
 	makedepends = libxrandr
@@ -32,9 +31,9 @@ pkgbase = xf86-video-intel-git
 	provides = xf86-video-intel-uxa
 	provides = xf86-video-intel-sna
 	provides = xf86-video-intel
-	conflicts = xorg-server<1.19
-	conflicts = X-ABI-VIDEODRV_VERSION<23
-	conflicts = X-ABI-VIDEODRV_VERSION>=24
+	conflicts = xorg-server<1.20
+	conflicts = X-ABI-VIDEODRV_VERSION<24
+	conflicts = X-ABI-VIDEODRV_VERSION>=25
 	conflicts = xf86-video-intel-sna
 	conflicts = xf86-video-intel-uxa
 	conflicts = xf86-video-i810

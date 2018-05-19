@@ -5,28 +5,30 @@
 pkgname=xf86-video-intel-git
 _pkgname=xf86-video-intel
 _branch=master
-pkgver=2.99.917+781+gc8990575
+pkgver=2.99.917+832+g35947721
 pkgrel=1
 epoch=1
-arch=(i686 x86_64)
+arch=(x86_64)
 url="https://01.org/linuxgraphics"
 license=('custom')
 install=$pkgname.install
 pkgdesc="X.org Intel i810/i830/i915/945G/G965+ video drivers"
 depends=('mesa' 'libxvmc' 'pixman' 'xcb-util>=0.3.9' 'libsystemd')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23' 'libx11' 'libxrender'
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'libx11' 'libxrender'
              # additional deps for intel-virtual-output
              'libxrandr' 'libxinerama' 'libxcursor' 'libxtst' 'libxss'
              # additional for git snapshot
-             'git')
+             'git') # 'meson' 'valgrind')
 optdepends=('libxrandr: for intel-virtual-output'
             'libxinerama: for intel-virtual-output'
             'libxcursor: for intel-virtual-output'
             'libxtst: for intel-virtual-output'
             'libxss: for intel-virtual-output')
-replaces=('xf86-video-intel-uxa' 'xf86-video-intel-sna' 'xf86-video-intel')
-provides=('xf86-video-intel-uxa' 'xf86-video-intel-sna' 'xf86-video-intel')
-conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24'
+replaces=('xf86-video-intel-uxa' 'xf86-video-intel-sna'
+          "${_pkgname}")
+provides=('xf86-video-intel-uxa' 'xf86-video-intel-sna'
+          "${_pkgname}")
+conflicts=('xorg-server<1.20' 'X-ABI-VIDEODRV_VERSION<24' 'X-ABI-VIDEODRV_VERSION>=25'
            'xf86-video-intel-sna' 'xf86-video-intel-uxa' 'xf86-video-i810' 'xf86-video-intel-legacy'
            "${_pkgname}")
 groups=('xorg-drivers')
@@ -35,12 +37,15 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed 's/-/+/g'
+  git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
   cd $pkgname
   NOCONFIGURE=1 ./autogen.sh
+
+
+#  mkdir build
 }
 
 build() {
@@ -57,17 +62,24 @@ build() {
     --libexecdir=/usr/lib \
     --with-default-dri=3
   make
+#  cd build
+#  arch-meson $pkgname build \
+#   -Dwith-default-dri=3
+#  ninja -C build
 }
 
 check() {
   cd $pkgname
   make check
+#  meson test -C build
 }
 
 package() {
   cd $pkgname
 
   make DESTDIR="${pkgdir}" install
+
+#  DESTDIR="$pkgdir" ninja -C build install
 
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
