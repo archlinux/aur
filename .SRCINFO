@@ -1,6 +1,6 @@
 pkgbase = hammond
 	pkgdesc = A Podcast Client for the GNOME Desktop written in Rust
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/hammond
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = hammond
 	depends = sqlite
 	depends = gtk3
 	noextract = archive.tar.gz
-	source = https://gitlab.gnome.org/World/hammond/repository/0.3.2/archive.tar.gz
-	sha256sums = 60fd1ca925eee432dfe6ec632c8312b6cfef0c0a4ce148f938bb17f5400eb9cb
+	source = https://gitlab.gnome.org/World/hammond/repository/0.3.3/archive.tar.gz
+	sha256sums = f914fc96e6ed3c10ab8e342bddb8ccd1249cccd1e109c68b57aa0264aea87065
 
 pkgname = hammond
 
