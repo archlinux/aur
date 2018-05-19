@@ -5,7 +5,7 @@
 
 pkgname=me-tv-bzr
 pkgver=1.4.0
-pkgrel=59
+pkgrel=60
 pkgdesc="A digital television (DVB) viewer for GNOME."
 arch=('i686' 'x86_64')
 url="https://code.launchpad.net/me-tv"
