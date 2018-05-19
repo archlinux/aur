@@ -14,7 +14,7 @@ md5sums=('a6236266d05c949aafc95663fb0e9d98'
 
 package() {
 	cd "$pkgname-$pkgver"
-	
+
 	install -Dm755 $pkgname $pkgdir/usr/bin/$pkgname
 
 	# license
@@ -23,9 +23,9 @@ package() {
 	# bash
 	mkdir -p $pkgdir/usr/share/bash-completion
 	install -Dm644 ./$pkgname-completion.bash $pkgdir/usr/share/bash-completion/completions/$pkgname
-	
+
 	# zsh
-	mkdir -p $pkgdir/usr/share/zsh/site-functions	
-	install -Dm644 ./$pkgname-completion.bash $pkgdir/usr/share/zsh/site-functions/_$pkgname
+	mkdir -p $pkgdir/usr/share/zsh/site-functions
+	install -Dm644 ./$pkgname-completion.zsh $pkgdir/usr/share/zsh/site-functions/_$pkgname
 }
 
