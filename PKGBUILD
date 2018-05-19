@@ -2,12 +2,12 @@
 
 
 pkgname=blender-2.8-git
-pkgver=2.8_r74789.cd6daea7d32
-pkgrel=2
+pkgver=2.8_r76530.0492e56fece
+pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
 url="http://blender.org/"
-depends=('libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme'
+depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-utils' 'hicolor-icon-theme'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles')
@@ -28,6 +28,7 @@ source=('git://git.blender.org/blender.git#branch=blender2.8' \
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git' \
         blender-2.8.desktop \
         SelectCudaComputeArch.patch \
+        ffmpeg.patch \
         )
 md5sums=('SKIP'
          'SKIP'
@@ -36,7 +37,7 @@ md5sums=('SKIP'
          'SKIP'
          'cd108dca1c77607c6a7cc45aa284ea97'
          '9454ff7e994f72ead5027356e227cbd2'
-         )
+         '9d4bfb5b3dd33e95b13cc6c7d9d2d2e1')
 
 # determine whether we can precompile CUDA kernels
 _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
@@ -57,6 +58,7 @@ prepare() {
   git submodule foreach git checkout master
   git submodule foreach git pull --rebase origin master
   git apply ${srcdir}/SelectCudaComputeArch.patch
+  git apply ${srcdir}/ffmpeg.patch
 }
 
 build() {
@@ -72,8 +74,7 @@ build() {
   cmake "$srcdir/blender" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_INSTALL_PORTABLE=OFF \
-        -DWITH_GAMEENGINE=ON \
-        -DWITH_PLAYER=OFF \
+        -DWITH_ALEMBIC=NO \
         -DWITH_OPENCOLORIO=ON \
         -DWITH_FFTW3=ON \
         -DWITH_SYSTEM_GLEW=ON \
