@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=gibo
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="A shell script for easily accessing gitignore boilerplates"
 url="https://github.com/simonwhitaker/gibo"
 arch=('any')
