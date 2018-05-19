@@ -9,7 +9,7 @@ install="$pkgname.install"
 license=('custom:UNLICENSE')
 source=("https://github.com/simonwhitaker/$pkgname/archive/$pkgver.tar.gz"
         "$pkgname.install")
-md5sums=('a6236266d05c949aafc95663fb0e9d98'
+md5sums=('3b89ec96b1ba7411bd559b2dad1a7f50'
          'b1b49419e90f7b7f0e84a214ecfdbfef')
 
 package() {
