@@ -3,13 +3,14 @@ pkgname=jetbrains-mps
 _pkgname=mps
 _pkgver=2018.1
 pkgver=${_pkgver}.3
-pkgrel=1
+pkgrel=2
 pkgdesc="JetBrains Meta Programming System"
 arch=('any')
 url="http://www.jetbrains.com/mps/index.html"
 license=('custom: MPS license agreement')
-depends=('java-environment' 'bash')
-optdepends=('python: support for scripts like restart.py')
+depends=('java-environment' 'libxslt' 'gtk2' 'libglvnd' 'libxtst' 'alsa-lib')
+optdepends=('python: support for scripts like restart.py'
+            'ffmpeg0.10: Multimedia plugin')
 
 source=("https://download.jetbrains.com/mps/${_pkgver}/MPS-${pkgver}.tar.gz")
 sha256sums=('b1bf1fd3f30f8873fd467f0a38517ca535fbb115d292bb5b5390f895059936f9')
