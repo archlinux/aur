@@ -1,0 +1,39 @@
+From dad3be66fe11c7779f8cdb3f079061c9d6c1ea2a Mon Sep 17 00:00:00 2001
+From: Dan Beste <dan.ray.beste@gmail.com>
+Date: Fri, 18 May 2018 20:38:32 -0500
+Subject: [PATCH] xyz
+
+---
+ communitheme/meson.build | 2 +-
+ meson.build              | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/communitheme/meson.build b/communitheme/meson.build
+index d0a21a5..8c124f1 100644
+--- a/communitheme/meson.build
++++ b/communitheme/meson.build
+@@ -1,5 +1,5 @@
+ # destination directory
+-install_dir = join_paths(gnomeshell_theme_dir, 'communitheme')
++install_dir = gnomeshell_theme_dir
+ 
+ # generate .css files
+ theme_sources = files([
+diff --git a/meson.build b/meson.build
+index 2659f2a..b689409 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,8 +1,8 @@
+ project('gnome-shell-communitheme')
+ 
+-gnomeshell_dir = join_paths(get_option('datadir'), 'gnome-shell')
++gnomeshell_dir = join_paths(get_option('datadir'), 'themes/Communitheme/gnome-shell')
+ gnomeshell_mode_dir = join_paths(gnomeshell_dir, 'modes')
+-gnomeshell_theme_dir = join_paths(gnomeshell_dir, 'theme')
++gnomeshell_theme_dir = gnomeshell_dir
+ sassc = find_program('sassc')
+ 
+ subdir('communitheme')
+-- 
+2.17.0
+
