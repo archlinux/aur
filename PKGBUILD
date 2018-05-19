@@ -3,14 +3,15 @@
 
 _usdx_package=WorldParty
 _pkgname=ultrastardxwp
+_ffmpeg="ffmpeg3.4"
 pkgname=${_pkgname}-git
-pkgver=r25.9f5f917
+pkgver=r111.c1da37e
 pkgrel=1
 pkgdesc="UltraStar Deluxe WorldParty is a free and open source karaoke game. It allows up to six players to sing along with music using microphones in order to score points, depending on the pitch of the voice and the rhythm of singing."
 arch=("i686" "x86_64")
 url="http://ultrastar-es.org"
 license=("GPL")
-depends=("ffmpeg2.8" "lua" "pcre" "portaudio" "sdl2" "sdl2_gfx" "sdl2_mixer" "sdl2_ttf" "sdl2_image" "sdl2_net" "sqlite" "ttf-dejavu" "ttf-freefont")
+depends=(${_ffmpeg} "lua" "pcre" "portaudio" "sdl2" "sdl2_gfx" "sdl2_mixer" "sdl2_ttf" "sdl2_image" "sdl2_net" "sqlite" "ttf-dejavu" "ttf-freefont")
 makedepends=("git" "fpc")  
 optdepends=()
 conflicts=("${pkgname}")
@@ -35,13 +36,13 @@ prepare() {
 build() {
     cd "${srcdir}/${_pkgname}"
     chmod +x configure
-    PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig" ./configure --prefix=/usr
+    PKG_CONFIG_PATH="/usr/lib/${_ffmpeg}/pkgconfig" ./configure --prefix=/usr
     make
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    make install DESTDIR="$pkgdir"
+    make install DESTDIR="${pkgdir}"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 "${pkgdir}/usr/share/${_usdx_package}/resources/icons/${_usdx_package}.png" "${pkgdir}/usr/share/icons/${_usdx_package}.png"
 }
