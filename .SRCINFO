@@ -1,7 +1,7 @@
 pkgbase = anirem-git
 	pkgdesc = A tool to passivly check for updates on seasons, for proxer.me
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/Skycoder42/AniRem
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = anirem-git
 	depends = qt5-base
 	depends = qt5-datasync
 	depends = qt5-mvvmwidgets
-	depends = qt5-restclient
+	depends = qt5-restclient>=2.0.0
 	depends = qt5-mvvmdatasyncwidgets
 	depends = qt5-svg
 	optdepends = repkg: Automatically rebuild the package on dependency updates
@@ -20,7 +20,7 @@ pkgbase = anirem-git
 	provides = anirem
 	conflicts = seasonproxer
 	conflicts = anirem
-	source = anirem-git-2.0.0::git+https://github.com/Skycoder42/AniRem.git#tag=2.0.0
+	source = anirem-git-2.0.1::git+https://github.com/Skycoder42/AniRem.git#tag=2.0.1
 	source = anirem-git.rule
 	source = manual://proxer-api-key.h
 	sha256sums = SKIP
