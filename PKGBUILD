@@ -1,7 +1,7 @@
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
 
 pkgname=kenv-meta
-pkgver=1.0.0
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Graphical environment'
 arch=('x86_64')
