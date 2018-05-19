@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/usr/bin/snoopy %f
+Icon=snoopy
+Terminal=false
+Type=Application
+Name=Snoopy
+Comment=software tool to design and animate hierarchical graphs, among others Petri nets
