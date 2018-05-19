@@ -1,0 +1,19 @@
+pkgbase = plasma-browser-integration
+	pkgdesc = Components necessary to integrate browsers into the Plasma Desktop
+	pkgver = 5.12.90
+	pkgrel = 1
+	url = https://www.kde.org/plasma-desktop
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	depends = krunner
+	provides = plasma-browser-integration
+	conflicts = plasma-browser-integration-git
+	source = https://github.com/KDE/plasma-browser-integration/archive/v5.12.90.tar.gz
+	sha256sums = 7433965ef344b59fe276d81ed7400746f4391b4ea0649958ea263bf6589b1066
+
+pkgname = plasma-browser-integration
+
