@@ -9,6 +9,7 @@ url='https://webcamoid.github.io/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h')
 depends=('qt5-quickcontrols'
+         'qt5-quickcontrols2'
          'qt5-svg')
 optdepends=('v4l-utils: Extra formats support for webcams'
             'v4l2loopback-dkms: Virtual camera support'
