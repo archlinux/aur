@@ -21,13 +21,13 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=60.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
 depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'hicolor-icon-theme'
+         'dbus-glib' 'hicolor-icon-theme'
 	 'libvpx' 'icu'  'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
 	 'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' 'gtk3')
 
@@ -63,6 +63,8 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
 
         complete-csd-window-offset-mozilla-1457691.patch.xz
         0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch.xz
+
+        https://dev.gentoo.org/~axs/mozilla/patchsets/source/firefox-60.0-patches-01.tar.xz
 )
 
 
@@ -127,8 +129,18 @@ prepare() {
   patch -Np1 -i ../complete-csd-window-offset-mozilla-1457691.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1435212
-  patch -Np1 -i ../0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch
+  #patch -Np1 -i ../0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch
 
+  # gentoo patches
+  for file in "$srcdir"/firefox/*.patch ; do
+    case $file in
+      *gentoo*) : ;;
+      *)
+        patch -Np1 -i "$file"
+        ;;
+    esac
+  done
+  
   # WebRTC build tries to execute "python" and expects Python 2
   mkdir -p "$srcdir/path"
   ln -sf /usr/bin/python2 "$srcdir/path/python"
@@ -223,7 +235,7 @@ END
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 md5sums=('SKIP'
-         'ee8408a26641cefdec06e81d64b555bf'
+         '0a9a1df3daa55652c9e88465aa3bb7a4'
          '14e0f6237a79b85e60256f4808163160'
          'c9385708f41599649e4e14fd3af506ce'
          '05bb69d25fb3572c618e3adf1ee7b670'
@@ -238,4 +250,5 @@ md5sums=('SKIP'
          'b358b5ed3726ecd4ed054bdc09901982'
          '5223d4854f784003e3b575684cc004fe'
          '6c776f60394176fda2084bee667593f2'
-         'd16e8582bacf6fc98e669ed87f4d6f4a')
+         'd16e8582bacf6fc98e669ed87f4d6f4a'
+         '716f1c21a1020657928d4140d5563233')
