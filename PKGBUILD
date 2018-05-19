@@ -2,8 +2,8 @@
 
 pkgname=spotifyrecorder
 pkgver=0.5.1
-pkgrel=1
-pkgdesc="Spotify desktop client recorder for PulseAudio"
+pkgrel=2
+pkgdesc="Deprecated, use the 'spotrec' package instead"
 arch=('x86_64')
 url="https://github.com/Bleuzen/spotifyrecorder"
 license=('mit')
