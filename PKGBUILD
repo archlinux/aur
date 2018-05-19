@@ -1,53 +1,35 @@
-# Maintainer: kitsunyan <kitsunyan@inbox.ru>
+# Maintainer: kitsunyan <`echo a2l0c3VueWFuQGFpcm1haWwuY2MK | base64 -d`>
 
 pkgname=postman
-pkgver=6.0.10
+pkgver=6.1.2
 pkgrel=1
 pkgdesc='Build, test, and document your APIs faster'
 arch=('x86_64')
 url='https://www.getpostman.com'
 license=('custom')
-depends=(electron ttf-opensans)
+depends=(electron)
 conflicts=(postman-bin)
 source=("postman-$pkgver.zip::https://dl.pstmn.io/download/version/${pkgver}/linux64"
         'remove-updater.patch')
-sha256sums=('82e6debb7bcb436679243581add5cc85cc7c96846c19c76d07a5416e16845a48'
-            'dde734f0fe3006c8a1976ca55c3bcef679e0f27d6d1456a53804c8e30c2a1b9d')
+sha256sums=('5e8a8df2893031eb98190690a0d3a98f6330b01f302a6975e62464dc66cbc6b7'
+            'e6067c9a83c4bf13ac739debb23b67ae8b6d62beb47f65fc2748bf9a924aec02')
 
 prepare() {
-  cd "$srcdir/Postman/resources/app"
+  cd "$srcdir/Postman/app/resources/app"
 
-  # remove updater from menu
-  patch -Np1 -i "$srcdir/remove-updater.patch"
-
-  for f in 'js/console.js' 'js/requester.js' 'js/runner.js' 'js/shared.js'; do
-    # set "DISABLE_ANALYTICS" and "DISABLE_UPDATES" variables to "true"
-    sed -i "$f" \
-    -e 's/window.DISABLE_ANALYTICS = false;/window.DISABLE_ANALYTICS = true;/' \
-    -e 's/window.DISABLE_UPDATES = false;/window.DISABLE_UPDATES = true;/'
-  done
+  # remove updater from settings and menu, disable updates and analytics
+  patch -Np1 -r - --no-backup-if-mismatch -i "$srcdir/remove-updater.patch"
 }
 
 package() {
-  cd "$srcdir/Postman"
+  cd "$srcdir/Postman/app"
 
   mkdir -p "$pkgdir/usr/lib/"
   cp -rp 'resources/app' "$pkgdir/usr/lib/postman"
 
-  # remove backup files
-  find "$pkgdir/usr/lib/postman" -name '*.orig' -print0 | xargs -0 rm -f
-
   # install licenses
   find . -maxdepth 1 -iname 'license*' -print0 |
   xargs -n 1 -0 -I {} install -Dm644 {} "$pkgdir/usr/share/licenses/$pkgname/{}"
-
-  # create font links
-  ln -sf '/usr/share/fonts/TTF/OpenSans-Bold.ttf' \
-  "$pkgdir/usr/lib/postman/assets/fonts/OpenSans/OpenSans-Bold.ttf"
-  ln -sf '/usr/share/fonts/TTF/OpenSans-Regular.ttf' \
-  "$pkgdir/usr/lib/postman/assets/fonts/OpenSans/OpenSans-Regular.ttf"
-  ln -sf '/usr/share/fonts/TTF/OpenSans-SemiBold.ttf' \
-  "$pkgdir/usr/lib/postman/assets/fonts/OpenSans/OpenSans-Semibold.ttf"
 
   # create run script
   mkdir -p "$pkgdir/usr/bin"
