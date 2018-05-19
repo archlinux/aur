@@ -1,0 +1,26 @@
+pkgbase = kenv-meta
+	pkgdesc = Graphical environment
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/eadwu/pkgbuilds
+	arch = x86_64
+	license = custom:unknown
+	depends = bspwm
+	depends = compton
+	depends = gvfs
+	depends = lightdm
+	depends = lightdm-gtk-greeter
+	depends = nitrogen
+	depends = pass
+	depends = pwgen
+	depends = qt5-base
+	depends = rxvt-unicode
+	depends = sxhkd
+	depends = thunar
+	depends = thunar-volman
+	depends = xfce4-notifyd
+	depends = xfce4-screenshooter
+	depends = xfce4-taskmanager
+
+pkgname = kenv-meta
+
