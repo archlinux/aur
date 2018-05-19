@@ -27,6 +27,8 @@ build() {
   cd "${srcdir}/me-tv/client"
   sed -i -- 's/PACKAGE_DATA_DIR"/"\/usr\/share/g' me-tv-client.cc
   
+  cd "${srcdir}/me-tv/server"
+  sed -i 's/abs(transponder.frontend_parameters.frequency/abs((int)transponder.frontend_parameters.frequency/g' dvb_frontend.cc
   
   msg "Starting make..."
 
