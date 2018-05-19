@@ -1,0 +1,11 @@
+[Unit]
+Description=Kerberos Challenge-Response Authentication Daemon
+After=krb5-kdc.service
+
+[Service]
+Type=forking
+Environment=KRB5_CONFIG=/var/lib/krb5kdc/kdc.conf:/etc/krb5.conf
+ExecStart=/usr/bin/kcrap_server
+
+[Install]
+WantedBy=multi-user.target
