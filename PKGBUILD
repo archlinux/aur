@@ -1,16 +1,16 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=showmypictures
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
-pkgdesc="Memories is an photo manager for Pantheon"
+pkgdesc="Memories is an photo manager for Pantheon, developed by Artem Anufrij"
 arch=('x86_64')
 url="http://anufrij.org/memories"
 license=('GPL3')
-depends=('libgranite.so' 'gtk3' 'libgexiv2' 'sqlite' 'cmake-modules-elementary-git')
+depends=('libgranite.so' 'gtk3' 'libgexiv2' 'sqlite')
 makedepends=('vala' 'cmake' 'cmake-modules-elementary-git')
 source=("https://github.com/artemanufrij/showmypictures/archive/${pkgver}.tar.gz")
-sha256sums=('f9d1699e319934bfb7226fe3de0d924ceabebd7345225d33cca2f4a7b353839a')
+sha256sums=('11f82cd9c12c80f90b22843807f1355bff7331643f4acbfe9f40d1cf79dd15d6')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
