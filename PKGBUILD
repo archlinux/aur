@@ -2,7 +2,7 @@
 
 pkgname=kother-meta
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Other packages'
 arch=('x86_64')
 url='https://gitlab.com/eadwu/pkgbuilds'
@@ -96,7 +96,18 @@ depends=(
   'scrot'
   'simplescreenrecorder'
   'steam'
-  'texlive-most'
+  'texlive-bibtexextra'
+  'texlive-core'
+  'texlive-fontsextra'
+  'texlive-formatsextra'
+  'texlive-games'
+  'texlive-humanities'
+  'texlive-latexextra'
+  'texlive-music'
+  'texlive-pictures'
+  'texlive-pstricks'
+  'texlive-publishers'
+  'texlive-science'
   'tidy'
   'tlp'
   'ttf-liberation'
