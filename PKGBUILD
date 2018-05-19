@@ -3,7 +3,7 @@ pkgrel=2
 _pkgname='jsettlers'
 pkgname=${_pkgname}'-git'
 
-pkgver=0.4.0.alpha.r188.g69db7d0f8
+pkgver=0.4.0.alpha.r276.g0c7a1979b
 pkgver() {
   cd  ${_pkgname}
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -64,4 +64,9 @@ package() {
     echo 'cd '${_workingDir} >> ${bin}/${_mapCreatorScript}
 	echo 'exec /usr/bin/java -jar /usr/share/java/'${_pkgname}'/'${_mapCreatorName}'.jar --maps=/usr/share/'${_pkgname}'/maps "$@"' >> ${bin}/${_mapCreatorScript}
 	chmod +x ${bin}/${_mapCreatorScript}
+
+	install -Dm644 ../${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -Dm644 ../${_mapCreatorScript}.desktop "${pkgdir}/usr/share/applications/${_mapCreatorScript}.desktop"
+	install -Dm644 ${srcdir}/jsettlers/jsettlers.mapcreator/src/main/resources/jsettlers/mapcreator/main/window/icon.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+	install -Dm644 ${srcdir}/jsettlers/jsettlers.mapcreator/src/main/resources/jsettlers/mapcreator/main/window/icon.png "${pkgdir}/usr/share/pixmaps/${_mapCreatorScript}.png"
 }

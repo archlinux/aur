@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Name=JSettlers
+Exec=jsettlers
+Icon=jsettlers
+Terminal=false
+Type=Application
+Categories=Game;StrategyGame;
+Comment=A Remake of "The Settlers III" for Windows, Linux, Mac and Android
+Comment[de]=Ein "Die Siedler III" remake für Windows, Linux, Mac und Android
+Keywords=Settler;RTS;Realtime Strategy;Economic Simulation Game;History;Warfare;Romans;
+Actions=Mapcreator;
+
+[Desktop Action Mapcreator]
+Name=JSettlers Map Creator
+Exec=jsettlers-mapcreator
+
