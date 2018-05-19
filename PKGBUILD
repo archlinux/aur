@@ -5,7 +5,7 @@
 # Maintainer: Uffe Jakobsen <microtop@starion.dk>
 #
 pkgname=opencbm-git
-pkgver=r1250.25a5f89
+pkgver=r1252.9b57b1f
 pkgrel=1
 epoch=
 pkgdesc="OpenCBM allows access to Commodore (C64) storage devices VIC 1540, 1541, 1570, 1571, or even 1581 floppy drive"
@@ -33,20 +33,25 @@ md5sums=('SKIP')
 build_kernel_module=
 
 
-pkgver() {
+pkgver()
+{
   cd "${srcdir}/${_repodirname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
+prepare()
+{
   cd "${srcdir}/${_repodirname}"
   # kernel module: add includes to kernel module source
   sed -i '\!#include <asm/uaccess.h>!s!.*!&\n#include <linux/uaccess.h>\n#include <linux/sched/signal.h>!' opencbm/sys/linux/cbm_module.c
   # kernel module: Makefile is needed later
   sed -i '\!-rm -f Makefile!d' opencbm/sys/linux/LINUX/Makefile
+  # HACK: testlines.1 does not exist
+  touch opencbm/sample/testlines/testlines.1
 }
 
-build() {
+build()
+{
   cd "${srcdir}/${_repodirname}"
   CC65_HOME="/usr/share/cc65"
   export CC65_HOME
@@ -59,11 +64,13 @@ build() {
   fi
 }
 
-check() {
+check()
+{
   cd "${srcdir}/${_repodirname}"
 }
 
-package() {
+package()
+{
   cd "${srcdir}/${_repodirname}"
   mkdir -p "${pkgdir}/etc/udev/rules.d"
   make -f LINUX/Makefile PREFIX="/usr" MANDIR="/usr/share/man/man1" INFODIR="/usr/share/info" DESTDIR="${pkgdir}/" install install-plugin-xum1541 install-plugin-xu1541
@@ -86,4 +93,6 @@ package() {
   find "${pkgdir}" -type d -empty -delete
 }
 
+#
 # EOF
+#
