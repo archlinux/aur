@@ -1,34 +1,25 @@
-# Maintainer: Lucki <Lucki at holarse-linuxgaming dot de>
+# Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
 
 pkgname=yaup-git
-pkgver=0.1.r1.g6543845
-pkgrel=3
+pkgver=0.1.r2.gdabd262
+pkgrel=1
 pkgdesc="Yet Another UPnP Portmapper - A GTK frontend for miniupnpc"
 arch=('i686' 'x86_64')
 url="https://github.com/Holarse-Linuxgaming/yaup"
 license=('GPL3')
-changelog=.CHANGELOG
 depends=('miniupnpc' 'gtk3')
 makedepends=('git' 'gendesk' 'intltool' 'libtool')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(${pkgname%-git}::git+https://github.com/Holarse-Linuxgaming/yaup.git)
-sha512sums=('SKIP')
+source=("${pkgname%-git}::git+https://github.com/Holarse-Linuxgaming/yaup.git"
+		"${pkgname%-git}.desktop")
+sha512sums=('SKIP'
+            'd116842d5c1d0fa1843d82ef8ecb7706fa8f12ae23ffd588b7bb0ac77e02b34aae6f362e9b8b74620902edd47b6e6d86ddf258bcdf1cd2143bdaa018b832df9e')
 
 pkgver()
 {
 	cd "${srcdir}/${pkgname%-git}"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare()
-{
-	cd "${srcdir}"
-	# generate .desktop-file
-	gendesk -n -f --categories "Network;Utility;GTK"
-
-	# update .CHANGELOG
-	git -C ${srcdir}/${pkgname%-git} log --graph -10 > ${startdir}/.CHANGELOG
 }
 
 build()

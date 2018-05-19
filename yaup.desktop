@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Yaup
+Comment=Yet Another UPnP Portmapper - A GTK frontend for miniupnpc
+Exec=yaup
+Icon=yaup
+Terminal=false
+StartupNotify=false
+Categories=Network;Utility;GTK
