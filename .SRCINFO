@@ -1,0 +1,16 @@
+pkgbase = aylinux-plymouth-tema-ayar
+	pkgdesc = Plymouth tema ayarlama programı
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/oltulu/Aylinux-Plymouth-Tema-Ayar
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-base
+	depends = plymouth
+	source = aylinux-plymouth-tema-ayar::git+https://github.com/oltulu/Aylinux-Plymouth-Tema-Ayar.git
+	md5sums = SKIP
+
+pkgname = aylinux-plymouth-tema-ayar
+
