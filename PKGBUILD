@@ -1,30 +1,46 @@
-_appname=gnome-shell-communitheme
-pkgname="${_appname}-git"
-pkgver=a6ca20f
+# Maintainer: https://aur.archlinux.org/account/JunioCalu
+# Contributor: https://aur.archlinux.org/account/devopsdeluxe
+
+pkgname='gnome-shell-communitheme'
+pkgver=r242.fe8cb17
 pkgrel=1
-pkgdesc="GNOME Shell Ubuntu community theme "communitheme""
+pkgdesc='GNOME Shell Ubuntu community theme "communitheme"'
 arch=('any')
-url="https://github.com/Ubuntu/gnome-shell-communitheme"
+url='https://community.ubuntu.com/c/desktop/theme-refresh'
 license=('GPL3')
-depends=('gtk3' 'gnome-shell')
-makedepends=('meson' 'ninja')
-source=("${pkgname}::git+https://github.com/Ubuntu/gnome-shell-communitheme.git")
-sha256sums=('SKIP')
+makedepends=('git' 'meson' 'ninja' 'sassc')
+source=(
+  "${pkgname}::git+https://github.com/Ubuntu/gnome-shell-communitheme.git"
+  'fix-install-dirs.patch'
+)
+sha256sums=(
+  'SKIP'
+  'd499d124a0c1836ee32e645600817f17b5946ecdaaf2c9e95a185a4aaec6e1de'
+)
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    git rev-parse --short HEAD
+  cd "${pkgname}"
+
+  printf "r%s.%s"                    \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${pkgname}"
-    # Remove any potential residual build files
-    rm -rf build
-    meson build --buildtype=release --prefix=/usr
-    ninja -C build
+  cd "${pkgname}"
+
+  git apply ../fix-install-dirs.patch
+  meson build           \
+    --buildtype=release \
+    --prefix=/usr
+
+  ninja -C build
 }
 
 package() {
-    cd "${pkgname}"
-    env DESTDIR="$pkgdir" ninja -C build install
+  cd "${pkgname}"
+
+  DESTDIR="${pkgdir}" ninja -C build install
 }
+
+# vim: ts=2 sw=2 et:
