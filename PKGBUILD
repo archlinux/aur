@@ -8,8 +8,7 @@
 pkgname=('lib32-libx264' 'lib32-libx264-10bit' 'lib32-libx264-all')
 _pkgbase=('x264')
 pkgver=152.20171224
-pkgrel=3
-
+pkgrel=4
 arch=('x86_64')
 url='https://www.videolan.org/developers/x264.html'
 license=('GPL')
