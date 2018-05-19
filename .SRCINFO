@@ -1,7 +1,7 @@
 pkgbase = gnome-keysign
 	pkgdesc = An easier way to sign OpenPGP keys over the local network or Bluetooth.
 	pkgver = 0.9.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gnome-keysign/gnome-keysign
 	install = gnome-keysign.install
 	arch = any

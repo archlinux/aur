@@ -3,7 +3,7 @@
 
 pkgname=gnome-keysign
 pkgver=0.9.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An easier way to sign OpenPGP keys over the local network or Bluetooth."
 arch=('any')
 url="https://github.com/gnome-keysign/gnome-keysign"
