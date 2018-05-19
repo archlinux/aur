@@ -12,7 +12,7 @@
 
 pkgname=qgis-ltr
 _pkgname=${pkgname//-ltr}
-pkgver=2.18.19
+pkgver=2.18.20
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release'
 url='https://qgis.org/'
@@ -35,7 +35,7 @@ optdepends=('gpsbabel: GPS Tool plugin'
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-md5sums=('49a5d6803974f1adefe98ed9af55db1e')
+md5sums=('44fc85e120f978e8203627297cb5abf8')
 
 prepare() {
   cd $_pkgname-$pkgver
