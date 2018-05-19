@@ -1,60 +1,39 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=devkitppc
-pkgver=r29.1
-_binutilsver=2.27
+pkgver=r30
+_buildscriptsver=20180514
+_binutilsver=2.28
 _mnbinutilsver=2.17
-_gccver=6.3.0
+_gccver=8.1.0
 _newlibver=2.5.0
-_gdbver=7.11
-_wiiloadver=0.5.1
-_generaltoolsver=1.0.0
-_gamecubetoolsver=1.0.1
-_islver=0.16.1
+_gdbver=8.0.1
 pkgrel=1
 pkgdesc='PowerPC toolchain for Nintendo Gamecube/Wii/Wii U homebrew development'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://devkitpro.org"
 license=('GPL')
 options=(!strip libtool staticlibs emptydirs)
-depends=('xz' 'python' 'freeimage' 'flex' 'libmpc' 'guile')
-makedepends=('mesa')
+depends=('flex' 'libmpc' 'python' 'xz')
 install=devkitppc.install
-source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-20170126.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/binutils-$_binutilsver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/binutils-$_mnbinutilsver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gcc-$_gccver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/newlib-$_newlibver.tar.gz"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gdb-$_gdbver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/wiiload-$_wiiloadver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/general-tools-$_generaltoolsver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gamecube-tools-$_gamecubetoolsver.tar.bz2"
-        "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2"
-        "devkitppc-skip-libs.patch"
-        "devkitppc-add-patches.patch"
-        "fix-gcc-6.3.0-compilation-on-gcc-7.patch"
+source=("https://github.com/devkitPro/buildscripts/releases/download/v$_buildscriptsver/buildscripts-$_buildscriptsver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/binutils-$_binutilsver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/binutils-$_mnbinutilsver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/gcc-$_gccver.tar.xz"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/newlib-$_newlibver.tar.gz"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/gdb-$_gdbver.tar.xz"
         "devkitppc.sh"
         "devkitppc.fish")
-sha256sums=('6b142f265bc9c7fc9449f5b539198f140d231725b2ed0828749d8a1e0fad73ff'
-            '369737ce51587f92466041a97ab7d2358c6d9e1b6490b3940eb09fb0a9a6ac88'
+sha256sums=('c7c11bacfdbcc634d2d70ac17785a0701d5eaaa6753762ca57a918c3841119ac'
+            '6297433ee120b11b4b0a1c8f3512d7d73501753142ab9e2daa13c5a3edd32a72'
             'e2c33ce6f23c9a366f109ced295626cb2f8bd6b2f08ff9df6dafb5448505a25e'
-            'f06ae7f3f790fbf0f018f6d40e844451e6bc3b7bc96e128e63b09825c1f8b29f'
+            '1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153'
             '5b76a9b97c9464209772ed25ce55181a7bb144a66e5669aaec945aa64da3189b'
-            '67501030b8d5496ae3157e1c53c9b40fffbd794f210144064fcd18d2538f5a84'
-            '95557ecae364d189fb771702af56c1c6f9ee076696046b78e7a2e931974533cc'
-            '09474dfc1537e1008ee95b1a39a53715b8a740ee5ee37f4376607d6b110343c4'
-            'fdcb06fcdfb06e61ffe69848633758ae0df015ccb1e86d21ada2a89139de9f1c'
-            '412538bb65c799ac98e17e8cfcdacbb257a57362acfaaff254b0fcae970126d2'
-            '62e9f2730a81a71efc7bc5f958d7186f48a6468ea3b5481ea8331418cc40cb7b'
-            '25eaebb546beed574f29dd62b566edc8f683f6dc781f035b004201146641549d'
-            'e7013af51af0cb1e088f7fc25576471076780bc97e05e7921fe819a3c87fce8b'
-            '3e7ab84e123f76c65a92c27932b4f80df598b9da6b0f44745d8d465120449d1d'
-            'ab0c74e766fab7ada98541c530593b9f717a72d386f9bb9dad2779a080c66b9d')
+            '3dbd5f93e36ba2815ad0efab030dcd0c7b211d7b353a40a53f4c02d7d56295e3'
+            '69755d0b77c0c3233dee9255a5d897710410be18b9dcdfb8d9d6b18c6945ae34'
+            '135a9cbe1fc28c96c2ce38b19cd305857ce49ed56e35bfb5bd96638a51c3ec6f')
 noextract=("binutils-$_binutilsver.tar.bz2" "binutils-$_mnbinutilsver.tar.bz2"
-           "gcc-$_gccver.tar.bz2" "newlib-$_newlibver.tar.gz"
-           "gdb-$_gdbver.tar.bz2" "wiiload-$_wiiloadver.tar.bz2"
-           "general-tools-$_generaltoolsver.tar.bz2"
-           "gamecube-tools-$_gamecubetoolsver.tar.bz2")
+           "gcc-$_gccver.tar.xz" "newlib-$_newlibver.tar.gz" "gdb-$_gdbver.tar.xz")
 
 prepare() {
   # reset build dir and force reinstalling already built tools
@@ -62,32 +41,28 @@ prepare() {
   [ -d buildscripts/.devkitPPC ] && find buildscripts/.devkitPPC \
     \( -name "installed-*" -o -name "installed" \) -delete
 
-  # generate config file for automatic build
-  cat << END > buildscripts/config.sh
+  (cd buildscripts
+    # generate config file for automatic build
+    cat << END > config.sh
 #!bin/sh
 BUILD_DKPRO_PACKAGE=2
-BUILD_DKPRO_INSTALLDIR=$PWD/build
-BUILD_DKPRO_SRCDIR=$PWD
+BUILD_DKPRO_INSTALLDIR="$srcdir"/build
+BUILD_DKPRO_SRCDIR="$srcdir"
+BUILD_DKPRO_SKIP_LIBRARIES=1
+BUILD_DKPRO_SKIP_TOOLS=1
 BUILD_DKPRO_AUTOMATED=1
 END
 
-  # fix install of newlib, solution is to do the install again.
-  sed 's/Error installing newlib"; exit 1; }/newlib, second try"; $MAKE install || { echo "& }/' \
-    -i buildscripts/dkppc/scripts/build-gcc.sh
+    # do not try to download or extract tool packages and libraries
+    sed 's/ \$hostarchives/ ""/g;s/ \$targetarchives/ ""/g' -i build-devkit.sh
 
-  # fix search path to use correct tools
-  sed 's|$PATH:$TOOLPATH/$package/bin|$TOOLPATH/$package/bin:$PATH|' -i \
-    buildscripts/build-devkit.sh
+    # do not build gdb with guile support (broken)
+    sed '/gdb/,$ s/--disable-werror/& --with-guile=no/' -i dkppc/scripts/build-gcc.sh
 
-  # use in-tree isl
-  # add patch to build gcc 6.3.0 on gcc >7
-  # disable guile for gdb
-  patch -Np0 < devkitppc-add-patches.patch
-  # isl needlessly wants automake-14, upgrading
-  autoreconf -Wnone -fi isl-$_islver
-
-  # disable building of libogc and libfat, we have separate packages
-  patch -Np0 < devkitppc-skip-libs.patch
+    # fix search path to use correct tools
+    sed 's|$PATH:$TOOLPATH/$package/bin|$TOOLPATH/$package/bin:$PATH|' -i \
+      build-devkit.sh
+  )
 }
 
 build() {
