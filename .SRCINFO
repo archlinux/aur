@@ -1,0 +1,29 @@
+pkgbase = gconnect-git
+	pkgdesc = KDEConnect implementation in Vala
+	pkgver = 44.712fc22
+	pkgrel = 1
+	url = https://github.com/getzze/gconnect
+	install = gconnect-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = at-spi2-atk
+	makedepends = git
+	makedepends = vala
+	makedepends = json-glib
+	makedepends = glib2
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = gtk3
+	depends = libpeas
+	depends = libgee
+	depends = gnutls
+	depends = json-glib
+	depends = libnotify
+	provides = gconnect
+	conflicts = gconnect
+	source = gconnect::git+https://github.com/getzze/gconnect.git#branch=master
+	md5sums = SKIP
+
+pkgname = gconnect-git
+
