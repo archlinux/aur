@@ -1,7 +1,7 @@
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
 
 pkgname=kroot-meta
-pkgver=1.0.0
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Complete base installation'
 arch=('x86_64')
