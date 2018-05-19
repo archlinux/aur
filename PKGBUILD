@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-driver-git
-pkgver=600.0130.r82.gaf83cef.gmmlib.r38.b7ce36f
-pkgrel=2
+pkgver=2018.Q2.1.r42.g4cbb2c8.gmmlib.r44.d0a4870
+pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI (git version)'
 arch=('x86_64')
 url='https://github.com/intel/media-driver/'
@@ -28,12 +28,13 @@ pkgver() {
     cd "$pkgname"
     
     # git, tags available
-    _driver_ver="$(git describe --long --tags | sed 's/^intel-media-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')"
+    local _prefix='driver-for-Intel-Media-SDK-'
+    local _driver_ver="$(git describe --long --tags | sed "s/^${_prefix}//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/Q/\.Q/")"
     
     cd "${srcdir}/gmmlib-git"
     
     # git, no tags available
-    _gmmlib_ver="$(printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")"
+    local _gmmlib_ver="$(printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")"
     
     printf '%s.gmmlib.%s' "$_driver_ver" "$_gmmlib_ver"
 }
@@ -67,9 +68,9 @@ package() {
     make DESTDIR="$pkgdir" install
     
     # do not force the use of 'iHD' libva driver by default (let user choose)
-    local _info='uncomment the LIBVA_DRIVER_NAME line to use the Intel Media Driver (iHD) for VAAPI'
-    sed -i "2i\\ \\${_info}" "${pkgdir}/etc/profile.d/intel-media.sh"
-    sed -i '/LIBVA_DRIVER_NAME/s/^/#/' "${pkgdir}/etc/profile.d/intel-media.sh"
+    local _info='# uncomment the LIBVA_DRIVER_NAME line to use the Intel Media Driver (iHD) for VAAPI'
+    sed -i "2i${_info}" "${pkgdir}/etc/profile.d/intel-media.sh"
+    sed -i '/^export[[:space:]]LIBVA_DRIVER_NAME/s/^/#/' "${pkgdir}/etc/profile.d/intel-media.sh"
     
     # license
     cd "${srcdir}/${pkgname}"
