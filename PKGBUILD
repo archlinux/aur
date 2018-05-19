@@ -9,7 +9,7 @@ license=('custom:brother')
 install="brother-dcpt510w.install"
 arch=('i686' 'x86_64')
 optdepends=('sane: scanning support'
-            'brscan4: making dcpt510w available to sane (scanning support)'
+            'brscan4: making dcpt510w available to sane'
             'brscan-skey: scankey support if connected via usb')
 
 if [[ "$CARCH" == "x86_64" ]] ; then
