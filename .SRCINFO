@@ -1,0 +1,30 @@
+pkgbase = kcore-meta
+	pkgdesc = Core packages
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/eadwu/pkgbuilds
+	arch = x86_64
+	license = custom:unknown
+	depends = acpi
+	depends = alsa-utils
+	depends = bluez
+	depends = bluez-libs
+	depends = bluez-utils
+	depends = gnome-keyring
+	depends = networkmanager
+	depends = network-manager-applet
+	depends = ntp
+	depends = pulseaudio
+	depends = pulseaudio-alsa
+	depends = pulseaudio-bluetooth
+	depends = xf86-input-libinput
+	depends = xorg-server
+	depends = xorg-xhost
+	depends = xorg-xinit
+	depends = xorg-xprop
+	depends = xorg-xsetroot
+	depends = xorg-xwininfo
+	depends = yaourt
+
+pkgname = kcore-meta
+
