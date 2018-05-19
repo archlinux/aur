@@ -1,30 +1,39 @@
-_appname=gtk-communitheme
-pkgname="${_appname}-git"
-pkgver=a6ca20f
+# Maintainer: https://aur.archlinux.org/account/JunioCalu
+# Contributor: https://aur.archlinux.org/account/devopsdeluxe
+
+pkgname='gtk-communitheme-git'
+pkgver=r556.22ed5e7
 pkgrel=1
-pkgdesc="The GTK+ 2 and 3 parts of the Ubuntu community theme "Communitheme""
+pkgdesc='The GTK+ 2 and 3 parts of the Ubuntu community theme "Communitheme"'
 arch=('any')
-url="https://github.com/Ubuntu/gtk-communitheme"
+url='https://community.ubuntu.com/c/desktop/theme-refresh'
 license=('GPL3')
-depends=('gtk3')
-makedepends=('meson' 'ninja')
+makedepends=('git' 'meson' 'ninja' 'sassc')
 source=("${pkgname}::git+https://github.com/Ubuntu/gtk-communitheme.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    git rev-parse --short HEAD
+ cd "${pkgname}"
+
+  printf "r%s.%s"                  \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${pkgname}"
-    # Remove any potential residual build files
-    rm -rf build
-    meson build --buildtype=release --prefix=/usr
-    ninja -C build
+  cd "${pkgname}"
+
+  meson build           \
+    --buildtype=release \
+    --prefix=/usr
+
+  ninja -C build
 }
 
 package() {
-    cd "${pkgname}"
-    env DESTDIR="$pkgdir" ninja -C build install
+  cd "${pkgname}"
+
+  DESTDIR="${pkgdir}" ninja -C build install
 }
+
+# vim: ts=2 sw=2 et:

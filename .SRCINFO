@@ -1,13 +1,14 @@
 pkgbase = gtk-communitheme-git
-	pkgdesc = The GTK+ 2 and 3 parts of the Ubuntu community theme Communitheme
-	pkgver = a6ca20f
+	pkgdesc = The GTK+ 2 and 3 parts of the Ubuntu community theme "Communitheme"
+	pkgver = r556.22ed5e7
 	pkgrel = 1
-	url = https://github.com/Ubuntu/gtk-communitheme
+	url = https://community.ubuntu.com/c/desktop/theme-refresh
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	depends = gtk3
+	makedepends = sassc
 	source = gtk-communitheme-git::git+https://github.com/Ubuntu/gtk-communitheme.git
 	sha256sums = SKIP
 
