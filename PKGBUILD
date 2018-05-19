@@ -2,38 +2,38 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver
-pkgver=5.1.2
+pkgver=5.1.3
 pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
 makedepends=('npm' 'nodejs' 'grunt-cli' 'qt5-base' 'git' 'wget' 'p7zip' 'clang' 'libtinfo5' 'python2' 'java-runtime' 'ncurses5-compat-libs')
-depends=('nodejs')
+depends=('nodejs<10')
 optdepends=('rabbitmq' 'redis' 'postgresql')
 license=('AGPL')
 source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-DocumentServer-${pkgver}.tar.gz"
-	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/a8bcd38bce62b6a7b74b9c8234d18f584d3f3178.tar.gz"
+	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/29e3f90ebfc4ff7666363af58b906df582a698a2.tar.gz"
 	"core-fonts-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core-fonts/archive/aed4b69cbebfb07134aa9e38e062dd83f4717626.tar.gz"
 	"dictionaries-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/dictionaries/archive/f62ae70eb6d4fedeb676593e2ba22de29239e7e2.tar.gz"
-	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/5c0f40a8329dafea7f110d34bd8fdd587466d975.tar.gz"
+	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/4a864db874d52b8e8e1f0386e96e78f7de848aea.tar.gz"
 	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/71cff31a270316d9b2155f168f1130fa9f8d50fd.tar.gz"
-	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/e7d583b615c75b6faaa569c3b0257940e6ca44f3.tar.gz"
-	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps/archive/3c543e210360a4b78643981cf7da54496061b547.tar.gz"
+	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/e4efd09e3b0b84e89066814afc7cdc3365d6d643.tar.gz"
+	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps/archive/458dc09b26c8d0c9c69c8cbde14495968e0dd44d.tar.gz"
 	"docbuilder_p.patch"
 	"server_makefile.patch"
 	"onlyoffice-fileconverter.service"
 	"onlyoffice-spellchecker.service"
 	"onlyoffice-docservice.service")
-sha512sums=('ddb11e11c48c56f426992bb8073dcb16839ef2dfeecbe34a391a1ce49709b30d501d382a333e4c643324b55e63e3d023ff27f6baab6545740251f41c5963bcd2'
-            '88c4b96bfaa2809e5b9c21b64794cdf1e22dea1225306dab6a9dc422bb3fae6cfa30dacb0e3879537a9f89e53e26d0319eead9014cf8d60a7316b6c5436b6bb4'
+sha512sums=('6b8a69ca55cfd5929fb62e01ab1405d258f2bbafe08e3729b600f1f9f83d4c94df5e9848f6880e0d39e9e3eda7d64f0141271779f9f0d1300c559a4d2ade1921'
+            '9b6416b0ca38563a1d298f94ae474b43a9247ec9185c8ece63d277f0c47b13640b5b5eccce3d9ba37befeea421929881458cbab7b6df25c4dc1c1e08389f2095'
             '9ecb75a95f29e998b09cff7e98f3fae1408a779f59734fd8f5e1a1ab6e58f191d0c64006a9fa196ba5d932ca4ebcfc80a7fce089adfb5ec639df4646c6411222'
             '187086bf2c768bdbee7331b23838f161461711cb0d96b0b488a7a72e282778b22ecd2c6810e006ee4e8120686656426c5b5288584aece5b2f29b3f5224bd0092'
-            'e95b662d7cbddb8bbd822782fdd98fd671d7223909fb957c9af4725c7a70f424d5591102764f1567d17f5c82d61b0f63af432e097b0bca283d4d1992de743cb9'
+            '0945cf11eebd8559ab525d0e9027396c4d464c583796d211cddd81235fd0df673cf638654f4f819436dc06a4ed99d893b632edcf53fce7b654da43b44a76915d'
             '0f5681cba03d8a82d9289c76723250735dd34068fa97c848482d678b074757c85dc54141962b76866f661932a0cade64f17748d565843299cacc2c434606759f'
-            '9c05912c939dbddac5867d82204585f782dfa9db32c57c26d97c07061c856158f89aa6cc91ba58a6bd976bd2d43cae911650a3fd8e7f4571097f5386de42f492'
-            '0cd1cd511dc8c9eede090bc328513963524ac91f5327799089a06a45d97b6971a30956277ea852e892285e9261c2bf2d669d8d4a29ec914bf24ac1e455c2c224'
+            '7e51ad10ee733be1f53df80ce6c95b39c5dd59065a8490f24c71c7631c828aecf13f7c8f0d8eeb9cc719d420162bd4bb71c32e1395bdf366f46e66d0061f63a5'
+            'bf093d62bb93d0d9547fed738f4ac3e57bbd67f7ac45f727d4df014b0de5ac129bb27ddf55a01369c5bf62776fe1bd1300a64059c5be77c56d44794a097a5602'
             '4875f25a76731e43c4a08f7c2b557d337224c34ddf2a9b0348c4bf325bfcfc11c6b4f834d5c7da486957ec0380cfaaf45b83dd920e6e660fb6f4d1f3857fd787'
-            '0225e8ed66166c663d9359608a824a281fa390ff565e7d5c52337dceee45d584874ef727f66dbcdfb4c922a0d9b8f42e0bce771e96d29c85d5b325c3a92294c2'
+	    'd2378755deb5a4885558c2d800f86da8295637dc0ce056cbb03f16264c5f7219266526e067f9d361e6f910fb5b6436a41ae3fca9aec513922e486c46b745bebe'
             '5c691e07eccd51f543de92cc7f7fd5a5aac77fa2a6cf786f439a4ea43abc7606180aa5a9dd3762200091a4b3a479860881f94aefd0297d8e7ed955bf25c37417'
             '428e5c3326da53ee993871ab56c3b35c40fea5d5513950bee2a87b158f25cc0ebe76d690e4fa17bceb8583dde2f164fcf0a71a60652da1c67171d215f2528e6a'
             '6f53f9eec783dc00497e2ce495ce92dc1d78824e108ecdd914806fca4948e1748383125e0322a444bf9f8e158eacee06247b4966beb172522e3d176a8bc093a9')
