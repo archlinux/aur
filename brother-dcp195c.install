@@ -6,4 +6,6 @@ post_upgrade() {
 echo "Restart CUPS to load the new files"
 echo "You can now register your new printer using the web interface at:"
 echo "  http://localhost:631/"
+
+brprintconf_dcp195c -pt A4
 }

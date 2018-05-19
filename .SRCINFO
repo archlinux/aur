@@ -1,21 +1,22 @@
 pkgbase = brother-dcp195c
 	pkgdesc = LPR and CUPS driver for the Brother DCP195C
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://solutions.brother.com/linux/en_us/
 	install = brother-dcp195c.install
 	arch = i686
 	arch = x86_64
 	license = custom:brother commercial license
 	depends = cups
+	depends = lib32-glibc
 	source = http://www.brother.com/pub/bsc/linux/dlf/dcp195clpr-1.1.3-1.i386.rpm
 	source = http://www.brother.com/pub/bsc/linux/dlf/dcp195ccupswrapper-1.1.3-1.i386.rpm
 	source = cupswrapper-license.txt
 	source = lpr-license.txt
-	md5sums = 6623c534c3805e4b2588921b8a326b3c
-	md5sums = ba3bf7b8cb642f58b48576e530769641
-	md5sums = 97ad0cffd216059e9d1d3121899d8646
-	md5sums = 5e87a3dc0f3e3438c088eda0f3565f0d
+	sha256sums = e86d73d8308e2b963c0acf3ba9be82e133b52766a41e95983a08ba55ba0879b4
+	sha256sums = 806ce6646a408daca8e9f0024f7d6af59ca8186db540ed41483501495941f3ba
+	sha256sums = 2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9
+	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
 
 pkgname = brother-dcp195c
 
