@@ -3,7 +3,7 @@
 
 pkgname=lutris
 pkgver=0.4.17
-pkgrel=2
+pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
@@ -18,7 +18,7 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("https://lutris.net/releases/lutris_${pkgver}.tar.xz")
-sha256sums=('f33c27745f2bd87344be790465ef984a972fd539dc83bd4f61d4242c607ef1ee')
+sha256sums=('fd288ac5caaf0613e83aeb811aa3131fb2139d36e7bb5c5fc5489ee7f185be1f')
 
 package() {
   cd lutris
