@@ -10,7 +10,7 @@ depends=("java-runtime>=6" "hicolor-icon-theme" "bash")
 makedepends=("unzip" "imagemagick")
 source=("http://www.falstad.com/circuit-java/circuit.zip" "circuit-simulator" "circuit.desktop")
 md5sums=("392f5956d1153755949b167842ccd7cc"
-         "bd735bd306f677ee117e07784bec74e1"
+         "f6f1a25d07ebe8d2322950e8a52f7877"
 	     "46ff1375643354a241c6c67fba7f08e5"
 )
 
