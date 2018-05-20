@@ -1,11 +1,11 @@
 # Maintainer: Ivan Semkin (ivan at semkin dot ru)
 
-pkgname=nvidia-docker
+pkgname=nvidia-docker-bin
 pkgver=2.0.3
 pkgrel=1
-pkgdesc="Build and run Docker containers leveraging NVIDIA GPUs"
+pkgdesc='Build and run Docker containers leveraging NVIDIA GPUs'
 arch=('x86_64')
-url="https://github.com/NVIDIA/nvidia-docker"
+url='https://github.com/NVIDIA/nvidia-docker'
 license=('custom')
 depends=('docker' 'nvidia' 'nvidia-container-runtime' 'nvidia-container-runtime-hook')
 
