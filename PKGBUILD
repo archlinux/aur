@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=gnome-shell-extension-radio-git
-pkgver=1.6.r6.g87e8cd3
+pkgver=9.r2.gef0d36a
 pkgrel=1
 pkgdesc="Gnome shell extension for listening to internet radio streams."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('gnome-shell>=3.18' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-u
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=gnome-shell.install
+install=gnome-shell-extension.install
 source=("${pkgname%-git}::git+https://github.com/hslbck/gnome-shell-extension-radio.git")
 sha256sums=('SKIP')
 
