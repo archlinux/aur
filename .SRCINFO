@@ -1,0 +1,26 @@
+pkgbase = eddie-ui
+	pkgdesc = Eddie - OpenVPN UI
+	pkgver = 2.14.4
+	pkgrel = 1
+	url = https://eddie.website
+	install = eddie-ui.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = mono
+	depends = openvpn
+	depends = sudo
+	depends = libnotify
+	depends = libappindicator-gtk2
+	optdepends = stunnel: VPN over SSL
+	optdepends = openssh: VPN over SSH
+	provides = eddie-ui
+	conflicts = airvpn
+	conflicts = airvpn-beta-bin
+	source_i686 = eddie-ui_linux_x86_debian_2.14.4.deb::https://eddie.website/download/?platform=linux&arch=x86&ui=ui&format=debian.deb&version=experimental
+	md5sums_i686 = 91b6c9c1acb8e3b6cdef7c3e63eb1617
+	source_x86_64 = eddie-ui_linux_x64_debian_2.14.4.deb::https://eddie.website/download/?platform=linux&arch=x64&ui=ui&format=debian.deb&version=experimental
+	md5sums_x86_64 = cae507d21b3417e3f0a76c9d1dfbff7d
+
+pkgname = eddie-ui
+
