@@ -1,7 +1,7 @@
 # Maintainer: <xris_pop@yahoo.ca>
 _pkgname=share-moe-paste
 pkgname=$_pkgname-git
-pkgver=0.8.6.r0.1c78287e
+pkgver=0.8.7.r0.ddda6590
 pkgrel=1
 pkgdesc="This is a command-line tool that makes a paste from a file, clipboard or standard input and uploads it to shr.moe"
 arch=('any')
