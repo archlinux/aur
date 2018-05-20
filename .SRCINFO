@@ -1,6 +1,6 @@
 pkgbase = b2restore
 	pkgdesc = Program to recreate Backblaze B2 file archive at specified date+time.
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/bulletmark/b2restore
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = b2restore
 	makedepends = python-setuptools
 	depends = python
 	backup = etc/b2restore.conf
-	source = b2restore-1.4.tar.gz::https://github.com/bulletmark/b2restore/archive/1.4.tar.gz
-	md5sums = 5032d18c3180f86c458c60bb42cad97f
+	source = b2restore-1.5.tar.gz::https://github.com/bulletmark/b2restore/archive/1.5.tar.gz
+	md5sums = 299075e2080b5798e56713e1461aa5c4
 
 pkgname = b2restore
 
