@@ -1,0 +1,19 @@
+pkgbase = perl-uri-redis
+	pkgdesc = URI for Redis connection info
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/URI-redis
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-test-most
+	makedepends = perl-module-install
+	depends = perl
+	depends = perl-uri
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/M/ME/MENDEL/URI-redis-0.02.tar.gz
+	md5sums = ed86ee5019e5e038ee9d8f727a0972e9
+
+pkgname = perl-uri-redis
+
