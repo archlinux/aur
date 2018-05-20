@@ -4,7 +4,7 @@
 _pkgname=cups-print-to-programme
 pkgname="${_pkgname}"
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Print filter for cups which prints to a file (type: ) and opens that with a programme the user can choose in the settings."
 arch=('any')
 depends=(
@@ -56,4 +56,6 @@ package() {
   install -v -m 644 -D "cups-programme.conf" "${pkgdir}/etc/cups/cups-programme.conf"
   
   install -v -m 644 -D "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  
+  install -v -m 644 -D "GPL3.txt" "${pkgdir}/usr/share/licenses/${pkgname}/GPL3.txt"
 }
