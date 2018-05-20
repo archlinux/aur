@@ -1,7 +1,7 @@
 pkgbase = astroimagej
 	pkgdesc = ImageJ for Astronomy
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.astro.louisville.edu/software/astroimagej/
 	arch = any
 	license = GPL

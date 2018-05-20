@@ -1,4 +1,4 @@
 #!/bin/sh
-#cd /opt/astroimagej/
-java -Xmx8192m -jar /opt/astroimagej/ij.jar
+cd /opt/astroimagej/
+java -Xmx8192m -jar ij.jar
 exit
