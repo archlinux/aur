@@ -4,7 +4,7 @@
 
 pkgname=enyo-doom
 pkgver=1.05
-pkgrel=1
+pkgrel=2
 _commit=3e3cc1a4798a8732935b23697b7037a431819726
 pkgdesc="A frontend for Doom engines"
 arch=('i686' 'x86_64')
@@ -23,8 +23,7 @@ prepare() {
 build() {
   cd build
   cmake ../$pkgname-$pkgver-$_commit \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
