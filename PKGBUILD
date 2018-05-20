@@ -14,7 +14,7 @@ url='http://openclonk.org'
 license=('custom')
 depends=('glew' 'freealut' 'miniupnpc' 'libxrandr' 'sdl2' 'sdl_mixer>=1.2' 'desktop-file-utils' 'qt5-base' 'hicolor-icon-theme')
 install=openclonk.install
-makedepends=('cmake' 'boost' 'mesa')
+makedepends=('cmake' 'boost' 'mesa' 'git')
 provides=('openclonk')
 conflicts=('clonk_rage' 'openclonk' 'openclonk-music')
 source=("$pkgname::git+https://github.com/openclonk/openclonk#branch=master")
