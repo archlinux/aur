@@ -1,6 +1,6 @@
 pkgbase = wlroots-git
 	pkgdesc = Modular Wayland compositor library
-	pkgver = r2505.7c2241a5
+	pkgver = r2574.8585533a
 	pkgrel = 1
 	url = https://github.com/swaywm/wlroots
 	arch = x86_64
@@ -22,6 +22,8 @@ pkgbase = wlroots-git
 	depends = libxkbcommon
 	provides = wlroots
 	conflicts = wlroots
+	options = debug
+	options = !strip
 	source = wlroots-git::git+https://github.com/swaywm/wlroots
 	sha512sums = SKIP
 
