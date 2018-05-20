@@ -1,10 +1,10 @@
 pkgbase = kother-meta
 	pkgdesc = Other packages
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://gitlab.com/eadwu/pkgbuilds
 	arch = x86_64
-	license = custom:unknown
+	license = unknown
 	depends = adapta-gtk-theme
 	depends = ark
 	depends = autopep8
@@ -126,6 +126,8 @@ pkgbase = kother-meta
 	depends = youtube-dl
 	depends = zip
 	depends = zsh
+	source = powertop.service
+	sha256sums = 8ac93c58be13f91b5fba180b4dc528d3b36fc5e1c842b5b2e146bc135327db2d
 
 pkgname = kother-meta
 
