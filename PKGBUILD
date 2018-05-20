@@ -2,11 +2,11 @@
 
 pkgname=opennic-up
 pkgver=0.90
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenNIC auto DNS updater"
 arch=('any')
 url="https://github.com/kewlfft/${pkgname}"
-depends=('fping' 'curl')
+depends=('fping')
 license=('LGPL3')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('00e537bba293566fa71f4c40e91b12bca0f4a568e7e96130459d2536b780d64f')
