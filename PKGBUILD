@@ -1,7 +1,8 @@
+# $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=gnome-shell-extension-desk-changer-git
-pkgver=23.r0.g7fc9ef7
+pkgver=27.r11.g757f533
 pkgrel=1
 pkgdesc="Gnome shell wallpaper changing extension with multiple profile support."
 arch=(any)
@@ -11,7 +12,7 @@ depends=('gnome-shell>=3.18' 'python-gobject')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=gnome-shell.install
+install=gnome-shell-extension.install
 source=("${pkgname%-git}::git+$url")
 sha256sums=('SKIP')
 
@@ -25,3 +26,4 @@ package() {
 	install -d $pkgdir/usr/share/gnome-shell/extensions/
 	cp -a desk-changer@eric.gach.gmail.com/ $pkgdir/usr/share/gnome-shell/extensions/
 }
+# vim:set ts=2 sw=2 et:
