@@ -13,9 +13,13 @@
 
 #define SORT_ALPHA 0
 #define SORT_VALUE 1
-#define SORT_PROFIT 2
-#define SORT_PROFIT_1D 3
-#define SORT_PROFIT_7D 4
+#define SORT_SPENT 2
+#define SORT_PROFIT 3
+#define SORT_PROFIT_PERCENT 4
+#define SORT_PROFIT_24H 5
+#define SORT_PROFIT_24H_PERCENT 6
+#define SORT_PROFIT_7D 7
+#define SORT_PROFIT_7D_PERCENT 8
 
 typedef struct security_data {
     char symbol[32];
@@ -105,7 +109,7 @@ void portfolio_sort(SDA* sda_data, int sort_option);
  * Prints to stdout information about every security contained in the portfolio: symbol, number of shares, USD spent,
  * current value, profit, and 24h profit. Additionally, print a grand total with info from all securities.
  */
-void portfolio_print_all(int sort_option);
+void portfolio_print_all(void);
 
 /**
  * Prints to stdout information about a specific security contained in the portfolio: symbol, number of shares, USD spent,

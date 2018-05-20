@@ -51,24 +51,10 @@ int main(int argc, char* argv[]) {
     }
 
         // Check
-    else if (strcmp(cmd, "check") == 0) {
-        int SORT = SORT_ALPHA;
+    else if (strcmp(cmd, "check") == 0 && (argc == 2 || argc == 3)) {
         if (argc == 2)
-            portfolio_print_all(SORT);
-        else if (argc == 3) {
-            if (strlen(sym) == 2 && sym[0] == '-') {
-                if (sym[1] == 'V')
-                    SORT = SORT_VALUE;
-                else if (sym[1] == 'P')
-                    SORT = SORT_PROFIT;
-                else if (sym[1] == '1')
-                    SORT = SORT_PROFIT_1D;
-                else if (sym[1] == '7')
-                    SORT = SORT_PROFIT_7D;
-                portfolio_print_all(SORT);
-            } else portfolio_print_stock(sym);
-        }
-        else puts("Invalid arguments. Type \"man tick\" for help.");
+            portfolio_print_all();
+        else portfolio_print_stock(sym);
     }
 
         // Portfolio

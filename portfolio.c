@@ -209,6 +209,8 @@ void* portfolio_store_api_data(void* vsec_data) {
 }
 
 void portfolio_sort(SDA* sda_data, int sort_option) {
+    if (sda_data->length == 1) // Can't sort only one security
+        return;
     int loop_flag = 1;
     double val1 = 0, val2 = 0;
     SD* sec_data1, * sec_data2, * temp;
@@ -227,15 +229,27 @@ void portfolio_sort(SDA* sda_data, int sort_option) {
             } else if (sort_option == SORT_VALUE) {
                 val1 = sec_data1->current_value;
                 val2 = sec_data2->current_value;
+            } else if (sort_option == SORT_SPENT) {
+                val1 = sec_data1->total_spent;
+                val2 = sec_data2->total_spent;
             } else if (sort_option == SORT_PROFIT) {
                 val1 = sec_data1->total_profit;
                 val2 = sec_data2->total_profit;
-            } else if (sort_option == SORT_PROFIT_1D) {
+            } else if (sort_option == SORT_PROFIT_PERCENT) {
+                val1 = sec_data1->total_profit_percent;
+                val2 = sec_data2->total_profit_percent;
+            } else if (sort_option == SORT_PROFIT_24H) {
                 val1 = sec_data1->one_day_profit;
                 val2 = sec_data2->one_day_profit;
+            } else if (sort_option == SORT_PROFIT_24H_PERCENT) {
+                val1 = sec_data1->one_day_profit_percent;
+                val2 = sec_data2->one_day_profit_percent;
             } else if (sort_option == SORT_PROFIT_7D) {
                 val1 = sec_data1->seven_day_profit;
                 val2 = sec_data2->seven_day_profit;
+            } else if (sort_option == SORT_PROFIT_7D_PERCENT) {
+                val1 = sec_data1->seven_day_profit_percent;
+                val2 = sec_data2->seven_day_profit_percent;
             }
             if (val1 < val2) { // Greatest to least
                 temp = sda_data->sec_data[i]; // Swap
@@ -247,27 +261,25 @@ void portfolio_sort(SDA* sda_data, int sort_option) {
     }
 }
 
-void portfolio_print_all(int sort_option) {
+void portfolio_print_all(void) {
     SDA* sda_data = portfolio_get_data_array();
     if (sda_data == NULL) // Error reading portfolio, wrong password, empty portfolio array
         return;
 
-    printf("Loading data ");
+    initscr();
+    noecho(); // Don't echo keystrokes
+    keypad(stdscr, TRUE); // Enables extra keystrokes
+    curs_set(0); // Hides cursor
     double total_owned = 0, total_spent = 0, total_profit_1d = 0, total_profit_7d = 0;
     SD* sec_data;
-    char loading_str[32];
     pthread_t threads[sda_data->length];
     for (size_t i = 0; i < sda_data->length; i++) // Create one thread per security to collect API data
         if (pthread_create(&threads[i], NULL, portfolio_store_api_data, sda_data->sec_data[i]))
             EXIT_MSG("Error creating thread!")
 
     for (size_t i = 0; i < sda_data->length; i++) {
-        if (i > 0)
-            for (size_t j = 0; j < strlen(loading_str); j++)
-                putchar('\b'); // Overwrite loading status
-        sprintf(loading_str, "(%d/%d)", (int) i + 1, (int) sda_data->length); // Format: (5/23)
-        printf("%s", loading_str); // Print loading string
-        fflush(stdout); // Flush because no newline
+        mvprintw(0, 0, "Loading data (%d/%d)\n", (int) i + 1, (int) sda_data->length); // Print loading string
+        refresh(); // flushes output buffer
         if (pthread_join(threads[i], NULL)) // Wait for each thread to finish collecting API data
             EXIT_MSG("Error joining thread!")
 
@@ -277,18 +289,47 @@ void portfolio_print_all(int sort_option) {
         total_profit_1d += sec_data->one_day_profit;
         total_profit_7d += sec_data->seven_day_profit;
     }
-    portfolio_sort(sda_data, sort_option); // Sort security array
-    printf("\n  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)      7D       (%%)\n");
-    for (size_t i = 0; i < sda_data->length; i++) {
-        sec_data = sda_data->sec_data[i]; // Print security data one at a time
-        printf("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount,
-               sec_data->symbol, sec_data->current_value, sec_data->total_spent, sec_data->total_profit,
-               sec_data->total_profit_percent, sec_data->one_day_profit, sec_data->one_day_profit_percent,
-               sec_data->seven_day_profit, sec_data->seven_day_profit_percent);
-    }
-    printf("\n         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
-           total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,
-           total_profit_1d, 100 * total_profit_1d / total_spent, total_profit_7d, 100 * total_profit_7d / total_spent);
+
+    int sort_option = SORT_ALPHA; // Defaults to sort alphabetically
+    // For printing/formatting categories
+    char* sort_categories_str[] = {"SYMBOL", "VALUE", "SPENT", "PROFIT", "(%%)", "24H", "(%%)", "7D", "(%%)"},
+            * sort_spacing_str[] = {"    ", "    ", "   ", "      ", "      ", "      ", "       ", "      ", "\n"};
+    int ch = 0; // getch() data from keyboard
+    do {
+        portfolio_sort(sda_data, sort_option); // Sort security array
+        move(0, 0);
+        attron(A_BOLD); // Bold categories
+        printw("  AMOUNT ");
+        for (int i = 0; i < SORT_PROFIT_7D_PERCENT + 1; i++) {
+            if (sort_option == i) // Highlight current sorting category
+                attron(A_STANDOUT);
+            printw("%s", sort_categories_str[i]);
+            if (sort_option == i)
+                attroff(A_STANDOUT);
+            printw("%s", sort_spacing_str[i]);
+        }
+        attroff(A_BOLD);
+
+        for (size_t i = 0; i < sda_data->length; i++) {
+            sec_data = sda_data->sec_data[i]; // Print security data one at a time
+            printw("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount,
+                   sec_data->symbol, sec_data->current_value, sec_data->total_spent, sec_data->total_profit,
+                   sec_data->total_profit_percent, sec_data->one_day_profit, sec_data->one_day_profit_percent,
+                   sec_data->seven_day_profit, sec_data->seven_day_profit_percent);
+        }
+        attron(A_BOLD); // Bold totals
+        printw("\n         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
+               total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,
+               total_profit_1d, 100 * total_profit_1d / total_spent, total_profit_7d,
+               100 * total_profit_7d / total_spent);
+        attroff(A_BOLD);
+        ch = getch(); // Get keyboard input -- also flushes output buffer
+        if (ch == KEY_RIGHT && sort_option != SORT_PROFIT_7D_PERCENT) // key RIGHT -- moves sort category right
+            sort_option++;
+        else if (ch == KEY_LEFT && sort_option != SORT_ALPHA) // key LEFT -- moves sort category left
+            sort_option--;
+    } while (ch != 'q'); // "q" to quit
+    endwin();
     sda_destroy(&sda_data);
 }
 
