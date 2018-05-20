@@ -1,7 +1,8 @@
 # Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
 
-pkgname=liquid-dsp-git
-pkgver=v1.2.0.r1288.g1191179
+_pkgname=liquid-dsp
+pkgname=${_pkgname}-git
+pkgver=v1.3.1.r134.gdd3facf8
 pkgrel=1
 pkgdesc="Digital signal processing library for software-defined radios"
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,7 +13,7 @@ depends=()
 optdepends=('fftw: use shared fft library')
 makedepends=('git')
 provides=("${pkgname%}")
-conflicts=("${pkgname%}")
+conflicts=("${_pkgname%}")
 replaces=()
 backup=()
 options=()
