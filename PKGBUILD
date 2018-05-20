@@ -2,7 +2,7 @@
 
 _gitname=terminology-themes
 pkgname=${_gitname}-git
-pkgver=r48.3d11806
+pkgver=r92.39f406f
 pkgrel=1
 pkgdesc="Color schemes for the Terminology terminal emulator "
 arch=('any')
