@@ -4,15 +4,15 @@
 pkgbase=python-pytimeparse
 pkgname=('python-pytimeparse' 'python2-pytimeparse')
 _pkgname=${pkgbase#python-}
-pkgver=1.1.7
-pkgrel=3
+pkgver=1.1.8
+pkgrel=1
 pkgdesc="A small Python library to parse various kinds of time expressions"
-arch=('x86_64')
+arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
 url='https://github.com/wroberts/pytimeparse'
 license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('51b641bcd435e0cb6b9701ed79cf7ee97fa6bf2dbb5d41baa16e5486e5d9b17a')
+sha256sums=('e86136477be924d7e670646a98561957e8ca7308d44841e21f5ddea757556a0a')
 
 prepare () {
     cp -a $_pkgname{,-py2}-$pkgver 
