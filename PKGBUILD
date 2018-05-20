@@ -3,9 +3,8 @@
 
 _pkgname=cups-print-to-programme
 pkgname="${_pkgname}"
-_pkgver=0.1
-pkgver="${_pkgver}"
-pkgrel=0.5
+pkgver=0.1
+pkgrel=1
 pkgdesc="Print filter for cups which prints to a file (type: ) and opens that with a programme the user can choose in the settings."
 arch=('any')
 depends=(
@@ -13,7 +12,7 @@ depends=(
   'mariadb' # For the 'replace'-executable.
 )
 install=cups-programme.install
-url=""
+url="http://felics.kettenbruch.de/software/cups-print-to-programme/"
 license=('GPL3')
 source=(
   "cups-programme.sh"
@@ -23,19 +22,29 @@ source=(
   "${install}"
 )
 optdepends=(
-  'x11-ssh-askpass: For a graphical password input frontend for sudo.'
-  'lxqt-openssh-askpass: For a graphical password input frontend for sudo.'
-  'kde-cli-tools: For kdesu graphical frontend to run command as different user.'
-  'kdesudo: For kdesudo graphical frontend to run command as different user.'
+  "kde-cli-tools: For 'kdesu' graphical frontend to run command as different user."
+  "kdesudo: For 'kdesudo' graphical frontend to run command as different user."
+  "x11-ssh-askpass: For a graphical password input frontend for sudo."
+  "lxqt-openssh-askpass: For a graphical password input frontend for sudo."
+  "openssh-askpass: For a graphical password input frontend for sudo."
+  "seahorse:  For a graphical password input frontend for sudo."
+  "ksshaskpass: For a graphical password input frontend for sudo."
+  "gnome-ssh-askpass2: For a graphical password input frontend for sudo."
 )
+provides=("${_pkgname}-doc=${pkgver}")
 backup=('etc/cups/cups-programme.conf')
 sha256sums=(
- '9a7f1cf4e52cebd2e1894a7f157a4aa087a5c4125b61e4781167ef70ec1ace5e'
- 'e7b6bff5cf14045dfa56860ab422ac64d36c79624d6cc2d2e31d03dff71ae9eb'
- 'SKIP'
+ '32015b7b1014003678c5e44da4a75211d6629c87596c5c338a9255a41de82260'
+ 'e7cb6af420fb7fdfa860a94480ddd75d89033f1f66c9b0489719e525a2b4c0cc'
+ '31f6a2fd3d34dde35415681450057c5c8a730df8b1f015989018696ccd22cd3b'
  '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
- 'SKIP'
+ '0ee996783ae6848cf3c522de135646cb4b19670a48d6f1bf387b5b304f5506ad'
 )
+
+pkgver() {
+  cd "${srcdir}"
+  ./cups-programme.sh --version
+}
 
 
 package() {

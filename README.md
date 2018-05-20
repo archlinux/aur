@@ -1,6 +1,8 @@
 cups-programme
 ==============
 
+http://felics.kettenbruch.de/software/cups-print-to-programme/
+
 This is a filter for CUPS -- the [Common Unix Printing System][1] --
 that will allow to create virtual printers to open the printed file in
 an application.
@@ -34,30 +36,141 @@ make sure it is readable at least by the user `cupsd` runs as.
 Adding printers
 ---------------
 
+This printer can be added using the CUPS webinterface with probably one
+manual intervention.
+
+When the backend has been properly installed, CUPS will show it under
+"Local Printers" when you click "Add Printer" in the webinterface.
+Select the printer. In the field "Connection", you need to specify the
+Device URI. This is the part where the cups-programme printer get's
+it's information which programme to execute.
+
+The Device URI to print to The Gimp is, for example:
+
+    cups-programme:/usr/bin/gimp?u=<user>&D=:0.0&%s
+
+where `<user>` is the name of the user `gimp` should be run as. If not
+specified, it will be run as the user CUPS is running as, which might
+not be desired. The `D=:0.0` specifies the X11 display to use. In most
+cases, `:0.0` is correct. (See section "Device URI syntax" for a full
+description of the Device URI.)
+
+After the Device URI has been entered, select a name and optionally a
+description and a location note for the printer. Then you are presented
+with a list of printer manufacturers and models to choose from. Select
+the manufacturer `Generic` and any generic PostScript printer. (This
+selects a PPD file for the printer. Since we just want to open the raw
+CUPS PostScript output, just select any PostScript printer and then
+ignore the printer options is fine.)
+
+Adding the printer might fail with an error like
+
+    Bad device-uri "cups-programme:/usr/bin/gimp?[...]"
+
+In this case, when specifying the Device URI, just type in
+`cups-programme:<path-to-executable>` (e.g.
+`cups-programme:/usr/bin/gimp`) and add the printer as described. After
+the printer has been added, stop CUPS (e.g. by entering
+`systemctl cupsd stop` or `/etc/init.d/cupsd stop` as root on the
+command line) and edit the file `/etc/cups/printers.conf`. Find the
+printer you just added and complete the Device URI manually by editing
+the entry starting with `DeviceURI`. Save your edits, and start CUPS
+again (e.g. by typing `systemctl start cupsd` or
+`/etc/init.d/cupsd start`).
+
+Now the virtual printer should be functional.
 
 
-NOTE:
+Device URI syntax
+-----------------
+
+In general, the syntax for the Device URI is:
+
+    cups-programme:<path-to-executable>?<options>
+
+where:
+
+* `<path-to-executable>` needs to be an absolute path, starting with `/`
+  (otherwise CUPS will complain that it is not a correct URI; it expects
+  a `/` after the `:`),
+* `?<options>` is optional and has the syntax
+  `<option>&<option>&<option>` etc. (arbitraryly many options,
+  separated by `&`, are allowed).
+  an `<option>` can be of the form:
+  - `u=<user>` -- specifies that the executable should be run as user
+    `<user>` (see explanation of `su_variant` in the section
+    "Configuration File"),
+  - `g=<group>` -- specifies that the executable should be run with
+    primary group `<group>` (see section "Notes"),
+  - `D=<DISPLAY>` -- if set, the environment variable `DISPLAY` will be
+    set to `<DISPLAY>` and exported prior execution of
+    `<path-to-executable>`,
+  - anything else will be passed as positional arguments to
+    the executable, with the following string substitutions applied (see
+    also "Notes"):
+    + `%s` -> The file where the CUPS print output is saved. Use `%s` to
+      pass the printed file to be opened to the executable.
+    + `%.` -> ` `,
+    + `%_` -> `-`,
+    + `%P` -> `|`,
+    + `%B` -> `\`,
+    + `%H` -> `#`,
+    + `%Q` -> `?`,
+    + `%A` -> `&`,
+    + `%%` -> `%`.
+
+
+
+Configuration File
+------------------
+
+The printer backend expects a configuration file to be present at
+`/etc/cups/cups-programme.conf`. This file will be bash-sourced, so
+beware what you do there.
+
+Currently, there are two variables to be set in the configuration file:
+`su_variant` and `askpass_cmd`.
+
+* When a programme should be run as a specific user (`u=<user>` in the
+  Device URI) or with a specific primary group (`g=<group>` in the
+  Device URI), some programme like `su` or `sudo` needs to be invoked.
+  However, things are not that simple, because there is no terminal
+  access and so no password can be typed in easily. Here, the
+  configuration variable `su_variant` comes in the game. Ut can be
+  choosen between a few methods to authenticate.
+  
+  One possibility is to use `sudo` and to configure your system's sudo
+  such that no password is required. Another possibility is to use a
+  graphical password entry -- via a graphical programme, or via `sudo`
+  with askpass (`su_variant=sudo-askpass`).
+
+* When `su_variant=sudo-askpass` is set, then `askpass_cmd` needs to be
+  set and needs to contain a full path to an askpass executable.
+
+Read the comments in the configuration file for further details.
+
+
+Notes
+-----
+
+* The `%`-substitutions in the options in the Device URI might become
+  necessary if the characters are breaking the Device URI. Also, `-` in
+  the Device URI may make problems due to interpretation in scripts, so
+  it is advised to use `%_` instead.
 
 * Setting a primary group to run the command as is only possible when
-  the CUPS filter is run as root, and only with some su_variant settings
-  ('su', 'sudo' and 'sudo-askpass').
-
-* When the CUPS filter is run, and the command is to be executed as
-  another user, the password cannot be input via stdin. So, either a
-  sudo-based su_variant has to be used and sudo has to be properly
-  configured to allow the wished execution without password entry, or
-  some graphical password entry has to be used ('sudo-askpass', 'kdesu'
-  and 'kdesudo').
+  the CUPS filter is run as root, and only with some `su_variant`
+  settings (for details, see comments in the configuration file).
 
 * When adding a printer with this backend via CUPS, you might get an
   error like
   
-    Bad device-uri "cups-programme:/usr/bin/gimp?u=felics&D=:0.0&%s".
+    Bad device-uri "cups-programme:/usr/bin/gimp?u=user&D=:0.0&%s".
   
-  When this happens, add the printer with a very basic device-uri like
-  "cups-programme:/usr/bin/gimp", and after adding the printer, edit
+  When this happens, add the printer with a very basic Device URI like
+  `cups-programme:/usr/bin/gimp`, and after adding the printer, edit
   /etc/cups/printers.conf manually and change the DeviceURI to the
-  desired value. (Stop cupsd before, and restart cupsd after editing
+  desired value. (Stop `cupsd` before, and restart cupsd after editing
   /etc/cups/printers.conf.)
 
 

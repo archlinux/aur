@@ -1,5 +1,8 @@
 #!/bin/bash
-#
+# 
+# cups-programme
+# 
+# 
 # The purpose of the backend is to print print jobs to a file and then
 # open it with a programme which the user can set in the options.
 #
@@ -24,7 +27,9 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#
+
+# The version.
+VERSION=0.1
 
 # Abort on error
 set -e
@@ -245,8 +250,40 @@ case ${#} in
         chmod 666 "${tmpfile}"
         log_cups "Print job ${jobid} output written to ${tmpfile}."
      ;;
-     1|2|3|4|*)
-        # These cases are unsupported.
+     1)
+       case "$1" in
+         '-V'|'-version'|'--version')
+           echo "${VERSION}"
+           exit 0
+         ;;
+         *)
+          # This is dirty, since this section is twice in this script. Fix it.
+          stderr "$0: Error: Called with incorrect number ($#) of arguments."
+          stderr ""
+          stderr "Usage:"
+          stderr ""
+          stderr " $0 <job-ID> <user> <jobtitle> <copies> <joboptions> [<jobfile>]"
+          stderr ""
+          stderr "OR (for backend discovery mode):"
+          stderr ""
+          stderr "  $0"
+          stderr ""
+          stderr "OR (to retrieve the version number):"
+          stderr ""
+          stderr "  $0 -V | -version | --version"
+          stderr ""
+          stderr ""
+          stderr "(Install this as CUPS backend to '/usr/lib/cups/backend/${backend_name}'.)"
+          stderr "(Read the comment in $0 to see how to set this up.)"
+
+          error "$0 called with $# arguments. Unsupported mode. Aborting."
+
+          exit 11
+         ;;
+       esac
+     ;;
+     2|3|4|*)
+        # This is dirty, since this section is twice in this script. Fix it.
         stderr "$0: Error: Called with incorrect number ($#) of arguments."
         stderr ""
         stderr "Usage:"
@@ -256,6 +293,10 @@ case ${#} in
         stderr "OR (for backend discovery mode):"
         stderr ""
         stderr "  $0"
+        stderr ""
+        stderr "OR (to retrieve the version number):"
+        stderr ""
+        stderr "  $0 -V | -version | --version"
         stderr ""
         stderr ""
         stderr "(Install this as CUPS backend to '/usr/lib/cups/backend/${backend_name}'.)"
