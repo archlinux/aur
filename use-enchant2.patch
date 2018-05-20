@@ -49,7 +49,7 @@
  
 --- ext/enchant/enchant.c	2018-01-02 22:36:05.000000000 +0000
 +++ ext/enchant/enchant.c	2018-01-21 22:34:50.205791491 +0000
-@@ -741,7 +741,7 @@
+@@ -750,7 +750,7 @@
  			for (i = 0; i < n_sugg; i++) {
  				add_next_index_string(sugg, suggs[i]);
  			}
@@ -58,7 +58,7 @@
  		}
  
  
-@@ -798,7 +798,7 @@
+@@ -807,7 +807,7 @@
  			add_next_index_string(return_value, suggs[i]);
  		}
  
@@ -67,7 +67,7 @@
  	}
  }
  /* }}} */
-@@ -818,7 +818,7 @@
+@@ -827,7 +827,7 @@
  
  	PHP_ENCHANT_GET_DICT;
  
@@ -76,7 +76,7 @@
  }
  /* }}} */
  
-@@ -856,7 +856,7 @@
+@@ -865,7 +865,7 @@
  
  	PHP_ENCHANT_GET_DICT;
  

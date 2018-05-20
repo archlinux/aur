@@ -32,7 +32,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=5.6.36
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -40,13 +40,14 @@ url='http://php.net'
 makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'smtp-forwarder'
              'sqlite' 'unixodbc' 'net-snmp' 'libzip' 'enchant' 'file' 'freetds'
              'libmcrypt' 'tidyhtml' 'aspell' 'libltdl' 'gd' 'icu'
-             'curl' 'libxslt' 'openssl-1.0' 'db' 'gmp' 'systemd')
+             'curl' 'libxslt' 'openssl-1.0' 'db' 'gmp' 'systemd' 'libnsl')
 
 source=("https://secure.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         "https://secure.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles'
-        'use-enchant2.patch')
+        'use-enchant2.patch'
+        'php-freetype-2.9.1.patch')
 sha512sums=('807c68ab85b6685b19707bd18cfd46f3695b2dc67f9f17f85476634e4a80a036cb413ccae05ed5ba529eafe8df57ebf758dd664ed2942ec44f90a6e8b0172e5e'
             'SKIP'
             'e742d6e3e43bce75e11b4646cdbf06c5661c66cc22d5615caff1e293ed35e95973290940c93d6abeec2d43f02761baabf24e6954720d7df8f2bd7de2c3f9ba0d'
@@ -55,7 +56,8 @@ sha512sums=('807c68ab85b6685b19707bd18cfd46f3695b2dc67f9f17f85476634e4a80a036cb4
             'a398e9cde4ba57d243abb5b394152d87bc1fddc2d5fc934569e1f912a5a80eba3ae14720fe99fcda50722bedc5d65abcbde2822f5075091c4a83a2f6bb22c122'
             'c6b74e1b39224e79d33915a0d32fe2d08114d1dcec93035017af783b8b73b6475779e3e649abb35b73ea2fd6553120696c48ebb0894531282fbc9e1b36da9f3b'
             '9cc548c9395f0765e6ebf54604dc8e71da38ffbc10eba50ba9b7e2f91690c53056f62efa2060fc8670de94e0642027c6eaa6c2820ba99e2b489695d1e320fcf3'
-            '5f0dc48f13de7024db1bd6189967b389aa6d8cf9ab9dc1b242b4ea4250df1edd909364efb2d840e38227676fee5dee93bac38056db2a80ad6c7ba0e13f71fcd1')
+            '9fa342db6530bf1b6c86d6eb5020f86eab08b7c134d649291755d3b8356837509ac9dd8a8c8a26a7c98468045abcb128bdf9cc7c6646ccf06da43909aa7b019b'
+            '0a06189f6fb3513cd2dcf9ddb590360475e2dd9a7aa8b13ab66c389c1ed40ce2361681f017cd3c6219f5b40a0a9d4978e57ca3ee4bacb7657db3285136fd2875')
 validpgpkeys=('6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3'
               '0BD78B5F97500D450838F95DFE857D9A90D90EC1')
 
@@ -73,7 +75,12 @@ prepare() {
 
   # thanks to Jörg Schuck for providing this patch
   # https://gist.github.com/jschuck/5d237974e5856a221ccb347c9ccf8711
-  patch -p0 -N -i "${srcdir}/use-enchant2.patch"
+  patch -p0 -N -l -i "${srcdir}/use-enchant2.patch"
+
+  # fix compatibility with freetype >=2.9.1
+  # kudos to Brian Evans <grknight@gentoo.org>
+  # https://gitweb.gentoo.org/repo/gentoo.git/plain/dev-lang/php/files/php-freetype-2.9.1.patch
+  patch -p1 -N -l -i "${srcdir}/php-freetype-2.9.1.patch"
 }
 
 build() {
@@ -308,7 +315,7 @@ package_php56-cgi() {
 
 package_php56-apache() {
   pkgdesc='Apache SAPI for PHP'
-  depends=("${pkgbase}" 'apache')
+  depends=("${pkgbase}" 'apache' 'libnsl')
   provides=("${_pkgbase}-apache=$pkgver")
   backup=("etc/httpd/conf/extra/${pkgbase}_module.conf")
   install='php-apache.install'
@@ -340,7 +347,7 @@ package_php56-fpm() {
 
 package_php56-embed() {
   pkgdesc='Embedded PHP SAPI library'
-  depends=("${pkgbase}")
+  depends=("${pkgbase}" 'libnsl')
   provides=("${_pkgbase}-embed=$pkgver")
 
   install -D -m755 ${srcdir}/build-embed/libs/libphp5.so ${pkgdir}/usr/lib/libphp56.so
@@ -358,7 +365,7 @@ package_php56-phpdbg() {
 
 package_php56-dblib() {
   pkgdesc='dblib module for PHP'
-  depends=("${pkgbase}")
+  depends=("${pkgbase}" 'freetds')
   provides=("${_pkgbase}-dblib=$pkgver")
 
   install -D -m755 ${srcdir}/build-php/modules/pdo_dblib.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_dblib.so
