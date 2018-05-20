@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Valsu [arch(at)hylia.de]
 
