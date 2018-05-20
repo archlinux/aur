@@ -1,16 +1,16 @@
 pkgbase = pixelserv-tls
 	pkgdesc = A tiny bespoke webserver for adblock with HTTP/1.1 and HTTPS support
-	pkgver = 2.0.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://kazoo.ga/pixelserv-tls/
 	install = pixelserv-tls.install
 	arch = any
 	license = GPL3
 	depends = openssl>=1.0.2
-	source = pixelserv-tls-2.0.1.tar.gz::https://github.com/kvic-z/pixelserv-tls/archive/v2.0.1.tar.gz
+	source = pixelserv-tls-2.1.1.tar.gz::https://github.com/kvic-z/pixelserv-tls/archive/2.1.1.tar.gz
 	source = pixelserv-ca-init.sh
 	source = pixelserv-tls.service
-	md5sums = 2cfb68b4e0bb24ba91595a913f61261a
+	md5sums = 40383879bab0c7fe8450b50e0525b636
 	md5sums = d53cf6340558d14eeb586a1129a87e9d
 	md5sums = fdb5a9de023c250a3e0d3712a836ca1e
 

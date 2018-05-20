@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@protornmail.com>
 pkgname=pixelserv-tls
-pkgver=2.0.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A tiny bespoke webserver for adblock with HTTP/1.1 and HTTPS support"
 arch=('any')
@@ -9,13 +9,14 @@ license=('GPL3')
 depends=('openssl>=1.0.2')
 install="$pkgname.install"
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/kvic-z/pixelserv-tls/archive/v$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://github.com/kvic-z/pixelserv-tls/archive/$pkgver.tar.gz"
 	"pixelserv-ca-init.sh"
 	"pixelserv-tls.service")
 md5sums=(
-	'2cfb68b4e0bb24ba91595a913f61261a'
+	'40383879bab0c7fe8450b50e0525b636'
 	'd53cf6340558d14eeb586a1129a87e9d'
 	'fdb5a9de023c250a3e0d3712a836ca1e')
+
 
 build() {
 	cd "$pkgname-$pkgver"
