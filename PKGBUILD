@@ -1,7 +1,7 @@
 # Maintainer: Ákos Uzonyi <uzonyi.akos@gmail.com>
 pkgname=circuit-simulator
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Electronic circuit simulator written by Paul Falstad"
 arch=("any")
 url="http://www.falstad.com/circuit-java"
