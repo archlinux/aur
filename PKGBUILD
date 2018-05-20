@@ -4,10 +4,11 @@
 # Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: ice-man <icemanf@gmail.com>
+# Contributor: codyps <archlinux@codyps.com>
 
 pkgname=aircrack-ng-git
 _pkgname=aircrack-ng
-pkgver=20180422.237e361c
+pkgver=20180518.e9430e64
 pkgrel=1
 pkgdesc='WiFi security auditing tools suite'
 url='https://aircrack-ng.org/'
@@ -31,7 +32,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	autoreconf -i
-	./configure --with-experimental --with-ext-scripts
+	./configure --with-experimental --with-ext-scripts --prefix=/usr --sbindir=/usr/bin
 	make
 }
 
@@ -39,9 +40,6 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	make \
 		DESTDIR="${pkgdir}" \
-		sbindir=/usr/bin \
-		prefix=/usr \
-		etcdir=/etc \
 		install
 }
 

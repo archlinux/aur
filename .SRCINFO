@@ -1,6 +1,6 @@
 pkgbase = aircrack-ng-git
 	pkgdesc = WiFi security auditing tools suite
-	pkgver = 20180422.237e361c
+	pkgver = 20180518.e9430e64
 	pkgrel = 1
 	url = https://aircrack-ng.org/
 	arch = i686
