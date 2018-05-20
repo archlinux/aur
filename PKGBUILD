@@ -3,7 +3,7 @@
 
 _gemname=taffy
 pkgname=$_gemname
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A command-line audio tagging tool'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('cd2a175f7571261c705ba2a52f689bb52fd901ed')
+sha1sums=('0d96f880967ac92c52b336b3ca5dcf28b1815474')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
