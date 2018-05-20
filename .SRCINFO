@@ -1,12 +1,13 @@
 pkgbase = svgcleaner-bin
 	pkgdesc = SVG Cleaner CLI and the main GUI.
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RazrFalcon/svgcleaner-gui
 	arch = x86_64
 	license = GPL
 	depends = qt5-base
 	depends = qt5-svg
+	depends = p7zip
 	provides = svgcleaner
 	provides = svgcleaner-gui
 	conflicts = svgcleaner
