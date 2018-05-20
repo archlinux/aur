@@ -52,9 +52,9 @@ pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=4.16
 _srcname=linux-${_major}
-_minor=9
+_minor=10
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -386,7 +386,7 @@ done
 
 sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2d06317dc1683c51a472a9a631573a9b1e7258d6281a2ee189897827f14662'
             'SKIP'
-            'd3a26957b13ba6e7e9488991cbdfe4ac20112efccbd3ed6a5c786e344731561323ec3d36e0b163debcbdcc33a8c7c545ee755b33e14c8d10e0ce3e27d90ac109'
+            '53d700ca245341cd6493ecd01af069b2015564c9d7514751348e57047838bb1a6379f065dcf21312cf8f861f5569d28e7445846b40d14c225c644a69c09da5d1'
             'SKIP'
             'a0f37a9b8dbd11f8ef4450b06afee0a6e5519cb5a5cd78f84896812b007ef645bcb9c733ae9817c24d1f4a4c2114258015abceb5a94c7e08d2bb00531a6f04c7'
             'ab962157c2c20faf0bd164a82c2e28ce35fd581d640409ae6419dc2a64c82b7f49e7215149de0bc028dd3d517434160d68127b05137f6b6611641cc871f6c76e'
