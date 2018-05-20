@@ -23,25 +23,22 @@ prepare() {
 
     # Depending on the architecture, in order to accelerate the build process,
     # removes the compilation of ia32 or x64 build.
-    case "$CARCH" in
-        i686)
-            sed -i 's/build --linux --x64 --ia32/build --linux --ia32/g' package.json
-            ;;
-        x86_64)
-            sed -i 's/build --linux --x64 --ia32/build --linux --x64/g' package.json
-            ;;
-    esac
+    if [[ "$CARCH" == x86_64 ]];then
+        sed -i 's/--ia32//g' package.json
+    else
+        sed -i 's/--x64//g' package.json
+    fi
 
     # Reduce build time by removing the creation of a .deb for Debian
-    sed -i -e '/^[[:space:]]*"target": \[/!b' -e '$!N;s/\n[[:space:]]*"deb",//' electron-builder.json
-    # No need to compress package
+    sed -i -e '/"deb",/d' electron-builder.json
+    # No need to compress the package
     sed -i 's/tar.gz/dir/' electron-builder.json
 }
 
 build() {
     cd "${srcdir}/desktop-${pkgver}"
 
-    # Hack for bug https://github.com/npm/npm/issues/19989
+    # Hack (npm bug? https://github.com/npm/npm/issues/19989)
     {
         npm install --cache "${srcdir}/npm-cache"
     } || {
