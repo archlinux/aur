@@ -1,16 +1,16 @@
 diff --git a/configs/mx53loco_defconfig b/configs/mx53loco_defconfig
-index b431c89..1c1a8f6 100644
+index 3fba84c..813b517 100644
 --- a/configs/mx53loco_defconfig
 +++ b/configs/mx53loco_defconfig
-@@ -31,3 +31,6 @@ CONFIG_USB_ETHER_MCS7830=y
- CONFIG_USB_ETHER_SMSC95XX=y
+@@ -29,3 +29,6 @@ CONFIG_USB_ETHER_SMSC95XX=y
+ CONFIG_VIDEO=y
  # CONFIG_VIDEO_SW_CURSOR is not set
  CONFIG_OF_LIBFDT=y
 +CONFIG_CMD_PART=y
 +CONFIG_PARTITION_UUIDS=y
 +CONFIG_IDENT_STRING="\nMX53loco Arch Linux ARM"
 diff --git a/include/configs/mx53loco.h b/include/configs/mx53loco.h
-index 45b9bbf..97e64cc 100644
+index e973b35..341e5ef 100644
 --- a/include/configs/mx53loco.h
 +++ b/include/configs/mx53loco.h
 @@ -84,14 +84,15 @@
