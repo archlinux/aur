@@ -1,6 +1,6 @@
 pkgbase = kaggle-api
 	pkgdesc = Kaggle API CLI
-	pkgver = 1.3.6
+	pkgver = 1.3.8
 	pkgrel = 1
 	url = http://kaggle.com/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = kaggle-api
 	depends = python-six
 	depends = python-certifi
 	depends = python-dateutil
-	source = https://github.com/Kaggle/kaggle-api/archive/6b7efc1215f5c535e91d1f111b9b0c65b9e826a2.tar.gz
-	md5sums = 1fb6e0924475beba1b369c13d8121163
+	source = https://github.com/Kaggle/kaggle-api/archive/b5f4400dae4996f6b9b89344b7ccff70273f398f.tar.gz
+	md5sums = d642dc40ad7996403e8c688059de78cf
 
 pkgname = kaggle-api
 
