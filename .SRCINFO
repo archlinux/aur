@@ -1,0 +1,26 @@
+pkgbase = liri-networkmanager-git
+	pkgdesc = Network Manager integration for Liri
+	pkgver = 20180519.19.1202dda
+	pkgrel = 1
+	url = https://liri.io
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = liri-git
+	license = GPL3
+	makedepends = git
+	makedepends = liri-qbs-shared-git
+	depends = fluid-git
+	depends = networkmanager-qt
+	depends = modemmanager-qt
+	provides = liri-networkmanager
+	conflicts = liri-networkmanager
+	replaces = liri-networkmanager
+	options = debug
+	options = !strip
+	source = shell::git://github.com/lirios/networkmanager.git#branch=develop
+	md5sums = SKIP
+
+pkgname = liri-networkmanager-git
+
