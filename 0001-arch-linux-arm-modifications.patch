@@ -1,19 +1,19 @@
 diff --git a/configs/mx53loco_defconfig b/configs/mx53loco_defconfig
-index a7a4813..48f203e 100644
+index b431c89..1c1a8f6 100644
 --- a/configs/mx53loco_defconfig
 +++ b/configs/mx53loco_defconfig
-@@ -23,3 +23,6 @@ CONFIG_USB=y
- CONFIG_USB_STORAGE=y
+@@ -31,3 +31,6 @@ CONFIG_USB_ETHER_MCS7830=y
+ CONFIG_USB_ETHER_SMSC95XX=y
  # CONFIG_VIDEO_SW_CURSOR is not set
  CONFIG_OF_LIBFDT=y
 +CONFIG_CMD_PART=y
 +CONFIG_PARTITION_UUIDS=y
 +CONFIG_IDENT_STRING="\nMX53loco Arch Linux ARM"
 diff --git a/include/configs/mx53loco.h b/include/configs/mx53loco.h
-index 7cd750c..a2b3217 100644
+index 45b9bbf..97e64cc 100644
 --- a/include/configs/mx53loco.h
 +++ b/include/configs/mx53loco.h
-@@ -92,14 +92,15 @@
+@@ -84,14 +84,15 @@
  	"ip_dyn=yes\0" \
  	"mmcdev=0\0" \
  	"mmcpart=1\0" \
@@ -33,19 +33,7 @@ index 7cd750c..a2b3217 100644
  	"mmcboot=echo Booting from mmc ...; " \
  		"run mmcargs; " \
  		"if test ${boot_fdt} = yes || test ${boot_fdt} = try; then " \
-@@ -143,12 +144,28 @@
- 
- #define CONFIG_BOOTCOMMAND \
- 	"mmc dev ${mmcdev}; if mmc rescan; then " \
-+		"setenv devtype mmc; " \
-+		"setenv devnum ${mmcdev}; " \
-+		"setenv part ${mmcpart}; " \
-+		"setenv fdtfile ${fdt_file}; " \
-+		"setenv kernel_addr_r ${loadaddr}; " \
-+		"setenv fdt_addr_r ${fdt_addr}; " \
-+		"setenv console ttymxc0,${baudrate}; " \
- 		"if run loadbootscript; then " \
- 			"run bootscript; " \
+@@ -140,7 +141,16 @@
  		"else " \
  			"if run loadimage; then " \
  				"run mmcboot; " \
