@@ -38,6 +38,51 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
+
+  # Set environment
+  msg2 "Assessing Java build environment"
+  unset JAVA_HOME
+
+  # test for openjdk, fall back on other jdks if not found
+  # Take the highest sorted version (alpahumericly,head -1)
+  _openjdk=$(ls /usr/lib/jvm/java-8-openjdk/bin/javac 2>/dev/null | cut -d "/" -f-5)
+  _openjdk_jetbeans=$(ls /usr/lib/jvm/java-8-openjdk-jetbrains/bin/javac 2>/dev/null | cut -d "/" -f-5)
+  _oraclejdk=$(ls /usr/lib/jvm/java-8-jdk/bin/javac 2>/dev/null | cut -d "/" -f-5)
+
+  if (( $(archlinux-java get | cut -d "-" -f2) != 8 )) || [[ ! -f /usr/bin/javac ]]; then
+
+    if [[ "${_openjdk}" ]]; then
+      # choose the first one available
+      msg2 "Using OpenJDK for build"
+      export JAVA_HOME="${_openjdk[0]}"
+
+    elif [[ "${_oraclejdk}" ]]; then
+      msg2 "Using Oracle JDK for build"
+      export JAVA_HOME=$(ls /usr/lib/jvm/java-8-jdk*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+
+    elif [[ "${_openjdk_jetbrains}" ]]; then
+      msg2 "Using Jetbrains for build"
+      export JAVA_HOME=$(ls /usr/lib/jvm/java-8-jdk-jetbrains*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+
+    else
+      # fall back to other JDKs
+      export JAVA_HOME=$(ls /usr/lib/jvm/java-8-jdk*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+      msg2 "Using JDK $JAVA_HOME"
+    fi
+
+  else
+
+    msg2 "Default Java JDK set is of verison 8, proceeding..."
+    msg2 "Using: $(archlinux-java get)"
+    export JAVA_HOME="/usr/lib/jvm/default"
+
+  fi
+
+  if [[ ! "${JAVA_HOME}" ]]; then
+    msg2 "ERROR: Could not find a proper java build environment. Exiting"
+    exit 1
+  fi
+
   mvn package
 }
 
