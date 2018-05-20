@@ -1,0 +1,16 @@
+pkgbase = consoletype
+	pkgdesc = print type of the console connected to standard input
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://packages.gentoo.org/packages/sys-apps/gentoo-functions
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = gcc
+	makedepends = git
+	source = git+https://github.com/gentoo/gentoo-functions
+	sha256sums = SKIP
+
+pkgname = consoletype
+
