@@ -4,7 +4,7 @@
 
 _target="sh3eb-elf"
 pkgname=${_target}-gcc
-pkgver=7.3.0
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ url="http://gcc.gnu.org"
 depends=("${_target}-binutils" 'libmpc' 'elfutils')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
 source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
-sha256sums=('832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c')
+sha256sums=('1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153')
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver}"
