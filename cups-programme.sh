@@ -459,5 +459,6 @@ log_local "Removing ${tmpfile}."
 rm -f "${tmpfile}"
 
 info "End of $0 run."
+log_cups ''
 
 exit "${cmd_exitcode}"

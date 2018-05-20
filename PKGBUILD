@@ -4,7 +4,7 @@
 _pkgname=cups-print-to-programme
 pkgname="${_pkgname}"
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Print filter for cups which prints to a file (type: ) and opens that with a programme the user can choose in the settings. For example, print to gimp."
 arch=('any')
 depends=(
@@ -34,7 +34,7 @@ optdepends=(
 provides=("${_pkgname}-doc=${pkgver}")
 backup=('etc/cups/cups-programme.conf')
 sha256sums=(
- '32015b7b1014003678c5e44da4a75211d6629c87596c5c338a9255a41de82260'
+ '3d5116b2cf83c1b4057f5d2081d598446225531a32424ba70a1d148d835b9853'
  'e7cb6af420fb7fdfa860a94480ddd75d89033f1f66c9b0489719e525a2b4c0cc'
  '31f6a2fd3d34dde35415681450057c5c8a730df8b1f015989018696ccd22cd3b'
  '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
