@@ -1,8 +1,8 @@
 # Maintainer: Nicolas Stinus <nicolas.stinus@gmail.com>
 
 pkgname=openvpn-nordvpn
-pkgver=0.1.32
-pkgrel=2
+pkgver=0.1.34
+pkgrel=1
 pkgdesc="OpenVPN helper script for nordvpn.com"
 arch=(any)
 url="https://github.com/nstinus/nordvpn"
@@ -19,10 +19,11 @@ depends=('openvpn'
 optdepends=('iputils: run ping and rank functions'
             'vpnfailsafe-git: use instead of update-resolv-conf if available'
             'python-pandas: run nordvpn infos command'
-            'bash-completion: auto-complete commands')
+            'bash-completion: auto-complete commands'
+            'jq: pick recommended server for "start" command')
 makedepends=('coreutils' 'asciidoc')
 provides=('nordvpn')
-source=("git+https://github.com/nstinus/nordvpn.git#commit=${NORDVPN_COMMIT:-v0.1-32-g3654c4f}")
+source=("git+https://github.com/nstinus/nordvpn.git#commit=${NORDVPN_COMMIT:-v0.1-34-gdaf5ff0}")
 sha1sums=('SKIP')
 install=${pkgname}.install
 
