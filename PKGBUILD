@@ -28,7 +28,6 @@ package() {
   rm -rf "$pkgdir/usr/share/icons/$pkgname-$pkgver/.git"
   rm -rf "$pkgdir/usr/share/icons/$pkgname-$pkgver/.github"
   rm -rf "$pkgdir/usr/share/icons/$pkgname-$pkgver/.product"
-  rm -rf "$pkgdir/usr/share/icons/$pkgname-$pkgver/configure"
 }
 
 # vim: ts=2 sw=2 et:
