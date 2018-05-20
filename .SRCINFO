@@ -1,5 +1,5 @@
 pkgbase = masterpdfeditor4
-	pkgdesc = A complete solution for creation and editing PDF files
+	pkgdesc = A complete solution for creation and editing PDF files - v4 (latest without watermarks in free version)
 	pkgver = 4.3.89
 	pkgrel = 1
 	url = https://code-industry.net/free-pdf-editor/
