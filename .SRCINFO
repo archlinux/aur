@@ -1,17 +1,16 @@
 pkgbase = omnikey_ifdokccid
-	pkgdesc = CCID driver for HID Global OMNIKEY CardMan Smartcard reader series
-	pkgver = 4.2.8
-	pkgrel = 1
+	pkgdesc = PCSC driver for OMNIKEY 1021, 3x21, 6121,512x, 532x
+	pkgver = 4.3.2
+	pkgrel = 3
 	url = http://www.hidglobal.com/
 	arch = i686
 	arch = x86_64
-	license = unknown
+	license = custom:HID_OK_Drivers_EULA
 	depends = libusb
 	depends = pcsclite
-	source_i686 = http://www.hidglobal.com/sites/hidglobal.com/files/drivers/ifdokccid_linux_i686-v4.2.8.tar.gz
-	md5sums_i686 = 36d4c303a44a86f18cc43ccdca94ba78
-	source_x86_64 = http://www.hidglobal.com/sites/hidglobal.com/files/drivers/ifdokccid_linux_x86_64-v4.2.8.tar.gz
-	md5sums_x86_64 = 53981b212d47b5ccbd5906c302401bbe
+	conflicts = omnikey_ifdokccid-git
+	source = https://www.hidglobal.com/sites/default/files/drivers/ifdokccid_linux_v.4.3.2-1-d2622a7fbea0.tar.gz
+	md5sums = 11b6bedbe2d7578c17ccfc7fd58f5059
 
 pkgname = omnikey_ifdokccid
 
