@@ -9,8 +9,8 @@ pkgdesc="An XEP-0357: Push Notifications app server that relays push messages be
 arch=('any')
 url="https://github.com/iNPUTmice/p2"
 license=('BSD')
-makedepends=('git' 'maven' 'java-environment')
-depends=('java-runtime')
+makedepends=('git' 'maven' 'java-environment=8')
+depends=('java-runtime=8')
 
 backup=(
   'etc/p2.conf'
