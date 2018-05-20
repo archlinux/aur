@@ -1,11 +1,12 @@
 # Maintainer: Tilman BLUMENBACH <tilman+aur AT ax86 DOT net>
 
 pkgname=barrier
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Open-source KVM software based on Synergy"
 url="https://github.com/debauchee/barrier"
 license=("custom:GPL2WithOpenSSLException")
+changelog=CHANGELOG.rst
 source=("https://github.com/debauchee/barrier/archive/v${pkgver?}.tar.gz")
 arch=(x86_64)
 depends=(curl libx11 libxrandr libxext libxinerama xorgproto libxtst libxi avahi libsm libice openssl qt5-base
@@ -45,4 +46,4 @@ package() {
     install -m 644 doc/barrier.conf* "${pkgdir?}/usr/share/doc/${pkgname?}"
 }
 
-sha256sums=('4f37acfa6ec61bb4431b75ef4d7cb226c7aa9800a1d78fa1158c4ef461873af3')
+sha256sums=('775d504db6091c4dc479657fc4fc566ceb9893426664ae60c9a2bb198b562774')
