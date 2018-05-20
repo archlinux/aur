@@ -2,14 +2,14 @@
 pkgname=bilibili-live-helper
 entryname="Bilibili Live Helper"
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Helper for Bilibili Live."
 arch=('x86_64')
 url="https://github.com/pandaGao/bilibili-live-helper"
 install=${pkgname}.install
 license=('MIT')
 depends=('libxtst' 'gtk2' 'libxss' 'nss' 'gconf' 'alsa-lib')
-makedepends=('unzip')
+makedepends=('bsdtar')
 conflicts=('bilibili-live-helper-git')
 provides=('bilibili-live-helper')
 source=("http://s2.danmaku.live/${pkgname}-linux-v${pkgver}.zip" "${entryname}.desktop" "${pkgname}.ico")
@@ -18,6 +18,8 @@ md5sums=('SKIP' 'SKIP' 'SKIP')
 build() {
 	cd ${srcdir}
 	mv Bilibili直播弹幕库-linux-x64 ${pkgname}
+	cd ${pkgname}
+	mv Bilibili直播弹幕库 bilibili-live-helper
 }
 
 package() {
