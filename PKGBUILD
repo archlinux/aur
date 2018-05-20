@@ -2,16 +2,16 @@
 # Contributor: Jiří Prokop <jprokop@synaptiko.cz>
 
 pkgname=chromium-runner
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Run a Chromium profile or application"
+pkgdesc="Run a Chromium profile"
 arch=(any)
 url="https://github.com/synaptiko/chromium-runner"
 license=('BSD')
 depends=('chromium' 'fzf' 'nodejs' 'npm')
 provides=('chromium-runner' 'chromium-runner-rofi')
 source=("https://github.com/synaptiko/chromium-runner/archive/v${pkgver}.tar.gz")
-sha256sums=('eff74856154ad87e761268801b0479670e68fb2d43a1fc497783d659bedafd73')
+sha256sums=('48f02fbbed07343bacd5668bc7ee0c42a45df37a592236754a1d0a2593b6609b')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"

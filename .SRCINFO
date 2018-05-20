@@ -1,6 +1,6 @@
 pkgbase = chromium-runner
-	pkgdesc = Run a Chromium profile or application
-	pkgver = 0.1.0
+	pkgdesc = Run a Chromium profile
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/synaptiko/chromium-runner
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = chromium-runner
 	depends = npm
 	provides = chromium-runner
 	provides = chromium-runner-rofi
-	source = https://github.com/synaptiko/chromium-runner/archive/v0.1.0.tar.gz
-	sha256sums = eff74856154ad87e761268801b0479670e68fb2d43a1fc497783d659bedafd73
+	source = https://github.com/synaptiko/chromium-runner/archive/v0.2.0.tar.gz
+	sha256sums = 48f02fbbed07343bacd5668bc7ee0c42a45df37a592236754a1d0a2593b6609b
 
 pkgname = chromium-runner
 
