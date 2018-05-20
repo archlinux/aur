@@ -1,7 +1,7 @@
 pkgbase = pakku
 	pkgdesc = Pacman wrapper with AUR support
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kitsunyan/pakku
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,9 @@ pkgbase = pakku
 	depends = git
 	backup = etc/pakku.conf
 	source = https://github.com/kitsunyan/pakku/releases/download/v0.12/pakku-0.12.tar.xz
+	source = 0001-Specify-refspec-when-git-fetch-is-used.patch
 	sha256sums = 73dc0da6bb36a9aa211b2e562d08d6cc60ab37ed527348f5d075df7aeac0e35c
+	sha256sums = 4987262977ab82fb86a3c02c6c8388c01d6744a0f4bedb794be2bbce23b99748
 
 pkgname = pakku
 

@@ -1,0 +1,72 @@
+From 5b5aa7c3968a4e36763edeb7d50b105a9248b39e Mon Sep 17 00:00:00 2001
+From: kitsunyan <`echo a2l0c3VueWFuQGFpcm1haWwuY2MK | base64 -d`>
+Date: Sun, 20 May 2018 20:08:41 +0300
+Subject: [PATCH] Specify refspec when git fetch is used
+
+---
+ src/common.nim | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/src/common.nim b/src/common.nim
+index ca6d8c9..8518ded 100644
+--- a/src/common.nim
++++ b/src/common.nim
+@@ -448,8 +448,8 @@ proc reloadPkgInfos*(config: Config, path: string, pkgInfos: seq[PackageInfo]):
+ template bareFullName*(bareKind: BareKind, bareName: string): string =
+   $bareKind & "-" & bareName & ".git"
+ 
+-proc cloneBareRepo(config: Config, bareKind: BareKind, bareName: string, url: string,
+-  dropPrivileges: bool): Option[string] =
++proc cloneBareRepo(config: Config, bareKind: BareKind, bareName: string,
++  url: string, branchOption: Option[string], dropPrivileges: bool): Option[string] =
+   let fullName = bareFullName(bareKind, bareName)
+   let cachePath = config.userCache(dropPrivileges).cache(CacheKind.repositories)
+   let repoPath = repoPath(cachePath, fullName)
+@@ -457,9 +457,12 @@ proc cloneBareRepo(config: Config, bareKind: BareKind, bareName: string, url: st
+   if forkWait(() => (block:
+     if not dropPrivileges or dropPrivileges():
+       if existsDir(repoPath):
+-        execResult(gitCmd, "-C", repoPath, "fetch", "-q", "--no-tags")
++        let branch = branchOption.get("master")
++        execResult(gitCmd, "-C", repoPath, "fetch", "-q", "--no-tags",
++          "origin", branch & ":" & branch)
+       else:
+-        execResult(gitCmd, "-C", cachePath, "clone", "-q", "--bare", "--no-tags", url, fullName)
++        execResult(gitCmd, "-C", cachePath, "clone", "-q", "--bare", "--no-tags",
++          url, fullName)
+     else:
+       quit(1))) == 0:
+     some(repoPath)
+@@ -474,7 +477,7 @@ proc cloneBareRepos*(config: Config, bareKind: BareKind, gitRepos: seq[GitRepo],
+   else:
+     let bare = gitRepos
+       .filter(t => t.bareName.isSome)
+-      .map(r => (r.bareName.unsafeGet, r.url))
++      .map(r => (r.bareName.unsafeGet, r.url, r.branch))
+       .deduplicate
+ 
+     proc cloneNext(index: int, messages: List[string]): seq[string] =
+@@ -483,8 +486,8 @@ proc cloneBareRepos*(config: Config, bareKind: BareKind, gitRepos: seq[GitRepo],
+       if index >= bare.len:
+         toSeq(messages.reversed.items)
+       else:
+-        let (bareName, url) = bare[index]
+-        let repoPath = cloneBareRepo(config, bareKind, bareName, url, dropPrivileges)
++        let (bareName, url, branch) = bare[index]
++        let repoPath = cloneBareRepo(config, bareKind, bareName, url, branch, dropPrivileges)
+         if repoPath.isSome:
+           cloneNext(index + 1, messages)
+         else:
+@@ -644,7 +647,8 @@ proc cloneAurRepo*(config: Config, base: string, gitUrl: string,
+     let cloneBareCode = forkWait(() => (block:
+       if not dropPrivileges or dropPrivileges():
+         if existsDir(bareRepoPath):
+-          execResult(gitCmd, "-C", bareRepoPath, "fetch", "-q", "--no-tags")
++          execResult(gitCmd, "-C", bareRepoPath, "fetch", "-q", "--no-tags",
++            "origin", "master:master")
+         else:
+           execResult(gitCmd, "-C", cachePath, "clone", "-q", "--bare", "--no-tags",
+             gitUrl, "--single-branch", fullName)
+-- 
+2.17.0
+
