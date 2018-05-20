@@ -1,6 +1,7 @@
 # Maintainer: Ivan Semkin (ivan at semkin dot ru)
 
 pkgname=nvidia-docker-bin
+_pkgname=nvidia-docker
 pkgver=2.0.3
 pkgrel=2
 pkgdesc='Build and run Docker containers leveraging NVIDIA GPUs'
@@ -16,7 +17,7 @@ package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/etc/docker"
   
-  install -m755 "${srcdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -m755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -m644 "${srcdir}/etc/docker/daemon.json" "${pkgdir}/etc/docker/daemon.json"
 }
 # vim:set ts=2 sw=2 et:
