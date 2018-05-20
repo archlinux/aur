@@ -1,0 +1,18 @@
+pkgbase = rshijack-git
+	pkgdesc = TCP connection hijacker, rust rewrite of shijack
+	pkgver = 0.3.0.r0.g602a08b
+	pkgrel = 1
+	url = https://github.com/kpcyrd/rshijack
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL3
+	makedepends = cargo
+	depends = gcc-libs
+	provides = rshijack
+	conflicts = rshijack
+	source = git+https://github.com/kpcyrd/rshijack.git
+	sha512sums = SKIP
+
+pkgname = rshijack-git
+
