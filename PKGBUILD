@@ -13,7 +13,7 @@ noextract=("AstroImageJ_v${pkgver}_${_reldate}_linux.tar.gz")
 source=("${url}/installation_packages/AstroImageJ_v${pkgver}_${_reldate}_linux.tar.gz"
         "aij")
 sha1sums=('22938e075cd72604db1e1c732286002503a957bf'
-         '0e9c9bfdcef5a076176126551f36807b3beb321d')
+         'a09026bbb1c482dfb28651c1163c3e574c23a838')
 
 package() {
 	

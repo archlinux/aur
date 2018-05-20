@@ -10,7 +10,7 @@ pkgbase = astroimagej
 	source = http://www.astro.louisville.edu/software/astroimagej//installation_packages/AstroImageJ_v3.2.0_20160201_linux.tar.gz
 	source = aij
 	sha1sums = 22938e075cd72604db1e1c732286002503a957bf
-	sha1sums = 0e9c9bfdcef5a076176126551f36807b3beb321d
+	sha1sums = a09026bbb1c482dfb28651c1163c3e574c23a838
 
 pkgname = astroimagej
 
