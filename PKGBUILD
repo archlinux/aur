@@ -17,7 +17,7 @@ install=openclonk.install
 makedepends=('cmake' 'boost' 'mesa')
 provides=('openclonk')
 conflicts=('clonk_rage' 'openclonk' 'openclonk-music')
-source=("$pkgname::git+https://git.openclonk.org/openclonk.git#branch=master")
+source=("$pkgname::git+https://github.com/openclonk/openclonk#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
