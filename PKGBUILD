@@ -1,7 +1,8 @@
+# $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=gnome-shell-extension-workspaces-to-dock-git
-pkgver=44_3.26.r0.g5235dd2
+pkgver=45_3.28.r22.g8b053f2
 pkgrel=1
 pkgdesc="Gnome shell extension, Workspaces to Dock, Transform Gnome Shell's overview workspaces into an intelligent dock."
 arch=('any')
