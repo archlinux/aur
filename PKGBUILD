@@ -1,21 +1,22 @@
-# Maintainer: Aleksandar Trifunović <akstrfn@gmail.com>
-# Contributor: William Gathoye <william at gathoye dot be>
+# Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
+# Maintainer: William Gathoye <william at gathoye dot be>
 # Contributor: Jan Was <janek dot jan at gmail dot com>
 
 pkgname=mattermost-desktop
-pkgver=4.0.1
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Mattermost Desktop application for Linux (Beta)"
 arch=('i686' 'x86_64')
-
 url="https://github.com/mattermost/desktop"
 license=('Apache')
-
-depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'alsa-lib')
-makedepends=('npm' 'gendesk' 'graphicsmagick' 'git')
-
-source=("https://github.com/mattermost/desktop/archive/v${pkgver}.tar.gz")
-sha512sums=('24385373b2f87b2f51f80bf000f774638983ce4d61fbde1e4f4145a0bddd7cc5aa22ba4785065b60b67920a56c3539716560bee7a6f303d203967b260c9d94f6')
+depends=('electron')
+makedepends=('npm' 'git')
+source=("https://github.com/mattermost/desktop/archive/v${pkgver}.tar.gz"
+        "$pkgname.sh"
+        "Mattermost.desktop")
+sha512sums=('0a31dbbaca5b8bf22ee18fd08081546886f4b061b320b89bc59e31038a0465b6a44d62658f34af0bf2dc92630a4bcbee1bed11daaea8d5045d6a8786cbdba462'
+            'c766a3522c5d2a5ecc9a4ded351147a87fbaaa6af1c2f6e8068baf8239ceb4299e98b81e9e51fd972ab09ed36843565c8b82f8819a949ba1d82ca78631f9f5fc'
+            '5fc51cd6ee2e77a8e40736612a23e38b4649f4a2cc45f90f92fae73c396ee9d74dc5e743773fc376b52b268b482a2449212616fb4864fd79dca507d34b45c6a9')
 
 prepare() {
     cd "${srcdir}/desktop-${pkgver}"
@@ -33,23 +34,21 @@ prepare() {
 
     # Reduce build time by removing the creation of a .deb for Debian
     sed -i -e '/^[[:space:]]*"target": \[/!b' -e '$!N;s/\n[[:space:]]*"deb",//' electron-builder.json
-
-    # Generate a desktop entry
-    # -f: forces and overrides the file if any
-    # -n: do not download an icon
-    # This tool assumes the icon has the same name as pkgname.
-    # For categories see https://standards.freedesktop.org/menu-spec/latest/apa.html
-    gendesk -f -n \
-        --pkgname "$pkgname" \
-        --pkgdesc "Open source, private cloud Slack-alternative" \
-        --name "Mattermost Desktop (Beta)" \
-        --exec "/usr/lib/mattermost/mattermost-desktop" \
-        --categories "Network;Chat;InstantMessaging;VideoConference;GTK"
+    # No need to compress package
+    sed -i 's/tar.gz/dir/' electron-builder.json
 }
 
 build() {
     cd "${srcdir}/desktop-${pkgver}"
-    npm install --cache "${srcdir}/npm-cache"
+
+    # Hack for bug https://github.com/npm/npm/issues/19989
+    {
+        npm install --cache "${srcdir}/npm-cache"
+    } || {
+        npm install --cache "${srcdir}/npm-cache"
+    } || {
+        npm install --cache "${srcdir}/npm-cache" 
+    }
     npm run build --cache "${srcdir}/npm-cache"
     npm run package:linux --cache "${srcdir}/npm-cache"
 }
@@ -58,14 +57,14 @@ package() {
     cd "${srcdir}/desktop-${pkgver}"
 
     install -d -m 755 "${pkgdir}"/usr/lib
-    cp -r release/linux*unpacked "$pkgdir/usr/lib/mattermost"
+    cp -r release/linux*unpacked/resources "$pkgdir/usr/lib/mattermost-desktop"
 
     install -d -m 755 "$pkgdir/usr/bin"
-    ln -s /usr/lib/mattermost/mattermost-desktop "$pkgdir/usr/bin/mattermost-desktop"
+    install -D -m 755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/mattermost-desktop"
 
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$pkgdir/usr/lib/mattermost/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm644 "$srcdir"/Mattermost.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "$srcdir/desktop-$pkgver/release/linux-unpacked/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
