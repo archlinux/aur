@@ -15,6 +15,9 @@
 #define COLS_SPACING 12
 #define DAYS_TO_BUSINESS_DAYS_RATIO (29.0/20.0)
 
+#define RED COLOR_PAIR(1)
+#define BLACK COLOR_PAIR(2)
+
 #include <stdlib.h>
 #include <ncurses.h>
 #include "api.h"

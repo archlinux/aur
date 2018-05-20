@@ -4,12 +4,12 @@ int zoom_months[] = {60, 48, 36, 24, 12, 9, 6, 3, 1}, zoom_change_x_months[] = {
 
 void graph_main(const char* symbol, const char* symbol2) {
     initscr();
-    if (symbol2 != NULL && !has_colors()) { // compare command will use two colors to differentiate, so color must
-        endwin();                           // be supported. Must endwin() before puts()
+    if (!has_colors()) { // compare command will use two colors to differentiate, so color must
+        endwin();        // be supported. Must endwin() before puts()
         RET_MSG("Your terminal does not support color.");
     }
 
-    puts("Loading data...");
+    printw("Loading data...");
     double* price_data = api_get_hist_5y(symbol), * price_data2 = NULL;
     if (price_data == NULL) { // If invalid symbol or cryptocurrency
         endwin();
@@ -28,6 +28,11 @@ void graph_main(const char* symbol, const char* symbol2) {
     noecho(); // Don't echo keystrokes
     keypad(stdscr, TRUE); // Enables extra keystrokes
     curs_set(0); // Hides cursor
+    start_color(); // Enable colors for comparison
+    init_pair(1, COLOR_RED, COLOR_BLACK); // Init color red
+    init_pair(2, COLOR_WHITE, COLOR_BLACK); // Init black background, white foreground
+    bkgd(BLACK); // set background/foreground
+    refresh(); // flush
 
     time_t now = time(NULL);
     struct tm today_date = *localtime(&now), start_date = today_date, furthest_back_date = today_date, end;
@@ -45,8 +50,6 @@ void graph_main(const char* symbol, const char* symbol2) {
         price_data = graph_fill_empty(price_data, total_data_points, trading_days);
 
     if (symbol2 != NULL) {
-        start_color(); // Enable colors for comparison
-        init_pair(1, COLOR_RED, COLOR_BLACK); // Init color red
         for (int i = 0; price_data2[i] != '\0'; i++)
             total_data_points2++;
         if (trading_days - total_data_points2 > 0)
@@ -151,9 +154,9 @@ void graph_print(const double* points, const double* points2, struct tm* start_t
         if (i % ROWS_SPACING == 0) // Print y-axis price labels with width 10
             printw("%9.2lf ", (max - ((rows - i) * line_diff)));
         else if (points2 != NULL && (i - 1) % ROWS_SPACING == 0) { // Print comparison price label above
-            attron(COLOR_PAIR(1));
+            attron(RED);
             printw("%9.2lf ", (max2 - ((rows - i) * line_diff2)));
-            attroff(COLOR_PAIR(1));
+            attroff(RED);
         } else printw("          "); // Indent width 10 otherwise
 
         for (int j = 0; j < cols; j++) {
@@ -165,9 +168,9 @@ void graph_print(const double* points, const double* points2, struct tm* start_t
                 addch(ACS_DIAMOND); // Print diamond if close price is within line_diff
             else if (points2 != NULL && day_close2 <= (max2 - ((rows - i) * line_diff2)) &&
                      day_close2 > (min2 + ((i - 1) * line_diff2))) {
-                attron(COLOR_PAIR(1));
+                attron(RED);
                 addch(ACS_DIAMOND); // Print RED diamond if close price is within line_diff
-                attroff(COLOR_PAIR(1));
+                attroff(RED);
             } else if (i % ROWS_SPACING == 0 && j % COLS_SPACING == 0) // Cross on corners
                 addch(ACS_PLUS);
             else if (i % ROWS_SPACING == 0) // Horizontal line every ROWS_SPACING lines
@@ -197,10 +200,10 @@ void graph_print(const double* points, const double* points2, struct tm* start_t
     printw("\n\n %s", symbol); // Empty line as spacing, then print key containing the symbol(s) and diamond with color
     addch(ACS_DIAMOND);
     if (points2 != NULL) {
-        attron(COLOR_PAIR(1));
+        attron(RED);
         printw(" %s", symbol2);
         addch(ACS_DIAMOND);
-        attroff(COLOR_PAIR(1));
+        attroff(RED);
     }
     addch(' ');
     size_t offset = (cols / 2) - (11 + strlen(symbol)); // Center zoom level
