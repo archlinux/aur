@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=cargo-vendor
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="Cargo subcommand to vendor crates.io dependencies"
 url="https://github.com/alexcrichton/cargo-vendor"
@@ -9,8 +9,8 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT' 'APACHE')
 source=("https://github.com/alexcrichton/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('288cb4198d13cffab5bf594f4de1c8061d365491846eb25389b619f9234ea46f')
-sha512sums=('aa5586702e72bf90dd934f801cb58510c431c827d63d7d1dd010ef391947dc6082c7a2993d1649297c1e9164a538f91d44812e007536b2232adcf7152e4307cf')
+sha256sums=('4094771f3dc3e0bfe6e389c6a8cbb5ffb95758cf340726fc8cec827cd0ef2d49')
+sha512sums=('a3068cea2edc002f8ef65c3e9c09c49afbcb965e0fc3ef449a0e539ef967aa8508e070aa1183362f165fbe4b640623c92b238061dd2ffb6b253ba4959281bba5')
 
 build() {
   cd "$pkgname-$pkgver"
