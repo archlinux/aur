@@ -1,7 +1,7 @@
 # Maintainer: Dana Sorensen <dana.r.sorensen@gmail.com>
 
 pkgname=iio-oscilloscope-git
-pkgver=v0.7.r44.9eadbd9
+pkgver=v0.7.r74.11121a9
 pkgrel=1
 pkgdesc="A GTK+ based oscilloscope application for interfacing with various IIO devices"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -20,6 +20,8 @@ pkgver() {
 }
 
 prepare() {
+    # remove -Werror flag (don't treat warnings as errors)
+    sed -i 's/-Werror//g' "$srcdir/${pkgname%-git}/Makefile"
     # don't ldconfig or update xdg caches (pacman does this)
     sed -i '/ldconfig/s/^/#/' "$srcdir/${pkgname%-git}/Makefile"
     sed -i '/--noupdate/! s/\(xdg-icon-resource\) \(\(un\)\?install\)/\1 \2 --noupdate/' "$srcdir/${pkgname%-git}/Makefile"
