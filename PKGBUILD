@@ -3,7 +3,7 @@
 
 pkgname=libjpeg9
 pkgver=9c
-pkgrel=1
+pkgrel=2
 pkgdesc="JPEG image compression"
 arch=('i686' 'x86_64')
 url="http://www.ijg.org/"
@@ -35,10 +35,12 @@ package() {
   install -m 644 jpegint.h "${pkgdir}/usr/include/${pkgname}"
   
   cd "${pkgdir}"
-  # Rename static libraries
+  # Remove static libraries
   rm "usr/lib/libjpeg.a"
   rm "usr/lib/libjpeg.so"
   rm "usr/lib/libjpeg.la"
+  # Rename pkgconfig libraries
+  mv "usr/lib/pkgconfig/libjpeg.pc" "usr/lib/pkgconfig/${pkgname}.pc"
   # Rename binary executables
   for _file in usr/bin/*
   do
