@@ -1,14 +1,13 @@
 pkgbase = opennic-up
 	pkgdesc = OpenNIC auto DNS updater
-	pkgver = 0.90
+	pkgver = 0.91
 	pkgrel = 1
 	url = https://github.com/kewlfft/opennic-up
 	arch = any
 	license = LGPL3
 	depends = fping
-	depends = curl
-	source = opennic-up-0.90.tar.gz::https://github.com/kewlfft/opennic-up/archive/v0.90.tar.gz
-	sha256sums = 00e537bba293566fa71f4c40e91b12bca0f4a568e7e96130459d2536b780d64f
+	source = opennic-up-0.91.tar.gz::https://github.com/kewlfft/opennic-up/archive/v0.91.tar.gz
+	sha256sums = 839792ebdeea2428b69c4874166d38547fd6bc8233bf5fc6683137976e8e822d
 
 pkgname = opennic-up
 
