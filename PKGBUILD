@@ -1,16 +1,20 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Vinay S Shastry <vinayshastry@gmail.com>
 
 pkgname=mp3info
 pkgver=0.8.5a
-pkgrel=6
+pkgrel=7
 pkgdesc="An MP3 technical info viewer and ID3 1.x tag editor"
 arch=('x86_64')
-url="http://ibiblio.org/mp3info/"
+url="https://ibiblio.org/mp3info/"
 license=('GPL')
-depends=('ncurses' 'gtk2' )
-source=(http://ibiblio.org/pub/linux/apps/sound/mp3-utils/$pkgname/$pkgname-$pkgver.tgz)
-md5sums=('cb7b619a10a40aaac2113b87bb2b2ea2')
+depends=('ncurses')
+makedepends=('gtk2')
+optdepends=('gtk2: run gmp3info GUI')
+source=(https://ibiblio.org/pub/linux/apps/sound/mp3-utils/$pkgname/$pkgname-$pkgver.tgz
+        gmp3info.desktop)
+md5sums=('cb7b619a10a40aaac2113b87bb2b2ea2'
+         '70071d6503161a5f466d34ec9649b2fc')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
@@ -26,4 +30,5 @@ package() {
 
   install -d "$pkgdir"/usr/bin "$pkgdir"/usr/share/man/man1
   make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man/man1 install
+  install -Dm644 "$srcdir"/gmp3info.desktop "$pkgdir"/usr/share/applications/gmp3info.desktop
 }

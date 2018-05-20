@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=MP3info
+Comment=Utility for MP3 information and tag modification
+Exec=gmp3info %f
+Terminal=false
+Type=Application
+Categories=Audio;AudioVideo;AudioVideoEditing;
+MimeType=audio/mpeg;
