@@ -1,0 +1,21 @@
+pkgbase = perl-redisdb
+	pkgdesc = Perl extension to access redis database (RedisDB)
+	pkgver = 2.54
+	pkgrel = 1
+	url = https://metacpan.org/release/RedisDB
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-test-failwarnings
+	makedepends = perl-test-tcp
+	depends = perl
+	depends = perl-redisdb-parser
+	depends = perl-try-tiny
+	depends = perl-uri-redis
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/Z/ZW/ZWON/RedisDB-2.54.tar.gz
+	md5sums = 8e3cb9078f04a8f23ff4cc7e69adf56c
+
+pkgname = perl-redisdb
+
