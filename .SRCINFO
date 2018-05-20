@@ -1,6 +1,6 @@
 pkgbase = softethervpn-beta
 	pkgdesc = Multi-protocol VPN software from University of Tsukuba build with source code from official website's download center.
-	pkgver = v4.25.9656.rtm
+	pkgver = v4.27.9666.beta
 	pkgrel = 1
 	url = http://www.softether.org/
 	arch = i686
