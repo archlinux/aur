@@ -1,6 +1,6 @@
 # Maintainer: Willem Herremans <whpgf at scarlet dot be>
 pkgname=pgintcl
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="A Tcl interface to PostgreSQL"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('tcl>=8.4.4')
 makedepends=()
 optdepends=('postgresql>=8.3.0: for running a postgresql database server')
 source=(http://downloads.sourceforge.net/pgintcl/$pkgver/$pkgname-$pkgver.tgz README.arch)
-md5sums=('5c05d04e661d792baa121c6b5ce229b8'
+md5sums=('6272a61cdff5a39846d42af0f91afe6f'
          'd1a7075738c3dcb9993c2dacf3fa6695')
 
 package() {
