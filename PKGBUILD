@@ -2,7 +2,7 @@
 
 pkgname=astromatic-sextractor
 _pkgname=sextractor
-pkgver=2.19.5
+pkgver=2.25.0
 pkgrel=1
 pkgdesc="builds a catalogue of objects from an astronomical image (build from source) "
 url="http://www.astromatic.net/software/sextractor"
@@ -14,11 +14,12 @@ provides=()
 conflicts=('sextractor-bin')
 replaces=('sextractor-bin')
 backup=()
-source=(http://www.astromatic.net/download/sextractor/sextractor-${pkgver}.tar.gz)
-sha1sums=('43a48391b90b915b1c256b68c29c2276bee8621d')
+source=(https://github.com/astromatic/sextractor/archive/${pkgver}.tar.gz)
+sha1sums=('3ed53d55c0c77cd98a38bff1bde1b0d6fc625c18')
 
 build() {
   cd $srcdir/${_pkgname}-${pkgver}
+  sh autogen.sh
   ./configure --prefix=/usr
   make
 }
