@@ -1,6 +1,6 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=xtrkcad-ru
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Russian translate for XtrkCAD program."
 url="http://www.xtrkcad.org/"
