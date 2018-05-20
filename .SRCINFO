@@ -1,7 +1,7 @@
 pkgbase = doomretro
 	pkgdesc = The classic, refined DOOM source port
 	pkgver = 2.6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://doomretro.com
 	arch = i686
 	arch = x86_64

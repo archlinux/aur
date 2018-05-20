@@ -2,7 +2,7 @@
 
 pkgname=doomretro
 pkgver=2.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc='The classic, refined DOOM source port'
 arch=('i686' 'x86_64')
 url='http://doomretro.com'
@@ -20,8 +20,7 @@ prepare() {
 build() {
   cd build
   cmake ../$pkgname-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
