@@ -1,10 +1,10 @@
 pkgbase = kenv-meta
 	pkgdesc = Graphical environment
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/eadwu/pkgbuilds
 	arch = x86_64
-	license = custom:unknown
+	license = unknown
 	depends = bspwm
 	depends = compton
 	depends = gvfs
