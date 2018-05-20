@@ -1,0 +1,16 @@
+pkgbase = nvidia-docker
+	pkgdesc = Build and run Docker containers leveraging NVIDIA GPUs
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/NVIDIA/nvidia-docker
+	arch = x86_64
+	license = custom
+	depends = docker
+	depends = nvidia
+	depends = nvidia-container-runtime
+	depends = nvidia-container-runtime-hook
+	source = https://github.com/NVIDIA/nvidia-docker/blob/gh-pages/centos7/x86_64/nvidia-docker2-2.0.3-1.docker18.03.1.ce.noarch.rpm?raw=true
+	sha256sums = e07186b8e503ab4a170631714226cb6fc9992534f3ddcb226f7d9a186e832633
+
+pkgname = nvidia-docker
+
