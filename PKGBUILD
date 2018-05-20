@@ -2,7 +2,7 @@
 # Contributor: Alexey Stukalov <astukalov@gmail.com>
 
 pkgname=smartsynchronize
-pkgver=3.4.12
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Comparing Directories the Smart Way"
 arch=("any")
@@ -11,7 +11,7 @@ license=('custom')
 depends=('java-runtime>=8' 'gtk3' 'gtk-update-icon-cache')
 source=("https://www.syntevo.com/downloads/${pkgname}/${pkgname}-linux-${pkgver//\./_}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('c41b897fd9bc1d6d82f744c91964b1b1745c9f91489f2059f594822abe9e1294'
+sha256sums=('2ff97e7433ca78bdfb2ce62409e624b94f9bcd8b76d603c2493db307df1acb9d'
             'ee21447d20ef52b65f5becb7a004c10acb925d4219d42f3be2aae61115d9f52f')
 
 package() {
