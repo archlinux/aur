@@ -1,0 +1,19 @@
+pkgbase = perl-redisdb-parser
+	pkgdesc = Redis protocol parser for RedisDB)
+	pkgver = 2.23
+	pkgrel = 1
+	url = https://metacpan.org/release/RedisDB-Parser
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-test-failwarnings
+	makedepends = perl-test-most
+	depends = perl
+	depends = perl-try-tiny
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/Z/ZW/ZWON/RedisDB-Parser-2.23.tar.gz
+	md5sums = 5450e8a63cd16647c12147d45debe579
+
+pkgname = perl-redisdb-parser
+
