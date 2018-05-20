@@ -2,13 +2,12 @@
 
 pkgname=kroot-meta
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete base installation'
 arch=('x86_64')
 url='https://gitlab.com/eadwu/pkgbuilds'
 license=('custom:unknown')
-depends=(
-  'kcore-meta'
-  'kenv-meta'
-  'kother-meta'
+depends=('kcore-meta'
+         'kenv-meta'
+         'kother-meta'
 )
