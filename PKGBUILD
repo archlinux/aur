@@ -8,7 +8,7 @@ epoch=1
 pkgdesc="An XEP-0357: Push Notifications app server that relays push messages between the user’s server and Googles Firebase Cloud Messaging"
 arch=('any')
 url="https://github.com/iNPUTmice/p2"
-license=('GPL')
+license=('BSD')
 makedepends=('git' 'maven' 'java-environment')
 depends=('java-runtime')
 
@@ -50,4 +50,6 @@ package() {
   install -d "${pkgdir}/usr/lib/systemd/system/"
   cp dist/p2.service "${pkgdir}/usr/lib/systemd/system/"
   install -d "${pkgdir}/var/lib/p2/"
+  install -d "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  cp LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
