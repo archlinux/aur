@@ -1,6 +1,6 @@
 pkgbase = lutris
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.4.16
+	pkgver = 0.4.17
 	pkgrel = 2
 	url = https://lutris.net/
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = lutris
 	depends = python-yaml
 	depends = python-evdev
 	depends = lib32-sqlite
-	source = https://lutris.net/releases/lutris_0.4.16.tar.xz
-	sha256sums = 910e0c5ae3914d52a2fdac308f776d285b17d914a938045cf9ff2dee2687449c
+	source = https://lutris.net/releases/lutris_0.4.17.tar.xz
+	sha256sums = f33c27745f2bd87344be790465ef984a972fd539dc83bd4f61d4242c607ef1ee
 
 pkgname = lutris
 
