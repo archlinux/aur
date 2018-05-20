@@ -2,12 +2,12 @@
 
 pkgname=nvidia-docker-bin
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Build and run Docker containers leveraging NVIDIA GPUs'
 arch=('x86_64')
 url='https://github.com/NVIDIA/nvidia-docker'
 license=('custom')
-depends=('docker' 'nvidia' 'nvidia-container-runtime' 'nvidia-container-runtime-hook')
+depends=('docker' 'nvidia-container-runtime' 'nvidia-container-runtime-hook')
 
 source=("https://github.com/NVIDIA/nvidia-docker/blob/gh-pages/centos7/x86_64/nvidia-docker2-$pkgver-1.docker18.03.1.ce.noarch.rpm?raw=true")
 sha256sums=('e07186b8e503ab4a170631714226cb6fc9992534f3ddcb226f7d9a186e832633')
