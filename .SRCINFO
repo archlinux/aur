@@ -1,0 +1,27 @@
+pkgbase = cups-print-to-programme
+	pkgdesc = Print filter for cups which prints to a file (type: ) and opens that with a programme the user can choose in the settings.
+	pkgver = 0.1
+	pkgrel = 0.5
+	install = cups-programme.install
+	arch = any
+	license = GPL3
+	depends = cups
+	depends = mariadb
+	optdepends = x11-ssh-askpass: For a graphical password input frontend for sudo.
+	optdepends = lxqt-openssh-askpass: For a graphical password input frontend for sudo.
+	optdepends = kde-cli-tools: For kdesu graphical frontend to run command as different user.
+	optdepends = kdesudo: For kdesudo graphical frontend to run command as different user.
+	backup = etc/cups/cups-programme.conf
+	source = cups-programme.sh
+	source = cups-programme.conf
+	source = README.md
+	source = GPL3.txt
+	source = cups-programme.install
+	sha256sums = 9a7f1cf4e52cebd2e1894a7f157a4aa087a5c4125b61e4781167ef70ec1ace5e
+	sha256sums = e7b6bff5cf14045dfa56860ab422ac64d36c79624d6cc2d2e31d03dff71ae9eb
+	sha256sums = SKIP
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = SKIP
+
+pkgname = cups-print-to-programme
+
