@@ -1,7 +1,7 @@
 pkgbase = hdf4-nonetcdf
 	pkgdesc = General purpose library and file format for storing scientific data. (NetCDF disabled)
 	pkgver = 4.2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.hdfgroup.org/hdf4.html
 	arch = i686
 	arch = x86_64
@@ -11,13 +11,16 @@ pkgbase = hdf4-nonetcdf
 	makedepends = flex
 	makedepends = bison
 	depends = bash
-	depends = libjpeg
 	depends = zlib
+	depends = libjpeg-turbo
+	depends = libtirpc
 	provides = hdf4
 	conflicts = hdf4
 	options = !libtool
 	source = http://www.hdfgroup.org/ftp/HDF/HDF_Current/src/hdf-4.2.13.tar.gz
+	source = config.patch
 	md5sums = a6aa950b3fce5162b96496d8ea0b82bf
+	md5sums = e16254cdd55c1a2653b31ec1bdc4b711
 
 pkgname = hdf4-nonetcdf
 
