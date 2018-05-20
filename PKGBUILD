@@ -1,7 +1,8 @@
+# $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=persian-fonts
-pkgver=20170124
+pkgver=20180520
 pkgrel=1
 pkgdesc='Meta package to install all Persian fonts.'
 arch=(any)
@@ -23,5 +24,5 @@ depends=('borna-fonts'
          'vazir-fonts'
          'vazir-code-fonts'
          'ttf-x2'
-         'ttf-yas'
 )
+# vim:set ts=2 sw=2 et:
