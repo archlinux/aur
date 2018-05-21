@@ -1,6 +1,6 @@
 pkgbase = bcal
 	pkgdesc = Storage conversion and expression calculator
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/jarun/bcal
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = bcal
 	license = GPL3
 	provides = bcal
 	conflicts = bcal-git
-	source = https://github.com/jarun/bcal/archive/v1.8.tar.gz
-	sha256sums = 2bdf9057456e30e97ace3becbdbf7642bbc1689668e8aaad2ef6bfe9c4de9603
+	source = https://github.com/jarun/bcal/archive/v1.9.tar.gz
+	sha256sums = 5d075deaef087680ea4c153ed5f0696f8be149a59ce0e5aaeb3f5b1180b2ec81
 
 pkgname = bcal
 
