@@ -18,11 +18,13 @@ sha1sums=('22938e075cd72604db1e1c732286002503a957bf'
 package() {
 	
 	cd ${srcdir}
+	tarfile="AstroImageJ_v${pkgver}_${_reldate}_linux.tar.gz"
 
 	mkdir ${pkgdir}/opt
-	cp "AstroImageJ_v${pkgver}_${_reldate}_linux.tar.gz" ${pkgdir}/opt
+	cp $tarfile ${pkgdir}/opt
 	cd ${pkgdir}/opt
-	tar zxvf "AstroImageJ_v${pkgver}_${_reldate}_linux.tar.gz"
+	tar zxvf $tarfile
+	rm $tarfile
 	mv ${pkgdir}/opt/AstroImageJ ${pkgdir}/opt/astroimagej
 
 	cd ${srcdir}
