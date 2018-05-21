@@ -1,3 +1,9 @@
+v2.2.1 -- Monday, May 21, 2018 5:26:45 AM
+
+Fixes an issue where the theme would operate in a debug state with sufficiently recent versions of lightdm-webkit2-greeter.
+
+===============================================================================
+
 v2.2.0 -- Monday, May 21, 2018 4:46:47 AM
 
 Adds an experimental "Star Field" as the beginning of optional eye candy features (found under the 'Style' tab in the settings)
