@@ -6,6 +6,7 @@ pkgbase = steam-wine-git
 	install = steam-wine-git.install
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = wine
 	depends = winetricks
 	depends = bash

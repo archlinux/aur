@@ -9,6 +9,7 @@ url="https://github.com/Nefelim4ag/steam-wine"
 license=('GPL3')
 depends=('wine' 'winetricks' 'bash')
 optdepends=('lib32-libpulse: for audio' 'wine-staging')
+makedepends=('git')
 #conflicts=()
 source=("$pkgname"::'git://github.com/Nefelim4ag/steam-wine.git#branch=master')
 md5sums=('SKIP')
