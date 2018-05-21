@@ -1,5 +1,5 @@
 pkgbase = leaguedisplays-git
-	pkgver = 1.0.928.e377785
+	pkgver = 1.0.928.e492b2d
 	pkgrel = 1
 	url = https://github.com/TheFrozenWatchers/LeagueDisplays
 	arch = x86_64
