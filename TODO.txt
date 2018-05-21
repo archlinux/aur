@@ -1,3 +1,6 @@
+* Investigate & fix a problem where the CUPS output might have inverted
+  graphics.
+
 * Provide a graphical wrapper programme that can be specified as the
   programme to print into, where the user can select the real programme
   he wants to pen the print file with.
