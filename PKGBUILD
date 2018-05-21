@@ -1,7 +1,7 @@
 # Maintainer: Daniël de Kok <me@danieldk.eu>
 pkgname=dbxml
 pkgver=6.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Embeddable XML database"
 arch=("x86_64")
 url="https://www.oracle.com/database/berkeley-db/xml.html"
