@@ -7,8 +7,8 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=3.4.2
-pkgrel=3
+pkgver=4.0
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -28,17 +28,12 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg')
 conflicts=('ffmpeg')
-source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz"
-        'fs56089.patch')
-sha256sums=('2b92e9578ef8b3e49eeab229e69305f5f4cbc1fdaa22e927fc7fca18acccd740'
-            '0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427')
+source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
+sha256sums=('ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
 
-  # https://bugs.archlinux.org/task/56089
-  # Backport of http://git.videolan.org/?p=ffmpeg.git;a=commitdiff;h=a606f27f4c610708fa96e35eed7b7537d3d8f712
-  patch -Np1 -i ../fs56089.patch
 }
 
 build() {
