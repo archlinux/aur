@@ -1,4 +1,4 @@
-.TH TICK "1" "May 2018" "Tick 2.1.0" "User Commands"
+.TH TICK "1" "May 2018" "Tick 2.2.0" "User Commands"
 
 .SH NAME
 Tick - Command line stock and cryptocurrency portfolio tracker.
@@ -7,8 +7,8 @@ Tick - Command line stock and cryptocurrency portfolio tracker.
 tick COMMAND [ARGUMENTS]
 
 .SH DESCRIPTION
-Create your portfolio by adding your current holdings. You can see information about your holdings with the command "check".
-You may also see information about securities that you may not own with commands "info" and "news".
+Create your portfolio by "add"-ing your current holdings. Then, use the command "check" to see information about your
+holdings. You may also see information about securities that you may not own with commands "info" and "graph".
 
 .SS
 Portfolio:
@@ -26,11 +26,14 @@ are not reinvested into a specific security, you should update your portfolio wi
 You may also specify the share price instead of the total amount you spent by appending "ea" to the end of the share price.
 
 .TP
-[check] [symbol/crypto_id/sort_option]
-Prints information about your current portfolio holdings. To print all of your holdings alphabetically as well as a
-grand total, no additional arguments besides "check" need to be used. Optionally, you may use the options "-a" to print
-alphabetically, "-v" to print by value, "-p" to print by profit, "-1" to print by one day profit, or "-7" to print by
-seven day profit. To print information about a single security, use the ticker or crypto id as an argument after "check".
+[check]
+Prints information about all of your current holdings and a grand total in an NCurses window. By default, your holdings
+will be sorted alphabetically. You may press the left and right arrow keys to change the sort category. Press "q" to
+exit the window.
+
+.TP
+[check] [symbol/crypto_id/USD$]
+Prints information about a specific security in your portfolio.
 
 .TP
 [encrypt/decrypt]
@@ -83,11 +86,6 @@ Or to get info about all your holdings, run
 $ tick check
 
 .RE
-or to sort by value
-.RS
-$ tick check -v
-
-.RE
 To get the top three news articles on Tesla in the past two weeks, run
 .RS
 $ tick news tesla
@@ -101,11 +99,6 @@ $ tick info tesla
 .I ~/.tick_portfolio.json
 .RS
 Portfolio file.
-
-.RE
-.I ~/.tick_portfolio
-.RS
-Portfolio file (legacy).
 
 .SH GITHUB
 Please report any bugs using the GitHub issue tracker:

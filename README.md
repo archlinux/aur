@@ -39,13 +39,16 @@ tickers also being listed on the stock market, such as ETH.
 
 To get info about your current holdings, run
 ```bash
-$ tick check [symbol/crypto_id/sort_option]
+$ tick check
 ```
-Running "check" with no other arguments will list your entire portfolio
-as well as produce a grand total. Adding the argument "-v", "-p", "-1",
-or "-7" will sort the output by value, profit, one day profit, or seven
-day profit. To check a single security, use the symbol or crypto_id as
-the argument instead of sort options.
+Prints information about all of your current holdings and a grand total
+in an NCurses window. By default, your holdings will be sorted
+alphabetically. You may press the left and right arrow keys to change
+the sort category. Press "q" to exit the window. You can also get
+information on a specific security using
+```bash
+$ tick check [symbol/crypto_id/USD$]
+```
 
 You may encrypt your portfolio using the RC4 algorithm
 ```bash

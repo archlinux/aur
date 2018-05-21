@@ -28,15 +28,12 @@ int main(int argc, char* argv[]) {
     int modop = -1;
 
     // News
-    if (strcmp(cmd, "news") == 0) {
-        if (argc == 3 && strlen(argv[2]) <= 32 && strlen(argv[2]) > 1)
-            news_print_top_three(argv[2]);
-        else puts("Invalid input.");
-    }
+    if (strcmp(cmd, "news") == 0 && argc == 3 && strlen(sym) <= 32 && strlen(sym) > 1)
+        news_print_top_three(sym);
 
         //Encrypt/decrypt
     else if ((strcmp(cmd, "encrypt") == 0 || strcmp(cmd, "decrypt") == 0) && argc == 2)
-        portfolio_encrypt_decrypt(strcmp(cmd, "encrypt") == 0);
+        portfolio_encrypt_decrypt(strcmp(cmd, "encrypt") == 0); // 1 if encrypt, 0 if decrypt
 
         // Info
     else if (strcmp(cmd, "info") == 0 && argc == 3)
@@ -64,7 +61,6 @@ int main(int argc, char* argv[]) {
         modop = REMOVE;
     else if (strcmp(cmd, "set") == 0)
         modop = SET;
-
     else puts("Invalid arguments. Type \"man tick\" for help.");
 
     // Portfolio Operations
