@@ -1,0 +1,14 @@
+pkgbase = python-qt5reactor
+	pkgdesc = Twisted and PyQt5 eventloop integration
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/sunu/qt5reactor
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/q/qt5reactor/qt5reactor-0.5.tar.gz
+	sha256sums = 58d71f17188c896596e5f23f0eb884c966208a4db935e506d931797cbd1c0cbe
+
+pkgname = python-qt5reactor
+
