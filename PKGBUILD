@@ -5,7 +5,7 @@
 _pkgname=atom
 _version=beta
 _pkgver=1.28.0
-_pkgrel=0
+_pkgrel=1
 _ver=${_pkgver}-beta${_pkgrel}
 pkgname="${_pkgname}-editor-${_version}"
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.'
@@ -27,7 +27,7 @@ source=(
 	"${_pkgname}-${_version}.desktop"
 	"atom.install"
 )
-sha256sums=('8bdb61a66b11295fbe736d3239587ac2db749232cd0d074778be7261590c375d'
+sha256sums=('c51ca236c8777885d3ef99638132d3f4051431ac56bfd2d96404d6fe7d72a6ea'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
             '9fe12f1bc573f5d431fcc8f9ca3ed17fc1e1d30248ae3b58209fc53084ae0a4e')
 
