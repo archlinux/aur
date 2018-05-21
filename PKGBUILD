@@ -1,7 +1,7 @@
 # Maintainer: Daniël de Kok <me@danieldk.eu>
 pkgname=alpino
-pkgver=21161
-pkgrel=2
+pkgver=21235
+pkgrel=1
 pkgdesc="A wide-coverage parser for Dutch"
 arch=("x86_64")
 url="http://www.let.rug.nl/vannoord/alp/Alpino"
@@ -12,7 +12,7 @@ source=("http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/Alpino-x86_64
         alpino.desktop
         alpino.png
         README.hidpi)
-sha256sums=('c10077c775b188eb228e372cf0285e373b9716301a45992dc5aa2a50ab6894e3'
+sha256sums=('8ea82eebae26010f78602687b124baffce8ba45468e4209547d433f08db714e7'
             '6713cc676d10976b20c0f0bbb49a17e3d06dc75dd838dd592c10e734b1313ba7'
             '111a506172c96b68c68fc6906e87619be1d4ce3968a0c373b3e898809f8ec7a2'
             '6c83d390b9e0f555695cc257ca54b35d1de5e0f0036659cbe034feca1929790f'
