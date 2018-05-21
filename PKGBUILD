@@ -21,8 +21,8 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod-lts
 _srcname=linux
-pkgver=4.14.40
-xanmod=31
+pkgver=4.14.42
+xanmod=32
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
