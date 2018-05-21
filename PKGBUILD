@@ -1,7 +1,7 @@
 # Maintainer: Felix Wiegand <koffeinflummi@gmail.com>
 
 pkgname="armake"
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="An open-source implementation of the Arma modding tools."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('openssl')
 optdepends=()
 makedepends=('bison' 'flex')
 source=("https://github.com/KoffeinFlummi/armake/archive/v${pkgver}.tar.gz")
-sha256sums=('203631bce259d06d74fdae683b1aa755bf4ec9bc6b96c4e3a3b326d7b428350c')
+sha256sums=('4afb8f7fe648fd6307a4e6f0609814f14eed42918ddf072f9f6b8d80d2b42bb9')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
