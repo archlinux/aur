@@ -1,16 +1,16 @@
 # Maintainer: Eric Bailey <nerflad@gmail.com>
 pkgname=ocaml-curl
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=2
 pkgdesc="OCaml bindings to libcurl networking library"
 arch=('i686' 'x86_64' 'armv7h')
 license=('BSD')
-depends=('ocaml' 'curl>=7.17.0')
+depends=('ocaml' 'curl>=7.28.0')
 makedepends=('ocaml-findlib')
 options=('!strip' '!makeflags' 'staticlibs')
 url='https://github.com/ygrek/ocurl'
 source=("${url}/releases/download/${pkgver}/ocurl-${pkgver}.tar.gz")
-sha256sums=('99935feb1e7ff6456e33452888a3671ecb6535a303b006f24203bc54b79d2209')
+sha256sums=('3e0f9cd883c69b17a3d15ab215c670ea124a0db2fa57170093ab8e19fafa8d22')
 
 build() {
   cd "$srcdir/ocurl-${pkgver}"
