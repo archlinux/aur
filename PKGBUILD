@@ -1,16 +1,16 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=libratbag
-pkgver=0.9.901
+pkgver=0.9.902
 pkgrel=1
 pkgdesc='A library to configure gaming mice'
 arch=('i686' 'x86_64')
 url='https://github.com/libratbag/libratbag'
 license=('MIT')
-depends=('glibc' 'libevdev' 'libudev.so' 'python')
+depends=('glibc' 'libevdev' 'libudev.so' 'python' 'python-evdev')
 makedepends=('systemd' 'meson' 'git' 'swig')
 source=("https://github.com/libratbag/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('fe432cdcc8ce6e6b33d1dea4b8d94997cb8e89b1eaab52e723fcc60c35e5d17b')
+sha256sums=('01c0dac6b8cd997c3bec84a51c0a86fc8727e3a20635bf7e2c5e0f0b8c5df34c')
 conflicts=('libratbag-git' 'ratbagd<=0.4')
 
 build() {
