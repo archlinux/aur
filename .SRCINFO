@@ -1,5 +1,5 @@
 pkgbase = adlmidi-git
-	pkgdesc = Commandline program that plays MIDI via software OPL3 emulation
+	pkgdesc = CLI MIDI player using OPL3 emulation
 	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://bisqwit.iki.fi/source/adlmidi.html

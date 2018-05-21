@@ -1,7 +1,7 @@
-# Maintainer: Stephen Gregoratto <themanhimself@sgregoratto.me>
+# Maintainer: Stephen Gregoratto <themanhimself at sgregoratto dot me>
 
 pkgname=adlmidi-git
-pkgdesc="Commandline program that plays MIDI via software OPL3 emulation"
+pkgdesc="CLI MIDI player using OPL3 emulation"
 pkgrel=1
 pkgver=1.2.6
 arch=('i686' 'x86_64')
