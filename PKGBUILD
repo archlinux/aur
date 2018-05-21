@@ -13,7 +13,7 @@ conflicts=('omnikey_ifdokccid-git')
 source=("https://www.hidglobal.fr/sites/default/files/drivers/omnikey_ccid_driver_for_8051_controller_based_readers_v.${pkgver}.zip")
 md5sums=('441670be336df12167652a751ba5a08e')
 
-package() {
+prepare() {
     _ARCH=""
 
     # Update the architecture name based on the current one running this PKGBUILD
@@ -31,12 +31,22 @@ package() {
     _PACKAGE_NAME="ifdokccid_linux_${_ARCH}-${pkgver}-${pkgrel}-${_gitrel}"
 
     # Extract the platform package
+    mkdir -p ${pkgname}
     tar xzf ${_PACKAGE_NAME}.tar.gz
-    cd ${_PACKAGE_NAME}
+
+    # Move all the package files in a common diretory name
+    mv ${_PACKAGE_NAME}/* ${pkgname}
+
+    # Rename the bundle directory
+    mv ${pkgname}/${_PACKAGE_NAME}.bundle ${pkgname}/${pkgname}.bundle
+}
+
+package() {
+    cd ${pkgname}
 
     # Start to build the driver package
     mkdir -p $pkgdir/usr/lib/pcsc/drivers
-    cp -r ${_PACKAGE_NAME}.bundle $pkgdir/usr/lib/pcsc/drivers
+    cp -r ${pkgname}.bundle $pkgdir/usr/lib/pcsc/drivers
     mkdir -p $pkgdir/etc
     install -m0600 omnikey.ini $pkgdir/etc/omnikey.ini
     mkdir -p $pkgdir/etc/udev/rules.d
