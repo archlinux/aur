@@ -18,6 +18,7 @@ source=(
   "cups-programme.sh"
   "cups-programme.conf"
   "README.md"
+  "TODO.txt"
   "GPL3.txt"
   "${install}"
 )
@@ -40,6 +41,7 @@ backup=('etc/cups/cups-programme.conf')
 sha256sums=('eddbf1398da6052d5dba15e84f82e20e81c87c8dd0a69222ba818c05d8babd1f'
             'f583ed8969deef9e890b20c475bc24fd4eed8ef3c3a51544f9183fcc69d38c5c'
             'fff96ebdac583c710fa8762e967929b905ed342a0b8977268741e40403a3e31c'
+            'f21c9c2fe535122aff79d79a57c07858809f2d576083c2a0a38f07906ce9714c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '0ee996783ae6848cf3c522de135646cb4b19670a48d6f1bf387b5b304f5506ad')
 
@@ -54,11 +56,12 @@ package() {
   cd "${srcdir}"
   
   _backend_name="$(./cups-programme.sh | awk '{print $2}')"
-  install -v -m 755 -D "cups-programme.sh" "${pkgdir}/usr/lib/cups/backend/${_backend_name}"
+  install -v -m 755 -D "cups-programme.sh"   "${pkgdir}/usr/lib/cups/backend/${_backend_name}"
   
   install -v -m 644 -D "cups-programme.conf" "${pkgdir}/etc/cups/cups-programme.conf"
   
-  install -v -m 644 -D "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -v -m 644 -D "README.md"           "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -v -m 644 -D "TODO.txt"            "${pkgdir}/usr/share/doc/${_pkgname}/TODO.txt"
   
-  install -v -m 644 -D "GPL3.txt" "${pkgdir}/usr/share/licenses/${pkgname}/GPL3.txt"
+  install -v -m 644 -D "GPL3.txt"            "${pkgdir}/usr/share/licenses/${pkgname}/GPL3.txt"
 }
