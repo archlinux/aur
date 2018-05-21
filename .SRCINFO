@@ -11,6 +11,7 @@ pkgbase = rclone-bin
 	license = MIT
 	depends = glibc
 	provides = rclone
+	conflicts = rclone
 	source = https://raw.githubusercontent.com/ncw/rclone/v1.41/COPYING
 	sha256sums = 8cd2e9e750b90a04b7d82dbbca3930c696ae0309d7c10464f90a44f45754cd04
 	source_i686 = https://github.com/ncw/rclone/releases/download/v1.41/rclone-v1.41-linux-386.zip

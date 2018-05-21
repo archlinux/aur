@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage."
 arch=('aarch64')
 provides=('rclone')
+conflicts=('rclone')
 url="https://rclone.org/"
 license=('MIT')
 depends=('glibc')
