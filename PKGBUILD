@@ -1,34 +1,40 @@
 # Maintainer: Maarten Baert <maarten-baert@hotmail.com>
 
 pkgname=simplescreenrecorder-git
-pkgver=0.3.8.r89.g2edb032
+pkgver=0.3.10.r21.g00decd5
 pkgrel=1
 pkgdesc="A feature-rich screen recorder that supports X11 and OpenGL. (Git version)"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://www.maartenbaert.be/simplescreenrecorder/"
 license=("GPL3")
+depends=("qt5-base" "qt5-x11extras"
+    "ffmpeg" "alsa-lib" "libpulse" "jack" "libgl" "glu"
+    "libx11" "libxext" "libxfixes" "libxi"
+    "desktop-file-utils" "gtk-update-icon-cache")
+optdepends=("lib32-simplescreenrecorder-git: OpenGL recording of 32-bit applications")
+makedepends=("git" "cmake" "qt5-tools")
 source=("git+https://github.com/MaartenBaert/ssr.git")
 md5sums=("SKIP")
-depends=("qt4" "ffmpeg" "alsa-lib" "libpulse" "jack" "libgl" "glu" "libx11" "libxfixes" "libxext" "libxi")
-if test "$CARCH" == x86_64; then
-	optdepends=("lib32-simplescreenrecorder-git: OpenGL recording of 32-bit applications")
-fi
-makedepends=("git" "cmake")
 conflicts=("simplescreenrecorder")
 provides=("simplescreenrecorder")
+
 install=simplescreenrecorder-git.install
 
 pkgver() {
-	cd "${srcdir}/ssr"
+	cd ssr
 	# Use the tag of the last commit
 	git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
+prepare() {
+	cd ssr
+	mkdir -p build
+}
 build() {
-	cd "${srcdir}/ssr"
-	cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="/usr/lib" -DCMAKE_BUILD_TYPE=Release .
+	cd ssr/build
+	cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_BUILD_TYPE=Release -DWITH_QT5=TRUE ..
 	make
 }
 package() {
-	cd "${srcdir}/ssr"
-	make DESTDIR="${pkgdir}" install
+	cd ssr/build
+	make DESTDIR="$pkgdir" install
 }
