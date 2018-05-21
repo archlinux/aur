@@ -1,7 +1,7 @@
 pkgbase = compton-conf
 	pkgdesc = A graphical configuration tool for Compton X composite manager
-	pkgver = 0.3.0
-	pkgrel = 3
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/lxde/compton-conf
 	arch = i686
 	arch = x86_64
@@ -9,15 +9,15 @@ pkgbase = compton-conf
 	license = LGPL2.1
 	makedepends = cmake
 	makedepends = qt5-tools
-	makedepends = lxqt-build-tools
+	makedepends = lxqt-build-tools>=0.5.0
 	depends = qt5-base
 	depends = libconfig
-	provides = compton-conf=0.3.0
+	provides = compton-conf=0.4.0
 	conflicts = compton-conf-git
-	source = https://downloads.lxqt.org/downloads/compton-conf/0.3.0/compton-conf-0.3.0.tar.xz
-	source = https://downloads.lxqt.org/downloads/compton-conf/0.3.0/compton-conf-0.3.0.tar.xz.asc
+	source = https://downloads.lxqt.org/downloads/compton-conf/0.4.0/compton-conf-0.4.0.tar.xz
+	source = https://downloads.lxqt.org/downloads/compton-conf/0.4.0/compton-conf-0.4.0.tar.xz.asc
 	validpgpkeys = 7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3
-	sha256sums = 7cd239d7542816ee002e6ab2b7e1211102e5ddc6588cc8eaf3d7c0462ff1e6f7
+	sha256sums = 91c9153a2b15bd4680c77923515a84b9bed374da15eec733541e396e94e87e60
 	sha256sums = SKIP
 
 pkgname = compton-conf
