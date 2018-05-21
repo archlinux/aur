@@ -1,0 +1,15 @@
+pkgbase = nodejs-storybook-cli
+	pkgdesc = Storybook's CLI - easiest method of adding storybook to your projects
+	pkgver = 3.4.5
+	pkgrel = 1
+	url = https://github.com/storybooks/storybook/tree/master/lib/cli
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = @storybook/cli-3.4.5.tgz
+	source = https://registry.npmjs.org/@storybook/cli/-/@storybook/cli-3.4.5.tgz
+	sha1sums = 118d734973145fadcd619c1efb42ccdd6073a835
+
+pkgname = nodejs-storybook-cli
+
