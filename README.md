@@ -47,21 +47,22 @@ it's information which programme to execute.
 
 The Device URI to print to The Gimp is, for example:
 
-    cups-programme:/usr/bin/gimp?u=<user>&D=:0.0&%s
+    cups-programme:/usr/bin/gimp?u=<user>&D=%C0.0&%s
 
 where `<user>` is the name of the user `gimp` should be run as. If not
 specified, it will be run as the user CUPS is running as, which might
-not be desired. The `D=:0.0` specifies the X11 display to use. In most
-cases, `:0.0` is correct. (See section "Device URI syntax" for a full
-description of the Device URI.)
+not be desired. The `D=%C0.0` specifies the X11 display to use. In most
+cases, `:0.0` is correct (`%C` will be replaced by `:`). (See section
+"Device URI syntax" for a full description of the Device URI.)
 
 After the Device URI has been entered, select a name and optionally a
 description and a location note for the printer. Then you are presented
 with a list of printer manufacturers and models to choose from. Select
 the manufacturer `Generic` and any generic PostScript printer. (This
-selects a PPD file for the printer. Since we just want to open the raw
-CUPS PostScript output, just select any PostScript printer and then
-ignore the printer options is fine.)
+selects a PPD file for the printer. Since we just want to open (or later
+convert -- see section "Configuration File") the raw CUPS PostScript
+output, just select any PostScript printer and then ignore the printer
+options is fine.)
 
 Adding the printer might fail with an error like
 
@@ -98,27 +99,41 @@ where:
   separated by `&`, are allowed).
   an `<option>` can be of the form:
   - `u=<user>` -- specifies that the executable should be run as user
-    `<user>` (see explanation of `su_variant` in the section
+    `<user>`. If `<user>` is the special word '.CUPSUSER', then the
+    executable will be run as the print-job invocing user CUPS reports
+    to the backend. (see also explanation of `su_variant` in the section
     "Configuration File"),
   - `g=<group>` -- specifies that the executable should be run with
     primary group `<group>` (see section "Notes"),
   - `D=<DISPLAY>` -- if set, the environment variable `DISPLAY` will be
     set to `<DISPLAY>` and exported prior execution of
     `<path-to-executable>`,
+  - `t=<filetype>` -- if set, CUPS' PostScript output will be converted
+    to `<filetype>`. Possible values for `<filetype>` are:
+    + 'ps' (PostScript; retain CUPS' default),
+    + 'pdf' (PDF; uses 'ps2pdf'),
+    + 'svg' (SVG; uses 'pdf2svg'),
+    + 'png' (PNG; uses ImageMagick or GraphicsMagick),
+    + 'gif' (GIF; uses ImageMagick or GraphicsMagick),
+    + 'jpg' (JPEG; uses ImageMagick or GraphicsMagick),
+    + 'tif' (TIFF; uses ImageMagick or GraphicsMagick),
   - anything else will be passed as positional arguments to
-    the executable, with the following string substitutions applied (see
-    also "Notes"):
-    + `%s` -> The file where the CUPS print output is saved. Use `%s` to
-      pass the printed file to be opened to the executable.
-    + `%.` -> ` `,
-    + `%_` -> `-`,
-    + `%P` -> `|`,
-    + `%B` -> `\`,
-    + `%H` -> `#`,
-    + `%Q` -> `?`,
-    + `%A` -> `&`,
-    + `%%` -> `%`.
-
+    the executable.
+* On `<path-to-executable>` and all the options (except `t=<filetype>`),
+  the following string substitutions are applied (see also "Notes"):
+  - `%s` -> The file where the CUPS print output is saved. Use `%s` to
+    pass the printed file to be opened to the executable.
+  - `%.` -> ` `,
+  - `%_` -> `-`,
+  - `%P` -> `|`,
+  - `%B` -> `\`,
+  - `%H` -> `#`,
+  - `%Q` -> `?`,
+  - `%A` -> `&`,
+  - `%C` -> `:`,
+  - `%T` -> `'`,
+  - `%G` -> `"`,
+  - `%%` -> `%`.
 
 
 Configuration File
@@ -128,8 +143,8 @@ The printer backend expects a configuration file to be present at
 `/etc/cups/cups-programme.conf`. This file will be bash-sourced, so
 beware what you do there.
 
-Currently, there are two variables to be set in the configuration file:
-`su_variant` and `askpass_cmd`.
+The following variables are to be set in the configuration file:
+`su_variant`, `askpass_cmd` and `image_converter`.
 
 * When a programme should be run as a specific user (`u=<user>` in the
   Device URI) or with a specific primary group (`g=<group>` in the
@@ -147,7 +162,13 @@ Currently, there are two variables to be set in the configuration file:
 * When `su_variant=sudo-askpass` is set, then `askpass_cmd` needs to be
   set and needs to contain a full path to an askpass executable.
 
-Read the comments in the configuration file for further details.
+* If the `t=<filetype>` option in the Device URI specifies a pixel
+  graphic format, then `image_converter` must be set. It specifies if
+  ImageMagick or GraphicsMagick is to be used when converting to a pixel
+  graphic.
+
+Read the comments in the configuration file for further details, e.g.
+supported values.
 
 
 Notes
@@ -169,9 +190,9 @@ Notes
   
   When this happens, add the printer with a very basic Device URI like
   `cups-programme:/usr/bin/gimp`, and after adding the printer, edit
-  /etc/cups/printers.conf manually and change the DeviceURI to the
+  `/etc/cups/printers.conf` manually and change the `DeviceURI` to the
   desired value. (Stop `cupsd` before, and restart cupsd after editing
-  /etc/cups/printers.conf.)
+  `/etc/cups/printers.conf`.)
 
 
 [1]: http://cups.org/
