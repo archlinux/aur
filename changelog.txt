@@ -3,7 +3,7 @@ v2.2.0 -- Monday, May 21, 2018 4:46:47 AM
 Adds an experimental "Star Field" as the beginning of optional eye candy features (found under the 'Style' tab in the settings)
 Adds the ability to select the password field with CTRL + A
 Adds the option to hide the User Switcher
-Adds the option to hide Avatar backgrounds
+Adds the option to  hide Avatar backgrounds
 
 Fixes an issue where DPI settings wouldn't be carried over once saved
 Fixes unreliable dropdown responsiveness

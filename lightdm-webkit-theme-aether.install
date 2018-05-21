@@ -6,8 +6,8 @@ post_install() {
 }
 
 post_remove() {
-  echo "Resetting default login theme."
+  #echo "Resetting default login theme."
 
-  sed -i 's/^webkit_theme.\+#\(.\+\)/webkit_theme = \1/g' /etc/lightdm/lightdm-webkit2-greeter.conf
-  sed -i 's/^greeter-session\+*#\(\+*\)\s#\(\+*\)\s/\1-session = \2/g' /etc/lightdm/lightdm.conf
+  #sed -i 's/^webkit_theme.\+#\(.\+\)/webkit_theme = \1/g' /etc/lightdm/lightdm-webkit2-greeter.conf
+  #sed -i 's/^greeter-session\+*#\(\+*\)\s#\(\+*\)\s/\1-session = \2/g' /etc/lightdm/lightdm.conf
 }
