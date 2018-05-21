@@ -3,7 +3,7 @@
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('EUPL-1.1')
@@ -74,9 +74,9 @@ prepare() {
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 9" && return 1 ; fi
   sed -i '/tricorderFunc() {/,+29d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/^  \"\-[r,up,l,t,f,c,a]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/^  \"\-[r,up,l,t,f,c]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 10" && return 1 ; fi
-  sed -i '/^  \"\-[r,up,l,t,f,c,a]/d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/^  \"\-[r,up,l,t,f,c]/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/^  \-[r,t,l,f],/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 11" && return 1 ; fi
@@ -156,6 +156,10 @@ prepare() {
   sed -n "/\"\-[p,c,f,k]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 9" && return 1 ; fi
   sed -i '/\"\-[p,c,f,k]/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
+
+  sed -n "/  \-[p,c,f,k]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 9" && return 1 ; fi
+  sed -i '/  \-[p,c,f,k]/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
 
   sed -n "/\"setexcludedomains/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 10" && return 1 ; fi
