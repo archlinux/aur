@@ -29,12 +29,6 @@ build() {
   make
 }
 
-check() {
-  cd "MediaInfo/Project/GNU/CLI"
-
-  make check
-}
-
 package() {
   cd "MediaInfo"
 
