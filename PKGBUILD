@@ -2,14 +2,14 @@
 
 pkgname=awesomebump-git
 pkgver=5.0.r13.g521bafb
-pkgrel=3
+pkgrel=4
 pkgdesc="A free program designed to generate normal, height, specular or ambient occlusion textures from a single image"
 arch=('i686' 'x86_64')
 url="http://awesomebump.besaba.com/"
 license=('LGPL3')
 depends=('qt5-base' 'qt5-location' 'qt5-script')
 conflicts=('awesomebump')
-makedepends=('imagemagick' 'git' 'wget' 'unzip' 'mesa-demos')
+makedepends=('git' 'wget' 'unzip' 'mesa-demos')
 source=("${pkgname}::git+https://github.com/kmkolasinski/AwesomeBump.git#commit=521bafb"
         "awesomebump.log.file.moved.to.tmp.patch"
         "awesomeBump.sh"
@@ -52,8 +52,7 @@ package() {
 
   cp --preserve=mode -r ${pkgname}/Bin "${pkgdir}/opt/awesomebump"
 
-  convert ${pkgname}/Sources/resources/icons/icon.ico awesomebump.png
-  install -Dm644 "awesomebump.png" "${pkgdir}/usr/share/pixmaps/awesomebump.png"
+  install -Dm644 ${pkgname}/Sources/resources/icons/icon.png "${pkgdir}/usr/share/pixmaps/awesomebump.png"
   install -Dm644 "awesomebump.desktop" "${pkgdir}/usr/share/applications/awesomebump.desktop"
   install -Dm755 "awesomeBump.sh" "${pkgdir}/usr/bin/awesomeBump"
 
