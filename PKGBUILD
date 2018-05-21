@@ -1,4 +1,4 @@
-# Maintainer: axionl <axionl@aosc.io>
+# Maintainer: Ariel AxionL <axionl@aosc.io>
 pkgname=ciel-git 
 pkgver=r316.af0d0c2
 pkgrel=1
