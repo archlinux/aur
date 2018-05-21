@@ -32,11 +32,11 @@ _localmodcfg=
 
 pkgbase=linux-gc             # Build kernel with a different name
 _srcname=linux-4.16
-pkgver=4.16.9
+pkgver=4.16.10
 pkgrel=1
 _pdsversion=098p
 arch=('x86_64')
-url="https://www.kernel.org/"
+url="http://cchalpha.blogspot.co.uk/"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
@@ -53,8 +53,7 @@ source=(
   "$_psd_patch::https://bitbucket.org/alfredchen/linux-gc/downloads/${_psd_patch}"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  0003-Partially-revert-swiotlb-remove-various-exports.patch
-  0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
+  0003-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -62,18 +61,17 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '299b45a4f16f763ecf654e6642c020b6e9e461601d056ef44ecb21b54d736cbf'
+            '9fe6093be401fe0ff3f6cb3d428f137119a7befaf86d70f18c7e88871c1852d6'
             'SKIP'
-            'de9895636eeb008717a0c3f2a3537ce1641c176001cc78be3a22c6d58a78a883'
+            '5ea627c419baef8aa6c0024a0f352716f6655283402e3f3318a188fea984971d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '5e421e0c3fc60706640c202612c9d6b2de0f04499c90798e5e3b153fc356e6ef'
-            '69241df4bd7897eb04db90e4d0a82c6e0b99b806019ba96bb885278ca8da89df'
-            '10728f672a83a515af540cafafde62346e9ccc2d14bf74e417fd2693865b1293'
-            'a81b612369e78d142ff80ec3adda36b3f94503e5a68d54282c508a112cc8dae0'
-            '052a39582f84c52b027c261fcec90325493f4d46f15647c274a58e39145deced')
+            '286ea6a6f19148ec09d7c07bd80cd08f44a9b8f5821b0732fdbb1dc14ceb539b'
+            'ca6590d1368788dff5dd41f2a643ee1dcce4ec9e5ead5caa6e673f68c44851cb'
+            'ffa7f3305bade3ed258a93919c28fb0c810953d3e44ae4c9608512991f7eb703')
 
 _kernelname=${pkgbase#linux}
 
@@ -92,19 +90,17 @@ prepare() {
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
-  # NVIDIA driver compat
-  patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
-
   # https://bugs.archlinux.org/task/58237
-  patch -Np1 -i ../0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
+  patch -Np1 -i ../0003-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
 
   # Patch source with PDS scheduler
   patch -Np1 -i "../${_psd_patch}"
 
   # Patch source to unlock additional gcc CPU optimizatons
   # https://github.com/graysky2/kernel_gcc_patch
-  patch -Np1 -i "../kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
+  patch -Np1 -i "../kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
+  # Clean tree and copy ARCH config over
   make mrproper
 
   cat ../config - >.config <<END
