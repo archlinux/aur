@@ -1,13 +1,13 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 
 pkgname=xtensor
-pkgver=0.15.9
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="QuantStack tools library - Multi-dimensional arrays with broadcasting and lazy computing."
 arch=('x86_64')
 url="https://github.com/QuantStack/${pkgname}"
 license=('BSD-3-Clause')
-depends=('gcc')
+depends=('gcc' 'xtl' 'nlohmann-json')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QuantStack/${pkgname}/archive/${pkgver}.tar.gz")
 
@@ -26,5 +26,4 @@ package() {
 	cd "${pkgname}-${pkgver}/build"
   make install
 }
-
-sha512sums=('0be36937d2b1a40658526465f28f6e7365cd5d154075472c2d94321bc418b54c2c8ce14d143a85b2cae481b384253689f00c43bfb563023ef86d44a409a21a2a')
+sha512sums=('e94c69f4f26e060c7569aa74db6a859e8ddce0df6935e45f68f82bff45caae3b394962ab6d150e8c0debc9fd14487ac22136b869b0fa80522f969842333b704c')
