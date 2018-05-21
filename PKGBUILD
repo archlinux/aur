@@ -38,6 +38,7 @@ makedepends=('git'
              'jack'
              'libuvc')
 provides=('webcamoid')
+conflicts=('webcamoid')
 install="${pkgrealname}.install"
 source=("git://github.com/${pkgrealname}/${pkgrealname}.git")
 md5sums=('SKIP')
