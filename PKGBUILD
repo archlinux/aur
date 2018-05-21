@@ -16,7 +16,7 @@ md5sums=('41384e1ce80072b880a44a0f10ff4150')
 package() {
   cd "$pkgdir"
   mkdir -p usr/share/lightdm-webkit/themes/
-  rm -Rf /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether
+  rm -Rf usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether
   cd usr/share/lightdm-webkit/themes/
   cp --recursive "$srcdir/Aether-$pkgver" "$pkgname"
 }
