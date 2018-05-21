@@ -3,7 +3,7 @@ post_install() {
 # set the PETSC_DIR
 source /etc/profile.d/petsc.sh
 export PETSC_DIR=${PETSC_DIR}
-export PETSC_ARCH=${PETSC_ARCH}
+#export PETSC_ARCH=${PETSC_ARCH}
 
 noVersion=${1%%-[1-9]}
 rootDir=${noVersion/_/-}

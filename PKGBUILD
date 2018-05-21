@@ -3,7 +3,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.9.2
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -116,7 +116,7 @@ package() {
 
 	mkdir -p ${pkgdir}/etc/profile.d
 	echo "export PETSC_DIR=${_install_dir}" > ${pkgdir}/etc/profile.d/petsc.sh
-	echo "export PETSC_ARCH=${_petsc_arch}" >> ${pkgdir}/etc/profile.d/petsc.sh
+	#echo "export PETSC_ARCH=${_petsc_arch}" >> ${pkgdir}/etc/profile.d/petsc.sh
 	chmod +x ${pkgdir}/etc/profile.d/petsc.sh
 
 	# show where the shared libraries are
