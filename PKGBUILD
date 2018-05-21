@@ -3,14 +3,12 @@
 pkgname=cropgui
 arch=('any')
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple tool for lossless jpeg cropping"
 license=('GPL')
 url="https://github.com/jepler/cropgui"
 depends=('libjpeg' 'python2-pillow' 'imagemagick' 'pygtk')
 source=("https://github.com/jepler/cropgui/archive/v${pkgver}.tar.gz")
-provides=('cropgui')
-conflicts=('cropgui-git')
 md5sums=('fd40d5b3b8c106ff6bb149a624fc9683')
 
 package() {
