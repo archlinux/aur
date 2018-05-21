@@ -52,14 +52,6 @@ build() {
     LC_CTYPE=en_US.UTF-8 xvfb-run make EXTRA_CFLAGS="$CFLAGS"
 }
 
-check_DISABLED() {
-    cd "${srcdir}/Python-${pkgver}"
-
-    LD_LIBRARY_PATH="${srcdir}/Python-${pkgver}":${LD_LIBRARY_PATH} \
-    LC_CTYPE=en_US.UTF-8 xvfb-run \
-    "${srcdir}/Python-${pkgver}/python" -m test.regrtest -v -uall -x test_gdb
-}
-
 package() {
     cd "${srcdir}/Python-${pkgver}"
 
