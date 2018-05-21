@@ -1,4 +1,5 @@
-# Maintainer: Thomas Berryhill <tb01110100@gmail.com>
+# Maintainer: Amish <contact at via dot aur>
+# Contributor: Thomas Berryhill <tb01110100@gmail.com>
 # Contributor: Vlad M. <vlad@arhclinux.net>
 # Contributor: chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
 # Contributor: mazieres
@@ -6,68 +7,92 @@
 
 pkgname="sendmail"
 pkgver=8.15.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The sendmail MTA"
 url="http://www.sendmail.org"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('Sendmail License')
 provides=('sendmail=8.15')
-conflicts=('msmtp-mta'
-           'postfix'
-           'exim'
-           'opensmtpd')
+conflicts=('msmtp-mta' 'postfix' 'exim' 'opensmtpd')
 backup=('etc/conf.d/sendmail'
         'etc/mail/aliases'
-         'etc/mail/sendmail.cf')
+        'etc/mail/sendmail.cf')
 source=("ftp://ftp.sendmail.org/pub/${pkgname}/${pkgname}.${pkgver}.tar.gz"
-        'sendmail.service'
+        'sendmail-8.15.2-smtp-session-reuse-fix.patch'
+        'sendmail-8.15.2-openssl-1.1.0-fix.patch'
+        'sendmail-8.15.2-openssl-1.1.0-ecdhe-fix.patch'
         'sendmail.conf'
+        'sendmail.sysusers'
+        'sendmail.tmpfiles'
+        'sendmail.service'
         'sm-client.service')
-depends=('db'
-         'cyrus-sasl')
+depends=('db' 'cyrus-sasl')
 sha256sums=('24f94b5fd76705f15897a78932a5f2439a32b1a2fdc35769bb1a5f5d9b4db439'
-            '380edeb289dfdfc5b0d4ea38df3a0fd35e6f83eeee76254ec7b3506eadfb674f'
+            'bc5a0de6c5434d8d46467f93d07b2bb5c7acd62f9dbce2490e0005d21b673250'
+            '9991dd85428778cec0c2030bf49e6ddf6d3db6026c651f858d72891973537b0e'
+            '746d8ae8dea54cb2599c02181c2ea28ab15b26ba5e1e3b0f9cfe907a0e7a1d22'
             '39730f2be66bb1f1e6bc7fff61911db632ecf4b891d348df525abe2020274580'
+            '40ee2d98af98e6a094c42934f10aa7cb0d62fa38184e447a65b45f317e741b5e'
+            '4b5168dea0196a9a03e5a0b54a8354cec7563973705db35a22f451bcedcd388f'
+            '380edeb289dfdfc5b0d4ea38df3a0fd35e6f83eeee76254ec7b3506eadfb674f'
             'ecbd0a27e868d73d87fcfec292c19ea9479d0a8e9783788596d9add5e012218f')
-install="${pkgname}.install"
 
-build(){
-  cd "$srcdir/${pkgname}-${pkgver}" || return 1
-  # Add support for SASL2
-  chmod +w devtools/OS/Linux
-  echo -e "define(\`confSTDIO_TYPE', \`portable')\nAPPENDDEF(\`conf_sendmail_ENVDEF', \`-DSTARTTLS')\nAPPENDDEF(\`conf_sendmail_LIBS', \`-lssl -lcrypto')\n">>devtools/OS/Linux
-  echo "APPENDDEF(\`conf_sendmail_ENVDEF', \`-DSASL=2')" >>devtools/OS/Linux
-  echo "APPENDDEF(\`conf_libmilter_ENVDEF', \`-DNETINET6')" >>devtools/OS/Linux
-  echo "APPENDDEF(\`conf_sendmail_LIBS', \`-lresolv -lsasl2')" >>devtools/OS/Linux
-  echo "APPENDDEF(\`confLIBS', \`-ldb')" >>devtools/OS/Linux
-  echo "APPENDDEF(\`confMAPDEF', \`-DNEWDB')" >>devtools/OS/Linux
+prepare() {
+    # patches picked from Fedora
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch -p1 < "${srcdir}"/sendmail-8.15.2-smtp-session-reuse-fix.patch
+    patch -p1 < "${srcdir}"/sendmail-8.15.2-openssl-1.1.0-fix.patch
+    patch -p1 < "${srcdir}"/sendmail-8.15.2-openssl-1.1.0-ecdhe-fix.patch
 
-  sed -i -e '58 s/^/dnl /' -e '59 s/^/dnl /' sendmail/Makefile.m4 # Sendmail expects user and group smmsp to exists before make install, this line prevent errors from that
-  ./Build || return 1
-  sed -i -e '449 s/-o [^}]*}[^}]*}//' -e '449 s/-m .{GBINMODE}/-m 755/' obj.*/sendmail/Makefile # Sendmail expects user and group smmsp to exists before make install, this line prevent errors from that
-  GROFF_NO_SGR=1 make -C doc/op op.txt op.ps
+    chmod 0644 devtools/OS/Linux
+    echo "define(\`confSTDIO_TYPE', \`portable')" >> devtools/OS/Linux
+    echo "define(\`confGBINGRP', \`25')" >> devtools/OS/Linux
+    echo "define(\`confMSPQOWN', \`150')" >> devtools/OS/Linux
+    echo "define(\`confINCGRP', \`root')" >> devtools/OS/Linux
+    echo "define(\`confLIBGRP', \`root')" >> devtools/OS/Linux
+    echo "define(\`confMANGRP', \`root')" >> devtools/OS/Linux
+    echo "define(\`confMANOWN', \`root')" >> devtools/OS/Linux
+    echo "define(\`confMBINGRP', \`root')" >> devtools/OS/Linux
+    echo "define(\`confSBINGRP', \`root')" >> devtools/OS/Linux
+    echo "define(\`confUBINGRP', \`root')" >> devtools/OS/Linux
+    echo "define(\`confUBINOWN', \`root')" >> devtools/OS/Linux
+    echo "define(\`confEBINDIR', \`/usr/bin')" >> devtools/OS/Linux
+    echo "define(\`confMBINDIR', \`/usr/bin')" >> devtools/OS/Linux
+    echo "define(\`confSBINDIR', \`/usr/bin')" >> devtools/OS/Linux
+    echo "define(\`confMANROOT', \`/usr/share/man/man')" >> devtools/OS/Linux
+    echo "APPENDDEF(\`conf_sendmail_ENVDEF', \`-DSTARTTLS')" >> devtools/OS/Linux
+    echo "APPENDDEF(\`conf_sendmail_LIBS', \`-lssl -lcrypto')" >> devtools/OS/Linux
+    echo "APPENDDEF(\`conf_sendmail_ENVDEF', \`-DSASL=2')" >> devtools/OS/Linux
+    echo "APPENDDEF(\`conf_libmilter_ENVDEF', \`-DNETINET6')" >>devtools/OS/Linux
+    echo "APPENDDEF(\`conf_sendmail_LIBS', \`-lresolv -lsasl2')" >> devtools/OS/Linux
+    echo "APPENDDEF(\`confLIBS', \`-ldb')" >> devtools/OS/Linux
+    echo "APPENDDEF(\`confMAPDEF', \`-DNEWDB')" >> devtools/OS/Linux
+    sed -i -e 's/CFGRP=bin/CFGRP=root/g' cf/cf/Makefile
 }
 
-package(){
-  mkdir -p $pkgdir/etc/conf.d/
-  mkdir -p $pkgdir/usr/{bin,sbin,share/man,share/doc/sendmail,/lib/systemd/system} \
-    $pkgdir/usr/man/man{1,5,8} $pkgdir/var/spool/mqueue \
-    || return 1
-  cp sendmail.service sm-client.service $pkgdir/usr/lib/systemd/system
-  cp sendmail.conf $pkgdir/etc/conf.d/sendmail
-  cd "$srcdir/${pkgname}-${pkgver}" || return 1
-  make install DESTDIR="$pkgdir" || return 1
-  make -C mail.local force-install DESTDIR="$pkgdir" || return 1
-  make -C rmail force-install DESTDIR="$pkgdir" || return 1
-  mv $pkgdir/usr/man/* $pkgdir/usr/share/man/
-  rmdir $pkgdir/usr/man
-  cp -r cf $pkgdir/usr/share/sendmail-cf
-  cp sendmail/aliases $pkgdir/etc/mail/aliases
-  cp cf/cf/generic-linux.cf $pkgdir/etc/mail/sendmail.cf
-  cp doc/op/op.{ps,txt} $pkgdir/usr/share/doc/sendmail/
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  find $pkgdir -user bin -print | xargs chown root
-  find $pkgdir -group bin -print | xargs chgrp root
-  mv $pkgdir/usr/sbin/* $pkgdir/usr/bin/
-  rmdir $pkgdir/usr/sbin
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    ./Build
+    GROFF_NO_SGR=1 make -C doc/op op.txt op.ps
+}
+
+package() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    install -dm755 "${pkgdir}"/usr/{bin,share/{doc/sendmail,man/man{1,5,8}}}
+    make install DESTDIR="${pkgdir}"
+    make -C mail.local force-install DESTDIR="${pkgdir}"
+    make -C rmail force-install DESTDIR="${pkgdir}"
+
+    cp -r cf "${pkgdir}"/usr/share/sendmail-cf
+    rmdir "${pkgdir}"/{var/spool/clientmqueue,var/spool,var}
+    install -Dm644 -t "${pkgdir}"/etc/mail sendmail/aliases
+    install -Dm644 cf/cf/generic-linux.cf "${pkgdir}"/etc/mail/sendmail.cf
+    install -Dm644 -t "${pkgdir}"/usr/share/doc/sendmail doc/op/op.{ps,txt}
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+
+    cd "${srcdir}"
+    install -Dm644 sendmail.conf "${pkgdir}"/etc/conf.d/sendmail
+    install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system {sendmail,sm-client}.service
+    install -Dm644 sendmail.sysusers "${pkgdir}"/usr/lib/sysusers.d/sendmail.conf
+    install -Dm644 sendmail.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/sendmail.conf
 }

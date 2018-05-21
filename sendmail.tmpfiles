@@ -1,0 +1,2 @@
+d /var/spool/clientmqueue 0770 smmsp smmsp
+d /var/spool/mqueue 0755 root root
