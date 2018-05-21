@@ -1,0 +1,17 @@
+pkgbase = libzen-git
+	pkgdesc = Shared library for libmediainfo
+	pkgver = 0.4.37.r12.g49019a7
+	pkgrel = 1
+	url = https://github.com/MediaArea/ZenLib
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = gcc-libs
+	provides = libzen
+	conflicts = libzen
+	source = git+https://github.com/MediaArea/ZenLib.git
+	sha256sums = SKIP
+
+pkgname = libzen-git
+
