@@ -1,7 +1,8 @@
 # Maintainer: Will Price <will.price94@gmail.com>
+_version=2018-02-27
 pkgname=stanford-parser
-pkgver=3.8.0
-pkgrel=2
+pkgver=3.9.1
+pkgrel=3
 pkgdesc="A natural language parser is a program that works out the grammatical structure of sentences."
 arch=(x86_64)
 url="https://nlp.stanford.edu/software/lex-parser.shtml#Download"
@@ -10,9 +11,8 @@ groups=()
 depends=(java-runtime)
 optdepends=('stanford-corenlp-models-english: English models')
 provides=('stanford-parser')
-_version=2017-06-09
 source=("https://nlp.stanford.edu/software/stanford-parser-full-${_version}.zip")
-md5sums=('93695f5f6d42ac17f140965d239d1bc1')
+sha512sums=('e9c97218bed8046eb93ff02cc678ec5787bab9b95b7eb69247fa05facc34c89d51bebf0326dd4eac0b3be82806f9060e6635c7c784a26bce99ae4c28e8b55614')
 
 package() {
     cd "${srcdir}/stanford-parser-full-${_version}"
