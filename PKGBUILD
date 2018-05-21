@@ -1,7 +1,7 @@
 # Maintainer: Reto Kaiser <reto@retokaiser.com>
 
 pkgname=intellij-idea-ue-bundled-jre
-pkgver=2018.1.3
+pkgver=2018.1.4
 pkgrel=1
 pkgdesc="Jetbrains IDE for Java and other programming languages. This packages contains a bundled JRE."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(
   'sysctl.conf'
 )
 sha256sums=(
-  '4c5dbae40f0f045bcfa1c17c579c0d8cd8fb1823117a49a16ddd23249b078154'
+  'fb16e1533902823e1a9c5eccd5193cc548c9ce9ba5687778446a3475266c4284'
   'fe26083eb313a977112f6571fb97ff369d48bbfabfde18c1339168662c666ca3'
   '9351eb68fabd41788a0d517b32d517e1821afde2a35727ff322c450bab1697c9'
 )
