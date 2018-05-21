@@ -2,11 +2,11 @@
 # Maintainer: Liqueur Librazy <im@librazy.org>
 # Contributor: Jian Zeng <anonymousknight96@gmail.com>
 pkgbase=tidb-bin
-_basever=2.0.0
+_basever=2.0.1
 #_relver=-prega
 #pkgver=$_basever.$_relver
 pkgver=$_basever
-pkgrel=2
+pkgrel=1
 pkgname=("${pkgbase}" "${pkgbase}-utils")
 pkgdesc="A distributed NewSQL database compatible with MySQL protocol"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("https://download.pingcap.org/tidb-v$_basever$_relver-linux-amd64.tar.gz
         "tidb.sysusers"
 	"tidb.tmpfiles"
 	)
-sha256sums=('038bba8cd9f4552ddc42f913989eaafa2ce6844d5a6f7ad6d9752082242a3c28'
+sha256sums=('9fc52df63582027f8b43997399dee63cbbe25b69c94a504dfad77951c21445b9'
             '6fb6ae67a53c6cd054643542e76da6f16e000b029a98b34172972fcb505fc299'
             '15f285782938b3ebbb8be60cc962a2cbf5ca349527c39d3a1138be1bf976feb9')
 
