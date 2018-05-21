@@ -9,7 +9,6 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://www.hidglobal.com/"
 license=('custom:HID_OK_Drivers_EULA')
 depends=('libusb' 'pcsclite')
-makedepends=('unzip')
 conflicts=('omnikey_ifdokccid-git')
 source=("https://www.hidglobal.fr/sites/default/files/drivers/omnikey_ccid_driver_for_8051_controller_based_readers_v.${pkgver}.zip")
 md5sums=('441670be336df12167652a751ba5a08e')

@@ -9,7 +9,6 @@ pkgbase = omnikey_ifdokccid
 	arch = armv6h
 	arch = armv7h
 	license = custom:HID_OK_Drivers_EULA
-	makedepends = unzip
 	depends = libusb
 	depends = pcsclite
 	conflicts = omnikey_ifdokccid-git
