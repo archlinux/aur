@@ -1,7 +1,7 @@
 # Maintainer: Mansour Behabadi <mansour@oxplot.com>
 
 pkgname=pdi-ce
-pkgver=8.0.0.0_28
+pkgver=8.1.0.0_365
 pkgrel=1
 
 pkgdesc='Pentaho Data Integration (ETL) a.k.a Kettle'
@@ -20,7 +20,7 @@ source=(
   "spoon.desktop"
 )
 sha1sums=(
-  '0332aa527f69ebd3224ffea5bbb451f032b0fda6'
+  '8f796149b60621926b8083a46ce320e0fbd2009a'
   'b4166cbcb4fe8c77a4fc4ac02b08703aeacb9759'
   'cff3ac6b1df50792b41e613d39bcc3a04eea2e18'
   '0e06b24ffdfad8af2f321ad855d819d5cf4b085c'
