@@ -64,7 +64,7 @@ _mq_enable=
 pkgbase=linux-bfq-mq-git
 _srcname=bfq-mq
 pkgver=4.16.0.gae5d5407f10c
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -98,7 +98,7 @@ source=(# bfq-mq repository
 sha256sums=('SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '23041a75da90e0dccaf5a67e446ac53a3d3624cd46cfa3e1dda00350b1797e5e'
+            'b77ffe5194f8e1c1fa4e5a9ef931e8094a54a9ef291c67ddbbe3495d98fa9c91'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
