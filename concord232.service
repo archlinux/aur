@@ -10,7 +10,8 @@ EnvironmentFile=/etc/conf.d/concord232
 ExecStart=/usr/bin/concord232_server \
   --serial ${CONCORD232_SERIAL_DEV} \
   --listen ${CONCORD232_LISTEN_ADDR} \
-  --port ${CONCORD232_LISTEN_PORT}
+  --port ${CONCORD232_LISTEN_PORT} \
+  --log ${CONCORD232_LOG_FILE}
 
 [Install]
 WantedBy=multi-user.target
