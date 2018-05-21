@@ -1,6 +1,6 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 pkgname=freeverb3
-pkgver=3.1.2
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="a signal processing library"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="http://www.nongnu.org/freeverb3"
 license=('GPL2')
 depends=('fftw')
 source=("http://download-mirror.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.xz")
-md5sums=('ff83897f258500d5b07ae6b7d6a6860c')
+md5sums=('8f57e0758024696cdfc0f5e75a2752de')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
