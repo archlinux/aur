@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Gadmin Bind
+Icon=gadmin-bind
+Exec=gadmin-bind-menu
+Categories=Applications;System;

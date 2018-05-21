@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -f /usr/bin/gksu ]; then
+	gksu /usr/bin/gadmin-bind
+else
+	/usr/bin/gadmin-bind
+fi
