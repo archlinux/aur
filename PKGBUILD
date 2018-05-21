@@ -6,10 +6,10 @@ version=0.3.1
 #fragment="#commit=7e49329 "
 files=(import_off.py)
 is_flat="yes"
-_blender=$(expac "%v" -S blender|egrep -o [[:alnum:]]{1}.[[:alnum:]]{2})
+_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
-pkgver=v0.3.1.r0.g57f0195
+pkgver=v0.3.1.r2.g77d9456
 pkgrel=1
 pkgdesc="Integrate cork boolean library into blender"
 arch=('any')
