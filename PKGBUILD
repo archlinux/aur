@@ -2,22 +2,22 @@
 
 pkgname=galileo
 pkgver=0.5.1
-pkgrel=3
-_bitbucket_folder=benallard-galileo-f0ebc19c748d
-pkgdesc='Utility to securely synchronize a Fitbit tracker with the Fitbit server'
+pkgrel=4
+pkgdesc='Utility to securely synchronize a Fitbit tracker with the Fitbit server - Stable release'
 license=('LGPL3')
 url='https://bitbucket.org/benallard/galileo'
 depends=('python-pyusb' 'python-requests')
-makedepends=('python-setuptools')
-source=("https://bitbucket.org/benallard/${pkgname}/get/${pkgver}.tar.gz")
-sha256sums=('0dbf394c20acf2acb7226d2ea6609ff0199b8a6b63b545c2b8efffc6841ab411')
+makedepends=('mercurial' 'python-setuptools')
+conflicts=('galileo-dev')
+source=("$pkgname::hg+https://bitbucket.org/benallard/galileo/src#branch=0.5" "galileo.install")
+md5sums=('SKIP' '73a28532a02a6c0bcc1c233f64be7103')
 arch=('any')
 options=(!emptydirs)
 backup=("etc/galileo/config")
 install=galileo.install
 
 prepare() {
-  cd $srcdir/$_bitbucket_folder
+  cd $srcdir/$pkgname
 
   sed -i 's/logging: verbose/logging: quiet # quiet is default/' galileorc.sample
   sed -i "26,35s/^\(.*\)$/\#\1/" galileorc.sample
@@ -26,7 +26,7 @@ prepare() {
 }
 
 package(){
-  cd $srcdir/$_bitbucket_folder
+  cd $srcdir/$pkgname
   python setup.py install --root=$pkgdir
 
   install -d -m755                  $pkgdir/etc/{udev/rules.d, $pkgname}
