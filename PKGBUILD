@@ -4,8 +4,8 @@
 _pkgname=cups-print-to-programme
 pkgname="${_pkgname}"
 pkgver=0.1.5
-pkgrel=1
-pkgdesc="Print filter for cups which prints to a file (type: ) and opens that with a programme the user can choose in the settings. For example, print to gimp."
+pkgrel=2
+pkgdesc="Virtual printer for cups which prints to a file and opens that with a programme the user can choose in the settings. For example, print to gimp."
 arch=('any')
 depends=(
   'cups'
