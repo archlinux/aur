@@ -1,16 +1,16 @@
 pkgbase = omnikey_ifdokccid
 	pkgdesc = PCSC driver for OMNIKEY 1021, 3x21, 6121,512x, 532x
-	pkgver = 4.3.2
+	pkgver = 4.3.3
 	pkgrel = 3
 	url = http://www.hidglobal.com/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = custom:HID_OK_Drivers_EULA
+	makedepends = unzip
 	depends = libusb
 	depends = pcsclite
 	conflicts = omnikey_ifdokccid-git
-	source = https://www.hidglobal.com/sites/default/files/drivers/ifdokccid_linux_v.4.3.2-1-d2622a7fbea0.tar.gz
-	md5sums = 11b6bedbe2d7578c17ccfc7fd58f5059
+	source = https://www.hidglobal.fr/sites/default/files/drivers/omnikey_ccid_driver_for_8051_controller_based_readers_v.4.3.3.zip
+	md5sums = 441670be336df12167652a751ba5a08e
 
 pkgname = omnikey_ifdokccid
 

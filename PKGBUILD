@@ -1,25 +1,35 @@
 # Creator: Peter Petrov <onestone at gmail dot com>
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
-_gitrel=d2622a7fbea0
-_pkgrel=1
+_gitrel=a973c36ed296
 pkgname=omnikey_ifdokccid
-pkgver=4.3.2
+pkgver=4.3.3
 pkgrel=3
 pkgdesc="PCSC driver for OMNIKEY 1021, 3x21, 6121,512x, 532x"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.hidglobal.com/"
 license=('custom:HID_OK_Drivers_EULA')
 depends=('libusb' 'pcsclite')
+makedepends=('unzip')
 conflicts=('omnikey_ifdokccid-git')
-source=("https://www.hidglobal.com/sites/default/files/drivers/ifdokccid_linux_v.${pkgver}-${_pkgrel}-${_gitrel}.tar.gz")
-md5sums=('11b6bedbe2d7578c17ccfc7fd58f5059')
+source=("https://www.hidglobal.fr/sites/default/files/drivers/omnikey_ccid_driver_for_8051_controller_based_readers_v.${pkgver}.zip")
+md5sums=('441670be336df12167652a751ba5a08e')
 
 package() {
-    # Extract the multi-package first
-    cd $srcdir/ifdokccid_linux_v.${pkgver}-${_pkgrel}-${_gitrel}
+    _ARCH=""
+
+    # Update the architecture name based on the current one running this PKGBUILD
+    if [ "$CARCH" == "i686" ]; then
+        _ARCH="i686"
+    elif [ "$CARCH" == "x86_64" ]; then
+        _ARCH="x86_64"
+    else
+        _ARCH="arm"
+    fi
+
+    cd $srcdir/
 
     # Temporary variable
-    _PACKAGE_NAME="ifdokccid_linux_${CARCH}-v.${pkgver}-${_pkgrel}-${_gitrel}"
+    _PACKAGE_NAME="ifdokccid_linux_${_ARCH}-${pkgver}-${pkgrel}-${_gitrel}"
 
     # Extract the platform package
     tar xzf ${_PACKAGE_NAME}.tar.gz
