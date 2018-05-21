@@ -1,0 +1,11 @@
+--- gam.py	2017-12-21 08:12:46.000000000 -0700
++++ gam.py	2018-05-21 17:30:01.345278208 -0600
+@@ -52,7 +52,7 @@
+ import oauth2client.file
+ import oauth2client.tools
+ 
+-import utils
++import python_utils as utils
+ from var import *
+ 
+ # Override some oauth2client.tools strings saving us a few GAM-specific mods to oauth2client
