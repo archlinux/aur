@@ -1,4 +1,4 @@
-# Maintainter: Tercio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer: Tercio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 # Contributor: Brandon Mulcahy <brandon@jangler.info>
 
 pkgname=schismtracker
