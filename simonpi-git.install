@@ -1,7 +1,15 @@
+qemuconf=/etc/qemu/
+
 post_install() {
-	echo "allow rasp-br0" >> /etc/qemu/bridge.conf
+
+	if [ ! -d $qemuconfs  ]; then 
+		mkdir "$qemuconf"	
+	fi
+
+        echo "allow rasp-br0" >> "$qemuconf"/bridge.conf
 }
 
 post_remove() {
 	sed -i '/rasp-br0/d' /etc/qemu/bridge.conf
+	echo "Please remember to remove $qemuconf/bridge.conf if not needed"
 }

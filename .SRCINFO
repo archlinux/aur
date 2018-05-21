@@ -19,7 +19,6 @@ pkgbase = simonpi-git
 	depends = ovmf-arm
 	depends = ovmf-aarch64
 	depends = procps-ng
-	depends = qemu-guest-agent
 	depends = qemu-headless-arch-extra
 	depends = sudo
 	depends = util-linux

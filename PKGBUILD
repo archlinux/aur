@@ -7,8 +7,7 @@ pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your l
 arch=(any)
 url="https://github.com/M0Rf30/simonpi"
 license=('GPL')
-depends=('coreutils' 'dnsmasq' 'dosfstools' 'e2fsprogs' 'file' 'grep' 'iproute2' 'iptables' 'libarchive' 'ovmf-arm' 'ovmf-aarch64' 'procps-ng' 'qemu-guest-agent'
-	'qemu-headless-arch-extra' 'sudo'
+depends=('coreutils' 'dnsmasq' 'dosfstools' 'e2fsprogs' 'file' 'grep' 'iproute2' 'iptables' 'libarchive' 'ovmf-arm' 'ovmf-aarch64' 'procps-ng' 'qemu-headless-arch-extra' 'sudo' 
 'util-linux' 'wget')
 makedepends=('git')
 install=simonpi-git.install
