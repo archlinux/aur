@@ -1,6 +1,6 @@
 pkgbase = reaper
 	pkgdesc = digital audio workstation
-	pkgver = 5.90rc7
+	pkgver = 5.90rc8
 	pkgrel = 1
 	url = http://www.reaper.fm
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = reaper
 	depends = gdk-pixbuf2
 	depends = gtk3
 	depends = jack
-	source = http://www.landoleet.org/reaper590rc7_linux_x86_64.tar.xz
+	source = http://www.landoleet.org/reaper590rc8_linux_x86_64.tar.xz
 	source = git+https://github.com/justinfrankel/WDL.git
 	source = https://stash.reaper.fm/30638/reaper-desktop-support.zip
-	sha256sums = 541c7214fdaa474a744760504fad81729cc398de16249acea6dc58e0672c6481
+	sha256sums = 32008ee81c0a7acd46ddcd57e4723462a8b537d17f5e1857a9767d73487b62f6
 	sha256sums = SKIP
 	sha256sums = c16c8d8d66502852f4948d0c2d3f48f7fd17e598d1f14b05cec54e6cfd8c01b7
 
