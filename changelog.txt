@@ -1,6 +1,22 @@
+v2.2.0 -- Monday, May 21, 2018 4:46:47 AM
+
+Adds an experimental "Star Field" as the beginning of optional eye candy features (found under the 'Style' tab in the settings)
+Adds the ability to select the password field with CTRL + A
+Adds the option to hide the User Switcher
+Adds the option to hide Avatar backgrounds
+
+Fixes an issue where DPI settings wouldn't be carried over once saved
+Fixes unreliable dropdown responsiveness
+Fixes theme "flashing" before loading properly
+Fixes several instances where changing certain options wouldn't update as expected
+
+===============================================================================
+
 v2.0.1 -- Sat, 17 Mar 2018 11:39:27 GMT
 
 Fixes color picker issues when editing values.
+
+===============================================================================
 
 v2.0.0 -- Fri, 17 Mar 2017 09:42:36 GMT
 
@@ -10,10 +26,14 @@ Adds the ability to create / load theme presets using the current settings
 Adds DPI setting for High DPI (Retina) devices
 Theme will now auto-focus the password field on-load
 
+===============================================================================
+
 v1.3.1 -- Fri, 17 Mar 2017 09:42:36 GMT
 
 Fixes an error that would occur due to poor distro logo configuration handling.
 Fixes poor CSS rendering due to Safari 10 quirkiness.
+
+===============================================================================
 
 v1.3.0 -- Fri, 17 Mar 2017 06:33:46 GMT
 
@@ -21,6 +41,8 @@ Adds customization dialogue, distro logos, allows custom Date & Time formatting.
 
 Fixes login issues when used as a lockscreen, properly respects wallpaper
 directory setting.
+
+===============================================================================
 
 v1.2.1 -- Thu, 22 Sep 2016 09:44:53 GMT
 
