@@ -1,8 +1,8 @@
-# Maintainer: ArielAxionL <axionl@aosc.io>
+# Maintainer: Ariel AxionL <axionl@aosc.io>
 
 pkgname=('zafiro-icon-theme')
 pkgver=0.1.8
-pkgrel=3
+pkgrel=4
 pkgdesc="A icon pack flat with light colors."
 arch=('any')
 url="https://github.com/zayronxio/Zafiro-icons"
