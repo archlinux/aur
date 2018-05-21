@@ -4,8 +4,8 @@
 
 _pkgname=compton-conf
 pkgname=${_pkgname}-git
-pkgver=0.3.0.11.gae2c110
-pkgrel=2
+pkgver=0.4.0.0.gc6a6dd0
+pkgrel=1
 pkgdesc='A graphical configuration tool for Compton X composite manager. Development version.'
 arch=('i686' 'x86_64')
 url='https://github.com/lxde/compton-conf'
@@ -13,7 +13,7 @@ license=('LGPL2.1')
 
 groups=('lxqt')
 depends=('qt5-base' 'libconfig')
-makedepends=('cmake' 'git' 'qt5-tools' 'lxqt-build-tools-git')
+makedepends=('cmake' 'git' 'qt5-tools' 'lxqt-build-tools-git>=0.5.0')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
