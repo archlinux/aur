@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=wmii-git
-pkgver=r2818.a0b47f29
+pkgver=r2820.489c9e47
 pkgrel=1
 epoch=
 pkgdesc="A dynamic window manager for X11."
@@ -34,11 +34,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  sed -i 's/README/&.md/' Makefile
 }
 
 build() {
