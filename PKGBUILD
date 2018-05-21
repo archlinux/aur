@@ -2,7 +2,7 @@
 
 pkgname=mediainfo-git
 pkgver=18.05.r14.g78c2ab41
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for displaying technical and tag data for media files"
 arch=('i686' 'x86_64')
 url="https://mediaarea.net/en/MediaInfo"
@@ -42,5 +42,5 @@ package() {
   make DESTDIR="$pkgdir" install
 
   popd
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/mediainfo/LICENSE"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
