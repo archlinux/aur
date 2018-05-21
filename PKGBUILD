@@ -1,6 +1,7 @@
 # Creator: Peter Petrov <onestone at gmail dot com>
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 _gitrel=a973c36ed296
+_pkgrel=3
 pkgname=omnikey_ifdokccid
 pkgver=4.3.3
 pkgrel=3
@@ -28,7 +29,7 @@ prepare() {
     cd $srcdir/
 
     # Temporary variable
-    _PACKAGE_NAME="ifdokccid_linux_${_ARCH}-${pkgver}-${pkgrel}-${_gitrel}"
+    _PACKAGE_NAME="ifdokccid_linux_${_ARCH}-${pkgver}-${_pkgrel}-${_gitrel}"
 
     # Extract the platform package
     mkdir -p ${pkgname}
