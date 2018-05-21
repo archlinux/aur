@@ -1,0 +1,14 @@
+pkgbase = nodejs-adonis-cli
+	pkgdesc = Adonis CLI module to generate new Adonis JS application
+	pkgver = 2.1.9
+	pkgrel = 1
+	url = https://github.com/adonisjs/adonis-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = adonis-cli-2.1.9.tgz
+	source = https://registry.npmjs.org/adonis-cli/-/adonis-cli-2.1.9.tgz
+	sha256sums = 5a0771c94726fe171904a0fdb3db15176814b8b9be0d138b31d21e70d5ed6c8a
+
+pkgname = nodejs-adonis-cli
+
