@@ -1,6 +1,6 @@
 pkgbase = ddnet
 	pkgdesc = DDraceNetwork, a mod of Teeworlds
-	pkgver = 11.1.4
+	pkgver = 11.1.8
 	pkgrel = 1
 	url = https://ddnet.tw
 	arch = x86_64
@@ -8,8 +8,6 @@ pkgbase = ddnet
 	license = CCPL:by-nc-sa
 	checkdepends = gtest
 	makedepends = cmake
-	makedepends = imagemagick
-	makedepends = gendesk
 	makedepends = python
 	depends = alsa-lib
 	depends = sdl2
@@ -23,8 +21,16 @@ pkgbase = ddnet
 	provides = teeworlds-ddnet
 	conflicts = teeworlds-ddnet
 	replaces = teeworlds-ddnet
-	source = https://ddnet.tw/downloads/DDNet-11.1.4.tar.xz
-	sha256sums = 3654c730814fab5c8a5a541c143429b2b6259005b3c6f75eaec0e527ccd1f605
+	source = https://ddnet.tw/downloads/DDNet-11.1.8.tar.xz
+	source = ddnet.desktop
+	source = ddnet-server.desktop
+	source = DDNet.png
+	source = DDNet-Server.png
+	sha256sums = f8116f074d19fbd953ebd8fa204c63d5665a20120a6c71f81e793fb78e1243c2
+	sha256sums = fc8c27e129f92c5dddf96a079306a2439c8cc14d4b8ce719c5fa2f59aceee367
+	sha256sums = fc8c27e129f92c5dddf96a079306a2439c8cc14d4b8ce719c5fa2f59aceee367
+	sha256sums = 1dc83efd9fdab2597fc4d41358628422a9550d4d23b60d273f2f30cf7b76dfaa
+	sha256sums = e4083f1c40569146caabd21b8f24fdd7862e2f3040552e9c6a260df603249274
 
 pkgname = ddnet
 
