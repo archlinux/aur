@@ -1,6 +1,6 @@
 # Maintainer: grayarcher
 pkgname=leaguedisplays-git
-pkgver=1.0.928.e377785
+pkgver=1.0.928.e492b2d
 pkgrel=1
 pkdesc="HD League of Legends related screensavers and wallpapers, direct to your GNU/Linux desktop."
 arch=('x86_64')
@@ -12,6 +12,11 @@ provides=('leaguedisplays-git')
 conflicts=('leaguedisplays-git' 'leaguedisplays')
 source=(git://github.com/TheFrozenWatchers/LeagueDisplays.git)
 md5sums=(SKIP)
+
+pkgver() {
+    cd "$srcdir/LeagueDisplays"
+    echo "1.0.928."$(git describe --always | sed 's/-/./g')
+}
 
 build() {
     cd "$srcdir/LeagueDisplays"
