@@ -17,12 +17,12 @@ build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
 
   msg 'Building...'
-  python setup.py build
+  /usr/bin/python3 setup.py build
 }
 
 package() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
 
   msg 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  /usr/bin/python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
