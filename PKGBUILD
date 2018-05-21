@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=mill
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="shiny new Scala build tool"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('bash' 'java-environment<9')
 source=("$pkgname-$pkgver.sh::https://github.com/lihaoyi/mill/releases/download/$pkgver/$pkgver"
         "$pkgname-LICENSE::https://raw.githubusercontent.com/lihaoyi/mill/$pkgver/LICENSE")
 
-md5sums=('539a9f80922852fb9c65b969326f8236'
+md5sums=('68886890c250572aee8ffb6d637a159f'
          'SKIP')
 
 package() {
