@@ -37,7 +37,7 @@ optdepends=(
 )
 provides=("${_pkgname}-doc=${pkgver}")
 backup=('etc/cups/cups-programme.conf')
-sha256sums=('4f1cbf645a85df7b52f70138be67cf3840d4cc6bcb2ea4ab10034b869806cb6b'
+sha256sums=('fa64df5c481f51a00954b443895f232ce669be180271fa3f27b94666cae49991'
             'f583ed8969deef9e890b20c475bc24fd4eed8ef3c3a51544f9183fcc69d38c5c'
             'fff96ebdac583c710fa8762e967929b905ed342a0b8977268741e40403a3e31c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'

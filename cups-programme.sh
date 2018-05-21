@@ -398,8 +398,22 @@ case "${filetype}" in
         _pages='[0]'
       ;;
     esac
+    case "${filetype}" in
+      'png')
+        _convert_opts="-quality 100"
+      ;;
+      'jpg')
+        _convert_opts="-quality 65"
+      ;;
+      'tif')
+        _convert_opts="-compress LZW -quality 100"
+      ;;
+      'gif')
+        _convert_opts=""
+      ;;
+    esac
     notice "Converting to ${filetype} '${outfile}' with '${_convert}' ..."
-    ${_convert} -density 300 "${tmpfile}${_pages}" "${outfile}"
+    ${_convert} -density 300 "${tmpfile}${_pages}" ${_convert_opts} "${outfile}"
     rm -f "${tmpfile}"
   ;;
   *)
@@ -476,7 +490,6 @@ if [ -v user ] || [ -v group ]; then
         error "$0: Error: su_variant '${su_variant}' was specified, which requires the variable 'askpass_cmd' be (correctly) set in '${conffile}'. But it isn't. Aborting."
         exit 35
       fi
-      # export SUDO_ASKPASS=${askpass_cmd@Q}
       su_cmd="SUDO_ASKPASS=${askpass_cmd@Q} sudo"
       su_opts='-A -H'
       if [ -v group ]; then
