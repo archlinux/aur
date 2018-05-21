@@ -2,7 +2,7 @@
 
 pkgname=python-django-channels-redis
 _pypi_pkgname=channels_redis
-pkgver=2.1.1
+pkgver=2.2.1
 pkgrel=0
 pkgdesc="Redis-backed ASGI channel layer implementation"
 arch=(any)
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python' 'python-django-channels' 'python-aioredis' 'python-msgpack' 'python-asgiref' 'python-async-timeout')
 source=("https://pypi.io/packages/source/c/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-md5sums=('aeb4b272f2c157926616cfb8a0e56644')
+sha256sums=('5c2bde69a205efd448fe012d09d320dbdeb4a37212c0999fc250ea9730a79905')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
