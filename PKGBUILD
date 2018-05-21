@@ -6,11 +6,11 @@ version=0.9
 #fragment="#commit=7e49329 "
 files=(__init__.py cork.py exceptions.py init.py lib.py)
 #is_flat="yes"
-_blender=$(expac "%v" -S blender|egrep -o [[:alnum:]]{1}.[[:alnum:]]{2})
+_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=0.9.r9.g39f7746
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate cork boolean library into blender"
 arch=('any')
 url=${github_link}
