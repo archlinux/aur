@@ -47,17 +47,15 @@ prepare() {
 build() {
 	cd "$srcdir/$_pkgname"
 
-	scons configure \
+	./configure \
 		PREFIX="/usr" \
 		INPUT_PLUGINS=all \
 		DESTDIR="$pkgdir" \
 		FREETYPE_LIBS=/usr/lib \
 		FREETYPE_INCLUDES=/usr/include/freetype2
-
-	scons $MAKEFLAGS
 }
 
 package(){
 	cd "$srcdir/$_pkgname"
-	make PYTHON=python2 DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install
 }
