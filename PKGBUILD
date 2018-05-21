@@ -2,15 +2,17 @@
 
 name=multiedit
 files=(MultiEdit_1_0.py)
+_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+
 pkgname=blender-plugin-${name}
-pkgver=r11.25ab77b
+pkgver=r12.a68a7ce
 pkgrel=1
 pkgdesc="Blender addon for editing multiple meshes at once."
 arch=('any')
 url="https://blenderartists.org/forum/showthread.php?339369-MultiEdit-version-1-0-Multiple-Objects-Editing"
 license=('GPL')
 depends=('blender')
-makedepends=('git')
+makedepends=(expac 'git')
 source=("${name}::git+https://github.com/antoni4040/MultiEdit-Addon.git")
 md5sums=('SKIP')
 
@@ -21,7 +23,7 @@ pkgver() {
 
 package() {
   cd ${srcdir}/${name}
-  addons="$pkgdir/usr/share/blender/$(blender -v | head -n1 | cut -f2 -d ' ')/scripts/addons"
+  addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   for file in ${files}
   do
     msg "install -D -m 644 -t ${addons} ${file}"
