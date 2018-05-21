@@ -5,6 +5,7 @@ pkgver=0.5
 pkgrel=1
 pkgdesc="Twisted and PyQt5 eventloop integration"
 arch=('any')
+depends=('python-pyqt5' 'python-twisted')
 makedepends=('python-setuptools')
 url="https://github.com/sunu/qt5reactor"
 license=('MIT')
