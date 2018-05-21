@@ -1,7 +1,8 @@
 pkgbase = emscripten-git
 	pkgdesc = LLVM-to-JavaScript compiler
-	pkgver = 1.38.0.2.gc6acc4f17
+	pkgver = 1.38.0.15.gd54eb4efb
 	pkgrel = 1
+	epoch = 1
 	url = http://emscripten.org
 	arch = i686
 	arch = x86_64
