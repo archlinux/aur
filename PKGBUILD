@@ -2,7 +2,7 @@
 
 _pkgname="armake"
 pkgname="${_pkgname}-git"
-pkgver=0.5.r0.g68dbdc7
+pkgver=0.6.r0.g2ad8863
 pkgrel=1
 pkgdesc="An open-source implementation of the Arma modding tools."
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ url="https://github.com/KoffeinFlummi/armake"
 license=('GPL2')
 depends=('openssl')
 optdepends=()
+makedepends=('bison' 'flex')
 conflicts=('armake')
 source=("git+https://github.com/KoffeinFlummi/armake.git")
 sha256sums=('SKIP')
@@ -22,7 +23,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
     make
-} 
+}
 
 package() {
     cd "${srcdir}/${_pkgname}"
