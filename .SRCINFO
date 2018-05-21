@@ -1,7 +1,7 @@
 pkgbase = libfprint-upstream-git
 	pkgdesc = Library for fingerprint readers
 	pkgver = 0.7.0.r17.b3fe4a1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/fprint/libfprint/
 	arch = i686
 	arch = x86_64

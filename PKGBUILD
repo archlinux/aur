@@ -1,7 +1,7 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 pkgname=libfprint-upstream-git
 pkgver=0.7.0.r17.b3fe4a1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for fingerprint readers'
 arch=('i686' 'x86_64')
 url='https://www.freedesktop.org/wiki/Software/fprint/libfprint/'
@@ -20,7 +20,9 @@ pkgver() {
 
 build() {
   arch-meson $pkgname build \
+    --includedir=include/libfprint \
     -D doc=false \
+    -D udev_rules_dir=/usr/lib/udev/rules.d \
     -D x11-examples=false
 
   ninja -C build
