@@ -1,6 +1,6 @@
 pkgbase = dpdk-lts
 	pkgdesc = A set of libraries and drivers for fast packet processing
-	pkgver = 17.08.1
+	pkgver = 17.11.2
 	pkgrel = 1
 	url = http://dpdk.org
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = dpdk-lts
 	makedepends = libpcap
 	depends = numactl
 	options = staticlibs
-	source = http://fast.dpdk.org/rel/dpdk-17.08.1.tar.xz
-	sha256sums = 0072ca79508dc3c77fc42f3ff550415e2c7399cf53c9a3fee6700811ed9a854c
+	source = http://fast.dpdk.org/rel/dpdk-17.11.2.tar.xz
+	sha256sums = a2e9e8f429375de6ae796515baa619ce81c251f0d92cb97ec848db3ce5a0a5a6
 
 pkgname = dpdk-lts
 

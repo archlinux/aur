@@ -1,5 +1,5 @@
 pkgname=dpdk-lts
-pkgver=17.08.1
+pkgver=17.11.2
 pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=(x86_64 i686)
@@ -13,7 +13,7 @@ source=(
     "http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz"
 )
 sha256sums=(
-    '0072ca79508dc3c77fc42f3ff550415e2c7399cf53c9a3fee6700811ed9a854c'
+    'a2e9e8f429375de6ae796515baa619ce81c251f0d92cb97ec848db3ce5a0a5a6'
 )
 
 prepare() {
