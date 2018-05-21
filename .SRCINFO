@@ -1,7 +1,7 @@
 pkgbase = mediainfo-gui-git
 	pkgdesc = GUI utility for displaying technical and tag data for media files
 	pkgver = 18.05.r14.g78c2ab41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mediaarea.net/en/MediaInfo
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = mediainfo-gui-git
 	depends = glibc
 	depends = libmediainfo
 	depends = qt5-base
-	provides = mediainfo
-	conflicts = mediainfo
+	provides = mediainfo-gui
+	conflicts = mediainfo-gui
 	source = git+https://github.com/MediaArea/MediaInfo.git
 	sha256sums = SKIP
 
