@@ -1,6 +1,6 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.9.1
+	pkgver = 3.9.2
 	pkgrel = 1
 	url = https://www.mcs.anl.gov/petsc/
 	install = petsc.install
@@ -20,13 +20,15 @@ pkgbase = petsc
 	optdepends = metis: support for metis graph partitioning library
 	optdepends = pastix: support for the pastix solver
 	optdepends = superlu: support for the superlu sparse solver
+	optdepends = hypre: support for the hypre sparse system solver
 	optdepends = hdf5: support for the parallel version of hdf5
 	optdepends = mumps: support for the mumps sparse solver
 	optdepends = fftw: support for the fftw fast Fourier transform
+	optdepends = suitesparse: support for the suitesparse sparse matrix libraries
 	options = staticlibs
-	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.9.1.tar.gz
+	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.9.2.tar.gz
 	source = test_optdepends.sh
-	sha256sums = 742e838a35d278693e956ed1ca4592c1d663451f6beea0694bf334aeb67681e8
+	sha256sums = ab396ae5dbfff808df1b5648f5ce30f3021ec70faec3d5cd63df324d416ac6ac
 	sha256sums = c7b0d839c43bbae0405b8b007588debcd0da526e9a999c5933278d347a0900e2
 
 pkgname = petsc

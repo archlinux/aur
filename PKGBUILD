@@ -2,7 +2,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
-pkgver=3.9.1
+pkgver=3.9.2
 pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -16,21 +16,22 @@ options=(staticlibs)
 depends=('python2' 'openmpi' 'boost' 'lapack')
 makedepends=('gcc' 'gcc-fortran' 'cmake')
 optdepends=('trilinos: support for trilinos'
-		'ptscotch: support for ptscotch parallel graph partitioning library'
-		'parmetis: support for parmetis parallel graph partitioning library'
-		'metis:		 support for metis graph partitioning library'
-		'pastix:	 support for the pastix solver'
-		'superlu:  support for the superlu sparse solver'
-		'hdf5:		 support for the parallel version of hdf5'
-		'mumps:		 support for the mumps sparse solver'
-		'fftw:		 support for the fftw fast Fourier transform'
-		)
+	'ptscotch: support for ptscotch parallel graph partitioning library'
+	'parmetis: support for parmetis parallel graph partitioning library'
+	'metis: support for metis graph partitioning library'
+	'pastix: support for the pastix solver'
+	'superlu: support for the superlu sparse solver'
+	'hypre: support for the hypre sparse system solver'
+	'hdf5: support for the parallel version of hdf5'
+	'mumps: support for the mumps sparse solver'
+	'fftw: support for the fftw fast Fourier transform'
+	'suitesparse: support for the suitesparse sparse matrix libraries'
+	)
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz
 				test_optdepends.sh)
-sha256sums=('742e838a35d278693e956ed1ca4592c1d663451f6beea0694bf334aeb67681e8'
+sha256sums=('ab396ae5dbfff808df1b5648f5ce30f3021ec70faec3d5cd63df324d416ac6ac'
 						'c7b0d839c43bbae0405b8b007588debcd0da526e9a999c5933278d347a0900e2')
-
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch="arch-${_config}"
@@ -115,6 +116,7 @@ package() {
 
 	mkdir -p ${pkgdir}/etc/profile.d
 	echo "export PETSC_DIR=${_install_dir}" > ${pkgdir}/etc/profile.d/petsc.sh
+	echo "export PETSC_ARCH=${_petsc_arch}" >> ${pkgdir}/etc/profile.d/petsc.sh
 	chmod +x ${pkgdir}/etc/profile.d/petsc.sh
 
 	# show where the shared libraries are
