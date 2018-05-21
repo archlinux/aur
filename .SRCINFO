@@ -1,0 +1,12 @@
+pkgbase = python-markdown-math
+	pkgdesc = Math extension for Python-Markdown
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/mitya57/python-markdown-math
+	arch = any
+	makedepends = python-setuptools
+	source = https://github.com/mitya57/python-markdown-math/archive/0.5.tar.gz
+	sha256sums = 2ec21c037e514761b25d25837a05593be09375a74ce8507c748a836e8ab87e11
+
+pkgname = python-markdown-math
+
