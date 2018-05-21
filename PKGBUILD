@@ -7,8 +7,8 @@ name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 fragment="#branch=dev"
 pkgname=${name}-git
-pkgver=3.4.r44.g827bbb8
-pkgrel=2
+pkgver=3.4.r68.g3803109
+pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
 url="https://colmap.github.io/"
@@ -48,6 +48,9 @@ prepare() {
 
 build() {
   cd ${srcdir}
+
+  export CFLAGS=${CFLAGS/-fno-plt/}
+  export CXXFLAGS=${CFLAGS/-fno-plt/}
 
   # determine whether we can precompile CUDA kernels
     _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
