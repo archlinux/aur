@@ -1,0 +1,32 @@
+pkgbase = emulationstation-ex-git
+	pkgdesc = A graphical front-end for emulators with controller navigation.
+	pkgver = 1275.0928498
+	pkgrel = 1
+	url = https://github.com/RetroPie/EmulationStation
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = boost
+	makedepends = freetype2
+	makedepends = eigen
+	makedepends = cmake
+	makedepends = mesa
+	makedepends = libsm
+	depends = alsa-lib
+	depends = sdl2
+	depends = boost-libs
+	depends = freeimage
+	depends = ttf-dejavu
+	depends = glu
+	depends = vlc
+	depends = libgl
+	provides = emulationstation
+	conflicts = emulationstation
+	source = git+https://github.com/RetroPie/EmulationStation.git
+	source = git+https://github.com/zeux/pugixml.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = emulationstation-ex-git
+
