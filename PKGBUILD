@@ -27,7 +27,7 @@ prepare() {
 build() {
 	cd "${pkgname}/vice"
 	./autogen.sh
-	./configure --prefix=/usr --enable-fullscreen --enable-external-ffmpeg --with-uithreads --without-oss --with-pulse --without-alsa --enable-gnomeui
+	./configure --prefix=/usr --enable-external-ffmpeg --with-uithreads --without-oss --without-alsa --enable-gnomeui
 	make
 }
 
