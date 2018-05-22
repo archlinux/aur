@@ -1,7 +1,7 @@
 pkgbase = brother-ql720nw
 	pkgdesc = LPR and CUPS driver for Brother QL-720NW label printer
 	pkgver = 1.1.4r0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://solutions.brother.com/linux/en_us/
 	install = brother-ql720nw.install
 	arch = i686

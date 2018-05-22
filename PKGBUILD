@@ -3,7 +3,7 @@
 
 pkgname='brother-ql720nw'
 pkgver=1.1.4r0
-pkgrel=2
+pkgrel=3
 pkgdesc='LPR and CUPS driver for Brother QL-720NW label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -57,6 +57,11 @@ prepare()
 
   #  /etc/printcap is managed by cups
   rm `find $srcdir -type f -name 'setupPrintcap*'`
+
+  # /usr/lib/cups/filter/brother_lpdwrapper_ql720nw should be an absolute symlink
+  rm $srcdir/usr/lib/cups/filter/brother_lpdwrapper_ql720nw
+  ln -s /opt/brother/PTouch/ql720nw/cupswrapper/brother_lpdwrapper_ql720nw  \
+        $srcdir/usr/lib/cups/filter/brother_lpdwrapper_ql720nw
 }
 
 package() {
