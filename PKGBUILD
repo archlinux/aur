@@ -2,7 +2,7 @@
 
 _pkgname=sview
 pkgname=$_pkgname-git
-pkgver=16.06.r14.gd530a27
+pkgver=17.04.r34.g8be57493
 pkgrel=1
 pkgdesc="Stereoscopic 3D video player with OpenGL UI"
 arch=('i686' 'x86_64')
