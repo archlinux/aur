@@ -29,7 +29,7 @@
 #
 
 # The version.
-VERSION=0.2
+VERSION=0.2.1
 
 # Abort on error
 set -e
@@ -292,7 +292,7 @@ parse_argv() {
     shift
   done
 }
-log_local "Parsing options from DEVICE_URI: ${argv@Q} ..."
+log_local "Parsing options from DEVICE_URI: ${argv[@]@Q} ..."
 parse_argv "${argv[@]}"
 log_local "Parsed options."
 log_local ""

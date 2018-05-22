@@ -3,8 +3,8 @@
 
 _pkgname=cups-print-to-programme
 pkgname="${_pkgname}"
-pkgver=0.2
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Virtual printer for cups which prints to a file and opens that with a programme the user can choose in the settings. For example, print to gimp."
 arch=('any')
 depends=(
@@ -38,12 +38,13 @@ optdepends=(
 )
 provides=("${_pkgname}-doc=${pkgver}")
 backup=('etc/cups/cups-programme.conf')
-sha256sums=('2254436c330f7cbaf90dc4f3572ae670893520ae7ae9af48dcb5be28ae7cb89b'
+sha256sums=('9e29f33db3bf8c4697034db0a16e869a5db16b9306243bce5e5a54bece7b0296'
             'f583ed8969deef9e890b20c475bc24fd4eed8ef3c3a51544f9183fcc69d38c5c'
             '9dab3a743d524aa3c6992501205ee7be4baaff3f73534ef878162e4e603bc9ca'
             '83b54a69c67d39d03b1b02a4da1c2bccb45c459f239809568221844c2e7500a7'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '0ee996783ae6848cf3c522de135646cb4b19670a48d6f1bf387b5b304f5506ad')
+
 
 
 pkgver() {
