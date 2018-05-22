@@ -1,9 +1,9 @@
 # Maintainer:         Alexander Blinne "Sunday" <alexander at blinne dot net>
 
 pkgname=sview
-_pkgver=45f47e162a173db9645a734911753ac7f3192fe6
+_pkgver=8be57493b851b8172dcab097fea19e18c46fcc37
 pkgver=17.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Stereoscopic 3D video player with OpenGL UI"
 arch=('i686' 'x86_64')
 url="http://www.sview.ru/en"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('libconfig' 'ffmpeg' 'freetype2' 'gtk2' 'libgl' 'libx11' 'libxext' 'libxpm' 'openal')
 optdepends=('ttf-droid' 'ttf-nanum')
 source=("https://github.com/gkv311/sview/archive/$_pkgver.tar.gz")
-sha256sums=('a8b3dd8ad17e055ca9ebdf4cd96209b3d2b9b9805c15527fe48989cf08575d09')
+sha256sums=('15418bd4be470f7399ca212869ee9c494bceab9224424b127e5260085f23afe1')
 
 build() {
   cd $pkgname-$_pkgver
