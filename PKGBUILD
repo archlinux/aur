@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=ginkgo-git
-pkgver=v1.4.0.r66.ga3b6351
+pkgver=v1.5.0.r0.gfa5faba
 pkgrel=1
 pkgdesc="BDD Testing Framework for Go"
 arch=('x86_64')
