@@ -13,7 +13,7 @@ md5sums=('SKIP')
 _gitname=ripMIME
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
+  cd "${_gitname}"
 
   # Get the version number.
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
