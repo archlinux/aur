@@ -244,7 +244,6 @@ for _p in ${pkgname[@]}; do
     _package${_p#${pkgbase}}
   }"
 done
-
 md5sums=('f786f6759717d78c4d43318a7e2777ae'
          '98a45d56fafa7748fc45af1b028339d8'
          '09e3f7f5d048b3ae737f71019e8a064a')
