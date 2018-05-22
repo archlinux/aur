@@ -1,0 +1,51 @@
+--- build.xml.orig	2018-05-22 10:47:44.750997514 -0400
++++ build.xml	2018-05-22 10:48:00.760430872 -0400
+@@ -524,7 +524,7 @@
+         <mkdir dir="${lib.dir}"/>
+         
+         <!-- compile everything under src/java -->
+-        <javac srcdir="${src.dir}/java" destdir="${build.classes}"
++        <javac srcdir="${src.dir}/java" destdir="${build.classes}" nativeheaderdir="${src.dir}/c"
+                deprecation="on"
+                debug="on"
+                optimize="on"
+@@ -553,39 +553,6 @@
+                 <include name="**/Manifest"/>
+             </fileset> 
+         </copy>
+-        
+-        <!-- Generate the jni header files.  This is done here rather than with the
+-             c code to make intermediate pre-release distributions possible. -->
+-        <javah
+-            destdir="${src.dir}/c"
+-            classpath="${build.classes}">
+-            <class name="org.tanukisoftware.wrapper.WrapperManager"/>
+-        </javah>
+-        <fixcrlf srcdir="${src.dir}/c" includes="org_tanukisoftware_wrapper_WrapperManager.h" eol="lf" />
+-        <javah
+-            destdir="${src.dir}/c"
+-            classpath="${build.classes}">
+-            <class name="org.tanukisoftware.wrapper.WrapperProcessInputStream"/>
+-        </javah>
+-        <fixcrlf srcdir="${src.dir}/c" includes="org_tanukisoftware_wrapper_WrapperProcessInputStream.h" eol="lf" />
+-        <javah
+-            destdir="${src.dir}/c"
+-            classpath="${build.classes}">
+-            <class name="org.tanukisoftware.wrapper.WrapperProcessOutputStream"/>
+-        </javah>
+-        <fixcrlf srcdir="${src.dir}/c" includes="org_tanukisoftware_wrapper_WrapperProcessOutputStream.h" eol="lf" />
+-        <javah
+-            destdir="${src.dir}/c"
+-            classpath="${build.classes}">
+-            <class name="org.tanukisoftware.wrapper.WrapperProcessConfig"/>
+-        </javah>
+-        <fixcrlf srcdir="${src.dir}/c" includes="org_tanukisoftware_wrapper_WrapperProcessConfig.h" eol="lf" />
+-        <javah
+-            destdir="${src.dir}/c"
+-            classpath="${build.classes}">
+-            <class name="org.tanukisoftware.wrapper.WrapperResources"/>
+-        </javah>
+-        <fixcrlf srcdir="${src.dir}/c" includes="org_tanukisoftware_wrapper_WrapperResources.h" eol="lf" />
+ 
+         <available property="junit.present"
+             classname="junit.framework.TestCase">

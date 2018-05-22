@@ -10,16 +10,26 @@ arch=('i686' 'x86_64' 'aarch64' 'armv6h' 'armv7h')
 license=('GPL2')
 conflicts=('java-service-wrapper-bin')
 makedepends=('apache-ant' 'java-environment>=7')
-source=("https://wrapper.tanukisoftware.com/download/${pkgver}/wrapper_${pkgver}_src.tar.gz")
-sha256sums=('82f7d89414ce4ff0cdbb8357d779362bb5ddf068aede20a4a56627ed55e25e56')
+source=("https://wrapper.tanukisoftware.com/download/${pkgver}/wrapper_${pkgver}_src.tar.gz"
+        'java10.patch')
+sha256sums=('82f7d89414ce4ff0cdbb8357d779362bb5ddf068aede20a4a56627ed55e25e56'
+            'af0f8fb43e22b5499376a633fea106654a30bb9000f00e6d68bfa603c422746f')
 
 prepare() {
-    sed -i "${srcdir}/wrapper_${pkgver}_src/build.xml" \
-        -e "s:value=\"1.4\":value=\"1.7\":"
+    cd "${srcdir}/wrapper_${pkgver}_src"
+
+    if [[ $(javac -version |grep 10.0) ]]; then
+        sed -i "build.xml" \
+            -e "s:value=\"1.4\":value=\"1.10\":"
+        patch -Np0 -i "$srcdir/java10.patch"
+    else
+        sed -i "build.xml" \
+            -e "s:value=\"1.4\":value=\"1.7\":"
+    fi
 
     # Prevent building the testsuite on the x64, this requires the cunit pkg
     # from the AUR, its a pain and useless to keep it a build-dep
-    sed -i "${srcdir}/wrapper_${pkgver}_src/src/c/Makefile-linux-x86"*.make \
+    sed -i "src/c/Makefile-linux-x86"*.make \
         -e "s|all: .*|all: init wrapper libwrapper.so|"
 }
 
