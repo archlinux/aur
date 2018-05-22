@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r34716
+pkgver=r34920
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator (Commodore 64/C64)."
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ prepare() {
 build() {
 	cd "${pkgname}/vice"
 	./autogen.sh
-	./configure --prefix=/usr --enable-external-ffmpeg --with-uithreads --without-oss --without-alsa --enable-gnomeui
+	./configure --prefix=/usr --without-oss --without-alsa --enable-native-gtk3ui
 	make
 }
 
