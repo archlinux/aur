@@ -11,7 +11,6 @@ depends=('pygtk' 'swh-plugins' 'gnome-icon-theme' 'pulseaudio' 'bc' 'python2-gob
 makedepends=('git')
 provides=('pulseaudio-equalizer-ladspa')
 conflicts=('pulseaudio-equalizer-ladspa')
-replaces=('pulseaudio-equalizer-ladspa')
 source=("https://github.com/FFY00/pulseaudio-equalizer-ladspa/archive/v$pkgver.tar.gz")
 sha256sums=('136cc75fdda5b099f5b5b55564cd0c1a42e5c29f70def668c9d95eb8ee83a8ff')
 
