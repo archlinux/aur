@@ -1,6 +1,6 @@
 pkgbase = iqtree-latest
 	pkgdesc = Efficient phylogenomic software by maximum likelihood; multicore version (OMP)
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = http://www.iqtree.org/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = iqtree-latest
 	depends = glibc
 	depends = libstdc++5
 	depends = zlib
-	source = https://github.com/Cibiv/IQ-TREE/archive/v1.6.4.tar.gz
-	md5sums = 589604e93b79a5cc9fa7d9f99de2af04
+	source = https://github.com/Cibiv/IQ-TREE/archive/v1.6.5.tar.gz
+	md5sums = 14b625d7b334ab174ce33f9845f4e92b
 
 pkgname = iqtree-latest
 
