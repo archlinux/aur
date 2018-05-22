@@ -1,6 +1,6 @@
 pkgbase = gns3-server-git
 	pkgdesc = GNS3 network simulator. Server package.
-	pkgver = 2.1.5
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = https://github.com/GNS3/gns3-server
 	install = gns3-server.install
@@ -18,6 +18,7 @@ pkgbase = gns3-server-git
 	depends = python-aiohttp-gns3
 	depends = python-aiohttp-cors-gns3
 	depends = python-prompt_toolkit
+	depends = python-async-timeout-gns3
 	optdepends = dynamips: Cisco router emulator.
 	optdepends = qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.
 	optdepends = vpcs: Simple PC emulation for basic network operations.
@@ -26,9 +27,9 @@ pkgbase = gns3-server-git
 	provides = gns3-server
 	conflicts = gns3-server
 	replaces = gns3-server
-	source = gns3-server-2.1.5.tar.gz::https://github.com/GNS3/gns3-server/archive/v2.1.5.tar.gz
+	source = gns3-server-2.1.6.tar.gz::https://github.com/GNS3/gns3-server/archive/v2.1.6.tar.gz
 	source = gns3-server@.service
-	sha256sums = 73ce2528dfbdc5478fc8bd6f5687f4c9bf30043ce6554d822a1f79b51dfd7381
+	sha256sums = a292be8f0a4ea970e43ea980383f046b2417e7412ff00e171a44453bde8f3463
 	sha256sums = d145c7a4b7163aecd91b71a0769130d62beb5f4381fe5437774f6b4477a3fa48
 
 pkgname = gns3-server-git
