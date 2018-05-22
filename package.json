@@ -1,0 +1,14 @@
+{
+  "name": "portainer-desktop",
+  "version": "1.0.0",
+  "description": "Portainer electron wrapper",
+  "main": "index.js",
+  "scripts": {
+    "start": "nativefier http://127.0.0.1:9000 --name \"Portainer\" --disable-context-menu --disable-dev-tools -i portainer-desktop.png"
+  },
+  "author": "Serge Pavlyuk",
+  "license": "ISC",
+  "dependencies": {
+    "nativefier": "^7.6.2"
+  }
+}

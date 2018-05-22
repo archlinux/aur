@@ -1,0 +1,29 @@
+pkgbase = portainer-desktop
+	pkgdesc = Portainer wrapper for localhost
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://portainer.io
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = nodejs
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	provides = portainer-desktop
+	source = package.json
+	source = package-lock.json
+	source = portainer-desktop.png
+	source = portainer-desktop.desktop
+	source = portainer-desktop.sh
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = portainer-desktop
+
