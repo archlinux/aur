@@ -1,0 +1,14 @@
+pkgbase = bs2b-lv2
+	pkgdesc = A lv2 plugin for using Bauer stereophonic-to-binaural DSP library
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nilninull/bs2b-lv2
+	arch = x86_64
+	license = GPL2
+	depends = lv2
+	depends = libbs2b
+	source = https://github.com/nilninull/bs2b-lv2/archive/v1.0.0.tar.gz
+	sha256sums = 951f1332a5f49711f394cfdd17fadfba5410a3d102c97e9dda46f2c6ba08d0eb
+
+pkgname = bs2b-lv2
+
