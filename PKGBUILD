@@ -1,11 +1,11 @@
 # Maintainer: Jean-Marc Lenoir <archlinux "at" jihemel "dot" com>
 
 pkgname=vmware-tools
-pkgver=10.2.0
-_buildver=7259539
+pkgver=10.2.5
+_buildver=8068393
 _pkgver=${pkgver}_${_buildver}
-_vmware_ver=14.1.1_7528167
-pkgrel=2
+_vmware_ver=14.1.2_8497320
+pkgrel=1
 pkgdesc='The proprietary implementation of VMware Tools'
 arch=('i686' 'x86_64')
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -43,7 +43,7 @@ source=(
   'locations'
 )
 sha256sums=(
-  'e1c3f40ca8cc8630828d0f4ee6c527889de02765c043c384f93d34095f5f090b'
+  '283ede0c7285d7fe4b7523ee8bac9935b140fb091d3310f3d888e52f491ab792'
   '5bd7e1f6e238eae829bbc7edc434e63910f41abeb7c0513d30988e80c28a1630'
   '02971c67bdbb289accd3faa6f0a8f1803e8145713235f4ba69671c16a9938dcc'
   '97f2e4673a518dc138585cfaf6ca636e15f2ce1e1a1af0e7bcc039a066d67f6b'
