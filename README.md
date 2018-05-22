@@ -96,6 +96,11 @@ In general, the syntax for the Device URI is:
 
 where:
 
+* Only the charaters out of the set
+    [][)(}{äÄöÖüÜß.:,;_@^°§%&/=?+*~a-zA-Z0-9-]
+  are allowed. (Use `%`-replacements, if you need some of forbidden,
+  characters, see below. For example, the characters ` `, `"`, `'`,
+  `` ` ``, `$`, `!`, `#`, `<`, `>`, `|`, `\` are forbidden.)
 * `<path-to-executable>` needs to be an absolute path, starting with `/`
   (otherwise CUPS will complain that it is not a correct URI; it expects
   a `/` after the `:`),
@@ -110,9 +115,6 @@ where:
     "Configuration File"),
   - `g=<group>` -- specifies that the executable should be run with
     primary group `<group>` (see section "Notes"),
-  - `D=<DISPLAY>` -- if set, the environment variable `DISPLAY` will be
-    set to `<DISPLAY>` and exported prior execution of
-    `<path-to-executable>`,
   - `t=<filetype>` -- if set, CUPS' PostScript output will be converted
     to `<filetype>`. Possible values for `<filetype>` are:
     + 'ps' (PostScript; retain CUPS' default),
@@ -128,21 +130,32 @@ where:
     the executable.
 * On `<path-to-executable>` and all the options (except `t=<filetype>`),
   the following string substitutions are applied (see also "Notes"):
-  - `%s` -> The file where the CUPS print output is saved. Use `%s` to
+  - `%A`  -> `&`,
+  - `%AT` -> `@`,
+  - `%B`  -> `\`,
+  - `%C`  -> `:`,
+  - `%D`  -> `$`
+  - `%E`  -> `=`,
+  - `%H`  -> `#`,
+  - `%L`  -> `<`
+  - `%LC` -> `{`
+  - `%LR` -> `(`
+  - `%LS` -> `[`
+  - `%P`  -> `|`,
+  - `%Q`  -> `?`,
+  - `%R`  -> `>`
+  - `%RC` -> `}`
+  - `%RR` -> `)`
+  - `%RS` -> `]`
+  - `%TB` -> `` ` `` (backtick),
+  - `%TD` -> `"`,
+  - `%TS` -> `'`,
+  - `%X` -> `!`
+  - `%s`  -> The file where the CUPS print output is saved. Use `%s` to
     pass the printed file to be opened to the executable.
-  - `%.` -> ` `,
-  - `%_` -> `-`,
-  - `%P` -> `|`,
-  - `%B` -> `\`,
-  - `%H` -> `#`,
-  - `%Q` -> `?`,
-  - `%A` -> `&`,
-  - `%C` -> `:`,
-  - `%T` -> `'`,
-  - `%G` -> `"`,
-  - `%E` -> `=`,
-  - `%M` -> `@`,
-  - `%%` -> `%`.
+  - `%.`  -> ` `,
+  - `%_`  -> `-`,
+  - `%%`  -> `%`.
   These replacements are carried out after cups-programme has parsed the
   Device URI, so e.g. `%E` can be used to escape a `=` from
   cups-programme's parser, e.g. to pass `u=...` as argument to the
@@ -158,6 +171,10 @@ beware what you do there.
 
 The following variables are to be set in the configuration file:
 `su_variant`, `askpass_cmd` and `image_converter`.
+
+* The executable whill be run in `bash`, but the the command and all
+  arguments /should/ be properly quoted by cups-programme so that `bash`
+  will not perform substitutions.
 
 * When a programme should be run as a specific user (`u=<user>` in the
   Device URI) or with a specific primary group (`g=<group>` in the
@@ -187,10 +204,9 @@ supported values.
 Notes
 -----
 
-* The `%`-substitutions in the options in the Device URI might become
-  necessary if the characters are breaking the Device URI. Also, `-` in
-  the Device URI may make problems due to interpretation in scripts, so
-  it is advised to use `%_` instead.
+* The `%`-substitutions in the options in the Device URI might also
+  become necessary if the characters are breaking the Device URI, even
+  if the characters are allowed by cups-programme itself.
 
 * Setting a primary group to run the command as is only possible when
   the CUPS filter is run as root, and only with some `su_variant`
@@ -199,7 +215,7 @@ Notes
 * When adding a printer with this backend via CUPS, you might get an
   error like
   
-    Bad device-uri "cups-programme:/usr/bin/gimp?u=user&D=:0.0&%s".
+    Bad device-uri "cups-programme:/usr/bin/gimp?u=user&DISPLAY=:0.0&%s".
   
   When this happens, add the printer with a very basic Device URI like
   `cups-programme:/usr/bin/gimp`, and after adding the printer, edit

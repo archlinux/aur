@@ -29,7 +29,7 @@
 #
 
 # The version.
-VERSION=0.2.2
+VERSION=0.3
 
 # Abort on error
 set -e
@@ -212,32 +212,58 @@ log_local ""
 # 
 # $DEVICE_URI format:
 # 
-#   ${backend_name}:<command>?u=<user>&g=<group>&D=<display>&t=<filetype>&<variable>=<value>&<variable>=<value>&<argument>&<argument>...
+#   ${backend_name}:<command>?u=<user>&g=<group>&t=<filetype>&<variable>=<value>&<variable>=<value>&<argument>&<argument>...
 # 
-# All arguments, including the 'u=<user>', 'g=<group>', 'D=<display>'
-# and 't=<filetype>, are optional.
+# All arguments, including the 'u=<user>', 'g=<group>', and
+# 't=<filetype>, are optional.
 #
-# The following replacements will be carried out for '<command>' and all
-# options except 't=<filetype>':
-#   - '%.' -> ' '
-#   - '%_' -> '-'
-#   - '%P' -> '|'
-#   - '%B' -> '\'
-#   - '%H' -> '#'
-#   - '%Q' -> '?'
-#   - '%A' -> '&'
-#   - '%C' -> ':'
-#   - '%T' -> '''
-#   - '%G' -> '"'
-#   - '%E' -> '='
-#   - '%M' -> '@'
-#   - '%%' -> '%'
-#   - '%s' -> "${outfile}" (The, probably converted, output from CUPS to
-#                           open)
-# The replacements will be carried out after we have parsed the options,
-# so '%E' can be used to escape a '=' from our parser.
+# '%'-replacements will be carried out for '<command>' and all options
+# except 't=<filetype>', see documentation ('README.md') and function
+# 'replace_strings()'.
 # 
 # The programme will be invoked with the specified arguments.
+
+# Checking $DEVICE_URI for allowed characters:
+
+replace_strings() {
+  replace \
+    '%A'   '&' \
+    '%AT'  '@' \
+    '%B'   '\' \
+    '%C'   ':' \
+    '%D'   '$' \
+    '%E'   '=' \
+    '%H'   '#' \
+    '%L'   '<' \
+    '%LC'  '{' \
+    '%LR'  '(' \
+    '%LS'  '[' \
+    '%P'   '|' \
+    '%Q'   '?' \
+    '%R'   '>' \
+    '%RC'  '}' \
+    '%RR'  ')' \
+    '%RS'  ']' \
+    '%TB'  '`' \
+    '%TD'  '"' \
+    '%TS'  "'" \
+    '%X'   '!' \
+    '%s'   "${outfile}" \
+    '%.'   ' ' \
+    '%_'   '-' \
+    '%%'   '%'
+}
+
+# Test if $DEVICE_URI contains only allowed characters.
+# Put the ']' first in order for grep not interpreting it special.
+# Put the '-' last in order for grep not interpreting it special.
+# Put the '^' not first in order for grep not interpreting it special.
+_allowd_chars='][)(}{äÄöÖüÜß.:,;_@^°§%&/=?+*~a-zA-Z0-9-'
+if echo "${DEVICE_URI}" | grep -qE -e "[^${_allowd_chars}]"; then
+  _rejected_chars="$(echo "${DEVICE_URI}" | grep -oE -e "[^${_allowd_chars}]" | sort | uniq | tr -d '\n')"
+  error "$0: \$DEVICE_URI contains forbidden character(s) '${_rejected_chars}'. Allowed set: [${_allowd_chars}]. Aborting."
+  exit 5
+fi
 
 # Getting the command from $DEVICE_URI:
 cmd="$(echo "${DEVICE_URI}" | sed "s|^${backend_name}":'||g' | sed 's|?.*$||')"
@@ -252,7 +278,6 @@ IFS='&' read -r -a argv <<< "${argstr}"
 cmd_args=()
 unset user
 unset group
-unset display
 unset filetype
 env_vars=()
 # Have this as function that we will call, so that we can make use of 'shift'.
@@ -270,10 +295,6 @@ parse_argv() {
       g=*)
         group="${_arg#g=}"
         log_local "  Parsed 'g='-option. Group: '${group}'."
-      ;;
-      D=*)
-        display="${_arg#D=}"
-        log_local "  Parsed 'D='-option. Display: '${display}'."
       ;;
       t=*)
         filetype="${_arg#t=}"
@@ -306,13 +327,9 @@ fi
 outfile="${outfile_prefix}.${filetype}"
 
 # Now, after $outfile is set, do the string replacements:
-replace_strings() {
-  replace '%%' '%' '%.' ' ' '%_' '-' '%P' '|' '%B' '\' '%H' '#' '%Q' '?' '%A' '&' '%C' ':' '%G' '"' '%T' "'" '%E' '=' '%M' '@' '%s' "${outfile}"
-}
 if [ -v cmd ];     then cmd="$(echo "${cmd}"         | replace_strings)"; fi
 if [ -v user ];    then user="$(echo "${user}"       | replace_strings)"; fi
 if [ -v group ];   then group="$(echo "${group}"     | replace_strings)"; fi
-if [ -v display ]; then display="$(echo "${display}" | replace_strings)"; fi
 cmd_args_replaced=()
 for _arg in "${cmd_args[@]}"; do
   cmd_args_replaced+=("$(echo "${_arg}" | replace_strings)")
@@ -352,13 +369,12 @@ log_local "  - command:                ${cmd}"
 log_local "  - command arguments:      ${cmd_args_replaced[@]}"
 log_local "  - # of command arguments: ${#cmd_args_replaced[@]}"
 log_local ""
-log_local "Variables extracted from \$DEVICE_URI:"
-if [ -v user ];     then log_local "  - user:     ${user}";     else log_local "  - (Variable 'user' is not set.)";     fi
-if [ -v group ];    then log_local "  - group:    ${group}";    else log_local "  - (Variable 'group' is not set.)";    fi
-if [ -v display ];  then log_local "  - display:  ${display}";  else log_local "  - (Variable 'display' is not set.)";  fi
-if [ -v filetype ]; then log_local "  - filetype: ${filetype}"; else log_local "  - (Variable 'filetype' is not set.)"; fi
+log_local "Settings extracted from \$DEVICE_URI:"
+if [ -v user ];     then log_local "  - user:     ${user}";     else log_local "  - ('user' is not set.)";     fi
+if [ -v group ];    then log_local "  - group:    ${group}";    else log_local "  - ('group' is not set.)";    fi
+if [ -v filetype ]; then log_local "  - filetype: ${filetype}"; else log_local "  - ('filetype' is not set.)"; fi
 log_local ""
-log_local "Variables specified in the configuration file:"
+log_local "Settings specified in the configuration file:"
 log_local "  - su_variant:      ${su_variant}"
 log_local "  - askpass_cmd:     ${askpass_cmd}"
 log_local "  - image_converter: ${image_converter}"
@@ -547,14 +563,8 @@ if [ -v user ] || [ -v group ]; then
     ;;
   esac
 else
-  su_cmd='sh'
-  su_opts="-c ${cmd@Q} ${cmd_args_replaced[@]@Q}"
-fi
-
-if [ -v display ]; then
-  log_local "exporting DISPLAY=${display}"
-  log_local ""
-  export DISPLAY="${display}"
+  su_cmd="${cmd}"
+  su_opts="${cmd_args_replaced[@]@Q}"
 fi
 
 notice "$0: Running 'bash -c \"${su_cmd} ${su_opts} >> ${logfile@Q} 2>&1\"'..."
