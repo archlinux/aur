@@ -1,10 +1,10 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=strip-nondeterminism-git
-pkgver=0.038
+pkgver=0.041
 pkgrel=1
 pkgdesc='Tool for stripping bits of non-deterministic information from files'
-url='https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git'
+url='https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git'
 arch=('any')
 license=('GPL3')
 depends=("perl" 'perl-archive-zip' 'perl-archive-cpio')
@@ -12,7 +12,7 @@ makedepends=('git')
 options=('!emptydirs')
 provides=('strip-nondeterminism')
 conflicts=('strip-nondeterminism')
-source=(${pkgname}::"git+https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git#branch=master")
+source=(${pkgname}::"git+https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git#branch=master")
 sha512sums=('SKIP')
 
 pkgver() {

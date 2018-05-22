@@ -1,8 +1,8 @@
 pkgbase = strip-nondeterminism-git
 	pkgdesc = Tool for stripping bits of non-deterministic information from files
-	pkgver = 0.038
+	pkgver = 0.041
 	pkgrel = 1
-	url = https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git
+	url = https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = strip-nondeterminism-git
 	provides = strip-nondeterminism
 	conflicts = strip-nondeterminism
 	options = !emptydirs
-	source = strip-nondeterminism-git::git+https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git#branch=master
+	source = strip-nondeterminism-git::git+https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git#branch=master
 	sha512sums = SKIP
 
 pkgname = strip-nondeterminism-git
