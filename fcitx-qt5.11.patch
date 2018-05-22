@@ -1,0 +1,10 @@
+--- fcitx-qt5-1.2.2/quickphrase-editor/batchdialog.cpp.orig	2018-05-22 11:50:22.925424854 +0000
++++ fcitx-qt5-1.2.2/quickphrase-editor/batchdialog.cpp	2018-05-22 11:51:02.385547104 +0000
+@@ -20,6 +20,7 @@
+ #include "batchdialog.h"
+ #include "common.h"
+ #include "ui_batchdialog.h"
++#include <QIcon>
+ 
+ namespace fcitx {
+ BatchDialog::BatchDialog(QWidget *parent)
