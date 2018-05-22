@@ -1,7 +1,7 @@
 pkgbase = swift-bin
 	pkgdesc = Official binary builds of the Swift programming language.
 	pkgver = 4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://swift.org
 	arch = x86_64
 	license = apache
