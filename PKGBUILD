@@ -7,7 +7,7 @@ arch=(any)
 license=('BSD')
 pkgdesc="Tool to extract the attached files out of a MIME package"
 url="https://github.com/inflex/ripMIME"
-source=('git+git://github.com/inflex/ripMIME')
+source=('git+https://github.com/inflex/ripMIME')
 md5sums=('SKIP')
 
 _gitname=ripMIME
