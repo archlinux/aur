@@ -1,0 +1,12 @@
+[Unit]
+Description=Web-based interface for CNC controllers
+After=network.target
+
+[Service]
+User=cncjs
+Group=cncjs
+Type=simple
+ExecStart=/usr/bin/cncjs -c /etc/cncjs/config.json
+
+[Install]
+WantedBy=multi-user.target 
