@@ -52,9 +52,9 @@ pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=4.16
 _srcname=linux-${_major}
-_minor=10
+_minor=11
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -89,8 +89,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
-        '0003-Partially-revert-swiotlb-remove-various-exports.patch'
-        '0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch')
+        '0003-Partially-revert-swiotlb-remove-various-exports.patch')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-uksm} 
@@ -113,11 +112,7 @@ prepare() {
     ### NVIDIA driver compat
         msg "NVIDIA driver compat"
         patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
-    
-    ### Fix https://bugs.archlinux.org/task/58237
-        msg "Fix #58237"
-        patch -Np1 -i ../0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
-    
+
     ### Fix gcc8 bogus warnings
         msg "Fix gcc8 bogus warnings"
         patch -Np1 -i ../0005-objtool-add-gcc8-support.patch
@@ -386,7 +381,7 @@ done
 
 sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2d06317dc1683c51a472a9a631573a9b1e7258d6281a2ee189897827f14662'
             'SKIP'
-            '53d700ca245341cd6493ecd01af069b2015564c9d7514751348e57047838bb1a6379f065dcf21312cf8f861f5569d28e7445846b40d14c225c644a69c09da5d1'
+            '03c2dbd6f5bac48875a08f6ef3603379fd5736d7b4d1abe1d4271d484ac5b08790c8d28177cec4e45421a303eb539fc79e15a9b67383b249b7d999e47652135c'
             'SKIP'
             'a0f37a9b8dbd11f8ef4450b06afee0a6e5519cb5a5cd78f84896812b007ef645bcb9c733ae9817c24d1f4a4c2114258015abceb5a94c7e08d2bb00531a6f04c7'
             'ab962157c2c20faf0bd164a82c2e28ce35fd581d640409ae6419dc2a64c82b7f49e7215149de0bc028dd3d517434160d68127b05137f6b6611641cc871f6c76e'
@@ -397,10 +392,9 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'd4a5dadbdbbb8a2c2c3b4b5e77ea19664e0742825648d10635ce3b7642f01d71d51fd8ed58dcfd686981ef9c3f83965746686231b9bac1974809be1618e60373'
-            '071c38539db9660e743cca5514a5b2c10e79716c59435976f7cd18bd77254b39e1cdba6386ac6938c00c7585e1834508f85bc65f4d2af28246dae864b71b06b3'
-            '6c4bf0d5230e7a3e895f88cf6cc84d6df550fefa2c865e4d5853e02682e781c5a149fb4f853ac7513f335271415fae4a4edf13139de4ba067102e9d8083c22a0'
-            'f5a6e9e6244ed2bb336f359a65ba922226f76319c216eae3c1acca137084ab0c89372d8ec2299d0377ad909534a5d13d8db9a9376e357d600518c81811256d07')
+            '72064984e86db79d07b4b493752f1b0dc6815e53328cbca47d226f9e06bfccc5398550c510a836a60b2e8a8bf674775af958621314b2e6555ed2c343427a28a7'
+            'a4ecfd93472b2998857160b116a332f68eebb84a03de4749af5a577c9da709b08c7a9460392e19d79ed374f8f441eaa2e6ec3ae93dc4424b59af0d188c2c2e35'
+            '840b67401680fdaa8b06a188f50799dd0967e782d51e0eaf381e8568d66cba10d4eed3788bbfb723fd8f65f9686b0b21ec0fd1caa3834d83ea785df3488ab071')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
