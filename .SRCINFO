@@ -8,11 +8,10 @@ pkgbase = protocase-designer
 	license = custom
 	depends = java-runtime-common
 	depends = jre7-openjdk
-	source_i686 = https://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-i586-4.6.13.tar.gz
-	source_x86_64 = https://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-amd64-4.6.13.tar.gz
+	source = https://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-amd64-4.6.13.tar.gz
 	source = ProtocaseDesigner.desktop
-	md5sums = 876d0202c38fd3fe2573970015927b05
 	md5sums = df197d715c974e7ab6b4e125495c1cad
+	md5sums = f66d02094444eac61f468371589fcc9c
 
 pkgname = protocase-designer
 
