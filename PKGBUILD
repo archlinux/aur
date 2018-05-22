@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=68.0.3436.0
+pkgver=68.0.3437.2
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 
 
 
-sha256sums=('f728a3662baa38b3320e1059a07409d2ad8ca2fdc8b68f81f025ed328933a2f3'
+sha256sums=('04509822cdb76a925dabd764c79e782ba9c899421565bbc64f348f6d06bb8a60'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -290,7 +290,7 @@ patch -Np1 -i ../030.patch
 patch -Np1 -i ../CP.patch
 patch -Np1 -i ../032.patch
 patch -Np1 -i ../034.patch
-patch -Np1 -i ../035.patch
+#patch -Np1 -i ../035.patch
 patch -Np1 -i ../360.patch
 patch -Np1 -i ../888.patch
 patch -Np1 -i ../meme.patch
