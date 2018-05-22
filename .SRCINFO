@@ -1,6 +1,6 @@
 pkgbase = wingide
 	pkgdesc = Wing IDE Professional is the full-featured Python IDE for professional programmers.
-	pkgver = 6.0.12.1.1
+	pkgver = 6.0.12.1.2
 	pkgrel = 1
 	url = http://www.wingware.com
 	install = wingide.install
@@ -13,7 +13,15 @@ pkgbase = wingide
 	options = !strip
 	options = !emptydirs
 	source = http://wingware.com/pub/wingide/6.0.12/wingide-6.0.12-1-x86_64-linux.tar.bz2
+	source = http://wingware.com/pub/wingide/6.0.12/patches/fix-remotely-stored-projects-6.0.12p1-all.tar
+	source = http://wingware.com/pub/wingide/6.0.12/patches/fix-vi-visual-bc-6.0.12p2-all.tar
+	source = http://wingware.com/pub/wingide/6.0.12/patches/fix-matplotlib-debug-6.0.12p3-all.tar
+	source = http://wingware.com/pub/wingide/6.0.12/patches/fix-logging-exc-6.0.12p4-all.tar
 	md5sums = 74a72215aa827fe19049bea5d24382cc
+	md5sums = 8ab32b0c575907db9603e6ed52b4fe69
+	md5sums = caef531adab241abc9349259a82a5cf6
+	md5sums = 1bd037a9f2b4b1ce3fc9d3a2e1c3213a
+	md5sums = 3dd2a8fbec556973b2b432a085f2bb7d
 
 pkgname = wingide
 
