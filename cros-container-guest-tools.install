@@ -1,0 +1,77 @@
+post_install() {
+
+	# update dconf after GTK+ theme installed
+	if hash dconf 2>/dev/null; then
+    	dconf update
+	fi
+
+	# mask systemd-journald-audit.socket, which failes inside unprivileged container
+	systemctl mask systemd-journald-audit.socket
+
+	# workaround for https://bugs.archlinux.org/task/58701
+	ln -sf /opt/google/cros-containers/cros-adapta /usr/share/themes/CrosAdapta	
+
+	# set default browser to the garcon_host_browser handler
+	if hash xdg-settings; then
+		xdg-settings set default-web-browser garcon_host_browser.desktop
+	fi
+
+cat << EOF
+
+	(!) This package is permanently work in progress until Crostini 
+	considered to be stable by Google!
+
+	Developed and tested on Samsung Chromebook Plus, should work on 
+	other Chromebooks with Crostini enabled.
+
+	Please perform following manual steps after installation:
+
+	1. Create /usr/share/themes/CrosAdapta symlink pointing to /opt/google/cros-containers/cros-adapta:
+	
+	   # ln -sf /opt/google/cros-containers/cros-adapta ${pkgdir}/usr/share/themes/CrosAdapta
+
+	   This will be done automatically after https://bugs.archlinux.org/task/58701 is fixed.
+
+	2. Enable sommelier@.service and sommelier-x@.service user services:
+	
+	   # systemctl --user enable sommelier@0
+	   # systemctl --user enable sommelier-x@0
+
+	   And start them:
+
+	   # systemctl --user start sommelier@0
+	   # systemctl --user start sommelier-x@0
+
+	   (!) XWayland and sommelier-x aren't yet work on Chromebook Plus (as per 05/22).
+
+	3. Enable and start cros-sftp.service for SFTP access to the container file system:
+
+	   # systemctl enable cros-sftp
+	   # systemctl start cros-sftp
+	
+	   (!) Not yet working on Chromebook Plus, extra steps while starting container 
+	   required probably.
+
+EOF
+
+}
+
+post_remove() {
+
+	# update dconf after GTK+ theme installed
+	if hash dconf 2>/dev/null; then
+    	dconf update 2>/dev/null
+	fi
+
+	# unmask systemd-journald-audit.socket
+	systemctl unmask systemd-journald-audit.socket
+
+	# workaround for https://bugs.archlinux.org/task/58701
+	rm /usr/share/themes/CrosAdapta	
+
+cat << EOF
+
+	Please remove /usr/share/themes/CrosAdapta symlink manually!
+
+EOF
+}
