@@ -1,7 +1,7 @@
 # Maintainer: Fionn Langhans <fionn.langhans@gmail.com>
 pkgname=vim-syntax-highlighting-feder
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc="Highlighting Feder syntax in vim"
 arch=('any')
 url="https://github.com/codefionn/feder-highlight"
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("https://github.com/codefionn/feder-highlight/releases/download/$pkgver/feder-highlight-$pkgver.zip")
 noextract=()
-md5sums=('8a2539824bcc9a42bf8940785e560412')
+md5sums=('6a9b1f6cec2ee457d11e032d97d3ebaa')
 
 build() {
     cd "feder-highlight"
