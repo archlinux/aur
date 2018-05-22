@@ -17,7 +17,7 @@ pkgdesc='Openbox with Patches from Debian.'
 arch=('i686' 'x86_64')
 url='http://openbox.org'
 license=('GPL')
-provides=('libobrender.so' $_pkgname)
+provides=('libobrender.so' $_pkgname 'openbox')
 conflicts=($_pkgname)
 depends=('startup-notification' 'libxml2' 'libxinerama' 'libxrandr'
          'libxcursor' 'pango' 'imlib2' 'librsvg' 'libsm')
