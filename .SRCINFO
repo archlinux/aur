@@ -1,0 +1,18 @@
+pkgbase = ansible-review
+	pkgdesc = Reviews Ansible playbooks, roles and inventory and suggests improvements.
+	pkgver = 0.13.4
+	pkgrel = 1
+	url = https://github.com/willthames/ansible-review
+	arch = any
+	license = MIT
+	makedepends = python2-nose
+	depends = ansible-lint
+	depends = python-yaml
+	depends = python-appdirs
+	depends = python-unidiff
+	depends = flake8
+	source = https://github.com/willthames/ansible-review/archive/v0.13.4.tar.gz
+	sha256sums = 8071e884a8e9f388eeb15b8c88ec915cc3ede89303fa937383c4918e5ceb5ef4
+
+pkgname = ansible-review
+
