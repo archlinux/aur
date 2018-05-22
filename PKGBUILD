@@ -2,28 +2,27 @@
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=vcftools
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="A set of tools written in Perl and C++ for working with VCF files"
 arch=('x86_64')
 url="https://vcftools.github.io/"
 license=('LGPL3')
 depends=('perl' 'zlib')
-source=(https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('a110662535651caa6cc8c876216a9f77')
+source=(https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz)
+sha256sums=('bfbc50d92262868802d62f595c076b34f8e61a5ecaf48682328dad19defd3e7d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  ./configure \
-    --prefix=/usr \
-    --with-pmdir=/usr/share/perl5/vendor_perl
-
+  ./autogen.sh
+  ./configure --prefix=${pkgdir}/usr --mandir=${pkgdir}/usr/share/man/man1
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR=$pkgdir install
+  make install
+
+  install -D -m755 src/cpp/vcftools "${pkgdir}/usr/bin/vcftools"
 }
