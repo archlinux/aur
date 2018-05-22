@@ -43,22 +43,20 @@ conffile=/etc/cups/cups-programme.conf
 # Timestamp
 tstamp="$(date '+%Y-%m-%d_%T%z')"
 
-case "$1" in
-  '-V'|'-version'|'--version')
-    echo "${VERSION}"
-    exit 0
-  ;;
-esac
-
+# How to output text to stdout:
+stdout() {
+  # Don't use 'echo', since it might interpret leading '-e', '-E', '-n' and maybe others.
+  cat <<< "$@"
+}
 
 # Write to stderr:
 stderr() {
-  echo "$@" 1>&2
+  stdout "$@" 1>&2
 }
 
 ### Local logging:
 log_local() {
-  echo "$@" >> "${logfile}"
+  stdout "$@" >> "${logfile}"
 }
 
 ### CUPS logging with corresponding loglevels:
@@ -109,6 +107,12 @@ emerg() {
   log_cups "EMERG: ${firstarg}" "$@"
 }
 
+case "$1" in
+  '-V'|'-version'|'--version')
+    stdout "${VERSION}"
+    exit 0
+  ;;
+esac
 
 ### Reading arguments passed from CUPS:
 backend=${0}
@@ -134,7 +138,7 @@ outfile_prefix="/tmp/${backend_name}.${jobid}"
 case ${#} in
   0)
     # This case is for "backend discovery mode."
-    echo "direct ${backend_name} \"Unknown\" \"cups-programme: Print to file and open in programme. DeviceURI example: ${backend_name}:/usr/bin/gimp?u=<user>&DISPLAY=%C0.0&%s\". See documentation!"
+    stdout "direct ${backend_name} \"Unknown\" \"cups-programme: Print to file and open in programme. DeviceURI example: ${backend_name}:/usr/bin/gimp?u=<user>&DISPLAY=%C0.0&%s\". See documentation!"
     exit 0
   ;;
   5)
@@ -259,17 +263,17 @@ replace_strings() {
 # Put the '-' last in order for grep not interpreting it special.
 # Put the '^' not first in order for grep not interpreting it special.
 _allowd_chars='][)(}{äÄöÖüÜß.:,;_@^°§%&/=?+*~a-zA-Z0-9-'
-if echo "${DEVICE_URI}" | grep -qE -e "[^${_allowd_chars}]"; then
-  _rejected_chars="$(echo "${DEVICE_URI}" | grep -oE -e "[^${_allowd_chars}]" | sort | uniq | tr -d '\n')"
+if stdout "${DEVICE_URI}" | grep -qE -e "[^${_allowd_chars}]"; then
+  _rejected_chars="$(stdout "${DEVICE_URI}" | grep -oE -e "[^${_allowd_chars}]" | sort | uniq | tr -d '\n')"
   error "$0: \$DEVICE_URI contains forbidden character(s) '${_rejected_chars}'. Allowed set: [${_allowd_chars}]. Aborting."
   exit 5
 fi
 
 # Getting the command from $DEVICE_URI:
-cmd="$(echo "${DEVICE_URI}" | sed "s|^${backend_name}":'||g' | sed 's|?.*$||')"
+cmd="$(stdout "${DEVICE_URI}" | sed "s|^${backend_name}":'||g' | sed 's|?.*$||')"
 
 # Getting the raw options, arguments, ... from $DEVICE_URI:
-argstr="$(echo "${DEVICE_URI}" | sed -n 's|^[^?]*?\(.*\)$|\1|p')"
+argstr="$(stdout "${DEVICE_URI}" | sed -n 's|^[^?]*?\(.*\)$|\1|p')"
 
 # Taking the raw options, arguments, ... apart:
 IFS='&' read -r -a argv <<< "${argstr}"
@@ -327,17 +331,17 @@ fi
 outfile="${outfile_prefix}.${filetype}"
 
 # Now, after $outfile is set, do the string replacements:
-if [ -v cmd ];     then cmd="$(echo "${cmd}"         | replace_strings)"; fi
-if [ -v user ];    then user="$(echo "${user}"       | replace_strings)"; fi
-if [ -v group ];   then group="$(echo "${group}"     | replace_strings)"; fi
+if [ -v cmd ];     then cmd="$(replace_strings <<< "${cmd}" )"; fi
+if [ -v user ];    then user="$(replace_strings <<< "${user}" )"; fi
+if [ -v group ];   then group="$(replace_strings <<< "${group}" )"; fi
 cmd_args_replaced=()
 for _arg in "${cmd_args[@]}"; do
-  cmd_args_replaced+=("$(echo "${_arg}" | replace_strings)")
+  cmd_args_replaced+=("$(replace_strings <<< "${_arg}")")
 done
 # Exporting environment variables after replacements.
 for _env in "${env_vars[@]}"; do
-  _var="$(echo "${_env%%=*}" | replace_strings)"
-  _val="$(echo "${_env#?*=}" | replace_strings)"
+  _var="$(replace_strings <<< "${_env%%=*}" )"
+  _val="$(replace_strings <<< "${_env#?*=}" )"
   log_local "Exporting environment variable '${_var}=${_val}'."
   declare -g "${_var}=${_val}"
   export "${_var}"
@@ -544,7 +548,7 @@ if [ -v user ] || [ -v group ]; then
       if [ -v user ]; then
         su_opts+=" -u ${user@Q}"
       fi
-      su_opts+=" -c ${cmd@Q} ${cmd_args_replaced[@]@Q}"
+      su_opts+=" -c \"${cmd@Q} ${cmd_args_replaced[@]@Q}\""
     ;;
     'kdesudo')
       su_cmd='kdesudo'
@@ -555,7 +559,7 @@ if [ -v user ] || [ -v group ]; then
       if [ -v user ]; then
         su_opts+=" -u ${user@Q}"
       fi
-      su_opts+=" -c ${cmd@Q} ${cmd_args_replaced[@]@Q}"
+      su_opts+=" -c \"${cmd@Q} ${cmd_args_replaced[@]@Q}\""
     ;;
     *)
       error "$0: Error: Unsupported su_variant '${su_variant}' provided. Aborting."
