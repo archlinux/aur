@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.5.r318.ae0f27a18
+pkgver=0.0.5.r366.b230b0df0
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
@@ -25,10 +25,8 @@ source=('git+https://github.com/RPCS3/rpcs3.git'
         'git+https://github.com/KhronosGroup/glslang.git'
         'git+https://github.com/akrzemi1/Optional.git'
         'git+https://github.com/zeux/pugixml.git'
-        'git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git'
         'git+https://github.com/Cyan4973/xxHash.git')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -47,7 +45,7 @@ pkgver() {
 prepare() {
   pushd rpcs3
 
-  git submodule init 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
+  git submodule init 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit Vulkan/glslang
   git config submodule.asmjit.url ../asmjit
   git config submodule.glslang.url ../glslang
   git config submodule.GSL.url ../GSL
@@ -55,9 +53,8 @@ prepare() {
   #git config submodule.llvm.url ../rpcs3-llvm
   git config submodule.Optional.url ../Optional
   git config submodule.pugixml.url ../pugixml
-  git config submodule.Vulkan-LoaderAndValidationLayers ../Vulkan-LoaderAndValidationLayers
   git config submodule.xxHash ../xxHash
-  git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
+  git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit Vulkan/glslang
 
   mkdir llvmlibs
 
@@ -85,8 +82,6 @@ build() {
 
 package() {
   make DESTDIR="${pkgdir}" -C build install
-  find "${pkgdir}" -name *xxhsum* -delete
-  find "${pkgdir}" -name *xxhash* -delete
 }
 
 # vim: ts=2 sw=2 et:
