@@ -1,7 +1,7 @@
 # Maintainer: Claudio d'Angelis <claudiodangelis at gmail dot com>
 pkgname=postman-bin
 pkgver=6.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Build, test, and document your APIs faster"
 arch=('x86_64')
 url="https://www.getpostman.com"
@@ -23,10 +23,10 @@ package() {
   	install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/postman/Postman" "${pkgdir}/usr/bin/postman"
     # License
-    install -D -m644 "Postman/LICENSE" \
+    install -D -m644 "Postman/app/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     # Chromium License
-    install -D -m644 "Postman/LICENSES.chromium.html" \
+    install -D -m644 "Postman/app/LICENSES.chromium.html" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
     # Desktop file
     install -D -m644 "postman.desktop" \
