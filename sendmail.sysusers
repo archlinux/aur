@@ -1,2 +1,2 @@
 g smmsp 25
-u smmsp 150:25 "sendmail user" /var/spool/mail /bin/false
+u smmsp 150:25 "sendmail user" /var/spool/mail
