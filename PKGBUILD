@@ -7,7 +7,7 @@
 
 pkgname="sendmail"
 pkgver=8.15.2
-pkgrel=3
+pkgrel=4
 pkgdesc="The sendmail MTA"
 url="http://www.sendmail.org"
 arch=('x86_64')
@@ -17,7 +17,8 @@ conflicts=('msmtp-mta' 'postfix' 'exim' 'opensmtpd')
 backup=('etc/conf.d/sendmail'
         'etc/mail/aliases'
         'etc/mail/sendmail.cf')
-source=("ftp://ftp.sendmail.org/pub/${pkgname}/${pkgname}.${pkgver}.tar.gz"
+source=("https://ftp.sendmail.org/${pkgname}.${pkgver}.tar.gz"
+        'site.config.m4'
         'sendmail-8.15.2-smtp-session-reuse-fix.patch'
         'sendmail-8.15.2-openssl-1.1.0-fix.patch'
         'sendmail-8.15.2-openssl-1.1.0-ecdhe-fix.patch'
@@ -28,6 +29,7 @@ source=("ftp://ftp.sendmail.org/pub/${pkgname}/${pkgname}.${pkgver}.tar.gz"
         'sm-client.service')
 depends=('db' 'cyrus-sasl')
 sha256sums=('24f94b5fd76705f15897a78932a5f2439a32b1a2fdc35769bb1a5f5d9b4db439'
+            '01c281630074be308139295836d38faee3d49656b8271df1d3f42e8506b3d751'
             'bc5a0de6c5434d8d46467f93d07b2bb5c7acd62f9dbce2490e0005d21b673250'
             '9991dd85428778cec0c2030bf49e6ddf6d3db6026c651f858d72891973537b0e'
             '746d8ae8dea54cb2599c02181c2ea28ab15b26ba5e1e3b0f9cfe907a0e7a1d22'
@@ -43,31 +45,8 @@ prepare() {
     patch -p1 < "${srcdir}"/sendmail-8.15.2-smtp-session-reuse-fix.patch
     patch -p1 < "${srcdir}"/sendmail-8.15.2-openssl-1.1.0-fix.patch
     patch -p1 < "${srcdir}"/sendmail-8.15.2-openssl-1.1.0-ecdhe-fix.patch
-
-    chmod 0644 devtools/OS/Linux
-    echo "define(\`confSTDIO_TYPE', \`portable')" >> devtools/OS/Linux
-    echo "define(\`confGBINGRP', \`25')" >> devtools/OS/Linux
-    echo "define(\`confMSPQOWN', \`150')" >> devtools/OS/Linux
-    echo "define(\`confINCGRP', \`root')" >> devtools/OS/Linux
-    echo "define(\`confLIBGRP', \`root')" >> devtools/OS/Linux
-    echo "define(\`confMANGRP', \`root')" >> devtools/OS/Linux
-    echo "define(\`confMANOWN', \`root')" >> devtools/OS/Linux
-    echo "define(\`confMBINGRP', \`root')" >> devtools/OS/Linux
-    echo "define(\`confSBINGRP', \`root')" >> devtools/OS/Linux
-    echo "define(\`confUBINGRP', \`root')" >> devtools/OS/Linux
-    echo "define(\`confUBINOWN', \`root')" >> devtools/OS/Linux
-    echo "define(\`confEBINDIR', \`/usr/bin')" >> devtools/OS/Linux
-    echo "define(\`confMBINDIR', \`/usr/bin')" >> devtools/OS/Linux
-    echo "define(\`confSBINDIR', \`/usr/bin')" >> devtools/OS/Linux
-    echo "define(\`confMANROOT', \`/usr/share/man/man')" >> devtools/OS/Linux
-    echo "APPENDDEF(\`conf_sendmail_ENVDEF', \`-DSTARTTLS')" >> devtools/OS/Linux
-    echo "APPENDDEF(\`conf_sendmail_LIBS', \`-lssl -lcrypto')" >> devtools/OS/Linux
-    echo "APPENDDEF(\`conf_sendmail_ENVDEF', \`-DSASL=2')" >> devtools/OS/Linux
-    echo "APPENDDEF(\`conf_libmilter_ENVDEF', \`-DNETINET6')" >>devtools/OS/Linux
-    echo "APPENDDEF(\`conf_sendmail_LIBS', \`-lresolv -lsasl2')" >> devtools/OS/Linux
-    echo "APPENDDEF(\`confLIBS', \`-ldb')" >> devtools/OS/Linux
-    echo "APPENDDEF(\`confMAPDEF', \`-DNEWDB')" >> devtools/OS/Linux
     sed -i -e 's/CFGRP=bin/CFGRP=root/g' cf/cf/Makefile
+    install -m644 -t devtools/Site "${srcdir}"/site.config.m4
 }
 
 build() {
@@ -83,7 +62,7 @@ package() {
     make -C mail.local force-install DESTDIR="${pkgdir}"
     make -C rmail force-install DESTDIR="${pkgdir}"
 
-    cp -r cf "${pkgdir}"/usr/share/sendmail-cf
+    cp -rp cf "${pkgdir}"/usr/share/sendmail-cf
     rmdir "${pkgdir}"/{var/spool/clientmqueue,var/spool,var}
     install -Dm644 -t "${pkgdir}"/etc/mail sendmail/aliases
     install -Dm644 cf/cf/generic-linux.cf "${pkgdir}"/etc/mail/sendmail.cf
