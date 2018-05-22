@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=qxgedit
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="GUI for editing MIDI System Exclusive files for XG devices (eg. Yamaha DB50XG)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ groups=('pro-audio')
 depends=('alsa-lib' 'hicolor-icon-theme' 'qt5-base')
 makedepends=('qt5-tools')
 source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('1122aed65d9db668dc6fc0015709d9a7ed9072b980aaaac668d26da5a3438ae102134f021d79e9ca948ed59242b6642549a220e3592bb641a8a4fa912c86cafe')
+sha512sums=('4004536705454dbca04dff6b0d88f411f22503637ed15823d960d25d2f4beda88c40b310311a0856b57bdd32b922b89f6dd2756eda0b938f35d271e9b48292d8')
 
 prepare() {
   cd "$pkgname-$pkgver"

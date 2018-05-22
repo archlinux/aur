@@ -1,6 +1,6 @@
 pkgbase = qxgedit
 	pkgdesc = GUI for editing MIDI System Exclusive files for XG devices (eg. Yamaha DB50XG)
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://qxgedit.sourceforge.io/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = qxgedit
 	depends = alsa-lib
 	depends = hicolor-icon-theme
 	depends = qt5-base
-	source = https://downloads.sourceforge.net/qxgedit/qxgedit-0.5.0.tar.gz
-	sha512sums = 1122aed65d9db668dc6fc0015709d9a7ed9072b980aaaac668d26da5a3438ae102134f021d79e9ca948ed59242b6642549a220e3592bb641a8a4fa912c86cafe
+	source = https://downloads.sourceforge.net/qxgedit/qxgedit-0.5.1.tar.gz
+	sha512sums = 4004536705454dbca04dff6b0d88f411f22503637ed15823d960d25d2f4beda88c40b310311a0856b57bdd32b922b89f6dd2756eda0b938f35d271e9b48292d8
 
 pkgname = qxgedit
 
