@@ -3,7 +3,7 @@
 # Maintainer: Evert Vorster <evorster-at-gmail-dot-com>
 
 pkgname=amarok-git
-pkgver=v2.9.0.147.gf96d0d159d
+pkgver=2.9.0.r225.gd98ec3f7a9
 pkgrel=1
 pkgdesc="The powerful music player for KDE - GIT version"
 arch=("i686" "x86_64")
@@ -12,7 +12,7 @@ license=('GPL2' 'LGPL2.1' 'FDL')
 depends=('kdelibs4support' 'threadweaver' 'plasma-framework'
          'kcmutils' 'knewstuff' 'ktexteditor' 'knotifyconfig' 'kdnssd'
          'libmariadbclient' 'taglib-extras' 'gst-plugins-bad'
-         'qca-qt5' 'liblastfm' 'qjson' 'qt5-webkit' 'ffmpeg' 'gmock')
+         'qca-qt5' 'liblastfm-qt5' 'qt5-webkit' 'ffmpeg')
 makedepends=('pkgconfig' 'extra-cmake-modules' 'kdoctools')
 optdepends=("libgpod: support for Apple iPod audio devices"
 	    "libmtp: support for portable media devices"
@@ -29,7 +29,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd amarok
-    git describe --always | sed 's|-|.|g'
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 #prepare(){
@@ -42,13 +42,10 @@ build() {
     rm -rf build
     mkdir -p build
     cd build
-    cmake "../amarok" -Wno-dev \
+    cmake ../amarok \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR:STRING=/usr/lib \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DKDE4_BUILD_TESTS=OFF \
-        -DWITH_NepomukCore=OFF \
-        -DWITH_Soprano=OFF
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_BUILD_TYPE=Release
 
     make
 }
