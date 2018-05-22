@@ -2,24 +2,25 @@
 _pkgname=aiohttp
 pkgname=python-${_pkgname}-gns3
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='http client/server for asyncio (GNS3)'
 arch=('any')
 url="https://aiohttp.readthedocs.io/"
 license=('Apache')
 groups=('gns3')
-depends=('python' 'python-yarl' 'python-chardet' 'python-multidict-gns3' 'python-async-timeout>=1.1.0')
+depends=('python' 'python-yarl' 'python-chardet' 'python-multidict-gns3' 'python-async-timeout-gns3')
 makedepends=('python-setuptools')
 provides=("python-${_pkgname}")
 conflicts=("python-${_pkgname}")
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=("e50ea3d70f2d821b7e40442fb470e8ef")
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/aio-libs/${_pkgname}/archive/v${pkgver}.tar.gz)
+sha256sums=('a504fc979f897ab776cbbb324443dd0aebd6ba832765fb54770ea2ecb2a6e07b')
 
 prepare() {
-    sed -i 's/yarl>=0.10.0,<0.11/yarl>=0.10.0,<=0.11/g' ${srcdir}/${_pkgname}-${pkgver}/setup.py
+    cd ${_pkgname}-${pkgver}
+    sed -i 's/yarl>=0.10.0,<0.11/yarl>=0.10.0,<=0.11/g' setup.py
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python3 setup.py install --root=${pkgdir} --optimize=1
+    cd ${_pkgname}-${pkgver}
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
