@@ -47,13 +47,18 @@ it's information which programme to execute.
 
 The Device URI to print to The Gimp is, for example:
 
-    cups-programme:/usr/bin/gimp?u=<user>&D=%C0.0&%s
+    cups-programme:/usr/bin/gimp?u=.CUPSUSER&DISPLAY=%C0.0&%s
 
-where `<user>` is the name of the user `gimp` should be run as. If not
-specified, it will be run as the user CUPS is running as, which might
-not be desired. The `D=%C0.0` specifies the X11 display to use. In most
-cases, `:0.0` is correct (`%C` will be replaced by `:`). (See section
-"Device URI syntax" for a full description of the Device URI.)
+where `.CUPSUSER` will be replaced by the user who invoked the CUPS
+print job (if CUPS can infer; otherwise most probably it will be the
+user CUPS runs it's backends as, e.g. `lp`) ind will be the user `gimp`
+should be run as. If `u=[...]` is not specified, it will be run as the
+user CUPS is running it's backends as, which might not be desired. The
+`DISPLAY=%C0.0` specifies the X11 display to use. In most cases, `:0.0`
+is correct (`%C` will be replaced by `:`).
+
+See section "Device URI syntax" for a full description of the Device
+URI.
 
 After the Device URI has been entered, select a name and optionally a
 description and a location note for the printer. Then you are presented
@@ -95,7 +100,7 @@ where:
   (otherwise CUPS will complain that it is not a correct URI; it expects
   a `/` after the `:`),
 * `?<options>` is optional and has the syntax
-  `<option>&<option>&<option>` etc. (arbitraryly many options,
+  `?<option>&<option>&<option>` etc. (arbitraryly many options,
   separated by `&`, are allowed).
   an `<option>` can be of the form:
   - `u=<user>` -- specifies that the executable should be run as user
@@ -118,7 +123,7 @@ where:
     + 'jpg' (JPEG; uses ImageMagick or GraphicsMagick),
     + 'tif' (TIFF; uses ImageMagick or GraphicsMagick),
   - `<variable>=<value>` -- assigns `<value>` to the environment
-    variable `<variable>` and exports `<variable>`.
+    variable `<variable>` and exports `<variable>`,
   - anything else will be passed as positional arguments to
     the executable.
 * On `<path-to-executable>` and all the options (except `t=<filetype>`),

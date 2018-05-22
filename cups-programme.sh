@@ -29,7 +29,7 @@
 #
 
 # The version.
-VERSION=0.2.1
+VERSION=0.2.2
 
 # Abort on error
 set -e
@@ -134,7 +134,7 @@ outfile_prefix="/tmp/${backend_name}.${jobid}"
 case ${#} in
   0)
     # This case is for "backend discovery mode."
-    echo "direct ${backend_name} \"Unknown\" \"cups-programme: Print to file and open in programme. DeviceURI example: ${backend_name}:/usr/bin/gimp?u=<user>&D=%C0.0&%s\". See documentation!"
+    echo "direct ${backend_name} \"Unknown\" \"cups-programme: Print to file and open in programme. DeviceURI example: ${backend_name}:/usr/bin/gimp?u=<user>&DISPLAY=%C0.0&%s\". See documentation!"
     exit 0
   ;;
   5)
