@@ -1,14 +1,14 @@
 pkgbase = jdrivesync
 	pkgdesc = jdrivesync is a simple command line tool that synchronizes a local file system structure to your Google Drive (and back)
-	pkgver = 0.3.0
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/siom79/jdrivesync
 	arch = any
 	license = Apache
 	depends = java-runtime=8
-	noextract = jdrivesync-0.3.0-jar-with-dependencies.jar
-	source = https://github.com/siom79/jdrivesync/releases/download/jdrivesync-0.3.0/jdrivesync-0.3.0-jar-with-dependencies.jar
-	md5sums = 78c7bbceed41a409d1ee37228a11cf88
+	noextract = jdrivesync-0.4.3-jar-with-dependencies.jar
+	source = https://github.com/siom79/jdrivesync/releases/download/jdrivesync-0.4.3/jdrivesync-0.4.3-jar-with-dependencies.jar
+	md5sums = 74b456cd5e3bdcc18dcd6a05c849559c
 
 pkgname = jdrivesync
 
