@@ -11,7 +11,7 @@ url="https://certbot.eff.org"
 depends=('ca-certificates' "python-acme=$pkgver" 'python-configargparse' 'python-configobj'
          'python-cryptography' 'python-mock' 'python-parsedatetime' 'python-pyrfc3339'
          'python-pytz' 'python-setuptools' 'python-zope-component' 'python-zope-interface')
-checkdepends=('python-pytest-runner' 'python2-pytest-runner')
+checkdepends=('python-pytest-runner')
 optdepends=("certbot-apache: Apache plugin for Let’s Encrypt client"
             "certbot-nginx: Nginx plugin for Let’s Encrypt client")
 replaces=("letsencrypt")
