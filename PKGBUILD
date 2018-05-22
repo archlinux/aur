@@ -2,7 +2,7 @@
 
 pkgname=rapid-photo-downloader-bzr
 pkgver=0.9.9.r1075
-pkgrel=1
+pkgrel=2
 pkgdesc="Photo and video downloader"
 arch=('any')
 url="http://www.damonlynch.net/rapid/"
@@ -18,7 +18,7 @@ depends=('desktop-file-utils' 'gstreamer' 'hicolor-icon-theme'
 makedepends=('bzr' 'gobject-introspection' 'intltool' 'python-setuptools')
 optdepends=('gst-libav: for extra video thumbnails'
             'gst-plugins-good: for extra video thumbnails')
-provides=("${pkgname%-*}")
+provides=("${pkgname%-*}=${pkgver%.*}")
 conflicts=("${pkgname%-*}")
 source=('rapid::bzr+https://code.launchpad.net/~dlynch3/rapid/zeromq_pyqt')
 sha256sums=('SKIP')
