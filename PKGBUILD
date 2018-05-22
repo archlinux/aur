@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=otf-libertinus-git
-pkgver=6.4.r73.g4656f77
+pkgver=6.6.r19.g51a9651
 pkgrel=1
 pkgdesc='Libertinus font family, a fork of Linux Libertine and Linux Biolinum with bugfixes and an OpenType math companion.'
 arch=('any')
@@ -15,13 +15,15 @@ source=("$pkgname::git+https://github.com/khaledhosny/libertinus.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$pkgname"
-  find -name '*.otf' -execdir install -Dm644 {} "${pkgdir}/usr/share/fonts/OTF/{}" \;
-  install -Dm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+  cd "$srcdir/$pkgname"
+  for f in *.otf; do
+    install -D -m644 $f "$pkgdir/usr/share/fonts/OTF/$f"
+  done
+  install -D -m644 OFL.txt "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
 
