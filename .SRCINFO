@@ -1,6 +1,6 @@
 pkgbase = amarok-git
 	pkgdesc = The powerful music player for KDE - GIT version
-	pkgver = v2.9.0.147.gf96d0d159d
+	pkgver = 2.9.0.r227.gf4af2bc5bb
 	pkgrel = 1
 	url = http://amarok.kde.org
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = amarok-git
 	license = GPL2
 	license = LGPL2.1
 	license = FDL
+	makedepends = git
 	makedepends = pkgconfig
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
@@ -23,11 +24,9 @@ pkgbase = amarok-git
 	depends = taglib-extras
 	depends = gst-plugins-bad
 	depends = qca-qt5
-	depends = liblastfm
-	depends = qjson
+	depends = liblastfm-qt5
 	depends = qt5-webkit
 	depends = ffmpeg
-	depends = gmock
 	optdepends = libgpod: support for Apple iPod audio devices
 	optdepends = libmtp: support for portable media devices
 	optdepends = loudmouth: backend needed by mp3tunes for syncing
@@ -38,7 +37,7 @@ pkgbase = amarok-git
 	conflicts = amarok
 	conflicts = amarok2
 	source = git://anongit.kde.org/amarok.git
-	sha1sums = SKIP
+	sha512sums = SKIP
 
 pkgname = amarok-git
 
