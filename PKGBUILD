@@ -3,7 +3,7 @@
 
 pkgname='pop-gtk-theme-bin'
 pkgver='3.1.1'
-pkgrel=5
+pkgrel=6
 pkgdesc='System76 Pop GTK+ Theme'
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
@@ -23,13 +23,13 @@ optdepends=(
 	"xfce4-session>=4.12.2"
 	"mate-desktop>=1.14.0"
 	"lxde-common>=0.99.1"
-	"pop-icon-theme-git: Recommended icon theme"
+	"pop-icon-theme: Recommended icon theme"
 	"ttf-fira-sans: Recommended font for window titles and interface"
 	"ttf-fira-mono: Recommended monospace font"
 	"ttf-roboto-slab: Recommended font for documents"
 )
-source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~1526319328~18.04~72ad477_all.deb")
-sha256sums=('9907d3b3941253b80f87dc781769946fc87cb02ae81ce8f95a0316d9612a7e7d')
+source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~1526399168~18.04~4ffc89a_all.deb")
+sha256sums=('c5995881cdbc6bd2efa295bfaf2f23e63ad1e5390a554227c139a47722e27824')
 
 package() {
   cd "${srcdir}"
