@@ -1,0 +1,16 @@
+pkgbase = cncjs
+	pkgdesc = Web-based interface for CNC controllers running Grbl, Marlin, Smoothieware, or TinyG.
+	pkgver = 1.9.15
+	pkgrel = 1
+	url = https://github.com/cncjs/cncjs
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	depends = nodejs
+	source = https://github.com/cncjs/cncjs/archive/v1.9.15.tar.gz
+	source = cnc
+	sha512sums = 03dba4ea59e518d051878afae8695e694d6dc8ce628484d401a479cf9a2ee7af1e501e0d202004258183626b9b1ddadc0b5b1f2fb9bc4466b2331b85176c40ff
+	sha512sums = cf883eda1afc89fb4d994da8a3ac7b1fdcf7bfbaded163d87b68ccca141c6077b4b8bb107f0379f3ed16ea840a94d5666bc04f163ee2cc3ad5bc457228d0b9a5
+
+pkgname = cncjs
+
