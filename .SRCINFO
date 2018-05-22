@@ -1,0 +1,17 @@
+pkgbase = rofi-blezz
+	pkgdesc = A plugin for rofi that emulates blezz behaviour.
+	pkgver = r25.f48e30f
+	pkgrel = 1
+	url = https://gitcrate.org/qtools/blezz
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = rofi
+	provides = rofi-blezz
+	options = !libtool
+	source = git+https://gitcrate.org/qtools/rofi-blezz.git
+	md5sums = SKIP
+
+pkgname = rofi-blezz
+
