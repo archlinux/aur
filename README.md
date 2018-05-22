@@ -117,6 +117,8 @@ where:
     + 'gif' (GIF; uses ImageMagick or GraphicsMagick),
     + 'jpg' (JPEG; uses ImageMagick or GraphicsMagick),
     + 'tif' (TIFF; uses ImageMagick or GraphicsMagick),
+  - `<variable>=<value>` -- assigns `<value>` to the environment
+    variable `<variable>` and exports `<variable>`.
   - anything else will be passed as positional arguments to
     the executable.
 * On `<path-to-executable>` and all the options (except `t=<filetype>`),

@@ -212,7 +212,7 @@ log_local ""
 # 
 # $DEVICE_URI format:
 # 
-#   ${backend_name}:<command>?u=<user>&g=<group>&D=<display>&t=<filetype>&<argument>&<argument>...
+#   ${backend_name}:<command>?u=<user>&g=<group>&D=<display>&t=<filetype>&<variable>=<value>&<variable>=<value>&<argument>&<argument>...
 # 
 # All arguments, including the 'u=<user>', 'g=<group>', 'D=<display>'
 # and 't=<filetype>, are optional.
@@ -319,8 +319,8 @@ for _arg in "${cmd_args[@]}"; do
 done
 # Exporting environment variables after replacements.
 for _env in "${env_vars[@]}"; do
-  _var="$(echo "${_env%%=*}" | replace_strings)")
-  _val="$(echo "${_env#?*=}" | replace_strings)")
+  _var="$(echo "${_env%%=*}" | replace_strings)"
+  _val="$(echo "${_env#?*=}" | replace_strings)"
   log_local "Exporting environment variable '${_var}=${_val}'."
   declare -g "${_var}=${_val}"
   export "${_var}"
