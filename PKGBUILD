@@ -31,6 +31,6 @@ package() {
   cd $pkgname
 
   # actual program
-  make PREFIX="$pkgdir" install
+  make PREFIX="${pkgdir}/usr" install
 
 }
