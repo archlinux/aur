@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="nzbhydra2"
-pkgver=1.4.16
+pkgver=1.4.18
 pkgrel=1
 pkgdesc="Meta search for NZB indexers"
 arch=('any')
@@ -15,7 +15,7 @@ source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${p
         'nzbhydra2.tmpfiles'
         'nzbhydra2.sysusers')
 
-sha256sums=('da47c557411c70478f574cca099620768fc52922339389c00389a0213fa772ce'
+sha256sums=('b6fe1bf7037d014d340f9dc509de499120cd093818753a84f84372c28450ce88'
             '3f8b69fc1870ac219780379793b547ee4356c5a3b177ffe5cf96fc18d0cfb684'
             '8c864fa865c92a6e0182f4dd3d4032ad85f09d021444cca217efafecbeff33c3'
             '464bffa0e7bf99ccd7bbcdb787b25b53b7692f86f081a4fe347b92f88c56fb09'
@@ -23,9 +23,7 @@ sha256sums=('da47c557411c70478f574cca099620768fc52922339389c00389a0213fa772ce'
 
 package() {
     install -d -m 755 "${pkgdir}/usr/lib/nzbhydra2"
-    cp -dpr --no-preserve=ownership "${srcdir}/lib" "${pkgdir}/usr/lib/nzbhydra2"
-    # Temporarily copy changelog.md to readme.md, which is used by the wrapper script to determine proper base directory location.
-    cp -dpr --no-preserve=ownership "${srcdir}/changelog.md" "${pkgdir}/usr/lib/nzbhydra2/readme.md"
+    cp -dpr --no-preserve=ownership "${srcdir}/lib" "${srcdir}/readme.md" "${pkgdir}/usr/lib/nzbhydra2"
     install -D -m 755 "${srcdir}/nzbhydra2wrapper.py" "${pkgdir}/usr/lib/nzbhydra2"
     install -D -m 755 "${srcdir}/nzbhydra2" "${pkgdir}/usr/lib/nzbhydra2"
 
