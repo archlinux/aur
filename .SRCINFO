@@ -1,0 +1,22 @@
+pkgbase = python-distance
+	pkgdesc = Many C implemented Levenshtein and Hamming distance computations in Python
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/doukremt/distance
+	arch = any
+	license = GPL2
+	makedepends = cython
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = distance-0.1.3.tar.gz::https://pypi.io/packages/source/D/Distance/Distance-0.1.3.tar.gz
+	sha256sums = 60807584f5b6003f5c521aa73f39f51f631de3be5cccc5a1d67166fcbf0d4551
+
+pkgname = python-distance
+	depends = python
+
+pkgname = python2-distance
+	depends = python2
+
