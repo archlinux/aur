@@ -1,7 +1,7 @@
 pkgbase = inox-dev
 	pkgdesc = A web browser built for speed, simplicity, and security
 	pkgver = 68.0.3432.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = inox-dev.install
 	arch = i686
@@ -48,7 +48,7 @@ pkgbase = inox-dev
 	optdepends = kwallet: for storing passwords in KWallet
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-68.0.3432.2.tar.xz
 	source = chromium-launcher-5.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v5.tar.gz
-	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/enox.desktop
+	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/dnox.desktop
 	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/breakpad-use-ucontext_t.patch
 	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/crc32c-string-view-check.patch
 	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/chromium-gn-bootstrap-r17.patch

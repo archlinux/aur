@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=68.0.3432.2
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -25,7 +25,8 @@ optdepends=('pepper-flash: support for Flash content'
 install=inox-dev.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$name-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        https://raw.githubusercontent.com/bn0785ac/in-dev/master/enox.desktop
+        
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/dnox.desktop
         https://raw.githubusercontent.com/bn0785ac/in-dev/master/breakpad-use-ucontext_t.patch
         https://raw.githubusercontent.com/bn0785ac/in-dev/master/crc32c-string-view-check.patch
         https://raw.githubusercontent.com/bn0785ac/in-dev/master/chromium-gn-bootstrap-r17.patch
