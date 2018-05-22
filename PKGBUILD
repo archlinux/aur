@@ -2,15 +2,15 @@
 # Contributor: Jonathan Fine <were.Vire@gmail.com>
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=glnemo2
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="an interactive visualization 3D program for nbody snapshots."
 arch=('i686' 'x86_64')
 url="http://projets.oamp.fr/projects/glnemo2"
 license=('GPL')
-depends=('glu' 'qt5-base' 'ccfits' 'hdf5-cpp-fortran')
-source=(http://projets.lam.fr/attachments/download/2892/${pkgname}-${pkgver}.tar.gz)
-md5sums=('d012fc4d0ca59275641e2de15ec499b4')
+depends=('glu' 'qt5-base' 'ccfits' 'hdf5-cpp-fortran' 'glm' 'libtirpc')
+source=(http://projets.lam.fr/attachments/download/5161/${pkgname}-${pkgver}.tar.gz)
+md5sums=('8df6c9eadabc1ccb40b59d18b9a7be30')
 noextract=( ${source[@]##*/} )
 
 build() {
@@ -22,6 +22,11 @@ build() {
   sed -i 's/\-g/-O3/' config.arch
   sed -i 's/^COMPILEMODE          = debug/#COMPILEMODE          = debug/' config.arch
   sed -i 's/^#COMPILEMODE          = release/COMPILEMODE          = release/' config.arch
+
+  # glibc rpc headers not available, see https://bugs.archlinux.org/task/58414
+  # using tirpc instead
+  sed -i 's!include <rpc!include <tirpc/rpc!' plugins/tipsy/tipsyio.h
+
   qmake-qt5 -recursive
   make
 }
