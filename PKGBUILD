@@ -66,7 +66,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 _srcname=linux-4.16
-pkgver=4.16.10
+pkgver=4.16.11
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -88,7 +88,6 @@ source=(
   "http://ck.kolivas.org/patches/4.0/4.16/4.16-ck${_ckpatchversion}/${_ckpatchname}.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  0003-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -96,17 +95,16 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '9fe6093be401fe0ff3f6cb3d428f137119a7befaf86d70f18c7e88871c1852d6'
+            'd0d998f193c3feeab95f1378dea15aa6ba145f591661547cc00ef16d161651fe'
             'SKIP'
-            '31f5964b9071c7c7f60e89ba505e8acc2bf47e2357e3d06098d6f22f72aaaf08'
+            '7ae242be3f32e166dce20b86b1bf78d605fc6bf697399dfdd15607f18dd3b367'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '61cd4b129eac475ad82fcdbbf9952b80e81e7c893776c00e3b6a658b950d0b26'
-            '286ea6a6f19148ec09d7c07bd80cd08f44a9b8f5821b0732fdbb1dc14ceb539b'
-            'ca6590d1368788dff5dd41f2a643ee1dcce4ec9e5ead5caa6e673f68c44851cb'
-            'ffa7f3305bade3ed258a93919c28fb0c810953d3e44ae4c9608512991f7eb703')
+            '63547739f0c0d36a1e6ab24eeb0bb86b2adb1dce688c60f0969fa95fd16cc123'
+            'd098aa90b48588059204ff2a1f37669e5a932b1fa7616bd36fe97092a15c8928')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -125,9 +123,6 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-
-  # https://bugs.archlinux.org/task/58237
-  patch -Np1 -i ../0003-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatchname}"
