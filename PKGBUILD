@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-3d
-_qtver=5.10.1
+_qtver=5.11.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('qt5-declarative' 'assimp')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('041fb42536a72bbf9be17a6f52d4b73ce93fb98b456fd63503cc47d80d196b3b')
+sha256sums=('4d541516abb31a831a668d2be984e3af7cc6bffaa3af6223a76bdd5dd25870c0')
 
 prepare() {
   mkdir -p build
