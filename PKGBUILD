@@ -1,3 +1,5 @@
+# Maintainer: Paulo Matos <paulo@matos-sorge.com>
+# Contributor: b4283 <unknown@unknowndomain.com>
 pkgname=riscv-isa-sim-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r496.785762c
 pkgrel=1
@@ -6,7 +8,7 @@ arch=(x86_64 i686)
 url="https://github.com/riscv/riscv-isa-sim"
 license=('BSD')
 groups=()
-depends=(riscv-fesvr-git)
+depends=(riscv-fesvr-git, dtc)
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
