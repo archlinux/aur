@@ -4,12 +4,26 @@ After=network-online.target
 
 [Service]
 Type=simple
+DynamicUser=true
 User=teamspeak
 Group=teamspeak
+StateDirectory=teamspeak3-server
+LogsDirectory=teamspeak3-server
 WorkingDirectory=/var/lib/teamspeak3-server
 Environment='LD_LIBRARY_PATH="/usr/lib/:/usr/lib/mariadb/:$LD_LIBRARY_PATH"'
 Environment="TS3SERVER_LICENSE=accept"
 ExecStart=/usr/bin/ts3server inifile=/etc/teamspeak3-server.ini
+
+# Hardening options
+CapabilityBoundingSet=
+AmbientCapabilities=
+NoNewPrivileges=true
+# DynamicUser only implies ProtectHome=read-only
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+LockPersonality=true
 
 [Install]
 WantedBy=multi-user.target
