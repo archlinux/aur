@@ -62,10 +62,10 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.16.10
+pkgver=4.16.11
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -105,12 +105,11 @@ source=(# mainline kernel patches
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
-        '0003-Partially-revert-swiotlb-remove-various-exports.patch'
-        '0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch')
+        '0003-Partially-revert-swiotlb-remove-various-exports.patch')
 
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '9fe6093be401fe0ff3f6cb3d428f137119a7befaf86d70f18c7e88871c1852d6'
+            'd0d998f193c3feeab95f1378dea15aa6ba145f591661547cc00ef16d161651fe'
             'SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '98f9f0bb8405d53acfedaca8f5dddbea9c57e2da1572c1b9a3e4cebf96b0e3bf'
@@ -122,10 +121,9 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '69241df4bd7897eb04db90e4d0a82c6e0b99b806019ba96bb885278ca8da89df'
-            '10728f672a83a515af540cafafde62346e9ccc2d14bf74e417fd2693865b1293'
-            'a81b612369e78d142ff80ec3adda36b3f94503e5a68d54282c508a112cc8dae0'
-            '052a39582f84c52b027c261fcec90325493f4d46f15647c274a58e39145deced')
+            '286ea6a6f19148ec09d7c07bd80cd08f44a9b8f5821b0732fdbb1dc14ceb539b'
+            'ca6590d1368788dff5dd41f2a643ee1dcce4ec9e5ead5caa6e673f68c44851cb'
+            '54f1968c8d2428b8715fda1e6204cf6d918a03e68e60aadad0cb6ead7fcd2081')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
