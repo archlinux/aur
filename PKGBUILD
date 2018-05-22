@@ -2,7 +2,7 @@
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="nzbhydra2"
 pkgver=1.4.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta search for NZB indexers"
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
@@ -23,7 +23,7 @@ sha256sums=('2778e4be3f1ace44dc368d0f51eeb5ad908e7b433b138353b86bf814d5a02a2e'
 
 package() {
     install -d -m 755 "${pkgdir}/usr/lib/nzbhydra2"
-    cp -dpr --no-preserve=ownership "${srcdir}/lib" "${srcdir}/readme.md" "${pkgdir}/usr/lib/nzbhydra2"
+    cp -dpr --no-preserve=ownership "${srcdir}/lib" "${pkgdir}/usr/lib/nzbhydra2"
     install -D -m 755 "${srcdir}/nzbhydra2wrapper.py" "${pkgdir}/usr/lib/nzbhydra2"
     install -D -m 755 "${srcdir}/nzbhydra2" "${pkgdir}/usr/lib/nzbhydra2"
 
