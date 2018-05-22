@@ -1,12 +1,12 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 pkgname=pikalogy
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pikachu theme for Terminology"
 arch=('x86_64')
 _COMMIT_HASH=62a4ee8417cfbb00f70c6be79bfd39539b5108b0
 url="https://github.com/jeanguyomarch/pikalogy"
-license=('GPL')
+license=('MIT')
 depends=('terminology')
 makedepends=('efl')
 source=("https://github.com/jeanguyomarch/pikalogy/archive/${_COMMIT_HASH}.tar.gz")
