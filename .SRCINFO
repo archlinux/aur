@@ -1,6 +1,6 @@
 pkgbase = gnome-terminal-fedora
 	pkgdesc = The GNOME Terminal Emulator with Fedora patches
-	pkgver = 3.28.1
+	pkgver = 3.28.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
 	arch = i686
@@ -21,14 +21,14 @@ pkgbase = gnome-terminal-fedora
 	depends = dconf
 	optdepends = gconf: for gnome-terminal-migration
 	optdepends = libnautilus-extension: for "Open Terminal Here" in GNOME Files
-	provides = gnome-terminal=3.28.1
+	provides = gnome-terminal=3.28.2
 	conflicts = gnome-terminal
 	options = !emptydirs
-	source = https://download.gnome.org/sources/gnome-terminal/3.28/gnome-terminal-3.28.1.tar.xz
-	source = 0001-build-Don-t-treat-warnings-as-errors.patch-69473244924f439b8562cfb7297c871dcf9d204f::http://src.fedoraproject.org/rpms/gnome-terminal/raw/69473244924f439b8562cfb7297c871dcf9d204f/f/0001-build-Don-t-treat-warnings-as-errors.patch
-	source = gnome-terminal-notify-open-title-transparency.patch-69473244924f439b8562cfb7297c871dcf9d204f::http://src.fedoraproject.org/rpms/gnome-terminal/raw/69473244924f439b8562cfb7297c871dcf9d204f/f/gnome-terminal-notify-open-title-transparency.patch
-	source = org.gnome.Terminal.gschema.override-69473244924f439b8562cfb7297c871dcf9d204f::http://src.fedoraproject.org/rpms/gnome-terminal/raw/69473244924f439b8562cfb7297c871dcf9d204f/f/org.gnome.Terminal.gschema.override
-	sha256sums = f7a6a0189a0b0fbf7845d092e5444fc6303225c2d9ef87bfaae3f80845801cc3
+	source = https://download.gnome.org/sources/gnome-terminal/3.28/gnome-terminal-3.28.2.tar.xz
+	source = 0001-build-Don-t-treat-warnings-as-errors.patch-a829ffe3f4166069220c64b0bdcaae72bfe90cc7::http://src.fedoraproject.org/rpms/gnome-terminal/raw/a829ffe3f4166069220c64b0bdcaae72bfe90cc7/f/0001-build-Don-t-treat-warnings-as-errors.patch
+	source = gnome-terminal-notify-open-title-transparency.patch-a829ffe3f4166069220c64b0bdcaae72bfe90cc7::http://src.fedoraproject.org/rpms/gnome-terminal/raw/a829ffe3f4166069220c64b0bdcaae72bfe90cc7/f/gnome-terminal-notify-open-title-transparency.patch
+	source = org.gnome.Terminal.gschema.override-a829ffe3f4166069220c64b0bdcaae72bfe90cc7::http://src.fedoraproject.org/rpms/gnome-terminal/raw/a829ffe3f4166069220c64b0bdcaae72bfe90cc7/f/org.gnome.Terminal.gschema.override
+	sha256sums = a283dca4980eecf9184a55aac03fef99f85748461ff190423a2253f3b4557279
 	sha256sums = f2bc35ec3e0230606ed424225cf8a8aad5149b59880fc4caf3db68a52f534986
 	sha256sums = 32d3f485a2f7b64d07ecc322c45be2889ed8e2431c783893ed6874c7a78d39f4
 	sha256sums = 5409b35d1940443d29d810de0560d3303eb74c009e661e8fbfa1030e5ffde92e

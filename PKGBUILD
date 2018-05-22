@@ -5,7 +5,7 @@
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.28.1
+pkgver=3.28.2
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ groups=('gnome')
 # Fedora patches: http://src.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
 _frepourl='http://src.fedoraproject.org/rpms/gnome-terminal'
 _frepobranch='f28'
-_fcommit='69473244924f439b8562cfb7297c871dcf9d204f'
+_fcommit='a829ffe3f4166069220c64b0bdcaae72bfe90cc7'
 _fpatchfile1='0001-build-Don-t-treat-warnings-as-errors.patch'
 _fpatchfile2='gnome-terminal-notify-open-title-transparency.patch'
 _fgsoverridefile='org.gnome.Terminal.gschema.override'
@@ -33,7 +33,7 @@ source=(
 	"${_fpatchfile2}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile2}"
 	"${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
 )
-sha256sums=('f7a6a0189a0b0fbf7845d092e5444fc6303225c2d9ef87bfaae3f80845801cc3'
+sha256sums=('a283dca4980eecf9184a55aac03fef99f85748461ff190423a2253f3b4557279'
             'f2bc35ec3e0230606ed424225cf8a8aad5149b59880fc4caf3db68a52f534986'
             '32d3f485a2f7b64d07ecc322c45be2889ed8e2431c783893ed6874c7a78d39f4'
             '5409b35d1940443d29d810de0560d3303eb74c009e661e8fbfa1030e5ffde92e')
