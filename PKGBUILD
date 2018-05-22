@@ -2,7 +2,7 @@
 
 pkgname=webcamoid
 pkgver=8.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
 license=('GPL')
@@ -31,8 +31,20 @@ makedepends=('v4l-utils'
 provides=('webcamoid')
 conflicts=('webcamoid-git')
 install="${pkgname}.install"
-source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('2e51731c36a86a4b3e323c11000a04b7ce06b5d228519676f4070e44e2a62947')
+source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
+        "0001-Adapt-to-FFmpeg-4.0-API.patch")
+sha256sums=('2e51731c36a86a4b3e323c11000a04b7ce06b5d228519676f4070e44e2a62947'
+            'bd9ca4471af67ab5ed99f492de33cf26a4858b260654d252c6b3fd89a696864f')
+
+prepare() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+
+    # Backported changes from:
+    #
+    # https://github.com/webcamoid/webcamoid/pull/119
+    # https://github.com/webcamoid/webcamoid/pull/120
+    patch -Np1 -i "../0001-Adapt-to-FFmpeg-4.0-API.patch"
+}
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
