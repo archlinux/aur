@@ -4,7 +4,7 @@
 pkgname=qt-gtk-platform-plugin
 provides=($pkgname)
 conflicts=($pkgname)
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='GTK platform backend for Qt'
 arch=('any')
