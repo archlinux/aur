@@ -5,7 +5,7 @@ pkgname=gccxml-git
 pkgver=3afa8ba
 pkgrel=1
 pkgdesc="GCC-XML generates an XML description of a C++ program from GCC's internal representation"
-arch=(i686 x86_64)
+arch=(i686 x86_64 arm)
 url="http://www.gccxml.org/"
 license=('custom')
 depends=()
@@ -19,9 +19,10 @@ sha512sums=('SKIP'
 
 pkgver_git() {
     cd "${srcdir}/${pkgname}"
-    local ver="$(git show | grep commit | awk '{print $2}' )"
+    #local ver="$(git show | grep commit | awk '{print $2}' )"
     #printf "r%s" "${ver//[[:alpha:]]}"
-    echo ${ver:0:7}
+    #echo ${ver:0:7}
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 pkgver_svn() {
@@ -43,7 +44,7 @@ prepare() {
 
 build() {
   cd  "$srcdir/$pkgname"
-  make
+  make -j $(cat /proc/cpuinfo | grep processor | wc -l | awk '{print $0 + 1;}')
 }
 
 package() {
