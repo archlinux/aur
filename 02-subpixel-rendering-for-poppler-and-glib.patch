@@ -2,6 +2,8 @@ From: Jeffrey Feng <galago1992@gmail.com>
 Subject: [PATCH 2/3] subpixel rendering for poppler and poppler-glib
 ---
 diff -rup a/ b/|diffstat
+ CMakeLists.txt             |    1 
+ glib/CMakeLists.txt        |    1 
  glib/demo/render.c         |   25 +++++++++++++++++---
  glib/poppler-page.cc       |   10 ++++++++
  glib/poppler-page.h        |    1 
@@ -11,9 +13,31 @@ diff -rup a/ b/|diffstat
  poppler/Gfx.h              |    3 ++
  poppler/Page.cc            |   14 +++++++++++
  poppler/Page.h             |    3 ++
- 9 files changed, 129 insertions(+), 6 deletions(-)
+ 11 files changed, 131 insertions(+), 6 deletions(-)
  
- diff -rup a/glib/demo/render.c b/glib/demo/render.c
+diff -rup a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt    2016-04-29 06:13:57.000000000 +0800
++++ b/CMakeLists.txt    2018-05-22 23:05:18.907662448 +0800
+@@ -501,6 +501,7 @@ add_library(poppler STATIC ${poppler_SRC
+ else(MSVC)
+ add_library(poppler SHARED ${poppler_SRCS})
+ endif(MSVC)
++set_target_properties(poppler PROPERTIES OUTPUT_NAME "poppler-lcd")
+ set_target_properties(poppler PROPERTIES VERSION 60.0.0 SOVERSION 60)
+ target_link_libraries(poppler LINK_PRIVATE ${poppler_LIBS})
+ install(TARGETS poppler RUNTIME DESTINATION bin LIBRARY DESTINATION lib${LIB_SUFFIX} ARCHIVE DESTINATION lib${LIB_SUFFIX})
+diff -rup a/glib/CMakeLists.txt b/glib/CMakeLists.txt
+--- a/glib/CMakeLists.txt       2015-05-15 02:23:07.000000000 +0800
++++ b/glib/CMakeLists.txt       2018-05-22 23:06:31.313659479 +0800
+@@ -81,6 +81,7 @@ set(poppler_glib_generated_SRCS
+   ${CMAKE_SOURCE_DIR}/poppler/CairoRescaleBox.cc
+ )
+ add_library(poppler-glib SHARED ${poppler_glib_SRCS} ${poppler_glib_generated_SRCS})
++set_target_properties(poppler-glib PROPERTIES OUTPUT_NAME "poppler-glib-lcd")
+ set_target_properties(poppler-glib PROPERTIES VERSION 8.7.0 SOVERSION 8)
+ target_link_libraries(poppler-glib poppler ${GLIB2_LIBRARIES} ${CAIRO_LIBRARIES} ${FREETYPE_LIBRARIES})
+ if(HAVE_PTHREAD)
+diff -rup a/glib/demo/render.c b/glib/demo/render.c
 --- a/glib/demo/render.c	2014-02-09 23:10:30.000000000 +0800
 +++ b/glib/demo/render.c	2018-05-18 21:21:13.000000000 +0800
 @@ -82,12 +82,14 @@ pgd_render_start (GtkButton     *button,

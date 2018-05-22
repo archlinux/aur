@@ -53,9 +53,9 @@ pkgbase = evince-lcd-standalone
 	source = 03-cairo-backend-for-poppler-qt5.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 65c35d86787021cccee99082ad15cb06e0e865384f9a05aa3523a8aec1229af6
+	sha256sums = 73c0fb71877633cefc37b13bcd7896263dc63b91fe13fa97c2c240292a2bc338
+	sha256sums = c554b9411764ffcad7a91e22f78a594ca9851e631c70ec15a2b0d52bada0573c
 
 pkgname = evince-lcd-standalone
 

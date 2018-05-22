@@ -3,13 +3,13 @@ Subject: [PATCH 3/3] cairo backend for poppler-qt5
 ---
 diff -rup a/qt5 b/qt5|diffstat
  demos/viewer.cpp        |    6 ++-
- src/CMakeLists.txt      |   14 +++++++
+ src/CMakeLists.txt      |   15 +++++++
  src/poppler-document.cc |    3 +
  src/poppler-page.cc     |   83 +++++++++++++++++++++++++++++++++++++++++++++++-
  src/poppler-private.cc  |    2 -
  src/poppler-qt5.h       |    3 +
  tests/CMakeLists.txt    |    4 ++
- 7 files changed, 111 insertions(+), 4 deletions(-)
+ 7 files changed, 112 insertions(+), 4 deletions(-)
 
 diff -rup a/qt5/demos/viewer.cpp b/qt5/demos/viewer.cpp
 --- a/qt5/demos/viewer.cpp	2014-02-09 23:10:33.000000000 +0800
@@ -47,7 +47,7 @@ diff -rup a/qt5/src/CMakeLists.txt b/qt5/src/CMakeLists.txt
  
  set(poppler_qt5_SRCS
    poppler-annotation.cc
-@@ -29,9 +33,19 @@ set(poppler_qt5_SRCS
+@@ -29,9 +33,20 @@ set(poppler_qt5_SRCS
    poppler-media.cc
    ArthurOutputDev.cc
  )
@@ -59,6 +59,7 @@ diff -rup a/qt5/src/CMakeLists.txt b/qt5/src/CMakeLists.txt
 +  )
 +endif(HAVE_CAIRO)
  add_library(poppler-qt5 SHARED ${poppler_qt5_SRCS})
++set_target_properties(poppler-qt5 PROPERTIES OUTPUT_NAME "poppler-qt5-lcd")
  set_target_properties(poppler-qt5 PROPERTIES VERSION 1.6.0 SOVERSION 1)
  target_link_libraries(poppler-qt5 poppler ${Qt5Core_LIBRARIES} ${Qt5Gui_LIBRARIES} ${Qt5Xml_LIBRARIES})
 +if (HAVE_CAIRO)

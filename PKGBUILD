@@ -29,9 +29,9 @@ source=("git+https://git.gnome.org/browse/evince#commit=$_commit"
         03-cairo-backend-for-poppler-qt5.patch)
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            '65c35d86787021cccee99082ad15cb06e0e865384f9a05aa3523a8aec1229af6'
+            '73c0fb71877633cefc37b13bcd7896263dc63b91fe13fa97c2c240292a2bc338'
+            'c554b9411764ffcad7a91e22f78a594ca9851e631c70ec15a2b0d52bada0573c')
 
 pkgver() {
   cd $_pkgname
@@ -59,16 +59,17 @@ build() {
   # rename shared libraries to resolve conflicts with existing poppler installation.
   cd $srcdir/usr/local/lib
   rm `find . -type l`
-  mv libpoppler.so.60.0.0 libpoppler.so.60
-  mv libpoppler-glib.so.8.7.0 libpoppler-glib.so.87
+  mv libpoppler-lcd.so.60.0.0 libpoppler-lcd.so.60
+  mv libpoppler-glib-lcd.so.8.7.0 libpoppler-glib-lcd.so.8
   
   # patch evince and build
   cd $srcdir/$_pkgname
   patch -Np1<../01-evince-subpixel-rendering-by-poppler.patch
+  sed -i 's#$(BACKEND_LIBTOOL_FLAGS)#& -Wl,-rpath -Wl,/usr/lib/evince/poppler-lcd#' ./backend/pdf/Makefile.am
 
   BROWSER_PLUGIN_DIR=/usr/lib/epiphany/plugins \
   POPPLER_CFLAGS="-I$srcdir/usr/local/include/poppler/glib -I$srcdir/usr/local/include/poppler `pkg-config --cflags glib-2.0 gobject-2.0 cairo libxml-2.0`" \
-  POPPLER_LIBS="-L$srcdir/usr/local/lib -l:libpoppler-glib.so.87 -l:libpoppler.so.60 `pkg-config --libs glib-2.0 gobject-2.0 cairo libxml-2.0`" \
+  POPPLER_LIBS="-L$srcdir/usr/local/lib -l:libpoppler-glib-lcd.so.8 -l:libpoppler-lcd.so.60 `pkg-config --libs glib-2.0 gobject-2.0 cairo libxml-2.0`" \
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib/$_pkgname \
     --disable-static \
@@ -91,6 +92,7 @@ build() {
 package() {
   cd $_pkgname
   make DESTDIR="$pkgdir" install
-  libdir=$pkgdir/usr/lib
-  cp $srcdir/usr/local/lib/{libpoppler-glib.so.87,libpoppler.so.60} $libdir
+  libdir=$pkgdir/usr/lib/evince/poppler-lcd
+  mkdir -p $libdir
+  cp $srcdir/usr/local/lib/{libpoppler-glib-lcd.so.8,libpoppler-lcd.so.60} $libdir
 }
