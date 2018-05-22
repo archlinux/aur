@@ -9,7 +9,7 @@ license=('BSD')
 depends=('python2-llvmlite' 'python2-numpy' 'python2-funcsigs')
 makedepends=('cython2')
 source=("https://github.com/numba/numba/archive/$pkgver.tar.gz")
-md5sums=('929473a95467fe4dde78658667beebcc')
+md5sums=('c70b3c4a2477ce85571aedd24f9b84c2')
 
 build() {
   cd "$srcdir/numba-$pkgver"
