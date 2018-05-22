@@ -1,4 +1,4 @@
-# Maintainer: Ben Denhartog <ben@denhartog.io>
+# Maintainer: Benjamin den Hartog <ben@sudoforge.com>
 # Contributor: Wayne Hartmann (DH4) <wayne@bitstorm.pw>
 
 pkgname=protocase-designer
