@@ -3,7 +3,7 @@
 
 pkgname=syncplay-server-git
 pkgver=1.3.1.r20.gb3bc4f5
-pkgrel=1
+pkgrel=2
 pkgdesc="Free software that synchronises media players so that faraway friends can watch videos together. (server version without pyside dependency)"
 arch=('any')
 url="http://syncplay.pl/"
