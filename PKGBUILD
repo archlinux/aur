@@ -2,7 +2,7 @@
 # Maintainer: Jenya Sovetkin <e.sovetkin <at> gmail <dot> com>
 pkgname=ripmime
 pkgver=r13.a556ffe
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=('BSD')
 pkgdesc="Tool to extract the attached files out of a MIME package"

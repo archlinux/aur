@@ -1,7 +1,7 @@
 pkgbase = ripmime
 	pkgdesc = Tool to extract the attached files out of a MIME package
 	pkgver = r13.a556ffe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/inflex/ripMIME
 	arch = any
 	license = BSD
