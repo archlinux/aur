@@ -1,7 +1,7 @@
 # Maintainer: levinit <levinit at outlook>
 
 pkgname=wechat_web_devtools
-pkgver=1.02.1803210
+pkgver=1.03.1805181
 pkgrel=2
 pkgdesc="wechat web devtools 微信web开发工具"
 arch=('any')
