@@ -1,4 +1,9 @@
 /evince
+<<<<<<< HEAD
 /pkg
 /src
+=======
+/src
+/pkg
+>>>>>>> a36badcae9e5ab9462d47d5dc3d0948befc8f382
 *.tar.xz
