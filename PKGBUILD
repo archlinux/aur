@@ -1,18 +1,21 @@
 # Maintainer:  Yigit Dallilar <yigit.dallilar@gmail.com>
+# 
+# for _mod use either (src_no_xspec_modeldata or src) and dont forget to change sha256sums
 
 pkgname=heasoft
-pkgver=6.22.1
+pkgver=6.24
 pkgrel=1
+_mod="src_no_xspec_modeldata" 
 pkgdesc="NASA high energy astrophysics library"
 makedepends=("gcc" "glibc" "gcc-fortran" "perl")
 depends=("ncurses" "readline" "libxpm" )
 url="https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/"
 arch=('x86_64')
 license=('NASA' 'GPL')
-source=(http://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/release/${pkgname}-${pkgver}src_no_xspec_modeldata.tar.gz)
-#source=(heasoft-6.22.1src_no_xspec_modeldata.tar.gz)
-sha256sums=('86d5b0be442f4eb80cf60f2160a87527e615bb019d1dabdc102d9864b6ec8b96')
-
+source=(http://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/release/${pkgname}-${pkgver}${_mod}.tar.gz)
+sha256sums=('64c6b0ee24a5912f9f600703f9576a2bf5242a4290dc7f4ce2d309d556e0280d') # src_no_xspec_modeldata
+#sha256sums=('08037a9ca3f0803829398deafaaafd634dfdce597ae093b9757a10c74a8c617e') # src
+install="${pkgname}.install"
 
 build() {
 
@@ -22,7 +25,7 @@ build() {
   export PERL=/usr/bin/perl
 
   cd $srcdir/${pkgname}-${pkgver}/BUILD_DIR
-  ./configure --prefix=${pkgdir}/opt/${pkgname}-${pkgver}
+  ./configure --prefix=${pkgdir}/opt/${pkgname}
   
   make 
 
@@ -33,20 +36,9 @@ package(){
   cd $srcdir/${pkgname}-${pkgver}/BUILD_DIR
   make install
 
-  _glibcver=$(pacman -Q glibc | cut -c7-10)
 
   mkdir -p $pkgdir/opt/${pkgname}-${pkgver}/x86_64-unknown-linux-gnu-libc${_glibcver}/bin/
 
-  echo
-  echo "***********************************************************************"
-  echo
-
-   printf "\n\nAdd following lines to your ~/.bashrc to initialize the software\n\n   export HEADAS=/opt/%s-%s/x86_64-unknown-linux-gnu-libc%s\n   alias heainit='source \$HEADAS/headas-init.sh\n\nThen load heasoft by the command:\n\n   >heainit\n\n" ${pkgname} ${pkgver} ${_glibcver}
-
-  echo "Install complete..."
-  echo
-  echo "***********************************************************************"
-  echo
  
 }
 
