@@ -1,23 +1,25 @@
 pkgbase = rocketchat-desktop
 	pkgdesc = Rocket.Chat Native Cross-Platform Desktop Application via Electron.
 	pkgver = 2.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RocketChat/Rocket.Chat.Electron
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = sed
-	makedepends = yarn
+	makedepends = yarn>=0.21.3
 	makedepends = gulp
-	makedepends = python2
-	depends = libxss
-	depends = gconf
-	depends = nss
+	makedepends = nodejs>=7.0.0
+	makedepends = nodejs<10.0.0
+	makedepends = node-gyp
 	depends = alsa-lib
 	depends = gtk2
 	depends = libxtst
+	depends = nss
+	depends = libxss
+	depends = gconf
 	conflicts = rocketchat-client-bin
-	source = https://github.com/RocketChat/Rocket.Chat.Electron/archive/2.10.5.tar.gz
+	source = rocketchat-desktop-2.10.5.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/2.10.5.tar.gz
 	sha512sums = 154a80a7de8393ef1d97741b4ec35105e81b2ff7d2d175c6505ff6fe1b4e75ef164df62304327c7809f3111c872312aa2b385accf0c01dd3fb457ec8db51fe82
 
 pkgname = rocketchat-desktop
