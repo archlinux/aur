@@ -133,7 +133,13 @@ where:
   - `%C` -> `:`,
   - `%T` -> `'`,
   - `%G` -> `"`,
+  - `%E` -> `=`,
+  - `%M` -> `@`,
   - `%%` -> `%`.
+  These replacements are carried out after cups-programme has parsed the
+  Device URI, so e.g. `%E` can be used to escape a `=` from
+  cups-programme's parser, e.g. to pass `u=...` as argument to the
+  executable.
 
 
 Configuration File

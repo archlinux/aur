@@ -29,7 +29,7 @@
 #
 
 # The version.
-VERSION=0.1.6
+VERSION=0.2
 
 # Abort on error
 set -e
@@ -229,9 +229,13 @@ log_local ""
 #   - '%C' -> ':'
 #   - '%T' -> '''
 #   - '%G' -> '"'
+#   - '%E' -> '='
+#   - '%M' -> '@'
 #   - '%%' -> '%'
 #   - '%s' -> "${outfile}" (The, probably converted, output from CUPS to
 #                           open)
+# The replacements will be carried out after we have parsed the options,
+# so '%E' can be used to escape a '=' from our parser.
 # 
 # The programme will be invoked with the specified arguments.
 
@@ -250,11 +254,9 @@ unset user
 unset group
 unset display
 unset filetype
+env_vars=()
 # Have this as function that we will call, so that we can make use of 'shift'.
 parse_argv() {
-  replace_strings() {
-    cat | replace '%%' '%' '%.' ' ' '%_' '-' '%P' '|' '%B' '\' '%H' '#' '%Q' '?' '%A' '&' '%C' ':' '%G' '"' '%T' "'" '%s' "${outfile}"
-  }
   while [ $# -gt 0 ]; do
     _arg="$1"
     case "${_arg}" in
@@ -276,6 +278,10 @@ parse_argv() {
       t=*)
         filetype="${_arg#t=}"
         log_local "  Parsed 't='-option. filetype: '${filetype}'."
+      ;;
+      ?*=*)
+        env_vars+=("${_arg}")
+        log_local "  Parsed variable assignment '${_arg}'."
       ;;
       *)
         arg="${_arg}"
@@ -300,6 +306,9 @@ fi
 outfile="${outfile_prefix}.${filetype}"
 
 # Now, after $outfile is set, do the string replacements:
+replace_strings() {
+  replace '%%' '%' '%.' ' ' '%_' '-' '%P' '|' '%B' '\' '%H' '#' '%Q' '?' '%A' '&' '%C' ':' '%G' '"' '%T' "'" '%E' '=' '%M' '@' '%s' "${outfile}"
+}
 if [ -v cmd ];     then cmd="$(echo "${cmd}"         | replace_strings)"; fi
 if [ -v user ];    then user="$(echo "${user}"       | replace_strings)"; fi
 if [ -v group ];   then group="$(echo "${group}"     | replace_strings)"; fi
@@ -308,6 +317,15 @@ cmd_args_replaced=()
 for _arg in "${cmd_args[@]}"; do
   cmd_args_replaced+=("$(echo "${_arg}" | replace_strings)")
 done
+# Exporting environment variables after replacements.
+for _env in "${env_vars[@]}"; do
+  _var="$(echo "${_env%%=*}" | replace_strings)")
+  _val="$(echo "${_env#?*=}" | replace_strings)")
+  log_local "Exporting environment variable '${_var}=${_val}'."
+  declare -g "${_var}=${_val}"
+  export "${_var}"
+done
+log_local ""
 
 
 
