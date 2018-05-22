@@ -1,7 +1,7 @@
 # Maintainer: Tony <tony@criticalstack.com>
 
 pkgname=rocksdb-static
-pkgver=5.12.4
+pkgver=5.13.1
 pkgrel=1
 pkgdesc='Embedded key-value store for fast storage (static library)'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(gperftools zlib bzip2 lz4 snappy gcc-libs)
 checkdepends=(python2)
 source=(https://github.com/facebook/rocksdb/archive/v$pkgver.zip
 		fix-gcc-8-warnings.patch)
-sha256sums=('d54b1870ed343f80f96326b7de7fd798e8ddd11f05ef413c0e3357219f08ac67'
+sha256sums=('f0f5e3b7623ab7a7a13c407d8c00f6ddbef94be619742f3fcfef7ca5eceed915'
             '2c5d96fbf1638d899da84b4a80ad3c6060b774ed80148f443ae40672d31df9d3')
 
 prepare() {
