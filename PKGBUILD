@@ -1,13 +1,13 @@
 _name='zsh-autosuggestions'
 pkgname="${_name}-git"
-pkgver=v0.4.0.r2.ge304365
+pkgver=v0.4.3.r0.gd7c7967
 pkgrel=1
 pkgdesc='Fish shell like fast/unobtrusive autosuggestions for zsh'
 url='https://github.com/zsh-users/zsh-autosuggestions'
 arch=('any')
 license=('Custom:MIT')
 depends=('zsh')
-makedepends=('git' 'ruby' 'tmux')
+makedepends=('git' 'ruby' 'tmux' 'ruby-rdoc')
 provides=('zsh-autosuggestions')
 install="${_name}.install"
 source=("${_name}::${url//https/git}")
