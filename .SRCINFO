@@ -1,5 +1,5 @@
 pkgbase = pulseaudio-equalizer-ladspa-ffy00-git
-	pkgdesc = A 15-band equalizer for PulseAudio (FFY00's fork)
+	pkgdesc = A 15-band equalizer for PulseAudio
 	pkgver = 1.0.r1.358553c
 	pkgrel = 1
 	url = https://github.com/FFY00/pulseaudio-equalizer-ladspa
@@ -14,7 +14,6 @@ pkgbase = pulseaudio-equalizer-ladspa-ffy00-git
 	depends = python2-gobject
 	provides = pulseaudio-equalizer-ladspa
 	conflicts = pulseaudio-equalizer-ladspa
-	replaces = pulseaudio-equalizer-ladspa
 	source = pulseaudio-equalizer-ladspa-ffy00::git+https://github.com/FFY00/pulseaudio-equalizer-ladspa
 	md5sums = SKIP
 
