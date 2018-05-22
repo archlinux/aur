@@ -4,8 +4,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=60.0
-pkgrel=2
+pkgver=60.0.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -26,7 +26,7 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch.xz
         complete-csd-window-offset-mozilla-1457691.patch.xz
         no-crmf.diff)
-sha256sums=('d3df941612fce7c89755d63a5afe46ed60414dbb47bc9c18bddfb1ae429d5322'
+sha256sums=('a98dfc16173039f3bd604049e1533991e23ef89bb56eb6fc03116a701e7594a2'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '8422030440032535d918844263fbd92d39bff207acb5fff55ed0afee38bcf582'
@@ -56,7 +56,7 @@ prepare() {
   patch -Np1 -i ../0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1283299#c158
-  patch -Np1 -i ../complete-csd-window-offset-mozilla-1457691.patch
+  patch -Np1 -i ../complete-csd-window-offset-mozilla-1457691.patch 
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i ../no-crmf.diff
