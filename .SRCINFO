@@ -1,0 +1,15 @@
+pkgbase = docker-machine-driver-packet
+	pkgdesc = Packet driver for Docker Machine
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/packethost/docker-machine-driver-packet
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	makedepends = git
+	depends = docker-machine
+	source = docker-machine-driver-packet-v0.1.5.zip::https://github.com/packethost/docker-machine-driver-packet/releases/download/v0.1.5/docker-machine-driver-packet_linux-amd64.zip
+	sha256sums = af1a69d9c18663b6aac0c86496319651d1bfd5c8dda78fba8835e4c023622fe8
+
+pkgname = docker-machine-driver-packet
+
