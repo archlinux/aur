@@ -91,7 +91,6 @@ package_clion-eap-gdb() {
 }
 
 package_clion-eap-lldb() {
-    depends+=('ncurses5-compat-libs')
     install -d -m755 "${pkgdir}/opt/${pkgbase}/bin"
     rsync -rtl "${srcdir}/opt/${pkgbase}/bin/lldb" "${pkgdir}/opt/${pkgbase}/bin"
 }
