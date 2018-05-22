@@ -1,8 +1,8 @@
 diff --git a/src/zfile.c b/src/zfile.c
-index 660f19b..abc5f94 100644
+index 719f06c..fb54b30 100644
 --- a/src/zfile.c
 +++ b/src/zfile.c
-@@ -201,10 +201,10 @@ static char *try_uncompress_with_gzip(const char *name)
+@@ -224,10 +224,10 @@ static char *try_uncompress_with_gzip(const char *name)
      do {
          char buf[256];
  
@@ -15,7 +15,7 @@ index 660f19b..abc5f94 100644
                  fclose(fddest);
                  ioutil_remove(tmp_name);
                  lib_free(tmp_name);
-@@ -213,7 +213,7 @@ static char *try_uncompress_with_gzip(const char *name)
+@@ -236,7 +236,7 @@ static char *try_uncompress_with_gzip(const char *name)
          }
      } while (len > 0);
  
@@ -24,7 +24,7 @@ index 660f19b..abc5f94 100644
      fclose(fddest);
  
      return tmp_name;
-@@ -810,11 +810,11 @@ static int compress_with_gzip(const char *src, const char *dest)
+@@ -839,11 +839,11 @@ static int compress_with_gzip(const char *src, const char *dest)
          char buf[256];
          len = fread((void *)buf, 256, 1, fdsrc);
          if (len > 0) {
@@ -37,4 +37,4 @@ index 660f19b..abc5f94 100644
 +    gzclose((gzFile)fddest);
      fclose(fdsrc);
  
-     archdep_file_set_gzip(dest);
+     ZDEBUG(("compress with zlib: OK."));

@@ -1,15 +1,15 @@
 diff --git a/doc/Makefile.am b/doc/Makefile.am
-index 0d0692f..fd26d3e 100755
+index 28e775e..d44b5f3 100644
 --- a/doc/Makefile.am
 +++ b/doc/Makefile.am
-@@ -61,19 +61,6 @@ $(builddir)/vice.txt:		$(srcdir)/vice.texi
- 	$(srcdir)/fixdox.sh txt <vicetmp.txt | sed 's/ \+$$//' >$(builddir)/vice.txt
+@@ -63,19 +63,6 @@ $(builddir)/vice.txt:		$(srcdir)/vice.texi
+ 	$(srcdir)/fixdox.sh txt <vicetmp.txt | LANG=C sed 's/ \+$$//' >$(builddir)/vice.txt
  	rm -f vicetmp.txt
  
 -$(builddir)/vice.pdf:	$(srcdir)/vice.texi
 -if BUILD_PDF
--	sed 's/@heading NO WARRANTY/@center NO WARRANTY/g' <$(srcdir)/vice.texi >vicepdf.texi
--	$(TEXI2DVI) -q --clean --pdf "--texinfo=@set $(PLATFORM_DOX_FLAGS) " -o $(builddir)/vice.pdf vicepdf.texi
+-	LANG=C sed 's/@heading NO WARRANTY/@center NO WARRANTY/g' <$(srcdir)/vice.texi >vicepdf.texi
+-	LANG=C $(TEXI2DVI) -q --clean --pdf "--texinfo=@set $(PLATFORM_DOX_FLAGS) " -o $(builddir)/vice.pdf vicepdf.texi
 -	rm -f vicepdf.texi
 -
 -PDF_DEPS=$(builddir)/vice.pdf
@@ -22,7 +22,7 @@ index 0d0692f..fd26d3e 100755
  $(builddir)/vice.guide:	$(srcdir)/vice.texi
  if BUILD_AMIGAGUIDE
  	cp $(srcdir)/vice.texi tmp.texi
-@@ -135,6 +122,6 @@ $(builddir)/vice.info:	$(srcdir)/vice.texi
+@@ -137,6 +124,6 @@ $(builddir)/vice.info:	$(srcdir)/vice.texi
  	touch $(builddir)/vice.info
  	$(MAKEINFO) -D$(PLATFORM_DOX_FLAGS) -o $(builddir)/vice.info --no-split $(srcdir)/vice.texi
  

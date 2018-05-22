@@ -1,8 +1,8 @@
 diff --git a/configure b/configure
-index 25b1906..0ab74e8 100755
+index 47e2c9e..6c33c7b 100755
 --- a/configure
 +++ b/configure
-@@ -20573,7 +20573,7 @@ _ACEOF
+@@ -21203,7 +21203,7 @@ _ACEOF
  	*) test -f "$ac_im_incroot/X11/Xos.h" && ac_x_includes=$ac_im_incroot;;
      esac
      case $ac_im_usrlibdir in
@@ -11,7 +11,7 @@ index 25b1906..0ab74e8 100755
  	*) test -d "$ac_im_usrlibdir" && ac_x_libraries=$ac_im_usrlibdir ;;
      esac
    fi
-@@ -25490,7 +25490,7 @@ fi
+@@ -26125,7 +26125,7 @@ fi
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
@@ -21,11 +21,11 @@ index 25b1906..0ab74e8 100755
    ALTERNATE_DOCDIR_TRUE=
    ALTERNATE_DOCDIR_FALSE='#'
 diff --git a/configure.ac b/configure.ac
-index fa14acc..2fe3620 100755
+index 205b927..e54e072 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -3115,12 +3115,7 @@ if test x"$enable_lame" != "xno" ; then
- 
+@@ -3252,12 +3252,7 @@ if test x"$enable_lame" != "xno" ; then
+   fi
  fi
  
 -AC_PATH_PROGS(FCCACHE, fc-cache, false)
@@ -38,7 +38,7 @@ index fa14acc..2fe3620 100755
  
  if test x"$is_amigaos4" = "xyes"; then
    if test x"$enable_sdlui" != "xyes" -a x"$enable_sdlui2" != "xyes"; then
-@@ -4861,7 +4856,7 @@ case "$host_os" in
+@@ -4999,7 +4994,7 @@ case "$host_os" in
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
@@ -48,11 +48,11 @@ index fa14acc..2fe3620 100755
      else
        VICEDIR="$PREFIX/lib/vice"
 diff --git a/configure.proto b/configure.proto
-index fa14acc..2fe3620 100755
+index 4521fa3..3b4595b 100755
 --- a/configure.proto
 +++ b/configure.proto
-@@ -3115,12 +3115,7 @@ if test x"$enable_lame" != "xno" ; then
- 
+@@ -3252,12 +3252,7 @@ if test x"$enable_lame" != "xno" ; then
+   fi
  fi
  
 -AC_PATH_PROGS(FCCACHE, fc-cache, false)
@@ -65,7 +65,7 @@ index fa14acc..2fe3620 100755
  
  if test x"$is_amigaos4" = "xyes"; then
    if test x"$enable_sdlui" != "xyes" -a x"$enable_sdlui2" != "xyes"; then
-@@ -4861,7 +4856,7 @@ case "$host_os" in
+@@ -4999,7 +4994,7 @@ case "$host_os" in
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then

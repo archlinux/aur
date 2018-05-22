@@ -1,8 +1,8 @@
 diff --git a/src/arch/unix/x11/xaw/x11video.c b/src/arch/unix/x11/xaw/x11video.c
-index 7e25b5d..2f86222 100755
+index 0dc264e..9326916 100644
 --- a/src/arch/unix/x11/xaw/x11video.c
 +++ b/src/arch/unix/x11/xaw/x11video.c
-@@ -63,6 +63,7 @@
+@@ -67,6 +67,7 @@
  #include <X11/Xutil.h>
  #include <X11/Intrinsic.h>
  #include <X11/cursorfont.h>
