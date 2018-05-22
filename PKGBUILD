@@ -59,7 +59,7 @@ checkdepends=(
   'gnumeric' 'python-progressbar' 'binwalk' 'python-argcomplete')
 provides=('diffoscope')
 conflicts=('diffoscope')
-source=(${pkgname}::"git+https://anonscm.debian.org/git/reproducible/diffoscope.git")
+source=(${pkgname}::"git+https://salsa.debian.org/reproducible-builds/diffoscope.git")
 sha512sums=('SKIP')
 
 pkgver() {

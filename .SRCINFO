@@ -96,7 +96,7 @@ pkgbase = diffoscope-git
 	optdepends = xz: XZ and LZMA utilities support
 	provides = diffoscope
 	conflicts = diffoscope
-	source = diffoscope-git::git+https://anonscm.debian.org/git/reproducible/diffoscope.git
+	source = diffoscope-git::git+https://salsa.debian.org/reproducible-builds/diffoscope.git
 	sha512sums = SKIP
 
 pkgname = diffoscope-git
