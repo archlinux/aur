@@ -5,6 +5,7 @@ pkgbase = ripmime
 	url = https://github.com/inflex/ripMIME
 	arch = any
 	license = BSD
+	makedepends = git
 	source = git+https://github.com/inflex/ripMIME
 	md5sums = SKIP
 
