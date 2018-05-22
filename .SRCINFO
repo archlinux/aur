@@ -1,6 +1,6 @@
 pkgbase = ruby-html-proofer
 	pkgdesc = Test your rendered HTML files to make sure they are accurate
-	pkgver = 3.8.0
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/gjtorikian/html-proofer
 	arch = any
@@ -14,11 +14,11 @@ pkgbase = ruby-html-proofer
 	depends = ruby-parallel
 	depends = ruby-addressable
 	depends = ruby-activesupport
-	noextract = html-proofer-3.8.0.gem
+	noextract = html-proofer-3.9.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/html-proofer-3.8.0.gem
+	source = https://rubygems.org/downloads/html-proofer-3.9.0.gem
 	source = LICENSE
-	sha1sums = c8d5c6e1d64e418c63e2bd607b62f3bc7dc0594f
+	sha1sums = dccd9051bbd00081a274bd4bfb99dcb22bb7a7a0
 	sha1sums = f90727a909db39508bcfdcfff6e9c225a295dc8a
 
 pkgname = ruby-html-proofer
