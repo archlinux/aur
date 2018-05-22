@@ -3,7 +3,7 @@
 
 pkgname=lxd-lts
 _gitpkgname=lxd
-pkgver=2.0.11
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC. (LTS version)"
 arch=('x86_64')
@@ -11,20 +11,18 @@ url="https://github.com/lxc/lxd"
 license=('APACHE')
 conflicts=('lxd')
 provides=('lxd')
-depends=('lxc' 'squashfs-tools')
-makedepends=('go' 'git')
+depends=('lxc' 'squashfs-tools' 'dnsmasq' 'sqlite')
+makedepends=('go-pie' 'git')
 options=('!strip' '!emptydirs')
 optdepends=(
     'lvm2: for lvm2 support'
     'thin-provisioning-tools: for thin provisioning support'
     'btrfs-progs: for btrfs support'
-    'linux-userns: kernel with CONFIG_USER_NS enabled'
-    'linux-lts-userns: LTS kernel with CONFIG_USER_NS enabled'
 )
 source=(
     "https://github.com/lxc/$_gitpkgname/archive/$_gitpkgname-$pkgver.tar.gz"
     "lxd.service"
-
+    "lxd.socket"
     "dnsmasq-lxd.conf"
     "dnsmasq@lxd.service"
     "lxd.netctl"
@@ -32,8 +30,9 @@ source=(
     "networkmanager-dnsmasq-lxd.conf"
 )
 
-md5sums=('662cbf7d1339db04ff0f92769d2087fc'
-         'b1780c0e01e404895e35ac277aa597c4'
+md5sums=('2dfcd545d025515b39c6120ff76592d4'
+         'a95280cf05920bd561cae451acb5b27d'
+         'dfa7033fc39632af0f2c7e26ee966789'
          'b1fd16933c1b24aaa9ccc8f5a0e6478c'
          '15ae1bc51684d611bded2839ca55a37b'
          '52c641ea0ba5477f5c1a1b857c03dda9'
@@ -69,9 +68,11 @@ package() {
   done
   install -D -m644 "${srcdir}/lxd.service" \
     "${pkgdir}/usr/lib/systemd/system/lxd.service"
+  install -D -m644 "${srcdir}/lxd.socket" \
+    "${pkgdir}/usr/lib/systemd/system/lxd.socket"
 
   # Bash completions
-  install -p -m755 "${srcdir}/${_gitpkgname}-${_gitpkgname}-${pkgver}/config/bash/lxd-client" \
+  install -p -m755 "${srcdir}/${_gitpkgname}-${_gitpkgname}-${pkgver}/scripts/bash/lxd-client" \
     "${pkgdir}/usr/share/bash-completion/completions/lxd"
 
   # Example configuration files
