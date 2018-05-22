@@ -1,54 +1,58 @@
-# Maintainer: Rob Lynn <rob22uk at gmail dot com>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Rob Lynn <rob22uk at gmail dot com>
 
 pkgname=stremio-legacy
 pkgver=3.6.5
-pkgrel=2
-pkgdesc="Legacy version (3.x) of Stremio. Watch instantly all the video 
-content 
-you enjoy 
-in one place."
+pkgrel=3
+pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels) (legacy version)'
 arch=('x86_64')
-url="https://strem.io"
+url='https://www.stremio.com/'
 depends=('ffmpeg' 'gconf' 'gtk2' 'nss')
 license=('custom')
-install=stremio.install
+options=('!strip')
 source=("https://strem.io/Stremio${pkgver}.linux.tar.gz"
-        "https://strem.io/favicon-32x32.png"
-        "https://strem.io/favicon-96x96.png"
-        "stremio.desktop")
-sha512sums=('dcf9deea7061c1103f5d441da4a4e8bf1e8aac1c55742878e45c7cbdcc6ecf7f3cee10082923bc3b4b22aa53c7779d97d59abb5fb23179e51d552f9da7e23646'
-            '09c8fa78e477ee1919f7fa54265afb73528d51453dbf92ff0fab433792c0f9d33dd7dd826a60822a24c8027fdc2b383228cd58bb014519ee93fdb651d639d27d'
-            '58fcbb09a2f8b8c83102b62449f5e483f6d6e60a764f728bd54ece313908622e32b27e3fa4909047ec54850b50322af5d1315abdb3740e60d75049faab913467'
-            'ae61a03eb6b1318e92d159de8e2c09a45b5fb4a665089aa11c3c99225978b0f864b84d6587b30fca96c559c2e8384db5140a41a23193790937ca654eb67821ff')
+        'https://strem.io/favicon-32x32.png'
+        'https://strem.io/favicon-96x96.png'
+        'stremio.desktop')
+noextract=("Stremio${pkgver}.linux.tar.gz")
+sha256sums=('8ea9fc21543e30c773adbcfac3759e8787de315ac25e2da7f8580cb670f68424'
+            'd41058548c2505c476955e2e9bbfe0b14d0c76198147b3364343f5a1b2a1e702'
+            '3633a9ca3a3584037e90b1203d2fd2987180c5ab949682a2db6bfbcfa9852a9d'
+            'f2c463d046ba329912869057e2dcda37825e8fcc59b01e46c591665a4b22c605')
 
 prepare() {
-  sed -i "s#\$(dirname \$0)#/usr/share/stremio#" Stremio.sh
+    mkdir -p "stremio-${pkgver}"
+    cd "stremio-${pkgver}"
+    bsdtar -xf ../"Stremio${pkgver}.linux.tar.gz"
+    
+    sed -i "s#\$(dirname \$0)#/usr/share/stremio#" Stremio.sh
 }
 
 package() {
-  install -Dm644 stremio.desktop "$pkgdir/usr/share/applications/stremio.desktop"
-  install -Dm644 favicon-32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/stremio.png"
-  install -Dm644 favicon-96x96.png "$pkgdir/usr/share/icons/hicolor/96x96/apps/stremio.png"
-
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/stremio/LICENSE"
-  install -Dm755 Stremio.sh "$pkgdir/usr/bin/stremio"
-
-  install -dm755 "$pkgdir/usr/share/stremio"
-
-  install -Dm644 content_shell.pak "$pkgdir/usr/share/stremio/"
-  install -Dm644 icudtl.dat "$pkgdir/usr/share/stremio/"
-  install -Dm644 libgcrypt.so.11 "$pkgdir/usr/share/stremio/"
-  install -Dm644 libnode.so "$pkgdir/usr/share/stremio/"
-  install -Dm644 libnotify.so.4 "$pkgdir/usr/share/stremio/"
-  install -Dm644 natives_blob.bin "$pkgdir/usr/share/stremio/"
-  install -Dm644 snapshot_blob.bin "$pkgdir/usr/share/stremio/"
-  install -Dm755 Stremio-runtime "$pkgdir/usr/share/stremio/"
-  install -Dm644 version "$pkgdir/usr/share/stremio/"
-
-  cp -pr locales "$pkgdir/usr/share/stremio/"
-  cp -pr resources "$pkgdir/usr/share/stremio/"
-  cp -pr WCjs "$pkgdir/usr/share/stremio/"
+    cd "stremio-${pkgver}"
+    
+    install -d -m755 "${pkgdir}/usr/share/stremio"
+    
+    install -D -m755 Stremio.sh "${pkgdir}/usr/bin/stremio"
+    
+    install -D -m644 content_shell.pak "${pkgdir}/usr/share/stremio/"
+    install -D -m644 icudtl.dat        "${pkgdir}/usr/share/stremio/"
+    install -D -m644 libgcrypt.so.11   "${pkgdir}/usr/share/stremio/"
+    install -D -m644 libnode.so        "${pkgdir}/usr/share/stremio/"
+    install -D -m644 libnotify.so.4    "${pkgdir}/usr/share/stremio/"
+    install -D -m644 natives_blob.bin  "${pkgdir}/usr/share/stremio/"
+    install -D -m644 snapshot_blob.bin "${pkgdir}/usr/share/stremio/"
+    install -D -m755 Stremio-runtime   "${pkgdir}/usr/share/stremio/"
+    install -D -m644 version           "${pkgdir}/usr/share/stremio/"
+    
+    cp -a locales   "${pkgdir}/usr/share/stremio/"
+    cp -a resources "${pkgdir}/usr/share/stremio/"
+    cp -a WCjs      "${pkgdir}/usr/share/stremio/"
+    
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    cd "${srcdir}"
+    install -D -m644 stremio.desktop   "${pkgdir}/usr/share/applications/stremio.desktop"
+    install -D -m644 favicon-32x32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/stremio.png"
+    install -D -m644 favicon-96x96.png "${pkgdir}/usr/share/icons/hicolor/96x96/apps/stremio.png"
 }
-
-# vim:set ts=2 sw=2 et:
-
