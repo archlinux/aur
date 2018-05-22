@@ -1,4 +1,4 @@
-# Maintainer: tembleking <tembleking at gmail dot com>
+# Maintainer: flops <flopss at gmail dot com>
 pkgname=portainer-desktop
 pkgver=1.0
 pkgrel=1
