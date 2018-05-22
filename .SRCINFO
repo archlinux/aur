@@ -1,6 +1,6 @@
 pkgbase = vte3-tilix
 	pkgdesc = Virtual Terminal Emulator widget for use with GTK3 with Fedora and Tilix patches
-	pkgver = 0.52.1
+	pkgver = 0.52.2
 	pkgrel = 1
 	url = https://github.com/gnunn1/tilix/tree/master/experimental/vte
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = vte3-tilix
 	depends = pcre2
 	depends = gnutls
 	options = !emptydirs
-	source = git+https://git.gnome.org/browse/vte#tag=0.52.1
-	source = vte291-command-notify-scroll-speed.patch-9cbc53f85711ce4f34e7ce0aae7e8baf0553012b::https://src.fedoraproject.org/rpms/vte291/raw/9cbc53f85711ce4f34e7ce0aae7e8baf0553012b/f/vte291-command-notify-scroll-speed.patch
+	source = git+https://git.gnome.org/browse/vte#tag=0.52.2
+	source = vte291-command-notify-scroll-speed.patch-31a8d1b3ad4c16edc50b605f7240888de69790ac::https://src.fedoraproject.org/rpms/vte291/raw/31a8d1b3ad4c16edc50b605f7240888de69790ac/f/vte291-command-notify-scroll-speed.patch
 	source = add-zsh-notfication-support.patch
 	source = alternate-screen.patch-263160c6cb3adb03d25e13b8a96e56d8e8a4ebed::https://github.com/gnunn1/tilix/raw/263160c6cb3adb03d25e13b8a96e56d8e8a4ebed/experimental/vte/0.52/alternate-screen.patch
 	sha256sums = SKIP
@@ -30,8 +30,8 @@ pkgname = vte3-tilix
 	depends = pcre2
 	depends = gnutls
 	depends = vte-tilix-common
-	provides = vte3=0.52.1
-	provides = vte3-notification=0.52.1-2
+	provides = vte3=0.52.2
+	provides = vte3-notification=0.52.2-2
 	provides = vte3-terminix-git
 	conflicts = vte3
 	conflicts = vte3-notification
@@ -41,8 +41,8 @@ pkgname = vte-tilix-common
 	pkgdesc = Common files used by vte and vte3
 	arch = any
 	depends = sh
-	provides = vte-common=0.52.1
-	provides = vte-notification-common=0.52.1-2
+	provides = vte-common=0.52.2
+	provides = vte-notification-common=0.52.2-2
 	provides = vte-terminix-common-git
 	conflicts = vte-common
 	conflicts = vte-notification-common
