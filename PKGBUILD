@@ -7,7 +7,7 @@
 
 pkgname="sendmail"
 pkgver=8.15.2
-pkgrel=5
+pkgrel=6
 pkgdesc="The sendmail MTA"
 url="http://www.sendmail.org"
 arch=('x86_64')
@@ -16,7 +16,8 @@ provides=('sendmail=8.15')
 conflicts=('msmtp-mta' 'postfix' 'exim' 'opensmtpd')
 backup=('etc/conf.d/sendmail'
         'etc/mail/aliases'
-        'etc/mail/sendmail.cf')
+        'etc/mail/sendmail.cf'
+        'etc/sasl2/Sendmail.conf')
 source=("https://ftp.sendmail.org/${pkgname}.${pkgver}.tar.gz"
         'site.config.m4'
         'sendmail-8.14.8-sasl2-in-etc.patch'
