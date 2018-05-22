@@ -1,20 +1,19 @@
 pkgbase = qldv
 	pkgdesc = create a patched ld-linux.so without version information warnings
-	pkgver = 0.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/kirbyfan64/qldv
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = git
 	depends = binutils
 	depends = coreutils
 	depends = glibc
 	depends = patchelf
 	provides = qldv
 	conflicts = qldv-git
-	source = https://github.com/kirbyfan64/qldv/archive/v0.3.tar.gz
-	sha256sums = 6887bbd5a647629aac0877666bc302c0dedcef0178693173471f729de4b7f8ae
+	source = https://github.com/kirbyfan64/qldv/archive/v0.3.1.tar.gz
+	sha256sums = a36116e365c2cdd9f3f0396a0a46898bf9415d96e36a31fe2dca996cf85fb656
 
 pkgname = qldv
 
