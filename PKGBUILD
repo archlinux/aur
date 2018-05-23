@@ -1,14 +1,15 @@
+# Maintainer: Parker Reed <parker.l.reed@gmail.com>
 # PKGBUILD that builds package from git.
 # Run 'makepkg -i' and hope for best :)
 
 pkgname=sc-controller-git
-pkgver=v0.2.17.r1.7560b7c
+pkgver=v0.4.2.r19.0496060
 pkgrel=1
 pkgdesc='User-mode driver and GTK3 based GUI for Steam Controller'
 arch=('any')
 url='https://github.com/kozec/sc-controller'
 license=('GPL2')
-depends=('gtk3' 'python2-gobject' 'python2-cairo' 'pylibacl')
+depends=('gtk3' 'python2-gobject' 'python2-cairo' 'pylibacl' 'python2-evdev')
 makedepends=('python2-setuptools' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
