@@ -1,13 +1,13 @@
 # Maintainer: G Queiroz <gabrieljvnq@gmail.com>
 pkgname=openicp-br-git
-pkgver=r113.b67332c
+pkgver=r121.309475e
 pkgrel=1
 pkgdesc="A program for digitally singing and verifying documents according to Brazilian Law."
 arch=('x86_64')
 url="github.comn/gjvnq/OpenICP-BR"
 license=('AGPL')
 groups=()
-depends=('wxgtk2')
+depends=('wxgtk2' 'gtk-update-icon-cache')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%}")
