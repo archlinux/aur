@@ -1,7 +1,8 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaard
-pkgver=0.11.1
+_ver=0.12.0-rc3
+pkgver=$(echo "${_ver}" | tr -d -)
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest devel version)"
 arch=(i686 x86_64)
@@ -12,7 +13,7 @@ install=$pkgname.install
 makedepends=(go upx)
 _user=github.com/OpenBazaar
 _repo=openbazaar-go
-source=("https://github.com/OpenBazaar/openbazaar-go/archive/v$pkgver.tar.gz"
+source=("https://github.com/OpenBazaar/openbazaar-go/archive/v${_ver}.tar.gz"
 	$pkgname.service
 	$pkgname.conf
 	$pkgname.sysuser.conf
@@ -23,7 +24,7 @@ build(){
 	cd $srcdir
 	export GOPATH=$PWD/.gopath
 	mkdir -p $GOPATH/src/${_user}
-	ln -sf $PWD/${_repo}-${pkgver} $GOPATH/src/${_user}/${_repo}
+	ln -sf $PWD/${_repo}-${_ver} $GOPATH/src/${_user}/${_repo}
 
 	cd $GOPATH/src/${_user}/${_repo}
 	go get -v
@@ -41,7 +42,7 @@ package() {
 	install -Dm755 $srcdir/$pkgname.sysuser.conf $pkgdir/usr/lib/sysusers.d/$pkgname.conf
 }
 
-md5sums=('c681d85ad0ac6a2c6d946ddc2a5b0fd2'
+md5sums=('1cce50356de4ee3e5c9daee5aeee5317'
 	'b0193c5364076ce7b112f13edf995ac1'
 	'9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
 '92cd2fa8929c5acddbddf7d4fc2fd494')
