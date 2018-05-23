@@ -1,8 +1,8 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 
 pkgname='xmrig-proxy'
-pkgver=2.5.2
-pkgrel=2
+pkgver=2.6.2
+pkgrel=1
 pkgdesc='Stratum protocol proxy for Monero, Electroneum, Sumokoin and AEON pools; HTTP API disabled, donation percentage is 0.'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-proxy'
@@ -13,7 +13,7 @@ license=('GPL')
 install="${pkgname}.install"
 changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('42030a3ed74d6460018815bf3376edf41cccfc9da06bd14416dbb540991cb42a')
+sha256sums=('0d7432ec18752ebf999153a6cd6cd8c847c2b52ac5cc46e16ee6fa45631c56e6')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -22,6 +22,7 @@ prepare() {
   [ -d build ] || mkdir build
 
   # reset default donate level
+  msg2 "Reseting donation level to zero"
   sed -i -e 's/constexpr const int kDonateLevel = 2;/constexpr const int kDonateLevel = 0;/g' src/donate.h
 }
 
