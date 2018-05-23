@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret@protonmail.com>
 pkgname=peertube
-pkgver=1.0.0_beta.5
-_pkgver=1.0.0-beta.5
+pkgver=1.0.0_beta.6
+_pkgver=1.0.0-beta.6
 pkgrel=1
 pkgdesc="Federated (ActivityPub) video streaming platform using P2P (BitTorrent) directly in the web browser with WebTorrent and Angular."
 arch=("x86_64")
@@ -13,7 +13,7 @@ backup=('etc/peertube/production.yaml')
 install=$pkgname.install
 source=("https://github.com/Chocobozzz/PeerTube/releases/download/v$_pkgver/$pkgname-v$_pkgver.zip"
         "$pkgname.install")
-sha256sums=("bc1617bbf9086febfce1b3aed8dbe9dbda766cf30bfc2b39b2e2a932934c10df"
+sha256sums=("1878e2bd715b26807de2293436236019880d139a83c7a562f07e73c7805649b9"
             "23116acd08dcc84832b814a0bfa3ef50a449a44852cc70b343ac4b09816a5278")
 
 build() {
