@@ -2,8 +2,6 @@
 
 # arg 1:  the new package version
 post_install() {
-  systemd-sysusers znc.conf
-  [[ -d /var/lib/znc ]] || install -dm 750 -o znc -g znc /var/lib/znc
   echo '==> Use `sudo -u znc znc --makeconf` to generate your first config'
 }
 

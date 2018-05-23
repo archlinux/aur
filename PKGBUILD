@@ -2,11 +2,12 @@
 # Contributor: Sébastien Luttringer
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: mickael9 <mickael9 at gmail dot com>
-# Maintainer: TingPing <tingping@tingping.se>
+# Contributor: TingPing <tingping@tingping.se>
+# Maintainer: Lari Tikkanen <lartza@outlook.com>
 
 _gitname=znc
 pkgname=znc-git
-pkgver=1.6.2.r482.gf3bc06c
+pkgver=1.7.0.r54.g0f137953
 pkgrel=1
 pkgdesc='An IRC bouncer with modules & scripts support'
 url='http://znc.in/'
@@ -14,20 +15,22 @@ license=('Apache')
 arch=('i686' 'x86_64')
 provides=('znc')
 conflicts=('znc')
-depends=('libsasl' 'icu')
-makedepends=('swig' 'tcl' 'python' 'perl' 'git')
+depends=('libsasl' 'icu' 'boost-libs')
+makedepends=('swig' 'tcl' 'python' 'perl' 'cmake' 'boost' 'git')
 optdepends=('tcl: modtcl module'
             'python: modpython module'
-			'perl: modperl module' 
-			'cyrus-sasl: saslauth module')
+            'perl: modperl module'
+            'cyrus-sasl: saslauth module')
 source=('git+https://github.com/znc/znc.git'
         'git+https://github.com/jimloco/Csocket.git'
         'git+https://github.com/google/googletest.git'
-        'znc.sysusers')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         '919705dccc42d3bff1549d3b3680e55a')
+        'znc.sysusers'
+        'znc.tmpfiles')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            '8802f1b84ab3031db7cc45678f008ceca9b08b2012412a3d4ff1ea596586bb2a'
+            '8cd1b5b011c706fea9dc0c70d4daa75a53bf0966d6e96a3fce3a541777aa2771')
 install='znc-git.install'
 
 pkgver(){
@@ -37,34 +40,34 @@ pkgver(){
 }
 
 prepare() {
+        mkdir -p build
+
 	cd "$_gitname"
 
 	git submodule init
 	git config submodule.Csocket.url "$srcdir/Csocket"
 	git config submodule.third_party/googletest.url "$srcdir/googletest"
 	git submodule update
-
-	# service file is invalid: https://github.com/znc/znc/issues/1165
-	sed -i 's|@bindir@|/usr/bin|' znc.service.in
 }
 
 build() {
-	cd "$_gitname"
+	cd build
 
-	./autogen.sh
-	./configure --prefix=/usr \
-		--with-systemdsystemunitdir=/usr/lib/systemd/system \
-		--enable-cyrus \
-		--enable-tcl \
-		--enable-perl \
-		--enable-python
+	cmake "../$_gitname" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DWANT_PYTHON=ON \
+		-DWANT_PERL=ON \
+		-DWANT_TCL=ON \
+		-DWANT_SYSTEMD=ON \
+		-DSYSTEMD_DIR=/usr/lib/systemd/system
 	make
 }
 
 package() {
-	cd "$_gitname"
+	cd build
 
 	DESTDIR="$pkgdir" make install
 	install -Dm644 "$srcdir/znc.sysusers" "$pkgdir/usr/lib/sysusers.d/znc.conf"
-
+	install -Dm644 "$srcdir/znc.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/znc.conf"
 }
