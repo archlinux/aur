@@ -2,7 +2,7 @@
 
 pkgname=weather-bar
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Weather plug-in for polybar, lemonbar, and others. With geolocation, Weather Underground, and NOAA support"
 arch=('i686' 'x86_64')
 url="https://github.com/chrissnell/${pkgname}"
