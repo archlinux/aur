@@ -16,15 +16,12 @@ prepare() {
   mv "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/github.com/chrissnell/${pkgname}"
 
   cd "${srcdir}/src/github.com/chrissnell/${pkgname}"
-  GOPATH="${srcdir}"
-  dep ensure
+  GOPATH="${srcdir}" dep ensure
 }
 
 build() {
   cd "${srcdir}/src/github.com/chrissnell/${pkgname}"
-  GOPATH="${srcdir}"
-  # go get -d ./${pkgname}
-  go build .
+  GOPATH="${srcdir}" go build .
 }
 
 package() {
