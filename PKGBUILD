@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://openrct2.io'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'sdl2' 'curl' 'jansson' 'speexdsp' 'fontconfig'
-         'libpng' 'openssl' 'libzip')
+         'libpng' 'openssl' 'libzip' 'icu')
 makedepends=('git' 'cmake')
 optdepends=('zenity: System dialog box support (GNOME/GTK)'
             'kdialog: System dialog box support (KDE)'
