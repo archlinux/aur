@@ -2,7 +2,7 @@
 # Sat May  6 10:20:03 UTC 2017
 pkgbase = weka
 	pkgdesc = A collection of machine learning algorithms for data mining tasks
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = http://www.cs.waikato.ac.nz/ml/weka/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = weka
 	source = http://downloads.sourceforge.net/sourceforge/weka/weka-3-8-1.zip
 	source = weka.sh
 	source = weka.desktop
-	md5sums = e9542ebadb41594ba23729b741fffa7f
+	md5sums = 491f1efa03a6406f524f934d481059d6
 	md5sums = 60dc5666b93d98db0900deb7d8b5eae4
 	md5sums = 83a4d47ba64df90a92a38b23a14c6480
 
