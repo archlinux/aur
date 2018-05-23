@@ -7,8 +7,8 @@ pkgname=(
     'samsung-unified-driver-scanner'
     'samsung-unified-driver'
 )
-pkgver=1.00.37
-pkgrel=3
+pkgver=1.00.39
+pkgrel=1
 
 pkgdesc='Unified Linux Driver for Samsung printers and scanners.'
 arch=('i686' 'x86_64')
@@ -18,9 +18,9 @@ depends=('libxml2' 'libusb-compat' 'cups' 'sane')
 
 options=(!strip)
 source=(
-    "http://downloadcenter.samsung.com/content/DR/201512/20151210091120064/uld_v${pkgver}_00.99.tar.gz"
+    "http://downloadcenter.samsung.com/content/DR/201704/20170407143829533/uld_V${pkgver}_01.17.tar.gz"
     "xerox_mfp-smfp.conf")
-sha512sums=('96feb7f7464db616f400f34a61bf6facafe51da9a48e19d6c4e702ea2377e86f5a5f93d085c50c8220396249febbf8e604a9fe27c25324f36ad0e58552af21fb'
+sha512sums=('fccda77af20b31c9b46117b013d0c40333adc87679057c2b1e513d9bae97fc7267eca74030bc039feec50edee8e4cdfebe8761c77d653646f7ea4ac102c2643f'
             '325d2e3e42bf74663ba0ac3aa0fc3ee70ef5a5197d03c069fac6bc0f8da0d9e12d50e4b59feacef3000eff5a85d3db7f66834809013b18b31532cfea252460ef')
 
 _arch=${CARCH/i686/i386}
