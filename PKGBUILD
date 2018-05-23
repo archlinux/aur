@@ -1,13 +1,13 @@
 # Maintainer: G Queiroz <gabrieljvnq@gmail.com>
 pkgname=openicp-br-git
-pkgver=r121.309475e
+pkgver=r123.1836c11
 pkgrel=1
-pkgdesc="A program for digitally singing and verifying documents according to Brazilian Law."
+pkgdesc="Digital signatures tool according to Brazilian Law."
 arch=('x86_64')
 url="github.comn/gjvnq/OpenICP-BR"
 license=('AGPL')
 groups=()
-depends=('wxgtk2' 'gtk-update-icon-cache')
+depends=('wxgtk3' 'gtk-update-icon-cache')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%}")
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname}::git+https://github.com/gjvnq/OpenICP-BR.git")
+source=("${pkgname}::git+https://github.com/gjvnq/OpenICP-BR.git#branch=develop")
 noextract=()
 md5sums=('SKIP')
 
@@ -28,14 +28,8 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname}/openssl-1.1.0h"
-	mkdir dist || true
-	./Configure linux-x86_64 --prefix="`pwd`/dist" --openssldir="`pwd`/dist" no-dso
-	make
-	make install
-
 	cd "$srcdir/${pkgname}"
-	cmake . -DNO_TESTS=1
+	WX_CONFIG=/usr/bin/wx-config-gtk3 cmake . -DNO_TESTS=1
 	make openicp
 }
 
