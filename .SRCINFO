@@ -1,13 +1,13 @@
 pkgbase = vim-syntax-highlighting-feder
 	pkgdesc = Highlighting Feder syntax in vim
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 3
 	url = https://github.com/codefionn/feder-highlight
 	arch = any
 	license = UNLICENSE
 	depends = vim-runtime
-	source = https://github.com/codefionn/feder-highlight/releases/download/1.1/feder-highlight-1.1.zip
-	md5sums = 6a9b1f6cec2ee457d11e032d97d3ebaa
+	source = https://github.com/codefionn/feder-highlight/releases/download/1.2/feder-highlight-1.2.zip
+	md5sums = ff00949588381053067ac02d7eaf3c4c
 
 pkgname = vim-syntax-highlighting-feder
 
