@@ -4,16 +4,16 @@
 pkgname=thunderbird-earlybird
 _name=thunderbird
 _channel=earlybird
-_milestone=61.0a1
+_milestone=62.0a1
 
 _release_year=2018
-_release_month=03
-_release_day=21
-_release_time=$_release_year-$_release_month-$_release_day-05-16-47
-_buildid=20180321051647
+_release_month=05
+_release_day=23
+_release_time=$_release_year-$_release_month-$_release_day-10-01-39
+_buildid=20180523100139
 
 
-pkgver=61.0a1.$_buildid
+pkgver=62.0a1.$_buildid
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - Earlybird channel"
 arch=('i686' 'x86_64')
@@ -30,12 +30,12 @@ install="${pkgname}.install"
 source=("${pkgname}.desktop")
 
 _base_url="http://ftp.mozilla.org/pub/thunderbird/nightly/$_release_year/$_release_month/$_release_time-comm-central"
-source_i686=("$_base_url/thunderbird-61.0a1.en-US.linux-i686.tar.bz2")
-source_x86_64=("$_base_url/thunderbird-61.0a1.en-US.linux-x86_64.tar.bz2")
+source_i686=("$_base_url/thunderbird-62.0a1.en-US.linux-i686.tar.bz2")
+source_x86_64=("$_base_url/thunderbird-62.0a1.en-US.linux-x86_64.tar.bz2")
 
 sha512sums=('a36bb5710b9cd6637cf6f538808e2fba8c99fdd1d486446ff9ee8094ca30b5592c17b3e808cae1da7ff2b28123f54902ed4ee1501585a8dcfc54d581588638d3')
-sha512sums_i686=('43866b7975a7e5042e6e0915af51af41316fc66a24c2b3293f5ba6c6b13ee5cfff8bb1436effe282668dbded4a76b33b4f7bf60fecf4aac1bff79082843c6c59')
-sha512sums_x86_64=('14e62a05a9b4de311ed8b632b80a81466d8549ec39865ffc8c460bd0d3a9eb4cb798734a50c5f48b29658e3277ec8d9369fd7697728715b11d8934619d944e61')
+sha512sums_i686=('c19cb2eef135530d2feeb557f706f0b62665e03b9d8342358d3852231b0a3f6a80b8f082eb49b1f16e3a52f0e9a9c43829e94d6fa19250fcb482349e62279350')
+sha512sums_x86_64=('c82c8c75de4432f0fd9b0d71570cb2680310e553b6ea8fecea118ab5fb62fd359e86f465bd24ade68e4bbe1b72445c2b2409b336c6ad0fd7aa8666ec98164c6f')
 
 pkgver() {
     cd "${_name}"
