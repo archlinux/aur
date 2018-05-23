@@ -1,15 +1,16 @@
 pkgbase = python-click-repl
 	pkgdesc = Subcommand REPL for click apps
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/untitaker/click-repl
 	arch = any
 	license = MIT
 	depends = python-click
 	depends = python-prompt_toolkit
+	depends = python-six
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/c/click-repl/click-repl-0.1.3.tar.gz
-	md5sums = 9574fc0a4150a3ac59a4e5ea9eceb9a6
+	source = https://files.pythonhosted.org/packages/source/c/click-repl/click-repl-0.1.4.tar.gz
+	md5sums = dc7706bbdbfc5aa3d7b49394a479d90e
 
 pkgname = python-click-repl
 

@@ -2,14 +2,14 @@
 
 pkgname=python-click-repl
 _name=click-repl
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Subcommand REPL for click apps"
 arch=('any')
 url="https://github.com/untitaker/click-repl"
 license=('MIT')
 groups=()
-depends=('python-click' 'python-prompt_toolkit')
+depends=('python-click' 'python-prompt_toolkit' 'python-six')
 makedepends=()
 provides=()
 conflicts=()
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('9574fc0a4150a3ac59a4e5ea9eceb9a6')
+md5sums=('dc7706bbdbfc5aa3d7b49394a479d90e')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
