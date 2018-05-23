@@ -1,0 +1,17 @@
+pkgbase = python-gerritclient-git
+	pkgdesc = CLI tool and Python API wrapper for Gerrit Code Review
+	pkgver = 2018.04.03.gd239e12
+	pkgrel = 1
+	url = https://github.com/tivaliy/python-gerritclient
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cython
+	depends = python
+	depends = python-pbr
+	depends = python-cliff
+	source = git://github.com/tivaliy/python-gerritclient
+	md5sums = SKIP
+
+pkgname = python-gerritclient-git
+
