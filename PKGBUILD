@@ -4,7 +4,7 @@ pkgname=imagescan
 _pkgname=utsushi
 pkgver=3.38.0
 _pkgver=0.38.0
-pkgrel=3
+pkgrel=4
 _fedrel=27
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
 arch=("i686" "x86_64")
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
   cd $srcdir/${_pkgname}-${_pkgver}
-  ./configure CFLAGS='-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -Wno-error' CXXFLAGS='-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -Wno-error' \
+  ./configure CFLAGS="${CFLAGS} -Wno-error" CXXFLAGS="${CXXFLAGS} -Wno-error" \
   --with-boost-libdir=/usr/lib/ \
   --prefix=/usr/ \
   --libexecdir=/usr/lib/ \
