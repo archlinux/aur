@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Use named netns with systemd services!"
 license=('GPL3')
 depends=('systemd' 'iproute2')
+optdepends=('dhclient: when using dynamically assigned IP')
 arch=('any')
 backup=('etc/default/netns')
 url="https://github.com/Jamesits/systemd-named-netns"
