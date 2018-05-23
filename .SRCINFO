@@ -1,50 +1,74 @@
 pkgbase = ffmpeg-compat-57
 	pkgdesc = Compatibility package for ffmpeg to provide versions 57 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package
-	pkgver = 3.3.4
-	pkgrel = 2
+	pkgver = 3.4.2
+	pkgrel = 1
 	url = http://ffmpeg.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = yasm
+	makedepends = libvdpau
+	depends = alsa-lib
 	depends = bzip2
+	depends = fontconfig
 	depends = fribidi
 	depends = glibc
 	depends = gmp
 	depends = gnutls
 	depends = gsm
+	depends = jack
 	depends = lame
+	depends = libavc1394
+	depends = libiec61883
 	depends = libmodplug
+	depends = libpulse
+	depends = libraw1394
+	depends = libsoxr
+	depends = libssh
 	depends = libtheora
-	depends = libva
+	depends = libvdpau
 	depends = libwebp
+	depends = libx11
+	depends = libxcb
+	depends = libxml2
 	depends = opencore-amr
 	depends = openjpeg2
 	depends = opus
-	depends = schroedinger
+	depends = sdl2
 	depends = speex
 	depends = v4l-utils
 	depends = xz
 	depends = zlib
-	depends = libbluray.so>=2-64
-	depends = libvorbisenc.so>=2-64
-	depends = libvorbis.so>=0-64
-	depends = libvpx.so>=5-64
-	depends = libx264.so>=152-64
-	depends = libx265.so>=146-64
-	depends = libxvidcore.so>=4-64
-	depends = rtmpdump
+	depends = libomxil-bellagio
+	depends = libass.so
+	depends = libbluray.so
+	depends = libfreetype.so
+	depends = libva-drm.so
+	depends = libva.so
+	depends = libva-x11.so
+	depends = libvidstab.so
+	depends = libvorbisenc.so
+	depends = libvorbis.so
+	depends = libvpx.so
+	depends = libx264.so
+	depends = libx265.so
+	depends = libxvidcore.so
 	provides = libavcodec.so=57
 	provides = libavdevice.so=57
+	provides = libavfilter.so=6
 	provides = libavformat.so=57
-	provides = libavutils.so=55
-	source = http://ffmpeg.org/releases/ffmpeg-3.3.4.tar.xz
-	source = http://ffmpeg.org/releases/ffmpeg-3.3.4.tar.xz.asc
-	source = ffmpeg-openjpeg2.2.patch
+	provides = libavresample.so=3
+	provides = libavutil.so=55
+	provides = libpostproc.so=54
+	provides = libswresample.so=2
+	provides = libswscale.so=4
+	source = http://ffmpeg.org/releases/ffmpeg-3.4.2.tar.xz
+	source = http://ffmpeg.org/releases/ffmpeg-3.4.2.tar.xz.asc
+	source = fs56089.patch
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
-	sha256sums = 98b97e1b908dfeb6aeb6d407e5a5eacdfc253a40c2d195f5867ed2d1d46ea957
+	sha256sums = 2b92e9578ef8b3e49eeab229e69305f5f4cbc1fdaa22e927fc7fca18acccd740
 	sha256sums = SKIP
-	sha256sums = 490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68
+	sha256sums = 0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427
 
 pkgname = ffmpeg-compat-57
 
