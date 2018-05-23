@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.5.r366.b230b0df0
+pkgver=0.0.5.r381.f38f61d11
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
@@ -12,7 +12,8 @@ depends=('alsa-lib' 'gcc-libs' 'glew' 'glibc' 'glu' 'libevdev' 'libgl' 'libice'
          'qt5-base' 'qt5-declarative' 'vulkan-icd-loader' 'yaml-cpp' 'zlib'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libncursesw.so'
          'libswscale.so' 'libudev.so')
-makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git')
+makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git'
+             'vulkan-validation-layers')
 provides=('rpcs3')
 conflicts=('rpcs3')
 options=('!emptydirs')
