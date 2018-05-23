@@ -1,7 +1,7 @@
 # Maintainer: Lakshman Chilukuri <lakshman5876 (at) gmail (dOt) com>
 
 pkgname=rtl8812au_8821au_linux-dkms-git
-pkgver=4.3.14.r170.bed205c
+pkgver=4.3.14.r175.72594b5
 pkgrel=1
 pkgdesc="Realtek 8812AU/8821AU USB WiFi driver for AC1200 (801.11ac) Wireless Dual-Band USB Adapter"
 _modname=rtl8812au
