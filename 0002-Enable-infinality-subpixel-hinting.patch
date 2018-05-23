@@ -1,7 +1,7 @@
-From 438b8c65e900d4c28db9eeb2a45e5998048eb471 Mon Sep 17 00:00:00 2001
-Message-Id: <438b8c65e900d4c28db9eeb2a45e5998048eb471.1513462508.git.jan.steffens@gmail.com>
-In-Reply-To: <c7a6a2312313a971089fb592deb8c476be4dca0f.1513462508.git.jan.steffens@gmail.com>
-References: <c7a6a2312313a971089fb592deb8c476be4dca0f.1513462508.git.jan.steffens@gmail.com>
+From ecb052d87dd80603aac454a65fd6e074bc57772c Mon Sep 17 00:00:00 2001
+Message-Id: <ecb052d87dd80603aac454a65fd6e074bc57772c.1525259379.git.jan.steffens@gmail.com>
+In-Reply-To: <7053fd3cef88991e2da6aac5f1dda2c30ce22b4c.1525259379.git.jan.steffens@gmail.com>
+References: <7053fd3cef88991e2da6aac5f1dda2c30ce22b4c.1525259379.git.jan.steffens@gmail.com>
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 29 Aug 2016 08:43:10 +0200
 Subject: [PATCH 2/4] Enable infinality subpixel hinting
@@ -11,10 +11,10 @@ Subject: [PATCH 2/4] Enable infinality subpixel hinting
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 06f3d50bb02fb5ac..e6f9720df9b5d004 100644
+index 4bcab2af5..862b926d5 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -654,8 +654,8 @@ FT_BEGIN_HEADER
+@@ -658,8 +658,8 @@ FT_BEGIN_HEADER
    /* [1] https://www.microsoft.com/typography/cleartype/truetypecleartype.aspx */
    /*                                                                       */
  /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  1         */
@@ -26,5 +26,5 @@ index 06f3d50bb02fb5ac..e6f9720df9b5d004 100644
  
    /*************************************************************************/
 -- 
-2.15.1
+2.17.0
 
