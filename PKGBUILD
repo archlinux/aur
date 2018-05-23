@@ -3,10 +3,10 @@
 # Contributor: Romain Bouchaud-Leduc <r0m1.bl@camaris.org>
 
 pkgname=trickle-git
-pkgver=r21.596bb13
-pkgrel=1
+pkgver=latest
+pkgrel=2
 pkgdesc="Lightweight userspace bandwidth shaper"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mariusae/trickle"
 license=('BSD')
 depends=('libevent' 'libtirpc')
