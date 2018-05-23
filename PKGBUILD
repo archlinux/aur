@@ -2,7 +2,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-git
-pkgver=2.6.1.beta.r5815.g706b9f78
+pkgver=2.8.0.dev.r5907.gff58e5c0
 pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('karchive' 'kbookmarks' 'kcodecs' 'kcompletion' 'kcoreaddons' 'kconfig'
          'kdoctools' 'ki18n' 'kiconthemes' 'kitemviews' 'kio' 'knotifications'
          'kparts' 'solid' 'ktextwidgets' 'kwallet' 'kwidgetsaddons' 'kwindowsystem'
          'kxmlgui' 'kguiaddons' 'hicolor-icon-theme')
-makedepends=('cmake' 'extra-cmake-modules' 'python' 'git')
+makedepends=('cmake' 'extra-cmake-modules' 'git')
 optdepends=(
             # archive formats
             # look for KrServices::cmdExist calls
