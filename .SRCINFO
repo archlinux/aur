@@ -1,5 +1,5 @@
 pkgbase = openbazaard
-	pkgdesc = Server daemon for communication between client and OpenBazaar network (Latest devel version)
+	pkgdesc = Server daemon for communication between client and OpenBazaar network
 	pkgver = 0.12.0rc3
 	pkgrel = 1
 	url = https://github.com/OpenBazaar/openbazaar-go
