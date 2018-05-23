@@ -1,12 +1,13 @@
 pkgbase = q4wine
 	pkgdesc = A Qt5 GUI for Wine
 	pkgver = 1.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/q4wine/
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = qt5-svg
 	depends = qt5-base
 	depends = wine
 	depends = sqlite3

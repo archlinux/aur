@@ -4,13 +4,13 @@
 
 pkgname=q4wine
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt5 GUI for Wine"
 arch=("x86_64")
 url="http://sourceforge.net/projects/${pkgname}/"
 license=("GPL3")
 depends=("qt5-base" "wine" "sqlite3" "which" "icoutils")
-makedepends=("cmake" "qt5-tools")
+makedepends=("cmake" "qt5-tools" "qt5-svg")
 optdepends=("winetricks" "fuseiso")
 options=('!emptydirs')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver/_/-}.tar.bz2)
@@ -20,7 +20,6 @@ build() {
   cd "$srcdir"/${pkgname}-${pkgver/_/-}
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWITH_WINETRIKS=ON \
     -DLIBS_ENTRY_PATH=/usr/lib/$pkgname \
     -DQT5=ON \
     .
