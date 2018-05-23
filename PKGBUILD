@@ -1,7 +1,7 @@
 # Maintainer: coco
 # Co-Maintainer: thatgeek
 pkgname=torguard
-pkgver=0.3.84
+pkgver=3.85.0
 pkgrel=1
 pkgdesc="TorGuard VPN Software
  Stay private online with TorGuard's anonymous VPN software and connect to 37+ countries worldwide."
@@ -9,8 +9,8 @@ arch=('x86_64')
 url="www.torguard.com"
 depends=('iproute2')
 license=(custom)
-source=("https://updates.torguard.biz/Software/Linux/torguard-v0.3.84-amd64-arch.tar.gz")
-md5sums=('11d9588911e82a62b202f83dd0a33bcc')
+source=("https://updates.torguard.biz/Software/Linux/torguard-v3.85.0-amd64-arch.tar.gz")
+md5sums=('55c7a9dfb9b40490999f75ea9c445246')
 
 package() {
 	tar -xf "${srcdir}/${pkgname}-v${pkgver}-amd64-arch/torguard-v${pkgver}-amd64-arch.tar"
