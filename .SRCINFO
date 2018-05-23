@@ -14,6 +14,7 @@ pkgbase = freetype2-cleartype
 	provides = freetype2
 	provides = libfreetype.so
 	conflicts = freetype2
+	backup = etc/profile.d/freetype2.sh
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.9.1.tar.bz2
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.9.1.tar.bz2.sig
 	source = 0001-Enable-table-validation-modules.patch
@@ -31,6 +32,4 @@ pkgbase = freetype2-cleartype
 	sha1sums = bc6df1661c4c33e20f5ce30c2da8ad3c2083665f
 
 pkgname = freetype2-cleartype
-	install = freetype2.install
-	backup = etc/profile.d/freetype2.sh
 

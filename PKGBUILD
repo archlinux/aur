@@ -1,4 +1,5 @@
-# Maintainer:  jeckhack <jeckhack/gmail/com>
+# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
+# Contributor: jeckhack <jeckhack/gmail/com>
 # Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: frames <markkuehn at outlook dot com>
 # Contributor: Estevao Valadao <estevao@archlinux-br.org>
@@ -20,6 +21,7 @@ depends=('zlib' 'bzip2' 'sh' 'libpng' 'harfbuzz')
 makedepends=('libx11')
 conflicts=('freetype2')
 provides=('freetype2' 'libfreetype.so')
+backup=('etc/profile.d/freetype2.sh')
 source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
         0001-Enable-table-validation-modules.patch
         0002-Enable-infinality-subpixel-hinting.patch
@@ -37,33 +39,28 @@ sha1sums=('220c82062171c513e4017c523d196933c9de4a7d'
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
 prepare() {
-
-  mv freetype-${pkgver} freetype2
-  cd freetype2
-
+  cd freetype-${pkgver}
+  # Patches from [extra]
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
+  # Enable ClearType
   patch -Np1 -i ../0007-cleartype.patch
-
 }
 
 build() {
-  cd freetype2
+  cd freetype-${pkgver}
   ./configure --prefix=/usr --disable-static
   make
 }
 
 check() {
-  cd freetype2
+  cd freetype-${pkgver}
   make -k check
 }
 
 package() {
-    install=freetype2.install
-    backup=('etc/profile.d/freetype2.sh')
-    cd freetype2
-    make DESTDIR="$pkgdir" install
-    install -Dt "${pkgdir}/etc/profile.d" -m644 ../freetype2.sh
-
+  cd freetype-${pkgver}
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 ../freetype2.sh -t "${pkgdir}"/etc/profile.d -m644
 }
