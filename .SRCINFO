@@ -1,6 +1,6 @@
 pkgbase = watchflower
 	pkgdesc = WatchFlower helps you read and plot datas from your Xiaomi 'Flower Care' devices!
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/emericg/WatchFlower
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = watchflower
 	depends = qt5-charts
 	depends = qt5-svg
 	depends = sqlite
-	source = https://github.com/emericg/WatchFlower/archive/v0.1.zip
-	sha256sums = 3330da0fa3c9eaeb028990c654a8e4b4fcd80979c7d1b637c11f479bdc2261fe
+	source = https://github.com/emericg/WatchFlower/archive/v0.1.1.zip
+	sha256sums = 93191cb21234b9b94cfb3722ec9db217a3ff898afa14854189a57d7972e4aac5
 
 pkgname = watchflower
 
