@@ -1,6 +1,6 @@
 pkgbase = msbuild-stable
 	pkgdesc = Xamarin implementation of the Microsoft build system
-	pkgver = 15.4_xamarinxplat.2017.11.27.11.23_0xamarin1_ubuntu1404b1
+	pkgver = 15.6_xamarinxplat.2018.01.17.14.14_0xamarin1_ubuntu1404b1
 	pkgrel = 3
 	url = https://github.com/mono/msbuild
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = msbuild-stable
 	depends = mono>=5.0.0
 	provides = msbuild
 	conflicts = msbuild
-	source = msbuild-amd64-v15.4+xamarinxplat.2017.11.27.11.23-0xamarin1+ubuntu1404b1.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_15.4+xamarinxplat.2017.11.27.11.23-0xamarin1+ubuntu1404b1_all.deb
-	sha256sums = 599439826207b39c0ab6f3ea7b4889febef1394bf1193345712d4b470e655f65
+	source = msbuild-amd64-v15.6+xamarinxplat.2018.01.17.14.14-0xamarin1+ubuntu1404b1.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_15.6+xamarinxplat.2018.01.17.14.14-0xamarin1+ubuntu1404b1_all.deb
+	sha256sums = 262519a70e62b62861339ceddb5654cce24652a1919cbcd25094bbaac41a7c72
 
 pkgname = msbuild-stable
 
