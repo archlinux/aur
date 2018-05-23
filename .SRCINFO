@@ -22,4 +22,3 @@ pkgbase = rstudio-desktop-preview-bin
 	md5sums_x86_64 = ba995b925422805c3b403f978ade4d29
 
 pkgname = rstudio-desktop-preview-bin
-
