@@ -18,8 +18,10 @@ conflicts=('openrct2')
 provides=('openrct2')
 install=openrct2.install
 source=("$pkgname"::'git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop'
-        'discord-rpc::git+https://github.com/discordapp/discord-rpc.git')
+        'discord-rpc::git+https://github.com/discordapp/discord-rpc.git'
+        'rapidjson::git+https://github.com/janisozaur/rapidjson.git#branch=patch-1')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -30,6 +32,8 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   ln -sf "$srcdir/discord-rpc" discord-rpc
+  mkdir -p discord-rpc/thirdparty
+  ln -sf "$srcdir/rapidjson" discord-rpc/thirdparty/rapidjson
 }
 
 build() {
