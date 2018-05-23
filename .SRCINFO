@@ -25,6 +25,7 @@ pkgbase = linphone-desktop-git
 	depends = libsoup
 	depends = libnotify
 	depends = qt5-svg
+	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
 	depends = qt5-tools
