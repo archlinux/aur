@@ -7,6 +7,7 @@ pkgbase = ddccontrol-db-git
 	license = GPL
 	makedepends = git
 	makedepends = intltool
+	makedepends = automake
 	provides = ddccontrol-db
 	conflicts = ddccontrol-db
 	source = ddccontrol-db::git+https://github.com/ddccontrol/ddccontrol-db.git

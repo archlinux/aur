@@ -1,3 +1,4 @@
+# Contributer: nutcase84@protonmail.com
 # Contributor: 3ED <krzysztof1987 (at) gmail /dot/ com>
 # Contributor:Xemertix <arch88(at)katamail(dot)com>
 # Contributor: dimaqq@gmail.com
@@ -11,7 +12,7 @@ arch=('any')
 url="https://github.com/ddccontrol/ddccontrol-db"
 license=('GPL')
 depends=()
-makedepends=('git' 'intltool')
+makedepends=('git' 'intltool' 'automake')
 provides=('ddccontrol-db')
 conflicts=('ddccontrol-db')
 source=($_pkgname::git+https://github.com/ddccontrol/ddccontrol-db.git)
