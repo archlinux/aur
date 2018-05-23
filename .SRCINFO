@@ -1,0 +1,13 @@
+pkgbase = vim-myr-git
+	pkgdesc = Myrddin configuration for Vim
+	pkgver = 4
+	pkgrel = 1
+	url = https://myrlang.org/
+	arch = any
+	license = MIT
+	depends = vim
+	source = git+git://git.eigenstate.org/ori/vim-myr.git
+	sha256sums = SKIP
+
+pkgname = vim-myr-git
+
