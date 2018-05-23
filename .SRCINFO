@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-systemqt-notoemoji
 	pkgdesc = Official Telegram Desktop client (with noto emoji)
-	pkgver = 1.2.19
+	pkgver = 1.2.21
 	pkgrel = 2
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = telegram-desktop-systemqt-notoemoji
 	optdepends = libnotify: desktop notifications
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.2.19
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.2.21
 	source = GSL::git+https://github.com/Microsoft/GSL.git
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
 	source = variant::git+https://github.com/mapbox/variant.git
