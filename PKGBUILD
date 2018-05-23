@@ -12,6 +12,7 @@ pkgdesc='Small build system with a focus on speed - Kitware version with JobServ
 arch=(x86_64)
 url='https://github.com/Kitware/ninja'
 provides=(ninja)
+conflicts=(ninja)
 license=(Apache)
 depends=(gcc-libs)
 makedepends=(python2 re2c emacs-nox)
