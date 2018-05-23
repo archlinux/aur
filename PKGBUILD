@@ -15,7 +15,7 @@
 
 pkgname=rstudio-desktop-preview-bin
 pkgver=1.2.637
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
 license=('GPL')
@@ -84,19 +84,20 @@ package() {
   find "$pkgdir/usr" -type d -print0 | xargs -0 chmod 755
   find "$pkgdir/usr" -type f -name '*.so.*' -print0 | xargs -0 chmod 644
 
-  cd "$pkgdir/usr/lib/rstudio/bin"
-  ls libQt*.so.*| grep '\.[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}$'|
-  while read x;do
-    if [[ ! -e "${x%.+([0-9]).+([0-9])}" ]];then
-      ln -s "$x" "${x%.+([0-9]).+([0-9])}"
-    fi
-  done
-  ls lib*.so.* | grep '\.so\.[0-9]\{1,\}\.[0-9]\{1,\}$'|
-  while read x;do
-    if [[ ! -e "${x%.+([0-9])}" ]];then
-      ln -s "$x" "${x%.+([0-9])}"
-    fi
-  done
+  # deprecated with v1.2.x
+  # cd "$pkgdir/usr/lib/rstudio/bin"
+  # ls libQt*.so.*| grep '\.[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}$'|
+  # while read x;do
+  #   if [[ ! -e "${x%.+([0-9]).+([0-9])}" ]];then
+  #     ln -s "$x" "${x%.+([0-9]).+([0-9])}"
+  #   fi
+  # done
+  # ls lib*.so.* | grep '\.so\.[0-9]\{1,\}\.[0-9]\{1,\}$'|
+  # while read x;do
+  #   if [[ ! -e "${x%.+([0-9])}" ]];then
+  #     ln -s "$x" "${x%.+([0-9])}"
+  #   fi
+  # done
 
   # this throwed an error in v1.1.444
   # ln -sf /usr/lib/qt/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin.so plugins/platforminputcontexts/
