@@ -1,7 +1,7 @@
 pkgbase = python-cligj
 	pkgdesc = Click params for command line interfaces to GeoJSON
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mapbox/cligj
 	arch = any
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = python-cligj
 	depends = python-pytest-cov
 	options = !emptydirs
 	source = https://pypi.python.org/packages/source/c/cligj/cligj-0.4.0.tar.gz
-	md5sums = b1be9e2e9a083e8ab114901645a83826
+	sha256sums = 12ad07994f5c1173b06087ffbaacec52f9ebe4687926e5aacfc22b6b0c8b3f54
 
 pkgname = python-cligj
 
