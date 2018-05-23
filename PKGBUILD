@@ -5,8 +5,8 @@
 # Contributor: Denis Martinez <deuns.martinez [at] gmail [dot] com>
 
 pkgname=lib32-intel-tbb
-pkgver=2018_20171205
-_pkgver=2018_U2
+pkgver=2018_20180312
+_pkgver=2018_U3
 pkgrel=1
 pkgdesc="High level abstract threading library (32-bit)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('GPL')
 depends=("${pkgname#lib32-}" 'lib32-gcc-libs')
 makedepends=('gcc-multilib')
 source=("https://github.com/01org/tbb/archive/${_pkgver}.tar.gz")
-sha256sums=('78bb9bae474736d213342f01fe1a6d00c6939d5c75b367e2e43e7bf29a6d8eca')
+sha256sums=('23793c8645480148e9559df96b386b780f92194c80120acce79fcdaae0d81f45')
 
 build() {
   cd "tbb-${_pkgver}"
