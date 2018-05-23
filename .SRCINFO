@@ -1,12 +1,14 @@
 pkgbase = systemd-named-netns
 	pkgdesc = Use named netns with systemd services!
 	pkgver = 20180124
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jamesits/systemd-named-netns
 	arch = any
 	license = GPL3
 	depends = systemd
 	depends = iproute2
+	optdepends = dhclient: when using dynamically assigned IP
+	backup = etc/default/netns
 	source = https://github.com/Jamesits/systemd-named-netns/archive/upstream/0_20180124.tar.gz
 	sha256sums = ca0324bbe4501e8e9b706fedaea55165ce3fae7d1ea65797b950538ab847c6d7
 

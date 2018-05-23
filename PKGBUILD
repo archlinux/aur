@@ -2,7 +2,7 @@
 
 pkgname=systemd-named-netns
 pkgver=20180124
-pkgrel=1
+pkgrel=2
 pkgdesc="Use named netns with systemd services!"
 license=('GPL3')
 depends=('systemd' 'iproute2')
