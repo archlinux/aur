@@ -1,4 +1,4 @@
-From a5b9c280ba0870c8e61f7068b08f4b0353b1387e Mon Sep 17 00:00:00 2001
+From 5fb553246687437173e97e68a28118106e723f45 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
 Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
@@ -6,15 +6,15 @@ Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
 Source:
 https://github.com/zhou13/poppler-subpixel/blob/master/poppler/poppler-subpixel.patch
 ---
- glib/demo/render.c         | 25 ++++++++++++++++++---
- glib/poppler-page.cc       | 10 +++++++++
+ glib/demo/render.c         | 25 +++++++++++++++--
+ glib/poppler-page.cc       | 10 +++++++
  glib/poppler-page.h        |  1 +
- poppler/CairoFontEngine.cc |  6 ++---
- poppler/CairoOutputDev.cc  | 24 ++++++++++++++++++++
- poppler/Gfx.cc             | 56 ++++++++++++++++++++++++++++++++++++++++++++++
- poppler/Gfx.h              |  3 +++
- poppler/Page.cc            | 14 ++++++++++++
- poppler/Page.h             |  3 +++
+ poppler/CairoFontEngine.cc |  6 ++--
+ poppler/CairoOutputDev.cc  | 24 ++++++++++++++++
+ poppler/Gfx.cc             | 56 ++++++++++++++++++++++++++++++++++++++
+ poppler/Gfx.h              |  3 ++
+ poppler/Page.cc            | 14 ++++++++++
+ poppler/Page.h             |  3 ++
  9 files changed, 136 insertions(+), 6 deletions(-)
 
 diff --git a/glib/demo/render.c b/glib/demo/render.c
@@ -135,10 +135,10 @@ index 91deac46..aad28564 100644
    if (cairo_font_face_set_user_data (l->font_face,
  				     &_ft_cairo_key,
 diff --git a/poppler/CairoOutputDev.cc b/poppler/CairoOutputDev.cc
-index f0c4b040..cc26f431 100644
+index 18124b8f..b5ffe071 100644
 --- a/poppler/CairoOutputDev.cc
 +++ b/poppler/CairoOutputDev.cc
-@@ -213,6 +213,13 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
+@@ -214,6 +214,13 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
    }
    if (cairo != nullptr) {
      this->cairo = cairo_reference (cairo);
@@ -152,7 +152,7 @@ index f0c4b040..cc26f431 100644
  	/* save the initial matrix so that we can use it for type3 fonts. */
  	//XXX: is this sufficient? could we miss changes to the matrix somehow?
  	cairo_get_matrix(cairo, &orig_matrix);
-@@ -1440,6 +1447,7 @@ void CairoOutputDev::drawChar(GfxState *state, double x, double y,
+@@ -1441,6 +1448,7 @@ void CairoOutputDev::drawChar(GfxState *state, double x, double y,
  void CairoOutputDev::endString(GfxState *state)
  {
    int render;
@@ -160,7 +160,7 @@ index f0c4b040..cc26f431 100644
  
    if (!currentFont)
      return;
-@@ -1457,6 +1465,18 @@ void CairoOutputDev::endString(GfxState *state)
+@@ -1458,6 +1466,18 @@ void CairoOutputDev::endString(GfxState *state)
      goto finish;
    }
  
@@ -179,7 +179,7 @@ index f0c4b040..cc26f431 100644
    if (!(render & 1)) {
      LOG (printf ("fill string\n"));
      cairo_set_source (cairo, fill_pattern);
-@@ -1507,6 +1527,10 @@ void CairoOutputDev::endString(GfxState *state)
+@@ -1508,6 +1528,10 @@ void CairoOutputDev::endString(GfxState *state)
    }
  
  finish:
@@ -191,10 +191,10 @@ index f0c4b040..cc26f431 100644
    glyphs = nullptr;
    if (use_show_text_glyphs) {
 diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
-index 4f6c33f8..22a59256 100644
+index 08132072..dbc822ec 100644
 --- a/poppler/Gfx.cc
 +++ b/poppler/Gfx.cc
-@@ -4605,6 +4605,62 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
+@@ -4614,6 +4614,62 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
    error(errSyntaxError, getPos(), "Bad image parameters");
  }
  
@@ -258,10 +258,10 @@ index 4f6c33f8..22a59256 100644
    // check the effect of compositing objects as a group:
    // look for ExtGState entries with ca != 1 or CA != 1 or BM != normal
 diff --git a/poppler/Gfx.h b/poppler/Gfx.h
-index 8e2f66cc..62328f8c 100644
+index 2ea0d9fa..3f0b4ce7 100644
 --- a/poppler/Gfx.h
 +++ b/poppler/Gfx.h
-@@ -192,6 +192,9 @@ public:
+@@ -195,6 +195,9 @@ public:
    // Get the current graphics state object.
    GfxState *getState() { return state; }
  
@@ -297,7 +297,7 @@ index d4799dd1..4a0e559e 100644
    Object obj1;
    Dict *pageDict = pageObj.getDict()->copy(xrefA);
 diff --git a/poppler/Page.h b/poppler/Page.h
-index 61570791..eb747c8d 100644
+index 7151ee5b..41c1fd75 100644
 --- a/poppler/Page.h
 +++ b/poppler/Page.h
 @@ -185,6 +185,9 @@ public:
@@ -311,5 +311,5 @@ index 61570791..eb747c8d 100644
    Object getAnnotsObject(XRef *xrefA = nullptr) { return annotsObj.fetch(xrefA ? xrefA : xref); }
    // Add a new annotation to the page
 -- 
-2.16.3
+2.17.0
 
