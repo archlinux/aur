@@ -1,15 +1,25 @@
 pkgbase = python-rasterio
 	pkgdesc = Python library for reading and writing geospatial raster data.
-	pkgver = 1.0a5
+	pkgver = 1.0a12
 	pkgrel = 1
 	url = https://github.com/mapbox/rasterio
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = cython
+	makedepends = python-pytest
+	makedepends = python-hypothesis
+	makedepends = python-boto3
+	depends = python
 	depends = gdal
-	source = https://github.com/mapbox/rasterio/archive/1.0a5.tar.gz
-	sha256sums = 17b18c4964979c1954439eedcb806b83d1bfd7e2cbe1f459c59680919fa581c2
+	depends = python-numpy
+	depends = python-affine
+	depends = python-attrs
+	depends = python-cligj
+	depends = python-snuggs
+	depends = python-click-plugins
+	source = python-rasterio-1.0a12.tar.gz::https://github.com/mapbox/rasterio/archive/1.0a12.tar.gz
+	sha256sums = c36337d22723fe7e3309e8ea364932aeae42fc00a844398f136a78f336873b30
 
 pkgname = python-rasterio
 
