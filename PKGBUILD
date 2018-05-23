@@ -32,7 +32,7 @@ _localmodcfg=
 
 pkgbase=linux-gc             # Build kernel with a different name
 _srcname=linux-4.16
-pkgver=4.16.10
+pkgver=4.16.11
 pkgrel=1
 _pdsversion=098p
 arch=('x86_64')
@@ -53,7 +53,6 @@ source=(
   "$_psd_patch::https://bitbucket.org/alfredchen/linux-gc/downloads/${_psd_patch}"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  0003-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -61,7 +60,7 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '9fe6093be401fe0ff3f6cb3d428f137119a7befaf86d70f18c7e88871c1852d6'
+            'd0d998f193c3feeab95f1378dea15aa6ba145f591661547cc00ef16d161651fe'
             'SKIP'
             '5ea627c419baef8aa6c0024a0f352716f6655283402e3f3318a188fea984971d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -69,9 +68,8 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '5e421e0c3fc60706640c202612c9d6b2de0f04499c90798e5e3b153fc356e6ef'
-            '286ea6a6f19148ec09d7c07bd80cd08f44a9b8f5821b0732fdbb1dc14ceb539b'
-            'ca6590d1368788dff5dd41f2a643ee1dcce4ec9e5ead5caa6e673f68c44851cb'
-            'ffa7f3305bade3ed258a93919c28fb0c810953d3e44ae4c9608512991f7eb703')
+            'b01e9bd4e0f3cc2b91db1d8c043b2d85329bd0c9a9441a91d337c3c33661b658'
+            '09170daf49fe4cb720f331cd2da1c75771eb4f9f124353bf035218b1f8ca57d1')
 
 _kernelname=${pkgbase#linux}
 
@@ -89,9 +87,6 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-
-  # https://bugs.archlinux.org/task/58237
-  patch -Np1 -i ../0003-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
 
   # Patch source with PDS scheduler
   patch -Np1 -i "../${_psd_patch}"
