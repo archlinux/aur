@@ -6,7 +6,7 @@
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.14
-pkgver=4.14.22
+pkgver=4.14.41
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -29,7 +29,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '6df3b1cea7091380949dcb33a8313bdfd4b26227584569753ff6c8d161ee1cf7'
+            '9899039be6a66e98272120c4c6d50f4029a6b4f9cc95e5ca3555cff513a7581c'
             'SKIP'
             'c645053c4525a1a70d5c10b52257ac136da7e9059b6a4a566a857a3d42046426'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -108,7 +108,7 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("${pkgbase}=${pkgver}")
+  provides=("${pkgbase}=${pkgver}" 'linux-tomoyo')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux-lts.install
 
