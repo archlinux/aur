@@ -1,6 +1,6 @@
 pkgbase = simonpi-git
 	pkgdesc = A quick & dirty script to emulate Raspberry PI family devices on your laptop
-	pkgver = 1.0.12.r0.g5502ff1
+	pkgver = 1.0.12.r0.g804baed
 	pkgrel = 1
 	url = https://github.com/M0Rf30/simonpi
 	install = simonpi-git.install
