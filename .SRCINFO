@@ -1,7 +1,7 @@
 pkgbase = mythtv
 	pkgdesc = A Homebrew PVR project
 	pkgver = 29.1
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 1
 	url = https://www.mythtv.org/
 	arch = x86_64
@@ -57,7 +57,7 @@ pkgbase = mythtv
 	source = 99-mythbackend.rules
 	source = sysusers.d
 	source = freetype2.patch
-	sha256sums = 04a84eb0ded2d2b123624ab2b2e1b8cf824ff4bf8216e452b2516deb929082b2
+	sha256sums = e40ec8111d39fd059a9ec741b10016683bcc66ee3b33c4cdaab93d60851f5d3e
 	sha256sums = ed5ca54de26b7cd8a64e09626eed6e09f35d677daf88c530bb24cc4252bcce6d
 	sha256sums = ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333
 	sha256sums = 470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae

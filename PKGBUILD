@@ -7,7 +7,7 @@
 
 pkgname=mythtv
 pkgver=29.1
-pkgrel=7
+pkgrel=8
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/MythTV/$pkgname/archive/v$p
         '99-mythbackend.rules'
         'sysusers.d'
         'freetype2.patch')
-sha256sums=('04a84eb0ded2d2b123624ab2b2e1b8cf824ff4bf8216e452b2516deb929082b2'
+sha256sums=('e40ec8111d39fd059a9ec741b10016683bcc66ee3b33c4cdaab93d60851f5d3e'
             'ed5ca54de26b7cd8a64e09626eed6e09f35d677daf88c530bb24cc4252bcce6d'
             'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
 			'470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
