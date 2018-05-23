@@ -54,7 +54,7 @@ _major=4.16
 _srcname=linux-${_major}
 _minor=11
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -88,8 +88,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
-        '0003-Partially-revert-swiotlb-remove-various-exports.patch')
+        '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-uksm} 
@@ -108,10 +107,6 @@ prepare() {
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
         patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-    
-    ### NVIDIA driver compat
-        msg "NVIDIA driver compat"
-        patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
 
     ### Fix gcc8 bogus warnings
         msg "Fix gcc8 bogus warnings"
@@ -392,9 +387,8 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '72064984e86db79d07b4b493752f1b0dc6815e53328cbca47d226f9e06bfccc5398550c510a836a60b2e8a8bf674775af958621314b2e6555ed2c343427a28a7'
-            'a4ecfd93472b2998857160b116a332f68eebb84a03de4749af5a577c9da709b08c7a9460392e19d79ed374f8f441eaa2e6ec3ae93dc4424b59af0d188c2c2e35'
-            '840b67401680fdaa8b06a188f50799dd0967e782d51e0eaf381e8568d66cba10d4eed3788bbfb723fd8f65f9686b0b21ec0fd1caa3834d83ea785df3488ab071')
+            '99c4b03829317b03839c4bcf8a5ffead5918504b95b4bf2733ca38ec5a153a03781aa4b5e6f4297cc12c1e63a07a74da04b730f107ede212fe247e658933853b'
+            '7621840ad2f9760b30885b46b1b4e5b2b51d726a7ee771ce7649fb217c3af16577edb65c326b0754cf1a87b00fb981f0697ce916b3dcaf80731bc9a373aa685c')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
