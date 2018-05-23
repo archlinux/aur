@@ -1,7 +1,7 @@
 pkgbase = cntk
 	pkgdesc = Microsoft Cognitive Toolkit (CNTK), an open source deep-learning toolkit
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Microsoft/CNTK
 	arch = x86_64
 	license = CUSTOM
