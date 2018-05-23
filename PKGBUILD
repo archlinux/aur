@@ -1,12 +1,12 @@
 # Maintainer: Alexander Phinikarides <alexisph@gmail.com>
 pkgname=bfg
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Removes large or troublesome blobs like git-filter-branch does, but faster.'
 arch=('any')
 url='http://rtyley.github.io/bfg-repo-cleaner/'
 license=('GPL3')
-depends=('java-environment=8' 'bash')
+depends=('java-environment' 'bash')
 source=("https://repo1.maven.org/maven2/com/madgag/${pkgname}/${pkgver}/${pkgname}-${pkgver}.jar"
         "${pkgname}.sh")
 noextract=("${pkgname}-${pkgver}.jar")
