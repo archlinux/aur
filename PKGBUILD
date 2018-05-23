@@ -17,7 +17,7 @@ source=(http://downloads.sourceforge.net/sourceforge/weka/$pkgname-$_dlver.zip
         weka.sh
         weka.desktop)
 md5sums=('491f1efa03a6406f524f934d481059d6'
-         '60dc5666b93d98db0900deb7d8b5eae4'
+         'e3c18faba03e827a24b5d8029e1825e1'
          '83a4d47ba64df90a92a38b23a14c6480')
 
 build() {
