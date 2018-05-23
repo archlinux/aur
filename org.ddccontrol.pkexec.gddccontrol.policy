@@ -4,7 +4,7 @@
  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
   <vendor>DDCcontrol</vendor>
-  <vendor_url>http://ddccontrol.sourceforge.net/</vendor_url>
+  <vendor_url>https://github.com/ddccontrol/ddccontrol</vendor_url>
 
   <action id="org.ddccontrol.pkexec.gddccontrol">
     <message>Authentication is required to run the Monitor Settings</message>

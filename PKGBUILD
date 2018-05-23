@@ -5,8 +5,8 @@
 
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="Control your monitor by software using the DDC/CI protocol"
 arch=('i686' 'x86_64')
 url="https://github.com/ddccontrol/ddccontrol"
@@ -16,8 +16,8 @@ makedepends=('gtk2' 'autoconf' 'intltool')
 source=("https://github.com/ddccontrol/ddccontrol/archive/${pkgver}.tar.gz"
         "org.ddccontrol.pkexec.gddccontrol.policy")
 options=('!libtool')
-sha256sums=('10e19c7201bb9e80d8d4293f8090d5ce97b0f49a13bd7e8e7af53b7e8ae4e5fb'
-            '811bf1ecc85045e80757ea553591c00e32bb93d529a761b18bb501d0f2bf82c5')
+sha256sums=('aafbb16ac4f4edfe3fcc5feec1eb5729aaf86e3b0f31f9d707ba1406bb404817'
+            'ef84637e512496a37fe3b50f64020f11aafaa7bc8ab821e90e81256439c2069a')
 
 prepare() {
 	cd "${srcdir}"/${pkgbase}-${pkgver}
@@ -34,12 +34,15 @@ build() {
 
 package_ddccontrol() {
   install=ddccontrol.install
+
   cd "${srcdir}"/${pkgbase}-${pkgver}
-  for i in src/lib src/ddcpci src/ddccontrol po man; do # removed: doc (no objects to do in html/*)
+
+  for i in src/lib src/ddcpci src/ddccontrol po man; do
     make DESTDIR="${pkgdir}" install -C $i
   done
 
-  chmod 755 "${pkgdir}"/usr/bin/ddcpci
+  # cleanups
+  rm "$pkgdir/usr/share/man/man1/gddccontrol.1"
 }
 
 package_gddccontrol() {
@@ -48,12 +51,19 @@ package_gddccontrol() {
   conflicts=("ddccontrol-git")
 
   cd "${srcdir}"/${pkgbase}-${pkgver}
-  make DESTDIR="${pkgdir}" install -C src/gddccontrol
+
+  for i in src/gddccontrol man; do
+    make DESTDIR="${pkgdir}" install -C $i
+  done
+
+  # cleanups
+  rm "$pkgdir/usr/share/man/man1/ddccontrol.1"
 
   # policykit
   install -Dm644 \
     "$srcdir/org.ddccontrol.pkexec.gddccontrol.policy" \
     "${pkgdir}/usr/share/polkit-1/actions/org.ddccontrol.pkexec.gddccontrol.policy"
+
   sed -e 's/Exec=gddccontrol/Exec=pkexec gddccontrol/' \
     -i "${pkgdir}/usr/share/applications/gddccontrol.desktop"
 }
