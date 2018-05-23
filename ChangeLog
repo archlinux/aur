@@ -1,3 +1,8 @@
+2018-05-23 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
+
+  * 5.4.12-2:
+  Add missing build dependency to npm
+
 2018-05-18 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
 
   * 5.4.12-1:

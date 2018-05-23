@@ -1,7 +1,7 @@
 pkgbase = opennebula
 	pkgdesc = Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)
 	pkgver = 5.4.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docs.opennebula.org/stable
 	install = opennebula.install
 	changelog = ChangeLog
@@ -13,6 +13,7 @@ pkgbase = opennebula
 	makedepends = scons
 	makedepends = mariadb
 	makedepends = libmariadbclient
+	makedepends = npm
 	makedepends = grunt-cli
 	makedepends = bower
 	depends = ruby

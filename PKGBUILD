@@ -8,7 +8,7 @@
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
 pkgver=5.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
 url='http://docs.opennebula.org/stable'
@@ -34,6 +34,7 @@ makedepends=('xmlrpc-c'
              'scons'
              'mariadb'
              'libmariadbclient'
+             'npm' # needed to build sunstone
              'grunt-cli' # needed to build sunstone
              'bower') # needed to build sunstone
 optdepends=('nfs-utils: for using the shared file system storage model'
