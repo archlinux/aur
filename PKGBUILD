@@ -1,8 +1,8 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=combust-git
-pkgver=0.68.b866d9b
-pkgrel=2
+pkgver=0.71.674219b
+pkgrel=1
 pkgdesc='nftables firewall script with profiles'
 arch=('any')
 url='https://github.com/gavinhungry/combust'
@@ -20,7 +20,7 @@ pkgver() {
 package() {
   cd "${srcdir}/${pkgname}"
 
-  install -Dm600 combust.conf "${pkgdir}"/etc/combust.conf
+  install -Dm644 combust.conf "${pkgdir}"/etc/combust.conf
   install -Dm755 combust.sh "${pkgdir}"/usr/bin/combust
   install -Dm644 combust.service "${pkgdir}"/usr/lib/systemd/system/combust.service
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
