@@ -1,7 +1,7 @@
 pkgbase = sendmail
 	pkgdesc = The sendmail MTA
 	pkgver = 8.15.2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.sendmail.org
 	arch = x86_64
 	license = Sendmail License
@@ -37,7 +37,7 @@ pkgbase = sendmail
 	sha256sums = 39730f2be66bb1f1e6bc7fff61911db632ecf4b891d348df525abe2020274580
 	sha256sums = 9b4d2d141191f6c9a18538f7acf65243cceb26359f88b64c92c1c4e8407398f0
 	sha256sums = 95531a87d42e30742ca71f7d7197403eb9d703a407a50c9fda1f909ed21e1010
-	sha256sums = 4b5168dea0196a9a03e5a0b54a8354cec7563973705db35a22f451bcedcd388f
+	sha256sums = 3469c3c503ef24ccaedeb69b35787ef3745852cf9dc78540f5ec4195d2b817d7
 	sha256sums = 380edeb289dfdfc5b0d4ea38df3a0fd35e6f83eeee76254ec7b3506eadfb674f
 	sha256sums = ecbd0a27e868d73d87fcfec292c19ea9479d0a8e9783788596d9add5e012218f
 
