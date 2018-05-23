@@ -1,6 +1,6 @@
 # Maintainer: Ivan Semkin (ivan at semkin dot ru)
 
-pkgname=(python-dbusmock python2-dbusmock)
+pkgname=(python-dbusmock-git python2-dbusmock-git)
 _pkgname=python-dbusmock
 pkgver=0.17.2.r5.fae4be7
 pkgrel=1
@@ -25,14 +25,14 @@ pkgver() {
   echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
-package_python-dbusmock() {
+package_python-dbusmock-git() {
   depends=(python)
   makedepends=(python-setuptools)
   cd "${srcdir}/${_pkgname}"
   python setup.py install --optimize=1 --root="${pkgdir}/"
 }
 
-package_python2-dbusmock() {
+package_python2-dbusmock-git() {
   depends=(python2)
   makedepends=(python2-setuptools)
   cd "${srcdir}/${_pkgname}"

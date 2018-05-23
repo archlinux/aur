@@ -1,4 +1,4 @@
-pkgbase = python-dbusmock
+pkgbase = python-dbusmock-git
 	pkgdesc = Mock D-Bus objects for tests
 	pkgver = 0.17.2.r5.fae4be7
 	pkgrel = 1
@@ -8,9 +8,9 @@ pkgbase = python-dbusmock
 	source = git+https://github.com/martinpitt/python-dbusmock
 	sha256sums = SKIP
 
-pkgname = python-dbusmock
+pkgname = python-dbusmock-git
 	depends = python
 
-pkgname = python2-dbusmock
+pkgname = python2-dbusmock-git
 	depends = python2
 
