@@ -1,6 +1,6 @@
 pkgbase = armake
 	pkgdesc = An open-source implementation of the Arma modding tools.
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/KoffeinFlummi/armake
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = armake
 	makedepends = bison
 	makedepends = flex
 	depends = openssl
-	source = https://github.com/KoffeinFlummi/armake/archive/v0.6.2.tar.gz
-	sha256sums = e4fc0f0370d385d394ba0778688ad056dd669815b2991a06b9574e09c69cfc4c
+	source = https://github.com/KoffeinFlummi/armake/archive/v0.6.3.tar.gz
+	sha256sums = 1c3010d4745851b91129367197e9066281ad1dbbe015e9fa5b25a386509ff408
 
 pkgname = armake
 
