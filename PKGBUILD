@@ -1,7 +1,7 @@
 # Maintainer: Stuart Mumford <stuart@cadair.com>
 pkgname=python-yt
 _module_name=yt
-pkgver=3.3.2
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="A community-developed analysis and visualization toolkit for volumetric data."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('python-numpy' 'python-matplotlib' 'cython' 'python-nose' 'python-sympy
 optdepends=('jupyter')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/y/${_module_name}/${_module_name}-${pkgver}.tar.gz")
-md5sums=('405211ea89a0d40eb289363055a54291')
+sha256sums=('a4cfc47fe21683e7a3b680c05fe2a25fb774ffda6e3939a35755e5bf64065895')
 
 package() {
   cd "$srcdir/${_module_name}-$pkgver"
