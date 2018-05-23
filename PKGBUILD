@@ -1,6 +1,6 @@
 # Maintainer: Sergi Jimenez <sjr@redhat.com>
 pkgname=kcli
-pkgver=11.9
+pkgver=11.10
 pkgrel=1
 pkgdesc="kcli is a CLI wrapper around libvirt"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=('libvirt: locally managed VMs'
             'docker: interaction with local docker daemon')
 provides=("kcli=${pkgver}")
 source=($pkgname-$pkgver.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c7d3b8f85a833ce28778a7a2b03247e880baac51e82426d84cf7c5c974920e85')
+sha256sums=('c409a60a8f9e1713db1e34b2afef2b8cb27e90dc3b13504d1dcf409e1404b8d0')
 
 package() {
   cd "$pkgname-$pkgver"
