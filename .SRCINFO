@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-kde-arch-update-notifier-git
 	pkgdesc = A KDE plasmoid for your system tray notifying you of available updates with AUR Support
-	pkgver = 5.3.0.r0.g746b0f9
+	pkgver = 5.3.1.r0.gc477477
 	pkgrel = 1
 	url = https://github.com/I-Dream-in-Code/kde-arch-update-plasmoid
 	arch = x86_64
