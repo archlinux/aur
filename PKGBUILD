@@ -1,7 +1,7 @@
 # Maintainer: Bumsik Kim <k.bumsik@gmail.com>
 _pkgname_camelcase=VirtScreen
 pkgname=virtscreen
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Make your iPad/tablet/computer as a secondary monitor on Linux"
 arch=("i686" "x86_64")
@@ -22,7 +22,7 @@ install=
 changelog=
 source=(https://github.com/kbumsik/$_pkgname_camelcase/archive/$pkgver.tar.gz)
 noextract=()
-sha256sums=('4f3f677588b41c83a56e027c3ffcfe5bfc470b0e14b784a83437f4711754857e')
+sha256sums=('79cd7a07fc5eb9d6034812cca39612cb1cbef109bd2c8e939a45e2186a82cac2')
 
 build() {
   echo "$pkgdir"
@@ -33,6 +33,7 @@ build() {
 package() {
   cd $_pkgname_camelcase-$pkgver
   /usr/bin/python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$pkgname/icon/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  # These are already installed by setup.py
+  # install -Dm644 "data/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  # install -Dm644 "data/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
