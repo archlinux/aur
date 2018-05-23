@@ -1,0 +1,14 @@
+pkgbase = imgau2vid
+	pkgdesc = Bash script to convert a image with a audio to video using FFMPEG
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/son-link/imgau2vid/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = ffmpeg
+	source = https://github.com/son-link/imgau2vid/archive/1.0.0.tar.gz
+	md5sums = 735b84f7848263274d41557f6499fb96
+
+pkgname = imgau2vid
+
