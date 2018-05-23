@@ -1,6 +1,6 @@
 pkgbase = pidgin-hide-chat
 	pkgdesc = Pidgin plugin to show/hide chat windows on connect.
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/kgraefe/pidgin-hide-chat-on-join/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = pidgin-hide-chat
 	depends = pidgin
 	depends = glibc
 	depends = intltool
-	source = https://github.com/kgraefe/pidgin-hide-chat-on-join/archive/v2.0.tar.gz
-	sha256sums = 6f6be38f03df4e68cdf66cf016fc6f71c7a3d5ef24b416bb7ff7788baeacb303
+	source = https://github.com/kgraefe/pidgin-hide-chat-on-join/archive/v2.1.tar.gz
+	sha256sums = bb2f46579984837ce8d504e1bdc8360c2fe3dbccaed40353a2d5761ba3ef7138
 
 pkgname = pidgin-hide-chat
 
