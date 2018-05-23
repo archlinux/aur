@@ -1,0 +1,24 @@
+pkgbase = debops-git
+	pkgdesc = Your Debian-based data center in a box
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/debops/debops/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = ansible
+	depends = python-netaddr
+	depends = python-ldap
+	depends = python-passlib
+	depends = util-linux
+	depends = encfs
+	depends = gnupg
+	provides = debops
+	conflicts = debops
+	source = debops::git+https://github.com/debops/debops
+	sha256sums = SKIP
+
+pkgname = debops-git
+
