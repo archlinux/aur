@@ -5,7 +5,7 @@ pkgname=('zarafa-server')
 groups=('zarafa'
 	'kopano')
 replaces=('zarafa-server-arm')
-pkgver=7.2.5.106
+pkgver=7.2.6.10
 _pkgmajver=7.2
 pkgrel=66
 pkgdesc="Open Source Groupware Solution"
@@ -131,7 +131,7 @@ optdepends=('zarafa-webapp'
 	    'apache')
 	    
 install="install"
-source=("https://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}/zcp-${pkgver}.tar.xz"
+source=("http://archives.z-hub.io/sourcecode/zcp-${pkgver}.tar.xz"
 	'zarafa-tools::git+https://github.com/zarafagroupware/zarafa-tools.git'
 	'python-zarafa::git+https://github.com/zarafagroupware/python-zarafa.git'
 	'zarafa-inspector::git+https://github.com/zarafagroupware/zarafa-inspector.git'
