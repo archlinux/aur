@@ -5,7 +5,7 @@
 
 _npmname=mocha
 pkgname=nodejs-$_npmname
-pkgver=5.0.5
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Simple, flexible, fun test framework."
 arch=(any)
@@ -15,7 +15,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('e18826cdd81b0453404905ce4a229c3b5f8c866ed300a7ecc52ca2771a8ff2f2')
+sha256sums=('1a3f248571484e576887ed920e3f5f7a984afe384de42c543b42ebebf20e63b1')
 
 package() {
   npm install \
@@ -23,7 +23,6 @@ package() {
     --prefix "$pkgdir/usr" \
     "$srcdir"/$_npmname-$pkgver.tgz
 
-  rm -r "$pkgdir"/usr/etc
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 
   install -Dm0644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" \
