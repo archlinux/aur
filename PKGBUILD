@@ -2,8 +2,8 @@
 # Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
 pkgname=thunderbird-beta
-pkgver=60.2
-ver=60.0b2
+pkgver=60.6
+ver=60.0b6
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -33,7 +33,7 @@ https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix.patch
 https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/p.patch
 )
 
-sha512sums=('191a771f57e0450df633bfd25bc0030d4e7e74bf175ace33373d1bf5dd4d8b512105ea3b0b89c326aa54b6c3b4166cd771951ac388de63e6ffaf73efab02cd91'
+sha512sums=('2ff2ee81bdd41a4e7a24f1cf3a6a338d6b25ded3f3aa608063967e67c6a7eedf1b3bcd46f8c8a2c160de4f2e751ce1bf71a2339da032b17dc825b311a2df7477'
             'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
             '33f5c73b18b078c49b97ebd526a8d07eb091deb223018068434cec0ff95e4ac64dbde70f1c2ccf46f833a17f898bb9a916357eebac05f39399f23a08f79149f7'
             '951667941520e66e7b6aad55619ec2b38364da58c5cf8a71775a3032921cfc0a8e5c7ba14e0df35588175f94a6b4785566d39177ff536ab9cefcbd19a03dc065'
