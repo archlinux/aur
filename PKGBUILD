@@ -1,6 +1,6 @@
 # former Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=jameica
-pkgver=2.8.0
+pkgver=2.8.1
 _pkgver=2.8
 pkgrel=1
 pkgdesc="free runtime environment for java applications"
