@@ -14,7 +14,7 @@
 #######################
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=1.1.446
+pkgver=1.2.637
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
@@ -28,15 +28,9 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
-md5sums_x86_64=('8c0a1fe2a16c009396366b5fad459835'
-                '84e61f5eda991b978fa168d6762f7990'
-                '391ba54997d6faddbfe41a185a823ee4')
+md5sums_x86_64=('ba995b925422805c3b403f978ade4d29')
 
-source_x86_64=("https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-xenial-${pkgver}-amd64.deb"
-"http://archive.ubuntu.com/ubuntu/pool/main/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.2ubuntu3_amd64.deb"
-"http://security.ubuntu.com/ubuntu/pool/main/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_amd64.deb")
-
-#install="$pkgname".install
+source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/trusty/amd64/rstudio-${pkgver}-amd64.deb")
 
 package() {
 
@@ -44,32 +38,34 @@ package() {
 
   msg "Converting debian package..."
 
-  ar x rstudio-xenial-${pkgver}-amd64.deb
+  ar x rstudio-${pkgver}-amd64.deb
 
   cd "$srcdir"
   tar Jxf data.tar.xz -C "$pkgdir"
   install -dm755 "$pkgdir/usr/bin"
 
-  ARCH=${CARCH/686/386/}
-  ARCH=${ARCH/x86_64/amd64}
+  # libgstreamer is no dep anymore since v1.2
 
-  ar x libgstreamer0.10-0_0.10.36-1.2ubuntu3_${ARCH}.deb
-  tar Jxf data.tar.xz \
-      --wildcards \
-      -C "${pkgdir}/usr/lib/rstudio/bin" \
-      ./usr/lib/${CARCH/686/386}-linux-gnu/libgstreamer-0.10.so.\* \
-      ./usr/lib/${CARCH/686/386}-linux-gnu/libgstbase-0.10.so.\* \
-      --strip-components=4
-
-  ar x libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_${ARCH}.deb
-  tar Jxf data.tar.xz \
-      --wildcards \
-      -C "${pkgdir}/usr/lib/rstudio/bin" \
-      ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstapp-0.10.so.\* \
-      ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstinterfaces-0.10.so.\* \
-      ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstpbutils-0.10.so.\* \
-      ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstvideo-0.10.so.\* \
-      --strip-components=4
+  # ARCH=${CARCH/686/386/}
+  # ARCH=${ARCH/x86_64/amd64}
+  #
+  # ar x libgstreamer0.10-0_0.10.36-1.2ubuntu3_${ARCH}.deb
+  # tar Jxf data.tar.xz \
+  #     --wildcards \
+  #     -C "${pkgdir}/usr/lib/rstudio/bin" \
+  #     ./usr/lib/${CARCH/686/386}-linux-gnu/libgstreamer-0.10.so.\* \
+  #     ./usr/lib/${CARCH/686/386}-linux-gnu/libgstbase-0.10.so.\* \
+  #     --strip-components=4
+  #
+  # ar x libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_${ARCH}.deb
+  # tar Jxf data.tar.xz \
+  #     --wildcards \
+  #     -C "${pkgdir}/usr/lib/rstudio/bin" \
+  #     ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstapp-0.10.so.\* \
+  #     ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstinterfaces-0.10.so.\* \
+  #     ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstpbutils-0.10.so.\* \
+  #     ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstvideo-0.10.so.\* \
+  #     --strip-components=4
 
   #cd "$pkgdir/usr/lib/rstudio/bin"
   #ln -sf /usr/lib/libncursesw.so.6 libtinfo.so.5
