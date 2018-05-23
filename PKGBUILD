@@ -1,12 +1,14 @@
-# Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
+# Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
+
 pkgname=qspectrumanalyzer-git
-pkgver=v2.0.0.r0.b866641
+pkgver=v2.2.0.r8.625ba9d
 pkgrel=1
 pkgdesc="Spectrum analyzer for multiple SDR platforms (PyQtGraph based GUI for soapy_power, rx_power, rtl_power, hackrf_sweep and other backends)"
 arch=('any')
 url="https://github.com/xmikos/qspectrumanalyzer"
 license=('GPL3')
-depends=('python-pyqt5' 'python-pyqtgraph' 'soapy_power')
+depends=('python-pyqt5' 'python-pyqtgraph' 'soapy_power' 'python-qt.py')
 makedepends=('git' 'python-setuptools')
 optdepends=(
   'rtl_power_fftw-git: alternative RTL-SDR backend using FFTW library (much faster than rtl_power)'
@@ -22,7 +24,6 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
@@ -35,5 +36,3 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   python setup.py install --root="$pkgdir"
 }
-
-# vim:set ts=2 sw=2 et:
