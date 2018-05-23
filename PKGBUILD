@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 
 pkgname='xmrig-nvidia'
-pkgver=2.5.2
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='Monero cryptocurrency GPU miner, HTTP API disabled, donation percentage is 0.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 install='xmrig-nvidia.install'
 changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5a8290cafdbf92ad1f16d45d6a385ef8e278f8a21cfd6a522a3074b2c2ba984d')
+sha256sums=('189f55f60234d0d099266364f1f731af7deff81f4a7a56f34525563405cd0fd9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -22,6 +22,7 @@ prepare() {
   [ -d build ] || mkdir build
 
   # reset default donate level
+  msg2 "Reseting donation level to zero"
   sed -i -e 's/constexpr const int kDonateLevel = 5;/constexpr const int kDonateLevel = 0;/g' src/donate.h
 }
 
