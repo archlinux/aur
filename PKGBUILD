@@ -7,6 +7,7 @@ pkgdesc="Use named netns with systemd services!"
 license=('GPL3')
 depends=('systemd' 'iproute2')
 arch=('any')
+backup=('etc/default/netns')
 url="https://github.com/Jamesits/systemd-named-netns"
 source=("https://github.com/Jamesits/${pkgname}/archive/upstream/0_${pkgver}.tar.gz")
 sha256sums=('ca0324bbe4501e8e9b706fedaea55165ce3fae7d1ea65797b950538ab847c6d7')
