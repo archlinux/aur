@@ -7,7 +7,7 @@
 
 pkgbase=linux-tomoyo
 _srcname=linux-4.16
-pkgver=4.16.3
+pkgver=4.16.11
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -27,26 +27,18 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
         0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-        0003-Partially-revert-swiotlb-remove-various-exports.patch
-        0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
-        0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
-        0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
         )
 
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '336252cb15f2f2574461c1d3daabf5dc207842526085802270e1e5223f645db3'
+            'd0d998f193c3feeab95f1378dea15aa6ba145f591661547cc00ef16d161651fe'
             'SKIP'
-            '51f794dee6098b19b5f8ec2277f52a313584f2ff8b3abf111f2fd92a6ea118dd'
+            'e39c02fd021f125a6202f7e4c0692dfd3ced93d404ecb6c8dca6994c8e17b227'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'a6119b46856ed2652c509fed380052e6df2be89c69a0d748cf7d8745bf35b871'
-            '545566a7358d711b8d4f9924df685e2410549e20d99e5d1c0dfaccdfeafda60d'
-            'bef6dd7b3a749ec072614ea4ed0bd5ea1d90519731f3438e4938d5b957032cc5'
-            'd647211e288436bcc010019a69f4ebf9a94c33b423c650aea8098969208ec836'
-            '6fb4fb81dab69ff432767e02585b3eb6a5a39c941e4bc2a6d4940ee17116c14e'
-            'd49a70d3b3f60c81d93735871f01ea60cafca87588d8d0d01801b2aec92e0e93')
+            'b01e9bd4e0f3cc2b91db1d8c043b2d85329bd0c9a9441a91d337c3c33661b658'
+            '09170daf49fe4cb720f331cd2da1c75771eb4f9f124353bf035218b1f8ca57d1')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -69,18 +61,6 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-
-  # NVIDIA driver compat
-  patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
-
-  # https://bugs.archlinux.org/task/58153
-  patch -Np1 -i ../0004-Fix-vboxguest-on-guests-with-more-than-4G-RAM.patch
-
-  # https://bugs.archlinux.org/task/58158
-  patch -Np1 -i ../0005-Revert-drm-amd-display-disable-CRTCs-with-NULL-FB-on.patch
-
-  # https://bugs.archlinux.org/task/58174
-  patch -Np1 -i ../0006-net-aquantia-Regression-on-reset-with-1.x-firmware.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
