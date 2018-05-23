@@ -1,7 +1,7 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=appleseed-git
 #_fragment="#tag=1.7.1-beta"
-pkgver=1.9.0.beta.r7.g0ae01d535
+pkgver=1.9.0.beta.r55.g636ef9edb
 pkgrel=1
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
 arch=(i686 x86_64)
@@ -13,9 +13,11 @@ depends=(python2 qt4 'seexpr>=2.11' boost openexr opencolorio openimageio 'opens
 makedepends=(git cmake)
 options=()
 source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment}"
-        "cmake.extra.install.dirs.remove.patch")
+        "cmake.extra.install.dirs.remove.patch"
+        gcc8.patch)
 md5sums=('SKIP'
-         '1cc8d927665c126dde4d1135e500c0dc')
+         '1cc8d927665c126dde4d1135e500c0dc'
+         '6e6b997cbfe06e0d74cdc3f74de12324')
 
 CMAKE_FLAGS="-DUSE_EXTERNAL_EXR=ON \
               -DUSE_EXTERNAL_OCIO=ON \
@@ -39,7 +41,8 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-  patch -Np1 -i ../cmake.extra.install.dirs.remove.patch
+  git apply -v ../cmake.extra.install.dirs.remove.patch
+  git apply -v ../gcc8.patch
   grep -q avx /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX=ON"
   grep -q avx2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX2=ON"
   grep -q sse4_2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_SSE42=ON"
