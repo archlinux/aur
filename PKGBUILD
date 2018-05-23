@@ -1,32 +1,22 @@
-# Maintainer: Marcel Huber <marcelhuberfoo@gmail.com>
+# Maintainer: Ivan Semkin (ivan at semkin dot ru)
 
 pkgname=nvidia-docker
-pkgver=1.0.1
-pkgrel=1
-pkgdesc="Build and run Docker containers leveraging NVIDIA GPUs"
-license=('custom')
-arch=('x86_64')
+pkgver=2.0.3
+pkgrel=2
+pkgdesc='Build and run Docker containers leveraging NVIDIA GPUs'
+arch=(x86_64)
 url='https://github.com/NVIDIA/nvidia-docker'
-makedepends=(libarchive)
-optdepends=(cuda nvidia opencl-nvidia)
-install=${pkgname}.install
-source_x86_64=(https://github.com/NVIDIA/nvidia-docker/releases/download/v${pkgver}/nvidia-docker-${pkgver}-1.${arch}.rpm)
-sha256sums_x86_64=('f05dfe7fe655ed39c399db0d6362e351b059f2708c3e6da17f590a000237ec3a')
+license=(custom)
+depends=(docker nvidia-container-runtime nvidia-container-runtime-hook)
 
-build() {
-  cd $srcdir
-  sed -r -i -e '/^User=/ d' \
-            -e 's|^(.*SOCK_DIR=).*$|\1/run/docker/plugins"|' \
-            -e 's|(SPEC_FILE=)/etc|\1/run|' \
-    usr/lib/systemd/system/$pkgname.service
+source=("https://github.com/NVIDIA/nvidia-docker/blob/gh-pages/centos7/x86_64/nvidia-docker2-$pkgver-1.docker18.03.1.ce.noarch.rpm?raw=true")
+sha256sums=('e07186b8e503ab4a170631714226cb6fc9992534f3ddcb226f7d9a186e832633')
+
+package() { 
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/etc/docker"
+  
+  install -m755 "${srcdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -m644 "${srcdir}/etc/docker/daemon.json" "${pkgdir}/etc/docker/daemon.json"
 }
-
-package() {
-  cd $srcdir
-  install -m755 -d $pkgdir/usr/{bin,share/licenses/$pkgname,lib/systemd/system}
-  install -D -m755 usr/bin/$pkgname* "$pkgdir/usr/bin/"
-  install -D -m644 usr/lib/systemd/system/$pkgname.service "$pkgdir/usr/lib/systemd/system/"
-  install -D -m644 usr/share/licenses/$pkgname-*/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-# vim: set ft=sh syn=sh ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
