@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 
 pkgname=simonpi-git
-pkgver=1.0.11.r8.gcb5e376
-pkgrel=2
+pkgver=1.0.12.r0.g5502ff1
+pkgrel=1
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
 arch=(any)
 url="https://github.com/M0Rf30/simonpi"
