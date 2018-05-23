@@ -2,13 +2,13 @@
 pkgname=platformfolders
 _realpkgname=PlatformFolders
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ library to look for special directories like "My Documents" and "%APPDATA%" so that you do not need to write Linux, Windows and Mac OS X specific code'
 arch=('i686' 'x86_64')
 url="https://github.com/sago007/PlatformFolders"
 license=('MIT')
-makedepends=('cmake>=3.0.0' 'make' 'coreutils')
-source=("https://github.com/sago007/PlatformFolders/archive/${pkgver}.tar.gz")
+makedepends=('cmake>=3.0.0' 'make')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sago007/PlatformFolders/archive/${pkgver}.tar.gz")
 sha512sums=('62e73fe049759584b9fa245820ced54e01c110f100ddf2de58d5f8b287ae899515eb61dcb9dd8d9411b955c75caf64f019df4516723de61358568d5d8a07c507')
 build() {
 	mkdir -p "$srcdir/$_realpkgname-$pkgver/build"
@@ -17,7 +17,7 @@ build() {
 	cmake -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
 	make
 }
-test() {
+check() {
 	cd "$srcdir/$_realpkgname-$pkgver/build"
 	cmake -DBUILD_TESTING=ON ..
 	make
