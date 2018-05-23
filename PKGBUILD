@@ -65,7 +65,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.16.11
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -104,8 +104,7 @@ source=(# mainline kernel patches
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
-        '0003-Partially-revert-swiotlb-remove-various-exports.patch')
+        '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch')
 
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
@@ -121,9 +120,8 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '286ea6a6f19148ec09d7c07bd80cd08f44a9b8f5821b0732fdbb1dc14ceb539b'
-            'ca6590d1368788dff5dd41f2a643ee1dcce4ec9e5ead5caa6e673f68c44851cb'
-            '54f1968c8d2428b8715fda1e6204cf6d918a03e68e60aadad0cb6ead7fcd2081')
+            '09b98f2d019d71083b30fb06df312eedd4e00cb79f3b77eae95c12052f5b2922'
+            '74e016f2177f9b17448c09018246891381fd97d979c5d3990678b43bf320c8d5')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -146,14 +144,6 @@ prepare() {
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
         patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-    
-    ### Fix https://bugs.archlinux.org/task/58237
-        msg "Fix #58237"
-        patch -Np1 -i ../0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
-    
-    ### NVIDIA driver compat
-        msg "NVIDIA driver compat"
-        patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
    
    ### Fix gcc8 bogus warnings
         msg "Fix gcc8 bogus warnings"
