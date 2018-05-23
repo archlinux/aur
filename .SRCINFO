@@ -8,6 +8,7 @@ pkgbase = weather-bar
 	license = BSD
 	makedepends = git
 	makedepends = go
+	makedepends = dep
 	source = weather-bar-1.1.tar.gz::https://github.com/chrissnell/weather-bar/archive/v1.1.tar.gz
 	sha256sums = ea6459732eca589afed5df912a0ce85b4d75c964c5fe8b499f65a01dc98244e4
 
