@@ -30,7 +30,7 @@ _origmodname='rp2'
 
 set -u
 pkgname='comtrol-rocketport-express-infinity'
-pkgver='2.06'
+pkgver='2.16'
 pkgrel='1'
 pkgdesc='kernel module driver for Comtrol RocketPort Express Infinity Rocketmodem serial RS-232 422 485 port'
 arch=('i686' 'x86_64')
@@ -39,14 +39,30 @@ license=('GPL')
 makedepends=('gzip' 'findutils' 'sed' 'diffutils' 'patch')
 backup=("etc/modprobe.d/${_modulename}.conf")
 install="${pkgname}-install.sh"
+_verwatch=('http://downloads.comtrol.com/rport_express/drivers/Linux/' '.*>rocketport_infinity_express-linux-\([0-9\.]\+\)\.tar\.gz.*' 'f')
 _srcdir="rocketport_infinity_express-linux-${pkgver}"
-source=("http://downloads.comtrol.com/beta/rport_express/drivers/Linux/rocketport_infinity_express-linux-${pkgver}.tar.gz")
-sha256sums=('6ffd81e40ef90eb84bbffbb4662ac08225ec7cdf7da09322e22f83721111c4bd')
+source=("http://downloads.comtrol.com/rport_express/drivers/Linux/rocketport_infinity_express-linux-${pkgver}.tar.gz")
+sha256sums=('7d46382020f0968339d9806aa3d435de09980600440cb76b031169daad595e34'
+            '2aadc9ba118bd778b2afc1a2f0f006ef5142983a64c8aa522c15d5d78ece6e53')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
 else
   makedepends+=('linux-headers')
+fi
+
+_opt_LEGACY_VER=''
+# Install both versions so dkms gets the right version for each kernel
+if [ "${_opt_DKMS}" -ne 0 ]; then
+  # 2.10 supports Kernels 2.6.33 through 4.14.x
+  # >=2.16 supports Kernels 4.15 through 4.17.x.
+  _opt_LEGACY_VER='2.10'
+  if [ "$(vercmp "${pkgver}" "${_opt_LEGACY_VER}")" -gt 0 ]; then
+    _srcalt="${_srcdir//${pkgver}/${_opt_LEGACY_VER}}"
+    source+=("http://downloads.comtrol.com/rport_express/drivers/Linux/${_srcalt}.tar.gz")
+  else
+    _opt_LEGACY_VER=''
+  fi
 fi
 
 # We can't modify .install but we can stop and force the user to fix it.
@@ -69,37 +85,49 @@ prepare() {
   set -u
   _install_check
   cd "${_srcdir}"
-  find -type 'f' -exec chmod 644 '{}' '+'
-  chmod 755 *.sh
 
-  # Fix umbrella makefile
-  sed -e 's:/lib/:/usr/lib/:g' -i 'Makefile'
+  _fn_patch_km() {
+    # Fix permissions
+    find -type 'f' -exec chmod 644 '{}' '+'
+    chmod 755 *.sh
 
-  # Branding
-  sed -e '/printk/ s@DRV_VERS@& " Arch Linux'" https://aur.archlinux.org/packages/${pkgname}/"'" @g' -i "${_origmodname}.c"
+    # Fix umbrella makefile
+    sed -e 's:/lib/:/usr/lib/:g' -i 'Makefile'
 
-  # Change module name to prevent conflict with built in module
-  if [ "${_modulename}" != "${_origmodname}" ]; then
-    sed -e "s:${_origmodname}:${_modulename}:g" -i 'Makefile'
-    sed -e "s|\"${_origmodname}:|\"${_modulename}:|g" \
-        -e "/DRV_NAME/ s:\"${_origmodname}:\"${_modulename}:g" \
-      -i "${_origmodname}.c"
-    sed -e "s:${_origmodname}:${_modulename}:g" -i 'install.sh'
-    mv "${_origmodname}.c" "${_modulename}.c"
+    # Branding in dmesg
+    sed -e '/printk/ s@DRV_VERS@& " Arch Linux'" https://aur.archlinux.org/packages/${pkgname}/"'" @g' -i "${_origmodname}.c"
+
+    # Change module name to prevent conflict with built in module
+    if [ "${_modulename}" != "${_origmodname}" ]; then
+      sed -e "s:${_origmodname}:${_modulename}:g" -i 'Makefile'
+      sed -e "s|\"${_origmodname}:|\"${_modulename}:|g" \
+          -e "/DRV_NAME/ s:\"${_origmodname}:\"${_modulename}:g" \
+        -i "${_origmodname}.c"
+      sed -e "s:${_origmodname}:${_modulename}:g" -i 'install.sh'
+      mv "${_origmodname}.c" "${_modulename}.c"
+    fi
+
+    # Make installer package compatible
+    #cp -p 'install.sh' 'install.Arch.sh' # testmode for diff comparison
+    sed -e '1a set -e' -e '1a set -u' -e '#1a set -x' -e '1a DESTDIR=' -i 'install.sh'
+    sed -e '# Fix sbin and lib' \
+        -e 's:/usr/sbin/:/usr/bin/:g' \
+        -e 's:/sbin/:/usr/bin/:g' \
+        -e 's:/lib/:/usr/lib/:g' \
+        -e '# Add DESTDIR' \
+        -e 's:/usr/:"${DESTDIR}"&:g' \
+        -e 's:/etc/:"${DESTDIR}"&:g' \
+        -e 's:""${DESTDIR}":"${DESTDIR}:g' \
+      -i 'install.sh'
+    ! test -s 'install.Arch.sh' || echo "${}"
+  }
+  _fn_patch_km "${pkgver}"
+  if [ ! -z "${_opt_LEGACY_VER}" ]; then
+    pushd "${srcdir}/${_srcalt}" > /dev/null
+    _fn_patch_km "${_opt_LEGACY_VER}"
+    popd > /dev/null
   fi
 
-  # Make installer package compatible
-  #cp -p 'install.sh' 'install.Arch.sh' # debugging
-  sed -e '1a set -e' -e '1a set -u' -e '#1a set -x' -e '1a DESTDIR=' -i 'install.sh'
-  sed -e '# Fix sbin and lib' \
-      -e 's:/usr/sbin/:/usr/bin/:g' \
-      -e 's:/sbin/:/usr/bin/:g' \
-      -e 's:/lib/:/usr/lib/:g' \
-      -e '# Add DESTDIR' \
-      -e 's:/usr/:"${DESTDIR}"&:g' \
-      -e 's:/etc/:"${DESTDIR}"&:g' \
-      -e 's:""${DESTDIR}":"${DESTDIR}:g' \
-    -i 'install.sh'
   set +u
 }
 
@@ -113,6 +141,7 @@ build() {
 package() {
   set -u
   cd "${_srcdir}"
+
   if [ "${_opt_DKMS}" -eq 0 ]; then
     # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
     local _kernelversionsmall="$(uname -r)"
@@ -130,7 +159,7 @@ package() {
     "${pkgdir}/etc/modules-load.d" \
     "${pkgdir}/etc/modprobe.d"
   ln -s '/usr/bin/true' "${pkgdir}/usr/bin/depmod"
-  make -s -j1 DESTDIR="${pkgdir}" install
+  make -s -j1 DESTDIR="${pkgdir}" REBUILD_INITRAMFS='n' install
   rm "${pkgdir}/usr/bin/depmod"
   rmdir "${pkgdir}/usr/bin"
 
@@ -147,9 +176,11 @@ EOF
   # When future versions of DKMS compress we'll stop doing this.
   find "${pkgdir}/usr/lib/modules/" -type 'f' -name '*.ko' -exec 'gzip' '-9' '{}' ';'
 
+  # DKMS
   if [ "${_opt_DKMS}" -ne 0 ]; then
-    rm -rf "${pkgdir}/usr/lib/modules/"
+    rm -r "${pkgdir}/usr/lib/modules/"
     local _dkms="${pkgdir}/usr/src/${pkgname}-${pkgver}"
+
     install -Dm644 <(cat << EOF
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
 # https://aur.archlinux.org/
@@ -167,15 +198,50 @@ CLEAN[0]="make -j1 clean"
 DEST_MODULE_LOCATION[0]="/kernel/drivers/tty"
 EOF
     ) "${_dkms}/dkms.conf"
-    install -dm755 "${_dkms}/"
-    cp -pr './' "${_dkms}/"
-    pushd "${_dkms}" > /dev/null
+_fn_dkmsinst() {
+    install -d "$1"
+    cp -p * "$1/"
+    pushd "$1" > /dev/null
     rm 'HISTORY' *.sh
     popd > /dev/null
     sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-        -e 's:shell uname -r:KERNELRELEASE:g' \
-      -i "${_dkms}/Makefile"
-    make -s -C "${_dkms}/" clean
+        -e 's:\$(shell uname -r):$(KERNELRELEASE):g' \
+      -i "$1/Makefile"
+    make -s -C "$1/" clean
+}
+    if [ -z "${_opt_LEGACY_VER}" ]; then
+      _fn_dkmsinst "${_dkms}"
+    else
+      # It is not necessary to install files to ${_dkms} for pacman -Qo
+      # The cp does not happen in /usr/src but in /var/lib/dkms where dkms cleans everything up
+      _fn_dkmsinst "${_dkms}/${pkgver}"
+
+      # Install a custom make helper that selects source based on kernel version
+      sed -e "/^MAKE/ s:make :${_dkms#${pkgdir}}/makedkms.sh"' KERNELRELEASE=$kernelver :g' -i "${_dkms}/dkms.conf"
+      install -Dm744 <(cat << EOF
+#!/usr/bin/bash
+
+set -e
+set -u
+
+kv="\$*" # \$@ is not what we want here.
+kv="\${kv##*KERNELRELEASE=}"
+kv="\${kv%% *}"
+
+if [ "\$(vercmp "\${kv}" '4.15')" -lt 0 ]; then
+  cp -p '${_opt_LEGACY_VER}'/* .
+else
+  cp -p '${pkgver}'/* .
+fi
+make "\$@"
+EOF
+      ) "${_dkms}/makedkms.sh"
+
+      # Install legacy code
+      pushd "${srcdir}/${_srcalt}" > /dev/null
+      _fn_dkmsinst "${_dkms}/${_opt_LEGACY_VER}"
+      popd > /dev/null
+    fi
   fi
   set +u
 }
