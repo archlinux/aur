@@ -1,7 +1,7 @@
 pkgbase = openzwave
 	pkgdesc = Opensource Z-Wave control
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openzwave.com
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = openzwave
 	makedepends = doxygen
 	depends = libsystemd
 	source = https://github.com/OpenZWave/open-zwave/archive/V1.5.tar.gz
+	source = usercode.patch
 	sha256sums = abfb4c7e7728e86ba374c2e0ef7de912594eb24a8c44935457352df844530238
+	sha256sums = 10d1c748d073a2bd9ce626536153e932e81f272af4bbf2f7943267b54b32bd5f
 
 pkgname = openzwave
 
