@@ -14,8 +14,8 @@ depends=('python2'
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 provides=("${_pkgname}")
-source=("https://pypi.python.org/packages/source/${_pypiname:0:1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-md5sums=('2c446451921b8d0728a60bbb5e616c7e')
+source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
+sha256sums=('989c7267223cc2e519bc92cb2b281e8d046486d6d2a31106b652f0fd3e9a6a64')
 
 package() {
   cd "${srcdir}/${_pypiname}-${pkgver}"
