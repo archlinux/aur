@@ -5,7 +5,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=201.0.0
+pkgver=202.0.0
 pkgrel=1
 pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform (gcloud), plus Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
@@ -27,13 +27,13 @@ options=('!strip' 'staticlibs')
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
 sha256sums_x86_64=(
-  '71229c3cd2290a60310c5ac9fb2e660cb1a4a0f637704b4b3af0a1f75f649e5f'
+  '3f7d92df514aa289ba372f3601c7ebb1d9859f2d19897ddcc8e9e17fcac05b12'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
 sha256sums_i686=(
-  '1fc5e31895359a4d07d08442c7847cd4d46e5f4aef9c433124bbd5d3a6d57252'
+  'f3ea6d4a1edce0d37a85d8e34a04591f5bfa9c5fc8dd5203854f858195d82d0c'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 
 prepare() {
