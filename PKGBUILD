@@ -3,14 +3,14 @@
 
 pkgname=upower-git
 _pkgname=upower
-pkgver=0.99.4.r12.g402640b
+pkgver=0.99.7.r14.g0e6cc20
 pkgrel=1
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics"
 arch=('i686' 'x86_64')
 url="http://upower.freedesktop.org"
 license=('GPL')
 depends=('systemd' 'libusb' 'dbus-glib' 'libimobiledevice' 'libgudev')
-makedepends=('intltool' 'docbook-xsl' 'gobject-introspection' 'python2' 'gtk-doc')
+makedepends=('intltool' 'docbook-xsl' 'gobject-introspection' 'python2' 'gtk-doc' 'git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 backup=('etc/UPower/UPower.conf')
