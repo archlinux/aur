@@ -1,9 +1,8 @@
 pkgbase = bctoolbox-git
 	pkgdesc = Utilities library for Belledonne Communications software
-	pkgver = 0.6.0.r87.g934484a
+	pkgver = 0.6.0.r92.g2425a22
 	pkgrel = 1
 	url = http://www.linphone.org/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
@@ -13,9 +12,7 @@ pkgbase = bctoolbox-git
 	provides = bctoolbox
 	conflicts = bctoolbox
 	source = git://github.com/BelledonneCommunications/bctoolbox.git
-	source = stringop-truncation.patch::https://patch-diff.githubusercontent.com/raw/BelledonneCommunications/bctoolbox/pull/5.patch
 	sha256sums = SKIP
-	sha256sums = 614c919c46efb7e70a3dba3991741db2816784673dc6f35d26b9828163b1af07
 
 pkgname = bctoolbox-git
 
