@@ -1,12 +1,14 @@
 pkgbase = astromatic-sextractor
 	pkgdesc = builds a catalogue of objects from an astronomical image (build from source)
 	pkgver = 2.25.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.astromatic.net/software/sextractor
 	arch = x86_64
 	license = GPL
 	depends = fftw
-	depends = atlas-lapack
+	depends = blas
+	depends = cblas
+	depends = lapack
 	conflicts = sextractor-bin
 	replaces = sextractor-bin
 	source = https://github.com/astromatic/sextractor/archive/2.25.0.tar.gz
