@@ -7,6 +7,8 @@ pkgbase = nodejs-crontab-ui-server
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	provides = nodejs-crontab-ui-server
+	conflicts = nodejs-crontab-ui-server-git
 
 pkgname = nodejs-crontab-ui-server
 

@@ -9,6 +9,8 @@ arch=("any")
 license=("MIT")
 depends=("nodejs")
 makedepends=("npm")
+provides=("nodejs-crontab-ui-server")
+conflicts=("nodejs-crontab-ui-server-git")
 #pkgver() {
 #  cd "$pkgname"
  # git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
