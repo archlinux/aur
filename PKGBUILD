@@ -4,7 +4,7 @@ pkgdesc="ROS - actionlib_msgs defines the common messages to interact with an ac
 url='http://wiki.ros.org/actionlib_msgs'
 
 pkgname='ros-kinetic-actionlib-msgs'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="common_msgs-release-release-kinetic-actionlib_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/kinetic/actionlib_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1a44ecf56d90426f24392c37baa3a57bf3e15c1be366165551827f93715d66bc')
+sha256sums=('a1747fa89c5a9261077a53988e18991dd53c21f1625569097e2b31d8039ab4f3')
 
 build() {
   # Use ROS environment variables
