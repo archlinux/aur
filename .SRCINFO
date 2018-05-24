@@ -1,15 +1,17 @@
 pkgbase = graphlab-create-license
 	pkgdesc = License installer for Graphlab Create
-	pkgver = 1.9
+	pkgver = 2.1
 	pkgrel = 1
-	url = https://dato.com/products/create/
+	url = https://turi.com
 	arch = x86_64
 	license = custom
 	makedepends = python2-setuptools
 	depends = python2
-	depends = graphlab-create=1.9
+	depends = graphlab-create=2.1
 	provides = graphlab-create-license
 	options = !emptydirs
+	source = https://get.graphlab.com/GraphLab-Create/2.1///GraphLab-Create-License.tar.gz
+	sha256sums = SKIP
 
 pkgname = graphlab-create-license
 

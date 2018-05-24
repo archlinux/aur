@@ -1,48 +1,34 @@
 # Maintainer: Mohamar Rios <mohamar.rios@gmail.com>
 
+# Attention: These two values must be set manually.
+registered_email=""
+product_key=""
+
+
 pkgname=graphlab-create-license
-pkgver=1.9
+pkgver=2.1
 pkgrel=1
 pkgdesc="License installer for Graphlab Create"
 arch=('x86_64')
-url="https://dato.com/products/create/"
+url="https://turi.com"
 license=('custom')
 depends=('python2'
-         'graphlab-create=1.9')
+         'graphlab-create=2.1')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 provides=("${pkgname}")
-source=()
-sha256sums=()
-
-_glSrcDir=""
-_glSrcName="GraphLab-Create-License.tar.gz"
-_glSha256="3f7d45e6dce7a5a668e4e95a8eb25406b6fbe73da2aa48b91b03ab7c6c985bcc"
+source=("https://get.graphlab.com/GraphLab-Create/2.1/${registered_email}/${product_key}/GraphLab-Create-License.tar.gz")
+sha256sums=('SKIP')
 
 prepare() {
-  echo "###################################################################"
-  echo "# Graphlab Create is only available to licensed users.            #"
-  echo "# Register on the website and download the Graphlab Create        #"
-  echo "# license tarball at:                                             #"
-  echo "# https://get.graphlab.com/GraphLab-Create/1.9/                   #"
-  echo "#                      /email/key/GraphLab-Create-License.tar.gz  #"
-  echo "###################################################################"
+  echo "#########################################################"
+	echo "#  Graphlab Create is only available to licensed users  #"
+  echo "#      Make sure to update the PKGBUILD with your       #"
+  echo "#             Registered email address                  #"
+  echo "#             Graphlab Create product key               #"
+  echo "#      in order for the license installer to work       #"
+  echo "#########################################################"
   echo
-  echo -n "Enter the directory containing the tarball ${_glSrcName}: "
-  read _glSrcDir
-
-  # Check for file existence
-  if [[ -f "${_glSrcDir}/${_glSrcName}" ]]; then
-    # Check for file validity
-    sha256sum -c <(printf "${_glSha256}  ${_glSrcDir}/${_glSrcName}\n") || return 1
-
-    # Untar
-    mkdir -p "${srcdir}/${pkgname}-${pkgver}"
-    tar -xzvf "${_glSrcDir}/${_glSrcName}" --strip=1 -C "${srcdir}/${pkgname}-${pkgver}"
-  else
-    echo "Error: ${_glSrcName} not found in ${_glSrcDir}"
-    return 1
-  fi
 }
 
 package() {
