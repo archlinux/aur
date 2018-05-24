@@ -1,4 +1,4 @@
-pkgbase = nodejs-crontab-ui-server
+pkgbase = nodejs-crontab-ui-server-git
 	pkgdesc = Easy management of crontab file - server component
 	pkgver = 0.3.4
 	pkgrel = 1
@@ -7,6 +7,8 @@ pkgbase = nodejs-crontab-ui-server
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	provides = nodejs-crontab-ui-server
+	conflicts = nodejs-crontab-ui-server
 
-pkgname = nodejs-crontab-ui-server
+pkgname = nodejs-crontab-ui-server-git
 
