@@ -10,7 +10,8 @@ arch=('i686' 'x86_64')
 license=('custom')
 depends=('imlib2')
 #source=(https://celti.name/arch/$pkgname-$pkgver.tar.gz)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ctab/fvwm/blob/master/${pkgname}-${pkgver}.tar.gz?raw=true")
+#source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ctab/fvwm/blob/master/${pkgname}-${pkgver}.tar.gz?raw=true")
+source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('6a22103b84f6c46f8b18f4ce1222cfc8')
 
 build() {
