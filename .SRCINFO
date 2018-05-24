@@ -1,6 +1,6 @@
 pkgbase = jdtls
 	pkgdesc = Eclipse Java language server
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/eclipse/eclipse.jdt.ls
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = jdtls
 	makedepends = java-environment
 	makedepends = maven
 	depends = java-runtime
-	source = jdtls::git+https://github.com/eclipse/eclipse.jdt.ls.git#tag=v0.18.0
+	source = jdtls::git+https://github.com/eclipse/eclipse.jdt.ls.git#tag=v0.19.0
 	source = launcher.sh
 	md5sums = SKIP
 	md5sums = d92f22ae00c112d65ef41fa5a578b55a
