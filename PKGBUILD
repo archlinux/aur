@@ -4,7 +4,7 @@ pkgdesc="ROS - Xacro (XML Macros) Xacro is an XML macro language."
 url='http://ros.org/wiki/xacro'
 
 pkgname='ros-kinetic-xacro'
-pkgver='1.11.2'
+pkgver='1.11.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="xacro-release-release-kinetic-xacro-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/xacro-release/archive/release/kinetic/xacro/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1bfcd55a8088d1bd9c43059cb6fe21ec6ac75e7f8651d3e77e53e7da5a48f524')
+sha256sums=('c89a5b901d3c6aaff9bb964d2f634e789e6c992229e7f4985ce68e0a0ba7e265')
 
 build() {
   # Use ROS environment variables
