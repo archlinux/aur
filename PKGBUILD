@@ -8,14 +8,14 @@
 
 pkgname=thunderbird-gtk2
 _pkgname=thunderbird
-pkgver=52.7.0
-pkgrel=2
+pkgver=52.8.0
+pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/thunderbird/"
-depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
-         nss hunspell sqlite ttf-font icu libvpx)
+depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
+         nss hunspell sqlite ttf-font libvpx icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm)
 optdepends=('libcanberra: sound support')
@@ -26,7 +26,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
         no-crmf.diff rust-i686.patch fix-wifi-scanner.diff
         $_pkgname.desktop thunderbird-install-dir.patch)
-sha256sums=('82462890d393ed78c03226924a6166596b7b6d1562b5071e713a7558cd292ea3'
+sha256sums=('35b9a687997d92f36107090c1217941e5d637760b0efa7d13819cde36894eb59'
             '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
             'a7317caba56e89932bd9e3b9352d94701dd9a419685057f238b1ded8dc0adcd7'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
