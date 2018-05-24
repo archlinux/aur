@@ -2,7 +2,7 @@
 
 pkgname=mkmod-git
 pkgrel=1
-pkgver=1.0.r0.g6b8bde2
+pkgver=1.3.r0.g50b8665
 pkgdesc="A shell script to clone & build the Minecraft mod that uses the Gradle build system."
 arch=('any')
 url='https://github.com/PearXTeam/mkmod'
