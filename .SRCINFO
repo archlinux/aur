@@ -1,0 +1,35 @@
+pkgbase = compute-runtime
+	pkgdesc = Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond. Weekly build version.
+	pkgver = 18.20.10830
+	pkgrel = 1
+	url = https://01.org/compute-runtime
+	arch = x86_64
+	license = MIT
+	makedepends = gcc54
+	makedepends = llvm
+	makedepends = clang
+	makedepends = python2
+	makedepends = opencl-headers
+	depends = ocl-icd
+	optdepends = libva: for cl_intel_va_api_media_sharing
+	optdepends = libdrm: for cl_intel_va_api_media_sharing
+	conflicts = compute-runtime-git
+	source = neo::git+https://github.com/intel/compute-runtime#tag=18.20.10830
+	source = clang_source::git+https://github.com/llvm-mirror/clang#branch=release_40
+	source = common_clang::git+https://github.com/intel/opencl-clang#commit=fa75886
+	source = llvm_patches::git+https://github.com/intel/llvm-patches#commit=0ba9deb
+	source = llvm_source::git+https://github.com/llvm-mirror/llvm#branch=release_40
+	source = gmmlib::git+https://github.com/intel/gmmlib#commit=a501534
+	source = igc::git+https://github.com/intel/intel-graphics-compiler#commit=858e183
+	source = khronos::git+https://github.com/KhronosGroup/OpenCL-Headers#commit=de26592
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = compute-runtime
+
