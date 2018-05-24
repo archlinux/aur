@@ -107,7 +107,7 @@ source 'PKGBUILD.local'
 set -u
 pkgname='dgrp'
 pkgver='1.9.38'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
