@@ -27,15 +27,24 @@ backup=()
 options=()
 install=
 changelog=
-source=(ftp://ftp.cmbi.ru.nl/pub/molgraph/molden/$pkgname$pkgver.tar.gz)
+source=(
+    "ftp://ftp.cmbi.ru.nl/pub/molgraph/molden/$pkgname$pkgver.tar.gz"
+    "rdchx.patch"
+)
 noextract=()
-md5sums=('1b33fc2fda6429f1945ffa3c291ccd97')
+md5sums=('1b33fc2fda6429f1945ffa3c291ccd97'
+         '902d3fc3ebdb928fac38deb2ba7d5f94')
 
 build() {
   cd "$pkgname$pkgver"
   # Patch Makefile for surf utility to reflect the 
   # replacement of missing makedepend 
   sed -i 's/@.*makedepend.*$/@ \$(CC) \$(INCLUDE) -M \$(SRCS) \> makedep/' surf/Makefile
+
+  # Patch rdchx.f for iconn dimension,
+  # thanks Panadestein for pointing out and
+  # arjun_karol for the solution 
+  patch -p0 -i rdchx.patch
   make
 }
 

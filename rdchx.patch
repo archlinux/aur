@@ -1,0 +1,11 @@
+--- rdchx.f	2017-09-20 16:39:46.000000000 +0300
++++ rdchx.f.new	2018-05-24 10:38:11.820760091 +0300
+@@ -6016,7 +6016,7 @@
+       subroutine flth(iat,icnn,ibnds,iconn)
+       implicit double precision (a-h,p-z),integer (i-n),logical (o)
+       parameter (mxcon=10)
+-      dimension iconn(mxcon+1,*),icnn(mxcon+1)
++      dimension iconn(mxcon,*),icnn(mxcon)
+ 
+       ibnds = 0
+       do i=1,iconn(1,iat)
