@@ -4,21 +4,26 @@
 
 _gemname=gtk3
 pkgname=ruby-$_gemname
-pkgver=3.2.1
+pkgver=3.2.6
 pkgrel=1
 pkgdesc='Ruby/GTK3 is a Ruby binding of GTK+-3.x.'
 arch=('x86_64')
 url='http://ruby-gnome2.sourceforge.jp/'
 license=(LGPL2.1)
 depends=(ruby-atk ruby-gdk3 ruby-gdk_pixbuf2 ruby-gio2 ruby-glib2 ruby-pango gtk3)
-makedepends=(gobject-introspection)
+makedepends=(gobject-introspection rake)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+source=(git+https://github.com/ruby-gnome2/ruby-gnome2)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('dfd27d02cdb5630a0abd211e324be54c48e4b5b0')
+sha256sums=('SKIP')
 
+build(){
+  cd ruby-gnome2/gtk3
+  rake gem
+}
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  cd ruby-gnome2/gtk3/pkg
+  gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
