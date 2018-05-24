@@ -1,0 +1,10 @@
+# To setup AppDaemon, take a look at the documentation:
+# https://appdaemon.readthedocs.io/en/latest/INSTALL.html#configuration
+
+appdaemon:
+  threads: 10
+  plugins:
+    HASS:
+      type: hass
+      ha_url: http://localhost:8123
+      ha_key: password

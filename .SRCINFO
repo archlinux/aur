@@ -1,0 +1,31 @@
+pkgbase = appdaemon
+	pkgdesc = Python execution environment for Home Assistant automation apps
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://appdaemon.readthedocs.io/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-daemonize
+	depends = python-astral
+	depends = python-requests
+	depends = python-sseclient
+	depends = python-websocket-client
+	depends = python-aiohttp-jinja
+	depends = python-yaml
+	depends = python-voluptuous
+	depends = python-feedparser
+	depends = python-iso8601
+	depends = python-bcrypt
+	backup = etc/appdaemon/appdaemon.yaml
+	source = https://files.pythonhosted.org/packages/source/a/appdaemon/appdaemon-3.0.1.tar.gz
+	source = appdaemon.yaml
+	source = appdaemon.service
+	source = appdaemon.sysusers
+	sha512sums = 54eed1f88afdfe8cc595c7a40efe3208eb1b6638f53a56f4bfa3cb371e837a17c2a6e701305b420880ae1202f9297d658f30fa232b425ca5d26912a3a898392b
+	sha512sums = 538a9da9a2c296694696fe69029b29ddd7bc21bcc071cbb54052eb82811e63849d8103951f23fcc2b623d628088f2bd0fbe469577fe9943598315c804654c9b8
+	sha512sums = c1de8558962a1e92b44db6a6a95731094c4e1890c3c1a1c1436eda72d68997224f70c6dc9f8d1b86e1b131c0dc66a0f4107fdca0f75777220e14d57aeea0a222
+	sha512sums = d46356da6a00398c77edf1143dbb2f6061d896986868226525afa0bd8c873f3cd699fa6c3fff4b120b04b7fb2761c55873bacccfff5eb3defab0d1b7f79cb878
+
+pkgname = appdaemon
+

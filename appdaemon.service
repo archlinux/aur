@@ -1,0 +1,11 @@
+[Unit]
+Description=AppDaemon
+After=home-assistant.service
+
+[Service]
+Type=simple
+User=appdaemon
+ExecStart=/usr/bin/appdaemon -c /etc/appdaemon
+
+[Install]
+WantedBy=multi-user.target
