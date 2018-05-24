@@ -1,10 +1,9 @@
 pkgbase = qtwebflix-git
 	pkgdesc = Standalone HD Netflix Browser using qt5-webengine (also supports Amazon prime, HBO Go, Hulu, Crunchy Roll)
-	pkgver = r54.a335ac3
+	pkgver = r70.c46f537
 	pkgrel = 1
 	url = https://github.com/gort818/qtwebflix
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = git
 	depends = xdg-utils
@@ -12,8 +11,10 @@ pkgbase = qtwebflix-git
 	optdepends = pepper-flash: Needed for some streaming services
 	source = git+https://github.com/gort818/qtwebflix.git
 	source = qtwebflix.desktop
+	source = cadmium.patch
 	sha256sums = SKIP
 	sha256sums = 571b202d64ba9a0e1144e6abdabc7288a843985624da01cc03ff43020bee521b
+	sha256sums = 993ad1d6d6f370656beec246a0d41dad0bb2ceda71c45015404ab1789518b09b
 
 pkgname = qtwebflix-git
 
