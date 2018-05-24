@@ -9,7 +9,7 @@ _pkgname=OctoPrint
 pkgname=octoprint
 # c55c568bbddf5112facf6aa3a173d500936b6cbf
 pkgver=1.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(x86_64 armv7h)
 url="http://octoprint.org/"
@@ -19,15 +19,15 @@ optdepends=('ffmpeg: timelapse support'
 			'motion: motion detector which grabs images from video4linux devices and/or from webcams'
 			'mjpg-streamer: stream images from webcam'
 			)
-provides=('octoprint')
+provides=(octoprint)
 conflicts=('octoprint-venv')
-install="octoprint.install"
+install=octoprint.install
+backup=(etc/conf.d/octoprint)
 source=($pkgname-$pkgver.tar.gz::https://github.com/foosel/$_pkgname/archive/$pkgver.tar.gz
 		octoprint.sysusers
 		octoprint.service
 		octoprint-serve
 		octoprint.conf
-		config.yaml
 		)
 
 package() {
@@ -44,7 +44,6 @@ package() {
 	install  -m755 octoprint-serve $pkgdir/usr/lib/$pkgname/bin
 	install -Dm644 octoprint.conf $pkgdir/etc/conf.d/octoprint
 	install -dm750 $pkgdir/var/lib/$pkgname
-	install -Dm640 config.yaml $pkgdir/var/lib/$pkgname/.octoprint/config.yaml
 }
 
 sha256sums=('ca1bc5352ef20778722a6b2aedef4c8dbe28d0d82c2526f84f3db07245a01aad'
@@ -52,5 +51,5 @@ sha256sums=('ca1bc5352ef20778722a6b2aedef4c8dbe28d0d82c2526f84f3db07245a01aad'
 	'2c0643310be2159feea91eae819d5ab593e6f20b8b6ee6a98d8bf8254125acfb'
 	'08e6ff10fb7f61c40e5770b67e8f7201d02d82d3bd46c5441a7f2b0435fbe9c2'
 	'02be5d5a18febe215809882d96f068092c4474abb4e76d82e4450b860a4e9ef5'
-	'eb2994e21a97964d87f184d9db2399b75be96cc3e26969444ca865a94ff6de6a')
+	)
 

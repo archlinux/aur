@@ -1,7 +1,7 @@
 pkgbase = octoprint
 	pkgdesc = Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)
 	pkgver = 1.3.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://octoprint.org/
 	install = octoprint.install
 	arch = x86_64
@@ -13,18 +13,17 @@ pkgbase = octoprint
 	optdepends = mjpg-streamer: stream images from webcam
 	provides = octoprint
 	conflicts = octoprint-venv
+	backup = etc/conf.d/octoprint
 	source = octoprint-1.3.8.tar.gz::https://github.com/foosel/OctoPrint/archive/1.3.8.tar.gz
 	source = octoprint.sysusers
 	source = octoprint.service
 	source = octoprint-serve
 	source = octoprint.conf
-	source = config.yaml
 	sha256sums = ca1bc5352ef20778722a6b2aedef4c8dbe28d0d82c2526f84f3db07245a01aad
 	sha256sums = bd9b7f989aefb02da1ac414f306861f21f084d886f0283eea11516482b407d65
 	sha256sums = 2c0643310be2159feea91eae819d5ab593e6f20b8b6ee6a98d8bf8254125acfb
 	sha256sums = 08e6ff10fb7f61c40e5770b67e8f7201d02d82d3bd46c5441a7f2b0435fbe9c2
 	sha256sums = 02be5d5a18febe215809882d96f068092c4474abb4e76d82e4450b860a4e9ef5
-	sha256sums = eb2994e21a97964d87f184d9db2399b75be96cc3e26969444ca865a94ff6de6a
 
 pkgname = octoprint
 
