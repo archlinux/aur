@@ -1,11 +1,11 @@
 # Maintainer: Mohamar Rios <mohamar.rios@gmail.com>
 
 pkgname=graphlab-create
-pkgver=1.9
+pkgver=2.1
 pkgrel=1
 pkgdesc="Graphlab Create is an extensible machine learning framework."
 arch=('x86_64')
-url="https://dato.com/products/create/"
+url="https://turi.com"
 license=('custom')
 depends=('python2'
          'ipython2-notebook'
@@ -23,43 +23,25 @@ depends=('python2'
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 provides=("${pkgname}")
-source=()
-sha256sums=()
-
-_glSrcDir=""
-_glSrcName="graphlab-create-1.9.gpu.tar.gz"
-_glSha256="f4aebba290853c163b1a59f3c070d093aa4cda9e6b299879245f995e78db2984"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('347d8649b8f368ccca258ac2e14687a3eb926abbe348eaa9180ca93594dc0eb1')
 
 prepare() {
-  echo "###################################################################"
-  echo "# Graphlab Create is only available to licensed users.            #"
-  echo "# Register on the website and download the Graphlab Create        #"
-  echo "# license tarball at:                                             #"
-  echo "# http://static.dato.com/files                                    #"
-  echo "#            /graphlab-create-gpu/graphlab-create-1.9.gpu.tar.gz  #"
-  echo "###################################################################"
+  echo "#########################################################"
+	echo "#  Graphlab Create is only available to licensed users  #"
+  echo "#       Students, researchers, and educators may        #"
+  echo "#          obtain a free academic license for           #"
+  echo "#         non-commercial use from the website           #"
+	echo "#      Licenses may be installed with the package:      #"
+  echo "#                graphlab-create-license                #"
+  echo "#########################################################"
   echo
-  echo -n "Enter the directory containing the tarball ${_glSrcName}: "
-  read _glSrcDir
-
-  # Check for file existence
-  if [[ -f "${_glSrcDir}/${_glSrcName}" ]]; then
-    # Check for file validity
-    sha256sum -c <(printf "${_glSha256}  ${_glSrcDir}/${_glSrcName}\n") || return 1
-
-    # Untar
-    mkdir -p "${srcdir}/${pkgname}-${pkgver}"
-    tar -xzvf "${_glSrcDir}/${_glSrcName}" --strip=1 -C "${srcdir}/${pkgname}-${pkgver}"
-  else
-    echo "Error: ${_glSrcName} not found in ${_glSrcDir}"
-    return 1
-  fi
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
-  
+
   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
