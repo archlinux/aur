@@ -2,7 +2,7 @@
 
 _gitname="webvirtcloud"
 pkgname=("${_gitname}-git")
-pkgver=20170310.277.d94ca38
+pkgver=20180516.318.564bb45
 pkgrel=1
 pkgdesc="WebVirtCloud is virtualization web interface for admins and users"
 arch=("x86_64")
@@ -34,6 +34,9 @@ package() {
 	rm -rf "${pkgdir}/usr/lib/webvirtcloud/.git"
 	
 	cd "${pkgdir}/usr/lib/webvirtcloud"
+
+	cp webvirtcloud/settings.py.template webvirtcloud/settings.py
+	sed -i -e "s/SECRET_KEY = ''/SECRET_KEY = '12345678901234567890123456789012345678901234567890'/g" webvirtcloud/settings.py
 
 	patch -p1 < "${srcdir}/webvirtcloud-staticroot.patch"
 
