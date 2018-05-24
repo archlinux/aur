@@ -1,12 +1,13 @@
 pkgbase = python-pybullet-git
 	pkgdesc = Python Interface for the Bullet Physics SDK specialized for Robotics Simulation and Reinforcement Learning
-	pkgver = r6412.282154f37
+	pkgver = r6464.abeae7e1e
 	pkgrel = 1
 	url = https://github.com/bulletphysics/bullet3
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = python-setuptools
+	depends = python-numpy
 	provides = python-pybullet
 	source = git+https://github.com/bulletphysics/bullet3.git
 	sha256sums = SKIP
