@@ -2,7 +2,7 @@
 
 pkgname=orocos-kdl-python2
 _pkgname=orocos_kinematics_dynamics
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="The Kinematics and Dynamics Library is a framework for modelling and computation of kinematic chains (Python2 binding)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('orocos-kdl' 'python2')
 makedepends=('cmake' 'python2-sip')
 source=(https://github.com/orocos/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('09ff63f74f1eac3ee8b1090364e0d95b4ae96c9d4435ca34adacb3ded7385f948ddca9be2c1c2c2214c9342b17bbffb7da89ba9b7cd402e7fd4f2c6dbd06a930')
+sha512sums=('7156465e2aff02f472933617512069355836a03a02d4587cfe03c1b1d667a9762a4e3ed6e055b2a44f1fce1b6746179203c7204389626a7b458dcab1b28930d8')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}/python_orocos_kdl"
