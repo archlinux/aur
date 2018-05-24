@@ -8,7 +8,7 @@ pkgbase = python2-modargs
 	makedepends = python2-setuptools
 	depends = python2
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/m/modargs/modargs-1.7.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/python-modargs/python-modargs-1.7.tar.gz
 	source = LICENSE::https://gitorious.org/python-modargs/python-modargs.git/?p=python-modargs:python-modargs.git;a=blob_plain;f=LICENSE;h=f59ac9a1152892dc4aaba5a0eb55a64023fd6bc3;hb=HEAD
 	sha256sums = 90b4b18fa5898f524740add9f0a1fde6fed7745aa9dffdaa5d7b439314e9dc3a
 	sha256sums = e290d9ba8d6863d839d71b62412f79bd45714ba6986d641957ac955f23a0d57f
