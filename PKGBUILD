@@ -2,8 +2,8 @@
 # Contributor: Sebastien Chassot (sinux) <seba.ptl@sinux.net>
 
 pkgname=pothos
-pkgver=0.6.0
-pkgrel=4
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="The Pothos data-flow framework"
 arch=('i686' 'x86_64')
 url="https://github.com/pothosware/PothosCore/wiki"
