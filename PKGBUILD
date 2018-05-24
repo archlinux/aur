@@ -11,6 +11,19 @@
 # Digi bug: mbrowse reports a few parsing errors in MIB
 # Digi bug: make compatible with OpenSSL 1.1
 # Digi bug: transfer hangs if unit is repowered during live connection. Tested in 4.11, 4.9, and 4.4
+# Digi bug: tty* takes up to an hour to reappear after unit is powered up after a long time being off
+#  Nov 29 06:16:50 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
+#  Nov 29 07:21:21 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
+#  Nov 29 08:25:51 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
+#  Nov 29 09:30:22 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
+#  Nov 29 10:34:53 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
+#  Nov 29 11:39:24 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
+#  Nov 29 12:43:54 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
+#  Nov 29 13:48:25 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
+#  Nov 29 14:52:56 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
+#  Nov 29 15:57:26 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
+# Arch Kernel 4.16: do_IRQ: 7.36 No irq handler for vector
+#  does not occur in Manjaro Kernel 4.16
 
 # Digi Realport driver for Arch Linux. See Digi release notes for supported products.
 
@@ -162,6 +175,8 @@ source=(
   'ftp://ftp1.digi.com/support/utilities/AddpClient.zip'
   'dgrp-patch-signal_pending-kernel-4-11.patch'
   "${_mibs[@]/#/${_mibsrc}}"
+  '0000-Kernel-4-13-CLASS_ATTR_STRING.patch' # https://www.digi.com/support/forum/67157/realport-compile-error-with-fedora-27-kernel-4-14-14 https://www.digi.com/support/forum/65817/class_attr_driver_version-error-compiling-in-kernel-4-13
+  '0001-Kernel-4-15-timers.patch' # https://forum.blackmagicdesign.com/viewtopic.php?uid=16&f=3&t=68382&start=0
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
@@ -197,7 +212,9 @@ sha256sums=('e474518da5b3feddd1f4dd0083ac8125e34ba07da9884cbd3ebd1955006891d7'
             '731e05fc551367faa6ad5dc317eedf305388ab12db196c0a1361a3d01bd35279'
             'c471cafa43503a40d43b42acd8bc6ef49db29e55a74e0494c85f729ea45fe243'
             '5cac7ce2e6f043127f314b93694af021ae7820ffb5bf3de343da7a240d05e9c8'
-            '8654496d83c083e457e8bb9bae2b1e71804d156a38c284d89872d0125eba947d')
+            '8654496d83c083e457e8bb9bae2b1e71804d156a38c284d89872d0125eba947d'
+            '61500188b388fd1eb52ec970150cf098d855b8ba09a8efb8192803eebefaba03'
+            '06b0eb6f6f7108d869e869edb5f09669bc90575efcd2f151311f024a834c4001')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -332,6 +349,12 @@ prepare() {
   sed -e 's@ please visit [^"]\+"@ please visit https://aur.archlinux.org/packages/dgrp/"@g' \
       -e '/^dgrp_init_module/,/^$/ s@version: %s@& Arch Linux@g' \
     -i driver/[0-9]*/dgrp_driver.c
+
+  #diff -pNaru5 dgrp-1.9{.orig,} > '../0000-Kernel-4-13-CLASS_ATTR_STRING.patch'
+  patch -Nbup1 < "${srcdir}/0000-Kernel-4-13-CLASS_ATTR_STRING.patch"
+
+  #diff -pNaru5 dgrp-1.9{.orig,} > '../0001-Kernel-4-15-timers.patch'
+  patch -Nbup1 < "${srcdir}/0001-Kernel-4-15-timers.patch"
 
   set +u
 }
