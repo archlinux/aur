@@ -1,6 +1,6 @@
 pkgbase = freerdp-git
 	pkgdesc = Free RDP client - git checkout
-	pkgver = 2.0.0.rc2.r148.g9460f4292
+	pkgver = 2.0.0.rc2.r150.ge90184cc5
 	pkgrel = 1
 	url = http://www.freerdp.com/
 	arch = i686
