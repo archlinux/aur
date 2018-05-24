@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo at gmail dot com>
 
 pkgname=geary-git
-pkgver=r3535.d619d99d
+pkgver=r3568.4ac7c10f
 pkgrel=1
 pkgdesc="A lightweight email client for the GNOME desktop"
 arch=(i686 x86_64)
@@ -20,7 +20,7 @@ conflicts=('geary')
 source=('git://git.gnome.org/geary'
         'geary-enchant2.patch')
 sha256sums=('SKIP'
-            '062d9911e8790f59387e65b62b4a49d0d1769e1091ec2e2816b9c8302f6fb95d')
+            '8bf6c0293a0e09b018c31da12f4d634467b74605054eec3e2454cdc0983ddc3f')
 
 pkgver() {
 	cd "$srcdir/geary"

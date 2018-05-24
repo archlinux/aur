@@ -26,12 +26,12 @@ diff --git a/meson.build b/meson.build
 index 5874a98c..818d55f6 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -61,7 +61,7 @@ webkit2gtk_dep = dependency('webkit2gtk-4.0', version: '>=' + target_webkit)
- webkit2gtk_web_extension_dep = dependency('webkit2gtk-web-extension-4.0', version: '>=' + target_webkit)
- javascriptcoregtk_lib = cc.find_library('javascriptcoregtk-4.0', version: '>=' + target_webkit)
- javascriptcoregtk_vapi = valac.find_library('javascriptcore-4.0', dirs: vapi_dir)
+@@ -51,7 +51,7 @@
+ webkit2gtk = dependency('webkit2gtk-4.0', version: '>=' + target_webkit)
+ 
+ # Secondary deps - keep sorted alphabetically
 -enchant = dependency('enchant', version: '>= 1.6')
 +enchant = dependency('enchant-2', version: '>= 1.6')
- 
- # System dependencies ensures appropriate versions, but the declared
- # depencency is what we actually build against.
+ gcr = dependency('gcr-3', version: '>= 3.10.1')
+ gdk = dependency('gdk-3.0', version: '>=' + target_gtk)
+ gee = dependency('gee-0.8', version: '>= 0.8.5')
