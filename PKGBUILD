@@ -1,26 +1,26 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
-pkgname=xpra-winswitch-svn
-pkgver=17723
-pkgrel=2
-pkgdesc="Modified version of xpra by Winswitch"
-arch=('i686' 'x86_64')
-url="http://xpra.org/"
+pkgname=xpra-svn
+pkgver=r19417
+pkgrel=1
+pkgdesc="multi-platform screen and application forwarding system screen for X11"
+arch=('x86_64')
+url='https://www.xpra.org'
 license=('GPL2')
 depends=('python2' 'pygtk' 'libxtst' 'python2-pillow' 'python2-lz4'
-         'ffmpeg' 'libvpx' 'xf86-video-dummy' 'libwebp' 'libxkbfile'
-         'python2-numpy' 'rencode' 'python2-opengl'
-         'python2-gtkglext' 'python-lz4' 'python-opengl' 'python2-opengl')
+         'ffmpeg' 'libvpx' 'xf86-video-dummy' 'libxkbfile'
+         'python2-numpy' 'python2-rencode' 'python2-opengl'
+         'python2-gtkglext' 'python-lz4' 'python-opengl')
 optdepends=('x264: Codec' 'python2-dbus: dbus features'
             'python2-pycups: Printing support' 'python2-netifaces: mdns'
             'python2-cryptography: Cryptography'
             'python-cryptography: Cryptography'
+            'gst-python2: Sound Forwarding'
             'pam-selinux: Proxy Server Support')
 conflicts=('xpra')
 provides=('xpra')
 makedepends=('subversion' 'python2-setuptools' 'cython2' 'uglify-js')
 backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
-#        'etc/xpra/cuda.conf' 'etc/xpra/nvenc.keys'
         'etc/xpra/conf.d/05_features.conf'
         'etc/xpra/conf.d/10_network.conf'
         'etc/xpra/conf.d/12_ssl.conf'
@@ -36,30 +36,23 @@ backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
         'etc/xpra/conf.d/60_server.conf'
         'etc/xpra/conf.d/65_proxy.conf')
 source=("xpra::svn+https://www.xpra.org/svn/Xpra/trunk/src")
+md5sums=('SKIP')
 
-        md5sums=('SKIP')
-
-_svnmod=xpra
 pkgver() {
-      LC_ALL=C svn info "$SRCDEST/$_svnmod" | awk '/Last Changed Rev/ {print $4}'
+	cd "$srcdir/${pkgname%-svn}"
+  local ver="$(svnversion)"
+  printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 build() {
-  rm -rf "$srcdir/$_svnmod-build"
-  cp -r "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
-  cd "$srcdir/$_svnmod-build"
+	cd "$srcdir/${pkgname%-svn}"
 
-  #
-  # BUILD HERE
-  #
-  #python2 setup.py build
   export pkgdir
-  #python2 setup.py build
-  CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build --without-enc_x265
+  python2 setup.py build --without-enc_x265
 }
 
 package() {
-  cd "$srcdir/$_svnmod-build"
+	cd "$srcdir/${pkgname%-svn}-build"
   python2 setup.py install --root="${pkgdir}" --without-enc_x265
   mv "${pkgdir}"/lib/* "${pkgdir}"/usr/lib/
   rmdir "${pkgdir}/lib"
