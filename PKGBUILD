@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS driver for a generic Linux joystick."
 url='http://www.ros.org/wiki/joy'
 
 pkgname='ros-kinetic-joy'
-pkgver='1.10.1'
+pkgver='1.11.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,13 +16,13 @@ ros_makedepends=(ros-kinetic-diagnostic-updater
   ros-kinetic-sensor-msgs)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  linuxconsole)
+  joystick)
 
 ros_depends=(ros-kinetic-diagnostic-updater
   ros-kinetic-roscpp
   ros-kinetic-sensor-msgs)
 depends=(${ros_depends[@]}
-  linuxconsole)
+  joystick)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/joy/${pkgver}-${_pkgver_patch}
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="joystick_drivers-release-release-kinetic-joy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/joystick_drivers-release/archive/release/kinetic/joy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c87a083e4e1fe6f219fc4d90ec47baf29fcd471f9906a502276b4831585b38f4')
+sha256sums=('0fdcf65cb70846df59ff56abd0f214ad25df9153140dae86eadb72208000b95e')
 
 build() {
   # Use ROS environment variables
