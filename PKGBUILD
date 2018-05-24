@@ -7,7 +7,7 @@
 
 pkgname=nix
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://nixos.org/nix"
