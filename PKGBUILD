@@ -4,7 +4,7 @@ pkgdesc="ROS - stereo_msgs contains messages specific to stereo processing, such
 url='http://wiki.ros.org/stereo_msgs'
 
 pkgname='ros-kinetic-stereo-msgs'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="common_msgs-release-release-kinetic-stereo_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/kinetic/stereo_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('516c0276790ed7a8cd7c2c5ea8a4059072a40ba9cc39772533dad7f32ef29547')
+sha256sums=('0614ee15e14d71761ab494c41b0efcf98a4ca82f18e9e129ca06ae59a4ee8d01')
 
 build() {
   # Use ROS environment variables
