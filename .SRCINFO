@@ -9,6 +9,7 @@ pkgbase = python-estool-git
 	depends = python-gym-git
 	depends = python-pybullet
 	depends = python-pycma
+	depends = python-mpi4py
 	optdepends = roboschool: roboschool gym environments
 	provides = python-estool
 	source = git+https://github.com/hardmaru/estool.git
