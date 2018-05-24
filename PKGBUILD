@@ -1,6 +1,6 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
 pkgname=sfs-select
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A small tool to manage Steam Family Sharing"
 arch=('any')
@@ -13,7 +13,7 @@ source=("https://www.unix-ag.uni-kl.de/~t_schmid/sfs-select/sfs-select-$pkgver-f
         "setup.py"
         "01-packageify.patch"
         "02-config.patch")
-md5sums=('cd2a983dd578ccd8a5e2c13ed779a57a'
+md5sums=('3df3128e65aff2f8da5d25e4361715ea'
          '5f7dd6d5a52294d4aa8baadaefe4f4fe'
          'd494a9688751ffb2cc3a5ad2591c133d'
          'db7095cfd5a8b65c2965ed2bfeaea27e')
