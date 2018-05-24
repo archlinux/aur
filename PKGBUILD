@@ -8,6 +8,7 @@ url="https://flipflop97.github.io/Mato/"
 license=('Creative Commons Attribution-ShareAlike 4.0 International Public License')
 makedepends=('git')
 provides=('mato-icons')
+conflicts=('mato-icons')
 source=("${pkgname}::git+https://github.com/flipflop97/Mato.git")
 sha256sums=('SKIP')
 
