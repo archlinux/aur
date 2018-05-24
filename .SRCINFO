@@ -1,0 +1,40 @@
+pkgbase = gravium
+	pkgdesc = Gravium peer-to-peer network based digital currency
+	pkgver = 0.1.0.0
+	pkgrel = 0
+	url = https://gravium.io/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = automoc4
+	makedepends = qrencode
+	makedepends = miniupnpc
+	makedepends = protobuf
+	makedepends = zeromq
+	depends = boost-libs
+	depends = libevent
+	optdepends = zeromq: Optional, allows generating ZMQ notifications
+	optdepends = miniupnpc: Firewall-jumping support
+	optdepends = db4.8: Wallet storage
+	source = gravium-daemon-0.1.0.0.tar.gz::https://github.com/Gravium/gravium/archive/v0.1.0.0.tar.gz
+	source = graviumd@.service
+	sha256sums = 89120145887ef8175c7227251e417a542ce2e18f3bbe1df499a10aa47e18301a
+	sha256sums = 60fe54a68a3d251f67022c96e2324c6a8f8bc826405272f254978d8c305e06c7
+
+pkgname = gravium-daemon
+	pkgdesc = Gravium peer-to-peer network based digital currency (daemon)
+
+pkgname = gravium-cli
+	pkgdesc = Gravium peer-to-peer network based digital currency (CLI)
+
+pkgname = gravium-qt
+	pkgdesc = Gravium peer-to-peer network based digital currency (Qt)
+	depends = boost-libs
+	depends = libevent
+	depends = qt5-base
+	depends = qt5-tools
+	depends = miniupnpc
+	optdepends = protobuf: Data interchange format used for payment protocol
+	optdepends = qrencode: Optional for generating QR codes
+
