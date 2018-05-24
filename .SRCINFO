@@ -1,6 +1,6 @@
 pkgbase = devtools32-git
 	pkgdesc = Tools for Arch Linux package maintainers
-	pkgver = 20171118
+	pkgver = 20180523
 	pkgrel = 1
 	url = https://github.com/archlinux32/devtools32
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = devtools32-git
 	depends = git
 	depends = bzr
 	depends = mercurial
-	provides = devtools=20171118
+	provides = devtools=20180523
 	conflicts = devtools
 	source = devtools32-git::git+https://github.com/bbidulock/devtools32.git
 	md5sums = SKIP
