@@ -4,7 +4,7 @@ pkgdesc="ROS - This package holds the diagnostic messages which provide the stan
 url='http://wiki.ros.org/diagnostic_msgs'
 
 pkgname='ros-kinetic-diagnostic-msgs'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="common_msgs-release-release-kinetic-diagnostic_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/kinetic/diagnostic_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a27da674a80ffee25e2baadf139b7e6696e998792e9e65ddaf15ccf7a56009d5')
+sha256sums=('5b81c0514bb39dfa49e8b606b2305d3a3280d2087972beb06ac7ffe97949d5b5')
 
 build() {
   # Use ROS environment variables
