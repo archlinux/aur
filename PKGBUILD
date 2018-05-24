@@ -4,7 +4,7 @@ pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages
 url='http://www.ros.org/wiki/cv_bridge'
 
 pkgname='ros-kinetic-cv-bridge'
-pkgver='1.12.7'
+pkgver='1.12.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-kinetic-cv_bridge-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/kinetic/cv_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('16304c9fad874933353ed37a318ef8141fc6e0552df5dc84334742a48aac125d')
+sha256sums=('e7fe00e14863ff03d5a6df0032c8bda00e166c4a20fffbc1ce16fe55f3bc2397')
 
 build() {
   # Use ROS environment variables
