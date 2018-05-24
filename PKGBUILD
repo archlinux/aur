@@ -4,7 +4,7 @@ pkgdesc="ROS - Single image rectification and color processing."
 url='http://www.ros.org/wiki/image_proc'
 
 pkgname='ros-kinetic-image-proc'
-pkgver='1.12.22'
+pkgver='1.12.23'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -42,7 +42,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="image_pipeline-release-release-kinetic-image_proc-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/kinetic/image_proc/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('187ab3954f83f43313532f84a1b2965c7c8a1cb058dfcd77cf581cb39a76c69c')
+sha256sums=('9c74897935e80a200d6a3a28ee055889f69eca787c2be11095003f75b73b2aa2')
 
 build() {
   # Use ROS environment variables
