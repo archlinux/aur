@@ -6,7 +6,7 @@ pkgname=trickle
 pkgver=1.07
 pkgrel=11
 pkgdesc="Lightweight userspace bandwidth shaper"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mariusae/trickle"
 license=('BSD')
 depends=('libevent' 'libtirpc')
@@ -33,7 +33,8 @@ build() {
   LDFLAGS+=" -ltirpc"
 
   ./configure --prefix=/usr \
-              --mandir=/usr/share/man
+              --mandir=/usr/share/man \
+              --build=$(gcc -dumpmachine)
   sed -i "s|.*in_addr_t.*||g" config.h
   make -j1
 }
