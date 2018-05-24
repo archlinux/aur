@@ -1,8 +1,8 @@
-NOTE: This text was copied from http://www.softmaker.com/en/softmaker-office-linux on 2018-02-07, actual text may have altered in the meantime. Please check the softmaker website for up-to-date text.
+NOTE: This text was copied from http://www.softmaker.com/en/softmaker-office-linux on 2018-05-24, actual text may have altered in the meantime. Please check the softmaker website for up-to-date text.
 ---
 Scope of license
-This is a one-time purchase, not a subscription. You can use the software as long as you want.
-
 Non-commercial use: You and the members of your family are entitled to using one license on up to five computers at the same time, as long as these computers belong to the same household.
 
-Commercial use: Each license may only be installed and used on one computer. Every user of that computer may use the Software, but only 1 (one) user at any given time. Secondary use right: The single primary user of that computer is additionally entitled to use the Software on a portable computer.
+Commercial use: As a commercial user of SoftMaker Office, you can choose one of the following licensing models:
+  1. Each license entitles one user to install and use the software on up to 5 (five) computers. No other user may use the software.
+  2. Each license may only be installed and used on one computer. Every user of that computer may use the software, but only 1 (one) user at any given time. Secondary use right: The single primary user of that computer is additionally entitled to use the Software on a portable computer.
