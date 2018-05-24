@@ -1,8 +1,9 @@
 pkgbase = cncjs
 	pkgdesc = Web-based interface for CNC controllers running Grbl, Marlin, Smoothieware, or TinyG.
 	pkgver = 1.9.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cncjs/cncjs
+	install = cncjs.install
 	arch = x86_64
 	license = MIT
 	makedepends = yarn

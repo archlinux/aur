@@ -1,13 +1,14 @@
 # Maintainer: Jake <aur@ja-ke.tech>
 pkgname=cncjs
 pkgver=1.9.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Web-based interface for CNC controllers running Grbl, Marlin, Smoothieware, or TinyG."
 arch=("x86_64")
 url="https://github.com/cncjs/cncjs"
 license=('MIT')
 depends=('nodejs')
 makedepends=('yarn')
+install="$pkgname.install"
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname"
         "$pkgname.service"
@@ -35,9 +36,9 @@ package() {
         install -Dm644 $pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
         install -Dm644 $pkgname.sysusers $pkgdir/usr/lib/sysusers.d/$pkgname.conf
         
-        install -d -m755 -g cncjs -o cncjs "${pkgdir}/etc/$pkgname/"
+        install -d -m755 "${pkgdir}/etc/$pkgname/"
         
-	cd "$pkgname-$pkgver"
+        cd "$pkgname-$pkgver"
         install -d "${pkgdir}/usr/lib/"
         cp -r dist/cnc/ "${pkgdir}/usr/lib/$pkgname/"
 }
