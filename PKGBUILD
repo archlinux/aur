@@ -25,15 +25,14 @@ depends=('python2'
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 provides=("${pkgname}")
-source=("https://pypi.python.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/dexy/dexy/develop/LICENSE")
-md5sums=('99eb783fdf829b74f4d1f3a801693b86'
-         '7ae0144577340e245b148893690d7f37')
-
+sha256sums=('d1433a15267ae3ffa6ee8e1776298db9c3ae2e429845ee39d0e8bd2e98e0e2fe'
+            '87159e27fa3f901ea96b5ca028c1695c531bdbadfd4cd8aee37661ca9d28bfb8')
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
-  
+
   install -Dm644 ${srcdir}/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
