@@ -1,0 +1,13 @@
+50-signet.rules
+gpl.txt
+icon_128x128.png
+icon_16x16.png
+icon_256x256.png
+icon_32x32.png
+icon_512x512.png
+icon_64x64.png
+pkg/
+signet-0.9.10
+signet-0.9.10-1-x86_64.pkg.tar.xz
+signet-0.9.10.sig
+src/
