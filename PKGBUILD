@@ -41,10 +41,10 @@ build() {
   # replacement of missing makedepend 
   sed -i 's/@.*makedepend.*$/@ \$(CC) \$(INCLUDE) -M \$(SRCS) \> makedep/' surf/Makefile
 
-  # Patch rdchx.f for iconn dimension,
+  # Patch rdchx.f for array size mismatch in iconn,
   # thanks Panadestein for pointing out and
-  # arjun_karol for the solution 
-  patch -p0 -i rdchx.patch
+  # arjun_karol for the quick fix
+  patch -p0 -i "$srcdir/rdchx.patch"
   make
 }
 
