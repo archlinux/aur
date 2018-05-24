@@ -4,10 +4,10 @@ pkgdesc="ROS - This package allows you to publish the state of a robot to tf."
 url='http://wiki.ros.org/robot_state_publisher'
 
 pkgname='ros-kinetic-robot-state-publisher'
-pkgver='1.13.4'
+pkgver='1.13.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-tf2-kdl
@@ -15,16 +15,15 @@ ros_makedepends=(ros-kinetic-tf2-kdl
   ros-kinetic-rostime
   ros-kinetic-orocos-kdl
   ros-kinetic-roscpp
-  ros-kinetic-rosconsole
   ros-kinetic-sensor-msgs
   ros-kinetic-kdl-parser
   ros-kinetic-tf2-ros
-  ros-kinetic-rostest
+  ros-kinetic-rosconsole
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3
-  urdfdom-headers)
+  urdfdom-headers
+  eigen)
 
 ros_depends=(ros-kinetic-tf2-kdl
   ros-kinetic-tf
@@ -37,7 +36,7 @@ ros_depends=(ros-kinetic-tf2-kdl
   ros-kinetic-rosconsole
   ros-kinetic-catkin)
 depends=(${ros_depends[@]}
-  eigen3)
+  eigen)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/robot_state_publisher/${pkgver}-${_pkgver_patch}
@@ -48,7 +47,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_state_publisher-release-release-kinetic-robot_state_publisher-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_state_publisher-release/archive/release/kinetic/robot_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1432c77c4f37fe90e95390c413707f43c4e9b050318f1609086b2d747ec32fe9')
+sha256sums=('ae537f55c5810827d787830e3c2852390749c6053281ea7264e2f040f3602d00')
 
 build() {
   # Use ROS environment variables
