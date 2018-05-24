@@ -1,0 +1,12 @@
+--- a/src/guacenc/guacenc.c	2018-05-25 00:11:40.315468138 +0200
++++ b/src/guacenc/guacenc.c	2018-05-25 00:11:32.011384353 +0200
+@@ -76,7 +76,9 @@
+             "version " VERSION);
+ 
+     /* Prepare libavcodec */
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(58, 9, 100)
+     avcodec_register_all();
++#endif
+ 
+     /* Track number of overall failures */
+     int total_files = argc - optind;

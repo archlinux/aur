@@ -3,7 +3,7 @@
 
 pkgname=guacamole-server
 pkgver=0.9.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://guacamole.sourceforge.net/"
@@ -21,17 +21,19 @@ optdepends=('libssh: for ssh protocol support'
 install=$pkgname.install
 
 source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${pkgver}/source/${pkgname}-${pkgver}.tar.gz"
-        'guacd.service')
+        'guacd.service' libavcodec.patch)
  
 md5sums=('cadc90e526ccf63e01c65017c8881717'
-         'dfaa29349d2e73af6dac75d6cafbd762')
+         'dfaa29349d2e73af6dac75d6cafbd762'
+         '6cf58f3148d0ea3f24b4fa362ca79807')
  
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
-	PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
-	CFLAGS+=" -I/usr/include/openssl-1.0" \
-	LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl" \
-	./configure --with-openssl --prefix=/usr --sbindir=/usr/bin CPPFLAGS="-Wno-error=pedantic -Wno-error=format-overflow"  ## Wno-error=format-overflow added to workaround build in GCC 7.1.1
+        patch -Np1 -i ../libavcodec.patch
+	#PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
+	#CFLAGS+=" -I/usr/include/openssl-1.0" \
+	#LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl" \
+	./configure --prefix=/usr --sbindir=/usr/bin CPPFLAGS="-Wno-error=pedantic -Wno-error=format-overflow"  ## Wno-error=format-overflow added to workaround build in GCC 7.1.1
 	make
 }
  
