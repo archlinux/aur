@@ -6,11 +6,12 @@ pkgver=1.1.0
 pkgrel=3
 pkgdesc="KWallet plugin for Pidgin"
 arch=('x86_64')
-url="http://kde-apps.org/content/show.php/Pidgin+KWallet+Plugin?content=127136"
+url="https://www.linux-apps.com/content/show.php/Pidgin+KWallet+Plugin?content=127136"
 license=('GPL')
 depends=('pidgin' 'kdelibs')
 makedepends=('cmake')
-source=("http://kde-apps.org/CONTENT/content-files/127136-PidginKWallet-$pkgver.tar.bz2")
+# The original url is dynamically generated at regular intervals and cannot be relied on.
+source=("https://sources.archlinux.org/other/community/$pkgname/127136-PidginKWallet-$pkgver.tar.bz2")
 md5sums=('c8fde518d8058de8302124791d0d15c6')
 
 build() {
