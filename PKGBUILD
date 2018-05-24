@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="multi-platform screen and application forwarding system screen for X11"
 arch=('x86_64')
 url='https://www.xpra.org'
-license=('GPL2')
+license=('GPL')
 depends=('python2' 'pygtk' 'libxtst' 'python2-pillow' 'python2-lz4'
          'ffmpeg' 'libvpx' 'xf86-video-dummy' 'libxkbfile'
          'python2-numpy' 'python2-rencode' 'python2-opengl'
@@ -39,20 +39,20 @@ source=("xpra::svn+https://www.xpra.org/svn/Xpra/trunk/src")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-svn}"
+  cd "$srcdir/${pkgname%-svn}"
   local ver="$(svnversion)"
   printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-svn}"
+  cd "$srcdir/${pkgname%-svn}"
 
   export pkgdir
   python2 setup.py build --without-enc_x265
 }
 
 package() {
-	cd "$srcdir/${pkgname%-svn}-build"
+  cd "$srcdir/${pkgname%-svn}-build"
   python2 setup.py install --root="${pkgdir}" --without-enc_x265
   mv "${pkgdir}"/lib/* "${pkgdir}"/usr/lib/
   rmdir "${pkgdir}/lib"
