@@ -11,10 +11,10 @@ pkgbase = python2-cashew
 	depends = python2-inflection>=0.2.0
 	provides = cashew
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/c/cashew/cashew-0.2.7.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/cashew/cashew-0.2.7.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/dexy/cashew/master/LICENSE
-	md5sums = e7a3801bf2ac92817d33292ea25efe5e
-	md5sums = 7ae0144577340e245b148893690d7f37
+	sha256sums = b75095f0b13547cb39db8897f535c26a2859bd8152bd704d545ba72546ea9fda
+	sha256sums = 87159e27fa3f901ea96b5ca028c1695c531bdbadfd4cd8aee37661ca9d28bfb8
 
 pkgname = python2-cashew
 
