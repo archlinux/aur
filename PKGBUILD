@@ -4,7 +4,7 @@ pkgdesc="ROS - A controller ensuring the safe operation of Kobuki."
 url='http://ros.org/wiki/kobuki_safety_controller'
 
 pkgname='ros-kinetic-kobuki-safety-controller'
-pkgver='0.7.4'
+pkgver='0.7.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -41,7 +41,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="kobuki-release-release-kinetic-kobuki_safety_controller-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/kobuki-release/archive/release/kinetic/kobuki_safety_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ee224dec7bc5a7107476f2af78800f5ee7a75adecc0d499c3cf1bd56ae1c7e42')
+sha256sums=('8a33921af46704980110c752c39f1b9e0837907951ecd9efa229973f6d215229')
 
 build() {
   # Use ROS environment variables
