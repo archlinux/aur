@@ -31,24 +31,20 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/foosel/$_pkgname/archive/$pk
 		)
 
 package() {
-	etcdir=etc/conf.d
-	usrdir=usr/lib/$pkgname
-	vardir=var/lib/$pkgname
-
-	virtualenv2 $pkgdir/$usrdir
+	virtualenv2 $pkgdir/usr/lib/$pkgname
 
 	pushd $_pkgname-$pkgver
-	$pkgdir/$usrdir/bin/pip install .
+	$pkgdir/usr/lib/$pkgname/bin/pip install .
 	popd
 
-	find $pkgdir/$usrdir/bin -type f -exec grep -q $pkgdir {} \; -exec sed -i "s:$pkgdir::" {} \;
+	find $pkgdir/usr/lib/$pkgname/bin -type f -exec grep -q $pkgdir {} \; -exec sed -i "s:$pkgdir::" {} \;
 
 	install -Dm644 octoprint.sysusers $pkgdir/usr/lib/sysusers.d/octoprint.conf
 	install -Dm644 octoprint.service $pkgdir/usr/lib/systemd/system/octoprint.service
-	install  -m755 octoprint-serve $pkgdir/$usrdir/bin
-	install -Dm644 octoprint.conf $pkgdir/$etcdir/octoprint
-	install -dm750 $pkgdir/$vardir
-	install -Dm640 config.yaml $pkgdir/$vardir/.octoprint/config.yaml
+	install  -m755 octoprint-serve $pkgdir/usr/lib/$pkgname/bin
+	install -Dm644 octoprint.conf $pkgdir/etc/conf.d/octoprint
+	install -dm750 $pkgdir/var/lib/$pkgname
+	install -Dm640 config.yaml $pkgdir/var/lib/$pkgname/.octoprint/config.yaml
 }
 
 sha256sums=('ca1bc5352ef20778722a6b2aedef4c8dbe28d0d82c2526f84f3db07245a01aad'
