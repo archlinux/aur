@@ -46,7 +46,7 @@ pkgbase = ncl
 	depends = hdf-eos5
 	optdepends = ncl-highres: High-resolution coastlines (RANGS and GSHHS)
 	provides = ncl
-	source = ncl_ncarg-6.4.0.tar.gz::https://www.earthsystemgrid.org/download/fileDownload.html?logicalFileId=86b9bec2-fa01-11e6-a976-00c0f03d5b7c
+	source = ncl_ncarg-6.4.0.tar.gz::https://www.earthsystemgrid.org/dataset/ncl.640.src/file/ncl_ncarg-6.4.0.tar.gz
 	source = http://www.netlib.org/voronoi/triangle.zip
 	source = Site.local
 	source = ncarg.sh

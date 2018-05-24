@@ -14,7 +14,7 @@ depends=('libxext' 'cairo' 'pixman' 'fontconfig' 'expat' 'bzip2' 'zlib' 'netcdf'
 makedepends=('gcc' 'gcc-fortran' 'tcsh' 'byacc')
 provides=('ncl')
 install=${pkgname}.install
-source=("ncl_ncarg-$pkgver.tar.gz::https://www.earthsystemgrid.org/download/fileDownload.html?logicalFileId=86b9bec2-fa01-11e6-a976-00c0f03d5b7c"
+source=("ncl_ncarg-$pkgver.tar.gz::https://www.earthsystemgrid.org/dataset/ncl.640.src/file/ncl_ncarg-$pkgver.tar.gz"
         "http://www.netlib.org/voronoi/triangle.zip" "Site.local" "ncarg.sh" "hluresfile" "ncl.install"
         "no_install_dep.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.0.0-no_install_dep.patch"
         "includes.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-includes.patch"
