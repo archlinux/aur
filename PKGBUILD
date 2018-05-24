@@ -1,7 +1,7 @@
 # Maintainer: Ruben De Smet <ruben dot de dot smet at rubdos dot be>
 
 pkgname='texlive-vub'
-pkgver="1.7.0"
+pkgver="1.7.2"
 pkgrel=0
 pkgdesc='Provides a titlepage, a beamer template and other style elements for the Vrije Universiteit Brussel.'
 url='https://gitlab.com/rubdos/texlive-vub/'
@@ -11,7 +11,7 @@ license=(
 source=(
  "https://gitlab.com/rubdos/texlive-vub/repository/archive.tar.bz2?ref=v${pkgver}"
 )
-sha512sums=('dbf6162a772c5beea3b6103b6843a7b15b13f6d2d8781649d2bd6f2412d3aa03b8f6a1b5b24a5d442702ecfb74a6ed7712266d9ae5a07dff6d8cb29f337db854')
+sha512sums=('20562d32c3dba4637d8c2c35ee6e4d873a932d96fabdbf98bb6a6ee44587058082e462ebf7c45b2eac6dfaf7307822eb156ad30b04545bee3bda51f9ca7981f0')
 arch=(
  'any'
 )
