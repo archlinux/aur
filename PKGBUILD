@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-requests>=2.0.0' 'python-six')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('456ebf0e09398e81c9ee15aa5eb7d6d7')
+sha512sums=('e016b5127e0722fc6e1d072ecd53f2517c673212b437afb3be270f73786a7f3d1e584626cf89727171c67f6aa403e919ab61c41f5495bcab9713c38b71814aaf')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
