@@ -1,0 +1,12 @@
+pkgbase = r-cran-timedate
+pkgdesc = Rmetrics - Chronological and Calendar Objects
+pkgver = 3043.102
+pkgrel = 1
+url = https://cran.r-project.org/web/packages/timeDate/index.html
+arch = x86_64
+license = GPL3
+depends = r
+source = https://cran.r-project.org/src/contrib/timeDate_3043.102.tar.gz
+md5sums = 7808ada851cbf740b1360cabca0706ff
+
+pkgname = r-cran-timedate
