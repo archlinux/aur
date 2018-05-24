@@ -1,6 +1,6 @@
 pkgbase = kother-meta
 	pkgdesc = Other packages
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gitlab.com/eadwu/pkgbuilds
 	arch = x86_64
@@ -26,7 +26,6 @@ pkgbase = kother-meta
 	depends = dotnet-sdk
 	depends = fcron
 	depends = feh
-	depends = ghc
 	depends = gimp
 	depends = git
 	depends = gitlab-runner
