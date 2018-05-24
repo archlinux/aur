@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=instagram-scraper
-pkgver=1.5.32
+pkgver=1.5.34
 pkgrel=1
 pkgdesc="Scrapes and downloads an instagram user's photos and videos"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:Public domain')
 depends=('python-requests' 'python-tqdm')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('a9b68c8b033941a9e779a185aecc476d805f034348c954037b4e10643012fb8692b2f72475c20cd39de33e573b1f6f58b33598f89f38db8420e2f6ea4cb503a7')
+sha512sums=('78f41f42d9e13152f3af29897e162aebeba0ab98e1a7c149abfff883addeedc54506d26def90d43f90dbec53ad9630b1b30c76665fc9869b79787b94b766c9e1')
 
 build() {
   cd $pkgname-$pkgver
