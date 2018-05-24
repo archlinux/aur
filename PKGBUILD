@@ -4,7 +4,7 @@ _target=msp430-elf
 _tiver=1.204
 pkgname=${_target}-mcu
 pkgver=5.1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Header files and linker scripts for MSP430 microcontrollers"
 arch=('any')
 url="http://www.ti.com/tool/msp430-gcc-opensource"
@@ -37,9 +37,9 @@ package() {
   
   # install linker scripts
   # binutils does weird stuff and does not look in lib/ldscripts
-  install -dm755 "${pkgdir}/usr/${_target}/lib/430"
+  install -dm755 "${pkgdir}/usr/${_target}/lib"
   for f in *.ld; do
-    install -m644 ${f} "${pkgdir}/usr/${_target}/lib/430"
+    install -m644 ${f} "${pkgdir}/usr/${_target}/lib"
   done
   
   # install header files
