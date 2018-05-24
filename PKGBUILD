@@ -43,9 +43,9 @@ configure_options() {
 	fi
 
 	# If atlas-lapack not installed, fall back to openblas-lapack
-	_OBLAS=`pacman -Qq opeblas-lapack 2>/dev/null` || true
+	_OBLAS=`pacman -Qq openblas-lapack 2>/dev/null` || true
 	if [ "$_OBLAS" != "" ]; then
-		_COPTS="--enable-openblas"
+		_COPTS="--enable-openblas --with-openblas-incdir=/usr/include"
 		echo "Compiling against openblas-lapack"
 		return
 	fi
