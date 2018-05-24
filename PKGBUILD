@@ -1,6 +1,6 @@
 # Maintainer: Jakob Gerhard Martinussen <jakobgm at gmail dot com>
 pkgname=astrality-git
-pkgver=0.6.r134.g7e10a3e
+pkgver=1.0.1.r0.g48ab0aa
 pkgrel=3
 pkgdesc='templates-based configuration file manager'
 arch=('any')
@@ -9,6 +9,7 @@ license=('MIT')
 depends=('python'
          'python-astral'
          'python-coloredlogs'
+         'python-dateutil'
          'python-jinja'
          'python-mypy_extensions'
          'python-requests'

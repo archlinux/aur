@@ -1,7 +1,7 @@
 pkgbase = astrality-git
 	pkgdesc = templates-based configuration file manager
-	pkgver = 0.6.r134.g7e10a3e
-	pkgrel = 2
+	pkgver = 1.0.1.r0.g48ab0aa
+	pkgrel = 3
 	url = https://astrality.readthedocs.io
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = astrality-git
 	depends = python
 	depends = python-astral
 	depends = python-coloredlogs
+	depends = python-dateutil
 	depends = python-jinja
 	depends = python-mypy_extensions
 	depends = python-requests
