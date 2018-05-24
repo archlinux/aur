@@ -22,16 +22,3 @@ diff -rupN geary-0.12.0.orig/src/CMakeLists.txt geary-0.12.0/src/CMakeLists.txt
      libunwind-generic>=1.1
      ${EXTRA_CLIENT_PKG_CONFIG}
  )
-diff --git a/meson.build b/meson.build
-index 5874a98c..818d55f6 100644
---- a/meson.build
-+++ b/meson.build
-@@ -51,7 +51,7 @@
- webkit2gtk = dependency('webkit2gtk-4.0', version: '>=' + target_webkit)
- 
- # Secondary deps - keep sorted alphabetically
--enchant = dependency('enchant', version: '>= 1.6')
-+enchant = dependency('enchant-2', version: '>= 1.6')
- gcr = dependency('gcr-3', version: '>= 3.10.1')
- gdk = dependency('gdk-3.0', version: '>=' + target_gtk)
- gee = dependency('gee-0.8', version: '>= 0.8.5')

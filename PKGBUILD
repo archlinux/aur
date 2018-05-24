@@ -20,7 +20,7 @@ conflicts=('geary')
 source=('git://git.gnome.org/geary'
         'geary-enchant2.patch')
 sha256sums=('SKIP'
-            '8bf6c0293a0e09b018c31da12f4d634467b74605054eec3e2454cdc0983ddc3f')
+            '87a0adc3d07a6bd6405c8170eea5be700ef89b70d15c8912b428c9326a746078')
 
 pkgver() {
 	cd "$srcdir/geary"
