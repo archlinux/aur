@@ -1,6 +1,6 @@
 pkgname=('python-cvxpy')
 _module='cvxpy'
-pkgver='0.4.11'
+pkgver='1.0.3'
 pkgrel=1
 pkgdesc="A domain-specific language for modeling convex optimization problems in Python."
 url="http://github.com/cvxgrp/cvxpy/"
@@ -10,15 +10,14 @@ depends=('python'
     'python-multiprocess'
     'python-numpy'
     'python-scipy'
-    'python-toolz'
-    'python-cvxcanon')
+    'python-toolz')
 makedepends=('python-setuptools')
-optdepends=('python-scs')
+optdepends=('python-scs' 'python-nose')
 checkdepends=('python-scs')
 license=('Apache')
 arch=('any')
 source=("https://github.com/cvxgrp/cvxpy/archive/v${pkgver}.tar.gz")
-sha256sums=('afbffad20aeee0f256d717581d68bfbf48ab6a42015f3610f061f261f816d42e')
+sha256sums=('78cdabcbcdf2b20ab1672d385889e442322f05847568000509a40e1703e43787')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
@@ -30,7 +29,8 @@ package() {
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
-#check() {
-#    cd "${srcdir}/${_module}-${pkgver}"
-#    python -m unittest
-#}
+check() {
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py build_ext --inplace
+    nosetests cvxpy
+}
