@@ -1,7 +1,7 @@
 pkgbase = dpluzz
 	pkgdesc = Software to retrieve videos from French website pluzz
-	pkgver = 1.7.5
-	pkgrel = 2
+	pkgver = 1.7.8
+	pkgrel = 1
 	url = http://forum.ubuntu-fr.org/viewtopic.php?id=1559861&p=1
 	arch = any
 	license = GPL
@@ -18,8 +18,8 @@ pkgbase = dpluzz
 	depends = perl-html-parser
 	depends = wmctrl
 	depends = perl-text-unidecode
-	source = https://launchpad.net/~yoggic/+archive/dpluzz/+files/dpluzz_1.7.5%7Eubuntu17.10_amd64.deb
-	sha256sums = 4c8e261dfe9215735709bb4e7b3957321cf0fb30862b1cad16e470bfeba6db6c
+	source = https://launchpad.net/~yoggic/+archive/dpluzz/+files/dpluzz_1.7.8%7Eubuntu18.04_amd64.deb
+	sha256sums = 098d4ce8dbd6148a880e9bf5170700895208b56b158dacc50de6b1012e22c160
 
 pkgname = dpluzz
 
