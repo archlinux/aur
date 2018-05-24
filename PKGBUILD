@@ -1,13 +1,13 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=skympc-git
-pkgver=1.6.4.0.r139.g6f0faea
+pkgver=1.6.5.0.r149.g9661bd1
 pkgrel=1
 pkgdesc="A simple MPD (Music Player Daemon) client, powerd by Qt"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.soramimi.jp/skympc/index.html"
 license=('GPL3')
-depends=('gtk-update-icon-cache' 'mpd' 'qt5-svg')
+depends=('hicolor-icon-theme' 'mpd' 'qt5-svg')
 makedepends=('git' 'ruby')
 provides=('skympc')
 conflicts=('skympc')
@@ -25,7 +25,10 @@ pkgver() {
 
 build() {
   cd SkyMPC
-  qmake-qt5
+  qmake-qt5 PREFIX=/usr SkyMPC.pro \
+    QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
+    QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
+    QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
   make
 }
 
