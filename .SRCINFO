@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-gnomenu-git
+	pkgdesc = GnoMenu - is a traditional styled full featured Gnome-Shell apps-menu, that aims to offer all the essentials in a simple uncluttered intuitive interface.
+	pkgver = v25.g21c5623
+	pkgrel = 1
+	url = https://github.com/The-Panacea-Projects/Gnomenu
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-gnomenu
+	source = git+https://github.com/The-Panacea-Projects/Gnomenu
+	sha512sums = SKIP
+
+pkgname = gnome-shell-extension-gnomenu-git
+
