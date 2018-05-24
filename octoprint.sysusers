@@ -1,0 +1,4 @@
+u octoprint - "OctoPrint 3D Print Server User" /var/lib/octoprint
+m octoprint uucp
+m octoprint network
+m octoprint tty
