@@ -1,7 +1,7 @@
 pkgbase = perl-package-anon
 	pkgdesc = Anonymous packages for Perl
 	pkgver = 0.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Package-Anon
 	arch = x86_64
 	arch = i686

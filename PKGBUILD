@@ -2,7 +2,7 @@
 
 pkgname=perl-package-anon
 pkgver=0.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Anonymous packages for Perl"
 arch=('x86_64' 'i686')
 license=('PerlArtistic' 'GPL')
@@ -18,14 +18,17 @@ _distdir="Package-Anon-${pkgver}"
 
 build() {
   cd "${srcdir}/${_distdir}"
-  perl Makefile.PL INSTALLDIRS=vendor
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  PERL_MM_USE_DEFAULT='1' PERL_AUTOINSTALL='--skipdeps' \
+        perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 check() {
   cd "${srcdir}/${_distdir}"
   if perl -mSub::Exporter -e 42 &>/dev/null; then
-    make test
+    unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+    PERL_MM_USE_DEFAULT='1' make test
   else
     msg2 "Skipping test, because dependency are missing"
   fi
@@ -33,6 +36,7 @@ check() {
 
 package() {
   cd "${srcdir}/${_distdir}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   make install DESTDIR="${pkgdir}"
 }
 
