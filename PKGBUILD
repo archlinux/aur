@@ -1,8 +1,8 @@
 # Maintainer: Mohamar Rios <mohamar.rios@gmail.com>
 
-_pkgname=multipledispatch
-pkgname=python2-${_pkgname}
-pkgver=0.4.8
+pkgname=python2-multipledispatch
+_name=${pkgname#python2-}
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A relatively sane approach to multiple dispatch in Python."
 arch=('any')
@@ -11,11 +11,11 @@ license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('f0eb0c527cdbe788ca7dcd1511bc49a9')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('9e92d63efad2c9b68562175d9148d8cb32d04bf5557991190e643749bf4ed954')
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
