@@ -1,0 +1,18 @@
+pkgbase = r-cran-tidyselect
+	pkgdesc = A backend for the selecting functions of the 'tidyverse'.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/tidyselect/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	depends = r>=3.1
+	depends = r-cran-glue
+	depends = r-cran-purrr
+	depends = r-cran-rlang>=0.2.0
+	depends = r-cran-rcpp>=0.12.0
+	source = http://cran.r-project.org/src/contrib/tidyselect_0.2.4.tar.gz
+	md5sums = fa3bfe6ea9f0e98a20e950788ea9573d
+
+pkgname = r-cran-tidyselect
+
