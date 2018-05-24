@@ -18,7 +18,7 @@ backup=()
 source=(https://github.com/astromatic/sextractor/archive/${pkgver}.tar.gz)
 sha1sums=('3ed53d55c0c77cd98a38bff1bde1b0d6fc625c18')
 
-_use_mkl=1   # If you want to compile against intel mkl, make the value other than 0.
+_use_mkl=0   # If you want to compile against intel mkl, make the value other than 0.
 
 # decide which library to compile against
 configure_options() {
