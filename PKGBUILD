@@ -1,6 +1,6 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
 pkgname=deepin.com.qq.office
-pkgver=2.0.0deepin1
+pkgver=2.0.0deepin3
 pkgrel=2
 epoch=
 pkgdesc="Deepin Wine TIM 2.0.0"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgver}_i386.deb")
 noextract=("${pkgname}_${pkgver}_i386.deb")
-md5sums=('SKIP')
+md5sums=('2acda3caeb774ac97fdb8754e8b1d549')
 validpgpkeys=()
 
 prepare() {
