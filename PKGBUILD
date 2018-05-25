@@ -21,9 +21,9 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.16.8
-xanmod=9
-pkgrel=2
+pkgver=4.16.12
+xanmod=11
+pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -31,13 +31,12 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=028d8ba888cf7214e57c9074747e56a28331ea4f
+arch_config_trunk=92329163a6820ad3ca2ef1444a5f3c3cac6dbcac
 
 # Arch additional patches
 arch_patches=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  0003-Partially-revert-swiotlb-remove-various-exports.patch
 )
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
@@ -49,15 +48,14 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('fd1c7a139610450a97e18e1d205ee0214070b9e6a9678d10874bed2c8b68af1b'
+sha256sums=('8c23deecc1eb51e65fb43a23d0dae23d683f1f4de7d82f6c4288149c8f24a3eb'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
-            '7fb607fe384dd814e9e45d7fc28f7b5b23a51d80784c54bf9209486ad428be14'
-            'ceaa19e0af3842c62eb666a4ac5c79d89b3e6d00593442f18d6508ca6d74bbaa'
-            '5b397cf9eccdad0c1f2865842c29ba6f4e32ad7dbe4e0c6ef6ca6f07d2963cea')
-sha256sums_x86_64=('8566a49997faf3f8678440c52578a7a0ee901e598d3b67d3bee3799fb92e8f86')
+            'b01e9bd4e0f3cc2b91db1d8c043b2d85329bd0c9a9441a91d337c3c33661b658'
+            '09170daf49fe4cb720f331cd2da1c75771eb4f9f124353bf035218b1f8ca57d1')
+sha256sums_x86_64=('e39c02fd021f125a6202f7e4c0692dfd3ced93d404ecb6c8dca6994c8e17b227')
 
 _kernelname=${pkgbase#linux}
 
