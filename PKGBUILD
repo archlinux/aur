@@ -11,6 +11,7 @@ license=('custom:brother commercial license')
 depends=('cups'
          'ghostscript'
          'gsfonts')
+depends_x86_64=('lib32-glibc')
 optdepends=('brscan4')
 install="$pkgname.install"
 source=("http://download.brother.com/welcome/dlf101146/mfcj4420dwlpr-$pkgver-$pkgrel.i386.rpm"
