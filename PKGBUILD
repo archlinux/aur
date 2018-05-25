@@ -1,5 +1,4 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
-
 ####to disable cuda kernel comment out this line
 _BUILD_CUDA="on"
 
@@ -7,7 +6,7 @@ name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 fragment="#branch=dev"
 pkgname=${name}-git
-pkgver=3.4.r68.g3803109
+pkgver=3.4.r80.g36db96a
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -17,8 +16,8 @@ groups=()
 depends=('gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'boost-libs' 'qt5-base')
 makedepends=('ceres-solver' 'boost' 'git' 'cmake' 'eigen' )
 if [ "$_BUILD_CUDA" == "on" ] ; then 
-  makedepends+=('cuda')
-  optdepends=('cuda: for cuda sfm/mvs acceleration')
+  makedepends+=('cuda-sdk')
+  optdepends=('cuda-toolkit: for cuda sfm/mvs acceleration')
 fi
 install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
@@ -53,7 +52,7 @@ build() {
   export CXXFLAGS=${CFLAGS/-fno-plt/}
 
   # determine whether we can precompile CUDA kernels
-    _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
+    _CUDA_PKG=`pacman -Qsq cuda 2>/dev/null` || true
     if [ -n "$_CUDA_PKG" -a "$_BUILD_CUDA"=="on" ]; then
       _EXTRAOPTS="-DCUDA_ENABLED=ON -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda"
     else
