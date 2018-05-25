@@ -3,7 +3,7 @@
 
 pkgname=openvpn-openssl-1.0
 _pkgname=openvpn
-pkgver=2.4.5
+pkgver=2.4.6
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) (build against openssl-1.0)'
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ optdepends=('easy-rsa: easy CA and certificate handling')
 makedepends=('systemd')
 license=('custom')
 validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7') # OpenVPN - Security Mailing List <security@openvpn.net>
-source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz"{,.asc})
-sha256sums=('43c0a363a332350f620d1cd93bb431e082bedbc93d4fb872f758650d53c1d29e'
+source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz"{,.asc})
+sha256sums=('738dbd37fcf8eb9382c53628db22258c41ba9550165519d9200e8bebaef4cbe2'
             'SKIP')
 
 build() {
