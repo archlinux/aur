@@ -3,7 +3,7 @@
 
 _pkgname=gnome-shell-extension-gnomenu
 pkgname=$_pkgname-git
-pkgver=v25.g21c5623
+pkgver=25.r3.g24ba946
 pkgrel=1
 pkgdesc="GnoMenu - is a traditional styled full featured Gnome-Shell apps-menu, that aims to offer all the essentials in a simple uncluttered intuitive interface."
 arch=('any')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/Gnomenu"
-  git describe --long --tags | cut -d '.' -f 2 | awk -F '-' '{print $1"."$3}'
+  git describe --long | sed 's/^gno-menu.v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
