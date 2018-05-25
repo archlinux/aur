@@ -1,6 +1,6 @@
 pkgbase = kother-meta
 	pkgdesc = Other packages
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://gitlab.com/eadwu/pkgbuilds
 	arch = x86_64
@@ -41,6 +41,7 @@ pkgbase = kother-meta
 	depends = java-runtime-common
 	depends = jdk8-openjdk
 	depends = jdk9-openjdk
+	depends = kube
 	depends = lib32-libpulse
 	depends = lib32-mesa
 	depends = libmythes

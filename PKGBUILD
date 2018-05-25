@@ -1,7 +1,7 @@
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
 
 pkgname=kother-meta
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Other packages'
 arch=('x86_64')
