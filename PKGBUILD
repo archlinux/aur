@@ -2,7 +2,7 @@
 pkgname=intel-lms-git
 pkgver=1
 pkgrel=1
-pkgdesc="Intel(R) Local Manageability Service tool (fork, git)"
+pkgdesc="Intel(R) Local Manageability Service tool. This version of LMS is based on the official Intel sources, with modifications to fix issues and try to extend system compatibility."
 url="https://github.com/openamt/lms"
 arch=('x86_64')
 license=('custom')
