@@ -3,13 +3,13 @@
 pkgname=astromatic-swarp
 _pkgname=swarp
 pkgver=2.38.0
-pkgrel=1
+pkgrel=2
 pkgdesc="resamples and co-adds together FITS images using any arbitrary astrometric projection defined in the WCS standard."
 url="http://www.astromatic.net/software/swarp"
 arch=('x86_64')
 license=('GPL')
-depends=('fftw' 'atlas-lapack')
-optdepends=('astromatic-scamp')
+depends=('astromatic-sextractor')
+optdepends=()
 makedepends=()
 provides=()
 conflicts=()
