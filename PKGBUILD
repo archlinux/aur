@@ -29,8 +29,8 @@ optdepends=(
   'python: Python extension'
   'virtualbox: VirtualBox plugin'
 )
-provides=('albert')
-conflicts=('albert-git')
+provides=()
+conflicts=()
 #source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git#branch=dev"
 source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v${pkgver}"
         "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
