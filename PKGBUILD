@@ -1,3 +1,4 @@
+# Maintainer: SKywol <skywol@qq.com>
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
 pkgname=deepin.com.qq.office
 pkgver=2.0.0deepin3
@@ -8,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://office.qq.com/"
 license=('Proprietary')
 groups=()
-depends=('deepin-wine')
+depends=('deepin-wine' 'lib32-gtk2')
 makedepends=('tar')
 checkdepends=()
 optdepends=()
