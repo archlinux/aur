@@ -26,7 +26,9 @@ depends=('desktop-file-utils'
          'libpng12'
          'libxtst'
          'libpqxx'
-         'npm')
+         'npm'
+         'intel-tbb'
+         'gtk3')
 optdepends=('unity-editor-beta-doc'
             'unity-editor-beta-standardassets'
             'unity-editor-beta-example'
