@@ -1,8 +1,8 @@
 pkgbase = levd-git
 	pkgdesc = Daemon to control NZXT Kraken x61
-	pkgver = r2.fc66618
-	pkgrel = 5
-	url = https://github.com/RBlafford/levd
+	pkgver = r3.fd0be7d
+	pkgrel = 6
+	url = https://github.com/jrudess/levd
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = levd-git
 	provides = levd
 	conflicts = levd
 	backup = etc/leviathan/levd.cfg
-	source = git://github.com/RBlafford/levd.git
+	source = git://github.com/jrudess/levd.git
 	md5sums = SKIP
 
 pkgname = levd-git

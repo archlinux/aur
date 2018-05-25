@@ -1,17 +1,18 @@
 # Maintainer: Jordan Rudess <jrudess@gmail.com>
 pkgname=levd-git
-pkgver=r2.fc66618
-pkgrel=5
+pkgver=r3.fd0be7d
+pkgrel=6
 pkgdesc="Daemon to control NZXT Kraken x61"
 arch=('i686' 'x86_64')
-url="https://github.com/RBlafford/levd"
+url="https://github.com/jrudess/levd"
 license=('MIT')
-makedepends=('git' 'cmake' 'google-glog' 'yaml-cpp' 'boost')
+depends=('google-glog' 'yaml-cpp' 'libusb')
+makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/leviathan/levd.cfg")
 install=
-source=('git://github.com/RBlafford/levd.git')
+source=('git://github.com/jrudess/levd.git')
 md5sums=('SKIP')
 
 pkgver() {
