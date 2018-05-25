@@ -1,6 +1,6 @@
 pkgbase = ptxdist
 	pkgdesc = Embedded Linux build system
-	pkgver = 2018.02.0
+	pkgver = 2018.05.0
 	pkgrel = 1
 	url = http://www.ptxdist.org
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = ptxdist
 	depends = bison
 	depends = patch
 	depends = python2
-	source = http://www.pengutronix.de/software/ptxdist/download/ptxdist-2018.02.0.tar.bz2
-	md5sums = 68f758b781ce6aeaffc74cedebe5f339
-	sha512sums = 5ef131a3d07bafa16f5dd51705fa4d67cae03fedb2d7ec3521e7178297c855700c38c67a6e1114f5c26d98865c760e56d14fb7de87ce2a8d1886825784ab5445
+	source = http://www.pengutronix.de/software/ptxdist/download/ptxdist-2018.05.0.tar.bz2
+	md5sums = 91b93e4edc7518882c41949c244ad1c9
+	sha512sums = 30dd74300052bbab4176132ed8bb995e7bda8949e90174876f58fc880c05a37bb17116d106d949aca792f64982e38c0ec80ce2a1d35dd98cbc798747a02aede6
 
 pkgname = ptxdist
 
