@@ -1,2 +1,7 @@
 #!/bin/sh
+if [ -z "$1" ]; then
+  echo "Logging into AWS via Okta..."
+  set -- sts get-caller-identity
+fi
+
 exec /usr/bin/java -jar /usr/share/java/okta-aws-cli/okta-aws-cli.jar "$@"
