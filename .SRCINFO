@@ -1,6 +1,6 @@
 pkgbase = amd-ucode-early
 	pkgdesc = Microcode update files for AMD CPUs
-	pkgver = 20180507
+	pkgver = 20180518
 	pkgrel = 1
 	url = http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
 	arch = any
