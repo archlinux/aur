@@ -14,15 +14,15 @@
 -          { type: 'separator' },
 --- a/js/RequesterModalContainer.js
 +++ b/js/RequesterModalContainer.js
-@@ -12691,3 +12691,0 @@
+@@ -17714,3 +17714,0 @@
 -              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_settings_SettingsTabContent__["a" /* default */], { key: __WEBPACK_IMPORTED_MODULE_16__constants_SettingsTypeConstants__["j" /* SETTINGS_UPDATE */] },
 -                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__SettingsUpdateContainer__["a" /* default */], null)),
 -
-@@ -12743,1 +12740,0 @@
+@@ -17766,1 +17763,0 @@
 -          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__base_Tabs__["a" /* Tab */], { refKey: __WEBPACK_IMPORTED_MODULE_2__constants_SettingsTypeConstants__["j" /* SETTINGS_UPDATE */] }, 'Update'),
 --- a/js/vendor-shared.js
 +++ b/js/vendor-shared.js
-@@ -79251,2 +79251,2 @@
+@@ -94919,2 +94919,2 @@
 -window.DISABLE_ANALYTICS = false;
 -window.DISABLE_UPDATES = false;
 +window.DISABLE_ANALYTICS = true;

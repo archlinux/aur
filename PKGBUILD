@@ -1,7 +1,7 @@
 # Maintainer: kitsunyan <`echo a2l0c3VueWFuQGFpcm1haWwuY2MK | base64 -d`>
 
 pkgname=postman
-pkgver=6.1.2
+pkgver=6.1.3
 pkgrel=1
 pkgdesc='Build, test, and document your APIs faster'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=(electron)
 conflicts=(postman-bin)
 source=("postman-$pkgver.zip::https://dl.pstmn.io/download/version/${pkgver}/linux64"
         'remove-updater.patch')
-sha256sums=('5e8a8df2893031eb98190690a0d3a98f6330b01f302a6975e62464dc66cbc6b7'
-            'e6067c9a83c4bf13ac739debb23b67ae8b6d62beb47f65fc2748bf9a924aec02')
+sha256sums=('6e08dae1524416396921337dd785e84436c1887a7d835b24c69ea68dce13290d'
+            '77366fac276f0bd139a19d7c8de5fc931544ae0651b9412f58e4714cf4d58457')
 
 prepare() {
   cd "$srcdir/Postman/app/resources/app"
