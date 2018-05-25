@@ -9,15 +9,21 @@ arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('alsa-lib' 'sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack')
-makedepends=('git' 'cmake' 'imagemagick' 'gendesk' 'python')
+makedepends=('git' 'cmake' 'python')
 checkdepends=('gtest')
 optdepends=('ddnet-skins: more skins for your tee'
             'ddnet-maps-git: have all DDNet maps available offline')
 provides=('teeworlds-ddnet-git' 'ddnet')
 conflicts=('teeworlds-ddnet-git' 'ddnet')
 replaces=('teeworlds-ddnet-git')
-source=("git+https://github.com/$_name/$_name")
-sha256sums=('SKIP')
+source=("git+https://github.com/$_name/$_name"
+        'ddnet.desktop' 'ddnet-server.desktop'
+        'DDNet.png' 'DDNet-Server.png')
+sha256sums=('SKIP'
+            '11402ed2cf323e350e381588c7cb4fa1d450c19645a0a079897912134bb436bd'
+            'fc8c27e129f92c5dddf96a079306a2439c8cc14d4b8ce719c5fa2f59aceee367'
+            '1dc83efd9fdab2597fc4d41358628422a9550d4d23b60d273f2f30cf7b76dfaa'
+            'e4083f1c40569146caabd21b8f24fdd7862e2f3040552e9c6a260df603249274')
 
 pkgver() {
     cd $_name
@@ -28,26 +34,10 @@ pkgver() {
     printf $v.r$r.g$h
 }
 
-prepare() {
+build() {
     [ -d build ] && rm -rf build
     mkdir build
-    cd build
 
-      # Client
-    convert "../$_name/other/icons/DDNet.ico" DDNet.png
-    gendesk -f -n --pkgname "DDNet" --pkgdesc "$pkgdesc" \
-        --name 'DDNet' --categories 'Game;ArcadeGame'
-
-      # Server
-      # Requires 'ddnet-maps-git' package for using DDNet maps
-      # Requires a mysql-like database package for score/ranking
-    convert "../$_name/other/icons/DDNet-Server.ico" DDNet-Server.png
-    gendesk -f -n --pkgname "DDNet-Server" --pkgdesc "DDNet Server"          \
-        --name 'DDNet Server' --categories 'Game;ArcadeGame' --terminal=true \
-        --exec='sh -c "cd /usr/share/ddnet/data && DDNet-Server"'
-}
-
-build() {
     cd build
     cmake ../$_name -DCMAKE_BUILD_TYPE=Release
     make all tools
@@ -67,25 +57,25 @@ package() {
     install -m755 DDNet-Server         "$pkgdir/usr/bin/"
 
       # Install extra tools
-    install -d -m755 "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 config_retrieve      "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 config_store         "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 confusables          "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 crapnet              "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 dilate               "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 dummy_map            "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 fake_server          "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 map_diff             "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 map_extract          "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 map_replace_image    "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 map_resave           "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 map_version          "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 packetgen            "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 tileset_borderadd    "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 tileset_borderfix    "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 tileset_borderrem    "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 tileset_borderset    "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 uuid                 "$pkgdir/usr/share/ddnet/tools/"
+    install -d -m755 "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 config_retrieve      "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 config_store         "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 confusables          "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 crapnet              "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 dilate               "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 dummy_map            "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 fake_server          "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 map_diff             "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 map_extract          "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 map_replace_image    "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 map_resave           "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 map_version          "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 packetgen            "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 tileset_borderadd    "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 tileset_borderfix    "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 tileset_borderrem    "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 tileset_borderset    "$pkgdir/usr/lib/ddnet/tools/"
+    install -m755 uuid                 "$pkgdir/usr/lib/ddnet/tools/"
 
       # Install data files
     install -d -m755 "$pkgdir/usr/share/ddnet/data/"

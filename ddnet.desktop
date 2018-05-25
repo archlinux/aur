@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=DDNet Client
+Comment=DDNet Client
+Exec=DDNet
+Icon=DDNet
+Terminal=true
+StartupNotify=false
+Categories=Game;ArcadeGame;
