@@ -2,7 +2,7 @@
 
 pkgname=python-pyhomematic
 _name=pyhomematic
-pkgver=0.1.36
+pkgver=0.1.43
 pkgrel=1
 pkgdesc="Python 3 Interface to interact with Homematic devices"
 arch=('any')
@@ -21,5 +21,5 @@ build() {
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
