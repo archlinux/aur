@@ -2,7 +2,7 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 
 pkgname='telegraf'
-pkgver='1.6.2'
+pkgver='1.6.3'
 pkgrel='1'
 pkgdesc='Server-level metric gathering agent for InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
