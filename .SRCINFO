@@ -1,0 +1,15 @@
+pkgbase = libgraph
+	pkgdesc = Lib Graphics — Turbo C's graphics.h on Linux
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = savannah.nongnu.org/projects/libgraph
+	arch = x86_64
+	license = GPL2
+	depends = sdl
+	depends = sdl_image
+	depends = guile1.8
+	source = https://download.savannah.gnu.org/releases/libgraph/libgraph-1.0.2.tar.gz
+	md5sums = 6093bf0a9a65a5b873836276c9954194
+
+pkgname = libgraph
+
