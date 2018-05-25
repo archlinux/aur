@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=contractor-git
-pkgver=r214.ed0a014
+pkgver=r225.fe6f23e
 pkgrel=1
 pkgdesc=' A desktop-wide extension service'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/elementary/contractor'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'libgee')
-makedepends=('cmake' 'git' 'vala')
+makedepends=('git' 'meson' 'vala')
 provides=('contractor')
 conflicts=('contractor')
 replaces=('contractor-bzr')
@@ -23,8 +23,6 @@ pkgver() {
 }
 
 prepare() {
-  cd contractor
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -32,18 +30,16 @@ prepare() {
 }
 
 build() {
-  cd contractor/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr'
-  make
+  arch-meson ../contractor
+  ninja
 }
 
 package() {
-  cd contractor/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
