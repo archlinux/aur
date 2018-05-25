@@ -1,7 +1,7 @@
 # Maintainer: raku-cat <raku at raku dot party>
 # Based on intel-ucode by Thomas Bächler <thomas@archlinux.org>
 pkgname=amd-ucode-early
-pkgver=20180507
+pkgver=20180518
 pkgrel=1
 pkgdesc="Microcode update files for AMD CPUs"
 arch=('any')
