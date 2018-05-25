@@ -1,0 +1,34 @@
+pkgbase = ruby-solargraph
+	pkgdesc = A Ruby language server
+	pkgver = 0.21.1
+	pkgrel = 0
+	url = http://solargraph.org/
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-ast
+	depends = ruby-coderay
+	depends = ruby-eventmachine
+	depends = ruby-htmlentities
+	depends = ruby-kramdown
+	depends = ruby-nokogiri
+	depends = ruby-mini_portile2
+	depends = ruby-parallel
+	depends = ruby-parser
+	depends = ruby-powerpack
+	depends = ruby-ruby-progressbar
+	depends = ruby-rainbow
+	depends = ruby-reverse_markdown
+	depends = ruby-rubocop
+	depends = ruby-thor
+	depends = ruby-unicode-display_width
+	depends = ruby-tilt
+	depends = ruby-yard
+	noextract = solargraph-0.21.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/solargraph-0.21.1.gem
+	sha256sums = 8e2a6bf161bf5b697230b7e8da289755f868a96e75a161886f97c3eae1aa93a3
+
+pkgname = ruby-solargraph
+
