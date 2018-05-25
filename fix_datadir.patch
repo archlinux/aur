@@ -1,0 +1,12 @@
+diff -Nurp jstest-gtk/src/main.cpp jstest-gtk-new/src/main.cpp
+--- jstest-gtk/src/main.cpp	2018-05-24 22:11:09.621159615 -0300
++++ jstest-gtk-new/src/main.cpp	2018-05-24 22:14:02.849168144 -0300
+@@ -82,7 +82,7 @@ JoystickGui::show_mapping_dialog()
+ 
+ Main::Main() :
+   Gtk::Application("com.gmail.grumbel.jstest-gtk", Gio::APPLICATION_HANDLES_OPEN),
+-  datadir("data/"),
++  datadir("/usr/share/jstest-gtk/data/"),
+   m_simple_ui(false)
+ {
+   current_ = this;
