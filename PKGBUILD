@@ -2,7 +2,7 @@
 # Contributor: Riley Trautman <asonix@tamu.edu>
 
 pkgname=pantheon-mail-git
-pkgver=r2876.e1bb88dc
+pkgver=r3159.274ab16b
 pkgrel=1
 pkgdesc='The Pantheon Mail Client'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/elementary/mail'
 license=('GPL3')
 depends=('cairo' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc' 'gmime' 'gtk3'
          'libaccounts-glib' 'libcanberra' 'libgee' 'libgsignon-glib'
-         'libsecret' 'libxml2' 'pango' 'sqlite' 'webkitgtk'
+         'libsecret' 'libxml2' 'pango' 'sqlite' 'webkit2gtk'
          'libgranite.so')
 makedepends=('cmake' 'git' 'gnome-doc-utils' 'gobject-introspection'
              'granite-git' 'intltool' 'vala')
