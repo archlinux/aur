@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaard
-_ver=0.12.0-rc3
+_ver=0.12.0
 pkgver=$(echo "${_ver}" | tr -d -)
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
@@ -43,6 +43,10 @@ package() {
 }
 
 md5sums=('1cce50356de4ee3e5c9daee5aeee5317'
+	'b0193c5364076ce7b112f13edf995ac1'
+	'9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
+'92cd2fa8929c5acddbddf7d4fc2fd494')
+md5sums=('e38f5322fef51e26dc68bad0e0c6a0e4'
 	'b0193c5364076ce7b112f13edf995ac1'
 	'9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
 '92cd2fa8929c5acddbddf7d4fc2fd494')
