@@ -2,7 +2,7 @@
 
 _name=ddnet
 pkgname=$_name-git
-pkgver=11.1.4.r0.g160b4df81
+pkgver=11.1.8.r1.g9c29d83d3
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('x86_64')
@@ -83,10 +83,12 @@ package() {
     rm -rf "$pkgdir/usr/share/ddnet/data/languages/scripts/"
 
       # Install desktop and icon files
-    install -Dm644 DDNet.desktop        "$pkgdir/usr/share/applications/ddnet.desktop"
-    install -Dm644 DDNet-Server.desktop "$pkgdir/usr/share/applications/ddnet-server.desktop"
-    install -Dm644 DDNet-5.png          "$pkgdir/usr/share/pixmaps/DDNet.png"
-    install -Dm644 DDNet-Server-8.png   "$pkgdir/usr/share/pixmaps/DDNet-Server.png"
+    install -d -m755 "$pkgdir/usr/share/applications/"
+    install -d -m755 "$pkgdir/usr/share/pixmaps/"
+    install -m644 "$srcdir/ddnet.desktop"        "$pkgdir/usr/share/applications/"
+    install -m644 "$srcdir/ddnet-server.desktop" "$pkgdir/usr/share/applications/"
+    install -m644 "$srcdir/DDNet.png"            "$pkgdir/usr/share/pixmaps/"
+    install -m644 "$srcdir/DDNet-Server.png"     "$pkgdir/usr/share/pixmaps/"
 
       # Install license files
     install -Dm644 ../$_name/license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
