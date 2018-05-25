@@ -1,0 +1,5 @@
+2018-05-25  Tinu Weber  <http://ayekat.ch>
+	* PKGBUILD: Add missing dependency on python-protobuf
+
+2018-05-19  Tinu Weber  <http://ayekat.ch>
+	* python-cothority: Initial package

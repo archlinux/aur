@@ -1,8 +1,9 @@
 pkgbase = python-cothority
 	pkgdesc = Scalable collective authority prototype
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/cothority/
+	changelog = changelog
 	arch = any
 	license = AGPL3
 	makedepends = python-pip
@@ -12,5 +13,6 @@ pkgbase = python-cothority
 
 pkgname = python-cothority
 	depends = python
+	depends = python-protobuf
 	depends = python-websockets
 
