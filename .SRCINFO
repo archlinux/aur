@@ -8,6 +8,7 @@ pkgbase = deepin.com.qq.office
 	license = Proprietary
 	makedepends = tar
 	depends = deepin-wine
+	depends = lib32-gtk2
 	conflicts = wine-tim
 	noextract = deepin.com.qq.office_2.0.0deepin3_i386.deb
 	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.qq.office/deepin.com.qq.office_2.0.0deepin3_i386.deb
