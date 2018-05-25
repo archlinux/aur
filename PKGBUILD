@@ -3,7 +3,7 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20180524.86ab5a91f
+pkgver=20180525.b18b10b46
 pkgrel=1
 pkgdesc='Divelog program'
 url='https://subsurface-divelog.org/'
@@ -13,10 +13,8 @@ makedepends=('git' 'cmake' 'asciidoc' 'qt5-tools')
 depends=('libzip' 'libxml2' 'libxslt' 'sqlite' 'libusb' 'libgit2'
          'subsurface-libdc-git' 'qt5-svg' 'qt5-location'
          'qt5-connectivity' 'qt5-webkit' 'grantlee' 'googlemaps')
-source=('git+https://github.com/Subsurface-divelog/subsurface'
-        'delete.patch')
-sha256sums=('SKIP'
-            '59135a6917643be1608eb88db1dc81a740c8b0cff01f9ed62fa80e7d7523ee47')
+source=('git+https://github.com/Subsurface-divelog/subsurface')
+sha256sums=('SKIP')
 
 # qt5-webkit still used for: printing, manual, facebook
 
@@ -26,13 +24,6 @@ conflicts=('subsurface')
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
 	git log -1 --format='%cd.%h' --date=short | tr -d -
-}
-
-prepare() {
-	cd "${srcdir}/${_pkgname}"
-
-	# https://bugreports.qt.io/browse/QTBUG-67948
-	patch -p1 -i ../delete.patch
 }
 
 build() {
