@@ -1,0 +1,10 @@
+pkgbase = linux-firmware-dummy
+	pkgdesc = A dummy package just providing a logic dependency. Makes the system assume that the package 'linux-firmware' is there even if it is not! $pkgver of pacman -Si 'linux-firmware' will be used.
+	pkgver = 20180507.8fc2d4e
+	pkgrel = 1
+	arch = any
+	license = none
+	provides = linux-firmware=20180507.8fc2d4e
+
+pkgname = linux-firmware-dummy
+
