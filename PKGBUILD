@@ -23,7 +23,7 @@ _rev_override="n"
 
 pkgbase=linux-clear
 __basekernel=4.16
-_minor=11
+_minor=12
 pkgver=${__basekernel}.${_minor}
 #_clearver=${__basekernel}.8-571
 _clearver=0102def94bb1ed3e983872e2655720773a73eacd
@@ -56,7 +56,7 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'd0d998f193c3feeab95f1378dea15aa6ba145f591661547cc00ef16d161651fe'
+            '70a6381aca28b1d271e85bc38fab05af4525d9fdc2c5bb87182b3351db8c4fa2'
             'SKIP'
             'SKIP'
             'f0d2492f4561e2559f6c9471b231cb8262d45762c0e7cccf787be5c189b4e2d6'
