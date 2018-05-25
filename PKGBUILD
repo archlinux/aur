@@ -1,7 +1,7 @@
 # Maintainer: Dominik Heidler <dheidler@gmail.com>
 
 pkgname=aurbs
-pkgver=1.3.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="AUR package build system"
 arch=('any')
@@ -22,7 +22,7 @@ backup=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/asdil12/$pkgname/tar.gz/$pkgver")
-md5sums=('78495ee7e7b87c14a5ee98fdad8a48c2')
+sha256sums=('f4005001846d93af219a7a76ee02db89ead0fb11c788a25366cb12b588d74276')
 
 package() {
 	cd $srcdir/$pkgname-$pkgver
