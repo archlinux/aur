@@ -33,7 +33,6 @@ optdepends=('unity-editor-beta-doc'
             'unity-editor-beta-android'
             'unity-editor-beta-ios'
             'unity-editor-beta-mac'
-            'unity-editor-beta-tizen'
             'unity-editor-beta-webgl'
             'unity-editor-beta-windows'
             'unity-editor-beta-facebook')
