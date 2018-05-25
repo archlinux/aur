@@ -1,0 +1,29 @@
+pkgbase = lxqt-connman-applet
+	pkgdesc = LXQt system-tray applet for connman
+	pkgver = 201805
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/lxqt/lxqt-connman-applet
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	makedepends = lxqt-build-tools
+	depends = liblxqt
+	depends = qt5-svg
+	depends = connman
+	provides = lxqt-connman-applet.git
+	conflicts = lxqt-connman-applet.git
+	source = git+https://github.com/lxqt/lxqt-connman-applet.git#commit=940493ce509bb2784738d547cc27df677b4835a2
+	source = use_app_font.patch
+	source = fix_build_qt511.patch
+	source = russian_translation.patch
+	sha256sums = SKIP
+	sha256sums = dbe35db41680798814cd83bee84fedcc550caa4465f9553522109a7b47823ce6
+	sha256sums = abd9cac3a8ff2a61cecac945066a2565c06b7cea6df8e8c812e60f7b6bc94e90
+	sha256sums = c953bb93ddbac8203d5f50797d1d1280c8451e4b644726e5fa0b86200afa300b
+
+pkgname = lxqt-connman-applet
+

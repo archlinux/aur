@@ -1,0 +1,49 @@
+From 63520399217f902076e4a65c89cd97aff1cdd269 Mon Sep 17 00:00:00 2001
+From: Max Krummenacher <max.krummenacher@toradex.com>
+Date: Sun, 6 May 2018 11:37:20 +0000
+Subject: [PATCH] CMakeLists.txt: Fix build with Qt 5.11_beta3 (dropping
+ qt5_use_modules)
+
+| CMake Error at .../CMakeLists.txt (qt5_use_modules):
+|   Unknown CMake command "qt5_use_modules".
+
+Signed-off-by: Max Krummenacher <max.krummenacher@toradex.com>
+---
+ CMakeLists.txt            | 4 +---
+ iconviewer/CMakeLists.txt | 4 +---
+ 2 files changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e06d783..6aad304 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,11 +66,9 @@ add_executable(${PROJECT_NAME}
+    ${QM_LOADER}
+ )
+ 
+-qt5_use_modules(lxqt-connman-applet Core Widgets DBus)
+-
+-
+ target_link_libraries(${PROJECT_NAME} 
+                       lxqt
++                      Qt5::Core
+                       Qt5::Widgets 
+                       Qt5::DBus 
+                       Qt5::Svg)
+diff --git a/iconviewer/CMakeLists.txt b/iconviewer/CMakeLists.txt
+index 4115996..6e31e83 100644
+--- a/iconviewer/CMakeLists.txt
++++ b/iconviewer/CMakeLists.txt
+@@ -36,11 +36,9 @@ add_executable(${PROJECT_NAME}
+    ${QRCS_GENERATED}
+ )
+ 
+-qt5_use_modules(icon-viewer Core Widgets)
+-
+-
+ target_link_libraries(${PROJECT_NAME} 
+                       lxqt
++                      Qt5::Core
+                       Qt5::Widgets 
+                       Qt5::Svg)
+ 

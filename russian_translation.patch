@@ -1,0 +1,97 @@
+From 12e97928d95cf8ac2e13fa152fe5f4f177d685db Mon Sep 17 00:00:00 2001
+From: ZwerG_MaX <beyze.mr@yandex.ru>
+Date: Mon, 23 Apr 2018 13:06:28 +0700
+Subject: [PATCH] add Russian translation
+
+---
+ translations/lxqt-connman-applet_ru.ts | 81 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 81 insertions(+)
+ create mode 100644 translations/lxqt-connman-applet_ru.ts
+
+diff --git a/translations/lxqt-connman-applet_ru.ts b/translations/lxqt-connman-applet_ru.ts
+new file mode 100644
+index 0000000..3ce28b3
+--- /dev/null
++++ b/translations/lxqt-connman-applet_ru.ts
+@@ -0,0 +1,81 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE TS>
++<TS version="2.1" language="ru_RU">
++<context>
++    <name>Dialog</name>
++    <message>
++        <location filename="../dialog.ui" line="14"/>
++        <source>LXQt ConnMan applet</source>
++        <translation>LXQt ConnMan апплет</translation>
++    </message>
++    <message>
++        <location filename="../dialog.ui" line="25"/>
++        <source>Connect to %1</source>
++        <translation>Подключение к %1</translation>
++    </message>
++</context>
++<context>
++    <name>QObject</name>
++    <message>
++        <location filename="../ui_strings.cpp" line="36"/>
++        <source>name</source>
++        <comment>network name</comment>
++        <translatorcomment>имя сети</translatorcomment>
++        <translation>имя</translation>
++    </message>
++    <message>
++        <location filename="../ui_strings.cpp" line="37"/>
++        <location filename="../ui_strings.cpp" line="38"/>
++        <source>Username</source>
++        <translation>Имя пользователя</translation>
++    </message>
++    <message>
++        <location filename="../ui_strings.cpp" line="39"/>
++        <source>Passphrase</source>
++        <translation>Кодовая фраза</translation>
++    </message>
++    <message>
++        <location filename="../ui_strings.cpp" line="40"/>
++        <source>Previous passphrase</source>
++        <translation>Предыдущая кодовая фраза</translation>
++    </message>
++    <message>
++        <location filename="../ui_strings.cpp" line="42"/>
++        <source>Wired</source>
++        <translation>Проводная сеть</translation>
++    </message>
++    <message>
++        <location filename="../ui_strings.cpp" line="43"/>
++        <source>Wireless</source>
++        <translation>Беспроводная сеть</translation>
++    </message>
++    <message>
++        <location filename="../ui_strings.cpp" line="44"/>
++        <source>Peer-to-peer</source>
++        <translation>p2p сеть</translation>
++    </message>
++    <message>
++        <location filename="../ui_strings.cpp" line="45"/>
++        <source>Bluetooth</source>
++        <translation>Блютуз сеть</translation>
++    </message>
++</context>
++<context>
++    <name>SystemTray</name>
++    <message>
++        <location filename="../systemtray.cpp" line="43"/>
++        <source>Quit</source>
++        <translation>Выйти</translation>
++    </message>
++    <message>
++        <location filename="../systemtray.cpp" line="78"/>
++        <source>Technologies:</source>
++        <translation>Технологии:</translation>
++    </message>
++    <message>
++        <location filename="../systemtray.cpp" line="88"/>
++        <source>Services: </source>
++        <translation>Сервисы: </translation>
++    </message>
++</context>
++</TS>
