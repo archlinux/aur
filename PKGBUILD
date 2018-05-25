@@ -2,7 +2,7 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=1.1.54362
+pkgver=1.1.54383
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
@@ -18,10 +18,10 @@ source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/facebook/zstd/archive/f4340f4.tar.gz
         https://github.com/Dead2/zlib-ng/archive/e07a52d.tar.gz
         https://github.com/ClickHouse-Extras/poco/archive/8238852.tar.gz
-        https://github.com/ClickHouse-Extras/boost/archive/5121cc9.tar.gz
+        https://github.com/ClickHouse-Extras/boost/archive/2d5cb2c.tar.gz
         clickhouse-server.service
         libunwind.patch)
-md5sums=('e941e503e404f14bc874d6e8c2ea1758'
+md5sums=('c89a7babff34012e28357094afbfa060'
          '5323f7ba2565a84a80a93edde95eb4fe'
          'ea7f52489fead0712f7d20c450a4b7a0'
          '7b92f0554687e6a8949adc5c10aeff78'
@@ -29,7 +29,7 @@ md5sums=('e941e503e404f14bc874d6e8c2ea1758'
          'e3212525a38d6cc38e26979a10c174ed'
          '87676f8d7fcdea908476029f92b8103f'
          'fc643caa1710523bbd1d69f72577afbe'
-         '0eedc70c486ae679da354fb7599f2851'
+         '123c1e981fe28c1240d066af493d83b9'
          'f9f5663b0a9a58e99f481efe9d193e85'
          'f3f60b75abf8d6f21de74db6e88e1e7b')
 backup=('etc/clickhouse-client/config.xml' 'etc/clickhouse-server/config.xml' 'etc/clickhouse-server/users.xml')
@@ -48,7 +48,7 @@ prepare() {
   mv ../zstd-f4340f4*/* contrib/zstd/
   mv ../zlib-ng-e07a52d*/* contrib/zlib-ng/
   mv ../poco-8238852*/* contrib/poco/
-  mv ../boost-5121cc9*/* contrib/boost/
+  mv ../boost-2d5cb2c*/* contrib/boost/
   for dir in contrib/*/; do
     rmdir $dir &> /dev/null || true
   done
@@ -56,7 +56,7 @@ prepare() {
 
 build() {
   cd ClickHouse-$pkgver-stable
-  cmake -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False -D USE_INTERNAL_DOUBLE_CONVERSION_LIBRARY:BOOL=False -D USE_INTERNAL_CAPNP_LIBRARY:BOOL=False -D USE_INTERNAL_POCO_LIBRARY:BOOL=True -D POCO_STATIC:BOOL=True -D USE_INTERNAL_RE2_LIBRARY:BOOL=False .
+  cmake -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False -D USE_INTERNAL_DOUBLE_CONVERSION_LIBRARY:BOOL=False -D USE_INTERNAL_CAPNP_LIBRARY:BOOL=False -D USE_INTERNAL_POCO_LIBRARY:BOOL=True -D POCO_STATIC:BOOL=True -D USE_INTERNAL_RE2_LIBRARY:BOOL=False -D NO_WERROR=1 .
   make clickhouse
 }
 
