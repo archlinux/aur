@@ -1,0 +1,15 @@
+pkgbase = bdinfo-git
+	pkgdesc = Get bluray info and extract tracks including language metadata and chapters.
+	pkgver = r26.4b534fb
+	pkgrel = 1
+	url = https://github.com/schnusch/bdinfo
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = libbluray>=1.0.0
+	optdepends = ffmpeg: for remuxing
+	source = git+https://github.com/schnusch/bdinfo.git
+	md5sums = SKIP
+
+pkgname = bdinfo-git
+
