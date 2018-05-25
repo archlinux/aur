@@ -33,9 +33,7 @@ build() {
     --disable-internal-sdlimage \
     --disable-internal-sdlmixer \
     --disable-internal-bz \
-    --disable-internal-smpeg \
-    --with-external-sdl-mixer \
-    --without-game-controllers
+    --disable-internal-smpeg
   make
 }
 
