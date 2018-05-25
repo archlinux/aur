@@ -15,7 +15,7 @@ source=(
 )
 noextract=("okta-aws-cli-$pkgver.jar")
 md5sums=('e1539c42e5786c553f33c93d1daca067'
-         '56043c3110e422b9b7543a246a80e106')
+         'df2e1d5492d2ab7608c2cdf110dfd91d')
 
 package() {
   cd "$srcdir" || exit 1
