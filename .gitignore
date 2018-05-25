@@ -1,4 +1,4 @@
-/cpplint-*.pkg.tar.xz
+/cpplint-*.pkg.tar.*
 /pkg/
 /src/
 /styleguide/
