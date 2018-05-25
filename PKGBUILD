@@ -2,16 +2,16 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=otf-libertinus-git
-pkgver=6.6.r19.g51a9651
+pkgver=6.6.r30.g6f5da00
 pkgrel=1
 pkgdesc='Libertinus font family, a fork of Linux Libertine and Linux Biolinum with bugfixes and an OpenType math companion.'
 arch=('any')
-url='https://github.com/khaledhosny/libertinus'
+url='https://github.com/libertinus-fonts/libertinus'
 license=('custom: OFL')
 depends=('fontconfig' 'xorg-font-utils')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+https://github.com/khaledhosny/libertinus.git")
+source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
