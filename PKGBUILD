@@ -1,10 +1,10 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-screenshot-git
-pkgver=r543.ed4dafa
+pkgver=r581.4f8a110
 pkgrel=1
 pkgdesc='The Pantheon Screenshot Tool'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/elementary/screenshot-tool'
 license=('GPL3')
 groups=('pantheon-unstable')
@@ -34,9 +34,7 @@ prepare() {
 build() {
   cd build
 
-  meson ../pantheon-screenshot \
-    --buildtype='release' \
-    --prefix='/usr'
+  arch-meson ../pantheon-screenshot
   ninja
 }
 
