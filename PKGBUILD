@@ -1,9 +1,9 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 _version=2018.2.0
-_build=b2
-_buildtag=20180501
-_randomstring=7b8938f7fa83
+_build=b5
+_buildtag=20180525
+_randomstring=05c26644dc98
 _prefix=/opt/UnityBeta
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
@@ -43,7 +43,7 @@ source=("${_unitydownloads}/UnitySetup-${_version}${_build}"
         'unity-editor-beta'
         'unity-editor-beta.desktop'
         'unity-editor-beta-icon.png')
-sha1sums=('42112f9cc81bc941f88230631547b65daed008cc'
+sha1sums=('eff3735245592be8a44d29fe1fc7a8b0cbb4e0dd'
           'd61175685d0836a79b2d4582c09ea23ed5ee18e9'
           'c348f141232ec06c6558fd42b5cbf86a75e2d02d'
           'fddf4861974f88f0565de7f54f7418204e729894')
