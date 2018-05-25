@@ -1,0 +1,10 @@
+pkgbase = linux-headers-dummy
+	pkgdesc = A dummy package just providing a logic dependency. Makes the system assume that the package 'linux-headers' is there even if it is not! $pkgver of pacman -Si 'linux-headers' will be used.
+	pkgver = 4.16.10
+	pkgrel = 1
+	arch = any
+	license = none
+	provides = linux-headers=4.16.10
+
+pkgname = linux-headers-dummy
+
