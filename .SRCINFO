@@ -1,6 +1,6 @@
 pkgbase = deepin.com.qq.eim
-	pkgdesc = Deepin Wine QQEIM 2.0.0
-	pkgver = 1.98
+	pkgdesc = Deepin Wine QQEIM 1.98
+	pkgver = 1.98deepin3
 	pkgrel = 1
 	url = http://b.qq.com/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = deepin.com.qq.eim
 	license = Proprietary
 	makedepends = tar
 	depends = deepin-wine
-	source = deepin.com.qq.eim-1.98.tar.gz::https://github.com/Skywol/deepin-wine-eim/archive/1.98.tar.gz
-	md5sums = 7f1cb8ee5d424e6691263c3bd299b167
+	source = deepin.com.qq.eim-1.98deepin3.tar.gz::https://github.com/Skywol/deepin-wine-eim/archive/1.98deepin3.tar.gz
+	md5sums = 77603906689003d8d464bae8a3361857
 
 pkgname = deepin.com.qq.eim
 
