@@ -1,0 +1,15 @@
+pkgbase = intel-lms-git
+	pkgdesc = Intel(R) Local Manageability Service tool (fork, git)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/openamt/lms
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	source = intel-lms-git::git+https://github.com/openamt/lms
+	sha256sums = SKIP
+
+pkgname = intel-lms-git
+
