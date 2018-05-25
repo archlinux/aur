@@ -9,8 +9,7 @@ pkgdesc='A java-based build tool'
 license=('APACHE')
 provides=('apache-ant' 'apache-ant-doc')
 conflicts=('apache-ant' 'apache-ant-doc')
-depends=('java-runtime>=8')
-makedepends=('java-environment>=8')
+depends=('java-environment>=8')
 optdepends=('junit: to use the junit tasks')
 validpgpkeys=('CE8075A251547BEE249BC151A2115AE15F6B8B72') # Stefan Bodewig
 source=("https://www.apache.org/dist/ant/source/apache-ant-${pkgver}-src.tar.bz2"{,.asc}
