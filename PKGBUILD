@@ -2,14 +2,14 @@
 
 pkgname=pam_panic-git
 pkgver=r127.d481b6d
-pkgrel=1
+pkgrel=2
 pkgdesc="A PAM module that protects sensitive data and provides a panic function for emergency situations. Authentication through passwords or removable media."
 arch=('any')
 url="https://github.com/pampanic/pam_panic"
 license=('GPL3')
 # depends=('')
 makedepends=('git' 'automake' 'autoconf' 'make' 'gcc' 'which' 'groff' 'gettext' 'm4' 'fakeroot' 'gawk' 'pam' 'cryptsetup')
-checkdepends=('cmake')
+checkdepends=('bcunit-cunit-compat')
 validpgpkeys=('E2D7876915312785DC086BFCC1E133BC65A822DD')
 source=("$pkgname-$pkgver::git://github.com/pampanic/pam_panic.git")
 sha512sums=('SKIP')
