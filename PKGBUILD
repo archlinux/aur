@@ -1,4 +1,5 @@
 # Maintainer: Jakub Trnka <jakub.trnka@chainanalytics.net>
+# Contributor: Sebastian Jug <seb@stianj.ug>
 
 pkgname=trezor-bridge-bin
 pkgver=2.0.13
@@ -7,7 +8,7 @@ pkgdesc="Communication daemon for TREZOR"
 arch=('i686' 'x86_64')
 url="https://trezor.io/"
 license=('LGPL3')
-depends=('curl' 'libmicrohttpd' 'libusb')
+depends=('systemd')
 makedepends=()
 options=()
 install=$pkgname.install
