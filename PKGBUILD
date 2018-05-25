@@ -1,10 +1,11 @@
-# Maintainer: Iru Cai <mytbk920423@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
+# Contributor: Iru Cai <mytbk920423@gmail.com>
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=gegl-git
-pkgver=0.4.0.8
+pkgver=0.4.2.9
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
@@ -25,29 +26,29 @@ optdepends=('openexr: for using the openexr plugin'
 provides=("gegl=${pkgver}")
 conflicts=('gegl')
 options=(!libtool)
-source=(git://git.gnome.org/gegl)
+source=(git+https://gitlab.gnome.org/GNOME/gegl.git)
 md5sums=('SKIP')
 
 _gitroot=GITURL
 _gitname=gegl
 
 build() {
-  cd "$srcdir/$_gitname"
+	cd "$srcdir/$_gitname"
 
-  ./autogen.sh
-  ./configure --prefix=/usr --with-sdl --with-openexr --with-librsvg \
-    --with-libavformat --with-jasper --disable-docs \
-    --enable-workshop \
-	--enable-introspection=yes
+	./autogen.sh
+	./configure --prefix=/usr --with-sdl --with-openexr --with-librsvg \
+		--with-libavformat --with-jasper --disable-docs \
+		--enable-workshop \
+		--enable-introspection=yes
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir/" install
+	cd "$srcdir/$_gitname"
+	make DESTDIR="$pkgdir/" install
 }
 
 pkgver() {
-  cd $_gitname
-  git describe --always | sed -e 's/GEGL_//' -e 's/-g.*$//' -e 's/[_-]/./g'
+	cd $_gitname
+	git describe --always | sed -e 's/GEGL_//' -e 's/-g.*$//' -e 's/[_-]/./g'
 }
