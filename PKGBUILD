@@ -1,4 +1,6 @@
-#  Maintainer: sudokode <sudokode@gmail.com>
+# Maintainer: e5ten
+# Maintainer: anna <morganamilo@gmail.com>
+# Contributor: sudokode <sudokode@gmail.com>
 # Contributor: graysky <graysky AT archlinux DOT us>
 # Contributor: Slash <demodevil5[at]yahoo[dot]com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
@@ -7,71 +9,67 @@
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 # Contributor: Ben <ben@benmazer.net>
 
+
 pkgname=mpd-git
-pkgver=0.19.9.r485.gcd1148c
+_pkgname=mpd
+pkgver=0.20.20.r935.g66a1e8b73
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music'
-url='http://www.musicpd.org/'
+url='https://www.musicpd.org/'
 license=('GPL')
-arch=('i686' 'x86_64')
-depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl' 'faad2' 'boost-libs' 'libupnp'
-         'sqlite' 'jack' 'libmms' 'wavpack' 'avahi' 'libid3tag' 'yajl' 'libmpdclient' 'opus' 'libsoxr')
-makedepends=('boost' 'doxygen' 'git')
+arch=('x86_64')
+depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl'
+	 'faad2' 'sqlite' 'jack' 'libmms' 'wavpack' 'avahi' 'libid3tag' 'yajl'
+	 'libmpdclient' 'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr'
+	 'smbclient' 'libgme' 'zziplib' 'libsystemd')
+makedepends=('boost' 'doxygen')
 provides=('mpd')
 conflicts=('mpd')
-source=("$pkgname::git://git.musicpd.org/master/mpd.git"
-        'mpd.conf' 'mpd.tmpfile' 'mpd.service' 'mpd-system.socket' 'mpd-user.socket')
+source=("$_pkgname::git+https://github.com/MusicPlayerDaemon/MPD"
+        'tmpfiles.d'
+        'sysusers.d'
+        'conf')
 sha256sums=('SKIP'
-            '1dafb23f2da8df4600de0be51677201f63f745bd572f7a6fcd8fa7659ac691ea'
-            'c1683ba35774c85e16c70e89f7e2ed1c09619512b1a273daabbd5e34d40439bd'
-            'ecb4caedf02dacdb9b71040794145d7547d7ee8349eaea200cbddab85d67ee95'
-            'a05936116d59d442a5f94858f30e759389719ed2ac6dbef25a512d952a156658'
-            'a650e25f9e4490e6dc7172ff95bfb7a1df28175d365741c3d98af3849c4b5428')
+            '2faa85c12449a5b3ca422ff1c1fa06d057c7e262a74bfa6298c914a92d6f2e7a'
+            '0b74c6e5db08daab3091dc15a6b0c75210ba2f9e98fa074f6cfd605a461056b6'
+            'f40f68205834ca53cea3372e930bfe6c2f9ecc9df3b1605df2fec63a658b2e03')
+
 backup=('etc/mpd.conf')
-install=mpd.install
-
-pkgver() {
-  cd $pkgname
-
-  git describe --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
-}
 
 build() {
-  cd $pkgname
+	cd "${_pkgname}"
+	./autogen.sh
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--enable-jack \
+		--enable-libmpdclient \
+		--enable-pipe-output \
+		--enable-pulse \
+		--enable-soundcloud \
+		--enable-zzip \
+		--disable-sidplay \
+		--enable-systemd-daemon \
+		--with-systemduserunitdir=/usr/lib/systemd/user \
+		--with-systemdsystemunitdir=/usr/lib/systemd/system \
 
-  ./autogen.sh
-
-  ./configure \
-      --prefix=/usr \
-      --sysconfdir=/etc \
-      --enable-jack \
-      --enable-soundcloud \
-      --enable-pipe-output \
-      --enable-pulse \
-      --disable-sidplay \
-      --with-systemdsystemunitdir=/usr/lib/systemd/system \
-      --enable-opus \
-      --disable-lsr \
-      --enable-soxr \
-      --disable-aac
-
-  make
+	make
 }
 
 package() {
-  cd $pkgname
+	cd "${_pkgname}"
+	make DESTDIR="${pkgdir}" install
+	install -Dm644 ../conf "${pkgdir}"/etc/mpd.conf
+	install -Dm644 ../tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
+	install -Dm644 ../sysusers.d "${pkgdir}"/usr/lib/sysusers.d/mpd.conf
 
-  make DESTDIR="$pkgdir" install
-
-  cd ..
-
-  install -d -g 45 -o 45 "$pkgdir"/var/lib/mpd
-  install -d -g 45 -o 45 "$pkgdir"/var/lib/mpd/playlists
-  install -Dm644 mpd.conf "$pkgdir"/etc/mpd.conf
-  install -Dm644 mpd.tmpfile "$pkgdir"/usr/lib/tmpfiles.d/mpd.conf
-  install -Dm644 mpd.service "$pkgdir"/usr/lib/systemd/user/mpd.service
-  install -Dm644 mpd-system.socket "$pkgdir"/usr/lib/systemd/system/mpd.socket
-  install -Dm644 mpd-user.socket "$pkgdir"/usr/lib/systemd/user/mpd.socket
+	sed '/\[Service\]/a User=mpd' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
+	sed '/WantedBy=/c WantedBy=default.target' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
 }
 
-# vim:set ts=2 sw=2 et:
+
+pkgver() {
+  cd "${_pkgname}"
+
+  git describe --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+}

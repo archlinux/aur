@@ -1,6 +1,5 @@
 # See: /usr/share/doc/mpd/mpdconf.example
 
-user "mpd"
 pid_file "/run/mpd/mpd.pid"
 db_file "/var/lib/mpd/mpd.db"
 state_file "/var/lib/mpd/mpdstate"
