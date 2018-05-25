@@ -1,0 +1,10 @@
+pkgbase = linux-dummy
+	pkgdesc = A dummy package just providing a logic dependency. Makes the system assume that the package 'linux' is there even if it is not. $pkgver of package 'linux' available in pacman -Si linux will be used.
+	pkgver = 4.16.10
+	pkgrel = 1
+	arch = any
+	license = none
+	provides = linux=4.16.10
+
+pkgname = linux-dummy
+
