@@ -1,17 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-print-git
-pkgver=r18.b526ae8
+pkgver=r26.28f2600
 pkgrel=1
-pkgdesc=' Simple shim for printing support via Contractor'
+pkgdesc='Simple shim for printing support via Contractor'
 arch=('x86_64')
 url='https://github.com/elementary/pantheon-print'
 license=('GPL3')
 depends=('cairo' 'contractor-git' 'glib2' 'glibc' 'gtk3' 'pango')
-makedepends=('cmake' 'git' 'vala')
+makedepends=('git' 'meson' 'vala')
 provides=('pantheon-print')
 conflicts=('pantheon-print')
-replaces=('pantheon-print-bzr')
 source=('git+https://github.com/elementary/pantheon-print.git')
 sha256sums=('SKIP')
 
@@ -22,8 +21,6 @@ pkgver() {
 }
 
 prepare() {
-  cd pantheon-print
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -31,18 +28,16 @@ prepare() {
 }
 
 build() {
-  cd pantheon-print/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr'
-  make
+  arch-meson ../pantheon-print
+  ninja
 }
 
 package() {
-  cd pantheon-print/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
