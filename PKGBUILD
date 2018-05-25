@@ -1,19 +1,18 @@
 # Contributor: Bug <bug2000@gmail.com>
+# Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpmidi
-pkgver=4.0
+pkgver=5.0
 pkgrel=1
 pkgdesc="pmidi X frontend"
-arch=('i686' 'x86_64')
-url="http://www.mellowood.ca/xpmidi/"
+arch=('any')
+url="https://www.mellowood.ca/xpmidi/"
 license=('GPL')
 depends=('python' 'tk')
-source=("http://www.mellowood.ca/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('d3e66fcc1702d71d9ce3da4c9a82fc56')
-DLAGENTS=('http::/usr/bin/wget')
+source=("https://www.mellowood.ca/$pkgname/$pkgname-$pkgver.tar.gz")
+sha1sums=('8d2fac01b128fe445fd7c5f84f26a5b0ad0ddcb4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's:#!/usr/bin/env python:#!/usr/bin/env python2:' xpmidi.py
 }
 
 package() {
