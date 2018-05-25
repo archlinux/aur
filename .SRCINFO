@@ -1,0 +1,16 @@
+pkgbase = download-with-kget-native-git
+	pkgdesc = KGet extension native handler
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/Takios/download-with-kget
+	arch = x86_64
+	license = MPL2
+	depends = git
+	provides = download-with-kget
+	source = git+https://github.com/Takios/download-with-kget
+	source = Makefile.patch
+	sha256sums = SKIP
+	sha256sums = af886b2595d917054933f8936f2c83f236ee4c56e4994eb5778cc9c51ccc7c05
+
+pkgname = download-with-kget-native-git
+

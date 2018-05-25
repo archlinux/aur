@@ -1,0 +1,29 @@
+--- Makefile	2018-05-18 17:33:52.000000000 +0100
++++ Makefile.Mod	2018-05-21 18:12:29.463633235 +0100
+@@ -1,22 +1,13 @@
+ MACHINE := $(shell uname -m)
+ 
+-ifeq ($(MACHINE), x86_64)
+-libdir = /usr/lib64/mozilla/native-messaging-hosts
+-manifest_file = download_with_kget.json_64
+-else
+ libdir = /usr/lib/mozilla/native-messaging-hosts
+ manifest_file = download_with_kget.json
+-endif
+ 
+ 
+ install:
+-	mkdir -p $(libdir)
+-	cp -a $(manifest_file) $(libdir)/download_with_kget.json
+-	cp -a download_with_kget.py $(libdir)/
+-	chmod +x $(libdir)/download_with_kget.py
+-	chown root:root $(libdir)/download_with_kget.py
+-	chown root:root $(libdir)/download_with_kget.json
++	install -Dm644 $(manifest_file) $(DESTDIR)$(libdir)/download_with_kget.json
++	install -Dm755 download_with_kget.py $(DESTDIR)$(libdir)/download_with_kget.py
+ 
+ uninstall:
+-	rm $(libdir)/download_with_kget.py
+-	rm $(libdir)/download_with_kget.json
++	rm $(DESTDIR)$(libdir)/download_with_kget.py
++	rm $(DESTDIR)$(libdir)/download_with_kget.json
