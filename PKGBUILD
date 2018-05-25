@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-polkit-agent-git
-pkgver=0.1.4
+pkgver=0.1.4.r19.9d023ae
 pkgrel=1
 pkgdesc='Pantheon Polkit Agent'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/elementary/pantheon-agent-polkit'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'polkit')
-makedepends=('cmake' 'cmake-modules-elementary-git' 'git' 'intltool' 'vala')
+makedepends=('git' 'intltool' 'meson' 'vala')
 provides=('pantheon-polkit-agent')
 conflicts=('pantheon-polkit-agent')
 source=('pantheon-polkit-agent::git+https://github.com/elementary/pantheon-agent-polkit.git')
@@ -22,8 +22,6 @@ pkgver() {
 }
 
 prepare() {
-  cd pantheon-polkit-agent
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -31,18 +29,16 @@ prepare() {
 }
 
 build() {
-  cd pantheon-polkit-agent/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr'
-  make
+  arch-meson ../pantheon-polkit-agent
+  ninja
 }
 
 package() {
-  cd pantheon-polkit-agent/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
