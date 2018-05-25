@@ -2,14 +2,14 @@
 # Maintainer: AdrianoML <adriano.lols@gmail.com>
 
 pkgname=jstest-gtk-git
-pkgver=0.1.0.r69.ge89ae8f
-pkgrel=2
+pkgver=0.1.0.r97.g5a94e59
+pkgrel=1
 pkgdesc="A simple GTK2-based joystick tester and calibrator"
 arch=('i686' 'x86_64')
 url="https://github.com/Grumbel/jstest-gtk/"
 source=('git://github.com/Grumbel/jstest-gtk/' 'jstest-gtk.desktop' 'fix_asset_path.patch')
 license=('GPL3')
-depends=('gtkmm')
+depends=('gtkmm3')
 makedepends=('git' 'cmake')
 _gitname="jstest-gtk"
 
