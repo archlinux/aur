@@ -2,12 +2,12 @@
 # Maintainer: Jeremy Pope <jpope at jpope dot org> PGP-Key: E00B4261
 pkgname=breeze-hacked-cursor-theme-git
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Breeze Hacked cursor theme. (The package itself has nothing to do with git)"
 arch=("any")
 url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
 license=("GPL")
-makedepends=("inkscape" "xorg-xcursorgen")
+makedepends=("gnome-themes-extra" "inkscape" "xorg-xcursorgen")
 provides=("breeze-hacked-cursor-theme")
 conflicts=("breeze-hacked-cursor-theme")
 source=("https://soft.dct.party/aur/breeze-hacked-cursor-theme-git/plasma-cursors-breeze_hacked.source-2.0-kvermette.zip")

@@ -1,10 +1,11 @@
 pkgbase = breeze-hacked-cursor-theme-git
 	pkgdesc = Breeze Hacked cursor theme. (The package itself has nothing to do with git)
 	pkgver = 2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/
 	arch = any
 	license = GPL
+	makedepends = gnome-themes-extra
 	makedepends = inkscape
 	makedepends = xorg-xcursorgen
 	provides = breeze-hacked-cursor-theme
