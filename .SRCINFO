@@ -14,8 +14,7 @@ pkgbase = lxqt-connman-applet
 	depends = liblxqt
 	depends = qt5-svg
 	depends = connman
-	provides = lxqt-connman-applet.git
-	conflicts = lxqt-connman-applet.git
+	conflicts = lxqt-connman-applet-git
 	source = git+https://github.com/lxqt/lxqt-connman-applet.git#commit=940493ce509bb2784738d547cc27df677b4835a2
 	source = use_app_font.patch
 	source = fix_build_qt511.patch

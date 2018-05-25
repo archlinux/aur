@@ -11,8 +11,7 @@ url='https://github.com/lxqt/lxqt-connman-applet'
 license=('LGPL')
 depends=('liblxqt' 'qt5-svg' 'connman')
 makedepends=('git' 'cmake' 'qt5-tools' 'lxqt-build-tools')
-provides=("$pkgname.git")
-conflicts=("$pkgname.git")
+conflicts=("$pkgname-git")
 source=("git+$url.git#commit=$_commit"
         "use_app_font.patch"
         "fix_build_qt511.patch"
