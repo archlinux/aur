@@ -6,10 +6,10 @@
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=${pkgbase}
-_kernel_rel=4.17
+_kernel_rel=4.178
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=4.17.741042.d64547a1cfa8
+pkgver=4.178.741334.46c04bb3e028
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -47,6 +47,8 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   # get kernel version
+  sed -i 's|snprintf(buf, buflen, "INTERNAL ERROR: strerror_r(%d, %p, %zd)=%d", errnum, buf, buflen, err)|snprintf(buf, buflen, "INTERNAL ERROR: strerror_r(%d, [buf], %zd)=%d", errnum, buflen, err)|g' tools/lib/str_error_r.c
+
   make prepare
 
   # load configuration
