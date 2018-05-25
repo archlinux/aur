@@ -1,0 +1,17 @@
+pkgbase = breeze-hacked-cursor-theme-bin
+	pkgdesc = Breeze Hacked cursor theme.
+	pkgver = 2.0
+	pkgrel = 5
+	url = https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/
+	arch = any
+	license = GPL
+	makedepends = gnome-themes-extra
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	provides = breeze-hacked-cursor-theme
+	conflicts = breeze-hacked-cursor-theme
+	source = https://soft.dct.party/aur/breeze-hacked-cursor-theme-git/plasma-cursors-breeze_hacked.source-2.0-kvermette.zip
+	sha512sums = 08b29793bf6e8ea0579e1d3f882f330e16f10893bfaa2d05688825fc5cf48c1f921ce0fcc3f6c082ab8f3b085c878bd4c4e2a6007bdcee08093e9f275c43c080
+
+pkgname = breeze-hacked-cursor-theme-bin
+
