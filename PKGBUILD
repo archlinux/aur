@@ -34,8 +34,6 @@ prepare() {
     rm -rf build
   fi
   mkdir build
-
-  sed 's/libvala-0.36/libvala-0.38/' -i pantheon-code/plugins/outline/meson.build
 }
 
 build() {
