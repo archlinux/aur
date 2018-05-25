@@ -1,0 +1,10 @@
+pkgbase = linux-api-headers-dummy
+	pkgdesc = A dummy package just providing a logic dependency. Makes the system assume that the package 'linux-api-headers' is there even if it is not! $pkgver of pacman -Si 'linux-api-headers' will be used.
+	pkgver = 4.16.1
+	pkgrel = 1
+	arch = any
+	license = none
+	provides = linux-api-headers=4.16.1
+
+pkgname = linux-api-headers-dummy
+
