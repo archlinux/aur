@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-videos-git
-pkgver=r1246.715b8c6
+pkgver=r1325.b0e05b8
 pkgrel=1
 pkgdesc='The Pantheon Video Player'
 arch=('x86_64')
@@ -11,10 +11,9 @@ groups=('pantheon-unstable')
 depends=('clutter' 'clutter-gst' 'clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'libgee' 'libx11'
          'libgranite.so')
-makedepends=('cmake' 'git' 'granite-git' 'intltool' 'vala')
-provides=('audience' 'pantheon-videos')
-conflicts=('audience')
-replaces=('audience-bzr')
+makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala')
+provides=('pantheon-videos')
+conflicts=('pantheon-videos')
 source=('pantheon-videos::git+https://github.com/elementary/videos.git')
 sha256sums=('SKIP')
 
@@ -25,8 +24,6 @@ pkgver() {
 }
 
 prepare() {
-  cd pantheon-videos
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -34,19 +31,16 @@ prepare() {
 }
 
 build() {
-  cd pantheon-videos/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DGSETTINGS_COMPILE='OFF'
-  make
+  arch-meson ../pantheon-videos
+  ninja
 }
 
 package() {
-  cd pantheon-videos/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
