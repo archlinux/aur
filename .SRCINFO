@@ -1,7 +1,7 @@
 pkgbase = ddnet
 	pkgdesc = DDraceNetwork, a mod of Teeworlds
 	pkgver = 11.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ddnet.tw
 	arch = x86_64
 	license = custom:BSD
@@ -27,7 +27,7 @@ pkgbase = ddnet
 	source = DDNet.png
 	source = DDNet-Server.png
 	sha256sums = f8116f074d19fbd953ebd8fa204c63d5665a20120a6c71f81e793fb78e1243c2
-	sha256sums = fc8c27e129f92c5dddf96a079306a2439c8cc14d4b8ce719c5fa2f59aceee367
+	sha256sums = 11402ed2cf323e350e381588c7cb4fa1d450c19645a0a079897912134bb436bd
 	sha256sums = fc8c27e129f92c5dddf96a079306a2439c8cc14d4b8ce719c5fa2f59aceee367
 	sha256sums = 1dc83efd9fdab2597fc4d41358628422a9550d4d23b60d273f2f30cf7b76dfaa
 	sha256sums = e4083f1c40569146caabd21b8f24fdd7862e2f3040552e9c6a260df603249274
