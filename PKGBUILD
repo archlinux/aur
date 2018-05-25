@@ -1,7 +1,7 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert-lite
 pkgver=0.14.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher. Without QML and VirtualBox dependencies"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/albertlauncher"
@@ -19,8 +19,6 @@ makedepends=(
   'muparser'
 )
 optdepends=('muparser: Calculator plugin')
-provides=('albert')
-conflicts=('albert-git' 'albert')
 source=(
   "mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v${pkgver}"
   "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
