@@ -1,4 +1,4 @@
-# Maintainer: aligator <aligator at-symbol server-suncraft dot de>
+# Maintainer: aligator <aligator at-symbol suncraft-server dot de>
 pkgrel=1
 pkgname='settlers3-demo-data'
 # there is only one demo and there won't be an update
@@ -15,9 +15,9 @@ sha512sums=('c224a5d4aad5560244e2230231f553eed3f049f04e8f16f43bc8a9048242a888105
 package() {
     _dataDest=${pkgdir}/usr/share/jsettlers
     _originalDest=${_dataDest}/s3
-    	    
+            
     # create destination-dirs
-	mkdir -p ${_originalDest}
+    mkdir -p ${_originalDest}
     
     cd ${srcdir}
     cp -R Gfx Snd Map ${_originalDest}
