@@ -1,0 +1,28 @@
+pkgbase = st-n1
+	pkgdesc = Simple terminal with Xresources, scrollback and alpha support
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://st.suckless.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	depends = libxext
+	depends = libxft
+	provides = st
+	conflicts = st
+	source = http://dl.suckless.org/st/st-0.8.1.tar.gz
+	source = https://st.suckless.org/patches/alpha/st-alpha-0.8.1.diff
+	source = https://st.suckless.org/patches/scrollback/st-scrollback-0.8.diff
+	source = https://st.suckless.org/patches/scrollback/st-scrollback-mouse-0.8.diff
+	source = https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-0.8.diff
+	source = https://st.suckless.org/patches/xresources/st-xresources-20180309-c5ba9c0.diff
+	md5sums = 92135aecdba29300bb2e274a55f5b71e
+	md5sums = 267b426c0e69aab81adbba2ce968dbcf
+	md5sums = bbe056eaed5914f55ccea001ca7f05e9
+	md5sums = 72227737f6cd831afd014a3613bd559d
+	md5sums = fa0bf6c0dae5a69e3b1916ce093f6aff
+	md5sums = 6c1d71ee8f8abfc3976536a17a376d20
+
+pkgname = st-n1
+
