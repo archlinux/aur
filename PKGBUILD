@@ -1,7 +1,7 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=splunk
-basever=7.1.0
-pkgver=${basever}_2e75b3406c5b
+basever=7.1.1
+pkgver=${basever}_8f0ead9ec3db
 pkgrel=1
 pkgdesc="Statistical analysis and search tool for logs and machine data"
 url="https://www.splunk.com/"
