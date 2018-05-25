@@ -1,18 +1,32 @@
 pkgname=unfs3
 pkgver=0.9.22
-pkgrel=4
+pkgrel=5
 pkgdesc="A user-space implementation of the NFSv3 server specification"
 arch=('i686' 'x86_64')
 url="http://unfs3.sourceforge.net/"
 license=("BSD")
 makedepends=("flex")
-depends=('rpcbind' 'flex')
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz" "unfsd.conf" "unfsd" "unfsd.service")
-md5sums=('ddf679a5d4d80096a59f3affc64f16e5' '7c28cd320ac4868cc6f0ca089fbf2e75' 'e1010b2da0d5fb962112eed243b2b5ed' '4dfcdd618b7b2229d9b6082401a52880')
+depends=('rpcbind' 'flex' 'libtirpc')
+source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"
+		"0001-Compile-fix-for-libtirpc-under-Arch-Linux.patch"
+		"unfsd.conf"
+		"unfsd"
+		"unfsd.service")
+md5sums=('ddf679a5d4d80096a59f3affc64f16e5'
+		 'b85ec02e508895d490d295a3dd7828c0'
+		 '7c28cd320ac4868cc6f0ca089fbf2e75'
+		 'e1010b2da0d5fb962112eed243b2b5ed'
+		 '4dfcdd618b7b2229d9b6082401a52880')
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	patch -p1 < "../0001-Compile-fix-for-libtirpc-under-Arch-Linux.patch"
+}
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	./configure --prefix=/usr --sbindir=/usr/bin
+	./bootstrap
+	./configure CFLAGS="$CFLAGS -I/usr/include/tirpc" --prefix=/usr --sbindir=/usr/bin
 	make
 }
 
@@ -26,5 +40,3 @@ package() {
 	install -Dm644 unfsd.conf "$pkgdir/etc/conf.d/unfsd.conf"
 	install -Dm644 unfsd.service "$pkgdir/usr/lib/systemd/system/unfsd.service"
 }
-
-

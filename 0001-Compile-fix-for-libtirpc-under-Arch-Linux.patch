@@ -1,0 +1,70 @@
+From c03355a0056bcdc33f2d47d78b3f8d4caa577625 Mon Sep 17 00:00:00 2001
+From: Oliver Giles <ohw.giles@gmail.com>
+Date: Fri, 25 May 2018 11:13:57 +0300
+Subject: [PATCH] Compile fix for libtirpc under Arch Linux
+
+Arch Linux no longer ships nsl. tirpc provides a backwards-compatible
+implementation. A questionable check for Solaris had to be removed,
+and a call to listen() added which used to be done by glibc.
+---
+ configure.ac | 3 +--
+ daemon.c     | 8 ++++++--
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index aeec598..5730183 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -10,7 +10,7 @@ AS_IF([test "x$LEX" == "x:"], [
+ AC_PROG_YACC
+ AC_HEADER_STDC
+ AC_SYS_LARGEFILE
+-AC_SEARCH_LIBS(xdr_int, nsl)
++AC_SEARCH_LIBS(xdr_int, tirpc)
+ AC_SEARCH_LIBS(socket, socket)
+ AC_SEARCH_LIBS(inet_aton, resolv)
+ AC_CHECK_HEADERS(mntent.h,,,[#include <stdio.h>])
+@@ -37,7 +37,6 @@ AC_CHECK_FUNCS(setresuid setresgid)
+ AC_CHECK_FUNCS(vsyslog)
+ AC_CHECK_FUNCS(lchown)
+ AC_CHECK_FUNCS(setgroups)
+-UNFS3_SOLARIS_RPC
+ UNFS3_PORTMAP_DEFINE
+ UNFS3_COMPILE_WARNINGS
+ 
+diff --git a/daemon.c b/daemon.c
+index 87c32d1..4f368b3 100644
+--- a/daemon.c
++++ b/daemon.c
+@@ -113,7 +113,7 @@ void logmsg(int prio, const char *fmt, ...)
+  */
+ struct in_addr get_remote(struct svc_req *rqstp)
+ {
+-    return (svc_getcaller(rqstp->rq_xprt))->sin_addr;
++    return ((struct sockaddr_in*) svc_getcaller(rqstp->rq_xprt))->sin_addr;
+ }
+ 
+ /*
+@@ -121,7 +121,7 @@ struct in_addr get_remote(struct svc_req *rqstp)
+  */
+ short get_port(struct svc_req *rqstp)
+ {
+-    return (svc_getcaller(rqstp->rq_xprt))->sin_port;
++    return ((struct sockaddr_in*) svc_getcaller(rqstp->rq_xprt))->sin_port;
+ }
+ 
+ /*
+@@ -789,6 +789,10 @@ static SVCXPRT *create_tcp_transport(unsigned int port)
+ 	    fprintf(stderr, "Couldn't bind to tcp port %d\n", port);
+ 	    exit(1);
+ 	}
++	if (listen(sock, SOMAXCONN) != 0) {
++		perror("listen");
++		exit(1);
++	}
+     }
+ 
+     transp = svctcp_create(sock, 0, 0);
+-- 
+2.17.0
+
