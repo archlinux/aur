@@ -42,10 +42,6 @@ package() {
 	install -Dm755 $srcdir/$pkgname.sysuser.conf $pkgdir/usr/lib/sysusers.d/$pkgname.conf
 }
 
-md5sums=('1cce50356de4ee3e5c9daee5aeee5317'
-	'b0193c5364076ce7b112f13edf995ac1'
-	'9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
-'92cd2fa8929c5acddbddf7d4fc2fd494')
 md5sums=('e38f5322fef51e26dc68bad0e0c6a0e4'
 	'b0193c5364076ce7b112f13edf995ac1'
 	'9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
