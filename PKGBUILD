@@ -3,7 +3,7 @@
 # Maintainer: Pat Brisbin <pbrisbin@gmail.com>
 pkgname=okta-aws-cli-assume-role
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Okta AWS CLI Assume Role Tool"
 arch=('any')
 url=https://github.com/oktadeveloper/okta-aws-cli-assume-role
