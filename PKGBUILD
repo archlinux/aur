@@ -1,27 +1,28 @@
-# Maintainer: Jesse McClure aka "Trilby" <jesse dot mcclure at umassmed dot edu>
+# Maintainer: Jesse McClure aka "Trilby" <jmcclure at broadinstitute dog org>
 
 pkgname=qt5-webengine-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content'
-pkgver=61.0.3163.100
-_widevine_ver=1.4.8.1008
-pkgrel=2
+pkgver=66.0.3359.181
+pkgrel=1
 epoch=1
 arch=('x86_64')
 url='http://www.google.com/chrome'
 license=('custom:chrome')
 options=('!strip')
 depends=('qt5-webengine')
-source=(
-	"https://archive.archlinux.org/packages/c/chromium/chromium-${pkgver}-1-x86_64.pkg.tar.xz"
-	"https://dl.google.com/widevine-cdm/${_widevine_ver}-linux-x64.zip"
-	"chrome-eula_text.html::https://www.google.com/intl/en/chrome/browser/privacy/eula_text.html"
-)
-sha256sums=('5d4380308b3d5c2bc6e13d77090688ba00f0828f2777d83376d44038a6d0e2dd'
-            'fe04a5b56eac6674f1eda2c8eb28a0183ec1a66d80f72db618291e33078eb17d'
-            'cbfb7bc8d48ffc2dc6a86721c00b1662337bf72e7e63bffde783497cf36a43fa')
+source=('chrome-eula_text.html::https://www.google.com/intl/en/chrome/browser/privacy/eula_text.html'
+        "https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${pkgver}-1_amd64.deb")
+sha256sums=('cbfb7bc8d48ffc2dc6a86721c00b1662337bf72e7e63bffde783497cf36a43fa'
+            '229b35f0d41bbb6edd98ce4ab8305994a0f5cd1ac4d9817571f07365b2d1ad80')
+
+prepare() {
+	bsdtar -x --strip-components 4 -f data.tar.xz \
+		opt/google/chrome/libwidevinecdm.so \
+		opt/google/chrome/libwidevinecdmadapter.so
+}
 
 package() {
 	install -Dm644 libwidevinecdm.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
-	install -Dm644 usr/lib/chromium/libwidevinecdmadapter.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
+	install -Dm644 libwidevinecdmadapter.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
 	install -Dm644 chrome-eula_text.html -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
