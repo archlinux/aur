@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://openjardin.eu/"
 license=('GPL-v3')
 depends=('xdg-utils')
-source_x86_64=("https://openjardin.eu/download/open-jardin_${pkgver}_amd64.deb")
+source_x86_64=("https://openjardin.eu/download/openjardin_${pkgver}_amd64.deb")
 source=($pkgname.desktop
         $pkgname.png)
 sha512sums=('1caee7197210b191657cc50d421ce50e5c926917139beaf003cdbaad7970bd7d6a88263c962b3d810a7ce12ef2df662a4c71ab17e23d4ba953141231cc58418a'
