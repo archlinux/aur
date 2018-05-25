@@ -1,0 +1,15 @@
+pkgbase = termcolor-git
+	pkgdesc = Termcolor is a header-only C++ library for printing colored messages to the terminal. Written just for fun with a help of the Force.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ikalnytskyi/termcolor
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	provides = termcolor
+	source = termcolor-git::git+https://github.com/ikalnytskyi/termcolor.git
+	sha256sums = SKIP
+
+pkgname = termcolor-git
+
