@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=68.0.3438.0
+pkgver=68.0.3439.0
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 
 
 
-sha256sums=('f7c1b096f4a602bce929af34ebf55d4546a801c4df6966fbf7b31e31ca2999bd'
+sha256sums=('3231d184700112adca6edc77d8bd964948c8d199f4c5dca7bdc7cf8c7fe190c6'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -177,7 +177,7 @@ sha256sums=('f7c1b096f4a602bce929af34ebf55d4546a801c4df6966fbf7b31e31ca2999bd'
             '967248b475cd7f495f160cb96a2fcb2a9684b2632fa4cfb90938921e04598b45'
             'f04a103034426917980573a26088734e211e47c79706d964e3294801ff518816'
             'f59483b9d7d93fd09ffce43f987078d656a67b2c7b90877d845932f290ce4c8c'
-            '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
+            '97aacef479160113f763217df130a72c7b467e27ae556866d2c039965e77bc71'
             '2c7a6274bfe2afcaa4186d421a0690ac2bc0015e8bc80e3a589f04b4931a030f'
             '5b313be9a39a60fe2c8491180529dc8635b8341ad57d3f26ae68acc8f9e2f828'
             '54d4471bec9e4390e1d2c562a6a3278bf44deb65d01fe5fb8f1477e67e8a957a'
@@ -190,7 +190,7 @@ sha256sums=('f7c1b096f4a602bce929af34ebf55d4546a801c4df6966fbf7b31e31ca2999bd'
             'c367599e25bd9d408d52dd26ceec9f0048b0991cc74980c8c40d602e61a2a844'
             'b54a69d6eeb03bf56e5a6430cbc07fd8d12532709876d38828e4c455eca29e3b'
             'fda2fd5bf13e685ad19daff3f2348e58c18d628086e46866bd6ec2a8047fdef6'
-            '6130351d4c918e5b60f0ea4914e7e2f26fe4221ac97bcecacb4161fd2d23906c'
+            'a0fc68d001dc6bad673997394184112eed59b74b8e6bbcd173db55402c95c121'
             'fb3abae54309adf69b98bd2435fbc23f17bc526dbf1d1e97907da87e7cf0aeed'
             'fb7c96ecf7f97fd6d356b8ca714efc518fc5bf40d92a23a5ff1ad8462d56b248'
             '541136a480187de769d7dfd9da6ac63b3bb65583a553b32615ad5a9e6331ea65'
@@ -214,7 +214,6 @@ sha256sums=('f7c1b096f4a602bce929af34ebf55d4546a801c4df6966fbf7b31e31ca2999bd'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
-
 
 
 
@@ -308,7 +307,7 @@ patch -Np1 -i ../2ka.patch
 
 
 
-#patch -Np1 -i ../2kc.patch
+patch -Np1 -i ../2kc.patch
 patch -Np1 -i ../2kd.patch
 patch -Np1 -i ../2ke.patch
 patch -Np1 -i ../2kf.patch
