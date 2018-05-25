@@ -1,0 +1,12 @@
+pkgbase = iceworks
+	pkgdesc = icework make front-end engineering becomes easy and convenient.飞冰，让前端工程变得轻松便捷。
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://mockingbot.com/downloads
+	arch = x86_64
+	license = MIT
+	source = https://iceworks-beta.oss-cn-hangzhou.aliyuncs.com/linux/Iceworks-amd64-1.4.0-beta.deb
+	md5sums = SKIP
+
+pkgname = iceworks
+
