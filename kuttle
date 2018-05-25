@@ -1,0 +1,12 @@
+#!/bin/sh
+# Kuttle wrapper by kayrus (https://github.com/kayrus/kuttle)
+
+if [ $1 == '-p' ]; then
+  # https://github.com/sshuttle/sshuttle/pull/401 introduced new port param and
+  # quotes the complete command '/bin/sh -c pyscript', effectivly changing the
+  # argument position and interpretation
+  # sshuttle > v1.0.1
+  eval exec kubectl exec -i $3 -- "$5"
+else
+  exec kubectl exec -i $1 -- /bin/sh -c "$3"
+fi

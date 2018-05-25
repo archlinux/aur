@@ -1,0 +1,11 @@
+pkgbase = kuttle
+	pkgdesc = Kubernetes wrapper for sshuttle
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kayrus/kuttle
+	arch = any
+	license = GPL2
+	depends = sshuttle
+	provides = kuttle
+
+pkgname = kuttle
