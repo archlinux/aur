@@ -10,11 +10,6 @@ url="https://github.com/pothosware/SoapyRemote"
 license=('custom:Boost Software License Version 1.0')
 depends=('soapysdr')
 makedepends=('cmake')
-optdependes=(
-  'swig: bindings'
-  'python: python bindings'
-  'doxygen: documentation'
-)
 provides=('soapyremote')
 conflicts=('soapyremote')
 source=(
