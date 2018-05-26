@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Vendor and platform neutral SDR support library"
 arch=(any)
 url="https://github.com/pothosware/SoapySDR"
-license=('GPL3')
+license=('custom:Boost Software License Version 1.0')
 makedepends=('cmake')
 optdependes=(
   'swig: bindings'
