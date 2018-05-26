@@ -11,7 +11,7 @@ license=('GPL')
 depends=('libglademm' 'dconf' 'dcmtk')
 makedepends=('intltool' 'perl-xml-parser' 'gconf')
 options=('!libtool' '!makeflags')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jenslody/$pkgname/archive/release-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jenslody/$pkgname/archive/release-${pkgver//./-}.tar.gz")
 md5sums=('fe440e2a266a1434cb74f3c90838a596')
 
 #prepare() {
@@ -21,8 +21,7 @@ md5sums=('fe440e2a266a1434cb74f3c90838a596')
 
 build() {
   cd $pkgname-release-${pkgver//./-}
-  ./autogen.sh
-  ./configure \
+  CXX=g++-6 ./autogen.sh \
     --prefix=/usr \
     --with-gconf-schema-file-dir=/usr/share/gconf/schemas
   make

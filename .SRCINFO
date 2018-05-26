@@ -14,7 +14,7 @@ pkgbase = aeskulap
 	depends = dcmtk
 	options = !libtool
 	options = !makeflags
-	source = aeskulap-0.2.2.beta2.tar.gz::https://github.com/jenslody/aeskulap/archive/release-0.2.2.beta2.tar.gz
+	source = aeskulap-0.2.2.beta2.tar.gz::https://github.com/jenslody/aeskulap/archive/release-0-2-2-beta2.tar.gz
 	md5sums = fe440e2a266a1434cb74f3c90838a596
 
 pkgname = aeskulap
