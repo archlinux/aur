@@ -5,7 +5,7 @@ Documentation=https://justarchi.github.io/ArchiSteamFarm/
 Wants=network.target
 
 [Service]
-ExecStart=/usr/bin/dotnet /usr/lib/asf/ArchiSteamFarm.dll --server --path=%h/.config/asf
+ExecStart=/usr/bin/dotnet /usr/lib/asf/ArchiSteamFarm.dll --process-required --no-restart --path=%h/.config/asf
 
 [Install]
 WantedBy=default.target

@@ -52,6 +52,9 @@ package() {
     install -D -m644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -D -m644 "${srcdir}/NLog.config" "${pkgdir}/usr/lib/${pkgname}/NLog.config"
 
+    # enable headless daemon
+    sed -i 's/"IPC": false/"IPC": true/g' "${pkgdir}/var/lib/${pkgname}/config/ASF.json"
+
     # disable auto-updates and version checks
     sed -i 's/"UpdateChannel": 1/"UpdateChannel": 0/g' "${pkgdir}/var/lib/${pkgname}/config/ASF.json"
     sed -i 's/"UpdatePeriod": 24/"UpdatePeriod": 0/g' "${pkgdir}/var/lib/${pkgname}/config/ASF.json"
