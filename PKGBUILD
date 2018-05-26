@@ -4,10 +4,10 @@ pkgdesc="ROS - rosnode is a command-line tool for displaying debug information a
 url='http://ros.org/wiki/rosnode'
 
 pkgname='ros-melodic-rosnode'
-pkgver='1.13.6'
-_pkgver_patch=2
+pkgver='1.14.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rostest
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosnode-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosnode/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('078e1f040b175f416c9630c537006c29afd50f2bd874579ead97265a6a13d9b1')
+sha256sums=('19f0212d7756c9ddb0d3b30b8d577b412ff00c900ff01ea99a105e7f19eeeaa8')
 
 build() {
   # Use ROS environment variables
