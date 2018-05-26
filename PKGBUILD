@@ -1,8 +1,8 @@
-# Maintainer:  Andre Miranda <andreldm1989 gmail com>
+# Maintainer:  Andre Miranda <andre42m gmail com>
 
 pkgname=kissplayer
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="A Simple and Lightweight Music Player"
 arch=('i686' 'x86_64')
 url="https://github.com/andreldm/kissplayer"
@@ -12,7 +12,7 @@ makedepends=('pkg-config>=0.9.0' 'gettext')
 provides=('kissplayer')
 source=(https://github.com/andreldm/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-linux.tar.gz)
 install=kissplayer.install
-md5sums=('393cb3cdc975f7ce190896be94fbc304')
+sha256sums=('29aa056f41c1ba556315e47181dad1b70d234519c7436c31c810e580e9c2a870')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
