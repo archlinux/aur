@@ -1,3 +1,15 @@
+2018-05-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.1.3.3-1:
+    [!] Fixed auto-update in generic ASF variant not working properly since V3.1.2.9. Please update manually to this release if you're running generic ASF variant with auto-updates enabled. OS-specific packages are not affected and will update as usual.
+    ASF will now properly keep original whitespace characters when joining out-of-range arguments in string-based commands (ref: group).
+    Added privacy command (ref: #794).
+    Fixed IPC GUI not working correctly when custom --path is given (ref: #795).
+    Fixed bot-less !start command not being recognized.
+    Further condensated deprecation policy to a total of 2 stages.
+    Next stage of deprecation for features marked as obsolete in the previous stable release.
+    IPC GUI improvements, optimizations and bugfixes.
+    Usual amount of other code improvements, optimizations and bugfixes.
+    package: alter systemd services to comply with --server deprecation
 2018-05-15 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.1.2.9-2:
     package: add missing dependencies for OS specific releases
