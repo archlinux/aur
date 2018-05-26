@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate several packages."
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-desktop-full'
-pkgver='1.4.0'
+pkgver='1.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="metapackages-release-release-melodic-desktop_full-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/melodic/desktop_full/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5885269074135543abb6814fc97335a4411a12cc716661aa3401186beec6fdc7')
+sha256sums=('236064fd3c4cccc5327f1ac4c951c70762a1f6c88e9faa521251f78e26ea987b')
 
 build() {
   # Use ROS environment variables
