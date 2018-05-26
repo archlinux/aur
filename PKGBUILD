@@ -2,7 +2,7 @@
 
 _plug=autocrop
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.1.3.g24626e1
+pkgver=0.1.4.gaee508a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
 
   echo "all:
-	  g++ -c -std=c++98 -Wall -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o autocrop.o autocrop/autocrop.cpp
+	  g++ -c -std=c++11 -Wall -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o autocrop.o autocrop/autocrop.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so autocrop.o" > Makefile
 }
 
