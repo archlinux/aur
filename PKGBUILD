@@ -1,7 +1,7 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-svn
-pkgver=r19417
+pkgver=r19483
 pkgrel=1
 pkgdesc="multi-platform screen and application forwarding system screen for X11"
 arch=('x86_64')
@@ -52,7 +52,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-svn}-build"
+  cd "$srcdir/${pkgname%-svn}"
   python2 setup.py install --root="${pkgdir}" --without-enc_x265
   mv "${pkgdir}"/lib/* "${pkgdir}"/usr/lib/
   rmdir "${pkgdir}/lib"
