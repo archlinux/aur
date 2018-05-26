@@ -4,33 +4,40 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back ROS me
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-rosbag-storage'
-pkgver='1.13.6'
-_pkgver_patch=2
+pkgver='1.14.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp-traits
   ros-melodic-cpp-common
   ros-melodic-roscpp-serialization
-  ros-melodic-catkin
+  ros-melodic-rostest
   ros-melodic-roslz4
+  ros-melodic-catkin
+  ros-melodic-pluginlib
   ros-melodic-rostime)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   bzip2
+  openssl
   boost
-  console-bridge)
+  console-bridge
+  gpgme)
 
 ros_depends=(ros-melodic-roscpp-traits
   ros-melodic-cpp-common
   ros-melodic-roscpp-serialization
   ros-melodic-roslz4
+  ros-melodic-pluginlib
   ros-melodic-rostime)
 depends=(${ros_depends[@]}
   bzip2
+  openssl
   boost
-  console-bridge)
+  console-bridge
+  gpgme)
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/rosbag_storage/${pkgver}-${_pkgver_patch}
@@ -41,7 +48,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosbag_storage-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosbag_storage/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a987dbc57e766412c0e0db4b31597d733f53ca60ee570fb7f9489c2d1d3d7c3e')
+sha256sums=('f7b08992f0792e8e1677fa535e64464c3cb1886f760bcb08e4a5011437490e9b')
 
 build() {
   # Use ROS environment variables
