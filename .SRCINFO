@@ -1,0 +1,17 @@
+pkgbase = soapysdr
+	pkgdesc = Vendor and platform neutral SDR support library
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/pothosware/SoapySDR
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	provides = soapysdr
+	conflicts = soapysdr
+	source = https://github.com/pothosware/SoapySDR/archive/soapy-sdr-0.6.1.tar.gz
+	source = git_revision.patch
+	sha256sums = 2ecf8e43518dfb24bd172923adf6ce25a6d3e39de3a8aadf26c890f60dd1e9f7
+	sha256sums = 56bd3fef417f2414dc3b3ab8ea3f455064b0d22f74489a72bfd83882701f3b03
+
+pkgname = soapysdr
+
