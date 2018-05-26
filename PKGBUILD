@@ -1,29 +1,26 @@
-# Maintainer: orumin <dev at orum.in>
+# Maintainer:  Yigit Dallilar <yigit.dallilar@gmail.com>
+# Prev. Maintainer: orumin <dev at orum.in>
 
 pkgname=slack-term
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Slack client for your terminal"
 arch=('x86_64')
 url="https://github.com/erroneousboat/slack-term"
-source=("git+$url"
-        "$url/releases/download/v${pkgver}/slack-term-linux-amd64")
-sha256sums=('SKIP'
-          'bc669111389a0c4cc244d9e5eb0660c75a7d946c00e6986f3238e9103f0bd42c')
+source=("https://raw.githubusercontent.com/erroneousboat/slack-term/master/LICENSE"
+        "slack-term::${url}/releases/download/v${pkgver}/slack-term-linux-amd64"
+        "slack-term.json")
 license=('MIT')
-makedepends=('git')
-options=('!strip' '!emptydirs')
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  git checkout v$pkgver
-}
+options=()
+md5sums=('563e9d16dfa4d970c956ebc0e6e140dd'
+         '8db633b31bc1b2823da0155ab93e3427'
+         '9cdd35c2d48f6d899333ab3721a6464b')
 
 package() {
-  install -p -Dm755 "$srcdir/slack-term-linux-amd64" "$pkgdir/usr/bin/slack-term"
 
-  cd "$srcdir/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 slack-term ${pkgdir}/usr/bin/slack-term
+  install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 slack-term.json ${pkgdir}/etc/slack-term.json
 }
 
 # vim:set ts=2 sw=2 et:
