@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage which extends ros_base and includes ROS libaries fo
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-robot'
-pkgver='1.4.0'
+pkgver='1.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="metapackages-release-release-melodic-robot-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/melodic/robot/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('11e057c04c351e722f620eef927e718033e63cbc842eead3b478954552fcdd46')
+sha256sums=('4f0efd47cf90e8a1f56602612d73ba032fbb231dec3091f53b795a7d67cbe02b')
 
 build() {
   # Use ROS environment variables

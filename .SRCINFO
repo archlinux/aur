@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-robot
 	pkgdesc = ROS - A metapackage which extends ros_base and includes ROS libaries for any robot hardware.
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = http://www.ros.org/
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = ros-melodic-robot
 	depends = ros-melodic-diagnostics
 	depends = ros-melodic-kdl-parser-py
 	depends = ros-melodic-filters
-	source = ros-melodic-robot-1.4.0-0.tar.gz::https://github.com/ros-gbp/metapackages-release/archive/release/melodic/robot/1.4.0-0.tar.gz
-	sha256sums = 11e057c04c351e722f620eef927e718033e63cbc842eead3b478954552fcdd46
+	source = ros-melodic-robot-1.4.1-0.tar.gz::https://github.com/ros-gbp/metapackages-release/archive/release/melodic/robot/1.4.1-0.tar.gz
+	sha256sums = 4f0efd47cf90e8a1f56602612d73ba032fbb231dec3091f53b795a7d67cbe02b
 
 pkgname = ros-melodic-robot
 
