@@ -1,0 +1,21 @@
+pkgbase = fasttext-git
+	pkgdesc = Library for fast text representation and classification.
+	pkgver = v0.1.0.r67.geefbf95
+	pkgrel = 1
+	url = https://rug-compling.github.io/alpinocorpus/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = pybind11
+	depends = gcc-libs
+	source = git+https://github.com/facebookresearch/fastText.git
+	sha256sums = SKIP
+
+pkgname = fasttext-git
+
+pkgname = python-fasttext-git
+	depends = python-numpy
+
