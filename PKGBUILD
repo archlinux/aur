@@ -9,7 +9,7 @@ pkgdesc="Flexibly Reshape Data: A Reboot of the Reshape Package"
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('r>=3.1')
+depends=('r>=3.1' 'r-cran-plyr>=1.8.1' 'r-cran-rcpp' 'r-cran-stringr')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('8f35f5a2b7d4f081e9825f1095133288')
 

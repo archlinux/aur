@@ -1,22 +1,5 @@
 pkgbase = r-cran-reshape2
 	pkgdesc = Flexibly Reshape Data: A Reboot of the Reshape Package
-	pkgver = 1.4.2
-	pkgrel = 2
-	url = http://cran.r-project.org/web/packages/reshape2/index.html
-	arch = i686
-	arch = x86_64
-	license = MIT
-	depends = r
-	depends = r-cran-plyr>=1.8.1
-	depends = r-stringr
-	depends = r-cran-rcpp
-	source = http://cran.r-project.org/src/contrib/reshape2_1.4.2.tar.gz
-	md5sums = c851a0312191b8c5bab956445df7cf5f
-
-pkgname = r-cran-reshape2
-
-pkgbase = r-cran-reshape2
-	pkgdesc = Flexibly Reshape Data: A Reboot of the Reshape Package
 	pkgver = 1.4.3
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/reshape2/index.html
@@ -24,6 +7,9 @@ pkgbase = r-cran-reshape2
 	arch = x86_64
 	license = MIT
 	depends = r>=3.1
+	depends = r-cran-plyr>=1.8.1
+	depends = r-cran-rcpp
+	depends = r-cran-stringr
 	source = http://cran.r-project.org/src/contrib/reshape2_1.4.3.tar.gz
 	md5sums = 8f35f5a2b7d4f081e9825f1095133288
 
