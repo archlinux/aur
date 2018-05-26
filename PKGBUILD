@@ -1,7 +1,7 @@
 # Maintainer: Thomas Andrejak <thomas.andrejak@gmail.com>
 
 pkgname=prelude-manager
-pkgver=4.0.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Bus communication for all Prelude modules"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPLv2')
 makedepends=('gtk-doc')
 # libmaxminddb-git and not libmaxminddb because libmaxminddb do not provide ".pc" file
 depends=('tcp_wrappers' 'libmaxminddb-git' 'libprelude' 'libpreludedb')
-source=("https://www.prelude-siem.org/pkg/src/4.0.0/$pkgname-$pkgver.tar.gz"
+source=("https://www.prelude-siem.org/pkg/src/4.1.0/$pkgname-$pkgver.tar.gz"
         "prelude-manager.run"
 	"prelude-manager.service")
 install="$pkgname.install"
@@ -30,4 +30,4 @@ package() {
   install -D -m 0644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
 
-md5sums=('e7e34b76b0c0d3d6924f012107f570a5' '8e2009544ddf286eab60e6b322d89c1e' 'c93f36811d69bbd35fcbb7af580dc5f2')
+md5sums=('f821e3a5440b8a47117f2610d72174ab' '8e2009544ddf286eab60e6b322d89c1e' 'c93f36811d69bbd35fcbb7af580dc5f2')
