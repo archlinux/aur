@@ -1,4 +1,5 @@
-# Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
+# Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=sdrangel
 pkgver=3.14.7
