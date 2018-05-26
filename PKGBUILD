@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides conversions from PCL data types and ROS message types."
 url='http://wiki.ros.org/pcl_conversions'
 
 pkgname='ros-melodic-pcl-conversions'
-pkgver='1.6.1'
+pkgver='1.6.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="perception_pcl-release-release-melodic-pcl_conversions-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/perception_pcl-release/archive/release/melodic/pcl_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1fc21425e249340396db27c02e1b1aa6216dbb635b764297348ce54d131d69fc')
+sha256sums=('14361d15d63002d2752dff7618967181b18d3bb43aaee0c42ac6eb563d1a921a')
 
 build() {
   # Use ROS environment variables
