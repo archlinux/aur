@@ -6,7 +6,7 @@
 pkgbase='sat-xmpp-hg'
 pkgname=('sat-xmpp-hg')
 _realname=sat
-pkgver=0.7.0.r2577.1209a5d83082
+pkgver=0.7.0.r2597.9446f1ea9eac
 VERSION=0.7.0
 pkgrel=1
 url="http://salut-a-toi.org/"
