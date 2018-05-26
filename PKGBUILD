@@ -1,23 +1,24 @@
-# Maintainer: defkeh <defkeh@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
+# Contributor: defkeh <defkeh@gmail.com>
+
 pkgname=rivalcfg-git
-pkgver=r172.cd60de1
+pkgver=3.0.0.beta1.r1.2968f64
 pkgrel=1
-pkgdesc="SteelSeries Rival gaming mouse configuration utility"
-arch=("any")
-url="https://github.com/flozz/rivalcfg"
-license=("custom:WTFPL")
-depends=("python" "hidapi" "python-hidapi")
+pkgdesc='SteelSeries Rival gaming mouse configuration utility'
+arch=('any')
+url='https://github.com/flozz/rivalcfg'
+license=('custom:WTFPL')
+depends=('python' 'hidapi' 'python-hidapi')
 makedepends=('git' 'python-setuptools')
-conflicts=("rivalctl")
-provides=("${pkgname%-git}")
-source=("${pkgname%-git}"::'git+https://github.com/flozz/rivalcfg#branch=master')
+conflicts=('rivalcfg')
+provides=('rivalcfg')
+source=('git+https://github.com/flozz/rivalcfg')
 install=${pkgname}.install
 md5sums=('SKIP') 
 
-
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 package() {
@@ -29,5 +30,3 @@ package() {
   install -D -m644 doc/rival300-spec.md "${pkgdir}/usr/share/doc/${pkgname}/rival-spec300.md" 
   install -D -m644 "${pkgname%-git}/data/99-steelseries-rival.rules" "${pkgdir}/etc/udev/rules.d/99-steelseries-rival.rules"
 }
-
-# vim:set ts=2 sw=2 et:
