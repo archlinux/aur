@@ -1,0 +1,18 @@
+pkgbase = soapyremote
+	pkgdesc = Use any Soapy SDR remotely
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/pothosware/SoapyRemote
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	depends = soapysdr
+	provides = soapyremote
+	conflicts = soapyremote
+	source = https://github.com/pothosware/SoapyRemote/archive/soapy-remote-0.4.3.tar.gz
+	source = git_revision.patch
+	sha256sums = 94146fa0b2f8d658c1e712e0215c7f89163637690fd6f58e75db1f47839f4f2b
+	sha256sums = 93a2a6d031fb50156ed7de00658fe082ef802ad7900e5336f37b897588fe869c
+
+pkgname = soapyremote
+

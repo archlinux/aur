@@ -1,0 +1,21 @@
+--- SOURCE_FOLDER/cmake/Modules/GetGitRevisionDescription.cmake	2017-12-13 01:14:49.000000000 +0000
++++ SOURCE_FOLDER/cmake/Modules/GetGitRevisionDescription.cmake	2018-05-26 20:09:14.470524652 +0100
+@@ -43,15 +43,9 @@
+ 	set(GIT_PARENT_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+ 	set(GIT_DIR "${GIT_PARENT_DIR}/.git")
+ 	while(NOT EXISTS "${GIT_DIR}")	# .git dir not found, search parent directories
+-		set(GIT_PREVIOUS_PARENT "${GIT_PARENT_DIR}")
+-		get_filename_component(GIT_PARENT_DIR ${GIT_PARENT_DIR} PATH)
+-		if(GIT_PARENT_DIR STREQUAL GIT_PREVIOUS_PARENT)
+-			# We have reached the root directory, we are not in git
+-			set(${_refspecvar} "GITDIR-NOTFOUND" PARENT_SCOPE)
+-			set(${_hashvar} "GITDIR-NOTFOUND" PARENT_SCOPE)
+-			return()
+-		endif()
+-		set(GIT_DIR "${GIT_PARENT_DIR}/.git")
++		set(${_refspecvar} "GITDIR-NOTFOUND" PARENT_SCOPE)
++		set(${_hashvar} "GITDIR-NOTFOUND" PARENT_SCOPE)
++		return()
+ 	endwhile()
+ 	# check if this is a submodule
+ 	if(NOT IS_DIRECTORY ${GIT_DIR})
