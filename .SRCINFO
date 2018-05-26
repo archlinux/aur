@@ -1,23 +1,18 @@
 pkgbase = gplaycli
 	pkgdesc = command line tool to search/install/update Android applications Google PlayStore able to run with cronjob, in order to automatically update an F-Droid server instance
-	pkgver = 3.21
+	pkgver = 3.23
 	pkgrel = 1
 	url = https://github.com/matlink/gplaycli
 	install = gplaycli.install
 	arch = any
 	license = AGPL
 	depends = python
-	depends = python-requests
-	depends = python-protobuf
 	depends = python-pyaxmlparser
-	depends = python-clint
-	depends = python-pyopenssl
 	depends = python-gpapi
-	depends = python-pycryptodome
 	optdepends = java-runtime: needed for autogeneration of a new AndroiID
-	source = gplaycli-3.21.tar.gz::https://github.com/matlink/gplaycli/archive/3.21.tar.gz
+	source = gplaycli-3.23.tar.gz::https://github.com/matlink/gplaycli/archive/3.23.tar.gz
 	source = gplaycli.install
-	md5sums = ef1fad18d4a09ed04ced76e0e423dd41
+	md5sums = e44442bcd962ac7c908ba6d101d0aed3
 	md5sums = e993658f9913493bb4336d73f23a3195
 
 pkgname = gplaycli

@@ -2,18 +2,18 @@
 # Maintainer: LightDot <lightdot -a-t- g m a i l>
 
 pkgname=gplaycli
-pkgver=3.21
+pkgver=3.23
 pkgrel=1
 pkgdesc="command line tool to search/install/update Android applications Google PlayStore able to run with cronjob, in order to automatically update an F-Droid server instance"
 arch=('any')
 url="https://github.com/matlink/gplaycli"
 license=('AGPL')
-depends=('python' "python-requests" "python-protobuf" "python-pyaxmlparser" "python-clint" "python-pyopenssl" 'python-gpapi' 'python-pycryptodome')
+depends=('python' 'python-pyaxmlparser' 'python-gpapi')
 optdepends=('java-runtime: needed for autogeneration of a new AndroiID')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/matlink/gplaycli/archive/${pkgver}.tar.gz"
         "$pkgname.install")
-md5sums=('ef1fad18d4a09ed04ced76e0e423dd41'
+md5sums=('e44442bcd962ac7c908ba6d101d0aed3'
          'e993658f9913493bb4336d73f23a3195')
 
 package() {
