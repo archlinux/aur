@@ -22,17 +22,20 @@ source=(
 )
 sha256sums=(
   '2ecf8e43518dfb24bd172923adf6ce25a6d3e39de3a8aadf26c890f60dd1e9f7'
-  '56bd3fef417f2414dc3b3ab8ea3f455064b0d22f74489a72bfd83882701f3b03'
+  '93a2a6d031fb50156ed7de00658fe082ef802ad7900e5336f37b897588fe869c'
 )
 
+_sdir=SoapySDR-$_gver
+_bdir=$_sdir/build
+
 prepare() {
-  sed -i "s/SOURCE_FOLDER/SoapySDR-$_gver/g" git_revision.patch
+  sed -i "s/SOURCE_FOLDER/$_sdir/g" git_revision.patch
   patch -p0 < git_revision.patch
 }
 
 build() {
-  mkdir -p $srcdir/SoapySDR-$_gver/build
-  cd $srcdir/SoapySDR-$_gver/build
+  mkdir -p $srcdir/$_bdir
+  cd $srcdir/$_bdir
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -42,10 +45,10 @@ build() {
 }
 
 package() {
-  cd $srcdir/SoapySDR-$_gver/build
+  cd $srcdir/$_bdir
 
   make DESTDIR=$pkgdir install
 
-  install -dm 644 $pkgdir/usr/share/licenses/soapysdr
-  install -Dm 644 $srcdir/SoapySDR-$_gver/LICENSE_1_0.txt $pkgdir/usr/share/licenses/soapysdr/
+  install -dm 644 $pkgdir/usr/share/licenses/$pkgname
+  install -Dm 644 $srcdir/$_sdir/LICENSE_1_0.txt $pkgdir/usr/share/licenses/$pkgname/
 }

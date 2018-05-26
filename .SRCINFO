@@ -11,7 +11,7 @@ pkgbase = soapysdr
 	source = https://github.com/pothosware/SoapySDR/archive/soapy-sdr-0.6.1.tar.gz
 	source = git_revision.patch
 	sha256sums = 2ecf8e43518dfb24bd172923adf6ce25a6d3e39de3a8aadf26c890f60dd1e9f7
-	sha256sums = 56bd3fef417f2414dc3b3ab8ea3f455064b0d22f74489a72bfd83882701f3b03
+	sha256sums = 93a2a6d031fb50156ed7de00658fe082ef802ad7900e5336f37b897588fe869c
 
 pkgname = soapysdr
 
