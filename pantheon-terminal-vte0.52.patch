@@ -1,0 +1,23 @@
+diff --git a/src/Widgets/TerminalWidget.vala b/src/Widgets/TerminalWidget.vala
+index 5dc4a9a..cb009c0 100644
+--- a/src/Widgets/TerminalWidget.vala
++++ b/src/Widgets/TerminalWidget.vala
+@@ -436,15 +436,15 @@ namespace PantheonTerminal {
+                     }
+ 
+                     string uris_s = string.joinv ("", uris);
+-                    this.feed_child (uris_s, uris_s.length);
++                    this.feed_child ( (char[])uris_s.data );
+ 
+                     break;
+                 case DropTargets.STRING:
+                 case DropTargets.TEXT:
+-                    var data = selection_data.get_text ();
++                    var data = selection_data.get_text();
+ 
+                     if (data != null) {
+-                        this.feed_child (data, data.length);
++                        this.feed_child ( (char[])data.data );
+                     }
+ 
+                     break;
