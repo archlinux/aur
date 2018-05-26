@@ -4,7 +4,7 @@
 _hkgname=OneTuple
 
 pkgname=haskell-onetuple
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 license=(BSD-3-Clause)
 pkgdesc="Singleton Tuple." 
@@ -14,7 +14,7 @@ makedepends=("ghc")
 depends=("haskell-base")
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 
-sha256sums=('4b6f74b6d92df112b0f4eaf15ccdc5fbb763d59f07e9a2afa5690ef89159a2f4')
+sha256sums=('d82e702485bcbdefbda0d12b6a250d318a269572ee58d63b60eee531e56624dc')
 
 # PKGBUILD functions
 
