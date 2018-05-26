@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_graph provides a GUI plugin for visualizing the ROS computati
 url='http://wiki.ros.org/rqt_graph'
 
 pkgname='ros-melodic-rqt-graph'
-pkgver='0.4.9'
+pkgver='0.4.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rqt_graph-release-release-melodic-rqt_graph-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_graph-release/archive/release/melodic/rqt_graph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a959ba80748df4e63ee4079849ac7b718a95b9b30f4fd8adda0b2657b00de337')
+sha256sums=('42392c916b12e8c40f044840f42090981ae5bdf5925bcaccd716416e2aace427')
 
 build() {
   # Use ROS environment variables

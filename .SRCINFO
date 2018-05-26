@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rqt-graph
 	pkgdesc = ROS - rqt_graph provides a GUI plugin for visualizing the ROS computation graph.
-	pkgver = 0.4.9
+	pkgver = 0.4.10
 	pkgrel = 1
 	url = http://wiki.ros.org/rqt_graph
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = ros-melodic-rqt-graph
 	depends = ros-melodic-python-qt-binding
 	depends = ros-melodic-rospy
 	depends = python2-rospkg
-	source = ros-melodic-rqt-graph-0.4.9-0.tar.gz::https://github.com/ros-gbp/rqt_graph-release/archive/release/melodic/rqt_graph/0.4.9-0.tar.gz
-	sha256sums = a959ba80748df4e63ee4079849ac7b718a95b9b30f4fd8adda0b2657b00de337
+	source = ros-melodic-rqt-graph-0.4.10-0.tar.gz::https://github.com/ros-gbp/rqt_graph-release/archive/release/melodic/rqt_graph/0.4.10-0.tar.gz
+	sha256sums = 42392c916b12e8c40f044840f42090981ae5bdf5925bcaccd716416e2aace427
 
 pkgname = ros-melodic-rqt-graph
 
