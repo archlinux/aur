@@ -1,30 +1,24 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-gwcs
-pkgname=('python-gwcs' 'python2-gwcs' 'python-gwcs-doc')
-pkgver=0.8.0
-pkgrel=2
+pkgname=('python-gwcs' 'python-gwcs-doc')
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="A python package for managing the World Coordinate System (WCS) of astronomical data"
 arch=('i686' 'x86_64')
 url="http://gwcs.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'cython2' 'python-astropy' 'python-astropy-helpers' 'python2-astropy-helpers' 'python-sphinx' 'python-matplotlib')
-checkdepends=('python2-pytest' 'python2-semantic-version' 'python2-astropy' 'python2-asdf')
+makedepends=('cython' 'python-astropy' 'python-astropy-helpers' 'python-sphinx' 'python-matplotlib')
+checkdepends=('python-asdf' 'python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-${pkgver}.tar.gz")
-md5sums=('8c4bc796ae1bfe9a3983c0cc7bde7727')
+md5sums=('87d9f0aa1a7434da10f4ee3bd3dae201')
 
 prepare() {
     cd ${srcdir}/gwcs-${pkgver}
-    sed -i -e '/auto_use/s/True/False/' setup.cfg
 
-    cp -a ${srcdir}/gwcs-${pkgver}{,-py2}
+    sed -i -e '/auto_use/s/True/False/' setup.cfg
 }
 
 build () {
-    msg "Building Python2"
-    cd ${srcdir}/gwcs-${pkgver}-py2
-    python2 setup.py build --use-system-libraries --offline
-
-    msg "Building Python3"
     cd ${srcdir}/gwcs-${pkgver}
     python setup.py build --use-system-libraries --offline
 
@@ -33,22 +27,8 @@ build () {
 }
 
 check(){
-#    cd $srcdir/gwcs-${pkgver}
-#    python setup.py test
-#
-    cd $srcdir/gwcs-${pkgver}-py2
-    python2 setup.py test
-}
-
-package_python2-gwcs() {
-    depends=('python2' 'python2-numpy>=1.7' 'python2-astropy>=1.2' 'python2-asdf')
-    optdepends=('python-gwcs-doc: Documentation for Python-GWCS')
-    cd ${srcdir}/gwcs-${pkgver}-py2
-
-    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" licenses/*
-    install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-libraries --offline
+    cd ${srcdir}/gwcs-${pkgver}
+    python setup.py test
 }
 
 package_python-gwcs() {
