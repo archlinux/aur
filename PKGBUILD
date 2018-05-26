@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=('python-pylibacl' 'python2-pylibacl')
 pkgver=0.5.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A python extension module that allows you to manipulate the POSIX.1e ACLs. (Fixed for python 3)"
 arch=( 'i686' 'x86_64' )
 url="http://pylibacl.k1024.org/"
@@ -12,7 +12,6 @@ license=( 'LGPL' )
 depends=( 'python' 'python2' )
 makedepends=( 'python-distribute' 'python2-distribute' 'python' 'python2' )
 _pkgname=pylibacl
-provides=('pylibacl')
 install=
 changelog=
 noextract=()
@@ -30,6 +29,8 @@ package_python-pylibacl() {
 package_python2-pylibacl() {
 	depends=('python2')
 	conflicts=('pylibacl')
+	provides=('pylibacl')
+	pkgdesc="A python extension module that allows you to manipulate the POSIX.1e ACLs."
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
 }
