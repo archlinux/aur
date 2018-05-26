@@ -18,7 +18,7 @@ source=("${url}/installers/${_runname}"
         "tracker.desktop")
 md5sums=('f0010a0c793a5885d28f001b1bee0e14'
          '4f457c6b8231a48eb3cd302c7629fd9d'
-         '934d21bdb8f9628e285f56f3967adadd')
+         '805138863c7eb51258022e4d66edab92')
 
 package() {
 
