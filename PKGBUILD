@@ -1,4 +1,3 @@
-# Maintainer: Marcel Huber <marcelhuberfoo@gmail.com>
 
 pkgname=nvidia-docker-1.0.1
 pkgver=1.0.1
