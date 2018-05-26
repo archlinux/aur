@@ -1,6 +1,6 @@
 #Maintainer: Neve Laughery <RewoundVHS@protonmail.com>
 
-pkgname=curie-bdf
+pkgname=bdf-curie
 _gitname=curie
 pkgver=1.0
 pkgrel=1
