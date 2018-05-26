@@ -5,7 +5,7 @@ _hkgname=HStringTemplate
 
 # PKGBUILD options/directives
 pkgname=haskell-hstringtemplate
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 license=(BSD3)
 pkgdesc="StringTemplate implementation in Haskell."
@@ -21,7 +21,7 @@ depends=("ghc"
          "haskell-void")
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 
-sha256sums=("7022cb9c1e1c223cfb8adf5ca6994b9f4709399ae197cb7541247c0b5d0255cd")
+sha256sums=('4f4ea4aa2e45e7c45821b87b0105c201fbadebc2f2d00c211e728403a0af6b0e')
 
 # PKGBUILD functions
 
