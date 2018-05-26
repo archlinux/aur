@@ -6,7 +6,7 @@ pkgver=0.10.89.g3690b60
 pkgrel=2
 pkgdesc='A lightweight cross-platform text editor. Development version.'
 arch=('i686' 'x86_64')
-url='http://juffed.com/'
+url='https://github.com/Mezomish/juffed'
 license=('GPL2')
 
 depends=('enca' 'qscintilla-qt5')
