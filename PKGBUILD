@@ -2,20 +2,23 @@
 # Contributor: Timothée Ravier <tim@siosm.fr>
 # Contributor: Nicky726 (Nicky726 <at> gmail <dot> com)
 # Contributor: Sergej Pupykin (pupykin <dot> s+arch <at> gmail <dot> com)
+#
+# This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
+# If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=checkpolicy
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="SELinux policy compiler"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
 license=('GPL2')
 groups=('selinux')
-makedepends=('libsepol>=2.7')
+makedepends=('libsepol>=2.8')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5413479f1dcde866c19896b4dbfec315d822aa431606e1d03c944408984c3201')
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('9dec811c24b88e58c3bf741365eacf1dbb945531a2fcb8f284aacf68098194c8')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -24,7 +27,7 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" LIBSEPOLA=/usr/lib/libsepol.a install
+  make DESTDIR="${pkgdir}" install
   install -m 0755 test/dismod "${pkgdir}"/usr/bin/sedismod
   install -m 0755 test/dispol "${pkgdir}"/usr/bin/sedispol
 }
