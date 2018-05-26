@@ -1,7 +1,10 @@
 # Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+#
+# This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
+# If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=restorecond
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="SELinux restorecon daemon"
 arch=('i686' 'x86_64')
@@ -10,19 +13,17 @@ license=('GPL2')
 groups=('selinux')
 depends=('dbus-glib' 'libselinux>=2.7')
 conflicts=('policycoreutils<2.7')
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('cb8e0a8d706cb2c1f105125f3514dffffefcbcfb49199183a7f91ab0bdf1f24d')
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('323cab1128e5308cd85fea0e5c98e3c8973e1ada0b659f2fce76187e192271bf')
 
 build() {
   cd "${pkgname}-${pkgver}"
-
   make
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-
-  make DESTDIR="${pkgdir}" SBINDIR="${pkgdir}/usr/bin" install
+  make DESTDIR="${pkgdir}" SBINDIR=/usr/bin install
 
   # Remove restorecond init script
   rm -rf "${pkgdir}/etc/rc.d"
