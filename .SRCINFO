@@ -1,0 +1,18 @@
+pkgbase = soapyuhd
+	pkgdesc = Soapy SDR plugin for UHD supported SDR devices
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/pothosware/SoapyUHD
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	depends = boost
+	depends = libuhd
+	depends = soapysdr
+	provides = soapyuhd
+	conflicts = soapyuhd
+	source = https://github.com/pothosware/SoapyUHD/archive/soapy-uhd-0.3.4.tar.gz
+	sha256sums = 7b7f2bc9a565f42b6e9b0831db942a5231fd048c79976fb2d1f1710efef83dd0
+
+pkgname = soapyuhd
+
