@@ -2,7 +2,7 @@
 pkgbase=python2-gwcs
 pkgname=('python2-gwcs' 'python2-gwcs-doc')
 pkgver=0.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A python package for managing the World Coordinate System (WCS) of astronomical data"
 arch=('i686' 'x86_64')
 url="http://gwcs.readthedocs.io/en/latest/"
