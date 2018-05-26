@@ -1,0 +1,20 @@
+--- libprelude-4.1.0/prelude-admin/tls-register.c	2017-07-17 12:03:05.762000000 +0200
++++ libprelude-4.1.0/prelude-admin/tls-register.c2	2017-10-09 09:37:26.874129389 +0200
+@@ -409,7 +409,7 @@
+                 goto err;
+         }
+ 
+-        ret = gnutls_x509_crt_sign(crt, ca_crt, ca_key);
++        ret = gnutls_x509_crt_sign2(crt, ca_crt, ca_key, GNUTLS_DIG_SHA256, 0);
+         if ( ret < 0 ) {
+                 fprintf(stderr, "error signing certificate: %s.\n", gnutls_strerror(ret));
+                 goto err;
+@@ -445,7 +445,7 @@
+         gnutls_x509_crt_set_ca_status(crt, 1);
+         gnutls_x509_crt_set_key_usage(crt, usage);
+ 
+-        ret = gnutls_x509_crt_sign(crt, crt, key);
++        ret = gnutls_x509_crt_sign2(crt, crt, key, GNUTLS_DIG_SHA256, 0);
+         if ( ret < 0 ) {
+                 fprintf(stderr, "error self-signing certificate: %s.\n", gnutls_strerror(ret));
+                 gnutls_x509_crt_deinit(crt);

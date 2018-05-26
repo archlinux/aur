@@ -3,7 +3,7 @@
 # Contributor: Thomas Andrejak <thomas.andrejak@gmail.com>
 
 pkgname=libprelude
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Provides the framework for using the Prelude system"
 arch=('i686' 'x86_64')
@@ -13,8 +13,9 @@ depends=('gnutls' 'python2' 'python3' 'gtk-doc' 'lua' 'ruby')
 backup=('etc/prelude/default/client.conf'
         'etc/prelude/default/global.conf'
         'etc/prelude/default/idmef-client.conf'
-        'etc/prelude/default/tls.conf')
-source=("https://www.prelude-siem.org/pkg/src/4.0.0/$pkgname-$pkgver.tar.gz")
+	'etc/prelude/default/tls.conf')
+source=("https://www.prelude-siem.org/pkg/src/4.1.0/$pkgname-$pkgver.tar.gz"
+	"libprelude-4.1.0-fix_compatibility_gnutls_3_6.patch")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -27,4 +28,8 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('f4bd0ece58245797db14c971133536a2')
+prepare() {
+  patch -p0 <libprelude-4.1.0-fix_compatibility_gnutls_3_6.patch
+}
+
+md5sums=('d75977db58de9ba4cf9c4d00a0e25cb9' '5237abe04d26bc071b1018d456550259')
