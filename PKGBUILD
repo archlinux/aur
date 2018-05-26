@@ -3,9 +3,12 @@
 # Contributor: Nicky726 (Nicky726 <at> gmail <dot> com)
 # Contributor: Sergej Pupykin (pupykin <dot> s+arch <at> gmail <dot> com)
 # Contributor: Zezadas
+#
+# This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
+# If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=libselinux
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h')
@@ -13,15 +16,15 @@ url='http://userspace.selinuxproject.org'
 license=('custom')
 groups=('selinux')
 makedepends=('python2' 'python' 'ruby' 'xz' 'swig')
-depends=('libsepol>=2.7' 'pcre')
+depends=('libsepol>=2.8' 'pcre')
 optdepends=('python2: python2 bindings'
             'python: python bindings'
             'ruby: ruby bindings')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/${pkgname}-${pkgver}.tar.gz"
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/${pkgname}-${pkgver}.tar.gz"
         "libselinux.tmpfiles.d")
-sha256sums=('d0fec0769b3ad60aa7baf9b9a4b7a056827769dc2dadda0dc0eb59b3d1c18c57'
+sha256sums=('31db96ec7643ce10912b3c3f98506a08a9116dcfe151855fd349c3fda96187e1'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
 
 build() {
@@ -42,28 +45,12 @@ package() {
 
   export DISABLE_RPM=y
 
-  make DESTDIR="${pkgdir}" \
-    LIBSEPOLA=/usr/lib/libsepol.a \
-    SBINDIR="${pkgdir}/usr/bin" \
-    SHLIBDIR="${pkgdir}/usr/lib" \
-    install
-  make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python2 \
-    LIBSEPOLA=/usr/lib/libsepol.a \
-    SBINDIR="${pkgdir}/usr/bin" \
-    SHLIBDIR="${pkgdir}/usr/lib" \
-    install-pywrap
-  make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python3 \
-    LIBSEPOLA=/usr/lib/libsepol.a \
-    SBINDIR="${pkgdir}/usr/bin" \
-    SHLIBDIR="${pkgdir}/usr/lib" \
-    install-pywrap
-  make DESTDIR="${pkgdir}" RUBY=/usr/bin/ruby \
-    LIBSEPOLA=/usr/lib/libsepol.a \
-    SBINDIR="${pkgdir}/usr/bin" \
-    SHLIBDIR="${pkgdir}/usr/lib" \
-    install-rubywrap
-  /usr/bin/python2 -m compileall "${pkgdir}/$(/usr/bin/python2 -c 'import site; print(site.getsitepackages()[0])')"
-  /usr/bin/python3 -m compileall "${pkgdir}/$(/usr/bin/python3 -c 'import site; print(site.getsitepackages()[0])')"
+  make DESTDIR="${pkgdir}" SBINDIR=/usr/bin SHLIBDIR=/usr/lib install
+  make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python2 SBINDIR=/usr/bin SHLIBDIR=/usr/lib install-pywrap
+  make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python3 SBINDIR=/usr/bin SHLIBDIR=/usr/lib install-pywrap
+  make DESTDIR="${pkgdir}" RUBY=/usr/bin/ruby SBINDIR=/usr/bin SHLIBDIR=/usr/lib install-rubywrap
+  /usr/bin/python2 -m compileall "${pkgdir}/$(/usr/bin/python2 -c 'from distutils.sysconfig import *; print(get_python_lib(plat_specific=1))')"
+  /usr/bin/python3 -m compileall "${pkgdir}/$(/usr/bin/python3 -c 'from distutils.sysconfig import *; print(get_python_lib(plat_specific=1))')"
 
   install -Dm 0644 "${srcdir}"/libselinux.tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/libselinux.conf
 
