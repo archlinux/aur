@@ -1,15 +1,16 @@
 # Maintainer: dctxmei <dctxmei@gmail.com>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: pandada8 <pandada8@gmail.com>
-
 pkgname=v2ray-git
 pkgver=3.23
-pkgrel=1
+pkgrel=2
 pkgdesc="A platform for building proxies to bypass network restrictions"
 arch=("x86_64")
 url="https://github.com/v2ray/v2ray-core"
 license=("MIT")
 makedepends=("git" "go")
+provides=("v2ray")
+conflicts=("v2ray")
 source=("git+${url}.git"
         "v2ray.service")
 sha512sums=("SKIP"
