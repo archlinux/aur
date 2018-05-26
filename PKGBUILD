@@ -1,7 +1,7 @@
 # Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
 
 pkgname=android-emulator
-pkgver=27.1.12
+pkgver=27.2.9
 pkgrel=1
 pkgdesc='Google Android Emulator'
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ depends_x86_64=('lib32-gcc-libs' 'lib32-glibc' 'libpulse' 'libx11'
                 'libxcb' 'libxdamage' 'libxext' 'libxfixes'
                 'ncurses5-compat-libs' 'zlib')
 install="${pkgname}.install"
-source=('https://dl.google.com/android/repository/emulator-linux-4623001.zip'
+source=('https://dl.google.com/android/repository/emulator-linux-4773671.zip'
         "${pkgname}.sh"
         "${pkgname}.csh")
-sha1sums=('92b7da949288a6b70a2089182d529d3cb3c14f30'
+sha1sums=('2a4d424c0c8a2ac94fea68732f90c7668e5682f6'
           '4537a7ce30bedf87cedafc2020822219ad58310d'
           '2fb371b5774b67143f0610dfbec4963a4e2f11cc')
 
