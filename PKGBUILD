@@ -1,6 +1,6 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
 pkgname=osmo-fl2k-git
-pkgver=r12.631ce38
+pkgver=0.1.1.r4.d5c4dcc
 pkgrel=1
 pkgdesc="Library to use cheap (FL2000 based) USB3.0 to VGA converters as SDR"
 arch=(any)
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/osmo-fl2k"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 build() {
