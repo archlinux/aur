@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate the packages required to use publish /
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-ros-core'
-pkgver='1.4.0'
+pkgver='1.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,26 +15,29 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-melodic-ros
-  ros-melodic-genmsg
-  ros-melodic-rospack
   ros-melodic-ros-comm
-  ros-melodic-common-msgs
-  ros-melodic-gencpp
-  ros-melodic-std-msgs
   ros-melodic-geneus
   ros-melodic-rosgraph-msgs
-  ros-melodic-message-runtime
-  ros-melodic-catkin
-  ros-melodic-rosconsole-bridge
-  ros-melodic-roscpp-core
   ros-melodic-gennodejs
   ros-melodic-genlisp
   ros-melodic-std-srvs
-  ros-melodic-rosbag-migration-rule
   ros-melodic-roslisp
-  ros-melodic-message-generation
+  ros-melodic-roscpp-core
+  ros-melodic-rosconsole
+  ros-melodic-genmsg
+  ros-melodic-gencpp
+  ros-melodic-std-msgs
+  ros-melodic-catkin
+  ros-melodic-pluginlib
+  ros-melodic-class-loader
+  ros-melodic-rospack
+  ros-melodic-cmake-modules
+  ros-melodic-common-msgs
+  ros-melodic-message-runtime
+  ros-melodic-rosconsole-bridge
   ros-melodic-genpy
-  ros-melodic-cmake-modules)
+  ros-melodic-rosbag-migration-rule
+  ros-melodic-message-generation)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
@@ -46,7 +49,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="metapackages-release-release-melodic-ros_core-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/melodic/ros_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e61588bc3394e2c9cf2057c50e106ba54e1dbd1756f8c1e0433e3b0d4d54f9c2')
+sha256sums=('390d24da9397fce3a11f1dc7a0a23fb0886b81a4cfd2473906508358a670782d')
 
 build() {
   # Use ROS environment variables
