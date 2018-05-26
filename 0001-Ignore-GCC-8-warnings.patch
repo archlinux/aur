@@ -1,0 +1,43 @@
+From 4685997fbd6687158879f2db0456ce2eb1ff0567 Mon Sep 17 00:00:00 2001
+From: Romain Geissler <romain.geissler@amadeus.com>
+Date: Mon, 19 Feb 2018 12:52:16 +0100
+Subject: [PATCH] Ignore GCC 8 warnings.
+
+(cherry picked from commit 54dab1eebb0dea32d9ea49dad4fa9c98816c21ed)
+---
+ external/rapidjson/document.h | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/external/rapidjson/document.h b/external/rapidjson/document.h
+index 19f5a6a5f..0cde80780 100644
+--- a/external/rapidjson/document.h
++++ b/external/rapidjson/document.h
+@@ -1936,7 +1936,12 @@ private:
+         if (count) {
+             GenericValue* e = static_cast<GenericValue*>(allocator.Malloc(count * sizeof(GenericValue)));
+             SetElementsPointer(e);
++RAPIDJSON_DIAG_PUSH
++#if defined(__GNUC__) && __GNUC__ >= 8
++RAPIDJSON_DIAG_OFF(class-memaccess) // ignore complains from gcc that no trivial copy constructor exists.
++#endif
+             std::memcpy(e, values, count * sizeof(GenericValue));
++RAPIDJSON_DIAG_POP
+         }
+         else
+             SetElementsPointer(0);
+@@ -1949,7 +1954,12 @@ private:
+         if (count) {
+             Member* m = static_cast<Member*>(allocator.Malloc(count * sizeof(Member)));
+             SetMembersPointer(m);
++RAPIDJSON_DIAG_PUSH
++#if defined(__GNUC__) && __GNUC__ >= 8
++RAPIDJSON_DIAG_OFF(class-memaccess) // ignore complains from gcc that no trivial copy constructor exists.
++#endif
+             std::memcpy(m, members, count * sizeof(Member));
++RAPIDJSON_DIAG_POP
+         }
+         else
+             SetMembersPointer(0);
+-- 
+2.17.0
+

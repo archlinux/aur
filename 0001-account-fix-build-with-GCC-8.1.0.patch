@@ -1,0 +1,53 @@
+From ae6a40dfd76f5fb024b48a83d900cf5e6d02db93 Mon Sep 17 00:00:00 2001
+From: moneromooo-monero <moneromooo-monero@users.noreply.github.com>
+Date: Thu, 24 May 2018 09:12:16 +0100
+Subject: [PATCH] account: fix build with GCC 8.1.0
+
+---
+ src/cryptonote_basic/account.cpp        | 2 +-
+ src/daemon/rpc_command_executor.cpp     | 2 +-
+ src/rpc/core_rpc_server_commands_defs.h | 2 ++
+ 3 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/cryptonote_basic/account.cpp b/src/cryptonote_basic/account.cpp
+index bab991d19..aac6ec22b 100644
+--- a/src/cryptonote_basic/account.cpp
++++ b/src/cryptonote_basic/account.cpp
+@@ -157,7 +157,7 @@ DISABLE_VS_WARNINGS(4244 4345)
+   void account_base::create_from_viewkey(const cryptonote::account_public_address& address, const crypto::secret_key& viewkey)
+   {
+     crypto::secret_key fake;
+-    memset(&fake, 0, sizeof(fake));
++    memset(&unwrap(fake), 0, sizeof(fake));
+     create_from_keys(address, fake, viewkey);
+   }
+   //-----------------------------------------------------------------
+diff --git a/src/daemon/rpc_command_executor.cpp b/src/daemon/rpc_command_executor.cpp
+index 2efb501ea..c6dd9f538 100644
+--- a/src/daemon/rpc_command_executor.cpp
++++ b/src/daemon/rpc_command_executor.cpp
+@@ -973,7 +973,7 @@ bool t_rpc_command_executor::print_transaction_pool_stats() {
+   }
+   else
+   {
+-    memset(&res.pool_stats, 0, sizeof(res.pool_stats));
++    res.pool_stats = {};
+     if (!m_rpc_server->on_get_transaction_pool_stats(req, res, false) || res.status != CORE_RPC_STATUS_OK)
+     {
+       tools::fail_msg_writer() << make_error(fail_message, res.status);
+diff --git a/src/rpc/core_rpc_server_commands_defs.h b/src/rpc/core_rpc_server_commands_defs.h
+index 250c88e90..1227afef5 100644
+--- a/src/rpc/core_rpc_server_commands_defs.h
++++ b/src/rpc/core_rpc_server_commands_defs.h
+@@ -1554,6 +1554,8 @@ namespace cryptonote
+     std::vector<txpool_histo> histo;
+     uint32_t num_double_spends;
+ 
++    txpool_stats(): bytes_total(0), bytes_min(0), bytes_max(0), bytes_med(0), fee_total(0), oldest(0), txs_total(0), num_failing(0), num_10m(0), num_not_relayed(0), histo_98pc(0), num_double_spends(0) {}
++
+     BEGIN_KV_SERIALIZE_MAP()
+       KV_SERIALIZE(bytes_total)
+       KV_SERIALIZE(bytes_min)
+-- 
+2.17.0
+
