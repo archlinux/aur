@@ -1,7 +1,7 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
 	pkgver = 18.04.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/applications/system/dolphin/
 	arch = x86_64
 	groups = kde-applications
@@ -12,7 +12,6 @@ pkgbase = dolphin-meld
 	depends = baloo-widgets
 	depends = knewstuff
 	depends = kio-extras
-	depends = kuiserver
 	depends = kcmutils
 	depends = kparts
 	depends = kinit
@@ -24,8 +23,8 @@ pkgbase = dolphin-meld
 	optdepends = konsole: terminal panel
 	provides = dolphin=18.04.1
 	conflicts = dolphin=18.04.1
-	source = https://download.kde.org/stable/applications/18.04.1/src/dolphin-meld-18.04.1.tar.xz
-	source = https://download.kde.org/stable/applications/18.04.1/src/dolphin-meld-18.04.1.tar.xz.sig
+	source = https://download.kde.org/stable/applications/18.04.1/src/dolphin-18.04.1.tar.xz
+	source = https://download.kde.org/stable/applications/18.04.1/src/dolphin-18.04.1.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	sha256sums = 50db0e6c59383c3141ba96f733d36ac63b8f4d3e1f3d233b4a27da5931179587
