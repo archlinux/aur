@@ -1,6 +1,6 @@
 pkgbase = cabbage-git
 	pkgdesc = A framework for audio software development
-	pkgver = 2.0.0r1188
+	pkgver = 2.0.0r1225
 	pkgrel = 1
 	url = http://cabbageaudio.com/
 	arch = x86_64
@@ -23,13 +23,13 @@ pkgbase = cabbage-git
 	conflicts = cabbage
 	source = git+https://github.com/rorywalsh/cabbage.git#branch=master
 	source = git+https://github.com/WeAreROLI/JUCE.git#tag=5.2.0
-	source = fix_default_dirs.patch
+	source = buildCabbage.patch
 	source = cabbage.png
 	source = Cabbage.desktop
 	source = CabbageLite.desktop
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 44c102c1fbd8e5b1e784136f3bcba7dd
+	md5sums = 123ac4cc22f58bb00e2dd34a290f3156
 	md5sums = c3c8e35dd46c86f22a3565aa4dd828a8
 	md5sums = 35cfc89844c90769f4dc4f8309b340b1
 	md5sums = c39a85709e31e03a0850f2e324a4faea

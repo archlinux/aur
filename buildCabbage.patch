@@ -1,0 +1,63 @@
+--- cabbage/Builds/LinuxMakefile/buildCabbage	2018-05-26 02:00:50.542132073 -0400
++++ cabbage/Builds/LinuxMakefile/buildCabbage.new	2018-05-26 02:17:29.522074962 -0400
+@@ -35,46 +35,48 @@
+ make -f MakePluginSynth -j6 
+ else
+ #release mode  default
++
++mkdir -p ./install/bin ./install/images
++
+ ../../../JUCE/extras/Projucer/Builds/LinuxMakefile/build/Projucer --resave ../../CabbageIDE.jucer
+ mv Makefile MakeCabbageIDE
+ make -f MakeCabbageIDE clean CONFIG=Release
+ make -f MakeCabbageIDE -j6 CONFIG=Release
+-cp ./build/Cabbage /usr/bin/Cabbage
++cp ./build/Cabbage ./install/bin/Cabbage
+ 
+ ../../../JUCE/extras/Projucer/Builds/LinuxMakefile/build/Projucer --resave ../../CabbagePlugin.jucer
+ mv Makefile MakePluginEffect
+ 
+ make -f MakePluginEffect clean CONFIG=Release
+ make -f MakePluginEffect -j6 CONFIG=Release
+-cp ./build/CabbagePlugin.so /usr/bin/CabbagePluginEffect.so
++cp ./build/CabbagePlugin.so ./install/bin/CabbagePluginEffect.so
+ 
+ ../../../JUCE/extras/Projucer/Builds/LinuxMakefile/build/Projucer --resave ../../CabbagePluginSynth.jucer
+ mv Makefile MakePluginSynth
+ 
+ make -f MakePluginSynth clean CONFIG=Release
+ make -f MakePluginSynth -j6 CONFIG=Release
+-cp ./build/CabbagePlugin.so /usr/bin/CabbagePluginSynth.so
++cp ./build/CabbagePlugin.so ./install/bin/CabbagePluginSynth.so
+ 
+ ../../../JUCE/extras/Projucer/Builds/LinuxMakefile/build/Projucer --resave ../../CabbageLite.jucer
+ mv Makefile MakeCabbageLite
+ 
+ make -f MakeCabbageLite clean CONFIG=Release
+ make -f MakeCabbageLite -j6 CONFIG=Release
+-cp ./build/CabbageLite /usr/bin/CabbageLite
++cp ./build/CabbageLite ./install/bin/CabbageLite
+ 
+ fi  
+ 
+-cp ./../opcodes.txt /usr/bin/opcodes.txt
+-cp ./../../Images/cabbage.png /usr/share/icons/hicolor/512x512/apps/cabbage.png
+-cp ./../../Images/cabbage.png /usr/share/icons/hicolor/512x512/apps/cabbagelite.png
+-mkdir /usr/share/doc/cabbage/
+-cp -rf ../../Examples/ /usr/share/doc/cabbage/Examples
++cp ./../opcodes.txt ./install/bin/opcodes.txt
++cp ./../../Images/cabbage.png ./install/images/cabbage.png
++cp ./../../Images/cabbage.png ./install/images/cabbagelite.png
++cp -rf ../../Examples ./install/
+ 
+ g++ ../../Source/testCsoundFile.cpp -o testCsoundFile -I"/usr/include/csound" -lcsound64
+-cp testCsoundFile /usr/bin/testCsoundFile
++cp testCsoundFile ./install/bin/testCsoundFile
+ #cp -rf ../../Docs/_book CabbageBuild/Docs
+ 
+ sed "s@CURRENTDIR@$(pwd)@" Cabbage.desktop > cabbage.desktop
+ sed "s@CURRENTDIR@$(pwd)@" Cabbage.desktop > cabbagLite.desktop
+-# sed "s@CURRENTDIR@$(pwd)@" dummy.desktop > CabbageBuild/cabbagelite.desktop
+-cp cabbage.desktop ~/.local/share/applications/
++#sed "s@CURRENTDIR@$(pwd)@" dummy.desktop > CabbageBuild/cabbagelite.desktop
++cp cabbage.desktop ./install/

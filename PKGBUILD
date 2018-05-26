@@ -1,7 +1,7 @@
 # Maintainer: Eugene Cherny <iam@oscii.ru>
 pkgname=cabbage-git
 pkgrel=1 
-pkgver=2.0.0r1188
+pkgver=2.0.0r1225
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
@@ -13,13 +13,13 @@ conflicts=('cabbage')
 provides=('cabbage')
 source=('git+https://github.com/rorywalsh/cabbage.git#branch=master'
         'git+https://github.com/WeAreROLI/JUCE.git#tag=5.2.0'
-        'fix_default_dirs.patch'
+        'buildCabbage.patch'
         'cabbage.png'
         'Cabbage.desktop'
         'CabbageLite.desktop')
 md5sums=('SKIP'
          'SKIP'
-         '44c102c1fbd8e5b1e784136f3bcba7dd'
+         '123ac4cc22f58bb00e2dd34a290f3156'
          'c3c8e35dd46c86f22a3565aa4dd828a8'
          '35cfc89844c90769f4dc4f8309b340b1'
          'c39a85709e31e03a0850f2e324a4faea')
@@ -85,7 +85,9 @@ prepare() {
   sed -i "/CabbageBuild\/cabbage.desktop/d" "$b"
 
   dos2unix "${srcdir}/cabbage/Source/Settings/CabbageSettings.cpp"
-  patch -p1 < ../../fix_default_dirs.patch
+
+  cd "$srcdir"
+  patch -p0 < buildCabbage.patch
 }
 
 pkgver() {
@@ -113,17 +115,20 @@ build() {
 }
 
 package() {
-  install -Dm644 cabbage.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/cabbage.png"
-  install -Dm644 Cabbage.desktop "${pkgdir}/usr/share/applications/Cabbage.desktop"
-  install -Dm644 Cabbage.desktop "${pkgdir}/usr/share/applications/CabbageLite.desktop"
+  cabbage_install_dir="${srcdir}/cabbage/Builds/LinuxMakefile/install"
+  images_dir="${pkgdir}/usr/share/icons/hicolor/512x512/apps"
 
-  cd "${srcdir}/cabbage/Builds/LinuxMakefile/CabbageBuild/"
-
-  for f in Cabbage CabbageLite CabbagePluginEffect.so CabbagePluginSynth.so opcodes.txt; do
-    install -Dm755 "$f" "${pkgdir}/usr/bin/$f"
+  install -d "$images_dir"
+  for file in "${cabbage_install_dir}"/images/*; do
+    install -m644 "$file" "$images_dir"
   done
 
-  install -d "${pkgdir}/usr/share/doc/cabbage/examples"
-  cp -r Examples/* "${pkgdir}/usr/share/doc/cabbage/examples/"
+  install -d "${pkgdir}/usr/bin"
+  for file in "${cabbage_install_dir}"/bin/*; do
+    install -m755 "$file" "${pkgdir}/usr/bin/"
+  done
+
+  install -d "${pkgdir}/usr/share/doc/cabbage"
+  cp -r "${cabbage_install_dir}/Examples" "${pkgdir}/usr/share/doc/cabbage"
   chmod -R 755 "${pkgdir}/usr/share/doc/cabbage"
 }
