@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Tracker
+Comment=Tracker video analysis and modeling tool
+Exec=/opt/tracker/tracker.sh
+Icon=/usr/share/pixmaps/osp-tracker.png
+Terminal=false
+StartupNotify=false
+Categories=Education;
