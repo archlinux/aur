@@ -4,10 +4,10 @@ pkgdesc="ROS - rosparam contains the rosparam command-line tool for getting and 
 url='http://ros.org/wiki/rosparam'
 
 pkgname='ros-melodic-rosparam'
-pkgver='1.13.6'
-_pkgver_patch=2
+pkgver='1.14.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosparam-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosparam/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c2722270091f3e4a0fd6d2330b46507e4cf98098ed5dec5bb891d5d2d3dda042')
+sha256sums=('9a642abaad3d93395ca158926178e83d13fbd0d6940e7a02c7758058818c0265')
 
 build() {
   # Use ROS environment variables
