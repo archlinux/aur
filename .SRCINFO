@@ -1,0 +1,15 @@
+pkgbase = serialdv
+	pkgdesc = C++ Minimal interface to encode and decode audio with AMBE3000 based devices in packet mode over a serial link
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/f4exb/serialDV
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	provides = serialdv
+	conflicts = serialdv
+	source = https://github.com/f4exb/serialDV/archive/v1.0.5.tar.gz
+	sha256sums = 9f5964605476fe400f559e7d1700fee96ce16f1ee2e0eefdc61d3c6e70bef0bd
+
+pkgname = serialdv
+
