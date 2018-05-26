@@ -1,6 +1,7 @@
 # Maintainer: Jor Bashllari <altnate2000@gmail.com>
 pkgname=fmui-git
 _pkgname=fmui
+pkgdesc="fzf mpd user interface"
 pkgver=r9.78596be
 pkgrel=1
 arch=( 'x86_64' 'i686' 'armv7h' 'aarch64' )
