@@ -1,0 +1,16 @@
+pkgbase = openshift-origin-client-bin
+	pkgdesc = Enterprise Kubernetes for Developers .
+	pkgver = 3.9.0
+	pkgrel = 1
+	url = https://github.com/filebrowser/filebrowser
+	arch = x86_64
+	groups = openshift-origin
+	license = Apache
+	depends = glibc
+	optdepends = kubernetes: https://github.com/kubernetes/kubernetes
+	provides = openshift-origin-client
+	source_x86_64 = openshift-origin-client.tar.gz::https://github.com/openshift/origin/releases/download/v3.9.0/openshift-origin-client-tools-v3.9.0-191fece-linux-64bit.tar.gz
+	sha256sums_x86_64 = 6ed2fb1579b14b4557e4450a807c97cd1b68a6c727cd1e12deedc5512907222e
+
+pkgname = openshift-origin-client-bin
+
