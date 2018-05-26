@@ -1,0 +1,23 @@
+pkgbase = fmui-git
+	pkgver = r9.78596be
+	pkgrel = 1
+	url = https://github.com/seebye/fmui
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	depends = toilet
+	depends = fzf
+	depends = mpc
+	depends = bash
+	depends = mpd
+	optdepends = cava
+	optdepends = vis
+	provides = fmui
+	conflicts = fmui
+	source = fmui-git::git+https://github.com/seebye/fmui.git
+	md5sums = SKIP
+
+pkgname = fmui-git
+
