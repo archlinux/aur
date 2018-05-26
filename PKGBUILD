@@ -5,7 +5,7 @@
 pkgname=osp-tracker
 pkgver=5.0.5
 arch=('x86_64')
-pkgrel=1
+pkgrel=2
 pkgdesc='Tracker video analysis and modeling tool'
 url='http://physlets.org/tracker/'
 license=('GPL3')
