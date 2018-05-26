@@ -1,7 +1,7 @@
 pkgbase = v2ray-git
 	pkgdesc = A platform for building proxies to bypass network restrictions
 	pkgver = 3.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/v2ray/v2ray-core
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 pkgname=v2ray-git
 pkgver=3.23
-pkgrel=2
+pkgrel=3
 pkgdesc="A platform for building proxies to bypass network restrictions"
 arch=("x86_64")
 url="https://github.com/v2ray/v2ray-core"
@@ -17,7 +17,7 @@ sha512sums=("SKIP"
             "bebb87f43b3920be8efde9aece9c4305323cd7d3a65a3b2441f0dbd0098c02a18ca89a5b08833eee70482cffae2c8e7b7237bb5a4d1076e3c30d273898e2bedb")
 
 pkgver() {
-    git describe | sed -e 's/^v//' -e 's/-/./g'
+    git -C v2ray-core describe | sed -e 's/^v//' -e 's/-/./g'
 }
 
 prepare() {
