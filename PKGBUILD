@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate several packages."
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-perception'
-pkgver='1.4.0'
+pkgver='1.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="metapackages-release-release-melodic-perception-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/melodic/perception/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('001948af1a17993ee939a4179602ce4695d7883c13c0a64b543ae22373e862bf')
+sha256sums=('f6024982eaa029dafbe20bd1e533f46766f9731a485a837e4a450331f5594126')
 
 build() {
   # Use ROS environment variables
