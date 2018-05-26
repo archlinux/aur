@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate several packages."
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-simulators'
-pkgver='1.4.0'
+pkgver='1.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="metapackages-release-release-melodic-simulators-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/melodic/simulators/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f268e427cfda840fb1e1a99bf157c4449df91c4860881ab93c1501ab5c72ad5f')
+sha256sums=('5a6ddc7bfbe78170db5541bdab3f2ab031abcd787b4d087e41d010acb6de2455')
 
 build() {
   # Use ROS environment variables
