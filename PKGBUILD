@@ -6,7 +6,7 @@
 pkgbase=termite-nocsd
 pkgname=('termite-nocsd')
 pkgver=13
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple VTE-based terminal without GTK client side decorations. Perfect for wayland+sway users."
 url="https://github.com/thestinger/termite/"
 license=('LGPL')
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
 
 prepare() {
   cd "${pkgbase}"
-  patch -Np1 -i "${srcdir}/termite.patch" "${srcdir}/termite/termite.cc"
+  patch -Np1 -i "${srcdir}/termite.patch" "${srcdir}/termite-nocsd/termite.cc"
 
   cd ../vte-ng
   echo 'sources: $(BUILT_SOURCES)' >> src/Makefile.am 
