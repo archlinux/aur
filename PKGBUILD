@@ -1,6 +1,6 @@
 pkgname=mruby-git
 pkgrel=1
-pkgver=1.0.0.r4518.g0ab21a9a
+pkgver=1.0.0.r5216.g14c21793
 pkgdesc='Lightweight Ruby'
 arch=(i686 x86_64)
 license=(MIT)
