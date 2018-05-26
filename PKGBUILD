@@ -3,8 +3,8 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=('python-steamodd' 'python2-steamodd')
-pkgver=4.21
-pkgrel=2
+pkgver=4.22
+pkgrel=1
 pkgdesc="Python module for working with Steam's API"
 arch=( 'i686' 'x86_64' )
 url="https://steamodd.readthedocs.io/en/latest/"
@@ -15,9 +15,9 @@ _pkgname=steamodd
 install=
 changelog=
 noextract=()
-source=("https://github.com/Lagg/steamodd/archive/v4.21.tar.gz"
-        "v4.21.tar.gz.sig")
-sha512sums=('5be53dd30476f1bfac725e97f691331f83c09ec44816ea34ae0a6917b74f324020919ffb7ec18e9d39c2f93fd898368fa642ff962625cdcb31e61425d3fb14fd'
+source=("https://github.com/Lagg/${_pkgname}/archive/v${pkgver}.tar.gz"
+        "v${pkgver}.tar.gz.sig")
+sha512sums=('d148becbbd57ffa6ad7741666fc75b0e8ef1719d2c0e89f621d354b803ec0f127b897b7929aa69c97da3bb146d92ced46ba4119d6f8350c5bb9578fbffcd83c0'
             'SKIP')
 
 package_python-steamodd() {
