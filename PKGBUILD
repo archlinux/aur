@@ -19,7 +19,7 @@ pkgname="${_pyver}-${_pybase}"
 _pyverother='' #python-'
 fi
 _pybase="${_pybase//-/}"
-pkgver='3.12.4'
+pkgver='3.13.0'
 pkgrel='1'
 pkgdesc='The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli'
 arch=('any')
@@ -28,11 +28,11 @@ url="https://pypi.python.org/pypi/${_pybase}"
 license=('Apache') # Apache License 2.0
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
-#_verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
+#_verwatch=("https://pypi.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 # https://bitbucket.org/pypa/pypi/issues/438/backwards-compatible-un-hashed-package
 # https://bitbucket.org/pypa/pypi/issues/447/direct-links-of-packages-gone
 source=("https://files.pythonhosted.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('86ca33bad0d20f4fcd3d967ede405d040080849675cd26491ef42df17d7f0d89')
+sha256sums=('5a74d44ea18e9b5cba2d2e22af9b100f2fa2c8e882eabdbf676a72e8a4eafc4a')
 
 # Convert python requires to PKGBUILD depends
 # $1: prefix python- or python2-
@@ -43,23 +43,26 @@ sha256sums=('86ca33bad0d20f4fcd3d967ede405d040080849675cd26491ef42df17d7f0d89')
 _fn_pydepends() {
   # Paste in from setup.py. This function does NOT work in zsh.
 local _requires="
-requires = ['pyyaml>=3.11',
-            'botocore>=1.0.1',
-            'cement==2.8.2',
-            'colorama==0.3.7',
-            'pathspec==0.5.5',
-            'setuptools >= 20.0',
-            ## For docker-compose
-            'docopt >= 0.6.1, < 0.7',
-            'requests >= 2.6.1, <= 2.9.1',
-            'websocket-client >= 0.11.0, < 1.0',
-            'dockerpty >= 0.3.2, <= 0.4.1',
-            'semantic_version == 2.5.0',
-            'tabulate == 0.7.5',
-            'termcolor == 1.1.0',
-            #found further down in setup.py
-            'blessed>=1.9.5',
-           ]
+requires = [
+    'botocore>=1.0.1',
+    'cement==2.8.2',
+    'colorama==0.3.7',
+    'pathspec==0.5.5',
+    'pyyaml>=3.11',
+    'setuptools >= 20.0',
+    ## For docker-compose
+    'docker >= 2.6.1, < 2.7.0',
+    'dockerpty >= 0.3.2, <= 0.4.1',
+    'docopt >= 0.6.1, < 0.7',
+    'requests >= 2.6.1, <= 2.9.1',
+    'semantic_version == 2.5.0',
+    'six == 1.11.0',
+    'tabulate == 0.7.5',
+    'termcolor == 1.1.0',
+    'websocket-client >= 0.11.0, < 1.0',
+    #found further down in setup.py
+    'blessed>=1.9.5',
+]
 "
   # Convert requires=[] to local _requires=()
   _requires="${_requires//requires = \[/local _requires=(}"
