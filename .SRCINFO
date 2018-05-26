@@ -1,0 +1,19 @@
+pkgbase = color-picker
+	pkgdesc = A color picker for elementary OS.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/RonnyDo/ColorPicker
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	provides = color-picker
+	conflicts = color-picker-git
+	source = https://raw.githubusercontent.com/RonnyDo/ColorPicker/master/LICENSE
+	sha256sums = 589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2
+	source_x86_64 = ColorPicker-1.0.5.tar.gz::https://github.com/RonnyDo/ColorPicker/archive/1.0.5.tar.gz
+	sha256sums_x86_64 = 71590f01eabf102bf10e44c2310b6e3f4782a71e00f02cab015b7b1e3cbc0a97
+
+pkgname = color-picker
+
