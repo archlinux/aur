@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-xmlrpcpp
 	pkgdesc = ROS - XmlRpc++ is a C++ implementation of the XML-RPC protocol.
-	pkgver = 1.13.6
-	pkgrel = 3
+	pkgver = 1.14.1
+	pkgrel = 1
 	url = http://xmlrpcpp.sourceforge.net
 	arch = any
 	license = LGPL-2.1
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-xmlrpcpp
 	makedepends = ros-melodic-rostime
 	depends = ros-melodic-cpp-common
 	depends = ros-melodic-rostime
-	source = ros-melodic-xmlrpcpp-1.13.6-2.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/xmlrpcpp/1.13.6-2.tar.gz
-	sha256sums = 4ffa37f5948716a1a00f1e5710a1a54af4d8d88b5ca048d43f6f44a6be6b9cd3
+	source = ros-melodic-xmlrpcpp-1.14.1-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/xmlrpcpp/1.14.1-0.tar.gz
+	sha256sums = c07f3299f3d9d48d4bc6df52cd9536fbbf854099fd4bc5aa2eb551b1f4988eeb
 
 pkgname = ros-melodic-xmlrpcpp
 
