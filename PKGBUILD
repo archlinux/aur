@@ -12,12 +12,12 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.0_devel.101789.a8420e2530
+pkgver=18.2.0_devel.102412.79fe00efb4
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
-             'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libglvnd' 'wayland-protocols')
+             'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libglvnd' 'wayland-protocols' 'lib32-wayland')
 depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
            'lib32-llvm-libs-svn' 'lib32-libunwind')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
@@ -57,7 +57,7 @@ build () {
                --sysconfdir=/etc \
                --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau \
-               --with-platforms=x11,drm,wayland \
+               --with-platforms=x11,drm,wayland,surfaceless \
                --with-vulkan-drivers=intel,radeon \
                --enable-texture-float \
                --enable-gallium-osmesa \
@@ -123,6 +123,11 @@ package_lib32-mesa-git () {
 
   # remove files present in lib32-libglvnd
   rm "$pkgdir"/usr/lib32/libGLESv{1_CM,2}.so*
+  
+  #remove files present in lib32-wayland
+  rm -v "$pkgdir"/usr/lib32/libwayland-egl.so*
+  rm -v "$pkgdir"/usr/lib32/pkgconfig/wayland-egl.pc
+
   
   install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE 
 }
