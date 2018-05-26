@@ -1,0 +1,6 @@
+post_install () {
+    echo "Running udevadm trigger."
+    # enable rules
+    udevadm trigger --attr-match=idVendor=1038 -v
+    echo 
+}
