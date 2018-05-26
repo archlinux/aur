@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-xacro
 	pkgdesc = ROS - Xacro (XML Macros) Xacro is an XML macro language.
-	pkgver = 1.13.1
+	pkgver = 1.13.2
 	pkgrel = 1
 	url = http://ros.org/wiki/xacro
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ros-melodic-xacro
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-roslint
 	depends = ros-melodic-roslaunch
-	source = ros-melodic-xacro-1.13.1-0.tar.gz::https://github.com/ros-gbp/xacro-release/archive/release/melodic/xacro/1.13.1-0.tar.gz
-	sha256sums = 2621449aeea57a3a0a8c8064a0167d9da71606679d2988f0fe681e5aa7c99e14
+	source = ros-melodic-xacro-1.13.2-0.tar.gz::https://github.com/ros-gbp/xacro-release/archive/release/melodic/xacro/1.13.2-0.tar.gz
+	sha256sums = 28cf9cb4ed9d5a7df577d187bd6f037b60b20c7125ba4b3fa97a4ebe23b309e0
 
 pkgname = ros-melodic-xacro
 
