@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-perception-pcl
 	pkgdesc = ROS - PCL (Point Cloud Library) ROS interface stack.
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = http://ros.org/wiki/perception_pcl
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = ros-melodic-perception-pcl
 	depends = ros-melodic-pcl-conversions
 	depends = ros-melodic-pcl-ros
 	depends = ros-melodic-pcl-msgs
-	source = ros-melodic-perception-pcl-1.6.1-0.tar.gz::https://github.com/ros-gbp/perception_pcl-release/archive/release/melodic/perception_pcl/1.6.1-0.tar.gz
-	sha256sums = 4ef871f17d78e4816ca81c3fd31aea8dbe093a992027292ead7daecdf81cde4e
+	source = ros-melodic-perception-pcl-1.6.2-0.tar.gz::https://github.com/ros-gbp/perception_pcl-release/archive/release/melodic/perception_pcl/1.6.2-0.tar.gz
+	sha256sums = 05249c482602e692fdbcc13a26ed22ac2b0de79d93c08661ec8bcd0b87b6f3ad
 
 pkgname = ros-melodic-perception-pcl
 
