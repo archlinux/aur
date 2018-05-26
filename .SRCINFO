@@ -1,4 +1,4 @@
-pkgbase = nvidia-docker
+pkgbase = nvidia-docker-1.0.1
 	pkgdesc = Build and run Docker containers leveraging NVIDIA GPUs
 	pkgver = 1.0.1
 	pkgrel = 1
