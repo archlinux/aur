@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate several packages."
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-viz'
-pkgver='1.4.0'
+pkgver='1.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="metapackages-release-release-melodic-viz-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/melodic/viz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d162c77a0796148657ecf954f97a514e531f22c67e1bf5f9917d91b062715fe3')
+sha256sums=('c2cdc23508adf393957c192b8d62b0278260342d34dbcc58a3bac3abbd61dcf4')
 
 build() {
   # Use ROS environment variables
