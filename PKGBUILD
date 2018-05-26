@@ -1,62 +1,62 @@
-# Maintainer: Paul Nicholson <brenix@gmail.com>
-# Contributor: Michel Blanc <mblanc@erasme.org>
-# Contributor: Scott Hansen https://github.com/firecat53
-# Contributor: Buce <dmbuce@gmail.com>
-# Contributor: Bartłomiej Piotrowski <b@bpiotrowski.pl>
-# Contributor: cgtx <carl@carlgeorge.us>
-# Contributor: Daniel Wallace <danielwallace@gtmanfred.com>
-# Contributor: John Gosset <john.gosset@gmail.com>
-# Contributor: Joshua Lund <josh@joshlund.com>
-# Contributor: Matt Klich <matt.klich@readytalk.com>
-# Contributor: Michael DeHaan <michael@ansible.com>
-# Contributor: Noel Kuntze <noel@familie-kuntze.de>
+# $Id$
+# Mainainter: Paul Nicholson <brenix@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
+# Contributor: Chris <seitz.christoph@gmail.com>
+# Contributor: m0ikz <ndelatorre@moikz.com.ar>
+# Contributor: atweiden <archbaum@gmail.com>
 
 pkgname=ansible-git
-pkgver=2.5.0.32862.2cdf31d3a2
+pkgver=v2.6.0a1.r217.gf488d3cf79
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
-url='http://www.ansible.com'
+url='https://www.ansible.com'
 license=('GPL3')
-depends=('python2' 'python2-yaml' 'python2-paramiko' 'python2-jinja' 'python2-six' 'python2-pexpect' 'python2-crypto')
-makedepends=('asciidoc' 'fakeroot' 'git' 'python-sphinx' 'python-yaml')
-optdepends=('python2-passlib: crypt values for vars_prompt'
-            'python2-netaddr: for the ipaddr filter'
-            'python2-systemd: log to journal'
-            'python2-jmespath: json_query support')
-conflicts=('ansible')
-provides=('ansible')
+depends=('python' 'python-yaml' 'python-paramiko' 'python-jinja' 'python-crypto')
+provides=('python-ansible')
+replaces=('python-ansible')
+conflicts=('python-ansible')
+optdepends=('sshpass: for ssh connections with password'
+            'python-passlib: crypt values for vars_prompt'
+            'python-pyopenssl: openssl modules'
+            'python-netaddr: for the ipaddr filter'
+            'python-systemd: log to journal'
+            'python-pywinrm: connect to Windows machines'
+            'python-dnspython: for dig lookup'
+            'python-ovirt-engine-sdk: ovirt support'
+            'python-boto3: aws_s3 module'
+            'python-jmespath: json_query support'
+            'acme-tiny: openssl_certificate module')
+makedepends=('asciidoc' 'fakeroot' 'python-setuptools' 'python-sphinx')
 backup=('etc/ansible/ansible.cfg')
-source=(ansible-git::git+https://github.com/ansible/ansible.git)
-md5sums=('SKIP')
+source=($pkgname::git+https://github.com/ansible/ansible.git)
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  printf "%s.%s.%s" "$(cut -d' ' -f1 VERSION)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  git submodule update --init --recursive
-  make PYTHON=python2
-  sed -i 's,^#!/usr/bin/env python$,\02,' docs/bin/generate_man.py
+  cd "${srcdir}"/${pkgname}
+  python setup.py build
   make docs
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd ${pkgname}
+  python setup.py install -O1 --root="${pkgdir}"
+  install -Dm644 COPYING "${pkgdir}"/usr/share/doc/ansible/COPYING
 
-  install -dm755 "${pkgdir}/usr/share/ansible"
-  cp -dpr --no-preserve=ownership ./examples "${pkgdir}/usr/share/ansible"
+  install -d "${pkgdir}"/usr/share/ansible/doc
+  cp -dpr --no-preserve=ownership ./examples "${pkgdir}"/usr/share/ansible/doc/
+  install -Dm644 examples/ansible.cfg "${pkgdir}"/etc/ansible/ansible.cfg
 
-  python2 setup.py install -O1 --root="${pkgdir}"
-
-  install -Dm644 examples/ansible.cfg "${pkgdir}/etc/ansible/ansible.cfg"
-
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/ansible/README.md"
-  install -Dm644 COPYING "${pkgdir}/usr/share/doc/ansible/COPYING"
-  install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/ansible/CHANGELOG.md"
-
-  install -dm755 "${pkgdir}/usr/share/man/man1"
-  install -Dm644 "${srcdir}/${pkgname}/docs/man/man1/"*.1 "${pkgdir}/usr/share/man/man1"
+  install -d "${pkgdir}"/usr/share/man/man1
+  cp -dpr --no-preserve=ownership docs/man/man1/*.1 "${pkgdir}"/usr/share/man/man1
 }
