@@ -1,6 +1,6 @@
 pkgbase = selinux-refpolicy-git
 	pkgdesc = Modular SELinux reference policy including headers and docs
-	pkgver = RELEASE_2_20170805.r150.g94f1a1b3f30f
+	pkgver = RELEASE_2_20180114.r30.g6b0abaf88089
 	pkgrel = 1
 	url = https://github.com/TresysTechnology/refpolicy/wiki
 	install = selinux-refpolicy-git.install
@@ -9,9 +9,9 @@ pkgbase = selinux-refpolicy-git
 	license = GPL2
 	makedepends = git
 	makedepends = python
-	makedepends = checkpolicy>=2.7
+	makedepends = checkpolicy>=2.8
 	makedepends = semodule-utils
-	depends = policycoreutils>=2.7
+	depends = policycoreutils>=2.8
 	optdepends = linux-hardened: Linux kernel with SELinux support
 	optdepends = linux-selinux: Linux kernel with SELinux support
 	source = git+https://github.com/TresysTechnology/refpolicy
