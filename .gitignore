@@ -1,4 +1,4 @@
-master.tar.gz
-plymouth-theme-arch-breeze-git-*
-pkg
-src
+*
+!.SRCINFO
+!PKGBUILD
+!plymouth-theme-arch-breeze-git.install

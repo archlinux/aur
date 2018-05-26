@@ -2,8 +2,8 @@
 
 _pkgname=plymouth-theme-arch-breeze
 pkgname="${_pkgname}-git"
-pkgver=r2.5061c0e
-pkgrel=2
+pkgver=r3.d7ae74d
+pkgrel=1
 pkgdesc='Plymouth theme for Arch Linux inspired by KDE Breeze.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/jtyr/${_pkgname}/"
@@ -11,11 +11,16 @@ license=('MIT')
 install="${pkgname}.install"
 depends=('plymouth')
 makedepends=('git')
-source=("https://github.com/jtyr/${_pkgname}/archive/master.tar.gz")
+source=("git+https://github.com/jtyr/$_pkgname.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
-  cd "${_pkgname}-master"
+  cd "$_pkgname"
 
   _themedir="$pkgdir/usr/share/plymouth/themes/arch-breeze"
 
