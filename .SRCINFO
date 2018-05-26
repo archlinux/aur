@@ -1,0 +1,18 @@
+pkgbase = sat-cagou-hg
+	pkgver = r186.a826c70beda2
+	pkgrel = 1
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = python2
+	depends = python2-kivy
+	depends = sat-xmpp-hg
+	depends = sat-templates-hg
+	depends = sat-tmp
+	depends = xsel
+	options = !emptydirs
+	source = hg+https://repos.goffi.org/cagou
+	md5sums = SKIP
+
+pkgname = sat-cagou-hg
+
