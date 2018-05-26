@@ -9,6 +9,10 @@ pkgbase = openshift-origin-client-bin
 	depends = glibc
 	optdepends = kubernetes: https://github.com/kubernetes/kubernetes
 	provides = openshift-origin-client
+	source = bash-completions::https://raw.githubusercontent.com/openshift/origin/191fece/contrib/completions/bash/oc
+	source = zsh-completions::https://raw.githubusercontent.com/openshift/origin/191fece/contrib/completions/zsh/oc
+	sha256sums = d8596830429e40f28aa600d3d4154306cb13878046a51c4f30945fa1d8d6b622
+	sha256sums = 941ecbe95114a7eec4070778c06f8555263a26063868cc294baada0c23085158
 	source_x86_64 = openshift-origin-client.tar.gz::https://github.com/openshift/origin/releases/download/v3.9.0/openshift-origin-client-tools-v3.9.0-191fece-linux-64bit.tar.gz
 	sha256sums_x86_64 = 6ed2fb1579b14b4557e4450a807c97cd1b68a6c727cd1e12deedc5512907222e
 
