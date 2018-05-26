@@ -2,7 +2,7 @@
 pkgbase=fasttext-git
 pkgname=(fasttext-git python-fasttext-git)
 pkgver=v0.1.0.r67.geefbf95
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for fast text representation and classification."
 arch=("x86_64")
 url="https://fasttext.cc/"

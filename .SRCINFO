@@ -1,7 +1,7 @@
 pkgbase = fasttext-git
 	pkgdesc = Library for fast text representation and classification.
 	pkgver = v0.1.0.r67.geefbf95
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fasttext.cc/
 	arch = x86_64
 	license = BSD
