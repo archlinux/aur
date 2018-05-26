@@ -2,7 +2,7 @@
 # Maintainer: Ethan Skinner <aur@etskinner.com>
 pkgname=znc-push-git
 pkgver=v1.0.0.r163.d2cf0d3
-pkgrel=2
+pkgrel=3
 pkgdesc="A module for ZNC that sends notifications to push notification services"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://noswap.com/projects/znc-push"
@@ -19,6 +19,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname}"
+  sed 's:-DPUSHVERSION=[\]"$(version)[\]":-DPUSHVERSION=\\"\\\\\\"$(version)\\\\\\"\\":' Makefile > Makefile.tmp
+  mv Makefile.tmp Makefile
   make curl=yes
 }
 
