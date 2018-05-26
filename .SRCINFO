@@ -5,6 +5,7 @@ pkgbase = shadowsocks-libev-qrcode
 	url = https://github.com/OriginCode/shadowsocks-libev-qrcode
 	arch = any
 	license = WTFPL
+	makedepends = git
 	depends = python-qrcode
 	depends = python-argparse
 	provides = ss-qrcode
