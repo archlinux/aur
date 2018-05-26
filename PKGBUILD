@@ -3,21 +3,17 @@
 # Contributor: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
 
 pkgname=mattermost
-pkgver=4.9.2
+pkgver=4.10.0
 pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
 license=('AGPL' 'Apache')
 
-# python2 is required by the node module node-gyp.
-makedepends=('git' 'go' 'libpng12' 'npm' 'python2' 'yarn')
-# mozjpeg provided on npm is only available for amd64. We need to install
-# mozjpeg from Arch Linux repos for other CPU architectures. cjpeg (nor
-# jpegtran) from the package libjpeg-turbo doesn't work because it doesn't
-# support jpg files as input, cjpeg from mozjpeg does.
+makedepends=('git' 'go' 'libpng12' 'npm' 'python2')
+# Experiencing issues with gifsicle and mozjpeg on non x64 architectures.
 if [ "$CARCH" != 'x86_64' ]; then
-    makedepends+=('mozjpeg')
+    makedepends+=('gifsicle' 'mozjpeg')
 fi
 optdepends=(
     'mariadb: SQL server storage'
@@ -34,8 +30,8 @@ source=(
     "${pkgname}.tmpfiles"
 )
 sha512sums=(
-    'aa7d1a9d54cd38eba3e1da933e63daa906ab852212dd3819a0f5ec3d0747de22e2b90b0a6f456932a83c8b2fa321da4972a9e88edce544f0e300d1f5e21fe08a'
-    'b5baf471e0477d06eb8881efd160480e9f4a988cce90a5467cf7e91609fc6296d4eaf176d8d1e8eda261de5943338781e77d15c327edd46d104954cb648cdf2d'
+    '582934928cb139b9cafbb3bc7534eca19137fba2a672867ccdb1a49afa5d524259c34f699c167e7b4ee7050f32ec81d5567e14c9201a60a5a457faa84aa05c0f'
+    'd6f3fe2df0bdd528a0e2ab6fac1b81ab987d437f349c43c63636db0fa9709a00300682f05b29ef39858ddd2e5d79da950d6cba0aed5f8ddb3eeac5890a0c6ecc'
     '3e3d46dc7778be256da9a366ec96cde684fcb07732d0adfd40ea00d6ec61a161a9d7e784f7773d34e4f058e6919b13053ac228255a05f175e7ce20538f07ec93'
     '5fe6c343e9739b12f8ea9390dafd729fa9f980978bbc0fa7eb6a2eb2d437929078d3efede23c28a6b399c407b8b5e92755169a468462088de0eb148b360acc4b'
     'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
@@ -109,23 +105,15 @@ prepare() {
     sed -r -i webpack.config.js \
         -e "s/^(\s*)COMMIT_HASH:(.*),$/\1COMMIT_HASH: JSON.stringify\(\"${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)\"\),/"
 
-    # Use a more recent version of nan, since old versions do not work with nodejs 10
-    sed -i package.json -e 's/react-color\": \"2.13.8/react-color\": \"^2.14.1/g'
-    sed -i package.json -e 's/node-sass\": \"4.7.2/node-sass\": \"^4.9.0/g'
-
-    # FIXME: Add info to the logs in order to debug plugin sandbox. Not working
-    # since nested namespaces haven't the right to write to the parent's logs.
-    # Using network IPC could help. src.: https://stackoverflow.com/a/35968850
-#    cd "${srcdir}/${pkgname}-server"
-#    sed -i plugin/rpcplugin/sandbox/sandbox_linux.go -e "s/import (/import (\\n\\tl4g \"github.com\/alecthomas\/log4go\"/"
-#    sed -i plugin/rpcplugin/sandbox/sandbox_linux.go -re "s/(\t*)return errors.Wrap(|f)\((.*), (.*)\)/\1l4g.Error\(\"Arch Linux debug: \" \+ \\4 \+ \": \" \+ \3.Error()\\)\\n\0/"
-    # Using dichotomic removal instead
-    # src.: https://nixtricks.wordpress.com/2013/01/09/sed-delete-the-lines-lying-in-between-two-patterns/
-#    sed -i Makefile \
-#        -e '/PATTERN-1/,/PATTERN-2/d'
-
-    # FIXME: Plugins cannot be enabled on non x86_64 architectures for now. Still
-    # debugging. Waiting for answer from upstream.
+    # Link against system gifsicle
+    if [ "$CARCH" != 'x86_64' ]; then
+        gifsicleNpm="${srcdir}/${pkgname}-webapp/node_modules/gifsicle/vendor/gifsicle"
+        gifsicleNpm="${gifsicleNpm//\//\\/}"
+        gifsicleSystem="$(which gifsicle)"
+        gifsicleSystem="${gifsicleSystem//\//\\/}"
+        sed -r -i Makefile \
+            -e "s/(\t*)npm install(.*)/\0\n\1rm \"$gifsicleNpm\"\n\tln -s \"$gifsicleSystem\" \"$gifsicleNpm\"/"
+    fi
 }
 
 build() {
