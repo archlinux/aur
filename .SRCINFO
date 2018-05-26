@@ -1,12 +1,12 @@
 pkgbase = r-cran-plyr
 	pkgdesc = Tools for Splitting, Applying and Combining Data
 	pkgver = 1.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cran.r-project.org/web/packages/plyr/index.html
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r
+	depends = r>=3.1.0
 	depends = r-cran-rcpp>=0.11.0
 	source = http://cran.r-project.org/src/contrib/plyr_1.8.4.tar.gz
 	md5sums = ef455cf7fc06e34837692156b7b2587b
