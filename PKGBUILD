@@ -21,9 +21,10 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  mkdir -p $srcdir/$pkgname-$pkgver/build
+  cd $srcdir/$pkgname-$pkgver/build
 
-  cmake . \
+  cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIBSERIALDV_INCLUDE_DIR=/usr/include/serialdv \
@@ -33,6 +34,6 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname-$pkgver/build
   make DESTDIR=$pkgdir install
 }
