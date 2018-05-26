@@ -1,6 +1,6 @@
 pkgbase = prelude-lml-rules
 	pkgdesc = Prelude LML community ruleset
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://www.prelude-siem.org
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = prelude-lml-rules
 	license = GPLv2
 	depends = prelude-lml
 	backup = etc/prelude-lml/ruleset/pcre.rules
-	source = https://www.prelude-siem.org/pkg/src/4.0.0/prelude-lml-rules-4.0.0.tar.gz
-	md5sums = aeb3be41f9abd2d988dffc02ff5bcbd7
+	source = https://www.prelude-siem.org/pkg/src/4.1.0/prelude-lml-rules-4.1.0.tar.gz
+	md5sums = d7bb20d94f84821761ad73da712113f0
 
 pkgname = prelude-lml-rules
 
