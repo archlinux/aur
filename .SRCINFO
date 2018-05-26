@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ros-comm
 	pkgdesc = ROS - ROS communications-related packages, including core client libraries (roscpp, rospy) and graph introspection tools (rostopic, rosnode, rosservice, rosparam).
-	pkgver = 1.13.6
-	pkgrel = 3
+	pkgver = 1.14.1
+	pkgrel = 1
 	url = http://www.ros.org/wiki/ros_comm
 	arch = any
 	license = BSD
@@ -30,8 +30,8 @@ pkgbase = ros-melodic-ros-comm
 	depends = ros-melodic-message-filters
 	depends = ros-melodic-rospy
 	depends = ros-melodic-rosout
-	source = ros-melodic-ros-comm-1.13.6-2.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/ros_comm/1.13.6-2.tar.gz
-	sha256sums = 91c3937fdb5c681eadace3dc2c7a6d13a9b1843e6e50371b8fdfca3b02fdad8f
+	source = ros-melodic-ros-comm-1.14.1-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/ros_comm/1.14.1-0.tar.gz
+	sha256sums = bbf794178d4b567d2271f715a8ebde1e7209afcad79dfa2b5300ce8fd5559839
 
 pkgname = ros-melodic-ros-comm
 
