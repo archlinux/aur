@@ -4,10 +4,10 @@ pkgdesc="ROS - rosservice contains the rosservice command-line tool for listing 
 url='http://ros.org/wiki/rosservice'
 
 pkgname='ros-melodic-rosservice'
-pkgver='1.13.6'
-_pkgver_patch=2
+pkgver='1.14.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosservice-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosservice/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1b5606cdd6961757c05fd0cd553f49517f084083e70ec1007fa6e3e227203892')
+sha256sums=('0e2954885f69d9acb67cf348bdb9bd0822877d7ec28837dda089805ab7ccea85')
 
 build() {
   # Use ROS environment variables
