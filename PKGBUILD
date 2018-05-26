@@ -4,10 +4,10 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back to ROS
 url='http://ros.org/wiki/rosbag'
 
 pkgname='ros-melodic-rosbag'
-pkgver='1.13.6'
-_pkgver_patch=2
+pkgver='1.14.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rosconsole
@@ -36,7 +36,9 @@ ros_depends=(ros-melodic-rosconsole
   ros-melodic-rospy)
 depends=(${ros_depends[@]}
   python2-rospkg
-  boost)
+  python2-crypto
+  boost
+  python2-gnupg)
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/rosbag/${pkgver}-${_pkgver_patch}
@@ -47,7 +49,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosbag-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosbag/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('93d95901509addd13698fd25ac4d220a1d8287cee1b72258a5617c541171bdcf')
+sha256sums=('719ae5a90381e3b3693a17cbf7aa6a0afd55377ccc0c056a531218ee3e22d39d')
 
 build() {
   # Use ROS environment variables
