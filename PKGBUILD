@@ -1,10 +1,10 @@
 # Maintainer: Orlando Arias <orlandoarias at gmail <dot> com>
 
 _target=msp430-elf
-_tiver=1.204
+_tiver=1.205
 pkgname=${_target}-mcu
-pkgver=5.1.2.0
-pkgrel=2
+pkgver=6.0.1.0
+pkgrel=1
 pkgdesc="Header files and linker scripts for MSP430 microcontrollers"
 arch=('any')
 url="http://www.ti.com/tool/msp430-gcc-opensource"
@@ -12,7 +12,7 @@ license=('custom')
 options=('!strip' 'staticlibs' 'emptydirs')
 source=(http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/exports/msp430-gcc-support-files-${_tiver}.zip
         license)
-sha256sums=('401630dbaad23db17ad2edfba31a16f4a1fd1588e131140b5ca3a416b7534e11'
+sha256sums=('1d1d6231bd6571b0470dd298692f1b58ad262e83079ed042d368313270bf4a0c'
             'cd344f1a8da5c24768fbcc3494ad12b9880a82097dfb5a4d63d2a52f2833cc38')
 
 
