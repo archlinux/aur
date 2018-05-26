@@ -4,10 +4,10 @@ pkgdesc="ROS - Integration test suite based on roslaunch that is compatible with
 url='http://ros.org/wiki/rostest'
 
 pkgname='ros-melodic-rostest'
-pkgver='1.13.6'
-_pkgver_patch=2
+pkgver='1.14.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rostest-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rostest/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('898a6b89234ee05f8b1ec108ac9044f4fb10905c844abd576856ff8c819126c1')
+sha256sums=('675feb9d767fdcd8868827f5363570c39d7db344bfa2b70895da96f13dd7824e')
 
 build() {
   # Use ROS environment variables
