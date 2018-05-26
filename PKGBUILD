@@ -4,10 +4,10 @@ pkgdesc="ROS - roswtf is a tool for diagnosing issues with a running ROS system.
 url='http://ros.org/wiki/roswtf'
 
 pkgname='ros-melodic-roswtf'
-pkgver='1.13.6'
-_pkgver_patch=2
+pkgver='1.14.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rostest
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-roswtf-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roswtf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('41bbff5951b548f638e95b84b84e2c7ead1d47e0e7eefabd177cefd770116895')
+sha256sums=('d55e9681331cb52ee2db5dd4dea9c82740d3ca0ed2bf8c48a40f9c8701b7a86a')
 
 build() {
   # Use ROS environment variables
