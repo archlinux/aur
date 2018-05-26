@@ -4,10 +4,10 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-melodic-message-filters'
-pkgver='1.13.6'
-_pkgver_patch=2
+pkgver='1.14.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rosconsole
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-message_filters-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/message_filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d6d1627925d65453cfb31350dbd788b06da40a13c84b58fe7b55dde1bc345a64')
+sha256sums=('2936116a5231bb79586765489ff61b9af7bd9e4538022c2a4817356f6380b555')
 
 build() {
   # Use ROS environment variables
