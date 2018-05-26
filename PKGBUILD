@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage which extends ros_core and includes other basic non
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-ros-base'
-pkgver='1.4.0'
+pkgver='1.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,12 +15,10 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-melodic-nodelet-core
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-class-loader
-  ros-melodic-bond-core
-  ros-melodic-pluginlib
   ros-melodic-ros-core
-  ros-melodic-actionlib)
+  ros-melodic-bond-core
+  ros-melodic-actionlib
+  ros-melodic-dynamic-reconfigure)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
@@ -32,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="metapackages-release-release-melodic-ros_base-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/melodic/ros_base/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('61f65a797e4c1f8bf97e23e39112ab51e3fbf8c35aa9be2310e54dbb57bd5c13')
+sha256sums=('0b0cab7cb298a642bd33a0c4d7e17f10ac6533a1a59745a11e96c58d238f47eb')
 
 build() {
   # Use ROS environment variables
