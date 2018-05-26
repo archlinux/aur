@@ -139,8 +139,7 @@ void portfolio_modify(const char* symbol, double quantity_shares, double usd_spe
     }
     string_write_portfolio(pString);
     cleanup: // CLEANUP
-    if (password != NULL)
-        free(password);
+    free(password);
     json_object_put(jobj);
     string_destroy(&pString);
 }
@@ -219,7 +218,7 @@ void portfolio_sort(SDA* sda_data, int sort_option) {
         for (size_t i = 0; i < sda_data->length - 1; i++) {
             sec_data1 = sda_data->sec_data[i];
             sec_data2 = sda_data->sec_data[i + 1];
-            if (sort_option == SORT_ALPHA || sort_option > SORT_PROFIT_7D) {
+            if (sort_option == SORT_ALPHA || sort_option > SORT_PROFIT_7D_PERCENT) {
                 if (strcmp(sec_data1->symbol, sec_data2->symbol) > 0) { // Least to greatest
                     temp = sda_data->sec_data[i]; // Swap
                     sda_data->sec_data[i] = sda_data->sec_data[i + 1];
@@ -269,7 +268,7 @@ void portfolio_print_all(void) {
     initscr();
     noecho(); // Don't echo keystrokes
     keypad(stdscr, TRUE); // Enables extra keystrokes
-    curs_set(0); // Hides cursor
+    curs_set(FALSE); // Hides cursor
     double total_owned = 0, total_spent = 0, total_profit_1d = 0, total_profit_7d = 0;
     SD* sec_data;
     pthread_t threads[sda_data->length];
@@ -292,8 +291,8 @@ void portfolio_print_all(void) {
 
     int sort_option = SORT_ALPHA; // Defaults to sort alphabetically
     // For printing/formatting categories
-    char* sort_categories_str[] = {"SYMBOL", "VALUE", "SPENT", "PROFIT", "(%%)", "24H", "(%%)", "7D", "(%%)"},
-            * sort_spacing_str[] = {"    ", "    ", "   ", "      ", "      ", "      ", "       ", "      ", "\n"};
+    char* sort_categories_str[] = {"SYMBOL", "VALUE", "SPENT", "PROFIT", "(%)", "24H", "(%)", "7D", "(%)"},
+            * sort_spacing_str[] = {"    ", "    ", "   ", "       ", "      ", "       ", "       ", "       ", "\n"};
     int ch = 0; // getch() data from keyboard
     do {
         portfolio_sort(sda_data, sort_option); // Sort security array
@@ -323,6 +322,7 @@ void portfolio_print_all(void) {
                total_profit_1d, 100 * total_profit_1d / total_spent, total_profit_7d,
                100 * total_profit_7d / total_spent);
         attroff(A_BOLD);
+
         ch = getch(); // Get keyboard input -- also flushes output buffer
         if (ch == KEY_RIGHT && sort_option != SORT_PROFIT_7D_PERCENT) // key RIGHT -- moves sort category right
             sort_option++;
