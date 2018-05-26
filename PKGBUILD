@@ -12,17 +12,17 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.0_devel.102366.6db0660d08
+pkgver=18.2.0_devel.102412.79fe00efb4
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
-              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'libclc')
+              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'libclc' 'wayland' 'wayland-protocols')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'libclc')
+         'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'libclc' 'wayland')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-mesa' 'opencl-driver' 'opengl-driver')
-conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'wayland<1.14.93')
+conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
@@ -54,7 +54,7 @@ build () {
     --sysconfdir=/etc \
     --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
     --with-dri-drivers=i915,i965,r200,radeon,nouveau \
-    --with-platforms=x11,drm,surfaceless \
+    --with-platforms=x11,drm,surfaceless,wayland \
     --with-vulkan-drivers=intel,radeon \
     --enable-texture-float \
     --enable-gallium-osmesa \
@@ -119,6 +119,11 @@ package_mesa-git() {
 
   # remove files provided by libglvnd
    rm "$pkgdir"/usr/lib/libGLESv{1_CM,2}.so*
+   
+   # remove files provided by wayland
+  rm "$pkgdir"/usr/lib/libwayland-egl.so*
+  rm "$pkgdir"/usr/lib/pkgconfig/wayland-egl.pc
+
 
   # indirect rendering
   ln -s /usr/lib/libGLX_mesa.so.0 ${pkgdir}/usr/lib/libGLX_indirect.so.0
