@@ -31,12 +31,13 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=92329163a6820ad3ca2ef1444a5f3c3cac6dbcac
+arch_config_trunk=419db8df02984cbc0efad9afc13eabd4cb386bc3
 
 # Arch additional patches
 arch_patches=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
+  0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 )
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
@@ -53,8 +54,9 @@ sha256sums=('8c23deecc1eb51e65fb43a23d0dae23d683f1f4de7d82f6c4288149c8f24a3eb'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
-            'b01e9bd4e0f3cc2b91db1d8c043b2d85329bd0c9a9441a91d337c3c33661b658'
-            '09170daf49fe4cb720f331cd2da1c75771eb4f9f124353bf035218b1f8ca57d1')
+            '8d6a5f34b3d79e75b0cb888c6bcf293f84c5cbb2757f7bdadafee7e0ea77d7dd'
+            '2454c1ee5e0f5aa119fafb4c8d3b402c5e4e10b2e868fe3e4ced3b1e2aa48446'
+            '8114295b8c07795a15b9f8eafb0f515c34661a1e05512da818a34581dd30f87e')
 sha256sums_x86_64=('e39c02fd021f125a6202f7e4c0692dfd3ced93d404ecb6c8dca6994c8e17b227')
 
 _kernelname=${pkgbase#linux}
