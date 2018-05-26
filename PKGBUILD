@@ -10,8 +10,8 @@
 # -Wine-PBA (disabled by default)
 
 pkgname=wine-gaming-nine
-pkgver=3.8
-pkgrel=2
+pkgver=3.9
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -38,8 +38,8 @@ source=(
 	wine-list.h-linked-list-cache-line-prefetching.patch
 )
 sha512sums=(
-	'387c6bff3eafac7e92030d11c02b3461b4ead059d2aad7f6d903e176f304d2ac0a426132fcd452507868f0d22bb360a30734edf3e73dfd514037458f08406e98'
-	'46ba27b0b9fe5f86d1647f12050715b796604c91487cad6847dce5250ffcfdf8ccf44dcff79c88048221cbf58af92ed72523c09f3591e2c5306bba24ff9d154c'
+	'4c4e5a741a61b9427c175e015177df5806638736f7dfd92098ed95239d41a373cbab876c054d3c948e1db6a7de359db3babd63bc194edc8c2c3be28b58f75e64'
+	'4f52937621b7e5a3f4b3e52ecba8c7d318c621e76c8e4ce3be176d56b382bf06e3a0453d37c3b725df63f0a7349f53a7c075148c7e1ed89a028696538e31acad'
 	'e036f9da5993732415752d1f076eba5fd378ad49949a12d094081ff02454dfd8ce2156a5f418b77aa1426772f0b0785f3b0ffb9fc84e80c6265b6e5b7226bf15'
 	'5ca7651d5e0b147f8d1d47ce6bf225cd89048f3987b8744a6ca30a56586240b210581e5502f99b0a2b7f161ba8b359c1bd7f2ed7c4ac1d54d5ee69dd90b00d0d'
 	'b86edf07bfc560f403fdfd5a71f97930ee2a4c3f76c92cc1a0dbb2e107be9db3bed3a727a0430d8a049583c63dd11f5d4567fb7aa69b193997c6da241acc4f2e'
@@ -91,7 +91,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   alsa-lib              lib32-alsa-lib
   libxcomposite         lib32-libxcomposite
   mesa                  lib32-mesa
-  mesa-libgl            lib32-mesa-libgl
+  libgl                 lib32-libgl
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
@@ -158,7 +158,7 @@ prepare() {
   patch -d $pkgname -Np1 < $_d3d9dir/wine-d3d9.patch
 
   # Uncomment if you want wine-pba optimizations
-  #_pbaprepare
+  # _pbaprepare
 
   autoreconf -f "$pkgname"
 
