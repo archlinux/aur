@@ -4,10 +4,10 @@ pkgdesc="ROS - rosgraph contains the rosgraph command-line tool, which prints in
 url='http://ros.org/wiki/rosgraph'
 
 pkgname='ros-melodic-rosgraph'
-pkgver='1.13.6'
-_pkgver_patch=2
+pkgver='1.14.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosgraph-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosgraph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('68a458493c1f8491193c3bc242b9a4c3734e4d1c501651b34c0e23ef38e2f6bc')
+sha256sums=('c0106033ed63d38c52398303d7e63b587462c6270b03c2fbdb4ad219ba011bff')
 
 build() {
   # Use ROS environment variables

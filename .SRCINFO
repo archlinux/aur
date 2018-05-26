@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosgraph
 	pkgdesc = ROS - rosgraph contains the rosgraph command-line tool, which prints information about the ROS Computation Graph.
-	pkgver = 1.13.6
-	pkgrel = 3
+	pkgver = 1.14.1
+	pkgrel = 1
 	url = http://ros.org/wiki/rosgraph
 	arch = any
 	license = BSD
@@ -11,8 +11,8 @@ pkgbase = ros-melodic-rosgraph
 	depends = python2-rospkg
 	depends = python2-netifaces
 	depends = python2-yaml
-	source = ros-melodic-rosgraph-1.13.6-2.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosgraph/1.13.6-2.tar.gz
-	sha256sums = 68a458493c1f8491193c3bc242b9a4c3734e4d1c501651b34c0e23ef38e2f6bc
+	source = ros-melodic-rosgraph-1.14.1-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosgraph/1.14.1-0.tar.gz
+	sha256sums = c0106033ed63d38c52398303d7e63b587462c6270b03c2fbdb4ad219ba011bff
 
 pkgname = ros-melodic-rosgraph
 
