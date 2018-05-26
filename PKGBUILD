@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_dep provides a GUI plugin for visualizing the ROS dependency 
 url='http://wiki.ros.org/rqt_dep'
 
 pkgname='ros-melodic-rqt-dep'
-pkgver='0.4.8'
+pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rqt_dep-release-release-melodic-rqt_dep-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_dep-release/archive/release/melodic/rqt_dep/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9942be8114eab68563b9212d8dd36e31c29eb97ed0911d27fd53c0fe665b321b')
+sha256sums=('7fa60310716f75eb444c3f45578111826f1e2bcdc092a1a5b530bfef04b8fb7a')
 
 build() {
   # Use ROS environment variables
