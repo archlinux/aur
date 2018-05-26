@@ -2,9 +2,12 @@
 # Contributor: Timothée Ravier <tim@siosm.fr>
 # Contributor: Nicky726 (Nicky726 <at> gmail <dot> com)
 # Contributor: Sergej Pupykin (pupykin <dot> s+arch <at> gmail <dot> com)
+#
+# This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
+# If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=libsemanage
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="SELinux binary policy manipulation library"
 arch=('i686' 'x86_64')
@@ -12,7 +15,7 @@ url='http://userspace.selinuxproject.org'
 license=('LGPL2.1')
 groups=('selinux')
 makedepends=('flex' 'python2' 'python' 'ruby' 'swig')
-depends=('libselinux>=2.7' 'audit')
+depends=('libselinux>=2.8' 'audit')
 optdepends=('python2: python2 bindings'
             'python: python bindings'
             'ruby: ruby bindings')
@@ -20,9 +23,9 @@ options=(!emptydirs) # For /var/lib/selinux
 install=libsemanage.install
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/${pkgname}-${pkgver}.tar.gz"
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/${pkgname}-${pkgver}.tar.gz"
         "semanage.conf")
-sha256sums=('07e9477714ce6a4557a1fe924ea4cb06501b62d0fa0e3c0dc32a2cf47cb8d476'
+sha256sums=('1c0de8d2c51e5460926c21e371105c84a39087dfd8f8e9f0cc1d017e4cbea8e2'
             '5b0e6929428e095b561701ccdfa9c8b0c3d70dad3fc46e667eb46a85b246a4a0')
 
 build() {
@@ -36,24 +39,12 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" \
-    LIBEXECDIR="${pkgdir}/usr/lib" \
-    SHLIBDIR="${pkgdir}/usr/lib" \
-    install
-  make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python2 \
-    LIBEXECDIR="${pkgdir}/usr/lib" \
-    SHLIBDIR="${pkgdir}/usr/lib" \
-    install-pywrap
-  make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python3 \
-    LIBEXECDIR="${pkgdir}/usr/lib" \
-    SHLIBDIR="${pkgdir}/usr/lib" \
-    install-pywrap
-  make DESTDIR="${pkgdir}" RUBY=/usr/bin/ruby \
-    LIBEXECDIR="${pkgdir}/usr/lib" \
-    SHLIBDIR="${pkgdir}/usr/lib" \
-    install-rubywrap
-  /usr/bin/python2 -m compileall "${pkgdir}/$(/usr/bin/python2 -c 'import site; print(site.getsitepackages()[0])')"
-  /usr/bin/python3 -m compileall "${pkgdir}/$(/usr/bin/python3 -c 'import site; print(site.getsitepackages()[0])')"
+  make DESTDIR="${pkgdir}" LIBEXECDIR=/usr/lib SHLIBDIR=/usr/lib install
+  make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python2 LIBEXECDIR=/usr/lib SHLIBDIR=/usr/lib install-pywrap
+  make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python3 LIBEXECDIR=/usr/lib SHLIBDIR=/usr/lib install-pywrap
+  make DESTDIR="${pkgdir}" RUBY=/usr/bin/ruby LIBEXECDIR=/usr/lib SHLIBDIR=/usr/lib install-rubywrap
+  /usr/bin/python2 -m compileall "${pkgdir}/$(/usr/bin/python2 -c 'from distutils.sysconfig import *; print(get_python_lib(plat_specific=1))')"
+  /usr/bin/python3 -m compileall "${pkgdir}/$(/usr/bin/python3 -c 'from distutils.sysconfig import *; print(get_python_lib(plat_specific=1))')"
 
   install -D -m0644 "${srcdir}/semanage.conf" "${pkgdir}/etc/selinux/semanage.conf"
 
