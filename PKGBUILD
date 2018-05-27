@@ -5,7 +5,7 @@ pkgver=10.2.5
 _buildver=8068393
 _pkgver=${pkgver}_${_buildver}
 _vmware_ver=14.1.2_8497320
-pkgrel=1
+pkgrel=2
 pkgdesc='The proprietary implementation of VMware Tools'
 arch=('i686' 'x86_64')
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -36,6 +36,7 @@ backup=(
 source=(
   "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_vmware_ver/_/\/}/linux/packages/vmware-tools-linux-${_pkgver/_/-}.x86_64.component.tar"
   'vmtoolsd.service'
+  'vmware-vmblock-fuse.service'
   'vmware-thinprint.service'
   'vgauth.service'
   'vmware-caf.service'
@@ -45,6 +46,7 @@ source=(
 sha256sums=(
   '283ede0c7285d7fe4b7523ee8bac9935b140fb091d3310f3d888e52f491ab792'
   '5bd7e1f6e238eae829bbc7edc434e63910f41abeb7c0513d30988e80c28a1630'
+  '596756e82dcd99c76097b1f3742e3481b5c526c4f43a1730f359f584faf03d80'
   '02971c67bdbb289accd3faa6f0a8f1803e8145713235f4ba69671c16a9938dcc'
   '97f2e4673a518dc138585cfaf6ca636e15f2ce1e1a1af0e7bcc039a066d67f6b'
   'f911152ed8104d96973e6ffab9973578bc06ab4e2b8fd5618dd729953d609790'
@@ -117,14 +119,15 @@ package() {
   install -Dm 755 "$pkgdir/usr/lib/vmware-tools/bin${_arch}/appLoader-av0" "$pkgdir/usr/lib/cups/backend/tpvmlp"
 
   for service_file in \
-    vmtoolsd.service \
-    vmware-thinprint.service \
-    vgauth.service \
-    vmware-caf.service
+    vmtoolsd \
+    vmware-vmblock-fuse \
+    vmware-thinprint \
+    vgauth \
+    vmware-caf
   do
     install -Dm 644 \
-      "$srcdir/$service_file" \
-      "$pkgdir/usr/lib/systemd/system/$service_file"
+      "$srcdir/${service_file}.service" \
+      "$pkgdir/usr/lib/systemd/system/${service_file}.service"
   done
 
 

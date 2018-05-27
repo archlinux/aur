@@ -5,6 +5,7 @@ post_install() {
 
 ==> You should enable some of these services:
 - vmtoolsd.service: most of the guest tools
+- vmware-vmblock-fuse.service: needed for drag-and-drop functionality
 - vmware-thinprint.service: ThinPrint service to access to host printers
 - vgauth.service: Guest Authentification service
 - vmware-caf.service: Common Agent Framework service
