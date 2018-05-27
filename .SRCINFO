@@ -1,6 +1,6 @@
 pkgbase = r-cran-plogr
 	pkgdesc = A simple header-only logging library for C++.
-	pkgver = 1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/plogr/index.html
 	arch = i686

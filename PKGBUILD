@@ -2,7 +2,7 @@
 _cranname=plogr
 _cranver=0.2.0
 pkgname=r-cran-$_cranname
-pkgver=1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A simple header-only logging library for C++."
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
