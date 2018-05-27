@@ -1,0 +1,13 @@
+pkgbase = libcredid
+	pkgdesc = C Binding for credid client
+	pkgver = v0.3.5.r0.02b654e
+	pkgrel = 1
+	url = https://github.com/Credid/c-credid-api
+	arch = any
+	license = GPLv3
+	makedepends = cmake gcc
+	source = c-credid-api::git+https://github.com/Credid/c-credid-api
+	md5sums = SKIP
+
+pkgname = libcredid
+
