@@ -1,6 +1,6 @@
 pkgbase = syscoin-git
 	pkgdesc = A peer-to-peer network based market place on the blockchain. This package provides syscoin binaries: syscoind, syscoin-qt, syscoin-tx, and syscoin-cli
-	pkgver = 3.0.2
+	pkgver = 3.0.4.1
 	pkgrel = 1
 	url = https://syscoin.org
 	arch = i686
@@ -30,7 +30,7 @@ pkgbase = syscoin-git
 	depends = zeromq
 	optdepends = miniupnpc: Firewall-jumping support
 	optdepends = zeromq: Allows generating ZMQ notifications
-	source = git+https://github.com/syscoin/syscoin.git#tag=3.0.2
+	source = git+https://github.com/syscoin/syscoin.git#tag=3.0.4.1
 	sha256sums = SKIP
 
 pkgname = syscoin-git
