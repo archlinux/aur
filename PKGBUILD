@@ -12,6 +12,7 @@ sha256sums=('SKIP' 'SKIP')
 options=('!strip' 'upx')
 
 prepare() {
+	cd "$srcdir/KatWeb-$pkgver"
 	go get "golang.org/x/crypto/acme/autocert" "github.com/yhat/wsutil" "github.com/klauspost/compress/gzip"
 	patch < aur.patch
 }
