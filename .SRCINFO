@@ -1,0 +1,18 @@
+pkgbase = apertium-caffeine
+	pkgdesc = A multi-platform Java application built on top of lttoolbox-java that translates as you type.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://wiki.apertium.org/wiki/Apertium-Caffeine
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = java-environment
+	provides = apertium-caffeine
+	conflicts = apertium-caffeine
+	source = https://github.com/apertium/apertium-caffeine/releases/download/v1.0/apertium-caffeine.jar
+	source = http://xixona.dlsi.ua.es/apertium.png
+	sha256sums = 27ef7542e0b0f19db7ea46a0a25737ace9c12c29f9c5155e0f2330b4404d216a
+	sha256sums = ea747ef59b3f8f0cf9b578887b4c48b8b9b16206b7adee1a49d1eee56b16abea
+
+pkgname = apertium-caffeine
+
