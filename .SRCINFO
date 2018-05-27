@@ -6,6 +6,7 @@ pkgbase = armagetronad-bzr
 	arch = x86_64
 	license = GPL
 	makedepends = boost
+	makedepends = bzr
 	depends = sdl2_image
 	depends = libxml2
 	depends = sdl2_mixer

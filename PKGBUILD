@@ -14,7 +14,7 @@ url='http://armagetronad.net/'
 license=('GPL')
 depends=('sdl2_image' 'libxml2' 'sdl2_mixer' 'ftgl' 'boost-libs')
 optdepends=('python2: language updater')
-makedepends=('boost')
+makedepends=('boost' 'bzr')
 conflicts=('armagetronad')
 source=("$_pkgname::bzr+lp:$_pkgname/$pkgver")
 sha1sums=('SKIP')
@@ -24,6 +24,8 @@ build() {
 
      # python2 fix
      sed -i 's_#!/usr/bin/python_#!/usr/bin/python2_' language/update.py
+
+     ./bootstrap.sh
 
      ./configure --prefix=/usr \
         --sysconfdir=/etc \
@@ -37,7 +39,7 @@ build() {
 package() {
      cd "$srcdir/$_pkgname"
      make DESTDIR="$pkgdir" install
-     install -D -m 644 "desktop/armagetronad.desktop" "$pkgdir/usr/share/applications/armagetronad.desktop"
+     install -D -m 644 "desktop/$_pkgname-armagetronad.desktop" "$pkgdir/usr/share/applications/$_pkgname-armagetronad.desktop"
      install -d "$pkgdir/usr/share/pixmaps/"
      ln -s /usr/share/armagetronad/desktop/icons/large/armagetronad.png \
            "$pkgdir/usr/share/pixmaps/armagetronad.png"
