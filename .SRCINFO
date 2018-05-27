@@ -1,0 +1,32 @@
+pkgbase = electron-ssr
+	pkgdesc = Shadowsocksr client using electron.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/erguotou520/electron-ssr
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	makedepends = npm
+	depends = hicolor-icon-theme
+	depends = gtk2
+	depends = gconf
+	depends = alsa-lib
+	depends = libxss
+	depends = nss
+	depends = libxtst
+	optdepends = libsodium: sodium crypto support
+	provides = electron-ssr
+	conflicts = electron-ssr-git
+	source = https://raw.githubusercontent.com/erguotou520/electron-ssr/master/LICENSE
+	source = icons.tar.gz
+	source = electron-ssr.desktop
+	source = electron-ssr.patch
+	sha256sums = 87561b47486c2485c76136172c87f0df16ee9dc4cb85be7d77ce274328f92735
+	sha256sums = 0d4372037676a0ee8f17f7cb875192923062a80ad61695dbe4548fde609d7698
+	sha256sums = 6fe7a1b4277dfd979456d9d88395868b9f43469d7795251ed2d7524a234d2383
+	sha256sums = c85164668da8cfdecad69e5f5545b433390116eed958c47f611e4b2153992970
+	source_x86_64 = https://github.com/erguotou520/electron-ssr/archive/v0.2.3.tar.gz
+	sha256sums_x86_64 = ad30c5447e685e625ae3ee676f69c2acf79a8248e3edba937c7679cffcabdb2c
+
+pkgname = electron-ssr
+

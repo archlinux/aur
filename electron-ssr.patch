@@ -1,0 +1,19 @@
+diff -ura electron-ssr-0.2.3/.electron-vue/release.js electron-ssr-0.2.3-new/.electron-vue/release.js
+--- electron-ssr-0.2.3/.electron-vue/release.js	2018-03-28 11:59:54.000000000 +0800
++++ electron-ssr-0.2.3-new/.electron-vue/release.js	2018-05-27 18:27:36.520548926 +0800
+@@ -116,11 +116,11 @@
+         icon: 'build/icons',
+         category: 'Development',
+         target: [
+-          'deb',
+-          'rpm',
++          // 'deb',
++          // 'rpm',
+           'tar.gz',
+-          'pacman',
+-          'appImage'
++          // 'pacman',
++          // 'appImage'
+         ]
+       }
+     })
