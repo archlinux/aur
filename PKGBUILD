@@ -1,10 +1,10 @@
 # Maintainer: Arthur Poulet (arthur.poulet@sceptique.eu)
 pkgname=libcredid
 pkgver=0.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="C Binding for credid client"
 arch=('any')
-url="https://github.com/Credid/c-credid-api"
+url="https://github.com/Credid/libcredid-client"
 license=('GPLv3')
 groups=()
 depends=()
