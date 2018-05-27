@@ -25,15 +25,3 @@ diff -ura package.orig/vdhcoapp-1.1.2/app/native-autoinstall.js package.new/vdhc
  	} catch(err) {
  		DisplayMessage("Cannot read config file: "+err.message,"Error");
  		process.exit(-1);
-diff -ura package.orig/vdhcoapp-1.1.2/config.json package.new/vdhcoapp-1.1.2/config.json
---- package.orig/vdhcoapp-1.1.2/config.json	2018-01-09 06:05:29.000000000 -0300
-+++ package.new/vdhcoapp-1.1.2/config.json	2018-01-22 12:50:21.920234071 -0300
-@@ -2,7 +2,7 @@
- 	"id": "net.downloadhelper.coapp",
- 	"name": "VdhCoApp",
- 	"description": "Video DownloadHelper companion app",
--	"node_major": 7,
-+	"node_major": 8,
- 	"extra": [{
- 			"source": "converter/build/${platform}/${arch}/"
- 		},{
