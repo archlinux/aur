@@ -1,0 +1,19 @@
+pkgbase = hybridreverb2-git
+	pkgdesc = Hybrid impulse convolution reverb, available as LV2 and VST
+	pkgver = r12.3a5e6dc
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = fftw
+	depends = alsa-lib
+	depends = freetype2
+	depends = libxext
+	source = git+https://github.com/jpcima/HybridReverb2.git
+	source = http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/HybridReverb2_large_database.zip
+	sha256sums = SKIP
+	sha256sums = 55805e9b1c914d3486aec02d0242e3ff92e85b9e24aaa9899be9a3ae562edb4a
+
+pkgname = hybridreverb2-git
+
