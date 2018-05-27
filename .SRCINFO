@@ -1,12 +1,26 @@
 pkgbase = ant-gtk-theme
 	pkgdesc = Ant Theme for GTK 3.x
 	pkgver = 1.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.gnome-look.org/p/1099856
 	arch = any
 	depends = gtk3
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1518217160/s/461572e886db32f330ae7d01f4f6071c/t/1518649283/u//Ant.tar
-	sha256sums = 34cd4ae0d5adba03ba86ff9da08d67f415b8cab3be57122dacb110b25d384380
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1525899974/s/01dfbe7acc4d02c813dd0ce15f4bf3f8/t/1527463447/u/Ant.tar
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1526696980/s/01dfbe7acc4d02c813dd0ce15f4bf3f8/t/1527463447/u/Ant-Bloody.tar
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1525239130/s/01dfbe7acc4d02c813dd0ce15f4bf3f8/t/1527463447/u/Ant-Nebula.tar
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1525239091/s/01dfbe7acc4d02c813dd0ce15f4bf3f8/t/1527463447/u/Ant-Dracula.tar
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1525239087/s/01dfbe7acc4d02c813dd0ce15f4bf3f8/t/1527463447/u/Ant-Dracula-slim.tar.xz
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1525239127/s/01dfbe7acc4d02c813dd0ce15f4bf3f8/t/1527463447/u/Ant-Nebula-slim.tar.xz
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1526696975/s/01dfbe7acc4d02c813dd0ce15f4bf3f8/t/1527463447/u/Ant-Bloody-slim.tar.xz
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1525899970/s/01dfbe7acc4d02c813dd0ce15f4bf3f8/t/1527463447/u/Ant-slim.tar.xz
+	sha256sums = c7e3b91ec8aae66cfe3de15a4595d3413575b7d7d410ff01f479a89a0af72cbb
+	sha256sums = 049ad2d833045c746d68770f7182d08ab2e08906b85281c9bbfac0289fc8709b
+	sha256sums = 0b7d05c11c8f4a50f09dae2555f691e68fede837cd839d735fd750bc3175c57d
+	sha256sums = 203be8c1bc88598f7e72b26affe14e86bb98f99f8a43acdf48b7f40e6ed79d2b
+	sha256sums = 4874d244df55e7caf15623d8bff0e03318c917ff09a0af2c9498dcd6adc00451
+	sha256sums = f81cd6b8c0845a41d416beaca1a0c93d171a0231e3e707469cb38d7a670f47e9
+	sha256sums = 7d18cefffc6627d14013919d6c4f0c0b52148dbfad920d8f656c33850a90972f
+	sha256sums = 3c4f359233e03b2658da380f28a051d25bffaa9f9eb556842f22e2f54f9eba7a
 
 pkgname = ant-gtk-theme
 
