@@ -1,15 +1,15 @@
 pkgbase = traccar
 	pkgdesc = Open source GPS tracking system
-	pkgver = 3.15
+	pkgver = 3.17
 	pkgrel = 1
 	url = http://www.traccar.org/
 	arch = i686
 	arch = x86_64
 	license = APACHE
 	depends = java-runtime
-	source = https://github.com/tananaev/traccar/releases/download/v3.15/traccar-linux-3.15.zip
+	source = https://github.com/tananaev/traccar/releases/download/v3.17/traccar-linux-3.17.zip
 	source = traccar.service
-	md5sums = 5e0d59fba9a112a3a2720e826d969f47
+	md5sums = d8f3d0684c26072723f88b6a169f6bc7
 	md5sums = 3e230b1b98fb5d0ae71ee08ab96a7c92
 
 pkgname = traccar
