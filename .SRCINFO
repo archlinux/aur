@@ -1,10 +1,12 @@
 pkgbase = r-inline
 pkgdesc = Dynamically define R functions & S4 methods with inlined C, C++ or Fortran code
 pkgver = 0.3.15
-pkgrel = 1
+pkgrel = 2
 url = https://cran.r-project.org/web/packages/inline/index.html
 arch = x86_64
 license = LGPL
+depends = r
+depends = gcc-fortran
 source = https://cran.r-project.org/src/contrib/inline_0.3.15.tar.gz
 md5sums = 8f0de494120ecd628fa7a2e6d4af98cb
 
