@@ -1,0 +1,16 @@
+pkgbase = terminus-terminal-bin
+	pkgdesc = A terminal for a more modern age
+	pkgver = 1.0.0.47
+	pkgrel = 1
+	url = https://github.com/Eugeny/terminus
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	provides = terminus-terminal
+	conflicts = terminus-terminal
+	replaces = terminus-terminal
+	source = https://github.com/Eugeny/terminus/releases/download/v1.0.0-alpha.47/terminus_1.0.0-alpha.47_amd64.deb
+	sha256sums = e87f861ffd8cc574e8471cbc2bad1730ba0346523a6b905575c232cc9ff7a764
+
+pkgname = terminus-terminal-bin
+
