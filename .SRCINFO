@@ -1,0 +1,14 @@
+pkgbase = nodejs-shelljs
+	pkgdesc = ShellJS - Unix shell commands for Node.js
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://www.npmjs.com/package/shelljs
+	arch = any
+	license = BSD
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.org/shelljs/-/shelljs-0.8.2.tgz
+	sha256sums = 8ef117fa17983c249db43811880679382d2c8d5fb7e22d08324df469cecd28fd
+
+pkgname = nodejs-shelljs
+
