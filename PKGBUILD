@@ -1,6 +1,6 @@
 # Maintainer: kittyhacker101 <kittyhacker101@protonmail.com>
 pkgname=katweb
-pkgver=1.9.6
+pkgver=1.9.6.1
 pkgrel=1
 pkgdesc="A lightweight static web server and reverse proxy designed for the modern web."
 arch=("any")
@@ -10,10 +10,10 @@ makedepends=('git' 'go' 'glibc')
 source=("https://github.com/kittyhacker101/KatWeb/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 options=('!strip' 'upx')
-backup=("etc/katweb/conf.json")
 
 prepare() {
 	go get "golang.org/x/crypto/acme/autocert" "github.com/yhat/wsutil" "github.com/klauspost/compress/gzip"
+	patch < aur.patch
 }
 
 build() {
@@ -24,10 +24,10 @@ build() {
 package() {
 	cd "$srcdir/KatWeb-$pkgver"
 	install -D -m755 "./katweb" -t "$pkgdir/usr/bin/"
-	mkdir -p "$pkgdir/etc/katweb"
-	if [ ! -d "/etc/katweb" ]; then
-		cp -r -n "./html" "$pkgdir/etc/katweb/html"
-		cp -r -n "./ssl" "$pkgdir/etc/katweb/ssl"
-	fi
-	cp "./conf.json" "$pkgdir/etc/katweb/conf.json"
+	mkdir -p "$pkgdir/usr/share/katweb"
+
+	install -D -m 0644 "html/index.html" "$pkgdir/usr/share/katweb/html/index.html"
+	install -D -m 0644 "ssl/server.crt" "$pkgdir/usr/share/katweb/ssl/server.crt"
+	install -D -m 0644 "ssl/server.key" "$pkgdir/usr/share/katweb/ssl/server.key"
+	install -D -m 0644 --backup="conf.json.old" "conf.json" "$pkgdir/usr/share/katweb/conf.json"
 }
