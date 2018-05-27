@@ -1,7 +1,7 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-common
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers."
 arch=('any')
 url="http://ignitionrobotics.org/libs/common"
@@ -18,6 +18,9 @@ _dir="ignitionrobotics-ign-common-21fe175fe91c"
 
 build() {
   cd "$srcdir/$_dir"
+
+  sed -i -e 's/CODEC_CAP_TRUNCATED/AV_CODEC_CAP_TRUNCATED/g' src/Video.cc
+  sed -i -e 's/CODEC_FLAG_TRUNCATED/AV_CODEC_FLAG_TRUNCATED/g' src/Video.cc
 
   mkdir -p build
   cd build
