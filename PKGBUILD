@@ -9,9 +9,9 @@ conflicts=("electron-ssr-git")
 provides=("electron-ssr")
 url='https://github.com/erguotou520/electron-ssr'
 license=('MIT')
-depends=('hicolor-icon-theme' 'gtk2' 'gconf'
-         'alsa-lib' 'libxss' 'nss' 'libxtst')
-makedepends=('yarn' 'npm')
+depends=('gtk2' 'gconf' 'alsa-lib' 
+         'libxss' 'nss' 'libxtst')
+makedepends=('yarn' 'npm' 'hicolor-icon-theme')
 optdepends=('libsodium: sodium crypto support')
 
 source=('https://raw.githubusercontent.com/erguotou520/electron-ssr/master/LICENSE'
@@ -39,7 +39,7 @@ build() {
 
     # Extract Package
     buildDir=$srcdir/$pkgname-$pkgver-build/
-    install -dm755 buildDir
+    install -dm755 $buildDir
     tar xf ./build/$pkgname-$pkgver.tar.gz -C $buildDir
 }
 
@@ -47,13 +47,12 @@ package() {
     # Create path
     install -dm755 $pkgdir/opt/$pkgname
     install -dm755 $pkgdir/usr/bin
-    
+
     # Install Other things
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
     install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  
-    dir=$srcdir/$pkgname-$pkgver/
-    cd $dir
+
+    cd $srcdir
     cd icons
     for i in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256; do
         install -Dm644 $i.png $pkgdir/usr/share/icons/hicolor/$i/apps/$pkgname.png
@@ -61,8 +60,6 @@ package() {
 
     # Install main programs
     buildDir=$srcdir/$pkgname-$pkgver-build/$pkgname-$pkgver
-    cd $dir
-
-    cp -r $dir/* $pkgdir/opt/$pkgname
+    cp -r $buildDir/* $pkgdir/opt/$pkgname
     ln -s /opt/$pkgname/$pkgname $pkgdir/usr/bin/$pkgname
 }
