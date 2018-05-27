@@ -1,6 +1,6 @@
 pkgbase = zfs-utils-common-git
 	pkgdesc = Kernel module support files for the Zettabyte File System.
-	pkgver = 2018.05.15.r3487.g43eb39d6c
+	pkgver = 2018.05.26.r3492.g3e5300e0e
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	install = zfs-utils.install
@@ -19,7 +19,7 @@ pkgbase = zfs-utils-common-git
 	replaces = zfs-utils-linux-lts
 	backup = etc/zfs/zed.d/zed.rc
 	backup = etc/default/zfs
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=43eb39d6ccd8fbaa5ae3a84a6df549331db4d6be
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=3e5300e0ed3c4b49e3b0dab7daded1e3bfaaded7
 	source = zfs-utils.bash-completion-r1
 	source = zfs-utils.initcpio.install
 	source = zfs-utils.initcpio.hook
