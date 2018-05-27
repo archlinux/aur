@@ -8,7 +8,7 @@ _pkgbase=${pkgbase%71-noconflict}
 _realpkg=${pkgbase%-noconflict}
 pkgname=("${pkgbase}"
          "${_realpkg}-"{cgi,apache,fpm,embed,phpdbg,dblib,enchant,gd,imap,intl,mcrypt,odbc,pgsql,pspell,snmp,sqlite,tidy,xsl}"-noconflict")
-pkgver=7.1.17
+pkgver=7.1.18
 pkgrel=1
 pkgdesc="php 7.1 compiled as to not conflict with php 7.2+"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ validpgpkeys=(
         '1729F83938DA44E27BA0F4D3DBDB397470D12172'
 )
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
-        'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' 'enchant-2.patch')
+        'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' 'enchant-2.patch' 'php-freetype-2.9.1.patch')
 sha256sums=('1a784806866e06367f7a5c88775d239d6f30041c7ce65a8232d03a3d4de56d56'
             'SKIP'
             '258b33b6531b1128d9804c8b608b6013423a421edcf764747042d07e79ec6df3'
@@ -43,7 +43,8 @@ sha256sums=('1a784806866e06367f7a5c88775d239d6f30041c7ce65a8232d03a3d4de56d56'
             '06f3fa51052d5cf21369e1f6ee0b13365a93bfa05ff672d02f30e8ea4974d815'
             '3f4625d50cf50ce828c6c23f20e1292a0e009fe2c8922368cddda9d44dbc1cc8'
             '46a35d04bdef718f4974e732331bbd9988d77de3f4a6f5867a184dd175dfaf3b'
-            'b11c3de747ef222696f5135556d624e3f7f0135a3cb1b06082f1ec8e9b7eeb0a')
+            'b11c3de747ef222696f5135556d624e3f7f0135a3cb1b06082f1ec8e9b7eeb0a'
+            'f9fe57f809ac13e0043d18b795ef777af3e8c710a83745b37b09db536f683d2a')
 
 prepare() {
 	cd ${srcdir}/${_pkgbase}-${pkgver}
@@ -51,7 +52,8 @@ prepare() {
 	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
 	patch -p0 -i ${srcdir}/php.ini.patch
-	patch -p1 -i ../enchant-2.patch
+	patch -p1 -i ${srcdir}/enchant-2.patch
+        patch -p1 -i ${srcdir}/php-freetype-2.9.1.patch
 }
 
 build() {
