@@ -1,0 +1,18 @@
+pkgbase = katweb
+	pkgdesc = A lightweight static web server and reverse proxy designed for the modern web.
+	pkgver = 1.9.6
+	pkgrel = 1
+	url = https://github.com/kittyhacker101/KatWeb
+	arch = any
+	license = custom:Unlicense
+	makedepends = git
+	makedepends = go
+	makedepends = glibc
+	options = !strip
+	options = upx
+	backup = etc/katweb/conf.json
+	source = https://github.com/kittyhacker101/KatWeb/archive/v1.9.6.tar.gz
+	sha256sums = SKIP
+
+pkgname = katweb
+
