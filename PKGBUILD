@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=libindy
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Shared crypto library for Hyperledger Indy components"
 arch=(i686 x86_64)
@@ -26,4 +26,4 @@ package() {
   cp include/*.h $pkgdir/usr/include/indy/
 }
 
-md5sums=('SKIP')
+md5sums=('83e64f0d31423cb7210f276857c68edb')
