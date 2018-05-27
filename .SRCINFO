@@ -1,14 +1,13 @@
 pkgbase = abcmidi
 	pkgdesc = A set of tools for converting ABC files to MIDI files and vice versa, as well as other small utilities
-	pkgver = 20170202
+	pkgver = 20170610
 	pkgrel = 1
 	url = http://abc.sourceforge.net/abcMIDI/
 	changelog = ChangeLog
-	arch = i686
 	arch = x86_64
 	license = GPL
-	source = https://github.com/leesavide/abcmidi/archive/abcMIDI-2017.02.02.tar.gz
-	sha256sums = cd2b5caa9971ae8ea666cb2be16029a73b9f4463847dd2db2cca202f1f934af2
+	source = https://github.com/leesavide/abcmidi/archive/abcMIDI-2017.06.10.tar.gz
+	sha256sums = a58cd9815447a8a54fe7525f8aa083489b27d8a03b355a71352df11f1a98f008
 
 pkgname = abcmidi
 
