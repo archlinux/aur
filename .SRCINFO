@@ -1,6 +1,6 @@
 pkgbase = umonitor-git
 	pkgdesc = Dynamic monitor configuration
-	pkgver = r146.e8b76d3
+	pkgver = r155.7bc02e4
 	pkgrel = 1
 	url = https://github.com/rliou92/umonitor
 	install = umonitor.install
