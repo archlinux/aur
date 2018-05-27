@@ -100,14 +100,13 @@ Once installed, you may read the man page for more information.
 #### License
 MIT License
 
-Stock information is taken from IEX's free API. Mutual fund and over-the-counter
-information is taken from and Morningstar's free API. Cryptocurrency information
-is taken from Coinmarketcap's free API. News information is taken from News
-API. Shortened links are provided by Google's URL Shortener API. Please do
-not abuse the APIs by repeatedly requesting information. Read the provided
-license for more information.
+Stock information is taken from IEX's free API. Mutual fund and
+over-the-counter information is taken from and Morningstar's free API.
+Cryptocurrency information is taken from Coinmarketcap's free API.
+Please do not abuse the APIs by repeatedly requesting information. Read
+the provided license for more information.
 #### Future Ideas/To-do
-* Historical support -- 7d/28d profits (wait for coinmarketcap historical release)
+* Historical support -- 28d profits (wait for coinmarketcap historical release)
 * Look for API to replace Morningstar for MUTF/OTCMKTS data, preferably with
 intraday data (wait for iex v2 probably)
 * DEB/RPM package
@@ -115,7 +114,6 @@ intraday data (wait for iex v2 probably)
 and portfolio distribution (tried to implement, but IEX API is unpredictable; wait for v2)
 * Format prices with commas (set locale?)
 * Function to add new attributes to portfolio if not found
-* Maybe replace News API with IEX news endpoint
 * Bookmark certain stocks (not included in portfolio)
 * Zoom in more than one month for graph
 * Average graph points when skipping indices for greater accuracy
