@@ -1,0 +1,27 @@
+From 00e847094302c22bb2645ab9c73aff7a17ce9aee Mon Sep 17 00:00:00 2001
+From: Alexei Sorokin <sor.alexei@meowr.ru>
+Date: Wed, 9 May 2018 14:29:49 +0300
+Subject: [PATCH] Gtk2: Workaround a bindings regression
+
+---
+ ccm/Widgets.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ccm/Widgets.py b/ccm/Widgets.py
+index 0c3715f..bf9d8bc 100644
+--- a/ccm/Widgets.py
++++ b/ccm/Widgets.py
+@@ -385,11 +385,11 @@ def clear(self):
+ 
+     def append(self, value):
+         iter = self.store.append()
+-        self.store.set(iter, 0, value)
++        self.store.set_value(iter, 0, value)
+ 
+     def set(self, pos, value):
+         iter = self.store.get_iter(pos)
+-        self.store.set(iter, 0, value)
++        self.store.set_value(iter, 0, value)
+ 
+     def delete(self, b):
+         selected_rows = self.select.get_selected_rows()[1]
