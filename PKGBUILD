@@ -1,7 +1,7 @@
 # Maintainer: Maxime Arthaud <maxime@arthaud.me>
 
 pkgname=zxing-cpp-git
-pkgver=r57.07e5600
+pkgver=r60.5aad474
 pkgrel=1
 pkgdesc="A command-line tool to decode QRCode"
 arch=('any')
@@ -9,6 +9,8 @@ url="https://github.com/glassechidna/zxing-cpp"
 license=('apache')
 provides=('zxing-cpp')
 makedepends=('git' 'cmake' 'cppunit')
+optdepends=('opencv: support for opencv'
+            'gtkglext: required if building with opencv')
 source=("$pkgname::git+https://github.com/glassechidna/zxing-cpp.git")
 sha512sums=('SKIP')
 
