@@ -16,14 +16,14 @@ md5sums=('2f11df7c1c80ac3062e7a7cc512ad07b'
          'a50c990f8285a21242caa1a955a35707')
 
 build() {
-  cd $srcdir/ds-$pkgver
+  cd $srcdir/extension-$pkgver
   phpize
   ./configure
   make
 }
 
 package() {
-  install -Dm744 $srcdir/ds-$pkgver/modules/ds.so $pkgdir/usr/lib/php/modules/ds.so
+  install -Dm744 $srcdir/extension-$pkgver/modules/ds.so $pkgdir/usr/lib/php/modules/ds.so
   install -Dm644 ds.ini $pkgdir/etc/php/conf.d/ds.ini
 }
 
