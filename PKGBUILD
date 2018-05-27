@@ -18,22 +18,22 @@
 pkgbase="spl-linux-hardened-git"
 pkgname=("spl-linux-hardened-git" "spl-linux-hardened-git-headers")
 
-pkgver=2018.05.07.r1074.g1149b62.4.16.9.a.1
+pkgver=2018.05.07.r1074.g1149b62.4.16.11.a.1
 pkgrel=1
-makedepends=("linux-hardened-headers=4.16.9.a-1" "git")
+makedepends=("linux-hardened-headers=4.16.11.a-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git#commit=1149b62d20b7ed9d8ae25d5da7a06213d79b7602")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git=2018.05.07.r1074.g1149b62" "kmod" "linux-hardened=4.16.9.a-1")
+depends=("spl-utils-common-git=2018.05.07.r1074.g1149b62" "kmod" "linux-hardened=4.16.11.a-1")
 
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.16.9-1-hardened/build \
-                --with-linux-obj=/usr/lib/modules/4.16.9-1-hardened/build \
+                --with-linux=/usr/lib/modules/4.16.11-1-hardened/build \
+                --with-linux-obj=/usr/lib/modules/4.16.11-1-hardened/build \
                 --with-config=kernel
     make
 }
@@ -58,5 +58,5 @@ package_spl-linux-hardened-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.16.9-1-hardened/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.16.11-1-hardened/Module.symvers
 }
