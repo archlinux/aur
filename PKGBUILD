@@ -2,22 +2,15 @@
 pkgname=lczero-nvidia-git
 _pkgname=leela-chess
 pkgver=0.10
-pkgrel=299
+pkgrel=1
 pkgdesc="This is an adaptation of GCP's Leela Zero repository to chess, using Stockfish's position representation and move generation."
 arch=('i686' 'x86_64')
 url="https://github.com/glinscott/leela-chess"
 license=('GPLv3')
-depends=('glibc' 'zlib' 'libopenblas' 'boost' 'opencl-nvidia')
+depends=('glibc' 'zlib' 'openblas' 'boost' 'opencl-nvidia')
 makedepends=('git' 'opencl-headers' 'cmake' 'ocl-icd')
 source=("${_pkgname}::git+https://github.com/glinscott/leela-chess")
 md5sums=('SKIP')
-
-prepare() {
-    cd ${srcdir}/${_pkgname}
-    wget http://lczero.org/get_network?sha=705132aeb89a8a3a71226bd56f1af8a08b97344c353bab4ed5e015a70b8512ec -O weights_$pkgrel.txt
-    echo '#!/bin/bash' > lczero
-    echo "/usr/bin/lczero-bin -w /usr/share/lczero/weights_$pkgrel.txt" >> lczero
-}
 
 build() {
     cd ${srcdir}/${_pkgname}
@@ -35,7 +28,5 @@ check() {
 
 package() {
 	cd "$srcdir/$_pkgname"
-    install -Dm755 build/lczero $pkgdir/usr/bin/lczero-bin
-    install -Dm755 lczero $pkgdir/usr/bin/lczero
-    install -Dm644 weights_$pkgrel.txt $pkgdir/usr/share/lczero/weights_$pkgrel.txt
+    install -Dm755 build/lczero $pkgdir/usr/bin/lczero
 }
