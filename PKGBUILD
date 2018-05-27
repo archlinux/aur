@@ -7,7 +7,7 @@ pkgdesc="Google-powered speech recognition for Python"
 arch=('i686' 'x86_64')
 url="https://github.com/Uberi/speech_recognition"
 license=('MIT')
-makedepends=('flac' 'python-setuptools' 'python2-setuptools' 'python-pyaudio' 'python2-pyaudio' 'python-pocketsphinx' 'python2-pocketsphinx' 'python2-monotonic')
+makedepends=('flac' 'python-setuptools' 'python2-setuptools' 'python-pyaudio' 'python2-pyaudio' 'pocketsphinx' 'python2-monotonic')
 source=("https://github.com/Uberi/speech_recognition/archive/${pkgver}.tar.gz")
 sha256sums=('82d3313db383409ddaf3e42625fb0c3518231a1feb5e2ed5473b10b3d5ece7bd')
 
@@ -24,13 +24,13 @@ build() {
 }
 
 package_python-speechrecognition() {
-  depends=('python-pyaudio' 'python-pocketsphinx' 'flac')
+  depends=('python-pyaudio' 'pocketsphinx' 'flac')
   cd $srcdir/$_pkgname-$pkgver
   python setup.py install --root=$pkgdir --optimize=1
 }
 
 package_python2-speechrecognition() {
-  depends=('python2-pyaudio' 'python2-pocketsphinx' 'flac' 'python2-monotonic')
+  depends=('python2-pyaudio' 'pocketsphinx' 'flac' 'python2-monotonic')
   cd $srcdir/$_pkgname-$pkgver-py2
   python2 setup.py install --root=$pkgdir --optimize=1
 }
