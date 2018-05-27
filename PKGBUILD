@@ -5,7 +5,7 @@
 
 pkgname=dropbox-cli
 pkgver=2015.10.28
-pkgrel=2
+pkgrel=3
 pkgdesc='Command line interface for dropbox'
 arch=('any')
 url='http://www.dropbox.com'
@@ -14,7 +14,7 @@ install='dropbox-cli.install'
 depends=('python2' 'dropbox')
 source=("https://linux.dropbox.com/packages/dropbox.py"
         "$pkgname-arch.patch")
-sha256sums=('c4ec04afdc6524c614af5e26ad7ddd2eb9bb529fec444391d0b2d5327da06398'
+sha256sums=('578bbcbb025db47581c962ddd95387b1078196857b3a76e9594b15b30325ae7d'
             '1fbaaf044393394e8d7a7457c1ae556e31fa41897219dc9cbe0b1bb6927b6c89')
 
 build(){
