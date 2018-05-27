@@ -27,9 +27,13 @@ int main(int argc, char* argv[]) {
     // Portfolio modify operation
     int modop = -1;
 
-    // News
-    if (strcmp(cmd, "news") == 0 && argc == 3 && strlen(sym) <= 32 && strlen(sym) > 1)
-        news_print_top_three(sym);
+        // News
+    if (strcmp(cmd, "news") == 0 && (argc == 3 || argc == 4)) {
+        int num_articles = 3; // Default
+        if (argc == 4)
+            num_articles = (int) strtol(argv[3], NULL, 10);
+        iex_print_news(sym, num_articles);
+    }
 
         //Encrypt/decrypt
     else if ((strcmp(cmd, "encrypt") == 0 || strcmp(cmd, "decrypt") == 0) && argc == 2)
@@ -38,8 +42,12 @@ int main(int argc, char* argv[]) {
         // Info
     else if (strcmp(cmd, "info") == 0 && argc == 3)
         api_print_info(sym);
+
+        // Graph
     else if (strcmp(cmd, "graph") == 0 && argc == 3)
         graph_main(sym, NULL);
+
+        // Compare
     else if (strcmp(cmd, "cmp") == 0 && argc == 4) {
         char sym2[strlen(argv[3]) + 1];
         strcpy(sym2, argv[3]);

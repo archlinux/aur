@@ -32,6 +32,19 @@ char* strip_char(char* string, char c) {
     return string;
 }
 
+char* strip_tags(char* string) {
+    size_t len = strlen(string);
+    int i, j;
+    for (i = 0, j = 0; j < (int) len; i++, j++) {
+        if (string[j] == '<')
+            while (string[j] != '>')
+                j++;
+        string[i] = string[j];
+    }
+    string[i] = '\0';
+    return string;
+}
+
 void string_write_portfolio(String* pString) {
     FILE* fp = fopen(portfolio_file, "w");
     if (fp == NULL)

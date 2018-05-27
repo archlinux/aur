@@ -60,6 +60,13 @@ void strtoupper(char* str);
 char* strip_char(char* string, char c);
 
 /**
+ * Returns the input string, stripped of all HTML tags.
+ * @param string input string
+ * @return input string
+ */
+char* strip_tags(char* string);
+
+/**
  * Overwrites the portfolio with the given pString
  * @param pString the String to overwrite with
  */

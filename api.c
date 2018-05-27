@@ -249,63 +249,57 @@ double* morningstar_get_hist_5y(const char* symbol) {
     return api_data;
 }
 
-void news_print_top_three(const char* ticker_name_string) {
-    char* url_encoded_string = calloc(128, sizeof(char));
-    pointer_alloc_check(url_encoded_string);
-    for (int i = 0, j = 0; i < 128; i++, j++) { //Replace underscores and spaces with url encoded '%20's
-        if (ticker_name_string[i] == '_' || ticker_name_string[i] == ' ') {
-            memcpy(&url_encoded_string[i], "%20", 3);
-            i += 2;
-        } else url_encoded_string[i] = ticker_name_string[j];
+void iex_print_news(const char* symbol, int num_articles) {
+    if (num_articles > 50)
+        RET_MSG("You cannot request more than 50 articles.");
+
+    char iex_api_string[URL_MAX_LENGTH];
+    sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/news/last/%d", symbol, num_articles);
+    String* pString = api_curl_data(iex_api_string, NULL);
+    if (pString == NULL)
+        return;
+
+    if (strcmp(pString->data, "Unknown symbol") == 0) { // Invalid symbol
+        string_destroy(&pString);
+        RET_MSG("Invalid symbol.");
     }
-    char yearchar[16], news_api_string[256];
-    time_t now = time(NULL);
-    struct tm* ts = localtime(&now);
-    ts->tm_mday -= 14; // Lowerbound date is 14 days earlier
-    mktime(ts);
-    strftime(yearchar, 16, "%Y-%m-%d", ts);
-    sprintf(news_api_string, "https://newsapi.org/v2/everything?sortBy=popularity&pageSize=3&language=en"
-                             "&apiKey=1163c352d041460381f0a8273e60a9d1&from=%s&q=%s", yearchar, url_encoded_string);
-    free(url_encoded_string);
-    String* pString = api_curl_data(news_api_string, NULL);
+
     Json* jobj = json_tokener_parse(pString->data);
-    if (strtol(json_object_to_json_string(json_object_object_get(jobj, "totalResults")), NULL, 10) > 0)
-        json_print_news(jobj);
-    else puts("No articles. Try a different input.");
+    size_t len = json_object_array_length(jobj);
+    if (len == 0) {
+        json_object_put(jobj);
+        string_destroy(&pString);
+        RET_MSG("No articles available.");
+    }
+
+    Json* idx;
+    const char* headline, * source, *url;
+    char date[DATE_MAX_LENGTH];
+    for (size_t i = 0; i < len; i++) {
+        idx = json_object_array_get_idx(jobj, i);
+        headline = json_object_get_string(json_object_object_get(idx, "headline")); // Headline
+        source = json_object_get_string(json_object_object_get(idx, "source")); // Source
+        strncpy(date, json_object_get_string(json_object_object_get(idx, "datetime")), 10); // Date
+        date[10] = '\0'; // null terminate date before time
+        char summary[strlen(json_object_get_string(json_object_object_get(idx, "summary")))]; // Summary
+        strcpy(summary, json_object_get_string(json_object_object_get(idx, "summary")));
+        strip_tags(summary); // Summary will be html formatted, so must strip tags
+        url = json_object_get_string(json_object_object_get(idx, "url")); // URL
+        char related[strlen(json_object_get_string(json_object_object_get(idx, "related")))]; // Related
+        strcpy(related, json_object_get_string(json_object_object_get(idx, "related")));
+        int related_num = 0;
+        for (size_t j = 0; j < strlen(related); j++) { // List only first five related symbols
+            if (related[j] == ',')
+                related_num++;
+            if (related_num == 5) {
+                related[j] = '\0';
+                break;
+            }
+        }
+        printf("%s | %s | %s\n%s\n%s | Related: %s\n\n", headline, source, date, summary, url, related);
+    }
     json_object_put(jobj);
     string_destroy(&pString);
-}
-
-void json_print_news(const Json* jobj) {
-    Json* article_list = json_object_object_get(jobj, "articles"), * article;
-    char author_string[512], title_string[512], source_string[512], url_string[512], date_string[512], * shortened_url;
-    int results = (int) strtol(json_object_to_json_string(json_object_object_get(jobj, "totalResults")), NULL, 10);
-    if (results > 3)
-        results = 3;
-    for (int i = 0; i < results; i++) {
-        article = json_object_array_get_idx(article_list, (size_t) i);
-        strcpy(author_string, json_object_to_json_string(json_object_object_get(article, "author")));
-        strip_char(author_string, '\\'); // Strip all attributes of escape characters
-        strcpy(title_string, json_object_to_json_string(json_object_object_get(article, "title")));
-        strip_char(title_string, '\\');
-        strcpy(source_string,
-               json_object_to_json_string(json_object_object_get(json_object_object_get(article, "source"), "name")));
-        strip_char(source_string, '\\');
-        strcpy(date_string, json_object_to_json_string(json_object_object_get(article, "publishedAt")));
-        date_string[11] = '\"'; // End string after day of month
-        date_string[12] = '\0';
-        strcpy(url_string, json_object_to_json_string(json_object_object_get(article, "url")));
-        strip_char(url_string, '\\');
-        strip_char(url_string, '\"');
-        shortened_url = google_shorten_link(url_string); // Shorten link with google API
-        printf("Title: %s Source: %s ", title_string, source_string);
-        if (strcmp(author_string, "null") != 0) // Some articles don't list authors or dates
-            printf("Author: %s ", author_string);
-        if (strcmp(date_string, "null") != 0)
-            printf("Date: %s ", date_string);
-        printf("Url: \"%s\"\n", shortened_url);
-        free(shortened_url);
-    }
 }
 
 void api_print_info(const char* ticker_name_string) {

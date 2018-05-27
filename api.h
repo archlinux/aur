@@ -9,7 +9,9 @@
 #ifndef API_H
 #define API_H
 
+#define DATE_MAX_LENGTH 16
 #define SYMBOL_MAX_LENGTH 32
+#define URL_MAX_LENGTH 2048
 #define EMPTY (-999)
 
 #include <stddef.h>
@@ -111,17 +113,9 @@ double* morningstar_get_hist_5y(const char* symbol);
 /**
  * Prints the top three news articles by popularity pertaining to the given string, ticker_name_string. Spaces and
  * underscores will be url-encoded (replaced by "%20"). News API will be used for data.
- * @param ticker_name_string the string to query
+ * @param symbol the string to query
  */
-void news_print_top_three(const char* ticker_name_string);
-
-/**
- * Prints relevant information about up to three articles given a News API JSON formatted response object. Title, source,
- * and URL will always be printed. The URL will be shortened by Google's URL-shortener API. If the author and date
- * are specified, those will be printed as well.
- * @param jobj the JSON array
- */
-void json_print_news(const Json* jobj);
+void iex_print_news(const char* symbol, int num_articles);
 
 /**
  * Prints information about the symbol ticker_name_string by calling the function json_print_news.
