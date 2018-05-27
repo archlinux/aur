@@ -1,0 +1,20 @@
+pkgbase = compute-runtime-bin
+	pkgdesc = Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond (binary version)
+	pkgver = 18.20.10830
+	pkgrel = 1
+	url = https://github.com/intel/compute-runtime
+	install = compute-runtime-bin.install
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	optdepends = libdrm
+	optdepends = libva
+	optdepends = ocl-icd
+	provides = opencl-driver
+	conflicts = beignet
+	conflicts = compute-runtime
+	source = https://github.com/intel/compute-runtime/releases/download/18.20.10830/intel-opencl_18.20.10830_amd64.deb
+	sha256sums = c6f21318d566ceaaa124f96a753478b4cbac3261c7caa1a7b4a1bb95b8778505
+
+pkgname = compute-runtime-bin
+
