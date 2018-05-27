@@ -1,0 +1,19 @@
+pkgbase = opencl-intel
+	pkgdesc = Intel Graphics Compute Runtime for OpenCL (a.k.a Neo OpenCL Driver)
+	pkgver = 18.20.10830
+	pkgrel = 1
+	url = https://github.com/intel/compute-runtime
+	install = opencl-intel.install
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	optdepends = libdrm
+	optdepends = libva
+	optdepends = ocl-icd
+	provides = opencl-driver
+	conflicts = beignet
+	source = https://github.com/intel/compute-runtime/releases/download/18.20.10830/intel-opencl_18.20.10830_amd64.deb
+	sha256sums = c6f21318d566ceaaa124f96a753478b4cbac3261c7caa1a7b4a1bb95b8778505
+
+pkgname = opencl-intel
+
