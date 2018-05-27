@@ -1,7 +1,7 @@
 pkgbase = cockroachdb-bin
 	pkgdesc = An open source, survivable, strongly consistent, scale-out SQL database
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cockroachlabs.com/
 	arch = x86_64
 	license = Apache
