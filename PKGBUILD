@@ -1,9 +1,10 @@
+# Maintainer: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
+# Contributor: Carlos Solis <csolisr at gmail dot com>
 # Contributor: Collin 'Fwirt' Skiles <sploopby at gmail dot com>
 # Contributor: Brian "saikobee" Mock <mock.brian at gmail dot com>
-# Maintainer: Carlos Solis <csolisr at gmail dot com>
 pkgname=sfxr
 pkgver=1.2.1
-pkgrel=6
+pkgrel=1
 pkgdesc="Random sound effect generator for games, etc."
 arch=('i686' 'x86_64')
 url="http://www.drpetter.se/project_sfxr.html"
@@ -19,7 +20,7 @@ build() {
   # if you plan to use GTK2 instead of GTK3
   # sed -i 's|GTK=3.0|GTK=2.0|' Makefile
 
-  make DESTDIR="$pkgdir"
+  make $MAKEFLAGS DESTDIR="$pkgdir"
 }
 
 package() {
