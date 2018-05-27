@@ -5,11 +5,12 @@ pkgbase = slack-term
 	url = https://github.com/erroneousboat/slack-term
 	arch = x86_64
 	license = MIT
-	source = https://raw.githubusercontent.com/erroneousboat/slack-term/master/LICENSE
-	source = slack-term::https://github.com/erroneousboat/slack-term/releases/download/v0.4.0/slack-term-linux-amd64
+	makedepends = go
+	conflicts = slack-term-bin
+	noextract = slack-term-0.4.0.tar.gz
+	source = slack-term-0.4.0.tar.gz::https://github.com/erroneousboat/slack-term/archive/v0.4.0.tar.gz
 	source = slack-term.json
-	md5sums = 563e9d16dfa4d970c956ebc0e6e140dd
-	md5sums = 8db633b31bc1b2823da0155ab93e3427
+	md5sums = d1fd4d15fa219c6c769d59b4ab55f83a
 	md5sums = 9cdd35c2d48f6d899333ab3721a6464b
 
 pkgname = slack-term
