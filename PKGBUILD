@@ -2,7 +2,7 @@
 _pkgname=racerd
 pkgname=$_pkgname-git
 pkgver=r135.29cd4c6
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust semantic analysis server powered by Racer"
 arch=('x86_64')
 url="https://github.com/jwilm/$_pkgname"
@@ -12,7 +12,7 @@ makedepends=('git' 'cargo')
 source=("git+https://github.com/jwilm/$_pkgname.git"
         'Cargo.lock')
 md5sums=('SKIP'
-         '1d619706841bfd62d9e8f7ad994b9ffc')
+         '7d3ba934e0ab65ecd78e71a8ef155916')
 
 pkgver() {
   cd "${srcdir}/$_pkgname"
