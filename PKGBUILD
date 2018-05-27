@@ -1,7 +1,7 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 _name=Py6S
 pkgname=('python2-py6s')
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Python 2.7 interface to the 6S Radiative Transfer Model"
 arch=('any')
@@ -11,10 +11,10 @@ makedepends=('python2-setuptools')
 depends=('6sv11' 'python2-scipy' 'python2-matplotlib' 'python2-pysolar')
 optdepends=('python2-pandas: AERONET data file support')
 options=(!emptydirs)
-md5sums=('41361f2bac39a1e9fbb11eb2a669b996')
-_pypi='https://pypi.python.org/packages'
-_path='8b/94/3feb8dd90ddfa4eeb9c5f73c1301c9642926b3fbbe074bae52cd71ba9d90'
-source=("$_pypi/$_path/$_name-$pkgver.tar.gz#md5=$md5sums")
+sha256sums=('e16cc28e54a59d3908b3902744d261046630e6811cb50b6a13e746f68d421b8b')
+_pypi='https://files.pythonhosted.org/packages'
+_path='1c/ea/fdb4fe3e289e3c14e3bdc473f6b6f595ceb476399600fab21c92db97c82a'
+source=("$_pypi/$_path/$_name-$pkgver.tar.gz")
 
 prepare() {
   # Updates the shebang in Python scripts for Python 2
