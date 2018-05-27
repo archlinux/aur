@@ -1,7 +1,7 @@
 # Maintainer:  Yigit Dallilar <yigit.dallilar@gmail.com>
 # Prev. Maintainer: orumin <dev at orum.in>
 
-pkgname=slack-term
+pkgname=slack-term-bin
 pkgver=0.4.0
 pkgrel=1
 pkgdesc="Slack client for your terminal"
@@ -11,6 +11,7 @@ source=("https://raw.githubusercontent.com/erroneousboat/slack-term/master/LICEN
         "slack-term::${url}/releases/download/v${pkgver}/slack-term-linux-amd64"
         "slack-term.json")
 license=('MIT')
+conflicts=('slack-term')
 options=()
 md5sums=('563e9d16dfa4d970c956ebc0e6e140dd'
          '8db633b31bc1b2823da0155ab93e3427'
@@ -19,7 +20,7 @@ md5sums=('563e9d16dfa4d970c956ebc0e6e140dd'
 package() {
 
   install -Dm755 slack-term ${pkgdir}/usr/bin/slack-term
-  install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/slack-term/LICENSE
   install -Dm644 slack-term.json ${pkgdir}/etc/slack-term.json
 }
 
