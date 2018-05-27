@@ -1,15 +1,21 @@
 pkgbase = libvlc
 	pkgdesc = The VLC library not bundled with VLC so one can use things depending on the lib without installing VLC
 	pkgver = 5.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.videolan.org/LibVLC/
 	arch = x86_64
-	license = LGPL
-	depends = libvlccore
-	provides = vlc
-	conflicts = vlc
-	source = https://mex.mirror.pkgbuild.com/extra/os/x86_64/vlc-3.0.1-2-x86_64.pkg.tar.xz
-	md5sums = a906947ae388875fdd08a68ac6ee4c1c
+	license = LGPL2.1
+	source = https://mex.mirror.pkgbuild.com/extra/os/x86_64/vlc-3.0.2-1-x86_64.pkg.tar.xz
+	md5sums = 4bfef9a296cb36c343d6d3f5202e89fd
 
 pkgname = libvlc
+	depends = libvlccore
+	provides = libvlc=5.6.0
+	provides = vlc
+	conflicts = vlc
+
+pkgname = libvlccore
+	depends = libidn
+	depends = dbus
+	provides = libvlccore=9.0.0
 
