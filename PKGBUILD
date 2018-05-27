@@ -5,7 +5,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=5.0.1.269.g03272ad5
+pkgver=5.1.0.r0.gbe4c491c
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -34,7 +34,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd pacman
-  git describe | sed 's/^v//;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

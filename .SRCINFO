@@ -1,6 +1,6 @@
 pkgbase = pacman-git
 	pkgdesc = A library-based package manager with dependency support. git version.
-	pkgver = 5.0.1.269.g03272ad5
+	pkgver = 5.1.0.r0.gbe4c491c
 	pkgrel = 1
 	url = https://www.archlinux.org/pacman/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = pacman-git
 	depends = libarchive
 	depends = pacman-mirrorlist
 	optdepends = pacman-contrib: various helper utilities
-	provides = pacman=5.0.1
+	provides = pacman=5.1.0
 	conflicts = pacman
 	options = strip
 	options = debug
