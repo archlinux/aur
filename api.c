@@ -25,7 +25,7 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pStrin
     return size * nmemb;
 }
 
-String* api_curl_data(const char* url, const char* post_field) {
+String* api_curl_data(const char* url) {
     CURL* curl = curl_easy_init();
     CURLcode res;
     if (!curl) // Error creating curl object
@@ -36,16 +36,7 @@ String* api_curl_data(const char* url, const char* post_field) {
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L); // Needed for HTTPS
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, api_string_writefunc); // Specify writefunc for return data
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &pString->data); // Specify object for return data
-    struct curl_slist* list = NULL;
-    if (url[12] == 'g') { //if using Google Urlshortener, a post field is needed
-        list = curl_slist_append(list, "Content-Type: application/json");
-        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, list);
-        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_field);
-        curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, strlen(post_field));
-    }
     res = curl_easy_perform(curl);
-    if (url[12] == 'g')
-        curl_slist_free_all(list);
     curl_easy_cleanup(curl);
     if (res != CURLE_OK) {
         string_destroy(&pString); // Error receiving data
@@ -80,7 +71,7 @@ double* api_get_current_price(const char* symbol) {
 double* iex_get_price(const char* symbol) {
     char iex_api_string[80];
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/quote", symbol);
-    String* pString = api_curl_data(iex_api_string, NULL);
+    String* pString = api_curl_data(iex_api_string);
     if (pString == NULL)
         return NULL;
 
@@ -100,7 +91,7 @@ double* iex_get_price(const char* symbol) {
 
     // Second API call gives 7D price
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/chart", symbol);
-    pString = api_curl_data(iex_api_string, NULL);
+    pString = api_curl_data(iex_api_string);
     if (pString == NULL) {
         free(api_data);
         return NULL;
@@ -132,7 +123,7 @@ double* morningstar_get_price(const char* symbol) {
             "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?showVol=true&dtype=his"
             "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
             symbol, yesterday_str, today_str);
-    String* pString = api_curl_data(morningstar_api_string, NULL);
+    String* pString = api_curl_data(morningstar_api_string);
     if (pString == NULL)
         return NULL;
 
@@ -158,7 +149,7 @@ double* morningstar_get_price(const char* symbol) {
 double* coinmarketcap_get_price(const char* symbol) {
     char coinmarketcap_api_string[64];
     sprintf(coinmarketcap_api_string, "https://api.coinmarketcap.com/v1/ticker/%s", symbol);
-    String* pString = api_curl_data(coinmarketcap_api_string, NULL);
+    String* pString = api_curl_data(coinmarketcap_api_string);
     if (pString == NULL)
         return NULL;
 
@@ -193,7 +184,7 @@ double* api_get_hist_5y(const char* symbol) {
 double* iex_get_hist_5y(const char* symbol) {
     char iex_api_string[64];
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/chart/5y", symbol);
-    String* pString = api_curl_data(iex_api_string, NULL);
+    String* pString = api_curl_data(iex_api_string);
     if (pString == NULL)
         return NULL;
 
@@ -226,7 +217,7 @@ double* morningstar_get_hist_5y(const char* symbol) {
             "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?showVol=true&dtype=his"
             "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
             symbol, yesterday_str, today_str);
-    String* pString = api_curl_data(morningstar_api_string, NULL);
+    String* pString = api_curl_data(morningstar_api_string);
     if (pString == NULL)
         return NULL;
 
@@ -255,7 +246,7 @@ void iex_print_news(const char* symbol, int num_articles) {
 
     char iex_api_string[URL_MAX_LENGTH];
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/news/last/%d", symbol, num_articles);
-    String* pString = api_curl_data(iex_api_string, NULL);
+    String* pString = api_curl_data(iex_api_string);
     if (pString == NULL)
         return;
 
@@ -341,7 +332,7 @@ void api_print_info(const char* ticker_name_string) {
 Info* iex_get_info(const char* ticker_name_string) {
     char iex_api_string[128];
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/quote", ticker_name_string);
-    String* pString = api_curl_data(iex_api_string, NULL); // API CALL 1 -- name, symbol, price, mcap, volume
+    String* pString = api_curl_data(iex_api_string); // API CALL 1 -- name, symbol, price, mcap, volume
     if (strcmp(pString->data, "Unknown symbol") == 0) { //Invalid symbol
         string_destroy(&pString);
         return NULL;
@@ -357,13 +348,13 @@ Info* iex_get_info(const char* ticker_name_string) {
     string_destroy(&pString);
 
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/stats/dividendYield", ticker_name_string);
-    pString = api_curl_data(iex_api_string, NULL); // API CALL 2 -- dividend
+    pString = api_curl_data(iex_api_string); // API CALL 2 -- dividend
     if (strcmp("0", pString->data) != 0)
         ticker_info->div_yield = strtod(pString->data, NULL);
     string_destroy(&pString);
 
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/chart", ticker_name_string);
-    pString = api_curl_data(iex_api_string, NULL); // API CALL 3 -- historical
+    pString = api_curl_data(iex_api_string); // API CALL 3 -- historical
     jobj = json_tokener_parse(pString->data);
     time_t now = time(NULL);
     struct tm* ts = localtime(&now);
@@ -396,7 +387,7 @@ Info* morningstar_get_info(const char* ticker_name_string) {
             "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?showVol=true&dtype=his"
             "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
             ticker_name_string, yesterday_char, today_char);
-    String* pString = api_curl_data(morningstar_api_string, NULL);
+    String* pString = api_curl_data(morningstar_api_string);
     if (strcmp("null", pString->data) == 0) { // Invalid symbol
         string_destroy(&pString);
         return NULL;
@@ -428,7 +419,7 @@ Info* morningstar_get_info(const char* ticker_name_string) {
 Info* coinmarketcap_get_info(const char* ticker_name_string) {
     char coinmarketcap_api_string[64];
     sprintf(coinmarketcap_api_string, "https://api.coinmarketcap.com/v1/ticker/%s", ticker_name_string);
-    String* pString = api_curl_data(coinmarketcap_api_string, NULL);
+    String* pString = api_curl_data(coinmarketcap_api_string);
     if (pString->data[0] == '{') { // Invalid symbol
         string_destroy(&pString);
         return NULL;
@@ -446,22 +437,6 @@ Info* coinmarketcap_get_info(const char* ticker_name_string) {
     json_object_put(jobj);
     string_destroy(&pString);
     return ticker_info;
-}
-
-char* google_shorten_link(const char* url_string) {
-    char post_string[1024];
-    sprintf(post_string, "{\"longUrl\": \"%s\"}", url_string); // Format HTTP POST
-    String* pString = api_curl_data(
-            "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAoMAvMPpc7U8lfrnGMk2ZKl966tU2pppU", post_string);
-    Json* jobj = json_tokener_parse(pString->data);
-    char* short_url = malloc(32);
-    pointer_alloc_check(short_url);
-    strcpy(short_url, json_object_to_json_string(json_object_object_get(jobj, "id")));
-    strip_char(short_url, '\\');
-    strip_char(short_url, '\"');
-    json_object_put(jobj);
-    string_destroy(&pString);
-    return short_url;
 }
 
 void api_info_destroy(Info** phInfo) {

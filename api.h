@@ -45,10 +45,9 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pStrin
  * If post_field is not NULL, performs a HTTP POST with the given parameters. Otherwise, performs a HTTP GET. Response
  * data is stored and returned in a String.
  * @param url API url to GET/POST
- * @param post_field data needed for POST
  * @return NULL if no response from server. Otherwise, String containing data.
  */
-String* api_curl_data(const char* url, const char* post_field);
+String* api_curl_data(const char* url);
 
 /**
  * Returns a double* containing the current price and yesterday's price of a stock or cryptocurrency.
@@ -145,13 +144,6 @@ Info* morningstar_get_info(const char* ticker_name_string);
  * @return Info object
  */
 Info* coinmarketcap_get_info(const char* ticker_name_string);
-
-/**
- * Given a url, returns a shorter link using Google's URL-shortener API.
- * @param url_string the link to shorten
- * @return the shortened link
- */
-char* google_shorten_link(const char* url_string);
 
 /**
  * Destroys Info object and frees memory. Sets the pointer to the Info to NULL
