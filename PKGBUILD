@@ -7,7 +7,7 @@ pkgname='ros-melodic-rviz'
 pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-melodic-map-msgs
