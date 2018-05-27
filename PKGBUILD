@@ -70,5 +70,5 @@ package() {
   make DESTDIR="$pkgdir" install
   libdir=$pkgdir/usr/lib/qt/plugins/okular/poppler-lcd
   mkdir -p $libdir
-  cp "$srcdir/usr/local/lib/libpoppler-"{qt5-,}"lcd.so" $libdir
+  cp "$srcdir/usr/local/lib/libpoppler-"{qt5-lcd.so.1,lcd.so.60} $libdir
 }
