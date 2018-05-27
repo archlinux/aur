@@ -1,5 +1,5 @@
 pkgbase = sat-cagou-hg
-	pkgver = r186.a826c70beda2
+	pkgver = r214.6a98d70a3a66
 	pkgrel = 1
 	arch = any
 	license = AGPL3
