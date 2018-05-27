@@ -31,5 +31,5 @@ package() {
 	install -D -m 0644 "html/index.html" "$pkgdir/usr/share/katweb/html/index.html"
 	install -D -m 0644 "ssl/server.crt" "$pkgdir/usr/share/katweb/ssl/server.crt"
 	install -D -m 0644 "ssl/server.key" "$pkgdir/usr/share/katweb/ssl/server.key"
-	install -D -m 0644 --backup="conf.json.old" "conf.json" "$pkgdir/usr/share/katweb/conf.json"
+	install -D -m 0644 "conf.json" "$pkgdir/usr/share/katweb/conf.json"
 }
