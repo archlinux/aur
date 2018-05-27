@@ -1,6 +1,6 @@
 pkgbase = armagetronad-snapshot
 	pkgdesc = A Tron Clone in 3D.
-	pkgver = 0.4
+	pkgver = 0.4_alpha_z2219_20150311
 	pkgrel = 1
 	url = http://armagetronad.net/
 	arch = x86_64
