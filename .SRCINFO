@@ -1,14 +1,14 @@
 pkgbase = gcc-docs
 	pkgdesc = Set of HTML documentation for GCC
-	pkgver = 7.2.0
+	pkgver = 8.1.0
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = any
 	license = GPL
 	options = docs
 	options = !strip
-	source = gcc-docs-7.2.0.tar.gz::https://gcc.gnu.org/onlinedocs/gcc-7.2.0/gcc-html.tar.gz
-	sha256sums = 4ec2de3228a62dd7f3fbb1d75e03d630afbee8059ae2691dc2bf6967d547a08d
+	source = gcc-docs-8.1.0.tar.gz::https://gcc.gnu.org/onlinedocs/gcc-8.1.0/gcc-html.tar.gz
+	sha256sums = 91a501d95e548a97b774508f67d89463b68c12c15ca2049bbb2a6fc717b9748f
 
 pkgname = gcc-docs
 
