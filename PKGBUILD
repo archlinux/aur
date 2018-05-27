@@ -1,6 +1,6 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r39.d6749f0
+pkgver=r40.1d1a032
 pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -92,6 +92,8 @@ package() {
 				     ${pkgdir}/etc/dconf/db/local.d/01-cros-ui
 	install -m644 -D ${srcdir}/${_pkgname}/cros-ui-config/user \
 				     ${pkgdir}/etc/dconf/profile/user
+	install -m644 -D ${srcdir}/${_pkgname}/cros-ui-config/Trolltech.conf \
+				     ${pkgdir}/etc/xdg/Trolltech.conf
 
 	### cros-unattended-upgrades -> not applicable
 
