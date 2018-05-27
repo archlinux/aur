@@ -3,13 +3,13 @@
 
 pkgname=mestrenova
 pkgver=12.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Widely used commercial NMR interpreter"
 arch=('x86_64')
 url="https://www.mestrelab.com"
 install=mestrenova.install
 license=('custom:mestrelab')
-depends=('libxi' 'glu' )
+depends=('libxi' 'glu' 'openssl-1.0')
 source=("http://mestrelab.com/downloads/mnova/linux/Ubuntu/16.04/mestrenova_12.0.2-20910_amd64.deb")
 sha256sums=('4d9d16d3cae95340f265fe0566453fc05a4ac6ce84d5887c300e36c1e47d6620')
         
