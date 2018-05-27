@@ -1,6 +1,6 @@
 pkgbase = webkit2gtk-mse
-	pkgdesc = GTK+ Web content engine library
-	pkgver = 2.18.1
+	pkgdesc = GTK+ Web content engine library - MSE enabled
+	pkgver = 2.20.2
 	pkgrel = 1
 	url = https://webkitgtk.org/
 	arch = i686
@@ -14,30 +14,31 @@ pkgbase = webkit2gtk-mse
 	makedepends = cmake
 	makedepends = python
 	makedepends = python2
-	makedepends = ninja
 	depends = libxt
 	depends = libxslt
 	depends = enchant
 	depends = geoclue2
 	depends = gst-plugins-base-libs
-	depends = gst-plugins-bad
 	depends = libsecret
 	depends = libwebp
 	depends = harfbuzz-icu
 	depends = gtk3
 	depends = libnotify
 	depends = hyphen
+	depends = woff2
 	optdepends = gtk2: Netscape plugin support
 	optdepends = gst-plugins-base: free media decoding
 	optdepends = gst-plugins-good: media decoding
 	optdepends = gst-libav: nonfree media decoding
 	provides = webkit2gtk
 	conflicts = webkit2gtk
-	source = https://webkitgtk.org/releases/webkitgtk-2.18.1.tar.xz
-	source = https://webkitgtk.org/releases/webkitgtk-2.18.1.tar.xz.asc
+	source = https://webkitgtk.org/releases/webkitgtk-2.20.2.tar.xz
+	source = https://webkitgtk.org/releases/webkitgtk-2.20.2.tar.xz.asc
+	source = gtk-doc.diff::https://git.archlinux.org/svntogit/packages.git/plain/trunk/gtk-doc.diff?h=packages/webkit2gtk&id=e01bbc2df8214c4e7198ca5e5f6675c1231e7f8b
 	validpgpkeys = D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3
-	sha256sums = 9cdb7b302fbc8a2a7e1e783b80391e64f8b12d70d6ebad4eb756dd59bf3ed795
+	sha256sums = dffe93a241f03f1c73b369f4e323e4d8f12e39d33d5515948cbf454ca4b526e2
 	sha256sums = SKIP
+	sha256sums = 4f116b4508d4501498d1e1483555bc5d4e3f5504c5a2f3ec6a21c646b874cdb4
 
 pkgname = webkit2gtk-mse
 
