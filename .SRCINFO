@@ -1,0 +1,18 @@
+pkgbase = keepassgtk
+	pkgdesc = An eye candy password manager for Linux (Keepass v.4)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/TerminalDotRun/KeepassGtk
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = python-pykeepass
+	source = git://github.com/TerminalDotRun/KeepassGtk
+	md5sums = SKIP
+
+pkgname = keepassgtk
+
