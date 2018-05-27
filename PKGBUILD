@@ -2,7 +2,7 @@
 
 pkgname=simonpi-git
 pkgver=1.0.12.r0.g804baed
-pkgrel=1
+pkgrel=2
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
 arch=(any)
 url="https://github.com/M0Rf30/simonpi"
