@@ -2,7 +2,7 @@ qemuconf=/etc/qemu/
 
 post_install() {
 
-	if [ ! -d $qemuconf ]; then 
+	if [ ! -d "$qemuconf" ]; then 
 		mkdir "$qemuconf"	
 	fi
 
