@@ -1,9 +1,9 @@
-# Maintainer : Yamashita Ren
-# Contributor:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer : Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Yamashita Ren
 
 _plug=waifu2x-w2xc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r6.7.g9cea4dd
+pkgver=r6.9.g4128c53
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -21,17 +21,26 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-build() {
+prepare() {
+  mkdir -p build
+
   cd "${_plug}"
   ./autogen.sh
-  ./configure --prefix=/usr --libdir=/usr/lib/vapoursynth
-  make
+
+  cd "${srcdir}/build"
+  ../"${_plug}"/configure \
+    --prefix=/usr \
+    --libdir=/usr/lib/vapoursynth
+
+}
+
+build() {
+  make -C build
 }
 
 package(){
-  cd "${_plug}"
-  make install
-  cp -R Waifu2x-w2xc/models ${pkgdir}/usr/lib/vapoursynth/models
+  make -C build DESTDIR="${pkgdir}" install
+  cp -R "${_plug}/Waifu2x-w2xc/models" ${pkgdir}/usr/lib/vapoursynth/models
   chmod -R a+w ${pkgdir}/usr/lib/vapoursynth/models
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
