@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=simbody
-pkgver=3.5.3
+pkgver=3.6
 pkgrel=1
 pkgdesc="High-performance C++ multibody dynamics/physics library for simulating articulated biomechanical and mechanical systems like vehicles, robots, and the human skeleton."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=()
 
 _dir="${pkgname}-Simbody-${pkgver}"
 source=("https://github.com/simbody/${pkgname}/archive/Simbody-${pkgver}.tar.gz")
-sha256sums=('8005fbdb16c6475f98e13b8f1423b0e9951c193681c2b0d19ae5b711d7e24ec1')
+sha256sums=('bafce4b32dda4e174700733da1cd4f5f77f490daa96b92ed64bb881b0a885aa8')
 
 build() {
   # Create build directory
