@@ -1,28 +1,24 @@
-#PKGCONFIG for android-qt5
+# PKGCONFIG for android-qt5
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 # Contributor: Jiaxi Hu <sftrytry _AT_ gmail _DOT_ com>
 # Contributor: jimmy00784 <jimmy00784@gmail.com>
 # Contributor: Ricardo (XenGi) Band <email@ricardo.band>
 
+# Useful link to keep track of latest API changes:
+#
+# https://developer.android.com/ndk/downloads/revision_history
+
 android_arch=armeabi-v7a
 
-if [ -z "${ANDROID_MINIMUM_PLATFORM}" ]; then
-    case "$android_arch" in
-        arm64-v8a)
-            export ANDROID_MINIMUM_PLATFORM=21
-            ;;
-        x86_64)
-            export ANDROID_MINIMUM_PLATFORM=21
-            ;;
-        *)
-            export ANDROID_MINIMUM_PLATFORM=16
-            ;;
-    esac
-fi
+# Minimum Android platform based on:
+#
+# https://developer.android.com/about/dashboards/
+ANDROID_MINIMUM_PLATFORM=21
+export ANDROID_MINIMUM_PLATFORM
 
 _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
-pkgver=5.10.1
+pkgver=5.11.0
 pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
@@ -67,31 +63,13 @@ options=('!strip'
          'staticlibs'
          '!emptydirs')
 _pkgfqn="qt-everywhere-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
-        "geoservices.pro.patch"
-        "JavaScriptCore.pri.patch"
-        "JavaScript.Platform.h.patch")
-md5sums=('7e167b9617e7bd64012daaacb85477af'
-         'de535e2ce98e9f75e9ec0ed1c52a2647'
-         'd0b3bb4de8a44520c2923e14a8b4f9f1'
-         '4c9bbe21230e34fa07c2cbd5119ceda9')
+source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz")
+md5sums=('68b7c9dd5c5df84b5c82730474c4c1f3')
 
 prepare() {
     cd ${_pkgfqn}
 
     # Platform specific patches.
-    case "$android_arch" in
-        mips)
-            patch -Np1 -i "../JavaScript.Platform.h.patch"
-            ;;
-        armeabi)
-            # Disable JIT.
-            patch -Np1 -i "../JavaScriptCore.pri.patch"
-            patch -Np1 -i "../geoservices.pro.patch"
-            ;;
-        *)
-            ;;
-    esac
 }
 
 get_last() {
@@ -109,13 +87,6 @@ build() {
     unset CHOST
     unset QMAKESPEC
     unset QTDIR
-
-    if [ "${CARCH}" == 'i686' ]; then
-        ndkhost='linux-x86'
-    elif [ "${CARCH}" == 'x86_64' ]; then
-        ndkhost='linux-x86_64'
-    fi
-
     unset CARCH
 
     export ANDROID_NDK_ROOT=/opt/android-ndk
@@ -148,7 +119,7 @@ build() {
         -nomake examples
         -android-ndk ${ANDROID_NDK_ROOT}
         -android-sdk ${ANDROID_SDK_ROOT}
-        -android-ndk-host ${ndkhost}
+        -android-ndk-host linux-x86_64
         -android-toolchain-version 4.9
         -skip qttranslations
         -skip qtserialport
@@ -159,17 +130,8 @@ build() {
         -android-arch ${android_arch}
         -android-ndk-platform ${ANDROID_NDK_PLATFORM}"
 
-    if [ "$ANDROID_MINIMUM_PLATFORM" -lt 18 ]; then
-        configue_opts+="
-            -skip qtconnectivity"
-    fi
-
     # Platform specific patches
     case "$android_arch" in
-        armeabi)
-             configue_opts+="
-                 -skip qtwebglplugin"
-            ;;
         x86*)
              configue_opts+="
                  -no-sql-mysql
@@ -194,13 +156,9 @@ package() {
             toolchain=aarch64-linux-android-4.9
             stripFolder=aarch64-linux-android
             ;;
-        armeabi*)
+        armeabi-v7a)
             toolchain=arm-linux-androideabi-4.9
             stripFolder=arm-linux-androideabi
-            ;;
-        mips)
-            toolchain=mipsel-linux-android-4.9
-            stripFolder=mipsel-linux-android
             ;;
         x86)
             toolchain=x86-4.9
