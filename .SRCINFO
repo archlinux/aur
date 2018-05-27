@@ -1,6 +1,6 @@
 pkgbase = kplugs-dkms
 	pkgdesc = KPlugs kernel module sources (DKMS)
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = http://www.kplugs.org/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = kplugs-dkms
 	license = GPL3
 	depends = dkms
 	optdepends = linux-headers: Build the module for Arch kernel
-	source = https://github.com/avielw/kplugs/archive/3.3.1.tar.gz
+	source = https://github.com/avielw/kplugs/archive/3.3.2.tar.gz
 	sha256sums = ab4a624471e71a5d89fdaa4dbb1f00b8f4b633d61e631126fea6541bc999d206
 
 pkgname = kplugs-dkms

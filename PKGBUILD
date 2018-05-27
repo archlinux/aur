@@ -1,7 +1,7 @@
 # Maintainer: Aviel Warschawski <mail@aviel.org>
 
 pkgname=kplugs-dkms
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc='KPlugs kernel module sources (DKMS)'
 arch=('i686' 'x86_64')
