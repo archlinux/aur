@@ -6,6 +6,7 @@ pkgbase = aeskulap
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = gcc6
 	makedepends = intltool
 	makedepends = perl-xml-parser
 	makedepends = gconf
