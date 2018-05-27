@@ -68,8 +68,8 @@ pkgbase = ros-melodic-rviz
 	depends = eigen3
 	depends = mesa
 	depends = yaml-cpp
-	source = ros-melodic-rviz-1.13.1-0.tar.gz::https://github.com/ros-gbp/rviz-release/archive/release/melodic/rviz/1.13.1-0.tar.gz
-	sha256sums = 2c457a91f490ceb954760c23f8cc8d8edab3089cae59fa3b335191d96802ae0d
+	source = ros-melodic-rviz::git+https://github.com/fizyr-forks/rviz.git#branch=ogre1.11
+	sha256sums = SKIP
 
 pkgname = ros-melodic-rviz
 

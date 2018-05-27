@@ -78,14 +78,15 @@ depends=(${ros_depends[@]}
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/rviz/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
+_dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/rviz-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
+source=("${_dir}"::"git+https://github.com/fizyr-forks/rviz.git#branch=ogre1.11")
+sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="rviz-release-release-melodic-rviz-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/melodic/rviz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2c457a91f490ceb954760c23f8cc8d8edab3089cae59fa3b335191d96802ae0d')
+# _dir="rviz-release-release-melodic-rviz-${pkgver}-${_pkgver_patch}"
+# source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/melodic/rviz/${pkgver}-${_pkgver_patch}.tar.gz")
+# sha256sums=('2c457a91f490ceb954760c23f8cc8d8edab3089cae59fa3b335191d96802ae0d')
 
 build() {
   # Use ROS environment variables
