@@ -9,6 +9,7 @@ pkgbase = bootimage-git
 	makedepends = rust
 	makedepends = cargo
 	depends = cargo-xbuild
+	depends = qemu
 	provides = bootimage
 	conflicts = bootimage
 	source = bootimage::git+https://github.com/rust-osdev/bootimage
