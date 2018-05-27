@@ -12,7 +12,7 @@ makedepends=('git' 'cargo')
 provides=('brewstillery')
 conflicts=('brewstillery')
 source=("https://github.com/MonkeyLog/BrewStillery/archive/$pkgver.tar.gz")
-md5sums=('adbaef7cf1b71bb2c484635173f3bd84')
+md5sums=('924d76060fa85787fde2ae52b67d53a3')
 
 build() {
 	cd $srcdir/BrewStillery-$pkgver
