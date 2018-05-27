@@ -11,6 +11,7 @@ pkgbase = katweb
 	options = !strip
 	options = upx
 	source = https://github.com/kittyhacker101/KatWeb/archive/v1.9.6.1.tar.gz
+	source = https://cdn.kittyhacker101.tk/Static/aur.patch
 	sha256sums = SKIP
 
 pkgname = katweb

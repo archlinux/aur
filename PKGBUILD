@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/kittyhacker101/KatWeb"
 license=('custom:Unlicense')
 makedepends=('git' 'go' 'glibc')
-source=("https://github.com/kittyhacker101/KatWeb/archive/v$pkgver.tar.gz")
+source=("https://github.com/kittyhacker101/KatWeb/archive/v$pkgver.tar.gz" "https://cdn.kittyhacker101.tk/Static/aur.patch")
 sha256sums=('SKIP')
 options=('!strip' 'upx')
 
