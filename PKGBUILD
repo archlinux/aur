@@ -3,7 +3,7 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 pkgname=v2ray-git
 pkgver=3.23
-pkgrel=3
+pkgrel=4
 pkgdesc="A platform for building proxies to bypass network restrictions"
 arch=("x86_64")
 url="https://github.com/v2ray/v2ray-core"
@@ -44,7 +44,7 @@ package() {
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/v2ray/LICENSE
     install -Dm644 release/config/systemd/v2ray.service ${pkgdir}/usr/lib/systemd/system/v2ray.service
     sed -i '/ExecStart/c\ExecStart=/usr/bin/env v2ray.location.asset=/etc/v2ray /usr/bin/v2ray -config /etc/v2ray/config.json' "$pkgdir"/usr/lib/systemd/system/v2ray.service
-    install -Dm644 release/config/geoip.dat release/config/geosite.dat release/config/*.json -t "$pkgdir"/usr/bin/
+    install -Dm644 release/config/geoip.dat release/config/geosite.dat release/config/*.json -t "$pkgdir"/etc/v2ray/
     install -Dm755 "$GOPATH"/bin/v2ray-custom-linux-64/{v2ray,v2ctl} -t "$pkgdir"/usr/bin/
 
     install -Dm644 "$srcdir"/v2ray.service "$pkgdir"/usr/lib/systemd/system/v2ray@.service
