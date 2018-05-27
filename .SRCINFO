@@ -1,7 +1,7 @@
 pkgbase = opendm
 	pkgdesc = A simple GUI Display Manager written entirely in bash that uses xinit to start X sessions
-	pkgver = 0.0.31
-	pkgrel = 3
+	pkgver = 0.0.4
+	pkgrel = 1
 	url = http://www.simonizor.net
 	install = opendm.install
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = opendm
 	depends = qarma
 	depends = xorg-xinit
 	depends = wmctrl
-	source = https://github.com/simoniz0r/opendm/archive/v0.0.31.tar.gz
-	md5sums = 1d7dab696cd3b26b91b0414d259d2f2f
+	source = https://github.com/simoniz0r/opendm/archive/v0.0.4.tar.gz
+	md5sums = c687d82933cd9be423195dce4ed00eb4
 
 pkgname = opendm
 
