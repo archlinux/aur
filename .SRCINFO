@@ -1,14 +1,14 @@
 pkgbase = r-rstan
 pkgdesc = User-facing R functions for Stan models
 pkgver = 2.17.3
-pkgrel = 1
+pkgrel = 2
 url = https://cran.r-project.org/web/packages/rstan/index.html
 arch = x86_64
 license = GPL3
 depends = r
 depends = r-cran-bh>=1.65
 depends = r-rcppeigen>=0.3.3.3.0
-depends = r-cran-cpp>=0.12.0
+depends = r-cran-rcpp>=0.12.0
 depends = r-cran-gridextra>=2.0.0
 depends = r-inline
 depends = r-stanheaders>=2.17.2

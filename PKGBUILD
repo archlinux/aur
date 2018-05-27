@@ -3,7 +3,7 @@ _cranname=rstan
 _cranver=2.17.3
 pkgname=r-rstan
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="User-facing R functions for Stan models"
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('r'
          'r-cran-bh>=1.65'
          'r-rcppeigen>=0.3.3.3.0'
-         'r-cran-cpp>=0.12.0'
+         'r-cran-rcpp>=0.12.0'
          'r-cran-gridextra>=2.0.0'
          'r-inline'
          'r-stanheaders>=2.17.2'
