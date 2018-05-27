@@ -1,21 +1,36 @@
 pkgbase = r-knitr
-	pkgdesc = a general-purpose package for dynamic report generation in r
-	pkgver = 1.13
-	pkgrel = 1
-	url = http://yihui.name/knitr/
-	arch = any
-	license = GPL
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
-	depends = r>3.0.2
-	depends = r-evaluate>=0.8
-	depends = r-digest
-	depends = r-formatr
-	depends = r-highr
-	depends = r-markdown
-	depends = r-stringr>=0.6
-	depends = r-yaml>=2.1.5
+pkgdesc = A general-purpose tool for dynamic report generation in R
+pkgver = 1.20
+pkgrel = 1
+url = https://cran.r-project.org/web/packages/knitr/index.html
+arch = any
+license = GPL
+depends = r
+depends = r-evaluate>=0.10
+depends = r-highr
+depends = r-markdown
+depends = r-stringr>=0.6
+depends = r-yaml
+optdepends = r-dbi
+optdepends = r-digest
+optdepends = r-htmlwidgets
+optdepends = r-httr
+optdepends = r-jpeg
+optdepends = r-juliacall
+optdepends = r-png
+optdepends = r-reticulate
+optdepends = r-rgl
+optdepends = r-rmarkdown
+optdepends = r-showtext
+optdepends = r-tibble
+optdepends = r-tikzdevice
+optdepends = r-tinytex
+optdepends = r-webshot
+optdepends = r-xfun
+optdepends = r-xml2
+optdepends = r-testit
+source = https://cran.r-project.org/src/contrib/knitr_1.20.tar.gz
+md5sums = fa91b1c0f2778c685ee8758e5b3c02b4
 
 pkgname = r-knitr
 
