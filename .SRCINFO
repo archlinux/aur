@@ -1,17 +1,16 @@
 pkgbase = r-cran-bindrcpp
 	pkgdesc = Provides an easy way to fill an environment with active C++ function bindings.
-	pkgver = 0.2
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/bindrcpp/index.html
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r-cran-rcpp
-	depends = r-cran-bindr
-	depends = r-devtools
-	depends = r-cran-plogr
-	source = http://cran.r-project.org/src/contrib/bindrcpp_0.2.tar.gz
-	md5sums = 2ed7f19fd9a12587f882d90060e7a343
+	depends = r
+	depends = r-cran-bindr>=0.1.1
+	depends = r-cran-rcpp>=0.12.16
+	source = http://cran.r-project.org/src/contrib/bindrcpp_0.2.2.tar.gz
+	md5sums = 992af2045b0ce4079f62a2cb4b0df767
 
 pkgname = r-cran-bindrcpp
 
