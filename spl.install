@@ -12,5 +12,5 @@ post_upgrade() {
 
 run_depmod() {
     echo ">>> Updating SPL module dependencies"
-    depmod -a 4.16.8-1-vfio
+    depmod -a 4.16.10-1-vfio
 }
