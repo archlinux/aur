@@ -64,7 +64,7 @@ _rtver=3
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _rtpatchver=rt${_rtver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -102,9 +102,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch'
-        '0003-Partially-revert-swiotlb-remove-various-exports.patch'
-        '0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch')
+        '0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch'
+        '0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch'
+        '0004-Partially-revert-swiotlb-remove-various-exports.patch'
+        '0005-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch')
         
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-rt-bfq}
@@ -124,17 +125,21 @@ prepare() {
         msg "Disable USER_NS for non-root users by default"
         patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
     
+    ### Fix https://bugs.archlinux.org/task/56780
+        msg "Fix #56780"
+        patch -Np1 -i ../0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
+    
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
-        patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch    
+        patch -Np1 -i ../0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch    
     
     ### NVIDIA driver compat
         msg "NVIDIA driver compat"
-        patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+        patch -Np1 -i ../0004-Partially-revert-swiotlb-remove-various-exports.patch
     
     ### Fix https://bugs.archlinux.org/task/58237
         msg "Fix #58237"
-        patch -Np1 -i ../0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
+        patch -Np1 -i ../0005-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
     
     ### Fix gcc8 bogus warnings
         msg "Fix gcc8 bogus warnings"
@@ -441,10 +446,11 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'd4a5dadbdbbb8a2c2c3b4b5e77ea19664e0742825648d10635ce3b7642f01d71d51fd8ed58dcfd686981ef9c3f83965746686231b9bac1974809be1618e60373'
-            '071c38539db9660e743cca5514a5b2c10e79716c59435976f7cd18bd77254b39e1cdba6386ac6938c00c7585e1834508f85bc65f4d2af28246dae864b71b06b3'
-            '6c4bf0d5230e7a3e895f88cf6cc84d6df550fefa2c865e4d5853e02682e781c5a149fb4f853ac7513f335271415fae4a4edf13139de4ba067102e9d8083c22a0'
-            'f5a6e9e6244ed2bb336f359a65ba922226f76319c216eae3c1acca137084ab0c89372d8ec2299d0377ad909534a5d13d8db9a9376e357d600518c81811256d07')
+            'e8229ab81b771f485a28162481ffee88235083195f90c9793aad4714f145609520b6c05104fc02ac40fd0a049836fe34145b5c6a452887015a6f5b0c42da6c8e'
+            '2178029acb13aae77350cd77dbf78533501a3a0684be7ec6bb0df0c02a3b6d8f59d1c2a77d0171f9eab960211ea90c581a17c3cfaf336267837611d0c0be6795'
+            '3b59662258d609b24eb294ce2f7d97384ebd30590c07e257f8957ef7d56fd9bba689b7e814fe3ca9dd481d77d259bdeeeaef9ed48f10673ef7c95b30bdccefde'
+            'f7fdcb1fe5d882af14c72e9e59d0133c713c84394702c110b7ab8eedceecd4165b4e09c0a1860439b918f6095ff6c4e586334c9d7517229f7c7f9b9538177a81'
+            '7b8b72c8fbf99347b0b999d0e90f70a3721c8dd23589d8abd4cd6656120fb91d66b16b423f42b416a164a4ba2413dccf10587b2ed53aec14a9c040067353fb23')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
