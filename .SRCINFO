@@ -1,7 +1,7 @@
 pkgbase = partclone-git
 	pkgdesc = Utilities to back up and restore used-blocks of a partition.
 	pkgver = 1142.3ecae45
-	pkgrel = 1
+	pkgrel = 2
 	url = http://partclone.nchc.org.tw/
 	arch = i686
 	arch = x86_64

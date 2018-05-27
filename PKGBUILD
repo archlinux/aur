@@ -2,7 +2,7 @@
 
 pkgname=partclone-git
 pkgver=1142.3ecae45
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities to back up and restore used-blocks of a partition."
 arch=('i686' 'x86_64')
 url="http://partclone.nchc.org.tw/"
