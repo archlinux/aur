@@ -1,0 +1,67 @@
+From: Jeffrey Feng <galago1992@gmail.com>
+Subject: [PATCH 1/3] okular LCD subpixel rendering by poppler
+---
+git diff --stat
+ CMakeLists.txt                    | 7 +++----
+ generators/poppler/CMakeLists.txt | 9 +++++++--
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d067039e0..aa60b226d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -92,10 +92,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/modules)
+ find_package(ZLIB REQUIRED)
+ 
+ # This is here instead of in generators since we use if(Poppler_Qt5_FOUND) in autotests/
+-find_package(Poppler "0.12.1" COMPONENTS Qt5)
+-set_package_properties("Poppler" PROPERTIES
+-        TYPE RECOMMENDED
+-        PURPOSE "Support for PDF files in okular.")
++set(Poppler_Qt5_FOUND 1)
++set(Poppler_VERSION "0.43.0")
+ 
+ add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
+ add_definitions(-DTRANSLATION_DOMAIN="okular")
+@@ -116,6 +114,7 @@ if(BUILD_COVERAGE)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lgcov")
+ endif()
++STRING(REGEX REPLACE "--as-needed" "--no-as-needed" CMAKE_MODULE_LINKER_FLAGS ${CMAKE_MODULE_LINKER_FLAGS})
+ 
+ add_subdirectory( ui )
+ add_subdirectory( shell )
+diff --git a/generators/poppler/CMakeLists.txt b/generators/poppler/CMakeLists.txt
+index 73881f0e1..5e90efed8 100644
+--- a/generators/poppler/CMakeLists.txt
++++ b/generators/poppler/CMakeLists.txt
+@@ -19,7 +19,7 @@ if (Poppler_VERSION VERSION_GREATER "0.36.99")
+   set (HAVE_POPPLER_0_37 1)
+ endif()
+ 
+-set(CMAKE_REQUIRED_LIBRARIES Poppler::Qt5 Qt5::Core Qt5::Gui)
++set(CMAKE_REQUIRED_LIBRARIES Qt5::Core Qt5::Gui)
+ 
+ check_cxx_source_compiles("
+ #include <poppler-qt5.h>
+@@ -89,6 +89,8 @@ configure_file(
+ 
+ include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/../..
++   ${POPPLER_LIB_DIR}/../include/poppler
++   ${POPPLER_LIB_DIR}/../include/poppler/qt5
+ )
+ 
+ ########### next target ###############
+@@ -107,7 +109,10 @@ kconfig_add_kcfg_files(okularGenerator_poppler_PART_SRCS conf/pdfsettings.kcfgc
+ 
+ okular_add_generator(okularGenerator_poppler ${okularGenerator_poppler_PART_SRCS})
+ 
+-target_link_libraries(okularGenerator_poppler okularcore KF5::I18n KF5::Completion Poppler::Qt5 Qt5::Xml)
++set(POPPLER_LIB ${POPPLER_LIB_DIR}/libpoppler-lcd.so)
++set(POPPLER_QT5_LIB ${POPPLER_LIB_DIR}/libpoppler-qt5-lcd.so)
++set_target_properties(okularGenerator_poppler PROPERTIES INSTALL_RPATH ${POPPLER_LIB_RPATH})
++target_link_libraries(okularGenerator_poppler okularcore KF5::I18n KF5::Completion ${POPPLER_QT5_LIB} ${POPPLER_LIB} Qt5::Xml)
+ 
+ ########### install files ###############
+ install( FILES okularPoppler.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )
