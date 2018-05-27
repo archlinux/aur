@@ -2,13 +2,13 @@
 
 pkgname=freefem++-git
 pkgver=v3.60
-pkgrel=1
-pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
+pkgrel=2
+pkgdesc='A PDE oriented language using the finite element method from git'
 arch=('x86_64')
 url="http://www.freefem.org/ff++/index.htm"
 license=('LGPL')
 depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-openmpi' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
-makedepends=('git' 'flex' 'texlive-core')
+makedepends=('git' 'flex' 'texlive-core' 'gcc54')
 provides=("freefem++=$_pkgver")
 conflicts=('freefem++')
 backup=('etc/freefem++.pref')
@@ -25,7 +25,7 @@ build() {
   cd FreeFem
   autoreconf -fi 
   perl download/getall -a
-  ./configure CXX=g++-6 CXXFLAGS=" --std=c++11" \
+  ./configure CXX=g++-5 CXXFLAGS=" --std=c++11" \
 	      --prefix=/usr \
 	      --sysconfdir=/etc \
 	      --enable-download \

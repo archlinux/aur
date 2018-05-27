@@ -1,13 +1,14 @@
 pkgbase = freefem++-git
-	pkgdesc = A PDE oriented language using the finite element method (Mercurial)
+	pkgdesc = A PDE oriented language using the finite element method from git
 	pkgver = v3.60
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freefem.org/ff++/index.htm
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	makedepends = flex
 	makedepends = texlive-core
+	makedepends = gcc54
 	depends = fftw
 	depends = freeglut
 	depends = glu
