@@ -1,0 +1,32 @@
+pkgbase = emacs-xwidgets
+	pkgdesc = Good old emacs with xwidgets support
+	pkgver = 26.1_rc1
+	pkgrel = 1
+	url = http://www.gnu.org/software/emacs/emacs.html
+	arch = x86_64
+	license = GPL3
+	depends = librsvg
+	depends = gpm
+	depends = giflib
+	depends = libxpm
+	depends = libotf
+	depends = m17n-lib
+	depends = gtk3
+	depends = webkit2gtk
+	depends = hicolor-icon-theme
+	depends = gconf
+	depends = desktop-file-utils
+	depends = alsa-lib
+	depends = libmagick6
+	depends = gnutls
+	provides = emacs
+	conflicts = emacs
+	source = ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-26.1-rc1.tar.xz
+	source = ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-26.1-rc1.tar.xz.sig
+	validpgpkeys = B29426DEFB07724C3C35E5D36592E9A3A0B0F199
+	validpgpkeys = 28D3BED851FDF3AB57FEF93C233587A47C207910
+	sha1sums = 8ba00629a1799c14e02c643e26bb9fa5009ae8fa
+	sha1sums = SKIP
+
+pkgname = emacs-xwidgets
+
