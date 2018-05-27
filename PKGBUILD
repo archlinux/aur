@@ -18,15 +18,15 @@
 pkgbase="zfs-linux-hardened-git"
 pkgname=("zfs-linux-hardened-git" "zfs-linux-hardened-git-headers")
 
-pkgver=2018.05.15.r3487.g43eb39d6c.4.16.9.a.1
+pkgver=2018.05.26.r3492.g3e5300e0e.4.16.11.a.1
 pkgrel=1
-makedepends=("linux-hardened-headers=4.16.9.a-1" "git" "spl-linux-hardened-git-headers")
+makedepends=("linux-hardened-headers=4.16.11.a-1" "git" "spl-linux-hardened-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=43eb39d6ccd8fbaa5ae3a84a6df549331db4d6be")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=3e5300e0ed3c4b49e3b0dab7daded1e3bfaaded7")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git=2018.05.15.r3487.g43eb39d6c" "linux-hardened=4.16.9.a-1")
+depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git=2018.05.26.r3492.g3e5300e0e" "linux-hardened=4.16.11.a-1")
 
 build() {
     cd "${srcdir}/zfs"
@@ -34,8 +34,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.9 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.16.9-1-hardened/build \
-                --with-linux-obj=/usr/lib/modules/4.16.9-1-hardened/build
+                --with-linux=/usr/lib/modules/4.16.11-1-hardened/build \
+                --with-linux-obj=/usr/lib/modules/4.16.11-1-hardened/build
     make
 }
 
@@ -60,5 +60,5 @@ package_zfs-linux-hardened-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.16.9-1-hardened/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.16.11-1-hardened/Module.symvers
 }
