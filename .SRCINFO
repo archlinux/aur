@@ -1,7 +1,7 @@
 pkgbase = 6sv11
 	pkgdesc = Second Simulation of a Satellite Signal in the Solar Spectrum - Vector - 1.1
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://6s.ltdri.org
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = 6sv11
 	makedepends = gcc-fortran
 	depends = gcc-libs
 	options = !emptydirs
-	source = https://dl.dropboxusercontent.com/u/315580/6SV-1.1.zip
-	sha256sums = 955f4a59c8a853c68a31321f2ed3f22fbda504e168d08d2e02b9ded9b582bf31
+	source = http://rtwilson.com/downloads/6SV-1.1.tar
+	sha256sums = eedf652e6743b3991b5b9e586da2f55c73f9c9148335a193396bf3893c2bc88f
 
 pkgname = 6sv11
 

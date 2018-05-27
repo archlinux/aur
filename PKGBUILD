@@ -1,7 +1,7 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('6sv11')
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 _6s="Second Simulation of a Satellite Signal in the Solar Spectrum"
 pkgdesc="$_6s - Vector - 1.1"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ license=('custom')
 makedepends=('gcc-fortran')
 depends=('gcc-libs')
 options=(!emptydirs)
-source=("https://dl.dropboxusercontent.com/u/315580/6SV-1.1.zip")
-sha256sums=('955f4a59c8a853c68a31321f2ed3f22fbda504e168d08d2e02b9ded9b582bf31')
+source=("http://rtwilson.com/downloads/6SV-1.1.tar")
+sha256sums=('eedf652e6743b3991b5b9e586da2f55c73f9c9148335a193396bf3893c2bc88f')
 
 prepare() {
-  cd "$srcdir/6SV-1.1/6SV1.1/"
+  cd "$srcdir/6SV1.1/"
 
   # Use gfortran instead of g77 and add some extra options as described in
   # http://py6s.readthedocs.io/en/latest/installation.html
@@ -36,12 +36,12 @@ EOF
 }
 
 build() {
-  cd "$srcdir/6SV-1.1/6SV1.1/"
+  cd "$srcdir/6SV1.1/"
   make
 }
 
 package() {
-  cd "$srcdir/6SV-1.1/6SV1.1/"
+  cd "$srcdir/6SV1.1/"
   install -Dm755 sixsV1.1 "$pkgdir/usr/bin/sixsV1.1"
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
