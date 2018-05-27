@@ -36,7 +36,7 @@ validpgpkeys=(
 )
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' 'enchant-2.patch' 'php-freetype-2.9.1.patch')
-sha256sums=('1a784806866e06367f7a5c88775d239d6f30041c7ce65a8232d03a3d4de56d56'
+sha256sums=('8bd91cea072ea5b368cc9b4533a1a683eb426abdacbf024bb6ffa9b799cd3b01'
             'SKIP'
             '258b33b6531b1128d9804c8b608b6013423a421edcf764747042d07e79ec6df3'
             'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
