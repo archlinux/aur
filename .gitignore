@@ -2,5 +2,4 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!libva-vdpau-driver-0.7.4-fallback-x.patch
-!implement-vaquerysurfaceattributes.patch
+!fallback-x.patch

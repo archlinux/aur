@@ -5,7 +5,7 @@ pkgname=libva-vdpau-driver-chromium
 pkgver=0.7.4
 pkgrel=3
 pkgdesc="VDPAU backend for VA API. (special version for chromium)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://freedesktop.org/wiki/Software/vaapi'
 license=('GPL')
 depends=('libva'
@@ -20,9 +20,9 @@ source=("http://freedesktop.org/software/vaapi/releases/libva-vdpau-driver/libva
         'libva-vdpau-driver-0.7.4-glext-missing-definition.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/libva-vdpau-driver-0.7.4-glext-missing-definition.patch?h=packages/libva-vdpau-driver'
         'libva-vdpau-driver-0.7.4-libvdpau-0.8.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/libva-vdpau-driver-0.7.4-libvdpau-0.8.patch?h=packages/libva-vdpau-driver'
         'libva-vdpau-driver-0.7.4-VAEncH264VUIBufferType.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/libva-vdpau-driver-0.7.4-VAEncH264VUIBufferType.patch?h=packages/libva-vdpau-driver'
-        'libva-vdpau-driver-0.7.4-fallback-x.patch' # original http://www.snewbury.org.uk/libva-vdpau-driver-0.7.4-fallback-x.patch
-        'http://bazaar.launchpad.net/~ubuntu-branches/ubuntu/vivid/vdpau-video/vivid/download/head:/sigfpecrash.patch-20140602223430-b42d97uv6vf2c3p7-1/sigfpe-crash.patch'
-        'implement-vaquerysurfaceattributes.patch'
+        'fallback-x.patch' # original http://www.snewbury.org.uk/libva-vdpau-driver-0.7.4-fallback-x.patch
+        'https://raw.githubusercontent.com/RussianFedora/libva-vdpau-driver/f28/fixes/sigfpe-crash.patch'
+        'https://raw.githubusercontent.com/RussianFedora/libva-vdpau-driver/f28/fixes/implement-vaquerysurfaceattributes.patch'
         )
 sha256sums=('155c1982f0ac3f5435ba20b221bcaa11be212c37db548cd1f2a030ffa17e9bb9'
             '776bfe4c101cdde396d8783029b288c6cd825d0cdbc782ca3d94a5f9ffb4558c'
@@ -34,24 +34,26 @@ sha256sums=('155c1982f0ac3f5435ba20b221bcaa11be212c37db548cd1f2a030ffa17e9bb9'
             )
 
 prepare() {
-  cd "libva-vdpau-driver-${pkgver}"
-  patch -p1 -i "${srcdir}/libva-vdpau-driver-0.7.4-glext-missing-definition.patch"
-  patch -p1 -i "${srcdir}/libva-vdpau-driver-0.7.4-libvdpau-0.8.patch"
-  patch -p1 -i "${srcdir}/libva-vdpau-driver-0.7.4-VAEncH264VUIBufferType.patch"
-  patch -p1 -i "${srcdir}/libva-vdpau-driver-0.7.4-fallback-x.patch"
-  patch -p1 -i "${srcdir}/sigfpe-crash.patch"
-  patch -p1 -i "${srcdir}/implement-vaquerysurfaceattributes.patch"
+  mkdir -p build
+
+  patch -d "libva-vdpau-driver-${pkgver}" -p1 -i "${srcdir}/libva-vdpau-driver-0.7.4-glext-missing-definition.patch"
+  patch -d "libva-vdpau-driver-${pkgver}" -p1 -i "${srcdir}/libva-vdpau-driver-0.7.4-libvdpau-0.8.patch"
+  patch -d "libva-vdpau-driver-${pkgver}" -p1 -i "${srcdir}/libva-vdpau-driver-0.7.4-VAEncH264VUIBufferType.patch"
+  patch -d "libva-vdpau-driver-${pkgver}" -p1 -i "${srcdir}/fallback-x.patch"
+  patch -d "libva-vdpau-driver-${pkgver}" -p1 -i "${srcdir}/sigfpe-crash.patch"
+  patch -d "libva-vdpau-driver-${pkgver}" -p1 -i "${srcdir}/implement-vaquerysurfaceattributes.patch"
+
+  cd build
+  ../"libva-vdpau-driver-${pkgver}"/configure \
+    --prefix=/usr
+
 }
 
 build() {
-  cd "libva-vdpau-driver-${pkgver}"
-  ./configure \
-    --prefix=/usr
-
-  make
+  make -C build
 }
 
 package() {
-  make -C "libva-vdpau-driver-${pkgver}" DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 }
 
