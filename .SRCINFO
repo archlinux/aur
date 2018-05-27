@@ -1,13 +1,14 @@
 pkgbase = r-cran-bindr
-	pkgdesc = Provides an interface for creating active bindings.
-	pkgver = 0.1
+	pkgdesc = Provides a simple interface for creating active bindings where the bound function accepts additional arguments.
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/bindr/index.html
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = http://cran.r-project.org/src/contrib/bindr_0.1.tar.gz
-	md5sums = f3897a70cbad2d2981272772fa30bb59
+	depends = r
+	source = http://cran.r-project.org/src/contrib/bindr_0.1.1.tar.gz
+	md5sums = cfa02c563196a79bf8bb4db2e66585fd
 
 pkgname = r-cran-bindr
 
