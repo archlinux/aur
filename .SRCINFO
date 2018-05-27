@@ -1,0 +1,18 @@
+pkgbase = cryptobridge-bin
+	pkgdesc = CryptoBridge: Cryptocurrency and Decentralized Exchange. Advanced wallet interface for the BitShares financial blockchain.
+	pkgver = 0.12.6
+	pkgrel = 1
+	url = https://github.com/CryptoBridge/cryptobridge-ui
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	provides = cryptobridge
+	source = cryptobridge-0.12.6.deb::https://github.com/CryptoBridge/cryptobridge-ui/releases/download/v0.12.6/CryptoBridge_0.12.6_amd64.deb
+	sha512sums = 236f0adeebe79abf53d9f8907b66faa1460cb2baefb8fd1281ca82adca2d90459c3dd3fa7bd25a6e82feb112979f1b2a6f9b0142e087cdbac23a05e5a3b54e83
+
+pkgname = cryptobridge-bin
+
