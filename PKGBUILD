@@ -2,12 +2,11 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.16
-pkgrel=2
+pkgver=0.9.17
+pkgrel=1
 changelog=.CHANGELOG
 conflicts=("${pkgname}-git")
-source=(#"${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
-		"${pkgname}::git+https://github.com/SimonN/LixD.git#commit=1c744f8b418fe25a71705f0ca18f2b69ba55b4c6"
+source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
 		"${pkgname}-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
 		"${pkgname}.desktop")
 sha512sums=('SKIP'

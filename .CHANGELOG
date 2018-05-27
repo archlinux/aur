@@ -1,6 +1,39 @@
 Version history
 ===============
 
+0.9.17
+------
+
+2018-05-27
+
+lemforum/Hopeless: Swapped Bipolar Maniac (now 3rd) and Systematic Separation
+(now 10th) in Hopeless.
+
+Score board in multiplayer: Hover over the score graph to see player names,
+exact lix counts, and exact number of scored points, in a large tooltip.
+
+Fix #319: The terrain/steel browsers offer all dirs of depth 2 in images/ at
+once. After navigating to such a depth-2-dir, the terrain/steel browsers offer
+in one flat list all tiles recursively found in that dir.
+
+Don't save other people's winning replays as your own checkmarks. Correctly
+save checkmarks after playing levels passed to Lix on the command line.
+
+On loading a replay with zero players, don't crash anymore, instead create one
+player with the singleplayer color.
+
+The Windows download contains Allegro 5.2.4 DLLs. These newer DLLs fix any
+remaining chance that Lix starts without sound when starting Lix from the
+Windows 8/10 quicklaunch bar.
+
+Lix has a new command-line switch --allegro-version to print the version
+number of the dynamically-loaded Allegro DLLs.
+
+Build system: Lix builds with both the most recent DMD 2.080 and with the
+better-optimizing LDC. I added allegro_color to the link libs. I require D
+Allegro 5 bindings of version >= 4.0.2 to fix a stack overflow in Debian
+LDC-built Lix.
+
 0.9.16
 ------
 
@@ -2712,4 +2745,3 @@ C++ Lix
 -------
 
 2006 to 2016
-
