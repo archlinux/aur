@@ -1,24 +1,21 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Jean Lucas <jean@4ray.co>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-humanfriendly
-pkgver=1.44.7
+pkgver=4.12.1
 pkgrel=1
-pkgdesc="Human friendly output for text interfaces using Python"
-arch=('any')
-depends=('python2')
-makedepends=('python2-setuptools')
-url="https://humanfriendly.readthedocs.org"
-license=('MIT')
+pkgdesc='Human-friendly output for text interfaces using Python'
+arch=(any)
+url='https://humanfriendly.readthedocs.io'
+license=(MIT)
+depends=(python2 python2-monotonic)
+makedepends=(python2-setuptools)
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/05/43/47c39f284391051c503322b86d2ffbe1e7314a3156cf5649aa7af03c85fb/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('ead99eb5d8a8416b6b1a1a41892efa06')
-sha256sums=('fcee758612edc6fead9b8fd1d5a473eab2c3a84cf8766f3ce70862ccd35e8a64')
-provides=('humanfriendly' 'python2-humanfriendly')
-conflicts=('humanfriendly')
+source=(https://files.pythonhosted.org/packages/8a/17/2f49d6b94908ff21031f2daaac498170e64983ddcc34d8d1becd2c45b03b/humanfriendly-$pkgver.tar.gz)
+sha256sums=(937b4d2c99d29007023ebcab23579429541bfb3357a97e5df38fc5d851a112a3)
+sha512sums=(cca8c14b63a7113a06e5f99b5d28ba4228705bfe9b25873f74ac711116fc1b71debd021284573d9cfd41906c825fbf914b779b785359bc9d617f388e5cb633db)
 
 package() {
-  cd "$srcdir/${pkgname#python2-}-$pkgver"
-
-  msg2 'Installing...'
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  cd $srcdir/humanfriendly-$pkgver
+  python2 setup.py install --root=$pkgdir --optimize=1
 }
