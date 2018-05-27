@@ -1,6 +1,6 @@
 pkgbase = jacklistener-git
 	pkgdesc = Jack Listener Daemon (jack-sensing)
-	pkgver = 46.6779b2e
+	pkgver = 47.79b6bcf
 	pkgrel = 1
 	url = https://github.com/gentoo-root/jacklistener
 	arch = i686

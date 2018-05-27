@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=jacklistener-git
-pkgver=46.6779b2e
+pkgver=47.79b6bcf
 pkgrel=1
 pkgdesc="Jack Listener Daemon (jack-sensing)"
 arch=('i686' 'x86_64')
@@ -24,13 +24,14 @@ build() {
   autoheader
   automake --add-missing
   autoconf
-  ./configure --prefix=/usr --sysconfdir=/etc --enable-systemd --enable-arch
+  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --enable-systemd --enable-arch
   make
 }
 
 package() {
    cd jacklistener
    make DESTDIR="$pkgdir" install
+   sed -i 's/sbin/bin/g' $pkgdir/usr/lib/systemd/system/jacklistener.service
    install -D init.d/jacklistener-runscript $pkgdir/usr/bin/jacklistenerd-runscript
    install -D jacklistenerd $pkgdir/usr/lib/jacklistener/jacklistenerd
 }
