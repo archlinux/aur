@@ -1,0 +1,17 @@
+pkgbase = bootimage-git
+	pkgdesc = Tool to create a bootable OS image from a kernel binary.
+	pkgver = 0.3.0.66
+	pkgrel = 1
+	url = https://github.com/rust-osdev/bootimage
+	arch = i686
+	arch = x86_64
+	license = NULL
+	makedepends = rust
+	makedepends = cargo
+	provides = bootimage
+	conflicts = bootimage
+	source = bootimage::git+https://github.com/rust-osdev/bootimage
+	sha256sums = SKIP
+
+pkgname = bootimage-git
+
