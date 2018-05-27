@@ -4,7 +4,7 @@ _cranname=zoo
 _cranver=1.8-1
 pkgname=r-${_cranname}
 pkgver=1.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Methods for totally ordered indexed observations"
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('r-cran-coda'
             # 'r-cran-mondate'
             'r-cran-scales'
             # 'r-cran-strucchange'
-            'r-cran-timeDate'
+            'r-cran-timedate'
             # 'r-cran-timeSeries'
             # 'r-cran-tis'
             # 'r-cran-tseries'

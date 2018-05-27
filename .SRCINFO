@@ -1,7 +1,7 @@
 pkgbase = r-zoo
 pkgdesc = Methods for totally ordered indexed observations
 pkgver = 1.8
-pkgrel = 3
+pkgrel = 4
 url = https://cran.r-project.org/web/packages/zoo/index.html
 arch = x86_64
 license = GPL3
@@ -10,7 +10,7 @@ optdepends = r-cran-coda
 optdepends = r-cran-chron
 optdepends = r-cran-ggplot2
 optdepends = r-cran-scales
-optdepends = r-cran-timeDate
+optdepends = r-cran-timedate
 replaces = r-cran-zoo
 source = https://cran.r-project.org/src/contrib/zoo_1.8-1.tar.gz
 md5sums = bf8789b3a448b5bed39e54e027ee7c6a
