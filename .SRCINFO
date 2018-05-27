@@ -1,10 +1,11 @@
 pkgbase = slack-term-bin
 	pkgdesc = Slack client for your terminal
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erroneousboat/slack-term
 	arch = x86_64
 	license = MIT
+	provides = slack-term
 	conflicts = slack-term
 	source = https://raw.githubusercontent.com/erroneousboat/slack-term/master/LICENSE
 	source = slack-term::https://github.com/erroneousboat/slack-term/releases/download/v0.4.0/slack-term-linux-amd64
