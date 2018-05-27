@@ -1,0 +1,14 @@
+pkgbase = webbench
+	pkgdesc = A very simple tool for benchmarking WWW or proxy servers. Uses fork() for simulating multiple clients
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://home.tiscali.cz/~cz210552/webbench.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ctags
+	source = http://home.tiscali.cz/~cz210552/distfiles/webbench-1.5.tar.gz
+	md5sums = 8d02ef80b6478f33ef9bd8849c867cf3
+
+pkgname = webbench-copie
+
