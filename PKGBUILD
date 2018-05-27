@@ -1,7 +1,7 @@
 # Maintainer: Joseph R. Prostko <joe dot prostko at gmail dot com>
 
 pkgname=concrete5
-pkgver=8.3.1
+pkgver=8.3.2
 pkgrel=1
 pkgdesc="A PHP-based open source content management system"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('apache: Web server to run concrete5'
 install="$pkgname.install"
 options=('!strip')
 source=(http://www.concrete5.org/releases/$pkgname-$pkgver.zip)
-sha256sums=('1de40d492dc52613e008dd6ef884f5fe3a682072d38b18fde8c977d066db66aa')
+sha256sums=('86e38b59e6c488c2b9621c1fd80f60975c31b5910b49a13da7ccf3739efe232e')
 
 package() {
   _instdir=$pkgdir/usr/share/webapps/$pkgname
