@@ -1,6 +1,6 @@
 pkgbase = python2-arcsi
 	pkgdesc = Atmospheric and Radiometric Correction of Satellite Imagery
-	pkgver = 0.15.0
+	pkgver = 3.1.6
 	pkgrel = 1
 	url = https://bitbucket.org/petebunting/arcsi
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python2-arcsi
 	depends = python2-py6s
 	depends = python2-rsgislib
 	options = !emptydirs
-	source = https://bitbucket.org/petebunting/arcsi/get/0.15.0.tar.bz2
-	sha256sums = 676f5accf28c39356ca61af84295f544f73a1a43e273a2d9a3f293fb3ac9dacd
+	source = https://bitbucket.org/petebunting/arcsi/get/3.1.6.tar.bz2
+	sha256sums = 6aafb66a924410d2cf9565b9e86ca47ce6d77e98a6b9f3f3759a47f58e18f3ee
 
 pkgname = python2-arcsi
 

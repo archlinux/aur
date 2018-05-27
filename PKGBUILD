@@ -1,6 +1,6 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('python2-arcsi')
-pkgver=0.15.0
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="Atmospheric and Radiometric Correction of Satellite Imagery"
 arch=('any')
@@ -10,8 +10,8 @@ makedepends=('python2-setuptools')
 depends=('python2-rios' 'python2-py6s' 'python2-rsgislib')
 options=(!emptydirs)
 source=("$url/get/$pkgver.tar.bz2")
-sha256sums=('676f5accf28c39356ca61af84295f544f73a1a43e273a2d9a3f293fb3ac9dacd')
-_hash=f265b33b5e2a
+sha256sums=('6aafb66a924410d2cf9565b9e86ca47ce6d77e98a6b9f3f3759a47f58e18f3ee')
+_hash=969f8aa973ab
 
 prepare() {
   # Updates the shebang in Python scripts for Python 2
@@ -23,4 +23,5 @@ prepare() {
 package() {
   cd "$srcdir/petebunting-arcsi-$_hash"
   python2 setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
