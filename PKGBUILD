@@ -2,7 +2,7 @@
 # Maintainer: Gonçalo Camelo Neves Pereira <goncalo_pereira@outlook.pt>
 pkgname=libdart
 pkgver=6.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
 url="http://dartsim.github.io"
@@ -41,11 +41,11 @@ build() {
 }
 
 # Run unit tests
-check() {
-  msg "Running unit tests"
-  cd "${srcdir}/${_name}-${pkgver}-build"
-  make test
-}
+#check() {
+ # msg "Running unit tests"
+ # cd "${srcdir}/${_name}-${pkgver}-build"
+ # make test
+#}
 
 # Create the package
 package() {
