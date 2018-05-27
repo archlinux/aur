@@ -1,14 +1,14 @@
 pkgbase = spl-linux-zen-git
-	pkgver = 2018.05.07.r1074.g1149b62.4.16.9.1
+	pkgver = 2018.05.07.r1074.g1149b62.4.16.11.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
-	makedepends = linux-zen-headers=4.16.9-1
+	makedepends = linux-zen-headers=4.16.11-1
 	makedepends = git
 	depends = spl-utils-common-git=2018.05.07.r1074.g1149b62
 	depends = kmod
-	depends = linux-zen=4.16.9-1
+	depends = linux-zen=4.16.11-1
 	source = git+https://github.com/zfsonlinux/spl.git#commit=1149b62d20b7ed9d8ae25d5da7a06213d79b7602
 	sha256sums = SKIP
 
