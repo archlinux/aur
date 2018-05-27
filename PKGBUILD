@@ -3,24 +3,24 @@
 # Contributor: Rick W. Chen <stuffcorpse@archlinux.us>
 
 pkgname=fortune-mod-zh
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="Chinese poems for fortune-mod"
-url="http://packages.qa.debian.org/f/fortune-zh.html"
+url="https://salsa.debian.org/chinese-team/fortunes-zh"
 license=("GPL")
 depends=('fortune-mod')
 groups=('fortune-mods')
-source=(http://ftp.debian.org/debian/pool/main/f/fortune-zh/fortune-zh_${pkgver}.tar.xz)
-md5sums=('5d8e2b0aa6ebe5c3b400663601442cec')
+source=(https://salsa.debian.org/chinese-team/fortunes-zh/-/archive/${pkgver}/fortunes-zh-${pkgver}.tar.gz)
+md5sums=('3fff0e8cb73285ce76febdbafc7dee4a')
 arch=('any')
 
 build() {
-  cd "${srcdir}/fortune-zh"
+  cd "${srcdir}/fortunes-zh-${pkgver}"
   make || return 1
 }
 
 package(){
-  cd "${srcdir}/fortune-zh"
+  cd "${srcdir}/fortunes-zh-${pkgver}"
   mkdir -p "${pkgdir}/usr/share/fortune"
   install -m0644 tang300 "${pkgdir}/usr/share/fortune"
   install -m0644 tang300.dat "${pkgdir}/usr/share/fortune"
