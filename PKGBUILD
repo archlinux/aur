@@ -1,5 +1,5 @@
 pkgname=pantheon-git-meta
-pkgver=20171213
+pkgver=20180527
 pkgrel=1
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
@@ -8,17 +8,19 @@ license=(LGPL)
 depends=(pantheon-videos-git
 	cerbere-git
 	contractor-git
-  elementary-wallpapers-git
+    elementary-wallpapers-git
 	pantheon-dpms-helper-git
 	elementary-icon-theme-git
 	gala-git
 	granite-git
 	gtk-theme-elementary-git
 	lightdm-pantheon-greeter-git
+    pantheon-music-git
 	pantheon-calculator-git
 	pantheon-default-settings-git
 	pantheon-files-git
-	scratch-text-editor-git
+    pantheon-calendar-git
+	pantheon-code-git
 	pantheon-session-git
 	pantheon-screenshot-git
 	pantheon-applications-menu-git
@@ -47,7 +49,9 @@ depends=(pantheon-videos-git
 	wingpanel-indicator-notifications-git
 	wingpanel-indicator-power-git
 	wingpanel-indicator-session-git
-	wingpanel-indicator-sound-git)
+	wingpanel-indicator-sound-git
+    wingpanel-indicator-nightlight-git
+	)
 
 package(){
   /bin/true
