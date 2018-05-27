@@ -4,8 +4,9 @@
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: Filippo 'JoeyrS' Civiletti <joeyrs@gmail.com>
 
-pkgname=armagetronad-snapshot
-pkgver=0.4_alpha_z2219_20150311
+pkgname=armagetronad-bzr
+_pkgname=armagetronad
+pkgver=0.4
 pkgrel=1
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
@@ -15,11 +16,11 @@ depends=('sdl2_image' 'libxml2' 'sdl2_mixer' 'ftgl' 'boost-libs')
 optdepends=('python2: language updater')
 makedepends=('boost')
 conflicts=('armagetronad')
-source=(https://downloads.sourceforge.net/project/armagetronad/snapshots/trunk/2015/$pkgver/armagetronad-experimental-$pkgver.src.tar.bz2)
-sha1sums=('92066eb7fdc947717e484ebacb26898a4e228e83')
+source=("$_pkgname::bzr+lp:$_pkgname/$pkgver")
+sha1sums=('SKIP')
 
 build() {
-     cd "$srcdir/armagetronad-experimental-$pkgver"
+     cd "$srcdir/$_pkgname"
 
      # python2 fix
      sed -i 's_#!/usr/bin/python_#!/usr/bin/python2_' language/update.py
@@ -34,7 +35,7 @@ build() {
 }
 
 package() {
-     cd "$srcdir/armagetronad-$pkgver"
+     cd "$srcdir/$_pkgname"
      make DESTDIR="$pkgdir" install
      install -D -m 644 "desktop/armagetronad.desktop" "$pkgdir/usr/share/applications/armagetronad.desktop"
      install -d "$pkgdir/usr/share/pixmaps/"
