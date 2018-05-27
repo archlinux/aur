@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /opt/foxtelem/
+java -Xmx512M -jar /opt/foxtelem/FoxTelem.jar "$@" < /dev/null > /dev/null &

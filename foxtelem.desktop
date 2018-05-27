@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=FoxTelem
+Comment=Fox-1 telemetry decoder
+Exec=foxtelem
+Icon=foxtelem
+Terminal=false
+Type=Application
+Categories=HamRadio;Science;Astronomy;Education;Network;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false

@@ -1,0 +1,22 @@
+pkgbase = foxtelem
+	pkgdesc = Telemetry decoder for AMSATs Fox-1 satellites
+	pkgver = 1.06r
+	pkgrel = 1
+	url = http://amsat.us/FoxTelem/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jre8-openjdk
+	provides = foxtelem
+	options = !emptydirs
+	source = http://amsat.us/FoxTelem/linux/foxtelem_1.06r_linux.tar.gz
+	source = https://www.amsat.org/wordpress/wp-content/uploads/2018/05/foxtelem.png
+	source = foxtelem.desktop
+	source = foxtelem
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = foxtelem
+
