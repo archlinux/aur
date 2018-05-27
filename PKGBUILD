@@ -5,7 +5,7 @@
 
 pkgbase=linux-covolunablu-gaming
 _srcname=linux-4.16
-pkgver=4.16.8
+pkgver=4.16.9
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -29,6 +29,7 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   0003-Partially-revert-swiotlb-remove-various-exports.patch
+  0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
   bfq-default.patch
   bfq-lock-division-zero.patch
   https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/c4948d923637a956853df0e85a6d530e483bdffa/drivers/input/joystick/xpad.c
@@ -39,16 +40,17 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '6fb2db1e38f762e6a028dfa5e6d094f0eb4324572667923aca3d64c87117772d'
+            '299b45a4f16f763ecf654e6642c020b6e9e461601d056ef44ecb21b54d736cbf'
             'SKIP'
-            '242fb87ff64e1a4e0b608239cadd46f49eb08ab751481a1fe7ac9e8f084b0959'
+            'd465b87010abaa644d782efb7ba6baa5594d975336bd02444719eeeb0cebe354'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             # -- patches
-            '7fb607fe384dd814e9e45d7fc28f7b5b23a51d80784c54bf9209486ad428be14'
-            'ceaa19e0af3842c62eb666a4ac5c79d89b3e6d00593442f18d6508ca6d74bbaa'
-            '5b397cf9eccdad0c1f2865842c29ba6f4e32ad7dbe4e0c6ef6ca6f07d2963cea'
+            '69241df4bd7897eb04db90e4d0a82c6e0b99b806019ba96bb885278ca8da89df'
+            '10728f672a83a515af540cafafde62346e9ccc2d14bf74e417fd2693865b1293'
+            'a81b612369e78d142ff80ec3adda36b3f94503e5a68d54282c508a112cc8dae0'
+            '052a39582f84c52b027c261fcec90325493f4d46f15647c274a58e39145deced'
             'a20f72660076bc5f73404800da9bc52ceb592bdfbdab19438d66da8c01edc4f4'
             '2a40a1906c5bef180035c8af21c38c1f364a81f38507b684058803b3fa9fcfd6'
             '851b79826c1695acf93faffb17bcb420c11d12cfa96ac6b5082e4306c2d8fb55'
@@ -74,6 +76,9 @@ prepare() {
 
   # NVIDIA driver compat
   patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+
+  # https://bugs.archlinux.org/task/58237
+  patch -Np1 -i ../0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
 
   # use bfq as default scheduler
   patch -p1 -i ../bfq-default.patch
