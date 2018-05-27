@@ -3,13 +3,13 @@ _cranname=RcppEigen
 _cranver=0.3.3.4.0
 pkgname=r-rcppeigen
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="R and 'Eigen' integration using 'Rcpp'. "
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('x86_64')
 license=('GPL')
 depends=('r'
-         'r-cran-cpp')
+         'r-cran-rcpp')
 # optdepends=('r-inline' 'r-pkgkitten')
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('78ee1ef7c6043efa875434ae5fcea2ec')
