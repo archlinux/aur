@@ -1,20 +1,21 @@
 pkgbase = tuiview
 	pkgdesc = Lightweight raster GIS viewer and attribute table writer
-	pkgver = 1.1.11
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = http://tuiview.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = python2-numpy
-	makedepends = gdal
-	makedepends = python2-pyqt4
-	depends = python2-numpy
-	depends = gdal
-	depends = python2-pyqt4
+	makedepends = python-numpy
+	makedepends = python-gdal
+	makedepends = python-pyqt5
+	depends = python-numpy
+	depends = python-gdal
+	depends = python-pyqt5
+	optdepends = kealib: KEA raster file format support
 	options = !emptydirs
-	source = https://bitbucket.org/chchrsc/tuiview/downloads/TuiView-1.1.11.tar.gz
-	sha256sums = 4657ec81466d2ca4bfa55792941afd46de26f34f5cc46b3b58b8949413f0b3c2
+	source = https://bitbucket.org/chchrsc/tuiview/downloads/TuiView-1.2.3.tar.gz
+	sha256sums = 6c63ae83a7e845b5f96316cdb7d7007e1c74158e47e2a75d8dcc5a22e24e1c31
 
 pkgname = tuiview
 
