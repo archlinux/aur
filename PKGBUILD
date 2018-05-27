@@ -7,7 +7,7 @@ pkgdesc="This is an adaptation of GCP's Leela Zero repository to chess, using St
 arch=('i686' 'x86_64')
 url="https://github.com/glinscott/leela-chess"
 license=('GPLv3')
-depends=('glibc' 'zlib' 'openblas' 'boost' 'opencl-nvidia')
+depends=('glibc' 'zlib' 'libopenblas>=0.3.0' 'boost' 'opencl-nvidia')
 makedepends=('git' 'opencl-headers' 'cmake' 'ocl-icd')
 source=("${_pkgname}::git+https://github.com/glinscott/leela-chess")
 md5sums=('SKIP')

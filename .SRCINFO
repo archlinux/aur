@@ -12,7 +12,7 @@ pkgbase = lczero-nvidia-git
 	makedepends = ocl-icd
 	depends = glibc
 	depends = zlib
-	depends = openblas
+	depends = libopenblas>=0.3.0
 	depends = boost
 	depends = opencl-nvidia
 	source = leela-chess::git+https://github.com/glinscott/leela-chess
