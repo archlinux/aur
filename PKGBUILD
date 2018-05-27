@@ -4,21 +4,22 @@ pkgname=olvwm
 pkgver=4.4
 _srcname=xview
 _srcver=3.2p1.4
-pkgrel=5
+_patchset=28.2
+pkgrel=6
 pkgdesc="Open Look Virtual Window Manager"
 arch=('i686' 'x86_64')
 url=https://en.wikipedia.org/wiki/Olwm
 license=('custom')
 depends=('libxpm')
-makedepends=('imake')
-source=(http://archive.ubuntu.com/ubuntu/pool/universe/x/${_srcname}/${_srcname}_${_srcver}.orig.tar.gz
-        http://archive.ubuntu.com/ubuntu/pool/universe/x/${_srcname}/${_srcname}_${_srcver}-28.1.debian.tar.gz
-        virtual_c-regexp-fix.patch
-        notify-wait-force-int-status.patch)
+makedepends=('imake' 'gcc54')
+source=(http://http.debian.net/debian/pool/main/x/${_srcname}/${_srcname}_${_srcver}.orig.tar.gz
+        http://http.debian.net/debian/pool/main/x/${_srcname}/${_srcname}_${_srcver}-${_patchset}.debian.tar.xz
+	disable_rpc_compile.patch
+	use-gcc54.patch)
 sha256sums=('fcc88f884a6cb05789ed800edea24d9c4cf1f60cb7d61f3ce7f10de677ef9e8d'
-            'b0dcf9904f50b580ee408e93107674d77799b2126374b3d4a1db73d0e7e24cbe'
-            'd2f5012f004322902844ffd92e92a3722c16e08c16c790bbe2653311139c3ae4'
-            'b70ebc91bcf04d95b5a20ad730b054dcc3ff21082bafef1009f396342e032761')
+            'c84f18a588b848a95f2fed08c3d0514e96792408ebf8120e53e585efd3045f96'
+            '4b5e6171a7894597c1e05554df51eb4a9dc56c040728438d69834c962f7b35fd'
+            'ef5aef39ea7e270a96149e37c5214eeecc7d86a47713fffa107fef4124054b02')
 
 prepare() {
   cd ${srcdir}/${_srcname}-${_srcver}
@@ -28,17 +29,18 @@ prepare() {
     patch -Np1 -i ${srcdir}/debian/patches/${x};
   done
 
+  # Build fix for rpc.h which is no longer included in glibc
+  patch -Np1 -i "${srcdir}/disable_rpc_compile.patch"
+
   # Fix imake path
   sed -i 's@/usr/bin/X11/imake@/usr/bin/imake@g' imake
-
+  
   # Fix install dirs
   sed -i 's@OPENWINHOME=/usr/openwin@OPENWINHOME=/usr@g' Build-LinuxXView.bash
 
-  # Fix for regex functions missing from glibc 2.23
-  patch -Np1 -i "${srcdir}/virtual_c-regexp-fix.patch"
-
-  # Build fix for notify-wait code - force int *status instead of union wait *status
-  patch -Np1 -i "${srcdir}/notify-wait-force-int-status.patch"
+  # Use gcc 5.4 as compiling with gcc 8 seems to cause a stack
+  # smash error on startup
+  patch -Np1 -i "${srcdir}/use-gcc54.patch"
 
   chmod 755 Build-LinuxXView.bash
 }

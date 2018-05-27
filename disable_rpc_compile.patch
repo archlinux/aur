@@ -1,0 +1,50 @@
+diff -Nur original/lib/libxview/notify/ndet_loop.c modified/lib/libxview/notify/ndet_loop.c
+--- original/lib/libxview/notify/ndet_loop.c	2018-05-26 11:58:01.743212918 +0100
++++ modified/lib/libxview/notify/ndet_loop.c	2018-05-26 12:10:47.513469585 +0100
+@@ -37,7 +37,6 @@
+ #include <sys/ucontext.h>
+ #endif /* SVR4 */
+ #include <stdio.h>		/* For temp debugging */
+-#include <rpc/rpc.h>
+ 
+ extern int      errno;
+ 
+@@ -185,8 +184,6 @@
+ 		 ndis_clients != NTFY_CLIENT_NULL) ?
+ 	    &ndet_polling_tv : NTFY_TIMEVAL_NULL;
+ 	ibits = ndet_ibits;
+-	if (do_rpc)
+-	    (void) ntfy_fd_cpy_or (&ibits, &svc_fdset);
+ 	obits = ndet_obits;
+ 	ebits = ndet_ebits;
+ 	NTFY_END_CRITICAL;
+@@ -310,18 +307,11 @@
+ 	if (ntfy_fd_anyset(&ibits)) {
+ 	    fd_set rpc_bits;
+ 
+-	    if (do_rpc) {
+-		rpc_bits = svc_fdset;
+-		(void) ntfy_fd_cpy_and (&rpc_bits, &ibits);
+-		(void) ntfy_fd_cpy_and (&ibits, &ndet_ibits);
+-	    }
+ 	    if (ntfy_new_enum_conditions(ntfy_cndtbl[(int) NTFY_INPUT],
+ 			      ndet_fd_send, (NTFY_ENUM_DATA) & enum_send) ==
+ 		(int) NTFY_ENUM_TERM)
+ 		goto Protected_Error;
+ 		/* micropriority to UI events over network */
+-	    if (do_rpc)
+-		svc_getreqset (&rpc_bits);
+ 	}
+ 	if (ntfy_fd_anyset(&obits))
+ 	    if (ntfy_new_enum_conditions(ntfy_cndtbl[(int) NTFY_OUTPUT],
+diff -Nur original/lib/libxview/sel/sel_svc.h modified/lib/libxview/sel/sel_svc.h
+--- original/lib/libxview/sel/sel_svc.h	2018-05-26 11:58:01.683242918 +0100
++++ modified/lib/libxview/sel/sel_svc.h	2018-05-26 12:09:26.977091251 +0100
+@@ -23,7 +23,6 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <X11/Xatom.h>
+-#include <rpc/rpc.h>
+ 
+ /*
+  ***********************************************************************
