@@ -8,6 +8,7 @@ pkgbase = bootimage-git
 	license = NULL
 	makedepends = rust
 	makedepends = cargo
+	depends = cargo-xbuild
 	provides = bootimage
 	conflicts = bootimage
 	source = bootimage::git+https://github.com/rust-osdev/bootimage
