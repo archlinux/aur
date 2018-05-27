@@ -1,6 +1,6 @@
 pkgbase = r-cran-psych
 	pkgdesc = Procedures for psychological, psychometric, and personality research.
-	pkgver = 1.7.5
+	pkgver = 1.8.4
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/psych/index.html
 	arch = i686
@@ -8,12 +8,12 @@ pkgbase = r-cran-psych
 	license = GPL2
 	license = GPL3
 	depends = r>=2.10
+	depends = r-cran-mnormt
 	depends = r-cran-foreign
 	depends = r-cran-lattice
-	depends = r-cran-mnormt
 	depends = r-cran-nlme
-	source = http://cran.r-project.org/src/contrib/psych_1.7.5.tar.gz
-	md5sums = ba682798397acd299b0b3ed2a397d7ec
+	source = http://cran.r-project.org/src/contrib/psych_1.8.4.tar.gz
+	md5sums = 3f56f9c5d4cd6717b4c711b2b64b092e
 
 pkgname = r-cran-psych
 
