@@ -1,7 +1,7 @@
 pkgbase = theshell
 	pkgdesc = Desktop Shell that gets out of your way
-	pkgver = 7.1
-	pkgrel = 2
+	pkgver = 7.1.1
+	pkgrel = 0
 	url = https://github.com/vicr123/theshell
 	arch = x86_64
 	license = GPL3
@@ -26,7 +26,7 @@ pkgbase = theshell
 	optdepends = alsa-utils: for volume controls
 	conflicts = ts-startsession
 	replaces = ts-startsession
-	source = theshell-7.1::git+https://github.com/vicr123/theshell#branch=master
+	source = theshell-7.1.1::git+https://github.com/vicr123/theshell#branch=master
 	md5sums = SKIP
 
 pkgname = theshell
