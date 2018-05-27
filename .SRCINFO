@@ -1,6 +1,6 @@
 pkgbase = curate-pkg-git
-	pkgdesc = the script that keeps a consistent state of installed packages across **ALL** Linux package managers and distributions
-	pkgver = 1.67
+	pkgdesc = aggregates all package managers under one tool
+	pkgver = 1.68
 	pkgrel = 2
 	url = https://github.com/andrei-pavel/curate-pkg
 	arch = i686
