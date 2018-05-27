@@ -3,7 +3,7 @@
 
 pkgname=slack-term
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Slack client for your terminal"
 arch=('x86_64')
 url="https://github.com/erroneousboat/slack-term"
