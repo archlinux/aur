@@ -1,0 +1,5 @@
+texstudio/
+src/
+pkg/
+*.tar.xz
+

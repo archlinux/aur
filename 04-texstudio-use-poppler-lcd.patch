@@ -1,0 +1,95 @@
+From: Jeffrey Feng <galago1992@gmail.com>
+Subject: [PATCH 4/4] texstudio with the LCD subpixel rendering backend of cairo applied to poppler
+---
+git diff --stat
+ texstudio.pro                      |  2 +-
+ src/pdfviewer/pdfviewer.pri        | 10 +++++++---
+ src/configdialog.ui                |  4 ++--
+ src/pdfviewer/pdfrendermanager.cpp |  4 ++--
+ 4 files changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/texstudio.pro b/texstudio.pro
+index 74cd63c5..de977b74 100644
+--- a/texstudio.pro
++++ b/texstudio.pro
+@@ -414,7 +414,7 @@ exists(./.git)  {
+ #QMAKE_CXXFLAGS_DEBUG += -Werror  -Wall -Wextra -Winit-self -Wmain -Wmissing-include-dirs -Wtrigraphs -Wunused -Wunknown-pragmas -Wundef -Wpointer-arith -Wtype-limits -Wwrite-strings -Wclobbered -Wempty-body -Wsign-compare -Waddress -Wlogical-op -Winline
+ QMAKE_CXXFLAGS_DEBUG += -Wall -Wextra -Winit-self -Wmissing-include-dirs -Wtrigraphs -Wunused -Wunknown-pragmas -Wundef -Wpointer-arith -Wwrite-strings -Wempty-body -Wsign-compare -Waddress -Winline
+ QMAKE_CXXFLAGS += -std=c++0x
+-!win32: QMAKE_LFLAGS += -rdynamic # option not supported by mingw
++!win32: QMAKE_LFLAGS += -rdynamic -Wl,-rpath,$$(POPPLER_LIB_RPATH)# option not supported by mingw
+ else {
+   QMAKE_CXXFLAGS += -gstabs -g
+   QMAKE_LFLAGS -= -Wl,-s
+diff --git a/src/pdfviewer/pdfviewer.pri b/src/pdfviewer/pdfviewer.pri
+index 1e7aec94..42d7d4fa 100644
+--- a/src/pdfviewer/pdfviewer.pri
++++ b/src/pdfviewer/pdfviewer.pri
+@@ -53,7 +53,7 @@ isEmpty(NO_POPPLER_PREVIEW) {
+ 
+         CONFIG += link_pkgconfig
+ 
+-        PKGCONFIG += $${poppler_qt_pkg}
++        #PKGCONFIG += $${poppler_qt_pkg}
+ 
+ 	!isEmpty(MXE){
+ 		message("Using MXE")
+@@ -69,8 +69,12 @@ isEmpty(NO_POPPLER_PREVIEW) {
+         }else{
+             PKG_CONFIG_EXE = "pkg-config"
+         }
+-        system($${PKG_CONFIG_EXE} --atleast-version=0.24 $${poppler_qt_pkg}):DEFINES += HAS_POPPLER_24
+-        system($${PKG_CONFIG_EXE} --atleast-version=0.31 $${poppler_qt_pkg}):DEFINES += HAS_POPPLER_31
++        #system($${PKG_CONFIG_EXE} --atleast-version=0.24 $${poppler_qt_pkg}):DEFINES += HAS_POPPLER_24
++        #system($${PKG_CONFIG_EXE} --atleast-version=0.31 $${poppler_qt_pkg}):DEFINES += HAS_POPPLER_31
++        DEFINES += HAS_POPPLER_24
++        DEFINES += HAS_POPPLER_31
++        INCLUDEPATH  += $$(POPPLER_LIB_DIR)/../include/poppler/qt5
++        LIBS += -L$$(POPPLER_LIB_DIR) -lpoppler-qt5-lcd -lpoppler-lcd
+     }
+ } else {
+     DEFINES += NO_POPPLER_PREVIEW
+diff --git a/src/configdialog.ui b/src/configdialog.ui
+index 0f3cbe6f..23121ef6 100644
+--- a/src/configdialog.ui
++++ b/src/configdialog.ui
+@@ -4296,7 +4296,7 @@ them here.</string>
+                <widget class="QComboBox" name="comboBoxPDFRenderBackend">
+                 <property name="toolTip">
+                  <string>The Render Backend used by the PDF library poppler.
+-'Splash' is the default and suitable for most situations.
++'Cairo' is the default and suitable for LCD subpixel rendering.
+ If there are rendering issues, you may try the alternative 'Arthur' backend.
+ Note: Changing this setting will only affect documents that are opened afterwards.</string>
+                 </property>
+@@ -4305,7 +4305,7 @@ Note: Changing this setting will only affect documents that are opened afterward
+                 </property>
+                 <item>
+                  <property name="text">
+-                  <string notr="true">Splash</string>
++                  <string notr="true">Cairo</string>
+                  </property>
+                 </item>
+                 <item>
+diff --git a/src/pdfviewer/pdfrendermanager.cpp b/src/pdfviewer/pdfrendermanager.cpp
+index 2323252e..9b6b5da2 100644
+--- a/src/pdfviewer/pdfrendermanager.cpp
++++ b/src/pdfviewer/pdfrendermanager.cpp
+@@ -176,7 +176,7 @@ QSharedPointer<Poppler::Document> PDFRenderManager::loadDocument(const QString &
+ 
+ 	cachedNumPages = docPtr->numPages();
+ 
+-	Poppler::Document::RenderBackend backend = Poppler::Document::SplashBackend;
++	Poppler::Document::RenderBackend backend = Poppler::Document::CairoBackend;
+ 	if (ConfigManagerInterface::getInstance()->getOption("Preview/RenderBackend").toInt() == 1) {
+ 		backend = Poppler::Document::ArthurBackend;
+ 	}
+@@ -227,7 +227,7 @@ QSharedPointer<Poppler::Document> PDFRenderManager::loadDocument(const QString &
+ 			error = FileIncomplete;
+ 			return QSharedPointer<Poppler::Document>();
+ 		}
+-		doc->setRenderBackend(Poppler::Document::SplashBackend);
++		doc->setRenderBackend(Poppler::Document::CairoBackend);
+ 		doc->setRenderHint(Poppler::Document::Antialiasing);
+ 		doc->setRenderHint(Poppler::Document::TextAntialiasing);
+ #endif

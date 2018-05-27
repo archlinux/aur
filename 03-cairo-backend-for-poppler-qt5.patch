@@ -1,0 +1,236 @@
+From: Jeffrey Feng <galago1992@gmail.com>
+Subject: [PATCH 3/4] cairo backend for poppler-qt5
+---
+diff -rup a/qt5 b/qt5|diffstat
+ demos/viewer.cpp        |    6 ++-
+ src/CMakeLists.txt      |   15 +++++++
+ src/poppler-document.cc |    3 +
+ src/poppler-page.cc     |   83 +++++++++++++++++++++++++++++++++++++++++++++++-
+ src/poppler-private.cc  |    2 -
+ src/poppler-qt5.h       |    3 +
+ tests/CMakeLists.txt    |    4 ++
+ 7 files changed, 112 insertions(+), 4 deletions(-)
+
+diff -rup a/qt5/demos/viewer.cpp b/qt5/demos/viewer.cpp
+--- a/qt5/demos/viewer.cpp	2014-02-09 23:10:33.000000000 +0800
++++ b/qt5/demos/viewer.cpp	2018-05-20 11:50:24.585847554 +0800
+@@ -74,13 +74,17 @@ PdfViewer::PdfViewer()
+     m_settingsRenderBackendGrp->setExclusive(true);
+     act = settingsRenderMenu->addAction(tr("Splash"));
+     act->setCheckable(true);
+-    act->setChecked(true);
+     act->setData(qVariantFromValue(0));
+     m_settingsRenderBackendGrp->addAction(act);
+     act = settingsRenderMenu->addAction(tr("Arthur"));
+     act->setCheckable(true);
+     act->setData(qVariantFromValue(1));
+     m_settingsRenderBackendGrp->addAction(act);
++    act = settingsRenderMenu->addAction(tr("Cairo"));
++    act->setCheckable(true);
++    act->setChecked(true);
++    act->setData(qVariantFromValue(2));
++    m_settingsRenderBackendGrp->addAction(act);
+     connect(m_settingsRenderBackendGrp, SIGNAL(triggered(QAction*)),
+             this, SLOT(slotRenderBackend(QAction*)));
+ 
+diff -rup a/qt5/src/CMakeLists.txt b/qt5/src/CMakeLists.txt
+--- a/qt5/src/CMakeLists.txt	2016-03-02 07:35:24.000000000 +0800
++++ b/qt5/src/CMakeLists.txt	2018-05-19 11:01:30.000000000 +0800
+@@ -6,6 +6,10 @@ include_directories(
+   ${Qt5Core_INCLUDE_DIRS}
+   ${CMAKE_CURRENT_BINARY_DIR}
+ )
++if (HAVE_CAIRO)
++  include_directories(${CAIRO_INCLUDE_DIRS})
++  add_definitions(${CAIRO_CFLAGS})
++endif (HAVE_CAIRO)
+ 
+ set(poppler_qt5_SRCS
+   poppler-annotation.cc
+@@ -29,9 +33,20 @@ set(poppler_qt5_SRCS
+   poppler-media.cc
+   ArthurOutputDev.cc
+ )
++if (HAVE_CAIRO)
++  set(poppler_qt5_SRCS ${poppler_qt5_SRCS}
++    ${CMAKE_SOURCE_DIR}/poppler/CairoOutputDev.cc
++    ${CMAKE_SOURCE_DIR}/poppler/CairoRescaleBox.cc
++    ${CMAKE_SOURCE_DIR}/poppler/CairoFontEngine.cc
++  )
++endif(HAVE_CAIRO)
+ add_library(poppler-qt5 SHARED ${poppler_qt5_SRCS})
++set_target_properties(poppler-qt5 PROPERTIES OUTPUT_NAME "poppler-qt5-lcd")
+ set_target_properties(poppler-qt5 PROPERTIES VERSION 1.6.0 SOVERSION 1)
+ target_link_libraries(poppler-qt5 poppler ${Qt5Core_LIBRARIES} ${Qt5Gui_LIBRARIES} ${Qt5Xml_LIBRARIES})
++if (HAVE_CAIRO)
++  target_link_libraries(poppler-qt5 ${CAIRO_LIBRARIES})
++endif (HAVE_CAIRO)
+ if(MSVC)
+ target_link_libraries(poppler-qt5 poppler ${poppler_LIBS})
+ endif(MSVC)
+diff -rup a/qt5/src/poppler-document.cc b/qt5/src/poppler-document.cc
+--- a/qt5/src/poppler-document.cc	2015-09-08 23:34:57.000000000 +0800
++++ b/qt5/src/poppler-document.cc	2018-05-19 11:04:11.000000000 +0800
+@@ -528,6 +528,9 @@ namespace Poppler {
+         ret << Document::SplashBackend;
+ #endif
+         ret << Document::ArthurBackend;
++#if defined(HAVE_CAIRO)
++        ret << Document::CairoBackend;
++#endif
+         return ret;
+     }
+ 
+diff -rup a/qt5/src/poppler-page.cc b/qt5/src/poppler-page.cc
+--- a/qt5/src/poppler-page.cc	2016-04-29 05:58:39.000000000 +0800
++++ b/qt5/src/poppler-page.cc	2018-05-20 12:26:07.000000000 +0800
+@@ -41,6 +41,7 @@
+ #include <QtGui/QPainter>
+ 
+ #include <config.h>
++#include <math.h>
+ #include <PDFDoc.h>
+ #include <Catalog.h>
+ #include <Form.h>
+@@ -54,7 +55,9 @@
+ #include <SplashOutputDev.h>
+ #include <splash/SplashBitmap.h>
+ #endif
+-
++#if defined(HAVE_CAIRO)
++#include <CairoOutputDev.h>
++#endif
+ #include "poppler-private.h"
+ #include "poppler-page-transition-private.h"
+ #include "poppler-page-private.h"
+@@ -406,6 +409,82 @@ QImage Page::renderToImage(double xres,
+       img = tmpimg;
+       break;
+     }
++    case Poppler::Document::CairoBackend:
++    {
++#if defined(HAVE_CAIRO)
++      CairoOutputDev *output_dev = new CairoOutputDev();
++      output_dev->startDoc(m_page->parentDoc->doc);
++      int buffer_width, buffer_height, rotate;
++      cairo_surface_t *surface;
++      cairo_t *cairo;
++      cairo_font_options_t *fo;
++      GBool subpixel_rendering;
++      // If w or h are -1, that indicates the whole page, so we need to
++      // calculate how many pixels that corresponds to.  Otherwise, we can use w
++      // or h directly for our buffer size.
++      const QSize pageSize = this->pageSize();
++      if (w == -1) {
++        const double xscale = xres / 72.0;
++        const double width = pageSize.width();;
++        buffer_width = (int) ceil(width * xscale);
++      } else {
++        buffer_width = w;
++      }
++      if (h == -1) {
++        const double yscale = yres / 72.0;
++        const double height = pageSize.height();
++        buffer_height = (int) ceil(height * yscale);
++      } else {
++        buffer_height = h;
++      }
++
++      rotate = rotation + m_page->page->getRotate();
++
++      // FIXME: Okular never provides a rotation value, so I don't have any way
++      // of testing this right now.  The result is that subpixels are ordered
++      // incorrectly when the page is rotated.
++
++      //if (rotate == 90 || rotate == 270) {
++      //  const double temp = height;
++      //  height = width;
++      //  width = temp;
++      //}
++
++      img = QImage(buffer_width, buffer_height, QImage::Format_ARGB32);
++      img.fill(Qt::white);  // Never transparent
++
++      surface = cairo_image_surface_create_for_data(
++                  img.bits(),
++                  CAIRO_FORMAT_ARGB32,
++                  buffer_width, buffer_height,
++                  img.bytesPerLine());
++
++      cairo = cairo_create(surface);
++      fo = cairo_font_options_create ();
++      cairo_get_font_options (cairo, fo);
++      subpixel_rendering = m_page->page->supportSubpixelRendering (output_dev);
++      if (subpixel_rendering) {
++        cairo_set_source_rgb (cairo, 1., 1., 1.);
++        cairo_font_options_set_antialias (fo, CAIRO_ANTIALIAS_SUBPIXEL);
++        cairo_font_options_set_subpixel_order (fo, CAIRO_SUBPIXEL_ORDER_RGB);
++      }
++      cairo_set_font_options (cairo, fo);
++      cairo_font_options_destroy (fo);
++      
++      output_dev->setCairo(cairo);
++
++      m_page->parentDoc->doc->displayPageSlice(
++        output_dev, m_page->index + 1, xres, yres, rotation, false, true,
++        false, x, y, w, h);
++
++      // Clean up
++      output_dev->setCairo(NULL);
++      cairo_destroy(cairo);
++      cairo_surface_destroy(surface);
++      delete output_dev;
++#endif
++      break;
++    }
+   }
+ 
+   return img;
+@@ -448,6 +527,8 @@ bool Page::renderToPainter(QPainter* pai
+          painter->restore();
+       return true;
+     }
++    case Poppler::Document::CairoBackend:
++      return false;
+   }
+   return false;
+ }
+diff -rup a/qt5/src/poppler-private.cc b/qt5/src/poppler-private.cc
+--- a/qt5/src/poppler-private.cc	2015-09-08 23:31:07.000000000 +0800
++++ b/qt5/src/poppler-private.cc	2018-05-19 12:25:04.000000000 +0800
+@@ -234,7 +234,7 @@ namespace Debug {
+     
+     void DocumentData::init()
+     {
+-        m_backend = Document::SplashBackend;
++        m_backend = Document::CairoBackend;
+         paperColor = Qt::white;
+         m_hints = 0;
+         m_optContentModel = 0;
+diff -rup a/qt5/src/poppler-qt5.h b/qt5/src/poppler-qt5.h
+--- a/qt5/src/poppler-qt5.h	2015-09-02 05:46:49.000000000 +0800
++++ b/qt5/src/poppler-qt5.h	2018-05-19 11:12:36.000000000 +0800
+@@ -876,7 +876,8 @@ delete it;
+ 	*/
+ 	enum RenderBackend {
+ 	    SplashBackend,   ///< Splash backend
+-	    ArthurBackend   ///< Arthur (Qt) backend
++	    ArthurBackend,   ///< Arthur (Qt) backend
++	    CairoBackend     ///< Cairo backend
+ 	};
+ 
+ 	/**
+diff -rup a/qt5/tests/CMakeLists.txt b/qt5/tests/CMakeLists.txt
+--- a/qt5/tests/CMakeLists.txt	2016-03-02 07:35:24.000000000 +0800
++++ b/qt5/tests/CMakeLists.txt	2018-05-20 11:46:08.806858043 +0800
+@@ -10,6 +10,10 @@ include_directories(
+   ${Qt5Xml_INCLUDE_DIRS}
+   ${Qt5Widgets_INCLUDE_DIRS}
+ )
++if (HAVE_CAIRO)
++  include_directories(${CAIRO_INCLUDE_DIRS})
++  add_definitions(${CAIRO_CFLAGS})
++endif (HAVE_CAIRO)
+ 
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Core_EXECUTABLE_COMPILE_FLAGS}")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Gui_EXECUTABLE_COMPILE_FLAGS}")
