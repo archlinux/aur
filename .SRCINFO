@@ -1,0 +1,19 @@
+pkgbase = headphones-plug-detector-git
+	pkgdesc = Pauses media when headphones get plugged out and plays it when they get plugged in
+	pkgver = r15.e4c83d0
+	pkgrel = 1
+	url = https://github.com/f1u77y/headphones-plug-detector
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = glib2
+	depends = jacklistener-git
+	provides = headphones-plug-detector
+	conflicts = headphones-plug-detector
+	source = headphones-plug-detector::git+https://github.com/f1u77y/headphones-plug-detector.git
+	md5sums = SKIP
+
+pkgname = headphones-plug-detector-git
+
