@@ -23,7 +23,8 @@ source=("https://binaries.cockroachdb.com/cockroach-v${pkgver}.linux-amd64.tgz"
         "https://raw.githubusercontent.com/cockroachdb/cockroach/v${pkgver}/licenses/PostgreSQL.txt"
         cockroach.service
         cockroach.default
-        cockroach.sysusers)
+        cockroach.sysusers
+        cockroach.tmpfiles)
 sha256sums=('ab510541ab9c7e02e9f4a015a4b55f3f47139920fc5a32cc05cb6673a6252228'
             '68040689c4342e0018adec3eb0fb1f2ae68aaeef918e7b4493518523381b7129'
             'b3ef077aa9a0d4b697722de993fa83959f10910ae600de90bcdcdd49fafce371'
@@ -34,15 +35,19 @@ sha256sums=('ab510541ab9c7e02e9f4a015a4b55f3f47139920fc5a32cc05cb6673a6252228'
             'b34067e89373e1a47367b454862f43061ad1680542b39b6d95ed29c354473e15'
             '6c336d30983d6295995823a134e3cc85a06ef9418339b53cf6f375df816bea51'
             '55f380f5cb201c6afeafbf1a6fb5a6400dbffa0edc134d30960d1d04e3d19ef2'
-            '57d5b6a0a32a0b8c6c005e8e8b6dc6c627edf40d843f94d0720da654678ab5a8')
+            '8be2f52529135d8d173bba130e000a187bbadc869ac2c603a4714af435840821'
+            'c74cf876197312b91970bdd7832081750d2ab4d47e553bb46f38d57cba52641e')
 
 build() {
     # XXX arch ships a newer, but compatible version of ncurses
     patchelf --replace-needed libncurses.so.5 libncursesw.so.6 \
              "${srcdir}/cockroach-v${pkgver}.linux-amd64/cockroach"
 
+    # generate bash completion
     "${srcdir}/cockroach-v${pkgver}.linux-amd64/cockroach" \
         gen autocomplete --out "${srcdir}/cockroach.bash"
+
+    # generate man pages
     "${srcdir}/cockroach-v${pkgver}.linux-amd64/cockroach" \
         gen man --path "${srcdir}/man"
 }
@@ -50,14 +55,13 @@ build() {
 package() {
 
   # binary
-  install -Dm755 ${srcdir}/cockroach-v${pkgver}.linux-amd64/cockroach "${pkgdir}/usr/bin/cockroach"
+  install -Dm755 "${srcdir}/cockroach-v${pkgver}.linux-amd64/cockroach" "${pkgdir}/usr/bin/cockroach"
 
-  # user & group
+  # user/group & owned directories
   install -Dm644 "${srcdir}/cockroach.sysusers" "${pkgdir}/usr/lib/sysusers.d/cockroach.conf"
+  install -Dm644 "${srcdir}/cockroach.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/cockroach.conf"
 
   # services & runtime
-  install -Ddm750 -o 0 -g 361 "${pkgdir}/etc/cockroach"
-  install -Ddm750 -o 361 -g 361 "${pkgdir}/var/lib/cockroach"
   install -Dm644 "${srcdir}/cockroach.service" "${pkgdir}/usr/lib/systemd/system/cockroach.service"
   install -Dm644 "${srcdir}/cockroach.default" "${pkgdir}/etc/default/cockroach"
 
