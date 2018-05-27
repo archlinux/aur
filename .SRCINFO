@@ -1,19 +1,5 @@
 pkgbase = r-cran-lazyeval
 	pkgdesc = Lazy (Non-Standard) Evaluation
-	pkgver = 0.2.0
-	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/lazyeval/index.html
-	arch = i686
-	arch = x86_64
-	license = GPL3
-	depends = r
-	source = http://cran.r-project.org/src/contrib/lazyeval_0.2.0.tar.gz
-	md5sums = df1daac908dcf02ae7e12f4335b1b13b
-
-pkgname = r-cran-lazyeval
-
-pkgbase = r-cran-lazyeval
-	pkgdesc = Lazy (Non-Standard) Evaluation
 	pkgver = 0.2.1
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/lazyeval/index.html
