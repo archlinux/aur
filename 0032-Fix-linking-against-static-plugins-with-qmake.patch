@@ -1,7 +1,7 @@
-From 715c87c76624306c9b9410dc4efa7b6d64ca6788 Mon Sep 17 00:00:00 2001
+From af66aa78320b37f4c5100e2822eceb3ecd0a703a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 25 Aug 2017 17:07:17 +0200
-Subject: [PATCH 32/32] Fix linking against static plugins with qmake
+Subject: [PATCH 32/33] Fix linking against static plugins with qmake
 
 Required because qtConfig(static) does not work
 with 'Merge shared and static library trees'
@@ -33,5 +33,5 @@ index 6eebd068f1..310b8713f0 100644
          # Check if the plugin is known to Qt. We can use this to determine
          # the plugin path. Unknown plugins must rely on the default link path.
 -- 
-2.16.1
+2.17.0
 
