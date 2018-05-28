@@ -1,10 +1,10 @@
 # Maintainer: Lev Levitsky <levlev at mail dot ru>
 pkgname=python-pyteomics
-pkgver=3.5
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="A framework for proteomics data analysis."
 arch=('any')
-url="https://pythonhosted.org/pyteomics/"
+url="https://pyteomics.readthedocs.io"
 license=('Apache')
 depends=('python' 'python-setuptools')
 optdepends=('python-matplotlib: for pylab_aux module'
@@ -14,7 +14,7 @@ optdepends=('python-matplotlib: for pylab_aux module'
             'python-numpy: for most of features, highly recommended')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/p/pyteomics/pyteomics-${pkgver}.tar.gz")
-sha256sums=('ddba74f30f2a30c35e953615b184197341215083224f2df0540542ff79b6e1a9')
+sha256sums=('acd95d8e139e42c113f3f0bc4f512b9a7081d94eefd5bd73e183e1b4a848c364')
 changelog="CHANGELOG"
 package() {
   cd "${srcdir}/pyteomics-${pkgver}"
