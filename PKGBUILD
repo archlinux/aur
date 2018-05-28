@@ -25,6 +25,6 @@ package() {
 	 mkdir -p ${pkgdir}/opt/predict/
 	 cp -r * ${pkgdir}/opt/predict/
 	 mkdir -p ${pkgdir}/usr/bin/
-	 ln -s ${pkgdir}/opt/predict/predict ${pkgdir}/usr/bin/predict
+	 ln -s /opt/predict/predict ${pkgdir}/usr/bin/predict
 	 install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
