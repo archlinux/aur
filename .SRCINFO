@@ -1,7 +1,7 @@
 pkgbase = python-sphinxcontrib-tikz
 	pkgdesc = TikZ extension for Sphinx.
-	pkgver = 0.4.4
-	pkgrel = 2
+	pkgver = 0.4.5
+	pkgrel = 1
 	url = https://bitbucket.org/philexander/tikz
 	arch = any
 	license = BSD
@@ -9,10 +9,8 @@ pkgbase = python-sphinxcontrib-tikz
 	makedepends = python-setuptools
 	makedepends = python2
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-tikz/sphinxcontrib-tikz-0.4.4.tar.gz
-	source = sphinxcontrib-tikz-sphinx1.7-fix.diff
-	sha256sums = 755a88072f7d3591846a3190f208d662bde84640b18bdea358a1358e895757ff
-	sha256sums = 276e04bfbca4086331cb9a135c87af1bd8a7219aa942743cbdb398fcb3741c92
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-tikz/sphinxcontrib-tikz-0.4.5.tar.gz
+	sha256sums = 1dcc9eae0fb717e07d6758f18c11f589d97ba8048e918e50512260d9c949d8d8
 
 pkgname = python-sphinxcontrib-tikz
 	depends = python
