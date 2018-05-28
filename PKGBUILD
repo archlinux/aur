@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.16
-_stable=4.16.10
-_patchver=4.16.11
+_stable=4.16.12
+_patchver=4.16.13
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -27,8 +27,8 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  0003-Partially-revert-swiotlb-remove-various-exports.patch
+  0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
+  0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -36,17 +36,17 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '6e9d46718a34695a3f85f9cb5195e9f446e666e545c18fdfc6e3001bc947cbcb'
+            '96b5fce7d698f7d168fc22cebd201f1a168fcdeea01b14caca06ab3da940aeba'
             'SKIP'
-            '9fe6093be401fe0ff3f6cb3d428f137119a7befaf86d70f18c7e88871c1852d6'
+            '70a6381aca28b1d271e85bc38fab05af4525d9fdc2c5bb87182b3351db8c4fa2'
             'SKIP'
             '8fe49fc7b6fa3083c878c94e1362bdd6e95965bf6d5ff969c95d4b0e5b6abf61'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '69241df4bd7897eb04db90e4d0a82c6e0b99b806019ba96bb885278ca8da89df'
-            '10728f672a83a515af540cafafde62346e9ccc2d14bf74e417fd2693865b1293'
-            'a81b612369e78d142ff80ec3adda36b3f94503e5a68d54282c508a112cc8dae0')
+            '8d6a5f34b3d79e75b0cb888c6bcf293f84c5cbb2757f7bdadafee7e0ea77d7dd'
+            '2454c1ee5e0f5aa119fafb4c8d3b402c5e4e10b2e868fe3e4ced3b1e2aa48446'
+            '8114295b8c07795a15b9f8eafb0f515c34661a1e05512da818a34581dd30f87e')
 
 _kernelname=${pkgbase#linux}
 
@@ -66,11 +66,12 @@ prepare() {
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
-  # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  # https://bugs.archlinux.org/task/56780
+  patch -Np1 -i ../0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
 
-  # NVIDIA driver compat
-  patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+  # https://bugs.archlinux.org/task/56711
+  patch -Np1 -i ../0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
