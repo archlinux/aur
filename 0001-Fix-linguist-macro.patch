@@ -1,4 +1,4 @@
-From 25a07c1c58dab6e2409b060bd00b65cab909b189 Mon Sep 17 00:00:00 2001
+From 61e5d85ffe9ad4656b8dc39d763b3c9a83604c81 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:44:42 +0200
 Subject: [PATCH 1/2] Fix linguist macro
@@ -11,7 +11,7 @@ Subject: [PATCH 1/2] Fix linguist macro
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/src/linguist/Qt5LinguistToolsMacros.cmake b/src/linguist/Qt5LinguistToolsMacros.cmake
-index 8e363a40..d7fd0f8b 100644
+index b9959730..75776e0e 100644
 --- a/src/linguist/Qt5LinguistToolsMacros.cmake
 +++ b/src/linguist/Qt5LinguistToolsMacros.cmake
 @@ -71,8 +71,10 @@ function(QT5_CREATE_TRANSLATION _qm_files)
@@ -26,7 +26,7 @@ index 8e363a40..d7fd0f8b 100644
              ARGS ${_lupdate_options} "@${_ts_lst_file}" -ts ${_ts_file}
              DEPENDS ${_my_sources} ${_ts_lst_file} VERBATIM)
      endforeach()
-@@ -95,8 +97,9 @@ function(QT5_ADD_TRANSLATION _qm_files)
+@@ -102,8 +104,9 @@ function(QT5_ADD_TRANSLATION _qm_files)
              set(qm "${CMAKE_CURRENT_BINARY_DIR}/${FILE_NAME}.qm")
          endif()
  
@@ -34,9 +34,9 @@ index 8e363a40..d7fd0f8b 100644
          add_custom_command(OUTPUT ${qm}
 -            COMMAND ${Qt5_LRELEASE_EXECUTABLE}
 +            COMMAND ${LRELEASE_LOC}
-             ARGS ${_abs_FILE} -qm ${qm}
+             ARGS ${_LRELEASE_OPTIONS} ${_abs_FILE} -qm ${qm}
              DEPENDS ${_abs_FILE} VERBATIM
          )
 -- 
-2.16.1
+2.17.0
 
