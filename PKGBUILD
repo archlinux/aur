@@ -19,11 +19,15 @@ conflicts=('armagetronad')
 source=("$_pkgname::bzr+lp:$_pkgname/$pkgver")
 sha1sums=('SKIP')
 
-build() {
+prepare(){
      cd "$srcdir/$_pkgname"
 
      # python2 fix
      sed -i 's_#!/usr/bin/python_#!/usr/bin/python2_' language/update.py
+}
+
+build() {
+     cd "$srcdir/$_pkgname"
 
      ./bootstrap.sh
 
