@@ -1,0 +1,298 @@
+From 6a1db14020557c6bbfa41852d29e2bda1720b607 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 27 May 2018 14:23:11 +0200
+Subject: [PATCH] Revert "Directly link to functions available from Windows 7
+ onwards"
+
+This reverts commit 07f6d25a00af112d46e939992fb9cf42879fc7c1.
+
+Otherwise the x86_64 version doesn't compile with mingw-w64-crt 5.0.3.
+
+Apparently those functions are absent in the libdwmapi.a library provided
+by the CRT:
+```
+grep DwmSetIconicThumbnail /usr/x86_64-w64-mingw32/lib/libdwmapi.a
+[no further output]
+```
+
+This leads to the following linker error:
+```
+x86_64-w64-mingw32-g++ -g -shared -Wl,-subsystem,windows -Wl,--out-implib,/build/mingw-w64-qt5-winextras/src/qtwinextras-everywhere-src-5.11.0/build-x86_64-w64-mingw32-shared/lib/libQt5WinExtras.dll.a -o ../../lib/Qt5WinExtras.dll object_script.Qt5WinExtras.Release  -lglu32 -lopengl32 -lgdi32 -luser32 -lQt5Gui -lQt5Core -lole32 -lshlwapi -lshell32 -ldwmapi
+./.obj/release/qwinthumbnailtoolbar.o: In function `QWinThumbnailToolBarPrivate::updateIconicPixmapsEnabled(bool)':
+/build/mingw-w64-qt5-winextras/src/qtwinextras-everywhere-src-5.11.0/src/winextras/qwinthumbnailtoolbar.cpp:246: undefined reference to `DwmInvalidateIconicBitmaps'
+./.obj/release/qwinthumbnailtoolbar.o: In function `QWinThumbnailToolBarPrivate::updateIconicLivePreview(tagMSG const*)':
+/build/mingw-w64-qt5-winextras/src/qtwinextras-everywhere-src-5.11.0/src/winextras/qwinthumbnailtoolbar.cpp:411: undefined reference to `DwmSetIconicLivePreviewBitmap'
+./.obj/release/qwinthumbnailtoolbar.o: In function `QWinThumbnailToolBarPrivate::updateIconicThumbnail(tagMSG const*)':
+/build/mingw-w64-qt5-winextras/src/qtwinextras-everywhere-src-5.11.0/src/winextras/qwinthumbnailtoolbar.cpp:396: undefined reference to `DwmSetIconicThumbnail'
+collect2: error: ld returned 1 exit status
+```
+
+Note that the i686 version has the required functions and links fine:
+```
+grep DwmSetIconicThumbnail /usr/i686-w64-mingw32/lib/libdwmapi.a
+Binary file /usr/i686-w64-mingw32/lib/libdwmapi.a matches
+```
+---
+ src/winextras/qwinfunctions.cpp        | 14 ++---
+ src/winextras/qwinfunctions_p.cpp      | 74 ++++++++++++++++++++++++++
+ src/winextras/qwinfunctions_p.h        | 36 ++++++++++++-
+ src/winextras/qwinthumbnailtoolbar.cpp | 22 ++++----
+ src/winextras/winextras.pro            |  1 +
+ 5 files changed, 125 insertions(+), 22 deletions(-)
+ create mode 100644 src/winextras/qwinfunctions_p.cpp
+
+diff --git a/src/winextras/qwinfunctions.cpp b/src/winextras/qwinfunctions.cpp
+index 7b102a8..9b748c3 100644
+--- a/src/winextras/qwinfunctions.cpp
++++ b/src/winextras/qwinfunctions.cpp
+@@ -38,13 +38,6 @@
+ **
+ ****************************************************************************/
+ 
+-#if defined(NTDDI_VERSION) && NTDDI_VERSION < 0x06010000 // NTDDI_WIN7
+-#  undef NTDDI_VERSION
+-#endif
+-#if !defined(NTDDI_VERSION)
+-#  define NTDDI_VERSION 0x06010000 // Enable functions for MinGW
+-#endif
+-
+ #include "qwinfunctions.h"
+ #include "qwinfunctions_p.h"
+ #include "qwineventfilter_p.h"
+@@ -1819,8 +1812,11 @@ bool QtWin::isCompositionOpaque()
+  */
+ void QtWin::setCurrentProcessExplicitAppUserModelID(const QString &id)
+ {
+-    QScopedArrayPointer<wchar_t> wid(qt_qstringToNullTerminated(id));
+-    SetCurrentProcessExplicitAppUserModelID(wid.data());
++    qtShell32Dll.init();
++    if (qtShell32Dll.setCurrentProcessExplicitAppUserModelID) {
++        QScopedArrayPointer<wchar_t> wid(qt_qstringToNullTerminated(id));
++        qtShell32Dll.setCurrentProcessExplicitAppUserModelID(wid.data());
++    }
+ }
+ 
+ /*!
+diff --git a/src/winextras/qwinfunctions_p.cpp b/src/winextras/qwinfunctions_p.cpp
+new file mode 100644
+index 0000000..ea9dcf9
+--- /dev/null
++++ b/src/winextras/qwinfunctions_p.cpp
+@@ -0,0 +1,74 @@
++/****************************************************************************
++ **
++ ** Copyright (C) 2016 Ivan Vizir <define-true-false@yandex.com>
++ ** Contact: https://www.qt.io/licensing/
++ **
++ ** This file is part of the QtWinExtras module of the Qt Toolkit.
++ **
++ ** $QT_BEGIN_LICENSE:LGPL$
++ ** Commercial License Usage
++ ** Licensees holding valid commercial Qt licenses may use this file in
++ ** accordance with the commercial license agreement provided with the
++ ** Software or, alternatively, in accordance with the terms contained in
++ ** a written agreement between you and The Qt Company. For licensing terms
++ ** and conditions see https://www.qt.io/terms-conditions. For further
++ ** information use the contact form at https://www.qt.io/contact-us.
++ **
++ ** GNU Lesser General Public License Usage
++ ** Alternatively, this file may be used under the terms of the GNU Lesser
++ ** General Public License version 3 as published by the Free Software
++ ** Foundation and appearing in the file LICENSE.LGPL3 included in the
++ ** packaging of this file. Please review the following information to
++ ** ensure the GNU Lesser General Public License version 3 requirements
++ ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
++ **
++ ** GNU General Public License Usage
++ ** Alternatively, this file may be used under the terms of the GNU
++ ** General Public License version 2.0 or (at your option) the GNU General
++ ** Public license version 3 or any later version approved by the KDE Free
++ ** Qt Foundation. The licenses are as published by the Free Software
++ ** Foundation and appearing in the file LICENSE.GPL2 and LICENSE.GPL3
++ ** included in the packaging of this file. Please review the following
++ ** information to ensure the GNU General Public License requirements will
++ ** be met: https://www.gnu.org/licenses/gpl-2.0.html and
++ ** https://www.gnu.org/licenses/gpl-3.0.html.
++ **
++ ** $QT_END_LICENSE$
++ **
++ ****************************************************************************/
++
++#include "qwinfunctions_p.h"
++
++#include <qt_windows.h>
++
++QT_BEGIN_NAMESPACE
++
++// in order to allow binary to load on WinXP...
++QtDwmApiDll qtDwmApiDll;
++QtShell32Dll qtShell32Dll;
++
++void QtDwmApiDll::resolve()
++{
++    if (QSysInfo::windowsVersion() >= QSysInfo::WV_WINDOWS7) {
++        if (const HMODULE dwmapi = LoadLibraryW(L"dwmapi.dll")) {
++            dwmSetIconicThumbnail =
++                (DwmSetIconicThumbnail) GetProcAddress(dwmapi, "DwmSetIconicThumbnail");
++            dwmSetIconicLivePreviewBitmap =
++                (DwmSetIconicLivePreviewBitmap) GetProcAddress(dwmapi, "DwmSetIconicLivePreviewBitmap");
++            dwmInvalidateIconicBitmaps =
++                (DwmInvalidateIconicBitmaps) GetProcAddress(dwmapi, "DwmInvalidateIconicBitmaps");
++        }
++    }
++}
++
++void QtShell32Dll::resolve()
++{
++    if (QSysInfo::windowsVersion() >= QSysInfo::WV_WINDOWS7) {
++        if (const HMODULE shell32 = LoadLibraryW(L"shell32.dll")) {
++            setCurrentProcessExplicitAppUserModelID =
++                    (SetCurrentProcessExplicitAppUserModelID) GetProcAddress(shell32, "SetCurrentProcessExplicitAppUserModelID");
++        }
++    }
++}
++
++QT_END_NAMESPACE
+diff --git a/src/winextras/qwinfunctions_p.h b/src/winextras/qwinfunctions_p.h
+index a69e52c..6ea1598 100644
+--- a/src/winextras/qwinfunctions_p.h
++++ b/src/winextras/qwinfunctions_p.h
+@@ -64,8 +64,20 @@ enum qt_DWMWINDOWATTRIBUTE // Not present in MinGW 4.9
+     qt_DWMWA_EXCLUDED_FROM_PEEK = 12,
+ };
+ 
+-namespace QtDwmApiDll
++struct QtDwmApiDll
+ {
++    typedef HRESULT (STDAPICALLTYPE *DwmSetIconicThumbnail)(HWND, HBITMAP, DWORD); // Windows 7
++    typedef HRESULT (STDAPICALLTYPE *DwmSetIconicLivePreviewBitmap)(HWND, HBITMAP, POINT *, DWORD);
++    typedef HRESULT (STDAPICALLTYPE *DwmInvalidateIconicBitmaps)(HWND);
++
++    void init()
++    {
++        if (!dwmSetIconicThumbnail)
++            resolve();
++    }
++
++    void resolve();
++
+     template <class T> static T windowAttribute(HWND hwnd, DWORD attribute, T defaultValue);
+     template <class T> static void setWindowAttribute(HWND hwnd, DWORD attribute, T value);
+ 
+@@ -74,8 +86,30 @@ namespace QtDwmApiDll
+ 
+     static void setBooleanWindowAttribute(HWND hwnd, DWORD attribute, bool value)
+         { setWindowAttribute<BOOL>(hwnd, attribute, BOOL(value ? TRUE : FALSE)); }
++
++    DwmSetIconicThumbnail dwmSetIconicThumbnail = nullptr;
++    DwmSetIconicLivePreviewBitmap dwmSetIconicLivePreviewBitmap = nullptr;
++    DwmInvalidateIconicBitmaps dwmInvalidateIconicBitmaps = nullptr;
+ };
+ 
++struct QtShell32Dll
++{
++    typedef HRESULT (STDAPICALLTYPE *SetCurrentProcessExplicitAppUserModelID)(PCWSTR);
++
++    void init()
++    {
++        if (!setCurrentProcessExplicitAppUserModelID)
++            resolve();
++    }
++
++    void resolve();
++
++    SetCurrentProcessExplicitAppUserModelID setCurrentProcessExplicitAppUserModelID = nullptr; // Windows 7
++};
++
++extern QtDwmApiDll qtDwmApiDll;
++extern QtShell32Dll qtShell32Dll;
++
+ inline void qt_qstringToNullTerminated(const QString &src, wchar_t *dst)
+ {
+     dst[src.toWCharArray(dst)] = 0;
+diff --git a/src/winextras/qwinthumbnailtoolbar.cpp b/src/winextras/qwinthumbnailtoolbar.cpp
+index 39622d1..37a9da8 100644
+--- a/src/winextras/qwinthumbnailtoolbar.cpp
++++ b/src/winextras/qwinthumbnailtoolbar.cpp
+@@ -38,13 +38,6 @@
+  **
+  ****************************************************************************/
+ 
+-#if defined(_WIN32_WINNT) && _WIN32_WINNT < 0x0601
+-#  undef _WIN32_WINNT
+-#endif
+-#if !defined(_WIN32_WINNT)
+-#  define _WIN32_WINNT 0x0601 // Enable functions for MinGW
+-#endif
+-
+ #include "qwinthumbnailtoolbar.h"
+ #include "qwinthumbnailtoolbar_p.h"
+ #include "qwinthumbnailtoolbutton.h"
+@@ -235,15 +228,18 @@ int QWinThumbnailToolBar::count() const
+ void QWinThumbnailToolBarPrivate::updateIconicPixmapsEnabled(bool invalidate)
+ {
+     Q_Q(QWinThumbnailToolBar);
++    qtDwmApiDll.init();
+     const HWND hwnd = handle();
+     if (!hwnd) {
+          qWarning() << Q_FUNC_INFO << "invoked with hwnd=0";
+          return;
+     }
++    if (!qtDwmApiDll.dwmInvalidateIconicBitmaps)
++        return;
+     const bool enabled = iconicThumbnail || iconicLivePreview;
+     q->setIconicPixmapNotificationsEnabled(enabled);
+     if (enabled && invalidate) {
+-        const HRESULT hr = DwmInvalidateIconicBitmaps(hwnd);
++        const HRESULT hr = qtDwmApiDll.dwmInvalidateIconicBitmaps(hwnd);
+         if (FAILED(hr))
+             qWarning() << QWinThumbnailToolBarPrivate::msgComFailed("DwmInvalidateIconicBitmaps", hr);
+     }
+@@ -389,11 +385,12 @@ QPixmap QWinThumbnailToolBar::iconicLivePreviewPixmap() const
+ 
+ inline void QWinThumbnailToolBarPrivate::updateIconicThumbnail(const MSG *message)
+ {
+-    if (!iconicThumbnail)
++    qtDwmApiDll.init();
++    if (!qtDwmApiDll.dwmSetIconicThumbnail || !iconicThumbnail)
+         return;
+     const QSize maxSize(HIWORD(message->lParam), LOWORD(message->lParam));
+     if (const HBITMAP bitmap = iconicThumbnail.bitmap(maxSize)) {
+-        const HRESULT hr = DwmSetIconicThumbnail(message->hwnd, bitmap, dWM_SIT_DISPLAYFRAME);
++        const HRESULT hr = qtDwmApiDll.dwmSetIconicThumbnail(message->hwnd, bitmap, dWM_SIT_DISPLAYFRAME);
+         if (FAILED(hr))
+             qWarning() << QWinThumbnailToolBarPrivate::msgComFailed("DwmSetIconicThumbnail", hr);
+     }
+@@ -401,14 +398,15 @@ inline void QWinThumbnailToolBarPrivate::updateIconicThumbnail(const MSG *messag
+ 
+ inline void QWinThumbnailToolBarPrivate::updateIconicLivePreview(const MSG *message)
+ {
+-    if (!iconicLivePreview)
++    qtDwmApiDll.init();
++    if (!qtDwmApiDll.dwmSetIconicLivePreviewBitmap || !iconicLivePreview)
+         return;
+     RECT rect;
+     GetClientRect(message->hwnd, &rect);
+     const QSize maxSize(rect.right, rect.bottom);
+     POINT offset = {0, 0};
+     if (const HBITMAP bitmap = iconicLivePreview.bitmap(maxSize)) {
+-        const HRESULT hr = DwmSetIconicLivePreviewBitmap(message->hwnd, bitmap, &offset, dWM_SIT_DISPLAYFRAME);
++        const HRESULT hr = qtDwmApiDll.dwmSetIconicLivePreviewBitmap(message->hwnd, bitmap, &offset, dWM_SIT_DISPLAYFRAME);
+         if (FAILED(hr))
+             qWarning() << QWinThumbnailToolBarPrivate::msgComFailed("DwmSetIconicLivePreviewBitmap", hr);
+     }
+diff --git a/src/winextras/winextras.pro b/src/winextras/winextras.pro
+index 705c48c..5d93c6b 100644
+--- a/src/winextras/winextras.pro
++++ b/src/winextras/winextras.pro
+@@ -6,6 +6,7 @@ DEFINES += QT_NO_FOREACH
+ 
+ SOURCES += \
+     qwinfunctions.cpp \
++    qwinfunctions_p.cpp \
+     qwintaskbarbutton.cpp \
+     qwintaskbarprogress.cpp \
+     windowsguidsdefs.cpp \
+-- 
+2.17.0
+
