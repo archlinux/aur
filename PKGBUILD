@@ -1,7 +1,7 @@
 # Maintainer: TC <crt@archlinux.email>
 pkgname=discord-irc
 _npmname='discord-irc'
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Connects Discord and IRC channels by sending messages back and forth"
 url="https://github.com/reactiflux/discord-irc"
@@ -16,9 +16,9 @@ source=(
   "system.service"
 )
 noextract=("$_npmname-$pkgver.tgz")
-sha256sums=('5b4de0041a4799484cbd072d7f7a81ad3b0548b85e86bb0b5b5374f1bacf4d6e'
+sha256sums=('beaf99ea72059d8098a7dbf50025463059e678d1a086ebcc45fb99dace2e5e69'
             'SKIP')
-            
+
 package() {
   local _etc="$pkgdir/etc/$pkgname"
   export NODE_ENV=production
