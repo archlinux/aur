@@ -1,6 +1,6 @@
 pkgname=lm_sensors-git
 pkgdesc="Collection of user space tools for general SMBus access and hardware monitoring"
-pkgver=r5161.219008be
+pkgver=r5175.70f7e084
 pkgrel=1
 arch=('x86_64')
 url="http://www.lm-sensors.org/"
