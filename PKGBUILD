@@ -3,7 +3,7 @@
 pkgname=wingide
 _wingver=6.0.12
 _wingrel=1
-_wing_patch_lvl=2 #bump this when adding a patch
+_wing_patch_lvl=3 #bump this when adding a patch
 pkgver=$_wingver.$_wingrel.$_wing_patch_lvl
 pkgrel=1
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
@@ -11,7 +11,7 @@ url="http://www.wingware.com"
 license=('custom')
 arch=('x86_64')
 
-_wingpatch=("fix-remotely-stored-projects-6.0.12p1-all.tar" "fix-vi-visual-bc-6.0.12p2-all.tar" "fix-matplotlib-debug-6.0.12p3-all.tar" "fix-logging-exc-6.0.12p4-all.tar")
+_wingpatch=("fix-remotely-stored-projects-6.0.12p1-all.tar" "fix-vi-visual-bc-6.0.12p2-all.tar" "fix-matplotlib-debug-6.0.12p3-all.tar" "fix-logging-exc-6.0.12p4-all.tar" "avoid-lic-notify-6.0.12p5-all.tar")
 _patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
 _wingpatch=( "${_wingpatch[@]/#/$_patch_url_prefix}" )
 source=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-x86_64-linux.tar.bz2" ${_wingpatch[*]})
@@ -21,7 +21,8 @@ md5sums=('74a72215aa827fe19049bea5d24382cc'
          '8ab32b0c575907db9603e6ed52b4fe69'
          'caef531adab241abc9349259a82a5cf6'
          '1bd037a9f2b4b1ce3fc9d3a2e1c3213a'
-         '3dd2a8fbec556973b2b432a085f2bb7d')
+         '3dd2a8fbec556973b2b432a085f2bb7d'
+         'c89995b2b11c11bc03064d7f7b69f562')
 
 install=${pkgname}.install
 
