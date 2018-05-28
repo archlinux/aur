@@ -113,7 +113,6 @@ double* iex_get_price(const char* symbol) {
 
 void* iex_store_company(void* vpInfo) {
     Info* symbol_info = vpInfo;
-    symbol_info->symbol[0] = '\0';
     char iex_api_string[URL_MAX_LENGTH];
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/company", symbol_info->symbol);
     String* pString = api_curl_data(iex_api_string); // API CALL 1 -- Company
@@ -157,7 +156,7 @@ void* iex_store_quote(void* vpInfo) {
     }
 
     symbol_info->price = json_object_get_double(json_object_object_get(jobj, "latestPrice"));
-    symbol_info->intraday_time = json_object_get_int64(json_object_object_get(jobj, "latestUpdate"));
+    symbol_info->intraday_time = json_object_get_int64(json_object_object_get(jobj, "closeTime"));
     symbol_info->marketcap = json_object_get_int64(json_object_object_get(jobj, "marketCap"));
     symbol_info->volume_1d = json_object_get_int64(json_object_object_get(jobj, "latestVolume"));
     symbol_info->pe_ratio = json_object_get_int64(json_object_object_get(jobj, "peRatio"));
@@ -183,7 +182,7 @@ void* iex_store_stats(void* vpInfo) {
         return NULL;
     }
 
-    symbol_info->div_yield = json_object_get_double(json_object_object_get(jobj, "dividentYield"));
+    symbol_info->div_yield = json_object_get_double(json_object_object_get(jobj, "dividendYield"));
     symbol_info->revenue = json_object_get_int64(json_object_object_get(jobj, "revenue"));
     symbol_info->gross_profit = json_object_get_int64(json_object_object_get(jobj, "grossProfit"));
     symbol_info->cash = json_object_get_int64(json_object_object_get(jobj, "cash"));
@@ -258,6 +257,8 @@ void* iex_store_chart(void* vpInfo) {
     symbol_info->change_1d = coef * (symbol_info->price - symbol_info->points[len - 2 + after_close]);
     symbol_info->change_7d = coef * (symbol_info->price - symbol_info->points[len - 6 + after_close]);
     symbol_info->change_30d = coef * (symbol_info->price - symbol_info->points[len - 22 + after_close]);
+    json_object_put(jobj);
+    string_destroy(&pString);
     return NULL;
 }
 

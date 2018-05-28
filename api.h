@@ -146,8 +146,6 @@ double* iex_get_hist_5y(const char* symbol);
  */
 double* morningstar_get_hist_5y(const char* symbol);
 
-
-
 /**
  * Returns a pointer to an Info object containing info pertaining
  * to the given symbol with data from IEX.
