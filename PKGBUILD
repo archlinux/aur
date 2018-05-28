@@ -1,14 +1,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=qtikz-git
-pkgver=r316.972685a
-pkgrel=2
+pkgver=r317.37ae35f
+pkgrel=1
 pkgdesc="Small application helping you to create TikZ diagrams"
 arch=('i686' 'x86_64')
 url="https://github.com/fhackenberger/ktikz"
 license=('GPL')
 depends=('poppler-qt5')
-makedepends=('git' 'texlive-core')
+makedepends=('git' 'qt5-tools' 'texlive-core')
 provides=('qtikz')
 conflicts=('qtikz')
 source=("qtikz::git+https://github.com/fhackenberger/ktikz")
