@@ -7,7 +7,7 @@ pkgdesc="Customizeable Wayland compositor written in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/Immington-Industries/way-cooler"
 license=('MIT')
-depends=('wlroots-git' 'rust')
+depends=('lua' 'gdk-pixbuf2' 'cairo' 'wlc')
 makedepends=('python' 'cargo' 'rust' 'git' 'wayland-protocols' 'clang' 'libxcursor'
              'cairo' 'gdk-pixbuf2')
 optdepends=('weston: default terminal emulator'
@@ -17,12 +17,8 @@ provides=('way-cooler')
 conflicts=('way-cooler')
 backup=('etc/way-cooler/rc.lua')
 source=("${pkgname}::git+https://github.com/Immington-Industries/way-cooler.git"
-        "git+https://github.com/swaywm/wlroots-rs"
-        "git+https://github.com/swaywm/wlroots"
         "0001-wlroots-needs-to-be-dynamic.patch")
 md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
          '0aa8ef19bbe4d66d5dd6d796498ab8e2')
 
 pkgver() {
@@ -33,15 +29,6 @@ pkgver() {
 prepare() {
   cd $pkgname
   git submodule update --init --recursive
-  #git submodule init wlroots-rs
-  #git config submodule.wlroots-rs.url ../wlroots-rs
-  #git submodule update --remote --init wlroots-rs
-  #cd ../wlroots-rs
-  #git submodule init wlroots-sys/wlroots
- # git config submodule.wlroots.url ../wlroots
- # git submodule update --init --recursive --remote wlroots-sys/wlroots/
- # cd ../wlroots
- # git reset --hard 79683ee497cff4e363612933af2f068cfea9b19c 
 }
 build() {
   cd "$srcdir/$pkgname/wlroots-rs"
