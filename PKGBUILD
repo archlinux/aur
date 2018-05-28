@@ -1,6 +1,6 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.31.1
+pkgver=0.31.2
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=("5a8648a84d5056534c944b51b226e1ae5e4f2e76")
+sha1sums=("77e1b9c463abc908d0186fb4bafd7477add56bb3")
 
 #JRE_VERSION=$(archlinux-java status | grep default | awk '{print $1}')
 
