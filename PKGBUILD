@@ -8,7 +8,7 @@
 
 _qt_module=qtremoteobjects
 pkgname="mingw-w64-qt5-remoteobjects"
-pkgver=5.10.1
+pkgver=5.11.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Inter-process communication (IPC) module developed for Qt (mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('e9da0b8aca4223c2d2f6ab5b5c9ff6c9acfe47003837bab08169919d8f504e14')
+sha256sums=('09af3b3e104497576f6d5ad36027ea8837e19ee390914d33dcdc5d057b0f16b2')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -40,11 +40,11 @@ build() {
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
       ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
 
-      # Search paths for host standard library (/usr/lib) and for Qt5Bootstrap (/usr/$_arch/lib) are not set correctly by qmake
+      # search paths for host standard library (/usr/lib) and for Qt5Bootstrap (/usr/$_arch/lib) are not set correctly by qmake
       # hence we need insert those paths manually
       make qmake_all
-      find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5QmlDevTools -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.so /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
-      find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5QmlDevTools|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.so|g" {} \;
+      find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5QmlDevTools -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.a /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
+      find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5QmlDevTools|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.a|g" {} \;
       find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
       find . -type f -iname 'Makefile' -exec sed -i "s|-lQt5Bootstrap ||g" {} \;
 
@@ -63,7 +63,7 @@ package() {
 
       make INSTALL_ROOT="$pkgdir" install
 
-      # Use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
+      # use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
       if [[ -d 'lib' ]]; then
         pushd 'lib'
         find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib" --parents {} +
@@ -75,19 +75,29 @@ package() {
         popd
       fi
 
-      find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
+      # replace library path in *.prl files so it points to the installed location and not the build directory
+      find "${pkgdir}/usr/${_arch}/lib" \( -type f -name '*.prl' -o -name '*.pc' \) -exec sed -i -e "s:$PWD/lib:/usr/$_arch/lib:g" {} \;
+
+      # remove prl files for debug version
+      if ! [[ $MINGW_W64_QT_DEBUG_BUILD ]]; then
+        for file in $(find "${pkgdir}/usr/${_arch}" -name '*d.prl' -o -name '*d.static.prl'); do
+          [ -f "${file%d*}${file##*d}" ] && rm "${file}";
+        done
+      fi
+
+      find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
-        find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
-        find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec ${_arch}-strip --strip-all {} \;
-      find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
-      find "${pkgdir}/usr/${_arch}" -name "*.a" -exec ${_arch}-strip -g {} \;
+        find "${pkgdir}/usr/${_arch}" -name '*.exe' -delete || \
+        find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip --strip-all {} \;
+      find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+      find "${pkgdir}/usr/${_arch}" \( -name '*.a' -not -name 'libQt5QmlDevTools.a' -not -name 'libQt5Bootstrap.a' \) -exec ${_arch}-strip -g {} \;
       [[ -d "${pkgdir}/usr/${_arch}/lib/qt/bin/" ]] && \
         find "${pkgdir}/usr/${_arch}/lib/qt/bin/" -exec strip --strip-all {} \;
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
       popd
     done
 
-    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    # drop QMAKE_PRL_BUILD_DIR because reference the build dir
     find "${pkgdir}/usr/${_arch}/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
   done
 }
