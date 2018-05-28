@@ -1,33 +1,38 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=archipelago
-pkgver=2.0.0
+pkgver=2.1.2.r0.g51fee34
+_pkgver=2.1.2
 pkgrel=1
-pkgdesc="
-An open-source terminal emulator built on web technology"
+pkgdesc="An open-source terminal emulator built on web technology"
 arch=("x86_64")
 url="https://github.com/npezza93/archipelago"
 license=("MIT")
-depends=('nodejs')
-source=("$url/releases/download/v$pkgver/Archipelago_${pkgver}_amd64.deb")
-sha512sums=('3fac44cbfb706ba7e419d47586d23accca47dee4bd1153ed2820d9861ed8d921c6741d588662de810d2a7702d88a12989fb7802184bbc866175d1434d45f492c')
- 
-prepare() {
-  cd $srcdir
+depends=('nodejs' 'libxkbfile' 'libx11')
+makedepends=("git" "yarn" 'node-gyp' 'python2' 'libx11')
+source=("git+https://github.com/npezza93/archipelago.git#tag=v$_pkgver")
+sha512sums=('SKIP')
 
-  msg2 "  -> Extracting files..."
-  tar -xf data.tar.xz
+pkgver() {
+ cd "$pkgname"
+ git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd $srcdir/archipelago
+  yarn install --ignore-engines
+  yarn run dist
 }
 
 package() {
-  cd $srcdir
-
-  msg2 "  -> Installing program..."
+  cd $srcdir/archipelago
+  ar -x dist/*.deb
+  tar -xf data.tar.xz
 
   cp -r {opt/,usr/} $pkgdir/
   
 install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$pkgname <<END
-     #!/usr/bin/bash
+    #!/usr/bin/bash
     /opt/Archipelago/archipelago
 END
 
