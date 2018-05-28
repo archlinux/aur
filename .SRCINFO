@@ -1,6 +1,6 @@
 pkgbase = vlc-git
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)
-	pkgver = 4.0.0.r2923.g61a0224267
+	pkgver = 4.0.0.r3110.gcea6af86d9
 	pkgrel = 1
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
@@ -62,6 +62,7 @@ pkgbase = vlc-git
 	makedepends = libgoom2
 	makedepends = projectm
 	makedepends = chromaprint
+	makedepends = git
 	depends = a52dec
 	depends = libdvbpsi
 	depends = libxpm
@@ -154,7 +155,7 @@ pkgbase = vlc-git
 	optdepends = ncurses: ncurses interface
 	optdepends = libnotify: notification plugin
 	optdepends = gtk3: notification plugin
-	provides = vlc=4.0.0.r2923.g61a0224267
+	provides = vlc=4.0.0.r3110.gcea6af86d9
 	conflicts = vlc
 	conflicts = vlc-dev
 	conflicts = vlc-plugin
