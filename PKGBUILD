@@ -3,17 +3,14 @@ pkgname=terminus-terminal
 _pkgname=terminus
 _pkgver=1.0.0
 pkgver=v1.0.0.alpha.47.r0.g1d69082
-pkgrel=1
+pkgrel=2
 alpha=47
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
 url="https://eugeny.github.io/terminus/"
 license=('MIT')
 depends=('nodejs' 'fontconfig')
-makedepends=('git' 'npm' 'yarn' 'python2' 'npm-check-updates')
-provides=("terminus-terminal")
-conflicts=("terminus-terminal")
-replaces=('terminus-terminal')
+makedepends=('git' 'npm' 'yarn' 'python2')
 source=("git+https://github.com/Eugeny/terminus#tag=v${_pkgver}-alpha.${alpha}")
 sha256sums=('SKIP')
 
@@ -26,11 +23,6 @@ pkgver() {
 build(){
   cd "$srcdir/$_pkgname/"
   yarn install
-  ./scripts/install-deps.js
-  cd terminus-terminal/node_modules/font-manager
-  ncu -uan
-  npm install
-  cd $srcdir/$_pkgname
   ./scripts/install-deps.js
   yarn run build
   ./scripts/build-native.js
