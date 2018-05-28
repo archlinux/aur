@@ -1,0 +1,14 @@
+diff --git a/js/ui/tweener.js b/js/ui/tweener.js
+index 1a85e2fb1..8e8d90a8e 100644
+--- a/js/ui/tweener.js
++++ b/js/ui/tweener.js
+@@ -88,8 +88,8 @@ function _addHandler(target, params, name, handler) {
+         let eventScope = oldScope ? oldScope : target;
+ 
+         params[name] = () => {
+-            oldHandler.apply(eventScope, oldParams);
+             handler(target);
++            oldHandler.apply(eventScope, oldParams);
+         };
+     } else
+         params[name] = () => { handler(target); };
