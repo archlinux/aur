@@ -3,7 +3,7 @@
 
 pkgbase=python-amqp
 pkgname=('python-amqp' 'python2-amqp')
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Low-level AMQP client for Python (fork of amqplib)"
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL')
 makedepends=('python-vine' 'python2-vine')
 checkdepends=('python-pytest-runner' 'python2-pytest-runner')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/celery/py-amqp/archive/v$pkgver.tar.gz")
-sha512sums=('6d12bd6cd7d4ca0cd756e8d434a29371f67e107c6bab602527c414ffeb650bafd163d1615afe625b08af1b144095a4ea4cf47eb68ae399887b974ff0d8614400')
+sha512sums=('17a428e7de8a2383fbedd9d56a9870ca2ce6de7b43c6ad024b27e3c6c6724a0c8d6e4fe8fcfcf9283af0e294e567c913d805a3c8fd64649be8cc9e7e509a5ef5')
 
 prepare() {
   cp -a py-amqp-$pkgver{,-py2}
