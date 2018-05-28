@@ -1,7 +1,7 @@
 # Maintainer: Joseph R. Prostko <joe dot prostko at gmail dot com>
 
 pkgname=aptly
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A Swiss Army knife for Debian repository management."
 url="https://www.aptly.info"
@@ -10,8 +10,8 @@ options=('!strip')
 arch=('i686' 'x86_64')
 source_i686=("https://bintray.com/artifact/download/smira/aptly/aptly_${pkgver}_linux_386.tar.gz")
 source_x86_64=("https://bintray.com/artifact/download/smira/aptly/aptly_${pkgver}_linux_amd64.tar.gz")
-sha256sums_i686=('21f2070830dd327b7aed1025566db86fc9d65a87068eb9a713495aa4de3924ae')
-sha256sums_x86_64=('fc90a9e13239cc554dbf16c71f1302a8adc02a3fa0666f12492f9051e87152a0')
+sha256sums_i686=('e883fda8434e767e767cbd21ab6cb0e131e03e22a99abfaf7d3c0f36d8e8687b')
+sha256sums_x86_64=('e45bb349be0ef9a628a17f6eb0b4ccb277563c99214e222e5f28b823f129f47b')
 
 package() {
     # Test for current architecture
