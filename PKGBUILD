@@ -1,11 +1,10 @@
 # Maintainer: Shajil K Joshy <shajilkrazy@gmail.com>
 pkgname=fonts-smc-malayalam
 pkgver=18.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Fonts for Malayalam released by Swathanthra Malayalam Computing"
 url="http://smc.org.in/fonts/"
 license=('GPL3')
-depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-malayalam-fonts-meta'
 	'ttf-malayalam-font-anjalioldlipi'
 	'ttf-malayalam-font-chilanka'
