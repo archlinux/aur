@@ -8,7 +8,7 @@ pkgname=inox-edgy
 pk=enox
 name=chromium
 pkgver=68.0.3440.0
-pkgrel=1
+pkgrel=6
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
 arch=('i686' 'x86_64')
@@ -155,14 +155,14 @@ sha256sums=('90f7cb6c9a08ab8508dfd6bdfb9b3426425c93adede5d4d623a59670167b768d'
             '0a148b0a15a63feb08ed79695a80d09ad39db7a3373b217cd499909218b94fda'
             '9465f89adc5b177050fd154b3be459f167fd3e157a1ebc0537b29070f0dbda5d'
             '5a4ec61000266fd623e0a3377210ed324ed62eeba6c61ecd95ffb49d4d20640f'
-            '571c626c0e7a43cf5919bdb8058a72c2026278a743c7465b65f3659d914bc117'
+            '58324a01388369294f5ff5aa2ab40ec4c58c8010af9d325751b02950888322fe'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
             '5530e0c60dcfed5d17c7877d3c717b2b9fb2679c59bfe29a3784dce8b7bdd54b'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
             '48a42d38899795d4e959c6ec27a5e2288a3db54d3abf99f9caae887402d53988'
-            'c66015b7c2c8cf9209a82e0a18cf6b4913d79abb629701c832ee5c431af9e02b'
+            'a23945c950deae8888ec84593094f12adb8df92dea40328b55d4a01788e4d314'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
             '9d4953a3dc73cb01d9d65ea297ab4b09d47b4daaa5f2291ef35d0784a2f18a4e'
@@ -214,7 +214,6 @@ sha256sums=('90f7cb6c9a08ab8508dfd6bdfb9b3426425c93adede5d4d623a59670167b768d'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
-
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -290,7 +289,7 @@ patch -Np1 -i ../030.patch
 patch -Np1 -i ../CP.patch
 patch -Np1 -i ../032.patch
 patch -Np1 -i ../034.patch
-#patch -Np1 -i ../035.patch
+patch -Np1 -i ../035.patch
 patch -Np1 -i ../360.patch
 patch -Np1 -i ../888.patch
 patch -Np1 -i ../meme.patch
@@ -340,7 +339,7 @@ patch -Np1 -i ../narnia1.patch
 
 
 
-#patch -Np1 -Ri ../9k.patch
+patch -Np1 -i ../9k.patch
 patch -Np1 -i ../048.patch
 
 patch -Np1 -i ../12.patch
