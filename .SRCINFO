@@ -1,6 +1,6 @@
 pkgbase = way-cooler-git
 	pkgdesc = Customizeable Wayland compositor written in Rust
-	pkgver = v0.8.0.r246.gccf86d7
+	pkgver = 0.8.0.r246.gccf86d7
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Immington-Industries/way-cooler

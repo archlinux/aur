@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=way-cooler-git
-pkgver=v0.8.0.r246.gccf86d7
+pkgver=0.8.0.r246.gccf86d7
 pkgrel=1
 epoch=1
 pkgdesc="Customizeable Wayland compositor written in Rust"
@@ -23,7 +23,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
