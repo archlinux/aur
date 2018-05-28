@@ -30,5 +30,5 @@ sha256sums=('c7e3b91ec8aae66cfe3de15a4595d3413575b7d7d410ff01f479a89a0af72cbb'
 
 package(){
 	cd "$srcdir"
-	#find */ -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
+	find */ -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
 }
