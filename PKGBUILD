@@ -2,7 +2,7 @@
 # Contributor: Jose Riha <jose1711 [at] gmail (dot) com>
 
 pkgname=osmupdate
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='Download, manipulate and apply OpenStreetMap changefiles'
 url='https://wiki.openstreetmap.org/wiki/Osmupdate'
@@ -11,7 +11,7 @@ arch=(i686 x86_64)
 depends=(osmconvert wget)
 optdepends=('gzip: to write gzip compressed files')
 source=('http://m.m.i24.cc/osmupdate.c')
-sha256sums=('54760538cd325efa763a7445d15b4dde140aeafed612f626b31f52a510d6e14c')
+sha256sums=('9e72144bef15e461ce39c066a3015088d2126c27e2f78636d0deccab380f3cc1')
 
 build() {
   gcc -O3 -oosmupdate osmupdate.c
