@@ -18,6 +18,18 @@
 #define RED COLOR_PAIR(1)
 #define BLACK COLOR_PAIR(2)
 
+#define PADDING 3
+
+#define GRAPH_Y PADDING
+#define GRAPH_X PADDING
+#define GRAPH_HEIGHT (rows / 2 - GRAPH_Y)
+#define GRAPH_WIDTH (cols / 2 - GRAPH_X)
+
+#define COMPANY_Y GRAPH_Y
+#define COMPANY_X GRAPH_WIDTH + GRAPH_X
+#define COMPANY_HEIGHT GRAPH_HEIGHT
+#define COMPANY_WIDTH GRAPH_WIDTH
+
 #include <stdlib.h>
 #include <ncurses.h>
 #include "api.h"

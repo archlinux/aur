@@ -16,35 +16,116 @@ void symbol_print_info(const char* symbol) {
         if (symbol_info == NULL)
             RET_MSG("Invalid symbol!")
     }
+    initscr();
+    int rows, cols;
+    getmaxyx(stdscr, rows, cols);
+    start_color();
+    init_pair(2, COLOR_WHITE, COLOR_BLACK); // Init black background, white foreground
+    bkgd(BLACK); // set background/foreground
 
+    char time_str[32];
+    time_t time = symbol_info->intraday_time / 1000; // divide into second instead of milliseconds
+    struct tm* ts = localtime(&time);
+    strftime(time_str, 32, "%F %T", ts);
 
-    if (symbol_info->name[0] != '\0')
-        printf("%s %s $%lf (%lf%%)\n", symbol_info->name, symbol_info->symbol, symbol_info->price,
-               symbol_info->change_1d);
+    mvprintw(0, 13, "%s", time_str);
+    mvprintw(0, (int)(28 + strlen(symbol_info->name) + strlen(symbol_info->symbol)), "24H      7D     30D");
+    mvprintw(1, 13, "%s %s %8.2lf %6.2lf%% %6.2lf%% %6.2lf%%", symbol_info->name, symbol_info->symbol,
+             symbol_info->price, symbol_info->change_1d, symbol_info->change_7d, symbol_info->change_30d);
 
+    WINDOW* company_win = newwin(COMPANY_HEIGHT, COMPANY_WIDTH, COMPANY_Y, COMPANY_X);
 
-    if (strcmp(symbol_info->symbol, "") != 0)
-        printf("Symbol: %s\n", symbol_info->symbol);
-    if (symbol_info->price != EMPTY)
-        printf("Price: $%.2lf\n", symbol_info->price);
-    if (symbol_info->change_1d != EMPTY)
-        printf("Percent change 24h: %.2lf%%\n", symbol_info->change_1d);
-    if (symbol_info->change_7d != EMPTY)
-        printf("Percent change 7d: %.2lf%%\n", symbol_info->change_7d);
-    if (symbol_info->change_30d != EMPTY)
-        printf("Percent change 30d: %.2lf%%\n", symbol_info->change_30d);
-    if (symbol_info->div_yield != EMPTY)
-        printf("Dividend yield: %.2lf%%\n", symbol_info->div_yield);
+    if (symbol_info->description[0] != '\0')
+        mvwprintw(company_win, 0, 0, "%s\n\n", symbol_info->description);
+    else mvwprintw(company_win, 0, 0, "Description unavailable.\n\n");
+
+    if (symbol_info->ceo[0] != '\0')
+        wprintw(company_win, "CEO: %s", symbol_info->ceo);
+    else wprintw(company_win, "CEO unavailable.");
+
+    int x, y;
+    getyx(company_win, y, x);
+
+    if (symbol_info->website[0] != '\0')
+        mvwprintw(company_win, y, getmaxx(company_win) / 2, "Website: %s\n", symbol_info->website);
+    else mvwprintw(company_win, y, getmaxx(company_win) / 2, "Website unavailable.\n");
+
+    if (symbol_info->sector[0] != '\0')
+        wprintw(company_win, "Sector: %s", symbol_info->sector);
+    else wprintw(company_win, "Sector unavailable.");
+
+    getyx(company_win, y, x);
+
+    if (symbol_info->industry[0] != '\0')
+        mvwprintw(company_win, y, getmaxx(company_win) / 2, "Industry: %s\n", symbol_info->industry);
+    else mvwprintw(company_win, y, getmaxx(company_win) / 2, "Industry unavailable.\n");
+
+    if (symbol_info->revenue != EMPTY)
+        wprintw(company_win, "Revenue: %ld", symbol_info->revenue);
+    else wprintw(company_win, "Revenue unavailable.");
+
+    getyx(company_win, y, x);
+
+    if (symbol_info->gross_profit != EMPTY)
+        mvwprintw(company_win, y, getmaxx(company_win) / 2, "Gross Profit: %ld\n", symbol_info->gross_profit);
+    else mvwprintw(company_win, y, getmaxx(company_win) / 2, "Gross Profit unavailable.\n");
+
+    if (symbol_info->cash != EMPTY)
+        wprintw(company_win, "Cash: %ld", symbol_info->cash);
+    else wprintw(company_win, "Cash unavailable.");
+
+    getyx(company_win, y, x);
+
+    if (symbol_info->debt != EMPTY)
+        mvwprintw(company_win, y, getmaxx(company_win) / 2, "Debt: %ld\n", symbol_info->debt);
+    else mvwprintw(company_win, y, getmaxx(company_win) / 2, "Debt unavailable.\n");
+
     if (symbol_info->marketcap != EMPTY)
-        printf("Market Cap: $%ld\n", symbol_info->marketcap);
+        wprintw(company_win, "Market Cap: %ld", symbol_info->marketcap);
+    else wprintw(company_win, "Market Cap unavailable.");
+
+    getyx(company_win, y, x);
+
     if (symbol_info->volume_1d != EMPTY)
-        printf("Volume 24h: $%ld\n", symbol_info->volume_1d);
+        mvwprintw(company_win, y, getmaxx(company_win) / 2, "Volume: %ld\n", symbol_info->volume_1d);
+    else mvwprintw(company_win, y, getmaxx(company_win) / 2, "Volume unavailable.\n");
+
+    if (symbol_info->pe_ratio != EMPTY)
+        wprintw(company_win, "P/E Ratio: %ld", symbol_info->pe_ratio);
+    else wprintw(company_win, "P/E Ratio unavailable.");
+
+    getyx(company_win, y, x);
+
+    if (symbol_info->div_yield != EMPTY)
+        mvwprintw(company_win, y, getmaxx(company_win) / 2, "Dividend Yield: %lf\n\n", symbol_info->div_yield);
+    else mvwprintw(company_win, y, getmaxx(company_win) / 2, "Dividend Yield unavailable.\n\n");
+
+    y += 2;
+    for (int i = 0; i < QUARTERS; i++)
+        mvwprintw(company_win, y, 4 + i * getmaxx(company_win) / QUARTERS, "%s", symbol_info->fiscal_period[i]);
+
+    y++;
+    mvwprintw(company_win, y, 0, "EPS ");
+    for (int i = 0; i < QUARTERS; i++)
+        mvwprintw(company_win, y, 4 + i * getmaxx(company_win) / QUARTERS, "%.2lf", symbol_info->eps[i]);
+
+    y++;
+    mvwprintw(company_win, y, 0, "1Y%%  ");
+    for (int i = 0; i < QUARTERS; i++)
+        mvwprintw(company_win, y, 4 + i * getmaxx(company_win) / QUARTERS, "%.2lf%%", symbol_info->eps_year_ago[i]);
+
+    refresh();
+    wrefresh(company_win);
+
+    WINDOW* graph_win = newwin(GRAPH_HEIGHT, GRAPH_WIDTH, GRAPH_Y, GRAPH_X);
+    graph_main(symbol, NULL, graph_win);
+    endwin();
     api_info_destroy(&symbol_info);
 }
 
 void symbol_print_news(const char* symbol, int num_articles) {
     if (num_articles > 50)
-    RET_MSG("You cannot request more than 50 articles.");
+        RET_MSG("You cannot request more than 50 articles.");
 
     char iex_api_string[URL_MAX_LENGTH];
     sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/news/last/%d", symbol, num_articles);
@@ -183,7 +264,8 @@ void graph_main(const char* symbol, const char* symbol2, WINDOW* window) {
             graph_print(price_data, price_data2, &start_date, zoom, symbol, symbol2, window);
         }
     }
-    endwin();
+    if (window == stdscr)
+        endwin();
     free(price_data);
     if (price_data2 != NULL)
         free(price_data2);
@@ -197,7 +279,7 @@ void graph_print(const double* points, const double* points2, struct tm* start_t
     cols -= 11; // 10 offset to give space for graph labels + 1 for right side
     rows -= 3; // Make space for zoom indicator
     rows -= rows % ROWS_SPACING; // Round down to multiple of 5
-    if (cols < 50 || rows < 25) // Exits if the terminal is too small
+    if (cols < 40 || rows < 15) // Exits if the terminal is too small
         RET_MSG("Terminal not large enough.")
 
     time_t now = time(NULL);
