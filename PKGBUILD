@@ -1,14 +1,16 @@
+#Maintainer: Boris Geiger <boris.geiger@bgsoftware.de>
 pkgname=bgsync
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Backup and Synchronization Tool'
 arch=('any')
+url="https://bgsoftware.de"
 license=('None')
-source=("https://bgsoftware.de/dls/bgsync/bgsync_1.4-1_Arch.zip")
+source=("https://bgsoftware.de/dls/bgsync/1.4.1/bgsync_1.4.1-1_Arch.zip")
 depends=('mono')
 makedepends=('unzip')
 
-sha256sums=('c2265145533bfce03762d375294c5321485b5c8dea5d594a139cf9e849512e32')
+sha256sums=('63a9d2e13432e7086f7eff3ccc0574b6a3b83b7d0e0553ddccbc196797a41c81')
 
 package() {
 	install -d "${pkgdir}/usr/bin"
