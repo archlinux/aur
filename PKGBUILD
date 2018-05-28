@@ -1,17 +1,20 @@
 pkgname=go-bin
-pkgver=1.9.2
-pkgrel=1
+pkgver=1.10.1
+pkgrel=2
 provides=('go')
 pkgdesc='Compiler and tools for the Go programming language from Google'
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url='http://golang.org/'
 license=('custom')
 depends=('bash' 'perl')
 optdepends=('java-environment: for running testsuite')
 options=('!strip' 'staticlibs')
-sha1sums_x86_64=('94c889e039e3d2e94ed95e8f8cb747c5bc1c2b58'
+sha1sums_x86_64=('72d820dec546752e5a8303b33b009079c15c2390ce76d67cf514991646c6127b'
                  '0428eb2625009006fe0a64883ec74f528c7a02c6')
 source_x86_64=("https://storage.googleapis.com/golang/go${pkgver}.linux-amd64.tar.gz" etcgobin)
+sha1sums_i686=('acbe19d56123549faf747b4f61b730008b185a0e2145d220527d2383627dfe69'
+               '0428eb2625009006fe0a64883ec74f528c7a02c6')
+source_i686=("https://storage.googleapis.com/golang/go${pkgver}.linux-386.tar.gz" etcgobin)
 
 package() {
   install -d "$pkgdir"/opt
