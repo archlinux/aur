@@ -8,7 +8,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/Immington-Industries/way-cooler"
 license=('MIT')
 depends=('wlroots-git' 'rust')
-makedepends=('cargo' 'rust' 'git' 'wayland-protocols' 'clang' 'libxcursor')
+makedepends=('python' 'cargo' 'rust' 'git' 'wayland-protocols' 'clang' 'libxcursor'
+             'cairo' 'gdk-pixbuf2')
 optdepends=('weston: default terminal emulator'
             'dmenu: default launcher'
             'way-cooler-bg: draws a background for Way Cooler')
@@ -31,15 +32,16 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  git submodule init wlroots-rs
-  git config submodule.wlroots-rs.url ../wlroots-rs
-  git submodule update --remote --init wlroots-rs
-  cd ../wlroots-rs
-  git submodule init wlroots-sys/wlroots
-  git config submodule.wlroots.url ../wlroots
-  git submodule update --init --recursive --remote wlroots-sys/wlroots/
-  cd ../wlroots
-  git reset --hard 79683ee497cff4e363612933af2f068cfea9b19c 
+  git submodule update --init --recursive
+  #git submodule init wlroots-rs
+  #git config submodule.wlroots-rs.url ../wlroots-rs
+  #git submodule update --remote --init wlroots-rs
+  #cd ../wlroots-rs
+  #git submodule init wlroots-sys/wlroots
+ # git config submodule.wlroots.url ../wlroots
+ # git submodule update --init --recursive --remote wlroots-sys/wlroots/
+ # cd ../wlroots
+ # git reset --hard 79683ee497cff4e363612933af2f068cfea9b19c 
 }
 build() {
   cd "$srcdir/$pkgname/wlroots-rs"
