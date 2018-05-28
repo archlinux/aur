@@ -1,7 +1,7 @@
-From 19a847d6ea1601de83ad067ba6c0fcf562273e72 Mon Sep 17 00:00:00 2001
+From 9b80c0d4cabad01097173fd73693417f9461f4e9 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:58:28 +0200
-Subject: [PATCH 06/32] Don't add resource files to LIBS parameter
+Subject: [PATCH 06/33] Don't add resource files to LIBS parameter
 
 Solves an issue where the generated pkg-config
 files contained invalid Libs.private references
@@ -24,5 +24,5 @@ index d6d6b04148..7bb616302f 100644
      if (project->isActiveConfig("dll")) {
          QString destDir = "";
 -- 
-2.16.1
+2.17.0
 

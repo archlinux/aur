@@ -1,7 +1,7 @@
-From bcb4c82d669d352c183c45e1cb71bd7c0946d1ec Mon Sep 17 00:00:00 2001
+From 4beab05117f21513f0e400c94c9b3d31db25fec0 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:01:14 +0200
-Subject: [PATCH 07/32] Prevent debug library names in pkg-config files
+Subject: [PATCH 07/33] Prevent debug library names in pkg-config files
 
 qmake generates the pkgconfig .pc files two times, once for the
 release build and once for the debug build (which we're not actually
@@ -29,5 +29,5 @@ index b9871ff49c..0d07d6c333 100644
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
 -- 
-2.16.1
+2.17.0
 

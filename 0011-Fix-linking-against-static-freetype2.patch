@@ -1,14 +1,14 @@
-From 3deafc5a5c28faaafb1f1ec52d32c9fc5df2986d Mon Sep 17 00:00:00 2001
+From 7c357a7a1a8e7b5ab4eb2bf4dfce9a5aee5c444d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 20:51:19 +0100
-Subject: [PATCH 11/32] Fix linking against static freetype2
+Subject: [PATCH 11/33] Fix linking against static freetype2
 
 ---
  src/gui/configure.json | 7 +++++--
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/src/gui/configure.json b/src/gui/configure.json
-index bc501bd3fc..f7a4a39fd4 100644
+index d629a45b92..afa3d95f39 100644
 --- a/src/gui/configure.json
 +++ b/src/gui/configure.json
 @@ -158,8 +158,11 @@
@@ -26,5 +26,5 @@ index bc501bd3fc..f7a4a39fd4 100644
          },
          "fontconfig": {
 -- 
-2.16.1
+2.17.0
 

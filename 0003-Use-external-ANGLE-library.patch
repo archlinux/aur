@@ -1,7 +1,7 @@
-From 84d1b9f6d84e46ee756761d0a9cc264d067b9250 Mon Sep 17 00:00:00 2001
+From cb3fe1244a3c10139b4019d3378e644d41b6db6c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:41:38 +0200
-Subject: [PATCH 03/32] Use external ANGLE library
+Subject: [PATCH 03/33] Use external ANGLE library
 
 ---
  src/gui/Qt5GuiConfigExtras.cmake.in       | 4 ++--
@@ -28,7 +28,7 @@ index 07869efd7d..2e32911a64 100644
  
  _qt5_Gui_check_file_exists(${Qt5Gui_EGL_INCLUDE_DIRS})
 diff --git a/src/gui/gui.pro b/src/gui/gui.pro
-index f8cec00b82..d09c9fd49c 100644
+index 759d6f3cbf..1ddcf1db78 100644
 --- a/src/gui/gui.pro
 +++ b/src/gui/gui.pro
 @@ -18,12 +18,6 @@ MODULE_PLUGIN_TYPES = \
@@ -54,10 +54,10 @@ index f8cec00b82..d09c9fd49c 100644
  
  include(accessible/accessible.pri)
 diff --git a/src/opengl/opengl.pro b/src/opengl/opengl.pro
-index 742be61a50..5fef69fd3f 100644
+index 8b2349ff2f..f5e43c6adc 100644
 --- a/src/opengl/opengl.pro
 +++ b/src/opengl/opengl.pro
-@@ -11,6 +11,7 @@ QMAKE_DOCS = $$PWD/doc/qtopengl.qdocconf
+@@ -10,6 +10,7 @@ QMAKE_DOCS = $$PWD/doc/qtopengl.qdocconf
  
  qtConfig(opengl): CONFIG += opengl
  qtConfig(opengles2): CONFIG += opengles2
@@ -66,7 +66,7 @@ index 742be61a50..5fef69fd3f 100644
  HEADERS += qgl.h \
             qgl_p.h \
 diff --git a/src/plugins/platforms/windows/windows.pri b/src/plugins/platforms/windows/windows.pri
-index b7790a66e3..046fe34a06 100644
+index f4c396f7c5..fc87e810aa 100644
 --- a/src/plugins/platforms/windows/windows.pri
 +++ b/src/plugins/platforms/windows/windows.pri
 @@ -4,6 +4,7 @@ LIBS += -lole32 -luser32 -lwinspool -limm32 -lwinmm -loleaut32
@@ -78,10 +78,10 @@ index b7790a66e3..046fe34a06 100644
  mingw: LIBS *= -luuid
  # For the dialog helpers:
 diff --git a/src/src.pro b/src/src.pro
-index a73729a760..32d9f8502a 100644
+index 1f7c5d99c1..24e24ef7f1 100644
 --- a/src/src.pro
 +++ b/src/src.pro
-@@ -180,10 +180,6 @@ qtConfig(gui) {
+@@ -189,10 +189,6 @@ qtConfig(gui) {
          SUBDIRS += src_3rdparty_harfbuzzng
          src_gui.depends += src_3rdparty_harfbuzzng
      }
@@ -93,5 +93,5 @@ index a73729a760..32d9f8502a 100644
          SUBDIRS += src_3rdparty_libpng
          src_3rdparty_freetype.depends += src_3rdparty_libpng
 -- 
-2.16.1
+2.17.0
 
