@@ -1,0 +1,14 @@
+pkgbase = archipelago-bin
+	pkgdesc = An open-source terminal emulator built on web technology An open-source terminal emulator built on web technology
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/npezza93/archipelago
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	depends = glib2
+	source = https://github.com/npezza93/archipelago/releases/download/v2.1.2/Archipelago_2.1.2_amd64.deb
+	sha512sums = 861f380d6f2aee4db4e293758bec6595b16cfb73e2c39fdc492cf78ee9a4372308c90b1a2b92d03530b23528739b5edc6fd71c3c56d7bd583ccd43504daf9e44
+
+pkgname = archipelago-bin
+
