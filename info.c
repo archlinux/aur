@@ -1,6 +1,99 @@
-#include "graph.h"
+#include "info.h"
 
 int zoom_months[] = {60, 48, 36, 24, 12, 9, 6, 3, 1}, zoom_change_x_months[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
+
+void symbol_print_info(const char* symbol) {
+    Info* symbol_info;
+    if (strlen(symbol) > 5) { // If symbol length is greater than 5, then it must be a crypto
+        symbol_info = coinmarketcap_get_info(symbol);
+        if (symbol_info == NULL)
+            RET_MSG("Invalid symbol!")
+    }
+    else {
+        symbol_info = iex_get_info(symbol);
+        if (symbol_info == NULL)
+            symbol_info = morningstar_get_info(symbol);
+        if (symbol_info == NULL)
+            RET_MSG("Invalid symbol!")
+    }
+
+
+    if (symbol_info->name[0] != '\0')
+        printf("%s %s $%lf (%lf%%)\n", symbol_info->name, symbol_info->symbol, symbol_info->price,
+               symbol_info->change_1d);
+
+
+    if (strcmp(symbol_info->symbol, "") != 0)
+        printf("Symbol: %s\n", symbol_info->symbol);
+    if (symbol_info->price != EMPTY)
+        printf("Price: $%.2lf\n", symbol_info->price);
+    if (symbol_info->change_1d != EMPTY)
+        printf("Percent change 24h: %.2lf%%\n", symbol_info->change_1d);
+    if (symbol_info->change_7d != EMPTY)
+        printf("Percent change 7d: %.2lf%%\n", symbol_info->change_7d);
+    if (symbol_info->change_30d != EMPTY)
+        printf("Percent change 30d: %.2lf%%\n", symbol_info->change_30d);
+    if (symbol_info->div_yield != EMPTY)
+        printf("Dividend yield: %.2lf%%\n", symbol_info->div_yield);
+    if (symbol_info->marketcap != EMPTY)
+        printf("Market Cap: $%ld\n", symbol_info->marketcap);
+    if (symbol_info->volume_1d != EMPTY)
+        printf("Volume 24h: $%ld\n", symbol_info->volume_1d);
+    api_info_destroy(&symbol_info);
+}
+
+void symbol_print_news(const char* symbol, int num_articles) {
+    if (num_articles > 50)
+    RET_MSG("You cannot request more than 50 articles.");
+
+    char iex_api_string[URL_MAX_LENGTH];
+    sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/news/last/%d", symbol, num_articles);
+    String* pString = api_curl_data(iex_api_string);
+    if (pString == NULL)
+        return;
+
+    if (strcmp(pString->data, "Unknown symbol") == 0) { // Invalid symbol
+        string_destroy(&pString);
+        RET_MSG("Invalid symbol.");
+    }
+
+    Json* jobj = json_tokener_parse(pString->data);
+    size_t len = json_object_array_length(jobj);
+    if (len == 0) {
+        json_object_put(jobj);
+        string_destroy(&pString);
+        RET_MSG("No articles available.");
+    }
+
+    Json* idx;
+    const char* headline, * source, *url;
+    char date[DATE_MAX_LENGTH];
+    for (size_t i = 0; i < len; i++) {
+        idx = json_object_array_get_idx(jobj, i);
+        headline = json_object_get_string(json_object_object_get(idx, "headline")); // Headline
+        source = json_object_get_string(json_object_object_get(idx, "source")); // Source
+        strncpy(date, json_object_get_string(json_object_object_get(idx, "datetime")), 10); // Date
+        date[10] = '\0'; // null terminate date before time
+        char summary[strlen(json_object_get_string(json_object_object_get(idx, "summary")))]; // Summary
+        strcpy(summary, json_object_get_string(json_object_object_get(idx, "summary")));
+        strip_tags(summary); // Summary will be html formatted, so must strip tags
+        url = json_object_get_string(json_object_object_get(idx, "url")); // URL
+        char related[strlen(json_object_get_string(json_object_object_get(idx, "related")))]; // Related
+        strcpy(related, json_object_get_string(json_object_object_get(idx, "related")));
+        int related_num = 0;
+        for (size_t j = 0; j < strlen(related); j++) { // List only first five related symbols
+            if (related[j] == ',')
+                related_num++;
+            if (related_num == 5) {
+                related[j] = '\0';
+                break;
+            }
+        }
+        printf("%s | %s | %s\n%s\n%s | Related: %s\n\n", headline, source, date, summary, url, related);
+    }
+    json_object_put(jobj);
+    string_destroy(&pString);
+}
 
 void graph_main(const char* symbol, const char* symbol2, WINDOW* window) {
     if (window == NULL)

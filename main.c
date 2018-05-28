@@ -1,5 +1,5 @@
 #include "portfolio.h"
-#include "graph.h"
+#include "info.h"
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
         int num_articles = 3; // Default
         if (argc == 4)
             num_articles = (int) strtol(argv[3], NULL, 10);
-        iex_print_news(sym, num_articles);
+        symbol_print_news(sym, num_articles);
     }
 
         //Encrypt/decrypt
@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
 
         // Info
     else if (strcmp(cmd, "info") == 0 && argc == 3)
-        api_print_info(sym);
+        symbol_print_info(sym);
 
         // Graph
     else if (strcmp(cmd, "graph") == 0 && argc == 3)

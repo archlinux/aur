@@ -146,18 +146,7 @@ double* iex_get_hist_5y(const char* symbol);
  */
 double* morningstar_get_hist_5y(const char* symbol);
 
-/**
- * Prints the top three news articles by popularity pertaining to the given string, ticker_name_string. Spaces and
- * underscores will be url-encoded (replaced by "%20"). News API will be used for data.
- * @param symbol the string to query
- */
-void iex_print_news(const char* symbol, int num_articles);
 
-/**
- * Prints information about the symbol ticker_name_string by calling the function json_print_news.
- * @param ticker_name_string
- */
-void api_print_info(const char* ticker_name_string);
 
 /**
  * Returns a pointer to an Info object containing info pertaining
