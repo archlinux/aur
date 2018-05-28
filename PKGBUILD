@@ -3,7 +3,7 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=56.1.0
+pkgver=56.2.0
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -30,9 +30,9 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
         waterfox-install-dir.patch 
         no-crmf.diff
         wifi-fix-interface.patch
-        "mozilla-kde-$_patchrev.patch::$_patchurl/mozilla-kde.patch"
+        waterfoxproject-kde-56.2.0.patch
         "firefox-kde-$_patchrev.patch::$_patchurl/firefox-kde.patch"
-        "fix_waterfox_browser-kde_xul.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/fix_waterfox_browser-kde_xul.patch"
+        fix_waterfox_browser-kde_xul.patch
         pgo_fix_missing_kdejs.patch
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/distribution.ini"
@@ -44,16 +44,15 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
         "mozilla-ucontext-$_patchrev.patch::$_patchurl/mozilla-ucontext.patch"
         no-plt.diff
         "unity-menubar-$pkgver.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox.xenial/download/1222/unitymenubar.patch-20130215095938-1n6mqqau8tdfqwhg-1/unity-menubar.patch"
-        new_rust.patch
         .gitignore)
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
-            'c4c0a726115eca89ab82a85b364cef6cc897f58317b2890f214510810a30cfa3'
+            '911e07ecb0095337c580c94f16b5414c243b26b1080cf0bfd2fac7f76c9a6a43'
             'f672e60e22869381e9c4cdd90353a053a0171778eca40d4664bc733822fd535f'
-            '774d13c0d319b83a3f90d15ceed093e80ff07a2794038c95ffa79539ca2819cc'
+            '33a8e89e504067914665b7858061f34dc81057961f365024c891aa386afc28ce'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             'e144a6fac4466acdba86194b43fb41c185c38e296d6262f26c3bff3d2b6db3be'
@@ -65,7 +64,6 @@ sha256sums=('SKIP'
             '96d9accb74e19f640e356572b3c0914c6be867cbdf351392b0cb5c00161ee012'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
             '5903f99dce010279e2a2f0e56d98e756c5abf9a57e27df5e2239076038868d3d'
-            'a454ea2c341acbbb916d3e2be9e7d09ec90500bd5538656b40e46ecdfe44b405'
             'e7ae75f0d1305066a5ba7b60a513d812c769beadaf890a13d1433c9f93242166')
 
 prepare() {
@@ -73,10 +71,10 @@ prepare() {
   ln -s /usr/bin/python2 path/python
   
   # Fix openSUSE's patches for Waterfox
-  sed -i 's/Firefox/Waterfox/g' $srcdir/mozilla-kde-$_patchrev.patch
-  sed -i 's/KMOZILLAHELPER/KWATERFOXHELPER/g' $srcdir/mozilla-kde-$_patchrev.patch
-  sed -i 's|/usr/lib/mozilla/kmozillahelper|/opt/waterfox/kwaterfoxhelper|g' $srcdir/mozilla-kde-$_patchrev.patch
-  sed -i 's/kmozillahelper/kwaterfoxhelper/g' $srcdir/mozilla-kde-$_patchrev.patch
+  #sed -i 's/Firefox/Waterfox/g' $srcdir/mozilla-kde-$_patchrev.patch
+  #sed -i 's/KMOZILLAHELPER/KWATERFOXHELPER/g' $srcdir/mozilla-kde-$_patchrev.patch
+  #sed -i 's|/usr/lib/mozilla/kmozillahelper|/opt/waterfox/kwaterfoxhelper|g' $srcdir/mozilla-kde-$_patchrev.patch
+  #sed -i 's/kmozillahelper/kwaterfoxhelper/g' $srcdir/mozilla-kde-$_patchrev.patch
   sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde-$_patchrev.patch
   
   cd Waterfox
@@ -185,7 +183,8 @@ ac_add_options --enable-eme=widevine
 END
 
   msg "Patching for KDE"
-  patch -Np1 -i "../mozilla-kde-$_patchrev.patch"
+  #patch -Np1 -i "../mozilla-kde-$_patchrev.patch"
+  patch -Np1 -i "../waterfoxproject-kde-56.2.0.patch"
   patch -Np1 -i "../firefox-kde-$_patchrev.patch"
   patch -Np1 -i "../fix_waterfox_browser-kde_xul.patch"
   patch -Np1 -i "../fix_crash_e10s_upload_cancel.patch"
@@ -199,9 +198,6 @@ END
   # https://bugs.archlinux.org/task/52183
   msg "Patching for Jack"
   patch -Np1 -i ../jack-system-ports.patch
-  
-  msg "Patching for new Rust"
-  patch -Np1 -i ../new_rust.patch
   
 }
 

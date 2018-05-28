@@ -1,0 +1,89 @@
+diff --git a/browser/base/content/browser-kde.xul b/browser/base/content/browser-kde.xul
+index 0f446c81f1f4..f4ffd8cb9c4f 100644
+--- a/browser/base/content/browser-kde.xul
++++ b/browser/base/content/browser-kde.xul
+@@ -80,6 +80,8 @@
+       <menuitem id="context_reloadTab" label="&reloadTab.label;" accesskey="&reloadTab.accesskey;"
+                 oncommand="gBrowser.reloadTab(TabContextMenu.contextTab);"/>
+       <menuitem id="context_toggleMuteTab" oncommand="TabContextMenu.contextTab.toggleMuteAudio();"/>
++      <menuitem id="context_duplicateTab" label="Duplicate Tab" accesskey="D"
++                oncommand="duplicateTabIn(TabContextMenu.contextTab, 'tab');"/>
+       <menuseparator/>
+       <menuitem id="context_pinTab" label="&pinTab.label;"
+                 accesskey="&pinTab.accesskey;"
+@@ -228,62 +230,6 @@
+       </hbox>
+     </panel>
+ 
+-    <!-- UI tour experience -->
+-    <panel id="UITourTooltip"
+-           type="arrow"
+-           hidden="true"
+-           noautofocus="true"
+-           noautohide="true"
+-           align="start"
+-           orient="vertical"
+-           role="alert">
+-     <vbox>
+-      <hbox id="UITourTooltipBody">
+-        <image id="UITourTooltipIcon"/>
+-        <vbox flex="1">
+-          <hbox id="UITourTooltipTitleContainer">
+-            <label id="UITourTooltipTitle" flex="1"/>
+-            <toolbarbutton id="UITourTooltipClose" class="close-icon"
+-                           tooltiptext="&uiTour.infoPanel.close;"/>
+-          </hbox>
+-          <description id="UITourTooltipDescription" flex="1"/>
+-        </vbox>
+-      </hbox>
+-      <hbox id="UITourTooltipButtons" flex="1" align="center"/>
+-     </vbox>
+-    </panel>
+-    <!-- type="default" forces frames to be created so that the panel's size can be determined -->
+-    <panel id="UITourHighlightContainer"
+-           type="default"
+-           hidden="true"
+-           noautofocus="true"
+-           noautohide="true"
+-           flip="none"
+-           consumeoutsideclicks="false"
+-           mousethrough="always">
+-      <box id="UITourHighlight"></box>
+-    </panel>
+-
+-    <panel id="social-share-panel"
+-           class="social-panel"
+-           type="arrow"
+-           orient="vertical"
+-           onpopupshowing="SocialShare.onShowing()"
+-           onpopuphidden="SocialShare.onHidden()"
+-           hidden="true">
+-      <hbox class="social-share-toolbar">
+-        <toolbarbutton id="manage-share-providers" class="share-provider-button"
+-                       tooltiptext="&social.addons.label;"
+-                       oncommand="BrowserOpenAddonsMgr('addons://list/service');
+-                                  this.parentNode.parentNode.hidePopup();"/>
+-        <arrowscrollbox id="social-share-provider-buttons" orient="horizontal" flex="1" pack="end">
+-          <toolbarbutton id="add-share-provider" class="share-provider-button" type="radio"
+-                         group="share-providers" tooltiptext="&findShareServices.label;"
+-                         oncommand="SocialShare.showDirectory()"/>
+-        </arrowscrollbox>
+-      </hbox>
+-      <hbox id="share-container" flex="1"/>
+-    </panel>
+     <panel id="sidebarMenu-popup"
+            class="cui-widget-panel"
+            role="group"
+@@ -501,11 +447,6 @@
+ #endif
+     </tooltip>
+ 
+-    <tooltip id="share-button-tooltip" onpopupshowing="SocialShare.createTooltip(event);">
+-      <label class="tooltip-label"/>
+-      <label class="tooltip-label"/>
+-    </tooltip>
+-
+ #include popup-notifications.inc
+ 
+ #include ../../components/customizableui/content/panelUI.inc.xul
+
