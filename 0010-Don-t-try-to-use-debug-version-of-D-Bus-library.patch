@@ -1,7 +1,7 @@
-From 5faa23e98e0fb63f3c2fedf3fe5fb93b2df940df Mon Sep 17 00:00:00 2001
+From 990f59202b9e39903d43ada99fd4f6b58e046c55 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 18:28:10 +0200
-Subject: [PATCH 10/32] Don't try to use debug version of D-Bus library
+Subject: [PATCH 10/33] Don't try to use debug version of D-Bus library
 
 Required for a debug build of Qt because mingw-w64-dbus
 does not contain debug version
@@ -12,10 +12,10 @@ Change-Id: Ic34e1025fda55f9659e065f5bbe9d51f55420adb
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure.json b/configure.json
-index 803abf38bb..7e0b7ffb56 100644
+index baa99a3da9..dfb8835ecb 100644
 --- a/configure.json
 +++ b/configure.json
-@@ -184,7 +184,7 @@
+@@ -185,7 +185,7 @@
                  {
                      "libs": "",
                      "builds": {
@@ -25,5 +25,5 @@ index 803abf38bb..7e0b7ffb56 100644
                      },
                      "condition": "config.win32 && features.shared"
 -- 
-2.16.1
+2.17.0
 
