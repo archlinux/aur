@@ -1,0 +1,19 @@
+pkgbase = swirc-git
+	pkgdesc = IRC client written with the Ncurses UI framework
+	pkgver = v2.1.r4.02b6457
+	pkgrel = 1
+	url = https://www.nifty-networks.net/swirc/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = pkg-config
+	depends = curl
+	depends = ncurses
+	depends = openssl
+	provides = swirc
+	conflicts = swirc
+	source = git+https://github.com/uhlin/swirc.git
+	sha256sums = SKIP
+
+pkgname = swirc-git
+
