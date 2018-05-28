@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgver = 4.16.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-clear
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.12.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.12.sign
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#commit=0102def94bb1ed3e983872e2655720773a73eacd
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#commit=2a82e25b1c4df844ae84c286f811da17e5854538
 	source = https://downloadmirror.intel.com/27776/eng/microcode-20180425.tgz
 	source = 60-linux.hook
 	source = 90-linux.hook
