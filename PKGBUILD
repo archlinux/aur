@@ -1,16 +1,16 @@
-# Maintainer: Marco Pompili <aur (at) emarcs (dot) org>
+# Maintainer: Marcs <aur (at) odd (dot) red>
 
 pkgname=proxydriver
-pkgver=1.61
-pkgrel=3
+pkgver=1.62
+pkgrel=1
 pkgdesc="Sets GNOME or KDE proxy settings using NetworkManager's informations"
 arch=("any")
 url="http://marin.jb.free.fr/proxydriver/"
 license=("GPL")
 depends=("networkmanager")
 optdepends=("gconf" "kdebase-runtime")
-source=("https://raw.githubusercontent.com/j1ml/proxydriver/master/proxydriver.sh")
-sha256sums=('adf16ba2642b02434c828863710282ba344e1aa147524154d1a2bd630c7513b6')
+source=("proxydriver.sh::http://sourceforge.net/p/proxydriver/code/HEAD/tree/src/v1.62/proxydriver.sh?format=raw")
+sha256sums=('3989e43c5ff8ab520e0a6f599dc189f6ee538e8207d9d5d42e10b914bbbf1c93')
 
 package() {
     install -Dm755 "${srcdir}/proxydriver.sh" \
