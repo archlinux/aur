@@ -2,7 +2,7 @@
 
 _pkgname="mesa-demos"
 pkgname="glxinfo"
-pkgver=8.3.0
+pkgver=8.4.0
 pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="Display info about a GLX extension and OpenGL renderer. Standalone binary from the mesa-demos project."
@@ -11,8 +11,8 @@ license=("MIT")
 depends=("libgl")
 makedepends=("glew")
 conflicts=("$_pkgname")
-source=("ftp://ftp.freedesktop.org/pub/mesa/demos/$pkgver/$_pkgname-$pkgver.tar.bz2")
-sha256sums=("c173154bbd0d5fb53d732471984def42fb1b14ac85fcb834138fb9518b3e0bef")
+source=("ftp://ftp.freedesktop.org/pub/mesa/demos/$_pkgname-$pkgver.tar.bz2")
+sha256sums=("01e99c94a0184e63e796728af89bfac559795fb2a0d6f506fa900455ca5fff7d")
 
 
 build() {
