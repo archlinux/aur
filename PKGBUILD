@@ -1,30 +1,30 @@
-# Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
-pkgname='cpy'
-pkgver=0.5.2
-pkgrel=2
-pkgdesc="A replacement for [c]at with automatic syntax highlighting"
+pkgname=cpy
+pkgver=0.1
+pkgrel=1
+pkgdesc='Alternative C/C++ syntax and tooling'
 arch=('any')
-url="https://github.com/rumpelsepp/c.py"
+url="https://github.com/vrsperanza/CPY"
 license=('MIT')
-depends=('python' 'python-pygments')
-makedepends=('git' 'asciidoctor')
-source=("$pkgname::git+https://github.com/rumpelsepp/c.py.git#tag=v$pkgver")
+makedepends=('git')
+source=("git+https://github.com/vrsperanza/CPY.git#commit=3ef591103d24408a1512a44ada2d50d4bb1b6e86")
 sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${pkgname}/man"
-    make ASCIIDOC_MAN_FLAGS=" -d manpage -b manpage -a reproducible" man
+  make -C CPY/Source
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/usr/share/man/man1"
-    install -m 644 "man/c.1" "${pkgdir}/usr/share/man/man1/c.1"
-    install -m 644 "man/fuc.1" "${pkgdir}/usr/share/man/man1/fuc.1"
-    install -m 644 "man/c.py.1" "${pkgdir}/usr/share/man/man1/c.py.1"
-    install -m 755 c "${pkgdir}/usr/bin/c"
-    install -m 755 fuc "${pkgdir}/usr/bin/fuc"
-    install -m 755 c.py "${pkgdir}/usr/bin/c.py"
+  msg2 'Packaging executable...'
+  install -Dm755 CPY/Source/cpy "$pkgdir/usr/bin/cpy"
+
+  msg2 'Packaging source code samples...'
+  install -d "$pkgdir/usr/share/doc/cpy/samples"
+  cp -r CPY/Examples/* "$pkgdir/usr/share/doc/cpy/samples/"
+
+  msg2 'Packaging license...'
+  install -Dm644 CPY/LICENSE "$pkgdir/usr/share/licenses/cpy/LICENSE"
 }
+
+# vim: ts=2 sw=2 et:
