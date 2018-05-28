@@ -3,7 +3,7 @@
 
 pkgname=rr
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
 	cd $pkgname-$pkgver/build
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -DBUILD_TESTS=OFF -DWILL_RUN_TESTS=OFF ..
 
 	make
 }
