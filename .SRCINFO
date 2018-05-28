@@ -1,8 +1,9 @@
 pkgbase = opam2
 	pkgdesc = OCaml package manager
-	pkgver = 2.0.0_rc
+	pkgver = 2.0.0_rc2
 	pkgrel = 1
 	url = https://opam.ocaml.org/
+	install = opam2.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -16,8 +17,8 @@ pkgbase = opam2
 	optdepends = rsync: For downloading packages with rsync
 	provides = opam
 	conflicts = opam
-	source = https://github.com/ocaml/opam/releases/download/2.0.0-rc/opam-full-2.0.0-rc.tar.gz
-	sha256sums = 1196b5a1aee66aa87eb01c005733992612718b6ee157b777340878f0e0434af6
+	source = https://github.com/ocaml/opam/releases/download/2.0.0-rc2/opam-full-2.0.0-rc2.tar.gz
+	sha256sums = 030ab2c0dbc82fb6fcb32dea837c7adf237620e4aa1ef8045b33ae673ee9cecd
 
 pkgname = opam2
 

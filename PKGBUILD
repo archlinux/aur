@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=opam2
-pkgver=2.0.0_rc
+pkgver=2.0.0_rc2
 pkgrel=1
 pkgdesc="OCaml package manager"
 arch=('i686' 'x86_64')
@@ -16,7 +16,8 @@ makedepends=('ocaml-compiler-libs')
 provides=('opam')
 conflicts=('opam')
 source=("https://github.com/ocaml/opam/releases/download/${pkgver//_/-}/opam-full-${pkgver//_/-}.tar.gz")
-sha256sums=('1196b5a1aee66aa87eb01c005733992612718b6ee157b777340878f0e0434af6')
+install=$pkgname.install
+sha256sums=('030ab2c0dbc82fb6fcb32dea837c7adf237620e4aa1ef8045b33ae673ee9cecd')
 
 build() {
   cd "opam-full-${pkgver//_/-}"

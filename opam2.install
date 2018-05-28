@@ -1,0 +1,5 @@
+post_upgrade() {
+  if [ "$2" == "2.0.0_rc" ] && [ "$2" == "2.0.0_rc2" ]; then
+    echo 'Run "opam init --reinit -ni" to enable sandboxing.'
+  fi
+}
