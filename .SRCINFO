@@ -1,7 +1,7 @@
 pkgbase = veles
 	pkgdesc = Binary data analysis and visualization tool
-	pkgver = 2017.06.0.1
-	pkgrel = 3
+	pkgver = 2018.05
+	pkgrel = 1
 	url = https://codisec.com/veles/
 	arch = x86_64
 	license = Apache
@@ -11,8 +11,8 @@ pkgbase = veles
 	depends = python-msgpack
 	depends = python-pyopenssl
 	depends = double-conversion
-	source = https://github.com/codilime/veles/releases/download/2017.06.0.1/Veles_2017.06.0.1_64bit_Ubuntu1604.deb
-	sha256sums = 9954a384e6ba733b50e07b9fd2a32f0dd181ef8aab11ebd5441744020949357e
+	source = https://github.com/codilime/veles/releases/download/2018.05.0.TIF/Veles_2018.05_64bit_Ubuntu1604.deb
+	sha256sums = cb20661606d60077666c74935b94c5f0b133426a776ba7a58513abdcf44f402c
 
 pkgname = veles
 

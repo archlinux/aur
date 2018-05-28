@@ -1,15 +1,15 @@
 # Maintainer: Tony Lambiris <tony@critialstack.com>
 
 pkgname=veles
-pkgver=2017.06.0.1
-pkgrel=3
+pkgver=2018.05
+pkgrel=1
 pkgdesc='Binary data analysis and visualization tool'
 arch=('x86_64')
 url="https://codisec.com/veles/"
 license=('Apache')
 depends=('qt5-base' 'python-pbr' 'python-six' 'python-msgpack' 'python-pyopenssl' 'double-conversion')
-source=("https://github.com/codilime/veles/releases/download/${pkgver}/Veles_${pkgver}_64bit_Ubuntu1604.deb")
-sha256sums=('9954a384e6ba733b50e07b9fd2a32f0dd181ef8aab11ebd5441744020949357e')
+source=("https://github.com/codilime/veles/releases/download/${pkgver}.0.TIF/Veles_${pkgver}_64bit_Ubuntu1604.deb")
+sha256sums=('cb20661606d60077666c74935b94c5f0b133426a776ba7a58513abdcf44f402c')
 
 package() {
 	cd $srcdir
