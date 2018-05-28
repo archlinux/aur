@@ -1,7 +1,7 @@
 pkgbase = windowmaker
 	pkgdesc = An X11 window manager with a NEXTSTEP look and feel
 	pkgver = 0.95.8
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.windowmaker.org/
 	arch = i686
 	arch = x86_64

@@ -5,7 +5,7 @@
 
 pkgname=windowmaker
 pkgver=0.95.8
-pkgrel=5
+pkgrel=6
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
 url="http://www.windowmaker.org/"
