@@ -1,0 +1,26 @@
+From cc25acbeb948fddf640abcd2ba40698ec0d17152 Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Thu, 24 May 2018 10:02:30 -0400
+Subject: [PATCH] wlroots needs to be dynamic
+
+---
+ Cargo.toml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 930b0b8..8e55767 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -35,8 +35,7 @@ tempfile = "2"
+ gl_generator = "0.5.0"
+ 
+ [features]
+-default = ["static", "libcap", "systemd", "elogind"]
+-static = ["wlroots-sys/static"]
++default = ["libcap", "systemd", "elogind"]
+ libcap = ["wlroots-sys/libcap"]
+ systemd = ["wlroots-sys/systemd"]
+ elogind = ["wlroots-sys/elogind"]
+-- 
+2.17.0
+
