@@ -1,3 +1,61 @@
+3.5
+---
+
+ - Preserve accession information on cvParam elements in mzML parser.
+   Dictionaries produced by the parser can now be queried by accession using
+   :py:func:`pyteomics.auxiliary.cvquery`.
+   *(Contributed by J. Klein)*
+
+ - Add optional `decode_binary` argument in
+   :py:class:`pyteomics.mzml.MzML` and :py:class:`pyteomics.mzxml.MzXML`.
+   When set to `False`, the parsers provide binary records suitable for decoding on demand.
+   *(Contributed by J. Klein)*
+
+ - Add method :py:meth:`write_byte_offsets` in :py:class:`pyteomics.mzml.MzML`,
+   :py:class:`pyteomics.mzxml.MzXML` and :py:class:`pyteomics.mzid.MzIdentML`.
+   Byte offsets can be loaded later to speed up random access.
+   *(Contributed by J. Klein)*
+
+ - Random access to MGF spectrum entries.
+
+   - Add function :py:func:`pyteomics.mgf.get_spectrum`.
+
+   - Add class :py:class:`pyteomics.mgf.MGF`. :py:func:`mgf.read` is now an alias to the class.
+     The class can be used for indexing using spectrum titles.
+
+   This functionality will be changed in upcoming versions.
+
+ - New module :py:mod:`pyteomics.protxml` for parsing of ProteinProphet output files.
+
+ - Add PeptideProphet and iProphet analysis information to the output of :py:func:`pyteomics.pepxml.DataFrame`.
+
+ - New parameter `huge_tree` in XML parser constructors and :py:func:`read` functions.
+   It is passed to the underlying :py:mod:`lxml` calls. Default value is `False`.
+   Set to `True` to overcome errors such as: `XMLSyntaxError: xmlSAX2Characters: huge text node`.
+
+ - New parameter `skip_empty_cvparam_values` in XML parser constructors.
+   It instructs the parser to treat the empty "value" attributes in cvParam elements as if they were not there.
+   This is helpful in cases when such empty "values" are present in one vendor's file and absent in another:
+   enabling the parameter will result in more unified output.
+   Default value is `False`.
+
+ - Change the default value for `read_schema` to :py:const:`False` in XML parsing modules.
+
+ - Change the default value for `retrieve_refs` to :py:const:`True` in MzIdentML constructor.
+
+ - Implement `retrieve_refs` for :py:class:`pyteomics.mzml.MzML`.
+   *(Contributed by J. Klein)*
+
+ - New parameter `keep_cterm` in decoy generation functions in :py:mod:`pyteomics.fasta`.
+
+ - New parameters `decoy_prefix` and `decoy_suffix` in all format-specific FDR filtering functions.
+   If the standard :py:func:`is_decoy` function works for your files, you can use these parameters to
+   specify either the prefix or the suffix appended to the protein names in decoy entries.
+
+ - New ion types in :py:data:`pyteomics.mass.std_ion_comp`.
+
+ - Bugfixes.
+
 3.4.2
 -----
 
@@ -84,7 +142,8 @@ New submodule :py:mod:`pyteomics.featurexml` with a parser for OpenMS **featureX
 
  - Performance optimizations in :py:func:`mgf.read` and :py:func:`parser.cleave`.
 
- - New decoy generation mode called "fused decoy", described in the paper accepted to JASMS.
+ - New decoy generation mode called "fused decoy", described in the `paper accepted to JASMS
+   <http://dx.doi.org/10.1007/s13361-016-1436-7>`_.
 
 API changes
 ...........
@@ -294,23 +353,30 @@ Fix for a memory leak in :py:func:`pyteomics.mzid.get_by_id`, which affects
 
  - Universally applicable modifications are now allowed in
    :py:func:`pyteomics.parser.isoforms`.
+
  - It is now also possible to specify non-terminal modifications which are
    only applicable to terminal residues.
+
  - Fix in :py:func:`pyteomics.parser.parse`: if the `labels` argument is
    provided, it needs to contain standard terminal groups if they are present
    in the sequence or if `show_unmodified_termini` is set to :py:const:`True`.
+
  - :py:class:`pyteomics.mass.Composition` instances are now pickleable.
+
  - Performance improvements.
 
 2.5.2
 -----
 
  - New parameter `reverse` in all :py:func:`!filter` functions.
+
  - New function :py:func:`pyteomics.mass.fast_mass2`, which is analogous to
    :py:func:`pyteomicsmass.fast_mass`, but supports full *modX* notation and
    is several times slower.
+
  - Fix in :py:func:`pyteomics.pepxml.read` for compatibility with files
    produced with Mascot2XML utility.
+
  - Unknown labels now allowed in :py:mod:`pyteomics.electrochem` and
    :py:mod:`pyteomics.achrom` functions in accordance with new general policy.
 
@@ -520,7 +586,7 @@ Bugfixes:
 2.1.2
 -----
 
- - Bugfix in XML parsers. The bug caused the mzML parser break on some files.
+ - Bugfix in XML parsers. The bug caused the mzML parser to break on some files.
    The fix can slightly change the format of the output.
 
 2.1.1
@@ -671,7 +737,8 @@ API changes
 -----
 
  - Bugfix in :py:mod:`pyteomics.pepxml`: modification info is now extracted.
- - New optional bool argument 'split' in :py:func:`pyteomics.parser.parse_sequence()`
+
+ - New optional boolean argument 'split' in :py:func:`pyteomics.parser.parse_sequence()`
    allows to generate a list of tuples where modifications are separated from the
    residues instead of a regular list of labels. In *labels* not only *modX* labels
    are now allowed, but also separate *mod* prefixes. Such modifications are
