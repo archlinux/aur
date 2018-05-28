@@ -8,6 +8,7 @@ arch=('any')
 url='https://unix.stackexchange.com/questions/284598/systemd-how-to-execute-script-at-shutdown-only-not-at-reboot'
 license=('GPL')
 depends=('systemd')
+options=('!strip')
 install="${pkgname}-install.sh"
 
 package() {
@@ -20,11 +21,19 @@ After=network.target
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/true
-ExecStop=/usr/bin/bash -c 'dmesg > /root/dmesg.$(date +"%F_%H-%M-%S").txt; sync'
+ExecStop=/usr/bin/bash /usr/lib/${pkgname}.sh
 RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
 EOF
   ) "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+
+  install -Dm644 <(cat << EOF
+#!/usr/bin/bash
+
+/usr/bin/dmesg > /root/dmesg.\$(date +"%F_%H-%M-%S").txt
+sync
+EOF
+  ) "${pkgdir}/usr/lib/${pkgname}.sh"
 }
