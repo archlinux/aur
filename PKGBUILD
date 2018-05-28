@@ -1,6 +1,6 @@
 # Maintainers: Perry Hung <perry@leaflabs.com> Florent Thiery <fthiery@gmail.com>
 pkgname=decklink
-pkgver=10.9.11
+pkgver=10.10
 pkgrel=1
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ install='decklink.install'
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/dd00be4e62b64bd68567d33b3e5c6606"
+pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/046b297aa3a844fa8fc46d6c32241dbd"
 pkgsrc_file=$pkgname-${pkgver}.tar.gz
-pkgsrc_sha256sum="38a3aa7b5bd2c055c623fd3700264a3f2edac6116ff4b6329747b79bbf431936"
+pkgsrc_sha256sum="2ef7f504433e32fef970c12dd9d3b62e47162426c776d0485b503ed000ebb7c3"
 
 prepare() {
   if [ -f $pkgsrc_file ]; then
@@ -35,7 +35,7 @@ package() {
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 	ln -s /usr/share/doc/desktopvideo/License.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
-	cd $srcdir/Blackmagic_Desktop_Video_Linux_*/other/${_arch}
+	cd $srcdir/Blackmagic_Desktop_Video_Linux_$pkgver/other/${_arch}
 
 	tar xf desktopvideo-*-${_arch}.tar.gz
 	cp -a desktopvideo-*-${_arch}/* $pkgdir
@@ -44,3 +44,4 @@ package() {
 	tar xf mediaexpress-*-${_arch}.tar.gz
 	cp -a mediaexpress-*-${_arch}/* $pkgdir
 }
+
