@@ -2,7 +2,7 @@
 
 pkgname=textosaurus
 epoch=1
-pkgver=0.9.3.1
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Simple cross-platform text editor based on Qt and Scintilla"
 arch=('x86_64' 'i686')
@@ -13,30 +13,40 @@ makedepends=('git' 'qt5-tools')
 provides=('textosaurus')
 conflicts=('textosaurus' 'textosaurus-git')
 replaces=('textilosaurus')
-_commit=1710f53c81dbcf4788fd23ebaabf6ec77a4a3fb6
-source=("git+https://github.com/martinrotter/textosaurus#commit=$_commit")
-md5sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/-/+/g'
-}
+source=("git+https://github.com/martinrotter/textosaurus#tag=$pkgver"
+        "git+https://github.com/martinrotter/transka.git"
+        "git+https://github.com/martinrotter/7za.git"
+        "git+https://github.com/martinrotter/nsis.git"
+        "git+https://github.com/martinrotter/sed.git"
+        "git+https://github.com/martinrotter/scintilla")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  install -d build
 
   git submodule init
+
+  git config 'submodule.resources/scripts/transka.url' "${srcdir}/transka"
+  git config 'submodule.resources/scripts/7za.url' "${srcdir}/7za"
+  git config 'submodule.resources/scripts/nsis.url' "${srcdir}/nsis"
+  git config 'submodule.resources/scripts/sed.url' "${srcdir}/sed"
+  git config 'submodule.src/libtextosaurus/3rd-party/scintilla.url' "${srcdir}/scintilla"
+
   git submodule update
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/build"
-  qmake ../textosaurus.pro -r CONFIG+=release PREFIX=/usr
+  cd "${srcdir}/${pkgname}"
+  qmake build.pro -r CONFIG+=release PREFIX=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
+  cd "${srcdir}/${pkgname}"
   make install INSTALL_ROOT="${pkgdir}/"
 }
