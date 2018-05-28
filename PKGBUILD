@@ -10,7 +10,7 @@
 
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.10.1
+pkgver=5.11.0
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
@@ -24,9 +24,9 @@ _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch'
         '0002-Fix-build-with-ANGLE.patch')
-sha256sums=('a1fa98015ee5a6b81f2d337abc98d8b297c6718f7714a1f13fccfd2934c23649'
-            '7bfd02c22bade3f048d4a0e12a732aaf448ab033c4a46dff0779a453be0b99e9'
-            'a98e96bb005b822e0742eaf6103429dfd5c41142272957f6b8225f23be4a2289')
+sha256sums=('ef5328f111ed2d27eff16e50febb66d1480e99f6a6df703f2ab8c650040f9d3c'
+            'b574d0df6d11e4569bb2153640def0b8b40ac554c5c1a0c3dc24831d573da7a8'
+            '9a3e20370c4d9fafd4069f1257039903c6771be166e0a829c54dd8abaa4dc79f')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -45,7 +45,7 @@ link_header_files() {
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
 
-  # Apply patches; further descriptions can be found in patch files itself
+  # apply patches; further descriptions can be found in patch files itself
   for patch in "$srcdir/"*.patch; do
     patch -p1 -i "$patch"
   done
@@ -77,7 +77,7 @@ package() {
 
       make INSTALL_ROOT="$pkgdir" install
 
-      # Use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
+      # use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
       if [[ -d 'lib' ]]; then
         pushd 'lib'
         find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib" --parents {} +
@@ -89,19 +89,29 @@ package() {
         popd
       fi
 
-      find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
+      # replace library path in *.prl files so it points to the installed location and not the build directory
+      find "${pkgdir}/usr/${_arch}/lib" \( -type f -name '*.prl' -o -name '*.pc' \) -exec sed -i -e "s:$PWD/lib:/usr/$_arch/lib:g" {} \;
+
+      # remove prl files for debug version
+      if ! [[ $MINGW_W64_QT_DEBUG_BUILD ]]; then
+        for file in $(find "${pkgdir}/usr/${_arch}" -name '*d.prl' -o -name '*d.static.prl'); do
+          [ -f "${file%d*}${file##*d}" ] && rm "${file}";
+        done
+      fi
+
+      find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
-        find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
-        find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec ${_arch}-strip --strip-all {} \;
-      find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
-      find "${pkgdir}/usr/${_arch}" -name "*.a" -exec ${_arch}-strip -g {} \;
+        find "${pkgdir}/usr/${_arch}" -name '*.exe' -delete || \
+        find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip --strip-all {} \;
+      find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+      find "${pkgdir}/usr/${_arch}" \( -name '*.a' -not -name 'libQt5QmlDevTools.a' -not -name 'libQt5Bootstrap.a' \) -exec ${_arch}-strip -g {} \;
       [[ -d "${pkgdir}/usr/${_arch}/lib/qt/bin/" ]] && \
         find "${pkgdir}/usr/${_arch}/lib/qt/bin/" -exec strip --strip-all {} \;
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
       popd
     done
 
-    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    # drop QMAKE_PRL_BUILD_DIR because reference the build dir
     find "${pkgdir}/usr/${_arch}/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
   done
 }
