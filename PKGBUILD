@@ -1,28 +1,29 @@
-# Contributor: Alex Merry <dev@randomguy3.me.uk>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: max_meyer 
+# Contributor: popsch
+# Based on original tikzit-aur-package made by pippin
 
 pkgname=tikzit
-pkgver=1.1
-pkgrel=4
+pkgver=1.0
+pkgrel=1
 pkgdesc="Allows the creation and modification of TeX diagrams written using the pgf/TikZ macro library"
 arch=('i686' 'x86_64')
-url="https://github.com/tikzit/tikzit.git"
+url="http://sourceforge.net/projects/tikzit/"
 license=('GPL2')
-depends=('gnustep-base>=1.18.0' 'gtk2>=2.18.0'
-         'poppler-glib>=0.10' 'desktop-file-utils')
-makedepends=('gcc-objc>=4.6.0' 'automake' 'autoconf' 'flex' 'bison')
+depends=('gnustep-base>=1.18.0' 'gtk2>=2.18.0' 'gnustep-make'
+         'poppler-glib>=0.10' 'hicolor-icon-theme' 'desktop-file-utils')
+makedepends=('gcc-objc>=4.6.0')
 optdepends=('texlive-core: previews')
-source=(tikzit-$pkgver.zip::https://github.com/$pkgname/$pkgname/archive/master.zip)
-sha256sums=('b0756500fae0029df41cbd6105c48c90a1f60231a9cb5558d73cd319464669ab')
+source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2)
+md5sums=('5d7fc5a74500b8eb2545d0c4fece62a5')
 
 build() {
-  cd $pkgname-master/tikzit
-  ./autogen.sh
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-  make -j1
+  make
 }
 
 package() {
-  cd $pkgname-master/tikzit
-  make -j1 "DESTDIR=$pkgdir" install
+  cd $pkgname-$pkgver
+  make "DESTDIR=$pkgdir" install
 }
