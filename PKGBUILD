@@ -2,7 +2,7 @@
 # Contributor: Yamakaky <yamakaky@yamaworld.fr>
 
 pkgname='rust-src'
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='rustc source'
 arch=('any')
@@ -10,7 +10,7 @@ url='http://rust-lang.org'
 license=('Apache' 'MIT')
 options=(!strip)
 source=("rust-${pkgver}.tar.gz::https://github.com/rust-lang/rust/archive/${pkgver}.tar.gz")
-sha256sums=('c67cb2501814cdf0062fd518e4bc950bb7bdb33fd4c8e6fb6e8ecd84d88390d7')
+sha256sums=('094de0ad1319f17b2caaf1cbb09c2b37f96fa920983cf901b181fd7c77f022da')
 
 prepare() {
   cd "rust-${pkgver}"
