@@ -2,7 +2,7 @@
 
 pkgname="python-gogs-client"
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python client for Gogs server"
 arch=("any")
 url="https://github.com/unfoldingWord-dev/python-gogs-client"
@@ -23,6 +23,9 @@ package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root=${pkgdir}
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # see #18 in upstream
+  # https://git.io/vhmg9
+  rm "${pkgdir}/usr/lib/python3.6/site-packages/tests/__init__.py"
 }
 
 # vim:set ts=2 sw=2 et:

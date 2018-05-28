@@ -1,7 +1,7 @@
 pkgbase = python-gogs-client
 	pkgdesc = Python client for Gogs server
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unfoldingWord-dev/python-gogs-client
 	arch = any
 	license = MIT
