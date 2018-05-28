@@ -1,14 +1,14 @@
 pkgbase = pacmarge
 	pkgdesc = A tool for automatically merging .pacnew files
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/foutrelis/pacmarge
 	install = pacmarge.install
 	arch = any
 	license = ISC
 	makedepends = asciidoc
 	depends = bash
-	depends = pacman
+	depends = pacman-contrib
 	depends = git
 	depends = coreutils
 	depends = sed

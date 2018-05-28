@@ -2,12 +2,12 @@
 
 pkgname=pacmarge
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for automatically merging .pacnew files"
 arch=('any')
 url="https://github.com/foutrelis/pacmarge"
 license=('ISC')
-depends=('bash' 'pacman' 'git' 'coreutils' 'sed' 'diffutils' 'patch')
+depends=('bash' 'pacman-contrib' 'git' 'coreutils' 'sed' 'diffutils' 'patch')
 makedepends=('asciidoc')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/foutrelis/$pkgname/archive/v$pkgver.tar.gz)
