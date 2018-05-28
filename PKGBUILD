@@ -5,7 +5,8 @@
 # Contributor: Filippo 'JoeyrS' Civiletti <joeyrs@gmail.com>
 
 _pkgname=armagetronad
-pkgname=$_pkgname-0.4-bzr
+pkgname=$_pkgname-bzr
+_pkgver=0.4
 pkgver='r1622'
 pkgrel=1
 pkgdesc='A Tron Clone in 3D.'
@@ -16,23 +17,23 @@ depends=('sdl2_image' 'libxml2' 'sdl2_mixer' 'ftgl' 'boost-libs')
 optdepends=('python2: language updater')
 makedepends=('boost' 'bzr')
 conflicts=('armagetronad')
-source=("$_pkgname::bzr+lp:$_pkgname/0.4")
+source=("bzr+lp:$_pkgname/$_pkgver")
 sha1sums=('SKIP')
 
 prepare(){
-     cd "$srcdir/$_pkgname"
+     cd "$srcdir/$_pkgver"
 
      # python2 fix
      sed -i 's_#!/usr/bin/python_#!/usr/bin/python2_' language/update.py
 }
 
 pkgver(){
-     cd "$srcdir/$_pkgname"
+     cd "$srcdir/$_pkgver"
      printf "r%s" "$(bzr revno)"
 }
 
 build() {
-     cd "$srcdir/$_pkgname"
+     cd "$srcdir/$_pkgver"
 
      ./bootstrap.sh
 
@@ -46,7 +47,7 @@ build() {
 }
 
 package() {
-     cd "$srcdir/$_pkgname"
+     cd "$srcdir/$_pkgver"
      make DESTDIR="$pkgdir" install
      install -D -m 644 "desktop/$_pkgname-armagetronad.desktop" "$pkgdir/usr/share/applications/$_pkgname-armagetronad.desktop"
      install -d "$pkgdir/usr/share/pixmaps/"
