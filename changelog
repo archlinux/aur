@@ -1,3 +1,9 @@
+2018-05-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.1.3.4-1:
+    Fixed ASF being unable to unlock parental accounts due to misc Steam change.
+    Fixed BGR crash over BadActivationCode keys.
+    IPC GUI improvements, optimizations and bugfixes.
+    Usual amount of other code improvements, optimizations and bugfixes.
 2018-05-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.1.3.3-1:
     [!] Fixed auto-update in generic ASF variant not working properly since V3.1.2.9. Please update manually to this release if you're running generic ASF variant with auto-updates enabled. OS-specific packages are not affected and will update as usual.
