@@ -262,6 +262,76 @@ void* iex_store_chart(void* vpInfo) {
     return NULL;
 }
 
+void* morningstar_store_info(void* vpInfo) {
+    Info* symbol_info = vpInfo;
+    char today_str[DATE_MAX_LENGTH], five_year_str[DATE_MAX_LENGTH], morningstar_api_string[URL_MAX_LENGTH];
+    time_t now = time(NULL);
+    struct tm* ts = localtime(&now);
+    mktime(ts);
+    strftime(today_str, DATE_MAX_LENGTH, "%Y-%m-%d", ts);
+    ts->tm_year -= 5; //get info from past 5 years
+    mktime(ts);
+    strftime(five_year_str, DATE_MAX_LENGTH, "%Y-%m-%d", ts);
+    sprintf(morningstar_api_string,
+            "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?showVol=true&dtype=his"
+            "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
+            symbol_info->symbol, five_year_str, today_str);
+    String* pString = api_curl_data(morningstar_api_string);
+    if (pString == NULL)
+        return NULL;
+
+    if (strcmp("null", pString->data) == 0) { // Invalid symbol
+        string_destroy(&pString);
+        return NULL;
+    }
+
+    Json* jobj = json_tokener_parse(pString->data);
+    Json* datapoints = json_object_object_get(
+            json_object_array_get_idx(json_object_object_get(jobj, "PriceDataList"), 0), "Datapoints");
+    size_t len = json_object_array_length(datapoints);
+    double* api_data = calloc(len + 1, sizeof(double)); // Must calloc() because some data points don't exist
+    pointer_alloc_check(api_data);
+    for (int i = 0; i < (int) len; i++)
+        api_data[i] = json_object_get_double(
+                json_object_array_get_idx(json_object_array_get_idx(datapoints, (size_t) i), 0));
+    symbol_info->points = api_data;
+    symbol_info->price = api_data[len - 1];
+    symbol_info->change_1d = 100 / symbol_info->price * (symbol_info->price - api_data[len - 2]);
+    symbol_info->change_7d = 100 / symbol_info->price * (symbol_info->price - api_data[len - 6]);
+    symbol_info->change_30d = 100 / symbol_info->price * (symbol_info->price - api_data[len - 22]);
+    Json* vol = json_object_object_get(jobj, "VolumeList");
+    if (vol != NULL) // There is no volume for MUTF
+        symbol_info->volume_1d = (long) (1000000 * json_object_get_double( // Data listed in millions
+                json_object_array_get_idx(json_object_object_get(vol, "Datapoints"), len - 1)));
+    json_object_put(jobj);
+    string_destroy(&pString);
+    return NULL;
+}
+
+void* coinmarketcap_store_info(void* vpInfo) {
+    Info* symbol_info = vpInfo;
+    char coinmarketcap_api_string[URL_MAX_LENGTH];
+    sprintf(coinmarketcap_api_string, "https://api.coinmarketcap.com/v1/ticker/%s", symbol_info->symbol);
+    String* pString = api_curl_data(coinmarketcap_api_string);
+    if (pString->data[0] == '{') { // Invalid symbol
+        string_destroy(&pString);
+        return NULL;
+    }
+    Info* ticker_info = api_info_init();
+    Json* jobj = json_tokener_parse(pString->data);
+    Json* data = json_object_array_get_idx(jobj, 0);
+    strcpy(ticker_info->name, json_object_get_string(json_object_object_get(data, "name")));
+    strcpy(ticker_info->symbol, json_object_get_string(json_object_object_get(data, "symbol")));
+    ticker_info->price = strtod(json_object_get_string(json_object_object_get(data, "price_usd")), NULL);
+    ticker_info->change_1d = strtod(json_object_get_string(json_object_object_get(data, "percent_change_24h")), NULL);
+    ticker_info->change_7d = strtod(json_object_get_string(json_object_object_get(data, "percent_change_7d")), NULL);
+    ticker_info->marketcap = strtol(json_object_get_string(json_object_object_get(data, "market_cap_usd")), NULL, 10);
+    ticker_info->volume_1d = strtol(json_object_get_string(json_object_object_get(data, "24h_volume_usd")), NULL, 10);
+    json_object_put(jobj);
+    string_destroy(&pString);
+    return NULL;
+}
+
 double* morningstar_get_price(const char* symbol) {
     char today_str[DATE_MAX_LENGTH], yesterday_str[DATE_MAX_LENGTH], morningstar_api_string[URL_MAX_LENGTH];
     time_t now = time(NULL);
@@ -406,75 +476,32 @@ Info* iex_get_info(const char* symbol) {
         if (pthread_join(threads[i], NULL))
             EXIT_MSG("Error joining thread!");
 
-    if (symbol_info->symbol[0] == '\0')
+    if (symbol_info->price == EMPTY)
         api_info_destroy(&symbol_info);
 
     return symbol_info;
 }
 
-Info* morningstar_get_info(const char* ticker_name_string) {
-    char today_char[DATE_MAX_LENGTH], yesterday_char[DATE_MAX_LENGTH], morningstar_api_string[URL_MAX_LENGTH];
-    time_t now = time(NULL);
-    struct tm* ts = localtime(&now);
-    mktime(ts);
-    strftime(today_char, DATE_MAX_LENGTH, "%Y-%m-%d", ts);
-    ts->tm_mday -= 30; // Get info from past 30 days
-    mktime(ts);
-    strftime(yesterday_char, DATE_MAX_LENGTH, "%Y-%m-%d", ts);
-    sprintf(morningstar_api_string,
-            "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?showVol=true&dtype=his"
-            "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
-            ticker_name_string, yesterday_char, today_char);
-    String* pString = api_curl_data(morningstar_api_string);
-    if (strcmp("null", pString->data) == 0) { // Invalid symbol
-        string_destroy(&pString);
-        return NULL;
-    }
-    Info* ticker_info = api_info_init();
-    ticker_info->name[0] = '\0';
-    Json* jobj = json_tokener_parse(pString->data);
-    Json* datapoints = json_object_object_get(
-            json_object_array_get_idx(json_object_object_get(jobj, "PriceDataList"), 0), "Datapoints");
-    size_t days = json_object_array_length(datapoints);
-    strcpy(ticker_info->symbol, ticker_name_string);
-    ticker_info->price = json_object_get_double(
-            json_object_array_get_idx(json_object_array_get_idx(datapoints, days - 1), 0));
-    Json* d_30 = json_object_array_get_idx(json_object_array_get_idx(datapoints, 0), 0);
-    Json* d_7 = json_object_array_get_idx(json_object_array_get_idx(datapoints, days - 6), 0);
-    Json* d_1 = json_object_array_get_idx(json_object_array_get_idx(datapoints, days - 2), 0);
-    ticker_info->change_30d = 100 / ticker_info->price * (ticker_info->price - json_object_get_double(d_30));
-    ticker_info->change_7d = 100 / ticker_info->price * (ticker_info->price - json_object_get_double(d_7));
-    ticker_info->change_1d = 100 / ticker_info->price * (ticker_info->price - json_object_get_double(d_1));
-    Json* vol = json_object_object_get(jobj, "VolumeList");
-    if (vol != NULL) // There is no volume for MUTF
-        ticker_info->volume_1d = (long) (1000000 * json_object_get_double( // Data listed in millions
-                json_object_array_get_idx(json_object_object_get(vol, "Datapoints"), days - 1)));
-    json_object_put(jobj);
-    string_destroy(&pString);
-    return ticker_info;
+Info* morningstar_get_info(const char* symbol) {
+    Info* symbol_info = api_info_init();
+    strcpy(symbol_info->symbol, symbol);
+    morningstar_store_info(symbol_info);
+
+    if (symbol_info->price == EMPTY)
+        api_info_destroy(&symbol_info);
+
+    return symbol_info;
 }
 
-Info* coinmarketcap_get_info(const char* ticker_name_string) {
-    char coinmarketcap_api_string[URL_MAX_LENGTH];
-    sprintf(coinmarketcap_api_string, "https://api.coinmarketcap.com/v1/ticker/%s", ticker_name_string);
-    String* pString = api_curl_data(coinmarketcap_api_string);
-    if (pString->data[0] == '{') { // Invalid symbol
-        string_destroy(&pString);
-        return NULL;
-    }
-    Info* ticker_info = api_info_init();
-    Json* jobj = json_tokener_parse(pString->data);
-    Json* data = json_object_array_get_idx(jobj, 0);
-    strcpy(ticker_info->name, json_object_get_string(json_object_object_get(data, "name")));
-    strcpy(ticker_info->symbol, json_object_get_string(json_object_object_get(data, "symbol")));
-    ticker_info->price = strtod(json_object_get_string(json_object_object_get(data, "price_usd")), NULL);
-    ticker_info->change_1d = strtod(json_object_get_string(json_object_object_get(data, "percent_change_24h")), NULL);
-    ticker_info->change_7d = strtod(json_object_get_string(json_object_object_get(data, "percent_change_7d")), NULL);
-    ticker_info->marketcap = strtol(json_object_get_string(json_object_object_get(data, "market_cap_usd")), NULL, 10);
-    ticker_info->volume_1d = strtol(json_object_get_string(json_object_object_get(data, "24h_volume_usd")), NULL, 10);
-    json_object_put(jobj);
-    string_destroy(&pString);
-    return ticker_info;
+Info* coinmarketcap_get_info(const char* symbol) {
+    Info* symbol_info = api_info_init();
+    strcpy(symbol_info->symbol, symbol);
+    coinmarketcap_store_info(symbol_info);
+
+    if (symbol_info->price == EMPTY)
+        api_info_destroy(&symbol_info);
+
+    return symbol_info;
 }
 
 void api_info_destroy(Info** phInfo) {

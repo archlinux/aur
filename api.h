@@ -109,6 +109,10 @@ void* iex_store_earnings(void* vpInfo);
 
 void* iex_store_chart(void* vpInfo);
 
+void* morningstar_store_info(void* vpInfo);
+
+void* coinmarketcap_store_info(void* vpInfo);
+
 /**
  * Returns current and yesterday's price of a mutual fund with data from Morningstar
  * Tested for MUTF and OTCMKTS listed securities.
@@ -157,17 +161,17 @@ Info* iex_get_info(const char* symbol);
 /**
  * Returns a pointer to an Info object containing info pertaining
  * to the given symbol with data from Morningstar
- * @param ticker_name_string mutf/otc symbol
+ * @param symbol mutf/otc symbol
  * @return Info object
  */
-Info* morningstar_get_info(const char* ticker_name_string);
+Info* morningstar_get_info(const char* symbol);
 
 /**
  * Returns a pointer to an Info object containing info pertaining to the given cryptocurrency from Coinmarketcap.
- * @param ticker_name_string the crypto's name
+ * @param symbol the crypto's name
  * @return Info object
  */
-Info* coinmarketcap_get_info(const char* ticker_name_string);
+Info* coinmarketcap_get_info(const char* symbol);
 
 /**
  * Destroys Info object and frees memory. Sets the pointer to the Info to NULL
