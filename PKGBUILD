@@ -2,13 +2,13 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr-git
-pkgver=4.3.0.r66.gf771e75
+pkgver=5.2.0.r0.g32a468c4
 pkgrel=1
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
 license=('custom')
-depends=('python2-pexpect' 'gdb')
+depends=('python2-pexpect' 'gdb' 'capnproto')
 makedepends=('git' 'cmake' 'gdb')
 [ "$CARCH" = 'x86_64' ] && makedepends+=('gcc-multilib')
 source=(git://github.com/mozilla/rr)
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd rr/build
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -DBUILD_TESTS=OFF -DWILL_RUN_TESTS=OFF ..
 
 	make
 }
