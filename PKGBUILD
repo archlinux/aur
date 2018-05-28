@@ -5,7 +5,7 @@
 
 pkgname=tikzit
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows the creation and modification of TeX diagrams written using the pgf/TikZ macro library"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/tikzit/"
