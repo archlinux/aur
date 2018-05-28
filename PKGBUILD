@@ -1,7 +1,7 @@
 # Maintainer: Shajil K Joshy <shajilkrazy@gmail.com>
 pkgname=fonts-smc-malayalam
 pkgver=18.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Fonts for Malayalam released by Swathanthra Malayalam Computing"
 url="http://smc.org.in/fonts/"
 license=('GPL3')
@@ -47,7 +47,6 @@ md5sums=('55fa571b7e08283f24c93621194373c7'
 	'3d868fe02372ec67a6095aa2690736b3'
 	'dc3057a0ad1ad70353c9cb2ac5269682'
 	'b702e348dec3420432da62aa871b618e')
-install=fonts-smc-malayalam.install
 
 package() {
 	install -d "$pkgdir/usr/share/fonts/TTF/malayalam"

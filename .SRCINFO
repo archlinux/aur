@@ -1,9 +1,8 @@
 pkgbase = fonts-smc-malayalam
 	pkgdesc = Fonts for Malayalam released by Swathanthra Malayalam Computing
 	pkgver = 18.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://smc.org.in/fonts/
-	install = fonts-smc-malayalam.install
 	arch = any
 	license = GPL3
 	depends = fontconfig
