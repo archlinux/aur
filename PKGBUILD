@@ -2,8 +2,8 @@
 
 _ref=''
 pkgname=kak-lsp-git
-pkgver=v3.5.0.r0.4b9fb2e
-pkgrel=1
+pkgver=3.5.0.r6.2414454
+pkgrel=2
 pkgdesc='Kakoune Language Server Protocol Client'
 arch=('x86_64')
 url="https://github.com/ul/kak-lsp"
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
@@ -29,9 +29,9 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	install -Dt "${pkgdir}/usr/bin" target/release/kak-lsp
-	install -Dt "${pkgdir}/etc/" kak-lsp.toml 
-	install -Dt "${pkgdir}/usr/lib/systemd/user" kak-lsp.service 
-	install -D UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 -t "${pkgdir}/usr/bin" target/release/kak-lsp
+	install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/examples/" kak-lsp.toml
+	install -Dm644 -t "${pkgdir}/usr/lib/systemd/user" kak-lsp.service
+	install -Dm644 UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
