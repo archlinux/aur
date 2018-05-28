@@ -1,0 +1,14 @@
+pkgbase = python2-qtfaststart
+        pkgdesc = Quicktime atom positioning in Python for fast streaming
+        pkgver = 1.8
+        pkgrel = 1
+        url = https://pypi.python.org/pypi/qtfaststart
+        arch = any
+        license = MIT
+        makedepends = python2-setuptools
+        depends = python2
+        options = !emptydirs
+        source = https://pypi.python.org/packages/source/q/qtfaststart/qtfaststart-1.8.tar.gz
+        sha256sums = b0442315311f1c1130a34e4e6b04557f5f4aa332ac40bfb1d761418866749241
+
+pkgname = python2-qtfaststart
