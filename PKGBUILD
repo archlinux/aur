@@ -13,7 +13,7 @@ license=('GPL')
 depends=('librsvg' 'gtk2')
 optdepends=('gnugo: play Go against the computer'
             'grhino: play Othello against the computer')
-makedepends=('xmlto')
+makedepends=('xmlto' 'docbook-xsl')
 install='quarry.install'
 source=("https://github.com/ejona86/$pkgname/archive/$pkgver.tar.gz"
         'inline.patch')
