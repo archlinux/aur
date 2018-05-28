@@ -4,16 +4,15 @@
 # Based on original tikzit-aur-package made by pippin
 
 pkgname=tikzit-git
-pkgver=r297
-pkgrel=2
-pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library"
+pkgver=r376
+pkgrel=1
+pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library - rewrite in QT and C++"
 arch=('i686' 'x86_64')
 url="https://github.com/tikzit/tikzit.git"
 license=('GPL')
-depends=('gtk2>=2.18.0' 'poppler-glib' 'hicolor-icon-theme' 'gnustep-base' 'desktop-file-utils')
-makedepends=('git' 'gcc-objc')
+depends=('qt5-base')
+makedepends=('git')
 provides=('tikzit')
-conflicts=('tikzit')
 source=('git+https://github.com/tikzit/tikzit.git')
 md5sums=('SKIP')
 options=('!makeflags')
@@ -24,13 +23,14 @@ pkgver() {
 }
  
 build() {
-  cd "$srcdir"/${pkgname%-git}/${pkgname%-git}
-  ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-  make
+  cd ${pkgname%-git}
+  qmake PREFIX=/usr \
+    QMAKE_CFLAGS="${CFLAGS}" \
+    QMAKE_CXXFLAGS="${CXXFLAGS}" tikzit.pro  
+  make -j1
 }
 
 package() {
-  cd "$srcdir"/${pkgname%-git}/${pkgname%-git}
-  make DESTDIR="$pkgdir" install
+  cd ${pkgname%-git}
+  install -Dm755 tikzit "$pkgdir"/usr/bin/tikzit-qt
 }
