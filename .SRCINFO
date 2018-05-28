@@ -1,7 +1,7 @@
 pkgbase = kannel
 	pkgdesc = Kannel is a compact and very powerful open source WAP and SMS gateway, it comes with extras!
 	pkgver = 1.4.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.kannel.org/
 	install = kannel.install
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = kannel
 	license = custom
 	depends = bison2
 	depends = libxml2
+	optdepends = mariadb: MySQL database backend
+	optdepends = sqlite: SQLite3 database backend
 	conflicts = bison
 	source = http://www.kannel.org/download/1.4.4/gateway-1.4.4.tar.gz
 	source = kannel.conf

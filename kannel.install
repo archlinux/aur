@@ -12,6 +12,8 @@ post_install() {
 	passwd -l kannel >/dev/null 2>&1
 	chown root:kannel $pkgdir/var/log/kannel
   chmod -R 0770 $pkgdir/var/log/kannel
+	chown root:kannel $pkgdir/var/spool/kannel
+  chmod -R 0770 $pkgdir/var/spool/kannel
 	systemd-tmpfiles --create /usr/lib/tmpfiles.d/kannel.conf >/dev/null 2>&1
 }
 

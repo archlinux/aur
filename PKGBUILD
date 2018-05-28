@@ -4,7 +4,7 @@
 pkgname=kannel
 PACKAGE=gateway
 pkgver=1.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Kannel is a compact and very powerful open source WAP and SMS gateway, it comes with extras!"
 arch=('any')
 license=('custom')
@@ -12,6 +12,8 @@ url="https://www.kannel.org/"
 install=kannel.install
 depends=('bison2' 'libxml2')
 conflicts=('bison')
+optdepends=('mariadb: MySQL database backend'
+       'sqlite: SQLite3 database backend')
 groups=('base-devel')
 source=(http://www.kannel.org/download/${pkgver}/${PACKAGE}-${pkgver}.tar.gz
         kannel.conf
@@ -32,7 +34,7 @@ md5sums=('0048dab467931eb8472c31d5e1257401'
 
 build() {
   cd ${srcdir}/${PACKAGE}-${pkgver}  
-  ./configure --prefix=/usr/local --mandir=/usr/local/man --enable-start-stop-daemon
+  ./configure --prefix=/usr/local --mandir=/usr/local/man --enable-start-stop-daemon --with-mysql --with-sqlite3 --with-pgsql --with-redis
   make || return 1
 }
 
@@ -44,6 +46,7 @@ check() {
 package() {
   cd ${srcdir}
   install -dm770 $pkgdir/var/log/kannel
+  install -dm770 $pkgdir/var/spool/kannel
 
   install -Dm644 kannel.conf "$pkgdir/etc/kannel/kannel.conf"
   install -Dm644 modems.conf "$pkgdir/etc/kannel/modems.conf"
@@ -54,7 +57,7 @@ package() {
   install -Dm644 kannel.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/kannel.conf"
 
   cd ${PACKAGE}-${pkgver}
-  make DESTDIR=${pkgdir} install install-test install-checks install-contrib || return 1
+  make DESTDIR=${pkgdir} install install-test install-checks install-contrib install-docs || return 1
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
