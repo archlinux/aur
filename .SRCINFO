@@ -1,8 +1,8 @@
 pkgbase = python-pyteomics
 	pkgdesc = A framework for proteomics data analysis.
-	pkgver = 3.4.2
+	pkgver = 3.5
 	pkgrel = 1
-	url = http://pyteomics.readthedocs.io
+	url = https://pythonhosted.org/pyteomics/
 	changelog = CHANGELOG
 	arch = any
 	license = Apache
@@ -14,8 +14,8 @@ pkgbase = python-pyteomics
 	optdepends = python-lxml: for XML parsing modules
 	optdepends = python-numpy: for most of features, highly recommended
 	options = !emptydirs
-	source = https://pypi.io/packages/source/p/pyteomics/pyteomics-3.4.2.tar.gz
-	md5sums = 36cc4c3bab653fdbe22aec71858a461f
+	source = https://pypi.io/packages/source/p/pyteomics/pyteomics-3.5.tar.gz
+	sha256sums = ddba74f30f2a30c35e953615b184197341215083224f2df0540542ff79b6e1a9
 
 pkgname = python-pyteomics
 
