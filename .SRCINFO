@@ -1,0 +1,15 @@
+pkgbase = black-git
+	pkgdesc = Uncompromising code formatter
+	pkgver = 18.5b0.r18.gfd9bd07
+	pkgrel = 1
+	url = https://github.com/ambv/black
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-attrs
+	depends = python-click
+	source = git+https://github.com/ambv/black.git
+	sha256sums = SKIP
+
+pkgname = black-git
+
