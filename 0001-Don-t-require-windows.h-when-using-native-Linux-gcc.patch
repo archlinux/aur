@@ -1,4 +1,4 @@
-From e706e77b6b080f3b6fc7bfe82d1770d770e85733 Mon Sep 17 00:00:00 2001
+From 500380bde90450867eca41d8c3337c949f99b6fa Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 17:17:46 +0200
 Subject: [PATCH 1/2] Don't require windows.h when using native Linux gcc
@@ -17,5 +17,5 @@ index 7f9a8d4..6f3548a 100644
  SOURCES = main.cpp
  
 -- 
-2.16.1
+2.17.0
 

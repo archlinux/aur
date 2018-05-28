@@ -9,7 +9,7 @@
 
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
-pkgver=5.10.1
+pkgver=5.11.0
 pkgrel=1
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
@@ -23,9 +23,9 @@ _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Don-t-require-windows.h-when-using-native-Linux-gcc.patch'
         '0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch')
-sha256sums=('9021ab7e34b10b30a80d6f5e2474afa8faea10792867d459b53dd11ba23891e4'
-            'c56ce522532663d48e88f9cc6cbcb839103a2426715dbf6b16d104e0875a30f8'
-            '17f9d460aad2f8c7143e44ef93ab145bd0d0e5b2ad0c91ff4547f11f55fb6a91')
+sha256sums=('69aabe0dd5985bd5491b0ce165470b637087b14e2fd2d8a51eed4f14f1bc3705'
+            'c9c225647eedd1a2211b5d1123b09070f43135c1cae84049cbecf9ac3ad45157'
+            'd615831bd87dda340ebc9e8a7c6652202c62e97e1df9072273742ecbfc6a9032')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -36,7 +36,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
 
-  # Apply patches; further descriptions can be found in patch files itself
+  # apply patches; further descriptions can be found in patch files itself
   for patch in "$srcdir/"*.patch; do
     patch -p1 -i "$patch"
   done
@@ -65,7 +65,7 @@ package() {
 
       make INSTALL_ROOT="$pkgdir" install
 
-      # Use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
+      # use prl files from build directory since installed prl files seem to have incorrect QMAKE_PRL_LIBS_FOR_CMAKE
       if [[ -d 'lib' ]]; then
         pushd 'lib'
         find -iname '*.static.prl' -exec cp --target-directory "${pkgdir}/usr/${_arch}/lib" --parents {} +
@@ -77,23 +77,33 @@ package() {
         popd
       fi
 
-      find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
+      # replace library path in *.prl files so it points to the installed location and not the build directory
+      find "${pkgdir}/usr/${_arch}/lib" \( -type f -name '*.prl' -o -name '*.pc' \) -exec sed -i -e "s:$PWD/lib:/usr/$_arch/lib:g" {} \;
+
+      # remove prl files for debug version
+      if ! [[ $MINGW_W64_QT_DEBUG_BUILD ]]; then
+        for file in $(find "${pkgdir}/usr/${_arch}" -name '*d.prl' -o -name '*d.static.prl'); do
+          [ -f "${file%d*}${file##*d}" ] && rm "${file}";
+        done
+      fi
+
+      find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
-        find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
-        find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec ${_arch}-strip --strip-all {} \;
-      find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
-      find "${pkgdir}/usr/${_arch}" -name "*.a" -exec ${_arch}-strip -g {} \;
+        find "${pkgdir}/usr/${_arch}" -name '*.exe' -delete || \
+        find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip --strip-all {} \;
+      find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+      find "${pkgdir}/usr/${_arch}" \( -name '*.a' -not -name 'libQt5QmlDevTools.a' -not -name 'libQt5Bootstrap.a' \) -exec ${_arch}-strip -g {} \;
       [[ -d "${pkgdir}/usr/${_arch}/lib/qt/bin/" ]] && \
         find "${pkgdir}/usr/${_arch}/lib/qt/bin/" -exec strip --strip-all {} \;
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
       popd
     done
 
-    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    # drop QMAKE_PRL_BUILD_DIR because reference the build dir
     find "${pkgdir}/usr/${_arch}/lib" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
   done
 
-  # Make sure the executables don't conflict with their mingw-qt4 counterpart
+  # make sure the executables don't conflict with their mingw-qt4 counterpart
   for _arch in ${_architectures}; do
     for exe_file in "${pkgdir}/usr/${_arch}/bin/"*.exe; do
       [[ -f $exe_file ]] && mv "${exe_file}" "${exe_file%.exe}-qt5.exe"
