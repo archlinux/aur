@@ -4,9 +4,9 @@
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: Filippo 'JoeyrS' Civiletti <joeyrs@gmail.com>
 
-pkgname=armagetronad-bzr
 _pkgname=armagetronad
-pkgver=0.4
+pkgname=$_pkgname-0.4-bzr
+pkgver='r1622'
 pkgrel=1
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('sdl2_image' 'libxml2' 'sdl2_mixer' 'ftgl' 'boost-libs')
 optdepends=('python2: language updater')
 makedepends=('boost' 'bzr')
 conflicts=('armagetronad')
-source=("$_pkgname::bzr+lp:$_pkgname/$pkgver")
+source=("$_pkgname::bzr+lp:$_pkgname/0.4")
 sha1sums=('SKIP')
 
 prepare(){
@@ -24,6 +24,11 @@ prepare(){
 
      # python2 fix
      sed -i 's_#!/usr/bin/python_#!/usr/bin/python2_' language/update.py
+}
+
+pkgver(){
+     cd "$srcdir/$_pkgname"
+     printf "r%s" "$(bzr revno)"
 }
 
 build() {

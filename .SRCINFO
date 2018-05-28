@@ -1,6 +1,6 @@
-pkgbase = armagetronad-bzr
+pkgbase = armagetronad-0.4-bzr
 	pkgdesc = A Tron Clone in 3D.
-	pkgver = 0.4
+	pkgver = r1622
 	pkgrel = 1
 	url = http://armagetronad.net/
 	arch = x86_64
@@ -17,5 +17,5 @@ pkgbase = armagetronad-bzr
 	source = armagetronad::bzr+lp:armagetronad/0.4
 	sha1sums = SKIP
 
-pkgname = armagetronad-bzr
+pkgname = armagetronad-0.4-bzr
 
