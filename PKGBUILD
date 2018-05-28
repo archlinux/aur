@@ -4,8 +4,8 @@
 
 pkgname=gnome-shell-tweener-fix
 pkgver=3.28.2
-pkgrel=1
-pkgdesc="The next generation GNOME Shell"
+pkgrel=2
+pkgdesc="The next generation GNOME Shell (patched to fix bug #1 )"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL2)
@@ -23,7 +23,7 @@ groups=(gnome)
 _commit=c70b18764b2658849b170c897ce4c423a118d7f2  # tags/3.28.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://git.gnome.org/browse/libgnome-volume-control"
-        "tweener-fix.patch")
+        "pull-request-4.patch")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
@@ -40,7 +40,8 @@ prepare() {
 
   # Move the plugin to our custom epiphany-only dir
   sed -i "s/'mozilla'/'epiphany'/g" meson.build
-  patch -Np1 -i ../tweener-fix.patch
+  # patch -Np1 -i ../tweener-fix.patch
+  patch -Np1 -i ../pull-request-4.patch
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update

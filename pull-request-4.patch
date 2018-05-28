@@ -1,0 +1,483 @@
+diff --git a/js/ui/dnd.js b/js/ui/dnd.js
+index a38607c2413633948ec2eeebc985889883ad895e..431c60d6c829ac00a0a3f8eaea234fb42e07f4c0 100644
+--- a/js/ui/dnd.js
++++ b/js/ui/dnd.js
+@@ -27,6 +27,12 @@ var DragMotionResult = {
+     CONTINUE:  3
+ };
+
++var DragState = {
++    INIT:      0,
++    DRAGGING:  1,
++    CANCELLED: 2,
++};
++
+ var DRAG_CURSOR_MAP = {
+     0: Meta.Cursor.DND_UNSUPPORTED_TARGET,
+     1: Meta.Cursor.DND_COPY,
+@@ -78,6 +84,8 @@ var _Draggable = new Lang.Class({
+                                         dragActorOpacity: undefined });
+
+         this.actor = actor;
++        this._dragState = DragState.INIT;
++
+         if (!params.manualMode) {
+             this.actor.connect('button-press-event',
+                                this._onButtonPress.bind(this));
+@@ -88,7 +96,7 @@ var _Draggable = new Lang.Class({
+         this.actor.connect('destroy', () => {
+             this._actorDestroyed = true;
+
+-            if (this._dragInProgress && this._dragCancellable)
++            if (this._dragState == DragState.DRAGGING && this._dragCancellable)
+                 this._cancelDrag(global.get_current_time());
+             this.disconnectAll();
+         });
+@@ -100,7 +108,6 @@ var _Draggable = new Lang.Class({
+         this._dragActorOpacity = params.dragActorOpacity;
+
+         this._buttonDown = false; // The mouse button has been pressed and has not yet been released.
+-        this._dragInProgress = false; // The drag has been started, and has not been dropped or cancelled yet.
+         this._animationInProgress = false; // The drag is over and the item is in the process of animating to its original position (snapping back or reverting).
+         this._dragCancellable = true;
+
+@@ -206,9 +213,10 @@ var _Draggable = new Lang.Class({
+             (event.type() == Clutter.EventType.TOUCH_END &&
+              global.display.is_pointer_emulating_sequence(event.get_event_sequence()))) {
+             this._buttonDown = false;
+-            if (this._dragInProgress) {
++            if (this._dragState == DragState.DRAGGING) {
+                 return this._dragActorDropped(event);
+-            } else if (this._dragActor != null && !this._animationInProgress) {
++            } else if ((this._dragActor != null || this._dragState == DragState.CANCELLED) &&
++                       !this._animationInProgress) {
+                 // Drag must have been cancelled with Esc.
+                 this._dragComplete();
+                 return Clutter.EVENT_STOP;
+@@ -222,14 +230,14 @@ var _Draggable = new Lang.Class({
+         } else if (event.type() == Clutter.EventType.MOTION ||
+                    (event.type() == Clutter.EventType.TOUCH_UPDATE &&
+                     global.display.is_pointer_emulating_sequence(event.get_event_sequence()))) {
+-            if (this._dragInProgress) {
++            if (this._dragActor && this._dragState == DragState.DRAGGING) {
+                 return this._updateDragPosition(event);
+-            } else if (this._dragActor == null) {
++            } else if (this._dragActor == null && this._dragState != DragState.CANCELLED) {
+                 return this._maybeStartDrag(event);
+             }
+         // We intercept KEY_PRESS event so that we can process Esc key press to cancel
+         // dragging and ignore all other key presses.
+-        } else if (event.type() == Clutter.EventType.KEY_PRESS && this._dragInProgress) {
++        } else if (event.type() == Clutter.EventType.KEY_PRESS && this._dragState == DragState.DRAGGING) {
+             let symbol = event.get_key_symbol();
+             if (symbol == Clutter.Escape) {
+                 this._cancelDrag(event.get_time());
+@@ -265,7 +273,7 @@ var _Draggable = new Lang.Class({
+      */
+     startDrag(stageX, stageY, time, sequence) {
+         currentDraggable = this;
+-        this._dragInProgress = true;
++        this._dragState = DragState.DRAGGING;
+
+         // Special-case St.Button: the pointer grab messes with the internal
+         // state, so force a reset to a reasonable state here
+@@ -342,6 +350,13 @@ var _Draggable = new Lang.Class({
+             Shell.util_set_hidden_from_pick(this._dragActor, true);
+         }
+
++        this._dragActorDestroyId = this._dragActor.connect('destroy', () => {
++            // Cancel ongoing animation (if any)
++            this._finishAnimation();
++
++            this._dragActor = null;
++            this._dragState = DragState.CANCELLED;
++        });
+         this._dragOrigOpacity = this._dragActor.opacity;
+         if (this._dragActorOpacity != undefined)
+             this._dragActor.opacity = this._dragActorOpacity;
+@@ -500,7 +515,7 @@ var _Draggable = new Lang.Class({
+                                                 event.get_time())) {
+                     // If it accepted the drop without taking the actor,
+                     // handle it ourselves.
+-                    if (this._dragActor.get_parent() == Main.uiGroup) {
++                    if (this._dragActor && this._dragActor.get_parent() == Main.uiGroup) {
+                         if (this._restoreOnSuccess) {
+                             this._restoreDragActor(event.get_time());
+                             return true;
+@@ -508,7 +523,7 @@ var _Draggable = new Lang.Class({
+                             this._dragActor.destroy();
+                     }
+
+-                    this._dragInProgress = false;
++                    this._dragState = DragState.INIT;
+                     global.screen.set_cursor(Meta.Cursor.DEFAULT);
+                     this.emit('drag-end', event.get_time(), true);
+                     this._dragComplete();
+@@ -557,20 +572,22 @@ var _Draggable = new Lang.Class({
+
+     _cancelDrag(eventTime) {
+         this.emit('drag-cancelled', eventTime);
+-        this._dragInProgress = false;
+-        let [snapBackX, snapBackY, snapBackScale] = this._getRestoreLocation();
++        let wasCancelled = (this._dragState == DragState.CANCELLED);
++        this._dragState = DragState.CANCELLED;
+
+-        if (this._actorDestroyed) {
++        if (this._actorDestroyed || wasCancelled) {
+             global.screen.set_cursor(Meta.Cursor.DEFAULT);
+             if (!this._buttonDown)
+                 this._dragComplete();
+             this.emit('drag-end', eventTime, false);
+-            if (!this._dragOrigParent)
++            if (!this._dragOrigParent && this._dragActor)
+                 this._dragActor.destroy();
+
+             return;
+         }
+
++        let [snapBackX, snapBackY, snapBackScale] = this._getRestoreLocation();
++
+         this._animateDragEnd(eventTime,
+                              { x: snapBackX,
+                                y: snapBackY,
+@@ -581,7 +598,7 @@ var _Draggable = new Lang.Class({
+     },
+
+     _restoreDragActor(eventTime) {
+-        this._dragInProgress = false;
++        this._dragState = DragState.INIT;
+         let [restoreX, restoreY, restoreScale] = this._getRestoreLocation();
+
+         // fade the actor back in at its original location
+@@ -596,12 +613,6 @@ var _Draggable = new Lang.Class({
+     _animateDragEnd(eventTime, params) {
+         this._animationInProgress = true;
+
+-        // finish animation if the actor gets destroyed
+-        // during it
+-        this._dragActorDestroyId =
+-            this._dragActor.connect('destroy',
+-                                    this._finishAnimation.bind(this));
+-
+         params['opacity']          = this._dragOrigOpacity;
+         params['transition']       = 'easeOutQuad';
+         params['onComplete']       = this._onAnimationComplete;
+@@ -624,9 +635,6 @@ var _Draggable = new Lang.Class({
+     },
+
+     _onAnimationComplete(dragActor, eventTime) {
+-        dragActor.disconnect(this._dragActorDestroyId);
+-        this._dragActorDestroyId = 0;
+-
+         if (this._dragOrigParent) {
+             Main.uiGroup.remove_child(this._dragActor);
+             this._dragOrigParent.add_actor(this._dragActor);
+@@ -641,7 +649,7 @@ var _Draggable = new Lang.Class({
+     },
+
+     _dragComplete() {
+-        if (!this._actorDestroyed)
++        if (!this._actorDestroyed && this._dragActor)
+             Shell.util_set_hidden_from_pick(this._dragActor, false);
+
+         this._ungrabEvents();
+@@ -652,7 +660,12 @@ var _Draggable = new Lang.Class({
+             this._updateHoverId = 0;
+         }
+
+-        this._dragActor = undefined;
++        if (this._dragActor) {
++            this._dragActor.disconnect(this._dragActorDestroyId);
++            this._dragActor = null;
++        }
++
++        this._dragState = DragState.INIT;
+         currentDraggable = null;
+     }
+ });
+diff --git a/js/ui/tweener.js b/js/ui/tweener.js
+index 1a85e2fb141953dc8486e9e38bc45de82835a28f..22818ba4b4cb535fdcfd9a3de4654b7b6a74d423 100644
+--- a/js/ui/tweener.js
++++ b/js/ui/tweener.js
+@@ -69,30 +69,67 @@ function _getTweenState(target) {
+     return target.__ShellTweenerState;
+ }
+
++function _ensureHandlers(target) {
++    if (!target.__ShellTweenerHandlers)
++        target.__ShellTweenerHandlers = {};
++    return target.__ShellTweenerHandlers;
++}
++
+ function _resetTweenState(target) {
+     let state = target.__ShellTweenerState;
+
+     if (state) {
+-        if (state.destroyedId)
++        if (state.destroyedId) {
+             state.actor.disconnect(state.destroyedId);
++            delete state.destroyedId;
++        }
+     }
+
++    _removeHandler(target, 'onComplete', _tweenCompleted);
+     target.__ShellTweenerState = {};
+ }
+
+ function _addHandler(target, params, name, handler) {
+-    if (params[name]) {
+-        let oldHandler = params[name];
+-        let oldScope = params[name + 'Scope'];
+-        let oldParams = params[name + 'Params'];
+-        let eventScope = oldScope ? oldScope : target;
+-
+-        params[name] = () => {
+-            oldHandler.apply(eventScope, oldParams);
+-            handler(target);
+-        };
+-    } else
+-        params[name] = () => { handler(target); };
++    let wrapperNeeded = false;
++    let tweenerHandlers = _ensureHandlers(target);
++
++    if (!(name in tweenerHandlers)) {
++        tweenerHandlers[name] = [];
++        wrapperNeeded = true;
++    }
++
++    let handlers = tweenerHandlers[name];
++    handlers.push(handler);
++
++    if (wrapperNeeded) {
++        if (params[name]) {
++            let oldHandler = params[name];
++            let oldScope = params[name + 'Scope'];
++            let oldParams = params[name + 'Params'];
++            let eventScope = oldScope ? oldScope : target;
++
++            params[name] = () => {
++                oldHandler.apply(eventScope, oldParams);
++                handlers.forEach((h) => h(target));
++            };
++        } else {
++            params[name] = () => { handlers.forEach((h) => h(target)); };
++        }
++    }
++}
++
++function _removeHandler(target, name, handler) {
++    let tweenerHandlers = _ensureHandlers(target);
++
++    if (name in tweenerHandlers) {
++        let handlers = tweenerHandlers[name];
++        let handlerIndex = handlers.indexOf(handler);
++
++        while (handlerIndex > -1) {
++            handlers.splice(handlerIndex, 1);
++            handlerIndex = handlers.indexOf(handler);
++        }
++    }
+ }
+
+ function _actorDestroyed(target) {
+diff --git a/js/ui/workspace.js b/js/ui/workspace.js
+index 1e121b7787ef697112a0c05844dba710ce20fd70..8836537ee84386214c843e809453be738efb0770 100644
+--- a/js/ui/workspace.js
++++ b/js/ui/workspace.js
+@@ -139,14 +139,8 @@ var WindowClone = new Lang.Class({
+
+         this._windowClone._updateId = this.metaWindow.connect('size-changed',
+             this._onRealWindowSizeChanged.bind(this));
+-        this._windowClone._destroyId =
+-            this.realWindow.connect('destroy', () => {
+-                // First destroy the clone and then destroy everything
+-                // This will ensure that we never see it in the
+-                // _disconnectSignals loop
+-                this._windowClone.destroy();
+-                this.destroy();
+-            });
++        this._windowClone._destroyId = this.realWindow.connect('destroy',
++            this.destroy.bind(this));
+
+         this._updateAttachedDialogs();
+         this._computeBoundingBox();
+@@ -310,6 +304,14 @@ var WindowClone = new Lang.Class({
+     },
+
+     destroy() {
++        this.emit('destroy');
++
++        // First destroy the clone and then destroy everything
++        // This will ensure that we never see it in the _disconnectSignals loop
++        this.metaWindow.disconnect(this._windowClone._updateId);
++        this.realWindow.disconnect(this._windowClone._destroyId);
++        this._windowClone.destroy();
++
+         this.actor.destroy();
+     },
+
+@@ -1131,6 +1133,7 @@ var Workspace = new Lang.Class({
+         // Create clones for windows that should be
+         // visible in the Overview
+         this._windows = [];
++        this._windowsDestroyedIds = [];
+         this._windowOverlays = [];
+         for (let i = 0; i < windows.length; i++) {
+             if (this._isOverviewWindow(windows[i])) {
+@@ -1428,7 +1431,7 @@ var Workspace = new Lang.Class({
+         return GLib.SOURCE_REMOVE;
+     },
+
+-    _doRemoveWindow(metaWin) {
++    _doRemoveWindow(metaWin, {cloneDestroy}={cloneDestroy: true}) {
+         let win = metaWin.get_compositor_private();
+
+         // find the position of the window in our list
+@@ -1438,8 +1441,10 @@ var Workspace = new Lang.Class({
+             return;
+
+         let clone = this._windows[index];
++        clone.disconnect(this._windowsDestroyedIds[index]);
+
+         this._windows.splice(index, 1);
++        this._windowsDestroyedIds.splice(index, 1);
+         this._windowOverlays.splice(index, 1);
+
+         // If metaWin.get_compositor_private() returned non-NULL, that
+@@ -1457,7 +1462,9 @@ var Workspace = new Lang.Class({
+                 scale: stageWidth / clone.actor.width
+             };
+         }
+-        clone.destroy();
++
++        if (cloneDestroy)
++            clone.destroy();
+
+
+         // We need to reposition the windows; to avoid shuffling windows
+@@ -1800,7 +1807,11 @@ var Workspace = new Lang.Class({
+             this._actualGeometryLater = 0;
+         }
+
++        for (let index = 0; index < this._windows.length; ++index)
++            this._windows[index].disconnect(this._windowsDestroyedIds[index]);
++
+         this._windows = [];
++        this._windowsDestroyedIds = [];
+     },
+
+     // Sets this.leavingOverview flag to false.
+@@ -1848,6 +1859,9 @@ var Workspace = new Lang.Class({
+         clone.connect('size-changed', () => {
+             this._recalculateWindowPositions(WindowPositionFlags.NONE);
+         });
++        let cloneDestroyedId = clone.connect('destroy', () => {
++            this._doRemoveWindow(clone.metaWindow, {cloneDestroy: false});
++        });
+
+         this.actor.add_actor(clone.actor);
+
+@@ -1864,6 +1878,7 @@ var Workspace = new Lang.Class({
+             clone.setStackAbove(this._windows[this._windows.length - 1].actor);
+
+         this._windows.push(clone);
++        this._windowsDestroyedIds.push(cloneDestroyedId);
+         this._windowOverlays.push(overlay);
+
+         return [clone, overlay];
+diff --git a/js/ui/workspaceThumbnail.js b/js/ui/workspaceThumbnail.js
+index c1b4bddc66754532263bc99d23230849a7a3bd17..0c72e7498b470903829d67df333e322ea53bbcbf 100644
+--- a/js/ui/workspaceThumbnail.js
++++ b/js/ui/workspaceThumbnail.js
+@@ -70,12 +70,7 @@ var WindowClone = new Lang.Class({
+
+         this.clone._updateId = this.metaWindow.connect('position-changed',
+                                                        this._onPositionChanged.bind(this));
+-        this.clone._destroyId = this.realWindow.connect('destroy', () => {
+-            // First destroy the clone and then destroy everything
+-            // This will ensure that we never see it in the _disconnectSignals loop
+-            this.clone.destroy();
+-            this.destroy();
+-        });
++        this.clone._destroyId = this.realWindow.connect('destroy', this.destroy.bind(this));
+         this._onPositionChanged();
+
+         this.actor.connect('button-release-event',
+@@ -142,6 +137,14 @@ var WindowClone = new Lang.Class({
+     },
+
+     destroy() {
++        this.emit('destroy');
++
++        // First destroy the clone and then destroy everything
++        // This will ensure that we never see it in the _disconnectSignals loop
++        this.metaWindow.disconnect(this.clone._updateId);
++        this.realWindow.disconnect(this.clone._destroyId);
++        this.clone.destroy();
++
+         this.actor.destroy();
+     },
+
+@@ -285,6 +288,7 @@ var WorkspaceThumbnail = new Lang.Class({
+
+         // Create clones for windows that should be visible in the Overview
+         this._windows = [];
++        this._windowsDestroyedIds = [];
+         this._allWindows = [];
+         this._minimizedChangedIds = [];
+         for (let i = 0; i < windows.length; i++) {
+@@ -371,7 +375,7 @@ var WorkspaceThumbnail = new Lang.Class({
+         return this._collapseFraction;
+     },
+
+-    _doRemoveWindow(metaWin) {
++    _doRemoveWindow(metaWin, {cloneDestroy}={cloneDestroy: true}) {
+         let win = metaWin.get_compositor_private();
+
+         // find the position of the window in our list
+@@ -381,9 +385,13 @@ var WorkspaceThumbnail = new Lang.Class({
+             return;
+
+         let clone = this._windows[index];
++        clone.disconnect(this._windowsDestroyedIds[index]);
++
+         this._windows.splice(index, 1);
++        this._windowsDestroyedIds.splice(index, 1);
+
+-        clone.destroy();
++        if (cloneDestroy)
++            clone.destroy();
+     },
+
+     _doAddWindow(metaWin) {
+@@ -502,7 +510,11 @@ var WorkspaceThumbnail = new Lang.Class({
+           this._bgManager = null;
+         }
+
++        for (let index = 0; index < this._windows.length; ++index)
++            this._windows[index].disconnect(this._windowsDestroyedIds[index]);
++
+         this._windows = [];
++        this._windowsDestroyedIds = [];
+         this.actor = null;
+     },
+
+@@ -535,6 +547,10 @@ var WorkspaceThumbnail = new Lang.Class({
+         clone.connect('drag-end', () => {
+             Main.overview.endWindowDrag(clone.metaWindow);
+         });
++        let cloneDestroyedId = clone.connect('destroy', () => {
++            this._doRemoveWindow(clone.metaWindow, {cloneDestroy: false});
++        });
++
+         this._contents.add_actor(clone.actor);
+
+         if (this._windows.length == 0)
+@@ -543,6 +559,7 @@ var WorkspaceThumbnail = new Lang.Class({
+             clone.setStackAbove(this._windows[this._windows.length - 1].actor);
+
+         this._windows.push(clone);
++        this._windowsDestroyedIds.push(cloneDestroyedId);
+
+         return clone;
+     },
