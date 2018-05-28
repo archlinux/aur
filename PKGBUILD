@@ -6,28 +6,25 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8
-pkgver=6.4.388.6
+pkgver=6.8.275.3
 pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/v8/"
 license=('BSD')
 depends=('readline' 'icu')
-makedepends=('clang' 'clang-tools-extra' 'python2' 'python2-virtualenv' 'ninja' 'git' 'wget')
+makedepends=('clang' 'clang-tools-extra' 'python2' 'python2-colorama' 'python2-pylint' 'python2-lazy-object-proxy' 'python2-singledispatch' 'python2-wrapt' 'ninja' 'git' 'wget')
 conflicts=('v8-3.14' 'v8-3.15' 'v8-3.20' 'v8-static-gyp' 'v8-static-gyp-5.4')
 source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
         "v8.pc"
         "v8_libbase.pc"
         "v8_libplatform.pc"
-	"d8"
-	"ctest.patch")
+	"d8")
 sha256sums=('SKIP'
             '3616bcfb15af7cd5a39bc0f223b2a52f15883a4bc8cfcfb291837c7421363d75'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
-            '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
-            'db2f7e8b37d99a396b488d7657d6febb475371d42ec30fff8ffbb69983a9a09f')
-
+            '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0')
 
 #
 # Custom configuration for V8
@@ -81,18 +78,13 @@ esac
 OUTFLD=out.gn/Release
 
 prepare() {
-  msg2 "Creating Python Virtual Environment"
-  virtualenv2 -q venv
-  msg2 "Activating Python Virtual Environment"
-  source venv/bin/activate > /dev/null
-  msg2 "Installing dependencies in the Virtual Environment..."
-  pip install colorama -q
-  pip install pylint -q
-  pip install lazy-object-proxy -q
-  pip install singledispatch -q
-  pip install wrapt -q
+  # Switching to python2 system environment
+  mkdir -p bin
+  ln -sf /usr/bin/python2 ./bin/python
+  ln -sf /usr/bin/python2-config ./bin/python-config
+  msg2 "Using: `which python`"
 
-  export PATH=`pwd`/depot_tools:"$PATH"
+  export PATH=${srcdir}/bin:`pwd`/depot_tools:"$PATH"
   export GYP_GENERATORS=ninja
 
   if [ ! -d "v8" ]; then
@@ -101,6 +93,9 @@ prepare() {
   fi
 
   cd v8
+
+  msg2 "Reset repository"
+  git reset --hard
 
   if [ -f third_party/icu/BUILD.gn.orig ]
   then
@@ -112,13 +107,7 @@ prepare() {
   gclient sync --revision ${pkgver}
 
   msg2 "Using system libraries for ICU"
-  ./build/linux/unbundle/replace_gn_files.py --system-libraries icu
-
-  #msg2 "Applying gcc7 compatibility patch"
-  #patch -p1 -i ${srcdir}/gcc7.patch
-
-  msg "Applying ctest patch"
-  patch -p1 -i ${srcdir}/ctest.patch
+  ./build/linux/unbundle/replace_gn_files.py
 
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8.pc"
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libbase.pc"
@@ -136,13 +125,9 @@ prepare() {
     v8_enable_i18n_support=$V8_I18N_SUPPORT
     v8_use_external_startup_data=\"$V8_USE_EXTERNAL_STARTUP_DATA\"
     use_sysroot=$V8_USE_SYSROOT"
-
-  deactivate
 }
 
 build() {
-  source venv/bin/activate > /dev/null
-
   cd v8
 
   # Fixes bug in generate_shim_headers.py that fails to create these dirs
@@ -152,23 +137,17 @@ build() {
 
   msg2 "Building, this will take a while..."
   ninja -C $OUTFLD
-
-  deactivate
 }
 
 check() {
-  source venv/bin/activate > /dev/null
-
   cd v8
-
+  msg2 "Using `which python`"
   msg2 "Testing, this will also take a while..."
   tools/run-tests.py --no-presubmit \
                      --outdir=out.gn \
                      --buildbot \
                      --arch=$V8_ARCH \
                      --mode=Release
-
-  deactivate
 }
 
 package() {
