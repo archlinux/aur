@@ -1,0 +1,67 @@
+diff --git a/bin/fmpp b/bin/fmpp
+index 35cdd33..50a49d1 100644
+--- a/bin/fmpp
++++ b/bin/fmpp
+@@ -39,36 +39,34 @@ if [ -z "$FMPP_HOME" ] ; then
+   # try to find FMPP
+   if [ -d /opt/fmpp ] ; then 
+     FMPP_HOME=/opt/fmpp
+-  fi
+-
+-  if [ -d "${HOME}/opt/fmpp" ] ; then 
++  elif [ -d "${HOME}/opt/fmpp" ] ; then 
+     FMPP_HOME="${HOME}/opt/fmpp"
++  else
++    ## resolve links - $0 may be a link to FMPP's home
++    PRG="$0"
++    progname=`basename "$0"`
++    saveddir=`pwd`
++
++    # need this for relative symlinks
++    cd `dirname "$PRG"`
++
++    while [ -h "$PRG" ] ; do
++      ls=`ls -ld "$PRG"`
++      link=`expr "$ls" : '.*-> \(.*\)$'`
++      if expr "$link" : '.*/.*' > /dev/null; then
++        PRG="$link"
++      else
++        PRG=`dirname "$PRG"`"/$link"
++      fi
++    done
++
++    FMPP_HOME=`dirname "$PRG"`/..
++
++    cd "$saveddir"
++
++    # make it fully qualified
++    FMPP_HOME=`cd "$FMPP_HOME" && pwd`
+   fi
+-
+-  ## resolve links - $0 may be a link to FMPP's home
+-  PRG="$0"
+-  progname=`basename "$0"`
+-  saveddir=`pwd`
+-
+-  # need this for relative symlinks
+-  cd `dirname "$PRG"`
+-  
+-  while [ -h "$PRG" ] ; do
+-    ls=`ls -ld "$PRG"`
+-    link=`expr "$ls" : '.*-> \(.*\)$'`
+-    if expr "$link" : '.*/.*' > /dev/null; then
+-	PRG="$link"
+-    else
+-	PRG=`dirname "$PRG"`"/$link"
+-    fi
+-  done
+-  
+-  FMPP_HOME=`dirname "$PRG"`/..
+-
+-  cd "$saveddir"
+-
+-  # make it fully qualified
+-  FMPP_HOME=`cd "$FMPP_HOME" && pwd`
+ fi
+ 
+ # For Cygwin, ensure paths are in UNIX format before anything is touched
