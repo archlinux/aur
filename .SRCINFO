@@ -1,11 +1,10 @@
 pkgbase = ttf-aenigma
 	pkgdesc = 465 free TrueType fonts by Brian Kent
 	pkgver = 20080510
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.aenigmafonts.com
-	install = ttf-aenigma.install
 	arch = any
-	license = Freeware
+	license = custom
 	makedepends = p7zip
 	depends = fontconfig
 	depends = xorg-font-utils
