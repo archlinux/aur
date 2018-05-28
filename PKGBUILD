@@ -4,10 +4,10 @@
 pkgname=kmscon-patched-git
 _gitname=kmscon
 pkgver=0.0.0
-pkgrel=2
-pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS), with patches to add underline support and fix margin background color (forked and patched version)'
+pkgrel=3
+pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS) (forked and patched version)'
 arch=('x86_64' 'armv7h')
-url='http://www.freedesktop.org/wiki/Software/kmscon/'
+url='https://github.com/Aetf/kmscon'
 license=('MIT')
 depends=(systemd libdrm mesa libgl pango libxkbcommon xkeyboard-config libtsm-patched)
 makedepends=(libxslt docbook-xsl linux-api-headers)

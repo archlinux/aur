@@ -1,8 +1,8 @@
 pkgbase = kmscon-patched-git
-	pkgdesc = Terminal emulator based on Kernel Mode Setting (KMS), with patches to add underline support and fix margin background color (forked and patched version)
+	pkgdesc = Terminal emulator based on Kernel Mode Setting (KMS) (forked and patched version)
 	pkgver = 0.0.0
-	pkgrel = 2
-	url = http://www.freedesktop.org/wiki/Software/kmscon/
+	pkgrel = 3
+	url = https://github.com/Aetf/kmscon
 	arch = x86_64
 	arch = armv7h
 	license = MIT
