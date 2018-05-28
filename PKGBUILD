@@ -1,5 +1,7 @@
 # Maintainer: Shengyu Zhang <la@archlinuxcn.org>
 
+MINGW_PACKAGE_PREFIX=mingw-w64
+
 _pkgname=srain-git
 pkgname=mingw-w64-${_pkgname}
 pkgver=0.988.bbc3da0
