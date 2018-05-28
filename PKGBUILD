@@ -8,7 +8,7 @@
 
 pkgname=('python-dlib-cuda' 'python2-dlib-cuda')
 _pkgname='dlib'
-pkgver=19.11
+pkgver=19.13
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('cblas: for BLAS support'
             'neon: for neon support'
             'sqlite: for sqlite support')
 source=("http://dlib.net/files/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('6503152f4181edec67a68c1532e7b678')
+md5sums=('69d806dea72789f1c0f43843f4007776')
 
 # Detecting whether certain cpu optimisations can be made
 _avx_available=()
@@ -47,12 +47,12 @@ build() {
 
   # Exporting compiler environment variables
   # This is necessary to get cuda support
-  export CC=$(which gcc-6)
-  export CXX=$(which g++-6)
-  
+  export CC=$(command -v gcc-6)
+  export CXX=$(command -v g++-6)
+
   # Compiling for Python 3
   python setup.py build "${_avx_available[@]}" "${_sse2_available[@]}" "${_sse4_available[@]}"
-  
+
   # Compiling for Python 2
   python2 setup.py build "${_avx_available[@]}" "${_sse2_available[@]}" "${_sse4_available[@]}"
 }
@@ -66,6 +66,7 @@ package_python-dlib-cuda() {
 
 package_python2-dlib-cuda() {
   depends=('python2' 'cuda' 'cudnn' 'libx11')
+
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py install --skip-build --prefix=/usr --root="${pkgdir}" --optimize=1
 }
