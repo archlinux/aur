@@ -2,7 +2,7 @@
 # Maintainer: Jan Neumann <neum DOT ja AT gmail DOT com>
 
  
- pkgname=sddm-theme-elegant-git
+ pkgname=sddm-elegant-theme-git
 _gitname=Elegant-sddm
 pkgver=r34.732499b
 pkgrel=1
