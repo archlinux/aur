@@ -1,12 +1,13 @@
 pkgbase = compute-runtime-bin
 	pkgdesc = Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond (binary version)
 	pkgver = 18.20.10830
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/compute-runtime
 	install = compute-runtime-bin.install
 	arch = x86_64
 	license = MIT
 	depends = zlib
+	depends = ncurses5-compat-libs
 	optdepends = libdrm
 	optdepends = libva
 	optdepends = ocl-icd
