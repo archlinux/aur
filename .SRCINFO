@@ -1,0 +1,14 @@
+pkgbase = sddm-theme-elegant-git
+	pkgdesc = Elegant sddm theme
+	pkgver = r34.732499b
+	pkgrel = 1
+	url = https://github.com/surajmandalcell/Elegant-sddm
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = sddm
+	source = git+https://github.com/surajmandalcell/Elegant-sddm.git
+	sha256sums = SKIP
+
+pkgname = sddm-theme-elegant-git
+
