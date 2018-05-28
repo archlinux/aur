@@ -1,16 +1,22 @@
 pkgbase = terminus-terminal
 	pkgdesc = A terminal for a more modern age
-	pkgver = 1.0.0.46
+	pkgver = v1.0.0.alpha.47.r0.g1d69082
 	pkgrel = 1
-	url = https://github.com/Eugeny/terminus
+	url = https://eugeny.github.io/terminus/
 	arch = x86_64
 	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = yarn
+	makedepends = python2
+	makedepends = npm-check-updates
 	depends = nodejs
+	depends = fontconfig
 	provides = terminus-terminal
 	conflicts = terminus-terminal
 	replaces = terminus-terminal
-	source = https://github.com/Eugeny/terminus/releases/download/v1.0.0-alpha.46/terminus_1.0.0-alpha.46_amd64.deb
-	sha256sums = c4716cc4da44bb80ba844258042ef6b63f137f17d911c261f5059327aa05abf3
+	source = git+https://github.com/Eugeny/terminus#tag=v1.0.0-alpha.47
+	sha256sums = SKIP
 
 pkgname = terminus-terminal
 

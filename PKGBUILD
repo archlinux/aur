@@ -2,26 +2,45 @@
 pkgname=terminus-terminal
 _pkgname=terminus
 _pkgver=1.0.0
-pkgver=1.0.0.46
+pkgver=v1.0.0.alpha.47.r0.g1d69082
 pkgrel=1
-alpha=46
+alpha=47
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
-url="https://github.com/Eugeny/terminus"
+url="https://eugeny.github.io/terminus/"
 license=('MIT')
-depends=('nodejs')
-#makedepends=('git' 'npm' 'yarn') # 'bzr', 'git', 'mercurial' or 'subversion'
+depends=('nodejs' 'fontconfig')
+makedepends=('git' 'npm' 'yarn' 'python2' 'npm-check-updates')
 provides=("terminus-terminal")
 conflicts=("terminus-terminal")
 replaces=('terminus-terminal')
-source=("$url/releases/download/v${_pkgver}-alpha.$alpha/${_pkgname}_${_pkgver}-alpha.${alpha}_amd64.deb")
-sha256sums=('c4716cc4da44bb80ba844258042ef6b63f137f17d911c261f5059327aa05abf3')
+source=("git+https://github.com/Eugeny/terminus#tag=v${_pkgver}-alpha.${alpha}")
+sha256sums=('SKIP')
 
-pkgver(){
-  echo ${_pkgver}.${alpha}
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+
+}  
+
+build(){
+  cd "$srcdir/$_pkgname/"
+  yarn install
+  ./scripts/install-deps.js
+  cd terminus-terminal/node_modules/font-manager
+  ncu -uan
+  npm install
+  cd $srcdir/$_pkgname
+  ./scripts/install-deps.js
+  yarn run build
+  ./scripts/build-native.js
+  ./scripts/build-linux.js
+  
 }
-package() {
-  cd "$srcdir/"
+
+package() { 
+  cd "$srcdir/$_pkgname/dist/"
+  ar x *.deb
   tar -xf data.tar.xz
   cp -r usr/ $pkgdir
   cp -r opt/ $pkgdir
