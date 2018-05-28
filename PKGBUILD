@@ -2,7 +2,7 @@
 
 pkgbase=python-breathe
 pkgname=('python-breathe' 'python2-breathe')
-pkgver=4.7.3
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="An extension to reStructuredText and Sphinx to be able to read and render Doxygen xml output."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://breathe.readthedocs.org/en/latest/"
 license=('BSD')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 source=("breathe-v${pkgver}.tar.gz::https://github.com/michaeljones/breathe/archive/v${pkgver}.tar.gz")
-sha256sums=('4ff9e0ddc9896c591758679cd4af567ac5d3598adbf93d70c08e3820eb994a20')
+sha256sums=('6e8a3f12976babf9263eded0cbbcccaa751c9606c4de64c8aa81896400bc00e8')
 
 prepare() {
   cp -a "breathe-$pkgver" "breathe2-$pkgver"
