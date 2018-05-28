@@ -4,12 +4,13 @@ pkgname=perl-xml-dumper
 _cpanname=XML-Dumper
 _module=XML::Dumper
 pkgver=0.81
-pkgrel=2
+pkgrel=3
 pkgdesc="$_module - perl module for dumping perl objects from/to XML"
 arch=('any')
 license=('unknown')
 url="https://metacpan.org/release/$_cpanname"
 options=('!emptydirs')
+depends=('perl-xml-parser')
 source=("http://cpan.metacpan.org/authors/id/M/MI/MIKEWONG/${_cpanname}-${pkgver}.tar.gz")
 md5sums=('10726bbe78bef5e4264d5f57533da7c1')
 
