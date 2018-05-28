@@ -4,7 +4,7 @@
 pkgname=octopi-kde-git
 _pkgver=0.8.1
 pkgver=0.8.1.1384
-pkgrel=1
+pkgrel=2
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs (git version for KDE)"
 url="https://github.com/aarnt/octopi"
 arch=('x86_64')
@@ -47,6 +47,9 @@ prepare() {
     sed -e "s|0.9.0 (dev)|${_pkgver}.$(git rev-list --count HEAD)-${pkgrel} ($(git rev-parse --short HEAD))|g" -i src/strconstants.cpp
 
     cp resources/images/octopi_green.png resources/images/octopi.png
+
+    # Fix build with Qt-5.11
+    sed -e 's|#include <QCloseEvent>|#include <QCloseEvent>\n#include <QRegularExpression>|' -i src/transactiondialog.cpp
 }
 
 build() {
