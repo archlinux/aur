@@ -18,4 +18,5 @@ sha256sums=('c6f21318d566ceaaa124f96a753478b4cbac3261c7caa1a7b4a1bb95b8778505')
 package() {
     tar -xJC "${pkgdir}" -f data.tar.xz
     chmod 755 ${pkgdir}/opt/intel/opencl/*.so
+    chown root:root ${pkgdir}/opt/intel/opencl/*.so
 }
