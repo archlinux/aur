@@ -1,7 +1,7 @@
 pkgbase = pyls-mypy
 	pkgdesc = A Mypy plugin for the python language server
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tomv564/pyls-mypy
 	arch = any
 	license = MIT
