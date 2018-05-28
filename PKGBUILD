@@ -1,22 +1,22 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=spirv-headers
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='SPIR-V header files'
 arch=('any')
 url='https://www.khronos.org/registry/spir-v/'
 license=('custom')
-source=("https://github.com/KhronosGroup/SPIRV-Headers/raw/master/include/spirv/${pkgver}/spirv.h"
-        "https://github.com/KhronosGroup/SPIRV-Headers/raw/master/include/spirv/${pkgver}/spirv.hpp"
-        "https://github.com/KhronosGroup/SPIRV-Headers/raw/master/include/spirv/${pkgver}/spirv.hpp11"
-        "https://www.khronos.org/registry/spir-v/specs/${pkgver}/SPIRV.html"
-        "https://www.khronos.org/registry/spir-v/specs/${pkgver}/images/SPIR_Nov14.svg"
-        "https://www.khronos.org/registry/spir-v/specs/${pkgver}/images/Khronos_Dec14.svg")
-sha1sums=('dfc8e1b621941aca2ab085bc679d18324b34843b'
-          'd16f0d4722a0f2e57003e8fee5327199520cb484'
-          '74eea0810397e843a7dc17ccbcb9ca60ba2bdaa9'
-          '5addcec1dc04709ae471bf12e7868929ecb129f0'
+source=("https://github.com/KhronosGroup/SPIRV-Headers/raw/master/include/spirv/unified1/spirv.h"
+        "https://github.com/KhronosGroup/SPIRV-Headers/raw/master/include/spirv/unified1/spirv.hpp"
+        "https://github.com/KhronosGroup/SPIRV-Headers/raw/master/include/spirv/unified1/spirv.hpp11"
+        "https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html"
+        "https://www.khronos.org/registry/spir-v/specs/unified1/images/SPIR_Nov14.svg"
+        "https://www.khronos.org/registry/spir-v/specs/unified1/images/Khronos_Dec14.svg")
+sha1sums=('a3e49dd13ef5809ce628cbab86bff2823dc42e3d'
+          'b6e21387f4cb7a9b9cf0411b4ba5ad81e0e17601'
+          '76485af78b524289902f50a668bab1383f0c02e9'
+          'a0a0b71a4a36128ecd3e02faefcd3151f76542a3'
           '52590721a4be88dcd10000d4b723694f70ebb301'
           'c2608bbbb93ed17f122855d150bea9699181b8eb')
 
