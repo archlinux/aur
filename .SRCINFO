@@ -1,7 +1,7 @@
 pkgbase = pakku
 	pkgdesc = Pacman wrapper with AUR support
 	pkgver = 0.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kitsunyan/pakku
 	arch = x86_64
 	license = GPL3

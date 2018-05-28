@@ -2,7 +2,7 @@
 
 pkgname=pakku
 pkgver=0.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Pacman wrapper with AUR support'
 arch=('x86_64')
 url="https://github.com/kitsunyan/$pkgname"
