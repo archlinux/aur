@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=bolt
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Thunderbolt 3 security system daemon"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ depends=('polkit' 'systemd')
 makedepends=('asciidoc' 'meson')
 checkdepends=('umockdev')
 source=($pkgname-$pkgver.tar.gz::https://gitlab.freedesktop.org/$pkgname/$pkgname/repository/$pkgver/archive.tar.bz2)
-sha256sums=('c8ec4c77485fc11b4c5994c96838f38f9529816708cbdf35c00fcb495e5a587f')
+sha256sums=('fd4d4bf0ddadff901db4560f1e52bec2657591f440079c3b76133bbdd9452c38')
 
 build() {
-  cd "${srcdir}"/$pkgname-$pkgver-0823d6ffd50be2854b23dbf75c30038acca2c047
+  cd "${srcdir}"/$pkgname-$pkgver-b198f67bd9249eec37b5bf32b8dadccca38ce14d
 
   install -d ../build
   arch-meson ../build
@@ -22,13 +22,13 @@ build() {
 }
 
 check() {
-  cd "${srcdir}"/$pkgname-$pkgver-0823d6ffd50be2854b23dbf75c30038acca2c047
+  cd "${srcdir}"/$pkgname-$pkgver-b198f67bd9249eec37b5bf32b8dadccca38ce14d
 
   ninja -C ../build test
 }
 
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver-0823d6ffd50be2854b23dbf75c30038acca2c047
+  cd "${srcdir}"/$pkgname-$pkgver-b198f67bd9249eec37b5bf32b8dadccca38ce14d
 
   DESTDIR="${pkgdir}" ninja -C ../build install
 # Fixup mode to match polkit
