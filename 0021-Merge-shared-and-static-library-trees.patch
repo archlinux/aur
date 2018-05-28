@@ -1,7 +1,7 @@
-From 297f163b0298a45307f397842bca505c860a7fc3 Mon Sep 17 00:00:00 2001
+From 10b1ab0ecf79787af8906a6186088d7e81a05b8a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
-Subject: [PATCH 21/32] Merge shared and static library trees
+Subject: [PATCH 21/33] Merge shared and static library trees
 
 Allow installation of shared and static build in the same prefix
 ---
@@ -13,10 +13,10 @@ Allow installation of shared and static build in the same prefix
  5 files changed, 51 insertions(+), 6 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index ea482552c4..9da756fb3a 100644
+index 0512ef0144..c3ce522e4f 100644
 --- a/configure.pri
 +++ b/configure.pri
-@@ -1225,3 +1225,12 @@ defineTest(createConfigStatus) {
+@@ -1249,3 +1249,12 @@ defineTest(createConfigStatus) {
  
  QMAKE_POST_CONFIGURE += \
      "createConfigStatus()"
@@ -30,7 +30,7 @@ index ea482552c4..9da756fb3a 100644
 +    CONFIG += no_smart_library_merge
 +}
 diff --git a/mkspecs/features/default_post.prf b/mkspecs/features/default_post.prf
-index 7e027325bd..ad0db62b78 100644
+index 9eba5bcf00..0f8d03eb2c 100644
 --- a/mkspecs/features/default_post.prf
 +++ b/mkspecs/features/default_post.prf
 @@ -1,5 +1,16 @@
@@ -128,5 +128,5 @@ index 0d07d6c333..5e84628e72 100644
  
      t << endl;
 -- 
-2.16.1
+2.17.0
 

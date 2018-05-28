@@ -1,7 +1,7 @@
-From 61cc992fc37a4f44ada488a9e60514e237e523b5 Mon Sep 17 00:00:00 2001
+From c34e48c2f0ce088b746e2d8bdc646db929339454 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 16:42:07 +0200
-Subject: [PATCH 24/32] Adjust linker flags for static build with
+Subject: [PATCH 24/33] Adjust linker flags for static build with
  cmake/mingw-w64
 
 Change-Id: I33b88976d8f5ce87ce431a6f422fe87785bf5b8d
@@ -10,10 +10,10 @@ Change-Id: I33b88976d8f5ce87ce431a6f422fe87785bf5b8d
  1 file changed, 7 insertions(+)
 
 diff --git a/src/corelib/Qt5CoreConfigExtras.cmake.in b/src/corelib/Qt5CoreConfigExtras.cmake.in
-index ebe6644dfe..687d611b3f 100644
+index f0add757bb..5328da2e80 100644
 --- a/src/corelib/Qt5CoreConfigExtras.cmake.in
 +++ b/src/corelib/Qt5CoreConfigExtras.cmake.in
-@@ -190,3 +190,10 @@ get_filename_component(_Qt5CoreConfigDir ${CMAKE_CURRENT_LIST_FILE} PATH)
+@@ -173,3 +173,10 @@ get_filename_component(_Qt5CoreConfigDir ${CMAKE_CURRENT_LIST_FILE} PATH)
  set(_Qt5CTestMacros \"${_Qt5CoreConfigDir}/Qt5CTestMacros.cmake\")
  
  _qt5_Core_check_file_exists(${_Qt5CTestMacros})
@@ -25,5 +25,5 @@ index ebe6644dfe..687d611b3f 100644
 +unset(_isExe)
 +!!ENDIF
 -- 
-2.16.1
+2.17.0
 
