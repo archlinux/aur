@@ -1,7 +1,7 @@
 # Maintainer: Meade Kincke <thedarkula2049@gmail.com>
 # Maintainer: Emily Kincke <marleybrush5@gmail.com>
 pkgname=brewstillery
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="BrewStillery is a brewer's, vintner's, and distiller's calculator. It has a multitude of great functions, such as calculating ABV, determining carbonation, and total sparge water needed."
 url="https://monkeylog.in"
@@ -12,7 +12,7 @@ makedepends=('git' 'cargo')
 provides=('brewstillery')
 conflicts=('brewstillery')
 source=("https://github.com/MonkeyLog/BrewStillery/archive/$pkgver.tar.gz")
-md5sums=('924d76060fa85787fde2ae52b67d53a3')
+md5sums=('79657cd301be447aef1d3a3f0ee65f12')
 
 build() {
 	cd $srcdir/BrewStillery-$pkgver
