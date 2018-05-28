@@ -10,7 +10,7 @@ pkgbase = sdrangel
 	depends = pkg-config
 	depends = boost
 	depends = log4cpp
-	depends = qt5-base>=5.5
+	depends = qt5-base>=5.9
 	depends = qt5-tools
 	depends = qt5-multimedia
 	depends = fftw

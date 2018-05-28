@@ -10,7 +10,7 @@ url="https://github.com/f4exb/sdrangel"
 license=('GPL3')
 depends=(
   'pkg-config' 'boost' 'log4cpp'
-  'qt5-base>=5.5' 'qt5-tools' 'qt5-multimedia' # QT5
+  'qt5-base>=5.9' 'qt5-tools' 'qt5-multimedia' # QT5
   'fftw' 'lz4' 'nanomsg'
   'cm256cc' 'dsdcc'
   'pulseaudio'
