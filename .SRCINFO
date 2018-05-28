@@ -1,7 +1,7 @@
 pkgbase = predict
 	pkgdesc = Satellite tracking, orbital prediction, open-source software
 	pkgver = 2.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.qsl.net/kd2bd/predict.html
 	arch = i686
 	arch = x86_64

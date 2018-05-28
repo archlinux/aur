@@ -1,7 +1,7 @@
 # Maintainer: Paul Stoetzer <n8hm at arrl dot net>
 pkgname=predict
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Satellite tracking, orbital prediction, open-source software'
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/kd2bd/predict.html"
