@@ -2,14 +2,16 @@
 
 int zoom_months[] = {60, 48, 36, 24, 12, 9, 6, 3, 1}, zoom_change_x_months[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
 
-void graph_main(const char* symbol, const char* symbol2) {
-    initscr();
+void graph_main(const char* symbol, const char* symbol2, WINDOW* window) {
+    if (window == NULL)
+        window = initscr();
+
     if (!has_colors()) { // compare command will use two colors to differentiate, so color must
         endwin();        // be supported. Must endwin() before puts()
         RET_MSG("Your terminal does not support color.");
     }
 
-    printw("Loading data...");
+    wprintw(window, "Loading data...");
     double* price_data = api_get_hist_5y(symbol), * price_data2 = NULL;
     if (price_data == NULL) { // If invalid symbol or cryptocurrency
         endwin();
@@ -26,13 +28,13 @@ void graph_main(const char* symbol, const char* symbol2) {
     }
 
     noecho(); // Don't echo keystrokes
-    keypad(stdscr, TRUE); // Enables extra keystrokes
+    keypad(window, TRUE); // Enables extra keystrokes
     curs_set(0); // Hides cursor
     start_color(); // Enable colors for comparison
     init_pair(1, COLOR_RED, COLOR_BLACK); // Init color red
     init_pair(2, COLOR_WHITE, COLOR_BLACK); // Init black background, white foreground
-    bkgd(BLACK); // set background/foreground
-    refresh(); // flush
+    wbkgd(window, BLACK); // set background/foreground
+    wrefresh(window); // flush
 
     time_t now = time(NULL);
     struct tm today_date = *localtime(&now), start_date = today_date, furthest_back_date = today_date, end;
@@ -57,9 +59,9 @@ void graph_main(const char* symbol, const char* symbol2) {
     }
 
     int ch, zoom = ZOOM_5y;
-    graph_print(price_data, price_data2, &start_date, zoom, symbol, symbol2); // Initial graph of 5 year history
+    graph_print(price_data, price_data2, &start_date, zoom, symbol, symbol2, window); // Initial graph of 5 year history
 
-    while ((ch = getch()) != 'q') { // Main input loop -- end if keypress 'q'
+    while ((ch = wgetch(window)) != 'q') { // Main input loop -- end if keypress 'q'
         if ((ch == KEY_UP && zoom != ZOOM_1m) || (ch == KEY_DOWN && zoom != ZOOM_5y) ||
             (zoom != ZOOM_5y && (ch == KEY_LEFT || ch == KEY_RIGHT))) { // UP / DOWN / LEFT / RIGHT
             if (ch == KEY_UP) {
@@ -85,7 +87,7 @@ void graph_main(const char* symbol, const char* symbol2) {
                 if (difftime(mktime(&start_date), mktime(&furthest_back_date)) < 0)
                     start_date = furthest_back_date; // Can't go back past furthest_date
             }
-            graph_print(price_data, price_data2, &start_date, zoom, symbol, symbol2);
+            graph_print(price_data, price_data2, &start_date, zoom, symbol, symbol2, window);
         }
     }
     endwin();
@@ -95,10 +97,10 @@ void graph_main(const char* symbol, const char* symbol2) {
 }
 
 void graph_print(const double* points, const double* points2, struct tm* start_time, int zoom,
-                 const char* symbol, const char* symbol2) {
-    move(0, 0); // Instead of clear()ing, move to the top left corner and re-print
+                 const char* symbol, const char* symbol2, WINDOW* window) {
+    wmove(window, 0, 0); // Instead of clear()ing, move to the top left corner and re-print
     int cols, rows;
-    getmaxyx(stdscr, rows, cols);
+    getmaxyx(window, rows, cols);
     cols -= 11; // 10 offset to give space for graph labels + 1 for right side
     rows -= 3; // Make space for zoom indicator
     rows -= rows % ROWS_SPACING; // Round down to multiple of 5
@@ -152,12 +154,12 @@ void graph_print(const double* points, const double* points2, struct tm* start_t
 
     for (int i = rows; i >= 0; i--) {
         if (i % ROWS_SPACING == 0) // Print y-axis price labels with width 10
-            printw("%9.2lf ", (max - ((rows - i) * line_diff)));
+            wprintw(window, "%9.2lf ", (max - ((rows - i) * line_diff)));
         else if (points2 != NULL && (i - 1) % ROWS_SPACING == 0) { // Print comparison price label above
-            attron(RED);
-            printw("%9.2lf ", (max2 - ((rows - i) * line_diff2)));
-            attroff(RED);
-        } else printw("          "); // Indent width 10 otherwise
+            wattron(window, RED);
+            wprintw(window, "%9.2lf ", (max2 - ((rows - i) * line_diff2)));
+            wattroff(window, RED);
+        } else wprintw(window, "          "); // Indent width 10 otherwise
 
         for (int j = 0; j < cols; j++) {
             day_close = points[starting_index + (int) ((double) j * trading_days / cols)]; // Get close prices
@@ -165,25 +167,25 @@ void graph_print(const double* points, const double* points2, struct tm* start_t
                 day_close2 = points2[starting_index + (int) ((double) j * trading_days / cols)];
 
             if (day_close <= (max - ((rows - i) * line_diff)) && day_close > (min + ((i - 1) * line_diff)))
-                addch(ACS_DIAMOND); // Print diamond if close price is within line_diff
+                waddch(window, ACS_DIAMOND); // Print diamond if close price is within line_diff
             else if (points2 != NULL && day_close2 <= (max2 - ((rows - i) * line_diff2)) &&
                      day_close2 > (min2 + ((i - 1) * line_diff2))) {
-                attron(RED);
-                addch(ACS_DIAMOND); // Print RED diamond if close price is within line_diff
-                attroff(RED);
+                wattron(window, RED);
+                waddch(window, ACS_DIAMOND); // Print RED diamond if close price is within line_diff
+                wattroff(window, RED);
             } else if (i % ROWS_SPACING == 0 && j % COLS_SPACING == 0) // Cross on corners
-                addch(ACS_PLUS);
+                waddch(window, ACS_PLUS);
             else if (i % ROWS_SPACING == 0) // Horizontal line every ROWS_SPACING lines
-                addch(ACS_HLINE);
+                waddch(window, ACS_HLINE);
             else if (j % COLS_SPACING == 0) // Vertical line every COLS_SPACING lines
-                addch(ACS_VLINE);
+                waddch(window, ACS_VLINE);
             else // Otherwise prints a space
-                addch(' ');
+                waddch(window, ' ');
         }
-        addch('\n'); // Newline on line end
+        waddch(window, '\n'); // Newline on line end
     }
 
-    printw("     "); // Indent to center date labels
+    wprintw(window, "     "); // Indent to center date labels
     char time_string[16];
     double days_per_col_spacing = (DAYS_TO_BUSINESS_DAYS_RATIO * trading_days) / (cols / COLS_SPACING);
     struct tm copy = *start_time;
@@ -193,31 +195,34 @@ void graph_print(const double* points, const double* points2, struct tm* start_t
                 copy.tm_sec += days_per_col_spacing * 2.0 * 86400.0;
             mktime(&copy);
             strftime(time_string, 16, "%m/%d/%Y", &copy);
-            printw("%s              ", time_string); // Width 2 * COLS_SPACING
+            wprintw(window, "%s              ", time_string); // Width 2 * COLS_SPACING
         }
     }
 
-    printw("\n\n %s", symbol); // Empty line as spacing, then print key containing the symbol(s) and diamond with color
-    addch(ACS_DIAMOND);
+    waddch(window, '\n');
+    waddch(window, '\n');
+    wprintw(window, "%s", symbol); // Empty line as spacing, then print key containing the symbol(s) and diamond
+    // with color
+    waddch(window, ACS_DIAMOND);
     if (points2 != NULL) {
-        attron(RED);
-        printw(" %s", symbol2);
-        addch(ACS_DIAMOND);
-        attroff(RED);
+        wattron(window, RED);
+        wprintw(window, " %s", symbol2);
+        waddch(window, ACS_DIAMOND);
+        wattroff(window, RED);
     }
-    addch(' ');
+    waddch(window, ' ');
     size_t offset = (cols / 2) - (11 + strlen(symbol)); // Center zoom level
     if (points2 != NULL)
         offset -= strlen(symbol2) + 2;
     for (unsigned int i = 0; i < offset; i++)
-        addch(' '); // Center text
+        waddch(window, ' '); // Center text
     const char* str[9] = {"5y", "4y", "3y", "2y", "1y", "9m", "6m", "3m", "1m"}; // Zoom level
     for (int i = 0; i < 9; i++) {
         if (zoom == i)
-            attron(A_STANDOUT); // Highlight current zoom level
-        addstr(str[i]);
-        attroff(A_STANDOUT);
-        addch(' ');
+            wattron(window, A_STANDOUT); // Highlight current zoom level
+        waddstr(window, str[i]);
+        wattroff(window, A_STANDOUT);
+        waddch(window, ' ');
     }
 }
 

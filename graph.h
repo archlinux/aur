@@ -39,7 +39,7 @@ extern int zoom_months[9], zoom_change_x_months[9];
  * @param symbol first symbol
  * @param symbol2 second symbol
  */
-void graph_main(const char* symbol, const char* symbol2);
+void graph_main(const char* symbol, const char* symbol2, WINDOW* window);
 
 /**
  * Prints out a NCurses based graph given an array of daily close prices.
@@ -54,7 +54,7 @@ void graph_main(const char* symbol, const char* symbol2);
  * @param symbol2 second symbol
  */
 void graph_print(const double* points, const double* points2, struct tm* start_time, int zoom,
-        const char* symbol, const char* symbol2);
+        const char* symbol, const char* symbol2, WINDOW* window);
 
 /**
  * Reallocates the given array with size trading days. Moves all values to end of the array and sets
