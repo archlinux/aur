@@ -1,12 +1,14 @@
 pkgbase = veles-git
 	pkgdesc = Binary data analysis and visualization tool
-	pkgver = 2017.06.0.1.r173.gff6fa83
+	pkgver = 2018.05.0.r0.ge65de5a
 	pkgrel = 1
 	url = https://codisec.com/veles
 	arch = x86_64
 	license = APLv2
 	source = git+https://github.com/codilime/veles.git
+	source = fix_qt5_use_modules.patch
 	sha256sums = SKIP
+	sha256sums = 13a352f860723304dc2ae664f0f2a4ba29f872e7cc65334409dbb6475f9473c0
 
 pkgname = veles-git
 	depends = qt5-base
@@ -14,6 +16,7 @@ pkgname = veles-git
 	depends = python-veles-git
 	depends = protobuf
 	depends = zlib
+	depends = python-pyopenssl
 	provides = veles
 	conflicts = veles-bin
 	conflicts = veles
