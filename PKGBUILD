@@ -3,7 +3,7 @@
 pkgbase=('python-jack-client')
 pkgname=('python-jack-client' 'python2-jack-client')
 _name='JACK-Client'
-pkgver='0.4.2'
+pkgver='0.4.4'
 pkgrel=1
 pkgdesc="JACK Audio Connection Kit (JACK) Client for Python"
 url="http://jackclient-python.rtfd.org/"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/j/jack-client/JACK-Client-${pkgver}.tar.gz")
-md5sums=('04cace6ec6c5563e1b91f3720ccdacfd')
+md5sums=('75cbe4c6ef24eb3c9a0bcb44174cd072')
 
 prepare() {
   cp -a "${srcdir}/${_name}-${pkgver}"{,-python2}
