@@ -1,12 +1,13 @@
 pkgbase = wyebadblock-git
 	pkgdesc = An adblock extension for webkit2gtk browsers.
 	pkgver = 1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/jun7/wyebadblock
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = webkit2gtk
+	provides = wyebab-git
 	source = git://github.com/jun7/wyebadblock.git#branch=master
 	md5sums = SKIP
 
