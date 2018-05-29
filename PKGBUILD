@@ -5,7 +5,8 @@ _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-rcppeigen
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="R and Eigen integration using Rcpp"
+pkgdesc="Rcpp Integration for the Eigen Templated Linear Algebra
+Library"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('GPL (>= 2) | file LICENSE')

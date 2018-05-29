@@ -1,5 +1,5 @@
 pkgbase = r-rcppeigen
-	pkgdesc = R and Eigen integration using Rcpp
+	pkgdesc = Rcpp Integration for the Eigen Templated Linear Algebra Library
 	pkgver = 0.3.3.4.0
 	pkgrel = 1
 	url = https://cran.r-project.org/web/packages/RcppEigen/index.html
