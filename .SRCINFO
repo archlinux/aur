@@ -1,26 +1,26 @@
 pkgbase = r-rstan
-pkgdesc = User-facing R functions for Stan models
-pkgver = 2.17.3
-pkgrel = 2
-url = https://cran.r-project.org/web/packages/rstan/index.html
-arch = x86_64
-license = GPL3
-depends = r
-depends = r-cran-bh>=1.65
-depends = r-rcppeigen>=0.3.3.3.0
-depends = r-cran-rcpp>=0.12.0
-depends = r-cran-gridextra>=2.0.0
-depends = r-inline
-depends = r-stanheaders>=2.17.2
-depends = r-cran-ggplot2>=2.0.0
-optdepends = r-loo
-optdepends = r-shinystan
-optdepends = r-bayesplot
-optdepends = r-rstantools
-optdepends = r-rstudioapi
-optdepends = r-knitr
-source = https://cran.r-project.org/src/contrib/rstan_2.17.3.tar.gz
-md5sums = 942f119d1dd76a915374eb37f54cb9a4
+	pkgdesc = User-facing R functions for Stan models
+	pkgver = 2.17.3
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/rstan/index.html
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-cran-ggplot2
+	depends = r-stanheaders
+	depends = r-inline
+	depends = r-cran-gridextra
+	depends = r-cran-bh
+	depends = r-stanheaders
+	optdepends = r-cran-bh
+	optdepends = r-loo
+	optdepends = r-shinystan
+	optdepends = r-bayesplot
+	optdepends = r-rstantools
+	optdepends = r-rstudioapi
+	optdepends = r-knitr
+	source = https://cran.r-project.org/src/contrib/rstan_2.17.3.tar.gz
+	md5sums = 942f119d1dd76a915374eb37f54cb9a4
 
 pkgname = r-rstan
 
