@@ -12,6 +12,7 @@ pkgbase = alacritty-git
 	makedepends = freetype2
 	makedepends = git
 	makedepends = ncurses
+	makedepends = desktop-file-utils
 	source = alacritty::git+https://github.com/jwilm/alacritty.git
 	sha256sums = SKIP
 
