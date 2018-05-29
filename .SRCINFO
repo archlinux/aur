@@ -1,0 +1,19 @@
+pkgbase = python-pyzfscmds
+	pkgdesc = ZFS CLI Function Wrapper
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://github.com/johnramsden/pyzfscmds
+	arch = any
+	license = BSD
+	license = custom:BSD 3 clause
+	makedepends = git
+	makedepends = python-pip
+	depends = zfs-linux
+	depends = python
+	depends = python-setuptools
+	conflicts = python-pyzfscmds-git
+	source = python-pyzfscmds-0.1.0.tar.gz::https://github.com/johnramsden/pyzfscmds/archive/v0.1.0-alpha.tar.gz
+	md5sums = ef47bc6d8c3b226c915e01c251fe251e
+
+pkgname = python-pyzfscmds
+
