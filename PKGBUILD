@@ -6,15 +6,15 @@
 
 pkgbase=shiboken2-git
 pkgname=(python{2,}-shiboken2-git shiboken2-git)
-pkgver=5.9.0.r5542.507beab9
-_upver=5.9.0
+pkgver=5.11.0.r5741.a1a8cf65
+_upver=5.11.0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://www.pyside.org"
 makedepends=('git' 'llvm' 'clang' 'cmake' 'python2' 'python' 'libxslt'
              'qt5-xmlpatterns')
-source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.9")
+source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.11")
 sha256sums=('SKIP')
 
 pkgver() {
