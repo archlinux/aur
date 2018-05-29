@@ -1,6 +1,6 @@
 # Maintainer: Philipp Jonczyk <p dot jonczyk at posteo dot de>
 pkgname=python-dictcc
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="commandline tool for dict.cc"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python'
          'python-beautifulsoup4')
 source=("dictcc.py")
 provides=("python-dictcc=$pkgver-$pkgrel")
-md5sums=('2382a6d99471b44cbcb9501b9dd17761')
+md5sums=('fd19db00f9141abfae4ba8e19ab5fa82')
 source=("https://github.com/randomn4me/${pkgname#python-}/archive/${pkgver}.tar.gz")
 
 package() {
