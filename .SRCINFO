@@ -1,0 +1,17 @@
+pkgbase = makepkg-tidy-scripts-git
+	pkgdesc = Collection of scripts for tidying packages created using makepkg. Includes optipng and upx support.
+	pkgver = 0.r7.4af5db2
+	pkgrel = 1
+	url = https://gitlab.com/Freso/makepkg-tidy-scripts
+	arch = any
+	license = GPL
+	makedepends = git
+	optdepends = optipng: For optipng tidy script.
+	optdepends = upx: For upx tidy script.
+	provides = makepkg-tidy-scripts
+	conflicts = makepkg-tidy-scripts
+	source = git+https://gitlab.com/Freso/makepkg-tidy-scripts
+	md5sums = SKIP
+
+pkgname = makepkg-tidy-scripts-git
+
