@@ -5,7 +5,8 @@ _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-zoo
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Methods for totally ordered indexed observations"
+pkgdesc="S3 Infrastructure for Regular and Irregular Time Series (Zs
+Ordered Observations)"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('GPL')

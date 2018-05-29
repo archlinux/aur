@@ -1,5 +1,5 @@
 pkgbase = r-zoo
-	pkgdesc = Methods for totally ordered indexed observations
+	pkgdesc = S3 Infrastructure for Regular and Irregular Time Series (Zs Ordered Observations)
 	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://cran.r-project.org/web/packages/zoo/index.html
