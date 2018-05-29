@@ -1,12 +1,13 @@
 # Author: Patrick Brisbin <pbrisbin@gmail.com>
 pkgname=downgrade
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash script for downgrading one or more packages to a version in your cache or the A.L.A."
 arch=('any')
 url="https://github.com/pbrisbin/$pkgname"
 license=('GPL')
 source=("https://github.com/pbrisbin/$pkgname/archive/v$pkgver.tar.gz")
+depends=('pacman-contrib') # pacsort
 optdepends=('sudo: for installation via sudo')
 
 package() {
