@@ -7,8 +7,8 @@
 
 pkgbase=pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
-pkgver=5.9.0.r5542.507beab9
-_upver=5.9.0
+pkgver=5.11.0.r5746.5dc72386
+_upver=5.11.0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -18,7 +18,7 @@ makedepends=("python"{,2}"-shiboken2-git" 'cmake'
              'qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia' 'qt5-declarative'
              'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d' 'qt5-3d'
              'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
-source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.9")
+source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.11")
 sha256sums=('SKIP')
 
 pkgver() {
