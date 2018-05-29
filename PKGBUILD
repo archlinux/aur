@@ -4,7 +4,7 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=simgear
-pkgver=2018.1.1
+pkgver=2018.2.1
 _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
@@ -15,7 +15,7 @@ license=("GPL")
 url="http://www.flightgear.org/"
 options=('makeflags' 'staticlibs')
 source=("https://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('d403cbd8688782780c50461ea233f26ea3bb8242ff681674e69ac1da05226656')
+sha256sums=('3e2788bc1ce03fc4ca69f41d1546c28fc9502756ae773831ad6e42c4db34f535')
 
 build() {
   cd "$srcdir"/simgear-$pkgver
