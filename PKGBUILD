@@ -1,13 +1,13 @@
 # Maintainer: KopfKrieg <archlinux [at] absolem [dot] cc>
 
 pkgname=pacman-cleanup-hook
-pkgver=0.1
-pkgrel=1
-pkgdesc="Pacman hook to cleanup pacman cache, keeps only the latest cache and the currently installed package. No configuration necessary, just install it."
-arch=("any")
-depends=("pacman")
-source=("cleanup.hook")
-sha1sums=("8352fc69232b9ae2fea24672c15e103fff80a5d4")
+pkgver=1.0
+pkgrel=2
+pkgdesc='Pacman hook to cleanup pacman cache, keeps only the latest cache and the currently installed package. No configuration necessary, just install it.'
+arch=('any')
+depends=('pacman-contrib')
+source=('cleanup.hook')
+sha1sums=('8352fc69232b9ae2fea24672c15e103fff80a5d4')
 
 package() {
   mkdir -p "${pkgdir}/etc/pacman.d/hooks"
