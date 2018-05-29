@@ -1,0 +1,21 @@
+pkgbase = zedenv
+	pkgdesc = Utility to manage Boot Environments using ZFS
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://github.com/johnramsden/zedenv
+	arch = any
+	license = BSD
+	license = custom:BSD 3 clause
+	makedepends = git
+	makedepends = python-pip
+	depends = zfs-linux
+	depends = python
+	depends = python-setuptools
+	depends = python-click
+	depends = python-pyzfscmds
+	conflicts = zedenv-git
+	source = zedenv-0.1.0.tar.gz::https://github.com/johnramsden/zedenv/archive/v0.1.0-alpha.tar.gz
+	md5sums = 2a38da07513fe7dd40a6c851fbad2589
+
+pkgname = zedenv
+
