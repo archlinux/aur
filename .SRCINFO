@@ -8,7 +8,6 @@ pkgbase = kaitai-struct-compiler-git
 	makedepends = git
 	makedepends = sbt
 	makedepends = unzip
-	makedepends = ruby-rdoc
 	depends = scala
 	depends = java-runtime
 	provides = kaitai-struct-compiler
