@@ -2,8 +2,8 @@
 
 pkgname=libopenblas
 pkgver=0.3.0
-pkgrel=1
-pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD"
+pkgrel=2
+pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD. (Designed for can be installed side by side with Blas)"
 arch=('x86_64')
 url='http://www.openblas.net'
 license=('BSD')
@@ -11,6 +11,8 @@ depends=('gcc-libs')
 makedepends=('perl'
              'gcc-fortran'
              )
+conflicts=('openblas')
+provides=('openblas')
 source=("OpenBLAS-v${pkgver}.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz")
 sha256sums=('cf51543709abe364d8ecfb5c09a2b533d2b725ea1a66f203509b21a8e9d8f1a1')
 options=('!emptydirs')
