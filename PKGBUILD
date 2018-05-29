@@ -1,15 +1,15 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-code-git
-pkgver=r2826.e3686e34
+pkgver=r3101.21d512a8
 pkgrel=1
 pkgdesc='The Pantheon Code Editor'
 arch=('x86_64')
 url='https://github.com/elementary/scratch'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('cairo' 'glib2' 'glibc' 'gtk3' 'gtksourceview3' 'libgee' 'libpeas'
-         'libsoup' 'pango' 'zeitgeist'
+depends=('cairo' 'editorconfig-core-c' 'glib2' 'glibc' 'gtk3' 'gtksourceview3'
+         'libgee' 'libpeas' 'libsoup' 'pango' 'zeitgeist'
          'libgranite.so')
 makedepends=('appstream' 'git' 'gobject-introspection' 'granite-git'
              'gtkspell3' 'intltool' 'meson' 'vala' 'vte3' 'webkit2gtk')
@@ -34,8 +34,6 @@ prepare() {
     rm -rf build
   fi
   mkdir build
-
-  sed 's/libvala-0.36/libvala-0.38/' -i pantheon-code/plugins/outline/meson.build
 }
 
 build() {
