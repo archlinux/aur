@@ -23,9 +23,9 @@ source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         https://releases.llvm.org/$pkgver/compiler-rt-$pkgver.src.tar.xz{,.sig}
         0001-GCC-compatibility-Ignore-the-fno-plt-flag.patch
         0002-Enable-SSP-and-PIE-by-default.patch
-        0003-Fix-sanitizer-build-against-latest-glibc.patch
-        0004-Fix-gcc-8-compiler-error.patch
-        disable-llvm-symbolizer-test.patch
+        PR31870-Disable-llvm-symbolizer-test.patch
+        D35246-Fix-sanitizer-build-against-latest-glibc.patch
+        PR37486-Fix-lli-fails-to-build-with-gcc-8.patch
         PR37031-Fix-Mips-breakages.patch
         PR37032-Fix-ldd-x86_64-darwin13-build-fails.patch)
 sha256sums=('da783db1f82d516791179fe103c71706046561f7972b18f0049242dee6712b51'
@@ -36,9 +36,9 @@ sha256sums=('da783db1f82d516791179fe103c71706046561f7972b18f0049242dee6712b51'
             'SKIP'
             'ed4a1c3c73b31421caa0ba50d14cabc16de676a88f045d06b207bbb3006963ac'
             '79f1a409700a83d983d7237a907aeddf342c28aa810b87b28ee27b8c5560644a'
+            '6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359'
             '0afff7e5cf0f6df596517f63a9a9f085eab3b53f42a1eb14bbd83861c36c9fd7'
             '080e90dabbd386fb8c4771ab7537acff157b72bb0f2591609805cacf684cceed'
-            '6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359'
             '506bdbcb30c8bb4a8e3406f14ae972441835dceede61ece9e0117cb0f357e514'
             '6d5498068cf4f6141ee2c8abc1828cc3797e309e545a4e80fa544ac253fc619b')
 validpgpkeys=('11E521D646982372EB577A1F8F0871F202119294')
@@ -50,27 +50,29 @@ prepare() {
   mv "$srcdir/cfe-$pkgver.src" tools/clang
   mv "$srcdir/compiler-rt-$pkgver.src" projects/compiler-rt
 
-  # Disable test that fails when compiled as PIE
-  # https://bugs.llvm.org/show_bug.cgi?id=31870
-  patch -Np1 < ../disable-llvm-symbolizer-test.patch
-
   # Enable SSP and PIE by default
   patch -Np1 -d tools/clang < ../0001-GCC-compatibility-Ignore-the-fno-plt-flag.patch
   patch -Np1 -d tools/clang < ../0002-Enable-SSP-and-PIE-by-default.patch
 
+  # Disable test that fails when compiled as PIE
+  # https://bugs.llvm.org/show_bug.cgi?id=31870
+  patch -Np1 < ../PR31870-Disable-llvm-symbolizer-test.patch
+
   # Fix sanitizer build against latest glibc
   # https://reviews.llvm.org/D35246
-  patch -Np0 -d projects/compiler-rt < ../0003-Fix-sanitizer-build-against-latest-glibc.patch
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81066
+  patch -Np0 -d projects/compiler-rt < ../D35246-Fix-sanitizer-build-against-latest-glibc.patch
 
-  # Fix compiler error with gcc >= 8
+  # Fix lli fails to build with GCC 8
+  # https://bugs.llvm.org/show_bug.cgi?id=37486
   # https://bugzilla.redhat.com/show_bug.cgi?id=1540620
-  patch -Np1 < ../0004-Fix-gcc-8-compiler-error.patch
+  patch -Np1 < ../PR37486-Fix-lli-fails-to-build-with-gcc-8.patch
 
   # Fix Mips breakages
   # https://bugs.llvm.org/show_bug.cgi?id=37031
   patch -Np0 < ../PR37031-Fix-Mips-breakages.patch
 
-  # Fix lld-x86_64-darwin13 build fails.
+  # Fix lld-x86_64-darwin13 build fails
   # https://bugs.llvm.org/show_bug.cgi?id=37032
   patch -Np0 < ../PR37032-Fix-ldd-x86_64-darwin13-build-fails.patch
 }
