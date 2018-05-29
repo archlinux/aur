@@ -10,7 +10,7 @@ Info* api_info_init(void) {
             .gross_profit = EMPTY, .cash = EMPTY, .debt = EMPTY, .eps = {EMPTY, EMPTY, EMPTY, EMPTY},
             .fiscal_period[0][0] = '\0', .fiscal_period[1][0] = '\0', .fiscal_period[2][0] = '\0',
             .fiscal_period[3][0] = '\0', .eps_year_ago = {EMPTY, EMPTY, EMPTY, EMPTY}, .change_1d = EMPTY,
-            .change_7d = EMPTY, .change_30d = EMPTY
+            .change_7d = EMPTY, .change_30d = EMPTY, .points = NULL
     };
     return pInfo;
 }
@@ -248,10 +248,14 @@ void* coinmarketcap_store_info(void* vpInfo) {
     char coinmarketcap_api_string[URL_MAX_LENGTH];
     sprintf(coinmarketcap_api_string, "https://api.coinmarketcap.com/v1/ticker/%s", symbol_info->symbol);
     String* pString = api_curl_data(coinmarketcap_api_string);
+    if (pString == NULL)
+        return NULL;
+
     if (pString->data[0] == '{') { // Invalid symbol
         string_destroy(&pString);
         return NULL;
     }
+
     Json* jobj = json_tokener_parse(pString->data);
     Json* data = json_object_array_get_idx(jobj, 0);
     strcpy(symbol_info->name, json_object_get_string(json_object_object_get(data, "name")));
@@ -329,7 +333,12 @@ Info* api_get_check_info(const char* symbol) {
         return symbol_info;
 
     api_info_destroy(&symbol_info);
-    return morningstar_get_info(symbol);
+    symbol_info = morningstar_get_info(symbol);
+
+    if (symbol_info != NULL)
+        return symbol_info;
+
+    return coinmarketcap_get_info(symbol);
 }
 
 Info* api_get_info(const char* symbol) {
@@ -340,8 +349,12 @@ Info* api_get_info(const char* symbol) {
     if (symbol_info != NULL)
         return symbol_info;
 
-    return morningstar_get_info(symbol);
+    symbol_info = morningstar_get_info(symbol);
 
+    if (symbol_info != NULL)
+        return symbol_info;
+
+    return coinmarketcap_get_info(symbol);
 }
 
 void api_info_destroy(Info** phInfo) {
