@@ -1,0 +1,24 @@
+pkgbase = fonts-martel
+	pkgdesc = Open-source unicode font for Devanagari with immersive-style
+	pkgver = 1.002
+	pkgrel = 1
+	url = http://github.com/typeoff/martel
+	arch = any
+	license = custom:OFL
+	source = https://raw.githubusercontent.com/typeoff/martel/master/Martel%20Font%20Files/OTFs/Martel-Bold.otf
+	source = https://raw.githubusercontent.com/typeoff/martel/master/Martel%20Font%20Files/OTFs/Martel-DemiBold.otf
+	source = https://raw.githubusercontent.com/typeoff/martel/master/Martel%20Font%20Files/OTFs/Martel-ExtraBold.otf
+	source = https://raw.githubusercontent.com/typeoff/martel/master/Martel%20Font%20Files/OTFs/Martel-Heavy.otf
+	source = https://raw.githubusercontent.com/typeoff/martel/master/Martel%20Font%20Files/OTFs/Martel-Regular.otf
+	source = https://raw.githubusercontent.com/typeoff/martel/master/Martel%20Font%20Files/OTFs/Martel-Light.otf
+	source = https://raw.githubusercontent.com/typeoff/martel/master/Martel%20Font%20Files/OTFs/Martel-UltraLight.otf
+	md5sums = eae8771a4c01327ed8923283adea8643
+	md5sums = 22ac9bb105cadd4de5b127a977acff9c
+	md5sums = 7152b039d6403b1c3066f1af778b36b0
+	md5sums = 1b295d13c681f12e93d9dccf0a3f9d08
+	md5sums = 5849e7832bfd29750c34ec9464b53605
+	md5sums = 9d1ce3b19da0f7e3f1737ec218d14d0a
+	md5sums = 5e107bb05924d44e0e76d1685546b000
+
+pkgname = fonts-martel
+
