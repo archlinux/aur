@@ -1,19 +1,20 @@
 pkgbase = nginx-mod-ipscrub
 	pkgdesc = IP address anonymizer for nginx log files
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/masonicboom/ipscrub
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = nginx=1.14.0
+	depends = libbsd
 	source = https://nginx.org/download/nginx-1.14.0.tar.gz
 	source = https://nginx.org/download/nginx-1.14.0.tar.gz.asc
-	source = nginx-mod-ipscrub-1.0.0.tar.gz::https://github.com/masonicboom/ipscrub/archive/v1.0.0.tar.gz
+	source = nginx-mod-ipscrub-1.0.1.tar.gz::https://github.com/masonicboom/ipscrub/archive/v1.0.1.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = 5d15becbf69aba1fe33f8d416d97edd95ea8919ea9ac519eff9bafebb6022cb5
-	sha256sums = SKIP
-	sha256sums = 6fcfa7d04e98691aff72171c369e6d325df6a68efadddb5013aeecfc7da5287f
+	sha512sums = 40f086c9f741727e6f55802b6c3a66f081f7c49c38646dc1491aa3e3c35bae12b65ea6594386609fc849bcd99a60d7cd8ecb3f8d519e0e9ab8db01d653e930e9
+	sha512sums = SKIP
+	sha512sums = 71d376c8d26d1f697ded361675186a2bd44b56afbfe6a2db3bee82d83402876e7ac685bd1e1318d9b2143ee9f85196e60c828af62b2685e8b1165dcaa025d196
 
 pkgname = nginx-mod-ipscrub
 
