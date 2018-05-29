@@ -1,7 +1,7 @@
 pkgbase = v8-3.14
 	pkgdesc = A fast and modern javascript engine (old 3.14 version required R package V8)
 	pkgver = 3.14.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://code.google.com/p/v8
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,6 @@ pkgbase = v8-3.14
 	source = 0015-Backport-Utils-ApiCheck.patch
 	source = 0016-remove-this-null.patch
 	source = 0017_increase_stack_size_for_test.patch
-	source = https://gist.github.com/pat-s/942e255ea38821e6ac3e82a36cb3c4bd
 	source = fix_CVE-2014-5256.patch
 	source = nodejsREPLACE_INVALID_UTF8.patch
 	source = strict_overflow.patch
@@ -47,13 +46,11 @@ pkgbase = v8-3.14
 	sha256sums = 69906640439c263fdeacaf14605e785294f1f3daf28f7633b40a5ac8d6977797
 	sha256sums = e90b54cf2e296c6d5c4bc41b7159015a6584191b5c2ab95a2f28861fb1c3bcb3
 	sha256sums = 71a600e3e502896d45076103201d35c30f778fa57a750bb3f2dfdbdcb3a708b8
-	sha256sums = 64097860ecaa7894493190994c4ac3d167dda8cbd61e5ad6bbbbf4f6f5fe7c2a
 	sha256sums = d6d3eb0ef53ce501c6da5d756f7dc1adcf85361ad75b17253051bb3869b0b3dc
 	sha256sums = b76c02ca0d88e9818e58ef70592a216c6d969bde3b563c74244ee3687a39f672
 	sha256sums = 1b48a5714e9d89d419dac8969c005c56a0adc2599b558375ac9254a3168f55ae
 	sha256sums = 2e6a8f36c33e5e37956429eae2753944519f60a57fde81e0d72de1afa60a4103
 	sha256sums = c67da79111fa171a0900af0da9b151a1568b233f4929922e72d049d7490f98df
-
 
 pkgname = v8-3.14
 
