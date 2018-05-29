@@ -3,12 +3,15 @@
 _nginxver=1.14.0
 
 pkgname=nginx-mod-ipscrub
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='IP address anonymizer for nginx log files'
 
 arch=('i686' 'x86_64')
-depends=("nginx=$_nginxver")
+depends=(
+  "nginx=$_nginxver"
+  'libbsd'
+)
 url='https://github.com/masonicboom/ipscrub'
 license=('custom')
 
@@ -17,11 +20,9 @@ source=(
     ${pkgname}-${pkgver}.tar.gz::https://github.com/masonicboom/ipscrub/archive/v${pkgver}.tar.gz
 )
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
-sha256sums=(
-    '5d15becbf69aba1fe33f8d416d97edd95ea8919ea9ac519eff9bafebb6022cb5'
-    'SKIP'
-    '6fcfa7d04e98691aff72171c369e6d325df6a68efadddb5013aeecfc7da5287f'
-)
+sha512sums=('40f086c9f741727e6f55802b6c3a66f081f7c49c38646dc1491aa3e3c35bae12b65ea6594386609fc849bcd99a60d7cd8ecb3f8d519e0e9ab8db01d653e930e9'
+            'SKIP'
+            '71d376c8d26d1f697ded361675186a2bd44b56afbfe6a2db3bee82d83402876e7ac685bd1e1318d9b2143ee9f85196e60c828af62b2685e8b1165dcaa025d196')
 
 build() {
     cd "$srcdir"/nginx-$_nginxver
