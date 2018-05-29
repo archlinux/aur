@@ -11,7 +11,7 @@ url='http://www.php.net'
 makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libsodium' 'libxslt' 'libzip' 'net-snmp'
              'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre' 'libnsl')
 checkdepends=('procps-ng')
-source=("https://php.net/distributions/${pkgbase}-${pkgver}.tar.xz"{,.asc}
+source=("https://php.net/distributions/php-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'enchant-2.patch' 'freetype.patch')
 sha512sums=('1d49fc6e47d2e86d4fd62396e558965502f44cc8f72459bb0d406e157298cac67703b219837952da11122722d9fa8cb4cda8ef66ddf063cb063859db34110f58'
@@ -34,7 +34,7 @@ provides=("php=${pkgver}" "php-ldap=${pkgver}")
 backup=('etc/php/php.ini')
 
 prepare() {
-	cd ${srcdir}/${pkgbase}-${pkgver}
+	cd ${srcdir}/php-${pkgver}
 
 	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
@@ -51,7 +51,7 @@ build() {
 	CPPFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
 	CFLAGS+=' -D_FILE_OFFSET_BITS=64'
 
-	local _phpconfig="--srcdir=../${pkgbase}-${pkgver} \
+	local _phpconfig="--srcdir=../php-${pkgver} \
 		--config-cache \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
@@ -126,7 +126,7 @@ build() {
 
 	mkdir ${srcdir}/build
 	cd ${srcdir}/build
-	ln -s ../${pkgbase}-${pkgver}/configure
+	ln -s ../php-${pkgver}/configure
 	./configure ${_phpconfig} \
 		--enable-cgi \
 		--enable-fpm \
@@ -157,7 +157,7 @@ build() {
 }
 
 check() {
-	cd ${srcdir}/${pkgbase}-${pkgver}
+	cd ${srcdir}/php-${pkgver}
 
 	# Check if sendmail was configured correctly (FS#47600)
 	${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
@@ -176,7 +176,7 @@ package() {
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
-	install -D -m644 ${srcdir}/${pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
+	install -D -m644 ${srcdir}/php-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
 	install -d -m755 ${pkgdir}/etc/php/conf.d/
 
 	# remove static modules
