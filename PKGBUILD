@@ -8,16 +8,16 @@
 # Contributor: atweiden <archbaum@gmail.com>
 
 pkgname=ansible-git
-pkgver=v2.6.0a1.r217.gf488d3cf79
+pkgver=v2.6.0a1.r248.g0c881c1a83
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
 url='https://www.ansible.com'
 license=('GPL3')
 depends=('python' 'python-yaml' 'python-paramiko' 'python-jinja' 'python-crypto')
-provides=('python-ansible')
-replaces=('python-ansible')
-conflicts=('python-ansible')
+provides=('ansible' 'python-ansible')
+replaces=('ansible' 'python-ansible')
+conflicts=('ansible' 'python-ansible')
 optdepends=('sshpass: for ssh connections with password'
             'python-passlib: crypt values for vars_prompt'
             'python-pyopenssl: openssl modules'
