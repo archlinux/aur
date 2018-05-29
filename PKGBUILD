@@ -1,12 +1,14 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Michael Straube <straubem at gmx dot de>
+# Contributor: Ofer Kashayov <oferkv at gmail dot com>
 
 pkgname=phototonic
 pkgver=1.7.13
 pkgrel=2
 _commit=c1998178dfc49275c716250914ee1aac910ab908
-pkgdesc="Image Viewer and Organizer"
+pkgdesc='Image Viewer and Organizer'
 arch=('i686' 'x86_64')
-url="http://oferkv.github.io/phototonic/"
+url='https://github.com/oferkv/phototonic/'
 license=('GPL3')
 depends=('qt5-base' 'exiv2' 'hicolor-icon-theme')
 optdepends=('qt5-imageformats: TIFF and TGA support' 'qt5-svg: SVG support')
