@@ -3,7 +3,7 @@
 
 pkgname=qtwebflix-git
 _gitname=qtwebflix
-pkgver=r71.0c9a667
+pkgver=0.1.r44.g0c9a667
 pkgrel=1
 pkgdesc='Standalone HD Netflix Browser using qt5-webengine (also supports Amazon prime, HBO Go, Hulu, Crunchy Roll)'
 arch=('any')
@@ -20,7 +20,8 @@ sha256sums=('SKIP'
 pkgver() {
    cd ${srcdir}/${_gitname}
    
-   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+   #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
            
