@@ -1,7 +1,7 @@
 # Maintainer: Jan Heczko <jan dot heczko at gmail dot com>
 pkgname=python-pyipopt
-pkgver=r122.ab61f90
-pkgrel=1
+pkgver=r126.36bcb7f
+pkgrel=2
 pkgdesc="A Python connector to IPOPT"
 arch=('i686' 'x86_64')
 url="https://github.com/xuy/pyipopt"
@@ -9,6 +9,7 @@ license=('BSD')
 groups=()
 depends=('coin-or-ipopt' 'python-numpy'	'gcc')
 makedepends=('git')
+optdepends=('python-algopy')
 provides=('python-pyipopt')
 conflicts=()
 replaces=()
