@@ -1,7 +1,7 @@
 pkgbase = fonts-martel
 	pkgdesc = Open-source unicode font for Devanagari with immersive-style
 	pkgver = 1.002
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/typeoff/martel
 	arch = any
 	license = custom:OFL

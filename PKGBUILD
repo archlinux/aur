@@ -1,7 +1,7 @@
 #Maintainer: Shajil K Joshy <shajilkrazy@gmail.com>
 pkgname=fonts-martel
 pkgver=1.002
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source unicode font for Devanagari with immersive-style"
 url="http://github.com/typeoff/martel"
 license=('custom:OFL')
@@ -23,6 +23,6 @@ md5sums=('eae8771a4c01327ed8923283adea8643'
          '5e107bb05924d44e0e76d1685546b000')
 package() {
 	install -d "$pkgdir/usr/share/fonts/devanagari"
-	install -t "$pkgdir/usr/share/fonts/devanagari" -m644 *.ttf
+	install -t "$pkgdir/usr/share/fonts/devanagari" -m644 *.otf
 }
 
