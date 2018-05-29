@@ -22,7 +22,7 @@ sha512sums=('b9c94bb641e135d683c5a421ae8ff754e2b8b07056d7e1d91d3f1e6486ddafcc2a4
 
 package_phpstorm() {
   optdepends=('phpstorm-jre: JetBrains custom Java Runtime (Recommended)'
-              'java-runtime>=8: JRE - Required if webstorm-jre is not installed'
+              'java-runtime: JRE - Required if webstorm-jre is not installed'
               'gnome-keyring: save login/deployment credentials safely')
 
   install -d -m 755 "${pkgdir}/opt/"
