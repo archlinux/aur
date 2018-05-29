@@ -1,7 +1,7 @@
 pkgname=bandwidth
 pkgver=1.5.1
 pkgrel=1
-pkgdesc="Benchmark memory and network bandwidth"
+pkgdesc="Benchmark memory bandwidth"
 arch=('i686' 'x86_64')
 url="http://zsmith.co/bandwidth.html"
 license=('GPL')
