@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.0_devel.102412.79fe00efb4
+pkgver=18.2.0_devel.102461.d3ff478732
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
@@ -27,17 +27,13 @@ url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
-        '1-3-clover-Fix-build-after-llvm-r332881.patch'
 )
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            '650beb81d694b3042aaf2933bd8a97ca0e57a917c84292bfd6f0a284e1ba8b94c4030f855cf82daa76dd05f7a53394db226dff9f2bdc00d8b1d3106de57ae6d5')
+)
 
 prepare() {
   cd mesa
-  # https://bugs.freedesktop.org/show_bug.cgi?id=106619
-  # https://patchwork.freedesktop.org/patch/224857/
-  patch -Np1 -i ../1-3-clover-Fix-build-after-llvm-r332881.patch
   autoreconf -vfi
 }
 
@@ -118,9 +114,9 @@ package_mesa-git() {
   make DESTDIR="$pkgdir" install
 
   # remove files provided by libglvnd
-   rm "$pkgdir"/usr/lib/libGLESv{1_CM,2}.so*
+  rm "$pkgdir"/usr/lib/libGLESv{1_CM,2}.so*
    
-   # remove files provided by wayland
+  # remove files provided by wayland
   rm "$pkgdir"/usr/lib/libwayland-egl.so*
   rm "$pkgdir"/usr/lib/pkgconfig/wayland-egl.pc
 
