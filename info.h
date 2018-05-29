@@ -36,28 +36,29 @@
 
 extern int zoom_months[9], zoom_change_x_months[9];
 
-
 /**
- * Prints information about the symbol ticker_name_string by calling the function json_print_news.
+ * Prints information about the given symbol and the graph of it in an NCurses window.
  * @param symbol
  */
 void symbol_print_info(const char* symbol);
 
-
 /**
- * Prints the top three news articles by popularity pertaining to the given string, ticker_name_string. Spaces and
- * underscores will be url-encoded (replaced by "%20"). News API will be used for data.
- * @param symbol the string to query
+ * Prints num_articles articles relating to the given symbol. Currently on works for stocks/etfs
+ * @param symbol stock/etf symbol
+ * @param num_articles number of articles to print (max 50)
  */
 void symbol_print_news(const char* symbol, int num_articles);
 
+/**
+ * Graphs a security in stdscr. If symbol2 is not NULL, also graphs that security.
+ * @param symbol security to graph
+ * @param symbol2 optional second security
+ */
 void symbol_graph(const char* symbol, const char* symbol2);
 
 /**
  * -- Main input loop for graphing --
- *
- * Gets the five year history of the given security(s) and calls graph_print to initially display a graph of it/them.
- * If symbol2 is NULL, only displays the graph for symbol.
+ * Graphs a secuturity or securities in the given window.
  * The user may input keystrokes to manipulate the graph(s).
  * Valid keystrokes:
  * q: Quits program
@@ -65,22 +66,22 @@ void symbol_graph(const char* symbol, const char* symbol2);
  * DOWN: decreases zoom level by one and moves start date backward by one year, three months, or two months.
  * LEFT: moves start date backward by one year, three months, or one month.
  * RIGHT: moves start date forward by one year, three months, or one month.
- * @param symbol first symbol
- * @param symbol2 second symbol
+ * @param window the window to print to
+ * @param symbol_info Info* containing points
+ * @param symbol_info2 optional Info* containing points
  */
 void graph_printw(WINDOW* window, Info* symbol_info, Info* symbol_info2);
 
 /**
- * Prints out a NCurses based graph given an array of daily close prices.
- * If points2 if not NULL, also prints a graph of its data in a different color.
+ * Prints out a NCurses based graph given an Info*.
+ * If symbol_info2 if not NULL, also prints a graph of its data in a different color.
  * x-axis -- date
  * y-axis -- close price
- * @param points daily close prices of past five years of first security
- * @param points2 daily close prices of past five years of second security
+ * @param window the window to print to
+ * @param symbol_info Info* containing points
+ * @param symbol_info2 optional Info* containing points
  * @param start_time the starting date of prices to print
  * @param zoom the zoom level
- * @param symbol first symbol
- * @param symbol2 second symbol
  */
 void graph_draw(WINDOW* window, Info* symbol_info, Info* symbol_info2, struct tm* start_time, int zoom);
 
