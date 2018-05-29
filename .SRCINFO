@@ -15,7 +15,7 @@ pkgbase = webstorm
 
 pkgname = webstorm
 	optdepends = webstorm-jre: JetBrains custom Java Runtime (Recommended)
-	optdepends = java-runtime>=8: JRE - Required if webstorm-jre is not installed
+	optdepends = java-runtime: JRE - Required if webstorm-jre is not installed
 	optdepends = gnome-keyring: save login/deployment credentials safely
 
 pkgname = webstorm-jre
