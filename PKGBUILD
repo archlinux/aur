@@ -14,7 +14,8 @@ depends=(djvulibre libspectre libkexiv2 poppler-qt5 qca-qt5 kpty kactivities thr
 makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools khtml chmlib discount)
 optdepends=('ebook-tools: mobi and epub support' 'discount: markdown support'
             'kdegraphics-mobipocket: mobi support' 'kirigami2: mobile UI' 'libzip: CHM support'
-            'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support')
+            'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
+            'unrar: Comic Book Archive support')
 conflicts=(kdegraphics-okular)
 replaces=(kdegraphics-okular)
 source=("https://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
