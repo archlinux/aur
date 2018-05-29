@@ -1,6 +1,6 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 pkgname=mythes-el
-pkgver=20150922
+pkgver=20180529
 pkgrel=1
 epoch=
 pkgdesc="Greek thesaurus"
@@ -21,7 +21,7 @@ install='symlinks.install'
 changelog=
 source=('http://www.miliaris.eu/downloads/Greek-Thesaurus.oxt')
 noextract=()
-sha256sums=('5b643d93305950cdf81d219b18040829fcddd4117aecba1e6913e76d5420e3dc')
+sha256sums=('ab80845f405b64c3767ab6b7184e2bb3ee2769899ac3129a6a2c126d3e7a9fc1')
 
 package() {
   cd "$srcdir/"
