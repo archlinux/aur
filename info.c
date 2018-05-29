@@ -98,9 +98,9 @@ void symbol_print_info(const char* symbol) {
     waddch(company_win, '\n');
 
     if (symbol_info->eps_year_ago[0] != EMPTY)
-        mvwprintw(company_win, getcury(company_win), 0, "1Y%%  ");
+        mvwprintw(company_win, getcury(company_win), 0, "1Y  ");
     for (int i = 0; i < QUARTERS && symbol_info->eps_year_ago[i] != EMPTY; i++)
-        mvwprintw(company_win, getcury(company_win), 4 + i * getmaxx(company_win) / QUARTERS, "%.2lf%%",
+        mvwprintw(company_win, getcury(company_win), 4 + i * getmaxx(company_win) / QUARTERS, "%.2lf",
                   symbol_info->eps_year_ago[i]);
 
     refresh();
