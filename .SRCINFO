@@ -1,0 +1,22 @@
+pkgbase = scala-cli-tools
+	pkgdesc = collection of command-line tools written in Scala
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/wookietreiber/scala-cli-tools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = clang
+	makedepends = sbt
+	depends = gc
+	depends = libunwind
+	depends = re2
+	provides = highlight-wookietreiber
+	conflicts = hl-git
+	conflicts = highlight-wookietreiber
+	replaces = highlight-wookietreiber
+	source = scala-cli-tools-0.2.0.tar.gz::https://github.com/wookietreiber/scala-cli-tools/archive/v0.2.0.tar.gz
+	md5sums = 1d58efe82c98758083a5799f24112867
+
+pkgname = scala-cli-tools
+
