@@ -1,0 +1,23 @@
+pkgbase = r-modelr
+	pkgdesc = Modelling Functions that Work with the Pipe
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/modelr/index.html
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-cran-broom
+	depends = r-cran-dplyr
+	depends = r-magrittr
+	depends = r-cran-purrr
+	depends = r-cran-tibble
+	depends = r-cran-tidyr
+	depends = r-cran-rlang
+	optdepends = r-covr
+	optdepends = r-cran-ggplot2
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/modelr_0.1.2.tar.gz
+	md5sums = bc73689405b0fe90851c7f8f3539e843
+
+pkgname = r-modelr
+
