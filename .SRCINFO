@@ -1,0 +1,25 @@
+pkgbase = r-reprex
+	pkgdesc = Prepare Reproducible Example Code for Sharing
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/reprex/index.html
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-callr
+	depends = r-knitr
+	depends = r-rmarkdown
+	depends = r-whisker
+	optdepends = r-covr
+	optdepends = r-devtools
+	optdepends = r-fortunes
+	optdepends = r-miniui
+	optdepends = r-rstudioapi
+	optdepends = r-shiny
+	optdepends = r-shinyjs
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/reprex_0.1.2.tar.gz
+	md5sums = 8443e72fbb4a32bf4dae9d2df8b9dcfb
+
+pkgname = r-reprex
+
