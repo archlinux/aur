@@ -29,7 +29,7 @@ makedepends=('mesa' 'python-docutils' 'ladspa' 'wayland-protocols'
              'vulkan-headers')
 optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$pkgname/archive/v$pkgver.tar.gz"
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz"
   "https://waf.io/waf-${_waf_version}")
 sha256sums=('aada14e025317b5b3e8e58ffaf7902e8b6e4ec347a93d25a7c10d3579426d795'
   '167dc42bab6d5bd823b798af195420319cb5c9b571e00db7d83df2a0fe1f4dbf')
