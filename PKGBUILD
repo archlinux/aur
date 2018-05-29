@@ -5,7 +5,7 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=lib32-fluidsynth
-pkgver=1.1.10
+pkgver=1.1.11
 pkgrel=1
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('fluidsynth' 'lib32-alsa-lib' 'lib32-glib2' 'lib32-glibc' 'lib32-jack'
 makedepends=('cmake' 'gcc-multilib' 'lib32-ladspa')
 optdepends=('pulseaudio: PulseAudio sound support')
 source=("fluidsynth-${pkgver}.tar.gz::https://github.com/FluidSynth/fluidsynth/archive/v${pkgver}.tar.gz")
-sha256sums=('b74801d0fdd726c4555149bf075b76dc4074658ec0a8f7a3753f4a64589e5300')
+sha256sums=('da8878ff374d12392eecf87e96bad8711b8e76a154c25a571dd8614d1af80de8')
 
 prepare() {
   if [[ -d build ]]; then
