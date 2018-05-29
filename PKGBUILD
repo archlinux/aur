@@ -1,17 +1,17 @@
 # Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=quake3-cpma
-pkgver=1.50
-pkgrel=2
+pkgver=1.51
+pkgrel=1
 pkgdesc="Challenge ProMode Arena (CPMA) is a Quake3 modification which adds features aimed towards professional gamers and competitive enviroments."
 url="http://playmorepromode.org/"
 license=('custom')
 arch=('any')
 depends=('quake3')
-source=('quake3-cpma.launcher' 'https://cdn.playmorepromode.com/files/latest/cpma-1.50-nomaps.zip'
+source=('quake3-cpma.launcher' "https://cdn.playmorepromode.com/files/cpma/cpma-${pkgver}-nomaps.zip"
 'https://cdn.playmorepromode.com/files/cpma-mappack-full.zip')
 sha256sums=('436f0545efc0edaaf5aad884dfe103e13363f25be276471b6c57c8932575e245'
-            'bf3211ed1e37c0cf284e5579b5a2203a06310b4d8beb34c2104fbf613c3ace7f'
+            '47200f74ca6007ed339d7ffa8b522e0d1724f6e8dc44e59a34167519952053b7'
             '5db933fc92c41f2e0941ab65725586d4d0c30fe84727427bb6b265e4d941a226')
 PKGEXT='.pkg.tar'
 
