@@ -8,9 +8,8 @@ pkgdesc="Line-by-line profiler"
 url="https://pypi.python.org/pypi/line_profiler"
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=('python-setuptools')
+depends=('python-setuptools' 'ipython')
 makedepends=('cython')
-checkdepends=('ipython')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rkern/line_profiler/archive/$pkgver.tar.gz")
 sha256sums=('5625157e76e1f70c237c7df07389b48028aa1b94ec630aaa5f094d5755bcaa76')
 
