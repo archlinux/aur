@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=webmacs-git
-pkgver=r435.385e4d4
+pkgver=r494.03d78fa
 pkgrel=1
 _pythonver=3.6
 pkgdesc="browser for keyboard-based web navigation"
@@ -30,9 +30,9 @@ build() {
   cd "${pkgname%-git}"
   python setup.py build
   cd docs
-  make texinfo man 
-  cd _build/texinfo
-  make
+  #make texinfo man 
+  #cd _build/texinfo
+  #make
 }
 
 package() {
@@ -40,6 +40,6 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
   rm -rf "$pkgdir"/usr/lib/python${_pythonver}/site-packages/{ruamel,tzlocal,six.py,test_regex.py,pytz,regex*}
   install -d "$pkgdir"/usr/bin/
-  install -Dm644 docs/_build/texinfo/${pkgname%-git}.info "$pkgdir"/usr/share/info/${pkgname%-git}.info
-  install -Dm644 docs/_build/man/${pkgname%-git}.1 "$pkgdir"/usr/share/man/man1/${pkgname%-git}.1
+  #install -Dm644 docs/_build/texinfo/${pkgname%-git}.info "$pkgdir"/usr/share/info/${pkgname%-git}.info
+  #install -Dm644 docs/_build/man/${pkgname%-git}.1 "$pkgdir"/usr/share/man/man1/${pkgname%-git}.1
 }

@@ -1,6 +1,6 @@
 pkgbase = webmacs-git
 	pkgdesc = browser for keyboard-based web navigation
-	pkgver = r435.385e4d4
+	pkgver = r494.03d78fa
 	pkgrel = 1
 	url = https://github.com/parkouss/webmacs
 	arch = x86_64
