@@ -1,6 +1,6 @@
 pkgbase = package-query-git
 	pkgdesc = Query ALPM and AUR
-	pkgver = 1.9.r0.gaca1515
+	pkgver = 1.9.r1.gdd242f4
 	pkgrel = 1
 	url = https://github.com/archlinuxfr/package-query
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = package-query-git
 	makedepends = git
 	depends = pacman>=5.0
 	depends = yajl>=2.0
-	provides = package-query=1.8
+	provides = package-query=1.9
 	conflicts = package-query
 	source = git+https://github.com/archlinuxfr/package-query.git
 	md5sums = SKIP
