@@ -1,7 +1,7 @@
 pkgbase = paccache-systemd
 	pkgdesc = Clear pacman cache systemd timer, remove all uninstalled pkgs from cache, leave up to 3 versions of installed
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	install = paccache.install
 	arch = any
 	license = custom:WTFPL
