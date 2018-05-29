@@ -4,14 +4,14 @@
 
 pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git') 
 _pkgname=pamac
-pkgver=v6.3.3.r1.g29c572b
-_pkgver=6.3.2
+pkgver=v6.3.3.r3.g6204d96
+_pkgver=6.3.3
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/manjaro/pamac"
 license=('GPL3')
-depends=('dbus-glib' 'polkit' 'vte3>=0.38' 'libnotify' 'pacman>=5.0' 'pacman<5.1' 'appstream-glib' 'archlinux-appstream-data' 'libappindicator-gtk3')
+depends=('dbus-glib' 'polkit' 'vte3>=0.38' 'libnotify' 'pacman>=5.1' 'pacman<5.2' 'appstream-glib' 'archlinux-appstream-data' 'libappindicator-gtk3')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
             'lxsession: needed for authentification in Xfce, LXDE etc.'
             'pamac-aur-tray-appindicator-git: tray icon for KDE')
@@ -22,7 +22,7 @@ source=(git+https://github.com/manjaro/pamac.git)
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
+  cd $_pkgname
   git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
