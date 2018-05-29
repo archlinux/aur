@@ -4,7 +4,7 @@ _use_pycrypto="no"
 _use_pycountry="no"  
 
 pkgname=streamlink-git
-pkgver=0.12.1.r6.g416c8347
+pkgver=0.12.1.r58.g757861d9
 pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
@@ -26,7 +26,7 @@ fi
 
 depends+=("python-"{pysocks,requests,websocket-client} 'rtmpdump')
 checkdepends=("python-"{mock,pytest,requests-mock})
-makedepends=('git' "python-"{setuptools,sphinx})
+makedepends=('git' 'python-recommonmark')
 optdepends=('ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+')
 provides=('streamlink')
 conflicts+=('streamlink')

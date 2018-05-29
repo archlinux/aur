@@ -1,6 +1,6 @@
 pkgbase = streamlink-git
 	pkgdesc = CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)
-	pkgver = 0.12.1.r6.g416c8347
+	pkgver = 0.12.1.r58.g757861d9
 	pkgrel = 1
 	url = https://streamlink.github.io/
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = streamlink-git
 	checkdepends = python-pytest
 	checkdepends = python-requests-mock
 	makedepends = git
-	makedepends = python-setuptools
-	makedepends = python-sphinx
+	makedepends = python-recommonmark
 	depends = python-pycryptodome
 	depends = python-iso3166
 	depends = python-iso639
