@@ -1,10 +1,10 @@
 pkgbase = fonts-smc-malayalam
 	pkgdesc = Fonts for Malayalam released by Swathanthra Malayalam Computing
 	pkgver = 18.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://smc.org.in/fonts/
 	arch = any
-	license = GPL3
+	license = custom:OFL
 	conflicts = ttf-malayalam-fonts-meta
 	conflicts = ttf-malayalam-font-anjalioldlipi
 	conflicts = ttf-malayalam-font-chilanka
