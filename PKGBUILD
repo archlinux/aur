@@ -2,7 +2,6 @@
 # Original: Maintainer: Pierre Schmitz <pierre@archlinux.de>
 # Maintainer of forked PHP package: Marc Cousin <cousinmarc@gmail.com>
 
-pkgbase=php
 pkgname='php-32-fopen'
 pkgver=7.2.6
 pkgrel=1
