@@ -1,7 +1,7 @@
 pkgbase = molden
 	pkgdesc = A program for molecular and electronic structure visualization
-	pkgver = 5.7
-	pkgrel = 2
+	pkgver = 5.8
+	pkgrel = 1
 	url = http://www.cmbi.ru.nl/molden/
 	arch = i686
 	arch = x86_64
@@ -17,10 +17,8 @@ pkgbase = molden
 	optdepends = openbabel: to create 2D images of the molecules in a .sdf file
 	optdepends = wget: to fetch PDB from rcsb.org
 	provides = molden
-	source = ftp://ftp.cmbi.ru.nl/pub/molgraph/molden/molden5.7.tar.gz
-	source = rdchx.patch
-	md5sums = 1b33fc2fda6429f1945ffa3c291ccd97
-	md5sums = 902d3fc3ebdb928fac38deb2ba7d5f94
+	source = ftp://ftp.cmbi.ru.nl/pub/molgraph/molden/molden5.8.tar.gz
+	md5sums = 4d4deb20dda0627d19980d2c6cff5b34
 
 pkgname = molden
 

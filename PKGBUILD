@@ -1,7 +1,7 @@
 # Maintainer: Dan Maftei <dan.maftei@gmail.com>
 pkgname='molden'
-pkgver=5.7
-pkgrel=2
+pkgver=5.8
+pkgrel=1
 pkgdesc="A program for molecular and electronic structure visualization"
 arch=('i686' 'x86_64')
 url="http://www.cmbi.ru.nl/molden/"
@@ -29,11 +29,9 @@ install=
 changelog=
 source=(
     "ftp://ftp.cmbi.ru.nl/pub/molgraph/molden/$pkgname$pkgver.tar.gz"
-    "rdchx.patch"
 )
 noextract=()
-md5sums=('1b33fc2fda6429f1945ffa3c291ccd97'
-         '902d3fc3ebdb928fac38deb2ba7d5f94')
+md5sums=('4d4deb20dda0627d19980d2c6cff5b34')
 
 build() {
   cd "$pkgname$pkgver"
@@ -41,10 +39,6 @@ build() {
   # replacement of missing makedepend 
   sed -i 's/@.*makedepend.*$/@ \$(CC) \$(INCLUDE) -M \$(SRCS) \> makedep/' surf/Makefile
 
-  # Patch rdchx.f for array size mismatch in iconn,
-  # thanks Panadestein for pointing out and
-  # arjun_karol for the quick fix
-  patch -p0 -i "$srcdir/rdchx.patch"
   make
 }
 
