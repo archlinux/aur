@@ -1,0 +1,24 @@
+pkgbase = qtltools-git
+	pkgdesc = A complete tool set for molecular QTL discovery and analysis
+	pkgver = 1.1.72.dd02b8e
+	pkgrel = 1
+	url = https://github.com/alienzj/qtltools
+	arch = i686
+	arch = x86_64
+	license = GPLV3
+	depends = boost
+	depends = bzip2
+	depends = gzip
+	depends = zip
+	depends = gsl
+	depends = cblas
+	depends = blas
+	depends = htslib
+	depends = r
+	provides = qtltools=1.1.72.dd02b8e
+	conflicts = qtltools
+	source = qtltools::git+https://github.com/alienzj/qtltools.git
+	md5sums = SKIP
+
+pkgname = qtltools-git
+
