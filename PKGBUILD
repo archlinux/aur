@@ -5,7 +5,7 @@ _pkgname=interruptingcow
 pkgbase=python-${_pkgname}
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://bitbucket.org/evzijst/interruptingcow"
 license=('MIT')
@@ -30,7 +30,7 @@ package_python-interruptingcow() {
    pkgdesc="Python3 interruptingcow library"
 
    cd ${_pkgname}-${pkgver}
-   python setup.py install --skip-build --root="$pkgdir" --optimize=1
+   python setup.py install --skip-build --root="$pkgdir" --prefix=/usr --optimize=1
 
    install -Dm644 ./LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
@@ -40,7 +40,7 @@ package_python2-interruptingcow() {
    pkgdesc="Python2 interruptingcow library"
 
    cd python2-${_pkgname}-${pkgver}
-   python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
+   python2 setup.py install --skip-build --root="$pkgdir" --prefix=/usr --optimize=1
 
    install -Dm644 ./LICENSE.txt "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
