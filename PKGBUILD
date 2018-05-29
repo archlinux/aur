@@ -1,3 +1,5 @@
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
 # Author: Patrick Brisbin <pbrisbin@gmail.com>
 pkgname=downgrade
 pkgver=6.0.0
@@ -13,7 +15,7 @@ optdepends=('sudo: for installation via sudo')
 package() {
   local po_file
 
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver" || exit 1
 
   for po_file in locale/*.po; do
     locale="$(basename "$po_file" .po)"
