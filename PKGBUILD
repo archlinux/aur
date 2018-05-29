@@ -10,11 +10,9 @@ pkgdesc="A lightweight email client for the GNOME desktop"
 arch=(i686 x86_64)
 url="https://wiki.gnome.org/Apps/Geary"
 license=('GPL3')
-depends=('cairo' 'enchant' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc' 'gmime'
-         'gnome-keyring' 'gtk3' 'iso-codes' 'libcanberra' 'libgee' 'libnotify'
-         'libsecret' 'libsoup' 'libxml2' 'pango' 'sqlite' 'webkit2gtk')
-makedepends=('meson' 'gnome-doc-utils' 'gobject-introspection' 'intltool'
-             'vala')
+depends=('enchant' 'gcr' 'gmime' 'gtk3' 'libgee' 'libnotify' 'libsoup'
+         'libunwind' 'libxml2' 'sqlite' 'webkit2gtk')
+makedepends=('gobject-introspection' 'itstool' 'meson' 'vala')
 provides=('geary')
 conflicts=('geary')
 source=('git://git.gnome.org/geary'
