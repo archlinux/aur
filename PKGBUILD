@@ -1,7 +1,7 @@
 # Maintainer: Romain Bazile <gromain.baz at gmail dot com>
 
 pkgname=mcuxpresso-ide
-pkgver=10.1.0_589
+pkgver=10.2.0_759
 pkgrel=1
 epoch=
 pkgdesc="An easy-to-use integrated development environment (IDE) for creating, building, debugging, and optimizing your application. From BIN package distributed by NXP."
@@ -9,11 +9,11 @@ arch=('x86_64')
 url="http://www.nxp.com/MCUXPresso"
 license=('custom:"NXP"')
 depends=('dfu-util' 'libusb' 'ncurses' 'glibc' 'lib32-glibc' 'jlink-software-and-documentation')
-# https://freescaleesd.flexnetoperations.com/337170/897/12189897/mcuxpressoide-10.1.0_589.x86_64.deb.bin?ftpRequestID=5637320867&server=freescaleesd.flexnetoperations.com&dtm=DTM20171222153753MzQ1ODI4NDkz&authparam=1513985873_62b8205df8e35b24941a051172e6b535&ext=.bin
-source=("https://freescaleesd.flexnetoperations.com/337170/897/12189897/mcuxpressoide-${pkgver}.${arch}.deb.bin" "LICENSE")
+
+source=("https://freescaleesd.flexnetoperations.com/337170/167/12841167/mcuxpressoide-${pkgver}.${arch}.deb.bin" "LICENSE")
 noextract=("mcuxpressoide-${pkgver}.${arch}.deb.bin")
-sha256sums=('d7f7c44e1be9c8a53a9a8e28c050451be966e668d67195a3987bc0f9ea6fa49c'
-            'f54634d263ed329288adbcd617f971502a22f38717602c504371a49301d37fb2')
+sha256sums=('4acc95699c495075d37d11e500e74963ca76bb9080214e3d51cb4efcd5f3aa8e'
+            '983aae56ab8f62d13cbae6a28761e6ffb228431002e8d502aed2fa5fa31a630f')
 options=('!strip')
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
     mv ${srcdir}/mcuxpressoide/usr/local/mcuxpressoide-${pkgver} ${srcdir}/mcuxpressoide/usr/local/${pkgname};
     # Update link in desktop file
     mv ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop.old
-    cat ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop.old | sed 's/mcuxpressoide-10.1.0_589/mcuxpresso-ide/' > ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop
+    cat ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop.old | sed "s/mcuxpressoide-${pkgver}/mcuxpresso-ide/" > ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop
     rm ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop.old
 }
 
