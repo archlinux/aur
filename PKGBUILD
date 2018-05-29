@@ -2,7 +2,7 @@
 
 _plug=d2vsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.1.4.g5b5e587
+pkgver=v1.1.7.g99b10e3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -16,12 +16,8 @@ depends=('vapoursynth'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("git+https://github.com/dwbuiten/${_plug}.git"
-        'ffmpeg4.patch'
-        )
-sha256sums=('SKIP'
-            'fe0cc3859a6e30e8bde4d79e78adbc5f315628cdfcc46abb9c38825674009183'
-            )
+source=("git+https://github.com/dwbuiten/${_plug}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -30,8 +26,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  patch -d "${_plug}" -p1 -i "${srcdir}/ffmpeg4.patch"
 
   cd "${_plug}"
   ./autogen.sh
