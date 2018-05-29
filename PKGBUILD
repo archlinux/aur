@@ -2,7 +2,7 @@
 pkgname=tvlinker
 pkgver=4.2.0
 _branch=master
-pkgrel=1
+pkgrel=2
 pkgdesc="TV show link scraper + downloader for Scene-RLS.com w/ debrid link unrestricting and support for a number of download managers across all platforms + ShadowSocks & v2ray local proxies."
 arch=('any')
 license=('GPL3')

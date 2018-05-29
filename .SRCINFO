@@ -1,7 +1,7 @@
 pkgbase = tvlinker
 	pkgdesc = TV show link scraper + downloader for Scene-RLS.com w/ debrid link unrestricting and support for a number of download managers across all platforms + ShadowSocks & v2ray local proxies.
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tvlinker.ozmartians.com
 	arch = any
 	license = GPL3
