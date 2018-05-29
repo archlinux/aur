@@ -4,7 +4,7 @@
 # Contributor: Starfry <archlinux@jelmail.com>
 
 pkgname=nfdump
-pkgver=1.6.16
+pkgver=1.6.17
 pkgrel=1
 pkgdesc="A set of tools to collect and process netflow data."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('flex' 'bison' 'rrdtool')
 source=("nfdump-v${pkgver}.tar.gz::https://github.com/phaag/nfdump/archive/v${pkgver}.tar.gz")
-md5sums=('9f768d380e8fcf88f56e14009a509e74')
+md5sums=('95e30627750ae3798c3fb0c053b3b212')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -24,6 +24,7 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 
+	./autogen.sh  # needed since 1.6.17
 	./configure --prefix=/usr \
 	  --enable-nfprofile \
 	  --enable-nftrack \
