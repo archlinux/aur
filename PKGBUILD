@@ -2,7 +2,7 @@
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 
 pkgname=ruby-html-proofer
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc='Test your rendered HTML files to make sure they are accurate'
 arch=(any)
@@ -13,7 +13,7 @@ options=(!emptydirs)
 source=("https://rubygems.org/downloads/html-proofer-${pkgver}.gem"
         "LICENSE")
 noextract=("html-proofer-${pkgver}.gem")
-sha1sums=('dccd9051bbd00081a274bd4bfb99dcb22bb7a7a0'
+sha1sums=('1e189f897866e514f25b7327a44abd7cc42f2b50'
           'f90727a909db39508bcfdcfff6e9c225a295dc8a')
 
 package() {
