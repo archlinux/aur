@@ -1,5 +1,5 @@
 pkgbase = alacritty-git
-	pkgver = 0.1.0.755.g6debc4f
+	pkgver = 0.1.0.772.gf7172fd
 	pkgrel = 1
 	url = https://github.com/jwilm/alacritty
 	arch = x86_64
