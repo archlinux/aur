@@ -2,7 +2,7 @@
 
 _gitname=libqmatrixclient
 pkgname=qt5-matrixclient-git
-pkgver=r734.da16225
+pkgver=r886.c55c1cc
 pkgrel=1
 pkgdesc="A Qt5 library to write cross-platfrom clients for Matrix."
 arch=(i686 x86_64 armv7 aarch64)
