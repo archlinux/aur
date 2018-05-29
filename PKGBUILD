@@ -1,7 +1,7 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=cutemaze
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Top-down maze game'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-svg')
 makedepends=('qt5-tools')
 source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('1e9464d0be6eacae20a8fa29e699e3776f3081c00eaffdfeceed4b77eaac52a8')
+sha256sums=('1387e9509d4e864e93ed5870d9d1b6be49bb49e485a93ce79ca2a538177a9fbd')
 
 build() {
   cd "$pkgname-$pkgver"
