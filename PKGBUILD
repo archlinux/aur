@@ -2,7 +2,7 @@
 
 _gitname=telepathy-tank
 pkgname=telepathy-tank-git-wip
-pkgver=r8.f8dcc3c
+pkgver=r14.cd7a92b
 pkgrel=1
 pkgdesc="Matrix connection operator for the Telepathy framework. WIP git branch"
 arch=(i686 x86_64 armv7 aarch64)

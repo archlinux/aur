@@ -1,6 +1,6 @@
 pkgbase = telepathy-tank-git-wip
 	pkgdesc = Matrix connection operator for the Telepathy framework. WIP git branch
-	pkgver = r8.f8dcc3c
+	pkgver = r14.cd7a92b
 	pkgrel = 1
 	url = https://telepathy.freedesktop.org/
 	arch = i686
