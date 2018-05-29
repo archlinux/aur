@@ -14,7 +14,7 @@ checkdepends=('procps-ng')
 source=("https://php.net/distributions/php-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'enchant-2.patch' 'freetype.patch')
-sha512sums=('1d49fc6e47d2e86d4fd62396e558965502f44cc8f72459bb0d406e157298cac67703b219837952da11122722d9fa8cb4cda8ef66ddf063cb063859db34110f58'
+sha512sums=('da86b1ff2df3b9e2d46e59a80296b940d81132975b621bdec9602f8b4c8d91a3fdcd4ffd7cb982d63d3ec974b3a12a7854e42a73b7f2cc8eefade14335aa7c71'
             'SKIP'
             'bb9abfc51c41e1de180ef09244691c909ee64feebd9749978e1ecb7f576466a37232d9c6e97c1a01a96b8413a33c4818a91dc79f63078dc1946f56dad516bb05'
             'eccbe1a0c7b2757ab3c982c871cc591a66ad70f085aaa0d44f93cacacedc7b8fd21b8d0c66471327ff070db1bab1ab83a802f6fa190f33bdd74c134975e3910e'
