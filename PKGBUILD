@@ -1,5 +1,5 @@
 # Maintainer:  Johan Helsing <johanhelsing@gmail.com>
-# Contirbutor: Swift Geek
+# Contributor: Swift Geek
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
@@ -7,11 +7,11 @@
 
 _pkgname=qt5-wayland
 pkgname=$_pkgname-dev-backport-git
-pkgver=5.10.1.281e3d58
+pkgver=5.11.0.fe1f4b55
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework (QtWayland)"
 arch=("i686" "x86_64")
-url="http://code.qt.io/cgit/qt/qtwayland.git/"
+url="http://github.com/johanhelsing/qtwayland-backports"
 license=("GPL3" "LGPL")
 depends=("qt5-declarative" "libxcomposite" "wayland")
 makedepends=("git")

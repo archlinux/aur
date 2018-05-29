@@ -1,8 +1,8 @@
 pkgbase = qt5-wayland-dev-backport-git
 	pkgdesc = A cross-platform application and UI framework (QtWayland)
-	pkgver = 5.10.1.281e3d58
+	pkgver = 5.11.0.fe1f4b55
 	pkgrel = 1
-	url = http://code.qt.io/cgit/qt/qtwayland.git/
+	url = http://github.com/johanhelsing/qtwayland-backports
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = qt5-wayland-dev-backport-git
 	depends = wayland
 	provides = qt5-wayland
 	conflicts = qt5-wayland
-	source = qt5-wayland::git://github.com/johanhelsing/qtwayland-backports.git#branch=dev-for-5.10
+	source = qt5-wayland::git://github.com/johanhelsing/qtwayland-backports.git#branch=dev-for-5.11
 	sha256sums = SKIP
 
 pkgname = qt5-wayland-dev-backport-git
