@@ -1,0 +1,12 @@
+pkgbase = fonts-shobhika
+	pkgdesc = Open-source unicode font for Devanagari.
+	pkgver = 1.04
+	pkgrel = 1
+	url = http://github.com/Sandhi-IITBombay/Shobhika
+	arch = any
+	license = custom:OFL
+	source = https://github.com/Sandhi-IITBombay/Shobhika/releases/download/v1.04/Shobhika-1.04.zip
+	md5sums = 4efc3458a78c172734b4c83dac7722cc
+
+pkgname = fonts-shobhika
+
