@@ -1,0 +1,15 @@
+pkgbase = wyebab-git
+	pkgdesc = An adblock command using the easylist.txt.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/jun7/wyebadblock
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glib2
+	conflicts = wyebadblock-git
+	source = git://github.com/jun7/wyebadblock.git#branch=master
+	md5sums = SKIP
+
+pkgname = wyebab-git
+
