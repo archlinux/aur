@@ -1,7 +1,7 @@
 pkgbase = heif-gimp-plugin
 	pkgdesc = A GIMP plugin for loading and saving HEIF images
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/strukturag/heif-gimp-plugin
 	arch = i686
 	arch = x86_64
