@@ -1,0 +1,18 @@
+pkgbase = fonts-cambay
+	pkgdesc = Open-source unicode font for Devanagari designed to match Cantarell Latin.
+	pkgver = 1.85
+	pkgrel = 1
+	url = http://github.com/anexasajoop/cambay
+	arch = any
+	license = custom:OFL
+	source = http://raw.githubusercontent.com/anexasajoop/cambay/master/Font%20files/Unhinted/CambayDevanagari-Bold.ttf
+	source = http://raw.githubusercontent.com/anexasajoop/cambay/master/Font%20files/Unhinted/CambayDevanagari-BoldOblique.ttf
+	source = http://raw.githubusercontent.com/anexasajoop/cambay/master/Font%20files/Unhinted/CambayDevanagari-Oblique.ttf
+	source = http://raw.githubusercontent.com/anexasajoop/cambay/master/Font%20files/Unhinted/CambayDevanagari-Regular.ttf
+	md5sums = 06ad2493570463134aed11af63506827
+	md5sums = f86876adefdec645b341dd46b6d7fa08
+	md5sums = b6c6acc2ce4a12ad0c4a0ab02136d71a
+	md5sums = cb217db71fdfebb2d666d8fbd5a6f91d
+
+pkgname = fonts-cambay
+
