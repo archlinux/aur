@@ -1,5 +1,5 @@
 pkgname=ruri
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="A CRC32 checker with file name checking."
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(
   "python-pip"
 )
 build() {
-  pip install --quiet --no-deps --root="$srcdir/" ruri==${pkgver}
+  pip install --quiet --no-deps --root="$srcdir/" "ruri==${pkgver}"
 }
 package() {
   cp -R $srcdir/* $pkgdir/

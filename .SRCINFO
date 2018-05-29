@@ -1,6 +1,6 @@
 pkgbase = ruri
 	pkgdesc = A CRC32 checker with file name checking.
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/Timmy1e/ruri
 	arch = any
