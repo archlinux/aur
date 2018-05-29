@@ -1,10 +1,10 @@
 # Maintainer: Gavin Lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=5.2
-pkgrel=4
+pkgver=5.3
+pkgrel=5
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven TUI written in Bash"
-depends=('dialog' 'expac')
+depends=('dialog' 'expac' 'pacman-contrib')
 arch=('any')
 url="https://github.com/gavinlyonsrepo/cylon"
 license=('GPL')
@@ -28,7 +28,7 @@ optdepends=(
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
 
-md5sums=('2bcdd7bbc25029693ba602e2b51449fb')
+md5sums=('33f184002f62f6193b19aab0a8a105f6')
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     install -D -m755 main/Cylon.sh "$pkgdir"/usr/bin/"${pkgname}" 

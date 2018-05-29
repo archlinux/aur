@@ -1,12 +1,13 @@
 pkgbase = cylon
 	pkgdesc = Updates, Maintenance, backup and system checks in a menu driven TUI written in Bash
-	pkgver = 5.2
-	pkgrel = 4
+	pkgver = 5.3
+	pkgrel = 5
 	url = https://github.com/gavinlyonsrepo/cylon
 	arch = any
 	license = GPL
 	depends = dialog
 	depends = expac
+	depends = pacman-contrib
 	optdepends = auracle-git: AUR helper
 	optdepends = gdrive: AUR package for google drive backup
 	optdepends = lostfiles: AUR package for finding lost files
@@ -23,8 +24,8 @@ pkgbase = cylon
 	optdepends = speedtest-cli: internet bandwidth
 	optdepends = lynis: system audit tool
 	optdepends = openbsd-netcat: used for checking network
-	source = https://github.com/gavinlyonsrepo/cylon/archive/5.2.tar.gz
-	md5sums = 2bcdd7bbc25029693ba602e2b51449fb
+	source = https://github.com/gavinlyonsrepo/cylon/archive/5.3.tar.gz
+	md5sums = 33f184002f62f6193b19aab0a8a105f6
 
 pkgname = cylon
 
