@@ -1,7 +1,7 @@
 pkgbase = mpd-rich-presence-discord-git
 	pkgdesc = Broadcast your MPD state using discord rich presence!
 	pkgver = r29
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/SSStormy
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 pkgname=mpd-rich-presence-discord-git
 _pkgname=mpd-rich-presence-discord
 pkgver=r29
-pkgrel=4
+pkgrel=5
 pkgdesc=" Broadcast your MPD state using discord rich presence!"
 arch=('x86_64')
 url='https://github.com/SSStormy'
@@ -25,6 +25,6 @@ package() {
 	install -Dm755 mpd_discord_richpresence $pkgdir/usr/bin/
 	ln -s /usr/bin/mpd_discord_richpresence $pkgdir/usr/bin/mpd-rpc
 	install -Dm644 mpd-discord.service $pkgdir/usr/lib/systemd/system/
-	install -Dm644 mpd-discord.service $pkgdir/usr/lib/systemd/user
+	install -Dm644 mpd-discord.service $pkgdir/usr/lib/systemd/user/
 }
 
