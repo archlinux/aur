@@ -3,17 +3,16 @@
 pkgname=switchboard-plug-display-git
 pkgver=r214.0e44078
 pkgrel=1
-pkgdesc=' Switchboard Displays Plug'
+pkgdesc='Switchboard Display Plug'
 arch=('x86_64')
 url='https://github.com/elementary/switchboard-plug-display'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gnome-desktop' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
+makedepends=('git' 'granite-git' 'switchboard-git' 'meson' 'vala')
 provides=('switchboard-plug-display')
 conflicts=('switchboard-plug-display')
-replaces=('switchboard-plug-display-bzr')
 source=('git+https://github.com/elementary/switchboard-plug-display.git')
 sha256sums=('SKIP')
 
@@ -23,29 +22,13 @@ pkgver() {
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd switchboard-plug-display
-
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
-}
-
 build() {
-  cd switchboard-plug-display/build
-
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
-  make
+  arch-meson switchboard-plug-display build
+  ninja -C build
 }
 
 package() {
-  cd switchboard-plug-display/build
-
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
