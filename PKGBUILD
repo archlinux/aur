@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=66.0.3359.181
+pkgver=67.0.3396.56
 pkgrel=1
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -23,23 +23,21 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src/+/$pkgver?format=TEXT
-        fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
-        fix-frame-buttons-rendering-too-large-when-using-OSX.patch
-        chromium-skia-harmony.patch
-        chromium-widevine.patch)
-sha256sums=('37e6673741b365a25a837217b08f77b24b4f5fc4ad88c8581be6a5dae9a9e919'
+        remove-dependency-on-ffmpeg-internals-for-start-time.patch
+        chromium-ffmpeg-r1.patch
+        chromium-widevine-r2.patch
+        chromium-skia-harmony.patch)
+sha256sums=('bae1f4b66d9fb219d5217c2f7db661ebf17e995bccd4b2b5f119c90af4c49123'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '221d0f17951e88d4d315f3160919380237b88587c4b295d619229a05b79927f1'
-            'e3fb73b43bb8c69ff517e66b2cac73d6e759fd240003eb35598df9af442422fe'
-            'bd5e0e61df3f89172590801aea7c8ac75162c10c7fe83e262e96a14388d1633a'
-            'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
-            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
+            '2cc80f5ed8a9b42495a0f3ab3c1bae026b9081972269a1b6d407331d33f7d257'
+            'aa885330bc4180b78d915f9dfdfc3210038a0acab7b16735ea9828ab6a633bde'
+            '02c69bb3954087db599def7f5b6d65cf8f7cf2ed81dfbdaa4bb7b51863b4df15'
+            'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  #[ffmpeg]=ffmpeg            # https://crbug.com/731766
+  [ffmpeg]=ffmpeg
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
@@ -48,7 +46,7 @@ declare -gA _system_libs=(
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng            # https://crbug.com/752403#c10
-  #[libvpx]=libvpx
+  #[libvpx]=libvpx            # needs unreleased libvpx
   [libwebp]=libwebp
   #[libxml]=libxml2           # https://crbug.com/736026
   [libxslt]=libxslt
@@ -74,37 +72,24 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # https://crbug.com/710701
-  local _chrome_build_hash=$(base64 -d ../chromium-$pkgver.txt |
-    grep -Po '^parent \K[0-9a-f]{40}$')
-  if [[ -z $_chrome_build_hash ]]; then
-    error "Unable to find Chrome build hash."
-    return 1
-  fi
-  echo "LASTCHANGE=$_chrome_build_hash-" >build/util/LASTCHANGE
-
   # Allow building against system libraries in official builds
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
     tools/generate_shim_headers/generate_shim_headers.py
 
-  # Enable support for the Widevine CDM plugin
-  # libwidevinecdm.so is not included, but can be copied over from Chrome
-  # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
-  sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
-    patch -Np1
-
-  # Work around broken screen sharing in Google Meet
-  # https://crbug.com/829916#c16
-  sed -i 's/"Chromium/"Chrome/' chrome/common/chrome_content_client_constants.cc
-
-  # https://crbug.com/822820
-  patch -Np1 -i ../fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
-
-  # https://crbug.com/821881
-  patch -Np1 -i ../fix-frame-buttons-rendering-too-large-when-using-OSX.patch
+  # https://crbug.com/731766
+  patch -Np1 -i ../remove-dependency-on-ffmpeg-internals-for-start-time.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
+
+  # Fixes from Gentoo
+  patch -Np1 -i ../chromium-ffmpeg-r1.patch
+  patch -Np1 -i ../chromium-widevine-r2.patch
+
+  # Remove compiler flags not supported by our system clang
+  sed -i \
+    -e '/"-Wno-ignored-pragma-optimize"/d' \
+    build/config/compiler/BUILD.gn
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
@@ -117,12 +102,10 @@ prepare() {
   # added benefit of not having to list all the remaining libraries
   local _lib
   for _lib in ${_unwanted_bundled_libs[@]}; do
-    find -type f -path "*third_party/$_lib/*" \
-      \! -path "*third_party/$_lib/chromium/*" \
-      \! -path "*third_party/$_lib/google/*" \
-      \! -path './base/third_party/icu/*' \
-      \! -path './third_party/pdfium/third_party/freetype/include/pstables.h' \
-      \! -path './third_party/yasm/run_yasm.py' \
+    find "third_party/$_lib" -type f \
+      \! -path "third_party/$_lib/chromium/*" \
+      \! -path "third_party/$_lib/google/*" \
+      \! -path 'third_party/yasm/run_yasm.py' \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done
@@ -189,7 +172,7 @@ build() {
   out/Release/gn gen out/Release --args="${_flags[*]}" \
     --script-executable=/usr/bin/python2
 
-  ninja -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
+  ninja -C out/Release chrome chrome_sandbox chromedriver
 }
 
 package() {
@@ -217,7 +200,7 @@ package() {
 
   cp \
     out/Release/{chrome_{100,200}_percent,resources}.pak \
-    out/Release/{*.bin,chromedriver,libwidevinecdmadapter.so} \
+    out/Release/{*.bin,chromedriver} \
     "$pkgdir/usr/lib/chromium/"
   install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
 
