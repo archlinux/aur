@@ -1,0 +1,20 @@
+pkgbase = steam-cli-git
+	pkgver = 0.r27.b7583dc
+	pkgrel = 1
+	url = https://github.com/berenm/steam-cli
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = bash
+	depends = steam
+	depends = jq
+	depends = expect
+	depends = libsecret
+	optdepends = wine
+	provides = steam-cli
+	conflicts = steam-cli
+	source = git+https://github.com/berenm/steam-cli.git
+	sha512sums = SKIP
+
+pkgname = steam-cli-git
+
