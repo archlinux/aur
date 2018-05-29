@@ -1,5 +1,5 @@
 pkgbase = qemu-pinning-git
-	pkgver = 2.10..r57156.cf955781c7
+	pkgver = 2.12..r60483.420f81563a
 	pkgrel = 1
 	url = http://wiki.qemu.org/
 	arch = i686
@@ -43,7 +43,7 @@ pkgbase = qemu-pinning-git
 	makedepends = numactl
 	conflicts = qemu
 	conflicts = qemu-saren-git
-	source = git+https://github.com/saveriomiroddi/qemu-pinning.git#branch=v2.10.1-pinning
+	source = git+https://github.com/saveriomiroddi/qemu-pinning.git
 	source = qemu.sysusers
 	source = qemu-ga.service
 	source = 65-kvm.rules
@@ -57,7 +57,7 @@ pkgbase = qemu-pinning-git
 	sha256sums = 57d87ba45340f9b7f4b70834fc35da25be72cf4092abcc5012e853aa7b37c83a
 
 pkgname = qemu-pinning-git
-	pkgdesc = A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. Built on top of qemu-saren-git. CPU pinning support included (#branch=v2.10.1-pinning).
+	pkgdesc = A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. Built on top of qemu-saren-git. CPU pinning support included (Master).
 	install = qemu.install
 	depends = spice
 	depends = spice-protocol
