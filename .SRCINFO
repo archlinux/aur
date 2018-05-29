@@ -1,6 +1,6 @@
 pkgbase = peg-e
 	pkgdesc = Peg elimination game
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://gottcode.org/peg-e/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = peg-e
 	license = GPL3
 	makedepends = qt5-tools
 	depends = qt5-base
-	source = https://gottcode.org/peg-e/peg-e-1.2.4-src.tar.bz2
-	sha256sums = 89c7c70660347f8bde69996f609cf598b295eadbbbc75221c0b59f10bdf7d73b
+	source = https://gottcode.org/peg-e/peg-e-1.2.5-src.tar.bz2
+	sha256sums = 6ee95cce87c633333f2a30ad87ab0da882b0a90e0395242922da16f7e40cf6a1
 
 pkgname = peg-e
 
