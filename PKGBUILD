@@ -5,14 +5,14 @@ _ghname='EternalTerminal'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
-pkgver='4.2.1'
+pkgver='5.0.7'
 pkgrel=1
 arch=('x86_64')
 depends=(
-	'libsodium' 'gflags' 'google-glog' 'protobuf' 'libutempter'
+	'libsodium' 'gflags' 'protobuf' 'libutempter'
 )
 makedepends=(
-	'libsodium' 'gflags' 'google-glog' 'protobuf' 'libutempter'
+	'libsodium' 'gflags' 'protobuf' 'libutempter'
 	'cmake' 'unzip' 'wget'
 )
 url='https://mistertea.github.io/EternalTerminal/'
@@ -22,7 +22,7 @@ source=(
 		"https://github.com/MisterTea/${_ghname}/archive/${_tarname}-v${pkgver}.tar.gz"
 )
 sha256sums=(
-		'86a3bc75a1cdc9c9d9078d0d33197817337779c07b12ba1240babe0717bf7aaa'
+		'6c05fcf34a108d7d990a9a0eddfa6667f8bfb012e1f542c07d216fa01ececb36'
 )
 
 prepare() {
@@ -50,6 +50,8 @@ package_eternalterminal-client() {
 
 	msg2 "Installing ${_ghname} client to package root"
 	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/et" "${pkgdir}/usr/bin/et"
+	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/et" "${pkgdir}/usr/bin/htm"
+	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/et" "${pkgdir}/usr/bin/htmd"
 }
 
 package_eternalterminal-server() {
@@ -72,6 +74,8 @@ package_eternalterminal() {
 
 	msg2 "Installing ${_ghname} to package root"
 	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/et" "${pkgdir}/usr/bin/et"
+	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/et" "${pkgdir}/usr/bin/htm"
+	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/et" "${pkgdir}/usr/bin/htmd"
 	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/etserver" "${pkgdir}/usr/bin/etserver"
 	install -D -m 0644 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/debian/et.service" "${pkgdir}/usr/lib/systemd/system/et.service"
 	install -D -m 0644 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/etc/et.cfg" "${pkgdir}/etc/et.cfg"
