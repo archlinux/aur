@@ -1,14 +1,14 @@
 pkgbase = python2-cluster
 	pkgdesc = a package that allows to create several groups (clusters) of objects from a list
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/exhuma/python-cluster
 	arch = any
 	license = LGPL2
 	makedepends = python2-setuptools
 	depends = python2
-	source = python2-cluster-1.4.0.tar.gz::https://github.com/exhuma/python-cluster/archive/v1.4.0.tar.gz
-	md5sums = SKIP
+	source = python2-cluster-1.4.1.tar.gz::https://github.com/exhuma/python-cluster/archive/v1.4.1.tar.gz
+	sha256sums = e5f4479e618618d1e2866892cd85306e6377e738e057eeb12194359c0a563cce
 
 pkgname = python2-cluster
 
