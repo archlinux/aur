@@ -1,5 +1,5 @@
 pkgbase = r-stringr
-	pkgdesc = Consistent, simple, easy to use set of wrappers around the stringi package
+	pkgdesc = Simple, Consistent Wrappers for Common String Operations
 	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/web/packages/stringr/index.html
