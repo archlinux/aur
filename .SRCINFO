@@ -1,14 +1,14 @@
 pkgbase = python-colorlog
 	pkgdesc = Log formatting with colors
-	pkgver = 3.1.0
-	pkgrel = 3
+	pkgver = 3.1.4
+	pkgrel = 1
 	url = https://github.com/borntyping/python-colorlog
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/borntyping/python-colorlog/archive/v3.1.0.tar.gz
-	sha256sums = e766265cf249947f1690d5d7f4fe566a2d48a86640f6777374671aa05f6214b8
+	source = python-colorlog-3.1.4.tar.gz::https://github.com/borntyping/python-colorlog/archive/v3.1.4.tar.gz
+	sha256sums = 14a0eb39242354340955560d92d021b260580d3986ecbb489995e944b248c840
 
 pkgname = python-colorlog
 	depends = python
@@ -17,3 +17,4 @@ pkgname = python-colorlog
 pkgname = python2-colorlog
 	depends = python2
 	conflicts = python2-colorlog-git
+
