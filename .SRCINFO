@@ -15,7 +15,7 @@ pkgbase = goland
 
 pkgname = goland
 	optdepends = goland-jre: JetBrains custom Java Runtime (Recommended)
-	optdepends = java-runtime>=8: JRE - Required if goland-jre is not installed
+	optdepends = java-runtime: JRE - Required if goland-jre is not installed
 	conflicts = gogland
 	replaces = gogland
 

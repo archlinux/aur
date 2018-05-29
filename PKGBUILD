@@ -17,7 +17,7 @@ sha512sums=('972c15d6636728e214b355ce4ce7174d08e0e842c6ca4e4385fbc4330930a2fae3a
 
 package_goland() {
   optdepends=('goland-jre: JetBrains custom Java Runtime (Recommended)'
-              'java-runtime>=8: JRE - Required if goland-jre is not installed')
+              'java-runtime: JRE - Required if goland-jre is not installed')
   conflicts=('gogland')
   replaces=('gogland')
 
