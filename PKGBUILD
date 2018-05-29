@@ -19,7 +19,7 @@ conflicts=('headset')
 source=("https://github.com/headsetapp/headset-electron/releases/download/v${pkgver}/headset_${pkgver}_amd64.deb"
         "MIT::https://github.com/headsetapp/headset-electron/raw/master/LICENSE")
 md5sums=('8650064804d8ba873be09285476b40ed'
-         '63f69acde84223e3a5c9545b529e9e27')
+         'SKIP')
 
 package() {
   bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/

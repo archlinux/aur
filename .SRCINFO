@@ -17,7 +17,7 @@ pkgbase = headset-bin
 	source = https://github.com/headsetapp/headset-electron/releases/download/v1.9.0/headset_1.9.0_amd64.deb
 	source = MIT::https://github.com/headsetapp/headset-electron/raw/master/LICENSE
 	md5sums = 8650064804d8ba873be09285476b40ed
-	md5sums = 63f69acde84223e3a5c9545b529e9e27
+	md5sums = SKIP
 
 pkgname = headset-bin
 
