@@ -1,12 +1,12 @@
 pkgbase = shadowfox-updater
 	pkgdesc = An auto-updater for ShadowFox
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/SrKomodo/shadowfox-updater
 	arch = x86_64
 	license = MIT
-	source = https://github.com/SrKomodo/shadowfox-updater/releases/download/v1.5.0/shadowfox_linux_amd64
-	md5sums = b3ce2477f1c107bf5e01de883aa3e7a5
+	source = shadowfox-updater-1.5.1::https://github.com/SrKomodo/shadowfox-updater/releases/download/v1.5.1/shadowfox_linux_amd64
+	md5sums = 40c2bb1264490d8e13a554b24bdd4d13
 
 pkgname = shadowfox-updater
 
