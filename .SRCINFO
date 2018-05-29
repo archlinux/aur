@@ -1,5 +1,5 @@
 pkgbase = r-stanheaders
-	pkgdesc = C++ header files of the Stan project
+	pkgdesc = C++ Header Files for Stan
 	pkgver = 2.17.2
 	pkgrel = 1
 	url = https://cran.r-project.org/web/packages/StanHeaders/index.html
