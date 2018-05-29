@@ -1,0 +1,18 @@
+pkgbase = kaitai-struct-visualizer-git
+	pkgdesc = Advanced hex viewer and binary structure exploration tool (visualizer) using Kaitai Struct ksy files
+	pkgver = 0.8.r56.g078d45b
+	pkgrel = 1
+	url = http://kaitai.io
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-kaitai-struct
+	provides = kaitai-struct-visualizer
+	conflicts = kaitai-struct-visualizer
+	source = kaitai-struct-visualizer-git::git+https://github.com/kaitai-io/kaitai_struct.git
+	md5sums = SKIP
+
+pkgname = kaitai-struct-visualizer-git
+
