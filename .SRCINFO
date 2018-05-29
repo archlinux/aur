@@ -16,7 +16,7 @@ pkgbase = datagrip
 
 pkgname = datagrip
 	optdepends = datagrip-jre: JetBrains custom Java Runtime (Recommended)
-	optdepends = java-runtime>=8: JRE - Required if datagrip-jre is not installed
+	optdepends = java-runtime: JRE - Required if datagrip-jre is not installed
 
 pkgname = datagrip-jre
 

@@ -18,7 +18,7 @@ sha512sums=('46e5f51ea3a12aba75d7848dae4c32d295f727505be3b2028dcecd259fa4004ca15
 
 package_datagrip() {
   optdepends=('datagrip-jre: JetBrains custom Java Runtime (Recommended)'
-              'java-runtime>=8: JRE - Required if datagrip-jre is not installed')
+              'java-runtime: JRE - Required if datagrip-jre is not installed')
 
   install -d -m 755 "${pkgdir}/opt/"
   install -d -m 755 "${pkgdir}/usr/bin/"
