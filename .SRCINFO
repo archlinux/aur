@@ -1,0 +1,16 @@
+pkgbase = bterm-bin
+	pkgdesc = cross-platform terminal emulator
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/bleenco/bterm
+	arch = x86_64
+	license = MIT
+	makedepends = unp
+	depends = nodejs
+	provides = bterm
+	conflicts = bterm
+	source = https://github.com/bleenco/bterm/releases/download/v2.0.0/bterm_2.0.0_amd64.deb
+	sha256sums = cca4ca9220e9db7205b0e6e7b92fbfb7b1e59d7f01654aabe2f94f5d29cd61ff
+
+pkgname = bterm-bin
+
