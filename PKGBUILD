@@ -1,6 +1,5 @@
-# Maintainer:  Jeromy Reimer <jeromyreimer at gmail dot com>
 pkgname=zerotier-one-armv7h
-pkgver=1.2.4
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Creates virtual Ethernet networks of almost unlimited size."
 arch=('armv7h')
@@ -9,7 +8,7 @@ license=('GPL3')
 depends=('gcc-libs' 'http-parser' 'libnatpmp' 'miniupnpc')
 makedepends=('ruby-ronn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zerotier/ZeroTierOne/archive/$pkgver.tar.gz")
-sha512sums=('82adb110208d24ae2745e3839810afcac87955de050ebfe0517a7dc2a875881dafd40c1b16a041742d8c4d0f6513abcc71d6ea3e06c2fb89b47be2630a500363')
+sha512sums=('a97a8ff0e5050294fd8d56e74b5dd320b77822242ed4d43919c62a361ccbe1837417cba07d4114c91e277816f60bf47d226f37f816278bfd96505b752ef5d5ff')
 
 prepare() {
   cd ZeroTierOne-$pkgver
