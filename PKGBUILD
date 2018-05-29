@@ -1,8 +1,8 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='ttf-0xa000'
-pkgdesc=''
+pkgdesc='Monospace font family turned into TrueType starting from bitmaps'
 pkgver='20180529'
-pkgrel='1'
+pkgrel='2'
 url='http://pippin.gimp.org/0xA000'
 arch=('any')
 license=('custom:OFL')
