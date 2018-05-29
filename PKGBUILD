@@ -4,15 +4,15 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-zfs
-pkgver=4.1.0
-pkgrel=0
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc) with ZFS support enabled"
 arch=('x86_64')
 url="http://libvirt.org/"
 license=('LGPL')
 makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq' 'lxc'
-	     'libiscsi' 'open-iscsi' 'perl-xml-xpath' 'libxslt' 'qemu'
-       'ceph-libs' 'glusterfs' 'netcf' 'yajl' 'zfs-utils')
+	     'libiscsi' 'open-iscsi' 'perl-xml-xpath' 'libxslt' 'qemu-headless'
+       'ceph-libs' 'glusterfs' 'netcf' 'yajl' 'parted' 'zfs-utils' )
 conflicts=('libvirt')
 provides=('libvirt')
 options=('emptydirs')
@@ -22,7 +22,7 @@ source=("https://libvirt.org/sources/${pkgname/-zfs/}-${pkgver}.tar.xz"{,.asc}
 	'libvirtd-guests.conf.d'
 	'libvirt.sysusers.d')
 #	"ae102b5d7bccd29bc6015a3e0acefeaa90d097ac.patch::https://libvirt.org/git/?p=libvirt.git;a=patch;h=ae102b5d7bccd29bc6015a3e0acefeaa90d097ac")
-sha512sums=('62d1a228adf3270cc6defe3cbf92dac8c4ce2c434c4d97219571ccef799a4f6304cfd1ba9938338356641285f53ac71145d7b398523021c5ea1dc8e3d49cf894'
+sha512sums=('cc61497121931019a8cc3fa8234d7cf95b0f0e1d77ab6fcd089db92759617b099eb83c57aa91768ae6ccf92c345cf72e1d9b202acb5132a159476fb86f1a6999'
             'SKIP'
             'fc0e16e045a2c84d168d42c97d9e14ca32ba0d86025135967f4367cf3fa663882eefb6923ebf04676ae763f4f459e5156d7221b36b47c835f9e531c6b6e0cd9d'
             'ef221bae994ad0a15ab5186b7469132896156d82bfdc3ef3456447d5cf1af347401ef33e8665d5b2f76451f5457aee7ea01064d7b9223d6691c90c4456763258'
@@ -61,7 +61,7 @@ build() {
 	--with-storage-lvm --without-xen --with-udev --without-hal --disable-static \
 	--with-init-script=systemd --with-storage-gluster \
 	--with-qemu-user=nobody --with-qemu-group=kvm \
-	--with-netcf --with-interface --with-lxc --with-storage-iscsi \
+	--with-netcf --with-interface --with-lxc --with-storage-iscsi --with-storage-disk \
 	--with-storage-zfs
 	# --with-audit
   make
@@ -77,9 +77,9 @@ package_libvirt-zfs() {
         'dnsmasq: required for default NAT/DHCP for guests'
         'bridge-utils: for bridged networking'
         'netcat: for remote management over ssh'
-        'qemu'
         'radvd'
-        'dmidecode')
+        'dmidecode'
+        'parted')
   backup=('etc/conf.d/libvirt-guests'
     'etc/conf.d/libvirtd'
     'etc/libvirt/libvirt.conf'
