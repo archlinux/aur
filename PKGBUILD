@@ -2,13 +2,13 @@
 
 pkgname=ibus-singlish
 pkgver=20100305
-pkgrel=2
+pkgrel=3
 pkgdesc="A m17n Keymap file for Sinhala"
 arch=('any')
 url="http://www.madurax86.com/rsinglish"
 license=('GPL')
 depends=('ibus' 'ibus-m17n')
-source=("http://madurax86.comuv.com/singlish.mim")
+source=("https://web.archive.org/web/20111021103039/http://madurax86.comuv.com:80/singlish.mim")
 md5sums=('72774b4b57270feb5feed0e421ed78cb')
 
 package() {
