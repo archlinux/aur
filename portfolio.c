@@ -85,10 +85,10 @@ void portfolio_modify(const char* symbol, double quantity_shares, double usd_spe
             GOTO_CLEAN_MSG("You don't have any of this security to remove")
 
         if (strcmp("USD$", symbol) != 0) { // Check that the symbol is valid, except if it's USD
-            double* data = api_get_current_price(symbol);
+            Info* data = api_get_check_info(symbol);
             if (data == NULL) // If NULL response from APIs, it's invalid
                 GOTO_CLEAN_MSG("Invalid symbol.")
-            else free(data);
+            else api_info_destroy(&data);
         }
 
         Json* new_object = json_object_new_object(); // Creates new array index and adds values to it
@@ -185,16 +185,19 @@ SDA* portfolio_get_data_array(void) {
 void* portfolio_store_api_data(void* vsec_data) {
     SD* sec_data = vsec_data;
     if (strcmp(sec_data->symbol, "USD$") != 0) {
-        double* ticker_data = api_get_current_price(sec_data->symbol);
-        sec_data->current_value = sec_data->amount * ticker_data[0];
+        Info* symbol_info = api_get_check_info(sec_data->symbol);
+        double price_data[3] = {
+                symbol_info->price, symbol_info->price - symbol_info->price * symbol_info->change_1d / 100,
+                symbol_info->price - symbol_info->price * symbol_info->change_7d / 100
+        };
+        sec_data->current_value = sec_data->amount * price_data[0];
         sec_data->total_profit = sec_data->current_value - sec_data->total_spent;
-        sec_data->total_profit_percent = 100 * ((ticker_data[0] / (sec_data->total_spent / sec_data->amount)) - 1);
-        sec_data->total_profit_percent = 100 * ((ticker_data[0] / (sec_data->total_spent / sec_data->amount)) - 1);
-        sec_data->one_day_profit = sec_data->current_value - (sec_data->amount * ticker_data[1]);
-        sec_data->one_day_profit_percent = 100 * ((ticker_data[0] / ticker_data[1]) - 1);
-        sec_data->seven_day_profit = sec_data->current_value - (sec_data->amount * ticker_data[2]);
-        sec_data->seven_day_profit_percent = 100 * ((ticker_data[0] / ticker_data[2]) - 1);
-        free(ticker_data);
+        sec_data->total_profit_percent = 100 * ((price_data[0] / (sec_data->total_spent / sec_data->amount)) - 1);
+        sec_data->one_day_profit = sec_data->current_value - (sec_data->amount * price_data[1]);
+        sec_data->one_day_profit_percent = 100 * ((price_data[0] / price_data[1]) - 1);
+        sec_data->seven_day_profit = sec_data->current_value - (sec_data->amount * price_data[2]);
+        sec_data->seven_day_profit_percent = 100 * ((price_data[0] / price_data[2]) - 1);
+        api_info_destroy(&symbol_info);
     } else {
         sec_data->current_value = sec_data->amount;
         sec_data->total_profit = sec_data->current_value - sec_data->total_spent;

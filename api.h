@@ -76,29 +76,6 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pStrin
  */
 String* api_curl_data(const char* url);
 
-/**
- * Returns a double* containing the current price and yesterday's price of a stock or cryptocurrency.
- * [0] = current intraday price
- * [1] = last close price
- * [2] = close price 5 trading days previously
- * The function will first query IEX. If no response, it will query Morningstar. If no response, it will query
- * Coinmarketcap. If Coinmarketcap returns NULL, the function returns NULL.
- * 1. IEX -- NASDAQ/NYSE/NYSEARCA
- * 2. Morningstar -- MUTF/OTCMKTS
- * 3. Coinmarketcap -- CRYPTO
- * @param symbol security symbol or name to get prices of
- * @return price data or NULL if invalid symbol
- */
-double* api_get_current_price(const char* symbol);
-
-/**
- * Returns current and yesterday's price of a stock with data from IEX.
- * Tested for NASDAQ, NYSE, and NYSEARCA listed stocks/ETFs.
- * @param symbol symbol
- * @return price data as defined by api_get_current_price or NULL if invalid symbol
- */
-double* iex_get_price(const char* symbol);
-
 void* iex_store_company(void* vpInfo);
 
 void* iex_store_quote(void* vpInfo);
@@ -112,43 +89,6 @@ void* iex_store_chart(void* vpInfo);
 void* morningstar_store_info(void* vpInfo);
 
 void* coinmarketcap_store_info(void* vpInfo);
-
-/**
- * Returns current and yesterday's price of a mutual fund with data from Morningstar
- * Tested for MUTF and OTCMKTS listed securities.
- * @param symbol symbol
- * @return price data as defined by api_get_current_price or NULL if invalid symbol
- */
-double* morningstar_get_price(const char* symbol);
-
-/**
- * Returns current and yesterday's price of a cryptocurrency with data from Coinmarketcap.
- * All cryptocurrencies listed on Coinmarketcap will work.
- * @param symbol symbol
- * @return price data as defined by api_get_current_price or NULL if invalid symbol
- */
-double* coinmarketcap_get_price(const char* symbol);
-
-/**
- * Returns an array of doubles containing the close price each day in the past 5 years
- * @param symbol symbol
- * @return double array of close prices
- */
-double* api_get_hist_5y(const char* symbol);
-
-/**
- * Returns an array of doubles containing the close price each day in the past 5 years
- * @param symbol symbol of stock or etf
- * @return double array of close prices
- */
-double* iex_get_hist_5y(const char* symbol);
-
-/**
- * Returns an array of doubles containing the close price each day in the past 5 years
- * @param symbol symbol of mutf/otcmkts
- * @return double array of close prices
- */
-double* morningstar_get_hist_5y(const char* symbol);
 
 /**
  * Returns a pointer to an Info object containing info pertaining
@@ -172,6 +112,23 @@ Info* morningstar_get_info(const char* symbol);
  * @return Info object
  */
 Info* coinmarketcap_get_info(const char* symbol);
+
+/**
+ * Returns a double* containing the current price and yesterday's price of a stock or cryptocurrency.
+ * [0] = current intraday price
+ * [1] = last close price
+ * [2] = close price 5 trading days previously
+ * The function will first query IEX. If no response, it will query Morningstar. If no response, it will query
+ * Coinmarketcap. If Coinmarketcap returns NULL, the function returns NULL.
+ * 1. IEX -- NASDAQ/NYSE/NYSEARCA
+ * 2. Morningstar -- MUTF/OTCMKTS
+ * 3. Coinmarketcap -- CRYPTO
+ * @param symbol security symbol or name to get prices of
+ * @return price data or NULL if invalid symbol
+ */
+Info* api_get_check_info(const char* symbol);
+
+Info* api_get_info(const char* symbol);
 
 /**
  * Destroys Info object and frees memory. Sets the pointer to the Info to NULL
