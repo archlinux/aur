@@ -1,14 +1,15 @@
 pkgbase = r-rcppeigen
-pkgdesc = R and 'Eigen' integration using 'Rcpp'.
-pkgver = 0.3.3.4.0
-pkgrel = 2
-url = https://cran.r-project.org/web/packages/RcppEigen/index.html
-arch = x86_64
-license = GPL
-depends = r
-depends = r-cran-rcpp
-source = https://cran.r-project.org/src/contrib/RcppEigen_0.3.3.4.0.tar.gz
-md5sums = 78ee1ef7c6043efa875434ae5fcea2ec
+	pkgdesc = R and Eigen integration using Rcpp
+	pkgver = 0.3.3.4.0
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/RcppEigen/index.html
+	arch = any
+	license = GPL (>= 2) | file LICENSE
+	depends = r
+	optdepends = r-inline
+	optdepends = r-pkgkitten
+	source = https://cran.r-project.org/src/contrib/RcppEigen_0.3.3.4.0.tar.gz
+	md5sums = 78ee1ef7c6043efa875434ae5fcea2ec
 
 pkgname = r-rcppeigen
 
