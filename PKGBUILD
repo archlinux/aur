@@ -1,7 +1,7 @@
 # Maintainer: jun7 <jun7@hush.com>
 pkgname=wyebadblock-git
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="An adblock extension for webkit2gtk browsers."
 arch=('x86_64')
 url="https://github.com/jun7/wyebadblock"
@@ -30,5 +30,6 @@ build() {
 
 package() {
 	cd "$srcdir/wyebadblock"
-	install -Dm755 adblock.so   "$pkgdir/usr/lib/wyebrowser/adblock.so"
+	install -Dm755 wyebab     "$pkgdir/usr/bin/wyebab"
+	install -Dm755 adblock.so "$pkgdir/usr/lib/wyebrowser/adblock.so"
 }
