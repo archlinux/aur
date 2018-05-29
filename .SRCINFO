@@ -1,6 +1,6 @@
 pkgbase = uterm-git
 	pkgdesc = A WIP terminal emulator, written in C++11 using Skia, libtsm, and GLFW
-	pkgver = r88.ddc2ad9
+	pkgver = r96.6a8ab26
 	pkgrel = 1
 	url = https://github.com/kirbyfan64/uterm
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = uterm-git
 	source = git+https://github.com/fmtlib/fmt.git#branch=4.x
 	source = git+https://github.com/nemtrif/utfcpp.git
 	source = git+https://github.com/Aetf/libtsm#branch=master
+	source = git+https://github.com/greg7mdp/sparsepp
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
