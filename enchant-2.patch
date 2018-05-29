@@ -1,0 +1,61 @@
+--- php-7.1.13/ext/enchant/config.m4.orig	2018-01-03 02:32:29.000000000 +0000
++++ php-7.1.13/ext/enchant/config.m4	2018-01-21 22:10:03.788875780 +0000
+@@ -14,9 +14,9 @@
+ 	    ENCHANT_SEARCH_DIRS="/usr/local /usr"
+ 	fi
+ 	for i in $ENCHANT_SEARCH_DIRS; do
+-		if test -f $i/include/enchant/enchant.h; then
++		if test -f $i/include/enchant-2/enchant.h; then
+ 			ENCHANT_DIR=$i
+-			ENCHANT_INCDIR=$i/include/enchant
++			ENCHANT_INCDIR=$i/include/enchant-2
+ 		elif test -f $i/include/enchant.h; then
+ 			ENCHANT_DIR=$i
+ 			ENCHANT_INCDIR=$i/include
+@@ -31,7 +31,7 @@
+ 
+ 	AC_DEFINE(HAVE_ENCHANT,1,[ ])
+ 	PHP_SUBST(ENCHANT_SHARED_LIBADD)
+-	PHP_ADD_LIBRARY_WITH_PATH(enchant, $ENCHANT_LIBDIR, ENCHANT_SHARED_LIBADD)
++	PHP_ADD_LIBRARY_WITH_PATH(enchant-2, $ENCHANT_LIBDIR, ENCHANT_SHARED_LIBADD)
+ 	PHP_ADD_INCLUDE($ENCHANT_INCDIR)
+ 	PHP_CHECK_LIBRARY(enchant, enchant_broker_set_param,
+ 	[
+--- php-7.2.1/ext/enchant/enchant.c.orig	2018-01-02 22:36:05.000000000 +0000
++++ php-7.2.1/ext/enchant/enchant.c	2018-01-21 22:34:50.205791491 +0000
+@@ -741,7 +741,7 @@
+ 			for (i = 0; i < n_sugg; i++) {
+ 				add_next_index_string(sugg, suggs[i]);
+ 			}
+-			enchant_dict_free_suggestions(pdict->pdict, suggs);
++			enchant_dict_free_string_list(pdict->pdict, suggs);
+ 		}
+ 
+ 
+@@ -798,7 +798,7 @@
+ 			add_next_index_string(return_value, suggs[i]);
+ 		}
+ 
+-		enchant_dict_free_suggestions(pdict->pdict, suggs);
++		enchant_dict_free_string_list(pdict->pdict, suggs);
+ 	}
+ }
+ /* }}} */
+@@ -818,7 +818,7 @@
+ 
+ 	PHP_ENCHANT_GET_DICT;
+ 
+-	enchant_dict_add_to_personal(pdict->pdict, word, wordlen);
++	enchant_dict_add(pdict->pdict, word, wordlen);
+ }
+ /* }}} */
+ 
+@@ -856,7 +856,7 @@
+ 
+ 	PHP_ENCHANT_GET_DICT;
+ 
+-	RETURN_BOOL(enchant_dict_is_in_session(pdict->pdict, word, wordlen));
++	RETURN_BOOL(enchant_dict_is_added(pdict->pdict, word, wordlen));
+ }
+ /* }}} */
+ 
