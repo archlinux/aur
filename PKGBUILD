@@ -5,7 +5,7 @@
 pkgname=webkit2gtk-mse
 _pkgname=webkit2gtk
 pkgver=2.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ Web content engine library - MSE enabled"
 arch=(i686 x86_64)
 url="https://webkitgtk.org/"
@@ -47,6 +47,10 @@ build() {
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DENABLE_MEDIA_SOURCE=ON \
     ../webkitgtk-$pkgver
+  # Small issue happening when building, see: https://github.com/NixOS/nixpkgs/issues/37878
+  # Thanks for the workaround!
+  make JavaScriptCoreForwardingHeaders WTFForwardingHeaders
+  # Now build as usual
   make
 }
 
