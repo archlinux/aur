@@ -6,12 +6,11 @@ pkgbase = jetbrains-toolbox
 	arch = x86_64
 	arch = i686
 	license = Commercial
+	depends = java-runtime>=8
 	depends = fuse
 	depends = glib2
 	depends = libxslt
 	depends = libxss
-	optdepends = java-environment>=8: use system java
-	optdepends = java-runtime-common: use system java
 	options = !strip
 	source = https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.8.3868.tar.gz
 	source = jetbrains-toolbox.desktop

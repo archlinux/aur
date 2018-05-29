@@ -7,9 +7,7 @@ pkgdesc='Manage all your JetBrains Projects and Tools'
 arch=('x86_64' 'i686')
 url='http://www.jetbrains.com/toolbox/'
 license=('Commercial')
-depends=('fuse' 'glib2' 'libxslt' 'libxss')
-optdepends=('java-environment>=8: use system java'
-            'java-runtime-common: use system java')
+depends=('java-runtime>=8' 'fuse' 'glib2' 'libxslt' 'libxss')
 options=('!strip')
 source=(https://download.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz
         jetbrains-toolbox.desktop)
