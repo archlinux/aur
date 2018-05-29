@@ -1,13 +1,10 @@
-# Maintainer: Cyano Hao < c at cyano dot cn >
-# Contributor: Jose Riha
-
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
-
+# $Id$
+# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-pae
-_srcname=linux-4.15
-pkgver=4.15.15
+_srcname=linux-4.16
+pkgver=4.16.12
 pkgrel=1
 arch=('i686')
 url="https://www.kernel.org/"
@@ -28,16 +25,16 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
+sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'd8e7f93e24db5517a1be2030a765431120e07f7cd55e510d0de562c70e45bc00'
+            '70a6381aca28b1d271e85bc38fab05af4525d9fdc2c5bb87182b3351db8c4fa2'
             'SKIP'
-            '1477e2013f8fd12b7f91562ac1b592aa79b3b32304fd5b3609d8f635dd155073'
+            '9a6a3168033759ecc9926dd1253df746f3c029972b26f680818b99b7c0c0c9e4'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '4ffdc2a458845c2a7c03c735477dbf51b5b01b10568bf577b37a29e872135cab'
-            '12b281dc45f1954cc3f52276927bb2965c3132c0a8bd7f485869ced2c541d485')
+            'b01e9bd4e0f3cc2b91db1d8c043b2d85329bd0c9a9441a91d337c3c33661b658'
+            '09170daf49fe4cb720f331cd2da1c75771eb4f9f124353bf035218b1f8ca57d1')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -163,16 +160,13 @@ _package-headers() {
   cp -t "${_builddir}" -a include scripts
 
   install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
-  install -t "${_builddir}/arch/x86" -m644 arch/x86/Makefile_32.cpu
+        install -t "${_builddir}/arch/x86" -m644 arch/x86/Makefile_32.cpu
   install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
   cp -t "${_builddir}/arch/x86" -a arch/x86/include
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
