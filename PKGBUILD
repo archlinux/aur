@@ -1,9 +1,9 @@
 # Maintainer: Ainola
 
-pkgname=lazy-ips
+pkgname=lazy-ips-git
 pkgver=r2.9048f9f
 pkgrel=1
-pkgdesc="ips patcher for Linux"
+pkgdesc="Patch ROMs with IPS files."
 arch=('any')
 url="https://github.com/btimofeev/lazy_ips"
 license=('GPL3')
