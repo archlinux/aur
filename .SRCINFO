@@ -1,15 +1,16 @@
 pkgbase = routersploit
 	pkgdesc = An open-source exploitation framework dedicated to embedded devices.
-	pkgver = 2.2.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/threat9/routersploit
 	arch = any
 	license = BSD
-	depends = python2-requests
-	depends = python2-paramiko
-	depends = python2-beautifulsoup4
-	depends = python2-pysnmp
-	source = routersploit_v2.2.1.tar.gz::https://github.com/threat9/routersploit/archive/v2.2.1.tar.gz
-	sha512sums = 59262588fb1004a22c72f6f551f455f82bc461c2768dd001694c8a395cf11796138627f9bf94f45da1f289910b9119bcbabd1deb74f97e2649220631a59bcb4a
+	depends = python-future
+	depends = python-requests
+	depends = python-paramiko
+	depends = python-pysnmp
+	depends = python-crypto
+	source = routersploit_v3.0.0.tar.gz::https://github.com/threat9/routersploit/archive/v3.0.0.tar.gz
+	sha512sums = 0367a11c086e98db08691f25f6a45cf3e210948d9f06e91602230d87f091a28387b51cbc8bc6e9d7d0a2da0f5ab4cd404a683dee290956e8754a988e0912fa27
 
 pkgname = routersploit
