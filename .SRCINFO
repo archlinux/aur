@@ -1,6 +1,6 @@
 pkgbase = pyradio-git
 	pkgdesc = Command line internet radio player
-	pkgver = 0.4.r63.g871aa78
+	pkgver = 0.4.r105.gcac4f8f
 	pkgrel = 1
 	url = http://www.coderholic.com/pyradio/
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = pyradio-git
 	depends = python
 	optdepends = mplayer: as backend
 	optdepends = vlc: as backend
+	optdepends = mpv: as backend
+	optdepends = socat: if mpv is used
 	provides = pyradio
 	conflicts = pyradio
 	source = pyradio-git::git://github.com/coderholic/pyradio.git
