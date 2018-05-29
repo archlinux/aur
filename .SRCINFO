@@ -1,7 +1,7 @@
 pkgbase = python-pyipopt
 	pkgdesc = A Python connector to IPOPT
-	pkgver = r122.ab61f90
-	pkgrel = 1
+	pkgver = r122.36bcb7f
+	pkgrel = 2
 	url = https://github.com/xuy/pyipopt
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = python-pyipopt
 	depends = coin-or-ipopt
 	depends = python-numpy
 	depends = gcc
+	optdepends = python-algopy
 	provides = python-pyipopt
 	source = git+http://github.com/xuy/pyipopt.git
 	md5sums = SKIP
