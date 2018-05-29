@@ -1,8 +1,8 @@
 # Maintainer: Petar Koretic <petar.koretic@qaap.io>
 _pkgname=binfmt-support
 pkgname=$_pkgname-git
-pkgver=r229.5d6febd
-pkgrel=2
+pkgver=r232.1e28177
+pkgrel=1
 pkgdesc="register interpreters for various binary formats"
 arch=(any)
 url="http://packages.debian.org/en/sid/binfmt-support"
@@ -24,6 +24,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
+    ./bootstrap
     ./configure --prefix=/usr --libexecdir=/usr/lib --sbindir=/usr/bin
     make
 }
