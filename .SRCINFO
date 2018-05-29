@@ -15,7 +15,7 @@ pkgbase = goland-eap
 
 pkgname = goland-eap
 	optdepends = goland-eap-jre: JetBrains custom Java Runtime (Recommended)
-	optdepends = java-runtime>=8: JRE - Required if goland-jre is not installed
+	optdepends = java-runtime: JRE - Required if goland-jre is not installed
 	conflicts = gogland-eap
 	replaces = gogland-eap
 

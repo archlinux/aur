@@ -18,7 +18,7 @@ sha512sums=('edec2ea8db83d9cc882a4cfa7ecfec1c0a12d9c66ae5776776fe71666331fb7a9b4
 
 package_goland-eap() {
   optdepends=('goland-eap-jre: JetBrains custom Java Runtime (Recommended)'
-              'java-runtime>=8: JRE - Required if goland-jre is not installed')
+              'java-runtime: JRE - Required if goland-jre is not installed')
   conflicts=('gogland-eap')
   replaces=('gogland-eap')
 
