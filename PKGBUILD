@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo at gmail dot com>
 
 pkgname=geary-git
-pkgver=r3568.4ac7c10f
+pkgver=r3615.17551d17
 pkgrel=1
 pkgdesc="A lightweight email client for the GNOME desktop"
 arch=(i686 x86_64)
@@ -13,14 +13,14 @@ license=('GPL3')
 depends=('cairo' 'enchant' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc' 'gmime'
          'gnome-keyring' 'gtk3' 'iso-codes' 'libcanberra' 'libgee' 'libnotify'
          'libsecret' 'libsoup' 'libxml2' 'pango' 'sqlite' 'webkit2gtk')
-makedepends=('cmake' 'gnome-doc-utils' 'gobject-introspection' 'intltool'
+makedepends=('meson' 'gnome-doc-utils' 'gobject-introspection' 'intltool'
              'vala')
 provides=('geary')
 conflicts=('geary')
 source=('git://git.gnome.org/geary'
         'geary-enchant2.patch')
 sha256sums=('SKIP'
-            '87a0adc3d07a6bd6405c8170eea5be700ef89b70d15c8912b428c9326a746078')
+            '23261cd5ff7b3a602d6e6e5bbf8cfce05d975026be476cfd120a98000d0aa5c6')
 
 pkgver() {
 	cd "$srcdir/geary"
@@ -29,31 +29,19 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/geary"
-
   if [[ -d build ]]; then
     rm -rf build
   fi
-  mkdir build
-
   patch -Np1 -i ../geary-enchant2.patch
 }
 
 build() {
 	cd "$srcdir/geary"
-
-	cd build
-
-	cmake .. \
-	    -DCMAKE_INSTALL_PREFIX='/usr' \
-	    -DDESKTOP_UPDATE='FALSE' \
-	    -DICON_UPDATE='FALSE' \
-	    -DGSETTINGS_COMPILE='FALSE' \
-	    -DGSETTINGS_COMPILE_IN_PLACE='FALSE'
-	make
+	meson --prefix=/usr --buildtype=release build
+	ninja -v -C build
 }
 
 package() {
 	cd "$srcdir/geary"
-	cd build
-	make DESTDIR="${pkgdir}" install
+	DESTDIR="$pkgdir" ninja -v -C build install
 }

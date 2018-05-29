@@ -1,24 +1,24 @@
-diff -rupN geary-0.12.0.orig/CMakeLists.txt geary-0.12.0/CMakeLists.txt
---- geary-0.12.0.orig/CMakeLists.txt	2018-01-16 21:45:14.731988942 +0100
-+++ geary-0.12.0/CMakeLists.txt	2018-01-16 21:47:51.510178769 +0100
-@@ -96,7 +96,7 @@ find_package(PkgConfig)
- pkg_check_modules(LIBUNITY QUIET unity>=5.12.0)
- pkg_check_modules(LIBMESSAGINGMENU QUIET messaging-menu>=12.10.2)
+diff --u a/meson.build b/meson.build
+--- a/meson.build
++++ b/meson.build
+@@ -51,7 +51,18 @@
+ webkit2gtk = dependency('webkit2gtk-4.0', version: '>=' + target_webkit)
+ 
+ # Secondary deps - keep sorted alphabetically
+-enchant = dependency('enchant', version: '>= 1.6')
++enchant = dependency('enchant', version: '>= 1.6', required: false)
++if not enchant.found()
++  dependency('enchant-2', version: '>= 1.6')
++  enchant = valac.find_library(
++    'enchant',
++    dirs: '/usr/share/vala-0.40/vapi/',
++    required: true
++  )
++  # TODO These arguments should be applied more specifically
++  add_project_arguments('-I/usr/include/enchant-2/', language : 'c')
++  add_project_link_arguments('-lenchant-2', language : 'c')
++endif
+ gcr = dependency('gcr-3', version: '>= 3.10.1')
+ gdk = dependency('gdk-3.0', version: '>=' + target_gtk)
+ gee = dependency('gee-0.8', version: '>= 0.8.5')
 
--pkg_check_modules(ENCHANT QUIET enchant)
-+pkg_check_modules(ENCHANT QUIET enchant-2)
-
- pkg_check_modules(SQLITE3 sqlite3 REQUIRED)
- if (NOT ${SQLITE3_VERSION} VERSION_LESS 3.12)
-diff -rupN geary-0.12.0.orig/src/CMakeLists.txt geary-0.12.0/src/CMakeLists.txt
---- geary-0.12.0.orig/src/CMakeLists.txt	2018-01-16 21:45:14.738655384 +0100
-+++ geary-0.12.0/src/CMakeLists.txt	2018-01-16 21:48:40.088633141 +0100
-@@ -508,7 +508,7 @@ pkg_check_modules(DEPS REQUIRED
-     webkit2gtk-4.0>=${TARGET_WEBKIT}
-     webkit2gtk-web-extension-4.0>=${TARGET_WEBKIT}
-     javascriptcoregtk-4.0>=${TARGET_WEBKIT}
--    enchant>=1.6
-+    enchant-2>=1.6
-     libunwind-generic>=1.1
-     ${EXTRA_CLIENT_PKG_CONFIG}
- )
