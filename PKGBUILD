@@ -1,5 +1,5 @@
 pkgname=mingw-w64-agrum
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="C++ Bayesian networks library (mingw-w64)"
 license=('GPL')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('git' 'mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://gitlab.com/agrumery/aGrUM/-/archive/${pkgver}/aGrUM-${pkgver}.tar.bz2")
-sha256sums=('feefbd06285f2bc6dc9968c1e6e9f40036049310f2649804ec34b64b022e118f')
+sha256sums=('f1653849c5d747787e5b75f2e591695eec67dfd291725ff79350e78405b31238')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -17,7 +17,7 @@ build() {
   cd aGrUM-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake \
+    CXXFLAGS="-fpermissive" ${_arch}-cmake \
       -DBUILD_PYTHON=OFF \
       -DBUILD_SHARED_LIBS=OFF \
       ..
