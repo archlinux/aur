@@ -1,9 +1,9 @@
 # Maintainer: Arthur Vuillard <arthur@hashbang.fr>
 
 name=watchghost
-pkgname=$name-git
-pkgver=0.1.0.git_121.32a7631
-pkgrel=2
+pkgname=$name
+pkgver=0.1.0
+pkgrel=1
 epoch=1
 pkgdesc="Your invisible but loud monitoring pet"
 arch=('any')
@@ -11,8 +11,9 @@ url='https://gitlab.com/localg-host/watchghost/'
 license=('AGPLv3')
 depends=('python-tornado' 'python-aioftp' 'python-asyncssh')
 makedepends=('python-setuptools')
-source=('git+https://gitlab.com/localg-host/watchghost.git')
-sha256sums=('SKIP')
+source=("https://gitlab.com/localg-host/watchghost/-/archive/${pkgver}/watchghost-${pkgver}.tar.gz")
+sha256sums=('3cd3de253a47f0bfc4225bd806156dd1d364aeae983153aca28391b2a8a39214')
+conflicts=('watchghost-git')
 install=watchghost.install
 backup=(
     'etc/watchghost/watchers'
@@ -20,12 +21,6 @@ backup=(
     'etc/watchghost/servers'
     'etc/watchghost/groups'
 )
-
-pkgver(){
-    cd $srcdir/$name
-
-    echo 0.1.0.git_$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
 
 package() {
     cd "$srcdir/$name"
