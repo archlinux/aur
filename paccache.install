@@ -1,10 +1,10 @@
 post_install(){
-    echo " >> Enabling pacman files systemd timer"
+    echo " >> Enabling paccache systemd timer"
     echo " >> Run 'systemctl disable paccache.timer' to disable it"
-    systemctl enable paccache.timer
+    systemctl enable paccache-leave3.timer
 }
 
 pre_remove() {
-    echo " >> Disabling pacman files systemd timer"
-    systemctl disable paccache.timer
+    echo " >> Disabling paccache systemd timer"
+    systemctl disable paccache-leave3.timer
 }

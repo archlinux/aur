@@ -1,5 +1,5 @@
 [Unit]
-Description=Clear pacman cache weekly
+Description=Run	paccache-leave3.service weekly
 
 [Timer]
 OnCalendar=weekly

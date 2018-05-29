@@ -1,5 +1,5 @@
 [Unit]
-Description=Clear pacman cache
+Description=Clear pacman cache, leave up to 3 versions of each installed package
 RequiresMountsFor=/var/cache/pacman/pkg/
 
 [Service]
