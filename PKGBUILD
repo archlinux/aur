@@ -25,7 +25,9 @@ source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         0002-Enable-SSP-and-PIE-by-default.patch
         0003-Fix-sanitizer-build-against-latest-glibc.patch
         0004-Fix-gcc-8-compiler-error.patch
-        disable-llvm-symbolizer-test.patch)
+        disable-llvm-symbolizer-test.patch
+        PR37031-Fix-Mips-breakages.patch
+        PR37032-Fix-ldd-x86_64-darwin13-build-fails.patch)
 sha256sums=('da783db1f82d516791179fe103c71706046561f7972b18f0049242dee6712b51'
             'SKIP'
             '61738a735852c23c3bdbe52d035488cdb2083013f384d67c1ba36fabebd8769b'
@@ -36,7 +38,9 @@ sha256sums=('da783db1f82d516791179fe103c71706046561f7972b18f0049242dee6712b51'
             '79f1a409700a83d983d7237a907aeddf342c28aa810b87b28ee27b8c5560644a'
             '0afff7e5cf0f6df596517f63a9a9f085eab3b53f42a1eb14bbd83861c36c9fd7'
             '080e90dabbd386fb8c4771ab7537acff157b72bb0f2591609805cacf684cceed'
-            '6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359')
+            '6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359'
+            '506bdbcb30c8bb4a8e3406f14ae972441835dceede61ece9e0117cb0f357e514'
+            '6d5498068cf4f6141ee2c8abc1828cc3797e309e545a4e80fa544ac253fc619b')
 validpgpkeys=('11E521D646982372EB577A1F8F0871F202119294')
 
 prepare() {
@@ -61,6 +65,14 @@ prepare() {
   # Fix compiler error with gcc >= 8
   # https://bugzilla.redhat.com/show_bug.cgi?id=1540620
   patch -Np1 < ../0004-Fix-gcc-8-compiler-error.patch
+
+  # Fix Mips breakages
+  # https://bugs.llvm.org/show_bug.cgi?id=37031
+  patch -Np0 < ../PR37031-Fix-Mips-breakages.patch
+
+  # Fix lld-x86_64-darwin13 build fails.
+  # https://bugs.llvm.org/show_bug.cgi?id=37032
+  patch -Np0 < ../PR37032-Fix-ldd-x86_64-darwin13-build-fails.patch
 }
 
 build() {
