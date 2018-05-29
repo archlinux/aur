@@ -2,7 +2,7 @@
 
 pkgname=ttf-aenigma
 pkgver=20080510
-pkgrel=5
+pkgrel=6
 pkgdesc="465 free TrueType fonts by Brian Kent"
 arch=('any')
 url="http://www.aenigmafonts.com"

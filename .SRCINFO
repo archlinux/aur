@@ -1,7 +1,7 @@
 pkgbase = ttf-aenigma
 	pkgdesc = 465 free TrueType fonts by Brian Kent
 	pkgver = 20080510
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.aenigmafonts.com
 	arch = any
 	license = custom
