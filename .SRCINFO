@@ -1,0 +1,25 @@
+pkgbase = python-scikit-plot
+	pkgdesc = An intuitive library to add plotting functionality to scikit-learn objects
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/reiinakano/scikit-plot
+	arch = i686
+	arch = x86_64
+	license = MIT
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/07/ef/ed1d00f8f269d5927616fc532d01ee33f1922266de32533f3893a408546a/scikit-plot-0.3.5.tar.gz
+	sha256sums = 92faa58ce2fdbbf7ff93c1bed564c4b615cb3df479c2e4f74dcda034dbb762a2
+
+pkgname = python-scikit-plot
+	depends = python-matplotlib
+	depends = python-scikit-learn
+	depends = python-scipy
+	depends = python-joblib
+	depends = python-numpy
+	depends = python-cycler
+	depends = python-pyparsing
+	depends = python-dateutil
+	depends = python-pytz
+	depends = python-six
+	depends = python-kiwisolver
+
