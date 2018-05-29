@@ -1,6 +1,6 @@
 pkgbase = connectagram
 	pkgdesc = A word unscrambling game
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://gottcode.org/connectagram/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = connectagram
 	license = GPL3
 	makedepends = qt5-tools
 	depends = qt5-base
-	source = https://gottcode.org/connectagram/connectagram-1.2.6-src.tar.bz2
-	sha256sums = 79177c962292d20848f124358a2a3445e09ec4eb0b3d8a092f921cf7d8139dae
+	source = https://gottcode.org/connectagram/connectagram-1.2.7-src.tar.bz2
+	sha256sums = b9bfb2425d22c002403f2d8bee2706fd76ab62fdb568a60d804121f046220a66
 
 pkgname = connectagram
 
