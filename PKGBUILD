@@ -7,7 +7,7 @@ pkgdesc="OCaml package manager"
 arch=('i686' 'x86_64')
 url="https://opam.ocaml.org/"
 license=('GPL')
-depends=('ocaml' 'unzip' 'curl')
+depends=('ocaml' 'unzip' 'curl' 'bubblewrap')
 optdepends=('darcs: For downloading packages with darcs'
             'git: For downloading packages with git'
             'mercurial: For downloading packages with mercurial'

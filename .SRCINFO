@@ -11,6 +11,7 @@ pkgbase = opam2
 	depends = ocaml
 	depends = unzip
 	depends = curl
+	depends = bubblewrap
 	optdepends = darcs: For downloading packages with darcs
 	optdepends = git: For downloading packages with git
 	optdepends = mercurial: For downloading packages with mercurial
