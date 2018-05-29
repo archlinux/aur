@@ -5,7 +5,7 @@
 
 pkgname=libvirt-zfs
 pkgver=4.3.0
-pkgrel=1
+pkgrel=0
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc) with ZFS support enabled"
 arch=('x86_64')
 url="http://libvirt.org/"
