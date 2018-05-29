@@ -1,7 +1,7 @@
 _npmname='reveal-md'
 pkgname='nodejs-reveal-md'
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Get beautiful reveal.js presentations from your Markdown file'
 arch=('any')
 url='http://webpro.github.io/reveal-md/'
@@ -17,7 +17,6 @@ package() {
     mkdir -p $_npmdir
     cd $_npmdir
     npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
-    rm -r "$pkgdir/usr/etc"
 }
 
 # vim:set ts=2 sw=2 et:
