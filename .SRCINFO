@@ -1,0 +1,23 @@
+pkgbase = r-rvest
+	pkgdesc = Easily Harvest (Scrape) Web Pages
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/rvest/index.html
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-xml2
+	depends = r-httr
+	depends = r-selectr
+	depends = r-magrittr
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-png
+	optdepends = r-stringi
+	optdepends = r-rmarkdown
+	optdepends = r-covr
+	source = https://cran.r-project.org/src/contrib/rvest_0.3.2.tar.gz
+	md5sums = 78c88740850e375fc5da50d37734d1b2
+
+pkgname = r-rvest
+
