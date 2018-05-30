@@ -2,7 +2,7 @@
 
 pkgname=nexys2prog
 pkgver=20101021
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to load .bit files to Digilent's Nexys 2 board"
 arch=("i686" "x86_64")
 url="http://ixo-jtag.sourceforge.net/nexys2-linux-howto.html"
