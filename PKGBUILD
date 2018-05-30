@@ -1,107 +1,70 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
+# Contributor: Mark Vainomaa <mikroskeem.at.mikroskeem.dot.eu>
 
 pkgname=mcpelauncher-linux
-pkgver=20170724.r105.5478043
+pkgver=1.4
 pkgrel=1
-pkgdesc="Minecraft PE launcher for Linux"
-arch=('x86_64')
-url="https://kris27mc.github.io"
-license=('BSD')
-groups=()
-depends=('lib32-zlib' 'lib32-ncurses' 'gts' 'libglvnd' 'lib32-libglvnd' 'lib32-libxext' 'lib32-libx11' 'lib32-libpng' 'lib32-util-linux' 'lib32-glibc')
-makedepends=('wget' 'cmake' 'gcc-multilib')
-optdepends=()
-source=("git+https://github.com/kris27mc/mcpelauncher-linux.git")
+pkgdesc="A launcher for Minecraft: Pocket Edition on Linux."
+arch=("x86_64")
+url="https://github.com/MCMrARM/mcpelauncher-linux"
+license=("GPL")
+depends=(
+    "lib32-alsa-lib"
+    "lib32-alsa-plugins"
+    "lib32-gcc-libs"
+    "lib32-gconf"
+    "lib32-glibc"
+    "lib32-gtk2"
+    "lib32-libevdev"
+    "lib32-libpng"
+    "lib32-libprotobuf"
+    "lib32-libstdc++5"
+    "lib32-libudev0"
+    "lib32-libx11"
+    "lib32-libxss"
+    "lib32-libxtst"
+    "lib32-libzip"
+    "lib32-mesa"
+    "lib32-nss"
+    "lib32-openssl"
+    "lib32-util-linux"
+    "lib32-zlib"
+    "libzip"
+    "protobuf"
+)
+makedepends=(
+    "git"
+    "cmake"
+    "gcc-multilib"
+    "wget"
+)
+source=(
+	"git+https://github.com/MCMrARM/mcpelauncher-linux.git"
+	"binarylaunch.sh"
+)
+md5sums=(
+	'SKIP'
+	'cfcbf03fa0bd3ced0f832e14bb187c59'
+)
 
-pkgver() {
-cd mcpelauncher-linux
-
-printf "%s.r%s.%s" \
- "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
- "$(git rev-list --count HEAD)" \
- "$(git rev-parse --short HEAD)"
-         }
+prepare() {
+	cd "$pkgname"
+	git submodule init && git submodule update
+	./setup_cef.sh
+	./download_icon.sh
+	./setup_bin_libs.sh
+	mkdir build
+}
 
 build() {
-  cd mcpelauncher-linux
-  if grep -qi "amd" /proc/cpuinfo;  then
-  /usr/bin/cp -r libs/AMD/* libs/
-  printf "Using compatibility libs"
-  sleep 3
-fi
-
-#Compiles mcpelauncher
-cmake .
-make
-
-#Checks for complete build
-if [ ! -e "mcpelauncher" ]; then
-  echo "Error: mcpelauncher missing. Build failed"
-  exit
-fi
-        }
-
-package(){
-  cd mcpelauncher-linux
-  #Moves compiled files to new dir
-  if [ ! -e "/usr/share/mcpelauncher" ]; then
-  sudo mkdir /usr/share/mcpelauncher
-fi
-  sudo cp -t /usr/share/mcpelauncher mcpelauncher extract.sh LICENSE mcpelauncher.desktop MCPEicon.png
-  sudo cp -r libs /usr/share/mcpelauncher/libs
-  cd /usr/share/mcpelauncher
-
-  #Acquires apk
-  printf "\nWhich method would you like to use to acquire an APK?\n"
-  printf "1) Google-Play-API (currently broken)\n"
-  printf "2) Hosted download (ONLY USE IF YOU OWN MCPE!)\n"
-  printf "3) Local file\n"
-  printf "\nEnter your selection: "
-  read answer
-  echo "$answer"
-  #Google-Play-API
-  if [[ "$answer" == "1" ]]; then
-    git clone https://github.com/MCMrARM/Google-Play-API.git
-    cd Google-Play-API
-    cmake .
-    make
-    ./gplaydl -tos -a com.mojang.minecraftpe
-    sudo cp *.apk /usr/share/mcpelauncher
-    cd /usr/share/mcpelauncher
-    sudo rm -R Google-Play-API
-  fi
-
-  #Hosted apk
-  if [[ "$answer" == "2" ]]; then
-    sudo wget https://kris27mc.github.io/files/mcpe.apk
-  fi
-
-  #Local file
-  if [[ "$answer" == "3" ]]; then
-    printf "Please enter the full path to your apk.\n"
-    printf "Path to APK: "
-    read -e pathtoapk
-    if grep "mcpe.apk" <<< echo "$pathtoapk"; then
-      sudo cp "$pathtoapk" /usr/share/mcpelauncher/mcpe-new.apk
-    else
-      sudo cp "$pathtoapk" /usr/share/mcpelauncher
-    fi
-  fi
-
-  #Extracts apk into assets
-  if [[ "$answer" == "1" || "$input" == "3" ]]; then
-    if [ -f "mcpe.apk" ]; then
-      sudo mkdir oldapks
-      sudo mv mcpe.apk oldapks
-      sudo mv *.apk mcpe.apk
-    fi
-  fi
-
-  sudo ./extract.sh mcpe.apk
-  sudo chmod -R 777 /usr/share/mcpelauncher
-
-  #Creates desktop launcher
-  sudo cp mcpelauncher.desktop /usr/share/applications
-  
+	cd "$pkgname/build"
+	cmake ..
+	make -j$(nproc --all)
 }
-md5sums=('SKIP')
+
+package() {
+	cd "$pkgname/build"
+	make DESTDIR="$pkgdir" install
+	cd "$srcdir"
+	install -m755 binarylaunch.sh "$pkgdir/usr/local/bin/mcpelauncher"
+}
