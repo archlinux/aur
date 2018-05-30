@@ -13,13 +13,18 @@ sha256sums=('f1653849c5d747787e5b75f2e591695eec67dfd291725ff79350e78405b31238')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare () {
+  cd aGrUM-$pkgver
+  # https://gitlab.com/agrumery/aGrUM/issues/4
+  sed -i "s|h += Size(k)|h += reinterpret_cast<std::uintptr_t>(k)|g" src/agrum/multidim/instantiation_inl.h
+}
+
 build() {
   cd aGrUM-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    CXXFLAGS="-fpermissive" ${_arch}-cmake \
+    ${_arch}-cmake \
       -DBUILD_PYTHON=OFF \
-      -DBUILD_SHARED_LIBS=OFF \
       ..
     make
     popd
@@ -30,7 +35,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/aGrUM-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
-    #${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
