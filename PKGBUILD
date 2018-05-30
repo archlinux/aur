@@ -4,7 +4,7 @@
 
 _pkgname=KindleTool
 pkgname=kindletool-git
-pkgver=1.6.4.r97.gb057128
+pkgver=1.6.5.r0.gf9596c3
 pkgrel=1
 pkgdesc="Tool for creating/extracting Kindle updates and more"
 arch=('i686' 'x86_64')

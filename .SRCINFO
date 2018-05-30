@@ -1,6 +1,6 @@
 pkgbase = kindletool-git
 	pkgdesc = Tool for creating/extracting Kindle updates and more
-	pkgver = 1.6.4.r97.gb057128
+	pkgver = 1.6.5.r0.gf9596c3
 	pkgrel = 1
 	url = https://github.com/NiLuJe/KindleTool
 	arch = i686
