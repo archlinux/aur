@@ -1,0 +1,22 @@
+pkgbase = r-dbi
+	pkgdesc = R Database Interface
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/DBI/index.html
+	arch = any
+	license = LGPL
+	depends = r
+	optdepends = r-blob
+	optdepends = r-covr
+	optdepends = r-cran-hms
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-rprojroot
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-xml2
+	source = https://cran.r-project.org/src/contrib/DBI_1.0.0.tar.gz
+	md5sums = 72206e6de9f1a3e783f74446f31bb54c
+
+pkgname = r-dbi
+
