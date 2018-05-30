@@ -1,6 +1,6 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
 _cranname=rlang
-_cranver=0.2.0
+_cranver=0.2.1
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-rlang
 pkgver=${_cranver//[:-]/.}
@@ -14,7 +14,7 @@ depends=('r' )
 optdepends=('r-crayon' 'r-knitr' 'r-cran-pillar' 'r-rmarkdown' 'r-testthat' 'r-covr')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('d2a9f5357a5de6de624b11e6da12275c')
+md5sums=('71ba956eb1f40b39f16dd28888753524')
 replaces=("r-cran-rlang")
 
 build(){

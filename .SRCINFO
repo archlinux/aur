@@ -1,6 +1,6 @@
 pkgbase = r-rlang
 	pkgdesc = Functions for Base Types and Core R and Tidyverse Features
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/web/packages/rlang/index.html
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = r-rlang
 	optdepends = r-testthat
 	optdepends = r-covr
 	replaces = r-cran-rlang
-	source = https://cran.r-project.org/src/contrib/rlang_0.2.0.tar.gz
-	md5sums = d2a9f5357a5de6de624b11e6da12275c
+	source = https://cran.r-project.org/src/contrib/rlang_0.2.1.tar.gz
+	md5sums = 71ba956eb1f40b39f16dd28888753524
 
 pkgname = r-rlang
 
