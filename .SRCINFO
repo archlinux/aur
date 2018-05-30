@@ -1,6 +1,6 @@
 pkgbase = megasync
 	pkgdesc = Sync your files to your Mega account. Official app
-	pkgver = 3.6.5.0
+	pkgver = 3.6.6.0
 	pkgrel = 1
 	url = https://github.com/meganz/megasync
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = megasync
 	depends = qt5-svg
 	depends = libmediainfo
 	optdepends = sni-qt: fix systray issue on KDE and LXQt
-	source = git+https://github.com/meganz/MEGAsync.git#tag=v3.6.5.0_Linux
+	source = git+https://github.com/meganz/MEGAsync.git#tag=v3.6.6.0_Linux
 	md5sums = SKIP
 
 pkgname = megasync
