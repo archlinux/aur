@@ -104,6 +104,7 @@ build() {
   make -j4
 
   # a hack to make Projucer use the system's VST header path
+  # TODO replace with patching Projucer sources instead
   patch_strings_in_file "${srcdir}/${_projucer}" "~/SDKs/VST_SDK/VST3_SDK" "/usr/include/vst36"
   # will be replaced with the following once Cabbage is ported to JUCE 5.3.0
   # "${srcdir}/${_projucer_dir}" --set-global-search-path linux vst3Path /usr/include/vst36/
