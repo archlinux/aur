@@ -5,7 +5,6 @@ pkgbase = skypeforlinux-stable-bin
 	url = http://www.skype.com
 	arch = x86_64
 	license = custom
-	depends = gtk2
 	depends = gtk3
 	depends = libxss
 	depends = gconf
