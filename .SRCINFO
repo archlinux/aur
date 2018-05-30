@@ -1,14 +1,14 @@
 pkgbase = r-cran-ggplot2
 	pkgdesc = Create Elegant Data Visualisations Using the Grammar of Graphics
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cran.r-project.org/web/packages/ggplot2/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = r
 	depends = r-digest
-	depends = r-cran-gtable>=0.1.1
+	depends = r-gtable>=0.1.1
 	depends = r-cran-plyr>=1.7.1
 	depends = r-cran-reshape2
 	depends = r-cran-scales>=0.4.1
