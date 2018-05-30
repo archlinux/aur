@@ -1,8 +1,8 @@
 # Maintainer: Marcelo Garlet Millani <marcelogmillani at gmail dot com>
 _hkgname=descrilo
 pkgname=haskell-descrilo
-pkgver=0.1.0.5
-pkgrel=2
+pkgver=0.1.0.6
+pkgrel=1
 pkgdesc='Loads a list of items with fields'
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('GPL3')
@@ -11,7 +11,7 @@ depends=("ghc")
 source=( "http://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz" )
 #options=('staticlibs')
 install=${pkgname}.install
-sha256sums=('2531d6b52a6a1a44c00581d952631401cadb3e3b2c9f6111fbdc05ad17b3f58e')
+sha256sums=('a24597e81f0aa526a1fbc1eb1f9f5b372ca06f001f0bb7028ee8f182913cdd98')
 
 build() {
 	cd ${srcdir}/${_hkgname}-${pkgver}
