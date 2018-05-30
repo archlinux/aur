@@ -3,13 +3,13 @@
 
 _pkgname=conky-colors
 pkgname=$_pkgname-git
-pkgver=20160428.r157.df2bb4b
-pkgrel=2
+pkgver=20180507.r160.be8d5df
+pkgrel=1
 pkgdesc='An easier way to configure Conky'
 url='https://github.com/helmuthdu/conky_colors'
 license=('GPL3')
 arch=('armv6h' 'armv7h' 'arm' 'i686' 'x86_64')
-depends=('python' 'conky' 'pystatgrab' 'python2-keyring' 'ttf-liberation' 'ttf-ubuntu-font-family' 'hddtemp' 'curl' 'lm_sensors')
+depends=('python' 'conky' 'pystatgrab' 'python-keyring' 'ttf-liberation' 'ttf-ubuntu-font-family' 'hddtemp' 'curl' 'lm_sensors')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
