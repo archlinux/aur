@@ -1,0 +1,181 @@
+pkgbase = kopano-webapp
+	pkgdesc = WebApp for Kopano
+	pkgver = 3.4.12
+	pkgrel = 1
+	url = http://www.kopano.com/
+	arch = any
+	groups = zarafa
+	groups = kopano
+	groups = zarafa-webapp-plugins
+	license = AGPL3
+	makedepends = apache-ant
+	makedepends = gettext
+	makedepends = libxml2
+	makedepends = git
+	depends = php
+	depends = nginx
+	depends = php-fpm
+	replaces = zarafa-webapp
+	replaces = zarafa-webapp-contactfax
+	replaces = zarafa-webapp-folderwidgets
+	replaces = zarafa-webapp-gmaps
+	replaces = zarafa-webapp-pimfolder
+	replaces = zarafa-webapp-quickitems
+	replaces = zarafa-webapp-titlecounter
+	replaces = zarafa-webapp-webappmanual
+	replaces = zarafa-webapp-zdeveloper
+	replaces = zarafa-webapp-files
+	replaces = zarafa-webapp-filepreview
+	replaces = zarafa-webapp-smime
+	source = git+https://stash.kopano.io/scm/kw/kopano-webapp.git#tag=v3.4.12
+	source = nginx-location.conf
+	source = nginx-ssl.example.conf
+	source = php-fpm.example.conf
+	source = kopano-webapp.conf
+	source = kopano-webapp.ini
+	source = kopano-webapp.install
+	source = compress-static
+	source = kopano-webapp-files::git+https://stash.kopano.io/scm/kwa/files.git#tag=v2.1.2-final
+	source = kopano-webapp-filesbackendOwncloud::git+https://stash.kopano.io/scm/kwa/files-owncloud-backend.git#tag=v2.0.0
+	source = kopano-webapp-filesbackendSMB::git+https://stash.kopano.io/scm/kwa/files-smb-backend.git#tag=v2.0.0
+	source = kopano-webapp-files.ini
+	source = kopano-webapp-filepreviewer::git+https://stash.kopano.io/scm/kwa/filepreviewer.git#tag=v2.0.0
+	source = kopano-webapp-smime::git+https://stash.kopano.io/scm/kwa/smime.git#tag=v2.2.0-beta.2
+	source = kopano-webapp-smime.ini
+	source = kopano-webapp-desktopnotifications::git+https://stash.kopano.io/scm/kwa/desktopnotifications.git#tag=v2.0.1
+	source = kopano-webapp-intranet::git+https://stash.kopano.io/scm/kwa/intranet.git
+	source = kopano-webapp-mdm::git+https://stash.kopano.io/scm/kwa/mobile-device-management.git#tag=v2.1.0-beta.3
+	source = kopano-webapp-spellchecker::git+https://stash.kopano.io/scm/kwa/spellchecker.git#tag=v2.0.0
+	source = kopano-webapp-spellchecker.ini
+	source = kopano-webapp-spellchecker-languagepack-german-at::git+https://stash.kopano.io/scm/kwa/spellchecker-languagepack-de-at.git#tag=v2.0.0
+	source = kopano-webapp-spellchecker-languagepack-german-ch::git+https://stash.kopano.io/scm/kwa/spellchecker-languagepack-de-ch.git#tag=v2.0.0
+	source = kopano-webapp-spellchecker-languagepack-german-de::git+https://stash.kopano.io/scm/kwa/spellchecker-languagepack-de-de.git#tag=v2.0.0
+	source = kopano-webapp-spellchecker-languagepack-english-gb::git+https://stash.kopano.io/scm/kwa/spellchecker-languagepack-en-gb.git#tag=v2.0.0
+	source = kopano-webapp-spellchecker-languagepack-english-us::git+https://stash.kopano.io/scm/kwa/spellchecker-languagepack-en-us.git#tag=v2.0.0
+	source = kopano-webapp-spellchecker-languagepack-spanish::git+https://stash.kopano.io/scm/kwa/spellchecker-languagepack-es-es.git#tag=v2.0.0
+	source = kopano-webapp-spellchecker-languagepack-french::git+https://stash.kopano.io/scm/kwa/spellchecker-languagepack-fr-fr.git#tag=v2.0.0
+	source = kopano-webapp-spellchecker-languagepack-italian-it::git+https://stash.kopano.io/scm/kwa/spellchecker-languagepack-italian-it.git
+	source = kopano-webapp-spellchecker-languagepack-dutch::git+https://stash.kopano.io/scm/kwa/spellchecker-languagepack-nl.git#tag=v2.0.0
+	source = kopano-webapp-passwd::git+https://github.com/mpietruschka/kopano-webapp-passwd.git#tag=v1.4.1
+	source = kopano-webapp-fetchmail::git+https://github.com/mpietruschka/kopano-webapp-fetchmail.git#tag=1.2
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = kopano-webapp
+	install = kopano-webapp.install
+	replaces = zarafa-webapp
+	backup = etc/webapps/kopano-webapp/debug.php
+	backup = etc/webapps/kopano-webapp/config.php
+	backup = etc/webapps/kopano-webapp/nginx-location.conf
+	backup = etc/php/conf.d/kopano-webapp.ini
+	backup = etc/php/fpm.d/kopano-webapp.conf
+
+pkgname = kopano-webapp-contactfax
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-folderwidgets
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-gmaps
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-pimfolder
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-quickitems
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-titlecounter
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-webappmanual
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-zdeveloper
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-files
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-filepreviewer
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-smime
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-desktopnotifications
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-intranet
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-mdm
+	depends = kopano-webapp
+	depends = z-push
+
+pkgname = kopano-webapp-spellchecker
+	depends = kopano-webapp
+	depends = php-enchant
+
+pkgname = kopano-webapp-spellchecker-languagepack-german-at
+	depends = kopano-webapp-spellchecker
+
+pkgname = kopano-webapp-spellchecker-languagepack-german-ch
+	depends = kopano-webapp-spellchecker
+
+pkgname = kopano-webapp-spellchecker-languagepack-german-de
+	depends = kopano-webapp-spellchecker
+
+pkgname = kopano-webapp-spellchecker-languagepack-english-gb
+	depends = kopano-webapp-spellchecker
+
+pkgname = kopano-webapp-spellchecker-languagepack-english-us
+	depends = kopano-webapp-spellchecker
+
+pkgname = kopano-webapp-spellchecker-languagepack-spanish
+	depends = kopano-webapp-spellchecker
+
+pkgname = kopano-webapp-spellchecker-languagepack-french
+	depends = kopano-webapp-spellchecker
+
+pkgname = kopano-webapp-spellchecker-languagepack-italian-it
+	depends = kopano-webapp-spellchecker
+
+pkgname = kopano-webapp-spellchecker-languagepack-dutch
+	depends = kopano-webapp-spellchecker
+
+pkgname = kopano-webapp-passwd
+	depends = kopano-webapp
+
+pkgname = kopano-webapp-fetchmail
+	depends = kopano-webapp
+
