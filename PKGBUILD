@@ -1,8 +1,7 @@
 # Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 
 pkgname=sabre-zarafa
-groups=('zarafa'
-	'kopano')
+groups=('zarafa')
 pkgver=0.23
 pkgrel=200
 pkgdesc="provide a full CardDav backend for SabreDAV to connect with Zarafa groupware"
