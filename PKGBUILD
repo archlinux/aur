@@ -4,16 +4,16 @@
 # Contributor: Andrei "Garoth" Thorp <garoth "at the nice" gmail "dot" com>
 
 pkgname=debhelper
-pkgver=10.10.9
+pkgver=11.3.2
 pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 arch=('any')
-url="http://anonscm.debian.org/cgit/debhelper/debhelper.git/"
+url="https://salsa.debian.org/debian/debhelper.git/"
 license=('GPL2' 'GPL3')
 depends=('binutils' 'dpkg>=1.16.2' 'file>=3.23' 'html2text' 'man-db>=2.5.1' 'perl>=5.6.0' 'po-debconf')
 makedepends=('po4a>=0.24' 'man-db>=2.5.1' 'file>=3.23' 'git')
 optdepends=('dh-make')
-source=("git://anonscm.debian.org/debhelper/debhelper.git#tag=debian/$pkgver")
+source=("git+https://salsa.debian.org/debian//debhelper.git#tag=debian/$pkgver")
 md5sums=('SKIP')
 
 build() {
