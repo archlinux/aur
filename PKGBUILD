@@ -2,7 +2,7 @@
 
 _pkgname=libzip
 pkgname=lib32-${_pkgname}
-pkgver=1.5.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A C library for reading, creating, and modifying zip archives"
 url="http://www.nih.at/libzip/index.html"
@@ -12,7 +12,7 @@ depends=('lib32-zlib' 'lib32-glibc')
 makedepends=('gcc-multilib')
 options=('!libtool')
 source=("http://www.nih.at/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('47eaa45faa448c72bd6906e5a096846c469a185f293cafd8456abb165841b3f2')
+sha256sums=('a919350f683ca6194df0a856698b477da9e06416665b883fe4fc23c0e46e6398')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
