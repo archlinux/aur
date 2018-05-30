@@ -1,9 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
-
+LANG=C
 pkgname=octave-hg
 pkgrel=1
-pkgver=5.0.0r25156.c578827b2eaf
+pkgver=5.0.0r25416.a741730fca5e
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ build() {
   [[ -d "$srcdir"/${_hgrepo}-local ]] && rm -rf $srcdir/${_hgrepo}-local
   cp -r "$srcdir"/${_hgrepo} "$srcdir"/${_hgrepo}-local
   cd "$srcdir"/${_hgrepo}-local
-
+  
   ./bootstrap --gnulib-srcdir="$srcdir"/gnulib 
   mkdir build
   cd build
@@ -69,6 +69,6 @@ package() {
   make DESTDIR=${pkgdir} install
   # add octave library path to ld.so.conf.d
   _appver=$(awk -F", " '/bugs/ {print $2}' ../configure.ac|tr -d []|tr - _)
-  install -d "${pkgdir}/etc/ld.so.conf.d"
-  echo "/usr/lib/${_hgrepo}/${_appver}" > "${pkgdir}/etc/ld.so.conf.d/${_hgrepo}.conf"
+  install -d "$pkgdir"/etc/ld.so.conf.d
+  echo "/usr/lib/${_hgrepo}/${_appver}" > "$pkgdir"/etc/ld.so.conf.d/${_hgrepo}.conf
 }
