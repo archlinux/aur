@@ -1,8 +1,7 @@
 # Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 
 pkgname=('zarafa-spamhandler')
-groups=('zarafa'
-	'kopano')
+groups=('zarafa')
 pkgver=0.1
 pkgrel=3
 pkgdesc="Spamhandler for Zarafa"
