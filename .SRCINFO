@@ -1,7 +1,7 @@
 pkgbase = python-pdftotext
 	pkgdesc = Simple PDF text extraction
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/pdftotext
 	arch = any
 	license = MIT

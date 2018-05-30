@@ -4,7 +4,7 @@ _name=pdftotext
 _srcurl="https://files.pythonhosted.org"
 pkgname=("python-${_name}")
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple PDF text extraction"
 arch=('any')
 url="https://pypi.org/project/pdftotext"
@@ -25,5 +25,5 @@ package() {
     cp LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="{$pkgdir}/" --optimize=1
+    python setup.py install --root="${pkgdir}"/ --optimize=1
 }
