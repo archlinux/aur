@@ -1,0 +1,10 @@
+--- configure.ac.old	2018-05-13 08:31:04.000000000 -0500
++++ configure.ac	2018-05-30 17:58:54.165666666 -0500
+@@ -1017,7 +1017,6 @@
+ fi
+ 
+ if test x$enable_sidplay = xyes; then
+-	SIDPLAY_LIBS="$SIDPLAY_LIBS -lresid-builder"
+ 	AC_DEFINE(ENABLE_SIDPLAY, 1, [Define for libsidplay2 support])
+ 	if test x$found_sidplayfp = xyes; then
+ 		AC_DEFINE(HAVE_SIDPLAYFP, 1, [Define if libsidplayfp is used instead of libsidplay2])
