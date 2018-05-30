@@ -7,7 +7,6 @@ pkgbase = zarafa-webapp-passwd
 	url = https://github.com/silentsakky/zarafa-webapp-passwd
 	arch = any
 	groups = zarafa
-	groups = kopano
 	groups = zarafa-webapp-plugins
 	license = AGPL3
 	depends = zarafa-webapp

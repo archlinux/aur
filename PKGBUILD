@@ -3,7 +3,6 @@
 _pkgname=('passwd')
 pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa'
-	'kopano'
 	'zarafa-webapp-plugins')
 pkgver=1.2
 pkgrel=71
