@@ -1,0 +1,12 @@
+[Unit]
+Description=Mycroft main service
+After=network.target local-fs.target remote-fs.target
+
+[Service]
+Type=forking
+RemainAfterExit=no
+ExecStart=/usr/share/mycroft-core/start-mycroft.sh all
+ExecStop=/usr/share/mycroft-core/stop-mycroft.sh all
+
+[Install]
+WantedBy=multi-user.target

@@ -1,66 +1,64 @@
-# Maintainer: Bjoern Franke <bjo@nord-west.org>
+# Maintainer: Thorben Guenther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=mycroft-core
-# _pkgcommit=eb0a37c # Used only when the latest tag is not working
-# pkgver=0.7.20.${_pkgcommit}
-pkgver=0.9.12
-pkgrel=3
+pkgver=18.2.7
+pkgrel=1
 pkgdesc="Mycroft Core, the Mycroft Artificial Intelligence platform."
 arch=('i686' 'x86_64')
 url='https://github.com/MycroftAI/mycroft-core'
-license=('GPLv3')
+license=('Apache')
 depends=('git'
-         'python2'
-         'python2-virtualenv'
-         'python2-setuptools'
-         'python2-gobject2'
+         'python'
+         'python-pip'
+         'python-virtualenv'
+         'python-setuptools'
+         'python-gobject2'
          'python-virtualenvwrapper'
          'libtool'
          'libffi'
-         'openssh'
+         'openssl'
          'autoconf'
          'bison'
          'swig'
          'glib2'
-         's3cmd'
          'portaudio'
          'mpg123'
+         'screen'
          'flac'
          'curl'
+         'pkg-config'
+         'icu'
+         'automake'
+         'libjpeg-turbo'
          'mimic'
-         'alsa-utils')
+         'jq'
+         'fann')
 makedepends=('sudo')
 optdepends=()
 conflicts=()
 install=mycroft-core.install
 # changelog=ChangeLog
-source=("https://codeload.github.com/MycroftAI/mycroft-core/tar.gz/release/v${pkgver}"
-#source=("git://github.com/MycroftAI/mycroft-core.git#commit=${_pkgcommit}" # Used only when the latest tag is not working
-        "mycroft.target"
-        "mycroft-service.service"
-        "mycroft-skills.service"
-        "mycroft-voice.service")
-sha512sums=('c7c2580fbeb7fd43d5ffc2055f56063a3bc2c24a94adfb254a12d64b613aff36104209c2843235b61d00fca87e865a25a14aa9e5a0e5f93557abb1121ef86de5'
-            'a5989c9ff2b0f7338b4a6f9342c980413d71da375355abb416dce3a79e298fea7872e39b6a1505437aab860ed66755a6f344821f4f7cb31aed46792b2cef3f96'
-            '74e9451dc38560e6efd4baf8c77cb81bdf9c0b821c1935eb2dac060614c0f14458101151583c3f444da59d9f065a744a7ad6f8daaeceec8f4e37f67d33199b6b'
-            'cb8a5c2245ecd52e66acedebf7ce6ce8db32a84b3495d34cc3749e03aa7d12c958b5f71fa01aa79b36906401e655dd6442e979d60d53d64160d9f956551a92df'
-            '7266494bf416a6f969bcbe9e854753e2a7e498ff9b43d6ca0ba37d94736bca9bf35f5825f24e19138428728189814222f2592fdea4c7e1d0d0ad18e7d3606a0b')
+source=("https://github.com/MycroftAI/mycroft-core/archive/release/v${pkgver}.tar.gz"
+        "mycroft-core.install"
+        "venv_init"
+        "mycroft.service")
+sha512sums=('c673e331a76f6a759b1d57deb0591331899a34236c9350f32ff67fd7737b6d35ad0b3d76891ee154cffdc8132c188b06b0a7fb5e1ea3e2236ac067b0a088dac3'
+            '7d387018b88974db86307edc951e347c4fd45f6929df0f5f2ea47b03aafda0f5b6335d1b742642fb5fcca08cbe20586ca2b543aaa3404f0e75bcb62914be568e'
+            '6773fd4dbf852d4129a97041677311cff0c25e8b9cf1e822a8b63df6fcb16c4af1d1afc128c375488b479f1892e6173d37accf57c28a0f9ceb6e643dd906ecc6' 
+            '67c228fb4a25d1ce529d1689e81703284015ab2721cecdac8264a94e1a41e629e6b6cb82566d41744ebce0d84b7e5c54156cc62c447f7b10b41e012682d0e146')
 
 package() {
   mkdir -p ${pkgdir}/usr/share/
-  # cp -R mycroft-core ${pkgdir}/usr/share/ # Used only when the latest tag is not working
   cp -R mycroft-core-release-v${pkgver} ${pkgdir}/usr/share/mycroft-core
+  cp venv_init ${pkgdir}/usr/share/mycroft-core
 
   # Place a link to mimic where mycroft is expecting it
   mkdir -p ${pkgdir}/usr/share/mycroft-core/mimic/bin
   ln -s /usr/bin/mimic ${pkgdir}/usr/share/mycroft-core/mimic/bin/mimic
 
   # Set permissions
-  chmod g+w ${pkgdir}/usr/share/mycroft-core
+  chmod -R g+w ${pkgdir}/usr/share/mycroft-core
 
-  # Symtemd units
-  install -D -m644 "${srcdir}/mycroft.target" "${pkgdir}/usr/lib/systemd/user/mycroft.target"
-  install -D -m644 "${srcdir}/mycroft-service.service" "${pkgdir}/usr/lib/systemd/user/mycroft-service.service"
-  install -D -m644 "${srcdir}/mycroft-skills.service" "${pkgdir}/usr/lib/systemd/user/mycroft-skills.service"
-  install -D -m644 "${srcdir}/mycroft-voice.service" "${pkgdir}/usr/lib/systemd/user/mycroft-voice.service"
+  # Symtemd unit
+  install -D -m644 "${srcdir}/mycroft.service" "${pkgdir}/usr/lib/systemd/user/mycroft.service"
 }

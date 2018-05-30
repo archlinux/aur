@@ -5,16 +5,8 @@ pre_install() {
 post_install() {
   chown -R mycroft-core:mycroft-core /usr/share/mycroft-core
 
-  touch /usr/share/mycroft-core/.bashrc
-  echo "# Virtualenv initialization" >> /usr/share/mycroft-core/.bashrc
-  echo "export WORKON_HOME=\$HOME/.virtualenvs" >> /usr/share/mycroft-core/.bashrc
-  echo "export PROJECT_HOME=\$HOME/Devel" >> /usr/share/mycroft-core/.bashrc
-  echo "source /usr/bin/virtualenvwrapper.sh" >> /usr/share/mycroft-core/.bashrc
+  sudo -Hu mycroft-core bash -c '/usr/share/mycroft-core/venv_init'
 
-  sudo -Hu mycroft-core bash -c 'source ~/.bashrc' &> /dev/null # Initialize virtualenv
-
-  sudo -Hu mycroft-core bash -c 'source ~/.bashrc && mkvirtualenv mycroft --system-site-packages -p $(which python2)'
-  sudo -Hu mycroft-core bash -c 'source ~/.bashrc && workon mycroft && pip install -r /usr/share/mycroft-core/requirements.txt'
 
   echo "*** ATTENTION ***"
   echo ""
@@ -23,30 +15,21 @@ post_install() {
   echo "* You can configure your Mycroft instance preferences systemwide at:"
   echo "    /usr/share/mycroft-core/mycroft/configuration/mycroft.conf"
   echo ""
-  echo "* The systemd units are"
-  echo "    - mycroft.target"
-  echo "    - mycroft-service.service"
-  echo "    - mycroft-skills.service"
-  echo "    - mycroft-voice.service"
+  echo "* The systemd unit is"                                  
+  echo "    - mycroft.service"
   echo ""
-  echo "* Those are USER units which you can start issuing:"
-  echo "    systemctl --user start mycroft.target"
+  echo "* This is a USER unit which you can start issuing:"
+  echo "    systemctl --user start mycroft.service"
   echo "    More information at: https://wiki.archlinux.org/index.php/Systemd/User"
 
 }
 
 post_upgrade() {
   chown -R mycroft-core:mycroft-core /usr/share/mycroft-core
-  sudo -Hu mycroft-core bash -c "source ~/.bashrc && workon mycroft && pip install -r /usr/share/mycroft-core/requirements.txt"
-
-  echo "*** ATTENTION ***"
-  echo ""
-  echo "* Upgrading to version v0.8.0 without repairing requires to each of Mycroft's user to run:"
-  echo "    cp ~/.mycroft/identity/identity.json ~/.mycroft/identity/identity2.json"
 }
 
 post_remove() {
-  groupdel mycroftcore
+  groupdel mycroft-core
   userdel mycroft-core
   rm -rf /usr/share/mycroft-core
 }

@@ -1,4 +1,3 @@
 *.pkg.tar.xz
 mycroft-core/
-v*
 src/

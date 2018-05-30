@@ -1,4 +1,0 @@
-[Unit]
-Description=Mycroft Core
-After=network.target local-fs.target remote-fs.target
-Requires=mycroft-service.service mycroft-skills.service mycroft-voice.service

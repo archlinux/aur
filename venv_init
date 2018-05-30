@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Virtualenv initialization
+TOP=/usr/share/mycroft-core
+VIRTUALENV_ROOT=${VIRTUALENV_ROOT:-"${TOP}/.venv"}
+install_venv() {
+	python -m venv "${VIRTUALENV_ROOT}/" --without-pip
+	curl https://bootstrap.pypa.io/get-pip.py | "${VIRTUALENV_ROOT}/bin/python"
+}
+
+if [ ! -x "${VIRTUALENV_ROOT}/bin/activate" ]; then
+	install_venv
+fi
+
+source "${VIRTUALENV_ROOT}/bin/activate"
+easy_install pip==9.0.1
+PYTHON=$( python -c "import sys;print('python{}.{}'.format(sys.version_info[0], sys.version_info[1]))" )
+VENV_PATH_FILE="${VIRTUALENV_ROOT}/lib/$PYTHON/site-packages/_virtualenv_path_extensions.pth"
+if [ ! -f "$VENV_PATH_FILE" ] ; then
+    echo "import sys; sys.__plen = len(sys.path)" > "$VENV_PATH_FILE" || return 1
+    echo "import sys; new=sys.path[sys.__plen:]; del sys.path[sys.__plen:]; p=getattr(sys,'__egginsert',0); sys.path[p:p]=new; sys.__egginsert = p+len(new)" >> "$VENV_PATH_FILE" || return 1
+fi
+if ! grep -q "$TOP" $VENV_PATH_FILE; then
+   echo "Adding mycroft-core to virtualenv path"
+   sed -i.tmp '1 a\
+'"$TOP"'
+' "${VENV_PATH_FILE}"
+fi
+
+# install required python modules
+if ! pip install -r /usr/share/mycroft-core/requirements.txt; then
+    echo "Warning: Failed to install all requirements. Continue? y/N"
+    read -n1 continue
+    if [[ "$continue" != "y" ]] ; then
+        exit 1
+    fi
+fi
+
+if ! pip install -r /usr/share/mycroft-core/test-requirements.txt; then
+  echo "Warning test requirements wasn't installed, Note: normal operation should still work fine..."
+fi
