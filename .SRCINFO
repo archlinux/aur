@@ -1,0 +1,26 @@
+pkgbase = kopano-service-overview
+	pkgdesc = Kopano service overview
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.pietma.com/
+	arch = any
+	groups = kopano
+	license = AGPL3
+	depends = php
+	depends = php-fpm
+	replaces = zarafa-service-overview
+	source = quicksand.ttf
+	source = index.php
+	source = kopano-service-overview.conf
+	source = nginx-location.conf
+	source = nginx-ssl.example.conf
+	source = mozilla-account-configuration.php
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = kopano-service-overview
+
