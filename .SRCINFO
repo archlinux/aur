@@ -2,7 +2,7 @@ pkgbase = kaption
 	pkgdesc = A KDE utility similar to Jing or Skitch to take and edit screenshots
 	pkgver = 0.1.1
 	pkgrel = 3
-	url = https://store.kde.org/content/show.php/Kaption?content=139302
+	url = https://www.linux-apps.com/p/1126919/
 	arch = i686
 	arch = x86_64
 	license = GPL
