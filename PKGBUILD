@@ -3,14 +3,14 @@
 
 pkgname=xf86-video-mach64
 pkgver=6.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="X.org mach64 video driver"
 arch=(i686 x86_64)
 url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=('glibc')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0')
-conflicts=('xorg-server<1.20' 'X-ABI-VIDEODRV_VERSION<24' 'X-ABI-VIDEODRV_VERSION>=25')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION>=23' 'X-ABI-VIDEODRV_VERSION<25')
+conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=25')
 optdepends=('mach64-dri: DRI1 support from community repo'
             'mach64drm: Mach64 DRM module')
 groups=('xorg-drivers')
