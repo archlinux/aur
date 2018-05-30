@@ -1,22 +1,22 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 _cranname=utf8
-_cranver=1.1.3
+_cranver=1.1.4
 pkgname="r-cran-${_cranname}"
 pkgver="${_cranver}"
 pkgrel=1
 pkgdesc="R functions for processing and printing UTF-8 encoded unicode"
-url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
+url=http://cran.r-project.org/web/packages/"${_cranname}"/index.html
 arch=('i686' 'x86_64')
-license=('Apache-2.0')
+license=('Apache')
 depends=('r')
 conflicts=('r-utf8')
 provides=('r-utf8')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('3a4d84328eb3314e8ebb84d3553f7015')
+source=(http://cran.r-project.org/src/contrib/"${_cranname}"_"${_cranver}".tar.gz)
+sha256sums=('f6da9cadfc683057d45f54b43312a359cf96ec2731c0dda18a8eae31d1e31e54')
 
 package() {
-    mkdir -p "${pkgdir}/usr/lib/R/library"
-    cd "${srcdir}"
-    R CMD INSTALL "${_cranname}" -l "${pkgdir}/usr/lib/R/library"
+  mkdir -p "${pkgdir}/usr/lib/R/library"
+  cd "${srcdir}"
+  R CMD INSTALL "${_cranname}" -l "${pkgdir}/usr/lib/R/library"
 }
