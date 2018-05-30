@@ -3,7 +3,6 @@
 _pkgname=('mdm')
 pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa'
-	'kopano'
 	'zarafa-webapp-plugins')
 pkgver=1.1.0.49
 pkgrel=97
