@@ -1,6 +1,9 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#define GRAPH_COLS_MIN 24
+#define GRAPH_ROWS_MIN 10
+
 #define ZOOM_5y 0
 #define ZOOM_4y 1
 #define ZOOM_3y 2
@@ -18,21 +21,21 @@
 #define RED COLOR_PAIR(1)
 #define BLACK COLOR_PAIR(2)
 
-#define PADDING 2
+#define PADDING 1
 
-#define GRAPH_Y PADDING
+#define GRAPH_Y PADDING * 2
 #define GRAPH_X PADDING
-#define GRAPH_HEIGHT (rows / 2 - GRAPH_Y) - PADDING / 2
-#define GRAPH_WIDTH (cols / 2 - GRAPH_X) - PADDING / 2
+#define GRAPH_HEIGHT (rows / 2 - GRAPH_Y) - PADDING
+#define GRAPH_WIDTH (cols / 2 - GRAPH_X) - PADDING
 
 #define COMPANY_Y GRAPH_Y
 #define COMPANY_X GRAPH_WIDTH + GRAPH_X + PADDING
-#define COMPANY_HEIGHT GRAPH_HEIGHT - PADDING / 2
+#define COMPANY_HEIGHT GRAPH_HEIGHT + PADDING
 #define COMPANY_WIDTH GRAPH_WIDTH
 
 #define NEWS_Y GRAPH_Y + GRAPH_HEIGHT + PADDING
 #define NEWS_X PADDING
-#define NEWS_HEIGHT GRAPH_HEIGHT
+#define NEWS_HEIGHT GRAPH_HEIGHT + PADDING * 3
 #define NEWS_WIDTH GRAPH_WIDTH
 
 #include <stdlib.h>

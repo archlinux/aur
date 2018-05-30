@@ -26,6 +26,10 @@ void interface_print(const char* symbol) {
     init_pair(2, COLOR_WHITE, COLOR_BLACK); // Init black background, white foreground
     bkgd(BLACK); // set background/foreground
     curs_set(FALSE);
+    WINDOW* company_window = newwin(COMPANY_HEIGHT, COMPANY_WIDTH, COMPANY_Y, COMPANY_X);
+    WINDOW* news_window = newwin(NEWS_HEIGHT, NEWS_WIDTH, NEWS_Y, NEWS_X);
+    wbkgd(company_window, BLACK);
+    wbkgd(news_window, BLACK);
 
     if (symbol_info->intraday_time != EMPTY) {
         char time_str[32];
@@ -42,10 +46,7 @@ void interface_print(const char* symbol) {
     if (symbol_info->change_30d != EMPTY)
         printw("%6.2lf%%", symbol_info->change_30d);
 
-    WINDOW* company_window = newwin(COMPANY_HEIGHT, COMPANY_WIDTH, COMPANY_Y, COMPANY_X);
     info_printw(company_window, symbol_info);
-
-    WINDOW* news_window = newwin(NEWS_HEIGHT, NEWS_WIDTH, NEWS_Y, NEWS_X);
     news_printw(news_window, symbol_info);
 
     refresh();
@@ -53,6 +54,15 @@ void interface_print(const char* symbol) {
     wrefresh(news_window);
     if (symbol_info->points != NULL) {
         WINDOW* graph_win = newwin(GRAPH_HEIGHT, GRAPH_WIDTH, GRAPH_Y, GRAPH_X);
+        int graph_rows, graph_cols;
+        getmaxyx(graph_win, graph_rows, graph_cols);
+        graph_cols -= 11; // 10 offset to give space for graph labels + 1 for right side
+        graph_rows -= 3; // Make space for zoom indicator
+        graph_rows -= graph_rows % ROWS_SPACING; // Round down to multiple of 5
+        if (graph_cols < GRAPH_COLS_MIN || graph_rows < GRAPH_ROWS_MIN) { // Exits if the terminal is too small
+            endwin();
+            RET_MSG("Terminal not large enough.")
+        }
         graph_printw(graph_win, symbol_info, NULL);
     }
     endwin();
@@ -278,7 +288,7 @@ void graph_draw(WINDOW* window, Info* symbol_info, Info* symbol_info2, struct tm
     cols -= 11; // 10 offset to give space for graph labels + 1 for right side
     rows -= 3; // Make space for zoom indicator
     rows -= rows % ROWS_SPACING; // Round down to multiple of 5
-    if (cols < 40 || rows < 15) // Exits if the terminal is too small
+    if (cols < GRAPH_COLS_MIN || rows < GRAPH_ROWS_MIN) // Exits if the terminal is too small
         RET_MSG("Terminal not large enough.")
 
     time_t now = time(NULL);
