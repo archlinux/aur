@@ -1,0 +1,24 @@
+pkgbase = spek-alternative
+	pkgdesc = An acoustic spectrum analyser.
+	pkgver = 0.8.2.3
+	pkgrel = 1
+	url = https://github.com/withmorten/spek-alternative
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	depends = desktop-file-utils
+	depends = ffmpeg
+	depends = wxgtk
+	provides = spek
+	conflicts = spek
+	conflicts = spec-git
+	source = https://github.com/withmorten/spek-alternative/archive/0.8.2.3.tar.gz
+	md5sums = e7b7ce256e1712b6d22ddbf5892013a5
+
+pkgname = spek-alternative
+
