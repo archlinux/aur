@@ -1,0 +1,17 @@
+pkgbase = libzim
+	pkgdesc = Reference implementation of the ZIM specification by the openZIM project
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/openzim/libzim
+	arch = any
+	license = GPL2
+	makedepends = meson
+	depends = zlib
+	depends = xz
+	depends = icu
+	replaces = zimlib-git
+	source = https://github.com/openzim/libzim/archive/3.3.0.tar.gz
+	sha256sums = 043b21f39e856694492248f0bc1db037d2860360a2fe68bb2793140b216934d7
+
+pkgname = libzim
+
