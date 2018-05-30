@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# care about existing files
+function installdir() {
+    local owner="$1"
+    local moddir="$2"
+    local modfile="$3"
+    local directory="$4"
+
+    mkdir -p "$directory"
+    find $directory -exec chown "$owner" {} \;
+    find $directory -type f -exec chmod "$modfile" {} \;
+    find $directory -type d -exec chmod "$moddir" {} \;
+}
+
+function installbasics() {
+    # var
+    # template cache needs to be writeable
+    installdir http:http 0700 0600 /var/lib/kopano-postfixadmin
+
+    # etc
+    _etc=/etc/webapps/kopano-postfixadmin
+    cp -rn /usr/share/doc/kopano-postfixadmin/example-config/* ${_etc}
+
+    installdir root:root 0755 0655 ${_etc}
+    installdir postfix:postfix 0700 0600 ${_etc}/postfix
+
+    chown http:http ${_etc}/config.local.php
+    chmod 0600 ${_etc}/config.local.php
+
+    chown fetchmail:nobody ${_etc}/fetchmail.conf
+    chmod 0600 ${_etc}/fetchmail.conf
+}
+
+post_install() {
+    systemd-sysusers
+    systemd-tmpfiles --create
+    
+    installbasics
+
+    echo
+    echo "Please install Kopano-Postfixadmin:"
+    echo
+    echo "   $ /usr/share/doc/kopano-postfixadmin/pietma/install.sh"
+    echo 
+    echo "Read More"
+    echo
+    echo "   https://pietma.com/install-run-and-access-kopano-postfix-admin/"
+    echo
+}
+
+pre_upgrade() {
+    if [[ -e "/etc/mail/postfixadmin/fetchmail.conf" ]];
+    then
+	echo
+	echo "mv /etc/mail/postfixadmin/fetchmail.conf /etc/webapps/kopano-postfixadmin/fetchmail.conf"
+	mv /etc/mail/postfixadmin/fetchmail.conf /etc/webapps/kopano-postfixadmin/fetchmail.conf
+	
+	echo "chown fetchmail:nobody /etc/webapps/kopano-postfixadmin/fetchmail.conf"
+	chown fetchmail:nobody /etc/webapps/kopano-postfixadmin/fetchmail.conf
+	
+	echo "chmod 0600 /etc/webapps/kopano-postfixadmin/fetchmail.conf"
+	chmod 0600 /etc/webapps/kopano-postfixadmin/fetchmail.conf
+	echo
+    fi
+}
+
+post_upgrade() {
+    echo
+    echo "Please open the setup page. The database is updated during opening. No login needed!"
+    echo
+    echo "   https://YOUR_HOSTNAME/kopano-postfixadmin/setup.php"
+    echo
+    
+    installbasics
+}

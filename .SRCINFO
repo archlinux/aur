@@ -1,0 +1,33 @@
+pkgbase = kopano-postfixadmin
+	pkgdesc = A web based interface used to manage mailboxes, virtual domains and aliases created for Kopano-Server with DB-Plugin and Postfix
+	pkgver = 0.45.3
+	pkgrel = 4
+	url = https://git.pietma.com/pietma/com-pietma-kopano-postfixadmin
+	install = install
+	arch = any
+	groups = zarafa
+	groups = kopano
+	license = GPL
+	makedepends = git
+	depends = kopano-core
+	depends = bash
+	depends = php
+	depends = php-imap
+	depends = mysql
+	depends = nginx
+	depends = fetchmail
+	depends = perl-dbi
+	depends = perl-dbd-mysql
+	depends = perl-lockfile-simple
+	depends = lynx
+	replaces = zarafa-postfixadmin-worker
+	replaces = zarafa-postfixadmin
+	backup = etc/webapps/kopano-postfixadmin/config.local.php
+	backup = etc/mail/postfixadmin/fetchmail.conf
+	source = postfixadmin-2.93.tar.gz::https://downloads.sourceforge.net/project/postfixadmin/postfixadmin/postfixadmin-2.93/postfixadmin-2.93.tar.gz
+	source = kopano-postfixadmin-0.45.3::git+https://git.pietma.com/pietma/com-pietma-zarafa-postfixadmin.git#branch=kopano
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = kopano-postfixadmin
+
