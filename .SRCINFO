@@ -1,6 +1,6 @@
 pkgbase = python-telegram-bot
 	pkgdesc = A Python wrapper around the Telegram Bot API
-	pkgver = 10.0.1
+	pkgver = 10.1.0
 	pkgrel = 1
 	url = https://github.com/python-telegram-bot/python-telegram-bot
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-telegram-bot
 	depends = python-urllib3
 	optdepends = python-ujson: Ultra fast JSON parsing
 	optdepends = python-pysocks: SOCKS or HTTP proxy
-	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v10.0.1/python-telegram-bot-10.0.1.tar.gz
-	sha256sums = 580390d75a63706647962556bab69c7313bee1438411288c37f545e421498e6c
+	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v10.1.0/python-telegram-bot-10.1.0.tar.gz
+	sha256sums = ca2f8a44ddef7271477e16f4986647fa90ef4df5b55a7953e53b9c9d2672f639
 
 pkgname = python-telegram-bot
 
