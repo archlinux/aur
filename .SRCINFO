@@ -1,7 +1,7 @@
 pkgbase = influxdb
 	pkgdesc = Scalable datastore for metrics, events, and real-time analytics
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/InfluxData/influxdb
 	install = influxdb.install
 	arch = i686
