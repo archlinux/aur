@@ -1,10 +1,10 @@
 pkgbase = pacman-cache-hooks
 	pkgdesc = Cleanup hooks for pacman's package cache
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
-	depends = pacman
+	depends = pacman-contrib
 	source = pacman-upgrade.hook
 	source = pacman-remove.hook
 	source = LICENSE

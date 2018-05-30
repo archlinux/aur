@@ -1,11 +1,11 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=pacman-cache-hooks
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cleanup hooks for pacman's package cache"
 arch=('any')
 license=('MIT')
-depends=('pacman')
+depends=('pacman-contrib')
 source=("pacman-upgrade.hook" "pacman-remove.hook" "LICENSE")
 sha256sums=('36452c7ea20df3c7960772b44a51220a1add40ba952905892b450168e3c66f8b'
             'eada5c38eb145a4ef9a8c8f43514d2bd3cb6d35cae4a15faa1ca2cc7aa9fba37'
