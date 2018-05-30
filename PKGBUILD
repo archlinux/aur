@@ -5,7 +5,7 @@ pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa'
         'zarafa-webapp-plugins')
 pkgver=1.0.22.70
-pkgrel=1
+pkgrel=95
 pkgdesc='Delayeddelivery plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-delayeddelivery-1.0.22-70.1.noarch.rpm"
