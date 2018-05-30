@@ -5,7 +5,7 @@ pkgver=0.0.1
 pkgrel=1
 
 pkgdesc='Tiny cache DNS server'
-arch=('x86_64' 'i686')
+arch=('any')
 url=https://github.com/CupIvan/$pkgname
 
 source=(https://github.com/CupIvan/$pkgname/archive/v$pkgver.tar.gz)

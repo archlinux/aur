@@ -3,8 +3,7 @@ pkgbase = tinydns
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/CupIvan/tinydns
-	arch = x86_64
-	arch = i686
+	arch = any
 	source = https://github.com/CupIvan/tinydns/archive/v0.0.1.tar.gz
 	md5sums = 239864e269ee5d8e06fec15996a62560
 
