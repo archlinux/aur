@@ -1,6 +1,5 @@
-diff -ru spring-roo-1.3.2.RELEASE-orig/bin/roo.sh spring-roo-1.3.2.RELEASE/bin/roo.sh
---- spring-roo-1.3.2.RELEASE-orig/bin/roo.sh	2015-09-01 16:48:40.000000000 +0800
-+++ spring-roo-1.3.2.RELEASE/bin/roo.sh	2016-02-15 21:54:16.937911956 +0800
+--- spring-roo-2.0.0.RELEASE/bin/roo.sh.origin	2018-05-30 10:35:42.113185780 +0800
++++ spring-roo-2.0.0.RELEASE/bin/roo.sh	2018-05-30 10:36:48.287884240 +0800
 @@ -32,7 +32,7 @@
  
  # Store file locations in variables to facilitate Cygwin conversion if needed
