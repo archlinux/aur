@@ -2,12 +2,24 @@
 
 int zoom_months[] = {60, 48, 36, 24, 12, 9, 6, 3, 1}, zoom_change_x_months[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
 
-void symbol_print_info(const char* symbol) {
+void interface_print(const char* symbol) {
     Info* symbol_info = api_get_info(symbol);
     if (symbol_info == NULL)
-        RET_MSG("Invalid symbol...")
+        RET_MSG("Invalid symbol.")
+
+    if (symbol_info->points == NULL) { // If a crypto print info to stdout and return
+        info_print(symbol_info);
+        api_info_destroy(&symbol_info);
+        return;
+    }
 
     initscr();
+    if (!has_colors()) {
+        endwin();
+        api_info_destroy(&symbol_info);
+        RET_MSG("Your terminal does not support color.")
+    }
+
     int rows, cols;
     getmaxyx(stdscr, rows, cols);
     start_color();
@@ -30,87 +42,115 @@ void symbol_print_info(const char* symbol) {
     if (symbol_info->change_30d != EMPTY)
         printw("%6.2lf%%", symbol_info->change_30d);
 
-    WINDOW* company_win = newwin(COMPANY_HEIGHT, COMPANY_WIDTH, COMPANY_Y, COMPANY_X);
+    WINDOW* company_window = newwin(COMPANY_HEIGHT, COMPANY_WIDTH, COMPANY_Y, COMPANY_X);
+    info_printw(company_window, symbol_info);
 
-    if (symbol_info->description[0] != '\0')
-        mvwprintw(company_win, 0, 0, "%s\n\n", symbol_info->description);
-    else mvwprintw(company_win, 0, 0, "Description unavailable.\n\n");
-
-    if (symbol_info->ceo[0] != '\0')
-        wprintw(company_win, "CEO: %s", symbol_info->ceo);
-    else wprintw(company_win, "CEO unavailable.");
-
-    if (symbol_info->website[0] != '\0')
-        mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Website: %s\n", symbol_info->website);
-    else mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Website unavailable.\n");
-
-    if (symbol_info->sector[0] != '\0')
-        wprintw(company_win, "Sector: %s", symbol_info->sector);
-    else wprintw(company_win, "Sector unavailable.");
-
-    if (symbol_info->industry[0] != '\0')
-        mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Industry: %s\n", symbol_info->industry);
-    else mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Industry unavailable.\n");
-
-    if (symbol_info->revenue != EMPTY)
-        wprintw(company_win, "Revenue: %ld", symbol_info->revenue);
-    else wprintw(company_win, "Revenue unavailable.");
-
-    if (symbol_info->gross_profit != EMPTY)
-        mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Gross Profit: %ld\n", symbol_info->gross_profit);
-    else mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Gross Profit unavailable.\n");
-
-    if (symbol_info->cash != EMPTY)
-        wprintw(company_win, "Cash: %ld", symbol_info->cash);
-    else wprintw(company_win, "Cash unavailable.");
-
-    if (symbol_info->debt != EMPTY)
-        mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Debt: %ld\n", symbol_info->debt);
-    else mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Debt unavailable.\n");
-
-    if (symbol_info->marketcap != EMPTY)
-        wprintw(company_win, "Market Cap: %ld", symbol_info->marketcap);
-    else wprintw(company_win, "Market Cap unavailable.");
-
-    if (symbol_info->volume_1d != EMPTY)
-        mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Volume: %ld\n", symbol_info->volume_1d);
-    else mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Volume unavailable.\n");
-
-    if (symbol_info->pe_ratio != EMPTY)
-        wprintw(company_win, "P/E Ratio: %lf", symbol_info->pe_ratio);
-    else wprintw(company_win, "P/E Ratio unavailable.");
-
-    if (symbol_info->div_yield != EMPTY)
-        mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Dividend Yield: %lf\n\n",
-                  symbol_info->div_yield);
-    else mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Dividend Yield unavailable.\n\n");
-
-    for (int i = 0; i < QUARTERS && symbol_info->fiscal_period[i][0] != '\0'; i++)
-        mvwprintw(company_win, getcury(company_win), 4 + i * getmaxx(company_win) / QUARTERS, "%s",
-                  symbol_info->fiscal_period[i]);
-    waddch(company_win, '\n');
-
-    if (symbol_info->eps[0] != EMPTY)
-        mvwprintw(company_win, getcury(company_win), 0, "EPS ");
-    for (int i = 0; i < QUARTERS && symbol_info->eps[i] != EMPTY; i++)
-        mvwprintw(company_win, getcury(company_win), 4 + i * getmaxx(company_win) / QUARTERS, "%.2lf",
-                  symbol_info->eps[i]);
-    waddch(company_win, '\n');
-
-    if (symbol_info->eps_year_ago[0] != EMPTY)
-        mvwprintw(company_win, getcury(company_win), 0, "1Y  ");
-    for (int i = 0; i < QUARTERS && symbol_info->eps_year_ago[i] != EMPTY; i++)
-        mvwprintw(company_win, getcury(company_win), 4 + i * getmaxx(company_win) / QUARTERS, "%.2lf",
-                  symbol_info->eps_year_ago[i]);
+    WINDOW* news_window = newwin(NEWS_HEIGHT, NEWS_WIDTH, NEWS_Y, NEWS_X);
+    news_printw(news_window, symbol_info);
 
     refresh();
-    wrefresh(company_win);
+    wrefresh(company_window);
+    wrefresh(news_window);
     if (symbol_info->points != NULL) {
         WINDOW* graph_win = newwin(GRAPH_HEIGHT, GRAPH_WIDTH, GRAPH_Y, GRAPH_X);
         graph_printw(graph_win, symbol_info, NULL);
     }
     endwin();
     api_info_destroy(&symbol_info);
+}
+
+void info_print(Info* symbol_info) {
+    if (strcmp(symbol_info->name, "") != 0)
+        printf("Name: %s\n", symbol_info->name);
+    if (strcmp(symbol_info->symbol, "") != 0)
+        printf("Symbol: %s\n", symbol_info->symbol);
+    if (symbol_info->price != EMPTY)
+        printf("Price: $%.2lf\n", symbol_info->price);
+    if (symbol_info->change_1d != EMPTY)
+        printf("Percent change 24h: %.2lf%%\n", symbol_info->change_1d);
+    if (symbol_info->change_7d != EMPTY)
+        printf("Percent change 7d: %.2lf%%\n", symbol_info->change_7d);
+    if (symbol_info->change_30d != EMPTY)
+        printf("Percent change 30d: %.2lf%%\n", symbol_info->change_30d);
+    if (symbol_info->div_yield != EMPTY)
+        printf("Dividend yield: %.2lf%%\n", symbol_info->div_yield);
+    if (symbol_info->marketcap != EMPTY)
+        printf("Market Cap: $%ld\n", symbol_info->marketcap);
+    if (symbol_info->volume_1d != EMPTY)
+        printf("Volume 24h: $%ld\n", symbol_info->volume_1d);
+}
+
+void info_printw(WINDOW* window, Info* symbol_info) {
+    if (symbol_info->description[0] != '\0')
+        mvwprintw(window, 0, 0, "%s\n\n", symbol_info->description);
+    else mvwprintw(window, 0, 0, "Description unavailable.\n\n");
+
+    if (symbol_info->ceo[0] != '\0')
+        wprintw(window, "CEO: %s", symbol_info->ceo);
+    else wprintw(window, "CEO unavailable.");
+
+    if (symbol_info->website[0] != '\0')
+        mvwprintw(window, getcury(window), getmaxx(window) / 2, "Website: %s\n", symbol_info->website);
+    else mvwprintw(window, getcury(window), getmaxx(window) / 2, "Website unavailable.\n");
+
+    if (symbol_info->sector[0] != '\0')
+        wprintw(window, "Sector: %s", symbol_info->sector);
+    else wprintw(window, "Sector unavailable.");
+
+    if (symbol_info->industry[0] != '\0')
+        mvwprintw(window, getcury(window), getmaxx(window) / 2, "Industry: %s\n", symbol_info->industry);
+    else mvwprintw(window, getcury(window), getmaxx(window) / 2, "Industry unavailable.\n");
+
+    if (symbol_info->revenue != EMPTY)
+        wprintw(window, "Revenue: %ld", symbol_info->revenue);
+    else wprintw(window, "Revenue unavailable.");
+
+    if (symbol_info->gross_profit != EMPTY)
+        mvwprintw(window, getcury(window), getmaxx(window) / 2, "Gross Profit: %ld\n", symbol_info->gross_profit);
+    else mvwprintw(window, getcury(window), getmaxx(window) / 2, "Gross Profit unavailable.\n");
+
+    if (symbol_info->cash != EMPTY)
+        wprintw(window, "Cash: %ld", symbol_info->cash);
+    else wprintw(window, "Cash unavailable.");
+
+    if (symbol_info->debt != EMPTY)
+        mvwprintw(window, getcury(window), getmaxx(window) / 2, "Debt: %ld\n", symbol_info->debt);
+    else mvwprintw(window, getcury(window), getmaxx(window) / 2, "Debt unavailable.\n");
+
+    if (symbol_info->marketcap != EMPTY)
+        wprintw(window, "Market Cap: %ld", symbol_info->marketcap);
+    else wprintw(window, "Market Cap unavailable.");
+
+    if (symbol_info->volume_1d != EMPTY)
+        mvwprintw(window, getcury(window), getmaxx(window) / 2, "Volume: %ld\n", symbol_info->volume_1d);
+    else mvwprintw(window, getcury(window), getmaxx(window) / 2, "Volume unavailable.\n");
+
+    if (symbol_info->pe_ratio != EMPTY)
+        wprintw(window, "P/E Ratio: %lf", symbol_info->pe_ratio);
+    else wprintw(window, "P/E Ratio unavailable.");
+
+    if (symbol_info->div_yield != EMPTY)
+        mvwprintw(window, getcury(window), getmaxx(window) / 2, "Dividend Yield: %lf\n\n",
+                  symbol_info->div_yield);
+    else mvwprintw(window, getcury(window), getmaxx(window) / 2, "Dividend Yield unavailable.\n\n");
+
+    for (int i = 0; i < QUARTERS && symbol_info->fiscal_period[i][0] != '\0'; i++)
+        mvwprintw(window, getcury(window), 4 + i * getmaxx(window) / QUARTERS, "%s",
+                  symbol_info->fiscal_period[i]);
+    waddch(window, '\n');
+
+    if (symbol_info->eps[0] != EMPTY)
+        mvwprintw(window, getcury(window), 0, "EPS ");
+    for (int i = 0; i < QUARTERS && symbol_info->eps[i] != EMPTY; i++)
+        mvwprintw(window, getcury(window), 4 + i * getmaxx(window) / QUARTERS, "%.2lf",
+                  symbol_info->eps[i]);
+    waddch(window, '\n');
+
+    if (symbol_info->eps_year_ago[0] != EMPTY)
+        mvwprintw(window, getcury(window), 0, "1Y  ");
+    for (int i = 0; i < QUARTERS && symbol_info->eps_year_ago[i] != EMPTY; i++)
+        mvwprintw(window, getcury(window), 4 + i * getmaxx(window) / QUARTERS, "%.2lf",
+                  symbol_info->eps_year_ago[i]);
 }
 
 void news_print(const char* symbol, int num_articles) {
@@ -130,6 +170,15 @@ void news_print(const char* symbol, int num_articles) {
                symbol_info->articles[i]->headline, symbol_info->articles[i]->source, symbol_info->articles[i]->date,
                symbol_info->articles[i]->summary, symbol_info->articles[i]->url, symbol_info->articles[i]->related);
     api_info_destroy(&symbol_info);
+}
+
+void news_printw(WINDOW* window, Info* symbol_info) {
+    if (symbol_info->num_articles == EMPTY)
+        wprintw(window, "News unavailable.");
+    for (int i = 0; i < symbol_info->num_articles;  i++)
+        wprintw(window, "%s | %s | %s\n%s\n%s | Related: %s\n\n",
+               symbol_info->articles[i]->headline, symbol_info->articles[i]->source, symbol_info->articles[i]->date,
+               symbol_info->articles[i]->summary, symbol_info->articles[i]->url, symbol_info->articles[i]->related);
 }
 
 void graph_print(const char* symbol, const char* symbol2) {

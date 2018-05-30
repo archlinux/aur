@@ -18,17 +18,22 @@
 #define RED COLOR_PAIR(1)
 #define BLACK COLOR_PAIR(2)
 
-#define PADDING 3
+#define PADDING 2
 
 #define GRAPH_Y PADDING
 #define GRAPH_X PADDING
-#define GRAPH_HEIGHT (rows / 2 - GRAPH_Y)
-#define GRAPH_WIDTH (cols / 2 - GRAPH_X)
+#define GRAPH_HEIGHT (rows / 2 - GRAPH_Y) - PADDING / 2
+#define GRAPH_WIDTH (cols / 2 - GRAPH_X) - PADDING / 2
 
 #define COMPANY_Y GRAPH_Y
-#define COMPANY_X GRAPH_WIDTH + GRAPH_X
-#define COMPANY_HEIGHT GRAPH_HEIGHT
+#define COMPANY_X GRAPH_WIDTH + GRAPH_X + PADDING
+#define COMPANY_HEIGHT GRAPH_HEIGHT - PADDING / 2
 #define COMPANY_WIDTH GRAPH_WIDTH
+
+#define NEWS_Y GRAPH_Y + GRAPH_HEIGHT + PADDING
+#define NEWS_X PADDING
+#define NEWS_HEIGHT GRAPH_HEIGHT
+#define NEWS_WIDTH GRAPH_WIDTH
 
 #include <stdlib.h>
 #include <ncurses.h>
@@ -36,11 +41,15 @@
 
 extern int zoom_months[9], zoom_change_x_months[9];
 
+void interface_print(const char* symbol);
+
 /**
  * Prints information about the given symbol and the graph of it in an NCurses window.
  * @param symbol
  */
-void symbol_print_info(const char* symbol);
+void info_print(Info* symbol_info);
+
+void info_printw(WINDOW* window, Info* symbol_info);
 
 /**
  * Prints num_articles articles relating to the given symbol. Currently on works for stocks/etfs
@@ -48,6 +57,8 @@ void symbol_print_info(const char* symbol);
  * @param num_articles number of articles to print (max 50)
  */
 void news_print(const char* symbol, int num_articles);
+
+void news_printw(WINDOW* window, Info* symbol_info);
 
 /**
  * Graphs a security in stdscr. If symbol2 is not NULL, also graphs that security.

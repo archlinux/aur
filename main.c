@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
 
         // Info
     else if (strcmp(cmd, "info") == 0 && argc == 3)
-        symbol_print_info(sym);
+        interface_print(sym);
 
         // Graph
     else if (strcmp(cmd, "graph") == 0 && argc == 3)
