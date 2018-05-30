@@ -8,6 +8,7 @@ arch=("i686" "x86_64")
 url="http://picoe.ca/products/pablodraw/"
 license=("custom")
 depends=("mono" "gtk-sharp-2")
+makedepends=("unzip")
 source=("http://download.picoe.ca/pablodraw/3.2/PabloDraw-${pkgver}.zip"
         "pablodraw.sh")
 sha256sums=("8fc4a6787062b52bfba481d689d7410788b60bab4efeeabc0b94b3e47cc82f02"

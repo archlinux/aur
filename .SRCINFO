@@ -6,6 +6,7 @@ pkgbase = pablodraw
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = unzip
 	depends = mono
 	depends = gtk-sharp-2
 	source = http://download.picoe.ca/pablodraw/3.2/PabloDraw-3.2.1.zip
