@@ -36,8 +36,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p ".git/hooks"
-  composer install --no-interaction --prefer-dist
+  composer install --no-interaction --prefer-dist --no-scripts
   php -dphar.readonly=0 utils/make-phar.php wp-cli.phar --quiet
 }
 
@@ -50,8 +49,20 @@ check() {
   if [[ "${comp}" -eq "-1" ]]; then
     ./vendor/bin/phpunit
   else
-    echo "Installed PHP version incompatible with testing library... Skipping testing!";
+    echo "Notice: System PHP version incompatible with included phpunit!"
+    echo -n "Checking for system install of phpunit... ";
+    phpunit=1
+    hash phpunitas > /dev/null 2>&1 || phpunit=0
+    if [[ "${phpunit}" -eq "0" ]]; then
+      echo "Found!"
+      echo -n "Running test suite... "
+      phpunit > /dev/null
+    else
+      echo "Not Found... Skipping testing..."
+    fi
   fi
+
+  echo -n "Binary reporting as "
   php ./wp-cli.phar --version
 }
 
@@ -59,6 +70,6 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm655 wp-cli.phar "$pkgdir/usr/bin/wp"
-  cd "$srcdir"
+  cd "${srcdir}"
   install -Dm644 wp-completion.bash "${pkgdir}/usr/share/bash-completion/completions/wp"
 }
