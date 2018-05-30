@@ -1,0 +1,28 @@
+pkgbase = r-rmarkdown
+	pkgdesc = Dynamic Documents for R
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/rmarkdown/index.html
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-knitr
+	depends = r-yaml
+	depends = r-htmltools
+	depends = r-evaluate
+	depends = r-base64enc
+	depends = r-jsonlite
+	depends = r-rprojroot
+	depends = r-mime
+	depends = r-stringr
+	optdepends = r-tinytex
+	optdepends = r-shiny
+	optdepends = r-tufte
+	optdepends = r-testthat
+	optdepends = r-digest
+	optdepends = r-cran-tibble
+	source = https://cran.r-project.org/src/contrib/rmarkdown_1.9.tar.gz
+	md5sums = c70c29545cc7af6c907a8dedec7aa7ce
+
+pkgname = r-rmarkdown
+
