@@ -2,8 +2,7 @@
 # Contributor: C Anthony Risinger
 
 pkgname=('zarafa-server')
-groups=('zarafa'
-	'kopano')
+groups=('zarafa')
 replaces=('zarafa-server-arm')
 pkgver=7.2.6.10
 _pkgmajver=7.2
