@@ -3,7 +3,6 @@
 _pkgname=('spellchecker')
 pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa'
-	'kopano'
 	'zarafa-webapp-plugins')
 pkgver=1.0.22.32
 pkgrel=1
