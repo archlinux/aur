@@ -1,5 +1,5 @@
 pkgname=gr-lte-git
-pkgver=r216.31cecf3
+pkgver=r217.7288cc3
 pkgrel=1
 pkgdesc="GNU Radio LTE receiver"
 url="https://github.com/kit-cel/gr-lte"
@@ -7,6 +7,7 @@ license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('gnuradio')
 makedepends=('git' 'cmake' 'swig' 'zeitgeist')
+checkdepends=('python2-matplotlib')
 source=('git+https://github.com/kit-cel/gr-lte.git') 
 sha256sums=('SKIP')
 
