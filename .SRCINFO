@@ -1,15 +1,15 @@
 pkgbase = python-django-flat-responsive
 	pkgdesc = An extension for Django admin that makes interface mobile friendly
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/django-flat-responsive
 	arch = any
 	license = BSD
 	depends = python-django
-	source = https://files.pythonhosted.org/packages/source/d/django-flat-responsive/django-flat-responsive-2.0.tar.gz
+	source = python-django-flat-responsive-2.0.tar.gz::https://files.pythonhosted.org/packages/source/d/django-flat-responsive/django-flat-responsive-2.0.tar.gz
 	source = LICENSE
 	md5sums = 0b861d898fcdb40488b0dffe4f38aba6
-	md5sums = SKIP
+	md5sums = 66bbfefe64232ca4faefa917f58d8369
 
 pkgname = python-django-flat-responsive
 
