@@ -3,7 +3,6 @@
 _pkgname=('smime')
 pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa'
-	'kopano'
 	'zarafa-webapp-plugins')
 pkgver=1.0.31
 pkgrel=95
