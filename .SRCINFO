@@ -1,0 +1,16 @@
+pkgbase = r-htmltools
+	pkgdesc = Tools for HTML
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/htmltools/index.html
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-digest
+	optdepends = r-markdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/htmltools_0.3.6.tar.gz
+	md5sums = 336419c2143f958862e01ef1bbc9c253
+
+pkgname = r-htmltools
+
