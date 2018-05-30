@@ -5,14 +5,14 @@
 # Based on emacs from [extra] and emacs-bzr from the AUR
 
 pkgname=emacs-lucid
-pkgver=25.3
+pkgver=26.1
 _pkgver_major=${pkgver/.*}
-pkgrel=3
+pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('librsvg' 'gpm' 'm17n-lib' 'hicolor-icon-theme' 'dbus' 'alsa-lib' 'libmagick6' 'gnutls' 'libxrandr' 'libxinerama')
+depends=('librsvg' 'gpm' 'm17n-lib' 'hicolor-icon-theme' 'dbus' 'alsa-lib' 'libmagick6' 'gnutls' 'libxrandr' 'libxinerama' 'libxfixes')
 conflicts=('emacs')
 provides=("emacs=$_pkgver_major")
 validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199'
@@ -20,7 +20,7 @@ validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199'
 _source_url_prefix="ftp://ftp.gnu.org/gnu/emacs"
 source=(${_source_url_prefix}/emacs-$pkgver.tar.xz
         ${_source_url_prefix}/emacs-$pkgver.tar.xz.sig)
-md5sums=('05da38e18da75c98d48ad69b5ab74e71'
+md5sums=('649ec46965a8b842bdb2cbf7764c2a9a'
          'SKIP')
 
 build() {
@@ -29,6 +29,8 @@ build() {
   # For the hardening-wrapper package.  Emacs doesn't support building
   # with PIE (https://debbugs.gnu.org/cgi/bugreport.cgi?bug=18784).
   export HARDENING_PIE=0
+
+  export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"
 
   ./configure \
       --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var \
