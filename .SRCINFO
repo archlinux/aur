@@ -1,6 +1,6 @@
 pkgbase = linux-bfq-mq
-	pkgver = 4.16.12
-	pkgrel = 2
+	pkgver = 4.16.13
+	pkgrel = 1
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
 	license = GPL2
@@ -12,8 +12,8 @@ pkgbase = linux-bfq-mq
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.12.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.12.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.13.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.13.sign
 	source = kernel_gcc_patch-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.16/4.16-bfq-sq-mq-git-20180516.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.16/0005-objtool-add-gcc8-support.patch
@@ -31,7 +31,7 @@ pkgbase = linux-bfq-mq
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9
 	sha256sums = SKIP
-	sha256sums = 70a6381aca28b1d271e85bc38fab05af4525d9fdc2c5bb87182b3351db8c4fa2
+	sha256sums = 9efa0a74eb61240da53bd01a3a23759e0065811de53d22de7d679eabf847f323
 	sha256sums = SKIP
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
 	sha256sums = 98f9f0bb8405d53acfedaca8f5dddbea9c57e2da1572c1b9a3e4cebf96b0e3bf
@@ -56,19 +56,19 @@ pkgname = linux-bfq-mq
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq=4.16.12
-	provides = linux=4.16.12
+	provides = linux-bfq-mq=4.16.13
+	provides = linux=4.16.13
 	backup = etc/mkinitcpio.d/linux-bfq-mq.preset
 
 pkgname = linux-bfq-mq-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.16.12
-	provides = linux-bfq-mq-headers=4.16.12
-	provides = linux-headers=4.16.12
+	depends = linux-bfq-mq=4.16.13
+	provides = linux-bfq-mq-headers=4.16.13
+	provides = linux-headers=4.16.13
 
 pkgname = linux-bfq-mq-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.16.12
-	provides = linux-bfq-mq-docs=4.16.12
-	provides = linux-docs=4.16.12
+	depends = linux-bfq-mq=4.16.13
+	provides = linux-bfq-mq-docs=4.16.13
+	provides = linux-docs=4.16.13
 
