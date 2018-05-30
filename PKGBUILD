@@ -1,8 +1,7 @@
-# Maintainer: Alexander Schäferdiek <alexander@schaeferdiek.eu>
-# Maintainer: Florian Klink <flokli@flokli.de>
+# Maintainer: Varakh <varakh@varakh.de>
 
 pkgname=spotifyd-pulseaudio-git
-pkgver=0.1.1.2.g7451cd6
+pkgver=0.2.1
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 depends=('pulseaudio' 'libpulse' 'flac' 'libogg' 'libsndfile' 'libvorbis')
