@@ -1,9 +1,10 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=vim-vital
-_gitcommit=a8773a35b8b122b59c956a23d1e686d595bca3b4
-pkgver=3183.a8773a35
+_gitcommit=982e0bf3a5c181c0fa9d37bab784412f941f6b80
+pkgver=3113.982e0bf3
 pkgrel=1
+epoch=1
 pkgdesc='Comprehensive Vim utility functions for Vim plugins'
 url='https://github.com/vim-jp/vital.vim'
 arch=('any')
