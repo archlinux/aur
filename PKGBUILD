@@ -2,7 +2,7 @@
 # Contributor: Jens Staal <staal1978@gmail.com>
 
 pkgname=ubase-git
-pkgver=0.r565.g71da562
+pkgver=0.r602.g5579553
 pkgrel=1
 pkgdesc='An extension of the sbase *nix core utilities - git checkout'
 arch=('i686' 'x86_64')
@@ -20,19 +20,13 @@ pkgver() {
 		printf '%s.r%s.g%s' \
 			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
 			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	else
 		printf '0.r%s.g%s' \
 			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	fi
 }
-
-#prepare() {
-#	cd $srcdir/ubase/
-#	#temporary hacks
-#	sed -i 's|MAN = $(SRC:.c=.1)|MAN = chvt.1 |g' Makefile
-#}
 
 build() {
 	cd ${srcdir}/ubase/

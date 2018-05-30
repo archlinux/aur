@@ -1,6 +1,6 @@
 pkgbase = ubase-git
 	pkgdesc = An extension of the sbase *nix core utilities - git checkout
-	pkgver = 0.r565.g71da562
+	pkgver = 0.r602.g5579553
 	pkgrel = 1
 	url = http://git.suckless.org/ubase/
 	arch = i686
