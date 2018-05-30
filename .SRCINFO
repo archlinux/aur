@@ -1,0 +1,14 @@
+pkgbase = systemd-kcm
+	pkgdesc = Systemd control module for KDE
+	pkgver = 1.2.1
+	pkgrel = 3
+	url = https://github.com/rthomsen/kcmsystemd
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = kio
+	source = http://download.kde.org/stable/systemd-kcm/systemd-kcm-1.2.1.tar.xz
+	sha256sums = 51960f4d3b4a1ceae28737c172c35aec8c1f4e534327fbc6dda76f1c17341389
+
+pkgname = systemd-kcm
+
