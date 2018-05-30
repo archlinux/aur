@@ -1,6 +1,6 @@
 pkgbase = archey4
 	pkgdesc = Maintained fork of the original Archey Linux system tool
-	pkgver = v4.4.0
+	pkgver = v4.4.1
 	pkgrel = 1
 	url = https://git.io/archey4
 	arch = any
@@ -23,9 +23,9 @@ pkgbase = archey4
 	conflicts = archey3-git
 	conflicts = pyarchey
 	backup = etc/archey4/config.json
-	source = https://github.com/HorlogeSkynet/archey4/archive/v4.4.0.tar.gz
-	md5sums = 0f6b73aafef9b88fd8af5bc472499310
-	sha256sums = 2efba1b7bd1af6933ec1a3224ff28788192193411eb1f1da34b8b4c2c16a7fbd
+	source = https://github.com/HorlogeSkynet/archey4/archive/v4.4.1.tar.gz
+	md5sums = 8c80efa5d0c4b075e7ebd522aac92aa3
+	sha256sums = 6c68c1abb85372fe4ef476a2f908505149a1c2457d4e926b3ec3305f9090f162
 
 pkgname = archey4
 
