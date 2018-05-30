@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 _srcname=vmaf
-_sureal_commit='392bb9b49441e60162e48f656648cdf601ded5f9'
+_sureal_commit='c97c1bede576f18589e07d6be251bef4f6ba3532'
 
 pkgname=python2-vmaf
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (python2 implementation)'
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=('python2' 'python2-setuptools')
 conflicts=('python2-vmaf-git')
 source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/Netflix/${_srcname}/archive/v${pkgver}.tar.gz"
         'vmaf-submodule-sureal'::"git+https://github.com/Netflix/sureal.git#commit=${_sureal_commit}")
-sha256sums=('9530d341df8df4104c9d8bd656335a8d79ff61c19e77bb720deb359a40ac26f7'
+sha256sums=('28ff05935889147a6dedb2089be918f0ce903e4a386091274be5ad3118b2950d'
             'SKIP')
 
 prepare() {
