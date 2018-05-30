@@ -1,6 +1,6 @@
 pkgbase = chromium-vaapi
 	pkgdesc = Chromium compiled with VA-API support for Intel Graphics
-	pkgver = 66.0.3359.181
+	pkgver = 67.0.3396.62
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = chromium.install
@@ -33,6 +33,7 @@ pkgbase = chromium-vaapi
 	depends = hicolor-icon-theme
 	depends = libva
 	depends = flac
+	depends = ffmpeg
 	depends = fontconfig
 	depends = icu
 	depends = opus
@@ -51,22 +52,20 @@ pkgbase = chromium-vaapi
 	optdepends = libva-intel-driver: Needed to support VA-API for Intel graphics cards
 	provides = chromium
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-66.0.3359.181.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-67.0.3396.62.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
-	source = chromium-66.0.3359.181.txt::https://chromium.googlesource.com/chromium/src/+/66.0.3359.181?format=TEXT
-	source = fix-crash-in-is_cfi-true-builds-with-unbundled-ICU.patch
-	source = fix-frame-buttons-rendering-too-large-when-using-OSX.patch
+	source = remove-dependency-on-ffmpeg-internals-for-start-time.patch
+	source = chromium-ffmpeg-r1.patch
+	source = chromium-widevine-r2.patch
 	source = chromium-skia-harmony.patch
-	source = chromium-widevine.patch
 	source = chromium-vaapi-r18.patch
-	sha256sums = 37e6673741b365a25a837217b08f77b24b4f5fc4ad88c8581be6a5dae9a9e919
+	sha256sums = d5ee63932ff1c8c4a5f69c834f6577e7127b416681eddd23bc54886caffd770d
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
-	sha256sums = 221d0f17951e88d4d315f3160919380237b88587c4b295d619229a05b79927f1
-	sha256sums = e3fb73b43bb8c69ff517e66b2cac73d6e759fd240003eb35598df9af442422fe
-	sha256sums = bd5e0e61df3f89172590801aea7c8ac75162c10c7fe83e262e96a14388d1633a
+	sha256sums = 2cc80f5ed8a9b42495a0f3ab3c1bae026b9081972269a1b6d407331d33f7d257
+	sha256sums = aa885330bc4180b78d915f9dfdfc3210038a0acab7b16735ea9828ab6a633bde
+	sha256sums = 02c69bb3954087db599def7f5b6d65cf8f7cf2ed81dfbdaa4bb7b51863b4df15
 	sha256sums = feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3
-	sha256sums = d6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808
-	sha256sums = 514f40accb2b4bc439df43f11bb7154a812eeb9fa61777b3d986cfa6bb109ebd
+	sha256sums = a7dbcbfc5ec18606c260df67b98fb2440fe59a4c9ede0823fc43f3bcf439887b
 
 pkgname = chromium-vaapi
 
