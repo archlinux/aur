@@ -20,17 +20,34 @@ optdepends=('ccstudio' 'ti-cgt-arm')
 _bundle=ble_sdk_2_02_01_18
 _installer=${_bundle}_setup.exe
 
-# to get the download key, follow the link above and click through
-_key=KS6V9FEICJSWPWYWAYHF6X6UQ542PAFS
+# Installer mirrored on IPFS
+_ble_sdk_ipfs_hash=QmRqD824vXr3eEDKEUdRzefZ7UGZXrNjw2VmsSyhgRLiJm
+
+# Alternatively, to download from TI, you need a download key, which
+# you can get by following the upstram link above and clicking through
+# _key=KS6V9FEICJSWPWYWAYHF6X6UQ542PAFS
 
 # This particular version of TI-RTOS is installed by this PKGBUILD
 # because the path patch applies to both of them.
 _tirtos_installer=tirtos_cc13xx_cc26xx_setuplinux_2_20_01_08.bin
+_tirtos_ipfs_hash=QmYfnTW3p4Pk2EybdUaKaemG2a9xQ5keCGbDSQhM4PzFM2
+
 
 # NOTE: patch is compressed because of AUR's 250KB limit
 
-source=("http://software-dl.ti.com/download/lprf/${_key}/${_installer}"
-        "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/tirtos/2_20_01_08/exports/${_tirtos_installer}"
+source=(# Requires you to open webpage in browser to get download key
+        #"http://software-dl.ti.com/download/lprf/${_key}/${_installer}"
+        # Alternative source for same file that does not require key and does not 404 after updates
+        #"https://gateway.ipfs.io/ipfs/${_ble_sdk_ipfs_hash}/${_installer}"
+        # Alternative source via a different IPFS gateway
+        "http://arch.alexeicolin.com:8080/ipfs/${_ble_sdk_ipfs_hash}/${_installer}"
+
+        #"http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/tirtos/2_20_01_08/exports/${_tirtos_installer}"
+        # Alternative source for same file
+        #"https://gateway.ipfs.io/ipfs/${_tirtos_ipfs_hash}/${_tirtos_installer}"
+        # Alternative source via a different IPFS gateway
+        "http://arch.alexeicolin.com:8080/ipfs/${_tirtos_ipfs_hash}/${_tirtos_installer}"
+
         "fix-paths-for-linux.patch.xz"
         "fix-example-projects-import.patch")
 
