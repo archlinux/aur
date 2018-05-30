@@ -8,7 +8,7 @@
 
 pkgname=mathematica
 pkgver=11.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('i686' 'x86_64')
 url="http://www.wolfram.com/mathematica/"
@@ -75,8 +75,8 @@ optdepends=(
     'zlib'
 )
 source=("local://Mathematica_${pkgver}_LINUX.sh" "duplicate-libs.txt")
-sha256sums=('5b07d83cc79c08ce50ecdd7fab8f4a4a8bc7f16a7cc589a972399268426d73e7'
-            '832634dae9639b4d2c42e85ce8fc1c3cce73fdccfe4c4481c9546f5f929cff1e')
+md5sums=('623f9fa3d34ded6997c7b9f1505097c0'
+         'e442aa2286a9d93e932076c974517dd7')
 options=("!strip")
 
 ## To build this package you need to place the mathematica-installer into your
