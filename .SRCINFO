@@ -1,7 +1,7 @@
 pkgbase = telegraf
 	pkgdesc = Server-level metric gathering agent for InfluxDB
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/InfluxData/telegraf
 	install = telegraf.install
 	arch = i686

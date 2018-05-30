@@ -3,12 +3,11 @@
 
 pkgname='telegraf'
 pkgver='1.6.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Server-level metric gathering agent for InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/InfluxData/telegraf'
 license=('MIT')
-depends=('')
 makedepends=('go' 'git')
 provides=('telegraf')
 backup=('etc/telegraf/telegraf.conf')
