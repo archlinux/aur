@@ -4,7 +4,8 @@ pkgbase = r-rcppeigen
 	pkgrel = 1
 	url = https://cran.r-project.org/web/packages/RcppEigen/index.html
 	arch = any
-	license = GPL (>= 2) | file LICENSE
+	license = GPL
+	license = custom
 	depends = r
 	optdepends = r-inline
 	optdepends = r-pkgkitten

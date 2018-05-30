@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Rcpp Integration for the Eigen Templated Linear Algebra Library"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
-license=('GPL (>= 2) | file LICENSE')
+license=('GPL' 'custom')
 depends=('r' )
 
 optdepends=('r-inline' 'r-pkgkitten')
