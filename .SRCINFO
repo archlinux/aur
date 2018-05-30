@@ -1,7 +1,7 @@
 pkgbase = deepin-wine
 	pkgdesc = Deepin Wine
 	pkgver = 2.18_10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = deepin-wine
 	depends = deepin-libwine
 	depends = deepin-wine-uninstaller
 	depends = deepin-udis86
+	depends = lib32-gettext
+	depends = lib32-libxcursor
 	depends = lib32-fontconfig
 	depends = lib32-alsa-lib
 	depends = lib32-mesa
