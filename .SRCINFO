@@ -1,15 +1,18 @@
 pkgbase = python-geohash
 	pkgdesc = Fast, accurate python geohashing library
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hkwi/python-geohash
+	install = python-geohash.install
 	arch = any
 	license = APACHE
 	depends = python
 	depends = python-docutils
 	options = !emptydirs
 	source = https://pypi.python.org/packages/74/84/fa80c5e92854c7456b591f6e797c5be18315994afd3ef16a58694e1b5eb1/Geohash-1.0.tar.gz
-	md5sums = a7c4e57874061fae1e30dd8aa8b9b390
+	source = 0001-fix-python-3.5.patch
+	sha256sums = 2dd849ebaa0bc7ee565444df4fc57ae33daa89afa24b43617556560a04b71900
+	sha256sums = 0acc9bd46bd11f808b97d0f6a07644204d8127ca146ea2ed8b3578d71142c39b
 
 pkgname = python-geohash
 

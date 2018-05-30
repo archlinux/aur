@@ -1,0 +1,8 @@
+post_upgrade() {
+  if [[ ${1%-*} != ${2%-*} ]]; then
+    echo '==> NOTE: Python module has been renamed from GeoHash to geohash.'
+    echo '==> For more info see: https://github.com/vinsci/geohash/issues/4'
+  fi
+}
+
+# vim:set ts=2 sw=2 et:

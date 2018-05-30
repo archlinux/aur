@@ -1,0 +1,30 @@
+diff --git a/Geohash/__init__.py b/geohash/__init__.py
+similarity index 93%
+rename from Geohash/__init__.py
+rename to geohash/__init__.py
+index ff95dfe..2a92614 100644
+--- a/Geohash/__init__.py
++++ b/geohash/__init__.py
+@@ -18,4 +18,4 @@ You should have received a copy of the GNU Affero General Public
+ License along with Geohash.  If not, see
+ <http://www.gnu.org/licenses/>.
+ """
+-from geohash import decode_exactly, decode, encode
++from .geohash import decode_exactly, decode, encode
+diff --git a/Geohash/geohash.py b/geohash/geohash.py
+similarity index 100%
+rename from Geohash/geohash.py
+rename to geohash/geohash.py
+diff --git a/setup.py b/setup.py
+index 4103635..b243ff9 100644
+--- a/setup.py
++++ b/setup.py
+@@ -20,7 +20,7 @@ License along with Geohash.  If not, see
+ """
+ from setuptools import setup, find_packages
+ setup(
+-    name = "Geohash",
++    name = "geohash",
+     version = "1.0",
+     packages = find_packages(),
+ 
