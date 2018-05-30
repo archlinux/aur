@@ -1,0 +1,17 @@
+pkgbase = r-selectr
+	pkgdesc = Translate CSS Selectors to XPath Expressions
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/selectr/index.html
+	arch = any
+	license = BSD_3_clause + file LICENCE
+	depends = r
+	depends = r-stringr
+	optdepends = r-testthat
+	optdepends = r-cran-xml
+	optdepends = r-xml2
+	source = https://cran.r-project.org/src/contrib/selectr_0.4-1.tar.gz
+	md5sums = eb6eddd591db658b05a7e1ea40aeaf4c
+
+pkgname = r-selectr
+
