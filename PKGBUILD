@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cilium-git
-pkgver=1.0.0.rc9.g2110a64e4
+pkgver=1.0.90.gec8b2921a
 pkgrel=1
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=('docker' 'iproute2' 'clang')
 makedepends=('go' 'lib32-glibc' 'bazel')
 optdepends=('consul' 'etcd')
 conflicts=()
+options=(!ccache)
 source=("${pkgname}::git+https://github.com/cilium/cilium" "cilium.sysusers")
 sha256sums=('SKIP'
             'f47ee5b436304aa55ffad29fd68e31be4b1261d3f81ba2a7a370e522705833e8')
@@ -39,10 +40,13 @@ build() {
 	make -C daemon apply-bindata
 	make V=1 plugins bpf cilium daemon monitor cilium-health bugtool
 
-	git submodule update --init
+	export CC="/usr/bin/gcc"
+	export CXX="/usr/bin/g++"
+
+	make -C envoy veryclean
 	cd envoy
-	bazel clean
-	bazel build //:envoy
+	bazel clean --async
+	bazel build //:envoy --action_env=PATH=$PATH
 }
 
 package() {
