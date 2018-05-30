@@ -41,7 +41,6 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_APPS=${_build_apps} \
-	-DOPENMESH_PYTHON_VERSION=3.6 \
         ..
     make
 
