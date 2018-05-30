@@ -4,7 +4,6 @@ _pkgname=('filepreviewer')
 pkgname=("zarafa-webapp-${_pkgname}")
 replaces=("zarafa-webapp-pdfbox")
 groups=('zarafa'
-	'kopano'
 	'zarafa-webapp-plugins')
 pkgver=1.0.30.59
 pkgrel=95

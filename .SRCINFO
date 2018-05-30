@@ -6,7 +6,6 @@ pkgbase = zarafa-webapp-filepreviewer
 	pkgrel = 95
 	arch = any
 	groups = zarafa
-	groups = kopano
 	groups = zarafa-webapp-plugins
 	license = AGPL3
 	depends = zarafa-webapp>=2.1.2-2
