@@ -1,6 +1,6 @@
 pkgbase = vis-git
 	pkgdesc = modern, legacy free, simple yet efficient vim-like editor - git checkout
-	pkgver = 0.5.r1.g6dee3a3
+	pkgver = 0.5.r32.g668c496
 	pkgrel = 1
 	url = http://www.brain-dump.org/projects/vis/
 	arch = i686
