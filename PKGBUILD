@@ -3,12 +3,12 @@ _cranname=psych
 _cranver=1.8.4
 pkgname=r-cran-$_cranname
 pkgver=${_cranver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Procedures for psychological, psychometric, and personality research."
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('i686' 'x86_64')
 license=('GPL2' 'GPL3')
-depends=('r>=2.10' 'r-cran-mnormt' 'r-cran-foreign' 'r-cran-lattice' 'r-cran-nlme')
+depends=('r>=2.10' 'r-cran-mnormt')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('3f56f9c5d4cd6717b4c711b2b64b092e') 
 
