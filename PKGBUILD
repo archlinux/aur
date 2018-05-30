@@ -5,7 +5,7 @@ pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa'
 	'zarafa-webapp-plugins')
 pkgver=1.0.22.32
-pkgrel=1
+pkgrel=95
 pkgdesc='Spellchecker plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-spell-1.0.22-32.1.noarch.rpm"
