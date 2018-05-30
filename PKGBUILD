@@ -4,8 +4,8 @@
 
 pkgname='php7-homegear'
 pkgdesc='Patched version of PHP for Homegear'
-pkgver=7.2.2
-_pthreadversion=64fff4f6aeadbcb5da2713304e00b9135cb296fd
+pkgver=7.2.5
+_pthreadversion=a949a0447a187781d64faafc7422ab5f8874bb2a
 _pkgbase=php
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -15,8 +15,8 @@ depends=('gmp' 'enchant' 'libedit' 'libmcrypt' 'libzip' 'libxml2' 'openssl')
 source=("http://www.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         "https://github.com/krakjoe/pthreads/archive/${_pthreadversion}.tar.gz"
         'enchant-2.patch')
-sha512sums=('36a3565161fc481307ac3e76c8d2ccc457c265bf510f085be1907835c7da7c747a0876502192d77bd664f94a584a1b149deee2600c650481fbedbf02d72d5fd0'
-            '68d6c6c863a9cebee15eb8480f927b49b5c52fe28c3a30342a81bcda5f009fcc21d3888e73444cc3d1da2877410719180c0668c60c462e7f2bd07670c7b04057'
+sha512sums=('1d49fc6e47d2e86d4fd62396e558965502f44cc8f72459bb0d406e157298cac67703b219837952da11122722d9fa8cb4cda8ef66ddf063cb063859db34110f58'
+            '7d80bfef5f7c0fdbc3d0db6e28a0d3bbc6bca8af17052675401a44b98361aa956bca60f5823b0f273f0fa9b2ef43dd21afeda497475baa09d01aab29dddfb6b5'
             '89993be67988f6db09e1102214a41fdb7223274bc6ca71f1defc5fe9548d832485f7133b8ba82860f04da00c7f655d701c7550460c0172a2a2d31ef3f3f96038')
 options=(!emptydirs)
 
@@ -102,8 +102,6 @@ build() {
 
 	make
 }
-
-
 
 package() {
 	cd "${srcdir}/${_pkgbase}-${pkgver}"

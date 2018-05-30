@@ -1,7 +1,7 @@
 pkgbase = php7-homegear
 	pkgdesc = Patched version of PHP for Homegear
-	pkgver = 7.2.0
-	pkgrel = 2
+	pkgver = 7.2.5
+	pkgrel = 1
 	url = http://www.php.net
 	arch = i686
 	arch = x86_64
@@ -17,10 +17,12 @@ pkgbase = php7-homegear
 	depends = libxml2
 	depends = openssl
 	options = !emptydirs
-	source = http://www.php.net/distributions/php-7.2.0.tar.xz
-	source = https://github.com/krakjoe/pthreads/archive/b3e691f25cd659bcdb504b61e8da235251cb3b5a.tar.gz
-	sha512sums = 828d38727edde0dbc6483add6cdc21d33527b887bffaedad2d7f53e25d58a6f661ac341a23db02741bc37248d161aaffd72026dd8ef85ac851594c127d6c0133
-	sha512sums = 748894d295d8c5db57261ac0317a43fc49e6365f712be6916d765543341fb622ef37e4ee7113daaafe533c485c127208262c53e52480421385f6c6608449edb5
+	source = http://www.php.net/distributions/php-7.2.5.tar.xz
+	source = https://github.com/krakjoe/pthreads/archive/a949a0447a187781d64faafc7422ab5f8874bb2a.tar.gz
+	source = enchant-2.patch
+	sha512sums = 1d49fc6e47d2e86d4fd62396e558965502f44cc8f72459bb0d406e157298cac67703b219837952da11122722d9fa8cb4cda8ef66ddf063cb063859db34110f58
+	sha512sums = 7d80bfef5f7c0fdbc3d0db6e28a0d3bbc6bca8af17052675401a44b98361aa956bca60f5823b0f273f0fa9b2ef43dd21afeda497475baa09d01aab29dddfb6b5
+	sha512sums = 89993be67988f6db09e1102214a41fdb7223274bc6ca71f1defc5fe9548d832485f7133b8ba82860f04da00c7f655d701c7550460c0172a2a2d31ef3f3f96038
 
 pkgname = php7-homegear
 
