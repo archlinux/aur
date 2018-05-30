@@ -17,8 +17,17 @@ post_install() {
 
     chgrp -R $_grp $_dir
 
+    echo ">>> On first launch, run ccstudio as root in order for CCS to register "
+    echo ">>> software bundles installed into the filesystem by related packages: "
+    echo ">>> 	 sudo ccstudio"
+    echo ">>>"
     echo ">>> Run this command as each user who will run CCS, to add to '${_grp}' group:"
     echo ">>>    sudo usermod -a -G ${_grp} \$(whoami)"
+    echo ">>>"
+    echo ">>> When multiple users run CCS, beware that on each run CCS creates "
+    echo ">>> /tmp/jxbrowser* directory permissioned to one user, and fails to "
+    echo ">>> read it when run under a different user, so delete the dir as a "
+    echo ">> workaround."
 }
 
 post_upgrade() {
