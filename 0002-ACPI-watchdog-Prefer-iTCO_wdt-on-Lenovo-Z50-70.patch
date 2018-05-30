@@ -4,7 +4,7 @@ In-Reply-To: <ee91df95bf010fad44be5d2564e7d40038987f19.1527290717.git.jan.steffe
 References: <ee91df95bf010fad44be5d2564e7d40038987f19.1527290717.git.jan.steffens@gmail.com>
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 Date: Mon, 23 Apr 2018 14:16:03 +0300
-Subject: [PATCH 2/5] ACPI / watchdog: Prefer iTCO_wdt on Lenovo Z50-70
+Subject: [PATCH 2/3] ACPI / watchdog: Prefer iTCO_wdt on Lenovo Z50-70
 
 WDAT table on Lenovo Z50-70 is using RTC SRAM (ports 0x70 and 0x71) to
 store state of the timer. This conflicts with Linux RTC driver

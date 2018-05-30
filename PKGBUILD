@@ -59,12 +59,12 @@ pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=4.16
 _srcname=linux-${_major}
-_minor=8
-_rtver=3
+_minor=12
+_rtver=5
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _rtpatchver=rt${_rtver}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -103,9 +103,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch'
-        '0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch'
-        '0004-Partially-revert-swiotlb-remove-various-exports.patch'
-        '0005-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch')
+        '0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch')
         
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-rt-bfq}
@@ -131,15 +129,7 @@ prepare() {
     
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
-        patch -Np1 -i ../0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch    
-    
-    ### NVIDIA driver compat
-        msg "NVIDIA driver compat"
-        patch -Np1 -i ../0004-Partially-revert-swiotlb-remove-various-exports.patch
-    
-    ### Fix https://bugs.archlinux.org/task/58237
-        msg "Fix #58237"
-        patch -Np1 -i ../0005-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
+        patch -Np1 -i ../0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
     
     ### Fix gcc8 bogus warnings
         msg "Fix gcc8 bogus warnings"
@@ -431,9 +421,9 @@ done
 
 sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2d06317dc1683c51a472a9a631573a9b1e7258d6281a2ee189897827f14662'
             'SKIP'
-            '8bd521f5a14280c6893f6d85f46d12f97ba71abf3e149f1900aa5e1efa3a03a97df674c4b2b46553b8e9df55164894b6fcb510dbba8cab8ce47ee4b0186e27d0'
+            '7bd2b4fa54b69df5558a4a151936fb1787f2faa0f4e73c03db04ef84ac088f764425faf5d6b5a023d4863e190775dcbb251eba1efc3b10eb133330bb6b210b72'
             'SKIP'
-            '505de5fa2d98242b598c4cfef510d506c23c429bdb24c1d9d5f8beb84548e9b5f012d14236747ecb20b74136e28d19d33e880673b4adeeb4b05dc5fe31c8ff59'
+            '5b981b5758933c61526d50a47e0f454fdf6ee91d45c191dd97339972ea27f3bb27ebfa23460cf8dbbfb593e013f40ba53e3f164053ef28e4fa0aadcf4c21da03'
             'SKIP'
             'd1dcba01d1e905dbc88346466be21845f0138c1ca635e5cc2b5d3225d6d15fe6a345ff11bf900c663c060d00746f8bcf4470121a501d612551a5168da2876ea4'
             'a10a546ecced915ee38075cc6c57eaebb0f8fa58e6af6669d7429ef4880b55bd5782e11dfbda75ce4f805fa5b2399421b4eade8bbbf6766e5aac24a542f1b7a7'
@@ -446,11 +436,9 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'e8229ab81b771f485a28162481ffee88235083195f90c9793aad4714f145609520b6c05104fc02ac40fd0a049836fe34145b5c6a452887015a6f5b0c42da6c8e'
-            '2178029acb13aae77350cd77dbf78533501a3a0684be7ec6bb0df0c02a3b6d8f59d1c2a77d0171f9eab960211ea90c581a17c3cfaf336267837611d0c0be6795'
-            '3b59662258d609b24eb294ce2f7d97384ebd30590c07e257f8957ef7d56fd9bba689b7e814fe3ca9dd481d77d259bdeeeaef9ed48f10673ef7c95b30bdccefde'
-            'f7fdcb1fe5d882af14c72e9e59d0133c713c84394702c110b7ab8eedceecd4165b4e09c0a1860439b918f6095ff6c4e586334c9d7517229f7c7f9b9538177a81'
-            '7b8b72c8fbf99347b0b999d0e90f70a3721c8dd23589d8abd4cd6656120fb91d66b16b423f42b416a164a4ba2413dccf10587b2ed53aec14a9c040067353fb23')
+            '26619b938a47c841f0c480a113cfbb1ee6f1121c21dfecbe246c1f7af7697f86cfb8253f09966eab2e386734ce4ad156159babdba4365c2f199c369c3d7e8ee8'
+            'f6aed92697c35e7919a0d784185e7af15b6be2762e3dd235267ca9744a826ac693d0ffcb07b9d1cc8571f57d518c1ce1c276cf7677e8375188f05f71d4added0'
+            'cc8852b089aa24f588ad1af726503ecd1012ad7e1cbc47ea77f03a5f7aecd25306d40f2e16b8a1afeafe7e2e97b6b6840c9f462ed7be358090117e2e024df1bd')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
