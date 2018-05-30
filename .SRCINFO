@@ -1,0 +1,19 @@
+pkgbase = r-rprojroot
+	pkgdesc = Finding Files in Project Subdirectories
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/rprojroot/index.html
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-backports
+	optdepends = r-testthat
+	optdepends = r-mockr
+	optdepends = r-knitr
+	optdepends = r-withr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/rprojroot_1.3-2.tar.gz
+	md5sums = 030a1d238d41ee1e5e21e55eba8403b2
+
+pkgname = r-rprojroot
+
