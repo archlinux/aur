@@ -1,15 +1,15 @@
 # Maintainer: Marcelo Garlet Millani <marcelogmillani at gmail dot com>
 _hkgname=simtreelo
 pkgname=haskell-simtreelo
-pkgver=0.1.1.2
-pkgrel=3
+pkgver=0.1.1.3
+pkgrel=1
 pkgdesc='Loads data organized in a tree'
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('ghc')
 source=( "http://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz" )
-sha256sums=('bd3e612bcbad269329bab7c90b8524a6e63e3f34cf24d0942c2202cb9987c3f2')
+sha256sums=('093e3ea93cc7e4e86830aa45fe9042bb238ebc03e8fcfea4e351e19ed1371291')
 install=${pkgname}.install
 
 build() {
