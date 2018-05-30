@@ -18,12 +18,12 @@ if [ "${CARCH}" == "i686" ]; then
 	source=(http://www.ftdichip.com/Drivers/D2XX/Linux/${pkgname}-i386-${pkgver}.tgz
         	55-ft2232.rules)
 	md5sums=('af99e23216acda30ca137c558cd15864'
-	         '5c6d646c3c5b28db1c3b880a04d4d79c')
+	         '3a4d73379decfc351a00cfd22d74dbef')
 else
 	source=(http://www.ftdichip.com/Drivers/D2XX/Linux/${pkgname}-x86_64-${pkgver}.tgz
         	55-ft2232.rules)
 	md5sums=('3140665d50b326a54e281cf1c465ca3c'
-	         '5c6d646c3c5b28db1c3b880a04d4d79c')
+	         '3a4d73379decfc351a00cfd22d74dbef')
 fi
 
 package() {
