@@ -6,7 +6,6 @@ pkgbase = zarafa-webapp-delayeddelivery
 	pkgrel = 1
 	arch = any
 	groups = zarafa
-	groups = kopano
 	groups = zarafa-webapp-plugins
 	license = AGPL3
 	depends = zarafa-webapp
