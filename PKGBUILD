@@ -2,15 +2,16 @@
 _pythonmod=flask-restplus
 pkgname=('python2-flask-restplus' 'python-flask-restplus')
 pkgbase='python2-flask-restplus'
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='custom actions for flask to help manage your application'
 arch=('any')
 url='http://pypi.python.org/pypi/Flask-Restplus/'
 license=('BSD')
 
-source=("https://pypi.io/packages/source/f/flask-restplus/flask-restplus-${pkgver}.tar.gz")
-sha1sums=('d6162efccd7e7c794f435252adcf78a262cfa969')
+#source=("https://pypi.io/packages/source/f/flask-restplus/flask-restplus-${pkgver}.tar.gz")
+source=("https://github.com/noirbizarre/flask-restplus/archive/${pkgver}.tar.gz")
+sha1sums=('0851f0516c4208d24fcd98561525a7b6d0054d2d')
 
 check_python2-flask-restplus() {
   checkdepends=('python2-blinker' 'python2-rednose' 'python2-nose' 'python2-mock' 'python2-tzlocal')
