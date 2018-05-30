@@ -1,6 +1,6 @@
 pkgbase = caffe2-git
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)
-	pkgver = 0.8.2.r11225.g141d81d09
+	pkgver = 0.8.2.r11491.gf8e83dc25
 	pkgrel = 1
 	epoch = 1
 	url = http://caffe2.ai/
@@ -8,6 +8,7 @@ pkgbase = caffe2-git
 	license = BSD
 	makedepends = git
 	makedepends = cmake
+	makedepends = gcc54
 	depends = google-glog
 	depends = protobuf
 	depends = lapack
