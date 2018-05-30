@@ -11,6 +11,8 @@ pkgbase = aurto
 	depends = systemd
 	depends = pacutils
 	depends = pacman-contrib
+	backup = usr/lib/systemd/system/check-aurto-git-trigger.timer
+	backup = usr/lib/systemd/system/update-aurto.timer
 	source = https://github.com/alexheretic/aurto/archive/v0.6.7.tar.gz
 	sha256sums = 821c1c26e16cd30c45aec6fa8e8a0933ac327a8ee380933a8eb387b7d19b0af1
 

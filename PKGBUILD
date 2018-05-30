@@ -16,6 +16,8 @@ makedepends=()
 install="aurto.install"
 source=("https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('821c1c26e16cd30c45aec6fa8e8a0933ac327a8ee380933a8eb387b7d19b0af1')
+backup=('usr/lib/systemd/system/check-aurto-git-trigger.timer'
+        'usr/lib/systemd/system/update-aurto.timer')
 
 build() {
   cd "$pkgname-$pkgver"
