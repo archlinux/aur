@@ -1,8 +1,7 @@
 # Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 
 pkgname=('zarafa-service-overview')
-groups=('zarafa'
-	'kopano')
+groups=('zarafa')
 pkgver=1.0.2
 pkgrel=1
 pkgdesc='Zarafa service overview'

@@ -7,7 +7,6 @@ pkgbase = zarafa-service-overview
 	url = http://www.pietma.com/
 	arch = any
 	groups = zarafa
-	groups = kopano
 	license = AGPL3
 	depends = php<7
 	depends = php-fpm<7
