@@ -1,7 +1,7 @@
 # Maintainer: Bryn Edwards <bryn@protonmail.ch>
 
 pkgname=antibody
-pkgver=3.4.3
+pkgver=3.4.6
 pkgrel=1
 pkgdesc="A shell plugin manager."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://getantibody.github.io/"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/getantibody/antibody/archive/v${pkgver}.tar.gz")
-sha256sums=('6acc44b1be8efe29260a67fa01f56a9685a2d89b52ef11ec0dc95b171abed7dc')
+sha256sums=('985875bd8ffc8dc8ae421c4f3becfd55cd147ca3a3e30513158ef7048fae8a6d')
 _repodir=(".go/src/github.com/getantibody")
 
 prepare() {
@@ -19,7 +19,7 @@ prepare() {
 	ln -sf "$srcdir/$pkgname-$pkgver" \
           "$srcdir/$_repodir/$pkgname"
 	cd "$srcdir/$_repodir/$pkgname"
-	sed -i "21s/dev/$pkgver/" "main.go"
+	sed -i "22s/dev/$pkgver/" "main.go"
 	go get -u github.com/golang/dep/...
 	go get -u github.com/pierrre/gotestcover
 	dep ensure
