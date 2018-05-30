@@ -1,0 +1,14 @@
+pkgbase = r-bh
+	pkgdesc = Provides free peer-reviewed portable C++ source libraries.
+	pkgver = 1.66.0_1
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/BH/index.html
+	arch = i686
+	arch = x86_64
+	license = BSL-1.0
+	depends = r
+	source = http://cran.r-project.org/src/contrib/BH_1.66.0-1.tar.gz
+	md5sums = 534bb3a301293d3a0880b8eb63115467
+
+pkgname = r-bh
+
