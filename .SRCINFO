@@ -1,7 +1,7 @@
 pkgbase = spotifyd
 	pkgdesc = A spotify playing daemon
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/Spotifyd/spotifyd
 	arch = x86_64
 	arch = armv7h
@@ -15,8 +15,8 @@ pkgbase = spotifyd
 	depends = libvorbis
 	conflicts = spotifyd-bin
 	conflicts = spotifyd-git
-	source = spotifyd-0.2.tar.gz::https://github.com/Spotifyd/spotifyd/archive/v0.2.tar.gz
-	sha256sums = 090be5990fbe6db9cc47d827e8c73d155cb442932eea23e227d8ff2474b531b8
+	source = spotifyd-0.2.1.tar.gz::https://github.com/Spotifyd/spotifyd/archive/v0.2.1.tar.gz
+	sha256sums = 6e092b7e78c42fc2a4865b6b8571b71b63acc3d8941e15250e1f033508b151e1
 
 pkgname = spotifyd
 
