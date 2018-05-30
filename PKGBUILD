@@ -1,6 +1,5 @@
-# $Id: PKGBUILD 266004 2017-11-09 13:17:42Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 _dummystring="/* Dummy header, which gets overriden, if winpthread library gets installed.  */"
@@ -14,7 +13,7 @@ url="http://mingw-w64.sourceforge.net"
 license=('custom')
 groups=('mingw-w64-bootstrap')
 makedepends=('mingw-w64-headers')
-conflicts=('mingw-w64-winpthreads', 'mingw-w64-winpthreads-svn')
+conflicts=('mingw-w64-winpthreads')
 options=('!strip' '!libtool' '!emptydirs')
 source=()
 sha256sums=()
