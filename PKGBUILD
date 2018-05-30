@@ -2,11 +2,11 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgbase="zfs-dkms-git"
-pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
-pkgver=0.7.0_r481_gbc5f51c5d
+pkgname=("zfs-dkms-git" "zfs-utils-git")
+pkgver=0.7.0_r1575_g93491c4bb
 pkgrel=1
 license=('CDDL')
-makedepends=("git" "spl-dkms-git")
+makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git"
@@ -43,7 +43,7 @@ build() {
 
 package_zfs-dkms-git() {
     pkgdesc="Kernel modules for the Zettabyte File System. (Git version)"
-    depends=("spl-dkms-git" "zfs-utils-dkms-git=${pkgver}-${pkgrel}" "dkms")
+    depends=("zfs-utils-git=${pkgver}-${pkgrel}" "dkms")
     provides=("zfs")
     conflicts=("zfs-git" "zfs-lts" "zfs-dkms")
 
@@ -59,10 +59,11 @@ package_zfs-dkms-git() {
     chmod g-w,o-w -R .
 }
 
-package_zfs-utils-dkms-git() {
+package_zfs-utils-git() {
     pkgdesc="Kernel module support files for the Zettabyte File System. (Git version)"
     provides=("zfs-utils")
-    conflicts=("zfs-utils-git" "zfs-utils-lts" "zfs-utils" "zfs-utils-common-git" "zfs-utils-common")
+    replaces=("zfs-utils-dkms-git")
+    conflicts=("zfs-utils-dkms-git" "zfs-utils" "zfs-utils-common-git" "zfs-utils-common")
     install=zfs-utils.install
     backup=('etc/zfs/zed.d/zed.rc' 'etc/default/zfs')
 
