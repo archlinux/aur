@@ -1,0 +1,3 @@
+#!/bin/sh
+export FUSEKI_HOME=/opt/apache-jena-fuseki
+exec /usr/bin/java -jar "$FUSEKI_HOME/fuseki-server.jar" "$@"
