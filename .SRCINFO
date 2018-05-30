@@ -10,7 +10,7 @@ pkgbase = lib32-libzip
 	depends = lib32-glibc
 	options = !libtool
 	source = http://www.nih.at/libzip/libzip-1.5.1.tar.gz
-	sha256sums = a919350f683ca6194df0a856698b477da9e06416665b883fe4fc23c0e46e6398
+	sha256sums = 47eaa45faa448c72bd6906e5a096846c469a185f293cafd8456abb165841b3f2
 
 pkgname = lib32-libzip
 
