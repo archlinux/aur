@@ -131,4 +131,7 @@ package() {
   install -d "${pkgdir}/usr/share/doc/cabbage"
   cp -r "${cabbage_install_dir}/Examples" "${pkgdir}/usr/share/doc/cabbage"
   chmod -R 755 "${pkgdir}/usr/share/doc/cabbage"
+
+  install -Dm644 Cabbage.desktop "${pkgdir}/usr/share/applications/Cabbage.desktop"
+  install -Dm644 Cabbage.desktop "${pkgdir}/usr/share/applications/CabbageLite.desktop"
 }
