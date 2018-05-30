@@ -4,19 +4,18 @@
 _build_doc=ON
 _build_apps=ON
 pkgname=openmesh
-pkgver=7.0
-pkgrel=2
+pkgver=7.1
+pkgrel=1
 pkgdesc="A generic and efficient data structure for representing and manipulating polygonal meshes"
 arch=('i686' 'x86_64')
 url="http://www.openmesh.org"
-license=('BSD-3')
+license=('BSD')
 depends=('mesa')
-optdepends=('qt4: for using included applications' )    
-install=openmesh.install
+optdepends=('qt5-base: for using included applications')
 source=("${pkgname}-${pkgver}.tar.bz2::http://www.openmesh.org/media/Releases/${pkgver}/OpenMesh-${pkgver}.tar.bz2"
     doc-install.patch)
-md5sums=('88addd1d2530bf2c957cbba95e69fe4e'
-         'd6088c06f07398b44fb6660a0f04809a')
+sha256sums=('71cd5eb25893b0369ac766bb8305a525ffbb39b7f796d2878c7f9b8e0827cbac'
+            '0ca0b0c4092d425615273e0e4ef57b91523b73d8c2bea6df96bc099f8596cb45')
 
 if [[ "${_build_doc}" == "ON" && "${_build_apps}" == "ON" ]]; then
     makedepends=('cmake' 'qt4' 'graphviz' 'doxygen')
@@ -29,21 +28,21 @@ else
 fi
 
 prepare() {
+  cd "${srcdir}/OpenMesh-${pkgver}"
     if [[ "${_build_doc}" == "ON" ]]; then
-	patch -Np0 -i doc-install.patch
+	patch -Np1 -i "${srcdir}"/doc-install.patch
     fi
 }
 
 build() {
-    rm -rf build
-    mkdir -p build
-    cd build
-    #cd "${srcdir}/OpenMesh-${pkgver}"
-    cmake ../OpenMesh-${pkgver} \
+    cd "${srcdir}/OpenMesh-${pkgver}"
+    mkdir -p build && cd build
+    cmake \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_APPS=${_build_apps} \
-		-DOPENMESH_PYTHON_VERSION=3.6
+	-DOPENMESH_PYTHON_VERSION=3.6 \
+        ..
     make
 
     if [[ "${_build_doc}" == "ON" ]]; then
@@ -52,11 +51,11 @@ build() {
 }
 
 package() {
-    cd build
+    cd "${srcdir}"/OpenMesh-${pkgver}/build
     make DESTDIR="${pkgdir}" install
     
     # install licenses
     mkdir -p "${pkgdir}"/usr/share/licenses/openmesh/
-    install -D -m644 ../OpenMesh-${pkgver}/LICENSE \
+    install -D -m644 ../LICENSE \
         "${pkgdir}"/usr/share/licenses/openmesh/
 }
