@@ -33,7 +33,7 @@ _ptver=0.4.0 # pytorch stable release version
 
 pkgname=caffe2-cpu
 pkgver="0.8.2.pytorch.${_ptver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe2.ai/'
@@ -69,7 +69,7 @@ source=(
         'caffe2-thirdparty-nanopb-git'::"git+https://github.com/nanopb/nanopb.git#commit=${_nanopb_commit}"
         'caffe2-thirdparty-pybind11-git'::"git+https://github.com/pybind/pybind11.git#commit=${_pybind11_commit}"
         'caffe2-thirdparty-cub-git'::"git+https://github.com/NVlabs/cub.git#commit=${_cub_commit}"
-        'caffe2-thirdparty-eigen-git'::"git+https://github.com/RLovelett/eigen.git#commit=${_eigen_commit}"
+        'caffe2-thirdparty-eigen-git'::"git+https://github.com/eigenteam/eigen-git-mirror.git#commit=${_eigen_commit}"
         'caffe2-thirdparty-googletest-git'::"git+https://github.com/google/googletest.git#commit=${_googletest_commit}"
         'caffe2-thirdparty-nervanagpu-git'::"git+https://github.com/NervanaSystems/nervanagpu.git#commit=${_nervanagpu_commit}"
         'caffe2-thirdparty-benchmark-git'::"git+https://github.com/google/benchmark.git#commit=${_benchmark_commit}"
@@ -88,8 +88,6 @@ source=(
         "caffe2-thirdparty-python-six-${_python_six_version}.tar.gz"::"https://github.com/benjaminp/six/archive/${_python_six_version}.tar.gz"
         'caffe2-thirdparty-ComputeLibrary-git'::"git+https://github.com/ARM-software/ComputeLibrary.git#commit=${_computelibrary_commit}"
         'caffe2-thirdparty-onnx-git'::"git+https://github.com/onnx/onnx.git#commit=${_onnx_commit}"
-    # patches:
-        'caffe2-cpu-rocksdb-fix.patch'
 )
 noextract=("caffe2-thirdparty-aten-tbb-${_aten_tbb_version}.tar.gz"
            "caffe2-thirdparty-aten-catch-${_aten_catch_version}.tar.gz"
@@ -121,8 +119,7 @@ sha256sums=('9ea4cbcab3852a25b8240e27f979d822c2f6f7934cd37033208dc13a8cad9e72'
             'SKIP'
             '927dc6fcfccd4e32e1ce161a20bf8cda39d8c9d5f7a845774486907178f69bd4'
             'SKIP'
-            'SKIP'
-            '2d79041da81bdd1e829b08909ae8ee60528fdf78f2aa68926bcf497400a87164')
+            'SKIP')
 
 prepare() {
     local _thirdparty_git_list="nanopb pybind11 cub eigen googletest nervanagpu \
@@ -160,10 +157,6 @@ prepare() {
         rm -rf "$_component"
         ln -sf "${srcdir}/caffe2-thirdparty-NNPACK_deps-${_component}-git" "${_component}"
     done
-    
-    # fix build with rocksdb
-    cd "${srcdir}/pytorch-${_ptver}"
-    patch -Np1 -i "${srcdir}/caffe2-cpu-rocksdb-fix.patch"
 }
 
 build() {
