@@ -15,7 +15,6 @@ pkgname=('zarafa-webapp'
 	 'zarafa-webapp-xmpp'
          'zarafa-webapp-zdeveloper')
 groups=('zarafa'
-	'kopano'
 	'zarafa-webapp-plugins')
 pkgver=2.2.0.414
 _pkgrel=2.2.0
