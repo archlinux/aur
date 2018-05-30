@@ -1,0 +1,17 @@
+pkgbase = r-callr
+	pkgdesc = Call R from R
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/callr/index.html
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-processx
+	optdepends = r-covr
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/callr_2.0.4.tar.gz
+	md5sums = 14d542a7a422c9449beece9c82db3ade
+
+pkgname = r-callr
+
