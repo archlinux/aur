@@ -20,7 +20,7 @@ _opt_DKMS=1            # This can be toggled between installs
 set -u
 pkgname='nslink'
 pkgver='7.28'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
@@ -60,7 +60,7 @@ if [ "${_opt_DKMS}" -ne 0 ]; then
   # 7.28 supports Kernels 4.15 through 4.17.x.
   _opt_LEGACY_VER='7.26'
   if [ "$(vercmp "${pkgver}" "${_opt_LEGACY_VER}")" -gt 0 ]; then
-    source+=("http://downloads.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-linux-${_opt_LEGACY_VER}.tar.gz")
+    source+=("http://downloads.comtrol.com/legacy/dev_mstr/rts/drivers/linux/${_opt_LEGACY_VER}/devicemaster-linux-${_opt_LEGACY_VER}.tar.gz")
   else
     _opt_LEGACY_VER=''
   fi
