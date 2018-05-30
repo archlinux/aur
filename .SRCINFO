@@ -11,7 +11,6 @@ pkgbase = zarafa-server
 	arch = x86_64
 	arch = i686
 	groups = zarafa
-	groups = kopano
 	license = AGPL3
 	makedepends = curl
 	makedepends = swig=3.0.7
