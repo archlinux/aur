@@ -1,0 +1,12 @@
+pkgbase = paymo-widget
+	pkgdesc = An app that allows you to track work time via a stopwatch or manually add bulk time for paymo
+	pkgver = 6.4.2
+	pkgrel = 1
+	url = https://www.paymoapp.com/download/
+	arch = x86_64
+	license = proprietary
+	source = paymo-widget-6.4.2-x86_64.AppImage::https://www.paymoapp.com/widget?os=linux
+	sha512sums = 1526a270aad64e42fd88fe049be25407be156af57f6555460fb23ba0a470e534ce29fba773bb9773a15fd0caeff2696cf6767f2a9794357669272efd32870999
+
+pkgname = paymo-widget
+
