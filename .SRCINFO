@@ -1,5 +1,5 @@
 pkgbase = spek-alternative
-	pkgdesc = An acoustic spectrum analyser.
+	pkgdesc = An acoustic spectrum analyser. Fork
 	pkgver = 0.8.2.3
 	pkgrel = 1
 	url = https://github.com/withmorten/spek-alternative
@@ -16,7 +16,7 @@ pkgbase = spek-alternative
 	depends = wxgtk
 	provides = spek
 	conflicts = spek
-	conflicts = spec-git
+	conflicts = spek-git
 	source = https://github.com/withmorten/spek-alternative/archive/0.8.2.3.tar.gz
 	md5sums = e7b7ce256e1712b6d22ddbf5892013a5
 
