@@ -13,7 +13,7 @@ makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23')
 conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24')
 optdepends=('mach64-dri: DRI1 support from community repo')
 groups=('xorg-drivers')
-options=('!emptydirs')
+options=('!emptydirs' '!libtool')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2)
 sha256sums=('3e98985b6e044189efd42342862208f472881c25debf22230a1d54a96d71b41f')
 

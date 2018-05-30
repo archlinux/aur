@@ -17,6 +17,7 @@ pkgbase = xf86-video-mach64
 	options = !emptydirs
 	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-mach64-6.9.5.tar.bz2
 	sha256sums = 3e98985b6e044189efd42342862208f472881c25debf22230a1d54a96d71b41f
+	options = !libtool
 
 pkgname = xf86-video-mach64
 
