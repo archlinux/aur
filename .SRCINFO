@@ -2,15 +2,15 @@
 # Mon Nov 27 16:10:50 UTC 2017
 pkgbase = nodejs-nativefier
 	pkgdesc = Wrap web apps natively
-	pkgver = 7.6.2
+	pkgver = 7.6.3
 	pkgrel = 1
 	url = https://github.com/jiahaog/nativefier#readme
 	arch = any
 	depends = nodejs
 	depends = npm
-	noextract = nativefier-7.6.2.tgz
-	source = http://registry.npmjs.org/nativefier/-/nativefier-7.6.2.tgz
-	sha1sums = b9d2898dc66a95b663a489fcb2e558d03fa4866f
+	noextract = nativefier-7.6.3.tgz
+	source = http://registry.npmjs.org/nativefier/-/nativefier-7.6.3.tgz
+	sha1sums = 3603f09398257ed7ee97b6d653a1042ae8e42892
 
 pkgname = nodejs-nativefier
 
