@@ -1,19 +1,27 @@
-# Maintainer: frichtlm <frichtlm@gmail.com>
+# Maintainer: Alex Branham <branham@utexas.edu>
 _cranname=rlang
-_cranver=0.1.1
-pkgname=r-cran-$_cranname
-pkgver=${_cranver}
+_cranver=0.2.0
+_pkgtar=${_cranname}_${_cranver}.tar.gz
+pkgname=r-rlang
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="A toolbox for working with base types, R and Tidyverse core features."
-url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
-arch=('i686' 'x86_64')
-license=('GPL-3')
-depends=('r>=3.1.0')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('38a51a0b8f8487eb52b4f3d986313682') 
+pkgdesc="Functions for Base Types and Core R and Tidyverse Features"
+arch=('any')
+url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
+license=('GPL3')
+depends=('r' )
 
-package() {
-    mkdir -p ${pkgdir}/usr/lib/R/library
-    cd ${srcdir}
-    R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
+optdepends=('r-crayon' 'r-knitr' 'r-cran-pillar' 'r-rmarkdown' 'r-testthat' 'r-covr')
+
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+md5sums=('d2a9f5357a5de6de624b11e6da12275c')
+replaces=("r-cran-rlang")
+
+build(){
+    R CMD INSTALL ${_pkgtar} -l $srcdir
 }
+package() {
+    install -d "$pkgdir/usr/lib/R/library"
+    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+}
+
