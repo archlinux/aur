@@ -1,0 +1,92 @@
+Description: Fix compilation errors with gcc7
+Author: Tobias Frost <tobi@debian.org>
+Bug-Debian: https://bugs.debian.org/853638
+Last-Update: 2018-04-06
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+diff --git a/doomclassic/doom/wi_stuff.cpp b/doomclassic/doom/wi_stuff.cpp
+index 47837cf..cec5156 100644
+--- a/doomclassic/doom/wi_stuff.cpp
++++ b/doomclassic/doom/wi_stuff.cpp
+@@ -1551,7 +1553,8 @@ void WI_loadData(void)
+ 		::g->lnames = (patch_t **) DoomLib::Z_Malloc(sizeof(patch_t*) * ( NUMMAPS ), PU_LEVEL_SHARED, 0);
+ 		for (i=0 ; i<NUMMAPS ; i++)
+ 		{
+-			sprintf(name, "WILV%d%d", ::g->wbs->epsd, i);
++			snprintf(name, 20, "WILV%d%d", ::g->wbs->epsd, i);
++			name[19] = 0;
+ 			::g->lnames[i] = (patch_t*)W_CacheLumpName(name, PU_LEVEL_SHARED);
+ 		}
+ 
+@@ -1594,7 +1598,7 @@ void WI_loadData(void)
+ 	for (i=0;i<10;i++)
+ 	{
+ 		// numbers 0-9
+-		sprintf(name, "WINUM%d", i);     
++		snprintf(name, 10, "WINUM%d", i); name[9] = 0;
+ 		::g->num[i] = (patch_t*)W_CacheLumpName(name, PU_LEVEL_SHARED);
+ 	}
+ 
+@@ -1651,11 +1655,11 @@ void WI_loadData(void)
+ 	for (i=0 ; i<MAXPLAYERS ; i++)
+ 	{
+ 		// "1,2,3,4"
+-		sprintf(name, "STPB%d", i);      
++		snprintf(name, 10, "STPB%d", i); name[9] = 0;
+ 		::g->wistuff_p[i] = (patch_t*)W_CacheLumpName(name, PU_LEVEL_SHARED);
+ 
+ 		// "1,2,3,4"
+-		sprintf(name, "WIBP%d", i+1);     
++		snprintf(name, 10, "WIBP%d", i+1); name[9] = 0;
+ 		::g->wistuff_bp[i] = (patch_t*)W_CacheLumpName(name, PU_LEVEL_SHARED);
+ 	}
+ 
+diff --git a/neo/d3xp/MultiplayerGame.cpp b/neo/d3xp/MultiplayerGame.cpp
+index a14c6da..4780f95 100644
+--- a/neo/d3xp/MultiplayerGame.cpp
++++ b/neo/d3xp/MultiplayerGame.cpp
+@@ -631,7 +631,8 @@ idMultiplayerGame::GameTime
+ const char* idMultiplayerGame::GameTime()
+ {
+ 	static char buff[16];
+-	int m, s, t, ms;
++	unsigned int m, s, t;
++	int ms;
+ 	
+ 	if( gameState == COUNTDOWN )
+ 	{
+@@ -653,7 +654,9 @@ const char* idMultiplayerGame::GameTime()
+ 		}
+ 		else
+ 		{
+-			sprintf( buff, "WMP %i", s );
++			snprintf( buff, 16, "WMP %i", s );
++			buff[15] = 0;
++
+ 		}
+ 	}
+ 	else
+diff --git a/neo/tools/compilers/dmap/dmap.cpp b/neo/tools/compilers/dmap/dmap.cpp
+index 655e881..03c5831 100644
+--- a/neo/tools/compilers/dmap/dmap.cpp
++++ b/neo/tools/compilers/dmap/dmap.cpp
+@@ -34,6 +34,10 @@ If you have questions concerning this license or the applicable additional terms
+ 
+ dmapGlobals_t	dmapGlobals;
+ 
++#ifndef PATH_MAX
++#define PATH_MAX 4096
++#endif
++
+ /*
+ ============
+ ProcessModel
+@@ -243,7 +247,7 @@ void Dmap( const idCmdArgs& args )
+ {
+ 	int			i;
+ 	int			start, end;
+-	char		path[1024];
++	char		path[PATH_MAX];
+ 	idStr		passedName;
+ 	bool		leaked = false;
+ 	bool		noCM = false;
