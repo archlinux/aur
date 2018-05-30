@@ -1,7 +1,7 @@
 # Maintainer: Emile Boutet-Livoff <emilelivoff@gmail.com>
 
 pkgname=lix-ereader
-pkgver=1.0.17
+pkgver=1.0.19
 pkgrel=1
 pkgdesc="A proprietary e-reader"
 arch=('x86_64')
@@ -15,7 +15,7 @@ PKGEXT='.pkg.tar'
 #It has it's own libnode.so and libffmpeg.so
 depends=('alsa-lib' 'libxss' 'gconf' 'gtk2' 'nss' 'libxtst')
 source=("https://download.lix.com/linux/latest")
-md5sums=("2a1a8ec23c1c8c0a038401ae4526c63f")
+md5sums=("b4d3bac9ce3e948b8caed6b6970363a4")
 
 prepare() {
     cd "${srcdir}"

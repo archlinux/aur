@@ -1,5 +1,5 @@
---- /usr/share/applications/lix.desktop	2017-11-30 09:38:30.000000000 +0100
-+++ lix.desktop	2018-03-08 14:45:04.467068555 +0100
+--- lix.desktop.orig	2018-05-30 10:13:07.265389388 +0200
++++ lix.desktop	2018-05-30 10:13:36.475500363 +0200
 @@ -1,10 +1,10 @@
  [Desktop Entry]
  Name=Lix
@@ -10,6 +10,6 @@
  Type=Application
 -Icon=lix
 +Icon=/usr/share/icons/default/48x48/apps/lix.png
- X-AppImage-Version=1.0.17
- X-AppImage-BuildId=d7f115e0-d5a9-11a7-0154-3952b44ca794
+ X-AppImage-Version=1.0.19
+ X-AppImage-BuildId=91ca75d0-6013-11a8-0ed6-f5667aa3c1f3
  Categories=Education;
