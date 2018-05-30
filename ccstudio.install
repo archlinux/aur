@@ -1,4 +1,4 @@
-_dir=/opt/ccstudio/ccsv7
+_dir=/opt/ccstudio/ccsv8
 _grp=ccstudio
 
 post_install() {
