@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=instalooter
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='Another API-less Instagram pictures and videos downloader'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-coloredlogs' 'python-dateutil' 'python-docopt'
          'python-tenacity' 'python-tqdm' 'python-verboselogs')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('1c38fa3bbf017ebb7510b52c67f35adbcdf8410be1d1870a064fada0e1e113b3f67afafe55f76d83307008801f458a0dd0f5be7f39d8840b89bee8012bfe5b76')
+sha512sums=('f73ad20afacf91c1f55de8a764a2eab9a24805985c9ea8986107f0482c31d99205fb8c8b518b06d8786ca1f1e8506fcc419520a49e3f1426cad90f728994c469')
 
 build() {
   cd $pkgname-$pkgver
