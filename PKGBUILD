@@ -2,7 +2,7 @@
 
 _pkgname=libzip
 pkgname=lib32-${_pkgname}
-pkgver=1.3.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A C library for reading, creating, and modifying zip archives"
 url="http://www.nih.at/libzip/index.html"
