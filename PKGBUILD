@@ -3,13 +3,13 @@
 
 _gitname=pacman-contrib
 pkgname=pacman-contrib-git
-pkgver=0.0.1.r8.g86adc7b
+pkgver=1.0.0.r0.ge741857
 pkgrel=1
 pkgdesc='pacman contributions (Git version)'
 url=https://git.archlinux.org/pacman-contrib.git
 arch=('x86_64')
 license=('GPL')
-depends=('bash' 'pacman-git' 'perl') # Change to 'pacman' after release 5.1
+depends=('bash' 'pacman' 'perl')
 makedepends=('asciidoc' 'git')
 provides=("$_gitname")
 conflicts=("$_gitname")
