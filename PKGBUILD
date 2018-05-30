@@ -11,6 +11,7 @@ makedepends=(
     'make'
     'automake'
     'gcc'
+    'gperf'
     'libtool'
     'pkg-config'
     'texinfo'
@@ -20,7 +21,6 @@ makedepends=(
 )
 checkdepends=(
     'check'
-    'gperf'
     'words'
     'fftw'
     'tcsh'
