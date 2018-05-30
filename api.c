@@ -1,5 +1,11 @@
 #include "api.h"
 
+News* api_news_init(void) {
+    News* pNews = malloc(sizeof(News));
+    pointer_alloc_check(pNews);
+    return pNews;
+}
+
 Info* api_info_init(void) {
     Info* pInfo = malloc(sizeof(Info));
     pointer_alloc_check(pInfo);
@@ -10,7 +16,7 @@ Info* api_info_init(void) {
             .gross_profit = EMPTY, .cash = EMPTY, .debt = EMPTY, .eps = {EMPTY, EMPTY, EMPTY, EMPTY},
             .fiscal_period[0][0] = '\0', .fiscal_period[1][0] = '\0', .fiscal_period[2][0] = '\0',
             .fiscal_period[3][0] = '\0', .eps_year_ago = {EMPTY, EMPTY, EMPTY, EMPTY}, .change_1d = EMPTY,
-            .change_7d = EMPTY, .change_30d = EMPTY, .points = NULL
+            .change_7d = EMPTY, .change_30d = EMPTY, .points = NULL, .articles = NULL, .num_articles = EMPTY
     };
     return pInfo;
 }
@@ -197,6 +203,60 @@ void* iex_store_chart(void* vpInfo) {
     return NULL;
 }
 
+void* iex_store_news(void* vpInfo) {
+    Info* symbol_info = vpInfo;
+    if (symbol_info->symbol[0] == '\0')
+        return NULL;
+
+    if (symbol_info->num_articles == EMPTY)
+        symbol_info->num_articles = DEFAULT_NUM_ARTICLES;
+
+    char iex_api_string[URL_MAX_LENGTH];
+    sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/news/last/%d", symbol_info->symbol,
+            symbol_info->num_articles);
+    String* pString = api_curl_data(iex_api_string);
+    if (pString == NULL)
+        return NULL;
+
+    Json* jobj = json_tokener_parse(pString->data), * idx;
+    if (jobj == NULL) { // Invalid symbol
+        string_destroy(&pString);
+        return NULL;
+    }
+    size_t len = json_object_array_length(jobj);
+    if (len < (unsigned) symbol_info->num_articles)
+        symbol_info->num_articles = (int)len;
+
+    symbol_info->articles = malloc(sizeof(News*) * symbol_info->num_articles);
+    pointer_alloc_check(symbol_info->articles);
+
+    for (int i = 0; i < symbol_info->num_articles; i++) {
+        symbol_info->articles[i] = api_news_init();
+        pointer_alloc_check(symbol_info->articles[i]);
+        idx = json_object_array_get_idx(jobj, (size_t) i);
+        strcpy(symbol_info->articles[i]->headline, json_object_get_string(json_object_object_get(idx, "headline")));
+        strcpy(symbol_info->articles[i]->source, json_object_get_string(json_object_object_get(idx, "source")));
+        strncpy(symbol_info->articles[i]->date, json_object_get_string(json_object_object_get(idx, "datetime")), 10);
+        symbol_info->articles[i]->date[10] = '\0';
+        strcpy(symbol_info->articles[i]->summary, json_object_get_string(json_object_object_get(idx, "summary")));
+        strip_tags(symbol_info->articles[i]->summary); // Summary will be html formatted, so must strip tags
+        strcpy(symbol_info->articles[i]->url, json_object_get_string(json_object_object_get(idx, "url")));
+        strcpy(symbol_info->articles[i]->related, json_object_get_string(json_object_object_get(idx, "related")));
+        int related_num = 0;
+        for (size_t j = 0; j < strlen(symbol_info->articles[i]->related); j++) { // List only first five related symbols
+            if (symbol_info->articles[i]->related[j] == ',')
+                related_num++;
+            if (related_num == 5) {
+                symbol_info->articles[i]->related[j] = '\0';
+                break;
+            }
+        }
+    }
+    json_object_put(jobj);
+    string_destroy(&pString);
+    return NULL;
+}
+
 void* morningstar_store_info(void* vpInfo) {
     Info* symbol_info = vpInfo;
     char today_str[DATE_MAX_LENGTH], five_year_str[DATE_MAX_LENGTH], morningstar_api_string[URL_MAX_LENGTH];
@@ -273,15 +333,15 @@ void* coinmarketcap_store_info(void* vpInfo) {
 Info* iex_get_info(const char* symbol) {
     Info* symbol_info = api_info_init();
     strcpy(symbol_info->symbol, symbol);
-    pthread_t threads[5];
-    void* (*funcs[5]) (void*) = {
-            iex_store_company, iex_store_quote, iex_store_stats, iex_store_earnings, iex_store_chart
+    pthread_t threads[6];
+    void* (*funcs[6]) (void*) = {
+            iex_store_company, iex_store_quote, iex_store_stats, iex_store_earnings, iex_store_chart, iex_store_news
     };
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 6; i++)
         if (pthread_create(&threads[i], NULL, funcs[i], symbol_info))
             EXIT_MSG("Error creating thread!");
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 6; i++)
         if (pthread_join(threads[i], NULL))
             EXIT_MSG("Error joining thread!");
 
@@ -357,8 +417,18 @@ Info* api_get_info(const char* symbol) {
     return coinmarketcap_get_info(symbol);
 }
 
+void api_news_destroy(News** phNews) {
+    free(*phNews);
+    *phNews = NULL;
+}
+
 void api_info_destroy(Info** phInfo) {
-    free((*phInfo)->points);
+    Info* pInfo = *phInfo;
+    free(pInfo->points);
+    if (pInfo->articles != NULL)
+        for (int i = 0; i < pInfo->num_articles; i++)
+            api_news_destroy(&pInfo->articles[i]);
+    free(pInfo->articles);
     free(*phInfo);
     *phInfo = NULL;
 }

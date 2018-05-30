@@ -20,7 +20,7 @@ void symbol_print_info(const char* symbol) {
         time_t time = symbol_info->intraday_time / 1000; // divide into second instead of milliseconds
         struct tm* ts = localtime(&time);
         strftime(time_str, 32, "%F %T", ts);
-        mvprintw(0, 13, "%s", time_str);
+        mvprintw(0, 18, "%s", time_str);
     }
     mvprintw(0, (int) (28 + strlen(symbol_info->name) + strlen(symbol_info->symbol)), "24H      7D     ");
     if (symbol_info->change_30d != EMPTY)
@@ -77,7 +77,7 @@ void symbol_print_info(const char* symbol) {
     else mvwprintw(company_win, getcury(company_win), getmaxx(company_win) / 2, "Volume unavailable.\n");
 
     if (symbol_info->pe_ratio != EMPTY)
-        wprintw(company_win, "P/E Ratio: %ld", symbol_info->pe_ratio);
+        wprintw(company_win, "P/E Ratio: %lf", symbol_info->pe_ratio);
     else wprintw(company_win, "P/E Ratio unavailable.");
 
     if (symbol_info->div_yield != EMPTY)
@@ -109,65 +109,30 @@ void symbol_print_info(const char* symbol) {
         WINDOW* graph_win = newwin(GRAPH_HEIGHT, GRAPH_WIDTH, GRAPH_Y, GRAPH_X);
         graph_printw(graph_win, symbol_info, NULL);
     }
-    while (getch() != 'q');
     endwin();
     api_info_destroy(&symbol_info);
 }
 
-void symbol_print_news(const char* symbol, int num_articles) {
-    if (num_articles > 50)
+void news_print(const char* symbol, int num_articles) {
+    if (num_articles > 50 || num_articles < 1)
         RET_MSG("You cannot request more than 50 articles.");
 
-    char iex_api_string[URL_MAX_LENGTH];
-    sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/news/last/%d", symbol, num_articles);
-    String* pString = api_curl_data(iex_api_string);
-    if (pString == NULL)
-        return;
-
-    if (strcmp(pString->data, "Unknown symbol") == 0) { // Invalid symbol
-        string_destroy(&pString);
-        RET_MSG("Invalid symbol.");
+    Info* symbol_info = api_info_init();
+    strcpy(symbol_info->symbol, symbol);
+    symbol_info->num_articles = num_articles;
+    iex_store_news(symbol_info);
+    if (symbol_info->articles == NULL) {
+        api_info_destroy(&symbol_info);
+        RET_MSG("Invalid symbol");
     }
-
-    Json* jobj = json_tokener_parse(pString->data);
-    size_t len = json_object_array_length(jobj);
-    if (len == 0) {
-        json_object_put(jobj);
-        string_destroy(&pString);
-        RET_MSG("No articles available.");
-    }
-
-    Json* idx;
-    const char* headline, * source, *url;
-    char date[DATE_MAX_LENGTH];
-    for (size_t i = 0; i < len; i++) {
-        idx = json_object_array_get_idx(jobj, i);
-        headline = json_object_get_string(json_object_object_get(idx, "headline")); // Headline
-        source = json_object_get_string(json_object_object_get(idx, "source")); // Source
-        strncpy(date, json_object_get_string(json_object_object_get(idx, "datetime")), 10); // Date
-        date[10] = '\0'; // null terminate date before time
-        char summary[strlen(json_object_get_string(json_object_object_get(idx, "summary")))]; // Summary
-        strcpy(summary, json_object_get_string(json_object_object_get(idx, "summary")));
-        strip_tags(summary); // Summary will be html formatted, so must strip tags
-        url = json_object_get_string(json_object_object_get(idx, "url")); // URL
-        char related[strlen(json_object_get_string(json_object_object_get(idx, "related")))]; // Related
-        strcpy(related, json_object_get_string(json_object_object_get(idx, "related")));
-        int related_num = 0;
-        for (size_t j = 0; j < strlen(related); j++) { // List only first five related symbols
-            if (related[j] == ',')
-                related_num++;
-            if (related_num == 5) {
-                related[j] = '\0';
-                break;
-            }
-        }
-        printf("%s | %s | %s\n%s\n%s | Related: %s\n\n", headline, source, date, summary, url, related);
-    }
-    json_object_put(jobj);
-    string_destroy(&pString);
+    for (int i = 0; i < symbol_info->num_articles; i++)
+        printf("%s | %s | %s\n%s\n%s | Related: %s\n\n",
+               symbol_info->articles[i]->headline, symbol_info->articles[i]->source, symbol_info->articles[i]->date,
+               symbol_info->articles[i]->summary, symbol_info->articles[i]->url, symbol_info->articles[i]->related);
+    api_info_destroy(&symbol_info);
 }
 
-void symbol_graph(const char* symbol, const char* symbol2) {
+void graph_print(const char* symbol, const char* symbol2) {
     Info* symbol_info = api_get_check_info(symbol), *symbol_info2 = NULL;
     if (symbol_info == NULL)
         RET_MSG("Invalid symbol")

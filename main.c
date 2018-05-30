@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
         int num_articles = 3; // Default
         if (argc == 4)
             num_articles = (int) strtol(argv[3], NULL, 10);
-        symbol_print_news(sym, num_articles);
+        news_print(sym, num_articles);
     }
 
         //Encrypt/decrypt
@@ -45,14 +45,14 @@ int main(int argc, char* argv[]) {
 
         // Graph
     else if (strcmp(cmd, "graph") == 0 && argc == 3)
-        symbol_graph(sym, NULL);
+        graph_print(sym, NULL);
 
         // Compare
     else if (strcmp(cmd, "cmp") == 0 && argc == 4) {
         char sym2[strlen(argv[3]) + 1];
         strcpy(sym2, argv[3]);
         strtoupper(sym2);
-        symbol_graph(sym, sym2);
+        graph_print(sym, sym2);
     }
 
         // Check

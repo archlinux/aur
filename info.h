@@ -47,14 +47,14 @@ void symbol_print_info(const char* symbol);
  * @param symbol stock/etf symbol
  * @param num_articles number of articles to print (max 50)
  */
-void symbol_print_news(const char* symbol, int num_articles);
+void news_print(const char* symbol, int num_articles);
 
 /**
  * Graphs a security in stdscr. If symbol2 is not NULL, also graphs that security.
  * @param symbol security to graph
  * @param symbol2 optional second security
  */
-void symbol_graph(const char* symbol, const char* symbol2);
+void graph_print(const char* symbol, const char* symbol2);
 
 /**
  * -- Main input loop for graphing --

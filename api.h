@@ -14,12 +14,22 @@
 #define URL_MAX_LENGTH 2048
 #define INFO_TEXT_MAX 2048
 #define EMPTY (-999)
+#define DEFAULT_NUM_ARTICLES 3
 
 #include <stddef.h>
 #include <curl/curl.h>
 #include <json-c/json_tokener.h>
 #include <pthread.h>
 #include "string-tick.h"
+
+typedef struct news_article {
+    char headline[INFO_TEXT_MAX];
+    char source[INFO_TEXT_MAX];
+    char date[DATE_MAX_LENGTH];
+    char summary[INFO_TEXT_MAX];
+    char url[URL_MAX_LENGTH];
+    char related[INFO_TEXT_MAX];
+} News;
 
 typedef struct info {
     /* Company */
@@ -65,7 +75,13 @@ typedef struct info {
     double change_7d;                   // Percent change since 7 days ago
     double change_30d;                  // Percent change since 30 days ago
     double* points;                     // Array of one price per day, startings five years previously
+
+    /* News */
+    News** articles;                    // Array of News pointers
+    int num_articles;                   // Number of News pointers in array
 } Info;
+
+News* api_news_init(void);
 
 /**
  * Allocates an Info struct and returns a pointer to it. All numbers are set to EMPTY, all strings are NULL
@@ -137,6 +153,8 @@ void* iex_store_earnings(void* vpInfo);
  */
 void* iex_store_chart(void* vpInfo);
 
+void* iex_store_news(void* vpInfo);
+
 /**
  * Designed for threading
  *
@@ -203,6 +221,8 @@ Info* api_get_check_info(const char* symbol);
  * @return Info* or NULL if invalid symbol
  */
 Info* api_get_info(const char* symbol);
+
+void api_news_destroy(News** phNews);
 
 /**
  * Destroys Info object and frees memory. Sets the pointer to the Info to NULL
