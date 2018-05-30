@@ -48,7 +48,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.28.0_566_g1b19ba6c57
+pkgver=0.28.0_605_gcb52cfae1a
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -57,7 +57,7 @@ url='https://mpv.io'
 _undetected_depends=('hicolor-icon-theme')
 depends=('ffmpeg' "${_undetected_depends[@]}")
 optdepends=('youtube-dl: for --ytdl')
-makedepends=('git' 'python-docutils')
+makedepends=('git' 'python-docutils' 'pacman-contrib')
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
