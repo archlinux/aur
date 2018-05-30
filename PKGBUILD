@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Easily Install and Load the Tidyverse"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
-license=('GPL-3 | file LICENSE')
+license=('GPL3' 'custom')
 depends=('r' 'r-cran-broom' 'r-cran-cli' 'r-crayon' 'r-cran-dplyr' 'r-dbplyr' 'r-cran-forcats' 'r-cran-ggplot2' 'r-haven' 'r-cran-hms' 'r-httr' 'r-jsonlite' 'r-cran-lubridate' 'r-magrittr' 'r-modelr' 'r-cran-purrr' 'r-cran-readr' 'r-readxl' 'r-reprex' 'r-cran-rlang' 'r-rstudioapi' 'r-rvest' 'r-stringr' 'r-cran-tibble' 'r-cran-tidyr' 'r-xml2')
 
 optdepends=('r-feather' 'r-knitr' 'r-rmarkdown')
