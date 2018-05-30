@@ -1,9 +1,5 @@
 post_install() {
   echo ""
-  echo "Updating modules dependencies..."
-  depmod -a `uname -r`
-  echo "Done."
-  echo ""
   echo "Please read https://wiki.archlinux.org/index.php/Mach64"
   echo "for the configuration of direct rendering inside Xorg."
   echo ""
@@ -11,12 +7,4 @@ post_install() {
 
 post_upgrade() {
   post_install
-}
-
-post_remove() {
-  echo ""
-  echo "Updating modules dependencies..."
-  depmod -a `uname -r`
-  echo "Done."
-  echo ""
 }
