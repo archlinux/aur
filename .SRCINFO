@@ -1,7 +1,7 @@
 pkgbase = mpv-vittgam
 	pkgdesc = My stable and sensible version of the mpv player that does not make me curse when newer upstream versions break and/or change things at random. :)
 	pkgver = 0.17.0
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	arch = i686
 	arch = x86_64
@@ -36,9 +36,9 @@ pkgbase = mpv-vittgam
 	conflicts = mpv
 	options = !emptydirs
 	options = !buildflags
-	source = mpv-vittgam-040f68da48d2acbe1e00b4c820a3da90463a5534.tar.gz::https://github.com/VittGam/mpv-vittgam/archive/040f68da48d2acbe1e00b4c820a3da90463a5534.tar.gz
+	source = mpv-vittgam-ba7e9cc32172b5c56cbe88ceec46035918408da0.tar.gz::https://github.com/VittGam/mpv-vittgam/archive/ba7e9cc32172b5c56cbe88ceec46035918408da0.tar.gz
 	source = http://www.freehackers.org/~tnagy/release/waf-1.8.12
-	sha512sums = cbef9e1c5ee8692e31edb9a37d4f6f19d2dba673e3e7452c1799e7a3d6abb614a9168630e9979b952dea6f082f2da6d9c90d22509052397359cd6b976e54473b
+	sha512sums = 63c16e0b2426683dcdd2b797157bb7f86e783482f02cc2bc5a71a80d562d845485f7291fd8470356be1b13e007c41b2f92d91aaad44c79fa3b0408dead1f1c45
 	sha512sums = 8e47112abb134f965f15a27a600b4453cad3075afb5dadc17f2f6dac33d80ec68b679ac0ebc5f8a0245cbd07ae9fc7b899e69afc1bd021cce74e7af2ab457939
 
 pkgname = mpv-vittgam
