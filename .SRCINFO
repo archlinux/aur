@@ -1,7 +1,7 @@
 pkgbase = r-cran-broom
 	pkgdesc = Convert statistical analysis objects into tidy data frames.
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cran.r-project.org/web/packages/broom/index.html
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = r-cran-broom
 	depends = r-cran-psych
 	depends = r-stringr
 	depends = r-cran-reshape2
-	depends = r-cran-nlme
 	source = http://cran.r-project.org/src/contrib/broom_0.4.4.tar.gz
 	md5sums = d2f222b2512ad35230856d94690213b5
 
