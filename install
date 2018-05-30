@@ -1,0 +1,104 @@
+#!/bin/bash
+
+function kopano_cfg_set() {
+    # 1: field / 2: value / 3: file
+    # Replaces optional comments and spaces
+    # "# name = value" => "name = newvalue"
+    #
+    sed -i "s|^#*\s*\($1\)\s*\=.*|\1 = $2|" $3
+}
+
+# care about existing files
+function installdir() {
+    local owner="$1"
+    local moddir="$2"
+    local modfile="$3"
+    local directory="$4"
+    
+    mkdir -p "$directory"
+    find $directory -exec chown "$owner" {} \;
+    find $directory -type f -exec chmod "$modfile" {} \;
+    find $directory -type d -exec chmod "$moddir" {} \;
+}
+
+function installbasics() {
+    # create tempdirs and users from /usr/lib/*.d
+    systemd-sysusers
+    systemd-tmpfiles --create
+
+    installdir kopano:kopano 0700 0600 /var/log/kopano
+    installdir kopano:kopano 0700 0600 /var/lib/kopano
+    installdir kopano:kopano 0700 0600 /var/lib/kopano/search
+    installdir kopano:kopano 0700 0600 /var/lib/kopano/presence
+    
+    # due to a bug/exception it's impossible to execute phps mapi modul without browsable dir
+    installdir kopano:kopano 0755 0600 /etc/kopano
+  
+    # fix missing python symlink for presence
+    if [[ ! -e "/usr/bin/python" ]];
+    then
+	ln -s /usr/bin/python2 /usr/bin/python
+    fi    
+}
+
+post_install() {
+    installbasics
+
+    # CONFIG
+    # => defaults
+    for cfg in /usr/share/doc/kopano/example-config/*.cfg; do
+	install --backup=simple --suffix .pacsave -o kopano -g kopano -m 0600  ${cfg} /etc/kopano
+    done
+  
+    echo
+    echo "Please install kopano:"
+    echo
+    echo "   $ /usr/share/doc/kopano/pietma/install.sh"
+    echo 
+    echo "Read More"
+    echo
+    echo "   https://pietma.com/run-and-access-kopano/"
+    echo
+
+    return 0
+}
+
+post_upgrade() {
+    local newPackageVersion="$1"
+    local oldPackageVersion="$2"
+
+    case "$oldPackageVersion" in
+	7.2.1*)
+	    installbasics
+
+            # CONFIG
+	    # => defaults
+	    for cfg in /usr/share/doc/kopano/example-config/*.cfg; do
+		install --backup=simple -o kopano -g kopano -m 0600 ${cfg} /etc/kopano
+	    done
+
+	    echo "Please check /etc/kopano for new configuration values!"
+	    ;;
+	*)
+	    ;;	
+    esac
+
+    # don't run gateway and ical as kopano user - kopano would grand access to all stores
+    for cfg in /etc/kopano/{gateway,ical}.cfg; do
+	kopano_cfg_set "run_as_user" "nobody" "${cfg}"
+	kopano_cfg_set "run_as_group" "nobody" "${cfg}"
+    done
+    
+    echo 
+    echo "Please restart kopano gateway and ical services"
+    echo
+    echo "   $ systemctl restart kopano-gateway"
+    echo "   $ systemctl restart kopano-ical"
+    echo 
+    
+    return 0
+}
+
+pre_remove() {
+    return 0
+}
