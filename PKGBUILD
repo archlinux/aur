@@ -41,7 +41,7 @@ _ptver=0.4.0 # pytorch stable release version
 
 pkgname=caffe2
 pkgver="0.8.2.pytorch.${_ptver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -66,7 +66,7 @@ depends=(
             'python-nvd3' 'python-scikit-image' 'python-glog' 'python-leveldb'
             'python-lmdb'
 )
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'gcc54')
 conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
            'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git')
 options=('!emptydirs')
@@ -80,7 +80,7 @@ source=(
         'caffe2-thirdparty-nanopb-git'::"git+https://github.com/nanopb/nanopb.git#commit=${_nanopb_commit}"
         'caffe2-thirdparty-pybind11-git'::"git+https://github.com/pybind/pybind11.git#commit=${_pybind11_commit}"
         'caffe2-thirdparty-cub-git'::"git+https://github.com/NVlabs/cub.git#commit=${_cub_commit}"
-        'caffe2-thirdparty-eigen-git'::"git+https://github.com/RLovelett/eigen.git#commit=${_eigen_commit}"
+        'caffe2-thirdparty-eigen-git'::"git+https://github.com/eigenteam/eigen-git-mirror.git#commit=${_eigen_commit}"
         'caffe2-thirdparty-googletest-git'::"git+https://github.com/google/googletest.git#commit=${_googletest_commit}"
         'caffe2-thirdparty-nervanagpu-git'::"git+https://github.com/NervanaSystems/nervanagpu.git#commit=${_nervanagpu_commit}"
         'caffe2-thirdparty-benchmark-git'::"git+https://github.com/google/benchmark.git#commit=${_benchmark_commit}"

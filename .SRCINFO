@@ -1,12 +1,13 @@
 pkgbase = caffe2
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (gpu enabled)
 	pkgver = 0.8.2.pytorch.0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://caffe2.ai/
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = cmake
+	makedepends = gcc54
 	depends = google-glog
 	depends = protobuf
 	depends = lapack
@@ -65,7 +66,7 @@ pkgbase = caffe2
 	source = caffe2-thirdparty-nanopb-git::git+https://github.com/nanopb/nanopb.git#commit=14efb1a47a496652ab08b1ebcefb0ea24ae4a5e4
 	source = caffe2-thirdparty-pybind11-git::git+https://github.com/pybind/pybind11.git#commit=add56ccdcac23a6c522a2c1174a866e293c61dab
 	source = caffe2-thirdparty-cub-git::git+https://github.com/NVlabs/cub.git#commit=285aeebaa34b0e8a7670867a2e66c1a52d998d6a
-	source = caffe2-thirdparty-eigen-git::git+https://github.com/RLovelett/eigen.git#commit=5a0ab9ff4e258b860470afe36e83a3e88b3ce14c
+	source = caffe2-thirdparty-eigen-git::git+https://github.com/eigenteam/eigen-git-mirror.git#commit=5a0ab9ff4e258b860470afe36e83a3e88b3ce14c
 	source = caffe2-thirdparty-googletest-git::git+https://github.com/google/googletest.git#commit=69e48e92de43960a316a826293510b7b3deb9eca
 	source = caffe2-thirdparty-nervanagpu-git::git+https://github.com/NervanaSystems/nervanagpu.git#commit=d4eefd50fbd7d34a17dddbc829888835d67b5f4a
 	source = caffe2-thirdparty-benchmark-git::git+https://github.com/google/benchmark.git#commit=491360b833aaab96818dce256a8409f6296dd995
