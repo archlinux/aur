@@ -3,5 +3,6 @@ ACTION!="add", GOTO="ft2232_rules_end"
 
 ATTRS{idVendor}=="0403", ATTRS{idProduct}=="cff8", MODE="0666", GROUP="tty"
 ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", MODE="0666", GROUP="tty"
+ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", MODE="0666", GROUP="tty"
 
 LABEL="ft2232_rules_end"
