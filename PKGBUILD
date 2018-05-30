@@ -2,11 +2,12 @@
 
 pkgname='xmrig-nvidia'
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Monero cryptocurrency GPU miner, HTTP API disabled, donation percentage is 0.'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-nvidia'
-depends=('libuv' 'cuda>=9')
+# We unfortunately need to be hard on which version of CUDA we use
+depends=('libuv' 'cuda>=9.2.88.1-2')
 optdepends=('monero: wallet')
 makedepends=('cmake' 'libuv' 'cuda-toolkit')
 license=('GPL')
@@ -29,8 +30,8 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}/build"
 
-  # the C/CXX flags are specific to CUDA 9/9.1 which has a hard dep on gcc6
-  cmake -DWITH_HTTPD=OFF -DCMAKE_C_COMPILER=gcc-6 -DCMAKE_CXX_COMPILER=g++-6 ..
+  # the C/CXX flags are specific to CUDA 9/9.1 which has a hard dep on gcc7
+  cmake -DWITH_HTTPD=OFF -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7 ..
   make
 }
 
