@@ -1,0 +1,23 @@
+pkgbase = aptik-gtk
+	pkgdesc = GTK Frontend for Aptik System Migration Utility
+	pkgver = 18.5.2
+	pkgrel = 1
+	url = https://github.com/teejee2008/aptik-gtk
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = vala
+	makedepends = vte3
+	depends = aptik
+	depends = glib2
+	depends = gtk3
+	depends = libgee
+	provides = aptik-gtk
+	source = aptik-gtk_v18.5.2.tgz::https://github.com/teejee2008/aptik-gtk/archive/v18.5.2.tar.gz
+	source = 0001-Update-TermBox.vala.patch
+	sha256sums = 1796003daaf30902dd33bb0b9e3cb5174452fe2802a1bf4f3b8f4b2eaf6982a3
+	sha256sums = fb0d459de84b1822047df78a7d58fa9f34c1c39181010c6a1b7565c18e58856b
+
+pkgname = aptik-gtk
+
