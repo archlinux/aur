@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# care about existing files
+function installdir() {
+    local owner="$1"
+    local moddir="$2"
+    local modfile="$3"
+    local directory="$4"
+
+    mkdir -p "$directory"
+    find $directory -exec chown "$owner" {} \;
+    find $directory -type f -exec chmod "$modfile" {} \;
+    find $directory -type d -exec chmod "$moddir" {} \;
+}
+
+
+post_install() {
+    cp -n /etc/webapps/kopano-sabre/config.example.inc.php /etc/webapps/kopano-sabre/config.inc.php
+    
+    installdir http:http 0700 0600 /var/log/kopano-sabre
+    installdir http:http 0700 0600 /var/lib/kopano-sabre
+}
+

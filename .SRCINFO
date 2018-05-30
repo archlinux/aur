@@ -1,0 +1,34 @@
+pkgbase = kopano-sabre
+	pkgdesc = provide a full CardDav backend for SabreDAV to connect with Kopano groupware
+	pkgver = 0.23
+	pkgrel = 201
+	url = https://github.com/1afa/sabre-zarafa
+	install = install
+	arch = any
+	groups = zarafa
+	groups = kopano
+	license = AGPL3
+	makedepends = php-composer
+	makedepends = git
+	depends = kopano-core
+	options = !strip
+	backup = etc/webapps/kopano-sabre/nginx-location.conf
+	backup = etc/php/conf.d/kopano-sabre.ini
+	backup = etc/php/fpm.d/kopano-sabre.conf
+	source = kopano-sabre-0.23::git+https://github.com/mpietruschka/sabre-zarafa.git
+	source = kopano-sabre.ini
+	source = kopano-sabre.conf
+	source = nginx-location.conf
+	source = nginx-ssl.example.conf
+	source = php-fpm.example.conf
+	source = composer.json
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = kopano-sabre
+
