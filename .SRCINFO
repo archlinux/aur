@@ -1,0 +1,18 @@
+pkgbase = imdb-rename
+	pkgdesc = A command line utility for searching IMDb and renaming your media files.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/BurntSushi/imdb-rename
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = Unlicense/MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = openssl
+	source = imdb-rename-0.1.0.tar.gz::https://github.com/BurntSushi/imdb-rename/archive/0.1.0.tar.gz
+	sha512sums = 54cbc5db14dea8c84a9e1285b5cad0d7752d8a20577c40aabbf2192998132d6a2ec556b50ee99c9822f7e517736083aebf56809ecb90dfe1bd7100da03fe9dc9
+
+pkgname = imdb-rename
+
