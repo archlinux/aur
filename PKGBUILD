@@ -9,8 +9,8 @@ _origpkgname=mpv
 pkgname=${_origpkgname}-vittgam
 epoch=1
 pkgver=0.17.0
-pkgrel=5
-_gitcommit=ba7e9cc32172b5c56cbe88ceec46035918408da0
+pkgrel=6
+_gitcommit=da47e9ca22b4280c6132ee30f3710cdf416afc6c
 _waf_version=1.8.12
 pkgdesc='My stable and sensible version of the mpv player that does not make me curse when newer upstream versions break and/or change things at random. :)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -28,7 +28,7 @@ conflicts=("${_origpkgname}")
 provides=("${_origpkgname}")
 source=("${pkgname}-${_gitcommit}.tar.gz::https://github.com/VittGam/${pkgname}/archive/${_gitcommit}.tar.gz"
   "http://www.freehackers.org/~tnagy/release/waf-${_waf_version}")
-sha512sums=('63c16e0b2426683dcdd2b797157bb7f86e783482f02cc2bc5a71a80d562d845485f7291fd8470356be1b13e007c41b2f92d91aaad44c79fa3b0408dead1f1c45'
+sha512sums=('697f08f9aeeb8212accaa36b452c7955604c5e236f4550ea14d857477bca4e6daf1539e569016590dce49b630def0cf55dec30e9916b5c1e7f25240316b62848'
   '8e47112abb134f965f15a27a600b4453cad3075afb5dadc17f2f6dac33d80ec68b679ac0ebc5f8a0245cbd07ae9fc7b899e69afc1bd021cce74e7af2ab457939')
 
 prepare() {
