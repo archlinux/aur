@@ -2,7 +2,7 @@
 # Contributor: Olivier EBLE <olivier.eble at gmail com>
 # Contributor: Laszlo Papp <djszapi2 at gmail com>
 pkgname=libftd2xx
-pkgver=1.3.6
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Library that allows a direct access to a USB FTDI2XX chip based device"
 arch=('i686' 'x86_64')
@@ -17,12 +17,12 @@ options=(!strip staticlibs)
 if [ "${CARCH}" == "i686" ]; then
 	source=(http://www.ftdichip.com/Drivers/D2XX/Linux/${pkgname}-i386-${pkgver}.tgz
         	55-ft2232.rules)
-	md5sums=('e75bfff2387af14a5ca0904d311a592a'
+	md5sums=('af99e23216acda30ca137c558cd15864'
 	         '5c6d646c3c5b28db1c3b880a04d4d79c')
 else
 	source=(http://www.ftdichip.com/Drivers/D2XX/Linux/${pkgname}-x86_64-${pkgver}.tgz
         	55-ft2232.rules)
-	md5sums=('ef66927b5e9748c08b46ab7d7124b764'
+	md5sums=('3140665d50b326a54e281cf1c465ca3c'
 	         '5c6d646c3c5b28db1c3b880a04d4d79c')
 fi
 
