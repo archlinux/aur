@@ -1,6 +1,6 @@
 pkgbase = inox-hard
 	pkgdesc = A web browser built for speed, simplicity, and security
-	pkgver = 66.0.3359.170
+	pkgver = 67.0.3396.62
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = inox-hard.install
@@ -42,7 +42,7 @@ pkgbase = inox-hard
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-66.0.3359.170.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-67.0.3396.62.tar.xz
 	source = chromium-launcher-5.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v5.tar.gz
 	source = https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/inox.desktop
 	source = https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/breakpad-use-ucontext_t.patch
