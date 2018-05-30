@@ -66,14 +66,22 @@ void* iex_store_company(void* vpInfo) {
         return NULL;
     }
 
-    strcpy(symbol_info->symbol, json_object_get_string(json_object_object_get(jobj, "symbol")));
-    strcpy(symbol_info->name, json_object_get_string(json_object_object_get(jobj, "companyName")));
-    strcpy(symbol_info->industry, json_object_get_string(json_object_object_get(jobj, "industry")));
-    strcpy(symbol_info->website, json_object_get_string(json_object_object_get(jobj, "website")));
-    strcpy(symbol_info->description, json_object_get_string(json_object_object_get(jobj, "description")));
-    strcpy(symbol_info->ceo, json_object_get_string(json_object_object_get(jobj, "CEO")));
-    strcpy(symbol_info->issue_type, json_object_get_string(json_object_object_get(jobj, "issueType")));
-    strcpy(symbol_info->sector, json_object_get_string(json_object_object_get(jobj, "sector")));
+    if (json_object_object_get(jobj, "symbol") != NULL)
+        strcpy(symbol_info->symbol, json_object_get_string(json_object_object_get(jobj, "symbol")));
+    if (json_object_object_get(jobj, "companyName") != NULL)
+        strcpy(symbol_info->name, json_object_get_string(json_object_object_get(jobj, "companyName")));
+    if (json_object_object_get(jobj, "industry") != NULL)
+        strcpy(symbol_info->industry, json_object_get_string(json_object_object_get(jobj, "industry")));
+    if (json_object_object_get(jobj, "website") != NULL)
+        strcpy(symbol_info->website, json_object_get_string(json_object_object_get(jobj, "website")));
+    if (json_object_object_get(jobj, "description") != NULL)
+        strcpy(symbol_info->description, json_object_get_string(json_object_object_get(jobj, "description")));
+    if (json_object_object_get(jobj, "CEO") != NULL)
+        strcpy(symbol_info->ceo, json_object_get_string(json_object_object_get(jobj, "CEO")));
+    if (json_object_object_get(jobj, "issueType") != NULL)
+        strcpy(symbol_info->issue_type, json_object_get_string(json_object_object_get(jobj, "issueType")));
+    if (json_object_object_get(jobj, "sector") != NULL)
+        strcpy(symbol_info->sector, json_object_get_string(json_object_object_get(jobj, "sector")));
     json_object_put(jobj);
     string_destroy(&pString);
     return NULL;
@@ -97,7 +105,7 @@ void* iex_store_quote(void* vpInfo) {
     }
 
     symbol_info->price = json_object_get_double(json_object_object_get(jobj, "latestPrice"));
-    symbol_info->intraday_time = json_object_get_int64(json_object_object_get(jobj, "closeTime"));
+    symbol_info->intraday_time = json_object_get_int64(json_object_object_get(jobj, "latestUpdate"));
     symbol_info->marketcap = json_object_get_int64(json_object_object_get(jobj, "marketCap"));
     symbol_info->volume_1d = json_object_get_int64(json_object_object_get(jobj, "latestVolume"));
     symbol_info->pe_ratio = json_object_get_double(json_object_object_get(jobj, "peRatio"));
@@ -150,13 +158,23 @@ void* iex_store_earnings(void* vpInfo) {
         return NULL;
     }
 
-    Json* idx;
-    size_t len = json_object_array_length(json_object_object_get(jobj, "earnings"));
-    for (size_t i = 0; i < len; i++) {
-        idx = json_object_array_get_idx(json_object_object_get(jobj, "earnings"), i);
-        symbol_info->eps[i] = json_object_get_double(json_object_object_get(idx, "actualEPS"));
-        symbol_info->eps_year_ago[i] = json_object_get_double(json_object_object_get(idx, "yearAgo"));
-        strcpy(symbol_info->fiscal_period[i], json_object_get_string(json_object_object_get(idx, "fiscalPeriod")));
+    if (json_object_is_type(json_object_object_get(jobj, "earnings"), json_type_array)) { // ETFs don't report earnings
+        size_t len = json_object_array_length(json_object_object_get(jobj, "earnings"));
+        Json* idx;
+        for (size_t i = 0; i < len; i++) {
+            idx = json_object_array_get_idx(json_object_object_get(jobj, "earnings"), i);
+            symbol_info->eps[i] = json_object_get_double(json_object_object_get(idx, "actualEPS"));
+            symbol_info->eps_year_ago[i] = json_object_get_double(json_object_object_get(idx, "yearAgo"));
+            if (json_object_object_get(idx, "fiscalPeriod") != NULL)
+                strcpy(symbol_info->fiscal_period[i],
+                       json_object_get_string(json_object_object_get(idx, "fiscalPeriod")));
+            else if (json_object_object_get(idx, "fiscalEndDate") != NULL)
+                strcpy(symbol_info->fiscal_period[i],
+                       json_object_get_string(json_object_object_get(idx, "fiscalEndDate")));
+            else if (json_object_object_get(idx, "EPSReportDate") != NULL)
+                strcpy(symbol_info->fiscal_period[i],
+                       json_object_get_string(json_object_object_get(idx, "EPSReportDate")));
+        }
     }
     json_object_put(jobj);
     string_destroy(&pString);
@@ -234,14 +252,20 @@ void* iex_store_news(void* vpInfo) {
         symbol_info->articles[i] = api_news_init();
         pointer_alloc_check(symbol_info->articles[i]);
         idx = json_object_array_get_idx(jobj, (size_t) i);
-        strcpy(symbol_info->articles[i]->headline, json_object_get_string(json_object_object_get(idx, "headline")));
-        strcpy(symbol_info->articles[i]->source, json_object_get_string(json_object_object_get(idx, "source")));
-        strncpy(symbol_info->articles[i]->date, json_object_get_string(json_object_object_get(idx, "datetime")), 10);
+        if (json_object_object_get(idx, "headline") != NULL)
+            strcpy(symbol_info->articles[i]->headline, json_object_get_string(json_object_object_get(idx, "headline")));
+        if (json_object_object_get(idx, "source") != NULL)
+            strcpy(symbol_info->articles[i]->source, json_object_get_string(json_object_object_get(idx, "source")));
+        if (json_object_object_get(idx, "dateTime") != NULL)
+            strncpy(symbol_info->articles[i]->date, json_object_get_string(json_object_object_get(idx, "datetime")), 10);
         symbol_info->articles[i]->date[10] = '\0';
-        strcpy(symbol_info->articles[i]->summary, json_object_get_string(json_object_object_get(idx, "summary")));
+        if (json_object_object_get(idx, "summary") != NULL)
+            strcpy(symbol_info->articles[i]->summary, json_object_get_string(json_object_object_get(idx, "summary")));
         strip_tags(symbol_info->articles[i]->summary); // Summary will be html formatted, so must strip tags
-        strcpy(symbol_info->articles[i]->url, json_object_get_string(json_object_object_get(idx, "url")));
-        strcpy(symbol_info->articles[i]->related, json_object_get_string(json_object_object_get(idx, "related")));
+        if (json_object_object_get(idx, "url") != NULL)
+            strcpy(symbol_info->articles[i]->url, json_object_get_string(json_object_object_get(idx, "url")));
+        if (json_object_object_get(idx, "related") != NULL)
+            strcpy(symbol_info->articles[i]->related, json_object_get_string(json_object_object_get(idx, "related")));
         int related_num = 0;
         for (size_t j = 0; j < strlen(symbol_info->articles[i]->related); j++) { // List only first five related symbols
             if (symbol_info->articles[i]->related[j] == ',')
