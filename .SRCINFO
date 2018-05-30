@@ -1,7 +1,7 @@
 pkgbase = firefox-esr52
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release 52.x
 	pkgver = 52.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = x86_64
 	license = MPL
@@ -52,6 +52,7 @@ pkgbase = firefox-esr52
 	source = rust-i686.patch
 	source = make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
 	source = use_noexcept_in_mozalloc.patch
+	source = ffmpeg4.patch.gz
 	validpgpkeys = 2B90598A745E992F315E22C58AB132963A06537A
 	sha256sums = babed4fe0ae95783e39358aedf7111b20fd9442f73b3b41b025fa4951fe76287
 	sha256sums = c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826
@@ -62,6 +63,7 @@ pkgbase = firefox-esr52
 	sha256sums = f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269
 	sha256sums = 7760ebe71f4057cbd2f52b715abaf0d944c14c39e2bb2a5322114ad8451e12d9
 	sha256sums = 32eae55bf9151df5f77ee98585e6cef4cc7ee2e5f2ca44c1a42f87d132eb22d8
+	sha256sums = 2a285e0c31968e3fe9b65a585838b46f9342ff0a369e786a729b4c3886617034
 
 pkgname = firefox-esr52
 
