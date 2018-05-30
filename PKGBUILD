@@ -2,7 +2,7 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.16
-_pkgver=4.16.11
+_pkgver=4.16.12
 pkgver=${_pkgver}.a
 pkgrel=1
 url='https://github.com/anthraxx/linux-hardened'
@@ -20,23 +20,24 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         90-linux.hook  # pacman hook for initramfs regeneration
         linux.preset   # standard config files for mkinitcpio ramdisk
 
+        # https://bugs.archlinux.org/task/56780
+        ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
         # https://bugs.archlinux.org/task/56711
-        drm-i915-edp-Only-use-the-alternate-fixed-mode-if-its-asked-for.patch
-        partially-revert-swiotlb-remove-various-exports.patch
+        Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 )
 replaces=('linux-grsec')
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'd0d998f193c3feeab95f1378dea15aa6ba145f591661547cc00ef16d161651fe'
+            '70a6381aca28b1d271e85bc38fab05af4525d9fdc2c5bb87182b3351db8c4fa2'
             'SKIP'
-            'a6a8b035211378fd5d973940a897d58c704cf196e547a44251c1083cb7b37036'
+            'ce0b33e578c743262fb867f2975844ad8be6b9d46a308b0689907378d2a0b8fb'
             'SKIP'
             '7ae4d22c27fedaf46945c40c4608da8db832846d742088cf24256bab10552799'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'c08d12c699398ef88b764be1837b9ee11f2efd3188bd1bf4e8f85dfbeee58148'
-            '87a0849079db7bf1deefb687bcf43170f1b209d27af9950f98b049cdf233b447')
+            '655534c9dda90ff8cea6f48f114bf3cd9118826bd6cb7bd24734dabde9997221'
+            '8114295b8c07795a15b9f8eafb0f515c34661a1e05512da818a34581dd30f87e')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
