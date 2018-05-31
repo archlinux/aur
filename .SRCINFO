@@ -7,11 +7,11 @@ pkgbase = python-pyutil
 	license = GPL
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	depends = python2
 	source = https://pypi.python.org/packages/c6/f2/42e3c9f20c12030e94b6e8d8a3633760a898cfde7bdb4bf6218404da16ff/pyutil-2.1.0.tar.gz
 	sha256sums = 30e9716eff6696536e4311dd0b369629c7b12400745eff48e940cc8aac422a25
 
 pkgname = python-pyutil
 
 pkgname = python2-pyutil
+	depends = python2
 
