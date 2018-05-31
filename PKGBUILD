@@ -36,7 +36,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  composer install --no-interaction --prefer-dist --no-scripts
+  composer install --no-interaction --prefer-dist --no-scripts && composer dump
   php -dphar.readonly=0 utils/make-phar.php wp-cli.phar --quiet
 }
 
