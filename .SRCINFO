@@ -1,0 +1,15 @@
+pkgbase = ckan-bin
+	pkgdesc = The Comprehensive Kerbal Archive Network
+	pkgver = 1.25.1
+	pkgrel = 1
+	url = https://github.com/ksp-ckan/ckan/
+	arch = any
+	license = MIT
+	depends = mono
+	provides = ckan
+	conflicts = ckan
+	source = ckan_1.25.1_all.deb::https://github.com/ksp-ckan/ckan/releases/download/v1.25.1/ckan_1.25.1_all.deb
+	sha256sums = f77fa3d6dff3dcee897072e3f507aed2b56da396da84e5f537da6ae3e9603054
+
+pkgname = ckan-bin
+
