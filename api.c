@@ -3,6 +3,9 @@
 News* api_news_init(void) {
     News* pNews = malloc(sizeof(News));
     pointer_alloc_check(pNews);
+    *pNews = (News) {
+        .headline[0] = '\0', .source[0] = '\0', .date[0] = '\0', .summary[0] = '\0', .url[0] = '\0', .related[0] = '\0'
+    };
     return pNews;
 }
 
