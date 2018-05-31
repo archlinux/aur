@@ -1,0 +1,14 @@
+pkgbase = python-packbits
+	pkgdesc = This module implements a PackBits encoder/decoder for Python 2.x and 3.x.
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/kmike/packbits
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/packbits/packbits-0.6.tar.gz
+	sha256sums = bc6b370bb34e04ac8cfa835e06c0484380affc6d593adb8009dd6c0f7bfff034
+
+pkgname = python-packbits
+
