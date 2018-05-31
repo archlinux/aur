@@ -3,7 +3,7 @@
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
 pkgname=pyfa
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 _distname="Pyfa-${pkgver}"
 pkgdesc="EVE Online Fitting Assistant"
@@ -15,17 +15,20 @@ depends=('python' 'python-wxpython' 'python-logbook' 'python-matplotlib' 'python
 optdepends=()
 source=(https://github.com/pyfa-org/Pyfa/archive/v$pkgver.tar.gz pyfa.desktop pyfa-start.sh)
 
-sha256sums=('f6f21e12cc5cac04c5f90263f3c13fe76172a339dc5ecaf5bdf25b34f0bef422'
+sha256sums=('a414068559cad2be81cea24a8dc95b7b46d090d0018fe2a2df91decc9d80cd9a'
             'b54ef367e93d7916f6ef3106a27018571d35afc1aa9eadcccc79463050e70786'
             '0fa4a1cb835ddbb764957cd00426f9bfa52b17bcb6d5dc7428afc256da5e01da')
 
 package() {
   install -dm755 "${pkgdir}"/usr/share/pyfa
+  install -dm755 "${pkgdir}"/usr/share/licenses/pyfa
 
   install -Dm644 "${srcdir}"/"${_distname}"/config.py "${pkgdir}"/usr/share/pyfa
   install -Dm644 "${srcdir}"/"${_distname}"/eve.db "${pkgdir}"/usr/share/pyfa
   install -Dm755 "${srcdir}"/"${_distname}"/pyfa.py "${pkgdir}"/usr/share/pyfa
   install -Dm644 "${srcdir}"/"${_distname}"/README.md "${pkgdir}"/usr/share/pyfa
+
+  install -Dm644 "${srcdir}"/"${_distname}"/LICENSE "${pkgdir}"/usr/share/licenses/pyfa
 
   cp -a "${srcdir}"/"${_distname}"/eos "${pkgdir}"/usr/share/pyfa
   cp -a "${srcdir}"/"${_distname}"/gui "${pkgdir}"/usr/share/pyfa
