@@ -2,7 +2,7 @@
 
 pkgname=ttf-abibas
 pkgver=20150814
-pkgrel=1
+pkgrel=2
 pkgdesc="Blacklatter abibas knows ελληνικά and русский as well as most European languages."
 arch=('any')
 url="http://openfontlibrary.org/fr/font/abibas"
