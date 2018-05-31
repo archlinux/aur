@@ -56,7 +56,7 @@ build() {
   export TF_NEED_CUDA=0
 
   ./configure
-  bazel build --config=opt --jobs=$MAKEFLAGS //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package
+  bazel build --config=opt ${MAKEFLAGS:--j$(nproc)} //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmp
 }
 
