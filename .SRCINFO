@@ -1,7 +1,7 @@
 pkgbase = smallpdf-desktop
 	pkgdesc = Smallpdf desktop reader and converter
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://smallpdf.com/
 	install = smallpdf-desktop.install
 	arch = x86_64
