@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Manage fonctional aliases"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-mail>=$pkgver")
 
 install=fusiondirectory-plugin-alias.install
