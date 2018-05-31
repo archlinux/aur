@@ -1,14 +1,19 @@
 pkgbase = r-openssl
-	pkgdesc = toolkit for encryption, signatures and certificates based on openssl
-	pkgver = 0.9.4
+	pkgdesc = Toolkit for Encryption, Signatures and Certificates Based on OpenSSL
+	pkgver = 1.0.1
 	pkgrel = 1
-	url = https://github.com/jeroenooms/openssl#readme
-	arch = any
+	url = https://cran.r-project.org/package=openssl
+	arch = x86_64
 	license = MIT
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
 	depends = r
+	optdepends = r-testthat
+	optdepends = r-digest
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-jsonlite
+	optdepends = r-jose
+	source = https://cran.r-project.org/src/contrib/openssl_1.0.1.tar.gz
+	md5sums = f16b7b854787df75ff852704797b79c7
 
 pkgname = r-openssl
 
