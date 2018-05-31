@@ -9,7 +9,7 @@ pkgdesc="True Random Numbers using RANDOM.ORG"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('GPL')
-depends=('r' 'r-cran-curl')
+depends=('r' 'r-curl')
 
 
 
