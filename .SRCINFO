@@ -1,6 +1,6 @@
 pkgbase = python37
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.7.0b4
+	pkgver = 3.7.0b5
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686
@@ -26,9 +26,9 @@ pkgbase = python37
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	options = !makeflags
-	source = https://www.python.org/ftp/python/3.7.0/Python-3.7.0b4.tar.xz
+	source = https://www.python.org/ftp/python/3.7.0/Python-3.7.0b5.tar.xz
 	source = dont-make-libpython-readonly.patch
-	sha512sums = e97459a5467a984a5a2bfc08ed937dfeb899f3d4ff9a655878badffc19e722efc30112422c14f94fcf9f6c82ee01e9fe2bb538db83454e4c83b711d1a8444472
+	sha512sums = 1623df6a250982b070788f47a5a6cc6c2fd6d8e6396cf6926b771abc35e4291bd4532f03e070f8010f17075d5bdb748ce8056ef9e1a2c54e518d58b75481b692
 	sha512sums = 500ea7f603f96f721d04ca64390f4bd9ddbab2c16b837b67f8a51ed9167a1d57c5b435be1ebe98b0c74eff728714033b3dcbb5ee978b9bf98086571399717f17
 
 pkgname = python37
