@@ -2,7 +2,7 @@ pkgbase = r-gtable
 	pkgdesc = Arrange Grobs in Tables
 	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/gtable/index.html
+	url = https://cran.r-project.org/package=gtable
 	arch = any
 	license = GPL2
 	depends = r
