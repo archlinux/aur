@@ -2,7 +2,7 @@ pkgbase = r-munsell
 	pkgdesc = Utilities for Using Munsell Colours
 	pkgver = 0.4.3
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/munsell/index.html
+	url = https://cran.r-project.org/package=munsell
 	arch = any
 	license = MIT
 	depends = r
