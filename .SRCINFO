@@ -1,6 +1,6 @@
 pkgbase = git-hub
 	pkgdesc = Git command line interface to GitHub
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/sociomantic-tsunami/git-hub
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = git-hub
 	depends = python2
 	depends = git
 	depends = bash-completion
-	source = git+https://github.com/sociomantic-tsunami/git-hub.git#tag=v1.0.0
+	source = git+https://github.com/sociomantic-tsunami/git-hub.git#tag=v1.0.1
 	sha1sums = SKIP
 
 pkgname = git-hub
