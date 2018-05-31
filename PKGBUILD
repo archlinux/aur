@@ -19,12 +19,12 @@ md5sums=('SKIP' 'SKIP' 'SKIP')
 validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <ludovic.rousseau@free.fr>
 
 pkgver() {
-  cd "${srcdir}/CCID"
-  git describe --long | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^ccid\.//g"
+    cd "${srcdir}/CCID"
+    git describe --long | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^ccid\.//g"
 }
 
 prepare() {
-    cd ${srcdir}/CCID
+    cd "${srcdir}/CCID"
     git submodule init 
     git config submodule.PCSC.url $srcdir/PCSC
     git config submodule.PCSC-contrib.url $srcdir/PCSC-contrib
@@ -32,23 +32,23 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/CCID"
-  sed -i "/^AC\_INIT/ { s,]),-git]), }" configure.ac
-  ./bootstrap
-  ./configure --prefix=/usr \
-              --sysconfdir=/etc \
-              --enable-twinserial \
-              --enable-serialconfdir=/etc/reader.conf.d
-  make
+    cd "${srcdir}/CCID"
+    sed -i "/^AC\_INIT/ { s,]),-git]), }" configure.ac
+    ./bootstrap
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --enable-twinserial \
+                --enable-serialconfdir=/etc/reader.conf.d
+    make
 }
 
 package() {
-  cd "${srcdir}/CCID"
+    cd "${srcdir}/CCID"
 
-  make DESTDIR="${pkgdir}" install
-  # move the configuration file in /etc and create a symbolic link
-  mv "${pkgdir}/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist" "${pkgdir}/etc/libccid_Info.plist"
-  ln -s /etc/libccid_Info.plist ${pkgdir}/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist
+    make DESTDIR="${pkgdir}" install
+    # move the configuration file in /etc and create a symbolic link
+    mv "${pkgdir}/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist" "${pkgdir}/etc/libccid_Info.plist"
+    ln -s /etc/libccid_Info.plist "${pkgdir}/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist"
 
-  install -Dm644 src/92_pcscd_ccid.rules "${pkgdir}/usr/lib/udev/rules.d/92_pcscd_ccid.rules"
+    install -Dm644 src/92_pcscd_ccid.rules "${pkgdir}/usr/lib/udev/rules.d/92_pcscd_ccid.rules"
 }
