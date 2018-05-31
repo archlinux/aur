@@ -1,7 +1,7 @@
 pkgbase = hdf4-java
 	pkgdesc = General purpose library and file format for storing scientific data (full version including the Java Native Interfaces - JNI)
 	pkgver = 2.13
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.hdfgroup.org/hdf4.html
 	arch = i686
 	arch = x86_64

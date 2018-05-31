@@ -4,7 +4,7 @@
 pkgname=hdf4-java
 _pkgname=hdf4
 pkgver=2.13
-pkgrel=3
+pkgrel=4
 pkgdesc="General purpose library and file format for storing scientific data (full version including the Java Native Interfaces - JNI)"
 arch=('i686' 'x86_64')
 url="http://www.hdfgroup.org/hdf4.html"
@@ -31,6 +31,7 @@ build() {
     CFLAGS="${CFLAGS} -fPIC" \
     LDFLAGS="-l:libjpeg.so.8 ${LDFLAGS}" \
     F77=gfortran \
+    JAVADOC='javadoc -Xdoclint:none' \
     --enable-fortran \
     --enable-production \
     --enable-java \
