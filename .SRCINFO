@@ -1,0 +1,14 @@
+pkgbase = r-lazyeval
+	pkgdesc = An alternative approach to non-standard evaluation using formulas. Provides a full implementation of LISP style 'quasiquotation', making it easier to generate code with other code.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/lazyeval/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	depends = r>=3.1.0
+	source = http://cran.r-project.org/src/contrib/lazyeval_0.2.1.tar.gz
+	md5sums = e7f4dcf399829e6cf1e49371cc773085
+
+pkgname = r-lazyeval
+
