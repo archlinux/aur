@@ -1,14 +1,13 @@
 pkgbase = r-stringi
-	pkgdesc = character string processing facilities
-	pkgver = 1.1.1
+	pkgdesc = Character String Processing Facilities
+	pkgver = 1.2.2
 	pkgrel = 1
-	url = http://www.gagolewski.com/software/stringi/ http://site.icu-project.org/ http://www.unicode.org/
-	arch = any
+	url = https://cran.r-project.org/package=stringi
+	arch = x86_64
 	license = custom
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
-	depends = r>=2.13.1
+	depends = r
+	source = https://cran.r-project.org/src/contrib/stringi_1.2.2.tar.gz
+	md5sums = 815e5ffc073eea5e10cf56a1af12facc
 
 pkgname = r-stringi
 
