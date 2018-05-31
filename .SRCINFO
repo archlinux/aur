@@ -1,14 +1,14 @@
 pkgbase = mingw-w64-binutils-bin
 	pkgdesc = Cross binutils for the MinGW-w64 cross-compiler (pre-compiled)
 	pkgver = 2.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/binutils
 	arch = x86_64
 	groups = mingw-w64-toolchain
 	groups = mingw-w64
 	license = GPL
 	depends = zlib
-	provides = mingw-w64-binutils
+	provides = mingw-w64-binutils=2.30
 	conflicts = mingw-w64-binutils
 	options = !libtool
 	options = !emptydirs
