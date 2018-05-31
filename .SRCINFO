@@ -1,6 +1,6 @@
 pkgbase = imagemagick-fftw
 	pkgdesc = An image viewing/manipulation program
-	pkgver = 7.0.7.36
+	pkgver = 7.0.7.37
 	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
@@ -30,11 +30,11 @@ pkgbase = imagemagick-fftw
 	depends = libraqm
 	depends = libpng
 	depends = libxml2
-	source = https://www.imagemagick.org/download/ImageMagick-7.0.7-36.tar.xz
-	source = https://www.imagemagick.org/download/ImageMagick-7.0.7-36.tar.xz.asc
+	source = https://www.imagemagick.org/download/ImageMagick-7.0.7-37.tar.xz
+	source = https://www.imagemagick.org/download/ImageMagick-7.0.7-37.tar.xz.asc
 	source = arch-fonts.diff
 	validpgpkeys = D8272EF51DA223E4D05B466989AB63D48277377A
-	sha256sums = 922989149298defdd758225e396b9b09eaf5682320c34120fff3e6d8ccbb91ef
+	sha256sums = c722c6de497991023661e6a2e7605f3c6590a9989a170bdf2661328381a67165
 	sha256sums = SKIP
 	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
 
@@ -50,7 +50,7 @@ pkgname = libmagick-fftw
 	optdepends = openexr: OpenEXR support
 	optdepends = openjpeg2: JPEG2000 support
 	optdepends = pango: Text rendering
-	provides = libmagick=7.0.7.36
+	provides = libmagick=7.0.7.37
 	conflicts = libmagick
 	options = !emptydirs
 	options = libtool
@@ -68,9 +68,9 @@ pkgname = libmagick-fftw
 	backup = etc/ImageMagick-7/type-ghostscript.xml
 
 pkgname = imagemagick-fftw
-	depends = libmagick-fftw=7.0.7.36-1
+	depends = libmagick-fftw=7.0.7.37-1
 	optdepends = imagemagick-doc: manual and API docs
-	provides = imagemagick=7.0.7.36
+	provides = imagemagick=7.0.7.37
 	conflicts = imagemagick
 	options = !emptydirs
 
