@@ -8,9 +8,10 @@ pkgbase = r-distr
 	depends = r
 	depends = r-startupmsg
 	depends = r-sfsmisc
-	depends = r-cran-sweavelistingutils
+	depends = r-sweavelistingutils
 	optdepends = r-distrex
 	optdepends = r-svunit
+	replaces = r-cran-distr
 	source = https://cran.r-project.org/src/contrib/distr_2.6.2.tar.gz
 	md5sums = 3fe0ece8ba4599f8ba867e2aac9485ca
 
