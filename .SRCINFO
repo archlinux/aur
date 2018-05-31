@@ -1,22 +1,35 @@
 pkgbase = r-devtools
-	pkgdesc = tools to make developing r packages easier
-	pkgver = 1.12.0
+	pkgdesc = Tools to Make Developing R Packages Easier
+	pkgver = 1.13.5
 	pkgrel = 1
-	url = https://github.com/hadley/devtools
-	arch = any
+	url = https://cran.r-project.org/package=devtools
+	arch = x86_64
 	license = GPL
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
-	depends = r>=3.0.2
-	depends = r-httr>=0.4
-	depends = r-memoise>=1.0.0
+	depends = r
+	depends = r-httr
+	depends = r-memoise
 	depends = r-whisker
 	depends = r-digest
-	depends = r-rstudioapi>=0.2.0
+	depends = r-rstudioapi
 	depends = r-jsonlite
-	depends = r-git2r>=0.11.0
+	depends = r-git2r
 	depends = r-withr
+	optdepends = r-curl
+	optdepends = r-crayon
+	optdepends = r-testthat
+	optdepends = r-biocinstaller
+	optdepends = r-rmarkdown
+	optdepends = r-knitr
+	optdepends = r-hunspell
+	optdepends = r-lintr
+	optdepends = r-cran-bitops
+	optdepends = r-roxygen2
+	optdepends = r-evaluate
+	optdepends = r-rversions
+	optdepends = r-covr
+	optdepends = r-gmailr
+	source = https://cran.r-project.org/src/contrib/devtools_1.13.5.tar.gz
+	md5sums = d090af5b6f5d990f6d422e09348caafa
 
 pkgname = r-devtools
 
