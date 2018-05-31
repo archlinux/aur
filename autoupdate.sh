@@ -14,6 +14,6 @@ sed "s/pkgver=[0-9].[0-9].[0-9]/pkgver=${dynarever}/g" PKGBUILD > PKGBUILD
 # update
 makepkg --printsrcinfo > .SRCINFO
 
-git add PKGBUILD .SRCINFO
-git commit -c="Updated to ${dynarever}"
-git push
+#git add PKGBUILD .SRCINFO
+#git commit -c="Updated to ${dynarever}"
+#git push

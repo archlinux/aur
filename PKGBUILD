@@ -1,6 +1,6 @@
 # Mantainer: Angelo Salton <gsalton4@hotmail.com>
 pkgname=dynare
-pkgver=4.5.3
+pkgver=4.5.4
 pkgrel=1
 pkgdesc="A software platform for handling (economic) DSGE and OLG models."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('octave' 'boost' 'blas' 'gsl' 'libmatio')
 makedepends=('gcc-fortran')
 optdepends=('texlive-core')
 source=(http://www.dynare.org/release/source/${pkgname}-${pkgver}.tar.xz)
-md5sums=('6398238d234a0d778799a024d413d0be')
+md5sums=('84b98638d13089f329148363b9fd7bc3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -23,7 +23,7 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-  #make check
+  #make check # /*takes a long time!*/
 }
 
 package() {
