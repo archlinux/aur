@@ -2,7 +2,7 @@
 _gitrepository='curate-pkg'
 _gitbranch='master'
 pkgname='curate-pkg-git'
-pkgver=1.68
+pkgver=1.69
 pkgrel=2
 pkgdesc='aggregates all package managers under one tool'
 arch=('i686' 'x86_64')
