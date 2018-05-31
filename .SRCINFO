@@ -1,0 +1,29 @@
+pkgbase = tensorflow-cpu-git
+	pkgdesc = Library for computation using data flow graphs for scalable machine learning
+	pkgver = 1.8.0+rc1+930+gadf045607c
+	pkgrel = 1
+	url = https://tensorflow.org/
+	arch = x86_64
+	license = Apache2
+	makedepends = git
+	makedepends = bazel=0.12.0
+	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	optdepends = tensorboard: Tensorflow visualization toolkit
+	source = git+https://github.com/tensorflow/tensorflow
+	md5sums = SKIP
+
+pkgname = tensorflow-cpu-git
+	provides = tensorflow
+	conflicts = tensorflow
+	conflicts = tensorflow-git
+
+pkgname = python-tensorflow-cpu-git
+	depends = python-protobuf
+	depends = python-numpy
+	depends = absl-py
+	provides = python-tensorflow
+	conflicts = python-tensorflow
+	conflicts = python-tensorflow-git
+
