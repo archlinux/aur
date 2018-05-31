@@ -2,9 +2,10 @@ pkgbase = r-labeling
 	pkgdesc = Axis Labeling
 	pkgver = 0.3
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/labeling/index.html
+	url = https://cran.r-project.org/package=labeling
 	arch = any
-	license = MIT + file LICENSE | Unlimited
+	license = MIT
+	license = Unlimited
 	depends = r
 	source = https://cran.r-project.org/src/contrib/labeling_0.3.tar.gz
 	md5sums = ccd7082ec0b211aba8a89d85176bb534

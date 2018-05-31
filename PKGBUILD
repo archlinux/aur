@@ -7,8 +7,8 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Axis Labeling"
 arch=('any')
-url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
-license=('MIT + file LICENSE | Unlimited')
+url="https://cran.r-project.org/package=${_cranname}"
+license=('MIT' 'Unlimited')
 depends=('r' )
 
 
