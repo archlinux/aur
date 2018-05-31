@@ -7,7 +7,7 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="R Database Interface"
 arch=('any')
-url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
+url="https://cran.r-project.org/package=${_cranname}"
 license=('LGPL')
 depends=('r' )
 
