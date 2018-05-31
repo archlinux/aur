@@ -1,7 +1,7 @@
 pkgbase = ypserv
 	pkgdesc = Linux NIS Server
 	pkgver = 4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thkukuk/ypserv
 	arch = i686
 	arch = x86_64
