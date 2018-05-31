@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Sudo manager"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver")
 
 install=fusiondirectory-plugin-sudo.install
