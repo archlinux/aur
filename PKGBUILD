@@ -4,7 +4,7 @@ pkgrel=0
 pkgdesc="Posix plugin for fusiondirectory"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory>=1.0.9")
 
 install=fusiondirectory-plugin-posix.install
