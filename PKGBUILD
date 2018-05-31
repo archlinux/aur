@@ -6,15 +6,15 @@
 
 pkgbase=ppsspp
 pkgname=('ppsspp' 'ppsspp-headless' 'ppsspp-qt')
-pkgver=1.5.4
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('x86_64')
 url='http://www.ppsspp.org/'
 license=('GPL2')
-makedepends=('cmake' 'git' 'glew' 'libzip' 'sdl2' 'snappy' 'qt5-tools' 'zlib')
-_commit='a1e74d0d4f89ba3fa2d4fe64bac7a0fa16fc146f'
-source=("git+https://github.com/hrydgard/ppsspp.git#commit=${_commit}"
+depends=('glew' 'libgl' 'sdl2' 'snappy' 'zlib')
+makedepends=('cmake' 'git' 'libzip' 'qt5-tools')
+source=("git+https://github.com/hrydgard/ppsspp.git#tag=v${pkgver}"
         'git+https://github.com/hrydgard/ppsspp-ffmpeg.git'
         'ppsspp-glslang::git+https://github.com/hrydgard/glslang.git'
         'git+https://github.com/hrydgard/ppsspp-lang.git'
@@ -44,7 +44,7 @@ prepare() {
 
   patch -Np1 -i ../ppsspp-flags.patch
 
-  for submodule in ffmpeg assets/lang ext/glslang; do
+  for submodule in assets/lang ext/glslang ffmpeg; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
@@ -69,7 +69,8 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_SKIP_RPATH='ON' \
-    -DHEADLESS='ON'
+    -DHEADLESS='ON' \
+    -DUSE_SYSTEM_LIBZIP='ON'
   make
 
   cd ../build-qt
@@ -77,12 +78,13 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_SKIP_RPATH='ON' \
-    -DUSING_QT_UI='ON'
+    -DUSING_QT_UI='ON' \
+    -DUSE_SYSTEM_LIBZIP='ON'
   make
 }
 
 package_ppsspp() {
-  depends=('gcc-libs' 'glew' 'glibc' 'hicolor-icon-theme' 'libgl' 'libzip' 'sdl2' 'snappy' 'zlib')
+  depends+=('hicolor-icon-theme' 'libzip')
   conflicts=('ppsspp-qt')
 
   cd ppsspp/build-sdl
@@ -97,8 +99,6 @@ package_ppsspp() {
 }
 
 package_ppsspp-headless() {
-  depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'sdl2' 'snappy' 'zlib')
-
   cd ppsspp/build-sdl
 
   install -dm 755 "${pkgdir}"/{opt/ppsspp,usr/bin}
@@ -107,7 +107,7 @@ package_ppsspp-headless() {
 }
 
 package_ppsspp-qt() {
-  depends=('gcc-libs' 'glew' 'glibc' 'hicolor-icon-theme' 'libgl' 'libzip' 'qt5-base' 'sdl2' 'snappy' 'zlib')
+  depends+=('hicolor-icon-theme' 'libzip' 'qt5-base')
   conflicts=('ppsspp')
 
   cd ppsspp/build-qt
