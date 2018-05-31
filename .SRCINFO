@@ -28,7 +28,7 @@ pkgbase = r-knitr
 	optdepends = r-httr
 	optdepends = r-dbi
 	optdepends = r-showtext
-	optdepends = r-cran-tibble
+	optdepends = r-tibble
 	source = https://cran.r-project.org/src/contrib/knitr_1.20.tar.gz
 	md5sums = fa91b1c0f2778c685ee8758e5b3c02b4
 

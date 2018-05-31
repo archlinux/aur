@@ -11,7 +11,7 @@ url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('GPL')
 depends=('r' 'r-evaluate' 'r-highr' 'r-markdown' 'r-stringr' 'r-yaml')
 
-optdepends=('r-testit' 'r-digest' 'r-cran-rgl' 'r-rmarkdown' 'r-htmlwidgets' 'r-webshot' 'r-tikzdevice' 'r-tinytex' 'r-xfun' 'r-reticulate' 'r-juliacall' 'r-png' 'r-jpeg' 'r-xml2' 'r-httr' 'r-dbi' 'r-showtext' 'r-cran-tibble')
+optdepends=('r-testit' 'r-digest' 'r-cran-rgl' 'r-rmarkdown' 'r-htmlwidgets' 'r-webshot' 'r-tikzdevice' 'r-tinytex' 'r-xfun' 'r-reticulate' 'r-juliacall' 'r-png' 'r-jpeg' 'r-xml2' 'r-httr' 'r-dbi' 'r-showtext' 'r-tibble')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('fa91b1c0f2778c685ee8758e5b3c02b4')
