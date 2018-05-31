@@ -263,19 +263,18 @@ void graph_printw(WINDOW* window, Info* symbol_info, Info* symbol_info2) {
                 if (zoom == ZOOM_1m)
                     start_date.tm_mon += 1; // Moves only one month if zoom is 1 month
                 else start_date.tm_mon += zoom_change_x_months[zoom];
-
-                end = start_date; // If trying to go past current date, set start to (zoom level - current date)
-                end.tm_mon += zoom_months[zoom];
-                if (difftime(mktime(&end), mktime(&today_date)) > 0) {
-                    start_date = today_date;
-                    start_date.tm_mon -= zoom_months[zoom];
-                }
             } else { // LEFT
                 if (zoom == ZOOM_1m)
                     start_date.tm_mon -= 1; // Moves only one month if zoom is 1 month
                 else start_date.tm_mon -= zoom_change_x_months[zoom];
                 if (difftime(mktime(&start_date), mktime(&furthest_back_date)) < 0)
                     start_date = furthest_back_date; // Can't go back past furthest_date
+            }
+            end = start_date; // If trying to go past current date, set start to (zoom level - current date)
+            end.tm_mon += zoom_months[zoom];
+            if (difftime(mktime(&end), mktime(&today_date)) > 0) {
+                start_date = today_date;
+                start_date.tm_mon -= zoom_months[zoom];
             }
             graph_draw(window, symbol_info, symbol_info2, &start_date, zoom);
         }
