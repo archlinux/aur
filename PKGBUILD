@@ -16,7 +16,7 @@
 
 pkgname=mtproxy-git
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Proxy server for Telegram messaging app"
 arch=('i686' 'x86_64')
 url='https://github.com/TelegramMessenger/MTProxy'
@@ -24,9 +24,18 @@ license=('GPLv2' 'LGPLv2')
 depends=('zlib')
 source=(
     "$pkgname::git+https://github.com/TelegramMessenger/MTProxy.git"
+    mtproxy.conf
+    mtproxy-config.service
+    mtproxy-config.timer
+    mtproxy.service
 )
 noextract=()
-md5sums=(SKIP)
+md5sums=('SKIP'
+         '6f01f66a7b42d07f9b84c2dc8d364468'
+         '7381aebdd60a0640e1f0210b39aa208d'
+         'aa2367c3f759632473824fabcc3544ff'
+         'd6ce9d722ebe818254dd472a1026acd8')
+backup=('etc/mtproxy.conf')
 
 build() {
   cd "$srcdir/$pkgname"
@@ -36,4 +45,13 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm 755 objs/bin/mtproto-proxy "$pkgdir/usr/bin/mtproto-proxy"
+  # SystemD configuration
+  install -Dm 644 "$srcdir/mtproxy.conf" "$pkgdir/etc/mtproxy.conf"
+  for srv in mtproxy-config.service mtproxy-config.timer mtproxy.service; do
+    install -Dm 644 \
+        "$srcdir/$srv" \
+        "$pkgdir/usr/lib/systemd/system/$srv"
+  done
+  # Create directory for configuration
+  install -d "$pkgdir/var/lib/mtproxy"
 }

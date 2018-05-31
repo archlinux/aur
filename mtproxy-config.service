@@ -1,0 +1,8 @@
+[Unit]
+Description=Updates Telegram configuration
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/curl -s https://core.telegram.org/getProxyConfig -o /var/lib/mtproxy/multi.conf
+ExecStart=/usr/bin/curl -s https://core.telegram.org/getProxySecret -o /var/lib/mtproxy/secret.conf
+StandardError=journal
