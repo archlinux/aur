@@ -1,0 +1,20 @@
+--- a/palaver.cpp
++++ b/palaver.cpp
+@@ -30,6 +30,8 @@
+ 	#error "Palaver ZNC Modules requires ZNC 1.6 or newer."
+ #endif
+ 
++#define STR(x) #x
++
+ 
+ const char *kPLVCapability = "palaverapp.com";
+ const char *kPLVCommand = "PALAVER";
+@@ -1209,7 +1211,7 @@ public:
+ 		PutModule("Be sure to include all information from this command so we can try and debug any issues.");
+ 		PutModule("--");
+ 
+-		PutModule("Palaver ZNC: " + CString(PALAVER_VERSION) + " -- http://palaverapp.com/");
++		PutModule("Palaver ZNC: " + CString(STR(PALAVER_VERSION)) + " -- http://palaverapp.com/");
+ 		CDevice *pDevice = DeviceForClient(*m_pClient);
+ 		if (pDevice) {
+ 			PutModule("Current device: (" + pDevice->GetToken() + ")");

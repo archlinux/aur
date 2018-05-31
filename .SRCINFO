@@ -1,6 +1,6 @@
 pkgbase = znc-palaver-git
 	pkgdesc = Palaver ZNC module provides push notifications
-	pkgver = r31.f159c78
+	pkgver = r71.87b1d6b
 	pkgrel = 1
 	url = git://github.com/cocodelabs/znc-palaver
 	arch = i686
@@ -8,7 +8,9 @@ pkgbase = znc-palaver-git
 	license = MIT
 	depends = znc
 	source = git://github.com/cocodelabs/znc-palaver.git
+	source = version.patch
 	md5sums = SKIP
+	md5sums = 618b3f97e3d499bd0c7d21b2a0d37d5a
 
 pkgname = znc-palaver-git
 
