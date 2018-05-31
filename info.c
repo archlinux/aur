@@ -14,11 +14,8 @@ void interface_print(const char* symbol) {
     }
 
     initscr();
-    if (!has_colors()) {
-        endwin();
-        api_info_destroy(&symbol_info);
-        RET_MSG("Your terminal does not support color.")
-    }
+    if (!has_colors())
+        GOTO_CLEAN_MSG("Your terminal does not support color.")
 
     int rows, cols;
     getmaxyx(stdscr, rows, cols);
@@ -26,47 +23,53 @@ void interface_print(const char* symbol) {
     init_pair(2, COLOR_WHITE, COLOR_BLACK); // Init black background, white foreground
     bkgd(BLACK); // set background/foreground
     curs_set(FALSE);
+    WINDOW* header_window = newwin(2, cols / 2, 0, 13);
+    WINDOW* graph_window = newwin(GRAPH_HEIGHT, GRAPH_WIDTH, GRAPH_Y, GRAPH_X);
     WINDOW* company_window = newwin(COMPANY_HEIGHT, COMPANY_WIDTH, COMPANY_Y, COMPANY_X);
     WINDOW* news_window = newwin(NEWS_HEIGHT, NEWS_WIDTH, NEWS_Y, NEWS_X);
+    wbkgd(header_window, BLACK);
+    wbkgd(graph_window, BLACK);
     wbkgd(company_window, BLACK);
     wbkgd(news_window, BLACK);
 
+    int graph_rows, graph_cols;
+    getmaxyx(graph_window, graph_rows, graph_cols);
+    graph_cols -= 11; // 10 offset to give space for graph labels + 1 for right side
+    graph_rows -= 3; // Make space for zoom indicator
+    graph_rows -= graph_rows % ROWS_SPACING; // Round down to multiple of 5
+    if (graph_cols < GRAPH_COLS_MIN || graph_rows < GRAPH_ROWS_MIN) // Exits if the terminal is too small
+        GOTO_CLEAN_MSG("Terminal not large enough.")
+
+    header_printw(header_window, symbol_info); // Print to windows
+    info_printw(company_window, symbol_info);
+    news_printw(news_window, symbol_info);
+
+    wrefresh(header_window); // Refresh other windows before graph otherwise they won't print before next getch()
+    wrefresh(company_window);
+    wrefresh(news_window);
+
+    graph_printw(graph_window, symbol_info, NULL); // No refresh needed since getch()
+
+    cleanup:
+    endwin();
+    api_info_destroy(&symbol_info);
+}
+
+void header_printw(WINDOW* window, Info* symbol_info) {
     if (symbol_info->intraday_time != EMPTY) {
         char time_str[32];
         time_t time = symbol_info->intraday_time / 1000; // divide into second instead of milliseconds
         struct tm* ts = localtime(&time);
         strftime(time_str, 32, "%F %T", ts);
-        mvprintw(0, 18, "%s", time_str);
+        mvwprintw(window, 0, 0, "%s", time_str);
     }
-    mvprintw(0, (int) (28 + strlen(symbol_info->name) + strlen(symbol_info->symbol)), "24H      7D     ");
+    mvwprintw(window, 0, (int) (15 + strlen(symbol_info->name) + strlen(symbol_info->symbol)), "24H      7D     ");
     if (symbol_info->change_30d != EMPTY)
-        printw("30D");
-    mvprintw(1, 13, "%s %s %8.2lf %6.2lf%% %6.2lf%% ", symbol_info->name, symbol_info->symbol,
+        wprintw(window, "30D");
+    mvwprintw(window, 1, 0, "%s %s %8.2lf %6.2lf%% %6.2lf%% ", symbol_info->name, symbol_info->symbol,
              symbol_info->price, symbol_info->change_1d, symbol_info->change_7d);
     if (symbol_info->change_30d != EMPTY)
-        printw("%6.2lf%%", symbol_info->change_30d);
-
-    info_printw(company_window, symbol_info);
-    news_printw(news_window, symbol_info);
-
-    refresh();
-    wrefresh(company_window);
-    wrefresh(news_window);
-    if (symbol_info->points != NULL) {
-        WINDOW* graph_win = newwin(GRAPH_HEIGHT, GRAPH_WIDTH, GRAPH_Y, GRAPH_X);
-        int graph_rows, graph_cols;
-        getmaxyx(graph_win, graph_rows, graph_cols);
-        graph_cols -= 11; // 10 offset to give space for graph labels + 1 for right side
-        graph_rows -= 3; // Make space for zoom indicator
-        graph_rows -= graph_rows % ROWS_SPACING; // Round down to multiple of 5
-        if (graph_cols < GRAPH_COLS_MIN || graph_rows < GRAPH_ROWS_MIN) { // Exits if the terminal is too small
-            endwin();
-            RET_MSG("Terminal not large enough.")
-        }
-        graph_printw(graph_win, symbol_info, NULL);
-    }
-    endwin();
-    api_info_destroy(&symbol_info);
+        wprintw(window, "%6.2lf%%", symbol_info->change_30d);
 }
 
 void info_print(Info* symbol_info) {
@@ -140,8 +143,7 @@ void info_printw(WINDOW* window, Info* symbol_info) {
     else wprintw(window, "P/E Ratio unavailable.");
 
     if (symbol_info->div_yield != EMPTY)
-        mvwprintw(window, getcury(window), getmaxx(window) / 2, "Dividend Yield: %lf\n\n",
-                  symbol_info->div_yield);
+        mvwprintw(window, getcury(window), getmaxx(window) / 2, "Dividend Yield: %lf\n\n", symbol_info->div_yield);
     else mvwprintw(window, getcury(window), getmaxx(window) / 2, "Dividend Yield unavailable.\n\n");
 
     for (int i = 0; i < QUARTERS && symbol_info->fiscal_period[i][0] != '\0'; i++)
@@ -159,8 +161,7 @@ void info_printw(WINDOW* window, Info* symbol_info) {
     if (symbol_info->eps_year_ago[0] != EMPTY)
         mvwprintw(window, getcury(window), 0, "1Y  ");
     for (int i = 0; i < QUARTERS && symbol_info->eps_year_ago[i] != EMPTY; i++)
-        mvwprintw(window, getcury(window), 4 + i * getmaxx(window) / QUARTERS, "%.2lf",
-                  symbol_info->eps_year_ago[i]);
+        mvwprintw(window, getcury(window), 4 + i * getmaxx(window) / QUARTERS, "%.2lf", symbol_info->eps_year_ago[i]);
 }
 
 void news_print(const char* symbol, int num_articles) {

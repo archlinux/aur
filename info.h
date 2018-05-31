@@ -46,6 +46,8 @@ extern int zoom_months[9], zoom_change_x_months[9];
 
 void interface_print(const char* symbol);
 
+void header_printw(WINDOW* window, Info* symbol_info);
+
 /**
  * Prints information about the given symbol and the graph of it in an NCurses window.
  * @param symbol
