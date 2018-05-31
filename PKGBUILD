@@ -1,5 +1,5 @@
 pkgname=kvirc4-git
-pkgver=r7116.2c89201e3
+pkgver=r7326.85ef2059c
 pkgrel=1
 pkgdesc="Qt5 based IRC-Client, compiled with kde4 support - Git Version"
 arch=('i686' 'x86_64')
@@ -20,6 +20,7 @@ pkgver() {
 build() {
   cd "$pkgname"
   cmake -DCMAKE_INSTALL_PREFIX="$(kde4-config --prefix)" \
+        -DWANT_ENCHANT=OFF \
         -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 \
         -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so \
         -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so
