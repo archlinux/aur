@@ -1,0 +1,27 @@
+pkgbase = r-blscraper
+	pkgdesc = An API Wrapper for the Bureau of Labor Statistics (BLS)
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=blscrapeR
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-ggplot2
+	depends = r-magrittr
+	depends = r-dplyr
+	depends = r-purrr
+	depends = r-tibble
+	depends = r-stringr
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tidyverse
+	optdepends = r-tigris
+	optdepends = r-leaflet
+	source = https://cran.r-project.org/src/contrib/blscrapeR_3.1.2.tar.gz
+	md5sums = 0d027c70e2b27dd3e96756f66c4c140b
+
+pkgname = r-blscraper
+
