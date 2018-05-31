@@ -11,7 +11,7 @@ url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('MIT')
 depends=('r' 'r-colorspace')
 
-optdepends=('r-cran-ggplot2' 'r-testthat')
+optdepends=('r-ggplot2' 'r-testthat')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('ebd205323dc37c948f499ee08be9c476')
