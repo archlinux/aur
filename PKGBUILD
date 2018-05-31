@@ -4,7 +4,7 @@
 # Contributor: Kristoffer Fossgård <kfs1@online.no>
 
 pkgname=terminus-cyrillic
-pkgver=4.40
+pkgver=4.46
 pkgrel=1
 pkgdesc="Terminus font with dv1 and ij1 patches applied"
 depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
@@ -47,4 +47,4 @@ package() {
   ./configure --prefix=/usr --x11dir=/usr/share/fonts/local/ --psfdir=/usr/share/kbd/consolefonts/
   make DESTDIR=$pkgdir install
 }
-md5sums=('1e1df0d2c612c374ebe7966f90f04e0c')
+md5sums=('368f512a88b5855fe2f12a9262da52f2')
