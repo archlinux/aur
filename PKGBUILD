@@ -1,7 +1,7 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 pkgname=pikalogy
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Pikachu theme for Terminology"
 arch=('x86_64')
 _COMMIT_HASH=62a4ee8417cfbb00f70c6be79bfd39539b5108b0
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$_COMMIT_HASH"
-	make
+	make DEFINITIONS="-DWITH_SOUND"
 }
 
 package() {
