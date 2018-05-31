@@ -1,19 +1,25 @@
 pkgbase = r-roxygen2
-	pkgdesc = in-source documentation for r
-	pkgver = 5.0.1
+	pkgdesc = In-Line Documentation for R
+	pkgver = 6.0.1
 	pkgrel = 1
-	url = https://github.com/klutometis/roxygen
-	arch = any
+	url = https://cran.r-project.org/package=roxygen2
+	arch = x86_64
 	license = GPL
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
-	depends = r>=3.0.2
-	depends = r-stringr>=0.5
+	depends = r
+	depends = r-stringr
 	depends = r-stringi
 	depends = r-brew
 	depends = r-digest
-	depends = r-rcpp>=0.11.0
+	depends = r-desc
+	depends = r-commonmark
+	depends = r-xml2
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-devtools
+	optdepends = r-rmarkdown
+	optdepends = r-covr
+	source = https://cran.r-project.org/src/contrib/roxygen2_6.0.1.tar.gz
+	md5sums = 53300ac3f27ff0998ebb5fbe3afc8b9f
 
 pkgname = r-roxygen2
 
