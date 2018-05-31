@@ -1,0 +1,15 @@
+pkgbase = fsharp-stable
+	pkgdesc = The F# Foundation Compiler, Core Library, Tools, and SDK
+	pkgver = 4.1.34
+	pkgrel = 1
+	url = http://fsharp.org/
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = mono
+	depends = msbuild-stable
+	source = git+https://github.com/fsharp/fsharp/#commit=662492595a63dffff8fac84939614743fd6d34f9
+	sha256sums = SKIP
+
+pkgname = fsharp-stable
+
