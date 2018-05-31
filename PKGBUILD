@@ -9,7 +9,7 @@ pkgdesc="A dplyr Back End for Databases"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('MIT')
-depends=('r' 'r-assertthat' 'r-dbi' 'r-cran-dplyr' 'r-cran-glue' 'r-cran-purrr' 'r-cran-rlang' 'r-cran-tibble' 'r-cran-tidyselect')
+depends=('r' 'r-assertthat' 'r-dbi' 'r-dplyr' 'r-glue' 'r-purrr' 'r-cran-rlang' 'r-tibble' 'r-tidyselect')
 
 optdepends=('r-bit64' 'r-covr' 'r-knitr' 'r-lahman' 'r-nycflights13' 'r-rmarkdown' 'r-testthat')
 
