@@ -7,7 +7,7 @@
 
 pkgname=grive-git
 pkgver=456.84c57c1
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source Linux client for Google Drive with support for the new Drive REST API and partial sync'
 arch=('i686' 'x86_64')
 url='https://github.com/vitalif/grive2'
