@@ -1,27 +1,27 @@
 # Maintainer: Vinicius Correa <vinicius dot correa at zoho dot com>
 # Contributor: Mariel de Jesus™ <marieldejesus12 at gmail dot com>
+_pkgname=stoqserver
 pkgname=stoq-server
-pkgver=0.14.1
-pkgrel=3
-pkgdesc="Stoq server."
+pkgver=0.16.1
+pkgrel=1
+pkgdesc="A server for Stoq"
 arch=('any')
 url="https://github.com/stoq/${pkgname}"
 license=('LGPL')
-depends=('python2' 'kiwi' 'stoqdrivers' 'stoq' 'python2-twisted' 'python2-requests' 'python2-netifaces'
- 'binutils' 'supervisor' 'duplicity' 'openvpn' 'postgresql' 'openssh'
- 'avahi' 'python2-htsql' 'python2-htsql-pgsql')
-makedepends=('git')
-conflicts=('stoq-server-git')
+depends=('python' 'stoq' 'binutils' 'supervisor' 'duplicity' 'git' 'openvpn' 'postgresql' 'python-requests'
+'python-netifaces' 'python-flask' 'python-flask-restful' 'python2-htsql' 'python2-htsql-pgsql' 'python2-requests'
+'python-raven' 'tmate' 'avahi')
+makedepends=('')
 install=${pkgname}.install
-source=("https://github.com/stoq/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('a7689059dcd43d74da5c6a8a20184129')
+source=("https://launchpad.net/~stoq-dev/+archive/ubuntu/stoq3/+sourcefiles/${pkgname}/${pkgver}-1bionic/${pkgname}_${pkgver}-1bionic.tar.gz")
+md5sums=('3c13f0d514dc7ec2acd0fcd198fecb1c')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py build
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
