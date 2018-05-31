@@ -3,14 +3,14 @@
 
 pkgname=gob2
 pkgver=2.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK Object Builder (GOB) is a simple preprocessor for easily creating GTK objects"
 arch=(x86_64)
 license=('GPL')
 depends=('glib2')
-url="http://www.5z.com/jirka/gob.html"
+url="http://www.jirka.org/gob.html"
 source=(http://ftp.5z.com/pub/gob/${pkgname}-${pkgver}.tar.xz)
-md5sums=('b830859993bfa82bc8773207b9a4a698')
+sha256sums=('f7ee84c07ca88ae96e5a60461957cc4dd0aa69d61804433d1c85de3d50be8026')
 
 build() {
   cd $pkgname-$pkgver
