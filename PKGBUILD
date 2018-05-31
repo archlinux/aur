@@ -4,7 +4,7 @@
 
 pkgname=fcitx-ui-light
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Light weight xlib and xft based ui for fcitx."
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-ui-light"
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('fcitx' 'libxpm')
 makedepends=('cmake' 'intltool')
 source=("https://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.bz2")
-md5sums=('633e8b018da9c8f09f99567b5479cf18')
+sha512sums=('b390141afa42a1204b26588c85e2164b735298d9b805f07e36997d50c77d6a3b7b713a724a22f0762176fe7f5d956e111e0e814b1fa8348b58d4b7e9a44e9ca6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
