@@ -27,7 +27,7 @@ trap 'echo "Interrupted, finishing early."; exit 1' INT
 #Default configuration values
 target=25; limit=100
 post=0; nonimage=0; gif=0; album=1
-insta=1; tumblr=1
+insta=1; pinterest=1; tumblr=1
 
 #Global variables
 progname=$(basename "$0")
