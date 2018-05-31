@@ -7,7 +7,7 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Rcpp Integration for the Eigen Templated Linear Algebra Library"
 arch=('x86_64')
-url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
+url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL' 'custom')
 depends=('r' )
 
