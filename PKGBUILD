@@ -1,19 +1,27 @@
-# Maintainer: fordprefect <fordprefect@dukun.de>
+# Maintainer: Alex Branham <branham@utexas.edu>
 _cranname=random
-pkgname=r-cran-$_cranname
-pkgver=0.2.5
+_cranver=0.2.6
+_pkgtar=${_cranname}_${_cranver}.tar.gz
+pkgname=r-random
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="interface to true random number source random.org for r language"
-url="http://cran.r-project.org/web/packages/random/index.html"
+pkgdesc="True Random Numbers using RANDOM.ORG"
 arch=('any')
-license=('GPL3')
+url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
+license=('GPL')
 depends=('r' 'r-cran-curl')
-install=''
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${pkgver}.tar.gz")
-md5sums=('34f9d0786f88611ef5fe00e0e20470dc')
- 
-package() {
-    mkdir -p "${pkgdir}/usr/lib/R/library"
-    cd "${srcdir}"
-    R CMD INSTALL $_cranname -l "${pkgdir}/usr/lib/R/library"
+
+
+
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+md5sums=('0a642b1f4cd45f9eaa2ed34aa3f7df90')
+replaces=('r-cran-random')
+
+build(){
+    R CMD INSTALL ${_pkgtar} -l $srcdir
 }
+package() {
+    install -d "$pkgdir/usr/lib/R/library"
+    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+}
+

@@ -1,14 +1,15 @@
-pkgbase = r-cran-random
-	pkgdesc = interface to true random number source random.org for r language
-	pkgver = 0.2.5
+pkgbase = r-random
+	pkgdesc = True Random Numbers using RANDOM.ORG
+	pkgver = 0.2.6
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/random/index.html
+	url = https://cran.r-project.org/web/packages/random/index.html
 	arch = any
-	license = GPL3
+	license = GPL
 	depends = r
 	depends = r-cran-curl
-	source = http://cran.r-project.org/src/contrib/random_0.2.5.tar.gz
-	md5sums = 34f9d0786f88611ef5fe00e0e20470dc
+	replaces = r-cran-random
+	source = https://cran.r-project.org/src/contrib/random_0.2.6.tar.gz
+	md5sums = 0a642b1f4cd45f9eaa2ed34aa3f7df90
 
-pkgname = r-cran-random
+pkgname = r-random
 
