@@ -1,10 +1,10 @@
-# Maintainer: ZeroWeb <zeroweb91 at protonmail dot com>
+# Maintainer: Evrea <evrea at cock dot li>
 # Contributors: Det, Achilleas Pipinellis, speed145a, Schnouki
 
 _launcher_ver=6
 pkgname=ungoogled-chromium-bin
-pkgver=66.0.3359.139
-pkgrel=4
+pkgver=66.0.3359.181
+pkgrel=1
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -25,10 +25,10 @@ source=("ungoogled-chromium.deb::https://github.com/Eloston/ungoogled-chromium-b
 noextract=("ungoogled-chromium-common.deb"
            "ungoogled-chromium-driver.deb"
            "ungoogled-chromium-widevine.deb")
-sha256sums=("ccaab2c4e395167de8a92288086b4f91ed9ff55c3a53ce966a1a17acbd3eb6df"
-            "ff2a7191bd3e9dd2ff4cf6d6b70184d26731cdf3ef83c4f8dd561d1c4438c2ad"
-            "e207b7a5fa7b0f35f6e7391d5544f4b088ff7da39c472d81c64f0983cff6c64f"
-            "62df3521f265a9333b6f41629baf888863e854966bd3954f27c94ad637514e58"
+sha256sums=("93cd390ac76b7d7605a9ac7e1506a435f61bc89d1224c9925c2a0e76f2874bf1"
+            "b4763a78b5440f42883c0589ceca00758b48700f85ae09852ca85f9a1b81ff5f"
+            "de480d719262818550b28462e5296b6f0f3a6f903437b149390095ab419692b8"
+            "2c5a1b059a5aedddabf53bbcf7ff3f3566d55070dbd75cbdbac70483b68719b3"
             "04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1")
 
 declare -ga _debfiles=("common" "driver" "widevine")
