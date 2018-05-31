@@ -27,14 +27,14 @@ _bldtype=Release
 # http://zipcloud.ibsnet.co.jp/
 #*************************************************************
 
-_zipcoderel=201804
+_zipcoderel=201805
 _mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 
 pkgbase=mozc
 pkgname=mozc
 true && pkgname=('mozc')
 pkgver=2.23.2815.102
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/mozc/"
 license=('BSD' 'custom')
@@ -44,10 +44,12 @@ source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-${_zipcoderel}.zip
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
+  https://gist.githubusercontent.com/MightyPork/6b93f56b404e526268ac133f1a783afd/raw/40b3b9569d4b0741d78c511b247b26d2b1e7a2ae/mozc.patch
 )
 sha1sums=('SKIP'
-          '1ce449e019b497d04e4f27f637ac2aed99dc2491'
-          '0997c87f477094b51622f428ceae3a9c438cd221')
+          '800fa42705c29e19d27fcdadfcbf002104041691'
+          '3bd96e98c2c33cf269d82c499f74678d41c880e5'
+          'a366077418ae6f235aecf374256354a40dc5b37a')
 
 
 if [[ "$_emacs_mozc" == "yes" ]]; then
@@ -86,6 +88,8 @@ prepare() {
               >> "${srcdir}/${pkgbase}/src/data/dictionary_oss/dictionary09.txt"
     msg "Done."
   fi
+
+  patch -Np0 -i "${srcdir}/mozc.patch"
 
 }
 
