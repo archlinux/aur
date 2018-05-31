@@ -11,7 +11,7 @@ url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('LGPL')
 depends=('r' )
 
-optdepends=('r-blob' 'r-covr' 'r-cran-hms' 'r-knitr' 'r-magrittr' 'r-rprojroot' 'r-rmarkdown' 'r-testthat' 'r-xml2')
+optdepends=('r-blob' 'r-covr' 'r-hms' 'r-knitr' 'r-magrittr' 'r-rprojroot' 'r-rmarkdown' 'r-testthat' 'r-xml2')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('72206e6de9f1a3e783f74446f31bb54c')
