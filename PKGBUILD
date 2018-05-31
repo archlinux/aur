@@ -4,12 +4,12 @@
 pkgname=resin-cli-git
 pkgdesc='Resin.io command line interface, development version'
 pkgver=7.5.0.r0.g16f70fd
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://resin.io/'
 license=('APACHE')
 depends=('nodejs')
-makedepends=('npm' 'git')
+makedepends=('npm' 'git' 'python2')
 source=('git+https://github.com/resin-io/resin-cli.git')
 provides=('resin-cli')
 conflicts=('resin-cli')
