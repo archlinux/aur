@@ -1,7 +1,7 @@
 # Maintainer: John Ramsden <johnramsden [at] riseup [dot] net>
 
 pkgname=zedenv
-pkgver=0.1.0
+pkgver=0.1.1
 _version_suffix="alpha"
 pkgrel=1
 pkgdesc="Utility to manage Boot Environments using ZFS"
@@ -11,7 +11,7 @@ license=('BSD' 'custom:BSD 3 clause')
 depends=('zfs-linux' 'python' 'python-setuptools' 'python-click' 'python-pyzfscmds')
 makedepends=('git' 'python-pip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johnramsden/${pkgname}/archive/v${pkgver}-${_version_suffix}.tar.gz")
-md5sums=('2a38da07513fe7dd40a6c851fbad2589')
+md5sums=('ac8c98c5fa5d7bc1e057591d7982ee46')
 conflicts=('zedenv-git')
 
 build() {
