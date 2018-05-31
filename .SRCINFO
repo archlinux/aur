@@ -1,5 +1,5 @@
 pkgbase = litecoin-git
-	pkgver = 0.15.1+0+g0b47699b9
+	pkgver = 0.16.0+0+g514e0681d
 	pkgrel = 1
 	url = http://www.litecoin.org/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = litecoin-git
 	makedepends = miniupnpc
 	makedepends = protobuf
 	makedepends = zeromq
-	source = litecoin-git::git+https://github.com/litecoin-project/litecoin.git#branch=0.15
+	source = litecoin-git::git+https://github.com/litecoin-project/litecoin.git
 	source = litecoin-qt.desktop
 	source = litecoind.service
 	source = litecoin.sysusers

@@ -3,14 +3,14 @@
 
 pkgbase=litecoin-git
 pkgname=('litecoin-daemon-git' 'litecoin-cli-git' 'litecoin-qt-git' 'litecoin-tx-git')
-pkgver=0.15.1+0+g0b47699b9
+pkgver=0.16.0+0+g514e0681d
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
 makedepends=('git' 'boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq')
 license=('MIT')
 source=(
-  "$pkgbase::git+https://github.com/litecoin-project/litecoin.git#branch=0.15"
+  "$pkgbase::git+https://github.com/litecoin-project/litecoin.git"
   'litecoin-qt.desktop'
   'litecoind.service'
   'litecoin.sysusers'
