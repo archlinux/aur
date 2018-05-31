@@ -1,4 +1,7 @@
 post_install() {
+    echo '>>> IMPORTANT: If you changed /etc/homegear/main.conf, please check the .pacnew file'
+    echo '>>> and implement any new options to your configuration.'
+    echo 
     echo '>>> SSL on ports 2002 and 2003 is disabled by default.'
     echo '>>> Run the following commands and then enable SSL in /etc/homegear/rpcservers.conf:'
     echo '>>> # openssl genrsa -out /etc/homegear/homegear.key 2048'

@@ -1,5 +1,5 @@
 diff --git a/misc/Config Directory/main.conf b/misc/Config Directory/main.conf
-index 9f6716e..5e3aa16 100644
+index 1227873..c1bd51c 100644
 --- a/misc/Config Directory/main.conf	
 +++ b/misc/Config Directory/main.conf	
 @@ -2,10 +2,10 @@
@@ -24,16 +24,43 @@ index 9f6716e..5e3aa16 100644
  
  # If dataPath is empty, the executable path is used.
  # Default: dataPath =
-@@ -189,7 +189,7 @@ enableFlows = true
+@@ -189,7 +189,7 @@ enableNodeBlue = true
  
  # Path where Node-BLUE is located.
- # Default: flowsPath = /var/lib/homegear/flows
--flowsPath = /var/lib/homegear/flows
-+flowsPath = /usr/lib/homegear/flows
+ # Default: nodeBluePath = /var/lib/homegear/node-blue
+-nodeBluePath = /var/lib/homegear/node-blue
++nodeBluePath = /usr/lib/homegear/node-blue
  
- # Default: flowsPathPermissions = 770
- # flowsPathPermissions = 770
-@@ -219,21 +219,21 @@ nodeBlueDebugOutput = true
+ # Default: nodeBluePathPermissions = 770
+ # nodeBluePathPermissions = 770
+@@ -202,7 +202,7 @@ nodeBluePath = /var/lib/homegear/node-blue
+ 
+ # Path where flow data is stored.
+ # Default: nodeBlueDataPath = /var/lib/homegear/node-blue/data
+-nodeBlueDataPath = /var/lib/homegear/node-blue/data
++nodeBlueDataPath = /usr/lib/homegear/node-blue/data
+ 
+ # Default: nodeBlueDataPathPermissions = 770
+ # nodeBlueDataPathPermissions = 770
+@@ -219,7 +219,7 @@ nodeBlueDebugOutput = true
+ 
+ # Path where Admin UI is located.
+ # Default: adminUiPath = /var/lib/homegear/admin-ui
+-adminUiPath = /var/lib/homegear/admin-ui
++adminUiPath = /usr/lib/homegear/admin-ui
+ 
+ # Default: adminUiPathPermissions = 770
+ # adminUiPathPermissions = 770
+@@ -232,7 +232,7 @@ adminUiPath = /var/lib/homegear/admin-ui
+ 
+ # Path where UI is located.
+ # Default: uiPath = /var/lib/homegear/ui
+-uiPath = /var/lib/homegear/ui
++uiPath = /usr/lib/homegear/ui
+ 
+ # Default: uiPathPermissions = 770
+ # uiPathPermissions = 770
+@@ -245,21 +245,21 @@ uiPath = /var/lib/homegear/ui
  
  # Path to the family modules.
  # Default: modulePath = /var/lib/homegear/modules
