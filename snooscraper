@@ -388,7 +388,7 @@ Arguments:
 	-c, --clean	Tidy reposts/failures from a subreddit/user dump
 	-a, --album	Download all images in an Imgur album at URL
 	-i, --instagram	Download images/videos from an Instagram account/post at URL
-	-p, --pinterest	Download images from a pinterest board/account at URL
+	-p, --pinterest	Download images from a pinterest board/pin at URL
 	-t, --tumblr	Download all images in a Tumblr post at URL
 	" ;;
 	*) echo "Invalid option. Aborting."; exit 1 ;;
