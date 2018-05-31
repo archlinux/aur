@@ -1,18 +1,27 @@
-# Maintainer: fordprefect <fordprefect@dukun.de>
+# Maintainer: Alex Branham <branham@utexas.edu>
 _cranname=tnet
-pkgname=r-cran-$_cranname
-pkgver=3.0.14
+_cranver=3.0.14
+_pkgtar=${_cranname}_${_cranver}.tar.gz
+pkgname=r-tnet
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="R package for analyzing weighted, two-mode, and longitudinal networks"
-url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
+pkgdesc="Software for Analysis of Weighted, Two-Mode, and Longitudinal Networks"
 arch=('any')
-license=('CCPL:by-nc')
-depends=('r')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${pkgver}.tar.gz")
+url="https://cran.r-project.org/package=${_cranname}"
+license=('GPL3')
+depends=('r' 'r-igraph')
+
+
+
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('129a06065f7a0252f2fac3e5e6211f6e')
- 
-build() {
-    mkdir -p ${pkgdir}/usr/lib/R/library
-    cd ${srcdir}
-    R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
+replaces=('r-cran-tnet')
+
+build(){
+    R CMD INSTALL ${_pkgtar} -l $srcdir
 }
+package() {
+    install -d "$pkgdir/usr/lib/R/library"
+    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+}
+
