@@ -1,14 +1,14 @@
-pkgbase = r-cran-bitops
-	pkgdesc = R functions for bitwise operations
-	pkgver = 1.0_6
-	pkgrel = 2
-	url = http://cran.r-project.org/web/packages/bitops/index.html
+pkgbase = r-bitops
+	pkgdesc = Bitwise Operations
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=bitops
 	arch = x86_64
-	arch = i686
-	license = GPL3
+	license = GPL
 	depends = r
-	source = http://cran.r-project.org/src/contrib/bitops_1.0-6.tar.gz
+	replaces = r-cran-bitops
+	source = https://cran.r-project.org/src/contrib/bitops_1.0-6.tar.gz
 	md5sums = fba16485a51b1ccd354abde5816b6bdd
 
-pkgname = r-cran-bitops
+pkgname = r-bitops
 
