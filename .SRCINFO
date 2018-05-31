@@ -1,0 +1,19 @@
+pkgbase = r-colorspace
+	pkgdesc = Color Space Manipulation
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=colorspace
+	arch = x86_64
+	license = BSD
+	depends = r
+	optdepends = r-kernlab
+	optdepends = r-mvtnorm
+	optdepends = r-vcd
+	optdepends = r-dichromat
+	optdepends = r-shiny
+	optdepends = r-shinyjs
+	source = https://cran.r-project.org/src/contrib/colorspace_1.3-2.tar.gz
+	md5sums = 63000bab81d995ff167df76fb97b2984
+
+pkgname = r-colorspace
+
