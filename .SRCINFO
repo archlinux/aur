@@ -1,15 +1,15 @@
 pkgbase = r-markdown
-	pkgdesc = markdown rendering for r
-	pkgver = 0.7.7
+	pkgdesc = Markdown Rendering for R
+	pkgver = 0.8
 	pkgrel = 1
-	url = https://github.com/rstudio/markdown
-	arch = any
+	url = https://cran.r-project.org/package=markdown
+	arch = x86_64
 	license = GPL2
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
-	depends = r>=2.11.1
-	depends = r-mime>=0.3
+	depends = r
+	depends = r-mime
+	optdepends = r-knitr
+	source = https://cran.r-project.org/src/contrib/markdown_0.8.tar.gz
+	md5sums = 5dde829a865ad65bab37a2b9d243b071
 
 pkgname = r-markdown
 
