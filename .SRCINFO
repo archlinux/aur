@@ -1,14 +1,15 @@
 pkgbase = r-rcpp
-	pkgdesc = seamless r and c++ integration
-	pkgver = 0.12.6
+	pkgdesc = Seamless R and C++ Integration
+	pkgver = 0.12.17
 	pkgrel = 1
-	url = http://www.rcpp.org, http://dirk.eddelbuettel.com/code/rcpp.html, https://github.com/RcppCore/Rcpp
-	arch = any
-	license = GPL
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
+	url = http://cran.r-project.org/web/packages/Rcpp/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	license = GPL-3
 	depends = r>=3.0.0
+	source = http://cran.r-project.org/src/contrib/Rcpp_0.12.17.tar.gz
+	md5sums = eee1ece3b0a246c4a21e2e1e23213a8a
 
 pkgname = r-rcpp
 
