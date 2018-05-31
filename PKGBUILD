@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Plugin for storing filesystem quota per user inside LDAP tree"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver")
 
 install=fusiondirectory-plugin-quota.install
