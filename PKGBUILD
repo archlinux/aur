@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Webservice shell for FusionDirectory"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("perl-term-readline-gnu" "perl-lwp-protocol-https" "perl-term-shellui" "perl-json-rpc")
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz")
