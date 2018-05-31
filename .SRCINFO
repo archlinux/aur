@@ -2,7 +2,7 @@ pkgbase = r-xml2
 	pkgdesc = Parse XML
 	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/xml2/index.html
+	url = https://cran.r-project.org/package=xml2
 	arch = x86_64
 	license = GPL
 	depends = r
