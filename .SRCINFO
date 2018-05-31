@@ -1,0 +1,21 @@
+pkgbase = lemonbar-clicks-git
+	pkgdesc = A lightweight xcb based bar with ported xft support, support to specify outputs, support for unlimited clickable areas and support for longer input.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ph111p/bar
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxcb
+	depends = libxft
+	depends = libx11
+	provides = bar-aint-recursive
+	provides = lemonbar
+	conflicts = bar-aint-recursive
+	conflicts = lemonbar
+	source = bar::git+https://github.com/ph111p/bar.git#branch=xft-port
+	sha256sums = SKIP
+
+pkgname = lemonbar-clicks-git
+
