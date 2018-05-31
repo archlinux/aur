@@ -1,0 +1,23 @@
+pkgbase = r-tidyr
+	pkgdesc = An evolution of 'reshape2'. It's designed specifically for data tidying (not general reshaping or aggregating) and works well with 'dplyr' data pipelines.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/tidyr/index.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r>=3.1.0
+	depends = r-dplyr>=0.7.0
+	depends = r-glue
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-rcpp
+	depends = r-rlang
+	depends = r-tibble
+	depends = r-stringi
+	depends = r-tidyselect
+	source = http://cran.r-project.org/src/contrib/tidyr_0.8.1.tar.gz
+	md5sums = e4381bbea1da63280afa244df3f85940
+
+pkgname = r-tidyr
+
