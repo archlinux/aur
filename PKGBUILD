@@ -26,6 +26,9 @@ build() {
   # Do not treat warnings as errors
   CXXFLAGS+=' -Wno-error'
 
+  # Work around hang in leatherman_test
+  CXXFLAGS+=' -fno-strict-overflow'
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr
 
   make
