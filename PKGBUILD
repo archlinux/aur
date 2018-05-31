@@ -2,7 +2,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=cdetect
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc='Detect which compiler version was used for compiling an ELF file'
 arch=('any')
@@ -14,6 +14,8 @@ sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
+
+  # Only uses the standard library
   go build
 }
 
