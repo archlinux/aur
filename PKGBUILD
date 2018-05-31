@@ -2,9 +2,9 @@
 # Contributor: mortzu
 pkgname=netkit-rwho-debian
 pkgver=0.17
-pkgrel=5
+pkgrel=6
 _debrev=13
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('BSD')
 pkgdesc='Remote who client and server (with Debian patches)'
 depends=('glibc' 'sh')
