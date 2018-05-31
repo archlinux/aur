@@ -1,14 +1,14 @@
 pkgbase = r-praise
-	pkgdesc = praise users
+	pkgdesc = Praise Users
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/gaborcsardi/praise
+	url = https://cran.r-project.org/package=praise
 	arch = any
 	license = MIT
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
 	depends = r
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/praise_1.0.0.tar.gz
+	md5sums = 9318724cec0454884b5f762bee2da6a1
 
 pkgname = r-praise
 
