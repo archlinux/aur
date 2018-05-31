@@ -12,7 +12,7 @@ pkgname=mpv-rpi
 _pkgname=mpv
 epoch=1
 pkgver=0.28.2
-pkgrel=1
+pkgrel=2
 _waf_version=1.9.8
 pkgdesc='mpv with Raspberry Pi support'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -37,7 +37,7 @@ provides=('mpv')
 conflicts=('mpv')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
 
   install -m755 "${srcdir}"/waf-${_waf_version} waf
 }
