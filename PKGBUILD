@@ -4,23 +4,22 @@
 # Contributor: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
 # Contributor: rkitover <rkitover@gmail.com>
 
+_pkgver=5.0.3
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-headers-git
-pkgver=5.0.3.20180212
-_pkgver=5.0.3
+pkgver=5.0.3.20180524
 pkgrel=1
-pkgdesc='MinGW-w64 headers for Windows(git version)'
+pkgdesc="MinGW-w64 headers for Windows (git version)"
 arch=('any')
-url='https://mingw-w64.org/doku.php'
+url="https://mingw-w64.org/doku.php"
 license=('custom')
 groups=('mingw-w64-toolchain' 'mingw-w64')
 makedepends=('git')
-provides=("mingw-w64-headers=$pkgver")
+provides=("mingw-w64-headers=${pkgver}")
 conflicts=('mingw-w64-headers')
-replaces=('mingw-w64-headers')
-options=('!strip' '!libtool' '!emptydirs')
-source=('git+https://git.code.sf.net/p/mingw-w64/mingw-w64')
+options=('!strip' 'staticlibs' '!buildflags')
+source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -34,10 +33,10 @@ build() {
     msg "Configuring ${_target} headers"
     mkdir -p "headers-${_target}" && pushd "headers-${_target}"
     ../mingw-w64/mingw-w64-headers/configure \
-        --prefix=/usr/${_target} \
-        --enable-sdk=all \
-        --enable-secure-api \
-        --host=${_target}
+      --prefix=/usr/${_target} \
+      --enable-sdk=all \
+      --enable-secure-api \
+      --host=${_target}
     popd
   done
 }
@@ -59,3 +58,5 @@ package() {
   install -Dm644 "${srcdir}/mingw-w64/mingw-w64-headers/direct-x/COPYING.LIB" "${pkgdir}/usr/share/licenses/${pkgname}/direct-x-COPYING.LIB"
   install -Dm644 "${srcdir}/mingw-w64/mingw-w64-headers/direct-x/readme.txt" "${pkgdir}/usr/share/licenses/${pkgname}/direct-x-readme.txt"
 }
+
+# vim:set ts=2 sw=2 et:

@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-headers-git
-	pkgdesc = MinGW-w64 headers for Windows(git version)
-	pkgver = 5.0.3.20180212
+	pkgdesc = MinGW-w64 headers for Windows (git version)
+	pkgver = 5.0.3.20180524
 	pkgrel = 1
 	url = https://mingw-w64.org/doku.php
 	arch = any
@@ -8,12 +8,11 @@ pkgbase = mingw-w64-headers-git
 	groups = mingw-w64
 	license = custom
 	makedepends = git
-	provides = mingw-w64-headers=5.0.3.20180212
+	provides = mingw-w64-headers=5.0.3.20180524
 	conflicts = mingw-w64-headers
-	replaces = mingw-w64-headers
 	options = !strip
-	options = !libtool
-	options = !emptydirs
+	options = staticlibs
+	options = !buildflags
 	source = git+https://git.code.sf.net/p/mingw-w64/mingw-w64
 	sha256sums = SKIP
 
