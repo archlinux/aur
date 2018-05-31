@@ -2,7 +2,7 @@ pkgbase = r-htmltools
 	pkgdesc = Tools for HTML
 	pkgver = 0.3.6
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/htmltools/index.html
+	url = https://cran.r-project.org/package=htmltools
 	arch = x86_64
 	license = GPL
 	depends = r
