@@ -1,0 +1,18 @@
+pkgbase = configui-git
+	pkgdesc = A GUI for changing themes
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/sj1k/configui
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-dbus
+	depends = pygtk
+	provides = configui
+	source = configui-git::git+https://gitlab.com/sj1k/configui.git
+	source = configui.py.diff
+	sha256sums = SKIP
+	sha256sums = 13672572699bbe6fffb7ad07536814f2dbcb7b5a128358a3083e7181463d8343
+
+pkgname = configui-git
+
