@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gcc-bin
 	pkgdesc = Cross GCC for the MinGW-w64 cross-compiler (pre-compiled)
 	pkgver = 8.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gcc.gnu.org/
 	arch = x86_64
 	groups = mingw-w64-toolchain
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-gcc-bin
 	depends = mingw-w64-binutils
 	depends = mingw-w64-winpthreads
 	depends = mingw-w64-headers
-	provides = mingw-w64-gcc
+	provides = mingw-w64-gcc=8.1.0
 	conflicts = mingw-w64-gcc
 	options = !strip
 	options = staticlibs
