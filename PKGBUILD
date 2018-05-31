@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cilium-git
-pkgver=1.0.90.gec8b2921a
+pkgver=1.0.90.5301.b4740f994
 pkgrel=1
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
@@ -11,7 +11,6 @@ depends=('docker' 'iproute2' 'clang')
 makedepends=('go' 'lib32-glibc' 'bazel')
 optdepends=('consul' 'etcd')
 conflicts=()
-options=(!ccache)
 source=("${pkgname}::git+https://github.com/cilium/cilium" "cilium.sysusers")
 sha256sums=('SKIP'
             'f47ee5b436304aa55ffad29fd68e31be4b1261d3f81ba2a7a370e522705833e8')
@@ -20,14 +19,15 @@ pkgver() {
 	cd "${srcdir}/${pkgname}"
 
 	VERSION=$(<VERSION)
-	echo "${VERSION}.g$(git rev-parse --short HEAD)" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	echo "${VERSION}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
+	git submodule update --init --recursive
 
-	mkdir -p "${srcdir}/go/src/github.com/cilium"
-	cp -a "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/cilium/cilium"
+	mkdir -p "${srcdir}/go/src/github.com/cilium/cilium"
+	cp -a ./* "${srcdir}/go/src/github.com/cilium/cilium/"
 }
 
 build() {
@@ -42,11 +42,11 @@ build() {
 
 	export CC="/usr/bin/gcc"
 	export CXX="/usr/bin/g++"
+	export CCACHE_DISABLE=1
 
-	make -C envoy veryclean
 	cd envoy
-	bazel clean --async
-	bazel build //:envoy --action_env=PATH=$PATH
+	bazel clean
+	bazel build //:envoy --action_env=PATH="$PATH"
 }
 
 package() {
