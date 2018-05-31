@@ -1,7 +1,7 @@
 pkgbase = mpd-sidplay
 	pkgdesc = Flexible, powerful, server-side application for playing music - built with sidplay support
 	pkgver = 0.20.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.musicpd.org/
 	arch = x86_64
 	license = GPL
