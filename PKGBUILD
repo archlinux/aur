@@ -7,7 +7,7 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Easily Install and Load the Tidyverse"
 arch=('any')
-url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
+url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3' 'custom')
 depends=('r' 'r-broom' 'r-cran-cli' 'r-crayon' 'r-dplyr' 'r-dbplyr' 'r-forcats' 'r-ggplot2' 'r-haven' 'r-hms' 'r-httr' 'r-jsonlite' 'r-cran-lubridate' 'r-magrittr' 'r-modelr' 'r-purrr' 'r-readr' 'r-readxl' 'r-reprex' 'r-rlang' 'r-rstudioapi' 'r-rvest' 'r-stringr' 'r-tibble' 'r-tidyr' 'r-xml2')
 
