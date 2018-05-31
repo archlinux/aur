@@ -1,7 +1,8 @@
 # Maintainer: Philip Wellnitz
 
 pkgname=powerline-i3-git
-pkgver=1.7.16
+_pkgname=powerline
+pkgver=1.7.16.10
 pkgrel=1
 pkgdesc="The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager."
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ depends=(
   'python'
   'powerline-fonts'
   'ttf-font-awesome-4'
-  'lemonbar-xft-git'
+  'lemonbar-clicks-git'
   'i3ipc-python-git'
   'python-xlib'
 )
@@ -30,8 +31,13 @@ makedepends=(
 provides=('powerline-i3')
 conflicts=('powerline' 'python-powerline')
 
-source=("git://github.com/ph111p/powerline.git#tag=${pkgver}")
+source=("git://github.com/ph111p/powerline.git#branch=develop")
 sha512sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    echo $(git describe --abbrev=0 --tags).$(git rev-list --count $(git describe --abbrev=0 --tags)..HEAD)
+}
 
 package() {
     cd powerline
