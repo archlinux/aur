@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="This Plugin aims to provide a full LDAP interface to SUPANN schema"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory>=$pkgver")
 
 install=fusiondirectory-plugin-supann.install
