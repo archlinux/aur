@@ -1,7 +1,7 @@
 # Maintainer: frichtlm <frichtlm@gmail.com>
 _cranname=readr
 _cranver=1.1.1
-pkgname=r-cran-$_cranname
+pkgname=r-$_cranname
 pkgver=${_cranver}
 pkgrel=1
 pkgdesc="Improved methods for reading rectangular data."

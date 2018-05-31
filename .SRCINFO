@@ -1,4 +1,4 @@
-pkgbase = r-cran-readr
+pkgbase = r-readr
 	pkgdesc = Improved methods for reading rectangular data.
 	pkgver = 1.1.1
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = r-cran-readr
 	source = http://cran.r-project.org/src/contrib/readr_1.1.1.tar.gz
 	md5sums = cffb6669664f6a0f6fe172542e64cb47
 
-pkgname = r-cran-readr
+pkgname = r-readr
 
