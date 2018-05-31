@@ -4,17 +4,17 @@
 
 pkgname=ipget
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="wget for IPFS: retrieve files over IPFS and save them locally."
 arch=('x86_64')
 license=('MIT')
 optdepends=('go-ipfs: to use full potential of IPFS network')
-makedepends=('go')
+makedepends=('go>=2:1.7.0' 'gx>=0.6.0' 'gx-go>=1.1.0')
 url="https://github.com/ipfs/ipget"
 source=("https://github.com/ipfs/ipget/archive/v${pkgver}.tar.gz"
-        "ipget_version.patch")
+        "ipget_aur.patch")
 sha256sums=('19fcea7a4328133bdb7c263e27df4eef6a08365d21991e2344c28345d1f078f0'
-            'dc7e1b74f786d1d13461635cc269a1a00acd13dbb530b07823ed82bd31bd8bd8')
+            'd1cc386ee0d8936f56ac7674749c9011af1d359c8cd4b1eb2bd44d0b5f82ec3d')
 
 build() {
     # Workaround for missing dependencies that block build in v0.3.0
@@ -29,10 +29,12 @@ build() {
         echo "> $dep"
         GOPATH="${srcdir}" go get "${dep}"
     done
-    # Patching versio
     msg "Patching"
     cd "ipget-${pkgver}" || exit
-    patch -N < ../ipget_version.patch
+    patch -N < ../ipget_aur.patch
+    ln -s "$(which gx)" "bin/gx"
+    ln -s "$(which gx-go)" "bin/gx-go"
+
     # Set up build
     mkdir -p "${srcdir}/src/github.com/ipfs/"
     if [ ! -e "${srcdir}/src/github.com/ipfs/ipget" ]; then
@@ -44,5 +46,5 @@ build() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/ipget-${pkgver}/ipget" "${pkgdir}/usr/bin/ipget"
+  install -D "${srcdir}/ipget-${pkgver}/ipget" "${pkgdir}/usr/bin/ipget"
 }
