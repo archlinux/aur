@@ -1,0 +1,85 @@
+diff -Naupr aeon-0.12.0.0_orig/external/rapidjson/document.h aeon-0.12.0.0/external/rapidjson/document.h
+--- aeon-0.12.0.0_orig/external/rapidjson/document.h	2018-05-24 15:54:20.000000000 +0700
++++ aeon-0.12.0.0/external/rapidjson/document.h	2018-05-31 13:38:38.880208263 +0700
+@@ -1936,7 +1936,12 @@ private:
+         if (count) {
+             GenericValue* e = static_cast<GenericValue*>(allocator.Malloc(count * sizeof(GenericValue)));
+             SetElementsPointer(e);
++RAPIDJSON_DIAG_PUSH
++#if defined(__GNUC__) && __GNUC__ >= 8
++RAPIDJSON_DIAG_OFF(class-memaccess) // ignore complains from gcc that no trivial copy constructor exists.
++#endif
+             std::memcpy(e, values, count * sizeof(GenericValue));
++RAPIDJSON_DIAG_POP
+         }
+         else
+             SetElementsPointer(0);
+@@ -1949,7 +1954,12 @@ private:
+         if (count) {
+             Member* m = static_cast<Member*>(allocator.Malloc(count * sizeof(Member)));
+             SetMembersPointer(m);
++RAPIDJSON_DIAG_PUSH
++#if defined(__GNUC__) && __GNUC__ >= 8
++RAPIDJSON_DIAG_OFF(class-memaccess) // ignore complains from gcc that no trivial copy constructor exists.
++#endif
+             std::memcpy(m, members, count * sizeof(Member));
++RAPIDJSON_DIAG_POP
+         }
+         else
+             SetMembersPointer(0);
+diff -Naupr aeon-0.12.0.0_orig/src/crypto/chacha.h aeon-0.12.0.0/src/crypto/chacha.h
+--- aeon-0.12.0.0_orig/src/crypto/chacha.h	2018-05-24 15:54:20.000000000 +0700
++++ aeon-0.12.0.0/src/crypto/chacha.h	2018-05-31 13:39:11.727214182 +0700
+@@ -73,14 +73,14 @@ namespace crypto {
+     static_assert(sizeof(chacha_key) <= sizeof(hash), "Size of hash must be at least that of chacha_key");
+     tools::scrubbed_arr<char, HASH_SIZE> pwd_hash;
+     crypto::cn_slow_hash(data, size, pwd_hash.data(), 0/*light*/, 0/*variant*/, 0/*prehashed*/);
+-    memcpy(&key, pwd_hash.data(), sizeof(key));
++    memcpy(&unwrap(key), pwd_hash.data(), sizeof(key));
+   }
+ 
+   inline void generate_chacha_key_prehashed(const void *data, size_t size, chacha_key& key) {
+     static_assert(sizeof(chacha_key) <= sizeof(hash), "Size of hash must be at least that of chacha_key");
+     tools::scrubbed_arr<char, HASH_SIZE> pwd_hash;
+     crypto::cn_slow_hash(data, size, pwd_hash.data(), 0/*light*/, 0/*variant*/, 1/*prehashed*/);
+-    memcpy(&key, pwd_hash.data(), sizeof(key));
++    memcpy(&unwrap(key), pwd_hash.data(), sizeof(key));
+   }
+ 
+   inline void generate_chacha_key(std::string password, chacha_key& key) {
+diff -Naupr aeon-0.12.0.0_orig/src/cryptonote_basic/account.cpp aeon-0.12.0.0/src/cryptonote_basic/account.cpp
+--- aeon-0.12.0.0_orig/src/cryptonote_basic/account.cpp	2018-05-24 15:54:20.000000000 +0700
++++ aeon-0.12.0.0/src/cryptonote_basic/account.cpp	2018-05-31 13:38:38.880208263 +0700
+@@ -157,7 +157,7 @@ DISABLE_VS_WARNINGS(4244 4345)
+   void account_base::create_from_viewkey(const cryptonote::account_public_address& address, const crypto::secret_key& viewkey)
+   {
+     crypto::secret_key fake;
+-    memset(&fake, 0, sizeof(fake));
++    memset(&unwrap(fake), 0, sizeof(fake));
+     create_from_keys(address, fake, viewkey);
+   }
+   //-----------------------------------------------------------------
+diff -Naupr aeon-0.12.0.0_orig/src/daemon/rpc_command_executor.cpp aeon-0.12.0.0/src/daemon/rpc_command_executor.cpp
+--- aeon-0.12.0.0_orig/src/daemon/rpc_command_executor.cpp	2018-05-24 15:54:20.000000000 +0700
++++ aeon-0.12.0.0/src/daemon/rpc_command_executor.cpp	2018-05-31 13:38:38.880208263 +0700
+@@ -972,7 +972,7 @@ bool t_rpc_command_executor::print_trans
+   }
+   else
+   {
+-    memset(&res.pool_stats, 0, sizeof(res.pool_stats));
++    res.pool_stats = {};
+     if (!m_rpc_server->on_get_transaction_pool_stats(req, res, false) || res.status != CORE_RPC_STATUS_OK)
+     {
+       tools::fail_msg_writer() << make_error(fail_message, res.status);
+diff -Naupr aeon-0.12.0.0_orig/src/rpc/core_rpc_server_commands_defs.h aeon-0.12.0.0/src/rpc/core_rpc_server_commands_defs.h
+--- aeon-0.12.0.0_orig/src/rpc/core_rpc_server_commands_defs.h	2018-05-24 15:54:20.000000000 +0700
++++ aeon-0.12.0.0/src/rpc/core_rpc_server_commands_defs.h	2018-05-31 13:38:38.880208263 +0700
+@@ -1554,6 +1554,8 @@ namespace cryptonote
+     std::vector<txpool_histo> histo;
+     uint32_t num_double_spends;
+ 
++    txpool_stats(): bytes_total(0), bytes_min(0), bytes_max(0), bytes_med(0), fee_total(0), oldest(0), txs_total(0), num_failing(0), num_10m(0), num_not_relayed(0), histo_98pc(0), num_double_spends(0) {}
++
+     BEGIN_KV_SERIALIZE_MAP()
+       KV_SERIALIZE(bytes_total)
+       KV_SERIALIZE(bytes_min)

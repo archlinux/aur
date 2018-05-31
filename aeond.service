@@ -7,8 +7,11 @@ User=aeon
 Group=aeon
 WorkingDirectory=~
 RuntimeDirectory=aeon
-Type=simple
-ExecStart=/usr/bin/aeond --no-console
+Type=forking
+PIDFile=/run/aeon/aeond.pid
+ExecStart=/usr/bin/aeond --config-file /etc/aeond.conf \
+    --detach --pidfile /run/aeon/aeond.pid
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
