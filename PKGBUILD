@@ -1,19 +1,20 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 pkgname=kawaii-player
 _pkgname=kawaii_player
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A powerful Audio/Video manager, multimedia player and portable media server"
 arch=(any)
 url="https://github.com/kanishka-linux/kawaii-player"
 license=('GPL3')
-depends=('curl' 'ffmpegthumbnailer' 'libnotify' 'libtorrent-rasterbar' 'mpv' 'python' 'python-beautifulsoup4' 'python-dbus' 'python-lxml'
-         'python-mutagen' 'python-pillow' 'python-pycurl' 'python-pyqt5' 'python-pytaglib' 'qt5-webengine' 'sqlite' 'wget' 'youtube-dl')
+depends=('curl' 'ffmpegthumbnailer' 'libnotify' 'libtorrent-rasterbar' 'mpv' 'python' 'python-beautifulsoup4' 'python-certifi' 'python-dbus'
+         'python-lxml' 'python-mutagen' 'python-pillow' 'python-pycurl' 'python-pyqt5' 'qt5-webengine' 'sqlite' 'youtube-dl')
+optdepends=('mplayer: alternative backend')
 makedepends=('git')
 conflicts=('kawaii-player-git')
 install=kawaii-player.install
 source=("https://github.com/kanishka-linux/${pkgname}/releases/download/v${pkgver}-${pkgrel}/${pkgname}-${pkgver}-${pkgrel}.tar.bz2")
-md5sums=('476cbcb8a3bfe3c6657a4184e6fb72f9')
+md5sums=('a1af476bab93baa37c979f1c3e9c055c')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}-${pkgrel}

@@ -1,6 +1,6 @@
 pkgbase = kawaii-player
 	pkgdesc = A powerful Audio/Video manager, multimedia player and portable media server
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/kanishka-linux/kawaii-player
 	install = kawaii-player.install
@@ -14,20 +14,20 @@ pkgbase = kawaii-player
 	depends = mpv
 	depends = python
 	depends = python-beautifulsoup4
+	depends = python-certifi
 	depends = python-dbus
 	depends = python-lxml
 	depends = python-mutagen
 	depends = python-pillow
 	depends = python-pycurl
 	depends = python-pyqt5
-	depends = python-pytaglib
 	depends = qt5-webengine
 	depends = sqlite
-	depends = wget
 	depends = youtube-dl
+	optdepends = mplayer: alternative backend
 	conflicts = kawaii-player-git
-	source = https://github.com/kanishka-linux/kawaii-player/releases/download/v3.5.0-1/kawaii-player-3.5.0-1.tar.bz2
-	md5sums = 476cbcb8a3bfe3c6657a4184e6fb72f9
+	source = https://github.com/kanishka-linux/kawaii-player/releases/download/v3.6.0-1/kawaii-player-3.6.0-1.tar.bz2
+	md5sums = a1af476bab93baa37c979f1c3e9c055c
 
 pkgname = kawaii-player
 
