@@ -2,14 +2,14 @@
 
 pkgname='libhomegear-base'
 pkgdesc='Homegear base library'
-pkgver=0.7.15
+pkgver=0.7.18
 pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
 url="https://homegear.eu"
 depends=('gcc-libs')
 source=("https://github.com/Homegear/libhomegear-base/archive/${pkgver}.tar.gz")
-sha512sums=('8404f30a7bf7925b3f962eb3ae97f35da6d9faa23bd7c9a6d310889bb407123c91cc0477f873d3cbdb006de605d1018d35f6c4a3a715f4777da2e770e62b96ee')
+sha512sums=('7d4f6ba9b3ce2aa51882b2f0c08d4bed94b2c4a923a0041551235777033472f8f3eee44b4d627b3180ec195e74445d95b5d4e270fb7cefc248ccc133010cea8e')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
