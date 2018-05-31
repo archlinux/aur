@@ -1,14 +1,14 @@
 pkgbase = r-whisker
-	pkgdesc = {{mustache}} for r, logicless templating
+	pkgdesc = {{mustache}} for R, logicless templating
 	pkgver = 0.3.2
 	pkgrel = 1
-	url = http://github.com/edwindj/whisker
+	url = https://cran.r-project.org/package=whisker
 	arch = any
 	license = GPL3
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
 	depends = r
+	optdepends = r-markdown
+	source = https://cran.r-project.org/src/contrib/whisker_0.3-2.tar.gz
+	md5sums = c4b9bf9a22e69ce003fe68663ab5e8e6
 
 pkgname = r-whisker
 
