@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Management of debconf profile"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-argonaut>=$pkgver")
 
 install=fusiondirectory-plugin-debconf.install
