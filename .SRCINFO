@@ -2,7 +2,7 @@ pkgbase = r-inline
 	pkgdesc = Functions to Inline C, C++, Fortran Function Calls from R
 	pkgver = 0.3.15
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/inline/index.html
+	url = https://cran.r-project.org/package=inline
 	arch = any
 	license = LGPL
 	depends = r
