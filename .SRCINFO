@@ -2,7 +2,7 @@ pkgbase = r-r6
 	pkgdesc = Classes with Reference Semantics
 	pkgver = 2.2.2
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/R6/index.html
+	url = https://cran.r-project.org/package=R6
 	arch = any
 	license = MIT
 	depends = r
