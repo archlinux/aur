@@ -1,5 +1,5 @@
 pkgbase = roger-wallet-git
-	pkgdesc = A peer-to-peer network-based digital currency (git version)
+	pkgdesc = The Holy Roger Coin (ROGER), the leading altcoin derived from Litecoin. ROGER is developed with a focus on outing scams and trolling The Fake Roger.
 	pkgver = v0.16.0rc3
 	pkgrel = 1
 	url = https://theholyroger.com
