@@ -2,7 +2,7 @@ pkgbase = r-bit
 	pkgdesc = A Class for Vectors of 1-Bit Booleans
 	pkgver = 1.1.14
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/bit/index.html
+	url = https://cran.r-project.org/package=bit
 	arch = x86_64
 	license = GPL2
 	depends = r
