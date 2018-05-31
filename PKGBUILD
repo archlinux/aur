@@ -1,8 +1,8 @@
 # Original Package: Jan de Groot <jgc@archlinux.org>
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=gst-plugins-bad-git
-pkgver=1.13.0.1.22504.25d2b8a60
+pkgver=1.15.0.1.23500.3f2314a1a
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ provides=('gst-plugins-bad='$pkgver)
 conflicts=('gst-plugins-bad' 'gst-plugins-gl')
 url="http://gstreamer.freedesktop.org/"
 depends=('mjpegtools' 'gst-plugins-base-git' 'curl' 'chromaprint' 'libmms' 'faad2' 'mpg123' 'faac' 'celt' 'libdca' 'soundtouch' 'spandsp' 'libdvdnav' 'libmodplug' 'libgme' 'opus' 'wayland' 'rtmpdump')
-makedepends=('schroedinger' 'libexif' 'libdvdread' 'libvdpau' 'libmpeg2' 'gtk-doc' 'glu')
+makedepends=('git' 'meson' 'schroedinger' 'libexif' 'libdvdread' 'libvdpau' 'libmpeg2' 'gtk-doc' 'glu')
 options=(!libtool !emptydirs)
 
-source=('git+git://anongit.freedesktop.org/gstreamer/gst-plugins-bad')
+source=('git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad.git')
 sha256sums=('SKIP')
 
 _gitname='gst-plugins-bad'
@@ -29,14 +29,11 @@ pkgver() {
 }
 
 build() {
-  cd $_gitname
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --disable-static --enable-experimental --disable-fatal-warnings \
-    --with-gtk=3.0 --disable-gtk-doc
-  make
+  arch-meson $_gitname build
+  ninja -C build
 }
 
-package() {
-  cd $_gitname
-  make DESTDIR="${pkgdir}" install
+package() { 
+
+  DESTDIR="${pkgdir}" ninja -C build install
 }
