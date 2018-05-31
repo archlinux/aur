@@ -1,6 +1,6 @@
 pkgbase = webmacs-git
 	pkgdesc = browser for keyboard-based web navigation
-	pkgver = r488.39870a2
+	pkgver = r502.999f11e
 	pkgrel = 1
 	url = https://github.com/parkouss/webmacs
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = webmacs-git
 	depends = qt5-webengine
 	depends = python-dateparser
 	depends = python-dateutil
-	source = git+https://github.com/parkouss/webmacs#commit=39870a2fcad86f84e6511246a5dd81f9571abebf
+	source = git+https://github.com/parkouss/webmacs
 	md5sums = SKIP
 
 pkgname = webmacs-git
