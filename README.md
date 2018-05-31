@@ -7,13 +7,13 @@ You can scrape a subreddit or a username, downloading posts and content from the
 Animated GIFs for example can be large, and can quickly add up to take up valuable disk space, so downloading them can be turned off. Another issue on reddit is that often images are not linked directly but via webpages on sites like imgur. I have included functions which go on to get data from those sites so as to not miss anything. These functions can be called separately using the command line options, to just download a whole imgur album for 
 example.
 
-My aim is to keep SnooScraper written in POSIX-compliant shell script, for portability and efficiency, it should work in any shell. I've tried it in bash, dash and zsh on GNU/Linux, and in bash on Cygwin in Windows so far. It should work on other operating systems I haven't tried. SnooScraper is free software, feel free to submit issues, patches, or use it in your own project.
+My aim is to keep SnooScraper written in POSIX-compliant shell script, for portability and efficiency, it should work in any shell. I've tried it in bash and dash on GNU/Linux, and in bash in Cygwin on Windows so far. It should work on other operating systems I haven't tried. SnooScraper is free software, feel free to submit issues, patches, or use it in your own project.
 
-**Supported External Sites:** imgur, tumblr, instagram
+**Supported External Sites:** imgur, instagram, pinterest, tumblr
 
 ## How To Use
 
-Other than a shell, and standard tools curl, sed and grep, the only dependency is [jq](https://stedolan.github.io/jq/). jq is available in most GNU/Linux distributions or can be downloaded from [github](https://github.com/stedolan/jq/releases). Then download the script and default config file by [downloading](https://notabug.org/odg/SnooScraper/releases) and extracting a release, or cloning this repository, and make it executable:
+Other than a shell, and standard tools curl, sed and grep, the only dependency is [jq](https://stedolan.github.io/jq/). jq is available in most GNU/Linux distributions, [on Homebrew](https://formulae.brew.sh/formula/jq) for macOS, [in Cygwin](https://cygwin.com/cgi-bin2/package-cat.cgi?file=x86_64%2Fjq%2Fjq-1.5-3&grep=jq) on Windows, or can be downloaded from [github](https://github.com/stedolan/jq/releases). Then download the script and default config file by [downloading](https://notabug.org/odg/SnooScraper/releases) and extracting a release, or cloning this repository, and make it executable:
 
 ```
 git clone https://notabug.org/odg/SnooScraper.git #if you haven't downloaded it
@@ -30,7 +30,7 @@ A cleaning function (-c) is also included. This attempts to remove any duplicate
 
 ## Planned Features
 
-In the future I plan to add more sites (twitter, flickr, wikimedia, pinterest, maybe more), and the ability to scrape multiple subreddits/accounts simultaneously. Also more options: to change the sort method, narrow down by upvotes, start/end searches at different dates, etc. Also potentially different download methods to increase speed and better handle parallel downloads.
+In the future I plan to add more sites (twitter, flickr, wikimedia, maybe more), and the ability to scrape multiple subreddits/accounts simultaneously. Also more options: to change the sort method, narrow down by upvotes, start/end searches at different dates, etc. Also potentially different download methods to increase speed and better handle parallel downloads.
 
 ## Thanks
 
