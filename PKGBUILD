@@ -1,5 +1,5 @@
 pkgname=kvirc4-git
-pkgver=r6.6ca1178
+pkgver=r7326.85ef2059c
 pkgrel=1
 pkgdesc="Qt5 based IRC-Client, compiled with kde5 support - Git Version"
 arch=('i686' 'x86_64')
@@ -13,6 +13,7 @@ source=("$pkgname::git+https://github.com/kvirc/KVIrc.git")
 sha256sums=('SKIP')
 
 pkgver() {
+  cd "${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
