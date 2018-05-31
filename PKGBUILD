@@ -1,9 +1,10 @@
 # Maintainer: Oliver Mangold
+# Maintainer: Holger Rauch < holger dot rauch at posteo dot de>
 
 _gemname=docbookrx
 pkgname=ruby-${_gemname}
 pkgver=1.0.0.dev
-pkgrel=1
+pkgrel=2
 pkgdesc='Docbook to Asciidoc converter'
 url='https://github.com/asciidoctor/docbookrx'
 arch=('any')
