@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="LDAP schema for FusionDirectory cyrus plugin"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 
 depends=("fusiondirectory-schema>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver")
 
