@@ -28,7 +28,7 @@ post_install() {
 
   if ! test -f /etc/aurto/trusted-users; then
     echo 'aurto: Adding default trusted users -> /etc/aurto/trusted-users' >&2
-    install -D -o "$user" /usr/lib/aurto/default-trusted-users.txt /etc/aurto/trusted-users
+    install -Dm640 -o "$user" /usr/lib/aurto/default-trusted-users.txt /etc/aurto/trusted-users
   fi
 
   echo 'aurto: Adding & enabling systemd timer update tasks' >&2

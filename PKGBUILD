@@ -1,7 +1,7 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=aurto
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple aur tool for managing a local 'aurto' repository"
 arch=('any')
 url="https://github.com/alexheretic/aurto"

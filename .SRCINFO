@@ -1,7 +1,7 @@
 pkgbase = aurto
 	pkgdesc = A simple aur tool for managing a local 'aurto' repository
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexheretic/aurto
 	install = aurto.install
 	arch = any
