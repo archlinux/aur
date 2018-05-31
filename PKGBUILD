@@ -10,7 +10,7 @@
 
 pkgname=cairo-ubuntu
 _name=cairo
-pkgver=1.14.8
+pkgver=1.15.10
 pkgrel=1
 pkgdesc="Cairo vector graphics library"
 arch=(i686 x86_64)
@@ -25,7 +25,7 @@ provides=("cairo=$pkgver" 'cairo-ubuntu' 'cairo-xcb')
 replaces=('cairo-xcb')
 conflicts=('cairo' 'cairo-cleartype' 'cairo-git' 'cairo-gl-git' 'cairo-glitz'
            'cairo-ocaml-git' 'cairo-small')
-source=(http://cairographics.org/releases/cairo-$pkgver.tar.xz
+source=(http://cairographics.org/snapshots/cairo-$pkgver.tar.xz
         cairo-respect-fontconfig_pb.patch
         cairo-server-side-gradients.patch
         cairo-webkit-html5-fix.patch)
@@ -66,7 +66,7 @@ package() {
   cd $_name-$pkgver
   make DESTDIR="$pkgdir" install
 }
-md5sums=('4ef0db2eacb271c74f8a3fd87822aa98'
+md5sums=('f060381576d67c855fad03e327fc9a69'
          '080eac1ce1b2fa2beb550555d31d29b8'
          '4ffec1c86085da11bf9f56d6bf88fbdf'
          '6080d20e289f5e75cc013e8f40710aa3')
