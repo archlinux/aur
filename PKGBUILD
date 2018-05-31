@@ -3,7 +3,7 @@
 
 pkgname=smallpdf-desktop
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Smallpdf desktop reader and converter'
 arch=(x86_64)
 url='https://smallpdf.com/'
@@ -20,7 +20,7 @@ source=('https://download.smallpdf.com/desktop/linux/package-linux.tar.gz'
         'smallpdf')
 sha256sums=('a8efc280b117727cd3c291ae260a8af1eea2cc45bec65789a3fc1a44f896800a'
             'a56b2da40fec921ee2cbad55c3767fdba20af8055082c611a4ce2ab29fed3096'
-            '98d67be42cc742004351f25aee8403310259491c49864c33decb8513f9b00103')
+            '08adf2892165a22a9ce06f16d04b4190e4a54ef46da20702e3b73cad18424133')
 
 package() {
 	install -dm755 ${pkgdir}/opt/smallpdf-desktop

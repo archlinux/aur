@@ -1,2 +1,2 @@
 #!/bin/env sh
-/opt/smallpdf-desktop/Smallpdf $@ > /dev/null
+/opt/smallpdf-desktop/Smallpdf "$@" > /dev/null
