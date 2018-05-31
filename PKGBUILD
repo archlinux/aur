@@ -4,7 +4,7 @@
 pkgname=subbrute
 pkgver=1.2.1
 _tag=77
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS meta-query spider that enumerates DNS records and subdomains"
 arch=('any')
 url="https://github.com/TheRook/$pkgname"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python-dnspython')
 makedepends=('git')
 source=("git+https://github.com/TheRook/$pkgname.git#tag=$_tag")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 package() {
   cd $pkgname
