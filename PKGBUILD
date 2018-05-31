@@ -13,13 +13,57 @@ url="http://pytorch.org"
 license=('BSD')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools'
              'python-yaml' 'python2-yaml' 'python-numpy' 'python2-numpy'
-             'gcc5' 'cmake' 'cuda' 'cudnn' 'git' 'python2-typing')
+             'cmake' 'cuda' 'cudnn' 'git' 'python2-typing')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#commit=$_commit"
+        "git://github.com/01org/tbb"
+        "git://github.com/catchorg/Catch2"
+        "git://github.com/ARM-software/ComputeLibrary"
+        "git://github.com/Maratyszcza/FP16"
+        "git://github.com/Maratyszcza/FXdiv"
+        "git://github.com/Maratyszcza/NNPACK"
+        "git://github.com/google/benchmark"
+        "git://github.com/Maratyszcza/cpuinfo"
+        "git://github.com/NVlabs/cub"
+        "git://github.com/eigenteam/eigen-git-mirror"
         "git://github.com/facebookincubator/gloo"
-        "git://github.com/pybind/pybind11"
+        "git://github.com/google/googletest"
+        "git://github.com/Yangqing/ios-cmake"
         "git://github.com/nanopb/nanopb"
+        "git://github.com/NervanaSystems/nervanagpu"
+        "git://github.com/nvidia/nccl"
+        "git://github.com/onnx/onnx"
+        "git://github.com/google/protobuf"
+        "git://github.com/Maratyszcza/psimd"
+        "git://github.com/Maratyszcza/pthreadpool"
+        "git://github.com/pybind/pybind11"
+        "git://github.com/PeachPy/enum34"
+        "git://github.com/Maratyszcza/PeachPy"
+        "git://github.com/benjaminp/six"
+        "git://github.com/facebook/zstd"
         noplt.patch)
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -31,9 +75,32 @@ prepare() {
   patch -Np1 -i "${srcdir}"/noplt.patch
 
   git submodule init
-  git config submodule."torch/lib/gloo".url ${srcdir}/gloo
-  git config submodule."torch/lib/pybind11".url ${srcdir}/pybind11
-  git config submodule."torch/lib/nanopb".url ${srcdir}/nanopb
+  git config submodule."aten/src/ATen/cpu/cpuinfo".url ${srcdir}/cpuinfo
+  git config submodule."aten/src/ATen/cpu/tbb/tbb_remote".url ${srcdir}/tbb
+  git config submodule."aten/src/ATen/utils/catch".url ${srcdir}/Catch2
+  git config submodule."third_party/nanopb".url ${srcdir}/nanopb
+  git config submodule."third_party/pybind11".url ${srcdir}/pybind11
+  git config submodule."third_party/nccl".url ${srcdir}/nccl
+  git config submodule."third_party/cub".url ${srcdir}/cub
+  git config submodule."third_party/eigen".url ${srcdir}/eigen-git-mirror
+  git config submodule."third_party/googletest".url ${srcdir}/googletest
+  git config submodule."third_party/nervanagpu".url ${srcdir}/nervanagpu
+  git config submodule."third_party/benchmark".url ${srcdir}/benchmark
+  git config submodule."third_party/protobuf".url ${srcdir}/protobuf
+  git config submodule."third_party/ios-cmake".url ${srcdir}/ios-cmake
+  git config submodule."third_party/NNPACK".url ${srcdir}/NNPACK
+  git config submodule."third_party/gloo".url ${srcdir}/gloo
+  git config submodule."third_party/NNPACK_deps/pthread_ool".url ${srcdir}/pthreadpool
+  git config submodule."third_party/NNPACK_deps/FXdiv".url ${srcdir}/FXdiv
+  git config submodule."third_party/NNPACK_deps/FP16".url ${srcdir}/FP16
+  git config submodule."third_party/NNPACK_deps/psimd".url ${srcdir}/psimd
+  git config submodule."third_party/zstd".url ${srcdir}/zstd
+  git config submodule."third_party/cpuinfo".url ${srcdir}/cpuinfo
+  git config submodule."third_party/python-enum".url ${srcdir}/enum34
+  git config submodule."third_party/python-peachpy".url ${srcdir}/PeachPy
+  git config submodule."third_party/python-six".url ${srcdir}/six
+  git config submodule."third_party/ComputeLibrary".url ${srcdir}/ComputeLibrary
+  git config submodule."third_party/onnx".url ${srcdir}/onnx
   git submodule update
 
   cd ..
@@ -73,8 +140,8 @@ build() {
   #CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
   CFLAGS="${CFLAGS/-fno-plt/}" \
   CXXFLAGS="${CXXFLAGS/-fno-plt/}" \
-  CC=gcc-5 \
-  CXX=g++-5 \
+  CC=gcc-7 \
+  CXX=g++-7 \
   WITH_CUDA=1 \
   CUDA_HOME=/opt/cuda \
   WITH_CUDNN=1 \
@@ -89,8 +156,8 @@ build() {
   #CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
   CFLAGS="${CFLAGS/-fno-plt/}" \
   CXXFLAGS="${CXXFLAGS/-fno-plt/}" \
-  CC=gcc-5 \
-  CXX=g++-5 \
+  CC=gcc-7 \
+  CXX=g++-7 \
   WITH_CUDA=1 \
   CUDA_HOME=/opt/cuda \
   WITH_CUDNN=1 \
