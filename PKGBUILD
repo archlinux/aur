@@ -3,7 +3,7 @@
 
 pkgname=dlib
 pkgver=19.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques"
 arch=('x86_64')
 url="http://www.dlib.net"
@@ -17,7 +17,7 @@ optdepends=('blas: for BLAS support'
             'libpng: for PNG support'
             'neon: for neon support'
             'sqlite: for sqlite support')
-makedepends=('cmake' 'gcc6')
+makedepends=('cmake')
 source=("https://downloads.sourceforge.net/project/dclib/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('fe90b94677f837c8f0bcb0bb450b313a422a9171ac682583a75052c58f80ba54')
 
@@ -31,7 +31,7 @@ build() {
     -DUSE_AVX_INSTRUCTIONS:BOOL=ON \
     -DUSE_SSE2_INSTRUCTIONS:BOOL=ON \
     -DUSE_SSE4_INSTRUCTIONS:BOOL=ON \
-    -DCUDA_HOST_COMPILER='/usr/bin/gcc-6' \
+    -DCUDA_HOST_COMPILER='/usr/bin/gcc-7' \
     -DCMAKE_BUILD_TYPE=Release \
     "../${pkgname}-${pkgver}"
   make
