@@ -1,0 +1,11 @@
+pkgbase = gotodo
+	pkgdesc = Simple command-line todo list written in Go
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://www.umbrafex.com/#gotodo
+	arch = x86_64
+	source = http://www.umbrafex.com/packages/gotodo-2.0.0.tar.gz
+	md5sums = 2a8256eca67796eeee98d617d19d37f5
+
+pkgname = gotodo
+
