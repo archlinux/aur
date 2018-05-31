@@ -1,0 +1,18 @@
+pkgbase = r-debugme
+	pkgdesc = Debug R Packages
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=debugme
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-crayon
+	optdepends = r-covr
+	optdepends = r-mockery
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/debugme_1.1.0.tar.gz
+	md5sums = 0b7946be7d9420c63a4d02a937e46227
+
+pkgname = r-debugme
+
