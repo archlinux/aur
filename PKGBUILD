@@ -1,11 +1,11 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r40.1d1a032
+pkgver=r44.45e9b92
 pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
-depends=('')
+depends=()
 optdepends=(
 	'xdg-utils: for setting default-web-browser to ChromeOS host via garcon bridge'
 	'xorg-apps: for XWayland functionality'
