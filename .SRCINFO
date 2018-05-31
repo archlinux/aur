@@ -1,13 +1,13 @@
 pkgbase = mingw-w64-headers-bin
 	pkgdesc = MinGW-w64 headers for Windows (pre-compiled)
 	pkgver = 5.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mingw-w64.sourceforge.net
 	arch = any
 	groups = mingw-w64-toolchain
 	groups = mingw-w64
 	license = custom
-	provides = mingw-w64-headers
+	provides = mingw-w64-headers=5.0.3
 	conflicts = mingw-w64-headers
 	options = !strip
 	options = !libtool
