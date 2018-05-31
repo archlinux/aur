@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="DNS service management"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory>=$pkgver")
 
 install=fusiondirectory-plugin-dns.install
