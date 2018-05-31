@@ -6,7 +6,7 @@ pkgbase = r-stanheaders
 	arch = any
 	license = BSD
 	depends = r
-	optdepends = r-cran-bh
+	optdepends = r-bh
 	source = https://cran.r-project.org/src/contrib/StanHeaders_2.17.2.tar.gz
 	md5sums = defb5a3bf4e429490ef34770b66410d4
 
