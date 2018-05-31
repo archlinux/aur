@@ -1,0 +1,22 @@
+pkgbase = python-stoq-kiwi
+	pkgdesc = A graphical framework to construct simple UI
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/stoq/kiwi
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-zope-interface
+	depends = python-gobject
+	depends = gtk3
+	conflicts = stoq-server<=0.14.1
+	conflicts = stoq<=2.2
+	conflicts = stoqdrivers<=1.3.3
+	conflicts = kiwi
+	source = https://launchpad.net/~stoq-dev/+archive/ubuntu/stoq3/+sourcefiles/kiwi/3.0.2-2bionic/kiwi_3.0.2-2bionic.tar.gz
+	md5sums = b5db443448d3499c292ef42a80e9c2fc
+
+pkgname = python-stoq-kiwi
+
