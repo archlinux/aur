@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Compile Sass, Less, Jade and much more with live browser refresh."
 arch=('x86_64')
 url="https://prepros.io"
-license=(''custom:"Copyright (c) 2018 Prepros Ltd"')
+license=('custom:"Copyright (c) 2018 Prepros Ltd"')
 
 depends=('alsa-lib' 'atk' 'cairo' 'dbus' 'desktop-file-utils' 'electron' 'expat' 'fontconfig' 'freetype2' 'gconf' 'gdk-pixbuf2' 'glib2' 'gtk2' 'gvfs' 'hicolor-icon-theme' 'libcap' 'libcups' 'libgcrypt' 'libnotify' 'libsystemd' 'libudev0' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nspr' 'nss' 'pango' 'xdg-utils' 'zlib')
 optdepends=('libgnome-keyring'
