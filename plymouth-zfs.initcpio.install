@@ -9,8 +9,7 @@ build() {
         zunicode \
         zcommon \
         zfs \
-        spl \
-        splat
+        spl
 
     map add_binary \
         arcstat.py \
@@ -26,7 +25,6 @@ build() {
         zpool \
         zstreamdump \
         ztest \
-        splat \
         /lib/udev/vdev_id \
         /lib/udev/zvol_id \
         findmnt
