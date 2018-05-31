@@ -1,0 +1,16 @@
+pkgbase = python2-z-base-36
+	pkgdesc = base36 encoder/decoder
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/z-base-36/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-pyutil
+	source = https://pypi.python.org/packages/e1/7c/77dab474ecc4e6c9edfaf107facb17c538afd9d231b8f07fa5299409073f/z-base-36-1.0.1.tar.gz
+	source = LICENSE
+	sha256sums = 7ae6b4a19d3d88aa657d83c4cbf5009e0efec09db4ad38ea34090035c6173658
+	sha256sums = 0cc33c1482e1956eead8b55d1bd82e1d2f0a4cdc9c20a893bebbbabd1e5d3e61
+
+pkgname = python2-z-base-36
+
