@@ -34,7 +34,7 @@ progname=$(basename "$0")
 name=$(date +%s); tally=0
 url=$2; url=${url#*//}; url=${url#m.}
 
-echo "${progname} - v0.1
+echo "${progname} - v0.2
 ---"
 
 #Get the configuration if it exists
@@ -197,6 +197,7 @@ getpinterest () {
 	fi
 	for url in $list; do
 		name=${url##*/}
+		[ -f "$name" ] && continue
 		curl -sk --retry 1 "$url" -o "$name" &
 	done
 }
@@ -353,7 +354,6 @@ getreddit () {
 	printf "Finishing downloads... "
 	wait
 	cd ..
-	echo "done."
 
 	echo
 	echo "Saved content from ${tally} posts to $(pwd)/${given}"
@@ -377,7 +377,7 @@ case $1 in
 	-t|--tumblr) gettumblr "$url" ;;
 	-h|--help|'')
 	echo "
-Usage: ${progname} [-s subreddit] [-u username] [-c subreddit/username] [-a URL] [-i URL] [-t URL] [-h]
+Usage: ${progname} [-s subreddit] [-u username] [-c subreddit/username] [-a URL] [-i URL] [-p URL] [-t URL] [-h]
 
 Download posts (eg. images) fitting certain criteria from reddit, and commonly linked sites
 
@@ -393,3 +393,7 @@ Arguments:
 	" ;;
 	*) echo "Invalid option. Aborting."; exit 1 ;;
 esac
+
+if [ ! "$1" = "-h" ] && [ ! "$1" = "--help" ] && [ ! "$1" = "-c" ] && [ ! "$1" = "--clean" ] && [ ! "$1" = "" ]; then
+	echo "...done."
+fi
