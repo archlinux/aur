@@ -20,6 +20,7 @@ album=include		#Allow imgur albums
 
 #These parameters can be set to 'on or 'off'
 ##
-insta=on		#Get images/clips from instagram posts
+insta=on		#Get images/clips from instagram posts/accounts
 tumblr=on		#Get images from tumblr posts
+pinterest=on		#Get images from pinterest pins/boards
 ##
