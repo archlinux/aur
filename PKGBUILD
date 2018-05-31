@@ -2,7 +2,7 @@
 
 pkgname=spotrec
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Spotify desktop client recorder for PulseAudio"
 arch=('any')
 conflicts=('spotifyrecorder')
@@ -15,7 +15,7 @@ optdepends=('spotify'
             'kid3')
 source=("${url}/releases/download/${pkgver}/${pkgname}.cpython-36.opt-2.pyc"
         "${pkgname}")
-sha1sums=('aab78c95fbd90a505cd8351b54b754813700e561'
+sha1sums=('fd5bd8a51b88d0572bd20e96e00c20efc56845c6'
           'a50db4e83ae8776b5798e625a3dcca37b015910c')
 
 package() {
