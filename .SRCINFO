@@ -1,15 +1,17 @@
-pkgbase = r-cran-linkcomm
+pkgbase = r-linkcomm
 	pkgdesc = Tools for Generating, Visualizing, and Analysing Link Communities in Networks
-	pkgver = 1.0_11
+	pkgver = 1.0.11
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/linkcomm/index.html
-	arch = 1686
+	url = https://cran.r-project.org/package=linkcomm
 	arch = x86_64
-	license = GPLv2
+	license = GPL
 	depends = r
-	depends = r-cran-rcolorbrewer
-	source = http://cran.r-project.org/src/contrib/linkcomm_1.0-11.tar.gz
+	depends = r-igraph
+	depends = r-dynamictreecut
+	optdepends = r-fastcluster
+	replaces = r-cran-linkcomm
+	source = https://cran.r-project.org/src/contrib/linkcomm_1.0-11.tar.gz
 	md5sums = 8bc5a1623c3db3d6c7072cf15ff67065
 
-pkgname = r-cran-linkcomm
+pkgname = r-linkcomm
 
