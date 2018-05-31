@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan.marqos@gmail.com>
 pkgname=battery-monitor-devel
-pkgver=0.5.3.r33.ge5a3e42
+pkgver=0.5.3.r34.gf7a83dd
 pkgrel=1
 pkgdesc='A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux.'
 arch=('x86_64')
