@@ -1,17 +1,16 @@
 pkgbase = mintlocale
 	pkgdesc = Language and locale selection tool
-	pkgver = 1.4.5
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = https://github.com/linuxmint/mintlocale
 	arch = any
 	license = GPL2
-	depends = python2-gobject
 	depends = python-gobject
 	depends = accountsservice
 	depends = iso-flag-png
 	depends = xapps
-	source = https://github.com/linuxmint/mintlocale/archive/1.4.5.tar.gz
-	sha256sums = 2823e63ee59a9fe760efc63182ab0fec945b5a3d815f35f6d0edecee6da7b59a
+	source = https://github.com/linuxmint/mintlocale/archive/1.4.7.tar.gz
+	sha256sums = 4465e0deb891aa712cb48e72cfb971994f2270525cea6d9c3c6ef39c97476d9e
 
 pkgname = mintlocale
 
