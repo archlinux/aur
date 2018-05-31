@@ -2,7 +2,7 @@
 Type=Application
 Name=IntelliJ IDEA Community
 Comment=Capable and ergonomic Java IDE
-Exec=jetbrains-idea-ce %f
+Exec=idea-ce %f
 Icon=jetbrains-idea-ce
 Categories=Development;IDE;
 Terminal=false
