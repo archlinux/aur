@@ -9,7 +9,7 @@ pkgdesc="Easily Install and Load the Tidyverse"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('GPL3' 'custom')
-depends=('r' 'r-cran-broom' 'r-cran-cli' 'r-crayon' 'r-cran-dplyr' 'r-dbplyr' 'r-cran-forcats' 'r-cran-ggplot2' 'r-haven' 'r-cran-hms' 'r-httr' 'r-jsonlite' 'r-cran-lubridate' 'r-magrittr' 'r-modelr' 'r-cran-purrr' 'r-cran-readr' 'r-readxl' 'r-reprex' 'r-cran-rlang' 'r-rstudioapi' 'r-rvest' 'r-stringr' 'r-cran-tibble' 'r-cran-tidyr' 'r-xml2')
+depends=('r' 'r-broom' 'r-cran-cli' 'r-crayon' 'r-dplyr' 'r-dbplyr' 'r-forcats' 'r-ggplot2' 'r-haven' 'r-hms' 'r-httr' 'r-jsonlite' 'r-cran-lubridate' 'r-magrittr' 'r-modelr' 'r-purrr' 'r-readr' 'r-readxl' 'r-reprex' 'r-cran-rlang' 'r-rstudioapi' 'r-rvest' 'r-stringr' 'r-tibble' 'r-tidyr' 'r-xml2')
 
 optdepends=('r-feather' 'r-knitr' 'r-rmarkdown')
 
