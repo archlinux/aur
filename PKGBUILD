@@ -4,10 +4,10 @@
 
 pkgname=spotifyd
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('GPL3')
-depends=('flac' 'libogg' 'libsndfile' 'libvorbis')
+depends=('openssl' 'alsa-lib')
 makedepends=('git' 'cargo')
 conflicts=('spotifyd-bin' 'spotifyd-git')
 pkgdesc="A spotify playing daemon"
