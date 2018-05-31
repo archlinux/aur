@@ -2,7 +2,7 @@ pkgbase = r-stringr
 	pkgdesc = Simple, Consistent Wrappers for Common String Operations
 	pkgver = 1.3.1
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/stringr/index.html
+	url = https://cran.r-project.org/package=stringr
 	arch = any
 	license = GPL2
 	license = custom
