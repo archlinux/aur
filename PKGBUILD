@@ -6,7 +6,7 @@
 
 pkgname=pstotext
 pkgver=1.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Converts Postscript to text"
 arch=('x86_64')
 url="http://www.cs.wisc.edu/~ghost/doc/pstotext.htm"
