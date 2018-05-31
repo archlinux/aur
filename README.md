@@ -5,9 +5,7 @@ Before installation, make sure all dependencies are installed:
 * json-c
 * ncurses
 ```bash
-$ git clone https://github.com/aokellermann/tick.git
-$ cd tick
-$ make
+$ git clone https://github.com/aokellermann/tick.git && cd tick
 $ sudo make install
 ```
 If you are an Arch user, you can install from the AUR.
@@ -78,7 +76,7 @@ $ tick graph [symbol]
 
 The cmp command has the same functionality as graph, but is intended for
 comparing two securities. The command takes two symbols as arguments.
-Both graphs will be displayed. To com
+Both graphs will be displayed.
 ```bash
 $ tick cmp [symbol] [symbol]
 ```
@@ -87,13 +85,12 @@ To compare the graphs of Tesla and Ford, run
 $ tick cmp tsla f
 ```
 
-To get the top three news articles on a specific stock or cryptocurrency,
-you can run
+To get news articles about a security you can use the news command. The
+number of articles can be specified, but will default to three. You may
+request a maximum of 50 articles.
 ```bash
-$ tick news [symbol]
+$ tick news [symbol] [number of articles (optional)]
 ```
-If you wish to use spaces in your input, you can either surround the phrase
-with quotes or replace spaces with underscores.
 
 Once installed, you may read the man page for more information.
 
@@ -106,7 +103,6 @@ Cryptocurrency information is taken from Coinmarketcap's free API.
 Please do not abuse the APIs by repeatedly requesting information. Read
 the provided license for more information.
 #### Future Ideas/To-do
-* Historical support -- 28d profits (wait for coinmarketcap historical release)
 * Look for API to replace Morningstar for MUTF/OTCMKTS data, preferably with
 intraday data (wait for iex v2 probably)
 * DEB/RPM package
@@ -118,3 +114,5 @@ and portfolio distribution (tried to implement, but IEX API is unpredictable; wa
 * Zoom in more than one month for graph
 * Average graph points when skipping indices for greater accuracy
 * Android app?
+* GUI?
+* Competitor information

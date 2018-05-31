@@ -1,4 +1,4 @@
-.TH TICK "1" "May 2018" "Tick 2.2.0" "User Commands"
+.TH TICK "1" "June 2018" "Tick 2.3.0" "User Commands"
 
 .SH NAME
 Tick - Command line stock and cryptocurrency portfolio tracker.
@@ -43,9 +43,9 @@ Encrypts or decrypts your portfolio using the RC4 algorithm. Password must be 32
 Security Information:
 
 .TP
-[info] [symbol]
-Prints information on the given security. This includes company name, current and historical price, dividends, market cap,
-and volume.
+[info] [symbol/crypto_id]
+Prints information on the given security in an NCurses window. This includes an interactive graph, company information,
+and news.
 
 .TP
 [graph] [symbol]
@@ -59,11 +59,9 @@ Same functionality to "graph", but is intended for comparing two securities. The
 arguments. Both graphs will be displayed.
 
 .TP
-[news] [symbol]
-Prints information on the top three news articles in the past 14 days. The article titles, sources, authors, dates, and URLs
-will be displayed. If you would like to use a space in your search, you must either use an underscore instead of the space or wrap
-your phrase in double quotes. Technically, the input may be something completely unrelated to investing. This may be amended
-in the future.
+[news] [symbol] [number of articles (optional)]
+Prints information on three articles relating to the given symbol today. The number of articles can be specified, but
+will default to three. You may request a maximum of 50 articles.
 
 .SH EXAMPLES
 To add 3 shares of Tesla bought for $918.12 total, run
@@ -86,9 +84,9 @@ Or to get info about all your holdings, run
 $ tick check
 
 .RE
-To get the top three news articles on Tesla in the past two weeks, run
+To get the three articles about Tesla today, run
 .RS
-$ tick news tesla
+$ tick news tsla
 
 .RE
 To get information on Tesla, run
