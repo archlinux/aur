@@ -1,7 +1,7 @@
 pkgname=pango-ubuntu
 _pkgbase=pango
 pkgver=1.42.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for layout and rendering of text (for compat with cairo-ubuntu, fontconfig-ubuntu)"
 arch=('i686' 'x86_64')
 license=('LGPL')
