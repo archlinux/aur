@@ -2,7 +2,7 @@ pkgbase = r-rvest
 	pkgdesc = Easily Harvest (Scrape) Web Pages
 	pkgver = 0.3.2
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/rvest/index.html
+	url = https://cran.r-project.org/package=rvest
 	arch = any
 	license = GPL3
 	depends = r

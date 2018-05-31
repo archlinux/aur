@@ -7,7 +7,7 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Easily Harvest (Scrape) Web Pages"
 arch=('any')
-url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
+url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
 depends=('r' 'r-xml2' 'r-httr' 'r-selectr' 'r-magrittr')
 
