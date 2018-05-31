@@ -3,14 +3,14 @@
 pkgname='homegear-philipshue'
 _gitname='Homegear-PhilipsHue'
 pkgdesc='Philips Hue module for Homegear'
-pkgver=0.7.15
+pkgver=0.7.18
 pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 url="https://homegear.eu"
-depends=('homegear')
+depends=('homegear=0.7.18')
 source=("https://github.com/Homegear/${_gitname}/archive/${pkgver}.tar.gz")
-sha512sums=('bcf18ee5663911373016b1923c30cd69e2c48947ad6fe3c72891be4b7d503a96075cffbc825d2a41761c96464787ce71ffac6b3af44bf213f9214619d0cd7734')
+sha512sums=('5057e088d9061c09d1b910760852e28422db7ea44cfd330efae4a938e89218cea8eaf78e34ac34f11eac9f741109b917cdf99cfbbadc451655ab27d571aaee12')
 install=homegear-philipshue.install
 backup=('etc/homegear/families/philipshue.conf')
 
@@ -28,7 +28,7 @@ build() {
 
     ./bootstrap
     ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --libdir=/usr/lib
-	make
+    make
 }
 
 package() {
@@ -39,7 +39,8 @@ package() {
     install -Dm644 misc/Config\ Directory/philipshue.conf "${pkgdir}"/etc/homegear/families/philipshue.conf
     install -dm755 "${pkgdir}"/etc/homegear/devices/5
     cp -r misc/Device\ Description\ Files/* "${pkgdir}"/etc/homegear/devices/5
-    chmod 644 "${pkgdir}"/etc/homegear/devices/5/*
+    find "${pkgdir}"/etc/homegear/devices/5/* -type d -exec chmod 755 {} \;
+	find "${pkgdir}"/etc/homegear/devices/5/* -type f -exec chmod 644 {} \;
 
     cd "${pkgdir}"/etc/homegear/devices/5
     for filename in *.xml
