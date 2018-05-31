@@ -1,14 +1,13 @@
 pkgbase = r-brew
-	pkgdesc = templating framework for report generation
+	pkgdesc = Templating Framework for Report Generation
 	pkgver = 1.0.6
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/brew/index.html
+	url = https://cran.r-project.org/package=brew
 	arch = any
 	license = GPL2
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
 	depends = r
+	source = https://cran.r-project.org/src/contrib/brew_1.0-6.tar.gz
+	md5sums = 4aaca5e6ec145e0fc0fe6375ce1f3806
 
 pkgname = r-brew
 
