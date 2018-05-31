@@ -7,7 +7,7 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Output Analysis and Diagnostics for MCMC"
 arch=('any')
-url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
+url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
 depends=('r' )
 
