@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Squid connectivity plugin"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory>=$pkgver")
 
 install=fusiondirectory-plugin-squid.install
