@@ -7,10 +7,10 @@
 ## If you will not be using ibus, comment out below.
 _ibus_mozc="yes"
 ## If you will be using uim, uncomment below.
-_uim_mozc="yes"
+#_uim_mozc="yes"
 
 ## If you will be using mozc.el on Emacs, uncomment below.
-_emacs_mozc="yes"
+#_emacs_mozc="yes"
 
 ## If you want to use 'kill-line' feature of uim, uncomment below.
 #_kill_line="yes"
@@ -74,8 +74,8 @@ _bldtype=Release
 _mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 _mozcver=2.23.2815.102
 _utdicver=20171008
-_zipcoderel=201804
-_uimmozcrev=321.3ea28b1
+_zipcoderel=201805
+_uimmozcrev=c979f127acaeb7b35d3344e8b1e40848e1a68d54
 
 pkgbase=mozc-ut2
 pkgname=mozc-ut2
@@ -94,15 +94,16 @@ source=(
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/ken_all-${_zipcoderel}.zip
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
   mod-generate-dictionary.sh
+  https://gist.githubusercontent.com/MightyPork/6b93f56b404e526268ac133f1a783afd/raw/40b3b9569d4b0741d78c511b247b26d2b1e7a2ae/mozc.patch
 )
 sha1sums=('SKIP'
           '9f88c5f12b3d9b1190c8ec046c6693483af3ba3f'
           'e085ab894d415ce318cf91de64f017d505f1d14e'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          '2607ae4fcf5f7bde2803a08a1a6da012550891f3'
-          '0997c87f477094b51622f428ceae3a9c438cd221'
+          '20db5555bf4cbd9936d606c708d3857d5da59422'
+          '3bd96e98c2c33cf269d82c499f74678d41c880e5'
           'd4f21a1684244387904b152f969a5e631f825af4'
-          '22b7c2a5b0a7fef778ee72ebe5873a75e879d26b')
+          'a366077418ae6f235aecf374256354a40dc5b37a')
 
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
@@ -112,8 +113,8 @@ fi
 if [[ "$_uim_mozc" == "yes" ]]; then
   true && pkgname+=('uim-mozc-ut2')
   makedepends+=('uim')
-  source+=(http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-${_uimmozcrev}.tar.xz)
-  sha1sums+=('22b7c2a5b0a7fef778ee72ebe5873a75e879d26b')
+  source+=(uim-mozc::git+https://github.com/e-kato/macuim.git#commit=${_uimmozcrev})
+  sha1sums+=('SKIP')
 
 fi
 
@@ -126,8 +127,9 @@ prepare() {
   ln -sf `which python2` "${srcdir}/python"
 
   cd "${srcdir}/mozc/"
-
   git submodule update --init --recursive
+
+  patch -Np1 -i "${srcdir}/mozc.patch"
 
   cd "${srcdir}/mozcdic-ut2-${_utdicver}"
 
@@ -141,23 +143,16 @@ prepare() {
 
   # uim-mozc
   if [[ "$_uim_mozc" == "yes" ]]; then
-    cp -rf "${srcdir}/uim-mozc-${_uimmozcrev}/uim" unix/
+    cp -rf "${srcdir}/uim-mozc/Mozc/uim" unix/
     # kill-line patch
     if [[ "$_kill_line" == "yes" ]]; then
-      patch -p0 -i "${srcdir}/uim-mozc-${_uimmozcrev}/mozc-kill-line.diff"
+      patch -p0 -i "${srcdir}/uim-mozc/Mozc/mozc-kill-line.diff"
     fi
     # Extract license part of uim-mozc
     head -n 32 unix/uim/mozc.cc > unix/uim/LICENSE
 
-    sed -i.bak \
-        -e 's/make_pair/std::make_pair/g' \
-        unix/uim/key_translator.cc \
-        unix/uim/mozc.cc
-    sed -i.bak \
-        -e 's/typedef map</typedef std::map</g' \
-        -e 's/ pair</ std::pair</g' \
-        unix/uim/key_translator.h
   fi
+
 }
 
 
@@ -278,7 +273,7 @@ package_uim-mozc-ut2() {
   cd "${srcdir}/${pkgbase}-${pkgver}/src"
   install -D -m 755 out_linux/${_bldtype}/libuim-mozc.so  "${pkgdir}/usr/lib/uim/plugin/libuim-mozc.so"
   install -d "${pkgdir}/usr/share/uim"
-  install    -m 644 ${srcdir}/uim-mozc-${_uimmozcrev}/scm/*.scm       "${pkgdir}/usr/share/uim/"
+  install    -m 644 ${srcdir}/uim-mozc/Mozc/scm/*.scm       "${pkgdir}/usr/share/uim/"
   install -D -m 644 data/images/unix/ime_product_icon_opensource-32.png "${pkgdir}/usr/share/uim/pixmaps/mozc.png"
   install    -m 644 data/images/unix/ui-tool.png       "${pkgdir}/usr/share/uim/pixmaps/mozc_tool_selector.png"
   install    -m 644 data/images/unix/ui-properties.png "${pkgdir}/usr/share/uim/pixmaps/mozc_tool_config_dialog.png"
