@@ -1,0 +1,30 @@
+pkgbase = r-bayesplot
+	pkgdesc = Plotting for Bayesian Models
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=bayesplot
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-reshape2
+	depends = r-rlang
+	depends = r-ggridges
+	optdepends = r-arm
+	optdepends = r-cran-gridextra
+	optdepends = r-knitr
+	optdepends = r-loo
+	optdepends = r-rmarkdown
+	optdepends = r-rstan
+	optdepends = r-rstanarm
+	optdepends = r-rstantools
+	optdepends = r-cran-scales
+	optdepends = r-shinystan
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/bayesplot_1.5.0.tar.gz
+	md5sums = ec21c4e06aa23b4eaa8b52375d2e8854
+
+pkgname = r-bayesplot
+
