@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="LDAP core schemas and insert script."
 arch=('any')
 url="http://fusiondirectory.org/"
-license=('LGPL')
+license=('GPL')
 
 depends=("schema2ldif")
 
