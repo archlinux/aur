@@ -3,6 +3,7 @@
 # Contributor:  prettyvanilla <prettyvanilla@posteo.at>
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 
+_pkgbase=libretro-desmume
 pkgname=libretro-desmume-git
 pkgver=r5267.a5a4e9b
 pkgrel=1
@@ -13,26 +14,25 @@ license=('GPL')
 groups=('libretro')
 depends=('libglvnd')
 makedepends=('git')
-provides=('libretro-desmume')
-conflicts=('libretro-desmume')
+provides=("$_pkgbase")
+conflicts=("$_pkgbase")
 _libname=desmume_libretro
-_gitname=desmume
-source=("git+https://github.com/libretro/${_gitname}.git"
+source=("$_pkgbase::git+https://github.com/libretro/desmume.git"
         "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
 sha512sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "${_gitname}"
+  cd "$_pkgbase"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${_gitname}/desmume/src/frontend/libretro"
+  cd "$_pkgbase/desmume/src/frontend/libretro"
   make -f Makefile.libretro
 }
 
 package() {
-  install -Dm644 "${_gitname}/desmume/src/frontend/libretro/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+  install -Dm644 "$_pkgbase/desmume/src/frontend/libretro/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
   install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
 }
