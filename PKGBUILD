@@ -4,18 +4,22 @@
 
 pkgname=mobac
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mobile Atlas Creator (formerly known as TrekBuddy Atlas Creator) is an open source (GPL) program which creates offline atlases for GPS handhelds and cell phone applications like TrekBuddy, AndNav and other Android and WindowsCE based applications."
 arch=('any')
 url="http://mobac.sourceforge.net/"
 license=('GPL')
 depends=('java-runtime')
-source=("http://sourceforge.net/projects/mobac/files/Mobile Atlas Creator/MOBAC 2.0/Mobile Atlas Creator ${pkgver}.zip" "mobac.sh" "directories.ini" "mobac.desktop" "mobac.png")
+source=("http://sourceforge.net/projects/mobac/files/Mobile Atlas Creator/MOBAC 2.0/Mobile Atlas Creator ${pkgver}.zip"
+	"mobac.sh"
+	"directories.ini"
+	"mobac.desktop"
+	"mobac.png")
 
 md5sums=('50761f649012787ba3f52ad0f41f150f'
          '1bc898bc6a623b5550249f96da0f0a29'
          '1552ae46115fd8315658ed660b16cf03'
-         'c4e1d3746ff8e744a0fcb8e55da0746b'
+         'a5710ec7830b78216f516e7955b57c55'
          'b1dc3b3e5f08216e0b32d31d60809cee')
 
 build ()
@@ -40,4 +44,6 @@ package() {
 	install -Dm 644 $srcdir/README.HTM $pkgdir/usr/share/mobac/
 	install -Dm 644 $srcdir/ReleaseNotes.txt $pkgdir/usr/share/mobac/
 	install -Dm 644 $srcdir/CHANGELOG.txt $pkgdir/usr/share/mobac/
+	install -D -m644 $srcdir/mobac.png $pkgdir/usr/share/pixmaps/mobac.png
+
 }
