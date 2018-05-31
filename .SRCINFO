@@ -2,7 +2,7 @@ pkgbase = r-haven
 	pkgdesc = Import and Export SPSS, Stata and SAS Files
 	pkgver = 1.1.1
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/haven/index.html
+	url = https://cran.r-project.org/package=haven
 	arch = x86_64
 	license = MIT
 	depends = r
