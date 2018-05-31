@@ -3,7 +3,7 @@
 pkgname=powerline-i3-git
 _pkgname=powerline
 pkgver=1.7.16.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager."
 arch=('i686' 'x86_64')
 url="https://github.com/ph111p/powerline"
@@ -12,7 +12,7 @@ depends=(
   'python'
   'powerline-fonts'
   'ttf-font-awesome-4'
-  'lemonbar-clicks-git'
+  'lemonbar'
   'i3ipc-python-git'
   'python-xlib'
 )
