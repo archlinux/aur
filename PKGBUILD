@@ -2,7 +2,7 @@
 
 _plug=addgrain
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r5.8.g4f827c5
+pkgver=r6.1.g212d2d6
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -20,17 +20,24 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-build() {
+prepare() {
+  mkdir - build
+
   cd "${_plug}"
-  ./configure \
-    --install="${pkgdir}/usr/lib/vapoursynth" \
-    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-    --extra-ldflags="${LDFLAGS}"
-  make
+  ./autogen.sh
+
+  cd ../build
+  ../"${_plug}"/configure \
+     --prefix=/usr \
+     --libdir=/usr/lib/vapoursynth
+
+}
+
+build() {
+  make -C build
 }
 
 package(){
-  cd "${_plug}"
-  make install
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  make -C build DESTDIR="${pkgdir}" install
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
