@@ -81,14 +81,14 @@ build() {
 package() {
   # base
   install -dm 755 $pkgdir/opt/$pkgname
-  cp -dr --no-preserve=ownership $srcdir/pycharm-$_pkgver/* $pkgdir/opt/$pkgname
+  cp -dr --no-preserve=ownership pycharm-$_pkgver/* $pkgdir/opt/$pkgname
   install -dm 755 $pkgdir/usr/share/{applications,pixmaps}
   install -dm 755 $pkgdir/usr/bin/
   install -Dm 644 $pkgdir/opt/$pkgname/bin/pycharm.png $pkgdir/usr/share/pixmaps/pycharm.png
   
   # licenses
   install -dm 755 $pkgdir/usr/share/licenses/$pkgname/
-  cp -dr --no-preserve=ownership $srcdir/pycharm-$_pkgver/license/* $pkgdir/usr/share/licenses/$pkgname
+  cp -dr --no-preserve=ownership pycharm-$_pkgver/license/* $pkgdir/usr/share/licenses/$pkgname
   
   # exec
   install -Dm 755 pycharm $pkgdir/usr/bin/
