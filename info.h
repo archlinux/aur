@@ -44,25 +44,44 @@
 
 extern int zoom_months[9], zoom_change_x_months[9];
 
+/**
+ * Main function to print information about a security. Stocks/etfs/mutf/otc securities will print in an ncurses window,
+ * while cryptos will print to stdout due to lack of information.
+ * @param symbol any security
+ */
 void interface_print(const char* symbol);
 
+/**
+ * Prints basic price information header to an Ncurses window.
+ * @param window
+ * @param symbol_info Info*
+ */
 void header_printw(WINDOW* window, Info* symbol_info);
 
 /**
- * Prints information about the given symbol and the graph of it in an NCurses window.
- * @param symbol
+ * Prints basic information about a security to stdout.
+ * @param symbol_info Info*
  */
 void info_print(Info* symbol_info);
 
+/**
+ * Prints basic information about a security to an Ncurses window.
+ * @param symbol_info Info*
+ */
 void info_printw(WINDOW* window, Info* symbol_info);
 
 /**
- * Prints num_articles articles relating to the given symbol. Currently on works for stocks/etfs
+ * Prints num_articles articles relating to the given symbol to stdout. Currently on works for stocks/etfs
  * @param symbol stock/etf symbol
  * @param num_articles number of articles to print (max 50)
  */
 void news_print(const char* symbol, int num_articles);
 
+/**
+ * Prints articles relating to the given symbol to an Ncurses window. Currently on works for stocks/etfs
+ * @param window
+ * @param symbol_info Info*
+ */
 void news_printw(WINDOW* window, Info* symbol_info);
 
 /**

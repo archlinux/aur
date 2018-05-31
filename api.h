@@ -48,7 +48,7 @@ typedef struct info {
                                            et – Exchange Traded Fund (ETF)
                                            (blank) = Not Available, i.e., Warrant, Note, or (non-filing)
                                            Closed Ended Funds
-                                            */
+                                        */
     char sector[INFO_TEXT_MAX];         // ex. Technology
 
     /* Quote */
@@ -81,6 +81,10 @@ typedef struct info {
     int num_articles;                   // Number of News pointers in array
 } Info;
 
+/**
+ * Allocates a News struct and returns a pointer to it.
+ * @return News*
+ */
 News* api_news_init(void);
 
 /**
@@ -153,6 +157,14 @@ void* iex_store_earnings(void* vpInfo);
  */
 void* iex_store_chart(void* vpInfo);
 
+/**
+ * Designed for threading
+ *
+ * Queries IEX's news endpoint and stores the data in the Info object pointed to by vpInfo. num_articles number of
+ * articles are stored.
+ * @param vpInfo Info*
+ * @return NULL
+ */
 void* iex_store_news(void* vpInfo);
 
 /**
@@ -222,6 +234,10 @@ Info* api_get_check_info(const char* symbol);
  */
 Info* api_get_info(const char* symbol);
 
+/**
+ * Destroys News object and frees memory. Sets the pointer of the News to NULL
+ * @param phNews the News to destroy
+ */
 void api_news_destroy(News** phNews);
 
 /**
