@@ -11,10 +11,13 @@ pkgbase = libretro-desmume-git
 	groups = libretro
 	license = GPL
 	makedepends = git
+	depends = libglvnd
+	provides = libretro-desmume
+	conflicts = libretro-desmume
 	source = git+https://github.com/libretro/desmume.git
 	source = https://raw.github.com/libretro/libretro-super/master/dist/info/desmume_libretro.info
-	md5sums = SKIP
-	md5sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = libretro-desmume-git
 
