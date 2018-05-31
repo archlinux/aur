@@ -85,7 +85,6 @@ build() {
 
 package_ppsspp() {
   depends+=('hicolor-icon-theme' 'libzip')
-  conflicts=('ppsspp-qt')
 
   cd ppsspp/build-sdl
 
@@ -108,6 +107,7 @@ package_ppsspp-headless() {
 
 package_ppsspp-qt() {
   depends+=('hicolor-icon-theme' 'libzip' 'qt5-base')
+  provides=('ppsspp')
   conflicts=('ppsspp')
 
   cd ppsspp/build-qt
