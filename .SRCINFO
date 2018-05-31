@@ -1,13 +1,28 @@
-pkgbase = r-cran-rgl
-	pkgdesc = OpenGL 3D visualization module for R
-	pkgver = 0.97.0
+pkgbase = r-rgl
+	pkgdesc = 3D Visualization Using OpenGL
+	pkgver = 0.99.16
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/rgl/index.html
-	arch = any
-	license = GPL2
+	url = https://cran.r-project.org/package=rgl
+	arch = x86_64
+	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/rgl_0.97.0.tar.gz
-	md5sums = aa80ebab65cb81c1341ed468ff460922
+	depends = r-htmlwidgets
+	depends = r-htmltools
+	depends = r-knitr
+	depends = r-jsonlite
+	depends = r-shiny
+	depends = r-magrittr
+	depends = r-crosstalk
+	depends = r-manipulatewidget
+	optdepends = r-rmarkdown
+	optdepends = r-deldir
+	optdepends = r-orientlib
+	optdepends = r-misc3d
+	optdepends = r-rstudioapi
+	optdepends = r-magick
+	replaces = r-cran-rgl
+	source = https://cran.r-project.org/src/contrib/rgl_0.99.16.tar.gz
+	md5sums = 85b15452c982b11c3e001121e68cbf88
 
-pkgname = r-cran-rgl
+pkgname = r-rgl
 
