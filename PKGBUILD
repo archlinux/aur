@@ -4,7 +4,7 @@
 _pkgname=aalib
 pkgname=lib32-$_pkgname
 pkgver=1.4rc5
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable ASCII art graphic library (32 bit)"
 arch=('x86_64')
 url="http://aa-project.sourceforge.net/aalib/"
@@ -13,8 +13,8 @@ depends=('lib32-gpm' 'lib32-libx11' "$_pkgname")
 makedepends=('lib32-libxt')
 source=(http://downloads.sourceforge.net/sourceforge/aa-project/${_pkgname}-${pkgver}.tar.gz
         aclocal-fixes.patch)
-sha1sums=('a23269e950a249d2ef93625837cace45ddbce03b'
-          '98d8c5a13672a8107945d694ff4520e0bc87d3e9')
+sha512sums=('3e4506eccce3b81ccbbb79a4a1b90abd39e2259e6043fde90f70b9ca279bd4c37758a047167267b97c4ec92f64fb17c7c8f548114f0d0c6e78ddb9463b5f1299'
+            'aa98b2226c2dd15c13561b28b5558ed459e9065c2339222df7c3002ea17a9b81711e6ff4f59d66ad817d96461dd8b5411c87b049306c875f295fdb8d0c9425c7')
 
 prepare() {
   cd ${_pkgname}-1.4.0
