@@ -1,6 +1,6 @@
-diff -ura conan-1.2.0-pristine/conans/requirements_server.txt conan-1.2.0-new/conans/requirements_server.txt
---- conan-1.2.0-pristine/conans/requirements_server.txt	2018-03-28 18:45:53.357288067 +0200
-+++ conan-1.2.0-new/conans/requirements_server.txt	2018-03-28 18:51:14.905776758 +0200
+diff -ura conan-1.4.1-pristine/conans/requirements_server.txt conan-1.4.1-new/conans/requirements_server.txt
+--- conan-1.4.1-pristine/conans/requirements_server.txt	2018-06-01 01:05:26.293713938 +0200
++++ conan-1.4.1-new/conans/requirements_server.txt	2018-06-01 01:08:47.883721146 +0200
 @@ -1,3 +1,3 @@
  # Server
 -bottle>=0.12.8, < 0.13
@@ -8,9 +8,9 @@ diff -ura conan-1.2.0-pristine/conans/requirements_server.txt conan-1.2.0-new/co
 \ No newline at end of file
 +bottle>=0.12.8
 +pluginbase>=0.5
-diff -ura conan-1.2.0-pristine/conans/requirements.txt conan-1.2.0-new/conans/requirements.txt
---- conan-1.2.0-pristine/conans/requirements.txt	2018-03-28 18:45:53.357288067 +0200
-+++ conan-1.2.0-new/conans/requirements.txt	2018-03-28 18:54:44.290938988 +0200
+diff -ura conan-1.4.1-pristine/conans/requirements.txt conan-1.4.1-new/conans/requirements.txt
+--- conan-1.4.1-pristine/conans/requirements.txt	2018-06-01 01:05:26.293713938 +0200
++++ conan-1.4.1-new/conans/requirements.txt	2018-06-01 01:07:53.777054966 +0200
 @@ -1,14 +1,14 @@
 -PyJWT>=1.4.0, <2.0.0
 -requests>=2.7.0, <3.0.0
@@ -35,4 +35,4 @@ diff -ura conan-1.2.0-pristine/conans/requirements.txt conan-1.2.0-new/conans/re
 -deprecation>=2.0, <2.1
 +pygments>=2.0
 +astroid>=1.6
-+deprecation>=1.0
++deprecation>=2.0
