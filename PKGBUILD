@@ -9,7 +9,7 @@ pkgdesc="Read Excel Files"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('GPL3')
-depends=('r' 'r-cellranger' 'r-cran-tibble')
+depends=('r' 'r-cellranger' 'r-tibble')
 
 optdepends=('r-covr' 'r-knitr' 'r-rmarkdown' 'r-rprojroot' 'r-testthat')
 
