@@ -1,6 +1,6 @@
 pkgbase = csound-git
 	pkgdesc = A programming language for sound rendering and signal processing.
-	pkgver = 6.11.0.r58.g302c15aff
+	pkgver = 6.11.0.r80.g549db8db0
 	pkgrel = 1
 	url = http://csound.com
 	arch = x86_64

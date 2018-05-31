@@ -5,7 +5,7 @@
 # speps, and Bernardo Barros.
 
 pkgname='csound-git'
-pkgver='6.11.0.r58.g302c15aff'
+pkgver='6.11.0.r80.g549db8db0'
 pkgrel=1
 pkgdesc="A programming language for sound rendering and signal processing."
 arch=('x86_64')
