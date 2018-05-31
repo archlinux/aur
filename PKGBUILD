@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Manage users and groups for a freeradius server"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory>=$pkgver")
 
 install=fusiondirectory-plugin-freeradius.install
