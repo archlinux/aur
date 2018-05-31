@@ -1,7 +1,7 @@
 pkgbase = sodalite-git
 	pkgdesc = Keyboard-driven terminal file navigator and launcher
-	pkgver = r87.89f52c4
-	pkgrel = 1
+	pkgver = r45.ece430f
+	pkgrel = 6
 	url = www.github.com/hnicke/sodalite
 	install = sodalite.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = sodalite-git
 	depends = python-binaryornot
 	depends = python-urwid
 	depends = python-yaml
+	depends = python-pyperclip
 	conflicts = sodalite
 	source = git+https://github.com/hnicke/sodalite.git
 	md5sums = SKIP
