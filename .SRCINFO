@@ -2,7 +2,7 @@ pkgbase = r-readxl
 	pkgdesc = Read Excel Files
 	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/readxl/index.html
+	url = https://cran.r-project.org/package=readxl
 	arch = x86_64
 	license = GPL3
 	depends = r
