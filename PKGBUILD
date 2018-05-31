@@ -1,6 +1,6 @@
 pkgname=pango-ubuntu
 _pkgbase=pango
-pkgver=1.40.3
+pkgver=1.42.1
 pkgrel=1
 pkgdesc="A library for layout and rendering of text (for compat with cairo-ubuntu, fontconfig-ubuntu)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,6 @@ checkdepends=('ttf-dejavu')
 install=pango.install
 source=(http://ftp.gnome.org/pub/GNOME/sources//${_pkgbase}/${pkgver:0:4}/${_pkgbase}-${pkgver}.tar.xz)
 url="http://www.pango.org/"
-md5sums=('17c26720f5a862a12f7e1745e2f1d966')
 
 build() {
   cd ${_pkgbase}-${pkgver}
@@ -36,3 +35,4 @@ package() {
   cd ${_pkgbase}-${pkgver}
   make -j1 DESTDIR="${pkgdir}" install
 }
+md5sums=('d66d2f29e92d33b6da5e19c563520f7c')
