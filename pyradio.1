@@ -4,7 +4,7 @@
 .\" It was originally written for Arch Linux (but may be used by
 .\" others).
 .\"
-.TH PYRADIO 1 "August 2012"
+.TH PYRADIO 1 "May 2018"
 
 .SH NAME
 .PP
@@ -19,7 +19,9 @@ pyradio \- a console based Internet radio player
 .B pyradio
 is a command line internet radio player. 
 .PP
-Requires mplayer.
+It will use one of the following players: mpv, mplayer or vlc, detected in that order.
+.PP
+If mpv is detected, socat is required too.
 .PP
 It is possible to use 
 a custom stations list in ~/.pyradio/stations.csv.
@@ -37,6 +39,8 @@ Change station selection (vi-like)
 Play selected station
 .IP \fB-/+                     
 Change volume
+.IP \fBv
+Save volume (mpv and mplayer only)
 .IP \fBm                       
 Mute
 .IP \fBr                       
