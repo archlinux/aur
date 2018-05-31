@@ -7,7 +7,7 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Dynamic Documents for R"
 arch=('any')
-url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
+url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
 depends=('r' 'r-knitr' 'r-yaml' 'r-htmltools' 'r-evaluate' 'r-base64enc' 'r-jsonlite' 'r-rprojroot' 'r-mime' 'r-stringr')
 
