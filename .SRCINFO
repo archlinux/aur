@@ -1,0 +1,14 @@
+pkgbase = r-glue
+	pkgdesc = An implementation of interpreted string literals for R.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/glue/index.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r>=3.1
+	source = http://cran.r-project.org/src/contrib/glue_1.2.0.tar.gz
+	md5sums = 77d06b6d86abc882fa1c0599e457c5e2
+
+pkgname = r-glue
+
