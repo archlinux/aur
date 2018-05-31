@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Special group plugin for people who need to mix posixGroup and groupOfNames"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory>=1.0.9")
 
 install=fusiondirectory-plugin-mixedgroups.install
