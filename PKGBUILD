@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="SSH key plugin"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-posix>=$pkgver")
 
 install=fusiondirectory-plugin-ssh.install
