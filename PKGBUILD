@@ -1,7 +1,7 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="multi-platform screen and application forwarding system screen for X11"
 arch=('x86_64')
@@ -16,10 +16,8 @@ optdepends=('x264: Codec' 'python2-dbus: dbus features'
             'python2-cryptography: Cryptography'
             'python-cryptography: Cryptography'
             'gst-python2: Sound Forwarding'
-            'pam-selinux: Proxy Server Support')
-conflicts=('xpra-winswitch')
-provides=('xpra-winswitch')
-replaces=('xpra-winswitch')
+            'pam-selinux: Proxy Server Support'
+            'opencv: Webcam')
 makedepends=('python2-setuptools' 'cython2' 'uglify-js')
 backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
         'etc/xpra/conf.d/05_features.conf'
@@ -39,17 +37,17 @@ backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
         'etc/pam.d/xpra')
 source=($pkgname-$pkgver.tar.xz::$url/src/$pkgname-$pkgver.tar.xz
         $pkgname-$pkgver.tar.xz.asc::$url/src/$pkgname-$pkgver.tar.xz.gpg)
-md5sums=('d08309f3ed6b5b6a4a365a60504ba0dc'
-         '74204905702886c5e3fd3712a1ab0878')
-sha1sums=('df981c98218977d5f98d3128d635b5c54a7c697b'
-          '81a841e2365cc9d1b3205b8c7eb46d58079c319c')
-sha256sums=('372b05ae06dbbe138c4368d31472753e51fbfa63e9dcd6f9a827237f5755004f'
-            '5ee2d774ea4ef249246bbefd6c3a30794904353dc3f3fcf1d049b58ad1c07d8b')
+md5sums=('f95844aae43fd33878b60d80da360d5c'
+         '0654bd60e18dfa99cdc22b71b3dd38b4')
+sha1sums=('5bcd554bff69a4077b7090f6871e939b5b3b47b2'
+          '04ea2e3b6e4328135c2aed7baf0329a79750d35b')
+sha256sums=('3e0fea421f8ad30daecd496e8c0cf31e6993ad3f3f17f69481f39ec37395f071'
+            '41e06e1325fb999affa4d6e5bee4604ef732700d7c10896cb81711123f94fe2f')
 validpgpkeys=('C11C0A4DF702EDF6C04F458C18ADB31CF18AD6BB') # Antoine Martin <antoine@nagafix.co.uk>
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
-  CFLAGS="$CFLAGS -fno-strict-aliasing"
+  #CFLAGS="$CFLAGS -fno-strict-aliasing"
   export pkgdir
   CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build --without-enc_x265
 }
