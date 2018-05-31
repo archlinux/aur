@@ -1,0 +1,21 @@
+--- package.json.old	2018-05-31 11:52:57.430372431 +0100
++++ package.json	2018-05-31 11:53:06.873322906 +0100
+@@ -16,6 +16,6 @@
+   "language": "go",
+   "license": "",
+   "name": "ipget",
+-  "version": "0.2.4"
++  "version": "0.3.0"
+ }
+ 
+--- main.go.old	2018-05-31 11:53:44.025189769 +0100
++++ main.go	2018-05-31 11:53:58.917952385 +0100
+@@ -16,7 +16,7 @@
+ 	app := cli.NewApp()
+ 	app.Name = "ipget"
+ 	app.Usage = "Retrieve and save IPFS objects."
+-	app.Version = "0.2.0"
++	app.Version = "0.3.0"
+ 	app.Flags = []cli.Flag{
+ 		cli.StringFlag{
+ 			Name:  "output,o",
