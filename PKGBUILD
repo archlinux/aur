@@ -1,0 +1,32 @@
+# Maintainer: Seppia <seppia@seppio.fish>
+pkgname=repofish-git
+pkgver=r6.6857bf3
+pkgrel=1
+pkgdesc="My friend told me to make available this script I wrote to manage my local archlinux repo and AUR packages, so here it is."
+arch=('any')
+url="https://git.seppia.net/repofish.git"
+license=('GPLv3')
+groups=()
+depends=('curl' 'git' 'jq' 'vim')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('repofish::git+https://git.seppia.net/repofish.git')
+noextract=()
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+}
+
+package() {
+	cd "$srcdir/${pkgname%-git}"
+	install -D repo.sh $pkgdir/usr/bin/repofish
+}
