@@ -3,19 +3,19 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
-pkgver=56.1.0+6f49ede5ce61
+pkgver=56.2.0+f435a827f82a
 pkgrel=1
 pkgdesc="64-Bit optimized Firefox fork, no data collection, allows unsigned extensions"
 arch=('i686' 'x86_64')
 license=('MPL')
 url="https://www.waterfoxproject.org/"
 depends=('gtk2' 'gtk3' 'mozilla-common' 'libxt' 'startup-notification'
-         'dbus-glib' 'alsa-lib' 'ffmpeg2.8' 'desktop-file-utils' 'hicolor-icon-theme'
+         'dbus-glib' 'alsa-lib' 'ffmpeg' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'rust' 'autoconf2.13' 'clang' 'llvm' 'cargo')
 provides=("waterfox=$pkgver")
-conflicts=("waterfox waterfox-bin")
+conflicts=('waterfox' 'waterfox-bin')
 install=waterfox.install
 options=('!emptydirs' '!makeflags')
 source=(git://github.com/MrAlex94/Waterfox
