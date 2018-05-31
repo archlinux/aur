@@ -57,16 +57,17 @@ build() {
 
 package() {
   cd vim-$pkgver
-  make -j1 VIMRCLOC=/etc DESTDIR=${pkgdir} install
+
+  make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install
   
   # provided by (n)vi in core
   rm "${pkgdir}"/usr/bin/{ex,view}
-  # not deleted: rview xxd vimtutor
 
-  find ${pkgdir}/usr/share/man -type d -name 'man1' 2>/dev/null | \
+  # delete some manpages
+  find "${pkgdir}"/usr/share/man -type d -name 'man1' 2>/dev/null | \
   while read _mandir; do
-    cd ${_mandir}
-    rm -f ex.1 view.1 # provided by (n)vi, not deleting vimtutor.1 xxd.1
+    cd "${_mandir}"
+    rm -f ex.1 view.1 # provided by (n)vi
   done
   
   # need to remove since this is provided by vim-runtime
