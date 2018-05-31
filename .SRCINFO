@@ -1,6 +1,6 @@
 pkgbase = package-query-git
 	pkgdesc = Query ALPM and AUR
-	pkgver = 1.9.r1.gdd242f4
+	pkgver = 1.9.r10.gb912c5b
 	pkgrel = 1
 	url = https://github.com/archlinuxfr/package-query
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = package-query-git
 	arch = aarch64
 	license = GPL
 	makedepends = git
-	depends = pacman>=5.0
+	depends = pacman>=5.1
 	depends = yajl>=2.0
 	provides = package-query=1.9
 	conflicts = package-query
