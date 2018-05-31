@@ -3,7 +3,7 @@
 pkgbase=python-librabbitmq
 pkgname=python2-librabbitmq
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AMQP Client using the rabbitmq-c library"
 arch=('x86_64')
 url="https://pypi.python.org/pypi/librabbitmq"
@@ -11,7 +11,7 @@ license=('MPL')
 makedepends=('python2-setuptools' 'python2-amqp')
 checkdepends=('python2-nose-cover3')
 source=("https://files.pythonhosted.org/packages/source/l/librabbitmq/librabbitmq-$pkgver.tar.gz")
-md5sums=('716f05388d4747ea605c1a31f8541e3b')
+sha512sums=('3989f01dca63c723cc7ec8b12ad029ef26e5fe52d37bb50c872030cf375386ad9a77bc84662d1798e7ef3c0246c62f704ca0d7a0a9f3ea937ec4d136ca7b8eb6')
 
 check() {
   cd "$srcdir/librabbitmq-$pkgver"
