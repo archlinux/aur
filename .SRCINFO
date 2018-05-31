@@ -1,14 +1,15 @@
 pkgbase = r-highr
-	pkgdesc = syntax highlighting for r source code
+	pkgdesc = Syntax Highlighting for R Source Code
 	pkgver = 0.6
 	pkgrel = 1
-	url = https://github.com/yihui/highr
+	url = https://cran.r-project.org/package=highr
 	arch = any
 	license = GPL
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
-	depends = r>=3.0.2
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-testit
+	source = https://cran.r-project.org/src/contrib/highr_0.6.tar.gz
+	md5sums = bf47388c5f57dc61962362fb7e1d8b16
 
 pkgname = r-highr
 
