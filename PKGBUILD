@@ -21,7 +21,7 @@ pkgdesc="Proxy server for Telegram messaging app"
 arch=('i686' 'x86_64')
 url='https://github.com/TelegramMessenger/MTProxy'
 license=('GPLv2' 'LGPLv2')
-depends=('zlib')
+depends=('curl' 'zlib')
 source=(
     "$pkgname::git+https://github.com/TelegramMessenger/MTProxy.git"
     mtproxy.conf
