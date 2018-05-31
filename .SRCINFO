@@ -1,13 +1,14 @@
-pkgbase = r-cran-coda
-	pkgdesc = Output analysis and diagnostics for Markov Chain Monte Carlo simulations
-	pkgver = 0.19_1
+pkgbase = r-coda
+	pkgdesc = Output Analysis and Diagnostics for MCMC
+	pkgver = 0.19.1
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/coda/index.html
+	url = https://cran.r-project.org/web/packages/coda/index.html
 	arch = any
-	license = GPL3
+	license = GPL
 	depends = r
-	source = http://cran.r-project.org/src/contrib/coda_0.19-1.tar.gz
+	replaces = r-cran-coda
+	source = https://cran.r-project.org/src/contrib/coda_0.19-1.tar.gz
 	md5sums = 0d2aca6a5a3bdae9542708817c1ec001
 
-pkgname = r-cran-coda
+pkgname = r-coda
 
