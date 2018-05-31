@@ -2,7 +2,7 @@ pkgbase = r-curl
 	pkgdesc = A Modern and Flexible Web Client for R
 	pkgver = 3.2
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/curl/index.html
+	url = https://cran.r-project.org/package=curl
 	arch = x86_64
 	license = MIT
 	depends = r
