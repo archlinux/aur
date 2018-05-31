@@ -1,6 +1,6 @@
 pkgname=wp-cli
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
 arch=('any')
@@ -51,8 +51,8 @@ check() {
   else
     echo "Notice: System PHP version incompatible with included phpunit!"
     echo -n "Checking for system install of phpunit... ";
-    phpunit=1
-    hash phpunitas > /dev/null 2>&1 || phpunit=0
+    phpunit=0
+    hash phpunit > /dev/null 2>&1 || phpunit=1
     if [[ "${phpunit}" -eq "0" ]]; then
       echo "Found!"
       echo -n "Running test suite... "
