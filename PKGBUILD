@@ -1,5 +1,5 @@
 pkgname=kvirc-git
-pkgver=4.3.2.r7319.ba07eae61
+pkgver=5.0.0.beta1.r81.g85ef2059c
 _pkgver=4.3.2
 pkgrel=1
 pkgdesc="Qt5 based IRC-Client, compiled with kde5 support - Git Version"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
@@ -32,11 +32,11 @@ build() {
   cd build
   cmake ../$pkgname \
   -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWANT_QT4:BOOL="0" \
-    -DCMAKE_BUILD_TYPE:STRING="Release" \
+    -DWANT_QT4=OFF \
+    -DCMAKE_BUILD_TYPE="Release" \
     -DWANT_PERL=ON \
-    -DWANT_AUDIOFILE:BOOL="1" \
-    -DWANT_KDE:BOOL="1" \
+    -DWANT_AUDIOFILE=ON \
+    -DWANT_KDE=ON \
     -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 \
     -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so \
     -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so
