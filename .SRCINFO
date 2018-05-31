@@ -1,12 +1,12 @@
 pkgbase = emby-server-beta
 	pkgdesc = Bring together your videos, music, photos, and live television
 	pkgver = 3.4.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://emby.media
 	install = emby-server.install
 	arch = any
 	license = GPL2
-	depends = dotnet-runtime-rc
+	depends = dotnet-runtime
 	depends = ffmpeg
 	depends = skia-sharp58
 	depends = sqlite

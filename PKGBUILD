@@ -5,12 +5,12 @@
 
 pkgname=emby-server-beta
 pkgver=3.4.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('any')
 url='http://emby.media'
 license=('GPL2')
-depends=('dotnet-runtime-rc' 'ffmpeg' 'skia-sharp58' 'sqlite')
+depends=('dotnet-runtime' 'ffmpeg' 'skia-sharp58' 'sqlite')
 install='emby-server.install'
 provides=('emby-server')
 conflicts=('emby-server')
