@@ -2,17 +2,17 @@
 # Contributor: Antergos Developers <dev@antergos.com>
 
 pkgname=iso-flag-png
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='ISO country flags in PNG format'
 arch=('any')
 groups=('cinnamon')
 url='https://github.com/linuxmint/flags'
 license=('custom')
-source=("https://github.com/linuxmint/flags/archive/${pkgver}.tar.gz")
-sha256sums=('db328281d979600ce4b8cbe47a224b22de233126ee106c61112cf54437e17713')
+source=("https://ftp.fau.de/mint/packages/pool/main/f/flags/flags_${pkgver}.tar.xz")
+sha256sums=('4726333387e5795d49a2a54f7ffbbdb5b50f47b6aa20533a78b6eded347ca57c')
 
 package() {
-	cd "flags-${pkgver}"
+	cd 'flags'
 	cp -R 'usr' "${pkgdir}"
 }
