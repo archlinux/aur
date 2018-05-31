@@ -1,13 +1,15 @@
-pkgbase = r-cran-sfsmisc
-	pkgdesc = Tools for Generating, Visualizing, and Analysing Link Communities in Networks
-	pkgver = 1.1_2
+pkgbase = r-sfsmisc
+	pkgdesc = Utilities from Seminar fuer Statistik ETH Zurich
+	pkgver = 1.1.2
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/sfsmisc/index.html
+	url = https://cran.r-project.org/package=sfsmisc
 	arch = any
-	license = GPL3
+	license = GPL
 	depends = r
-	source = http://cran.r-project.org/src/contrib/sfsmisc_1.1-2.tar.gz
+	optdepends = r-lokern
+	replaces = r-cran-sfsmisc
+	source = https://cran.r-project.org/src/contrib/sfsmisc_1.1-2.tar.gz
 	md5sums = d41f6154390427d0a1a3fe80d78d3348
 
-pkgname = r-cran-sfsmisc
+pkgname = r-sfsmisc
 
