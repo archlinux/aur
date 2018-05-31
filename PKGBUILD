@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Simple LDAP backup and insertion tasks"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory>=$pkgver")
 
 install=fusiondirectory-plugin-ldapmanager.install
