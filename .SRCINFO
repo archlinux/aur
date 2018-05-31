@@ -1,14 +1,14 @@
-pkgbase = r-cran-bit
-	pkgdesc = A class for vectors of 1-bit booleans
-	pkgver = 1.1_13
+pkgbase = r-bit
+	pkgdesc = A Class for Vectors of 1-Bit Booleans
+	pkgver = 1.1.14
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/bit/index.html
-	arch = i686
+	url = https://cran.r-project.org/web/packages/bit/index.html
 	arch = x86_64
 	license = GPL2
 	depends = r
-	source = http://cran.r-project.org/src/contrib/bit_1.1-13.tar.gz
-	md5sums = df6a1aaa5f15074fe697f012289d181f
+	replaces = r-cran-bit
+	source = https://cran.r-project.org/src/contrib/bit_1.1-14.tar.gz
+	md5sums = e62b50777478fe4dd624955cfd609fcc
 
-pkgname = r-cran-bit
+pkgname = r-bit
 

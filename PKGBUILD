@@ -1,19 +1,27 @@
-# Maintainer: fordprefect <fordprefect@dukun.de>
+# Maintainer: Alex Branham <branham@utexas.edu>
 _cranname=bit
-_cranver=1.1-13
-pkgname=r-cran-$_cranname
-pkgver=1.1_13
+_cranver=1.1-14
+_pkgtar=${_cranname}_${_cranver}.tar.gz
+pkgname=r-bit
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="A class for vectors of 1-bit booleans"
-url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
-arch=('i686' 'x86_64')
+pkgdesc="A Class for Vectors of 1-Bit Booleans"
+arch=('x86_64')
+url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('GPL2')
-depends=('r')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('df6a1aaa5f15074fe697f012289d181f')
- 
-package() {
-    mkdir -p ${pkgdir}/usr/lib/R/library
-    cd ${srcdir}
-    R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
+depends=('r' )
+
+
+
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+md5sums=('e62b50777478fe4dd624955cfd609fcc')
+replaces=('r-cran-bit')
+
+build(){
+    R CMD INSTALL ${_pkgtar} -l $srcdir
 }
+package() {
+    install -d "$pkgdir/usr/lib/R/library"
+    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+}
+
