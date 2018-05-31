@@ -12,7 +12,7 @@ options=(!strip staticlibs !buildflags)
 source=(git://github.com/libopencm3/libopencm3.git
         0001-Revert-Drop-install-target-and-documentation.patch)
 sha256sums=('SKIP'
-            '73d9a5f007e7e61a71b28dedb41fdfe88e976c1aa2c728f34bd0b5049b6d30fe')
+            '457dc2d2810e2b7ac857952021f5092a0de923069645f50f9c95a09c86b52158')
 
 pkgver() {
   cd libopencm3
