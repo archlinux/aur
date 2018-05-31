@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
 depends=('r' )
 
-optdepends=('r-coda' 'r-cran-chron' 'r-daag' 'r-fts' 'r-ggplot2' 'r-mondate' 'r-cran-scales' 'r-strucchange' 'r-timedate' 'r-timeseries' 'r-tis' 'r-tseries' 'r-xts')
+optdepends=('r-coda' 'r-chron' 'r-daag' 'r-fts' 'r-ggplot2' 'r-mondate' 'r-cran-scales' 'r-strucchange' 'r-timedate' 'r-timeseries' 'r-tis' 'r-tseries' 'r-xts')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('bf8789b3a448b5bed39e54e027ee7c6a')
