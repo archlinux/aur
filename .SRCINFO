@@ -20,7 +20,7 @@ pkgbase = r-rmarkdown
 	optdepends = r-tufte
 	optdepends = r-testthat
 	optdepends = r-digest
-	optdepends = r-cran-tibble
+	optdepends = r-tibble
 	source = https://cran.r-project.org/src/contrib/rmarkdown_1.9.tar.gz
 	md5sums = c70c29545cc7af6c907a8dedec7aa7ce
 

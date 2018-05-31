@@ -11,7 +11,7 @@ url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('GPL3')
 depends=('r' 'r-knitr' 'r-yaml' 'r-htmltools' 'r-evaluate' 'r-base64enc' 'r-jsonlite' 'r-rprojroot' 'r-mime' 'r-stringr')
 
-optdepends=('r-tinytex' 'r-shiny' 'r-tufte' 'r-testthat' 'r-digest' 'r-cran-tibble')
+optdepends=('r-tinytex' 'r-shiny' 'r-tufte' 'r-testthat' 'r-digest' 'r-tibble')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('c70c29545cc7af6c907a8dedec7aa7ce')
