@@ -1,16 +1,17 @@
-# Maintainer: Ner0
+# Maintainer: El
+# Contributor: Ner0
 # Contributor: Tevin Zhang <mail2tevin {at} gmail {dot} com>
 # Contributor: Paul Bredbury <brebs@sent.com>
 # Contributor: Biru Ionut <biru.ionut at gmail.com>
 # Contributor: Andrea Fagiani <andfagiani {at} gmail {dot} com>
 
-# Installation order:  freetype2-ubuntu fontconfig-ubuntu libxft-ubuntu cairo-ubuntu
+# Installation order:  freetype2-ubuntu fontconfig-ubuntu cairo-ubuntu pango-ubuntu
 # Source : https://github.com/bohoomil/fontconfig-ultimate/tree/pkgbuild/03_cairo-iu
 # Thanks to bohomil
 
 pkgname=cairo-ubuntu
 _name=cairo
-pkgver=1.15.10
+pkgver=1.15.12
 pkgrel=1
 pkgdesc="Cairo vector graphics library"
 arch=(i686 x86_64)
@@ -67,6 +68,10 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 md5sums=('f060381576d67c855fad03e327fc9a69'
+         '080eac1ce1b2fa2beb550555d31d29b8'
+         '4ffec1c86085da11bf9f56d6bf88fbdf'
+         '6080d20e289f5e75cc013e8f40710aa3')
+md5sums=('f7d9ad73a8abe0d178e0fc16d3fcbfa3'
          '080eac1ce1b2fa2beb550555d31d29b8'
          '4ffec1c86085da11bf9f56d6bf88fbdf'
          '6080d20e289f5e75cc013e8f40710aa3')
