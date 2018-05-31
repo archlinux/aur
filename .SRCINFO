@@ -19,7 +19,7 @@ pkgname = zfs-dkms-git
 	pkgdesc = Kernel modules for the Zettabyte File System. (Git version)
 	depends = zfs-utils-git=0.7.0_r1575_g93491c4bb-1
 	depends = dkms
-	depends = lsb_release
+	depends = lsb-release
 	provides = zfs
 	conflicts = zfs-git
 	conflicts = zfs-lts

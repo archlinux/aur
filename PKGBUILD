@@ -43,7 +43,7 @@ build() {
 
 package_zfs-dkms-git() {
     pkgdesc="Kernel modules for the Zettabyte File System. (Git version)"
-    depends=("zfs-utils-git=${pkgver}-${pkgrel}" "dkms" "lsb_release")
+    depends=("zfs-utils-git=${pkgver}-${pkgrel}" "dkms" "lsb-release")
     provides=("zfs")
     conflicts=("zfs-git" "zfs-lts" "zfs-dkms")
 
