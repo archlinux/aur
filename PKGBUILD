@@ -9,7 +9,7 @@ pkgdesc="Import and Export SPSS, Stata and SAS Files"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('MIT')
-depends=('r' 'r-cran-forcats' 'r-cran-hms' 'r-cran-readr' 'r-cran-tibble')
+depends=('r' 'r-forcats' 'r-hms' 'r-readr' 'r-tibble')
 
 optdepends=('r-covr' 'r-knitr' 'r-rmarkdown' 'r-testthat')
 
