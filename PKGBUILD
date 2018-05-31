@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 243438 2017-07-09 16:57:11Z jelle $
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Holger Rauch <holger dot rauch at posteo dot de>
 
 pkgname=newt-syrup
 pkgver=0.2.0
