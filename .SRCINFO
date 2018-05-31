@@ -2,7 +2,7 @@ pkgbase = r-timedate
 	pkgdesc = Rmetrics - Chronological and Calendar Objects
 	pkgver = 3043.102
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/timeDate/index.html
+	url = https://cran.r-project.org/package=timeDate
 	arch = any
 	license = GPL
 	depends = r
