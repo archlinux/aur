@@ -2,7 +2,7 @@ pkgbase = r-processx
 	pkgdesc = Execute and Control System Processes
 	pkgver = 3.1.0
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/processx/index.html
+	url = https://cran.r-project.org/package=processx
 	arch = x86_64
 	license = MIT
 	depends = r
