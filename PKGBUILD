@@ -3,7 +3,7 @@
 
 pkgname=newt-syrup
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python framework for creating text-based applications"
 arch=(any)
 url="https://pagure.io/newt"
