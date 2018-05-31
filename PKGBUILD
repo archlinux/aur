@@ -2,7 +2,7 @@
 # Contributor: kaptoxic <kaptoxic [at] yahoo [dot] com>
 
 pkgname=vim-gnome
-pkgver=8.0.0013
+pkgver=8.1.0022
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor (with Gnome GUI)'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=("vim-runtime" 'gpm' 'libxt' 'desktop-file-utils' 'acl')
 makedepends=('gpm' 'libxt' 'desktop-file-utils')
 source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
         'gvim.desktop')
-sha1sums=('SKIP'
+sha1sums=('ee363efbe08bb5931a68b8cc446c0c9e1946e4ee'
           '4a579cf66590d711f49c5dfb4a25e5df116ff7ba')
 provides=("vim=${pkgver}-${pkgrel}")
 conflicts=('vim-minimal' 'vim' 'vim-python3' 'gvim-python3' 'gvim')
