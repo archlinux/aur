@@ -1,0 +1,13 @@
+pkgbase = r-boa
+	pkgdesc = Bayesian Output Analysis Program (BOA) for MCMC
+	pkgver = 1.1.8.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=boa
+	arch = any
+	license = GPL2
+	depends = r
+	source = https://cran.r-project.org/src/contrib/boa_1.1.8-2.tar.gz
+	md5sums = a2391bcb7087201dc4e1de5d1ab97d2c
+
+pkgname = r-boa
+
