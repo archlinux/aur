@@ -44,8 +44,9 @@ build() {
 package_zfs-dkms-git() {
     pkgdesc="Kernel modules for the Zettabyte File System. (Git version)"
     depends=("zfs-utils-git=${pkgver}-${pkgrel}" "dkms" "lsb-release")
-    provides=("zfs")
-    conflicts=("zfs-git" "zfs-lts" "zfs-dkms")
+    provides=("zfs" "spl")
+    conflicts=("zfs-git" "zfs-lts" "zfs-dkms" "spl-dkms-git")
+    replaces=("spl-dkms-git")
 
     dkmsdir="${pkgdir}/usr/src/zfs-${pkgver%%_*}"
     install -d "${dkmsdir}"
@@ -61,9 +62,9 @@ package_zfs-dkms-git() {
 
 package_zfs-utils-git() {
     pkgdesc="Kernel module support files for the Zettabyte File System. (Git version)"
-    provides=("zfs-utils")
-    replaces=("zfs-utils-dkms-git")
-    conflicts=("zfs-utils-dkms-git" "zfs-utils" "zfs-utils-common-git" "zfs-utils-common")
+    provides=("zfs-utils" "spl-utils")
+    replaces=("zfs-utils-dkms-git" "spl-utils-dkms-git")
+    conflicts=("zfs-utils-dkms-git" "zfs-utils" "zfs-utils-common-git" "zfs-utils-common" "spl-utils-dkms-git")
     install=zfs-utils.install
     backup=('etc/zfs/zed.d/zed.rc' 'etc/default/zfs')
 

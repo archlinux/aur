@@ -21,19 +21,25 @@ pkgname = zfs-dkms-git
 	depends = dkms
 	depends = lsb-release
 	provides = zfs
+	provides = spl
 	conflicts = zfs-git
 	conflicts = zfs-lts
 	conflicts = zfs-dkms
+	conflicts = spl-dkms-git
+	replaces = spl-dkms-git
 
 pkgname = zfs-utils-git
 	pkgdesc = Kernel module support files for the Zettabyte File System. (Git version)
 	install = zfs-utils.install
 	provides = zfs-utils
+	provides = spl-utils
 	conflicts = zfs-utils-dkms-git
 	conflicts = zfs-utils
 	conflicts = zfs-utils-common-git
 	conflicts = zfs-utils-common
+	conflicts = spl-utils-dkms-git
 	replaces = zfs-utils-dkms-git
+	replaces = spl-utils-dkms-git
 	backup = etc/zfs/zed.d/zed.rc
 	backup = etc/default/zfs
 
