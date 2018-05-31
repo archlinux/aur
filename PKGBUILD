@@ -9,9 +9,9 @@ pkgdesc="Modelling Functions that Work with the Pipe"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('GPL3')
-depends=('r' 'r-cran-broom' 'r-cran-dplyr' 'r-magrittr' 'r-cran-purrr' 'r-cran-tibble' 'r-cran-tidyr' 'r-cran-rlang')
+depends=('r' 'r-broom' 'r-dplyr' 'r-magrittr' 'r-purrr' 'r-tibble' 'r-tidyr' 'r-cran-rlang')
 
-optdepends=('r-covr' 'r-cran-ggplot2' 'r-testthat')
+optdepends=('r-covr' 'r-ggplot2' 'r-testthat')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('bc73689405b0fe90851c7f8f3539e843')
