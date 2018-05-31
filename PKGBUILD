@@ -7,7 +7,7 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="A General-Purpose Package for Dynamic Report Generation in R"
 arch=('any')
-url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
+url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
 depends=('r' 'r-evaluate' 'r-highr' 'r-markdown' 'r-stringr' 'r-yaml')
 

@@ -2,7 +2,7 @@ pkgbase = r-knitr
 	pkgdesc = A General-Purpose Package for Dynamic Report Generation in R
 	pkgver = 1.20
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/knitr/index.html
+	url = https://cran.r-project.org/package=knitr
 	arch = any
 	license = GPL
 	depends = r
