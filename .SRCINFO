@@ -2,7 +2,7 @@ pkgbase = r-modelr
 	pkgdesc = Modelling Functions that Work with the Pipe
 	pkgver = 0.1.2
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/modelr/index.html
+	url = https://cran.r-project.org/package=modelr
 	arch = any
 	license = GPL3
 	depends = r
