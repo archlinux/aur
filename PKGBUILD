@@ -12,7 +12,7 @@ source=("git+$url#commit=a5674f1a1910cde8236a5b8fb72756cb07bfd629")
 md5sums=('SKIP')
 
 package() {
-    cd $srcdir/eltorito
+    cd "$srcdir/eltorito"
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-    install -Dm 755 eltorito.py $pkgdir/usr/bin/eltoritopy
+    install -Dm 755 eltorito.py "$pkgdir/usr/bin/eltoritopy"
 }
