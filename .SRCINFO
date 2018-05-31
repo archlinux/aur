@@ -1,6 +1,6 @@
 pkgbase = 389-ds-base
 	pkgdesc = 389 Directory Server (base)
-	pkgver = 1.4.0.8
+	pkgver = 1.4.0.9
 	pkgrel = 1
 	url = http://port389.org/
 	install = 389-ds-base.install
@@ -29,8 +29,8 @@ pkgbase = 389-ds-base
 	backup = etc/dirsrv/config/ldap-agent.conf
 	backup = etc/dirsrv/config/slapd-collations.conf
 	backup = etc/dirsrv/config/template-initconfig
-	source = https://releases.pagure.org/389-ds-base/389-ds-base-1.4.0.8.tar.bz2
-	sha512sums = 7be297f788a23c1867203acfa42eccae8e0f28d680451a0143d2b2a91bffe40ddd56b89695e69f78d5d6c1ea6575a02ddece43d7e4256cd1cbd7251fad8aef8e
+	source = https://releases.pagure.org/389-ds-base/389-ds-base-1.4.0.9.tar.bz2
+	sha512sums = 048936e10cdc5a0de2f4d488a05e3c826b6479e1d5fd15bf31582b5534c70186b93758c083184d4f0330dd9164b95c28dfc82bed484ff904301f4b5148a35fcb
 
 pkgname = 389-ds-base
 
