@@ -7,11 +7,11 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Translate CSS Selectors to XPath Expressions"
 arch=('any')
-url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
+url="https://cran.r-project.org/package=${_cranname}"
 license=('BSD_3_clause + file LICENCE')
 depends=('r' 'r-stringr')
 
-optdepends=('r-testthat' 'r-cran-xml' 'r-xml2')
+optdepends=('r-testthat' 'r-xml' 'r-xml2')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('eb6eddd591db658b05a7e1ea40aeaf4c')
