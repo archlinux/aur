@@ -8,8 +8,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.16
-_pkgver=4.16.8
-_rtpatchver=rt3
+_pkgver=4.16.12
+_rtpatchver=rt5
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('x86_64')
@@ -31,6 +31,9 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   0003-Partially-revert-swiotlb-remove-various-exports.patch
+  0001-objtool_Fix_noreturn_detection_for_recursive_sibling_calls.patch
+  0002-objtool_support_GCC8_cold_subfunctions.patch
+  0003-objtool_support_GCC8_switch_tables.patch
   fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
 )
 validpgpkeys=(
@@ -42,9 +45,9 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '6fb2db1e38f762e6a028dfa5e6d094f0eb4324572667923aca3d64c87117772d'
+            '70a6381aca28b1d271e85bc38fab05af4525d9fdc2c5bb87182b3351db8c4fa2'
             'SKIP'
-            '7db2144b16314b1dcc3aefc993d6c9c54690de342a043d0b02d0f114713e880d'
+            '753a22311c369dd10d26b7c8696494f14c5015c6723e4bf81eb11687d196332e'
             'SKIP'
             'bac64c4b5d015f5f047e2dd558f4643dc2a2afafbfe5bbd124f68811da07c484'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -53,6 +56,9 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             '7fb607fe384dd814e9e45d7fc28f7b5b23a51d80784c54bf9209486ad428be14'
             'ceaa19e0af3842c62eb666a4ac5c79d89b3e6d00593442f18d6508ca6d74bbaa'
             '5b397cf9eccdad0c1f2865842c29ba6f4e32ad7dbe4e0c6ef6ca6f07d2963cea'
+            '558b63fa72c1b62cdab92812b279f24188308e0e89b5a8ae0c5f23cef1e2f75e'
+            '31d95ce07a1635251fdc8a1d0ba67c2397d1c035d21cf3ac8c0d08a564aafcee'
+            'cd54a177a70788d385f02d934ac4501a31334615c9c81917d6e711f7ec7e7baa'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
 _kernelname=${pkgbase#linux}
@@ -66,6 +72,12 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # gcc8 ojtool patches
+  msg "gcc8 objtool patches..."
+  patch -p1 -i ../0001-objtool_Fix_noreturn_detection_for_recursive_sibling_calls.patch
+  patch -p1 -i ../0002-objtool_support_GCC8_cold_subfunctions.patch
+  patch -p1 -i ../0003-objtool_support_GCC8_switch_tables.patch
 
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch

@@ -1,0 +1,43 @@
+Objtool has some crude logic for detecting static "noreturn" functions
+(aka "dead ends").  This is necessary for being able to correctly follow
+GCC code flow when such functions are called.
+
+It's remotely possible for two functions to call each other via sibling
+calls.  If they don't have RET instructions, objtool's noreturn
+detection logic goes into a recursive loop:
+
+  drivers/char/ipmi/ipmi_ssif.o: warning: objtool: return_hosed_msg()+0x0: infinite recursion (objtool bug!)
+  drivers/char/ipmi/ipmi_ssif.o: warning: objtool: deliver_recv_msg()+0x0: infinite recursion (objtool bug!)
+
+Instead of reporting an error in this case, consider the functions to be
+non-dead-ends.
+
+Reported-and-tested-by: Randy Dunlap <rdunlap@xxxxxxxxxxxxx>
+Signed-off-by: Josh Poimboeuf <jpoimboe@xxxxxxxxxx>
+---
+ tools/objtool/check.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/tools/objtool/check.c b/tools/objtool/check.c
+index 5409f6f6c48d..264522d4e4af 100644
+--- a/tools/objtool/check.c
++++ b/tools/objtool/check.c
+@@ -190,9 +190,13 @@ static int __dead_end_function(struct objtool_file *file, struct symbol *func,
+ 					continue;
+
+ 				if (recursion == 5) {
+-					WARN_FUNC("infinite recursion (objtool bug!)",
+-						  dest->sec, dest->offset);
+-					return -1;
++					/*
++					 * Infinite recursion: two functions
++					 * have sibling calls to each other.
++					 * This is a very rare case.  It means
++					 * they aren't dead ends.
++					 */
++					return 0;
+ 				}
+
+ 				return __dead_end_function(file, dest_func,
+--
+2.17.0
