@@ -1,0 +1,14 @@
+pkgbase = python-x11_hash
+	pkgdesc = Binding for X11 proof of work hashing (Py3)
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/mazaclub/x11_hash
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python3
+	source = https://github.com/mazaclub/x11_hash/archive/1.4.tar.gz
+	md5sums = aeb83b7e868f504890a6a8d12c9ef2a0
+
+pkgname = python-x11_hash
+
