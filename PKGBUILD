@@ -1,6 +1,6 @@
 # Maintainer: Vinicius Correa <vinicius dot correa at zoho dot com>
 
-pkgbase=python-htsql
+pkgbase=python2-htsql
 pkgname=('python-htsql' 'python2-htsql')
 _pkgname=HTSQL
 pkgver=2.3.3

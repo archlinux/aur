@@ -1,4 +1,4 @@
-pkgbase = python-htsql
+pkgbase = python2-htsql
 	pkgdesc = A comprehensive navigational query language for relational databases.
 	pkgver = 2.3.3
 	pkgrel = 1
