@@ -4,7 +4,7 @@
 # Contributor: Rafał Michalski <plum.michalski at gmail dot com>
 pkgname="burp-backup-dev"
 _pkgname="burp"
-pkgver=2.2.2
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="A next generation experimental version of the burp backup and restore program."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ install="${_pkgname}.install"
 url='http://burp.grke.org/burp2.html'
 
 source=(
-  "http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
+  "https://github.com/grke/burp/archive/${pkgver}.tar.gz"
   "burp.install"
   "burp-server.service"
   "burp-client.service"
@@ -26,15 +26,13 @@ source=(
   "readme-archlinux.txt"
 )
 
-sha256sums=(
-  0dbd92a80db7005fc1812f8c5963f878e69e37f50405e3a74658a2d29e43a495 # burp-2.2.2.tar.bz2
-  1d2c97471494dd5924bd0676e817ebfac54465c4ec0e23b49ad1c3c91d36460f # burp.install
-  94e1b5f8cf61c44f84675f685279e0d3376abd61ac1e6e4f5da0dd6b922c481f # burp-server.service
-  7908970e23cfb08554cbf53da1f8f3193a6b6ee076584f797644efab8431bfe3 # burp-client.service
-  0310a26e9a0af76f847130019cb865dfa09a5e8f9899bfd6526c69e82d160bf4 # burp-client.timer
-  84c68c433c25e84be71b13c42f10fea9697aaa08245c01c30d4400aeb7c08095 # 01-runpath_fix.patch
-  e3e633f09d03efa3f2c1e769a2e31f514466ebd97cf6bb5f1ef0761e17abec67 # readme-archlinux.txt
-)
+sha256sums=('b9b69ba8fe873080f9829c5f1d55416e2246f86342ebe4c2a3129cd9ebce8aec'
+            '1d2c97471494dd5924bd0676e817ebfac54465c4ec0e23b49ad1c3c91d36460f'
+            '94e1b5f8cf61c44f84675f685279e0d3376abd61ac1e6e4f5da0dd6b922c481f'
+            '7908970e23cfb08554cbf53da1f8f3193a6b6ee076584f797644efab8431bfe3'
+            '0310a26e9a0af76f847130019cb865dfa09a5e8f9899bfd6526c69e82d160bf4'
+            '84c68c433c25e84be71b13c42f10fea9697aaa08245c01c30d4400aeb7c08095'
+            'e3e633f09d03efa3f2c1e769a2e31f514466ebd97cf6bb5f1ef0761e17abec67')
 
 backup=(
   "etc/burp/burp.conf"
