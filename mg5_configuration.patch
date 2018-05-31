@@ -1,7 +1,6 @@
-diff --git a/MG5_aMC_v2_6_0/input/mg5_configuration.txt b/MG5_aMC_v2_6_0/input/mg5_configuration.txt
-index c089808..a3e85c5 100644
---- a/MG5_aMC_v2_6_0/input/mg5_configuration.txt
-+++ b/MG5_aMC_v2_6_0/input/mg5_configuration.txt
+diff --git a/MG5_aMC_v2_6_2/input/mg5_configuration.txt b/MG5_aMC_v2_6_2/input/mg5_configuration.txt
+--- a/MG5_aMC_v2_6_2/input/mg5_configuration.txt
++++ b/MG5_aMC_v2_6_2/input/mg5_configuration.txt
 @@ -45,11 +45,11 @@
  
  #! Prefered WebBrower
