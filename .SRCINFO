@@ -2,7 +2,7 @@ pkgbase = r-cellranger
 	pkgdesc = Translate Spreadsheet Cell Ranges to Rows and Columns
 	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/cellranger/index.html
+	url = https://cran.r-project.org/package=cellranger
 	arch = any
 	license = MIT
 	depends = r
