@@ -1,7 +1,7 @@
 pkgname=fusiondirectory-plugin-mixedgroups
 pkgver=1.2
 pkgrel=1
-pkgdesc="Simple addressbook plugin"
+pkgdesc="Special group plugin for people who need to mix posixGroup and groupOfNames"
 arch=("any")
 url="http://fusiondirectory.org/"
 license=("LGPL")
@@ -15,7 +15,7 @@ md5sums=('b5e96dc4deaed932868a809769ef8a71' '5447138f0e37bebd9c2dbed41b787f27')
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
 # Go in plugin directory
-cd addressbook/
+cd mixedgroups/
 
 
 # Plugin developers
@@ -144,18 +144,18 @@ cd addressbook/
     
     # Locale section
     if [ -d ./locale ] ; then
-      mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/locale/plugins/addressbook/locale/
+      mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/locale/plugins/mixedgroups/locale/
       
       # Directories
       for cur_locale in $(find ./locale -mindepth 1 -maxdepth 1 -type d) ; do
         locale_line="$(echo ${cur_locale} | sed "s#./locale/##")" 
-        cp -a ./locale/${locale_line} ${pkgdir}/usr/share/webapps/fusiondirectory/locale/plugins/addressbook/locale/
+        cp -a ./locale/${locale_line} ${pkgdir}/usr/share/webapps/fusiondirectory/locale/plugins/mixedgroups/locale/
       done
       
       # Files
       for cur_locale in $(find ./locale -mindepth 1 -maxdepth 1 -type f) ; do
         locale_line="$(echo ${cur_locale} | sed "s#./locale/##")" 
-        cp -a ./locale/${locale_line} ${pkgdir}/usr/share/webapps/fusiondirectory/locale/plugins/addressbook/locale/
+        cp -a ./locale/${locale_line} ${pkgdir}/usr/share/webapps/fusiondirectory/locale/plugins/mixedgroups/locale/
       done
     fi
 
