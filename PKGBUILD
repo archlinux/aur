@@ -24,7 +24,7 @@ package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "/usr/lib/prepros/resources/extensions/slim.asar.unpacked/ruby_gems/gems/temple-0.8.0/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 "/usr/share/doc/prepros/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+	install -D -m644 "${pkgdir}/usr/lib/prepros/resources/extensions/slim.asar.unpacked/ruby_gems/gems/temple-0.8.0/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/usr/share/doc/prepros/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 
 }
