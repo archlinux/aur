@@ -1,0 +1,18 @@
+pkgbase = archiso-offline-releng
+	pkgdesc = A simple, offline-installable modification on archiso/releng
+	pkgver = 0.0.1.r1
+	pkgrel = 1
+	url = https://github.com/Torxed
+	arch = x86_64
+	license = custom:BSD
+	license = cc-by-nc-sa-3.0
+	depends = archiso
+	depends = pacman
+	depends = wget
+	depends = tar
+	provides = archiso-offline-releng
+	source = https://aur.archlinux.org/cgit/aur.git/snapshot/archiso-offline-releng.tar.gz
+	sha256sums = SKIP
+
+pkgname = archiso-offline-releng
+
