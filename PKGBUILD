@@ -9,16 +9,16 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.66.0
+pkgver=1.67.0
 _boostver=${pkgver//./_}
-pkgrel=3
+pkgrel=1
 url='http://www.boost.org/'
 arch=('x86_64')
 license=('custom')
 makedepends=('icu>=55.1' 'python' 'python2' 'python-numpy' 'python2-numpy' 'bzip2' 'zlib' 'openmpi')
 source=(https://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${_boostver}.tar.bz2
         776.patch)
-sha256sums=('5721818253e6a0989583192f96782c4a98eb6204965316df9f5ad75819225ca9'
+sha256sums=('2684c972994ee57fc5632e03bf044746f6eb45d4920c343937a465fd67a5adba'
             '43cdc2081f90d2acc7e4d9de6689bce07b2a1b4754e85dc7fa50872afa330ffa')
 
 prepare() {
