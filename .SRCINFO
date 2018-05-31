@@ -1,14 +1,13 @@
 pkgbase = r-mime
-	pkgdesc = map filenames to mime types
+	pkgdesc = Map Filenames to MIME Types
 	pkgver = 0.5
 	pkgrel = 1
-	url = https://github.com/yihui/mime
-	arch = any
+	url = https://cran.r-project.org/package=mime
+	arch = x86_64
 	license = GPL
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
 	depends = r
+	source = https://cran.r-project.org/src/contrib/mime_0.5.tar.gz
+	md5sums = 87e00b6d57b581465c19ae869a723c4d
 
 pkgname = r-mime
 
