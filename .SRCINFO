@@ -1,0 +1,17 @@
+pkgbase = pyweb
+	pkgdesc = EN - Webbrowser in Python | FR - Navigateur Web en Python
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/RunGp/Nvidiux
+	arch = any
+	license = GPL3
+	depends = python3
+	depends = python-pyqt5
+	depends = pyqt5-common
+	depends = tk
+	depends = gksu
+	source = http://robot-s-revolution.fr.nf/pyweb/PyWeb.tar.gz
+	md5sums = dc339197cb824488e1acda681b50fc6d
+
+pkgname = pyweb
+
