@@ -1,7 +1,7 @@
 # Maintainer: Gergely Imreh <imrehg@gmail.com>
 pkgname=bluemix-cli
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Interact with your applications, virtual servers, containers, and other components in IBM Bluemix."
 arch=('x86_64' 'i686')
 url="http://clis.ng.bluemix.net/ui/home.html"
@@ -15,13 +15,26 @@ sha256sums_i686=('74bf687916eef50c7506541dd0765578bbc5a4dab9125ae371e89689e607f8
 package() {
   cd "${srcdir}/Bluemix_CLI/"
 
-  install -Dm755 "bin/bluemix" "${pkgdir}/opt/Bluemix/bin/bluemix"
-  install -Dm755 "bin/bluemix-analytics" "${pkgdir}/opt/Bluemix/bin/bluemix-analytics"
-  install -Dm755 "bin/cfcli/cf" "${pkgdir}/opt/Bluemix/bin/cfcli/cf"
+  mkdir -p "${pkgdir}/opt/Bluemix/"
+  install -D "bin/NOTICE" "${pkgdir}/opt/Bluemix/bin/NOTICE"
+  install -D "bin/LICENSE" "${pkgdir}/opt/Bluemix/bin/LICENSE"
+  install -D "bin/ibmcloud" "${pkgdir}/opt/Bluemix/bin/ibmcloud"
+  install -D "bin/bluemix-analytics" "${pkgdir}/opt/Bluemix/bin/bluemix-analytics"
+  install -D "bin/cfcli/cf" "${pkgdir}/opt/Bluemix/bin/cfcli/cf"
+  install -D "bx/bash_autocomplete" "${pkgdir}/opt/Bluemix/bx/bash_autocomplete"
+  install -D "bx/zsh_autocomplete" "${pkgdir}/opt/Bluemix/bx/zsh_autocomplete"
+
   install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/Bluemix/bin/bluemix" "${pkgdir}/opt/Bluemix/bin/bx"
-  ln -s "/opt/Bluemix/bin/bluemix" "${pkgdir}/usr/bin/bluemix"
-  ln -s "/opt/Bluemix/bin/bluemix" "${pkgdir}/usr/bin/bx"
-  ln -s "/opt/Bluemix/bin/bluemix-analytics" "${pkgdir}/usr/bin/bluemix-analytics"
+
+  ln -sf /opt/Bluemix/bin/ibmcloud "${pkgdir}/opt/Bluemix/bin/bluemix"
+  ln -sf /opt/Bluemix/bin/ibmcloud "${pkgdir}/opt/Bluemix/bin/bx"
+  ln -sf /opt/Bluemix/bin/ibmcloud "${pkgdir}/usr/bin/bluemix"
+  ln -sf /opt/Bluemix/bin/ibmcloud "${pkgdir}/usr/bin/bx"
+  ln -sf /opt/Bluemix/bin/ibmcloud "${pkgdir}/usr/bin/ibmcloud"
+  ln -sf /opt/Bluemix/bin/bluemix-analytics "${pkgdir}/usr/bin/bluemix-analytics"
+
+  chown -R root:root "${pkgdir}/opt/Bluemix/"
+  chmod -R 755 "${pkgdir}/opt/Bluemix/"
+
   install -Dm644 "bin/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
