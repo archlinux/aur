@@ -6,13 +6,13 @@
 _bldtype=Release
 #_bldtype=Debug
 
-_uimmozcrev=321.3ea28b1
+_uimmozcrev=c979f127acaeb7b35d3344e8b1e40848e1a68d54
 _mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 
 pkgname=uim-mozc
 _pkgname=mozc
 pkgver=2.23.2815.102
-pkgrel=1
+pkgrel=2
 pkgdesc="uim plugin module for Mozc"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/macuim/"
@@ -23,10 +23,10 @@ install=${pkgname}.install
 makedepends=('pkg-config' 'python2' 'git' 'ninja' 'clang')
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
-  http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-${_uimmozcrev}.tar.xz
+  uim-mozc::git+https://github.com/e-kato/macuim.git#commit=${_uimmozcrev}
 )
 sha1sums=('SKIP'
-          '22b7c2a5b0a7fef778ee72ebe5873a75e879d26b')
+          'SKIP')
 
 
 pkgver() {
@@ -47,18 +47,18 @@ prepare() {
   cd "${srcdir}/${_pkgname}/src"
 
   # uim-mozc
-  cp -rf "${srcdir}/uim-mozc-${_uimmozcrev}/uim" unix/
+  cp -rf "${srcdir}/uim-mozc/Mozc/uim" unix/
   # Extract license part of uim-mozc
   head -n 32 unix/uim/mozc.cc > unix/uim/LICENSE
 
-  sed -i.bak \
-      -e 's/make_pair/std::make_pair/g' \
-      unix/uim/key_translator.cc \
-      unix/uim/mozc.cc
-  sed -i.bak \
-      -e 's/typedef map</typedef std::map</g' \
-      -e 's/ pair</ std::pair</g' \
-      unix/uim/key_translator.h
+  # sed -i.bak \
+  #     -e 's/make_pair/std::make_pair/g' \
+  #     unix/uim/key_translator.cc \
+  #     unix/uim/mozc.cc
+  # sed -i.bak \
+  #     -e 's/typedef map</typedef std::map</g' \
+  #     -e 's/ pair</ std::pair</g' \
+  #     unix/uim/key_translator.h
 }
 
 
@@ -78,7 +78,7 @@ package() {
   cd "${srcdir}/${_pkgname}/src"
   install -D -m 755 out_linux/${_bldtype}/libuim-mozc.so "${pkgdir}/usr/lib/uim/plugin/libuim-mozc.so"
   install -d "${pkgdir}/usr/share/uim"
-  install    -m 644 ${srcdir}/uim-mozc-${_uimmozcrev}/scm/*.scm "${pkgdir}/usr/share/uim/"
+  install    -m 644 ${srcdir}/uim-mozc/Mozc/scm/*.scm "${pkgdir}/usr/share/uim/"
   install -D -m 644 data/images/unix/ime_product_icon_opensource-32.png "${pkgdir}/usr/share/uim/pixmaps/mozc.png"
   install    -m 644 data/images/unix/ui-tool.png "${pkgdir}/usr/share/uim/pixmaps/mozc_tool_selector.png"
   install    -m 644 data/images/unix/ui-properties.png "${pkgdir}/usr/share/uim/pixmaps/mozc_tool_config_dialog.png"
