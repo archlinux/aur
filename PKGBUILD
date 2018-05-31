@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="LDAP schema for FusionDirectory debconf plugin"
 arch=("any")
 url="http://fusiondirectory.org/"
-license=("LGPL")
+license=("GPL")
 depends=("fusiondirectory-schema>=$pkgver" "fusiondirectory-plugin-argonaut-schema>=$pkgver")
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
