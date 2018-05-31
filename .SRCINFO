@@ -2,7 +2,7 @@ pkgbase = r-assertthat
 	pkgdesc = Easy Pre and Post Assertions
 	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/assertthat/index.html
+	url = https://cran.r-project.org/package=assertthat
 	arch = any
 	license = GPL3
 	depends = r
