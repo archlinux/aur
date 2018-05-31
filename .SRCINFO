@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-rust-bin
 	pkgdesc = Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)
-	pkgver = 1.26.0
-	pkgrel = 2
+	pkgver = 1.26.1
+	pkgrel = 1
 	url = https://www.rust-lang.org
 	arch = x86_64
 	license = MIT
@@ -13,24 +13,24 @@ pkgbase = mingw-w64-rust-bin
 	depends = libgit2
 	depends = mingw-w64-gcc
 	optdepends = mingw-w64-wine: for cargo test support
-	provides = mingw-w64-rust=1.26.0
+	provides = mingw-w64-rust=1.26.1
 	conflicts = mingw-w64-rust
 	options = !strip
 	options = staticlibs
 	options = !buildflags
 	backup = opt/rust/cargo/config
-	source = https://static.rust-lang.org/dist/rust-1.26.0-x86_64-unknown-linux-gnu.tar.xz
-	source = https://static.rust-lang.org/dist/rust-1.26.0-x86_64-unknown-linux-gnu.tar.xz.asc
-	source = https://static.rust-lang.org/dist/rust-std-1.26.0-i686-pc-windows-gnu.tar.xz
-	source = https://static.rust-lang.org/dist/rust-std-1.26.0-i686-pc-windows-gnu.tar.xz.asc
-	source = https://static.rust-lang.org/dist/rust-std-1.26.0-x86_64-pc-windows-gnu.tar.xz
-	source = https://static.rust-lang.org/dist/rust-std-1.26.0-x86_64-pc-windows-gnu.tar.xz.asc
+	source = https://static.rust-lang.org/dist/rust-1.26.1-x86_64-unknown-linux-gnu.tar.xz
+	source = https://static.rust-lang.org/dist/rust-1.26.1-x86_64-unknown-linux-gnu.tar.xz.asc
+	source = https://static.rust-lang.org/dist/rust-std-1.26.1-i686-pc-windows-gnu.tar.xz
+	source = https://static.rust-lang.org/dist/rust-std-1.26.1-i686-pc-windows-gnu.tar.xz.asc
+	source = https://static.rust-lang.org/dist/rust-std-1.26.1-x86_64-pc-windows-gnu.tar.xz
+	source = https://static.rust-lang.org/dist/rust-std-1.26.1-x86_64-pc-windows-gnu.tar.xz.asc
 	validpgpkeys = 108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE
-	sha256sums = ca5436ae9fd7c7a942fe8af669bbb32d14050a68e91b68d1a0d318a9f7d68672
+	sha256sums = 068a28c1b74476965ea74779b87d0152ed17e42efb3a23f5f718e75b178fac89
 	sha256sums = SKIP
-	sha256sums = 01ea231e12e5fb34b6ff746b8365a87beb6fbce082c2c5519a51503decfe6bee
+	sha256sums = 1b5ca5807264e9aaf2fa9ea9eeed68d67a056f46c8511e6f5d6d19b594766de8
 	sha256sums = SKIP
-	sha256sums = 4f524a98df635e90e72cee14180cfbce36955c21e3986fa8680f37e0a0f4d585
+	sha256sums = 3fe9c33f05fb52f6f13c8dc6eabfac4568d1d739086cce743810a0fcfcc8c1fc
 	sha256sums = SKIP
 
 pkgname = mingw-w64-rust-bin
