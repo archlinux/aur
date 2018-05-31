@@ -1,14 +1,21 @@
 pkgbase = r-curl
-	pkgdesc = a modern and flexible web client for r
-	pkgver = 1.1
+	pkgdesc = A Modern and Flexible Web Client for R
+	pkgver = 3.2
 	pkgrel = 1
-	url = https://github.com/jeroenooms/curl#readme
-	arch = any
+	url = https://cran.r-project.org/web/packages/curl/index.html
+	arch = x86_64
 	license = MIT
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
-	depends = r>=3.0.0
+	depends = r
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-jsonlite
+	optdepends = r-rmarkdown
+	optdepends = r-magrittr
+	optdepends = r-httpuv
+	optdepends = r-webutils
+	source = https://cran.r-project.org/src/contrib/curl_3.2.tar.gz
+	md5sums = c2d9d8634409a92c3092b79a54d53a10
 
 pkgname = r-curl
 
