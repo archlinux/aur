@@ -1,6 +1,6 @@
 # Maintainer: liums <liums at openaliasbox.org>
 pkgname=opendbviewer-git
-pkgver=v1.0.2.r14.g6bcbd8d
+pkgver=v1.0.2.r21.ga3fc4a8
 pkgrel=1
 pkgdesc="A simple database explorer for SQLITE, MySQL, PostgreSQL."
 arch=('x86_64' 'i686')
