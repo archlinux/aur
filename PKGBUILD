@@ -9,7 +9,7 @@ pkgdesc="Multi-State Markov and Hidden Markov Models in Continuous Time"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
-depends=('r' 'r-mvtnorm' 'r-cran-expm')
+depends=('r' 'r-mvtnorm' 'r-expm')
 
 optdepends=('r-mstate' 'r-minqa' 'r-doparallel' 'r-foreach' 'r-numderiv' 'r-testthat' 'r-flexsurv')
 
