@@ -21,7 +21,7 @@
 depends="sh curl jq sed grep find"
 for c in $depends; do if ! command -v "$c" >/dev/null 2>&1; then echo "Error: dependency ${c} is missing. Aborting."; exit 1; fi; done
 if [ $# -gt 2 ]; then echo "Error: too many options. Aborting."; exit 1; fi
-if [ $# = 1 ] && [ ! "$1" = "-h" ]; then echo "Error: missing option. Aborting."; exit 1; fi
+if [ $# = 1 ] && [ ! "$1" = "-h" ] && [ ! "$1" = "--help" ]; then echo "Error: missing option. Aborting."; exit 1; fi
 trap 'echo "Interrupted, finishing early."; exit 1' INT
 
 #Default configuration values
@@ -37,12 +37,11 @@ url=$2; url=${url#*//}; url=${url#m.}
 echo "${progname} - v0.1
 ---"
 
-#Get the configuration if it exists, if necessary
-config="$(pwd)/config"
-if [ -e "${XDG_CONFIG_HOME}/snooscraper/config" ]; then config="${XDG_CONFIG_HOME}/snooscraper/config"; fi
-if [ -e "${HOME}/.snooscraper" ]; then config="${HOME}/.snooscraper"; fi
+#Get the configuration if it exists
+if [ -e "$(pwd)/config" ]; then config="$(pwd)/config"
+elif [ -e "${XDG_CONFIG_HOME}/snooscraper/config" ]; then config="${XDG_CONFIG_HOME}/snooscraper/config"
+elif [ -e "${HOME}/.snooscraper" ]; then config="${HOME}/.snooscraper"; fi
 if [ -e "$config" ]; then
-	echo "Using configuration file found in ${config}"
 	while read -r line; do
 		line=$(echo "${line%%\#*}" | tr -d '[:space:]')
 		name=${line%%=*}; value=${line##*=}
@@ -58,7 +57,7 @@ if [ -e "$config" ]; then
 					off) eval "$name=0" ;;
 					*) echo "Error: invalid value in config file. Aborting."; exit 1 ;;
 				esac ;;
-			insta|tumblr)
+			insta|tumblr|pinterest)
 				case $value in
 					on) eval "$name=1" ;;
 					off) eval "$name=0" ;;
@@ -105,13 +104,47 @@ clean () {
 	echo "${d} files remaining."
 }
 
+getinstapost () {
+	#Downloads image from an instagram post, a video if gifs are enabled, multiple images if albums are enabled
+	url="$1"; term="sharedData = "
+	url="https://www.instagram.com$(echo "$url" | grep -Po '/p/[[:alnum:]]*')/" 
+	data=$(curl -sk --retry 1 "${url}" | grep -Po "${term}{.*}" | sed "s/$term//g")
+	[ -z "$data" ] && return
+	type=$(echo "$data" | jq -r '.entry_data.PostPage[0].graphql.shortcode_media.__typename')
+	case ${type} in
+		GraphImage)	#Static image
+			: $(( tally=tally+1 ))
+			url=$(echo "$data" | jq -r '.entry_data.PostPage[0].graphql.shortcode_media.display_resources[2].src')
+			ext=${url##*.}
+			curl -sk --retry 1 "$url" -o "${name}.${ext}" & ;;
+		GraphSidecar)	#Album
+			: $(( tally=tally+1 ))
+			c=$(echo "$data" | jq -r '.entry_data.PostPage[0].graphql.shortcode_media.edge_sidecar_to_children.edges | length')
+			l=${#c}; i=0
+			list=$(echo "$data" | jq -r '.entry_data.PostPage[0].graphql.shortcode_media.edge_sidecar_to_children.edges[].node.display_resources[2].src')
+			for url in $list; do
+				: $(( i=i+1 ))
+				j=$(printf "%0${l}d" $i)
+				ext=${url##*.}
+				curl -sk --retry 1 "$url" -o "${name}-${j}.${ext}" &
+			done ;;
+		GraphVideo) 	#Video clip
+			if [ "$gif" = 1 ]; then
+				: $(( tally=tally+1 ))
+				url=$(echo "$data" | jq -r '.entry_data.PostPage[0].graphql.shortcode_media.video_url')
+				ext=${url##*.}
+				curl -sk --retry 1 "$url" -o "${name}.${ext}" &
+			fi ;;
+	esac
+}
+
 getinsta () {
 	#Downloads images from an instagram account, including videos if gifs are enabled, multiple images if albums are enabled
 	url="$1"; term="sharedData = "
 	if echo "$url" | grep -q "/p/"; then getinstapost "$url"; exit; fi
 	ua="Mozilla/5.0 (Windows NT 6.1; rv:59.0) Gecko/20100101 Firefox/59.0"
 	query="42323d64886122307be10013ad2dcc44" #Constant as far as I can tell, means we want to query media
-	first=24; count=0; has_next="true"
+	first=50; count=0; has_next="true"
 	prefix=".entry_data.ProfilePage[0].graphql.user"
 
 	while [ "$count" -le "$target" ] && [ "$has_next" = "true" ]; do
@@ -150,38 +183,22 @@ getinsta () {
 	done
 }
 
-getinstapost () {
-	#Downloads image from an instagram post, a video if gifs are enabled, multiple images if albums are enabled
-	url="$1"; term="sharedData = "
-	url="https://www.instagram.com$(echo "$url" | grep -Po '/p/[[:alnum:]]*')/" 
-	data=$(curl -sk --retry 1 "${url}" | grep -Po "${term}{.*}" | sed "s/$term//g")
+getpinterest () {
+	#Download images from a pinterest board or pin
+	url="$1"; term="'jsInit1'"
+	data=$(curl -s "https://${url}" | grep -Po "${term}>.*<" | sed "s/$term//g" | tr -d '<>')
 	[ -z "$data" ] && return
-	type=$(echo "$data" | jq -r '.entry_data.PostPage[0].graphql.shortcode_media.__typename')
-	case ${type} in
-		GraphImage)	#Static image
-			: $(( tally=tally+1 ))
-			url=$(echo "$data" | jq -r '.entry_data.PostPage[0].graphql.shortcode_media.display_resources[2].src')
-			ext=${url##*.}
-			curl -sk --retry 1 "$url" -o "${name}.${ext}" & ;;
-		GraphSidecar)	#Album
-			: $(( tally=tally+1 ))
-			c=$(echo "$data" | jq -r '.entry_data.PostPage[0].graphql.shortcode_media.edge_sidecar_to_children.edges | length')
-			l=${#c}; i=0
-			list=$(echo "$data" | jq -r '.entry_data.PostPage[0].graphql.shortcode_media.edge_sidecar_to_children.edges[].node.display_resources[2].src')
-			for url in $list; do
-				: $(( i=i+1 ))
-				j=$(printf "%0${l}d" $i)
-				ext=${url##*.}
-				curl -sk --retry 1 "$url" -o "${name}-${j}.${ext}" &
-			done ;;
-		GraphVideo) 	#Video clip
-			if [ "$gif" = 1 ]; then
-				: $(( tally=tally+1 ))
-				url=$(echo "$data" | jq -r '.entry_data.PostPage[0].graphql.shortcode_media.video_url')
-				ext=${url##*.}
-				curl -sk --retry 1 "$url" -o "${name}.${ext}" &
-			fi ;;
-	esac
+	if echo "$url" | grep -q "/pin/"; then	#pin
+		list=$(echo "$data" | jq -r '.resourceDataCache[0].data.images."736x".url')
+		list="${list}"$(echo "$data" | jq -r '.resourceDataCache[1].data.related_pins_feed[].images."736x".url')
+	else					#board/profile
+		list=$(echo "$data" | jq -r '.resourceDataCache[0].data.images."474x"[].url')
+		list="${list}"$(echo "$data" | jq -r '.resourceDataCache[1].data.board_feed[].images."736x".url')
+	fi
+	for url in $list; do
+		name=${url##*/}
+		curl -sk --retry 1 "$url" -o "$name" &
+	done
 }
 
 gettumblr () {
@@ -277,7 +294,7 @@ getreddit () {
 			if [ ! "$target" = 0 ] && [ "$tally" -ge "$target" ]; then break; fi
 			name="${pair##*,}"
 			[ "$name" = "$pair" ] && continue
-			p=0; n=0; a=0; g=0; i=0; t=0
+			p=0; n=0; a=0; g=0; i=0; t=0; pi=0
 			url=${pair%,*}; url=${url#*//}; url=${url#m.}
 			ext=.${url##*.}; ext=${ext%\?*}
 			case ${url%%/*} in
@@ -287,6 +304,7 @@ getreddit () {
 					ext=${ext##*/} ;;
 				gfycat.com|www.gfycat.com) ext=".webm"; url="giant.${url}${ext}" ;;
 				instagram.com|www.instagram.com) i=1; url=${url%\?*} ;;
+				pinterest.com|pinterest.co.uk|www.pinterest.com|www.pinterest.co.uk) pi=1; url=${url%\?*} ;;
 				*.tumblr.com) [ ${#ext} -gt 5 ] && t=1 ;;
 				imgur.com|www.imgur.com)
 					if [ ${#ext} -le 5 ]; then url="i.${url}";
@@ -314,9 +332,11 @@ getreddit () {
 			   [ "$a" -le "$album" ] && \
 			   [ "$g" -le "$gif" ] && \
 			   [ "$i" -le "$insta" ] && \
+			   [ "$pi" -le "$pinterest" ] && \
 			   [ "$t" -le "$tumblr" ]; then
 				if [ "$a" = 1 ]; then getalbum "$url"
 				elif [ "$i" = 1 ]; then getinsta "$url"
+				elif [ "$pi" = 1 ]; then getpinterest "$url"
 				elif [ "$t" = 1 ]; then gettumblr "$url"
 				else curl -sk --retry 1 "http://${url}" -o "$name" &
 					 : $(( tally=tally+1 ))
@@ -343,12 +363,17 @@ getreddit () {
 	[ "$before" = "null" ] && echo "Ran out of posts in the subreddit to search, could not find enough posts."
 }
 
+if [ -e "$config" ] && [ ! "$1" = "-h" ] && [ ! "$1" = "--help" ] && [ ! "$1" = "" ]; then
+	echo "Using configuration file found in ${config}..."
+fi
+
 case $1 in
 	-s|--sub) getsub "$2" ;;
 	-u|--user) getuser "$2" ;;
 	-c|--clean) clean "$2" ;;
-	-i|--instagram) getinsta "$url" ;;
 	-a|--album) getalbum "$url" ;;
+	-i|--instagram) getinsta "$url" ;;
+	-p|--pinterest) getpinterest "$url" ;;
 	-t|--tumblr) gettumblr "$url" ;;
 	-h|--help|'')
 	echo "
@@ -363,6 +388,7 @@ Arguments:
 	-c, --clean	Tidy reposts/failures from a subreddit/user dump
 	-a, --album	Download all images in an Imgur album at URL
 	-i, --instagram	Download images/videos from an Instagram account/post at URL
+	-p, --pinterest	Download images from a pinterest board/account at URL
 	-t, --tumblr	Download all images in a Tumblr post at URL
 	" ;;
 	*) echo "Invalid option. Aborting."; exit 1 ;;
