@@ -2,7 +2,7 @@ pkgbase = r-reprex
 	pkgdesc = Prepare Reproducible Example Code for Sharing
 	pkgver = 0.1.2
 	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/reprex/index.html
+	url = https://cran.r-project.org/package=reprex
 	arch = any
 	license = MIT
 	depends = r

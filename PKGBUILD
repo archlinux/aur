@@ -7,7 +7,7 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Prepare Reproducible Example Code for Sharing"
 arch=('any')
-url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
+url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
 depends=('r' 'r-callr' 'r-knitr' 'r-rmarkdown' 'r-whisker')
 
