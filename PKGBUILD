@@ -9,7 +9,7 @@ pkgdesc="Translate Spreadsheet Cell Ranges to Rows and Columns"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('MIT')
-depends=('r' 'r-rematch' 'r-cran-tibble')
+depends=('r' 'r-rematch' 'r-tibble')
 
 optdepends=('r-covr' 'r-testthat' 'r-knitr' 'r-rmarkdown')
 
