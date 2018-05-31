@@ -1,8 +1,9 @@
 # Maintainer: samæ <samæ at marvid dot fr>
+# Maintainer: Holger Rauch <holger dot rauch at posteo dot de>
 
 pkgname=ttf-abibas
 pkgver=20150814
-pkgrel=2
+pkgrel=3
 pkgdesc="Blacklatter abibas knows ελληνικά and русский as well as most European languages."
 arch=('any')
 url="http://openfontlibrary.org/fr/font/abibas"
