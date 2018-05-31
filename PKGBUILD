@@ -23,6 +23,9 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
+  # Do not treat warnings as errors
+  CXXFLAGS+=' -Wno-error'
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr
 
   make
