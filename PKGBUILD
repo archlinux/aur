@@ -4,20 +4,20 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=syslog-ng-nosystemd
-pkgver=3.14.1
-pkgrel=2
+pkgver=3.15.1
+pkgrel=1
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 groups=('eudev-base')
 url="http://www.balabit.com/network-security/syslog-ng/"
 depends=('awk' 'glib2' 'libcap' 'libdbi' 'libnsl' 'udev')
-makedepends=('flex' 'pkg-config' 'libxslt' 'json-c' 'libmongoc' 'librabbitmq-c' 'python')
+makedepends=('flex' 'pkg-config' 'libxslt' 'json-c' 'mongo-c-driver' 'librabbitmq-c' 'python')
 optdepends=('logrotate: for rotating log files'
             'json-c: for json-plugin'
             'curl: for the HTTP module'
             'librabbitmq-c: for the AMQP plugin'
-            'libmongoc: for the MongoDB plugin'
+            'mongo-c-driver: for the MongoDB plugin'
             'python: for the Python plugin'
             'syslog-ng-openrc: syslog-ng openrc initscript')
 provides=("syslog-ng=${pkgver}")
@@ -32,8 +32,8 @@ source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver
         syslog-ng.conf.d
         syslog-ng.logrotate
         syslog-ng.rc)
-sha256sums=('0245260dc9942a9a07110948151654a60992e039821358da348fb34356c4e944'
-            '40dee47045c814fc1ec8537a450ae2de849ab5f931ecc6de1bfde26573839b2b'
+sha256sums=('a2dabd28674e2b558e4fb92484ad111d77bf7150070aa28556827130b479f9ef'
+            '893a2db9e4d56c740cfa9de64a153dccb590049cc93750bd2cdea68be14486a9'
             'fe6ebe5c281b34bad201d9206e607857db9a5a78f03bb4dc4440584dca610f61'
             '93c935eca56854011ea9e353b7a1da662ad40b2e8452954c5b4b5a1d5b2d5317'
             'c55c1d78d81f7cda543b8391aa5aaa786224071707b924d43b80749678daf452')
