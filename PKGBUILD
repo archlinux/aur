@@ -1,16 +1,16 @@
 pkgname=fusiondirectory-plugin-posix
-pkgver=1.2
-pkgrel=0
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Posix plugin for fusiondirectory"
 arch=("any")
 url="http://fusiondirectory.org/"
 license=("GPL")
-depends=("fusiondirectory>=1.0.9")
+depends=("fusiondirectory>=1.2.1")
 
 install=fusiondirectory-plugin-posix.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('b5e96dc4deaed932868a809769ef8a71' '5447138f0e37bebd9c2dbed41b787f27')
+md5sums=('7fef67005c308da8a20918a5220d29b2' '839d334fd2fb9817c070e855cc9f1a37')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
