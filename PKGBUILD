@@ -9,7 +9,7 @@ pkgdesc="Modelling Functions that Work with the Pipe"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('GPL3')
-depends=('r' 'r-broom' 'r-dplyr' 'r-magrittr' 'r-purrr' 'r-tibble' 'r-tidyr' 'r-cran-rlang')
+depends=('r' 'r-broom' 'r-dplyr' 'r-magrittr' 'r-purrr' 'r-tibble' 'r-tidyr' 'r-rlang')
 
 optdepends=('r-covr' 'r-ggplot2' 'r-testthat')
 
