@@ -7,7 +7,7 @@ You can scrape a subreddit or a username, downloading posts and content from the
 Animated GIFs for example can be large, and can quickly add up to take up valuable disk space, so downloading them can be turned off. Another issue on reddit is that often images are not linked directly but via webpages on sites like imgur. I have included functions which go on to get data from those sites so as to not miss anything. These functions can be called separately using the command line options, to just download a whole imgur album for 
 example.
 
-My aim is to keep SnooScraper written in POSIX-compliant shell script, for portability and efficiency, it should work in any shell. I've tried it in bash, dash and zsh on GNU/Linux so far. It should work on other operating systems but I haven't tried. SnooScraper is free software, feel free to submit issues, patches, or use it in your own project.
+My aim is to keep SnooScraper written in POSIX-compliant shell script, for portability and efficiency, it should work in any shell. I've tried it in bash, dash and zsh on GNU/Linux, and in bash on Cygwin in Windows so far. It should work on other operating systems I haven't tried. SnooScraper is free software, feel free to submit issues, patches, or use it in your own project.
 
 **Supported External Sites:** imgur, tumblr, instagram
 
@@ -26,7 +26,7 @@ The help text (-h) should explain the command line options. Review the parameter
 
 Files will be named after the ID (a base 36 number) of the reddit post from which they originate, or a unix timestamp if the URL is passed to the script directly. Reddit post IDs are zero-padded, so when sorting alphabetically they are also in chronological order. Albums have their images with a zero-padded number suffix after a dash, for example: abcxyz-01.jpg, abcxyz-02.jpg...
 
-A cleaning function (-c) is also included. This attempts to remove any duplicates (ie. reposts, by checking checksums), empty files (404 errors, any failed downloads) or files with the wrong extension (depending on configuration).
+A cleaning function (-c) is also included. This attempts to remove any duplicates (ie. reposts, by comparing checksums), empty files (404 errors, any failed downloads) or files with the wrong extension (depending on configuration).
 
 ## Planned Features
 
