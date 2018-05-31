@@ -1,22 +1,20 @@
-pkgbase = python-stoq-kiwi
-	pkgdesc = A graphical framework to construct simple UI
-	pkgver = 3.0.2
+pkgbase = python-stoqdrivers
+	pkgdesc = Python fiscal printer (ECF) drivers
+	pkgver = 1.4.2
 	pkgrel = 1
-	url = https://github.com/stoq/kiwi
+	url = https://github.com/stoq/stoqdrivers
 	arch = any
 	license = LGPL
 	makedepends = git
 	depends = python
-	depends = python-setuptools
+	depends = python-stoq-kiwi
+	depends = python-pyserial
+	depends = python-pyusb
 	depends = python-zope-interface
-	depends = python-gobject
-	depends = gtk3
-	conflicts = stoq-server<=0.14.1
-	conflicts = stoq<=2.2
-	conflicts = stoqdrivers<=1.3.3
-	conflicts = kiwi
-	source = https://launchpad.net/~stoq-dev/+archive/ubuntu/stoq3/+sourcefiles/kiwi/3.0.2-2bionic/kiwi_3.0.2-2bionic.tar.gz
-	md5sums = b5db443448d3499c292ef42a80e9c2fc
+	depends = python-qrcode
+	conflicts = stoqdrivers
+	source = https://launchpad.net/~stoq-dev/+archive/ubuntu/stoq3/+sourcefiles/stoqdrivers/1.4.2-1bionic/stoqdrivers_1.4.2-1bionic.tar.gz
+	md5sums = 9b960a933af33c878b29c4b7946b7f89
 
-pkgname = python-stoq-kiwi
+pkgname = python-stoqdrivers
 

@@ -1,17 +1,17 @@
 # Maintainer: Vinicius Correa <vinicius dot correa at zoho dot com>
-_pkgname=kiwi
-pkgname=python-stoq-kiwi
-pkgver=3.0.2
+_pkgname=stoqdrivers
+pkgname=python-stoqdrivers
+pkgver=1.4.2
 pkgrel=1
-pkgdesc="A graphical framework to construct simple UI"
+pkgdesc="Python fiscal printer (ECF) drivers"
 arch=('any')
 url="https://github.com/stoq/${_pkgname}"
 license=('LGPL')
-depends=('python' 'python-setuptools' 'python-zope-interface' 'python-gobject' 'gtk3')
-conflicts=('stoq-server<=0.14.1' 'stoq<=2.2' 'stoqdrivers<=1.3.3' 'kiwi')
+depends=('python' 'python-stoq-kiwi' 'python-pyserial' 'python-pyusb' 'python-zope-interface' 'python-qrcode')
 makedepends=('git')
-source=("https://launchpad.net/~stoq-dev/+archive/ubuntu/stoq3/+sourcefiles/${_pkgname}/${pkgver}-2bionic/${_pkgname}_${pkgver}-2bionic.tar.gz")
-md5sums=('b5db443448d3499c292ef42a80e9c2fc')
+conflicts=('stoqdrivers')
+source=("https://launchpad.net/~stoq-dev/+archive/ubuntu/stoq3/+sourcefiles/${_pkgname}/${pkgver}-1bionic/${_pkgname}_${pkgver}-1bionic.tar.gz")
+md5sums=('9b960a933af33c878b29c4b7946b7f89')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
