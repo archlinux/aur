@@ -15,7 +15,7 @@ source=("git+https://github.com/zfsonlinux/zfs.git"
         "zfs-utils.initcpio.hook")
 sha256sums=('SKIP'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
-            'e33adabbe3f2f4866802c9d63c7810c7a42b4df2288d0cdd23376519b15b36e4'
+            '335e309ebf5b74fd8956f5e8805939c37d4008b0bcc3b00be6e7ef1d5b7c1669'
             '290b18f538badce2eedd4ac4926a579535ec6c887436569fa6ff3685b55776bf')
 
 pkgver() {
