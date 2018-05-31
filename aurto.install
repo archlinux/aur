@@ -26,6 +26,11 @@ post_install() {
   fi
   echo -e "# aurto repo\\nInclude = /etc/pacman.d/aurto" >> /etc/pacman.conf
 
+  if ! test -f /etc/aurto/trusted-users; then
+    echo 'aurto: Adding default trusted users -> /etc/aurto/trusted-users' >&2
+    install -D -o "$user" /usr/lib/aurto/default-trusted-users.txt /etc/aurto/trusted-users
+  fi
+
   echo 'aurto: Adding & enabling systemd timer update tasks' >&2
   systemctl enable --now /usr/lib/systemd/system/check-aurto-git-trigger.timer
   systemctl enable --now /usr/lib/systemd/system/update-aurto.timer
@@ -53,7 +58,9 @@ post_remove() {
   sed -i '/^# aurto repo$/d' /etc/pacman.conf
 
   echo 'aurto: Removing /var/cache/pacman/aurto' >&2
-  rm -rf /var/cache/pacman/aurto || true
+  rm -rf /var/cache/pacman/aurto 2>/dev/null || true
 
-  rm -rf /usr/lib/aurto/user || true
+  rm -f /usr/lib/aurto/user 2>/dev/null || true
+  rm -f /etc/aurto/trusted-users 2>/dev/null || true
+  rm -d /etc/aurto 2>/dev/null || true
 }

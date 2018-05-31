@@ -1,7 +1,7 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=aurto
-pkgver=0.6.7
-pkgrel=2
+pkgver=0.7
+pkgrel=1
 pkgdesc="A simple aur tool for managing a local 'aurto' repository"
 arch=('any')
 url="https://github.com/alexheretic/aurto"
@@ -10,12 +10,13 @@ depends=('aurutils<1.6.0'
          'devtools'
          'systemd'
          'pacutils'
-         'pacman-contrib')
+         'pacman-contrib'
+         'curl')
 optdepends=()
-makedepends=()
+makedepends=('cargo')
 install="aurto.install"
 source=("https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('821c1c26e16cd30c45aec6fa8e8a0933ac327a8ee380933a8eb387b7d19b0af1')
+sha256sums=('77c01dc4d119b9bd7476f68507df8023a51ab0b059c9bb379fecafc2542b880f')
 backup=('usr/lib/systemd/system/check-aurto-git-trigger.timer'
         'usr/lib/systemd/system/update-aurto.timer')
 
