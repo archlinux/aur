@@ -29,11 +29,20 @@ target=25; limit=100
 post=0; nonimage=0; gif=0; album=1
 insta=1; tumblr=1
 
+#Global variables
+progname=$(basename "$0")
+name=$(date +%s); tally=0
+url=$2; url=${url#*//}; url=${url#m.}
+
+echo "${progname} - v0.1
+---"
+
 #Get the configuration if it exists, if necessary
-config="config"
+config="$(pwd)/config"
 if [ -e "${XDG_CONFIG_HOME}/snooscraper/config" ]; then config="${XDG_CONFIG_HOME}/snooscraper/config"; fi
 if [ -e "${HOME}/.snooscraper" ]; then config="${HOME}/.snooscraper"; fi
 if [ -e "$config" ]; then
+	echo "Using configuration file found in ${config}"
 	while read -r line; do
 		line=$(echo "${line%%\#*}" | tr -d '[:space:]')
 		name=${line%%=*}; value=${line##*=}
@@ -59,14 +68,6 @@ if [ -e "$config" ]; then
 		esac
 	done < "$config"
 elif [ ! "$1" = "-h" ] && [ ! $# = 0 ]; then echo "Warning: no config file found, using default parameters."; fi
-
-#Global variables
-progname=$(basename "$0")
-name=$(date +%s); tally=0
-url=$2; url=${url#*//}; url=${url#m.}
-
-echo "${progname} - v0.1
----"
 
 clean () {
 	sub="$1"
@@ -105,29 +106,32 @@ clean () {
 }
 
 getinsta () {
-	ua="Mozilla/5.0 (Windows NT 6.1; rv:59.0) Gecko/20100101 Firefox/59.0"
+	#Downloads images from an instagram account, including videos if gifs are enabled, multiple images if albums are enabled
 	url="$1"; term="sharedData = "
-	if echo "$url" | grep "/p/"; then getinstapost "$url"; exit; fi
-	data=$(curl -s -A "$ua" -b "ig_cb=1" "$url" | grep -Po "${term}{.*}" | sed "s/$term//g")
-	[ -z "$data" ] && return
-
-	query="42323d64886122307be10013ad2dcc44"
-	rhx_gis=$(echo "$data" | jq -r '.rhx_gis')
-	csrf=$(echo "$data" | jq -r '.config.csrf_token')
-	uid=$(echo "$data" | jq -r '.entry_data.ProfilePage[0].graphql.user.id')
-	first=24; count=0
+	if echo "$url" | grep -q "/p/"; then getinstapost "$url"; exit; fi
+	ua="Mozilla/5.0 (Windows NT 6.1; rv:59.0) Gecko/20100101 Firefox/59.0"
+	query="42323d64886122307be10013ad2dcc44" #Constant as far as I can tell, means we want to query media
+	first=24; count=0; has_next="true"
 	prefix=".entry_data.ProfilePage[0].graphql.user"
 
 	while [ "$count" -le "$target" ] && [ "$has_next" = "true" ]; do
-		if [ "$count" -gt 12 ]; then prefix=".data.user"; fi
-		variables="\"id\":\"${uid}\",\"first\":${first},\"after\":\"${after}\""
-		x_instagram_gis=$(printf "%s:{%s}" "${rhx_gis}" "${variables}" | md5sum | cut -d' ' -f1)
-		url="https://www.instagram.com/graphql/query/?query_hash=${query}&variables=%7B${variables}%7D"
-		data=$(curl -s -A "$ua" -b "csrftoken=$csrf" -H "X-Instagram-GIS: $x_instagram_gis" "$url")
-		after=$(echo "$data" | jq -r "${prefix}.edge_owner_to_timeline_media.page_info.end_cursor")
+		if [ "$count" -ge 12 ]; then	#Subsequent pages
+			after=$(echo "$data" | jq -r "${prefix}.edge_owner_to_timeline_media.page_info.end_cursor")
+			variables="\"id\":\"${uid}\",\"first\":${first},\"after\":\"${after}\""
+			x_instagram_gis=$(printf "%s:{%s}" "${rhx_gis}" "${variables}" | md5sum | cut -d' ' -f1)
+			prefix=".data.user"
+			url="https://www.instagram.com/graphql/query/?query_hash=${query}&variables=%7B${variables}%7D"
+			data=$(curl -s -A "$ua" -b "csrftoken=$csrf" -H "X-Instagram-GIS: $x_instagram_gis" "$url")
+		else				#Initial page
+			data=$(curl -s -A "$ua" -b "ig_cb=1" "https://${url}" | grep -Po "${term}{.*}" | sed "s/$term//g")
+			rhx_gis=$(echo "$data" | jq -r '.rhx_gis')
+			csrf=$(echo "$data" | jq -r '.config.csrf_token')
+			uid=$(echo "$data" | jq -r "${prefix}.id")
+		fi
+		[ -z "$data" ] && return
 		has_next=$(echo "$data" | jq -r "${prefix}.edge_owner_to_timeline_media.page_info.has_next_page")
-		i=0
 		len=$(echo "$data" | jq -r "${prefix}.edge_owner_to_timeline_media.edges | length")
+		i=0
 		while [ "$i" -lt "$len" ]; do
 			name=$(echo "$data" | jq -r "${prefix}.edge_owner_to_timeline_media.edges[$i].node.shortcode")
 			type=$(echo "$data" | jq -r "${prefix}.edge_owner_to_timeline_media.edges[$i].node.__typename")
@@ -358,7 +362,7 @@ Arguments:
 	-u, --user	Scrape posts by the given user
 	-c, --clean	Tidy reposts/failures from a subreddit/user dump
 	-a, --album	Download all images in an Imgur album at URL
-	-i, --instagram	Download images/videos from an Instagram post at URL
+	-i, --instagram	Download images/videos from an Instagram account/post at URL
 	-t, --tumblr	Download all images in a Tumblr post at URL
 	" ;;
 	*) echo "Invalid option. Aborting."; exit 1 ;;
