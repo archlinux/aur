@@ -1,0 +1,16 @@
+pkgbase = ucm_plbossart-git
+	pkgdesc = UCM files from plbossart.
+	pkgver = r60.9dc688f
+	pkgrel = 1
+	url = https://github.com/plbossart/UCM
+	arch = any
+	license = custom
+	makedepends = git
+	depends = alsa-lib
+	provides = ucm_plbossart
+	conflicts = ucm_plbossart
+	source = ucm_plbossart-git::git+https://github.com/plbossart/UCM.git
+	md5sums = SKIP
+
+pkgname = ucm_plbossart-git
+
