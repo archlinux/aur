@@ -1,18 +1,27 @@
-# Maintainer: fordprefect <fordprefect@dukun.de>
+# Maintainer: Alex Branham <branham@utexas.edu>
 _cranname=wikibooks
-pkgname=r-cran-$_cranname
-pkgver=0.2
+_cranver=0.2
+_pkgtar=${_cranname}_${_cranver}.tar.gz
+pkgname=r-wikibooks
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="collection of functions and datas used in the german WikiBook 'GNU R'"
-url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
+pkgdesc="Functions and datasets of the german WikiBook GNU R"
 arch=('any')
-license=('GPL3')
-depends=('r')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${pkgver}.tar.gz")
+url="https://cran.r-project.org/package=${_cranname}"
+license=('GPL')
+depends=('r' )
+
+
+
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('e7e28894723f66fd83bdc551bc431390')
- 
-build() {
-    mkdir -p ${pkgdir}/usr/lib/R/library
-    cd ${srcdir}
-    R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
+replaces=('r-cran-wikibooks')
+
+build(){
+    R CMD INSTALL ${_pkgtar} -l $srcdir
 }
+package() {
+    install -d "$pkgdir/usr/lib/R/library"
+    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+}
+
