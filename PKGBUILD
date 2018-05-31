@@ -3,8 +3,8 @@
 
 pkgname=resin-cli-git
 pkgdesc='Resin.io command line interface, development version'
-pkgver=7.4.1.r0.g7bea2c2
-pkgrel=2
+pkgver=7.5.0.r0.g16f70fd
+pkgrel=1
 arch=('any')
 url='https://resin.io/'
 license=('APACHE')
@@ -15,16 +15,16 @@ provides=('resin-cli')
 conflicts=('resin-cli')
 sha256sums=('SKIP')
 
-prepare() {
-  cd "$srcdir/${pkgname%-git}"
-  git archive --format=tar --prefix=${pkgname%-git}/ makepkg | gzip >"${srcdir}/${pkgname}.tar.gz"
-}
-
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
+  cd "$srcdir/${pkgname%-git}"
+
+  _branch=$(git rev-parse --abbrev-ref HEAD)
+  git archive --format=tar --prefix=${pkgname%-git}/ ${_branch} | gzip >"${srcdir}/${pkgname}.tar.gz"
+
   npm install --global -user root --prefix "${pkgdir}/usr" "$srcdir/${pkgname}.tar.gz"
 }
