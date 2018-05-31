@@ -6,14 +6,14 @@ true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
 _srcname=linux-4.16
-pkgver=4.16.7
-pkgrel=2
+pkgver=4.16.13
+pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
 license=('GPL2')
 url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
-makedepends=('bc' 'inetutils' 'gcc6')
+makedepends=('bc' 'inetutils' 'gcc7')
 source=(
   http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
   http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
@@ -21,9 +21,9 @@ source=(
 
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'f5ef83461054024814846eb816c76eba1b903f7e3e38c3417027b33070b60d91'
+            '9efa0a74eb61240da53bd01a3a23759e0065811de53d22de7d679eabf847f323'
             'SKIP'
-            '8a392e7d98262d07058764b172f11facc715833addf9ab9d3457c55179d8dabb')
+            'fda28f5ccc809a7b76f0f80eb0c302713282b56b8693575cc766566993e2be41')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -52,7 +52,7 @@ build() {
   cd "${srcdir}/${_srcname}"
   unset LDFLAGS CFLAGS
 
-  make ARCH=um CC=gcc-6 vmlinux modules 
+  make ARCH=um CC=gcc-7 vmlinux modules 
 }
 
 package_linux-usermode() {
