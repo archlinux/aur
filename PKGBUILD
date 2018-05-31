@@ -11,11 +11,11 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.67.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 url='http://www.boost.org/'
 arch=('x86_64')
 license=('custom')
-makedepends=('icu>=55.1' 'python' 'python2' 'python-numpy' 'python2-numpy' 'bzip2' 'zlib' 'openmpi')
+makedepends=('icu' 'python' 'python2' 'python-numpy' 'python2-numpy' 'bzip2' 'zlib' 'openmpi')
 source=(https://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${_boostver}.tar.bz2
         776.patch)
 sha256sums=('2684c972994ee57fc5632e03bf044746f6eb45d4920c343937a465fd67a5adba'
@@ -131,6 +131,10 @@ package_boost-libs() {
    cp -a "${_stagedir}"/lib "${pkgdir}"/usr
    cp -a "${_stagedir}"/python3/lib/libboost_* "${pkgdir}"/usr/lib
    rm "${pkgdir}"/usr/lib/*.a
+
+   # https://github.com/boostorg/python/issues/203#issuecomment-391477685
+   ln -srL "${pkgdir}"/usr/lib/libboost_python{27,}.so
+   ln -srL "${pkgdir}"/usr/lib/libboost_python3{6,}.so
 
    install -Dm644 "${srcdir}/"${pkgbase}_${_boostver}/LICENSE_1_0.txt \
       "${pkgdir}"/usr/share/licenses/boost-libs/LICENSE_1_0.txt
