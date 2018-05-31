@@ -8,7 +8,7 @@ BUILDFLAG="USE_OPENMP=1 USE_THREAD=1 MAJOR_VERSION=3 NO_LAPACK=0 BUILD_LAPACK_DE
 
 pkgname=mingw-w64-openblas-lapack
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD, providing optimized blas, lapack, and cblas (mingw-w64)"
 arch=('any')
 url="https://www.openblas.net"
@@ -71,6 +71,13 @@ package() {
 
     ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}/bin/"*.dll
     ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.a
+
+    cd "${pkgdir}/usr/${_arch}/bin/"
+    ln -sf libopenblas.dll libblas.dll
+    ln -sf libopenblas.dll libcblas.dll
+    ln -sf libopenblas.dll libf77blas.dll
+    ln -sf libopenblas.dll liblapack.dll
+    ln -sf libopenblas.dll liblapacke.dll
 
     cd "${pkgdir}/usr/${_arch}/lib/"
     ln -sf libopenblas.dll.a libblas.dll.a
