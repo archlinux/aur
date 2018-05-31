@@ -4,15 +4,22 @@
 
 pkgname=xautolock
 pkgver=2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="An automatic X screen-locker/screen-saver"
 arch=(x86_64)
 url="http://ibiblio.org/pub/Linux/X11/screensavers/"
 license=('GPL2')
 depends=('libxss')
 makedepends=('imake')
-source=("http://ibiblio.org/pub/Linux/X11/screensavers/$pkgname-$pkgver.tgz")
-md5sums=('9526347a202694ad235d731d9d3de91f')
+source=("http://ibiblio.org/pub/Linux/X11/screensavers/$pkgname-$pkgver.tgz"
+        union-wait.patch)
+md5sums=('9526347a202694ad235d731d9d3de91f'
+         'd313c2e392be59c2cbbb4226caf98bd4')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 -i "$srcdir/union-wait.patch"
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
