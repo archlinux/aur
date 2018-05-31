@@ -1,14 +1,14 @@
 pkgbase = r-git2r
-	pkgdesc = provides access to git repositories
-	pkgver = 0.15.0
+	pkgdesc = Provides Access to Git Repositories
+	pkgver = 0.21.0
 	pkgrel = 1
-	url = https://github.com/ropensci/git2r
-	arch = any
+	url = https://cran.r-project.org/package=git2r
+	arch = x86_64
 	license = GPL2
-	makedepends = curl
-	makedepends = grep
-	makedepends = python-html2text
-	depends = r>=3.0.2
+	depends = r
+	optdepends = r-getpass
+	source = https://cran.r-project.org/src/contrib/git2r_0.21.0.tar.gz
+	md5sums = 4aceb139a7e60565c91cf0abf492ccf7
 
 pkgname = r-git2r
 
