@@ -1,9 +1,9 @@
 # Maintainer: frichtlm <frichtlm@gmail.com>
 _cranname=dplyr
 _cranver=0.7.5
-pkgname=r-cran-$_cranname
+pkgname=r-$_cranname
 pkgver=${_cranver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, consistent tool for working with data frame like objects."
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('i686' 'x86_64')

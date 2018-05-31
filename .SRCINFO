@@ -1,7 +1,7 @@
-pkgbase = r-cran-dplyr
+pkgbase = r-dplyr
 	pkgdesc = A fast, consistent tool for working with data frame like objects.
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cran.r-project.org/web/packages/dplyr/index.html
 	arch = i686
 	arch = x86_64
@@ -20,5 +20,5 @@ pkgbase = r-cran-dplyr
 	source = http://cran.r-project.org/src/contrib/dplyr_0.7.5.tar.gz
 	md5sums = f93e79ac92122465a2239fee79ed06b6
 
-pkgname = r-cran-dplyr
+pkgname = r-dplyr
 
