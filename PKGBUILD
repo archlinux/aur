@@ -1,11 +1,11 @@
-# Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
+# Maintainer: Andrew Crerar <crerar@archlinux.org>
 # Contributor: guillaume alaux <guillaume at alaux dot net>
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 # Contributor: xeross <contact at xeross dot me>
 # Contributor: codekoala <codekoala at gmail dot com>
 
 pkgname=etcd
-pkgver=3.3.5
+pkgver=3.3.6
 pkgrel=1
 pkgdesc='A highly-available key value store for shared configuration and service discovery.'
 arch=('x86_64' 'armv6h' 'armv7h')
@@ -19,7 +19,7 @@ source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/coreos/"${pkgname}"/
          10-EnvironmentFile.conf
          etcd.env)
 validpgpkeys=('18AD5014C99EF7E3BA5F6CE950BDD3E0FC8A365E') # CoreOS Application Signing Key <security@coreos.com>
-sha512sums=('e4495a02f1e2a08cc70a055528edbc118f50e4fe68b51afeb82908a7c2387de1e457adfb8078befec6829daeace61b95501da9f8b3fa49e0aecc9710ece470a4'
+sha512sums=('00ee750499d487eeeb171f738c6cfe4ebc5d7ffc0f01343c56f712232046161091b23301818593ac14cbd36870d9bba407fad26d863dd41ea257ad21e1a3d93f'
             'SKIP'
             'fa85d772929ea7e0a18bddd4b9c41d043a7f75e560eacfab67b979985e510dea694c332b5130570e47101c1ec5c25925872c6a581568390e7b141d9c6c26aae2'
             '040cee3c04dd5bb253415169d1f6f50bbccac10b687706c1b168184985c0c6c6cc67858f0c71d2ebb475891e54b370fa39b20ead5155658d01fac31d7d388324')
