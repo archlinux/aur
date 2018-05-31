@@ -9,7 +9,7 @@ pkgdesc="Simple, Consistent Wrappers for Common String Operations"
 arch=('any')
 url="https://cran.r-project.org/web/packages/${_cranname}/index.html"
 license=('GPL2' 'custom')
-depends=('r' 'r-cran-glue' 'r-magrittr' 'r-stringi')
+depends=('r' 'r-glue' 'r-magrittr' 'r-stringi')
 
 optdepends=('r-covr' 'r-htmltools' 'r-htmlwidgets' 'r-knitr' 'r-rmarkdown' 'r-testthat')
 
