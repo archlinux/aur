@@ -1,8 +1,9 @@
 # Original Package: Jan de Groot <jgc@archlinux.org>
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=gst-plugins-good-git
-pkgver=1.13.0.1.16696.0da5679c6
+pkgver=1.15.0.1.17695.0fbde2a07
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Good Plugins"
 arch=('i686' 'x86_64')
@@ -11,10 +12,10 @@ provides=('gst-plugins-good='$pkgver)
 conflicts=('gst-plugins-good')
 url="http://gstreamer.freedesktop.org/"
 depends=('libpulse' 'jack' 'libsoup' 'gst-plugins-base-git' 'wavpack' 'aalib' 'taglib' 'libdv' 'libshout' 'libvpx' 'gdk-pixbuf2' 'libcaca' 'libavc1394' 'libiec61883' 'libxdamage' 'v4l-utils' 'cairo')
-makedepends=('gstreamer' 'speex' 'flac' 'libraw1394')
+makedepends=('git' 'meson' 'gstreamer' 'speex' 'flac' 'libraw1394')
 options=(!libtool !emptydirs)
 
-source=('git://anongit.freedesktop.org/gstreamer/gst-plugins-good')
+source=('git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-good.git')
 sha256sums=('SKIP')
 
 _gitname='gst-plugins-good'
@@ -29,14 +30,10 @@ pkgver() {
 }
 
 build() {
-  cd $_gitname
-  export CFLAGS="-Wno-error"
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --disable-static --enable-experimental --disable-fatal-warnings
-  make
+  arch-meson $_gitname build
+  ninja -C build
 }
 
 package() {
-  cd $_gitname
-  make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
