@@ -2,7 +2,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=cdetect
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Detect which compiler version was used for compiling an ELF file'
 arch=('any')
