@@ -1,5 +1,6 @@
+# Maintainer: Eugene Lamskoy
 pkgname=golded-plus-git
-pkgver=release_1_1_4_6.r1486.g1c03dbf
+pkgver=r1529.1c03dbf
 pkgrel=1
 pkgdesc="golded-plus Fidonet Mail Reader/Editor"
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ provides=('golded-plus')
 
 build() {
     cd "${pkgname}"
-    make PLATFORM=lnx strip
+    make
     pushd docs
     make tokentpl.txt
     make tokencfg.txt
@@ -30,27 +31,27 @@ prepare() {
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$pkgname"
-        mkdir -m 644 -p ${pkgdir}/usr/share/doc/goldedplus/examples/{config,template}
-        mkdir -m 644 -p ${pkgdir}/usr/share/goldedplus/cfgs/{charset,colorset}
-	install -d ${pkgdir}/usr/bin
-	install bin/*lnx bin/golded ${pkgdir}/usr/bin/
-	install -d ${pkgdir}/usr/man/man1
-	install -m 644 docs/*.1 ${pkgdir}/usr/man/man1/
-	install -m 644 ${pkgdir}/usr/man/man1/golded.1 ${pkgdir}/usr/man/man1/gedlnx.1
-        install -m 644 ${pkgdir}/usr/man/man1/goldnode.1 ${pkgdir}/usr/man/man1/gnlnx.1
-	install -m 644 ${pkgdir}/usr/man/man1/rddt.1 ${pkgdir}/usr/man/man1/rddtlnx.1
-	install -m 644 -d ${pkgdir}/usr/share/doc/goldedplus
-	install -m 644 -d ${pkgdir}/usr/share/doc/goldedplus/examples
-	install -m 644 cfgs/config/* ${pkgdir}/usr/share/doc/goldedplus/examples/config
-	install -m 644 cfgs/template/* ${pkgdir}/usr/share/doc/goldedplus/examples/template
-	install -m 644 -d ${pkgdir}/usr/share/goldedplus/
-	install -m 644 cfgs/charset/* ${pkgdir}/usr/share/goldedplus/cfgs/charset
-	install -m 644 cfgs/colorset/* ${pkgdir}/usr/share/goldedplus/cfgs/colorset
+    cd "$pkgname"
+    mkdir -m 755 -p ${pkgdir}/usr/share/doc/goldedplus/examples/{config,template}
+    mkdir -m 755 -p ${pkgdir}/usr/share/goldedplus/cfgs/{charset,colorset}
+    install -d ${pkgdir}/usr/bin
+    install bin/*lnx bin/golded ${pkgdir}/usr/bin/
+    install -d ${pkgdir}/usr/man/man1
+    install -m 644 docs/*.1 ${pkgdir}/usr/man/man1/
+    install -m 644 ${pkgdir}/usr/man/man1/golded.1 ${pkgdir}/usr/man/man1/gedlnx.1
+    install -m 644 ${pkgdir}/usr/man/man1/goldnode.1 ${pkgdir}/usr/man/man1/gnlnx.1
+    install -m 644 ${pkgdir}/usr/man/man1/rddt.1 ${pkgdir}/usr/man/man1/rddtlnx.1
+    install -m 644 -d ${pkgdir}/usr/share/doc/goldedplus
+    install -m 644 -d ${pkgdir}/usr/share/doc/goldedplus/examples
+    install -m 644 cfgs/config/* ${pkgdir}/usr/share/doc/goldedplus/examples/config
+    install -m 644 cfgs/template/* ${pkgdir}/usr/share/doc/goldedplus/examples/template
+    install -m 644 -d ${pkgdir}/usr/share/goldedplus/
+    install -m 644 cfgs/charset/* ${pkgdir}/usr/share/goldedplus/cfgs/charset
+    install -m 644 cfgs/colorset/* ${pkgdir}/usr/share/goldedplus/cfgs/colorset
 }
 
 
