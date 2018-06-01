@@ -1,16 +1,14 @@
 pkgbase = openbazaard
 	pkgdesc = Server daemon for communication between client and OpenBazaar network
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenBazaar/openbazaar-go
 	install = openbazaard.install
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	makedepends = upx
 	options = strip
-	options = upx
 	source = https://github.com/OpenBazaar/openbazaar-go/archive/v0.12.0.tar.gz
 	source = openbazaard.service
 	source = openbazaard.conf

@@ -3,14 +3,14 @@
 pkgname=openbazaard
 _ver=0.12.0
 pkgver=$(echo "${_ver}" | tr -d -)
-pkgrel=1
+pkgrel=2
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(i686 x86_64)
 url="https://github.com/OpenBazaar/openbazaar-go"
 license=('MIT')
 depends=()
 install=$pkgname.install
-makedepends=(go upx)
+makedepends=(go)
 _user=github.com/OpenBazaar
 _repo=openbazaar-go
 source=("https://github.com/OpenBazaar/openbazaar-go/archive/v${_ver}.tar.gz"
@@ -18,7 +18,7 @@ source=("https://github.com/OpenBazaar/openbazaar-go/archive/v${_ver}.tar.gz"
 	$pkgname.conf
 	$pkgname.sysuser.conf
 )
-options=('strip' 'upx')
+options=('strip')
 
 build(){
 	cd $srcdir
