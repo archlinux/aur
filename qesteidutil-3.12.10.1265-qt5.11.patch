@@ -1,0 +1,32 @@
+diff -Nurd qesteidutil_3.12.10.1265.orig/common/qtsingleapplication/CMakeLists.txt qesteidutil_3.12.10.1265/common/qtsingleapplication/CMakeLists.txt
+--- qesteidutil_3.12.10.1265.orig/common/qtsingleapplication/CMakeLists.txt	2017-11-16 09:39:24.000000000 +0200
++++ qesteidutil_3.12.10.1265/common/qtsingleapplication/CMakeLists.txt	2018-06-01 17:29:57.000000000 +0300
+@@ -5,5 +5,5 @@
+ set_target_properties( qtsingleapplication PROPERTIES AUTOMOC TRUE )
+ 
+ if( Qt5Widgets_FOUND )
+-	qt5_use_modules( qtsingleapplication Widgets Network )
++    target_link_libraries(qtsingleapplication Qt5::Widgets Qt5::Network)
+ endif()
+diff -Nurd qesteidutil_3.12.10.1265.orig/src/MainWindow.cpp qesteidutil_3.12.10.1265/src/MainWindow.cpp
+--- qesteidutil_3.12.10.1265.orig/src/MainWindow.cpp	2017-11-16 09:39:29.000000000 +0200
++++ qesteidutil_3.12.10.1265/src/MainWindow.cpp	2018-06-01 17:50:22.107060419 +0300
+@@ -54,6 +54,7 @@
+ #include <QtGui/QPainter>
+ #include <QtGui/QPaintEvent>
+ #include <QtNetwork/QSslKey>
++#include <QtWidgets/QButtonGroup>
+ #include <QtWidgets/QFileDialog>
+ #include <QtWidgets/QMessageBox>
+ 
+diff -Nurd qesteidutil_3.12.10.1265.orig/src/Updater.cpp qesteidutil_3.12.10.1265/src/Updater.cpp
+--- qesteidutil_3.12.10.1265.orig/src/Updater.cpp	2017-11-16 09:39:29.000000000 +0200
++++ qesteidutil_3.12.10.1265/src/Updater.cpp	2018-06-01 17:51:56.944135255 +0300
+@@ -37,6 +37,7 @@
+ #include <QtNetwork/QNetworkProxy>
+ #include <QtNetwork/QNetworkReply>
+ #include <QtNetwork/QSslKey>
++#include <QtGui/QRegExpValidator>
+ #include <QtGui/QPainter>
+ #include <QtWidgets/QPushButton>
+ 
