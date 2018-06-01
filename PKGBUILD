@@ -2,7 +2,7 @@
 
 pkgname=libpdfium-nojs
 pkgver=3396.r4.7b8cd8daf
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
@@ -53,15 +53,15 @@ prepare() {
   git checkout $(awk '/build_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
 
   # Use system provided icu library (unbundling)
-	mkdir -p "$srcdir/pdfium/third_party/icu"
+  mkdir -p "$srcdir/pdfium/third_party/icu"
   ln -sf "$srcdir/build/linux/unbundle/icu.gn" "$srcdir/pdfium/third_party/icu/BUILD.gn"
 
-	# Download and decode shim header script needed to unbundle icu (gittiles is weird)
-  mkdir -p "$srcdir/tools/generate_shim_headers/"
-	echo "Downloading generate_shim_headers script from buildtools."
+  # Download and decode shim header script needed to unbundle icu (gittiles is weird)
+  mkdir -p "$srcdir/pdfium/tools/generate_shim_headers/"
+  echo "Downloading generate_shim_headers script from buildtools."
   curl https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT \
-    | base64 --decode > "$srcdir/tools/generate_shim_headers/generate_shim_headers.py"
-	echo "Done."
+    | base64 --decode > "$srcdir/pdfium/tools/generate_shim_headers/generate_shim_headers.py"
+  echo "Done."
 
   # Patch BUILD.gn to build a shared library
   cd "$srcdir/pdfium"
