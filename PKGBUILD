@@ -1,24 +1,17 @@
 pkgname=mingw-w64-tools
-pkgver=5.0.2
+pkgver=5.0.3
 _pkgver=${pkgver/rc/-rc}
-pkgrel=2
+pkgrel=1
 pkgdesc="MinGW-w64 utilities"
 arch=(i686 x86_64)
 url="http://mingw-w64.sourceforge.net"
 license=("GPL3" "LGPL2")
 groups=(mingw-w64)
 options=(!libtool !emptydirs)
-source=("http://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${_pkgver}.tar.bz2"
-"patch.txt")
-md5sums=('80d6884c9da234e73054347f44158b8a'
-         '9f5edb073b656a82c5672680935d1e51')
+source=("http://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${_pkgver}.tar.bz2")
+sha256sums=('2a601db99ef579b9be69c775218ad956a24a09d7dabc9ff6c5bd60da9ccc9cb4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd "${srcdir}"/mingw-w64-v${_pkgver}
-  patch -p1 -i "${srcdir}"/patch.txt
-}
 
 build() {
 	cd "${srcdir}"
