@@ -3,8 +3,8 @@
 
 pkgname=freetype2-ttmetrics
 _srcname=freetype
-pkgver=2.9
-pkgrel=3
+pkgver=2.9.1
+pkgrel=1
 pkgdesc="Font rasterization library with TrueType metrics enabled"
 arch=(i686 x86_64)
 license=('GPL')
@@ -21,15 +21,13 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pk
         0001-Enable-table-validation-modules.patch
         0002-Enable-infinality-subpixel-hinting.patch
         0003-Enable-long-PCF-family-names.patch
-        0001-psaux-Correctly-handle-Flex-features-52846.patch
         freetype2.sh
         enable_truetype_like_size_metrics.patch
         fix_metrics_on_size_request.patch)
-sha1sums=('94c4399b1a55c5892812e732843fcb4a7c2fe657'
-          'b69531770c343d403be294b7e4d25ac45738c833'
-          '3d26a569f0cb94c28a550577f5dcaadb4e193d91'
-          '770f1981734a837bcf065564c91644b4cc5e256a'
-          '21ad7dd31e16adb5b39adfa5671018a736626562'
+sha1sums=('220c82062171c513e4017c523d196933c9de4a7d'
+          'd9eb22e5c962923089b0c9fc5491cf28a19bd982'
+          'd13503902e0404cf3558db76b477f23f9910d06e'
+          'fc49742fb6c19fe0677e3552bb7c00aac8530265'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f'
           '833a8622bc61fc6f41c0e87c3614dec73490c9b1'
           'fcb6e379591f06793d4e081f8a9ea7731b484478')
@@ -41,10 +39,6 @@ prepare() {
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
-
-  # Freetype 2.9 regression: bad rendering for some Type 1 fonts
-  # https://savannah.nongnu.org/bugs/?52846
-  patch -Np1 -i ../0001-psaux-Correctly-handle-Flex-features-52846.patch
 
   # ttmetrics patches
   # see https://bbs.archlinux.org/viewtopic.php?id=226380
