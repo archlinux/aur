@@ -4,7 +4,7 @@
 
 pkgbase=(tensorflow-cpu-git)
 pkgname=(tensorflow-cpu-git python-tensorflow-cpu-git)
-pkgver=1.8.0+rc1+930+gadf045607c
+pkgver=1.8.0+2609+g1039ff9ee8
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
@@ -13,7 +13,7 @@ arch=('x86_64')
 # There is curently a bug which prevents the compilation of tensorflow with
 # bazel 0.13. See: https://github.com/tensorflow/tensorflow/issues/19015
 # Till that is resolved, explicitly marking the dependency to 0.12
-makedepends=(git bazel=0.12.0 python-pip python-wheel python-setuptools)
+makedepends=(git bazel=0.12.0 python-pip python-numpy python-wheel python-setuptools)
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("git+https://github.com/tensorflow/tensorflow")
 md5sums=('SKIP')
@@ -56,7 +56,7 @@ build() {
   export TF_NEED_CUDA=0
 
   ./configure
-  bazel build --config=opt ${MAKEFLAGS:--j$(nproc)} //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package
+  bazel build --config=opt --jobs $(nproc) //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmp
 }
 
@@ -86,7 +86,7 @@ package_python-tensorflow-cpu-git() {
   # it out from this pacakge.
   rm -rf ${pkgdir}/usr/bin/tensorboard
 
-  WHEEL_PACKAGE=$(find ${srcdir}/tmpcuda -name "tensor*.whl")
+  WHEEL_PACKAGE=$(find ${srcdir}/tmp -name "tensor*.whl")
   pip install --ignore-installed --upgrade --root $pkgdir/ $WHEEL_PACKAGE --no-dependencies
 
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/python-tensorflow/LICENSE
