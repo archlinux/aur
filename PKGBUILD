@@ -1,5 +1,5 @@
 pkgname=3proxy
-pkgver=0.8.10
+pkgver=0.8.12
 pkgrel=1
 pkgdesc="A tiny crossplatform proxy server"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('BSD')
 depends=()
 source=("https://github.com/z3APA3A/3proxy/archive/$pkgver.tar.gz"
 )
-md5sums=('7394c3373823f15882ad65d8ebcf33b5'
+md5sums=('f8ccbe689ff8da8ff67942fc440187ae'
 )
 _prefix=/usr
 _etcdir=/etc/3proxy
