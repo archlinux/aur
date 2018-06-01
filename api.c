@@ -18,8 +18,12 @@ Info* api_info_init(void) {
             .marketcap = EMPTY, .volume_1d = EMPTY, .pe_ratio = EMPTY, .div_yield = EMPTY, .revenue = EMPTY,
             .gross_profit = EMPTY, .cash = EMPTY, .debt = EMPTY, .eps = {EMPTY, EMPTY, EMPTY, EMPTY},
             .fiscal_period[0][0] = '\0', .fiscal_period[1][0] = '\0', .fiscal_period[2][0] = '\0',
-            .fiscal_period[3][0] = '\0', .eps_year_ago = {EMPTY, EMPTY, EMPTY, EMPTY}, .change_1d = EMPTY,
-            .change_7d = EMPTY, .change_30d = EMPTY, .points = NULL, .articles = NULL, .num_articles = EMPTY
+            .fiscal_period[3][0] = '\0', .eps_year_ago = {EMPTY, EMPTY, EMPTY, EMPTY}, .price_last_close = EMPTY,
+            .price_7d = EMPTY, .price_30d = EMPTY, .points = NULL, .num_points = EMPTY, .articles = NULL,
+            .num_articles = EMPTY, .num_peers = 0, .amount = EMPTY, .total_spent = EMPTY, .current_value = 0,
+            .profit_total = EMPTY, .profit_total_percent = EMPTY, .profit_last_close = EMPTY,
+            .profit_last_close_percent = EMPTY, .profit_7d = EMPTY, .profit_7d_percent = EMPTY, .profit_30d = EMPTY,
+            .profit_30d_percent = EMPTY
     };
     return pInfo;
 }
@@ -112,6 +116,11 @@ void* iex_store_quote(void* vpInfo) {
     symbol_info->marketcap = json_object_get_int64(json_object_object_get(jobj, "marketCap"));
     symbol_info->volume_1d = json_object_get_int64(json_object_object_get(jobj, "latestVolume"));
     symbol_info->pe_ratio = json_object_get_double(json_object_object_get(jobj, "peRatio"));
+    if (symbol_info->amount != EMPTY) {
+        symbol_info->current_value = symbol_info->amount * symbol_info->price;
+        symbol_info->profit_total = symbol_info->current_value - symbol_info->total_spent;
+        symbol_info->profit_total_percent = 100 * (symbol_info->current_value / symbol_info->total_spent - 1);
+    }
     json_object_put(jobj);
     string_destroy(&pString);
     return NULL;
@@ -215,10 +224,20 @@ void* iex_store_chart(void* vpInfo) {
     struct tm* ts = localtime(&now);
     mktime(ts);
     int after_close = ts->tm_hour > 16 && ts->tm_wday != 0 && ts->tm_wday != 6;
-    double coef = 100 / symbol_info->price;
-    symbol_info->change_1d = coef * (symbol_info->price - symbol_info->points[len - 2 + after_close]);
-    symbol_info->change_7d = coef * (symbol_info->price - symbol_info->points[len - 6 + after_close]);
-    symbol_info->change_30d = coef * (symbol_info->price - symbol_info->points[len - 22 + after_close]);
+    symbol_info->price_last_close = symbol_info->points[len - 2 + after_close];
+    symbol_info->price_7d = symbol_info->points[len - 6 + after_close];
+    symbol_info->price_30d = symbol_info->points[len - 22 + after_close];
+    if (symbol_info->amount != EMPTY) {
+        symbol_info->profit_last_close = symbol_info->amount * (symbol_info->price - symbol_info->price_last_close);
+        symbol_info->profit_last_close_percent = 100 * (symbol_info->current_value / (symbol_info->current_value -
+                symbol_info->profit_last_close) - 1);
+        symbol_info->profit_7d = symbol_info->amount * (symbol_info->price - symbol_info->price_7d);
+        symbol_info->profit_7d_percent = 100 * (symbol_info->current_value / (symbol_info->current_value -
+                symbol_info->profit_7d) - 1);
+        symbol_info->profit_30d = symbol_info->amount * (symbol_info->price - symbol_info->price_30d);
+        symbol_info->profit_30d_percent = 100 * (symbol_info->current_value / (symbol_info->current_value -
+                                                                              symbol_info->profit_30d) - 1);
+    }
     json_object_put(jobj);
     string_destroy(&pString);
     return NULL;
@@ -284,6 +303,50 @@ void* iex_store_news(void* vpInfo) {
     return NULL;
 }
 
+void* iex_store_peers(void* vpInfo) {
+    Info* symbol_info = vpInfo;
+    if (symbol_info->symbol[0] == '\0')
+        return NULL;
+
+    char iex_api_string[URL_MAX_LENGTH];
+    sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/peers", symbol_info->symbol);
+    String* pString = api_curl_data(iex_api_string);
+    if (pString == NULL)
+        return NULL;
+
+    Json* jobj = json_tokener_parse(pString->data);
+    if (jobj == NULL) { // Invalid symbol
+        string_destroy(&pString);
+        return NULL;
+    }
+
+    size_t len = json_object_array_length(jobj);
+    if (len > MAX_PEERS)
+        len = MAX_PEERS;
+
+    symbol_info->peers = malloc(sizeof(Info*) * len);
+    pthread_t threads[len];
+    char temp_symbol[SYMBOL_MAX_LENGTH];
+    for (size_t i = 0; i < len; i++) {
+        strcpy(temp_symbol, json_object_get_string(json_object_array_get_idx(jobj, i)));
+        // Cast function to enable it as a thread entrypoint
+        if (pthread_create(&threads[i], NULL, (void* (*)(void*)) api_get_check_info, (void*) temp_symbol))
+            EXIT_MSG("Error creating thread!");
+    }
+
+    for (size_t i = 0; i < len; i++) {
+        void* ret = NULL;
+        if (pthread_join(threads[i], &ret))
+            EXIT_MSG("Error joining thread!")
+
+        symbol_info->peers[i] = ret;
+    }
+
+    json_object_put(jobj);
+    string_destroy(&pString);
+    return NULL;
+}
+
 void* morningstar_store_info(void* vpInfo) {
     Info* symbol_info = vpInfo;
     char today_str[DATE_MAX_LENGTH], five_year_str[DATE_MAX_LENGTH], morningstar_api_string[URL_MAX_LENGTH];
@@ -318,9 +381,9 @@ void* morningstar_store_info(void* vpInfo) {
                 json_object_array_get_idx(json_object_array_get_idx(datapoints, (size_t) i), 0));
     symbol_info->points = api_data;
     symbol_info->price = api_data[len - 1];
-    symbol_info->change_1d = 100 / symbol_info->price * (symbol_info->price - api_data[len - 2]);
-    symbol_info->change_7d = 100 / symbol_info->price * (symbol_info->price - api_data[len - 6]);
-    symbol_info->change_30d = 100 / symbol_info->price * (symbol_info->price - api_data[len - 22]);
+    symbol_info->price_last_close = api_data[len - 2];
+    symbol_info->price_7d = api_data[len - 6];
+    symbol_info->price_30d = api_data[len - 22];
     Json* vol = json_object_object_get(jobj, "VolumeList");
     if (vol != NULL) // There is no volume for MUTF
         symbol_info->volume_1d = (long) (1000000 * json_object_get_double( // Data listed in millions
@@ -348,10 +411,13 @@ void* coinmarketcap_store_info(void* vpInfo) {
     strcpy(symbol_info->name, json_object_get_string(json_object_object_get(data, "name")));
     strcpy(symbol_info->symbol, json_object_get_string(json_object_object_get(data, "symbol")));
     symbol_info->price = strtod(json_object_get_string(json_object_object_get(data, "price_usd")), NULL);
-    symbol_info->change_1d = strtod(json_object_get_string(json_object_object_get(data, "percent_change_24h")), NULL);
-    symbol_info->change_7d = strtod(json_object_get_string(json_object_object_get(data, "percent_change_7d")), NULL);
+    symbol_info->price_last_close = symbol_info->price /
+            (strtod(json_object_get_string(json_object_object_get(data, "percent_change_24h")), NULL) / 100 + 1);
+    symbol_info->price_7d = symbol_info->price /
+            (strtod(json_object_get_string(json_object_object_get(data, "percent_change_7d")), NULL) / 100 + 1);
     symbol_info->marketcap = strtol(json_object_get_string(json_object_object_get(data, "market_cap_usd")), NULL, 10);
     symbol_info->volume_1d = strtol(json_object_get_string(json_object_object_get(data, "24h_volume_usd")), NULL, 10);
+    symbol_info->intraday_time = strtol(json_object_get_string(json_object_object_get(data, "last_updated")), NULL, 10);
     json_object_put(jobj);
     string_destroy(&pString);
     return NULL;
@@ -360,15 +426,16 @@ void* coinmarketcap_store_info(void* vpInfo) {
 Info* iex_get_info(const char* symbol) {
     Info* symbol_info = api_info_init();
     strcpy(symbol_info->symbol, symbol);
-    pthread_t threads[6];
-    void* (*funcs[6]) (void*) = {
-            iex_store_company, iex_store_quote, iex_store_stats, iex_store_earnings, iex_store_chart, iex_store_news
+    pthread_t threads[7];
+    void* (*funcs[7]) (void*) = {
+            iex_store_company, iex_store_quote, iex_store_stats, iex_store_earnings, iex_store_chart, iex_store_news,
+            iex_store_peers
     };
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < 7; i++)
         if (pthread_create(&threads[i], NULL, funcs[i], symbol_info))
             EXIT_MSG("Error creating thread!");
 
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < 7; i++)
         if (pthread_join(threads[i], NULL))
             EXIT_MSG("Error joining thread!");
 
@@ -455,6 +522,11 @@ void api_info_destroy(Info** phInfo) {
     if (pInfo->articles != NULL)
         for (int i = 0; i < pInfo->num_articles; i++)
             api_news_destroy(&pInfo->articles[i]);
+
+    if (pInfo->peers != NULL)
+        for (int i = 0; i < pInfo->num_peers; i++)
+            api_info_destroy(&pInfo->peers[i]);
+
     free(pInfo->articles);
     free(*phInfo);
     *phInfo = NULL;

@@ -15,6 +15,7 @@
 #define INFO_TEXT_MAX 2048
 #define EMPTY (-999)
 #define DEFAULT_NUM_ARTICLES 3
+#define MAX_PEERS 12
 
 #include <stddef.h>
 #include <curl/curl.h>
@@ -31,7 +32,11 @@ typedef struct news_article {
     char related[INFO_TEXT_MAX];
 } News;
 
-typedef struct info {
+typedef struct info Info;
+
+struct info {
+    /** API DATA **/
+
     /* Company */
     char symbol[SYMBOL_MAX_LENGTH];     // ex. AAPL
     char name[INFO_TEXT_MAX];           // ex. Apple Inc.
@@ -71,15 +76,37 @@ typedef struct info {
     double eps_year_ago[QUARTERS];      // Earnings per share per quarter for the previous year
 
     /* Chart */
-    double change_1d;                   // Percent change since last close
-    double change_7d;                   // Percent change since 7 days ago
-    double change_30d;                  // Percent change since 30 days ago
+    double price_last_close;            // Last close price
+    double price_7d;                    // Price 7 days ago
+    double price_30d;                   // Price 30 days ago
     double* points;                     // Array of one price per day, startings five years previously
+    int num_points;                     // Number of data points
 
     /* News */
     News** articles;                    // Array of News pointers
     int num_articles;                   // Number of News pointers in array
-} Info;
+
+    /* Peers */
+    Info** peers;                       // Array of symbol strings
+    int num_peers;                      // Number of symbols in array
+
+    /** PORTFOLIO DATA **/
+
+    double amount;                      // Amount of security in porfolio
+    double total_spent;                 // Total USD spent
+    double current_value;               // Total USD value
+
+    /** CALCULATED DATA **/
+
+    double profit_total;                // Total profit
+    double profit_total_percent;        // Total profit %
+    double profit_last_close;           // Profit since last close
+    double profit_last_close_percent;   // Profit since last close %
+    double profit_7d;                   // Profit since seven days ago
+    double profit_7d_percent;           // Profit since seven days ago %
+    double profit_30d;                  // Profit since thirty days ago
+    double profit_30d_percent;          // Profit since thirty days ago %
+};
 
 /**
  * Allocates a News struct and returns a pointer to it.
@@ -166,6 +193,15 @@ void* iex_store_chart(void* vpInfo);
  * @return NULL
  */
 void* iex_store_news(void* vpInfo);
+
+/**
+ * Designed for threading
+ *
+ * Queries IEX's peers endpoint and stores the data in the Info object pointed to by vpInfo.
+ * @param vpInfo Info*
+ * @return NULL
+ */
+void* iex_store_peers(void* vpInfo);
 
 /**
  * Designed for threading
