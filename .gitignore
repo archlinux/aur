@@ -1,0 +1,6 @@
+/*.tar
+/*.tar.*
+/*.zip
+/*.vhdl
+/pkg/
+/src/
