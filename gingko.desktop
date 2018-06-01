@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Gingko
+Icon=/usr/share/icons/hicolor/512x512/gingko-client.png
+Exec="/opt/gingko/gingko-client"
+Comment=Gingko lets you untangle your thoughts as your write them.
+Categories=Office;WordProcessor;
+Terminal=false
+StartupWMClass=gingko
