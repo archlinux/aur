@@ -42,6 +42,8 @@ source=("git://github.com/rakshasa/rtorrent.git#branch=$_branch"
         "${_url}/ps-view-filter-by_all.patch"
         "${_url}/ps-event-view_all.patch"
         "${_url}/ps-fix-throttle-args_all.patch"
+        "${_url}/backport_0.9.6_algorithm_median.patch"
+        "${_url}/ps-silent-catch_all.patch"
         "${_url}/pyroscope.patch"
         "${_url}/ui_pyroscope.patch"
         "${_url}/ui_pyroscope.cc"
@@ -57,10 +59,12 @@ md5sums=('SKIP'
          '26faff00b306b6ef276a7d9e6d964994'
          '56701bca42cc9b309637bf3f918ede12'
          'ab490d1d1df9c27f3cf624966f7f03f6'
+         'b49903d3fa25a66c72db69570dfe8b47'
+         'e3f367abe42d28168008f99a9bf0f1d6'
          'bd04a0699b80c8042e1cf63a7e0e4222'
          '0a2bbaf74c7160ba33876dcc2f050f14'
-         '21fd4b912ddabe32356eef0a4e87c681'
-         '1258acfc82c50a8f452ace87fef0b416')
+         'SKIP'
+         'SKIP')
 
 pkgver() {
     cd "$srcdir/rtorrent"
@@ -94,7 +98,7 @@ build() {
     cd "$srcdir/rtorrent"
     #export CC=clang
     #export CXX=clang++
-    export CXXFLAGS+=" -fno-strict-aliasing -Wno-terminate"
+    export CXXFLAGS+=" -fno-strict-aliasing -faligned-new -Wno-terminate -Wno-class-memaccess"
     export libtorrent_LIBS="-L/usr/lib -ltorrent"
 
     ./configure $_debug \
