@@ -18,11 +18,10 @@ pkgver() {
 }
 
 build() {
-    cd ${srcdir}/${_pkgname}/lc0
     ./build.sh release || return 1
 }
 
 package() {
-    cd "$srcdir/$_pkgname/lc0/build/release"
+    cd "$srcdir/$_pkgname/build/release"
     install -Dm755 lc0 $pkgdir/usr/bin/lc0
 }
