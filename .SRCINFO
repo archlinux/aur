@@ -11,6 +11,7 @@ pkgbase = r-bayesplot
 	depends = r-reshape2
 	depends = r-rlang
 	depends = r-ggridges
+	optdepends = pandoc
 	optdepends = r-arm
 	optdepends = r-cran-gridextra
 	optdepends = r-knitr
