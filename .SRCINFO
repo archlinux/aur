@@ -1,5 +1,5 @@
 pkgbase = sat-xmpp-hg
-	pkgver = 0.7.0.r2597.9446f1ea9eac
+	pkgver = 0.7.0.r2605.87f8cf51fca5
 	pkgrel = 1
 	url = http://salut-a-toi.org/
 	arch = any
@@ -33,7 +33,7 @@ pkgname = sat-xmpp-hg
 	depends = python2-netifaces
 	depends = python2-miniupnpc
 	depends = python2-service-identity
-	depends = sat-tmp
+	depends = sat-tmp-hg
 	depends = python2-dateutil
 	depends = python2-regex
 	depends = python2-gobject
