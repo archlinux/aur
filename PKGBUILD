@@ -2,7 +2,7 @@
 pkgname=saw-script-git
 _pkgname=saw-script
 
-pkgver=0dbc21f1
+pkgver=c3211c47
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
@@ -37,5 +37,5 @@ package() {
     mkdir -p $pkgdir/usr/bin
     cd $srcdir/$_pkgname
     cp LICENSE $pkgdir/usr/share/licenses/$_pkgname
-    cp $(find dist-newstyle -name "saw" -type f) $pkgdir/usr/bin
+    find dist-newstyle -name "saw" -type f -exec ls -c {} + | head -n1 | xargs -I{} cp {} $pkgdir/usr/bin
 }
