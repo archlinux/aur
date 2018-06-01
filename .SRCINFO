@@ -11,6 +11,7 @@ pkgbase = theslate
 	depends = qtermwidget
 	depends = the-libs
 	depends = qt5-websockets
+	depends = qt5-svg
 	source = theslate-0.3::git+https://github.com/vicr123/theslate.git
 	md5sums = SKIP
 
