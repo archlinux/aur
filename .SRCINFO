@@ -1,7 +1,7 @@
 pkgbase = texlive-conv-xkv
 	pkgdesc = This small package supports key-value syntax other than the standard latex syntax of <key>=<value>
 	pkgver = 2017.02.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ctan.org/tex-archive/macros/latex/contrib/conv-xkv
 	arch = any
 	license = LPPL
