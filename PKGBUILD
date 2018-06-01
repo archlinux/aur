@@ -9,7 +9,7 @@ url="https://lczero.org/"
 license=('GPLv3')
 depends=('cuda' 'cudnn')
 makedepends=('git' 'meson>=0.46' 'ninja')
-source=("${_pkgname}::git+https://github.com/LeelaChessZero/lc0.git")
+source=("${_pkgname}::git+https://github.com/LeelaChessZero/lc0.git#branch=release")
 md5sums=('SKIP')
 
 pkgver() {
