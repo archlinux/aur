@@ -4,6 +4,7 @@ pkgbase = sat-tmp-hg
 	url = https://salut-a-toi.org/
 	arch = any
 	license = AGPL3
+	makedepends = mercurial
 	depends = python2
 	provides = sat-tmp
 	conflicts = sat-tmp
