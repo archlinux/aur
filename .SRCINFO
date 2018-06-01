@@ -1,0 +1,16 @@
+pkgbase = python-s3m
+	pkgdesc = SQLite3 wrapper for multithreaded Python applications
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/ivknv/s3m
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/py3/s/s3m/s3m-1.0.7-py3-none-any.whl
+	md5sums = c98395bb2703041511801a180297f811
+	sha1sums = 87ce260f16687943cc9ffb8dff64eb0a44bdb9dc
+
+pkgname = python-s3m
+
