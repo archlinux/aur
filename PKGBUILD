@@ -9,7 +9,7 @@ pkgdesc="Parse XML"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
-depends=('r' )
+depends=('r' 'libxml2')
 
 optdepends=('r-testthat' 'r-curl' 'r-covr' 'r-knitr' 'r-rmarkdown' 'r-magrittr' 'r-httr')
 

@@ -6,6 +6,7 @@ pkgbase = r-xml2
 	arch = x86_64
 	license = GPL
 	depends = r
+	depends = libxml2
 	optdepends = r-testthat
 	optdepends = r-curl
 	optdepends = r-covr
