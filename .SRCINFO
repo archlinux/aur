@@ -3,16 +3,17 @@ pkgbase = sat-cagou-hg
 	pkgrel = 1
 	arch = any
 	license = AGPL3
-	makedepends = git
+	makedepends = mercurial
 	depends = python2
 	depends = python2-kivy
 	depends = sat-xmpp-hg
 	depends = sat-templates-hg
-	depends = sat-tmp
+	depends = sat-tmp-hg
 	depends = xsel
 	options = !emptydirs
 	source = hg+https://repos.goffi.org/cagou
 	md5sums = SKIP
 
 pkgname = sat-cagou-hg
+	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (Android/Desktop interface)
 
