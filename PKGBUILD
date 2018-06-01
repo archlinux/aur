@@ -2,10 +2,9 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 # Maintainer: Frederic Bezies <mymaud@gmail.com>
 
-
 pkgname=pan-git
-_gitname=pan2
-pkgver=0.145.r1.g6c6c730
+_gitname=pan
+pkgver=0.145.r3.g1de4962
 pkgrel=1
 epoch=1
 pkgdesc="Pan is a Usenet newsreader that's good at both text and binaries. Development version."
@@ -16,8 +15,10 @@ depends=('gmime' 'gtkspell3')
 makedepends=('git' 'intltool')
 conflicts=('pan')
 provides=('pan')
-source=("git://git.gnome.org/$_gitname")
+source=("git+https://gitlab.gnome.org/GNOME/$_gitname.git")
 sha256sums=('SKIP')
+#git+https://gitlab.com/Kerenoc/GCstar.git
+
 
 pkgver() {
     cd "$srcdir/$_gitname"
