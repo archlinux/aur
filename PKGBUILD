@@ -86,7 +86,8 @@ package() {
 
     install -D -m 644 "${srcdir}/${_gitname}/rpm/tvheadend.service" \
         "$pkgdir/usr/lib/systemd/system/tvheadend.service"
-    sed -i 's|/etc/sysconfig|/etc/conf.d|g' "$pkgdir/usr/lib/systemd/system/tvheadend.service"
+    sed -i 's|/etc/sysconfig|/etc/conf.d|g' \
+        "$pkgdir/usr/lib/systemd/system/tvheadend.service"
 
     install -d "$pkgdir/etc/conf.d"
     cat << EOF > "$pkgdir/etc/conf.d/tvheadend"
