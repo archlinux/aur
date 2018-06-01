@@ -1,6 +1,6 @@
 pkgbase = phpstorm-eap
 	pkgdesc = Lightning-smart PHP IDE. Early Access Program.
-	pkgver = 182.2574.13
+	pkgver = 182.2757.22
 	pkgrel = 1
 	url = https://www.jetbrains.com/phpstorm/
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = phpstorm-eap
 	license = Commercial
 	makedepends = rsync
 	options = !strip
-	source = https://download.jetbrains.com/webide/PhpStorm-182.2574.13.tar.gz
+	source = https://download.jetbrains.com/webide/PhpStorm-182.2757.22.tar.gz
 	source = jetbrains-phpstorm-eap.desktop
-	sha256sums = 78d3983b6a236780251225aeae62a998f9f3b30a93d5d32ab32c98e40e9e8732
+	sha256sums = 1f4b0d2ca40dc3d20262a762b978daf4e12db39c9b68ad2e77a5fab8b984ce6d
 	sha256sums = 479e6ac16424df02ce1610da9eec8cc73a84cac7912e60661d4092954142933e
 
 pkgname = phpstorm-eap
 	optdepends = phpstorm-eap-jre: JetBrains custom Java Runtime (Recommended)
-	optdepends = java-runtime>=8: JRE - Required if phpstorm-eap-jre is not installed
+	optdepends = java-runtime: JRE - Required if phpstorm-eap-jre is not installed
 	optdepends = gnome-keyring: save login/deployment credentials safely
 
 pkgname = phpstorm-eap-jre
