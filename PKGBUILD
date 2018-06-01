@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=watch-git
-pkgver=r50.e8a67f1
+pkgver=r52.bea3ea6
 pkgrel=1
 epoch=
 pkgdesc="Watches for changes in a directory tree and reruns a command in an acme win or just on the terminal."
