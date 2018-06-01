@@ -1,11 +1,11 @@
 pkgbase = docear
 	pkgdesc = Docear is an academic literature suite for searching, organizing and creating academic literature, built upon the mind mapping software Freeplane and the reference manager JabRef.
 	pkgver = 1.2.0_stable
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.docear.org/
 	arch = any
 	license = GPL 2
-	depends = java-runtime
+	depends = jre8-openjdk-headless
 	provides = docear
 	noextract = docear-metadata-lib-0.0.1.jar?raw=1
 	source = docear_1.2.0_stable.tar.gz::http://docear.org/downloads/docear_linux.tar.gz
