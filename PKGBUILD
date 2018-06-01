@@ -7,7 +7,7 @@ _spryrel=2.5.0.spry.r6
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
 pkgver=2.5.0.spry.r6.r0.g4414bdce4
-pkgrel=1
+pkgrel=2
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
 url="https://www.spryservers.net/"
@@ -51,7 +51,7 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE="Release" \
-        -DCMAKE_INSTALL_SYSCONFDIR=/etc/${_name} \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc/spryCloud \
         -DWITH_DOC=FALSE \
         -DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
         -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
