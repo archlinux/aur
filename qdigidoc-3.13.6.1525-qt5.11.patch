@@ -1,0 +1,67 @@
+diff -Nurd qdigidoc_3.13.6.1525.orig/client/Application.cpp qdigidoc_3.13.6.1525/client/Application.cpp
+--- qdigidoc_3.13.6.1525.orig/client/Application.cpp	2018-03-21 11:39:24.000000000 +0200
++++ qdigidoc_3.13.6.1525/client/Application.cpp	2018-06-01 17:37:26.000000000 +0300
+@@ -57,6 +57,7 @@
+ #include <QtWidgets/QMessageBox>
+ #include <QtWidgets/QProgressBar>
+ #include <QtWidgets/QProgressDialog>
++#include <QtWidgets/QAction>
+ 
+ #if defined(Q_OS_MAC)
+ #include <common/MacMenuBar.h>
+diff -Nurd qdigidoc_3.13.6.1525.orig/client/MainWindow.cpp qdigidoc_3.13.6.1525/client/MainWindow.cpp
+--- qdigidoc_3.13.6.1525.orig/client/MainWindow.cpp	2018-03-21 11:39:24.000000000 +0200
++++ qdigidoc_3.13.6.1525/client/MainWindow.cpp	2018-06-01 17:35:22.000000000 +0300
+@@ -44,6 +44,8 @@
+ #include <QtPrintSupport/QPrinter>
+ #include <QtPrintSupport/QPrinterInfo>
+ #include <QtPrintSupport/QPrintPreviewDialog>
++#include <QtWidgets/QActionGroup>
++#include <QtWidgets/QButtonGroup>
+ #include <QtWidgets/QCompleter>
+ #include <QtWidgets/QMessageBox>
+ 
+diff -Nurd qdigidoc_3.13.6.1525.orig/client/MainWindow.h qdigidoc_3.13.6.1525/client/MainWindow.h
+--- qdigidoc_3.13.6.1525.orig/client/MainWindow.h	2018-03-21 11:39:24.000000000 +0200
++++ qdigidoc_3.13.6.1525/client/MainWindow.h	2018-06-01 17:35:40.000000000 +0300
+@@ -24,6 +24,7 @@
+ #include <QtCore/QStringList>
+ 
+ class DigiDoc;
++class QActionGroup;
+ class QPrinter;
+ 
+ class MainWindow: public QWidget, private Ui::MainWindow
+diff -Nurd qdigidoc_3.13.6.1525.orig/common/qtsingleapplication/CMakeLists.txt qdigidoc_3.13.6.1525/common/qtsingleapplication/CMakeLists.txt
+--- qdigidoc_3.13.6.1525.orig/common/qtsingleapplication/CMakeLists.txt	2018-03-21 11:39:24.000000000 +0200
++++ qdigidoc_3.13.6.1525/common/qtsingleapplication/CMakeLists.txt	2018-06-01 17:29:57.000000000 +0300
+@@ -5,5 +5,5 @@
+ set_target_properties( qtsingleapplication PROPERTIES AUTOMOC TRUE )
+ 
+ if( Qt5Widgets_FOUND )
+-	qt5_use_modules( qtsingleapplication Widgets Network )
++    target_link_libraries(qtsingleapplication Qt5::Widgets Qt5::Network)
+ endif()
+diff -Nurd qdigidoc_3.13.6.1525.orig/crypto/MainWindow.cpp qdigidoc_3.13.6.1525/crypto/MainWindow.cpp
+--- qdigidoc_3.13.6.1525.orig/crypto/MainWindow.cpp	2018-03-21 11:39:24.000000000 +0200
++++ qdigidoc_3.13.6.1525/crypto/MainWindow.cpp	2018-06-01 17:31:24.000000000 +0300
+@@ -35,6 +35,8 @@
+ #include <QtGui/QDesktopServices>
+ #include <QtGui/QDragEnterEvent>
+ #include <QtNetwork/QSslKey>
++#include <QtWidgets/QActionGroup>
++#include <QtWidgets/QButtonGroup>
+ #include <QtWidgets/QMessageBox>
+ #include <QtWidgets/QProgressBar>
+ #include <QtWidgets/QProgressDialog>
+diff -Nurd qdigidoc_3.13.6.1525.orig/crypto/MainWindow.h qdigidoc_3.13.6.1525/crypto/MainWindow.h
+--- qdigidoc_3.13.6.1525.orig/crypto/MainWindow.h	2018-03-21 11:39:24.000000000 +0200
++++ qdigidoc_3.13.6.1525/crypto/MainWindow.h	2018-06-01 17:32:33.000000000 +0300
+@@ -21,6 +21,7 @@
+ 
+ #include "ui_MainWindow.h"
+ 
++class QActionGroup;
+ class CKey;
+ class CryptoDoc;
+ 
