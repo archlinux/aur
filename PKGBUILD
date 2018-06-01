@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='A server which provides an interface to a KNX/EIB installation'
 license=('GPL')
 
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 conflicts=('knxd' 'eibd')
 provides=('knxd')
 replaces=('eibd')
