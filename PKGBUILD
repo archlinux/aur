@@ -3,15 +3,15 @@
 # Contributor: BlackLotus89 <maxmusterm@gmail.com>
 
 pkgname=toybox
-pkgver=0.7.5
-pkgrel=2
+pkgver=0.7.6
+pkgrel=1
 pkgdesc='Combines common Linux command line utilities into a single executable'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://landley.net/toybox'
 license=('BSD')
 depends=('attr')
 source=("${url}/downloads/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3ada450ac1eab1dfc352fee915ea6129b9a4349c1885f1394b61bd2d89a46c04')
+sha256sums=('e2c9643ebc2bcdec4d8f8db25d0b428dbe0928f7b730052dbbd25db47fb9db95')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
