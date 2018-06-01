@@ -5,13 +5,13 @@ pkgname=('sat-libervia-hg' 'sat-pyjamas')
 _realname=libervia
 _pyjamasname=pyjamas
 venv_pyjama='venv'
-pkgver=0.6.1.r1086.2566f17a0e59
+pkgver=0.6.1.r1102.8b70c838ed14
 VERSION=0.6.1
 pkgrel=1
 url="http://salut-a-toi.org/"
 arch=('any')
-depends=('python2'  'python2-txjsonrpc-git' 'python2-jinja' 'python2-shortuuid' 'sat-media-hg' 'sat-xmpp-hg' 'python2-zope-interface' 'python2-pyopenssl' 'python2-autobahn')
-makedepends=('python2-setuptools' 'python-virtualenv')
+depends=('python2'  'python2-txjsonrpc-git' 'python2-jinja' 'python2-shortuuid-git' 'sat-media-hg' 'sat-xmpp-hg' 'python2-zope-interface' 'python2-pyopenssl' 'python2-autobahn')
+makedepends=('python2-setuptools' 'python-virtualenv' 'mercurial')
 provides=('sat-libervia')
 conflicts=('sat-libervia')
 license=('AGPL3')
@@ -54,7 +54,7 @@ PATH=$PATH:$PYJSBUILD_PATH LIBERVIA_INSTALL=arch NO_PREINSTALL_OPT=nopreinstall 
 
 
 package_sat-pyjamas(){
-	pkgdesc="Pyjamas for Libervia"
+	pkgdesc="Pyjamas is a toolkit and applications framework, for the Web."
 	echo "Building Libervia depends on pyjamas."
 	echo "We use a special version of pyjamas provided by SàT"
 }

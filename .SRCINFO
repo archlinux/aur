@@ -1,5 +1,5 @@
 pkgbase = sat-libervia-hg
-	pkgver = 0.6.1.r1086.2566f17a0e59
+	pkgver = 0.6.1.r1102.8b70c838ed14
 	pkgrel = 1
 	url = http://salut-a-toi.org/
 	install = sat-libervia-hg.install
@@ -7,10 +7,11 @@ pkgbase = sat-libervia-hg
 	license = AGPL3
 	makedepends = python2-setuptools
 	makedepends = python-virtualenv
+	makedepends = mercurial
 	depends = python2
 	depends = python2-txjsonrpc-git
 	depends = python2-jinja
-	depends = python2-shortuuid
+	depends = python2-shortuuid-git
 	depends = sat-media-hg
 	depends = sat-xmpp-hg
 	depends = python2-zope-interface
@@ -29,5 +30,5 @@ pkgname = sat-libervia-hg
 	depends = dbus
 
 pkgname = sat-pyjamas
-	pkgdesc = Pyjamas for Libervia
+	pkgdesc = Pyjamas is a toolkit and applications framework, for the Web.
 
