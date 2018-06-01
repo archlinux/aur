@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=OpenHantek
+Categories=Development;Electronics;
+Comment=GUI for Hantek oscilloscopes
+Exec=openhantek
+Icon=openhantek
+Type=Application

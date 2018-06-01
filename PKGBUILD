@@ -1,7 +1,7 @@
 # Maintainer: Lukas Lamper <lukash.lamper@gmail.com>
 _name=openhantek
 pkgname=$_name-git
-pkgver=r259.ad9b229
+pkgver=r261.0eff8d4
 pkgrel=1
 pkgdesc="Qt5 UI for Hantek DSO2xxx/DSO52xx/6022BE/BL oscilloscopes. Including firmware"
 arch=('i686' 'x86_64')
@@ -17,8 +17,10 @@ makedepends=('git' 'cmake' 'binutils' 'fakeroot')
 provides=("$_name")
 conflicts=("$_name" "$pkgname")
 install=$pkgname.install
-source=('git+https://github.com/OpenHantek/openhantek.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/OpenHantek/openhantek.git'
+        "$_name.desktop")
+sha256sums=('SKIP'
+            '73ab4cc2902fdec10975ee8fdfbe22541aac3e59de27fb968842c4b1509c07ce')
 
 
 pkgver() {
@@ -42,10 +44,13 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_name/build
+  cd "$srcdir/$_name/build"
   make DESTDIR="$pkgdir" install
 
-  mv $pkgdir/lib $pkgdir/usr/lib
+  mv "$pkgdir/lib" "$pkgdir/usr/lib"
 
-  mv $pkgdir/usr/bin/OpenHantek $pkgdir/usr/bin/openhantek
+  mv "$pkgdir/usr/bin/OpenHantek" "$pkgdir/usr/bin/openhantek"
+
+  install -Dm644 "$srcdir/$_name.desktop" "$pkgdir/usr/share/applications/$_name.desktop"
+  install -Dm644 "$srcdir/$_name/$_name/res/images/$_name.png" "$pkgdir/usr/share/pixmaps/$_name.png"
 }
