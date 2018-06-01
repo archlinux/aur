@@ -1,19 +1,16 @@
 # Maintainer: Dan Ziemba <zman0900@gmail.com>
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
-# To enable hdhomerun, add 'libhdhomerun' to depends and '--enable-hdhomerun_client' to
-# the configure command in build().
-
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
 pkgver=4.3.r1252.g595fd174f
-pkgrel=4
+pkgrel=5
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
 license=('GPL3')
 depends=('avahi' 'openssl' 'uriparser' 'ffmpeg' 'pcre2' 'libfdk-aac'
-         'libdvbcsa')
+         'libdvbcsa' 'libhdhomerun')
 makedepends=('git' 'python')
 optdepends=('xmltv: For an alternative source of programme listings')
 provides=('tvheadend')
@@ -75,7 +72,7 @@ build() {
         --enable-uriparser \
         --enable-dvben50221 \
         --enable-dbus_1 \
-        --disable-hdhomerun_static \
+        --disable-hdhomerun_static --enable-hdhomerun_client \
         --enable-tvhcsa
     make
 }
