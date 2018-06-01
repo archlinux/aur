@@ -9,7 +9,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=3.13.0.r9.g9ede39bcd1
+pkgver=3.25.0.r2.g011f8fc228
 pkgrel=1
 _mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
 pkgdesc="Ebook management application, from git"
@@ -26,14 +26,15 @@ makedepends=('git' 'qt5-x11extras' 'xdg-utils' 'rapydscript-ng' 'python2-sphinx'
 optdepends=('ipython2: to use calibre-debug')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/kovidgoyal/${pkgname%-git}.git"
-        "git+https://github.com/kovidgoyal/${pkgname%-git}-translations.git"
+source=("git+https://github.com/kovidgoyal/${pkgname%-git}.git?signed"
+        "git+https://github.com/kovidgoyal/${pkgname%-git}-translations.git?signed"
         "MathJax-${_mathjax_commit}.tar.gz::https://github.com/kovidgoyal/MathJax/archive/${_mathjax_commit}.tar.gz"
         "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
             'be89d68cde2d996e82b813d83704ed6dceed5a86467285be6ed37f0a20bb65b4'
             '6e556d641df670fd74947776001d970216bf24f26389c1575bc11a10a92ee96d')
+validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
