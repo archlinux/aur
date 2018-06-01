@@ -1,16 +1,16 @@
 # Maintainer: G Queiroz <gabrieljvnq@gmail.com>
 pkgname=openicp-br-git
-pkgver=r123.1836c11
+pkgver=r141.f11e932
 pkgrel=1
 pkgdesc="Digital signatures tool according to Brazilian Law."
 arch=('x86_64')
 url="github.comn/gjvnq/OpenICP-BR"
 license=('AGPL')
 groups=()
-depends=('wxgtk3' 'gtk-update-icon-cache')
+depends=('wxgtk3' 'gtk-update-icon-cache' 'openssl')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" "${pkgname%}")
+provides=("openicp-br" "${pkgname%-git}")
+conflicts=("openicp-br")
 replaces=()
 backup=()
 options=()
@@ -28,8 +28,8 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname}"
-	WX_CONFIG=/usr/bin/wx-config-gtk3 cmake . -DNO_TESTS=1
+	cd "$srcdir/${pkgname%}"
+	WX_CONFIG=/usr/bin/wx-config-gtk3 cmake . -DNO_TESTS=1 -DTRY_SYSTEM_OPENSSL=1
 	make openicp
 }
 

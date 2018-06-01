@@ -1,4 +1,4 @@
-openicp-br-git*
-openicp-br-git/
-pkg/
-src/
+*
+!PKGBUILD
+!.gitignore
+!.SRCINFO
