@@ -64,4 +64,5 @@ build() {
 
 package() {
     install -DT "$srcdir/.go/bin/dard-git" "$pkgdir/usr/bin/dard"
+    install -DT "$srcdir/.go/src/dard-git/systemd/dard.service" "$pkgdir/usr/lib/systemd/system/dard.service"
 }
