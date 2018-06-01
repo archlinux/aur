@@ -1,0 +1,18 @@
+pkgbase = python2-ropgadget-git
+	pkgdesc = Search for gadgets in your binaries to facilitate ROP exploitation - Python2 library only
+	pkgver = 5.4.r74.g0dc14e7
+	pkgrel = 1
+	url = http://shell-storm.org/project/ROPgadget/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-capstone
+	provides = python2-ropgadget-git
+	conflicts = python2-ropgadget-git
+	source = python2-ropgadget-git::git+https://github.com/JonathanSalwan/ROPgadget.git
+	md5sums = SKIP
+
+pkgname = python2-ropgadget-git
+

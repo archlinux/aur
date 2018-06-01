@@ -1,0 +1,7 @@
+# Ignored folders
+src/
+python2-ropgadget-git/
+
+# Ignored files
+*.pkg.tar.xz
+
