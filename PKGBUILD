@@ -1,6 +1,6 @@
 pkgname=sabnzbd
 _pkgname=SABnzbd
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="A web-interface based binary newsgrabber with NZB file support"
 url="http://www.sabnzbd.org"
@@ -14,7 +14,7 @@ install="${pkgname}.install"
 backup=("etc/conf.d/sabnzbd" "opt/${pkgname}/${pkgname}.ini")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}" "${pkgname}.desktop" "addnzb.sh" "nzb.png" "sabnzbd.png" "x-nzb.xml" "${pkgname}.service" "${pkgname}.confd")
-md5sums=('785d0208be0dbad6549df1b4afe37f6e'
+md5sums=('bdb3a7d81bac23aceb3f449bfc7e4ff6'
          '48d60a1c626503c7fef1bc5374390513'
          '36e5f0f60f28f67102682f80e33c6d4b'
          '69b9bcbcf67ff3e7a4cdd9f26e001341'
