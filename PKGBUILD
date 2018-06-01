@@ -1,7 +1,7 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 pkgname=eltoritopy
 pkgver=20180418
-pkgrel=1
+pkgrel=2
 pkgdesc="Python utility to extract eltorito images from bootable images"
 url="https://github.com/enckse/eltorito"
 depends=("python")

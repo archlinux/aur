@@ -1,7 +1,7 @@
 pkgbase = eltoritopy
 	pkgdesc = Python utility to extract eltorito images from bootable images
 	pkgver = 20180418
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enckse/eltorito
 	arch = any
 	license = MIT
