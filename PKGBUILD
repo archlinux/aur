@@ -7,16 +7,16 @@ arch=(any)
 url="https://github.com/myriadrf/LimeSuite"
 license=('Apache')
 depends=('sqlite3' 'wxgtk3' 'opengl-driver' 'libusb>=1.0' 'soapysdr')
-makedepends=('git' 'cmake')
-provides=('limesdr' 'soapylms7')
-conflicts=('limesdr' 'soapylms7')
+makedepends=('cmake')
+provides=('limesuite' 'limesdr' 'soapylms7')
+conflicts=('limesuite' 'limesdr' 'soapylms7')
 source=(
   "https://github.com/myriadrf/LimeSuite/archive/v$pkgver.tar.gz"
   'limesuitegui.desktop'
 )
-md5sums=(
-  '529b6740ef881846ff09318515baf7f0'
-  '81b3ccb7b942f0dc7e72ae9bb517a3e4'
+sha256sums=(
+  '188adf3f464b231b7ee9fea9d3cfc5d7053be8fa5a5a9a6adbb39d63228c5382'
+  'b00c833a1dcd0b7e23a735aa4dd0a4060032f915de85ef7396f938b1bcedfecf'
 )
 
 build() {
