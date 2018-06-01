@@ -9,7 +9,7 @@ pkgdesc="Tools for Parsing and Generating XML Within R and S-Plus"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('BSD_2_clause + file LICENSE')
-depends=('r' )
+depends=('r' 'libxml2')
 
 optdepends=('r-bitops')
 

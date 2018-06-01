@@ -6,6 +6,7 @@ pkgbase = r-xml
 	arch = x86_64
 	license = BSD_2_clause + file LICENSE
 	depends = r
+	depends = libxml2
 	optdepends = r-bitops
 	replaces = r-cran-xml
 	source = https://cran.r-project.org/src/contrib/XML_3.98-1.11.tar.gz
