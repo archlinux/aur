@@ -10,6 +10,7 @@ pkgbase = r-reprex
 	depends = r-knitr
 	depends = r-rmarkdown
 	depends = r-whisker
+	optdepends = pandoc
 	optdepends = r-covr
 	optdepends = r-devtools
 	optdepends = r-fortunes
