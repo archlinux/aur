@@ -2,13 +2,13 @@
 
 pkgname=('sat-templates-hg')
 _realname=sat_templates
-pkgver=0.7.r138.85877c76d47d
+pkgver=0.7.r143.a37d535b7ddd
 VERSION=0.7
 pkgrel=1
 url="https://salut-a-toi.org/"
 arch=('any')
 depends=('python2')
-makedepends=('')
+makedepends=('mercurial')
 conflicts=('sat-templates')
 provides=('sat-templates')
 license=('AGPL3')
