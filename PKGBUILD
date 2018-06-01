@@ -1,8 +1,8 @@
 # Contributor: Spyros Stathopoulos <foucault.online@gmail.com>
 pkgname=pkgupd-git
 _pkgname=pkgupd
-pkgver=0.37
-pkgrel=2
+pkgver=0.38
+pkgrel=1
 pkgdesc="Checks repositories and AUR for package updates"
 arch=('i686' 'x86_64')
 url="https://github.com/foucault/pkgupd"
@@ -15,7 +15,7 @@ options=('!strip')
 source=("${_pkgname}::git://github.com/foucault/${_pkgname}")
 backup=('etc/conf.d/pkgupd')
 _gogets=("github.com/jessevdk/go-flags"
-	"github.com/go-fsnotify/fsnotify")
+	"github.com/fsnotify/fsnotify")
 md5sums=('SKIP')
 
 pkgver() {
