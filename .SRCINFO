@@ -1,0 +1,25 @@
+pkgbase = python-bcbio-gff
+	pkgdesc = Library to read and write Generic Feature Format
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://pypi.org/project/bcbio-gff/
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-bcbio-gff-0.6.4.tar.gz::https://pypi.io/packages/source/b/bcbio-gff/bcbio-gff-0.6.4.tar.gz
+	source = https://raw.githubusercontent.com/biopython/biopython/biopython-171/LICENSE.rst
+	sha256sums = e0efddc2376ed11b8f9682029b58bfd523a9aa62199f870b4ce64509ff99820b
+	sha256sums = 8bf4032e364a232f6afa3daa250b76dbd7a06b29fd9939351b34590ccc81f35d
+
+pkgname = python-bcbio-gff
+	depends = python
+	depends = python-six
+
+pkgname = python2-bcbio-gff
+	depends = python2
+	depends = python2-six
+
