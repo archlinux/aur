@@ -3,7 +3,7 @@
 pkgname=gnome-calendar-linuxmint
 _pkgname=gnome-calendar
 pkgver=3.28.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. With Linux Mint patches"
 url="https://wiki.gnome.org/Apps/Calendar"
 arch=(x86_64)
@@ -26,7 +26,7 @@ prepare() {
   patch -Np1 -i ../null-icaltime.diff
   
   #Add support so that gnome-calendar can call this when run within Cinnamon by calling cinnamon-settings online-accounts 
-  patch -Np1 -i ../add_cinnamon_settings_online_support.patch
+  patch -Np0 -i ../add_cinnamon_settings_online_support.patch
 }
 
 build() {
