@@ -30,5 +30,5 @@ package() {
 
 check() {
   cd ${pkgname}/test-suite-binaries
-  #./test.sh
+  ./test.sh
 }
