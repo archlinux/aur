@@ -1,0 +1,16 @@
+pkgbase = python-yadisk
+	pkgdesc = Yandex.Disk REST API client library for Python
+	pkgver = 1.2.9
+	pkgrel = 1
+	url = https://github.com/ivknv/yadisk
+	arch = any
+	license = LGPL3
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/py3/y/yadisk/yadisk-1.2.9-py3-none-any.whl
+	sha256sums = 50c28031ce0053d6f22bedf7920457c9e01aa4ec9d0dec219be4c16e3e3a8985
+
+pkgname = python-yadisk
+
