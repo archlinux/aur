@@ -3,14 +3,14 @@
 
 pkgname=sparkfun-kicad-lib-git
 pkgrel=1
-pkgver=1.5227e19
+pkgver=3.99be13c
 pkgdesc="SparkFun KiCad library converted from Eagle"
 arch=('any')
 url="https://www.sparkfun.com/static/eagle/"
 license=('CCPL')
 depends=('kicad')
-makedepends=('git-core')
-source=("${pkgname}::git://github.com/cfobel/sparkfun_kicad_lib.git")
+makedepends=('git')
+source=("${pkgname}::git://github.com/benwis/SparkFun-Kicad-Libraries.git")
 md5sums=('SKIP')
 
 _kicad="/usr/share/kicad"
@@ -21,8 +21,11 @@ pkgver() {
 }
 
 package(){
+  install -dm755 "${pkgdir}${_kicad}/library"
+  install -dm755 "${pkgdir}${_kicad}/modules"
+  install -dm755 "${pkgdir}${_kicad}/footprints"
   cd "${srcdir}/${pkgname}"
-  mkdir -p "${pkgdir}/${_kicad}/library" "${pkgdir}/${_kicad}/modules"
-  install -Dm755 SparkFun.lib "${pkgdir}/${_kicad}/library/" 
-  install -Dm755 SparkFun.mod "${pkgdir}/${_kicad}/modules/" 
+  cp *.lib "${pkgdir}${_kicad}/library/" 
+  cp *.dcm "${pkgdir}${_kicad}/library/" 
+  cp -r *.pretty "${pkgdir}${_kicad}/footprints/" 
 }
