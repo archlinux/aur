@@ -1,6 +1,6 @@
 pkgbase = mxisd
 	pkgdesc = Federated Matrix Identity Server Daemon
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/kamax-io/mxisd
 	install = mxisd.install
@@ -9,10 +9,10 @@ pkgbase = mxisd
 	makedepends = gradle
 	makedepends = java-environment>=8
 	depends = java-runtime>=8
-	source = https://github.com/kamax-io/mxisd/archive/v1.0.1.tar.gz
+	source = https://github.com/kamax-io/mxisd/archive/v1.1.0.tar.gz
 	source = mxisd
 	source = mxisd.tmpfiles
-	sha256sums = b673d18cbeccca927dab7e9298b9aa518c662d6bebb9a5b954bbca3cfab7f0c8
+	sha256sums = 3f9f5e817ee834eb6c104d40c685a4048661ec93eeda23d235e44a1ec1fe08fc
 	sha256sums = d8293f3f6ab2b53840a875cd8af035b7d15b3e2fcc643c3faa9000e6dd1fa449
 	sha256sums = daee6519e67f65e8ec836f80b5853f669ba46e3378b6e29e34550bd136baf718
 
