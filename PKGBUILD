@@ -1,7 +1,7 @@
 # Maintainer: Stephen Smith <stephen304@gmail.com>
 pkgname=lemonbar-clicks-git
 _pkgname=bar
-pkgver=1.0.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A lightweight xcb based bar with ported xft support, support to specify outputs, support for unlimited clickable areas and support for longer input."
 arch=('i686' 'x86_64')
