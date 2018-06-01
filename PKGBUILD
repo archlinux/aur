@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
 depends=('r' 'r-ggplot2' 'r-stanheaders' 'r-inline' 'r-cran-gridextra' 'r-bh' 'r-stanheaders')
 
-optdepends=('r-bh' 'r-loo' 'r-shinystan' 'r-bayesplot' 'r-rstantools' 'r-rstudioapi' 'r-knitr')
+optdepends=('pandoc' 'r-bh' 'r-loo' 'r-shinystan' 'r-bayesplot' 'r-rstantools' 'r-rstudioapi' 'r-knitr')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('942f119d1dd76a915374eb37f54cb9a4')

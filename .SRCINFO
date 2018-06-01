@@ -12,6 +12,7 @@ pkgbase = r-rstan
 	depends = r-cran-gridextra
 	depends = r-bh
 	depends = r-stanheaders
+	optdepends = pandoc
 	optdepends = r-bh
 	optdepends = r-loo
 	optdepends = r-shinystan
