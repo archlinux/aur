@@ -1,7 +1,7 @@
 pkgbase = homegear
 	pkgdesc = Interface your HomeMatic BidCoS, HomeMatic Wired, MAX!, INSTEON or Philips hue devices with your home automation software or your own control scripts
 	pkgver = 0.7.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://homegear.eu
 	install = homegear.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = homegear
 	depends = libzip
 	depends = gnutls
 	depends = homegear-nodes-core=0.7.18
-	depends = php-homegear
+	depends = php7-homegear
 	optdepends = homegear-homematicbidcos: Support for eQ-3 HomeMatic BidCoS (wireless) devices
 	optdepends = homegear-homematicwired: Support for eQ-3 HomeMatic Wired devices
 	optdepends = homegear-insteon: Support for Insteon devices

@@ -6,11 +6,11 @@ pkgname='homegear'
 _gitname='Homegear'
 pkgdesc='Interface your HomeMatic BidCoS, HomeMatic Wired, MAX!, INSTEON or Philips hue devices with your home automation software or your own control scripts'
 pkgver=0.7.18
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
 url="https://homegear.eu"
-depends=('sqlite3' 'libxslt' 'libzip' 'gnutls' 'homegear-nodes-core=0.7.18' 'php-homegear')
+depends=('sqlite3' 'libxslt' 'libzip' 'gnutls' 'homegear-nodes-core=0.7.18' 'php7-homegear')
 optdepends=('homegear-homematicbidcos: Support for eQ-3 HomeMatic BidCoS (wireless) devices'
             'homegear-homematicwired: Support for eQ-3 HomeMatic Wired devices'
             'homegear-insteon: Support for Insteon devices'
@@ -18,8 +18,8 @@ optdepends=('homegear-homematicbidcos: Support for eQ-3 HomeMatic BidCoS (wirele
             'homegear-max: Support for eQ-3 MAX! devices'
             'homegear-philipshue: Support for Philips Hue')
 source=("https://github.com/Homegear/${_gitname}/archive/${pkgver}.tar.gz"
-	    'homegear.service'
-	    'homegear.logrotate'
+        'homegear.service'
+        'homegear.logrotate'
         'homegear.sysusers'
         'homegear.tmpfiles'
         'homegear-makefile.patch'
@@ -60,21 +60,21 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${_gitname}-${pkgver}"
+    cd "${srcdir}/${_gitname}-${pkgver}"
 
     ./bootstrap
     ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --libdir=/usr/lib
-	make
+    make
 }
 
 package() {
-	cd "${srcdir}/${_gitname}-${pkgver}"
+    cd "${srcdir}/${_gitname}-${pkgver}"
 
     make DESTDIR="${pkgdir}" install
 
     install -dm755 "${pkgdir}/etc/homegear"
     cp -r "misc/Config Directory/"* "${pkgdir}/etc/homegear"
-	rm "${pkgdir}/etc/homegear/homegear-"{start,stop}.sh
+    rm "${pkgdir}/etc/homegear/homegear-"{start,stop}.sh
     chmod 644 "${pkgdir}/etc/homegear/"*.conf
 
     install -dm750 "${pkgdir}/var/lib/homegear"
@@ -82,7 +82,7 @@ package() {
 
     cp -r "misc/State Directory/"* "${pkgdir}/var/lib/homegear"
     find "${pkgdir}/var/lib/homegear/www" -type d -exec chmod 550 {} \;
-	find "${pkgdir}/var/lib/homegear/www" -type f -exec chmod 440 {} \;
+    find "${pkgdir}/var/lib/homegear/www" -type f -exec chmod 440 {} \;
     install -dm750 "${pkgdir}/var/lib/homegear/flows/data"
     install -dm750 "${pkgdir}/var/lib/homegear/phpinclude"
     install -dm550 "${pkgdir}/var/lib/homegear/scripts"
