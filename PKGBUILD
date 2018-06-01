@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
 depends=('r' )
 
-optdepends=('r-rstudioapi' 'r-testthat')
+optdepends=('xclip' 'xsel' 'r-rstudioapi' 'r-testthat')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('4012a31eb3b7a36bd3bac00f916e56a7')
