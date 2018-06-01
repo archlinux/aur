@@ -1,42 +1,37 @@
-# Maintainer : Hoàng Đức Hiếu <arch@zahe.me>
+# Contributor: Hoàng Đức Hiếu <arch@zahe.me>
 # Contributor: Fernando
-# Contributor: Marcos Heredia <chelqo@gmail.com>
+# Contributor: Manfred Sauter
+# Maintainer : Marcos Heredia <chelqo@gmail.com>
 
 pkgname=diffpdf
-pkgver=2.1.3
+pkgver=2.1.3.1
 pkgrel=2
 pkgdesc="Diffing pdf files visually or textually"
-#url="http://www.qtrac.eu/diffpdf.html"
-url="http://www.qtrac.eu/diffpdf-foss.html"
-screenshot="http://www.qtrac.eu/diffpdf.png"
-license=('GPL')
+#url="http://www.qtrac.eu/diffpdf-foss.html"
+url="https://gitlab.com/eang/diffpdf"
+#screenshot="http://www.qtrac.eu/diffpdf.png"
+screenshot="https://gitlab.com/eang/diffpdf/blob/master/images/icon.png"
+license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('poppler-qt')
-source=("http://www.qtrac.eu/${pkgname}-${pkgver}.tar.gz"
-        "diffpdf.desktop")
-sha1sums=('663ecb7666a4b7d6fbd1a37327fd1f895fae69b8'
-         '6d504eb302026d4d157ed9eca8c38d824ca302de')
+depends=('poppler-qt5')
+makedepends=('cmake' 'extra-cmake-modules' 'qt5-tools')
+source=("https://gitlab.com/eang/diffpdf/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+md5sums=('e838cda78d763495e0c0671f704c7059')
 
-build () {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  [ -e "*.qm" ] && make clean
-  lrelease-qt4 ${pkgname}.pro
-  qmake-qt4
+build() {
+  cd ${srcdir}/${pkgname}-v${pkgver}/
+  #git clone https://gitlab.com/eang/diffpdf.git
+  cmake -D CMAKE_INSTALL_PREFIX="/usr" .
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}/
-  install -Dpm755 -D diffpdf ${pkgdir}/usr/bin/diffpdf
-  install -Dpm644 -D diffpdf.1 ${pkgdir}/usr/share/man/man1/diffpdf.1
+  cd ${srcdir}/${pkgname}-v${pkgver}/
+  make DESTDIR=${pkgdir} install
 
-  _docdir=${pkgdir}/usr/share/doc/${pkgname}-${pkgver}
   _licdir=${pkgdir}/usr/share/licenses/${pkgname}
-  _pngdir=${pkgdir}/usr/share/pixmaps
-  _appdir=${pkgdir}/usr/share/applications
-  install -dpm755 ${_docdir} ${_licdir} ${_pngdir} ${_appdir}
-  install -Dpm644 CHANGES README help.html ${_docdir}/
+  _tradir=${pkgdir}/usr/share/${pkgname}/translations
+  install -dpm755 ${_licdir} ${_tradir}
   install -Dpm644 gpl-2.0.txt ${_licdir}/
-  install -Dpm644 images/icon.png ${_pngdir}/${pkgname}.png
-  install -Dpm644 ${srcdir}/diffpdf.desktop ${_appdir}/
+  install -Dpm644 *.qm ${_tradir}/
 }
