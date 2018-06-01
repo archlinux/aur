@@ -1,0 +1,17 @@
+sudo: required
+
+services:
+- docker
+
+arch:
+  packages:
+    - namcap 
+  script:
+    - namcap PKGBUILD      
+    - makepkg --syncdeps --noconfirm
+    - namcap jabba-*  
+    - pacman -Qip jabba-*
+    - pacman -Qlp jabba-*
+
+script:
+  - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
