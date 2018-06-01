@@ -1,0 +1,16 @@
+pkgbase = caneda
+	pkgdesc = Open source EDA software suite focused on ease of use and portability
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://caneda.org
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = qt5-base
+	depends = cmake
+	depends = qwt
+	source = https://github.com/Caneda/Caneda/archive/0.3.1.tar.gz
+	md5sums = 69afb5bba8a70d1fdf00fa6407b25351
+
+pkgname = caneda
+
