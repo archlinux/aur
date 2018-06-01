@@ -1,15 +1,15 @@
 # Contributor: chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
 
 pkgname=cemu
-pkgver=1.12.0
-pkgrel=2
+pkgver=1.12.1
+pkgrel=0
 pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin and graphic packs"
 arch=(x86_64)
 url="http://cemu.info/"
 license=('custom')
 depends=('wine' 'winetricks')
-_graphicpackver=876
-_cemuhookver=1116_0564
+_graphicpackver=896
+_cemuhookver=1121_0565
 source=(
   cemu.sh
   cemu.xpm
@@ -25,13 +25,12 @@ install=${pkgname}.install
 # If the cemuhook md5 is wrong, is because the cemuhook team every once in a while
 # updates the cemuhook zip file, but without giving it a new name. And that new file has, of course, a different md5.
 # If you notice this, please mark this package as out-of-date in the aur website and I'll fix it.
-
 md5sums=('bf4a05c4f1d6063ed6bb90b66b2eca7d'
          '54d70005a8975812ab54fcfef53f7bde'
-         '805b6f74ed7183e72b2c8ddbcced168b'
-         'f0f0b3e248811c4eadd751396e949048'
-         '7f6a40cf882536e65be9afea741d55b4'
-         '60ec574ad09956dec3c15d40696f0b18')
+         '78037a7c5d05730dfeb87537d6cd24e6'
+         '8411cd1ef2be0002558ea18b4b3422aa'
+         '875be2fad3e8352385a12ef7964f7406'
+         '59db00b517105e8440b03ea82047cff7')
 
 options=(!strip)
 
