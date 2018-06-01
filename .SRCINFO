@@ -1,7 +1,7 @@
 pkgbase = python-pyxstitch
 	pkgdesc = takes source code files and produces syntax-highlighted patterns for cross stitching.
 	pkgver = 1.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enckse/pyxstitch
 	arch = any
 	license = MIT
