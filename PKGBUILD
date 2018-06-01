@@ -1,6 +1,6 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theslate
-pkgver=0.2
+pkgver=0.3
 pkgrel=0
 pkgdesc="Text Editor with code highlighting support"
 arch=("x86_64")
@@ -18,10 +18,6 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
-	cp "$pkgname-$pkgver/theslate" "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/usr/share/applications"
-	cp "$pkgname-$pkgver/theslate.desktop" "$pkgdir/usr/share/applications"
-	mkdir -p "$pkgdir/usr/share/icons"
-	cp "$srcdir/$pkgname-$pkgver/icons/icon.svg" "$pkgdir/usr/share/icons/theslate.svg"
+	cd "$pkgname-$pkgver"
+	make install INSTALL_ROOT=$pkgdir
 }
