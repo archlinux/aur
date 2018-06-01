@@ -20,7 +20,6 @@ source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#branch=de
         "CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop"
         "tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
         "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
-        "libtgvoip-2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip-2.patch?h=packages/telegram-desktop"
         "no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop")
 sha256sums=('SKIP'
             'SKIP'
@@ -30,7 +29,6 @@ sha256sums=('SKIP'
             '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82'
             'aea18527d47228dcdb42b8c1d74398fcf0fdcd7b3c2246e87198f8d9b2dfe0bc'
             '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
-            '07ca232b91e9ad0fb9c1501b8b83275cc62b00477c7e5edde5e4cfd2852f1f26'
             '8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6')
 pkgver() {
     cd "$srcdir/tdesktop"
@@ -51,7 +49,6 @@ prepare() {
 
     cd "Telegram/ThirdParty/libtgvoip"
     patch -Np1 -i "$srcdir/libtgvoip.patch"
-    patch -Np1 -i "$srcdir/libtgvoip-2.patch"
 }
 
 build() {
