@@ -1,0 +1,16 @@
+pkgbase = python-pysftp
+	pkgdesc = A simple interface to SFTP for Python
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://bitbucket.org/dundeemt/pysftp
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	makedepends = curl
+	depends = python
+	depends = python-paramiko>=1.17
+	source = https://files.pythonhosted.org/packages/source/p/pysftp/pysftp-0.2.9.tar.gz
+	sha256sums = fbf55a802e74d663673400acd92d5373c1c7ee94d765b428d9f977567ac4854a
+
+pkgname = python-pysftp
+
