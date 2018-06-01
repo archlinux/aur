@@ -12,6 +12,7 @@ pkgbase = sodalite-git
 	depends = python-urwid
 	depends = python-yaml
 	depends = python-pyperclip
+	depends = python-pygments
 	conflicts = sodalite
 	source = git+https://github.com/hnicke/sodalite.git
 	md5sums = SKIP
