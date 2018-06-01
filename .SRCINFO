@@ -1,7 +1,7 @@
 pkgbase = sstp-client
 	pkgdesc = SSTP client stable revision
 	pkgver = 1.0.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sstp-client.sourceforge.net/
 	install = sstp-client.install
 	arch = i686
@@ -11,8 +11,9 @@ pkgbase = sstp-client
 	makedepends = ppp>=2.4.6
 	makedepends = libevent
 	makedepends = libtool
+	makedepends = openssl
 	depends = libevent
-	optdepends = ppp>=2.4.6
+	optdepends = ppp
 	optdepends = openssl
 	provides = sstp-client
 	conflicts = sstp-client-svn-stable

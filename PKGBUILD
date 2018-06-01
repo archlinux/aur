@@ -1,11 +1,10 @@
 # Maintainer: Echizen Ryoma <echizenryoma.zhang@gmail.com>
 # Contributor: Dmitry V. Luciv <dluciv@dluciv.name>
-# Contributor: Echizen Ryoma <echizenryoma.zhang@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 
 pkgname=sstp-client
 pkgver=1.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="SSTP client stable revision"
 arch=("i686" "x86_64")
 url="http://sstp-client.sourceforge.net/"
@@ -13,8 +12,8 @@ license=('GPL2')
 conflicts=('sstp-client-svn-stable')
 provides=('sstp-client')
 depends=('libevent')
-makedepends=('gcc' 'ppp>=2.4.6' 'libevent' 'libtool')
-optdepends=('ppp>=2.4.6' 'openssl')
+makedepends=('gcc' 'ppp>=2.4.6' 'libevent' 'libtool' 'openssl')
+optdepends=('ppp' 'openssl')
 install=${pkgname}.install
 
 source=( '50-sstp.PROFILE.sh.sample'
