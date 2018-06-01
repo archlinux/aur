@@ -2,14 +2,14 @@
 
 pkgname=getver
 pkgver=0.52
-pkgrel=1
+pkgrel=2
 pkgdesc='Find the latest package versions'
 arch=('x86_64')
 url='https://github.com/xyproto/getver/'
 license=('MIT')
 makedepends=('git' 'go')
-depends=('setconf')
-source=("https+git://github.com/xyproto/getver.git#tag=$pkgver")
+depends=('pacman-contrib' 'setconf')
+source=("git+https://github.com/xyproto/getver.git#tag=$pkgver")
 md5sums=('SKIP')
 
 build() {
