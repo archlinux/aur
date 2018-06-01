@@ -7,8 +7,8 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=68.0.3438.3
-pkgrel=2
+pkgver=68.0.3440.0
+pkgrel=7
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
 )
 
 
-sha256sums=('2c6f3d33b6140fff245810e20f18a3d67a2ebc478a54455542cc4c345236c343'
+sha256sums=('90f7cb6c9a08ab8508dfd6bdfb9b3426425c93adede5d4d623a59670167b768d'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -155,14 +155,14 @@ sha256sums=('2c6f3d33b6140fff245810e20f18a3d67a2ebc478a54455542cc4c345236c343'
             '0a148b0a15a63feb08ed79695a80d09ad39db7a3373b217cd499909218b94fda'
             '9465f89adc5b177050fd154b3be459f167fd3e157a1ebc0537b29070f0dbda5d'
             '5a4ec61000266fd623e0a3377210ed324ed62eeba6c61ecd95ffb49d4d20640f'
-            '571c626c0e7a43cf5919bdb8058a72c2026278a743c7465b65f3659d914bc117'
+            'e005fb83d2523b2440e29693816a1a23943780b37427644ccaa86851a81ffaf1'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
             'd1fd7eb17aaf81a0d09143166a4a637ea62f6b00a11e1b81279c30e7527ff34a'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
             'fa919283c5ae73baeaa8cb0286e64926cc938a436e756296614b747154c4a777'
-            'c66015b7c2c8cf9209a82e0a18cf6b4913d79abb629701c832ee5c431af9e02b'
+            'f73e7e255432379d53613e7d53d4d176ef830dc34ef7743be294568aeea03a1c'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
             '9d4953a3dc73cb01d9d65ea297ab4b09d47b4daaa5f2291ef35d0784a2f18a4e'
@@ -177,7 +177,7 @@ sha256sums=('2c6f3d33b6140fff245810e20f18a3d67a2ebc478a54455542cc4c345236c343'
             'fe491bdc640b1d56f76319885399cd83d1935a61c0036ca9765ab40c5ce13b3b'
             '07e7b3b432b8f5398909f1250c595adb9ecc69a47e4d3a9bf3cf88c3893b22fc'
             '51ee1c87a7889f9fae1fd0ecad57d97394cc89b1cea83bafdbaa8992a87e6561'
-            '3fad36de0df6bf61047561ce18d5f08b66fb232aa3e80f82e4a0408a758f3f61'
+            '97aacef479160113f763217df130a72c7b467e27ae556866d2c039965e77bc71'
             '2c7a6274bfe2afcaa4186d421a0690ac2bc0015e8bc80e3a589f04b4931a030f'
             '5b313be9a39a60fe2c8491180529dc8635b8341ad57d3f26ae68acc8f9e2f828'
             '54d4471bec9e4390e1d2c562a6a3278bf44deb65d01fe5fb8f1477e67e8a957a'
@@ -190,11 +190,11 @@ sha256sums=('2c6f3d33b6140fff245810e20f18a3d67a2ebc478a54455542cc4c345236c343'
             'c367599e25bd9d408d52dd26ceec9f0048b0991cc74980c8c40d602e61a2a844'
             'b54a69d6eeb03bf56e5a6430cbc07fd8d12532709876d38828e4c455eca29e3b'
             'fda2fd5bf13e685ad19daff3f2348e58c18d628086e46866bd6ec2a8047fdef6'
-            '6130351d4c918e5b60f0ea4914e7e2f26fe4221ac97bcecacb4161fd2d23906c'
+            'a0fc68d001dc6bad673997394184112eed59b74b8e6bbcd173db55402c95c121'
             'fb3abae54309adf69b98bd2435fbc23f17bc526dbf1d1e97907da87e7cf0aeed'
             'fb7c96ecf7f97fd6d356b8ca714efc518fc5bf40d92a23a5ff1ad8462d56b248'
             '541136a480187de769d7dfd9da6ac63b3bb65583a553b32615ad5a9e6331ea65'
-            '38af0293f67513b2480047aebbd84fd5998ab3a20fb1af7a3f1e52b97dd27b20'
+            'f6e237e552b778aeb85c294b952479aa24b6c427e485fb3a01c9b1ecaf264713'
             '6d3251fb5aa200725a8cdc977d203ef98aaf8ed1564d0a4fa3b67c29a56520a9'
             'aaf6af367fcd478499f306cb1db44bbd4f58fadfc4b969046ec9fb47a2327db7'
             '51a336bee649d77a623b5da536c3b77b81ea67dbc9c1c34f9539c739d420379e'
@@ -303,7 +303,7 @@ patch -Np1 -i ../meme.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
-#patch -Np1 -Ri ../pt.patch
+patch -Np1 -i ../pt.patch
 
 
 msg2 'Cut media router'
@@ -313,7 +313,7 @@ patch -Np1 -i ../2ka.patch
 
 
 
-#patch -Np1 -i ../2kc.patch
+patch -Np1 -i ../2kc.patch
 patch -Np1 -i ../2kd.patch
 patch -Np1 -i ../2ke.patch
 patch -Np1 -i ../2kf.patch
@@ -346,7 +346,7 @@ patch -Np1 -i ../narnia1.patch
 
 
 
-#patch -Np1 -i ../9k.patch
+patch -Np1 -i ../9k.patch
 patch -Np1 -i ../048.patch
 
 patch -Np1 -i ../12.patch
@@ -358,7 +358,7 @@ patch -Np1 -i ../k1.patch
 patch -Np1 -i ../k2.patch
 
 patch -Np1 -i ../edgy.patch
-#patch -Np1 -Ri ../r21.patch
+patch -Np1 -i ../r21.patch
   # Fix build with glibc 2.26
 
 patch -Np1 -i ../gna.patch
