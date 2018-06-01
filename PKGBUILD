@@ -1,18 +1,19 @@
-# Maintainer: Randy Ramos <rramos1295 \at\ gmail \dot\ com>
+# Maintainer: Bian Jiaping <ssbianjp@gmail.com>
+# Contributor: Randy Ramos <rramos1295 \at\ gmail \dot\ com>
 # Contributor: carstene1ns <arch carsten-teibes de>
 # Contributor: DonOregano <lars@foldspace.nu>
 
 pkgname=subgit
-pkgver=3.3.0
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Provides smooth Subversion to Git migration and synchronisation"
 arch=('any')
 url="http://subgit.com"
 license=('custom')
-depends=('java-runtime>=7')
+depends=('java-runtime>=8')
 optdepends=('subversion' 'git')
-source=("https://subgit.com/download/subgit-$pkgver.zip")
-sha256sums=('e69e4f6b41474533099cd2462ed64134e33a8640c8d5d02b26e362e8a191a355')
+source=("https://subgit.com/files/subgit-${pkgver}.zip")
+md5sums=('9f43a7b52c6ffe07728229243cbc4563')
 
 package() {
   cd subgit-$pkgver
