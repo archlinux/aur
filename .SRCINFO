@@ -1,7 +1,7 @@
 pkgbase = lmms-beta-bin
 	pkgdesc = Beta version of the Linux MultiMedia Studio.
-	pkgver = 1.2.0_rc5
-	pkgrel = 2
+	pkgver = 1.2.0_rc6
+	pkgrel = 1
 	url = https://lmms.io/
 	arch = x86_64
 	license = GPL
@@ -25,10 +25,10 @@ pkgbase = lmms-beta-bin
 	optdepends = pulseaudio: PulseAudio output
 	optdepends = libgig: needed for decoding .gig files
 	options = !strip
-	source = lmms.AppImage::https://github.com/LMMS/lmms/releases/download/v1.2.0-rc5/lmms-1.2.0-rc5-linux-x86_64.AppImage
+	source = lmms.AppImage::https://github.com/LMMS/lmms/releases/download/v1.2.0-rc6/lmms-1.2.0-rc6-linux-x86_64.AppImage
 	source = lmms-beta
 	source = lmms-beta.desktop
-	sha1sums = 4b2234c20be28dce40f46c5e2060ee0efda59d53
+	sha1sums = e8bcd46a305e0c43a786f8e83b2ecf31413d5cf1
 	sha1sums = 1ac832190a5c3cde4ba1fad3cfe3725dd9c269a5
 	sha1sums = f77c37a31050c94cac403ce9ef6b9074cb96456c
 

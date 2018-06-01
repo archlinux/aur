@@ -2,9 +2,9 @@
 
 pkgname=lmms-beta-bin
 _basever=1.2.0
-_rc=rc5
+_rc=rc6
 pkgver=${_basever}_${_rc}
-pkgrel=2
+pkgrel=1
 pkgdesc='Beta version of the Linux MultiMedia Studio.'
 arch=('x86_64')
 url='https://lmms.io/'
@@ -20,7 +20,7 @@ options=('!strip')
 source=("lmms.AppImage::https://github.com/LMMS/lmms/releases/download/v${_basever}-${_rc}/lmms-${_basever}-${_rc}-linux-x86_64.AppImage"
         "lmms-beta"
         "lmms-beta.desktop")
-sha1sums=('4b2234c20be28dce40f46c5e2060ee0efda59d53'
+sha1sums=('e8bcd46a305e0c43a786f8e83b2ecf31413d5cf1'
           '1ac832190a5c3cde4ba1fad3cfe3725dd9c269a5'
           'f77c37a31050c94cac403ce9ef6b9074cb96456c')
 
