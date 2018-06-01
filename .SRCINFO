@@ -11,7 +11,7 @@ pkgbase = lc0-cudnn-git
 	makedepends = ninja
 	depends = cuda
 	depends = cudnn
-	source = lc0-cudnn::git+https://github.com/glinscott/leela-chess#branch=next
+	source = lc0-cudnn::git+https://github.com/LeelaChessZero/lc0.git
 	md5sums = SKIP
 
 pkgname = lc0-cudnn-git
