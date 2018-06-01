@@ -5,7 +5,7 @@
 pkgname=pan-git
 _gitname=pan
 pkgver=0.145.r3.g1de4962
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Pan is a Usenet newsreader that's good at both text and binaries. Development version."
 url="http://pan.rebelbase.com/"
@@ -17,8 +17,6 @@ conflicts=('pan')
 provides=('pan')
 source=("git+https://gitlab.gnome.org/GNOME/$_gitname.git")
 sha256sums=('SKIP')
-#git+https://gitlab.com/Kerenoc/GCstar.git
-
 
 pkgver() {
     cd "$srcdir/$_gitname"
@@ -35,7 +33,6 @@ build() {
         --with-gnutls \
         --with-gtkspell \
         --with-gtk3
-
     make
 }
 
