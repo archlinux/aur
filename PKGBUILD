@@ -1,36 +1,54 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgbase=python-librabbitmq
-pkgname=python2-librabbitmq
-pkgver=1.6.1
-pkgrel=2
+pkgname=(python-librabbitmq python2-librabbitmq)
+pkgver=2.0.0
+_librabbitmqver=0.8.0
+pkgrel=1
 pkgdesc="AMQP Client using the rabbitmq-c library"
 arch=('x86_64')
 url="https://pypi.python.org/pypi/librabbitmq"
 license=('MPL')
-makedepends=('python2-setuptools' 'python2-amqp')
-checkdepends=('python2-nose-cover3')
-source=("https://files.pythonhosted.org/packages/source/l/librabbitmq/librabbitmq-$pkgver.tar.gz")
-sha512sums=('3989f01dca63c723cc7ec8b12ad029ef26e5fe52d37bb50c872030cf375386ad9a77bc84662d1798e7ef3c0246c62f704ca0d7a0a9f3ea937ec4d136ca7b8eb6')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-amqp' 'python2-amqp')
+checkdepends=('python-mock' 'python2-mock' 'pifpaf' 'rabbitmq')
+source=("https://files.pythonhosted.org/packages/source/l/librabbitmq/librabbitmq-$pkgver.tar.gz"
+        "librabbitmq-c-$_librabbitmqver.zip::https://github.com/alanxz/rabbitmq-c/archive/v$_librabbitmqver.zip")
+sha512sums=('c35b815bc776bbac3087880406cb8dbcf6d3d8fad3590139d0dd88ae059599927f7a277493e6fd557ba2da6c9e8ee1a668f079bbb16f5127ccfd223afbd30a3f'
+            'e386979ce1bc05c02cda06e8582981e0df25f9b31ca950f8a921bd2b249020f751ba65a6f38b8f5ba0be1b3e89492b29b72c6cd1d5ed3d6f19440799d6419ba6')
+
+prepare() {
+  (cd librabbitmq-$pkgver; ln -s ../rabbitmq-c-$_librabbitmqver ./rabbitmq-c)
+
+  sed -i "s/'git'/'true'/" librabbitmq-$pkgver/setup.py
+  cp -a librabbitmq-$pkgver{,-py2}
+}
+
+build() {
+  cd "$srcdir"/librabbitmq-$pkgver
+  python setup.py build --with-librabbitmq=/usr
+
+  cd "$srcdir"/librabbitmq-$pkgver-py2
+  python2 setup.py build --with-librabbitmq=/usr
+}
 
 check() {
-  cd "$srcdir/librabbitmq-$pkgver"
+  cd "$srcdir"/librabbitmq-$pkgver
+  pifpaf run rabbitmq --port 5672 python setup.py test
 
-  # unittest2 is not needed for Python 2.7
-  sed -e "s/import unittest2 as unittest/import unittest/" \
-      -i librabbitmq/tests/test_functional.py
+  cd "$srcdir"/librabbitmq-$pkgver-py2
+  pifpaf run rabbitmq --port 5672 python2 setup.py test
+}
 
-  # Need a RabbitMQ to run the tests
-  python2 setup.py test || warning "Tests failed"
+package_python-librabbitmq() {
+  depends=('python-amqp' 'python-six')
+
+  cd librabbitmq-$pkgver
+  python setup.py install -O1 --root="$pkgdir"
 }
 
 package_python2-librabbitmq() {
-  depends=('python2-amqp')
+  depends=('python2-amqp' 'python2-six')
 
-  cd "$srcdir/librabbitmq-$pkgver"
-  python2 setup.py install -O1 --root="$pkgdir/"
-
-  # Avoid conflicts
-  cd "$pkgdir/usr/lib/python2.7/site-packages/"
-  mv funtests librabbitmq/
+  cd librabbitmq-$pkgver-py2
+  python2 setup.py install -O1 --root="$pkgdir"
 }
