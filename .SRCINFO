@@ -10,7 +10,11 @@ pkgbase = cros-container-guest-tools-git
 	optdepends = xorg-apps: for XWayland functionality
 	optdepends = wayland: for Wayland functionality
 	source = git+https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools
+	source = cros-sftp-conditions.conf
+	source = cros-garcon-conditions.conf
 	sha1sums = SKIP
+	sha1sums = 3a2c55ecb22349265f26cdd021a436f5e0353c3d
+	sha1sums = 6e42ce0d2c63593e7ec4765eb56fb17bc4dc3ada
 
 pkgname = cros-container-guest-tools-git
 

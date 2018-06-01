@@ -8,13 +8,18 @@ post_install() {
 	# mask systemd-journald-audit.socket, which failes inside unprivileged container
 	systemctl mask systemd-journald-audit.socket
 
-	# workaround for https://bugs.archlinux.org/task/58701
-	ln -sf /opt/google/cros-containers/cros-adapta /usr/share/themes/CrosAdapta	
+	# workaround for https://bugs.archlinux.org/task/58701, remove after fix
+	ln -sf /opt/google/cros-containers/cros-adapta /usr/share/themes/CrosAdapta
+	ln -sf /opt/google/cros-containers/bin/sommelier /usr/bin/sommelier
 
 	# set default browser to the garcon_host_browser handler
 	if hash xdg-settings; then
 		xdg-settings set default-web-browser garcon_host_browser.desktop
 	fi
+
+	# TODO(crbug.com/835959): Remove this once we fix mesa.
+	mkdir -p /usr/lib64/dri
+	ln -sf /opt/google/cros-containers/lib/swrast_dri.so /usr/lib64/dri/swrast_dri.so
 
 cat << EOF
 
@@ -23,34 +28,6 @@ cat << EOF
 
 	Developed and tested on Samsung Chromebook Plus, should work on 
 	other Chromebooks with Crostini enabled.
-
-	Please perform following manual steps after installation:
-
-	1. Create /usr/share/themes/CrosAdapta symlink pointing to /opt/google/cros-containers/cros-adapta:
-	
-	   # ln -sf /opt/google/cros-containers/cros-adapta ${pkgdir}/usr/share/themes/CrosAdapta
-
-	   This will be done automatically after https://bugs.archlinux.org/task/58701 is fixed.
-
-	2. Enable sommelier@.service and sommelier-x@.service user services:
-	
-	   # systemctl --user enable sommelier@0
-	   # systemctl --user enable sommelier-x@0
-
-	   And start them:
-
-	   # systemctl --user start sommelier@0
-	   # systemctl --user start sommelier-x@0
-
-	   (!) XWayland and sommelier-x aren't yet work on Chromebook Plus (as per 05/22).
-
-	3. Enable and start cros-sftp.service for SFTP access to the container file system:
-
-	   # systemctl enable cros-sftp
-	   # systemctl start cros-sftp
-	
-	   (!) Not yet working on Chromebook Plus, extra steps while starting container 
-	   required probably.
 
 EOF
 
@@ -66,12 +43,13 @@ post_remove() {
 	# unmask systemd-journald-audit.socket
 	systemctl unmask systemd-journald-audit.socket
 
-	# workaround for https://bugs.archlinux.org/task/58701
-	rm /usr/share/themes/CrosAdapta	
+	# workaround for https://bugs.archlinux.org/task/58701, remove after fix
+	rm /usr/share/themes/CrosAdapta
+	rm /usr/bin/sommelier
 
-cat << EOF
+	# TODO(crbug.com/835959): Remove this once we fix mesa.
+	rm /usr/lib64/dri/swrast_dri.so
+	rmdir /usr/lib64/dri 2>/dev/null
+	rmdir /usr/lib64 2>/dev/null
 
-	Please remove /usr/share/themes/CrosAdapta symlink manually!
-
-EOF
 }

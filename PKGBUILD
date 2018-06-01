@@ -1,7 +1,7 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
 pkgver=r44.45e9b92
-pkgrel=1
+pkgrel=2
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
@@ -13,8 +13,10 @@ optdepends=(
 )
 install=cros-container-guest-tools.install
 url="https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools"
-source=("git+${url}")
-sha1sums=('SKIP')
+source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf')
+sha1sums=('SKIP'
+          '3a2c55ecb22349265f26cdd021a436f5e0353c3d'
+          '6e42ce0d2c63593e7ec4765eb56fb17bc4dc3ada')
 
 pkgver() {
 	cd ${srcdir}/${_pkgname}
@@ -27,9 +29,13 @@ package() {
 	install -m644 -D ${srcdir}/${_pkgname}/LICENSE \
 					 ${pkgdir}/usr/share/licenses/cros-container-guest-tools/LICENSE
 
+	# Create required folder structure for systemd units
+	mkdir -p ${pkgdir}/usr/lib/systemd/user/default.target.wants
+	mkdir -p ${pkgdir}/usr/lib/systemd/system/multi-user.target.wants
+
 	### cros-adapta -> included into cros-container-guest-tools.install
 
-#   After https://bugs.archlinux.org/task/58701 is fixed, will be done in PKGBUILD
+#   Uncomment after https://bugs.archlinux.org/task/58701 is fixed
 #
 #	mkdir -p ${pkgdir}/usr/share/themes
 #	ln -sf /opt/google/cros-containers/cros-adapta \
@@ -47,6 +53,10 @@ package() {
 					 ${pkgdir}/usr/lib/systemd/user/cros-garcon.service
 	install -m644 -D ${srcdir}/${_pkgname}/cros-garcon/cros-garcon-override.conf \
 					 ${pkgdir}/usr/lib/systemd/user/cros-garcon.service.d/cros-garcon-override.conf
+	install -m644 -D ${srcdir}/cros-garcon-conditions.conf \
+					 ${pkgdir}/usr/lib/systemd/user/cros-garcon.service.d/cros-garcon-conditions.conf
+	ln -sf ../cros-garcon.service \
+		   ${pkgdir}/usr/lib/systemd/user/default.target.wants/cros-garcon.service
 
 	### cros-guest-tools -> not applicable
 
@@ -54,8 +64,19 @@ package() {
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sftp/cros-sftp.service \
 					 ${pkgdir}/usr/lib/systemd/system/cros-sftp.service
+	ln -sf ../cros-sftp.service \
+		   ${pkgdir}/usr/lib/systemd/system/multi-user.target.wants/cros-sftp.service
+
+	# add drop-in for cros-sftp to check if required ssh artifacts were bind-mounted before starting
+	install -m644 -D ${srcdir}/cros-sftp-conditions.conf \
+					 ${pkgdir}/usr/lib/systemd/system/cros-sftp.service.d/cros-sftp-conditions.conf
 
 	### cros-sommelier
+
+#   Uncomment after https://bugs.archlinux.org/task/58701 is fixed
+
+#	ln -sf /opt/google/cros-containers/bin/sommelier \
+#		   ${pkgdir}/usr/bin/sommelier
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier/sommelierrc \
 					 ${pkgdir}/etc/sommelierrc
@@ -65,6 +86,10 @@ package() {
 					 ${pkgdir}/usr/lib/systemd/user/sommelier@.service
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier/sommelier-x@.service \
 					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@.service
+	ln -sf ../sommelier@.service \
+		   ${pkgdir}/usr/lib/systemd/user/default.target.wants/sommelier@0.service
+	ln -sf ../sommelier-x@.service \
+		   ${pkgdir}/usr/lib/systemd/user/default.target.wants/sommelier-x@0.service
 
 	### cros-sommelier-config
 
