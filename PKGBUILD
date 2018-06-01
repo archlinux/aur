@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
 depends=('r' 'r-htmlwidgets' 'r-htmltools' 'r-knitr' 'r-jsonlite' 'r-shiny' 'r-magrittr' 'r-crosstalk' 'r-manipulatewidget')
 
-optdepends=('r-rmarkdown' 'r-deldir' 'r-orientlib' 'r-misc3d' 'r-rstudioapi' 'r-magick')
+optdepends=('pandoc' 'r-rmarkdown' 'r-deldir' 'r-orientlib' 'r-misc3d' 'r-rstudioapi' 'r-magick')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('85b15452c982b11c3e001121e68cbf88')
