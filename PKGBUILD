@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: spider-mario <spidermario@free.fr>
 
 pkgname=sdlpop
 pkgver=1.18.1
