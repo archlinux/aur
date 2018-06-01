@@ -1,0 +1,14 @@
+pkgbase = blender-plugin-gltf-exporter-git
+	pkgdesc = Khronos Blender glTF 2.0 Exporter (Git version)
+	pkgver = 6986b5b
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/glTF-Blender-Exporter
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = blender
+	source = git+git://github.com/KhronosGroup/glTF-Blender-Exporter.git
+	sha1sums = SKIP
+
+pkgname = blender-plugin-gltf-exporter-git
+
