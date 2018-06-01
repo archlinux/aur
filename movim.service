@@ -6,7 +6,7 @@ After=network.target
 Group=http
 WorkingDirectory=/usr/share/webapps/movim
 EnvironmentFile=/etc/default/movim
-ExecStartPre=/usr/bin/php mud.php db --set
+ExecStartPre=/usr/bin/php vendor/bin/phinx migrate
 ExecStart=/usr/bin/php daemon.php start --url=${MOVIM_URL} --port=${MOVIM_PORT} --interface=${MOVIM_INTERFACE}
 Restart=always
 

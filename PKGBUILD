@@ -3,7 +3,7 @@
 
 _pkgbase='movim'
 pkgname=movim-git
-pkgver=r6336.5fd158bd
+pkgver=r6815.8fba1ad6
 pkgrel=1
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')
@@ -23,9 +23,6 @@ source=("$_pkgbase::git+https://github.com/movim/movim"
         movim.env
         movim.service)
 install=movim.install
-sha256sums=('SKIP'
-            '5dfff91dd4a54f3d3713530e204370a96d37898b670a61123d8cad42f92da306'
-            '793b85ca2080d92d9663af1750d0be9d1cbd20de9c828cb0ce0cc91ad5510f11')
 backup=("etc/webapps/$_pkgbase/db.inc.php"
         "etc/default/movim")
 
@@ -53,9 +50,10 @@ package() {
   # XXX: Symlinks created post_upgrade. Waiting for upstream to fix
   # https://github.com/movim/movim/issues/509.
 
-  cp -r app lib locales src themes vendor "$pkgdir/usr/share/webapps/$_pkgbase"
+  cp -r app database lib locales src themes vendor \
+    "$pkgdir/usr/share/webapps/$_pkgbase"
   install -Dm644 VERSION CHANGELOG.md INSTALL.md README.md index.php \
-    linker.php manifest.webapp "$pkgdir/usr/share/webapps/$_pkgbase"
+    linker.php phinx.php "$pkgdir/usr/share/webapps/$_pkgbase"
   install -Dm755 daemon.php "$pkgdir/usr/share/webapps/$_pkgbase"
 
   # Configuration file
@@ -75,3 +73,7 @@ package() {
   install -g http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
   install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
 }
+
+sha256sums=('SKIP'
+            '5dfff91dd4a54f3d3713530e204370a96d37898b670a61123d8cad42f92da306'
+            'b348b86ccfe56b104ada9134672bf77054b148b2a2eb9f704be429905fc3d834')
