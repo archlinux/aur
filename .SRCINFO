@@ -1,0 +1,25 @@
+pkgbase = python-mygene
+	pkgdesc = An easy-to-use Python wrapper to access MyGene.Info services.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/meowklaski/mygene
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-mygene-3.0.0.tar.gz::https://pypi.io/packages/source/m/mygene/mygene-3.0.0.tar.gz
+	source = https://raw.githubusercontent.com/biothings/mygene.py/ver_3.0.0/LICENSE.txt
+	sha256sums = 36e5e42e05ade82141b7a82e5f9249546fabe5e9f47fe18c1535e6cedc603314
+	sha256sums = 18539fdbf9b2e53473f2245529be890192c7b9ead40b4168c1f64fb972d66f87
+
+pkgname = python-mygene
+	depends = python
+	depends = python-requests
+
+pkgname = python2-mygene
+	depends = python2
+	depends = python2-requests
+
