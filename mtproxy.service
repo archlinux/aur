@@ -1,6 +1,8 @@
 [Unit]
 Description=Telegram proxy server
 Requires=mtproxy-config.service
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
@@ -8,4 +10,4 @@ EnvironmentFile=/etc/mtproxy.conf
 ExecStart=/usr/bin/mtproto-proxy --user=${USER} --port=${STATS_PORT} --http-ports=${CLIENT_PORT} --mtproto-secret=${SECRET} --aes-pwd=/var/lib/mtproxy/secret.conf /var/lib/mtproxy/multi.conf
 
 [Install]
-WantedBy=network-online.target
+WantedBy=multi-user.target
