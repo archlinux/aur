@@ -1,25 +1,32 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 
 pkgname=tinydns
-pkgver=0.0.1
+pkgver=0.1
 pkgrel=1
 
 pkgdesc='Tiny cache DNS server'
 arch=('any')
-url=https://github.com/CupIvan/$pkgname
+url=https://github.com/CupIvan/${pkgname}
 
-source=(https://github.com/CupIvan/$pkgname/archive/v$pkgver.tar.gz)
+source=(https://github.com/CupIvan/${pkgname}/archive/v${pkgver}.tar.gz)
+md5sums=('e283f2254233351e8ee2e610795b0a0a')
+dir=${pkgname}-${pkgver}
 
-md5sums=('239864e269ee5d8e06fec15996a62560')
+#source=(git+https://github.com/CupIvan/${pkgname}.git)
+#md5sums=('e283f2254233351e8ee2e610795b0a0a')
+#dir=${pkgname}
+
+backup=(etc/${pkgname}.conf)
 
 build() {
-	cd ${srcdir}/$pkgname-$pkgver
+	cd ${srcdir}/${dir}
 	./compile
 }
 
 package() {
-	cd ${srcdir}/$pkgname-$pkgver
+	cd ${srcdir}/${dir}
 
-	install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
-	install -Dm644 $pkgname.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+	install -Dm755 ${pkgname}         ${pkgdir}/usr/bin/${pkgname}
+	install -Dm644 ${pkgname}.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
+	install -Dm644 ${pkgname}.conf    ${pkgdir}/etc/${pkgname}.conf
 }
