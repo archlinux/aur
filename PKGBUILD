@@ -16,7 +16,7 @@
 
 pkgname=mtproxy-git
 pkgver=0.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Proxy server for Telegram messaging app"
 arch=('i686' 'x86_64')
 url='https://github.com/TelegramMessenger/MTProxy'
@@ -34,7 +34,7 @@ md5sums=('SKIP'
          '6f01f66a7b42d07f9b84c2dc8d364468'
          '7381aebdd60a0640e1f0210b39aa208d'
          'aa2367c3f759632473824fabcc3544ff'
-         '71ad93872b6392bbb61cbfeacebd8483')
+         '311c6bd4a7e5f67c233b82ca522faf79')
 backup=('etc/mtproxy.conf')
 
 pkgver() {
