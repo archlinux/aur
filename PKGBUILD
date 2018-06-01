@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
 depends=('r' )
 
-optdepends=('r-spelling' 'r-testthat' 'r-knitr' 'r-jsonlite' 'r-rmarkdown' 'r-magrittr' 'r-httpuv' 'r-webutils')
+optdepends=('curl' 'r-spelling' 'r-testthat' 'r-knitr' 'r-jsonlite' 'r-rmarkdown' 'r-magrittr' 'r-httpuv' 'r-webutils')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('c2d9d8634409a92c3092b79a54d53a10')

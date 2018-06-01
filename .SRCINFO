@@ -6,6 +6,7 @@ pkgbase = r-curl
 	arch = x86_64
 	license = MIT
 	depends = r
+	optdepends = curl
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-knitr
