@@ -1,0 +1,17 @@
+pkgbase = xvc-git
+	pkgdesc = Modern software-defined video compression format
+	pkgver = v1.0.r7.3e1db91
+	pkgrel = 1
+	url = https://xvc.io/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	provides = xvc
+	conflicts = xvc
+	source = git+https://github.com/divideon/xvc.git
+	sha512sums = SKIP
+
+pkgname = xvc-git
+
