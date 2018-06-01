@@ -13,7 +13,7 @@
 
 pkgname=ffmpeg-mmal
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
 arch=('armv6h' 'armv7h' 'aarch64')
