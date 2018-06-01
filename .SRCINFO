@@ -15,6 +15,7 @@ pkgbase = r-rmarkdown
 	depends = r-rprojroot
 	depends = r-mime
 	depends = r-stringr
+	optdepends = pandoc
 	optdepends = r-tinytex
 	optdepends = r-shiny
 	optdepends = r-tufte
