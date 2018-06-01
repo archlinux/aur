@@ -1,6 +1,6 @@
 # Maintainer: Rich Li <rich@dranek.com>
 pkgname='python-xarray'
-pkgver=0.10.4
+pkgver=0.10.6
 pkgrel=1
 pkgdesc="N-D labeled arrays and datasets in Python"
 url="http://xarray.pydata.org"
@@ -19,9 +19,9 @@ replaces=('python-xray')
 #source=(https://pypi.python.org/packages/source/x/xarray/xarray-"$pkgver".tar.gz)
 # I'm using the Github source instead of the PyPI source since the Github source includes the data files used for testing
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pydata/xarray/archive/v$pkgver.tar.gz")
-md5sums=('4c6c4a900a3d8a7af196bab6d9fac36a')
-sha1sums=('48bbd1869d2e5cdd374e805c7cb56e4fc48214a5')
-sha256sums=('821a7685c9b81cae4103aa93739d52733fb522806c1692fd1030cadb2ce07351')
+md5sums=('fe997aa7443d0afd8180452b6cf44af0')
+sha1sums=('9cceab192ed66f49e44d36ca696b5fb35019fd80')
+sha256sums=('55666db7e2c32ff2342038c5b4cc087fb545b2d010df17f0ba6de466fd665494')
 
 build() {
   cd "$srcdir/xarray-$pkgver"
