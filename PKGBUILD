@@ -1,4 +1,5 @@
-# Maintainer: FoolEcho <foolecho at gmail dot com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: FoolEcho <foolecho at gmail dot com>
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: DaNiMoTh <jjdanimoth@gmail.com>
 # Contributor: Gianni Vialetto <g [dot] vialetto [at] gmail [dot] com>
@@ -6,16 +7,16 @@
 pkgname=afterstep
 _name=AfterStep
 pkgver=2.2.12
-pkgrel=5
+pkgrel=7
 pkgdesc="A Window Manager based on NextStep Interface"
 arch=('i686' 'x86_64')
 url="http://www.afterstep.org"
 license=('GPL')
-depends=('gtk2>=2.18.6' 'libpng' 'libtiff' 'readline' 'freetype2' 'dbus-core' 'librsvg')
+depends=('gtk2>=2.18.6' 'libpng' 'libtiff' 'readline' 'freetype2' 'dbus' 'librsvg')
 makedepends=('libxt')
 options=('!emptydirs' 'staticlibs')
 changelog=ChangeLog
-source=(ftp://ftp.afterstep.org/stable/${_name}-${pkgver}.tar.bz2
+source=(https://github.com/bbidulock/afterstep-devel/releases/download/$pkgver/${_name}-$pkgver.tar.bz2
   desktop_entry.patch)
 md5sums=('a3ab1a878270998d420bb2a5ca15801b'
          '90cb380546b5d64208f13ab4f473f56d')
