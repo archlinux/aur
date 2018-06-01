@@ -2,7 +2,7 @@
 
 pkgname=('sat-media-hg')
 _realname=sat_media
-pkgver=0.7.r57.df288de96a2d
+pkgver=0.7.r58.b185ee5c3f25
 VERSION=0.7
 pkgrel=1
 url="https://salut-a-toi.org/"
