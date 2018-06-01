@@ -1,13 +1,13 @@
 pkgbase = markdown_previewer
 	pkgdesc = Simple Markdown files previewer.
-	pkgver = 0
+	pkgver = 2_a5761
 	pkgrel = 1
 	url = https://github.com/TomaszGasior/markdown_previewer
 	arch = i686
 	arch = x86_64
 	depends = php
 	depends = zenity
-	source = git+https://github.com/TomaszGasior/markdown_previewer.git
+	source = git+https://github.com/TomaszGasior/markdown_previewer.git#commit=a576155f380612c84bbcd05dcfc56dcb2c34e0ac
 	source = markdown_previewer.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
