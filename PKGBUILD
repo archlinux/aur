@@ -18,6 +18,7 @@ pkgver() {
 }
 
 build() {
+    cd "${srcdir}/${_pkgname}"
     ./build.sh release || return 1
 }
 
