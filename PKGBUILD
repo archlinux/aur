@@ -1,7 +1,7 @@
 # Maintainer: Serge Roussak <beaux_monde@tut.by>
 pkgname=smplayer-qt4
 pkgver=18.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete front-end for MPlayer/MPV (Qt4)'
 arch=('i686' 'x86_64')
 url='http://smplayer.sourceforge.net/'
@@ -15,8 +15,18 @@ makedepends=('make')
 provides=('smplayer')
 conflicts=('smplayer')
 install=smplayer.install
-source=(https://downloads.sourceforge.net/smplayer/smplayer-$pkgver.tar.bz2)
-sha256sums=('ad51c1759f063afb287743bd90e24a7a77cc6e8b96da288dd7ddcb16c85b4e60')
+source=("https://downloads.sourceforge.net/smplayer/smplayer-$pkgver.tar.bz2"
+        'gcc8-snprintf-etc.patch')
+sha256sums=('ad51c1759f063afb287743bd90e24a7a77cc6e8b96da288dd7ddcb16c85b4e60'
+            '56ee2215dcb1b59a1c0259446212ee20974ce71fd31420eba44dc6ff55d816dd')
+
+prepare() {
+  cd "smplayer-$pkgver"
+
+  # The gcc has become smarter now, so it can determine a (probably)
+  # overflows in the C stdio calls.
+  patch -Np1 -i ../gcc8-snprintf-etc.patch
+}
 
 build() {
   cd "smplayer-$pkgver"

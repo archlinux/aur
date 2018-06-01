@@ -1,7 +1,7 @@
 pkgbase = smplayer-qt4
 	pkgdesc = Complete front-end for MPlayer/MPV (Qt4)
 	pkgver = 18.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://smplayer.sourceforge.net/
 	install = smplayer.install
 	arch = i686
@@ -17,7 +17,9 @@ pkgbase = smplayer-qt4
 	provides = smplayer
 	conflicts = smplayer
 	source = https://downloads.sourceforge.net/smplayer/smplayer-18.4.0.tar.bz2
+	source = gcc8-snprintf-etc.patch
 	sha256sums = ad51c1759f063afb287743bd90e24a7a77cc6e8b96da288dd7ddcb16c85b4e60
+	sha256sums = 56ee2215dcb1b59a1c0259446212ee20974ce71fd31420eba44dc6ff55d816dd
 
 pkgname = smplayer-qt4
 

@@ -1,0 +1,20 @@
+--- a/webserver/mongoose.c	2017-01-10 21:06:03.000000000 +0300
++++ b/webserver/mongoose.c	2018-06-01 22:23:14.184481659 +0300
+@@ -8344,7 +8344,7 @@
+ static void mg_do_ssi_include(struct mg_connection *nc, struct http_message *hm,
+                               const char *ssi, char *tag, int include_level,
+                               const struct mg_serve_http_opts *opts) {
+-  char file_name[BUFSIZ], path[MAX_PATH_SIZE], *p;
++  char file_name[MAX_PATH_SIZE], path[strlen(opts->document_root) + MAX_PATH_SIZE + 2], *p;
+   FILE *fp;
+ 
+   /*
+@@ -10788,7 +10788,7 @@
+     return -1;
+   }
+ 
+-  strncpy(req->name, name, sizeof(req->name));
++  strncpy(req->name, name, sizeof(req->name) - 1);
+   req->query = query;
+   req->callback = cb;
+   req->data = data;
