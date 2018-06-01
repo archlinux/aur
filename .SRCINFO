@@ -1,0 +1,13 @@
+pkgbase = go2
+	pkgdesc = A handy tool for quick navigation to commonly used directories
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/ControlxFreak/go2
+	arch = any
+	license = MIT
+	depends = bash
+	source = https://github.com/ControlxFreak/go2/archive/v0.3.tar.gz
+	md5sums = a40f86622a802d35382c7c0c4fb24a28
+
+pkgname = go2
+
