@@ -1,7 +1,7 @@
 pkgbase = lmms-git
 	pkgdesc = The Linux MultiMedia Studio.
-	pkgver = 1.2.0.rc4.r49.g46ef3c6a1
-	pkgrel = 2
+	pkgver = 1.2.0.rc6.r0.g1349d45d7
+	pkgrel = 1
 	url = http://lmms.sourceforge.net/
 	install = lmms-git.install
 	arch = i686

@@ -7,8 +7,8 @@
 
 _pkgname=lmms
 pkgname=lmms-git
-pkgver=1.2.0.rc4.r49.g46ef3c6a1
-pkgrel=2
+pkgver=1.2.0.rc6.r0.g1349d45d7
+pkgrel=1
 pkgdesc='The Linux MultiMedia Studio.'
 arch=('i686' 'x86_64')
 url='http://lmms.sourceforge.net/'
