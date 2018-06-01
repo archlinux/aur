@@ -1,0 +1,13 @@
+pkgbase = terminal-mines
+	pkgdesc = An ncurses-based minesweeper game.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/accatyyc/terminal-mines
+	arch = i686
+	arch = x86_64
+	license = custom:Unknown
+	source = git+https://github.com/accatyyc/terminal-mines#tag=1.1.1
+	sha256sums = SKIP
+
+pkgname = terminal-mines
+
