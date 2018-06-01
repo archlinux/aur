@@ -1,6 +1,6 @@
 pkgbase = python-google-auth
 	pkgdesc = Google Auth Python Library
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/GoogleCloudPlatform/google-auth-library-python
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-google-auth
 	depends = python-rsa
 	depends = python-pyasn1-modules
 	depends = python-cachetools
-	source = https://files.pythonhosted.org/packages/source/g/google-auth/google-auth-1.4.1.tar.gz
-	sha256sums = 9051802d3dae256036cca9e34633a32c0ed1427730d4ebc513dff91ec8b6dd45
+	source = https://files.pythonhosted.org/packages/source/g/google-auth/google-auth-1.5.0.tar.gz
+	sha256sums = 1745c9066f698eac3da99cef082914495fb71bc09597ba7626efbbb64c4acc57
 
 pkgname = python-google-auth
 
