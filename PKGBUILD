@@ -3,19 +3,17 @@
 
 # To enable hdhomerun, add 'libhdhomerun' to depends and '--enable-hdhomerun_client' to
 # the configure command in build().
-#
-# To enable DVB descrambling, add 'libdvbcsa' to depends and change '--disable-tvhcsa'
-# to '--enable-tvhcsa'
 
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
 pkgver=4.3.r1252.g595fd174f
-pkgrel=3
+pkgrel=4
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
 license=('GPL3')
-depends=('avahi' 'openssl' 'uriparser' 'ffmpeg' 'pcre2' 'libfdk-aac')
+depends=('avahi' 'openssl' 'uriparser' 'ffmpeg' 'pcre2' 'libfdk-aac'
+         'libdvbcsa')
 makedepends=('git' 'python')
 optdepends=('xmltv: For an alternative source of programme listings')
 provides=('tvheadend')
@@ -78,7 +76,7 @@ build() {
         --enable-dvben50221 \
         --enable-dbus_1 \
         --disable-hdhomerun_static \
-        --disable-tvhcsa
+        --enable-tvhcsa
     make
 }
 

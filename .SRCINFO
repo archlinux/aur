@@ -1,7 +1,7 @@
 pkgbase = tvheadend-git
 	pkgdesc = TV streaming server for Linux
 	pkgver = 4.3.r1252.g595fd174f
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tvheadend.org/
 	install = tvheadend.install
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = tvheadend-git
 	depends = ffmpeg
 	depends = pcre2
 	depends = libfdk-aac
+	depends = libdvbcsa
 	optdepends = xmltv: For an alternative source of programme listings
 	provides = tvheadend
 	conflicts = tvheadend
