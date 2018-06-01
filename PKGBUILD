@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=xfce4-equake-plugin
-pkgver=1.3.8
+pkgver=1.3.8.1
 pkgrel=1
 pkgdesc="Equake monitors and displays earthquakes in your Xfce panel"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('xfce4-panel')
 makedepends=('intltool')
 install="${pkgname}.install"
 source=(https://sourceforge.net/projects/equake/files/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('a0b0c7e033eab5980d5513aafaf20314b3203ec9977f06006483076977e7df8f')
+sha256sums=('32378cfcc741c024fa2dccc50f0b303039968761e81e211bac7e225dc4868295')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
