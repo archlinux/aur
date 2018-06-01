@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=wasm-gc
-pkgver=0.1.1
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="gc-sections for wasm"
 url="https://github.com/alexcrichton/wasm-gc"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h')
 license=('MIT' 'APACHE')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexcrichton/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('3456890727ff9295cfd49131b9914cd8d7a8fa0feb44b6fa7d13021210750ddcb6393565d7e9bf4c6144c31709c956a447e7e5b1bfca1e17812e61ae44d145a1')
+sha512sums=('2d00879a914b7741b51d4111930e27020e8a017f3a325abe00394b5a0a02603f4e06c742ba5b4db77f406cc579e31d5b7ad8827ae59c0bf4d48bf84adfd43415')
 
 build() {
   cd "$pkgname-$pkgver"
