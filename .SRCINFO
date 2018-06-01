@@ -1,6 +1,6 @@
 pkgbase = adwm-git
 	pkgdesc = Advanced dynamic window manager for X
-	pkgver = 0.7.4.r0.g7162281
+	pkgver = 0.7.4.r4.gd6a7cf0
 	pkgrel = 1
 	url = http://github.com/bbidulock/adwm
 	arch = i686
@@ -15,6 +15,8 @@ pkgbase = adwm-git
 	depends = startup-notification
 	depends = libxcomposite
 	depends = libxdamage
+	depends = libjpeg-turbo
+	depends = libsvg-cairo
 	optdepends = xdg-launch-git: for application launching key bindings
 	optdepends = xde-ctools-git: for xde-run, xde-winmenu, xde-winlist and xde-wkspmenu default bindings
 	optdepends = xde-menu-git: for xde-menu root menu default bindings
