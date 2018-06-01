@@ -2,8 +2,8 @@
 
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager-bin
-pkgver=2.9.11
-build=14460b3
+pkgver=2.9.12
+build=597414a
 pkgrel=1
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
@@ -33,8 +33,7 @@ package() {
 	install -D "$srcdir/tinymediamanager-cli" "$pkgdir/usr/bin/tinymediamanager-cli"
 	install -D "$srcdir/tinymediamanager" "$pkgdir/usr/bin/tinymediamanager"
 }
-
-md5sums=('68a287c8e20c74b803150eae1e5f43b5'
-	'9cc43e1296880768bacc51c63f913cbd'
-	'c382f9ba03915a1f70f5aaea8699cfe5'
-'677bed3f438e84ecd948c9f6faa37194')
+md5sums=('9d357619b445e2d9733bae85da542fc5'
+         '9cc43e1296880768bacc51c63f913cbd'
+         'c382f9ba03915a1f70f5aaea8699cfe5'
+         '677bed3f438e84ecd948c9f6faa37194')
