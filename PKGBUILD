@@ -17,32 +17,31 @@ md5sums=('SKIP')
 validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <rousseau@debian.org>
 
 pkgver() {
-  cd "${srcdir}/PCSC"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^pcsc\.//g'
+    cd "${srcdir}/PCSC"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^pcsc\.//g'
 }
 
 build() {
-  cd "${srcdir}/PCSC"
-  sed -i "/^AC\_INIT/ { s,]),-git]), }" configure.ac
-  ./bootstrap
-  ./configure --prefix=/usr \
-              --sbindir=/usr/bin \
-              --sysconfdir=/etc \
-              --enable-filter \
-              --enable-ipcdir=/run/pcscd \
-              --enable-libudev \
-              --enable-usbdropdir=/usr/lib/pcsc/drivers \
-              --with-systemdsystemunitdir=/usr/lib/systemd/system
-
-  make
+    cd "${srcdir}/PCSC"
+    sed -i "/^AC\_INIT/ { s,]),-git]), }" configure.ac
+    ./bootstrap
+    ./configure --prefix=/usr \
+                --sbindir=/usr/bin \
+                --sysconfdir=/etc \
+                --enable-filter \
+                --enable-ipcdir=/run/pcscd \
+                --enable-libudev \
+                --enable-usbdropdir=/usr/lib/pcsc/drivers \
+                --with-systemdsystemunitdir=/usr/lib/systemd/system
+    make
 }
 
 
 package() {
-  cd "${srcdir}/PCSC"
+    cd "${srcdir}/PCSC"
 
-  make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install
 
-  install -D -m644 ${srcdir}/PCSC/COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -d ${pkgdir}/usr/lib/pcsc/drivers
+    install -D -m644 "${srcdir}/PCSC/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -d "${pkgdir}/usr/lib/pcsc/drivers"
 }
