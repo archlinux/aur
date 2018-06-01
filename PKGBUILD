@@ -1,10 +1,10 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=nut-multimedia-git
-pkgver=20160209.640bf64
+pkgver=r690.640bf64
 pkgrel=1
 pkgdesc="Free multimedia container format. (Git Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://wiki.multimedia.cx/index.php?title=NUT'
 license=('GPL')
 depends=('glibc')
@@ -20,7 +20,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd nut
-  echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
+  #echo "$(git describe --long --tags | tr - .)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
