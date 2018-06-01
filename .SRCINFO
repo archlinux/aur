@@ -1,14 +1,14 @@
 pkgbase = libcdk
 	pkgdesc = Curses Development Kit - widget library, enhanced version
-	pkgver = 5.0.20161210
+	pkgver = 5.0.20180306
 	pkgrel = 1
 	url = http://invisible-island.net/cdk/
 	arch = x86_64
 	arch = i686
 	license = custom
 	options = !emptydirs
-	source = http://invisible-island.net/datafiles/release/cdk.tar.gz
-	sha256sums = 9e7558cb8850ca5c7ab4cc38e0612b0e8c4aad680d2a2511f31d62f239e35fad
+	source = libcdk.5.0.20180306.tar.gz::ftp://ftp.invisible-island.net/cdk/cdk-5.0-20180306.tgz
+	sha256sums = cca9e345c6728c235eb3188af9266327c09c01da124a30b0cbd692ac08c6ebd0
 
 pkgname = libcdk
 
