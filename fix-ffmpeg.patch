@@ -1,0 +1,13 @@
+diff --git a/src/transcoding/codec/codec.c b/src/transcoding/codec/codec.c
+index 54d7dc2a7..9a8598b03 100644
+--- a/src/transcoding/codec/codec.c
++++ b/src/transcoding/codec/codec.c
+@@ -102,7 +102,7 @@ codec_get_title(AVCodec *self)
+         str_snprintf(codec_title, sizeof(codec_title),
+             self->long_name ? "%s: %s%s" : "%s%s%s",
+             self->name, self->long_name ? self->long_name : "",
+-            (self->capabilities & CODEC_CAP_EXPERIMENTAL) ? " (Experimental)" : "")
++            (self->capabilities & AV_CODEC_CAP_EXPERIMENTAL) ? " (Experimental)" : "")
+        ) {
+         return NULL;
+     }
