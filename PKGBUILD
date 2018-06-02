@@ -24,7 +24,7 @@ build() {
     HEADAS=/opt/heasoft/x86_64-pc-linux-gnu-libc${_glibcver}
 
     cd $srcdir/${pkgname}-${pkgver}-41
-    ./configure --prefix=${pkgdir}/opt/${pkgname} --with-heasoft=$HEADAS
+    ./configure --prefix=${pkgdir}/opt/${pkgname} --with-headas=$HEADAS
     make
 
 }
