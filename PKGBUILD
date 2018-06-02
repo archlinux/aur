@@ -3,7 +3,7 @@
 
 pkgname=('gravium-daemon' 'gravium-cli' 'gravium-qt')
 pkgbase=gravium
-pkgver=0.1.0.0
+pkgver=1.0.1
 pkgrel=0
 arch=('i686' 'x86_64')
 url="https://gravium.io/"
@@ -16,7 +16,7 @@ pkgdesc="Gravium peer-to-peer network based digital currency "
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Gravium/gravium/archive/v${pkgver}.tar.gz"
 	"graviumd@.service")
-sha256sums=('89120145887ef8175c7227251e417a542ce2e18f3bbe1df499a10aa47e18301a'
+sha256sums=('896482d2ff4c4376190d5d5dd8db0772b2a9ae56225b1402459883ed889cd174'
             '60fe54a68a3d251f67022c96e2324c6a8f8bc826405272f254978d8c305e06c7')
 
 build() {
