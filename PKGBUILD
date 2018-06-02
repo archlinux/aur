@@ -20,7 +20,7 @@ backup=(etc/${pkgname}.conf)
 
 build() {
 	cd ${srcdir}/${dir}
-	./compile
+	./compile.sh
 }
 
 package() {
