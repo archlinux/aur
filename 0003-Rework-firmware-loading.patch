@@ -1,13 +1,13 @@
-From 30bf1a17b94d95e550fa5528260c63f745d74c20 Mon Sep 17 00:00:00 2001
+From 101a7bea0ebcd50fbf7467128e628fcb24ad0b01 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:18:08 +0300
-Subject: [PATCH 3/6] Rework firmware loading
+Subject: [PATCH 3/7] Rework firmware loading
 
 ---
- Makefile                   | 101 ++++++++++-----------------------
- foo2zjs-loadfw.in          | 138 +++++++++++++++++++++++++++++++++++++++++++++
+ Makefile                   | 101 ++++++++-------------------
+ foo2zjs-loadfw.in          | 138 +++++++++++++++++++++++++++++++++++++
  foo2zjs-loadfw@.service.in |   6 ++
- hplj10xx.rules             |  60 +++++++-------------
+ hplj10xx.rules             |  60 ++++++----------
  usblp.conf                 |   1 +
  5 files changed, 196 insertions(+), 110 deletions(-)
  create mode 100644 foo2zjs-loadfw.in
@@ -15,7 +15,7 @@ Subject: [PATCH 3/6] Rework firmware loading
  create mode 100644 usblp.conf
 
 diff --git a/Makefile b/Makefile
-index 09388c1..429b842 100644
+index c19f0c4..bac37c4 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -173,6 +173,7 @@ FILES	=	\
@@ -392,5 +392,5 @@ index 0000000..5a604bf
 @@ -0,0 +1 @@
 +blacklist usblp
 -- 
-2.15.1
+2.17.1
 

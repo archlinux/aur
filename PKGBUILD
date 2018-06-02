@@ -4,7 +4,7 @@
 #Contributor: Muhammed Uluyol <uluyol0@gmail.com>
 
 pkgname=foo2zjs-nightly
-pkgver=20180508
+pkgver=20180519
 pkgrel=1
 pkgdesc="foo2zjs Printer Drivers (automatically updated). Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
@@ -20,12 +20,13 @@ options=('!emptydirs' '!ccache')
 install='foo2zjs.install'
 
 _patches=(
-	'0001-Makefile-DESTDIR-support.patch'
-	'0002-Makefile-general-fixes.patch'
-	'0003-Rework-firmware-loading.patch'
-	'0004-Makefile-fix-generating-.ppd-in-place.patch'
-	'0005-Makefile-leverage-default-rules-as-much-as-possible-.patch'
-	'0006-Makefile-do-not-blacklist-usblp-seems-unnecessary-co.patch'
+	0001-Makefile-DESTDIR-support.patch
+	0002-Makefile-general-fixes.patch
+	0003-Rework-firmware-loading.patch
+	0004-Makefile-fix-generating-.ppd-in-place.patch
+	0005-Makefile-leverage-default-rules-as-much-as-possible-.patch
+	0006-Makefile-do-not-blacklist-usblp-seems-unnecessary-co.patch
+	0007-Makefile-create-manpages-in-subdirs-via-their-Makefi.patch
 )
 
 _firmware=(
@@ -82,13 +83,14 @@ source=(
 noextract=(
 	"${_firmware[@]##*/}"
 )
-sha256sums=('54d377b9c7d1f8c4d721265dc44e3096aa7fbced6b6eb3e215a33d286de9a7be'
-            '620e4bd9da088c96843f2a124301e5529bc6a3c92b87b535ee907042cdb46756'
-            '4110354cdbdf73349585a7d823f7c0b4aac0ff930ce718cb59a7e28c9ead57bb'
-            '50b8c3403403bfe36730db2a04b47c7f8c1afd36115edb8474aaa09c8b75d0f9'
-            '4a399fb37b061cad3c506ad4d3584f3d547c2ed1434c4b245ca5fde94ea313a3'
-            'c92a8ce7b49cc69271ae4ea1338ebf65632bfce6c9e68d959e9fd1391f23e1bb'
-            '32255dbd841facc8aa17e89668d499760395e3d750aa9ee8750e0fbd9afa574e'
+sha256sums=('SKIP'
+            'd12e2ffea475e5cbebc019069c2702ac8b3b8c91d753798b1c733875c242c7c9'
+            'b087a81daae9ea61c2a6fb82b53e72fe05b0fde6ca5bde490121ef873b3c3205'
+            '572cdc9800e6a66b1e565f727067e7b31c0232385b1986fda7a0cac2303767f5'
+            'b48d2d59a8575ccf1f0c7c53a694ab8a68b0822331a20be3ec8ee5d3712c1684'
+            '131a8f3fab237656fbaadac7ec3aacdc1d118d30b9f6a46bd63b03c2b06e2f49'
+            '6787431ba763653c75cd0e2699cbf6496710fddd0896bfdd60f8fa8d7625c6f4'
+            'c704dc6989a9f005627ee7eca1e60a3cd57ec786e9812972624ddbc56b5cd3ec'
             '61a4ac9f94e9749a4e3c8971a7bb8d610608bea6bd2aedcb98a4f307553955f6'
             '42d6ab614d998a274ac3b8a4520595dcb251a9b051ba9f1e2a70e6ad54cce7b3'
             'a20e4b550a418b99a28a320d7834f50ae0b126f0cbc3b0e84ba0e0bf5de872a0'
