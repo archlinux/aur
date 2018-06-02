@@ -1,7 +1,7 @@
 # Maintainer: Peter Majchrak <petoknm@gmail.com>
 
 pkgname=rxcpp-git
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Reactive Extensions for C++"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 groups=()
 depends=()
 makedepends=('gcc' 'make' 'cmake' 'libcatch-cpp-headers')
-source=("git+https://github.com/Reactive-Extensions/RxCpp.git#commit=5b7b2a5519f712a7831053865a4ae6082dac4ed5")
+source=("git+https://github.com/Reactive-Extensions/RxCpp.git#tag=4.1.0")
 sha256sums=('SKIP')
 validpgpkeys=()
 
