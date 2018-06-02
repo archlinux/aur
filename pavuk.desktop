@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Pavuk
+Name[sk]=Pavúk
+Name[cs]=Pavúk
+Comment=Recursive World Wide Web mirroring tool for HTTP, HTTPS, FTP and Gopher protocols
+Comment[sk]=Nástroj na rekurzívne kopírovanie dokumentov z WWW cez protokoly HTTP, HTTPS, FTP, FTPS a Gopher
+Comment[cs]=Nástroj na rekurzivní kopírování dokumentù z WWW pomocí protokolù HTTP, HTTPS, FTP, FTPS a Gopher
+Comment[de]=Rekursives WWW-Speicherprogramm für die Protokolle HTTP, HTTPS, FTP und Gopher
+Exec=pavuk -X
+Icon=pavuk_as_icon
+Terminal=0
+Type=Application
+Categories=Network;FileTransfer

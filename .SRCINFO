@@ -1,0 +1,20 @@
+pkgbase = pavuk
+	pkgdesc = UNIX program used to mirror the contents of WWW documents or files.
+	pkgver = 0.9.35
+	pkgrel = 1
+	url = http://www.pavuk.org/
+	arch = x86_64
+	license = GPLv2
+	depends = glibc
+	optdepends = gtk2: for X windows support
+	optdepends = zlib: for online decoding of encoded documents
+	optdepends = openssl: for SSL support
+	options = !buildflags
+	options = !makeflags
+	source = https://netix.dl.sourceforge.net/project/pavuk/pavuk/0.9.35/pavuk-0.9.35.tar.bz2
+	source = pavuk.desktop
+	md5sums = 6204c7a1339433ab32456ccd62126ea9
+	md5sums = SKIP
+
+pkgname = pavuk
+
