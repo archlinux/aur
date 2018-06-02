@@ -4,7 +4,7 @@ post_install(){
 	echo -e "Add isis to your path:\n"
     echo -e "\texport PATH=\$PATH:/opt/isis/isis/${_pkgver}/bin/\n"
     echo -e "And set isis environment:\n"
-    echo -e "export ISIS_SRCDIR=export ISIS_SRCDIR=/opt/isis/isis/${_pkgver}\n"
+    echo -e "\texport ISIS_SRCDIR=/opt/isis/isis/${_pkgver}\n"
     
 
 }
