@@ -10,6 +10,7 @@ pkgbase = compute-runtime
 	makedepends = clang
 	makedepends = python2
 	makedepends = opencl-headers
+	makedepends = cmake
 	depends = ocl-icd
 	optdepends = libva: for cl_intel_va_api_media_sharing
 	optdepends = libdrm: for cl_intel_va_api_media_sharing
