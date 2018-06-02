@@ -1,6 +1,6 @@
 pkgbase = noto-fonts-emoji-blob
 	pkgdesc = Google Noto emoji fonts (blob version, C1710's fork)
-	pkgver = 20180408
+	pkgver = 20180506
 	pkgrel = 1
 	url = https://github.com/C1710/blobmoji/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = noto-fonts-emoji-blob
 	depends = fontconfig
 	provides = noto-fonts-emoji
 	conflicts = noto-fonts-emoji
-	source = https://github.com/C1710/blobmoji/releases/download/v-2018-04-08-emoji-11/NotoColorEmoji.ttf
-	sha256sums = a65a77aeaa042c27340910b094ae15e583f59a98684739b6d93a91335d330b34
+	source = https://github.com/C1710/blobmoji/raw/8b754e03bd3b2b82dd2a35632b73965fafb20ff3/fonts/NotoColorEmoji.ttf
+	sha256sums = 271f6f8a54cc9538b17d86810da21605e602200c044e10bab1662c8c5995fafd
 
 pkgname = noto-fonts-emoji-blob
 

@@ -1,8 +1,7 @@
 # Maintainer: <ipha00@gmail.com>
 
 pkgname=noto-fonts-emoji-blob
-_pkgver=2018-04-08
-_emojiver=11
+_pkgver=2018-05-06
 pkgver=${_pkgver//-}
 pkgrel=1
 pkgdesc="Google Noto emoji fonts (blob version, C1710's fork)"
@@ -12,8 +11,8 @@ license=("Apache")
 depends=(fontconfig)
 provides=(noto-fonts-emoji)
 conflicts=(noto-fonts-emoji)
-source=("https://github.com/C1710/blobmoji/releases/download/v-${_pkgver}-emoji-${_emojiver}/NotoColorEmoji.ttf")
-sha256sums=('a65a77aeaa042c27340910b094ae15e583f59a98684739b6d93a91335d330b34')
+source=("https://github.com/C1710/blobmoji/raw/8b754e03bd3b2b82dd2a35632b73965fafb20ff3/fonts/NotoColorEmoji.ttf")
+sha256sums=('271f6f8a54cc9538b17d86810da21605e602200c044e10bab1662c8c5995fafd')
 
 package() {
     mkdir -p "$pkgdir"/usr/share/fonts/noto
