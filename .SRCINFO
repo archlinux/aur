@@ -2,16 +2,13 @@ pkgbase = musique
 	pkgdesc = A different take on the music player
 	pkgver = 1.5
 	pkgrel = 1
-	url = http://flavio.tordini.org/musique
-	arch = i686
+	url = https://flavio.tordini.org/musique
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-tools
 	depends = phonon-qt5
 	depends = taglib
 	depends = hicolor-icon-theme
-	optdepends = phonon-qt5-gstreamer: gstreamer backend
-	optdepends = phonon-qt5-vlc: vlc backend
 	source = musique-1.5.tar.gz::https://github.com/flaviotordini/musique/archive/1.5.tar.gz
 	sha256sums = 82600f4e3d58900df1cc11acd77efbf11e8eac94f8c7382d57f953cadcd49d54
 
