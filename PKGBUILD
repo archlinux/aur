@@ -1,14 +1,14 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma5-applets-docker
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Start and stop docker images"
 arch=('i686' 'x86_64')
 url="https://github.com/naraesk/plasma-docker"
 license=('GPL3')
 groups=()
-depends=('docker')
-makedepends=('cmake' 'extra-cmake-modules' 'ki18n' 'qt5-base' 'qt5-declarative')
+depends=('docker' 'plasma-workspace')
+makedepends=('cmake' 'extra-cmake-modules' 'ki18n' 'qt5-base' 'qt5-declarative' 'qt5-tools')
 optdepends=()
 provides=()
 conflicts=()
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=()
 changelog=()
-source=('https://github.com/naraesk/plasma-docker/archive/v1.1.1.tar.gz')
+source=('https://github.com/naraesk/plasma-docker/archive/v1.2.0.tar.gz')
 noextract=()
-md5sums=('6865ee415f6d9caff9276bb303e06b01')
+md5sums=('c05b8f2e2f1f6b81ceda0403d99b566e')
 
 prepare() {
   cd plasma-docker-${pkgver}
@@ -30,8 +30,8 @@ build() {
   cd plasma-docker-${pkgver}/build
   export QT_SELECT=5
   cmake ../ \
-    -DCMAKE_INSTALL_PREFIX=`kf5-config --prefix` \
-    -DLIB_INSTALL_DIR=lib \
+    -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DCMAKE_BUILD_TYPE=Release
   make
