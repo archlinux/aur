@@ -1,7 +1,7 @@
 pkgbase = plasma-runners-translator
 	pkgdesc = Translates words and sentences into any language
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/naraesk/krunner-translator
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = plasma-runners-translator
 	makedepends = extra-cmake-modules
 	makedepends = ki18n
 	makedepends = qt5-base
+	makedepends = qt5-tools
 	depends = krunner
 	conflicts = kdeplasma-addons-runners-translator
 	replaces = plasma5-runners-translator
