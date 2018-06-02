@@ -19,7 +19,7 @@ pkgver() {
 
 prepare() {
   cd st-bloated
-  sed -i '/\@tic /d' Makefile
+  sed -i 's/tic/#tic/' Makefile
 }
 
 build() {

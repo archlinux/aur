@@ -1,7 +1,7 @@
 pkgbase = st-bloated-git
 	pkgdesc = simple terminal with alpha, copyurl, hidecursor, open copied url, scrollback, spoiler, vertcenter, and xresources patches.
 	pkgver = r1036.2b5354e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/salcedo/st-bloated
 	arch = i686
 	arch = x86_64
