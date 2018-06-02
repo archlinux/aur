@@ -12,8 +12,6 @@ url="http://salut-a-toi.org/"
 arch=('any')
 depends=('python2'  'python2-txjsonrpc-git' 'python2-jinja' 'python2-shortuuid-git' 'sat-media-hg' 'sat-xmpp-hg' 'python2-zope-interface' 'python2-pyopenssl' 'python2-autobahn')
 makedepends=('python2-setuptools' 'python-virtualenv' 'mercurial')
-provides=('sat-libervia')
-conflicts=('sat-libervia')
 license=('AGPL3')
 install=$pkgbase.install
 source=('ftp://ftp.goffi.org/pyjamas/pyjamas.tar.bz2'
@@ -54,6 +52,8 @@ PATH=$PATH:$PYJSBUILD_PATH LIBERVIA_INSTALL=arch NO_PREINSTALL_OPT=nopreinstall 
 
 
 package_sat-pyjamas(){
+        provides=('sat-pyjamas')
+        conflicts=('sat-pyjamas')
 	pkgdesc="Pyjamas is a toolkit and applications framework, for the Web."
 	echo "Building Libervia depends on pyjamas."
 	echo "We use a special version of pyjamas provided by SàT"
@@ -66,6 +66,8 @@ package_sat-pyjamas(){
 package_sat-libervia-hg(){
          pkgdesc="Salut à Toi, multi-frontends multi-purposes XMPP client (Web interface)"
          depends=('dbus' )
+         provides=('sat-libervia')
+         conflicts=('sat-libervia')
 	 cd "$pkgdir"
 	 install -dm755 usr/bin
 	 install -dm755 usr/lib/python2.7/site-packages

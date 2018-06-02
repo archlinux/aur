@@ -17,8 +17,6 @@ pkgbase = sat-libervia-hg
 	depends = python2-zope-interface
 	depends = python2-pyopenssl
 	depends = python2-autobahn
-	provides = sat-libervia
-	conflicts = sat-libervia
 	options = !strip
 	source = ftp://ftp.goffi.org/pyjamas/pyjamas.tar.bz2
 	source = hg+http://repos.goffi.org/libervia
@@ -28,7 +26,11 @@ pkgbase = sat-libervia-hg
 pkgname = sat-libervia-hg
 	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (Web interface)
 	depends = dbus
+	provides = sat-libervia
+	conflicts = sat-libervia
 
 pkgname = sat-pyjamas
 	pkgdesc = Pyjamas is a toolkit and applications framework, for the Web.
+	provides = sat-pyjamas
+	conflicts = sat-pyjamas
 
