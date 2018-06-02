@@ -2,13 +2,14 @@
 
 pkgname=python2-google-auth-httplib2-git
 pkgver=r8.e7cd722
-pkgrel=1
+pkgrel=2
 pkgdesc="An httplib2 transport for google-auth"
 arch=('any')
 url="https://github.com/GoogleCloudPlatform/google-auth-library-python-httplib2"
 license=('Apache')
 makedepends=('python2-setuptools')
 depends=('python2' 'python2-google-auth' 'python2-httplib2' 'python2-six')
+provides=('python2-google-auth-httplib2')
 source=("git+https://github.com/GoogleCloudPlatform/google-auth-library-python-httplib2.git")
 sha256sums=('SKIP')
 
