@@ -1,6 +1,6 @@
 pkgname=ghdl
 pkgver=0.35
-pkgrel=2
+pkgrel=3
 _gccver=7.3.0
 _islver=0.18
 arch=('aarch64' 'x86_64')
@@ -11,8 +11,9 @@ makedepends=('gcc-ada' 'git')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
+# This is the earliest commit that works with gcc-ada 8.1
 source=(
-  "git+https://github.com/ghdl/ghdl#tag=v${pkgver}"
+  "git+https://github.com/ghdl/ghdl#commit=319092de002423fcd5f624d2f026176503ab6018"
   "https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
