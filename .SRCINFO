@@ -7,7 +7,7 @@ pkgbase = ardhue-git
 	license = GPL3
 	makedepends = git
 	makedepends = meson
-	depends = python-serial
+	depends = python-pyserial
 	depends = gtk3>=3.14
 	depends = python
 	provides = ardhue
