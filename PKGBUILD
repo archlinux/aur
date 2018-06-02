@@ -1,7 +1,7 @@
 # Maintainer: johnnybash <georgpfahler@wachenzell.org>
 # Contributor: r20d20 <r20d20@web.de>
 pkgname=jameica-nightly
-pkgver=2.7.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Jameica Plattform"
 arch=(armv6h armv7h aarch64 i686 x86_64)
@@ -10,9 +10,9 @@ license=('GPL')
 depends=('java-runtime>=1.6')
 makedepends=('unzip')
 conflicts=(jameica)
-source=("http://www.willuhn.de/products/jameica/releases/nightly/jameica-$pkgver-nightly-linux64.zip" "jameica.desktop")
-md5sums=('SKIP'
-         'c5915975edcf2ef695f57e93983ebbe6')
+source=("http://www.willuhn.de/products/jameica/releases/nightly/jameica-linux64-$pkgver-nightly.zip" "jameica.desktop")
+sha256sums=('SKIP'
+         'b0221e7463407243d2922107d0de4c437e2037ab0639e2961c443db4f15725fc')
 
 if [ "$CARCH" = "armv6h" ] || [ "$CARCH" = "armv7h" ] || [ "$CARCH" = "aarch64" ]; then
 	depends+=(swt)
