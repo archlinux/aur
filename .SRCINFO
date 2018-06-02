@@ -1,6 +1,6 @@
 pkgbase = openicp-br
 	pkgdesc = Digital signatures tool according to Brazilian Law.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = github.comn/gjvnq/OpenICP-BR
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = openicp-br
 	provides = openicp-br
 	conflicts = openicp-br
 	conflicts = openicp-br
-	source = openicp-br-0.2.1.tar.gz::https://github.com/gjvnq/OpenICP-BR/archive/v0.2.1.tar.gz
-	sha1sums = 9e269d9708fa2b86da052dd384d1656f7651f2ba
+	source = openicp-br-0.2.2.tar.gz::https://github.com/gjvnq/OpenICP-BR/archive/v0.2.2.tar.gz
+	sha1sums = d22af02ab5932c8a3804f72a9a6f3d2d561c6f82
 
 pkgname = openicp-br
 
