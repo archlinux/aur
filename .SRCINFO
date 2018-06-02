@@ -1,0 +1,12 @@
+pkgbase = ttf-jameel-noori-nastaleeq
+	pkgdesc = Jameel Noori Nastaleeq Font for Urdu Typesetting
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.urdujahan.com/font.html
+	arch = any
+	license = unknown
+	source = http://www.urdujahan.com/urdu-fonts/Jameel%20Noori%20Nastaleeq.zip
+	md5sums = 5d9d00f0209a9a009beeac3be7db387c
+
+pkgname = ttf-jameel-noori-nastaleeq
+
