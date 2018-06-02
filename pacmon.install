@@ -1,5 +1,4 @@
 post_install() {
-	getent passwd pacmon &>/dev/null || useradd -r -s /bin/false pacmon >/dev/null
 	/usr/bin/pacmon mirrorlist
 	true
 }
