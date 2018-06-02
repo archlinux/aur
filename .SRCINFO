@@ -3,7 +3,6 @@ pkgbase = miam-player
 	pkgver = 0.8.0
 	pkgrel = 4
 	url = https://github.com/MBach/Miam-Player
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = qtav
@@ -11,7 +10,9 @@ pkgbase = miam-player
 	depends = qt5-x11extras
 	depends = taglib
 	source = miam-player-0.8.0.tar.gz::https://github.com/MBach/Miam-Player/archive/v0.8.0.tar.gz
+	source = fix-build.patch
 	sha256sums = 598355e2eaee42878ce797186fc1ff9b8dd8aa11019ba58763f79b9d1d34538b
+	sha256sums = a396c174bd40219de91e8d078777f8e5876f7e8030724c74a8b81a5246177e07
 
 pkgname = miam-player
 

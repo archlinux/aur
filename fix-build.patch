@@ -1,0 +1,11 @@
+diff -Naur Miam-Player-0.8.0.orig/src/TabPlaylists/tabplaylist.cpp Miam-Player-0.8.0/src/TabPlaylists/tabplaylist.cpp
+--- Miam-Player-0.8.0.orig/src/TabPlaylists/tabplaylist.cpp	2018-06-02 16:23:48.136341159 +0000
++++ Miam-Player-0.8.0/src/TabPlaylists/tabplaylist.cpp	2018-06-02 16:24:21.563007192 +0000
+@@ -9,6 +9,7 @@
+ #include "cornerwidget.h"
+ 
+ #include <QDirIterator>
++#include <QHeaderView>
+ 
+ /** Default constructor. */
+ TabPlaylist::TabPlaylist(QWidget *parent)
