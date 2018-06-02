@@ -3,7 +3,7 @@
 pkgname=eventd
 pkgver=0.24.1
 _pkgdir=${pkgname}-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A small daemon to act on remote or local events"
 arch=(
     i686
@@ -69,6 +69,8 @@ build() {
 }
 
 check() {
+    # Workaround until next release
+    LC_ALL=C \
     ninja -C "${srcdir}"/build test
 }
 

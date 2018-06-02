@@ -1,7 +1,7 @@
 pkgbase = eventd
 	pkgdesc = A small daemon to act on remote or local events
 	pkgver = 0.24.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eventd.org
 	arch = i686
 	arch = x86_64
