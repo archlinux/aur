@@ -1,6 +1,6 @@
 pkgbase = repofish-git
-	pkgdesc = My friend told me to make available this script I wrote to manage my local archlinux repo and AUR packages, so here it is.
-	pkgver = r7.30423ad
+	pkgdesc = My friends told me to make available this script I wrote to manage my local archlinux repo and AUR packages, so here it is.
+	pkgver = r9.19d76f4
 	pkgrel = 1
 	url = https://git.seppia.net/repofish.git
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = repofish-git
 	depends = git
 	depends = jq
 	provides = repofish
-	conflicts = repofish
+	conflicts = repofish-git,repofish
 	source = repofish::git+https://git.seppia.net/repofish.git
 	md5sums = SKIP
 
