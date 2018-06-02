@@ -1,5 +1,5 @@
 ## arg 1:  the new package version
 post_install() {
 	echo "In order to use libervia, you need a XMPP account, sat-xmpp installed and configured. "
-        echo "Please read the instructions of the official documentation: https://wiki.goffi.org/wiki/Libervia/en""
+        echo "Please read the instructions of the official documentation: https://wiki.goffi.org/wiki/Libervia/en"
 }
