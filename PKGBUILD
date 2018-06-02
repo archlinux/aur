@@ -14,6 +14,7 @@ url="http://en.cataclysmdda.com/"
 arch=('i686' 'x86_64')
 license=("CCPL:by-sa")
 conflicts=('cataclysm-dda')
+conflicts=('cataclysm-dda' 'cataclysm-dda-ncurses' 'cataclysm-dda-tiles')
 depends=('ncurses' 'lua')
 makedepends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'git')
 optdepends=('sdl2_image: for tiles'
@@ -21,7 +22,6 @@ optdepends=('sdl2_image: for tiles'
             'freetype2: for tiles'
             'sdl2_mixer: for tiles')
 install=cataclysm-dda.install
-conflicts=('cataclysm-dda', 'cataclysm-dda-ncurses' 'cataclysm-dda-sdl-git')
 #source=("$pkgname"::'git://github.com/CleverRaven/Cataclysm-DDA.git#branch=master')
 # The git repo is more than a GB
 # so download a snapshot while waiting for shallow clone support in makepkg
@@ -76,7 +76,7 @@ package() {
   cp -r doc/* "$pkgdir/usr/share/doc/cataclysm-dda"
   # undo symlink
   rm "$pkgdir/usr/share/doc/cataclysm-dda/JSON_LOADING_ORDER.md"
-  cp 'data/json/LOADING_ORDER.md' "$pkgdir/usr/share/doc/cataclysm-dda/      JSON_LOADING_ORDER.md"
+  cp 'data/json/LOADING_ORDER.md' "$pkgdir/usr/share/doc/cataclysm-dda/JSON_LOADING_ORDER.md"
 
   # License
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
