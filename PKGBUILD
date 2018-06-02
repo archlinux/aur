@@ -2,8 +2,8 @@
 # Upstream URL: https://github.com/gabmus/ardhue
 
 pkgname=ardhue-git
-pkgver=0.1
-pkgrel=2
+pkgver=f09bd9a
+pkgrel=1
 pkgdesc='Interface to control ArdHue Arduino based digital RGB system'
 arch=('any')
 url='https://github.com/gabmus/ardhue'
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/ardhue"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --always --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
