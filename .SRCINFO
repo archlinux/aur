@@ -1,7 +1,7 @@
 pkgbase = aptik
 	pkgdesc = Command-line tool for migrating system settings and data for distributions based on Debian, Arch and Fedora.
 	pkgver = 18.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/teejee2008/aptik
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = aptik
 	makedepends = vala
 	depends = glib2
 	depends = libgee
+	depends = pv
 	provides = aptik
 	source = aptik_v18.5.2.tgz::https://github.com/teejee2008/aptik/archive/v18.5.2.tar.gz
 	sha256sums = f354e073a1bd62a886ea54d874007ae651fd2d13a2d32a1b96513ac12a5b43f3
