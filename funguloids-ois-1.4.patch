@@ -1,0 +1,33 @@
+From: Nicolas Iooss
+Date: Sat, 2 Jun 2018 15:51:40 +0200
+Subject: Fix compilation issues with OIS 1.4
+
+On Arch Linux, ois 1.4 moved the header files from /usr/include/OIS to
+/usr/include/ois. As pkg-config gives the right directory, use it
+implicitely instead of hard-coding it:
+
+    $ pkg-config --cflags OIS
+    -I/usr/include/oisdiff --git a/include/input.h b/include/input.h
+
+diff --git a/include/input.h b/include/input.h
+index 9ad27de740e3..1c9a7dbbeea8 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -29,12 +29,12 @@
+ //Use this define to signify OIS will be used as a DLL
+ //(so that dll import/export macros are in effect)
+ #define OIS_DYNAMIC_LIB
+-#include <OIS/OIS.h>
++#include <OIS.h>
+ 
+-#include <OIS/OISEvents.h>
+-#include <OIS/OISInputManager.h>
+-#include <OIS/OISMouse.h>
+-#include <OIS/OISKeyboard.h>
++#include <OISEvents.h>
++#include <OISInputManager.h>
++#include <OISMouse.h>
++#include <OISKeyboard.h>
+ 
+ 
+ class OgreAppFrameListener;

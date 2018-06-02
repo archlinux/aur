@@ -1,15 +1,15 @@
 pkgbase = funguloids
 	pkgdesc = 3D game about collecting mushrooms in outerspace
 	pkgver = 1.06.4
-	pkgrel = 10
+	pkgrel = 11
 	url = http://funguloids.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = python
 	depends = boost
-	depends = ogre
-	depends = ois
+	depends = ogre>=1.10
+	depends = ois>=0.7
 	depends = freealut
 	depends = lua51
 	depends = libogg
@@ -31,6 +31,8 @@ pkgbase = funguloids
 	source = funguloids-ogre-1.9.0.patch
 	source = funguloids-ogre-1.10.4.patch
 	source = funguloids-ogre-1.10.8.patch
+	source = funguloids-ois-1.4.patch
+	source = funguloids-ogre-1.11.0.patch
 	sha256sums = e9c9074a5d2de11690484a7e8eef7de9dd7d360ea72185ea35c54976646ef5cf
 	sha256sums = ceaf1c19d5ed694ff3832320ef6b6b268f73cbf16bc5998c15de47c77298885a
 	sha256sums = 753a8ac858ff21e81f2a3466092e297703d081689ceaa1159fe6cb42d97d06a6
@@ -47,6 +49,8 @@ pkgbase = funguloids
 	sha256sums = a007990ef35c249fe4440938553737d14f2dd8377407ee97fecdc6f17b1136ec
 	sha256sums = d00b04968aaaee97babd99ecca46cc22d567694fdcc341a5ff4124af9b08be95
 	sha256sums = 6d356bf604073f9314ec581439ad4e6d3d4ea00592e6340f6316c61af48bd863
+	sha256sums = ec9722d796781852bbeeb39d7a8b2493067c15180a8fd807cae2097aedc17074
+	sha256sums = 2bb7a71375256d89e6851bea025ac96a917b90c4299f04af8ef1f6837ef97ead
 
 pkgname = funguloids
 

@@ -1,0 +1,93 @@
+From: Nicolas Iooss
+Date: Sat, 2 Jun 2018 15:50:31 +0200
+Subject: Fix compilation issues with OGRE 1.11.0
+
+* Add OGRE-Bites to configure.ac and src/Makefile.am as it is now its own component
+* Drop OgreStableHeaders.h as it no longer exists
+* Fix use of deprecated API createSceneManager
+* Load FreeImage plugin as it is now a plugin
+diff --git a/bin/plugins.cfg.in b/bin/plugins.cfg.in
+index 88d28937023d..641d57085b1c 100644
+--- a/bin/plugins.cfg.in
++++ b/bin/plugins.cfg.in
+@@ -4,6 +4,7 @@
+ PluginFolder=%%ogreplugindir%%
+ 
+ # Define plugins
++Plugin=Codec_FreeImage
+ Plugin=RenderSystem_GL
+ Plugin=Plugin_ParticleFX
+ Plugin=Plugin_OctreeSceneManager
+diff --git a/configure.ac b/configure.ac
+index b1fcdcb380ec..cd6c8ef2eacc 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,11 +31,15 @@ AC_HEADER_STDC
+ AC_CHECK_HEADERS([stdlib.h string.h sys/param.h wchar.h])
+ 
+ # OGRE ----------------------------------------------------
+-PKG_CHECK_MODULES(OGRE, [OGRE >= 1.9.0])
++PKG_CHECK_MODULES(OGRE, [OGRE >= 1.10.0])
+ AC_SUBST(OGRE_CFLAGS)
+ AC_SUBST(OGRE_LIBS)
+ 
+-PKG_CHECK_MODULES(OGRE_OVERLAY, [OGRE-Overlay >= 1.9.0])
++PKG_CHECK_MODULES(OGRE_BITES, [OGRE-Bites >= 1.10.0])
++AC_SUBST([OGRE_BITES_CFLAGS])
++AC_SUBST([OGRE_BITES_LIBS])
++
++PKG_CHECK_MODULES(OGRE_OVERLAY, [OGRE-Overlay >= 1.10.0])
+ AC_SUBST([OGRE_OVERLAY_CFLAGS])
+ AC_SUBST([OGRE_OVERLAY_LIBS])
+ 
+diff --git a/include/ogreapp.h b/include/ogreapp.h
+index a62cc4919ad2..5c85922b5640 100644
+--- a/include/ogreapp.h
++++ b/include/ogreapp.h
+@@ -83,7 +83,7 @@ protected:
+ 
+ 	// Create the scene manager
+ 	virtual void createSceneManager() {
+-		mSceneMgr = mRoot->createSceneManager(ST_GENERIC);
++		mSceneMgr = mRoot->createSceneManager();
+ 	}
+ 
+ 	// Create the frame listener
+diff --git a/include/ogrelistener.h b/include/ogrelistener.h
+index e589f7e02b20..685ab04ef785 100644
+--- a/include/ogrelistener.h
++++ b/include/ogrelistener.h
+@@ -30,6 +30,7 @@
+ #include <OgreStringConverter.h>
+ #include <OgreException.h>
+ #include <OgreOverlay.h>
++#include <OgreWindowEventUtilities.h>
+ 
+ #include "input.h"
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 03b09ab3aa2e..644b00df1247 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,7 +1,7 @@
+ bininstall_PROGRAMS = funguloids
+ funguloids_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/include/SimpleIni
+-funguloids_LDADD = @OIS_LIBS@ @OGRE_LIBS@ @OGRE_OVERLAY_LIBS@ @LUA_LIBS@
+-funguloids_CXXFLAGS = @OIS_CFLAGS@ @OGRE_CFLAGS@ @OGRE_OVERLAY_CFLAGS@ @LUA_CFLAGS@
++funguloids_LDADD = @OIS_LIBS@ @OGRE_LIBS@ @OGRE_BITES_LIBS@ @OGRE_OVERLAY_LIBS@ @LUA_LIBS@
++funguloids_CXXFLAGS = @OIS_CFLAGS@ @OGRE_CFLAGS@ @OGRE_BITES_CFLAGS@ @OGRE_OVERLAY_CFLAGS@ @LUA_CFLAGS@
+ 
+ funguloids_SOURCES = asteroid.cpp \
+ 	ballworm.cpp \
+diff --git a/src/mpakogre.cpp b/src/mpakogre.cpp
+index 83e02b40346b..ab63bd6201e3 100644
+--- a/src/mpakogre.cpp
++++ b/src/mpakogre.cpp
+@@ -23,7 +23,6 @@
+ //
+ //***************************************************************************/
+ 
+-#include <OgreStableHeaders.h>
+ #include <OgreLogManager.h>
+ #include <OgreException.h>
+ #include <OgreStringVector.h>
