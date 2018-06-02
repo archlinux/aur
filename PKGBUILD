@@ -2,7 +2,8 @@
 pkgname=kawaii-player
 _pkgname=kawaii_player
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
+_pkgrel=1
 pkgdesc="A powerful Audio/Video manager, multimedia player and portable media server"
 arch=(any)
 url="https://github.com/kanishka-linux/kawaii-player"
@@ -13,23 +14,23 @@ optdepends=('mplayer: alternative backend')
 makedepends=('git')
 conflicts=('kawaii-player-git')
 install=kawaii-player.install
-source=("https://github.com/kanishka-linux/${pkgname}/releases/download/v${pkgver}-${pkgrel}/${pkgname}-${pkgver}-${pkgrel}.tar.bz2")
+source=("https://github.com/kanishka-linux/${pkgname}/releases/download/v${pkgver}-${_pkgrel}/${pkgname}-${pkgver}-${_pkgrel}.tar.bz2")
 md5sums=('a1af476bab93baa37c979f1c3e9c055c')
 
 build() {
-    cd ${srcdir}/${pkgname}-${pkgver}-${pkgrel}
+    cd ${srcdir}/${pkgname}-${pkgver}-${_pkgrel}
     python setup.py build
 }
 
 package() {
-    cd ${srcdir}/${pkgname}-${pkgver}-${pkgrel}
+    cd ${srcdir}/${pkgname}-${pkgver}-${_pkgrel}
 
     python setup.py install --root="${pkgdir}" --optimize=1
 
     install -dm755 "${pkgdir}/usr/share/applications/"
     install -dm755 "${pkgdir}/usr/share/pixmaps/"
 
-    cat "${srcdir}/${pkgname}-${pkgver}-${pkgrel}/${_pkgname}/resources/${pkgname}.desktop" | sed "s/Kawaii-Player/Kawaii Player/g" | sed "s/kawaii-player\/resources\/tray/pixmaps\/${pkgname}/g" | sed "s/Exec=/Exec=${pkgname}/g" > "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    cat "${srcdir}/${pkgname}-${pkgver}-${_pkgrel}/${_pkgname}/resources/${pkgname}.desktop" | sed "s/Kawaii-Player/Kawaii Player/g" | sed "s/kawaii-player\/resources\/tray/pixmaps\/${pkgname}/g" | sed "s/Exec=/Exec=${pkgname}/g" > "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    cp "${srcdir}/${pkgname}-${pkgver}-${pkgrel}/${_pkgname}/resources/tray.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    cp "${srcdir}/${pkgname}-${pkgver}-${_pkgrel}/${_pkgname}/resources/tray.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
