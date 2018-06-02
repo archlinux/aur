@@ -1,0 +1,14 @@
+pkgbase = hex
+	pkgdesc = Futuristic take on hexdump
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/sitkevij/hex
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	source = https://github.com/sitkevij/hex/archive/v0.1.2.tar.gz
+	sha512sums = fae7d2102c53e188235c943f9c37021d9536055f4fb3e24ff2f2e9b2dadcfce42d8bb58c802394138ff91b683ada82a9c04ab42d225bb62bed54859f5ca88a27
+
+pkgname = hex
+
