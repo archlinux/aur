@@ -34,6 +34,8 @@ typedef struct news_article {
 
 typedef struct info Info;
 
+typedef struct info_array Info_Array;
+
 struct info {
     /** API DATA **/
 
@@ -87,8 +89,7 @@ struct info {
     int num_articles;                   // Number of News pointers in array
 
     /* Peers */
-    Info** peers;                       // Array of symbol strings
-    int num_peers;                      // Number of symbols in array
+    Info_Array* peers;
 
     /** PORTFOLIO DATA **/
 
@@ -108,10 +109,10 @@ struct info {
     double profit_30d_percent;          // Profit since thirty days ago %
 };
 
-typedef struct info_array {
+struct info_array {
     Info** array;
     size_t length;
-} Info_Array;
+};
 
 /**
  * Allocates a News struct and returns a pointer to it.

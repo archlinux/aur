@@ -20,7 +20,7 @@ Info* api_info_init(void) {
             .fiscal_period[0][0] = '\0', .fiscal_period[1][0] = '\0', .fiscal_period[2][0] = '\0',
             .fiscal_period[3][0] = '\0', .eps_year_ago = {EMPTY, EMPTY, EMPTY, EMPTY}, .price_last_close = EMPTY,
             .price_7d = EMPTY, .price_30d = EMPTY, .points = NULL, .num_points = EMPTY, .articles = NULL,
-            .num_articles = EMPTY, .num_peers = 0, .amount = EMPTY, .total_spent = EMPTY, .current_value = 0,
+            .num_articles = EMPTY, .peers = NULL, .amount = EMPTY, .total_spent = EMPTY, .current_value = 0,
             .profit_total = EMPTY, .profit_total_percent = EMPTY, .profit_last_close = EMPTY,
             .profit_last_close_percent = EMPTY, .profit_7d = EMPTY, .profit_7d_percent = EMPTY, .profit_30d = EMPTY,
             .profit_30d_percent = EMPTY
@@ -328,16 +328,18 @@ void* iex_store_peers(void* vpInfo) {
         return NULL;
     }
 
-    size_t len = json_object_array_length(jobj);
+    size_t len = (int) json_object_array_length(jobj);
     if (len > MAX_PEERS)
         len = MAX_PEERS;
 
-    symbol_info->num_peers = (int) len;
-    symbol_info->peers = malloc(sizeof(Info*) * len);
+    symbol_info->peers = api_info_array_init();
+    symbol_info->peers->length = len;
+    symbol_info->peers->array = malloc(sizeof(Info*) * len);
+    pointer_alloc_check(symbol_info->peers->array);
     pthread_t threads[len];
     char syms[len][SYMBOL_MAX_LENGTH];
     for (size_t i = 0; i < len; i++) {
-        strcpy(syms[i], json_object_get_string(json_object_array_get_idx(jobj, i)));
+        strcpy(syms[i], json_object_get_string(json_object_array_get_idx(jobj, (size_t) i)));
         // Cast function to enable it as a thread entrypoint
         if (pthread_create(&threads[i], NULL, (void* (*)(void*)) api_get_check_info, (void*) syms[i]))
             EXIT_MSG("Error creating thread!");
@@ -348,7 +350,7 @@ void* iex_store_peers(void* vpInfo) {
         if (pthread_join(threads[i], &ret))
             EXIT_MSG("Error joining thread!")
 
-        symbol_info->peers[i] = ret;
+        symbol_info->peers->array[i] = ret;
     }
 
     json_object_put(jobj);
@@ -562,11 +564,9 @@ void api_info_destroy(Info** phInfo) {
             api_news_destroy(&pInfo->articles[i]);
 
     if (pInfo->peers != NULL)
-        for (int i = 0; i < pInfo->num_peers; i++)
-            api_info_destroy(&pInfo->peers[i]);
+        api_info_array_destroy(&pInfo->peers);
 
     free(pInfo->articles);
-    free(pInfo->peers);
     free(*phInfo);
     *phInfo = NULL;
 }
