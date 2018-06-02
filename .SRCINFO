@@ -7,6 +7,7 @@ pkgbase = perl-data-validate-ip
 	license = GPL
 	license = PerlArtistic
 	checkdepends = perl-test-requires
+	checkdepends = perl-test-taint
 	depends = perl
 	depends = perl-netaddr-ip
 	options = !emptydirs
