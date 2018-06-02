@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-systemd
 	pkgdesc = Start and stop systemd services
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/naraesk/plasma-systemd
 	arch = i686
@@ -11,8 +11,10 @@ pkgbase = plasma5-applets-systemd
 	makedepends = ki18n
 	makedepends = qt5-base
 	makedepends = qt5-declarative
-	source = https://github.com/naraesk/plasma-systemd/archive/v1.1.1.tar.gz
-	md5sums = 6d94524059ef6ef77f8576a07304d307
+	makedepends = qt5-tools
+	depends = plasma-workspace
+	source = https://github.com/naraesk/plasma-systemd/archive/v1.2.0.tar.gz
+	md5sums = 6d0d55e7b71d6e8c0dad3de971b4e0dc
 
 pkgname = plasma5-applets-systemd
 
