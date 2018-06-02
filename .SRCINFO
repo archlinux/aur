@@ -1,6 +1,6 @@
 pkgbase = unity-editor-facebook
 	pkgdesc = Allows building your Unity projects for the Facebook-Games platform
-	pkgver = 2018.1.0f2+20180504
+	pkgver = 2018.1.2f1+20180504
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = unity-editor-facebook
 	makedepends = libarchive
 	depends = unity-editor
 	options = !strip
-	source = http://beta.unity3d.com/download/170f0691b973/UnitySetup-2018.1.0f2
-	sha1sums = 36104fa796172f3b9845e7c84aaccc7902b68ce2
+	source = http://beta.unity3d.com/download/3709a3f954c1/UnitySetup-2018.1.2f1
+	sha1sums = 8cb7bb1e3f753af55af8acceefad4ad26dd71b77
 
 pkgname = unity-editor-facebook
 
