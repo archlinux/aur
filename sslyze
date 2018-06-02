@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+export PYTHONPATH="/opt/sslyze:/opt/sslyze/lib"
+python -m sslyze $@
