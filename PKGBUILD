@@ -20,7 +20,7 @@ prepare () {
   cd "$srcdir/hdf5-${pkgver/_/-}"
 
   # run H5detect.exe, H5make_libsettings.exe through wine
-  sed "s|set (CMD $<TARGET_FILE:H5|set (CMD /usr/bin/@ARCH@-wine $<TARGET_FILE:H5|g" src/CMakeLists.txt > src/CMakeLists.txt.in
+  cp src/CMakeLists.txt src/CMakeLists.txt.orig
 
   # do not use msvc import suffix
   sed -i "s|MINGW AND \${libtype} MATCHES \"SHARED\"|0|g" config/cmake_ext_mod/HDFMacros.cmake
@@ -40,10 +40,9 @@ prepare () {
 }
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir/hdf5-${pkgver/_/-}"
   for _arch in $_architectures; do
-    cp -r hdf5-${pkgver/_/-} hdf5-${_arch} && pushd hdf5-${_arch}
-    sed "s|@ARCH@|${_arch}|g" src/CMakeLists.txt.in > src/CMakeLists.txt
+    sed "s|COMMAND \$<TARGET_FILE:H5|COMMAND /usr/bin/${_arch}-wine \$<TARGET_FILE:H5|g" src/CMakeLists.txt.orig > src/CMakeLists.txt
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
@@ -52,7 +51,6 @@ build() {
       -DHDF5_BUILD_EXAMPLES=OFF \
       ..
     make
-    popd
     popd
   done
 }
