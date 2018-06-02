@@ -1,19 +1,21 @@
-# Contributor: asm0dey <pavel.finkelshtein@gmail.com>
+# Maintainer: asm0dey <pavel.finkelshtein@gmail.com>
 pkgname=panotourpro
-pkgver=2.5.9
-_pkgver=259_2017-12-20
+pkgver=2.5.11
+_pkgver=2511_201804-10
 _pkgname=PanotourPro
 pkgrel=1
 pkgdesc='Create pro-quality virtual tours (trial version).'
 arch=('x86_64')
 url='http://kolor.com/'
 license=('custom: "commercial"')
-depends=('qt5-base' 'libsrtp0')
+depends=('qt5-base' 'libsrtp0' 'pango' 'gstreamer0.10' 'taglib' 'schroedinger' 'libcddb' 'twolame' 'libmad' 'zvbi' 'libshout')
 install=$pkgname.install
 
   source=("PanotourPro_Linux64_$_pkgver.tar.gz::http://download.kolor.com/ptp/stable/linux64targz"
-  "$pkgname" "$pkgname.desktop" "$pkgname.png")
-md5sums=('889f62c426d55b5d4313a9f1d0b234df'
+          "$pkgname" 
+          "$pkgname.desktop" 
+          "$pkgname.png")
+md5sums=('4a7c1b910e2ca1ad0b5ef18eaf5351ea'
          '2fb0de89c4749a8a50c7a8fe14555d98'
          '361fb305589d79e1047f57c8809a6a30'
          '38a6cdebc5175c97a5cd0a8cac4b1b11')
