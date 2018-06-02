@@ -27,4 +27,8 @@ package() {
     for execname in "${execnames[@]}"; do
         ln -s /opt/activitywatch/$execname $pkgdir/usr/bin/$execname
     done
+
+    # Add .desktop file for autostart
+    mkdir -p $pkgdir/etc/xdg/autostart
+    cp activitywatch/aw-qt.desktop $pkgdir/etc/xdg/autostart
 }
