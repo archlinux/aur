@@ -108,6 +108,11 @@ struct info {
     double profit_30d_percent;          // Profit since thirty days ago %
 };
 
+typedef struct info_array {
+    Info** array;
+    size_t length;
+} Info_Array;
+
 /**
  * Allocates a News struct and returns a pointer to it.
  * @return News*
@@ -120,6 +125,12 @@ News* api_news_init(void);
  * @return Info*
  */
 Info* api_info_init(void);
+
+/**
+ * Allocates an Info_Array struct with length 0.
+ * @return Info_Array*
+ */
+Info_Array* api_info_array_init(void);
 
 /**
  * writefunction for cURL HTTP GET/POST
@@ -204,6 +215,13 @@ void* iex_store_news(void* vpInfo);
 void* iex_store_peers(void* vpInfo);
 
 /**
+ * After API data and portfolio have already been collected, uses them to populate the Info fields current_value and
+ * all the profit fields.
+ * @param pInfo Info*
+ */
+void calculate_check_data(Info* pInfo);
+
+/**
  * Designed for threading
  *
  * Queries Morningstar's API and stores the data in the Info object pointed to by vpInfo. price, change_1d,
@@ -281,5 +299,11 @@ void api_news_destroy(News** phNews);
  * @param phInfo the Info to destroy
  */
 void api_info_destroy(Info** phInfo);
+
+/**
+ * Destroys Info_Array object and frees memory. Sets the pointer to the Info to NULL
+ * @param phInfo_Array the Info_Array to destroy
+ */
+void api_info_array_destroy(Info_Array** phInfo_Array);
 
 #endif

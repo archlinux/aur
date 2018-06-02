@@ -28,6 +28,14 @@ Info* api_info_init(void) {
     return pInfo;
 }
 
+Info_Array* api_info_array_init(void) {
+    Info_Array* pInfo_Array = malloc(sizeof(Info_Array));
+    pointer_alloc_check(pInfo_Array);
+    pInfo_Array->array = NULL;
+    pInfo_Array->length = 0;
+    return pInfo_Array;
+}
+
 size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pString) {
     size_t new_len = pString->len + size * nmemb;
     pString->data = realloc(pString->data, new_len + 1);
@@ -347,6 +355,34 @@ void* iex_store_peers(void* vpInfo) {
     return NULL;
 }
 
+void calculate_check_data(Info* pInfo) {
+    if (pInfo->amount == EMPTY)
+        return;
+
+    if (strcmp(pInfo->symbol, "USD$") != 0) {
+        pInfo->current_value = pInfo->amount * pInfo->price;
+        pInfo->profit_total = pInfo->current_value - pInfo->total_spent;
+        pInfo->profit_total_percent = 100 * (pInfo->current_value / pInfo->total_spent - 1);
+        pInfo->profit_last_close = pInfo->amount * (pInfo->price - pInfo->price_last_close);
+        pInfo->profit_last_close_percent = 100 * (pInfo->current_value / (pInfo->current_value -
+                                                                          pInfo->profit_last_close) - 1);
+        pInfo->profit_7d = pInfo->amount * (pInfo->price - pInfo->price_7d);
+        pInfo->profit_7d_percent = 100 * (pInfo->current_value / (pInfo->current_value - pInfo->profit_7d) - 1);
+        pInfo->profit_30d = pInfo->amount * (pInfo->price - pInfo->price_30d);
+        pInfo->profit_30d_percent = 100 * (pInfo->current_value / (pInfo->current_value - pInfo->profit_30d) - 1);
+    } else {
+        pInfo->current_value = pInfo->amount;
+        pInfo->profit_total = pInfo->current_value - pInfo->total_spent;
+        pInfo->profit_total_percent = 100 * pInfo->profit_total / pInfo->total_spent;
+        pInfo->profit_last_close = 0;
+        pInfo->profit_last_close_percent = 0;
+        pInfo->profit_7d = 0;
+        pInfo->profit_7d_percent = 0;
+        pInfo->profit_30d = 0;
+        pInfo->profit_30d_percent = 0;
+    }
+}
+
 void* morningstar_store_info(void* vpInfo) {
     Info* symbol_info = vpInfo;
     char today_str[DATE_MAX_LENGTH], five_year_str[DATE_MAX_LENGTH], morningstar_api_string[URL_MAX_LENGTH];
@@ -415,6 +451,7 @@ void* coinmarketcap_store_info(void* vpInfo) {
             (strtod(json_object_get_string(json_object_object_get(data, "percent_change_24h")), NULL) / 100 + 1);
     symbol_info->price_7d = symbol_info->price /
             (strtod(json_object_get_string(json_object_object_get(data, "percent_change_7d")), NULL) / 100 + 1);
+    symbol_info->price_30d = symbol_info->price_7d;
     symbol_info->marketcap = strtol(json_object_get_string(json_object_object_get(data, "market_cap_usd")), NULL, 10);
     symbol_info->volume_1d = strtol(json_object_get_string(json_object_object_get(data, "24h_volume_usd")), NULL, 10);
     symbol_info->intraday_time = strtol(json_object_get_string(json_object_object_get(data, "last_updated")), NULL, 10);
@@ -530,4 +567,13 @@ void api_info_destroy(Info** phInfo) {
     free(pInfo->articles);
     free(*phInfo);
     *phInfo = NULL;
+}
+
+void api_info_array_destroy(Info_Array** phInfo_Array) {
+    Info_Array* pInfo_Array = *phInfo_Array;
+    for (size_t i = 0; i < pInfo_Array->length; i++)
+        api_info_destroy(&pInfo_Array->array[i]);
+    free(pInfo_Array->array);
+    free(*phInfo_Array);
+    *phInfo_Array = NULL;
 }
