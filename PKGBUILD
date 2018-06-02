@@ -6,7 +6,7 @@ pkgdesc="OpenMesh Python bindings"
 arch=('i686' 'x86_64')
 url="http://www.openmesh.org"
 license=('BSD')
-makedepends=('cmake')
+makedepends=('cmake' 'pybind11')
 depends=('openmesh' 'python')
 source=("https://graphics.rwth-aachen.de:9000/OpenMesh/openmesh-python/-/archive/${pkgver}/openmesh-python-${pkgver}.tar.bz2"
         CMakeLists.txt)
