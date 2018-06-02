@@ -11,20 +11,22 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.67.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=3
 url='http://www.boost.org/'
 arch=('x86_64')
 license=('custom')
 makedepends=('icu' 'python' 'python2' 'python-numpy' 'python2-numpy' 'bzip2' 'zlib' 'openmpi')
 source=(https://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${_boostver}.tar.bz2
-        776.patch)
+        lockfree-add-include-boost-next_prior.patch
+        fix-return-var-qualifier-in-svm_ptr-get_context.patch)
 sha256sums=('2684c972994ee57fc5632e03bf044746f6eb45d4920c343937a465fd67a5adba'
+            '2639c43e33f9279ffbebf270be0e0951b9f0e7a8264f8c3bfebb5b9901da2db6'
             '43cdc2081f90d2acc7e4d9de6689bce07b2a1b4754e85dc7fa50872afa330ffa')
 
 prepare() {
-   cd ${pkgbase}_${_boostver}/boost
-
-   patch -Np3 -i "$srcdir"/776.patch
+   cd ${pkgbase}_${_boostver}
+   patch -Np2 -i ../lockfree-add-include-boost-next_prior.patch
+   patch -Np2 -i ../fix-return-var-qualifier-in-svm_ptr-get_context.patch
 }
 
 build() {
