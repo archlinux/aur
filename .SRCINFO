@@ -1,0 +1,18 @@
+pkgbase = isis
+	pkgdesc = ISIS is designed to facilitate the interpretation and analysis of high resolution X-ray spectra.
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = http://space.mit.edu/asc/isis/
+	install = isis.install
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-fortran
+	depends = slang
+	depends = heasoft
+	depends = pgplot
+	depends = cfitsio
+	source = ftp://space.mit.edu/pub/cxc/ISIS/isis-1.6.2-41.tar.gz
+	sha1sums = 35ae652287fb701f8f524b13f80d7d83f50ce418
+
+pkgname = isis
+

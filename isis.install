@@ -1,0 +1,8 @@
+post_install(){
+
+    _pkgver=$(echo $1 | cut -d'-' -f1)
+	echo -e "Add isis to your path:\n"
+	echo -e "\texport PATH=\$PATH:/opt/isis/isis/${_pkgver}/bin/"
+}
+
+# vim:set ts=4 sw=4 et:
