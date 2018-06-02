@@ -77,8 +77,8 @@ _py_sitepkg_dir="/usr/lib/python2.7/site-packages"
 # Determine the installed OCaml package version
 # Arguments: NONE
 _ocamlver() {
-    { pacman -Q ocaml 2>/dev/null || echo 'ocaml 0.0.0-0' ;} \
-            | awk '{ print $2 }' | cut -d - -f 1 | cut -d . -f 1,2,3
+    { pacman -Q ocaml 2>/dev/null || pacman -Sp --print-format '%n %v' ocaml ;} \
+        | awk '{ print $2 }' | cut -d - -f 1 | cut -d . -f 1,2,3
 }
 
 # Fix the Python interpreter path in .py files to point to python2
