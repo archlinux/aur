@@ -3,7 +3,7 @@
 
 pkgname=ardhue-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface to control ArdHue Arduino based digital RGB system'
 arch=('any')
 url='https://github.com/gabmus/ardhue'
