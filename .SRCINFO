@@ -1,0 +1,15 @@
+pkgbase = wtfutil-git
+	pkgdesc = Personal information dashboard for your terminal
+	pkgver = r402.e266059
+	pkgrel = 1
+	url = https://wtfutil.com
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = wtfutil
+	conflicts = wtfutil
+	source_x86_64 = git://github.com/senorprogrammer/wtf.git
+	sha256sums_x86_64 = SKIP
+
+pkgname = wtfutil-git
+
