@@ -1,6 +1,6 @@
-diff -ruN librsvg-2.42.4/Makefile.am librsvg-2.42.4-patched/Makefile.am
---- librsvg-2.42.4/Makefile.am	2018-05-08 02:33:46.000000000 +0800
-+++ librsvg-2.42.4-patched/Makefile.am	2018-05-16 15:05:00.000000000 +0800
+diff -ruN librsvg-2.42.5/Makefile.am librsvg-2.42.5-patched/Makefile.am
+--- librsvg-2.42.5/Makefile.am	2018-05-08 02:33:46.000000000 +0800
++++ librsvg-2.42.5-patched/Makefile.am	2018-05-16 15:05:00.000000000 +0800
 @@ -117,7 +117,7 @@
  endif
  
@@ -38,9 +38,9 @@ diff -ruN librsvg-2.42.4/Makefile.am librsvg-2.42.4-patched/Makefile.am
  
  librsvgincdir = $(includedir)/librsvg-$(RSVG_API_VERSION)/librsvg
  librsvginc_HEADERS =			\
-diff -ruN librsvg-2.42.4/Makefile.in librsvg-2.42.4-patched/Makefile.in
---- librsvg-2.42.4/Makefile.in	2018-05-16 16:11:03.000000000 +0800
-+++ librsvg-2.42.4-patched/Makefile.in	2018-05-16 15:05:00.000000000 +0800
+diff -ruN librsvg-2.42.5/Makefile.in librsvg-2.42.5-patched/Makefile.in
+--- librsvg-2.42.5/Makefile.in	2018-05-16 16:11:03.000000000 +0800
++++ librsvg-2.42.5-patched/Makefile.in	2018-05-16 15:05:00.000000000 +0800
 @@ -223,7 +223,7 @@
  LTLIBRARIES = $(lib_LTLIBRARIES)
  am__DEPENDENCIES_1 =

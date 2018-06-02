@@ -1,6 +1,6 @@
-diff -ruN librsvg-2.42.4/configure.ac librsvg-2.42.4-patched/configure.ac
---- librsvg-2.42.4/configure.ac	2018-05-08 02:33:46.000000000 +0800
-+++ librsvg-2.42.4-patched/configure.ac	2018-05-16 15:05:00.000000000 +0800
+diff -ruN librsvg-2.42.5/configure.ac librsvg-2.42.5-patched/configure.ac
+--- librsvg-2.42.5/configure.ac	2018-05-08 02:33:46.000000000 +0800
++++ librsvg-2.42.5-patched/configure.ac	2018-05-16 15:05:00.000000000 +0800
 @@ -119,6 +119,22 @@
  AC_MSG_RESULT([$native_win32])
  AM_CONDITIONAL(OS_WIN32, test "$native_win32" = "yes")
