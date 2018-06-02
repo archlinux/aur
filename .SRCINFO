@@ -1,0 +1,17 @@
+pkgbase = arxivcheck
+	pkgdesc = Generate a bibtex given a arxiv id or title, check if published
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/bibcure/arxivcheck
+	arch = any
+	license = AGPL3
+	depends = python-future
+	depends = python-unidecode
+	depends = python-feedparser
+	depends = python-bibtexparser
+	depends = doi2bib
+	source = arxivcheck-0.3.1.tar.gz::https://github.com/bibcure/arxivcheck/archive/0.3.1.tar.gz
+	sha256sums = ce833cdbc6e3145180167e43462757453150bd2eaafe62c00f4a6349c0716837
+
+pkgname = arxivcheck
+
