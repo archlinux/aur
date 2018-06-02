@@ -1,15 +1,15 @@
 pkgbase = title2bib
 	pkgdesc = Generate a bibtex given a title
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bibcure/title2bib
 	arch = any
 	license = AGPL3
-	depends = python-requests
-	depends = python-future
+	depends = python2-requests
+	depends = python2-future
 	depends = doi2bib
 	depends = arxivcheck
-	depends = python-unidecode
+	depends = python2-unidecode
 	source = title2bib-0.3.0.tar.gz::https://github.com/bibcure/title2bib/archive/0.3.0.tar.gz
 	sha256sums = 13ef886aea31aa70d281531637dff4bb9b1ed5ff2bd29ef6b091ac5dedbd71c8
 
