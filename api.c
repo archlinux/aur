@@ -332,13 +332,14 @@ void* iex_store_peers(void* vpInfo) {
     if (len > MAX_PEERS)
         len = MAX_PEERS;
 
+    symbol_info->num_peers = (int) len;
     symbol_info->peers = malloc(sizeof(Info*) * len);
     pthread_t threads[len];
-    char temp_symbol[SYMBOL_MAX_LENGTH];
+    char syms[len][SYMBOL_MAX_LENGTH];
     for (size_t i = 0; i < len; i++) {
-        strcpy(temp_symbol, json_object_get_string(json_object_array_get_idx(jobj, i)));
+        strcpy(syms[i], json_object_get_string(json_object_array_get_idx(jobj, i)));
         // Cast function to enable it as a thread entrypoint
-        if (pthread_create(&threads[i], NULL, (void* (*)(void*)) api_get_check_info, (void*) temp_symbol))
+        if (pthread_create(&threads[i], NULL, (void* (*)(void*)) api_get_check_info, (void*) syms[i]))
             EXIT_MSG("Error creating thread!");
     }
 
@@ -565,6 +566,7 @@ void api_info_destroy(Info** phInfo) {
             api_info_destroy(&pInfo->peers[i]);
 
     free(pInfo->articles);
+    free(pInfo->peers);
     free(*phInfo);
     *phInfo = NULL;
 }
