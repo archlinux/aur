@@ -3,12 +3,12 @@
 pkgname=playmymusic
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="Melody is a music player for Pantheon"
+pkgdesc="Melody is a music player for Pantheon, developed by Artem Anufrij"
 arch=('x86_64')
 url="http://anufrij.org/melody/"
 license=('GPL3')
 depends=('libgranite.so' 'libsoup' 'gst-plugins-base-libs' 'taglib' 'gtk3')
-makedepends=('cmake' 'vala')
+makedepends=('meson' 'vala')
 optdepends=('gst-plugins-base: "Base" plugin libraries'
             'gst-plugins-good: "Good" plugin libraries'
             'gst-plugins-bad: "Bad" plugin libraries'
