@@ -1,18 +1,18 @@
 # Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
 
 pkgname=crate
-pkgver=2.3.9
+pkgver=2.3.11
 pkgrel=1
 pkgdesc="Shared nothing, fully searchable, document oriented cluster datastore."
 arch=('x86_64')
-url='http://crate.io'
+url='https://crate.io'
 license=('custom:APACHE')
 depends=('java-runtime=8' 'python')
 install='crate.install'
 source=("https://cdn.crate.io/downloads/releases/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.env")
-sha256sums=('4886b4979e00f71afe57ea93bec6bfdbaff3f923eca162f0767bed114b9c8304'
+sha256sums=('45c4b8994c3888fee830a8bf3e975aec8f992209f87865e0477a90b7567d8edb'
 	          '04b36b561498332b1b569e49b42d0bedf04141de07b7b16ff1b06072673cfd21'
             '6182b8d527d52de4fc80023827518b2e8d873afdda873ef6bd2ed92b91982f75')
 
