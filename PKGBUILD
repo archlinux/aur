@@ -1,6 +1,6 @@
 pkgname=mingw-w64-paraview
 _majordotminor=5.5
-pkgver=${_majordotminor}.0
+pkgver=${_majordotminor}.1
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
@@ -11,9 +11,11 @@ depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mi
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-wine')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${_pkgver}.tar.gz"
-        "vtk-fix-jsoncpp-module.patch")
-sha256sums=('1b619e326ff574de808732ca9a7447e4cd14e94ae6568f55b6581896cd569dff'
-            '86af85dddde9d02877d6eda60c440db3ae903e525238d4dc19be7a25a92597f7')
+        "vtk-fix-jsoncpp-module.patch"
+        "support-qt5.11.patch")
+sha256sums=('a6e67a95a7a5711a2b5f95f38ccbff4912262b3e1b1af7d6b9afe8185aa85c0d'
+            '86af85dddde9d02877d6eda60c440db3ae903e525238d4dc19be7a25a92597f7'
+            '4a6103ddaf51ada6011ecc752ce9abde227bf5deb35bccf08b94a8db97e5a51c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -28,6 +30,9 @@ prepare() {
 
   # https://gitlab.kitware.com/vtk/vtk/merge_requests/4107
   patch -p1 -i "${srcdir}/vtk-fix-jsoncpp-module.patch"
+
+  # https://gitlab.kitware.com/paraview/paraview/merge_requests/2474
+  patch -p1 -i "${srcdir}/support-qt5.11.patch"
 }
 
 build() {
