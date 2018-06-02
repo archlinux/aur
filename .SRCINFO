@@ -6,6 +6,7 @@ pkgbase = ruby-kaitai-struct
 	arch = any
 	license = MIT
 	depends = ruby
+	depends = ruby-rdoc
 	noextract = kaitai-struct-0.8.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/kaitai-struct-0.8.gem
