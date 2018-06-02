@@ -1,7 +1,7 @@
 pkgbase = vicare-scheme
 	pkgdesc = R6RS scheme implementation
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://marcomaggi.github.io/vicare.html
 	arch = i686
 	arch = x86_64

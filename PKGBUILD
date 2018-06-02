@@ -3,7 +3,7 @@
 pkgname=vicare-scheme  
 pkgver=0.4.1
 _subver=devel.3
-pkgrel=1
+pkgrel=2
 pkgdesc="R6RS scheme implementation"
 url="http://marcomaggi.github.io/vicare.html"
 arch=('i686' 'x86_64')
@@ -19,11 +19,11 @@ build() {
 }
 
 check() {
-  cd "$pkgname-${pkgver}${_subver}/build"
+  cd "$pkgname-${pkgver}-${_subver}"
   make check||true
 }
 
 package() {
-  cd "$pkgname-${pkgver}${_subver}"
+  cd "$pkgname-${pkgver}-${_subver}"
   make DESTDIR=$pkgdir install
 }
