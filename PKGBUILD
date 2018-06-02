@@ -1,7 +1,7 @@
 # Maintainer: Bruno Inec <brunoinec at gmail dot com>
 pkgname=wtfutil
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal information dashboard for your terminal"
 arch=('x86_64')
 url="https://wtfutil.com"
