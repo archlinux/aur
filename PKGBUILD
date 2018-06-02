@@ -1,4 +1,5 @@
-# Maintainer: Michał Szymański <smiszym at gmail dot com>
+# Maintainer:
+# Contributor: Michał Szymański <smiszym at gmail dot com>
 # Contributor: rtfreedman  (rob<d0t>til<d0t>freedman<aT>googlemail<d0t>com
 # Contributor: Philipp Überbacher <murks at lavabit dot com>
 
@@ -6,12 +7,12 @@ pkgname=traverso
 pkgver=0.49.5
 pkgrel=1
 pkgdesc="Digital Audio Workstation with an innovative User Interface"
-arch=('i686' 'x86_64')
-url="http://traverso-daw.org/"
+arch=('x86_64')
+url="https://traverso-daw.org/"
 license=('GPL')
 depends=('qt5-base' 'jack' 'fftw' 'wavpack' 'lame' 'libmad' 'lilv' 'hicolor-icon-theme')
 makedepends=('cmake')
-source=("http://traverso-daw.org/traverso-0.49.5.tar.gz")
+source=("https://traverso-daw.org/$pkgname-$pkgver.tar.gz")
 sha256sums=('75980d93e600d9cca0ee086819e2c8c07740631c4da096b78aec00e432d62d99')
 
 prepare() {
