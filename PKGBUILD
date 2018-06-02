@@ -5,22 +5,13 @@ pkgver=0.5
 pkgrel=3
 pkgdesc="Program to help manage many of XKB features of X window."
 arch=(i686 x86_64)
-url="http://www.math.missouri.edu/~stephen/software/#xkbset"
-license=('custom:BSD')
+url="https://faculty.missouri.edu/~stephen/software/#xkbset"
+license=('BSD')
 groups=()
-depends=(libx11)
-makedepends=(coreutils)
+depends=('libx11')
 optdepends=(perl-tk)
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=(http://faculty.missouri.edu/~stephen/software/xkbset/$pkgname-$pkgver.tar.gz)
-noextract=()
-md5sums=('282c416a76a237fa84a7b513c9d7b2cf')
+sha256sums=('01c2579495b39e00d870f50225c441888dc88021e9ee3b693a842dd72554d172')
 
 build() {
   sed -r \
@@ -37,6 +28,7 @@ package() {
   install -d "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man1"
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
+  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
 }
 
 # vim:set ts=2 sw=2 et:
