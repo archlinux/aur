@@ -9,7 +9,7 @@ license=('GPL')
 conflicts=('sodalite')
 makedepends=('git' 'awk' )
 depends=('python-binaryornot' 'python-urwid' 'python-yaml' 
-'python-pyperclip' 'python-pygments' 'xdg-utils')
+'python-pyperclip' 'python-pygments' 'xdg-utils' 'python-watchdog')
 source=('git+https://github.com/hnicke/sodalite.git')
 md5sums=('SKIP')
 install=sodalite.install
