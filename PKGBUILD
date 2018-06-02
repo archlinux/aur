@@ -16,7 +16,7 @@ depends=('opencv'
 makedepends=('cmake'
              'git'
              'opencl-headers'
-             'gcc6'
+             'gcc7'
              )
 provides=('waifu2x-converter-cpp'
           'waifu2x'
@@ -41,7 +41,6 @@ prepare() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
-    -DCUDA_CUDA_LIBRARY=/opt/cuda/lib64/stub/libcuda.so \
     -DCUDA_NVCC_FLAGS='-std=c++11' \
     -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
     -DINSTALL_MODELS=ON \
