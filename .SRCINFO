@@ -1,0 +1,17 @@
+pkgbase = robco-terminal-git
+	pkgver = 0.0.0
+	pkgrel = 1
+	install = robco-terminal.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = mkinitcpio-colors-git
+	makedepends = setcolors-git
+	depends = mkinitcpio-colors-git
+	depends = setcolors-git
+	optdepends = tilix: installs robco theme to the terminal
+	source = robco-terminal-git::git+https://github.com/emersont1/robco-terminal#branch=master
+	md5sums = SKIP
+
+pkgname = robco-terminal-git
+

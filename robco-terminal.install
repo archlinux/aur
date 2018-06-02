@@ -1,0 +1,63 @@
+## arg 1:  the new package version
+pre_install() {
+  echo "backing up /etc/profile & /etc/vconsole.conf"
+	cp /etc/profile /etc/profile.robco-old
+  cp /etc/vconsole.conf /etc/vconsole.conf.robco-old
+  cp /etc/issue /etc/issue.robco-old
+  cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.robco-old
+}
+
+## arg 1:  the new package version
+post_install() {
+  cat usr/share/robco/setcolors-template | sed 's/^\(.*\)#\(.\{6\}\).*$/COLOR_\1=\2/' >> etc/vconsole.conf
+  echo -e "#robco intro\n. /usr/share/robco/robco_shell.sh" >> /etc/profile
+  cp /usr/share/robco/issue /etc/issue
+#  cat /etc/mkinitcpio.conf | sed 's/^HOOKS\=\\(\(.*\)colors\(.*\)\\)$/HOOKS=\(\1 \2\)/' | sed 's/^HOOKS\=\((.+)\)$/HOOKS=(colors \1)/'
+cat /etc/mkinitcpio.conf | sed 's/ *colors */ /' | sed -r 's/^HOOKS=\((.+)\)$/HOOKS=(colors \1)/' > /etc/mkinitcpio.confnew
+cp /etc/mkinitcpio.confnew /etc/mkinitcpio.conf
+rm /etc/mkinitcpio.confnew
+mkinitcpio -p linux
+
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	echo "pre upgrade - no steps"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	echo "post upgrade - no steps"
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	echo "pre remove - no steps"
+}
+
+## arg 1:  the old package version
+post_remove() {
+if [[ -e /etc/profile.robco-old ]]; then
+  echo restoring old etc/profile
+  cp  /etc/profile.robco-old /etc/profile
+  rm /etc/profile.robco-old
+fi
+if [[ -e /etc/vconsole.conf.robco-old ]]; then
+  echo restoring old etc/vconsole.conf
+  cp  /etc/vconsole.conf.robco-old /etc/vconsole.conf
+  rm /etc/vconsole.conf.robco-old
+fi
+if [[ -e /etc/issue.robco-old ]]; then
+  echo restoring old etc/issue
+  cp  /etc/issue.robco-old /etc/issue
+  rm /etc/issue.robco-old
+fi
+if [[ -e /etc/mkinitcpio.conf.robco-old ]]; then
+  echo restoring old etc/issue
+  cp /etc/mkinitcpio.conf.robco-old /etc/mkinitcpio.conf
+  rm /etc/mkinitcpio.conf.robco-old
+fi
+mkinitcpio -p linux
+}
