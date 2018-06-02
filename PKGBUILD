@@ -16,17 +16,17 @@ depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
          'intel-tbb>=3.0' 'libccd>=1.4' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
          'ogre' 'protobuf>=2.3.0' 'sdformat>=6.0.0' 'ignition-math>=4' 'ignition-transport>=4'
          'ignition-common' 'ignition-fuel_tools' 'ignition-msgs' 'tinyxml2' 'qwt')
-optdepends=('bullet>=2.82: Bullet support'
-            'cegui>=0.8.3: Design custom graphical interfaces'
+optdepends=('bullet: Bullet support'
+            'cegui: Design custom graphical interfaces'
             'ffmpeg: Playback movies on textured surfaces'
             'gdal: Digital elevation terrains support'
-            'libdart>=3.0: DART support'
+            'libdart: DART support'
             'libspnav: space navigator joystick support'
             'libusb: USB peripherals support'
             'ruby-ronn: Generate manpages'
-            'simbody>=3.3: Simbody support'
+            'simbody: Simbody support'
             'urdfdom: Load URDF files')
-makedepends=('cmake' 'doxygen' 'pkg-config>=0.26')
+makedepends=('cmake' 'doxygen' 'pkgconf>=0.26')
 install="${pkgname}.install"
 source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${pkgname}-${pkgver}.tar.bz2" "ogre-1.10.patch")
 sha256sums=('2c29955d476c97dc0ccbb1c8295ec6e8ffe203d7bc6047c1f34433a82ab9215e'
@@ -40,6 +40,11 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  sed -i -e 's/CODEC_CAP_TRUNCATED/AV_CODEC_CAP_TRUNCATED/g' gazebo/common/AudioDecoder.cc
+  sed -i -e 's/CODEC_FLAG_TRUNCATED/AV_CODEC_FLAG_TRUNCATED/g' gazebo/common/AudioDecoder.cc
+  
+  sed -i -e 's/CODEC_CAP_TRUNCATED/AV_CODEC_CAP_TRUNCATED/g' gazebo/common/Video.cc
+  sed -i -e 's/CODEC_FLAG_TRUNCATED/AV_CODEC_FLAG_TRUNCATED/g' gazebo/common/Video.cc
   mkdir -p build && cd build
 
   # Note: we skip unit tests (else set to TRUE)
