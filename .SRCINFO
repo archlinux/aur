@@ -1,0 +1,16 @@
+pkgbase = libvdpau-tegra-git
+	pkgdesc = VDPAU backend driver for NVIDIA Tegra 20/30 SoC's
+	pkgver = r110.6a17ba7
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/VDPAU/
+	arch = armv7h
+	license = custom
+	makedepends = dri2proto
+	makedepends = git
+	depends = libxext
+	provides = libvdpau-tegra
+	source = git+https://github.com/grate-driver/libvdpau-tegra
+	sha256sums = SKIP
+
+pkgname = libvdpau-tegra-git
+
