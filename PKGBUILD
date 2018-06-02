@@ -19,6 +19,8 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/lib/qt/plugins/styles/"
-	cp "$pkgname-$pkgver/libContemporary.so" "$pkgdir/usr/lib/qt/plugins/styles/contemporary.so"
+	#mkdir -p "$pkgdir/usr/lib/qt/plugins/styles/"
+	#cp "$pkgname-$pkgver/libContemporary.so" "$pkgdir/usr/lib/qt/plugins/styles/contemporary.so"
+	cd "$pkgname-$pkgver"
+	make install INSTALL_ROOT=$pkgdir
 }
