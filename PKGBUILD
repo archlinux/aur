@@ -4,14 +4,14 @@
 pkgname=bash3
 _patchlevel=057
 pkgver=3.2.$_patchlevel
-pkgrel=3
+pkgrel=4
 pkgdesc="The GNU Bourne Again shell. Version 3.2. Binary and manpage only."
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnu.org/software/bash/bash.html"
 depends=('readline' 'glibc')
 source=("http://ftp.gnu.org/gnu/bash/bash-3.2.tar.gz"
-        $(printf 'http://ftp.gnu.org/gnu/bash/bash-3.2-patches/bash32-%03d ' {1..51}))
+        $(printf 'http://ftp.gnu.org/gnu/bash/bash-3.2-patches/bash32-%03d ' {1..57}))
 md5sums=('00bfa16d58e034e3c2aa27f390390d30'
          'd8e10c754f477e3f3a581af566b89301'
          'd38a5288b2f0ea6c9ac76b66cc74ef7d'
@@ -63,7 +63,13 @@ md5sums=('00bfa16d58e034e3c2aa27f390390d30'
          '4cc593e7b789b23b37a5397e092d3954'
          'af571a2d164d5abdcae4499e94e8892c'
          '8443d4385d73ec835abe401d90591377'
-         '15c6653042e9814aa87120098fc7a849')
+         '15c6653042e9814aa87120098fc7a849'
+         '691023a944bbb9003cc92ad462d91fa1'
+         'eb97d1c9230a55283d9dac69d3de2e46'
+         '1107744058c43b247f597584b88ba0a6'
+         '05d201176d3499e2dfa4a73d09d42f05'
+         '222eaa3a2c26f54a15aa5e08817a534a'
+         '47d98e3e042892495c5efe54ec6e5913')
 
 build() {
   cd "$srcdir/bash-3.2"
@@ -74,6 +80,9 @@ build() {
 
   ./configure --prefix=/usr --with-curses --enable-readline \
     --without-bash-malloc --with-installed-readline
+
+  sed -i '/HAVE_SETDTABLESIZE/d; /HAVE_SETOSTYPE/d' config.h
+
   make
 }
 

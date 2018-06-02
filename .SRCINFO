@@ -1,7 +1,7 @@
 pkgbase = bash3
 	pkgdesc = The GNU Bourne Again shell. Version 3.2. Binary and manpage only.
 	pkgver = 3.2.057
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gnu.org/software/bash/bash.html
 	arch = i686
 	arch = x86_64
@@ -60,6 +60,12 @@ pkgbase = bash3
 	source = http://ftp.gnu.org/gnu/bash/bash-3.2-patches/bash32-049
 	source = http://ftp.gnu.org/gnu/bash/bash-3.2-patches/bash32-050
 	source = http://ftp.gnu.org/gnu/bash/bash-3.2-patches/bash32-051
+	source = http://ftp.gnu.org/gnu/bash/bash-3.2-patches/bash32-052
+	source = http://ftp.gnu.org/gnu/bash/bash-3.2-patches/bash32-053
+	source = http://ftp.gnu.org/gnu/bash/bash-3.2-patches/bash32-054
+	source = http://ftp.gnu.org/gnu/bash/bash-3.2-patches/bash32-055
+	source = http://ftp.gnu.org/gnu/bash/bash-3.2-patches/bash32-056
+	source = http://ftp.gnu.org/gnu/bash/bash-3.2-patches/bash32-057
 	md5sums = 00bfa16d58e034e3c2aa27f390390d30
 	md5sums = d8e10c754f477e3f3a581af566b89301
 	md5sums = d38a5288b2f0ea6c9ac76b66cc74ef7d
@@ -112,6 +118,12 @@ pkgbase = bash3
 	md5sums = af571a2d164d5abdcae4499e94e8892c
 	md5sums = 8443d4385d73ec835abe401d90591377
 	md5sums = 15c6653042e9814aa87120098fc7a849
+	md5sums = 691023a944bbb9003cc92ad462d91fa1
+	md5sums = eb97d1c9230a55283d9dac69d3de2e46
+	md5sums = 1107744058c43b247f597584b88ba0a6
+	md5sums = 05d201176d3499e2dfa4a73d09d42f05
+	md5sums = 222eaa3a2c26f54a15aa5e08817a534a
+	md5sums = 47d98e3e042892495c5efe54ec6e5913
 
 pkgname = bash3
 
