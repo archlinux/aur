@@ -5,9 +5,10 @@ pkgrel=1
 pkgdesc="Java Version Manager."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/shyiko/jabba"
-license=('ApacheV2')
+license=('Apache')
 options=('!strip' '!emptydirs')
 makedepends=('git' 'go' 'glide')
+depends=('glibc')
 source=("https://github.com/shyiko/jabba/archive/${pkgver}.tar.gz")
 sha256sums=('059d5f14a23eba8f3cedf047c99489173fe52fe9bda6484e4000afc9cb7dfb0a')
 
