@@ -3,6 +3,11 @@ sudo: required
 services:
 - docker
 
+env:
+  global:
+    # go is installed as an archlinux package
+    - GOROOT=
+
 arch:
   packages:
     - namcap 
