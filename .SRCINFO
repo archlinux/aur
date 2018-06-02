@@ -1,15 +1,14 @@
 pkgbase = mothur
-	pkgdesc = A bioinformatics program for analyzing microbial communities
-	pkgver = 1.40.3
+	pkgdesc = A bioinformatics program for analyzing microbial communities.
+	pkgver = 1.40.4
 	pkgrel = 1
 	url = https://www.mothur.org/
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
 	depends = boost-libs
-	source = https://github.com/mothur/mothur/archive/v1.40.3.tar.gz
-	sha256sums = 7237e763b046ade1034bf39e3e76ee0256013b1d50103330f0177c3b0cb876f7
+	source = https://github.com/mothur/mothur/archive/v1.40.4.tar.gz
+	sha256sums = cb3321b1c7e36e79a318a52671d20d5ea5891d1de1125371b8f325cdf6d6d10c
 
 pkgname = mothur
 

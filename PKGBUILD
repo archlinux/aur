@@ -2,19 +2,19 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=mothur
-pkgver=1.40.3
+pkgver=1.40.4
 pkgrel=1
-pkgdesc="A bioinformatics program for analyzing microbial communities"
-arch=('i686' 'x86_64')
-url="https://www.mothur.org/"
+pkgdesc='A bioinformatics program for analyzing microbial communities.'
+arch=('x86_64')
+url='https://www.mothur.org/'
 license=('GPL3')
 depends=('boost-libs')
 makedepends=('boost')
-source=(https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('7237e763b046ade1034bf39e3e76ee0256013b1d50103330f0177c3b0cb876f7')
+source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('cb3321b1c7e36e79a318a52671d20d5ea5891d1de1125371b8f325cdf6d6d10c')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
   sed -e 's|BOOST_LIBRARY_DIR="\\"Enter_your_boost_library_path_here\\""|BOOST_LIBRARY_DIR = /usr/lib|' \
       -e 's|BOOST_INCLUDE_DIR="\\"Enter_your_boost_include_path_here\\""|BOOST_INCLUDE_DIR = /usr/include|' \
@@ -22,14 +22,14 @@ prepare() {
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
-  install -Dm755 mothur $pkgdir/usr/bin/mothur
-  install -Dm755 uchime $pkgdir/usr/bin/uchime
+  install -Dm755 mothur "${pkgdir}/usr/bin/mothur"
+  install -Dm755 uchime "${pkgdir}/usr/bin/uchime"
 }
