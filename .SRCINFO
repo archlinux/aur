@@ -1,10 +1,10 @@
 pkgbase = theterminal
 	pkgdesc = Simple Terminal Emulator
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vicr123/theterminal
 	arch = x86_64
-	license = GPL2
+	license = GPL3
 	makedepends = git
 	depends = xdg-utils
 	depends = qtermwidget
