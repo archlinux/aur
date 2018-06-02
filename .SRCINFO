@@ -1,6 +1,6 @@
 pkgbase = gimp-git
 	pkgdesc = GNU Image Manipulation Program
-	pkgver = 2.10.2.641.g127ad04bfa
+	pkgver = 2.10.2.647.g8e6a5298c1
 	pkgrel = 1
 	epoch = 1
 	url = http://www.gimp.org
@@ -40,7 +40,7 @@ pkgbase = gimp-git
 	provides = gimp
 	conflicts = gimp
 	options = !libtool
-	source = git://git.gnome.org/gimp
+	source = git+https://gitlab.gnome.org/GNOME/gimp.git
 	source = linux.gpl
 	sha256sums = SKIP
 	sha256sums = 1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3
