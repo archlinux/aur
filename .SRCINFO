@@ -1,0 +1,15 @@
+pkgbase = repofish
+	pkgdesc = My friends told me to make available this script I wrote to manage my local archlinux repo and AUR packages, so here it is.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.seppia.net/repofish.git
+	arch = any
+	license = GPLv3
+	depends = curl git jq
+	provides = repofish
+	conflicts = repofish,repofish
+	source = https://git.seppia.net/repofish.git/snapshot/repofish-0.1.tar.gz
+	sha256sums = 6043e48e168bf741c915ec5e9e870791e03b7021d54b6cb8c837c692d93f93c5
+
+pkgname = repofish
+
