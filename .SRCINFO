@@ -1,0 +1,20 @@
+pkgbase = libdrm-grate-git
+	pkgdesc = Userspace interface to kernel DRM services, fork for open-source NVIDIA Tegra driver
+	pkgver = r6381.2e6927aa
+	pkgrel = 1
+	url = http://dri.freedesktop.org/
+	arch = armv7h
+	license = custom
+	checkdepends = cairo
+	checkdepends = bcunit-cunit-compat
+	makedepends = libxslt
+	makedepends = docbook-xsl
+	makedepends = meson
+	depends = libpciaccess
+	provides = libdrm
+	conflicts = libdrm
+	source = libdrm::git://github.com/grate-driver/libdrm.git
+	sha512sums = SKIP
+
+pkgname = libdrm-grate-git
+
