@@ -15,6 +15,8 @@ sha256sums=('7232523674a9dbf7db382a5ef43eeab57c8b296a6a0289d84b38b7b294262db4'
 
 prepare() {
   cd "${srcdir}/openmesh-python-${pkgver}"
+
+  # https://www.graphics.rwth-aachen.de:9000/OpenMesh/openmesh-python/issues/20
   cp "${srcdir}"/CMakeLists.txt .
 }
 
