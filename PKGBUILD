@@ -11,7 +11,7 @@ license=("MIT")
 depends=("libgl")
 makedepends=("glew")
 conflicts=("$_pkgname")
-source=("ftp://ftp.freedesktop.org/pub/mesa/demos/$pkgver/$_pkgname-$pkgver.tar.bz2")
+source=("ftp://ftp.freedesktop.org/pub/mesa/demos/$_pkgname-$pkgver.tar.bz2")
 sha256sums=("01e99c94a0184e63e796728af89bfac559795fb2a0d6f506fa900455ca5fff7d")
 
 
