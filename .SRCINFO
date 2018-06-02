@@ -1,0 +1,15 @@
+pkgbase = doi2bib
+	pkgdesc = Generate a bibtex given a doi
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/bibcure/doi2bib
+	arch = any
+	license = AGPL3
+	depends = python-requests
+	depends = python-bibtexparser
+	depends = python-future
+	source = doi2bib-0.3.0.tar.gz::https://github.com/bibcure/doi2bib/archive/0.3.0.tar.gz
+	sha256sums = 94857e12d71727bd9bfc9e4667a31c68b159ba1de60fb8a2adf0905baca2827a
+
+pkgname = doi2bib
+
