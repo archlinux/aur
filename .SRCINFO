@@ -1,4 +1,5 @@
 pkgbase = sat-xmpp-hg
+	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (core)
 	pkgver = 0.7.0.r2605.87f8cf51fca5
 	pkgrel = 1
 	url = http://salut-a-toi.org/
@@ -7,12 +8,6 @@ pkgbase = sat-xmpp-hg
 	makedepends = python2-setuptools
 	makedepends = mercurial
 	depends = python2
-	options = !strip
-	source = hg+http://repos.goffi.org/sat
-	md5sums = SKIP
-
-pkgname = sat-xmpp-hg
-	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (core)
 	depends = dbus
 	depends = python2-lxml>=3.1.0
 	depends = python2-pillow
@@ -43,4 +38,9 @@ pkgname = sat-xmpp-hg
 	depends = python2-urwid>=1.2.0
 	depends = python2-urwid-satext>=0.6.1
 	depends = python2-xlib
+	options = !strip
+	source = hg+http://repos.goffi.org/sat
+	md5sums = SKIP
+
+pkgname = sat-xmpp-hg
 
