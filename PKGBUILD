@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=contemporary-widgets
-pkgver=1.6
+pkgver=1.6.1
 pkgrel=0
 pkgdesc="Contemporary Widget Theme"
 arch=("x86_64")

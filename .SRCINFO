@@ -1,6 +1,6 @@
 pkgbase = contemporary-widgets
 	pkgdesc = Contemporary Widget Theme
-	pkgver = 1.6
+	pkgver = 1.6.1
 	pkgrel = 0
 	url = https://github.com/vicr123/contemporary-theme
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = contemporary-widgets
 	makedepends = git
 	depends = qt5-base
 	depends = the-libs
-	source = contemporary-widgets-1.6::git+https://github.com/vicr123/contemporary-theme#branch=master
+	source = contemporary-widgets-1.6.1::git+https://github.com/vicr123/contemporary-theme#branch=master
 	md5sums = SKIP
 
 pkgname = contemporary-widgets
