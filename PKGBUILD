@@ -1,7 +1,7 @@
 # Maintainer: Brian Salcedo <brian@salcedo.tech>
 pkgname=st-bloated-git
 pkgver=r1036.2b5354e
-pkgrel=1
+pkgrel=3
 pkgdesc="simple terminal with alpha, copyurl, hidecursor, open copied url, scrollback, spoiler, vertcenter, and xresources patches."
 arch=('i686' 'x86_64')
 url="https://github.com/salcedo/st-bloated"
