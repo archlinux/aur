@@ -144,88 +144,80 @@ void portfolio_modify(const char* symbol, double quantity_shares, double usd_spe
     string_destroy(&pString);
 }
 
-SDA* portfolio_get_data_array(void) {
+Info_Array* portfolio_get_info_array(void) {
     String* pString = portfolio_file_get_string(NULL);
     if (pString == NULL) // Read error or wrong password
         return NULL;
 
-    Json* jobj = NULL;
-    SDA* portfolio_data = NULL;
-    if (pString->len == 0) // If empty portfolio file
-        GOTO_CLEAN_MSG("Your portfolio is empty.")
-
-    jobj = json_tokener_parse(pString->data);
-    size_t portfolio_size = json_object_array_length(jobj);
-    if (portfolio_size == 0) // If empty array
-        GOTO_CLEAN_MSG("Your portfolio is empty.")
-
-    portfolio_data = malloc(sizeof(SDA));
-    pointer_alloc_check(portfolio_data);
-    portfolio_data->length = portfolio_size;
-    portfolio_data->sec_data = malloc(sizeof(SD*) * portfolio_data->length); // malloc portfolio array length pointers
-    pointer_alloc_check(portfolio_data->sec_data);
-
-    Json* json_index;
-    SD* tcd_index;
-    for (size_t i = 0; i < portfolio_data->length; i++) {
-        portfolio_data->sec_data[i] = malloc(sizeof(SD)); // malloc security data object for each array index
-        tcd_index = portfolio_data->sec_data[i];
-        pointer_alloc_check(tcd_index);
-        json_index = json_object_array_get_idx(jobj, i);
-        strcpy(tcd_index->symbol, json_object_get_string(json_object_object_get(json_index, "Symbol")));
-        tcd_index->amount = json_object_get_double(json_object_object_get(json_index, "Shares"));
-        tcd_index->total_spent = json_object_get_double(json_object_object_get(json_index, "USD_Spent"));
+    if (pString->len == 0) { // If empty portfolio file
+        string_destroy(&pString);
+        RETNULL_MSG("Your portfolio is empty.")
     }
-    cleanup:
+
+    Info_Array* portfolio_data = NULL;
+    Json* jobj = json_tokener_parse(pString->data);
+    if (json_object_array_length(jobj) == 0) { // If empty array
+        json_object_put(jobj);
+        string_destroy(&pString);
+        RETNULL_MSG("Your portfolio is empty.");
+    }
+
+    portfolio_data = api_info_array_init();
+    portfolio_data->length = json_object_array_length(jobj);
+    portfolio_data->array = malloc(sizeof(Info*) * portfolio_data->length); // malloc portfolio array length pointers
+    pointer_alloc_check(portfolio_data->array);
+
+    pthread_t threads[portfolio_data->length];
+    char syms[portfolio_data->length][SYMBOL_MAX_LENGTH];
+    for (size_t i = 0; i < portfolio_data->length; i++) {
+        strcpy(syms[i], json_object_get_string(json_object_object_get(json_object_array_get_idx(jobj, i), "Symbol")));
+        if (strcmp(syms[i], "USD$") != 0)
+            if (pthread_create(&threads[i], NULL, (void*(*)(void*))api_get_check_info, syms[i]))
+                EXIT_MSG("Error creating thread!")
+    }
+
+    void* temp = NULL;
+    for (size_t i = 0; i < portfolio_data->length; i++) {
+        mvprintw(0, 0, "Loading data (%d/%d)\n", (int) i + 1, (int) portfolio_data->length); // Print loading string
+        refresh(); // flushes output buffer
+        if (strcmp(syms[i], "USD$") != 0) {
+            if (pthread_join(threads[i], &temp))
+                EXIT_MSG("Error joining thread!")
+
+            portfolio_data->array[i] = temp;
+        }
+        else {
+            portfolio_data->array[i] = api_info_init();
+            strcpy(portfolio_data->array[i]->symbol, syms[i]);
+        }
+        portfolio_data->array[i]->amount = json_object_get_double(json_object_object_get(json_object_array_get_idx(
+                jobj, i), "Shares"));
+        portfolio_data->array[i]->total_spent = json_object_get_double(json_object_object_get(json_object_array_get_idx(
+                jobj, i), "USD_Spent"));
+        calculate_check_data(portfolio_data->array[i]);
+    }
+
     json_object_put(jobj);
     string_destroy(&pString);
     return portfolio_data;
 }
 
-void* portfolio_store_api_data(void* vsec_data) {
-    SD* sec_data = vsec_data;
-    if (strcmp(sec_data->symbol, "USD$") != 0) {
-        Info* symbol_info = api_get_check_info(sec_data->symbol);
-        double price_data[3] = {
-                symbol_info->price, symbol_info->price - symbol_info->price * symbol_info->change_1d / 100,
-                symbol_info->price - symbol_info->price * symbol_info->change_7d / 100
-        };
-        sec_data->current_value = sec_data->amount * price_data[0];
-        sec_data->total_profit = sec_data->current_value - sec_data->total_spent;
-        sec_data->total_profit_percent = 100 * ((price_data[0] / (sec_data->total_spent / sec_data->amount)) - 1);
-        sec_data->one_day_profit = sec_data->current_value - (sec_data->amount * price_data[1]);
-        sec_data->one_day_profit_percent = 100 * ((price_data[0] / price_data[1]) - 1);
-        sec_data->seven_day_profit = sec_data->current_value - (sec_data->amount * price_data[2]);
-        sec_data->seven_day_profit_percent = 100 * ((price_data[0] / price_data[2]) - 1);
-        api_info_destroy(&symbol_info);
-    } else {
-        sec_data->current_value = sec_data->amount;
-        sec_data->total_profit = sec_data->current_value - sec_data->total_spent;
-        sec_data->total_profit_percent = 100 * sec_data->total_profit / sec_data->total_spent;
-        sec_data->one_day_profit = 0;
-        sec_data->one_day_profit_percent = 0;
-        sec_data->seven_day_profit = 0;
-        sec_data->seven_day_profit_percent = 0;
-    }
-    return NULL;
-}
-
-void portfolio_sort(SDA* sda_data, int sort_option) {
-    if (sda_data->length == 1) // Can't sort only one security
+void portfolio_sort(Info_Array* portfolio_data, int sort_option) {
+    if (portfolio_data->length == 1) // Can't sort only one security
         return;
     int loop_flag = 1;
     double val1 = 0, val2 = 0;
-    SD* sec_data1, * sec_data2, * temp;
+    Info* sec_data1, * sec_data2, * temp;
     while (loop_flag) { // Bubble sort
         loop_flag = 0;
-        for (size_t i = 0; i < sda_data->length - 1; i++) {
-            sec_data1 = sda_data->sec_data[i];
-            sec_data2 = sda_data->sec_data[i + 1];
-            if (sort_option == SORT_ALPHA || sort_option > SORT_PROFIT_7D_PERCENT) {
+        for (size_t i = 0; i < portfolio_data->length - 1; i++) {
+            sec_data1 = portfolio_data->array[i];
+            sec_data2 = portfolio_data->array[i + 1];
+            if (sort_option == SORT_ALPHA || sort_option > SORT_PROFIT_30D_PERCENT) {
                 if (strcmp(sec_data1->symbol, sec_data2->symbol) > 0) { // Least to greatest
-                    temp = sda_data->sec_data[i]; // Swap
-                    sda_data->sec_data[i] = sda_data->sec_data[i + 1];
-                    sda_data->sec_data[i + 1] = temp;
+                    temp = portfolio_data->array[i]; // Swap
+                    portfolio_data->array[i] = portfolio_data->array[i + 1];
+                    portfolio_data->array[i + 1] = temp;
                     loop_flag = 1;
                 }
             } else if (sort_option == SORT_VALUE) {
@@ -235,28 +227,34 @@ void portfolio_sort(SDA* sda_data, int sort_option) {
                 val1 = sec_data1->total_spent;
                 val2 = sec_data2->total_spent;
             } else if (sort_option == SORT_PROFIT) {
-                val1 = sec_data1->total_profit;
-                val2 = sec_data2->total_profit;
+                val1 = sec_data1->profit_total;
+                val2 = sec_data2->profit_total;
             } else if (sort_option == SORT_PROFIT_PERCENT) {
-                val1 = sec_data1->total_profit_percent;
-                val2 = sec_data2->total_profit_percent;
+                val1 = sec_data1->profit_total_percent;
+                val2 = sec_data2->profit_total_percent;
             } else if (sort_option == SORT_PROFIT_24H) {
-                val1 = sec_data1->one_day_profit;
-                val2 = sec_data2->one_day_profit;
+                val1 = sec_data1->profit_last_close;
+                val2 = sec_data2->profit_last_close;
             } else if (sort_option == SORT_PROFIT_24H_PERCENT) {
-                val1 = sec_data1->one_day_profit_percent;
-                val2 = sec_data2->one_day_profit_percent;
+                val1 = sec_data1->profit_last_close_percent;
+                val2 = sec_data2->profit_last_close_percent;
             } else if (sort_option == SORT_PROFIT_7D) {
-                val1 = sec_data1->seven_day_profit;
-                val2 = sec_data2->seven_day_profit;
+                val1 = sec_data1->profit_7d;
+                val2 = sec_data2->profit_7d;
             } else if (sort_option == SORT_PROFIT_7D_PERCENT) {
-                val1 = sec_data1->seven_day_profit_percent;
-                val2 = sec_data2->seven_day_profit_percent;
+                val1 = sec_data1->profit_7d_percent;
+                val2 = sec_data2->profit_7d_percent;
+            } else if (sort_option == SORT_PROFIT_30D) {
+                val1 = sec_data1->profit_30d;
+                val2 = sec_data2->profit_30d;
+            } else if (sort_option == SORT_PROFIT_30D_PERCENT) {
+                val1 = sec_data1->profit_30d_percent;
+                val2 = sec_data2->profit_30d_percent;
             }
             if (val1 < val2) { // Greatest to least
-                temp = sda_data->sec_data[i]; // Swap
-                sda_data->sec_data[i] = sda_data->sec_data[i + 1];
-                sda_data->sec_data[i + 1] = temp;
+                temp = portfolio_data->array[i]; // Swap
+                portfolio_data->array[i] = portfolio_data->array[i + 1];
+                portfolio_data->array[i + 1] = temp;
                 loop_flag = 1;
             }
         }
@@ -264,45 +262,38 @@ void portfolio_sort(SDA* sda_data, int sort_option) {
 }
 
 void portfolio_print_all(void) {
-    SDA* sda_data = portfolio_get_data_array();
-    if (sda_data == NULL) // Error reading portfolio, wrong password, empty portfolio array
-        return;
-
     initscr();
     noecho(); // Don't echo keystrokes
     keypad(stdscr, TRUE); // Enables extra keystrokes
     curs_set(FALSE); // Hides cursor
-    double total_owned = 0, total_spent = 0, total_profit_1d = 0, total_profit_7d = 0;
-    SD* sec_data;
-    pthread_t threads[sda_data->length];
-    for (size_t i = 0; i < sda_data->length; i++) // Create one thread per security to collect API data
-        if (pthread_create(&threads[i], NULL, portfolio_store_api_data, sda_data->sec_data[i]))
-            EXIT_MSG("Error creating thread!")
+    Info_Array* portfolio_data = portfolio_get_info_array();
+    if (portfolio_data == NULL) { // Error reading portfolio, wrong password, empty portfolio array
+        endwin();
+        return;
+    }
 
-    for (size_t i = 0; i < sda_data->length; i++) {
-        mvprintw(0, 0, "Loading data (%d/%d)\n", (int) i + 1, (int) sda_data->length); // Print loading string
-        refresh(); // flushes output buffer
-        if (pthread_join(threads[i], NULL)) // Wait for each thread to finish collecting API data
-            EXIT_MSG("Error joining thread!")
-
-        sec_data = sda_data->sec_data[i];
-        total_owned += sec_data->current_value; // Add collected values to totals
-        total_spent += sec_data->total_spent;
-        total_profit_1d += sec_data->one_day_profit;
-        total_profit_7d += sec_data->seven_day_profit;
+    double total_owned = 0, total_spent = 0, total_profit_1d = 0, total_profit_7d = 0, total_profit_30d = 0;
+    for (size_t i = 0; i < portfolio_data->length; i++) { // Add collected values to totals
+        total_owned += portfolio_data->array[i]->current_value;
+        total_spent += portfolio_data->array[i]->total_spent;
+        total_profit_1d += portfolio_data->array[i]->profit_last_close;
+        total_profit_7d += portfolio_data->array[i]->profit_7d;
+        total_profit_30d += portfolio_data->array[i]->profit_30d;
     }
 
     int sort_option = SORT_ALPHA; // Defaults to sort alphabetically
     // For printing/formatting categories
-    char* sort_categories_str[] = {"SYMBOL", "VALUE", "SPENT", "PROFIT", "(%)", "24H", "(%)", "7D", "(%)"},
-            * sort_spacing_str[] = {"    ", "    ", "   ", "       ", "      ", "       ", "       ", "       ", "\n"};
+    char* sort_categories_str[] = {"SYMBOL", "VALUE", "SPENT", "PROFIT", "(%)", "24H", "(%)", "7D", "(%)", "30D", "(%)"}
+    , * sort_spacing_str[] = {"    ", "    ", "   ", "       ", "      ", "       ", "       ", "       ", "      ",
+                              "       ", "\n"};
     int ch = 0; // getch() data from keyboard
+    Info* info;
     do {
-        portfolio_sort(sda_data, sort_option); // Sort security array
+        portfolio_sort(portfolio_data, sort_option); // Sort security array
         move(0, 0);
         attron(A_BOLD); // Bold categories
         printw("  AMOUNT ");
-        for (int i = 0; i < SORT_PROFIT_7D_PERCENT + 1; i++) {
+        for (int i = 0; i < SORT_PROFIT_30D_PERCENT + 1; i++) {
             if (sort_option == i) // Highlight current sorting category
                 attron(A_STANDOUT);
             printw("%s", sort_categories_str[i]);
@@ -312,51 +303,58 @@ void portfolio_print_all(void) {
         }
         attroff(A_BOLD);
 
-        for (size_t i = 0; i < sda_data->length; i++) {
-            sec_data = sda_data->sec_data[i]; // Print security data one at a time
-            printw("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount,
-                   sec_data->symbol, sec_data->current_value, sec_data->total_spent, sec_data->total_profit,
-                   sec_data->total_profit_percent, sec_data->one_day_profit, sec_data->one_day_profit_percent,
-                   sec_data->seven_day_profit, sec_data->seven_day_profit_percent);
+        for (size_t i = 0; i < portfolio_data->length; i++) {
+            info = portfolio_data->array[i]; // Print security data one at a time
+            printw("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
+                   info->amount, info->symbol, info->current_value, info->total_spent, info->profit_total,
+                   info->profit_total_percent, info->profit_last_close, info->profit_last_close_percent,
+                   info->profit_7d, info->profit_7d_percent, info->profit_30d, info->profit_30d_percent);
         }
         attron(A_BOLD); // Bold totals
-        printw("\n         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
-               total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,
+        printw("\n         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)"
+               , total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,
                total_profit_1d, 100 * total_profit_1d / total_spent, total_profit_7d,
-               100 * total_profit_7d / total_spent);
+               100 * total_profit_7d / total_spent, total_profit_30d, 100 * total_profit_30d / total_spent);
         attroff(A_BOLD);
 
         ch = getch(); // Get keyboard input -- also flushes output buffer
-        if (ch == KEY_RIGHT && sort_option != SORT_PROFIT_7D_PERCENT) // key RIGHT -- moves sort category right
+        if (ch == KEY_RIGHT && sort_option != SORT_PROFIT_30D_PERCENT) // key RIGHT -- moves sort category right
             sort_option++;
         else if (ch == KEY_LEFT && sort_option != SORT_ALPHA) // key LEFT -- moves sort category left
             sort_option--;
     } while (ch != 'q'); // "q" to quit
     endwin();
-    sda_destroy(&sda_data);
+    api_info_array_destroy(&portfolio_data);
 }
 
 void portfolio_print_stock(const char* symbol) {
-    SDA* sda_data = portfolio_get_data_array();
-    if (sda_data == NULL) // Error reading portfolio, wrong password, empty portfolio array
+    String* pString = portfolio_file_get_string(NULL);
+    if (pString == NULL) // Error reading portfolio, wrong password, empty portfolio array
         return;
 
-    SD* sec_data = NULL;
-    size_t i = 0;
-    while (i < sda_data->length && strcmp(sda_data->sec_data[i]->symbol, symbol) != 0)
-        i++;
-    if (i != sda_data->length)
-        sec_data = sda_data->sec_data[i];
+    Json* jobj = json_tokener_parse(pString->data);
+    size_t i = 0, len = json_object_array_length(jobj);
+    while (i++ < len && strcmp(json_object_get_string(json_object_object_get(
+            json_object_array_get_idx(jobj, i), "Symbol")), symbol) != 0);
+
+    Info* info = NULL;
+    if (i != len)
+        info = api_get_check_info(symbol);
     else GOTO_CLEAN_MSG("Your portfolio does not contain any of this security.")
 
-    portfolio_store_api_data(sec_data);
-    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)      7D       (%%)\n"
-           "%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n", sec_data->amount,
-           sec_data->symbol, sec_data->current_value, sec_data->total_spent, sec_data->total_profit,
-           sec_data->total_profit_percent, sec_data->one_day_profit, sec_data->one_day_profit_percent,
-           sec_data->seven_day_profit, sec_data->seven_day_profit_percent);
+    info->amount = json_object_get_double(json_object_object_get(json_object_array_get_idx(jobj, i), "Shares"));
+    info->total_spent = json_object_get_double(json_object_object_get(json_object_array_get_idx(jobj, i), "USD_Spent"));
+    calculate_check_data(info);
+    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)      7D       (%%)      30D      "
+           " (%%)\n%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
+           info->amount, info->symbol, info->current_value, info->total_spent, info->profit_total,
+           info->profit_total_percent, info->profit_last_close, info->profit_last_close_percent,
+           info->profit_7d, info->profit_7d_percent, info->profit_30d, info->profit_30d_percent);
+
+    api_info_destroy(&info);
     cleanup:
-    sda_destroy(&sda_data);
+    json_object_put(jobj);
+    string_destroy(&pString);
 }
 
 int portfolio_symbol_index(const char* symbol, const Json* jarray) {
@@ -404,13 +402,4 @@ void portfolio_encrypt_decrypt(int crypt_opt) {
     cleanup: // CLEANUP
     free(password);
     string_destroy(&pString);
-}
-
-void sda_destroy(SDA** phSDA) {
-    SDA* ptr = *phSDA;
-    for (size_t i = 0; i < ptr->length; i++)
-        free(ptr->sec_data[i]);
-    free(ptr->sec_data);
-    free(ptr);
-    *phSDA = NULL;
 }

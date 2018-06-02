@@ -20,21 +20,8 @@
 #define SORT_PROFIT_24H_PERCENT 6
 #define SORT_PROFIT_7D 7
 #define SORT_PROFIT_7D_PERCENT 8
-
-typedef struct security_data {
-    char symbol[32];
-    double amount;
-    double total_spent;
-    double current_value;
-    double total_profit, total_profit_percent;
-    double one_day_profit, one_day_profit_percent;
-    double seven_day_profit, seven_day_profit_percent;
-} SD;
-
-typedef struct security_data_array {
-    SD** sec_data;
-    size_t length; // Elements in array
-} SDA;
+#define SORT_PROFIT_30D 9
+#define SORT_PROFIT_30D_PERCENT 10
 
 extern char* portfolio_file;
 
@@ -86,24 +73,16 @@ void portfolio_modify(const char* symbol, double quantity_shares, double usd_spe
  * The rest of the values are uninitialized
  * @return SDA array
  */
-SDA* portfolio_get_data_array(void);
-
-/**
- * Initializes the rest of the fields in an SD struct using API data after symbol, amount, and total_spent have already
- * been stored
- * @param vsec_data pointer to an SD struct. Must be void* for threading.
- * @return returns NULL. Must return NULL for threading.
- */
-void* portfolio_store_api_data(void* vsec_data);
+Info_Array* portfolio_get_info_array(void);
 
 /**
  * Sorts the SDA array based on the SORT mode.
  * SORT_ALPHA will sort the array lexicographically from least to greatest
  * SORT_VALUE, SORT_PROFIT, SORT_PROFIT_1D, and SORT_PROFIT_7D will sort the array from greatest to least
- * @param sda_data array to sort
+ * @param portfolio_data array to sort
  * @param sort_option mode to sort
  */
-void portfolio_sort(SDA* sda_data, int sort_option);
+void portfolio_sort(Info_Array* portfolio_data, int sort_option);
 
 /**
  * Prints to stdout information about every security contained in the portfolio: symbol, number of shares, USD spent,
@@ -137,11 +116,5 @@ int portfolio_symbol_index(const char* symbol, const Json* jarray);
  * @param crypt_opt crypt option
  */
 void portfolio_encrypt_decrypt(int crypt_opt);
-
-/**
- * Frees all memory associated with a SDA struct and sets the handle to NULL
- * @param phSDA
- */
-void sda_destroy(SDA** phSDA);
 
 #endif
