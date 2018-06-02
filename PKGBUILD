@@ -1,10 +1,11 @@
 # $Id$
-# Maintainer: Kirigaya Kazushin <kirigaya@mkacg.com>
+# Maintainer: Minzord YT <minzord[AT]caramail dot fr>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 # Contributor: Xu Fasheng <fasheng.xu[AT]gmail.com>
+# Based on the PKGBUILD created by Kirigaya Kazushin <kirigaya@mkacg.com>
  
 pkgname=deepin-terminal-git
-pkgver=2.0.16
+pkgver=3.0.0
 pkgrel=3
 pkgdesc='Default terminal emulation application for Deepin'
 arch=('i686' 'x86_64')
