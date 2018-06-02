@@ -2,7 +2,7 @@
 Name=Seahorse Adventures
 Comment=Help Barbie the seahorse float on bubbles to the moon
 Comment[de]=Hilf Barbie dem Seepferdchen auf Seifenblasen zum Mond zu schweben
-Exec=/usr/bin/python2 /opt/barbie-seahorse-adventures/run_game.py -full
+Exec=/usr/bin/python2 /opt/seahorse-adventures/run_game.py -full
 Icon=/usr/share/pixmaps/seahorse-adventures.png
 Terminal=false
 Type=Application

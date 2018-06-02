@@ -1,6 +1,6 @@
 pkgbase = seahorse-adventures
 	pkgdesc = Help Barbie the seahorse float on bubbles to the moon. 2D Platformer.
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Nebuleon/barbie-seahorse-adventures
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = seahorse-adventures
 	source = seahorse-adventures.png
 	source = seahorse-adventures.xpm
 	md5sums = SKIP
-	md5sums = e302ff02655664a4713d48d147347458
+	md5sums = b12141c7dd2b74d28d443439cbe0c134
 	md5sums = 8427387ee103fab93f2fe9781086f387
 	md5sums = d295e7682cf6bdc8264a65401a7b21fb
 
