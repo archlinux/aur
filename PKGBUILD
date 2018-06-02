@@ -3,7 +3,7 @@
 pkgname=libvdpau-tegra-git
 _name=libvdpau-tegra
 pkgver=r110.6a17ba7
-pkgrel=1
+pkgrel=2
 pkgdesc="VDPAU backend driver for NVIDIA Tegra 20/30 SoC's"
 arch=(armv7h)
 url='https://www.freedesktop.org/wiki/Software/VDPAU/'
@@ -23,12 +23,12 @@ pkgver() {
 }
 
 prepare() {
-  cd $_name
+  cd "${srcdir}/$_name"
   NOCONFIGURE=1 ./autogen.sh
 }
 
 check() {
-  cd $_name
+  cd "${srcdir}/$_name"
   make check
 }
 
