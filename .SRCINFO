@@ -1,0 +1,23 @@
+pkgbase = xf86-video-opentegra-git
+	pkgdesc = X.Org video driver for NVIDIA Tegra
+	pkgver = r250.3b46f6a
+	pkgrel = 1
+	url = http://github.com/grate-driver/xf86-video-opentegra
+	arch = armv7h
+	groups = xorg-drivers
+	groups = xorg
+	license = GPL
+	makedepends = xorg-server-devel
+	makedepends = git
+	depends = libdrm-grate-git
+	depends = systemd
+	depends = mesa-dri
+	conflicts = xorg-server<1.20
+	conflicts = X-ABI-VIDEODRV_VERSION<24
+	conflicts = X-ABI-VIDEODRV_VERSION>=25,
+	conflicts = xf86-video-opentegra
+	source = git://github.com/grate-driver/xf86-video-opentegra.git
+	sha256sums = SKIP
+
+pkgname = xf86-video-opentegra-git
+
