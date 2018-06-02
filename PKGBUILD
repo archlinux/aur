@@ -1,6 +1,6 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
-_pkgnamefmt=LibreOffice
+_pkgnamefmt=LibreOfficeDev
 _pkgname=libreoffice
 pkgname=${_pkgname}-dev-bin
 _LOver=6.1.0.0.beta1
@@ -36,8 +36,8 @@ optdepends=('java-runtime:          adds java support'
             'kdelibs:               for KDE desktop integration')
 provides=('libreoffice' 'libreoffice-en-US')
 
-source_i686=("http://dev-builds.libreoffice.org/pre-releases/rpm/x86/${_pkgnamefmt}_${_LOver}_Linux_x86_rpm.tar.gz")
-source_x86_64=("http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_LOver}_Linux_x86-64_rpm.tar.gz")
+source_i686=("https://dev-builds.libreoffice.org/pre-releases/rpm/x86/${_pkgnamefmt}_${_LOver}_Linux_x86_rpm.tar.gz")
+source_x86_64=("https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_LOver}_Linux_x86-64_rpm.tar.gz")
 sha256sums_i686=('SKIP')
 sha256sums_x86_64=('SKIP')
 
