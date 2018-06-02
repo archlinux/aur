@@ -1,6 +1,6 @@
 pkgbase = pacvis-git
 	pkgdesc = Visualize pacman local database using Vis.js, inspired by pacgraph
-	pkgver = 0.2.7.r0.gebfa060
+	pkgver = 0.2.7.r1.g3e9289f
 	pkgrel = 1
 	url = https://github.com/farseerfc/pacvis
 	arch = any
