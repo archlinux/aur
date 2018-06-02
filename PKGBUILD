@@ -6,7 +6,7 @@ groups=('zarafa')
 replaces=('zarafa-server-arm')
 pkgver=7.2.6.10
 _pkgmajver=7.2
-pkgrel=67
+pkgrel=68
 pkgdesc="Open Source Groupware Solution"
 arch=('armv7h'
       'armv6h'
