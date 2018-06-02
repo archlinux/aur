@@ -18,5 +18,5 @@ package() {
 mkdir -p "$pkgdir/usr/bin"
 mkdir -p "$pkgdir/usr/share/man/man1"
 cp -p "$srcdir/epub2txt/epub2txt" "$pkgdir/usr/bin/"
-cp -pr "$srcdir/epub2txt/man1/epub2txt.1" "$pkgdir/usr/share/man/man1/"
+install -Dm644 "$srcdir/epub2txt/man1/epub2txt.1" "$pkgdir/usr/share/man/man1/"
 } 
