@@ -3,13 +3,13 @@
 _pkgname=looking-glass
 pkgbase="${_pkgname}-git"
 pkgname=("${_pkgname}-git" "${_pkgname}-module-dkms-git")
-pkgver=a10.r67.gf63c804
-pkgrel=2
+pkgver=a11.r29.g8a9d0b0
+pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.hostfission.com"
 arch=('x86_64')
 license=('GPL2')
-makedepends=('git' 'sdl2_ttf' 'glu' 'fontconfig' 'libconfig' 'spice-protocol')
+makedepends=('cmake' 'git' 'sdl2_ttf' 'glu' 'fontconfig' 'libconfig' 'spice-protocol')
 source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git"
         "dkms.conf")
 sha512sums=('SKIP'
@@ -22,16 +22,17 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}/client"
+	cmake .
 	make
 }
 
 package_looking-glass-git() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
-	depends=('sdl2_ttf' 'glu' 'openssl' 'fontconfig' 'libconfig')
+	depends=('sdl2_ttf' 'glu' 'nettle' 'fontconfig' 'libconfig')
 	provides=("${_pkgname}")
 	conflicts=("${_pkgname}")
 
-	install -Dm755 "${srcdir}/${_pkgname}/client/bin/looking-glass-client" "${pkgdir}/usr/bin/looking-glass-client"
+	install -Dm755 "${srcdir}/${_pkgname}/client/looking-glass-client" "${pkgdir}/usr/bin/looking-glass-client"
 }
 
 package_looking-glass-module-dkms-git() {
