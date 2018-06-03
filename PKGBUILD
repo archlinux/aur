@@ -11,7 +11,7 @@ depends=('libgl')
 makedepends=('mercurial' 'cmake' 'doxygen')
 provides=("${pkgname%-hg}")
 conflicts=("${pkgname%-hg}")
-source=('coin::hg+https://bitbucket.org/Coin3D/coin#branch=CMake'
+source=('coin::hg+https://bitbucket.org/Coin3D/coin'
         'generalmsvcgeneration::hg+https://bitbucket.org/Coin3D/generalmsvcgeneration'
         'boost-header-libs-full::hg+https://bitbucket.org/Coin3D/boost-header-libs-full')
 md5sums=('SKIP'

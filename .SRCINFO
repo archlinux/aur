@@ -11,7 +11,7 @@ pkgbase = coin-hg
 	depends = libgl
 	provides = coin
 	conflicts = coin
-	source = coin::hg+https://bitbucket.org/Coin3D/coin#branch=CMake
+	source = coin::hg+https://bitbucket.org/Coin3D/coin
 	source = generalmsvcgeneration::hg+https://bitbucket.org/Coin3D/generalmsvcgeneration
 	source = boost-header-libs-full::hg+https://bitbucket.org/Coin3D/boost-header-libs-full
 	md5sums = SKIP
