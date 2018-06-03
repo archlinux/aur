@@ -2,7 +2,7 @@
 
 pkgname=thonny
 pkgver=2.2.0b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python IDE for beginners."
 arch=('any')
 url="http://thonny.cs.ut.ee/"
@@ -31,6 +31,6 @@ package() {
     cp -dr --no-preserve=ownership "$pkgname/lib/python3.6/site-packages/thonny" \
                                    "$pkgdir/usr/lib/python3.6/site-packages"
 
-    install -Dm 644 "$pkgname/lib/python3.6/site-packages/distro.py" \
-                    "$pkgdir/usr/lib/python3.6/site-packages/distro.py"
+    # install -Dm 644 "$pkgname/lib/python3.6/site-packages/distro.py" \
+                    # "$pkgdir/usr/lib/python3.6/site-packages/distro.py"
 }
