@@ -1,0 +1,20 @@
+pkgbase = python-requests-http-signature
+	pkgdesc = A Requests auth module for the HTTP Signature IETF draft standard RFC
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/EliotBerriot/requests-http-signature
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = git+https://github.com/EliotBerriot/requests-http-signature#branch=signature-header-support
+	sha256sums = SKIP
+
+pkgname = python-requests-http-signature
+	depends = python
+
+pkgname = python2-requests-http-signature
+	depends = python2
+
