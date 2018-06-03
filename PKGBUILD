@@ -8,7 +8,7 @@ url="https://github.com/desbma/${pkgname}"
 license=('LGPL')
 depends=('python' 'python-setuptools' 'python-mutagen' 'python-crcmod' 'ffmpeg')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('c6900e42420d06ac60b9666f926fa0ebf5b0e7d6ddad78b578a16ae6dba5bdda8003b7ce67a645974794c726d41204b5e6ec35ae2ccd8066c8c07d4bc2a38e54')
+sha512sums=('921d935c0baef0f3300b2e471659a875d7888dead3cbd9daa190ded17d771aef87101b23f442041459705c8fda81416ccb59e5fc0429e3b5d0a7fbe5339c41d6')
 
 package() {
     cd "${pkgname}-${pkgver}"
