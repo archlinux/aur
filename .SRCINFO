@@ -7,7 +7,6 @@ pkgbase = netease-musicbox-git
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python
 	makedepends = python2
 	makedepends = mpg123
 	makedepends = python2-beautifulsoup4
@@ -51,7 +50,6 @@ pkgname = netease-musicbox-git
 	optdepends = python-dbus: lyrics support
 
 pkgname = netease-musicbox-py2-git
-	depends = python
 	depends = python2
 	depends = mpg123
 	depends = python2-beautifulsoup4

@@ -1,4 +1,6 @@
 # Maintainer: Jiachen Yang <farseerfc@gmail.com>
+# Contributor: Ariel AxionL <axionl@aosc.io>
+
 pkgbase=netease-musicbox-git
 pkgname=(netease-musicbox-git netease-musicbox-py2-git)
 _gitname=musicbox
