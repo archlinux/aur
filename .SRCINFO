@@ -1,7 +1,7 @@
 pkgbase = deepin-wine
 	pkgdesc = Deepin Wine
 	pkgver = 2.18_10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = deepin-wine
 	depends = lib32-alsa-lib
 	depends = lib32-mesa
 	depends = lib32-lcms2
+	depends = lib32-libjpeg6
 	depends = lib32-libxml2
 	depends = lib32-libxrandr
 	depends = lib32-libxdamage
