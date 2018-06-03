@@ -7,7 +7,7 @@ pkgbase = yagv-git
 	arch = x86_64
 	license = custom
 	depends = python2>=2.7.3
-	depends = python2-pyglet>-1.1.4
+	depends = python2-pyglet>=1.1.4
 	provides = yagv
 	conflicts = yagv
 	source = yagv-git::git+https://github.com/jonathanwin/yagv.git

@@ -7,7 +7,7 @@ pkgdesc="A fast 3D Gcode Viewer for Reprap-style 3D printers, in Python and Open
 arch=('i686' 'x86_64')
 url="https://github.com/jonathanwin/yagv"
 license=('custom')
-depends=('python2>=2.7.3' 'python2-pyglet>-1.1.4')
+depends=('python2>=2.7.3' 'python2-pyglet>=1.1.4')
 conflicts=('yagv')
 provides=('yagv')
 source=("${pkgname}"::"git+${url}.git")
