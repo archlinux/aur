@@ -42,7 +42,7 @@ prepare() {
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
       -i vsxx/VapourSynth++.hpp
 
-  sed -e "s|-Ivsxx|& "$(pkg-config --cflags vapoursynth)"|g" \
+  sed -e "s|-Ivsxx|& $(pkg-config --cflags vapoursynth)|g" \
       -e '/VSScript.h/d' \
       -e '/VapourSynth.h/d' \
       -e '/VSHelper.h/d'\
