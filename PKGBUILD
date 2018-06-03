@@ -1,8 +1,8 @@
 # Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='stratisd'
-pkgver=0.5.1
-pkgrel=5
+pkgver=0.5.3
+pkgrel=1
 pkgdesc='Stratis is a new tool that meets the needs of Red Hat Enterprise Linux (RHEL) users calling for an easily configured, tightly integrated solution for storage that works within the existing Red Hat storage management stack.'
 arch=('x86_64')
 url='https://stratis-storage.github.io/'
@@ -18,7 +18,7 @@ source=(
   'stratisd-boot.service'
 )
 sha256sums=(
-  '668792b4fde50fcca6410ff689eda1bd62f5c23f185f652b7a08fe7e9e458808'
+  '1587c73439b901ef2ac68b54b8e20e9c411462e4f092f9749814521d48fd10dc'
   'e12069c231c3f7c6e16b347ffcddb5cf919c9e5105c56a7b9a994e1adc49da25'
   '72ab992ff564d4dd6f0290bd12e973268e45ac0b154e4695796e9737ffed31fe'
   '2143a3f942a3c2975a006c96ec78cf960417943a2425b564f91425f3a50a7ccd'
@@ -34,14 +34,14 @@ build() {
   cp -fT ../stratisd-boot.service stratisd-boot.service
 
   # Append '--release' to `cargo build` (line 24):
-  sed -i '24s/cargo build/cargo build --release/' Makefile
+  sed -i 's/cargo build --target/cargo build --release --target/' Makefile
 
   # build standard binary (with dbus)
   msg2 "Build standard binary (dbus enabled)"
   make build
 
   # move standard binary
-  mv target/release/stratisd stratisd
+  mv target/x86_64-unknown-linux-gnu/release/stratisd stratisd
 
   # patch makefile to create boot build
   sed -i 's, --features "dbus_enabled",,g' Makefile
@@ -51,7 +51,7 @@ build() {
   make build
 
   # move init binary
-  mv target/release/stratisd stratisd-boot
+  mv target/x86_64-unknown-linux-gnu/release/stratisd stratisd-boot
 
   # build docs
   make docs
