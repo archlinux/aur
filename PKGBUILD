@@ -53,8 +53,11 @@ prepare() {
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
+  # https://bugs.archlinux.org/task/56780
+  patch -Np1 -i ../0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
+
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  patch -Np1 -i ../0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 
   # Sound Blaster Z beta driver
   patch -Np1 -i ../SoundBlasterZ.patch
