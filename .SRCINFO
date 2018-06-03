@@ -1,6 +1,6 @@
 pkgbase = repofish-git
 	pkgdesc = My friends told me to make available this script I wrote to manage my local archlinux repo and AUR packages, so here it is.
-	pkgver = r23.a5f5421
+	pkgver = r32.47fc2f8
 	pkgrel = 1
 	url = https://git.seppia.net/repofish.git
 	arch = any
