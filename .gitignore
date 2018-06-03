@@ -5,5 +5,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!arch-friendly-installer.patch
 !nerd-fonts-complete.install

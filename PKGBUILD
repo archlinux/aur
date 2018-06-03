@@ -1,9 +1,10 @@
 # Maintainer: Super Bo <supernbo at gmail dot com>
-# Maintainer: glider <samtron1412 {at} gmail {dot} com>
+# Contributor: glider <samtron1412 {at} gmail {dot} com>
+# Contributor: devopsdeluxe <dan.ray.beste@gmail.com>
 
 pkgname='nerd-fonts-complete'
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='
 Iconic font aggregator, collection, and patcher. 40+ patched fonts, over 3,600
 glyph/icons, includes popular collections such as Font Awesome & fonts such as
@@ -16,6 +17,7 @@ conflicts=('nerd-fonts-git' 'nerd-fonts-complete-mono-glyphs')
 install="${pkgname}.install"
 source=(
   "https://gitlab.com/devopsdeluxe/nerd-fonts-aur/raw/v${pkgver}/release/NerdFonts.tar.xz"
+  "https://gitlab.com/devopsdeluxe/nerd-fonts-aur/raw/v${pkgver}/release/NerdFonts.tar.xz.asc"
   "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v${pkgver}/LICENSE"
   "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v${pkgver}/bin/scripts/lib/i_all.sh"
   "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v${pkgver}/bin/scripts/lib/i_dev.sh"
@@ -31,7 +33,8 @@ source=(
   "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v${pkgver}/bin/scripts/lib/i_weather.sh"
 )
 sha256sums=(
-  'ef42a129f63f0166749e4bb1aaa878e31d18381be34a4404a32641e9551b53b1'
+  '6e203ec84af9f55959141025a96ad3788c8edc7777b7dbcc1fafa600214c1213'
+  'a07514cc2ca2b6eaff29265e19a8981eafe0e0ab89578ae729b279164b2484a9'
   'd2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5'
   '036361c808c84242b819ba24246f205b283ae51ba5d5d3304848f999a3ff0622'
   '254f32ceca71d36afee8ddbcd2c98a5de06ab7d7579f03e693987501bef6476b'
