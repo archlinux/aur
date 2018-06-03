@@ -1,6 +1,6 @@
 # Maintainer: Seppia <seppia@seppio.fish>
 pkgname=repofish-git
-pkgver=r18.f849f35
+pkgver=r23.a5f5421
 pkgrel=1
 pkgdesc="My friends told me to make available this script I wrote to manage my local archlinux repo and AUR packages, so here it is."
 arch=('any')
@@ -28,5 +28,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -D repo.sh $pkgdir/usr/bin/repofish
+	install -D ${pkgname%-git} $pkgdir/usr/bin/${pkgname%-git}
 }
