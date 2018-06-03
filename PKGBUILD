@@ -1,33 +1,30 @@
-# Maintainer: sxe <sxxe@gmx.de>
+# Contributor: sxe <sxxe@gmx.de>
 
 pkgname=flowblade-git
 _pkgname=flowblade
-pkgver=v1.0.r318.ga807cf7
+pkgver=1.16.r116.g0af2fad2
 pkgrel=1
-pkgdesc="a multitrack non-linear video editor for Linux"
+pkgdesc="multitrack non-linear video editor for Linux"
 arch=('any')
 url="https://github.com/jliljebl/flowblade"
 license=('GPL')
-depends=( 'ffmpeg' 'pygtk' 'mlt-python-bindings' 'ladspa' 'sox' 'frei0r-plugins' 'python2-gnomevfs' 'python2-numpy' 'python2-dbus' 'python2-imaging')
-optdepends=('gmic: for advanced image manipulation functions')
+depends=('dbus-glib' 'frei0r-plugins' 'gmic' 'gtk3' 'librsvg' 'mlt' 
+         'mlt-python-bindings' 'movit' 'pygtk' 'python2-dbus'
+         'python2-gobject' 'python2-numpy' 'python2-pillow' 'sdl_image'
+         'sox' 'swh-plugins')
 makedepends=('git')
 conflicts=('flowblade' 'flowblade-hg')
 provides=('flowblade')
-
-install=flowblade.install
-source=('git+https://github.com/jliljebl/flowblade')
+source=(git+https://github.com/jliljebl/${_pkgname})
 md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  ( set -o pipefail
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 package() {
-  cd $srcdir/$_pkgname/${_pkgname}-trunk
+  cd "${_pkgname}/${_pkgname}-trunk"
   python2 setup.py install --root=$pkgdir/ --install-lib=/usr/share/pyshared --optimize=1
 }
 
