@@ -1,0 +1,7 @@
+post_install() {
+	ln -sf '/opt/Plotaverse/plotagraph' '/usr/bin/plotagraph'
+}
+
+post_remove() {
+	rm -f '/usr/bin/plotagraph'
+}
