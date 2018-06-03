@@ -1,6 +1,6 @@
 pkgbase = clyde-client-git
 	pkgdesc = Send currently installed packages to cpcache
-	pkgver = r8.3848e5f
+	pkgver = r9.a0e51f9
 	pkgrel = 1
 	url = https://github.com/nroi/clyde-client
 	arch = any

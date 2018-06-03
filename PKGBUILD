@@ -1,7 +1,7 @@
 # Maintainer: nroi <nroi@mailbox.org>
 
 pkgname=clyde-client-git
-pkgver=r8.3848e5f
+pkgver=r9.a0e51f9
 pkgrel=1
 pkgdesc="Send currently installed packages to cpcache"
 arch=('any')
