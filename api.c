@@ -266,7 +266,7 @@ void* iex_store_news(void* vpInfo) {
     if (pString == NULL)
         return NULL;
 
-    Json* jobj = json_tokener_parse(pString->data), * idx;
+    Json* jobj = json_tokener_parse(pString->data), * idx, *headline;
     if (jobj == NULL) { // Invalid symbol
         string_destroy(&pString);
         return NULL;
@@ -279,11 +279,18 @@ void* iex_store_news(void* vpInfo) {
     pointer_alloc_check(symbol_info->articles);
 
     for (int i = 0; i < symbol_info->num_articles; i++) {
-        symbol_info->articles[i] = api_news_init();
-        pointer_alloc_check(symbol_info->articles[i]);
         idx = json_object_array_get_idx(jobj, (size_t) i);
-        if (json_object_object_get(idx, "headline") != NULL)
-            strcpy(symbol_info->articles[i]->headline, json_object_get_string(json_object_object_get(idx, "headline")));
+        headline = json_object_object_get(idx, "headline");
+        // If two articles in a row are the same, change num_articles and break loop. This will happen if there are not
+        if (i > 0 && headline != NULL && // enough articles supplied by API.
+            strcmp(json_object_get_string(headline), symbol_info->articles[i - 1]->headline) == 0) {
+            symbol_info->num_articles = i;
+            break;
+        }
+
+        symbol_info->articles[i] = api_news_init();
+        if (headline != NULL)
+            strcpy(symbol_info->articles[i]->headline, json_object_get_string(headline));
         if (json_object_object_get(idx, "source") != NULL)
             strcpy(symbol_info->articles[i]->source, json_object_get_string(json_object_object_get(idx, "source")));
         if (json_object_object_get(idx, "dateTime") != NULL)
