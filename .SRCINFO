@@ -1,13 +1,15 @@
 pkgbase = googlecl
 	pkgdesc = Command line utility to use google services
 	pkgver = 0.9.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinitkumar/googlecl
 	arch = any
 	license = APACHE
-	depends = python
 	depends = python2
-	source = https://github.com/vinitkumar/googlecl/archive/v0.9.15.tar.gz
+	depends = python2-gdata
+	depends = python2-httplib2
+	depends = python2-oauth2client
+	source = googlecl-0.9.15.tar.gz::https://github.com/vinitkumar/googlecl/archive/v0.9.15.tar.gz
 	md5sums = 76c96871c69ec1272b31e808cb0a3cac
 
 pkgname = googlecl
