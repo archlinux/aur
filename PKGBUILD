@@ -1,7 +1,7 @@
 # Maintainer: Michal Ulianko <michal (dot) ulianko (at) gmail (dot) com>
 
 pkgname=coin-hg
-pkgver=r11683.7e191c8f6a31
+pkgver=r11781.a8c6435095ce
 pkgrel=1
 pkgdesc="A high-level, retained-mode 3D graphics toolkit compatible with Open Inventor 2.1"
 arch=('x86_64')
