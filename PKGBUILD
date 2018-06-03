@@ -17,15 +17,15 @@
 pkgbase="zfs-linux-zen-git"
 pkgname=("zfs-linux-zen-git" "zfs-linux-zen-git-headers")
 
-pkgver=2018.05.26.r3492.g3e5300e0e.4.16.11.1
+pkgver=2018.05.31.r4577.g1a5b96b8e.4.16.13.1
 pkgrel=1
-makedepends=("linux-zen-headers=4.16.11-1" "git" "spl-linux-zen-git-headers")
+makedepends=("linux-zen-headers=4.16.13-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=3e5300e0ed3c4b49e3b0dab7daded1e3bfaaded7")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=1a5b96b8ee66da5dfdfbedcb6bc462f454b4a25d")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-zen-git" "zfs-utils-common-git=2018.05.26.r3492.g3e5300e0e" "linux-zen=4.16.11-1")
+depends=("kmod" "zfs-utils-common-git=2018.05.31.r4577.g1a5b96b8e" "linux-zen=4.16.13-1")
 
 build() {
     cd "${srcdir}/zfs"
@@ -33,8 +33,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.9 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.16.11-1-zen/build \
-                --with-linux-obj=/usr/lib/modules/4.16.11-1-zen/build
+                --with-linux=/usr/lib/modules/4.16.13-1-zen/build \
+                --with-linux-obj=/usr/lib/modules/4.16.13-1-zen/build
     make
 }
 
@@ -43,8 +43,8 @@ package_zfs-linux-zen-git() {
     install=zfs.install
     provides=("zfs")
     groups=("archzfs-linux-zen-git")
-    conflicts=('zfs-linux-zen')
-    replaces=("zfs-git")
+    conflicts=('zfs-linux-zen' 'spl-linux-zen-git')
+    replaces=("spl-linux-zen-git")
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
@@ -60,5 +60,5 @@ package_zfs-linux-zen-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.16.11-1-zen/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.16.13-1-zen/Module.symvers
 }
