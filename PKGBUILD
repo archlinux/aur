@@ -28,5 +28,5 @@ sha256sums=(
 )
 
 package() {
-	tar -xvf $srcdir/firefox-kde-opensuse-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz -C $pkgdir
+	tar -xvf $srcdir/firefox-kde-opensuse-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz -C $pkgdir --exclude=".*"
 }
