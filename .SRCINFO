@@ -19,7 +19,6 @@ pkgname = zfs-linux-vfio
 	groups = archzfs-linux-vfio
 	provides = zfs
 	conflicts = zfs-linux-vfio-git
-	replaces = zfs-git
 
 pkgname = zfs-linux-vfio-headers
 	pkgdesc = Kernel headers for the Zettabyte File System.

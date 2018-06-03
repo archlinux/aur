@@ -25,7 +25,7 @@ url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/zfs-0.7.9.tar.gz")
 sha256sums=("f50ca2441c6abde4fe6b9f54d5583a45813031d6bb72b0011b00fc2683cd9f7a")
 license=("CDDL")
-depends=("kmod" "spl-linux-vfio" "zfs-utils-common=0.7.9" "linux-vfio=4.16.10-1")
+depends=("kmod" 'spl-linux-vfio' "zfs-utils-common=0.7.9" "linux-vfio=4.16.10-1")
 
 build() {
     cd "${srcdir}/zfs-0.7.9"
@@ -44,7 +44,6 @@ package_zfs-linux-vfio() {
     provides=("zfs")
     groups=("archzfs-linux-vfio")
     conflicts=('zfs-linux-vfio-git')
-    replaces=("zfs-git")
     cd "${srcdir}/zfs-0.7.9"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
