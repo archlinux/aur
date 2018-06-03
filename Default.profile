@@ -126,6 +126,6 @@ s0_rotate_left_button = Button6
 s0_rotate_right_button = Button7
 
 [winrules]
-s0_above_match = class=Wingpanel
+s0_above_match = class=Wingpanel | class=Plank
 s0_below_match = class=Io.elementary.videos | class=Firefox | class=Epiphany | class=Io.elementary.files | class=Io.elementary.terminal
 
