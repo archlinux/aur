@@ -4,31 +4,25 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname='seahub'
-pkgver=6.2.5
-pkgrel=6
+pkgver=6.3.0
+pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
 license=('custom:Apache PSF MIT BSD GPL')
-depends=("seafile-server=${pkgver}" 'libmemcached' 'freetype2' 'openjpeg2')
+depends=("seafile-server>=${pkgver}" 'libmemcached' 'freetype2' 'openjpeg2')
 optdepends=('mariadb: For use MySQL databases'
             'memcached: For better caching performance'
-            'ffmpeg: For video thumbnails')
+            'ffmpeg: For video thumbnails'
+)
 makedepends=('python2-virtualenv' 'git')
 changelog="ChangeLog"
 source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz")
-sha256sums=('80a7a1cadde8e8e570bdc454bc4a4902ebcace97b347f9eef701b5ab02742039')
+sha256sums=('89b52185ecf6a90417b4c52b4e24fb7af941996b7a9f92875dfc00967719627f')
 options=("!strip")
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}-server"
-
-    # Remove useless files and directories
-    rm -rf './'{*test*,*sh*,CONTRIBUTORS,HACKING,Makefile,README.*,pylintrc*}
-
-    # Use python lib seahub interpreter for all scripts
-    grep -s -l -r '#!/usr/bin/env python' "./" \
-    | xargs sed -i -e '1 s|#!/usr/bin/env python|#!/usr/lib/seahub/bin/python2|'
 
     # Add python utils modules to requirements.txt
     {
@@ -38,8 +32,21 @@ prepare() {
         echo 'django-pylibmc'   # Memcached support
     } >> "./requirements.txt"
 
-   # Prepare License
-   cat './LICENSE-'* >> './LICENSE.txt' && rm -f './LICENSE-'*
+    # Prepare License
+    {
+        cat './LICENSE.txt'
+        cat './LICENSE-'*
+    } >> './LICENSE'
+
+    # Remove useless files and directories
+    rm -rf \
+        './CONTRIBUTORS' './HACKING' './Makefile' \
+        './'{*test*,*dev*,*sh*,README*,pylintrc*,LICENSE[.-]*} \
+        "$(find . -name \*.pyc)"
+
+    # Use python lib seahub interpreter for all scripts
+    grep -s -l -r '#!/usr/bin/env python' "./" \
+    | xargs sed -i -e '1 s|#!/usr/bin/env python|#!/usr/lib/seahub/bin/python2|'
 }
 
 build() {
@@ -59,7 +66,7 @@ package() {
     install -dm755 "${pkgdir}/usr/share/seafile-server/seahub" 
     cp -r -p "./"* "${pkgdir}/usr/share/seafile-server/seahub/"
 
-    install -Dm644 './LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 './LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Create VirtualEnv 
     venv="${pkgdir}/usr/lib/seahub"
