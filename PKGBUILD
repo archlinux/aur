@@ -65,7 +65,7 @@ package_sat-pyjamas(){
 
 package_sat-libervia-hg(){
          pkgdesc="Salut à Toi, multi-frontends multi-purposes XMPP client (Web interface)"
-         depends=('dbus' )
+         depends=('dbus' 'sat-templates-hg'  'sat-media-hg' 'sat-xmpp-hg')
          provides=('sat-libervia')
          conflicts=('sat-libervia')
 	 cd "$pkgdir"
