@@ -9,7 +9,7 @@ pkgbase = repofish
 	depends = git
 	depends = jq
 	provides = repofish
-	conflicts = repofish
+	conflicts = repofish-git
 	source = https://git.seppia.net/repofish.git/snapshot/repofish-0.2.tar.gz
 	sha256sums = 844027e44fc43928637fff4e6609baacdbe01f6db8ed3761765fc544f04562f2
 
