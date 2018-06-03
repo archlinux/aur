@@ -1,0 +1,22 @@
+pkgbase = mdbook-git
+	pkgdesc = Create book from markdown files, like Gitbook but implemented in Rust
+	pkgver = 0.1.7.r18.g2a55ff62f
+	pkgrel = 1
+	url = https://github.com/rust-lang-nursery/mdBook
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MPL2
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = mdbook
+	conflicts = mdbook
+	source = mdbook-git::git+https://github.com/rust-lang-nursery/mdBook.git
+	md5sums = SKIP
+
+pkgname = mdbook-git
+
