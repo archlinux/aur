@@ -1,6 +1,6 @@
 pkgbase = infra-arcana-git
 	pkgdesc = Roguelike game inspired by the writings of H.P. Lovecraft - git version
-	pkgver = v19.2.r52.geac7b3a6
+	pkgver = v19.2.r57.g6ba3bcf9
 	pkgrel = 1
 	url = https://github.com/martin-tornqvist/ia
 	arch = i686
