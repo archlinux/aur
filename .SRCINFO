@@ -1,0 +1,20 @@
+pkgbase = plasma5-applets-folderlist
+	pkgdesc = Displays a list of folders
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/naraesk/plasma-folderlist
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ki18n
+	makedepends = qt5-base
+	makedepends = qt5-declarative
+	makedepends = qt5-tools
+	depends = plasma-workspace
+	source = https://github.com/naraesk/plasma-folderlist/archive/v1.0.0.tar.gz
+	md5sums = a71d61bef9ddd2dfe47689d37de77fb4
+
+pkgname = plasma5-applets-folderlist
+
