@@ -1,6 +1,6 @@
 pkgbase = dbus-test-runner-bzr
 	pkgdesc = A small little utility to run a couple of executables under a new DBus session for testing
-	pkgver = r39
+	pkgver = r100
 	pkgrel = 1
 	url = https://launchpad.net/dbus-test-runner
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dbus-test-runner-bzr
 	provides = dbus-test-runner
 	conflicts = dbus-test-runner
 	options = !emptydirs
-	source = dbus-test-runner-bzr::bzr+http://bazaar.launchpad.net/~indicator-applet-developers/dbus-test-runner/trunk
+	source = dbus-test-runner-bzr::bzr+lp:dbus-test-runner
 	md5sums = SKIP
 
 pkgname = dbus-test-runner-bzr

@@ -1,7 +1,7 @@
 # Maintainer: Cody P Schafer <archlinux at codyps.com>
 _bpn=dbus-test-runner
 pkgname=${_bpn}-bzr
-pkgver=r39
+pkgver=r100
 pkgrel=1
 pkgdesc="A small little utility to run a couple of executables under a new DBus session for testing"
 arch=(x86_64 )
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=($pkgname::bzr+http://bazaar.launchpad.net/~indicator-applet-developers/$_bpn/trunk)
+source=($pkgname::bzr+lp:dbus-test-runner )
 md5sums=(SKIP)
 
 pkgver() {
