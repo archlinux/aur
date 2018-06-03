@@ -1,39 +1,44 @@
-# Maintainer: Jonathan Steel <jsteel at aur.archlinux.org>
+# Contributor: Jonathan Steel <jsteel at aur.archlinux.org>
 # Contributor: Matthew Bauer <mjbauer95@gmail.com>
 # Contributor: Marvin Lampe <marvin.lampe@gmx.de>
 
 pkgname=get-flash-videos-git
 _gitname=get-flash-videos
-pkgver=v1.22.556.g2d46d08
+pkgver=1.25.99.02.r3.g5a4bf39
 pkgrel=1
 pkgdesc='Downloads videos from various Flash-based video hosting sites'
 arch=('any')
-url='http://code.google.com/p/get-flash-videos'
+url='https://github.com/monsieurvideo/get-flash-videos'
 license=('APACHE')
-depends=('perl-www-mechanize' 'perl-http-cookies' 'perl-lwp-protocol-https'
-  'perl-module-find' 'perl-lwp-protocol-socks' 'perl-tie-ixhash'
-  'perl-data-amf' 'perl-xml-simple')
+depends=('perl-www-mechanize' 'perl-module-find' 'perl-term-progressbar')
 makedepends=('git' 'perl')
-optdepends=('mplayer: for video streaming')
+optdepends=('rtmpdump: download videos over rtmp'
+            'ffmpeg: play'
+            'perl-xml-simple: Required for some sites'
+            'perl-crypt-rijndael: Required for some sites'
+            'perl-lwp-protocol-https: Required for some sites'
+            'perl-lwp-protocol-socks: Required for some sites'
+            'perl-data-amf: Required for some sites'
+            'perl-compress-zlib: Required for some sites')
 conflicts=('get_flash_videos' 'get-flash-videos')
 provides=('get_flash_videos' 'get-flash-videos')
 source=(git://github.com/monsieurvideo/get-flash-videos.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/$_gitname
+  cd "$_gitname"
 
-  git describe | sed s/-/./g
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  cd "$srcdir"/$_gitname
+  cd "$_gitname"
 
   make
 }
 
 package() {
-  cd "$srcdir"/$_gitname
+  cd "$_gitname"
 
   make install DESTDIR="$pkgdir"/ INSTALL_BASE=/usr \
     INSTALLSITELIB=/usr/lib/perl5/site_perl INSTALLSITESCRIPT=/usr/bin
