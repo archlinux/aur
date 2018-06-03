@@ -8,7 +8,7 @@
 
 pkgname=mutter-781835-workaround
 _pkgname=mutter
-pkgver=3.28.2+4+g926b5dade
+pkgver=3.28.2+5
 pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users."
 url="https://git.gnome.org/browse/mutter"
@@ -29,10 +29,10 @@ sha256sums=('SKIP'
             '5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366'
             '2d2e305e0a6cca087bb8164f81bdc0ae7a5ca8e9c13c81d7fd5252eb3563fc09')
 
-pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
-}
+# pkgver() {
+#   cd $_pkgname
+#   # git describe --tags | sed 's/-/+/g'
+# }
 
 prepare() {
   cd $_pkgname
