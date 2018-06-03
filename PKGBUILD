@@ -1,8 +1,8 @@
 # Maintainer: Falk Alexander Seidl <fa@terminal.run>
 
-pkgname=keepassgtk
+pkgname=keepassgtk-git
 _gitname=KeepassGtk
-pkgver=r105.7ddb42d
+pkgver=r147.e4e4b34
 pkgrel=1
 pkgdesc="An eye candy password manager for Linux (Keepass v.4)"
 arch=('i686' 'x86_64')
