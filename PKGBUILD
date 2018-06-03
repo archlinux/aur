@@ -1,7 +1,7 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=('python-requests-http-signature' 'python2-requests-http-signature')
-pkgver=1.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A Requests auth module for the HTTP Signature IETF draft standard RFC"
 arch=(any)

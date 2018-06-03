@@ -1,6 +1,6 @@
 pkgbase = python-requests-http-signature
 	pkgdesc = A Requests auth module for the HTTP Signature IETF draft standard RFC
-	pkgver = 1.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/EliotBerriot/requests-http-signature
 	arch = any
