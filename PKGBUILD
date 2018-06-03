@@ -1,14 +1,15 @@
+# Maintainer: Skywol <Skywol@qq.com>
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
 pkgname=deepin-wine-helper
 pkgver=1.1deepin9
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Deepin Wine Helper"
 arch=('i686' 'x86_64')
 url="http://www.deepin.org"
 license=('Proprietary')
 groups=()
-depends=()
+depends=('deepin-wine-plugin' 'deepin-wine-plugin-virtual')
 makedepends=('tar')
 checkdepends=()
 optdepends=()
