@@ -1,30 +1,28 @@
 # Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
-# Maintainer: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 # with contributions from tuusjr
+
 pkgname=finfaktura
-pkgver=2.0.9
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Fryktelig Fin Faktura is an accountancy/billing program for Norwegian businesses. Bills are created as PDF or F60 forms."
 url="https://sourceforge.net/projects/finfaktura/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('python2>=2.5.0' 'python2-reportlab' 'python2-pyqt')
-makedepends=()
-conflicts=()
-replaces=()
-backup=()
-source=("http://downloads.sourceforge.net/sourceforge/finfaktura/${pkgname}-${pkgver}.tar.gz")
-md5sums=('0541e2854c0e5a94d842095970321c0e')
+depends=('python2' 'python2-reportlab' 'python2-pyqt')
+validpgpkeys=('7F09D1F81C3E17584AC9C61A4F5AD64DFA687324')
+source=("http://downloads.sourceforge.net/sourceforge/finfaktura/${pkgname}-${pkgver}.tar.gz"{,.asc})
+md5sums=('e4eb3097603f9c8e3157b834be90169c'
+         'SKIP')
 
-build() {
-  cd $srcdir/$pkgname-$pkgver
-  # From http://allanmcrae.com/2010/10/big-python-transition-in-arch-linux/
+
+prepare() {
+  cd "$pkgname-$pkgver"
   sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
     -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
     $(find . -name '*.py')
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  python2 setup.py install --prefix=/usr --root="$pkgdir" || return 1
+  cd "$pkgname-$pkgver"
+  python2 setup.py install --prefix=/usr --root="$pkgdir"
 }
