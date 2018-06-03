@@ -1,0 +1,4 @@
+*.tar.xz
+deepin.com.weixin.work_*_i386.deb
+pkg/
+src/
