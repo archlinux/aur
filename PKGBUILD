@@ -4,7 +4,7 @@
 # Maintainer: alexmo82 <25396682 AT live DOT it>
 
 pkgname=freefilesync
-pkgver=10.0
+pkgver=10.1
 pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(
 	)
 
 sha256sums=(
-	 '071b8a8a778c4598936ea714f146d585673fe22854b4dab061b9c4c199de27e6'	#ffs source
+	 '39e161637a1506441fb45041424181389db8a342f82fe3496ec97957b022f744'	#ffs source
 	 'b381bb9dbda25c3c08a67f18072a2761abe34339ddf3318e1758eb7c349f1a3b'	#FreeFileSync.desktop
 	 '31df3fa1f1310de14bbd379f891d4f8ed2df5b0d68913eb52c88b3be682933fb'	#ffsicon.png
 	 '1502efdbf1638856a18ab9916e0431bf6a53471792cb2daa380345bac33f67c4'	#RealTimeSync.desktop
