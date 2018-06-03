@@ -1,0 +1,25 @@
+pkgbase = josm-svn
+	pkgdesc = An editor for OpenStreetMap written in Java
+	pkgver = 13881
+	pkgrel = 1
+	url = http://josm.openstreetmap.de/
+	arch = any
+	license = GPL
+	makedepends = apache-ant
+	makedepends = java-environment>=8
+	makedepends = subversion
+	depends = java-runtime>=8
+	depends = libxtst
+	depends = ttf-font
+	provides = josm
+	conflicts = josm
+	backup = etc/conf.d/josm
+	source = josm-svn::svn+https://josm.openstreetmap.de/svn/trunk
+	source = josm.sh
+	source = josm.conf
+	sha256sums = SKIP
+	sha256sums = 04d12673ad6e00093123a474b9d85400fcbdd28ec1e8421ac33859cd2e69d134
+	sha256sums = 43ee660f17ee2205c0e0654e8d229db78535e4d28e1298f02ebb814ae433dfd1
+
+pkgname = josm-svn
+
