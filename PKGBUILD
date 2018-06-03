@@ -16,7 +16,7 @@ sha256sums=('f008932f75837c1612703c12e8e654051f3d7656a976190f0322c4a5c6252399'
 
 prepare() {
   cd "$srcdir"/$pkgname-$pkgver
-  sed 's/After=udev/After=systemd-udev-settle/' -i inputlirc.service
+  sed -r 's/^After=.*/After=systemd-udev-settle.service lircd.service/' -i inputlirc.service
 }
 
 build() {
