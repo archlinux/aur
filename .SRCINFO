@@ -1,0 +1,21 @@
+pkgbase = payara51
+	pkgdesc = A Java EE application server, derived from GlassFish Open Source Edition. (Full Version)
+	pkgver = 5.181
+	pkgrel = 1
+	url = http://www.payara.fish/
+	arch = any
+	license = CDDL
+	license = GPL2
+	depends = java-environment>=8
+	provides = payara51
+	conflicts = payara51
+	options = !strip
+	source = payara-5.181.zip::https://info.payara.fish/cs/c/?cta_guid=de4a19f2-46e5-4f92-88ae-36300d4edcc2&placement_guid=6c4914a9-26de-4da5-b0fe-cd9f01ed1bea&portal_id=334594&redirect_url=APefjpGbKkPVgtCu26s680z7kPbJsydj1-zT6W1aCP0cc4rx2qYvSMnm8ssxiz57Gdc9-ytULkcx-Ktw1xe1I6MvFL1H_tAJUepYfRzaT7R2EHndeHpG5Umjg-w3bu6GbBdxIAAw3-KGoB18DyIseL1fE8Vx1shsLLj2Cp4QPtMWr78rwlJAGW0rU3LmthW61AjYmvl2Ay_2yiSxI6-QsNHv3T1ib3stZFqSTQb2mv9bYRC7c1Iqvpf11vf3RHfGF8N35xkw4fZO&hsutk=620a9ed62186b8571bcc43e5e4075f89&canon=https%3A%2F%2Fwww.payara.fish%2Fdownloads&click=6d7d81ae-d10e-455f-999a-ee346d8672eb&utm_referrer=https%3A%2F%2Fwww.payara.fish%2Fabout&__hstc=229474563.620a9ed62186b8571bcc43e5e4075f89.1527986372648.1527986372648.1527986372648.1&__hssc=229474563.3.1527986372648&__hsfp=794664957
+	source = payara51.service
+	sha256sums = b2e96f1ad5deb2e8dcd854944dde86225d58de5f1326824b17f1b6a58a31bc7f
+	sha256sums = 364f62264e5b3fa50630d599931d5b45cd901c608b6673c0ae2b6b11407ee140
+	sha512sums = 22dca87340fbc882a1c5636c3a9a907ebe67de25076cadf1b3c2ffc4414bbe0390c89ffa0ff0fc7dff1c4a5caa24da0c3f1202abe96be27642d7f86015eeacf1
+	sha512sums = 8138a4ccf1cc15f3d8f567e7b6d55ae7ef8724295b1e565940bb4498edae034a618a53a40e6409cdcdbe38aeee76df9e04d46e30edaf96e5ef2422735e094df9
+
+pkgname = payara51
+
