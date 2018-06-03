@@ -1,7 +1,7 @@
 # Maintainer: Schwan Carl <schwancarl at protonmail dot com>
 
 pkgname=webnovel-manager-git
-pkgver=v0.1.7.r0.g5d97243
+pkgver=v1.3.r0.gf4e4b90
 pkgrel=1
 pkgdesc="Webnovel reader"
 arch=('any')
