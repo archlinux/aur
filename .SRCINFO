@@ -1,7 +1,7 @@
 pkgbase = ccnet-server
 	pkgdesc = Internal communication framework and user/group management for seafile server
-	pkgver = 6.2.5
-	pkgrel = 4
+	pkgver = 6.3.0
+	pkgrel = 1
 	url = https://github.com/haiwen/ccnet-server
 	arch = i686
 	arch = x86_64
@@ -16,12 +16,8 @@ pkgbase = ccnet-server
 	depends = libmariadbclient
 	depends = postgresql-libs
 	conflicts = ccnet
-	source = ccnet-server-v6.2.5-server.tar.gz::https://github.com/haiwen/ccnet-server/archive/v6.2.5-server.tar.gz
-	source = libccnet.pc.patch
-	source = openssl-1.1.diff
-	sha256sums = e7094278cf1ffdda852e18acb7d968200916c187517fc41284ec2f759aa8abeb
-	sha256sums = 66c3b02c3981db6a80819e0ae103bedadf8dfdf81405a7f75a9cba714acf973f
-	sha256sums = f98a17d467214984d11ddf819e02d54b2b88e89ebafec1955922e43c123800d4
+	source = ccnet-server-v6.3.0-server.tar.gz::https://github.com/haiwen/ccnet-server/archive/v6.3.0-server.tar.gz
+	sha256sums = a374a67ca2bd7d15ed11e928e13861acd1b6eed622459bc2b2bb2782f4954df5
 
 pkgname = ccnet-server
 
