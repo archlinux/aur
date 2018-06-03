@@ -1,0 +1,15 @@
+pkgbase = ttf-sabilulungan-sundanese
+	pkgdesc = Sabilulungan TTF font for Sundanese script
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://sabilulungan.org/aksara/
+	install = ttf-sabilulungan-sundanese.install
+	arch = any
+	license = GPL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://sabilulungan.org/aksara/files/font/SundaneseUnicode-1.0.5.ttf
+	sha256sums = f1dd66a1db30b3af2d0604778be3a5c2890feeb1d06e4acf0a94b9e3fbb520b2
+
+pkgname = ttf-sabilulungan-sundanese
+
