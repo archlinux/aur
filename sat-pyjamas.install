@@ -1,3 +1,15 @@
+print_information() {
+
+  echo "sat-pyjamas is only useful to build libervia."
+}
+
+
+post_upgrade(){
+print_information
+}
+
 post_install(){
 
+print_information
 }
+

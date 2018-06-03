@@ -1,5 +1,22 @@
-## arg 1:  the new package version
-post_install() {
-	echo "In order to use libervia, you need a XMPP account, sat-xmpp installed and configured. "
-        echo "Please read the instructions of the official documentation: https://wiki.goffi.org/wiki/Libervia/en"
+print_info() {
+ echo "In order to use libervia, you need a XMPP account, sat-xmpp installed and configured. "
+ echo "Please read the instructions of the official documentation: https://wiki.goffi.org/wiki/Libervia/en"
+ echo "To use Libervia, you'll need to create a "libervia" profile with corresponding account on your XMPP server."
+ echo "example with Prosody:"
+ echo "prosodyctl adduser libervia@your_domain.tld  # you will be prompted for a password"
+ echo " jp profile create libervia -j libervia@your_domain.tld -p "
+ echo "<libervia_password>"
+ echo "Of course replace "your_domain.tld" with your actual domain."
+
+}
+
+
+
+post_upgrade(){
+print_info
+}
+
+post_install(){
+
+print_info
 }
