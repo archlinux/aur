@@ -9,7 +9,7 @@ pkgbase = otbluh
 	license = GPLv3
 	depends = openssl
 	provides = otbluh
-	conflicts = otbluh,otbluh
+	conflicts = otbluh-git
 	source = https://git.seppia.net/onetimebluh.git/snapshot/onetimebluh-0.1.tar.gz
 	sha256sums = efde76c8832d8f9bdd514cd4906424f86cf40f9d183e2b047c64a05a3ee88728
 
