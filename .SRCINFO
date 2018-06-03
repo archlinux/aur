@@ -1,14 +1,14 @@
 pkgbase = finfaktura
 	pkgdesc = Fryktelig Fin Faktura is an accountancy/billing program for Norwegian businesses. Bills are created as PDF or F60 forms.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/finfaktura/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = python2
 	depends = python2-reportlab
-	depends = python2-pyqt
+	depends = python2-pyqt4
 	source = http://downloads.sourceforge.net/sourceforge/finfaktura/finfaktura-2.2.0.tar.gz
 	source = http://downloads.sourceforge.net/sourceforge/finfaktura/finfaktura-2.2.0.tar.gz.asc
 	validpgpkeys = 7F09D1F81C3E17584AC9C61A4F5AD64DFA687324
