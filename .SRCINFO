@@ -5,7 +5,6 @@ pkgbase = spl-linux-vfio
 	arch = x86_64
 	license = GPL
 	makedepends = linux-vfio-headers=4.16.10-1
-	makedepends = git
 	depends = spl-utils-common=0.7.9
 	depends = kmod
 	depends = linux-vfio=4.16.10-1
@@ -18,7 +17,6 @@ pkgname = spl-linux-vfio
 	groups = archzfs-linux-vfio
 	provides = spl
 	conflicts = spl-linux-vfio-git
-	replaces = spl-git
 
 pkgname = spl-linux-vfio-headers
 	pkgdesc = Solaris Porting Layer kernel headers.
