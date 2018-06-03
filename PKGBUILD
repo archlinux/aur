@@ -1,17 +1,16 @@
-# Maintainer: Jian Zeng <anonymousknight96 AT gmail.com>
+# Contributor: Jian Zeng <anonymousknight96 AT gmail.com>
 
 pkgname=cayley
-pkgver=0.7.1
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Cayley is an open-source graph inspired by the graph database behind Freebase and Google's Knowledge Graph."
 arch=('i686' 'x86_64')
 url='https://cayley.io/'
 license=('APACHE-2.0')
-provide=('cayley')
 source_x86_64=("https://github.com/cayleygraph/cayley/releases/download/v${pkgver}/cayley_${pkgver}_linux_amd64.tar.gz")
 source_i686=("https://github.com/cayleygraph/cayley/releases/download/v${pkgver}/cayley_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('ab1f32ca3501f8c86145c7ec7c29e44cc02c19adfdf511b347c3ff7bb47739b9')
-sha256sums_x86_64=('77cbd2a3112ce4db414208839e7181b964d71a9495f21da06cbe7e2957c334f5')
+sha256sums_i686=('90d181d2fe0cae0b8022e3ee0d218dbd865e48e4bdd87ec2918004b9d738e2d6')
+sha256sums_x86_64=('7363420188bf8f0f437d42c0f4c3b0fdd35786527be27d9b619f0ab59f0ad64c')
 
 if [ "$CARCH" == 'x86_64' ]; then
     _dir="${pkgname}_${pkgver}_linux_amd64"
