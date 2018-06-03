@@ -3,8 +3,8 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-workarounds
-pkgver=8
-pkgrel=2
+pkgver=r1103.3661cbd
+pkgrel=1
 pkgdesc='Workarounds for Pantheon derivatives'
 arch=('i686' 'x86_64')
 url='https://github.com/quequotion/pantheon-bzr-qq'
@@ -20,6 +20,7 @@ optdepends=("pantheon-qq-default-settings-git: Pantheon configuration and themei
             "numlockx: Turn on the numlock key in X11"
             "bamf-ubuntu-bzr: Application matching framework used by plank")
 makedepends=('git' 'intltool')
+provides=(gala{,-bzr,-git}="${pkgver}")
 conflicts=(gala{,-bzr,-git})
 install='gala.install'
 source=("https://raw.githubusercontent.com/elementary/gala/master/data/org.pantheon.desktop.gala.gschema.xml.in"
@@ -35,17 +36,18 @@ sha512sums=('30a488431a23ff5521a12e97fa69ed17b2033ba8f016bb922e07ad9bf2d671e14a9
             'c06e3b8c59681ebe64fa0dd724eea1d40a579956372ce0851f30ededdda3ac41d329d40e5463bd779daba0d55853faec357203b042a4de3d601eafc8b09c350e'
             'bc5724ef255adad39e35e3fbd7beacbd3ea270c7019362ff6a8bc15cf8f503a4304c18c5e35ae2a6ddb8d1e6e7cc6973642a2ffdc8fe9e219c7f2dbacf5eab72')
 
+pkgver() {
+  cd "${srcdir}"
+  git clone -n "https://github.com/elementary/gala.git"
+  cd "${srcdir}/gala"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
 prepare() {
   cd "${srcdir}"
   mv org.pantheon.desktop.gala.gschema.xml{.in,}
   sed -i 's|@GETTEXT_PACKAGE@|gala|g' org.pantheon.desktop.gala.gschema.xml
-
-  git clone -n "https://github.com/elementary/gala.git"
-  cd "${srcdir}/gala"
-  export pkgvergala="r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
-
-provides=(gala{,-bzr,-git}="${pkgvergala}")
 
 package() {
   install -Dm644 {"${srcdir}","${pkgdir}"/usr/share/glib-2.0/schemas}/org.pantheon.desktop.gala.gschema.xml

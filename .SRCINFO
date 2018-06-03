@@ -1,7 +1,7 @@
 pkgbase = pantheon-workarounds
 	pkgdesc = Workarounds for Pantheon derivatives
-	pkgver = 8
-	pkgrel = 2
+	pkgver = r1103.3661cbd
+	pkgrel = 1
 	url = https://github.com/quequotion/pantheon-bzr-qq
 	install = gala.install
 	arch = i686
