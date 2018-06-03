@@ -1,7 +1,7 @@
 pkgbase = stratis-cli
 	pkgdesc = A CLI for the Stratis Project.
-	pkgver = 0.5.0
-	pkgrel = 7
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = stratis-storage.github.io
 	arch = any
 	license = Apache
@@ -21,10 +21,10 @@ pkgbase = stratis-cli
 	conflicts = stratis-cli
 	conflicts = python-justbases
 	conflicts = python-justbytes
-	source = stratis-cli-0.5.0.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v0.5.0.tar.gz
+	source = stratis-cli-0.5.2.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v0.5.2.tar.gz
 	source = justbases-0.09.tar.gz::https://github.com/mulkieran/justbases/archive/v0.09.tar.gz
 	source = justbytes-0.11.tar.gz::https://github.com/mulkieran/justbytes/archive/v0.11.tar.gz
-	sha256sums = 55566bb60ab247f72303ab8afaf79de98d061964f9af5ffc01858307045e4408
+	sha256sums = 25ee3f9016c6eb8a3cccb2eabaa3f0f799aef72e05dafceeae2f6dd21b0abcf7
 	sha256sums = 623ff8dcc53e491a693f5a2c3caea41c4386fda54368fa30220955a9e1179513
 	sha256sums = 42f800190f89316b921aab15d64caf4e8e67b88c5c4d459b9d788bba116c6210
 
