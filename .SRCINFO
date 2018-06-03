@@ -1,17 +1,15 @@
 pkgbase = zfs-linux-git
-	pkgver = 2018.05.26.r3492.g3e5300e0e.4.16.11.1
+	pkgver = 2018.05.31.r4577.g1a5b96b8e.4.16.13.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-headers=4.16.11-1
+	makedepends = linux-headers=4.16.13-1
 	makedepends = git
-	makedepends = spl-linux-git-headers
 	depends = kmod
-	depends = spl-linux-git
-	depends = zfs-utils-common-git=2018.05.26.r3492.g3e5300e0e
-	depends = linux=4.16.11-1
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=3e5300e0ed3c4b49e3b0dab7daded1e3bfaaded7
+	depends = zfs-utils-common-git=2018.05.31.r4577.g1a5b96b8e
+	depends = linux=4.16.13-1
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=1a5b96b8ee66da5dfdfbedcb6bc462f454b4a25d
 	sha256sums = SKIP
 
 pkgname = zfs-linux-git
@@ -20,7 +18,8 @@ pkgname = zfs-linux-git
 	groups = archzfs-linux-git
 	provides = zfs
 	conflicts = zfs-linux
-	replaces = zfs-git
+	conflicts = spl-linux-git
+	replaces = spl-linux-git
 
 pkgname = zfs-linux-git-headers
 	pkgdesc = Kernel headers for the Zettabyte File System.
