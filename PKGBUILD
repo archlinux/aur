@@ -9,7 +9,8 @@ pkgdesc='Time-series data visualization tool for InfluxDB'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://github.com/InfluxData/chronograf'
 license=('AGPL')
-makedepends=('go' 'git' 'make' 'npm' 'yarn' 'nodejs<=9' 'python2')
+makedepends=('go' 'git' 'make' 'npm' 'yarn' 'nodejs<=9' 'python2' 'go-bindata')
+depends=('glibc')
 backup=('etc/chronograf/chronograf.conf')
 install="chronograf.install"
 source=("git+https://github.com/influxdata/chronograf#tag=$pkgver"
