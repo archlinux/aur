@@ -2,14 +2,14 @@
 # Maintainer: Skywol <skywol@qq.com>
 pkgname=deepin-wine-plugin-virtual
 pkgver=1.0deepin0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Deepin Wine plugin virtual package"
 arch=('i686' 'x86_64')
 url="http://www.deepin.org"
 license=('Proprietary')
 groups=()
-depends=('deepin-wine' 'p7zip' 'python-dbus')
+depends=('p7zip' 'python-dbus')
 makedepends=('tar')
 checkdepends=()
 optdepends=()
