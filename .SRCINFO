@@ -1,0 +1,24 @@
+pkgbase = python-pymemoize
+	pkgdesc = Simple Python cache and memoizing module
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/EliotBerriot/PyMemoize
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = git+https://github.com/EliotBerriot/PyMemoize#branch=django
+	sha256sums = SKIP
+
+pkgname = python-pymemoize
+	depends = python
+	optdepends = python-django
+	optdepends = python-redis
+
+pkgname = python2-pymemoize
+	depends = python2
+	optdepends = python2-django
+	optdepends = python2-redis
+
