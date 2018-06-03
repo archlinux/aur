@@ -1,8 +1,8 @@
-pkgname='i3ipc-python'
+pkgname=i3ipc-python
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An improved Python library to control i3wm'
-arch=('x86_64')
+arch=('any')
 url="https://github.com/acrisci/${pkgname}"
 license=('custom:BSD')
 depends=('python')
