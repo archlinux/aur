@@ -1,0 +1,21 @@
+pkgbase = python-django-cacheops
+	pkgdesc = A slick ORM cache with automatic granular event-driven invalidation
+	pkgver = 4.0.6
+	pkgrel = 1
+	url = https://github.com/Suor/django-cacheops
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-django-cacheops-4.0.6.tar.gz::https://github.com/Suor/django-cacheops/archive/4.0.6.tar.gz
+	sha256sums = 799ce297d187f6a10523cfbc90434a5794fe2fa9a455b49f2f5b560f65e97626
+
+pkgname = python-django-cacheops
+	depends = python-django
+	depends = python-redis
+
+pkgname = python2-django-cacheops
+	depends = python2-django
+	depends = python2-redis
+
