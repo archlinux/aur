@@ -1,0 +1,14 @@
+pkgbase = vim-gutentag-git
+	pkgdesc = Tag management and viewing plugin.
+	pkgver = r101.de24085
+	pkgrel = 1
+	url = https://github.com/mpevnev/guten-tag
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim
+	source = vim-gutentag-git::git+https://github.com/mpevnev/guten-tag.git
+	sha512sums = SKIP
+
+pkgname = vim-gutentag-git
+
