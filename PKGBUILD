@@ -6,7 +6,7 @@ pkgdesc='CGAL bindings using SWIG '
 arch=('i686' 'x86_64')
 license=('custom: Boost')
 url="https://github.com/CGAL/cgal-swig-bindings"
-makedepends=('cgal' 'cmake' 'swig' 'eigen' 'python' 'java-runtime')
+makedepends=('cgal' 'cmake' 'swig' 'eigen' 'python' 'java-runtime' 'git')
 source=("git+https://github.com/CGAL/cgal-swig-bindings.git")
 md5sums=('SKIP')
 
