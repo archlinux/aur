@@ -1,0 +1,15 @@
+pkgbase = dvdcat-git
+	pkgdesc = Write dvd contents to stdout
+	pkgver = 0.1.0.r0.g20cf1c0
+	pkgrel = 1
+	url = https://github.com/BennyBolton/dvdcat
+	arch = any
+	license = GPL3
+	makedepends = libdvdread
+	depends = libdvdread
+	optdepends = libdvdcss: decrypting dvds
+	source = git+https://github.com/BennyBolton/dvdcat
+	sha256sums = SKIP
+
+pkgname = dvdcat-git
+
