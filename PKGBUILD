@@ -24,9 +24,6 @@ pkgver() {
 prepare() {
   cd $_realpkg
 
-  # Fixup tag for pkgver()
-  git tag -f 1.15.10 5e6b9aeb5e3402ff17ae8ee8548ae2341c2f7d59
-
   # Fix non-UTF-8 sources giving gtk-doc trouble
   patch -Np1 -i ../utf-8.diff
   patch -Np1 -i ../cairo-respect-fontconfig_pb.patch
