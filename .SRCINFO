@@ -1,13 +1,12 @@
 pkgbase = ecos
 	pkgdesc = A lightweight conic solver for second-order cone programming.
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://www.embotech.com/ECOS
-	arch = i686
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/embotech/ecos/archive/v2.0.5.tar.gz
-	sha256sums = 14c6ef81dfe9dad6af353e3499ad3a7a0eb1ebd289a995b038e3bc67c6101151
+	source = https://github.com/embotech/ecos/archive/v2.0.6.tar.gz
+	sha256sums = ffc4b44e813a5c68abd464b638d216f09385d9b6e40cf487ac384289e6a27988
 
 pkgname = ecos
 
