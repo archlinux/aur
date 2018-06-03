@@ -3,29 +3,27 @@
 # Contributor: Bram Schoenmakers <me@bramschoenmakers.nl>
 
 pkgname=evolvotron
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="An interactive generative art application"
 arch=('i686' 'x86_64')
 url="http://www.bottlenose.demon.co.uk/share/evolvotron/"
 license=('GPL')
-depends=('qt4' 'boost-libs')
+depends=('qt5-base' 'boost-libs')
 makedepends=('boost' 'gendesk')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
-"fix_bool_cast.patch"
 "evolvotron.png"
 )
 
 prepare() {
   gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
   cd "$srcdir/$pkgname"
-  patch -Np1 -i "${srcdir}/fix_bool_cast.patch"
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  QTDIR=/usr/bin ./configure
-  make
+  qmake-qt5 "VERSION_NUMBER=$(./VERSION)" main.pro
+  make -j 4
 }
 
 package() {
@@ -42,6 +40,5 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 }
 # vim:syntax=sh
-md5sums=('d36afd3d8e4d89418fffd963d204d5a8'
-         '9abc069adfa6ee50b8c206fef046e2b4'
+md5sums=('8fc731f03b115f8ecc5891a93f3dd518'
          '0302f0dde78ced8f177276ce96ddab5e')
