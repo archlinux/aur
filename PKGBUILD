@@ -5,7 +5,7 @@
 
 pkgname=bti
 pkgver=034
-pkgrel=2
+pkgrel=3
 pkgdesc='Console client for Twitter and identi.ca'
 arch=('x86_64')
 url='http://gregkh.github.com/bti/'
@@ -13,8 +13,8 @@ license=('GPL')
 depends=('pcre' 'libxml2' 'curl' 'liboauth' 'json-c')
 source=(http://www.kernel.org/pub/software/web/$pkgname/$pkgname-$pkgver.tar.xz
         0001-Replace-removed-is_error-macro.patch)
-sha256sums=('8b4a1a11f529f83956468acadaea9d11db4f03e82afe07fecb84b2d00e9eae83'
-            'df18ac4ad58b3ed17ce3ad7150a60375305f25641a791b6c4c4b69c631093a0e')
+sha512sums=('2b7cd66cff617f7592863a1a8e03754b3dea314c8eeb98bf0993601d4d4db848a74b26941bbd04f57a348bf0d02aefca4e3125f00fed531a67a3f17f36e665ba'
+            'e05c6b4c744338a4679e37c25e16656b029bb995cbe0efd71b986383d812c4c7b9e599d4f758dfeef94a378a2a807275ffe80fb28ff9970a5ec4b039201223f6')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
