@@ -1,7 +1,7 @@
 # Contributor: Sapphira Armageddos <shadowkyogre.public+aur@gmail.com>
 pkgname=magicseteditor
 pkgver=2.0.0
-pkgrel=13
+pkgrel=14
 pkgdesc="A program to help create Magic: the Gathering cards and sets. Comes with no game support."
 arch=('i686' 'x86_64')
 url="http://magicseteditor.sourceforge.net"
@@ -10,7 +10,7 @@ depends=('hunspell' 'libjpeg' 'wxgtk2.8' 'boost-libs')
 makedepends=('boost' 'unzip' 'pkg-config' 'svn')
 provides=("magicseteditor=${pkgver}")
 conflicts=('magicseteditor-bin' 'magicseteditor-svn' 'mse2' 'magicseteditor-xyz-mod')
-source=("mse-${pkgver}::svn+https://magicseteditor.svn.sourceforge.net/svnroot/magicseteditor/tags/releases/mse-${pkgver}#")
+source=("mse-${pkgver}::svn+https://svn.code.sf.net/p/magicseteditor/code/tags/releases/mse-${pkgver}")
 install=$pkgname.install
 options=(!strip)
 md5sums=(SKIP)
