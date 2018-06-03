@@ -1,10 +1,10 @@
-# Maintainer: Patrick McCarty <pnorcks at gmail dot com>
-# submit: Chao Wang <chaowang@redhat.com>
+# Contributor: Patrick McCarty <pnorcks at gmail dot com>
+# Contributor: Chao Wang <chaowang@redhat.com>
 
 pkgname=koji
-pkgver=1.11.0
-pkgrel=2
-pkgdesc='Koji is a system for building and tracking RPMS. This base package contains shared libraries and the command-line interface.'
+pkgver=1.16.0
+pkgrel=1
+pkgdesc='shared libraries and the command-line interface for building and tracking RPMS'
 arch=('any')
 license=('GPL2' 'LGPL2.1')
 url="https://pagure.io/koji"
@@ -25,7 +25,7 @@ backup=('etc/httpd/conf.d/kojihub.conf'
         'etc/kojivmd/kojivmd.conf'
         'etc/kojiweb/web.conf')
 source=("https://releases.pagure.org/koji/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('0ac460de2f0162d8f1336edf9ec30363765303129e244066a47c52d23ab5aef9')
+sha256sums=('b857d5c45cb18be7d1cc33a9324e2b8e7febb45c4422360ddeb3342fcfa3a668')
 
 prepare() {
   cd "$pkgname-$pkgver"
