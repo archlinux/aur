@@ -1,0 +1,23 @@
+pkgbase = python-django-dynamic-preferences
+	pkgdesc = Dynamic global and instance settings for your django project
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/EliotBerriot/django-dynamic-preferences
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-django-dynamic-preferences-1.5.1.tar.gz::https://github.com/EliotBerriot/django-dynamic-preferences/archive/1.5.1.tar.gz
+	sha256sums = f639e858139d4256967e4dd9421f442f929967e0ab573813944f3d6af60fea9d
+
+pkgname = python-django-dynamic-preferences
+	depends = python-wheel
+	depends = python-django
+	depends = python-persisting-theory
+
+pkgname = python2-django-dynamic-preferences
+	depends = python2-wheel
+	depends = python2-django
+	depends = python2-persisting-theory
+
