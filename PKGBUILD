@@ -1,23 +1,29 @@
 # Maintainer: Kevin Guan <KevinGuan.gm@gmail.com>
 
 pkgname=iptux
-pkgver=0.6.2
+pkgver=0.7.5
 pkgrel=1
-pkgdesc="A software for sharing in LAN"
+pkgdesc="software for sharing in LAN"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="https://github.com/iptux-src/iptux/"
-depends=('make' 'autoconf' 'libtool' 'automake')
-source=(https://codeload.github.com/iptux-src/${pkgname}/tar.gz/v${pkgver})
-sha256sums=('d567096d97b3b168dde1510f0ca00a13c6f8bb596131c234482377d7d8fb211b')
+depends=(gtk3 gstreamer gst-plugins gst-plugins-good)
+makedepends=(cmake)
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/iptux-src/${pkgname}/archive/v${pkgver}.tar.gz)
+sha256sums=('37fd2618e888d44b3ddcc21e2d497f0a8dcbdb2adcb23fd137fb8e56d2d46919')
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	./configure --prefix=/usr
-	make
+  cd build
+  cmake ../${pkgname}-${pkgver} \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}/" install
+  cd build
+  make DESTDIR="$pkgdir" install
 }
