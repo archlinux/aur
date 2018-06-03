@@ -14,6 +14,9 @@ md5sums=('e76992d0346067756ca66c768f714a87')
 build() {
   cd $pkgname-$pkgver
 
+  # Do not treat warnings as errors
+  CXXFLAGS+=' -Wno-error'
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr
 
   make
