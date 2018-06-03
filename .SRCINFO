@@ -1,13 +1,12 @@
 pkgbase = deepin-wine-plugin
 	pkgdesc = Deepin Wine plugin
 	pkgver = 1.0deepin2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
-	depends = deepin-wine
 	depends = gtk2
 	noextract = deepin-wine-plugin_1.0deepin2_i386.deb
 	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine-plugin/deepin-wine-plugin_1.0deepin2_i386.deb

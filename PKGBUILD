@@ -2,14 +2,14 @@
 # Maintainer: Skywol <skywol@qq.com>
 pkgname=deepin-wine-plugin
 pkgver=1.0deepin2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Deepin Wine plugin"
 arch=('i686' 'x86_64')
 url="http://www.deepin.org"
 license=('Proprietary')
 groups=()
-depends=('deepin-wine' 'gtk2')
+depends=('gtk2')
 makedepends=('tar')
 checkdepends=()
 optdepends=()
