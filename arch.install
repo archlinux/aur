@@ -32,8 +32,8 @@ pushd ${mnt}
 install -d boot
 mount ${loop}p1 boot
 
-setarch ${arch} pacstrap -C /usr/share/devtools/pacman-extra.conf -c . base base-devel syslinux openssh sudo haveged
-systemctl --root=. enable systemd-{networkd,resolved} sshd haveged
+setarch ${arch} pacstrap -C /usr/share/devtools/pacman-extra.conf -c . base base-devel pacman-contrib haveged openssh sudo syslinux
+systemctl --root=. enable systemd-{networkd,resolved} haveged sshd
 
 ln -sf ../run/systemd/resolve/resolv.conf etc/resolv.conf
 
@@ -56,13 +56,6 @@ LABEL=boot  /boot  ext2   defaults      0  1
 LABEL=root  /      ext4   defaults      0  1
 EOF
 
-cat > etc/systemd/network/any.network <<EOF
-[Match]
-
-[Network]
-DHCP=yes
-EOF
-
 cat > etc/hostname <<EOF
 guest
 EOF
@@ -73,6 +66,13 @@ EOF
 
 cat > etc/sudoers.d/user <<EOF
 user ALL=(ALL) NOPASSWD: ALL
+EOF
+
+cat > etc/systemd/network/any.network <<EOF
+[Match]
+
+[Network]
+DHCP=yes
 EOF
 
 setarch ${arch} arch-chroot . <<EOF
