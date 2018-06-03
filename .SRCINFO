@@ -1,0 +1,19 @@
+pkgbase = python-persisting-theory
+	pkgdesc = Registries that can autodiscover values accross your project apps
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://code.eliotberriot.com/eliotberriot/persisting-theory
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://code.eliotberriot.com/eliotberriot/persisting-theory/-/archive/develop/persisting-theory-develop.tar.gz
+	sha256sums = 8dec8a5fd3f87b57cdd7dff18220fe3060841cabafef3defbb4cafd0f8e1d85a
+
+pkgname = python-persisting-theory
+	depends = python
+
+pkgname = python2-persisting-theory
+	depends = python2
+
