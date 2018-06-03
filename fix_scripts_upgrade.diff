@@ -1,0 +1,12 @@
+diff --git a/scripts/upgrade/upgrade_6.2_6.3.sh b/scripts/upgrade/upgrade_6.2_6.3.sh
+index f09d03c..d5951ed 100755
+--- a/scripts/upgrade/upgrade_6.2_6.3.sh
++++ b/scripts/upgrade/upgrade_6.2_6.3.sh
+@@ -20,6 +20,8 @@ export PYTHONPATH=${INSTALLPATH}/seafile/lib/python2.6/site-packages:${INSTALLPA
+ export PYTHONPATH=${INSTALLPATH}/seafile/lib/python2.7/site-packages:${INSTALLPATH}/seafile/lib64/python2.7/site-packages:$PYTHONPATH
+ export SEAFILE_LD_LIBRARY_PATH=${INSTALLPATH}/seafile/lib/:${INSTALLPATH}/seafile/lib64:${LD_LIBRARY_PATH}
+ 
++PYTHON=/usr/lib/seahub/bin/python2.7
++
+ prev_version=6.2
+ current_version=6.3

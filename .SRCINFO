@@ -1,7 +1,7 @@
 pkgbase = seafile-server
 	pkgdesc = Seafile server core
-	pkgver = 6.2.5
-	pkgrel = 5
+	pkgver = 6.3.0
+	pkgrel = 1
 	url = https://github.com/haiwen/seafile-server
 	changelog = ChangeLog
 	arch = i686
@@ -11,26 +11,24 @@ pkgbase = seafile-server
 	arch = aarch64
 	license = AGPL3
 	makedepends = vala
-	depends = ccnet-server=6.2.5
+	depends = ccnet-server>=6.3.0
 	depends = fuse2
 	depends = libevhtp-seafile
 	depends = libarchive
 	optdepends = python2-wsgidav-seafile: webdav-support
 	conflicts = seafile
-	source = seafile-server-6.2.5-server.tar.gz::https://github.com/haiwen/seafile-server/archive/v6.2.5-server.tar.gz
+	source = seafile-server-6.3.0-server.tar.gz::https://github.com/haiwen/seafile-server/archive/v6.3.0-server.tar.gz
+	source = fix_pids-folder-out-of-seafile-data.diff
 	source = fix_seafile-admin.diff
 	source = fix_mysql_support.diff
+	source = fix_scripts_upgrade.diff
 	source = seafile-server@.service
-	source = 0001-Revert-server-put-pids-folder-out-of-seafile-data.patch
-	source = libseafile.in.patch
-	source = openssl-1.1.diff
-	sha256sums = 8cc17303b3b3949cfb4e914264f6446057bb2eee0b5e6e3a3399294ab566c0e0
-	sha256sums = 91f56d852cb4670ce052f1539ebe51c3ec74189150dc24ed34245ca3397d29a7
-	sha256sums = c144d93638dfb44d1474c46e427977f4c314def3ca6a31bf495b6b4ce523741f
+	sha256sums = 056013b496a8b5501a32011288416982609797108ba5a9d3213f9574abb5fd85
+	sha256sums = d725bda36aedd424d426d7ce62e19c7036ccfc6a5759df12f139656ba15e425c
+	sha256sums = 6d456c0795bdf50c64c9f40d0fb725f6d356ff9638ec1b0c7921a11e4dd479d4
+	sha256sums = 9e50942e1f9cad21744b4467646e162896705d2c67834b600d78d4aa87b87a39
+	sha256sums = bc23410381f380c419d9d5bb0757af136d96cfa8815e9ec7e0caa759d9d3a27d
 	sha256sums = da31d1b61031cbacc42e1ab708c67c83dba933ff391b07677dabab7ab79729f4
-	sha256sums = 114920836eec03ac152a88cdfb55de5cd554240ca246dd69d3d9b52b74ec8809
-	sha256sums = a2d7f7cf0c59aba97650af62b3cefd0ceb71a1007c34d9369a88e5769c7f6076
-	sha256sums = ffa351b22e89a66f80139888e4e7a2c2bde41fd648d57c71dcf10884dc03bbc3
 
 pkgname = seafile-server
 
