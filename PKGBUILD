@@ -1,29 +1,32 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 pkgname=chwala
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Kolab File Management'
 arch=('any')
 license=('AGPL3')
 makedepends=()
-depends=('php-mcrypt' 'pear-http-request2' 'roundcubemail' 'smarty3' 'php-kolabformat')
+depends=('pear-http-request2' 'roundcubemail' 'smarty3' 'php-kolabformat')
 url='http://kolab.org'
 install=chwala.install
 #backup=()
 source=("https://mirror.kolabenterprise.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
         "chwala.install"
         "chwala.tmpfiles"
-        "apache.patch")
+        "apache.patch"
+	"php8.patch")
 #optdepends=()
 
 sha256sums=('e2de71bbced0910ba3561323e1d8d5aafc8f09d8d27f5bdc36546b701c1a29b8'
             '63c6661fe031f001357ffbecaed8bcd9f1d56549d5223c89e583713cc01d9e51'
             'e88b39da4157a2ff99e692d771b10c496ab1122f240d72db0a2c8bcacdfcf09b'
-            'd41a6b0eefdc7e5a4b134813bc772644e462eb7b768f2f18bd28aae9d169cfb6')
+            'd41a6b0eefdc7e5a4b134813bc772644e462eb7b768f2f18bd28aae9d169cfb6'
+            '68d3cce39cc83e50d4baa1eba87b6e04964bdd5b55fc204d91bf9f7cf8952d15')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     patch -p1 < "${srcdir}/apache.patch"
+    patch -p1 < "${srcdir}/php8.patch"
 }
             
 package() {
