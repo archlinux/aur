@@ -3,18 +3,18 @@
 # Contributor: kappa <kappacurve@gmail.com>
 
 pkgname=wings3d
-pkgver=2.1.5
-pkgrel=6
+pkgver=2.1.7
+pkgrel=1
 pkgdesc='3D modeling program'
 arch=('x86_64')
 url='http://www.wings3d.com/'
 license=('GPL')
-depends=('erlang' 'desktop-file-utils' 'erlang-sdl' 'erlang-cl')
+depends=('desktop-file-utils' 'erlang' 'erlang-cl' 'erlang-sdl')
 makedepends=('gendesk' 'imagemagick')
 optdepends=('povray: rendering support via POV-Ray')
 source=("https://downloads.sourceforge.net/project/wings/wings/$pkgver/wings-$pkgver.tar.bz2"
-        $pkgname.sh)
-sha256sums=('f0f03cfe9f0ee0ee6c734a2b7e50410d5f21238441cb1f34422b0ecde25b582c'
+        "$pkgname.sh")
+sha256sums=('c2f4787ac2f8c874cdbb57c87a3e267a54e7f7f90082c9885e96290d1102ff24'
             'b44102a5c4f9f3cf71c17ef45ce534c5723b3aeb2f78298abdaf77b401982128')
 _p=${pkgname%3d}-$pkgver
 
