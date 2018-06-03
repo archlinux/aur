@@ -1,10 +1,11 @@
 pkgbase = valhalla
 	pkgdesc = Routing engine for OpenStreetMap.
-	pkgver = 2.4.9
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/valhalla/valhalla
 	arch = x86_64
 	license = custom:MIT
+	makedepends = cmake
 	makedepends = git
 	makedepends = vim
 	makedepends = jq
@@ -15,8 +16,8 @@ pkgbase = valhalla
 	depends = lua
 	depends = libspatialite
 	depends = rapidjson
-	source = https://github.com/valhalla/valhalla/archive/2.4.9.tar.gz
-	sha256sums = a28080494003753ca040b98d2fafcaee58d7a37e8f3e7b982f98703be728f728
+	source = https://github.com/valhalla/valhalla/archive/2.6.1.tar.gz
+	sha256sums = 30321f370e825be94ba49e21fef6d49bbe2267d16d9c78b228d263aa0d830d1c
 
 pkgname = valhalla
 
