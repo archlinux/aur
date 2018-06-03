@@ -12,18 +12,26 @@ optdepends=('aria2: music caching'
             'libnotify: notifications'
            )
 license=('MIT')
-_py2depends=('python2' 'mpg123' 'python2-beautifulsoup4' 'python2-requests' 'python2-setuptools' 'python2-crypto' 'python2-future' 'python2-lxml')
-_py3depends=('python' 'mpg123' 'python-beautifulsoup4' 'python-requests' 'python-setuptools' 'python-crypto' 'python-future' 'python-lxml')
+_py2depends=('python' 'python2' 'mpg123' 'python2-beautifulsoup4' 
+             'python2-requests' 'python2-setuptools' 
+             'python2-crypto' 'python2-future' 'python2-lxml' 
+             'python2-cryptography' )
+_py3depends=('python' 'mpg123' 'python-beautifulsoup4' 
+             'python-requests' 'python-setuptools' 
+             'python-crypto' 'python-future' 'python-lxml' 
+             'python-cryptography')
 makedepends=('git'
   ${_py2depends[@]}
   ${_py3depends[@]}
 ) # both python and python2 depends goes to makedepends
 options=(!emptydirs)
-source=("git+https://github.com/darknessomi/musicbox")
-sha256sums=('SKIP')
 provides=('netease-musicbox')
 conflicts=('netease-musicbox')
 install=$pkgname.install
+
+source=("git+https://github.com/darknessomi/musicbox")
+
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_gitname
