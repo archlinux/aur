@@ -7,7 +7,8 @@
 
 pkgbase=handbrake-git
 pkgname=('handbrake-gtk-git' 'handbrake-cli-git')
-pkgver=r8416
+epoch=1
+pkgver=1.1.0.r114.gcc1d825af
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
@@ -15,20 +16,20 @@ url="http://handbrake.fr/"
 license=('GPL')
 source=("git+https://github.com/HandBrake/HandBrake.git"
 	'https://download.handbrake.fr/handbrake/contrib/fdk-aac-0.1.5.tar.gz'
-	'https://download.handbrake.fr/handbrake/contrib/libav-12.2.tar.gz'
+	'https://download.handbrake.fr/handbrake/contrib/ffmpeg-4.0.tar.bz2'
 	'https://download.handbrake.fr/handbrake/contrib/libbluray-1.0.1.tar.bz2'
 	'https://download.handbrake.fr/handbrake/contrib/libdvdnav-5.0.3.tar.bz2'
 	'https://download.handbrake.fr/handbrake/contrib/libvpx-1.6.1.tar.bz2'
-	'https://download.handbrake.fr/handbrake/contrib/x265_2.5.tar.gz'
+	'https://download.handbrake.fr/handbrake/contrib/x265_2.8.tar.gz'
 	'https://download.handbrake.fr/handbrake/contrib/libdvdread-5.0.3.tar.bz2')
 makedepends=('git' 'cmake' 'intltool' 'python2' 'gettext' 'yasm' 'paxtest' 'lame' 'opus' 'jansson' 'libvorbis' 'libx264' 'libass' 'gtk3' 'libnotify' 'dbus-glib' 'libsamplerate' 'libtheora')
 sha256sums=('SKIP'
             '2164592a67b467e5b20fdcdaf5bd4c50685199067391c6fcad4fa5521c9b4dd7'
-            '49c3ccda32458192c00ab25b30f4d1a6a4772b83458cbbf3a25b210d0688f55c'
+            '318a39d906c9107d49766c63787798dd078d2a36e6670a9dfeda3c55be4573b8'
             '0f9f9a1db2f48cafc70ed2596ff3594b597e2027408f5f2be6191c245d67853a'
             '5097023e3d2b36944c763f1df707ee06b19dc639b2b68fb30113a5f2cbf60b6d'
             '1c2c0c2a97fba9474943be34ee39337dee756780fc12870ba1dc68372586a819'
-            '2e53259b504a7edb9b21b9800163b1ff4c90e60c74e23e7001d423c69c5d3d17'
+            '6e59f9afc0c2b87a46f98e33b5159d56ffb3558a49d8e3d79cb7fdc6b7aaa863'
             '321cdf2dbdc83c96572bc583cd27d8c660ddb540ff16672ecb28607d018ed82b')
 noextract=('fdk-aac-0.1.5.tar.gz'
 	   'libav-12.2.tar.gz'
@@ -39,12 +40,12 @@ noextract=('fdk-aac-0.1.5.tar.gz'
 _gitname="HandBrake"
 
 pkgver() {
-  cd "$srcdir"/"$_gitname"
-    printf "r%s" "$(git rev-list --count HEAD)"
+  cd $_gitname
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$_gitname"
+  cd $_gitname
 
   # python2 substitutions
   sed -i -e '1c#! /usr/bin/python2' "gtk/src/makedeps.py"
@@ -57,7 +58,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"/"$_gitname"
+  cd $_gitname
 
   ./configure --launch --build="build" --prefix=/usr --enable-fdk \
 	      --disable-gtk-update-checks --launch-jobs=0 \
@@ -82,7 +83,7 @@ package_handbrake-gtk-git() {
   provides=('handbrake-gtk' 'handbrake')
   conflicts=('handbrake-gtk' 'handbrake')
 
-  cd "$srcdir"/"$_gitname"
+  cd $_gitname
   make -C "build" DESTDIR="$pkgdir/" install
 
   rm -f "$pkgdir/usr/bin/HandBrakeCLI"
@@ -96,5 +97,5 @@ package_handbrake-cli-git() {
   depends=('opus' 'jansson' 'libsamplerate' 'libx264' 'libtheora' 'lame' 'libass' 'libxml2')
   provides=('handbrake-cli')
   conflicts=('handbrake-cli')
-  install -D -m755 "$srcdir/$_gitname/build/HandBrakeCLI" "$pkgdir/usr/bin/HandBrakeCLI"
+  install -D -m755 "$srcdir"/$_gitname/build/HandBrakeCLI "$pkgdir"/usr/bin/HandBrakeCLI
 }
