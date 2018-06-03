@@ -1,6 +1,6 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=cryptoverif
-pkgver=1.28
+pkgver=2.00
 pkgrel=1
 pkgdesc='Cryptographic protocol verifier in the computational model'
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('custom:CeCILL-B')
 depends=('ocaml')
 optdepends=('ocaml-cryptokit: compiling extracted implementations')
 source=("http://prosecco.gforge.inria.fr/personal/bblanche/cryptoverif/cryptoverif$pkgver.tar.gz")
-sha1sums=('2f9580235fb623ff9a5dc6f05a22eb44d765cadf')
-sha256sums=('c79eac3b5329afb789096cc7d901a0b21c522f7c8fc7491947d68617caf95a6f')
+sha1sums=('1b0656cca6e8a656d4d9a90cb601971c58eec916')
+sha256sums=('c16f3e97ee75afc20765868f5fcbd902c90531b0f43e0d18991f91858a9c173d')
 
 build() {
   cd "$srcdir/cryptoverif$pkgver"
@@ -31,5 +31,4 @@ package() {
   install -m755 -d "$pkgdir/usr/"{share/cryptoverif/docs,lib/cryptoverif/implementation}
   install -m644 default.{cvl,ocvl} "$pkgdir/usr/lib/cryptoverif/" 
   install -m644 implementation/{{base,crypto}.{ml,mli},crypto_dbg.ml,crypto_real.ml} "$pkgdir/usr/lib/cryptoverif/implementation"
-  install -m644 docs/manual.{pdf,ps.gz} "$pkgdir/usr/share/cryptoverif/docs"
 }
