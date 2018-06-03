@@ -17,7 +17,7 @@ sha256sums=("49832e446a5abce0b55ba245c9b5f94959604d44378320fdffae0233bf1e8c00")
 groups=("archzfs-linux")
 license=("GPL")
 provides=("spl-utils")
-makedepends=("git")
+makedepends=()
 conflicts=('spl-utils-common-git' 'spl-utils-linux-git' 'spl-utils-linux' 'spl-utils-linux-lts' 'spl-utils-linux-lts-git')
 replaces=("spl-utils-linux", "spl-utils-linux-lts")
 

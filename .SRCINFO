@@ -6,7 +6,6 @@ pkgbase = spl-utils-common
 	arch = x86_64
 	groups = archzfs-linux
 	license = GPL
-	makedepends = git
 	provides = spl-utils
 	conflicts = spl-utils-common-git
 	conflicts = spl-utils-linux-git
