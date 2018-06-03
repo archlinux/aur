@@ -1,13 +1,13 @@
 pkgbase = mdbook
 	pkgdesc = Command line tool for books written in markdown language.
-	pkgver = 0.0.21
+	pkgver = v0.1.5
 	pkgrel = 1
-	url = https://github.com/azerupi/mdBook
+	url = https://github.com/rust-lang-nursery/mdBook
 	arch = x86_64
 	arch = i686
 	license = MPL2
-	source = https://github.com/azerupi/mdBook/releases/download/0.0.21/mdBook-0.0.21-x86_64-unknown-linux-gnu.tar.gz
-	md5sums = 7625a82c32e292d8856f66be72aa0db4
+	source = https://github.com/rust-lang-nursery/mdBook/archive/v0.1.5.tar.gz
+	md5sums = 1dd90472a6232e8fc37fba0ee5b459f4
 
 pkgname = mdbook
 
