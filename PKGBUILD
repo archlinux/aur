@@ -1,12 +1,13 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: Michael Straube <straubem@gmx.de>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 # Contributor: Ewoud Nuyts <ewoud.nuyts@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gliv
 pkgver=1.9.7
-pkgrel=4
+pkgrel=5
 pkgdesc='OpenGL image viewer'
 arch=('i686' 'x86_64')
 url='http://guichaz.free.fr/gliv/'
