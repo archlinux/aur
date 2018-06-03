@@ -1,5 +1,5 @@
 pkgbase = sat-libervia-hg
-	pkgver = 0.6.1.r1102.8b70c838ed14
+	pkgver = 0.6.1.r1105.e6ff5530900e
 	pkgrel = 1
 	url = http://salut-a-toi.org/
 	install = sat-libervia-hg.install
@@ -14,6 +14,7 @@ pkgbase = sat-libervia-hg
 	depends = python2-shortuuid-git
 	depends = sat-media-hg
 	depends = sat-xmpp-hg
+	depends = sat-templates-hg
 	depends = python2-zope-interface
 	depends = python2-pyopenssl
 	depends = python2-autobahn
