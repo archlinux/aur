@@ -1,17 +1,15 @@
 pkgbase = zfs-linux-hardened-git
-	pkgver = 2018.05.26.r3492.g3e5300e0e.4.16.11.a.1
+	pkgver = 2018.05.31.r4577.g1a5b96b8e.4.16.13.a.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-hardened-headers=4.16.11.a-1
+	makedepends = linux-hardened-headers=4.16.13.a-1
 	makedepends = git
-	makedepends = spl-linux-hardened-git-headers
 	depends = kmod
-	depends = spl-linux-hardened-git
-	depends = zfs-utils-common-git=2018.05.26.r3492.g3e5300e0e
-	depends = linux-hardened=4.16.11.a-1
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=3e5300e0ed3c4b49e3b0dab7daded1e3bfaaded7
+	depends = zfs-utils-common-git=2018.05.31.r4577.g1a5b96b8e
+	depends = linux-hardened=4.16.13.a-1
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=1a5b96b8ee66da5dfdfbedcb6bc462f454b4a25d
 	sha256sums = SKIP
 
 pkgname = zfs-linux-hardened-git
@@ -20,6 +18,8 @@ pkgname = zfs-linux-hardened-git
 	groups = archzfs-linux-hardened-git
 	provides = zfs
 	conflicts = zfs-linux-hardened
+	conflicts = spl-linux-hardened-git
+	replaces = spl-linux-hardened-git
 
 pkgname = zfs-linux-hardened-git-headers
 	pkgdesc = Kernel headers for the Zettabyte File System.

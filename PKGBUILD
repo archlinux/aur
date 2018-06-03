@@ -18,15 +18,15 @@
 pkgbase="zfs-linux-hardened-git"
 pkgname=("zfs-linux-hardened-git" "zfs-linux-hardened-git-headers")
 
-pkgver=2018.05.26.r3492.g3e5300e0e.4.16.11.a.1
+pkgver=2018.05.31.r4577.g1a5b96b8e.4.16.13.a.1
 pkgrel=1
-makedepends=("linux-hardened-headers=4.16.11.a-1" "git" "spl-linux-hardened-git-headers")
+makedepends=("linux-hardened-headers=4.16.13.a-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=3e5300e0ed3c4b49e3b0dab7daded1e3bfaaded7")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=1a5b96b8ee66da5dfdfbedcb6bc462f454b4a25d")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git=2018.05.26.r3492.g3e5300e0e" "linux-hardened=4.16.11.a-1")
+depends=("kmod" "zfs-utils-common-git=2018.05.31.r4577.g1a5b96b8e" "linux-hardened=4.16.13.a-1")
 
 build() {
     cd "${srcdir}/zfs"
@@ -34,8 +34,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.9 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.16.11-1-hardened/build \
-                --with-linux-obj=/usr/lib/modules/4.16.11-1-hardened/build
+                --with-linux=/usr/lib/modules/4.16.13-1-hardened/build \
+                --with-linux-obj=/usr/lib/modules/4.16.13-1-hardened/build
     make
 }
 
@@ -44,7 +44,8 @@ package_zfs-linux-hardened-git() {
     install=zfs.install
     provides=("zfs")
     groups=("archzfs-linux-hardened-git")
-    conflicts=('zfs-linux-hardened')
+    conflicts=('zfs-linux-hardened' 'spl-linux-hardened-git')
+    replaces=("spl-linux-hardened-git")
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
@@ -60,5 +61,5 @@ package_zfs-linux-hardened-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.16.11-1-hardened/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.16.13-1-hardened/Module.symvers
 }
