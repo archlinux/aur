@@ -1,20 +1,19 @@
-# Maintainer: Dany Marcoux <danymarcoux+archlinux@gmail.com>
+# Contributor: Dany Marcoux <danymarcoux+archlinux@gmail.com>
 
 pkgname=lf
-pkgver=nightly
-pkgrel=5
+pkgver=4
+pkgrel=1
 pkgdesc='lf: A terminal file manager, heavily inspired by ranger (Precompiled binary from official repository)'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/gokcehan/lf'
 license=('MIT') # https://github.com/gokcehan/lf/blob/master/LICENSE
 options=('!strip' '!emptydirs')
-provides=('lf')
-source_i686=("https://github.com/gokcehan/lf/releases/download/$pkgver/lf-linux-386.tar.gz")
-source_x86_64=("https://github.com/gokcehan/lf/releases/download/$pkgver/lf-linux-amd64.tar.gz")
-source_armv7h=("https://github.com/gokcehan/lf/releases/download/$pkgver/lf-linux-arm.tar.gz")
-md5sums_i686=('e5d8a5b95d8f10020e7cfb8031ad08ce')
-md5sums_x86_64=('570984e7368fe2c551fa7a0d926e863f')
-md5sums_armv7h=('2dbf95dcfb0133a4b6705a3b80340636')
+source_i686=("${url}/releases/download/r${pkgver}/lf-linux-386.tar.gz")
+source_x86_64=("${url}/releases/download/r${pkgver}/lf-linux-amd64.tar.gz")
+source_armv7h=("${url}/releases/download/r${pkgver}/lf-linux-arm.tar.gz")
+md5sums_i686=('208d736544a2eadb3ceaad6000932dce')
+md5sums_x86_64=('e8c9fe971c41a428bf302e00f077fe26')
+md5sums_armv7h=('0a6a42df17202bbee767cbbace27726f')
 
 package() {
   install -Dm755 "lf" "$pkgdir/usr/bin/lf"

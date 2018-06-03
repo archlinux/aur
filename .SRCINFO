@@ -1,21 +1,20 @@
 pkgbase = lf
 	pkgdesc = lf: A terminal file manager, heavily inspired by ranger (Precompiled binary from official repository)
-	pkgver = nightly
-	pkgrel = 5
+	pkgver = 4
+	pkgrel = 1
 	url = https://github.com/gokcehan/lf
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = MIT
-	provides = lf
 	options = !strip
 	options = !emptydirs
-	source_i686 = https://github.com/gokcehan/lf/releases/download/nightly/lf-linux-386.tar.gz
-	md5sums_i686 = e5d8a5b95d8f10020e7cfb8031ad08ce
-	source_x86_64 = https://github.com/gokcehan/lf/releases/download/nightly/lf-linux-amd64.tar.gz
-	md5sums_x86_64 = 570984e7368fe2c551fa7a0d926e863f
-	source_armv7h = https://github.com/gokcehan/lf/releases/download/nightly/lf-linux-arm.tar.gz
-	md5sums_armv7h = 2dbf95dcfb0133a4b6705a3b80340636
+	source_i686 = https://github.com/gokcehan/lf/releases/download/r4/lf-linux-386.tar.gz
+	md5sums_i686 = 208d736544a2eadb3ceaad6000932dce
+	source_x86_64 = https://github.com/gokcehan/lf/releases/download/r4/lf-linux-amd64.tar.gz
+	md5sums_x86_64 = e8c9fe971c41a428bf302e00f077fe26
+	source_armv7h = https://github.com/gokcehan/lf/releases/download/r4/lf-linux-arm.tar.gz
+	md5sums_armv7h = 0a6a42df17202bbee767cbbace27726f
 
 pkgname = lf
 
