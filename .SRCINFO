@@ -1,0 +1,23 @@
+pkgbase = python-django-versatile-imagefield
+	pkgdesc = Drop-in replacement for django's ImageField, provides a flexible, intuitive and easily-extensible interface
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://github.com/respondcreate/django-versatileimagefield
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-django-versatile-imagefield-1.9.tar.gz::https://github.com/respondcreate/django-versatileimagefield/archive/1.9.tar.gz
+	sha256sums = 07b0c6eb2d6c95b08ac5e4c471d500a9bb409f29194876bc84c3607c4299a8b4
+
+pkgname = python-django-versatile-imagefield
+	depends = python-django
+	depends = python-pillow
+	depends = python-django-rest-framework
+
+pkgname = python2-django-versatile-imagefield
+	depends = python2-django
+	depends = python2-pillow
+	depends = python2-django-rest-framework
+
