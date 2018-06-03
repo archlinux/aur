@@ -2,7 +2,7 @@
 
 pkgname=('sat-templates-hg')
 _realname=sat_templates
-pkgver=0.7.r143.a37d535b7ddd
+pkgver=0.7.r148.a4b6b8b6fc58
 VERSION=0.7
 pkgrel=1
 url="https://salut-a-toi.org/"
@@ -22,6 +22,14 @@ pkgver() {
 }
 
 
+build() {
+    cd "$srcdir/$_realname"
+    python2 setup.py build
+    install -dm755 "$srcdir/fakeinstall/"
+    python2 setup.py install --root="$srcdir/fakeinstall/" --prefix=/usr --optimize=1
+}
+
+
                  
 package(){
     pkgdesc="sat-templates is a collection of templates for Salut à Toi, the multi-frontends multi-purposes XMPP client (core). For now, it needs to be accessible in the PYTHONPATH"
@@ -29,7 +37,7 @@ package(){
 
     cd "$pkgdir"
     install -dm755 "usr/lib/python2.7/site-packages/$_realname"  
-    cd "$srcdir/$_realname"
-    cp -rv * "$pkgdir/usr/lib/python2.7/site-packages/$_realname"
+    cd  "$srcdir/fakeinstall/"
+    mv -v "usr/lib/python2.7/site-packages/$_realname" "$pkgdir/usr/lib/python2.7/site-packages/"    
 }
 

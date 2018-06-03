@@ -1,5 +1,5 @@
 pkgbase = sat-templates-hg
-	pkgver = 0.7.r143.a37d535b7ddd
+	pkgver = 0.7.r148.a4b6b8b6fc58
 	pkgrel = 1
 	url = https://salut-a-toi.org/
 	arch = any
