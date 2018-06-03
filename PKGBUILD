@@ -1,6 +1,6 @@
 pkgbase=cgal-swig-bindings
 pkgname=('python-cgal' 'java-cgal')
-pkgver=r495.e5c1bc5
+pkgver=r560.7850024
 pkgrel=1
 pkgdesc='CGAL bindings using SWIG '
 arch=('i686' 'x86_64')
@@ -20,8 +20,9 @@ build()
   cd "$srcdir"/cgal-swig-bindings
   mkdir -p build && pushd build
   cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr ..
+    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release  ..
   make
+  ctest -j2 -R python -E polyline_simplification_2 --output-on-failure
 }
 
 package_python-cgal()
