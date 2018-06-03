@@ -1,17 +1,15 @@
 pkgbase = zfs-linux-vfio-git
-	pkgver = 2018.05.26.r3492.g3e5300e0e.4.16.10.1
+	pkgver = 2018.05.31.r4577.g1a5b96b8e.4.16.10.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
 	makedepends = linux-vfio-headers=4.16.10-1
 	makedepends = git
-	makedepends = spl-linux-vfio-git-headers
 	depends = kmod
-	depends = spl-linux-vfio-git
-	depends = zfs-utils-common-git>=2018.05.26.r3492.g3e5300e0e
+	depends = zfs-utils-common-git=2018.05.31.r4577.g1a5b96b8e
 	depends = linux-vfio=4.16.10-1
-	source = git+https://github.com/zfsonlinux/zfs.git
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=1a5b96b8ee66da5dfdfbedcb6bc462f454b4a25d
 	sha256sums = SKIP
 
 pkgname = zfs-linux-vfio-git
@@ -20,7 +18,8 @@ pkgname = zfs-linux-vfio-git
 	groups = archzfs-linux-vfio-git
 	provides = zfs
 	conflicts = zfs-linux-vfio
-	replaces = zfs-git
+	conflicts = spl-linux-vfio-git
+	replaces = spl-linux-vfio-git
 
 pkgname = zfs-linux-vfio-git-headers
 	pkgdesc = Kernel headers for the Zettabyte File System.
