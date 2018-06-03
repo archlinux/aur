@@ -2,9 +2,9 @@
 # Maintainer: Nikolay Kuzin <develnk@gmail.com>
 
 pkgname=asofe
-pkgver=1.0.14
-_commit=dd539a242d80cfeae1c9cae887e89dc0bdc6d3bc
-pkgrel=2
+pkgver=1.0.15
+_commit=54a4d90d8f57e5cf2a2fa3b4f868b4fd5518aa60
+pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://asofe.org/'
@@ -46,7 +46,7 @@ build() {
 
 check() {
     cd ${pkgname}
-    # ./zcutil/fetch-params.sh
+    ./zcutil/fetch-params.sh
     # ./qa/zcash/full_test_suite.py
 }
 
