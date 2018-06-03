@@ -1,0 +1,3 @@
+# Options to be passed to inputlirc.
+EVENTS="/dev/input/event*"
+OPTIONS=
