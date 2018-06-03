@@ -5,14 +5,14 @@
 
 pkgname=goocanvasmm
 pkgver=1.90.11
-pkgrel=2
+pkgrel=3
 pkgdesc='C++ wrappers for goocanvas'
 arch=('x86_64')
 url='https://download.gnome.org/sources/goocanvasmm/'
 license=('GPL')
 depends=('goocanvas' 'gtkmm3')
 source=(https://download.gnome.org/sources/goocanvasmm/1.90/goocanvasmm-${pkgver}.tar.xz)
-sha256sums=('80ff11873ec0e73d9e38b0eb2ffb1586621f0b804093b990e49fdb546476ed6e')
+sha512sums=('f4decc16fc927dd044714558d1edd5a1dc53bc084b1ad361f791bb3f21bedd298a14aa603e3087df7c61d6d873c86a5b00e1ff82cffa5cafa7f06e86b59a7241')
 
 build() {
   cd ${pkgname}-${pkgver}
