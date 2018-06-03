@@ -10,6 +10,7 @@ pkgbase = python-moto
 	checkdepends = python-nose
 	checkdepends = python-responses
 	checkdepends = python-sure
+	checkdepends = python-boto
 	makedepends = python-setuptools
 	depends = python
 	depends = python-aws-xray-sdk
