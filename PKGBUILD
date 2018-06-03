@@ -1,7 +1,7 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
 pkgver=r44.45e9b92
-pkgrel=3
+pkgrel=4
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
@@ -13,10 +13,11 @@ optdepends=(
 )
 install=cros-container-guest-tools.install
 url="https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools"
-source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf')
+source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf' 'cros-locale.sh')
 sha1sums=('SKIP'
           '3a2c55ecb22349265f26cdd021a436f5e0353c3d'
-          'f10f9da29d3015a5e232050d666efa72ef90c98f')
+          'f10f9da29d3015a5e232050d666efa72ef90c98f'
+          'b5a315f5b8f474a31dc3576efa3ef19881ec80d6')
 
 pkgver() {
 	cd ${srcdir}/${_pkgname}
@@ -28,6 +29,10 @@ package() {
 	# License
 	install -m644 -D ${srcdir}/${_pkgname}/LICENSE \
 					 ${pkgdir}/usr/share/licenses/cros-container-guest-tools/LICENSE
+
+	# install locale fix (to override C.UTF-8 locale, set to container by termina)
+	install -m755 -D ${srcdir}/cros-locale.sh \
+					 ${pkgdir}/etc/profile.d/cros-locale.sh
 
 	# Create required folder structure for systemd units
 	mkdir -p ${pkgdir}/usr/lib/systemd/user/default.target.wants
