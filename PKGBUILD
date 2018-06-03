@@ -1,6 +1,6 @@
 # Maintainer: Seppia <seppia@seppio.fish>
 pkgname=repofish-git
-pkgver=r9.19d76f4
+pkgver=r18.f849f35
 pkgrel=1
 pkgdesc="My friends told me to make available this script I wrote to manage my local archlinux repo and AUR packages, so here it is."
 arch=('any')
