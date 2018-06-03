@@ -1,25 +1,25 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
+
 pkgname=('gitsome')
 _module='gitsome'
-pkgver='0.6.0'
-pkgrel=4
-pkgdesc="A Supercharged Git/Shell Autocompleter with GitHub Integration."
+pkgver='0.7.2'
+pkgrel=1
+pkgdesc="Supercharged Git/Shell Autocompleter with GitHub Integration"
 url="https://github.com/donnemartin/gitsome"
-depends=('python' 'python-ply' 'python-prompt_toolkit' 'python-requests' 'python-colorama' 'python-click' 'python-pygments' 'python-feedparser' 'python-pytz' 'python-docopt' 'python-uritemplate.py' 'python-numpydoc')
+depends=('python35' 'python-ply' 'python-prompt_toolkit' 'python-requests' 'python-colorama' 'python-click' 'python-pygments' 'python-feedparser' 'python-pytz' 'python-docopt' 'python-uritemplate.py' 'python-numpydoc')
 makedepends=('python-setuptools')
 conflicts=('xonsh' 'python-gitsome')
 license=('APACHE')
 arch=('any')
-source=("https://pypi.python.org/packages/30/9a/2ac38108d08869abbcb757f52f28b6730f6cf249b2f13c161783655f1a0f/gitsome-${pkgver}.tar.gz")
-md5sums=('66bf9620e442156cbb032851d33b75ed')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
+md5sums=('7306daff07784650921e548d5886d5dd')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "${_module}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
