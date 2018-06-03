@@ -1,16 +1,20 @@
 pkgbase = centerim
 	pkgdesc = Fork of CenterICQ - A text mode menu- and window-driven IM interface
-	pkgver = 4.22.10
-	pkgrel = 7
+	pkgver = 5.0.1
+	pkgrel = 1
 	url = http://www.centerim.org
 	arch = x86_64
 	license = GPL
+	makedepends = ca-certificates
 	depends = python2
 	depends = libjpeg
 	depends = gpgme
+	depends = libpurple
+	depends = ncurses
+	depends = libsigc++
 	replaces = centericq
-	source = http://www.centerim.org/download/releases/centerim-4.22.10.tar.gz
-	md5sums = 7565c3c8cac98a4e2d8524076a44676f
+	source = http://www.centerim.org/download/cim5/centerim5-5.0.1.tar.gz
+	md5sums = dfd17684eccbf5819038517b0d369913
 
 pkgname = centerim
 
