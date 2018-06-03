@@ -28,6 +28,6 @@ package() {
   install -Dm 755 mkr-$pkgver "$pkgdir/usr/bin/mkr"
 }
 
-sha512sums=('8a61129d0394c6bd350da0762e8b60b73152b314b5f29efbbea6939679ad14482dfd373e301c6440ae58921ac1acfda3fdcb62d2ae5e491ddc3f60314e31c024')
+sha512sums=('8144963edf145ad1cdaa3401587b943c3334eb92962adaa02aa4571aa5729006fd3ce68af19a9a8376036016c39f882df8fa303986a0619c9519aa824f86f9c6')
 
 # vim: set et sw=2 sts=2:
