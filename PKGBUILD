@@ -1,7 +1,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=('ocaml-atd' 'ocaml-atdgen')
 _oname=atd
-pkgver=1.13.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc=""
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('ocaml>=3.11'
 makedepends=('ocaml-findlib' 'jbuilder' 'opam')
 options=(!strip)
 source=("https://github.com/mjambon/${_oname}/archive/${pkgver}.tar.gz")
-md5sums=('da11b6157d5674e2d27cfd401eb8003a')
+md5sums=('063e2d3074888307379d87f157a3a5b9')
 _jbuilder="jbuilder $(getopt "j::" $MAKEOPTS 2>/dev/null | sed 's/--/\n/g' | head -n 1)"
 
 build() {
@@ -39,7 +39,7 @@ package_ocaml-atd() {
 	
 	mv $pkgdir/usr/share/doc/atd $pkgdir/usr/share/doc/$pkgname
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-	mv $pkgdir/usr/share/doc/$pkgname/LICENSE $pkgdir/usr/share/licenses/$pkgname/
+	mv $pkgdir/usr/share/doc/$pkgname/LICENSE.md $pkgdir/usr/share/licenses/$pkgname/
 }
 
 package_ocaml-atdgen() {
@@ -54,5 +54,5 @@ package_ocaml-atdgen() {
 	
 	mv $pkgdir/usr/share/doc/atdgen $pkgdir/usr/share/doc/$pkgname
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-	mv $pkgdir/usr/share/doc/$pkgname/LICENSE $pkgdir/usr/share/licenses/$pkgname/
+	mv $pkgdir/usr/share/doc/$pkgname/LICENSE.md $pkgdir/usr/share/licenses/$pkgname/
 }
