@@ -2,23 +2,27 @@
 
 DLAGENTS=('https::/usr/bin/curl -A "Mozilla/4.0" -fLC - -o %o %u')
 pkgname=pycom-firmware-updater
-pkgver=1.14.5
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Pycom firmware updater for WiPy and LoPy IOT boards"
 url="https://www.pycom.io/"
 license=('GPL-3')
-arch=('any')
+arch=('x86_64' 'i686')
 depends=('dialog' 'python2')
 optdepends=('python2-qscintilla-qt4: gui'
             'python2-pyserial: gui'
 	    'python2-setuptools: gui'
 	    'python2-requests: gui')
-source=('https://software.pycom.io/findupgrade?product=pycom-firmware-updater&type=all&platform=unix&redirect=true'
-        'lopyupdate.sh'
-	'lopyupdate.desktop')
-md5sums=('5e1cbe55102b78ea8f419e23033858c1'
-         '268d38fbb3f7d8ee962760abb6169505'
-         '6af9152e7aa93baa74b59cbc0af2ba71')
+source_x86_64=('https://software.pycom.io/downloads/pycom_firmware_update_1.15.0-amd64.tar.gz'
+    	       'pycom-fwtool.desktop')
+source_i686=('https://software.pycom.io/downloads/pycom_firmware_update_1.15.0-i386.tar.gz'
+             'pycom-fwtool.desktop')
+
+md5sums_x86_64=('1ed70a132db954affa431351c70ba3f9'
+                'b9adb203ada3eb0ba6f1aaa0b74d609a')
+
+md5sums_i686=('4b91a0e06c9d3c7a86dc1dc065e754e4'
+              'b9adb203ada3eb0ba6f1aaa0b74d609a')
 
 prepare() {
   cd $srcdir
@@ -28,8 +32,10 @@ prepare() {
 package() {
   mkdir -p $pkgdir/usr/{share,bin}
   cd $srcdir
-  cp -r pyupgrade $pkgdir/usr/share
-  ln -s /usr/share/pyupgrade/update $pkgdir/usr/bin/pycom-firmware-update
-  install -Dm755 $srcdir/lopyupdate.sh $pkgdir/usr/bin/lopyupdate.sh
-  install -Dm644 lopyupdate.desktop "$pkgdir"/usr/share/applications/lopyupdate.desktop
+  cp -r * $pkgdir/usr/share
+  ln -s /usr/share/pyupgrade/pycom-fwtool $pkgdir/usr/bin/pycom-fwtool
+  ln -s /usr/share/pyupgrade/pycom-fwtool-cli $pkgdir/usr/bin/pycom-fwtool-cli
+  ln -s /usr/share/pyupgrade/pycom-update $pkgdir/usr/bin/pycom-update
+  install -Dm644 pycom-fwtool.desktop "$pkgdir"/usr/share/applications/pycom-fwtool.desktop
+  install -Dm644 $srcdir/pyupgrade/res/py.png $pkgdir/usr/share/pixmaps/pycom-fwtool.png
 }
