@@ -329,6 +329,11 @@ void* iex_store_peers(void* vpInfo) {
     }
 
     size_t len = (int) json_object_array_length(jobj);
+    if (len == 0) {
+        json_object_put(jobj);
+        string_destroy(&pString);
+        return NULL;
+    }
     if (len > MAX_PEERS)
         len = MAX_PEERS;
 
