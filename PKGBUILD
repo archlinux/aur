@@ -11,7 +11,7 @@ pkgver=0.7.9
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=()
-makedepends=("git")
+makedepends=()
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/zfs-0.7.9.tar.gz"
@@ -20,7 +20,7 @@ source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/zfs-0.7.9
         "zfs-utils.initcpio.hook")
 sha256sums=("f50ca2441c6abde4fe6b9f54d5583a45813031d6bb72b0011b00fc2683cd9f7a"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
-            "e33adabbe3f2f4866802c9d63c7810c7a42b4df2288d0cdd23376519b15b36e4"
+            "335e309ebf5b74fd8956f5e8805939c37d4008b0bcc3b00be6e7ef1d5b7c1669"
             "3eb874cf2cbb6c6a0e1c11a98af54f682d6225667af944b43435aeabafa0112f")
 license=("CDDL")
 groups=("archzfs-linux")
