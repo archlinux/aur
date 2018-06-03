@@ -1,0 +1,15 @@
+pkgbase = gposttl-git
+	pkgdesc = Brill's Parts-of-Speech Tagger, with built-in Tokenizer and Lemmatizer
+	pkgver = r33.b8d425d
+	pkgrel = 1
+	url = http://gposttl.sourceforge.net/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = autoconf
+	depends = glibc
+	source = gposttl-git::git+https://github.com/tonylambiris/gposttl
+	sha256sums = SKIP
+
+pkgname = gposttl-git
+
