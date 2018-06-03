@@ -2,8 +2,8 @@
 
 pkgname=bdf-curie
 _gitname=curie
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc='A slightly upscaled version of scientifica'
 arch=('any')
 url="https://file:///home/neve/.ArchLabs-homepage/index.htmlgithub.com/NerdyPepper/curie"

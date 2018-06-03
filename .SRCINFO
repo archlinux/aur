@@ -1,7 +1,7 @@
 pkgbase = bdf-curie
 	pkgdesc = A slightly upscaled version of scientifica
-	pkgver = 1.0
-	pkgrel = 1
+	pkgver = 1.1
+	pkgrel = 2
 	url = https://file:///home/neve/.ArchLabs-homepage/index.htmlgithub.com/NerdyPepper/curie
 	arch = any
 	license = OFL
