@@ -2,7 +2,7 @@
 # Based on the PKGBUILD created by Ivan Agarkov <ivan[dot]agarkov[at]gmail[dot]com>
 
 pkgname=mt7610u_wifi_sta-alt
-pkgver=2
+pkgver=3
 pkgrel=3
 # To get an overview of witch WiFi dongle has this chipset refer to https://wikidevi.com/wiki/MediaTek_MT7610U
 pkgdesc="Kernel module for MediaTek MT7610U chipset featured in TP-Link Archer T2U and T2UH, TP-Link TL-WDN5200, ASUS USB-AC50, ASUS USB-AC51, Comcast Xfinity KXW02AAA, D-Link DWA-171 rev B1 and more"
