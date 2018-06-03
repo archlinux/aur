@@ -1,0 +1,14 @@
+pkgbase = gnome-mime-data
+	pkgdesc = The base MIME and Application database for GNOME
+	pkgver = 2.18.0
+	pkgrel = 8
+	url = http://www.gnome.org
+	arch = any
+	license = GPL
+	makedepends = intltool
+	depends = shared-mime-info
+	source = https://download.gnome.org/sources/gnome-mime-data/2.18/gnome-mime-data-2.18.0.tar.bz2
+	sha256sums = 37196b5b37085bbcd45c338c36e26898fe35dd5975295f69f48028b1e8436fd7
+
+pkgname = gnome-mime-data
+
