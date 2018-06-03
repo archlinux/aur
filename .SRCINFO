@@ -1,7 +1,7 @@
 pkgbase = pantheon-workarounds
 	pkgdesc = Workarounds for Pantheon derivatives
 	pkgver = 8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quequotion/pantheon-bzr-qq
 	install = gala.install
 	arch = i686
@@ -21,9 +21,9 @@ pkgbase = pantheon-workarounds
 	optdepends = xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops
 	optdepends = numlockx: Turn on the numlock key in X11
 	optdepends = bamf-ubuntu-bzr: Application matching framework used by plank
-	provides = gala=
-	provides = gala-bzr=
-	provides = gala-git=
+	provides = gala=r1103.3661cbd
+	provides = gala-bzr=r1103.3661cbd
+	provides = gala-git=r1103.3661cbd
 	conflicts = gala
 	conflicts = gala-bzr
 	conflicts = gala-git

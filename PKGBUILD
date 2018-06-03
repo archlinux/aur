@@ -4,7 +4,7 @@
 
 pkgname=pantheon-workarounds
 pkgver=8
-pkgrel=1
+pkgrel=2
 pkgdesc='Workarounds for Pantheon derivatives'
 arch=('i686' 'x86_64')
 url='https://github.com/quequotion/pantheon-bzr-qq'
