@@ -1,6 +1,6 @@
 pkgbase = jaspersoftstudio
 	pkgdesc = Eclipse based Jasper Reports generator
-	pkgver = 6.5.1
+	pkgver = 6.6.0
 	pkgrel = 1
 	url = http://community.jaspersoft.com/project/jaspersoft-studio
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = jaspersoftstudio
 	license = Eclipse
 	depends = java-runtime
 	depends = gtk2
-	source_i686 = http://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-6.5.1/TIB_js-studiocomm_6.5.1.final_linux_x86.tgz
-	md5sums_i686 = e017e7155c9fd845eabc7df941a6ee35
-	source_x86_64 = http://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-6.5.1/TIB_js-studiocomm_6.5.1.final_linux_x86_64.tgz
-	md5sums_x86_64 = c3a5a7dfd40efa69be85dc640e9def5f
+	source_i686 = https://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-6.6.0/TIB_js-studiocomm_6.6.0_linux_x86.tgz
+	md5sums_i686 = 02e7ca27a5949b007909d8731d013c4e
+	source_x86_64 = https://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-6.6.0/TIB_js-studiocomm_6.6.0_linux_x86_64.tgz
+	md5sums_x86_64 = d2ae2e5a17a3764317efce087bcc50b2
 
 pkgname = jaspersoftstudio
 
