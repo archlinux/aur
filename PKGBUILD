@@ -3,27 +3,38 @@
 # Maintainer: mar77i <mysatyre at gmail dot com>
 
 pkgname=qosmic
-pkgver=1.5.0
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="An application for creating, editing, and rendering flam3 fractal images"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/qosmic/"
+url="https://github.com/bitsed/qosmic"
 license=('GPL')
-depends=('qt4' 'lua52' 'flam3')
-source=("http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.bz2" "lua52.patch")
-md5sums=('806d6ffc00a073d47d47fc70ca0de868'
-         'fb9fd4d91eff5c263a2d792383aac399')
+depends=('qt5-base' 'lua52' 'flam3')
 
+source=(
+	"${pkgname}-${pkgver}.tar.gz::https://github.com/bitsed/qosmic/archive/v${pkgver}.tar.gz"
+	# See https://github.com/tora-tool/tora/commit/afbff9ec3b93f0e90f02953d1bdd859a0f9a72ab
+	# for a similar bug
+	"missing-qbuttongroup-include.patch"
+)
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -Np1 -i "${srcdir}/missing-qbuttongroup-include.patch"
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i "s@^\(.*link_pkgconfig\)\$@# \1@g; s_PREFIX = /usr_PREFIX = $pkgdir/usr_g; s_DESTDIR = ._DESTDIR = _g" qosmic.pro
-  patch -Np1 <../lua52.patch
-  qmake-qt4
+  qmake-qt5
+  # https://github.com/bitsed/qosmic/issues/28
+  sed -i '/^DEFINES/ s/$/ -DLUA_COMPAT_5_2/' Makefile
   make
 }
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+	make INSTALL_ROOT="$pkgdir" install
 }
+
+md5sums=('32b399b1e652c01f324148bc5d4ac9bb'
+         'fa31e897efe015af5e3829771e7cb487')
