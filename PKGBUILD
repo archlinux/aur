@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=rgbds
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Rednex GameBoy Development System"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/rednex/rgbds/"
 license=('MIT')
 depends=('libpng')
 source=("https://github.com/rednex/rgbds/releases/download/v$pkgver/rgbds-$pkgver.tar.gz")
-sha1sums=('014400c83c9d4f1c27b573b9dbe32ee9c55b8258')
+sha1sums=('335d9c921ae439ef72e905cc3c5b70f2dcdd5cdc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
