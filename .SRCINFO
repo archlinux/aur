@@ -1,0 +1,23 @@
+pkgbase = snowball-git
+	pkgdesc = String processing language for creating stemming algorithms
+	pkgver = r591.27ff572
+	pkgrel = 1
+	url = http://snowballstem.org/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	source = snowball-git::git+https://github.com/snowballstem/snowball
+	source = dynamiclib.patch
+	sha256sums = SKIP
+	sha256sums = 99511a11cdeeb1ef1eaa9d7b777f6934693d4696ba9523de40b886f7d898058e
+
+pkgname = snowball-git
+	provides = snowball
+	conflicts = snowball
+
+pkgname = libstemmer-git
+	pkgdesc = Stemming library supporting several languages
+	provides = libstemmer
+	conflicts = libstemmer
+
