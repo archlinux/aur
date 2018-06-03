@@ -1,47 +1,26 @@
 pkgbase = upwork-beta
 	pkgdesc = Desktop App (aka Team App) Standard version
-	pkgver = 5.1.0.509
+	pkgver = 5.1.0.523
 	pkgrel = 5
 	url = https://www.upwork.com/downloads?source=Footer
 	install = upwork.install
 	arch = x86_64
 	license = custom
-	depends = alsa-lib>=1.0.25
-	depends = atk>=2.4.0
-	depends = cairo>=1.12.2
-	depends = dbus>=1.6.8
-	depends = desktop-file-utils
-	depends = electron
-	depends = expat>=2.1.0
-	depends = fontconfig>=2.9.0
-	depends = freetype2>=2.4.9
-	depends = gconf>=3.2.5
-	depends = gdk-pixbuf2>=2.26.1
-	depends = glib2>=2.33.12.really2.32.4
-	depends = gtk2>=2.24.10
-	depends = hicolor-icon-theme
-	depends = libappindicator-gtk2
-	depends = libcups>=1.5.3
-	depends = libx11>=1.5.0
-	depends = libxcb
-	depends = libxcomposite>=0.4.3
-	depends = libxcursor>=1.1.13
-	depends = libxdamage>=1.1.3
-	depends = libxext>=1.3.1
-	depends = libxfixes>=5.0
-	depends = libxi>=1.6.1
-	depends = libxinerama>=1.1.2
-	depends = libxrandr>=1.3.2
-	depends = libxrender>=0.9.7
-	depends = libxss>=1.2.2
-	depends = libxtst>=1.2.1
-	depends = nspr>=4.9.2
-	depends = nss>=3.14.5
-	depends = pango
+	depends = alsa-lib
+	depends = gconf
+	depends = gdk-pixbuf2
+	depends = gtk2
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	conflicts = upwork-alpha
+	conflicts = upwork-appimage
+	conflicts = upwork-latest
+	conflicts = upwork
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = upwork_amd64_5.1.0.509.deb::https://updates-desktopapp.upwork.com/binaries/v5_1_0_509_87zq7fllb6sf8y49/upwork_5.1.0.509_amd64.deb
-	sha256sums_x86_64 = 32b802e25822d4c933e700cc7130afb0a81591e72bf8731110f87a9482c7efc0
+	source_x86_64 = upwork_amd64_5.1.0.523.deb::https://updates-desktopapp.upwork.com/binaries/v5_1_0_523_888hfm3u1mp4laii/upwork_5.1.0.523_amd64.deb
+	sha256sums_x86_64 = c080abc0d736686e87ec1d51145e418374c3baaff46ed0939bac9f368d6213c6
 
 pkgname = upwork-beta
 

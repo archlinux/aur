@@ -3,9 +3,9 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=upwork-beta
-pkgver=5.1.0.509
+pkgver=5.1.0.523
 _rawver=${pkgver//./_}
-_hashver="87zq7fllb6sf8y49"
+_hashver="888hfm3u1mp4laii"
 pkgrel=5
 pkgdesc="Desktop App (aka Team App) Standard version"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('alsa-lib' 'gconf' 'gdk-pixbuf2' 'gtk2' 'libxss' 'libxtst' 'nss')
 options=('!strip' '!emptydirs')
 install=upwork.install
 source_x86_64=(upwork_amd64_${pkgver}.deb::https://updates-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_${pkgver}_amd64.deb)
-sha256sums_x86_64=('32b802e25822d4c933e700cc7130afb0a81591e72bf8731110f87a9482c7efc0')
+sha256sums_x86_64=('c080abc0d736686e87ec1d51145e418374c3baaff46ed0939bac9f368d6213c6')
 
 prepare() {
     cd "${srcdir}"
