@@ -2,7 +2,7 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=photoqt
-pkgver=1.7
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
@@ -13,16 +13,11 @@ depends=('exiv2' 'graphicsmagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules')
-source=(http://photoqt.org/pkgs/$pkgname-$pkgver.tar.gz
-        qt5usemodules.patch)
-md5sums=('cef43bab96392542a15aaae10b7b6aeb'
-         'db9263e2ec6e85f50f4185765a4f633f')
+source=(http://photoqt.org/pkgs/$pkgname-$pkgver.tar.gz)
+md5sums=('656fee6f9923499992f069496a0aaa5d')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
-  
-  # In Qt 5.11, qt5_use_modules() does not exist anymore and needs to be replaced by target_link_libraries()
-  patch < $srcdir/qt5usemodules.patch
 
   # To build PhotoQt with less features, add -Dxxxx=OFF to
   # the next line (where xxxx is the respective CMake option).
