@@ -33,7 +33,7 @@ _ptver=0.4.0 # pytorch stable release version
 
 pkgname=caffe2-cpu
 pkgver="0.8.2.pytorch.${_ptver}"
-pkgrel=3
+pkgrel=4
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe2.ai/'
@@ -94,7 +94,7 @@ noextract=("caffe2-thirdparty-aten-tbb-${_aten_tbb_version}.tar.gz"
            "thirdparty-protobuf-${_protobuf_version}.tar.gz"
            "caffe2-thirdparty-python-six-${_python_six_version}.tar.gz"
 )
-sha256sums=('9ea4cbcab3852a25b8240e27f979d822c2f6f7934cd37033208dc13a8cad9e72'
+sha256sums=('f91c059710f802c91bed8207f2d461851b1bc2d44f7cd6e9aaa548392db9412f'
             'SKIP'
             '78bb9bae474736d213342f01fe1a6d00c6939d5c75b367e2e43e7bf29a6d8eca'
             '3938bc896f8de570bc56d25606fc128437ee53590a95cf3e005710176a1a1ce4'

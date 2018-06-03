@@ -1,7 +1,7 @@
 pkgbase = caffe2-cpu
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (cpu only)
 	pkgver = 0.8.2.pytorch.0.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://caffe2.ai/
 	arch = i686
 	arch = x86_64
@@ -85,7 +85,7 @@ pkgbase = caffe2-cpu
 	source = caffe2-thirdparty-python-six-1.11.0.tar.gz::https://github.com/benjaminp/six/archive/1.11.0.tar.gz
 	source = caffe2-thirdparty-ComputeLibrary-git::git+https://github.com/ARM-software/ComputeLibrary.git#commit=292227986edb37b01061afcad6df18ba9d6ccbeb
 	source = caffe2-thirdparty-onnx-git::git+https://github.com/onnx/onnx.git#commit=7e1bed51cc508a25b22130de459830b5d5063c41
-	sha256sums = 9ea4cbcab3852a25b8240e27f979d822c2f6f7934cd37033208dc13a8cad9e72
+	sha256sums = f91c059710f802c91bed8207f2d461851b1bc2d44f7cd6e9aaa548392db9412f
 	sha256sums = SKIP
 	sha256sums = 78bb9bae474736d213342f01fe1a6d00c6939d5c75b367e2e43e7bf29a6d8eca
 	sha256sums = 3938bc896f8de570bc56d25606fc128437ee53590a95cf3e005710176a1a1ce4
