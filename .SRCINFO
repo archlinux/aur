@@ -10,7 +10,7 @@ pkgbase = repofish-git
 	depends = git
 	depends = jq
 	provides = repofish
-	conflicts = repofish-git,repofish
+	conflicts = repofish
 	source = repofish::git+https://git.seppia.net/repofish.git
 	md5sums = SKIP
 
