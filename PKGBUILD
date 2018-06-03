@@ -1,7 +1,7 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
 pkgver=r44.45e9b92
-pkgrel=4
+pkgrel=5
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
@@ -16,7 +16,7 @@ url="https://chromium.googlesource.com/chromiumos/containers/cros-container-gues
 source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf' 'cros-locale.sh')
 sha1sums=('SKIP'
           '3a2c55ecb22349265f26cdd021a436f5e0353c3d'
-          'f10f9da29d3015a5e232050d666efa72ef90c98f'
+          'd326cd35dcf150f9f9c8c7d6336425ec08ad2433'
           'b5a315f5b8f474a31dc3576efa3ef19881ec80d6')
 
 pkgver() {
