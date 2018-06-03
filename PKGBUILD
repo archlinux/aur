@@ -1,7 +1,6 @@
 #Maintainer: jnanar <info@agayon.be>
 
 pkgname='sat-libervia-hg'
-pkgbase=$pkgname
 _realname=libervia
 _pyjamasname=pyjamas
 venv_pyjama='venv'
@@ -13,7 +12,7 @@ arch=('any')
 depends=('python2' 'python2-txjsonrpc-git' 'python2-jinja' 'python2-shortuuid-git' 'sat-media-hg' 'sat-xmpp-hg' 'sat-templates-hg' 'python2-zope-interface' 'python2-pyopenssl' 'python2-autobahn' 'dbus')
 makedepends=('python2-setuptools' 'python2-virtualenv' 'mercurial')
 license=('AGPL3')
-install=$pkgbase.install
+install=$pkgname.install
 source=('https://ftp.goffi.org/pyjamas/pyjamas.tar.bz2'
         "hg+https://repos.goffi.org/libervia"
         )
@@ -40,7 +39,6 @@ pyjamas_build(){
 build() {
         pyjamas_build
         cd "$srcdir/$_realname"
-#        install -dm755 "$srcdir/fakeinstall/"
         PYJSBUILD_PATH="$srcdir/pyjamas/bin/"
         PATH=$PATH:$PYJSBUILD_PATH LIBERVIA_INSTALL=arch NO_PREINSTALL_OPT=nopreinstall SAT_INSTALL=nopreinstall python2 setup.py install --root="$srcdir/fakeinstall/" --prefix=/usr --optimize=1
 	cp -r $srcdir/$_realname/src/{browser,pages,common,server,twisted} $srcdir/fakeinstall/usr/lib/python2.7/site-packages/libervia

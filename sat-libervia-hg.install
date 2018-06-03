@@ -7,7 +7,6 @@ print_info() {
  echo " jp profile create libervia -j libervia@your_domain.tld -p "
  echo "<libervia_password>"
  echo "Of course replace "your_domain.tld" with your actual domain."
-
 }
 
 
