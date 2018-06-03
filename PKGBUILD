@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r351.ce82b43
+pkgver=r355.69a0e08
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
@@ -29,8 +29,8 @@ source=('git+https://github.com/elementary/wingpanel.git'
         'y-is-broken-cogl.patch'
         'autohide.patch')
 sha256sums=('SKIP'
-            'edce8ae7810a0782cabb0a7cbe7857c47502ca11595d11a26c1d24234f76a54a'
-            'fa564fa2ce3da51adf4babaaa7dda4a18b1ce900acaf5e19df81d49b593200e3'
+            'b8bfc357158efb84113e234f9d0efa108cea460a3d160c2db25d966c93412875'
+            'a1c6e3a9c1553abdf1f676b1861531c3eacb2c32923bff51ca9d96872646636a'
             '47934e9aff119cedcfe7d184078ad60d3d715e07f1ca7cb1715e50b2e0c517e8'
             'b1902c1d44ac546df63cd0224a7d2ef2cb6394ca556512c30c370d387db7bbab'
             'da77ed83459b7d49056f35b9de1dd8b487b3c51234911f43b2fa401a38b6dd4a')
@@ -50,11 +50,10 @@ prepare() {
   #patch -Np2 < ../autohide-testing.patch
 
   #Standalone patches
-  msg2 "Remove background manager (Gala dependent)"
+  msg2 "Remove Gala dependecies"
+  rm -rf wingpanel-interface
   patch -Np2 < ../minus-backgroundmanager.patch
-  msg2 "Remove Gala plugin"
   patch -Np2 < ../minus-galaplugin.patch
-  msg2 "Remove Gala dependency"
   patch -Np2 < ../minus-gala.patch
 
   #Cogl can't be found when not using gala's cmake package; wtf?
