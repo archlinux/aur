@@ -3,6 +3,8 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Eivind Uggedal <eivind@uggedal.com>
 # Contributor: Frédéric Mangano <fmang+aur@mg0.fr>
+#  - disable VAAPI because of an incompatibility with EGL on the Rasperry Pi
+#    https://github.com/mpv-player/mpv/issues/5599
 
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
 #  - armv7/aarch64 needs to be built with fPIC
@@ -59,6 +61,7 @@ build() {
     --enable-libmpv-shared \
     --enable-zsh-comp \
     --enable-egl-x11 \
+    --disable-vaapi \
     --enable-rpi
 
   ./waf build
