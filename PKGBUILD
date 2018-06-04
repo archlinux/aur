@@ -1,38 +1,32 @@
 # Contributor: sickhate <sickhate@tux-linux.net>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=simdock-git
-pkgver=72.20fec28
+_repo=simdock
+pkgver=1.5.2.r3.g383e9c7
 pkgrel=1
-pkgdesc="Fast and customizable dockbar."
+pkgdesc="Fast and customizable dockbar"
 arch=('i686' 'x86_64')
 url="https://github.com/onli/simdock"
-license=('GPL')
-depends=('wxgtk2.8' 'libwnck' 'gconf')
+license=('GPL2')
+depends=('wxgtk3' 'libwnck' 'xcb-util-wm' 'gconf' 'desktop-file-utils')
 provides=('simdock')
 conflicts=('simdock')
-install=simdock.install
-source=("git://github.com/onli/simdock.git")
-_repo=simdock
+source=("git+https://github.com/onli/simdock.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${_repo}"
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/${_repo}"
-  sed -i 's+wx-config+wx-config-2.8+' Makefile
+  cd "${_repo}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${_repo}"
+  cd "${_repo}"
   make 
 }
 
 package() {
-  cd "$srcdir/${_repo}"
+  cd "${_repo}"
   make DESTDIR="$pkgdir" install
   rm -rf $pkgdir/usr/local
 }
