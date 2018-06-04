@@ -2,7 +2,7 @@
 
 _pkgname=thunar-vcs-plugin
 pkgname=${_pkgname}-git
-pkgver=0.1.5+87+gb672feb
+pkgver=0.1.90+2+g31b819c
 pkgrel=1
 pkgdesc="SVN and GIT integration for Thunar."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('thunar>=1.7.0' 'git' 'subversion' 'apr')
 makedepends=('intltool' 'xfce4-dev-tools')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/andreldm/thunar-vcs-plugin#branch=gtk3")
+source=("${_pkgname}::git://git.xfce.org/thunar-plugins/thunar-vcs-plugin")
 sha256sums=('SKIP')
 
 pkgver() {
