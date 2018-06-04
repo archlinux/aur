@@ -1,17 +1,17 @@
-# Maintainer: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
+# Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
 pkgname=python-pycapnp
 _pkgname=pycapnp
-pkgver=0.5.11
+pkgver=0.6.3
 pkgrel=1
-pkgdesc="A cython wrapping of the C++ Cap'n Proto serialization library"
+pkgdesc="cython wrapping of the C++ Cap'n Proto serialization library"
 arch=(any)
 url=https://pypi.python.org/pypi/pycapnp
 license=(BSD)
 depends=(python capnproto)
 makedepends=(python-setuptools cython)
-source=("https://pypi.python.org/packages/3a/3e/ace33380da38b0d02420b0697feb5c521b9d5756e6b376d20cee145a6822/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('68bca2c8c79e5843a11165e2ece3eebf')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('5e02c9288dff8fc690866261c79eaf86')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -20,5 +20,5 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
