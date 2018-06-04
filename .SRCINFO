@@ -1,0 +1,15 @@
+pkgbase = bat-cat-git
+	pkgdesc = A cat(1) clone with wings.
+	pkgver = r205.c91511c
+	pkgrel = 1
+	url = https://github.com/sharkdp/bat
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = rust
+	provides = bat
+	source = git+https://github.com/sharkdp/bat
+	sha256sums = SKIP
+
+pkgname = bat-cat-git
+
