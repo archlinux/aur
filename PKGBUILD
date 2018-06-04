@@ -4,18 +4,17 @@
 
 pkgname=compiz-boxmenu
 pkgver=1.1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop menu for compiz, forked from compiz-deskmenu by crdlb. Introduces extensive icon support, pipeitems, recent documents list, and more"
 arch=('i686' 'x86_64')
-url="https://github.com/compiz-reloaded/${pkgname}"
+url="https://gitlab.com/compiz/${pkgname}"
 license=('GPL')
 depends=('dbus-glib' 'libwnck' 'pygtk' 'python2-lxml' 'pyxdg')
 makedepends=('intltool' 'pkgconfig' 'gettext')
 provides=('compiz-boxmenu_no-dbus' 'compiz-deskmenu')
 conflicts=('compiz-boxmenu_no-dbus')
 install=$pkgname.install
-source=("https://github.com/compiz-reloaded/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-
+source=("https://gitlab.com/compiz/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -33,4 +32,4 @@ package() {
   chmod 0644 "$pkgdir/usr/share/dbus-1/services/org.compiz_fusion.boxmenu.service"
 }
 
-sha256sums=('49bcff6946b11d4703740df043dc978a07c85b0168f6fa9dfd1b33dae17c718d')
+sha256sums=('2bd0bf877d34135288fb8a914004855ea09aaed4220cd787be4436f60312987d')
