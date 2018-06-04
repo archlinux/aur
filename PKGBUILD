@@ -1,7 +1,7 @@
 pkgbase=('python-monkeytype')
 pkgname=('python-monkeytype')
 _module='MonkeyType'
-pkgver='17.12.3'
+pkgver='18.5.1'
 pkgrel=1
 pkgdesc="Generating type annotations from sampled production types"
 url="https://github.com/instagram/MonkeyType"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/m/monkeytype/MonkeyType-${pkgver}.tar.gz")
-sha256sums=('19d2061267c694ff6722ee28842f7b66c0dd1c0109b297167b750dc9e846a649')
+sha256sums=('e170d1224eec57ffb0c66293eb55cab30e4acb116e5771c40b31ed0399878bcf')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
