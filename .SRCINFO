@@ -1,8 +1,8 @@
 pkgbase = pamac-aur-git
 	pkgdesc = A Gtk3 frontend for libalpm - git version
 	pkgver = v6.4.0
-	pkgrel = 1
-	url = https://github.com/manjaro/pamac
+	pkgrel = 2
+	url = https://gitlab.manjaro.org/applications/pamac
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -28,7 +28,7 @@ pkgbase = pamac-aur-git
 	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
 	optdepends = pamac-aur-tray-appindicator-git: tray icon for KDE
 	options = !emptydirs
-	source = git+https://github.com/manjaro/pamac.git
+	source = git+https://gitlab.manjaro.org/applications/pamac.git
 	sha256sums = SKIP
 
 pkgname = pamac-aur-git
