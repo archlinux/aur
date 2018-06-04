@@ -1,34 +1,36 @@
-From 1c98bec0074d8b69f5cab1f3adbca5d60ea1b99d Mon Sep 17 00:00:00 2001
-Message-Id: <1c98bec0074d8b69f5cab1f3adbca5d60ea1b99d.1528073963.git.jan.steffens@gmail.com>
-In-Reply-To: <5c07abe9d2d676c3c19a15bf41d1c2ea75428895.1528073963.git.jan.steffens@gmail.com>
-References: <5c07abe9d2d676c3c19a15bf41d1c2ea75428895.1528073963.git.jan.steffens@gmail.com>
+From 41bbf735a170d62e43ff399c28ae4a987a6ea21f Mon Sep 17 00:00:00 2001
+Message-Id: <41bbf735a170d62e43ff399c28ae4a987a6ea21f.1528102613.git.jan.steffens@gmail.com>
+In-Reply-To: <eb7f1fc4286d83dde4bf5ef60cebddeaa074d9f0.1528102613.git.jan.steffens@gmail.com>
+References: <eb7f1fc4286d83dde4bf5ef60cebddeaa074d9f0.1528102613.git.jan.steffens@gmail.com>
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Sat, 16 Dec 2017 23:08:02 +0100
 Subject: [PATCH 4/4] Enable old engines, but keep adobe as default
 
 ---
- include/freetype/config/ftoption.h | 2 ++
+ include/freetype/config/ftoption.h | 4 ++--
  src/cff/cffobjs.c                  | 4 ----
  src/cid/cidobjs.c                  | 4 ----
  src/type1/t1objs.c                 | 4 ----
- 4 files changed, 2 insertions(+), 12 deletions(-)
+ 4 files changed, 2 insertions(+), 14 deletions(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 227790fd9..7d4c40160 100644
+index f47155b83..fd24ac4b8 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -760,6 +760,7 @@ FT_BEGIN_HEADER
+@@ -771,7 +771,7 @@ FT_BEGIN_HEADER
     * the type1 driver module.
     *
     */
+-/* #define T1_CONFIG_OPTION_OLD_ENGINE */
 +#define T1_CONFIG_OPTION_OLD_ENGINE
  
  
    /*************************************************************************/
-@@ -803,6 +804,7 @@ FT_BEGIN_HEADER
+@@ -815,7 +815,7 @@ FT_BEGIN_HEADER
     * the cff driver module.
     *
     */
+-/* #define CFF_CONFIG_OPTION_OLD_ENGINE */
 +#define CFF_CONFIG_OPTION_OLD_ENGINE
  
  
