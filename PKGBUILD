@@ -2,7 +2,7 @@
 
 pkgname=libmp3splt
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for splitting mp3 and ogg files without decoding"
 arch=('x86_64')
 url="http://mp3splt.sourceforge.net"
@@ -27,4 +27,4 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir/ install
 }
-md5sums=('28009187c1cbd0bce50138029532647d')
+sha512sums=('e5c98e8b173bc86302ccee4ca5eb0c8a8d93f225357eb7b14dea8d0700ed62ed6316506c182f6b295130f7924ff0b38e865d5e49fa9cd7882c648360d68872ed')
