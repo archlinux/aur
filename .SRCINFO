@@ -1,0 +1,17 @@
+pkgbase = lotterhoffcrash
+	pkgdesc = Enhance your Arch Linux experience with Miss Lotterhoff and Mr Dobecki
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://1mi.pl/~lachcim/wa%c5%bcne%20programy/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = wine
+	depends = wine-mono
+	source = launcher
+	source = https://1mi.pl/~lachcim/wa%c5%bcne%20programy/lotterhoffcrash.exe
+	md5sums = 4e4996896dcc7252a3aba80627c55636
+	md5sums = a464cbac89bf42cb3a3d120b022e11be
+
+pkgname = lotterhoffcrash
+

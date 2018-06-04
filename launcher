@@ -1,0 +1,8 @@
+#!/bin/bash
+export WINEARCH=win32 WINEPREFIX="$HOME/.lotterhoffcrash/wine"
+export WINEDLLOVERRIDES="mshtml="
+
+mkdir -p "$HOME"/.lotterhoffcrash/wine || exit 1
+
+wine /opt/lotterhoffcrash.exe
+
