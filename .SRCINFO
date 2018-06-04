@@ -1,7 +1,7 @@
 pkgbase = pantheon-workarounds
 	pkgdesc = Workarounds for Pantheon derivatives
 	pkgver = r1103.3661cbd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quequotion/pantheon-bzr-qq
 	install = gala.install
 	arch = i686
@@ -34,7 +34,7 @@ pkgbase = pantheon-workarounds
 	source = gnome-fallback-mount-helper-pantheon.desktop
 	source = numlockx-pantheon.desktop
 	sha512sums = 30a488431a23ff5521a12e97fa69ed17b2033ba8f016bb922e07ad9bf2d671e14a90a38266de1567c4dcbf178b6919a8108fad3dd13e50573018dc2a8e9b070e
-	sha512sums = 2f7b9769c97ca79f61c4eaa0c894f6085e0183025de319d9045f771355f605f234ab53ff1e19d5afc42547b46a4c7b732444cd93b5b9ccc7d56588b72d2bebd9
+	sha512sums = 842db1b456c96287865955741ba00c3ceeecf82691700f691d9fc45dc665230f1224ce7cdf5a1301826ab96cfe59e922c3878a5986ab3639da0cb79a2948f727
 	sha512sums = b01a18bb7829eb7a48b72c90bdf5aa5913c24247426e0bfc509cba22f49d2d8c9eb301e1937b70f3f7f01a873c987e0bdea6dd5f24f8d900b952188fa5635d39
 	sha512sums = 0df6355d85d2329e245593408a74d09281c0dcea206ed594a7312b78db4d3cd57941a5ec29be780f965128fe512532edae85ffaf11a94b57374d5906875967fc
 	sha512sums = c06e3b8c59681ebe64fa0dd724eea1d40a579956372ce0851f30ededdda3ac41d329d40e5463bd779daba0d55853faec357203b042a4de3d601eafc8b09c350e
