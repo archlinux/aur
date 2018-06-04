@@ -1,0 +1,90 @@
+# Maintainer: Benjamin Hodgetts <ben@xnode.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+
+pkgname=rpcs3-ex-git
+pkgver=0.0.5.r430.ea1bb3b90
+pkgrel=1
+pkgdesc='A Sony PlayStation 3 emulator (with RPCS3 custom LLVM)'
+arch=('x86_64')
+url='https://github.com/RPCS3/rpcs3'
+license=('GPL2')
+depends=('alsa-lib' 'gcc-libs' 'glew' 'glibc' 'glu' 'libevdev' 'libgl' 'libice'
+         'libpng' 'libpulse' 'libsm' 'libx11' 'libxext' 'llvm' 'openal'
+         'qt5-base' 'qt5-declarative' 'vulkan-icd-loader' 'yaml-cpp' 'zlib'
+         'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libncursesw.so'
+         'libswscale.so' 'libudev.so')
+makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git' 'vulkan-validation-layers')
+provides=('rpcs3')
+conflicts=('rpcs3')
+options=('!emptydirs')
+source=(
+	'git+https://github.com/RPCS3/rpcs3.git'
+        'rpcs3-common::git+https://github.com/RPCS3/common.git'
+        'rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git'
+        'rpcs3-llvm::git+https://github.com/RPCS3/llvm.git'
+        'git+https://github.com/kobalicek/asmjit.git'
+        'git+https://github.com/Microsoft/GSL.git'
+        'git+https://github.com/KhronosGroup/glslang.git'
+        'git+https://github.com/akrzemi1/Optional.git'
+        'git+https://github.com/zeux/pugixml.git'
+        'git+https://github.com/Cyan4973/xxHash.git'
+)
+sha256sums=(
+	'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+)
+
+pkgver() {
+  cd rpcs3
+  echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
+}
+
+prepare() {
+  pushd rpcs3
+
+  git submodule init 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit Vulkan/glslang llvm
+  git config submodule.asmjit.url ../asmjit
+  git config submodule.glslang.url ../glslang
+  git config submodule.GSL.url ../GSL
+  git config submodule.hidapi.url ../rpcs3-hidapi
+  git config submodule.llvm.url ../rpcs3-llvm
+  git config submodule.Optional.url ../Optional
+  git config submodule.pugixml.url ../pugixml
+  git config submodule.xxHash ../xxHash
+  git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit Vulkan/glslang llvm
+
+  popd
+
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build
+}
+
+build() {
+  cd build
+
+  cmake ../rpcs3 \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_EXE_LINKER_FLAGS='-ldl -lyaml-cpp' \
+    -DCMAKE_SKIP_RPATH='ON' \
+    -DUSE_SYSTEM_FFMPEG='ON' \
+    -DUSE_SYSTEM_LIBPNG='ON' \
+    -DBUILD_XXHSUM='OFF' \
+    -DLLVM_DIR=../llvmlibs/lib/cmake/llvm/ \
+    -DUSE_NATIVE_INSTRUCTIONS=ON
+  make
+}
+
+package() {
+  make DESTDIR="${pkgdir}" -C build install
+}
