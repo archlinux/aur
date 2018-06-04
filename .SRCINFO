@@ -1,0 +1,18 @@
+pkgbase = xkeysnail-git
+	pkgdesc = Yet another keyboard remapping tool for X environment.
+	pkgver = r51.g26ecdf8
+	pkgrel = 1
+	url = https://github.com/mooz/xkeysnail
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-xlib
+	depends = python-evdev
+	provides = xkeysnail
+	conflicts = xkeysnail
+	source = git://github.com/mooz/xkeysnail.git
+	md5sums = SKIP
+
+pkgname = xkeysnail-git
+
