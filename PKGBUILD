@@ -1,13 +1,13 @@
 # Maintainer: Weitian Leung <weitianleung[at]gmail[dot]com>
 
 pkgname=cu-notify-git
-pkgver=r8
+pkgver=r9
 pkgrel=1
 pkgdesc="Auto check ArchLinux package updates, popup notification if new updates available"
 arch=(any)
 url="https://github.com/timxx/cu-notify"
 license=('MIT')
-depends=('python-pyqt4' 'pacman')
+depends=('python-pyqt5' 'pacman-contrib')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/timxx/cu-notify.git")
 md5sums=('SKIP')
