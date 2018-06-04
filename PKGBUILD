@@ -1,4 +1,5 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 
 pkgname=archlinux-themes-slim
@@ -6,14 +7,16 @@ pkgver=1.2
 pkgrel=5
 pkgdesc="Arch Linux branded themes for the SLiM login manager"
 arch=('any')
-url="http://www.archlinux.org/"
+url="https://www.archlinux.org/"
 license=('CCPL:cc-by-sa')
 optdepends=('slim: login manager providing theme support')
-source=(https://sources.archlinux.org/other/packages/artwork/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('b9cdeffadec021ef9f8ec7e315c0618b37aa46501a552b357e460df5664d57bb98971fa3f0a4d7419bbd95051f984ae0bc1d77442478477e39f7cdcfaba67a4b')
+source=(https://sources.archlinux.org/other/packages/artwork/$pkgname-$pkgver.tar.gz)
+sha256sums=('dcbcd85d62ed140f35462290abeeadf773cd763960fb4b8f0e0c6c674da3e813')
 
 package() {
-  cd ${pkgname}-${pkgver}
-  install -d "${pkgdir}/usr/share/slim/themes"
-  cp -a archlinux-*/ "${pkgdir}/usr/share/slim/themes"
+  cd $pkgname-$pkgver
+  install -d "$pkgdir/usr/share/slim/themes"
+  cp -a archlinux-* "$pkgdir/usr/share/slim/themes/"
 }
+
+# vim:set ts=2 sw=2 et:
