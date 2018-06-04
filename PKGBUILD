@@ -8,7 +8,7 @@
 pkgbase=handbrake-git
 pkgname=('handbrake-gtk-git' 'handbrake-cli-git')
 epoch=1
-pkgver=1.1.0.r114.gcc1d825af
+pkgver=1.1.0.r115.g70f7a66ce
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
@@ -32,9 +32,9 @@ sha256sums=('SKIP'
             '6e59f9afc0c2b87a46f98e33b5159d56ffb3558a49d8e3d79cb7fdc6b7aaa863'
             '321cdf2dbdc83c96572bc583cd27d8c660ddb540ff16672ecb28607d018ed82b')
 noextract=('fdk-aac-0.1.5.tar.gz'
-	   'libav-12.2.tar.gz'
+	   'ffmpeg-4.0.tar.bz2'
 	   'libdvdnav-5.0.3.tar.bz2'
-	   'x265_2.5.tar.gz'
+	   'x265_2.8.tar.gz'
 	   'libdvdread-5.0.3.tar.bz2'
 	   'libvpx-1.6.1.tar.bz2')
 _gitname="HandBrake"
