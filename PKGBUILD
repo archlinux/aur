@@ -4,8 +4,8 @@
 pkgname=odoo10
 _pkgname=odoo
 pkgver=10.0
-_pkgsubver=20180601
-pkgrel=17
+_pkgsubver=20180604
+pkgrel=18
 pkgdesc="Web-based Open Source Business Apps"
 url=http://odoo.com/
 arch=('any')
