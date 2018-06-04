@@ -4,7 +4,7 @@
 
 pkgname=pantheon-lite
 pkgver=3
-pkgrel=7
+pkgrel=8
 pkgdesc='Pantheon Lite Session (replaces Gala with Openbox & Compton)'
 arch=('i686' 'x86_64')
 url='https://bbs.archlinux.org/viewtopic.php?pid=1402016#p1402016'

@@ -1,7 +1,7 @@
 pkgbase = pantheon-lite
 	pkgdesc = Pantheon Lite Session (replaces Gala with Openbox & Compton)
 	pkgver = 3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://bbs.archlinux.org/viewtopic.php?pid=1402016#p1402016
 	arch = i686
 	arch = x86_64
