@@ -4,10 +4,10 @@
 
 pkgbase=linux-zen           # Build stock -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.16
-_zenpatch=zen-4.16.13-d82f5185031cfe3009c376a9b7ade66a4fa218c3.diff
-pkgver=4.16.13
-pkgrel=2
+_srcname=linux-4.17
+_zenpatch=zen-4.17-14234d31b89da76f2e5fa9f5211f1dc1bcd87735.diff
+pkgver=4.17
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -15,7 +15,7 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
-  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  #https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
   https://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.{xz,sign}
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
@@ -27,13 +27,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
+sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '9efa0a74eb61240da53bd01a3a23759e0065811de53d22de7d679eabf847f323'
+            'de255bfe1548aa5aa589279c5828eaaeaf985a6d779e9ac84519d194a465e24b'
             'SKIP'
-            '3bf0a1abfe1f195000fc8b69bd7a8a7a519ba40f22c8f9f20084b43b85ede515'
-            'SKIP'
-            'cc0ca95105623f452e0c6a48982ce893bbbb446b7a7cd6ed1a9237d6c5e10a10'
+            'd75bb73c44df4c386c8fa2123ca52ec5255d5e52ad804872120824185cf1ba38'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -45,7 +43,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  patch -p1 -i ../patch-${pkgver}
+  #patch -p1 -i ../patch-${pkgver}
 
   # add zen patch
   patch -p1 -i ../${_zenpatch}
