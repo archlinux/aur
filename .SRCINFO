@@ -1,7 +1,7 @@
 pkgbase = python-xdis
 	pkgdesc = Python cross-version byte-code disassembler and marshal routines.
 	pkgver = 3.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rocky/python-xdis/
 	arch = any
 	license = MIT
@@ -11,4 +11,6 @@ pkgbase = python-xdis
 	sha256sums = e8548be5a386f51a6a0295e033984869ed71191879adc3d5aed17cd4a030ad8f
 
 pkgname = python-xdis
+
+pkgname = python2-xdis
 
