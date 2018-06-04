@@ -3,7 +3,7 @@
 
 pkgname=banner
 pkgver=1.3.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Print large banners to ASCII terminals"
 arch=('x86_64')
 url="http://shh.thathost.com/pub-unix"
