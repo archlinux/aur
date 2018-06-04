@@ -1,0 +1,16 @@
+pkgbase = sit
+	pkgdesc = Serverless (offline-first, merge-friendly) Information Tracker
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://sit.fyi
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cmake
+	depends = gcc-libs
+	depends = zlib
+	source = https://github.com/sit-fyi/sit/archive/v0.4.0.tar.gz
+	sha256sums = 8439637a175aea5303650355f7ce2fb44b2a6b9ce92e68a0887fbb680f1b4a36
+
+pkgname = sit
+
