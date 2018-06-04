@@ -1,0 +1,20 @@
+## systemd service file to restore default blanking and powerdown fo
+#  virtual consoles after a given timeout period (5-min blank, 6-min powerdown)
+#  this functionality was originally provided by the kernel defaults setting
+#  /sys/module/kernel/parameters/consoleblank 600 (now 0-disabled). the
+#  blanking and powerdown were delegated to systemd to implement, but no
+## service was ever provided by systemd to accomplish this fundamental task.
+
+[Unit]
+Description=Enable virtual console blanking and poweroff
+
+[Service]
+Type=oneshot
+Environment=TERM=linux
+StandardOutput=tty
+TTYPath=/dev/console
+ExecStart=/usr/bin/setterm -blank 5 -powerdown 6
+
+[Install]
+WantedBy=multi-user.target
+
