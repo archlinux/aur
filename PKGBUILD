@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
-pkgname=('python-pywikibot')
+pkgname=python-pywikibot
 _module='pywikibot'
-pkgver=3.0.20180505
+pkgver=3.0.20180603
 pkgrel=1
 pkgdesc="Python MediaWiki Bot Framework"
 url="https://www.mediawiki.org/wiki/Pywikibot"
@@ -9,16 +9,16 @@ depends=('python')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/p/pywikibot/pywikibot-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/p/pywikibot/pywikibot-$pkgver.tar.gz")
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "$srcdir/$_module-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    cd "$srcdir/$_module-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
-sha256sums=('12991fa517ba0841d512c154e8e408871c7d3553c55d8658778a19de182bdf0a')
+sha256sums=('5e581b4fed445e1775f601d5e218c60ef01939a58940f14a8a98817e2be967c8')
