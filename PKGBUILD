@@ -4,7 +4,7 @@
 
 pkgname=pantheon-3d
 pkgver=3
-pkgrel=7
+pkgrel=8
 pkgdesc='Pantheon 3d Session (replaces Gala with Compiz)'
 arch=('i686' 'x86_64')
 url='https://bbs.archlinux.org/viewtopic.php?pid=1401967#p1401967'

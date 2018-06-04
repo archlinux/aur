@@ -1,5 +1,5 @@
 [GNOME Session]
 Name=Pantheon
-RequiredComponents=compiz;cerbere;
+RequiredComponents=compiz;io.elementary.cerbere;
 FallbackSession=gnome-shell
 DesktopNames=Pantheon
