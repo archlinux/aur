@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Yves Ritschard <pyr at spootnik dot org>
 
 pkgname=kafkacat-git
-pkgver=r103.7116f28
+pkgver=r207.be0cfa6
 pkgrel=1
 pkgdesc='Apache Kafka command line producer and consumer'
 url="https://github.com/edenhill/kafkacat"
