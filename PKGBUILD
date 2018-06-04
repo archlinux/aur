@@ -32,7 +32,7 @@ package() {
     # Install swf file as per https://bbs.archlinux.org/viewtopic.php?pid=1079661#p1079661
     dd if=Machinarium/Machinarium of="$pkgdir"/usr/share/games/$pkgname/$pkgname-browser.swf ibs=1 skip=$(grep -abo FWS Machinarium/Machinarium|cut -f1 -d:|tail -1)
     install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
-    install -Dm644 machinariumIjgfeQ.png "$pkgdir"/usr/share/icons/$pkgname.png
+    install -Dm644 machinarium_dock_icon_by_darkhavans.png "$pkgdir"/usr/share/icons/$pkgname.png
     desktop-file-install $pkgname.desktop --dir "$pkgdir"/usr/share/applications/
 
     cp -r Machinarium/* "$pkgdir"/usr/share/games/$pkgname/
