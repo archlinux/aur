@@ -2,7 +2,7 @@
  
 _pkgname=thunar-shares-plugin
 pkgname=${_pkgname}-git
-pkgver=0.2.0+228+g5de5e0f
+pkgver=0.3.0+15+g74cf976
 pkgrel=1
 pkgdesc="Thunar plugin to quickly share a folder using Samba without requiring root access"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('thunar>=1.7.0' 'samba')
 makedepends=('xfce4-dev-tools' 'git')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/andreldm/thunar-shares-plugin#branch=gtk3")
+source=("${_pkgname}::git://git.xfce.org/thunar-plugins/thunar-shares-plugin")
 sha256sums=('SKIP')
  
 pkgver() {
