@@ -2,14 +2,14 @@
 pkgname=matcha-gtk-theme-git
 pkgver=r107.3ae60f0
 pkgrel=1
-pkgdesc="A flat design theme for GTK3, GTK2, and Gnome-Shell."
+pkgdesc='A flat design theme for GTK3, GTK2, and Gnome-Shell.'
 arch=('any')
 url='https://vinceliuice.github.io/theme-matcha'
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
 makedepends=('git')
 provides=("${pkgname}")
-conflicts=("${pkgname}", "matcha-gtk-theme")
+conflicts=("${pkgname}" 'matcha-gtk-theme')
 source=("${pkgname}::git+https://github.com/vinceliuice/matcha.git")
 md5sums=('SKIP')
 pkgver() {
