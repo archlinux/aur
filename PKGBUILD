@@ -12,7 +12,7 @@ depends=("cmake"
 source=("https://github.com/delphes/delphes/archive/${pkgver}.tar.gz"
         "1716933.patch")
 sha256sums=('f234fa8f9dcaff0abb601766afd159fd648e8ab2f64da4aa32a5b258deee5213'
-            '05f1deae8979d4e2ab2fe1b00a381faa26df6b8dfec9cc3a5d866c76ad2161df')
+            '394ba6e9bdcd1396c02699de83ac98515de601d0103a06eefb6201b03b7195f3')
 
 prepare() {
     patch -p 1 < 1716933.patch
