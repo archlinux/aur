@@ -29,6 +29,6 @@ build() {
 package() {
 	cd ${srcdir}/${pkgname}
 	make PREFIX=/usr DESTDIR="${pkgdir}/" install
-	install -D -m755 "${srcdir}/xboxdrv.service" "${pkgdir}/usr/lib/systemd/system/xboxdrv.service"
+	install -D -m644 "${srcdir}/xboxdrv.service" "${pkgdir}/usr/lib/systemd/system/xboxdrv.service"
 	install -D -m644 "${srcdir}/xboxdrv.conf" "${pkgdir}/etc/conf.d/xboxdrv"
 }
