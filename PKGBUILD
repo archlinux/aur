@@ -3,7 +3,7 @@
 
 pkgname=xfwm4-themes
 pkgver=4.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of additional themes for the Xfce window manager"
 arch=('any')
 url="http://www.xfce.org/"
