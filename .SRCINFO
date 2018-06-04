@@ -6,6 +6,7 @@ pkgbase = xkeysnail-git
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
 	depends = python-xlib
 	depends = python-evdev

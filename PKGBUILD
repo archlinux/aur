@@ -9,7 +9,8 @@ license=('GPL')
 depends=('python'
          'python-xlib'
          'python-evdev')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools'
+             'git')
 provides=('xkeysnail')
 conflicts=('xkeysnail')
 source=("git://github.com/mooz/xkeysnail.git")
