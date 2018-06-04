@@ -1,5 +1,6 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
+# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
 # Contributor: Francis Carroll (franciscarroll at gmail dot com)
 
 pkgname=splix
@@ -14,8 +15,8 @@ makedepends=('libcups' 'jbigkit' 'krb5' 'subversion')
 install=splix.install
 source=(svn://svn.code.sf.net/p/splix/code/splix#revision=315
         splix-deviceID.patch)
-md5sums=('SKIP'
-         '674b6880dcee844e0e7f50baae0dc09f')
+sha256sums=('SKIP'
+            'd8540032c994d49cbe32c7831b703125b2951ef353d5f2e3320933f47073efeb')
 
 prepare() {
   cd splix
@@ -33,3 +34,5 @@ package() {
   cd splix
   make DESTDIR="$pkgdir" install DRV_ONLY=1
 }
+
+# vim:set ts=2 sw=2 et:
