@@ -3,7 +3,7 @@
 
 pkgname=gtimelog
 pkgver=0.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Small GTK+ app for keeping track of your time'
 arch=('any')
 url='https://gtimelog.org/'
@@ -25,4 +25,10 @@ package() {
   install -Dm0644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm0644 "src/${pkgname}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
   install -Dm0644 "src/${pkgname}/${pkgname}-large.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+  # Install additional documentation
+  install -Dm0644 "CHANGES.rst" "${pkgdir}/usr/share/doc/${pkgname}/CHANGES.rst"
+  install -Dm0644 "CONTRIBUTING.rst" "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTING.rst"
+  install -Dm0644 "CONTRIBUTORS.rst" "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTORS.rst"
+  install -Dm0644 "README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+  install -Dm0644 "TODO.rst" "${pkgdir}/usr/share/doc/${pkgname}/TODO.rst"
 }
