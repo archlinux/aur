@@ -3,7 +3,7 @@
 
 pkgname=nitrokey-app
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 _cppcodecver=61d9b044d6644293f99fb87dfadc15dcab951bd9
 pkgdesc="Nitrokey management application"
 arch=('i686' 'x86_64')
@@ -24,6 +24,12 @@ prepare() {
 
     sed -i 's|libnitrokey/LICENSE|/usr/share/licenses/libnitrokey/LICENSE|' \
         resources.qrc
+
+    # Patch for Qt5.11. See https://github.com/Nitrokey/nitrokey-app/issues/361#issuecomment-394345354
+    sed -i '/#include "stick20changepassworddialog.h"/ i #include <QStyle>' \
+        src/ui/stick20changepassworddialog.cpp
+    sed -i '/#include <QDateTime>/ i #include <QStyle>' \
+        src/ui/stick20responsedialog.cpp
 
     cd 3rdparty
     rmdir cppcodec
