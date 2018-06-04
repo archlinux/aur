@@ -1,0 +1,1253 @@
+| Upstream patches:
+| - https://github.com/delphes/delphes/commit/171693349ed45060a9eafc5e891b5beaaf35c1e1
+| - https://github.com/delphes/delphes/commit/7d0eb75775eb246b5335ed763de35eb0b9d79d12
+diff --git a/delphes-3.4.1/Makefile b/delphes-3.4.1/Makefile
+index 67d9c04..f502ba9 100644
+--- a/delphes-3.4.1/Makefile
++++ b/delphes-3.4.1/Makefile
+@@ -479,15 +479,18 @@ tmp/classes/DelphesModule.$(ObjSuf): \
+ 	external/ExRootAnalysis/ExRootResult.h
+ tmp/classes/DelphesPileUpReader.$(ObjSuf): \
+ 	classes/DelphesPileUpReader.$(SrcSuf) \
+-	classes/DelphesPileUpReader.h
++	classes/DelphesPileUpReader.h \
++	classes/DelphesXDRReader.h
+ tmp/classes/DelphesPileUpWriter.$(ObjSuf): \
+ 	classes/DelphesPileUpWriter.$(SrcSuf) \
+-	classes/DelphesPileUpWriter.h
++	classes/DelphesPileUpWriter.h \
++	classes/DelphesXDRWriter.h
+ tmp/classes/DelphesSTDHEPReader.$(ObjSuf): \
+ 	classes/DelphesSTDHEPReader.$(SrcSuf) \
+ 	classes/DelphesSTDHEPReader.h \
+ 	classes/DelphesClasses.h \
+ 	classes/DelphesFactory.h \
++	classes/DelphesXDRReader.h \
+ 	external/ExRootAnalysis/ExRootTreeBranch.h
+ tmp/classes/DelphesStream.$(ObjSuf): \
+ 	classes/DelphesStream.$(SrcSuf) \
+@@ -495,6 +498,12 @@ tmp/classes/DelphesStream.$(ObjSuf): \
+ tmp/classes/DelphesTF2.$(ObjSuf): \
+ 	classes/DelphesTF2.$(SrcSuf) \
+ 	classes/DelphesTF2.h
++tmp/classes/DelphesXDRReader.$(ObjSuf): \
++	classes/DelphesXDRReader.$(SrcSuf) \
++	classes/DelphesXDRReader.h
++tmp/classes/DelphesXDRWriter.$(ObjSuf): \
++	classes/DelphesXDRWriter.$(SrcSuf) \
++	classes/DelphesXDRWriter.h
+ tmp/external/ExRootAnalysis/ExRootConfReader.$(ObjSuf): \
+ 	external/ExRootAnalysis/ExRootConfReader.$(SrcSuf) \
+ 	external/ExRootAnalysis/ExRootConfReader.h \
+@@ -993,6 +1002,8 @@ DELPHES_OBJ +=  \
+ 	tmp/classes/DelphesSTDHEPReader.$(ObjSuf) \
+ 	tmp/classes/DelphesStream.$(ObjSuf) \
+ 	tmp/classes/DelphesTF2.$(ObjSuf) \
++	tmp/classes/DelphesXDRReader.$(ObjSuf) \
++	tmp/classes/DelphesXDRWriter.$(ObjSuf) \
+ 	tmp/external/ExRootAnalysis/ExRootConfReader.$(ObjSuf) \
+ 	tmp/external/ExRootAnalysis/ExRootFilter.$(ObjSuf) \
+ 	tmp/external/ExRootAnalysis/ExRootProgressBar.$(ObjSuf) \
+@@ -1992,6 +2003,10 @@ modules/PdgCodeFilter.h: \
+ 	classes/DelphesModule.h
+ 	@touch $@
+ 
++classes/DelphesSTDHEPReader.h: \
++	classes/DelphesXDRReader.h
++	@touch $@
++
+ external/fastjet/plugins/CDFCones/fastjet/CDFMidPointPlugin.hh: \
+ 	external/fastjet/JetDefinition.hh
+ 	@touch $@
+diff --git a/delphes-3.4.1/classes/DelphesPileUpReader.cc b/delphes-3.4.1/classes/DelphesPileUpReader.cc
+index ad05165..bf3019e 100644
+--- a/delphes-3.4.1/classes/DelphesPileUpReader.cc
++++ b/delphes-3.4.1/classes/DelphesPileUpReader.cc
+@@ -32,8 +32,9 @@
+ #include <sstream>
+ 
+ #include <stdio.h>
+-#include <rpc/types.h>
+-#include <rpc/xdr.h>
++#include <stdint.h>
++
++#include "classes/DelphesXDRReader.h"
+ 
+ using namespace std;
+ 
+@@ -46,17 +47,18 @@ static const int kRecordSize = 9;
+ DelphesPileUpReader::DelphesPileUpReader(const char *fileName) :
+   fEntries(0), fEntrySize(0), fCounter(0),
+   fPileUpFile(0), fIndex(0), fBuffer(0),
+-  fInputXDR(0), fIndexXDR(0), fBufferXDR(0)
++  fInputReader(0), fIndexReader(0), fBufferReader(0)
+ {
+   stringstream message;
+ 
+-  fIndex = new char[kIndexSize*8];
+-  fBuffer = new char[kBufferSize*kRecordSize*4];
+-  fInputXDR = new XDR;
+-  fIndexXDR = new XDR;
+-  fBufferXDR = new XDR;
+-  xdrmem_create(fIndexXDR, fIndex, kIndexSize*8, XDR_DECODE);
+-  xdrmem_create(fBufferXDR, fBuffer, kBufferSize*kRecordSize*4, XDR_DECODE);
++  fIndex = new uint8_t[kIndexSize*8];
++  fBuffer = new uint8_t[kBufferSize*kRecordSize*4];
++  fInputReader = new DelphesXDRReader;
++  fIndexReader = new DelphesXDRReader;
++  fBufferReader = new DelphesXDRReader;
++
++  fIndexReader->SetBuffer(fIndex);
++  fBufferReader->SetBuffer(fBuffer);
+ 
+   fPileUpFile = fopen(fileName, "r");
+ 
+@@ -66,11 +68,11 @@ DelphesPileUpReader::DelphesPileUpReader(const char *fileName) :
+     throw runtime_error(message.str());
+   }
+ 
+-  xdrstdio_create(fInputXDR, fPileUpFile, XDR_DECODE);
++  fInputReader->SetFile(fPileUpFile);
+ 
+   // read number of events
+   fseeko(fPileUpFile, -8, SEEK_END);
+-  xdr_hyper(fInputXDR, &fEntries);
++  fInputReader->ReadValue(&fEntries, 8);
+ 
+   if(fEntries >= kIndexSize)
+   {
+@@ -80,41 +82,38 @@ DelphesPileUpReader::DelphesPileUpReader(const char *fileName) :
+ 
+   // read index of events
+   fseeko(fPileUpFile, -8 - 8*fEntries, SEEK_END);
+-  xdr_opaque(fInputXDR, fIndex, fEntries*8);
++  fInputReader->ReadRaw(fIndex, fEntries*8);
+ }
+ 
+ //------------------------------------------------------------------------------
+ 
+ DelphesPileUpReader::~DelphesPileUpReader()
+ {
+-  xdr_destroy(fInputXDR);
+   if(fPileUpFile) fclose(fPileUpFile);
+-  xdr_destroy(fBufferXDR);
+-  xdr_destroy(fIndexXDR);
+-  if(fBufferXDR) delete fBufferXDR;
+-  if(fIndexXDR) delete fIndexXDR;
+-  if(fInputXDR) delete fInputXDR;
++  if(fBufferReader) delete fBufferReader;
++  if(fIndexReader) delete fIndexReader;
++  if(fInputReader) delete fInputReader;
+   if(fBuffer) delete[] fBuffer;
+   if(fIndex) delete[] fIndex;
+ }
+ 
+ //------------------------------------------------------------------------------
+ 
+-bool DelphesPileUpReader::ReadParticle(int &pid,
++bool DelphesPileUpReader::ReadParticle(int32_t &pid,
+   float &x, float &y, float &z, float &t,
+   float &px, float &py, float &pz, float &e)
+ {
+   if(fCounter >= fEntrySize) return false;
+ 
+-  xdr_int(fBufferXDR, &pid);
+-  xdr_float(fBufferXDR, &x);
+-  xdr_float(fBufferXDR, &y);
+-  xdr_float(fBufferXDR, &z);
+-  xdr_float(fBufferXDR, &t);
+-  xdr_float(fBufferXDR, &px);
+-  xdr_float(fBufferXDR, &py);
+-  xdr_float(fBufferXDR, &pz);
+-  xdr_float(fBufferXDR, &e);
++  fBufferReader->ReadValue(&pid, 4);
++  fBufferReader->ReadValue(&x, 4);
++  fBufferReader->ReadValue(&y, 4);
++  fBufferReader->ReadValue(&z, 4);
++  fBufferReader->ReadValue(&t, 4);
++  fBufferReader->ReadValue(&px, 4);
++  fBufferReader->ReadValue(&py, 4);
++  fBufferReader->ReadValue(&pz, 4);
++  fBufferReader->ReadValue(&e, 4);
+ 
+   ++fCounter;
+ 
+@@ -123,27 +122,27 @@ bool DelphesPileUpReader::ReadParticle(int &pid,
+ 
+ //------------------------------------------------------------------------------
+ 
+-bool DelphesPileUpReader::ReadEntry(quad_t entry)
++bool DelphesPileUpReader::ReadEntry(int64_t entry)
+ {
+-  quad_t offset;
++  int64_t offset;
+ 
+   if(entry >= fEntries) return false;
+ 
+   // read event position
+-  xdr_setpos(fIndexXDR, 8*entry);
+-  xdr_hyper(fIndexXDR, &offset);
++  fIndexReader->SetOffset(8*entry);
++  fIndexReader->ReadValue(&offset, 8);
+ 
+   // read event
+   fseeko(fPileUpFile, offset, SEEK_SET);
+-  xdr_int(fInputXDR, &fEntrySize);
++  fInputReader->ReadValue(&fEntrySize, 4);
+ 
+   if(fEntrySize >= kBufferSize)
+   {
+     throw runtime_error("too many particles in pile-up event");
+   }
+ 
+-  xdr_opaque(fInputXDR, fBuffer, fEntrySize*kRecordSize*4);
+-  xdr_setpos(fBufferXDR, 0);
++  fInputReader->ReadRaw(fBuffer, fEntrySize*kRecordSize*4);
++  fBufferReader->SetOffset(0);
+   fCounter = 0;
+ 
+   return true;
+diff --git a/delphes-3.4.1/classes/DelphesPileUpReader.h b/delphes-3.4.1/classes/DelphesPileUpReader.h
+index 88705a4..b2edc2d 100644
+--- a/delphes-3.4.1/classes/DelphesPileUpReader.h
++++ b/delphes-3.4.1/classes/DelphesPileUpReader.h
+@@ -28,8 +28,9 @@
+  */
+ 
+ #include <stdio.h>
+-#include <rpc/types.h>
+-#include <rpc/xdr.h>
++#include <stdint.h>
++
++class DelphesXDRReader;
+ 
+ class DelphesPileUpReader
+ {
+@@ -39,30 +40,28 @@ public:
+ 
+   ~DelphesPileUpReader();
+ 
+-  bool ReadParticle(int &pid,
++  bool ReadParticle(int32_t &pid,
+     float &x, float &y, float &z, float &t,
+     float &px, float &py, float &pz, float &e);
+ 
+-  bool ReadEntry(quad_t entry);
++  bool ReadEntry(int64_t entry);
+ 
+-  quad_t GetEntries() const { return fEntries; }
++  int64_t GetEntries() const { return fEntries; }
+ 
+ private:
+ 
+-  quad_t fEntries;
++  int64_t fEntries;
+ 
+-  int fEntrySize;
+-  int fCounter;
++  int32_t fEntrySize;
++  int32_t fCounter;
+ 
+   FILE *fPileUpFile;
+-  char *fIndex;
+-  char *fBuffer;
++  uint8_t *fIndex;
++  uint8_t *fBuffer;
+ 
+-  XDR *fInputXDR;
+-  XDR *fIndexXDR;
+-  XDR *fBufferXDR;
++  DelphesXDRReader *fInputReader;
++  DelphesXDRReader *fIndexReader;
++  DelphesXDRReader *fBufferReader;
+ };
+ 
+ #endif // DelphesPileUpReader_h
+-
+-
+diff --git a/delphes-3.4.1/classes/DelphesPileUpWriter.cc b/delphes-3.4.1/classes/DelphesPileUpWriter.cc
+index 2720fa8..1b17458 100644
+--- a/delphes-3.4.1/classes/DelphesPileUpWriter.cc
++++ b/delphes-3.4.1/classes/DelphesPileUpWriter.cc
+@@ -32,8 +32,9 @@
+ #include <sstream>
+ 
+ #include <stdio.h>
+-#include <rpc/types.h>
+-#include <rpc/xdr.h>
++#include <stdint.h>
++
++#include "classes/DelphesXDRWriter.h"
+ 
+ using namespace std;
+ 
+@@ -46,17 +47,18 @@ static const int kRecordSize = 9;
+ DelphesPileUpWriter::DelphesPileUpWriter(const char *fileName) :
+   fEntries(0), fEntrySize(0), fOffset(0),
+   fPileUpFile(0), fIndex(0), fBuffer(0),
+-  fOutputXDR(0), fIndexXDR(0), fBufferXDR(0)
++  fOutputWriter(0), fIndexWriter(0), fBufferWriter(0)
+ {
+   stringstream message;
+ 
+-  fIndex = new char[kIndexSize*8];
+-  fBuffer = new char[kBufferSize*kRecordSize*4];
+-  fOutputXDR = new XDR;
+-  fIndexXDR = new XDR;
+-  fBufferXDR = new XDR;
+-  xdrmem_create(fIndexXDR, fIndex, kIndexSize*8, XDR_ENCODE);
+-  xdrmem_create(fBufferXDR, fBuffer, kBufferSize*kRecordSize*4, XDR_ENCODE);
++  fIndex = new uint8_t[kIndexSize*8];
++  fBuffer = new uint8_t[kBufferSize*kRecordSize*4];
++  fOutputWriter = new DelphesXDRWriter;
++  fIndexWriter = new DelphesXDRWriter;
++  fBufferWriter = new DelphesXDRWriter;
++
++  fIndexWriter->SetBuffer(fIndex);
++  fBufferWriter->SetBuffer(fBuffer);
+ 
+   fPileUpFile = fopen(fileName, "w+");
+ 
+@@ -66,27 +68,24 @@ DelphesPileUpWriter::DelphesPileUpWriter(const char *fileName) :
+     throw runtime_error(message.str());
+   }
+ 
+-  xdrstdio_create(fOutputXDR, fPileUpFile, XDR_ENCODE);
++  fOutputWriter->SetFile(fPileUpFile);
+ }
+ 
+ //------------------------------------------------------------------------------
+ 
+ DelphesPileUpWriter::~DelphesPileUpWriter()
+ {
+-  xdr_destroy(fOutputXDR);
+   if(fPileUpFile) fclose(fPileUpFile);
+-  xdr_destroy(fBufferXDR);
+-  xdr_destroy(fIndexXDR);
+-  if(fBufferXDR) delete fBufferXDR;
+-  if(fIndexXDR) delete fIndexXDR;
+-  if(fOutputXDR) delete fOutputXDR;
++  if(fBufferWriter) delete fBufferWriter;
++  if(fIndexWriter) delete fIndexWriter;
++  if(fOutputWriter) delete fOutputWriter;
+   if(fBuffer) delete[] fBuffer;
+   if(fIndex) delete[] fIndex;
+ }
+ 
+ //------------------------------------------------------------------------------
+ 
+-void DelphesPileUpWriter::WriteParticle(int pid,
++void DelphesPileUpWriter::WriteParticle(int32_t pid,
+   float x, float y, float z, float t,
+   float px, float py, float pz, float e)
+ {
+@@ -95,15 +94,15 @@ void DelphesPileUpWriter::WriteParticle(int pid,
+     throw runtime_error("too many particles in pile-up event");
+   }
+ 
+-  xdr_int(fBufferXDR, &pid);
+-  xdr_float(fBufferXDR, &x);
+-  xdr_float(fBufferXDR, &y);
+-  xdr_float(fBufferXDR, &z);
+-  xdr_float(fBufferXDR, &t);
+-  xdr_float(fBufferXDR, &px);
+-  xdr_float(fBufferXDR, &py);
+-  xdr_float(fBufferXDR, &pz);
+-  xdr_float(fBufferXDR, &e);
++  fBufferWriter->WriteValue(&pid, 4);
++  fBufferWriter->WriteValue(&x, 4);
++  fBufferWriter->WriteValue(&y, 4);
++  fBufferWriter->WriteValue(&z, 4);
++  fBufferWriter->WriteValue(&t, 4);
++  fBufferWriter->WriteValue(&px, 4);
++  fBufferWriter->WriteValue(&py, 4);
++  fBufferWriter->WriteValue(&pz, 4);
++  fBufferWriter->WriteValue(&e, 4);
+ 
+   ++fEntrySize;
+ }
+@@ -117,15 +116,15 @@ void DelphesPileUpWriter::WriteEntry()
+     throw runtime_error("too many pile-up events");
+   }
+ 
+-  xdr_int(fOutputXDR, &fEntrySize);
+-  xdr_opaque(fOutputXDR, fBuffer, fEntrySize*kRecordSize*4);
++  fOutputWriter->WriteValue(&fEntrySize, 4);
++  fOutputWriter->WriteRaw(fBuffer, fEntrySize*kRecordSize*4);
+ 
+-  xdr_hyper(fIndexXDR, &fOffset);
++  fIndexWriter->WriteValue(&fOffset, 8);
+   fOffset += fEntrySize*kRecordSize*4 + 4;
+ 
+-  xdr_setpos(fBufferXDR, 0);
++  fBufferWriter->SetOffset(0);
+   fEntrySize = 0;
+-        
++
+   ++fEntries;
+ }
+ 
+@@ -133,8 +132,8 @@ void DelphesPileUpWriter::WriteEntry()
+ 
+ void DelphesPileUpWriter::WriteIndex()
+ {
+-  xdr_opaque(fOutputXDR, fIndex, fEntries*8);
+-  xdr_hyper(fOutputXDR, &fEntries);
++  fOutputWriter->WriteRaw(fIndex, fEntries*8);
++  fOutputWriter->WriteValue(&fEntries, 8);
+ }
+ 
+ //------------------------------------------------------------------------------
+diff --git a/delphes-3.4.1/classes/DelphesPileUpWriter.h b/delphes-3.4.1/classes/DelphesPileUpWriter.h
+index 0b195c8..ace2e9c 100644
+--- a/delphes-3.4.1/classes/DelphesPileUpWriter.h
++++ b/delphes-3.4.1/classes/DelphesPileUpWriter.h
+@@ -28,8 +28,9 @@
+  */
+ 
+ #include <stdio.h>
+-#include <rpc/types.h>
+-#include <rpc/xdr.h>
++#include <stdint.h>
++
++class DelphesXDRWriter;
+ 
+ class DelphesPileUpWriter
+ {
+@@ -39,7 +40,7 @@ public:
+ 
+   ~DelphesPileUpWriter();
+ 
+-  void WriteParticle(int pid,
++  void WriteParticle(int32_t pid,
+     float x, float y, float z, float t,
+     float px, float py, float pz, float e);
+ 
+@@ -49,19 +50,17 @@ public:
+ 
+ private:
+ 
+-  quad_t fEntries;
+-  int fEntrySize;
+-  quad_t fOffset;
++  int64_t fEntries;
++  int32_t fEntrySize;
++  int64_t fOffset;
+ 
+   FILE *fPileUpFile;
+-  char *fIndex;
+-  char *fBuffer;
++  uint8_t *fIndex;
++  uint8_t *fBuffer;
+ 
+-  XDR *fOutputXDR;
+-  XDR *fIndexXDR;
+-  XDR *fBufferXDR;
++  DelphesXDRWriter *fOutputWriter;
++  DelphesXDRWriter *fIndexWriter;
++  DelphesXDRWriter *fBufferWriter;
+ };
+ 
+ #endif // DelphesPileUpWriter_h
+-
+-
+diff --git a/delphes-3.4.1/classes/DelphesSTDHEPReader.cc b/delphes-3.4.1/classes/DelphesSTDHEPReader.cc
+index 344035b..f11a4e5 100644
+--- a/delphes-3.4.1/classes/DelphesSTDHEPReader.cc
++++ b/delphes-3.4.1/classes/DelphesSTDHEPReader.cc
+@@ -33,8 +33,8 @@
+ 
+ #include <stdio.h>
+ #include <errno.h>
+-#include <rpc/types.h>
+-#include <rpc/xdr.h>
++#include <stdint.h>
++#include <string.h>
+ 
+ #include "TObjArray.h"
+ #include "TStopwatch.h"
+@@ -44,6 +44,7 @@
+ 
+ #include "classes/DelphesClasses.h"
+ #include "classes/DelphesFactory.h"
++#include "classes/DelphesXDRReader.h"
+ 
+ #include "ExRootAnalysis/ExRootTreeBranch.h"
+ 
+@@ -54,10 +55,9 @@ static const int kBufferSize  = 1000000;
+ //---------------------------------------------------------------------------
+ 
+ DelphesSTDHEPReader::DelphesSTDHEPReader() :
+-  fInputFile(0), fInputXDR(0), fBuffer(0), fPDG(0), fBlockType(-1)
++  fInputFile(0), fBuffer(0), fPDG(0), fBlockType(-1)
+ {
+-  fInputXDR = new XDR;
+-  fBuffer = new char[kBufferSize*96 + 24];
++  fBuffer = new uint8_t[kBufferSize*96 + 24];
+ 
+   fPDG = TDatabasePDG::Instance();
+ }
+@@ -67,7 +67,6 @@ DelphesSTDHEPReader::DelphesSTDHEPReader() :
+ DelphesSTDHEPReader::~DelphesSTDHEPReader()
+ {
+   if(fBuffer) delete fBuffer;
+-  if(fInputXDR) delete fInputXDR;
+ }
+ 
+ //---------------------------------------------------------------------------
+@@ -75,7 +74,7 @@ DelphesSTDHEPReader::~DelphesSTDHEPReader()
+ void DelphesSTDHEPReader::SetInputFile(FILE *inputFile)
+ {
+   fInputFile = inputFile;
+-  xdrstdio_create(fInputXDR, inputFile, XDR_DECODE);
++  fReader[0].SetFile(inputFile);
+ }
+ 
+ //---------------------------------------------------------------------------
+@@ -99,9 +98,9 @@ bool DelphesSTDHEPReader::ReadBlock(DelphesFactory *factory,
+   TObjArray *stableParticleOutputArray,
+   TObjArray *partonOutputArray)
+ {
+-  if(feof(fInputFile)) return kFALSE;
++  fReader[0].ReadValue(&fBlockType, 4);
+ 
+-  xdr_int(fInputXDR, &fBlockType);
++  if(feof(fInputFile)) return kFALSE;
+ 
+   SkipBytes(4);
+ 
+@@ -145,10 +144,10 @@ bool DelphesSTDHEPReader::ReadBlock(DelphesFactory *factory,
+ 
+ //---------------------------------------------------------------------------
+ 
+-void DelphesSTDHEPReader::SkipBytes(u_int size)
++void DelphesSTDHEPReader::SkipBytes(int size)
+ {
+   int rc;
+-  u_int rndup;
++  int rndup;
+ 
+   rndup = size % 4;
+   if(rndup > 0)
+@@ -160,16 +159,16 @@ void DelphesSTDHEPReader::SkipBytes(u_int size)
+ 
+   if(rc != 0 && errno == ESPIPE)
+   {
+-    xdr_opaque(fInputXDR, fBuffer, size);
++    fReader[0].ReadRaw(fBuffer, size);
+   }
+ }
+ 
+ //---------------------------------------------------------------------------
+ 
+-void DelphesSTDHEPReader::SkipArray(u_int elsize)
++void DelphesSTDHEPReader::SkipArray(int elsize)
+ {
+-  u_int size;
+-  xdr_u_int(fInputXDR, &size);
++  uint32_t size;
++  fReader[0].ReadValue(&size, 4);
+   SkipBytes(size*elsize);
+ }
+ 
+@@ -177,14 +176,14 @@ void DelphesSTDHEPReader::SkipArray(u_int elsize)
+ 
+ void DelphesSTDHEPReader::ReadFileHeader()
+ {
+-  u_int i;
++  uint32_t i;
+   enum STDHEPVersion {UNKNOWN, V1, V2, V21} version;
+ 
+   // version
+-  xdr_string(fInputXDR, &fBuffer, 100);
++  fReader[0].ReadString(fBuffer, 100);
+   if(fBuffer[0] == '\0' || fBuffer[1] == '\0') version = UNKNOWN;
+   else if(fBuffer[0] == '1') version = V1;
+-  else if(strncmp(fBuffer, "2.01", 4) == 0) version = V21;
++  else if(strncmp((char *)fBuffer, "2.01", 4) == 0) version = V21;
+   else if(fBuffer[0] == '2') version = V2;
+   else version = UNKNOWN;
+ 
+@@ -206,19 +205,19 @@ void DelphesSTDHEPReader::ReadFileHeader()
+   SkipBytes(4);
+ 
+   // Number of events
+-  xdr_u_int(fInputXDR, &fEntries);
++  fReader[0].ReadValue(&fEntries, 4);
+ 
+   SkipBytes(8);
+ 
+   // Number of blocks
+-  u_int nBlocks = 0;
+-  xdr_u_int(fInputXDR, &nBlocks);
++  uint32_t nBlocks = 0;
++  fReader[0].ReadValue(&nBlocks, 4);
+ 
+   // Number of NTuples
+-  u_int nNTuples = 0;
++  uint32_t nNTuples = 0;
+   if(version != V1)
+   {
+-    xdr_u_int(fInputXDR, &nNTuples);
++    fReader[0].ReadValue(&nNTuples, 4);
+   }
+ 
+   if(nNTuples != 0)
+@@ -243,8 +242,8 @@ void DelphesSTDHEPReader::ReadFileHeader()
+ void DelphesSTDHEPReader::ReadEventTable()
+ {
+   // version
+-  xdr_string(fInputXDR, &fBuffer, 100);
+-  if(strncmp(fBuffer, "1.00", 4) == 0)
++  fReader[0].ReadString(fBuffer, 100);
++  if(strncmp((char *)fBuffer, "1.00", 4) == 0)
+   {
+     SkipBytes(8);
+ 
+@@ -254,7 +253,7 @@ void DelphesSTDHEPReader::ReadEventTable()
+     SkipArray(4);
+     SkipArray(4);
+   }
+-  else if(strncmp(fBuffer, "2.00", 4) == 0)
++  else if(strncmp((char *)fBuffer, "2.00", 4) == 0)
+   {
+     SkipBytes(12);
+ 
+@@ -271,15 +270,15 @@ void DelphesSTDHEPReader::ReadEventTable()
+ void DelphesSTDHEPReader::ReadEventHeader()
+ {
+   bool skipNTuples = false;
+-  u_int skipSize = 4;
++  int skipSize = 4;
+ 
+   // version
+-  xdr_string(fInputXDR, &fBuffer, 100);
+-  if(strncmp(fBuffer, "2.00", 4) == 0)
++  fReader[0].ReadString(fBuffer, 100);
++  if(strncmp((char *)fBuffer, "2.00", 4) == 0)
+   {
+     skipNTuples = true;
+   }
+-  else if(strncmp(fBuffer, "3.00", 4) == 0)
++  else if(strncmp((char *)fBuffer, "3.00", 4) == 0)
+   {
+     skipNTuples = true;
+     skipSize = 8;
+@@ -287,14 +286,14 @@ void DelphesSTDHEPReader::ReadEventHeader()
+ 
+   SkipBytes(20);
+ 
+-  u_int dimBlocks = 0;
+-  xdr_u_int(fInputXDR, &dimBlocks);
++  uint32_t dimBlocks = 0;
++  fReader[0].ReadValue(&dimBlocks, 4);
+ 
+-  u_int dimNTuples = 0;
++  uint32_t dimNTuples = 0;
+   if(skipNTuples)
+   {
+     SkipBytes(4);
+-    xdr_u_int(fInputXDR, &dimNTuples);
++    fReader[0].ReadValue(&dimNTuples, 4);
+   }
+ 
+   // Processing blocks extraction
+@@ -317,14 +316,14 @@ void DelphesSTDHEPReader::ReadEventHeader()
+ void DelphesSTDHEPReader::ReadSTDCM1()
+ {
+   // version
+-  xdr_string(fInputXDR, &fBuffer, 100);
++  fReader[0].ReadString(fBuffer, 100);
+ 
+   // skip 5*4 + 2*8 = 36 bytes
+   SkipBytes(36);
+ 
+-  if((strncmp(fBuffer, "1.", 2) == 0) || (strncmp(fBuffer, "2.", 2) == 0) ||
+-     (strncmp(fBuffer, "3.", 2) == 0) || (strncmp(fBuffer, "4.", 2) == 0) ||
+-     (strncmp(fBuffer, "5.00", 4) == 0))
++  if((strncmp((char *)fBuffer, "1.", 2) == 0) || (strncmp((char *)fBuffer, "2.", 2) == 0) ||
++     (strncmp((char *)fBuffer, "3.", 2) == 0) || (strncmp((char *)fBuffer, "4.", 2) == 0) ||
++     (strncmp((char *)fBuffer, "5.00", 4) == 0))
+   {
+     return;
+   }
+@@ -332,7 +331,7 @@ void DelphesSTDHEPReader::ReadSTDCM1()
+   SkipArray(1);
+   SkipArray(1);
+ 
+-  if(strncmp(fBuffer, "5.01", 4) == 0)
++  if(strncmp((char *)fBuffer, "5.01", 4) == 0)
+   {
+     return;
+   }
+@@ -344,16 +343,16 @@ void DelphesSTDHEPReader::ReadSTDCM1()
+ 
+ void DelphesSTDHEPReader::ReadSTDHEP()
+ {
+-  u_int idhepSize, isthepSize, jmohepSize, jdahepSize, phepSize, vhepSize;
++  uint32_t idhepSize, isthepSize, jmohepSize, jdahepSize, phepSize, vhepSize;
+ 
+   // version
+-  xdr_string(fInputXDR, &fBuffer, 100);
++  fReader[0].ReadString(fBuffer, 100);
+ 
+   // Extracting the event number
+-  xdr_int(fInputXDR, &fEventNumber);
++  fReader[0].ReadValue(&fEventNumber, 4);
+ 
+   // Extracting the number of particles
+-  xdr_int(fInputXDR, &fEventSize);
++  fReader[0].ReadValue(&fEventSize, 4);
+ 
+   if(fEventSize >= kBufferSize)
+   {
+@@ -363,14 +362,21 @@ void DelphesSTDHEPReader::ReadSTDHEP()
+   // 4*n + 4*n + 8*n + 8*n + 40*n + 32*n +
+   // 4 + 4 + 4 + 4 + 4 + 4 = 96*n + 24
+ 
+-  xdr_opaque(fInputXDR, fBuffer, 96*fEventSize + 24);
++  fReader[0].ReadRaw(fBuffer, 96*fEventSize + 24);
+ 
+-  idhepSize = ntohl(*(u_int*)(fBuffer));
+-  isthepSize = ntohl(*(u_int*)(fBuffer + 4*1 + 4*1*fEventSize));
+-  jmohepSize = ntohl(*(u_int*)(fBuffer + 4*2 + 4*2*fEventSize));
+-  jdahepSize = ntohl(*(u_int*)(fBuffer + 4*3 + 4*4*fEventSize));
+-  phepSize = ntohl(*(u_int*)(fBuffer + 4*4 + 4*6*fEventSize));
+-  vhepSize = ntohl(*(u_int*)(fBuffer + 4*5 + 4*16*fEventSize));
++  fReader[1].SetBuffer(fBuffer);
++  fReader[2].SetBuffer(fBuffer + 4*1 + 4*1*fEventSize);
++  fReader[3].SetBuffer(fBuffer + 4*2 + 4*2*fEventSize);
++  fReader[4].SetBuffer(fBuffer + 4*3 + 4*4*fEventSize);
++  fReader[5].SetBuffer(fBuffer + 4*4 + 4*6*fEventSize);
++  fReader[6].SetBuffer(fBuffer + 4*5 + 4*16*fEventSize);
++
++  fReader[1].ReadValue(&idhepSize, 4);
++  fReader[2].ReadValue(&isthepSize, 4);
++  fReader[3].ReadValue(&jmohepSize, 4);
++  fReader[4].ReadValue(&jdahepSize, 4);
++  fReader[5].ReadValue(&phepSize, 4);
++  fReader[6].ReadValue(&vhepSize, 4);
+ 
+   if(fEventSize < 0 ||
+      fEventSize != (int)idhepSize      || fEventSize != (int)isthepSize     ||
+@@ -391,22 +397,22 @@ void DelphesSTDHEPReader::ReadSTDHEP()
+ 
+ void DelphesSTDHEPReader::ReadSTDHEP4()
+ {
+-  u_int number;
++  uint32_t number;
+ 
+   // Extracting the event weight
+-  xdr_double(fInputXDR, &fWeight);
++  fReader[0].ReadValue(&fWeight, 8);
+ 
+   // Extracting alpha QED
+-  xdr_double(fInputXDR, &fAlphaQED);
++  fReader[0].ReadValue(&fAlphaQED, 8);
+ 
+   // Extracting alpha QCD
+-  xdr_double(fInputXDR, &fAlphaQCD);
++  fReader[0].ReadValue(&fAlphaQCD, 8);
+ 
+   // Extracting the event scale
+-  xdr_u_int(fInputXDR, &fScaleSize);
++  fReader[0].ReadValue(&fScaleSize, 4);
+   for(number = 0; number < fScaleSize; ++number)
+   {
+-    xdr_double(fInputXDR, &fScale[number]);
++    fReader[0].ReadValue(&fScale[number], 8);
+   }
+ 
+   SkipArray(8);
+@@ -449,37 +455,29 @@ void DelphesSTDHEPReader::AnalyzeParticles(DelphesFactory *factory,
+   int pdgCode;
+ 
+   int number;
+-  int pid, status, m1, m2, d1, d2;
++  int32_t pid, status, m1, m2, d1, d2;
+   double px, py, pz, e, mass;
+   double x, y, z, t;
+ 
+-  XDR bufferXDR[6];
+-  xdrmem_create(&bufferXDR[0], fBuffer + 4*1, 4*fEventSize, XDR_DECODE);
+-  xdrmem_create(&bufferXDR[1], fBuffer + 4*2 + 4*1*fEventSize, 4*fEventSize, XDR_DECODE);
+-  xdrmem_create(&bufferXDR[2], fBuffer + 4*3 + 4*2*fEventSize, 8*fEventSize, XDR_DECODE);
+-  xdrmem_create(&bufferXDR[3], fBuffer + 4*4 + 4*4*fEventSize, 8*fEventSize, XDR_DECODE);
+-  xdrmem_create(&bufferXDR[4], fBuffer + 4*5 + 4*6*fEventSize, 40*fEventSize, XDR_DECODE);
+-  xdrmem_create(&bufferXDR[5], fBuffer + 4*6 + 4*16*fEventSize, 32*fEventSize, XDR_DECODE);
+-
+   for(number = 0; number < fEventSize; ++number)
+   {
+-    xdr_int(&bufferXDR[0], &status);
+-    xdr_int(&bufferXDR[1], &pid);
+-    xdr_int(&bufferXDR[2], &m1);
+-    xdr_int(&bufferXDR[2], &m2);
+-    xdr_int(&bufferXDR[3], &d1);
+-    xdr_int(&bufferXDR[3], &d2);
+-
+-    xdr_double(&bufferXDR[4], &px);
+-    xdr_double(&bufferXDR[4], &py);
+-    xdr_double(&bufferXDR[4], &pz);
+-    xdr_double(&bufferXDR[4], &e);
+-    xdr_double(&bufferXDR[4], &mass);
+-
+-    xdr_double(&bufferXDR[5], &x);
+-    xdr_double(&bufferXDR[5], &y);
+-    xdr_double(&bufferXDR[5], &z);
+-    xdr_double(&bufferXDR[5], &t);
++    fReader[1].ReadValue(&status, 4);
++    fReader[2].ReadValue(&pid, 4);
++    fReader[3].ReadValue(&m1, 4);
++    fReader[3].ReadValue(&m2, 4);
++    fReader[4].ReadValue(&d1, 4);
++    fReader[4].ReadValue(&d2, 4);
++
++    fReader[5].ReadValue(&px, 8);
++    fReader[5].ReadValue(&py, 8);
++    fReader[5].ReadValue(&pz, 8);
++    fReader[5].ReadValue(&e, 8);
++    fReader[5].ReadValue(&mass, 8);
++
++    fReader[6].ReadValue(&x, 8);
++    fReader[6].ReadValue(&y, 8);
++    fReader[6].ReadValue(&z, 8);
++    fReader[6].ReadValue(&t, 8);
+ 
+     candidate = factory->NewCandidate();
+ 
+diff --git a/delphes-3.4.1/classes/DelphesSTDHEPReader.h b/delphes-3.4.1/classes/DelphesSTDHEPReader.h
+index 777c101..9007c8b 100644
+--- a/delphes-3.4.1/classes/DelphesSTDHEPReader.h
++++ b/delphes-3.4.1/classes/DelphesSTDHEPReader.h
+@@ -28,14 +28,16 @@
+  */
+ 
+ #include <stdio.h>
+-#include <rpc/types.h>
+-#include <rpc/xdr.h>
++#include <stdint.h>
++
++#include "classes/DelphesXDRReader.h"
+ 
+ class TObjArray;
+ class TStopwatch;
+ class TDatabasePDG;
+ class ExRootTreeBranch;
+ class DelphesFactory;
++class DelphesXDRReader;
+ 
+ class DelphesSTDHEPReader
+ {
+@@ -75,8 +77,8 @@ private:
+     TObjArray *stableParticleOutputArray,
+     TObjArray *partonOutputArray);
+ 
+-  void SkipBytes(u_int size);
+-  void SkipArray(u_int elsize);
++  void SkipBytes(int size);
++  void SkipArray(int elsize);
+ 
+   void ReadFileHeader();
+   void ReadEventTable();
+@@ -87,20 +89,18 @@ private:
+ 
+   FILE *fInputFile;
+ 
+-  XDR *fInputXDR;
++  DelphesXDRReader fReader[7];
+ 
+-  char *fBuffer;
++  uint8_t *fBuffer;
+ 
+   TDatabasePDG *fPDG;
+ 
+-  u_int fEntries;
+-  int fBlockType, fEventNumber, fEventSize;
++  uint32_t fEntries;
++  int32_t fBlockType, fEventNumber, fEventSize;
+   double fWeight, fAlphaQCD, fAlphaQED;
+ 
+-  u_int fScaleSize;
++  uint32_t fScaleSize;
+   double fScale[10];
+ };
+ 
+ #endif // DelphesSTDHEPReader_h
+-
+-
+diff --git a/delphes-3.4.1/classes/DelphesXDRReader.cc b/delphes-3.4.1/classes/DelphesXDRReader.cc
+new file mode 100644
+index 0000000..7eebe55
+--- /dev/null
++++ b/delphes-3.4.1/classes/DelphesXDRReader.cc
+@@ -0,0 +1,123 @@
++/*
++ *  Delphes: a framework for fast simulation of a generic collider experiment
++ *  Copyright (C) 2018  Universite catholique de Louvain (UCL), Belgium
++ *
++ *  This program is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++
++/** \class DelphesXDRReader
++ *
++ *  Reads XDR
++ *
++ *  \author P. Demin - UCL, Louvain-la-Neuve
++ *
++ */
++
++#include "classes/DelphesXDRReader.h"
++
++#include <stdio.h>
++#include <stdint.h>
++#include <string.h>
++
++//------------------------------------------------------------------------------
++
++DelphesXDRReader::DelphesXDRReader() :
++  fFile(0), fBuffer(0), fOffset(0)
++{
++}
++
++//------------------------------------------------------------------------------
++
++void DelphesXDRReader::SetFile(FILE *file)
++{
++  fFile = file;
++}
++
++//------------------------------------------------------------------------------
++
++void DelphesXDRReader::SetBuffer(void *buffer)
++{
++  fBuffer = (uint8_t *)buffer;
++  fOffset = 0;
++}
++
++//------------------------------------------------------------------------------
++
++void DelphesXDRReader::SetOffset(int offset)
++{
++  fOffset = offset;
++}
++
++//------------------------------------------------------------------------------
++
++void DelphesXDRReader::ReadRaw(void *value, int size)
++{
++  int rndup;
++
++  rndup = size % 4;
++  if(rndup > 0)
++  {
++    rndup = 4 - rndup;
++  }
++
++  if(fFile)
++  {
++    fread(value, 1, size + rndup, fFile);
++  }
++}
++
++//------------------------------------------------------------------------------
++
++void DelphesXDRReader::ReadValue(void *value, int size)
++{
++  int i;
++  uint8_t *dst, buffer[8];
++
++  dst = (uint8_t *)value;
++
++  if(fBuffer)
++  {
++    fOffset += size;
++    for(i = 0; i < size; ++i) dst[i] = fBuffer[fOffset - 1 - i];
++  }
++  else if(fFile)
++  {
++    ReadRaw(buffer, size);
++    for(i = 0; i < size; ++i) dst[i] = buffer[size - 1 - i];
++  }
++}
++
++//------------------------------------------------------------------------------
++
++void DelphesXDRReader::ReadString(void *value, int maxSize)
++{
++  int32_t size;
++
++  ReadValue(&size, 4);
++
++  if(size > maxSize) size = maxSize;
++    
++  if(fBuffer)
++  {
++    memcpy(value, fBuffer + fOffset, size);
++    fOffset += size;
++  }
++  else if(fFile)
++  {
++    ReadRaw(value, size);
++  }
++}
++
++//------------------------------------------------------------------------------
+diff --git a/delphes-3.4.1/classes/DelphesXDRReader.h b/delphes-3.4.1/classes/DelphesXDRReader.h
+new file mode 100644
+index 0000000..7e1c863
+--- /dev/null
++++ b/delphes-3.4.1/classes/DelphesXDRReader.h
+@@ -0,0 +1,55 @@
++/*
++ *  Delphes: a framework for fast simulation of a generic collider experiment
++ *  Copyright (C) 2018  Universite catholique de Louvain (UCL), Belgium
++ *
++ *  This program is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef DelphesXDRReader_h
++#define DelphesXDRReader_h
++
++/** \class DelphesXDRReader
++ *
++ *  Reads XDR
++ *
++ *  \author P. Demin - UCL, Louvain-la-Neuve
++ *
++ */
++
++#include <stdio.h>
++#include <stdint.h>
++
++class DelphesXDRReader
++{
++public:
++
++  DelphesXDRReader();
++
++  void SetFile(FILE *file);
++  void SetBuffer(void *buffer);
++  void SetOffset(int offset);
++
++  void ReadRaw(void *value, int size);
++  void ReadValue(void *value, int size);
++  void ReadString(void *value, int maxSize);
++
++private:
++
++  FILE *fFile;
++  uint8_t *fBuffer;
++
++  int fOffset;
++};
++
++#endif // DelphesXDRReader_h
+diff --git a/delphes-3.4.1/classes/DelphesXDRWriter.cc b/delphes-3.4.1/classes/DelphesXDRWriter.cc
+new file mode 100644
+index 0000000..a9c47e7
+--- /dev/null
++++ b/delphes-3.4.1/classes/DelphesXDRWriter.cc
+@@ -0,0 +1,106 @@
++/*
++ *  Delphes: a framework for fast simulation of a generic collider experiment
++ *  Copyright (C) 2018  Universite catholique de Louvain (UCL), Belgium
++ *
++ *  This program is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++
++/** \class DelphesXDRWriter
++ *
++ *  Writes XDR
++ *
++ *  \author P. Demin - UCL, Louvain-la-Neuve
++ *
++ */
++
++#include "classes/DelphesXDRWriter.h"
++
++#include <stdio.h>
++#include <stdint.h>
++#include <string.h>
++
++//------------------------------------------------------------------------------
++
++DelphesXDRWriter::DelphesXDRWriter() :
++  fFile(0), fBuffer(0), fOffset(0)
++{
++}
++
++//------------------------------------------------------------------------------
++
++void DelphesXDRWriter::SetFile(FILE *file)
++{
++  fFile = file;
++}
++
++//------------------------------------------------------------------------------
++
++void DelphesXDRWriter::SetBuffer(void *buffer)
++{
++  fBuffer = (uint8_t *)buffer;
++  fOffset = 0;
++}
++
++//------------------------------------------------------------------------------
++
++void DelphesXDRWriter::SetOffset(int offset)
++{
++  fOffset = offset;
++}
++
++//------------------------------------------------------------------------------
++
++void DelphesXDRWriter::WriteRaw(void *value, int size)
++{
++  int rndup;
++
++  rndup = size % 4;
++  if(rndup > 0)
++  {
++    rndup = 4 - rndup;
++  }
++
++  if(fFile)
++  {
++    fwrite(value, 1, size + rndup, fFile);
++  }
++}
++
++//------------------------------------------------------------------------------
++
++void DelphesXDRWriter::WriteValue(void *value, int size)
++{
++  int i;
++  uint8_t *src, buffer[8];
++
++  src = (uint8_t *)value;
++
++  if(fBuffer)
++  {
++    for(i = 0; i < size; ++i) fBuffer[fOffset + i] = src[size - 1 - i];
++    fOffset += size;
++  }
++  else if(fFile)
++  {
++    for(i = 0; i < size; ++i) buffer[i] = src[size - 1 - i];
++    WriteRaw(buffer, size);
++  }
++  else
++  {
++    return;
++  }
++}
++
++//------------------------------------------------------------------------------
+diff --git a/delphes-3.4.1/classes/DelphesXDRWriter.h b/delphes-3.4.1/classes/DelphesXDRWriter.h
+new file mode 100644
+index 0000000..ce7b814
+--- /dev/null
++++ b/delphes-3.4.1/classes/DelphesXDRWriter.h
+@@ -0,0 +1,54 @@
++/*
++ *  Delphes: a framework for fast simulation of a generic collider experiment
++ *  Copyright (C) 2018  Universite catholique de Louvain (UCL), Belgium
++ *
++ *  This program is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef DelphesXDRWriter_h
++#define DelphesXDRWriter_h
++
++/** \class DelphesXDRWriter
++ *
++ *  Writes XDR
++ *
++ *  \author P. Demin - UCL, Louvain-la-Neuve
++ *
++ */
++
++#include <stdio.h>
++#include <stdint.h>
++
++class DelphesXDRWriter
++{
++public:
++
++  DelphesXDRWriter();
++
++  void SetFile(FILE *file);
++  void SetBuffer(void *buffer);
++  void SetOffset(int offset);
++
++  void WriteRaw(void *value, int size);
++  void WriteValue(void *value, int size);
++
++private:
++
++  FILE *fFile;
++  uint8_t *fBuffer;
++
++  int fOffset;
++};
++
++#endif // DelphesXDRWriter_h
+diff --git a/delphes-3.4.1/converters/pileup2root.cpp.orig b/delphes-3.4.1/converters/pileup2root.cpp
+index efbb5e9..5c2b282 100644
+--- a/delphes-3.4.1/converters/pileup2root.cpp.orig
++++ b/delphes-3.4.1/converters/pileup2root.cpp
+@@ -25,9 +25,6 @@
+ #include <signal.h>
+ #include <stdio.h>
+ 
+-#include <rpc/types.h>
+-#include <rpc/xdr.h>
+-
+ #include "TROOT.h"
+ #include "TApplication.h"
+ 
