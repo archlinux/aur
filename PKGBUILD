@@ -6,7 +6,7 @@
 
 _pkgname=focuswriter
 pkgname=focuswriter-git
-pkgver=1.6.8r1078.6630ff4
+pkgver=1.6.13.r1112.3781691
 pkgrel=1
 pkgdesc="A simple fullscreen word processor"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf %sr%s.%s $(head -1 "${srcdir}/${_pkgname}/NEWS") \
+  printf %s.r%s.%s $(head -1 "${srcdir}/${_pkgname}/NEWS") \
 	 $(git rev-list --count HEAD) \
 	 $(git rev-parse --short HEAD)
 }

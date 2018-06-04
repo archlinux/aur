@@ -1,6 +1,6 @@
 pkgbase = focuswriter-git
 	pkgdesc = A simple fullscreen word processor
-	pkgver = 1.6.8r1078.6630ff4
+	pkgver = 1.6.13.r1112.3781691
 	pkgrel = 1
 	url = http://gottcode.org/focuswriter/
 	arch = i686
