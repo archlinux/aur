@@ -1,0 +1,48 @@
+diff --git a/src/LibraryPatternPropertiesDlg.cpp b/src/LibraryPatternPropertiesDlg.cpp
+index 8d2e24c..920ad25 100644
+--- a/src/LibraryPatternPropertiesDlg.cpp
++++ b/src/LibraryPatternPropertiesDlg.cpp
+@@ -15,6 +15,7 @@
+ #include <KHelpClient>
+ #include <KLocalizedString>
+ #include <KSharedConfig>
++#include <QIcon>
+ 
+ 
+ LibraryPatternPropertiesDlg::LibraryPatternPropertiesDlg(QWidget *parent, qint32 key, Qt::KeyboardModifiers modifiers, qint16 baseline, const QString &scheme, int width, int height, const QIcon &icon)
+diff --git a/src/LibraryPatternPropertiesDlg.h b/src/LibraryPatternPropertiesDlg.h
+index e23d76c..46e8779 100644
+--- a/src/LibraryPatternPropertiesDlg.h
++++ b/src/LibraryPatternPropertiesDlg.h
+@@ -20,6 +20,7 @@
+ 
+ class QHideEvent;
+ class QShowEvent;
++class QIcon;
+ 
+ 
+ class LibraryPatternPropertiesDlg : public QDialog
+diff --git a/src/TextElementDlg.cpp b/src/TextElementDlg.cpp
+index 4d88b1e..be364a2 100644
+--- a/src/TextElementDlg.cpp
++++ b/src/TextElementDlg.cpp
+@@ -19,6 +19,7 @@
+ 
+ #include <KHelpClient>
+ #include <KLocalizedString>
++#include <QButtonGroup>
+ 
+ #include "Element.h"
+ 
+diff --git a/src/TextElementDlg.h b/src/TextElementDlg.h
+index 6e43012..002edcd 100644
+--- a/src/TextElementDlg.h
++++ b/src/TextElementDlg.h
+@@ -21,6 +21,7 @@
+ class TextElement;
+ class QHideEvent;
+ class QShowEvent;
++class QButtonGroup;
+ 
+ 
+ class TextElementDlg : public QDialog
