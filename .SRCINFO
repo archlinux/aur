@@ -1,0 +1,15 @@
+pkgbase = xde-theme-warthogs
+	pkgdesc = Warthogs theme pack for XDE
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://www.unexicon.com/
+	arch = any
+	groups = xde
+	license = CCPL:by-nc-nd
+	makedepends = git
+	depends = xde-styles
+	source = xde-theme-warthogs::git://github.com/bbidulock/xde-theme-warthogs.git
+	md5sums = SKIP
+
+pkgname = xde-theme-warthogs
+
