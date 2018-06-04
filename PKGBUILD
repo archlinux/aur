@@ -4,7 +4,7 @@ _srcname='shotcut'
 pkgdesc='Video editor'
 pkgver='18.06.02'
 _commit='d06c470df30b17fdf90861726d6e1d7a52795e2c'
-pkgrel='1'
+pkgrel='2'
 arch=('i686' 'x86_64')
 url='https://www.shotcut.org/'
 license=('GPL3')
@@ -27,7 +27,7 @@ depends=(
     'frei0r-plugins'
     'ladspa'
 )
-makedepends=('git')
+makedepends=('git' 'qt5-tools')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
@@ -35,8 +35,10 @@ source=(
     "${_srcname}::git+https://github.com/mltframework/shotcut.git#commit=${_commit}"
     'shotcut.desktop'
     'melt.patch'
+    'qt-5.11.patch'
 )
 sha512sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -46,6 +48,7 @@ prepare() {
     cd "${srcdir}/${_srcname}"
 
     git apply "${srcdir}/melt.patch"
+    git apply "${srcdir}/qt-5.11.patch"
 }
 
 build() {

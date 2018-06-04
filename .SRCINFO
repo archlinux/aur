@@ -1,12 +1,13 @@
 pkgbase = shotcut
 	pkgdesc = Video editor
 	pkgver = 18.06.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.shotcut.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = qt5-tools
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-graphicaleffects
@@ -28,6 +29,8 @@ pkgbase = shotcut
 	source = shotcut::git+https://github.com/mltframework/shotcut.git#commit=d06c470df30b17fdf90861726d6e1d7a52795e2c
 	source = shotcut.desktop
 	source = melt.patch
+	source = qt-5.11.patch
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
