@@ -14,7 +14,7 @@ pkgbase = cros-container-guest-tools-git
 	source = cros-garcon-conditions.conf
 	source = cros-locale.sh
 	sha1sums = SKIP
-	sha1sums = 3a2c55ecb22349265f26cdd021a436f5e0353c3d
+	sha1sums = 0b0a9dceee7973e5680f0612c7721b5f13a624f7
 	sha1sums = d326cd35dcf150f9f9c8c7d6336425ec08ad2433
 	sha1sums = b5a315f5b8f474a31dc3576efa3ef19881ec80d6
 
