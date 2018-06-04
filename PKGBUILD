@@ -13,7 +13,9 @@ pkgdesc='A PSP emulator written in C++ (SDL and Headless versions)'
 arch=('x86_64')
 url='http://www.ppsspp.org/'
 license=('GPL2')
-depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'sdl2' 'zlib')
+provides=('ppsspp')
+conflicts=('ppsspp' 'ppsspp-qt' 'ppsspp-qt-git')
+depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'sdl2' 'zlib' 'hicolor-icon-theme' 'libzip')
 makedepends=('cmake' 'git' 'glu' 'libzip' 'qt5-tools')
 source=('git+https://github.com/hrydgard/ppsspp.git'
         'ppsspp-glslang::git+https://github.com/hrydgard/glslang.git'
@@ -81,10 +83,6 @@ build() {
 }
 
 package() {
-  depends+=('hicolor-icon-theme' 'libzip')
-  provides=('ppsspp')
-  conflicts=('ppsspp' 'ppsspp-qt' 'ppsspp-qt-git')
-
   cd ppsspp/build
 
   install -dm 755 "${pkgdir}"/{opt/ppsspp,usr/{bin,share/{applications,icons,pixmaps}}}
