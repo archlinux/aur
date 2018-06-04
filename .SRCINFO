@@ -1,16 +1,14 @@
 pkgbase = python2-runsnakerun
 	pkgdesc = GUI Viewer for Python profiling runs
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vrplumber.com/programming/runsnakerun/
 	arch = any
 	license = BSD
 	depends = python2-squaremap
-	depends = wxpython2.8
-	source = http://pypi.python.org/packages/source/R/RunSnakeRun/RunSnakeRun-2.0.4.tar.gz
-	source = wx.patch
+	depends = wxpython
+	source = https://files.pythonhosted.org/packages/source/R/RunSnakeRun/RunSnakeRun-2.0.4.tar.gz
 	md5sums = 3220b5b89994baee70b1c24d7e42a306
-	md5sums = 6d00db360df47ae79f52e398bf23f845
 
 pkgname = python2-runsnakerun
 
