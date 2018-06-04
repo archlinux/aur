@@ -1,23 +1,24 @@
-# Maintainer: Jan Tojnar <jtojnar@gmail.com>
+# Contributor: Jan Tojnar <jtojnar@gmail.com>
+
 pkgname=rrun
-pkgver=0.2.1
-pkgrel=2
-makedepends=('rust' 'cargo')
+pkgver=0.2.3
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="minimalistic command launcher in rust similar to gmrun"
 url='https://github.com/buster/rrun'
 license=('GPL')
 depends=('cairo' 'gcc-libs' 'gtk3')
-source=("https://github.com/buster/rrun/archive/${pkgver}/${pkgname}.tar.gz")
-sha256sums=('819e025f97d647f0ea93a459b37bcf7b26f776d345bf78c6973e9cccf42639da')
+makedepends=('rust' 'cargo')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/buster/rrun/archive/v${pkgver}.tar.gz")
+sha256sums=('cfb571d1242e6c20cb4babace6d73d9ecacb198665bf779bacf4c64f37d858f2')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	cargo build --release
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	mkdir -p "$pkgdir/usr/bin"
 	install "target/release/rrun" "$pkgdir/usr/bin/rrun"
 }
