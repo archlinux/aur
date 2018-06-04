@@ -5,13 +5,13 @@
 
 pkgname=r-mkl
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
 license=('GPL')
 url='http://www.r-project.org/'
-provides=("r=${pkgver}","r-mkl=${pkgver}")
-conflicts=('r')
+provides=("r=${pkgver}")
+conflicts=('r' 'microsoft-r-open')
 depends=('intel-mkl'
         'intel-compiler-base'
         'intel-fortran-compiler'
@@ -88,7 +88,7 @@ build() {
   # Set up the environment for MKL
   source /opt/intel/mkl/bin/mklvars.sh ${_intel_arch}
 
-  if [ $_CC = "icc" ]; then
+  if [[ $_CC = "icc" ]]; then
     source ${MKLROOT}/../bin/compilervars.sh ${_intel_arch}
     source ${MKLROOT}/../tbb/bin/tbbvars.sh ${_intel_arch}
     _intel_cc_opt=" -O3 -ipo -qno-openmp -xHost -fPIC -m64 -march=native -fp-model precise -fp-model source"

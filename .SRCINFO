@@ -1,7 +1,7 @@
 pkgbase = r-mkl
 	pkgdesc = Language and environment for statistical computing and graphics, linked to the Intel(R) MKL.
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.r-project.org/
 	install = r-mkl.install
 	arch = x86_64
@@ -34,8 +34,9 @@ pkgbase = r-mkl
 	depends = zlib
 	optdepends = texlive-bin: LaTeX sty files
 	optdepends = tk: tcl-tk interface
-	provides = r=3.5.0,r-mkl=3.5.0
+	provides = r=3.5.0
 	conflicts = r
+	conflicts = microsoft-r-open
 	options = !makeflags
 	options = !emptydirs
 	backup = etc/R/Makeconf
