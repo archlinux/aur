@@ -1,42 +1,40 @@
-From 66a1ee9d22b77445051d64d008e7c7faced04a09 Mon Sep 17 00:00:00 2001
-Message-Id: <66a1ee9d22b77445051d64d008e7c7faced04a09.1525322178.git.jan.steffens@gmail.com>
-In-Reply-To: <56649dbc4d1c78fc2253e4b54f781f603f6eb332.1525322178.git.jan.steffens@gmail.com>
-References: <56649dbc4d1c78fc2253e4b54f781f603f6eb332.1525322178.git.jan.steffens@gmail.com>
+From 1c98bec0074d8b69f5cab1f3adbca5d60ea1b99d Mon Sep 17 00:00:00 2001
+Message-Id: <1c98bec0074d8b69f5cab1f3adbca5d60ea1b99d.1528073963.git.jan.steffens@gmail.com>
+In-Reply-To: <5c07abe9d2d676c3c19a15bf41d1c2ea75428895.1528073963.git.jan.steffens@gmail.com>
+References: <5c07abe9d2d676c3c19a15bf41d1c2ea75428895.1528073963.git.jan.steffens@gmail.com>
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Sat, 16 Dec 2017 23:08:02 +0100
 Subject: [PATCH 4/4] Enable old engines, but keep adobe as default
 
 ---
- include/freetype/config/ftoption.h | 4 ++--
+ include/freetype/config/ftoption.h | 2 ++
  src/cff/cffobjs.c                  | 4 ----
  src/cid/cidobjs.c                  | 4 ----
  src/type1/t1objs.c                 | 4 ----
- 4 files changed, 2 insertions(+), 14 deletions(-)
+ 4 files changed, 2 insertions(+), 12 deletions(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 438d0614b..d04177197 100644
+index 227790fd9..7d4c40160 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -750,7 +750,7 @@ FT_BEGIN_HEADER
-   /* switch between the two engines using the `hinting-engine' property of */
-   /* the type1 driver module.                                              */
-   /*                                                                       */
--/* #define T1_CONFIG_OPTION_OLD_ENGINE */
+@@ -760,6 +760,7 @@ FT_BEGIN_HEADER
+    * the type1 driver module.
+    *
+    */
 +#define T1_CONFIG_OPTION_OLD_ENGINE
  
  
    /*************************************************************************/
-@@ -793,7 +793,7 @@ FT_BEGIN_HEADER
-   /* switch between the two engines using the `hinting-engine' property of */
-   /* the cff driver module.                                                */
-   /*                                                                       */
--/* #define CFF_CONFIG_OPTION_OLD_ENGINE */
+@@ -803,6 +804,7 @@ FT_BEGIN_HEADER
+    * the cff driver module.
+    *
+    */
 +#define CFF_CONFIG_OPTION_OLD_ENGINE
  
  
    /*************************************************************************/
 diff --git a/src/cff/cffobjs.c b/src/cff/cffobjs.c
-index 61b736ca2..985766a77 100644
+index b3f0f99e3..f85fa180e 100644
 --- a/src/cff/cffobjs.c
 +++ b/src/cff/cffobjs.c
 @@ -1162,11 +1162,7 @@
@@ -52,10 +50,10 @@ index 61b736ca2..985766a77 100644
      driver->no_stem_darkening = TRUE;
  
 diff --git a/src/cid/cidobjs.c b/src/cid/cidobjs.c
-index 77afe1c87..e1ea64cd6 100644
+index 91c4ed94a..6c6cff318 100644
 --- a/src/cid/cidobjs.c
 +++ b/src/cid/cidobjs.c
-@@ -472,11 +472,7 @@
+@@ -479,11 +479,7 @@
  
  
      /* set default property values, cf. `ftt1drv.h' */
@@ -68,10 +66,10 @@ index 77afe1c87..e1ea64cd6 100644
      driver->no_stem_darkening = TRUE;
  
 diff --git a/src/type1/t1objs.c b/src/type1/t1objs.c
-index 7333c4c95..4cc27fe9e 100644
+index 568440d05..0bf329973 100644
 --- a/src/type1/t1objs.c
 +++ b/src/type1/t1objs.c
-@@ -587,11 +587,7 @@
+@@ -594,11 +594,7 @@
  
  
      /* set default property values, cf. `ftt1drv.h' */
@@ -84,5 +82,5 @@ index 7333c4c95..4cc27fe9e 100644
      driver->no_stem_darkening = TRUE;
  
 -- 
-2.17.0
+2.17.1
 

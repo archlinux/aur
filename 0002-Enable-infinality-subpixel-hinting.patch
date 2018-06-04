@@ -1,7 +1,7 @@
-From c379d9d5f00fbf231f16cf728ae79edd8fd5e515 Mon Sep 17 00:00:00 2001
-Message-Id: <c379d9d5f00fbf231f16cf728ae79edd8fd5e515.1525322178.git.jan.steffens@gmail.com>
-In-Reply-To: <56649dbc4d1c78fc2253e4b54f781f603f6eb332.1525322178.git.jan.steffens@gmail.com>
-References: <56649dbc4d1c78fc2253e4b54f781f603f6eb332.1525322178.git.jan.steffens@gmail.com>
+From 0a0bfefd08c6793c0a50fd9d7b106f97a50bf525 Mon Sep 17 00:00:00 2001
+Message-Id: <0a0bfefd08c6793c0a50fd9d7b106f97a50bf525.1528073963.git.jan.steffens@gmail.com>
+In-Reply-To: <5c07abe9d2d676c3c19a15bf41d1c2ea75428895.1528073963.git.jan.steffens@gmail.com>
+References: <5c07abe9d2d676c3c19a15bf41d1c2ea75428895.1528073963.git.jan.steffens@gmail.com>
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 29 Aug 2016 08:43:10 +0200
 Subject: [PATCH 2/4] Enable infinality subpixel hinting
@@ -11,20 +11,20 @@ Subject: [PATCH 2/4] Enable infinality subpixel hinting
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 1cf694668..c25285b38 100644
+index c030a88cd..30aac1366 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -629,8 +629,8 @@ FT_BEGIN_HEADER
-   /* [1] https://www.microsoft.com/typography/cleartype/truetypecleartype.aspx */
-   /*                                                                       */
- /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  1         */
+@@ -638,8 +638,8 @@ FT_BEGIN_HEADER
+    * [1] https://www.microsoft.com/typography/cleartype/truetypecleartype.aspx
+    *
+    */
 -#define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2
 -/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 ) */
-+/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2         */
-+#define TT_CONFIG_OPTION_SUBPIXEL_HINTING     ( 1 | 2 )
++/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2 */
++#define TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 )
  
  
-   /*************************************************************************/
+   /**************************************************************************
 -- 
-2.17.0
+2.17.1
 
