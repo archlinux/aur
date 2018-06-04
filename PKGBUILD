@@ -1,13 +1,13 @@
 # Maintainer: Jan Oliver Oelerich <janoliver@oelerich.org>
 pkgname=ovito-git
-pkgver=a92b526
+pkgver=2.9.0.r202.g64b8b784
 pkgrel=1
 pkgdesc="Scientific visualization and analysis software for atomistic simulation data"
 arch=('i686' 'x86_64')
 url="http://www.ovito.org/"
 license=('GPLv3')
 provides=('ovito')
-depends=('python' 'zlib' 'tachyon' 'qscintilla-qt5' 'cgal' 'povray')
+depends=('python' 'zlib' 'tachyon' 'qscintilla-qt5' 'cgal' 'povray' 'hdf5')
 makedepends=('git' 'cmake' 'gcc' 'qt5-base' 'qt5-script' 'qt5-svg' 'qt5-imageformats')
 conflicts=('ovito')
 md5sums=('SKIP')
@@ -21,6 +21,8 @@ pkgver() {
 
 build() {
   cd $srcdir/$_gitname
+  sed -i 's/HDF5 COMPONENTS hdf5 REQUIRED NO_MODULE/HDF5 REQUIRED/g' $srcdir/$_gitname/src/3rdparty/netcdf_integration/CMakeLists.txt
+  sed -i 's/CODEC_FLAG_GLOBAL_HEADER/AV_CODEC_FLAG_GLOBAL_HEADER/g' $srcdir/$_gitname/src/core/utilities/io/video/VideoEncoder.cpp
 
   cmake . \
       -DCMAKE_BUILD_TYPE=Release \
