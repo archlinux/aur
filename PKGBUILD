@@ -3,7 +3,7 @@
 
 pkgname=clickhouse
 pkgver=1.1.54383
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
 url='https://clickhouse.yandex/'
@@ -19,7 +19,6 @@ source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/Dead2/zlib-ng/archive/e07a52d.tar.gz
         https://github.com/ClickHouse-Extras/poco/archive/8238852.tar.gz
         https://github.com/ClickHouse-Extras/boost/archive/2d5cb2c.tar.gz
-        clickhouse-server.service
         libunwind.patch)
 md5sums=('c89a7babff34012e28357094afbfa060'
          '5323f7ba2565a84a80a93edde95eb4fe'
@@ -30,7 +29,6 @@ md5sums=('c89a7babff34012e28357094afbfa060'
          '87676f8d7fcdea908476029f92b8103f'
          'fc643caa1710523bbd1d69f72577afbe'
          '123c1e981fe28c1240d066af493d83b9'
-         'f9f5663b0a9a58e99f481efe9d193e85'
          'f3f60b75abf8d6f21de74db6e88e1e7b')
 backup=('etc/clickhouse-client/config.xml' 'etc/clickhouse-server/config.xml' 'etc/clickhouse-server/users.xml')
 install=$pkgname.install
@@ -73,7 +71,7 @@ package() {
   cp contrib/librdkafka/src/librdkafka.so $pkgdir/usr/lib/librdkafka.so
   sed -e 's:/opt/clickhouse:/var/lib/clickhouse:g' -i $pkgdir/etc/clickhouse-server/config.xml
   sed -e '/listen_host/s%::<%::1<%' -i $pkgdir/etc/clickhouse-server/config.xml
-  cp $startdir/clickhouse-server.service $pkgdir/usr/lib/systemd/system
+  cp debian/clickhouse-server.service $pkgdir/usr/lib/systemd/system
 }
 
 # vim:set ts=2 sw=2 et:
