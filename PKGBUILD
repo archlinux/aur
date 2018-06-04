@@ -15,7 +15,7 @@ install=cros-container-guest-tools.install
 url="https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools"
 source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf' 'cros-locale.sh')
 sha1sums=('SKIP'
-          '3a2c55ecb22349265f26cdd021a436f5e0353c3d'
+          '0b0a9dceee7973e5680f0612c7721b5f13a624f7'
           'd326cd35dcf150f9f9c8c7d6336425ec08ad2433'
           'b5a315f5b8f474a31dc3576efa3ef19881ec80d6')
 
