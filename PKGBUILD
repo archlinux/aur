@@ -1,15 +1,15 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.5.r381.f38f61d11
+pkgver=0.0.5.r427.84ae64369
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
 url='https://github.com/RPCS3/rpcs3'
 license=('GPL2')
 depends=('alsa-lib' 'gcc-libs' 'glew' 'glibc' 'glu' 'libevdev' 'libgl' 'libice'
-         'libpng' 'libpulse' 'libsm' 'libx11' 'libxext' 'llvm' 'openal'
-         'qt5-base' 'qt5-declarative' 'vulkan-icd-loader' 'yaml-cpp' 'zlib'
+         'libpng' 'libpulse' 'libsm' 'libx11' 'libxext' 'openal' 'qt5-base'
+         'qt5-declarative' 'vulkan-icd-loader' 'yaml-cpp' 'zlib'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libncursesw.so'
          'libswscale.so' 'libudev.so')
 makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git'
@@ -20,7 +20,7 @@ options=('!emptydirs')
 source=('git+https://github.com/RPCS3/rpcs3.git'
         'rpcs3-common::git+https://github.com/RPCS3/common.git'
         'rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git'
-#        'rpcs3-llvm::git+https://github.com/RPCS3/llvm.git'
+        'rpcs3-llvm::git+https://github.com/RPCS3/llvm.git'
         'git+https://github.com/kobalicek/asmjit.git'
         'git+https://github.com/Microsoft/GSL.git'
         'git+https://github.com/KhronosGroup/glslang.git'
@@ -28,6 +28,7 @@ source=('git+https://github.com/RPCS3/rpcs3.git'
         'git+https://github.com/zeux/pugixml.git'
         'git+https://github.com/Cyan4973/xxHash.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -46,18 +47,16 @@ pkgver() {
 prepare() {
   pushd rpcs3
 
-  git submodule init 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit Vulkan/glslang
+  git submodule init 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit llvm Vulkan/glslang
   git config submodule.asmjit.url ../asmjit
   git config submodule.glslang.url ../glslang
   git config submodule.GSL.url ../GSL
   git config submodule.hidapi.url ../rpcs3-hidapi
-  #git config submodule.llvm.url ../rpcs3-llvm
+  git config submodule.llvm.url ../rpcs3-llvm
   git config submodule.Optional.url ../Optional
   git config submodule.pugixml.url ../pugixml
   git config submodule.xxHash ../xxHash
-  git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit Vulkan/glslang
-
-  mkdir llvmlibs
+  git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit llvm Vulkan/glslang
 
   popd
 
