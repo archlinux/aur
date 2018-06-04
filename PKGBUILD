@@ -1,7 +1,7 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=ark-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Backup client for Kubernetes"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/heptio/ark"
 optdepends=('kubectl-bin: To connect to Kubernetes')
 license=('Apache')
 source=("https://github.com/heptio/ark/releases/download/v${pkgver}/ark-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('174650898e3c09b7055cf1696e7e3470e97df46651e4ac590c2bbd6e99bae4c1')
+sha256sums=('6ce965c1ae715e3153ae920af2fff4c4319fb8e137159a786d2993ecf63c660e')
 
 package() {
   cd "$srcdir"
