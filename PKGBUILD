@@ -2,7 +2,7 @@
 
 pkgbase=python-spec
 pkgname=('python-spec' 'python2-spec')
-pkgver=1.3.1
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Specification-style nosetests output for Python'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/bitprophet/spec'
 license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 source=(spec-${pkgver}.tar.gz::"https://github.com/bitprophet/spec/archive/${pkgver}.tar.gz")
-md5sums=('6414e90f0c911a187b3439cd2e84f16e')
+md5sums=('edc89427ff58f2c22f3f3873318e3bc7')
 
 prepare() {
   cp -a spec{,-py2}-${pkgver}
