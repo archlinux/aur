@@ -20,11 +20,12 @@ PKGEXT='.pkg.tar'
 source=(hib://Machinarium_full_en.tar.gz
         $pkgname.sh
         $pkgname.desktop
-        https://apps.ubuntu.com/site_media/icons/2015/07/machinariumIjgfeQ.png)
+        https://orig00.deviantart.net/b304/f/2009/298/f/8/machinarium_dock_icon_by_darkhavans.png)
+# Icon from https://darkhavans.deviantart.com/art/Machinarium-Dock-Icon-141463511 . No licence specified on page.
 sha1sums=('b0cd45fa1d75b29a9cb761f96ef398cec29d8c12'
           'e78be4e1e9752586188dce39e24da457711ee5b3'
           '1febb90a558e55cb42531cac96bfb3d07698fef8'
-          'eeb580db1ecce734ad9b1b7a4d59f4ce43ea750a')
+          '526b57155682e27abb965b55cfc92aeb0e5a5aa9')
 
 package() {
     install -dm644 "$pkgdir"/usr/share/games/$pkgname
