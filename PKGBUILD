@@ -1,20 +1,23 @@
-# Maintainer: Hexchain Tong <i@hexchain.org>
+# Contributor: Hexchain Tong <i@hexchain.org>
 
 _pkgname=pony
 pkgname=("python-$_pkgname" "python2-$_pkgname")
-pkgver=0.6.1
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='Pony Object-Relational Mapper'
 arch=('any')
 url="http://pypi.python.org/pypi/$_pkgname"
 license=('AGPL3')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("http://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('f6ef652f72de1fd32d3037ed77005a21')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('ba725df726e9835abf50665a26a1f1c6')
+
+
+prepare() {
+  cp -r "$_pkgname-$pkgver" "python2-$_pkgname-$pkgver"
+}
 
 build() {
-  cp -r "$_pkgname-$pkgver" "python2-$_pkgname-$pkgver"
-
   cd $_pkgname-$pkgver
   python setup.py build
 
@@ -26,14 +29,14 @@ package_python-pony() {
   depends=('python')
 
   cd $_pkgname-$pkgver
-  python setup.py install -O1 --root="$pkgdir"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python2-pony() {
   depends=('python2')
 
   cd python2-$_pkgname-$pkgver
-  python2 setup.py install -O1 --root="$pkgdir"
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
