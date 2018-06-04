@@ -2,4 +2,4 @@
 #An additional script for setting certain options; not necessarily limited to openbox sessions
 
 #Default, empty background comes out gray. Black is cooler.
-hsetroot -solid "#000000"
+[[ -n "$(command -v hsetroot)" ]] && exec hsetroot -solid "#000000"
