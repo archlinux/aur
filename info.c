@@ -23,14 +23,16 @@ void interface_print(const char* symbol) {
     init_pair(2, COLOR_WHITE, COLOR_BLACK); // Init black background, white foreground
     bkgd(BLACK); // set background/foreground
     curs_set(FALSE);
-    WINDOW* header_window = newwin(2, cols / 2, 0, 13);
+    WINDOW* header_window = newwin(2, cols - 13, 0, 13);
     WINDOW* graph_window = newwin(GRAPH_HEIGHT, GRAPH_WIDTH, GRAPH_Y, GRAPH_X);
     WINDOW* company_window = newwin(COMPANY_HEIGHT, COMPANY_WIDTH, COMPANY_Y, COMPANY_X);
     WINDOW* news_window = newwin(NEWS_HEIGHT, NEWS_WIDTH, NEWS_Y, NEWS_X);
+    WINDOW* peer_window = newwin(PEERS_HEIGHT, PEERS_WIDTH, PEERS_Y, PEERS_X);
     wbkgd(header_window, BLACK);
     wbkgd(graph_window, BLACK);
     wbkgd(company_window, BLACK);
     wbkgd(news_window, BLACK);
+    wbkgd(peer_window, BLACK);
 
     int graph_rows, graph_cols;
     getmaxyx(graph_window, graph_rows, graph_cols);
@@ -43,10 +45,12 @@ void interface_print(const char* symbol) {
     header_printw(header_window, symbol_info); // Print to windows
     info_printw(company_window, symbol_info);
     news_printw(news_window, symbol_info);
+    peers_printw(peer_window, symbol_info);
 
     wrefresh(header_window); // Refresh other windows before graph otherwise they won't print before next getch()
     wrefresh(company_window);
     wrefresh(news_window);
+    wrefresh(peer_window);
 
     graph_printw(graph_window, symbol_info, NULL); // No refresh needed since getch()
 
@@ -64,12 +68,13 @@ void header_printw(WINDOW* window, Info* symbol_info) {
         mvwprintw(window, 0, 0, "%s", time_str);
     }
     mvwprintw(window, 0, (int) (15 + strlen(symbol_info->name) + strlen(symbol_info->symbol)), "24H      7D     ");
-    if (symbol_info->change_30d != EMPTY)
+    if (symbol_info->price_30d != EMPTY)
         wprintw(window, "30D");
     mvwprintw(window, 1, 0, "%s %s %8.2lf %6.2lf%% %6.2lf%% ", symbol_info->name, symbol_info->symbol,
-             symbol_info->price, symbol_info->change_1d, symbol_info->change_7d);
-    if (symbol_info->change_30d != EMPTY)
-        wprintw(window, "%6.2lf%%", symbol_info->change_30d);
+             symbol_info->price, 100 * (symbol_info->price / symbol_info->price_last_close - 1),
+              100 * (symbol_info->price / symbol_info->price_7d - 1));
+    if (symbol_info->price_30d != EMPTY)
+        wprintw(window, "%6.2lf%%", 100 * (symbol_info->price / symbol_info->price_30d - 1));
 }
 
 void info_print(Info* symbol_info) {
@@ -78,13 +83,13 @@ void info_print(Info* symbol_info) {
     if (strcmp(symbol_info->symbol, "") != 0)
         printf("Symbol: %s\n", symbol_info->symbol);
     if (symbol_info->price != EMPTY)
-        printf("Price: $%.2lf\n", symbol_info->price);
-    if (symbol_info->change_1d != EMPTY)
-        printf("Percent change 24h: %.2lf%%\n", symbol_info->change_1d);
-    if (symbol_info->change_7d != EMPTY)
-        printf("Percent change 7d: %.2lf%%\n", symbol_info->change_7d);
-    if (symbol_info->change_30d != EMPTY)
-        printf("Percent change 30d: %.2lf%%\n", symbol_info->change_30d);
+        printf("Price: $%lf\n", symbol_info->price);
+    if (symbol_info->price_last_close != EMPTY)
+        printf("Percent change 24h: %.2lf%%\n", 100 * (symbol_info->price / symbol_info->price_last_close - 1));
+    if (symbol_info->price_7d != EMPTY)
+        printf("Percent change 7d: %.2lf%%\n", 100 * (symbol_info->price / symbol_info->price_7d - 1));
+    if (symbol_info->price_30d != EMPTY)
+        printf("Percent change 30d: %.2lf%%\n", 100 * (symbol_info->price / symbol_info->price_30d - 1));
     if (symbol_info->div_yield != EMPTY)
         printf("Dividend yield: %.2lf%%\n", symbol_info->div_yield);
     if (symbol_info->marketcap != EMPTY)
@@ -190,6 +195,20 @@ void news_printw(WINDOW* window, Info* symbol_info) {
         wprintw(window, "%s | %s | %s\n%s\n%s | Related: %s\n\n",
                symbol_info->articles[i]->headline, symbol_info->articles[i]->source, symbol_info->articles[i]->date,
                symbol_info->articles[i]->summary, symbol_info->articles[i]->url, symbol_info->articles[i]->related);
+}
+
+void peers_printw(WINDOW* window, Info* symbol_info) {
+    if (symbol_info->peers == NULL) {
+        wprintw(window, "Peers unavailable.");
+        return;
+    } else wprintw(window, "Peers:\n\nSYMBOL    PRICE    24H%%     7D%%    30D%%");
+    Info* idx;
+    for (size_t i = 0; i < symbol_info->peers->length; i++) {
+        idx = symbol_info->peers->array[i];
+        mvwprintw(window, (int) i + 3, 0, "%6s %8.2lf %6.2lf%% %6.2lf%% %6.2lf%%", idx->symbol, idx->price,
+                  100 * (idx->price / idx->price_last_close - 1), 100 * (idx->price / idx->price_7d - 1),
+                  100 * (idx->price / idx->price_30d - 1));
+    }
 }
 
 void graph_print(const char* symbol, const char* symbol2) {

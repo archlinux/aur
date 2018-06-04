@@ -38,6 +38,11 @@
 #define NEWS_HEIGHT GRAPH_HEIGHT + PADDING * 3
 #define NEWS_WIDTH GRAPH_WIDTH
 
+#define PEERS_Y NEWS_Y
+#define PEERS_X NEWS_X + NEWS_WIDTH + PADDING * 2
+#define PEERS_HEIGHT GRAPH_HEIGHT
+#define PEERS_WIDTH GRAPH_WIDTH
+
 #include <stdlib.h>
 #include <ncurses.h>
 #include "api.h"
@@ -71,18 +76,25 @@ void info_print(Info* symbol_info);
 void info_printw(WINDOW* window, Info* symbol_info);
 
 /**
- * Prints num_articles articles relating to the given symbol to stdout. Currently on works for stocks/etfs
+ * Prints num_articles articles relating to the given symbol to stdout. Currently only works for stocks/etfs
  * @param symbol stock/etf symbol
  * @param num_articles number of articles to print (max 50)
  */
 void news_print(const char* symbol, int num_articles);
 
 /**
- * Prints articles relating to the given symbol to an Ncurses window. Currently on works for stocks/etfs
+ * Prints articles relating to the given symbol to an Ncurses window. Currently only works for stocks/etfs
  * @param window
  * @param symbol_info Info*
  */
 void news_printw(WINDOW* window, Info* symbol_info);
+
+/**
+ * Prints peers relating to the given symbol to an Ncurses window. Currently only works for stocks/etfs
+ * @param window
+ * @param symbol_info Info*
+ */
+void peers_printw(WINDOW* window, Info* symbol_info);
 
 /**
  * Graphs a security in stdscr. If symbol2 is not NULL, also graphs that security.
