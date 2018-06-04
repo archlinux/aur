@@ -4,7 +4,7 @@
 
 pkgname='nerd-fonts-complete'
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='
 Iconic font aggregator, collection, and patcher. 40+ patched fonts, over 3,600
 glyph/icons, includes popular collections such as Font Awesome & fonts such as
@@ -16,8 +16,8 @@ depends=('fontconfig' 'xorg-font-utils')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complete-mono-glyphs')
 install="${pkgname}.install"
 source=(
-  "https://gitlab.com/devopsdeluxe/nerd-fonts-aur/raw/v${pkgver}/release/NerdFonts.tar.xz"
-  "https://gitlab.com/devopsdeluxe/nerd-fonts-aur/raw/v${pkgver}/release/NerdFonts.tar.xz.asc"
+  "${pkgname/-complete}-${pkgver}.tar.xz::https://gitlab.com/devopsdeluxe/nerd-fonts-aur/raw/v${pkgver}/release/NerdFonts.tar.xz"
+  "${pkgname/-complete}-${pkgver}.tar.xz.asc::https://gitlab.com/devopsdeluxe/nerd-fonts-aur/raw/v${pkgver}/release/NerdFonts.tar.xz.asc"
   "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v${pkgver}/LICENSE"
   "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v${pkgver}/bin/scripts/lib/i_all.sh"
   "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v${pkgver}/bin/scripts/lib/i_dev.sh"
@@ -51,7 +51,7 @@ sha256sums=(
 )
 
 package() {
-  local -r bindir="${pkgdir}/usr/bin"
+  local -r libdir="${pkgdir}/usr/lib/${pkgname}"
   local -r licensedir="${pkgdir}/usr/share/licenses/${pkgname}"
   local -r otfdir="${pkgdir}/usr/share/fonts/${pkgname}/otf"
   local -r ttfdir="${pkgdir}/usr/share/fonts/${pkgname}/ttf"
@@ -69,9 +69,9 @@ package() {
   done < <(find NerdFonts -name "*.ttf")
 
   # Scripts:
-  install -d -m 755 "${bindir}"
+  install -d -m 755 "${libdir}"
   while read -r script; do
-    install -m 755 "${script}" "${bindir}"
+    install -m 644 "${script}" "${libdir}"
   done < <(find "${srcdir}" -maxdepth 1 -name "i_*.sh")
 
   install -d -m 755 "${licensedir}"
