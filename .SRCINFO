@@ -1,0 +1,24 @@
+pkgbase = python2-mne-git
+	pkgdesc = Open-source Python software for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, and more.
+	pkgver = 0.2.r13098.g05a09f7e5
+	pkgrel = 2
+	url = https://www.martinos.org/mne/stable/index.html
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python2>=2.7
+	depends = python2-numpy>=1.8
+	depends = python2-scipy>=0.12
+	optdepends = python2-matplotlib
+	optdepends = mayavi
+	optdepends = python2-scikit-learn
+	optdepends = python2-nibabel
+	optdepends = python2-pandas
+	optdepends = picard
+	provides = python2-mne
+	conflicts = python2-mne
+	source = mne-python::git+http://github.com/mne-tools/mne-python.git
+	md5sums = SKIP
+
+pkgname = python2-mne-git
+
