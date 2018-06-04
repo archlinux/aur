@@ -1,0 +1,16 @@
+pkgbase = android-platform-27
+	pkgdesc = Android SDK Platform, API-27
+	pkgver = 8.1.0_r03
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	depends = android-sdk
+	depends = android-sdk-platform-tools
+	conflicts = android-platform==27
+	options = !strip
+	source = http://dl.google.com/android/repository/platform-27_r03.zip
+	sha1sums = 35f747e7e70b2d16e0e4246876be28d15ea1c353
+
+pkgname = android-platform-27
+
