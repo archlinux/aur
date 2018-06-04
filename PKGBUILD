@@ -1,7 +1,7 @@
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
+
 pkgname=mp3guessenc
-pkgver=0.26
-_ver=0.26preview
+pkgver=0.27.3
 pkgrel=1
 pkgdesc="A program which guesses which MP3 encoder was used to encode a given MP3 file"
 arch=('i686' 'x86_64')
@@ -9,17 +9,15 @@ arch=('i686' 'x86_64')
 url="http://mp3guessenc.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
-makedepends=('unzip')
-#source=(http://shibatch.sourceforge.net/download/${pkgname}-${pkgver}.zip)
-source=("http://sourceforge.net/projects/mp3guessenc/files/mp3guessenc-$pkgver/mp3guessenc-$_ver.tar.gz/download")
-md5sums=('a84226c11f32c2e90949e7a776f8694b')
+source=("https://sourceforge.net/projects/mp3guessenc/files/mp3guessenc-${pkgver/.3/}/mp3guessenc-$pkgver.tar.gz")
+md5sums=('a984e1f640b505f4ef295c7130fb2038')
 
 build() {
-  cd "$srcdir/$pkgname-$_ver"
+  cd "$pkgname-$pkgver"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$_ver"
+  cd "$pkgname-$pkgver"
   install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
