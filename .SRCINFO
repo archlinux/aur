@@ -1,8 +1,9 @@
 pkgbase = hybris-usb
 	pkgdesc = USB control for Android with hybris
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	arch = armv7h
+	arch = aarch64
 	license = custom
 	depends = systemd
 	depends = dhcp

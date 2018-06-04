@@ -2,9 +2,9 @@
 
 pkgname=hybris-usb
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="USB control for Android with hybris"
-arch=('armv7h')
+arch=('armv7h' 'aarch64')
 url=""
 license=('custom')
 provides=()
