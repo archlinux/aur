@@ -2,8 +2,8 @@
 # Contributor: Loïc Guitaut <flink at belfalas.eu>
 # Contributor: Nicolas Doualot <packages at slubman.info>
 
-pkgname='litecoin-qt'
-pkgver=0.15.1
+pkgname=litecoin-qt
+pkgver=0.16.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
@@ -15,7 +15,7 @@ conflicts=(litecoin)
 install=litecoin-qt.install
 source=("https://github.com/litecoin-project/litecoin/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('570adae0d4a9567110967aba2ea5d90ce8c421313f453523c4fd23b9339c7d2b'
+sha256sums=('8364a69f05cec64e1fd492d41372552cdde86358d22bb0e074dbf917e65371a0'
             'cfc53dc9028745358235698ddd562d3e6b4a3ea9f896f5efc1aa8cd81f595559')
 
 build() {
