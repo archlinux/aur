@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lizzie
+GenericName=SGF Editor (Go)
+Comment=A GUI for Leela-Zero
+Exec=/usr/bin/java -jar /usr/share/java/lizzie/lizzie.jar %U
+Terminal=false
+Type=Application
+Categories=Game;
+MimeTime=application/x-go-sgf;
