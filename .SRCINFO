@@ -1,0 +1,27 @@
+pkgbase = eddie-ui-git
+	pkgdesc = Eddie - OpenVPN UI
+	pkgver = 2.14.5
+	pkgrel = 1
+	url = https://eddie.website
+	install = eddie-ui-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = mono
+	depends = openvpn
+	depends = sudo
+	depends = desktop-file-utils
+	depends = libnotify
+	depends = libappindicator-gtk2
+	optdepends = stunnel: VPN over SSL
+	optdepends = openssh: VPN over SSH
+	provides = eddie-ui
+	conflicts = airvpn
+	conflicts = airvpn-beta-bin
+	conflicts = airvpn-git
+	source = git+https://github.com/AirVPN/Eddie.git
+	sha1sums = SKIP
+
+pkgname = eddie-ui-git
+
