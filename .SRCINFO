@@ -1,7 +1,7 @@
 pkgbase = yabar
 	pkgdesc = A modern and lightweight status bar for X window managers
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/geommer/yabar
 	arch = i686
 	arch = x86_64
