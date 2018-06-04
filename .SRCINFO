@@ -16,10 +16,10 @@ pkgbase = wsjtx-bin-rpm
 	depends = libpng
 	depends = fftw
 	provides = wsjtx
-	conflicts = wsktx
+	conflicts = wsjtx
 	options = emptydirs
 	source = http://physics.princeton.edu/pulsar/k1jt/wsjtx-1.9.1.x86_64.rpm
-	md5sums = SKIP
+	md5sums = 36a1d64d90e7f2fa501af3bf2144d6ce
 
 pkgname = wsjtx-bin-rpm
 

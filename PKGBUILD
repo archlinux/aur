@@ -10,17 +10,17 @@ license=('GPL-3')
 depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat 
 gcc-fortran libpulse libpng fftw)
 provides=(wsjtx)
-conflicts=(wsktx)
+conflicts=(wsjtx)
 makedepends=('rpmextract')
 options=('emptydirs')
 source=("http://physics.princeton.edu/pulsar/k1jt/wsjtx-1.9.1.x86_64.rpm")
-md5sums=(SKIP)
+md5sums=(36a1d64d90e7f2fa501af3bf2144d6ce)
 
 build() {
   rpmextract.sh ./wsjtx-1.9.1.x86_64.rpm
 }
 
 package() {
-   rm wsjtx-1.9.1.x86_64.rpm
-   cp -r ${srcdir}/* ${pkgdir}/
+  cp -r ${srcdir}/* ${pkgdir}/
+  rm ${pkgdir}/wsjtx-1.9.1.x86_64.rpm
 }
