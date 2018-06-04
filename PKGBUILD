@@ -3,13 +3,13 @@
 
 pkgname=networkmanager-sstp
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="SSTP support for NetworkManager"
 arch=('i686' 'x86_64')
 url="http://sstp-client.sourceforge.net/#Network_Manager_Plugin"
 license=('GPL2')
 depends=('sstp-client' 'nm-connection-editor' 'libsecret')
-optdepends=('ppp>=2.4.6')
+optdepends=('ppp')
 options=()
 makedepends=('git' 'intltool' 'ppp>=2.4.6' 'gawk' 'python')
 provides=('networkmanager-sstp')

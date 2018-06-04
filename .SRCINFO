@@ -1,7 +1,7 @@
 pkgbase = networkmanager-sstp
 	pkgdesc = SSTP support for NetworkManager
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sstp-client.sourceforge.net/#Network_Manager_Plugin
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = networkmanager-sstp
 	depends = sstp-client
 	depends = nm-connection-editor
 	depends = libsecret
-	optdepends = ppp>=2.4.6
+	optdepends = ppp
 	provides = networkmanager-sstp
 	source = https://github.com/enaess/network-manager-sstp/archive/release-1.2.4.tar.gz
 	sha1sums = 77fb65a997d42fc04cc4c2aa2ab5e974d9473eb6
