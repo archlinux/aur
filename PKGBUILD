@@ -1,7 +1,7 @@
 
 pkgname=sway
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="i3 compatible window manager for Wayland"
 arch=("x86_64")
 url="http://swaywm.org"
@@ -34,6 +34,7 @@ validpgpkeys=(
 build() {
 	mkdir -p build
 	cd build
+        export CFLAGS="-Wno-stringop-overflow -Wno-stringop-truncation $CFLAGS"
 	cmake "$srcdir/$pkgname-$pkgver" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
