@@ -1,29 +1,25 @@
-# Maintainer: der_FeniX <derfenix@gmail.com>
+# Contributor: der_FeniX <derfenix@gmail.com>
 
 pkgname=semantik
-pkgver=0.9.4
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
+pkgdesc="mindmapping-like tool for document generation (reports, thesis, etc)"
 arch=('i686' 'x86_64')
-url="https://ita1024.github.io/semantik/"
-makedepends=('waf')
-license=('GPL')
-source=("https://github.com/ita1024/semantik/archive/${pkgname}-${pkgver}.tar.gz" 'install')
+url="https://waf.io/semantik.html"
+license=('GPL3')
+depends=('qt5-webengine' 'qt5-svg' 'kdelibs4support' 'kio' 'python3'
+         'shared-mime-info' 'desktop-file-utils')
+source=("https://github.com/ita1024/semantik/archive/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('723a6850c3f003b44756ad1faa0cab48cf141c36956a2cb4a6da7ec749631458')
 
-pkgdesc="A mindmapping-like tool for document generation (reports, thesis, etc)"
-depends=('kdebase-runtime')
-install='install'
-
-sha256sums=('479fb3e822e7c4bc887019071bdf9fb8e2fad951ae6b54e5c76fba8e738dc684'
-            'a981f2afe77ec69545b3912a99ee6c560388d178cd39c9a21ae21e270024159b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
-  sed -i 's/0755/755/g' wscript
-  PYTHON=python2 PYTHON_VERSION=2.7 waf configure build
+  PYTHON=python3 PYTHON_VERSION=3.6 ./waf configure build --prefix=/usr
 }
 
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
-  PYTHON=python2 PYTHON_VERSION=2.7 waf install --destdir="${pkgdir}" 
+  PYTHON=python3 PYTHON_VERSION=3.6 DESTDIR="${pkgdir}" ./waf install
 }
