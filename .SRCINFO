@@ -1,7 +1,7 @@
 pkgbase = microsoft-r-open
 	pkgdesc = Language and environment for statistical computing and graphics, enhanced by Microsoft
 	pkgver = 3.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mran.revolutionanalytics.com/open/
 	install = microsoft-r-open.install
 	arch = x86_64
@@ -33,6 +33,7 @@ pkgbase = microsoft-r-open
 	optdepends = texlive-bin: latex sty files
 	provides = r=3.4.4
 	conflicts = r
+	conflicts = r-mkl
 	options = !makeflags
 	options = !emptydirs
 	backup = etc/R/Makeconf

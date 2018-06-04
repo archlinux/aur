@@ -2,7 +2,7 @@
 
 pkgname=microsoft-r-open
 pkgver=3.4.4
-pkgrel=1
+pkgrel=2
 _majorver=3.4
 _mrandate=2018-04-01
 pkgdesc="Language and environment for statistical computing and graphics, enhanced by Microsoft"
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('GPL')
 url='https://mran.revolutionanalytics.com/open/'
 provides=("r=${pkgver}")
-conflicts=('r')
+conflicts=('r' 'r-mkl')
 depends=('bzip2'
         'curl'
         'desktop-file-utils'
