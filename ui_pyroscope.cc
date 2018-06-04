@@ -39,11 +39,10 @@ python -c 'print u"\u22c5 \u22c5\u22c5 \u201d \u2019 \u266f \u2622 \u260d \u2318
 #include "control.h"
 #include "command_helpers.h"
 
-#if (RT_HEX_VERSION >= 0x000901)
-    #define _cxxstd_ tr1
-#else
-    #define _cxxstd_ std
-#endif
+
+// In 0.9.x this changed to 'tr1', see https://stackoverflow.com/a/4682954/2748717
+// "C++ Technical Report 1" was later added to "C++11", using tr1 makes stuff compile on older GCC
+#define _cxxstd_ tr1
 
 #define D_INFO(item) (item->info())
 #include "rpc/object_storage.h"
@@ -53,7 +52,10 @@ extern torrent::Tracker* get_active_tracker(torrent::Download* item);
 extern std::string get_active_tracker_domain(torrent::Download* item);
 
 
-#define TRACKER_LABEL_WIDTH 20U
+#define CANVAS_POS_1ST_ITEM 2
+#define X_OF_Y_CANVAS_MIN_WIDTH 28
+#define NAME_RESERVED_WIDTH 6
+#define TRACKER_LABEL_WIDTH 20
 
 // definition from display/window_download_list.cc that is not in the header file
 typedef std::pair<core::View::iterator, core::View::iterator> Range;
@@ -67,35 +69,58 @@ int ratio_col[] = {
     ps::COL_PROGRESS100, ps::COL_PROGRESS120,
 };
 
+// ps::COL_PRIO
+static int col_idx_prio[] = {
+    ps::COL_PROGRESS0, ps::COL_PROGRESS60, ps::COL_INFO, ps::COL_PROGRESS120
+};
+
+// ps::COL_STATE
+static int col_idx_state[] = {
+    ps::COL_PROGRESS0, ps::COL_PROGRESS0, ps::COL_PROGRESS80, ps::COL_PROGRESS100
+};
+
+
 // basic color names
 static const char* color_names[] = {
     "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"
 };
 
+// color value for custom column rendering
+static std::string ui_canvas_color;
+
 // list of color configuration variables, the order MUST correspond to the ColorKind enum
 static const char* color_vars[ps::COL_MAX] = {
     0,
-    "ui.color.progress0",
+    "ui.color.custom1",
+    "ui.color.custom2",
+    "ui.color.custom3",
+    "ui.color.custom4",
+    "ui.color.custom5",
+    "ui.color.custom6",
+    "ui.color.custom7",
+    "ui.color.custom8",
+    "ui.color.custom9",
+    "ui.color.progress0", // 10
     "ui.color.progress20",
     "ui.color.progress40",
     "ui.color.progress60",
     "ui.color.progress80",
     "ui.color.progress100",
     "ui.color.progress120",
+    "ui.color.title",
+    "ui.color.footer",
+    "ui.color.focus",
+    "ui.color.label", // 20
+    "ui.color.info",
+    "ui.color.alarm",
     "ui.color.complete",
     "ui.color.seeding",
     "ui.color.stopped",
     "ui.color.queued",
     "ui.color.incomplete",
     "ui.color.leeching",
-    "ui.color.alarm",
-    "ui.color.title",
-    "ui.color.footer",
-    "ui.color.label",
     "ui.color.odd",
     "ui.color.even",
-    "ui.color.info",
-    "ui.color.focus",
 };
 
 // collapsed state of views (default is false)
@@ -117,7 +142,7 @@ static std::string network_history_down_str;
 // Chop off an UTF-8 string
 std::string u8_chop(const std::string& text, size_t glyphs) {
     std::mbstate_t mbs = std::mbstate_t();
-    int bytes = 0, skip;
+    size_t bytes = 0, skip;
     const char* pos = text.c_str();
 
     while (*pos && glyphs-- > 0 && (skip = std::mbrlen(pos, text.length() - bytes, &mbs)) > 0) {
@@ -150,14 +175,15 @@ std::string get_custom_string(core::Download* d, const char* name) {
 
 
 // convert absolute timestamp to approximate human readable time diff (5 chars wide)
-std::string elapsed_time(unsigned long dt)  {
-    if (dt == 0) return std::string("⋅ ⋅⋅ ");
+std::string elapsed_time(unsigned long dt, unsigned long t0)  {
+    if (dt == 0) return std::string("⋆ ⋆⋆ ");
 
     const char* unit[] = {"”", "’", "h", "d", "w", "m", "y"};
     unsigned long threshold[] = {1, 60, 3600, 86400, 7*86400, 30*86400, 365*86400, 0};
 
     int dim = 0;
-    dt = time(NULL) - dt;
+    dt = std::labs((t0 ? t0 : time(NULL)) - dt);
+    if (dt == 0) return std::string("⋅ ⋅⋅ ");
     while (threshold[dim] && dt >= threshold[dim]) ++dim;
     if (dim) --dim;
     float val = float(dt) / float(threshold[dim]);
@@ -176,7 +202,7 @@ std::string elapsed_time(unsigned long dt)  {
 // return 2-digits number, or digit + dimension indicator
 std::string num2(int64_t num) {
     if (num < 0 || 10*1000*1000 <= num) return std::string("♯♯");
-    if (!num) return std::string(" ·");
+    if (!num) return std::string(" ⋅");
 
     char buffer[10];
     if (num < 100) {
@@ -277,7 +303,7 @@ void ui_pyroscope_colormap_init() {
         short col_idx = 0; // 0 = fg; 1 = bg
         short bright = 0;
         unsigned long attr = A_NORMAL;
-        for (int i = 0; i < words.size(); i++) { // look at all the words
+        for (size_t i = 0; i < words.size(); i++) { // look at all the words
             if (words[i] == "bold") attr |= A_BOLD;
             else if (words[i] == "standout") attr |= A_STANDOUT;
             else if (words[i] == "underline") attr |= A_UNDERLINE;
@@ -301,7 +327,7 @@ void ui_pyroscope_colormap_init() {
         }
 
         // check that fg & bg color index is valid
-        if (col[0] != -1 && col[0] >= get_colors() || col[1] != -1 && col[1] >= get_colors()) {
+        if ((col[0] != -1 && col[0] >= get_colors()) || (col[1] != -1 && col[1] >= get_colors())) {
             char buf[33];
             sprintf(buf, "%d", get_colors());
             Canvas::cleanup();
@@ -343,10 +369,58 @@ static int row_offset(core::View* view, Range& range) {
 }
 
 
-static void decorate_download_title(Window* window, display::Canvas* canvas, core::View* view, int pos, Range& range) {
+torrent::Object ui_canvas_color_get() {
+    return ::ui_canvas_color;
+}
+
+
+torrent::Object ui_canvas_color_set(const torrent::Object::string_type& arg) {
+    ::ui_canvas_color = arg;
+    return torrent::Object();
+}
+
+
+int64_t cmd_d_message_alert(core::Download* d) {
+    int64_t alert = ps::ALERT_NORMAL;
+
+    if (!d->message().empty()) {
+        alert = ps::ALERT_GENERIC;
+
+        if (d->message().find("Tried all trackers") != std::string::npos)
+            alert = ps::ALERT_NORMAL_CYCLING;
+        else if (d->message().find("Timeout was reached") != std::string::npos
+                    || d->message().find("Timed out") != std::string::npos)
+            alert = ps::ALERT_TIMEOUT;
+        else if (d->message().find("Connecting to") != std::string::npos)
+            alert = ps::ALERT_CONNECT;
+        else if (d->message().find("Could not parse bencoded data") != std::string::npos
+                    || d->message().find("Failed sending data") != std::string::npos
+                    || d->message().find("Server returned nothing") != std::string::npos
+                    || d->message().find("Couldn't connect to server") != std::string::npos)
+            alert = ps::ALERT_REQUEST;
+        else if (d->message().find("not registered") != std::string::npos
+                    || d->message().find("torrent cannot be found") != std::string::npos
+                    || d->message().find("unregistered") != std::string::npos)
+            alert = ps::ALERT_GONE;
+        else if (d->message().find("not authorized") != std::string::npos
+                    || d->message().find("blocked from") != std::string::npos
+                    || d->message().find("denied") != std::string::npos
+                    || d->message().find("limit exceeded") != std::string::npos
+                    || d->message().find("active torrents are enough") != std::string::npos)
+            alert = ps::ALERT_PERMS;
+    }
+
+    return alert;
+}
+
+
+static void decorate_download_title(Window* window, display::Canvas* canvas, core::View* view,
+                                    int pos, Range& range, int x_title) {
     int offset = row_offset(view, range);
     core::Download* item = *range.first;
     bool active = item->is_open() && item->is_active();
+
+    if (int(canvas->width()) <= x_title) return;
 
     // download title color
     int title_col;
@@ -357,19 +431,23 @@ static void decorate_download_title(Window* window, display::Canvas* canvas, cor
     else
         title_col = (active ? D_INFO(item)->down_rate()->rate() ?
                      ps::COL_LEECHING : ps::COL_INCOMPLETE : ps::COL_QUEUED) + offset;
-    canvas->set_attr(2, pos, -1, attr_map[title_col] | focus_attr, title_col);
+    canvas->set_attr(x_title, pos, -1, attr_map[title_col] | focus_attr, title_col);
 
     // show label for active tracker (a/k/a in focus tracker)
+    if (int(canvas->width()) <= x_title + NAME_RESERVED_WIDTH + 3) return;
     std::string url = get_active_tracker_domain((*range.first)->download());
-    if (!url.empty()) {
-        std::string alias = tracker_aliases[url];
-        if (!alias.empty()) url = alias;
+    if (url.empty()) return;
+    std::string alias = tracker_aliases[url];
+    if (!alias.empty()) url = alias;
 
-        // shorten label if too long
+    // shorten label if too long
+    int max_len = std::min(TRACKER_LABEL_WIDTH,
+                           int(canvas->width()) - x_title - NAME_RESERVED_WIDTH - 3);
+    if (max_len > 0) {
         int len = url.length();
-        if (len > TRACKER_LABEL_WIDTH) {
-            url = "…" + url.substr(len - TRACKER_LABEL_WIDTH);
-            len = TRACKER_LABEL_WIDTH + 1;
+        if (len > max_len) {
+            url = "…" + url.substr(len - max_len);
+            len = max_len + 1;
         }
 
         // print it right-justified and in braces
@@ -379,7 +457,8 @@ static void decorate_download_title(Window* window, display::Canvas* canvas, cor
         canvas->print(xpos, pos, "{%s}", url.c_str());
         canvas->set_attr(xpos + 1, pos, len, attr_map[td_col + offset] | focus_attr, td_col + offset);
         canvas->set_attr(xpos, pos, 1, (attr_map[td_col + offset] | focus_attr) ^ A_BOLD, td_col + offset);
-        canvas->set_attr(canvas->width() - 1, pos, 1, (attr_map[td_col + offset] | focus_attr) ^ A_BOLD, td_col + offset);
+        canvas->set_attr(canvas->width() - 1, pos, 1,
+                         (attr_map[td_col + offset] | focus_attr) ^ A_BOLD, td_col + offset);
     }
 }
 
@@ -405,13 +484,13 @@ void ui_pyroscope_download_list_redraw_item(Window* window, display::Canvas* can
         }
     }
 
-    decorate_download_title(window, canvas, view, pos, range);
+    decorate_download_title(window, canvas, view, pos, range, 2);
 
     // better handling for trail of line 2 (ratio etc.)
     int status_pos = 91;
     int ratio = rpc::call_command_value("d.ratio", rpc::make_target(*range.first));
 
-    if (status_pos < canvas->width()) {
+    if (status_pos < int(canvas->width())) {
         canvas->print(status_pos, pos+1, "R:%6.2f [%c%c] %-4.4s  ",
             float(ratio) / 1000.0,
             rpc::call_command_string("d.tied_to_file", rpc::make_target(*range.first)).empty() ? ' ' : 'T',
@@ -423,7 +502,7 @@ void ui_pyroscope_download_list_redraw_item(Window* window, display::Canvas* can
     }
 
     // if space is left, show throttle name
-    if (status_pos < canvas->width()) {
+    if (status_pos < int(canvas->width())) {
         std::string item_status;
 
         if (!(*range.first)->bencode()->get_key("rtorrent").get_key_string("throttle_name").empty()) {
@@ -452,7 +531,7 @@ void ui_pyroscope_download_list_redraw_item(Window* window, display::Canvas* can
 
     // apply basic "info" style, and then revert static text to "label"
     canvas->set_attr(2, pos+1, canvas->width() - 1, attr_map[col_active + offset], col_active + offset);
-    for (int label_idx = 0; label_idx < sizeof(label_pos) / sizeof(int); label_idx += 2) {
+    for (size_t label_idx = 0; label_idx < sizeof(label_pos) / sizeof(int); label_idx += 2) {
         if (labels[label_idx/2]) canvas->print(label_pos[label_idx], pos+1, labels[label_idx/2]);
         canvas->set_attr(label_pos[label_idx], pos+1, label_pos[label_idx+1], attr_map[ps::COL_LABEL + offset], ps::COL_LABEL + offset);
     }
@@ -481,8 +560,8 @@ void ui_pyroscope_download_list_redraw_item(Window* window, display::Canvas* can
 
 
 // Render columns from `column_defs`, return total length
-int render_columns(bool headers, rpc::target_type target,
-                   display::Canvas* canvas, int column, int pos,
+int render_columns(bool headers, bool narrow, rpc::target_type target, core::Download* item,
+                   display::Canvas* canvas, int column, int pos, int offset,
                    const torrent::Object::map_type& column_defs) {
     torrent::Object::map_const_iterator cols_itr, last_col = column_defs.end();
     int total = 0;
@@ -491,25 +570,115 @@ int render_columns(bool headers, rpc::target_type target,
         // Skip sort key (format is "sort:len:title")
         size_t header_colon = cols_itr->first.find(':');
         if (header_colon == std::string::npos) continue;
-
-        // Parse header length
         const char* header_pos = cols_itr->first.c_str() + header_colon + 1;
-        char* header_text = 0;
-        int header_len = (int)strtol(header_pos, &header_text, 10);
-        if (*header_text++ != ':') continue;
 
-        // Render title text, or the result of the column command
-        if (headers) {
-            canvas->print(column, pos, " %s", header_text);
-        } else {
-            std::string text = rpc::call_object_nothrow(cols_itr->second, target).as_string();
-            //std::string text = rpc::call_command_string(cols_itr->second.as_string().c_str(), target);
-            canvas->print(column, pos, " %s", u8_chop(text, header_len).c_str());
+        // Check for 'sacrificial' marker
+        if (*header_pos == '?') {
+            if (narrow) continue; // skip this column
+            ++header_pos;
         }
 
-        // Advance position
-        column += header_len + 1;
-        total += header_len + 1;
+        // Parse header length
+        char* header_text = 0;
+        int header_len = (int)strtol(header_pos, &header_text, 10);
+
+        // Check available space
+        if (int(canvas->width()) - NAME_RESERVED_WIDTH < column + header_len) {
+            if (!narrow && headers) return -1; // trigger narrow mode
+            break; // all the space we have used up, get us out of here
+        }
+
+        // Do we have a colordef?
+        std::string color_def;
+        if (*header_text == 'C') {
+            int x = 0;
+            while (header_text[x] && header_text[x] != ':') x++;
+            color_def.assign(header_text, x);
+            header_text += x;
+        }
+        if (*header_text++ != ':') continue; // Header text is missing
+
+        // Render title text, or the result of the column command
+        ui_canvas_color = color_def;
+        if (headers) {
+            canvas->print(column, pos, "%s", header_text);
+        } else {
+            std::string text;
+            try {
+                text = rpc::call_object(cols_itr->second, target).as_string();
+            } catch (torrent::input_error& e) {
+                // Rows will rotate through the error string (assuming it is thrown for each row)
+                char buf[10];
+                int what_pos = *e.what() ? (pos - CANVAS_POS_1ST_ITEM) * header_len % strlen(e.what()) : 0;
+                snprintf(buf, sizeof(buf), "C22/%d", header_len);
+                ui_canvas_color = buf;
+                text = std::string(e.what()).substr(what_pos, header_len);
+            }
+            canvas->print(column, pos, "%s", u8_chop(text, header_len).c_str());
+            //canvas->print(column, pos, " %s ", ui_canvas_color);  // debug: print color index
+
+            // apply colorization
+            if (ui_canvas_color.empty()) {
+                canvas->set_attr(column, pos, header_len,
+                                 attr_map[ps::COL_INFO + offset], ps::COL_INFO + offset);
+            } else {
+                int attr_col = column;
+                for (const char* ptr = ui_canvas_color.c_str(); *ptr && *ptr++ == 'C'; ) {
+                    char* next = 0;
+                    int attr_idx = (int)strtol(ptr, &next, 10); if (next == ptr) break; ptr = next;
+                    if (*ptr != '/') continue;
+
+                    // System colors – these are mapped to a 'normal' color index
+                    if (item) {
+                        const char* c_down = "C28/4C27/2";             // leeching + incomplete
+                        const char* c_seed = "C24/4C21/2";             // seeding + info
+                        const char* c_done = "C21/1C24/1C21/2C24/2";   // info + seeding (is_done)
+                        const char* c_part = "C21/1C27/1C21/2C27/2";   // info + incomplete
+
+                        switch (attr_idx) {
+                            case ps::COL_DOWN_TIME:  // C90/6
+                                ptr = item->is_done()                   ? c_done :
+                                      D_INFO(item)->down_rate()->rate() ? c_down : c_part;
+                                continue; // with new color definition
+                            case ps::COL_UP_TIME:  // C96/6
+                                ptr = D_INFO(item)->up_rate()->rate()   ? c_seed :
+                                      item->is_done()                   ? c_done : c_part;
+                                continue; // with new color definition
+                            case ps::COL_PRIO:
+                                attr_idx = col_idx_prio[std::min(3U, (uint32_t) item->priority())];
+                                break;
+                            case ps::COL_STATE:
+                                attr_idx = col_idx_state[(item->is_open() << 1) | item->is_active()];
+                                break;
+                            case ps::COL_RATIO:
+                                attr_idx = ratio_color(rpc::call_command_value("d.ratio", target));
+                                break;
+                            case ps::COL_PROGRESS:
+                                attr_idx = ratio_color(item->file_list()->completed_chunks() * 1000 /
+                                                       item->file_list()->size_chunks());
+                                break;
+                            case ps::COL_ALERT:  // COL_ALARM is the actual color, this is the dynamic one
+                                bool has_alert = !item->message().empty()
+                                              && item->message().find("Tried all trackers") == std::string::npos;
+                                attr_idx = has_alert ? ps::COL_ALARM : ps::COL_INFO;
+                                break;
+                        }
+                    }
+
+                    // Get color area length, if both pos/len are ok, do it
+                    int attr_len = (int)strtol(ptr + 1, &next, 10); if (next == ptr) break; ptr = next;
+                    if (attr_idx && attr_len) {
+                        if (attr_idx >= ps::COL_MAX) attr_idx = ps::COL_ALARM;
+                        canvas->set_attr(attr_col, pos, attr_len, attr_map[attr_idx + offset], attr_idx + offset);
+                        attr_col += attr_len;
+                    }
+                }
+            }
+        }
+
+        // Advance canvas column position, and add to length
+        column += header_len;
+        total += header_len;
     }
     return total;
 }
@@ -519,8 +688,8 @@ int render_columns(bool headers, rpc::target_type target,
 // function is left immediately (i.e. true indicates we took over ALL redrawing)
 bool ui_pyroscope_download_list_redraw(Window* window, display::Canvas* canvas, core::View* view) {
     // show "X of Y"
-    if (canvas->width() > 16) {
-        int item_idx = view->focus() - view->begin_visible();
+    if (canvas->width() >= X_OF_Y_CANVAS_MIN_WIDTH) {
+        size_t item_idx = view->focus() - view->begin_visible();
         if (item_idx == view->size())
             canvas->print(canvas->width() - 16, 0, "[ none of %-5d]", view->size());
         else
@@ -534,18 +703,23 @@ bool ui_pyroscope_download_list_redraw(Window* window, display::Canvas* canvas, 
     if (view->empty_visible() || canvas->width() < 5 || canvas->height() < 2)
         return true;
 
-    // show column headers
+    // Prepare rendering
     const torrent::Object::map_type& column_defs = control->object_storage()->get_str("ui.column.render").as_map();
-    // x_base value depends on the static headers below!
-    int pos = 1, x_base = 31, column = x_base;
+    int pos = 1, x_base = 2, column = x_base;
+    bool narrow = false;
 
-    canvas->print(2, pos, " ⣿ ⚡ ☯ ⚑  ↺  ⤴  ⤵   ∆   ⌚ ≀∇ ");
-    column += render_columns(true, rpc::make_target(), canvas, column, pos, column_defs);
-    canvas->print(column, pos, " Name "); column += 6;
-    if (canvas->width() - column > TRACKER_LABEL_WIDTH) {
-        canvas->print(canvas->width() - 14, 1, "Tracker Domain");
+    // Render header line
+    canvas->print(0, pos, "⇳ ");
+    int custom_width = render_columns(true, narrow, rpc::make_target(), 0, canvas, column, pos, 0, column_defs);
+    if (custom_width < 0) { // enter narrow mode
+        canvas->print(x_base, pos, "%s", std::string(canvas->width() - x_base, ' ').c_str()); // clean slate
+        narrow = true;
+        custom_width = render_columns(true, narrow, rpc::make_target(), 0, canvas, column, pos, 0, column_defs);
     }
-    canvas->set_attr(0, pos, -1, attr_map[ps::COL_LABEL], ps::COL_LABEL);
+    column += custom_width; canvas->print(column, pos, " Name   "); column += NAME_RESERVED_WIDTH;
+    if (int(canvas->width()) - 8 > column)
+        canvas->print(canvas->width() - 8, pos, " Tracker");
+    canvas->set_attr(0, pos, -1, attr_map[ps::COL_LABEL], ps::COL_LABEL); // header line unicolor
 
     // network traffic
     int network_history_lines = 0;
@@ -559,23 +733,6 @@ bool ui_pyroscope_download_list_redraw(Window* window, display::Canvas* canvas, 
         canvas->set_attr(0, pos+1, -1, attr_map[ps::COL_LEECHING], ps::COL_LEECHING);
     }
 
-    // Styles
-    #define PROGRESS_STEPS 9
-    const char* progress[3][PROGRESS_STEPS] = {
-        {},
-        {"⠀ ", "⠁ ", "⠉ ", "⠋ ", "⠛ ", "⠟ ", "⠿ ", "⡿ ", "⣿ "},
-        {"⠀ ", "▁ ", "▂ ", "▃ ", "▄ ", "▅ ", "▆ ", "▇ ", "█ "},
-    };
-    unsigned int progress_style = std::min<unsigned int>(rpc::call_command_value("ui.style.progress"), 2);
-    #define YING_YANG_STEPS 11
-    const char* ying_yang[4][YING_YANG_STEPS] = {
-        {},
-        {"☹ ", "➀ ", "➁ ", "➂ ", "➃ ", "➄ ", "➅ ", "➆ ", "➇ ", "➈ ", "➉ "},
-        {"☹ ", "① ", "② ", "③ ", "④ ", "⑤ ", "⑥ ", "⑦ ", "⑧ ", "⑨ ", "⑩ "},
-        {"☹ ", "➊ ", "➋ ", "➌ ", "➍ ", "➎ ", "➏ ", "➐ ", "➑ ", "➒ ", "➓ "},
-    };
-    unsigned int ying_yang_style = std::min<unsigned int>(rpc::call_command_value("ui.style.ratio"), 3);
-
     // define iterator range
     Range range = rak::advance_bidirectional(
             view->begin_visible(),
@@ -583,121 +740,36 @@ bool ui_pyroscope_download_list_redraw(Window* window, display::Canvas* canvas, 
             view->end_visible(),
             canvas->height()-2-2-network_history_lines);
 
-    pos = 2;
+    pos = CANVAS_POS_1ST_ITEM;
     while (range.first != range.second) {
         core::Download* d = *range.first;
-        core::Download* item = d;
-        torrent::Tracker* tracker = get_active_tracker((*range.first)->download());
-        int ratio = rpc::call_command_value("d.ratio", rpc::make_target(d));
-        bool has_msg = !d->message().empty();
-        bool has_alert = has_msg && d->message().find("Tried all trackers") == std::string::npos;
         int offset = row_offset(view, range);
         int col_active = ps::COL_INFO;
-        //int col_active = item->is_open() && item->is_active() ? ps::COL_INFO : d->is_done() ? ps::COL_STOPPED : ps::COL_QUEUED;
 
-        const char* alert = "⚠ ";
-        if (has_alert) {
-            if (d->message().find("Timeout was reached") != std::string::npos
-                        || d->message().find("Timed out") != std::string::npos)
-                alert = "◔ ";
-            else if (d->message().find("Connecting to") != std::string::npos)
-                alert = "⚡ ";
-            else if (d->message().find("Could not parse bencoded data") != std::string::npos
-                        || d->message().find("Failed sending data") != std::string::npos
-                        || d->message().find("Server returned nothing") != std::string::npos
-                        || d->message().find("Couldn't connect to server") != std::string::npos)
-                alert = "↯ ";
-            else if (d->message().find("not registered") != std::string::npos
-                        || d->message().find("torrent cannot be found") != std::string::npos
-                        || d->message().find("unregistered") != std::string::npos)
-                alert = "¿?";
-            else if (d->message().find("not authorized") != std::string::npos
-                        || d->message().find("blocked from") != std::string::npos
-                        || d->message().find("denied") != std::string::npos
-                        || d->message().find("limit exceeded") != std::string::npos
-                        || d->message().find("active torrents are enough") != std::string::npos)
-                alert = "⨂ ";
-        }
-
-        std::string displayname = get_custom_string(d, "displayname");
-        int is_tagged = rpc::commands.call_command_d("d.views.has", d, torrent::Object("tagged")).as_value() == 1;
-        uint32_t down_rate = D_INFO(item)->down_rate()->rate();
-
-        char progress_str[6] = "##";
-        char ying_yang_str[6] = "##";
-        if (progress_style == 0) {
-            sprintf(progress_str, item->file_list()->completed_chunks() ? "%2.2d" : "--",
-                item->file_list()->completed_chunks() * 100 / item->file_list()->size_chunks());
-        }
-        if (ying_yang_style == 0 && ratio < 9949) {
-            sprintf(ying_yang_str, ratio ? "%2.2d" : "--", ratio / 100);
-        }
-
-        canvas->print(0, pos, "%s  %s%s%s%s %s %s %s %s %s%s ",
-            range.first == view->focus() ? "»" : " ",
-            d->is_done() ? "✔ " : progress_style == 0 ? progress_str : progress[progress_style][
-                item->file_list()->completed_chunks() * PROGRESS_STEPS
-                / item->file_list()->size_chunks()],
-            D_INFO(item)->down_rate()->rate() ?
-                (D_INFO(item)->up_rate()->rate() ? "⇅ " : "↡ ") :
-                (D_INFO(item)->up_rate()->rate() ? "↟ " : "  "),
-            ying_yang_style == 0 ? ying_yang_str :
-                ratio >= YING_YANG_STEPS * 1000 ? "⊛ " : ying_yang[ying_yang_style][ratio / 1000],
-            has_msg ? has_alert ? alert : "♺ " : is_tagged ? "⚑ " : "  ",
-            tracker ? num2(tracker->scrape_downloaded()).c_str() : "  ",
-            tracker ? num2(tracker->scrape_complete()).c_str() : "  ",
-            tracker ? num2(tracker->scrape_incomplete()).c_str() : "  ",
-            human_size(D_INFO(item)->up_rate()->rate(), 2 | 8).c_str(),
-            d->is_done() || !down_rate ? "" : " ",
-            d->is_done() ? elapsed_time(get_custom_long(d, "tm_completed")).c_str() :
-            !down_rate   ? elapsed_time(get_custom_long(d, "tm_loaded")).c_str() :
-                           human_size(down_rate, 2 | 8).c_str()
-        );
+        // Render focus marker
+        canvas->print(0, pos, range.first == view->focus() ? "> " : "  ");
 
         // Render custom columns
+        canvas->set_attr(1, pos, -1, attr_map[col_active + offset], col_active + offset); // base color, whole line
         column = x_base;
-        int custom_len = render_columns(false, rpc::make_target(d), canvas, column, pos, column_defs);
-        canvas->set_attr(column, pos, custom_len, attr_map[ps::COL_DEFAULT], ps::COL_DEFAULT);
-        column += custom_len;
-        int x_name = column + 1;
+        render_columns(false, narrow, rpc::make_target(d), d, canvas, column, pos, offset, column_defs);
+        column += custom_width;
 
-        // Render name
-        canvas->print(column, pos, " %s", u8_chop(
-            displayname.empty() ? d->info()->name() : displayname.c_str(),
-            canvas->width() - x_name - 1).c_str());
-
-        int x_scrape = 3 + 4*2 + 1; // lead, 4 status columns, gap
-        int x_rate = x_scrape + 3*3; // skip 3 scrape columns
-        //int x_name = x_rate + 3*5 + 1; // skip 3 rate/size columns
-        decorate_download_title(window, canvas, view, pos, range);
-        canvas->set_attr(2, pos, x_name-2, attr_map[col_active + offset], col_active + offset);
-        if (has_alert) canvas->set_attr(x_scrape-3, pos, 2, attr_map[ps::COL_ALARM + offset], ps::COL_ALARM + offset);
-
-        // apply progress color to completion indicator
-        int pcol = ratio_color(item->file_list()->completed_chunks() * 1000 / item->file_list()->size_chunks());
-        canvas->set_attr(x_scrape-9, pos, 2, attr_map[pcol + offset], pcol + offset);
-
-        // show ratio progress by color
-        int rcol = ratio_color(ratio);
-        canvas->set_attr(x_scrape-5, pos, 2, attr_map[rcol + offset], rcol + offset);
-
-        // color up/down rates
-        canvas->set_attr(x_rate+0, pos, 4, attr_map[ps::COL_SEEDING + offset], ps::COL_SEEDING + offset);
-        if (d->is_done() || !down_rate) {
-            // time display
-            int tm_color = (d->is_done() ? ps::COL_SEEDING : ps::COL_INCOMPLETE) + offset;
-            canvas->set_attr(x_rate+5+1, pos, 1, attr_map[tm_color], tm_color);
-            canvas->set_attr(x_rate+5+4, pos, 1, attr_map[tm_color], tm_color);
-        } else {
-            // down rate
-            canvas->set_attr(x_rate+5, pos, 5, attr_map[ps::COL_LEECHING + offset], ps::COL_LEECHING + offset);
+        // Render name + tracker
+        if (int(canvas->width()) > column) {
+            std::string displayname = get_custom_string(d, "displayname");
+            canvas->print(column, pos, " %s",
+                u8_chop(displayname.empty() ? d->info()->name() : displayname.c_str(),
+                        canvas->width() - column - 1).c_str());
+            decorate_download_title(window, canvas, view, pos, range, column + 1);
         }
 
-        // is this the item in focus?
+        // Colorize focus marker
         if (range.first == view->focus()) {
             canvas->set_attr(0, pos, 1, attr_map[ps::COL_FOCUS], ps::COL_FOCUS);
         }
 
+        // Advance to next item
         ++pos;
         ++range.first;
     }
@@ -787,7 +859,7 @@ void network_history_format(std::string& buf, char kind, uint32_t* data) {
     if (max_rate > 102) {
         const char* meter[] = {"⠀", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"};
         uint32_t base = rpc::call_command_value("network.history.auto_scale") ? min_rate : 0;
-        for (int i = 1; i <= samples; ++i) {
+        for (uint32_t i = 1; i <= samples; ++i) {
             uint32_t idx = (network_history_count - i) % network_history_depth;
             if (max_rate > base)
                 buf += meter[std::min(8U, (data[idx] - base) * 9 / (max_rate - base))];
@@ -848,6 +920,18 @@ torrent::Object cmd_trackers_alias_items(rpc::target_type target) {
 }
 
 
+torrent::Object apply_time_delta(const torrent::Object::list_type& args) {
+    if (args.size() != 1 && args.size() != 2)
+        throw torrent::input_error("convert.time_delta takes 1 or 2 arguments!");
+    if (!args.front().is_value())
+        throw torrent::input_error("convert.time_delta: time argument must be a value!");
+    if (args.size() == 2 && !args.back().is_value())
+        throw torrent::input_error("convert.time_delta: time-base argument must be a value!");
+
+    return elapsed_time(args.front().as_value(), args.size() == 2 ? args.back().as_value() : 0L);
+}
+
+
 torrent::Object apply_human_size(const torrent::Object::list_type& args) {
     if (args.size() != 1 && args.size() != 2)
         throw torrent::input_error("convert.human_size takes 1 or 2 arguments!");
@@ -890,8 +974,10 @@ void initialize_command_ui_pyroscope() {
     CMD2_ANY_LIST("trackers.alias.set_key", &cmd_trackers_alias_set_key);
     CMD2_ANY("trackers.alias.items", _cxxstd_::bind(&cmd_trackers_alias_items, _cxxstd_::placeholders::_1));
 
-    CMD2_VAR_VALUE("ui.style.progress", 1);
-    CMD2_VAR_VALUE("ui.style.ratio", 1);
+    CMD2_DL("d.message.alert", _cxxstd_::bind(&display::cmd_d_message_alert, _cxxstd_::placeholders::_1));
+
+    CMD2_ANY        ("ui.canvas_color",         _cxxstd_::bind(&display::ui_canvas_color_get));
+    CMD2_ANY_STRING ("ui.canvas_color.set",     _cxxstd_::bind(&display::ui_canvas_color_set, _cxxstd_::placeholders::_2));
 
     PS_VARIABLE_COLOR("ui.color.progress0",     "red");
     PS_VARIABLE_COLOR("ui.color.progress20",    "bold bright red");
@@ -914,16 +1000,147 @@ void initialize_command_ui_pyroscope() {
     PS_VARIABLE_COLOR("ui.color.even",          "");
     PS_VARIABLE_COLOR("ui.color.info",          "white");
     PS_VARIABLE_COLOR("ui.color.focus",         "reverse");
+    PS_VARIABLE_COLOR("ui.color.custom1",       "");
+    PS_VARIABLE_COLOR("ui.color.custom2",       "");
+    PS_VARIABLE_COLOR("ui.color.custom3",       "");
+    PS_VARIABLE_COLOR("ui.color.custom4",       "");
+    PS_VARIABLE_COLOR("ui.color.custom5",       "");
+    PS_VARIABLE_COLOR("ui.color.custom6",       "");
+    PS_VARIABLE_COLOR("ui.color.custom7",       "");
+    PS_VARIABLE_COLOR("ui.color.custom8",       "");
+    PS_VARIABLE_COLOR("ui.color.custom9",       "");
 
     PS_CMD_ANY_FUN("system.colors.max",         display::get_colors);
     PS_CMD_ANY_FUN("system.colors.enabled",     has_colors);
     PS_CMD_ANY_FUN("system.colors.rgb",         can_change_color);
 
+    CMD2_ANY_LIST("convert.time_delta",         _cxxstd_::bind(&apply_time_delta, _cxxstd_::placeholders::_2));
     CMD2_ANY_LIST("convert.human_size",         _cxxstd_::bind(&apply_human_size, _cxxstd_::placeholders::_2));
     CMD2_ANY_LIST("convert.magnitude",          _cxxstd_::bind(&apply_magnitude, _cxxstd_::placeholders::_2));
 
-    rpc::parse_command_multiple
-        (rpc::make_target(),
+    // TODO: deprecated and useless, remove these in v1.2
+    CMD2_VAR_VALUE("ui.style.progress", 1);
+    CMD2_VAR_VALUE("ui.style.ratio", 1);
+
+
+    // Set some defaults by executing an in-memory script
+    std::string init_commands;
+    for (int colidx = ps::COL_DEFAULT + 1; colidx < ps::COL_MAX; colidx++) {
+        char cmdbuf[80];
+        snprintf(cmdbuf, sizeof(cmdbuf),
+                 "method.insert = %s.index, private|value|const, %d\n",
+                 color_vars[colidx], colidx);
+        init_commands.append(cmdbuf);
+    }
+
+    init_commands.append(
+        // Multi-method to store column definitions
         "method.insert = ui.column.render, multi|rlookup|static\n"
+
+        // Bind '*' to toggle between collapsed and expanded display
+        "schedule2 = collapsed_view_toggle, 0, 0, ((ui.bind_key,download_list,*,view.collapsed.toggle=))\n"
+
+        // TODO: copy (parts of) timestamp cfg here (~/.pyroscope/rtorrent.d/timestamps.rc)
+        //       Do NOT move it, since then rT vanilla gets unusable with rtcontrol.
+        //       'system.has' allows to have both.
+
+        //  1:    COL_CUSTOM1
+        //  …
+        //  9:    COL_CUSTOM9
+        // 10:    COL_PROGRESS0
+        // 11:    COL_PROGRESS20
+        // 12:    COL_PROGRESS40
+        // 13:    COL_PROGRESS60
+        // 14:    COL_PROGRESS80
+        // 15:    COL_PROGRESS100
+        // 16:    COL_PROGRESS120
+        // 17:    COL_TITLE
+        // 18:    COL_FOOTER
+        // 19:    COL_FOCUS
+        // 20:    COL_LABEL
+        // 21:    COL_INFO
+        // 22:    COL_ALARM
+        // 23:    COL_COMPLETE
+        // 24:    COL_SEEDING
+        // 25:    COL_STOPPED
+        // 26:    COL_QUEUED
+        // 27:    COL_INCOMPLETE
+        // 28:    COL_LEECHING
+        // 29:    COL_ODD
+        // 30:    COL_EVEN
+
+        // 90:    COL_DOWN_TIME
+        // 91:    COL_PRIO
+        // 92:    COL_STATE
+        // 93:    COL_RATIO
+        // 94:    COL_PROGRESS
+        // 95:    COL_ALERT
+        // 96:    COL_UP_TIME
+
+        // Status flags (❢ ☢ ☍ ⌘)
+        "method.set_key = ui.column.render, \"100:3C95/2:❢  \","
+        "    ((array.at, {\"  \", \"♺ \", \"⚠ \", \"◔ \", \"⚡ \", \"↯ \", \"¿?\", \"⨂ \"}, ((d.message.alert)) ))\n"
+        "method.set_key = ui.column.render, \"110:2C92/2:☢ \","
+        "    ((string.map, ((cat, ((d.is_open)), ((d.is_active)))), {00, \"▪ \"}, {01, \"▪ \"}, {10, \"╍ \"}, {11, \"▹ \"}))\n"
+        "method.set_key = ui.column.render, \"120:?2:☍ \","
+        "    ((array.at, {\"⚯ \", \"  \"}, ((not, ((d.tied_to_file)) )) ))\n"
+        "method.set_key = ui.column.render, \"130:?2:⌘ \","
+        "    ((array.at, {\"⚒ \", \"◌ \"}, ((d.ignore_commands)) ))\n"
+
+        // Scrape info (↺ ⤴ ⤵)
+        "method.set_key = ui.column.render, \"400:?3C23/3: ↺ \", ((convert.magnitude, ((d.tracker_scrape.downloaded)) ))\n"
+        "method.set_key = ui.column.render, \"410:?3C24/3: ⤴ \", ((convert.magnitude, ((d.tracker_scrape.complete)) ))\n"
+        "method.set_key = ui.column.render, \"420:?3C14/3: ⤵ \", ((convert.magnitude, ((d.tracker_scrape.incomplete)) ))\n"
+
+        // Traffic indicator (⚡)
+        "method.set_key = ui.column.render, \"500:?2:⚡ \","
+        "    ((string.map, ((cat, ((not, ((d.up.rate)) )), ((not, ((d.down.rate)) )) )),"
+        "                  {00, \"⇅ \"}, {01, \"↟ \"}, {10, \"↡ \"}, {11, \"  \"} ))\n"
+
+        // Number of connected peers (℞)
+        "method.set_key = ui.column.render, \"510:3C28/3:℞  \", ((convert.magnitude, ((d.peers_connected)) ))\n"
+
+        // Up|Leech Time / Down|Completion or Loaded Time
+        // TODO: Could use "d.timestamp.started" and "d.timestamp.finished" here, but need to check
+        //       when they were introduced, and if they're always set (e.g. what about fast-resumed items?)
+        "method.set_key = ui.column.render, \"520:6C96/6:∆⋮ ⌛  \","
+        "    ((if, ((d.up.rate)),"
+        "        ((convert.human_size, ((d.up.rate)), ((value, 10)) )),"
+        "        ((convert.time_delta, ((value, ((d.custom, tm_completed)) )),"
+        "                              ((value, ((d.custom.if_z, tm_started, ((d.custom, tm_loaded)) )) )) ))"
+        "    ))\n"
+        "method.set_key = ui.column.render, \"530:6C90/6:∇⋮ ⌚  \","
+        "    ((if, ((d.down.rate)),"
+        "        ((convert.human_size, ((d.down.rate)), ((value, 10)) )),"
+        "        ((convert.time_delta, ((value, ((d.custom.if_z, tm_completed, ((d.custom, tm_loaded)) )) )) ))"
+        "    ))\n"
+
+        // Upload total, progress, ratio, and data size
+        "method.set_key = ui.column.render, \"900:?5C24/3C21/2: Σ⇈  \","
+        "    ((if, ((d.up.total)),"
+        "        ((convert.human_size, ((d.up.total)), (value, 10))),"
+        "        ((cat, \"  ⋅ \"))"
+        "    ))\n"
+        "method.set_key = ui.column.render, \"910:2C94/2:⣿ \","
+        "    ((string.substr, \"  ⠁ ⠉ ⠋ ⠛ ⠟ ⠿ ⡿ ⣿ ❚ \", ((math.mul, 2, "
+        "                     ((math.div, ((math.mul, ((d.completed_chunks)), 10)), ((d.size_chunks)) )) )), 2, \"✔ \"))\n"
+        // "  ⠁ ⠉ ⠋ ⠛ ⠟ ⠿ ⡿ ⣿ ❚ "
+        //⠀"  ▁ ▂ ▃ ▄ ▅ ▆ ▇ █ "
+        "method.set_key = ui.column.render, \"920:3C93/3:☯  \","
+        "    ((string.substr, \"☹ ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ \", ((math.mul, 2, ((math.div, ((d.ratio)), 1000)) )), 2, \"⊛ \"))\n"
+        // "☹ ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ "
+        // "☹ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ "
+        // "☹ ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒ ➓ "
+        "method.set_key = ui.column.render, \"930:5C15/3C21/2: ✇   \","
+        "    ((convert.human_size, ((d.size_bytes)) ))\n"
+
+        // Explicitly managed status (✰ = prio; ⚑ = tagged)
+        "method.set_key = ui.column.render, \"970:2C91/2:✰ \","
+        "    ((array.at, {\"✖ \", \"⇣ \", \"  \", \"⇡ \"}, ((d.priority)) ))\n"
+        "method.set_key = ui.column.render, \"980:2C16/2:⚑ \","
+        "    ((array.at, {\"  \", \"⚑ \"}, ((d.views.has, tagged)) ))\n"
     );
+
+    //printf("%s", init_commands.c_str());
+    rpc::parse_command_multiple(rpc::make_target(), init_commands.c_str());
 }

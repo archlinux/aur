@@ -1,0 +1,10 @@
+--- a/src/rpc/parse_commands.cc
++++ b/src/rpc/parse_commands.cc
+@@ -226,6 +226,7 @@ parse_command_file(const std::string& path) {
+     }
+ 
+   } catch (torrent::input_error& e) {
++    if (!strcmp(e.what(), "import.return")) return true;
+     snprintf(buffer, 2048, "Error in option file: %s:%u: %s", path.c_str(), lineNumber, e.what());
+ 
+     throw torrent::input_error(buffer);
