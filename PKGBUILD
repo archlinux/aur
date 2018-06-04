@@ -3,7 +3,7 @@
 
 pkgname=gtimelog
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Small GTK+ app for keeping track of your time'
 arch=('any')
 url='https://gtimelog.org/'
@@ -15,4 +15,9 @@ sha256sums=('ab43075afdd732e35bfc9f39ee425c23efe0f68258f3bc5688791a12028e6fc7')
 package() {
   cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
+
+  # Install .desktop file and icon(s)
+  install -Dm0644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm0644 "src/${pkgname}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
+  install -Dm0644 "src/${pkgname}/${pkgname}-large.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
 }
