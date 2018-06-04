@@ -2,7 +2,7 @@
 
 pkgname=ant-gtk-theme
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Ant Theme for GTK 3.x"
 arch=(any)
 url=https://www.gnome-look.org/p/1099856
@@ -28,7 +28,17 @@ sha256sums=('c7e3b91ec8aae66cfe3de15a4595d3413575b7d7d410ff01f479a89a0af72cbb'
 	'7d18cefffc6627d14013919d6c4f0c0b52148dbfad920d8f656c33850a90972f'
 	'3c4f359233e03b2658da380f28a051d25bffaa9f9eb556842f22e2f54f9eba7a')
 
-package(){
-	cd "$srcdir"
-	find */ -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
+package() {
+	cd ${srcdir}
+	find Ant{,-Bloody,-Dracula,-Nebula}/ -type f -exec install -Dm644 '{}' "${pkgdir}/usr/share/themes/{}" \;
+
+	# break out '-Slim' and '-standard-buttons' sub-dirs
+	cp -r "${srcdir}/Ant-Slim/Ant-Slim" "${pkgdir}/usr/share/themes/"
+	cp -r "${srcdir}/Ant-Slim/Ant-Slim-Standard-buttons" "${pkgdir}/usr/share/themes/"
+	cp -r "${srcdir}/Ant-Bloody-Slim/Ant-Bloody-Slim" "${pkgdir}/usr/share/themes/"
+	cp -r "${srcdir}/Ant-Bloody-Slim/Ant-Bloody-Slim-standard-buttons" "${pkgdir}/usr/share/themes/"
+	cp -r "${srcdir}/Ant-Dracula-Slim/Ant-Dracula-Slim" "${pkgdir}/usr/share/themes/"
+	cp -r "${srcdir}/Ant-Dracula-Slim/Ant-Dracula-Slim-standard-buttons" "${pkgdir}/usr/share/themes/"
+	cp -r "${srcdir}/Ant-Nebula-Slim/Ant-Nebula-Slim" "${pkgdir}/usr/share/themes/"
+	cp -r "${srcdir}/Ant-Nebula-Slim/Ant-Nebula-Slim-standard-buttons" "${pkgdir}/usr/share/themes/"
 }
