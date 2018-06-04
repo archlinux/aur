@@ -2,15 +2,15 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=gtimelog
-pkgver=0.10.3
+pkgver=0.11
 pkgrel=1
 pkgdesc='Small GTK+ app for keeping track of your time'
 arch=('any')
 url='https://gtimelog.org/'
 license=('GPL')
 depends=('python' 'python-gobject' 'python-setuptools')
-source=("https://pypi.python.org/packages/72/3c/a3dd5364801a891035cac55a74dbe6a95cd9a0824f89ca5a2126770636d5/$pkgname-${pkgver}.tar.gz")
-md5sums=('7171f60fd4c8299fda3904320e2034d2')
+source=("https://files.pythonhosted.org/packages/33/e5/789ef0fc2280da0ba67bae24317ee77158f23be751835c8d9dc9f0198f21/$pkgname-${pkgver}.tar.gz")
+sha256sums=('ab43075afdd732e35bfc9f39ee425c23efe0f68258f3bc5688791a12028e6fc7')
 
 package() {
   cd "$pkgname-$pkgver"
