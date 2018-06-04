@@ -1,14 +1,14 @@
 pkgbase = gitprompt-rs
 	pkgdesc = Simple Git prompt
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Streetwalrus/gitprompt-rs
 	arch = x86_64
 	license = MPL2
 	makedepends = cargo
 	depends = git
-	source = https://github.com/Streetwalrus/gitprompt-rs/archive/0.1.1.tar.gz
-	md5sums = 71651c4541949044288f7deb5679132d
+	source = https://github.com/Streetwalrus/gitprompt-rs/archive/0.1.2.tar.gz
+	md5sums = ecc8a61c9a149cfa07dace9890dd63d0
 
 pkgname = gitprompt-rs
 
