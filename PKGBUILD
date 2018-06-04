@@ -11,8 +11,8 @@ makedepends=()
 provides=('predict')
 conflicts=()
 options=('!emptydirs')
-source=("http://www.qsl.net/kd2bd/predict-2.2.5.tar.bz2")
-md5sums=('SKIP')
+source=("https://www.qsl.net/kd2bd/predict-2.2.5.tar.bz2")
+md5sums=(b80ed5749688742c32b9b87870a1ed67)
 
 build() {
     cd "predict-2.2.5"
