@@ -1,0 +1,23 @@
+pkgbase = crow-translate
+	pkgdesc = A simple and lightweight translator that allows to translate and speak the selected text using the Google Translate API
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://github.com/Shatur95/Crow-Translate
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = gst-plugins-good
+	depends = openssl
+	source = Crow-Translate.tar.gz::https://github.com/Shatur95/Crow-Translate/archive/0.9.9.tar.gz
+	source = QOnlineTranslator-submodule.tar.gz::https://github.com/Shatur95/QOnlineTranslator/archive/0.8.0.tar.gz
+	source = QHotkey-submodule.tar.gz::https://github.com/Skycoder42/QHotkey/archive/1.2.2.tar.gz
+	source = SingleApplication-submodule.tar.gz::https://github.com/itay-grudev/SingleApplication/archive/v3.0.10.tar.gz
+	sha256sums = 8a6ccdcc0bda941420be24d3322936117a982771e3686c18494a8da4eed9ecb0
+	sha256sums = 2accf32e3335061c524cc15be8c0dea2f7ea8df5c191a40e6aeffa3641dbde0e
+	sha256sums = 1a5a6eb81738a8f232df2dd5c908839871077e10ca3b9a6437daf5fda53d86ad
+	sha256sums = 9c8ae7431ea008c4516456615558c433940d3d0a144dc549f5aac43193b4afc0
+
+pkgname = crow-translate
+
