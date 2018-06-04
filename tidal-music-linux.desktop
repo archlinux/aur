@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Tidal
+GenericName=Music Player
+Icon=/usr/share/tidal-music-linux-bin/resources/app/icon.png
+Exec=tidal-music-linux
+Terminal=false
+Categories=Audio;Music;Player;AudioVideo;
