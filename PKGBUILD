@@ -1,19 +1,19 @@
-# Maintainer: polyzen <polycitizen@gmail.com>
-# Maintainer: Sam Stuewe <halosghost at archlinux dot info>
+# Contributor: polyzen <polycitizen@gmail.com>
+# Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgbase=heavything-bin
 pkgname=('rwasa-bin' 'webslap-bin' 'hnwatch-bin' 'dhtool-bin' 'sshtalk-bin')
-pkgver=1.17
+pkgver=1.21
 pkgrel=1
-pkgdesc='A General purpose x64 Asm library for 2ton products'
+pkgdesc='General purpose x64 Asm library for 2ton products'
 arch=('x86_64')
 url='https://2ton.com.au/HeavyThing'
 license=('GPL3')
 source=("$url-$pkgver.tar.gz")
-sha256sums=('8432034b21ffac9b4fd6955a17de532668d60dc73e617bb19d561c9e428931a1')
+sha256sums=('68e5a8ea5849bc53f3e0f8b17226ecb350ba1bba0798e28390f81b413a09ec98')
 
 package_rwasa-bin () {
-  pkgdesc='a full featured web server that eclipses nginx'
+  pkgdesc='full featured web server that eclipses nginx'
   url='https://2ton.com.au/rwasa/'
   conflicts=('rwasa')
   cd HeavyThing-$pkgver/rwasa
@@ -21,7 +21,7 @@ package_rwasa-bin () {
 }
 
 package_webslap-bin () {
-  pkgdesc='A website quality assurance reporting tool'
+  pkgdesc='website quality assurance reporting tool'
   url='https://2ton.com.au/webslap/'
   conflicts=('webslap')
   cd HeavyThing-$pkgver/webslap
@@ -29,7 +29,7 @@ package_webslap-bin () {
 }
 
 package_hnwatch-bin () {
-  pkgdesc='A HackerNews API realtime terminal watch/reader'
+  pkgdesc='HackerNews API realtime terminal watch/reader'
   url='https://2ton.com.au/hnwatch/'
   conflicts=('hnwatch')
   cd HeavyThing-$pkgver/hnwatch
@@ -37,7 +37,7 @@ package_hnwatch-bin () {
 }
 
 package_dhtool-bin () {
-  pkgdesc='A Diffie-Hellman parameter generator/verifier/converter'
+  pkgdesc='Diffie-Hellman parameter generator/verifier/converter'
   url='https://2ton.com.au/dhtool/'
   conflicts=('dhtool')
   cd HeavyThing-$pkgver/dhtool
@@ -45,7 +45,7 @@ package_dhtool-bin () {
 }
 
 package_sshtalk-bin () {
-  pkgdesc='An ephemeral multi-person SSH chat'
+  pkgdesc='ephemeral multi-person SSH chat'
   url='https://2ton.com.au/sshtalk/'
   conflicts=('sshtalk')
   cd HeavyThing-$pkgver/sshtalk
