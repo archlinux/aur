@@ -1,6 +1,6 @@
 pkgbase = nautilus-megasync
 	pkgdesc = Upload your files to your Mega account from nautilus.
-	pkgver = 3.6.0
+	pkgver = 3.6.6
 	pkgrel = 1
 	url = https://mega.co.nz/#sync
 	install = nautilus-megasync.install
@@ -11,7 +11,7 @@ pkgbase = nautilus-megasync
 	depends = megasync>=2.9.8
 	depends = qt4
 	provides = nautilus-megasync
-	source = https://mega.nz/linux/MEGAsync/Debian_9.0/nautilus-megasync_3.6.0.orig.tar.gz
+	source = https://mega.nz/linux/MEGAsync/Debian_9.0/nautilus-megasync_3.6.6.orig.tar.gz
 	sha256sums = SKIP
 
 pkgname = nautilus-megasync
