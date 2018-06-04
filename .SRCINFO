@@ -1,0 +1,19 @@
+pkgbase = python2-nibabel-git
+	pkgdesc = Python package to access a cacophony of neuro-imaging file formats
+	pkgver = 2.2.1.r228.g2edca761
+	pkgrel = 1
+	url = http://nipy.org/nibabel/
+	arch = any
+	license = MIT
+	license = custom
+	makedepends = git
+	depends = python2>=2.7
+	depends = python2-numpy>=1.7.1
+	depends = python2-six>=1.3
+	provides = python2-nibabel
+	conflicts = python2-nibabel
+	source = nibabel::git+http://github.com/nipy/nibabel.git
+	md5sums = SKIP
+
+pkgname = python2-nibabel-git
+
