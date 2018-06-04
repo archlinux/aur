@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.16
-_stable=4.16.12
-_patchver=4.16.13
+_stable=4.16.13
+_patchver=4.16.14
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -36,9 +36,9 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '96b5fce7d698f7d168fc22cebd201f1a168fcdeea01b14caca06ab3da940aeba'
+            '7e91c08a27e2a25209473b3802f619ed33cdd593f24f94536a3881a53c1f4d32'
             'SKIP'
-            '70a6381aca28b1d271e85bc38fab05af4525d9fdc2c5bb87182b3351db8c4fa2'
+            '9efa0a74eb61240da53bd01a3a23759e0065811de53d22de7d679eabf847f323'
             'SKIP'
             '8fe49fc7b6fa3083c878c94e1362bdd6e95965bf6d5ff969c95d4b0e5b6abf61'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
