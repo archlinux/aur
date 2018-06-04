@@ -12,7 +12,7 @@ license=('Apache')
 conflicts=('chromium')
 depends=('libpng' 'gconf')
 optdepends=('google-chrome')
-md5sums=('f4fbbf50eaec2b9c9e21536e39b9999e')
+md5sums=('65d4a2115bbfc507aab33655f3b4881b')
 
 source=("${pkgname}_${pkgver}_linux64.zip::http://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_linux64.zip")
 
