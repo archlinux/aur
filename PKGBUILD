@@ -2,14 +2,14 @@
 
 _pkgname=meld
 pkgname=$_pkgname-dev
-pkgver=3.17.4
+pkgver=3.19.0
 pkgrel=1
 pkgdesc='Visual diff and merge tool'
 url='http://meldmerge.org/'
 license=(GPL)
 arch=(any)
-conflicts=('meld','meld-git')
-replaces=('meld','meld-git')
+conflicts=('meld' 'meld-git')
+replaces=('meld' 'meld-git')
 provides=('meld')
 makedepends=('intltool' 'gnome-doc-utils' 'itstool')
 install=meld.install
@@ -22,7 +22,7 @@ depends=('python>=3.3'
         'python-cairo>=1.10.0-6')
 optdepends=('python2-dbus: open a new tab in an already running instance')
 source=("https://download.gnome.org/sources/$_pkgname/${pkgver%.*}/meld-${pkgver}.tar.xz")
-sha1sums=('823e8c6b49728de4794ba26d655061e87ba03377')
+sha1sums=('14e425a276e45518a18f63d9668c50c9b928ddf5')
 
 prepare() {
   cd $_pkgname-$pkgver

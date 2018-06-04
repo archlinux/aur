@@ -1,6 +1,6 @@
 pkgbase = meld-dev
 	pkgdesc = Visual diff and merge tool
-	pkgver = 3.17.4
+	pkgver = 3.19.0
 	pkgrel = 1
 	url = http://meldmerge.org/
 	install = meld.install
@@ -20,8 +20,8 @@ pkgbase = meld-dev
 	conflicts = meld meld-git
 	replaces = meld meld-git
 	options = !emptydirs
-	source = https://download.gnome.org/sources/meld/3.17/meld-3.17.4.tar.xz
-	sha1sums = 823e8c6b49728de4794ba26d655061e87ba03377
+	source = https://download.gnome.org/sources/meld/3.19/meld-3.19.0.tar.xz
+	sha1sums = 14e425a276e45518a18f63d9668c50c9b928ddf5
 
 pkgname = meld-dev
 
