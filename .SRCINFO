@@ -1,12 +1,12 @@
 pkgbase = tinydns
 	pkgdesc = Tiny cache DNS server
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/CupIvan/tinydns
 	arch = any
 	backup = etc/tinydns.conf
-	source = https://github.com/CupIvan/tinydns/archive/v0.1.tar.gz
-	md5sums = e283f2254233351e8ee2e610795b0a0a
+	source = https://github.com/CupIvan/tinydns/archive/v0.2.tar.gz
+	md5sums = 226dbdf8d1c808c6b79b1e3cb14a352f
 
 pkgname = tinydns
 
