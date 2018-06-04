@@ -15,7 +15,7 @@ license=('LGPL')
 url="http://qt-project.org/wiki/PySide"
 makedepends=("python"{,2}"-shiboken2-git" 'cmake'
              'phonon-qt5' 'git' 'python2-sphinx' 'graphviz' 'qt5-base'
-             'qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia' 'qt5-declarative'
+             'qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia' 'qt5-declarative' 'qt5-scxml'
              'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d' 'qt5-3d'
              'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
 source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.11")
