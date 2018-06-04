@@ -1,5 +1,5 @@
 --- src/wingpanel/CMakeLists.txt	2017-10-13 03:25:28.007664080 +0900
-+++ src/wingpanel/CMakeLists.txt.new	2017-10-13 03:27:00.135900068 +0900
++++ src/wingpanel/CMakeLists.txt	2017-10-13 03:27:00.135900068 +0900
 @@ -121,8 +121,6 @@
  set (DEPS_LIBRARIES ${DEPS_LIBRARIES} ${LIB_NAME})
  add_subdirectory (src)

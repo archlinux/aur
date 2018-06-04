@@ -1,5 +1,5 @@
 --- src/wingpanel/src/PanelWindow.vala	2016-10-21 23:51:49.434036000 +0900
-+++ src/wingpanel/src/PanelWindow.vala.new	2016-10-22 00:21:00.991151961 +0900
++++ src/wingpanel/src/PanelWindow.vala	2016-10-22 00:21:00.991151961 +0900
 @@ -86,7 +86,6 @@
      private void on_realize () {
          update_panel_dimensions ();
@@ -24,8 +24,8 @@
  
              this.expanded = false;
  
---- src/wingpanel/src/Widgets/Panel.vala	2016-10-22 00:14:45.485792472 +0900
-+++ src/wingpanel/src/Widgets/Panel.vala.new	2016-10-22 00:15:13.386112571 +0900
+--- src/wingpanel/src/Widgets/Panel.vala	2018-06-04 19:55:35.553769970 +0900
++++ src/wingpanel/src/Widgets/Panel.vala	2018-06-04 21:39:40.293996810 +0900
 @@ -25,7 +25,6 @@
      private MenuBar center_menubar;
  
@@ -33,29 +33,52 @@
 -    private Gtk.CssProvider? style_provider = null;
  
      public Panel (Services.PopoverManager popover_manager) {
-         Object (popover_manager : popover_manager, orientation: Gtk.Orientation.HORIZONTAL);
-@@ -60,7 +60,6 @@
+         Object (popover_manager : popover_manager);
+@@ -64,39 +63,6 @@
  
          style_context = this.get_style_context ();
  
 -        Services.BackgroundManager.get_default ().background_state_changed.connect (update_background);
-     }
- 
-     private void add_indicator (Indicator indicator) {
-@@ -93,8 +93,7 @@
- 
-         popover_manager.close ();
- 
+-    }
+-
+-    public override bool button_press_event (Gdk.EventButton event) {
+-        if (event.button != Gdk.BUTTON_PRIMARY) {
+-            return Gdk.EVENT_PROPAGATE;
+-        }
+-
+-        var window = get_window ();
+-        if (window == null) {
+-            return Gdk.EVENT_PROPAGATE;
+-        }
+-
+-        // Grabbing with touchscreen on X does not work unfortunately
+-        if (event.device.get_source () == Gdk.InputSource.TOUCHSCREEN) {
+-            return Gdk.EVENT_PROPAGATE;
+-        }
+-
+-        uint32 time = event.time;
+-        
+-#if HAS_GTK320
+-        window.get_display ().get_default_seat ().ungrab ();
+-#else
+-        window.get_display ().pointer_ungrab (time);
+-#endif
+-
+-        Gdk.ModifierType state;
+-        event.get_state (out state);
+-
+-        popover_manager.close ();
+-
 -        var background_manager = Services.BackgroundManager.get_default ();
 -        return background_manager.begin_grab_focused_window ((int)event.x_root, (int)event.y_root, (int)event.button, time, state);
-+        return Gdk.EVENT_PROPAGATE;
      }
  
      public void cycle (bool forward) {
-@@ -228,55 +227,4 @@
+@@ -263,56 +229,4 @@
+             }
          }
      }
- 
+-
 -    private void update_background (Services.BackgroundState state, uint animation_duration) {
 -        if (style_provider == null) {
 -            style_provider = new Gtk.CssProvider ();
@@ -109,7 +132,7 @@
 -    }
  }
 --- src/wingpanel/src/CMakeLists.txt	2017-10-13 03:28:23.119421691 +0900
-+++ src/wingpanel/src/CMakeLists.txt.new	2017-10-13 03:30:12.838158479 +0900
++++ src/wingpanel/src/CMakeLists.txt	2017-10-13 03:30:12.838158479 +0900
 @@ -10,7 +10,6 @@
    Services/IndicatorSorter.vala
    Services/PopoverManager.vala
@@ -118,4 +141,3 @@
  )
  
  vala_precompile (CLIENT_VALA_C ${CMAKE_PROJECT_NAME}
-

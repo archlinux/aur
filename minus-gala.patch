@@ -1,5 +1,5 @@
 --- src/wingpanel/.travis.yml	2017-10-13 02:26:35.980021306 +0900
-+++ src/wingpanel/.travis.yml.new	2017-10-13 02:29:58.537336177 +0900
++++ src/wingpanel/.travis.yml	2017-10-13 02:29:58.537336177 +0900
 @@ -4,7 +4,7 @@
   - docker
  
