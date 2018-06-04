@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://build.chromium.org"
 license=('BSD')
 depends=('alsa-lib' 'gconf' 'gtk3' 'libcups' 'libxss' 'libxtst' 'nss')
-optdepends=('kdialog:: needed for file dialogs in KDE'
+optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
             'pepper-flash: for Pepper Flash plugin [AUR]'
