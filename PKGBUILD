@@ -6,19 +6,22 @@
 # Maintainer:  twa022 <twa022 at gmail dot com>
 
 # Use the master branch if _branch is not defined
-_branch="5.0"
+_branch='' #"5.0"
 
 _pkgname=kmymoney
 pkgname=${_pkgname}-git
-pkgver=4.100.90+1409+gd16c1ae9
+pkgver=5.0.1+186+g8bdae558
 pkgrel=1
 pkgdesc="Personal finance manager for KDE which operates similarly to MS-Money or Quicken"
 arch=('x86_64' 'i686')
 url="https://github.com/KDE/kmymoney"
 license=('GPL')
-depends=('kdewebkit' 'aqbanking' 'libalkimia-qt5' 'libical'
-         'kcmutils' 'kitemmodels' 'kdiagram' 'kross' 'kactivities')
-makedepends=('extra-cmake-modules' 'doxygen' 'kdoctools')
+depends=('aqbanking' 'boost-libs' 'libalkimia' 'sqlcipher' 'qt5-base' 'qgpgme' 'karchive'
+         'kcoreaddons' 'kconfig' 'kwidgetsaddons' 'ki18n' 'kcompletion' 'kcmutils' 'kitemmodels'
+         'kitemviews' 'kservice' 'kwallet' 'kiconthemes' 'kxmlgui' 'kidentitymanagement'
+         'ktextwidgets' 'knotifications' 'kio' 'kdoctools' 'kholidays' 'kross' 'kactivities'
+         'kqtquickcharts' 'kdiagram' 'kdewebkit' 'kcontacts' 'libical' 'akonadi' 'shared-mime-info')
+makedepends=('boost' 'extra-cmake-modules' 'doxygen' 'git')
 conflicts=("${_pkgname}")
 provides=("${pkgname}=${pkgver%%+}")
 source=()
@@ -28,8 +31,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  _ver=$( grep -i "kmymoney version" CMakeLists.txt | sed 's:.*\"\(.*\)\".*:\1:' )
-  git describe --long --tags | sed "s/-/+/g" | sed "s:[^+]*+\(.*\):${_ver}+\1:"
+  #_ver=$( grep -i "kmymoney version" CMakeLists.txt | sed 's:.*\"\(.*\)\".*:\1:' )
+  git describe --long --tags | sed "s/^v//;s/-/+/g" # | sed "s:[^+]*+\(.*\):${_ver}+\1:"
 }
 
 build() {
@@ -41,7 +44,10 @@ build() {
 
   cmake ../ \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_SKIP_RPATH=YES
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_BUILD_TYPE=RELEASE \
+    -DCMAKE_SKIP_RPATH=YES \
+    -Wno-dev
   make
 }
 
@@ -49,8 +55,4 @@ package() {
   cd "${srcdir}/${_pkgname}/build"
 
   make DESTDIR="${pkgdir}" install
-  
-  # There must be a better way to do this. WTF cmake
-  mv "${pkgdir}"/usr/lib64/* "${pkgdir}"/usr/lib
-  rm -fr "${pkgdir}"/usr/lib64
 }
