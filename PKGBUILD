@@ -3,7 +3,7 @@
 
 _gemname=naturally
 pkgname=ruby-$_gemname
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Natural Sorting with support for legal numbering, course numbers, and other number/letter mixes.'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('acf16c334ecbe9c4c4e5107638f0e984328a02bd')
+sha1sums=('0a3ea72dac5b8e11c1ccd54f9de1f05a45d358c7')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
