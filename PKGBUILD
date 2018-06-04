@@ -2,7 +2,7 @@
 # Thanks to Adria Arrufat <swiftscythe@gmail.com>
 
 pkgname=clementine-qt5-git
-pkgver=1.3.1.r515.g4273c0313
+pkgver=1.3.1.r545.g4619a4c1a
 pkgrel=1
 pkgdesc="Experimental Qt5 version of Clementine, a modern music player and library organiser."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly'
          'gst-libav' 'taglib' 'glew' 'desktop-file-utils' 'hicolor-icon-theme'
          'qt5-base' 'protobuf' 'crypto++' 'chromaprint'
-         'libmygpo-qt5-git' 'qt5-x11extras')
+         'libmygpo-qt5' 'qt5-x11extras')
 makedepends=('git' 'boost' 'cmake' 'mesa' 'qt5-tools')
 install=clementine.install
 # Uncomment next lines to enable all the  features
