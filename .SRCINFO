@@ -1,8 +1,8 @@
 pkgbase = keyboard_latency
 	pkgdesc = Daemon for resolving keyboard lag issues on Dell XPS 13 laptops
 	pkgver = 1.0
-	pkgrel = 1
-	url = https://github.com/craftyguy/keyboard_latency
+	pkgrel = 2
+	url = https://gitlab.com/craftyguy/keyboard_latency
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = keyboard_latency
 	depends = glibc
 	provides = keyboard_latency
 	conflicts = keyboard_latency
-	source = https://github.com/craftyguy/keyboard_latency/archive/1.0.tar.gz
-	md5sums = 3a89b4fa77353edb2b8c8289d73e257f
+	source = https://gitlab.com/craftyguy/keyboard_latency/-/archive/1.0/keyboard_latency-1.0.tar.bz2
+	sha512sums = e535aa28565438a066939fbe3942a20958254acd243374f79e9e355f7c501276252b2ed8ad9f6955ab5bfbc039bdd170babdb91d88b90d9e43d6f59bf32c68e2
 
 pkgname = keyboard_latency
 
