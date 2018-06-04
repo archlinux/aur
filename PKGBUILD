@@ -2,8 +2,8 @@
 # Maintainer: Adrian Petrescu <apetresc@gmail.com>
 
 pkgname=sabaki
-pkgver=0.33.4
-pkgrel=2
+pkgver=0.34.1
+pkgrel=1
 pkgdesc='An elegant SGF editor for the game of Go'
 arch=('any')
 url='http://sabaki.yichuanshen.de/'
@@ -13,7 +13,7 @@ install=${pkgname}.install
 source=("https://github.com/SabakiHQ/Sabaki/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         'sabaki.xml')
-md5sums=('401e2e1095e3bc98a539b67adf4447bd'
+md5sums=('f40ab6916c26e065884ad14118f75a95'
          'b39f3b91292cb3983124bd38035fbd8e'
          'efbd547e892c7781a5ece702d389dd9e')
 
