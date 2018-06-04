@@ -70,6 +70,9 @@ build() {
       --enable-version-specific-runtime-libs
       #--enable-install-libiberty
 
+  # without LD_PRELOAD, the build fails for some people with:
+  #    [Makefile:605: libstdc++.la] Error 139
+  export LD_PRELOAD=/usr/lib/libstdc++.so
   make
 }
 
