@@ -1,3 +1,12 @@
+From b0cee6ea01d5e63016cd1f384c3b86f86af736af Mon Sep 17 00:00:00 2001
+From: Vincent Fourmond <fourmond@debian.org>
+Date: Sun, 18 Mar 2012 02:26:19 +0100
+Subject: [PATCH] Fix a careless segfault in debug mode
+
+---
+ src/policy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/src/policy.c b/src/policy.c
 index 74afc28..2163c48 100644
 --- a/src/policy.c
@@ -11,3 +20,6 @@ index 74afc28..2163c48 100644
    } 
    return removable;
  }
+-- 
+2.17.1
+

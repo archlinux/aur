@@ -1,0 +1,13 @@
+diff --git a/src/fs.c b/src/fs.c
+index 65ea0c7..dc41395 100644
+--- a/src/fs.c
++++ b/src/fs.c
+@@ -23,6 +23,8 @@ static struct FS supported_fs[] = {
+     { "iso9660", "nosuid,nodev,user", 1, NULL, ",iocharset=%s" },
+     { "vfat", "nosuid,nodev,user,quiet,shortname=mixed", 1, "077", 
+       ",iocharset=%s",",fmask=%04o,dmask=%04o"},
++    { "exfat", "nosuid,nodev,user,quiet,nonempty", 1, "077",
++      ",iocharset=%s",",fmask=%04o,dmask=%04o"},
+     { "hfsplus", "nosuid,nodev,user", 1, NULL, 0 },
+     { "hfs", "nosuid,nodev,user", 1, "077", NULL, 
+       ",file_umask=%04o,dir_umask=%04o"},

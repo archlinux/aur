@@ -4,7 +4,7 @@
 
 pkgname=pmount
 pkgver=0.9.23
-pkgrel=13
+pkgrel=14
 pkgdesc="mount removable devices as normal user"
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL2')
@@ -15,11 +15,19 @@ makedepends=('intltool')
 source=(
   "http://http.debian.net/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.orig.tar.bz2"
   "pmount-bash-completion" # From pmount-debian
-  "fix-pmount-segfault.diff"
+  "0001-Fix-a-careless-segfault-in-debug-mode.patch"
+  "pmount.exfat.patch"
 )
 sha256sums=('db38fc290b710e8e9e9d442da2fb627d41e13b3ee80326c15cc2595ba00ea036'
             '2f3983432533d453cb1217b8e6804264e22fa689a0e73a2a4d8d11f0b704bacc'
-            'cd1739e70cd4e195d166b7a32a45cbfa6abd1d04f2ddb8f159ef8b5f62142114')
+            'e19eda4987b41f1b76281b980b56239b386539938d70e5b4a40b286bff789b93'
+            '6c90da5d992deea70334acaf6781df9d538887bd3d1b62e36a9449e0708006c0')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 < "${srcdir}/0001-Fix-a-careless-segfault-in-debug-mode.patch"
+  patch -p1 < "${srcdir}/pmount.exfat.patch"
+}
 
 build() {
   # commented out in order to avoid *** Error in `/usr/bin/ld': corrupted double-linked list: 0x09e43ce8 ***
