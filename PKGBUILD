@@ -21,8 +21,8 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.16.12
-xanmod=11
+pkgver=4.17.0
+xanmod=1
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -31,13 +31,12 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=419db8df02984cbc0efad9afc13eabd4cb386bc3
+arch_config_trunk=23ddd7cd1a7f32f60ecb85c383acb7398fb8aa94
 
 # Arch additional patches
 arch_patches=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
-  0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+  0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 )
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
@@ -49,15 +48,14 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('8c23deecc1eb51e65fb43a23d0dae23d683f1f4de7d82f6c4288149c8f24a3eb'
+sha256sums=('48a527ffbd2b35c36eea6c60285c80b3acfa147e3ad4c581f6795d156a4f96a2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
-            '8d6a5f34b3d79e75b0cb888c6bcf293f84c5cbb2757f7bdadafee7e0ea77d7dd'
-            '2454c1ee5e0f5aa119fafb4c8d3b402c5e4e10b2e868fe3e4ced3b1e2aa48446'
-            '8114295b8c07795a15b9f8eafb0f515c34661a1e05512da818a34581dd30f87e')
-sha256sums_x86_64=('e39c02fd021f125a6202f7e4c0692dfd3ced93d404ecb6c8dca6994c8e17b227')
+            '0b77e6bef12735bc91e3f0e8232512e973688466f2e8a2c3a93502cb2d4b4eed'
+            '92615acad59cbef9fd43b2710f5a77ffea45a86543ccff1b12eb676a9c8058cc')
+sha256sums_x86_64=('0269d9a56f0d0306c9bd5c179a7e32214b0a1c082d3bca581661203b27305f17')
 
 _kernelname=${pkgbase#linux}
 
