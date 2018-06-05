@@ -10,7 +10,7 @@ _minor=16
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=6
+_pfrel=7
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -73,7 +73,7 @@ true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
 pkgrel=1
 arch=('i686' 'x86_64')
-url="https://pfactum.github.io/pf-kernel"
+url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=('GPL2')
 options=('!strip')
 makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod' 'elfutils')
@@ -649,7 +649,7 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
             '36190e1af132b6c2d717c49354b8e615f78acf15645c396092a085d74baf420e'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'b610ffc6d591fe20e1683cbc62271c47966068ce08ead7555774063d7edd1594'
+            '27a825ec9d5fb57bd23253e73765dd0fff9f4319679fc3f45c6bd511f06d163f'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '2454c1ee5e0f5aa119fafb4c8d3b402c5e4e10b2e868fe3e4ced3b1e2aa48446')
