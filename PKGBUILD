@@ -1,6 +1,6 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux (a) free.fr>
 pkgname=ruby-ddplugin
-pkgver=1.0.1
+pkgver=1.0.2
 _gemname=${pkgname#ruby-}
 pkgrel=1
 pkgdesc="Provides plugin management for Ruby projects"
@@ -10,7 +10,7 @@ license=("MIT")
 depends=('ruby')
 makedepends=(rubygems)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('40f220c4a3fb163927f6a58c5238c3bdc2db8c01827b98a1107d2e11743ef451')
+sha256sums=('c11d7dcc5ecd4c3f4a42e689a2630f766dc8aacf37a9258dc39e715285ce7a1f')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
