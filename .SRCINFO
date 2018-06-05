@@ -1,6 +1,6 @@
 pkgbase = robo
 	pkgdesc = Modern task runner for PHP.
-	pkgver = 1.2.4
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = http://robo.li
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = robo
 	makedepends = php-composer
 	makedepends = git
 	depends = php
-	source = robo::git+https://github.com/Codegyre/Robo.git#tag=1.2.4
+	source = robo::git+https://github.com/Codegyre/Robo.git#tag=1.3.0
 	sha512sums = SKIP
 
 pkgname = robo
