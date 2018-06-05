@@ -1,0 +1,45 @@
+pkgbase = python-poetry
+	pkgdesc = Python dependency management and packaging made easy
+	pkgver = 0.10.3
+	pkgrel = 1
+	url = https://github.com/sdispater/poetry
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-poetry-0.10.3.tar.gz::https://pypi.io/packages/source/p/poetry/poetry-0.10.3.tar.gz
+	sha256sums = ba2ecd69f2ac3d3b35322bb8620365e2beb49adbd5381613f6994b8c684475a2
+
+pkgname = python-poetry
+	depends = python
+	depends = python-cachecontrol
+	depends = python-lockfile
+	depends = python-cachy
+	depends = python-cleo
+	depends = python-html5lib
+	depends = python-jsonschema
+	depends = python-pkginfo
+	depends = python-pyparsing
+	depends = python-pyrsistent
+	depends = python-requests-toolbelt
+	depends = python-requests
+	depends = python-toml
+
+pkgname = python2-poetry
+	depends = python2
+	depends = python2-cachecontrol
+	depends = python2-lockfile
+	depends = python2-cachy
+	depends = python2-cleo
+	depends = python2-html5lib
+	depends = python2-jsonschema
+	depends = python2-pkginfo
+	depends = python2-pyparsing
+	depends = python2-pyrsistent
+	depends = python2-requests-toolbelt
+	depends = python2-requests
+	depends = python2-toml
+
