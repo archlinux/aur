@@ -2,7 +2,7 @@
 # Maintainer: Danilo Bargen <mail at dbrgn dot ch>
 pkgname=siftgpu
 pkgver=0.5.400
-pkgrel=7
+pkgrel=8
 pkgdesc="Sift Features over GPU using GLSL or CUDA"
 arch=('i686' 'x86_64')
 url="http://ccwu.me/"

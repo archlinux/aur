@@ -1,7 +1,7 @@
 pkgbase = siftgpu
 	pkgdesc = Sift Features over GPU using GLSL or CUDA
 	pkgver = 0.5.400
-	pkgrel = 7
+	pkgrel = 8
 	url = http://ccwu.me/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = siftgpu
 	depends = glew>=1.8
 	depends = freeglut>=2.7
 	depends = devil>=1.7
-	optdepends = cuda>=5.0
+	optdepends = cuda
 	source = siftgpu::git+https://github.com/pitzer/SiftGPU
 	source = makefile-cuda.patch
 	sha256sums = SKIP
