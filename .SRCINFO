@@ -2,12 +2,14 @@ pkgbase = ufetch-git
 	pkgdesc = Info script for minimal *nix systems.
 	pkgver = r72.8dfc9a9
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/jschx/ufetch
 	arch = any
-	license = GPL
+	license = ISC
 	makedepends = git
 	provides = ufetch
-	source = ufetch::git+https://github.com/jschx/ufetch.git
+	conflicts = ufetch
+	source = git+https://github.com/jschx/ufetch.git
 	md5sums = SKIP
 
 pkgname = ufetch-git
