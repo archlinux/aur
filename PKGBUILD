@@ -8,21 +8,21 @@ _use_marco=0
 # Autoset depending on marco option
 _use_gtk3=0
 
-_upstream="compiz"
+_upstream="compiz-core"
 
 pkgbase=compiz-core-git
 pkgname=(compiz-core-git compiz-gtk-git)
-pkgver=0.8.14.r3.gd9f455d4
+pkgver=0.8.14.r36.g493a3807
 pkgrel=1
 pkgdesc="This is the latest git release of Compiz without DE deps"
-url="https://github.com/compiz-reloaded/${_upstream}"
+url="https://gitlab.com/compiz/${_upstream}"
 license=('GPL' 'LGPL' 'MIT')
 arch=('i686' 'x86_64')
 depends=('startup-notification' 'librsvg' 'dbus' 'glu' 'libxslt' 'libxrandr' 'libsm' 'libxcomposite' 'libxinerama')
 makedepends=('intltool' 'libice')
 options=(!libtool !emptydirs)
 source=(
-	"git+https://github.com/compiz-reloaded/${_upstream}.git"
+	"git+https://gitlab.com/compiz/${_upstream}.git"
 )
 
 sha1sums=('SKIP')
