@@ -3,13 +3,13 @@
 
 name=cloudcompare
 pkgname=${name}-git
-pkgver=2.9.1.r39.g1b735d7c
+pkgver=2.9.1.r348.g4808ba53
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('qt5-base' 'glu' 'glew' 'mesa' 'vxl' 'ffmpeg' 'cgal' 'pdal')
+depends=('qt5-base' 'qt5-svg' 'glu' 'glew' 'mesa' 'vxl' 'ffmpeg' 'cgal' 'pdal')
 makedepends=('git' 'cmake' 'pcl' 'libharu' 'proj' 'doxygen' 'laz-perf')
 optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git"

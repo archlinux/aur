@@ -1,6 +1,6 @@
 pkgbase = cloudcompare-git
 	pkgdesc = A 3D point cloud (and triangular mesh) processing software
-	pkgver = 2.9.1.r39.g1b735d7c
+	pkgver = 2.9.1.r348.g4808ba53
 	pkgrel = 1
 	url = http://www.danielgm.net/cc/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = cloudcompare-git
 	makedepends = doxygen
 	makedepends = laz-perf
 	depends = qt5-base
+	depends = qt5-svg
 	depends = glu
 	depends = glew
 	depends = mesa
