@@ -1,24 +1,52 @@
+# Maintainer: Michael Gerdau <mgd@qata.de>
+# Maintainer: omangold
+# Maintainer: Daenyth
 # Contributor: Georg Grabler (STiAT) <ggrabler@gmail.com>
-# Contributor: Daenyth
-# Contributor: omangold
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname=perl-ogg-vorbis-header
-pkgver=0.05
-pkgrel=1
-pkgdesc="Perl CPAN module Ogg::Vorbis::Header"
-url="http://search.cpan.org/~dbp/Ogg-Vorbis-Header-0.03/Header.pm"
-license=(GPL)
-depends=(perl perl-inline libvorbis)
-makedepends=(perl-inline-c)
-arch=(i686 x86_64)
-options=(!emptydirs purge)
+pkgname='perl-ogg-vorbis-header'
+pkgver='0.10'
+pkgrel='1'
+pkgdesc="An object-oriented interface to Ogg Vorbis"
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-inline>=0.44' 'perl-inline-c>=0')
+makedepends=()
+url='https://metacpan.org/release/Ogg-Vorbis-Header'
+source=('http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/Ogg-Vorbis-Header-0.10.tar.gz')
+md5sums=('15879884e292009f7ed641cb91cbc552')
+sha512sums=('898f5646085db09abecaa2d1b7bcd361a83bbedf596037e70ec9d3c05051cf10a6940a181af428a2f89124e4e65253f46a0672e61f445451a718703f3dc27abe')
+_distdir="Ogg-Vorbis-Header-0.10"
 
-source=(http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/Ogg-Vorbis-Header-$pkgver.tar.gz)
-sha256sums=('9fefd203170c65ae3627254974554be542fd397dcfca73c5dc5d54f7fc79f761')
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
+}
+
+check() {
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
+}
 
 package() {
-  cd $srcdir/Ogg-Vorbis-Header-$pkgver
-  perl Makefile.PL || return 1
-  make || return 1
-  make DESTDIR=$pkgdir install || return 1
+  cd "$srcdir/$_distdir"
+  make install
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
