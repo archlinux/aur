@@ -1,5 +1,5 @@
 pkgbase = engauge
-	pkgver = 10.6
+	pkgver = 10.7
 	pkgrel = 1
 	url = http://markummitchell.github.io/engauge-digitizer/
 	install = engauge.install
@@ -13,12 +13,12 @@ pkgbase = engauge
 	makedepends = libpng
 	makedepends = openjpeg2
 	makedepends = poppler-qt5
-	source = engauge-10.6.tar.gz::https://github.com/markummitchell/engauge-digitizer/archive/v10.6.tar.gz
+	source = engauge-10.7.tar.gz::https://github.com/markummitchell/engauge-digitizer/archive/v10.7.tar.gz
 	source = engauge.sh
 	source = engauge.desktop
-	md5sums = d7b2bbe967a7fe22e78f327c0730dbfd
-	md5sums = baa6e2963962785d145b63510ba4ee51
-	md5sums = 95398291d4e0bb4adc1fec22a16625b9
+	sha256sums = 8e149573348e2702dc73d29f6aea65ad52cf3c4d7790a97ebf7fad4a59fe1a57
+	sha256sums = 4b36a8aa23c5a95a552d33ce1bd75aa1a0be5fdf9ef06f321a060c753298dd18
+	sha256sums = 1b3f2675058693d5653b5aee50fbec1530791de5fcdfbb2f86056a5d748695a4
 
 pkgname = engauge
 	pkgdesc = Extracts data points from images of graphs

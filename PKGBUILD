@@ -6,7 +6,7 @@ _pkgbase='engauge-digitizer'
 
 pkgname=('engauge' 'engauge-samples')
 pkgbase='engauge'
-pkgver=10.6
+pkgver=10.7
 pkgrel=1
 url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
@@ -15,13 +15,13 @@ makedepends=('qt5-tools' 'fftw' 'log4cpp' 'libjpeg-turbo' 'libpng' 'openjpeg2' '
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/markummitchell/$_pkgbase/archive/v$pkgver.tar.gz"
         "$pkgbase.sh"
         "$pkgbase.desktop")
-md5sums=('d7b2bbe967a7fe22e78f327c0730dbfd'
-         'baa6e2963962785d145b63510ba4ee51'
-         '95398291d4e0bb4adc1fec22a16625b9')
+sha256sums=('8e149573348e2702dc73d29f6aea65ad52cf3c4d7790a97ebf7fad4a59fe1a57'
+            '4b36a8aa23c5a95a552d33ce1bd75aa1a0be5fdf9ef06f321a060c753298dd18'
+            '1b3f2675058693d5653b5aee50fbec1530791de5fcdfbb2f86056a5d748695a4')
 install=engauge.install
 
 build() {
-  cd "$srcdir/${_pkgbase}-$pkgver"
+  cd ${_pkgbase}-$pkgver
   export OPENJPEG_INCLUDE=/usr/include/openjpeg-2.3 OPENJPEG_LIB=/usr/lib 
   export POPPLER_INCLUDE=/usr/include/poppler/qt5 POPPLER_LIB=/usr/lib
   qmake-qt5 engauge.pro "CONFIG+=jpeg2000 pdf"
@@ -35,30 +35,30 @@ package_engauge() {
   pkgdesc="Extracts data points from images of graphs"
   depends=('qt5-tools' 'fftw' 'log4cpp' 'libpng' 'libjpeg-turbo' 'openjpeg2' 'poppler-qt5')
 
-  cd "$srcdir/${_pkgbase}-$pkgver"
-  install -Dm755 ../$pkgbase.sh "$pkgdir/usr/bin/$pkgbase"
-  install -Dm755 bin/engauge "$pkgdir/usr/share/$_pkgbase/engauge"
+  cd ${_pkgbase}-$pkgver
+  install -Dm755 ../$pkgbase.sh "$pkgdir"/usr/bin/$pkgbase
+  install -Dm755 bin/engauge "$pkgdir"/usr/lib/$_pkgbase/engauge
   # translations
-  install -dm755 "$pkgdir/usr/share/$_pkgbase/translations/"
-  cp translations/*.qm "$pkgdir/usr/share/$_pkgbase/translations/"
+  install -dm755 "$pkgdir"/usr/lib/$_pkgbase/translations/
+  install -Dm64 translations/*.qm -t "$pkgdir"/usr/lib/$_pkgbase/translations/
   # help
   install -Dm644 bin/documentation/engauge.qhc \
-    "$pkgdir/usr/share/$_pkgbase/documentation/engauge.qhc"
+    "$pkgdir"/usr/share/$_pkgbase/documentation/engauge.qhc
   install -Dm644 bin/documentation/engauge.qch \
-    "$pkgdir/usr/share/$_pkgbase/documentation/engauge.qch"
+    "$pkgdir"/usr/share/$_pkgbase/documentation/engauge.qch
   # icon
   install -Dm644 src/img/$_pkgbase.svg \
-    "$pkgdir/usr/share/icons/$_pkgbase.svg"
+    "$pkgdir"/usr/share/icons/$_pkgbase.svg
   # desktop
-  install -Dm644 $srcdir/$pkgbase.desktop \
-	  "$pkgdir/usr/share/applications/$pkgbase.desktop"
+  install -Dm644 "$srcdir"/$pkgbase.desktop \
+	  "$pkgdir"/usr/share/applications/$pkgbase.desktop
 }
 
 package_engauge-samples() {
   pkgdesc="sample image files for engauge copied into the doc subdirectory"
   arch=('any')
 
-  cd "$srcdir/${_pkgbase}-$pkgver"
-  install -d "$pkgdir/usr/share/doc/$_pkgbase"
-  cp -r samples "$pkgdir/usr/share/doc/$_pkgbase"
+  cd ${_pkgbase}-$pkgver
+  install -d "$pkgdir"/usr/share/doc/$_pkgbase
+  cp -r samples "$pkgdir"/usr/share/doc/$_pkgbase
 }
