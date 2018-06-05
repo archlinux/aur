@@ -1,0 +1,17 @@
+pkgbase = fortune-mod-lemons-git
+	pkgdesc = Lemon facts for fortune-mod
+	pkgver = r4.3857b4c
+	pkgrel = 1
+	url = https://gitlab.com/dnaf/lemon-fortunes
+	arch = any
+	groups = fortune-mods
+	license = MIT
+	makedepends = git
+	depends = fortune-mod
+	provides = fortune-mod-lemons
+	conflicts = fortune-mod-lemons
+	source = git+https://gitlab.com/dnaf/lemon-fortunes.git
+	md5sums = SKIP
+
+pkgname = fortune-mod-lemons-git
+
