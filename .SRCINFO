@@ -1,5 +1,5 @@
 pkgbase = linux-clear
-	pkgver = 4.16.13
+	pkgver = 4.16.14
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
@@ -14,10 +14,11 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.13.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.13.sign
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#commit=2a82e25b1c4df844ae84c286f811da17e5854538
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.14.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.14.sign
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#commit=d4e8d03bba0f5297e077be4c5dfac3a4a9f314d9
 	source = https://downloadmirror.intel.com/27776/eng/microcode-20180425.tgz
+	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = 99-linux.hook
@@ -26,10 +27,11 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9
 	sha256sums = SKIP
-	sha256sums = 9efa0a74eb61240da53bd01a3a23759e0065811de53d22de7d679eabf847f323
+	sha256sums = cc3d82b8183b641e18e4d504000d7f14873cf67d616ecdabc77383c5d9eaaac0
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = f0d2492f4561e2559f6c9471b231cb8262d45762c0e7cccf787be5c189b4e2d6
+	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = 5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184

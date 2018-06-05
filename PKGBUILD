@@ -1,43 +1,81 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 # Contributor:
 
-###########################################################################################################
-#                                          Patch and Build Options
-###########################################################################################################
-_custom="no"		# "m":	custom config via menuconfig
-			# "n":	custom config via nconfig
-			# "x":	custom config via xconfig
-			# "no":	nothing
+### BUILD OPTIONS
+# Set these variables to ANYTHING that is not null to enable them
 
-_config="pkg"		# "local":	compile only probed modules(https://aur.archlinux.org/packages/modprobed-db/)
-			# "nomod":	don't use modules(make localyesconfig)
-			# "old":	make with old config (/proc/config.gz)
-			# "pkg":	use this package's config
+# Tweak kernel options prior to a build via nconfig
+_makenconfig=
+
+_enable_gcc_more_v="n"
+# Optionally select a sub architecture by number if building in a clean chroot
+# Leaving this entry blank will require user interaction during the build 
+# which will cause a failure to build if using makechrootpkg. Note that the
+# generic (default) option is 26.
+#
+#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
+#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
+#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
+#  4. AMD Barcelona (MBARCELONA)
+#  5. AMD Bobcat (MBOBCAT)
+#  6. AMD Jaguar (MJAGUAR)
+#  7. AMD Bulldozer (MBULLDOZER)
+#  8. AMD Piledriver (MPILEDRIVER)
+#  9. AMD Steamroller (MSTEAMROLLER)
+#  10. AMD Excavator (MEXCAVATOR)
+#  11. AMD Zen (MZEN)
+#  12. Intel P4 / older Netburst based Xeon (MPSC)
+#  13. Intel Atom (MATOM)
+#  14. Intel Core 2 (MCORE2)
+#  15. Intel Nehalem (MNEHALEM)
+#  16. Intel Westmere (MWESTMERE)
+#  17. Intel Silvermont (MSILVERMONT)
+#  18. Intel Sandy Bridge (MSANDYBRIDGE)
+#  19. Intel Ivy Bridge (MIVYBRIDGE)
+#  20. Intel Haswell (MHASWELL)
+#  21. Intel Broadwell (MBROADWELL)
+#  22. Intel Skylake (MSKYLAKE)
+#  23. Intel Skylake X (MSKYLAKEX)
+#  24. Intel Cannon Lake (MCANNONLAKE)
+#  25. Intel Ice Lake (MICELAKE)
+#  26. Generic-x86-64 (GENERIC_CPU)
+#  27. Native optimizations autodetected by GCC (MNATIVE)
+_subarch=
+
+# Compile ONLY probed modules
+# As of mainline 2.6.32, running with this option will only build the modules
+# that you currently have probed in your system VASTLY reducing the number of
+# modules built and the build time to do it.
+#
+# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD will call it directly to probe all the modules you have logged!
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
 
 # If you have laptop with optimus and it hangs on boot one solution might be 
 # to set acpi_rev_override. Yet for this to happen kernel should be compiled
 # with `CONFIG_ACPI_REV_OVERRIDE_POSSIBLE`. Set next variable to `y` to enable.
 _rev_override="n"
 
-###########################################################################################################
+### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-clear
 __basekernel=4.16
-_minor=13
+_minor=14
 pkgver=${__basekernel}.${_minor}
-#_clearver=${__basekernel}.12-573
-_clearver=2a82e25b1c4df844ae84c286f811da17e5854538
+#_clearver=${__basekernel}.12-575
+_clearver=d4e8d03bba0f5297e077be4c5dfac3a4a9f314d9
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
-
-if [ "$_custom" = "x" ]; then
-   makedepends+=('qt5-base')
-fi
-
 options=('!strip')
+_gcc_more_v='20180509'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.sign"
@@ -45,6 +83,7 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#commit=${_clearver}"
   'https://downloadmirror.intel.com/27776/eng/microcode-20180425.tgz'
+  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
   '99-linux.hook'  # pacman hook for remove initramfs
@@ -56,10 +95,11 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '9efa0a74eb61240da53bd01a3a23759e0065811de53d22de7d679eabf847f323'
+            'cc3d82b8183b641e18e4d504000d7f14873cf67d616ecdabc77383c5d9eaaac0'
             'SKIP'
             'SKIP'
             'f0d2492f4561e2559f6c9471b231cb8262d45762c0e7cccf787be5c189b4e2d6'
+            '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
@@ -79,18 +119,10 @@ prepare() {
     patch -p1 -i "$srcdir/clearlinux/${i}"
   done
 
-  # Trying oldcfg if possible and if selected
-  if [ "$_config" = "old" ]; then
-    if [ -e /proc/config.gz ]; then
-      zcat /proc/config.gz > ./.config
-    else
-      echo "WARNING: There's no /proc/config.gz... You cannot use the old config. Aborting..."
-      exit 1
-    fi         
-  else
-      cp -Tf $srcdir/clearlinux/config ./.config
-  fi
+  # Clean tree and copy CLEAR config over
+  make mrproper
 
+  cp -Tf $srcdir/clearlinux/config ./.config
   cp -a /usr/lib/firmware/i915 firmware/
   cp -a ${srcdir}/intel-ucode firmware/
   cp  ${srcdir}/intel-ucode-with-caveats/06* firmware/intel-ucode/
@@ -114,44 +146,39 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  #msg "Running make prepare"
-  #make prepare
-  
-  ### Optionally load needed modules for the make localmodconfig
-  # See https://aur.archlinux.org/packages/modprobed-db/
-  if [ $_config = "local" ]; then
-    msg "If you have modprobe-db installed, running it in recall mode now"
-    if [ -e /usr/bin/modprobed-db ]; then
-      [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo. Install via pacman -S sudo and configure to work with this user." && exit 1
-      sudo /usr/bin/modprobed-db recall
+  make olddefconfig
+
+  # Patch source to unlock additional gcc CPU optimizatons
+  # https://github.com/graysky2/kernel_gcc_patch
+  if [ "${_enable_gcc_more_v}" = "y" ]; then
+    patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
   fi
+
+  # get kernel version
+  if [ "${_enable_gcc_more_v}" = "y" ] || [ -n "${_subarch}" ]; then
+    yes "$_subarch" | make oldconfig
+  else
+    make prepare
+  fi
+
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
+  if [ -n "$_localmodcfg" ]; then
+    msg "If you have modprobed-db installed, running it in recall mode now"
+    if [ -e /usr/bin/modprobed-db ]; then
+      [[ -x /usr/bin/sudo ]] || {
+      echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
+      exit 1; }
+      sudo /usr/bin/modprobed-db recall
+    fi
     msg "Running Steven Rostedt's make localmodconfig now"
     make localmodconfig
-  else
-    yes "" | make config
   fi
 
-  if [ $_config = "nomod" ]; then
-    msg "Running localYESconfig now"
-    make localyesconfig
-  else
-    yes "" | make config
-  fi
+  [[ -z "$_makenconfig" ]] || make nconfig
 
-  if [ $_custom = "m" ]; then
-    msg "Running make menuconfig"
-    make menuconfig
-  fi
-
-  if [ $_custom = "n" ]; then
-    msg "Running make nconfig"
-    make nconfig
-  fi
-
-  if [ $_custom = "x" ]; then
-    msg "Running make xconfig"
-    make xconfig
-  fi
+  # rewrite configuration
+  yes "" | make config >/dev/null
 
   # save configuration for later reuse
   cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${_kernelname}"
