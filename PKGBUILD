@@ -1,7 +1,7 @@
 # Maintainer: goodguy <lists.cinelerra-cv.org>
 pkgname=cin
 pkgver=5.1
-pkgrel=20180430
+pkgrel=20180531
 pkgdesc="Cinelerra git://git.cinelerra-cv.org/goodguy/cinelerra.git ($pkgrel)"
 arch=('x86_64')
 url="http://www.cinelerra-cv.org"
@@ -11,10 +11,10 @@ depends=('xorg-server' 'libpng' 'libxv' 'libva'
 makedepends=('yasm' 'nasm' 'cmake'
 	 'libxml2' 'perl-xml-libxml' 'perl-xml-parser'  'wget' 'curl')
 conflicts=()
-source=('https://cinelerra-cv.org/five/pkgs/src/cin_5.1.20180430-src.tgz' 
+source=('https://cinelerra-cv.org/five/pkgs/src/cin_5.1.20180531-src.tgz' 
 'unblock.patch' )
-md5sums=('c26ec1ff868ac53bfa51c513c4754e94'
-         '25541f98ed8565176ce466558c90b7eb')
+md5sums=('19d81822895334daf7fd589d0e2f32cd'
+         'ea36bfb411c0bc50405f154040e3b338')
 
 
 prepare() {
@@ -28,7 +28,7 @@ build() {
 
   ./autogen.sh
   export FFMPEG_EXTRA_CFG=" --disable-vdpau" 
-  ./configure --prefix=/usr --with-exec-name=$pkgname --with-jobs=12 --with-opencv=no
+  ./configure --prefix=/usr --with-exec-name=$pkgname --with-jobs=12 --with-opencv=sys --enable-x265 --enable-x264
 CFG_VARS="\
 CFLAGS+=' -Wno-narrowing -O2 -g -fno-omit-frame-pointer' \
 CXXFLAGS+=' -Wno-narrowing -O2 -g -fno-omit-frame-pointer' \
