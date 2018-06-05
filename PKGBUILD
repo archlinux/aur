@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=4.1.r91071.g7db022e67b
+pkgver=4.1.r91226.gd8c0bbb0aa
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -15,10 +15,10 @@ depends=(
         'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm'
         'libiec61883' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio'
         'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt'
-        'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
-        'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
-        'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'sndio'
-        'sdl2' 'vapoursynth' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio'
+        'libssh' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab'
+        'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore'
+        'libxml2' 'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'opencl-icd-loader' 'mesa'
+        'sndio' 'sdl2' 'vapoursynth' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio'
         'libva' 'libdrm' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'aom-git' 'codec2' 'flite1-patched' 'libilbc' 'kvazaar'
@@ -165,6 +165,7 @@ build() {
         --enable-libspeex \
         --enable-libsrt \
         --enable-libssh \
+        --enable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
         --disable-libtls \
