@@ -2,7 +2,7 @@
 # Contributor: Stefan Auditor <stefan.auditor@erdfisch.de>
 
 pkgname='phpdox'
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=0
 pkgdesc="Documentation generator for PHP Code using standard technology (SRC, DOCBLOCK, XML and XSLT)"
 url="http://phpdox.de"
@@ -13,7 +13,7 @@ depends=('php>=5.3.3' 'php-xsl')
 source=("https://github.com/theseer/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.phar"
         "https://raw.githubusercontent.com/theseer/${pkgname}/${pkgver}/LICENSE"
         "${pkgname}.install")
-sha512sums=('a36ddaca222635a41d6f19bca90535e85ceb9975eb6089c00e5140d749973685af8c26ffb87ad3b75d0a4a3d120bd21ef98a86fbd38df47a2d4e624bd7fa1acc'
+sha512sums=('2f4ab9b6e876e4f396d3265fc073a1d015f0aae88b704fec712c8ba7de96ae6fff93fdb59be9fb6f4508b00e58869146c72ee222e6a784043c0ee2288d592b88'
             '61e052222ec37de300fe3013c1f58ac8c877df58f529f87eca99e516b8d207d0a588376746e3f14262bfa853ac9e53dc937de3456372cb6159274cfb729cde7c'
             '34b1a537518619ce3332d176117251f60b02bb73638e32f479a1f8087385dbf6ed73a537505c795aa54790727ca29ea830cabe1d48339fcb7bfee3e339b121d1')
 package() {
