@@ -6,11 +6,11 @@
 _upstream="compiz-bcop"
 
 pkgname=compiz-bcop-git
-pkgver=0.8.12.r1.g1a9efe2
+pkgver=0.8.14.r1.g1eeaf40
 pkgrel=1
 pkgdesc="Compiz option code generator"
 arch=('any')
-url="https://github.com/compiz-reloaded/${_upstream}"
+url="https://gitlab.com/compiz/${_upstream}"
 license=('GPL')
 depends=("compiz-core-git" 'libxslt')
 makedepends=('intltool')
@@ -18,7 +18,7 @@ conflicts=('compiz-bcop-dev' 'compiz-bcop')
 provides=('compiz-bcop')
 sha1sums=('SKIP')
 source=(
-	"git+https://github.com/compiz-reloaded/${_upstream}.git"
+	"git+https://gitlab.com/compiz/${_upstream}.git"
 )
 
 pkgver() {
