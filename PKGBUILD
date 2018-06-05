@@ -2,14 +2,14 @@
 
 pkgbase=petrified
 pkgname=('petrified' 'petrified-systemd')
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 arch=('any')
-url="https://github.com/troyengel/petrified"
+url="https://gitlab.com/troyengel/petrified"
 license=('GPL3')
 options=('emptydirs')
-source=("https://github.com/troyengel/petrified/archive/v${pkgver}.tar.gz")
-sha256sums=('ab83c4b5e2a84d8d8ab9adfe2d914045e8192b02d18d59c5305d2d45845b5e2a')
+source=("https://gitlab.com/troyengel/petrified/-/archive/v${pkgver}/petrified-v${pkgver}.tar.gz")
+sha256sums=('b60d1e0b45f3da33b3f89f0eff9711bfe4be28abd5529c0ee2140293e33fc08c')
 
 package_petrified() {
   pkgdesc="Bash client to update dynamic DNS at freedns.afraid.org"
@@ -17,7 +17,7 @@ package_petrified() {
   backup=('etc/petrified.conf')
   install=petrified.archinst
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-v${pkgver}"
 
   # Install the system bits
   make DESTDIR="${pkgdir}" PREFIX=/usr install
@@ -27,7 +27,7 @@ package_petrified-systemd() {
   pkgdesc="Unit files for petrified systemd usage"
   depends=('petrified' 'systemd')
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-v${pkgver}"
 
   # Systemd files
   make DESTDIR="${pkgdir}" PREFIX=/usr install-systemd
