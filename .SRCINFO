@@ -1,7 +1,7 @@
 pkgbase = package-query-git
 	pkgdesc = Query ALPM and AUR
 	pkgver = 1.9.r10.gb912c5b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archlinuxfr/package-query
 	arch = i686
 	arch = x86_64

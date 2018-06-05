@@ -2,7 +2,7 @@
 # Maintainer: Igor <f2404@yandex.ru>
 pkgname=package-query-git
 pkgver=1.9.r10.gb912c5b
-pkgrel=1
+pkgrel=2
 pkgdesc="Query ALPM and AUR"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 url="https://github.com/archlinuxfr/package-query"
@@ -16,12 +16,12 @@ md5sums=('SKIP')
 _gitname=package-query
 
 pkgver () {
-  cd $_gitname
+  cd "$_gitname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_gitname
+  cd "$_gitname"
   ./autogen.sh
   ./configure --localstatedir=/var --prefix=/usr \
               --sysconfdir=/etc --with-aur-url=https://aur.archlinux.org
@@ -29,9 +29,6 @@ build() {
 }
 
 package () {
-  cd $_gitname
-  make DESTDIR=$pkgdir install
+  cd "$_gitname"
+  make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=4 sw=4 et:
-
