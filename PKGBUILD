@@ -76,7 +76,6 @@ package()
   python setup.py install --root="${pkgdir}"
   mkdir -p ${pkgdir}/etc/{conf.d,odoo}
   mkdir -p ${pkgdir}/usr/lib/systemd/system
-  mkdir -p ${pkgdir}/var/lib/odoo
   install -Dm 644 ${srcdir}/odoo.conf ${pkgdir}/etc/odoo/odoo.conf
   install -Dm 644 ${srcdir}/odoo.confd ${pkgdir}/etc/conf.d/odoo
   install -Dm 644 ${srcdir}/odoo.service ${pkgdir}/usr/lib/systemd/system/odoo.service
