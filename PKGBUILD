@@ -1,7 +1,7 @@
 # Maintainer: Siôn le Roux <sinisterstuf@gmail.com>
 pkgname=img
 _pkgname=img-linux-amd64
-pkgver=0.3.0
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Standalone, daemon-less, unprivileged Dockerfile and OCI compatible container image builder"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
   "https://raw.githubusercontent.com/genuinetools/${pkgname}/master/LICENSE"
 )
 md5sums=(
-  '13f503ce935641c9b485767981887433'
+  'b1dec09ce91d27c020a4c62bb511cf6f'
   '48ef0979a2bcc3fae14ff30b8a7f5dbf'
 )
 
