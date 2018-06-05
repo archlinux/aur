@@ -4,25 +4,23 @@
 
 pkgbase=('monero')
 pkgname=('monero' 'libmonero-wallet')
-pkgver=0.12.1.0
+pkgver=0.12.2.0
 pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
-depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq')
+depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite')
 makedepends=('git' 'cmake' 'boost' 'gtest' 'qt5-tools')
 provides=('monero' 'libmonero-wallet')
 conflicts=('bitmonero-git' 'libmonero-wallet-git')
 
-source=("${pkgname}"::'git+https://github.com/monero-project/monero#tag=v0.12.1.0'
+source=("${pkgname}"::'git+https://github.com/monero-project/monero#tag=v0.12.2.0'
         "0001-account-fix-build-with-GCC-8.1.0.patch"
-        "0001-Ignore-GCC-8-warnings.patch"
         "0001-cmake-do-not-install-into-the-system.patch")
 
 sha256sums+=('SKIP'
              '3802e9a6eb21309c6d08d7da4a1979c369fc6a0d74789f34beaaf60a89e82af2'
-             '1881c02eccb500c4ee28bf4bc1f59259fc1216013139f1e77f4255ffca2715fe'
              '653853f9c0fed231a2cec476703f09198e6a87af12bb0a3bfe98b32e48e7a1c5')
 
 _monero="${pkgbase}"
@@ -34,7 +32,6 @@ prepare()
 
   cd "${srcdir}/${_monero}"
   patch -Np1 -i "${srcdir}/0001-account-fix-build-with-GCC-8.1.0.patch"
-  patch -Np1 -i "${srcdir}/0001-Ignore-GCC-8-warnings.patch"
   patch -Np1 -i "${srcdir}/0001-cmake-do-not-install-into-the-system.patch" -d "${srcdir}/monero/external/miniupnp"
 }
 
