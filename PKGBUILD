@@ -3,7 +3,7 @@
 
 pkgname=teleport
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('x86_64' 'arm')
 url="https://gravitational.com/teleport"
@@ -23,7 +23,7 @@ source_arm=(
     "teleport.service"
     )
 sha256sums_arm=(
-    'abfaff280c543aeb33c1f34a25f8764336cd27b3548e94a09db67a48712b481e'
+    'f13ca9e04e78546b8837c02ad0c9ba304f843e011eb4a0b91d12e518c61bb8b0'
     '3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc'
     )
 options=(!strip)
