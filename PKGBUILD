@@ -2,26 +2,27 @@
 
 pkgname=polyphone
 pkgver=1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical user interface for editing sf2 and sfz files"
 arch=('i686' 'x86_64')
 url="http://polyphone-soundfonts.com/"
-license=('GPL')
-depends=('qt5-svg' 'portaudio')
+license=('GPL3')
+depends=('libvorbis' 'qt5-svg' 'portaudio' 'stk')
+makedepends=('rtmidi')
 source=("https://github.com/davy7125/polyphone/raw/master/versions/polyphone-1.9-src.zip"
+        "$pkgname-config-cpp.patch"
         "$pkgname.desktop"
         "$pkgname.mime")
 changelog='ChangeLog'
-md5sums=('ca452acd5364d781ce683de310b7bff4'
-         'c796f82cd0ab742741de5c607cd87169'
-         'f0808717b27757c80b508f6114a535ce')
+sha256sums=('c034cd09084439a57e07a526a9674800668536add7609f4e4ab610f63b0538ca'
+            'cefd4c29d4767be54e2a45d584542106888caf5d7fd4a73307b08e4c9be32b93'
+            '280f626c53aff264a2c735da4478a769b6b39440679360d775c9b5e549b890aa'
+            '6456f6f458283054361b6e0bff6a0a6335201798984b17c259fe343d559de996')
 
 prepare() {
   cd "$srcdir/trunk"
-  sed -i \
-    -e 's/^#DEFINES += USE_LOCAL/DEFINES += USE_LOCAL/g' \
-    -e 's/__LINUX_ALSASEQ__/__LINUX_ALSA__ __UNIX_JACK__/g' \
-    polyphone.pro
+  # https://github.com/davy7125/polyphone/issues/33
+  patch -p1 -i "$srcdir/$pkgname-config-cpp.patch"
 }
 
 build() {

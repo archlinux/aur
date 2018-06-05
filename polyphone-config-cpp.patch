@@ -1,0 +1,11 @@
+diff -urpN trunk.orig/configuration/config.cpp trunk/configuration/config.cpp
+--- trunk.orig/configuration/config.cpp	2017-03-08 18:44:30.000000000 +0100
++++ trunk/configuration/config.cpp	2018-06-05 00:24:25.020989133 +0200
+@@ -26,6 +26,7 @@
+ #include <QDir>
+ #include <QColorDialog>
+ #include <QDesktopServices>
++#include <QAction>
+ #include "config.h"
+ #include "ui_config.h"
+ #include "mainwindow.h"

@@ -1,3 +1,12 @@
+2018-06-05 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1.9-3 :
+	Correct license field to 'GPL3'.
+	Use SHA256 check sums.
+	Added patch for 'config.cpp' to fix build error.
+	Use system-installed 'rtmidi' and 'stk' libraries.
+	Added missing dependency 'libvorbis'.
+
 2017-09-16 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 1.8-2 :
