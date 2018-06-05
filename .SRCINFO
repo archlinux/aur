@@ -1,13 +1,13 @@
 pkgbase = eqmodgui
 	pkgdesc = User interface for INDI Eqmod telescope driver
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/eqmodgui
 	arch = x86_64
 	license = GPL3
 	depends = libindi
 	depends = gtk2
-	depends = sdl2_mixer
+	depends = sdl_mixer
 	depends = pango
 	provides = eqmodgui
 	source = https://sourceforge.net/projects/eqmodgui/files/eqmodgui_1.3.0/eqmodgui-1.3.0-96-linux_x86_64.tar.xz
