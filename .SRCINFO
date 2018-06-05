@@ -1,0 +1,30 @@
+pkgbase = tootle
+	pkgdesc = GTK3 client for Mastodon
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/bleakgrey/tootle
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = desktop-file-utils
+	makedepends = hicolor-icon-theme
+	makedepends = intltool
+	makedepends = yelp-tools
+	makedepends = gnome-common
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = vala
+	depends = libsoup
+	depends = granite
+	depends = json-glib
+	options = !libtool
+	source = https://github.com/bleakgrey/tootle/archive/0.1.3.tar.gz
+	sha256sums = d0462237e09f70bfbb19b0ba4f8471b3e6d6a2cb11f6dd8132f095954238e323
+
+pkgname = tootle
+
