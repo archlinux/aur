@@ -3,7 +3,7 @@
 
 pkgname=gtkwrite_git
 pkgver=0.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="GTKwrite Text Editor with Syntax Highlight written in C, GTK+2 & GtkSourceView2 (development version)"
 url="https://github.com/drankinatty/${pkgname%_git}"
 license=('GPL2')
@@ -11,7 +11,7 @@ provides=('gtkwrite')
 arch=('i686' 'x86_64')
 options=('!emptydirs')
 depends=('gtksourceview2')
-makedepends=('gcc' 'git' 'glib2' 'gtk2' 'gtksourceview2' 'make' 'pkgconf')
+makedepends=('git' 'glib2' 'gtk2' 'gtksourceview2')
 source=("git+https://github.com/drankinatty/${pkgname%_git}.git")
 sha1sums=(SKIP)
 conflicts=(gtkwrite)
