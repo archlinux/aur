@@ -1,6 +1,6 @@
 pkgbase = tomtomsportsconnect
 	pkgdesc = TomTom Sports Connect
-	pkgver = 3.3.6
+	pkgver = 3.3.7
 	pkgrel = 1
 	url = http://us.support.tomtom.com/app/answers/detail/a_id/24742/~/linux-version-of-tomtom-sports-connect
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tomtomsportsconnect
 	source = https://sports.tomtom-static.com/downloads/desktop/mysportsconnect/latest/tomtomsportsconnect.x86_64.deb
 	source = fix-desktop-file.patch
 	source = 90-tomtomsports.rules
-	md5sums = 9dd3f132de4aad8de5f6990d0c4ba020
+	md5sums = d1b5625fc357f930779989ef52a5c9cc
 	md5sums = 23de8b949214475945e4aa6537e26319
 	md5sums = 9176bd3daa77589fea115735fadee288
 

@@ -1,6 +1,6 @@
 # Maintainer: Wouter Haffmans <wouter@simply-life.net>
 pkgname=tomtomsportsconnect
-pkgver=3.3.6
+pkgver=3.3.7
 pkgrel=1
 pkgdesc="TomTom Sports Connect"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
     fix-desktop-file.patch
     90-tomtomsports.rules)
 noextract=()
-md5sums=('9dd3f132de4aad8de5f6990d0c4ba020'
+md5sums=('d1b5625fc357f930779989ef52a5c9cc'
          '23de8b949214475945e4aa6537e26319'
          '9176bd3daa77589fea115735fadee288')
 
