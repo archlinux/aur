@@ -107,7 +107,7 @@ source 'PKGBUILD.local'
 set -u
 pkgname='dgrp'
 pkgver='1.9.38'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -166,6 +166,7 @@ _mibsdnw=(
 _mibsrc='http://ftp1.digi.com/support/utilities/'
 _filever="${pkgver//\./-}"
 _filever="${_filever/-/.}"
+_srcdir="dgrp-${_filever%%-*}"
 source=(
   #"${pkgname}-${pkgver}-81000137_X.tgz::http://ftp1.digi.com/support/driver/81000137_X.tgz"
   #"${pkgname}-${pkgver}-beta.tgz::ftp://ftp1.digi.com/support/driver/RealPort%20Linux%20Beta%20Driver/dgrp-${_filever}_y1p.tgz.rpm"
@@ -214,7 +215,7 @@ sha256sums=('e474518da5b3feddd1f4dd0083ac8125e34ba07da9884cbd3ebd1955006891d7'
             '5cac7ce2e6f043127f314b93694af021ae7820ffb5bf3de343da7a240d05e9c8'
             '8654496d83c083e457e8bb9bae2b1e71804d156a38c284d89872d0125eba947d'
             '61500188b388fd1eb52ec970150cf098d855b8ba09a8efb8192803eebefaba03'
-            '06b0eb6f6f7108d869e869edb5f09669bc90575efcd2f151311f024a834c4001')
+            '46a87449cd316a621271def4147ba781424dd524ae2332cd55dd07f2ac9ab456')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -281,7 +282,7 @@ _fn_mibcheck() {
 
 prepare() {
   set -u
-  cd dgrp-*/
+  cd "${_srcdir}"
 
   rm -f daemon/openssl-*.tar.gz # I don't want their version to build if OpenSSL version detection fails in the future
 
@@ -350,18 +351,19 @@ prepare() {
       -e '/^dgrp_init_module/,/^$/ s@version: %s@& Arch Linux@g' \
     -i driver/[0-9]*/dgrp_driver.c
 
-  #diff -pNaru5 dgrp-1.9{.orig,} > '../0000-Kernel-4-13-CLASS_ATTR_STRING.patch'
-  patch -Nbup1 < "${srcdir}/0000-Kernel-4-13-CLASS_ATTR_STRING.patch"
+  #diff -pNaru5 dgrp-1.9{.orig,} > '0000-Kernel-4-13-CLASS_ATTR_STRING.patch'
+  patch -Nup1 < "${srcdir}/0000-Kernel-4-13-CLASS_ATTR_STRING.patch"
 
-  #diff -pNaru5 dgrp-1.9{.orig,} > '../0001-Kernel-4-15-timers.patch'
-  patch -Nbup1 < "${srcdir}/0001-Kernel-4-15-timers.patch"
+  #cp -pr "${srcdir}/${_srcdir}"{,.orig}
+  #diff -pNaru5 dgrp-1.9{.orig,} > '0001-Kernel-4-15-timers.patch'
+  patch -Nup1 < "${srcdir}/0001-Kernel-4-15-timers.patch"
 
   set +u
 }
 
 build() {
   set -u
-  cd dgrp-*/
+  cd "${_srcdir}"
 
   if [ ! -s 'Makefile' ]; then
     # this generates a harmless error as it tries to make a folder in /usr/lib/modules...
@@ -392,7 +394,7 @@ package() {
     eval 'dep''ends+=("linux=${_kernelversionsmall}")'
   fi
 
-  cd dgrp-*/
+  cd "${_srcdir}"
   #. 'config/file_locations.Arch'
 
   make -s -j1 RPM_BUILD_ROOT="${pkgdir}" install

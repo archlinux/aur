@@ -1,6 +1,6 @@
 diff -pNaru5 dgrp-1.9.orig/driver/2.6.27/dgrp_net_ops.c dgrp-1.9/driver/2.6.27/dgrp_net_ops.c
---- dgrp-1.9.orig/driver/2.6.27/dgrp_net_ops.c	2018-04-13 21:29:37.489330195 -0400
-+++ dgrp-1.9/driver/2.6.27/dgrp_net_ops.c	2018-04-13 21:26:42.150695586 -0400
+--- dgrp-1.9.orig/driver/2.6.27/dgrp_net_ops.c	2018-06-03 20:45:01.337174862 -0400
++++ dgrp-1.9/driver/2.6.27/dgrp_net_ops.c	2018-06-03 20:45:01.417174550 -0400
 @@ -87,11 +87,15 @@ static long   node_active_count;	/* one
  					 * the poller
  					 */
@@ -68,8 +68,8 @@ diff -pNaru5 dgrp-1.9.orig/driver/2.6.27/dgrp_net_ops.c dgrp-1.9/driver/2.6.27/d
  
  /*
 diff -pNaru5 dgrp-1.9.orig/driver/2.6.27/dgrp_tty.c dgrp-1.9/driver/2.6.27/dgrp_tty.c
---- dgrp-1.9.orig/driver/2.6.27/dgrp_tty.c	2018-04-13 21:29:37.492330190 -0400
-+++ dgrp-1.9/driver/2.6.27/dgrp_tty.c	2018-04-13 20:36:29.458050323 -0400
+--- dgrp-1.9.orig/driver/2.6.27/dgrp_tty.c	2018-06-03 20:45:01.340508182 -0400
++++ dgrp-1.9/driver/2.6.27/dgrp_tty.c	2018-06-03 20:46:37.953467319 -0400
 @@ -783,13 +783,25 @@ if (ttylock) tty_lock(ch->port.tty);
  
  /*
@@ -96,7 +96,7 @@ diff -pNaru5 dgrp-1.9.orig/driver/2.6.27/dgrp_tty.c dgrp-1.9/driver/2.6.27/dgrp_
  }
  
  
-@@ -797,11 +809,16 @@ static void wake_up_drp_sleep_timer(unsi
+@@ -797,11 +809,15 @@ static void wake_up_drp_sleep_timer(unsi
   * Set up our own sleep that can't be cancelled
   * until our timeout occurs.
   */
@@ -106,14 +106,13 @@ diff -pNaru5 dgrp-1.9.orig/driver/2.6.27/dgrp_tty.c dgrp-1.9/driver/2.6.27/dgrp_
  	struct timer_list drp_wakeup_timer;
 +#else
 +  struct ch_timer_list drp_wakeup_timer_ch;
-+#define drp_wakeup_timer (drp_wakeup_timer_ch.tl)
 +#endif
  	DECLARE_WAITQUEUE(wait, current);
  
  	/*
  	 * First make sure we're ready to receive the wakeup.
  	 */
-@@ -812,23 +829,30 @@ static void drp_my_sleep(struct ch_struc
+@@ -812,23 +828,29 @@ static void drp_my_sleep(struct ch_struc
  	/*
  	 * Since we are uninterruptible, set a timer to
  	 * unset the uninterruptable state in 1 second.
@@ -123,14 +122,13 @@ diff -pNaru5 dgrp-1.9.orig/driver/2.6.27/dgrp_tty.c dgrp-1.9/driver/2.6.27/dgrp_
  	init_timer(&drp_wakeup_timer);
  	drp_wakeup_timer.function = wake_up_drp_sleep_timer;
  	drp_wakeup_timer.data = (unsigned long) ch;
- 	drp_wakeup_timer.expires = jiffies + (1 * HZ);
- 	add_timer(&drp_wakeup_timer);
 +#else
-+	timer_setup(&drp_wakeup_timer_ch.tl,wake_up_drp_sleep_timer,0);
++#define drp_wakeup_timer (drp_wakeup_timer_ch.tl)
++	timer_setup(&drp_wakeup_timer,wake_up_drp_sleep_timer,0);
 +	drp_wakeup_timer_ch.ch=ch;
 +#endif
-+	drp_wakeup_timer.expires = jiffies + (1 * HZ);
-+	add_timer(&drp_wakeup_timer);
+ 	drp_wakeup_timer.expires = jiffies + (1 * HZ);
+ 	add_timer(&drp_wakeup_timer);
  
  	schedule();
  
