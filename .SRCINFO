@@ -1,15 +1,15 @@
 pkgbase = kraken
 	pkgdesc = Kraken taxonomic sequence classification system
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DerrickWood/kraken
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = perl
-	optdepends = jellyfish<=1: for building Kraken databases
 	source = kraken-1.1.tar.gz::https://github.com/DerrickWood/kraken/archive/v1.1.tar.gz
+	source = jellyfish-1.1.11.tar.gz::http://www.cbcb.umd.edu/software/jellyfish/jellyfish-1.1.11.tar.gz
 	sha256sums = a4ac74c54c10920f431741c80d8a172670be12c3b352912000030fb5ea4c87a7
+	sha256sums = 496645d96b08ba35db1f856d857a159798c73cbc1eccb852ef1b253d1678c8e2
 
 pkgname = kraken
 
