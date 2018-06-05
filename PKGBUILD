@@ -2,8 +2,8 @@
 # Contributor: Niklas Hedlund <nojan1989@gmail.com>
 
 pkgname=motioneye
-pkgver=0.39
-pkgrel=2
+pkgver=0.39.1
+pkgrel=1
 pkgdesc="web-based user interface for motion"
 arch=(any)
 url="https://github.com/ccrisan/motioneye/"
@@ -25,7 +25,7 @@ options=(emptydirs)
 install=motioneye.install
 backup=('etc/motioneye/motioneye.conf')
 source=("https://github.com/ccrisan/motioneye/archive/$pkgver.tar.gz")
-md5sums=('65a42e4b150aedfbab4b07408c83018f')
+md5sums=('ed5038ea8f0b955d376047dfb4758f56')
 
 build() {
     cd $srcdir/motioneye-$pkgver
