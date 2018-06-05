@@ -18,7 +18,7 @@ package() {
 
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   HOME="/tmp" GEM_HOME="$_gemdir" GEM_PATH="$_gemdir" gem install \
-    --no-user-install --ignore-dependencies \
+    --no-user-install --ignore-dependencies --no-ri \
     -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
