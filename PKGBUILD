@@ -4,7 +4,7 @@ pkgver=1.2.0.r0.79392e0
 pkgrel=1
 pkgdesc="A typing test program desktop program with customizability"
 arch=(x86_64)
-url="https://github.com/laelath/typingtest"
+url="https://gitlab.com/laelath/typingtest"
 license=('GPL')
 groups=()
 depends=('gtkmm3')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake')
 backup=()
 options=()
 install=
-source=('typingtest-git::git+https://github.com/laelath/typingtest.git')
+source=('typingtest-git::git+https://gitlab.com/laelath/typingtest.git')
 noextract=()
 md5sums=('SKIP')
 pkgver() {
