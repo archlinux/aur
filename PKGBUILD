@@ -6,11 +6,11 @@
 _upstream="ccsm"
 
 pkgname=ccsm-gtk3-git
-pkgver=0.8.12.3.r34.g90a1551
-pkgrel=2
+pkgver=0.8.14.r62.gfdab018
+pkgrel=1
 pkgdesc="Compizconfig Settings Manager in Python (GTK+3 version)"
 arch=('any')
-url="https://github.com/compiz-reloaded/${_upstream}"
+url="https://gitlab.com/compiz/${_upstream}"
 license=('GPL')
 depends=("compizconfig-python-git" 'python-gobject' 'python-cairo' 'hicolor-icon-theme' 'gtk3')
 makedepends=('intltool')
@@ -19,7 +19,7 @@ groups=('compiz-fusion' 'compiz-fusion-gtk' 'compiz-fusion-kde')
 conflicts=('ccsm')
 provides=("ccsm=$pkgver")
 source=(
-	"git+https://github.com/compiz-reloaded/${_upstream}.git"
+	"git+https://gitlab.com/compiz/${_upstream}.git"
 )
 sha1sums=('SKIP')
 
