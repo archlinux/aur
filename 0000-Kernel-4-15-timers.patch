@@ -1,0 +1,143 @@
+diff -pNaru5 snx_V2.0.4.3.orig-0000/driver/snx_common.h snx_V2.0.4.3/driver/snx_common.h
+--- snx_V2.0.4.3.orig-0000/driver/snx_common.h	2018-06-04 09:18:05.640354280 -0400
++++ snx_V2.0.4.3/driver/snx_common.h	2018-06-04 09:18:05.657020853 -0400
+@@ -893,10 +893,11 @@ static inline void snx_ser_insert_char
+ /*******************************************************
+              sunix serial port struct
+ *******************************************************/
+ struct sunix_ser_port
+ {
++	/* port must be first */
+ 	struct snx_ser_port port;
+ 	struct timer_list	timer;
+ 	struct list_head	list;
+ 
+ 	unsigned int		capabilities;
+diff -pNaru5 snx_V2.0.4.3.orig-0000/driver/snx_ieee1284.c snx_V2.0.4.3/driver/snx_ieee1284.c
+--- snx_V2.0.4.3.orig-0000/driver/snx_ieee1284.c	2009-11-02 13:53:54.000000000 -0500
++++ snx_V2.0.4.3/driver/snx_ieee1284.c	2018-06-04 09:18:05.657020853 -0400
+@@ -8,31 +8,53 @@ static void sunix_parport_ieee1284_wakeu
+ 
+ 
+ static struct snx_parport *port_from_cookie[SNX_PAR_TOTAL_MAX];
+ 
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ static void sunix_timeout_waiting_on_port(unsigned long cookie)
+ {
++#else
++struct sp_timer_list {
++	struct timer_list tl;
++	unsigned long cookie;
++};
++
++static void sunix_timeout_waiting_on_port(struct timer_list *ptr)
++{
++	struct sp_timer_list *sptl = (struct sp_timer_list *) ptr;
++	unsigned long cookie = sptl->cookie;
++#endif
+ 	sunix_parport_ieee1284_wakeup(port_from_cookie[cookie % SNX_PAR_TOTAL_MAX]);
+ }
+ 
+ 
+ int sunix_parport_wait_event(struct snx_parport *port, signed long timeout)
+ {
+ 	int ret;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	struct timer_list timer;
++#else
++	struct sp_timer_list snx_timer_ch;
++#endif
+ 
+ 	if (!port->physport->cad->timeout)
+ 	{
+ 		return 1;
+ 	}
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	init_timer (&timer);
+-	timer.expires = jiffies + timeout;
+ 	timer.function = sunix_timeout_waiting_on_port;
+-	port_from_cookie[port->number % PARPORT_MAX] = port;
+ 	timer.data = port->number;
++#else
++#define timer (snx_timer_ch.tl)
++	timer_setup(&timer,sunix_timeout_waiting_on_port,0);
++	snx_timer_ch.cookie = port->number;
++#endif
++	timer.expires = jiffies + timeout;
++	port_from_cookie[port->number % PARPORT_MAX] = port;
+ 
+ 	add_timer (&timer);
+ 	ret = down_interruptible(&port->physport->ieee1284.irq);
+ 
+ 
+@@ -41,10 +63,11 @@ int sunix_parport_wait_event(struct snx_
+ 		ret = 1;
+ 	}
+ 
+ 	return ret;
+ }
++#undef timer
+ 
+ 
+ int sunix_parport_poll_peripheral(struct snx_parport *port, unsigned char mask, unsigned char result, int usec)
+ {
+ 	int count = usec / 5 + 2;
+diff -pNaru5 snx_V2.0.4.3.orig-0000/driver/snx_serial.c snx_V2.0.4.3/driver/snx_serial.c
+--- snx_V2.0.4.3.orig-0000/driver/snx_serial.c	2017-10-13 02:54:10.000000000 -0400
++++ snx_V2.0.4.3/driver/snx_serial.c	2018-06-04 09:19:55.559736715 -0400
+@@ -132,11 +132,15 @@ static void         sunix_ser_enable_ms(
+ static void         sunix_ser_break_ctl(struct snx_ser_port *, int);
+ static int          sunix_ser_startup(struct snx_ser_port *);
+ static void         sunix_ser_shutdown(struct snx_ser_port *);
+ static unsigned int sunix_ser_get_divisor(struct snx_ser_port *, unsigned int);
+ static void         sunix_ser_set_termios(struct snx_ser_port *, struct SNXTERMIOS *, struct SNXTERMIOS *);
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0))
+ static void         sunix_ser_timeout(unsigned long);
++#else
++static void         sunix_ser_timeout(struct timer_list *);
++#endif
+ 
+ 
+ static _INLINE_ void sunix_ser_receive_chars(struct sunix_ser_port *, unsigned char *);
+ static _INLINE_ void sunix_ser_transmit_chars(struct sunix_ser_port *);
+ static _INLINE_ void sunix_ser_check_modem_status(struct sunix_ser_port *, unsigned char);
+@@ -4415,13 +4419,19 @@ static void sunix_ser_set_termios(struct
+ 
+     spin_unlock_irqrestore(&sp->port.lock, flags);   
+ }
+ 
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0))
+ static void sunix_ser_timeout(unsigned long data)
+ {
+     struct sunix_ser_port *sp = (struct sunix_ser_port *)data;
++#else
++static void sunix_ser_timeout(struct timer_list *tl)
++{
++    struct sunix_ser_port *sp = from_timer(sp,tl,timer);
++#endif
+     unsigned int timeout;
+     unsigned int iir;
+ 
+     iir = READ_UART_IIR(sp);
+     
+@@ -5054,13 +5064,17 @@ extern int sunix_ser_register_ports(stru
+ 
+ 		sp->port.line = i;
+ 
+ 		if (sp->port.iobase)
+ 		{
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0))
+ 			init_timer(&sp->timer);
+ 
+ 			sp->timer.function = sunix_ser_timeout;
++#else
++			timer_setup(&sp->timer,sunix_ser_timeout,0);
++#endif
+ 
+ 			sp->mcr_mask = ~0;
+ 			sp->mcr_force = 0;
+             
+ 			ret = sunix_ser_add_one_port(drv, &sp->port);

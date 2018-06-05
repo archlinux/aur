@@ -2,6 +2,9 @@
 
 _opt_DKMS=1           # This can be toggled between installs
 
+# Todo: Unable to trigger timer to see if it works
+# Todo: modprobe snx with conflicting major, again modeprobe snx crashes kernel
+
 # ls -l /dev/ttySNX*
 # lsmod | grep snx
 # lspci -v | grep -A4 -i snx
@@ -89,8 +92,9 @@ set -u
 # https://pkgs.org/download/snx-kmp-default # OpenSUSE
 # http://wiki.linuxcnc.org/cgi-bin/wiki.pl?Startech
 pkgname='sunix-snx'
-pkgver='2.0.4_2'
-pkgrel='2'
+#pkgver='2.0.4_2'; _dl='2016/20160706173626'
+pkgver='2.0.4_3'; _dl='2017/20171122180114'
+pkgrel='1'
 pkgdesc='kernel module driver for Sunix SUN1889 SUN1989 SUN1999 SUN2212 SUN2410 UL7502AQ UL7512EQ UL7522EQ PCI PCIe multi I/O parallel serial RS-232 422 485 port Dell Lenovo Acer Startech'
 arch=('i686' 'x86_64')
 url='http://www.sunix.com/'
@@ -100,18 +104,18 @@ url='http://www.sunix.com/'
 license=('GPL' 'custom')
 makedepends=('gzip' 'findutils' 'sed' 'diffutils' 'patch')
 install="${pkgname}-install.sh"
+_srcdir="snx_V${pkgver//_/.}"
 source=(
-  "http://www.sunix.com.tw/en/download.php?pid=1479&file=driver&file_link=download/driver/2016/20160706173626_snx_V${pkgver//_/.}.tar.gz"
+  "http://www.sunix.com/en/download.php?file=driver&file_link=download/driver/${_dl}_snx_V${pkgver//_/.}.tar.gz"
+  #"http://www.sunix.com.tw/en/download.php?pid=1479&file=driver&file_link=download/driver/${_dl}_snx_V${pkgver//_/.}.tar.gz"
   # http://dpdk.org/dev/patchwork/patch/22003/ [dpdk-dev] kni: fix build with kernel 4.11 lib/librte_eal/linuxapp/kni/compat.h lib/librte_eal/linuxapp/kni/kni_dev.h
   # http://dpdk.org/dev/patchwork/patch/22037/
   # http://rglinuxtech.com/?p=1930
   # https://forum.manjaro.org/t/error-with-rtl8812au/24066
-  'sunix-patch-signal_pending-kernel-4-11.patch'
-  'sunix-patch-alt_speed-kernel-4-13.patch'
+  '0000-Kernel-4-15-timers.patch'
 )
-sha256sums=('56ef81518184116bd4fd158e39d0e5ceace53f26f85398371bb230d44da4ff9a'
-            'b589ba0e9d18638b26c8584cefaa5ed500a4984b9d03ed1d6863ba34a559742c'
-            '7743a276081292b6b97fc6a836e1a8331eb10396619882bb611b81b971df3988')
+sha256sums=('5103e25929f5d33a924be1fe1fc824a804fae9c80e3869417b5558ae31330756'
+            'eb9cb3cf971023442925b4eacdf8ac47b1b48172b30d8943312865aa92f19976')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -140,11 +144,14 @@ _install_check() {
 prepare() {
   set -u
   _install_check
+  cd "${_srcdir}"
 
   # Make package compatible and fix some version problems
-  #cp -p 'driver/Makefile' 'driver/Makefile.Arch'
+  #cp -p 'driver/Makefile'{,.Arch}
   sed -e 's: /lib/modules/: /usr/lib/modules/:g' \
       -e '/^install:/,/^$/ s: /usr/lib/: "${DESTDIR}"/usr/lib/:g' \
+      -e '# New cache folder for gcc 8' \
+      -e 's/^clean.*:$/&\n\trm -rf .cache.mk/g' \
       -e '# What sort of make clean deletes files out of system folders?' \
       -e '/^clean/,/^$/ s: /usr/lib/: "${DESTDIR}"/usr/lib/:g' \
       -e '# Prevent file deletion for DKMS' \
@@ -161,35 +168,32 @@ prepare() {
       -e '/findstring / s:uname -a:uname -r:g ' \
     -i 'driver/Makefile'
   sed -e '/^install:/,/^$/ s: /usr/: "${DESTDIR}"/usr/:g' -i 'snxdump/Makefile' 'snxterm/Makefile'
+  ! test -s 'driver/Makefile.Arch' || echo "${}"
 
   # Prevent conflict with /dev/kfd major 242 linux>=4.9. Not present in linux=4.4. linux>4.4 not tested.
   sed -e '/^#define SNX_[A-Z][A-Z][A-Z]_MAJOR/ s:24:23:g' \
       -e '# Remove UTF BOM' \
-      -e 's:\xEF\xBB\xBF::g' \
+      -e '1 s:\xEF\xBB\xBF::g' \
     -i 'driver/snx_common.h'
 
-  # diff -pNau3 driver/snx_common.h{.orig,} > 'sunix-patch-signal_pending-kernel-4-11.patch'
-  patch -Nbup0 < 'sunix-patch-signal_pending-kernel-4-11.patch'
-  # diff -pNau3 driver/snx_serial.c{.orig,} > 'sunix-patch-alt_speed-kernel-4-13.patch'
-  patch -Nbup0 < 'sunix-patch-alt_speed-kernel-4-13.patch'
-
-  # Fix kernel harding error. Must do in sed in case version changes. We put in more than necessary in case the version gets shorter.
-  sed -e 's:^\(#define SNX_DRIVER_VERSION .*\)":\1\\0\\0\\0\\0\\0\\0\\0\\0":g' -i 'driver/snx_common.h'
-
-  # Forgot to clean tarball
-  'ma'ke -s -j1 clean
   sed -e 's:\r$::g' -i $(grep -slrF $'\r')
+
+  cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}
+  #diff -pNaru5 snx_V2.0.4.3{.orig-0000,} > '0000-Kernel-4-15-timers.patch'
+  patch -Nup1 -i "${srcdir}/0000-Kernel-4-15-timers.patch"
   set +u
 }
 
 build() {
   set -u
+  cd "${_srcdir}"
   make -s -j1 # too small for parallel make
   set +u
 }
 
 package() {
   set -u
+  cd "${_srcdir}"
   if [ "${_opt_DKMS}" -eq 0 ]; then
     # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
     local _kernelversionsmall="$(uname -r)"
@@ -229,7 +233,7 @@ EOF
   ) "${pkgdir}/usr/share/applications/sunix-snxterm.desktop"
 
   if [ "${_opt_DKMS}" -ne 0 ]; then
-    rm -rf "${pkgdir}/usr/lib/modules/"
+    rm -r "${pkgdir}/usr/lib/modules/"
     local _dkms="${pkgdir}/usr/src/${pkgname}-${pkgver}"
     install -Dm644 <(cat << EOF
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
