@@ -2,7 +2,7 @@
 
 pkgname=sbxkb
 pkgver=0.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple tray XKB indicator"
 arch=('x86_64')
 license=('GPL2')
@@ -10,7 +10,7 @@ url="http://downloads.sourceforge.net/project/staybox"
 depends=('gtk2')
 makedepends=('pkgconfig')
 source=(https://downloads.sourceforge.net/project/staybox/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('55f8844f9c82ed063d26ee34622ec698db3e9338175865e49e34b1e254f4d4f5')
+sha512sums=('d43cff3014f566e47080ea828910f2ab856d28dce5cc7a526726a4f1666cc9fca8dcc7616b40d91e405e1db3b8d6373bbb97d96e6e36f496d9047f37328b04dc')
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
