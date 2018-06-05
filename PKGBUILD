@@ -1,16 +1,20 @@
 # Maintainer: Joe Groocock <ts3-aur@frebib.net>
+# Contributor: Thaodan <theodorstormgrade@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Slash <demodevil5[at]yahoo[dot]com>
 # Contributor: J.W. Birdsong  <jwbirdsongATmailDOTcom>
 
-pkgname=teamspeak3
+_pkgname=teamspeak3
+pkgname=$_pkgname-wbundled
 pkgver=3.1.9
-pkgrel=2
+pkgrel=1
 pkgdesc="TeamSpeak is software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
 license=('custom')
 depends=('quazip' 'snappy' 'openssl-1.0' 'libudev0-shim' 'libc++' 'qt5-base' 'qt5-declarative' 'qt5-location' 'qt5-svg' 'qt5-webchannel' 'qt5-webengine')
 optdepends=('libpulse')
+provides=('teamspeak3')
+conflicts=('teamspeak3')
 arch=('x86_64')
 # Stripping must be disabled to prevent patchelf'd binaries being corrupted.
 # https://github.com/NixOS/patchelf/issues/10
