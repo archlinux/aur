@@ -17,14 +17,11 @@ sha1sums=('SKIP')
 
 build() {
 	cd xkb-switch
-	cmake .
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
 	make
 }
 
 package() {
 	cd xkb-switch
 	make DESTDIR="$pkgdir/" install
-
-	mkdir "$pkgdir/usr/bin"
-	ln -st "$pkgdir/usr/bin" "/usr/local/bin/xkb-switch"
 }
