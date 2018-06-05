@@ -1,6 +1,6 @@
 # Maintainer: Josh VanderLinden <arch@cloudlery.com>
 pkgname=conduit
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Next-generation ultralight service mesh for Kubernetes"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 source=(
   "${pkgname}-${pkgver}::https://github.com/runconduit/conduit/releases/download/v${pkgver}/conduit-${pkgver}-linux"
 )
-sha256sums=('a0128eee5a153777c3d14a1050c59ae15aa62ef22b8c7b6d57942aa6a4a33c78')
+sha256sums=('7a05ec5a5551ed8340000695bbfb56592699ad6f0ef7dfef0a502576f10bff5d')
 install=conduit.install
 options=(!strip)
 
