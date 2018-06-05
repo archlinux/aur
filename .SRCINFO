@@ -1,0 +1,27 @@
+pkgbase = netbeans-incubator
+	pkgdesc = IDE for Java, HTML5, PHP, Groovy, C and C++ (incubator/nightly version)
+	pkgver = 20180605
+	pkgrel = 1
+	url = http://netbeans.apache.org
+	install = netbeans.install
+	arch = any
+	license = Apache
+	makedepends = gendesk
+	makedepends = setconf
+	makedepends = curl
+	depends = java-environment>=9
+	depends = ttf-font
+	depends = libxtst
+	depends = giflib
+	depends = atk
+	optdepends = php: for developing programs in php
+	optdepends = groovy: for developing programs in groovy
+	optdepends = lib32-glibc
+	provides = netbeans
+	options = !strip
+	backup = usr/share/netbeans-incubator/etc/netbeans.conf
+	source = netbeans-nightly.png
+	sha512sums = 5ce471647913dd0686511724d9b6045f44e9ae06938a8b6f8478bfd7c261c17fea4fa2b692a8c2d6b766503f00aff9c4b8f9e6c26d3b697b8f9a2361a66d9409
+
+pkgname = netbeans-incubator
+
