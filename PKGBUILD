@@ -3,7 +3,7 @@
 
 pkgname="trougnouf-backgrounds"
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -53,7 +53,7 @@ sha256sums=('816c37d71c5b3594aec28be8fe81699441007d9bbd1f240137f56691d2af51ad'
 	'631f15689afb347757dedf3f9cc9e8b4dcb152cfffd9dbcb31d78d7955c5949e'
 	'f5e476019deb0af38230da66a7749527001cb32f1f101966ab60ae082a38870b'
 	'cf08f4598bd569eb8df860a83fd44110f5a25282e508732e924de1c3fab581c2'
-	'a53cf0da1c9ff59bf7fff014a880154b154140ee5bc1e46fe1d099c7d6f36423'
+	'0f7fed8930d452f4355d1f9026aeedcc74587a7344c9758959de0b329fa08e5e'
 	'21ca6228fa574de64975fb48306d59e98f345fcd75a2c5571d89216fa3ba8aa6'
 	'f8fc6e64a19fab1aa6a7c676ef7eb6978abed3a115e5d3a73bd2a6a583195651'
 	'decdcae46f94604ae65c0cc212e6eddd3eba16ec57613755afe5c75ab833cc1c'
@@ -110,3 +110,4 @@ do
 done
 echo "</wallpapers>" >> "${pkgdir}/usr/share/gnome-background-properties/trougnouf-backgrounds.xml"
 }
+
