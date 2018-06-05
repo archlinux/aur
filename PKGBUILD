@@ -5,11 +5,11 @@
 _upstream="emerald-themes"
 
 pkgname=emerald-themes-git
-pkgver=0.8.12.r6.ga32cb12
+pkgver=0.8.14.r4.gb81f5f9
 pkgrel=1
 pkgdesc="Themes for emerald"
 arch=('any')
-url="https://github.com/compiz-reloaded/${_upstream}"
+url="https://gitlab.com/compiz/${_upstream}"
 license=('GPL')
 depends=('emerald')
 makedepends=('intltool' 'pkgconfig')
@@ -17,7 +17,7 @@ groups=('compiz-fusion' 'compiz-fusion-kde' 'compiz-fusion-gtk')
 conflicts=('emerald-themes')
 provides=('emerald-themes')
 source=(
-	"git+https://github.com/compiz-reloaded/${_upstream}.git"
+	"git+https://gitlab.com/compiz/${_upstream}.git"
 )
 sha256sums=('SKIP')
 
