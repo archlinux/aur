@@ -1,12 +1,12 @@
 # Maintainer: Mike Dacre <mike@dacre.me>
 pkgname=qconnect
 pkgver=1.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Allows the running of reconnectable programs via torque with tmux, xpra, and tigervnc"
 arch=('any')
 license=('MIT')
 depends=('python' 'torque' 'tmux')
-optdepends=('xpra-winswitch: GUI applications'
+optdepends=('xpra: GUI applications'
             'tigervnc: VNC connections')
 url="https://github.com/MikeDacre/qconnect"
 source=("https://github.com/MikeDacre/qconnect/raw/master/packages/${pkgname}_${pkgver}.tar.gz"{,.asc})
