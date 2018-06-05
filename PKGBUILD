@@ -3,7 +3,7 @@
 _jellyfishver=1.1.11
 pkgname=kraken
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Kraken taxonomic sequence classification system"
 arch=('x86_64')
 url=https://github.com/DerrickWood/"${pkgname}"
@@ -30,11 +30,11 @@ prepare() {
   done
 
   sed -i "s#  check_for_jellyfish.sh##g" scripts/build_kraken_db.sh
-  sed -i "s#jellyfish#${_installation_dir}/jellyfish#g" scripts/build_kraken_db.sh
+  sed -i "s#    jellyfish #    jellyfish-v1 #g" scripts/build_kraken_db.sh
   popd
 
   pushd "${srcdir}"/jellyfish-"${_jellyfishver}"
-  ./configure --prefix="${_installation_dir}"
+  ./configure --prefix=/usr
   make clean
   popd
 }
@@ -63,12 +63,12 @@ package() {
     install -Dm775 "${script}" "${pkgdir}""${_installation_dir}"/
   done
 
-  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"_v"${pkgver}"/LICENSE
-  install -D -m644 README.md "${pkgdir}"/usr/share/doc/"${pkgname}"_v"${pkgver}"/README.md
-  install -D -m644 CHANGELOG "${pkgdir}"/usr/share/doc/"${pkgname}"_v"${pkgver}"/CHANGELOG
+  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -D -m644 README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/README.md
+  install -D -m644 CHANGELOG "${pkgdir}"/usr/share/doc/"${pkgname}"/CHANGELOG
 
   for doc in docs/*; do
-    install -D -m644 "${doc}" "${pkgdir}"/usr/share/doc/"${pkgname}"_v"${pkgver}"/"${doc}"
+    install -D -m644 "${doc}" "${pkgdir}"/usr/share/doc/"${pkgname}"/"${doc}"
   done
 
   for file in "${pkgdir}${_installation_dir}"/kraken*; do
@@ -76,9 +76,11 @@ package() {
   done
 
   cd "${srcdir}"/jellyfish-"${_jellyfishver}"
-  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/jellyfish_"${_jellyfishver}"/LICENSE
-  install -D -m644 HalfLICENSE "${pkgdir}"/usr/share/licenses/jellyfish_"${_jellyfishver}"/HalfLICENSE
-  install -D -m644 README "${pkgdir}"/usr/share/doc/jellyfish-"${_jellyfishver}"/README
+  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/jellyfish_v"${_jellyfishver}"/LICENSE
+  install -D -m644 HalfLICENSE "${pkgdir}"/usr/share/licenses/jellyfish_v"${_jellyfishver}"/HalfLICENSE
+  install -D -m644 README "${pkgdir}"/usr/share/doc/jellyfish-v"${_jellyfishver}"/README
 
-  install -Dm775 bin/jellyfish  "${pkgdir}${_installation_dir}"/jellyfish
+  make DESTDIR="${pkgdir}" install
+  rm -r "${pkgdir}"/usr/share/man
+  mv "${pkgdir}"/usr/bin/jellyfish "${pkgdir}"/usr/bin/jellyfish-v1 
 }

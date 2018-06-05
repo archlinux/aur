@@ -1,7 +1,7 @@
 pkgbase = kraken
 	pkgdesc = Kraken taxonomic sequence classification system
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/DerrickWood/kraken
 	arch = x86_64
 	license = GPL3
