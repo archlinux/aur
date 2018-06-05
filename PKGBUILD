@@ -4,7 +4,7 @@
 
 pkgname=st-patched-git
 _pkgname=st
-pkgver=0.8.1.r3.g041912a
+pkgver=0.8.1.r6.gdc3b5ba
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X with patches and easy configurable colorscheme'
 arch=('i686' 'x86_64')
@@ -19,9 +19,11 @@ optdepends=('dmenu: for unicode input'
 _patches=(
     "https://st.suckless.org/patches/vertcenter/st-vertcenter-20180320-6ac8c8a.diff"
     "https://st.suckless.org/patches/hidecursor/st-hidecursor-0.8.diff"
-    "st-extra-config-20180420.diff"
-    "st-fix-keyboard-input-20180420.txt"
+    "st-blinking-cursor-20180605.diff"
+    "st-extra-config-20180605.diff"
+    "st-alpha-20180605.diff"
     "colorscheme.h"
+#    "st-Xresources-20180605.diff"
 )
 
 source=("git://git.suckless.org/st"
@@ -30,9 +32,11 @@ source=("git://git.suckless.org/st"
 md5sums=('SKIP'
          '51106ec8ff04d64029401421bbc57ab5'
          '8749ced53fc11d7a979fa8fa21d66de4'
-         'd8b5e709aaaea8c9e5050c26bbcb2e26'
-         '67c9732a7c525525595dc35f9fc2554e'
-         'c053fd06afe77a38b64050582646baf2')
+         'bd291b0947263c56ae3504c989c64f12'
+         'ece72b176f2bd50c81691358cafd8316'
+         '4aa9ff746b8bedd4363b02b688381627'
+         '6b8949529ed5e4aac70bfb0cd5cf0423'
+         )
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

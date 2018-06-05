@@ -5,6 +5,8 @@ ScrollBack:
 	Scrollback patch is buggy at times and not to mension redundant.
 
 COLORSCHEME:
+	If wanted apply the Xresources patch
+
 	Modify colorscheme.h. 'alpha' is for tranparency in hex, must be set if alpha patch is to be enabled.
 	N.B: unicode input is bugged if not full opaque.
 

@@ -89,7 +89,7 @@ index f8cdc14..b3b198c 100644
   * 7: Snowman ("☃")
   */
 -static unsigned int cursorshape = 2;
-+static unsigned int cursorshape = 4;
++static unsigned int cursorshape = 3;
  
  /*
   * Default columns and rows numbers

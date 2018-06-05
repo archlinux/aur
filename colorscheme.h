@@ -1,6 +1,6 @@
 /* bg opacity # Have alpha problems
-unsigned int alpha = 0xe6;
 */
+unsigned int alpha = 0xe6;
 
 
 /* Terminal colors (16 first used in escape sequence) */
@@ -41,5 +41,3 @@ unsigned int defaultfg = 256;
 unsigned int defaultbg = 257;
 static unsigned int defaultcs = 259;
 static unsigned int defaultrcs = 2;
-
-/* vim:ts=2 sw=2 et */
