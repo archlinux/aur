@@ -1,6 +1,6 @@
 pkgbase = gogs
 	pkgdesc = Self Hosted Git Service written in Go
-	pkgver = 0.11.43
+	pkgver = 0.11.53
 	pkgrel = 1
 	epoch = 1
 	url = https://gogs.io
@@ -26,10 +26,10 @@ pkgbase = gogs
 	conflicts = gogs-dev-git
 	options = !strip
 	backup = etc/gogs/app.ini
-	source = gogs-0.11.43::https://github.com/gogits/gogs/archive/v0.11.43.tar.gz
+	source = gogs-0.11.53::https://github.com/gogs/gogs/archive/v0.11.53.tar.gz
 	source = 0001-Adjust-config-for-Arch-Linux-package.patch
 	source = 0002-Adjust-service-file-for-Arch-Linux-package.patch
-	sha512sums = 9890340c6009e9f956e7d46a6de5ad09f50fdccbf20c3c4a593ab94a1d200043e53b9aecd0bd8242b4c6a0ed9b3c7baf7761da713c961c4d99b94b07a9a29acb
+	sha512sums = 4d34b904a933945faf36f31bb192910cb7ee19cca9a102b4717aafea6d59b8cb7a1a9bc9cac5ff34b371a66056313e6263ac171a46482d65d6216d4b8d4a2b54
 	sha512sums = 2763e4a2a5c98f3e75a1ddcb7c58012ce1e0fc2ad6b85110d9f28dd6c98d9e84a98529a282ffee8a1a21ef02a92b0538f2c790f62e6159b1f1f478340ddcf68a
 	sha512sums = 361d318ac3c846eaa6b0260baed8fe21ba5d6b079b0618962e8b67ae91928c61b1296eba2311d6bd032c8bca4a09e51d8fb73e6ff67039b35a5179701a0cd868
 
