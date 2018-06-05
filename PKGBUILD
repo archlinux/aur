@@ -1,6 +1,6 @@
 # Maintainer: svexican <svexican@fastmail.com>
 pkgname=postgrest-bin
-pkgver=0.4.4.0
+pkgver=0.5.0.0
 pkgrel=1
 epoch=
 pkgdesc="REST API for any Postgres database"
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/begriffs/postgrest"
 license=('MIT')
 groups=()
-depends=('postgresql-libs')
+depends=('postgresql-libs>=9.4')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/begriffs/postgrest/releases/download/v$pkgver/postgrest-v$pkgver-ubuntu.tar.xz")
 noextract=()
-sha512sums=('3ab349e35159353e42ce2fda741620c20e4f91f99f039b0a05caa64274de8aacfcb6a4afd0cd0b568a20cc4f6c3ca4c5832600d5da4543a0ee5a187e03b627f6')
+sha512sums=('c5716ba667437ee4c382e50d9f6155a34e2f252950786a1851c370e746a98c0fa2dc15e188604706228359dd5da0b491189f018a6ea303ccbabaa6d4d0c642a0')
 validpgpkeys=()
 
 package() {
