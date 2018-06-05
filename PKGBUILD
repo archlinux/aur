@@ -1,17 +1,18 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Contributor: Brett Gilio <owner@brettgilio.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Mort Yao <soi@mort.ninja>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=fsharp
-pkgver=4.1.23
+pkgver=4.1.34
 pkgrel=1
-pkgdesc="The Open Edition of the F# compiler, core library and tools"
+pkgdesc="The F# Compiler, Core Library & Tools (F# Software Foundation Repository)"
 arch=('any')
 url="http://fsharp.org/"
-license=('Apache')
-depends=('mono')
+license=('MIT')
+depends=('mono' 'msbuild-stable')
 makedepends=(git)
-_commit=35a4a5b1f26927259c3213465a47b27ffcd5cb4d  # tags/4.1.23
+_commit=662492595a63dffff8fac84939614743fd6d34f9  # tags/4.1.34
 source=("git+https://github.com/fsharp/fsharp/#commit=$_commit")
 sha256sums=('SKIP')
 
