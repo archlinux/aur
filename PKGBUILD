@@ -2,8 +2,8 @@
 # with liberal inspiration from codec2-svn PKGBUILD from Kyle Keen
 
 pkgname=codec2
-pkgver=0.7
-pkgrel=2
+pkgver=0.8
+pkgrel=1
 pkgdesc='an open source codec designed for communications quality speech below 5000 bit/s'
 arch=('i686' 'x86_64')
 license=('LGPL')
