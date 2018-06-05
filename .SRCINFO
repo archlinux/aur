@@ -1,0 +1,21 @@
+pkgbase = python-pastel
+	pkgdesc = Python library to bring colors to your terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sdispater/pastel
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-pastel-0.1.0.tar.gz::https://pypi.io/packages/source/p/pastel/pastel-0.1.0.tar.gz
+	sha256sums = 3108af417ec0fa6d0a620e676ec4f02c839ca13e10611586e5d2174b46aa0bc3
+
+pkgname = python-pastel
+	depends = python
+
+pkgname = python2-pastel
+	depends = python2
+
