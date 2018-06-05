@@ -52,7 +52,7 @@ pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=4.16
 _srcname=linux-${_major}
-_minor=13
+_minor=14
 pkgver=${_major}.${_minor}
 pkgrel=1
 arch=('x86_64')
@@ -75,7 +75,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         "${_uksm_path}/${_uksm_patch}"
-        "${_lucjanpath}/0005-objtool-add-gcc8-support.patch"
         "${_lucjanpath}/0006-include-linux-add-gcc8-support.patch"
          # the main kernel config files
         'config'
@@ -115,7 +114,6 @@ prepare() {
 
     ### Fix gcc8 bogus warnings
         msg "Fix gcc8 bogus warnings"
-        patch -Np1 -i ../0005-objtool-add-gcc8-support.patch
         patch -Np1 -i ../0006-include-linux-add-gcc8-support.patch
     
     ### Patch source with UKSM
@@ -381,11 +379,10 @@ done
 
 sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2d06317dc1683c51a472a9a631573a9b1e7258d6281a2ee189897827f14662'
             'SKIP'
-            'f136eadbaff335b5c9cd45a9265b4ce4409c141372bc7af378c5a6bbb50330bf16d75ef29294f2b876961292c4c2606980e3d169b98e5b413d6c1b13f5eed37e'
+            '5141b66352e6560058ab857e00ba72c84796e135d30cae6398de8e7cf9dfcf266fb581008d2209b0dc20d7dbbcd4e65296557acd3c806fb057dfb55850cd3975'
             'SKIP'
             'a0f37a9b8dbd11f8ef4450b06afee0a6e5519cb5a5cd78f84896812b007ef645bcb9c733ae9817c24d1f4a4c2114258015abceb5a94c7e08d2bb00531a6f04c7'
             'ab962157c2c20faf0bd164a82c2e28ce35fd581d640409ae6419dc2a64c82b7f49e7215149de0bc028dd3d517434160d68127b05137f6b6611641cc871f6c76e'
-            'a10a546ecced915ee38075cc6c57eaebb0f8fa58e6af6669d7429ef4880b55bd5782e11dfbda75ce4f805fa5b2399421b4eade8bbbf6766e5aac24a542f1b7a7'
             '9737f30e748e043a1b6ab56bd0df6dc9607b4a2749243e599f5563b157aaf339ad43020a526a11a6fc809cc1abe50ac1cb12188bf5b367f6458fa0dbc2c1824d'
             '0fa428be07dabdce70cf5e1b3e6e344b8f8df362512a1e3b833093de0e4441b5b9bec879e0c2e91aa692cf88c098317e1531bccdebea9d221469111be6d2e9f7'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
