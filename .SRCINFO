@@ -1,7 +1,7 @@
 pkgbase = torrential
 	pkgdesc = A simple torrent client for elementary OS
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/davidmhewitt/torrential
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = torrential
 	depends = granite
 	depends = openssl
 	depends = miniupnpc
-	source = https://github.com/davidmhewitt/torrential/archive/1.0.8.tar.gz
-	md5sums = 80aca3575752093b7b14cd4793c5b138
+	source = torrential-1.0.8::git+https://github.com/davidmhewitt/torrential#commit=7bd4a1691d60d2c542a0ec05350c28651c710cb2
+	md5sums = SKIP
 
 pkgname = torrential
 
