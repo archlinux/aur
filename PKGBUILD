@@ -3,8 +3,8 @@
 
 pkgname=perl-file-homedir
 _cpanname=File-HomeDir
-pkgver=1.002
-pkgrel=2
+pkgver=1.004
+pkgrel=1
 pkgdesc="Find your home and other directories on any platform"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -13,7 +13,7 @@ depends=('perl-file-which')
 makedepends=('perl-module-install')
 url="https://metacpan.org/release/$_cpanname"
 source=("https://cpan.metacpan.org/authors/id/R/RE/REHSACK/$_cpanname-$pkgver.tar.gz")
-md5sums=('1e999956661fbee165b088eedb5fee3c')
+md5sums=('2db6a961960baec790a896b99b46395d')
 
 build() {
   cd $_cpanname-$pkgver
