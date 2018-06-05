@@ -3,7 +3,7 @@
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 
 pkgname=mailpile
-pkgver=1.0.0rc2
+pkgver=1.0.0rc3
 pkgrel=1
 pkgdesc="A modern, fast web-mail client with user-friendly encryption and privacy features"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('gnupg' 'python2-appdirs' 'python2-cryptography' 'python2-fasteners' 'p
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mailpile/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.service")
-sha256sums=('dbd0ccccdbda9f9709e1ca970ed9a45ec11274d1cafdcfadbd60539ae87cd8da'
+sha256sums=('b2fd0d304b0d856588bfa4dae1820c518142ddb443c70aefa3a1d16a3682babf'
             '07adbd61cda225bf11818d39776240ee1077a3f2ddc9e5ef0f11825dd4ca504d')
 
 prepare() {
