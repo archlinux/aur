@@ -24,7 +24,7 @@
   </focus>
   <placement>
     <policy>Smart</policy>
-    <!-- 'Smart' or 'UnderMouse' -->
+   <!-- 'Smart' or 'UnderMouse' -->
     <center>yes</center>
     <!-- whether to place windows in the center of the free area found or
        the top left corner -->
@@ -40,8 +40,8 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>elementary-os-openbox</name>
-    <titleLayout>CLM</titleLayout>
+    <name>Adwaita-Dark-openbox</name>
+    <titleLayout>LC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -126,7 +126,7 @@
       <name>Back</name>
       <name>Left</name>
     </names>
-    <popupTime>600</popupTime>
+    <popupTime>250</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>
@@ -294,18 +294,18 @@
         </startupnotify>
       </action>
     </keybind>
-    <keybind key="A-W-n">
+    <keybind key="W-n">
       <action name="Execute">
-        <command>compton-inverter.sh focused</command>
+        <command>compton-inverter focused</command>
       </action>
     </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
     <!-- number of pixels the mouse must move before a drag begins -->
-    <doubleClickTime>500</doubleClickTime>
+    <doubleClickTime>100</doubleClickTime>
     <!-- in milliseconds (1000 = 1 second) -->
-    <screenEdgeWarpTime>400</screenEdgeWarpTime>
+    <screenEdgeWarpTime>250</screenEdgeWarpTime>
     <!-- Time before changing desktops when the pointer touches the edge of the
        screen while moving a window, in milliseconds (1000 = 1 second).
        Set this to 0 to disable warping -->
@@ -629,7 +629,7 @@
        entry.
        if this is a negative value, then the delay is infinite and the
        submenu will not be shown until it is clicked on -->
-    <submenuHideDelay>400</submenuHideDelay>
+    <submenuHideDelay>250</submenuHideDelay>
     <!-- time to delay before hiding a submenu when selecting another
        entry in parent menu
        if this is a negative value, then the delay is infinite and the
@@ -643,13 +643,19 @@
     <application name="super-wingpanel">
       <desktop>all</desktop>
     </application>
+    <application name="wingpanel">
+      <desktop>all</desktop>
+    </application>
     <application class="Gnome-control-center">
       <decor>no</decor>
     </application>
-    <application class="Pantheon-*">
+    <application class="Terminal">
       <decor>no</decor>
     </application>
     <application class="Audience">
+      <decor>no</decor>
+    </application>
+    <application class="Totem">
       <decor>no</decor>
     </application>
     <application class="Gedit">
@@ -674,6 +680,9 @@
       <decor>no</decor>
     </application>
     <application class="Files">
+      <decor>no</decor>
+    </application>
+    <application class="Epiphany">
       <decor>no</decor>
     </application>
     <!--
