@@ -1,7 +1,7 @@
 # Maintainer: Alim Gokkaya <alimgokkaya at gmail dot com>
 
 pkgname=librdkafka-git
-pkgver=r2314.400bbdd
+pkgver=r2605.d0f001df
 pkgrel=1
 pkgdesc='Apache Kafka C driver library'
 url="https://github.com/edenhill/librdkafka"
