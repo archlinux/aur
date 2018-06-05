@@ -4,10 +4,10 @@ pkgver=1.1.1b
 pkgrel=1
 pkgdesc="MasterMind"
 arch=('any')
-url="https://github.com/jstitch/masterm"
+url="https://gitlab.com/jstitch/masterm"
 license=('GPL2')
 depends=('ncurses')
-source=('git+https://github.com/jstitch/masterm.git')
+source=('git+https://gitlab.com/jstitch/masterm.git')
 md5sums=('SKIP')
 
 build() {
