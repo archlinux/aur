@@ -7,11 +7,11 @@
 _upstream="compiz-plugins-extra"
 
 pkgname=compiz-fusion-plugins-extra-git
-pkgver=0.8.12.1.r0.g2998660
+pkgver=0.8.14.r27.ga19ee25
 pkgrel=1
 pkgdesc="Compiz Fusion Extra plugins"
 arch=('i686' 'x86_64')
-url="https://github.com/compiz-reloaded/${_upstream}"
+url="https://gitlab.com/compiz/${_upstream}"
 license=('GPL')
 depends=('compiz-core-git' 'compiz-bcop-git' 'compiz-fusion-plugins-main-git' 'libnotify')
 makedepends=('intltool' 'pkg-config' 'gettext')
@@ -20,7 +20,7 @@ conflicts=('compiz-fusion-plugins-extra')
 provides=('compiz-fusion-plugins-extra')
 options=('!libtool')
 source=(
-	"git+https://github.com/compiz-reloaded/${_upstream}.git"
+	"git+https://gitlab.com/compiz/${_upstream}.git"
 )
 
 pkgver() {
