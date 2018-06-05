@@ -2,8 +2,8 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=1.1.54383
-pkgrel=2
+pkgver=1.1.54385
+pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
 url='https://clickhouse.yandex/'
@@ -14,21 +14,19 @@ source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/google/cctz/archive/4f9776a.tar.gz
         https://github.com/edenhill/librdkafka/archive/c3d50eb.tar.gz
         https://github.com/lz4/lz4/archive/c10863b.tar.gz
-        https://github.com/ClickHouse-Extras/zookeeper/archive/438afae.tar.gz
-        https://github.com/facebook/zstd/archive/f4340f4.tar.gz
+        https://github.com/facebook/zstd/archive/2555975.tar.gz
         https://github.com/Dead2/zlib-ng/archive/e07a52d.tar.gz
-        https://github.com/ClickHouse-Extras/poco/archive/8238852.tar.gz
-        https://github.com/ClickHouse-Extras/boost/archive/2d5cb2c.tar.gz
+        https://github.com/ClickHouse-Extras/poco/archive/2d5a158.tar.gz
+        https://github.com/ClickHouse-Extras/boost/archive/5121cc9.tar.gz
         libunwind.patch)
-md5sums=('c89a7babff34012e28357094afbfa060'
+md5sums=('b56a39cb25f7176354403b07299d5089'
          '5323f7ba2565a84a80a93edde95eb4fe'
          'ea7f52489fead0712f7d20c450a4b7a0'
          '7b92f0554687e6a8949adc5c10aeff78'
-         '822fa96f5ceb235f06d22d2e0c7175a2'
-         'e3212525a38d6cc38e26979a10c174ed'
+         'aaa86ec9f379ef587cc53f7b96bcc0e7'
          '87676f8d7fcdea908476029f92b8103f'
-         'fc643caa1710523bbd1d69f72577afbe'
-         '123c1e981fe28c1240d066af493d83b9'
+         '1c4e42d89a984f77a2c1bf66c8f0d64d'
+         '0eedc70c486ae679da354fb7599f2851'
          'f3f60b75abf8d6f21de74db6e88e1e7b')
 backup=('etc/clickhouse-client/config.xml' 'etc/clickhouse-server/config.xml' 'etc/clickhouse-server/users.xml')
 install=$pkgname.install
@@ -37,16 +35,15 @@ prepare() {
   cd ClickHouse-$pkgver-stable
   sed -e 's/mysqlxx common\(.*\) \(\${Z_LIB}\)/mysqlxx \2 common\1/' -i libs/libmysqlxx/CMakeLists.txt
   patch -p1 < ../libunwind.patch
-  mkdir -p contrib/cctz contrib/librdkafka contrib/lz4 contrib/zookeeper contrib/zstd
-  rm -rf contrib/{cctz,librdkafka,lz4,zookeeper,zstd,zlib-ng,poco,boost}/*
+  mkdir -p contrib/cctz contrib/librdkafka contrib/lz4 contrib/zstd
+  rm -rf contrib/{cctz,librdkafka,lz4,zstd,zlib-ng,poco,boost}/*
   mv ../cctz-4f9776a*/* contrib/cctz/
   mv ../librdkafka-c3d50eb*/* contrib/librdkafka/
   mv ../lz4-c10863b*/* contrib/lz4/
-  mv ../zookeeper-438afae*/* contrib/zookeeper/
-  mv ../zstd-f4340f4*/* contrib/zstd/
+  mv ../zstd-2555975*/* contrib/zstd/
   mv ../zlib-ng-e07a52d*/* contrib/zlib-ng/
-  mv ../poco-8238852*/* contrib/poco/
-  mv ../boost-2d5cb2c*/* contrib/boost/
+  mv ../poco-2d5a158*/* contrib/poco/
+  mv ../boost-5121cc9*/* contrib/boost/
   for dir in contrib/*/; do
     rmdir $dir &> /dev/null || true
   done
