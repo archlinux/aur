@@ -1,0 +1,21 @@
+pkgbase = python-pylev
+	pkgdesc = A pure Python Levenshtein implementation that's not freaking GPL'd
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/toastdriven/pylev
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-pylev-1.2.0.tar.gz::https://pypi.io/packages/source/p/pylev/pylev-1.2.0.tar.gz
+	sha256sums = 0187706ab2fa9db9f1bf4976b5f8a1fc69f04e005f535672147da9c79669bfa1
+
+pkgname = python-pylev
+	depends = python
+
+pkgname = python2-pylev
+	depends = python2
+
