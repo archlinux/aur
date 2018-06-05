@@ -3,14 +3,14 @@
 
 pkgname=gtimelog
 pkgver=0.11
-pkgrel=4
+pkgrel=5
 pkgdesc='Small GTK+ app for keeping track of your time'
 arch=('any')
 url='https://gtimelog.org/'
 license=('GPL')
 depends=('python' 'python-gobject' 'python-setuptools')
 makedepends=('python-docutils')
-source=("https://files.pythonhosted.org/packages/33/e5/789ef0fc2280da0ba67bae24317ee77158f23be751835c8d9dc9f0198f21/$pkgname-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('ab43075afdd732e35bfc9f39ee425c23efe0f68258f3bc5688791a12028e6fc7')
 
 build() {
