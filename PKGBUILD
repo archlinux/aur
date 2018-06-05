@@ -8,7 +8,8 @@ url="https://github.com/mooz/xkeysnail"
 license=('GPL')
 depends=('python'
          'python-xlib'
-         'python-evdev')
+         'python-evdev'
+         'python-inotify-simple')
 makedepends=('python-setuptools'
              'git')
 provides=('xkeysnail')

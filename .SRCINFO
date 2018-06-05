@@ -10,6 +10,7 @@ pkgbase = xkeysnail-git
 	depends = python
 	depends = python-xlib
 	depends = python-evdev
+	depends = python-inotify-simple
 	provides = xkeysnail
 	conflicts = xkeysnail
 	source = git://github.com/mooz/xkeysnail.git
