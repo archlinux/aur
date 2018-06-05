@@ -62,10 +62,10 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.16.13
+pkgver=4.16.14
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -90,7 +90,6 @@ source=(# mainline kernel patches
         "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         # bfq-mq patch
         "${_lucjanpath}/${_bfq_mq_patch}"
-        "${_lucjanpath}/0005-objtool-add-gcc8-support.patch"
         "${_lucjanpath}/0006-include-linux-add-gcc8-support.patch"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
          # the main kernel config files
@@ -110,11 +109,10 @@ source=(# mainline kernel patches
 
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            '9efa0a74eb61240da53bd01a3a23759e0065811de53d22de7d679eabf847f323'
+            'cc3d82b8183b641e18e4d504000d7f14873cf67d616ecdabc77383c5d9eaaac0'
             'SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '1f2b2e67b83c297e00b844f3c3708d5113f215b99bc0b2c042271818fa4f7340'
-            '265d3610ab286d42456ace9b817da567a5e741321906f103c40c374db432884b'
             'dcdf569053b086db277ff085390085592ef5b9c71980ee6d4093e2f92f537ef5'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             '2b7b0b7f690d474d22cfd243738d994977be6b3acc15957a0fad4f27ee82645f'
@@ -154,7 +152,6 @@ prepare() {
    
    ### Fix gcc8 bogus warnings
         msg "Fix gcc8 bogus warnings"
-        patch -Np1 -i ../0005-objtool-add-gcc8-support.patch
         patch -Np1 -i ../0006-include-linux-add-gcc8-support.patch
    
    ### Patch source with BFQ-SQ-MQ
