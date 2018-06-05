@@ -7,11 +7,11 @@
 _upstream="compiz-plugins-experimental"
 
 pkgname=compiz-fusion-plugins-experimental-git
-pkgver=0.8.12.r10.gbb7d82e
+pkgver=0.8.14.r29.ge18bf77
 pkgrel=1
 pkgdesc="Compiz Fusion Experimental plugins"
 arch=('i686' 'x86_64')
-url="https://github.com/compiz-reloaded/${_upstream}"
+url="https://gitlab.com/compiz/${_upstream}"
 license=('GPL')
 depends=('compiz-core-git' 'compiz-bcop-git' 'compiz-fusion-plugins-extra-git' 'libnotify')
 makedepends=('intltool' 'pkg-config')
@@ -20,7 +20,7 @@ conflicts=('compiz-fusion-plugins-experimental')
 provides=('compiz-fusion-plugins-experimental')
 options=('!libtool')
 source=(
-	"git+https://github.com/compiz-reloaded/${_upstream}.git"
+	"git+https://gitlab.com/compiz/${_upstream}.git"
 )
 
 pkgver() {
