@@ -23,6 +23,9 @@
 #define SORT_PROFIT_30D 9
 #define SORT_PROFIT_30D_PERCENT 10
 
+#define HIGHLIGHT_NONE -1
+
+#define KEY_ESCAPE 27
 extern char* portfolio_file;
 
 /**

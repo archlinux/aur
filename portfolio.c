@@ -282,6 +282,8 @@ void portfolio_print_all(void) {
     }
 
     int sort_option = SORT_ALPHA; // Defaults to sort alphabetically
+    int highlight_index = HIGHLIGHT_NONE;
+    char highlight_sym[SYMBOL_MAX_LENGTH];
     // For printing/formatting categories
     char* sort_categories_str[] = {"SYMBOL", "VALUE", "SPENT", "PROFIT", "(%)", "24H", "(%)", "7D", "(%)", "30D", "(%)"}
     , * sort_spacing_str[] = {"    ", "    ", "   ", "       ", "      ", "       ", "       ", "       ", "      ",
@@ -304,11 +306,15 @@ void portfolio_print_all(void) {
         attroff(A_BOLD);
 
         for (size_t i = 0; i < portfolio_data->length; i++) {
+            if (highlight_index == (signed) i)
+                attron(A_BOLD);
             info = portfolio_data->array[i]; // Print security data one at a time
             printw("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
                    info->amount, info->symbol, info->current_value, info->total_spent, info->profit_total,
                    info->profit_total_percent, info->profit_last_close, info->profit_last_close_percent,
                    info->profit_7d, info->profit_7d_percent, info->profit_30d, info->profit_30d_percent);
+            if (highlight_index == (signed) i)
+                attroff(A_BOLD);
         }
         attron(A_BOLD); // Bold totals
         printw("\n         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)"
@@ -318,10 +324,34 @@ void portfolio_print_all(void) {
         attroff(A_BOLD);
 
         ch = getch(); // Get keyboard input -- also flushes output buffer
-        if (ch == KEY_RIGHT && sort_option != SORT_PROFIT_30D_PERCENT) // key RIGHT -- moves sort category right
-            sort_option++;
-        else if (ch == KEY_LEFT && sort_option != SORT_ALPHA) // key LEFT -- moves sort category left
-            sort_option--;
+        if (ch == KEY_RIGHT && sort_option != SORT_PROFIT_30D_PERCENT) { // key RIGHT -- moves sort category right
+            if (highlight_index != HIGHLIGHT_NONE) {
+                strcpy(highlight_sym, portfolio_data->array[highlight_index]->symbol);
+                sort_option++;
+                portfolio_sort(portfolio_data, sort_option);
+                for (size_t i = 0; i < portfolio_data->length; i++)
+                    if (strcmp(portfolio_data->array[i]->symbol, highlight_sym) == 0)
+                        highlight_index = (int) i; // Make sure the same security stays highlighted
+            } else sort_option++;
+        } else if (ch == KEY_LEFT && sort_option != SORT_ALPHA) { // key LEFT -- moves sort category left
+            if (highlight_index != HIGHLIGHT_NONE) {
+                strcpy(highlight_sym, portfolio_data->array[highlight_index]->symbol);
+                sort_option--;
+                portfolio_sort(portfolio_data, sort_option); // Sort security array
+                for (size_t i = 0; i < portfolio_data->length; i++)
+                    if (strcmp(portfolio_data->array[i]->symbol, highlight_sym) == 0)
+                        highlight_index = (int) i; // Make sure the same security stays highlighted
+            } else sort_option--;
+        } else if (ch == KEY_DOWN) {
+            highlight_index++;
+            if (highlight_index == (signed) portfolio_data->length) // Wrap around
+                highlight_index = 0;
+        } else if (ch == KEY_UP) {
+            highlight_index--;
+            if (highlight_index < 0) // Wrap around
+                highlight_index = (signed) portfolio_data->length -1;
+        } else if (ch == KEY_ESCAPE)
+            highlight_index = HIGHLIGHT_NONE;
     } while (ch != 'q'); // "q" to quit
     endwin();
     api_info_array_destroy(&portfolio_data);
