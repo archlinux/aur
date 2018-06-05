@@ -1,19 +1,20 @@
 pkgbase = octopi
-	pkgdesc = a powerful Pacman frontend using Qt libs
+	pkgdesc = A powerful Pacman frontend using Qt libs
 	pkgver = 0.8.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://octopiproject.wordpress.com
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = qt5-declarative
+	makedepends = pacman-contrib
 	makedepends = git
 	makedepends = knotifications
 	makedepends = alpm_octopi_utils
 	makedepends = qtermwidget
-	source = octopi-0.8.5-3.tar.gz::https://github.com/aarnt/octopi/archive/52e111f5ab53b5b60ac06ca1cd47c70e0aced435.tar.gz
+	source = octopi-0.8.5-4.tar.gz::https://github.com/aarnt/octopi/archive/1c07b57afadec2e08a8899724c98602dd7227cfb.tar.gz
 	source = octopi-repoeditor.desktop
-	sha256sums = fda4b2c532d8f398ea03bfaf44fa86ab3a1d9611e652b313807a3193ad5a7e56
+	sha256sums = d6941a182d691d47305b338aac2f1e3c4bd164c7e686cf4fc01a02bc2e816dfe
 	sha256sums = 131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef
 
 pkgname = octopi

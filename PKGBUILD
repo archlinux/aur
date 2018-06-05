@@ -1,16 +1,17 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: kikadf <kikadf.01@gmail.com>
+# Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgbase=octopi
 pkgname=('octopi' 'octopi-pacmanhelper' 'octopi-notifier-qt5' 'octopi-notifier-frameworks' 'octopi-repoeditor' 'octopi-cachecleaner')
 pkgver=0.8.5
-pkgrel=3
+pkgrel=4
 # This is the release package so the below _gitcommit variable should (usually) be commented out.
-_gitcommit="52e111f5ab53b5b60ac06ca1cd47c70e0aced435"
-pkgdesc="a powerful Pacman frontend using Qt libs"
+_gitcommit="1c07b57afadec2e08a8899724c98602dd7227cfb"
+pkgdesc="A powerful Pacman frontend using Qt libs"
 arch=('i686' 'x86_64')
 url="http://octopiproject.wordpress.com"
 license=('GPL2')
-makedepends=('qt5-declarative' 'git' 'knotifications' 'alpm_octopi_utils' 'qtermwidget')
+makedepends=('qt5-declarative' 'pacman-contrib' 'git' 'knotifications' 'alpm_octopi_utils' 'qtermwidget')
 if [ "${_gitcommit}" != "" ]; then
 	source=("octopi-${pkgver}-${pkgrel}.tar.gz::https://github.com/aarnt/octopi/archive/${_gitcommit}.tar.gz"
 	'octopi-repoeditor.desktop')
@@ -18,7 +19,7 @@ else
   source=("https://github.com/aarnt/${pkgname}/archive/v${pkgver}.tar.gz"
 	'octopi-repoeditor.desktop')
 fi
-sha256sums=('fda4b2c532d8f398ea03bfaf44fa86ab3a1d9611e652b313807a3193ad5a7e56'
+sha256sums=('d6941a182d691d47305b338aac2f1e3c4bd164c7e686cf4fc01a02bc2e816dfe'
             '131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef')
 
 prepare() {
