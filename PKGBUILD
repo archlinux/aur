@@ -3,7 +3,7 @@
 
 pkgname=perl-task-weaken
 _cpanname="Task-Weaken"
-pkgver=1.05
+pkgver=1.06
 pkgrel=1
 pkgdesc="Ensure that a platform has weaken support"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl>=5.5.0')
 url="http://search.cpan.org/dist/$_cpanname"
 #source=("http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/$_cpanname-$pkgver.tar.gz")
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/$_cpanname-$pkgver.tar.gz")
-sha256sums=('85f3bf738d0e94f935d9efd83575a2afd0aafb66adcc6624cee5064146f6b95c')
+sha256sums=('2383fedb9dbaef646468ea824afbf7c801076720cfba0df2a7a074726dcd66be')
 
 # Function to change to the working directory and set
 # environment variables to override undesired options.

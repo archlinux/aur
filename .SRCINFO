@@ -1,6 +1,6 @@
 pkgbase = perl-task-weaken
 	pkgdesc = Ensure that a platform has weaken support
-	pkgver = 1.05
+	pkgver = 1.06
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Task-Weaken
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-task-weaken
 	license = GPL
 	depends = perl>=5.5.0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Task-Weaken-1.05.tar.gz
-	sha256sums = 85f3bf738d0e94f935d9efd83575a2afd0aafb66adcc6624cee5064146f6b95c
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Task-Weaken-1.06.tar.gz
+	sha256sums = 2383fedb9dbaef646468ea824afbf7c801076720cfba0df2a7a074726dcd66be
 
 pkgname = perl-task-weaken
 
