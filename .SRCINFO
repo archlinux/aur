@@ -1,0 +1,17 @@
+pkgbase = ruby-ddmemoize
+	pkgdesc = Adds support for memoizing functions
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://rubygems.org/gems/ddmemoize
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-ddmetrics
+	depends = ruby-ref
+	noextract = ddmemoize-1.0.0.gem
+	source = https://rubygems.org/downloads/ddmemoize-1.0.0.gem
+	sha256sums = d42cc6aa4800c6e3282918d423accb50470d603280b1cf41a6bf8c061d84d497
+
+pkgname = ruby-ddmemoize
+
