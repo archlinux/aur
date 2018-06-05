@@ -1,6 +1,6 @@
 pkgbase = simgear
 	pkgdesc = A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications.
-	pkgver = 2018.2.1
+	pkgver = 2018.2.2
 	pkgrel = 1
 	url = http://www.flightgear.org/
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = simgear
 	depends = openscenegraph
 	options = makeflags
 	options = staticlibs
-	source = https://downloads.sourceforge.net/project/flightgear/release-2018.2/simgear-2018.2.1.tar.bz2
-	sha256sums = 3e2788bc1ce03fc4ca69f41d1546c28fc9502756ae773831ad6e42c4db34f535
+	source = https://downloads.sourceforge.net/project/flightgear/release-2018.2/simgear-2018.2.2.tar.bz2
+	sha256sums = f61576bc36aae36f350154749df1cee396763604c06b8a71c4b50452d9151ce5
 
 pkgname = simgear
 
