@@ -1,14 +1,17 @@
+# Maintainer: kikadf <kikadf.01@gmail.com>
+
 pkgname=alpm_octopi_utils
 pkgver=1.0.0
-pkgrel=1
-_commit=6d93c06d0feec0df7e5958c33df281eda91a6700
+_commit=7f3a6c7e0e46bf9acb54af472f4fe45ab632d58c
+pkgrel=2
 pkgdesc="Alpm utils for Octopi"
 url="https://octopiproject.wordpress.com/"
 arch=('i686' 'x86_64')
 license=('GPL3')
+depends=('pacman')
 makedepends=('vala')
 source=("https://github.com/aarnt/${pkgname}/archive/${_commit}.zip")
-sha256sums=('637ce5f534b54576c0e68d22892ba920c61a95d32cb5166633e0a93d325e84d4')
+sha256sums=('1be08455e2845fc03f4e4f3010e11c6946fb6dae7d0d9807c7ac5349dda04ba6')
          
 build() {
   cd ${pkgname}-${_commit}
