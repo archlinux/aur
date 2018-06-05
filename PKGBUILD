@@ -1,7 +1,7 @@
 # Maintainer: Pierpaolo Valerio <gondsman@techgeek.co.in>
 pkgname=cirkuit-kf5-git
 pkgver=r408.cdc3e89
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE interface for LaTeX graphic tools (such as TikZ, Gnuplot, Circuit Macros) to produce publication-ready pictures"
 arch=('i686' 'x86_64')
 url="git://anongit.kde.org/cirkuit.git"
@@ -23,7 +23,9 @@ pkgver() {
 
 prepare() {
   cd "$_gitname"/src/
+  sed -i 's/CMman.pdf/Circuit_macros.pdf/g' backends/circuitmacros/circuitmacrosbackend.cpp
   sed -i 's/loadFile(filename)/loadFile(KUrl(filename))/g' mainwindow.cpp
+
 }
 
 build() {

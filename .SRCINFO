@@ -1,7 +1,7 @@
 pkgbase = cirkuit-kf5-git
 	pkgdesc = KDE interface for LaTeX graphic tools (such as TikZ, Gnuplot, Circuit Macros) to produce publication-ready pictures
 	pkgver = r408.cdc3e89
-	pkgrel = 1
+	pkgrel = 2
 	url = git://anongit.kde.org/cirkuit.git
 	arch = i686
 	arch = x86_64
