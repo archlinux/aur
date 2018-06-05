@@ -7,11 +7,11 @@
 _upstream="compiz-plugins-main"
 
 pkgname=compiz-fusion-plugins-main-git
-pkgver=0.8.12.2.r0.g8182f15
+pkgver=0.8.14.r17.g5723352
 pkgrel=1
 pkgdesc="Compiz Fusion Main plugins"
 arch=('i686' 'x86_64')
-url="https://github.com/compiz-reloaded/${_upstream}"
+url="https://gitlab.com/compiz/${_upstream}"
 license=('GPL')
 depends=('compiz-core-git' 'libjpeg>=7' 'librsvg' 'compiz-bcop-git' 'libxdamage' 'libxcomposite'
 	'libxinerama' 'startup-notification')
@@ -20,7 +20,7 @@ groups=('compiz-fusion' 'compiz-fusion-kde' 'compiz-fusion-gtk')
 conflicts=('compiz-fusion-plugins-main')
 provides=('compiz-fusion-plugins-main')
 source=(
-	"git+https://github.com/compiz-reloaded/${_upstream}.git"
+	"git+https://gitlab.com/compiz/${_upstream}.git"
 )
 options=(!libtool)
 
