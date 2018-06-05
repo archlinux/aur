@@ -7,11 +7,11 @@
 _upstream="emerald"
 
 pkgname=emerald-gtk3-git
-pkgver=0.8.12.4.r38.gd3eba71
+pkgver=0.8.14.r18.g93e490c
 pkgrel=1
 pkgdesc="Emerald window decorator"
 arch=('i686' 'x86_64')
-url="https://github.com/compiz-reloaded/${_upstream}"
+url="https://gitlab.com/compiz/${_upstream}"
 license=('GPL')
 depends=('compiz-core-git' 'libxres' 'shared-mime-info' 'xdg-utils' 'libwnck3'
          'desktop-file-utils' 'hicolor-icon-theme')
@@ -21,7 +21,7 @@ options=(!libtool)
 conflicts=('emerald0.9' 'emerald')
 provides=('emerald')
 source=(
-	"git+https://github.com/compiz-reloaded/${_upstream}.git"
+	"git+https://gitlab.com/compiz/${_upstream}.git"
 )
 sha1sums=('SKIP')
 
