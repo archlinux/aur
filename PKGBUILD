@@ -1,45 +1,21 @@
-pkgname="terminal_markdown_viewer"
-pkgver=125.a153696
+# Maintainer: Noa-Emil Nissinen <aur dot satella at spamgourmet dot org>
+# Contributors: cyrevolt, seletskiy
+
+pkgname=terminal_markdown_viewer
+pkgver=1.6.3
 pkgrel=1
-pkgdesc="Styled Terminal Markdown Viewer"
+pkgdesc="styled terminal markdown viewer"
 url="https://github.com/axiros/terminal_markdown_viewer"
 arch=('any')
 license=('BSD')
-makedepends=()
-depends=(python2-markdown python2-pygments python2-yaml python2)
-source=(git+https://github.com/axiros/terminal_markdown_viewer)
-md5sums=(SKIP)
-
-pkgver() {
-    cd "${pkgname}"
-    echo $(git rev-list --count master).$(git rev-parse --short master)
-}
-
-build() {
-    cd "$srcdir/terminal_markdown_viewer"
-
-    sed -re '1s/env python$/&2.7/' -i mdv.py
-}
+depends=(python2 python2-docopt python2-markdown python2-pygments python2-yaml)
+makedepends=(python2-setuptools)
+source=(
+  "https://github.com/axiros/terminal_markdown_viewer/archive/$pkgver.tar.gz"
+)
+sha512sums=('fdf79d4c67c5fe4b367397d9fa4d6559ff18671fc7cd88c1815b4acaf257afd5b088a37c3a09665439170dc89ce03f894b1416a28f1406591356d5d50c5eb5b9')
 
 package() {
-    local target="${pkgdir}/usr/lib/python2.7/site-packages/mdv/"
-
-    cd "$srcdir/terminal_markdown_viewer"
-
-    install -dm755 $target
-    install -Dm644 mdv.py $target/mdv.py
-    install -Dm644 __init__.py $target/__init__.py
-    install -Dm644 docopt.py $target/docopt.py
-    install -Dm644 ansi_tables.json $target/ansi_tables.json
-    install -Dm644 tabulate.py $target/tabulate.py
-
-    install -dm755 ${pkgdir}/usr/bin
-    cat > ${pkgdir}/usr/bin/mdv <<CAT
-#!/bin/bash
-
-exec python2 ${target##$pkgdir}/mdv.py "\${@}"
-
-CAT
-
-    chmod +x ${pkgdir}/usr/bin/mdv
+  cd "$srcdir/terminal_markdown_viewer-${pkgver}"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
