@@ -6,11 +6,11 @@
 _upstream="compizconfig-python"
 
 pkgname=compizconfig-python-git
-pkgver=0.8.12.r3.g80d28f3
-pkgrel=2
+pkgver=0.8.14.r2.g3abb8fb
+pkgrel=1
 pkgdesc="Compizconfig bindings for python"
 arch=('i686' 'x86_64')
-url="https://github.com/compiz-reloaded/${_upstream}"
+url="https://gitlab.com/compiz/${_upstream}"
 license=('GPL')
 depends=("compiz-core-git" 'libcompizconfig-git' 'glib2' 'python' 'libxrandr' 'libsm' 'libxdamage')
 makedepends=('intltool' 'pkgconfig' 'cython')
@@ -19,7 +19,7 @@ conflicts=('compizconfig-python')
 provides=('compizconfig-python')
 sha1sums=('SKIP')
 source=(
-	"git+https://github.com/compiz-reloaded/${_upstream}.git"
+	"git+https://gitlab.com/compiz/${_upstream}.git"
 )
 
 pkgver() {
