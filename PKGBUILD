@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://ccwu.me/"
 license=('custom')
 depends=('glew>=1.8' 'freeglut>=2.7' 'devil>=1.7')
-optdepends=('cuda>=5.0')
+optdepends=('cuda')
 makedepends=(git)
 source=("${pkgname}::git+https://github.com/pitzer/SiftGPU"
         'makefile-cuda.patch')
