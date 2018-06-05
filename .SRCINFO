@@ -1,7 +1,7 @@
 pkgbase = perl-critic
 	pkgdesc = Critique Perl source code for best-practices.
-	pkgver = 1.126
-	pkgrel = 2
+	pkgver = 1.132
+	pkgrel = 1
 	url = https://metacpan.org/release/Perl-Critic
 	arch = any
 	license = PerlArtistic
@@ -10,24 +10,24 @@ pkgbase = perl-critic
 	depends = perl-module-build
 	depends = perl-b-keywords>=1.05
 	depends = perl-config-tiny
-	depends = perl-email-address>=1.889
 	depends = perl-exception-class>=1.23
 	depends = perl-file-homedir
 	depends = perl-file-which
 	depends = perl-io-string
 	depends = perl-list-moreutils>=0.19
 	depends = perl-module-pluggable>=3.1
-	depends = perl-ppi>=1.220
+	depends = perl-ppi>=1.224
+	depends = perl-ppix-quotelike
 	depends = perl-ppix-regexp>=0.027
-	depends = perl-ppix-utilities
+	depends = perl-ppix-utilities>=1.001
 	depends = perl-tidy
 	depends = perl-pod-spell
-	depends = perl-readonly
+	depends = perl-readonly>=2.00
 	depends = perl-string-format>=1.13
 	depends = perl-task-weaken
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/T/TH/THALJEF/Perl-Critic-1.126.tar.gz
-	md5sums = c5c698baa7fd373ea893ff39f29ed7b9
+	source = https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Perl-Critic-1.132.tar.gz
+	sha512sums = 489d551b4913071a9001e8476425079b3aeef44838feff622edfdb64ca09f62b569f5338d2e1982d3ccd3fdb8f30caf077ceac5ec1beebafbde7a01d6deed890
 
 pkgname = perl-critic
 
