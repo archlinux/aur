@@ -1,6 +1,6 @@
 pkgbase = nvchecker-git
 	pkgdesc = a tool for checking if a new version of some software has been released.
-	pkgver = 1.1dev.r27
+	pkgver = 1.1dev.r68
 	pkgrel = 2
 	epoch = 1
 	url = https://github.com/lilydjwg/nvchecker
@@ -13,6 +13,7 @@ pkgbase = nvchecker-git
 	optdepends = python-aiohttp: HTTP client (only one needed)
 	optdepends = python-tornado: HTTP client (only one needed)
 	optdepends = python-pycurl: better HTTP support for Tornado
+	optdepends = pyalpm: for "sort_version_key = vercmp" config
 	optdepends = git
 	optdepends = mercurial
 	source = git://github.com/lilydjwg/nvchecker.git
