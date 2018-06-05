@@ -9,7 +9,7 @@ pkgbase = miniterm-git
 	makedepends = git
 	depends = vte3
 	depends = glib2
-	source = https://gitlab.com/laelath/miniterm.git
+	source = git+https://gitlab.com/laelath/miniterm.git
 	md5sums = SKIP
 
 pkgname = miniterm-git
