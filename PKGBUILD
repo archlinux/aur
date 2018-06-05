@@ -1,16 +1,16 @@
-# Maintainer: svexican (svexican@gmail.com)
+# Maintainer: svexican (svexican@fastmail.com)
 
 pkgname=bubbleswm-git
-pkgver=r226.9624938
+pkgver=r241.1bc31b8
 pkgrel=1
 pkgdesc="bubbles is opinionated, tiny, bloat-less (=> fast) floating window manager for X."
 arch=('i686' 'x86_64')
-url="https://github.com/svexican/bubbleswm"
+url="https://git.svexican.me/bubbleswm/tree/README.md"
 license=('GPL')
 depends=('libx11' 'libxft')
 optdepends=('libxinerama')
 provides=("${pkgname%-*}")
-source=('git+https://github.com/svexican/bubbleswm.git')
+source=('https://git.svexican.me/bubbleswm')
 md5sums=('SKIP')
 
 pkgver() {
