@@ -1,7 +1,7 @@
 pkgbase = digidoc4-client
 	pkgdesc = Application for digitally signing and encrypting documents
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-eid/DigiDoc4-Client
 	arch = x86_64
 	license = LGPL2.1
@@ -17,9 +17,13 @@ pkgbase = digidoc4-client
 	source = digidoc4-client::git+https://github.com/open-eid/DigiDoc4-Client.git#tag=v0.6.0-BETA
 	source = git+https://github.com/open-eid/cmake.git
 	source = git+https://github.com/open-eid/qt-common.git
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	source = digidoc4-client.patch
+	source = qt-common.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 0cc043fd45fcb65c82500798cf40736f64cea02641a13f611976bcbeb6499a69
+	sha256sums = f77af2b2bf96ec5febab40e038dc8a5a2df4de1107797114e9ae6aeb4e489f2d
 
 pkgname = digidoc4-client
 

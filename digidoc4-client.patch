@@ -1,0 +1,37 @@
+diff --git a/client/dialogs/PinUnblock.cpp b/client/dialogs/PinUnblock.cpp
+index d5016b2..0459f83 100644
+--- a/client/dialogs/PinUnblock.cpp
++++ b/client/dialogs/PinUnblock.cpp
+@@ -25,6 +25,7 @@
+ 
+ #include <QLabel>
+ #include <QList>
++#include <QtGui/QRegExpValidator>
+ 
+ 
+ struct InfoLine
+diff --git a/client/dialogs/Updater.cpp b/client/dialogs/Updater.cpp
+index 83c27b0..294217b 100644
+--- a/client/dialogs/Updater.cpp
++++ b/client/dialogs/Updater.cpp
+@@ -41,6 +41,7 @@
+ #include <QtNetwork/QNetworkReply>
+ #include <QtNetwork/QSslKey>
+ #include <QtGui/QPainter>
++#include <QtGui/QRegExpValidator>
+ #include <QtWidgets/QPushButton>
+ 
+ #include <openssl/evp.h>
+diff --git a/client/widgets/OtherData.cpp b/client/widgets/OtherData.cpp
+index abb05bd..bb24bfe 100644
+--- a/client/widgets/OtherData.cpp
++++ b/client/widgets/OtherData.cpp
+@@ -21,6 +21,8 @@
+ #include "ui_OtherData.h"
+ #include "Styles.h"
+ 
++#include <QStyleOption>
++
+ OtherData::OtherData(QWidget *parent)
+ : QWidget(parent)
+ , ui(new Ui::OtherData)

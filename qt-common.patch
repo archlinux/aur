@@ -1,0 +1,11 @@
+diff --git a/qtsingleapplication/CMakeLists.txt b/qtsingleapplication/CMakeLists.txt
+index bb69314..c1ef01e 100644
+--- a/qtsingleapplication/CMakeLists.txt
++++ b/qtsingleapplication/CMakeLists.txt
+@@ -5,5 +5,5 @@ add_library( qtsingleapplication STATIC src/qtlocalpeer.cpp src/qtsingleapplicat
+ set_target_properties( qtsingleapplication PROPERTIES AUTOMOC TRUE )
+ 
+ if( Qt5Widgets_FOUND )
+-	qt5_use_modules( qtsingleapplication Widgets Network )
++	target_link_libraries( qtsingleapplication Qt5::Widgets Qt5::Network )
+ endif()
