@@ -20,7 +20,7 @@ prepare () {
   cd "$srcdir/hdf5-${pkgver/_/-}"
 
   # run H5detect.exe, H5make_libsettings.exe through wine
-  cp src/CMakeLists.txt src/CMakeLists.txt.orig
+  sed -i "s|COMMAND \$<TARGET_FILE:H5|COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE:H5|g" src/CMakeLists.txt
 
   # do not use msvc import suffix
   sed -i "s|MINGW AND \${libtype} MATCHES \"SHARED\"|0|g" config/cmake_ext_mod/HDFMacros.cmake
@@ -42,7 +42,6 @@ prepare () {
 build() {
   cd "$srcdir/hdf5-${pkgver/_/-}"
   for _arch in $_architectures; do
-    sed "s|COMMAND \$<TARGET_FILE:H5|COMMAND /usr/bin/${_arch}-wine \$<TARGET_FILE:H5|g" src/CMakeLists.txt.orig > src/CMakeLists.txt
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
