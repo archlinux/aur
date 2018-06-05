@@ -2,28 +2,33 @@
 
 pkgname=clipgrab-qt5
 pkgver=3.6.8
-pkgrel=1
-pkgdesc='Fork of ClipGrab to make it compatible with Qt5'
+pkgrel=2
+pkgdesc='A video downloader and converter for YouTube, Veoh, DailyMotion, MyVideo, ... (Qt5)'
 arch=('i686' 'x86_64')
-url='https://github.com/OpenHelios/clipgrab-qt5'
+url='http://clipgrab.org'
 license=(GPL3)
 depends=('qt5-webkit')
 optdepends=('ffmpeg: for the conversion functionality')
-makedepends=('git')
-#source=($pkgname::git+https://github.com/OpenHelios/clipgrab-qt5.git
-source=(https://github.com/kikadf/clipgrab-qt5/archive/${pkgver}.tar.gz
-        $pkgname.desktop)
-md5sums=('ddb16609f2f34873098b809f83c6438b'
-         '86ec4e7907a20dcae2c0cf6ad2438632')
+source=(https://download.clipgrab.org/clipgrab-$pkgver.tar.gz
+        $pkgname.desktop
+        https://gitlab.com/kikadf/clipgrab-qt5/raw/patch/patch/clipgrab-qt5-${pkgver}.patch)
+md5sums=('43273a4fd34e77fa85970156e1e25561'
+         '86ec4e7907a20dcae2c0cf6ad2438632'
+         '0b0406911f06585cf11eff3444eb4ceb')
+
+prepare() {
+  cd clipgrab-$pkgver
+  patch -p1 -i ../clipgrab-qt5-${pkgver}.patch
+} 
 
 build() {
-  cd $pkgname-$pkgver
+  cd clipgrab-$pkgver
   qmake clipgrab.pro
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd clipgrab-$pkgver
   install -Dm755 clipgrab "$pkgdir/usr/bin/$pkgname"
   install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"

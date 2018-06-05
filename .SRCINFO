@@ -1,18 +1,19 @@
 pkgbase = clipgrab-qt5
-	pkgdesc = Fork of ClipGrab to make it compatible with Qt5
+	pkgdesc = A video downloader and converter for YouTube, Veoh, DailyMotion, MyVideo, ... (Qt5)
 	pkgver = 3.6.8
-	pkgrel = 1
-	url = https://github.com/OpenHelios/clipgrab-qt5
+	pkgrel = 2
+	url = http://clipgrab.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	depends = qt5-webkit
 	optdepends = ffmpeg: for the conversion functionality
-	source = https://github.com/kikadf/clipgrab-qt5/archive/3.6.8.tar.gz
+	source = https://download.clipgrab.org/clipgrab-3.6.8.tar.gz
 	source = clipgrab-qt5.desktop
-	md5sums = ddb16609f2f34873098b809f83c6438b
+	source = https://gitlab.com/kikadf/clipgrab-qt5/raw/patch/patch/clipgrab-qt5-3.6.8.patch
+	md5sums = 43273a4fd34e77fa85970156e1e25561
 	md5sums = 86ec4e7907a20dcae2c0cf6ad2438632
+	md5sums = 0b0406911f06585cf11eff3444eb4ceb
 
 pkgname = clipgrab-qt5
 
