@@ -1,15 +1,16 @@
 # Maintainer: David Runge <dave@sleepmap.de>
-# Maintainer: Ray Rashif <schiv@archlinux.org>
+# Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: sickhate <sickhate@tux-linux.net>
 
 pkgname=solfege
 pkgver=3.22.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Music education and ear training software"
 arch=('x86_64')
 url="https://www.gnu.org/software/solfege/"
 license=('GPL3')
+groups=('pro-audio')
 depends=('pygtk' 'librsvg')
 makedepends=('ghostscript' 'gnome-doc-utils' 'libxslt'
              'swig' 'texinfo' 'txt2man')
