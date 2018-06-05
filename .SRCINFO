@@ -1,7 +1,7 @@
 pkgbase = clamav-unofficial-sigs
 	pkgdesc = ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com
 	pkgver = 5.6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/extremeshok/clamav-unofficial-sigs
 	install = clamav-unofficial-sigs.install
 	arch = any

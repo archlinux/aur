@@ -4,7 +4,7 @@
 
 pkgname="clamav-unofficial-sigs"
 pkgver="5.6.2"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com"
 url="https://github.com/extremeshok/clamav-unofficial-sigs"
 arch=('any')
@@ -28,7 +28,7 @@ install='clamav-unofficial-sigs.install'
 
 build() {
     cd "${pkgname}-${pkgver}"
-    sed -i -e 's#/usr/local/s\?bin#/usr/bin#g' "systemd/${pkgname}.service"
+    sed -i -e 's#/usr/local/s\?bin/#/usr/bin/#g' "systemd/${pkgname}.service"
     sed -i -e 's#WantedBy=clamd@scan.service#WantedBy=timers.target#g' "systemd/${pkgname}.timer"
     patch < "${srcdir}/custom_config.diff"
 }
@@ -37,7 +37,7 @@ package() {
     cd "${pkgname}-${pkgver}"
     install -Dm644 -t "${pkgdir}/etc/clamav-unofficial-sigs" "${srcdir}/os.conf" config/{master,user}.conf
     install -Dm644 "${srcdir}/clamav-unofficial-sigs.logrotate" "${pkgdir}/etc/logrotate.d/clamav-unofficial-sigs"
-    install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" systemd/${pkgname}.{service,timer} systemd/clamd.scan.service
+    install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" systemd/${pkgname}.{service,timer}
     install -Dm644 -t "${pkgdir}/usr/share/man/man8" "${srcdir}/clamav-unofficial-sigs.8"
     install -Dm755 -t "${pkgdir}/usr/bin" clamav-unofficial-sigs.sh
     install -Dm644 "${srcdir}/clamav-unofficial-sigs.tmpfiles" "${pkgdir}"/usr/lib/tmpfiles.d/clamav-unofficial-sigs.conf
