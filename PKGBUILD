@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-abc
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=2
 pkgdesc="Bitcoin ABC  with bitcoind, bitcoin-tx, and bitcoin-cli"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v$pkgver.tar.gz
         bitcoin.service
         bitcoin-reindex.service
         bitcoin.install)
-sha256sums=('c276fcd3df216d86f3a4123ac08e09ce4e44e8fe895b60b36318390e2b9bf5e4'
+sha256sums=('3deb664f5404d98252f8738f39bdf59c289c77241bb07477517c779d5a3fd2f7'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
