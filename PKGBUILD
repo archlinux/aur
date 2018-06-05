@@ -48,7 +48,7 @@ prepare() {
 build() {
     cd "$srcdir/libtorrent"
     #export CC=clang
-    #export CXX=clang++
+    #export CXX=clang++ ;export CXXFLAGS+=" -Wno-unknown-warning-option"
     export CXXFLAGS+=" -fno-strict-aliasing -faligned-new -Wno-terminate -Wno-class-memaccess"
 
     ./configure $_debug \
