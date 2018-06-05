@@ -1,0 +1,5 @@
+post_upgrade() {
+  # TODO: handle this nicer with systemd-sysusers
+  mkdir -p /var/lib/odoo
+  chown -R odoo:odoo /var/lib/odoo
+}

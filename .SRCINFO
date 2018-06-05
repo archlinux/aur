@@ -1,8 +1,9 @@
 pkgbase = odoo
 	pkgdesc = Web-based Open Source Business Apps
 	pkgver = 11.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.odoo.com/
+	install = odoo.install
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
