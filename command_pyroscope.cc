@@ -665,7 +665,7 @@ torrent::Object cmd_string_substr(rpc::target_type target, const torrent::Object
         }
         offsets[idx] = bytes;
 
-        int64_t begidx = std::max(idx + glyphs, 0L);
+        int64_t begidx = std::max(idx + glyphs, (int64_t) 0);
         int64_t endidx = std::min(idx, begidx + count);
         return text.substr(offsets[begidx], offsets[endidx] - offsets[begidx]);
     }
