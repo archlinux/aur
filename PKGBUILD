@@ -1,7 +1,7 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 pkgname=naaman
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="Not Another Aur MANager"
 arch=("any")
 url="https://github.com/enckse/$pkgname"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-setuptools' 'python-xdg' 'pyalpm' 'sudo' 'git')
 optdepends=("bash-completion: for bash completions")
 source=("https://github.com/enckse/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('90462db2624c4a1ad8ca4c9a813aef07410b1f7ff4b287f22f73329fc642819b')
+sha256sums=('4806e85569ea4de518e794dfcdfd82b674355ef32e8040b71cab0da0a5e68b98')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
