@@ -3,7 +3,7 @@
 _pkgname='bat'
 pkgname="bat-cat-git"
 pkgver=r205.c91511c
-pkgrel=1
+pkgrel=2
 pkgdesc="A cat(1) clone with wings."
 arch=('x86_64')
 url='https://github.com/sharkdp/bat'
