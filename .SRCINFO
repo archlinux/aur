@@ -1,0 +1,18 @@
+pkgbase = libhangul-3beol
+	pkgdesc = libhangul alternatives
+	pkgver = libhangul.0.1.0.r45.5244cb3
+	pkgrel = 1
+	url = https://github.com/3beol/libhangul
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = automake
+	makedepends = autoconf
+	provides = libhangul
+	conflicts = libhangul
+	source = git://github.com/3beol/libhangul
+	md5sums = SKIP
+
+pkgname = libhangul-3beol
+
