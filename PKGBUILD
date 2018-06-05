@@ -20,11 +20,11 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  cargo build
+  cargo build --release
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  install -D ./target/debug/${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
+  install -D ./target/release/${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
 }
 
