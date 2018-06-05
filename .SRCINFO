@@ -1,6 +1,6 @@
 pkgbase = pgi-compilers
 	pkgdesc = PGI compilers and tools (Community Edition)
-	pkgver = 17.10
+	pkgver = 18.4
 	pkgrel = 1
 	url = https://www.pgroup.com/products/community.htm
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = pgi-compilers
 	makedepends = bash
 	depends = gtk2
 	options = !strip
-	source = file://pgilinux-2017-1710-x86_64.tar.gz
+	source = file://pgilinux-2018-184-x86-64.tar.gz
 	source = https://www.pgroup.com/doc/LICENSE.txt
 	source = pgi-compilers.sh
-	sha256sums = 9da8f869fb9b70c0c4423c903d40a9e22d54b997af359a43573c0841165cd1b6
+	sha256sums = 81e0dcf6000b026093ece180d42d77854c23269fb8409cedcf51c674ca580a0f
 	sha256sums = 78abb626ddb93482b9169e2b6da205067702c8da40a201f9b1a557c261c47270
 	sha256sums = 4aa862aece1c4df8a67b6677837fd4827d576619c67fed80af1578346c11f497
 
