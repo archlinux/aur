@@ -1,6 +1,6 @@
 # Maintainer: Dimitri Merejkowsky <d.merej at gmail>
 pkgname=rusync
-pkgver="0.3.1"
+pkgver="0.4.0"
 pkgrel=1
 pkgdesc="Ergonomic replacement for rsync"
 url="http://github.com/dmerejkowsky/rusync"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("rusync-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('39771874253474272276aa3f816300ca')
+md5sums=('cd4d86a7e2c05c7a89835ebd0ba09d1e')
 
 build() {
   cd rusync-$pkgver
