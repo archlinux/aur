@@ -1,7 +1,7 @@
 # Maintainer: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 
 pkgname=peppercarrot-fonts
-pkgver=2.1
+pkgver=3.0
 pkgrel=1
 pkgdesc="Fonts required to correctly view and edit Pepper&Carrot SVGs"
 arch=('any')
@@ -17,7 +17,7 @@ conflicts=('peppercarrot-fonts-git')
 provides=('peppercarrot-fonts-git')
 
 source=("https://www.peppercarrot.com/0_sources/0ther/tools/zip/peppercarrot-fonts-$pkgver.zip")
-sha256sums=('d97f6630d38d8f45b913932152abd328dd963890146b8b4fe49afb9f45b02a3e')
+sha256sums=('81cc7e146de4f83db3145e63e865377fdb22208737ea32b5f305da2cb393a45d')
 
 package() {
   local i

@@ -1,6 +1,6 @@
 pkgbase = peppercarrot-fonts
 	pkgdesc = Fonts required to correctly view and edit Pepper&Carrot SVGs
-	pkgver = 2.1
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://framagit.org/peppercarrot/webcomics/tree/master/fonts
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = peppercarrot-fonts
 	depends = lohit-fonts
 	provides = peppercarrot-fonts-git
 	conflicts = peppercarrot-fonts-git
-	source = https://www.peppercarrot.com/0_sources/0ther/tools/zip/peppercarrot-fonts-2.1.zip
-	sha256sums = d97f6630d38d8f45b913932152abd328dd963890146b8b4fe49afb9f45b02a3e
+	source = https://www.peppercarrot.com/0_sources/0ther/tools/zip/peppercarrot-fonts-3.0.zip
+	sha256sums = 81cc7e146de4f83db3145e63e865377fdb22208737ea32b5f305da2cb393a45d
 
 pkgname = peppercarrot-fonts
 
