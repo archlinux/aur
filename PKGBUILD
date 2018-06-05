@@ -1,4 +1,4 @@
-# Maintainer: Svexican <svexican@gmail.com>
+# Maintainer: svexican <svexican@fastmail.com>
 pkgname=postgrest-bin
 pkgver=0.4.4.0
 pkgrel=1
