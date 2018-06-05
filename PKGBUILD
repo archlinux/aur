@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libx11' 'libxft')
 optdepends=('libxinerama')
 provides=("${pkgname%-*}")
-source=('https://git.svexican.me/bubbleswm')
+source=('git+https://git.svexican.me/bubbleswm')
 md5sums=('SKIP')
 
 pkgver() {
