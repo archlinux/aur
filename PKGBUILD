@@ -1,11 +1,11 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=gnome-shell-extension-dynamic-battery-git
-pkgver=r20.7eab1ac
+pkgver=r47.77485fd
 pkgrel=1
 pkgdesc="Dynamic Battery extension for GNOME Shell."
 arch=(any)
-url="https://github.com/Exalm/gnome-shell-extension-dynamic-battery"
+url="https://gitlab.gnome.org/exalm/gnome-shell-extension-dynamic-battery"
 license=(GPL2)
 depends=('gnome-shell>=3.20')
 provides=("${pkgname%-git}")
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 replaces=("${pkgname%-git}")
 makedepends=(git)
 install='gnome-shell-extension.install'
-source=("${pkgname%-git}"::"git+https://github.com/Exalm/gnome-shell-extension-dynamic-battery")
+source=("${pkgname%-git}"::"git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -34,3 +34,4 @@ package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions/"
   cp -a "dynamic_battery@exalm" "$pkgdir/usr/share/gnome-shell/extensions/"
 }
+# vim:set ts=2 sw=2 et:
