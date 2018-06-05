@@ -2,12 +2,11 @@
 
 pkgname=cflow
 pkgver=1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="GNU cflow - for diagramming C program flow from sources"
 arch=('i686' 'x86_64')
 url="http://ftp.gnu.org/gnu/cflow/cflow-1.5.tar.xz"
 license=('GPL')
-makedepends=('gcc' 'make')
 options=('staticlibs' 'libtool' '!emptydirs')
 # install='pkgname.install'
 source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz")
