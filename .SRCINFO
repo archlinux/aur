@@ -1,0 +1,27 @@
+pkgbase = python-cachy
+	pkgdesc = Cachy provides a simple yet effective caching library.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/sdispater/cachy
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-cachy-0.1.1.tar.gz::https://pypi.io/packages/source/c/cachy/cachy-0.1.1.tar.gz
+	sha256sums = 40b3ca1c57d0254c7d6d37920baadbb32a7e7cb7585e94f50764ad52ac016822
+
+pkgname = python-cachy
+	depends = python
+	optdepends = python-memcached: support for memcached stores
+	optdepends = python-pylibmc: support for memcached stores
+	optdepends = redis: support for redis stores
+
+pkgname = python2-cachy
+	depends = python2
+	optdepends = python2-memcached: support for memcached stores
+	optdepends = python2-pylibmc: support for memcached stores
+	optdepends = redis: support for redis stores
+
