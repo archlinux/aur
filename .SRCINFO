@@ -1,0 +1,12 @@
+pkgbase = gnome-games-libretro
+	pkgdesc = Libretro definitions for gnome-games
+	pkgver = 3.28.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Games
+	arch = any
+	license = GPL3
+	source = https://gitlab.gnome.org/GNOME/gnome-games/-/archive/3.28.0/gnome-games-3.28.0.tar.bz2
+	sha256sums = 56c80b960d7000ebefc22c20187b887b2a5959fc37afe20e214c40f5a0ee8dfb
+
+pkgname = gnome-games-libretro
+
