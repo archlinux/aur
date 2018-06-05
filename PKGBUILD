@@ -1,15 +1,16 @@
 # Maintainer: Brian Salcedo <brian@salcedo.tech>
 pkgname=st-bloated-git
 pkgver=r1036.2b5354e
-pkgrel=3
+pkgrel=4
 pkgdesc="simple terminal with alpha, copyurl, hidecursor, open copied url, scrollback, spoiler, vertcenter, and xresources patches."
 arch=('i686' 'x86_64')
-url="https://github.com/salcedo/st-bloated"
+url="https://git.salcedo.tech/salcedo/st-bloated"
 license=('MIT/X')
 depends=('libxft' 'libxext' 'ncurses')
+makedepends=('git')
 provides=('st-bloated-git')
 conflicts=('st-ametisf-git' 'st-git' 'st-jellybeans' 'st-n1' 'st-neonwave-git' 'st-patched-git' 'st-pizz' 'st-qguv-git' 'st-scrollback-git' 'st-solarized' 'st-solarized-powerline' 'st-test' 'st-tomorrownight' 'st-white' 'st-white-git' 'st-xresources-git' 'st-zenburn-26px-git' 'st-zenburn-git')
-source=('git://github.com/salcedo/st-bloated#branch=0.8.1-bloated')
+source=('git+https://git.salcedo.tech/salcedo/st-bloated.git#branch=0.8.1-bloated')
 md5sums=('SKIP')
 
 pkgver() {

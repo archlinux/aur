@@ -1,11 +1,12 @@
 pkgbase = st-bloated-git
 	pkgdesc = simple terminal with alpha, copyurl, hidecursor, open copied url, scrollback, spoiler, vertcenter, and xresources patches.
 	pkgver = r1036.2b5354e
-	pkgrel = 3
-	url = https://github.com/salcedo/st-bloated
+	pkgrel = 4
+	url = https://git.salcedo.tech/salcedo/st-bloated
 	arch = i686
 	arch = x86_64
 	license = MIT/X
+	makedepends = git
 	depends = libxft
 	depends = libxext
 	depends = ncurses
@@ -28,7 +29,7 @@ pkgbase = st-bloated-git
 	conflicts = st-xresources-git
 	conflicts = st-zenburn-26px-git
 	conflicts = st-zenburn-git
-	source = git://github.com/salcedo/st-bloated#branch=0.8.1-bloated
+	source = git+https://git.salcedo.tech/salcedo/st-bloated.git#branch=0.8.1-bloated
 	md5sums = SKIP
 
 pkgname = st-bloated-git
