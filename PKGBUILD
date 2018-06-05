@@ -5,26 +5,27 @@ _opt_ttymajor=33       # default 33
 _opt_calloutmajor=38   # default 38
 _opt_defaultmode='666' # default: 666
 
-# Todo: Fix mxinst to allow polling option
+# Some items are fixed as of 1.19 according to Moxa. I haven't tested them yet.
+
+# Fixed? Fix mxinst to allow polling option
 # Todo: Can we have a github release?
 # Todo: License file?
 # Todo: Most executables would be shorter and cleaner redone as bash scripts.
 # Todo: mx utilities should always produce rc.local lines in the right order
-# Todo: improve mx utilities to allow DNS name instead of just IP
+# Fixed? improve mx utilities to allow DNS name instead of just IP
 # Todo: maybe add build number to version?
 # Todo: #ifdef _DEBUG_PRINT is probably wrong
 # Todo: Adding more ports should not reset existing ports or launch daemons outside of systemd.
 #       It should consist of modifying the configuration and systemd reload
 # Todo: All mx utilities should check for root UID
-# Todo: mxsetsec should not reset the ports when no changes are made
 # Todo: many utilities have arbitrary port limits
 # Todo: daemons should terminate on SIGTERM
 # Todo: SSL connections should auto reconnect on Moxa restart
 # Todo: The default mode should be changed to 660
+# Todo: mknod should be chgrp uucp
 
 # Enable and start service
-#   systemctl enable 'npreal2.service'
-#   systemctl start 'npreal2.service'
+#   systemctl enable --now 'npreal2.service'
 
 # Add a serial server. Here we use a 1 port Moxa NPort 5110, non SSL
 # Log into the Moxa web interface and configure the Operating Settings, Port 1, Device Control, RealCOM mode
@@ -73,29 +74,38 @@ _opt_defaultmode='666' # default: 666
 # For more information, redundant connections, and additional commands.
 #   less -S '/usr/lib/npreal2/README.TXT'
 
-# Uninstall cleanup: sudo rm -rf /usr/lib/npreal2
+# Uninstall cleanup: sudo rm -rf /etc/npreal2 /var/log/npreal2d.log
 
 set -u
 pkgname='npreal2'
-pkgver=1.18.49; _commit='6d9ef0dbafd487595c4f5e4e5e64c1faba98d060'
+#pkgver='1.18.49'; _commit='6d9ef0dbafd487595c4f5e4e5e64c1faba98d060'
+pkgver='1.19'; _build='17110917'
 pkgrel=1
-pkgdesc='real TTY driver for Moxa NPort serial console terminal server'
+pkgdesc='real tty driver for Moxa NPort serial console terminal server'
 _pkgdescshort="Moxa NPort ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
-#url='http://www.moxa.com/support/sarch_result.aspx?type=soft&prod_id=237&type_id=9' # Moxa NPort 5110
-url="https://github.com/rchovan/${pkgname}"
+url='http://www.moxa.com/support/sarch_result.aspx?type=soft&prod_id=237&type_id=9' # Moxa NPort 5110
+#url="https://github.com/rchovan/${pkgname}"
 license=('GPL' 'custom')
-depends=('glibc' 'gawk' 'perl' 'psmisc')
-makedepends=('git' 'openssl')
+depends=('glibc' 'gawk' 'perl' 'psmisc' 'openssl')
+#makedepends=('git')
 backup=("etc/npreal2/npreal2d.cf")
 install="${pkgname}-install.sh"
+_srcdir='moxa'
+source=("https://www.moxa.com/drivers/IDC_SW/DeviceServer/Driver/NPort%20Real%20TTY%20Driver%20for%20Linux/Mainline/ver${pkgver}/npreal2_mainline_v${pkgver}_build_${_build}.tgz")
 #_srcdir="${pkgname}"
 #source=("git+${url}.git#commit=${_commit}")
-_srcdir="${pkgname}-${_commit}"
-source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_commit}.tar.gz")
+#_srcdir="${pkgname}-${_commit}"
+#source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_commit}.tar.gz")
 source+=('npreal2.sh')
-sha256sums=('150b5e9b8f43cbc32252bc84291656a464ce5e26066e90acada0f583f51bb496'
-            '7241767fa8dead2dbe4cf4db32d39f5cf9d95b08f60daf79822ae306727af372')
+_patches=(
+  #'0000-SSL-destroy-cf-configuration.patch'
+  '0001-mxmknod-folder-fix-and-chgrp-uucp.patch'
+)
+source+=("${_patches[@]}")
+sha256sums=('f99f38ef5618469a1d6f4824e41856616ee65ab8359069daa70d8d481f364462'
+            '7241767fa8dead2dbe4cf4db32d39f5cf9d95b08f60daf79822ae306727af372'
+            '7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -116,189 +126,91 @@ prepare() {
 
   # Remove supplied OpenSSL headers. Use the system headers.
   rm -rf 'include/'
-
-  sed -i -e '# Remove copy and module commands from make' \
-         -e 's:^\s\+cp :#&:g' \
-         -e 's:^\s\+depmod :#&:g' \
-         -e '# strip is either gcc -s or done by makepkg. Lets not waste time running it again' \
-         -e 's:^\s\+strip\s:#&:g' \
-         -e '# We can remove the include option. It will use the system openssl headers' \
-         -e 's: -I$(PATH1)/include::g' \
-         -e '# Fix the syntax for libssl.so' \
-         -e 's: libssl.so: -lssl:g' \
-         -e '# Fix the module generator' \
-         -e 's: /lib/: /usr/lib/:g' \
-         -e '# Cut some of the warings we dont want to fix' \
-         -e 's:^CC+=.*$:& -Wno-misleading-indentation:g' \
-    'Makefile'
-
-  # Cosmetic correction of CRLF for Linux
-  sed -i -e 's:\r$::g' 'mxloadsvr.c'
+  # cp -p 'Makefile'{,.Arch} # testmode for diff comparison
+  sed -e '# Remove copy and module commands from make' \
+      -e 's:^\s\+cp :#&:g' \
+      -e 's:^\s\+depmod :#&:g' \
+      -e '# strip is either gcc -s or done by makepkg. Lets not waste time running it again' \
+      -e 's:^\s\+strip\s:#&:g' \
+      -e '# We can remove the include option. It will use the system openssl headers' \
+      -e 's: -I$(PATH1)/include::g' \
+      -e '# Fix the syntax for libssl.so' \
+      -e '#s: libssl.so: -lssl:g' \
+      -e '# Fix the module generator' \
+      -e 's: /lib/: /usr/lib/:g' \
+      -e '# Cut some of the warnings we dont want to fix' \
+      -e '#s:^CC+=.*$:& -Wno-misleading-indentation:g' \
+    -i 'Makefile'
+  ! test -s 'Makefile.Arch' || echo "${}"
 
   #Add hash bang to scripts, required for syntax highlighting in mc
-  sed -i -e '1 i#!/bin/sh' 'killp' 'mxinst' 'mxmknod' 'mxrmnod' 'mxuninst'
+  sed -e '1 i#!/bin/sh' -i 'killp' 'mxinst' 'mxmknod' 'mxrmnod' 'mxuninst'
 
-  #cp -p 'mxinst' 'mxinst.Arch' # testmode for diff comparison
-  sed -i -e '# make package compatible' \
-         -e 's:/etc/:"${DESTDIR}"&:g' \
-         -e '#No reason to make these folder and never copy files to them' \
-         -e 's:^mkdir -p /lib/modules/:#&:g' \
-         -e 's: /lib/: /usr/lib/:g' \
-         -e 's:/usr/:"${DESTDIR}"&:g' \
-         -e '#A few DESTDIR were already quoted. The dup quoting needs to be removed' \
-         -e 's:""${DESTDIR}":"${DESTDIR}:g' \
-         -e '#A fully automated run has no need for traps' \
-         -e 's:^trap:#&:g' \
-         -e '#Files are already unpacked. Not sure how anyone can run mxinst without unpacking first' \
-         -e 's:^tar_files$:#&:g' \
-         -e '#Disable SSL check. We know SSL is present' \
-         -e 's:^\s\+chk_libssl:true &:g' \
-         -e '#Disable all process killers' \
-         -e 's:^ps :#&:g' \
-         -e '#This process killer spans multiple lines so we disable it differently' \
-         -e 's:^lsmod :true &:g' \
-         -e '#No Moxa release has the files here' \
-         -e 's:NowPath/../:NowPath/:g' \
-         -e '#We disabled the copy in Makefile so theres nothing to probe' \
-         -e 's:^modprobe :true &:g' \
-         -e '#We do this later' \
-         -e 's:^./mxloadsvr :#&:g' \
-         -e '#We do not move npreal2d.cf here. mxinst does nothing useful with it' \
-         -e '# Ensure that all make run at -j1' \
-         -e 's:make :&-j1 :g' \
-    'mxinst'
-  if [ -s 'mxinst.Arch' ]; then
-    echo 'Disable testmode to build'
-    set +u
-    false
-  fi
+  # cp -p 'mxinst' 'mxinst.Arch' # testmode for diff comparison
+  sed -e '# make package compatible' \
+      -e 's:/etc/:"${DESTDIR}"&:g' \
+      -e '#No reason to make these folder and never copy files to them' \
+      -e 's:^mkdir -p /lib/modules/:#&:g' \
+      -e 's: /lib/: /usr/lib/:g' \
+      -e 's:/usr/:"${DESTDIR}"&:g' \
+      -e '#A few DESTDIR were already quoted. The dup quoting needs to be removed' \
+      -e 's:""${DESTDIR}":"${DESTDIR}:g' \
+      -e '#A fully automated run has no need for traps' \
+      -e 's:^trap:#&:g' \
+      -e '#Files are already unpacked. Not sure how anyone can run mxinst without unpacking first' \
+      -e '#s:^tar_files$:#&:g' \
+      -e '#Disable SSL check. We know SSL is present' \
+      -e '#s:^\s\+chk_libssl:true &:g' \
+      -e '#Disable all process killers' \
+      -e 's:^ps :true &:g' \
+      -e 's:^lsmod :true &:g' \
+      -e '#No Moxa release has the files here' \
+      -e '#s:NowPath/../:NowPath/:g' \
+      -e '#We disabled the copy in Makefile so theres nothing to probe' \
+      -e 's:^modprobe :true &:g' \
+      -e '#We do this later' \
+      -e 's:^./mxloadsvr :#&:g' \
+      -e '#We do not move npreal2d.cf here. mxinst does nothing useful with it' \
+      -e '# Ensure that all make run at -j1' \
+      -e 's:make :&-j1 :g' \
+      -e '# var not used for anything, yet' \
+      -e 's:^LINUX_DIS=:#&:g' \
+      -e '# Enable SSL' \
+      -e 's:^read check:check="Y" # &:g' \
+    -i 'mxinst'
+  ! test -s 'mxinst.Arch' || echo "${}"
 
-  sed -i -e '# Force OS detection just in case someone has created the Redhat, Debian, SuSE, or Gentoo flag files for reasons' \
-         -e 's:os == "linux":1:g' \
-         -e '# Move the startup file away from standard folders where init scripts might find it' \
-         -e 's:/etc/rc.d/rc.local:/etc/npreal2/rc.local:g' \
-         -e '# Its rude to clear screens' \
-         -e 's:system("clear");:/* & */:g' \
-         -e '# Move config file in mx utils' \
-         -e '/npreal2d.cf/ s:DRIVERPATH:CONFIGPATH:g' \
-    mx*.c
-  sed -i -e '# Move config file in mx daemons' \
-         -e '/npreal2d.cf/ s:workpath:"/etc/npreal2":g' \
-         -e '# Move log file' \
-         -e '/npreal2d.log/ s:workpath:"/var/log":g' \
-    'npreal2d.c' 'redund_main.c'
-  local _lf=$'\n'
-  local _lines='
-void log_event(char *msg);
-void _OpenTty(TTYINFO *infop);
-void redund_open(TTYINFO *infop);
-void redund_connect(TTYINFO *infop);
-void redund_close(TTYINFO *infop);
-void redund_connect_check(TTYINFO *infop);
-void redund_handle_ttys(void);
-'
-  sed -i -e '# Fix some forward declarations' \
-         -e 's:^#define\s\+MOXA_DEBUG.*$:'"&${_lines//${_lf}/\\n}:g" \
-         -e '# Fix declarations' \
-         -e 's:^_log_event:void &:g' \
-         -e 's:^_OpenTty:void &:g' \
-         -e 's:^redund_open:void &:g' \
-         -e 's:^redund_connect:void &:g' \
-         -e 's:^redund_close:void &:g' \
-         -e 's:^redund_connect_check:void &:g' \
-         -e 's:^redund_handle_ttys:void &:g' \
-         -e '# Fix programming oversight' \
-         -e '/ret = redund_add_hdr_data(/ s:ret =::' \
-         -e '# which lets us void this declaration and function' \
-         -e 's:^int redund_add_hdr_data:void redund_add_hdr_data:g' \
-    'redund.c'
-  _lines='
-#include <sys/stat.h>
-void log_event(char *msg);
-int moxattyd_read_config(char *cmdpath);
-void moxattyd_daemon_start(void);
-int poll_async_server_init(void);
-void redund_handle_ttys(void);
-'
-  sed -i -e '# Fix some forward declarations' \
-         -e 's:^#include\s\+"npreal2d.h".*$:'"&${_lines//${_lf}/\\n}:g" \
-         -e '# Fix declaration' \
-         -e 's:^main(:int &:g' \
-         -e 's:^log_event:void &:g' \
-         -e 's:^moxattyd_daemon_start:void &:g' \
-         -e 's:^poll_async_server_init:int &:g' \
-         -e 's:^redund_handle_ttys:void &:g' \
-    'redund_main.c'
-  _lines='
-#include <sys/stat.h>
-void log_event(char *msg);
-void OpenTty(TTYINFO *infop);
-void OpenTcpSocket(TTYINFO *infop);
-void ConnectTcp(TTYINFO *infop);
-void CloseTcp(TTYINFO *infop);
-void ConnectCheck(void);
-int moxattyd_read_config(char *cmdpath);
-void moxattyd_daemon_start(void);
-int poll_async_server_init(void);
-void moxattyd_handle_ttys(void);
-void poll_async_server_send(SERVINFO *servp);
-void ConnectSSL(TTYINFO *infop);
-'
-  sed -i -e '# Fix some forward declarations' \
-         -e 's:^#include\s\+"npreal2d.h".*$:'"&${_lines//${_lf}/\\n}:g" \
-         -e '# Fix declaration' \
-         -e 's:^main(:int &:g' \
-         -e 's:^log_event:void &:g' \
-         -e 's:^OpenTty:void &:g' \
-         -e 's:^OpenTcpSocket:void &:g' \
-         -e 's:^ConnectTcp:void &:g' \
-         -e 's:^CloseTcp:void &:g' \
-         -e 's:^ConnectCheck:void &:g' \
-         -e 's:^moxattyd_daemon_start:void &:g' \
-         -e 's:^poll_async_server_init:int &:g' \
-         -e 's:^moxattyd_handle_ttys:void &:g' \
-         -e 's:^poll_async_server_send:void &:g' \
-         -e 's:^poll_async_server_recv:void &:g' \
-         -e 's:^poll_nport_send:void &:g' \
-         -e 's:^poll_nport_recv:void &:g' \
-         -e 's:^ConnectSSL:void &:g' \
-    'npreal2d.c'
-  # Fix a few more warnings.
-  sed -i -e '# We can void this' \
-         -e 's:^char\*\sconcate(:void concate(:g' \
-    'mxaddsvr.c'
-  sed -i -e '# We can void this. It isnt even used. Maybe static will link it to oblivion' \
-         -e 's:^char\* GetIP(:static void GetIP(:g' \
-    'mxdelsvr.c' 'mxsetsec.c'
-  sed -i -e '# TEMPDIR is not used. Disabling it makes the compiler tell us if is is used' \
-         -e 's:^#define\s\+TEMPDIR.*$:/* & */:g ' \
-         -e '# NPPATH is not used so we dont fix it.' \
-         -e 's:^#define\s\+NPPATH.*$:/* & */:g ' \
-         -e '# provide config file path' \
-         -e 's:^#define\(\s\+\)DRIVERPATH\(\s\+\)":#define\1CONFIGPATH\2"/etc/npreal2"\n&:g' \
-    'nport.h'
+  sed -e '# Predetermine OS detection just in case someone has created the Redhat, Debian, SuSE, or Gentoo flag files for reasons' \
+      -e 's:os == "linux":1:g' \
+      -e '# Move the startup file away from standard folders where init scripts might find it' \
+      -e 's:/etc/rc.d/rc.local:/etc/npreal2/rc.local:g' \
+      -e '# Its rude to clear screens' \
+      -e 's:system("clear");:/* & */:g' \
+      -e '# Move config file in mx utils. Another sed will provide this #define' \
+      -e '/npreal2d.cf/ s:DRIVERPATH:CONFIGPATH:g' \
+    -i mx*.c
+  sed -e '# Move config file in mx daemons' \
+      -e '/npreal2d.cf/ s:workpath:"/etc/npreal2":g' \
+      -e '# Move log file' \
+      -e '/npreal2d.log/ s:workpath:"/var/log":g' \
+    -i 'npreal2d.c' 'redund_main.c'
 
-  sed -i -e '# Make this launchable from any folder' \
-         -e 's:./mxrmnod:/usr/lib/npreal2/driver/mxrmnod:g' \
-         -e '# correct mknod group name to match what is used for other serial ports' \
-         -e 's@^\(\s\+\)mknod\s.*$@&\n\1chown "root:uucp" "$dev/$1"@g' \
-    'mxmknod'
+  sed -e '# TEMPDIR is not used. Disabling it makes the compiler tell us if is is used' \
+      -e 's:^#define\s\+TEMPDIR.*$:/* & */:g ' \
+      -e '# NPPATH is not used so we dont fix it.' \
+      -e 's:^#define\s\+NPPATH.*$:/* & */:g ' \
+      -e '# provide config file path' \
+      -e 's:^#define\(\s\+\)DRIVERPATH\(\s\+\)":#define\1CONFIGPATH\2"/etc/npreal2"\n&:g' \
+    -i 'nport.h'
+
+  #diff -pNau5 'mxmknod'{.orig,} > '0001-mxmknod-folder-fix-and-chgrp-uucp.patch'
+  patch -Nbup0 -i "${srcdir}/0001-mxmknod-folder-fix-and-chgrp-uucp.patch"
 
   # Apply PKGBUILD options
-  sed -i -e 's:^\(ttymajor\)=.*:'"\1=${_opt_ttymajor}:g" \
-         -e 's:^\(calloutmajor\)=.*:'"\1=${_opt_calloutmajor}:g" \
-    'npreal2d.cf'
-  sed -i -e 's:-m 666:'"-m ${_opt_defaultmode}:g" 'npreal2d.c' 'mxmknod'
-
-  # Remove and fix includes
-  sed -i -e 's:^#include <sys/socket.h>.*$:/* & */:g' \
-         -e 's:^#include <netinet/in.h>.*$:/* & */:g' \
-         -e 's:^#include <linux/version.h>.*$:/* & */\n#include <ctype.h>:g' \
-    'mxsetsec.c' 'mxdelsvr.c' 'mxaddsvr.c'
-
-  # Fix a bug that makes enabling SSL destroys the .cf file
-  # I'll use the worst possible fix so the new code doesn't look out of place.
-  sed -i -e 's:^\(\s\+\)sscanf(tmpstr, "%s%s%s%s%s%s%s%s%s%s%s"\(.\+\)$:\1strcpy(token2,"");\n&\n\1/* fprintf(stderr,"DEBUG1=%s %s %s %s %s %s %s %s %s %s %s***\\n" \2 */:g' 'mxsetsec.c'
+  sed -e 's:^\(ttymajor\)=.*:'"\1=${_opt_ttymajor}:g" \
+      -e 's:^\(calloutmajor\)=.*:'"\1=${_opt_calloutmajor}:g" \
+    -i 'npreal2d.cf'
+  sed -e 's:-m 666:'"-m ${_opt_defaultmode}:g" -i 'npreal2d.c' 'mxmknod'
 
   # All mxloadsvr install does is to modify system files, load module, and launch daemons
   # We'll do this on the first systemctl start.
@@ -335,9 +247,9 @@ package() {
 
   if [ "${_opt_DKMS}" -eq 0 ]; then
     # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
-    local _kernelversionsmall="$(pacman -Q linux)" # this differs from uname -r. pacman: 4.0, uname: 4.0.0
-    _kernelversionsmall="${_kernelversionsmall#* }"
-    _kernelversionsmall="${_kernelversionsmall%-*}"
+    local _kernelversionsmall="$(uname -r)"
+    _kernelversionsmall="${_kernelversionsmall%%-*}"
+    _kernelversionsmall="${_kernelversionsmall%\.0}" # trim 4.0.0 -> 4.0, 4.1.0 -> 4.1
     # prevent the mksrcinfo bash emulator from getting these vars!
     eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
     eval 'dep''ends+=("linux=${_kernelversionsmall}")'
@@ -346,11 +258,13 @@ package() {
   # The code at the beginning of mxinst remove parameters SP1 and polling.
   # These options don't work any more and we are prevented from using 'sh -u'
   # We always enable SSL because we make the library always available. It is enabled per port by the admin.
+  # Build and install
   DESTDIR="${pkgdir}" \
-  sh -e 'mxinst' --use-ssl --replace # build and install
+  sh -e 'mxinst' --use-ssl --replace | \
+  sed -e "s:${pkgdir}::g" # prevent bogus folder display
 
   # Root only permissions on executables. Easier than hacking UID 0 into them.
-  find "${pkgdir}/usr/lib/npreal2/driver/" -type 'f' -perm /111 -exec chmod 744 '{}' '+'
+  find "${pkgdir}/usr/lib/npreal2/driver/" -type 'f' -perm '/111' -exec chmod 744 '{}' '+'
 
   # This is a debug only section usually disabled up in prepare()
   if [ -s 'mxloadsvr_package.c' ]; then
@@ -390,9 +304,10 @@ package() {
   # For now SSL is always enabled. If it were disabled, we don't provide the SSL enable tool
   #rm "${pkgdir}/usr/lib/npreal2/driver/mxsetsec" "${pkgdir}/usr/bin/mxsetsec"
 
+  # systemd service
   install -Dm644 <(cat << EOF
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 
 [Unit]
 Description=${_pkgdescshort}
@@ -411,22 +326,22 @@ EOF
   ) "${pkgdir}/usr/lib/systemd/system/npreal2.service"
 
   if [ "${_opt_DKMS}" -eq 0 ]; then
-    (
-      cd "${pkgdir}/usr/lib/npreal2/driver"
-      # Not sure why mxinst copied these, unless the Moxa developers were planning on DKMS
-      rm -f 'Makefile' *.c *.h
-    )
+    pushd "${pkgdir}/usr/lib/npreal2/driver" > /dev/null
+    # Not sure why mxinst copied these, unless the Moxa developers were planning on DKMS
+    rm -f 'Makefile' *.c *.h
+    popd > /dev/null
   else
     rm -rf "${pkgdir}/usr/lib/modules/"
-    install -d "${pkgdir}/usr/src/${pkgname}-${pkgver}"
-    (
-      cd "${pkgdir}/usr/lib/npreal2/driver"
-      rm -f 'npreal2d.c'
-      mv 'Makefile' *.c *.h "${pkgdir}/usr/src/${pkgname}-${pkgver}/"
-    )
+    local _dkms="${pkgdir}/usr/src/${pkgname}-${pkgver}"
+    install -d "${_dkms}"
+    pushd "${pkgdir}/usr/lib/npreal2/driver" > /dev/null
+    cd "${pkgdir}/usr/lib/npreal2/driver"
+    rm -f 'npreal2d.c'
+    mv 'Makefile' *.c *.h "${_dkms}/"
+    popd > /dev/null
     install -Dm644 <(cat << EOF
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 
 PACKAGE_NAME="${pkgname}"
 PACKAGE_VERSION="${pkgver}"
@@ -440,17 +355,17 @@ CLEAN[0]="make -j1 clean"
 # Placing the DKMS generated module in a different location than the standard install prevents conflicts when PKGBUILD _opt_DKMS is toggled
 DEST_MODULE_LOCATION[0]="/kernel/drivers/misc"
 EOF
-    ) "${pkgdir}/usr/src/${pkgname}-${pkgver}/dkms.conf"
-    make -C "${pkgdir}/usr/src/${pkgname}-${pkgver}/" clean
-    install -Dpm644 'np_ver.h' -t "${pkgdir}/usr/src/${pkgname}-${pkgver}/"
-    sed -i -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-           -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
-           -e 's:`uname -r`:$(KERNELRELEASE):g' \
-           -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
-           -e '# Fix by changing the detection var.' \
-           -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
-           -e 's:^ifneq ($(KERNELRELEASE),):ifneq ($(SUBDIRS),):g' \
-       "${pkgdir}/usr/src/${pkgname}-${pkgver}/Makefile"
+    ) "${_dkms}/dkms.conf"
+    install -Dpm644 'np_ver.h' -t "${_dkms}/"
+    sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
+        -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
+        -e 's:`uname -r`:$(KERNELRELEASE):g' \
+        -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
+        -e '# Fix by changing the detection var.' \
+        -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
+        -e 's:^ifneq ($(KERNELRELEASE),):ifneq ($(SUBDIRS),):g' \
+      -i "${_dkms}/Makefile"
+    make -s -C "${_dkms}/" clean
   fi
   set +u
 }
