@@ -1,0 +1,27 @@
+pkgbase = python-cleo
+	pkgdesc = Cleo allows you to create beautiful and testable command-line interfaces
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://github.com/sdispater/cleo
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-cleo-0.6.6.tar.gz::https://pypi.io/packages/source/c/cleo/cleo-0.6.6.tar.gz
+	source = https://raw.githubusercontent.com/sdispater/cleo/0.6.6/LICENSE
+	sha256sums = 1a848f6c56d143a3c4d46653522b559ebcd86b92af535418a1cb3e78ff5a8c4e
+	sha256sums = a2b9e0f3a35c5549b0b82edabcc0e229721437994d265cca96185e9f99f3a698
+
+pkgname = python-cleo
+	depends = python
+	depends = python-pastel
+	depends = python-pylev
+
+pkgname = python2-cleo
+	depends = python2
+	depends = python2-pastel
+	depends = python2-pylev
+
