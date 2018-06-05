@@ -1,0 +1,4 @@
+117c117
+<                   'command': '--caption "{0}" --hide-menubar --hide-tabbar --workdir="{1}" --nofork -e "{2} %u"'},
+---
+>                   'command': '--hide-menubar --hide-tabbar --workdir="{1}" --nofork -e "{2} %u"'},
