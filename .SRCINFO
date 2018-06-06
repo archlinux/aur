@@ -1,5 +1,5 @@
 pkgbase = linux-gc
-	pkgver = 4.16.13
+	pkgver = 4.17
 	pkgrel = 1
 	url = http://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -9,34 +9,28 @@ pkgbase = linux-gc
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.13.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.13.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.sign
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
-	source = v4.16_pds098p.patch::https://bitbucket.org/alfredchen/linux-gc/downloads/v4.16_pds098p.patch
+	source = v4.17_pds098q.patch::https://bitbucket.org/alfredchen/linux-gc/downloads/v4.17_pds098q.patch
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-	source = 0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
-	source = 0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+	source = 0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9
-	sha256sums = SKIP
-	sha256sums = 9efa0a74eb61240da53bd01a3a23759e0065811de53d22de7d679eabf847f323
+	sha256sums = 9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13
 	sha256sums = SKIP
 	sha256sums = 8e76bd69e1f37a2698f4c460f9a465efc2171e6e6b3196c328b8f89bfdf63962
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
-	sha256sums = 5e421e0c3fc60706640c202612c9d6b2de0f04499c90798e5e3b153fc356e6ef
-	sha256sums = 8d6a5f34b3d79e75b0cb888c6bcf293f84c5cbb2757f7bdadafee7e0ea77d7dd
-	sha256sums = 2454c1ee5e0f5aa119fafb4c8d3b402c5e4e10b2e868fe3e4ced3b1e2aa48446
-	sha256sums = 8114295b8c07795a15b9f8eafb0f515c34661a1e05512da818a34581dd30f87e
+	sha256sums = 03c458dacd99dab4d8ea8fbbe449fd280184a25fc3cb200103eb40deb4b9e55a
+	sha256sums = 0b77e6bef12735bc91e3f0e8232512e973688466f2e8a2c3a93502cb2d4b4eed
+	sha256sums = 92615acad59cbef9fd43b2710f5a77ffea45a86543ccff1b12eb676a9c8058cc
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the PDS-mq CPU scheduler
@@ -46,12 +40,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=4.16.13
+	provides = linux-gc=4.17
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel
 	depends = linux-gc
-	provides = linux-gc-headers=4.16.13
-	provides = linux-headers=4.16.13
+	provides = linux-gc-headers=4.17
+	provides = linux-headers=4.17
 

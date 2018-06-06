@@ -31,20 +31,20 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcname=linux-4.16
-pkgver=4.16.13
+_srcname=linux-4.17
+pkgver=4.17
 pkgrel=1
-_pdsversion=098p
+_pdsversion=098q
 arch=('x86_64')
 url="http://cchalpha.blogspot.co.uk/"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_psd_patch="v4.16_pds${_pdsversion}.patch"
+_psd_patch="v${pkgver}_pds${_pdsversion}.patch"
 _gcc_more_v='20180509'
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
-  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  #https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -52,26 +52,22 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   "$_psd_patch::https://bitbucket.org/alfredchen/linux-gc/downloads/${_psd_patch}"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
-  0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+  0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
-            'SKIP'
-            '9efa0a74eb61240da53bd01a3a23759e0065811de53d22de7d679eabf847f323'
+sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
             '8e76bd69e1f37a2698f4c460f9a465efc2171e6e6b3196c328b8f89bfdf63962'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '5e421e0c3fc60706640c202612c9d6b2de0f04499c90798e5e3b153fc356e6ef'
-            '8d6a5f34b3d79e75b0cb888c6bcf293f84c5cbb2757f7bdadafee7e0ea77d7dd'
-            '2454c1ee5e0f5aa119fafb4c8d3b402c5e4e10b2e868fe3e4ced3b1e2aa48446'
-            '8114295b8c07795a15b9f8eafb0f515c34661a1e05512da818a34581dd30f87e')
+            '03c458dacd99dab4d8ea8fbbe449fd280184a25fc3cb200103eb40deb4b9e55a'
+            '0b77e6bef12735bc91e3f0e8232512e973688466f2e8a2c3a93502cb2d4b4eed'
+            '92615acad59cbef9fd43b2710f5a77ffea45a86543ccff1b12eb676a9c8058cc')
 
 _kernelname=${pkgbase#linux}
 
@@ -79,7 +75,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  patch -p1 -i ../patch-${pkgver}
+  #patch -p1 -i ../patch-${pkgver}
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -87,11 +83,8 @@ prepare() {
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
-  # https://bugs.archlinux.org/task/56780
-  patch -Np1 -i ../0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
-
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+  patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 
   # Patch source with PDS scheduler
   patch -Np1 -i "../${_psd_patch}"
