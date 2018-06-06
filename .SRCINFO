@@ -1,6 +1,6 @@
 pkgbase = streamlink-git
 	pkgdesc = CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)
-	pkgver = 0.12.1.r65.gc1489782
+	pkgver = 0.13.0.r0.g97b04b89
 	pkgrel = 1
 	url = https://streamlink.github.io/
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = streamlink-git
 	optdepends = ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+
 	provides = streamlink
 	conflicts = streamlink
-	source = git+https://github.com/streamlink/streamlink.git
+	source = streamlink::git+https://github.com/streamlink/streamlink.git
 	sha512sums = SKIP
 
 pkgname = streamlink-git

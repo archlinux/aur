@@ -4,7 +4,7 @@ _use_pycrypto="no"
 _use_pycountry="no"  
 
 pkgname=streamlink-git
-pkgver=0.12.1.r65.gc1489782
+pkgver=0.13.0.r0.g97b04b89
 pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
@@ -28,18 +28,18 @@ depends+=("python-"{isodate,pysocks,requests,websocket-client} 'rtmpdump')
 checkdepends=("python-"{freezegun,mock,pytest,requests-mock})
 makedepends=('git' 'python-recommonmark')
 optdepends=('ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+')
-provides=('streamlink')
-conflicts+=('streamlink')
-source=('git+https://github.com/streamlink/streamlink.git')
+provides=("${pkgname%-*}")
+conflicts+=("${pkgname%-*}")
+source=("${pkgname%-*}::git+https://github.com/streamlink/streamlink.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd streamlink
+  cd "${pkgname%-*}"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd streamlink
+  cd "${pkgname%-*}"
   if [ "$_use_pycrypto" = "yes" ]; then
     msg "Using pycrypto..."
     export STREAMLINK_USE_PYCRYPTO="true"
@@ -52,12 +52,12 @@ build() {
 }
 
 check() {
-  cd streamlink
+  cd "${pkgname%-*}"
   python setup.py test || warning "Tests failed"
 }
 
 package() {
-  cd streamlink
+  cd "${pkgname%-*}"
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 build/sphinx/man/streamlink.1 \
     "$pkgdir/usr/share/man/man1/streamlink.1"
