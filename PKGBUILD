@@ -1,0 +1,186 @@
+# $Id$
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Alexander Baldeck <alexander@archlinux.org>
+# Contributor: Dale Blount <dale@archlinux.org>
+# Contributor: Anders Bostrom <anders.bostrom@home.se>
+# Additional patching: Nikita Tarasov <nikatar@disroot.org>
+
+
+_pkgname=thunderbird
+pkgname=thunderbird-appmenu
+pkgver=52.8.0
+pkgrel=1
+pkgdesc="Thunderbird from extra with appmenu patch"
+arch=(x86_64)
+license=(MPL GPL LGPL)
+url="https://www.mozilla.org/thunderbird/"
+depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
+         nss hunspell sqlite ttf-font icu libvpx)
+makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
+             autoconf2.13 rust clang llvm)
+optdepends=('libcanberra: sound support')
+provides=("thunderbird=$pkgver")          
+conflicts=("thunderbird")        
+options=(!emptydirs !makeflags)
+source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
+        $_pkgname.desktop
+        0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
+        rust-i686.patch fix-wifi-scanner.diff
+        thunderbird-install-dir.patch no-crmf.diff
+        unity-menubar.patch)
+sha256sums=('35b9a687997d92f36107090c1217941e5d637760b0efa7d13819cde36894eb59'
+            '3534ea85d8e0e35dba5f40a7a07844df19f3a480e1358fc50c2502f122dab789'
+            '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
+            'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
+            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
+            '24599eab8862476744fe1619a9a53a5b8cdcab30b3fc5767512f31d3529bd05d'
+            'a7317caba56e89932bd9e3b9352d94701dd9a419685057f238b1ded8dc0adcd7'
+            '87f194b87e2291c232a00cfa45c246e57fbdb1d02ba0a19f1f818f0fc9bf5967')
+
+# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
+# more information.
+_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+
+# Mozilla API keys (see https://location.services.mozilla.com/api)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact heftig@archlinux.org for
+# more information.
+_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
+
+prepare() {
+  mkdir path
+  ln -s /usr/bin/python2 path/python
+
+  cd $_pkgname-$pkgver
+  patch -Np1 -i ../thunderbird-install-dir.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
+  patch -d mozilla -Np1 < ../fix-wifi-scanner.diff
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
+  patch -Np1 -i ../no-crmf.diff
+
+  # Build with the rust targets we actually ship
+  patch -d mozilla -Np1 < ../rust-i686.patch
+
+  # https://bugs.archlinux.org/task/53890
+  patch -d mozilla -Np1 < ../0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
+   
+  # appmenu patching
+  patch -Np1 -i ../unity-menubar.patch 
+   
+  echo -n "$_google_api_key" >google-api-key
+  echo -n "$_mozilla_api_key" >mozilla-api-key
+
+  cat >.mozconfig <<END
+ac_add_options --enable-application=mail
+ac_add_options --enable-calendar
+
+ac_add_options --prefix=/usr
+ac_add_options --enable-release
+ac_add_options --enable-gold
+ac_add_options --enable-pie
+ac_add_options --enable-optimize="-O2"
+ac_add_options --enable-rust
+
+# Branding
+ac_add_options --enable-official-branding
+ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.archlinux
+
+# Keys
+ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
+
+# System libraries
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
+
+# Features
+ac_add_options --enable-alsa
+ac_add_options --disable-jack
+ac_add_options --enable-startup-notification
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+END
+}
+
+build() {
+  cd $_pkgname-$pkgver
+
+  # _FORTIFY_SOURCE causes configure failures
+  CPPFLAGS+=" -O2"
+
+  export PATH="$srcdir/path:$PATH"
+
+  # Do PGO
+  #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
+  #  make -f client.mk build MOZ_PGO=1
+  make -f client.mk build
+}
+
+package() {
+  cd $_pkgname-$pkgver
+  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+
+  _vendorjs="$pkgdir/usr/lib/$_pkgname/defaults/preferences/vendor.js"
+  install -Dm644 /dev/stdin "$_vendorjs" <<END
+// Use LANG environment variable to choose locale
+pref("intl.locale.matchOS", true);
+
+// Disable default mailer checking.
+pref("mail.shell.checkDefaultMail", false);
+
+// Don't disable our bundled extensions in the application directory
+pref("extensions.autoDisableScopes", 11);
+pref("extensions.shownSelectionUI", true);
+END
+
+  _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
+  install -Dm644 /dev/stdin "$_distini" <<END
+[Global]
+id=archlinux
+version=1.0
+about=Mozilla Thunderbird for Arch Linux
+
+[Preferences]
+app.distributor=archlinux
+app.distributor.channel=$_pkgname
+app.partner.archlinux=archlinux
+END
+
+  for i in 16 22 24 32 48 256; do
+    install -Dm644 other-licenses/branding/thunderbird/mailicon$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
+  done
+
+  install -Dm644 ../$_pkgname.desktop \
+    "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
+  # Use system-provided dictionaries
+  rm -r "$pkgdir/usr/lib/$_pkgname/dictionaries"
+  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/$_pkgname/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/$_pkgname/hyphenation"
+
+  # Install a wrapper to avoid confusion about binary path
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
+#!/bin/sh
+exec /usr/lib/$_pkgname/thunderbird "\$@"
+END
+
+  # Replace duplicate binary with wrapper
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+  ln -srf "$pkgdir/usr/bin/$_pkgname" \
+    "$pkgdir/usr/lib/$_pkgname/thunderbird-bin"
+}
