@@ -1,16 +1,23 @@
 pkgbase = phoronix-test-suite
 	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux
-	pkgver = 7.8.0
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = http://www.phoronix-test-suite.com/
 	install = phoronix-test-suite.install
 	arch = any
 	license = GPL3
 	depends = php
-	optdepends = php-gtk
 	optdepends = php-gd
-	source = http://www.phoronix.net/downloads/phoronix-test-suite/releases/phoronix-test-suite-7.8.0.tar.gz
-	sha256sums = cd6c869841f28e4ac1e8a5e4cda05fafce9a523a6b4f0f3a47805efd30494d88
+	optdepends = sqlite3: required when running a Phoromatic server.
+	optdepends = gcc-fortran: required for universe-cli test suite
+	optdepends = blas: required for universe-cli test suite
+	optdepends = lapack: required for universe-cli test suite
+	optdepends = portaudio: required for universe-cli test suite
+	optdepends = unzip: required for universe-cli test suite
+	optdepends = mesa-demos: required for universe-cli test suite
+	optdepends = openmpi: required for universe-cli test suite
+	source = phoronix-test-suite-8.0.0.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v8.0.0.tar.gz
+	sha256sums = 1a2352f3dfe37c1201553431bc41a5d8f0839712fe2c6dfc84aa31837ce0656a
 
 pkgname = phoronix-test-suite
 

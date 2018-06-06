@@ -4,25 +4,32 @@
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 
 pkgname=phoronix-test-suite
-pkgver=7.8.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=('any')
 license=('GPL3')
 url="http://www.phoronix-test-suite.com/"
 depends=('php')
-optdepends=('php-gtk'
-	    'php-gd')
+optdepends=('php-gd'
+            'sqlite3: required when running a Phoromatic server.'
+            'gcc-fortran: required for universe-cli test suite'
+            'blas: required for universe-cli test suite'
+            'lapack: required for universe-cli test suite'
+            'portaudio: required for universe-cli test suite'
+            'unzip: required for universe-cli test suite'
+            'mesa-demos: required for universe-cli test suite'
+            'openmpi: required for universe-cli test suite')
 install=${pkgname}.install
-source=(http://www.phoronix.net/downloads/phoronix-test-suite/releases/phoronix-test-suite-$pkgver.tar.gz)
-sha256sums=('cd6c869841f28e4ac1e8a5e4cda05fafce9a523a6b4f0f3a47805efd30494d88')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v${pkgver}.tar.gz")
+sha256sums=('1a2352f3dfe37c1201553431bc41a5d8f0839712fe2c6dfc84aa31837ce0656a')
 
 package() {
-  cd "$srcdir"/phoronix-test-suite
+  cd "$srcdir/$pkgname-$pkgver"
+  ./install-sh $pkgdir/usr
+
+  rm -r "${pkgdir}"/usr/share/phoronix-test-suite/deploy
+
   sed -i "s#--noconfirm#--noconfirm --asdeps#" pts-core/external-test-dependencies/scripts/install-arch-packages.sh
-  install -dm755 "$pkgdir"/usr/share/phoronix-test-suite
-  sed -e "s/^export PTS_DIR=.*/export PTS_DIR=\/usr\/share\/phoronix-test-suite/g" -i phoronix-test-suite
-  install -Dm755 phoronix-test-suite "$pkgdir"/usr/bin/phoronix-test-suite
-  rm -f "$pkgdir"/usr/share/phoronix-test-suite/pts/etc/scripts/package-build-*
-  cp -r pts-core/ "$pkgdir"/usr/share/phoronix-test-suite/
+  sed -e "s/^export PTS_DIR=.*/export PTS_DIR=\/usr\/share\/phoronix-test-suite/g" -i ${pkgdir}/usr/bin/phoronix-test-suite
 }
