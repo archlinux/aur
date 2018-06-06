@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-lemons-git
-	pkgdesc = Lemon facts for fortune-mod
-	pkgver = r4.3857b4c
+	pkgdesc = Adds lemons and lemonauthors fortune files
+	pkgver = r7.923c527
 	pkgrel = 1
 	url = https://gitlab.com/dnaf/lemon-fortunes
 	arch = any

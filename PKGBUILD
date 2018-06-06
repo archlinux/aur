@@ -1,8 +1,8 @@
 # Maintainer: Katie Wolfe <katie@dnaf.moe>
 pkgname=fortune-mod-lemons-git
-pkgver=r4.3857b4c
+pkgver=r7.923c527
 pkgrel=1
-pkgdesc="Lemon facts for fortune-mod"
+pkgdesc="Adds lemons and lemonauthors fortune files"
 arch=('any')
 url="https://gitlab.com/dnaf/lemon-fortunes"
 license=('MIT')
@@ -29,9 +29,12 @@ pkgver() {
 
 build() {
 	strfile lemon-fortunes/lemons lemon-fortunes/lemons.dat
+	strfile lemon-fortunes/lemonauthors lemon-fortunes/lemonauthors.dat
 }
 
 package() {
 	install -D -m644 ${srcdir}/lemon-fortunes/lemons ${pkgdir}/usr/share/fortune/lemons
 	install -D -m644 ${srcdir}/lemon-fortunes/lemons.dat ${pkgdir}/usr/share/fortune/lemons.dat
+	install -D -m644 ${srcdir}/lemon-fortunes/lemonauthors ${pkgdir}/usr/share/fortune/lemonauthors
+	install -D -m644 ${srcdir}/lemon-fortunes/lemonauthors.dat ${pkgdir}/usr/share/fortune/lemonauthors.dat
 }
