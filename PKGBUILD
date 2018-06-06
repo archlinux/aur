@@ -1,19 +1,23 @@
-# Maintainer: Ouyang Jun<ouyangjun1999@gmail.com>
-# Maintainer: Astro Benzene<universebenzene at sina dot com>
+# Maintainer: Ouyang Jun <ouyangjun1999@gmail.com>
+# Maintainer: Astro Benzene <universebenzene at sina dot com>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Jove Yu <yushijun110 [at] gmail.com>
+# Contributor: Ariel AxionL <axionl at aosc dot io>
 
 pkgname=wps-office
 pkgver=10.1.0.6634
 #_pkgver=10.1.0.5707~a21
-pkgrel=1
+pkgrel=2
 pkgdesc="Kingsoft Office (WPS Office) is an office productivity suite"
 arch=('i686' 'x86_64')
 license=("custom")
 url="http://wps-community.org/"
-depends=('fontconfig' 'libpng12' 'glib2' 'libsm' 'libxext' 'libxrender' 'libxml2' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'xorg-mkfontdir')
+depends=('fontconfig' 'libxrender' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'qt4' 'openssl-1.0' 'sdl2' 'libpulse' 'hicolor-icon-theme')
 optdepends=('cups: for printing support'
-            'pango: for complex (right-to-left) text support')
+            'libjpeg-turbo: JPEG image codec support'
+            'pango: for complex (right-to-left) text support'
+            'curl: An URL retrieval utility and library'
+            'ttf-wps-fonts: Symbol fonts required by wps-office')
 conflicts=('kingsoft-office')
 options=('!emptydirs')
 install=${pkgname}.install
