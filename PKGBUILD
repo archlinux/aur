@@ -9,7 +9,7 @@ _commit=HEAD
 _branch=feature-bind
 
 pkgname=libtorrent-pyro-git
-pkgver=20180130
+pkgver=20180605
 pkgrel=1
 pkgdesc='BitTorrent library written in C++ (git version)'
 url='https://rakshasa.github.io/rtorrent'
