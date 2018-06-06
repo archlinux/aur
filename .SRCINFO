@@ -1,6 +1,6 @@
 pkgbase = discord-rpc-api-git
 	pkgdesc = Libraries for Discord Rich Presence
-	pkgver = v3.1.0.r10.g566076e
+	pkgver = v3.1.0.r15.g5df1c5a
 	pkgrel = 1
 	url = https://github.com/discordapp/discord-rpc
 	arch = x86_64

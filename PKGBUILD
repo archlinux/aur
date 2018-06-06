@@ -1,13 +1,12 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=discord-rpc-api-git
-pkgver=v3.1.0.r10.g566076e
+pkgver=v3.1.0.r15.g5df1c5a
 pkgrel=1
 pkgdesc="Libraries for Discord Rich Presence"
 arch=("x86_64")
 url="https://github.com/discordapp/discord-rpc"
 license=('MIT')
-depends=('')
 makedepends=('git' 'cmake')
 conflicts=('discord-rpc-api')
 provides=('discord-rpc-api')
