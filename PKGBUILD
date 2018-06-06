@@ -7,7 +7,7 @@ pkgdesc="Cross-platform file backup"
 arch=('x86_64')
 url="https://www.qualeed.com/en/qbackup/"
 license=('custom')
-depends=('xdg-utils')
+depends=('xdg-utils' 'jre8-openjdk')
 source_x86_64=("https://storage-dag.iijgio.com/qualeed/downloads/qbackup/qBackup-${pkgver}.tar.gz")
 source=($pkgname.desktop
         $pkgname.png)
