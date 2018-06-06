@@ -16,6 +16,6 @@ sha256sums=('SKIP')
 package() {
 	cd grub-reboot-poweroff/
 
-	make DESTDIR="{pkgdir}" install
+	make DESTDIR="${pkgdir}" install
 }
 
