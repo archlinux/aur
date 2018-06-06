@@ -6,7 +6,7 @@
 
 pkgname=sc
 pkgver=7.16
-pkgrel=6
+pkgrel=7
 pkgdesc="Ncurses-based spreadsheet program"
 arch=('x86_64')
 url="http://ibiblio.org/pub/linux/apps/financial/spreadsheet/!INDEX.html"
