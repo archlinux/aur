@@ -24,18 +24,14 @@ optdepends=('go: for Go version of App Engine'
             'python2-crcmod: verify the integrity of object contents')
 options=('!strip' 'staticlibs')
 
-# 64bit
-source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
-               "profile.sh")
-sha256sums_x86_64=(
+source=(
+  "https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
+  "profile.sh"
+)
+sha256sums=(
   '0aa6958545a9ce7e56a161ae8e0cbcbacdf7a749845ed3e531f5a8ea2eb2aab4'
-  '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
-# 32bit
-source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
-             "profile.sh")
-sha256sums_i686=(
-  'db8de77bb284339ae6150008e06477cb4a07fea7028c78fe888909ddc4e57287'
-  '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
+  '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692'
+)
 
 prepare() {
 
