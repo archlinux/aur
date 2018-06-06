@@ -62,15 +62,15 @@ msg "If you want to disable an applet, edit pkgbuild variables _disable_[applet]
 _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
-pkgver=0.6.93
-pkgrel=6
+pkgver=0.6.94
+pkgrel=1
 pkgdesc="AppMenu (Global Menu) plugin"
-url="https://github.com/rilian-la-te/vala-panel-appmenu"
+url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
 license=('LGPL3')
 
-source=("git://github.com/rilian-la-te/${_pkgbase}.git"
-        "git://github.com/rilian-la-te/${_cmakename}.git")
+source=("git://gitlab.com/vala-panel-project/${_pkgbase}.git"
+        "git://gitlab.com/vala-panel-project/${_cmakename}.git")
 sha256sums=('SKIP'
             'SKIP')
 
