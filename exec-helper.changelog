@@ -71,6 +71,8 @@ New
 
 Fix
 ~~~
+- CI: Disabled coverity job, as their site is currently in maintenance
+  mode for already quite a while... [Bart Verhagen]
 - CI: Lowered building with multiple threads to fix issues when
   compiling on the CI system. [Bart Verhagen]
 
