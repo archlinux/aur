@@ -1,6 +1,6 @@
 # Maintainer: gue5t <gue5t@aur.archlinux.org>
 pkgname=python-mastodon
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="python bindings for the Mastodon RPC API"
 arch=('any')
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://pypi.python.org/packages/4b/8e/a041ce004d4cc026ff931b3f664db959cb1ba5902e2caf9bd6ec726723ab/Mastodon.py-1.2.2.tar.gz)
+source=(https://files.pythonhosted.org/packages/f5/11/2c3973e8036e51c8b2e9e0d6115c16ed632e8a63082cf5f45a6d74f6846e/Mastodon.py-1.3.0.tar.gz)
 noextract=()
-md5sums=('2504bf5669109cdd92bdcd1c4e92f310')
+sha256sums=('0d426c37795ed24cdf7affec7b3465cb76f9afc3f1d4dfbfd389b0b4459dbf4d')
 
 build() {
   : #nothing to do?
