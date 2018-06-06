@@ -3,10 +3,10 @@
 _pyname=corner
 pkgname=python-$_pyname
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Make some beautiful corner plots of samples'
 url="https://pypi.python.org/pypi/$_pyname/"
-depends=('python-matplotlib')
+depends=('python-matplotlib' 'python-pytest' 'python-nose' 'python-pandas')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
