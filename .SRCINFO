@@ -1,0 +1,20 @@
+pkgbase = i3lock-fancy-multimonitor-git
+	pkgdesc = Blurry lock screen for i3lock with multimonitor support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/guimeira/i3lock-fancy-multimonitor
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = i3lock
+	depends = imagemagick
+	depends = scrot
+	depends = xorg-xrandr
+	provides = i3lock-fancy
+	source = git+https://github.com/guimeira/i3lock-fancy-multimonitor.git
+	source = i3lock-fancy
+	sha256sums = SKIP
+	sha256sums = d33c278ca5108105e7ba8d591429e825a3351e39cb35f38330d3ce6a4638fb8c
+
+pkgname = i3lock-fancy-multimonitor-git
