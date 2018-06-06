@@ -7,7 +7,7 @@
 pkgname=eddie-ui-git
 pkgver=2.14.5
 pkgrel=1
-pkgdesc='Eddie - OpenVPN UI'
+pkgdesc='Eddie - OpenVPN UI - beta version'
 arch=('i686' 'x86_64')
 url=https://eddie.website
 license=(GPL3)
@@ -32,7 +32,7 @@ build() {
 
   # Compile C# sources
   cd "Eddie"
-  xbuild /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.sln
+  xbuild /verbosity:minimal /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.sln
 
   # Compile C sources (Tray)
   cd src/UI.GTK.Linux.Tray
