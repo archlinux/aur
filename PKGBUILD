@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=fence-agents
-pkgver=4.1.1
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="OCF fence agents for rgmanager and pacemaker"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('libxslt' 'python' 'docbook-xsl')
 depends=('python-pexpect' 'openwsman' 'python-pycurl' 'python-requests' 'python-boto3' 'python-suds')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ClusterLabs/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('40a1feba8892c575001dd61f5a07318a68551ce28e7e3517c13b989fc29f46574fba84749709f391e5a45d5f668e8254c0e9c7e05a995d4f64b670d803afe31d')
+sha512sums=('1de82a66b92fd585b4349e6881328614e4cd85013fd8db5fe2fee72efb7a5850ad96de9f177de977d6c7ccbdf6c76a8659e4e0f092c0ee36463d681effabfa43')
 
 prepare() {
   cd $pkgname-$pkgver
