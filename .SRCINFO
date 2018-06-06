@@ -1,0 +1,23 @@
+pkgbase = runv-git
+	pkgdesc = Hypervisor-based Runtime for OCI
+	pkgver = v0.4.0.r1229.565496c
+	pkgrel = 1
+	url = https://github.com/hyperhq/runv
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = git
+	makedepends = libvirt
+	makedepends = device-mapper
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = go
+	depends = qemu
+	depends = hyperstart
+	provides = runv
+	conflicts = runv
+	source = runv::git+https://github.com/hyperhq/runv.git
+	md5sums = SKIP
+
+pkgname = runv-git
+
