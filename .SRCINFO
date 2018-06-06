@@ -1,6 +1,6 @@
 pkgbase = fence-agents-git
 	pkgdesc = OCF fence agents for rgmanager and pacemaker
-	pkgver = 4.1.1.r49.g7473fab7
+	pkgver = 4.2.1.r0.gb0626a42
 	pkgrel = 1
 	url = http://clusterlabs.org/
 	arch = i686
