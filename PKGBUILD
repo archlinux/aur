@@ -1,6 +1,6 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 pkgname=presto-cli
-pkgver=0.202
+pkgver=0.203
 pkgrel=1
 pkgdesc='Distributed SQL Query Engine for Big Data - Client'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('java-runtime>=8' 'sh')
 source=("https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/${pkgver}/presto-cli-${pkgver}-executable.jar"
         'https://raw.githubusercontent.com/prestodb/presto/master/LICENSE')
 noextract=("presto-cli-${pkgver}-executable.jar")
-sha256sums=('c9b0fa310ba8581c599cc6c7fac1b54ed03f30fdf2c9689eff64a2c1bbeee595'
+sha256sums=('95059fa22abc5048e32254f6fffada0892abfa06d3470ac036e477b4699ca9e2'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
