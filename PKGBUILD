@@ -67,9 +67,9 @@ pkgbase=linux-clear
 __basekernel=4.16
 _minor=14
 pkgver=${__basekernel}.${_minor}
-#_clearver=${__basekernel}.12-575
-_clearver=045b7b68aa3b62dda6130ac1344ba8155fc1dbd3
-pkgrel=2
+#_clearver=${__basekernel}.12-577
+_clearver=dc77de2873718b2c6ed406c8bace99f1b38739d3
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -114,7 +114,7 @@ prepare() {
   patch -p1 -i ../patch-${pkgver}
 
   # Apply clearlinux patches
-  for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0115|^Patch0500|^Patch200' | sed -n 's/.*: //p'); do
+  for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0115|^Patch0500|^Patch0504|^Patch200' | sed -n 's/.*: //p'); do
     msg "Applying ${i}"
     patch -p1 -i "$srcdir/clearlinux/${i}"
   done
