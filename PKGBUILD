@@ -3,7 +3,7 @@
 
 pkgname=octopi-kde-git
 _pkgver=0.8.1
-pkgver=0.8.1.1390
+pkgver=0.8.1.1398
 pkgrel=1
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs (git version for KDE)"
 url="https://github.com/aarnt/octopi"
