@@ -1,7 +1,7 @@
 pkgbase = hunspell-hy
 	pkgdesc = Armenian hunspell dictionaries
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyspell/
 	arch = any
 	license = MIT
@@ -19,7 +19,9 @@ pkgbase = hunspell-hy
 
 pkgname = hunspell-hy-classical
 	pkgdesc = Armenian hunspell dictionaries. Classical Orthography.
+	conflicts = hunspell-hy-reformed
 
 pkgname = hunspell-hy-reformed
 	pkgdesc = Armenian hunspell dictionaries. Reformed Orthography.
+	conflicts = hunspell-hy-classical
 

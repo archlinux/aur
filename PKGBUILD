@@ -3,7 +3,7 @@
 pkgbase=hunspell-hy
 pkgname=('hunspell-hy-classical' 'hunspell-hy-reformed')
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Armenian hunspell dictionaries"
 arch=(any)
 url="https://github.com/hyspell/"
@@ -24,12 +24,13 @@ sha1sums=('d01c0c802013115c7701c04425f865f3aa78743b'
 
 prepare() {
     # add WORDCHARS and IGNORE lines
-    sed -i '4i\\nWORDCHARS ֊՛՜՞՚\nIGNORE ֊՛՜՞՚' ./hy-c.aff
-    sed -i '4i\\nWORDCHARS ֊՛՜՞՚\nIGNORE ֊՛՜՞՚' ./hy-r.aff
+    sed -i '4i\\nWORDCHARS ֊՛՜՞՚\nIGNORE ֊՛՜՞՚' hy-c.aff
+    sed -i '4i\\nWORDCHARS ֊՛՜՞՚\nIGNORE ֊՛՜՞՚' hy-r.aff
 }
 
 package_hunspell-hy-classical() {
     pkgdesc="Armenian hunspell dictionaries. Classical Orthography."
+    conflicts=('hunspell-hy-reformed')
 
     cd "$srcdir"
     install -dm755 ${pkgdir}/usr/share/hunspell
@@ -40,6 +41,7 @@ package_hunspell-hy-classical() {
 
 package_hunspell-hy-reformed() {
     pkgdesc="Armenian hunspell dictionaries. Reformed Orthography."
+    conflicts=('hunspell-hy-classical')
 
     cd "$srcdir"
     install -dm755 ${pkgdir}/usr/share/hunspell
