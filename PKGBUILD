@@ -1,32 +1,32 @@
 # Maintainer: André Klitzing <aklitzing () gmail () com>
 
 pkgname=persosim_driver
-pkgver=20150112
+pkgver=20180209
 pkgrel=1
 pkgdesc='Der Open Source Simulator für den elektronischen Personalausweis'
 arch=('i686' 'x86_64')
 url='http://www.persosim.de'
 license=('GPL3')
 depends=('pcsclite' 'pcsc-tools')
-source=("https://persosim.secunet.com/fileadmin/user_upload/Persosim_Microsite/Files/PersoSim_Driver_Linux_$pkgver.tgz" Makefile.patch)
+source=("https://persosim.secunet.com/fileadmin/user_upload/PersoSim_Driver_PCSCLite_$pkgver.tgz" Makefile.patch)
 
 prepare()
 {
-	cd "de.persosim.driver.linux"
+	cd "de.persosim.driver.pcsclite"
 	patch -p0 -i $srcdir/Makefile.patch
 }
 
 build()
 {
-	cd "de.persosim.driver.linux"
+	cd "de.persosim.driver.pcsclite"
 	make
 }
 
 package()
 {
-	cd "de.persosim.driver.linux"
+	cd "de.persosim.driver.pcsclite"
 	make PREFIX="$pkgdir" install
 }
 
-sha256sums=('b5d7a6692bce1b8a4f242a402716057f372b20a1ef551e0f9596817f4bac8637'
-            '3b57979a88ee9846436a50263c8cb7975a99830ef8e666aa4dce6c4d35f45997')
+sha256sums=('8207d4fc0c79b1c806d784b5eabca8e174142d7f0f4a400f50e7c9819e2cbfe2'
+            'fda323876719c3347ae182ecfbb0aaab43dbb5d12ece0b89017e14674f0a2b32')

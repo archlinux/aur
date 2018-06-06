@@ -1,21 +1,15 @@
---- Makefile	2014-02-20 14:39:50.000000000 +0100
-+++ Makefile	2014-03-31 15:12:30.424985665 +0200
-@@ -25,12 +25,14 @@
- 	rm -f *.o $(LIBNAME) $(DEPENDFILE) *Test
+--- Makefile
++++ Makefile
+@@ -52,8 +52,10 @@
+ install: install_$(OS)
  
- install: $(LIBNAME)
--	sudo cp reader.conf /etc/reader.conf.d/persoSim
+ install_LINUX: $(LIBNAME)
+-	sudo cp Linux/reader.conf /etc/reader.conf.d/$(DRIVERNAME).conf
 -	sudo cp $(LIBNAME) /usr/lib/pcsc/drivers/serial/
 +	mkdir -p $(PREFIX)/etc/reader.conf.d/
-+	cp reader.conf $(PREFIX)/etc/reader.conf.d/persoSim
++	cp Linux/reader.conf $(PREFIX)/etc/reader.conf.d/$(DRIVERNAME).conf
 +	mkdir -p $(PREFIX)/usr/lib/pcsc/drivers/serial/
 +	cp $(LIBNAME) $(PREFIX)/usr/lib/pcsc/drivers/serial/
  
- uninstall: 
--	sudo rm -f /etc/reader.conf.d/persoSim
--	sudo rm -f /usr/lib/pcsc/drivers/serial/$(LIBNAME)
-+	rm -f $(PREFIX)/etc/reader.conf.d/persoSim
-+	rm -f $(PREFIX)/usr/lib/pcsc/drivers/serial/$(LIBNAME)
- 
- test: hexStringTest
- 	./hexStringTest
+ install_OSX: $(LIBNAME)
+ 	sudo cp MacOSX/reader.conf /etc/reader.conf
