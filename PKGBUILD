@@ -1,11 +1,11 @@
-# Maintainer: Yangtse Su <yangtsesu@gmail.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
-# Contributor: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Yangtse Su <yangtsesu@gmail.com>
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-tiles
-pkgver=0.C.2018.04.12
+pkgver=0.C.2018.06.06
 _pkgver=0.C
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike,tiles only"
@@ -19,11 +19,9 @@ optdepends=('sdl2_image: for tiles'
             'sdl2_ttf: for tiles'
             'freetype2: for tiles'
             'sdl2_mixer: for tiles')
-conflicts=('cataclysm-dda', 'cataclysm-dda-ncurses' 'cataclysm-dda-sdl-git')
-source=('https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip'
-	'fix_locale_and_build_error.patch')
-md5sums=('SKIP'
-         '17c1adda49636148ae952f0e03ebcc22')
+conflicts=('cataclysm-dda' 'cataclysm-dda-ncurses' 'cataclysm-dda-sdl-git')
+source=('https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip')
+md5sums=('SKIP')
 
 pkgver() {
   cd "Cataclysm-DDA-master"
@@ -33,7 +31,6 @@ pkgver() {
 build() {
   cd "Cataclysm-DDA-master"
 
-  patch -Np1 -i ../fix_locale_and_build_error.patch
   make PREFIX=/usr RELEASE=1 LOCALIZE=1 USE_XDG_DIR=1 LUA=1 TILES=1 SOUND=1 LANGUAGES=all
 }
 
