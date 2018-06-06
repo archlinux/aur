@@ -5,11 +5,11 @@ pkgver=0.71
 pkgrel=1
 pkgdesc="Docking battery monitor and CPU governer controller (fork of trayfreq)"
 arch=('i686' 'x86_64' 'armv6h')
-url="https://github.com/phillid/${pkgname}"
+url="https://git.nah.nz/${pkgname}/"
 license=('GPL')
 depends=('gtk3' 'sudo')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/phillid/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('c8589c85d95e142ec698f3218e2be50474daa1394bcfef05034026be24a6d10ff4ee9b4ac3d9f48d56ff0e74a13dc756f6eda63290e5dc2a127767eee2679fa3')
+source=("https://git.nah.nz/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.xz")
+sha512sums=('03b885a35429d04b6ce9212b7fe95e7f7e2d7e6fdbae7ec08f47bed1ff94f2d6e596f462d511ed5ae8f29f82c272b4614701661f9ca1613d33fb14e97b8db2c6')
 backup=('etc/paramano.conf')
 
 build() {
