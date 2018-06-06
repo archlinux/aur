@@ -3,7 +3,6 @@ pkgbase = google-cloud-sdk
 	pkgver = 204.0.0
 	pkgrel = 1
 	url = https://cloud.google.com/sdk/
-	arch = i686
 	arch = x86_64
 	license = Apache
 	depends = python2

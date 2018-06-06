@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform (gcloud), plus Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
-arch=('i686' 'x86_64')
+arch=('x86_64')
 # replaces() only works for sysupgrade, not normal install/upgrade
 conflicts=('google-appengine-python-php' 'google-appengine-go'
            'google-appengine-python' 'google-appengine-php')
