@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ruby /opt/puppet-editor-services/puppet-debugserver "$@"
