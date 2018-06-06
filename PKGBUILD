@@ -10,7 +10,7 @@ url="https://github.com/dirruk1/gnome-breeze"
 license=('LGPL')
 optdepends=("gtk2: GTK+2 theme" "gtk3: GTK+3 theme")
 makedepends=('git')
-conflicts=('gtk-theme-breezy-gtk3' 'gtk-theme-breezy-gtk2' ' gtk-theme-breezy')
+conflicts=('gtk-theme-breezy-gtk3' 'gtk-theme-breezy-gtk2' 'gtk-theme-breezy')
 # GTK 3.20 version from magnific0 has been merged
 source=(${pkgname}::"git+https://github.com/dirruk1/gnome-breeze.git")
 md5sums=('SKIP')
