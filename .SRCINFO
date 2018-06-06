@@ -1,11 +1,14 @@
 pkgbase = python-corner
 	pkgdesc = Make some beautiful corner plots of samples
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/corner/
 	arch = any
 	license = BSD
 	depends = python-matplotlib
+	depends = python-pytest
+	depends = python-nose
+	depends = python-pandas
 	source = https://files.pythonhosted.org/packages/source/c/corner/corner-2.0.1.tar.gz
 	md5sums = 148a401ebb1dff47897fe4a1389e8c77
 
