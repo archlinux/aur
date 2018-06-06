@@ -13,12 +13,12 @@ pkgver=20180130
 pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches"
 url="https://github.com/pyroscope/rtorrent-ps"
-license=('GPL')
+license=('GPL2')
 arch=('i686' 'x86_64' 'armv7h')
-depends=('libtorrent-pyro-git' 'libsigc++' 'ncurses' 'curl' 'xmlrpc-c' 'cppunit')
+depends=('libtorrent-pyro-git' 'ncurses' 'curl' 'xmlrpc-c')
 makedepends=('git')
 optdepends=('ttf-dejavu: for utf8 glyphs')
-conflicts=('rtorrent' 'rtorrent-git')
+conflicts=('rtorrent' 'rtorrent-git' 'rtorrent-ps')
 provides=('rtorrent')
 install='pyroscope.install'
 backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
@@ -28,43 +28,42 @@ backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
     BUILDENV+=(!check) ||
 {
     _debug='--enable-extra-debug'
+    depends+=('cppunit')
     options=(!strip)
 }
 
 _url="https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/patches"
 source=("git://github.com/rakshasa/rtorrent.git#branch=$_branch"
         "${_url}/command_pyroscope.cc"
-        "rtorrent.rc.sample"
-        "${_url}/ps-fix-double-slash-319_all.patch"
+        "${_url}/ui_pyroscope.cc"
+        "${_url}/ui_pyroscope.h"
+        "${_url}/backport_0.9.6_algorithm_median.patch"
+        "${_url}/ps-event-view_all.patch"
+        "${_url}/ps-import.return_all.patch"
         "${_url}/ps-info-pane-xb-sizes_all.patch"
         "${_url}/ps-item-stats-human-sizes_all.patch"
+        "${_url}/ps-silent-catch_all.patch"
         "${_url}/ps-ui_pyroscope_all.patch"
         "${_url}/ps-view-filter-by_all.patch"
-        "${_url}/ps-event-view_all.patch"
-        "${_url}/ps-fix-throttle-args_all.patch"
-        "${_url}/backport_0.9.6_algorithm_median.patch"
-        "${_url}/ps-silent-catch_all.patch"
         "${_url}/pyroscope.patch"
         "${_url}/ui_pyroscope.patch"
-        "${_url}/ui_pyroscope.cc"
-        "${_url}/ui_pyroscope.h")
+        "rtorrent.rc.sample")
 
 md5sums=('SKIP'
          'SKIP'
-         '35e2c69152a3c2137c5958f9f27cb906'
-         '22fae392c6e281dc438b39a5019e7e1b'
+         'SKIP'
+         'SKIP'
+         'b49903d3fa25a66c72db69570dfe8b47'
+         '56701bca42cc9b309637bf3f918ede12'
+         'cc9bbf20acf855e551ca2f80cac91903'
          'f1539d70c74e5c74d8a15d51675aa26c'
          '2d34e8c86c1c6ed1354b55ca21819886'
+         'e3f367abe42d28168008f99a9bf0f1d6'
          '7a88f8ab5d41242fdf1428de0e2ca182'
          '26faff00b306b6ef276a7d9e6d964994'
-         '56701bca42cc9b309637bf3f918ede12'
-         'ab490d1d1df9c27f3cf624966f7f03f6'
-         'b49903d3fa25a66c72db69570dfe8b47'
-         'e3f367abe42d28168008f99a9bf0f1d6'
          'bd04a0699b80c8042e1cf63a7e0e4222'
          '0a2bbaf74c7160ba33876dcc2f050f14'
-         'SKIP'
-         'SKIP')
+         '35e2c69152a3c2137c5958f9f27cb906')
 
 pkgver() {
     cd "$srcdir/rtorrent"
@@ -84,7 +83,7 @@ prepare() {
         -e "s:rTorrent \" VERSION:rTorrent-PS git~$(git rev-parse --short $_commit) \" VERSION:"
 
     for i in ${srcdir}/*.patch; do
-        msg "Patching $i"
+        msg "Patching $(basename $i)"
         patch -uNlp1 -i "$i"
     done
     for i in ${srcdir}/*.{cc,h}; do
@@ -97,7 +96,7 @@ prepare() {
 build() {
     cd "$srcdir/rtorrent"
     #export CC=clang
-    #export CXX=clang++
+    #export CXX=clang++ ;export CXXFLAGS+=" -Wno-unknown-warning-option"
     export CXXFLAGS+=" -fno-strict-aliasing -faligned-new -Wno-terminate -Wno-class-memaccess"
     export libtorrent_LIBS="-L/usr/lib -ltorrent"
 
@@ -109,7 +108,6 @@ build() {
 
 check() {
     cd "$srcdir/rtorrent"
-    # will fail due to pyroscope patches not being applies to unittests as well
     make check || return 0
 }
 
