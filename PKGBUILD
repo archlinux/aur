@@ -12,7 +12,7 @@ _pkgbase=vala-panel-appmenu
 pkgname=vala-panel-appmenu-registrar-git
 _path=subprojects/registrar
 pkgver=0.6.94
-pkgrel=1
+pkgrel=2
 pkgdesc="Small utility to hold DBusMenu menus"
 provides=(vala-panel-appmenu-registrar)
 depends=('glib2')
@@ -20,7 +20,7 @@ url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
 license=('LGPL3')
 
-source=("git://gitlab.com/vala-panel-project/${_pkgbase}.git")
+source=("git+https://gitlab.com/vala-panel-project/${_pkgbase}.git")
 sha256sums=('SKIP')
 
 pkgver() {
