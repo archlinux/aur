@@ -1,3 +1,4 @@
 /pkg/
 /src/
-/core-*.tar.*
+/core-*.pkg.*
+/release-*.tar.gz

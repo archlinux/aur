@@ -1,0 +1,24 @@
+diff -Naur b/configure.ac a/configure.ac
+--- b/configure.ac	2018-05-31 00:20:52.000000000 -0400
++++ a/configure.ac	2018-06-06 13:47:43.242993733 -0400
+@@ -163,7 +163,7 @@
+ fi
+ 
+ # check for sphinx required during make
+-AC_CHECK_PROG(sphinxapi_path, sphinx-apidoc, $as_dir, no, $SEARCHPATH)
++AC_CHECK_PROG(sphinxapi_path, sphinx-apidoc2, $as_dir, no, $SEARCHPATH)
+ if test "x$sphinxapi_path" = "xno" ; then
+     AC_MSG_ERROR(["Could not location sphinx-apidoc, from the python-sphinx package"])
+ fi
+diff -Naur b/daemon/doc/Makefile.am a/daemon/doc/Makefile.am
+--- b/daemon/doc/Makefile.am	2018-05-31 00:20:52.000000000 -0400
++++ a/daemon/doc/Makefile.am	2018-06-06 13:47:56.053038681 -0400
+@@ -14,7 +14,7 @@
+ 
+ # auto-generated Python documentation using Sphinx
+ index.rst:
+-	sphinx-apidoc -o . ../core
++	sphinx-apidoc2 -o . ../core
+ 	mv modules.rst index.rst
+ 
+ ###### below this line was generated using sphinx-quickstart ######
