@@ -3,7 +3,7 @@
 
 
 pkgname="emonoda"
-pkgver="2.1.2"
+pkgver="2.1.3"
 pkgrel="1"
 pkgdesc="A set of tools to organize and manage your torrents"
 arch=("any")
@@ -23,7 +23,7 @@ optdepends=(
 	"python-transmissionrpc: Transmission support"
 	"python-dbus: KTorrent support"
 )
-makedepends=("python-setuptools" "wget")
+makedepends=("python-setuptools" "cython" "wget")
 
 
 build() {
