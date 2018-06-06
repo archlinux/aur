@@ -1,7 +1,7 @@
 # Maintainer: David Stark <david@starkers.org>
 
-pkgver=0.76
-pkgrel=16
+pkgver=0.88
+pkgrel=17
 pkgname=telepresence
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster - http://www.telepresence.io"
 arch=('any')
