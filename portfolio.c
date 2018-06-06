@@ -177,9 +177,13 @@ Info_Array* portfolio_get_info_array(void) {
     }
 
     void* temp = NULL;
+    int load_len = 0;
     for (size_t i = 0; i < portfolio_data->length; i++) {
-        mvprintw(0, 0, "Loading data (%d/%d)\n", (int) i + 1, (int) portfolio_data->length); // Print loading string
-        refresh(); // flushes output buffer
+        if (i > 0)
+            for (int j = 0; j < load_len; j++)
+                putchar('\b');
+        load_len = printf("Loading data (%d/%d)", (int) i + 1, (int) portfolio_data->length); // Print loading string
+        fflush(stdout);
         if (strcmp(syms[i], "USD$") != 0) {
             if (pthread_join(threads[i], &temp))
                 EXIT_MSG("Error joining thread!")
@@ -261,17 +265,14 @@ void portfolio_sort(Info_Array* portfolio_data, int sort_option) {
     }
 }
 
-void portfolio_print_all(void) {
+void portfolio_print_all(Info_Array* portfolio_data) {
+    if (portfolio_data == NULL)
+        return;
+
     initscr();
     noecho(); // Don't echo keystrokes
     keypad(stdscr, TRUE); // Enables extra keystrokes
     curs_set(FALSE); // Hides cursor
-    Info_Array* portfolio_data = portfolio_get_info_array();
-    if (portfolio_data == NULL) { // Error reading portfolio, wrong password, empty portfolio array
-        endwin();
-        return;
-    }
-
     double total_owned = 0, total_spent = 0, total_profit_1d = 0, total_profit_7d = 0, total_profit_30d = 0;
     for (size_t i = 0; i < portfolio_data->length; i++) { // Add collected values to totals
         total_owned += portfolio_data->array[i]->current_value;

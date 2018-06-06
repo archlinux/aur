@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
         // Check
     else if (strcmp(cmd, "check") == 0 && (argc == 2 || argc == 3)) {
         if (argc == 2)
-            portfolio_print_all();
+            portfolio_print_all(portfolio_get_info_array());
         else portfolio_print_stock(sym);
     }
 

@@ -26,6 +26,7 @@
 #define HIGHLIGHT_NONE -1
 
 #define KEY_ESCAPE 27
+
 extern char* portfolio_file;
 
 /**
@@ -70,10 +71,8 @@ String* portfolio_file_get_string(char** password_ref);
 void portfolio_modify(const char* symbol, double quantity_shares, double usd_spent, int mod_option);
 
 /**
- * Returns an SDA array containing data from the portfolio.
+ * Returns an Info_Array containing data from the portfolio.
  * length is the number of securities in the portfolio
- * sec_data is an array of SD pointers to SD structs with the fields symbol, amount, and total_spent populated.
- * The rest of the values are uninitialized
  * @return SDA array
  */
 Info_Array* portfolio_get_info_array(void);
@@ -91,7 +90,7 @@ void portfolio_sort(Info_Array* portfolio_data, int sort_option);
  * Prints to stdout information about every security contained in the portfolio: symbol, number of shares, USD spent,
  * current value, profit, and 24h profit. Additionally, print a grand total with info from all securities.
  */
-void portfolio_print_all(void);
+void portfolio_print_all(Info_Array* portfolio_data);
 
 /**
  * Prints to stdout information about a specific security contained in the portfolio: symbol, number of shares, USD spent,
