@@ -1,0 +1,25 @@
+pkgbase = hunspell-hy
+	pkgdesc = Armenian hunspell dictionaries
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/hyspell/
+	arch = any
+	license = MIT
+	optdepends = hunspell: the spell checking libraries and apps
+	source = https://raw.githubusercontent.com/hyspell/HySpell_3.0.1/master/Dictionaries/Dictc/hy-c.aff
+	source = https://raw.githubusercontent.com/hyspell/HySpell_3.0.1/master/Dictionaries/Dictc/hy-c.dic
+	source = https://raw.githubusercontent.com/hyspell/HySpell_3.0.1/master/Dictionaries/Dictr/hy-r.aff
+	source = https://raw.githubusercontent.com/hyspell/HySpell_3.0.1/master/Dictionaries/Dictr/hy-r.dic
+	source = https://raw.githubusercontent.com/hyspell/HySpell_3.0.1/master/Dictionaries/license.txt
+	sha1sums = d01c0c802013115c7701c04425f865f3aa78743b
+	sha1sums = da1c9f8c51b77b16789c4473756d688e691b74c8
+	sha1sums = 77d9996d4d1b50ac1134d2882ad51e53968ee7c6
+	sha1sums = cfd078f93c44e9b9a5f1a27fb04bd4e7763ee2ae
+	sha1sums = 04fa1d9d0b8017e2877b1d338d4ff862cd540002
+
+pkgname = hunspell-hy-classical
+	pkgdesc = Armenian hunspell dictionaries. Classical Orthography.
+
+pkgname = hunspell-hy-reformed
+	pkgdesc = Armenian hunspell dictionaries. Reformed Orthography.
+
