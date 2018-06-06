@@ -9,6 +9,7 @@ pkgbase = cups-fgl-printers-git
 	makedepends = cups
 	depends = python
 	depends = python-pillow
+	depends = python-numpy
 	source = git+https://github.com/pretix/cups-fgl-printers.git
 	sha256sums = SKIP
 
