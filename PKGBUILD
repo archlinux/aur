@@ -2,7 +2,7 @@
 pkgbase=python-defcon
 pkgname=(python-defcon python2-defcon)
 _pkgname=defcon
-pkgver=0.3.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A set of UFO based objects for use in font editing applications.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'python-fonttools' 'python-ufolib'
 makedepends=('python-pip' 'python2-pip')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/py2.py3/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}-py2.py3-none-any.whl")
-sha256sums=('a6e27b5d938501514378c5b8adfc2315f738756deef7f1165b6eddf1c40ebb0a')
+sha256sums=('77b0becf55b544283bc451c5247cea7ad79f1ef813b1e65b9ef6946906db5543')
 
 package_python-defcon() {
   depends=('python' 'python-fonttools' 'python-ufolib')
