@@ -2,7 +2,7 @@
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
 # This PKGUILD it's based on the latest GitHub commit.
-# Pending work: man & changelog files generated automatically.
+# Pending work: man & changelog files generated automatically. 
 
 pkgname=eddie-ui-git
 pkgver=2.14.5
