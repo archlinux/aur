@@ -13,11 +13,11 @@ pkgver=20180130
 pkgrel=1
 pkgdesc='BitTorrent library written in C++ (git version)'
 url='https://rakshasa.github.io/rtorrent'
-license=('GPL')
+license=('GPL2')
 arch=('i686' 'x86_64' 'armv7h')
 depends=('openssl')
 makedepends=('git')
-conflicts=('libtorrent' 'libtorrent-git')
+conflicts=('libtorrent' 'libtorrent-git' 'libtorrent-ps')
 provides=('libtorrent')
 install=libtorrent-pyro.install
 
@@ -61,7 +61,6 @@ check() {
     cd "$srcdir/libtorrent"
     make check
 }
-
 
 package() {
     make -C "$srcdir/libtorrent" DESTDIR="$pkgdir" install
