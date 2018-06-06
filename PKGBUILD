@@ -2,7 +2,7 @@
 # Maintainer: raininja <dandenkijin@gmail.com>
 
 pkgname=slimjet
-pkgver=18.0.5.0
+pkgver=19.0.2.0
 pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ _channel=release
 source_i686=("${pkgname}-${pkgver}_i386.deb::http://www.slimjet.com/${_channel}/${pkgname}_i386.deb")
 source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjet.com/${_channel}/${pkgname}_amd64.deb")
 
-md5sums_i686=('fd3f04e4215ee2d49234565ec830b1e3')
-md5sums_x86_64=('bd430de2c77099e0ee6036acf2d47f63')
+md5sums_i686=('67505f6b2ff78d39f48db09603cdc284')
+md5sums_x86_64=('11e65e0a761a8df767143119a4be15fa')
 
 
 package() {
