@@ -2,7 +2,7 @@
 
 _npmname=vscode-css-languageserver-bin
 pkgname=vscode-css-languageserver-bin
-pkgver="1.1.0"
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Language server implementation for CSS"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha1sums=('82fefb0ee051ad4ae17d8000dcc7e297ff97ccdb')
+md5sums=('d5e0e16469b1897dcb50a318f35a6fbe')
 
 package() {
     cd "${srcdir}"
