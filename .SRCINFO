@@ -20,8 +20,8 @@ pkgbase = eddie-ui
 	conflicts = airvpn
 	conflicts = airvpn-beta-bin
 	conflicts = airvpn-git
-	source = git+https://github.com/AirVPN/Eddie.git
-	sha1sums = SKIP
+	source = https://github.com/AirVPN/Eddie/archive/v2.14.5.tar.gz
+	sha1sums = 54cb33f3f8a49a04cc6cfcd8304dc57f3727be5d
 
 pkgname = eddie-ui
 

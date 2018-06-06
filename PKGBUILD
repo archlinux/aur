@@ -19,8 +19,9 @@ makedepends=('cmake')
 provides=('eddie-ui')
 conflicts=('airvpn' 'airvpn-beta-bin' 'airvpn-git')
 install=eddie-ui.install
-source=('git+https://github.com/AirVPN/Eddie.git')
-sha1sums=('SKIP')
+#source=('git+https://github.com/AirVPN/Eddie.git')
+source=(https://github.com/AirVPN/Eddie/archive/v${pkgver}.tar.gz)
+sha1sums=('54cb33f3f8a49a04cc6cfcd8304dc57f3727be5d')
 
 case "$CARCH" in
     i686) _pkgarch="x86"
@@ -33,8 +34,8 @@ build() {
   export TERM=xterm # Fix Mono bug "Magic number is wrong".
 
   # Compile C# sources
-  cd "Eddie"
-  xbuild /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.sln
+  cd "Eddie-$pkgver"
+  xbuild /verbosity:minimal /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.sln
 
   # Compile C sources (Tray)
   cd src/UI.GTK.Linux.Tray
@@ -52,7 +53,7 @@ build() {
 }
 
 package() {
-  cd "Eddie"
+  cd "Eddie-$pkgver"
   install -Dm755 "src/App.Forms.Linux/bin/$_pkgarch/Release/App.Forms.Linux.exe" "$pkgdir/usr/lib/eddie-ui/Eddie-UI.exe"
   install -Dm644 "src/App.Forms.Linux/bin/$_pkgarch/Release/Lib.Common.dll" "$pkgdir/usr/lib/eddie-ui/Lib.Common.dll"
   install -Dm644 "src/App.Forms.Linux/bin/$_pkgarch/Release/Lib.Core.dll" "$pkgdir/usr/lib/eddie-ui/Lib.Core.dll"
