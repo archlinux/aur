@@ -19,7 +19,7 @@ build() {
 
 check() {
   cd black-$pkgver
-  python -m unittest tests/test_black.py
+  python -m tests.test_black
 }
 
 package() {
