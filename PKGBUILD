@@ -1,5 +1,5 @@
 pkgname=republicanywhere-bin
-pkgver=1.5.6
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="Republic Anywhere desktop client."
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=(libappindicator-gtk2)
 source=("http://files.republicwireless.com/public/apps/anywhere/debian/pool/main/r/republicanywhere/republicanywhere_${pkgver}_amd64.deb")
 deb="${source[@]##*/}"
 noextract=($deb)
-sha256sums=('b500d4d40e33cf50029809e04686301f0b82d8453d027a699b184f1cdba408eb')
+sha256sums=('1f9e94da22e619357cba7d4513b1ff5cdb7179d930bc26eb28b8c47fab6667d3')
 
 prepare() {
     ar p $deb data.tar.xz | tar xJ
