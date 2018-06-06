@@ -9,7 +9,7 @@ arch=('any')
 url="https://www.graylog.org/"
 license=(GPL)
 depends=('java-runtime-headless=8')
-optdepends=('elasticsearch' mongodb)
+optdepends=('elasticsearch5' mongodb)
 install=graylog.install
 backup=(
 	etc/graylog/server/server.conf
