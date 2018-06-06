@@ -3,6 +3,8 @@
 _opt_DKMS=1           # This can be toggled between installs
 _opt_PARALLEL=0       # 0 for SPEED without parallel port, 1 to enable parallel support
 
+# Todo: /dev/ttyPS* should be created dynamically instead of all at once
+
 # See /etc/perle-serial-setultrap.sh for persistent port modes
 
 # Perle Ultraport 1 2 4 8 8i 16
@@ -74,19 +76,22 @@ _opt_PARALLEL=0       # 0 for SPEED without parallel port, 1 to enable parallel 
 
 set -u
 pkgname='perle-serial'
-pkgver='3.9.0_14'
+#_pkgver='3.9.0-14'
+_pkgver='3.9.2-4'
+pkgver="${_pkgver//-/_}"
 pkgrel='1'
 pkgdesc='kernel module driver for Perle UltraPort SI Express PCI-RAS modem SPEED LE multi I/O serial parallel RS-232 422 485 port'
 arch=('i686' 'x86_64')
-url='http://downloads.comtrol.com/html/RPuPCI_drivers.htm'
+url='https://www.perle.com/downloads/mp_speedle.shtml'
 license=('GPL')
 depends=('awk')
 makedepends=('gzip' 'findutils' 'sed' 'diffutils' 'patch')
 backup=('etc/perle-serial-setultrap.sh')
 install="${pkgname}-install.sh"
-_srcdir="${pkgname}-${pkgver%%_*}"
-source=("https://www.perle.com//downloads/drivers/ultraport/linux/perle-serial-${pkgver//_/-}.tgz")
-sha256sums=('7ded341fe93f76fc5d607a3888ac0407e78c9165ad8fb297ec9e375269e72f8b')
+_srcdir="${pkgname}-${_pkgver%%-*}"
+source=("https://www.perle.com/downloads/drivers/ultraport/linux/perle-serial-${_pkgver}.tgz" '0000-kernel-4.11-signal_pending.patch')
+sha256sums=('d9d61a941ecfd2ff41d5450557eb9071d934497dbd10229e97c8f88b48cb9a58'
+            '691e0d8d348ab9f19f0398ff79e0d4780d5110e3dd11acf3261e3f73b2983ea1')
 
 _opt_SERIAL=1    # This is for bug testing dkms only. All cards have serial ports so this should always be enabled.
 
@@ -147,22 +152,32 @@ prepare() {
   sed -e "s|__DATE__|\"${_dt}\"|g" -e "s|__TIME__|\"${_tm}\"|g" -i 'pparport26/pparport_pc.c'
 
   # Improve install
+  #cp -p 'pserial/Makefile'{,.Arch}
+  #cp -p 'pparport26/Makefile'{,.Arch}
   sed -e 's:lib/:usr/lib/:g' \
-      -e '# Forgot to clean a few things' \
-      -e '/\*\.o\.cmd/ s:^.*$:& *.symvers *.order *.mod.c .*.ko.cmd .*.o.d\n\trm -rf .tmp_versions:g' \
+      -e '# Forgot to clean a few things and some new files for gcc8' \
+      -e '/\*\.o\.cmd/ s:^.*$:& *.symvers *.order *.mod.c .*.ko.cmd .*.o.d .cache.mk\n\trm -rf .tmp_versions:g' \
     -i 'pserial/Makefile' 'pparport26/Makefile'
+  ! test -s 'pserial/Makefile.Arch' || echo "${}"
+  ! test -s 'pparport26/Makefile.Arch' || echo "${}"
+
+  # Patch
+  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}
+  #diff -pNaru5 perle-serial-3.9.2{.orig-0000,} > '0000-kernel-4.11-signal_pending.patch'
+  patch -Nup1 -i "${srcdir}/0000-kernel-4.11-signal_pending.patch"
   set +u
 }
 
 build() {
   set -u
   cd "${_srcdir}"
-  if [ "${_opt_PARALLEL}" -ne 0 ]; then
+  # Always build both so we know when patches are needed
+  #if [ "${_opt_PARALLEL}" -ne 0 ]; then
     make -C 'pparport26' -s -j1
-  fi
-  if [ "${_opt_SERIAL}" -ne 0 ]; then
+  #fi
+  #if [ "${_opt_SERIAL}" -ne 0 ]; then
     make -C 'pserial' -s -j1 # too small for parallel make
-  fi
+  #fi
   set +u
 }
 
@@ -184,7 +199,7 @@ package() {
   fi
   if [ "${_opt_SERIAL}" -ne 0 ]; then
     make -C 'pserial' -s -j1 DESTDIR="${pkgdir}/" PERLE_DIR="${srcdir}/${_srcdir}" rpm_install
-    # Cat fight!
+    # Cat fight to add head and tail to existing file
     cat <(cat << EOF
 #!/usr/bin/sh
 
