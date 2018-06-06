@@ -1,6 +1,6 @@
 pkgbase = run-git
 	pkgdesc = Replace the current terminal with a graphical program
-	pkgver = 0.0.1.r1.0446d0c
+	pkgver = 0.0.1.r2.a2959fb
 	pkgrel = 1
 	url = https://gitlab.com/blevy/run
 	arch = i686
@@ -9,6 +9,9 @@ pkgbase = run-git
 	makedepends = git
 	makedepends = make
 	depends = glibc
+	optdepends = bash-completion: shell completion
+	optdepends = fish: shell completion
+	optdepends = zsh: shell completion
 	provides = run
 	source = run-git::git+https://gitlab.com/blevy/run.git
 	md5sums = SKIP
