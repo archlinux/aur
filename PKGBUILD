@@ -33,7 +33,7 @@ _localmodcfg=
 pkgbase=linux-gc
 _srcname=linux-4.17
 pkgver=4.17
-pkgrel=1
+pkgrel=2
 _pdsversion=098q
 arch=('x86_64')
 url="http://cchalpha.blogspot.co.uk/"
@@ -60,7 +60,7 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '8e76bd69e1f37a2698f4c460f9a465efc2171e6e6b3196c328b8f89bfdf63962'
+            '1da121e11032e99124e24ab42f5b97bf5c1883f468b40ce78a2144a2ebdc91bf'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
