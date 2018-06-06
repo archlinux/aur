@@ -11,16 +11,16 @@ makedepends=('cmake' 'gtk3' 'gtk2' 'git')
 _pkgbase=vala-panel-appmenu
 pkgname=appmenu-gtk-module-git
 _path=subprojects/appmenu-gtk-module
-pkgver=0.6.93
-pkgrel=2
+pkgver=0.6.94
+pkgrel=1
 pkgdesc="Gtk module for exporting menus"
 depends=('gtk3' 'gtk2')
 provides=(unity-gtk-module)
-url="https://github.com/rilian-la-te/vala-panel-appmenu"
+url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
 license=('LGPL3')
 
-source=("git://github.com/rilian-la-te/${_pkgbase}.git"
+source=("git://gitlab.com/vala-panel-project/${_pkgbase}.git"
 		80appmenu-gtk-module)
 sha256sums=('SKIP'
 			'4c006c4ea7b8556070ad6d35529d3a9e23da8033429e34d1824c25942d969fbc')
