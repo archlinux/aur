@@ -5,22 +5,21 @@ MINOR=4
 
 SOURCES = $(shell find . -name "*.c")
 
+CC?=$(CC)
+CXX?=$(CXX)
 SHARED_OBJS = $(SOURCES:.c=.shared.o)
 STATIC_OBJS = $(SOURCES:.c=.static.o)
 
-EXTRA_CFLAGS= $(CFLAGS)
-SHARED_CFLAGS= -Wall $(EXTRA_CFLAGS) -fPIC
+SHARED_CFLAGS+=-fPIC
 
-LDFLAGS= -Wl,-z,defs -Wl,--as-needed -Wl,--no-undefined
-EXTRA_LDFLAGS=
+LDFLAGS?= -Wl,-z,defs -Wl,--as-needed -Wl,--no-undefined
 LIBS=-lGL
-EXTRA_LIBS=
 
 libGLee.so.$(MAJOR).$(MINOR): $(SHARED_OBJS)
-	g++ $(LDFLAGS) $(EXTRA_LDFLAGS) -shared \
+	$(CXX) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -shared \
 		-Wl,-soname,libGLee.so.$(MAJOR) \
 		-o libGLee.so.$(MAJOR).$(MINOR) \
-		$+ -o $@ $(EXTRA_LIBS) $(LIBS)
+		$+ -o $@ $(LIBS)
 
 libGLee.so: libGLee.so.$(MAJOR).$(MINOR)
 	rm -f $@.$(MAJOR)
@@ -29,13 +28,13 @@ libGLee.so: libGLee.so.$(MAJOR).$(MINOR)
 	ln -s $@.$(MAJOR) $@
 
 %.shared.o: %.cpp
-	g++ -o $@ -c $+ $(SHARED_CFLAGS)
+	$(CXX) -o $@ -c $+ $(CFLAGS) $(CPPFLAGS) $(SHARED_CFLAGS)
 
 %.shared.o: %.c
-	gcc -o $@ -c $+ $(SHARED_CFLAGS)
+	$(CC) -o $@ -c $+ $(CFLAGS) $(CPPFLAGS) $(SHARED_CFLAGS)
 
 %.so : %.o
-	g++ $(LDFLAGS) $(EXTRA_LDFLAGS) -shared $^ -o $@
+	$(CXX) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -shared $^ -o $@
 
 clean:
 	rm -f $(SHARED_OBJS)

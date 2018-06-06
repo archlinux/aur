@@ -1,29 +1,28 @@
-# $Id$
-# Maintainer : speps <speps at aur dot archlinux dot org>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=glee
 pkgver=5.4.0
-pkgrel=3
-pkgdesc="Free cross-platform extension loading library for OpenGL"
+pkgrel=4
+pkgdesc='Free cross-platform extension loading library for OpenGL'
+url='http://elf-stone.com/glee.php'
 arch=('x86_64')
-url="http://elf-stone.com/glee.php"
 license=('custom:BSD')
 depends=('gcc-libs' 'libgl')
 makedepends=('mesa')
-#source=("http://elf-stone.com/downloads/GLee/GLee-$pkgver-src.tar.gz")
-md5sums=('0bd03db136dbc075488b6c6e83f326ae'
-         '937a48856486291070943488fa2824d0'
-         'b59e8d11402fb2ee6c4a92bf6916b3aa')
-_spkg=GLee-$pkgver-src.tar.gz
-source=("http://pkgs.fedoraproject.org/repo/pkgs/GLee/$_spkg/$md5sums/$_spkg"
-        glee.pc Makefile) # implement FS#32670 + fix TEXTREL for i686
+source=(http://elf-stone.com/downloads/GLee/GLee-${pkgver}-src.tar.gz
+        glee.pc
+        Makefile)
+sha512sums=('4481ba742242e192af9ce3ab522a34764c04551e761c00186478a447badc271740b6a5c8503cbd72b6202355ef7a73beaac1f59f9681611b5c04a864922326fa'
+            '84fd2e5923d808672c8220378e13e40d93a1f91a51a85a4fa44a8e571a7b0028eaa11ff69ba1c2e23323ed61247a33f9e3a2a3b0108d90ebf78274c39ef429c8'
+            '98271cd1a4b034c664ba60a70828fc2fded66218e0839509fbd9d7d69c0e4bd8f01014f2fec87c8428006204a0e693b11d0b752181045dadd90e5de1cb13cf74')
 
 build() {
   make
 }
 
 package() {
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="${pkgdir}" install
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
