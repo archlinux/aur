@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Cozy Desktop
+Comment=Save them safely in your open source personal cloud, access them anywhere, anytime with the mobile application and share them with the world or just your friends and colleagues. You can host your own Cozy Cloud, and or use the hosting services. Your freedom to chose is why you can trust us.
+Exec=/usr/bin/cozy-desktop
+Terminal=false
+Type=Application
+Icon=cozy-desktop
+StartupNotify=true
+Categories=Network;FileTransfer;
