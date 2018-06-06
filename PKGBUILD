@@ -9,7 +9,7 @@ _commit=HEAD
 _branch=feature-bind
 
 pkgname=rtorrent-pyro-git
-pkgver=20180130
+pkgver=20180605
 pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches"
 url="https://github.com/pyroscope/rtorrent-ps"
