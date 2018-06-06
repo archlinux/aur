@@ -10,7 +10,8 @@ arch=('any')
 license=('custom: Simplified BSD')
 depends=('python' 'python-setuptools' 'i3status')
 optdepends=('i3status: for some of the functionality'
-            'acpi: for some of the battery related modules')
+            'acpi: for some of the battery related modules'
+            'pacman-contrib: for the arch_updates module')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/ultrabug/py3status/archive/$pkgver.tar.gz")
 sha256sums=('bf1ffdb1ef408d46c819651356e65ec250d50fef7332d0768927daa4688e39d4')
 
