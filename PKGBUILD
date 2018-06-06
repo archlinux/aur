@@ -6,7 +6,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=203.0.0
+pkgver=204.0.0
 pkgrel=1
 pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform (gcloud), plus Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
@@ -29,7 +29,7 @@ source=(
   "profile.sh"
 )
 sha256sums=(
-  '0aa6958545a9ce7e56a161ae8e0cbcbacdf7a749845ed3e531f5a8ea2eb2aab4'
+  '276984a44a2a9dc1af5d3c859a1295897fd8cfc911738874daf007ab46143da5'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692'
 )
 
