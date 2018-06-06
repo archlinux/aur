@@ -1,8 +1,9 @@
---- ecos-python-2.0.4-orig/setup.py	2015-09-10 11:33:19.000000000 -0400
-+++ ecos-python-2.0.4/setup.py	2017-01-20 10:35:13.330569455 -0500
+diff -urN ecos-python-2.0.7rc2-orig/setup.py ecos-python-2.0.7rc2/setup.py
+--- ecos-python-2.0.7rc2-orig/setup.py	2018-05-23 22:16:42.967677526 -0400
++++ ecos-python-2.0.7rc2/setup.py	2018-05-23 22:17:41.981221901 -0400
 @@ -9,7 +9,7 @@
+ from glob import glob
  from platform import system
- import numpy
  
 -lib = []
 +lib = ['ecos']
@@ -13,7 +14,7 @@
                          ('DLONG', None),
                          ('LDL_LONG', None),
                          ('CTRLC', 1)],
--                    include_dirs = ['ecos/include', numpy.get_include(),
+-                    include_dirs = ['ecos/include',
 -                        'ecos/external/amd/include',
 -                        'ecos/external/ldl/include',
 -                        'ecos/external/SuiteSparse_config'],
@@ -32,8 +33,8 @@
 -                        'ecos/src/wright_omega.c'
 -                    ] + glob('ecos/external/amd/src/*.c')
 -                      + glob('ecos/ecos_bb/*.c'))       # glob bb source files
-+                    include_dirs = ['/usr/include/ecos/', numpy.get_include()],
++                    include_dirs = ['/usr/include/ecos'],
 +                    sources = ['src/ecosmodule.c'])
  
- setup(
-     name = 'ecos',
+ def set_builtin(name, value):
+     if isinstance(__builtins__, dict):
