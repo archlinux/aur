@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Sebastian Nowicki <sebnow@gmail.com>
 # Contributor: Devin Cofer <ranguvar{AT]archlinux[DOT}us>
@@ -11,8 +11,8 @@
 # Contributor: Ruben Van Boxem <vanboxem.ruben@gmail.com>
 
 pkgname=('llvm50' 'llvm50-libs' 'clang50')
-pkgver=5.0.1
-pkgrel=5
+pkgver=5.0.2
+pkgrel=1
 _prefix="/usr/lib/llvm-5.0"
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
@@ -20,23 +20,20 @@ license=('custom:University of Illinois/NCSA Open Source License')
 makedepends=('cmake' 'libffi' 'python2' 'python-sphinx' 'libedit' 'swig' 'icu59')
 makedepends_x86_64=('gcc-multilib')
 options=('staticlibs')
-source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
-        https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz{,.sig}
-        https://releases.llvm.org/$pkgver/compiler-rt-$pkgver.src.tar.xz{,.sig}
+source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz
+        https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz
+        https://releases.llvm.org/$pkgver/compiler-rt-$pkgver.src.tar.xz
         0001-GCC-compatibility-Ignore-the-fno-plt-flag.patch
         0002-Enable-SSP-and-PIE-by-default.patch
-        disable-llvm-symbolizer-test.patch)
-sha256sums=('5fa7489fc0225b11821cab0362f5813a05f2bcf2533e8a4ea9c9c860168807b0'
-            'SKIP'
-            '135f6c9b0cd2da1aff2250e065946258eb699777888df39ca5a5b4fe5e23d0ff'
-            'SKIP'
-            '4edd1417f457a9b3f0eb88082530490edf3cf6a7335cdce8ecbc5d3e16a895da'
-            'SKIP'
+        disable-llvm-symbolizer-test.patch
+        gcc-build-fix.patch)
+sha256sums=('d522eda97835a9c75f0b88ddc81437e5edbb87dc2740686cb8647763855c2b3c'
+            'fa9ce9724abdb68f166deea0af1f71ca0dfa9af8f7e1261f2cae63c280282800'
+            '3efe9ddf3f69e0c0a45cde57ee93911f36f3ab5f2a7f6ab8c8efb3db9b24ed46'
             'a1ba7fb859ac157c4b4342435cd656e29b1e1d9bddcb8ae0158a91c0a8ba6203'
             '186f2d10b013395f2dd6e1fd3baf4961a2e40c403f115517c9b253682934f50f'
-            '6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359')
-validpgpkeys=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D'
-              '11E521D646982372EB577A1F8F0871F202119294')
+            '6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359'
+            '2e707016fef45434f48c06326c968c11e08445eeb37c53cf55ac592c08262577')
 
 prepare() {
   cd "$srcdir/llvm-$pkgver.src"
@@ -52,12 +49,13 @@ prepare() {
   # Enable SSP and PIE by default
   patch -Np1 -d tools/clang <../0001-GCC-compatibility-Ignore-the-fno-plt-flag.patch
   patch -Np1 -d tools/clang <../0002-Enable-SSP-and-PIE-by-default.patch
+  patch -Np1 -i ../gcc-build-fix.patch
 }
 
 build() {
   cd "$srcdir/llvm-$pkgver.src/build"
 
-  cmake \
+  cmake .. -G 'Unix Makefiles' \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="${_prefix}" \
     -DLLVM_BUILD_LLVM_DYLIB=ON \
@@ -70,11 +68,10 @@ build() {
     -DCLANG_INSTALL_SCANBUILD=OFF \
     -DCLANG_INSTALL_SCANVIEW=OFF \
     -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
-    -DLLVM_BINUTILS_INCDIR=/usr/include \
-    ..
+    -DLLVM_BINUTILS_INCDIR=/usr/include 
 
-  make
-  make ocaml_doc
+  make all
+  make ocaml_all
 
   # Disable automatic installation of components that go into subpackages
   sed -i '/clang\/cmake_install.cmake/d' tools/cmake_install.cmake
@@ -121,8 +118,9 @@ package_llvm50-libs() {
     "$srcdir"/LLVMgold.so \
     "${pkgdir}${_prefix}/lib/"
   
-  install -d $pkgdir/usr/lib
-  ln -s "${_prefix}"/lib/lib{LLVM,LTO}*.so* $pkgdir/usr/lib
+  install -d $pkgdir/usr/libo
+  cd ${pkgdir}${_prefix}/lib/
+  ln -s lib{LLVM,LTO}*.so* $pkgdir/usr/lib
   rm $pkgdir/usr/lib/lib{LLVM,LTO}.so
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
@@ -148,5 +146,9 @@ package_clang50() {
   for f in *; do
     ln -f -s "${_prefix}/bin/$f" "$pkgdir/usr/bin/${f%-5.0}-5.0"
   done
+  
+  cd ../lib
+  ln -s libclang*.so* ${pkgdir}/usr/lib
+  rm ${pkgdir}/usr/lib/libclang.so
 }
 # vim:set ts=2 sw=2 et:
