@@ -2,16 +2,15 @@
 pkgname=cliqz
 _pkgname=browser-f
 pkgver=1.20.1
-pkgrel=1
+pkgrel=2
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
 license=(MPL2)
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
-         nss hunspell sqlite ttf-font libpulse libvpx icu libevent libpng libjpeg-turbo)
+depends=(gtk2 gtk3 libxt startup-notification dbus-glib nss hunspell libvpx libevent)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm libnotify gtk2 wget)
+             autoconf2.13 rust clang llvm libnotify gtk2 gtk3 wget)
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
 sha256sums=('58bfae2ce2f5e519ad07c57eaef9993250ee8afe53ae0c3f283e4d0cf7cf8e64')
@@ -61,13 +60,11 @@ END
 # Archlinux specific additions
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --prefix=/usr
-ac_add_options --disable-tests
 ac_add_options --enable-gold
 ac_add_options --enable-pie
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize="-O2"
 ac_add_options --enable-rust-simd
-ac_add_options --enable-default-toolkit=cairo-gtk3
 
 # Speed up buildtime (thanks bm456)
 ac_add_options --disable-debug
@@ -81,10 +78,10 @@ ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-libvpx
-ac_add_options --with-system-libevent
-ac_add_options --with-system-png
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-libevent
+ac_add_options --with-system-png
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
@@ -94,6 +91,9 @@ ac_add_options --enable-system-ffi
 ac_add_options --enable-startup-notification
 ac_add_options --disable-updater
 END
+
+  # Symbols are build only for windows. Have them back now
+  sed -i '/^.\/mach build$/ a ./mach buildsymbols' ../magic_build_and_package.sh
 }
 
 build() {
@@ -102,6 +102,9 @@ build() {
   export CQZ_RELEASE_CHANNEL=release
   export CQZ_VERSION=$pkgver
   export CQZ_BUILD_ID="$_cqzbuildid"
+
+  # Uncomment the following line to have a german build
+  # export CQZ_BUILD_DE_LOCALIZATION=1
 
   ./magic_build_and_package.sh
 }
