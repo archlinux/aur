@@ -1,10 +1,10 @@
-# Maintainer: Jonathan Steel <jsteel at aur.archlinux.org>
+# Maintainer: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=gtk-chtheme
 pkgver=0.3.1
-pkgrel=8
+pkgrel=9
 pkgdesc="A little program to change your gtk+ 2.0 theme"
 arch=('x86_64')
 license=('GPL')
@@ -14,7 +14,7 @@ source=(http://plasmasturm.org/programs/$pkgname/$pkgname-$pkgver.tar.bz2)
 md5sums=('f688053bf26dd6c4f1cd0bf2ee33de2a')
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   # Fix xdg compliancy
   sed -i 's|-DGTK.*||' Makefile
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
 }
