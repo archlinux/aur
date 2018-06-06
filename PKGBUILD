@@ -1,15 +1,16 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='freedns-maintain-ip'
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="DNS record updater for freedns.afraid.org domains written in bash"
 arch=('any')
 url='http://eomanis.mooo.com/permshare/freedns-maintain-ip/index.xhtml'
 license=('GPL3')
-depends=('bash' 'grep' 'sed' 'miniupnpc' 'wget' 'bind-tools' 'coreutils' 'iproute2')
+depends=('bash>=4.4' 'grep' 'sed' 'wget' 'bind-tools' 'coreutils' 'iproute2' 'bc')
+optdepends=('miniupnpc: Detection of public IPv4 address using UPNP')
 source=("http://eomanis.mooo.com/permshare/freedns-maintain-ip/freedns-maintain-ip-${pkgver}.tar.gz")
-sha256sums=('33c44f62ca13a9eddb380e50fa056f53a8bb01463b1a176498db5f3a1d445d1f')
+sha256sums=('0800eed310f5320017899ea2b2a03cb639ea26ad5daf919bdc977eb291219454')
 
 package() {
     
