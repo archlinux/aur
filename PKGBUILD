@@ -16,6 +16,6 @@ sha256sums=('SKIP')
 package() {
 	cd mkinitcpio-hostname/
 
-	make DESTDIR="${pkgver}" install
+	make DESTDIR="${pkgdir}" install
 }
 
