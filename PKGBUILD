@@ -11,16 +11,16 @@ makedepends=('cmake' 'glib2' 'git')
 _pkgbase=vala-panel-appmenu
 pkgname=vala-panel-appmenu-registrar-git
 _path=subprojects/registrar
-pkgver=0.6.93.r0.g553ce49
+pkgver=0.6.94
 pkgrel=1
 pkgdesc="Small utility to hold DBusMenu menus"
 provides=(vala-panel-appmenu-registrar)
 depends=('glib2')
-url="https://github.com/rilian-la-te/vala-panel-appmenu"
+url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
 license=('LGPL3')
 
-source=("git://github.com/rilian-la-te/${_pkgbase}.git")
+source=("git://gitlab.com/vala-panel-project/${_pkgbase}.git")
 sha256sums=('SKIP')
 
 pkgver() {
