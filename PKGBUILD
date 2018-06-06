@@ -5,7 +5,7 @@
 
 pkgname=phoronix-test-suite
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=('any')
 license=('GPL3')
@@ -30,6 +30,6 @@ package() {
 
   rm -r "${pkgdir}"/usr/share/phoronix-test-suite/deploy
 
-  sed -i "s#--noconfirm#--noconfirm --asdeps#" pts-core/external-test-dependencies/scripts/install-arch-packages.sh
+  sed -i "s#--noconfirm#--noconfirm --asdeps#" ${pkgdir}/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/scripts/install-arch-packages.sh
   sed -e "s/^export PTS_DIR=.*/export PTS_DIR=\/usr\/share\/phoronix-test-suite/g" -i ${pkgdir}/usr/bin/phoronix-test-suite
 }
