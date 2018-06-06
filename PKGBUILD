@@ -1,50 +1,50 @@
-# Contributor: Chris Dunder <echo Y2R1bmRlckBnbWFpbC5jb20K | base64
-# -d> Contributor: M Rawash <mrawash@gmail.com> Contributor: olvar
-# <beren dot olvar (at) gmail dot com> Contributor: Andrew Antle
-# <andrew dot antle at gmail dot com> Contributor: joyfulgirl
-# <joyfulgirl (at) archlinux.us> Contributor: Jonathan Friedman
-# <jonf@gojon.com> Maintainer: Stefan Husmann
-# <stefan-husmann@t-online.de>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Contributor: Chris Dunder <cdunder@gmail.com>
+# Contributor: M Rawash <mrawash@gmail.com>
+# Contributor: olvar <beren.olvar@gmail.com>
+# Contributor: Andrew Antle <andrew.antle@gmail.com>
+# Contributor: joyfulgirl <joyfulgirl@archlinux.us>
+# Contributor: Jonathan Friedman <jonf@gojon.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: sidereus <francesco.serafin.3@gmail.com>
 
 pkgname=stumpwm
 pkgver=1.0.0
-pkgrel=6
-pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
-arch=('i686' 'x86_64')
-url="https://stumpwm.github.io"
+pkgrel=7
+pkgdesc='Tiling, keyboard-driven window manager written in Common Lisp'
+arch=('x86_64')
+url='https://stumpwm.github.io/'
 license=('GPL2')
-provides=('stumpwm')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('084187569b27c669f10922aaaad31c0dd7d935c03048140cd19e6f0ea012788b')
+makedepends=('cl-asdf' 'cl-ppcre' 'clx-git' 'common-lisp' 'gendesk')
+optdepends=('xorg-xprop: for stumpish, the StumpWM Interactive Shell'
+            'rlwrap: command completion and history in stumpish'
+            'emacs: edit and eval stumpwm code with M-x stumpwm-mode'
+            'alsa-utils: control the volume with amixer.lisp'
+            'aumix: control the volume with aumix.lisp'
+            'mpd: control mpd with mpd.lisp'
+            'surfraw: surf the internet with surfraw.lisp'
+            'clx-truetype: Xgt fonts with ttf-fonts.lisp')
+options=('!strip' '!makeflags')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v1.0.0.tar.gz" stumpwm.desktop)
-md5sums=('40b3def66afc2aacff818936e06ce74c'
-         'b5721de9b1cbdb4548d11570a512c5d4')
-
-makedepends=('common-lisp' 'cl-asdf' 'clx-git' 'cl-ppcre')
-optdepends=('xorg-xprop: for stumpish (StumpWM Interactive Shell)'
-            'rlwrap: for stumpish completion and history'
-            'emacs: Edit and eval stumpwm code with M-x stumpwm-mode'
-            'alsa-utils: for amixer.lisp (control audio volume)'
-            'aumix: for aumix.lisp (control audio volume)'
-            'mpd: for mpd.lisp (control the mpd)'
-            'surfraw: for surfraw.lisp (surf the Internet)'
-            'clx-truetype: for ttf-fonts.lisp (Xft fonts)')
-
-# Binary will not run other
-options=('!strip' '!makeflags')  # Thanks to sidereus for pointing this out
+prepare() {
+  gendesk -f -n -wm --pkgname="$pkgname" --name=StumpWM
+  cd "$pkgname-$pkgver"
+  ./autogen.sh
+}
 
 build() {
-  cd ${pkgname}-${pkgver}
-  ./autogen.sh
-  ./configure  --prefix=/usr --with-module-dir=/usr/share/stumpwm/contrib
-  make
-} 
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr --with-module-dir=/usr/share/stumpwm/contrib
+  make -s
+}
 
 package() {
-  cd ${pkgname}-${pkgver}
-
-  make destdir="$pkgdir/" install
-
-  install -Dm 644 sample-stumpwmrc.lisp \
-	  ${pkgdir}/usr/share/${_pkgname}/stumpwmrc.sample
-  install -Dm644 "$srcdir"/stumpwm.desktop "$pkgdir"/usr/share/xsessions/stumpwm.desktop
+  destdir="$pkgdir" make -C "$pkgname-$pkgver" install
+  install -Dm644 stumpwm.desktop "$pkgdir/usr/share/xsessions/stumpwm.desktop"
+  install -Dm644 "$pkgname-$pkgver/sample-stumpwmrc.lisp" \
+    "$pkgdir/usr/share/doc/$pkgname/stumpwmrc.example"
 }
+
+# vim: ts=2 sw=2 et:
