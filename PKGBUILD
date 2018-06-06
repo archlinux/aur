@@ -1,7 +1,7 @@
 pkgname=litecoin-bin
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://www.litecoin.org/"
 license=('MIT')
 pkgdesc="Peer-to-peer digital currency, official binary release (includes litecoin-qt and litecoind)"
@@ -9,10 +9,10 @@ install=litecoin-bin.install
 
 if [ ${CARCH} == 'x86_64' ]; then
   _pkg_arch=x86_64
-  sha256sums=(77062f7bad781dd6667854b3c094dbf51094b33405c6cd25c36d07e0dd5e92e5)
+  sha256sums=(5a1dfaea8d70f4d0d61190061631d6ad40cb3662e7718660000c43f564c348e6)
 else
   _pkg_arch=i686-pc
-  sha256sums=(8559c17d4b7ca77c2b8844d9013cf4a7e575515263deae06c64f4c5da1486a12)
+  sha256sums=(edda17bdbcba596149cd94d9aa58e5d7975955a94ca9eac30892cbdeaea40ea8)
 fi
 
 source=(
@@ -22,10 +22,9 @@ source=(
 )
 
 sha256sums+=(
-  'addc85926f530590de2e3b2611503a9a8ba0d0614977ce8559ef115d5750e320'
-  'fc2fa6b980a34762a8135168a4446887223ae60b24da54253893ff517992ad94'
+  addc85926f530590de2e3b2611503a9a8ba0d0614977ce8559ef115d5750e320
+  fc2fa6b980a34762a8135168a4446887223ae60b24da54253893ff517992ad94
 )
-
 
 options=('!strip')
 depends=(
