@@ -5,7 +5,7 @@ _name='xdis'
 pkgbase="python-${_name}"
 pkgname=("python-${_name}" "python2-${_name}")
 pkgver=3.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Python cross-version byte-code disassembler and marshal routines."
 arch=('any')
 url="https://github.com/rocky/python-xdis/"
@@ -28,4 +28,5 @@ package_python-xdis() {
 package_python2-xdis() {
     cd "$srcdir/$_name-$pkgver"
     python2 setup.py install --root="$pkgdir"
+    mv "$pkgdir/usr/bin/pydisasm" "$pkgdir/usr/bin/pydisasm2"
 }
