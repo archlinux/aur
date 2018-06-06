@@ -4,6 +4,7 @@ pkgver=3.7.8
 pkgrel=1
 pkgdesc="TypoPRO fonts from http://typopro.org/"
 arch=('any')
+url="http://typopro.org/"
 license=('MIT' 'Apache' 'OFL' 'CC0')
 depends=(fontconfig xorg-font-utils)
 install=$pkgname.install
