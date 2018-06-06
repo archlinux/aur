@@ -7,10 +7,10 @@
 #_qmake_args="CONFIG+=debug"
 _building=true
 pkgname=qtcreator-prerelease
-_pkgvermajmin=4.6
+_pkgvermajmin=4.7
 pkgver=${_pkgvermajmin}.0
-_verpostfix=""
-pkgrel=4
+_verpostfix="beta1"
+pkgrel=1
 _pkgver=${pkgver}
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
@@ -25,6 +25,7 @@ license=('GPL')
 provides=('qtcreator' 'qbs')
 conflicts=('qtcreator' 'qbs')
 depends=('python2-beautifulsoup4' 'qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'clang' 'llvm')
+install=qtcreator-prerelease.install
 optdepends=('qbs'
             'qt5-doc: integrated Qt documentation'
             'qt5-examples: welcome page examples'
@@ -38,7 +39,7 @@ optdepends=('qbs'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt5-base')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha256sums=('36e6a9146fbd07f045ea19301176c66f8234afd42bae0a7a17c91e1832fc4882')
+sha256sums=('1b4964a59c01ed4401af420be49bda0aa2a8292c893a1f22e2204dea3f6bcd74')
 
 _qmake_cmd=qmake
 _tmp_dir=$(mktemp -d)
@@ -53,7 +54,6 @@ fi
 prepare() {
   cd ${srcdir}/${_filename}
   sed -i '/LLVM_INCLUDEPATH/d' src/tools/clangbackend/clangbackend.pro
-  patch -p1 < ${startdir}/0001-Enable-high-dpi-on-Linux.patch
 }
 
 build() {

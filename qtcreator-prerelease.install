@@ -1,0 +1,36 @@
+## arg 1:  the new package version
+pre_install() {
+    echo ""
+}
+
+## arg 1:  the new package version
+post_install() {
+    echo ""
+    echo "High DPI scaling is disabled by default upstream"
+    echo "This can be overridden by setting Core/EnableHighDpiScaling to true in your QtCreator settings"
+    echo ""
+}
+#post_install
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+    echo ""
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    echo ""
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    echo ""
+}
+#pre_remove
+
+## arg 1:  the old package version
+post_remove() {
+    echo ""
+}
