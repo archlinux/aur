@@ -1,9 +1,8 @@
 # Maintainer: Eddie.website <maintainer@eddie.website>
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
-# This current PKGUILD it's based on the latest GitHub commit.
-# Soon, it will be based on the latest STABLE GitHub version. 
-# The package "eddie-ui-git" is based on the latest GitHub commit (beta).
+# This current PKGUILD it's based on the latest stable available on GitHub.
+# Another paackage, "eddie-ui-git", is based on the latest GitHub commit (beta).
 # Pending work: man & changelog files generated automatically.
 
 pkgname=eddie-ui
