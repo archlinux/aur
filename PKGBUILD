@@ -4,8 +4,8 @@
 _name='xdis'
 pkgbase="python-${_name}"
 pkgname=("python-${_name}" "python2-${_name}")
-pkgver=3.8.2
-pkgrel=3
+pkgver=3.8.3
+pkgrel=1
 pkgdesc="Python cross-version byte-code disassembler and marshal routines."
 arch=('any')
 url="https://github.com/rocky/python-xdis/"
@@ -13,7 +13,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 depends=('python-click')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('e8548be5a386f51a6a0295e033984869ed71191879adc3d5aed17cd4a030ad8f')
+sha256sums=('edf8188d12fb1f29246b2f9232bcc0e361ed5ad6845f312178e8060e14ffc78d')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
