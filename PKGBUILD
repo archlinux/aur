@@ -1,7 +1,7 @@
 # Maintainer: Jon Eyolfson <jon@eyl.io>
 
 pkgname=emacs-async
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="A module for doing asynchronous processing in Emacs"
 url="https://github.com/jwiegley/emacs-async"
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('emacs-async')
 conflicts=('emacs-async')
 source=("https://github.com/jwiegley/emacs-async/archive/v${pkgver}.tar.gz")
-sha256sums=('fb1e87fe5a53fb4d92069d031ca17ba2122240e63b6c351ec6b488b421d1382b')
+sha256sums=('eadd291e75dd05aa1a0c7199ecc936b8c18b7981220612cb018f4c2ad0ba0c9d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
