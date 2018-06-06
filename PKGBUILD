@@ -63,14 +63,14 @@ _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
 pkgver=0.6.94
-pkgrel=1
+pkgrel=2
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
 license=('LGPL3')
 
-source=("git://gitlab.com/vala-panel-project/${_pkgbase}.git"
-        "git://gitlab.com/vala-panel-project/${_cmakename}.git")
+source=("git+https://gitlab.com/vala-panel-project/${_pkgbase}.git"
+        "git+https://gitlab.com/vala-panel-project/${_cmakename}.git")
 sha256sums=('SKIP'
             'SKIP')
 
