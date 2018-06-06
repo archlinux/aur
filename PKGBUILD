@@ -8,7 +8,7 @@
 pkgname=eddie-ui
 pkgver=2.14.5
 pkgrel=1
-pkgdesc='Eddie - OpenVPN UI'
+pkgdesc='Eddie - OpenVPN UI - stable version'
 arch=('i686' 'x86_64')
 url=https://eddie.website
 license=(GPL3)
