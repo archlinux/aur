@@ -1,13 +1,13 @@
 pkgbase = freeme2-svn
 	pkgdesc = It strips wm-drm protection from wmv/asf/wma files as well as video/audio streams.
 	pkgver = 80
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/freeme2/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = subversion
-	depends = openssl
+	depends = openssl-1.0
 	provides = freeme2
 	conflicts = freeme2
 	source = freeme2::svn+https://svn.code.sf.net/p/freeme2/code/
