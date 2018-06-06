@@ -1,10 +1,10 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=rollup
-pkgver=0.57.1
-pkgrel=2
+pkgver=0.60.0
+pkgrel=1
 pkgdesc="Next-generation ES6 module bundler"
 arch=(any)
-url="https://github.com/rollup/rollup"
+url="https://rollupjs.org/"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
@@ -22,4 +22,4 @@ package() {
   find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
-sha256sums=('c7812bcf4fffabbe37715e988027a9d12e97e3a367df3cabe56ac04fc54e9661')
+sha256sums=('354dec374fd1c80b87cea456522ff2271b3867231f046a19b135998cebf7aa53')
