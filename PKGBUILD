@@ -3,35 +3,32 @@
 
 pkgname=libots
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Open Text Summarizer'
 url='https://libots.sourceforge.net/'
 arch=('x86_64')
 license=('GPL')
 depends=('libxml2' 'glib2' 'popt')
-# disappeared from sourceforge as of 2017-03-01, unclear what new upstream should be
-source=("https://downloads.sourceforge.net/sourceforge/${pkgname}/ots-${pkgver}.tar.gz")
+source=("https://sources.archlinux.org/other/packages/libots/ots-$pkgver.tar.gz")
 sha1sums=('4468bc06470734848c2369a37c84f76ca4ac3f9a')
 
-options=('!makeflags')
-
 prepare() {
-	cd "${srcdir}/ots-${pkgver}"
-	touch gtk-doc.make
-	sed 's/en.xml$//' -i dic/Makefile.am
-	libtoolize --force
-	aclocal
-	automake --add-missing --force
-	autoconf
+  cd ots-${pkgver}
+  touch gtk-doc.make
+  sed 's/en.xml$//' -i dic/Makefile.am
+  libtoolize --force
+  aclocal
+  automake --add-missing --force
+  autoconf
 }
 
 build() {
-	cd "${srcdir}/ots-${pkgver}"
-	./configure --prefix=/usr
-	make
+  cd ots-${pkgver}
+  ./configure --prefix=/usr
+  make -j1
 }
 
 package() {
-	cd "${srcdir}/ots-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+  cd ots-${pkgver}
+  make DESTDIR="${pkgdir}" install
 }
