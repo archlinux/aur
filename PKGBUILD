@@ -2,13 +2,13 @@
 # Contributor: Andrew Rabert <draje@nullsum.net>
 
 pkgname=emby-server-dev-unlocked
-pkgver=3.4.1.8
+pkgver=3.4.1.11
 pkgrel=1
 pkgdesc='Latest development version of Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
 url='https://github.com/nicolahinssen/emby-dev-unlocked'
 license=('GPL2')
-makedepends=('git')
+makedepends=('git' 'msbuild-stable')
 depends=('ffmpeg' 'imagemagick' 'mono' 'referenceassemblies-pcl' 'sqlite')
 install='emby-server.install'
 provides=('emby-server')
@@ -45,7 +45,7 @@ build() {
   patch -N -p1 -r - Emby.Server.Implementations/Security/PluginSecurityManager.cs < \
       ../emby-dev-unlocked/patches/PluginSecurityManager.cs.patch
 
-  xbuild \
+  msbuild \
     /p:Configuration='Release Mono' \
     /p:Platform='Any CPU' \
     /p:OutputPath="${srcdir}/build" \
