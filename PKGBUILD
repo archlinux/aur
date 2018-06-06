@@ -118,7 +118,7 @@ package_llvm50-libs() {
     "$srcdir"/LLVMgold.so \
     "${pkgdir}${_prefix}/lib/"
   
-  install -d $pkgdir/usr/libo
+  install -d $pkgdir/usr/lib
   cd ${pkgdir}${_prefix}/lib/
   ln -s lib{LLVM,LTO}*.so* $pkgdir/usr/lib
   rm $pkgdir/usr/lib/lib{LLVM,LTO}.so
