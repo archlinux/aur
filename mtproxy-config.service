@@ -1,5 +1,7 @@
 [Unit]
 Description=Updates Telegram configuration
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=oneshot
