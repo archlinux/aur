@@ -12,7 +12,7 @@ _pkgbase=vala-panel-appmenu
 pkgname=vala-panel-appmenu-jayatana-git
 _path=subprojects/jayatana
 pkgver=0.6.94
-pkgrel=1
+pkgrel=2
 pkgdesc="AppMenu module for Java Applications. Contains Bugs!"
 provides=(jayatana)
 depends=('glib2' 'libdbusmenu-glib' 'libxkbcommon' 'java-environment>=7')
@@ -20,7 +20,7 @@ url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
 license=('MIT')
 
-source=("git://gitlab.com/vala-panel-project/${_pkgbase}.git")
+source=("git+https://gitlab.com/vala-panel-project/${_pkgbase}.git")
 sha256sums=('SKIP')
 
 pkgver() {
