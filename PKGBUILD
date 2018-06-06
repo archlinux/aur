@@ -12,7 +12,7 @@ _remove_bundled_jre=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=182.2757.3
+_buildver=182.2949.4
 _veryear=2018
 _verrelease=2
 _verextra=
