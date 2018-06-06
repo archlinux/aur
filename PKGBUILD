@@ -3,14 +3,12 @@
 
 pkgname=execline
 pkgver=2.5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A (non-interactive) scripting language, like sh"
 arch=('i686' 'x86_64')
 url="http://skarnet.org/software/${pkgname}/"
 license=('ISC')
 depends=('skalibs')
-#/usr/bin/import conflicts
-conflicts=('imagemagick')
 source=("http://skarnet.org/software/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('f6993094766652041c21fde9c07ef53a3cd4b93a64123d9578fb4997a2cefca1')
 
