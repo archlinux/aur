@@ -1,23 +1,23 @@
 pkgbase = emane
 	pkgdesc = Extendable Mobile Ad-hoc Network Emulator
-	pkgver = 0.9.2_r1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = http://cs.itd.nrl.navy.mil/work/emane/index.php
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = python2
-	makedepends = perl
-	depends = ace
+	makedepends = python
+	makedepends = protobuf
 	depends = libxml2
 	depends = libpcap
-	optdepends = python2: Python bindings
-	optdepends = perl: Perl bindings
+	depends = pcre
+	depends = libutil-linux
+	depends = python-protobuf
+	depends = python-lxml
+	optdepends = python: Python bindings
 	options = !libtool
-	source = http://downloads.pf.itd.nrl.navy.mil/emane/0.9.2-r1/emane-0.9.2-release-1.src.tar.gz
-	source = c++11.patch
-	md5sums = bac0267c492694bd545ef833d0d1f44d
-	md5sums = 668032102fee4b53315dc6bae4341bcc
+	source = https://github.com/adjacentlink/emane/archive/v1.2.2.tar.gz
+	md5sums = 771d48679336c1e8373527c934cbbf88
 
 pkgname = emane
 

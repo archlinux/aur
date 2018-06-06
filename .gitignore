@@ -1,3 +1,4 @@
 /pkg/
 /src/
-emane-*.tar.*
+/emane-*.pkg.*
+/v*.tar.gz

@@ -1,34 +1,27 @@
 # Maintainer: Tom Wambold <tom5760@gmail.com>
 pkgname=emane
-pkgver=0.9.2_r1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Extendable Mobile Ad-hoc Network Emulator"
 arch=('i686' 'x86_64')
 url="http://cs.itd.nrl.navy.mil/work/emane/index.php"
 license=('BSD')
 options=(!libtool)
-depends=(ace libxml2 libpcap)
-optdepends=('python2: Python bindings'
-            'perl: Perl bindings')
-makedepends=(python2 perl)
-source=('http://downloads.pf.itd.nrl.navy.mil/emane/0.9.2-r1/emane-0.9.2-release-1.src.tar.gz'
-        'c++11.patch')
-md5sums=('bac0267c492694bd545ef833d0d1f44d'
-         '668032102fee4b53315dc6bae4341bcc')
+depends=(libxml2 libpcap pcre libutil-linux python-protobuf python-lxml)
+optdepends=('python: Python bindings')
+makedepends=(python protobuf)
+source=("https://github.com/adjacentlink/emane/archive/v$pkgver.tar.gz")
+md5sums=('771d48679336c1e8373527c934cbbf88')
 
 build() {
-  cd "$srcdir/emane-0.9.2-release-1/src"
-  bsdtar -xf emane-0.9.2.tar.gz
-  cd emane-0.9.2
-
-  patch -p1 < "$srcdir/c++11.patch"
-
+  cd "$srcdir/emane-1.2.2"
+  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/emane-0.9.2-release-1/src/emane-0.9.2"
+  cd "$srcdir/emane-1.2.2"
   make DESTDIR="$pkgdir/" install
 }
 
