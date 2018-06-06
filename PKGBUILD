@@ -7,7 +7,7 @@
 _pkgname=rust
 
 pkgname=mingw-w64-rust
-pkgver=1.26.1
+pkgver=1.26.2
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=('rust'
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
         "mingw-config.toml")
-sha256sums=('5ed21e4c2fb92c24cf270e6a0382b00197e5b2059d399e9528d48b924553ab69'
+sha256sums=('a1202800bd5621f5cac027177904da0b964eb43b93606d3e4c7b342a9f7473b4'
             'SKIP'
             '8ab05c10084d8e2795aa9d5a954fb05913abc26033c1f9bbf564d0e495f043e4')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
