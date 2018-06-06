@@ -1,6 +1,6 @@
 # Maintainer: Jordan MacDonald <jordan(at)wastedintelligence(dot)com>
 pkgname=amp
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A modal text editor for the terminal.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('libxcb')
 makedepends=('rust' 'git' 'python' 'cmake' 'libxcb')
 source=("https://github.com/jmacdonald/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('1dfda8d72f4aead3c1fce5f2699821d8aed14921c5eede44f55ba0fc29eed2483feb66c1b4ef991d13b50e8e57fac6eda39b7f165726acc26970b576d510a240')
+sha512sums=('6029e041eb89dae395a9bd68347a97c0026e1ebcf95d78eb7756a172879512fbde659b18441d399de5f4637eb398cacc37af54b321401b89835bb735faa757ff')
 
 build() {
   cd "$pkgname-$pkgver"
