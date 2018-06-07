@@ -1,0 +1,25 @@
+pkgbase = r-lintr
+	pkgdesc = A Linter for R Code
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=lintr
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-rex
+	depends = r-crayon
+	depends = r-stringdist
+	depends = r-testthat
+	depends = r-digest
+	depends = r-igraph
+	depends = r-rstudioapi
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-mockery
+	source = https://cran.r-project.org/src/contrib/lintr_1.0.2.tar.gz
+	md5sums = dbbca34d51580857bd22f6b0b54cc9ee
+
+pkgname = r-lintr
+
