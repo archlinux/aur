@@ -1,0 +1,12 @@
+pkgbase = xs
+	pkgdesc = A FASTQ read simulator
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/pratas/xs
+	arch = x86_64
+	license = GPL2
+	source = xs-1.tar.gz::https://github.com/pratas/xs/archive/v1.tar.gz
+	sha256sums = 8914433668b9b55fb2240990f532fbf36c9a2162eb15b902db5ce3cc9e4282d3
+
+pkgname = xs
+
