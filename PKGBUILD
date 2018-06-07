@@ -3,23 +3,23 @@
 # Contributor: Eric Vidal <eric@obarun.org>
 pkgname=kickshaw
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A menu editor for freedesktop standard menus'
-url='https://github.com/natemaia/kickshaw'
+url='https://bitbucket.org/natemaia/kickshaw'
 arch=('x86_64')
 sha256sums=('SKIP')
 license=('GPL2')
-source=("$url/archive/$pkgver.tar.gz")
+source=("git+$url.git")
 makedepends=('gtk3' 'gcc')
 depends=('gtk3')
 
 build() {
-  cd kickshaw-$pkgver/source || return
+  cd kickshaw/source || return
   make
 }
 
 package() {
-  cd kickshaw-$pkgver/source || return
+  cd kickshaw/source || return
   install -Dm755 kickshaw $pkgdir/usr/bin/kickshaw
   install -Dm644 kickshaw.desktop $pkgdir/usr/share/applications/kickshaw.desktop
 
