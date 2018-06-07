@@ -16,7 +16,6 @@ replaces=('python2-shortuuid')
 
 source=('git+https://github.com/skorokithakis/shortuuid.git')
 _gitname="shortuuid"
-
 md5sums=('SKIP')
 
 
@@ -25,12 +24,7 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 package() {
-
   cd "$srcdir/$_gitname"
-
-  # make sure UNICODE characters in the README are parsed correctly
-  export LC_CTYPE=en_US.utf-8
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
