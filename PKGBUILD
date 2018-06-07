@@ -6,11 +6,11 @@
 _upstream="libcompizconfig"
 
 pkgname=libcompizconfig-git
-pkgver=0.8.12.r2.g992eb5c
+pkgver=0.8.14.r4.ga004285
 pkgrel=1
 pkgdesc="Compiz configuration system library"
 arch=('i686' 'x86_64')
-url="https://github.com/compiz-reloaded/${_upstream}"
+url="https://gitlab.com/compiz/${_upstream}"
 license=('GPL')
 depends=('compiz-core' 'libxml2' 'libxcomposite' 'libxinerama' 'protobuf' 'startup-notification')
 makedepends=('intltool' 'libxrandr' 'libice' 'libsm' 'mesa')
@@ -18,7 +18,7 @@ conflicts=('libcompizconfig')
 provides=('libcompizconfig')
 options=('!emptydirs')
 source=(
-	"git+https://github.com/compiz-reloaded/${_upstream}.git"
+	"git+https://gitlab.com/compiz/${_upstream}.git"
 )
 sha1sums=('SKIP')
 
