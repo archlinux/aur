@@ -1,0 +1,19 @@
+pkgbase = ccloudvm-git
+	pkgdesc = Configurable Cloud VM (ccloudvm) is a command line tool for creating and managing Virtual Machine (VM) based development environments
+	pkgver = r310.f1bdd5d
+	pkgrel = 1
+	url = https://github.com/intel/ccloudvm
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	provides = ccloudvm
+	conflicts = ccloudvm
+	options = !strip
+	options = !emptydirs
+	source = ccloudvm::git+https://github.com/intel/ccloudvm.git
+	md5sums = SKIP
+
+pkgname = ccloudvm-git
+
