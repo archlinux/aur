@@ -1,6 +1,6 @@
 pkgbase = pext
 	pkgdesc = Python-based extendable tool
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://pext.hackerchick.me/
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = pext
 	optdepends = python-opengl: required for correct rendering on some GPUs
 	provides = pext
 	conflicts = pext
-	source = https://github.com/Pext/Pext/archive/v0.14.tar.gz
-	sha256sums = 93fbbab181ae05dd74ad012d9c8a95a819b9b4b69a7f6f391fb743974441485f
+	source = https://github.com/Pext/Pext/archive/v0.15.tar.gz
+	sha256sums = b65f0f7e4623811ba74fa85efec964c41d17d8f845a520b2c0a6de0a0d63b389
 
 pkgname = pext
 
