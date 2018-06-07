@@ -2,15 +2,15 @@
 
 pkgname=pgfuse
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="FUSE-based file system with a PostgreSQL storage backend"
-url="https://github.com/andreasbaumann/pgfuse"
+url="http://www.pgfuse.org"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('fuse' 'postgresql-libs')
 makedepends=('pkg-config')
-source=("https://github.com/andreasbaumann/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('89015a5c060903cff4a48752d5607e85')
+source=("http://www.andreasbaumann.cc/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('19130ec8b1e96f7ce427fa269f316017')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
