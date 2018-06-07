@@ -1,7 +1,7 @@
 pkgbase = gbml-git
 	pkgdesc = Backup utility and database for Linux Steam games
-	pkgver = v1.4.0.0.r0.gd69dad5
-	pkgrel = 1
+	pkgver = v1.4.0.0
+	pkgrel = 2
 	url = https://github.com/supremesonicbrazil/GBML
 	arch = x86_64
 	license = GPL3

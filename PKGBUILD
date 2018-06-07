@@ -3,8 +3,8 @@
 pkgname=gbml-git
 _pkgname='GBML'
 replaces=('slsk-git')
-pkgver=v1.4.0.0.r0.gd69dad5
-pkgrel=1
+pkgver=v1.4.0.0
+pkgrel=2
 pkgdesc="Backup utility and database for Linux Steam games"
 arch=('x86_64')
 url="https://github.com/supremesonicbrazil/GBML"
