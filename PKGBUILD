@@ -1,8 +1,8 @@
-# Maintainer: FFY00 <filipe.lains@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=inspectrum
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="SDR signal analyzer"
 arch=('any')
@@ -11,7 +11,7 @@ license=(GPL)
 depends=('qt5-base' 'fftw' 'liquid-dsp')
 makedepends=('cmake' 'pkg-config')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=("4baafa14b8a57cd3e460b4a11221a865c9fb97e0d8ead0adfa33fab93ac0339b")
+sha256sums=('9e513101a59822c86b84cb7717f395c59bb27a6c192fe021cf4ffb7cf1d09c78')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
