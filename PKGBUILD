@@ -1,7 +1,7 @@
 # Maintainer: Anders Skaalsveen <anders[at]bakkenbaeck[dot]no>
 pkgname=adb-screen-tools
-pkgver=0.3
-pkgrel=3
+pkgver=0.4
+pkgrel=4
 pkgbase=
 pkgdesc="Extra screen-utilities for android-devices"
 arch=('any')

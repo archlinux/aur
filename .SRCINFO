@@ -1,14 +1,14 @@
 pkgbase = adb-screen-tools
 	pkgdesc = Extra screen-utilities for android-devices
-	pkgver = 0.3
-	pkgrel = 3
+	pkgver = 0.4
+	pkgrel = 4
 	url = https://github.com/bakkenbaeck/adb-screen-tools
 	arch = any
 	license = MIT
 	makedepends = git
 	provides = adb-screen-tools
 	conflicts = adb-screen-tools
-	source = adb-screen-tools::git+https://github.com/bakkenbaeck/adb-screen-tools.git#3e1e9ba5210628db07ec047b9473af4e29f521c4
+	source = adb-screen-tools::git+https://github.com/bakkenbaeck/adb-screen-tools.git#9a1e74a8a4acef8e22496f4124fb8ba886030ec1
 	md5sums = SKIP
 
 pkgname = adb-screen-tools
