@@ -28,7 +28,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  #include <linux/rmi.h>
  #include <linux/i2c.h>
  #include <linux/slab.h>
-@@ -710,6 +711,141 @@
+@@ -716,6 +717,141 @@
  	serio_register_port(serio);
  }
  
@@ -170,7 +170,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  /*****************************************************************************
   *	Functions to interpret the absolute mode packets
   ****************************************************************************/
-@@ -1385,6 +1521,7 @@
+@@ -1391,6 +1527,7 @@
  		device_remove_file(&psmouse->ps2dev.serio->dev,
  				   &psmouse_attr_disable_gesture.dattr);
  
@@ -178,7 +178,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  	synaptics_reset(psmouse);
  	kfree(priv);
  	psmouse->private = NULL;
-@@ -1444,6 +1581,8 @@
+@@ -1450,6 +1587,8 @@
  			    priv->info.ext_cap, info.ext_cap);
  		return -ENXIO;
  	}
@@ -187,7 +187,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
 
  	return 0;
  }
-@@ -1563,6 +1702,9 @@
+@@ -1569,6 +1708,9 @@
  		     info->capabilities, info->ext_cap, info->ext_cap_0c,
  		     info->ext_cap_10, info->board_id, info->firmware_id);
  
