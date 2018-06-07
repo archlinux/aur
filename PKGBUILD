@@ -1,15 +1,16 @@
 # Maintainer: edubart <edub4rt@gmail.com>
 _basename=jemalloc
 pkgname=mingw-w64-jemalloc
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 pkgdesc='General-purpose scalable concurrent malloc implementation (mingw-w64)'
 arch=('i686' 'x86_64')
 license=('BSD')
 url='http://www.canonware.com/jemalloc/'
 options=(staticlibs !strip !buildflags)
 source=("https://github.com/jemalloc/jemalloc/releases/download/${pkgver}/${_basename}-${pkgver}.tar.bz2")
-sha256sums=('9409d85664b4f135b77518b0b118c549009dc10f6cba14557d170476611f6780')
+sha256sums=('5396e61cc6103ac393136c309fae09e44d74743c86f90e266948c50f3dbb7268')
+
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -21,7 +22,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}
     cd build-${_arch}
-    ${_arch}-configure --enable-xmalloc --with-jemalloc-prefix=""
+    ${_arch}-configure --enable-xmalloc --prefix="/usr/${_arch}" --with-jemalloc-prefix=""
     make
     cd ..
   done
