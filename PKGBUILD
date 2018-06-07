@@ -1,17 +1,16 @@
-# $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=momentjs
-pkgver=2.19.2
+pkgver=2.22.2
 pkgrel=1
 pkgdesc='A JavaScript library for parsing, validating, manipulating, and displaying dates and times.'
 arch=('any')
 url='http://momentjs.com/'
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moment/moment/archive/${pkgver}.tar.gz")
-sha256sums=('6b343268adbfc8170f36724d2944dd2addcb8d0ba2a01f86d300ed8720848d9d')
+sha256sums=('52c253ad0e8645d2e8ed61fb15d1067821d0bc7f211a7520f585521c1480177f')
 
-package() {  
+package() {
   install -d ${pkgdir}/usr/share/javascript/${pkgname}
   cp -a ${srcdir}/moment-${pkgver}/min/*.js ${pkgdir}/usr/share/javascript/${pkgname}/
 }
