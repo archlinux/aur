@@ -1,5 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-yasnippet-git
+epoch=1
 pkgver=0.13.0.r3.ge67592c
 pkgrel=1
 pkgdesc="Yet another template system for Emacs - git version"
@@ -10,7 +11,7 @@ makedepends=('git')
 provides=('emacs-yasnippet')
 conflicts=('emacs-yasnippet')
 install=yasnippet.install
-source=('git+https://github.com/capitaomorte/yasnippet')
+source=('git+https://github.com/joaotavora/yasnippet')
 md5sums=('SKIP')
 _gitname=yasnippet
 
