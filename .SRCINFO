@@ -1,13 +1,13 @@
 pkgbase = lightdm-webkit-theme-litarvan
 	pkgdesc = Modern and full-featured LightDM theme
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/Litarvan/lightdm-webkit-theme-litarvan
 	arch = any
 	license = BSD
 	depends = lightdm-webkit2-greeter
-	source = https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases/download/v2.0.5/lightdm-webkit-theme-litarvan-2.0.5.tar.gz
-	md5sums = 3879c9e440b1529dafb1ae536ea09cdf
+	source = https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases/download/v2.0.7/lightdm-webkit-theme-litarvan-2.0.7.tar.gz
+	md5sums = c4f067eabae1d7fd814165edaa038713
 
 pkgname = lightdm-webkit-theme-litarvan
 
