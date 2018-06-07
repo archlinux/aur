@@ -1,12 +1,12 @@
 pkgbase = mint-themes
 	pkgdesc = A collection of Mint themes. Includes GTK2, GTK3, Cinnamon and Xfce components.
 	pkgver = 1.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.linuxmint.com/pool/main/m/mint-themes
 	arch = any
 	license = GPL3
 	makedepends = gtk3
-	makedepends = sassc
+	makedepends = ruby-sass
 	depends = mint-y-icons
 	depends = mint-x-icons
 	conflicts = mint-x-theme
