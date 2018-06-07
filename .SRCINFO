@@ -1,6 +1,6 @@
 pkgbase = run-git
 	pkgdesc = Replace the current terminal with a graphical program
-	pkgver = 0.0.1.r2.a2959fb
+	pkgver = 0.0.1.r4.83c1ef0
 	pkgrel = 1
 	url = https://gitlab.com/blevy/run
 	arch = i686

@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Levy <blevy@protonmail.com>
 pkgname=run-git
-pkgver=0.0.1.r2.a2959fb
+pkgver=0.0.1.r4.83c1ef0
 pkgrel=1
 pkgdesc="Replace the current terminal with a graphical program"
 arch=('i686' 'x86_64')
