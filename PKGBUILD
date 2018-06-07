@@ -1,13 +1,13 @@
 # Maintainer: ErnyTech <erny.castell[at]gmail[dot]com>
 pkgname=mcpelauncher-git
-pkgver=20180405
+pkgver=20180520
 pkgrel=1
 pkgdesc="Launch MCPE on Linux!"
 url="https://github.com/MCMrARM/mcpelauncher-linux"
 arch=('x86_64')
 license=('BSD 2-clause + Other')
 depends=('lib32-glibc' 'lib32-gcc-libs' 'lib32-libstdc++5' 'lib32-gtk2' 'lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-nss' 'lib32-libxss' 'lib32-gconf' 'lib32-libxtst' 'lib32-libevdev' 'lib32-libprotobuf' 'lib32-libzip' 'lib32-curl')
-makedepends=('cmake' 'lib32-zlib' 'lib32-libx11' 'lib32-libpng' 'lib32-util-linux' 'lib32-openssl' 'lib32-mesa' 'protobuf')
+makedepends=('cmake' 'lib32-zlib' 'lib32-libx11' 'lib32-libpng' 'lib32-util-linux' 'lib32-openssl' 'lib32-mesa' 'protobuf' 'libzip' 'wget' 'unzip')
 source=('git+https://github.com/MCMrARM/mcpelauncher-linux.git'
         "mcpelauncher-git.sh")
 md5sums=('SKIP'

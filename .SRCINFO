@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-git
 	pkgdesc = Launch MCPE on Linux!
-	pkgver = 20180405
+	pkgver = 20180520
 	pkgrel = 1
 	url = https://github.com/MCMrARM/mcpelauncher-linux
 	arch = x86_64
@@ -13,6 +13,9 @@ pkgbase = mcpelauncher-git
 	makedepends = lib32-openssl
 	makedepends = lib32-mesa
 	makedepends = protobuf
+	makedepends = libzip
+	makedepends = wget
+	makedepends = unzip
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	depends = lib32-libstdc++5
