@@ -1,0 +1,23 @@
+pkgbase = python-myougiden-git
+	pkgdesc = A command-line, Japanese/English English/Japanese dictionary
+	pkgver = 0.8.8
+	pkgrel = 1
+	url = https://github.com/leoboiko/myougiden
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python>=3.0
+	depends = python-romkan
+	depends = python-termcolor
+	optdepends = argparser-python: for Python ≤ 3.1
+	optdepends = psutil: for Python ≤ 3.2
+	optdepends = rsync: recommended
+	provides = python-myougiden
+	provides = myougiden
+	provides = updatedb-myougiden
+	backup = etc/myougiden/config.ini
+	source = git+https://github.com/leoboiko/myougiden
+	md5sums = SKIP
+
+pkgname = python-myougiden-git
+
