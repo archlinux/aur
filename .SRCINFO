@@ -1,12 +1,12 @@
 pkgbase = sat-libervia-hg
-	pkgver = 0.6.1.r1105.e6ff5530900e
+	pkgver = 0.6.1.r1108.7ec1ba86d38d
 	pkgrel = 1
 	url = http://salut-a-toi.org/
 	install = sat-libervia-hg.install
 	arch = any
 	license = AGPL3
 	makedepends = python2-setuptools
-	makedepends = python-virtualenv
+	makedepends = python2-virtualenv
 	makedepends = mercurial
 	depends = python2
 	depends = python2-txjsonrpc-git
@@ -18,20 +18,15 @@ pkgbase = sat-libervia-hg
 	depends = python2-zope-interface
 	depends = python2-pyopenssl
 	depends = python2-autobahn
+	depends = dbus
 	options = !strip
-	source = ftp://ftp.goffi.org/pyjamas/pyjamas.tar.bz2
-	source = hg+http://repos.goffi.org/libervia
+	source = https://ftp.goffi.org/pyjamas/pyjamas.tar.bz2
+	source = hg+https://repos.goffi.org/libervia
 	md5sums = a0d6344951153f79302eb2b6fd08376e
 	md5sums = SKIP
 
 pkgname = sat-libervia-hg
 	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (Web interface)
-	depends = dbus
 	provides = sat-libervia
 	conflicts = sat-libervia
-
-pkgname = sat-pyjamas
-	pkgdesc = Pyjamas is a toolkit and applications framework, for the Web.
-	provides = sat-pyjamas
-	conflicts = sat-pyjamas
 
