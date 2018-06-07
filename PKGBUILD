@@ -11,7 +11,7 @@ depends=(gtk-update-icon-cache)
 optdepends=("mint-x-icons: enable additional icons to inheritage")
 conflicts=(mint-y-icons-git)
 source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('69fb43bbe71411f5abb7438e4488e9d42029cfa6d5405a5b9c5ee5aa9c570fa9')
 
 prepare() {
 	find "${srcdir}" -type d ! -perm 755 -exec chmod 755 {} +
