@@ -10,22 +10,22 @@ _micro=""
 
 pkgname=compiz-fusion-plugins-main
 pkgver="${_pkgver}${_micro}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiz Main plugins"
 arch=('i686' 'x86_64')
-url="https://github.com/compiz-reloaded/${_upstream}/"
+url="https://gitlab.com/compiz/${_upstream}/"
 license=('GPL')
 depends=("compiz-core>=${_pkgver}" 'libjpeg>=7' 'librsvg' 'compiz-bcop' 'libxdamage' 'libxcomposite'
 	'libxinerama' 'startup-notification')
 makedepends=('intltool' 'pkgconfig' 'gettext')
 groups=('compiz-fusion')
 conflicts=('compiz-fusion-plugins-main-git')
-source=("${url}/releases/download/v${pkgver}/${_upstream}-${pkgver}.tar.xz")
+source=("${url}-/archive/v${pkgver}/${_upstream}-v${pkgver}.tar.bz2")
 options=(!libtool)
 
 
 build() {
-  cd "${srcdir}/${_upstream}-${pkgver}"
+  cd "${srcdir}/${_upstream}-v${pkgver}"
   
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc
@@ -34,8 +34,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_upstream}-${pkgver}"
+  cd "${srcdir}/${_upstream}-v${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('eca9f0a1a0db7a10d3d382ee99c54d021b00429f07e154241121a8888e3eca56')
+sha256sums=('9a3aa53316e609f4cd5cffc10fba0a8cd53117ab8f6717eadb22a63691baed86')
