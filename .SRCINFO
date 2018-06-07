@@ -1,0 +1,21 @@
+pkgbase = r-igraph
+	pkgdesc = Network Analysis and Visualization
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=igraph
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-magrittr
+	depends = r-pkgconfig
+	optdepends = r-ape
+	optdepends = r-graph
+	optdepends = r-igraphdata
+	optdepends = r-rgl
+	optdepends = r-cran-scales
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/igraph_1.2.1.tar.gz
+	md5sums = 011d2c5a4b85024cbfa48b37b4a9c355
+
+pkgname = r-igraph
+
