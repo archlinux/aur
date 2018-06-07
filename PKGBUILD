@@ -1,9 +1,10 @@
 # Maintainer: Ekin Dursun <ekindursun@gmail.com>
 # Contributor: Oliver Mangold omangold at gmail dot com
 
-pkgname=python-spark-parser
+pkgbase=python-spark-parser
+pkgname=('python-spark-parser' 'python2-spark-parser')
 pkgver=1.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An Early-Algorithm Context-free grammar Parser"
 arch=('any')
 url="https://github.com/rocky/python-spark/"
@@ -19,7 +20,13 @@ build() {
     python setup.py build
 }
 
-package() {
+package_python-spark-parser() {
     cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir"
+}
+
+package_python2-spark-parser() {
+    cd "$srcdir/$_name-$pkgver"
+    python2 setup.py install --root="$pkgdir"
+    mv "$pkgdir/usr/bin/spark-parser-coverage" "$pkgdir/usr/bin/spark-parser-coverage2"
 }
