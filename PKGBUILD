@@ -1,13 +1,14 @@
+# Maintainer: GordonGR <ntheo1979@gmail.com>
 # Contributor: Kosava <kosava@archlinux.us>
 
 pkgname=dexter
 pkgver=0.18
-pkgrel=3
+pkgrel=4
 pkgdesc="Address Book that goes hand in hand with Postler"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/dexter-rolodex"
 license=('GPL')
-depends=('python2-distutils-extra' 'python2-vobject' 'python2-storm' 'python2-pyenchant' 'python2-xdg')
+depends=('python2-distutils-extra' 'python2-vobject' 'python2-storm' 'python2-pyenchant' 'python2-xdg' 'python2-dbus')
 makedepends=('python2')
 provides=('dexter')
 conflicts=('dexter-bzr')
