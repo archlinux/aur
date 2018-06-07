@@ -1,8 +1,8 @@
 # Maintainer: Xaver Hellauer <software@hellauer.bayern>
 
 pkgname=tresorit
-pkgver=3.0.509.751
-pkgrel=3
+pkgver=3.5.550.777
+pkgrel=1
 pkgdesc='Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.'
 arch=('i686' 'x86_64')
 url="http://www.tresorit.com/"
@@ -13,7 +13,7 @@ makedepends=('xxd')
 source=("tresorit_installer_${pkgver}.run::https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run"
         "tresorit.service")
 
-sha512sums=('aef4f91d5c15fc6ea77fd63dbcd90be4c186c06bbb063701fdf72ffcfbf020b5b476e632fa29bc027c2bd4980d308e8cc10274ed0e310186cc635e2cf4a80f35'
+sha512sums=('SKIP'
             '58aa3738fd17d5930ed76b9491a3ef0dd481b918f5329b56650e6d77078ad74caeea60c9cf83d524a483a9be7fc41aba2712400922d4ab3db775f1c2a1365765')
 
 prepare() {
