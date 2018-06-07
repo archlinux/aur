@@ -3,10 +3,10 @@
 pkgname=hblox-git
 _gitname=hblox
 pkgdesc='hblox is an command line ad blocker for Linux using the hosts file. (written in Python 3)'
-pkgver=r8.65d2d86
+pkgver=r13.ee462b9
 pkgrel=1
 arch=('any')
-url="https://github.com/memoryleakx/hblox"
+url="https://gitlab.com/memoryleakx/hblox"
 license=('GPL3')
 depends=('python-clint>=0.5'
          'python-urllib3>=1.22'
