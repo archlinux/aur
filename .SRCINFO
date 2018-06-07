@@ -1,13 +1,13 @@
 pkgbase = menuconfig-git
 	pkgdesc = Standalone version of the mconf tool from the linux kernel
-	pkgver = r774.7b27cc4
+	pkgver = r798.e7c3de3
 	pkgrel = 1
 	url = https://github.com/anatol/menuconfig
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = gperf
+	makedepends = ninja
 	depends = ncurses
 	source = git://github.com/anatol/menuconfig.git
 	sha1sums = SKIP
