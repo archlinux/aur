@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
 depends=('r' 'r-rex' 'r-crayon' 'r-stringdist' 'r-testthat' 'r-digest' 'r-igraph' 'r-rstudioapi' 'r-httr' 'r-jsonlite' 'r-knitr')
 
-optdepends=('r-rmarkdown' 'r-mockery')
+optdepends=('libxml2' 'glpk' 'r-rmarkdown' 'r-mockery')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('dbbca34d51580857bd22f6b0b54cc9ee')
