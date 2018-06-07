@@ -13,7 +13,7 @@ backup=('etc/pmount.allow')
 depends=('sysfsutils>=2.0.0-1' 'util-linux')
 makedepends=('intltool')
 source=(
-  "http://http.debian.net/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.orig.tar.bz2"
+  "https://alioth-archive.debian.org/releases/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
   "pmount-bash-completion" # From pmount-debian
   "0001-Fix-a-careless-segfault-in-debug-mode.patch"
   "pmount.exfat.patch"
