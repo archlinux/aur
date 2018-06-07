@@ -4,44 +4,37 @@
 
 _pkgname=gnome-builder
 pkgname=gnome-builder-git
-pkgver=3.27.90+27+g2c097bc19
+pkgver=3.29.2+40+gd16771663
 pkgrel=1
-pkgdesc="An IDE for writing GNOME-based software"
-arch=('i686' 'x86_64')
-url="https://wiki.gnome.org/Apps/Builder"
+pkgdesc='An IDE for writing GNOME-based software'
+arch=(i686 x86_64)
+url='https://wiki.gnome.org/Apps/Builder'
 license=(GPL3)
 conflicts=(gnome-builder)
 provides=(gnome-builder)
 depends=(gtksourceview3 devhelp libgit2-glib gjs python-gobject clang desktop-file-utils
          ctags libpeas vte3 vala python-jedi autoconf-archive sysprof flatpak gspell libdazzle-git
-         template-glib-git jsonrpc-glib-git python-sphinx)
-makedepends=(intltool llvm gobject-introspection-git gtk-doc yelp-tools appstream-glib vala git
+         template-glib jsonrpc-glib-git python-sphinx)
+makedepends=(intltool llvm gobject-introspection gtk-doc yelp-tools appstream-glib vala git
              mm-common meson)
 optdepends=('gnome-code-assistance: Legacy assistance services'
             'meson: Meson support')
 install=gnome-builder.install
-source=('git+git://git.gnome.org/gnome-builder'
-        enchant-2.diff)
-sha256sums=('SKIP'
-            'a9c69574433f83de76e488d5da6656e455dcbea80ff788141bae269c04ebc92b')
+source=('git+git://git.gnome.org/gnome-builder')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd ${_pkgname}
   git describe --tags | sed 's/^GNOME_BUILDER_//;s/_/./g;s/-/+/g'
 }
 
-prepare() {
-  cd $_pkgname/src
-
-  # enchant 2.2
-  patch -Np1 -i ../../enchant-2.diff
-}
-
 build() {
-  arch-meson $_pkgname build
+  arch-meson ${_pkgname} build
   ninja -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
+# vim:set ts=2 sw=2 et:
+

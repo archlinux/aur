@@ -1,6 +1,6 @@
 pkgbase = gnome-builder-git
 	pkgdesc = An IDE for writing GNOME-based software
-	pkgver = 3.27.90+27+g2c097bc19
+	pkgver = 3.29.2+40+gd16771663
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Builder
 	install = gnome-builder.install
@@ -9,7 +9,7 @@ pkgbase = gnome-builder-git
 	license = GPL3
 	makedepends = intltool
 	makedepends = llvm
-	makedepends = gobject-introspection-git
+	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	makedepends = yelp-tools
 	makedepends = appstream-glib
@@ -34,7 +34,7 @@ pkgbase = gnome-builder-git
 	depends = flatpak
 	depends = gspell
 	depends = libdazzle-git
-	depends = template-glib-git
+	depends = template-glib
 	depends = jsonrpc-glib-git
 	depends = python-sphinx
 	optdepends = gnome-code-assistance: Legacy assistance services
@@ -42,9 +42,7 @@ pkgbase = gnome-builder-git
 	provides = gnome-builder
 	conflicts = gnome-builder
 	source = git+git://git.gnome.org/gnome-builder
-	source = enchant-2.diff
 	sha256sums = SKIP
-	sha256sums = a9c69574433f83de76e488d5da6656e455dcbea80ff788141bae269c04ebc92b
 
 pkgname = gnome-builder-git
 
