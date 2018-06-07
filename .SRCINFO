@@ -1,0 +1,14 @@
+pkgbase = pxltrm-git
+	pkgdesc = A pixel art editor inside the terminal.
+	pkgver = r76.6ecb1c7
+	pkgrel = 1
+	url = https://github.com/dylanaraps/pxltrm
+	arch = any
+	license = MIT
+	depends = bash
+	provides = pxltrm
+	source = git://github.com/dylanaraps/pxltrm.git
+	md5sums = SKIP
+
+pkgname = pxltrm-git
+
