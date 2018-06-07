@@ -1,4 +1,5 @@
 # Maintainer: Jonathan Waldrep <spartan074 at gmail dot com>
+# Contributor: Niklas Bolander <niklas.bolander at gmail dot com>
 
 pkgname=zsh-fast-syntax-highlighting-git
 pkgver=r204.f31a2d0
