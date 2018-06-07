@@ -1,11 +1,11 @@
 # Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 pkgname=fheroes2-svn
-pkgver=0.r3277
+pkgver=0.r3279
 pkgrel=1
 pkgdesc="Free implementation of Heroes of the Might and Magic II engine"
 arch=('i686' 'x86_64' 'armv7h')
-url="http://sourceforge.net/apps/mediawiki/fheroes2/index.php?title=Main_Page"
+url="https://sourceforge.net/projects/fheroes2/"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_net' 'sdl_ttf')
 makedepends=('subversion' 'gettext')
