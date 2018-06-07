@@ -1,0 +1,7 @@
+src/*
+pkg/*
+*.tar.*
+*.t?z
+pecl-memcache/*
+
+
