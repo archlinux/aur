@@ -1,7 +1,7 @@
 # Maintainer: kittyhacker101 <kittyhacker101@protonmail.com>
 pkgname=katweb
-pkgver=1.9.6.1
-pkgrel=2
+pkgver=1.9.7
+pkgrel=1
 pkgdesc="A lightweight static web server and reverse proxy designed for the modern web."
 arch=("any")
 url="https://github.com/kittyhacker101/KatWeb"
@@ -9,7 +9,7 @@ license=('custom:Unlicense')
 makedepends=('git' 'go' 'glibc')
 source=("https://github.com/kittyhacker101/KatWeb/archive/v$pkgver.tar.gz" "https://cdn.kittyhacker101.tk/Static/aur.patch")
 sha256sums=('SKIP' 'SKIP')
-options=('!strip' 'upx')
+options=('!strip')
 backup=('usr/share/katweb/conf.json' 'usr/share/katweb/html/index.html' 'usr/share/katweb/ssl/server.crt' 'usr/share/katweb/ssl/server.key')
 
 prepare() {
