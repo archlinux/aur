@@ -1,6 +1,6 @@
 # Maintainer: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
 pkgname=siril
-pkgver=0.9.8.3
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('i686' 'x86_64')
@@ -13,12 +13,13 @@ optdepends=('libpng: PNG import'
 'libtiff: TIFF import and export'
 'libraw: DSLR RAW images import'
 'ffms2: films native support as image sequences and import'
+'libcurl-gnutls: check for updates'
 )
 
 _pkgname="${pkgname}-${pkgver}"
 source=("https://free-astro.org/download/${_pkgname}.tar.bz2")
 
-sha1sums=('e739ba3de1a66e7ea3a6d3de6c652fc528a90d40')
+sha1sums=('2f7b1ebb204c02662ea0c12ea0bc16a4d04484fa')
 
 build() {
 	cd "${_pkgname}"
