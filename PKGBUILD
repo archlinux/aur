@@ -4,9 +4,9 @@
 
 pkgname=instead
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a quest interpreter"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/instead/"
 license=('MIT')
 depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'lua51' 'gtk2')

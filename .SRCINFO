@@ -1,8 +1,9 @@
 pkgbase = instead
 	pkgdesc = a quest interpreter
 	pkgver = 3.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/instead/
+	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
