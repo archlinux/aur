@@ -9,8 +9,8 @@
 
 pkgname=freecad
 pkgver=0.17
-_rollup=3bb5ff4
-pkgrel=3
+_rollup=84d6128
+pkgrel=4
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('x86_64')
 url='http://www.freecadweb.org/'
@@ -28,7 +28,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/FreeCAD/FreeCAD/archive/$pk
         'remove-qtwebkit.patch'
         'gcc8.patch')
 sha256sums=('ae017393476b6dc7f1192bcaf91ceedc2f9b791f2495307ce7c45efadb5266fb'
-            'a975d2da786003faceb3d15228084355867785998183dd44cfeb37f18b5af838'
+            'c4a4e084da448c78644e8acc1f3158cf2cb82ee4936b5b79e282497fd62d566e'
             '617968d7bbd1da71bdedaed1b66c5d6eaf24e0fb34678b93f5d925d370c66296'
             '248918de7d3c2145b5cc4fbbc9e224d22f4a6ca7ead2680e8c3a32e91772482a'
             'de214a281d421d44b02b469ecf72e36c4d61f10c40431e511e09734aca316baf'
