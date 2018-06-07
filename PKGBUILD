@@ -3,8 +3,10 @@
 _pkgname=tea4cups
 pkgname="${_pkgname}-svn"
 pkgver=3.13alpha_unofficial+3574
-pkgrel=3
+pkgrel=4
 pkgdesc="CUPS backend wrapper which can capture print datas before they are sent to a printer and process, duplicate or dispatch them in a number of ways. Swiss army's knife of the CUPS' Administrator."
+url="http://www.pykota.com/software/tea4cups/"
+license=('GPL2')
 arch=('any')
 depends=(
   'cups'
@@ -12,19 +14,20 @@ depends=(
   'python2-configparser'
   'python2-urllib3'
 )
+optdepends=(
+)
+provides=(
+  "${_pkgname}=${pkgver}"
+  "${_pkgname}-doc=${pkgver}"
+)
+backup=('etc/cups/tea4cups.conf')
 install=tea4cups.install
-url="http://www.pykota.com/software/tea4cups/"
-license=('GPL2')
 source=(
   # "http://www.pykota.com/software/tea4cups/download/tarballs/tea4cups-${pkgver}_official.tar.gz"
   "${_pkgname}::svn+http://svn.pykota.com/tea4cups/trunk"
   'doc_from_website.txt'
   "${install}"
 )
-optdepends=(
-)
-provides=("${_pkgname}-doc=${pkgver}")
-backup=('etc/cups/tea4cups.conf')
 sha256sums=(
   'SKIP'
   '6221890bbd1ab3806efeec8624161c80742d1c5fce24c9094e4f8f8466ba2923'
