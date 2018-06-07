@@ -2,7 +2,7 @@
 
 pkgname=ttf-symbola-ib
 pkgver=11.00
-pkgrel=1
+pkgrel=2
 depends=('fontconfig')
 pkgdesc="Symbola is a free symbol-type font."
 url="http://users.teilar.gr/~g1951d/"
@@ -12,7 +12,8 @@ provides=('ttf-symbola')
 replaces=('ttf-symbola')
 groups=('infinality-bundle-fonts')
 license=('custom')
-source=("Symbola-$pkgver.zip::http://users.teilar.gr/~g1951d/Symbola.zip"
+#Symbola has become non redistributable so we'll just do the file:// and allow each one to download manually
+source=("file://Symbola.zip"
         "COPYING"
         "45-symbola.conf"
         "90-tt-symbola.conf")

@@ -1,7 +1,7 @@
 pkgbase = ttf-symbola-ib
 	pkgdesc = Symbola is a free symbol-type font.
 	pkgver = 11.00
-	pkgrel = 1
+	pkgrel = 2
 	url = http://users.teilar.gr/~g1951d/
 	arch = any
 	groups = infinality-bundle-fonts
@@ -10,7 +10,7 @@ pkgbase = ttf-symbola-ib
 	provides = ttf-symbola
 	conflicts = ttf-symbola
 	replaces = ttf-symbola
-	source = Symbola-11.00.zip::http://users.teilar.gr/~g1951d/Symbola.zip
+	source = file://Symbola.zip
 	source = COPYING
 	source = 45-symbola.conf
 	source = 90-tt-symbola.conf
