@@ -3,7 +3,7 @@
 pkgname=emacs-ghub
 _github_org="magit"
 _github_repo="ghub"
-pkgver=1.1.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Emacs - Minuscule client library for the Github API"
 arch=('any')

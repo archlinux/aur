@@ -1,14 +1,14 @@
 pkgbase = emacs-ghub
 	pkgdesc = Emacs - Minuscule client library for the Github API
-	pkgver = 1.1.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://github.com/magit/ghub
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = emacs>=24.4
+	depends = emacs
 	provides = emacs-ghub
-	source = git+https://github.com/magit/ghub.git#tag=v1.1.0
+	source = git+https://github.com/magit/ghub.git#tag=v2.0.1
 	md5sums = SKIP
 
 pkgname = emacs-ghub
