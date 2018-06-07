@@ -2,7 +2,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn
 pkgver=v4.25_9656
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 source=('http://www.softether-download.com/files/softether/v4.25-9656-rtm-2018.01.15-tree/Source_Code/softether-src-v4.25-9656-rtm.tar.gz'
@@ -20,9 +20,11 @@ url="http://www.softether.org/"
 build(){
   cd "${srcdir}/${pkgver//_/-}"
 
-  if [ "${CARCH}" == "i686" ]; then 
+  if [ "${CARCH}" == "i686" ]; then
     cp src/makefiles/linux_32bit.mak Makefile
-  elif [ "${CARCH}" == "x86_64" ]; then 
+  elif [ "${CARCH}" == "x86_64" ]; then
+    cp src/makefiles/linux_64bit.mak Makefile
+  elif [ "${CARCH}" == "aarch64" ]; then
     cp src/makefiles/linux_64bit.mak Makefile
   elif [ "${CARCH}" == "armv7h" ]; then
     cp src/makefiles/linux_32bit.mak Makefile
