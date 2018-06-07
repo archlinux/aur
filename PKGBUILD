@@ -3,7 +3,7 @@
 
 pkgbase=python-acme
 pkgname=('python-acme' 'python2-acme')
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="ACME protocol implementation in Python"
 arch=('any')
@@ -12,10 +12,10 @@ url="https://github.com/certbot/certbot"
 makedepends=('python-setuptools' 'python2-setuptools' 'python-pyopenssl' 'python2-pyopenssl'
              'python-pyrfc3339' 'python2-pyrfc3339' 'python-pytz' 'python2-pytz' 'python-requests'
              'python2-requests' 'python-six' 'python2-six' 'python-josepy' 'python2-josepy'
-             'python-mock' 'python2-mock')
+             'python-mock' 'python2-mock' 'python-requests-toolbelt' 'python2-requests-toolbelt')
 checkdepends=('python-pytest-runner' 'python2-pytest-runner')
 source=("https://pypi.io/packages/source/a/acme/acme-$pkgver.tar.gz")
-sha512sums=('6aad6ed37f7dbdc57c4a05808000c3350056bb2fb8a7c7376b8918d7d642bfb31121f2c597519b20718b943a0ffc26b41e58737c3b2f56951ff836c8a6c00daf')
+sha512sums=('d997bc4b604b1ceab6d437500ca8bf3010365da82a3a6328c6ceb357a9753d4c80ce2c2bad49c7c65af2724dd04896c5c6d5c210b2dc16bf82797ef949116108')
 
 prepare() {
   cp -a acme-$pkgver{,-py2}
@@ -39,7 +39,7 @@ check() {
 
 package_python-acme() {
   depends=('python-setuptools' 'python-pyopenssl' 'python-pyrfc3339' 'python-pytz' 'python-requests'
-           'python-six' 'python-josepy' 'python-mock')
+           'python-six' 'python-josepy' 'python-mock' 'python-requests-toolbelt')
 
   cd acme-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
@@ -47,7 +47,8 @@ package_python-acme() {
 
 package_python2-acme() {
   depends=('python2-setuptools' 'python2-pyopenssl' 'python2-pyrfc3339' 'python2-pytz'
-           'python2-requests' 'python2-six' 'python2-josepy' 'python2-mock')
+           'python2-requests' 'python2-six' 'python2-josepy' 'python2-mock'
+           'python2-requests-toolbelt')
 
   cd acme-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
