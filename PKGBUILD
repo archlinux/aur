@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=sam-git
-pkgver=r432.6cbe895
+pkgver=r461.cd8efea
 pkgrel=1
 epoch=
 pkgdesc="An updated version of the sam text editor."
@@ -9,7 +9,7 @@ url="https://github.com/deadpixi/sam"
 license=('custom')
 categories=()
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
