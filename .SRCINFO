@@ -1,7 +1,7 @@
 pkgbase = iridium-deb
 	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Stable Channel)
 	pkgver = 67.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://iridiumbrowser.de/
 	arch = x86_64
 	license = BSD
