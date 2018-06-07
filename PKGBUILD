@@ -3,7 +3,7 @@
 pkgname=emacs-magit-popup
 _github_org="magit"
 _github_repo="magit-popup"
-pkgver=2.12.0
+pkgver=2.12.3
 pkgrel=1
 pkgdesc="A generic interface for toggling switches and setting options and then invoking an Emacs command which does something with these arguments"
 arch=('any')
