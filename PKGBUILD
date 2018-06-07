@@ -1,7 +1,6 @@
 # maintainer : marin <turquoise.hexagon@protonmail.com>
 
-_pkgname=cherry
-pkgname=$_pkgname-font
+pkgname=cherry-font
 pkgver=1.0
 pkgrel=2
 pkgdesc="cherry, yet another bitmap font"
@@ -16,14 +15,14 @@ md5sums=('SKIP')
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$_pkgname" || exit
+    cd "$srcdir/$pkgname" || exit
     for b in *.bdf; do
         bdftopcf -o "${b/.bdf/.pcf}" "$b"
     done
 }
 
 package() {
-    cd "$srcdir/$_pkgname" || exit
+    cd "$srcdir/$pkgname" || exit
 
     install -d -m755 "$pkgdir/usr/share/fonts/misc"
     install -D -m644 *.pcf "$pkgdir/usr/share/fonts/misc"
