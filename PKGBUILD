@@ -6,15 +6,15 @@
 # Contributor: Daniel White <daniel@whitehouse.id.au>
 
 pkgname=emacs-magit-git
-pkgver=2.11.0.r347.c7f6bfe7
-pkgrel=2
+pkgver=2.13.0.r27.a8106b60c87f
+pkgrel=1
 pkgdesc="It's Magit! A Emacs mode for Git."
 arch=('any')
 _github_org="magit"
 _github_repo="magit"
 url="http://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
-depends=('emacs' 'git' 'emacs-dash>=2.13.0' 'emacs-with-editor-git>=2.6.0' 'emacs-magit-popup>=2.12.0' 'emacs-ghub')
+depends=('emacs>=25.1' 'git>=2.4' 'emacs-dash>=2.14.1' 'emacs-ghub>=2.0.1' 'emacs-magit-popup>=2.12.3' 'emacs-with-editor>=2.7.3')
 provides=('emacs-magit')
 conflicts=('emacs-magit')
 install="${pkgname}.install"
