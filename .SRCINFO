@@ -1,16 +1,18 @@
 pkgbase = python-spark-parser
 	pkgdesc = An Early-Algorithm Context-free grammar Parser
 	pkgver = 1.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rocky/python-spark/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-click
+	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/s/spark_parser/spark_parser-1.8.7.tar.gz
 	sha256sums = 4c5e6064afbb3c114749016d585b0e4f9222d4ffa97a1854c9ab70b25783ef48
 
 pkgname = python-spark-parser
+	depends = python-click
 
 pkgname = python2-spark-parser
+	depends = python2-click
 
