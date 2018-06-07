@@ -1,0 +1,17 @@
+pkgbase = r-ttr
+	pkgdesc = Technical Trading Rules
+	pkgver = 0.23.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=TTR
+	arch = x86_64
+	license = GPL2
+	depends = r
+	depends = r-xts
+	depends = r-zoo
+	depends = r-curl
+	depends = r-xts
+	source = https://cran.r-project.org/src/contrib/TTR_0.23-3.tar.gz
+	md5sums = e4c98cbec65f559ac3c1b1d168970c50
+
+pkgname = r-ttr
+
