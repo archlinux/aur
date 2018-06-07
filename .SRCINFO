@@ -1,0 +1,18 @@
+pkgbase = r-htmltab
+	pkgdesc = Assemble Data Frames from HTML Tables
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=htmltab
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-xml
+	depends = r-httr
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-tidyr
+	source = https://cran.r-project.org/src/contrib/htmltab_0.7.1.tar.gz
+	md5sums = 8cec7e7ba3ecb76e59e7005164639a99
+
+pkgname = r-htmltab
+
