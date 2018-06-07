@@ -27,10 +27,10 @@ pkgname=()
 [[ ${#pkgname[@]} -gt 1 ]] && pkgname=('eclipse-common-devel' "${pkgname[@]}")
 
 epoch=1
-_milestone=1a
-pkgver=4.7.${_milestone}
+_milestone=RC2
+pkgver=4.8.0${_milestone}
 pkgrel=1
-_release=oxygen-${_milestone}
+_release=photon-${_milestone}
 pkgdesc="Highly extensible IDE"
 license=(EPL)
 arch=(i686 x86_64)
