@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kmarkdownwebview
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='KPart for rendering Markdown content'
 url='https://www.kde.org'
@@ -10,7 +10,7 @@ arch=(i686 x86_64)
 depends=(kparts qt5-webengine)
 makedepends=(extra-cmake-modules)
 source=("https://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('c62b7f61a93b9f3252d1330b3f021aba3155aa61f2fd059f150d59bd9ad61149'
+sha256sums=('3a506f5ccb6e9982b6e56f8cffbab1f5ba9f0a84dede6bd6a3a625d6b66831c4'
             'SKIP')
 validpgpkeys=(E191FD5BE6F46870F09E82B2024E7FB43D015474) # Friedrich W. H. Kossebau <kossebau@kde.org>
 
