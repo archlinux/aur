@@ -1,20 +1,20 @@
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-test-perl-critic'
-pkgver='1.03'
-pkgrel='1'
+_distname=Test-Perl-Critic
+pkgname=perl-test-perl-critic
+pkgver=1.04
+pkgrel=1
 pkgdesc="Use Perl::Critic in test programs"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-mce>=1.52' 'perl-critic>=1.105')
+depends=('perl-mce>=1.827' 'perl-critic>=1.105')
 makedepends=()
 url='https://metacpan.org/release/Test-Perl-Critic'
-source=('http://search.cpan.org/CPAN/authors/id/T/TH/THALJEF/Test-Perl-Critic-1.03.tar.gz')
-md5sums=('b10da607ed6c6c07eba99e48ce77d88a')
-sha512sums=('2b6b9e7a73d00c99584853fdc5aef74dea5a581bb4bbe103eb65b086de659cb3328b0e58ec6e64413b76fa37a834083ff0c87cdc02413576f910904e0efd7b30')
-_distdir="Test-Perl-Critic-1.03"
+source=("https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/$_distname-$pkgver.tar.gz")
+sha512sums=('bb4d0c671c927e849b24d97feb4c95bb612f5975af165650065d5fdbe2584a48cd8fc39dd14f8ab1a0e75e7ab067a86504f1b3729cdc43dc87bfb146fe526fbb')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -23,21 +23,21 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$srcdir/$_distname-$pkgver"
     /usr/bin/perl Build.PL
     /usr/bin/perl Build
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$srcdir/$_distname-$pkgver"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     /usr/bin/perl Build test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$srcdir/$_distname-$pkgver"
   /usr/bin/perl Build install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
