@@ -28,7 +28,7 @@ build() {
 
   ./autogen.sh
   export FFMPEG_EXTRA_CFG=" --disable-vdpau" 
-  ./configure --prefix=/usr --with-exec-name=$pkgname --with-jobs=12 --with-opencv=sys --enable-x265 --enable-x264
+  ./configure --prefix=/usr --with-exec-name=$pkgname --with-jobs=12 --with-opencv=sys --enable-x265 --enable-x264 --enable-libvpx --enable-fftw --enable-flac --enable-lame --enable-opus
 CFG_VARS="\
 CFLAGS+=' -Wno-narrowing -O2 -g -fno-omit-frame-pointer' \
 CXXFLAGS+=' -Wno-narrowing -O2 -g -fno-omit-frame-pointer' \
