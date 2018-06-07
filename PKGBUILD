@@ -1,6 +1,6 @@
 # Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
 pkgname=magico
-pkgver=VERSION
+pkgver=0.1
 pkgrel=1
 pkgdesc="A minimalist AUR Helper"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/archlinux-br-dev/magico"
 license=('GPL')
 depends=('jq')
 conflicts=()
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=()
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+md5sums=('dd892dbc6420efb9038677bea1fae907')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
