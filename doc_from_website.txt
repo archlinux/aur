@@ -1,0 +1,64 @@
+Tea4CUPS' HomePage
+------------------
+(by Jerome Alet — last modified 2006-04-26 06:49)
+
+Tea4CUPS is a CUPS backend wrapper which can capture print datas before they are sent to a printer and process, duplicate or dispatch them in a number of ways. Tea4CUPS is the Swiss army's knife of the CUPS' Administrator.
+
+
+Description:
+------------
+
+Tea4CUPS is similar in functionnality to the GNU/Linux tee command, but available as a 100% plug and play generic CUPS backend wrapper.
+
+Tea4CUPS is the Swiss Army's knife of the advanced CUPS administrator, and can easily replace or extend most of the existing specialized CUPS backends (pdf, email, ftp, etc...)
+
+You are greatly encouraged to use this software instead of writing your own CUPS backends : Tea4CUPS will let you plug your own scripts, filters, tools, or commands wherever you want, while giving them access to all the print job's characteristics in a consistent way.
+
+Tea4CUPS is a 100% Python written standalone script distributed under the terms of the GNU General Public License of the Free Software Foundation and downloadable from there [1]
+
+Tea4CUPS makes all informations about the current print job, in particular the job's datas and attributes, available to your own commands through environment variables.
+
+Your own commands can optionally decide to discard the current print job instead of printing it.
+
+
+The possibilities are endless:
+
+  * Send the same job to several printers at the same time, which is not possible with CUPS.
+  * Automate the PDF archiving of all print jobs.
+  * Forbid duplicate print jobs (a simple example is shown in the sample configuration file)
+  * Create a print accounting solution in 15 minutes ( YES, THIS IS FOR REAL )
+  * etc...
+
+
+Tea4CUPS provides three ways to launch commands:
+------------------------------------------------
+
+  * filters : A filter can modify the input datas before they are sent to the printer or made available to the pre and post hooks defined below. Currently a single filter can be defined per print queue.
+  * prehooks : these are guaranteed to be launched before the print job is sent to the real printer. Any prehook which exits -1 can cancel the print job. Any number of prehooks can be defined for a particular print queue.
+  * posthooks : these are guaranteed to be launched after the print job has been sent to the real printer, unless the job was previously cancelled by a prehook. Any number of posthooks can be defined for a particular print queue.
+
+To help your own commands, Tea4CUPS makes available as part of the environment several variables which can be used from the commands you use in pre and post hooks (but not filters) :
+
+  * TEAPRINTERNAME: The print queue name.
+  * TEADIRECTORY: Tea4CUPS output directory.
+  * TEADATAFILE: Full name of Tea4CUPS work file (in $TEADIRECTORY).
+  * TEAJOBSIZE: Job's size in bytes.
+  * TEAMD5SUM: MD5 sum of the job's datas.
+  * TEACLIENTHOST: Client's hostname or IP address.
+  * TEAJOBID: Job's Id.
+  * TEAUSERNAME: Name of the user who launched the print job.
+  * TEATITLE: Job's title.
+  * TEACOPIES: Number of copies requested.
+  * TEAOPTIONS: Options of the print job.
+  * TEAINPUTFILE: Print job's data file or empty when job read from stdin.
+  * TEABILLING: Job's billing code (lp -o job-billing=SomeCode file.ps)
+  * TEACONTROLFILE: Job's IPP message file (usually /var/spool/cups/c?????)
+  * TEASTATUS: Original CUPS backend's exit code : ONLY AVAILABLE FROM posthooks, obviously.
+
+In addition, prehooks can send datas to posthooks through pipes.
+
+The only limit on what you can do with Tea4CUPS is your own imagination. 
+
+
+[1] Download:
+http://www.pykota.com/software/tea4cups/download

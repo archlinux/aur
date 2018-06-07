@@ -1,0 +1,5 @@
+post_install() {
+  echo ""
+  echo ">> Please see the documentation on how to set up printers with tea4cups."
+  echo ""
+}
