@@ -1,7 +1,7 @@
 # Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=beaker-browser-bin
-pkgver=0.8.0_prerelease.5
-pkgrel=2
+pkgver=0.8.0_prerelease.6
+pkgrel=1
 pkgdesc="Peer-to-peer browser with tools to create and host websites"
 arch=('x86_64')
 url="https://beakerbrowser.com/"
@@ -16,7 +16,7 @@ source=("https://github.com/beakerbrowser/beaker/releases/download/${pkgver//_/-
         "beaker.png"
         "LICENSE")
 noextract=()
-md5sums=('af3d894fdd3397af2722142a45bb5e7e'
+md5sums=('942646147b0c21fc268778e3dbb88f0e'
          'b10231529d8728fda5cadec2363d1ed1'
          '6294b99dbab87ee048a65a202dd05d9b'
          '9cbb1795dc2934472f7c2b021294964d'
