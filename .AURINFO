@@ -1,0 +1,17 @@
+pkgbase = pict-git
+	pkgdesc = Pairwise Independent Combinatorial Testing
+	pkgver = r32.890a384
+	pkgrel = 2
+	url = https://github.com/Microsoft/pict
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libstdc++5
+	makedepends = clang
+	provides = pict
+	conflicts = pict
+	source = git+https://github.com/Microsoft/pict.git
+	md5sums = SKIP
+
+pkgname = pict-git
+
