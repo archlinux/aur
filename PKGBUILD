@@ -1,8 +1,9 @@
 # maintainer : marin <turquoise.hexagon@protonmail.com>
 
-pkgname=cherry-font
+_pkgname=cherry
+pkgname=$_pkgname-font
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="cherry, yet another bitmap font"
 url="https://github.com/marinhoc/cherry"
 source=("$pkgname::git+https://github.com/marinhoc/cherry")
@@ -15,14 +16,14 @@ md5sums=('SKIP')
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname" || exit
+    cd "$srcdir/$_pkgname" || exit
     for b in *.bdf; do
         bdftopcf -o "${b/.bdf/.pcf}" "$b"
     done
 }
 
 package() {
-    cd "$srcdir/$pkgname" || exit
+    cd "$srcdir/$_pkgname" || exit
 
     install -d -m755 "$pkgdir/usr/share/fonts/misc"
     install -D -m644 *.pcf "$pkgdir/usr/share/fonts/misc"
