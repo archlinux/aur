@@ -1,8 +1,8 @@
 # Maintainer: Hendrik Werner <hendrik.to@gmail.com>
 
 pkgname=backlight_control
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc='Simple backlight brightness control'
 arch=('x86_64')
 url='https://github.com/Hendrikto/backlight_control'

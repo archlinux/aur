@@ -1,12 +1,12 @@
 pkgbase = backlight_control
 	pkgdesc = Simple backlight brightness control
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/Hendrikto/backlight_control
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	source = backlight_control-1.1::git+https://github.com/Hendrikto/backlight_control.git
+	source = backlight_control-1.2::git+https://github.com/Hendrikto/backlight_control.git
 	sha256sums = SKIP
 
 pkgname = backlight_control
