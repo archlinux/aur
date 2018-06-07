@@ -1,10 +1,11 @@
 pkgbase = softethervpn
 	pkgdesc = Multi-protocol VPN Program from University of Tsukuba
 	pkgver = v4.25_9656
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.softether.org/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	arch = armv7h
 	license = GPL
 	depends = bash

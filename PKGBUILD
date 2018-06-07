@@ -2,9 +2,9 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn
 pkgver=v4.25_9656
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 source=('http://www.softether-download.com/files/softether/v4.25-9656-rtm-2018.01.15-tree/Source_Code/softether-src-v4.25-9656-rtm.tar.gz'
         'softethervpn-bridge.service'
         'softethervpn-client.service'
