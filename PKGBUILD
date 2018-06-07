@@ -11,6 +11,7 @@ url="https://github.com/BurntSushi/imdb-rename"
 license=('Unlicense/MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BurntSushi/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('54cbc5db14dea8c84a9e1285b5cad0d7752d8a20577c40aabbf2192998132d6a2ec556b50ee99c9822f7e517736083aebf56809ecb90dfe1bd7100da03fe9dc9')
+conflicts=('imdb-rename-git')
 
 
 build() {
