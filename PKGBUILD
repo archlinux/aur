@@ -8,22 +8,22 @@ _use_marco=0
 # Autoset depending on marco option
 _use_gtk3=0
 
-_upstream="compiz"
+_upstream="compiz-core"
 _pkgver=0.8.14
 _micro=""
 
 pkgbase=compiz-core
 pkgname=(compiz-core compiz-gtk)
 pkgver="${_pkgver}${_micro}"
-pkgrel=5
+pkgrel=6
 pkgdesc="This is the latest stable release of Compiz without DE deps"
-url="https://github.com/compiz-reloaded/${_upstream}/"
+url="https://gitlab.com/compiz/${_upstream}/"
 license=('GPL' 'LGPL' 'MIT')
 arch=('i686' 'x86_64')
 depends=('startup-notification' 'librsvg' 'dbus' 'glu' 'libxslt' 'libxrandr' 'libsm' 'libxcomposite' 'libxinerama')
 makedepends=('intltool' 'libice')
 options=(!libtool !emptydirs)
-source=("${url}/releases/download/v${pkgver}/${_upstream}-${pkgver}.tar.xz")
+source=("${url}-/archive/v${pkgver}/${_upstream}-v${pkgver}.tar.bz2")
 
 _configure_opts=(
   --prefix=/usr
@@ -62,7 +62,7 @@ fi
 
 build()
 {
-  cd "${srcdir}/${_upstream}-${pkgver}"
+  cd "${srcdir}/${_upstream}-v${pkgver}"
 
   NOCONFIGURE=1 ./autogen.sh
   ./configure "${_configure_opts[@]}"
@@ -76,7 +76,7 @@ build()
 }
 
 package_compiz-core() {
-  cd "${srcdir}/${_upstream}-${pkgver}"
+  cd "${srcdir}/${_upstream}-v${pkgver}"
 
   pkgdesc+=" (Core w/o decorator)"
   conflicts=('compiz')
@@ -116,10 +116,10 @@ package_compiz-gtk()
 
   pkgdesc+=" (GTK+ window decorator)"
 
-  cd "${srcdir}/${_upstream}-${pkgver}/gtk-window-decorator"
+  cd "${srcdir}/${_upstream}-v${pkgver}/gtk-window-decorator"
   make DESTDIR="${pkgdir}" install
 
-  cd "${srcdir}/${_upstream}-${pkgver}/images"
+  cd "${srcdir}/${_upstream}-v${pkgver}/images"
   make DESTDIR="${pkgdir}" install
 
   local REMOVE_THESE=(
@@ -136,4 +136,4 @@ package_compiz-gtk()
   done
 }
 
-sha256sums=('f748b3a3c5a746d509925af72fd0cae6b69f880944ea6c1fa6e2eaf9425459b6')
+sha256sums=('7d6b27be0f49abdf6a8ff064e7bc96f01815ec86d0453b94d5b9240587e91089')
