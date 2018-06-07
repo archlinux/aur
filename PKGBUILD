@@ -2,7 +2,7 @@
 
 pkgname=nvidia-docker
 pkgver=2.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Build and run Docker containers leveraging NVIDIA GPUs'
 url='https://github.com/NVIDIA/nvidia-docker'
 arch=(any)
@@ -15,7 +15,7 @@ package() {
   cd "${pkgname}-${pkgver}"
 
   install -d ${pkgdir}/usr/bin
-  install -m700 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  install -m755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
   
   install -d ${pkgdir}/etc/docker
   install -m644 daemon.json ${pkgdir}/etc/docker/daemon.json
