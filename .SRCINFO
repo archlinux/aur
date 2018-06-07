@@ -1,0 +1,33 @@
+pkgbase = r-rio
+	pkgdesc = A Swiss-Army Knife for Data I/O
+	pkgver = 0.5.10
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rio
+	arch = any
+	license = GPL2
+	depends = r
+	depends = r-haven
+	depends = r-curl
+	depends = r-data.table
+	depends = r-readxl
+	depends = r-openxlsx
+	depends = r-tibble
+	optdepends = r-bit64
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-clipr
+	optdepends = r-csvy
+	optdepends = r-feather
+	optdepends = r-fst
+	optdepends = r-jsonlite
+	optdepends = r-readods
+	optdepends = r-readr
+	optdepends = r-rmatio
+	optdepends = r-xml2
+	optdepends = r-yaml
+	source = https://cran.r-project.org/src/contrib/rio_0.5.10.tar.gz
+	md5sums = c2578de45fdd19e68802e53aea937c7a
+
+pkgname = r-rio
+
