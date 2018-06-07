@@ -1,22 +1,24 @@
 # Maintainer: grimsock <lord.grimsock at gmail dot com>
 # Contributor: Fraser P. Newton <fpnewton90 [at] gmail [dot] com>
 
-pkgname=gcp-cups-connector
-pkgver=v1.15.r1.g11d2968
+pkgname=cloud-print-connector-git
+pkgver=v1.16.r1.ga780351
 pkgrel=1
-pkgdesc="The Google Cloud Print (aka GCP) CUPS Connector shares CUPS printers with users of Google Cloud Print."
+pkgdesc="Share printers from your Windows, Linux, FreeBSD or OS X computer with ChromeOS and Android devices, using the Cloud Print Connector"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
-url="https://github.com/google/cups-connector"
+url="https://github.com/google/cloud-print-connector"
 license=('BSD')
 depends=('cups' 'net-snmp')
 makedepends=('go' 'net-snmp' 'avahi' 'git' 'bzr')
 optdepends=('gcp-cups-connector-systemd')
-source=('gcp-cups-connector::git+https://github.com/google/cups-connector.git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/google/cloud-print-connector.git')
 md5sums=('SKIP')
-_gourl=github.com/google/cups-connector
+_gourl=github.com/google/cloud-print-connector
 
 pkgver() {
-	cd "$pkgname"
+	cd "$srcdir/${pkgname%-git}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -31,7 +33,7 @@ package() {
 
 	for f in LICENSE COPYING LICENSE.* COPYING.*; do
 		if [ -e "$srcdir/src/$_gourl/$f" ]; then
-			install -Dm644 "$srcdir/src/$_gourl/$f" "$pkgdir/usr/share/licenses/$pkgname/$f"
+			install -Dm644 "$srcdir/src/$_gourl/$f" "$pkgdir/usr/share/licenses/${pkgname%-git}/$f"
 		fi
 	done
 
