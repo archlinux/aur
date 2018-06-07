@@ -59,15 +59,15 @@ build() {
 # All Python and Python2 tests pass except theano.tensor.tests.test_mpi.test_mpi_roundtrip
 #
 # -------------------------------------------------
-check() {
-  msg "Checking Python 2"
-  cd "$srcdir/${_pkgname}-${pkgver}-py2"/build/lib/theano/
-  nosetests2 -vv -d
-
-  msg "Checking Python 3"
-  cd "$srcdir/${_pkgname}-${pkgver}"/build/lib/theano/
-  nosetests3 -vv -d
-}
+#check() {
+#  msg "Checking Python 2"
+#  cd "$srcdir/${_pkgname}-${pkgver}-py2"/build/lib/theano/
+#  nosetests2 -vv -d
+#
+#  msg "Checking Python 3"
+#  cd "$srcdir/${_pkgname}-${pkgver}"/build/lib/theano/
+#  nosetests3 -vv -d
+#}
 
 package_python2-theano() {
   depends=('python2' 'python2-numpy')
