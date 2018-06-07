@@ -2,7 +2,7 @@
 
 pkgname=emacs-with-editor
 pkgver=2.7.3
-pkgrel=0
+pkgrel=1
 pkgdesc="Use the Emacsclient as the $EDITOR of child processes"
 arch=('any')
 _github_org="magit"
