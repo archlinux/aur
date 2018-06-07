@@ -14,7 +14,7 @@ pkgbase = katweb
 	backup = usr/share/katweb/ssl/server.crt
 	backup = usr/share/katweb/ssl/server.key
 	source = https://github.com/kittyhacker101/KatWeb/archive/v1.9.7.tar.gz
-	source = https://cdn.kittyhacker101.tk/Static/aur.patch
+	source = https://kittyhacker101.tk/Static/aur.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 
