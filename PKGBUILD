@@ -3,11 +3,10 @@
 # Contributor: Skippy the Kangoo <Skippythekangoo CHEZ yahoo POINT fr>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
-pkgbase='sat-xmpp-hg'
-pkgname=('sat-xmpp-hg')
+pkgname='sat-xmpp-hg'
 _realname=sat
-pkgver=0.7.0.r2605.87f8cf51fca5
-VERSION=0.7.0
+pkgver=0.7.0.r2608.0883bac573fd
+_version=0.7.0
 pkgrel=1
 url="http://salut-a-toi.org/"
 pkgdesc="Salut à Toi, multi-frontends multi-purposes XMPP client (core)"
@@ -20,29 +19,24 @@ md5sums=('SKIP')
 options=('!strip')
 
 pkgver() {
-  cd "$_realname"
-  printf "$VERSION.r%s.%s" "$(hg identify -n)" "$(hg identify -i)" 
+    cd "$_realname"
+    printf "$_version.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
-                 
+
 build() {
     cd "$srcdir/$_realname"
     python2 setup.py build
-                         
-    install -dm755 "$srcdir/fakeinstall/"
     python2 setup.py install --root="$srcdir/fakeinstall/" --prefix=/usr --optimize=1
 }
 
 package(){
-     cd "$pkgdir"
-     install -dm755 usr/bin/
-     install -dm755 usr/lib/python2.7/site-packages/
-     install -dm755 usr/lib/python2.7/site-packages/sat_frontends               
-     cd "$srcdir/fakeinstall"
-     mv -v usr/bin/* "$pkgdir/usr/bin/"
-     mv -v usr/share/ "$pkgdir/usr/"
-     mv -v usr/lib/python2.7/site-packages/{sat-*,sat_frontends,sat} "$pkgdir/usr/lib/python2.7/site-packages/"
-     mv -v usr/lib/python2.7/site-packages/twisted/ "$pkgdir/usr/lib/python2.7/site-packages/"
+    cd "$pkgdir"
+    install -dm755 usr/bin/
+    install -dm755 usr/lib/python2.7/site-packages/
+    install -dm755 usr/lib/python2.7/site-packages/sat_frontends
+    cd "$srcdir/fakeinstall"
+    mv -v usr/bin/* "$pkgdir/usr/bin/"
+    mv -v usr/share/ "$pkgdir/usr/"
+    mv -v usr/lib/python2.7/site-packages/{sat-*,sat_frontends,sat} "$pkgdir/usr/lib/python2.7/site-packages/"
+    mv -v usr/lib/python2.7/site-packages/twisted/ "$pkgdir/usr/lib/python2.7/site-packages/"
  }
-
-
-
