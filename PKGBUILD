@@ -6,8 +6,8 @@
 
 pkgbase=phpstorm
 pkgname=(phpstorm phpstorm-jre)
-pkgver=2018.1.4
-_pkgver=181.5087.24
+pkgver=2018.1.5
+_pkgver=181.5281.19
 pkgrel=1
 pkgdesc='Lightweight and Smart PHP IDE'
 arch=('x86_64' 'i686')
@@ -17,12 +17,12 @@ makedepends=('rsync')
 options=('!strip')
 source=(https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz
         jetbrains-phpstorm.desktop)
-sha512sums=('b9c94bb641e135d683c5a421ae8ff754e2b8b07056d7e1d91d3f1e6486ddafcc2a45d5d15502d6805ad7cd80c1ebd018a1466d8c45f1d14915c597e35e9744bd'
+sha512sums=('3b6f4a9b247e0b41515445b4d807f6f7cd5c559964c5c0937cb082a486da496828c285dc5ad246f787f19d8ba267918985b37aa0db58652164caaa7de193e235'
             'fe312d7c637ec20bd946f2e22681243a51f29afc1052ae3fe5afd0fe01f77c222bf1e2c98f0afad8d5385466215653b7ffa8718da05b6dac100ba768ff2be1d6')
 
 package_phpstorm() {
   optdepends=('phpstorm-jre: JetBrains custom Java Runtime (Recommended)'
-              'java-runtime: JRE - Required if webstorm-jre is not installed'
+              'java-runtime: JRE - Required if phpstorm-jre is not installed'
               'gnome-keyring: save login/deployment credentials safely')
 
   install -d -m 755 "${pkgdir}/opt/"
