@@ -1,6 +1,6 @@
 pkgbase = mpd-minimal
 	pkgdesc = Flexible, powerful, server-side application for playing music. Minimal version with only flac playback through socket connection as user.
-	pkgver = 0.20.19
+	pkgver = 0.20.20
 	pkgrel = 1
 	url = https://www.musicpd.org/
 	arch = i686
@@ -14,12 +14,12 @@ pkgbase = mpd-minimal
 	depends = libmpdclient
 	depends = sqlite
 	depends = libsystemd
-	provides = mpd=0.20.19
+	provides = mpd=0.20.20
 	conflicts = mpd
-	source = https://www.musicpd.org//download/mpd/0.20/mpd-0.20.19.tar.xz
-	source = https://www.musicpd.org//download/mpd/0.20/mpd-0.20.19.tar.xz.sig
+	source = https://www.musicpd.org//download/mpd/0.20/mpd-0.20.20.tar.xz
+	source = https://www.musicpd.org//download/mpd/0.20/mpd-0.20.20.tar.xz.sig
 	validpgpkeys = 0392335A78083894A4301C43236E8A58C6DB4512
-	sha256sums = 01cdef1b9217588a8fa64dc2cba900c138e1363a787837b4c8327c652b7956c3
+	sha256sums = a9e458c6e07cdf62649de7722e1e5a7f13aa82eeb397bfbbebc07cf5cf273584
 	sha256sums = SKIP
 
 pkgname = mpd-minimal
