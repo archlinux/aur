@@ -1,7 +1,7 @@
 pkgbase = tea4cups-svn
 	pkgdesc = CUPS backend wrapper which can capture print datas before they are sent to a printer and process, duplicate or dispatch them in a number of ways. Swiss army's knife of the CUPS' Administrator.
 	pkgver = 3.13alpha_unofficial+3574
-	pkgrel = 4
+	pkgrel = 6
 	url = http://www.pykota.com/software/tea4cups/
 	install = tea4cups.install
 	arch = any
@@ -15,9 +15,11 @@ pkgbase = tea4cups-svn
 	backup = etc/cups/tea4cups.conf
 	source = tea4cups::svn+http://svn.pykota.com/tea4cups/trunk
 	source = doc_from_website.txt
+	source = doc_debianwiki.html::http://wiki.debian.org/Tea4CUPS
 	source = tea4cups.install
 	sha256sums = SKIP
 	sha256sums = 6221890bbd1ab3806efeec8624161c80742d1c5fce24c9094e4f8f8466ba2923
+	sha256sums = SKIP
 	sha256sums = 315c82e6e9d352ecb32d511c9290790ac2a52e60e82d4727bff350fcf03aacf0
 
 pkgname = tea4cups-svn
