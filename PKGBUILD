@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-freetype2
-pkgver=2.9
+pkgver=2.9.1
 pkgrel=1
 pkgdesc='Font rasterization library (mingw-w64)'
 arch=('any')
@@ -20,11 +20,11 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pk
         0002-Enable-infinality-subpixel-hinting.patch
         0003-Enable-long-PCF-family-names.patch)
 options=(!strip !buildflags !libtool staticlibs)
-sha1sums=('94c4399b1a55c5892812e732843fcb4a7c2fe657'
+sha1sums=('220c82062171c513e4017c523d196933c9de4a7d'
           'SKIP'
-          'b69531770c343d403be294b7e4d25ac45738c833'
-          '3d26a569f0cb94c28a550577f5dcaadb4e193d91'
-          '770f1981734a837bcf065564c91644b4cc5e256a')
+          'd9eb22e5c962923089b0c9fc5491cf28a19bd982'
+          'd13503902e0404cf3558db76b477f23f9910d06e'
+          'fc49742fb6c19fe0677e3552bb7c00aac8530265')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
 if [[ $pkgname = 'mingw-w64-freetype2-bootstrap' ]]; then
