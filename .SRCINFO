@@ -1,13 +1,15 @@
 pkgbase = tea4cups-svn
 	pkgdesc = CUPS backend wrapper which can capture print datas before they are sent to a printer and process, duplicate or dispatch them in a number of ways. Swiss army's knife of the CUPS' Administrator.
 	pkgver = 3.13alpha_unofficial+3574
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pykota.com/software/tea4cups/
 	install = tea4cups.install
 	arch = any
 	license = GPL2
 	depends = cups
 	depends = python2
+	depends = python2-configparser
+	depends = python2-urllib3
 	provides = tea4cups-doc=3.13alpha_unofficial+3574
 	backup = etc/cups/tea4cups.conf
 	source = tea4cups::svn+http://svn.pykota.com/tea4cups/trunk

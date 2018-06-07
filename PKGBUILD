@@ -3,12 +3,14 @@
 _pkgname=tea4cups
 pkgname="${_pkgname}-svn"
 pkgver=3.13alpha_unofficial+3574
-pkgrel=2
+pkgrel=3
 pkgdesc="CUPS backend wrapper which can capture print datas before they are sent to a printer and process, duplicate or dispatch them in a number of ways. Swiss army's knife of the CUPS' Administrator."
 arch=('any')
 depends=(
   'cups'
   'python2'
+  'python2-configparser'
+  'python2-urllib3'
 )
 install=tea4cups.install
 url="http://www.pykota.com/software/tea4cups/"
