@@ -8,6 +8,8 @@ post_install() {
     echo ""
     echo "High DPI scaling is disabled by default upstream"
     echo "This can be overridden by setting Core/EnableHighDpiScaling to true in your QtCreator settings"
+    echo "It unfortunately looks quite bad, so you have to choose between small UI elements or poorly scaling heuristics"
+    echo "Or the gtk platform plugin which looks great, but breaks documentation. (Due to hard coded qtwebengine workarounds)"
     echo ""
 }
 #post_install
