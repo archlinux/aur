@@ -4,7 +4,7 @@
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname='mingw-w64-headers'
-pkgver=5.0.3
+pkgver=5.0.4
 _pkgver=${pkgver/rc/-rc}
 pkgrel=2
 pkgdesc="MinGW-w64 headers for Windows"
@@ -14,17 +14,12 @@ license=('custom')
 groups=('mingw-w64-toolchain' 'mingw-w64')
 options=('!strip' '!libtool' '!emptydirs')
 validpgpkeys=('CAF5641F74F7DFBA88AE205693BDB53CD4EBC740')
-source=(https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${_pkgver}.tar.bz2{,.sig}
-        0001-intrin-impl.h-do-not-define-_xgetbv-for-GCC-8.patch)
-sha256sums=('2a601db99ef579b9be69c775218ad956a24a09d7dabc9ff6c5bd60da9ccc9cb4'
-            'SKIP'
-            'be8aabf9c98026db998c97e7e14293d4a9db9a73587ab860e72d7a798b6ad16e')
+source=(https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${_pkgver}.tar.bz2{,.sig})
+sha256sums=('5527e1f6496841e2bb72f97a184fc79affdcd37972eaa9ebf7a5fd05c31ff803'
+            'SKIP')
 
 prepare() {
   cd "$srcdir"/mingw-w64-v${_pkgver}
-
-  # https://sourceforge.net/p/mingw-w64/mailman/message/36200602/
-  patch -p1 -i "$srcdir"/0001-intrin-impl.h-do-not-define-_xgetbv-for-GCC-8.patch
 }
 
 build() {
