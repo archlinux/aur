@@ -1,7 +1,7 @@
 pkgbase = surfer
-	pkgdesc = basic webkit2gtk browser
-	pkgver = 2
-	pkgrel = 2
+	pkgdesc = simple webkit2gtk browser
+	pkgver = 3
+	pkgrel = 0
 	url = https://github.com/nihilowy/surfer
 	arch = i686
 	arch = x86_64
