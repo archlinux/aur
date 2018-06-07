@@ -1,0 +1,15 @@
+pkgbase = suru-plus-git
+	pkgdesc = An icon pack designed to integrate with most desktop environments
+	pkgver = r2.84b10a3
+	pkgrel = 1
+	url = https://github.com/Magog64/SURU-PLUS
+	arch = any
+	license = GPL3
+	makedepends = git
+	conflicts = SURU-PLUS
+	options = !strip
+	source = git+https://github.com/Magog64/SURU-PLUS.git
+	sha256sums = SKIP
+
+pkgname = suru-plus-git
+
