@@ -1,0 +1,15 @@
+pkgbase = k6
+	pkgdesc = A modern load testing tool, using Go and JavaScript
+	pkgver = 0.21.1
+	pkgrel = 1
+	url = https://github.com/loadimpact/k6
+	arch = x86_64
+	arch = i686
+	license = AGPL3
+	makedepends = mercurial
+	depends = go
+	options = !strip
+	options = !emptydirs
+
+pkgname = k6
+
