@@ -2,8 +2,8 @@
 pkgbase=netease-musicbox-git
 pkgname=(netease-musicbox-git netease-musicbox-py2-git)
 _gitname=musicbox
-pkgver=r557.f4a7dfa
-pkgrel=2
+pkgver=r564.57d0fde
+pkgrel=1
 pkgdesc="A sexy command line interface musicbox for NetEase based on Python"
 arch=(any)
 url="https://github.com/darknessomi/musicbox"
@@ -12,14 +12,14 @@ optdepends=('aria2: music caching'
             'libnotify: notifications'
            )
 license=('MIT')
-_py2depends=('python2' 'mpg123' 'python2-beautifulsoup4' 
-             'python2-requests' 'python2-setuptools' 
-             'python2-crypto' 'python2-future' 'python2-lxml' 
-             'python2-cryptography' )
-_py3depends=('python' 'mpg123' 'python-beautifulsoup4' 
-             'python-requests' 'python-setuptools' 
-             'python-crypto' 'python-future' 'python-lxml' 
-             'python-cryptography')
+_py2depends=('python2' 'mpg123' 'python2-beautifulsoup4'
+             'python2-requests' 'python2-setuptools'
+             'python2-crypto' 'python2-future' 'python2-lxml'
+             'python2-cryptography' 'python2-requests-cache')
+_py3depends=('python' 'mpg123' 'python-beautifulsoup4'
+             'python-requests' 'python-setuptools'
+             'python-crypto' 'python-future' 'python-lxml'
+             'python-cryptography' 'python-requests-cache')
 makedepends=('git'
   ${_py2depends[@]}
   ${_py3depends[@]}
