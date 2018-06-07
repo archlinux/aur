@@ -9,20 +9,20 @@ _micro=""
 
 pkgname=compizconfig-python
 pkgver="${_pkgver}${_micro}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Compizconfig bindings for python"
 arch=('i686' 'x86_64')
-url="https://github.com/compiz-reloaded/${_upstream}/"
+url="https://gitlab.com/compiz/${_upstream}/"
 license=('GPL')
-depends=("compiz-core>=${pkgver}" 'libcompizconfig' 'glib2' 'python' 'libxrandr' 'libsm' 'libxdamage')
+depends=("compiz-core>=v${pkgver}" 'libcompizconfig' 'glib2' 'python' 'libxrandr' 'libsm' 'libxdamage')
 makedepends=('cython' 'intltool' 'pkgconfig')
 options=('!libtool')
 conflicts=('compizconfig-python-git')
-source=("${url}/releases/download/v${pkgver}/${_upstream}-${pkgver}.tar.xz")
+source=("${url}-/archive/v${pkgver}/${_upstream}-v${pkgver}.tar.bz2")
 
 build()
 {
-	cd "${srcdir}/${_upstream}-${pkgver}"
+	cd "${srcdir}/${_upstream}-v${pkgver}"
 
 	NOCONFIGURE=1 ./autogen.sh
 	PYTHON=python ./configure --prefix=/usr
@@ -31,9 +31,9 @@ build()
 
 package()
 {
-	cd "${srcdir}/${_upstream}-${pkgver}"
+	cd "${srcdir}/${_upstream}-v${pkgver}"
 
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('a119c51f4892bb5f5f8067c038e3a5b7720df0c73280ce642d87a0495c9ca256')
+sha256sums=('49a084a09836cdc4e82e12572411478d34918de07c3d797dfcc2b5c73aa1b654')
