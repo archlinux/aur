@@ -1,8 +1,8 @@
 # Maintainer: Noa-Emil Nissinen <aur dot satella at spamgourmet dot org>
 
 pkgname=mingw-w64-headers-bin
-pkgver=5.0.3
-pkgrel=3
+pkgver=5.0.4
+pkgrel=1
 pkgdesc="MinGW-w64 headers for Windows (pre-compiled)"
 arch=('any')
 url="http://mingw-w64.sourceforge.net"
@@ -11,8 +11,8 @@ groups=('mingw-w64-toolchain' 'mingw-w64')
 provides=("mingw-w64-headers=${pkgver}")
 conflicts=('mingw-w64-headers')
 options=('!strip' '!libtool' '!emptydirs')
-source=("https://github.com/4shadoww/mingw-w64-builds/releases/download/binary/mingw-w64-headers-$pkgver-2.tar.xz")
-md5sums=("f792f12e98c607664e72a4287328cb0b")
+source=("https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-headers/mingw-w64-headers-$pkgver.tar.xz")
+md5sums=("fd196dfd9b3da6dc3476d4e7b29c057a")
 
 package() {
   cd "mingw-w64-headers/"
