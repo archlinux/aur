@@ -4,8 +4,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-mew
-pkgver=6.7
-pkgrel=2
+pkgver=6.8
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Messaging in the Emacs World"
 url="http://www.mew.org/"
@@ -13,18 +13,18 @@ license=('custom')
 depends=('emacs')
 optdepends=('ruby')
 source=("http://mew.org/Release/mew-${pkgver}.tar.gz")
-md5sums=('feb81a0ff420f00c5bc5b5287721991a')
+md5sums=('9601f98c8d3adb229841601aecd17035')
 
 build()
 {
-  cd $srcdir/mew-${pkgver}
+  cd mew-${pkgver}
   ./configure --prefix=$pkgdir/usr
 }
 
 package() {
-  cd $srcdir/mew-${pkgver}
+  cd mew-${pkgver}
   make install
-  rm $pkgdir/usr/share/info/dir
-  install -D -m644 $srcdir/mew-$pkgver/00copyright \
-    $pkgdir/usr/share/licenses/emacs-mew/00copyright 
+  rm "$pkgdir"/usr/share/info/dir
+  install -D -m644 00copyright \
+    "$pkgdir"/usr/share/licenses/emacs-mew/00copyright 
 }
