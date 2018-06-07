@@ -8,7 +8,7 @@
 pkgname=firefox-esr-gtk2
 _pkgname=firefox-esr
 pkgver=52.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -31,6 +31,7 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         rust-i686.patch
         make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
         use_noexcept_in_mozalloc.patch
+        ffmpeg4.patch.gz
         firefox-52-disable-pocket-leftovers.patch)
 sha256sums=('babed4fe0ae95783e39358aedf7111b20fd9442f73b3b41b025fa4951fe76287'
             'ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef'
@@ -41,6 +42,7 @@ sha256sums=('babed4fe0ae95783e39358aedf7111b20fd9442f73b3b41b025fa4951fe76287'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
             '7760ebe71f4057cbd2f52b715abaf0d944c14c39e2bb2a5322114ad8451e12d9'
             '32eae55bf9151df5f77ee98585e6cef4cc7ee2e5f2ca44c1a42f87d132eb22d8'
+            '2a285e0c31968e3fe9b65a585838b46f9342ff0a369e786a729b4c3886617034'
             'd6760634e4926ce5ad0df501d06139a5e693d7058e671a195c9e0b54197c1d96')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
@@ -76,14 +78,18 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1384062
   patch -Np1 -i ../make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
 
+  # https://hg.mozilla.org/mozilla-central/rev/ae7e3082d862
+  patch -Np1 -i ../use_noexcept_in_mozalloc.patch
+
+  # https://hg.mozilla.org/releases/mozilla-esr60/rev/2f39b32593bd
+  # https://svnweb.freebsd.org/ports/head/www/firefox/files/patch-bug1435212?view=markup&pathrev=468159
+  patch -Np0 -i ../ffmpeg4.patch
+  
   ## Patch from aur/firefox-esr-privacy ##
   # Disable Pocket integration
   patch -Np1 -i "$srcdir"/firefox-52-disable-pocket-leftovers.patch
   # Remove pocket source directory
   rm -fr browser/extensions/pocket
-
-  # https://hg.mozilla.org/mozilla-central/rev/ae7e3082d862
-  patch -Np1 -i ../use_noexcept_in_mozalloc.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
