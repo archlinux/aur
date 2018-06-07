@@ -1,7 +1,7 @@
 pkgbase = nvidia-docker
 	pkgdesc = Build and run Docker containers leveraging NVIDIA GPUs
 	pkgver = 2.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NVIDIA/nvidia-docker
 	arch = any
 	license = BSD

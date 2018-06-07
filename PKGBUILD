@@ -2,7 +2,7 @@
 
 pkgname=nvidia-docker
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Build and run Docker containers leveraging NVIDIA GPUs'
 url='https://github.com/NVIDIA/nvidia-docker'
 arch=(any)
