@@ -10,29 +10,29 @@ _micro=""
 
 pkgname=compiz-fusion-plugins-experimental
 pkgver="${_pkgver}${_micro}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiz Experimental plugins"
 arch=('i686' 'x86_64')
-url="https://github.com/compiz-reloaded/${_upstream}/"
+url="https://gitlab.com/compiz/${_upstream}/"
 license=('GPL')
 depends=("compiz-core>=${pkgver}" 'compiz-bcop' 'compiz-fusion-plugins-extra' 'libnotify')
 makedepends=('intltool' 'pkg-config' 'gettext')
 groups=('compiz-fusion')
 conflicts=('compiz-fusion-plugins-experimental-git')
 options=('!libtool')
-source=("${url}/releases/download/v${pkgver}/${_upstream}-${pkgver}.tar.xz")
+source=("${url}-/archive/v${pkgver}/${_upstream}-v${pkgver}.tar.bz2")
 
 build() {
-  cd "${srcdir}/${_upstream}-${pkgver}"
-  #NOCONFIGURE=1 ./autogen.sh
+  cd "${srcdir}/${_upstream}-v${pkgver}"
+  NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr
 
   make
 }
 
 package() {
-  cd "${srcdir}/${_upstream}-${pkgver}"
+  cd "${srcdir}/${_upstream}-v${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('9b8ddb36d3b60677b9f19ce53616c4d822e7b05aff675bf3bb42a6b2dc42628a')
+sha256sums=('867e0e5b2f85a812cfecd384d16360129b5ef49e1da75d4e119d3c744bbcf4f1')
