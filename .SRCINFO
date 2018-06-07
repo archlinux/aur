@@ -1,6 +1,6 @@
 pkgbase = paintstorm
 	pkgdesc = Professional software for digital painting
-	pkgver = 2.21
+	pkgver = 2.30
 	pkgrel = 1
 	url = http://www.paintstormstudio.com
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = paintstorm
 	depends = gtk2
 	depends = freeglut
 	depends = ftgl
-	source = http://mdit.to/files/aur/paintstorm-2.21.tar.gz
-	sha256sums = f89540e814e1ff5351e33eca84e862ad5a61be78d76b3a2ae724622e9491ecc3
+	source = http://mdit.to/files/aur/paintstorm-2.30.tar.gz
+	sha256sums = 2114329a35d720611156e78769f24fe1267566b3bd24db0579cd6c1763c6bdb6
 
 pkgname = paintstorm
-
