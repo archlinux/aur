@@ -8,7 +8,6 @@ url="https://github.com/marinhoc/cherry"
 source=("$pkgname::git+https://github.com/marinhoc/cherry")
 licence=('MIT')
 arch=('any')
-depends=('')
 makedepends=('git' 'xorg-font-utils')
 install="$pkgname.install"
 md5sums=('SKIP')
