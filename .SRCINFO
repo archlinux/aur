@@ -1,6 +1,6 @@
 pkgbase = python-keras
 	pkgdesc = Deep Learning library (convnets, recurrent neural networks, and more)
-	pkgver = 2.1.6
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/fchollet/keras
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-keras
 	makedepends = python2-scipy
 	makedepends = python2-h5py
 	makedepends = python2-yaml
-	source = keras-2.1.6.tar.gz::https://github.com/fchollet/keras/archive/2.1.6.tar.gz
-	sha256sums = 88734b83105a7f3aecfe52153db9f47cf7ab5a44c613922d43dc6d8b646f484e
+	source = keras-2.2.0.tar.gz::https://github.com/fchollet/keras/archive/2.2.0.tar.gz
+	sha256sums = 83eae0c251c5ec7e9134e6e79d81da58bfce88e6932fef69dd57c0d512d548f4
 
 pkgname = python-keras
 	depends = python
