@@ -1,7 +1,7 @@
 # Maintainer: Lukas Werling <lukas.werling@gmail.com>
 pkgname=elm-platform
 pkgver=0.18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bundle of all core development tools for the Elm language."
 arch=('i686' 'x86_64')
 url="http://elm-lang.org"
@@ -17,7 +17,7 @@ source=(
   elm-repl-${pkgver}.zip::https://github.com/elm-lang/elm-repl/archive/${pkgver}.zip
   stack.yaml
 )
-sha256sums=('879a030cc750964bdfc821b6927edba94e8ade650b63c95478270287c040a372'
+sha256sums=('911109bbedf13c5a5c154ff8b60087b43cfd8be5e165df09b4e8f532a9f22fcd'
             'a93a2777ee4488510c6e5f82fc7bd7299cbeed7e04004e833d5a8d6f43db44c8'
             'dcd254ba3c30848bc3527fcab197f8608bc913ae0bee17f67cf97ebf7977dfa6'
             '6c5525b2dd35ab6ccf6c5f7e6568bd0164711b8932e80f0caa4a8b9358509902'
