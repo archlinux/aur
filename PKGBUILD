@@ -1,7 +1,7 @@
 # Maintainer: ErnyTech <erny.castell[at]gmail[dot]com>
 pkgname=mcpelauncher-git
 pkgver=20180520
-pkgrel=1
+pkgrel=2
 pkgdesc="Launch MCPE on Linux!"
 url="https://github.com/MCMrARM/mcpelauncher-linux"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'lib32-zlib' 'lib32-libx11' 'lib32-libpng' 'lib32-util-linu
 source=('git+https://github.com/MCMrARM/mcpelauncher-linux.git'
         "mcpelauncher-git.sh")
 md5sums=('SKIP'
-         'bf0df91cd380ebd74f46e79416d37192')
+         '23584bf7039777f78b0b7caa6099955c')
 prepare() {
    cd $srcdir/mcpelauncher-linux
    git submodule update --init --recursive

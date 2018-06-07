@@ -11,7 +11,7 @@ done
 if ! [[ -f mcpelauncher-icon.png ]]; then
     ln -s /opt/mcpelauncher-git/mcpelauncher-icon.png mcpelauncher-icon.png
 fi
-if ! [[ -f src ]]; then
+if ! [[ -d src ]]; then
     ln -s /opt/mcpelauncher-git/src src
 fi
 export LD_LIBRARY_PATH=/opt/mcpelauncher-git/
