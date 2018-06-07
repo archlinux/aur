@@ -2,12 +2,12 @@
 pkgname=mingw-w64-physfs
 _basename=physfs
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to provide abstract access to various archives (mingw-w64)"
 arch=('any')
 url="http://icculus.org/physfs/"
 license=('ZLIB')
-makedepends=('mingw-w64-gcc' 'mingw-gcc-crt' 'mingw-w64-cmake')
+makedepends=('mingw-w64-gcc' 'mingw-w64-crt' 'mingw-w64-cmake')
 depends=('mingw-w64-zlib')
 options=(staticlibs '!strip' '!buildflags' '!makeflags')
 source=(http://icculus.org/physfs/downloads/${_basename}-${pkgver}.tar.bz2)
