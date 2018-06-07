@@ -1,0 +1,22 @@
+pkgbase = r-quantreg
+	pkgdesc = Quantile Regression
+	pkgver = 5.36
+	pkgrel = 1
+	url = https://cran.r-project.org/package=quantreg
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-sparsem
+	depends = r-matrixmodels
+	optdepends = r-tripack
+	optdepends = r-akima
+	optdepends = r-rgl
+	optdepends = r-logspline
+	optdepends = r-nor1mix
+	optdepends = r-formula
+	optdepends = r-zoo
+	source = https://cran.r-project.org/src/contrib/quantreg_5.36.tar.gz
+	md5sums = 4d64dc8694c710b2ee5e373464eabce8
+
+pkgname = r-quantreg
+
