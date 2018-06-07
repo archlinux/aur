@@ -16,11 +16,6 @@ backup=('etc/myougiden/config.ini')
 source=("git+https://github.com/leoboiko/${_pkgname}")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
 	cd ${srcdir}/${_pkgname}
     python setup.py build
