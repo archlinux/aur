@@ -3,7 +3,7 @@
 
 _pkgname=i3lock-fancy-multimonitor
 pkgname="${_pkgname}-git"
-pkgver=1.0.0
+pkgver=r0.0
 pkgrel=0
 pkgdesc="Blurry lock screen for i3lock with multimonitor support"
 license=('MIT')
