@@ -3,12 +3,15 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 # SELinux Contributor: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
+#
+# This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
+# If you want to help keep it up to date, please open a Pull Request there.
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
-_commit='f398c546c6fc43121131f41acec56b5a851bd35e'
-pkgver=238.76
+_commit='f58e62cbbc1c2842881a2a6ab9beda7bcb044a30'
+pkgver=238.133
 pkgrel=1
 arch=('x86_64')
 url="https://www.github.com/systemd/systemd"
@@ -28,11 +31,12 @@ validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <
 # (cf. https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/systemd&id=fa248b709cd106bf65b42f3e93e68decc811e163 )
 # When updating, if makepkg reports "systemd-stable is not a clone of https://github.com/systemd/systemd-stable",
 # you need to update the remotes of the git repositories, for example with the following commands:
-#   git -C systemd-stable set-url origin https://github.com/systemd/systemd-stable
-#   git -C systemd set-url origin https://github.com/systemd/systemd
+#   git -C systemd-stable remote set-url origin https://github.com/systemd/systemd-stable
+#   git -C systemd remote set-url origin https://github.com/systemd/systemd
 source=('git+https://github.com/systemd/systemd-stable'
         'git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
+        'gnupg-keys.gpg'
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
@@ -53,8 +57,9 @@ source=('git+https://github.com/systemd/systemd-stable'
 sha512sums=('SKIP'
             'SKIP'
             '9348683829190628e25b7b3300fd880c426d555bde330d5fc5150a9a54b3ad9d4d1f2e69ea1dc6d6f086693dacc53c5af30f1fa7ad9b479791fd77bcdafa430e'
+            '42dcacfa0b0c68b04267446d2c360e508dab13f06c07506f46632b19fca0561c27bb5813cd916f7d28b53f853f7197f721c1a02aacd7a3cc8d8742bb6a393cff'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            '86d7cacd7536b1069c82bbbb08de7ec81e7f0f18a19fc2b06fabe90db4700623eb3540b75121080d325672d92e26912632ae4f93fd3c0bb48eb3e5eedd88352c'
+            '01de24951a05d38eca6b615a7645beb3677ca0e0f87638d133649f6dc14dcd2ea82594a60b793c31b14493a286d1d11a0d25617f54dbfa02be237652c8faa691'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
@@ -109,6 +114,9 @@ _validate_tag() (
 
 prepare() {
   cd "${pkgbase/-selinux}-stable"
+
+  # import gpg keys for verification
+  gpg --import ../gnupg-keys.gpg
 
   git remote add -f upstream ../systemd
   git checkout "$_commit"
