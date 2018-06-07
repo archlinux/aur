@@ -10,10 +10,10 @@ _micro=""
 
 pkgname=ccsm
 pkgver="${_pkgver}${_micro}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Compizconfig Settings Manager in Python2"
 arch=('any')
-url="https://github.com/compiz-reloaded/${_upstream}/"
+url="https://gitlab.com/compiz/${_upstream}/"
 license=('GPL')
 depends=('compizconfig-python' 'python-gobject' 'python-cairo' 'gtk2')
 makedepends=('intltool')
@@ -22,19 +22,19 @@ groups=('compiz-fusion')
 conflicts=('ccsm-git')
 provides=("ccsm=$pkgver")
 source=(
-	"${url}/releases/download/v${pkgver}/${_upstream}-${pkgver}.tar.xz"
+	"${url}-/archive/v${pkgver}/${_upstream}-v${pkgver}.tar.bz2"
 	"bindings-regression-workaround.patch"
 )
 
 prepare() {
-  cd "${srcdir}/${_upstream}-${pkgver}"
+  cd "${srcdir}/${_upstream}-v${pkgver}"
   patch -Np1 -i "${srcdir}/bindings-regression-workaround.patch"
 }
 
 package() {
-  cd "${srcdir}/${_upstream}-${pkgver}"
+  cd "${srcdir}/${_upstream}-v${pkgver}"
   python ./setup.py install --prefix=/usr --with-gtk=2.0 --root="${pkgdir}"
 }
 
-sha256sums=('f2f23068706f52b8d9d0a06520b09070cfc9b5e5bbac82b71ee7f30ce39f872c'
+sha256sums=('63d8a672a63dfda05a556ec1b5df0b9406602b82825d2910f8870bf1cb3300d8'
             'a71ca356c239a0e88a91bf05f975fd3dd92801beb6bb16d3e69b1b318fdf5ee0')
