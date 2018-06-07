@@ -1,0 +1,14 @@
+pkgbase = r-irlba
+	pkgdesc = Fast Truncated Singular Value Decomposition and Principal Components Analysis for Large Dense and Sparse Matrices
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=irlba
+	arch = x86_64
+	license = GPL3
+	depends = r
+	optdepends = r-pma
+	source = https://cran.r-project.org/src/contrib/irlba_2.3.2.tar.gz
+	md5sums = f710502b70e97abb9bdf3dba961769ed
+
+pkgname = r-irlba
+
