@@ -1,47 +1,33 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
-
 # Maintainer: Florian Schweikert <kelvan@ist-total.org>
+# Maintainer: asm0dey <pavel.finkelshtein@gmail.com>
 pkgname=pict-git
-pkgver=r32.890a384
-pkgrel=2
-pkgdesc="Pairwise Independent Combinatorial Testing"
-arch=("x86_64")
-url="https://github.com/Microsoft/pict"
+_pkgname=pict
+pkgver=46.e7b0efe
+pkgrel=1
+pkgdesc='Tool for pairwise automation: Pairwise Independent Combinatorial Testing'
+arch=('x86_64' 'i686')
+url='https://github.com/Microsoft/pict'
 license=('MIT')
-groups=()
 depends=()
-makedepends=('git' 'libstdc++5' 'clang')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
-source=('git+https://github.com/Microsoft/pict.git')
-noextract=()
+makedepends=('gcc' 'make')
+source=("git+https://github.com/Microsoft/$_pkgname.git")
 md5sums=('SKIP')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	make
+  cd "$srcdir/$_pkgname"
+  make
 }
 
-package() {
-	cd "$srcdir/${pkgname%-git}"
-	install -d "${pkgdir}/usr/bin"
-	install "${srcdir}/${pkgname%-git}"/pict "${pkgdir}/usr/bin/"
+package(){
+  cd "$srcdir/$_pkgname"
+  mkdir -p "$pkgdir/usr/bin/"
+  install -m755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
