@@ -10,11 +10,16 @@ url="https://github.com/leoboiko/myougiden"
 license=('GPLv3')
 depends=('python>=3.0' 'python-romkan' 'python-termcolor')
 makedepends=('git')
-optdepends=('argparser-python: for Python ≤ 3.1' 'psutil: for Python ≤ 3.2' 'rsync: recommended')
+optdepends=('python-argparse: for Python ≤ 3.1' 'python-psutil: for Python ≤ 3.2' 'rsync: recommended')
 provides=('python-myougiden' 'myougiden' 'updatedb-myougiden')
 backup=('etc/myougiden/config.ini')
 source=("git+https://github.com/leoboiko/${_pkgname}")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd ${srcdir}/${_pkgname}
