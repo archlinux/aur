@@ -1,0 +1,20 @@
+pkgbase = r-desc
+	pkgdesc = Manipulate DESCRIPTION Files
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=desc
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-assertthat
+	depends = r-crayon
+	depends = r-rprojroot
+	optdepends = r-covr
+	optdepends = r-testthat
+	optdepends = r-whoami
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/desc_1.2.0.tar.gz
+	md5sums = d885cbcbbe96497662122932253a3475
+
+pkgname = r-desc
+
