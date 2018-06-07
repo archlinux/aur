@@ -1,0 +1,13 @@
+pkgbase = r-sparsem
+	pkgdesc = Sparse Linear Algebra
+	pkgver = 1.77
+	pkgrel = 1
+	url = https://cran.r-project.org/package=SparseM
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/SparseM_1.77.tar.gz
+	md5sums = bb03293245d3d66316dbbb9d0997d4d2
+
+pkgname = r-sparsem
+
