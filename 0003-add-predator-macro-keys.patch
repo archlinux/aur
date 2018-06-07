@@ -1,0 +1,71 @@
+ drivers/platform/x86/acer-wmi.c | 36 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+
+diff --git a/drivers/platform/x86/acer-wmi.c b/drivers/platform/x86/acer-wmi.c
+index 1be71f956d5c..c69fca33ad8e 100644
+--- a/drivers/platform/x86/acer-wmi.c
++++ b/drivers/platform/x86/acer-wmi.c
+@@ -94,6 +94,7 @@ MODULE_ALIAS("wmi:676AA15E-6A47-4D9F-A2CC-1E6D18D14026");
+ enum acer_wmi_event_ids {
+ 	WMID_HOTKEY_EVENT = 0x1,
+ 	WMID_ACCEL_EVENT = 0x5,
++  WMID_MACROKEY_EVENT = 0x7,
+ };
+ 
+ static const struct key_entry acer_wmi_keymap[] __initconst = {
+@@ -129,6 +130,21 @@ static const struct key_entry acer_wmi_keymap[] __initconst = {
+ 	{KE_IGNORE, 0x83, {KEY_TOUCHPAD_TOGGLE} },
+ 	{KE_KEY, 0x85, {KEY_TOUCHPAD_TOGGLE} },
+ 	{KE_KEY, 0x86, {KEY_WLAN} },
++	{KE_KEY, 0xda00, {KEY_PROG1} },
++	{KE_KEY, 0xda01, {KEY_PROG2} },
++	{KE_KEY, 0xda02, {KEY_PROG3} },
++	{KE_KEY, 0xda03, {KEY_PROG4} },
++	{KE_KEY, 0xda04, {KEY_F13} },
++	{KE_KEY, 0xda10, {KEY_F14} },
++	{KE_KEY, 0xda11, {KEY_F15} },
++	{KE_KEY, 0xda12, {KEY_F16} },
++	{KE_KEY, 0xda13, {KEY_F17} },
++	{KE_KEY, 0xda14, {KEY_F18} },
++	{KE_KEY, 0xda20, {KEY_F19} },
++	{KE_KEY, 0xda21, {KEY_F20} },
++	{KE_KEY, 0xda22, {KEY_F21} },
++	{KE_KEY, 0xda23, {KEY_F22} },
++	{KE_KEY, 0xda24, {KEY_F23} },
+ 	{KE_END, 0}
+ };
+ 
+@@ -251,6 +267,7 @@ static bool ec_raw_mode;
+ static bool has_type_aa;
+ static u16 commun_func_bitmap;
+ static u8 commun_fn_key_number;
++static u8 macro_key_state = 0;
+ 
+ module_param(mailled, int, 0444);
+ module_param(brightness, int, 0444);
+@@ -1784,6 +1801,25 @@ static void acer_wmi_notify(u32 value, void *context)
+ 	case WMID_ACCEL_EVENT:
+ 		acer_gsensor_event();
+ 		break;
++  case WMID_MACROKEY_EVENT:
++  	switch(return_value.key_num) {
++  	case 1:
++  		if(return_value.device_state >= 1 && return_value.device_state <= 3)
++  			macro_key_state = return_value.device_state - 1;
++  		else
++  			pr_warn("acer_wmi: macro key state %d requested (only values 1 to 3 are known)\n", return_value.device_state);
++  		break;
++  	case 2:
++  		if(return_value.device_state >= 1 && return_value.device_state <= 5)
++  			sparse_keymap_report_event(acer_wmi_input_dev, 0xda00 + (macro_key_state<<4) + return_value.device_state-1, 1, true);
++  		else
++  			pr_warn("acer_wmi: macro key %d pressed (only 1 to 5 are known)\n", return_value.device_state);
++  		break;
++  	default:
++  		pr_warn("Unknown macro key event: %d %d %d\n", return_value.key_num, return_value.device_state, return_value.reserved);
++  		break;
++  	}
++  	break;
+ 	default:
+ 		pr_warn("Unknown function number - %d - %d\n",
+ 			return_value.function, return_value.key_num);

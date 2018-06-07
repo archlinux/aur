@@ -1,0 +1,49 @@
+pkgbase = linux-predator
+	pkgver = 4.17
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.sign
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+	source = 0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+	source = 0003-add-predator-macro-keys.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13
+	sha256sums = SKIP
+	sha256sums = 0269d9a56f0d0306c9bd5c179a7e32214b0a1c082d3bca581661203b27305f17
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 0b77e6bef12735bc91e3f0e8232512e973688466f2e8a2c3a93502cb2d4b4eed
+	sha256sums = 92615acad59cbef9fd43b2710f5a77ffea45a86543ccff1b12eb676a9c8058cc
+	sha256sums = cf47cd8c00b5516ed0eae3745941248890e71a67413c98586bc4c21b7be6c005
+
+pkgname = linux-predator
+	pkgdesc = The Linux-predator kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-predator.preset
+
+pkgname = linux-predator-headers
+	pkgdesc = Header files and scripts for building modules for Linux-predator kernel
+
+pkgname = linux-predator-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-predator kernel
+
