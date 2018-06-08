@@ -6,7 +6,7 @@
 # Contributor: Andreas Baumann <abaumann at yahoo dot com>
 
 pkgname=cgit-git
-pkgver=1.1.r0.g8e9ddd2
+pkgver=1.1.r34.g33414d7
 pkgrel=1
 pkgdesc='A web interface for git written in plain C - git checkout'
 arch=('i686' 'x86_64')
@@ -34,11 +34,11 @@ pkgver() {
 		printf '%s.r%s.g%s' \
 			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
 			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	else
 		printf '0.r%s.g%s' \
 			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 
@@ -55,6 +55,12 @@ build() {
 
 	make
 	make doc-man
+}
+
+check() {
+	cd cgit/
+
+	make test
 }
 
 package() {
