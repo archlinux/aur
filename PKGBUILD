@@ -1,15 +1,15 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=centrifuge
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Bioinformatics taxonomic classifier for microbial classification"
 arch=('x86_64')
-url="https://ccb.jhu.edu/software/centrifuge/"
+url=https://ccb.jhu.edu/software/centrifuge/
 license=('GPL3')
 depends=('libpthread-stubs' 'zlib')
-source=(ftp://ftp.ccb.jhu.edu/pub/infphilo/"${pkgname}"/downloads/"${pkgname}"-"${pkgver}"-beta-source.zip)
-sha256sums=('43b370cd0b8ae40c5ff60516c005313c4a04a4f1e21faca132430c87ef621e63')
+source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/infphilo/"${pkgname}"/archive/v"${pkgver}"-beta.tar.gz)
+sha256sums=('64eb3aa3461d27462357811832f39a8f85702eb536482f1e67344761ad8ca757')
 
 build() {
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"-beta
