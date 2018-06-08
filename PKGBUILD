@@ -2,7 +2,7 @@
 # Maintainer: Chrys <chrys@linux-a11y.org>
 
 pkgname='fenrir'
-pkgver=1.9.post1
+pkgver=1.9.post2
 pkgrel=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
