@@ -1,7 +1,7 @@
 pkgbase = dakota
 	pkgdesc = A flexible, extensible interface between analysis codes and iterative systems analysis methods
-	pkgver = 6.7
-	pkgrel = 2
+	pkgver = 6.8
+	pkgrel = 1
 	url = https://dakota.sandia.gov/
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = dakota
 	depends = openmotif
 	depends = tinyxml
 	options = !strip
-	source = https://dakota.sandia.gov/sites/default/files/distributions/public/dakota-6.7-release-public-src-UI.tar.gz
-	md5sums = be1f372e7457281a7aafc887789cb199
+	source = https://dakota.sandia.gov/sites/default/files/distributions/public/dakota-6.8-release-public.src-UI.tar.gz
+	md5sums = 85375e8c4df406fe017beda63ab28215
 
 pkgname = dakota
 

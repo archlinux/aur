@@ -3,8 +3,8 @@
 
 pkgbase=dakota
 pkgname=dakota
-pkgver=6.7
-pkgrel=2
+pkgver=6.8
+pkgrel=1
 pkgdesc="A flexible, extensible interface between analysis codes and iterative systems analysis methods"
 arch=(i686 x86_64)
 url="https://dakota.sandia.gov/"
@@ -12,13 +12,12 @@ license=('LGPL')
 depends=('boost' 'cddlib' 'icu' 'lapack' 'openmotif' 'tinyxml')
 makedepends=('cmake' 'gcc-fortran' 'python2')
 options=(!strip)
-_filename=$pkgname-$pkgver-release-public-src-UI
+_filename=$pkgname-$pkgver-release-public.src-UI
 _srcname=$pkgname-$pkgver-release-public.src-UI
 source=("https://dakota.sandia.gov/sites/default/files/distributions/public/${_filename}.tar.gz")
 
-
 build() {
-  cd "$srcdir/${_srcname}"
+  cd "$srcdir/${_filename}"
   if [ ! -d build ]; then
     mkdir build
   fi  
@@ -32,7 +31,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/${_srcname}
+  cd $srcdir/${_filename}
   cd build
   make DESTDIR=$pkgdir install
   rm $pkgdir/usr/include/{cblas.h,tinystr.h,tinyxml.h}
@@ -46,4 +45,4 @@ package() {
 
 }
 
-md5sums=('be1f372e7457281a7aafc887789cb199')
+md5sums=('85375e8c4df406fe017beda63ab28215')
