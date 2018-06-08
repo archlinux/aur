@@ -107,7 +107,7 @@ source 'PKGBUILD.local'
 set -u
 pkgname='dgrp'
 pkgver='1.9.38'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -290,7 +290,7 @@ prepare() {
   sed -e "s/RealPort/${_opt_RealPort}/gI" -i $(grep -lrF $'RealPort\nRealport' .)
   # grep -ri realport . | grep -vF $'RealPort\nRealport'
   sed -e '# Cosmetic fix for newer gcc compilers' \
-      -e 's:\(3.9\*|4.\*\))$:\1|5.*|6.*|7.*):g' \
+      -e 's:\(3.9\*|4.\*\))$:\1|5.*|6.*|7.*|8.*):g' \
       -e "# I can't find any other way to fix the modules dir" \
       -e 's:/lib/modules/:/usr&:g' \
       -e '# Kill a harmless mkdir error. They mkdir the folder then dont use it.' \
@@ -345,6 +345,9 @@ prepare() {
   sed -e 's:/usr/local/ssl/include:/usr/include/openssl-1.0:g' \
       -e 's:/usr/local/ssl/lib:/usr/lib/openssl-1.0:g' \
     -i 'daemon/Makefile.in'
+
+  # new folder in gcc 8
+  sed -e 's/^clean:$/&\n\trm -f .cache.mk/g' -i driver/*/Makefile*
 
   # Branding in dmesg
   sed -e 's@ please visit [^"]\+"@ please visit https://aur.archlinux.org/packages/dgrp/"@g' \
