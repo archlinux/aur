@@ -2,7 +2,7 @@
 # CO-Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-soundcloud
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="soundcloud integration for Nuvola Player."
 arch=("any")
@@ -11,7 +11,7 @@ license=('custom:BSD')
 depends=('nuvolaruntime' 'imagemagick')
 makedepends=('nuvolasdk' 'scour')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('bf6cd6c9bdd9232f15cf3f3c07ef6c1ab8a1b7418087b36bd774fdf9a207b63b')
+sha256sums=('18af3c082b0f6fd24ed25c3a6a9c09722a46c79338c82fcf9b6a8bc53a31d5fc')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
