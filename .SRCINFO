@@ -1,0 +1,24 @@
+pkgbase = ruby-taskwarrior-web
+	pkgdesc = Web frontend for taskwarrior command line task manager.
+	pkgver = 1.1.12
+	pkgrel = 1
+	url = http://github.com/theunraveler/taskwarrior-web
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-sinatra
+	depends = ruby-parseconfig
+	depends = ruby-vegas
+	depends = ruby-rinku
+	depends = ruby-versionomy
+	depends = ruby-activesupport-3
+	depends = ruby-sinatra-simple-navigation
+	depends = ruby-rack-flash3
+	depends = ruby-json-1
+	noextract = taskwarrior-web-1.1.12.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/taskwarrior-web-1.1.12.gem
+	sha1sums = 644364a283175416bd0defadfffa8ab7f97694e4
+
+pkgname = ruby-taskwarrior-web
+
