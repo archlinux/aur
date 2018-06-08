@@ -1,0 +1,102 @@
+diff -pNaru5 cti_serial_141.orig-0000/driver/8250_core.c cti_serial_141/driver/8250_core.c
+--- cti_serial_141.orig-0000/driver/8250_core.c	2018-01-05 16:13:47.000000000 -0500
++++ cti_serial_141/driver/8250_core.c	2018-06-04 23:13:10.415314127 -0400
+@@ -2498,21 +2498,33 @@ static void serial_unlink_irq_chain(stru
+  * This function is used to handle ports that do not have an
+  * interrupt.  This doesn't work very well for 16450's, but gives
+  * barely passable results for a 16550A.  (Although at the expense
+  * of much CPU overhead).
+  */
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0))
+ static void serial8250_timeout(unsigned long data)
+ {
+ 	struct uart_8250_port *up = (struct uart_8250_port *)data;
++#else
++static void serial8250_timeout(struct timer_list *tl)
++{
++	struct uart_8250_port *up = from_timer(up,tl,timer);
++#endif
+ 
+ 	up->port.handle_irq(&up->port);
+ 	mod_timer(&up->timer, jiffies + uart_poll_timeout(&up->port));
+ }
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0))
+ static void serial8250_backup_timeout(unsigned long data)
+ {
+ 	struct uart_8250_port *up = (struct uart_8250_port *)data;
++#else
++static void serial8250_backup_timeout(struct timer_list *tl)
++{
++	struct uart_8250_port *up = from_timer(up,tl,timer);
++#endif
+ 	unsigned int iir, ier = 0, lsr;
+ 	unsigned long flags;
+ 
+ 	spin_lock_irqsave(&up->port.lock, flags);
+ 
+@@ -2919,12 +2931,16 @@ static int serial8250_startup(struct uar
+ 	/*
+ 	 * The above check will only give an accurate result the first time
+ 	 * the port is opened so this value needs to be preserved.
+ 	 */
+ 	if (up->bugs & UART_BUG_THRE) {
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0))
+ 		up->timer.function = serial8250_backup_timeout;
+ 		up->timer.data = (unsigned long)up;
++#else
++		timer_setup(&up->timer,serial8250_backup_timeout,0);
++#endif
+ 		mod_timer(&up->timer, jiffies +
+ 			uart_poll_timeout(port) + HZ / 5);
+ 	}
+ 
+ 	if ( (up->port.type == PORT_XR17XX5X) || (up->port.type == PORT_XR17V35X) ) {
+@@ -2957,11 +2973,13 @@ static int serial8250_startup(struct uar
+ 	 * If the "interrupt" for this port doesn't correspond with any
+ 	 * hardware interrupt, we use a timer-based system.  The original
+ 	 * driver used to do this with IRQ0.
+ 	 */
+ 	if (!is_real_interrupt(up->port.irq)) {
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0))
+ 		up->timer.data = (unsigned long)up;
++#endif
+ 		mod_timer(&up->timer, jiffies + uart_poll_timeout(port));
+ 	} else {
+ 		retval = serial_link_irq_chain(up);
+ 		if (retval)
+ 			return retval;
+@@ -3120,11 +3138,15 @@ static void serial8250_shutdown(struct u
+ 	 * the IRQ chain.
+ 	 */
+ 	serial_port_in(port, UART_RX);
+ 
+ 	del_timer_sync(&up->timer);
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0))
+ 	up->timer.function = serial8250_timeout;
++#else
++	timer_setup(&up->timer,serial8250_timeout,0);
++#endif
+ 	if (port->irq){
+ 		serial_unlink_irq_chain(up);
+ 	}
+ }
+ 
+@@ -3937,13 +3959,16 @@ static void __init serial8250_isa_init_p
+ 		struct uart_8250_port *up = &serial8250_ports[i];
+ 		struct uart_port *port = &up->port;
+ 
+ 		port->line = i;
+ 		spin_lock_init(&port->lock);
+-
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0))
+ 		init_timer(&up->timer);
+ 		up->timer.function = serial8250_timeout;
++#else
++		timer_setup(&up->timer,serial8250_timeout,0);
++#endif
+ 		up->cur_iotype = 0xFF;
+ 
+ 		/*
+ 		 * ALPHA_KLUDGE_MCR needs to be killed.
+ 		 */

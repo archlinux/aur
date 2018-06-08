@@ -1,0 +1,48 @@
+_pkgname='connecttech-cti-serial'
+_servicename='cti-serial-set485.service'
+_etcconf='/etc/cti-serial-set485.sh'
+
+post_upgrade() {
+  set -u
+  mandb -q
+  systemctl daemon-reload
+  # Handle the module update if DKMS doesn't
+  if [ ! -d "/usr/src/${_pkgname}"-*/ ]; then
+    depmod -a
+    if systemctl -q is-enabled "${_servicename}"; then
+      systemctl start "${_servicename}"
+    fi
+  fi
+  set +u
+}
+
+post_install() {
+  set -u
+  set +u
+  post_upgrade
+  if systemctl -q is-enabled "${_servicename}" && ! systemctl -q is-active "${_servicename}"; then
+    # We can't auto start the service because DKMS hasn't made the module yet
+    echo "If you have RS-485 jumperless settings add them to ${_etcconf} and start the service with"
+    echo "  systemctl start ${_servicename}"
+  fi
+}
+
+pre_upgrade() {
+  set -u
+  if [ ! -d "/usr/src/${_pkgname}"-*/ ]; then
+    systemctl stop "${_servicename}" # also rmmod the module
+  fi
+  set +u
+}
+
+pre_remove() {
+  set -u
+  systemctl stop "${_servicename}" # pre_upgrade
+  set +u
+}
+
+post_remove() {
+  set -u
+  systemctl daemon-reload
+  set +u
+}
