@@ -2,25 +2,21 @@
 # Maintainer: meepzh <meep.aur@meepzh.com>
 
 pkgname=minify
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="Minifier CLI for HTML, CSS, JS, JSON, SVG and XML"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/tdewolff/minify"
 license=('MIT')
 depends=('glibc')
-if [ "$CARCH" = "i686" ]; then
-  _PKGARCH=386
-else
-  _PKGARCH=amd64
-fi
-source_x86_64=("https://github.com/tdewolff/minify/releases/download/v2.3.4/minify_2.3.4_linux_amd64.tar.gz")
-source_i686=("https://github.com/tdewolff/minify/releases/download/v2.3.4/minify_2.3.4_linux_386.tar.gz")
-sha256sums_x86_64=('f35f1cc0ad00c928da83d705cf822013d3ae5fd83ac90d0c895610d841d82ffe')
-sha256sums_i686=('d62a00049885f6dabcd03ac036b16689fc76cc8d00b847172579918c4726d329')
+source=("https://github.com/tdewolff/minify/releases/download/v${pkgver}/minify_${pkgver}_linux_amd64.tar.gz"
+        "https://raw.githubusercontent.com/tdewolff/minify/master/cmd/minify/minify_bash_tab_completion")
+sha256sums=('e79038d6af6403dd84f5634770f14b774d2adf3163610f8a188e0cf3366cb0b3'
+            '25f25a205ca071471daab6b1c8eeb16e0b1c8609844b158b85c76344eb4bbc31')
 
 package() {
   install -D -m755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "minify_bash_tab_completion" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
 }
 
