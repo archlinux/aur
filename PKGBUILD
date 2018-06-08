@@ -1,11 +1,11 @@
 # Maintainer: Peter Sutton <foxxy@foxdogstudios.com>
 pkgname=pangolin-git
 _name=${pkgname%-git}
-pkgver=r1627.5c04fb7
+pkgver=r1630.9694655
 pkgrel=1
-pkgdesc="Pangolin is a lightweight portable rapid development library for managing OpenGL display / interaction and abstracting video input."
+pkgdesc='Pangolin is a lightweight portable rapid development library for managing OpenGL display / interaction and abstracting video input.'
 arch=(x86_64)
-url="https://github.com/stevenlovegrove/Pangolin"
+url='https://github.com/stevenlovegrove/Pangolin'
 license=('MIT')
 groups=()
 depends=(
@@ -35,12 +35,10 @@ options=()
 install=
 source=(
     'LICENSE'
-    'wayland.patch'
     'pangolin::git+https://github.com/stevenlovegrove/Pangolin.git'
 )
 noextract=()
 sha256sums=('fe25815547bcad7ff6d9ab12a381f64c0ef57e9fbb06cb831e9becdd22fde7c7'
-            '7a5f5578d34c2f88f759f860ff074c906c2dafe62411cdffa468f877503617e7'
             'SKIP')
 
 pkgver() {
@@ -52,7 +50,6 @@ prepare() {
     cd "$srcdir"/"$_name"
     git remote add patch https://github.com/ebachard/Pangolin.git
     git pull patch master
-    git apply "$srcdir"/wayland.patch
 }
 
 build() {
