@@ -1,7 +1,7 @@
 pkgbase = haskell-nats
 	pkgdesc = Haskell 98 natural numbers
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/nats
 	arch = i686
 	arch = x86_64

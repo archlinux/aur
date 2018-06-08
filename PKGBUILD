@@ -1,9 +1,9 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 _hkgname=nats
 pkgname=haskell-nats
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Haskell 98 natural numbers"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
