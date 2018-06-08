@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=pacoloco-git
-pkgver=r19
+pkgver=r21
 pkgrel=1
 pkgdesc='Lightweight pacman proxy server'
 arch=(i686 x86_64)
