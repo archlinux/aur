@@ -3,17 +3,15 @@
 
 pkgname=clarity-icon-theme
 pkgver=0.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Vector icons in 9 colourthemes for GTK"
 arch=('any')
 makedepends=('imagemagick' 'librsvg')
 url="https://www.gnome-look.org/p/1012535"
 license=('CCPL:by-sa')
 options=(!strip !zipman)
-source=(https://dl.opendesktop.org/api/files/download/id/1502786869/${pkgname}_${pkgver}.tar.gz
-        fix-blueberry-icons.patch)
-md5sums=('2d889963e20263a6fcfdc82ad0de4129'
-         '9b8d4a00f03df24bcd90158ff0ecc076')
+source=($pkgname-$pkgver.tar.gz::https://github.com/jcubic/Clarity/releases/download/$pkgver/${pkgname}_${pkgver}.tar.gz)
+md5sums=('530abb6a7dee6a3cc389dfe0279a5b8d')
 
 ##############################################################
 #Put the themes you want to build in _buildtheme array below.#
@@ -33,14 +31,9 @@ md5sums=('2d889963e20263a6fcfdc82ad0de4129'
 
 _buildtheme=(violaceus lux_violaceus canus dark_canus caeruleus lux_caeruleus viridis luteus albus)
 
-prepare() {
- cd ${srcdir}/Clarity/src
- patch -p0 -i ${srcdir}/fix-blueberry-icons.patch
-}
-
 build() {
  for _theme in ${_buildtheme[*]}; do
-  cd ${srcdir}/Clarity
+  cd "${srcdir}/Clarity"
   make ${_theme}
   make arch
   install -d themes/${_theme}
@@ -52,7 +45,7 @@ build() {
 package() {
  for _theme in ${_buildtheme[*]}; do
   install -d "${pkgdir}/usr/share/icons/clarity-${_theme}"
-  cp -r ${srcdir}/Clarity/themes/${_theme}/{scalable,16x16,index.theme} \
+  cp -r "${srcdir}/Clarity/themes/${_theme}/"{scalable,16x16,index.theme} \
    "${pkgdir}/usr/share/icons/clarity-${_theme}"
 
   cd "${pkgdir}/usr/share/icons/clarity-${_theme}"
