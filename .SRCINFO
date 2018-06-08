@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-source-code-pro
 	pkgdesc = Patched font SourceCodePro from nerd-fonts library
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 3
 	url = https://github.com/ryanoasis/nerd-fonts
 	install = nerd-fonts-source-code-pro.install
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = nerd-fonts-source-code-pro
 	depends = xorg-font-utils
 	depends = wget
 	source = nerd-fonts-source-code-pro.links
-	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v1.1.0/LICENSE
-	sha256sums = 01de63a72f9bbf931b02c3cf5229e2a4b6742c178d7eb09572572fbff2534647
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/2.0.0/LICENSE
+	sha256sums = ebfe5cfbccdd7ed303eb5cd687c59be5611a397a9bca5735c85ab2fc449bb418
 	sha256sums = d2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5
 
 pkgname = nerd-fonts-source-code-pro
