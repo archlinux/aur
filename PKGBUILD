@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
-pkgname=('python-snuggs')
+pkgname=python-snuggs
 _module='snuggs'
-pkgver='1.4.1'
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Snuggs are s-expressions for Numpy"
 url="https://github.com/mapbox/snuggs"
@@ -21,4 +21,4 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
-sha256sums=('e1d3c9364cec1b1b938627ebfc74f040be66711072d3ae754d844b9435f4940c')
+sha256sums=('8d56182fc83e1a1893284f69abd35751ce30e8f0a33794c2802e7e5d6547e1f1')
