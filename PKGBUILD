@@ -1,10 +1,10 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 # Contributor: Giulio Guzzinati <guzzinati.giulio at gmail>
 pkgname=imagej
-pkgver=1.50i # 1.51o in https://wsr.imagej.net/src/, but no binary
+pkgver=1.52
 _pkgver=150
-_jar=ij150i.jar
-pkgrel=3
+_jar=ij151w.jar
+pkgrel=1
 epoch=2
 pkgdesc="Image manipulation software for scientists"
 arch=('any')
@@ -19,11 +19,11 @@ source=("http://wsr.imagej.net/distros/cross-platform/ij$_pkgver.zip"
         "imagej.desktop"
         "microscope.xpm")
 noextract=("ij$_pkgver.zip")
-md5sums=('3defd05424a3e0c99253aec3b6724e95'
-         '8e6b51c27d4ba7c679532ca4b1b30082'
-         '7dc3fd02120f699204b3d85a7e383082'
-         '9d60878b6adad0e1895ce875bf299147'
-         'e7a7cef1b44ad3a8752ba63885fd88fb')
+sha256sums=('95ff8994e606f0214df385a470a0987db491a325bf55e5145271e170f93f56dd'
+            '0265aeb032b54fb4066a1494a76f04446d00d922232ba9d15da96d5ee2724f6f'
+            'c223a3b2437501edd92176f87bbea75d994104e1545eea6c120ef8c774c7114e'
+            '799188b0b2cf1dc684dc2f029dbd31a4b44b691b51fd5e42027a994452bc038e'
+            'fd1479568b116a276ca1f645589a8e37ccaf767736c6cc0dcec9672225a82572')
 
 package() {
     cd "$pkgdir"

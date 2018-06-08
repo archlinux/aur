@@ -473,7 +473,7 @@ fi
 
 ##################### FINALLY RUN IMAGEJ #####################
 
-eval java ${java_arch} -mx${mem}m ${modules} ij.ImageJ -ijpath ${ij_user_path} -port${count} ${images} ${macrocmd} ${macroargs}
+eval java -mx${mem}m ${modules} ij.ImageJ -ijpath ${ij_user_path} -port${count} ${images} ${macrocmd} ${macroargs}
 
 exit 0
 
