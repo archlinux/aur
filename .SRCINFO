@@ -1,0 +1,16 @@
+pkgbase = ruby-rinku
+	pkgdesc = Mostly autolinking
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/vmg/rinku
+	arch = i686
+	arch = x86_64
+	license = ISC
+	depends = ruby
+	noextract = rinku-2.0.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rinku-2.0.4.gem
+	sha1sums = 34ac4af7458f3bc5eca83695f19bd049b4f08556
+
+pkgname = ruby-rinku
+
