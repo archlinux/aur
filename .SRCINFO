@@ -10,7 +10,7 @@ pkgbase = rpicustomiser
 	depends = qemu-user-static
 	depends = binfmt-support
 	source = https://gitlab.com/BobyMCbobs/rpicustomiser/-/archive/1.0.1/rpicustomiser-1.0.1.zip
-	md5sums = SKIP
+	md5sums = 2676b02dc78b087415fd1dc5b8e9ce8d
 
 pkgname = rpicustomiser
 

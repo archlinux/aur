@@ -7,10 +7,8 @@ arch=('any')
 url="https://gitlab.com/BobyMCbobs/${rpicustomiser}"
 license=('GPL')
 depends=('bash' 'qemu' 'qemu-user-static' 'binfmt-support')
-install=
 source=("https://gitlab.com/BobyMCbobs/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip")
-noextract=()
-md5sums=('SKIP')
+md5sums=('2676b02dc78b087415fd1dc5b8e9ce8d')
 
 package() {
 	cd "$pkgname-$pkgver"
