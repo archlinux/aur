@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.0_devel.102461.d3ff478732
+pkgver=18.2.0_devel.102627.7dfaf025c5
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
@@ -117,8 +117,8 @@ package_mesa-git() {
   rm "$pkgdir"/usr/lib/libGLESv{1_CM,2}.so*
    
   # remove files provided by wayland
-  rm "$pkgdir"/usr/lib/libwayland-egl.so*
-  rm "$pkgdir"/usr/lib/pkgconfig/wayland-egl.pc
+  # rm "$pkgdir"/usr/lib/libwayland-egl.so*
+  # rm "$pkgdir"/usr/lib/pkgconfig/wayland-egl.pc
 
 
   # indirect rendering
