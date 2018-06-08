@@ -7,8 +7,8 @@ pkgdesc='Super Light Async DNS Resolver'
 arch=(i686 x86_64)
 license=(GPL2)
 depends=(glibc)
-url='https://github.com/cesanta/sldr'
-source=(https://github.com/cesanta/sldr/archive/$pkgver.tar.gz)
+url='https://github.com/CesiumComputer/sldr'
+source=(sldr-$pkgver.tar.gz::https://github.com/CesiumComputer/sldr/archive/$pkgver.tar.gz)
 sha1sums=('216950df11e0f600233e87aa9e7ca0a303637f60')
 
 build() {
