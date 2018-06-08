@@ -23,7 +23,7 @@ backup=('etc/fenrirscreenreader/settings/settings.conf')
 install="$pkgname".install
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}-screenreader/${pkgname}-screenreader-${pkgver}.tar.gz"
   'fenrir.install')
-md5sums=('58f204846d7314d8ae3ff646c327265d'
+md5sums=('d230fbf04cee59a40401557a94e143d8'
          'c6a68679e6f1a23d4054d0209ba5210a')
 
 package() {
