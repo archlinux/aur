@@ -1,0 +1,17 @@
+pkgbase = ruby-sinatra-simple-navigation
+	pkgdesc = A Sinatra extension to enable creating navigations with the simple-navigation gem. Also works for Padrino.
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = http://github.com/codeplant/sinatra-simple-navigation
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-simple-navigation
+	depends = ruby-sinatra
+	noextract = sinatra-simple-navigation-4.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/sinatra-simple-navigation-4.1.0.gem
+	sha1sums = b40e48dc6e18eac99dba58b088210760a78ee337
+
+pkgname = ruby-sinatra-simple-navigation
+
