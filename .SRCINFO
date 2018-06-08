@@ -1,5 +1,5 @@
 pkgbase = mint
-	pkgdesc = A is a refreshing language for the front-end web
+	pkgdesc = A refreshing language for the front-end web
 	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/mint-lang/mint

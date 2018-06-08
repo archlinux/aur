@@ -2,7 +2,7 @@
 pkgrel=1
 pkgname=mint
 pkgver=0.0.3
-pkgdesc="A is a refreshing language for the front-end web"
+pkgdesc="A refreshing language for the front-end web"
 arch=(x86_64)
 url='https://github.com/mint-lang/mint'
 source=("https://github.com/mint-lang/mint/releases/download/$pkgver/mint-$pkgver-linux")
