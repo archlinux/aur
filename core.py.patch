@@ -1,0 +1,9 @@
+@@ -13,7 +13,7 @@
+ import advancedSearch
+ from termcolor import colored
+ 
+-CONFIG = yaml.safe_load(open('config.yaml'))
++CONFIG = yaml.safe_load(open('/etc/dumpsterdiver/config.yaml'))
+ BASE64_CHARS = CONFIG['base64_chars']
+ PATH = './'
+ ARCHIVE_TYPES = CONFIG['archive_types']
