@@ -1,6 +1,6 @@
 # Maintainer: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 pkgname=ffdec
-pkgver=11.0.0
+pkgver=11.1.0
 pkgrel=1
 pkgdesc="Open source Flash SWF decompiler and editor"
 arch=('any')
@@ -12,7 +12,7 @@ source=(https://github.com/jindrapetrik/jpexs-decompiler/releases/download/versi
         $pkgname
         $pkgname.desktop
         $pkgname.png)
-md5sums=('52d2855a6742681600a6b0474023fb42'
+md5sums=('5311a522d0d8655126b2f73252c41368'
          '29a00ab7cb71ec337ed028493914009f'
          'b9da710cc2a4af62f1fa8690e0fb5553'
          'decfc4be2e1ce355c267049ae332419c')
