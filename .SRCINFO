@@ -8,7 +8,7 @@ pkgbase = uploadnewip
 	depends = curl
 	depends = bash
 	source = https://gitlab.com/BobyMCbobs/uploadnewip/-/archive/2.1.2/uploadnewip-2.1.2.zip
-	md5sums = SKIP
+	md5sums = 74293be0f91d92a1c651be600b126d8a
 
 pkgname = uploadnewip
 

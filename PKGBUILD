@@ -8,7 +8,7 @@ url="https://gitlab.com/BobyMCbobs/${pkgname}"
 license=('GPL')
 depends=('curl' 'bash')
 source=("https://gitlab.com/BobyMCbobs/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip")
-md5sums=('SKIP')
+md5sums=('74293be0f91d92a1c651be600b126d8a')
 
 package() {
 	cd "$pkgname-$pkgver"
