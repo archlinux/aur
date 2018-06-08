@@ -12,7 +12,7 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.0_devel.102412.79fe00efb4
+pkgver=18.2.0_devel.102627.7dfaf025c5
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -123,11 +123,6 @@ package_lib32-mesa-git () {
 
   # remove files present in lib32-libglvnd
   rm "$pkgdir"/usr/lib32/libGLESv{1_CM,2}.so*
-  
-  #remove files present in lib32-wayland
-  rm -v "$pkgdir"/usr/lib32/libwayland-egl.so*
-  rm -v "$pkgdir"/usr/lib32/pkgconfig/wayland-egl.pc
-
   
   install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE 
 }
