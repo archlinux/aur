@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 60.0.1
+	pkgver = 60.0.2
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -42,12 +42,12 @@ pkgbase = firefox-appmenu
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = firefox=60.0.1
+	provides = firefox=60.0.2
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_60_0_1_RELEASE
+	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_60_0_2_RELEASE
 	source = unity-menubar.patch.tar.xz
 	source = complete-csd-window-offset-mozilla-1457691.patch.xz
 	source = 0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch.xz
