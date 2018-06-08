@@ -3,7 +3,7 @@
 
 pkgname=watchdog
 pkgver=5.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Watchdog daemon"
 arch=(x86_64)
 url="http://sourceforge.net/projects/watchdog"
