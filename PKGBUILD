@@ -2,7 +2,7 @@
 
 pkgname=intel-media-stack-bin
 pkgver=2018.Q2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libdrm.'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -13,6 +13,7 @@ backup=('etc/profile.d/intel-mediasdk-devel.sh'
         'etc/profile.d/intel-mediasdk-devel.csh'
         'etc/profile.d/intel-mediasdk.sh'
         'etc/profile.d/intel-mediasdk.csh')
+options=('!strip' 'staticlibs')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/releases/download/MediaSDK-${pkgver/.Q/-Q}/MediaStack.tar.gz"
         'LICENSE'::"https://raw.githubusercontent.com/Intel-Media-SDK/MediaSDK/MediaSDK-${pkgver/.Q/-Q}/LICENSE")

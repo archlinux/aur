@@ -1,7 +1,7 @@
 pkgbase = intel-media-stack-bin
 	pkgdesc = Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libdrm.
 	pkgver = 2018.Q2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Intel-Media-SDK/MediaSDK/
 	install = intel-media-stack-bin.install
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = intel-media-stack-bin
 	conflicts = intel-media-sdk-git
 	conflicts = intel-media-server-studio
 	noextract = intel-media-stack-bin-2018.Q2.1.tar.gz
+	options = !strip
+	options = staticlibs
 	backup = etc/profile.d/intel-mediasdk-devel.sh
 	backup = etc/profile.d/intel-mediasdk-devel.csh
 	backup = etc/profile.d/intel-mediasdk.sh
