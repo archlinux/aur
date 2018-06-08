@@ -2,7 +2,7 @@
 # Swiped from the official libyaml package and modified for mingw-w64
 # Also swiped some code from 0X1A and Schala's mingw-w64-libyaml
 pkgname=mingw-w64-libyaml
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="YAML 1.1 library (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-gcc')
 depends=('mingw-w64-crt')
 options=(staticlibs !strip !buildflags)
 source=(http://pyyaml.org/download/libyaml/yaml-${pkgver}.tar.gz)
-md5sums=('5fe00cda18ca5daeb43762b80c38e06e')
+md5sums=('1abf45bd3a96374fa55ca63b32f9f2f9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
