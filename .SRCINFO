@@ -1,0 +1,16 @@
+pkgbase = rpicustomiser
+	pkgdesc = A useful tool for customising Rasbian. Chroot, install deb packages, copy files, customise.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/BobyMCbobs/
+	arch = any
+	license = GPL
+	depends = bash
+	depends = qemu
+	depends = qemu-user-static
+	depends = binfmt-support
+	source = https://gitlab.com/BobyMCbobs/rpicustomiser/-/archive/1.0.1/rpicustomiser-1.0.1.zip
+	md5sums = SKIP
+
+pkgname = rpicustomiser
+
