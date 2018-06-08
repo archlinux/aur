@@ -1,7 +1,7 @@
 # Maintainer:  Esben Haabendal <esben@haabendal.dk>
 
 pkgname=emacs-editorconfig-git
-pkgver=0.7.9
+pkgver=v0.7.11.r35.e314a7cb6437
 pkgrel=1
 pkgdesc="EditorConfig Emacs Plugin"
 arch=('any')
@@ -9,7 +9,8 @@ _github_org="editorconfig"
 _github_repo="editorconfig-emacs"
 url="http://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
-depends=('emacs' 'git' 'editorconfig-core-c')
+depends=('emacs' 'editorconfig-core-c')
+makedepends=('git')
 provides=('emacs-editorconfig')
 install="${pkgname}.install"
 source=("git+https://github.com/${_github_org}/${_github_repo}.git")
