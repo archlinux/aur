@@ -1,0 +1,16 @@
+pkgbase = ruby-simple-navigation
+	pkgdesc = simple-navigation is a ruby library for creating navigations (with multiple levels) for your Rails, Sinatra or Padrino application.
+	pkgver = 4.0.5
+	pkgrel = 1
+	url = http://github.com/codeplant/simple-navigation
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-activesupport
+	noextract = simple-navigation-4.0.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/simple-navigation-4.0.5.gem
+	sha1sums = 07f001c92f6252b991738890ba6765a8a7cc51a9
+
+pkgname = ruby-simple-navigation
+
