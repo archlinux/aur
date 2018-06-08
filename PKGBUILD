@@ -1,13 +1,13 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 pkgname=pulseeffects
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Audio Effects for Pulseaudio Applications"
 arch=(any)
 url="https://github.com/wwmm/pulseeffects"
 license=('GPL3')
 depends=(gtk3 gtkmm3 glibmm libpulse gstreamer gst-plugins-good gst-plugins-bad
-        lilv boost-libs)
+        lilv boost-libs libsigc++)
 optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'zam-plugins-git: maximizer'
             'lsp-plugins-lv2-bin: delay'
@@ -15,7 +15,7 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
 makedepends=('meson' 'boost')
 options=(!emptydirs)
 source=("$pkgname-$pkgver::https://github.com/wwmm/pulseeffects/archive/v$pkgver.tar.gz")
-md5sums=('b73c552edd9a8c70adae3daee0888855')
+md5sums=('d6400c2055991276435d7497402c6e6a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
