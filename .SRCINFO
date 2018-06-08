@@ -1,14 +1,14 @@
 pkgbase = grc
 	pkgdesc = Yet another colouriser for beautifying your logfiles or output of commands.
-	pkgver = 1.11.1
-	pkgrel = 3
+	pkgver = 1.11.3
+	pkgrel = 1
 	url = https://github.com/garabik/grc
 	arch = any
 	license = GPL
 	depends = python
 	backup = etc/grc.conf
-	source = grc-1.11.1.tar.gz::https://github.com/garabik/grc/archive/v1.11.1.tar.gz
-	sha256sums = 9ae4bcc9186d6856e861d5b0e29b7b14db3f14e6b643e2df0076c104a94dbcba
+	source = grc-1.11.3.tar.gz::https://github.com/garabik/grc/archive/v1.11.3.tar.gz
+	sha256sums = b167babd8f073a68f5a3091f833e4036fb8d86504e746694747a3ee5048fa7a9
 
 pkgname = grc
 
