@@ -1,26 +1,26 @@
-# Maintainer: droserasprout <droserasprout@tuta.io>
+# Maintainer: Felix Kauselmann <licorn@gmail,com>
+# Contributor: droserasprout <droserasprout@tuta.io>
 # Contributor: atommixz <atommixz@gmail.com>
 
 pkgname=airdcpp-webclient
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A peer-to-peer file sharing client with web user interface"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('x86_64' 'armv7h')
 license=('GPL2')
 url="https://github.com/airdcpp-web/${pkgname}"
-depends=('miniupnpc' 'boost' 'boost-libs' 'bzip2' 'libmaxminddb' 'leveldb' 'gcc-libs' 'openssl' 'geoip' 'leveldb' 'websocketpp' 'zlib' 'libnatpmp' 'intel-tbb')
+depends=('miniupnpc' 'boost' 'libmaxminddb' 'leveldb' 'openssl' 'geoip' 'leveldb' 'websocketpp-git-dev' 'libnatpmp' 'intel-tbb')
 makedepends=('cmake' 'git' 'npm')
-options=('!strip')
-source=("git+${url}.git#tag=${pkgver}") 
-sha256sums=('SKIP')
+source=("https://github.com/airdcpp-web/airdcpp-webclient/archive/${pkgver}.tar.gz") 
+md5sums=('1241718cce0d238691b42e4dfa105b4d')
 
 build() {
-    cd ${pkgname}
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
-    make -j2
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_LIBDIR=lib
+    make
 }
 
 package() {
-    cd ${pkgname}
-    make install DESTDIR="$pkgdir"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="$pkgdir" install
 }
