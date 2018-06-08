@@ -3,7 +3,7 @@
 
 pkgname=lilypond-devel
 pkgver=2.19.81
-pkgrel=3
+pkgrel=4
 pkgdesc="An automated music engraving system (development version)"
 arch=('i686' 'x86_64')
 url="http://lilypond.org/"
@@ -16,7 +16,7 @@ depends=('fontconfig'
          'python2')
 makedepends=('fontforge'
              'gsfonts'
-             't1utils-git'
+             't1utils'
 	     'ghostscript'
              'texlive-core'
 	     'tex-gyre-fonts'
@@ -25,13 +25,13 @@ makedepends=('fontforge'
 optdepends=('extractpdfmark: for reducing the size of pdf output significantly'
 	   'tk: for the gui')
 provides=("lilypond=$pkgver")
-conflicts=('lilypond' 'lilypond-git')
+conflicts=('lilypond')
 source=("http://lilypond.org/downloads/sources/v2.19/lilypond-${pkgver}.tar.gz" "no_fontforge-versioncheck.patch")
 sha256sums=('2ac299045dc4a8fa3bd7c67af7b06877b21cdb50321fec5baa558e3173ed646c'
             'e74391f718babb984c5f637397162cf096c4716f5b9a21346ec76035cfc80817')
 
 prepare() {
-  cd "$srcdir/lilypond-$pkgver"
+  cd lilypond-$pkgver
 
   # python2 fix
   for file in $(find . -name '*.py' -print); do
@@ -44,7 +44,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/lilypond-$pkgver"
+  cd lilypond-$pkgver
 
   export PYTHON="python2"
   export PYTHON_CONFIG="python2-config"
@@ -63,9 +63,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/lilypond-$pkgver/build"
+  cd lilypond-$pkgver/build
   make DESTDIR="$pkgdir/" \
        vimdir="/usr/share/vim/vimfiles" install
 
-  rm -rf "$pkgdir/usr/share/man"
+  rm -rf "$pkgdir"/usr/share/man
 }
