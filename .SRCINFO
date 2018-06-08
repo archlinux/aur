@@ -1,0 +1,14 @@
+pkgbase = ruby-parseconfig-1
+	pkgdesc = Config File Parser for Standard Unix/Linux Type Config Files
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = http://github.com/datafolklabs/ruby-parseconfig/
+	arch = any
+	depends = ruby
+	noextract = parseconfig-1.0.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/parseconfig-1.0.8.gem
+	sha1sums = 10a20fc8ea5271c8b6c87735f56b002d078540b6
+
+pkgname = ruby-parseconfig-1
+
