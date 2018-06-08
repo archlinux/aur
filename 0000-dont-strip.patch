@@ -1,0 +1,11 @@
+diff -Naur p_old/Makefile p_new/Makefile
+--- p_old/Makefile	2018-06-08 13:17:49.403402279 +0200
++++ p_new/Makefile	2018-06-08 13:15:48.597796153 +0200
+@@ -26,7 +26,6 @@
+ 
+ $(BINDIR)/% : %
+ 	cp -p $< $@
+-	strip $@
+ 
+ $(MANDIR) :
+ 	mkdir -p $(MANDIR)
