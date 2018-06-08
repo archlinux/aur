@@ -1,7 +1,7 @@
 pkgbase = freecad
 	pkgdesc = A general purpose 3D CAD modeler
 	pkgver = 0.17
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.freecadweb.org/
 	arch = x86_64
 	license = LGPL
@@ -42,12 +42,14 @@ pkgbase = freecad
 	source = freecad.xml
 	source = remove-qtwebkit.patch
 	source = gcc8.patch
+	source = smesh-pthread.patch
 	sha256sums = ae017393476b6dc7f1192bcaf91ceedc2f9b791f2495307ce7c45efadb5266fb
 	sha256sums = c4a4e084da448c78644e8acc1f3158cf2cb82ee4936b5b79e282497fd62d566e
 	sha256sums = 617968d7bbd1da71bdedaed1b66c5d6eaf24e0fb34678b93f5d925d370c66296
 	sha256sums = 248918de7d3c2145b5cc4fbbc9e224d22f4a6ca7ead2680e8c3a32e91772482a
 	sha256sums = de214a281d421d44b02b469ecf72e36c4d61f10c40431e511e09734aca316baf
 	sha256sums = 618bb85c4f3a4eb0e329d1fc30391b777c9b0cffe97aa1e96d45f58b18424311
+	sha256sums = 170c90ee6ef64cf3c8e6a35ca94bb1187d346707f7e0779022e614563c6b74f6
 
 pkgname = freecad
 

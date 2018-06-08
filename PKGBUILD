@@ -10,7 +10,7 @@
 pkgname=freecad
 pkgver=0.17
 _rollup=84d6128
-pkgrel=4
+pkgrel=5
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('x86_64')
 url='http://www.freecadweb.org/'
@@ -25,14 +25,14 @@ optdepends=('python2-matplotlib' 'python2-pyqt4' 'graphviz' 'openscad')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FreeCAD/FreeCAD/archive/$pkgver.tar.gz"
         "$pkgname-$_rollup-rollup.patch::https://github.com/FreeCAD/FreeCAD/compare/$pkgver...$_rollup.patch"
         "${pkgname}.desktop" "${pkgname}.xml"
-        'remove-qtwebkit.patch'
-        'gcc8.patch')
+        'remove-qtwebkit.patch' 'gcc8.patch' 'smesh-pthread.patch')
 sha256sums=('ae017393476b6dc7f1192bcaf91ceedc2f9b791f2495307ce7c45efadb5266fb'
             'c4a4e084da448c78644e8acc1f3158cf2cb82ee4936b5b79e282497fd62d566e'
             '617968d7bbd1da71bdedaed1b66c5d6eaf24e0fb34678b93f5d925d370c66296'
             '248918de7d3c2145b5cc4fbbc9e224d22f4a6ca7ead2680e8c3a32e91772482a'
             'de214a281d421d44b02b469ecf72e36c4d61f10c40431e511e09734aca316baf'
-            '618bb85c4f3a4eb0e329d1fc30391b777c9b0cffe97aa1e96d45f58b18424311')
+            '618bb85c4f3a4eb0e329d1fc30391b777c9b0cffe97aa1e96d45f58b18424311'
+            '170c90ee6ef64cf3c8e6a35ca94bb1187d346707f7e0779022e614563c6b74f6')
 
 prepare() {
     cd "${srcdir}/FreeCAD-${pkgver}"
@@ -40,6 +40,7 @@ prepare() {
     patch -Np1 -i ../$pkgname-$_rollup-rollup.patch
     patch -Np1 -i ../remove-qtwebkit.patch
     patch -Np1 -i ../gcc8.patch
+    patch -Np1 -i ../smesh-pthread.patch
 }
 
 build() {
