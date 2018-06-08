@@ -1,0 +1,15 @@
+pkgbase = ruby-rack-flash3
+	pkgdesc = Flash hash implementation for Rack apps.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/treeder/rack-flash
+	arch = any
+	depends = ruby
+	depends = ruby-rack
+	noextract = rack-flash3-1.0.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rack-flash3-1.0.5.gem
+	sha1sums = 872a8d3d6a8015640075625d7250b3667f21882c
+
+pkgname = ruby-rack-flash3
+
