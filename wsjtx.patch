@@ -1,0 +1,23 @@
+diff -ur /CMakeLists.txt /CMakeLists.txt
+--- /CMakeLists.txt	2018-05-31 02:29:47.000000000 +0200
++++ /CMakeLists.txt	2018-06-03 09:34:15.109877528 +0200
+@@ -1343,7 +1343,8 @@
+       )
+   endif ()
+ endif ()
+-qt5_use_modules (wsjtx SerialPort) # not sure why the interface link library syntax above doesn't work
++find_package(Qt5SerialPort)
++target_link_libraries (wsjtx Qt5::SerialPort)
+ 
+ # make a library for WSJT-X UDP servers
+ # add_library (wsjtx_udp SHARED ${UDP_library_CXXSRCS})
+@@ -1364,7 +1365,8 @@
+   )
+ target_compile_definitions (wsjtx_udp-static PUBLIC UDP_STATIC_DEFINE)
+ #qt5_use_modules (wsjtx_udp Network)
+-qt5_use_modules (wsjtx_udp-static Network Gui)
++target_link_libraries(wsjtx_udp-static Qt5::Network Qt5::Gui)
++
+ generate_export_header (wsjtx_udp-static BASE_NAME udp)
+ 
+ add_executable (udp_daemon UDPExamples/UDPDaemon.cpp UDPExamples/udp_daemon.rc ${WSJTX_ICON_FILE})
