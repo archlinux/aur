@@ -1,0 +1,14 @@
+pkgbase = zita-jclient
+	pkgdesc = A C++ library to create a JACK client with a few lines of code
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = jack
+	source = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/zita-jclient-0.4.0.tar.bz2
+	md5sums = 481ed470d2d0096d717db949f79089ca
+
+pkgname = zita-jclient
+

@@ -1,0 +1,7 @@
+pkg/
+src/
+.AURINFO
+zita-jclient/
+zita-jclient-*.tar.xz
+zita-jclient-*.src.tar.gz
+zita-jclient-*.tar.bz2
