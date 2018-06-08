@@ -2,13 +2,13 @@
 # Maintainer: Chrys <chrys@linux-a11y.org>
 
 pkgname='fenrir'
-pkgver=1.5.1
+pkgver=1.9.post1
 pkgrel=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://linux-a11y.org/index.php?page=fenrir-screenreader"
 license=('LGPL')
-depends=('python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus')
+depends=('python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyte')
 optdepends=('brltty: For Braille support'
 'gstreamer: for soundicons via gstreamer'
   'sox: The default sound driver'
@@ -19,15 +19,15 @@ optdepends=('brltty: For Braille support'
 makedepends=('python-setuptools')
 provides=('fenrir')
 conflicts=('fenrir')
-backup=('etc/fenrir/settings/settings.conf')
+backup=('etc/fenrirscreenreader/settings/settings.conf')
 install="$pkgname".install
-source=("https://github.com/chrys87/${pkgname}/archive/${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}-screenreader/${pkgname}-screenreader-${pkgver}.tar.gz"
   'fenrir.install')
-md5sums=('793241e71d56fa97f6865ac73cc8fa31'
+md5sums=('58f204846d7314d8ae3ff646c327265d'
          'e3f7651a51d3562ab314b1da3afd1ee2')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-screenreader-${pkgver}"
   python setup.py install --force-settings --root="${pkgdir}/" --optimize=1
 }
 
