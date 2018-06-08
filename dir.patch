@@ -1,0 +1,14 @@
+--- orig/CMakeLists.txt	2018-06-08 19:18:17.020696035 +0200
++++ new/CMakeLists.txt	2018-06-08 19:18:38.877166302 +0200
+@@ -675,11 +675,6 @@
+     DESTINATION .
+ )
+ 
+-install (
+-    CODE "FILE (MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/images)"
+-    CODE "FILE (MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/images/autosave)"
+-)
+-
+ if (WITH_SAMPLES)
+     install (
+         DIRECTORY

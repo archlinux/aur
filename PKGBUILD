@@ -1,6 +1,6 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=appleseed
-pkgrel=2
+pkgrel=3
 pkgver=1.9.0
 _pkgver=${pkgver}-beta
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
@@ -14,9 +14,11 @@ makedepends=(cmake)
 options=()
 source=("https://github.com/${pkgname}hq/${pkgname}/archive/${_pkgver}.tar.gz"
         gcc8.patch
+        dir.patch
         )
 md5sums=('2843aaf4f4b69088ac6466808b329b27'
-         '6e6b997cbfe06e0d74cdc3f74de12324')
+         '6e6b997cbfe06e0d74cdc3f74de12324'
+         '3da34be53a016d68ff8abfebaed1dd4e')
 
 CMAKE_FLAGS="-DUSE_EXTERNAL_EXR=ON \
               -DUSE_EXTERNAL_OCIO=ON \
@@ -44,6 +46,7 @@ prepare() {
   grep -q avx2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX2=ON"
   grep -q sse4_2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_SSE42=ON"
   patch -Np1 -i ../gcc8.patch
+  patch -Np1 -i ../dir.patch
 }
 build() {
   cd ${pkgname}-${_pkgver}
@@ -55,7 +58,7 @@ build() {
 
 package() {
   cd ${pkgname}-${_pkgver}/build
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR=${pkgdir} install
   install -D -m644 "../LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
