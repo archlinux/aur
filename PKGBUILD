@@ -7,9 +7,9 @@
 # Download website:
 # https://developer.nvidia.com/nccl/
 
-_srcver=2.1.15
+_srcver=2.2.13
 _srcrel=1
-_cudaver=9.1
+_cudaver=9.2
 
 pkgname=nccl
 pkgver="${_srcver}.${_srcrel}"
@@ -22,7 +22,7 @@ depends=('cuda')
 conflicts=('nccl-git')
 options=('!strip')
 source=("file://${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_x86_64.txz")
-sha256sums=('90c25133cc62ff647911b6d87aca4925724f3aef01056fdab3b8cf514c45dc01')
+sha256sums=('2854bb5989dd5f06553bfd1367e718ce09b435f8758d0bd946b955fd41b6a93e')
 
 package() {
     cd "${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_x86_64"
