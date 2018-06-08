@@ -1,13 +1,14 @@
 pkgbase = mariadb-connector-odbc
 	pkgdesc = MariaDB Connector/ODBC is a standardized, LGPL licensed database driver using the industry standard ODBC API
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mariadb.com/kb/en/mariadb/mariadb-connector-odbc/
 	install = mariadb-connector-odbc.install
 	arch = x86_64
 	arch = i686
 	license = LGPL
-	makedepends = mariadb-connector-c=3.0.3
+	makedepends = mariadb-connector-c>=3.0
+	makedepends = mariadb-connector-c<4
 	depends = unixodbc>=2.3
 	depends = openssl
 	conflicts = mariadb-connector-odbc-bin
