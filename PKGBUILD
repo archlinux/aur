@@ -1,6 +1,6 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
 pkgname=osmo-fl2k-git
-pkgver=0.1.1.r4.d5c4dcc
+pkgver=0.1.1.r9.b745896
 pkgrel=1
 pkgdesc="Library to use cheap (FL2000 based) USB3.0 to VGA converters as SDR"
 arch=(any)
@@ -23,6 +23,7 @@ build() {
   cd "$srcdir/osmo-fl2k/build"
 
   cmake .. \
+    -DINSTALL_UDEV_RULES=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
 
@@ -33,4 +34,6 @@ package() {
   cd "$srcdir/osmo-fl2k/build"
 
   make DESTDIR="$pkgdir" install
+
+  mv $pkgdir/usr/lib64 $pkgdir/usr/lib
 }
