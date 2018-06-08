@@ -1,6 +1,6 @@
 pkgbase = freedns-maintain-ip
 	pkgdesc = DNS record updater for freedns.afraid.org domains written in bash
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = http://eomanis.mooo.com/permshare/freedns-maintain-ip/index.xhtml
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = freedns-maintain-ip
 	depends = iproute2
 	depends = bc
 	optdepends = miniupnpc: Detection of public IPv4 address using UPNP
-	source = http://eomanis.mooo.com/permshare/freedns-maintain-ip/freedns-maintain-ip-0.4.0.tar.gz
-	sha256sums = 0800eed310f5320017899ea2b2a03cb639ea26ad5daf919bdc977eb291219454
+	source = http://eomanis.mooo.com/permshare/freedns-maintain-ip/freedns-maintain-ip-0.4.1.tar.gz
+	sha256sums = 04c1b7896f703f783b56047ac4215e3e101f53b22fb9f8d863d921550718e396
 
 pkgname = freedns-maintain-ip
 
