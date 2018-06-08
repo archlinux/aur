@@ -1,0 +1,17 @@
+pkgbase = docker2hosthosts
+	pkgdesc = Updates the host system's /etc/hosts whenever containers go up or down.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/flaviut/docker2hosthosts
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = Apache
+	makedepends = cargo
+	depends = openssl
+	source = https://github.com/flaviut/docker2hosthosts/archive/v0.1.0.tar.gz
+	md5sums = ac5681d355938453c0e237d33c80f600
+
+pkgname = docker2hosthosts
+
