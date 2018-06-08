@@ -1,7 +1,7 @@
 # Maintainer: Flaviu Tamas <me@flaviutamas.com>
 
 pkgname=docker2hosthosts
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Updates the host system's /etc/hosts whenever containers go up or down."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
