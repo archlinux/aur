@@ -1,4 +1,4 @@
-# Maintainer: Mark Tompkins <mets_dev@outlook.com>
+# Maintainer: metscoin <mets_coin@outlook.com>
 
 pkgname=pigeon-qt
 pkgver=0.15.99
