@@ -1,7 +1,7 @@
 # Maintainer: Matt Boehlke (mtboehlke <at> gmail <dot> com)
 pkgname=rgbpaint
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Very simple pixel-based painting program"
 arch=('i686' 'x86_64')
 url="http://mtpaint.sourceforge.net/rgbpaint.html"
@@ -14,7 +14,7 @@ sha256sums=('90741335ce887a0bb27e3c36d6013cfdbfb37dc4a38c3790b3b0a8cb9ef46994'
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	patch -Nbp1 -i "$srcdir/configure.patch"
+	patch -Nbup1 -i "$srcdir/configure.patch"
 }
 
 build() {
