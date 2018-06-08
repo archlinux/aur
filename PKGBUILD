@@ -10,11 +10,8 @@ sha256sums=('8d54aeba208cda5e5d185b4b651a62ac87dade006873e8a0bb29081fe356558c')
 noextract=("mint-$pkgver-linux")
 license=('MIT')
 
-pre_install() {
-  wget https://raw.githubusercontent.com/mint-lang/mint/master/LICENSE
-}
-
 package() {
+  wget -q https://raw.githubusercontent.com/mint-lang/mint/master/LICENSE
   install -Dm755 "mint-$pkgver-linux" "$pkgdir/usr/bin/mint"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/mint/LICENSE
 }
