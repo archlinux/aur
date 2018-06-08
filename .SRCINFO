@@ -1,0 +1,16 @@
+pkgbase = getnewip
+	pkgdesc = Sync dynamic public IP addresses of GNU/Linux servers with the hostname in a user's SSH config file, via Dropbox.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://gitlab.com/BobyMCbobs/getnewip
+	arch = any
+	license = GPL
+	depends = gnu-netcat
+	depends = curl
+	depends = bash
+	depends = openssh
+	source = https://gitlab.com/BobyMCbobs/getnewip/-/archive/2.1.2/getnewip-2.1.2.zip
+	md5sums = SKIP
+
+pkgname = getnewip
+
