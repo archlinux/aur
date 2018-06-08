@@ -1,0 +1,15 @@
+pkgbase = ruby-vegas
+	pkgdesc = Vegas aims to solve the simple problem of creating executable versions of Sinatra/Rack apps.
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = http://code.quirkey.com/vegas
+	arch = any
+	depends = ruby
+	depends = ruby-rack
+	noextract = vegas-0.1.11.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/vegas-0.1.11.gem
+	sha1sums = 9c5aa3cf441cadae6ef8731942d7803c6e899531
+
+pkgname = ruby-vegas
+
