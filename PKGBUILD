@@ -2,7 +2,7 @@
 
 pkgname=zita-jclient
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ library to create a JACK client with a few lines of code"
 arch=(i686 x86_64)
 url="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/"
@@ -20,13 +20,13 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver/libs"
 
-  make PREFIX=/usr LIBDIR=/usr/lib
+  make PREFIX=/usr LIBDIR=lib
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/libs"
 
-  make PREFIX=/usr LIBDIR=/usr/lib DESTDIR="$pkgdir/" install
+  make PREFIX=/usr LIBDIR=lib DESTDIR="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:
