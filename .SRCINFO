@@ -1,0 +1,26 @@
+pkgbase = intel-media-stack-bin
+	pkgdesc = Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libdrm.
+	pkgver = 2018.Q2.1
+	pkgrel = 1
+	url = https://github.com/Intel-Media-SDK/MediaSDK/
+	install = intel-media-stack-bin.install
+	arch = x86_64
+	license = MIT
+	provides = intel-media-sdk
+	provides = libmfx
+	provides = intel-media-driver
+	conflicts = intel-media-sdk
+	conflicts = intel-media-sdk-git
+	conflicts = intel-media-server-studio
+	noextract = intel-media-stack-bin-2018.Q2.1.tar.gz
+	backup = etc/profile.d/intel-mediasdk-devel.sh
+	backup = etc/profile.d/intel-mediasdk-devel.csh
+	backup = etc/profile.d/intel-mediasdk.sh
+	backup = etc/profile.d/intel-mediasdk.csh
+	source = intel-media-stack-bin-2018.Q2.1.tar.gz::https://github.com/Intel-Media-SDK/MediaSDK/releases/download/MediaSDK-2018-Q2.1/MediaStack.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/Intel-Media-SDK/MediaSDK/MediaSDK-2018-Q2.1/LICENSE
+	sha256sums = c3b277656b4ccdb16705431f75af671bd6c757e958498080c5c282cf4fa163f0
+	sha256sums = dfd67773578903698f9ff4a61eb8f2d84810cbecd56f3f3cee8c649f813b6ea6
+
+pkgname = intel-media-stack-bin
+
