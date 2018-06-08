@@ -22,7 +22,7 @@ pkgbase = wsjtx-git
 	source = git+https://git.code.sf.net/p/wsjt/wsjtx/
 	source = wsjtx.patch
 	md5sums = SKIP
-	md5sums = 57650d8febe9810c4d3bc9f8c5cda75d
+	md5sums = c5a2c0b91c2709e070d7ebcb75621354
 
 pkgname = wsjtx-git
 

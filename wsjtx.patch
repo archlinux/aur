@@ -6,7 +6,7 @@ diff -ur /CMakeLists.txt /CMakeLists.txt
    endif ()
  endif ()
 -qt5_use_modules (wsjtx SerialPort) # not sure why the interface link library syntax above doesn't work
-+find_package(Qt5SerialPort)
++find_package (Qt5SerialPort)
 +target_link_libraries (wsjtx Qt5::SerialPort)
  
  # make a library for WSJT-X UDP servers
@@ -16,7 +16,7 @@ diff -ur /CMakeLists.txt /CMakeLists.txt
  target_compile_definitions (wsjtx_udp-static PUBLIC UDP_STATIC_DEFINE)
  #qt5_use_modules (wsjtx_udp Network)
 -qt5_use_modules (wsjtx_udp-static Network Gui)
-+target_link_libraries(wsjtx_udp-static Qt5::Network Qt5::Gui)
++target_link_libraries (wsjtx_udp-static Qt5::Network Qt5::Gui)
 +
  generate_export_header (wsjtx_udp-static BASE_NAME udp)
  

@@ -15,7 +15,7 @@ conflicts=("wsjtx")
 source=("git+https://git.code.sf.net/p/wsjt/wsjtx/"
         "wsjtx.patch")
 md5sums=("SKIP"
-         "57650d8febe9810c4d3bc9f8c5cda75d")
+         "c5a2c0b91c2709e070d7ebcb75621354")
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
