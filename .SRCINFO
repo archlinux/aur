@@ -15,6 +15,7 @@ pkgbase = ruby-taskwarrior-web
 	depends = ruby-sinatra-simple-navigation
 	depends = ruby-rack-flash3
 	depends = ruby-json-1
+	depends = task
 	noextract = taskwarrior-web-1.1.12.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/taskwarrior-web-1.1.12.gem
