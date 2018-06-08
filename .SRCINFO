@@ -1,0 +1,16 @@
+pkgbase = ruby-versionomy
+	pkgdesc = Versionomy is a generalized version number library.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://dazuma.github.com/versionomy
+	arch = any
+	license = BSD-3-Clause
+	depends = ruby
+	depends = ruby-blockenspiel
+	noextract = versionomy-0.5.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/versionomy-0.5.0.gem
+	sha1sums = c2b10fa6307e1a5a80a747471935a57133aebf97
+
+pkgname = ruby-versionomy
+
