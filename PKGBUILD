@@ -1,7 +1,7 @@
 # Maintainer: Ivan Marquesi Lerner <ivanml1992 @!@ gmail.com>
 
 pkgname=plotagraph
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="A cloud-based photo-animation software."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gconf' 'libnotify' 'libappindicator-gtk2'
 install="$pkgname.install"
 source=("http://download.plotagraphapp.com/build/${pkgname/p/P}_${pkgver}_amd64.deb"
 	"LICENSE")
-md5sums=('19101f25f321aed641b7912a91b56671'
+md5sums=('261298b6ccbd90b4d0d99f4a604caedd'
          'a3d5cc205f77a6939c5550ed80b40615')
 
 prepare() {
