@@ -3,20 +3,20 @@
 
 pkgname=ruby-mailcatcher
 _pkgname="${pkgname#ruby-}"
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.6.5
+pkgrel=1
 pkgdesc='Catches mail and serves it through a dream.'
 arch=('any')
 url="http://$_pkgname.me"
 license=('MIT')
-depends=('ruby-activesupport-4.2' 'ruby-eventmachine' 'ruby-haml' 'ruby-mail' 'ruby-sinatra' 'ruby-skinny' 'ruby-sqlite3' 'ruby-thin')
+depends=('ruby-eventmachine-1.0' 'ruby-mail' 'ruby-rack-1' 'ruby-sinatra-1' 'ruby-skinny' 'ruby-sqlite3' 'ruby-thin-1.5')
 makedepends=('rubygems')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=(!emptydirs)
 install="$pkgname.install"
 source=(
-  "https://github.com/sj26/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.gem"
+  "https://rubygems.org/downloads/$_pkgname-$pkgver.gem"
   "$_pkgname.service"
   "$_pkgname-http@.socket"
   "$_pkgname-http.service"
@@ -31,31 +31,14 @@ md5sums=('SKIP'
          'be35bfe4c621b7f2ff733e2c21bee54d')
 noextract=("$_pkgname-$pkgver.gem")
 
-# Derive the latest release's version string from its tag name.
-pkgver() {
-    (
-        set -o pipefail
-        curl https://api.github.com/repos/sj26/mailcatcher/releases/latest |
-        sed -n '/"tag_name"/{s/^ \+"tag_name": "v\?\([^"]*\)",/\1/;p}'
-    )
-}
-
 package() {
   # _gemdir is defined inside package() because if ruby[gems] is not installed on
   # the system, makepkg will exit with an error when sourcing the PKGBUILD.
-  _gemdir="$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')"
+  _gemdir="$pkgdir$(ruby -e'puts Gem.default_dir')"
   _gemspec="$_gemdir/specifications/$_pkgname-$pkgver.gemspec"
-
-  echo $_gemdir
-  echo $_gemspec
-  echo "$_pkgname-$pkgver.gem"
 
   gem install --no-document --no-user-install --ignore-dependencies --install-dir "$_gemdir" --bindir "$pkgdir/usr/bin" "$_pkgname-$pkgver.gem"
   rm "$_gemdir/cache/$_pkgname-$pkgver.gem"
-
-  # Loosen version-specific dependencies (doesn't appear to affect the software)
-  sed -i '/dependency(%q<eventmachine>/{s/".*"/"~> 1"/}' $_gemspec
-  sed -i '/dependency(%q<thin>/{s/".*"/"~> 1"/}' $_gemspec
 
   # Install systemd units
   for file in "$_pkgname"{.service,{-http,-smtp}{.service,@.socket}}; do
