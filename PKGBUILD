@@ -1,11 +1,11 @@
 # Maintainer RetardedOnion@archlinux-irc
 pkgname=seahorse-adventures
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Help Barbie the seahorse float on bubbles to the moon. 2D Platformer."
 arch=('i686' 'x86_64')
 url="https://github.com/Nebuleon/barbie-seahorse-adventures"
-license=('GPL-2')
+license=('custom')
 groups=()
 depends=('python2' 'ttf-aenigma' 'python2-pygame')
 makedepends=()
