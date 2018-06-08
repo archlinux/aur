@@ -1,7 +1,7 @@
 pkgbase = battery-monitor-devel
 	pkgdesc = A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux.
 	pkgver = 0.5.3.r34.gf7a83dd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maateen/battery-monitor
 	arch = x86_64
 	license = GPL3
@@ -14,6 +14,7 @@ pkgbase = battery-monitor-devel
 	depends = libnotify
 	provides = battery-monitor
 	conflicts = battery-monitor
+	conflicts = battery-monitor-devel-git
 	source = battery-monitor-devel::git+https://github.com/maateen/battery-monitor.git#branch=devel
 	md5sums = SKIP
 
