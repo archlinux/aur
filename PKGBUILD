@@ -6,7 +6,7 @@
 # Maintainer: Karsten Pufahl <kontakt <AT> karstenpufahl.de>
 pkgname=stm32cubemx
 pkgver=4.26.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code"
 arch=(any)
@@ -14,7 +14,7 @@ url="http://www.st.com/content/st_com/en/products/development-tools/software-dev
 license=('custom')
 groups=()
 depends=('lib32-glibc'
-	 'java-environment'
+	 'java-runtime'
 	 'bash')
 makedepends=('imagemagick')
 checkdepends=()
@@ -26,10 +26,10 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("http://www.st.com/content/ccc/resource/technical/software/sw_development_suite/00/22/e1/cf/b7/83/42/25/stm32cubemx.zip/files/stm32cubemx.zip/jcr:content/translations/en.stm32cubemx.zip"
-	"LICENSE"
-	"stm32cubemx.desktop"
-	"stm32cubemx.sh")
+source=("stm32cubemx-$pkgver.zip::http://www.st.com/content/ccc/resource/technical/software/sw_development_suite/00/22/e1/cf/b7/83/42/25/stm32cubemx.zip/files/stm32cubemx.zip/jcr:content/translations/en.stm32cubemx.zip"
+ 	"LICENSE"
+ 	"stm32cubemx.desktop"
+ 	"stm32cubemx.sh")
 noextract=()
 sha512sums=('911334c9b14b8d076cc00165d7e815464d194a20cc4a2bb85ba1d402749123413b15991057928306dcbc0de3e2a17684f6e8a539029c88cb13603e1e8409d534'
             'ad1897ea5234b712d726b5d3423f05f1c0c5a64e28354afe07dce7451563ae4492366cc252ca379b44793797be20011a66458431fd5453c18a7543ccb8df5397'
