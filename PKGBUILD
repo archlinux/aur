@@ -7,7 +7,7 @@
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk-git
-pkgver=1.2a.r113.gf007f0a
+pkgver=2018.Q2.1.r69.gc34cc32
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
@@ -46,7 +46,8 @@ pkgver() {
     cd "$pkgname"
     
     # git, tags available
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/,//'
+    local _prefix='MediaSDK-'
+    git describe --long --tags | sed "s/^${_prefix}//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/,//"
 }
 
 build() {
