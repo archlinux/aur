@@ -1,24 +1,5 @@
 pkgbase = kerneloops-git
 	pkgdesc = Client tool for reporting OOPS to http://oops.kernel.org/
-	pkgver = 0.12.r28.g64e6bd9
-	pkgrel = 4
-	url = http://oops.kernel.org/
-	arch = i686
-	arch = x86_64
-	license = GPL2
-	makedepends = git
-	depends = dbus-glib
-	depends = libnotify
-	depends = gtk2
-	depends = curl
-	backup = etc/kerneloops.conf
-	source = git+https://github.com/oops-kernel-org/kerneloops
-	sha256sums = SKIP
-
-pkgname = kerneloops-git
-
-pkgbase = kerneloops-git
-	pkgdesc = Client tool for reporting OOPS to http://oops.kernel.org/
 	pkgver = 0.12.r44.g00ac663
 	pkgrel = 1
 	url = http://oops.kernel.org/
