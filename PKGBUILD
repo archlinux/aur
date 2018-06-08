@@ -2,7 +2,7 @@
 
 _gitname='espeakup'
 pkgname="$_gitname"-git
-pkgver=v0.71.117.g4d87b22
+pkgver=v0.8.4.gf2000b2
 pkgrel=1
 pkgdesc='allows the Speakup screen review system to use the ESpeak synthesizer'
 arch=('armv7h' 'i686' 'x86_64')
