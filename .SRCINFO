@@ -1,18 +1,18 @@
 pkgbase = haskell-nats
 	pkgdesc = Haskell 98 natural numbers
-	pkgver = 1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/nats
-	install = haskell-nats.install
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
-	depends = ghc
+	makedepends = ghc
+	depends = ghc-libs
 	depends = haskell-hashable
-	options = strip
-	options = staticlibs
-	source = http://hackage.haskell.org/packages/archive/nats/1/nats-1.tar.gz
-	md5sums = 90cc8beb03749bde25391bd631b55dbc
+	depends = haskell-base
+	depends = haskell-binary
+	source = http://hackage.haskell.org/packages/archive/nats/1.1.2/nats-1.1.2.tar.gz
+	sha256sums = b9d2d85d8612f9b06f8c9bfd1acecd848e03ab82cfb53afe1d93f5086b6e80ec
 
 pkgname = haskell-nats
 
