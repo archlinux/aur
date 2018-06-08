@@ -1,0 +1,27 @@
+pkgbase = pigeon-qt
+	pkgdesc = Peer-to-peer network based digital currency (QT)
+	pkgver = 0.15.99
+	pkgrel = 2
+	url = http://pigeoncoin.org/
+	install = pigeon-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = db4.8
+	depends = zeromq
+	depends = miniupnpc
+	depends = qrencode
+	depends = protobuf
+	depends = libevent
+	conflicts = pigeon
+	source = pigeon-qt::git+http://github.com/Pigeoncoin/pigeoncoin.git
+	source = pigeon-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 331bd8fb38aae6d94a0e7494ff183f8d918eeb6d143ffcfa8ca61546338f265d
+
+pkgname = pigeon-qt
+

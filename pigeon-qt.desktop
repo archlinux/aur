@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Pigeoncoin
+Comment=Pigeoncoin P2P Cryptocurrency
+Exec=/usr/bin/pigeon-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/pigeon128.png
+MimeType=x-scheme-handler/pigeon;
+Categories=Office;
+Name[en_US]=pigeon-qt.desktop
