@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /opt/stm32cubemx/STM32CubeMX "$@"
+exec java -jar /opt/stm32cubemx/STM32CubeMX.exe "$@"

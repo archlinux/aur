@@ -6,15 +6,14 @@
 # Maintainer: Karsten Pufahl <kontakt <AT> karstenpufahl.de>
 pkgname=stm32cubemx
 pkgver=4.26.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code"
 arch=(any)
 url="http://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-configurators-and-code-generators/stm32cubemx.html"
 license=('custom')
 groups=()
-depends=('lib32-glibc'
-	 'java-runtime'
+depends=('java-runtime'
 	 'bash')
 makedepends=('imagemagick')
 checkdepends=()
@@ -26,52 +25,24 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("stm32cubemx-$pkgver.zip::http://www.st.com/content/ccc/resource/technical/software/sw_development_suite/00/22/e1/cf/b7/83/42/25/stm32cubemx.zip/files/stm32cubemx.zip/jcr:content/translations/en.stm32cubemx.zip"
+source=("http://www.st.com/resource/en/library2/stm32cube_mx_v${pkgver//./}.zip"
  	"LICENSE"
  	"stm32cubemx.desktop"
  	"stm32cubemx.sh")
 noextract=()
-sha512sums=('911334c9b14b8d076cc00165d7e815464d194a20cc4a2bb85ba1d402749123413b15991057928306dcbc0de3e2a17684f6e8a539029c88cb13603e1e8409d534'
+sha512sums=('c80a2cc868aa3e2316a9d4eb67d16805f747b14d97ec92ce7e121439dae117991a500b50f23c73e30d5b7c69d17ff9cdb4467a492c594d4cc84c96b0e613714c'
             'ad1897ea5234b712d726b5d3423f05f1c0c5a64e28354afe07dce7451563ae4492366cc252ca379b44793797be20011a66458431fd5453c18a7543ccb8df5397'
             '56bff32e35f8eb09ae4df94e4e885aaf9349c687ce9f4901ddd11c83b69a32b19d99ab8dbd90c6679e86e7213c4d41640e52ab0d80b8fc4640a1bc5df9a3af32'
-            'bef2450971c152c7f45565e0e36faf1863ddc6616532d5db2f29344de5d2d34852946a89e865059a632761a0c2565177cb2181724837b7b740b0697265d307c0')
+            '9cc2dcb57e48e7039fb833c410e4638155fd14793c6daa7a00e1d1445162e7e26690c3303b6f052fff643123bc246be345da8624b18ee2805ddde75280512eec')
 validpgpkeys=()
 
-
-build() {
-	cd "${srcdir}"
-
-# generate xml file for the provided isntaller to run in non-interactive mode
-cat << EOM > auto-install_custom.xml
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<AutomatedInstallation langpack="eng">
-<com.st.microxplorer.install.MXHTMLHelloPanel id="readme"/>
-<com.st.microxplorer.install.MXLicensePanel id="licence.panel"/>
-<com.st.microxplorer.install.MXTargetPanel id="target.panel">
-<installpath>$pkgdir/opt/$pkgname/</installpath>
-</com.st.microxplorer.install.MXTargetPanel>
-<com.st.microxplorer.install.MXShortcutPanel id="shortcut.panel"/>
-<com.st.microxplorer.install.MXInstallPanel id="install.panel"/>
-<com.st.microxplorer.install.MXFinishPanel id="finish.panel"/>
-</AutomatedInstallation>
-EOM
-
-}
-
 package() {
-	java -Djava.awt.headless=true -jar "${srcdir}/SetupSTM32CubeMX-${pkgver}.exe" "auto-install_custom.xml"
-	
-	# mkdir -p "${pkgdir}/opt"
-
-        # /usr/bin symlink
-        # mkdir -p "${pkgdir}/usr/bin"
-        # cd "${pkgdir}/usr/bin"
-        # ln -s /opt/$pkgname/STM32CubeMX stm32cubemx
-	
-	install -Dm 755 "${srcdir}/stm32cubemx.sh" "${pkgdir}/usr/bin/${pkgname}"
-
+   cd "${srcdir}"
+	mkdir -p "${pkgdir}/opt/stm32cubemx"
+	cp -r "${srcdir}/." "${pkgdir}/opt/stm32cubemx"
+   install -Dm 755 "${srcdir}/stm32cubemx.sh" "${pkgdir}/usr/bin/${pkgname}"
 	#icon and desktop file
-	convert "${pkgdir}/opt/stm32cubemx/help/STM32CubeMX.ico" "${srcdir}/${pkgname}.png"
+	convert "${srcdir}/help/STM32CubeMX.ico" "${srcdir}/${pkgname}.png"
 	install -Dm 644 "${srcdir}/${pkgname}-6.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 	install -Dm 644 "${srcdir}/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	
