@@ -1,0 +1,12 @@
+--- a/setup.py	2018-06-08 15:53:33.353160285 +0200
++++ b/setup.py	2018-06-08 15:53:00.570152313 +0200
+@@ -187,7 +187,8 @@
+       ],
+       packages=['friture',
+                 'friture.plotting',
+-                'friture.generators'],
++                'friture.generators',
++		'friture.signal'],
+       scripts=['scripts/friture'],
+       ext_modules=cythonize(ext_modules),
+       **extra_options
