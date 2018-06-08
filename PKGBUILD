@@ -27,11 +27,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-#prepare() {
-#  cd "$srcdir/${_pkgname}"
-#  patch -p1 -i "$srcdir/${_pkgname}.patch"
-#}
-
 package() {
   cd "$srcdir/${_pkgname}"
   # copy main program
