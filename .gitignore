@@ -1,0 +1,4 @@
+*.tar.[gx]z
+mapper-*
+pkg
+src
