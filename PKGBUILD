@@ -1,7 +1,7 @@
 # Maintainer: Merrick Luo <merrick@luois.me>
 pkgname=vysor-git
 pkgver=r128.f18c57c
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Vysor lets you view and control your Android on your computer. Easy peasy."
 arch=("x86_64")
@@ -27,7 +27,7 @@ noextract=()
 md5sums=("SKIP"
          "d4e9a9dd54eb49e556ea9784f3d1fce4"
          "65fe8e05a060de9356a269524434cea9"
-         "db9cb80a6d385f8c1b06b5555b8daad2")
+         "e9568a4c81be59b0c0a6437d1d3d71fe")
 validpgpkeys=()
 
 pkgver() {

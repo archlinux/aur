@@ -1,7 +1,7 @@
 pkgbase = vysor-git
 	pkgdesc = Vysor lets you view and control your Android on your computer. Easy peasy.
 	pkgver = r128.f18c57c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/koush/electron-chrome
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = vysor-git
 	makedepends = npm
 	depends = nodejs
 	depends = gconf
+	provides = vysor
 	conflicts = vysor
 	source = vysor-git::git+https://github.com/koush/electron-chrome#branch=master
 	source = vysor.desktop
@@ -17,7 +18,7 @@ pkgbase = vysor-git
 	md5sums = SKIP
 	md5sums = d4e9a9dd54eb49e556ea9784f3d1fce4
 	md5sums = 65fe8e05a060de9356a269524434cea9
-	md5sums = db9cb80a6d385f8c1b06b5555b8daad2
+	md5sums = e9568a4c81be59b0c0a6437d1d3d71fe
 
 pkgname = vysor-git
 
