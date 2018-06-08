@@ -22,12 +22,13 @@ build() {
 
   ./configure \
 	--prefix=/usr \
-        --sbindir=/usr/bin \
+	--sbindir=/usr/bin \
 	--mandir=/usr/share/man \
 	--sysconfdir=/etc \
 	--localstatedir=/var \
 	--with-pidfile=/run/watchdog.pid \
-	--with-ka_pidfile=/run/wd_keepalive.pid
+	--with-ka_pidfile=/run/wd_keepalive.pid \
+	--disable-nfs
   
   make
 }
