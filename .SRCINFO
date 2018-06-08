@@ -2,7 +2,7 @@ pkgbase = textsuggest-git
 	pkgdesc = Simple Linux utility to autocomplete words using rofi
 	pkgver = r35.ccbcbc9
 	pkgrel = 1
-	url = https://github.com/bharadwaj-raju/TextSuggest
+	url = https://gitlab.com/bharadwaj-raju/TextSuggest
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -16,7 +16,7 @@ pkgbase = textsuggest-git
 	depends = xclip
 	depends = libxcb
 	provides = textsuggest
-	source = textsuggest::git+https://github.com/bharadwaj-raju/TextSuggest.git
+	source = textsuggest::git+https://gitlab.com/bharadwaj-raju/TextSuggest.git
 	md5sums = SKIP
 
 pkgname = textsuggest-git
