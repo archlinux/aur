@@ -3,13 +3,13 @@
 pkgname=haskell-gi
 _hkgname=haskell-gi
 pkgver=0.21.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate Haskell bindings for GObject Introspection capable libraries
 "
 url=https://hackage.haskell.org/package/haskell-gi
 license=('BSD')
 arch=('i686' 'x86_64')
-depends=("ghc-libs" 'haskell-base' 'haskell-safe' 'haskell-bytestring' 'haskell-mtl' 'haskell-regex-tdfa' "haskell-xdg-basedir" 'haskell-xml-conduit' 'haskell-semigroups' 'haskell-transformers' 'haskell-pretty-show' 'haskell-process' 'haskell-gi-base' 'haskell-directory')
+depends=("ghc-libs" "gobject-introspection" 'haskell-base' 'haskell-safe' 'haskell-bytestring' 'haskell-mtl' 'haskell-regex-tdfa' "haskell-xdg-basedir" 'haskell-xml-conduit' 'haskell-semigroups' 'haskell-transformers' 'haskell-pretty-show' 'haskell-process' 'haskell-gi-base' 'haskell-directory')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 sha256sums=('c0ae6687f2402742109c3c5dab03d17ca96dfce0680624ea595ee269deb75527')

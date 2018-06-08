@@ -1,13 +1,14 @@
 pkgbase = haskell-gi
 	pkgdesc = Generate Haskell bindings for GObject Introspection capable libraries
 	pkgver = 0.21.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/haskell-gi
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = ghc
 	depends = ghc-libs
+	depends = gobject-introspection
 	depends = haskell-base
 	depends = haskell-safe
 	depends = haskell-bytestring
