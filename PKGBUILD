@@ -1,13 +1,15 @@
-#Maintainer: Arnaud Joset <info [AT] agayon [DOT] be>
+# Maintainer: Arnaud Joset <info [AT] agayon [DOT] be>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=('sat-tmp-hg')
 _realname=sat_tmp
 pkgver=0.7.r52.2068cf3009da
 _version=0.7
 pkgrel=1
+pkgdesc="sat_tmp aims to temporary store files needed by Salut-a-toi (sat). These monkey patchs are not merged upstream yet. For now, only wokkel is impacted."
 url="https://salut-a-toi.org/"
 arch=('any')
-depends=('python2')
+depends=('python2' 'python2-wokkel')
 makedepends=('mercurial')
 provides=('sat-tmp')
 conflicts=('sat-tmp')
@@ -17,15 +19,16 @@ md5sums=('SKIP')
 options=('!strip')
 
 pkgver() {
-  cd "$_realname"
+  cd $_realname
   printf "$_version.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
+build() {
+  cd $_realname
+  python2 setup.py build
+}
+
 package(){
-  pkgdesc="sat_tmp aims to temporary store files needed by Salut-a-toi (sat). These monkey patchs are not merged upstream yet. For now, only wokkel is impacted."
-  depends=( "python2-wokkel" )
-  cd "$pkgdir"
-  install -dm755 "usr/lib/python2.7/site-packages/$_realname"
-  cd "$srcdir/$_realname/$_realname/"
-  cp -rv * "$pkgdir/usr/lib/python2.7/site-packages/$_realname"
+  cd $_realname
+  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
