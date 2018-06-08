@@ -3,18 +3,20 @@
 # Contributor: Timothée Ravier <tim@siosm.fr>
 
 pkgname=mozilla-firefox-sync-server
-pkgver=1.7.0
-pkgrel=7
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Mozilla Sync Server for built-in Firefox Sync"
 arch=('any')
 url='http://docs.services.mozilla.com/howtos/run-sync-1.5.html'
 license=('GPL')
 depends=('python2' 'python2-pyramid' 'python2-mozsvc' 'python2-konfig' 'python2-configparser' 'python2-tokenserver'
          'python2-simplejson' 'python2-paste-deploy' 'python2-syncstorage' 'python2-pyramid-hawkauth' 'python2-tokenlib' 'python2-sqlalchemy')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mozilla-services/syncserver/archive/v${pkgver}.tar.gz")
-sha512sums=('c66aed1195138f15729ed7ef3fb31837bd74f751c0df4f93d0d6c3a8b34687d7dc02e201cfb6c218aab1d769698950ea316f688b51d90b87e8c495d573b85cc3')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mozilla-services/syncserver/archive/${pkgver}.tar.gz")
+sha512sums=('73f7e32e900fac5e8385b2b7b521aed964ec85879283733daf84a8afe194e1775b654074ae19e7bf574a2e41a01a821104a10f4c4794eecacffb7a903814e093')
 backup=('etc/webapps/mozilla-firefox-sync-server/syncserver.ini')
 install='mozilla-firefox-sync-server.install'
+optdepends=('uwsgi-plugin-python2: Serve the webapp using uwsgi'
+            'mozilla-firefox-account-server: Run your own firefox account server')
 
 prepare() {
   cd "syncserver-${pkgver}"
