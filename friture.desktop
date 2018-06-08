@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Friture
+Comment=Visualize and analyze live audio data in real-time
+GenericName=Friture
+Exec=friture %U
+Icon=friture
+Type=Application
+StartupNotify=true
+Categories=Utility;
+Categories=Audio;Multimedia;

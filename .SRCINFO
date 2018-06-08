@@ -19,8 +19,10 @@ pkgbase = friture-git
 	optdepends = jack: for JACK I/O support
 	source = friture::git+https://github.com/tlecomte/friture.git
 	source = patch
+	source = friture.desktop
 	md5sums = SKIP
 	md5sums = 9ddb9961a2694403bb56ccfd0ae99bd2
+	md5sums = 90243c7bedd2dfca1429498561ce796b
 
 pkgname = friture-git
 
