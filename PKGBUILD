@@ -1,30 +1,20 @@
-# $Id$
-# Maintainer: Sylvain Agostini <sylvain@agoremix.com>
+# Maintainer : Vassilis Palassopoulos <palasso [at] gmail [dot] com>
 
 pkgname=rkward
-pkgver=0.6.5
+pkgver=0.7.0b
 pkgrel=1
-pkgdesc="KDE easy to use and easily extensible IDE/GUI for R"
+pkgdesc="An easy to use and easily extensible IDE/GUI for R"
 url="http://rkward.kde.org/"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL')
-groups=('kde-applications' 'kdeedu')
-depends=('kdebase-runtime' 'r' 'katepart4')
-makedepends=('extra-cmake-modules' 'automoc4')
-optdepends=()
-conflicts=()
-source=("http://download.kde.org/stable/rkward/${pkgver}/src/rkward-${pkgver}.tar.gz")
-sha1sums=('562cb7a0abdb46f5ed21e4344bb566d759f88f43')
-install=$pkgname.install
-
-prepare() {
-  mkdir -p build
-}
+depends=('kdewebkit' 'ktexteditor' 'r')
+makedepends=('kdoctools' 'extra-cmake-modules')
+source=("http://download.kde.org/stable/rkward/${pkgver//b/}/src/rkward-$pkgver.tar.gz")
+md5sums=('a678008a571c7dacd5c13d62817ead7a')
 
 build() {
-  cd build
-  cmake ../$pkgname-$pkgver \
-    -DCMAKE_BUILD_TYPE=Debug \
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DR_LIBDIR=/usr/lib/R/library
@@ -32,7 +22,6 @@ build() {
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
-  rm -vf "${pkgdir}/usr/share/apps/katepart/syntax/r.xml"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="$pkgdir" install
 }
-
