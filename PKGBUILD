@@ -3,7 +3,7 @@
 
 pkgname="trougnouf-backgrounds"
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -44,7 +44,7 @@ _stimes=(
 	41400 # 22h46 to 10h16 = 690 minutes
 )
 	
-sha256sums=('816c37d71c5b3594aec28be8fe81699441007d9bbd1f240137f56691d2af51ad'
+sha256sums=('8f67dfb04ee07250b5ff3488c10eabec85d348297dd56bb701b124bd373c35f2'
 	'0381dac0c5cfdb7d3068d9758222708fcc281f4b45d115d93ed524894d723ccd'
 	'34e13f84a99c20b7ba7280db25d6993675b17f953a327c144e57ad04abefd08f'
 	'4890081d1a7cdacb036da85e54f900c5effc40741c2a76816ad316b41931ad2b'
