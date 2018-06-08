@@ -9,7 +9,7 @@ url="http://www.synology.com"
 license=('unknown')
 depends=('glibc' 'libsm' 'binutils' 'fontconfig')
 optdepends=('nautilus: For nautilus integration')
-conflicts=('cloudstation-beta', 'cloudstation-3.0', 'cloudstation-drive')
+conflicts=('cloudstation-beta' 'cloudstation-3.0' 'cloudstation-drive')
 source=()
 md5sums=()
 
