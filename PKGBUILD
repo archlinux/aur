@@ -11,7 +11,7 @@ license=("GPL-3")
 depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat fftw gcc-fortran hamlib)
 makedepends=('cmake' 'git' 'asciidoc')
 provides=("wsjtx")
-conflicts=("wsjtx" "wsjtx-bin" "wsjtx-bin-rpm" "wsjtx-svn")
+conflicts=("wsjtx")
 source=("git+https://git.code.sf.net/p/wsjt/wsjtx/"
         "wsjtx.patch")
 md5sums=("SKIP"
