@@ -3,7 +3,7 @@
 
 pkgname=python2-wokkel
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 _libname=${pkgname/python2-/}
 pkgdesc="Twisted Jabber support library"
 license=('custom:"Wokkel License"')
@@ -11,7 +11,7 @@ url="http://wokkel.ik.nu/"
 source=("http://wokkel.ik.nu/releases/$pkgver/wokkel-$pkgver.tar.gz")
 arch=(any)
 makedepends=('python2-setuptools')
-depends=('twisted')
+depends=('python2-twisted')
 
 build() {
 	cd "$srcdir/$_libname-$pkgver"
