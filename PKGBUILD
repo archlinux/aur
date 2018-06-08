@@ -8,7 +8,7 @@ pkgdesc="Client for Microsoft Exchange Web Services (EWS)"
 arch=(any)
 url="https://github.com/ecederstrand/exchangelib"
 license=('BSD')
-depends=('python' 'python-cached-property' 'python-cryptography' 'python-lxml' 'python-dnspython' 'python-requests-ntlm' 'python-pytz' 'python-future' 'python-tzlocal')
+depends=('python' 'python-cached-property' 'python-cryptography' 'python-defusedxml' 'python-dnspython' 'python-isodate' 'python-lxml' 'python-requests-kerberos' 'python-requests-ntlm' 'python-pytz' 'python-future' 'python-tzlocal')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
 "LICENSE")
