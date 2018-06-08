@@ -6,7 +6,7 @@
 _pkgname=pytoml
 pkgbase=python-pytoml
 pkgname=('python-pytoml' 'python2-pytoml')
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="A TOML-0.4.0 parser/writer for Python."
 arch=('any')
@@ -15,7 +15,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-pytest' 'python2-pytest')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ab00e17374b2f633fd682069689a6d48379a2661b1bbdc615ba80f8e25044f92')
+sha256sums=('15828a91627e750ef5440d1aa9fd9a920793760bd151dc45d3de22ab1c668e17')
 
 build() {
     cd "${srcdir}"/${_pkgname}-${pkgver}
