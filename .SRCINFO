@@ -1,7 +1,7 @@
 pkgbase = compute-runtime
 	pkgdesc = Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond. Weekly build version.
-	pkgver = 18.21.10858
-	pkgrel = 1
+	pkgver = 18.22.10890
+	pkgrel = 2
 	url = https://01.org/compute-runtime
 	arch = x86_64
 	license = MIT
@@ -15,13 +15,13 @@ pkgbase = compute-runtime
 	optdepends = libva: for cl_intel_va_api_media_sharing
 	optdepends = libdrm: for cl_intel_va_api_media_sharing
 	conflicts = compute-runtime-git
-	source = neo::git+https://github.com/intel/compute-runtime#tag=18.21.10858
+	source = neo::git+https://github.com/intel/compute-runtime#tag=18.22.10890
 	source = clang_source::git+https://github.com/llvm-mirror/clang#branch=release_40
-	source = common_clang::git+https://github.com/intel/opencl-clang#commit=fa75886
-	source = llvm_patches::git+https://github.com/intel/llvm-patches#commit=0ba9deb
+	source = common_clang::git+https://github.com/intel/opencl-clang#commit=9b2473d
+	source = llvm_patches::git+https://github.com/intel/llvm-patches#commit=7ac2c8a
 	source = llvm_source::git+https://github.com/llvm-mirror/llvm#branch=release_40
 	source = gmmlib::git+https://github.com/intel/gmmlib#commit=a501534
-	source = igc::git+https://github.com/intel/intel-graphics-compiler#commit=858e183
+	source = igc::git+https://github.com/intel/intel-graphics-compiler#commit=65bbbe3
 	source = khronos::git+https://github.com/KhronosGroup/OpenCL-Headers#commit=de26592
 	sha256sums = SKIP
 	sha256sums = SKIP
