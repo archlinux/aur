@@ -19,4 +19,4 @@ cookies
 *.o
 
 *.log
-libtorrent-0.13.6/
+libtorrent/
