@@ -31,22 +31,9 @@ package() {
     cd "${srcdir}/yaml-$pkgver/build-${_arch}"
     make DESTDIR="${pkgdir}" install
     rm -rf "$pkgdir"/usr/${_arch}/share/man
-    #${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     find "$pkgdir" -name '*.exe' -delete
     find "$pkgdir" -name '*.dll' -delete
     find "$pkgdir" -name '*.h' -delete
   done
-
-  #for _arch in ${_architectures}; do
-  #  cd "${srcdir}/yaml-${pkgver}-${_arch}"
-  #  make DESTDIR="${pkgdir}" install
-  #  make DESTDIR="$pkgdir" install
-  #  install -Dm644 "libyaml.dll" "${pkgdir}/usr/${_arch}/bin/libyaml.dll"
-  #  install -m644 "libyaml.dll.a" "${pkgdir}/usr/${_arch}/lib/libyaml.dll.a"
-  #  install -m644 -D LICENSE "${pkgdir}/usr/${_arch}/share/licenses/${pkgname}/LICENSE"
-  #  find "$pkgdir/usr/${_arch}" -name '*.exe' | xargs -rtl1 rm
-  #  find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
-  #  find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
-  #done
 }
