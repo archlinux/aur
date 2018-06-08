@@ -4,19 +4,32 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.81.28068
+pkgver=2.19.81.28109
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
 url="http://lilypond.org/"
 license=('GPL')
-depends=('guile1.8' 'pango' 'python2' 'ttf-dejavu' 'fontconfig' 'freetype2' 'ghostscript')
-makedepends=('fontforge' 'git' 'gsfonts' 't1utils-git' 'dblatex'
-	     'tex-gyre-fonts' 'texlive-langcyrillic' 'texi2html' 'netpbm')
+depends=('guile1.8'
+	 'pango'
+	 'python2'
+	 'ttf-dejavu'
+	 'fontconfig'
+	 'freetype2'
+	 'ghostscript')
+makedepends=('fontforge'
+	     'git'
+	     'gsfonts'
+	     't1utils'
+	     'dblatex'
+	     'tex-gyre-fonts'
+	     'texlive-langcyrillic'
+	     'texi2html'
+	     'netpbm')
 optdepends=('extractpdfmark: for reducing the size of pdf output significantly'
 	    'tk: for the gui')
 provides=('lilypond')
-conflicts=('lilypond' 'lilypond-devel')
+conflicts=('lilypond')
 source=(git://git.savannah.gnu.org/lilypond.git)
 md5sums=('SKIP')
 options=('!makeflags')
@@ -55,5 +68,5 @@ build() {
 package() {
   cd lilypond/build
   make DESTDIR="$pkgdir/" vimdir="/usr/share/vim/vimfiles" install
-  rm -rf "$pkgdir/usr/share/man"
+  rm -rf "$pkgdir"/usr/share/man
 }
