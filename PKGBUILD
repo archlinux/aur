@@ -1,7 +1,7 @@
 # Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-siriusxm
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="siriusxm integration for Nuvola Player."
 arch=("any")
@@ -10,7 +10,7 @@ license=('custom:BSD')
 depends=('nuvolaruntime' 'imagemagick')
 makedepends=('nuvolasdk' 'scour')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('678e248ac44a7513bd009d32695703332e09e03ce799658f1f4bd88269f3a0ac')
+sha256sums=('ceb43a178fa58c3aef83a31c5a57f16bf55a378f76326baae2167d3e531c16aa')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
