@@ -1,6 +1,6 @@
 pkgbase = llvm50
 	pkgver = 5.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://llvm.org/
 	arch = i686
 	arch = x86_64

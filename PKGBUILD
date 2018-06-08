@@ -12,7 +12,7 @@
 
 pkgname=('llvm50' 'llvm50-libs' 'clang50')
 pkgver=5.0.2
-pkgrel=2
+pkgrel=3
 _prefix="/usr/lib/llvm-5.0"
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
@@ -147,8 +147,8 @@ package_clang50() {
     ln -f -s "${_prefix}/bin/$f" "$pkgdir/usr/bin/${f%-5.0}-5.0"
   done
   
-  cd ../lib
-  ln -s libclang*.so* ${pkgdir}/usr/lib
+  cd ${pkgdir}${_prefix}/lib
+  ln -s *clang*.*so* ${pkgdir}/usr/lib
   rm ${pkgdir}/usr/lib/libclang.so
 }
 # vim:set ts=2 sw=2 et:
