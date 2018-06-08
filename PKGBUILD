@@ -11,7 +11,7 @@ depends=('poppler-glib' 'ncurses' 'libx11')
 makedepends=('gcc' 'make')
 url="http://github.com/sgerwk/pdftoroff"
 source=(http://github.com/sgerwk/pdftoroff/archive/v$pkgver.tar.gz)
-md5sums=('b0f5f975f8203298dfa01033af6a1c6c')
+md5sums=('e6acb258a631dd27d3e82723795d08bf')
 
 build() {
   cd $startdir/src/$pkgname-$pkgver
