@@ -1,6 +1,6 @@
 pkgbase = libopencm3-git
 	pkgdesc = Open Source firmware library for various ARM Cortex microcontrollers
-	pkgver = r2167.dc64929b
+	pkgver = r2170.ea6a5a7e
 	pkgrel = 1
 	url = http://www.libopencm3.org/
 	arch = any
