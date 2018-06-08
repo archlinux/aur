@@ -1,0 +1,15 @@
+pkgbase = haskell-gi-overloading
+	pkgdesc = Expose a dbus server to control hslogger
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/haskell-gi-overloading
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/haskell-gi-overloading/1.0/haskell-gi-overloading-1.0.tar.gz
+	sha256sums = 3ed797f8dd8d3535640b1ca99851bbc5968817c25a80fc499af42715d371682a
+
+pkgname = haskell-gi-overloading
+
