@@ -2,7 +2,7 @@
 
 pkgname=ygopro
 pkgver=1.034
-pkgrel=3
+pkgrel=4
 pkgdesc="A script engine for “yu-gi-oh!” and sample gui"
 arch=('i686' 'x86_64')
 url='https://github.com/Fluorohydride/ygopro'
@@ -14,10 +14,10 @@ source=("https://codeload.github.com/Fluorohydride/ygopro/tar.gz/v${pkgver}.${pk
         "core.zip::https://codeload.github.com/Fluorohydride/ygopro-core/zip/master"
         "scripts.zip::https://codeload.github.com/Fluorohydride/ygopro-scripts/zip/master"
         "data.zip::https://gitee.com/ximlel/ygopro_data/repository/archive/v${pkgver}.${pkgrel}.zip")
-sha256sums=('9a6c6aeea1bad1138d3d8218420b03d4078c0debf5638adce1a48075bdc218b8'
+sha256sums=('b51d4fa75a485a9bc8446081583a97150b1ff65f03ff16e33d7fd95998491fec'
             "SKIP"
             "SKIP"
-            '6c740184be7657d128ffbb96233e39c0ab932854216c4e23a3852926310283d5')
+            '9b0e2d4485f8a5cc9f033be3a05ce7afdf10d538e8fe88eb3c5557d750a365f4')
 options=('emptydirs' '!buildflags' '!makeflags')
 
 package() {

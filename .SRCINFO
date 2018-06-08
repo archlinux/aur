@@ -1,7 +1,7 @@
 pkgbase = ygopro-zh
 	pkgdesc = A script engine for “yu-gi-oh!” and sample gui
 	pkgver = 1.034
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Fluorohydride/ygopro
 	arch = i686
 	arch = x86_64
@@ -18,14 +18,14 @@ pkgbase = ygopro-zh
 	options = !buildflags
 	options = !makeflags
 	backup = opt/ygopro/system.conf
-	source = https://codeload.github.com/Fluorohydride/ygopro/tar.gz/v1.034.3
+	source = https://codeload.github.com/Fluorohydride/ygopro/tar.gz/v1.034.4
 	source = core.zip::https://codeload.github.com/Fluorohydride/ygopro-core/zip/master
 	source = scripts.zip::https://codeload.github.com/Fluorohydride/ygopro-scripts/zip/master
-	source = data.zip::https://gitee.com/ximlel/ygopro_data/repository/archive/v1.034.3.zip
-	sha256sums = 9a6c6aeea1bad1138d3d8218420b03d4078c0debf5638adce1a48075bdc218b8
+	source = data.zip::https://gitee.com/ximlel/ygopro_data/repository/archive/v1.034.4.zip
+	sha256sums = b51d4fa75a485a9bc8446081583a97150b1ff65f03ff16e33d7fd95998491fec
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 6c740184be7657d128ffbb96233e39c0ab932854216c4e23a3852926310283d5
+	sha256sums = 9b0e2d4485f8a5cc9f033be3a05ce7afdf10d538e8fe88eb3c5557d750a365f4
 
 pkgname = ygopro
 
