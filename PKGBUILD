@@ -24,7 +24,7 @@ install="$pkgname".install
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}-screenreader/${pkgname}-screenreader-${pkgver}.tar.gz"
   'fenrir.install')
 md5sums=('58f204846d7314d8ae3ff646c327265d'
-         'e3f7651a51d3562ab314b1da3afd1ee2')
+         'c6a68679e6f1a23d4054d0209ba5210a')
 
 package() {
   cd "${srcdir}/${pkgname}-screenreader-${pkgver}"
