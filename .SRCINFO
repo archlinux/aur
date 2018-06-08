@@ -1,5 +1,5 @@
 pkgbase = pigeon-qt
-	pkgdesc = Peer-to-peer network based digital currency (QT)
+	pkgdesc = Cryptocurrency wallet(QT)
 	pkgver = 0.15.99
 	pkgrel = 2
 	url = http://pigeoncoin.org/
