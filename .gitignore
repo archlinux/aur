@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+python-zita-audiotools-*.tar.xz
+python-zita-audiotools-*.src.tar.gz
+zita-audiotools-*.tar.bz2

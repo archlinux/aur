@@ -1,0 +1,15 @@
+pkgbase = python-zita-audiotools
+	pkgdesc = A Python library with tools for audio processing
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = python-numpy
+	depends = zita-resampler
+	source = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/zita-audiotools-1.0.0.tar.bz2
+	sha256sums = f81fd466def0bbe1385973d38d7c51b6a9b7f7a8a37faf126feb9a14f2c14b2f
+
+pkgname = python-zita-audiotools
+
