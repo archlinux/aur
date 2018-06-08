@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=mako
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
 makedepends=("meson" "scdoc")
@@ -12,8 +12,8 @@ depends=(
 )
 arch=("i686" "x86_64")
 url='http://mako-project.org'
-source=("${pkgname%-*}::git+https://github.com/emersion/mako.git")
-md5sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/emersion/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('524114054b46f2b276577f168a0fe170')
 
 build() {
 	cd "${srcdir}/${pkgname}"
