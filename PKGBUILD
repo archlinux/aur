@@ -1,9 +1,9 @@
 # Maintainer: Oleksandr Natalenko aka post-factum <oleksandr@natalenko.name>
 pkgname=pingtcp
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Small utility to measure TCP handshake time (torify-friendly)"
-url="https://github.com/pfactum/${pkgname}"
+url="https://gitlab.com/post-factum/${pkgname}"
 arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=('glibc' 'gcc-libs' 'libunwind' 'gperftools')
