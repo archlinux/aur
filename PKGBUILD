@@ -1,7 +1,7 @@
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
-_orgname=openorienteering
+_orgname=OpenOrienteering
 _pkgname=mapper
-pkgname=${_orgname}-${_pkgname}
+pkgname=${_orgname,,}-${_pkgname}
 pkgver=0.8.1
 pkgrel=1
 pkgdesc="Map drawing program from OpenOrienteering"
