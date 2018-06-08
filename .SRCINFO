@@ -1,0 +1,15 @@
+pkgbase = ruby-blockenspiel
+	pkgdesc = Blockenspiel is a helper library designed to make it easy to implement DSL blocks.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://dazuma.github.com/blockenspiel
+	arch = any
+	license = BSD-3-Clause
+	depends = ruby
+	noextract = blockenspiel-0.5.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/blockenspiel-0.5.0.gem
+	sha1sums = aed90208f7f4db3884ae496eb111e7a02453db0f
+
+pkgname = ruby-blockenspiel
+
