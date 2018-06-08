@@ -2,11 +2,11 @@
 # Contributor: Košava <kosava at archlinux dot us>
 
 pkgname=yarock-qt5
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Qt Modern Music Player with collection browse based on cover art"
 arch=('i686' 'x86_64')
-url="https://launchpad.net/yarock"
+url="http://seb-apps.github.io/yarock"
 license=('GPL3')
 makedepends=('cmake' 'mpv' 'qt5-tools' 'vlc')
 depends=('htmlcxx' 'qt5-x11extras' 'phonon-qt5' 'taglib>=1.10')
@@ -40,5 +40,5 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha512sums=('7e8212d42b526ab885121c0f49b53a469a4fc407099a4a0060372410de55919a4ee12109dff3b9088d66cb8ecaa80d26738e8f66dc8a9a9cf3573923a9fa4b6d'
+sha512sums=('a59837609c5004005360a272b45794143c64373d13c2783f84299ab0b849223aac2be3d87703e1925d66ed4301bcc2e7254228d34f556bce0447d949539acf2e'
             'fa1c6ec044862cbdcdd3a4a139829e8bd483bec1111597f598123a36a7f558e82ef57f401947028ee1683b89094c2dd100638657aa4706306c85383f2bf2b74a')
