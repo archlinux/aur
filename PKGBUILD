@@ -1,7 +1,7 @@
 # Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-google-calendar
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="google calendar integration for Nuvola Player."
 arch=("any")
@@ -10,7 +10,7 @@ license=('custom:BSD')
 depends=('nuvolaruntime' 'imagemagick')
 makedepends=('nuvolasdk' 'scour')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('d637522c312e94d14963f4bec1e28ea1f8c6e0100fc2e3d0fe06c27006582a03')
+sha256sums=('ad6dafb2367b652ee2ef084cd752e5389ed46cef42f268d5c73f9427f7e12ef2')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
