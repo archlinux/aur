@@ -3,7 +3,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=('zsh-athame-git')
-pkgver=5.4.2
+pkgver=5.5.1
 pkgrel=1
 arch=('x86_64')
 conflicts=('zsh')
@@ -15,9 +15,9 @@ source=("https://www.zsh.org/pub/zsh-${pkgver}"{,-doc}".tar.gz"{,.asc}
         'zprofile'
         'git://github.com/ardagnir/athame'
         'git://github.com/ardagnir/vimbed')
-sha512sums=('5eaa2ff3dc8052dfb50d2be19bfeed1856b00f7c2dc698129c95c2373a516ee61dba5b42ded390ac20b171abe352b1875f177a4dda8fdc15a4f2a05bb7a024e2'
+sha512sums=('c4f7327a3f5480bd9a169fb07e34812e0106fa9de3b5f7d38bb0db85a3e4d01b9a4a8f35553da03a15d7d819108305cfaa2811c945273e2cac84512219e69ebb'
             'SKIP'
-            '76cb8ec64d0ddab5562b34415f3b6837e7c6339162488ba3cf2c50e70c571b5597d5fe37d24ba0cad65ef24e6d47bba3077dc1e2016e055ad77bda951fc56b39'
+            'd121d3e642e15406ea3e570fe67bb023f27b10e3f12a6a8a8ad02b1f7070c88445f0431a411a8e54ff92a237ba7c4334f4d6f9fb3f4bebeade4c02e42bdf1a5e'
             'SKIP'
             'b287e00d8de4dc4cfb1c52bb2aef1d4b191de3512baad4c91dc81e78ddc3e5bb07297f43924b022ac44ff401a348d8a9fa366e19ddc8ea1ea72df311f5ed0034'
             'SKIP'
