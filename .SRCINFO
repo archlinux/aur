@@ -1,0 +1,18 @@
+pkgbase = haskell-spool
+	pkgdesc = Expose a dbus server to control hslogger
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/spool
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-base
+	depends = haskell-bytestring
+	depends = haskell-vector
+	source = https://hackage.haskell.org/packages/archive/spool/0.1/spool-0.1.tar.gz
+	sha256sums = 868c72b98aaf9f041f424d949d8cef05c9b859984e4e35d57026fad9d9f873eb
+
+pkgname = haskell-spool
+
