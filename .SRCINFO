@@ -1,9 +1,8 @@
 pkgbase = silly
 	pkgdesc = Simple Image Loading LibrarY, a part of the CEGUI project
 	pkgver = 0.1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.cegui.org.uk/wiki/index.php/SILLY
-	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = libjpeg
@@ -11,8 +10,8 @@ pkgbase = silly
 	depends = gcc-libs
 	source = http://downloads.sourceforge.net/crayzedsgui/SILLY-0.1.0.tar.gz
 	source = silly-libpng1.5.patch
-	md5sums = c3721547fced7792a36ffc9ce6ec23fd
-	md5sums = 530551c2942aea6fa20f10d06f1e604f
+	sha256sums = afa064f70433008ec9837fb601c8d73e73db07856e4566f8bee010758c5304ac
+	sha256sums = 674e86ad0180ceb57e589234a80ac8ed9344357676259349da00c1d23bde264e
 
 pkgname = silly
 
