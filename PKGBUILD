@@ -8,17 +8,16 @@
 
 pkgname=lxc-selinux
 epoch=1
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Linux Containers"
 arch=('x86_64')
 url="http://linuxcontainers.org"
-depends=('bash' 'perl' 'libseccomp' 'libcap' 'python' 'cgmanager' 'rsync' 'libselinux')
+depends=('bash' 'perl' 'libseccomp' 'libcap' 'python' 'rsync' 'wget' 'libselinux')
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
 conflicts=("${pkgname/-selinux}")
 makedepends=('docbook2x' 'lua' 'python-setuptools')
-optdepends=('arch-install-scripts: for archlinux template'
-	    'dnsmasq: lxc-net.service'
+optdepends=('dnsmasq: lxc-net.service'
 	    'lua'
 	    'lua-filesystem: lxc-top'
 	    'lua-alt-getopt: lxc-top')
@@ -27,11 +26,11 @@ options=('emptydirs')
 backup=('etc/lxc/default.conf'
 	'etc/default/lxc')
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
-source=("https://linuxcontainers.org/downloads/lxc/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
+source=("https://linuxcontainers.org/downloads/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
 	"lxc.tmpfiles.d"
 	"lxc.service"
 	"lxc-auto.service")
-sha256sums=('6230224c27f050201b372b18a9f39cd220ed584899c5f0cf73c6b313dabc8d8a'
+sha256sums=('45986c49be1c048fa127bd3e7ea1bd3347e25765c008a09a2e4c233151a2d5db'
             'SKIP'
             '10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479'
             '711fb84c87b143cb0098e095fdebb040b15f553a854efbe846a00100bdb9ae88'
@@ -63,11 +62,11 @@ build() {
     --disable-apparmor \
     --enable-selinux \
     --enable-seccomp \
-    --enable-cgmanager \
     --enable-capabilities \
-    --enable-lua \
     --with-init-script=systemd \
-    --with-systemdsystemunitdir=/usr/lib/systemd/system
+    --with-systemdsystemunitdir=/usr/lib/systemd/system \
+    --enable-pam \
+    --with-pamdir=/usr/lib/security
   make
 }
 
