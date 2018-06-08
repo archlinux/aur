@@ -2,7 +2,7 @@
 
 pkgname=private-internet-access-vpn
 pkgver=3.3.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -12,9 +12,9 @@ makedepends=('git')
 optdepends=('networkmanager: Enables PIA for Network Manager (needs a openvpn plugin)'
             'connman: Enables PIA for Connman')
 			
-sha256sums=('d52628bdeb91782aa9db490292d76fcbcabdbfc0dc664f0fd8019f81012fb71f'
-            'e537bd06b2f6f998cf687816e92b2c42771e2fe10b86577d09d1a25d24b0a821'
-            '736ce702003eebc682c609b2e7b2c0127b56c2e0306d90c25201be37e72fa3d4'
+sha256sums=('fa88e540481711f9dadb6e1bae4f0e405c349b58fbbb033c644f87580ded85b0'
+            'c33c8f2b83f07c418e277b6f399869a7eb347e475de718988807d6eac020af3d'
+            '767aff9e6691768fcfcefc523b6e1e9ec5f92c3ed2af70ac7a5b154bad534efa'
             '4322a2a4bc3e206c6ab7e1df87a8805032b76c177c1ed9dd3501260ed32ccb30'
             '797dbdb6e3aadc86f97262e26d61cf4847caf85dda4b7a97cac59088cb912b27'
             '246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e'
