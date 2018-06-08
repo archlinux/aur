@@ -1,6 +1,6 @@
 pkgbase = nuvola-app-8tracks
 	pkgdesc = 8tracks integration for Nuvola Player.
-	pkgver = 5.2
+	pkgver = 5.3
 	pkgrel = 1
 	url = https://github.com/tiliado/nuvola-app-8tracks
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = nuvola-app-8tracks
 	makedepends = scour
 	depends = nuvolaruntime
 	depends = imagemagick
-	source = https://github.com/tiliado/nuvola-app-8tracks/archive/5.2.tar.gz
-	md5sums = 1067a00ef4743b231d8465a1fb0aee04
+	source = https://github.com/tiliado/nuvola-app-8tracks/archive/5.3.tar.gz
+	md5sums = 35b29af5a86e31e336e24c75ea5b7efd
 
 pkgname = nuvola-app-8tracks
 
