@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=castnow-git
-pkgver=r180.05ddc3b
+pkgver=r199.4ccb1e0
 pkgrel=1
 pkgdesc="A commandline chromecast player"
 arch=('any')
@@ -25,7 +25,6 @@ package() {
     mkdir -p $pkgdir/usr
     npm install --user root -g --prefix="$pkgdir/usr"
     cd $pkgdir
-    rmdir usr/etc
     cd usr/lib/node_modules/
     rm castnow
     mv ../../../../../src/castnow-git castnow
