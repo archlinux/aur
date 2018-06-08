@@ -2,7 +2,7 @@
 # CO-Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-bandcamp
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="bandcamp integration for Nuvola Player."
 arch=("any")
@@ -11,7 +11,7 @@ license=('custom:BSD')
 depends=('nuvolaruntime' 'imagemagick')
 makedepends=('nuvolasdk' 'scour')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('ac5cc93361f7c3ae03edbb1fb7eb804811fa54399341b8c049878936e9ff0ce5')
+sha256sums=('35b3520d7801bfc6e0a35fce7fa4ec7385a74af396a31bd201e60e080e975bba')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
