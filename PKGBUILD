@@ -11,7 +11,7 @@ depends=('openssl')
 makedepends=('cargo')
 source=("https://github.com/flaviut/${pkgname}/archive/v${pkgver}.tar.gz")
 
-md5sums=('ac5681d355938453c0e237d33c80f600')
+md5sums=('032c2d049c9a138f0d2f736e871ac1f6')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
