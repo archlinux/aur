@@ -5,7 +5,7 @@
 
 pkgname=libvirt
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="http://libvirt.org/"
@@ -13,6 +13,56 @@ license=('LGPL')
 makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq' 'lxc'
 	     'libiscsi' 'open-iscsi' 'perl-xml-xpath' 'libxslt' 'qemu'
        'ceph-libs' 'glusterfs' 'netcf' 'yajl' 'parted')
+depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
+   'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap' 'libcap-ng'
+   'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
+   'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'libssh2'
+   'netcf' 'fuse2' 'glusterfs')
+optdepends=('ebtables: required for default NAT networking'
+      'dnsmasq: required for default NAT/DHCP for guests'
+      'bridge-utils: for bridged networking'
+      'netcat: for remote management over ssh'
+      'qemu'
+      'radvd'
+      'dmidecode'
+      'parted'
+      'ceph: for ceph support'
+      'qemu-blockcluster: for qemu glusterfs support')
+backup=('etc/conf.d/libvirt-guests'
+  'etc/conf.d/libvirtd'
+  'etc/libvirt/libvirt.conf'
+  'etc/libvirt/virtlogd.conf'
+  'etc/libvirt/libvirtd.conf'
+  'etc/libvirt/lxc.conf'
+  'etc/libvirt/nwfilter/allow-arp.xml'
+  'etc/libvirt/nwfilter/allow-dhcp-server.xml'
+  'etc/libvirt/nwfilter/allow-dhcp.xml'
+  'etc/libvirt/nwfilter/allow-incoming-ipv4.xml'
+  'etc/libvirt/nwfilter/allow-ipv4.xml'
+  'etc/libvirt/nwfilter/clean-traffic.xml'
+  'etc/libvirt/nwfilter/no-arp-ip-spoofing.xml'
+  'etc/libvirt/nwfilter/no-arp-mac-spoofing.xml'
+  'etc/libvirt/nwfilter/no-arp-spoofing.xml'
+  'etc/libvirt/nwfilter/no-ip-multicast.xml'
+  'etc/libvirt/nwfilter/no-ip-spoofing.xml'
+  'etc/libvirt/nwfilter/no-mac-broadcast.xml'
+  'etc/libvirt/nwfilter/no-mac-spoofing.xml'
+  'etc/libvirt/nwfilter/no-other-l2-traffic.xml'
+  'etc/libvirt/nwfilter/no-other-rarp-traffic.xml'
+  'etc/libvirt/nwfilter/qemu-announce-self-rarp.xml'
+  'etc/libvirt/nwfilter/qemu-announce-self.xml'
+  'etc/libvirt/qemu-lockd.conf'
+  'etc/libvirt/qemu.conf'
+  'etc/libvirt/qemu/networks/default.xml'
+  'etc/libvirt/virt-login-shell.conf'
+  'etc/libvirt/virtlockd.conf'
+  'etc/logrotate.d/libvirtd'
+  'etc/logrotate.d/libvirtd.lxc'
+  'etc/logrotate.d/libvirtd.qemu'
+  'etc/logrotate.d/libvirtd.uml'
+  'etc/sasl2/libvirt.conf')
+install="libvirt.install"
+
 options=('emptydirs')
 validpgpkeys=('C74415BA7C9C7F78F02E1DC34606B8A5DE95BC1F')
 source=("https://libvirt.org/sources/${pkgname}-${pkgver}.tar.xz"{,.asc}
@@ -64,54 +114,7 @@ build() {
   make
 }
 
-package_libvirt() {
-  depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
-     'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap' 'libcap-ng'
-     'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
-     'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph-libs' 'libssh2'
-     'netcf' 'fuse2')
-  optdepends=('ebtables: required for default NAT networking'
-        'dnsmasq: required for default NAT/DHCP for guests'
-        'bridge-utils: for bridged networking'
-        'netcat: for remote management over ssh'
-        'qemu'
-        'radvd'
-        'dmidecode'
-        'parted')
-  backup=('etc/conf.d/libvirt-guests'
-    'etc/conf.d/libvirtd'
-    'etc/libvirt/libvirt.conf'
-    'etc/libvirt/virtlogd.conf'
-    'etc/libvirt/libvirtd.conf'
-    'etc/libvirt/lxc.conf'
-    'etc/libvirt/nwfilter/allow-arp.xml'
-    'etc/libvirt/nwfilter/allow-dhcp-server.xml'
-    'etc/libvirt/nwfilter/allow-dhcp.xml'
-    'etc/libvirt/nwfilter/allow-incoming-ipv4.xml'
-    'etc/libvirt/nwfilter/allow-ipv4.xml'
-    'etc/libvirt/nwfilter/clean-traffic.xml'
-    'etc/libvirt/nwfilter/no-arp-ip-spoofing.xml'
-    'etc/libvirt/nwfilter/no-arp-mac-spoofing.xml'
-    'etc/libvirt/nwfilter/no-arp-spoofing.xml'
-    'etc/libvirt/nwfilter/no-ip-multicast.xml'
-    'etc/libvirt/nwfilter/no-ip-spoofing.xml'
-    'etc/libvirt/nwfilter/no-mac-broadcast.xml'
-    'etc/libvirt/nwfilter/no-mac-spoofing.xml'
-    'etc/libvirt/nwfilter/no-other-l2-traffic.xml'
-    'etc/libvirt/nwfilter/no-other-rarp-traffic.xml'
-    'etc/libvirt/nwfilter/qemu-announce-self-rarp.xml'
-    'etc/libvirt/nwfilter/qemu-announce-self.xml'
-    'etc/libvirt/qemu-lockd.conf'
-    'etc/libvirt/qemu.conf'
-    'etc/libvirt/qemu/networks/default.xml'
-    'etc/libvirt/virt-login-shell.conf'
-    'etc/libvirt/virtlockd.conf'
-    'etc/logrotate.d/libvirtd'
-    'etc/logrotate.d/libvirtd.lxc'
-    'etc/logrotate.d/libvirtd.qemu'
-    'etc/logrotate.d/libvirtd.uml'
-    'etc/sasl2/libvirt.conf')
-  install="libvirt.install"
+package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
@@ -130,14 +133,4 @@ package_libvirt() {
 	"${pkgdir}"/etc/sysconfig
 
   rm -f "${pkgdir}"/etc/libvirt/qemu/networks/autostart/default.xml
-  #move glusterfs module
-  mv "$pkgdir"/usr/lib/libvirt/storage-backend/libvirt_storage_backend_gluster.so "$pkgdir"/../
-}
-
-package_libvirt-glusterfs() {
-  depends=("libvirt=$pkgver" 'glusterfs')
-  optdepends=('qemu-block-gluster: for QEMU gluster support')
-
-  mkdir -p "$pkgdir"/usr/lib/libvirt/storage-backend/
-  cp "$pkgdir"/../libvirt_storage_backend_gluster.so "$pkgdir"/usr/lib/libvirt/storage-backend/libvirt_storage_backend_gluster.so
 }
