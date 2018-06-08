@@ -1,27 +1,26 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com 
 _hkgname=semigroups
 pkgname=haskell-semigroups
-pkgver=0.16.2.2
-pkgrel=1
+pkgver=0.18.4
+pkgrel=2
 pkgdesc="Anything that associates"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
 arch=('i686' 'x86_64')
-makedepends=()
-depends=('ghc' 'haskell-bytestring>=0.9' 'haskell-deepseq' 'haskell-ghc-prim' 'haskell-containers>=0.3' 'haskell-hashable>=1.1' 'haskell-nats>0.1' 'haskell-text>=0.10' 'haskell-unordered-containers>=0.2')
-options=('strip' 'staticlibs' )
+makedepends=(ghc)
+depends=('haskell-bytestring' 'haskell-deepseq' 'haskell-ghc-prim' 'haskell-containers' 'haskell-hashable' 'haskell-nats' 'haskell-text' 'haskell-unordered-containers')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-install=${pkgname}.install
-md5sums=('728f760bca161acdccbe23dfb4fb43db')
+sha256sums=('589e3042329a6bcffb5c0e85834143586db22eb7a2aae094d492cd004f685d27')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
-    runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \
-       --prefix=/usr --docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+        --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
     runhaskell Setup build
     runhaskell Setup haddock
     runhaskell Setup register   --gen-script
     runhaskell Setup unregister --gen-script
+    sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
     sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 package() {

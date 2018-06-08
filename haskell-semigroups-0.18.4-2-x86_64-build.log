@@ -1,0 +1,27 @@
+Configuring semigroups-0.18.4...
+Preprocessing library for semigroups-0.18.4..
+Building library for semigroups-0.18.4..
+[1 of 1] Compiling Data.Semigroup.Generic ( src/Data/Semigroup/Generic.hs, dist/build/Data/Semigroup/Generic.dyn_o )
+
+src/Data/Semigroup/Generic.hs:30:1: warning: [-Wunused-imports]
+    The import of ‘Data.Semigroup’ is redundant
+      except perhaps to import instances from ‘Data.Semigroup’
+    To import instances alone, use: import Data.Semigroup()
+   |
+30 | import Data.Semigroup
+   | ^^^^^^^^^^^^^^^^^^^^^
+ignoring (possibly broken) abi-depends field for packages
+Preprocessing library for semigroups-0.18.4..
+Running Haddock on library for semigroups-0.18.4..
+Warning: The documentation for the following packages are not installed. No
+links will be generated to these packages: base-4.11.1.0, ghc-prim-0.5.2.0,
+integer-gmp-1.0.2.0
+Haddock coverage:
+  60% (  3 /  5) in 'Data.Semigroup.Generic'
+  Missing documentation for:
+    GSemigroup (src/Data/Semigroup/Generic.hs:44)
+    GMonoid (src/Data/Semigroup/Generic.hs:74)
+Warning: Data.Semigroup.Generic: could not find link destinations for:
+    gmappend' V1 * U1 K1 Semigroup :*: M1 Generic Rep <> gmempty' Monoid mempty
+Documentation created: dist/doc/html/semigroups/index.html
+Unregistering semigroups-0.18.4...
