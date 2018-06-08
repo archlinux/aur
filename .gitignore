@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!*.install
+!*.sysusers
+!.SRCINFO
+!LICENSE
+!README.md
