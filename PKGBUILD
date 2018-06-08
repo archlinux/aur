@@ -1,37 +1,38 @@
 # Maintainer: Evgeniy Alekseev <arcanis at archlinux dot org>
 # Contributor: Feifei Jia <feifei.j at gmail dot com>
+# Contributor: Enihcam <gmail n a n e r i c w a n g>
 
 pkgname=fingerprint-gui
 pkgver=1.09
-pkgrel=4
+pkgrel=5
 pkgdesc="Application for fingerprint-based authentication, automatically support UPEK fingerprint readers with non-free library"
 arch=('i686' 'x86_64')
 url="http://www.ullrich-online.cc/fingerprint/"
 license=('GPL')
-depends=('libfprint' 'libfakekey' 'polkit-qt4' 'qca')
+depends=('libfprint' 'libfakekey' 'polkit-qt5' 'qca-qt5' 'qt5-x11extras')
 optdepends=('libusb: for libbsapi')
-source=("http://www.ullrich-online.cc/fingerprint/download/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/maksbotan/${pkgname}/archive/v${pkgver}-qt5.tar.gz"
         "fingerprint-gui-udev-path.patch"
         "fingerprint-gui-udev-0050.patch")
 install="${pkgname}.install"
-sha512sums=('7ee1c0774d0f7871ec6be00a813b8a273a8e02bd6a285dd2a695c330920da343b21425ab339fe92fba50357cabc0d7350c1f1f5e192a0d65af651ddd25b9fc4f'
+sha512sums=('c4fb22368d82d72586f80009b5adb9db0a8e8777c3d1c1f23cf58a21f718a3e3d05bbc90fff295be969cf7f744f037fb886e975e626cf6d599f8f6b5f8323724'
             'a815d5713ae7542efbed560a3f711dec0b0a9e7072873efa7563b695d136d6a0e50bb8e81eaa7d3b4a732a54090ce113d292dd3531deda6c3dbda76094888719'
             'd3dcc7377e7505332080a6dfa6d127851d8d5f541a67a0f5b7f2b42918e76dd223dfef6ad5cb3d3502050dcbac8a2cf58ddcdc18dc0e0df60c81b70f1b0003b3')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}-qt5"
   patch -p1 -i "${srcdir}/fingerprint-gui-udev-path.patch"
   patch -p1 -i "${srcdir}/fingerprint-gui-udev-0050.patch"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  qmake-qt4 PREFIX=/usr LIB=/usr/lib
+  cd "${srcdir}/${pkgname}-${pkgver}-qt5"
+  qmake PREFIX=/usr LIB=/usr/lib
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}-qt5"
   make INSTALL_ROOT="${pkgdir}/" install
   make INSTALL_ROOT="${pkgdir}/" upek-rules
   make INSTALL_ROOT="${pkgdir}/" upek-cfg
