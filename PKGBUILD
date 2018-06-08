@@ -1,21 +1,21 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=centrifuge-bin
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Bioinformatics taxonomic classifier for microbial classification"
 arch=('x86_64')
 url="https://ccb.jhu.edu/software/centrifuge/"
 license=('GPL3')
 provides=('centrifuge')
 conflicts=('centrifuge')
-source=(ftp://ftp.ccb.jhu.edu/pub/infphilo/"${pkgname//-bin/}"/downloads/"${pkgname//-bin/}"-"${pkgver}"-beta-Linux_x86_64.zip)
-sha256sums=('acf3612c92f50d256715e8847a5c68bf58dc7bf7cb730f37e53f7c49930cdaa3')
+source=("${pkgname}"-"${pkgver}".zip::https://github.com/infphilo/"${pkgname//-bin/}"/archive/v"${pkgver}"-beta.zip)
+sha256sums=('eac073bbe3af4d1ae8c62e83e1eb7b91ebc1ad4e617929596748a605a3fa5a04')
 
 package() {
   cd "${srcdir}"/"${pkgname//-bin/}"-"${pkgver}"-beta
 
-  for script in centrifuge*; do
+  for script in centrifuge-*; do
     install -Dm755 "${script}" "${pkgdir}"/usr/bin/$(basename "${script}")
   done
 
