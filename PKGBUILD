@@ -10,8 +10,8 @@ url="https://launchpad.net/wizardpen"
 license=('GPL2')
 depends=('glibc')
 makedepends=('xorg-server-devel')
-conflicts=('wizardpen-driver wizardpen')
-replaces=('wizardpen-driver wizardpen')
+conflicts=('wizardpen-driver', 'wizardpen')
+replaces=('wizardpen-driver', 'wizardpen')
 source=(https://launchpad.net/wizardpen/trunk/0.8/+download/${_realname}-${pkgver}.tar.bz2
         config.patch
         xf86RemoveEnabledDevice.patch)
