@@ -2,7 +2,7 @@
 # Maintainer: Simon Tas <simon.tas.st@gmail.com>
 pkgname="python-myougiden-git"
 _pkgname="myougiden"
-pkgver=0.8.8
+pkgver=0.8.5.r26.gddb3987
 pkgrel=1
 pkgdesc="A command-line, Japanese/English English/Japanese dictionary"
 arch=('any')
@@ -15,6 +15,11 @@ provides=('python-myougiden' 'myougiden' 'updatedb-myougiden')
 backup=('etc/myougiden/config.ini')
 source=("git+https://github.com/leoboiko/${_pkgname}")
 md5sums=('SKIP')
+
+pkgver() {
+  cd ${srcdir}/${_pkgname}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd ${srcdir}/${_pkgname}

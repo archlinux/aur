@@ -1,6 +1,6 @@
 pkgbase = python-myougiden-git
 	pkgdesc = A command-line, Japanese/English English/Japanese dictionary
-	pkgver = 0.8.8
+	pkgver = 0.8.5.r26.gddb3987
 	pkgrel = 1
 	url = https://github.com/leoboiko/myougiden
 	arch = any
