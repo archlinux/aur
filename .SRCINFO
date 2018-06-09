@@ -1,6 +1,6 @@
 pkgbase = zsh-fast-syntax-highlighting-git
 	pkgdesc = Optimized and extended zsh-syntax-highlighting
-	pkgver = r204.f31a2d0
+	pkgver = r242.868812a
 	pkgrel = 1
 	url = https://github.com/zdharma/fast-syntax-highlighting
 	arch = any

@@ -2,7 +2,7 @@
 # Contributor: Niklas Bolander <niklas.bolander at gmail dot com>
 
 pkgname=zsh-fast-syntax-highlighting-git
-pkgver=r204.f31a2d0
+pkgver=r242.868812a
 pkgrel=1
 pkgdesc='Optimized and extended zsh-syntax-highlighting'
 arch=('any')
@@ -29,11 +29,9 @@ package() {
   cd "${srcdir}/fast-syntax-highlighting"
 
   install -dm0755 "${_plugindir}"
-  install -m0644 'fast-syntax-highlighting.plugin.zsh' "${_plugindir}"
-  install -m0644 -- '-fast-run-git-command' "${_plugindir}"
-  install -m0644 'fast-highlight' "${_plugindir}"
-  install -m0644 'fast-read-ini-file' "${_plugindir}"
-  install -m0644 'fast-theme' "${_plugindir}"
+  install -m0644 fast-* "${_plugindir}"
+  install -m0644 _fast-* "${_plugindir}"
+  install -m0644 -- -fast-* "${_plugindir}"
 
   install -dm755 "${_licdir}"
   install -m0644 LICENSE "${_licdir}"
