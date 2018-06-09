@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="Copy objects from one AS/400 to another"
 arch=("any")
 url="https://github.com/andlrc/zs"
-license=("GNU")
-depends=()
+license=("GPL")
+depends=("glibc")
 makedepends=("git" "make")
 provides=("zs")
 source=('zs::git+git://github.com/andlrc/zs#branch=master')
