@@ -2,7 +2,7 @@
 # Maintainer: Simon Tas <simon.tas.st@gmail.com>
 pkgname="python-romkan-git"
 _pkgname="python-romkan"
-pkgver=0.2.1
+pkgver=r24.c82dc16
 pkgrel=1
 pkgdesc="a Romaji/Kana conversion library for Python"
 arch=('any')
@@ -13,6 +13,11 @@ makedepends=('git')
 provides=('python-romkan')
 source=("git+https://github.com/soimort/${_pkgname}")
 md5sums=('SKIP')
+
+pkgver() {
+  cd ${srcdir}/${_pkgname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd ${srcdir}/${_pkgname}
