@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+python-zita-jacktools-*.tar.xz
+python-zita-jacktools-*.src.tar.gz
+zita-jacktools-*.tar.bz2

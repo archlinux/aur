@@ -1,0 +1,16 @@
+pkgbase = python-zita-jacktools
+	pkgdesc = A Python library for audio tools running as a JACK client
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = python-zita-audiotools
+	depends = zita-convolver>=4.0.0
+	depends = zita-jclient
+	source = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/zita-jacktools-1.0.0.tar.bz2
+	sha256sums = e7dfd0f2a214dc9f8db8d64638447db564faf35f9962e27df025cae153159926
+
+pkgname = python-zita-jacktools
+
