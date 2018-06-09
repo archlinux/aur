@@ -4,13 +4,13 @@ pkgver=1.0.992.d3731c5
 pkgrel=1
 pkdesc="HD League of Legends related screensavers and wallpapers, direct to your GNU/Linux desktop."
 arch=('x86_64')
-url="https://github.com/TheFrozenWatchers/LeagueDisplays"
+url="https://gitlab.com/TheFrozenWatchers/LeagueDisplays"
 license=('GPL3')
 depends=('gtk2' 'libx11' 'xscreensaver')
 makedepends=('git' 'wget' 'curl' 'gcc' 'clang' 'cmake' 'make' 'zip')
 provides=('leaguedisplays-git')
 conflicts=('leaguedisplays-git' 'leaguedisplays')
-source=(git://github.com/TheFrozenWatchers/LeagueDisplays.git)
+source=(git+https://gitlab.com/TheFrozenWatchers/LeagueDisplays.git/)
 md5sums=(SKIP)
 
 pkgver() {
