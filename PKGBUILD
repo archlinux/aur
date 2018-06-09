@@ -23,14 +23,15 @@ package() {
 
   _pkgroot="$pkgdir"/usr/share/xml/docbook/xsl-ns-stylesheets-$pkgver
 
-  echo "================================"
-  echo ${_pkgroot}
-  echo "================================"
   install -dm755 ${_pkgroot}
   install -m644 VERSION VERSION.xsl ${_pkgroot}
 
   for fn in assembly common eclipse epub epub3 fo highlighting html htmlhelp javahelp lib \
       manpages params profiling roundtrip template website xhtml xhtml-1_1 xhtml5; do
+          echo "----- Info -----"
+	  echo ${_pkgroot}
+	  echo ${fn}
+	  echo "---Info Ende ---"
           install -dm755 ${_pkgroot}/${fn}
 	  install -m644 ${fn}/*.{xml,xsl,dtd,ent} ${_pkgroot}/${fn} || true  # ignore missing files
   done

@@ -1,36 +1,46 @@
-# $Id$
-# Maintainer: Pierre Metzner <openhab.doc@web.de>
-# Contributor: 
-# Contributor: 
-# Contributor: 
-# Contributor: 
+post_install() {
+  if [ ! -f etc/xml/catalog ]; then
+    xmlcatalog --noout --create etc/xml/catalog
+  fi
+  _NEW=`echo $1 | sed 's|\(.*\)\-.*|\1|'`
 
-pkgname=docbook-xsl-ns
-pkgver=1.79.2
-pkgrel=1
-pkgdesc='The recommended namespaced XML stylesheets for Docbook5 transformations'
-arch=(any)
-license=(custom)
-url='http://docbook.org/'
-depends=(libxml2 libxslt sed)
-install="$pkgname.install"
-source=("https://github.com/docbook/xslt10-stylesheets/releases/download/release%2F$pkgver/docbook-xsl-$pkgver.tar.gz")
-sha256sums=()
+  xmlcatalog --noout --add "rewriteSystem" \
+    "http://cdn.docbook.org/release/xsl/${_NEW}" \
+    "/usr/share/xml/docbook/xsl-ns-stylesheets-${_NEW}" \
+    etc/xml/catalog
 
-package() {
-  cd $pkgname-$pkgver
+  xmlcatalog --noout --add "rewriteURI" \
+    "http://cdn.docbook.org/release/xsl/${_NEW}" \
+    "/usr/share/xml/docbook/xsl-ns-stylesheets-${_NEW}" \
+    etc/xml/catalog
 
-  _pkgroot="$pkgdir"/usr/share/xml/docbook/xsl-ns-stylesheets-$pkgver
+  xmlcatalog --noout --add "rewriteSystem" \
+    "http://cdn.docbook.org/release/xsl/current" \
+    "/usr/share/xml/docbook/xsl-ns-stylesheets-${_NEW}" \
+    etc/xml/catalog
 
-  install -dm755 ${_pkgroot}
-  install -m644 VERSION VERSION.xsl ${_pkgroot}
+  xmlcatalog --noout --add "rewriteURI" \
+    "http://cdn.docbook.org/release/xsl/current" \
+    "/usr/share/xml/docbook/xsl-ns-stylesheets-${_NEW}" \
+    etc/xml/catalog
 
-  for fn in assembly common eclipse epub epub3 fo highlighting html htmlhelp javahelp lib \
-      manpages params profiling roundtrip template website xhtml xhtml-1_1 xhtml5; do
-          install -dm755 ${_pkgroot}/${fn}
-	  install -m644 ${fn}/*.{xml,xsl,dtd,ent} ${_pkgroot}/${fn} || true  # ignore missing files
-  done
+  xmlcatalog --noout --add "rewriteSystem" \
+    "http://docbook.sourceforge.net/release/xsl/current" \
+    "/usr/share/xml/docbook/xsl-ns-stylesheets-${_NEW}" \
+    etc/xml/catalog
 
-  install -dm755 "$pkgdir"/etc/xml
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  xmlcatalog --noout --add "rewriteURI" \
+    "http://docbook.sourceforge.net/release/xsl/current" \
+    "/usr/share/xml/docbook/xsl-ns-stylesheets-${_NEW}" \
+    etc/xml/catalog
+}
+
+post_upgrade() {
+  post_remove $2
+  post_install $1
+}
+
+post_remove() {
+  _OLD=`echo $1 | sed 's|\(.*\)\-.*|\1|'`
+  xmlcatalog --noout --del "/usr/share/xml/docbook/xsl-stylesheets-${_OLD}" etc/xml/catalog
 }
