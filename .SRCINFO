@@ -1,13 +1,13 @@
 pkgbase = go-bindata
 	pkgdesc = A small utility which generates Go code from any file
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/shuLhan/go-bindata
 	arch = x86_64
 	license = CC0 1.0
 	makedepends = go-pie
 	depends = glibc
-	source = https://github.com/shuLhan/go-bindata/archive/v3.3.0.tar.gz
-	sha512sums = 27d85b8c90fa984f7aaee8099976d1c9394c76b39fe54a7aef34b65dd9a70f7d062749dea49aff36785ee0663331cee8f29d88bea4be030f1c3ef9d280df0530
+	source = https://github.com/shuLhan/go-bindata/archive/v3.4.0.tar.gz
+	sha512sums = 1d1d0a0f3e4865d0b7c4b61c6ed0570800948054c620c4a2f4c6ad03614b69fb931ef19697193717dd3109922962684314ce81102e2a0e325c3ce904a7bd230c
 
 pkgname = go-bindata
