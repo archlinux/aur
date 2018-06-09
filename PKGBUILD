@@ -1,17 +1,17 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=slinp
 pkgname=$_pkgname-git
-pkgver=15.03
+pkgver=17.04.3.g7c94d4a
 pkgrel=1
 pkgdesc="PDF presentation tool chest"
 arch=('i686' 'x86_64')
-url='http://www.uninformativ.de/projects/?q=slinp'
-license=('custom:PIZZA-WARE')
+url='https://uninformativ.de/git/slinp'
+license=('MIT')
 depends=('gtk3' 'python' 'poppler-glib')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(git://github.com/vain/slinp.git)
+source=(git+https://uninformativ.de/git/slinp.git)
 md5sums=('SKIP')
 
 pkgver() {
