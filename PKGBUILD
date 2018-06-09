@@ -6,10 +6,10 @@ pkgdesc="Python bindings for LMS7002M. Obsolete."
 arch=(any)
 url="https://github.com/myriadrf/pyLMS7002M"
 license=('Apache')
-depends=('python-pyserial' 'python-pyusb')
+depends=('python2-pyserial' 'python2-pyusb')
 makedepends=('git')
-provides=('lime-tools')
-conflicts=('lime-tools')
+provides=('pylms7002m')
+conflicts=('pylms7002m')
 source=("git+$url")
 md5sums=('SKIP')
 

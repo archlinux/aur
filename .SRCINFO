@@ -6,10 +6,10 @@ pkgbase = pylms7002m
 	arch = any
 	license = Apache
 	makedepends = git
-	depends = python-pyserial
-	depends = python-pyusb
-	provides = lime-tools
-	conflicts = lime-tools
+	depends = python2-pyserial
+	depends = python2-pyusb
+	provides = pylms7002m
+	conflicts = pylms7002m
 	source = git+https://github.com/myriadrf/pyLMS7002M
 	md5sums = SKIP
 
