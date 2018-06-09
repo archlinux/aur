@@ -1,8 +1,8 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=xplayer
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="Simple media player. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -16,10 +16,10 @@ optdepends=('gst-libav: Extra media codec support')
 provides=($pkgname)
 conflicts=('xplayer-git')
 url='https://github.com/linuxmint/xplayer'
-install=xplayer.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('6c1518553be0a9098768dd8b2f58fd91')
+md5sums=('e03a0220cad789376285af777b18e48d')
+
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
@@ -29,7 +29,8 @@ build() {
     # version to something that obviously won't be satisfied.
     sed -i 's/GRILO_REQS=0.2.0/GRILO_REQS=0.9.0/g' configure.ac
 
-    ./autogen.sh --prefix="/usr" \
+    ./autogen.sh ax_is_release="yes" \
+        --prefix="/usr" \
         --localstatedir="/var" \
         --libexecdir="/usr/lib/${pkgname}"
     make
