@@ -51,10 +51,6 @@ package() {
   install -d "$pkgdir"/usr/lib/mozilla/plugins
   install -d "$pkgdir"/usr/share/licenses/java$_major-$_pkgname
 
-  msg2 "Removing redundancies..."
-  rm  lib/fontconfig.*.bfc
-  rm  lib/fontconfig.*.properties.src
-
   msg2 "Moving contents..."
   mv * "$pkgdir"/$_jvmdir
 
