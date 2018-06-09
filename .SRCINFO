@@ -1,0 +1,14 @@
+pkgbase = python-romkan
+	pkgdesc = a Romaji/Kana conversion library for Python
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/romkan
+	arch = any
+	license = BSD
+	depends = python
+	provides = python-romkan
+	source = https://pypi.io/packages/source/r/romkan/romkan-0.2.1.tar.gz
+	md5sums = e65645dc06dba10429e4646ac804ef82
+
+pkgname = python-romkan
+
