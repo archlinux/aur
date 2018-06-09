@@ -1,4 +1,5 @@
-# Maintainer: grufo <madmurphy333@gmail.com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Contributor: somepaulo <burafino AT gmail DOT com>
 
 _extname='desktop-icons'
 _uuid="org.gnome.${_extname}"
