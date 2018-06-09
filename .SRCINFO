@@ -1,0 +1,27 @@
+pkgbase = methuselah-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://methuselahcoin.io/
+	install = methuselah-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = methuselah
+	source = methuselah-qt::git+http://github.com/RavenProject/Ravencoin.git
+	source = methuselah-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 506ed6d06a242611f79055413136a4a684da7ad788c3555b482e37f013590ee5
+
+pkgname = methuselah-qt
+
