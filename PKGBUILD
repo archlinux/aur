@@ -1,14 +1,14 @@
 pkgname=opendune
 _pkgname=OpenDUNE
-pkgver=0.8
-pkgrel=4
+pkgver=0.9
+pkgrel=1
 pkgdesc="Open source re-creation of the popular game Dune II"
 arch=('i686' 'x86_64')
 url="http://opendune.org"
 license=('GPL2')
 depends=('sdl2' 'sdl2_image' 'alsa-lib' 'hicolor-icon-theme' 'dune2-data')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OpenDUNE/OpenDUNE/archive/$pkgver.tar.gz")
-sha256sums=('fada4127715e4913553f4dbe8b5ac284ee6080377da62e65ae03f1e1d551dfbd')
+sha256sums=('8d5ed67669df1f17a44c097d9b6bee4e0623ce2a37f11938ce9cd77de546d06c')
 
 _dune2_data_dir=share/games/dune2
 
