@@ -2,7 +2,7 @@
 pkgname=mingw-w64-physfs
 _basename=physfs
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A library to provide abstract access to various archives (mingw-w64)"
 arch=('any')
 url="http://icculus.org/physfs/"
@@ -26,7 +26,6 @@ build() {
     mkdir build-${_arch}
     cd build-${_arch}
     ${_arch}-cmake \
-      -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
       -DCMAKE_BUILD_TYPE=Release \
       -DPHYSFS_BUILD_TEST=OFF \
       -DPHYSFS_BUILD_WX_TEST=OFF ..
