@@ -1,0 +1,17 @@
+pkgbase = pylms7002m-git
+	pkgdesc = Python bindings for LMS7002M. Obsolete.
+	pkgver = r18.b866dee
+	pkgrel = 1
+	url = https://github.com/myriadrf/pyLMS7002M
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python2-pyserial
+	depends = python2-pyusb
+	provides = pylms7002m
+	conflicts = pylms7002m
+	source = git+https://github.com/myriadrf/pyLMS7002M
+	md5sums = SKIP
+
+pkgname = pylms7002m-git
+
