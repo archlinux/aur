@@ -57,7 +57,7 @@ build() {
     cd "$srcdir/${pkgname}"
     sed -i -e 's@sizeof(byte)@sizeof(CryptoPP::byte)@g' md5_hasher.hh repair/repair.cc
     sed -i -e 's@reinterpret_cast<const byte@reinterpret_cast<const CryptoPP::byte@g' md5_hasher.hh repair/repair.cc
-    ./configure.py --mode=release
+    ./configure.py --mode=release --c-compiler=gcc-7 --compiler=g++-7
     JOBS=`nproc --all`
     # It turns out that on maximum jobs compiler often runs out of memory and crashes
     # Let's be conservative and assign only half of the available CPU threads
