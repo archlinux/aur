@@ -1,7 +1,7 @@
 # Maintainer: NexAdn
 pkgname=obs-linuxbrowser-bin
-pkgver=0.3.1
-_obsver=20.0.1
+pkgver=0.4.0
+_obsver=21.1.1
 pkgrel=1
 pkgdesc="Browser source plugin for obs-studio based on CEF. Alternative to obs-qtwebkit."
 arch=("x86_64")
