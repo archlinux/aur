@@ -1,6 +1,6 @@
 _ref=""
 pkgname=kakoune-git
-pkgver=r5975.baf3d82b
+pkgver=r6457.3208bc37
 pkgrel=1
 pkgdesc='Code editor heavily inspired by Vim'
 arch=('x86_64' 'armv7h')
@@ -21,7 +21,8 @@ makedepends=(
   'asciidoc'
   'git'
 )
-
+provides=('kakoune')
+conflicts=('kakoune')
 source=("${pkgname}::git+https://github.com/mawww/kakoune.git${_ref}")
 sha256sums=('SKIP')
 

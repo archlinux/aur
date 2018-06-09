@@ -1,6 +1,6 @@
 pkgbase = kakoune-git
 	pkgdesc = Code editor heavily inspired by Vim
-	pkgver = r5975.baf3d82b
+	pkgver = r6457.3208bc37
 	pkgrel = 1
 	url = https://github.com/mawww/kakoune
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = kakoune-git
 	optdepends = universal-ctags-git: provides `readtags` used by `:tag` command to jump on a tag definition
 	optdepends = xdotool: add support for kak windows switching (in grep, make... files)
 	optdepends = xorg-xmessage: for nicer debugging messages
+	provides = kakoune
+	conflicts = kakoune
 	source = kakoune-git::git+https://github.com/mawww/kakoune.git
 	sha256sums = SKIP
 
