@@ -1,6 +1,6 @@
 pkgbase = creddit-git
 	pkgdesc = CLI Reddit client written in C.
-	pkgver = r177.accd51f
+	pkgver = r213.1a45df6f8291
 	pkgrel = 1
 	url = https://github.com/Cotix/cReddit
 	arch = x86_64
