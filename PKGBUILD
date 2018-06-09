@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=wslay
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="The WebSocket library in C"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ optdepends=('cunit: build and run tests'
 url="https://github.com/tatsuhiro-t/wslay"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/tatsuhiro-t/$pkgname/tar.gz/release-$pkgver)
-sha256sums=('874c4a6aa15b596846ff3a3ef848b8a6e6f4ca579a1657df9b318a06ac6c79a6')
+sha256sums=('df5dca9f03614073cd8bdd22aa3c9b116f841ed3120b2d4463d2382cc44fc594')
 
 build() {
   cd "$srcdir/$pkgname-release-$pkgver"
