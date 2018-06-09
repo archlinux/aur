@@ -7,8 +7,8 @@
 
 pkgname=firefox-esr-gtk2
 _pkgname=firefox-esr
-pkgver=52.8.0
-pkgrel=2
+pkgver=52.8.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -33,7 +33,7 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         use_noexcept_in_mozalloc.patch
         ffmpeg4.patch.gz
         firefox-52-disable-pocket-leftovers.patch)
-sha256sums=('babed4fe0ae95783e39358aedf7111b20fd9442f73b3b41b025fa4951fe76287'
+sha256sums=('487b4b7fe9a4aeb4dfd63991030b5df47d73f7a17ef917ba1036055f0049cf7b'
             'ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
