@@ -1,7 +1,7 @@
 # Maintainer: CrocoDuck <crocoduck dot oducks at gmail dot com>
 
 pkgname=speech-denoiser-git
-pkgver=r50.cae50a9
+pkgver=r63.911868f
 pkgrel=1
 pkgdesc="A speech denoise lv2 plugin based on RNNoise library."
 arch=('i686' 'x86_64')
@@ -20,6 +20,7 @@ prepare() {
   git submodule init
   git config submodule.rnnoise.url "${srcdir}/rnnoise"
   git submodule update
+  chmod +x static_rnnoise.sh
 }
 
 pkgver() {
@@ -28,12 +29,8 @@ pkgver() {
 }
 
 build() {
-    cd "${pkgname%-*}/rnnoise"
-    ./autogen.sh 2>/dev/null 
-    mv ../ltmain.sh ./ && ./autogen.sh
-    CFLAGS="-fvisibility=hidden -fPIC -Wl,--exclude-libs,ALL" ./configure --disable-examples --disable-doc --disable-shared --enable-static
-    make
-    cd ..
+    cd "${pkgname%-*}"
+    ./static_rnnoise.sh
     meson --prefix "/usr/lib/lv2" --buildtype=release build
     ninja -v -C build
     ninja -C build test
