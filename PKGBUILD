@@ -20,16 +20,16 @@ prepare() {
 }
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$pkgname"
-  make
+    cd "$pkgname"
+    make
 }
 
 package() {
-  cd "$pkgname"
-  make PREFIX="$pkgdir/usr/" install
+    cd "$pkgname"
+    make PREFIX="$pkgdir/usr/" install
 }
