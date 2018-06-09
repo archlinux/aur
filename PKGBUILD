@@ -1,6 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: RunningDroid <runningdroid AT zoho.com>
 # Contributor: Sebastian Lindqvist <dunpin@gmail.com>
+# Contributor: Dan Beste <dan.ray.beste@gmail.com>
+# Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 #
 # ThomasV PGP key: gpg --recv-key 6694D8DE7BE8EE5631BED9502BD5824B7F9470E6
@@ -8,11 +10,12 @@
 #
 
 pkgname=electrum-git
-pkgver=20180125
+pkgver=20180608
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
 depends=('hicolor-icon-theme'
+         'libsecp256k1'
          'python'
          'python-dnspython'
          'python-ecdsa'
@@ -26,6 +29,7 @@ depends=('hicolor-icon-theme'
          'python-requests'
          'python-six'
          'qt5-base')
+checkdepends=('python-tox')
 makedepends=('gettext'
              'git'
              'protobuf'
@@ -35,6 +39,7 @@ optdepends=('desktop-file-utils: update desktop icon'
             'gtk-update-icon-cache: update desktop icon'
             'python-amodem: air-gapped transaction signing over audio modem'
             'python-btchip: Ledger hardware wallet support'
+            'python-hidapi: Digital Bitbox hardware wallet support'
             'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
             'python-keepkey: KeepKey hardware wallet support'
             'python-matplotlib: plot transaction history in graphical mode'
@@ -49,6 +54,10 @@ sha256sums=('SKIP')
 provides=('electrum')
 conflicts=('electrum')
 install=electrum.install
+
+#_pyver="$(pacman -Q python | awk '{print $2}' | awk -F. '{print $1 $2}')"
+_pyver="$(python -c \
+  'import platform; print("%s%s" % platform.python_version_tuple()[0:2])')"
 
 pkgver() {
   cd ${pkgname%-git}
@@ -69,6 +78,13 @@ build() {
 
   msg2 'Building...'
   python setup.py build
+}
+
+check() {
+  cd ${pkgname%-git}
+
+  msg2 'Testing...'
+  tox -e "py$_pyver"
 }
 
 package() {
