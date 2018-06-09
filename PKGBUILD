@@ -4,7 +4,7 @@
 _pkgname=htop
 pkgname=htop-temperature
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive process viewer with added support for CPU temperature"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://hisham.hm/htop/"
