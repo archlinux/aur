@@ -1,0 +1,27 @@
+pkgbase = bitcore-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 0.15.0
+	pkgrel = 3
+	url = https://bitcore.cc/
+	install = bitcore-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = bitcore
+	source = bitcore-qt::git+http://github.com/LIMXTEC/BitCore.git
+	source = bitcore-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 1a3504e2daf78f7dd86fcca457f08dc97272d5a4d68ce5cc20c64c8d0807c07f
+
+pkgname = bitcore-qt
+

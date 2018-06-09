@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Bitcore
+Comment=Bitcore P2P Cryptocurrency
+Exec=/usr/bin/bitcore-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/bitcore128.png
+MimeType=x-scheme-handler/bitcore;
+Categories=Office;
+Name[en_US]=bitcore-qt.desktop
