@@ -1,6 +1,6 @@
 pkgbase = otrs
 	pkgdesc = OTRS is the leading open-source Help Desk and IT Service Management (ITSM)
-	pkgver = 6.0.6
+	pkgver = 6.0.7
 	pkgrel = 1
 	url = http://www.otrs.com/
 	install = otrs.install
@@ -37,9 +37,9 @@ pkgbase = otrs
 	options = emptydirs
 	backup = etc/webapps/otrs/Config.pm
 	source = otrs.install
-	source = http://ftp.otrs.org/pub/otrs/otrs-6.0.6.tar.gz
+	source = http://ftp.otrs.org/pub/otrs/otrs-6.0.7.tar.gz
 	sha256sums = cb10dda941c7477880ae06362ef69fe0cfb1d06ad9ad1315cb7322d4dd65963e
-	sha256sums = 043131794a3aefd16cd301b17d416dfad4bffb2878d0286a224419bb27a9fe92
+	sha256sums = f4f530888be6d17332eab29cc7fe9476d13d85a44750b0f660d464b3144f24d9
 
 pkgname = otrs
 
