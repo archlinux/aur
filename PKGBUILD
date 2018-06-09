@@ -6,37 +6,43 @@
 
 pkgname=freeimage
 pkgver=3.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Library project for developers who would like to support popular graphics image formats"
 arch=('x86_64')
 license=('GPL' 'custom:FIPL')
 url="http://freeimage.sourceforge.net/"
 depends=('gcc-libs')
-makedepends=('dos2unix' 'clang') # Remove clang when this compiles with gcc 5.1
-source=("https://downloads.sourceforge.net/project/freeimage/Source%20Distribution/${pkgver}/FreeImage${pkgver//./}.zip")
-md5sums=('459e15f0ec75d6efa3c7bd63277ead86')
+makedepends=('openexr' 'openjpeg2' 'libtiff' 'libpng' 'libwebp' 'libraw' 'jxrlib' 'glu')
+source=("https://downloads.sourceforge.net/project/freeimage/Source%20Distribution/${pkgver}/FreeImage${pkgver//./}.zip"
+        freeimage-unbundle.patch CVE-2015-0852.patch CVE-2016-5684.patch)
+md5sums=('459e15f0ec75d6efa3c7bd63277ead86'
+         '6fb667a4e779196799333eabace2b7d4'
+         'b21385e2da5dcdf4aa4e98d11150115d'
+         '2efbe4123d832930778b7c146d4f60f1')
+
+prepare() {
+  cd FreeImage
+  patch -p1 -i ../CVE-2016-5684.patch
+  patch -p1 -i ../CVE-2015-0852.patch
+
+  patch -p1 -i ../freeimage-unbundle.patch # Unbundle libraries (Fedora)
+  rm -r Source/Lib* Source/ZLib Source/OpenEXR
+# can't be built due to private headers
+  > Source/FreeImage/PluginG3.cpp
+  > Source/FreeImageToolkit/JPEGTransform.cpp
+}
 
 build() {
-  cp -r FreeImage FreeImagefip
-
-  export CFLAGS+=" -O3 -fPIC -fexceptions -fvisibility=hidden -DNO_LCMS"
-  export CXXFLAGS+=" -O3 -fPIC -fexceptions -fvisibility=hidden -Wno-ctor-dtor-privacy"
-
-  export CC="clang"
-  export CXX="clang++"
-
   cd FreeImage
-  make
-
-  cd ${srcdir}/FreeImagefip
-  CXX=clang++ make -f Makefile.fip 
+  sh gensrclist.sh
+  sh genfipsrclist.sh
+  make -f Makefile.gnu
+  make -f Makefile.fip
 }
 
 package() {
   cd FreeImage
-  make DESTDIR=${pkgdir} install
-
-  cd ${srcdir}/FreeImagefip
+  make -f Makefile.gnu DESTDIR=${pkgdir} install
   make -f Makefile.fip DESTDIR=${pkgdir} install
 
   install -D -m644 ${srcdir}/FreeImage/license-fi.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
