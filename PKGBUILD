@@ -1,23 +1,24 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
 # Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
 
-_commit=ff2f81432bb0484a019a678058595e10217df51d  # tags/1.7.6^0
+_commit=37986aa9b7ac44b1c4c50ebba9902d06cc8a45e0  # tags/1.8.0^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgbase=mingw-w64-harfbuzz
 pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
-pkgver=1.7.6
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 license=('MIT')
-depends=('mingw-w64-crt')
+depends=('mingw-w64-crt'
+         'mingw-w64-glib2'
+         'mingw-w64-graphite'
+         'mingw-w64-freetype2')
 makedepends=('mingw-w64-configure'
              'mingw-w64-cairo'
              'mingw-w64-icu'
-             'mingw-w64-graphite'
-             'mingw-w64-freetype2'
              'python'
              'gtk-doc'
              'ragel'
@@ -74,9 +75,6 @@ build() {
 }
 
 package_mingw-w64-harfbuzz() {
-  depends=('mingw-w64-freetype2'
-           'mingw-w64-glib2'
-           'mingw-w64-graphite')
   for _arch in ${_architectures}; do
     cd "${srcdir}/harfbuzz/build-${_arch}-static"
     make DESTDIR="${pkgdir}" install

@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-harfbuzz
 	pkgdesc = OpenType text shaping engine (mingw-w64)
-	pkgver = 1.7.6
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/HarfBuzz
 	arch = any
@@ -8,23 +8,21 @@ pkgbase = mingw-w64-harfbuzz
 	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-cairo
 	makedepends = mingw-w64-icu
-	makedepends = mingw-w64-graphite
-	makedepends = mingw-w64-freetype2
 	makedepends = python
 	makedepends = gtk-doc
 	makedepends = ragel
 	makedepends = git
 	depends = mingw-w64-crt
+	depends = mingw-w64-glib2
+	depends = mingw-w64-graphite
+	depends = mingw-w64-freetype2
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = git+https://anongit.freedesktop.org/git/harfbuzz#commit=ff2f81432bb0484a019a678058595e10217df51d
+	source = git+https://anongit.freedesktop.org/git/harfbuzz#commit=37986aa9b7ac44b1c4c50ebba9902d06cc8a45e0
 	sha256sums = SKIP
 
 pkgname = mingw-w64-harfbuzz
-	depends = mingw-w64-freetype2
-	depends = mingw-w64-glib2
-	depends = mingw-w64-graphite
 
 pkgname = mingw-w64-harfbuzz-icu
 	pkgdesc = OpenType text shaping engine (ICU integration, mingw-w64)
