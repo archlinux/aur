@@ -1,0 +1,16 @@
+pkgbase = pylms8001
+	pkgdesc = Python bindings for LMS8001.
+	pkgver = r1.7d50b60
+	pkgrel = 1
+	url = https://github.com/myriadrf/pyLMS8001
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python2-pyserial
+	provides = pylms8001
+	conflicts = pylms8001
+	source = git+https://github.com/myriadrf/pyLMS8001
+	md5sums = SKIP
+
+pkgname = pylms8001
+
