@@ -1,8 +1,8 @@
 diff --git a/src/HP-15C.tcl b/src/HP-15C.tcl
-index 7d6acda..e9b6544 100644
+index 50238bb89c4c..da2886209ac1 100644
 --- a/HP-15C.tcl
 +++ b/HP-15C.tcl
-@@ -3084,22 +3084,7 @@ proc help { topic } {
+@@ -3250,22 +3250,7 @@ proc help { topic } {
  
    global APPDATA HP15 errorInfo
  

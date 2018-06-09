@@ -1,15 +1,15 @@
 # Maintainer:  Quint Guvernator <quint@guvernator.net>
 
 pkgname=hp15c
-pkgver=3.4.01
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A simulator for the HP-15C programmable scientific RPN calculator"
 url="http://hp-15c.homepage.t-online.de/content_web.htm"
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('tcl' 'tk')
-source=("$pkgname-$pkgver.zip::https://goo.gl/9XbLkF")
-md5sums=('beaf85db8c61827b95586d99bc636d0b')
+source=("$pkgname-$pkgver.zip::https://drive.google.com/uc?export=download&id=1ewFXi6PPRsiPJESUq5A2Gp83NYSYVYKr")
+md5sums=('c90cc630d9e5bdf70912f8cd754cc2cc')
 
 prepare() {
   # patch location of help files to match Arch standards
