@@ -1,115 +1,25 @@
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-<title>0001-fix-option-string.patch\trunk - svntogit/packages.git - Git clone of the 'packages' repository
-</title>
-<meta name='generator' content='cgit v0.12'/>
-<meta name='robots' content='index, nofollow'/>
-<link rel='stylesheet' type='text/css' href='/cgit.css'/>
-<link rel='shortcut icon' href='/favicon.ico'/>
-<link rel='alternate' title='Atom feed' href='https://git.archlinux.org/svntogit/packages.git/atom/trunk/0001-fix-option-string.patch?h=packages/htop' type='application/atom+xml'/>
-<link rel='vcs-git' href='https://git.archlinux.org/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
-<link rel='vcs-git' href='git://git.archlinux.org/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
-<link rel='vcs-git' href='ssh://git.archlinux.org/srv/git/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
-</head>
-<body>
-	<div id="archnavbar"><!-- Arch Linux global navigation bar -->
-		<div id="archnavbarlogo">
-			<p><a href="http://www.archlinux.org/" title="Arch news, packages, projects and more"></a></p>
-		</div>
-		<div id="archnavbarmenu">
-			<ul id="archnavbarlist">
-				<li id="anb-home"><a href="http://www.archlinux.org/" title="Arch news, packages, projects and more">Home</a></li>
-				<li id="anb-packages"><a href="http://www.archlinux.org/packages/" title="Arch Package Database">Packages</a></li>
-				<li id="anb-forums"><a href="https://bbs.archlinux.org/" title="Community forums">Forums</a></li>
-				<li id="anb-wiki"><a href="https://wiki.archlinux.org/" title="Community documentation">Wiki</a></li>
-				<li id="anb-bugs"><a href="https://bugs.archlinux.org/" title="Report and follow bugs">Bugs</a></li>
-				<li id="anb-sec"><a href="https://security.archlinux.org/" title="Security Tracker">Security</a></li>
-				<li id="anb-aur"><a href="https://aur.archlinux.org/" title="Arch Linux User Repository">AUR</a></li>
-				<li id="anb-download"><a href="http://www.archlinux.org/download/" title="Get Arch Linux">Download</a></li>
-			</ul>
-		</div>
-	</div><!-- #archnavbar -->
-<div id='cgit'><table id='header'>
-<tr>
-<td class='main'><a href='/'>index</a> : <a title='svntogit/packages.git' href='/svntogit/packages.git/'>svntogit/packages.git</a></td></tr>
-<tr><td class='sub'>Git clone of the 'packages' repository
-</td><td class='sub right'></td></tr></table>
-<table class='tabs'><tr><td>
-<a href='/svntogit/packages.git/?h=packages/htop'>summary</a><a href='/svntogit/packages.git/refs/?h=packages/htop&amp;id=e1359571e24850f3ac08f8bd463aaa921751a71b'>refs</a><a href='/svntogit/packages.git/log/trunk/0001-fix-option-string.patch?h=packages/htop'>log</a><a class='active' href='/svntogit/packages.git/tree/trunk/0001-fix-option-string.patch?h=packages/htop&amp;id=e1359571e24850f3ac08f8bd463aaa921751a71b'>tree</a><a href='/svntogit/packages.git/commit/trunk/0001-fix-option-string.patch?h=packages/htop&amp;id=e1359571e24850f3ac08f8bd463aaa921751a71b'>commit</a><a href='/svntogit/packages.git/diff/trunk/0001-fix-option-string.patch?h=packages/htop&amp;id=e1359571e24850f3ac08f8bd463aaa921751a71b'>diff</a><a href='/svntogit/packages.git/stats/trunk/0001-fix-option-string.patch?h=packages/htop'>stats</a></td><td class='form'><form class='right' method='get' action='/svntogit/packages.git/log/trunk/0001-fix-option-string.patch'>
-<input type='hidden' name='h' value='packages/htop'/><input type='hidden' name='id' value='e1359571e24850f3ac08f8bd463aaa921751a71b'/><select name='qt'>
-<option value='grep'>log msg</option>
-<option value='author'>author</option>
-<option value='committer'>committer</option>
-<option value='range'>range</option>
-</select>
-<input class='txt' type='text' size='10' name='q' value=''/>
-<input type='submit' value='search'/>
-</form>
-</td></tr></table>
-<div class='path'>path: <a href='/svntogit/packages.git/tree/?h=packages/htop&amp;id=e1359571e24850f3ac08f8bd463aaa921751a71b'>root</a>/<a href='/svntogit/packages.git/tree/trunk?h=packages/htop&amp;id=e1359571e24850f3ac08f8bd463aaa921751a71b'>trunk</a>/<a href='/svntogit/packages.git/tree/trunk/0001-fix-option-string.patch?h=packages/htop&amp;id=e1359571e24850f3ac08f8bd463aaa921751a71b'>0001-fix-option-string.patch</a></div><div class='content'>blob: d877e03ef91bed57c04f13a7367d2f70250ebf68 (<a href='/svntogit/packages.git/plain/trunk/0001-fix-option-string.patch?h=packages/htop&amp;id=e1359571e24850f3ac08f8bd463aaa921751a71b'>plain</a>)
-<table summary='blob content' class='blob'>
-<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
-<a id='n2' href='#n2'>2</a>
-<a id='n3' href='#n3'>3</a>
-<a id='n4' href='#n4'>4</a>
-<a id='n5' href='#n5'>5</a>
-<a id='n6' href='#n6'>6</a>
-<a id='n7' href='#n7'>7</a>
-<a id='n8' href='#n8'>8</a>
-<a id='n9' href='#n9'>9</a>
-<a id='n10' href='#n10'>10</a>
-<a id='n11' href='#n11'>11</a>
-<a id='n12' href='#n12'>12</a>
-<a id='n13' href='#n13'>13</a>
-<a id='n14' href='#n14'>14</a>
-<a id='n15' href='#n15'>15</a>
-<a id='n16' href='#n16'>16</a>
-<a id='n17' href='#n17'>17</a>
-<a id='n18' href='#n18'>18</a>
-<a id='n19' href='#n19'>19</a>
-<a id='n20' href='#n20'>20</a>
-<a id='n21' href='#n21'>21</a>
-<a id='n22' href='#n22'>22</a>
-<a id='n23' href='#n23'>23</a>
-<a id='n24' href='#n24'>24</a>
-<a id='n25' href='#n25'>25</a>
-</pre></td>
-<td class='lines'><pre><code>From 731acc8bced18c90fbe0e18381c32f007f71e0d9 Mon Sep 17 00:00:00 2001
-From: Christian Hesse &lt;mail&#64;eworm.de&gt;
+From 731acc8bced18c90fbe0e18381c32f007f71e0d9 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
 Date: Tue, 10 Apr 2018 16:21:46 +0200
 Subject: [PATCH 1/1] fix option string
 
 This broke with commit db05ba61065f64b59d0014518be0786b5439e54c.
 
-Signed-off-by: Christian Hesse &lt;mail&#64;eworm.de&gt;
-<span class="hl kwb">---</span>
+Signed-off-by: Christian Hesse <mail@eworm.de>
+---
  htop.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/htop.c b/htop.c
 index 6db81dd..678a3b8 100644
-<span class="hl kwb">--- a/htop.c</span>
-<span class="hl kwa">+++ b/htop.c</span>
-&#64;&#64; -93,7 +93,7 &#64;&#64; static CommandLineSettings parseArguments(int argc, char** argv) {
- 
+--- a/htop.c
++++ b/htop.c
+@@ -93,7 +93,7 @@ static CommandLineSettings parseArguments(int argc, char** argv) {
+
     int opt, opti=0;
     /* Parse arguments */
-<span class="hl kwb">-   while ((opt = getopt_long(argc, argv, &quot;hvCst::d:u:p:i&quot;, long_opts, &amp;opti))) {</span>
-<span class="hl kwa">+   while ((opt = getopt_long(argc, argv, &quot;hvCs:td:u:p:i&quot;, long_opts, &amp;opti))) {</span>
+-   while ((opt = getopt_long(argc, argv, "hvCst::d:u:p:i", long_opts, &opti))) {
++   while ((opt = getopt_long(argc, argv, "hvCs:td:u:p:i", long_opts, &opti))) {
        if (opt == EOF) break;
        switch (opt) {
-          case &apos;h&apos;:
-</code></pre></td></tr></table>
-</div> <!-- class=content -->
-<div class="foot" style="padding-left:1em;padding-right:1em;">
-<p>Copyright &copy; 2002-2017 <a href="mailto:jvinet@zeroflux.org"
-title="contact Judd Vinet">Judd Vinet</a> and <a href="mailto:aaron@archlinux.org"
-title="contact Aaron Griffin">Aaron Griffin</a>. The Arch Linux name and logo
-are recognized trademarks. Some rights reserved. The registered trademark
-Linux&reg; is used pursuant to a sublicense from LMI, the exclusive licensee
-of Linus Torvalds, owner of the mark on a world-wide basis.</p>
-</div>
-</div> <!-- id=cgit -->
-</body>
-</html>
+          case 'h':

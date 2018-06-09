@@ -1,10 +1,9 @@
 # Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
-# Contributor: Blair Bonnett <blair.bonnett at gmail dot com>
 
 _pkgname=htop
 pkgname=htop-temperature-rpi
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive process viewer with added support for CPU temperature. Version for gathering Raspberry Pi CPU temperature from vcgencmd"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://hisham.hm/htop/"

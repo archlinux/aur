@@ -1,7 +1,7 @@
 pkgbase = htop-temperature-rpi
 	pkgdesc = Interactive process viewer with added support for CPU temperature. Version for gathering Raspberry Pi CPU temperature from vcgencmd
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hisham.hm/htop/
 	arch = i686
 	arch = x86_64
