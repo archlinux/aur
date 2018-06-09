@@ -1,11 +1,11 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=gophcatch
 pkgname=$_pkgname-git
-pkgver=15.03
+pkgver=17.09.3.g0d07458
 pkgrel=1
 pkgdesc="Watch gopher holes and catch updates"
 arch=('any')
-url="https://github.com/vain/gophcatch"
+url="https://uninformativ.de/git/gophcatch"
 license=('MIT')
 depends=('curl')
 makedepends=('git')
@@ -15,7 +15,7 @@ optdepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(git://github.com/vain/gophcatch.git)
+source=(git+https://uninformativ.de/git/gophcatch.git)
 md5sums=('SKIP')
 
 pkgver() {
