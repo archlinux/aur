@@ -1,16 +1,16 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=asciiplanets-git
-pkgver=15.09.2.g5cba80c
+pkgver=17.12.1.g980c702
 pkgrel=1
 pkgdesc="ASCII solar system observer"
 arch=('any')
-url="https://github.com/vain/asciiplanets"
+url="https://uninformativ.de/git/asciiplanets"
 license=('MIT')
 depends=('bash' 'coreutils' 'ncurses' 'python-pyephem')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git://github.com/vain/asciiplanets.git')
+source=('git+https://uninformativ.de/git/asciiplanets.git')
 md5sums=('SKIP')
 
 pkgver() {
