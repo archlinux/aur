@@ -24,8 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_realname"
   python2 setup.py build
-  install -dm755 "$srcdir/fakeinstall/"
-  python2 setup.py install --root="$srcdir/fakeinstall/" --prefix=/usr --optimize=1
+  python2 setup.py install --root="$srcdir/" --prefix=/usr --optimize=1
 }
 
 package(){
@@ -33,6 +32,6 @@ package(){
   depends=('python2-jinja')
   cd "$pkgdir"
   install -dm755 "usr/lib/python2.7/site-packages/$_realname"
-  cd	"$srcdir/fakeinstall/"
+  cd	"$srcdir/"
   mv -v "usr/lib/python2.7/site-packages/$_realname" "$pkgdir/usr/lib/python2.7/site-packages/"
 }
