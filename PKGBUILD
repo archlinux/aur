@@ -1,6 +1,6 @@
 # Maintainer: Eric Le Lay <contact at elelay dot fr>
 pkgname=ansifilter
-pkgver=2.9
+pkgver=2.10
 pkgrel=0
 pkgdesc="remove or convert ANSI codes to another format"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=(gcc-libs)
 makedepends=()
 optdepends=()
 source=("http://www.andre-simon.de/zip/$pkgname-$pkgver.tar.bz2")
-sha256sums=('f9c4c0d8a4532b89ee16ff5ac51eee46dc581fb4cc50d51a97dddd15385abc3a')
+sha256sums=('23d2cf439d4ed4fbec8050b2826d61c244694ce06aaf8ca7d0ec1016afebee3f')
 
 build() {
   cd "$pkgname-$pkgver"
