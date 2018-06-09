@@ -1,10 +1,10 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=asciiworld-git
-pkgver=15.03
-pkgrel=3
+pkgver=17.12.1.g8d85652
+pkgrel=1
 pkgdesc="ASCII world map and tools"
 arch=('i686' 'x86_64')
-url="https://github.com/vain/asciiworld"
+url="https://uninformativ.de/git/asciiworld"
 license=('MIT')
 depends=('gd' 'shapelib')
 makedepends=('git')
@@ -17,7 +17,7 @@ optdepends=('curl: Retrieving various data'
             'ncurses: For tput')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git://github.com/vain/asciiworld.git')
+source=('git+https://uninformativ.de/git/asciiworld.git')
 md5sums=('SKIP')
 install=asciiworld.install
 
@@ -63,7 +63,7 @@ package() {
 
   # Documents
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
+  install -Dm644 README "$pkgdir/usr/share/doc/${pkgname%-git}/README"
   install -Dm644 README-tools.md \
     "$pkgdir/usr/share/doc/${pkgname%-git}/README-tools.md"
 }
