@@ -1,0 +1,7 @@
+*.jar
+*.tar.*z
+*.log
+*.messages
+mqtt-spy/
+pkg/
+src/
