@@ -1,10 +1,10 @@
-# Maintainer: Caleb Woodbine <github.com/BobyMCbobs>
+# Maintainer: Caleb Woodbine <gitlab.com/BobyMCbobs>
 pkgname=rpicustomiser
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="A useful tool for customising Rasbian. Chroot, install deb packages, copy files, customise."
 arch=('any')
-url="https://gitlab.com/BobyMCbobs/${rpicustomiser}"
+url="https://gitlab.com/BobyMCbobs/${pkgname}"
 license=('GPL')
 depends=('bash' 'qemu' 'qemu-user-static' 'binfmt-support')
 source=("https://gitlab.com/BobyMCbobs/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip")
