@@ -1,17 +1,17 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=gitary
 pkgname=$_pkgname-git
-pkgver=16.08.10.g9bb0c70
+pkgver=17.09.2.g556cebd
 pkgrel=1
 pkgdesc="A diary using git as its backend"
 arch=('any')
-url='https://www.uninformativ.de/projects/gitary/'
+url='https://uninformativ.de/git/gitary'
 license=('MIT')
 makedepends=('git')
 depends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(git://github.com/vain/gitary.git)
+source=(git+https://uninformativ.de/git/gitary.git)
 md5sums=('SKIP')
 
 pkgver() {
