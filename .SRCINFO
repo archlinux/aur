@@ -1,0 +1,13 @@
+pkgbase = petit-larceny-bin
+	pkgdesc = Petit Larceny is an R7RS-conformant Scheme implementation that compiles to C.
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://larcenists.org
+	arch = i686
+	arch = x86_64
+	license = unknown; BSD-like
+	source = http://www.larcenists.org/LarcenyReleases/larceny-1.3-bin-petit-stdc-linux86.tar.gz
+	md5sums = f57b9387c56fd8a70326203c405a6c32
+
+pkgname = petit-larceny-bin
+
