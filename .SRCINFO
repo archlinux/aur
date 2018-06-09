@@ -1,6 +1,6 @@
 pkgbase = curlew
 	pkgdesc = Easy to use, Free and Open-Source Multimedia converter for Linux in Python
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://curlew.sourceforge.io/
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = curlew
 	depends = python-dbus
 	depends = mediainfo
 	optdepends = curl: Aurploader support
-	source = http://downloads.sourceforge.net/project/curlew/curlew-0.2.4/curlew-0.2.4.tar.gz
-	sha256sums = f1d6a4125bda816224d691b2623dd5e3c1f4af7f69b637bf113ecddb125d3987
+	source = http://downloads.sourceforge.net/project/curlew/curlew-0.2.5/curlew-0.2.5.tar.gz
+	sha256sums = 8f645bc3a4897ac61eaec5be19c16b515d164552554ac0791a60731be1ea22a9
 
 pkgname = curlew
 

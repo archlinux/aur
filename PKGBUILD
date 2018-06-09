@@ -4,7 +4,7 @@
 # Contributor: mrbit <giacomogiorgianni@gmail.com>
 #
 pkgname="curlew"
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Easy to use, Free and Open-Source Multimedia converter for Linux in Python"
 url="https://curlew.sourceforge.io/"
@@ -17,11 +17,11 @@ depends=('python' 'ffmpeg' 'python-gobject' 'hicolor-icon-theme' \
 makedepends=('intltool' 'librsvg')
 optdepends=('curl: Aurploader support')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f1d6a4125bda816224d691b2623dd5e3c1f4af7f69b637bf113ecddb125d3987')
+sha256sums=('8f645bc3a4897ac61eaec5be19c16b515d164552554ac0791a60731be1ea22a9')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py install --prefix=/usr --root="${pkgdir}"/ --optimize=1
 }
 
-# vim:set ts=4 sw=2 ft=sh et
+# vim:set ts=4 sw=2 ft=sh et syn=sh ft=sh
