@@ -4,14 +4,14 @@
 # then please put 'unknown'.
 
 # Maintainer: Sean Anderson <seanga2@gmail.com>
-_srcname=crawl
-pkgname=crawl-tiles
-pkgver=0.21.1
+_srcname=X-Crawl
+pkgname=xcrawl-tiles
+pkgver=1.1
 pkgrel=1
 epoch=
-pkgdesc="Dungeon Crawl Stone Soup with graphical tiles and sound support"
+pkgdesc="Dungeon Crawl Stone Soup Fork developed through a democratic process with graphical tiles and sound support"
 arch=('i686' 'x86_64')
-url="https://crawl.develz.org/"
+url="https://github.com/Vajrapani/X-Crawl"
 license=('GPL')
 depends=(
 	'sdl2_image'
@@ -24,17 +24,17 @@ depends=(
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=('crawl')
-conflicts=('crawl')
+provides=()
+conflicts=()
 backup=()
 options=()
-source=("https://github.com/crawl/$_srcname/archive/$pkgver.tar.gz")
-md5sums=('634808232f0811c7f16594a8c35d8b72')
+source=("https://github.com/Vajrapani/X-Crawl/archive/$pkgver.tar.gz")
+md5sums=('2e596dac25382f3af60241d5435f27b5')
 
 prepare() {
 	cd "$_srcname-$pkgver/crawl-ref/source"
 	
-	echo $_makeflags
+	sed -i 's/GAME = crawl/GAME = xcrawl/' Makefile
 	echo $pkgver > util/release_ver
 }
 
@@ -44,6 +44,7 @@ build() {
 	make \
 		prefix=/usr \
 		bin_prefix=bin \
+		DATADIR=share/xcrawl \
 		DESTDIR=$pkgdir \
 		SAVEDIR='~/.crawl' \
 		LUA_PACKAGE=lua51 \
@@ -58,6 +59,7 @@ build() {
 #	make -k test \
 #		prefix=/usr \
 #		bin_prefix=bin \
+#		DATADIR=share/xcrawl \
 #		DESTDIR=$pkgdir \
 #		SAVEDIR='~/.crawl' \
 #		LUA_PACKAGE=lua51 \
@@ -70,6 +72,7 @@ package() {
 	make install \
 		prefix=/usr \
 		bin_prefix=bin \
+		DATADIR=share/xcrawl \
 		DESTDIR=$pkgdir \
 		SAVEDIR='~/.crawl' \
 		LUA_PACKAGE=lua51 \

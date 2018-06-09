@@ -1,8 +1,8 @@
-pkgbase = crawl-tiles
-	pkgdesc = Dungeon Crawl Stone Soup with graphical tiles and sound support
-	pkgver = 0.21.1
+pkgbase = xcrawl-tiles
+	pkgdesc = Dungeon Crawl Stone Soup Fork developed through a democratic process with graphical tiles and sound support
+	pkgver = 1.1
 	pkgrel = 1
-	url = https://crawl.develz.org/
+	url = https://github.com/Vajrapani/X-Crawl
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -12,10 +12,8 @@ pkgbase = crawl-tiles
 	depends = lua51
 	depends = sqlite
 	depends = glu
-	provides = crawl
-	conflicts = crawl
-	source = https://github.com/crawl/crawl/archive/0.21.1.tar.gz
-	md5sums = 634808232f0811c7f16594a8c35d8b72
+	source = https://github.com/Vajrapani/X-Crawl/archive/1.1.tar.gz
+	md5sums = 2e596dac25382f3af60241d5435f27b5
 
-pkgname = crawl-tiles
+pkgname = xcrawl-tiles
 
