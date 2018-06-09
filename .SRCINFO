@@ -1,0 +1,15 @@
+pkgbase = cellular-network-configs-git
+	pkgdesc = Configurations for using LimeSDR hardware with Osmocom and OpenAirInterface etc.
+	pkgver = r14.184f463
+	pkgrel = 1
+	url = https://github.com/myriadrf/cellular-network-configs
+	arch = any
+	license = Apache
+	makedepends = git
+	provides = cellular-network-configs
+	conflicts = cellular-network-configs
+	source = git+https://github.com/myriadrf/cellular-network-configs
+	sha256sums = SKIP
+
+pkgname = cellular-network-configs-git
+
