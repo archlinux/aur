@@ -15,7 +15,8 @@ url='http://docbook.org/'
 depends=(libxml2 libxslt sed)
 install="$pkgname.install"
 source=("https://github.com/docbook/xslt10-stylesheets/releases/download/release%2F$pkgver/docbook-xsl-$pkgver.tar.gz")
-sha256sums=()
+sha256sums=('966188d7c05fc76eaca115a55893e643dd01a3486f6368733c9ad974fcee7a26')
+md5sums=('3eb1152abf2ab3ae01188ccf81e9a252')
 
 package() {
   cd $pkgname-$pkgver
