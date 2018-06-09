@@ -1,17 +1,17 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=xiate
 pkgname=$_pkgname-git
-pkgver=17.10.13.ge96d2d1
+pkgver=18.05.3.g4a53068
 pkgrel=1
 pkgdesc="xiate is a terminal emulator"
 arch=('i686' 'x86_64')
-url="http://www.uninformativ.de/projects/xiate/"
+url="https://uninformativ.de/git/xiate"
 license=('MIT')
 depends=('vte3')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(git://github.com/vain/xiate.git)
+source=(git+https://uninformativ.de/git/xiate.git)
 md5sums=('SKIP')
 
 pkgver() {
