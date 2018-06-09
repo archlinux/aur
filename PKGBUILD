@@ -3,15 +3,15 @@
 # Contrubutor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-390xx-ck
-pkgver=390.59
+pkgver=390.67
 pkgrel=1
 _extramodules=extramodules-4.16-ck
 _pkgdesc="NVIDIA drivers for linux-ck, 390xx legacy branch."
 pkgdesc="$_pkgdesc"
 arch=('x86_64')
 url="http://www.nvidia.com/"
-makedepends=('linux-ck-headers>=4.16' 'linux-ck-headers<4.17' "nvidia-390xx-utils=${pkgver}")
-depends=('linux-ck>=4.16' 'linux-ck<4.17' 'libgl' "nvidia-390xx-utils=${pkgver}")
+makedepends=('linux-ck-headers>=4.16' 'linux-ck-headers<4.17' "nvidia-390xx-utils=${pkgver}" 'libglvnd')
+depends=('linux-ck>=4.16' 'linux-ck<4.17' 'libglvnd' "nvidia-390xx-utils=${pkgver}")
 conflicts=('nvidia-340xx-ck' 'nvidia-ck')
 #groups=('ck-generic')
 #replaces=()
@@ -19,7 +19,7 @@ license=('custom')
 options=('!strip')
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
 kernel-4.16.patch)
-sha256sums=('397adf2f725f6d27aaf583431efe8d1182d926930e73f1bfd6f9e6fbc03c0484'
+sha256sums=('4d9d4a636d568a93412cd9a2db08c594adef20861707dfdfbd6ae15db3292b26'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
