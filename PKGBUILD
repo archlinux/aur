@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=wslay-git
-pkgver=20141215
+pkgver=20180608
 pkgrel=1
 pkgdesc="The WebSocket library in C"
 arch=('i686' 'x86_64')
