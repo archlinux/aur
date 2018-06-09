@@ -20,7 +20,7 @@ optdepends=(
 source=(
     "https://github.com/bazukas/obs-linuxbrowser/releases/download/${pkgver}/linuxbrowser${pkgver}-obs${_obsver}-64bit.tgz"
 )
-sha256sums=('ae4e33d11dd3dc1aed440c7bcf1fb1da282cda39bc37fe771c900a7a4b468d28')
+sha256sums=('5079177693ff9ea33c321cdab4f7dc909f55098450da81aac44b43ae5442b259')
 package() {
     cd ${srcdir}/obs-linuxbrowser
     install -d ${pkgdir}/usr/lib/obs-plugins/

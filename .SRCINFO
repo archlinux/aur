@@ -18,7 +18,7 @@ pkgbase = obs-linuxbrowser-bin
 	provides = obs-linuxbrowser
 	conflicts = obs-linuxbrowser
 	source = https://github.com/bazukas/obs-linuxbrowser/releases/download/0.4.0/linuxbrowser0.4.0-obs21.1.1-64bit.tgz
-	sha256sums = ae4e33d11dd3dc1aed440c7bcf1fb1da282cda39bc37fe771c900a7a4b468d28
+	sha256sums = 5079177693ff9ea33c321cdab4f7dc909f55098450da81aac44b43ae5442b259
 
 pkgname = obs-linuxbrowser-bin
 
