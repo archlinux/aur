@@ -5,7 +5,7 @@
 # Contributor: Kevin Kyzer <kev@k3v.in>
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
@@ -13,11 +13,11 @@ url="http://www.mudlet.org"
 license=('GPL')
 depends=('yajl' 'qt5-base' 'qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51' \
          'lua51-filesystem' 'luazip5.1' 'lua51-sql-sqlite' 'lrexlib-pcre5.1'  \
-         'qt5-gamepad' 'lua51-utf8' 'lua51-lcf' 'ttf-font')
+         'qt5-gamepad' 'lua51-utf8' 'lua51-lcf' 'ttf-font' 'pugixml')
 makedepends=('boost' 'qt5-tools')
 conflicts=('mudlet-dev' 'mudlet-git' 'mudlet-deb')
 source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
-sha256sums=('61963391b4a6ba579a45e2249f45a0cdefa9d5b1a4d75e94c12c1c26dd96dae5')
+sha256sums=('b9361b43e522cae684985e319bc8f84c48051675acba895bd814baac46604a67')
 
 prepare() {
     cd "$srcdir/src"
@@ -28,7 +28,7 @@ prepare() {
 build() {
     cd "$srcdir/src"
     export WITH_FONTS=NO 
-    export WITH_UPDATER=NO
+##  export WITH_UPDATER=NO  ## Updater is enabled again until disabling it stops creating isues with compiltion
     qmake-qt5 PREFIX=/usr
     make
 }
