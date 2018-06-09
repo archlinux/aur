@@ -1,12 +1,11 @@
 pkgbase = termcap
 	pkgdesc = Enables programs to use display computer terminals in a device-independent manner
 	pkgver = 1.3.1
-	pkgrel = 4
+	pkgrel = 6
 	url = http://www.catb.org/~esr/terminfo/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	conflicts = termcap
 	source = http://ftp.gnu.org/gnu/termcap/termcap-1.3.1.tar.gz
 	sha256sums = 91a0e22e5387ca4467b5bcb18edf1c51b930262fd466d5fda396dd9d26719100
 
