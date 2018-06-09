@@ -21,7 +21,6 @@ package() {
   # docs
   mkdir -p "$pkgdir/usr/share/doc/"
   cp -r doc "$pkgdir/usr/share/doc/$pkgname"
-  cp -r progs -t "$pkgdir/usr/share/doc/$pkgname/"
   cp "Read Me & Release Notes.html" "$pkgdir/usr/share/doc/$pkgname/README.html"
 
   # dependencies of script
