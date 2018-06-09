@@ -26,7 +26,7 @@ pkgver() {
 build() {
     cd "$srcdir/$_realname"
     python2 setup.py build
-    python2 setup.py install --root="$srcdir/fakeinstall/" --prefix=/usr --optimize=1
+    python2 setup.py install --root="$srcdir/" --prefix=/usr --optimize=1
 }
 
 package(){
@@ -34,7 +34,7 @@ package(){
     install -dm755 usr/bin/
     install -dm755 usr/lib/python2.7/site-packages/
     install -dm755 usr/lib/python2.7/site-packages/sat_frontends
-    cd "$srcdir/fakeinstall"
+    cd "$srcdir/"
     mv -v usr/bin/* "$pkgdir/usr/bin/"
     mv -v usr/share/ "$pkgdir/usr/"
     mv -v usr/lib/python2.7/site-packages/{sat-*,sat_frontends,sat} "$pkgdir/usr/lib/python2.7/site-packages/"
