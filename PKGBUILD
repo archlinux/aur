@@ -1,11 +1,11 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=gitodo
 pkgname=$_pkgname-git
-pkgver=15.03
+pkgver=18.01.3.g17cdbdc
 pkgrel=1
 pkgdesc="Manage your TODO items using Git as a backend"
 arch=('any')
-url='http://www.uninformativ.de/projects/?q=gitodo'
+url='https://uninformativ.de/git/gitodo'
 license=('MIT')
 makedepends=('git')
 depends=('git' 'ruby')
@@ -15,7 +15,7 @@ optdepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(git://github.com/vain/gitodo.git)
+source=(git+https://uninformativ.de/git/gitodo.git)
 md5sums=('SKIP')
 
 pkgver() {
