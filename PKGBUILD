@@ -5,7 +5,7 @@
 pkgname=lib32-libreplaygain
 _pkgname=libreplaygain
 pkgver=475
-pkgrel=2
+pkgrel=3
 pkgdesc="A library to adjust audio gain (lib32)"
 arch=('x86_64')
 url="http://www.musepack.net/index.php?pg=src"
@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('lib32-glibc' "${_pkgname}")
 makedepends=('cmake')
 source=("http://files.musepack.net/source/${_pkgname}_r${pkgver}.tar.gz")
-md5sums=('e27b3b1249b7fbae92d656d9e3d26633')
+sha512sums=('b5fce8daf6aa8c8e0adb4c80089b43824b6503cb7d11e0c47c779c57a933b32f0c24722ca3fcf49711199fddcbb92c3fc13876f22418ca1521c7b8e27ba9d409')
 
 build() {
 cd "${srcdir}"
