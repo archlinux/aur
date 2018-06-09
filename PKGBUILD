@@ -3,11 +3,12 @@
 
 pkgname=xinetd
 pkgver=2.3.15
-pkgrel=4
+pkgrel=5
 pkgdesc="A secure replacement for inetd"
 arch=('x86_64')
 url="http://www.xinetd.org/"
 license=('custom')
+depends=('libtirpc')
 optdepends=('perl: for xconv.pl script')
 backup=('etc/xinetd.conf' 'etc/xinetd.d/servers' 'etc/xinetd.d/services')
 source=("https://sources.archlinux.org/other/packages/$pkgname/$pkgname-$pkgver.tar.gz"
@@ -34,7 +35,7 @@ prepare() {
 build() {
   cd $srcdir/$pkgname-$pkgver
   ./configure --prefix=/usr --sbindir=/usr/bin --without-libwrap
-  make
+  CFLAGS+=' -I/usr/include/tirpc' LDFLAGS+=' -ltirpc' make
 }
 
 package() {
