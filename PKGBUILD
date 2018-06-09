@@ -1,13 +1,13 @@
 # Maintainer: Brandon Mulcahy <brandon@jangler.info>
 pkgname=schismtracker-git
 pkgver=r2438.55398fa
-pkgrel=2
+pkgrel=3
 pkgdesc='A reimplementation of the Impulse Tracker music editor.'
 arch=('i686' 'x86_64' 'armv7h')  # and probably other ARMs
 url='http://schismtracker.org/'
 license=('GPL')
 depends=('sdl' 'gcc-libs' 'libxv')
-makedepends=('git')
+makedepends=('git', 'python')
 provides=('schismtracker' 'schismtracker-hg' 'schismtracker-cvs')
 conflicts=('schismtracker' 'schismtracker-hg' 'schismtracker-cvs')
 source=("$pkgname::git+https://github.com/schismtracker/schismtracker.git")
