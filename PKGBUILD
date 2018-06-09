@@ -1,10 +1,10 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=lariza-git
-pkgver=16.06.1.g82f095c
+pkgver=18.03.2.g504162f
 pkgrel=1
 pkgdesc="Simple WebKit2GTK+ Browser"
 arch=('i686' 'x86_64')
-url="https://github.com/vain/lariza"
+url="https://uninformativ.de/git/lariza"
 license=('MIT')
 depends=('webkit2gtk')
 makedepends=('git')
@@ -12,7 +12,7 @@ optdepends=('tabbed: for grouping multiple web views into one window')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=lariza.install
-source=('git://github.com/vain/lariza.git')
+source=('git+https://uninformativ.de/git/lariza.git')
 md5sums=('SKIP')
 
 pkgver() {
