@@ -25,4 +25,3 @@ post_remove() {
   rm -f boot/initramfs-%PKGBASE%.img
   rm -f boot/initramfs-%PKGBASE%-fallback.img
 }
-
