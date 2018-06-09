@@ -1,0 +1,215 @@
+From 0a2aaee61cfc2888bc71f54ac5b165d248cbf5e8 Mon Sep 17 00:00:00 2001
+From: Simon Hausmann <simon.hausmann@qt.io>
+Date: Fri, 11 May 2018 15:39:04 +0200
+Subject: [PATCH] Fix .import within .js files with CONFIG+=qtquickcompiler
+
+When loading a .js file without QQC, we scan the sources and use the
+ScriptDirectivesCollector to extract things like .pragma library or
+.import ahead of time. That information is passed on to the compilation
+unit generator for serialization. When compiling .js files ahead of
+time, we also used the same collector, but we forgot to save the data
+into the right location before serialization, so we essentially lost the
+imports. This patch fixes that by centralizing this code into the
+ScriptDirectivesCollector itself.
+
+[ChangeLog][QtQml] Fix regression with .import in .js files not working
+when using CONFIG+=qtquickcompiler.
+
+Change-Id: I5413c14b1b8bd3114a997011534fe55cdb7634aa
+Reviewed-by: Lars Knoll <lars.knoll@qt.io>
+---
+ src/qml/compiler/qqmlirbuilder.cpp             | 14 +++++++-------
+ src/qml/compiler/qqmlirbuilder_p.h             | 10 +++++-----
+ src/qml/qml/qqmltypeloader.cpp                 |  5 +----
+ tests/auto/qml/qmlcachegen/jsimport.qml        |  6 ++++++
+ tests/auto/qml/qmlcachegen/library.js          |  4 ++++
+ tests/auto/qml/qmlcachegen/qmlcachegen.pro     |  2 ++
+ tests/auto/qml/qmlcachegen/script.js           |  6 ++++++
+ tests/auto/qml/qmlcachegen/tst_qmlcachegen.cpp | 11 +++++++++++
+ tools/qmlcachegen/qmlcachegen.cpp              |  2 +-
+ 9 files changed, 43 insertions(+), 17 deletions(-)
+ create mode 100644 tests/auto/qml/qmlcachegen/jsimport.qml
+ create mode 100644 tests/auto/qml/qmlcachegen/library.js
+ create mode 100644 tests/auto/qml/qmlcachegen/script.js
+
+diff --git a/src/qml/compiler/qqmlirbuilder.cpp b/src/qml/compiler/qqmlirbuilder.cpp
+index 4a1b27d7a..1b07fda1f 100644
+--- a/src/qml/compiler/qqmlirbuilder.cpp
++++ b/src/qml/compiler/qqmlirbuilder.cpp
+@@ -322,16 +322,16 @@ Document::Document(bool debugMode)
+ {
+ }
+ 
+-ScriptDirectivesCollector::ScriptDirectivesCollector(QQmlJS::Engine *engine, QV4::Compiler::JSUnitGenerator *unitGenerator)
+-    : engine(engine)
+-    , jsGenerator(unitGenerator)
+-    , hasPragmaLibrary(false)
++ScriptDirectivesCollector::ScriptDirectivesCollector(Document *doc)
++    : document(doc)
++    , engine(&doc->jsParserEngine)
++    , jsGenerator(&doc->jsGenerator)
+ {
+ }
+ 
+ void ScriptDirectivesCollector::pragmaLibrary()
+ {
+-    hasPragmaLibrary = true;
++    document->jsModule.unitFlags |= QV4::CompiledData::Unit::IsSharedLibrary;
+ }
+ 
+ void ScriptDirectivesCollector::importFile(const QString &jsfile, const QString &module, int lineNumber, int column)
+@@ -342,7 +342,7 @@ void ScriptDirectivesCollector::importFile(const QString &jsfile, const QString
+     import->qualifierIndex = jsGenerator->registerString(module);
+     import->location.line = lineNumber;
+     import->location.column = column;
+-    imports << import;
++    document->imports << import;
+ }
+ 
+ void ScriptDirectivesCollector::importModule(const QString &uri, const QString &version, const QString &module, int lineNumber, int column)
+@@ -358,7 +358,7 @@ void ScriptDirectivesCollector::importModule(const QString &uri, const QString &
+     import->qualifierIndex = jsGenerator->registerString(module);
+     import->location.line = lineNumber;
+     import->location.column = column;
+-    imports << import;
++    document->imports << import;
+ }
+ 
+ IRBuilder::IRBuilder(const QSet<QString> &illegalNames)
+diff --git a/src/qml/compiler/qqmlirbuilder_p.h b/src/qml/compiler/qqmlirbuilder_p.h
+index c2cf18e3c..689b232b1 100644
+--- a/src/qml/compiler/qqmlirbuilder_p.h
++++ b/src/qml/compiler/qqmlirbuilder_p.h
+@@ -462,14 +462,14 @@ struct Q_QML_PRIVATE_EXPORT Document
+     static void removeScriptPragmas(QString &script);
+ };
+ 
+-struct Q_QML_PRIVATE_EXPORT ScriptDirectivesCollector : public QQmlJS::Directives
++class Q_QML_PRIVATE_EXPORT ScriptDirectivesCollector : public QQmlJS::Directives
+ {
+-    ScriptDirectivesCollector(QQmlJS::Engine *engine, QV4::Compiler::JSUnitGenerator *unitGenerator);
+-
++    QmlIR::Document *document;
+     QQmlJS::Engine *engine;
+     QV4::Compiler::JSUnitGenerator *jsGenerator;
+-    QList<const QV4::CompiledData::Import *> imports;
+-    bool hasPragmaLibrary;
++
++public:
++    ScriptDirectivesCollector(QmlIR::Document *doc);
+ 
+     void pragmaLibrary() override;
+     void importFile(const QString &jsfile, const QString &module, int lineNumber, int column) override;
+diff --git a/src/qml/qml/qqmltypeloader.cpp b/src/qml/qml/qqmltypeloader.cpp
+index 9856a0be8..d7bd88235 100644
+--- a/src/qml/qml/qqmltypeloader.cpp
++++ b/src/qml/qml/qqmltypeloader.cpp
+@@ -3021,7 +3021,7 @@ void QQmlScriptBlob::dataReceived(const SourceCodeData &data)
+         return;
+     }
+ 
+-    QmlIR::ScriptDirectivesCollector collector(&irUnit.jsParserEngine, &irUnit.jsGenerator);
++    QmlIR::ScriptDirectivesCollector collector(&irUnit);
+ 
+     QList<QQmlError> errors;
+     QQmlRefPointer<QV4::CompiledData::CompilationUnit> unit = QV4::Script::precompile(
+@@ -3037,9 +3037,6 @@ void QQmlScriptBlob::dataReceived(const SourceCodeData &data)
+         unit.adopt(new QV4::CompiledData::CompilationUnit);
+     }
+     irUnit.javaScriptCompilationUnit = unit;
+-    irUnit.imports = collector.imports;
+-    if (collector.hasPragmaLibrary)
+-        irUnit.jsModule.unitFlags |= QV4::CompiledData::Unit::IsSharedLibrary;
+ 
+     QmlIR::QmlUnitGenerator qmlGenerator;
+     QV4::CompiledData::Unit *unitData = qmlGenerator.generate(irUnit);
+diff --git a/tests/auto/qml/qmlcachegen/jsimport.qml b/tests/auto/qml/qmlcachegen/jsimport.qml
+new file mode 100644
+index 000000000..9c40878e6
+--- /dev/null
++++ b/tests/auto/qml/qmlcachegen/jsimport.qml
+@@ -0,0 +1,6 @@
++import QtQml 2.0
++import "script.js" as Script
++
++QtObject {
++    property int value: Script.getter()
++}
+diff --git a/tests/auto/qml/qmlcachegen/library.js b/tests/auto/qml/qmlcachegen/library.js
+new file mode 100644
+index 000000000..51fb41dc2
+--- /dev/null
++++ b/tests/auto/qml/qmlcachegen/library.js
+@@ -0,0 +1,4 @@
++
++function getter() {
++    return 42;
++}
+diff --git a/tests/auto/qml/qmlcachegen/qmlcachegen.pro b/tests/auto/qml/qmlcachegen/qmlcachegen.pro
+index a2f963e8c..f62b95084 100644
+--- a/tests/auto/qml/qmlcachegen/qmlcachegen.pro
++++ b/tests/auto/qml/qmlcachegen/qmlcachegen.pro
+@@ -12,4 +12,6 @@ RESOURCES += versionchecks.qml
+ 
+ RESOURCES += trickypaths.qrc
+ 
++RESOURCES += jsimport.qml script.js library.js
++
+ QT += core-private qml-private testlib
+diff --git a/tests/auto/qml/qmlcachegen/script.js b/tests/auto/qml/qmlcachegen/script.js
+new file mode 100644
+index 000000000..fa55f9069
+--- /dev/null
++++ b/tests/auto/qml/qmlcachegen/script.js
+@@ -0,0 +1,6 @@
++
++.import "library.js" as Library
++
++function getter() {
++    return Library.getter()
++}
+diff --git a/tests/auto/qml/qmlcachegen/tst_qmlcachegen.cpp b/tests/auto/qml/qmlcachegen/tst_qmlcachegen.cpp
+index 5c1692f08..c95a5a5d2 100644
+--- a/tests/auto/qml/qmlcachegen/tst_qmlcachegen.cpp
++++ b/tests/auto/qml/qmlcachegen/tst_qmlcachegen.cpp
+@@ -54,6 +54,8 @@ private slots:
+     void workerScripts();
+ 
+     void trickyPaths();
++
++    void scriptImport();
+ };
+ 
+ // A wrapper around QQmlComponent to ensure the temporary reference counts
+@@ -416,6 +418,15 @@ void tst_qmlcachegen::trickyPaths()
+     QCOMPARE(obj->property("success").toInt(), 42);
+ }
+ 
++void tst_qmlcachegen::scriptImport()
++{
++    QQmlEngine engine;
++    CleanlyLoadingComponent component(&engine, QUrl("qrc:///jsimport.qml"));
++    QScopedPointer<QObject> obj(component.create());
++    QVERIFY(!obj.isNull());
++    QTRY_COMPARE(obj->property("value").toInt(), 42);
++}
++
+ QTEST_GUILESS_MAIN(tst_qmlcachegen)
+ 
+ #include "tst_qmlcachegen.moc"
+diff --git a/tools/qmlcachegen/qmlcachegen.cpp b/tools/qmlcachegen/qmlcachegen.cpp
+index 9c97ef769..adc9def59 100644
+--- a/tools/qmlcachegen/qmlcachegen.cpp
++++ b/tools/qmlcachegen/qmlcachegen.cpp
+@@ -261,7 +261,7 @@ static bool compileJSFile(const QString &inputFileName, const QString &inputFile
+     }
+ 
+     QQmlJS::Engine *engine = &irDocument.jsParserEngine;
+-    QmlIR::ScriptDirectivesCollector directivesCollector(engine, &irDocument.jsGenerator);
++    QmlIR::ScriptDirectivesCollector directivesCollector(&irDocument);
+     QQmlJS::Directives *oldDirs = engine->directives();
+     engine->setDirectives(&directivesCollector);
+ 
+-- 
+2.17.1
+

@@ -93,11 +93,11 @@ if $_testing; then
   _dev_suffix="beta2"
   pkgrel=4
 else
-  _pkgvermajmin="5.10"
+  _pkgvermajmin="5.11"
   _pkgverpatch=".0"
   # {alpha/beta/beta2/rc}
   _dev_suffix=""
-  pkgrel=4
+  pkgrel=5
 fi
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
@@ -300,7 +300,7 @@ _core_configure_options=" \
 if $_testing; then
   _tar_xz_sha256="9482538af151454f79def3df1f4f76fc9475372b96cc9ca8515d7b2112a7d8cf"
 else
-  _tar_xz_sha256="936d4cf5d577298f4f9fdb220e85b008ae321554a5fcd38072dc327a7296230e"
+  _tar_xz_sha256="67ddb8bf33bbfd19ebc641467ccce2e57fd0b80c6082457f1f5a76e8df83c865"
 fi
 
 if ! $_build_from_head; then
@@ -382,7 +382,8 @@ if $_uber_minimal; then
   cat $_tmp_qtpro >> $_qtpro
 fi
 
-  cd ${_srcdir}
+  cd ${_srcdir}/qtdeclarative
+  patch -p1 < ${startdir}/0001-Fix-.import-within-.js-files-with-CONFIG-qtquickcomp.patch
 
   # enable reduce relocations
   sed -i '/error Symbolic function binding/d' ${_srcdir}/qtbase/configure.json
