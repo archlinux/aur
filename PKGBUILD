@@ -1,40 +1,42 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Maintainer: Davide Depau <davide@depau.eu>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 
-pkgname=ofono
-pkgver=1.21
+pkgname=ofono-git
+pkgver=1.23.r52.g665e9c9a
 pkgrel=1
 pkgdesc="Infrastructure for building mobile telephony (GSM/UMTS) applications"
 url="https://01.org/ofono"
 arch=("x86_64")
 license=("GPL2")
-depends=("bluez" "dbus" "modemmanager" "glib2" "udev" "mobile-broadband-provider-info")
-source=(
-	"https://www.kernel.org/pub/linux/network/$pkgname/$pkgname-$pkgver.tar.xz"
-	"https://www.kernel.org/pub/linux/network/$pkgname/$pkgname-$pkgver.tar.sign"
-)
-sha256sums=(
-	"a6b021cda0b444b772897cd637d5f455857fb5819b62c279a8302b44f9c7f2c3"
-	"SKIP"
-)
-validpgpkeys=(
-	"E932D120BC2AEC444E558F0106CA9F5D1DCF2659"  # Marcel Holtmann <marcel@holtmann.org>
-)
+provides=("ofono")
+conflicts=("ofono")
+depends=("bluez" "dbus" "glib2" "udev" "mobile-broadband-provider-info")
+source=("$pkgname::git+https://git.kernel.org/pub/scm/network/ofono/ofono.git")
+sha256sums=("SKIP")
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
+	./bootstrap
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
+		--localstatedir=/var \
 		--sbindir=/usr/bin \
-		--disable-bluez4
-
+		--mandir=/usr/share/man \
+		--disable-bluez4 \
+		--enable-tools \
+		--enable-dundee
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir" install
-	install -Dm644 "$srcdir/$pkgname-$pkgver/src/ofono.conf" "$pkgdir/etc/dbus-1/system.d/ofono.conf"
-	install -Dm644 "$srcdir/$pkgname-$pkgver/src/ofono.service" "$pkgdir/usr/lib/systemd/system/ofono.service"
+	install -Dm644 "$srcdir/$pkgname/src/ofono.conf" "$pkgdir/etc/dbus-1/system.d/ofono.conf"
+	install -Dm644 "$srcdir/$pkgname/src/ofono.service" "$pkgdir/usr/lib/systemd/system/ofono.service"
 }
