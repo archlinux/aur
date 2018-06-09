@@ -1,7 +1,7 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=openmvs-git
-pkgver=0.7.r22.g939033c
-pkgrel=2
+pkgver=0.7.r47.g063e5cd
+pkgrel=1
 pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic set of tools"
 arch=('i686' 'x86_64')
 url="http://cdcseacave.github.io/openMVS"
@@ -14,10 +14,11 @@ optdepends=('nvidia-utils: GPU optimized mesh reconstruction code'
 options=()
 source=("${pkgname}::git+https://github.com/cdcseacave/openMVS.git"
         "vcglib::git+https://github.com/cdcseacave/VCG.git"
+        "cgal.patch"
         )
 md5sums=('SKIP'
          'SKIP'
-         )
+         'efe41a13e9dc7f6ea0e1296e2cae7d34')
 
 pkgver() {
   cd "$pkgname"
@@ -26,10 +27,10 @@ pkgver() {
 
 }
 
-#prepare() {
-#  cd ${srcdir}/${pkgname}
-#  git apply  ${srcdir}/...
-#}
+prepare() {
+  cd ${srcdir}/${pkgname}
+  git apply -v  ${srcdir}/cgal.patch
+}
 
 
 build() {
