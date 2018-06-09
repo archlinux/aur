@@ -1,0 +1,27 @@
+pkgbase = corez-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 0.12.1
+	pkgrel = 3
+	url = http://corez.site/
+	install = corez-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = corez
+	source = corez-qt::git+http://github.com/corezcrypto/corez.git
+	source = corez-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 09b0e17970b210dab6fcc4389ac0454a6310f85e45710af06ddbfebb923881f3
+
+pkgname = corez-qt
+
