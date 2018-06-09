@@ -7,7 +7,7 @@
 _srcname=X-Crawl
 pkgname=xcrawl-tiles
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Dungeon Crawl Stone Soup Fork developed through a democratic process with graphical tiles and sound support"
 arch=('i686' 'x86_64')
@@ -46,7 +46,7 @@ build() {
 		bin_prefix=bin \
 		DATADIR=share/xcrawl \
 		DESTDIR=$pkgdir \
-		SAVEDIR='~/.crawl' \
+		SAVEDIR='~/.xcrawl' \
 		LUA_PACKAGE=lua51 \
 		TILES=y \
 		SOUND=y
@@ -74,7 +74,7 @@ package() {
 		bin_prefix=bin \
 		DATADIR=share/xcrawl \
 		DESTDIR=$pkgdir \
-		SAVEDIR='~/.crawl' \
+		SAVEDIR='~/.xcrawl' \
 		LUA_PACKAGE=lua51 \
 		TILES=y \
 		SOUND=y
