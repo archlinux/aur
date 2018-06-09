@@ -1,0 +1,27 @@
+pkgbase = galactrum-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://www.galactrum.org/
+	install = galactrum-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = galactrum
+	source = galactrum-qt::git+http://github.com/galactrum/galactrum.git
+	source = galactrum-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 3f76c3fed096afc884bdeefdce0882103c968de3ad235c720e3012aa9ab0d4e4
+
+pkgname = galactrum-qt
+
