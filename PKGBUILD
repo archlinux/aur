@@ -6,7 +6,7 @@
 pkgname=lib32-libmpeg2
 _pkgname=libmpeg2
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for decoding MPEG-1 and MPEG-2 video streams, lib32."
 arch=('x86_64')
 url="http://libmpeg2.sourceforge.net/"
@@ -18,9 +18,8 @@ source=("http://libmpeg2.sourceforge.net/files/${_pkgname}-${pkgver}.tar.gz"
         "libmpeg2-0.5.1-gcc4.6.patch")
 license=('GPL2')
 options=(!libtool)
-
-md5sums=('0f92c7454e58379b4a5a378485bbd8ef'
-         '8b36660297e6ffde6aa9733136bff405')
+sha512sums=('3648a2b3d7e2056d5adb328acd2fb983a1fa9a05ccb6f9388cc686c819445421811f42e8439418a0491a13080977f074a0d8bf8fa6bc101ff245ddea65a46fbc'
+            '5eef5e283f0f4e8901a1aa1c16e9a2d1e5896a7a09dd5ae107379ec27001f7cd22db62ab731328f2c5e11089e6a8371ced2def4fa8a5a834072ca1e4a4e2ca5d')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
