@@ -1,13 +1,13 @@
 # Maintainer: Brayden Banks <bb010g@gmail.com>
 pkgname=vf-1-git
-pkgver=r111.453c78b
+pkgver=r168.507ebcf
 pkgrel=1
 pkgdesc="Command line gopher client. High speed, low drag. (Git version)"
 arch=('any')
 url="https://github.com/solderpunk/VF-1"
 license=('BSD')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('vf-1::git+https://github.com/solderpunk/VF-1.git')

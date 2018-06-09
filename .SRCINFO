@@ -1,11 +1,12 @@
 pkgbase = vf-1-git
 	pkgdesc = Command line gopher client. High speed, low drag. (Git version)
-	pkgver = r111.453c78b
+	pkgver = r168.507ebcf
 	pkgrel = 1
 	url = https://github.com/solderpunk/VF-1
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	provides = vf-1
 	conflicts = vf-1
