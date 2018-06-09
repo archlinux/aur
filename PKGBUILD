@@ -2,9 +2,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-340xx-ck
-pkgver=340.107
+pkgver=340.106
 _extramodules=extramodules-4.16-ck
-pkgrel=1
+pkgrel=15
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -18,7 +18,7 @@ options=(!strip)
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
 'kernel-4.11.patch'
 )
-sha256sums=('6dc6f183c69c414670d8adef0286a2362eedd6e16ec6dfae811e48ea4a4505dc'
+sha256sums=('c0d5dacd7be6c096400b9a5fd54676af36210ab480f2498335a612cfd1814467'
             '5ba7e6d5e502882c3534d1d8578f7fd29fdf3d2aeb49206efa7b3514a7e3e821')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
