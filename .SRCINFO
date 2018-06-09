@@ -1,0 +1,15 @@
+pkgbase = docbook-xsl-ns
+	pkgdesc = The recommended namespaced XML stylesheets for Docbook5 transformations
+	pkgver = 1.79.2
+	pkgrel = 1
+	url = http://docbook.org/
+	install = docbook-xsl-ns.install
+	arch = any
+	license = custom
+	depends = libxml2
+	depends = libxslt
+	depends = sed
+	source = https://github.com/docbook/xslt10-stylesheets/releases/download/release%2F1.79.2/docbook-xsl-1.79.2.tar.gz
+
+pkgname = docbook-xsl-ns
+
