@@ -19,10 +19,13 @@ sha256sums=('966188d7c05fc76eaca115a55893e643dd01a3486f6368733c9ad974fcee7a26')
 md5sums=('3eb1152abf2ab3ae01188ccf81e9a252')
 
 package() {
-  cd $pkgname-$pkgver
+  cd docbook-xsl-$pkgver
 
   _pkgroot="$pkgdir"/usr/share/xml/docbook/xsl-ns-stylesheets-$pkgver
 
+  echo "================================"
+  echo ${_pkgroot}
+  echo "================================"
   install -dm755 ${_pkgroot}
   install -m644 VERSION VERSION.xsl ${_pkgroot}
 
