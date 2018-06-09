@@ -2,13 +2,13 @@
 
 pkgname=run_scaled-git
 _gitdir=run_scaled
-pkgver=r16.855a4a8
+pkgver=r18.fa71b3c
 pkgrel=1
 pkgdesc='Run an X application scaled via xpra. Useful on hidpi screens'
 arch=('any')
 url='https://github.com/kaueraal/run_scaled.git'
 license=('BSD')
-depends=('xpra-winswitch-svn' 'xorg-xrandr' 'xorg-server-xvfb' 'bc')
+depends=('xpra' 'xorg-xrandr' 'xorg-server-xvfb' 'bc')
 source=("${_gitdir}::git://github.com/kaueraal/run_scaled.git")
 md5sums=(SKIP)
 
