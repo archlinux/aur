@@ -8,7 +8,6 @@ pkgbase = gnome-shell-extension-desktop-icons
 	license = GPL3
 	makedepends = git
 	depends = gnome-shell
-	depends = gnome-shell-extensions
 	options = !strip
 	source = git+https://gitlab.gnome.org/csoriano/org.gnome.desktop-icons.git
 	md5sums = SKIP
