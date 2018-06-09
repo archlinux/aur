@@ -7,7 +7,7 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=swi-prolog-devel
-pkgver=7.7.14
+pkgver=7.7.15
 pkgrel=1
 pkgdesc='Prolog environment (development version)'
 arch=('x86_64' 'i686')
@@ -24,7 +24,7 @@ optdepends=('unixodbc: for using the odbc4pl library'
             'java-environment: for interfacing java with the jpl package')
 #options=('!makeflags')
 source=("http://swi-prolog.org/download/devel/src/swipl-${pkgver}.tar.gz")
-sha256sums=('91ac11bad692261b567e409f485cb19fa061a0c4175ec18e1c09ef88c05cf7ab')
+sha256sums=('ca23f4fd7346c90ba493465a870d9490cb396d085791e1f999974ceb4ac33255')
 conflicts=('swi-prolog')
 provides=('swi-prolog')
 
