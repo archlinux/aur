@@ -5,7 +5,7 @@
 
 _pkgname=elasticsearch
 pkgname=elasticsearch5
-pkgver=5.6.7
+pkgver=5.6.9
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-sha256sums=('2db375e628934c4dda84438efcc3c09894f716e87e64a498c9a0110e2834f035'
+sha256sums=('64b9486d5bdeb6f85d09fdc30aa2d0e1ce7fb8f253084a8d7cb15652494da96a'
             'f228b588345780cfc84c229dd92722e024c0da155976afc96fc5e5970428a9e4'
             '4dc14262b67399f741c303cce7d18f9d3d220285778a2deb50fb0640161179c7'
             'b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c'
