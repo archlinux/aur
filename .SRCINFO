@@ -1,0 +1,29 @@
+pkgbase = denemo-git
+	pkgdesc = A music score editor
+	pkgver = r10476
+	pkgrel = 1
+	url = http://www.denemo.org
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = git
+	makedepends = rubberband
+	depends = aubio
+	depends = lilypond
+	depends = gtk3
+	depends = libxml2
+	depends = fftw
+	depends = librsvg
+	depends = fluidsynth
+	depends = libsmf
+	depends = evince
+	depends = gtksourceview3
+	depends = portmidi
+	depends = guile2.0
+	provides = denemo
+	conflicts = denemo
+	source = git://git.savannah.gnu.org/denemo.git
+	md5sums = SKIP
+
+pkgname = denemo-git
+
