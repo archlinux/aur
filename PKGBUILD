@@ -214,7 +214,7 @@ optdepends=('qtcreator: Integrated Raspberry Pi IDE development')
 makedepends=("git" "pkgconfig" "gcc" "gperf" "python")
 #_provider=http://qt.mirror.constant.com/
 _provider=https://download.qt.io
-_tmpfs_dir=/vortex
+_tmpfs_dir=/vortex/build
 
 _arch_specific_configure_options="\
     -prefix /usr \
