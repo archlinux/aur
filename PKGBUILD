@@ -2,17 +2,17 @@
 # Contributor: Army
 _pkgname=rtspeccy
 pkgname=$_pkgname-git
-pkgver=15.03
+pkgver=15.09.3.g831b1cd
 pkgrel=1
 pkgdesc="Real time spectrum analyzer (audio)"
 arch=('i686' 'x86_64')
-url="http://www.uninformativ.de/projects/?q=rtspeccy"
+url="https://uninformativ.de/git/rtspeccy"
 license=('GPL3')
 depends=('glut' 'alsa-lib' 'fftw' 'mesa')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(git://github.com/vain/rtspeccy.git)
+source=(git+https://uninformativ.de/git/rtspeccy.git)
 md5sums=('SKIP')
 
 pkgver() {
