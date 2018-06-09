@@ -1,7 +1,7 @@
 pkgbase = brother-ql700
 	pkgdesc = LPR and CUPS driver for Brother QL-700 label printer
 	pkgver = 1.1.4r0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://solutions.brother.com/linux/en_us/
 	install = brother-ql700.install
 	arch = i686

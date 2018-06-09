@@ -3,7 +3,7 @@
 
 pkgname='brother-ql700'
 pkgver=1.1.4r0
-pkgrel=1
+pkgrel=2
 pkgdesc='LPR and CUPS driver for Brother QL-700 label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -57,6 +57,11 @@ prepare()
 
   #  /etc/printcap is managed by cups
   rm `find $srcdir -type f -name 'setupPrintcap*'`
+
+  # /usr/lib/cups/filter/brother_lpdwrapper_ql700 should be an absolute symlink
+  rm $srcdir/usr/lib/cups/filter/brother_lpdwrapper_ql700
+  ln -s /opt/brother/PTouch/ql700/cupswrapper/brother_lpdwrapper_ql700  \
+        $srcdir/usr/lib/cups/filter/brother_lpdwrapper_ql700
 }
 
 package() {
