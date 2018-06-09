@@ -12,24 +12,25 @@ source=("$pkgname-$pkgver.zip::https://drive.google.com/uc?export=download&id=1e
 md5sums=('c90cc630d9e5bdf70912f8cd754cc2cc')
 
 prepare() {
-  # patch location of help files to match Arch standards
-  patch -p1 -i '../01-hp15c-arch-docs.patch'
+    # patch location of help files to match Arch standards
+    patch -p1 -i '../01-hp15c-arch-docs.patch'
 }
 
 package() {
 
-  # docs
-  mkdir -p "$pkgdir/usr/share/doc/"
-  cp -r doc "$pkgdir/usr/share/doc/$pkgname"
-  cp "Read Me & Release Notes.html" "$pkgdir/usr/share/doc/$pkgname/README.html"
+    # docs
+    mkdir -p "$pkgdir/usr/share/doc/"
+    cp -r doc "$pkgdir/usr/share/doc/$pkgname"
+    cp "Read Me & Release Notes.html" "$pkgdir/usr/share/doc/$pkgname/README.html"
 
-  # dependencies of script
-  mkdir -p "$pkgdir/usr/lib/$pkgname/"
-  cp -r css icons lib msgs -t "$pkgdir/usr/lib/$pkgname/"
-  install -Dm644 HP-15C_Simulator_Font.ttf -t "$pkgdir/usr/share/fonts/"
+    # dependencies of script
+    mkdir -p "$pkgdir/usr/lib/$pkgname/"
+    cp -r css icons lib msgs -t "$pkgdir/usr/lib/$pkgname/"
+    install -Dm644 HP-15C_Simulator_Font.ttf -t "$pkgdir/usr/share/fonts/"
 
-  # runs script in proper directory
-  cp HP-15C.tcl -t "$pkgdir/usr/lib/$pkgname/"
-  install -D ../hp15c_runner.sh "$pkgdir/usr/bin/hp15c"
+    # runs script in proper directory
+    cp HP-15C.tcl -t "$pkgdir/usr/lib/$pkgname/"
+    install -D ../hp15c_runner.sh "$pkgdir/usr/bin/hp15c"
 }
-# vim:set ts=2 sw=2 ft=sh et:
+
+# vim:set ts=4 sw=4 ft=sh et:
