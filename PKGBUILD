@@ -1,11 +1,11 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=sgopherd
 pkgname=$_pkgname-git
-pkgver=17.02.1.g5f96939
+pkgver=18.05.3.gfbaa246
 pkgrel=1
 pkgdesc="A gopher server written in Bash"
 arch=('any')
-url="https://github.com/vain/sgopherd"
+url="https://uninformativ.de/git/sgopherd"
 license=('MIT')
 depends=('bash')
 makedepends=('git')
@@ -14,7 +14,7 @@ optdepends=('xinetd: Traditional way to run sgopherd'
             'systemd: sgopherd also works with socket activation')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(git://github.com/vain/sgopherd.git)
+source=(git+https://uninformativ.de/git/sgopherd.git)
 md5sums=('SKIP')
 
 pkgver() {
