@@ -1,0 +1,16 @@
+pkgbase = lms7002m-driver-git
+	pkgdesc = A portable driver for the LMS7002M dual transceiver
+	pkgver = r241.90cd852
+	pkgrel = 1
+	url = https://github.com/myriadrf/LMS7002M-driver
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	provides = lms7002m-driver
+	conflicts = lms7002m-driver
+	source = git+https://github.com/myriadrf/LMS7002M-driver
+	md5sums = SKIP
+
+pkgname = lms7002m-driver-git
+
