@@ -1,0 +1,27 @@
+pkgbase = btcmonster-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://bitcoinmonster.org/
+	install = btcmonster-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = btcmonster
+	source = btcmonster-qt::git+http://github.com/Bitcoin-Monster/BTCMonster.git
+	source = btcmonster-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 9b6a422f000b3f8963e64317c06deb4d704b375b4a13b8e8c67f3d88503dd744
+
+pkgname = btcmonster-qt
+

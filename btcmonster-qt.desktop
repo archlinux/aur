@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=BTCMonster
+Comment=BTCMonster P2P Cryptocurrency
+Exec=/usr/bin/btcmonster-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/bitcoinmonster128.png
+MimeType=x-scheme-handler/btcmonster;
+Categories=Office;
+Name[en_US]=btcmonster-qt.desktop
