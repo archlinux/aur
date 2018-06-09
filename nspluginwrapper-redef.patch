@@ -1,0 +1,13 @@
+--- nspluginwrapper-nspluginwrapper-1.4.4/lsb-build/headers/sys/time.h.orig	2018-06-09 11:22:38.912598873 +0000
++++ nspluginwrapper-nspluginwrapper-1.4.4/lsb-build/headers/sys/time.h	2018-06-09 11:22:48.142598699 +0000
+@@ -30,10 +30,6 @@
+ 
+ 
+ 
+-    struct timespec {
+-	time_t tv_sec;
+-	long int tv_nsec;
+-    };
+ 
+ 
+ 

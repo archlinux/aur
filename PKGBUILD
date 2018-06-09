@@ -1,7 +1,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 pkgname=nspluginwrapper
 pkgver=1.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform NPAPI compatible plugin viewer"
 arch=('x86_64')
 url="http://nspluginwrapper.davidben.net/"
@@ -10,16 +10,22 @@ depends=('curl' 'libxt' 'gcc-libs' 'gtk2')
 depends_x86_64=('lib32-libxt' 'lib32-gcc-libs' 'lib32-gtk2')
 makedepends_x86_64=('gcc-multilib')
 install="install"
-source=(http://nspluginwrapper.davidben.net/download/$pkgname-$pkgver.tar.gz
-        'fix_missing_lib.patch')
-md5sums=('36f3e290fc4ce56f65ee695078961188'
-         '00ca2d1ab0d7348e3157cb7b72f30e1a')
+#source=(http://nspluginwrapper.davidben.net/download/$pkgname-$pkgver.tar.gz
+source=("https://github.com/davidben/nspluginwrapper/archive/nspluginwrapper-$pkgver.tar.gz"
+        'fix_missing_lib.patch' nspluginwrapper-redef.patch)
+md5sums=('f00fbc0cea8c962dfc0de2f11e2ab548'
+         '00ca2d1ab0d7348e3157cb7b72f30e1a'
+         'd42696fb591d278b1b56002e547f7740')
 
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
+prepare() {
+  cd $pkgname-$pkgname-$pkgver
 
   patch -p1 -i "$srcdir/fix_missing_lib.patch"
+  patch -p1 -i ../nspluginwrapper-redef.patch # Fix redefinitions
+}
 
+build() {
+  cd $pkgname-$pkgname-$pkgver
   configure_args=""
   if [[ $CARCH == x86_64 ]]; then
     configure_args="$configure_args --with-lib32=lib32 --with-lib64=lib"
@@ -30,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgname-$pkgver
 
   make -j1 DESTDIR="$pkgdir/" install
 }
