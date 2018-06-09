@@ -1,16 +1,16 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 pkgname=vim-dein-git
 _gitname=dein.vim
-pkgver=0.0.r363.gcf88cb0
-pkgrel=2
+pkgver=1.5.r34.g0341197
+pkgrel=1
 pkgdesc="dark powered Vim/Neovim plugin manager"
 arch=('any')
 url="https://github.com/Shougo/dein.vim"
 license=('MIT')
 depends=()
 optdepends=(
-  'neovim:  use in nvim'
-  'vim>=7.4: use in vim'
+  'neovim: use in nvim'
+  'vim: use in vim'
 )
 makedepends=('git')
 install=vim-dein-git.install
