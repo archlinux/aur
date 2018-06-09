@@ -1,6 +1,6 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=paxchange
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A tool to synchronize installed packages across multiple machines"
 arch=('i686' 'x86_64')
@@ -44,11 +44,6 @@ package() {
   install -D -m644 gui/application-x-${pkgname}-database.xml "$pkgdir/usr/share/mime/packages/application-x-${pkgname}-database.xml"
   install -D -m644 gui/icons/$pkgname.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -D -m644 gui/$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-  # pacman plugin
-  install -D -m644 plugins/pacman/${pkgname}_install.hook "$pkgdir/usr/share/libalpm/hooks/${pkgname}_install.hook"
-  install -D -m644 plugins/pacman/${pkgname}_remove.hook "$pkgdir/usr/share/libalpm/hooks/${pkgname}_remove.hook"
-  install -D -m755 plugins/pacman/${pkgname}.sh "$pkgdir/usr/share/libalpm/scripts/${pkgname}.sh"
 
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
