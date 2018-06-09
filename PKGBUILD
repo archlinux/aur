@@ -3,7 +3,7 @@
 # Also swiped some code from 0X1A and Schala's mingw-w64-libyaml
 pkgname=mingw-w64-libyaml
 pkgver=0.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="YAML 1.1 library (mingw-w64)"
 arch=('any')
 url="http://pyyaml.org/wiki/LibYAML"
@@ -32,8 +32,9 @@ package() {
     make DESTDIR="${pkgdir}" install
     rm -rf "$pkgdir"/usr/${_arch}/share/man
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
-    find "$pkgdir" -name '*.exe' -delete
-    find "$pkgdir" -name '*.dll' -delete
-    find "$pkgdir" -name '*.h' -delete
+    #${_arch}-strip -g "$pkgdir"/usr/${_arch}/bin/*.dll
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -delete
+    cd "${srcdir}/yaml-$pkgver"
+    install -m644 -D LICENSE "${pkgdir}/usr/${_arch}/share/licenses/${pkgname}/LICENSE"
   done
 }
