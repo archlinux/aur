@@ -1,7 +1,7 @@
 pkgbase = ffmpegfs
 	pkgdesc = FUSE-based transcoding filesystem from many formats to MP3 or MP4 including video transcoding
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nschlia.github.io/ffmpegfs/
 	arch = x86_64
 	arch = i686
@@ -14,10 +14,8 @@ pkgbase = ffmpegfs
 	depends = fuse
 	depends = ffmpeg
 	depends = sqlite3
-	optdepends = libdvdnav: Detect IFO files and list separate DVD chapters or programs as separate files. Also needs libdvdread.
-	optdepends = libdvdread: Detect IFO files and list separate DVD chapters or programs as separate files. Also needs libdvdnav.
-	optdepends = libvcd: Detect Video CDs in directories and list chapters as separate files.
-	optdepends = libbluray: To detect bluray files in directories and list separate chapters and titles as separate files.
+	depends = libdvdnav
+	depends = libbluray
 	source = https://github.com/nschlia/ffmpegfs/files/2085890/ffmpegfs-1.5.tar.gz
 	sha384sums = e06dfe6e841b153e50ab10ceecf23dba1c21738ebbfba6585dd73e3b42f6f8d06171874aa811e63671eb1c533e0327ab
 
