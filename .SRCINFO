@@ -1,0 +1,23 @@
+pkgbase = python-myougiden
+	pkgdesc = A command-line, Japanese/English English/Japanese dictionary
+	pkgver = 0.8.8
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/myougiden
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python>=3.0
+	depends = python-romkan
+	depends = python-termcolor
+	optdepends = python-argparse: for Python ≤ 3.1
+	optdepends = python-psutil: for Python ≤ 3.2
+	optdepends = rsync: recommended
+	provides = python-myougiden
+	provides = myougiden
+	provides = updatedb-myougiden
+	backup = etc/myougiden/config.ini
+	source = https://files.pythonhosted.org/packages/31/b6/f3d824f6854841a85d2d6ef3908e19277122a5ff6e2c8620eaf186218479/myougiden-0.8.8.tar.gz
+	md5sums = 6e82909bd3dd5ee39620e5717ac3b97c
+
+pkgname = python-myougiden
+
