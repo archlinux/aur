@@ -10,8 +10,8 @@ license=('LGPL')
 optdepends=('hyphen: offers hyphenation library functions')
 source=(#http://ftp.services.openoffice.org/pub/OpenOffice.org/contrib/dictionaries/hyph_ru_RU.zip
 # mirror from ApacheOpenOffice - see: http://www.openoffice.org/distribution/mirrors/master.html
-http://sunsite.informatik.rwth-aachen.de/ftp/pub/mirror/OpenOffice/contrib/dictionaries/hyph_ru_RU.zip)
-
+# http://sunsite.informatik.rwth-aachen.de/ftp/pub/mirror/OpenOffice/contrib/dictionaries/hyph_ru_RU.zip
+https://master.dl.sourceforge.net/project/openofficeorg.mirror/contrib/dictionaries/hyph_ru_RU.zip)
 md5sums=('f8a8b8a368bc7394b5a4060082c44bb4')
 
 
