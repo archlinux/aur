@@ -1,0 +1,371 @@
+diff -Naur orig/LuxCore-luxcorerender_v2.0/include/luxrays/accelerators/embreeaccel.h LuxCore-luxcorerender_v2.0/include/luxrays/accelerators/embreeaccel.h
+--- orig/LuxCore-luxcorerender_v2.0/include/luxrays/accelerators/embreeaccel.h	2018-05-06 11:04:25.000000000 +0200
++++ LuxCore-luxcorerender_v2.0/include/luxrays/accelerators/embreeaccel.h	2018-06-10 12:19:09.721431197 +0200
+@@ -21,8 +21,8 @@
+ 
+ #include <boost/thread.hpp>
+ 
+-#include <embree2/rtcore.h>
+-#include <embree2/rtcore_ray.h>
++#include <embree3/rtcore.h>
++#include <embree3/rtcore_ray.h>
+ 
+ #include "luxrays/luxrays.h"
+ #include "luxrays/core/accelerator.h"
+diff -Naur orig/LuxCore-luxcorerender_v2.0/src/luxrays/accelerators/embreeaccel.cpp LuxCore-luxcorerender_v2.0/src/luxrays/accelerators/embreeaccel.cpp
+--- orig/LuxCore-luxcorerender_v2.0/src/luxrays/accelerators/embreeaccel.cpp	2018-05-06 11:04:25.000000000 +0200
++++ LuxCore-luxcorerender_v2.0/src/luxrays/accelerators/embreeaccel.cpp	2018-06-10 12:51:06.032210007 +0200
+@@ -30,24 +30,25 @@
+ 
+ namespace luxrays {
+ 
+-void Embree_error_handler(const RTCError code, const char *str) {
++void Embree_error_handler (void* userPtr,RTCError code, const char* str)
++{
+ 	std::string errType;
+ 
+ 	switch (code) {
+-		case RTC_UNKNOWN_ERROR:
+-			errType = "RTC_UNKNOWN_ERROR";
++		case RTC_ERROR_UNKNOWN:
++			errType = "RTC_ERROR_UNKNOWN";
+ 			break;
+-		case RTC_INVALID_ARGUMENT:
+-			errType = "RTC_INVALID_ARGUMENT";
++		case RTC_ERROR_INVALID_ARGUMENT:
++			errType = "RTC_ERROR_INVALID_ARGUMENT";
+ 			break;
+-		case RTC_INVALID_OPERATION:
+-			errType = "RTC_INVALID_OPERATION";
++		case RTC_ERROR_INVALID_OPERATION:
++			errType = "RTC_ERROR_INVALID_OPERATION";
+ 			break;
+-		case RTC_OUT_OF_MEMORY:
+-			errType = "RTC_OUT_OF_MEMORY";
++		case RTC_ERROR_OUT_OF_MEMORY:
++			errType = "RTC_ERROR_OUT_OF_MEMORY";
+ 			break;
+-		case RTC_UNSUPPORTED_CPU:
+-			errType = "RTC_UNSUPPORTED_CPU";
++		case RTC_ERROR_UNSUPPORTED_CPU:
++			errType = "RTC_ERROR_UNSUPPORTED_CPU";
+ 			break;
+ 		default:
+ 			errType = "invalid error code";
+@@ -68,30 +69,34 @@
+ 
+ EmbreeAccel::~EmbreeAccel() {
+ 	if (embreeScene) {
+-		rtcDeleteScene(embreeScene);
++		rtcReleaseScene(embreeScene);
+ 
+ 		// I have to free all Embree scenes used for instances
+ 		std::pair<const Mesh *, RTCScene> elem;
+ 		BOOST_FOREACH(elem, uniqueRTCSceneByMesh)
+-			rtcDeleteScene(elem.second);
++			rtcReleaseScene(elem.second);
+ 	}
+ 
+-	rtcDeleteDevice(embreeDevice);
++	rtcReleaseDevice (embreeDevice);
+ }
+ 
+ u_int EmbreeAccel::ExportTriangleMesh(const RTCScene embreeScene, const Mesh *mesh) const {
+-	const u_int geomID = rtcNewTriangleMesh(embreeScene, RTC_GEOMETRY_STATIC,
+-			mesh->GetTotalTriangleCount(), mesh->GetTotalVertexCount(), 1);
++	RTCGeometry geom_1 = rtcNewGeometry (embreeDevice, RTC_GEOMETRY_TYPE_TRIANGLE); // EMBREE_FIXME: check if geometry gets properly committed
++	rtcSetGeometryBuildQuality(geom_1,RTC_BUILD_QUALITY_MEDIUM);
++	rtcSetGeometryTimeStepCount(geom_1,1);
++	u_int geomID = rtcAttachGeometry(embreeScene,geom_1);
++	rtcReleaseGeometry(geom_1);
+ 
+ 	// Share with Embree the mesh vertices
+ 	Point *meshVerts = mesh->GetVertices();
+-	rtcSetBuffer(embreeScene, geomID, RTC_VERTEX_BUFFER, meshVerts, 0, 3 * sizeof(float));
++	rtcSetSharedGeometryBuffer(geom_1,RTC_BUFFER_TYPE_VERTEX,0,RTC_FORMAT_FLOAT3,meshVerts,0,3 * sizeof(float),mesh->GetTotalVertexCount());
+ 
+ 	// Share with Embree the mesh triangles
+ 	Triangle *meshTris = mesh->GetTriangles();
+-	rtcSetBuffer(embreeScene, geomID, RTC_INDEX_BUFFER, meshTris, 0, 3 * sizeof(int));
++	rtcSetSharedGeometryBuffer(geom_1,RTC_BUFFER_TYPE_INDEX,0,RTC_FORMAT_UINT3,meshTris,0,3 * sizeof(int),mesh->GetTotalTriangleCount());
+ 	
+-	return geomID;
++	rtcCommitGeometry(geom_1);
++ return geomID;
+ }
+ 
+ u_int EmbreeAccel::ExportMotionTriangleMesh(const RTCScene embreeScene, const MotionTriangleMesh *mtm) const {
+@@ -101,12 +106,15 @@
+ 	if (ms.times.size() > 129)
+ 		throw std::runtime_error("Embree accelerator supports up to 129 motion blur steps, unable to use " + ToString(ms.times.size()));
+ 	
+-	const u_int geomID = rtcNewTriangleMesh(embreeScene, RTC_GEOMETRY_STATIC,
+-			mtm->GetTotalTriangleCount(), mtm->GetTotalVertexCount(), ms.times.size());
++	RTCGeometry geom_2 = rtcNewGeometry (embreeDevice, RTC_GEOMETRY_TYPE_TRIANGLE); // EMBREE_FIXME: check if geometry gets properly committed
++   rtcSetGeometryBuildQuality(geom_2,RTC_BUILD_QUALITY_MEDIUM);
++   rtcSetGeometryTimeStepCount(geom_2,ms.times.size());
++   u_int geomID = rtcAttachGeometry(embreeScene,geom_2);
++   rtcReleaseGeometry(geom_2);
+ 
+ 	for (u_int step = 0; step < ms.times.size(); ++step) {
+ 		// Copy the mesh start position vertices
+-		float *vertices = (float *)rtcMapBuffer(embreeScene, geomID, (RTCBufferType)(RTC_VERTEX_BUFFER0 + step));
++		float *vertices = (float *)rtcSetNewGeometryBuffer(geom_2,RTC_BUFFER_TYPE_VERTEX,step,RTC_FORMAT_FLOAT3,4*sizeof(float),mtm->GetTotalVertexCount());
+ 		for (u_int i = 0; i < mtm->GetTotalVertexCount(); ++i) {
+ 			const Point v = mtm->GetVertex(ms.times[step], i);
+ 			*vertices++ = v.x;
+@@ -114,14 +122,15 @@
+ 			*vertices++ = v.z;
+ 			++vertices;
+ 		}
+-		rtcUnmapBuffer(embreeScene, geomID, (RTCBufferType)(RTC_VERTEX_BUFFER0 + step));
++		
+ 	}
+ 
+ 	// Share the mesh triangles
+ 	Triangle *meshTris = mtm->GetTriangles();
+-	rtcSetBuffer(embreeScene, geomID, RTC_INDEX_BUFFER, meshTris, 0, 3 * sizeof(int));
++	rtcSetSharedGeometryBuffer(geom_2,RTC_BUFFER_TYPE_INDEX,0,RTC_FORMAT_UINT3,meshTris,0,3 * sizeof(int),mtm->GetTotalTriangleCount());
+ 	
+-	return geomID;
++	rtcCommitGeometry(geom_2);
++ return geomID;
+ }
+ 
+ void EmbreeAccel::Init(const std::deque<const Mesh *> &meshes,
+@@ -156,7 +165,9 @@
+ 	// Convert the meshes to an Embree Scene
+ 	//--------------------------------------------------------------------------
+ 
+-	embreeScene = rtcDeviceNewScene(embreeDevice, RTC_SCENE_DYNAMIC, RTC_INTERSECT1);
++	embreeScene = rtcNewScene(embreeDevice);
++ // rtcSetSceneFlags(embreeScene,RTC_SCENE_FLAG_DYNAMIC | RTC_BUILD_QUALITY_LOW); // EMBREE_FIXME: set proper scene flags
++ // rtcSetSceneBuildQuality(embreeScene,RTC_SCENE_FLAG_DYNAMIC | RTC_BUILD_QUALITY_LOW); // EMBREE_FIXME: set proper build quality
+ 
+ 	BOOST_FOREACH(const Mesh *mesh, meshes) {
+ 		switch (mesh->GetType()) {
+@@ -177,16 +188,22 @@
+ 					TriangleMesh *instancedMesh = itm->GetTriangleMesh();
+ 
+ 					// Create a new RTCScene
+-					instScene = rtcDeviceNewScene(embreeDevice, RTC_SCENE_STATIC, RTC_INTERSECT1);
++					instScene = rtcNewScene(embreeDevice);
++     // rtcSetSceneFlags(instScene,RTC_BUILD_QUALITY_MEDIUM); // EMBREE_FIXME: set proper scene flags
++     // rtcSetSceneBuildQuality(instScene,RTC_BUILD_QUALITY_MEDIUM); // EMBREE_FIXME: set proper build quality
+ 					ExportTriangleMesh(instScene, instancedMesh);
+-					rtcCommit(instScene);
++					rtcCommitScene(instScene);
+ 
+ 					uniqueRTCSceneByMesh[instancedMesh] = instScene;
+ 				} else
+ 					instScene = it->second;
+ 
+-				const u_int instID = rtcNewInstance2(embreeScene, instScene);
+-				rtcSetTransform2(embreeScene, instID, RTC_MATRIX_ROW_MAJOR, &(itm->GetTransformation().m.m[0][0]));
++				RTCGeometry geom_0 = rtcNewGeometry (embreeDevice, RTC_GEOMETRY_TYPE_INSTANCE); // EMBREE_FIXME: check if geometry gets properly committed
++      rtcSetGeometryInstancedScene(geom_0,instScene);
++      rtcSetGeometryTimeStepCount(geom_0,1);
++      const u_int instID = rtcAttachGeometry(embreeScene,geom_0);
++      rtcReleaseGeometry(geom_0);
++				rtcSetGeometryTransform(geom_0,0,RTC_FORMAT_FLOAT3X4_ROW_MAJOR,&(itm->GetTransformation().m.m[0][0]));
+ 
+ 				// Save the instance ID
+ 				uniqueInstIDByMesh[mesh] = instID;
+@@ -205,7 +222,7 @@
+ 		}
+ 	}
+ 
+-	rtcCommit(embreeScene);
++	rtcCommitScene(embreeScene);
+ 
+ 	LR_LOG(ctx, "EmbreeAccel build time: " << int((WallClockTime() - t0) * 1000) << "ms");
+ }
+@@ -219,14 +236,14 @@
+ 
+ 		// Check if the transformation has changed
+ 		if (uniqueInstMatrixByMesh[elem.first] != itm->GetTransformation().m) {
+-			rtcSetTransform2(embreeScene, elem.second, RTC_MATRIX_ROW_MAJOR, &(itm->GetTransformation().m.m[0][0]));
+-			rtcUpdate(embreeScene, elem.second);
++			rtcSetGeometryTransform(rtcGetGeometry(embreeScene,elem.second),0,RTC_FORMAT_FLOAT3X4_ROW_MAJOR,&(itm->GetTransformation().m.m[0][0]));
++			rtcCommitGeometry(rtcGetGeometry(embreeScene,elem.second));
+ 			updated = true;
+ 		}
+ 	}
+ 
+ 	if (updated)
+-		rtcCommit(embreeScene);
++		rtcCommitScene(embreeScene);
+ }
+ 
+ bool EmbreeAccel::MeshPtrCompare(const Mesh *p0, const Mesh *p1) {
+@@ -234,35 +251,43 @@
+ }
+ 
+ bool EmbreeAccel::Intersect(const Ray *ray, RayHit *hit) const {
+-	RTCRay embreeRay;
+-
+-	embreeRay.org[0] = ray->o.x;
+-	embreeRay.org[1] = ray->o.y;
+-	embreeRay.org[2] = ray->o.z;
+-
+-	embreeRay.dir[0] = ray->d.x;
+-	embreeRay.dir[1] = ray->d.y;
+-	embreeRay.dir[2] = ray->d.z;
+-
+-	embreeRay.tnear = ray->mint;
+-	embreeRay.tfar = ray->maxt;
+-
+-	embreeRay.geomID = RTC_INVALID_GEOMETRY_ID;
+-	embreeRay.primID = RTC_INVALID_GEOMETRY_ID;
+-	embreeRay.instID = RTC_INVALID_GEOMETRY_ID;
+-	embreeRay.mask = 0xFFFFFFFF;
+-	embreeRay.time = (ray->time - minTime) * timeScale;
+-
+-	rtcIntersect(embreeScene, embreeRay);
++	RTCRayHit embreeRay; // EMBREE_FIXME: use RTCRay for occlusion rays
++ embreeRay.ray.flags = 0;
+ 
+-	if (embreeRay.geomID != RTC_INVALID_GEOMETRY_ID) {
+-		hit->meshIndex = (embreeRay.instID == RTC_INVALID_GEOMETRY_ID) ? embreeRay.geomID : embreeRay.instID;
+-		hit->triangleIndex = embreeRay.primID;
++	embreeRay.ray.org_x = ray->o.x;
++	embreeRay.ray.org_y = ray->o.y;
++	embreeRay.ray.org_z = ray->o.z;
++
++	embreeRay.ray.dir_x = ray->d.x;
++	embreeRay.ray.dir_y = ray->d.y;
++	embreeRay.ray.dir_z = ray->d.z;
++
++	embreeRay.ray.tnear = ray->mint;
++	embreeRay.ray.tfar = ray->maxt;
++
++	embreeRay.hit.geomID = RTC_INVALID_GEOMETRY_ID;
++	embreeRay.hit.primID = RTC_INVALID_GEOMETRY_ID;
++	embreeRay.hit.instID[0] = RTC_INVALID_GEOMETRY_ID;
++	embreeRay.ray.mask = 0xFFFFFFFF;
++	embreeRay.ray.time = (ray->time - minTime) * timeScale;
++
++	{
++   RTCIntersectContext context;
++   rtcInitIntersectContext(&context);
++   rtcIntersect1(embreeScene,&context,&embreeRay);
++   embreeRay.hit.Ng_x = -embreeRay.hit.Ng_x; // EMBREE_FIXME: only correct for triangles,quads, and subdivision surfaces
++   embreeRay.hit.Ng_y = -embreeRay.hit.Ng_y;
++   embreeRay.hit.Ng_z = -embreeRay.hit.Ng_z;
++ }
++
++	if (embreeRay.hit.geomID != RTC_INVALID_GEOMETRY_ID) {
++		hit->meshIndex = (embreeRay.hit.instID[0] == RTC_INVALID_GEOMETRY_ID) ? embreeRay.hit.geomID : embreeRay.hit.instID[0];
++		hit->triangleIndex = embreeRay.hit.primID;
+ 
+-		hit->t = embreeRay.tfar;
++		hit->t = embreeRay.ray.tfar;
+ 
+-		hit->b1 = embreeRay.u;
+-		hit->b2 = embreeRay.v;
++		hit->b1 = embreeRay.hit.u;
++		hit->b2 = embreeRay.hit.v;
+ 
+ 		return true;
+ 	} else
+diff -Naur orig/LuxCore-luxcorerender_v2.0/src/luxrays/core/bvh/bvhembreebuild.cpp LuxCore-luxcorerender_v2.0/src/luxrays/core/bvh/bvhembreebuild.cpp
+--- orig/LuxCore-luxcorerender_v2.0/src/luxrays/core/bvh/bvhembreebuild.cpp	2018-05-06 11:04:25.000000000 +0200
++++ LuxCore-luxcorerender_v2.0/src/luxrays/core/bvh/bvhembreebuild.cpp	2018-06-10 12:19:09.721431197 +0200
+@@ -20,8 +20,8 @@
+ #include <boost/foreach.hpp>
+ #include <boost/thread/mutex.hpp>
+ 
+-#include <embree2/rtcore.h>
+-#include <embree2/rtcore_builder.h>
++#include <embree3/rtcore.h>
++#include <embree3/rtcore_builder.h>
+ 
+ #include "luxrays/core/bvh/bvhbuild.h"
+ #include "luxrays/utils/atomic.h"
+@@ -84,8 +84,8 @@
+ }
+ 
+ EmbreeBuilderGlobalData::~EmbreeBuilderGlobalData() {
+-	rtcDeleteBVH(embreeBVH);
+-	rtcDeleteDevice(embreeDevice);
++	rtcReleaseBVH(embreeBVH);
++	rtcReleaseDevice (embreeDevice);
+ }
+ 
+ //------------------------------------------------------------------------------
+@@ -166,8 +166,7 @@
+ // BuildEmbreeBVH
+ //------------------------------------------------------------------------------
+ 
+-template<u_int CHILDREN_COUNT> static void *CreateNodeFunc(RTCThreadLocalAllocator allocator,
+-		size_t numChildren, void *userPtr) {
++template<u_int CHILDREN_COUNT> static void* CreateNodeFunc (RTCThreadLocalAllocator allocator, unsigned int numChildren, void* userPtr) {
+ 	assert (numChildren <= CHILDREN_COUNT);
+ 
+ 	EmbreeBuilderGlobalData *gd = (EmbreeBuilderGlobalData *)userPtr;
+@@ -187,7 +186,7 @@
+ 	return new (rtcThreadLocalAlloc(allocator, sizeof(EmbreeBVHLeafNode<CHILDREN_COUNT>), 16)) EmbreeBVHLeafNode<CHILDREN_COUNT>(prims[0].primID);
+ }
+ 
+-template<u_int CHILDREN_COUNT> static void NodeSetChildrensPtrFunc(void *nodePtr, void **children, size_t numChildren, void *userPtr) {
++template<u_int CHILDREN_COUNT> static void NodeSetChildrensPtrFunc (void* nodePtr, void** children, unsigned int numChildren, void * userPtr) {
+ 	assert (numChildren <= CHILDREN_COUNT);
+ 
+ 	EmbreeBVHInnerNode<CHILDREN_COUNT> *node = (EmbreeBVHInnerNode<CHILDREN_COUNT> *)nodePtr;
+@@ -196,8 +195,7 @@
+ 		node->children[i] = (EmbreeBVHNode<CHILDREN_COUNT> *)children[i];
+ }
+ 
+-template<u_int CHILDREN_COUNT> static void NodeSetChildrensBBoxFunc(void *nodePtr,
+-		const RTCBounds **bounds, size_t numChildren, void *userPtr) {
++template<u_int CHILDREN_COUNT> static void NodeSetChildrensBBoxFunc (void* nodePtr, const RTCBounds** bounds, unsigned int numChildren, void* userPtr) {
+ 	EmbreeBVHInnerNode<CHILDREN_COUNT> *node = (EmbreeBVHInnerNode<CHILDREN_COUNT> *)nodePtr;
+ 
+ 	for (u_int i = 0; i < numChildren; ++i) {
+@@ -245,18 +243,23 @@
+ 	//const double t2 = WallClockTime();
+ 	//cout << "BuildEmbreeBVH preprocessing time: " << int((t2 - t1) * 1000) << "ms\n";
+ 
+-	RTCBuildSettings config = rtcDefaultBuildSettings();
+-	config.quality = quality;
++	RTCBuildArguments config = rtcDefaultBuildArguments();
++	config.buildQuality = quality;
+ 	config.maxBranchingFactor = CHILDREN_COUNT;
+ 	config.maxLeafSize = 1;
+ 
+ 	EmbreeBuilderGlobalData *globalData = new EmbreeBuilderGlobalData();
+-	EmbreeBVHNode<CHILDREN_COUNT> *root = (EmbreeBVHNode<CHILDREN_COUNT> *)rtcBuildBVH(globalData->embreeBVH,
+-			config,
+-			&prims[0], prims.size(),
+-			&CreateNodeFunc<CHILDREN_COUNT>, &NodeSetChildrensPtrFunc<CHILDREN_COUNT>, &NodeSetChildrensBBoxFunc<CHILDREN_COUNT>,
+-			&CreateLeafFunc<CHILDREN_COUNT>, NULL, NULL,
+-			globalData);
++	EmbreeBVHNode<CHILDREN_COUNT> *root = (EmbreeBVHNode<CHILDREN_COUNT> *)(config.bvh = globalData->embreeBVH,
++     config.primitives = &prims[0],
++     config.primitiveCount = prims.size(),
++     config.createNode = &CreateNodeFunc<CHILDREN_COUNT>,
++     config.setNodeChildren = &NodeSetChildrensPtrFunc<CHILDREN_COUNT>,
++     config.setNodeBounds = &NodeSetChildrensBBoxFunc<CHILDREN_COUNT>,
++     config.createLeaf = &CreateLeafFunc<CHILDREN_COUNT>,
++     config.splitPrimitive = NULL,
++     config.buildProgress = NULL,
++     config.userPtr = globalData,
++     rtcBuildBVH(&config));
+ 
+ 	*nNodes = globalData->nodeCounter;
+ 
+@@ -322,11 +325,11 @@
+ 	luxrays::ocl::BVHArrayNode *bvhArrayTree;
+ 
+ 	if (params.treeType == 2)
+-		bvhArrayTree = BuildEmbreeBVH<2>(RTC_BUILD_QUALITY_NORMAL, nNodes, meshes, leafList);
++		bvhArrayTree = BuildEmbreeBVH<2>(RTC_BUILD_QUALITY_MEDIUM, nNodes, meshes, leafList);
+ 	else if (params.treeType == 4)
+-		bvhArrayTree = BuildEmbreeBVH<4>(RTC_BUILD_QUALITY_NORMAL, nNodes, meshes, leafList);
++		bvhArrayTree = BuildEmbreeBVH<4>(RTC_BUILD_QUALITY_MEDIUM, nNodes, meshes, leafList);
+ 	else if (params.treeType == 8)
+-		bvhArrayTree = BuildEmbreeBVH<8>(RTC_BUILD_QUALITY_NORMAL, nNodes, meshes, leafList);
++		bvhArrayTree = BuildEmbreeBVH<8>(RTC_BUILD_QUALITY_MEDIUM, nNodes, meshes, leafList);
+ 	else
+ 		throw runtime_error("Unsupported tree type in BuildEmbreeBVHBinnedSAH(): " + ToString(params.treeType));
+ 
