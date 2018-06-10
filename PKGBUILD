@@ -1,7 +1,7 @@
 # Maintainer: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=chatty
 pkgver=0.8.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Twitch Chat Client for Desktop"
 arch=('any')
 url="https://chatty.github.io/"
@@ -11,7 +11,6 @@ optdepends=('livestreamer: for watching streams in a custom video player.')
 makedepends=('apache-ant' 'java-environment>=8')
 
 source=("https://github.com/chatty/chatty/archive/v${pkgver}.tar.gz"
-        "${pkgname}.png"
         "${pkgname}.desktop"
         "${pkgname}_script"
         "config_dir.patch"
@@ -19,7 +18,6 @@ source=("https://github.com/chatty/chatty/archive/v${pkgver}.tar.gz"
         "disable_version_check.patch"
         "build.patch")
 sha512sums=('de772c4403f82cd66283eb340bce2cb62d5a7fd946cdfc46fbab9e3ec0858c3b8e08b5ec8db93efcb57a46f5b4422358a257069a260373228fa23b99d7dce5f1'
-            'e3e551380e57bd265cecef1166cc0ce2dffebdd68b2f4dc15eb278a966a0af6c43c45067a42c019cc6c1d53b438b77cb24e24fd3f48078d72197b2f863fb9859'
             '6b18009b4e34a2255cec42fd1e136e437aa528c80c40d9f1ab7379ab9e4a637fbd64860fb51e7e57aa0c74165b42f8d4c1ed6a1ffd061d07a02af1ec5167145e'
             'a2e3e61195c3bd9bb56ee7772a505e355d324cf86edfd41b0d92f261b77097eecf616e071c5cfed8bee7b4f779a5f1e126f9c8c2082a866e7a2e4bc4e4c0469c'
             '5d56ac61a14342e5ea98e6d793d0455fbdf1f5ca5ac503ace5672b6a4182416051d39cfeea719152e907bbd16cb886b8edf2960914bd88f5f818094ec5388ebc'
@@ -46,8 +44,8 @@ package(){
   cp -a "${srcdir}/chatty-${pkgver}/assets" "${pkgdir}/usr/share/${pkgname}/"
 
   install -Dm755 "${srcdir}/${pkgname}_script" "${pkgdir}/usr/bin/${pkgname}"
-
-  install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
+  install -Dm644 "${srcdir}/chatty-${pkgver}/src/chatty/gui/app_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname}.png"
+  install -Dm644 "${srcdir}/chatty-${pkgver}/src/chatty/gui/app_64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
   install -Dm755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   install -Dm644 "${srcdir}/chatty-${pkgver}/APACHE_LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/APACHE_LICENSE"
