@@ -1077,4 +1077,5 @@ void initialize_command_pyroscope() {
     add_capability("rtorrent-ps");        // obvious
     add_capability("colors");             // not monochrome
     add_capability("canvas_v2");          // new PS 1.1 canvas with fully dynamic columns
+    add_capability("collapsed-views");    // pre-collapsed views
 }

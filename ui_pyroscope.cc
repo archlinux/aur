@@ -19,6 +19,7 @@ python -c 'print u"\u22c5 \u22c5\u22c5 \u201d \u2019 \u266f \u2622 \u260d \u2318
 
 #include <cstdio>
 #include <cwchar>
+#include <set>
 #include <list>
 #include <stdlib.h>
 #include <unistd.h>
@@ -46,6 +47,7 @@ python -c 'print u"\u22c5 \u22c5\u22c5 \u201d \u2019 \u266f \u2622 \u260d \u2318
 
 #define D_INFO(item) (item->info())
 #include "rpc/object_storage.h"
+#include "rpc/parse.h"
 
 // from command_pyroscope.cc
 extern torrent::Tracker* get_active_tracker(torrent::Download* item);
@@ -174,8 +176,19 @@ std::string get_custom_string(core::Download* d, const char* name) {
 }
 
 
+// get a value from arg, either parsing from a string, or arg already being a value
+int64_t parse_value_arg(const torrent::Object& arg) {
+    if (arg.is_string()) {
+        int64_t result;
+        rpc::parse_whole_value(arg.as_string().c_str(), &result);
+        return result;
+    }
+    return arg.as_value();  // this will throw if other types than string/value are passed
+}
+
+
 // convert absolute timestamp to approximate human readable time diff (5 chars wide)
-std::string elapsed_time(unsigned long dt, unsigned long t0)  {
+std::string elapsed_time(unsigned long dt, unsigned long t0) {
     if (dt == 0) return std::string("⋆ ⋆⋆ ");
 
     const char* unit[] = {"”", "’", "h", "d", "w", "m", "y"};
@@ -220,6 +233,9 @@ std::string num2(int64_t num) {
 
 
 namespace display {
+
+// Visibility of canvas columns
+static std::set<int> column_hidden;
 
 
 // function wrapper for what possibly is a macro
@@ -559,6 +575,48 @@ void ui_pyroscope_download_list_redraw_item(Window* window, display::Canvas* can
 }
 
 
+torrent::Object ui_column_hide(rpc::target_type target, const torrent::Object::list_type& args) {
+    for(torrent::Object::list_const_iterator itr = args.begin(), last = args.end(); itr != last; ++itr) {
+        int64_t colidx = parse_value_arg(*itr);
+        column_hidden.insert(colidx);
+    }
+
+    return torrent::Object();
+}
+
+
+torrent::Object ui_column_show(rpc::target_type target, const torrent::Object::list_type& args) {
+    for(torrent::Object::list_const_iterator itr = args.begin(), last = args.end(); itr != last; ++itr) {
+        int64_t colidx = parse_value_arg(*itr);
+        column_hidden.erase(colidx);
+    }
+
+    return torrent::Object();
+}
+
+
+torrent::Object ui_column_is_hidden(rpc::target_type target, const torrent::Object::list_type& args) {
+    if (args.size() != 1) {
+        throw torrent::input_error("ui.column.is_hidden takes exactly one argument!");
+    }
+    int64_t colidx = parse_value_arg(*args.begin());
+
+    return (int64_t) column_hidden.count(colidx);
+}
+
+
+torrent::Object ui_column_hidden_list() {
+    torrent::Object result = torrent::Object::create_list();
+    torrent::Object::list_type& resultList = result.as_list();
+
+    for (std::set<int>::const_iterator itr = column_hidden.begin(); itr != column_hidden.end(); itr++) {
+       resultList.push_back(*itr);
+    }
+
+    return result;
+}
+
+
 // Render columns from `column_defs`, return total length
 int render_columns(bool headers, bool narrow, rpc::target_type target, core::Download* item,
                    display::Canvas* canvas, int column, int pos, int offset,
@@ -567,10 +625,11 @@ int render_columns(bool headers, bool narrow, rpc::target_type target, core::Dow
     int total = 0;
 
     for (cols_itr = column_defs.begin(); cols_itr != last_col; ++cols_itr) {
-        // Skip sort key (format is "sort:len:title")
-        size_t header_colon = cols_itr->first.find(':');
-        if (header_colon == std::string::npos) continue;
-        const char* header_pos = cols_itr->first.c_str() + header_colon + 1;
+        // Handle index / sort key (format is "sort:len:title")
+        char* header_pos = 0;
+        int colidx = (int)strtol(cols_itr->first.c_str(), &header_pos, 10);
+        if (*header_pos++ != ':') continue;  // 2nd field is missing
+        if (column_hidden.count(colidx)) continue;  // column is hidden
 
         // Check for 'sacrificial' marker
         if (*header_pos == '?') {
@@ -979,6 +1038,11 @@ void initialize_command_ui_pyroscope() {
     CMD2_ANY        ("ui.canvas_color",         _cxxstd_::bind(&display::ui_canvas_color_get));
     CMD2_ANY_STRING ("ui.canvas_color.set",     _cxxstd_::bind(&display::ui_canvas_color_set, _cxxstd_::placeholders::_2));
 
+    CMD2_ANY_LIST("ui.column.hide", &display::ui_column_hide);
+    CMD2_ANY_LIST("ui.column.show", &display::ui_column_show);
+    CMD2_ANY_LIST("ui.column.is_hidden", &display::ui_column_is_hidden);
+    CMD2_ANY("ui.column.hidden.list", _cxxstd_::bind(&display::ui_column_hidden_list));
+
     PS_VARIABLE_COLOR("ui.color.progress0",     "red");
     PS_VARIABLE_COLOR("ui.color.progress20",    "bold bright red");
     PS_VARIABLE_COLOR("ui.color.progress40",    "bold bright magenta");
@@ -1039,6 +1103,18 @@ void initialize_command_ui_pyroscope() {
 
         // Bind '*' to toggle between collapsed and expanded display
         "schedule2 = collapsed_view_toggle, 0, 0, ((ui.bind_key,download_list,*,view.collapsed.toggle=))\n"
+
+        // Collapse built-in views
+        "view.collapsed.toggle = main\n"
+        "view.collapsed.toggle = name\n"
+        "view.collapsed.toggle = started\n"
+        "view.collapsed.toggle = stopped\n"
+        "view.collapsed.toggle = complete\n"
+        "view.collapsed.toggle = incomplete\n"
+        "view.collapsed.toggle = hashing\n"
+        "view.collapsed.toggle = seeding\n"
+        "view.collapsed.toggle = leeching\n"
+        "view.collapsed.toggle = active\n"
 
         // TODO: copy (parts of) timestamp cfg here (~/.pyroscope/rtorrent.d/timestamps.rc)
         //       Do NOT move it, since then rT vanilla gets unusable with rtcontrol.
