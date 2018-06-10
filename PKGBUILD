@@ -4,8 +4,8 @@
 _name=fastcluster
 pkgbase='python-fastcluster'
 pkgname=('python-fastcluster' 'python2-fastcluster')
-pkgver=1.1.24
-pkgrel=2
+pkgver=1.1.25
+pkgrel=1
 pkgdesc="Fast hierarchical clustering routines for R and Python"
 arch=('any')
 url="https://pypi.python.org/pypi/fastcluster"
@@ -14,8 +14,8 @@ makedepends=(
   'python' 'python-setuptools'
   'python2' 'python2-setuptools')
 options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/1e/00/9910dd324f32582051d0ee6922c3cd4727234aae96366f3867c46a70cd78/fastcluster-1.1.24.tar.gz)
-sha256sums=('a5d1922b1db6f4c3012416e7dc14de2984b9335a48c895e1698afd5c718312b0')
+source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
+sha256sums=('539d84d43fbe541a38d94c84bf0469c430cb7cda488364941ce57f680a07b091')
 
 prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}

@@ -1,7 +1,7 @@
 pkgbase = python-fastcluster
 	pkgdesc = Fast hierarchical clustering routines for R and Python
-	pkgver = 1.1.24
-	pkgrel = 2
+	pkgver = 1.1.25
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/fastcluster
 	arch = any
 	license = BSD
@@ -10,8 +10,8 @@ pkgbase = python-fastcluster
 	makedepends = python2
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = python-fastcluster-1.1.24.tar.gz::https://pypi.python.org/packages/1e/00/9910dd324f32582051d0ee6922c3cd4727234aae96366f3867c46a70cd78/fastcluster-1.1.24.tar.gz
-	sha256sums = a5d1922b1db6f4c3012416e7dc14de2984b9335a48c895e1698afd5c718312b0
+	source = python-fastcluster-1.1.25.tar.gz::https://pypi.io/packages/source/f/fastcluster/fastcluster-1.1.25.tar.gz
+	sha256sums = 539d84d43fbe541a38d94c84bf0469c430cb7cda488364941ce57f680a07b091
 
 pkgname = python-fastcluster
 	depends = python
