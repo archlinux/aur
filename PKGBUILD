@@ -1,8 +1,8 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
-_name=pyxstitch
-pkgname=python-$_name
+pkgname=python-pyxstitch
+_name=${pkgname#python-}
 pkgver=1.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc="takes source code files and produces syntax-highlighted patterns for cross stitching."
 arch=("any")
 url="https://github.com/enckse/$_name"
@@ -11,7 +11,7 @@ depends=('python' 'python-pillow' 'python-setuptools' 'python-pygments')
 optdepends=("bash-completion: for bash completions")
 _md5='305bcc8d5e69294b9b52227fbac013fb'
 _rawcontent="https://raw.githubusercontent.com/enckse/$_name/v$pkgver/"
-source=("https://pypi.python.org/packages/15/0a/4a98c83afe1bc4045546a67a958cd58f94ec0fc75f6f5b9df7108d1fad2a/$_name-$pkgver.tar.gz#md5=$_md5"
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         "${_rawcontent}LICENSE"
         "${_rawcontent}completions/bash"
         "${_rawcontent}doc/$_name.1")
