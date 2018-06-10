@@ -1,8 +1,8 @@
 # Maintainer: pullmoll
 pkgname=ems-collector-git
 pkgver=r300.20dbf38
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Buderus EMS heating control data collection daemon"
 arch=(x86_64)
 url="https://github.com/maniac103/ems-collector"
 license=('GPL')
