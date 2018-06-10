@@ -1,0 +1,37 @@
+From 1d4d7f538065462a76cfe258ee5151dee03ae85f Mon Sep 17 00:00:00 2001
+From: Denis Lesnov <den.lesnov@gmail.com>
+Date: Thu, 22 Dec 2016 18:10:52 +0300
+Subject: [PATCH] fix aarch64 build
+
+---
+ src/makefiles/linux_64bit.mak | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/src/makefiles/linux_64bit.mak b/src/makefiles/linux_64bit.mak
+index 0fd8c018..1f81ab7f 100644
+--- a/src/makefiles/linux_64bit.mak
++++ b/src/makefiles/linux_64bit.mak
+@@ -25,13 +25,19 @@
+ 
+ #CC=gcc
+ 
+-OPTIONS_COMPILE_DEBUG=-D_DEBUG -DDEBUG -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -g -fsigned-char -m64
++ifeq ($(shell uname -m),aarch64)
++	M64:=
++else
++	M64:=-m64
++endif
++
++OPTIONS_COMPILE_DEBUG=-D_DEBUG -DDEBUG -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -g -fsigned-char $(M64)
+ 
+-OPTIONS_LINK_DEBUG=-g -fsigned-char -m64 -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
++OPTIONS_LINK_DEBUG=-g -fsigned-char $(M64) -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
+ 
+-OPTIONS_COMPILE_RELEASE=-DNDEBUG -DVPN_SPEED -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -O2 -fsigned-char -m64
++OPTIONS_COMPILE_RELEASE=-DNDEBUG -DVPN_SPEED -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -O2 -fsigned-char $(M64)
+ 
+-OPTIONS_LINK_RELEASE=-O2 -fsigned-char -m64 -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
++OPTIONS_LINK_RELEASE=-O2 -fsigned-char $(M64) -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
+ 
+ INSTALL_BINDIR=/usr/bin/
+ INSTALL_VPNSERVER_DIR=/usr/vpnserver/
