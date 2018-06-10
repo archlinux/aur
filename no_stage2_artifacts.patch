@@ -1,0 +1,20 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bda57634..52599838 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -254,7 +254,6 @@ else()
+         embedded_lld_wasm
+         embedded_lld_lib
+     )
+-    install(TARGETS embedded_lld_elf embedded_lld_coff embedded_lld_mingw embedded_lld_wasm embedded_lld_lib DESTINATION "${ZIG_CPP_LIB_DIR}")
+ endif()
+ 
+ # No patches have been applied to SoftFloat-3e
+@@ -775,7 +774,6 @@ if(MSVC OR MINGW)
+     target_link_libraries(zig LINK_PUBLIC version)
+ endif()
+ install(TARGETS zig DESTINATION bin)
+-install(TARGETS zig_cpp DESTINATION "${ZIG_CPP_LIB_DIR}")
+ 
+ foreach(file ${ZIG_C_HEADER_FILES})
+     get_filename_component(file_dir "${C_HEADERS_DEST}/${file}" DIRECTORY)
