@@ -7,9 +7,9 @@ pkgbase = r-stringr
 	license = GPL2
 	license = custom
 	depends = r
-	depends = r-glue
+	depends = r-glue>=1.2.0
 	depends = r-magrittr
-	depends = r-stringi
+	depends = r-stringi>=1.1.7
 	optdepends = r-covr
 	optdepends = r-htmltools
 	optdepends = r-htmlwidgets
