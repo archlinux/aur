@@ -5,44 +5,39 @@
 
 _branch=develop
 _pkgname=gogs
-_team=github.com/gogits
-_gogsdir="src/${_team}/${_pkgname}"
+_team=github.com/gogs
+_gogsdir="${_team}/${_pkgname}"
 pkgname=${_pkgname}-dev-git
-pkgver=0.11.12.0529+10+612a7e76f
+pkgver=0.11.55.0609+3+459c8be94
 pkgrel=1
 pkgdesc="Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://${_pkgname}.io/"
+url="https://${_pkgname}.io"
 license=('MIT')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-depends=('git')
-options=('!buildflags' '!strip')
+depends=('git' 'pam')
 optdepends=("sqlite: SQLite support"
             "mariadb: MariaDB support"
             "postgresql: PostgreSQL support"
             "redis: Redis support"
             "memcached: MemCached support"
             "openssh: GIT over SSH support"
-            "bash: GIT over SSH support"
-)
+            "bash: GIT over SSH support")
 makedepends=('git' 'go' 'go-bindata-git' 'nodejs-less' 'sqlite')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+options=('!buildflags' '!strip' 'emptydirs')
 install=${_pkgname}.install
 
-source=(
-        "git+https://${_team}/${_pkgname}.git#branch=${_branch}"
+source=("git+https://${_team}/${_pkgname}.git#branch=${_branch}"
         "${_pkgname}.service"
-        "${_pkgname}.tmpfiles"
-)
-sha512sums=('SKIP'
-            'c872a0c7e33c3385828af58633f194628098841adb32506fdb95d0554ecae2a472915d3fb4a964b44bf8f14e87516f50f77fbec9a3efd10bfb2f5246d294a186'
-            '658935dc129d41b4bfc205ea8e9c225122862431f8b96932942ec345bc23cc7b55644247a8844c1f66bfd16ee35fc9da766f62f07603cbe6d573102edb4222f8')
+        "${_pkgname}.sysusers"
+        "${_pkgname}.tmpfiles")
 
 prepare() {
     export GOPATH="$srcdir"
 
-    mkdir -p ./src/${_team}
-    mv    -t ./src/${_team}   ./${_pkgname}
+    mkdir -p "$srcdir/${_team}"
+    mv -v -t "$srcdir/${_team}"   ./${_pkgname}
 
     cd "$srcdir/$_gogsdir"
 
@@ -54,7 +49,7 @@ prepare() {
 }
 
 pkgver() {
-    cd "$_gogsdir"
+    cd "$srcdir/$_gogsdir"
     printf '%s+%s+%s' \
         $(sed -e 's,/,+,g; s, ,,g' templates/.VERSION) \
         $(git rev-list --count HEAD...$(git log --pretty=format:%H -n 1 -- templates/.VERSION)) \
@@ -67,6 +62,7 @@ build() {
 
     cd "$srcdir/$_gogsdir"
 
+    go fix
     LDFLAGS='-s -w' make PATH="$GOPATH/bin:$PATH" TAGS='libsqlite3 sqlite pam cert' build
 }
 
@@ -83,4 +79,10 @@ package() {
     install -Dm0644 -t "$pkgdir/usr/lib/systemd/system"  "$srcdir/${_pkgname}.service"
 
     install -Dm0644 "$srcdir/${_pkgname}.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"
+    install -Dm0644 "$srcdir/${_pkgname}.sysusers" "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
 }
+
+sha512sums=('SKIP'
+            '26fa3b9579ec2780e56f4a52870461b9cc1e4c1608e006b0759de7c5de137895d48e94a1694341b545be0dae87c966a982d8b581397d56fad83ab12e297f98df'
+            '0a546902ffb9fe99f61b301183059cc85c75408cd735f04ee93829ad6e3d66a07ebc73ce663743f109ea6303c1815933a17fe2b83bf9104d1528acb5aa63faf8'
+            'a48c51665079575aa9e4774e9d6ccaf15880c81d3d8d77dbcc0871133be7907177694986f12a5d880aa1930a636ca42b5ccb2dbb91874ad9f3c31fa6e5218c6b')

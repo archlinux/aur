@@ -7,9 +7,9 @@ After=network.target
 Type=simple
 User=gogs
 Group=gogs
-Environment=GOGS_WORK_DIR=/srv/gogs USER=gogs HOME=/srv/gogs
+Environment=GOGS_WORK_DIR=/var/lib/gogs USER=gogs HOME=/var/lib/gogs
 ExecStart=/usr/bin/gogs web
-WorkingDirectory=/srv/gogs
+WorkingDirectory=/var/lib/gogs
 Restart=always
 
 [Install]
