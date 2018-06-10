@@ -1,0 +1,27 @@
+pkgbase = lunex-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.lunexcrypto.com/
+	install = lunex-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = lunex
+	source = lunex-qt::git+https://github.com/LunexCoin/Lunex.git
+	source = lunex-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 4134c65aff7b77fb52da75b9dcaf8457efac88f4bcb214a8116803e99d7c9050
+
+pkgname = lunex-qt
+
