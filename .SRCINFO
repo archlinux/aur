@@ -1,14 +1,13 @@
 pkgbase = r-corpus
 	pkgdesc = Corpus data analysis R tools with unicode support
 	pkgver = 0.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cran.r-project.org/web/packages/corpus/index.html
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
 	depends = r>=3.0.1
-	depends = r-knitr
-	depends = r-testthat
+	depends = r-utf8
 	conflicts = r-corpus
 	source = http://cran.r-project.org/src/contrib/corpus_0.10.0.tar.gz
 	sha256sums = 7458f654757d096d1739147e43ba02358cfe5c9b14042d6ac622aa6575262831
