@@ -1,0 +1,17 @@
+pkgbase = litevideo-git
+	pkgdesc = Small footprint and configurable video cores
+	pkgver = 201
+	pkgrel = 1
+	url = https://github.com/enjoy-digital/litevideo
+	arch = any
+	license = MIT
+	depends = python
+	depends = migen
+	depends = litex
+	provides = litevideo
+	options = !emptydirs
+	source = git+https://github.com/enjoy-digital/litevideo
+	sha256sums = SKIP
+
+pkgname = litevideo-git
+
