@@ -1,0 +1,18 @@
+--- fsleyes/main.py	2018-06-07 17:54:21.000000000 +0200
++++ fsleyes/main.py	2018-06-10 21:23:53.541935866 +0200
+@@ -31,7 +31,6 @@
+ import            textwrap
+ 
+ import wx
+-import appnope
+ 
+ from fsl.utils.platform import platform as fslplatform
+ 
+@@ -375,7 +374,6 @@
+     # already created the splash screen, so
+     # all is well.
+     wx.CallAfter(init, splash)
+-    appnope.nope()
+     app.MainLoop()
+     shutdown()
+     return exitCode[0]
