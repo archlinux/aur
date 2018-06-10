@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='galaxy-desktop-git'
 pkgdesc='Hacked DE which mixes components from other desktop environments'
-pkgver=r6.b49a885
+pkgver=r15.744df48
 pkgrel=1
 arch=('any')
 url='https://github.com/aperezdc/galaxy-desktop'
@@ -11,12 +11,12 @@ provides=('galaxy-desktop')
 conflicts=('galaxy-desktop')
 depends=('gnome-screensaver>=3.6' 'gnome-settings-daemon>=3.28' 'gala'
          'plank>=0.11' 'pantheon-polkit-agent' 'pantheon-screenshot')
-optdepends=('gnome-control-center:: Allows modifying system settings'
-            'synapse:: Keyboard-driver launcher'
-			'termite:: Recommended terminal application'
-			'arc-gtk-theme:: Recommended GTK+ theme'
-			'la-capitaine-icon-theme:: Recommended icon theme'
-			'xcursor-hackneyed:: Recommended cursor theme')
+optdepends=('gnome-control-center: Allows modifying system settings'
+            'synapse: Keyboard-driver launcher'
+			'termite: Recommended terminal application'
+			'arc-gtk-theme: Recommended GTK+ theme'
+			'la-capitaine-icon-theme: Recommended icon theme'
+			'xcursor-hackneyed: Recommended cursor theme')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
