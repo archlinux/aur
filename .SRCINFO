@@ -1,0 +1,17 @@
+pkgbase = litepcie-git
+	pkgdesc = A small footprint and configurable PCIe core
+	pkgver = 125
+	pkgrel = 1
+	url = https://github.com/enjoy-digital/litepcie
+	arch = any
+	license = MIT
+	depends = python
+	depends = migen
+	depends = litex
+	provides = litepcie
+	options = !emptydirs
+	source = git+https://github.com/enjoy-digital/litepcie
+	sha256sums = SKIP
+
+pkgname = litepcie-git
+
