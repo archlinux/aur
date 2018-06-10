@@ -1,0 +1,27 @@
+pkgbase = play-emu-ninja-git
+	pkgdesc = Play! is an experimental Playstation 2 emulator. (build using ninja)
+	pkgver = r3.462d986
+	pkgrel = 4
+	url = https://github.com/jpd002
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = ninja
+	depends = cmake
+	depends = glew
+	depends = mysql++
+	depends = openal
+	depends = qt5-base
+	depends = zlib
+	conflicts = play-emu-git
+	replaces = play-emu-git
+	source = Play-Build::git+https://github.com/jpd002/Play-Build.git
+	source = play-emu.desktop
+	source = play.png
+	md5sums = SKIP
+	md5sums = 59e7114de681f2f96730697cde4f4595
+	md5sums = 2c6db31d8119437e5af6fa95b4c1fb8f
+
+pkgname = play-emu-ninja-git
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Play!
+GenericName=Play!
+X-GNOME-FullName=Playstation 2 Emulator.
+Comment=Playstation 2 Emulator
+Exec=play-emu
+Icon=/usr/share/pixmaps/play.png
+Terminal=false
+Type=Game;ActionGame;
