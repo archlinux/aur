@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Motion
+Comment=Motion P2P Cryptocurrency
+Exec=/usr/bin/motion-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/motion128.png
+MimeType=x-scheme-handler/motion;
+Categories=Office;
+Name[en_US]=motion-qt.desktop

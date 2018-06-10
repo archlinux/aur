@@ -1,0 +1,27 @@
+pkgbase = motion-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://motionproject.org/
+	install = motion-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = motion
+	source = motion-qt::git+https://github.com/motioncrypto/motion.git
+	source = motion-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 75f7adb39803ab719789d0aefd0c174600bcc758db49c8ee47b203b1e83474a4
+
+pkgname = motion-qt
+
