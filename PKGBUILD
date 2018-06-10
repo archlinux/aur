@@ -55,6 +55,11 @@ prepare()
 
   #  /etc/printcap is managed by cups
   rm `find $srcdir -type f -name 'setupPrintcap*'`
+
+  # /usr/lib/cups/filter/brother_lpdwrapper_ql820nwb should be an absolute symlink
+  rm $srcdir/usr/lib/cups/filter/brother_lpdwrapper_ql820nwb
+  ln -s /opt/brother/PTouch/ql820nwb/cupswrapper/brother_lpdwrapper_ql820nwb  \
+        $srcdir/usr/lib/cups/filter/brother_lpdwrapper_ql820nwb
 }
 
 package() {
