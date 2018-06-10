@@ -2,9 +2,9 @@
 
 _cranname=viridisLite
 _cranver=0.3.0
-pkgname="r-cran-viridislite"
+pkgname="r-viridislite"
 pkgver="${_cranver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Default Color Maps from 'matplotlib' (Lite Version)"
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('i686' 'x86_64')
