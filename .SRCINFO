@@ -1,0 +1,17 @@
+pkgbase = litesata-git
+	pkgdesc = A small footprint and configurable SATA core
+	pkgver = 162
+	pkgrel = 1
+	url = https://github.com/enjoy-digital/litesata
+	arch = any
+	license = MIT
+	depends = python
+	depends = migen
+	depends = litex
+	provides = litesata
+	options = !emptydirs
+	source = git+https://github.com/enjoy-digital/litesata
+	sha256sums = SKIP
+
+pkgname = litesata-git
+
