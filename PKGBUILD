@@ -9,7 +9,7 @@ pkgdesc="Markov Chain Monte Carlo (MCMC) Package"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
-depends=('r' 'r-coda' 'r-mcmc' 'r-quantreg')
+depends=('r' 'r-coda>=0.11.3' 'r-mcmc' 'r-quantreg')
 
 
 
