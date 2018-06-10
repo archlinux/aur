@@ -8,8 +8,8 @@ pkgbase = r-httr
 	depends = r
 	depends = r-jsonlite
 	depends = r-mime
-	depends = r-curl
-	depends = r-openssl
+	depends = r-curl>=0.9.1
+	depends = r-openssl>=0.8
 	optdepends = r-httpuv
 	optdepends = r-jpeg
 	optdepends = r-knitr
