@@ -1,4 +1,5 @@
-# Maintainer: mar77i <mar77i at mar77i dot ch>
+# Maintainer: anyway <jb at abbadie.fr>
+# Past Maintainer: mar77i <mar77i at mar77i dot ch>
 # Past Maintainer: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Scytrin dai Kinthra <scytrin@gmail.com>
 
