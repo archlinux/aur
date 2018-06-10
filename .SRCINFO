@@ -5,7 +5,7 @@ pkgbase = jdk-docs
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	arch = any
 	license = custom:Oracle
-	optdepends = java-environment>=10: Compile and run examples
+	depends = java-environment>=10
 	options = !strip
 	source = http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_doc-all.zip
 	source = LICENSE-Oracle-Legal-Notices.txt
