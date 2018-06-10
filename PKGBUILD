@@ -1,7 +1,7 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=luxcorerender
-pkgver=2.0
-pkgrel=3
+pkgver=2.1
+pkgrel=1
 pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
@@ -13,35 +13,31 @@ makedepends=(git doxygen cmake python-pyside-tools opencl-headers)
 conflicts=(luxrays-hg)
 provides=(luxrays)
 options=('!buildflags')
-source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${pkgver}.tar.gz"
+source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${pkgver}alpha1.tar.gz"
         "python.patch"
         "glfw.patch"
-        "embree.patch"
-        "embree.cmake.patch"
         )
-md5sums=('0db60d1e436ab4207b0b75e04e86b6ec'
-         'c3536b26275f02baf1d23571690f65ec'
-         '624f2be4cb431f6a4cfcc968d6263ac2'
-         '98872cf35ba87cb23cc045cfcae1b0ed'
-         'eba9a9c5d5564a84a70c381a476a4c9c')
+md5sums=('43ec2a57c44681c2ebc308a563d15e60'
+         'a1b1594fbb809597759d0573702c06b2'
+         '624f2be4cb431f6a4cfcc968d6263ac2')
 
 prepare() {
-  cd ${srcdir}/LuxCore-${pkgname}_v${pkgver}/
+  cd ${srcdir}/LuxCore-${pkgname}_v${pkgver}alpha1
+  msg "python.patch"
   patch -Np1 < ../python.patch
+  msg "glfw.patch"
   patch -Np1 < ../glfw.patch
-  patch -Np1 < ../embree.patch
-  patch -Np1 < ../embree.cmake.patch
 }
 
 build() {
-  cd ${srcdir}/LuxCore-${pkgname}_v${pkgver}
+  cd ${srcdir}/LuxCore-${pkgname}_v${pkgver}alpha1
   mkdir -p build && cd build
   cmake ..
   make
 }
 
 package() {
-  cd ${srcdir}/LuxCore-${pkgname}_v${pkgver}/build
+  cd ${srcdir}/LuxCore-${pkgname}_v${pkgver}alpha1/build
 
   install -d -m755 ${pkgdir}/usr/{bin,include,lib}
   install -m755 bin/* ${pkgdir}/usr/bin
