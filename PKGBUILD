@@ -3,10 +3,9 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.1.449
+pkgver=1.2.679
 _gwtver=2.8.1
 _ginver=2.1.2
-_clangver=6.0.1
 _qtver=5.10.1
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
@@ -52,14 +51,12 @@ prepare() {
     cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
 
     cd "${srcdir}/${_gitname}/dependencies/common"
-    install -d pandoc libclang/{3.5,builtin-headers}
+    install -d pandoc
  
     ln -sfT /usr/share/myspell/dicts dictionaries
     ln -sfT /usr/share/mathjax mathjax-26
     ln -sfT /usr/bin/pandoc pandoc/pandoc
     ln -sfT /usr/bin/pandoc-citeproc pandoc/pandoc-citeproc
-    ln -sfT /usr/lib/libclang.so libclang/3.5/libclang.so
-    ln -sfT /usr/lib/clang/$_clangver/include libclang/builtin-headers/3.5
  
     msg "Downloading and installing R packages..."
     bash install-packages
