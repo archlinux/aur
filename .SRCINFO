@@ -1,0 +1,16 @@
+pkgbase = lc0-client-git
+	pkgdesc = Client for games generation to train Leela Chess Zero.
+	pkgver = 65
+	pkgrel = 1
+	url = https://lczero.org/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = go
+	depends = lc0-cudnn-git
+	source = lc0-client::git+https://github.com/LeelaChessZero/lczero-client.git
+	md5sums = SKIP
+
+pkgname = lc0-client-git
+
