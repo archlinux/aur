@@ -4,8 +4,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr52
-pkgver=52.8.0
-pkgrel=2
+pkgver=52.8.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release 52.x"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -28,7 +28,7 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
         use_noexcept_in_mozalloc.patch
         ffmpeg4.patch.gz)
-sha256sums=('babed4fe0ae95783e39358aedf7111b20fd9442f73b3b41b025fa4951fe76287'
+sha256sums=('487b4b7fe9a4aeb4dfd63991030b5df47d73f7a17ef917ba1036055f0049cf7b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
