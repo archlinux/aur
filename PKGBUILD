@@ -9,7 +9,7 @@ pkgdesc="Markdown Rendering for R"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL2')
-depends=('r' 'r-mime')
+depends=('r' 'r-mime>=0.3')
 
 optdepends=('r-knitr')
 

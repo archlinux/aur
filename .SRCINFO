@@ -6,7 +6,7 @@ pkgbase = r-markdown
 	arch = x86_64
 	license = GPL2
 	depends = r
-	depends = r-mime
+	depends = r-mime>=0.3
 	optdepends = r-knitr
 	source = https://cran.r-project.org/src/contrib/markdown_0.8.tar.gz
 	md5sums = 5dde829a865ad65bab37a2b9d243b071
