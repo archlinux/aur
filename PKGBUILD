@@ -55,6 +55,7 @@ fi
 if [[ -f static ]]; then
   _static_build=true
   _uber_minimal=true
+  _float=true
 fi
 
 if [[ -f testing ]]; then
