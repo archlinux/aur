@@ -9,7 +9,7 @@ pkgdesc="Call R from R"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
-depends=('r' 'r-processx')
+depends=('r' 'r-processx>=3.1.0')
 
 optdepends=('r-covr' 'r-testthat' 'r-withr')
 

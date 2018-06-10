@@ -6,7 +6,7 @@ pkgbase = r-callr
 	arch = any
 	license = MIT
 	depends = r
-	depends = r-processx
+	depends = r-processx>=3.1.0
 	optdepends = r-covr
 	optdepends = r-testthat
 	optdepends = r-withr
