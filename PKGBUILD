@@ -9,7 +9,7 @@ pkgdesc="A General-Purpose Package for Dynamic Report Generation in R"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
-depends=('r' 'r-evaluate' 'r-highr' 'r-markdown' 'r-stringr' 'r-yaml')
+depends=('r' 'r-evaluate>=0.10' 'r-highr' 'r-markdown' 'r-stringr>=0.6' 'r-yaml')
 
 optdepends=('pandoc' 'r-testit' 'r-digest' 'r-rgl' 'r-rmarkdown' 'r-htmlwidgets' 'r-webshot' 'r-tikzdevice' 'r-tinytex' 'r-xfun' 'r-reticulate' 'r-juliacall' 'r-png' 'r-jpeg' 'r-xml2' 'r-httr' 'r-dbi' 'r-showtext' 'r-tibble')
 
