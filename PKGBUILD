@@ -24,7 +24,7 @@ prepare() {
     fi
   done
 
-  mkdir "../systemd"
+  mkdir -p "../systemd"
   cd "../systemd"
 
   ### "Label|NumberOfKeptSnapshots|systemd-timer-spec" of snapshots,
