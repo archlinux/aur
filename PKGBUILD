@@ -9,7 +9,7 @@ pkgdesc="A Linter for R Code"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
-depends=('r' 'r-rex' 'r-crayon' 'r-stringdist' 'r-testthat' 'r-digest' 'r-igraph' 'r-rstudioapi' 'r-httr' 'r-jsonlite' 'r-knitr')
+depends=('r' 'r-rex' 'r-crayon' 'r-stringdist' 'r-testthat' 'r-digest' 'r-igraph' 'r-rstudioapi>=0.2' 'r-httr' 'r-jsonlite' 'r-knitr')
 
 optdepends=('libxml2' 'glpk' 'r-rmarkdown' 'r-mockery')
 

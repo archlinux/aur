@@ -12,7 +12,7 @@ pkgbase = r-lintr
 	depends = r-testthat
 	depends = r-digest
 	depends = r-igraph
-	depends = r-rstudioapi
+	depends = r-rstudioapi>=0.2
 	depends = r-httr
 	depends = r-jsonlite
 	depends = r-knitr
