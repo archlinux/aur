@@ -1,6 +1,6 @@
 pkgbase = clojure-install
 	pkgdesc = The Clojure Programming Language
-	pkgver = 1.9.0.326
+	pkgver = 1.9.0.381
 	pkgrel = 3
 	url = http://clojure.org/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = clojure-install
 	depends = java-environment
 	depends = bash
 	optdepends = rlwrap: friendlier shell with readline support
-	source = https://download.clojure.org/install/clojure-tools-1.9.0.326.tar.gz
-	md5sums = 429664337347ed1bff084ed2ba2d987e
+	source = https://download.clojure.org/install/clojure-tools-1.9.0.381.tar.gz
+	md5sums = a7b0075d0e23e2b57dbd0308bcc4aed3
 
 pkgname = clojure-install
 

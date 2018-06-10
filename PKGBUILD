@@ -1,7 +1,7 @@
 # Maintainer: Santiago Pelufo <santiagopelufo@gmail.com>
 
 pkgname=clojure-install
-pkgver=1.9.0.326
+pkgver=1.9.0.381
 pkgrel=3
 pkgdesc='The Clojure Programming Language'
 url='http://clojure.org/'
@@ -11,7 +11,7 @@ depends=('java-environment' 'bash')
 makedepends=('java-environment' 'sed')
 optdepends=('rlwrap: friendlier shell with readline support')
 source=("https://download.clojure.org/install/clojure-tools-$pkgver.tar.gz")
-md5sums=('429664337347ed1bff084ed2ba2d987e')
+md5sums=('a7b0075d0e23e2b57dbd0308bcc4aed3')
 
 package() {
 	install -Dm644 "$srcdir/clojure-tools/deps.edn" "$pkgdir/usr/lib/clojure/deps.edn"
