@@ -3,7 +3,7 @@
 _name=nimfa
 pkgbase='python-nimfa'
 pkgname=('python-nimfa' 'python2-nimfa')
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Nonnegative matrix factorization in Python"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=(
   'python2' 'python2-setuptools')
 options=(!emptydirs)
 source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
-sha256sums=('87171493f5af8201297ea67938342e98277e7726ae8ff010b4c7738948ce0c47')
+sha256sums=('651376eba6b049fe270dc0d29d4b2abecb5e998c2013df6735a97875503e2ffe')
 
 prepare() {
   cp -a nimfa-"${pkgver}"{,-py2}
@@ -34,11 +34,7 @@ build(){
 }
 
 package_python2-nimfa() {
-  depends=(
-    'python2'
-    'python2-numpy'
-    'python2-scipy'
-  )
+  depends=('python2' 'python2-numpy' 'python2-scipy')
 
   cd nimfa-"${pkgver}"-py2
   python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
@@ -46,11 +42,7 @@ package_python2-nimfa() {
 }
 
 package_python-nimfa() {
-  depends=(
-    'python'
-    'python-numpy'
-    'python-scipy'
-  )
+  depends=('python' 'python-numpy' 'python-scipy')
 
   cd nimfa-"${pkgver}"
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
