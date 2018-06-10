@@ -6,9 +6,9 @@ pkgbase = r-haven
 	arch = x86_64
 	license = MIT
 	depends = r
-	depends = r-forcats
+	depends = r-forcats>=0.2.0
 	depends = r-hms
-	depends = r-readr
+	depends = r-readr>=0.1.0
 	depends = r-tibble
 	optdepends = r-covr
 	optdepends = r-knitr
