@@ -3,15 +3,22 @@
 
 pkgname=qtspell
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Spell checking for Qt text widgets"
 arch=('i686' 'x86_64')
 url="https://github.com/manisandro/qtspell"
 license=('GPL3')
 depends=('enchant' 'iso-codes' 'qt5-tools')
-makedepends=('cmake')
-source=("git+https://github.com/manisandro/$pkgname.git#tag=$pkgver")
-sha256sums=('SKIP')
+makedepends=('cmake' 'doxygen')
+source=("git+https://github.com/manisandro/$pkgname.git#tag=$pkgver"
+        "fix-deprecated-macro.patch")
+sha256sums=('SKIP'
+            '5c5aed476d1d6a5a2877863a9ff6689bbe1e8c3aefcd06dff9badde6bdb5a4b1')
+
+prepare() {
+	cd "$srcdir/$pkgname"
+	patch -p1 -i "$srcdir/fix-deprecated-macro.patch"
+}
 
 build() {
     cd "$srcdir/$pkgname"

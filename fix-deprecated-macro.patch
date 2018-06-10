@@ -1,0 +1,29 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,7 +74,7 @@
+ 
+ ADD_LIBRARY(qtspell SHARED ${qtspell_SRCS} ${qtspell_MOC} ${qtspell_HDRS} ${qtspell_MOC_HDRS} ${qtspell_QM})
+ IF(USE_QT5)
+-    QT5_USE_MODULES(qtspell Widgets)
++    TARGET_LINK_LIBRARIES(qtspell Qt5::Core Qt5::Widgets)
+ ELSE(USE_QT5)
+     QT4_USE_MODULES(qtspell Core Gui)
+ ENDIF(USE_QT5)
+@@ -92,7 +92,7 @@
+ IF(${BUILD_STATIC_LIBS})
+     ADD_LIBRARY(qtspell-static STATIC ${qtspell_SRCS} ${qtspell_MOC} ${qtspell_HDRS} ${qtspell_MOC_HDRS} ${qtspell_QM})
+     IF(USE_QT5)
+-        QT5_USE_MODULES(qtspell-static Widgets)
++        TARGET_LINK_LIBRARIES(qtspell-static Qt5::Core Qt5::Widgets)
+     ELSE(USE_QT5)
+         QT4_USE_MODULES(qtspell-static Core Gui)
+     ENDIF(USE_QT5)
+@@ -124,7 +124,7 @@
+ ENDIF(USE_QT5)
+ ADD_EXECUTABLE(example examples/example.cpp ${example_MOC})
+ IF(USE_QT5)
+-    QT5_USE_MODULES(example Widgets)
++    TARGET_LINK_LIBRARIES(example Qt5::Core Qt5::Widgets)
+ ELSE(USE_QT5)
+     QT4_USE_MODULES(example Core Gui)
+ ENDIF(USE_QT5)
