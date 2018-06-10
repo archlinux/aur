@@ -5,7 +5,7 @@
 
 pkgbase=linux-x205ta
 _srcname=linux-4.16
-pkgver=4.16.11
+pkgver=4.16.13
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -20,7 +20,8 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
+  0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 
   https://raw.githubusercontent.com/harryharryharry/x205ta-iso2usb-files/master/brcmfmac43340-sdio.txt
   https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/i915-pm-Be-less-agressive-with-clockfreq-changes-on-Bay-Trail.patch
@@ -43,14 +44,15 @@ validpgpkeys=(
 )
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
-            'd0d998f193c3feeab95f1378dea15aa6ba145f591661547cc00ef16d161651fe'
+            '9efa0a74eb61240da53bd01a3a23759e0065811de53d22de7d679eabf847f323'
             'SKIP'
             'b4961bd274997ba09dc72fb1cd88df4df307fd851871c300250484e233cd1d5f'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'b01e9bd4e0f3cc2b91db1d8c043b2d85329bd0c9a9441a91d337c3c33661b658'
-            '09170daf49fe4cb720f331cd2da1c75771eb4f9f124353bf035218b1f8ca57d1'
+            '8d6a5f34b3d79e75b0cb888c6bcf293f84c5cbb2757f7bdadafee7e0ea77d7dd'
+            '2454c1ee5e0f5aa119fafb4c8d3b402c5e4e10b2e868fe3e4ced3b1e2aa48446'
+            '8114295b8c07795a15b9f8eafb0f515c34661a1e05512da818a34581dd30f87e'
             'aea75c0b07673f701856e3c2a35db33c041fdaf0bd5ef2927fb25b1bce2c2b62'
             '5ad7e021452deffd387a5b81abcd0f608f8141eaab56fbdd162ca0b7966fc3b4'
             '3845aeb3744372b716c668283b23972d76e482d8c69b107e13a13669e5671d06'
@@ -73,8 +75,11 @@ prepare() {
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
+  # https://bugs.archlinux.org/task/56780
+  patch -Np1 -i ../0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
+
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  patch -Np1 -i ../0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 
   # Here start x205ta patches
   # Refer to https://github.com/harryharryharry/x205ta-patches for harryharryharry's gathered patches
