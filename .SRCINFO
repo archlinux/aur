@@ -6,7 +6,7 @@ pkgbase = r-ttr
 	arch = x86_64
 	license = GPL2
 	depends = r
-	depends = r-xts
+	depends = r-xts>=0.10.0
 	depends = r-zoo
 	depends = r-curl
 	depends = r-xts
