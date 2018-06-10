@@ -19,7 +19,8 @@ backup=('etc/mysql/my.cnf'
 options=()
 install=mariadb.install
 validpgpkeys=('199369E5404BD5FC7D2FE43BCBCB082A1BB943DB')
-source=("https://ftp.heanet.ie/mirrors/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc})
+source=("https://ftp.heanet.ie/mirrors/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"
+		"https://ftp.heanet.ie/mirrors/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz.asc")
 sha256sums=('e990afee6ae7cf9ac40154d0e150be359385dd6ef408ad80ea30df34e2c164cf' 'SKIP')
 
 build() {
