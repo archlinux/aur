@@ -2,7 +2,7 @@
 
 pkgname=zig
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='a programming language prioritizing robustness, optimality, and clarity'
 arch=('x86_64')
 url='https://ziglang.org/'
@@ -15,6 +15,7 @@ sha256sums=('29c9beb172737f4d5019b88ceae829ae8bc6512fb4386cfbf895ae2b42aa6965')
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     patch -Np1 -i "$srcdir/../force_dynamic_llvm.patch"
+    patch -Np1 -i "$srcdir/../no_stage2_artifacts.patch"
 }
 
 build() {
