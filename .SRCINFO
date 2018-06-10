@@ -6,8 +6,8 @@ pkgbase = r-bayesplot
 	arch = any
 	license = GPL3
 	depends = r
-	depends = r-dplyr
-	depends = r-ggplot2
+	depends = r-dplyr>=0.7.1
+	depends = r-ggplot2>=2.2.1
 	depends = r-reshape2
 	depends = r-rlang
 	depends = r-ggridges
