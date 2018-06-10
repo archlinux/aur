@@ -9,7 +9,7 @@ pkgdesc="Memoisation of Functions"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
-depends=('r' 'r-digest')
+depends=('r' 'r-digest>=0.6.3')
 
 optdepends=('r-testthat' 'r-aws.s3' 'r-httr' 'r-covr')
 

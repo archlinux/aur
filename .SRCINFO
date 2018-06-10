@@ -6,7 +6,7 @@ pkgbase = r-memoise
 	arch = any
 	license = MIT
 	depends = r
-	depends = r-digest
+	depends = r-digest>=0.6.3
 	optdepends = r-testthat
 	optdepends = r-aws.s3
 	optdepends = r-httr
