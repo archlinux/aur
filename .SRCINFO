@@ -8,14 +8,15 @@ pkgbase = zig-git
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	depends = llvm
 	depends = clang
-	depends = libxml2
-	depends = zlib
 	provides = zig
 	conflicts = zig
 	source = git://github.com/zig-lang/zig.git
+	source = force_dynamic_llvm.patch
+	source = no_stage2_artifacts.patch
 	md5sums = SKIP
+	md5sums = 9a935ede50ab8f1a789349fc3b760c1c
+	md5sums = cb0bbf9c19971a48eff41e8c764ac990
 
 pkgname = zig-git
 

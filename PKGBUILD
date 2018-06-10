@@ -7,12 +7,12 @@ pkgdesc="a programming language prioritizing robustness, optimality, and clarity
 arch=('i686' 'x86_64')
 url='http://ziglang.org'
 license=('MIT')
-depends=('llvm' 'clang' 'libxml2' 'zlib')
+depends=('clang')
 makedepends=('cmake' 'git')
 provides=(zig)
 conflicts=(zig)
-source=("git://github.com/zig-lang/zig.git")
-md5sums=('SKIP')
+source=("git://github.com/zig-lang/zig.git" 'force_dynamic_llvm.patch' 'no_stage2_artifacts.patch')
+md5sums=('SKIP' '9a935ede50ab8f1a789349fc3b760c1c' 'cb0bbf9c19971a48eff41e8c764ac990')
 
 prepare() {
     cd "$srcdir/$provides"
