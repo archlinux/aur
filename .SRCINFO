@@ -1,6 +1,6 @@
 pkgbase = python-palettable
 	pkgdesc = Color palettes for Python
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 2
 	url = https://pypi.org/project/palettable
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = python-palettable
 	makedepends = python2-setuptools
 	replaces = python-brewer2mpl
 	options = !emptydirs
-	source = python-palettable-3.1.0.tar.gz::https://pypi.io/packages/source/p/palettable/palettable-3.1.0.tar.gz
+	source = python-palettable-3.1.1.tar.gz::https://pypi.io/packages/source/p/palettable/palettable-3.1.1.tar.gz
 	source = https://raw.githubusercontent.com/jiffyclub/palettable/d267e4aa8f746ab800d4998e670d60eca13f32cd/license.txt
-	sha256sums = 4c6f6531b93d97eb0bf4d707160626261de11470c47e2d017ac6bb569b5308aa
+	sha256sums = 0685b223a236bb7e2a900ef7a855ccf9a4027361c8acf400f3b350ea51870f80
 	sha256sums = 06982353629cfa6b7b339fa4cfccd6eca5a4434d5caefb7c32e68baa41a1be7c
 
 pkgname = python-palettable

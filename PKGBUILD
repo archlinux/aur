@@ -4,7 +4,7 @@
 _name=palettable
 pkgbase='python-palettable'
 pkgname=('python-palettable' 'python2-palettable')
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=2
 pkgdesc="Color palettes for Python"
 arch=('any')
@@ -20,7 +20,7 @@ source=(
   https://raw.githubusercontent.com/jiffyclub/palettable/d267e4aa8f746ab800d4998e670d60eca13f32cd/license.txt
 )
 sha256sums=(
-  '4c6f6531b93d97eb0bf4d707160626261de11470c47e2d017ac6bb569b5308aa'
+  '0685b223a236bb7e2a900ef7a855ccf9a4027361c8acf400f3b350ea51870f80'
   '06982353629cfa6b7b339fa4cfccd6eca5a4434d5caefb7c32e68baa41a1be7c'
 )
 
