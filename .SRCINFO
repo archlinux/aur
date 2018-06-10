@@ -1,0 +1,41 @@
+pkgbase = mariadb-all
+	pkgdesc = Latast MariaDB package contaning libmariadbclient mariadb-clients mytop mariadb
+	pkgver = 10.3.7
+	pkgrel = 1
+	url = https://mariadb.com
+	install = mariadb.install
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = bzip2
+	makedepends = cmake
+	makedepends = jemalloc
+	makedepends = libaio
+	makedepends = libxml2
+	makedepends = lz4
+	makedepends = lzo
+	makedepends = openssl
+	makedepends = systemd
+	makedepends = zlib
+	provides = mariadb=10.3.7
+	provides = libmariadbclient=10.3.7
+	provides = mariadb-clients=10.3.7
+	provides = mytop=10.3.7
+	conflicts = mytop
+	conflicts = mariadb
+	conflicts = libmariadbclient
+	conflicts = mariadb-clients
+	replaces = mytop
+	replaces = mariadb
+	replaces = libmariadbclient
+	replaces = mariadb-clients
+	backup = etc/mysql/my.cnf
+	backup = etc/mysql/wsrep.cnf
+	source = https://ftp.heanet.ie/mirrors/mariadb/mariadb-10.3.7/source/mariadb-10.3.7.tar.gz
+	source = https://ftp.heanet.ie/mirrors/mariadb/mariadb-10.3.7/source/mariadb-10.3.7.tar.gz.asc
+	validpgpkeys = 199369E5404BD5FC7D2FE43BCBCB082A1BB943DB
+	sha256sums = e990afee6ae7cf9ac40154d0e150be359385dd6ef408ad80ea30df34e2c164cf
+	sha256sums = SKIP
+
+pkgname = mariadb-all
+
