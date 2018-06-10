@@ -9,7 +9,7 @@ pkgdesc="Easily Harvest (Scrape) Web Pages"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
-depends=('r' 'r-xml2' 'r-httr' 'r-selectr' 'r-magrittr')
+depends=('r' 'r-xml2' 'r-httr>=0.5' 'r-selectr' 'r-magrittr')
 
 optdepends=('r-testthat' 'r-knitr' 'r-png' 'r-stringi' 'r-rmarkdown' 'r-covr')
 
