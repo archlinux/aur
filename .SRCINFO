@@ -6,14 +6,14 @@ pkgbase = r-dbplyr
 	arch = any
 	license = MIT
 	depends = r
-	depends = r-assertthat
-	depends = r-dbi
-	depends = r-dplyr
-	depends = r-glue
-	depends = r-purrr
-	depends = r-rlang
-	depends = r-tibble
-	depends = r-tidyselect
+	depends = r-assertthat>=0.2.0
+	depends = r-dbi>=0.7
+	depends = r-dplyr>=0.7.4
+	depends = r-glue>=1.2.0
+	depends = r-purrr>=0.2.4
+	depends = r-rlang>=0.1.6
+	depends = r-tibble>=1.4.1
+	depends = r-tidyselect>=0.2.2
 	optdepends = r-bit64
 	optdepends = r-covr
 	optdepends = r-knitr
