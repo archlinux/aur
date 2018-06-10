@@ -1,7 +1,7 @@
-pkgbase = r-cran-cli
+pkgbase = r-cli
 	pkgdesc = R tools to design and build attractive CLI interfaces with ASCII and unicode support
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cran.r-project.org/web/packages/cli/index.html
 	arch = i686
 	arch = x86_64
@@ -12,5 +12,5 @@ pkgbase = r-cran-cli
 	source = http://cran.r-project.org/src/contrib/cli_1.0.0.tar.gz
 	sha256sums = 8fa3dbfc954ca61b8510f767ede9e8a365dac2ef95fe87c715a0f37d721b5a1d
 
-pkgname = r-cran-cli
+pkgname = r-cli
 
