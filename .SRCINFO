@@ -1,0 +1,27 @@
+pkgbase = kreds-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.0.0
+	pkgrel = 5
+	url = https://www.kredsblockchain.com/
+	install = kreds-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = kreds
+	source = kreds-qt::git+https://github.com/KredsBlockchain/kreds-core.git
+	source = kreds-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 6e25b4d68cf6df9684a554328c3a5cf2fbe9641203437b11901e128c17639369
+
+pkgname = kreds-qt
+
