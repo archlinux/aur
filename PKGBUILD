@@ -2,20 +2,18 @@
 # Co-maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker-git
-pkgver=r378.bcb4240
+pkgver=r504.34e4020
 pkgrel=1
 pkgdesc="The new cmsMake!"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/algorithm-ninja/task-maker"
 license=('MPL2')
-depends=('python' 'libyaml')
-makedepends=('bazel')
+depends=('python' 'protobuf' 'grpc')
+makedepends=('cmake' 'gmock' 'gtest' 'cli11' 'nlohmann-json' 'plog' 'python-pip')
 provides=('task-maker')
 conflicts=('task-maker')
-source=("git+https://github.com/algorithm-ninja/task-maker.git"
-        "launcher")
-sha384sums=('SKIP'
-            '28377283ca07a411f1283e8067a30903a4726f66f765e22b8e33b06aece11a944adef9532f5d79a37a97f3c7d4293db6')
+source=("git+https://github.com/algorithm-ninja/task-maker.git")
+sha384sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/task-maker"
@@ -24,20 +22,13 @@ pkgver() {
 
 build() {
     cd "$srcdir/task-maker"
-    export PYTHON_BIN_PATH=/usr/bin/python
-    export USE_DEFAULT_PYTHON_LIB_PATH=1
-    mkdir -p tmp
-    bazel --output_base=./tmp build --python_path=python3 -c opt //python:task_maker
+    rm -rf build && mkdir -p build
+    cd build
+    cmake -DHUNTER_ENABLED=OFF -DCMAKE_BUILD_TYPE=Release ..
+    make
 }
 
 package() {
-    mkdir -p "$pkgdir/opt/task-maker-git/"
-    mkdir -p "$pkgdir/usr/bin/"
-    cp "$srcdir/launcher" "$pkgdir/usr/bin/task-maker"
-    cd "$srcdir/task-maker"
-    cd bazel-bin/python
-    for f in $(find -type l); do
-        cp --remove-destination "$(readlink "$f")" "$f"
-    done
-    cp -r task_maker* "$pkgdir/opt/task-maker-git/"
+    cd "$srcdir/task-maker/build/python"
+    python setup.py install --root="$pkgdir/" --optimize=1
 }

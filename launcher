@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/opt/task-maker-git/task_maker "$@"
