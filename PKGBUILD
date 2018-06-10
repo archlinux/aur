@@ -3,9 +3,9 @@
 
 _cranname=lubridate
 _cranver=1.7.4
-pkgname=r-cran-$_cranname
+pkgname=r-$_cranname
 pkgver=${_cranver}
-pkgrel=4
+pkgrel=5
 pkgdesc="Functions to work with date-times and time-spans"
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('i686' 'x86_64')
