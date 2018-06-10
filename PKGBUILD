@@ -1,14 +1,14 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=dgedit
 pkgname=$_pkgname-git
-pkgver=0.r9.9af1d8c
+pkgver=0.r28.eeef75b
 pkgrel=1
 pkgdesc="The DrumGizmo drumkit editor"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.drumgizmo.org/wiki/doku.php?id=getting_dgedit"
 license=('GPL')
-depends=('qt4' 'libao' 'libsndfile')
-makedepends=('git' 'qt5-base')
+depends=('qt5-base' 'libao' 'libsndfile')
+makedepends=('git' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+http://git.drumgizmo.org/dgedit.git")
