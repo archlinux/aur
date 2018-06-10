@@ -12,7 +12,7 @@ pkgbase = r-jsonlite
 	optdepends = r-testthat
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	optdepends = r-cran-sp
+	optdepends = r-sp
 	source = https://cran.r-project.org/src/contrib/jsonlite_1.5.tar.gz
 	md5sums = 2a81c261a702fccbbd5d2b32df108f76
 
