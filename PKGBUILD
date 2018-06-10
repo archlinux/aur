@@ -1,7 +1,7 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=meshlab
 pkgver=2016.12
-pkgrel=6
+pkgrel=7
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
 url="http://www.meshlab.net"
@@ -33,6 +33,7 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git#tag=v2016.12"
         "mpir.patch"
         "rpath.patch"
         "import_bundle_out.patch"
+        "qt5.11.patch"
         "meshlab.desktop")
 md5sums=('SKIP'
          'SKIP'
@@ -55,6 +56,7 @@ md5sums=('SKIP'
          '5df295c21de5bac8d6073528823d975a'
          '78bf780b3353fe212a77eb91db6f6b6c'
          '765a59b64dd05b74f6a4bdf3962a1d93'
+         '819d54d1b5e0f6b4dfbe13bbee8d9dac'
          '18aed0a21276a22325bf8c32166fb110')
 
 prepare() {
@@ -102,6 +104,8 @@ prepare() {
   patch -Np1 -i ../filter_sketchfab.patch
   msg "fix filter voronoi.patch"
   patch -Np1 -i ../filter_voronoi.patch 
+  msg "fix qt5.11 compatibility"
+  patch -Np1 -i ../qt5.11.patch
 
   msg "fix bundel/nvm ReadHeader"
   cd ${srcdir}/vcglib
