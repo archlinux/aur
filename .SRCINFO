@@ -1,15 +1,15 @@
 pkgbase = gbml-git
 	pkgdesc = Backup utility and database for Linux Steam games
 	pkgver = v1.4.0.0
-	pkgrel = 2
-	url = https://github.com/supremesonicbrazil/GBML
+	pkgrel = 3
+	url = https://gitlab.com/supremesonicbrazil/GBML
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = sqlite>=3.0
 	depends = qt5-base>=5.5.0
 	replaces = slsk-git
-	source = git+https://github.com/supremesonicbrazil/GBML
+	source = git+https://gitlab.com/supremesonicbrazil/GBML
 	md5sums = SKIP
 
 pkgname = gbml-git
