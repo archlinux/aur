@@ -1,0 +1,17 @@
+pkgbase = litesdcard-git
+	pkgdesc = A small footprint and configurable SDCard core
+	pkgver = 188
+	pkgrel = 1
+	url = https://github.com/enjoy-digital/litesdcard
+	arch = any
+	license = MIT
+	depends = python
+	depends = migen
+	depends = litex
+	provides = litesdcard
+	options = !emptydirs
+	source = git+https://github.com/enjoy-digital/litesdcard
+	sha256sums = SKIP
+
+pkgname = litesdcard-git
+
