@@ -12,7 +12,7 @@ pkgbase = r-testthat
 	depends = r-magrittr
 	depends = r-praise
 	depends = r-rlang
-	depends = r-withr
+	depends = r-withr>=2.0.0
 	optdepends = r-covr
 	optdepends = r-devtools
 	optdepends = r-knitr
