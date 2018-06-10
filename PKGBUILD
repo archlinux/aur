@@ -8,7 +8,7 @@ _pkgname=armagetronad
 pkgname=$_pkgname-bzr
 _pkgver=0.4
 pkgver='r1622'
-pkgrel=4
+pkgrel=5
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
 url='http://armagetronad.net/'
@@ -53,7 +53,7 @@ package() {
      install -D -m 644 "desktop/$_pkgname-armagetronad.desktop" "$pkgdir/usr/share/applications/$_pkgname-armagetronad.desktop"
      install -d "$pkgdir/usr/share/pixmaps/"
      ln -s /usr/share/armagetronad/desktop/icons/large/armagetronad.png \
-           "$pkgdir/usr/share/pixmaps/armagetronad.png"
+           "$pkgdir/usr/share/pixmaps/$_pkgname-armagetronad.png"
      mv "$pkgdir/usr/bin/armagetronad" "$pkgdir/usr/bin/armagetronad_bin"
      printf "#!/bin/bash\n/usr/bin/armagetronad_bin --configdir /etc/armagetronad --datadir /usr/share/armagetronad" > "$pkgdir/usr/bin/armagetronad"
      chmod +x "$pkgdir/usr/bin/armagetronad"
