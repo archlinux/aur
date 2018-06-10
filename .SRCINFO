@@ -1,0 +1,17 @@
+pkgbase = liteusb-git
+	pkgdesc = A small footprint and configurable USB core
+	pkgver = 32
+	pkgrel = 1
+	url = https://github.com/enjoy-digital/liteusb
+	arch = any
+	license = MIT
+	depends = python
+	depends = migen
+	depends = litex
+	provides = liteusb
+	options = !emptydirs
+	source = git+https://github.com/enjoy-digital/liteusb
+	sha256sums = SKIP
+
+pkgname = liteusb-git
+
