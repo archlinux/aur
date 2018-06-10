@@ -12,10 +12,12 @@ depends=('python' 'poco' 'qwt' 'soapysdr-git' 'portaudio')
 makedepends=('git' 'nlohmann-json')
 source=(
     "git+https://github.com/pothosware/PothosCore.git#tag=pothos-$pkgver"
+    "spuce-qt-workaround.diff"
     "PothosFlow.desktop"
 )
 sha256sums=(
     'SKIP'
+    '3bc94fcdd8a944a58906294d35ec8e2bde2ae6d53806f3413c8c302172058f3f'
     '4ace40dfff405cf861845cc0f9cf772a39aabc7f3447f5fdf2d0cb74f9b166c4'
 )
 
@@ -23,7 +25,10 @@ prepare() {
     cd "$srcdir/PothosCore"
     git submodule init
     git submodule deinit poco
-    git submodule update --recursive
+    git submodule update --recursive --force
+    
+    cd spuce
+    git apply "$srcdir/spuce-qt-workaround.diff"
 }
 
 build() {
