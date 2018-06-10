@@ -1,8 +1,9 @@
 _gitname=suru-plus
 pkgname=suru-plus-git
-pkgver=r2.84b10a3
+pkgver=r2.84b10a5
 pkgrel=1
-pkgdesc="An icon pack designed to integrate with most desktop environments"
+pkgdesc="A third-party Suru icons for Ubuntu 18.04
+An elegant, modern and sweet Suru icons based on Suru Icons by Sam Hewitt"
 arch=('any')
 url="https://github.com/gusbemacbe/${_gitname}"
 license=('GPL3')

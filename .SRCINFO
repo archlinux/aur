@@ -1,6 +1,6 @@
 pkgbase = suru-plus-git
-	pkgdesc = An icon pack designed to integrate with most desktop environments
-	pkgver = r2.84b10a3
+	pkgdesc = A third-party Suru icons for Ubuntu 18.04 An elegant, modern and sweet Suru icons based on Suru Icons by Sam Hewitt
+	pkgver = r2.84b10a5
 	pkgrel = 1
 	url = https://github.com/gusbemacbe/suru-plus
 	arch = any
