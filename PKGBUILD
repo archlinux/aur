@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
 license=('MIT')
 depends=('gobject-introspection-runtime' 'gtk2' 'ruby-bundler')
-makedepends=('gobject-introspection')
+makedepends=('gobject-introspection' 'gcc<8')
 optdepends=('alsa-utils: sound notification support'
             'libnotify: notify support')
 source=(
