@@ -3,7 +3,7 @@
 
 pkgname='brother-ql820nwb'
 pkgver=1.1.4r0
-pkgrel=1
+pkgrel=2
 pkgdesc='LPR and CUPS driver for Brother QL-820NWB label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
