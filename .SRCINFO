@@ -5,7 +5,7 @@ pkgbase = jdk-devel-docs
 	url = http://jdk.java.net/11/
 	arch = any
 	license = custom:Oracle
-	optdepends = java-environment>=11: Compile and run examples
+	depends = java-environment>=11
 	options = !strip
 	source = https://download.java.net/java/early_access/jdk11/17/BCL/jdk-11-ea+17_doc-all.zip
 	source = LICENSE-Early-Adopter-Development-Agreement.txt

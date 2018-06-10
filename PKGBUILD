@@ -9,7 +9,7 @@ pkgdesc="Documentation for Oracle Java $_major Development Kit Snapshot"
 arch=('any')
 url="http://jdk.java.net/$_major/"
 license=('custom:Oracle')
-optdepends=("java-environment>=$_major: Compile and run examples")
+depends=("java-environment>=$_major")
 options=('!strip')
 source=("https://download.java.net/java/early_access/jdk${_major}/${_build}/BCL/jdk-${_major}-ea+${_build}_doc-all.zip"
         'LICENSE-Early-Adopter-Development-Agreement.txt')
