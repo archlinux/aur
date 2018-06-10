@@ -1,13 +1,13 @@
 pkgbase = artemis
 	pkgdesc = A genome viewer and annotation tool that visualizes biological sequence features
-	pkgver = 16.0.18
+	pkgver = 17.0.1
 	pkgrel = 1
-	url = http://www.sanger.ac.uk/science/tools/
+	url = https://www.sanger.ac.uk/science/tools/artemis
 	arch = x86_64
 	license = GPL2
 	depends = java-runtime>=1.6
-	source = artemis-16.0.18.tar.gz::ftp://ftp.sanger.ac.uk/pub/resources/software/artemis/v16/v16.0.18/artemis_compiled_v16.0.18.tar.gz
-	sha256sums = a1120ec6248fe03d82ec87e7bcc07ac33bb3db54bff3c532cfec58ba0675f291
+	source = artemis-17.0.1.tar.gz::ftp://ftp.sanger.ac.uk/pub/resources/software/artemis/v17/v17.0.1/artemis_compiled_v17.0.1.tar.gz
+	sha256sums = 4bea5f5c3dab3883f6ec1639adb55190c28f563bcb20e3fdbe0687bd1adccba5
 
 pkgname = artemis
 
