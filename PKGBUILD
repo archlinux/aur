@@ -3,7 +3,7 @@
 
 pkgname=libretro-reicast-oit-git
 pkgver=r2771.f0be7401
-pkgrel=1
+pkgrel=2
 pkgdesc="libretro implementation of Reicast Sega Dreamcast Emulator (OIT version)"
 arch=('i686' 'x86_64')
 url="https://github.com/libretro/reicast-emulator"
