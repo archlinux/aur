@@ -9,11 +9,11 @@ pkgbase = r-rgl
 	depends = r-htmlwidgets
 	depends = r-htmltools
 	depends = r-knitr
-	depends = r-jsonlite
+	depends = r-jsonlite>=0.9.20
 	depends = r-shiny
 	depends = r-magrittr
 	depends = r-crosstalk
-	depends = r-manipulatewidget
+	depends = r-manipulatewidget>=0.9.0
 	optdepends = pandoc
 	optdepends = r-rmarkdown
 	optdepends = r-deldir
