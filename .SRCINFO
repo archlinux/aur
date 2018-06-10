@@ -1,0 +1,21 @@
+pkgbase = python-lazy-property
+	pkgdesc = A Python package for making properties lazy
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jackmaney/lazy-property
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-lazy-property-0.0.1.tar.gz::https://pypi.io/packages/source/l/lazy-property/lazy-property-0.0.1.tar.gz
+	sha256sums = 3a1cd36949b323468731ba569e169415a609d5904d53fffe982055fbe67b1180
+
+pkgname = python-lazy-property
+	depends = python
+
+pkgname = python2-lazy-property
+	depends = python2
+
