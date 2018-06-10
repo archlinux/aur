@@ -9,7 +9,7 @@ pkgdesc="Tools to Make Developing R Packages Easier"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
-depends=('r' 'r-httr' 'r-memoise' 'r-whisker' 'r-digest' 'r-rstudioapi' 'r-jsonlite' 'r-git2r' 'r-withr')
+depends=('r' 'r-httr>=0.4' 'r-memoise>=1.0.0' 'r-whisker' 'r-digest' 'r-rstudioapi>=0.2.0' 'r-jsonlite' 'r-git2r>=0.11.0' 'r-withr')
 
 optdepends=('r-curl' 'r-crayon' 'r-testthat' 'r-biocinstaller' 'r-rmarkdown' 'r-knitr' 'r-hunspell' 'r-lintr' 'r-bitops' 'r-roxygen2' 'r-evaluate' 'r-rversions' 'r-covr' 'r-gmailr')
 

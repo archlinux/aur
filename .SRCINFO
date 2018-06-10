@@ -6,13 +6,13 @@ pkgbase = r-devtools
 	arch = x86_64
 	license = GPL
 	depends = r
-	depends = r-httr
-	depends = r-memoise
+	depends = r-httr>=0.4
+	depends = r-memoise>=1.0.0
 	depends = r-whisker
 	depends = r-digest
-	depends = r-rstudioapi
+	depends = r-rstudioapi>=0.2.0
 	depends = r-jsonlite
-	depends = r-git2r
+	depends = r-git2r>=0.11.0
 	depends = r-withr
 	optdepends = r-curl
 	optdepends = r-crayon
