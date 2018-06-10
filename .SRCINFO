@@ -7,7 +7,7 @@ pkgbase = r-readxl
 	license = GPL3
 	depends = r
 	depends = r-cellranger
-	depends = r-tibble
+	depends = r-tibble>=1.1
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
