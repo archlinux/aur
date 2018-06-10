@@ -1,10 +1,10 @@
-_gitname=SURU-PLUS
+_gitname=suru-plus
 pkgname=suru-plus-git
 pkgver=r2.84b10a3
 pkgrel=1
 pkgdesc="An icon pack designed to integrate with most desktop environments"
 arch=('any')
-url="https://github.com/Magog64/${_gitname}"
+url="https://github.com/gusbemacbe/${_gitname}"
 license=('GPL3')
 makedepends=('git')
 options=('!strip')
@@ -23,9 +23,9 @@ package() {
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
     find ${pkgdir}/usr -type f -name '.directory' -delete
-    rm -rf "$pkgdir/usr/share/icons/SURU-PLUS/.gitignore"
-    rm -rf "$pkgdir/usr/share/icons/SURU-PLUS/.git"
-    rm -rf "$pkgdir/usr/share/icons/SURU-PLUS/.github"
-    rm -rf "$pkgdir/usr/share/icons/SURU-PLUS/.product"
-    rm -rf "$pkgdir/usr/share/icons/SURU-PLUS/configure"
+    rm -rf "$pkgdir/usr/share/icons/suru-plus/.gitignore"
+    rm -rf "$pkgdir/usr/share/icons/suru-plus/.git"
+    rm -rf "$pkgdir/usr/share/icons/suru-plus/.github"
+    rm -rf "$pkgdir/usr/share/icons/suru-plus/.product"
+    rm -rf "$pkgdir/usr/share/icons/suru-plus/configure"
 }
