@@ -1,0 +1,11 @@
+pkgbase = aspell6-ky
+	pkgdesc = Kyrgyz dictionary for aspell
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://aspell.net/
+	arch = any
+	depends = aspell>=0.60
+	source = ftp://ftp.gnu.org/gnu/aspell/dict/ky/aspell6-ky-0.01-0.tar.bz2
+    md5sums = 83ed490464521361867546f9ad4cbaf2
+
+pkgname = aspell6-ky
