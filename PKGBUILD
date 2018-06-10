@@ -5,7 +5,7 @@
 
 pkgname=libvirt
 pkgver=4.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="http://libvirt.org/"
@@ -17,7 +17,7 @@ depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
    'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap' 'libcap-ng'
    'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
    'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'libssh2'
-   'netcf' 'fuse2' 'glusterfs')
+   'netcf' 'fuse2' 'glusterfs' 'ceph-libs')
 optdepends=('ebtables: required for default NAT networking'
       'dnsmasq: required for default NAT/DHCP for guests'
       'bridge-utils: for bridged networking'
