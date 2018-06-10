@@ -9,7 +9,6 @@ pkgdesc="UMIP userland with NEPL and MCoA patches for Mobile IPv6/NEMO operation
 arch=(i686 x86_64)
 url="http://www.nautilus6.org/doc/nepl-howto/nepl-howto.html"
 license=('GPL' 'custom')
-depends=('kernel26-mipl')
 makedepends=(indent)
 provides=(mip6d)
 optdepends=('radvd: to act as a NEMO Mobile Router advertising a MNP on the mobile link')
@@ -30,9 +29,19 @@ build() {
 
   patch -p 1 < $srcdir/${_umipname}-${pkgver}-nepl-${_neplrel}.patch
   patch -p 1 < $srcdir/${_umipname}-${pkgver}-nepl-mcoa-${_neplrel}.patch
-  autoreconf -i 
+}
+
+build() {
+  cd "$srcdir/${_umipname}-${pkgver}"
+
+  autoreconf -i
   ./configure --prefix=/usr --enable-vt
   make CFLAGS=-DNULL=0 || return 1
+}
+
+package() {
+  cd "$srcdir/${_umipname}-${pkgver}"
+
   make DESTDIR="$pkgdir/" install
 
   for file in extras/example-*.conf; do
