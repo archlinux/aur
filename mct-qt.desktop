@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=MCT
+Comment=MCT P2P Cryptocurrency
+Exec=/usr/bin/mct-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/mct128.png
+MimeType=x-scheme-handler/mct;
+Categories=Office;
+Name[en_US]=mct-qt.desktop

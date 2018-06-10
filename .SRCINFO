@@ -1,0 +1,27 @@
+pkgbase = mct-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 18.0.1
+	pkgrel = 1
+	url = https://mct.plus/
+	install = mct-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = mct
+	source = mct-qt::git+https://github.com/mctsystem/mct-coin.git
+	source = mct-qt.desktop
+	sha256sums = SKIP
+	sha256sums = f04285f5b82b65f41949eb15302f92b5ef17a54bf3b3f79044b398a8e9976b47
+
+pkgname = mct-qt
+
