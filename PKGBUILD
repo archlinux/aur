@@ -3,11 +3,11 @@
 # Past Maintainer: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Scytrin dai Kinthra <scytrin@gmail.com>
 
-pkgname=st-git-hm
+pkgname=st-anyway-git
 _pkgname=st
 pkgver=0.8.1.6.gdc3b5ba
 pkgrel=1
-pkgdesc='Simple virtual terminal emulator for X'
+pkgdesc='Simple virtual terminal emulator for X - solarized patch, inconsolata font, tmux compat'
 url='http://st.suckless.org/'
 arch=('i686' 'x86_64')
 license=('MIT')
