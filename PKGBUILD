@@ -9,7 +9,7 @@ pkgdesc="Assemble Data Frames from HTML Tables"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
-depends=('r' 'r-xml' 'r-httr')
+depends=('r' 'r-xml>=3.98.1.3' 'r-httr>=1.0.0')
 
 optdepends=('r-testthat' 'r-knitr' 'r-tidyr')
 
