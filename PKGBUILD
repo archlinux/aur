@@ -27,5 +27,5 @@ build() {
 }
 
 package() {
-	install -Dm644 "${srcdir}/reicast-emulator/reicast_libretro.so" "${pkgdir}/usr/lib/libretro/reicast_libretro.so"
+	install -Dm644 "${srcdir}/reicast-emulator/reicast_oit_libretro.so" "${pkgdir}/usr/lib/libretro/reicast_oit_libretro.so"
 }
