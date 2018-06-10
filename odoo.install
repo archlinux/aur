@@ -1,6 +1,6 @@
 post_upgrade() {
-  # the systemd-sysusers hook is run *after* this function,
-  # so the odoo user might not exist yet
+  # hooks are ran *after* this function, so we have to call
+  # systemd-sysusers manually to make sure the odoo user exists
   systemd-sysusers
   mkdir -p /var/lib/odoo
   chown -R odoo:odoo /var/lib/odoo
