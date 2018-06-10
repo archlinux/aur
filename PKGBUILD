@@ -1,7 +1,7 @@
 # Maintainer: pullmoll
 pkgname=ems-collector-git
 pkgver=r300.20dbf38
-pkgrel=2
+pkgrel=3
 pkgdesc="Buderus EMS heating control data collection daemon"
 arch=(x86_64)
 url="https://github.com/maniac103/ems-collector"
@@ -26,21 +26,9 @@ _gitname=ems-collector
 _gitroot_mqtt=https://github.com/redboltz/mqtt_client_cpp
 _gitname_mqtt=mqtt_client_cpp
 
-pkgver() {
-  cd "$srcdir/$_gitname-build/collector"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
+prepare() {
   cd "$srcdir"
   msg "Connecting to GIT server...."
-  if [[ -d "$_gitname_mqtt" ]]; then
-    #cd "$_gitname_mqtt" && git pull origin
-    msg "The local files are already v1.0.9."
-  else
-    git clone --branch v1.0.9 "$_gitroot_mqtt" "$_gitname_mqtt"
-  fi
-
 
   if [[ -d "$_gitname" ]]; then
     cd "$_gitname" && git pull origin
@@ -50,6 +38,24 @@ build() {
   fi
 
   msg "GIT checkout done or server timeout"
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+  if [[ -d "$_gitname_mqtt" ]]; then
+    #cd "$_gitname_mqtt" && git pull origin
+    msg "The local files are already v1.0.9."
+  else
+    git clone --branch v1.0.9 "$_gitroot_mqtt" "$_gitname_mqtt"
+  fi
+
+  msg "GIT checkout done or server timeout"
+}
+
+pkgver() {
+   cd "$srcdir/$_gitname/collector"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
   msg "Starting build..."
 
   rm -rf "$srcdir/$_gitname-build"
