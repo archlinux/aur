@@ -9,7 +9,7 @@ pkgdesc="Network Analysis and Visualization"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
-depends=('r' 'r-magrittr' 'r-pkgconfig')
+depends=('r' 'r-magrittr' 'r-pkgconfig>=2.0.0')
 
 optdepends=('r-ape' 'r-graph' 'r-igraphdata' 'r-rgl' 'r-cran-scales' 'r-testthat')
 

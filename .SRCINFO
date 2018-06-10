@@ -7,7 +7,7 @@ pkgbase = r-igraph
 	license = GPL
 	depends = r
 	depends = r-magrittr
-	depends = r-pkgconfig
+	depends = r-pkgconfig>=2.0.0
 	optdepends = r-ape
 	optdepends = r-graph
 	optdepends = r-igraphdata
