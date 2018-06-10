@@ -1,6 +1,6 @@
 pkgbase = kepka-git
 	pkgdesc = Unofficial Telegram Desktop messaging app
-	pkgver = r3355.7debac66
+	pkgver = r3407.93d2fd30
 	pkgrel = 1
 	url = https://github.com/procxx/kepka
 	arch = x86_64

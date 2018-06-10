@@ -1,7 +1,7 @@
 # Maintainer: Maks Mazurov <foxcpp at yandex dot ru>
 # Based on https://github.com/procxx/kepka/blob/dev/kepka.spec.
 pkgname=kepka-git
-pkgver=r3355.7debac66
+pkgver=r3407.93d2fd30
 pkgrel=1
 pkgdesc='Unofficial Telegram Desktop messaging app'
 arch=('x86_64')
@@ -26,7 +26,7 @@ build() {
     cd "$srcdir/$pkgname"
 
     # Out-of-source build is required.
-    mkdir build
+    mkdir -p build
     cd build
 
     cmake .. \
@@ -37,21 +37,10 @@ build() {
 }
 
 package() {
-    install -dm755 "$pkgdir/usr/bin"
-    install -m755 "$srcdir/$pkgname/build/Telegram/Telegram" "$pkgdir/usr/bin/kepka"
+    cd "$srcdir/$pkgname/build"
 
-    install -d "$pkgdir/usr/share/applications"
-    install -m644 "$srcdir/$pkgname/lib/xdg/kepka.desktop" "$pkgdir/usr/share/applications/kepka.desktop"
+    make DESTDIR="$pkgdir" install
 
     # I don't want to add conflicts=('telegram-desktop') thus I will not install tg.protocol.
-    #install -d "$pkgdir/usr/share/kservices5"
-    #install -m644 "$srcdir/$pkgname/lib/xdg/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
-
-    local icon_size icon_dir
-    for icon_size in 16 32 48 64 128 256 512; do
-        icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
-
-        install -d "$icon_dir"
-        install -m644 "$srcdir/$pkgname/Telegram/Resources/art/icon${icon_size}.png" "$icon_dir/kepka.png"
-    done
+    rm -f "$pkgdir/usr/share/kservices5/tg.protocol"
 }
