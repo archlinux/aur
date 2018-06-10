@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=NYXCoin
+Comment=NYXCoin P2P Cryptocurrency
+Exec=/usr/bin/nyx-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/nyx128.png
+MimeType=x-scheme-handler/nyx;
+Categories=Office;
+Name[en_US]=nyx-qt.desktop

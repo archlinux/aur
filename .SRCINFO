@@ -1,0 +1,27 @@
+pkgbase = nyx-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://www.nyxcoin.org/
+	install = nyx-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = nyx
+	source = nyx-qt::git+https://github.com/nyxpay/nyx.git
+	source = nyx-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 7a3f0fd246b496e66288f2b1d2cd48a6ebed816ed070ec0a524b81e755a84286
+
+pkgname = nyx-qt
+
