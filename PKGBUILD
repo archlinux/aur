@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    export GOPATH=$GOPATH:`pwd .`
+    export GOPATH=$GOPATH:`pwd`
     go get -u github.com/Tilps/chess
 }
 
