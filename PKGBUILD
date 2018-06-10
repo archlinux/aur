@@ -21,7 +21,7 @@ license=('custom')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit' 'openssl-1.0')
 optdepends=('nvidia-utils: only for nVidia users')
 provides=('lightworks')
-conflicts=('lightworks', 'lwks-beta')
+conflicts=('lightworks' 'lwks-beta')
 source=(
     "http://downloads.lwks.com/v14/lwks-$lwksver-amd64.deb"
     "http://pep20.net/static/portaudio-19_20140130-3-x86_64.pkg.tar.xz"
