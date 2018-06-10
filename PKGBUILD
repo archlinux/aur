@@ -27,7 +27,7 @@ pkgname=()
 [[ ${#pkgname[@]} -gt 1 ]] && pkgname=('eclipse-common-devel' "${pkgname[@]}")
 
 epoch=1
-_milestone=RC2
+_milestone=RC3
 pkgver=4.8.0${_milestone}
 pkgrel=1
 _release=photon-${_milestone}
