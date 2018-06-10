@@ -1,6 +1,6 @@
 # Maintainer: Tyler Johnson <mail@tyler-johnson.ca>
 pkgname=fdic
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="Dictionary filter for STDIN"
@@ -10,19 +10,8 @@ url="https://github.com/tejohnso/$_reponame"
 license=('GPL')
 groups=()
 depends=('gcc-libs')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("https://github.com/tejohnso/dictionary-filter/archive/$pkgver.tar.gz")
 md5sums=("SKIP")
-noextract=()
 
 build() {
 	cd "$_reponame-$pkgver"
@@ -36,6 +25,7 @@ check() {
 
 package() {
 	cd "$_reponame-$pkgver"
-  mkdir -p "$pkgdir/usr/bin"
-	cp fdic "$pkgdir/usr/bin"
+  install -D fdic "$pkgdir/usr/bin/fdic"
+  sed -i "s/VERSION/$pkgver/g" fdic.1
+  install -Dm644 fdic.1 "$pkgdir/usr/local/man/man1/fdic.1"
 }
