@@ -9,7 +9,7 @@ pkgdesc="Bayesian Graphical Models using MCMC"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL (== 2)')
-depends=('r' 'jags>=4.0.0' 'r-coda')
+depends=('r' 'jags>=4.0.0' 'r-coda>=0.13')
 
 
 
