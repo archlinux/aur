@@ -9,7 +9,7 @@ pkgdesc="eXtensible Time Series"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
-depends=('r' 'r-zoo' 'r-zoo')
+depends=('r' 'r-zoo>=1.7.12' 'r-zoo')
 
 optdepends=('r-timeseries' 'r-timedate' 'r-tseries' 'r-chron' 'r-fts' 'r-tis')
 

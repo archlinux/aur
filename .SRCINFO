@@ -6,7 +6,7 @@ pkgbase = r-xts
 	arch = x86_64
 	license = GPL
 	depends = r
-	depends = r-zoo
+	depends = r-zoo>=1.7.12
 	depends = r-zoo
 	optdepends = r-timeseries
 	optdepends = r-timedate
