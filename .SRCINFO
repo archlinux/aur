@@ -1,0 +1,17 @@
+pkgbase = liteeth-git
+	pkgdesc = A small footprint and configurable Ethernet core
+	pkgver = 115
+	pkgrel = 1
+	url = https://github.com/enjoy-digital/liteeth
+	arch = any
+	license = MIT
+	depends = python
+	depends = migen
+	depends = litex
+	provides = liteeth
+	options = !emptydirs
+	source = git+https://github.com/enjoy-digital/liteeth
+	sha256sums = SKIP
+
+pkgname = liteeth-git
+
