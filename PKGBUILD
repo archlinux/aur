@@ -7,10 +7,11 @@ pkgdesc='a programming language prioritizing robustness, optimality, and clarity
 arch=('x86_64')
 url='https://ziglang.org/'
 license=('MIT')
-depends=('llvm' 'clang' 'libxml2' 'zlib')
-makedepends=('cmake')
-source=("https://ziglang.org/download/$pkgver/zig-$pkgver.tar.xz")
-sha256sums=('29c9beb172737f4d5019b88ceae829ae8bc6512fb4386cfbf895ae2b42aa6965')
+depends=('clang')
+makedepends=('cmake' 'git')
+source=("https://ziglang.org/download/$pkgver/zig-$pkgver.tar.xz" 'force_dynamic_llvm.patch' 'no_stage2_artifacts.patch')
+sha256sums=('29c9beb172737f4d5019b88ceae829ae8bc6512fb4386cfbf895ae2b42aa6965' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'bd2dddcd4131f42c80e6a371cba967d1' 'cb0bbf9c19971a48eff41e8c764ac990')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"

@@ -6,12 +6,17 @@ pkgbase = zig
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	depends = llvm
+	makedepends = git
 	depends = clang
-	depends = libxml2
-	depends = zlib
 	source = https://ziglang.org/download/0.2.0/zig-0.2.0.tar.xz
+	source = force_dynamic_llvm.patch
+	source = no_stage2_artifacts.patch
+	md5sums = SKIP
+	md5sums = bd2dddcd4131f42c80e6a371cba967d1
+	md5sums = cb0bbf9c19971a48eff41e8c764ac990
 	sha256sums = 29c9beb172737f4d5019b88ceae829ae8bc6512fb4386cfbf895ae2b42aa6965
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = zig
 
