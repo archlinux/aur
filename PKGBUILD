@@ -14,17 +14,26 @@ source=(http://software.internet2.edu/sources/ndt/$pkgname-$pkgver.tar.gz
         fix_JAnalyze_Makefile_target.patch
         fix_I2util_configure_mandir.patch)
 
-build() {
+prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
   patch -p1 < $srcdir/fix_configure_include_paths.patch
   patch -p1 < $srcdir/fix_configure_mandir.patch
   patch -p1 < $srcdir/fix_JAnalyze_Makefile_target.patch
   patch -p1 < $srcdir/fix_I2util_configure_mandir.patch
+}
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
 
   ./configure --prefix=/usr
   # XXX: The CLASSPATH specification looks bodgey...
   make ndtdir="/usr/share/java/ndt" CLASSPATH_ENV="CLASSPATH=/usr/share/java/jopenchart/charting-0.94.jar" || return 1
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
   make ndtdir="$pkgdir/usr/share/java/ndt" prefix="$pkgdir/usr" install
 
   mv $pkgdir/usr/bin/analyze $pkgdir/usr/bin/ndt-analyze
