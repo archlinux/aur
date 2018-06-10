@@ -13,7 +13,7 @@
 
 pkgname=subtitlecomposer
 pkgver=0.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A KDE subtitle editor"
 arch=('i686' 'x86_64')
 url="https://github.com/maxrd2/${pkgname}"
@@ -25,19 +25,26 @@ makedepends=('extra-cmake-modules')
 # building the plugins for MPV and Xine player backends and pocketsphinx
 makedepends+=('xine-lib')
 makedepends+=('mpv')
-makedepends+=('pocketsphinx')
+#makedepends+=('pocketsphinx')
 
 # For consistency, also enable/disable the corresponding optdepends
 optdepends=('mplayer: MPlayer backend'
             'mpv: MPV backend'
             'xine-lib: Xine backend'
-            'pocketsphinx: speech recognition'
+#            'pocketsphinx: speech recognition'
             'kross-interpreters: for ruby and python scripting support'
             'ruby: scripting'
             'python: scripting')
 
-source=("https://github.com/maxrd2/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6cd1d74f7934cdaa5d492f47da4143bd096a6196f2afcb2827cada9a3cdb2ea4')
+source=("https://github.com/maxrd2/${pkgname}/archive/v${pkgver}.tar.gz"
+        '0001-Use-target_link_libraries-instead-of-qt5_use_modules.patch::https://github.com/Martchus/subtitlecomposer/commit/cca0ff13c5bab516c073f9457277bdbf5fe1fd9a.patch')
+sha256sums=('6cd1d74f7934cdaa5d492f47da4143bd096a6196f2afcb2827cada9a3cdb2ea4'
+            '8952257e4798ba009e721a1a8b5f929b03de8e733dbfa201b20fd8edd83cea99')
+
+prepare() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  patch -p1 -i "$srcdir/0001-Use-target_link_libraries-instead-of-qt5_use_modules.patch"
+}
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
