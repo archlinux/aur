@@ -1,7 +1,7 @@
 # Maintainer: Adrian Petrescu <apetresc at gmail dot com>
 pkgname=leela-zero
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Go engine with no human-provided knowledge, modeled after the AlphaGo Zero paper."
 arch=('x86_64')
 url="https://github.com/gcp/leela-zero"
