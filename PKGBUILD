@@ -35,7 +35,7 @@ fi
 #_qmake_args="CONFIG+=debug"
 _pkgname=artriculate
 pkgname=${_pkgname}-git
-pkgver=0.5.8.r0.gaf23316
+pkgver=0.7.0.r0.gca84fe4
 pkgrel=1
 pkgdesc='QML box2d application for displaying artwork'
 arch=('any')
