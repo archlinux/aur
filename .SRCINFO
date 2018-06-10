@@ -1,0 +1,16 @@
+pkgbase = smartservogui
+	pkgdesc = SmartServoGui is a fully featured Qt GUI application that helps you discover devices on available serial links, get an overview of all of their registers, and easily tweak their settings!
+	pkgver = 0.97
+	pkgrel = 1
+	url = https://github.com/emericg/SmartServoFramework/tree/master/gui
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-svg
+	source = https://github.com/emericg/SmartServoFramework/archive/v0.97.tar.gz
+	sha256sums = 2c44cfcbc4dcd03819fd446ec1212c34940b18d1e97309947313114b4cc148f8
+
+pkgname = smartservogui
+
