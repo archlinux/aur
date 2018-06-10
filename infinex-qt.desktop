@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Infinex
+Comment=Infinex P2P Cryptocurrency
+Exec=/usr/bin/infinex-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/infinex128.png
+MimeType=x-scheme-handler/infinex;
+Categories=Office;
+Name[en_US]=infinex-qt.desktop

@@ -1,0 +1,27 @@
+pkgbase = infinex-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.infinex.info/
+	install = infinex-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = infinex
+	source = infinex-qt::git+https://github.com/InfinexOfficial/Infinex.git
+	source = infinex-qt.desktop
+	sha256sums = SKIP
+	sha256sums = ae5c57c322ddf66710273fa775168fddf4cc7c1318992986b50df72c8b1c7f85
+
+pkgname = infinex-qt
+
