@@ -1,24 +1,24 @@
+# Maintainer: Solomon Choina <shlomochoina@gmail.com
 # Maintainer: Leif Warner <abimelech@gmail.com>
 pkgname=taffybar
-pkgver=1.0.1
-pkgrel=1
+pkgver=2.1.1
+pkgrel=4
 license=('BSD3')
 pkgdesc="A desktop bar similar to xmobar, but with more GUI"
 url="http://github.com/travitch/taffybar"
 arch=('i686' 'x86_64')
-depends=("ghc"
+depends=("ghc-libs"
          "haskell-alsa-mixer"
          "haskell-configfile"
          "haskell-either"
          "haskell-hstringtemplate"
          "haskell-http"
          "haskell-x11"
-         "haskell-cairo"
-         "haskell-dbus"
          "haskell-dyre"
-         "haskell-enclosed-exceptions"
          "haskell-gtk"
          "haskell-gtk-traymanager"
+         "haskell-enclosed-exceptions"
+         "haskell-dbus"
          "haskell-mtl"
          "haskell-multimap"
          "haskell-network"
@@ -32,19 +32,33 @@ depends=("ghc"
          "haskell-text"
          "haskell-time-locale-compat"
          "haskell-tuple"
+         "haskell-gi-cairo"
+         "haskell-gi"
+         "haskell-gi-base"
          "haskell-utf8-string"
          "haskell-xdg-basedir"
+         "haskell-dbus-hslogger"
          "haskell-xml-helpers"
+         "haskell-status-notifier-item"
+         "haskell-gi-gobject"
+         "haskell-gi-gdkx11"
+         "haskell-gi-gtk"
+         "haskell-gtk-strut"
+         "gtk-sni-tray"
+         "haskell-gi-gtk-hs"
          "xmonad"
          "xmonad-contrib")
+makedepends=('ghc')
 install=taffybar.install
 source=("http://hackage.haskell.org/packages/archive/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "dynamic-compilation.patch"
-        "taffybar.install")
+        "taffybar.install"
+        "https://raw.githubusercontent.com/taffybar/taffybar/master/xmonad.hs.example")
 
-sha256sums=('1632917430972d656235c4f27b485d0ea09c5df4089088281ba523380e3efda9'
+sha256sums=('1352a3d2937a4694010e55fbb353779d53223c3ec4b2e18847d388c59b07778d'
             'ff90b6e3d05b3bb94cfc2365708bbabbb96fd9a9a4919c0face6f8d2b69037e7'
-            'c26eab02338c89d54310979178d4b8f6ff315071f563b609f9ff750c0d2c1cae')
+            'ce653be1ce3bd057e5779fb129e91708e34a5c686e1c3d65798790559330185f'
+            '1a8ca4f177891941960585e228d5386ea9f120a1bb12ac0a956200de839032cb')
 
 # PKGBUILD functions
 
@@ -83,6 +97,7 @@ package() {
     install -Dm 644 CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm 644 taffybar.hs.example -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm 644 ${srcdir}/xmonad.hs.example -t "{$pkgdir}/usr/share/doc/${pkgname}"
 
     rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
