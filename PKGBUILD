@@ -2,7 +2,7 @@
 
 pkgname=opennic-up
 pkgver=0.92
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenNIC auto DNS updater"
 arch=('any')
 url="https://github.com/kewlfft/${pkgname}"
@@ -17,5 +17,4 @@ package() {
 
     install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 "${pkgname}.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}.timer"
-    install -Dm644 "${pkgname}.conf" "${pkgdir}/etc/${pkgname}.conf"
 }

@@ -1,7 +1,7 @@
 pkgbase = opennic-up
 	pkgdesc = OpenNIC auto DNS updater
 	pkgver = 0.92
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kewlfft/opennic-up
 	arch = any
 	license = LGPL3
