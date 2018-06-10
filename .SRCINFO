@@ -1,0 +1,17 @@
+pkgbase = litescope-git
+	pkgdesc = A small footprint and configurable Logic Analyzer
+	pkgver = 95
+	pkgrel = 1
+	url = https://github.com/enjoy-digital/litescope
+	arch = any
+	license = MIT
+	depends = python
+	depends = migen
+	depends = litex
+	provides = litescope
+	options = !emptydirs
+	source = git+https://github.com/enjoy-digital/litescope
+	sha256sums = SKIP
+
+pkgname = litescope-git
+
