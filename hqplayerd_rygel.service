@@ -1,12 +1,17 @@
 [Unit]
-Description=HQPlayer Embedded daemon with rygel
+Description=HQPlayer Embedded daemon
+# if your distro uses systemd-networkd you may want to add
+# systemd-networkd-wait-online.service
+Requires=network-online.target sound.target
 After=network-online.target sound.target
-Wants=network-online.target
 
 [Service]
 Type=simple
-Restart=always
+# add the line below (with 30 or more) if hqplayerd cannot find remote NAA in time
+# ExecStartPre=/bin/sleep 30
 ExecStart=/bin/bash /usr/bin/start_hqplayerd.sh
+Restart=always
+RestartSec=2
 
 [Install]
 WantedBy=default.target
