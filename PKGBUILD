@@ -9,7 +9,7 @@ pkgdesc="Modelling with Sparse And Dense Matrices"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
-depends=('r' 'r-matrix>=1.1-5')
+depends=('r' 'r-matrix>=1.1.5')
 
 
 
