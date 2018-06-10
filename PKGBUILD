@@ -9,7 +9,7 @@ pkgdesc="Parsing and Evaluation Tools that Provide More Details than the Default
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
-depends=('r' 'r-stringr')
+depends=('r' 'r-stringr>=0.6.2')
 
 optdepends=('r-testthat' 'r-ggplot2')
 
