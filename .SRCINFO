@@ -1,6 +1,6 @@
 pkgbase = r-highr
 	pkgdesc = Syntax Highlighting for R Source Code
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=highr
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = r-highr
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-testit
-	source = https://cran.r-project.org/src/contrib/highr_0.6.tar.gz
-	md5sums = bf47388c5f57dc61962362fb7e1d8b16
+	source = https://cran.r-project.org/src/contrib/highr_0.7.tar.gz
+	md5sums = 034dc7c3e699bb3125c0d817dc6479da
 
 pkgname = r-highr
 
