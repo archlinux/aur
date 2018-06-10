@@ -1,6 +1,6 @@
-pkgbase = st-git-hm
-	pkgdesc = Simple virtual terminal emulator for X
-	pkgver = 0.7.37.gb1338e9
+pkgbase = st-anyway-git
+	pkgdesc = Simple virtual terminal emulator for X - solarized patch, inconsolata font, tmux compat
+	pkgver = 0.8.1.6.gdc3b5ba
 	pkgrel = 1
 	epoch = 1
 	url = http://st.suckless.org/
@@ -16,10 +16,10 @@ pkgbase = st-git-hm
 	options = zipman
 	source = git+https://git.suckless.org/st
 	source = https://st.suckless.org/patches/solarized/st-no_bold_colors-20170623-b331da5.diff
-	source = https://st.suckless.org/patches/solarized/st-solarized-dark-20170623-b331da5.diff
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
+	source = https://st.suckless.org/patches/solarized/st-solarized-dark-20180411-041912a.diff
+	sha256sums = SKIP
+	sha256sums = 71e1211189d9e11da93ee49388379c5f8469fcd3e1f48bb4d791ddaf161f5845
+	sha256sums = b2d5e88a2616eafb82b2fefb63eecb0f9d71f839349ef40f9f69c1953444f88c
 
-pkgname = st-git-hm
+pkgname = st-anyway-git
 
