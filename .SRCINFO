@@ -9,10 +9,10 @@ pkgbase = r-modelr
 	depends = r-broom
 	depends = r-dplyr
 	depends = r-magrittr
-	depends = r-purrr
+	depends = r-purrr>=0.2.2
 	depends = r-tibble
-	depends = r-tidyr
-	depends = r-rlang
+	depends = r-tidyr>=0.8.0
+	depends = r-rlang>=0.2.0
 	optdepends = r-covr
 	optdepends = r-ggplot2
 	optdepends = r-testthat
