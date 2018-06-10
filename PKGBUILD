@@ -34,8 +34,7 @@ optdepends=('pikaur: for AUR support'
             'trizen: for AUR support'
             'pacmanlogviewer: to view pacman log files'
             'gksu: for XFCE, Gnome, LXDE, Cinnamon'
-            'lxqt-sudo: for LXQT'
-            'octopicons: icons for octopi-notifier')
+            'lxqt-sudo: for LXQT')
 [[ ${USE_NOTIFIER} == "1" ]] && optdepends+=('kdesu: for KDE')
 [[ ${DISABLE_PIKAUR} == "1" ]] && unset optdepends[0]
 provides=('octopi-kde-git')
@@ -56,7 +55,6 @@ else
 	source+=("${pkgname}-${USE_SOURCE}.tar.gz::https://github.com/aarnt/octopi/archive/${USE_SOURCE}.tar.gz")
 	sha256sums+=('SKIP')
 	_cd_path="${pkgname}-${USE_SOURCE}"
-	makedepends=('git')
 fi
 
 
