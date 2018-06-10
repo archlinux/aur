@@ -6,10 +6,10 @@ pkgbase = r-rio
 	arch = any
 	license = GPL2
 	depends = r
-	depends = r-haven
-	depends = r-curl
-	depends = r-data.table
-	depends = r-readxl
+	depends = r-haven>=1.1.0
+	depends = r-curl>=0.6
+	depends = r-data.table>=1.9.8
+	depends = r-readxl>=0.1.1
 	depends = r-openxlsx
 	depends = r-tibble
 	optdepends = r-bit64

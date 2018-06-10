@@ -9,7 +9,7 @@ pkgdesc="A Swiss-Army Knife for Data I/O"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL2')
-depends=('r' 'r-haven' 'r-curl' 'r-data.table' 'r-readxl' 'r-openxlsx' 'r-tibble')
+depends=('r' 'r-haven>=1.1.0' 'r-curl>=0.6' 'r-data.table>=1.9.8' 'r-readxl>=0.1.1' 'r-openxlsx' 'r-tibble')
 
 optdepends=('r-bit64' 'r-testthat' 'r-knitr' 'r-magrittr' 'r-clipr' 'r-csvy' 'r-feather' 'r-fst' 'r-jsonlite' 'r-readods' 'r-readr' 'r-rmatio' 'r-xml2' 'r-yaml')
 
