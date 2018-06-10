@@ -1,0 +1,5 @@
+/etc/ems-collector.conf
+ratelimit = 120
+rc-type = rc300
+db-user = ems
+db-pass = 

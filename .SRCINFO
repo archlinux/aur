@@ -1,0 +1,18 @@
+pkgbase = ems-collector-git
+	pkgver = r300.20dbf38
+	pkgrel = 1
+	url = https://github.com/maniac103/ems-collector
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = boost
+	depends = boost
+	source = mqtt-compilation-fix-for-asio.diff
+	source = ems-collector.conf.sample
+	source = ems-collector.service
+	md5sums = 9366b3490583dc6915f687f7118fc31c
+	md5sums = 2456a8bfe6034a2434945a2ae05808ad
+	md5sums = ac3dea26402c63bfcafd7ba7184e8cc9
+
+pkgname = ems-collector-git
+
