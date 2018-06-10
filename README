@@ -1,7 +1,10 @@
 Updating the package:
 
 * Upgrade version in PKGBUILD
-* Update checksums in PKGBUILD 
+* Update checksums in PKGBUILD
+
+	updpkgsums
+
 * Update .SRCINFO 
 
 	makepkg --printsrcinfo > .SRCINFO
@@ -9,4 +12,3 @@ Updating the package:
 * Git add
 * Git commit
 * Git push
-
