@@ -9,7 +9,7 @@ pkgdesc="In-Line Documentation for R"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
-depends=('r' 'r-stringr' 'r-stringi' 'r-brew' 'r-digest' 'r-desc' 'r-commonmark' 'r-xml2')
+depends=('r' 'r-stringr>=0.5' 'r-stringi' 'r-brew' 'r-digest' 'r-desc' 'r-commonmark' 'r-xml2')
 
 optdepends=('r-testthat' 'r-knitr' 'r-devtools' 'r-rmarkdown' 'r-covr')
 
