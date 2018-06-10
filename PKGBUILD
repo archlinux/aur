@@ -9,7 +9,7 @@ pkgdesc="R Interface to Stan"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
-depends=('r' 'r-ggplot2' 'r-stanheaders' 'r-inline' 'r-cran-gridextra' 'r-bh' 'r-stanheaders')
+depends=('r' 'r-ggplot2>=2.0.0' 'r-stanheaders>=2.17.2' 'r-inline' 'r-cran-gridextra>=2.0.0' 'r-bh>=1.65' 'r-stanheaders>=2.17.2')
 
 optdepends=('pandoc' 'r-bh' 'r-loo' 'r-shinystan' 'r-bayesplot' 'r-rstantools' 'r-rstudioapi' 'r-knitr')
 
