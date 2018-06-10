@@ -8,7 +8,7 @@ pkgbase = r-tidyverse
 	license = custom
 	depends = r
 	depends = r-broom>=0.4.2
-	depends = r-cran-cli>=1.0.0
+	depends = r-cli>=1.0.0
 	depends = r-crayon>=1.3.4
 	depends = r-dplyr>=0.7.4
 	depends = r-dbplyr>=1.1.0
