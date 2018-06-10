@@ -1,0 +1,17 @@
+pkgbase = liteiclink-git
+	pkgdesc = Small footprint and configurable Inter-Chip communication cores
+	pkgver = 99
+	pkgrel = 1
+	url = https://github.com/enjoy-digital/liteiclink
+	arch = any
+	license = MIT
+	depends = python
+	depends = migen
+	depends = litex
+	provides = liteiclink
+	options = !emptydirs
+	source = git+https://github.com/enjoy-digital/liteiclink
+	sha256sums = SKIP
+
+pkgname = liteiclink-git
+
