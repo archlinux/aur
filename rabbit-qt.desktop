@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=RabbitCoin
+Comment=RabbitCoin P2P Cryptocurrency
+Exec=/usr/bin/rabbit-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/rabbit128.png
+MimeType=x-scheme-handler/rabbit;
+Categories=Office;
+Name[en_US]=rabbit-qt.desktop

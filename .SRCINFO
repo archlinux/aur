@@ -1,0 +1,27 @@
+pkgbase = rabbit-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = http://rabbitcore.org/
+	install = rabbit-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = rabbit
+	source = rabbit-qt::git+https://github.com/RabbitcoreDEV/RabbitCore
+	source = rabbit-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 19a36e7c1b520bcd14d967ac90be69837a570324562a96a3ce898999b76f956d
+
+pkgname = rabbit-qt
+
