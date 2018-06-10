@@ -1,7 +1,7 @@
 # Maintainer: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=chatty
 pkgver=0.8.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Twitch Chat Client for Desktop"
 arch=('any')
 url="https://chatty.github.io/"
@@ -18,14 +18,14 @@ source=("https://github.com/chatty/chatty/archive/v${pkgver}.tar.gz"
         "manifest.patch"
         "disable_version_check.patch"
         "build.patch")
-md5sums=('b06abd9b677acc028be4bb324846271e'
-         '2bdf69cd81d941dba97d55694f9da26d'
-         '9d8950b786e1af5614bc705ad478b019'
-         'e79577c8044fbee51426aaeb7613501f'
-         'b94cff3408dc359815283663610ab866'
-         '6279e2e121741453561409ffed33a98d'
-         '4e3d8490acd2f8ba700d03809a8ca8cf'
-         'c6416522e0585c7ad3b3ff476dd4d0e8')
+sha512sums=('de772c4403f82cd66283eb340bce2cb62d5a7fd946cdfc46fbab9e3ec0858c3b8e08b5ec8db93efcb57a46f5b4422358a257069a260373228fa23b99d7dce5f1'
+            'e3e551380e57bd265cecef1166cc0ce2dffebdd68b2f4dc15eb278a966a0af6c43c45067a42c019cc6c1d53b438b77cb24e24fd3f48078d72197b2f863fb9859'
+            '6b18009b4e34a2255cec42fd1e136e437aa528c80c40d9f1ab7379ab9e4a637fbd64860fb51e7e57aa0c74165b42f8d4c1ed6a1ffd061d07a02af1ec5167145e'
+            'a2e3e61195c3bd9bb56ee7772a505e355d324cf86edfd41b0d92f261b77097eecf616e071c5cfed8bee7b4f779a5f1e126f9c8c2082a866e7a2e4bc4e4c0469c'
+            '5d56ac61a14342e5ea98e6d793d0455fbdf1f5ca5ac503ace5672b6a4182416051d39cfeea719152e907bbd16cb886b8edf2960914bd88f5f818094ec5388ebc'
+            '41aeb54f5705d5d612f779365a51b4df156b9ad8a6a282c271bf4d03f280ea7fe0470f2169896b6ef430d04f0f6bb5bcf16b2d6a0edaf2fc86847270e7179b91'
+            '69d8e2deec3feef312a04e5e4a6080d7aaad63cbd93d43eda8f1958ebbe65e79d38c6a65e3143669a37fb4af50a5960dfe7793ee9dce6b726096608f301a2fdf'
+            '3beb726fecfd7855be4fac50d4926bbcc8a44d0d1f43402443223cc90a743ba81968844a530fa37f38115fdf526bf05a60a331be862a3f452e909a2f5cb26ae7')
 
 prepare() {
   cd chatty-${pkgver}
