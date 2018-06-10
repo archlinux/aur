@@ -1,16 +1,14 @@
-pkgbase = r-cran-utf8
+pkgbase = r-utf8
 	pkgdesc = R functions for processing and printing UTF-8 encoded unicode
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cran.r-project.org/web/packages/utf8/index.html
 	arch = i686
 	arch = x86_64
 	license = Apache
 	depends = r
-	provides = r-utf8
-	conflicts = r-utf8
 	source = http://cran.r-project.org/src/contrib/utf8_1.1.4.tar.gz
 	sha256sums = f6da9cadfc683057d45f54b43312a359cf96ec2731c0dda18a8eae31d1e31e54
 
-pkgname = r-cran-utf8
+pkgname = r-utf8
 
