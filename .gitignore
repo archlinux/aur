@@ -1,5 +1,5 @@
-pkg/
-src/
-gogs/
-go-bindata/
-*.pkg.tar.*
+/pkg/
+/src/
+/bin/
+/*.pkg.tar*
+/*.log

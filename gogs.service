@@ -1,14 +1,15 @@
 [Unit]
 Description=Gogs (Go Git Service)
+After=syslog.target
 After=network.target
 
 [Service]
 Type=simple
 User=gogs
 Group=gogs
-Environment="GOGS_WORK_DIR=/var/lib/gogs"
-WorkingDirectory=/var/lib/gogs
+Environment=GOGS_WORK_DIR=/var/lib/gogs USER=gogs HOME=/var/lib/gogs
 ExecStart=/usr/bin/gogs web
+WorkingDirectory=/var/lib/gogs
 Restart=always
 
 [Install]
