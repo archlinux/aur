@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-git
-pkgver=20180512.20362
+pkgver=20180609.20396
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://launchpad.net/inkscape"
@@ -48,7 +48,6 @@ build() {
   cmake .. \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=RELEASE \
-	-DWITH_GNOME_VFS=OFF \
 	-DWITH_DBUS=ON
   make 
 }
