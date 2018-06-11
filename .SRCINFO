@@ -1,0 +1,17 @@
+pkgbase = ttf-bree-serif
+	pkgdesc = Bree Serif is a font by TypeTogether, an independent type foundry committed to excellence in type design with a focus on editorial use.
+	pkgver = 1.002
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Bree+Serif
+	install = ttf-bree-serif.install
+	arch = any
+	license = Open Font License
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://raw.githubusercontent.com/google/fonts/master/ofl/breeserif/OFL.txt
+	source = https://raw.githubusercontent.com/google/fonts/master/ofl/breeserif/BreeSerif-Regular.ttf
+	sha256sums = fbe0442a6b1ce162c95e241df76cab5ef2daf6a5ac84ae1a7a6749f32c051098
+	sha256sums = fd080582d70112ef479ba4ddd72407f9a4fcbcec4caa7d29de259b13eeb5f431
+
+pkgname = ttf-bree-serif
+
