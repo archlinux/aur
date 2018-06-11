@@ -1,0 +1,15 @@
+pkgbase = commento-ce-git
+	pkgdesc = A privacy-focused and bloat-free Disqus alternative
+	pkgver = r117.0ee43ae
+	pkgrel = 1
+	url = https://commento.io/
+	install = commento-ce-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = npm
+	source = git+https://gitlab.com/commento/commento-ce.git
+	sha256sums = SKIP
+
+pkgname = commento-ce-git
+

@@ -1,0 +1,13 @@
+post_install() {
+    getent group commento &>/dev/null || \
+    groupadd commento &>/dev/null
+    getent passwd commento &>/dev/null || \
+    useradd --system --gid commento -d /var/lib/commento -s /usr/bin/nologin commento &>/dev/null
+
+}
+
+post_remove() {
+    getent passwd commento &>/dev/null && userdel -f commento
+    getent group commento &>/dev/null && groupdel commento
+}
+
