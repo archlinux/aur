@@ -1,12 +1,12 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=explain
 pkgname=$_pkgname-git
-pkgver=16.08.5.gdaeae64
+pkgver=16.08.3.g8fd7bf2
 pkgrel=1
 pkgdesc="Annotate commands using a simple markup language"
 arch=('any')
 url='https://uninformativ.de/git/explain'
-license=('MIT')
+license=('custom:PIZZA-WARE')
 depends=('python')
 makedepends=('git')
 provides=("$_pkgname")
