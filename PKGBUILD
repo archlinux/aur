@@ -2,14 +2,17 @@
 
 _cranname=JuniperKernel
 _cranver=1.2.3.0
-pkgname=r-cran-juniperkernel
+pkgname=r-juniperkernel
 pkgver=${_cranver}
 pkgrel=1
 pkgdesc="R kernel for Jupyter"
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('jupyter' 'r>=3.0.0' 'r-jsonlite' 'r-cran-repr' 'r-cran-rcpp>=0.11.0' 'r-cran-gdtools>=0.1.6' 'r-pbdzmq>=0.3.2' 'r-cran-data.table')
+depends=('jupyter' 'r>=3.0.0' 'r-jsonlite' 'r-repr' 'r-rcpp>=0.11.0' 'r-gdtools>=0.1.6' 'r-pbdzmq>=0.3.2' 'r-data.table')
+provides=("r-cran-${_cranname}")
+conflicts=("r-cran-${_cranname}")
+replaces=("r-cran-${_cranname}")
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('cd53d2e75984eb01d7f8296e58ba6faaa13b2e9d54c9745dba767b25a5d6249f')
 
