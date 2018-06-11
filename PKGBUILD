@@ -2,7 +2,7 @@
 
 pkgname=scientifica-bdf
 _gitname=scientifica
-pkgver=2.2
+pkgver=2.3
 pkgrel=3
 pkgdesc='Tall and condensed bitmap font for geeks.'
 arch=('any')
