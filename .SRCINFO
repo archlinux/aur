@@ -24,6 +24,10 @@ pkgbase = monero-bin
 	sha256sums_x86_64 = cb97e3f8b700a81e1b0f1a77509eefbfb415aa6013f23685f8933b559309c580
 	source_i686 = https://downloads.getmonero.org/cli/monero-linux-x86-v0.12.2.0.tar.bz2
 	sha256sums_i686 = 99de2b8b5c60ce3d0fceda8607e5b1fcac22c2971f2b8f9016c5acb207587513
+	source_armv7h = https://downloads.getmonero.org/cli/monero-linux-armv7-v0.12.2.0.tar.bz2
+	sha256sums_armv7h = f4b7f3fe46d95f8499253c515401c01efb707a7362fec49ca4527ee5839331b3
+	source_aarch64 = https://downloads.getmonero.org/cli/monero-linux-armv8-v0.12.2.0.tar.bz2
+	sha256sums_aarch64 = 5ff435057d87952e70a5be4e7edf62440eeeb532734e739e208a9eca67c569c6
 
 pkgname = monero-bin
 
