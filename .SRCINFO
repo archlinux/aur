@@ -1,0 +1,21 @@
+pkgbase = haskell-status-notifier-item
+	pkgdesc = A wrapper over the StatusNotifierItem/libappindicator dbus specification
+	pkgver = 0.2.2.0
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/status-notifier-item
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-base
+	depends = haskell-hslogger
+	depends = haskell-spool
+	depends = haskell-dbus-hslogger
+	depends = haskell-dbus
+	depends = haskell-optparse-applicative
+	source = https://hackage.haskell.org/packages/archive/status-notifier-item/0.2.2.0/status-notifier-item-0.2.2.0.tar.gz
+	sha256sums = f08be11f576dffb2aefe1be2543ff0f973a8373d9bf102d166b9d1b461b067a7
+
+pkgname = haskell-status-notifier-item
+
