@@ -1,9 +1,8 @@
 pkgbase = hdfview
 	pkgdesc = a GUI browser for reading hdf5 files (created with versions up to 1.8)
 	pkgver = 2.14.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://support.hdfgroup.org/products/java/
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = apache-ant
