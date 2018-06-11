@@ -16,13 +16,7 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
-}
-
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	install -m755 -D magico ${pkgdir}/usr/bin/
 }
