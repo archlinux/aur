@@ -1,6 +1,6 @@
 pkgbase = fsharp
 	pkgdesc = The F# Compiler, Core Library & Tools (F# Software Foundation Repository)
-	pkgver = 4.10.0
+	pkgver = 4.1.34
 	pkgrel = 2
 	url = http://fsharp.org/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = fsharp
 	makedepends = git
 	depends = mono
 	depends = msbuild-stable
-	source = git+https://github.com/fsharp/fsharp/#commit=76d5288b0b54e20b14a1bf5ca8eb0e9193c5485c
+	source = git+https://github.com/fsharp/fsharp/#commit=662492595a63dffff8fac84939614743fd6d34f9
 	sha256sums = SKIP
 
 pkgname = fsharp
