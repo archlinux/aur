@@ -1,4 +1,4 @@
-# Maintainer: anonimal <anonimal at i2pmail dot org>
+# Maintainer: anonimal <anonimal at getmonero dot org>
 # Contributor: redfish <redfish at galactica dot pw>
 # Contributor: Onishin <onishin at onishin dot org>
 
