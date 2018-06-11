@@ -1,4 +1,4 @@
-pkgbase = r-cran-repr
+pkgbase = r-repr
 	pkgdesc = String and binary representations of objects for several formats / mime types
 	pkgver = 0.12.0
 	pkgrel = 1
@@ -7,8 +7,11 @@ pkgbase = r-cran-repr
 	arch = x86_64
 	license = GPL3
 	depends = r>=3.0.0
+	provides = r-cran-repr
+	conflicts = r-cran-repr
+	replaces = r-cran-repr
 	source = http://cran.r-project.org/src/contrib/repr_0.12.0.tar.gz
 	md5sums = 61b40a925e4eee7933facc54f00560f2
 
-pkgname = r-cran-repr
+pkgname = r-repr
 
