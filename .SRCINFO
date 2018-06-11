@@ -1,22 +1,22 @@
 pkgbase = hdf5_18-openmpi
 	pkgdesc = The hdf5 legacy 1.8 series compiled with openmpi support
-	pkgver = 1.8.20
+	pkgver = 1.8.21
 	pkgrel = 1
 	url = https://support.hdfgroup.org/HDF5/
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = gcc-fortran
 	depends = zlib
+	depends = libaec
 	depends = openmpi
 	provides = hdf5_18
 	provides = hdf5_18-cpp-fortran
 	conflicts = hdf5_18
 	conflicts = hdf5_18-cpp-fortran
-	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.20/src/hdf5-1.8.20.tar.bz2
+	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.21/src/hdf5-1.8.21.tar.bz2
 	source = mpi.patch
-	sha512sums = 288e4772a946d406de9096843c92dd6874a0753ed6fbe859aaadf565aa0509fc612ebdb00c301b7955bc0dc63e45f3a224c6b2638f480fe6738ee0c96a993c6e
-	sha512sums = 57a0a0cadf30642facb46b88f248f336df92d9e444354e848a34e96fd958d4f332e683ab63491e3c141fe81dc0612313df32c4a9c6edd96b9b967f5334a59dc9
+	md5sums = 2d2408f2a9dfb5c7b79998002e9a90e9
+	md5sums = c261676f9ee4b5a2f3bca9f5d4ba89aa
 
 pkgname = hdf5_18-openmpi
 
