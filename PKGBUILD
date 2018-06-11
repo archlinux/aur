@@ -1,0 +1,30 @@
+# Maintainer: Kevin Azzam <aur@azz.am>
+
+_pipname=invocations
+_license=LICENSE
+pkgbase=python-invocations
+pkgname=('python-invocations')
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="Reusable Invoke tasks"
+arch=('any')
+url="https://github.com/pyinvoke/invocations"
+license=('BSD')
+makedepends=('python-setuptools')
+source=("https://pypi.io/packages/source/i/invocations/invocations-$pkgver.tar.gz")
+md5sums=('6375ded3138d29a038a930bfc9ec70f4')
+
+
+build() {
+    cd "${srcdir}/${_pipname}-${pkgver}"
+    python setup.py build
+}
+
+package() {
+    depends=('python-invoke')
+
+    cd "${srcdir}/${_pipname}-${pkgver}"
+    python setup.py install --root="$pkgdir/" --optimize=1
+
+    install -D -m644 "${_license}" "$pkgdir"/usr/share/licenses/$pkgname/"${_license}"
+}
