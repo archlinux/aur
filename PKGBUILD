@@ -14,7 +14,7 @@ source=("Blizcord.exe::https://github.com/Bleuzen/Blizcord/releases/download/${p
         "blizcord"
         "blizcord-gui"
         "blizcord.desktop")
-sha1sums=('af84c47256be580107a617c509753b1a7d71a7ad'
+sha1sums=('840e3ea3194b8f8e31a140183f3ca91b0e6b2e21'
           '81c66804e05785b0879d75792e488edc3aa8c438'
           '2a1a0b098dbf6817c61b55dc6338e795dda3f4d0'
           'f65b8c9e51ab2d3e6dbaec8eba12f19853e17298'
