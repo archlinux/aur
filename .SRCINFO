@@ -1,7 +1,7 @@
 pkgbase = electricsheep
 	pkgdesc = Screensaver that realize the collective dream of sleeping computers from all over the internet
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://community.electricsheep.org/
 	arch = x86_64
 	license = GPL

@@ -3,7 +3,7 @@
 
 pkgname=electricsheep
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 _gitcommit=1c4af20b384d19c6844083845004e8f467c9ce39
 pkgdesc='Screensaver that realize the collective dream of sleeping computers from all over the internet'
 url='http://community.electricsheep.org/'
@@ -31,7 +31,7 @@ build() {
   cd ${pkgname}-${_gitcommit}/client_generic
   CPPFLAGS+=" -I/usr/include/lua5.1" ./configure --prefix=/usr
   sed -i 's|-I /usr/include/libavutil||' MSVC/SettingsGUI/Makefile
-  make CXXFLAGS+="-DUSE_NEW_FFMPEG_API=1" GLEE_LIBS="-lGLee"
+  make CXXFLAGS+="-DUSE_NEW_FFMPEG_API=1" GLEE_LIBS="-lGLee" LDFLAGS+="-lpthread"
 }
 
 package() {
