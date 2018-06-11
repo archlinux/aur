@@ -1,0 +1,36 @@
+pkgbase = python-keras-preprocessing
+	pkgdesc = Preprocessing module of the Keras deep learning library
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/keras-team/keras-preprocessing/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-numpy
+	makedepends = python-scipy
+	makedepends = python-keras
+	makedepends = python-six
+	makedepends = python2-six
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = python2-numpy
+	makedepends = python2-scipy
+	provides = python-keras-preprocessing
+	source = keras-preprocessing-1.0.1.tar.gz::https://github.com/keras-team/keras-preprocessing/archive/1.0.1.tar.gz
+	sha256sums = 2e9e187afd1327d802309513cc6366d72a5c02104c6815da30d8651a4bd20699
+
+pkgname = python-keras-preprocessing
+	depends = python
+	depends = python-numpy
+	depends = python-keras
+	depends = python-six
+
+pkgname = python2-keras-preprocessing
+	depends = python2
+	depends = python2-numpy
+	depends = python-keras
+	depends = python2-six
+	optdepends = python2-theano
+	optdepends = cudnn
+
