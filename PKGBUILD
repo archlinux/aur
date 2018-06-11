@@ -5,7 +5,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus
-pkgver=1.3.341
+pkgver=1.3.362
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (with all plugins)"
 url="https://psi-plus.com"
@@ -16,7 +16,7 @@ depends=('qt5-base' 'qt5-webengine' 'qt5-multimedia' 'qt5-x11extras' 'qca-qt5'
 	 'libaxolotl-c-git' 'libotr' 'tidy')
 makedepends=('patch' 'cmake')
 source=("https://github.com/psi-plus/psi-plus-snapshots/archive/${pkgver}.tar.gz")
-sha256sums=('c21431880d7eb2ec678dec3f1436c4dfe8ae60d700e803522c166d2d63aaede4')
+sha256sums=('243d7c1feac79b28a066897ece982cd1cbf44ef8f596c0c2654ee1f268d1b4bb')
 
 
 build() {
