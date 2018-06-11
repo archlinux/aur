@@ -7,7 +7,7 @@
 
 pkgbase=pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
-pkgver=5.11.0.r5746.5dc72386
+pkgver=5.11.0.r5791.f7c82c63
 _upver=5.11.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -31,8 +31,7 @@ prepare() {
 }
 
 build() {
-  # QtWebKitWidgets: https://bugreports.qt.io/browse/PYSIDE-598
-  cmake_args="-DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DQt5WebKitWidgets_FOUND=FALSE"
+  cmake_args="-DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF"
 
   # Build for python2.
   cd "$srcdir"/$pkgbase/sources/pyside2
