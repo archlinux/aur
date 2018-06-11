@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://mariadb.com"
 license=('GPL')
 groups=()
+depends=('bzip2' 'libaio' 'lz4' 'lzo' 'openssl' 'xz' 'zlib' 'perl' 'perl-dbd-mysql' 'perl-term-readkey' "mariadb-clients=${pkgver}" 'inetutils' 'libsystemd' 'libxml2')
 makedepends=('boost' 'bzip2' 'cmake' 'jemalloc' 'libaio' 'libxml2' 'lz4' 'lzo'
              'openssl' 'systemd' 'zlib')
 provides=("mariadb=${pkgver}" "libmariadbclient=${pkgver}" "mariadb-clients=${pkgver}" "mytop=${pkgver}")
