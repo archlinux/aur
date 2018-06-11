@@ -7,7 +7,7 @@ pkgname=snapd
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
-pkgver=2.32.9
+pkgver=2.33
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
@@ -17,7 +17,7 @@ conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/snapcore/${pkgname}/archive/$pkgver.tar.gz")
-sha256sums=('c9ce7f179dbcc7ea43d71bde343473d28fb103502fb09b109bbe1e4db6239574')
+sha256sums=('7d75bb3589086381aec6f6039f1dddcadd79d35e3a544b32701e86636baa97c2')
 
 _gourl=github.com/snapcore/snapd
 
@@ -130,6 +130,7 @@ package() {
   install -dm755 "$pkgdir/var/lib/snapd/lib/gl"
   install -dm755 "$pkgdir/var/lib/snapd/lib/gl32"
   install -dm755 "$pkgdir/var/lib/snapd/lib/vulkan"
+  install -dm755 "$pkgdir/var/lib/snapd/lib/glvnd"
   # these dirs have special permissions
   install -dm000 "$pkgdir/var/lib/snapd/void"
   install -dm700 "$pkgdir/var/lib/snapd/cookie"
