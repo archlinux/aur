@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-openexr
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="An high dynamic-range image file format library (mingw-w64)"
 url="http://www.openexr.com/"
 arch=(any)
@@ -12,7 +12,7 @@ options=('staticlibs' '!buildflags' '!strip')
 source=("http://download.savannah.gnu.org/releases/openexr/openexr-${pkgver}.tar.gz"
         openexr-2.1.0_aligned-malloc.patch
         openexr-2.1.0_cast.patch)
-md5sums=('b64e931c82aa3790329c21418373db4e'
+sha256sums=('8f9a5af6131583404261931d9a5c83de0a425cb4b8b25ddab2b169fbf113aecd'
         SKIP
         SKIP)
 
