@@ -2,7 +2,7 @@
 Description=HQPlayer Embedded daemon
 # if your distro uses systemd-networkd you may want to add
 # systemd-networkd-wait-online.service
-Requires=network-online.target sound.target
+Requires=sound.target
 After=network-online.target sound.target
 
 [Service]
