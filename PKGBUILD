@@ -1,7 +1,7 @@
 # Maintainer: Andre <andre-arch@delorus.de>
 pkgname=antfs-cli-git
 _gitname=antfs-cli
-pkgver=r77.85a6cc6
+pkgver=r79.c98595b
 pkgrel=1
 pkgdesc="A python library to download and upload files from ANT-FS compliant devices (Garmin products)."
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ package() {
   python2 setup.py install --root="$pkgdir/"
 
   install -Dm644 README.md ${pkgdir}/usr/share/${_gitname}/README
-  install -Dm644 SCRIPTING ${pkgdir}/usr/share/${_gitname}/SCRIPTING
+  install -Dm644 SCRIPTING.md ${pkgdir}/usr/share/${_gitname}/SCRIPTING.md
 
   sed -i 's|fittotcx = "/path/to/FIT-to-TCX/fittotcx.py"|fittotcx= "/usr/bin/fittotcx"|' scripts/40-convert_to_tcx.py
   sed -i 's|gupload = "/path/to/bin/gupload.py"|gupload= "/usr/bin/gupload.py"|' scripts/40-upload_to_garmin_connect.py
