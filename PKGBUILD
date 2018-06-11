@@ -5,18 +5,19 @@
 pkgbase=glib2-git
 _pkgame=glib2
 pkgname=(glib2-git glib2-docs-git)
-pkgver=2.57.1.180.ge22bffb52
+pkgver=2.57.1.203.g8bbc38b49
 pkgrel=1
 pkgdesc="Low Level Core Library"
 arch=('x86_64')
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
 depends=(pcre libffi libutil-linux zlib)
-makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux dbus)
+makedepends=(meson ninja gettext gtk-doc shared-mime-info python libelf git util-linux dbus)
 checkdepends=(desktop-file-utils)
 optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
             'libelf: gresource inspection tool')
 conflicts=($_pkgname)
+provides=(glib2=$pkgver)
 options=(!emptydirs)
 source=("git+https://gitlab.gnome.org/GNOME/glib.git"
         0001-noisy-glib-compile-schemas.patch
@@ -37,7 +38,6 @@ prepare() {
     # Suppress noise from glib-compile-schemas.hook
   patch -Np1 -i ../0001-noisy-glib-compile-schemas.patch
 
-  NOCONFIGURE=1 ./autogen.sh
   }
 
 build () {
@@ -45,26 +45,21 @@ build () {
   check_option debug y && debug=yes
   
     cd "$srcdir/glib"
-    ./configure \
-        --prefix=/usr \
-        --libdir=/usr/lib \
-        --sysconfdir=/etc \
-        --with-pcre=system \
-        --disable-fam \
-        --enable-gtk-doc \
-        --enable-debug=$debug
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-    make
+    arch-meson build \
+        -Dfam=false \
+        -Dgtk_doc=true \
+        -Dselinux=false 
+    ninja -C build 
 }
 
-check() {
-    cd "$srcdir/glib"
-    make check
-}
+#check() {internal_pcre
+#    cd "$srcdir/glib"
+#    make check
+#}
 
 package_glib2-git() {
     cd "$srcdir/glib"
-    make -C $pkgname DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" ninja -C build install
     mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
  
     install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 ../*.hook
@@ -74,6 +69,8 @@ package_glib2-docs-git() {
   pkgdesc="Documentation for GLib"
   depends=()
   optdepends=()
+  provides=(glib2-docs)
+  conflicts=(glib2-docs)
   license+=(custom)
 
   mkdir -p "$pkgdir/usr/share"

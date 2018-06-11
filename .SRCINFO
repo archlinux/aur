@@ -1,11 +1,13 @@
 pkgbase = glib2-git
 	pkgdesc = Low Level Core Library
-	pkgver = 2.57.1.180.ge22bffb52
+	pkgver = 2.57.1.203.g8bbc38b49
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
 	license = LGPL2.1
 	checkdepends = desktop-file-utils
+	makedepends = meson
+	makedepends = ninja
 	makedepends = gettext
 	makedepends = gtk-doc
 	makedepends = shared-mime-info
@@ -20,6 +22,7 @@ pkgbase = glib2-git
 	depends = zlib
 	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
 	optdepends = libelf: gresource inspection tool
+	provides = glib2=2.57.1.203.g8bbc38b49
 	options = !emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/glib.git
 	source = 0001-noisy-glib-compile-schemas.patch
@@ -38,4 +41,6 @@ pkgname = glib2-docs-git
 	license = custom
 	depends = 
 	optdepends = 
+	provides = glib2-docs
+	conflicts = glib2-docs
 
