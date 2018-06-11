@@ -1,9 +1,18 @@
 # Maintainer: Trent Palmer trenttdually at gmail
 
+###########################################################################################################
+#                                          Build Options
+###########################################################################################################
+_vim="y"
+
+# if you have a newer version of neovim you may not need or want to set _neovim="y"
+_neovim="n"
+###########################################################################################################
+
 pkgname='vimscripts-autoclose'
 _srcpkgname='AutoClose'
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="plugin that automatically closes quote, parentheses, brackets, braces, etc"
 arch=('any')
@@ -27,13 +36,17 @@ md5sums=('8eb8630367d6978f3e2696df27eff4eb')
 validpgpkeys=()
 
 package() {
+  if [ "$_neovim" = "y" ]; then
     mkdir -p "$pkgdir/usr/share/nvim/runtime"
     cp -r "${srcdir}/${_srcpkgname}-${pkgver}/plugin" \
         "$pkgdir/usr/share/nvim/runtime"
+  fi
     
+  if [ "$_vim" = "y" ]; then
     mkdir -p "$pkgdir/usr/share/vim/vimfiles"
     cp -r "${srcdir}/${_srcpkgname}-${pkgver}/plugin" \
         "$pkgdir/usr/share/vim/vimfiles"
+  fi
 
     install -D -m644 "${srcdir}/${_srcpkgname}-${pkgver}/README" $pkgdir/usr/share/doc/$pkgname/README
 }
