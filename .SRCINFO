@@ -1,0 +1,13 @@
+pkgbase = aws-sam-cli
+	pkgdesc = CLI tool for local development and testing of Serverless applications
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/awslabs/aws-sam-cli
+	arch = any
+	license = Apache
+	depends = python
+	source = https://github.com/awslabs/aws-sam-cli/archive/v0.3.0.tar.gz
+	sha256sums = 227c8c9a4ad565cee58496008aa07f6ee15336b523336f9a2b404f71a0cd4b0f
+
+pkgname = aws-sam-cli
+
