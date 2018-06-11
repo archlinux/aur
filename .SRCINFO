@@ -1,0 +1,14 @@
+pkgbase = r-tinytex
+	pkgdesc = Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tinytex
+	arch = any
+	license = MIT
+	depends = r
+	optdepends = r-testit
+	source = https://cran.r-project.org/src/contrib/tinytex_0.5.tar.gz
+	md5sums = 1d6e3909afe3363649bfbc4d30128514
+
+pkgname = r-tinytex
+
