@@ -1,6 +1,6 @@
 pkgbase = antfs-cli-git
 	pkgdesc = A python library to download and upload files from ANT-FS compliant devices (Garmin products).
-	pkgver = r77.85a6cc6
+	pkgver = r79.c98595b
 	pkgrel = 1
 	url = https://github.com/Tigge/antfs-cli
 	install = antfs-cli.install
