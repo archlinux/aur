@@ -1,7 +1,7 @@
 pkgbase = litepcie-git
-	pkgdesc = A small footprint and configurable PCIe core
+	pkgdesc = A small footprint and configurable PCIe core for LiteX
 	pkgver = 125
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enjoy-digital/litepcie
 	arch = any
 	license = MIT

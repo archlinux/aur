@@ -1,8 +1,8 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=litepcie-git
 pkgver=125
-pkgrel=1
-pkgdesc="A small footprint and configurable PCIe core"
+pkgrel=2
+pkgdesc="A small footprint and configurable PCIe core for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/litepcie"
 license=('MIT')
