@@ -19,9 +19,8 @@ package() {
   cd "$pkgdir"
   mkdir -p usr/share/licenses/coinmon
   mv usr/lib/node_modules/coinmon/LICENSE usr/share/licenses/coinmon/
-  rmdir usr/etc
   rm usr/lib/node_modules/coinmon/{.,}* | true
-  find -type d -exec chmod 755 {} +
+  find usr/lib/node_modules -type d -exec chmod 755 {} +
 }
 
 # vim:set ts=2 sw=2 et:
