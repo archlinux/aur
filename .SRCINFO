@@ -1,4 +1,4 @@
-pkgbase = r-cran-gdtools
+pkgbase = r-gdtools
 	pkgdesc = Useful tools for writing vector graphics devices
 	pkgver = 0.1.7
 	pkgrel = 1
@@ -7,9 +7,12 @@ pkgbase = r-cran-gdtools
 	arch = x86_64
 	license = GPL3
 	depends = r>=3.0.0
-	depends = r-cran-withr
+	depends = r-withr
+	provides = r-cran-gdtools=0.1.7
+	conflicts = r-cran-gdtools
+	replaces = r-cran-gdtools
 	source = http://cran.r-project.org/src/contrib/gdtools_0.1.7.tar.gz
 	md5sums = ffad0248bf8b676ca7721239076492f0
 
-pkgname = r-cran-gdtools
+pkgname = r-gdtools
 
