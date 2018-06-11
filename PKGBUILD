@@ -2,9 +2,9 @@
 
 pkgname=cuberite
 _pkgver=1.12
-_build_i686=930
-_build_x86_64=943
-_build_arm=905
+_build_i686=958
+_build_x86_64=975
+_build_arm=934
 pkgver="${_pkgver}b${_build_x86_64}"
 pkgrel=1
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
@@ -27,12 +27,12 @@ source_x86_64=("Cuberite.b${_build_x86_64}_x86_64.tar.gz"::"https://builds.cuber
 source_armv7h=("Cuberite.b${_build_arm}_armhf.tar.gz"::"https://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Master/${_build_arm}/artifact/Cuberite.tar.gz")
 sha512sums=('4a84419f3a532d2c34cef0a77cd30dded10a771b9d89e7d9d2b2af18808ff037dba68f84331a24ace5cb8c47436fe781b97b5d8a600127161ca55aaca07ecbae'
             '2ae834c75dfc299e823308bcb500e028020f1ac47675c645c4a7832ae225f63e9f7d22c08cd1bbb754388db7cf57ab3d4c359615be70f8d234e82013c148b024'
-            'e9a452e2c674ec177bf8fec3a798088628fbdde9141ae3151071cd6b2b72ff6fc1983ea8bd5fa3aeaa6706f8b29fe82813e2a3717a9b1800ecd478b4c3abac8f'
+            'e88811680c3bf6bea85e210d05b07d6df3cf0ffa3f29cf8b80ac97b291bcacdb09f8628cc26651a7150a2a553de0edd58188c28d0c3e4d5bb9a262938b758250'
             '9282301a67a612a4b757324274b6deea16d57e919b3c367a92414d7b74fe0ec4f5e54748ccf0ff14f6c62e8dbc5cb211afebfff8ad5abe63945afccf9484378f'
             'd529d2c97e7284964c21ce1e1a6652af6742c0339000574668931a653070a7f395d9f517a84a5d07df6949295086fb7c3d2ac26c5058700b96401af8ae7c71f5')
-sha512sums_i686=('91a2e08ef70eaceef83e68cbf3b660cc5c8d44cce6a3d780292ffbd8d604f37085cf3851d72579c8935c3fc4ef8e7b9bdc72b20631e4ff94eaec36fff32af2bd')
-sha512sums_x86_64=('b24999556feb09a1e55fbe725c509b099381950ead7c87a5bdeb17964a820d66be9b104b93a5acde143331f9ef188b637bfaaac0e1c2382eb6b4064675f33488')
-sha512sums_armv7h=('ede8ee61e3bd425226fa74ccd55a2734e948fc3dd2568cd36b9a32166b0b31c092d0e0f7da08829b319d9b1099e512d7ecf53dc507a8c8110431b4139e9be316')
+sha512sums_i686=('135596b9965e39a276f3e3e98b31b22d82db4c5a92fe1d4aaa60f5c0204a12030c3f37c216f09ba81caf70d458fa6881b20355b9180bbfdb58642ac3f4a4be3e')
+sha512sums_x86_64=('5547708fe176009ba55adee19532937c955c22b8e6c3a8f1425ece232490b077fdbe8cbeaf3752bb002e547dd71006c244d29e989cee437c984e080afa2f0da6')
+sha512sums_armv7h=('a48bdca5644f0bee4efbdc7f4753417d2c7559e2413d3a672c41b0814e89522639e7085aa94e2bffcc70c3413dde07e78dc70f5b61e35255498ba57e3a524784')
 
 _game="cuberite"
 _server_root="/srv/cuberite"

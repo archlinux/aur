@@ -1,6 +1,6 @@
 [Unit]
 Description=Cuberite Server
-After=local-fs.target network.target
+After=local-fs.target network.target multi-user.target
 
 [Service]
 Type=forking
@@ -10,4 +10,3 @@ User=cuberite
 Group=cuberite
 
 [Install]
-WantedBy=multi-user.target
