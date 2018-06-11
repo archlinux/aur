@@ -1,6 +1,6 @@
 pkgname=terasology
-_version=1.6.0
-_version_postfix=alpha9
+_version=2.0.0
+_version_postfix=alpha10
 pkgver=${_version}${_version_postfix}
 pkgrel=1
 epoch=1
@@ -14,11 +14,13 @@ makedepends=('unzip')
 source=(
     "$pkgname"
     "${pkgname}.desktop"
+    "rendering.cfg"
     "TerasologyOmega${pkgver}.zip::https://github.com/MovingBlocks/Terasology/releases/download/v${_version}/TerasologyOmega.zip"
 )
 sha512sums=('f94c1ac3d85e4fb91cc47056eeec3648d02be9090252401acb740af8c0580623c7ee57470d9e7317d6b577d613e317b5c16ec014f232ec68bc755e0eba7a975e'
             '737953ab10027100b6bd03ca60a3f1cd4fff503c4c5a1689b3e12ef8df66a3e3347c99d498e48dccc3be8d00e9e37fcab56d5c97bbb81dd310ce757979aa0276'
-            '585c9c13eec9b16158921554688501edae0f654189dc533f683c33d1a4800ad0b0e7d6d6b89046b3ec50fbe1fd7e39385d5b3a9692766154cbfbddf104331856')
+            '43625b793236742cf6297d435567a9019f69a0852eb728f71462aad64aac85046708812f4f033b6d717b5eacdad65f4725c037d5f61a02fe88dfc14830705faf'
+            '58664cbbfc78436256ac1c45049520f2fe9862217f382c5058c8dfff687df5cf5c0f99d7791b62a35bd61264ec24496370cff3422f10a4c455f76ca090d47d8b')
 
 package() {
     cd "$srcdir"
@@ -53,4 +55,8 @@ package() {
     ln -sf /usr/share/lwjgl2/native/linux/libjinput-linux.so natives/linux
 
     cp -ra "$srcdir" "${pkgdir}/usr/share/${pkgname}"
+
+    # Copy this file (not entirely sure about this, but doesn't start without it)
+    install -Dm 644 "${srcdir}/rendering.cfg" "${pkgdir}/usr/share/${pkgname}/configs/engine/rendering.cfg"
+    rm "${pkgdir}/usr/share/${pkgname}/rendering.cfg"
 }
