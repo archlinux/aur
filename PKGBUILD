@@ -10,12 +10,11 @@ source=('git+https://github.com/AladW/aurutils')
 sha256sums=('SKIP')
 conflicts=('aurutils')
 provides=('aurutils')
-depends=('pacman>=5.0' 'git' 'jq' 'pacutils' 'wget')
+depends=('ed' 'git' 'jq' 'pacutils' 'parallel' 'wget')
 makedepends=('git')
-optdepends=('aria2: thread downloads'
-            'devtools: aur-build-nspawn'
+optdepends=('devtools: aur-chroot'
             'diffstat: aur-fetch-snapshot'
-            'expac: aur-rfilter'
+            'expac: aur-repo-filter'
             'vifm: build file interaction'
             'xdelta3: generate delta files')
 
