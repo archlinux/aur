@@ -2,7 +2,7 @@
 # Contributor: Robert Orzanna <orschiro@gmail.com>
 
 pkgname=hardcode-fixer-git
-pkgver=r395.a01f915
+pkgver=r527.29a47ba
 pkgrel=1
 epoch=1
 pkgdesc="Fixes Hardcoded Icons"
