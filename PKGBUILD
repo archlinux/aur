@@ -2,12 +2,12 @@
 
 pkgname=aws-sam-cli
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool for local development and testing of Serverless applications'
 arch=('any')
 url='https://github.com/awslabs/aws-sam-cli'
 license=('Apache')
-depends=('python')
+depends=('docker' 'python' 'python-docker' 'python-aws-sam-translator' 'python-cookiecutter' 'python-yaml' 'python-boto3' 'python-flask')
 source=("https://github.com/awslabs/aws-sam-cli/archive/v${pkgver}.tar.gz")
 sha256sums=('227c8c9a4ad565cee58496008aa07f6ee15336b523336f9a2b404f71a0cd4b0f')
 
