@@ -1,4 +1,4 @@
-# Maintainer: Caleb Woodbine <github.com/BobyMCbobs>
+# Maintainer: Caleb Woodbine <gitlab.com/BobyMCbobs>
 pkgname=uploadnewip
 pkgver=2.1.2
 pkgrel=1
@@ -8,7 +8,7 @@ url="https://gitlab.com/BobyMCbobs/${pkgname}"
 license=('GPL')
 depends=('curl' 'bash')
 source=("https://gitlab.com/BobyMCbobs/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip")
-md5sums=('74293be0f91d92a1c651be600b126d8a')
+md5sums=('7ee3170b22508167c63642bb83650b51')
 
 package() {
 	cd "$pkgname-$pkgver"
