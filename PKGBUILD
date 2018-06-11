@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=hub-git
-pkgver=v2.3.0.pre10.r12.g5e811d3b
+pkgver=v2.4.0.r10.g98f153f3
 pkgrel=1
 pkgdesc="cli interface for Github"
 url="https://hub.github.com"
@@ -21,7 +21,10 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname/-git/}"
 
-  make all man-pages
+  export GOPATH="$srcdir"
+  go get -fix -v  -x github.com/github/hub
+  script/bootstrap
+  make -j1 bin/hub man-pages
 }
 
 package() {
@@ -31,6 +34,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname/-git/}/LICENSE"
   install -Dm644 etc/hub.bash_completion.sh "$pkgdir/usr/share/bash-completion/completions/hub"
   install -Dm644 etc/hub.zsh_completion "$pkgdir/usr/share/zsh/site-functions/_hub"
+  install -Dm644 etc/hub.fish_completion "$pkgdir/usr/share/fish/vendor_completions.d/hub.fish"
   for manpage in share/man/man1/hub.1 share/man/man1/hub-*.1; do
     install -Dm644 $manpage "$pkgdir/usr/share/man/man1/$(basename $manpage)"
   done
