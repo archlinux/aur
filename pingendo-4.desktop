@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Pingendo
+GenericName=Pingendo
+Comment=The ultimate Bootstrap 4 builder
+Exec=/opt/pingendo/Pingendo\ 4.0 
+Path=/opt/pingendo/
+Icon=pingendo
+Terminal=false
+Type=Application
+Category=TextEditor;
+MimeType=text/web;
+Keywords=Text;Editor;Web
