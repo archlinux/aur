@@ -1,0 +1,780 @@
+--- SOURCE_FOLDER/sdrbase/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/sdrbase/CMakeLists.txt	2018-05-28 14:02:42.159182686 +0100
+@@ -301,7 +301,7 @@
+ set_target_properties(sdrbase PROPERTIES DEFINE_SYMBOL "sdrbase_EXPORTS")
+ target_compile_features(sdrbase PRIVATE cxx_generalized_initializers) # cmake >= 3.1.0
+ 
+-qt5_use_modules(sdrbase Core Multimedia)
++target_link_libraries(sdrbase Qt5::Core Qt5::Multimedia)
+ 
+ install(TARGETS sdrbase DESTINATION lib)
+ 
+--- SOURCE_FOLDER/sdrgui/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/sdrgui/CMakeLists.txt	2018-05-28 14:22:41.940305547 +0100
+@@ -190,7 +190,7 @@
+ set_target_properties(sdrgui PROPERTIES DEFINE_SYMBOL "sdrgui_EXPORTS")
+ target_compile_features(sdrgui PRIVATE cxx_generalized_initializers) # cmake >= 3.1.0
+ 
+-qt5_use_modules(sdrgui Core Widgets OpenGL Multimedia)
++target_link_libraries(sdrgui Qt5::Core Qt5::Widgets Qt5::OpenGL Qt5::Multimedia)
+ 
+ install(TARGETS sdrgui DESTINATION lib)
+ 
+--- SOURCE_FOLDER/sdrsrv/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/sdrsrv/CMakeLists.txt	2018-05-28 14:25:48.714832895 +0100
+@@ -44,7 +44,7 @@
+ 
+ target_compile_features(sdrsrv PRIVATE cxx_generalized_initializers) # cmake >= 3.1.0
+ 
+-qt5_use_modules(sdrsrv Core Multimedia)
++target_link_libraries(sdrsrv Qt5::Core Qt5::Multimedia)
+ 
+ install(TARGETS sdrsrv DESTINATION lib)
+ 
+--- SOURCE_FOLDER/sdrbench/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/sdrbench/CMakeLists.txt	2018-05-28 14:27:23.278768110 +0100
+@@ -41,7 +41,7 @@
+ 
+ target_compile_features(sdrbench PRIVATE cxx_generalized_initializers) # cmake >= 3.1.0
+ 
+-qt5_use_modules(sdrbench Core Gui)
++target_link_libraries(sdrbench Qt5::Core Qt5::Gui)
+ 
+ install(TARGETS sdrbench DESTINATION lib)
+ 
+--- SOURCE_FOLDER/httpserver/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/httpserver/CMakeLists.txt	2018-05-28 14:29:30.582909562 +0100
+@@ -50,6 +50,6 @@
+ 	${QT_LIBRARIES}
+ )
+ 
+-qt5_use_modules(httpserver Core Network)
++target_link_libraries(httpserver Qt5::Core Qt5::Network)
+ 
+ install(TARGETS httpserver DESTINATION lib)
+--- SOURCE_FOLDER/logging/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/logging/CMakeLists.txt	2018-05-28 14:33:48.987877644 +0100
+@@ -36,6 +36,6 @@
+ 	${QT_LIBRARIES}
+ )
+ 
+-qt5_use_modules(logging Core Network)
++target_link_libraries(logging Qt5::Core Qt5::Network)
+ 
+ install(TARGETS logging DESTINATION lib)
+--- SOURCE_FOLDER/qrtplib/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/qrtplib/CMakeLists.txt	2018-05-28 14:40:10.500282731 +0100
+@@ -90,6 +90,6 @@
+     ${QT_LIBRARIES}
+ )
+ 
+-qt5_use_modules(qrtplib Core Network)
++target_link_libraries(qrtplib Qt5::Core Qt5::Network)
+ 
+ install(TARGETS qrtplib DESTINATION lib)
+--- SOURCE_FOLDER/swagger/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/swagger/CMakeLists.txt	2018-05-28 14:41:33.024135482 +0100
+@@ -33,6 +33,6 @@
+ 
+ set_target_properties(swagger PROPERTIES DEFINE_SYMBOL "sdrangel_EXPORTS")
+ 
+-qt5_use_modules(swagger Core Network)
++target_link_libraries(swagger Qt5::Core Qt5::Network)
+ 
+ install(TARGETS swagger DESTINATION lib)
+--- SOURCE_FOLDER/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/CMakeLists.txt	2018-05-28 14:42:19.161092452 +0100
+@@ -276,7 +276,7 @@
+     set_target_properties(sdrangel PROPERTIES LINK_FLAGS_MINSIZEREL "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
+ endif(WIN32)
+ 
+-qt5_use_modules(sdrangel Widgets Multimedia)
++target_link_libraries(sdrangel Qt5::Widgets Qt5::Multimedia)
+ 
+ ##############################################################################
+ # main server application
+@@ -300,7 +300,7 @@
+     ${QT_LIBRARIES}
+ )
+ 
+-qt5_use_modules(sdrangelsrv Multimedia)
++target_link_libraries(sdrangelsrv Qt5::Multimedia)
+ 
+ ##############################################################################
+ # main benchmark application
+@@ -324,7 +324,7 @@
+ )
+ 
+ target_compile_features(sdrangelbench PRIVATE cxx_generalized_initializers) # cmake >= 3.1.0
+-qt5_use_modules(sdrangelbench Multimedia)
++target_link_libraries(sdrangelbench Qt5::Multimedia)
+ 
+ ##############################################################################
+ 
+--- SOURCE_FOLDER/plugins/channelrx/demodam/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channelrx/demodam/CMakeLists.txt	2018-05-28 14:45:23.245598164 +0100
+@@ -49,6 +49,6 @@
+ 	sdrgui
+ )
+ 
+-qt5_use_modules(demodam Core Widgets)
++target_link_libraries(demodam Qt5::Core Qt5::Widgets)
+ 
+-install(TARGETS demodam DESTINATION lib/plugins/channelrx)
+\ No newline at end of file
++install(TARGETS demodam DESTINATION lib/plugins/channelrx)
+--- SOURCE_FOLDER/plugins/channelrx/demodbfm/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channelrx/demodbfm/CMakeLists.txt	2018-05-28 14:45:37.315708238 +0100
+@@ -56,6 +56,6 @@
+ 	sdrgui
+ )
+ 
+-qt5_use_modules(demodbfm Core Widgets)
++target_link_libraries(demodbfm Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS demodbfm DESTINATION lib/plugins/channelrx)
+--- SOURCE_FOLDER/plugins/channelrx/demodssb/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channelrx/demodssb/CMakeLists.txt	2018-05-28 14:47:26.329877755 +0100
+@@ -45,6 +45,6 @@
+ 	sdrgui
+ )
+ 
+-qt5_use_modules(demodssb Core Widgets)
++target_link_libraries(demodssb Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS demodssb DESTINATION lib/plugins/channelrx)
++target_link_libraries(demodtcpsrc Qt5::Core Qt5::Widgets Qt5::Network)
+ 
+ install(TARGETS demodtcpsrc DESTINATION lib/plugins/channelrx)
+--- SOURCE_FOLDER/plugins/channelrx/udpsrc/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channelrx/udpsrc/CMakeLists.txt	2018-05-28 14:48:30.580358329 +0100
+@@ -42,6 +42,6 @@
+ 	sdrgui
+ )
+ 
+-qt5_use_modules(demodudpsrc Core Widgets Network)
++target_link_libraries(demodudpsrc Qt5::Core Qt5::Widgets Qt5::Network)
+ 
+ install(TARGETS demodudpsrc DESTINATION lib/plugins/channelrx)
+--- SOURCE_FOLDER/plugins/channelrx/demodwfm/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channelrx/demodwfm/CMakeLists.txt	2018-05-28 14:48:55.190540291 +0100
+@@ -45,6 +45,6 @@
+ 	sdrgui
+ )
+ 
+-qt5_use_modules(demodwfm Core Widgets)
++target_link_libraries(demodwfm Qt5::Core Qt5::Widgets)
+ 
+-install(TARGETS demodwfm DESTINATION lib/plugins/channelrx)
+\ No newline at end of file
++install(TARGETS demodwfm DESTINATION lib/plugins/channelrx)
+--- SOURCE_FOLDER/plugins/channelrx/chanalyzer/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channelrx/chanalyzer/CMakeLists.txt	2018-05-28 14:49:41.667547680 +0100
+@@ -41,6 +41,6 @@
+ 	sdrgui
+ )
+ 
+-qt5_use_modules(chanalyzer Core Widgets )
++target_link_libraries(chanalyzer Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS chanalyzer DESTINATION lib/plugins/channelrx)
++target_link_libraries(chanalyzerng Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS chanalyzerng DESTINATION lib/plugins/channelrx)
+--- SOURCE_FOLDER/plugins/channelrx/demodatv/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channelrx/demodatv/CMakeLists.txt	2018-05-28 14:50:19.074485992 +0100
+@@ -43,6 +43,6 @@
+ 	sdrgui
+ )
+ 
+-qt5_use_modules(demodatv Core Widgets)
++target_link_libraries(demodatv Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS demodatv DESTINATION lib/plugins/channelrx)
+--- SOURCE_FOLDER/plugins/channelrx/demoddsd/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channelrx/demoddsd/CMakeLists.txt	2018-05-28 14:50:38.594626889 +0100
+@@ -75,6 +75,6 @@
+ endif (BUILD_DEBIAN)
+ 
+ 
+-qt5_use_modules(demoddsd Core Widgets)
++target_link_libraries(demoddsd Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS demoddsd DESTINATION lib/plugins/channelrx)
+--- SOURCE_FOLDER/plugins/channeltx/modnfm/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channeltx/modnfm/CMakeLists.txt	2018-05-28 14:52:05.208578954 +0100
+@@ -45,6 +45,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(modnfm Core Widgets)
++target_link_libraries(modnfm Qt5::Core Qt5::Widgets)
+ 
+-install(TARGETS modnfm DESTINATION lib/plugins/channeltx)
+\ No newline at end of file
++install(TARGETS modnfm DESTINATION lib/plugins/channeltx)
+--- SOURCE_FOLDER/plugins/channeltx/modssb/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channeltx/modssb/CMakeLists.txt	2018-05-28 14:52:32.118769221 +0100
+@@ -42,9 +42,9 @@
+     ${QT_LIBRARIES}
+     sdrbase
+     sdrgui
+-	swagger    
++    swagger
+ )
+ 
+-qt5_use_modules(modssb Core Widgets)
++target_link_libraries(modssb Qt5::Core Qt5::Widgets)
+ 
+-install(TARGETS modssb DESTINATION lib/plugins/channeltx)
+\ No newline at end of file
++install(TARGETS modssb DESTINATION lib/plugins/channeltx)
+--- SOURCE_FOLDER/plugins/channeltx/modwfm/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channeltx/modwfm/CMakeLists.txt	2018-05-28 14:52:48.138882085 +0100
+@@ -45,6 +45,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(modwfm Core Widgets)
++target_link_libraries(modwfm Qt5::Core Qt5::Widgets)
+ 
+-install(TARGETS modwfm DESTINATION lib/plugins/channeltx)
+\ No newline at end of file
++install(TARGETS modwfm DESTINATION lib/plugins/channeltx)
+--- SOURCE_FOLDER/plugins/channeltx/udpsink/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channeltx/udpsink/CMakeLists.txt	2018-05-28 14:53:13.959063382 +0100
+@@ -50,6 +50,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(modudpsink Core Widgets Network)
++target_link_libraries(modudpsink Qt5::Core Qt5::Widgets Qt5::Network)
+ 
+ install(TARGETS modudpsink DESTINATION lib/plugins/channeltx)
+--- SOURCE_FOLDER/plugins/channeltx/modatv/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/channeltx/modatv/CMakeLists.txt	2018-05-28 14:53:30.642513472 +0100
+@@ -49,6 +49,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(modatv Core Widgets)
++target_link_libraries(modatv Qt5::Core Qt5::Widgets)
+ 
+-install(TARGETS modatv DESTINATION lib/plugins/channeltx)
+\ No newline at end of file
++install(TARGETS modatv DESTINATION lib/plugins/channeltx)
+--- SOURCE_FOLDER/plugins/samplesource/fcdpro/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesource/fcdpro/CMakeLists.txt	2018-05-28 14:54:03.536076162 +0100
+@@ -54,6 +54,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(inputfcdpro Core Widgets)
++target_link_libraries(inputfcdpro Qt5::Core Qt5::Widgets)
+ 
+-install(TARGETS inputfcdpro DESTINATION lib/plugins/samplesource)
+\ No newline at end of file
++install(TARGETS inputfcdpro DESTINATION lib/plugins/samplesource)
+--- SOURCE_FOLDER/plugins/samplesource/fcdproplus/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesource/fcdproplus/CMakeLists.txt	2018-05-28 14:54:17.922842806 +0100
+@@ -54,6 +54,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(inputfcdproplus Core Widgets)
++target_link_libraries(inputfcdproplus Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS inputfcdproplus DESTINATION lib/plugins/samplesource)
+--- SOURCE_FOLDER/plugins/samplesource/rtlsdr/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesource/rtlsdr/CMakeLists.txt	2018-05-28 14:54:38.602986172 +0100
+@@ -72,6 +72,6 @@
+ endif (BUILD_DEBIAN)
+ 
+ 
+-qt5_use_modules(inputrtlsdr Core Widgets)
++target_link_libraries(inputrtlsdr Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS inputrtlsdr DESTINATION lib/plugins/samplesource)
+--- SOURCE_FOLDER/plugins/samplesource/bladerfinput/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesource/bladerfinput/CMakeLists.txt	2018-05-28 14:54:55.556436743 +0100
+@@ -75,6 +75,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(inputbladerf Core Widgets)
++target_link_libraries(inputbladerf Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS inputbladerf DESTINATION lib/plugins/samplesource)
+--- SOURCE_FOLDER/plugins/samplesource/airspy/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesource/airspy/CMakeLists.txt	2018-05-28 14:55:24.186634154 +0100
+@@ -73,6 +73,6 @@
+ endif (BUILD_DEBIAN)
+ 
+ 
+-qt5_use_modules(inputairspy Core Widgets)
++target_link_libraries(inputairspy Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS inputairspy DESTINATION lib/plugins/samplesource)
+--- SOURCE_FOLDER/plugins/samplesource/hackrfinput/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesource/hackrfinput/CMakeLists.txt	2018-05-28 14:56:39.070480675 +0100
+@@ -76,6 +76,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(inputhackrf Core Widgets)
++target_link_libraries(inputhackrf Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS inputhackrf DESTINATION lib/plugins/samplesource)
+--- SOURCE_FOLDER/plugins/samplesource/sdrplay/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesource/sdrplay/CMakeLists.txt	2018-05-28 14:56:52.410571651 +0100
+@@ -68,6 +68,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(inputsdrplay Core Widgets)
++target_link_libraries(inputsdrplay Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS inputsdrplay DESTINATION lib/plugins/samplesource)
+--- SOURCE_FOLDER/plugins/samplesource/limesdrinput/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesource/limesdrinput/CMakeLists.txt	2018-05-28 14:57:09.874023894 +0100
+@@ -82,6 +82,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(inputlimesdr Core Widgets)
++target_link_libraries(inputlimesdr Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS inputlimesdr DESTINATION lib/plugins/samplesource)
+--- SOURCE_FOLDER/plugins/samplesource/sdrdaemonsource/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesource/sdrdaemonsource/CMakeLists.txt	2018-05-28 14:57:23.410782589 +0100
+@@ -85,6 +85,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(inputsdrdaemonsource Core Widgets)
++target_link_libraries(inputsdrdaemonsource Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS inputsdrdaemonsource DESTINATION lib/plugins/samplesource)
+--- SOURCE_FOLDER/plugins/samplesource/filesource/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesource/filesource/CMakeLists.txt	2018-05-28 14:57:35.094195252 +0100
+@@ -49,6 +49,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(inputfilesource Core Widgets)
++target_link_libraries(inputfilesource Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS inputfilesource DESTINATION lib/plugins/samplesource)
+--- SOURCE_FOLDER/plugins/samplesource/testsource/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesource/testsource/CMakeLists.txt	2018-05-28 14:57:43.660920031 +0100
+@@ -49,6 +49,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(inputtestsource Core Widgets)
++target_link_libraries(inputtestsource Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS inputtestsource DESTINATION lib/plugins/samplesource)
+--- SOURCE_FOLDER/plugins/samplesink/bladerfoutput/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesink/bladerfoutput/CMakeLists.txt	2018-05-28 14:58:23.497856326 +0100
+@@ -75,6 +75,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(outputbladerf Core Widgets)
++target_link_libraries(outputbladerf Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS outputbladerf DESTINATION lib/plugins/samplesink)
+--- SOURCE_FOLDER/plugins/samplesink/hackrfoutput/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesink/hackrfoutput/CMakeLists.txt	2018-05-28 14:58:30.044567211 +0100
+@@ -76,6 +76,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(outputhackrf Core Widgets)
++target_link_libraries(outputhackrf Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS outputhackrf DESTINATION lib/plugins/samplesink)
+--- SOURCE_FOLDER/plugins/samplesink/limesdroutput/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesink/limesdroutput/CMakeLists.txt	2018-05-28 14:58:38.994627622 +0100
+@@ -82,6 +82,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(outputlimesdr Core Widgets)
++target_link_libraries(outputlimesdr Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS outputlimesdr DESTINATION lib/plugins/samplesink)
+--- SOURCE_FOLDER/plugins/samplesink/sdrdaemonsink/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesink/sdrdaemonsink/CMakeLists.txt	2018-05-28 14:58:48.894694392 +0100
+@@ -86,6 +86,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(outputsdrdaemonsink Core Widgets)
++target_link_libraries(outputsdrdaemonsink Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS outputsdrdaemonsink DESTINATION lib/plugins/samplesink)
+--- SOURCE_FOLDER/plugins/samplesink/filesink/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/plugins/samplesink/filesink/CMakeLists.txt	2018-05-28 14:58:56.124743120 +0100
+@@ -47,6 +47,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(outputfilesink Core Widgets)
++target_link_libraries(outputfilesink Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS outputfilesink DESTINATION lib/plugins/samplesink)
+--- SOURCE_FOLDER/pluginssrv/channelrx/demodam/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channelrx/demodam/CMakeLists.txt	2018-05-28 14:59:45.851744162 +0100
+@@ -37,6 +37,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(demodamsrv Core)
++target_link_libraries(demodamsrv Qt5::Core)
+ 
+ install(TARGETS demodamsrv DESTINATION lib/pluginssrv/channelrx)
+\ No newline at end of file
+--- SOURCE_FOLDER/pluginssrv/channelrx/demodnfm/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channelrx/demodnfm/CMakeLists.txt	2018-05-28 15:00:04.431868774 +0100
+@@ -37,6 +37,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(demodnfmsrv Core)
++target_link_libraries(demodnfmsrv Qt5::Core)
+ 
+ install(TARGETS demodnfmsrv DESTINATION lib/pluginssrv/channelrx)
+\ No newline at end of file
+--- SOURCE_FOLDER/pluginssrv/channeltx/modam/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channeltx/modam/CMakeLists.txt	2018-05-28 15:00:17.348621970 +0100
+@@ -36,6 +36,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(modamsrv Core)
++target_link_libraries(modamsrv Qt5::Core)
+ 
+ install(TARGETS modamsrv DESTINATION lib/pluginssrv/channeltx)
+\ No newline at end of file
+--- SOURCE_FOLDER/pluginssrv/channeltx/modatv/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channeltx/modatv/CMakeLists.txt	2018-05-28 15:00:25.652010887 +0100
+@@ -40,6 +40,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(modatvsrv Core)
++target_link_libraries(modatvsrv Qt5::Core)
+ 
+ install(TARGETS modatvsrv DESTINATION lib/pluginssrv/channeltx)
+\ No newline at end of file
+--- SOURCE_FOLDER/pluginssrv/channeltx/modnfm/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channeltx/modnfm/CMakeLists.txt	2018-05-28 15:00:31.985386595 +0100
+@@ -36,6 +36,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(modnfmsrv Core)
++target_link_libraries(modnfmsrv Qt5::Core)
+ 
+ install(TARGETS modnfmsrv DESTINATION lib/pluginssrv/channeltx)
+\ No newline at end of file
+--- SOURCE_FOLDER/pluginssrv/channeltx/modssb/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channeltx/modssb/CMakeLists.txt	2018-05-28 15:00:37.775425318 +0100
+@@ -36,6 +36,6 @@
+ 	swagger    
+ )
+ 
+-qt5_use_modules(modssbsrv Core)
++target_link_libraries(modssbsrv Qt5::Core)
+ 
+ install(TARGETS modssbsrv DESTINATION lib/pluginssrv/channeltx)
+\ No newline at end of file
+--- SOURCE_FOLDER/pluginssrv/channeltx/modwfm/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channeltx/modwfm/CMakeLists.txt	2018-05-28 15:00:41.695451525 +0100
+@@ -36,6 +36,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(modwfmsrv Core)
++target_link_libraries(modwfmsrv Qt5::Core)
+ 
+ install(TARGETS modwfmsrv DESTINATION lib/pluginssrv/channeltx)
+\ No newline at end of file
+--- SOURCE_FOLDER/pluginssrv/channeltx/udpsink/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channeltx/udpsink/CMakeLists.txt	2018-05-28 15:00:48.958833402 +0100
+@@ -40,6 +40,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(modudpsinksrv Core Network)
++target_link_libraries(modudpsinksrv Qt5::Core Qt5::Network)
+ 
+ install(TARGETS modudpsinksrv DESTINATION lib/pluginssrv/channeltx)
+--- SOURCE_FOLDER/pluginssrv/samplesink/bladerfoutput/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesink/bladerfoutput/CMakeLists.txt	2018-05-28 15:01:47.689225071 +0100
+@@ -63,6 +63,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(outputbladerfsrv Core)
++target_link_libraries(outputbladerfsrv Qt5::Core)
+ 
+ install(TARGETS outputbladerfsrv DESTINATION lib/pluginssrv/samplesink)
+--- SOURCE_FOLDER/pluginssrv/samplesink/hackrfoutput/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesink/hackrfoutput/CMakeLists.txt	2018-05-28 15:01:56.292615662 +0100
+@@ -65,6 +65,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(outputhackrfsrv Core)
++target_link_libraries(outputhackrfsrv Qt5::Core)
+ 
+ install(TARGETS outputhackrfsrv DESTINATION lib/pluginssrv/samplesink)
+--- SOURCE_FOLDER/pluginssrv/samplesink/limesdroutput/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesink/limesdroutput/CMakeLists.txt	2018-05-28 15:02:03.509330334 +0100
+@@ -73,6 +73,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(outputlimesdrsrv Core)
++target_link_libraries(outputlimesdrsrv Qt5::Core)
+ 
+ install(TARGETS outputlimesdrsrv DESTINATION lib/pluginssrv/samplesink)
+--- SOURCE_FOLDER/pluginssrv/samplesink/filesink/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesink/filesink/CMakeLists.txt	2018-05-28 15:02:20.302775302 +0100
+@@ -39,6 +39,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(outputfilesinksrv Core)
++target_link_libraries(outputfilesinksrv Qt5::Core)
+ 
+ install(TARGETS outputfilesinksrv DESTINATION lib/pluginssrv/samplesink)
+--- SOURCE_FOLDER/pluginssrv/samplesource/bladerfinput/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesource/bladerfinput/CMakeLists.txt	2018-05-28 15:02:53.996332300 +0100
+@@ -63,6 +63,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(inputbladerfsrv Core)
++target_link_libraries(inputbladerfsrv Qt5::Core)
+ 
+ install(TARGETS inputbladerfsrv DESTINATION lib/pluginssrv/samplesource)
+--- SOURCE_FOLDER/pluginssrv/samplesource/hackrfinput/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesource/hackrfinput/CMakeLists.txt	2018-05-28 15:03:00.089706040 +0100
+@@ -65,6 +65,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(inputhackrfsrv Core)
++target_link_libraries(inputhackrfsrv Qt5::Core)
+ 
+ install(TARGETS inputhackrfsrv DESTINATION lib/pluginssrv/samplesource)
+--- SOURCE_FOLDER/pluginssrv/samplesource/limesdrinput/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesource/limesdrinput/CMakeLists.txt	2018-05-28 15:03:11.033111909 +0100
+@@ -73,6 +73,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(inputlimesdrsrv Core)
++target_link_libraries(inputlimesdrsrv Qt5::Core)
+ 
+ install(TARGETS inputlimesdrsrv DESTINATION lib/pluginssrv/samplesource)
+--- SOURCE_FOLDER/pluginssrv/samplesource/rtlsdr/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesource/rtlsdr/CMakeLists.txt	2018-05-28 15:03:18.083158618 +0100
+@@ -63,6 +63,6 @@
+ endif (BUILD_DEBIAN)
+ 
+ 
+-qt5_use_modules(inputrtlsdrsrv Core)
++target_link_libraries(inputrtlsdrsrv Qt5::Core)
+ 
+ install(TARGETS inputrtlsdrsrv DESTINATION lib/pluginssrv/samplesource)
+--- SOURCE_FOLDER/pluginssrv/samplesource/filesource/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesource/filesource/CMakeLists.txt	2018-05-28 15:03:30.379906714 +0100
+@@ -40,6 +40,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(inputfilesourcesrv Core)
++target_link_libraries(inputfilesourcesrv Qt5::Core)
+ 
+ install(TARGETS inputfilesourcesrv DESTINATION lib/pluginssrv/samplesource)
+--- SOURCE_FOLDER/pluginssrv/samplesource/testsource/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesource/testsource/CMakeLists.txt	2018-06-11 12:42:30.661452013 +0100
+@@ -38,6 +38,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(inputtestsourcesrv Core)
++target_link_libraries(inputtestsourcesrv Qt5::Core)
+ 
+ install(TARGETS inputtestsourcesrv DESTINATION lib/pluginssrv/samplesource)
+--- SOURCE_FOLDER/pluginssrv/samplesource/sdrplay/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesource/sdrplay/CMakeLists.txt	2018-06-11 12:42:39.614840744 +0100
+@@ -58,6 +58,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(inputsdrplaysrv Core)
++target_link_libraries(inputsdrplaysrv Qt5::Core)
+ 
+ install(TARGETS inputsdrplaysrv DESTINATION lib/pluginssrv/samplesource)
+--- SOURCE_FOLDER/pluginssrv/samplesource/sdrdaemonsource/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesource/sdrdaemonsource/CMakeLists.txt	2018-06-11 12:42:44.271536220 +0100
+@@ -74,6 +74,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(inputsdrdaemonsourcesrv Core)
++target_link_libraries(inputsdrdaemonsourcesrv Qt5::Core)
+ 
+ install(TARGETS inputsdrdaemonsourcesrv DESTINATION lib/pluginssrv/samplesource)
+--- SOURCE_FOLDER/pluginssrv/samplesource/fcdproplus/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesource/fcdproplus/CMakeLists.txt	2018-06-11 12:42:50.368240605 +0100
+@@ -43,6 +43,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(inputfcdproplussrv Core)
++target_link_libraries(inputfcdproplussrv Qt5::Core)
+ 
+ install(TARGETS inputfcdproplussrv DESTINATION lib/pluginssrv/samplesource)
+--- SOURCE_FOLDER/pluginssrv/samplesource/fcdpro/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesource/fcdpro/CMakeLists.txt	2018-06-11 12:42:53.251591777 +0100
+@@ -43,6 +43,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(inputfcdprosrv Core)
++target_link_libraries(inputfcdprosrv Qt5::Core)
+ 
+ install(TARGETS inputfcdprosrv DESTINATION lib/pluginssrv/samplesource)
+\ No newline at end of file
+--- SOURCE_FOLDER/pluginssrv/samplesource/airspy/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesource/airspy/CMakeLists.txt	2018-06-11 12:43:02.698316882 +0100
+@@ -60,6 +60,6 @@
+ endif (BUILD_DEBIAN)
+ 
+ 
+-qt5_use_modules(inputairspysrv Core)
++target_link_libraries(inputairspysrv Qt5::Core)
+ 
+ install(TARGETS inputairspysrv DESTINATION lib/pluginssrv/samplesource)
+--- SOURCE_FOLDER/pluginssrv/channelrx/demodbfm/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channelrx/demodbfm/CMakeLists.txt	2018-06-11 12:43:22.131770423 +0100
+@@ -50,6 +50,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(demodbfmsrv Core)
++target_link_libraries(demodbfmsrv Qt5::Core)
+ 
+ install(TARGETS demodbfmsrv DESTINATION lib/pluginssrv/channelrx)
+--- SOURCE_FOLDER/pluginssrv/channelrx/demoddsd/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channelrx/demoddsd/CMakeLists.txt	2018-06-11 12:43:28.011806792 +0100
+@@ -64,6 +64,6 @@
+ endif (BUILD_DEBIAN)
+ 
+ 
+-qt5_use_modules(demoddsdsrv Core)
++target_link_libraries(demoddsdsrv Qt5::Core)
+ 
+ install(TARGETS demoddsdsrv DESTINATION lib/pluginssrv/channelrx)
+--- SOURCE_FOLDER/pluginssrv/channelrx/demodssb/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channelrx/demodssb/CMakeLists.txt	2018-06-11 12:43:32.381833820 +0100
+@@ -38,6 +38,6 @@
+ 	sdrbase
+ )
+ 
+-qt5_use_modules(demodssbsrv Core)
++target_link_libraries(demodssbsrv Qt5::Core)
+ 
+ install(TARGETS demodssbsrv DESTINATION lib/pluginssrv/channelrx)
+--- SOURCE_FOLDER/pluginssrv/channelrx/demodwfm/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channelrx/demodwfm/CMakeLists.txt	2018-06-11 12:43:36.925195253 +0100
+@@ -38,6 +38,6 @@
+ 	sdrbase
+ )
+ 
+-qt5_use_modules(demodwfmsrv Core)
++target_link_libraries(demodwfmsrv Qt5::Core)
+ 
+ install(TARGETS demodwfmsrv DESTINATION lib/pluginssrv/channelrx)
+\ No newline at end of file
+--- SOURCE_FOLDER/pluginssrv/channelrx/udpsrc/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/channelrx/udpsrc/CMakeLists.txt	2018-06-11 12:43:44.895244623 +0100
+@@ -36,6 +36,6 @@
+ 	sdrbase
+ )
+ 
+-qt5_use_modules(demodudpsrcsrv Core Network)
++target_link_libraries(demodudpsrcsrv Qt5::Core Qt5::Network)
+ 
+ install(TARGETS demodudpsrcsrv DESTINATION lib/pluginssrv/channelrx)
+--- SOURCE_FOLDER/pluginssrv/samplesink/sdrdaemonsink/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/pluginssrv/samplesink/sdrdaemonsink/CMakeLists.txt	2018-06-11 12:43:58.832006333 +0100
+@@ -76,6 +76,6 @@
+ )
+ endif (BUILD_DEBIAN)
+ 
+-qt5_use_modules(outputsdrdaemonsinksrv Core)
++target_link_libraries(outputsdrdaemonsinksrv Qt5::Core)
+ 
+ install(TARGETS outputsdrdaemonsinksrv DESTINATION lib/pluginssrv/samplesink)
+--- SOURCE_FOLDER/plugins/channelrx/demodnfm/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/plugins/channelrx/demodnfm/CMakeLists.txt	2018-06-11 12:53:02.172262585 +0100
+@@ -47,6 +47,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(demodnfm Core Widgets)
++target_link_libraries(demodnfm Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS demodnfm DESTINATION lib/plugins/channelrx)
+\ No newline at end of file
+--- SOURCE_FOLDER/plugins/channeltx/modam/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/plugins/channeltx/modam/CMakeLists.txt	2018-06-11 12:53:32.139122641 +0100
+@@ -45,6 +45,6 @@
+ 	swagger
+ )
+ 
+-qt5_use_modules(modam Core Widgets)
++target_link_libraries(modam Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS modam DESTINATION lib/plugins/channeltx)
+\ No newline at end of file
+--- SOURCE_FOLDER/plugins/channelrx/demodlora/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/plugins/channelrx/demodlora/CMakeLists.txt	2018-06-11 12:54:55.336324631 +0100
+@@ -43,6 +43,6 @@
+ 	sdrgui
+ )
+ 
+-qt5_use_modules(demodlora Core Widgets)
++target_link_libraries(demodlora Qt5::Core Qt5::Widgets)
+ 
+ install(TARGETS demodlora DESTINATION lib/plugins/channelrx)
+--- SOURCE_FOLDER/CMakeLists.txt	2018-06-11 13:00:23.021749188 +0100
++++ SOURCE_FOLDER/CMakeLists.txt	2018-06-11 13:01:24.992142401 +0100
+@@ -56,7 +56,7 @@
+ find_package(Qt5Core 5.0 REQUIRED)
+ find_package(Qt5Widgets 5.0 REQUIRED)
+ find_package(Qt5Multimedia 5.0 REQUIRED)
+-#find_package(QT5OpenGL 5.0 REQUIRED)
++find_package(Qt5OpenGL 5.0 REQUIRED)
+ find_package(OpenGL REQUIRED)
+ find_package(PkgConfig)
+ find_package(Boost REQUIRED)
+--- SOURCE_FOLDER/plugins/channelrx/demoddatv/CMakeLists.txt	2018-06-10 11:17:26.000000000 +0100
++++ SOURCE_FOLDER/plugins/channelrx/demoddatv/CMakeLists.txt	2018-06-11 14:25:09.544763953 +0100
+@@ -53,6 +53,7 @@
+ 	${SWSCALE_LIBRARIES}
+ )
+ 
+-qt5_use_modules(demoddatv Core Widgets Multimedia MultimediaWidgets)
++find_package(Qt5MultimediaWidgets 5.0 REQUIRED)
++target_link_libraries(demoddatv Qt5::Core Qt5::Widgets Qt5::Multimedia Qt5::MultimediaWidgets)
+ 
+ install(TARGETS demoddatv DESTINATION lib/plugins/channelrx)
