@@ -10,7 +10,7 @@ depends=('plasma-workspace' 'qt5-declarative')
 makedepends=('extra-cmake-modules')
 arch=('any')
 source=(https://github.com/Zren/plasma-applet-todolist/archive/v$pkgver.tar.gz
-	https://raw.githubusercontent.com/kikadf/patches/master/plasma5-applets-todolist/Add_CMakeLists.patch)
+	https://gitlab.com/kikadf/patches/raw/master/plasma5-applets-todolist/Add_CMakeLists.patch)
 md5sums=('d79af3b345f3e798b0f3e0210c465639'
          '3881942579d0e79c4e1e78ae570cbcd9')
 

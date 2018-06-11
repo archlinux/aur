@@ -9,7 +9,7 @@ pkgbase = plasma5-applets-todolist
 	depends = plasma-workspace
 	depends = qt5-declarative
 	source = https://github.com/Zren/plasma-applet-todolist/archive/v7.tar.gz
-	source = https://raw.githubusercontent.com/kikadf/patches/master/plasma5-applets-todolist/Add_CMakeLists.patch
+	source = https://gitlab.com/kikadf/patches/raw/master/plasma5-applets-todolist/Add_CMakeLists.patch
 	md5sums = d79af3b345f3e798b0f3e0210c465639
 	md5sums = 3881942579d0e79c4e1e78ae570cbcd9
 
