@@ -3,7 +3,7 @@
 
 pkgname=('gravium-daemon' 'gravium-cli' 'gravium-qt')
 pkgbase=gravium
-pkgver=1.0.2
+pkgver=1.0.2.1
 pkgrel=0
 arch=('i686' 'x86_64')
 url="https://gravium.io/"
@@ -14,9 +14,9 @@ optdepends=('zeromq: Optional, allows generating ZMQ notifications'
             'db4.8: Wallet storage')
 pkgdesc="Gravium peer-to-peer network based digital currency "
 license=('MIT')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Gravium/gravium/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Gravium/gravium/archive/${pkgver}.tar.gz"
 	"graviumd@.service")
-sha256sums=('c78c787cde775ac20967eaddde6a4ee0b62d782d8683a1f515da28ca524de03a'
+sha256sums=('b837ecf3ae5a750b9862d0aefb2b5016b4689b77eddf29e9833fe299bda839ff'
             '60fe54a68a3d251f67022c96e2324c6a8f8bc826405272f254978d8c305e06c7')
 
 build() {
