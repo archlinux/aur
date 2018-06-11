@@ -4,19 +4,20 @@
 
 pkgname=mikutter
 pkgver=3.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
 license=('MIT')
 depends=('gobject-introspection-runtime' 'gtk2' 'ruby-bundler')
-makedepends=('gobject-introspection' 'gcc<8')
+makedepends=('gobject-introspection')
 optdepends=('alsa-utils: sound notification support'
             'libnotify: notify support')
 source=(
 http://mikutter.hachune.net/bin/$pkgname.$pkgver.tar.gz
 mikutter.desktop
 config.patch
+gtk2-gemfile.patch
 )
 _gemdir="vendor/bundle/ruby/`ruby -e'print Gem.dir.match(/^.+\/(.+?)$/)[1]'`"
 
@@ -24,6 +25,7 @@ prepare() {
   cd "$pkgname"
 
   patch -p1 < "$srcdir/config.patch"
+  patch -p1 < "$srcdir/gtk2-gemfile.patch"
 }
 
 build() {
@@ -56,4 +58,5 @@ EOF
 
 md5sums=('d5be1432d609c6e3cdb7b9361996d5cd'
          '3bc1c65e13b6182a9c989835eefc8810'
-         '54df9d2f1f19d3c27034cc1a97d1bc67')
+         '54df9d2f1f19d3c27034cc1a97d1bc67'
+         '949d3f1d444732f7c0a62354b64491ea')
