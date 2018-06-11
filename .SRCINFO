@@ -1,7 +1,7 @@
 pkgbase = yourkit
 	pkgdesc = Java CPU and memory profiler.
-	pkgver = 2017.02b68
-	pkgrel = 2
+	pkgver = 2018.04b71
+	pkgrel = 1
 	url = http://www.yourkit.com
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = yourkit
 	optdepends = eclipse: A Java IDE that integrates with Yourkit
 	optdepends = netbeans: A Java IDE that integrates with Yourkit
 	options = !strip
-	source = http://www.yourkit.com/download/YourKit-JavaProfiler-2017.02-b68.zip
-	sha256sums = fa042274fd1fdc87d4b0771cb810049684066f1a134bd88ea286a9bbcb635c99
+	source = https://www.yourkit.com/download/YourKit-JavaProfiler-2018.04-b71.zip
+	sha256sums = 2e9759f803e4d7c138c1c7b8b8cf1be8c6c4a88ac8deac87230e0a34a6a6d0d0
 
 pkgname = yourkit
 
