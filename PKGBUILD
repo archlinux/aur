@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
 depends=('r' 'r-magrittr' 'r-pkgconfig>=2.0.0')
 
-optdepends=('r-ape' 'r-graph' 'r-igraphdata' 'r-rgl' 'r-cran-scales' 'r-testthat')
+optdepends=('r-ape' 'r-graph' 'r-igraphdata' 'r-rgl' 'r-scales' 'r-testthat')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('011d2c5a4b85024cbfa48b37b4a9c355')
