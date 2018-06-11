@@ -1,8 +1,8 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=litedram-git
 pkgver=181
-pkgrel=1
-pkgdesc="A small footprint and configurable DRAM core"
+pkgrel=2
+pkgdesc="A small footprint and configurable DRAM core for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/litedram"
 license=('MIT')

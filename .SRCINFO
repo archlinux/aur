@@ -1,7 +1,7 @@
 pkgbase = litedram-git
-	pkgdesc = A small footprint and configurable DRAM core
+	pkgdesc = A small footprint and configurable DRAM core for LiteX
 	pkgver = 181
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enjoy-digital/litedram
 	arch = any
 	license = MIT
