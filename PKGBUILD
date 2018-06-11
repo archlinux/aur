@@ -3,11 +3,11 @@
 
 pkgname=insomnia
 pkgver=5.16.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual HTTP and GraphQL client"
 arch=('x86_64')
 url="http://insomnia.rest/"
-options=('!strip' '!upx')
+options=('!strip')
 depends=()
 
 source=(
