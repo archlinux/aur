@@ -1,12 +1,12 @@
 # Maintainer: rapiertg <rapiertg@gmail.com>
 pkgname=virtualmoonatlas
-pkgver=6.1+r618
+pkgver=6.1+r622
 pkgrel=1
 pkgdesc="Software for Moon observation and survey"
 arch=('x86_64')
 url="http://virtualmoon.sourceforge.net/"
 license=('GPLv2')
-makedepends=('lazarus')
+makedepends=('lazarus' 'wget')
 provides=('virtualmoonatlas')
 md5sums=('SKIP')
 
