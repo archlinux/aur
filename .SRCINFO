@@ -1,7 +1,7 @@
 pkgbase = litescope-git
-	pkgdesc = A small footprint and configurable Logic Analyzer
+	pkgdesc = A small footprint and configurable Logic Analyzer for LiteX
 	pkgver = 95
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enjoy-digital/litescope
 	arch = any
 	license = MIT

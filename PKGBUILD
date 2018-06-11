@@ -1,8 +1,8 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=litescope-git
 pkgver=95
-pkgrel=1
-pkgdesc="A small footprint and configurable Logic Analyzer"
+pkgrel=2
+pkgdesc="A small footprint and configurable Logic Analyzer for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/litescope"
 license=('MIT')
