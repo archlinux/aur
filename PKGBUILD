@@ -16,8 +16,7 @@ depends=('mingw-w64-harfbuzz'
          'mingw-w64-fontconfig'
          'mingw-w64-freetype'
          'mingw-w64-cairo')
-makedepends=('mingw-w64-configure'
-             'gtk-doc'
+makedepends=('gtk-doc'
              'gobject-introspection'
              'mingw-w64-meson'
              'git')

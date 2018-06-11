@@ -5,7 +5,6 @@ pkgbase = mingw-w64-pango
 	url = http://www.pango.org
 	arch = any
 	license = LGPL
-	makedepends = mingw-w64-configure
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
 	makedepends = mingw-w64-meson
