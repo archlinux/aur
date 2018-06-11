@@ -9,7 +9,7 @@ pkgbase = r-rstan
 	depends = r-ggplot2>=2.0.0
 	depends = r-stanheaders>=2.17.2
 	depends = r-inline
-	depends = r-cran-gridextra>=2.0.0
+	depends = r-gridextra>=2.0.0
 	depends = r-bh>=1.65
 	depends = r-stanheaders>=2.17.2
 	optdepends = pandoc
