@@ -1,6 +1,6 @@
 pkgname=terasology-devbuild
-pkgver=2104
-_omega_ver=862
+pkgver=2179
+_omega_ver=936
 pkgrel=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft! (Last succesful development build)"
 arch=('x86_64' 'i686')
@@ -12,11 +12,13 @@ makedepends=('unzip')
 source=(
     "$pkgname"
     "${pkgname}.desktop"
+    "rendering.cfg"
     "TerasologyOmega${_omega_ver}.zip::https://jenkins.terasology.org/job/DistroOmega/${_omega_ver}/artifact/distros/omega/build/distributions/TerasologyOmega.zip"
 )
 sha512sums=('9d2562e769aee38a09de315f9900754827ec2720400e10553f0cbf78c0834bf325220c42c249f17999bc764aa4a0c12aa7abe162d43ea5327672c2fa88fa2669'
             '9ecacc34ae0a17cfe1031f32ee4f25e4e840bed072445ac0a8ffc1b2a012a7b60fed739fcc2ceab8083293a31e7409406bc190c4295022df82815f48c5541d19'
-            '3dd20b693a405ffb3e6552437f3e7be5359f607aec676af203e7f15477419de41516d350d1d7c9b639e20c391fdbcfad2da64feb4913d7858c416601e294dcf2')
+            '43625b793236742cf6297d435567a9019f69a0852eb728f71462aad64aac85046708812f4f033b6d717b5eacdad65f4725c037d5f61a02fe88dfc14830705faf'
+            'c16875b4983e175072ff822cd208578eec561509c84f5bedd33368d0526695645fc59c08788369d06f70e098b491ab6db1d59abf8fc31ab6515e1d516752ebfa')
 
 package() {
     cd "$srcdir"
@@ -51,6 +53,10 @@ package() {
     ln -sf /usr/share/lwjgl2/native/linux/libjinput-linux.so natives/linux
 
     cp -ra "$srcdir" "${pkgdir}/usr/share/${pkgname}"
+
+    # Copy this file (not entirely sure about this, but doesn't start without it)
+    install -Dm 644 "${srcdir}/rendering.cfg" "${pkgdir}/usr/share/${pkgname}/configs/engine/rendering.cfg"
+    rm "${pkgdir}/usr/share/${pkgname}/rendering.cfg"
 
     #clean source directory to avoid problems on next build
     rm -r ./*
