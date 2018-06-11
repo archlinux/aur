@@ -3,12 +3,12 @@ _cranname=bindrcpp
 _cranver=0.2.2
 pkgname=r-$_cranname
 pkgver=${_cranver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides an easy way to fill an environment with active C++ function bindings."
-url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
+url="https://cran.r-project.org/package=${_cranname}"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('r' 'r-bindr>=0.1.1' 'r-rcpp>=0.12.16')
+depends=('r' 'r-bindr>=0.1.1' 'r-rcpp>=0.12.16' 'r-plogr')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('992af2045b0ce4079f62a2cb4b0df767') 
 
