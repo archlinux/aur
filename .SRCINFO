@@ -1,0 +1,13 @@
+pkgbase = python-aws-sam-translator
+	pkgdesc = AWS SAM Translator is a python library that transform SAM templates into AWS CloudFormation templates
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://pypi.org/project/aws-sam-translator/
+	arch = any
+	license = Apache
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/aws-sam-translator/aws-sam-translator-1.5.4.tar.gz
+	sha256sums = 9d8a25e058c78d2cef5c07aec7f98cbc2070dbfc2eb6a2e102a16beafd14e3ca
+
+pkgname = python-aws-sam-translator
+
