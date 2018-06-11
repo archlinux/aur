@@ -8,7 +8,7 @@ pkgdesc='Python-based extendable tool'
 url='https://pext.hackerchick.me/'
 arch=(any)
 license=(GPL3)
-depends=(python-dulwich python-pynput libnotify python-pip python-pyqt5 qt5-quickcontrols)
+depends=(python-dulwich python-pynput python-pip python-pyqt5 qt5-quickcontrols)
 makedepends=(python-setuptools)
 optdepends=('pass: password manager support'
             'ffmpeg: radiobrowser music support'

@@ -8,7 +8,6 @@ pkgbase = pext-git
 	makedepends = python-setuptools
 	depends = python-dulwich
 	depends = python-pynput
-	depends = libnotify
 	depends = python-pip
 	depends = python-pyqt5
 	depends = qt5-quickcontrols
