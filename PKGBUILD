@@ -1,8 +1,8 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=litesata-git
 pkgver=162
-pkgrel=1
-pkgdesc="A small footprint and configurable SATA core"
+pkgrel=2
+pkgdesc="A small footprint and configurable SATA core for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/litesata"
 license=('MIT')

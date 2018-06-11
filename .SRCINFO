@@ -1,7 +1,7 @@
 pkgbase = litesata-git
-	pkgdesc = A small footprint and configurable SATA core
+	pkgdesc = A small footprint and configurable SATA core for LiteX
 	pkgver = 162
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enjoy-digital/litesata
 	arch = any
 	license = MIT
