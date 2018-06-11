@@ -21,7 +21,7 @@ _gtk3_wayland=false
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=60.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -33,8 +33,11 @@ depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
 
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13' 'rust'
-             'cargo' 'mercurial' 'llvm'
-            'gtk2')
+             'cargo' 'mercurial' 'llvm' 'clang'
+             'gtk2')
+if [[ -n $_pgo ]] ; then
+  makedepends+=('gcc7')
+fi
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 provides=("firefox=${pkgver}")
@@ -168,12 +171,16 @@ build() {
   # Hardening
   LDFLAGS+=" -Wl,-z,now"
 
+
+ 
   if [[ -n $_lowmem || $CARCH == i686 ]]; then
     LDFLAGS+=" -Xlinker --no-keep-memory"
   fi
 
   if [[ -n $_pgo ]]; then
-    # Do PGO
+    CCACHE_CC=/usr/bin/gcc-7 \
+    CC=/usr/bin/gcc-7 \
+    CXX=/usr/bin/g++-7 \
       DISPLAY=:99 MOZ_PGO=1 \
              xvfb-run \
              -a \
