@@ -33,11 +33,11 @@ source=(
 )
 sha256sums=(
   '5ab7a7ca50240c2c26f058fb51dad585faa7f8d17d9907e9f64ca95937b85a26'
-  '554891ce69264e61cd4e537fe0ff2361f6cbb197ca501abf192d269df69bc214'
+  '5e08f2bf5c3743381142f64e0657517e1ac5ffe0effb83df13f69a78b8ca2a23'
 )
 
 prepare() {
-  # Patch Qt 5.11 installation
+  # Patch the Qt 5.11 installation
   sed -i "s/SOURCE_FOLDER/$pkgname-$pkgver/g" qt_use_modules.patch
   patch -p0 < qt_use_modules.patch
 

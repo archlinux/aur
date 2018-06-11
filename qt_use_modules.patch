@@ -82,8 +82,8 @@
 +target_link_libraries(swagger Qt5::Core Qt5::Network)
  
  install(TARGETS swagger DESTINATION lib)
---- SOURCE_FOLDER//CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
-+++ SOURCE_FOLDER//CMakeLists.txt	2018-05-28 14:42:19.161092452 +0100
+--- SOURCE_FOLDER/CMakeLists.txt	2018-05-22 21:43:41.000000000 +0100
++++ SOURCE_FOLDER/CMakeLists.txt	2018-05-28 14:42:19.161092452 +0100
 @@ -276,7 +276,7 @@
      set_target_properties(sdrangel PROPERTIES LINK_FLAGS_MINSIZEREL "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
  endif(WIN32)
@@ -756,8 +756,8 @@
 +target_link_libraries(demodlora Qt5::Core Qt5::Widgets)
  
  install(TARGETS demodlora DESTINATION lib/plugins/channelrx)
---- SOURCE_FOLDER//CMakeLists.txt	2018-06-11 13:00:23.021749188 +0100
-+++ SOURCE_FOLDER//CMakeLists.txt	2018-06-11 13:01:24.992142401 +0100
+--- SOURCE_FOLDER/CMakeLists.txt	2018-06-11 13:00:23.021749188 +0100
++++ SOURCE_FOLDER/CMakeLists.txt	2018-06-11 13:01:24.992142401 +0100
 @@ -56,7 +56,7 @@
  find_package(Qt5Core 5.0 REQUIRED)
  find_package(Qt5Widgets 5.0 REQUIRED)
