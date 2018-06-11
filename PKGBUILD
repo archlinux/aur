@@ -2,58 +2,83 @@
 # Contributor: Yichao Yu <yyc1992@gmail.com>
 # Contributor: kfgz <kfgz@interia.pl>
 
-_pkgname=glib2
-pkgname=$_pkgname-git
-pkgver=2.49.2.20.g27fad7a
+pkgbase=glib2-git
+_pkgame=glib2
+pkgname=(glib2-git glib2-docs-git)
+pkgver=2.57.1.180.ge22bffb52
 pkgrel=1
-pkgdesc="Common C routines used by GTK+ 2.4 and other libs"
-arch=(i686 x86_64)
-url=http://git.gnome.org/browse/glib/tree/README.in
-license=(GPL2)
-depends=(elfutils python)
-makedepends=(gtk-doc git)
-provides=($_pkgname=$pkgver)
+pkgdesc="Low Level Core Library"
+arch=('x86_64')
+url="https://wiki.gnome.org/Projects/GLib"
+license=(LGPL2.1)
+depends=(pcre libffi libutil-linux zlib)
+makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux dbus)
+checkdepends=(desktop-file-utils)
+optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
+            'libelf: gresource inspection tool')
 conflicts=($_pkgname)
-options=(!emptydirs !libtool)
-source=($pkgname::git://git.gnome.org/glib
-        $_pkgname.sh
-        $_pkgname.csh)
-sha256sums=('SKIP'
-            '9456872cdedcc639fb679448d74b85b0facf81033e27157d2861b991823b5a2a'
-            '8d5626ffa361304ad3696493c0ef041d0ab10c857f6ef32116b3e2878ecf89e3')
+options=(!emptydirs)
+source=("git+https://gitlab.gnome.org/GNOME/glib.git"
+        0001-noisy-glib-compile-schemas.patch
+        glib-compile-schemas.hook 
+        gio-querymodules.hook )
 sha512sums=('SKIP'
-            'dca2bc74d2013fcb24145ac794eef457aa3213c039e40a1a26ca5017694930768e7c80e334e17a56834549dff6549c781ddd91fae6c7bbb26fdd6a083ad8217a'
-            'c3899eb7fa5482ce8a35fe02db90fd0f928d50aa7e4365a9529ef35a2dcd1ed86d5a24f6bc5c635ef5b2d95a0ebfebc2bb6bc90404c99f6fb7484ed2fa032c06')
+            'ddbf4a8eaf60e943a10a1ad67f2de078143558df8cc06e8009da87d8068af0cf8c66f443474b8b2848239c003e6210ff9ceb1ba5ffda1b95b80687adbf813722'
+            'c04fe25afc217c295b5ce4034733cec046126482d00fb8d0299e4815ac57129dd3f1c9ac824b9386d208a4f113e9dae682ea5b72f75387ed6b6b96a9cbbee8ca'
+            '5afd6f275c8fff16df3e685818f2e7989b39ffb3b8f5fc261a5a6d54a9b28ef53af62f3bf5067cf87cb74691572f85730cbc508691956ae048a0f3ecc1a0a39c')
 
 pkgver() {
-    cd $pkgname/
-    git describe | sed 's/-/./g'
+    cd glib
+    git describe  --tags | sed 's/-/./g'
 }
 
 prepare() {
-    cd $pkgname/
-    touch gtk-doc.make
-    sed -i '1i\EXTRA_DIST=""\nCLEANFILES=""\n' docs/reference/{gio,gobject,glib}/Makefile.am
-}
+    cd $srcdir/glib
+    # Suppress noise from glib-compile-schemas.hook
+  patch -Np1 -i ../0001-noisy-glib-compile-schemas.patch
 
-build() {
-    cd $pkgname/
-    touch README
-    autoreconf -fi
+  NOCONFIGURE=1 ./autogen.sh
+  }
+
+build () {
+     local debug=minimum
+  check_option debug y && debug=yes
+  
+    cd "$srcdir/glib"
     ./configure \
         --prefix=/usr \
         --libdir=/usr/lib \
         --sysconfdir=/etc \
         --with-pcre=system \
-        --disable-fam
+        --disable-fam \
+        --enable-gtk-doc \
+        --enable-debug=$debug
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     make
 }
 
-package() {
-    make -C $pkgname DESTDIR="$pkgdir" install
-    for i in $_pkgname.{,c}sh; do
-        install -Dm755 $i "$pkgdir"/etc/profile.d/$i
-    done
-    find "$pkgdir"/usr/share/bash-completion/completions/ -type f -exec chmod -x '{}' \;
-    sed -i 's:^#!/usr/bin/env python$:&2:g' "$pkgdir"/usr/bin/gdbus-codegen
+check() {
+    cd "$srcdir/glib"
+    make check
 }
+
+package_glib2-git() {
+    cd "$srcdir/glib"
+    make -C $pkgname DESTDIR="$pkgdir" install
+    mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
+ 
+    install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 ../*.hook
+}
+
+package_glib2-docs-git() {
+  pkgdesc="Documentation for GLib"
+  depends=()
+  optdepends=()
+  license+=(custom)
+
+  mkdir -p "$pkgdir/usr/share"
+  mv gtk-doc "$pkgdir/usr/share"
+
+  install -Dt "$pkgdir/usr/share/licenses/glib2-docs" -m644 glib/docs/reference/COPYING
+}
+
