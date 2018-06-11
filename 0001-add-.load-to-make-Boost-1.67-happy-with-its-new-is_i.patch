@@ -1,0 +1,26 @@
+From 4812c062c5c09876a62e47df0621a68cfcdf739d Mon Sep 17 00:00:00 2001
+From: Teutone <Teutone@users.noreply.github.com>
+Date: Mon, 30 Apr 2018 19:01:58 +0200
+Subject: [PATCH] add .load() to make Boost 1.67 happy with its new is_integral
+ check
+
+---
+ src/wallet/api/wallet.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wallet/api/wallet.cpp b/src/wallet/api/wallet.cpp
+index b78a471b9..7d6389904 100644
+--- a/src/wallet/api/wallet.cpp
++++ b/src/wallet/api/wallet.cpp
+@@ -1752,7 +1752,7 @@ void WalletImpl::refreshThreadFunc()
+         // if auto refresh enabled, we wait for the "m_refreshIntervalSeconds" interval.
+         // if not - we wait forever
+         if (m_refreshIntervalMillis > 0) {
+-            boost::posix_time::milliseconds wait_for_ms(m_refreshIntervalMillis);
++            boost::posix_time::milliseconds wait_for_ms(m_refreshIntervalMillis.load());
+             m_refreshCV.timed_wait(lock, wait_for_ms);
+         } else {
+             m_refreshCV.wait(lock);
+-- 
+2.17.1
+
