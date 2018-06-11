@@ -1,11 +1,12 @@
 # Maintainer: SanskritFritz (gmail)
 # Contributor: zertyz <zertyz@gmail.com>
+# Contributor: craeckie (aur.archlinux.org/account/craeckie)
 # Original Author: David Fuhr <david.fuhr@web.de>
 
 pkgname=ganttproject
 pkgver=2.8.6
 _build=r2231
-pkgrel=1
+pkgrel=2
 pkgdesc="A project scheduling application featuring gantt chart, resource management, calendaring."
 arch=('i686' 'x86_64')
 url="http://www.ganttproject.biz/"
@@ -31,4 +32,4 @@ package() {
 }
 
 md5sums=('4ac4631dad22c289b980f2873b7f31b8'
-         '4b2a0c36510d9f798872db1fca87864f')
+         'da9eb5357f872c37e5f921f57501d36f')
