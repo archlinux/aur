@@ -1,7 +1,7 @@
 # Maintainer: Your Name <lloyd.w.henning@gmail.com>
 pkgname=ob-xd
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Virtual Analog Synthesizer VST based on the Oberheim OB-X"
 arch=(x86_64)
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://static.kvraudio.com/files/231/obxd14linux.zip ")
+source=("https://www.discodsp.com/download/?id=9")
 noextract=()
-md5sums=("49c189ab77fd998dd99b2467fb46b73f")
+md5sums=("868a0f439c25facd8087abdd44a2e7e6")
 validpgpkeys=()
 
 package() {
