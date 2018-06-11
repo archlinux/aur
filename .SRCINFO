@@ -7,7 +7,7 @@ pkgbase = check_mk-agent
 	arch = any
 	license = GPLv2
 	depends = xinetd
-	source = https://mathias-kettner.de/support/$pkgver/check-mk-raw-$pkgver.cre.tar.gz
+	source = https://mathias-kettner.de/support/1.4.0p33/check-mk-raw-1.4.0p33.cre.tar.gz
 	md5sums = c1d6a9b98b9a414a94f696ac75fe8ab8
 
 pkgname = check_mk-agent
