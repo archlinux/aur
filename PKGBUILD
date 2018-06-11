@@ -4,7 +4,7 @@
 
 pkgname=lilo
 pkgver=24.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A bootloader for Linux"
 arch=('i686' 'x86_64')
 url="https://alioth.debian.org/projects/lilo/"
@@ -15,7 +15,7 @@ makedepends=('bin86' 'sharutils')
 optdepends=('perl: to use keytab-lilo')
 install=lilo.install
 options=('!makeflags')
-source=("http://lilo.alioth.debian.org/ftp/sources/${pkgname}-${pkgver}.tar.gz"
+source=("https://alioth-archive.debian.org/releases/lilo/Lilo/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'lilo.conf')
 
 build() {
