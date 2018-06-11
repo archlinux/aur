@@ -1,0 +1,26 @@
+pkgbase = godot-rc-bin
+	pkgdesc = Godot is an advanced, feature packed, multi-platform 2D and 3D game engine. It provides a huge set of common tools, so you can just focus on making your game without reinventing the wheel.
+	pkgver = 3.0.3
+	pkgrel = 3
+	url = http://www.godotengine.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = godot-rc-bin
+	conflicts = godot
+	conflicts = godot-git
+	conflicts = godot-bin
+	replaces = godot
+	replaces = godot-git
+	replaces = godot-bin
+	source = godot.desktop
+	source = icons.tar.gz
+	md5sums = fa7422332b97ab8430ea7628ec8b0880
+	md5sums = 9dbfaa636daf7737899de6a28c33c3be
+	source_i686 = godot-rc-bin-3.0.3::https://downloads.tuxfamily.org/godotengine/3.0.3/rc3/Godot_v3.0.3-rc3_x11.32.zip
+	md5sums_i686 = c421ba8cb37f164ba9608f65c6addaba
+	source_x86_64 = godot-rc-bin-3.0.3::https://downloads.tuxfamily.org/godotengine/3.0.3/rc3/Godot_v3.0.3-rc3_x11.64.zip
+	md5sums_x86_64 = 8128063b3c42c319a60838a81f685ff7
+
+pkgname = godot-rc-bin
+
