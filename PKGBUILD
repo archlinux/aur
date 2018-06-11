@@ -1,5 +1,5 @@
 pkgname=mingw-w64-ilmbase
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Base libraries from ILM for OpenEXR (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ depends=("mingw-w64-crt")
 makedepends=("mingw-w64-cmake")
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://download.savannah.nongnu.org/releases/openexr/ilmbase-$pkgver.tar.gz")
-md5sums=('b540db502c5fa42078249f43d18a4652')
+sha256sums=('cac206e63be68136ef556c2b555df659f45098c159ce24804e9d5e9e0286609e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -22,9 +22,9 @@ prepare() {
   sed -i "/ADD_SUBDIRECTORY ( ImathTest )/d" CMakeLists.txt
 
   # no clue how to fix this one properly
-  grep -lr LDBL_EPSILON Imath | xargs sed -i "s|LDBL_EPSILON|1.08420217248550443401e-19L|g"
-  grep -lr DBL_EPSILON Imath | xargs sed -i "s|DBL_EPSILON|2.2204460492503131E-16|g"
-  grep -lr FLT_EPSILON Imath | xargs sed -i "s|FLT_EPSILON|1.19209290E-07F|g"
+  #grep -lr LDBL_EPSILON Imath | xargs sed -i "s|LDBL_EPSILON|1.08420217248550443401e-19L|g"
+  #grep -lr DBL_EPSILON Imath | xargs sed -i "s|DBL_EPSILON|2.2204460492503131E-16|g"
+  #grep -lr FLT_EPSILON Imath | xargs sed -i "s|FLT_EPSILON|1.19209290E-07F|g"
 }
 
 build() {
