@@ -1,6 +1,6 @@
 pkgbase=python-pyscaffold
-pkgname=('python-pyscaffold' 'python2-pyscaffold')
-pkgver=2.5.7
+pkgname=('python-pyscaffold')
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Python project template generator with batteries included"
 url="http://pyscaffold.readthedocs.org/"
@@ -17,7 +17,7 @@ build() {
   python setup.py build
 
   cd "${srcdir}"/pyscaffold-$pkgver-py2
-  python2 setup.py build
+  #python2 setup.py build
 }
 
 package_python-pyscaffold() {
@@ -25,15 +25,5 @@ package_python-pyscaffold() {
 
   cd "${srcdir}/pyscaffold-$pkgver"
   python setup.py install --root=${pkgdir}
-  rm -r ${pkgdir}/usr/share/pyscaffold/docs
+  #rm -r ${pkgdir}/usr/share/pyscaffold/docs
 }
-
-package_python2-pyscaffold() {
-  depends=('python2-six' 'python2-pbr')
-
-  cd "${srcdir}/pyscaffold-$pkgver"
-  python2 setup.py install --root=${pkgdir}
-  rm -r ${pkgdir}/usr/share/pyscaffold/docs
-  mv ${pkgdir}/usr/bin/putup ${pkgdir}/usr/bin/putup2
-}
-
