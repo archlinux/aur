@@ -19,16 +19,11 @@ optdepends=('kde-cli-tools'
             'lsb-release'
             'pulseaudio')
 options=('!strip' '!emptydirs')
-install=${pkgname}.install
+install=.install
 source_x86_64=("https://desktop-downloads.stride.com/linux/deb/64/prod/stride_amd64.deb")
 sha512sums_x86_64=('SKIP')
 
 package(){
-
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-
-	install -D -m644 "/usr/lib/stride/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 "/usr/share/doc/stride/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
-
 }
