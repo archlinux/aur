@@ -2,7 +2,7 @@
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=sdrangel
-pkgver=3.14.7
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Qt5/OpenGL SDR and signal analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR, SDRplay and FunCube"
 arch=('any')
@@ -17,18 +17,33 @@ depends=(
 )
 makedepends=('git' 'cmake')
 optdependds=(
+  'ffmpeg: DATV demodulator'
   'libmirisdr4: SDRPlay support'
   'rtl-sdr: RTLSDR support'
-  ' libad9361-iio: PlutoSDR support'
+  'libad9361-iio: PlutoSDR support'
   'limesuite: LiimeSDR support'
   'bladerf: BladeRF support'
   'airspy: AirSPY support'
-  ''
 )
 provides=("sdrangel")
 conflicts=("sdrangel")
-source=("https://github.com/f4exb/sdrangel/archive/v$pkgver.tar.gz")
-sha256sums=('12880f7f12394039a61a43eb8108b00311a41d90fb0830c52057e90bc15971c8')
+source=(
+  "https://github.com/f4exb/sdrangel/archive/v$pkgver.tar.gz"
+  'qt_use_modules.patch'
+)
+sha256sums=(
+  '5ab7a7ca50240c2c26f058fb51dad585faa7f8d17d9907e9f64ca95937b85a26'
+  '554891ce69264e61cd4e537fe0ff2361f6cbb197ca501abf192d269df69bc214'
+)
+
+prepare() {
+  # Patch Qt 5.11 installation
+  sed -i "s/SOURCE_FOLDER/$pkgname-$pkgver/g" qt_use_modules.patch
+  patch -p0 < qt_use_modules.patch
+
+  # Patch the DATV demodulator
+  sed -i 's/FF_INPUT_BUFFER_PADDING_SIZE/AV_INPUT_BUFFER_PADDING_SIZE/g' $srcdir/$pkgname-$pkgver/plugins/channelrx/demoddatv/datvideorender.cpp
+}
 
 build() {
   mkdir -p $srcdir/$pkgname-$pkgver/build
@@ -36,7 +51,7 @@ build() {
 
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/opt/sdrangel \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIBDSDCC_INCLUDE_DIR=/usr/include/dsdcc \
     -DCM256CC_INCLUDE_DIR=/usr/include/cm256cc
 
@@ -50,6 +65,7 @@ package() {
 
   # For some reason SDRangel only works if it is installed outside of /usr,
   # so we install it into /opt/sdrangel and create link to it in /usr/bin
-  install -dm 755 "$pkgdir/usr/bin"
-  ln -s /opt/sdrangel/bin/sdrangel "$pkgdir/usr/bin/sdrangel"
+#  install -dm 755 $pkgdir/usr/bin
+#  ln -s /opt/sdrangel/bin/sdrangel "$pkgdir/usr/bin/sdrangel"
+  # seems to be fixed !?
 }

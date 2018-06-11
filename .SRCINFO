@@ -1,6 +1,6 @@
 pkgbase = sdrangel
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR, SDRplay and FunCube
-	pkgver = 3.14.7
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = any
@@ -21,8 +21,10 @@ pkgbase = sdrangel
 	depends = pulseaudio
 	provides = sdrangel
 	conflicts = sdrangel
-	source = https://github.com/f4exb/sdrangel/archive/v3.14.7.tar.gz
-	sha256sums = 12880f7f12394039a61a43eb8108b00311a41d90fb0830c52057e90bc15971c8
+	source = https://github.com/f4exb/sdrangel/archive/v4.0.0.tar.gz
+	source = qt_use_modules.patch
+	sha256sums = 5ab7a7ca50240c2c26f058fb51dad585faa7f8d17d9907e9f64ca95937b85a26
+	sha256sums = e201282d6d6ba77a630c1d3c0e3ab06caa28d97fd3280443b9615ac9347809c7
 
 pkgname = sdrangel
 
