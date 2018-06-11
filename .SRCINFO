@@ -1,7 +1,7 @@
 pkgbase = liteiclink-git
-	pkgdesc = Small footprint and configurable Inter-Chip communication cores
+	pkgdesc = Small footprint and configurable Inter-Chip communication cores for LiteX
 	pkgver = 99
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enjoy-digital/liteiclink
 	arch = any
 	license = MIT

@@ -1,8 +1,8 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=liteiclink-git
 pkgver=99
-pkgrel=1
-pkgdesc="Small footprint and configurable Inter-Chip communication cores"
+pkgrel=2
+pkgdesc="Small footprint and configurable Inter-Chip communication cores for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/liteiclink"
 license=('MIT')
