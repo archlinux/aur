@@ -1,14 +1,14 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Co-maintainer: GI_Jack <iamjacksemail@hackermail.com>
 
 pkgname=ttf-aenigma
 pkgver=20080510
-pkgrel=6
+pkgrel=7
 pkgdesc="465 free TrueType fonts by Brian Kent"
 arch=('any')
 url="http://www.aenigmafonts.com"
 license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
-makedepends=('p7zip')
 source=('http://ftp.debian.org/debian/pool/main/t/ttf-aenigma/ttf-aenigma_0.0.20080510.dfsg-2_all.deb'
 	'LICENSE')
 sha512sums=('9949b4213b8acc98e394a8978762f8cc481b0b7fa80a45d49ec7b193145ae67a81c1cbb4004e25065aa91e1f29a161ab027aa7caa4b016cdb84a12ff860e78de'
