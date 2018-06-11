@@ -1,58 +1,32 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=airvpn-bin
-pkgver=2.13.6
+pkgver=2.14.5
 pkgrel=1
 pkgdesc='AirVPN client "Eddie" based on OpenVPN, stable version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
 license=(GPL3)
-depends=(gksu mono openvpn)
-optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
+depends=(sudo mono openvpn curl libnotify)
+optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH' 'libappindicator-gtk2: Tray icon w/GTK 2' 'libappindicator-gtk3: Tray icon w/GTK 3')
 provides=('airvpn')
 conflicts=('airvpn' 'airvpn-beta-bin')
 install=airvpn.install
 source_i686=("airvpn_linux_x86_debian_${pkgver}.deb::https://eddie.website/download/?platform=linux&arch=x86&ui=ui&format=debian.deb&version=${pkgver}")
 source_x86_64=("airvpn_linux_x64_debian_${pkgver}.deb::https://eddie.website/download/?platform=linux&arch=x64&ui=ui&format=debian.deb&version=${pkgver}")
-md5sums_i686=('ff5f5d71fabd6f9dca0f1350449ecc17')
-md5sums_x86_64=('b34bbe4571f3a3849eb53345a6a03c89')
-sha256sums_i686=('19394ece88ceadc539cac159f96298919e94134bcaf78116be4b6d93035b9aea')
-sha256sums_x86_64=('be5b1f941dae8265344da2d0d94847fd13c669bcfc5618d5d1af689138473406')
+md5sums_i686=('ee8d6397414682d7babe93cab448917e')
+md5sums_x86_64=('30459acc1ab874c62258dc7ba7ee3a8b')
+sha256sums_i686=('20fe67958405454435b7b47cddd95457f0edf256c013ac9b9606884f44a679d9')
+sha256sums_x86_64=('6fa3d6185b5dcc03a2d3be942289a5d3e11a44c7b9bb42e12434f83db50ade15')
 
 package() {
-  msg2 "Extracting the data.tar.lzma..."
-  bsdtar -xf data.tar.gz
+  cd "$srcdir"
+  msg2 "Extracting the data.tar.gz..."
+  bsdtar -xf "$srcdir/data.tar.gz"
 
   msg2 "Moving stuff in place..."
-  install -Dm755 "$srcdir/usr/lib/AirVPN/AirVPN.exe"         "$pkgdir/usr/lib/AirVPN/AirVPN.exe"
-  install -Dm755 "$srcdir/usr/lib/AirVPN/CLI.exe"            "$pkgdir/usr/lib/AirVPN/CLI.exe"
-  install -Dm644 "$srcdir/usr/lib/AirVPN/Lib.Common.dll"     "$pkgdir/usr/lib/AirVPN/Lib.Common.dll"
-  install -Dm644 "$srcdir/usr/lib/AirVPN/Lib.Core.dll"       "$pkgdir/usr/lib/AirVPN/Lib.Core.dll"
-  install -Dm644 "$srcdir/usr/lib/AirVPN/Lib.Forms.dll"      "$pkgdir/usr/lib/AirVPN/Lib.Forms.dll"
-  install -Dm644 "$srcdir/usr/lib/AirVPN/Lib.Platform.Linux.dll" \
-                 "$pkgdir/usr/lib/AirVPN/Lib.Platform.Linux.dll"
-  install -Dm644 "$srcdir/usr/lib/AirVPN/libLib.Platform.Linux.Native.so" \
-                 "$pkgdir/usr/lib/AirVPN/libLib.Platform.Linux.Native.so"
-  install -Dm755 "$srcdir/usr/lib/AirVPN/update-resolv-conf" "$pkgdir/usr/lib/AirVPN/update-resolv-conf"
-  install -Dm755 "$srcdir/usr/bin/airvpn"                    "$pkgdir/usr/bin/airvpn"
-  install -Dm755 "$srcdir/usr/share/AirVPN/cacert.pem"       "$pkgdir/usr/share/AirVPN/cacert.pem"
-  install -Dm644 "$srcdir/usr/share/doc/airvpn/changelog.gz" "$pkgdir/usr/share/doc/airvpn/changelog.gz"
-  install -Dm644 "$srcdir/usr/share/doc/airvpn/copyright"    "$pkgdir/usr/share/doc/airvpn/copyright"
-  install -Dm644 "$srcdir/usr/share/man/man8/airvpn.8.gz"    "$pkgdir/usr/share/man/man1/airvpn.8.gz"
-
-  ## Fix .desktop file for KDE
-  _desktop_session=$(printf "%s" "$DESKTOP_SESSION" | awk -F "/" '{print $NF}')
-  if [ "$_desktop_session" = "plasma" ]; then
-    msg2 "Installing desktop file for KDE..."
-    install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/airvpn.png"
-    cp "$srcdir/usr/share/applications/AirVPN.desktop" "$srcdir/airvpn.desktop"
-    desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN" \
-    --dir="$pkgdir/usr/share/applications/" \
-    --set-icon="/usr/share/pixmaps/airvpn.png" "airvpn.desktop"
-  else
-  msg2 "Installing desktop file..."
-  install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/AirVPN.png"
-  desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN" \
-  --dir="$pkgdir/usr/share/applications/" "$srcdir/usr/share/applications/AirVPN.desktop"
-  fi
+  for _file in usr/{bin/*,lib/eddie-ui/*,share/{applications/*,doc/eddie-ui/*,eddie-ui/*,man/man8/*,pixmaps/*,polkit-1/actions/*}}; do
+    _octal=$(stat -c "%a" "$_file")
+    install -Dm"${_octal}" "$_file" "${pkgdir}/$_file"
+  done
 }
