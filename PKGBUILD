@@ -12,8 +12,8 @@ license=('custom')
 depends=('bash' 'lua-filesystem' 'lua-posix' 'tcl')
 optdepends=('tcsh: supported shell'
             'zsh: supported shell')
-provides=('modules')
-conflicts=('lmod-git' 'modules')
+conflicts=('lmod-git' 'env-modules-tcl')
+provides=('env-modules-tcl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TACC/Lmod/archive/$pkgver.tar.gz")
 md5sums=('bd3f171995e6863505e8a958d158ced1')
 
