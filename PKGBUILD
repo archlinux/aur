@@ -1,6 +1,6 @@
 # Maintainer: h8red <h8red@yandex.ru>
 pkgname=bcnc-git
-pkgver=r731.33a3bb8
+pkgver=r1094.3b38bed
 pkgrel=1
 pkgdesc="GRBL CNC command sender, autoleveler and g-code editor"
 arch=('any')
@@ -8,8 +8,7 @@ url="https://github.com/vlachoudis/bCNC"
 license=('GNU2')
 depends=('python2-pyserial')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%}")
 source=("git+https://github.com/vlachoudis/bCNC.git"
         "${pkgname}"
         "${pkgname}.desktop")
