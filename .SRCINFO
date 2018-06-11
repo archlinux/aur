@@ -1,6 +1,6 @@
 pkgbase = r-juniperkernel
 	pkgdesc = R kernel for Jupyter
-	pkgver = 1.2.3.0
+	pkgver = 1.4.0.0
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/JuniperKernel/index.html
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = r-juniperkernel
 	provides = r-cran-JuniperKernel
 	conflicts = r-cran-JuniperKernel
 	replaces = r-cran-JuniperKernel
-	source = http://cran.r-project.org/src/contrib/JuniperKernel_1.2.3.0.tar.gz
-	sha256sums = cd53d2e75984eb01d7f8296e58ba6faaa13b2e9d54c9745dba767b25a5d6249f
+	source = http://cran.r-project.org/src/contrib/JuniperKernel_1.4.0.0.tar.gz
+	sha256sums = eaf6a94a27837eb0da2066cdf6bbab228c06ecc2b1af32ac5d0c814fe36d4e7a
 
 pkgname = r-juniperkernel
 
