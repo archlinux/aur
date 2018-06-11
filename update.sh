@@ -12,8 +12,8 @@ get_latest() {
   sort -r | \
   head -1
 }
-latest_version=pkgver=$(get_latest)
-current_version=$(cat PKGBUILD | grep pkgver=[^d.].[^d.].[^d.])
+latest_version=$(get_latest)
+current_version=$(cat PKGBUILD | grep pkgver= | awk -F'=' '{print $2}')
 
 if ! [ "$latest_version" = "$current_version" ]; then
   echo Updating the package with the latest version
