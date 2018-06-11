@@ -1,6 +1,6 @@
 pkgname=headmaster-git
-pkgver=0.27.r55.gf6a265e
-pkgrel=2
+pkgver=0.28.r7.geab9670
+pkgrel=1
 
 pkgdesc='translate c header files to another language'
 url='https://github.com/ytomino/headmaster'
