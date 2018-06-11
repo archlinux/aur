@@ -16,6 +16,7 @@ depends=("ghc"
          "haskell-mtl"
          "haskell-old-locale"
          "haskell-parsec"
+         "haskell-semigroups"
          "haskell-syb"
          "haskell-text"
          "haskell-void")
