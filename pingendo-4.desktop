@@ -2,7 +2,7 @@
 Name=Pingendo
 GenericName=Pingendo
 Comment=The ultimate Bootstrap 4 builder
-Exec=/opt/pingendo/Pingendo\ 4.0 
+Exec=/opt/pingendo/Pingendo\ 4.0 U%
 Icon=pingendo-4
 Terminal=false
 Type=Application
