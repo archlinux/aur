@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
 depends=('r' )
 
-optdepends=('r-knitr' 'r-microbenchmark' 'r-pryr' 'r-testthat' 'r-ggplot2' 'r-cran-scales')
+optdepends=('r-knitr' 'r-microbenchmark' 'r-pryr' 'r-testthat' 'r-ggplot2' 'r-scales')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('635b58c65bff624a1fab69c6b1989801')
