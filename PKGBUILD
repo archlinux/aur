@@ -1,8 +1,10 @@
 # Maintainer: detrito <detrito@inventati.org>
+# Contributor: Thomas Holder <thomas@thomas-holder.de>
+# Contributor: detrito <detrito@inventati.org>
 
 pkgname=therion
 pkgver=5.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cave surveying software"
 arch=('x86_64' 'i686')
 url="http://therion.speleo.sk"
@@ -38,6 +40,11 @@ build() {
 
   # patch to get UTF8 and available fonts
   patch -p0 -i ${srcdir}/therion_ini.patch
+  
+  # path to fix loch compilation
+  sed -i.bak 's/-DLXLINUX//' loch/Makefile
+  sed -i.bak 's/^POBJECTS =.*/POBJECTS =/' loch/Makefile
+  sed -i.bak 's/freetype-config --cflags/pkg-config --cflags freetype2/' loch/Makefile
 
   make
 }
