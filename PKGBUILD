@@ -1,26 +1,18 @@
-# Maintainer: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
-
+# Maintainer: Alexander Minges <alexander.minges@gmail.com>
+# Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
 pkgroot=ucsf-chimera
 pkgname=ucsf-chimera
-pkgver=1.11
-pkgrel=2
+pkgver=1.13
+pkgrel=1
 pkgdesc='Extensible molecular modeling system'
 url='https://rbvi.ucsf.edu/chimera/'
 _source=https://rbvi.ucsf.edu/chimera/cgi-bin/secure/chimera-get.py
 license=('custom:ucsf-chimera')
 install=ucsf-chimera.install
-arch=('i686' 'x86_64')
+arch=('x86_64')
 
-case "${CARCH}" in
-  (i686)
-    _file="chimera-${pkgver}-linux.bin"
-    _filepath="linux/${_file}"
-  ;;
-  (x86_64)
-    _file="chimera-${pkgver}-linux_x86_64.bin"
-    _filepath="linux_x86_64/${_file}"
-  ;;
-esac
+_file="chimera-${pkgver}-linux_x86_64.bin"
+_filepath="linux_x86_64/${_file}"
 
 prepare(){
   cd "${srcdir}"
@@ -51,6 +43,10 @@ package() {
   # Run the installer.
   chmod +x "${_file}"
   echo "${pkgdir}/opt/ucsf-chimera" | "./${_file}"
+
+  # Remove libraries that conflict with system libraries
+  cd "${pkgdir}/opt/ucsf-chimera/lib/"
+  rm libfreetype.* libz.*
 }
 
 # vim: ft=sh ts=2 sw=2 et
