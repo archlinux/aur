@@ -8,7 +8,7 @@ _pkgname=rust
 
 pkgname=mingw-w64-rust
 pkgver=1.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
 url="https://www.rust-lang.org"
@@ -20,6 +20,7 @@ depends=('gcc-libs'
 optdepends=('mingw-w64-wine: for cargo test support')
 makedepends=('rust'
              'gdb'
+             'ninja'
              'libffi'
              'perl'
              'python2'
@@ -30,7 +31,7 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
         "mingw-config.toml")
 sha256sums=('a1202800bd5621f5cac027177904da0b964eb43b93606d3e4c7b342a9f7473b4'
             'SKIP'
-            '8ab05c10084d8e2795aa9d5a954fb05913abc26033c1f9bbf564d0e495f043e4')
+            '65445abc7b1f7c14896e05e5f147e56974e8ca0fde5aeed95e15adbd51951ae7')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/${_pkgname}/cargo/config")
@@ -86,6 +87,7 @@ package() {
 
   # strip
   strip --strip-all "${pkgdir}/opt/${_pkgname}/bin/"{cargo,rustc,rustdoc}
+  strip --strip-all "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"lld
   strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/lib/"*.so
   strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/codegen-backends/"*.so
   i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll

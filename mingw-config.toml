@@ -44,7 +44,7 @@ static-libstdcpp = true
 # Tell the LLVM build system to use Ninja instead of the platform default for
 # the generated build system. This can sometimes be faster than make, for
 # example.
-ninja = false
+ninja = true
 
 # LLVM targets to build support for.
 # Note: this is NOT related to Rust compilation targets. However, as Rust is
@@ -337,7 +337,7 @@ wasm-syscall = false
 
 # Indicates whether LLD will be compiled and made available in the sysroot for
 # rustc to execute.
-lld = false
+lld = true
 
 # =============================================================================
 # Options for specific targets
