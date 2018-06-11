@@ -1,8 +1,9 @@
-# Maintainer: Jesus Franco <jesusfranco at gmail dot com>
+# Maintainer: Pico <founderofjp@gmail.com>
+# Contributer: Jesus Franco <jesusfranco at gmail dot com>
 
 _pkgname="ciano"
 pkgname="${_pkgname}-git"
-pkgver=0.1.9.11.g8c62934
+pkgver=0.1.9.24.g1b907dc
 pkgrel=1
 pkgdesc="A simple multimedia file converter for elementary OS"
 arch=('i686' 'x86_64')
