@@ -1,11 +1,12 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Miles McLean <mills00013@gmail.com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Brad Pitcher <bradpitcher@gmail.com>
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=networkmanager-l2tp
-_pkgname=network-manager-l2tp
+_pkgname=NetworkManager-l2tp
 pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc='L2TP support for NetworkManager'
 arch=('i686' 'x86_64')
 url="https://github.com/nm-l2tp/NetworkManager-l2tp"
@@ -16,11 +17,9 @@ optdepends=(
   'libreswan: IPSec support (recommended)'
   'strongswan: IPSec support'
 )
-source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/nm-l2tp/${_pkgname}/archive/${pkgver}.tar.gz"
-        "https://github.com/nm-l2tp/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz.asc")
+source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/nm-l2tp/${_pkgname}/archive/${pkgver}.tar.gz")
 validpgpkeys=('E48BD89A1C51BFA28413D18349A7787EF8D3C039') # Douglas Kosovic
-md5sums=('48c8fe59fd606871561159331523cf3a'
-         'SKIP')
+md5sums=('7288e3042ea8dbb741ecfde1785a57c8')
 
 prepare() {
   cd $_pkgname-$pkgver
