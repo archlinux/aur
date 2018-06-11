@@ -1,8 +1,8 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=litejesd204b-git
 pkgver=259
-pkgrel=1
-pkgdesc="A small footprint and configurable JESD204B core"
+pkgrel=2
+pkgdesc="A small footprint and configurable JESD204B core for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/litejesd204b"
 license=('MIT')

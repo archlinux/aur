@@ -1,7 +1,7 @@
 pkgbase = litejesd204b-git
-	pkgdesc = A small footprint and configurable JESD204B core
+	pkgdesc = A small footprint and configurable JESD204B core for LiteX
 	pkgver = 259
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enjoy-digital/litejesd204b
 	arch = any
 	license = MIT
