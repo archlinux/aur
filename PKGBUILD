@@ -2,7 +2,7 @@
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=zotonic
-pkgver=0.14.0
+pkgver=0.39.0
 pkgrel=1
 pkgdesc="Content management system (web-CMS) server written in Erlang"
 arch=('any')
@@ -10,6 +10,7 @@ url="http://zotonic.com/"
 license=("Apache")
 depends=('erlang-nox'
          'postgresql'
+         'git'
          'imagemagick')
 optdepends=('perl-image-exiftool: Enable image autorotation'
             'nginx: Proxy Zotonic with nginx'
@@ -22,14 +23,11 @@ source=("https://github.com/zotonic/zotonic/archive/${pkgver}.tar.gz"
 	"${pkgname}.service"
         "config"
         "erlang.config")
-md5sums=('2f3b6c7bb2f1608acbdb4e4a558d7c63'
-         'a6f0f70d2a2af5ff0d0cfaf1531f6ed0'
-         '7904af22bf674471c212bde82a2cdcb6'
-         '4f09c0c994f5a17844b8ed999d3e7e39')
-sha512sums=('ecc5a2bc0c19bce98707960303ddd34aabd9f35fbf720b51ec31558b6debd7ee9ccb5332190d40c73d2a7866ee82914c96acc4d6ad677619b1e55da275686a43'
+
+sha512sums=('11e14fd088b988dc81bdb237058537cfb9bdeeb6c4ab8b7b142bf80a86f47688a149169981224ea8d1af906add54332d59f253cfaf74e6aee244418034cf7902'
             '0768bbbf07a3448429ae06e30a13751fc8060b3a7c626623731931d962664f542f13c93967b35303e3f0d8afdf848b4b83d310879d6deb1a7303cdc04f909953'
-            '62213581acaadcefacf15253175e27135bcc964768a061624a04ebcb3dc6e761ce3629017ce01286b741884fb0b23c4ebfcb6508f14200d99ecdb4f4860bd000'
-            'a6e5069e087a314053dab3774ecb123b5d5888c561430ecf02be34b72b3917c513d076323667188fde0ee6c2014e44f41b3a0a4b8fd79dd17c5523425f6979d8')
+            '73aa92b9666ac8bcc0b8988355eede2294da272825166cf4a493f52d158caa4b0a2b6c5cc7890f19702e9fec084e78287f7bdb6764602b2f033e85ffa2efeead'
+            '33e6402e7e2f4926249eac5b7c199985b620916907168408c752bcd659640bd3e61cdb4d75382ee22376ccf079d235acd678c00a7f9084be7bc7c536e943d0c5')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"  
