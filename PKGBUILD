@@ -5,14 +5,14 @@
 pkgbase=glib2-git
 _pkgame=glib2
 pkgname=(glib2-git glib2-docs-git)
-pkgver=2.57.1.203.g8bbc38b49
+pkgver=2.57.1.212.g54498aa7a
 pkgrel=1
 pkgdesc="Low Level Core Library"
 arch=('x86_64')
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
 depends=(pcre libffi libutil-linux zlib)
-makedepends=(meson ninja gettext gtk-doc shared-mime-info python libelf git util-linux dbus)
+makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux dbus)
 checkdepends=(desktop-file-utils)
 optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
             'libelf: gresource inspection tool')
@@ -36,20 +36,25 @@ pkgver() {
 prepare() {
     cd $srcdir/glib
     # Suppress noise from glib-compile-schemas.hook
-  patch -Np1 -i ../0001-noisy-glib-compile-schemas.patch
+    patch -Np1 -i ../0001-noisy-glib-compile-schemas.patch
+    NOCONFIGURE=1 ./autogen.sh
 
   }
 
 build () {
      local debug=minimum
-  check_option debug y && debug=yes
+     check_option debug y && debug=yes
   
     cd "$srcdir/glib"
-    arch-meson build \
-        -Dfam=false \
-        -Dgtk_doc=true \
-        -Dselinux=false 
-    ninja -C build 
+    ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib \
+    --sysconfdir=/etc \
+    --with-pcre=system \
+    --enable-debug=$debug \
+    --enable-gtk-doc \
+    --disable-fam
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 }
 
 #check() {internal_pcre
@@ -59,7 +64,7 @@ build () {
 
 package_glib2-git() {
     cd "$srcdir/glib"
-    DESTDIR="$pkgdir" ninja -C build install
+    DESTDIR="$pkgdir" make install
     mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
  
     install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 ../*.hook
