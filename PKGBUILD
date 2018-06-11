@@ -7,7 +7,7 @@ pkgname=snapd-git
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
-pkgver=2.32.9.r1192.g045373ab9
+pkgver=2.33.r344.g73867dc22
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
@@ -163,6 +163,7 @@ package_snapd-git() {
   install -dm755 "$pkgdir/var/lib/snapd/lib/gl"
   install -dm755 "$pkgdir/var/lib/snapd/lib/gl32"
   install -dm755 "$pkgdir/var/lib/snapd/lib/vulkan"
+  install -dm755 "$pkgdir/var/lib/snapd/lib/glvnd"
   # these dirs have special permissions
   install -dm000 "$pkgdir/var/lib/snapd/void"
   install -dm700 "$pkgdir/var/lib/snapd/cookie"
