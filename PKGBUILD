@@ -1,14 +1,14 @@
 pkgname=kerberosio-web
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Kerberos.io machinery"
 arch=('any')
 url="https://github.com/kerberos-io/web"
 license=('EULA')
 groups=('system')
-depends=('nginx' 'php-fpm' 'php-gd' 'php-mcrypt')
+depends=('nginx' 'php-fpm' 'php-gd')
 source=(${url}/releases/download/v${pkgver}/web.tar.gz)
-md5sums=('a519ae374dfec25c5e77012c18b0f69a')
+md5sums=('322cc301050f1d17602b4cf82dfed34d')
 
 package() {
 	_dir="${pkgdir}/srv/http/kerberos"
