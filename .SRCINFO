@@ -1,0 +1,29 @@
+pkgbase = gincoin-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gincoin.io/
+	install = gincoin-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = gincoin
+	source = gincoin-qt::git+http://github.com/gincoin-dev/gincoin-core.git
+	source = gincoin-qt.desktop
+	source = secp256k1.patch
+	sha256sums = SKIP
+	sha256sums = b83e0ae6eebff11b261a1b26152c84e4425106346d1995871d346b908aa6a0de
+	sha256sums = fa64cd539fe8aa118b443c46ed1d8a73c5537dc41467f1e28235ed78355a17cd
+
+pkgname = gincoin-qt
+

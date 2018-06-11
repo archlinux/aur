@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=GINcoin
+Comment=GINcoin P2P Cryptocurrency
+Exec=/usr/bin/gincoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/gincoin128.png
+MimeType=x-scheme-handler/gincoin;
+Categories=Office;
+Name[en_US]=gincoin-qt.desktop
