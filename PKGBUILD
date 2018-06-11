@@ -17,8 +17,10 @@ depends=('python'
 provides=('webman')
 source=("${pkgname}::git+https://github.com/flipflop97/WebMan.git"
         "run"
-        "webman.desktop")
+        "webman.desktop"
+        "webman.svg")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
