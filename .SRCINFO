@@ -10,7 +10,7 @@ pkgbase = r-xml
 	optdepends = r-bitops
 	replaces = r-cran-xml
 	source = https://cran.r-project.org/src/contrib/XML_3.98-1.11.tar.gz
-	md5sums = 95411aa497756b10c7f6e2ee2c10e71b
+	md5sums = 6c67f5730ada3456372520773a920b8e
 
 pkgname = r-xml
 

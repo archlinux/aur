@@ -14,7 +14,7 @@ depends=('r' 'libxml2')
 optdepends=('r-bitops')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('95411aa497756b10c7f6e2ee2c10e71b')
+md5sums=('6c67f5730ada3456372520773a920b8e')
 replaces=('r-cran-xml')
 
 build(){
