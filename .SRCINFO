@@ -1,7 +1,7 @@
 pkgbase = liteusb-git
-	pkgdesc = A small footprint and configurable USB core
+	pkgdesc = A small footprint and configurable USB core for LiteX
 	pkgver = 32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enjoy-digital/liteusb
 	arch = any
 	license = MIT

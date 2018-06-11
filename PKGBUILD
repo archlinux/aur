@@ -1,8 +1,8 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=liteusb-git
 pkgver=32
-pkgrel=1
-pkgdesc="A small footprint and configurable USB core"
+pkgrel=2
+pkgdesc="A small footprint and configurable USB core for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/liteusb"
 license=('MIT')
