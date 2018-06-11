@@ -1,8 +1,8 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=litevideo-git
 pkgver=201
-pkgrel=1
-pkgdesc="Small footprint and configurable video cores"
+pkgrel=2
+pkgdesc="Small footprint and configurable video cores for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/litevideo"
 license=('MIT')

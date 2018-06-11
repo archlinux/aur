@@ -1,7 +1,7 @@
 pkgbase = litevideo-git
-	pkgdesc = Small footprint and configurable video cores
+	pkgdesc = Small footprint and configurable video cores for LiteX
 	pkgver = 201
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enjoy-digital/litevideo
 	arch = any
 	license = MIT
