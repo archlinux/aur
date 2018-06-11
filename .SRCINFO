@@ -1,0 +1,18 @@
+pkgbase = windowlab
+	pkgdesc = A small and simple window manager.
+	pkgver = 1.40
+	pkgrel = 4
+	url = http://www.nickgravgaard.com/windowlab
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = xorg-server
+	depends = libxft
+	depends = libxext
+	source = http://www.nickgravgaard.com/windowlab/windowlab-1.40.tar
+	source = xft.patch
+	md5sums = 7fcf770b3da932ac7d252572974b0d54
+	md5sums = 51e5a2d48c6d5837786f2571ccc1ce72
+
+pkgname = windowlab
+

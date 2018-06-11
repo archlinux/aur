@@ -1,0 +1,14 @@
+--- aaa/Makefile	2009-11-06 10:04:45.000000000 +1300
++++ bbb/Makefile	2012-08-04 20:33:35.197529653 +1200
+@@ -35,11 +35,11 @@
+ # Uncomment to add freetype support (requires XFree86 4.0.2 or later)
+ # This needs -lXext above, even if you have disabled shape support
+-#DEFINES += -DXFT
+-#EXTRA_INC += `pkg-config --cflags xft`
+-#EXTRA_LIBS += `pkg-config --libs xft`
++DEFINES += -DXFT
++EXTRA_INC += `pkg-config --cflags xft`
++EXTRA_LIBS += `pkg-config --libs xft`
+ 
+ # Uncomment for debugging info (abandon all hope, ye who enter here)
+ #DEFINES += -DDEBUG
