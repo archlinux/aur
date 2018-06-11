@@ -4,23 +4,28 @@
 # Contributor: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
 # Contributor: rkitover <rkitover@gmail.com>
 
+_pkgver=5.0.4
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-winpthreads-git
-pkgver=5.0.3.20180212
-_pkgver=5.0.3
+pkgver=5.0.4.20180610
 pkgrel=1
-pkgdesc='MinGW-w64 winpthreads library(git version)'
+pkgdesc="MinGW-w64 winpthreads library (git version)"
 arch=('any')
-url='https://mingw-w64.org/doku.php'
+url="https://mingw-w64.org/doku.php"
 license=('custom')
 groups=('mingw-w64-toolchain' 'mingw-w64')
-makedepends=('git' 'mingw-w64-gcc-base' 'mingw-w64-binutils' "mingw-w64-crt-git>=$pkgver")
-provides=("mingw-w64-winpthreads=$pkgver" 'mingw-w64-headers-bootstrap')
-conflicts=('mingw-w64-winpthreads' 'mingw-w64-headers-bootstrap')
-replaces=('mingw-w64-winpthreads' 'mingw-w64-headers-bootstrap')
-options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
-source=('git+https://git.code.sf.net/p/mingw-w64/mingw-w64')
+makedepends=('git'
+             'mingw-w64-gcc-base'
+             'mingw-w64-binutils'
+             "mingw-w64-crt-git>=${pkgver}")
+provides=("mingw-w64-winpthreads=${pkgver}"
+          'mingw-w64-headers-bootstrap')
+conflicts=('mingw-w64-winpthreads'
+           'mingw-w64-headers-bootstrap')
+replaces=('mingw-w64-headers-bootstrap')
+options=('!strip' 'staticlibs' '!buildflags')
+source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -49,7 +54,9 @@ package() {
     msg "Installing ${_target} headers"
     pushd "winpthreads-build-${_target}"
     make DESTDIR="${pkgdir}" install
-    ${_target}-strip --strip-unneeded "$pkgdir"/usr/${_target}/bin/*.dll
+    ${_target}-strip --strip-unneeded "${pkgdir}"/usr/${_target}/bin/*.dll
     popd
   done
 }
+
+# vim:set ts=2 sw=2 et:
