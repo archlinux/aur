@@ -1,7 +1,7 @@
 pkgbase = liteeth-git
-	pkgdesc = A small footprint and configurable Ethernet core
+	pkgdesc = A small footprint and configurable Ethernet core for litex
 	pkgver = 115
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enjoy-digital/liteeth
 	arch = any
 	license = MIT

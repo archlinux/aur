@@ -1,8 +1,8 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=liteeth-git
 pkgver=115
-pkgrel=1
-pkgdesc="A small footprint and configurable Ethernet core"
+pkgrel=2
+pkgdesc="A small footprint and configurable Ethernet core for litex"
 arch=(any)
 url="https://github.com/enjoy-digital/liteeth"
 license=('MIT')
