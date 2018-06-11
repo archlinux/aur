@@ -12,3 +12,4 @@ pkgbase = libstrangle-git
 	sha256sums = SKIP
 
 pkgname = libstrangle-git
+
