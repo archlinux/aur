@@ -1,6 +1,6 @@
 pkgbase = routersploit-git
 	pkgdesc = An open-source exploitation framework dedicated to embedded devices.
-	pkgver = 2.2.1.r306.g2e55f7c
+	pkgver = 2.2.1.r334.gbf0f120
 	pkgrel = 1
 	url = https://github.com/threat9/routersploit
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = routersploit-git
 	depends = python-paramiko
 	depends = python-pysnmp
 	depends = python-crypto
-	provides = routersploit=2.2.1.r306.g2e55f7c
+	provides = routersploit=2.2.1.r334.gbf0f120
 	conflicts = routersploit
 	source = routersploit::git+https://github.com/threat9/routersploit
 	sha512sums = SKIP
