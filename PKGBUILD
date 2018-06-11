@@ -1,18 +1,18 @@
 # Maintainer: Anatolii Sakhnik <sakhnik at gmail dot com>
 pkgname=kerberosio-machinery
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.6.1
+pkgrel=1
 _revision=v${pkgver}
 pkgdesc="An image processing framework, which uses your USB-, IP- or RPi-camera to recognize events (e.g. motion)."
 arch=('x86_64' 'armv7h' 'armv6h')
 url="https://github.com/kerberos-io/machinery"
 license=('CC-NC-ND')
-depends=('ffmpeg')
+depends=('ffmpeg2.8')
 makedepends=('make' 'gcc' 'binutils' 'patch' 'cmake' 'autoconf' 'automake' 'git')
 source=(${url}/archive/${_revision}.tar.gz
         0001-Avoid-using-TLS.patch
         0002-Fix-for-distcc.patch)
-sha1sums=('a8e61416e98e1febc790ffe1aa0127961611d87a'
+sha1sums=('db309f2a4a586f5cf679d5cf6a029cabe63c7d3a'
           'd05ed01303a09d103f703118126348b1402b3950'
           'b41c3ab8d1665584dac93b8dabab1ab3ed0a19ac')
 
@@ -25,6 +25,10 @@ prepare()
 
 build()
 {
+    ffmpeg_path=/usr/lib/ffmpeg2.8
+    export LD_LIBRARY_PATH=$ffmpeg_path/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+    export PKG_CONFIG_PATH=$ffmpeg_path/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}
+    export PKG_CONFIG_LIBDIR=$ffmpeg_path/lib${PKG_CONFIG_LIBDIR:+:$PKG_CONFIG_LIBDIR}
     if [[ $CARCH == armv7h ]]; then
         echo "Requested LDFLAGS: $LDFLAGS"
         echo "Removing --as-needed because it breaks the build for RPI"
