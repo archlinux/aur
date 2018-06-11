@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
 depends=('r' 'r-dplyr>=0.7.1' 'r-ggplot2>=2.2.1' 'r-reshape2' 'r-rlang' 'r-ggridges')
 
-optdepends=('pandoc' 'r-arm' 'r-cran-gridextra' 'r-knitr' 'r-loo' 'r-rmarkdown' 'r-rstan' 'r-rstanarm' 'r-rstantools' 'r-cran-scales' 'r-shinystan' 'r-testthat' 'r-vdiffr')
+optdepends=('pandoc' 'r-arm' 'r-gridextra' 'r-knitr' 'r-loo' 'r-rmarkdown' 'r-rstan' 'r-rstanarm' 'r-rstantools' 'r-scales' 'r-shinystan' 'r-testthat' 'r-vdiffr')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('ec21c4e06aa23b4eaa8b52375d2e8854')
