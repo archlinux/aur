@@ -2,7 +2,7 @@
 #Maintainer: Andrea Tarocchi <valdar@email.it>
 
 pkgname=wesnoth-devel
-pkgver=1.13.12
+pkgver=1.13.13
 pkgrel=1
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ source=("https://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.t
         "wesnothd-devel.service"
         "wesnoth-devel.appdata.xml")
 
-md5sums=('07e7de100810b154463c0de4337deb4e'
+md5sums=('158b6690e528bcc13a57dbea2a26fd67'
          '719df848ebda176f995051ef9da302c6'
          '049a22a72074277e53484e3a530d1d69'
          '251f487241afda73c048b4fb654ceda7'
