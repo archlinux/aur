@@ -10,7 +10,7 @@ _gtk3_wayland=false
 
 # try to build with PGO
 # currently broken
-#_pgo=true
+_pgo=true
 
 # globalmenu
 # to support globalmenu a patch from ubuntu is applied
@@ -21,7 +21,7 @@ _gtk3_wayland=false
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=60.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -178,9 +178,17 @@ build() {
   fi
 
   if [[ -n $_pgo ]]; then
+    CC=/usr/bin/gcc-7
+    CXX=/usr/bin/g++-7
+    
+    if in_array ccache ${BUILDENV[*]} ; then
+      CC=/usr/lib/ccache/bin/cc
+      CXX=/usr/lib/ccache/bin/c++
+    fi
+    
     CCACHE_CC=/usr/bin/gcc-7 \
-    CC=/usr/bin/gcc-7 \
-    CXX=/usr/bin/g++-7 \
+    CC=$CC\
+    CXX=$CXX \
       DISPLAY=:99 MOZ_PGO=1 \
              xvfb-run \
              -a \
