@@ -1,4 +1,5 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
+
 pkgname=webman-git
 pkgver=latest
 pkgrel=3
@@ -14,8 +15,12 @@ depends=('python'
          'python-editdistance'
          'xdg-utils')
 provides=('webman')
-source=("${pkgname}::git+https://github.com/flipflop97/WebMan.git")
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://github.com/flipflop97/WebMan.git"
+        "run"
+        "webman.desktop")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 package() {
     cd "${pkgname}"
