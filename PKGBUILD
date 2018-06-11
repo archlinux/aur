@@ -4,11 +4,11 @@
 # Contributor: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
 # Contributor: rkitover <rkitover@gmail.com>
 
-_pkgver=5.0.3
+_pkgver=5.0.4
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-crt-git
-pkgver=5.0.3.20180524
+pkgver=5.0.4.20180610
 pkgrel=1
 pkgdesc="MinGW-w64 CRT for Windows (git version)"
 arch=('any')
