@@ -1,4 +1,4 @@
-# Maintainer: Caleb Woodbine <github.com/BobyMCbobs>
+# Maintainer: Caleb Woodbine <gitlab.com/BobyMCbobs>
 pkgname=getnewip
 pkgver=2.1.2
 pkgrel=1
@@ -8,7 +8,7 @@ url="https://gitlab.com/BobyMCbobs/${pkgname}"
 license=('GPL')
 depends=('gnu-netcat' 'curl' 'bash' 'openssh')
 source=("https://gitlab.com/BobyMCbobs/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip")
-md5sums=('5606ba79968df05ad640c89350595553')
+md5sums=('a7898ea4186adb01950c8e54227dd067')
 
 package() {
 	cd "$pkgname-$pkgver"
