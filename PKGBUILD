@@ -72,7 +72,7 @@ if [[ BRANCH = "emacs-26" ]]; then
 else
   pkgname=emacs-git
 fi
-pkgver=27.0.50.133067
+pkgver=27.0.50.133337
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
@@ -97,7 +97,7 @@ if [[ $LTO = "yes" ]]; then
 fi
 
 if [[ $NOTKIT = "YES" ]]; then
-  depends+=( 'dbus high-color-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' );
+  depends+=( 'dbus' 'high-color-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' );
 elif [[ $LUCID = "YES" ]]; then
   depends+=( 'dbus high-color-icon-theme' 'libxinerama' 'libfixes' 'lcms2' 'librsvg' 'xaw3d' );
 elif [[ $GTK2 = "YES" ]]; then
