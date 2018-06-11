@@ -1,11 +1,11 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
 # Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
 
-_commit=46f8583c87c45b304ac98d06005c49df67d53b07  # tags/1.42.1^0
+_commit=5d46e21df66a11233186ddf27ca8c70149307871  # after a bug fix
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-pango
-pkgver=1.42.1
+pkgver=1.42.1+4+g5d46e21d
 pkgrel=1
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=('any')
@@ -19,12 +19,11 @@ depends=('mingw-w64-harfbuzz'
 makedepends=('mingw-w64-configure'
              'gtk-doc'
              'gobject-introspection'
+             'mingw-w64-meson'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://git.gnome.org/browse/pango#commit=${_commit}"
-        "0001-no-unconditional-xft-please.all.patch")
-sha256sums=('SKIP'
-            'bebab6128258d300e677df0751177f5c30235d0a49c150d97987d0f00b309f35')
+source=("git+https://git.gnome.org/browse/pango#commit=${_commit}")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/pango"
@@ -33,19 +32,20 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/pango"
-  patch -p1 -i ${srcdir}/0001-no-unconditional-xft-please.all.patch
-  NOCONFIGURE=1 ./autogen.sh
-  sed -i 's/have_libthai=true/have_libthai=false/' configure
+
 }
 
 build() {
   cd "${srcdir}/pango"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
-      --disable-introspection \
-      --disable-debug
-    make
+    ${_arch}-meson \
+      --buildtype=release \
+      --default-library=both \
+      -D 'enable_docs=false' \
+      -D 'gir=false' \
+      ..
+    ninja
     popd
   done
 }
@@ -53,7 +53,9 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/pango/build-${_arch}"
-    make -j1 DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja install
+    rm -r "${pkgdir}/usr/${_arch}/lib/installed-tests"
+    rm -r "${pkgdir}/usr/${_arch}/share"
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
