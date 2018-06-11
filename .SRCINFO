@@ -1,7 +1,7 @@
 pkgbase = litesdcard-git
-	pkgdesc = A small footprint and configurable SDCard core
+	pkgdesc = A small footprint and configurable SDCard core for LiteX
 	pkgver = 188
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enjoy-digital/litesdcard
 	arch = any
 	license = MIT

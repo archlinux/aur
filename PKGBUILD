@@ -1,8 +1,8 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=litesdcard-git
 pkgver=188
-pkgrel=1
-pkgdesc="A small footprint and configurable SDCard core"
+pkgrel=2
+pkgdesc="A small footprint and configurable SDCard core for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/litesdcard"
 license=('MIT')
