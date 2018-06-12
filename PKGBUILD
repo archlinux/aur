@@ -8,12 +8,12 @@
 pkgname=('lib32-libx264' 'lib32-libx264-10bit' 'lib32-libx264-all')
 _pkgbase=('x264')
 pkgver=152.20171224
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url='https://www.videolan.org/developers/x264.html'
 license=('GPL')
 depends=('lib32-glibc')
-makedepends=('git' 'lib32-ffmpeg' 'l-smash' 'nasm')
+makedepends=('git' 'l-smash' 'nasm')
 _commit='e9a5903edf8ca59ef20e6f4894c196f135af735e'
 source=("git+https://git.videolan.org/git/x264.git#commit=${_commit}")
 sha256sums=('SKIP')
