@@ -1,7 +1,7 @@
 # Maintainer: Marius Knaust <marius.knaust@gmail.com>
 
 pkgname=spotlight
-pkgver=9.32387ba
+pkgver=13.ea862e4
 pkgrel=1
 pkgdesc="Displays a new background image daily"
 arch=('any')
