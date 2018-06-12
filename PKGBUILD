@@ -2,8 +2,8 @@
 
 pkgname=spotifyd-bin
 pkgver=0.2.1
-pkgrel=1
-conflicts=('spotifyd' 'spotifyd-git' 'spotifyd-pulseaudio-git')
+pkgrel=2
+conflicts=('spotifyd' 'spotifyd-pulseaudio' 'spotifyd-git' 'spotifyd-pulseaudio-git')
 provides=('spotifyd')
 depends=('alsa-lib')
 arch=('armv7h' 'x86_64')
