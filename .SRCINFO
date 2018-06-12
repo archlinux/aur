@@ -7,6 +7,7 @@ pkgbase = r-htmltools
 	license = GPL
 	depends = r
 	depends = r-digest
+	depends = r-rcpp
 	optdepends = r-markdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/htmltools_0.3.6.tar.gz

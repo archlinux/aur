@@ -9,7 +9,7 @@ pkgdesc="Tools for HTML"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
-depends=('r' 'r-digest')
+depends=('r' 'r-digest' 'r-rcpp')
 
 optdepends=('r-markdown' 'r-testthat')
 
