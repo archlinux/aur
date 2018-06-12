@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
 depends=('r' )
 
-optdepends=('r-sfsmisc')
+optdepends=('r-rcolorbrewer' 'r-sfsmisc' 'r-rmpfr')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('e05fa3f995754af92bd03227625da984')
