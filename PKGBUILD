@@ -92,7 +92,7 @@ package_dell-unified-driver-scanner()
 
     mkdir "$pkgdir"/etc/sane.d/dll.d
     echo "smpf" > "$pkgdir"/etc/sane.d/dll.d/smfp-scanner
-    echo "xerox_mfp_smfp" > "$pkgdir"/etc/sane.d/dll.d/smfp-scanner-fix
+    echo "xerox_mfp" > "$pkgdir"/etc/sane.d/dll.d/smfp-scanner-fix
 
 
     install -Dm755 "$srcdir"/cdroot/Linux/"$_arch"/at_root/usr/"$_libdir"/sane/libsane-smfp.so.1.0.1 "$pkgdir"/usr/lib/sane/libsane-smfp.so.1.0.1
