@@ -16,7 +16,7 @@ md5sums=("SKIP")
 pkgver()
 {
 	cd "$srcdir/${pkgname%-git}"
-	sed 's/^#define.*PROGRAM_VERSION.*"\(.*\)".*/\1/p;d' main.c
+	sed 's/^#define.*PROGRAM_VERSION.*"\(.*\)".*/\1/p;d' zs.c
 }
 
 package()
