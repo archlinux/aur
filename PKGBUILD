@@ -6,7 +6,7 @@
 
 _pkgname=gflags
 pkgname=mingw-w64-$_pkgname
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='C++ Library for commandline flag processing (mingw-w64)'
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=('mingw-w64-cmake' 'make')
 options=(!strip !buildflags staticlibs)
 _sourcename=${_pkgname}-${pkgver}
 source=(${_sourcename}.tar.gz::https://github.com/schuhschuh/gflags/archive/v$pkgver.tar.gz)
-sha512sums=('e2106ca70ff539024f888bca12487b3bf7f4f51928acf5ae3e1022f6bbd5e3b7882196ec50b609fd52f739e1f7b13eec7d4b3535d8216ec019a3577de6b4228d')
+sha512sums=('e919cbdcff1f993ddbfa9c06d8e595566a4717c27ff62f388a64c0e6b4683a93211c24ce78485eae84c2c76053341574064e6c56af185fc2782e2816b26e1fc9')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
@@ -47,8 +47,6 @@ package() {
     make DESTDIR=${pkgdir} install
     popd
     install -D -m644 COPYING.txt ${pkgdir}/usr/${_arch}/share/licenses/${_pkgname}/COPYING.txt
-    mkdir -p ${pkgdir}/usr/${_arch}/bin
-    mv ${pkgdir}/usr/${_arch}/lib/*.dll ${pkgdir}/usr/${_arch}/bin
   done
 }
 
