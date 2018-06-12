@@ -1,6 +1,6 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
 _cranname=munsell
-_cranver=0.4.3
+_cranver=0.5.0
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-munsell
 pkgver=${_cranver//[:-]/.}
@@ -14,7 +14,7 @@ depends=('r' 'r-colorspace')
 optdepends=('r-ggplot2' 'r-testthat')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('ebd205323dc37c948f499ee08be9c476')
+md5sums=('b287f380a958399cfa12f665232e7f34')
 
 build(){
     R CMD INSTALL ${_pkgtar} -l $srcdir
