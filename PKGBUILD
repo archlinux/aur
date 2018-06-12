@@ -5,7 +5,7 @@
 pkgbase=('monero')
 pkgname=('monero' 'libmonero-wallet')
 pkgver=0.12.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -30,7 +30,7 @@ _build="build"
 
 prepare()
 {
-  git -C "${pkgname}" submodule update --init --recursive
+  git -C "${pkgname}" submodule update --init --recursive --force
 
   cd "${srcdir}/${_monero}"
   patch -Np1 -i "${srcdir}/0001-account-fix-build-with-GCC-8.1.0.patch"
