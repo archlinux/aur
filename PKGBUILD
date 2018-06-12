@@ -1,7 +1,7 @@
 # Maintainer:  Jose Riha <jose1711 gmail com>
 
 pkgname=psani-profi
-pkgver=3.4.00
+pkgver=3.4.01
 pkgrel=1
 pkgdesc="Program that will teach you touchtyping (czech)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.sallyx.org/sally/psani-vsemi-deseti/"
 license=('GPL')
 depends=('bash' 'xorg-luit')
 source=("http://www.sallyx.org/sally/download.php?file=psani-vsemi-deseti%2F${pkgname}_${pkgver}.tar.gz")
-md5sums=('2e134cbba21faf217daba71611506b5b')
+md5sums=('104efc83c44987416386ae6607c96537')
 
 build() {
   cd "$srcdir/${pkgname}_${pkgver}/zdrojaky"
