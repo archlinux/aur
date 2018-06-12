@@ -1,6 +1,6 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
 _cranname=zoo
-_cranver=1.8-1
+_cranver=1.8-2
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-zoo
 pkgver=${_cranver//[:-]/.}
@@ -14,7 +14,7 @@ depends=('r' )
 optdepends=('r-coda' 'r-chron' 'r-daag' 'r-fts' 'r-ggplot2' 'r-mondate' 'r-scales' 'r-strucchange' 'r-timedate' 'r-timeseries' 'r-tis' 'r-tseries' 'r-xts')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('bf8789b3a448b5bed39e54e027ee7c6a')
+md5sums=('ca22a37a4b1a32ef9beeead47b2751f4')
 
 build(){
     R CMD INSTALL ${_pkgtar} -l $srcdir
