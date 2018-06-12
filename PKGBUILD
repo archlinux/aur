@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL2')
 depends=('r' 'r-mime>=0.3')
 
-optdepends=('r-knitr')
+optdepends=('r-knitr' 'r-rcurl')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('5dde829a865ad65bab37a2b9d243b071')

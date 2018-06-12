@@ -8,6 +8,7 @@ pkgbase = r-markdown
 	depends = r
 	depends = r-mime>=0.3
 	optdepends = r-knitr
+	optdepends = r-rcurl
 	source = https://cran.r-project.org/src/contrib/markdown_0.8.tar.gz
 	md5sums = 5dde829a865ad65bab37a2b9d243b071
 
