@@ -11,7 +11,7 @@ pkgdesc="Drivers for Dell Printers and scanners Model #'s: s1130n 1130 1133 1135
 url="http://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=C10W1"
 license=('custom:dell')
 pkgver=1.03
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 # this is the newest version found after a quick search
 source=("$pkgname-$pkgver.tar.gz::https://downloads.dell.com/FOLDER01511597M/1/B1265dnf_Linux_v${pkgver}_Driver.tar.gz"
@@ -90,9 +90,9 @@ package_dell-unified-driver-scanner()
     install -Dm755 "$srcdir"/cdroot/Linux/noarch/at_root/etc/sane.d/smfp.conf "$pkgdir"/etc/sane.d/smfp.conf
     install -Dm755 "$srcdir"/xerox_mfp-smfp.conf "$pkgdir"/etc/sand.d
 
-    mkdir "$pkgdir"/etc/sane.d/d11.d
-    echo "smpf" > "$pkgdir"/etc/sane.d/d11.d/smfp-scanner
-    echo "xerox_mfp_smfp" > "$pkgdir"/etc/sane.d/d11.d/smfp-scanner-fix
+    mkdir "$pkgdir"/etc/sane.d/dll.d
+    echo "smpf" > "$pkgdir"/etc/sane.d/dll.d/smfp-scanner
+    echo "xerox_mfp_smfp" > "$pkgdir"/etc/sane.d/dll.d/smfp-scanner-fix
 
 
     install -Dm755 "$srcdir"/cdroot/Linux/"$_arch"/at_root/usr/"$_libdir"/sane/libsane-smfp.so.1.0.1 "$pkgdir"/usr/lib/sane/libsane-smfp.so.1.0.1
