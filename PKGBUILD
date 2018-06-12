@@ -12,7 +12,7 @@ depends=('gnucap')
 makedepends=('git')
 provides=('gnucap-make')
 conflicts=('gnucap-make')
-source=("$_pkgname::git+git://github.com/gnucap/$_pkgname.git")
+source=("$_pkgname::git://git.sv.gnu.org/gnucap/gnucap-tools.git#branch=make")
 md5sums=('SKIP')
 
 pkgver() {
