@@ -42,16 +42,16 @@ prepare() {
     patch -p1 -i "${srcdir}"/0002-Fix-separator-error.patch
 
     # Do not use Ubuntu's language-tools
-    #sed -i '/04_language_handling.patch/d' debian/patches/series
+    sed -i '/04_language_handling.patch/d' debian/patches/series
 
-    #for i in $(grep -v '#' debian/patches/series); do
-    #    patch -p1 -i "debian/patches/${i}"
-    #done
+    for i in $(grep -v '#' debian/patches/series); do
+        patch -p1 -i "debian/patches/${i}"
+    done
 
     # Add support for settings GSettings/dconf defaults in the guest session. Just
     # put the files in /etc/guest-session/gsettings/. The file format is the same
     # as the regular GSettings override files.
-    #patch -p1 -i ../0001-guest-account-Add-default-GSettings-support.patch
+    patch -p1 -i ../0001-guest-account-Add-default-GSettings-support.patch
 }
 
 build() {
