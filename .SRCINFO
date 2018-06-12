@@ -1,0 +1,23 @@
+pkgbase = obhud
+	pkgdesc = Script for handling laptop-specific keys in Openbox
+	pkgver = 0.0.1
+	pkgrel = 7
+	url = https://github.com/nwg-piotr/obhud
+	arch = i686
+	arch = x86_64
+	license = gpl3
+	depends = xorg-xbacklight
+	depends = xorg-xrandr
+	depends = libxrandr
+	depends = alsa-utils
+	depends = python
+	depends = python-pmw
+	depends = python-pillow
+	depends = python-psutil
+	source = https://github.com/nwg-piotr/obhud/raw/master/dist/obhud-0.0.1.tar.gz
+	source = https://github.com/nwg-piotr/obhud/raw/master/dist/obhud
+	md5sums = 614fdf95147cb7b3c15cd87fa3e85e65
+	md5sums = 5b26cb8e7fff160d1eccc183e8ae2d28
+
+pkgname = obhud
+
