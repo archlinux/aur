@@ -56,10 +56,14 @@ prepare() {
 
 build() {
   cd lightdm-${pkgver}
-  #cd ${pkgver}
 
   export MOC4='moc-qt4'
   export MOC5='moc-qt5'
+
+    gtkdocize
+    aclocal --install --force
+    autoreconf -vfi
+    intltoolize -f
 
   ./configure \
     --prefix='/usr' \
