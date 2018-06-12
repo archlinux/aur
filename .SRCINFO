@@ -18,6 +18,7 @@ pkgbase = r-devtools
 	optdepends = r-crayon
 	optdepends = r-testthat
 	optdepends = r-biocinstaller
+	optdepends = r-rcpp
 	optdepends = r-rmarkdown
 	optdepends = r-knitr
 	optdepends = r-hunspell
