@@ -3,7 +3,7 @@
 pkgname=wmvolman
 pkgver=2.0.1
 pkgrel=1
-pkgdesc="Dockapp to automount external disks with udisks2"
+pkgdesc="Dockapp to easily mount external disks with udisks2"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/raorn/wmvolman"
 license=('GPL2')

@@ -1,5 +1,5 @@
 pkgbase = wmvolman
-	pkgdesc = Dockapp to automount external disks with udisks2
+	pkgdesc = Dockapp to easily mount external disks with udisks2
 	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/raorn/wmvolman
