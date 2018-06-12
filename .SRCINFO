@@ -9,6 +9,7 @@ pkgbase = r-withr
 	optdepends = r-testthat
 	optdepends = r-covr
 	optdepends = r-dbi
+	optdepends = r-rsqlite
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/withr_2.1.2.tar.gz

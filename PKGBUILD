@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
 depends=('r' )
 
-optdepends=('r-testthat' 'r-covr' 'r-dbi' 'r-knitr' 'r-rmarkdown')
+optdepends=('r-testthat' 'r-covr' 'r-dbi' 'r-rsqlite' 'r-knitr' 'r-rmarkdown')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('85e8574fb0a6832c4f275531be6371d6')
