@@ -12,8 +12,8 @@ pkgbase = dell-unified-driver
 	source = 61_smfp_samsung.rules
 	sha256sums = a1aa742cd266f60ae756c5678cdc27ee5be788d3ec088694f2bd03efffc17e36
 	sha256sums = e57b2f313a482d74d66329edcca70a383d83e8c9d1f93c489e7bf36f8b2b3785
-	sha256sums = ddb4deaac88f3c8ab5b4529bfb4b5a37f3d972c5f4e1ac74bc141049550af8d0
-	sha256sums = 7991f801ec5ce1b8b5bf09dc4e1e52054c90df6d302e6da3025c63d9727ebb66
+	sha256sums = 490cd00d5f06243268940de90d9f1e402a67465bdc3a86dfc3466408e8d2007f
+	sha256sums = 53c603095748f9f554927ba8ea753a3c7913bcc45a6f701f41d307613f402d30
 
 pkgname = dell-unified-driver-common
 
