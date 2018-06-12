@@ -8,8 +8,10 @@ pkgbase = r-haven
 	depends = r
 	depends = r-forcats>=0.2.0
 	depends = r-hms
+	depends = r-rcpp>=0.11.4
 	depends = r-readr>=0.1.0
 	depends = r-tibble
+	depends = r-forcats>=0.2.0
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
