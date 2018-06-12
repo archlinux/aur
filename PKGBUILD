@@ -2,7 +2,7 @@
 
 pkgname=plover-git
 pkgdesc="Free and open source real-time stenography engine."
-pkgver=4.0.0.dev7
+pkgver=4.0.0.dev8
 pkgrel=1
 arch=('any')
 license=('GPL2')
@@ -19,7 +19,6 @@ depends=(
 makedepends=(
   'git'
   'python-babel'
-  'python-mock'
   'python-pytest'
   'python-setuptools-scm'
 )
@@ -36,7 +35,7 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  sed -i '/^\s*PyQt5\b.*/d' setup.py setup.cfg
+  sed -i '/^\s*PyQt5\b.*/d' setup.cfg
 }
 
 build() {
