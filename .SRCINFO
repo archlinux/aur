@@ -22,6 +22,7 @@ pkgname = dell-unified-driver-printer
 	depends = cups
 	depends = ghostscript
 	conflicts = samsung-unified-driver-printer
+	replaces = dell-unified-printer-driver
 
 pkgname = dell-unified-driver-scanner
 	install = dell-unified-driver-scanner.install

@@ -51,7 +51,8 @@ package_dell-unified-driver-printer()
 {
     conflicts=('samsung-unified-driver-printer')
     depends=('dell-unified-driver-common' 'cups' 'ghostscript')
-    
+    replaces=('dell-unified-printer-driver')
+
     # thank you driggs39 from here https://www.dell.com/community/Printers/b1165nfw-Linux-installer-modifies-important-files-damages-system/m-p/4414245#M80350
     install -Dm755 "$srcdir"/cdroot/Linux/"$_arch"/mfp          "$pkgdir"/usr/lib/cups/backend/mfp
 
