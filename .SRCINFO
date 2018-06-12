@@ -1,8 +1,8 @@
 pkgbase = r-readr
 	pkgdesc = Improved methods for reading rectangular data.
 	pkgver = 1.1.1
-	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/readr/index.html
+	pkgrel = 2
+	url = https://cran.r-project.org/package=readr
 	arch = i686
 	arch = x86_64
 	license = GPL-2
@@ -12,6 +12,13 @@ pkgbase = r-readr
 	depends = r-tibble
 	depends = r-hms
 	depends = r-r6
+	depends = r-bh
+	optdepends = r-curl
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-stringi
+	optdepends = r-covr
 	source = http://cran.r-project.org/src/contrib/readr_1.1.1.tar.gz
 	md5sums = cffb6669664f6a0f6fe172542e64cb47
 
