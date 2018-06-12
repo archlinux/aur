@@ -2,14 +2,14 @@
 # Contributor: timetoplatypus <timetoplatypus@protonmail.com>
 pkgname=libfaction
 _pkgname=faction
-pkgver=0.0.2
-pkgrel=5
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="A C library for test-driven software development"
 arch=("x86_64" "i686")
 url="https://timetoplatypus.com/static/faction"
 license=("BSD")
 source=("https://timetoplatypus.com/static/faction/$_pkgname-$pkgver.tar.gz")
-md5sums=("36ce3a1f4d31fd0f6887b3ed9aa75810")
+md5sums=("c588eb9ce9d7b56dbbd3de4dc81a066a")
 
 package() {
   mkdir -p "$pkgdir/usr/include/"
