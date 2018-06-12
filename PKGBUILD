@@ -2,7 +2,7 @@
 
 pkgname=mystuff
 pkgver=3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Create a custom menu in a popup window"
 url="http://www.kornelix.net/mystuff/mystuff.html"
 arch=('i686' 'x86_64')
@@ -12,9 +12,14 @@ source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
 sha256sums=('63eb50580c806006736ce4f8b9d97c97f8506ce8103bf0be2260221ded21376f')
 options=('!emptydirs')
 
-build() {
+prepare() {
   cd $pkgname-$pkgver
   sed -i 's+xdg-deskto+#xdg-deskto+' Makefile
+  sed -i "s/Icon=\/usr\/share\/mystuff\/icons\//Icon=\/usr\/share\/pixmaps\//" ./mystuff.desktop
+}
+
+build() {
+    cd $pkgname-$pkgver 
   make PREFIX=/usr LDFLAGS="-lpthread" ICONDIR=/usr/share/pixmaps
 }
 
