@@ -1,0 +1,3 @@
+g lightdm 620 -
+u lightdm 620 "Light Display Manager" /var/lib/lightdm
+

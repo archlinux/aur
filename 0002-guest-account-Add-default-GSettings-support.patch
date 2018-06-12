@@ -1,0 +1,33 @@
+From 44e3fe3f4fe5c22b78dfe36c6affa9d42c1fb395 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Sun, 13 Apr 2014 01:02:42 -0400
+Subject: [PATCH 2/2] guest-account: Add default GSettings support
+
+---
+ debian/guest-account.sh | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/debian/guest-account.sh b/debian/guest-account.sh
+index 0fc3daa..38e849c 100644
+--- a/debian/guest-account.sh
++++ b/debian/guest-account.sh
+@@ -131,6 +131,16 @@ add_account ()
+       . /etc/guest-session/prefs.sh
+   fi
+ 
++  # Load default dconf settings
++  mkdir -p "$HOME/.config/" "$HOME/.cache/"
++  chown -R $USER:$USER "$HOME/.config/" "$HOME/.cache/"
++  if [ -d /etc/guest-session/gsettings/ ]; then
++    for i in /etc/guest-session/gsettings/*; do
++      cat "${i}" | sed '/^\[.*\]$/ s/\./\//g' | \
++        su - $USER -c 'dbus-launch dconf load /'
++    done
++  fi
++
+   chown -R $USER:$USER "$HOME"
+ 
+   echo $USER  
+-- 
+2.3.3
+
