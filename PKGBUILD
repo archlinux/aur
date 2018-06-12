@@ -42,7 +42,7 @@ conflicts=('octopi-git' 'octopi-kde-git')
 source=('octopi-repoeditor.desktop'
         "https://code.chakralinux.org/packages/desktop/raw/master/octopi/0001-remove-qtermwidget.patch"
         "https://gitlab.com/kikadf/patches/raw/master/octopi/0002-add-pikaur-support.patch"
-        "icons::git+https://github.com/kikadf/octopicons.git")
+        "icons::git+https://gitlab.com/kikadf/octopicons.git")
 sha256sums=('131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef'
             'bdf668ae3bcbac4bf908d96ce4115bac77bf8d4e58796d12fc2cd4e8ee8294e7'
             '70a2fd1021fe2e2e00a206bd42e58518259babdce4f7db5f2e511142aa8c841f'
