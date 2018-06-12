@@ -9,7 +9,7 @@ pkgdesc="Tools for Generating, Visualizing, and Analysing Link Communities in Ne
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
-depends=('r' 'r-igraph' 'r-dynamictreecut')
+depends=('r' 'r-igraph' 'r-rcolorbrewer' 'r-dynamictreecut')
 
 optdepends=('r-fastcluster')
 
