@@ -9,9 +9,9 @@ pkgdesc="R Interface to Stan"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
-depends=('r' 'r-ggplot2>=2.0.0' 'r-stanheaders>=2.17.2' 'r-inline' 'r-gridextra>=2.0.0' 'r-bh>=1.65' 'r-stanheaders>=2.17.2')
+depends=('r' 'r-ggplot2>=2.0.0' 'r-stanheaders>=2.17.2' 'r-inline' 'r-gridextra>=2.0.0' 'r-rcpp>=0.12.0' 'r-rcppeigen>=0.3.3.3.0' 'r-bh>=1.65')
 
-optdepends=('pandoc' 'r-bh' 'r-loo' 'r-shinystan' 'r-bayesplot' 'r-rstantools' 'r-rstudioapi' 'r-knitr')
+optdepends=('pandoc' 'r-runit' 'r-rcppeigen' 'r-bh' 'r-loo' 'r-shinystan' 'r-bayesplot' 'r-rstantools' 'r-rstudioapi' 'r-knitr')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('942f119d1dd76a915374eb37f54cb9a4')
