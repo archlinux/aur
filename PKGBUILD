@@ -10,7 +10,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20180608
+pkgver=20180612
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -55,10 +55,6 @@ provides=('electrum')
 conflicts=('electrum')
 install=electrum.install
 
-#_pyver="$(pacman -Q python | awk '{print $2}' | awk -F. '{print $1 $2}')"
-_pyver="$(python -c \
-  'import platform; print("%s%s" % platform.python_version_tuple()[0:2])')"
-
 pkgver() {
   cd ${pkgname%-git}
   git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
@@ -82,6 +78,10 @@ build() {
 
 check() {
   cd ${pkgname%-git}
+
+  #_pyver="$(pacman -Q python | awk '{print $2}' | awk -F. '{print $1 $2}')"
+  _pyver="$(python -c \
+    'import platform; print("%s%s" % platform.python_version_tuple()[0:2])')"
 
   msg2 'Testing...'
   tox -e "py$_pyver"
