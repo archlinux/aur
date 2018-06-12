@@ -13,6 +13,7 @@ pkgbase = r-reprex
 	optdepends = pandoc
 	optdepends = r-covr
 	optdepends = r-devtools
+	optdepends = r-formatr
 	optdepends = r-fortunes
 	optdepends = r-miniui
 	optdepends = r-rstudioapi
