@@ -1,14 +1,37 @@
-pkgbase = dell-unified-printer-driver
-	pkgdesc = Drivers for Dell Printers Model #'s: s1130n 1130 1133 1135n 1815 2145cn 2335dn 2355dn 5330 B1160 B1160w B1165nfw B1260dn B1265dfw B1265dnf B2365dnf
+pkgbase = dell-unified-driver
+	pkgdesc = Drivers for Dell Printers and scanners Model #'s: s1130n 1130 1133 1135n 1815 2145cn 2335dn 2355dn 5330 B1160 B1160w B1165nfw B1260dn B1265dfw B1265dnf B2365dnf
 	pkgver = 1.03
 	pkgrel = 1
 	url = http://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=C10W1
+	arch = i686
 	arch = x86_64
-	license = unknown
-	depends = cups
-	conflicts = samsung-unified-driver-printer
-	source = dell-unified-printer-driver-1.03.tar.gz::https://downloads.dell.com/FOLDER01511597M/1/B1265dnf_Linux_v1.03_Driver.tar.gz
+	license = custom:dell
+	source = dell-unified-driver-common-1.03.tar.gz::https://downloads.dell.com/FOLDER01511597M/1/B1265dnf_Linux_v1.03_Driver.tar.gz
+	source = xerox_mfp-smfp.conf
+	source = 60_smfp_samsung.rules
+	source = 61_smfp_samsung.rules
 	sha256sums = a1aa742cd266f60ae756c5678cdc27ee5be788d3ec088694f2bd03efffc17e36
+	sha256sums = e57b2f313a482d74d66329edcca70a383d83e8c9d1f93c489e7bf36f8b2b3785
+	sha256sums = ddb4deaac88f3c8ab5b4529bfb4b5a37f3d972c5f4e1ac74bc141049550af8d0
+	sha256sums = 7991f801ec5ce1b8b5bf09dc4e1e52054c90df6d302e6da3025c63d9727ebb66
 
-pkgname = dell-unified-printer-driver
+pkgname = dell-unified-driver-common
+
+pkgname = dell-unified-driver-printer
+	depends = dell-unified-driver-common
+	depends = cups
+	depends = ghostscript
+	conflicts = samsung-unified-driver-printer
+
+pkgname = dell-unified-driver-scanner
+	install = dell-unified-driver-scanner.install
+	depends = dell-unified-driver-common
+	depends = libxml2
+	depends = libusb-compat
+	depends = sane
+	conflicts = samsung-unified-driver-scanner
+
+pkgname = dell-unified-driver
+	depends = dell-unified-driver-printer
+	depends = dell-unified-driver-scanner
 
