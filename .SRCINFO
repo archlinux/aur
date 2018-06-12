@@ -1,7 +1,7 @@
 pkgbase = dell-unified-driver
 	pkgdesc = Drivers for Dell Printers and scanners Model #'s: s1130n 1130 1133 1135n 1815 2145cn 2335dn 2355dn 5330 B1160 B1160w B1165nfw B1260dn B1265dfw B1265dnf B2365dnf
 	pkgver = 1.03
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=C10W1
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dell-unified-driver
 	source = 60_smfp_samsung.rules
 	source = 61_smfp_samsung.rules
 	sha256sums = a1aa742cd266f60ae756c5678cdc27ee5be788d3ec088694f2bd03efffc17e36
-	sha256sums = e57b2f313a482d74d66329edcca70a383d83e8c9d1f93c489e7bf36f8b2b3785
+	sha256sums = b9472081403c05590c2b187db3f3e9825fd0e9dfa5ff12b6c574d802f2673d03
 	sha256sums = 490cd00d5f06243268940de90d9f1e402a67465bdc3a86dfc3466408e8d2007f
 	sha256sums = 53c603095748f9f554927ba8ea753a3c7913bcc45a6f701f41d307613f402d30
 

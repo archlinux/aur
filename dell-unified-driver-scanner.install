@@ -1,7 +1,7 @@
 post_install() {
     echo "> If \"scanimage -L\" returns \"No scanners were identified\" and your model number is in the description, try running \"sane-find-scanner\"."
     echo "> If that finds your scanner, send the vendor= and product= to the maintainer of this package"
-    echo "> In the meantime, add it manually to \"/etc/sane.d/xerox_mfp.conf\""
+    echo "> In the meantime, add it manually to \"/etc/sane.d/xerox_mfp-smfp.conf\""
 }
 
 post_upgrade() {

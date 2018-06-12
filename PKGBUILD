@@ -11,7 +11,7 @@ pkgdesc="Drivers for Dell Printers and scanners Model #'s: s1130n 1130 1133 1135
 url="http://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=C10W1"
 license=('custom:dell')
 pkgver=1.03
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 # this is the newest version found after a quick search
 source=("$pkgname-$pkgver.tar.gz::https://downloads.dell.com/FOLDER01511597M/1/B1265dnf_Linux_v${pkgver}_Driver.tar.gz"
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::https://downloads.dell.com/FOLDER01511597M/1/B
         "60_smfp_samsung.rules"
         "61_smfp_samsung.rules")
 sha256sums=('a1aa742cd266f60ae756c5678cdc27ee5be788d3ec088694f2bd03efffc17e36'
-            'e57b2f313a482d74d66329edcca70a383d83e8c9d1f93c489e7bf36f8b2b3785'
+            'b9472081403c05590c2b187db3f3e9825fd0e9dfa5ff12b6c574d802f2673d03'
             '490cd00d5f06243268940de90d9f1e402a67465bdc3a86dfc3466408e8d2007f'
             '53c603095748f9f554927ba8ea753a3c7913bcc45a6f701f41d307613f402d30')
 
@@ -67,7 +67,7 @@ package_dell-unified-driver-printer()
     for i in ${_ppdmodels[@]}; do
         # save some space
         gzip < "$srcdir"/cdroot/Linux/noarch/at_opt/share/ppd/"$i".ppd > $srcdir/cdroot/Linux/noarch/at_opt/share/ppd/"$i".ppd.gz
-        install -Dm644 "$srcdir"/cdroot/Linux/noarch/at_opt/share/ppd/"$i".ppd.gz "$pkgdir"/usr/share/cups/model/dell/"$i".ppd
+        install -Dm644 "$srcdir"/cdroot/Linux/noarch/at_opt/share/ppd/"$i".ppd.gz "$pkgdir"/usr/share/cups/model/dell/"$i".ppd.gz
     done
 
     _ctsmodels=(B1160sc  B1160wsc  B1165nfwsc  B1260dnsc  B1265dfwsc  B1265dnfsc)
@@ -84,20 +84,20 @@ package_dell-unified-driver-scanner()
 
     _locales=(ru fr)
     for i in ${_locales[@]}; do
-        install -Dm755 "$srcdir"/cdroot/Linux/noarch/at_root/usr/share/locale/"$i"/LC_MESSAGES/sane-smfp.mo "$pkgdir"/usr/share/locale/"$i"/LC_MESSAGES/sane-smfp.mo
+        install -Dm644 "$srcdir"/cdroot/Linux/noarch/at_root/usr/share/locale/"$i"/LC_MESSAGES/sane-smfp.mo "$pkgdir"/usr/share/locale/"$i"/LC_MESSAGES/sane-smfp.mo
     done
 
-    install -Dm755 "$srcdir"/cdroot/Linux/noarch/at_root/etc/sane.d/smfp.conf "$pkgdir"/etc/sane.d/smfp.conf
-    install -Dm755 "$srcdir"/xerox_mfp-smfp.conf "$pkgdir"/etc/sand.d
+    install -Dm644 "$srcdir"/cdroot/Linux/noarch/at_root/etc/sane.d/smfp.conf "$pkgdir"/etc/sane.d/smfp.conf
+    install -Dm644 "$srcdir"/xerox_mfp-smfp.conf                              "$pkgdir"/etc/sane.d/xerox_mfp-smfp.conf
 
     mkdir "$pkgdir"/etc/sane.d/dll.d
-    echo "smpf" > "$pkgdir"/etc/sane.d/dll.d/smfp-scanner
-    echo "xerox_mfp_smfp" > "$pkgdir"/etc/sane.d/dll.d/smfp-scanner-fix
+    echo "smpf" >           "$pkgdir"/etc/sane.d/dll.d/smfp-scanner
+    echo "xerox_mfp-smfp" > "$pkgdir"/etc/sane.d/dll.d/smfp-scanner-fix
 
 
     install -Dm755 "$srcdir"/cdroot/Linux/"$_arch"/at_root/usr/"$_libdir"/sane/libsane-smfp.so.1.0.1 "$pkgdir"/usr/lib/sane/libsane-smfp.so.1.0.1
-    ln -s libsane-smfp.so.1.0.1 "$pkgdir"/usr/lib/sane/libsane-smfp.so.1
-    ln -s libsane-smfp.so.1     "$pkgdir"/usr/lib/sane/libsane-smfp.so
+    ln -s libsane-smfp.so.1.0.1                                                                      "$pkgdir"/usr/lib/sane/libsane-smfp.so.1
+    ln -s libsane-smfp.so.1                                                                          "$pkgdir"/usr/lib/sane/libsane-smfp.so
 
     # we don't install smfpd, so this never gets uses afaik
     #install -Dm755 "$srcdir"/cdroot/Linux/"$_arch"/at_root/usr/lib/libmfp.so.1.0.1 "$pkgdir"/usr/lib/libmfp.so.1.0.1
