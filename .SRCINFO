@@ -1,14 +1,14 @@
 pkgbase = mp3gain
 	pkgdesc = Lossless mp3 normalizer with statistical analysis
-	pkgver = 1.6.1
-	pkgrel = 2
+	pkgver = 1.6.2
+	pkgrel = 1
 	url = https://sourceforge.net/projects/mp3gain/
 	arch = x86_64
 	arch = armv7h
 	license = GPL
 	depends = mpg123
-	source = http://downloads.sourceforge.net/mp3gain/mp3gain-1_6_1-src.zip
-	md5sums = 0df5c6849353de212e8c36a0353d716c
+	source = http://downloads.sourceforge.net/mp3gain/mp3gain-1_6_2-src.zip
+	md5sums = 013551d985f517d9f0d767ee51366f1b
 
 pkgname = mp3gain
 
