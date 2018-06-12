@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('BSD_2_clause + file LICENSE')
 depends=('r' 'libxml2')
 
-optdepends=('r-bitops')
+optdepends=('r-bitops' 'r-rcurl')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('6c67f5730ada3456372520773a920b8e')
