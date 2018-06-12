@@ -9,7 +9,7 @@ pkgdesc="Manipulate DESCRIPTION Files"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
-depends=('r' 'r-assertthat' 'r-crayon' 'r-rprojroot')
+depends=('r' 'r-assertthat' 'r-r6' 'r-crayon' 'r-rprojroot')
 
 optdepends=('r-covr' 'r-testthat' 'r-whoami' 'r-withr')
 

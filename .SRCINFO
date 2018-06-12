@@ -7,6 +7,7 @@ pkgbase = r-desc
 	license = MIT
 	depends = r
 	depends = r-assertthat
+	depends = r-r6
 	depends = r-crayon
 	depends = r-rprojroot
 	optdepends = r-covr
