@@ -12,8 +12,8 @@ pkgbase = twg
 	options = !emptydirs
 	source = https://github.com/syui/twg/releases/download/0.2/linux_386_twg
 	source = https://github.com/syui/twg/releases/download/0.2/linux_amd64_twg
-	sha1sums = c9552d7087af58c9a9587738fc32af6658e051f9
-	sha1sums = 989d5d6c70c741e55bc86d59033db76d5c9eaf83
+	sha1sums = aeb523a28f9b5771e6d474cabdea1ff637b9e10c
+	sha1sums = 3d3433853a900050ff755eed833c8f5dc11eb1e9
 
 pkgname = twg
 
