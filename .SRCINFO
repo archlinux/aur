@@ -1,0 +1,13 @@
+pkgbase = junglediskworkgroup
+	pkgdesc = Online backup and storage powered by Amazon S3™ and Rackspace.
+	pkgver = 3.23.0
+	pkgrel = 1
+	url = http://www.jungledisk.com/
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	source_x86_64 = https://downloads.jungledisk.com/jungledisk/junglediskworkgroup64-3230.tar.gz
+	sha256sums_x86_64 = 42ad6c067ee6a3685f28fa258dc351c9519969a1db7afdafe6e28d7fb12514be
+
+pkgname = junglediskworkgroup
+
