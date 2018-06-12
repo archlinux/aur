@@ -1,0 +1,17 @@
+post_install() {
+    if ! getent group lightdm &>/dev/null; then
+        groupadd -g 620 lightdm
+    fi
+
+    if ! getent passwd lightdm &>/dev/null; then
+        useradd -c 'Light Display Manager' -u 620 -g lightdm -d /var/lib/lightdm -s /usr/bin/nologin lightdm
+    fi
+
+    passwd -l lightdm > /dev/null
+
+    systemd-tmpfiles --create /usr/lib/tmpfiles.d/lightdm.conf
+}
+
+post_upgrade() {
+    post_install
+}
