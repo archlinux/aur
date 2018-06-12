@@ -1,4 +1,4 @@
-# Maintainer: James Smith <jsubuntuxp AT gmail DOT com>
+# Maintainer: James Smith <jslonescout AT icloud DOT com>
 pkgname=wmvolman
 pkgver=2.0.1
 pkgrel=1
