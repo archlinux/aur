@@ -1,0 +1,14 @@
+pkgbase = rustup-official
+	pkgdesc = Tells pacman that you have rustup, rust, and cargo installed if you installed rustup via rustup.rs.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = AGPL3
+	provides = cargo
+	provides = rust
+	provides = rustup
+	source = https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
+	md5sums = eb1e647870add0502f8f010b19de32af
+
+pkgname = rustup-official
+
