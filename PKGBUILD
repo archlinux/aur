@@ -9,7 +9,7 @@ pkgdesc="Translate CSS Selectors to XPath Expressions"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('BSD_3_clause + file LICENCE')
-depends=('r' 'r-stringr')
+depends=('r' 'r-stringr' 'r-r6')
 
 optdepends=('r-testthat' 'r-xml' 'r-xml2')
 

@@ -7,6 +7,7 @@ pkgbase = r-selectr
 	license = BSD_3_clause + file LICENCE
 	depends = r
 	depends = r-stringr
+	depends = r-r6
 	optdepends = r-testthat
 	optdepends = r-xml
 	optdepends = r-xml2
