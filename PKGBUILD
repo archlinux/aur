@@ -9,7 +9,7 @@ pkgdesc="Read, Write and Edit XLSX Files"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
-depends=('r' 'r-zip')
+depends=('r' 'r-rcpp' 'r-zip')
 
 optdepends=('r-knitr' 'r-testthat')
 
