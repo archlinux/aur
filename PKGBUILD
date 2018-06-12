@@ -1,8 +1,8 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.20.1
-pkgrel=2
+pkgver=1.20.2
+pkgrel=1
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-se
              autoconf2.13 rust clang llvm libnotify gtk2 gtk3 wget)
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
-sha256sums=('58bfae2ce2f5e519ad07c57eaef9993250ee8afe53ae0c3f283e4d0cf7cf8e64')
+sha256sums=('ba0f1a09441cd00e36a384f0039c03cc868921470734779b31998ce59fc07c66')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
