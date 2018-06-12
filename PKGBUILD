@@ -1,6 +1,6 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=marktext
-pkgver=0.10.21
+pkgver=0.11.42
 pkgrel=1
 pkgdesc='Next generation markdown editor'
 arch=('x86' 'x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gconf' 'gtk3' 'libxss' 'nss')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::http://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('2f6d22b69d6f1ea0ff002cd3d1dc7f3ec1f3ab6e44ef5aeb2801fc052ea4320715205d2e4c5dfbc3870c975d9fef6789572a2c04246b6977e7ec72d014d7e5b1')
+sha512sums=('4d9e2ec21accc128fe5ebe628f744b1e4bf1561cf64bc6e2d4d7a387c5482d1c221af6198af702a15128b061863e3a339de4316950757ee254671848b32ac9dd')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
