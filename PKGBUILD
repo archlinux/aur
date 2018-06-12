@@ -5,20 +5,21 @@
 # Contributor: moostik <mooostik_at_gmail.com>
 
 pkgname=veusz
-pkgver=2.2.2
+pkgver=3.0
 pkgrel=1
-pkgdesc="A scientific plotting and graphing package, designed to create publication-ready PDF or SVG output"
+pkgdesc="A 2D and 3D scientific plotting package, designed to create publication-ready PDF or SVG output"
 arch=('x86_64')
 url="https://veusz.github.io/"
 license=('GPL2')
-depends=('python-pyqt5' 'python-numpy' 'hicolor-icon-theme')
-optdepends=('python-pyfits: for reading files in FITS format'
-#            'python-emf: for EMF export' - http://pyemf.sourceforge.net/ - package missing
-            'python-dbus: for dbus interface'
-            'python-iminuit: for numerical function minimization'
-            'python-astropy: for VO table import')
+depends=('python-pyqt5' 'python-numpy' 'python-sip' 'hicolor-icon-theme')
+optdepends=('python-h5py:  HDF5 support'
+#             'pyemf >= 2.0.0: EMF export   https://github.com/jeremysanders/pyemf (Python 3 port in development) - package missing
+            'python-dbus: dbus interface'
+            'python-iminuit: improved fitting'
+            'python-astropy: VO table import and FITS import'
+            'ghostscript: for EPS/PS output')
 source=("https://github.com/veusz/veusz/releases/download/veusz-${pkgver}/veusz-${pkgver}.tar.gz")
-sha256sums=('d630553f8531e9442d2d8077d0c79287760de52804fb13c342512384e77546c2')
+sha256sums=('24189cbd46d341b0853a70ced2b80ab9e1efd5cfaf201283ce2ccde1c2937407')
 
 build() {
   cd "${pkgname}-${pkgver}"
