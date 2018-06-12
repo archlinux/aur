@@ -1,0 +1,17 @@
+pkgbase = s3m-git
+	pkgdesc = S3M: Statistically Significant Shapelet Mining
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/BorgwardtLab/S3M
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = boost
+	provides = s3m
+	conflicts = s3m
+	source = s3m::git+https://github.com/BorgwardtLab/S3M.git
+	md5sums = SKIP
+
+pkgname = s3m-git
+
