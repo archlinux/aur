@@ -11,6 +11,7 @@ pkgbase = r-testthat
 	depends = r-digest
 	depends = r-magrittr
 	depends = r-praise
+	depends = r-r6>=2.2.0
 	depends = r-rlang
 	depends = r-withr>=2.0.0
 	optdepends = r-covr

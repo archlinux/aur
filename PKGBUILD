@@ -9,7 +9,7 @@ pkgdesc="Unit Testing for R"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
-depends=('r' 'r-cli' 'r-crayon' 'r-digest' 'r-magrittr' 'r-praise' 'r-rlang' 'r-withr>=2.0.0')
+depends=('r' 'r-cli' 'r-crayon' 'r-digest' 'r-magrittr' 'r-praise' 'r-r6>=2.2.0' 'r-rlang' 'r-withr>=2.0.0')
 
 optdepends=('r-covr' 'r-devtools' 'r-knitr' 'r-rmarkdown' 'r-xml2')
 
