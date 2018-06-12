@@ -1,7 +1,7 @@
 # Maintainer: Deon Spengler <deon.spengler@gmail.com>
 pkgname=striata-reader
 pkgver=2.25
-pkgrel=1
+pkgrel=3
 pkgdesc="Reader for encrypted emails"
 url="http://www.striata.com/download-the-striata-reader.html"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom')
 depends=('xdg-utils' 'python2')
 provides=('striata')
 source=(https://reader.striata.com/downloads/Linux/${pkgname}-${pkgver}-${pkgrel}-amd64.tar.gz)
-sha256sums=('8bcece32f75ea1c543123b83547a5077bedcd0d23583294b53184567b1eb997b')
+sha256sums=('3100c697bd9f4d07aebfa293fcc7b889653e29a56cc67d87191beab191f8eae0')
 install=striata-reader.install
 
 package() {

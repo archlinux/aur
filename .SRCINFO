@@ -1,7 +1,7 @@
 pkgbase = striata-reader
 	pkgdesc = Reader for encrypted emails
 	pkgver = 2.25
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.striata.com/download-the-striata-reader.html
 	install = striata-reader.install
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = striata-reader
 	depends = xdg-utils
 	depends = python2
 	provides = striata
-	source = https://reader.striata.com/downloads/Linux/striata-reader-2.25-1-amd64.tar.gz
-	sha256sums = 8bcece32f75ea1c543123b83547a5077bedcd0d23583294b53184567b1eb997b
+	source = https://reader.striata.com/downloads/Linux/striata-reader-2.25-3-amd64.tar.gz
+	sha256sums = 3100c697bd9f4d07aebfa293fcc7b889653e29a56cc67d87191beab191f8eae0
 
 pkgname = striata-reader
 
