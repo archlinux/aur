@@ -10,6 +10,7 @@ pkgbase = r-httr
 	depends = r-mime
 	depends = r-curl>=0.9.1
 	depends = r-openssl>=0.8
+	depends = r-r6
 	optdepends = r-httpuv
 	optdepends = r-jpeg
 	optdepends = r-knitr

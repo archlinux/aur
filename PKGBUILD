@@ -9,7 +9,7 @@ pkgdesc="Tools for Working with URLs and HTTP"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
-depends=('r' 'r-jsonlite' 'r-mime' 'r-curl>=0.9.1' 'r-openssl>=0.8')
+depends=('r' 'r-jsonlite' 'r-mime' 'r-curl>=0.9.1' 'r-openssl>=0.8' 'r-r6')
 
 optdepends=('r-httpuv' 'r-jpeg' 'r-knitr' 'r-png' 'r-testthat' 'r-readr' 'r-xml2' 'r-rmarkdown' 'r-covr')
 
