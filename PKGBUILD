@@ -2,7 +2,7 @@
 
 pkgname=dxvk-git
 pkgver=20180611.f8650c1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/doitsujin/dxvk"
 license=('zlib/libpng')
 groups=()
 depends=('vulkan-icd-loader' 'wine>=3.10')
-makedepends=('ninja' 'meson>=0.43' 'glslang' 'mingw-w64-gcc' 'git')
+makedepends=('ninja' 'meson>=0.43' 'glslang' 'mingw-w64-gcc' 'git' 'wine')
 checkdepends=()
 provides=("dxvk")
 conflicts=("dxvk-bin")
