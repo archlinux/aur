@@ -7,8 +7,8 @@
 
 _pkgname=dolphin
 pkgname=dolphin-meld
-pkgver=18.04.1
-pkgrel=2
+pkgver=18.04.2
+pkgrel=1
 pkgdesc="KDE File Manager, using Meld rather than Kompare"
 arch=(x86_64)
 url="https://kde.org/applications/system/dolphin/"
@@ -22,7 +22,7 @@ optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video 
             'ruby: installing new service menus from KDE Store' 'kdegraphics-thumbnailers: PDF and PS thumbnails' 'konsole: terminal panel')
 groups=(kde-applications kdebase)
 source=("https://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('50db0e6c59383c3141ba96f733d36ac63b8f4d3e1f3d233b4a27da5931179587'
+sha256sums=('b27ecfc4864638d88f2efd59f183d469f801ba0d85c37ca872e85ed70ba8683e'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
