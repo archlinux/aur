@@ -4,7 +4,7 @@
 pkgbase=python-spark-parser
 pkgname=('python-spark-parser' 'python2-spark-parser')
 pkgver=1.8.7
-pkgrel=3
+pkgrel=4
 pkgdesc="An Early-Algorithm Context-free grammar Parser"
 arch=('any')
 url="https://github.com/rocky/python-spark/"
@@ -23,13 +23,13 @@ package_python-spark-parser() {
     depends=('python-click')
 
     cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python2-spark-parser() {
     depends=('python2-click')
 
     cd "$srcdir/$_name-$pkgver"
-    python2 setup.py install --root="$pkgdir"
+    python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
     mv "$pkgdir/usr/bin/spark-parser-coverage" "$pkgdir/usr/bin/spark-parser-coverage2"
 }
