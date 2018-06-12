@@ -3,7 +3,7 @@ pkgname=openrct2
 pkgver=0.2.0
 _rpcver=3.3.0
 _jsonver=20f8604ee6cd078c1cb2346148c69c0c2c160db2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
          copy of the game)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -37,14 +37,8 @@ build() {
   mkdir -p build
   cd build
   cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib -DWITH_TESTS=on -DDISABLE_RCT2_TESTS=on ..
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib ..
   make all g2
-}
-
-check() {
-  cd "$srcdir/OpenRCT2-$pkgver/build"
-
-  make test
 }
 
 package() {
