@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('BSD')
 depends=('r' )
 
-optdepends=('r-bh')
+optdepends=('r-rcppeigen' 'r-bh')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('defb5a3bf4e429490ef34770b66410d4')
