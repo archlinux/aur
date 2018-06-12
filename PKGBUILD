@@ -1,8 +1,8 @@
 # Maintainer: kitsunyan <`echo a2l0c3VueWFuQGFpcm1haWwuY2MK | base64 -d`>
 
 pkgname=pakku
-pkgver=0.12
-pkgrel=3
+pkgver=0.13
+pkgrel=1
 pkgdesc='Pacman wrapper with AUR support'
 arch=('x86_64')
 url="https://github.com/kitsunyan/$pkgname"
@@ -10,15 +10,8 @@ license=('GPL3')
 depends=('libcurl.so' 'git')
 makedepends=('nim')
 backup=('etc/pakku.conf')
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
-        '0001-Specify-refspec-when-git-fetch-is-used.patch')
-sha256sums=('73dc0da6bb36a9aa211b2e562d08d6cc60ab37ed527348f5d075df7aeac0e35c'
-            '4987262977ab82fb86a3c02c6c8388c01d6744a0f4bedb794be2bbce23b99748')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -Np1 -i '../0001-Specify-refspec-when-git-fetch-is-used.patch'
-}
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('18bddc6e4936c71e41d867e7aec9f6c9b906aca883b26275b7e1f153b08b78b7')
 
 build() {
   local addargs=()
