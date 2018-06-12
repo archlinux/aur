@@ -9,7 +9,6 @@ pkgbase = r-ttr
 	depends = r-xts>=0.10.0
 	depends = r-zoo
 	depends = r-curl
-	depends = r-xts
 	optdepends = r-runit
 	source = https://cran.r-project.org/src/contrib/TTR_0.23-3.tar.gz
 	md5sums = e4c98cbec65f559ac3c1b1d168970c50

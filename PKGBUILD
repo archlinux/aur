@@ -9,7 +9,7 @@ pkgdesc="Technical Trading Rules"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL2')
-depends=('r' 'r-xts>=0.10.0' 'r-zoo' 'r-curl' 'r-xts')
+depends=('r' 'r-xts>=0.10.0' 'r-zoo' 'r-curl')
 
 optdepends=('r-runit')
 
