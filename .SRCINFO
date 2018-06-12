@@ -8,6 +8,7 @@ pkgbase = r-processx
 	depends = r
 	depends = r-assertthat
 	depends = r-crayon
+	depends = r-r6
 	depends = r-testthat
 	optdepends = r-covr
 	optdepends = r-debugme

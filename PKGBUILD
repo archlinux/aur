@@ -9,7 +9,7 @@ pkgdesc="Execute and Control System Processes"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
-depends=('r' 'r-assertthat' 'r-crayon' 'r-testthat')
+depends=('r' 'r-assertthat' 'r-crayon' 'r-r6' 'r-testthat')
 
 optdepends=('r-covr' 'r-debugme' 'r-testthat' 'r-withr')
 
