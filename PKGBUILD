@@ -1,8 +1,8 @@
 # Maintainer RetardedOnion@archlinux-irc
 
 pkgbase=linux-mainline-vfio               # Build stock -ARCH kernel
-_tag=v4.17
-pkgver=4.17
+_srcname=linux-4.17
+pkgver=4.17.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -10,40 +10,44 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
 source=(
-  "git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_tag"
+  https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   add-acs-overrides.patch # acs-patch
 )
-
+validpgpkeys=(
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+)
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
 
 prepare() {
-  cd "${srcdir}/linux"
+  cd ${_srcname}
+
+  # add upstream patch
+  patch -p1 -i ../patch-${pkgver}
+
   patch -p1 -i "${srcdir}/add-acs-overrides.patch"
+
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
 CONFIG_LOCALVERSION_AUTO=n
 END
 
-  # mainline: Fix LOCALVERSION
-  touch .scmversion
-
-  # mainline: we have -rcX in EXTRAVERSION, don't touch it
   # set extraversion to pkgrel and empty localversion
-  #sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
-  #    -e "/^EXTRAVERSION =/aLOCALVERSION =" \
-  #    -i Makefile
+  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+      -i Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # mainline: Disabled here, causes make config to run before olddefconfig
   # get kernel version
-  #make prepare
+  make prepare
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
@@ -51,19 +55,14 @@ END
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
-  make olddefconfig
   # ... or manually edit .config
-
-  # mainline: moved here from before make config
-  # get kernel version
-  make prepare
 
   # rewrite configuration
   yes "" | make config >/dev/null
 }
 
 build() {
-  cd "${srcdir}/linux"
+  cd ${_srcname}
 
   make bzImage modules
 }
@@ -76,7 +75,7 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd "${srcdir}/linux"
+  cd ${_srcname}
 
   # get kernel version
   _kernver="$(make kernelrelease)"
@@ -129,7 +128,7 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
-  cd "${srcdir}/linux"
+  cd ${_srcname}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
@@ -146,9 +145,6 @@ _package-headers() {
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/9912
-  #install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
@@ -199,7 +195,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  cd "${srcdir}/linux"
+  cd ${_srcname}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   mkdir -p "${_builddir}"
@@ -218,37 +214,55 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-md5sums=('SKIP'
+md5sums=('5bb13a03274b66b56c85b26682e407d7'
+         'SKIP'
+         '8f430fc5bf2fd5a6ec5da8b4a08473d8'
+         'SKIP'
          '9dc606052ae74352ef4e44144059803a'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '90cd68710e3064d9b65f5549570f7821'
          'a329f9581060d555dc7358483de9760a'
          '2bb524340cf1342e8e7f9ce2bcb83e16')
-sha1sums=('SKIP'
+sha1sums=('82826f02dd6d5bae5ccb802cc319a605b65111dc'
+          'SKIP'
+          '0ad702c1ba339714d7765ba3b145a64328189f20'
+          'SKIP'
           'f739975c7dbd0732cf6e83af545740875d6f6897'
           '050233d8d5cd77bebb53c44db12020abce6aaeeb'
           '6a25b0d67dbee21d2926fe49e2c259f3d7721acb'
           'ba225afa5c979c819482d4f0585ab6d270ea9d4d'
           '1f470f6110ccfa8b8129ba233427675483553649')
-sha256sums=('SKIP'
+sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
+            'SKIP'
+            '31f2f5309d99db632160538d43cf737166ae8b24c1b8091522ca1f9a804c25a1'
+            'SKIP'
             'd8f725b047214d9d6841496bb9aafa692005823c497ad9b6e47a615c7f369ba5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '6473f29d2ade7c79c00b8dfa440af41c592b3b0e95583e05fd9739fd5c639e96')
-sha224sums=('SKIP'
+sha224sums=('b12b268f556da5200ca508f5ec310edf3c1311beddbdcfcb4f6a09d7'
+            'SKIP'
+            '6590897a438c679f64550cae6d13966a78a722f0a409c9760244ee33'
+            'SKIP'
             'abd7c4a6bcc093e4cd25b73a3be5d79aa4ef1076cc62c5ac52eec3f6'
             '29921b96b2b0f537a4dd29589164c7f53e8061cf376139b20c9628ed'
             '4b875362dbbc2dad25f85f7e854ff0fd6abd9010f8da408ac341c7ab'
             '64e4629766367d8c5419e592921746bc1f1d262c11c6817bef26ef1e'
             '2c9e80595ee93e5f3ee5ddaaedd63267e65c7e6c32523fac681b28e2')
-sha384sums=('SKIP'
+sha384sums=('aeb79c6553f2913cb3f7e5a95e67d512ea5a063ef12a4dba8da264ed3f4c1885b059553e1c004415ae95cad87414a146'
+            'SKIP'
+            'ddfc9244a0c9eed7dbe147925dc74b90589529dba7ee266dd2b0e7c788284648a7e620012ea0ba0bb8af6d94c384f151'
+            'SKIP'
             '3184e19fe81b268daa4af1bec191b7e07c296b12b59c31810540e045529f4ebb943477736297840943c1645458894850'
             'f7c95513e185393a526043eb0f5ecf1f800840ab3b2ed223532bb9d40ddcce44c5fab5f4b528cfd2a89bf67ad764751d'
             '1213db9fc7f9d4fe73f838a32aaed8f4648e28a4bd92ed10b85beb496d9d04b1a3bfe354b4f60a43f8a153ae1c037718'
             '8cb9bd89319b3f7631d2947bd8e33e68cfe8159bb35d4213e1e0eb3a16611950e9e239202741b319781fbc3cf6163ff2'
             'c7ac27b8e7e4573f334a0ad0047be4ecfdba142b61deb50c7e47dcfc4778c5bdd8547493fbb6ee750c644926b7c6fa2f')
-sha512sums=('SKIP'
+sha512sums=('4d9de340a26155a89ea8773131c76220cc2057f2b5d031b467b60e8b14c1842518e2d60a863d8c695f0f7640f3f18d43826201984a238dade857b6cef79837db'
+            'SKIP'
+            '18ebb8ed8bd7b782c7e1ed057bf18260991182cbb2c20939bc31e122afdb9f4a185f3c162134f506ed608fd1f83413a29e2db8d7cee83af4c3dc1b88c892405a'
+            'SKIP'
             '6254d67a1643ea592064f4d3c315625441ea46fdda0260fcffa0934daf15dd2e009b4e5dabfcf963fb6f6f974ae33e22fb4599e309004e6abad9e5e2add0ae32'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
