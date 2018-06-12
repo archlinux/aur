@@ -1,21 +1,21 @@
 pkgbase = akari
 	pkgdesc = TOMOYO Linux 1.8.x Module for the Linux kernel
 	pkgver = 1.0.38
-	pkgrel = 1
+	pkgrel = 2
 	url = http://akari.osdn.jp/
 	install = akari.install
 	arch = x86_64
 	license = GPL
 	makedepends = linux
-	makedepends = linux-headers>=4.16
-	makedepends = linux-headers<4.17
+	makedepends = linux-headers>=4.17
+	makedepends = linux-headers<4.18
 	conflicts = ccs-tools<1.8.5
-	noextract = akari-1.0.38-20180401.tar.gz
-	source = http://osdn.jp/frs/redir.php?f=/akari/49272/akari-1.0.38-20180401.tar.gz
-	source = http://osdn.jp/frs/redir.php?f=/akari/49272/akari-1.0.38-20180401.tar.gz.asc
+	noextract = akari-1.0.38-20180522.tar.gz
+	source = http://osdn.jp/frs/redir.php?f=/akari/49272/akari-1.0.38-20180522.tar.gz
+	source = http://osdn.jp/frs/redir.php?f=/akari/49272/akari-1.0.38-20180522.tar.gz.asc
 	source = activation_trigger.patch
 	validpgpkeys = 43C83369623D7AD3A96C2FC7425F128D0C64F52A
-	sha256sums = 1587500c630eac8a41209771831769b40ae46600127e013cfc6ae8be8dc19df3
+	sha256sums = 9d784dc6288f7d040c2864ad36834dc967d462a212c7dc626443db44f723981a
 	sha256sums = SKIP
 	sha256sums = 55d86a0d602631129298887fa63c1396ed6c6229965efcdbdc549ee159a39702
 
