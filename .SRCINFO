@@ -1,6 +1,6 @@
 pkgbase = s3m-git
 	pkgdesc = S3M: Statistically Significant Shapelet Mining
-	pkgver = VERSION
+	pkgver = r211.8a3abf5
 	pkgrel = 1
 	url = https://github.com/BorgwardtLab/S3M
 	arch = x86_64

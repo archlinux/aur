@@ -1,7 +1,7 @@
 # Maintainer: Bastian Rieck <bastian.rieck@bsse.ethz.ch>
 
 pkgname=s3m-git
-pkgver=VERSION
+pkgver=r211.8a3abf5
 pkgrel=1
 pkgdesc='S3M: Statistically Significant Shapelet Mining'
 arch=('x86_64')
