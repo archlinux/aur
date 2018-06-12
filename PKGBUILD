@@ -3,8 +3,8 @@
 pkgname=openmvg-git
 _gitname='openMVG'
 _fragment="#branch=develop"
-pkgver=1.3.r78.g4f94981a
-pkgrel=8
+pkgver=1.3.r91.g4c7367cd
+pkgrel=1
 pkgdesc='open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.'
 arch=('i686' 'x86_64')
 url='http://imagine.enpc.fr/~moulonp/openMVG/'
@@ -17,13 +17,15 @@ source=("git+https://github.com/${_gitname}/${_gitname}.git${_fragment}"
         'git+https://github.com/openMVG-thirdparty/cereal.git'
         'lemon.patch'
         'findflann-v0.1.patch'
+        'evalquality.patch'
        )
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          '11aa728e50e52b10d79dd83dfaa6c1c6'
-         'f421cb25208a4f95784035d9823abe04')
+         'f421cb25208a4f95784035d9823abe04'
+         'e3ffb7463245b92fdee08045715640ab')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -39,6 +41,7 @@ prepare() {
   git submodule update
   git apply ${srcdir}/lemon.patch
   git apply ${srcdir}/findflann-v0.1.patch
+  git apply ${srcdir}/evalquality.patch
 }
 
 build() {
