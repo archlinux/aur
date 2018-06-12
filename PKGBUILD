@@ -1,8 +1,8 @@
 # Contributor: napa3um <napa3um@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-sqlite
-_amalgamationver=3200000
-pkgver=3.20.0
+_amalgamationver=3240000
+pkgver=3.24.0
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine (mingw-w64)"
 arch=(any)
@@ -12,8 +12,8 @@ makedepends=(mingw-w64-configure mingw-w64-pdcurses mingw-w64-readline)
 options=(!buildflags !strip staticlibs)
 license=('custom:Public Domain')
 url="http://www.sqlite.org/"
-source=("http://www.sqlite.org/2017/sqlite-autoconf-$_amalgamationver.tar.gz")
-sha1sums=('2a451bcf42dc0865840463f7efc3f51cebeb4ea8')
+source=("http://www.sqlite.org/2018/sqlite-autoconf-$_amalgamationver.tar.gz")
+sha256sums=('d9d14e88c6fb6d68de9ca0d1f9797477d82fc3aed613558f87ffbdbbc5ceb74a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -24,7 +24,6 @@ build() {
     CFLAGS="-DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_DISABLE_DIRSYNC=1 -DSQLITE_ENABLE_FTS3=3 -DSQLITE_ENABLE_RTREE=1" \
     config_TARGET_EXEEXT=.exe \
     ${_arch}-configure \
-      --target=${_arch} \
       --enable-threadsafe
     make
     popd
