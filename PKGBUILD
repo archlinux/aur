@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('LGPL')
 depends=('r' 'gcc-fortran')
 
-
+optdepends=('r-rcpp')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('8f0de494120ecd628fa7a2e6d4af98cb')
