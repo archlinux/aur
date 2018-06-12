@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -15,23 +15,32 @@ url="http://ffmpeg.org/"
 license=('GPL3')
 depends=("$_pkgbasename"
       'lib32-alsa-lib'
+      'lib32-bzip2'
       'lib32-fontconfig'
       'lib32-fribidi'
+      'lib32-glibc'
       'lib32-gmp'
       'lib32-gnutls'
       'lib32-gsm'
       'lib32-jack'
       'lib32-lame'
       'lib32-libavc1394'
+      'lib32-libdrm'
       'lib32-libiec61883'
       'lib32-libmodplug'
+      'lib32-libomxil-bellagio'
       'lib32-libpulse'
       'lib32-libraw1394'
+#      'lib32-libsoxr'
+#      'lib32-libssh'
       'lib32-libtheora'
-      'lib32-libva'
       'lib32-libvdpau'
       'lib32-libwebp'
+      'lib32-libx11'
+      'lib32-libxcb'
+      'lib32-libxext'
       'lib32-libxml2'
+      'lib32-libxv'
       'lib32-opencore-amr'
       'lib32-openjpeg2'
       'lib32-opus'
@@ -40,18 +49,18 @@ depends=("$_pkgbasename"
       'lib32-v4l-utils'
       'lib32-xz'
       'lib32-zlib'
-      'lib32-libomxil-bellagio'
       'lib32-libass'
       'lib32-libbluray'
       'lib32-freetype2'
+      'lib32-libva'
+#      'lib32-vid.stab'
       'lib32-libvorbis'
       'lib32-libvpx'
       'lib32-libx264'
 #      'lib32-x265'
       'lib32-xvidcore'
-      'lib32-libxv'
       )
-makedepends=('lib32-ladspa' 'lib32-libvdpau' 'yasm')
+makedepends=('ffnvcodec-headers' 'lib32-ladspa' 'yasm')
 optdepends=('lib32-ladspa: LADSPA filters')
 provides=(
       'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -86,9 +95,9 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
-    --enable-avisynth \
     --enable-avresample \
     --enable-fontconfig \
+    --enable-gmp \
     --enable-gnutls \
     --enable-gpl \
     --enable-ladspa \
@@ -115,14 +124,18 @@ build() {
     --enable-libxcb \
     --enable-libxml2 \
     --enable-libxvid \
+    --enable-nvenc \
+    --enable-omx \
     --enable-shared \
-    --enable-version3 \
-    --enable-omx
+    --enable-version3
 
-#    --enable-libssh \
+#    --enable-libdrm \ ## We would like to use it, but it seems to be broken for now.
+
+
 #    --enable-libsoxr \
-#    --enable-libx265 \
-#    --enable-libvidstab \
+#    --enable-libssh \  ## not available under 32bit
+#    --enable-libvidstab \ ## not available under 32bit
+#    --enable-libx265 \ ## libx265 is not properly detected under 32bit arch
 
   make
 }
