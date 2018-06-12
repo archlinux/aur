@@ -3,7 +3,7 @@
 
 pkgname=golden-cheetah-dev
 pkgver=3.5
-pkgrel=1804
+pkgrel=1806
 pkgdesc="Cycling Power Analysis Software. Development version."
 arch=('i686' 'x86_64')
 url="http://www.goldencheetah.org/"
@@ -14,8 +14,8 @@ optdepends=('vlc' 'qwtplot3d-svn' 'srmio' 'libftd2xx' 'libkml' 'libusb' 'libsamp
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/GoldenCheetah/GoldenCheetah/archive/v$pkgver-DEV$pkgrel.tar.gz
 gcconfig.pri GoldenCheetah.desktop gc.png)
-md5sums=('f8d55de1682e16a5dacac6bd0724374a'
-         'e0ed270ab834613f5bba3be82382c992'
+md5sums=('dc89a3eecc73d42b525f2b4c7013216f'
+         'c9046d48dcff232fcdd6b04ab77db6db'
          '5a83da03adf4b4ea14ec459061699c0c'
          'e1fb382b4a7316da1ffd435e45e50c4a')
 
@@ -24,10 +24,6 @@ build() {
 
   cd "qwt/"
   cp qwtconfig.pri.in qwtconfig.pri
-  qmake-qt5 QMAKE_DEFAULT_INCDIRS=
-  make -j8
-
-  cd "../kqoauth/"
   qmake-qt5 QMAKE_DEFAULT_INCDIRS=
   make -j8
 
