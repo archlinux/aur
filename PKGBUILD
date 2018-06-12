@@ -3,7 +3,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2018.604.0
+pkgver=2018.611.0_21_g370e07964
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64' 'i686')
@@ -96,11 +96,6 @@ package() {
 	for binary in *.exe *.dll; do
 		install -m755 "$binary" "$pkgdir/usr/lib/${pkgname%-git}/$binary"
 	done
-
-	# Native libraries
-	install -m755 "libbass.$_arch.so" "$pkgdir/usr/lib/${pkgname%-git}/libbass.so"
-	install -m755 "libbass_fx.$_arch.so" "$pkgdir/usr/lib/${pkgname%-git}/libbass_fx.so"
-	install -m755 "libe_sqlite3.so" "$pkgdir/usr/lib/${pkgname%-git}/libe_sqlite3.so"
 }
 
 # vim: set sw=4 ts=4 noet:
