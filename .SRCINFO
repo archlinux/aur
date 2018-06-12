@@ -1,13 +1,13 @@
 pkgbase = vim-plugins-profiler
 	pkgdesc = Utility to output a sorted list of VIM plugin startup times in millisec.
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/bulletmark/vim-plugins-profiler
 	arch = any
 	license = GPL3
 	depends = python
-	source = vim-plugins-profiler-1.7.tar.gz::https://github.com/bulletmark/vim-plugins-profiler/archive/1.7.tar.gz
-	md5sums = eea36803931a22ebb78cb99f4deb1614
+	source = vim-plugins-profiler-1.8.tar.gz::https://github.com/bulletmark/vim-plugins-profiler/archive/1.8.tar.gz
+	md5sums = 10b0b0dc2a4a8bf94239bd51732d11d7
 
 pkgname = vim-plugins-profiler
 
