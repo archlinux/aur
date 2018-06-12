@@ -5,13 +5,18 @@
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
 # Contributor: Zion Nimchuk <zionnimchuk@gmail.com>
 
+# build PDF documentation
+_pdf=false
+
 pkgbase=nim-git
 pkgname=('nim-git' 'nimble-git' 'nimsuggest-git')
-pkgver=20170710
+pkgver=20180612
 pkgrel=1
 arch=('i686' 'x86_64')
 groups=('nim')
-makedepends=('git' 'texlive-bin' 'texlive-core' 'texlive-fontsextra')
+makedepends=('git')
+[[ "$_pdf" == true ]] \
+  && makedepends+=('texlive-bin' 'texlive-core' 'texlive-fontsextra')
 source=(git+https://github.com/nim-lang/Nim
         git+https://github.com/nim-lang/Nim.wiki
         git+https://github.com/nim-lang/csources
@@ -42,8 +47,10 @@ build() {
   ./bin/nim c -d:release koch
   ./koch boot -d:release -d:nativeStacktrace -d:useGnuReadline
 
-  msg2 'Building Nim PDF documentation...'
-  ./koch pdf
+  if [[ "$_pdf" == true ]]; then
+    msg2 'Building Nim PDF documentation...'
+    ./koch pdf
+  fi
 
   msg2 'Building Nimble...'
   ./koch nimble
