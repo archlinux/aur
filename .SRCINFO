@@ -12,6 +12,7 @@ pkgbase = r-knitr
 	depends = r-stringr>=0.6
 	depends = r-yaml
 	optdepends = pandoc
+	optdepends = r-formatr
 	optdepends = r-testit
 	optdepends = r-digest
 	optdepends = r-rgl
