@@ -6,7 +6,7 @@
 
 _pkgname=slic3r-prusa3d
 pkgname=${_pkgname}
-pkgver=1.39.2
+pkgver=1.40.0
 pkgrel=1
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
@@ -24,7 +24,7 @@ source=("git+https://github.com/prusa3d/Slic3r.git#tag=version_${pkgver}"
         "Move-Slic3r-data-to-usr-share-slic3r.patch"
         'slic3r.desktop')
 md5sums=('SKIP'
-         '87c8e0bfdd7e132938ec0ff9edb5dc18'
+         'aceb830f2fbe12ef5659e73164ea733b'
          '1941c1ede2f03774ffb77f68a7c33572')
 
 prepare() {
@@ -50,6 +50,8 @@ check() {
   #sed -i '/local::lib/d' *.t
 
   cd "${srcdir}/Slic3r/build"
+  sed -i 's/\/usr\/bin\/prove/prove/g' CTestTestfile.cmake
+  sed -i 's/"\/usr\/bin\/perl"//g' CTestTestfile.cmake
   ctest -V
 }
 
