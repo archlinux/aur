@@ -1,0 +1,14 @@
+pkgbase = lid-switch-dpms
+	pkgdesc = Blank and unblank the screen on lid switch
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kitsunyan/lid-switch-dpms
+	arch = any
+	license = GPL3
+	depends = libdrm
+	depends = libxext
+	source = lid-switch-dpms-1.0.tar.gz::https://github.com/kitsunyan/lid-switch-dpms/archive/1.0.tar.gz
+	sha256sums = bba53dcfa12821285892d1a7ada757dfeaf4c35e199e9de2bc896e8c9c5eae83
+
+pkgname = lid-switch-dpms
+
