@@ -5,8 +5,8 @@
 pkgbase=linux-zen           # Build stock -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.17
-_zenpatch=zen-4.17-14234d31b89da76f2e5fa9f5211f1dc1bcd87735.diff
-pkgver=4.17
+_zenpatch=zen-4.17.1-3479a09b025d12c0c69805a15ebe822bb3ac3963.diff
+pkgver=4.17.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -15,7 +15,7 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
-  #https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
   https://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.{xz,sign}
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
@@ -29,7 +29,9 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            'de255bfe1548aa5aa589279c5828eaaeaf985a6d779e9ac84519d194a465e24b'
+            '31f2f5309d99db632160538d43cf737166ae8b24c1b8091522ca1f9a804c25a1'
+            'SKIP'
+            '0c67487c1a81fc69bf7021bf1647f1a51acbb9c83ba3c17153706f7a63f02ce4'
             'SKIP'
             'd75bb73c44df4c386c8fa2123ca52ec5255d5e52ad804872120824185cf1ba38'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -43,7 +45,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  #patch -p1 -i ../patch-${pkgver}
+  patch -p1 -i ../patch-${pkgver}
 
   # add zen patch
   patch -p1 -i ../${_zenpatch}
