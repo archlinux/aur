@@ -6,7 +6,7 @@
 
 pkgbase=ppsspp
 pkgname=('ppsspp' 'ppsspp-headless' 'ppsspp-qt')
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('x86_64')
