@@ -8,7 +8,7 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
 pkgver=2.33
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -16,8 +16,8 @@ makedepends=('git' 'go' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'p
 conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/snapcore/${pkgname}/archive/$pkgver.tar.gz")
-sha256sums=('7d75bb3589086381aec6f6039f1dddcadd79d35e3a544b32701e86636baa97c2')
+source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz")
+sha256sums=('35f429194398461e74e13aaec47307754adcafc1571044d625fcf561537c103c')
 
 _gourl=github.com/snapcore/snapd
 
@@ -45,11 +45,6 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
 
   ./mkversion.sh $pkgver-$pkgrel
-
-  # Use get-deps.sh provided by upstream to fetch go dependencies using the
-  # godeps tool and dependencies.tsv (maintained upstream).
-  cd "$GOPATH/src/${_gourl}"
-  XDG_CONFIG_HOME="$srcdir" ./get-deps.sh
 
   gobuild="go build -buildmode=pie"
   gobuild_static="go build -buildmode=pie -ldflags=-extldflags=-static"
