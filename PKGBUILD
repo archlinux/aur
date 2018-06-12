@@ -2,9 +2,9 @@
 # Originally this was the junglediskdesktop PKG.  I have modified it to download and install the server management software.
 
 pkgname=junglediskserver
-pkgver=3.20.0
+pkgver=3.23.0
 _downloadver=${pkgver//./}
-pkgrel=2
+pkgrel=1
 pkgdesc="Online backup and storage powered by Amazon S3™ and Rackspace.  This is the server daemon only."
 arch=("x86_64")
 url="http://www.jungledisk.com/"
@@ -12,8 +12,8 @@ license=("custom")
 depends=('fuse2')
 source=('junglediskserver.service')
 source_x86_64=("https://downloads.jungledisk.com/jungledisk/${pkgname}64-${_downloadver}.tar.gz")
-md5sums=('38cae2f4491fb54dbc936a5029d280c2')
-md5sums_x86_64=("4b5a98e2531a3988a8f2f8f99103aa94")
+sha256sums=(e3e41a8c84093b932f50d48826317581ecfdd09fb9ee3006f9d942ca04ab88df)
+sha256sums_x86_64=(26e155421e8c5ff36dd7dddab2f000d9f7ce07c852c647987f550081eee05373)
 
 package() {
 	cp -r "${srcdir}/jungledisk-serverbackend-${pkgver}-linux-${CARCH}"/* "$pkgdir/"
