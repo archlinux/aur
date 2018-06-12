@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
 depends=('r' 'r-xts>=0.9.0' 'r-zoo' 'r-curl')
 
-optdepends=('r-dbi' 'r-timeseries' 'r-xml' 'r-downloader' 'r-jsonlite')
+optdepends=('r-dbi' 'r-rmysql' 'r-rsqlite' 'r-timeseries' 'r-xml' 'r-downloader' 'r-jsonlite')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('3b9eb2762cc25a461bb981c238f92ef8')
