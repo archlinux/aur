@@ -1,7 +1,7 @@
 pkgbase = check_mk-agent
 	pkgdesc = Agent to send information to a Check_MK server
 	pkgver = 1.4.0p33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mathias-kettner.de
 	install = check_mk-agent.install
 	arch = any
