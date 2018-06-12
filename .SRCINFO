@@ -13,6 +13,7 @@ pkgbase = r-dbi
 	optdepends = r-magrittr
 	optdepends = r-rprojroot
 	optdepends = r-rmarkdown
+	optdepends = r-rsqlite
 	optdepends = r-testthat
 	optdepends = r-xml2
 	source = https://cran.r-project.org/src/contrib/DBI_1.0.0.tar.gz
