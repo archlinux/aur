@@ -7,6 +7,7 @@ pkgbase = r-timedate
 	license = GPL
 	depends = r
 	optdepends = r-date
+	optdepends = r-runit
 	source = https://cran.r-project.org/src/contrib/timeDate_3043.102.tar.gz
 	md5sums = 7808ada851cbf740b1360cabca0706ff
 

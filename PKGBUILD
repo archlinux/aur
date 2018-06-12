@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
 depends=('r' )
 
-optdepends=('r-date')
+optdepends=('r-date' 'r-runit')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('7808ada851cbf740b1360cabca0706ff')
