@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
 depends=('r' )
 
-
+optdepends=('r-rdonlp2')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('f837ec6fe33c8ae5de9fd95956304c2b')
