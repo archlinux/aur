@@ -1,3 +1,5 @@
 /pkg
 /src
 *.zip
+*.tar.xz
+theme.x86_64
