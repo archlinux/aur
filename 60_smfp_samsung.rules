@@ -1,0 +1,18 @@
+# This file is a part of Unified Linux Driver  
+# Rules to allow low level USB device access for smfpautoconf
+
+SUBSYSTEM!="usb_device", GOTO="label_end"
+ACTION!="add", GOTO="label_end"
+
+# usblp device files /dev/usb/lp*
+ATTRS{idVendor}=="0419", MODE="666", OWNER="root", GROUP="lp"
+ATTRS{idVendor}=="04e8", MODE="666", OWNER="root", GROUP="lp"
+ATTRS{idVendor}=="0924", MODE="666", OWNER="root", GROUP="lp"
+ATTRS{idVendor}=="413c", MODE="666", OWNER="root", GROUP="lp"
+# libusb device files /dev/bus/usb/00*/*
+ATTRS{idVendor}=="0419", ENV{ID_USB_INTERFACES}=="*:0701*:", MODE="664", OWNER="root", GROUP="lp", ENV{libsane_matched}="yes"
+ATTRS{idVendor}=="04e8", ENV{ID_USB_INTERFACES}=="*:0701*:", MODE="664", OWNER="root", GROUP="lp", ENV{libsane_matched}="yes"
+ATTRS{idVendor}=="0924", ENV{ID_USB_INTERFACES}=="*:0701*:", MODE="664", OWNER="root", GROUP="lp", ENV{libsane_matched}="yes"
+ATTRS{idVendor}=="413c", ENV{ID_USB_INTERFACES}=="*:0701*:", MODE="664", OWNER="root", GROUP="lp", ENV{libsane_matched}="yes"
+
+LABEL="label_end"
