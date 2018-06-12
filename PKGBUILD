@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
 depends=('r' 'r-crayon')
 
-optdepends=('r-covr' 'r-mockery' 'r-testthat' 'r-withr')
+optdepends=('r-covr' 'r-mockery' 'r-r6' 'r-testthat' 'r-withr')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('0b7946be7d9420c63a4d02a937e46227')

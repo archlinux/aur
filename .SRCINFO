@@ -9,6 +9,7 @@ pkgbase = r-debugme
 	depends = r-crayon
 	optdepends = r-covr
 	optdepends = r-mockery
+	optdepends = r-r6
 	optdepends = r-testthat
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/debugme_1.1.0.tar.gz
