@@ -20,12 +20,12 @@ read -d '' bitcoin <<'EOF'
 ##  To communicate with bitcoin-core as a normal user:                ##
 ##                                                                    ##
 ##      $ mkdir -p ~/.bitcoin                                         ##
-##      $ cat > ~/.bitcoin/bitcoin.conf <<'EOF'                       ##
+##      $ cat > ~/.bitcoin/bitcoin.conf <<'CFG'                       ##
 ##      rpcconnect=127.0.0.1                                          ##
 ##      rpcport=8332                                                  ##
 ##      rpcuser=bitcoin                                               ##
 ##      rpcpassword=secret                                            ##
-##      EOF                                                           ##
+##      CFG                                                           ##
 ##                                                                    ##
 ##      $ bitcoin-cli getmininginfo                                   ##
 ##                                                                    ##
