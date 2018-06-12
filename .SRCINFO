@@ -1,6 +1,6 @@
 pkgbase = virtualmoonatlas
 	pkgdesc = Software for Moon observation and survey
-	pkgver = 6.1+r622
+	pkgver = 6.5
 	pkgrel = 1
 	url = http://virtualmoon.sourceforge.net/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = virtualmoonatlas
 	makedepends = lazarus
 	makedepends = wget
 	provides = virtualmoonatlas
-	source = virtualmoonatlas::svn+https://svn.code.sf.net/p/virtualmoon/code/trunk#revision=618
+	source = virtualmoonatlas::git+https://github.com/pchev/virtualmoon.git#tag=V65
 	md5sums = SKIP
 
 pkgname = virtualmoonatlas

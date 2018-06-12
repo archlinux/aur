@@ -1,6 +1,6 @@
 # Maintainer: rapiertg <rapiertg@gmail.com>
 pkgname=virtualmoonatlas
-pkgver=6.1+r622
+pkgver=6.5
 pkgrel=1
 pkgdesc="Software for Moon observation and survey"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('lazarus' 'wget')
 provides=('virtualmoonatlas')
 md5sums=('SKIP')
 
-source=("virtualmoonatlas::svn+https://svn.code.sf.net/p/virtualmoon/code/trunk#revision=618")
+source=("virtualmoonatlas::git+https://github.com/pchev/virtualmoon.git#tag=V65")
 
 build() {
 cd "$srcdir/${pkgname}"
