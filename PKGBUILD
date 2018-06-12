@@ -1,4 +1,5 @@
 # Maintainer: James Smith <jslonescout AT icloud DOT com>
+# Contributer: James Smith <jslonescout AT icloud DOT com>
 pkgname=wmvolman
 pkgver=2.0.1
 pkgrel=1
