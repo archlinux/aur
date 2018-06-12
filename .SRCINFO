@@ -1,6 +1,6 @@
 pkgbase = gnucap-git
-	pkgdesc = GNU Circuit Analysis Package (autotools branch)
-	pkgver = 20160724.r129.g44bbdc7
+	pkgdesc = GNU Circuit Analysis Package (develop branch)
+	pkgver = 20171003.develop
 	pkgrel = 1
 	url = http://gnucap.org/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = gnucap-git
 	makedepends = git
 	provides = gnucap
 	conflicts = gnucap
-	source = gnucap::git+git://git.sv.gnu.org/gnucap.git#branch=unstable
+	source = gnucap::git+git://git.sv.gnu.org/gnucap.git#branch=develop
 	md5sums = SKIP
 
 pkgname = gnucap-git
