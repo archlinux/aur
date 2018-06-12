@@ -1,7 +1,7 @@
 pkgbase = opsu
 	pkgdesc = An open source osu!-client written in Java.
-	pkgver = 0.16.0
-	pkgrel = 2
+	pkgver = 0.16.1
+	pkgrel = 1
 	url = https://itdelatrisu.github.io/opsu/
 	install = opsu.install
 	changelog = .CHANGELOG
@@ -17,7 +17,7 @@ pkgbase = opsu
 	depends = xorg-xrandr
 	optdepends = ffmpeg: Background video playback
 	conflicts = opsu-git
-	source = opsu::git://github.com/itdelatrisu/opsu.git#tag=0.16.0
+	source = opsu::git://github.com/itdelatrisu/opsu.git#tag=0.16.1
 	source = opsu.sh
 	source = opsu.desktop
 	sha512sums = SKIP

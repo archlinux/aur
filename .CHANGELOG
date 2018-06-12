@@ -1,24 +1,25 @@
 Features:
 
-    "Experimental" slider styles now available in the options overlay (Knorke sliders, merging sliders, shrinking sliders). (#263)
-    Vertical navigation menu for the options overlay. (#298)
-    Input overlay keys during replays. (#307)
+    User system improvements. (0599e2c)
+        Right-click on any user to open the "Edit User" menu. Users can now be deleted and icons can be changed.
+        Replaced the 3 existing icons with 15 new ones.
     Updated the beatmap download servers.
-        Bloodcat uses captchas now, so download beatmaps in a web browser. (ab39b3e)
-        Updated the MengSky download API. (06370bd)
-        Removed dead download servers (YaS Online, Hexide). (8fe59a9)
+        Added Ripple download server. (8300af9, 6a3c6f7)
+        Re-enabled Hexide server. (a507c69)
+        Fixed some issues with Mnetwork. (959d185, 035b8fa)
+        Removed dead download server (MengSky). (0da1f6d)
 
 Other changes:
 
-    Beatmap star difficulty values now match osu!. (5a87d26)
-    Show instructions to resume the game when paused. (f685be1)
-    The options overlay is now accessible in the main menu by pressing Ctrl+O. (f4fa217)
-    No more socket binding; prevent multiple instances using database locks instead. (9074d43)
+    Added an "Unlimited" frame limiter option. (#324, 6449b73)
+    Added an option to disable sound effects during gameplay. (019f577)
+    Show beatmap's "source" on the song selection menu. (#331)
+    Added a button to copy debug info to the clipboard. (#375)
 
 Bug fixes:
 
-    Fixed various crashes. (#254, 12f56e7, c6b6f21, #261, 212a395)
-    Fixed video distortion issues. (58c4d60)
-    Fixed more audio issues in Linux/OpenJDK. (#252)
-    Fixed new skins not showing up when initially imported. (8dd92de)
-    Fixed applause/failure sounds not stopping when changing game states. (#299)
+    Fixed more audio-related issues. (#371)
+    Fixed executable permissions on ffmpeg. (#361, cd1cdf8)
+    Fixed ffmpeg framerate parsing for 'k' suffix (#362, 0b36328).
+    Fixed a null pointer when adjusting sliders in the options overlay. (483c035)
+    Fixed whitespace handling in skin parsing. (#365)
