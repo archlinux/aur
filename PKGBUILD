@@ -9,9 +9,9 @@ pkgdesc="Rcpp Integration for the Eigen Templated Linear Algebra Library"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL' 'custom')
-depends=('r' )
+depends=('r' 'r-rcpp>=0.11.0')
 
-optdepends=('r-inline' 'r-pkgkitten')
+optdepends=('r-inline' 'r-runit' 'r-pkgkitten')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('78ee1ef7c6043efa875434ae5fcea2ec')
