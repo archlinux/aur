@@ -9,7 +9,7 @@ url="https://github.com/andlrc/zs"
 license=("GPL")
 depends=("glibc")
 makedepends=("git" "make")
-provides=("zs")
+provides=("zs" "zs-analyze")
 source=('zs::git+git://github.com/andlrc/zs#branch=master')
 md5sums=("SKIP")
 
@@ -26,4 +26,7 @@ package()
 	install -D zs $pkgdir/usr/bin/zs
 	install -Dm644 zs.1 $pkgdir/usr/share/man/man1/zs.1
 	install -Dm600 default.conf $pkgdir/etc/zs/default.conf
+
+	install -D zs-analyze $pkgdir/usr/bin/zs-analyze
+	install -Dm644 zs-analyze.1 $pkgdir/usr/share/man/man1/zs-analyze.1
 }
