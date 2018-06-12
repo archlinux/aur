@@ -7,7 +7,7 @@ pkgbase = rustup-official
 	provides = cargo
 	provides = rust
 	provides = rustup
-	source = https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
+	source = https://www.gnu.org/licenses/agpl-3.0.txt
 	md5sums = eb1e647870add0502f8f010b19de32af
 
 pkgname = rustup-official
