@@ -32,4 +32,5 @@ post_remove() {
   groupdel mycroft-core
   userdel mycroft-core
   rm -rf /usr/share/mycroft-core
+  rm -rf /opt/mycroft
 }

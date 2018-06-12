@@ -1,0 +1,12 @@
+--- start-mycroft.sh	2018-06-08 22:18:28.000000000 +0200
++++ start_ew	2018-06-12 10:44:11.821082101 +0200
+@@ -128,9 +128,6 @@
+ function check-dependencies() {
+   if [ ! -f .installed ] || ! md5sum -c &> /dev/null < .installed; then
+     echo "Please update dependencies by running ./dev_setup.sh again."
+-    if command -v notify-send >/dev/null; then
+-      notify-send "Mycroft Dependencies Outdated" "Run ./dev_setup.sh again"
+-    fi
+   fi
+ }
+ 
