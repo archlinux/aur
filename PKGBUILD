@@ -2,30 +2,30 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='frr'
-pkgver='4.0'
-pkgrel='3'
+pkgver='5.0'
+pkgrel='1'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('any')
 url="https://frrouting.org/"
 license=('GPL2')
 depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'json-c' 'net-snmp' 'rtrlib')
-makedepends=('patch' 'gcc' 'net-snmp' 'json-c' 'bison' 'c-ares' 'perl-xml-libxml' 'rtrlib')
+makedepends=('patch' 'gcc' 'net-snmp' 'json-c' 'bison' 'c-ares' 'perl-xml-libxml' 'rtrlib' 'python-sphinx')
 conflicts=('quagga' 'babeld' 'quagga_cumulus')
 provides=('quagga' 'quagga_cumulus')
 source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
-        "${pkgname}_4.0_systemd_arch.patch")
-sha256sums=('a9932ef116106d56b0e17aa569aa56a458acdd50e0d07c042fd5cc725bf742cc'
+        "${pkgname}_5.0_systemd_arch.patch")
+sha256sums=('96f8cf9a2d34b7720724491027cc6c1e15b82b8e5bf71fdae0a9e3e1619f4c74'
             '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
-            '0f8b7a06412dd1f2a04615910a520a244cb35c30ff0f78138e2177b813ff8aad')
+            '7cb48afa57c9d9d29adbc2b000aaeb1736aebf7cc88e545e7b41ef1242171620')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
 
   # https://github.com/FRRouting/frr/issues/1422
-  patch -p1 -i "${srcdir}/${pkgname}_4.0_systemd_arch.patch"
+  patch -p1 -i "${srcdir}/${pkgname}_5.0_systemd_arch.patch"
 
   autoreconf -fvi
   ./configure \
@@ -67,7 +67,7 @@ package() {
   sed -ri 's|/var/run/frr|/run/frr|g' "${pkgname}.logrotate"
   install -Dm0644 "${pkgname}.logrotate" "${pkgdir}/etc/logrotate.d/${pkgname}"
 
-  for d in zebra ripd ripngd bgpd ospfd ospfd-instance@ ospf6d isisd pimd ldpd nhrpd; do
+  for d in babeld bgpd eigrpd isisd ldpd nhrpd ospf6d ospfd ospfd-instance@ pbrd pimd ripd ripngd zebra; do
     install -Dm0644 ${d}.service "${pkgdir}/usr/lib/systemd/system/${d}.service"
   done
 
