@@ -1,7 +1,7 @@
 pkgbase = eagle
 	pkgdesc = Powerful suite for schematic capture and printed circuit board design (aka eaglecad)
 	pkgver = 9.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.autodesk.com/products/eagle
 	arch = x86_64
 	license = custom

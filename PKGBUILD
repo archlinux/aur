@@ -7,7 +7,7 @@
 
 pkgname=eagle
 pkgver=9.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful suite for schematic capture and printed circuit board design (aka eaglecad)"
 arch=('x86_64')
 url="http://www.autodesk.com/products/eagle"
@@ -51,9 +51,14 @@ package() {
   install -Dm644 "$pkgdir"/opt/$pkgname/doc/$pkgname.1 \
                  "$pkgdir/usr/share/man/man1/$pkgname.1"
 
+  # Remove provided X libraries. They cause issues with current mesa and the system libraries seem to work fine.
+  rm "$pkgdir"/opt/$pkgname/lib/libx*
+  rm "$pkgdir"/opt/$pkgname/lib/libX*
+
   # Fix permissions (necessary since 8.5.2)
   find "$pkgdir" -perm 750 -exec chmod 755 {} \;
   find "$pkgdir" -perm 700 -exec chmod 755 {} \;
   find "$pkgdir" -perm 640 -exec chmod 644 {} \;
   find "$pkgdir" -perm 600 -exec chmod 644 {} \;
+
 }
