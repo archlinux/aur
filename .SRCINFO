@@ -1,7 +1,7 @@
 pkgbase = taffybar
 	pkgdesc = A desktop bar similar to xmobar, but with more GUI
 	pkgver = 2.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://github.com/travitch/taffybar
 	install = taffybar.install
 	arch = i686
