@@ -1,7 +1,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=midifilter.lv2-git
-pkgver=0.4.7.r4.g5b2b097
+pkgver=0.5.0.r1.g7b99562
 pkgrel=1
 pkgdesc="LV2 plugins to filter MIDI events"
 arch=('i686' 'x86_64')
