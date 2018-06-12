@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
 depends=('r' 'r-zoo>=1.7.12' 'r-zoo')
 
-optdepends=('r-timeseries' 'r-timedate' 'r-tseries' 'r-chron' 'r-fts' 'r-tis')
+optdepends=('r-timeseries' 'r-timedate' 'r-tseries' 'r-chron' 'r-fts' 'r-tis' 'r-runit')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('c83c320e1699d060862214b70df92419')

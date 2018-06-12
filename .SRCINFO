@@ -14,6 +14,7 @@ pkgbase = r-xts
 	optdepends = r-chron
 	optdepends = r-fts
 	optdepends = r-tis
+	optdepends = r-runit
 	source = https://cran.r-project.org/src/contrib/xts_0.10-2.tar.gz
 	md5sums = c83c320e1699d060862214b70df92419
 
