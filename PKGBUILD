@@ -9,7 +9,7 @@ pkgver=1.03
 pkgrel=1
 arch=('x86_64')
 depends=('cups')
-conflicts=('samsung-unified-driver-printer')
+conflicts=('samsung-unified-driver-printer' 'dell-unified-driver-printer')
 # this is the newest version found after a quick search
 source=("$pkgname-$pkgver.tar.gz::https://downloads.dell.com/FOLDER01511597M/1/B1265dnf_Linux_v${pkgver}_Driver.tar.gz")
 sha256sums=('a1aa742cd266f60ae756c5678cdc27ee5be788d3ec088694f2bd03efffc17e36')

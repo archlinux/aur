@@ -7,6 +7,7 @@ pkgbase = dell-unified-printer-driver
 	license = unknown
 	depends = cups
 	conflicts = samsung-unified-driver-printer
+	conflicts = dell-unified-driver-printer
 	source = dell-unified-printer-driver-1.03.tar.gz::https://downloads.dell.com/FOLDER01511597M/1/B1265dnf_Linux_v1.03_Driver.tar.gz
 	sha256sums = a1aa742cd266f60ae756c5678cdc27ee5be788d3ec088694f2bd03efffc17e36
 
