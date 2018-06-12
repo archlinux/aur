@@ -7,6 +7,7 @@ pkgbase = r-callr
 	license = MIT
 	depends = r
 	depends = r-processx>=3.1.0
+	depends = r-r6
 	optdepends = r-covr
 	optdepends = r-testthat
 	optdepends = r-withr
