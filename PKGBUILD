@@ -3,7 +3,7 @@
 pkgname=i3wsr
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="A small utility to compare Rust micro-benchmarks"
+pkgdesc="A small program to change the name of an i3 workspace based on its contents."
 url="https://github.com/roosta/i3wsr"
 makedepends=('cargo')
 arch=('i686' 'x86_64')
