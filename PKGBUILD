@@ -1,7 +1,7 @@
 # Maintainer: syui <syui@users.noreply.github.com>
 pkgname=twg
 pkgver=0.2
-pkgrel=1
+pkgrel=8
 pkgdesc="twitter client for CLI"
 arch=('x86_64' 'i686')
 url="https://github.com/syui/twg"
