@@ -1,7 +1,7 @@
 # Maintainer: Michael Orishich <mishaor2005@ukr.net>
 pkgname=ls_extended
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='ls with coloring and icons'
 arch=('x86_64')
@@ -9,6 +9,7 @@ url="https://github.com/Electrux/ls_extended"
 license=('BSD')
 groups=()
 makedepends=('ccp4m')
+optdepends=('nerd-fonts-complete: for icon support')
 depends=('glibc' 'ttf-nerd-fonts-symbols')
 provides=('ls')
 backup=()
