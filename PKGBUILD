@@ -5,7 +5,7 @@ set -u
 pkgbase="linux-lts49"
 #pkgbase=linux-lts-custom
 _srcname="linux-4.9"
-pkgver="4.9.105"
+pkgver="4.9.108"
 pkgrel='1'
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -24,7 +24,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         change-default-console-loglevel.patch)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            '2faf35d5061d96bfaac86add94184a36d9ceb656d3ec14f7906b526e78c29c46'
+            '9e12311852f765141930a605bc4d3cdd8e8d0e118fbca7798a3f87d05d2b597c'
             '1cf2cceaf79bff8aaf056f859228a4820193aafd5d013bddc778610a2a426f3a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
@@ -34,6 +34,15 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
              )
 
 _kernelname=${pkgbase#linux}
+
+_CC=()
+_CCx=''
+#_CCx='-7'
+if [ ! -z "${_CCx}" ]; then
+  _CC=(HOSTCC="gcc${_CCx}" HOSTCXX="g++${_CCx}" CC="gcc${_CCx}")
+  makedepends+=("gcc${_CCx#-}")
+fi
+unset _CCx
 
 prepare() {
   set -u
@@ -65,7 +74,7 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   set +u; msg2 'get kernel version'; set +u
-  make -s -j1 prepare
+  make -s -j1 prepare "${_CC[@]}"
   if ! diff "${srcdir}/config.cmp" ./.config; then
     set +u
     echo "Some changes were made. Please merge for automation."
@@ -82,7 +91,7 @@ prepare() {
   # ... or manually edit .config
 
   set +u; msg2 'rewrite configuration'; set +u
-  yes "" | make -j1 config >/dev/null
+  yes "" | make -j1 config "${_CC[@]}" >/dev/null
   set +u
 }
 
@@ -96,7 +105,7 @@ build() {
     _mflags+=('-j' "${_nproc}")
   fi
 
-  nice make -s "${_mflags[@]}" ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  nice make -s "${_mflags[@]}" ${MAKEFLAGS} LOCALVERSION= bzImage modules "${_CC[@]}"
   set +u
 }
 
