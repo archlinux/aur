@@ -166,7 +166,6 @@ _build_grub-common_and_bios() {
 		--enable-device-mapper \
 		--enable-cache-stats \
 		--enable-boot-time \
-		--enable-grub-mkfont \
 		--enable-grub-mount \
 		--prefix="/usr" \
 		--bindir="/usr/bin" \
@@ -215,7 +214,6 @@ _build_grub-efi() {
 		--enable-device-mapper \
 		--enable-cache-stats \
 		--enable-boot-time \
-		--enable-grub-mkfont \
 		--enable-grub-mount \
 		--prefix="/usr" \
 		--bindir="/usr/bin" \
@@ -262,7 +260,6 @@ _build_grub-emu() {
 		--enable-nls \
 		--enable-device-mapper \
 		--enable-cache-stats \
-		--enable-grub-mkfont \
 		--enable-grub-mount \
 		--enable-grub-emu-usb=no \
 		--enable-grub-emu-sdl=no \
