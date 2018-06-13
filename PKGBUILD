@@ -6,7 +6,7 @@
 
 pkgname=freeimage
 pkgver=3.17.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Library project for developers who would like to support popular graphics image formats"
 arch=('x86_64')
 license=('GPL' 'custom:FIPL')
@@ -19,7 +19,6 @@ md5sums=('459e15f0ec75d6efa3c7bd63277ead86'
          'b8d190316d4a3e3dd330a2af95dfd2da'
          'b21385e2da5dcdf4aa4e98d11150115d'
          '2efbe4123d832930778b7c146d4f60f1')
-options=(!strip)
 
 prepare() {
   cd FreeImage
