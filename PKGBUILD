@@ -1,4 +1,6 @@
 # Maintainer RetardedOnion@archlinux-irc
+# PKGBUILD heavily based on https://aur.archlinux.org/packages/linux-vfio/ by Dan Ziemba <zman0900@gmail.com> and Mark Weiman <markzz@archlinux.net>
+
 
 pkgbase=linux-mainline-vfio               # Build stock -ARCH kernel
 _srcname=linux-4.17
