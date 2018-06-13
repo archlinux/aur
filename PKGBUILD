@@ -64,6 +64,7 @@ source=("https://ftp.gnu.org/gnu/${pkgname%-*}/${pkgname%-*}-${pkgver}.tar.xz"
         '06-sleep_shift.patch'
         '07-maybe_quiet.patch'
         '08-quick_boot.patch'
+        '09-Fix-packed-not-aligned-error-on-GCC-8.patch'
         'grub.silent')
 
 sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
@@ -77,6 +78,7 @@ sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             '4b189e00a8c97ec09903e9588e02fc78b4bb114ee4822fcce13811aca00c8884'
             'b7489c7facc4fb3dad4426c9c00079b64908640a2bec2409e22194daa3f72af4'
             '057f076ddca241d92a094bc05828e3eb18d3439bf4d2f3d8ca8fa1c51b5b1b2b'
+            'e84b8de569c7e6b73263758c35cf95c6516fde85d4ed451991427864f6a4e5a8'
             '96f3826225ee0e7a874406b73f4bb417fc1b16e5d63dd5eabde356c51833898e')
 
 prepare() {
@@ -113,6 +115,10 @@ prepare() {
 	patch -Np1 -i "${srcdir}/06-sleep_shift.patch"
 	patch -Np1 -i "${srcdir}/07-maybe_quiet.patch"
 	patch -Np1 -i "${srcdir}/08-quick_boot.patch"
+	echo
+
+	msg "Appling fix for packed not aligned error on GCC-8"
+	patch -Np1 -i "${srcdir}/09-Fix-packed-not-aligned-error-on-GCC-8.patch"
 	echo
 
 	msg "Pull in latest language files"
