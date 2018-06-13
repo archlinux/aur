@@ -3,7 +3,7 @@
 _pkgname=nwjs-sdk
 pkgname=$_pkgname-bin
 pkgver=0.31.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An app runtime based on Chromium and node.js (SDK version)."
 arch=("x86_64")
 url="https://nwjs.io/"
@@ -24,5 +24,6 @@ package() {
   install -d "$pkgdir/usr/bin"
   cp -a * "$pkgdir/opt/$_pkgname"
   ln -s "/opt/$_pkgname/nw" "$pkgdir/usr/bin/nw"
+  ln -s "/opt/$_pkgname/nwjc" "$pkgdir/usr/bin/nwjc"
 }
 # vim:set ts=2 sw=2 et:
