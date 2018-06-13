@@ -1,8 +1,8 @@
 pkgbase = haskell-gi-cairo
 	pkgdesc = Generate Haskell bindings for GObject Introspection capable libraries
 	pkgver = 1.0.17
-	pkgrel = 1
-	url = https://hackage.haskell.org/package/haskell-gi
+	pkgrel = 2
+	url = https://hackage.haskell.org/package/gi-cairo
 	arch = i686
 	arch = x86_64
 	license = BSD

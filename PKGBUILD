@@ -3,10 +3,9 @@
 pkgname=haskell-gi-cairo
 _hkgname=gi-cairo
 pkgver=1.0.17
-pkgrel=1
-pkgdesc="Generate Haskell bindings for GObject Introspection capable libraries
-"
-url=https://hackage.haskell.org/package/haskell-gi
+pkgrel=2
+pkgdesc="Generate Haskell bindings for GObject Introspection capable libraries"
+url=https://hackage.haskell.org/package/gi-cairo
 license=('BSD')
 arch=('i686' 'x86_64')
 depends=("ghc-libs" 'haskell-gi-base' 'haskell-base' 'haskell-bytestring' 'haskell-containers' 'haskell-gi' 'haskell-gi-overloading' 'haskell-text' 'haskell-transformers' 'gobject-introspection' 'cairo')
