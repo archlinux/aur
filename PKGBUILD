@@ -3,7 +3,7 @@
 
 pkgname=parsec-bin
 pkgver=146_18
-pkgrel=1
+pkgrel=2
 pkgdesc="Remotely connect to a gaming pc for a low latency remote computing experience"
 url=http://parsec.tv
 arch=('x86_64')
@@ -21,5 +21,6 @@ package() {
 	install -Dm755 $srcdir/usr/bin/parsecd $pkgdir/usr/bin/
 	install -Dm755 $srcdir/usr/share/applications/parsec.desktop $pkgdir/usr/share/applications/
 	install -Dm644 $srcdir/usr/share/icons/hicolor/256x256/apps/parsec.png $pkgdir/usr/share/icons/hicolor/256x256/apps/
+	ln -s /usr/bin/parsecd $pkgdir/usr/bin/parsec
 }
 
