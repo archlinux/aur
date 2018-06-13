@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-meson
 pkgver=1
-pkgrel=5
+pkgrel=7
 arch=('any')
 pkgdesc="Meson wrapper for MinGW (mingw-w64)"
 depends=('meson' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
@@ -10,7 +10,7 @@ license=("GPL")
 url="http://fedoraproject.org/wiki/MinGW"
 source=("toolchain-mingw.meson"
         "meson-mingw-wrapper")
-sha256sums=('32d9dc088394e17753231e4cc24c53c3d3c0e29130a9aa37c6ca080d865a22e2'
+sha256sums=('e9ed0a02b0f6ef00f76b2e41d02f2cc486355f9799072a3c6267fefcbf48b110'
             'd02f4469567104c03d908b1eb7cd2093342bf84b58bd2dc458e33ffd708b5ccb')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -29,9 +29,10 @@ build() {
 }
 
 package() {
+  install -d "${pkgdir}"/usr/bin
   install -d "${pkgdir}"/usr/share/mingw
   for _arch in ${_architectures}; do
-    install -Dm 755 "${srcdir}/${_arch}-meson" "$pkgdir/usr/bin/${_arch}-meson"
+    install -m 755 "${srcdir}/${_arch}-meson" "$pkgdir/usr/bin/${_arch}-meson"
     install -m 644 toolchain-${_arch}.meson "${pkgdir}"/usr/share/mingw/
     install -m 644 toolchain-${_arch}-wine.meson "${pkgdir}"/usr/share/mingw/
   done
