@@ -13,7 +13,7 @@ depends=("python-click>=5.0" "python-click-log>=0.2.0" "python-click-threading>=
          "python-requests>2.9.0" "python-requests-toolbelt>=0.4.0"
          "python-atomicwrites>=0.1.7"
          "python-requests-oauthlib"
-         "python-keyring"
+         "python-shippai"
          "rust")
 makedepends=("git" "python-setuptools-scm"
              "python-sphinx" 'python-sphinx_rtd_theme'
