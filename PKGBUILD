@@ -3,19 +3,24 @@
 # Contributor: BenObiWan <benobiwan @t gmail dot com>
 
 pkgname=solarus-git
-pkgver=1.5.0.r81.gd0601b4
+pkgver=1.5.3.r380.gfd4a0e295
 pkgrel=1
-pkgdesc="An open-source Zelda-like 2D game engine used by the games zsxd and zsdx (development version)"
+pkgdesc="An open-source adventure 2D game engine (development version)"
 arch=('i686' 'x86_64')
-url="http://www.solarus-engine.org/"
+url="http://www.solarus-games.org/"
 license=('GPL3')
-depends=('sdl2_image' 'sdl2_ttf' 'luajit' 'physfs' 'openal' 'libmodplug' 'libvorbis')
-makedepends=('git' 'cmake')
-optdepends=('zsxd-git: Free 2D Zelda fangame Quest'
-            'zsdx-git: Free 2D Zelda fangame Quest with humoristic characters')
+depends=('sdl2_image' 'sdl2_ttf' 'luajit' 'physfs' 'openal' 'libmodplug' 'libvorbis'
+         'hicolor-icon-theme' 'qt5-base')
+makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'glm')
+optdepends=('zsdx-git: Free 2D Zelda fangame'
+            'zsxd-git: Parodic Zelda fangame'
+            'zelda-mercuris-chest: Zelda fangame (in development)'
+            'zelda-xd2: April Fools game'
+            'zelda-roth-se: Remake of Zelda Return of the Hylian'
+            'zelda-olb-se: Remake of Zelda Oni Link Begins')
 provides=('solarus-engine' 'solarus')
 conflicts=('solarus')
-source=($pkgname::'git+https://github.com/christopho/solarus.git')
+source=($pkgname::'git+https://gitlab.com/solarus-games/solarus.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -36,14 +41,14 @@ prepare() {
 build() {
   cd $pkgname/build
 
-  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release
-  make
+  cmake .. -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release
+  ninja
 }
 
 check() {
-  make -C $pkgname/build test
+  ninja -C $pkgname/build test
 }
 
 package() {
-  make -C $pkgname/build DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja -C $pkgname/build install
 }
