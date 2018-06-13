@@ -32,7 +32,7 @@ pkgname=(
     "${pkgbase}-xsl"
 )
 pkgver=7.0.30
-pkgrel=1
+pkgrel=2
 pkgdesc='A general-purpose scripting language that is especially suited to web development (old stable 7.0 series)'
 arch=('i686' 'x86_64')
 url='http://www.php.net'
@@ -307,6 +307,7 @@ package_php70-embed() {
 
     cd ${srcdir}/build
     make -j1 INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
+    mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-70.so
 }
 
 package_php70-phpdbg() {
