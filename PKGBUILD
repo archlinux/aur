@@ -4,12 +4,12 @@ pkgver=r119.bc39ece
 pkgrel=1
 pkgdesc='Kurly is an alternative to the widely popular curl program written in go.'
 arch=('i686' 'x86_64' 'arm')
-url='https://github.com/davidjpeacock/kurly'
+url='https://gitlab.com/davidjpeacock/kurly'
 license=('APACHE')
 makedepends=('git' 'go')
 provides=("${pkgname%}")
 conflicts=("kurly")
-source=("$pkgname"::'git://github.com/davidjpeacock/kurly.git#branch=master')
+source=("$pkgname"::'git://gitlab.com/davidjpeacock/kurly.git#branch=master')
 md5sums=('SKIP')
 
 pkgver() {
