@@ -1,0 +1,16 @@
+pkgbase = lanshare-git
+	pkgdesc = LAN Share is a cross platform local area network file transfer application, built using Qt GUI framework.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/abdularis/LAN-Share
+	arch = x86_64
+	license = GPL
+	source = https://github.com/abdularis/LAN-Share/releases/download/1.2.1/lanshare_1.2.1-1_amd64.deb
+	source = https://raw.githubusercontent.com/abdularis/LAN-Share/master/packaging/linux/debian/LANShare.desktop
+	source = https://raw.githubusercontent.com/abdularis/LAN-Share/master/packaging/linux/debian/lanshare-icon.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lanshare-git
+
