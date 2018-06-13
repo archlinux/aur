@@ -1,17 +1,21 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
 pkgname=gr-limesdr-git
-pkgver=r8.82323af
+pkgver=r18.3efeadc
 pkgrel=1
 pkgdesc="gr-limesdr Plugin for GNURadio"
 arch=(any)
 url="https://github.com/myriadrf/gr-limesdr"
 license=('MIT')
-optdepends=('doxygen: generate documentation')
-depends=('boost' 'gnuradio' 'swig' 'limesuite')
+optdepends=(
+  'doxygen: generate documentation'
+  'swig: bindings'
+  'python2: python bindings'
+)
+depends=('boost' 'gnuradio' 'limesuite')
 makedepends=('git' 'cmake')
 provides=('gr-limesdr')
 conflicts=('gr-limesdr')
-source=("git+https://github.com/myriadrf/gr-limesdr")
+source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
