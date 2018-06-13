@@ -18,7 +18,7 @@ source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.
 
 options=('staticlibs' '!strip')
 
-sha256sums=('ef8984a5d353732609847111ede554a79056f340af78810b046096c5c23792ff')
+sha256sums=('60d654627881f945600cd1886d467a9cfbeccc1b636205a2ee0186850936a015')
 
 build() {
   cd "${srcdir}/ViennaRNA-${pkgver}"
