@@ -9,7 +9,7 @@ pkgdesc="Basic Robust Statistics"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL')
-depends=('r' 'r-deoptimr')
+depends=('r' 'gcc-fortran' 'r-deoptimr')
 
 optdepends=('r-robust' 'r-fit.models' 'r-mpv' 'r-xtable' 'r-ggplot2' 'r-ggally' 'r-rcolorbrewer' 'r-reshape2' 'r-sfsmisc' 'r-catdata' 'r-doparallel' 'r-foreach' 'r-skewt')
 
