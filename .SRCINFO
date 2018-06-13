@@ -1,6 +1,6 @@
 pkgbase = kurly-git
 	pkgdesc = Kurly is an alternative to the widely popular curl program written in go.
-	pkgver = r119.bc39ece
+	pkgver = r127.7e762cb
 	pkgrel = 1
 	url = https://gitlab.com/davidjpeacock/kurly
 	arch = i686

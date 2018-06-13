@@ -1,6 +1,6 @@
 # Maintainer: Akilan Elango <aki237@aki237.me>
 pkgname=kurly-git
-pkgver=r119.bc39ece
+pkgver=r127.7e762cb
 pkgrel=1
 pkgdesc='Kurly is an alternative to the widely popular curl program written in go.'
 arch=('i686' 'x86_64' 'arm')
