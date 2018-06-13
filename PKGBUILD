@@ -1,7 +1,7 @@
 # Maintainer: syui <syui@users.noreply.github.com>
 pkgname=twg
 pkgver=0.2
-pkgrel=8
+pkgrel=9
 pkgdesc="twitter client for CLI"
 arch=('x86_64' 'i686')
 url="https://github.com/syui/twg"
@@ -10,7 +10,7 @@ license=('MIT')
 source=("$url/releases/download/$pkgver/linux_386_$pkgname"
   "$url/releases/download/$pkgver/linux_amd64_$pkgname")
 noextract=(${source[@]%%::*})
-sha1sums=('6d0681d54c972ef779f210dd7d3f79aff9729a11' '07f4321c4e3d317042f3040ff9b05b38ffefcd15')
+sha1sums=('e7202e10d958e1a9ab893fe24765317b18e12609' 'd0de749db19bceb7fbc9212c42e8ecf9a355bc27')
 package() {
   mkdir -p ${srcdir}/${pkgname}-${pkgver}
   cd "${srcdir}/${pkgname}-${pkgver}"
