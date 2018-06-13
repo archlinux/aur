@@ -6,10 +6,10 @@ pkgdesc='Kurly is an alternative to the widely popular curl program written in g
 arch=('i686' 'x86_64' 'arm')
 url='https://gitlab.com/davidjpeacock/kurly'
 license=('APACHE')
-makedepends=('git' 'go')
+makedepends=('git')
 provides=("${pkgname%}")
 conflicts=("kurly")
-source=("$pkgname"::'git://gitlab.com/davidjpeacock/kurly.git#branch=master')
+source=("$pkgname"::'git+https://gitlab.com/davidjpeacock/kurly.git#branch=master')
 md5sums=('SKIP')
 
 pkgver() {
