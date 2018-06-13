@@ -8,10 +8,9 @@ pkgbase = kurly-git
 	arch = arm
 	license = APACHE
 	makedepends = git
-	makedepends = go
 	provides = kurly-git
 	conflicts = kurly
-	source = kurly-git::git://gitlab.com/davidjpeacock/kurly.git#branch=master
+	source = kurly-git::git+https://gitlab.com/davidjpeacock/kurly.git#branch=master
 	md5sums = SKIP
 
 pkgname = kurly-git
