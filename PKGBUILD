@@ -1,6 +1,6 @@
 # Maintainer: Papajoker <papajoker [at] manjaro [dot] fr>
 pkgname=pacnew-chaser
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 url="https://www.manjaro.fr/forum/"
 pkgdesc="finding .pacnew files, compare and load merge (qt) - dev version"
@@ -15,12 +15,13 @@ source=("https://www.manjaro.fr/forum/datas/pacnew-chaser-qt.tar.gz")
 conflicts=('pacnew-chaser-gtk')
 replaces=('pacnew-chaser-gtk')
 #install='.install' 
-md5sums=('139aa392c7524caba7d341e7473cb1ed')
+md5sums=('adffaa8ec36383634c748fec20da6710')
 
 package() {
   cd "$srcdir"
   install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm755 pacnews "${pkgdir}/usr/lib/pacnews"
+  install -Dm644 lib/man.css "${pkgdir}/usr/lib/${pkgname}/man.css"
+  install -Dm755 lib/pacnews "${pkgdir}/usr/lib/${pkgname}/pacnews"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   mkdir -p "${pkgdir}/usr/share/polkit-1/actions/"
