@@ -6,7 +6,7 @@
 
 pkgbase=shiboken2-git
 pkgname=(python{2,}-shiboken2-git shiboken2-git)
-pkgver=5.11.0.r5741.a1a8cf65
+pkgver=5.11.0.r5793.bdc29864
 _upver=5.11.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -50,6 +50,8 @@ package_shiboken2-git() {
     depends=('libxslt' 'clang' 'qt5-xmlpatterns')
     optdepends=("python2-shiboken2-git: for compilation against python2"
                 "python-shiboken2-git: for compilation against python")
+    provides=("shiboken2")
+    conflicts=("shiboken2")
 
     cd "$srcdir"/$pkgbase/sources/shiboken2/build-py3
     make DESTDIR="$pkgdir" install
@@ -63,6 +65,8 @@ package_shiboken2-git() {
 package_python2-shiboken2-git() {
     pkgdesc="Support library for Python2 bindings"
     depends=("python2" "shiboken2-git")
+    provides=("python2-shiboken2")
+    conflicts=("python2-shiboken2")
 
     cd "$srcdir"/$pkgbase/sources/shiboken2/build-py2
     make DESTDIR="$pkgdir" install
@@ -77,6 +81,8 @@ package_python2-shiboken2-git() {
 package_python-shiboken2-git() {
     pkgdesc="Support library for Python bindings"
     depends=("python" "shiboken2-git")
+    provides=("python-shiboken2")
+    conflicts=("python-shiboken2")
 
     cd "$srcdir"/$pkgbase/sources/shiboken2/build-py3
     make DESTDIR="$pkgdir" install
