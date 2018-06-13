@@ -7,7 +7,7 @@ url='http://www.uyap.gov.tr/'
 arch=('x86_64')
 license=('GPL2')
 makedepends=('innoextract')
-depends=('opensc')
+depends=()
 source=("http://www.uyap.gov.tr/destek/uyap.zip"
         "uyap-editor.png"
         "product_logo_32.xpm")

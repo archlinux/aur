@@ -6,7 +6,6 @@ pkgbase = uyap
 	arch = x86_64
 	license = GPL2
 	makedepends = innoextract
-	depends = opensc
 	source = http://www.uyap.gov.tr/destek/uyap.zip
 	source = uyap-editor.png
 	source = product_logo_32.xpm
