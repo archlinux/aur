@@ -1,0 +1,18 @@
+pkgbase = r-geometry
+	pkgdesc = Mesh Generation and Surface Tesselation
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=geometry
+	arch = x86_64
+	license = GPL (>= 3) + file LICENSE
+	depends = r
+	depends = r-magic
+	optdepends = r-testthat
+	optdepends = r-rgl
+	optdepends = r-r.matlab
+	optdepends = r-tripack
+	source = https://cran.r-project.org/src/contrib/geometry_0.3-6.tar.gz
+	md5sums = 82c05b2b9cf6d36d70472c88aae9dde8
+
+pkgname = r-geometry
+
