@@ -2,7 +2,7 @@
 
 pkgbase=python-apprise
 pkgname=('python-apprise' 'python2-apprise')
-pkgver=0.0.6
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Push Notifications that work with just about every platform"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/caronc/apprise"
 license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/caronc/apprise/archive/v$pkgver.tar.gz")
-sha256sums=('6ea14b4c81bb6e3b033ffd365f493039ebe874b8e0bc90f070572f5e0fc1fb46')
+sha256sums=('b92c5c582748a96af008ddda5399f4e6a857fc21ed264b4074104fa7d6e36a49')
 
 prepare() {
   cp -a apprise-$pkgver{,-py2}
@@ -31,7 +31,8 @@ package_python-apprise() {
            'python-oauthlib'
            'python-urllib3'
            'python-six'
-           'python-click')
+           'python-click'
+           'python-markdown')
 
   cd apprise-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
@@ -44,7 +45,8 @@ package_python2-apprise() {
            'python2-oauthlib'
            'python2-urllib3'
            'python2-six'
-           'python2-click')
+           'python2-click'
+           'python2-markdown')
 
   cd apprise-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
