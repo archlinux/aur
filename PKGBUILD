@@ -55,6 +55,7 @@ END
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
+  make olddefconfig
   # ... or manually edit .config
 
   # rewrite configuration
