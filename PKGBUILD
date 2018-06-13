@@ -6,7 +6,7 @@ _hkgname=HStringTemplate
 # PKGBUILD options/directives
 pkgname=haskell-hstringtemplate
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 license=(BSD3)
 pkgdesc="StringTemplate implementation in Haskell."
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -16,15 +16,22 @@ depends=("ghc"
          "haskell-mtl"
          "haskell-old-locale"
          "haskell-parsec"
-         "haskell-semigroups"
          "haskell-syb"
          "haskell-text"
          "haskell-void")
-source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
+source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz"
+        "drop-semigroups.patch")
 
-sha256sums=('4f4ea4aa2e45e7c45821b87b0105c201fbadebc2f2d00c211e728403a0af6b0e')
+sha256sums=('4f4ea4aa2e45e7c45821b87b0105c201fbadebc2f2d00c211e728403a0af6b0e'
+            '0860fc00b3de57037df0ab02dc63e5bf5a6d32e0034ee76a09940810c7dc800c')
 
 # PKGBUILD functions
+
+prepare() {
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+
+    patch -p1 -i ../drop-semigroups.patch
+}
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
