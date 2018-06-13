@@ -1,9 +1,9 @@
 # Maintainer: Riccardo Berto <riccardobrt at gmail dot com>
 
 _pkgname=redis-graph
-pkgname=$_pkgname-git
-pkgver=r215.9db0b8c
-pkgrel=2
+pkgname=redis-graph-git
+pkgver=r219.6de7c37
+pkgrel=1
 pkgdesc="This project is a Redis module that implements a graph database."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/swilly22/$_pkgname"
