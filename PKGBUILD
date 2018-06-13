@@ -21,7 +21,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 package() {
 
   tar xf  data.tar.xz 
-  cp -a usr/ "$pkgdir"
+  cp -r usr/ "$pkgdir"
 
   install -Dm 0755 "$pkgdir/usr/lib/LANShare/LANShare" "$pkgdir/usr/bin/LANShare"
 
