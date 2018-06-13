@@ -1,0 +1,18 @@
+pkgbase = theterminal-blueprint
+	pkgdesc = Simple Terminal Emulator
+	pkgver = 3.0b
+	pkgrel = 0
+	url = https://github.com/vicr123/theterminal
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = xdg-utils
+	depends = tttermwidget
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = the-libs
+	source = theterminal-blueprint-3.0b::git+https://github.com/vicr123/theterminal#branch=blueprint
+	md5sums = SKIP
+
+pkgname = theterminal-blueprint
+
