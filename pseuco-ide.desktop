@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=PseudoIDE
+Comment=An IDE for the pseuCo programming language written in Kotlin.
+Exec=/usr/bin/java -jar '/usr/share/java/pseuco-ide/pseuco-ide.jar' "$@"
+Terminal=false
+Categories=Development;
+

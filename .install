@@ -1,0 +1,4 @@
+post_install() {
+    echo "Dont forget to set your java sdk to java-10-jdk"
+    echo "Use archlinux-java set java-10-jdk"
+}
