@@ -16,8 +16,8 @@ md5sums=('SKIP' '9a935ede50ab8f1a789349fc3b760c1c' 'cb0bbf9c19971a48eff41e8c764a
 
 prepare() {
     cd "$srcdir/$provides"
-    patch -Np1 -i "$srcdir/../force_dynamic_llvm.patch"
-    patch -Np1 -i "$srcdir/../no_stage2_artifacts.patch"
+    patch -Np1 -i "$srcdir/force_dynamic_llvm.patch"
+    patch -Np1 -i "$srcdir/no_stage2_artifacts.patch"
 }
 
 pkgver() {
