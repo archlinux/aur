@@ -1,7 +1,7 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework (latest release)
 	pkgver = 6.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PowerShell/PowerShell
 	install = powershell.install
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = powershell
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = a0d7e3fa753f74e9722f71a5ab3da6d9
-	md5sums = 7fc09756121a31bc336498a18edfe6da
+	md5sums = 477e7fe74b41d814da19ec23db3e620f
+	md5sums = 835214e5782a09d6be7796d9da3d42f6
 
 pkgname = powershell
 
