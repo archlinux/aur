@@ -1,26 +1,34 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidoc
-pkgver=3.10.1.1212
-pkgrel=2
-pkgdesc="Library for creating DigiDoc signature files"
+pkgver=3.10.4.1218
+pkgrel=1
+pkgdesc="DigiDoc is an XML file format for documents with digital signatures in use by the Estonian ID card infrastructure. This library allows for creation and reading of DigiDoc files"
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
 license=('LGPL')
-depends=('libxml2' 'openssl-1.0')
+depends=('libxml2' 'openssl')
 makedepends=('cmake' 'pcsclite' 'opensc')
 source=("https://installer.id.ee/media/ubuntu/pool/main/libd/$pkgname/${pkgname}_$pkgver.orig.tar.xz")
-sha256sums=('ad5e0603aea2e02977f17318cc93a53c3a19a815e57b2347d97136d11c110807')
-validpgpkeys=('43650273CE9516880D7EB581B339B36D592073D4')
+sha256sums=('595ef2c3f62229a2b73d089a7b0625647da764133047a61144ce3881f5f9095b')
+
+prepare() {
+    [[ -d "$pkgname-build" ]] && rm -r "$pkgname-build"
+    mkdir "$pkgname-build"
+}
 
 build() {
-    cd "$srcdir/"
-    export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_INSTALL_SYSCONFDIR="/etc" -DINSTALL_DOC=NO
+    cd "$pkgname-build"
+    cmake .. -DCMAKE_C_FLAGS:STRING="${CFLAGS} -ffile-prefix-map=$srcdir=." \
+             -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -ffile-prefix-map=$srcdir=." \
+             -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
+             -DCMAKE_INSTALL_PREFIX="/usr" \
+             -DCMAKE_INSTALL_LIBDIR="lib" \
+             -DCMAKE_INSTALL_SYSCONFDIR="/etc"
     make
 }
 
 package() {
-    cd "$srcdir/"
+    cd "$pkgname-build"
     make DESTDIR="$pkgdir/" install
     rm $pkgdir/usr/share/libdigidoc/TEST*
 }
