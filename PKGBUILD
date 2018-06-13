@@ -1,32 +1,41 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=chrome-token-signing
-pkgver=1.0.6.485
-pkgrel=5
+pkgver=1.0.7.498
+pkgrel=1
 epoch=1
-pkgdesc="Estonian ID Card signing for Chrome. Chrome extension and native messaging client."
+pkgdesc="Chrome and Firefox extension for signing with your eID on the web"
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
 license=('LGPL2.1')
-depends=('qt5-base>=5.10.0' 'pcsclite' 'ccid')
+depends=('qt5-base' 'pcsclite' 'ccid')
 makedepends=('lsb-release')
 source=("https://installer.id.ee/media/ubuntu/pool/main/c/$pkgname/${pkgname}_$pkgver.orig.tar.xz")
-sha256sums=('cdbaf49fe7e6076318a2770513542453ea04859168b5b03b11a43acb263ad39b')
+sha256sums=('5eb72de245aa3530f766e24b5d2aa415401b2bb0f3ce87a77b90ff874e8a51ac')
 
 build() {
     cd "$srcdir/"
-    make -f GNUmakefile Linux
+    make
 }
 
 package() {
-    cd "$srcdir/host-linux"
-    make INSTALL_ROOT="$pkgdir/" install
+    cd "$srcdir/"
+    # Istall files
+    install -Dm755 ./host-linux/chrome-token-signing -t "$pkgdir/usr/bin"
+    install -Dm644 ./host-linux/ee.ria.esteid.json -t "$pkgdir/usr/share/chrome-token-signing"
+    install -Dm644 ./host-linux/ee.ria.chrome-token-signing.policy.json -t "$pkgdir/usr/share/chrome-token-signing"
+    install -Dm644 ./host-linux/ff/ee.ria.esteid.json -t "$pkgdir/usr/lib/mozilla/native-messaging-hosts"
+    install -Dm644 ./ckjefchnfjhjfedoccjbhjpbncimppeg.json -t "$pkgdir/usr/share/chrome-token-signing"
+    install -Dm644 ./\{443830f0-1fff-4f9a-aa1e-444bafbc7319\}.xpi -t "$pkgdir/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
 
+    # Create links
     mkdir -p $pkgdir/etc/{chromium,chromium-browser}/native-messaging-hosts
-    mkdir -p $pkgdir/usr/share/{google-chrome,chromium,chromium-browser}/extensions/
-
-    ln -sf /etc/opt/chrome/native-messaging-hosts/ee.ria.esteid.json "$pkgdir/etc/chromium/native-messaging-hosts/ee.ria.esteid.json"
-    ln -sf /etc/opt/chrome/native-messaging-hosts/ee.ria.esteid.json "$pkgdir/etc/chromium-browser/native-messaging-hosts/ee.ria.esteid.json"
-    ln -sf /opt/google/chrome/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json "$pkgdir/usr/share/chromium/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json"
-    ln -sf /opt/google/chrome/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json "$pkgdir/usr/share/chromium-browser/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json"
-    ln -sf /opt/google/chrome/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json "$pkgdir/usr/share/google-chrome/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json"
+    mkdir -p $pkgdir/etc/{chromium,chromium-browser}/policies/managed
+    mkdir -p $pkgdir/usr/share/{google-chrome,chromium,chromium-browser}/extensions
+    ln -sf "/usr/share/chrome-token-signing/ee.ria.esteid.json" "$pkgdir/etc/chromium/native-messaging-hosts/ee.ria.esteid.json"
+    ln -sf "/usr/share/chrome-token-signing/ee.ria.esteid.json" "$pkgdir/etc/chromium-browser/native-messaging-hosts/ee.ria.esteid.json"
+    ln -sf "/usr/share/chrome-token-signing/ckjefchnfjhjfedoccjbhjpbncimppeg.json" "$pkgdir/usr/share/chromium/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json"
+    ln -sf "/usr/share/chrome-token-signing/ckjefchnfjhjfedoccjbhjpbncimppeg.json" "$pkgdir/usr/share/chromium-browser/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json"
+    ln -sf "/usr/share/chrome-token-signing/ckjefchnfjhjfedoccjbhjpbncimppeg.json" "$pkgdir/usr/share/google-chrome/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json"
+    ln -sf "/usr/share/chrome-token-signing/ee.ria.chrome-token-signing.policy.json" "$pkgdir/etc/chromium/policies/managed/ee.ria.chrome-token-signing.policy.json"
+    ln -sf "/usr/share/chrome-token-signing/ee.ria.chrome-token-signing.policy.json" "$pkgdir/etc/chromium-browser/policies/managed/ee.ria.chrome-token-signing.policy.json"
 }
