@@ -2,6 +2,7 @@
 # Maintainer : Ronald van Haren <ronald.archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Contributor: Joan Bruguera <joanbrugueram@gmail.com>
 
 ## "1" to enable IA32-EFI build in Arch x86_64, "0" to disable
 _IA32_EFI_IN_ARCH_X64="1"
@@ -61,11 +62,12 @@ validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' S
 source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         "https://git.savannah.nongnu.org/cgit/grub-extras.git/snapshot/grub-extras-${_GRUB_EXTRAS_COMMIT}.tar.gz"
         "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
-        '0002-intel-ucode.patch'
         '0003-10_linux-detect-archlinux-initramfs.patch'
         '0004-add-GRUB_COLOR_variables.patch'
         '0005-Allow_GRUB_to_mount_ext234_filesystems_that_have_the_encryption_feature.patch'
         '0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch'
+        '0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch'
+        '0008-Fix-packed-not-aligned-error-on-GCC-8.patch'
         'http://grub.johnlane.ie/assets/0001-Cryptomount-support-LUKS-detached-header.patch'
         'http://grub.johnlane.ie/assets/0002-Cryptomount-support-key-files.patch'
         'http://grub.johnlane.ie/assets/0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch'
@@ -80,11 +82,12 @@ sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             '2844601914cea6b1231eca0104853a93c4d67a5209933a0766f1475953300646'
             '0d81571fc519573057b7641d26a31ead55cc0b02a931589fb346a3a534c3dcc1'
             'SKIP'
-            '37adb95049f6cdcbdbf60ed6b6440c5be99a4cd307a0f96c3c3837b6c2e07f3c'
             'b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
             '535422c510a050d41efe7720dbe54de29e04bdb8f86fd5aea5feb0b24f7abe46'
             'c38f2b2caae33008b35a37d8293d8bf13bf6fd779a4504925da1837fd007aeb5'
+            'e43566c4fe3b1b87e677167323d4716b82ac0810410a9d8dc7fbf415c8db2b8a'
+            'e84b8de569c7e6b73263758c35cf95c6516fde85d4ed451991427864f6a4e5a8'
             'f7790e7fd4641eed8347039ebb44b67a3f517f2bc4de213fe34d2ae887c03b92'
             'c1d042ca83f6ac64414f1d5df82fe324a46eaa842768fff214091b177ad30191'
             'd2ad15610f5b683ca713329bbe25d43963af9386c9c8732b61cdc135843715f1'
@@ -96,10 +99,6 @@ sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
 
 prepare() {
 	cd "${srcdir}/grub-${pkgver}/"
-
-	msg "Patch to load Intel microcode"
-	patch -Np1 -i "${srcdir}/0002-intel-ucode.patch"
-	echo
 
 	msg "Patch to detect of Arch Linux initramfs images by grub-mkconfig"
 	patch -Np1 -i "${srcdir}/0003-10_linux-detect-archlinux-initramfs.patch"
@@ -117,6 +116,12 @@ prepare() {
 	msg "Patch to change default tsc calibration method to pmtimer on EFI systems"
 	patch -Np1 -i "${srcdir}/0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch"
 	echo
+
+	msg "Support multiple early initrd images"
+	patch -Np1 -i "${srcdir}/0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch"
+
+	msg "Fix packed-not-aligned error on GCC 8"
+	patch -Np1 -i "${srcdir}/0008-Fix-packed-not-aligned-error-on-GCC-8.patch"
 
 	msg "Patch for adding support for DMCrypt and LUKS volumes with detached headers and key files"
 	patch -Np1 -i "${srcdir}/0001-Cryptomount-support-LUKS-detached-header.patch"
@@ -179,6 +184,7 @@ _build_grub-common_and_bios() {
 
 	msg "Run ./configure for bios build"
 	./configure \
+		FREETYPE="pkg-config freetype2" \
 		--with-platform="pc" \
 		--target="i386" \
 		"${_EFIEMU}" \
@@ -226,6 +232,7 @@ _build_grub-efi() {
 
 	msg "Run ./configure for ${_EFI_ARCH} efi build"
 	./configure \
+		FREETYPE="pkg-config freetype2" \
 		--with-platform="efi" \
 		--target="${_EFI_ARCH}" \
 		--disable-efiemu \
@@ -273,6 +280,7 @@ _build_grub-emu() {
 
 	msg "Run ./configure for emu build"
 	./configure \
+		FREETYPE="pkg-config freetype2" \
 		--with-platform="emu" \
 		--target="${_EMU_ARCH}" \
 		--enable-mm-debug \
