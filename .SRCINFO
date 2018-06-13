@@ -1,0 +1,22 @@
+pkgbase = xdg-desktop-portal-liri-git
+	pkgdesc = A Liri backend for xdg-desktop-portal
+	pkgver = 20180425.268.f1c033c
+	pkgrel = 1
+	url = https://liri.io
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = liri-git
+	license = GPL3
+	makedepends = git
+	makedepends = liri-qbs-shared-git
+	depends = libliri-git
+	provides = xdg-desktop-portal-liri
+	conflicts = xdg-desktop-portal-liri
+	replaces = xdg-desktop-portal-liri
+	source = xdg-desktop-portal-liri::git://github.com/lirios/xdg-desktop-portal-liri.git#branch=develop
+	md5sums = SKIP
+
+pkgname = xdg-desktop-portal-liri-git
+
