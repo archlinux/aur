@@ -1,0 +1,18 @@
+pkgbase = ay-gaste
+	pkgdesc = Online gazete okuma programı
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://notabug.org/oltulu/Ay-Gaste
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-base
+	depends = xviewer
+	depends = exempi
+	source = ay-gaste::git+https://notabug.org/oltulu/Ay-Gaste.git
+	md5sums = SKIP
+
+pkgname = ay-gaste
+
