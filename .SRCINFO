@@ -5,6 +5,7 @@ pkgbase = lanshare
 	url = https://github.com/abdularis/LAN-Share
 	arch = x86_64
 	license = GPL
+	depends = qt5-base
 	source = https://github.com/abdularis/LAN-Share/releases/download/1.2.1/lanshare_1.2.1-1_amd64.deb
 	source = https://raw.githubusercontent.com/abdularis/LAN-Share/master/packaging/linux/debian/LANShare.desktop
 	source = https://raw.githubusercontent.com/abdularis/LAN-Share/master/packaging/linux/debian/lanshare-icon.png
