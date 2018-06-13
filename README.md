@@ -42,8 +42,9 @@ $ tick check
 Prints information about all of your current holdings and a grand total
 in an NCurses window. By default, your holdings will be sorted
 alphabetically. You may press the left and right arrow keys to change
-the sort category. Press "q" to exit the window. You can also get
-information on a specific security using
+the sort category, or up and down to highlight different securities.
+Press "q" to exit the window. You can also get information on a specific
+security using
 ```bash
 $ tick check [symbol/crypto_id/USD$]
 ```
@@ -115,4 +116,6 @@ and portfolio distribution (tried to implement, but IEX API is unpredictable; wa
 * Average graph points when skipping indices for greater accuracy
 * Android app?
 * GUI?
-* Competitor information
+* Index support (djia, sp500)
+* History stack
+* Exit if window is resized to too small

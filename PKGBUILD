@@ -1,7 +1,7 @@
 # Maintainer: Antony Kellermann <aokellermann@gmail.com>
 
 pkgname=tick
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Command line stock and cryptocurrency portfolio tracker."
 arch=('x86_64')
@@ -15,6 +15,7 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname"
+    git checkout $(git rev-list --tags --max-count=1) # Checks out latest tag instead of latest commit
     CPPFLAGS="$CPPFLAGS -O2"
 	make
 }
