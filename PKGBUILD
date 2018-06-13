@@ -1,4 +1,4 @@
-# Maintainer: Cihan Alkan <cihanalk@gmail.com>
+# Maintainer: oltulu <cihanalk@gmail.com>
 pkgname=uyap
 pkgver=4.1.10
 pkgrel=2
@@ -15,12 +15,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
-
-
 build() {
-
 innoextract UKI_V$pkgver/UKI_V$pkgver.exe
-
 }
 
 package() {
