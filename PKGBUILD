@@ -32,27 +32,28 @@ _localmodcfg=
 
 pkgbase=linux-gc
 _srcname=linux-4.17
-pkgver=4.17
-pkgrel=2
-_pdsversion=098q
+pkgver=4.17.1
+pkgrel=1
+_pdsversion=098r
 arch=('x86_64')
 url="http://cchalpha.blogspot.co.uk/"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_psd_patch="v${pkgver}_pds${_pdsversion}.patch"
+_psd_patch="v${_srcname#*-}_pds${_pdsversion}.patch"
 _gcc_more_v='20180509'
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
-  #https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
-  "$_psd_patch::https://bitbucket.org/alfredchen/linux-gc/downloads/${_psd_patch}"
+  "$_psd_patch::https://raw.githubusercontent.com/cchalpha/PDS-mq/master/${_srcname#*-}/${_psd_patch}"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+  0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -60,14 +61,17 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
+            '31f2f5309d99db632160538d43cf737166ae8b24c1b8091522ca1f9a804c25a1'
+            'SKIP'
             '1da121e11032e99124e24ab42f5b97bf5c1883f468b40ce78a2144a2ebdc91bf'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '03c458dacd99dab4d8ea8fbbe449fd280184a25fc3cb200103eb40deb4b9e55a'
-            '0b77e6bef12735bc91e3f0e8232512e973688466f2e8a2c3a93502cb2d4b4eed'
-            '92615acad59cbef9fd43b2710f5a77ffea45a86543ccff1b12eb676a9c8058cc')
+            '4f95570ecf6da52f150b9721684cd172b3b551b17ecc70020e07f0db16b6f0cd'
+            'e3c08f9b91611186e5ec579187ecea2a0143e5c2dc7ffc30ac6ea6e2b6d130fd'
+            '5403dead9161344b2c01027526146a250147680f4a2d32a54d40c55fc1becc8a'
+            'd55e7de60b12bca26ded4c1bb8eb5860a9092374914a201a0f6a0ed2849d099f')
 
 _kernelname=${pkgbase#linux}
 
@@ -75,7 +79,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  #patch -p1 -i ../patch-${pkgver}
+  patch -p1 -i ../patch-${pkgver}
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -85,6 +89,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+
+  # https://bugs.archlinux.org/task/56780
+  patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
 
   # Patch source with PDS scheduler
   patch -Np1 -i "../${_psd_patch}"
