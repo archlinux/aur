@@ -9,12 +9,10 @@ pkgbase = pacnew-chaser
 	optdepends = diffuse: editor, compare merge files
 	optdepends = kompare: editor, compare merge files
 	optdepends = meld: editor, compare merge files
-	conflicts = pacnews-gui
 	conflicts = pacnew-chaser-gtk
-	replaces = pacnews-gui
 	replaces = pacnew-chaser-gtk
 	source = https://www.manjaro.fr/forum/datas/pacnew-chaser-qt.tar.gz
-	md5sums = 6711ad5c95d6e3bd69783e9ee677ddc1
+	md5sums = 139aa392c7524caba7d341e7473cb1ed
 
 pkgname = pacnew-chaser
 

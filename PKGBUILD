@@ -12,10 +12,10 @@ optdepends=('diffuse: editor, compare merge files'
         'meld: editor, compare merge files')
 source=("https://www.manjaro.fr/forum/datas/pacnew-chaser-qt.tar.gz")
 #provide=('pacnew-chaser')
-conflicts=('pacnews-gui' 'pacnew-chaser-gtk')
-replaces=('pacnews-gui' 'pacnew-chaser-gtk')
+conflicts=('pacnew-chaser-gtk')
+replaces=('pacnew-chaser-gtk')
 #install='.install' 
-md5sums=('6711ad5c95d6e3bd69783e9ee677ddc1')
+md5sums=('139aa392c7524caba7d341e7473cb1ed')
 
 package() {
   cd "$srcdir"
