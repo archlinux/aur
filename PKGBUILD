@@ -1,7 +1,7 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=hyne-git
-confilicts=('hyne')
-pkgver=1.9.1.r1.g3534474
+conflicts=('hyne')
+pkgver=1.9.2c.r2.g480170f
 pkgrel=1
 pkgdesc="Final Fantasy 8 Save Editor"
 arch=('i686' 'x86_64')
