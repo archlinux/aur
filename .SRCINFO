@@ -5,6 +5,7 @@ pkgbase = compute-runtime
 	url = https://01.org/compute-runtime
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = gcc54
 	makedepends = llvm
 	makedepends = clang

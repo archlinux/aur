@@ -7,7 +7,7 @@ pkgrel=2
 arch=('x86_64')
 url='https://01.org/compute-runtime'
 license=('MIT')
-makedepends=('gcc54' 'llvm' 'clang' 'python2' 'opencl-headers' 'cmake')
+makedepends=('git' 'gcc54' 'llvm' 'clang' 'python2' 'opencl-headers' 'cmake')
 optdepends=('libva: for cl_intel_va_api_media_sharing'
             'libdrm: for cl_intel_va_api_media_sharing')
 depends=('ocl-icd')
