@@ -4,24 +4,22 @@
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve> 
 
 pkgbase=python-numpy
-pkgname=('python2-numpy' 'python-numpy')
-pkgver=1.14.4
+pkgname=('python-numpy' 'python2-numpy')
+pkgver=1.14.5
 pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
 license=('custom')
 url="http://www.numpy.org/"
 makedepends=('cblas' 'lapack' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'gcc-fortran'
-	'python-nose' 'python2-nose' 'cython' 'cython2')
+             'python-nose' 'python2-nose' 'cython' 'cython2')
 options=('staticlibs')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz" 'site.cfg')
-sha512sums=('eb63e56c6067d49747a63e3ad181e01f4908175d40724f971f23a74c9595117aa9a89c655fda09694b123c5efdaefa79ce73df855094af8bb52f88d418e324aa'
-            '03a0f161be4963625f110a26167efbd300a12bd4cf99c8250c47ac865466d03fc8640e7e4fb6a59c39bf8b797609f5ed50afbc720d1fcbd2c4c57263cf8b406b')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz")
+sha512sums=('7826b0a9913873efd8b06e0898e0714dc2eb11a224761569b258bf8df7127c20b69626bc19978054859a30953e2c54de3d4180bbd90663b07ab8482594c50374')
 
 prepare() {
-  cp site.cfg numpy-$pkgver
-  cp -a numpy-$pkgver numpy-py2-$pkgver
-  cd numpy-py2-$pkgver
+  cp -a numpy-$pkgver{,-py2}
+  cd numpy-$pkgver-py2
 
   sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
       -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
@@ -30,55 +28,47 @@ prepare() {
 }
 
 build() {
-  export LDFLAGS="$LDFLAGS -shared"
+  cd "$srcdir"/numpy-$pkgver
+  python setup.py build
 
-  echo "Building Python2"
-  cd numpy-py2-$pkgver
-  python2 setup.py config_fc --fcompiler=gnu95 build
-
-  echo "Building Python3"
-  cd ../numpy-$pkgver
-  python setup.py config_fc --fcompiler=gnu95 build
+  cd "$srcdir"/numpy-$pkgver-py2
+  python2 setup.py build
 }
 
-package_python2-numpy() {
-  depends=('lapack' 'python2' 'cblas')
-  optdepends=('python2-nose: testsuite')
+check() {
+  # TODO: Fix fortran tests here (it works fine after installation)
 
-  _pyver=2.7
+  cd "$srcdir"/numpy-$pkgver
+  python setup.py install --root="$PWD/tmp_install" --optimize=1
+  cd "$PWD/tmp_install"
+  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python3.6/site-packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
 
-  export ATLAS=None
-  export LDFLAGS="$LDFLAGS -shared"
-
-  cd numpy-py2-$pkgver
-  python2 setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}" --optimize=1
-
-  install -m755 -d "${pkgdir}/usr/share/licenses/python2-numpy"
-  install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-numpy/"
-
-  install -m755 -d "${pkgdir}/usr/include/python${_pyver}"
-  ln -sf /usr/lib/python${_pyver}/site-packages/numpy/core/include/numpy "${pkgdir}/usr/include/python${_pyver}/numpy"
+  cd "$srcdir"/numpy-$pkgver-py2
+  python2 setup.py install --root="$PWD/tmp_install" --optimize=1
+  cd "$PWD/tmp_install"
+  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python2.7/site-packages:$PYTHONPATH" python2 -c 'import numpy; numpy.test()'
 }
 
 package_python-numpy() {
-  depends=('lapack' 'python' 'cblas')
-  optdepends=('python-nose: testsuite')
-  provides=("python3-numpy=${pkgver}")
-  replaces=('python3-numpy')
-  conflicts=('python3-numpy')
-
-  _pyver=3.6
-  _pyinc=3.6m
-
-  export ATLAS=None
-  export LDFLAGS="$LDFLAGS -shared"
+  depends=('cblas' 'lapack' 'python')
+  optdepends=('python-nose: testsuite'
+              'openblas: faster linear algebra')
 
   cd numpy-$pkgver
-  python setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}" --optimize=1
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 
   install -m755 -d "${pkgdir}/usr/share/licenses/python-numpy"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-numpy/"
+}
 
-  install -m755 -d "${pkgdir}/usr/include/python${_pyinc}"
-  ln -sf /usr/lib/python${_pyver}/site-packages/numpy/core/include/numpy "${pkgdir}/usr/include/python${_pyinc}/numpy"
+package_python2-numpy() {
+  depends=('cblas' 'lapack' 'python2')
+  optdepends=('python2-nose: testsuite'
+              'openblas: faster linear algebra')
+
+  cd numpy-$pkgver-py2
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/python2-numpy"
+  install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-numpy/"
 }
