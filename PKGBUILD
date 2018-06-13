@@ -1,26 +1,29 @@
-# Maintainer: Gregoire Seux <grego_aur@familleseux.net>
+# Maintainer: Ekin Dursun <ekindursun@gmail.com>
+# Contributor: Gregoire Seux <grego_aur@familleseux.net>
 
-pkgbase=('python-astral')
-pkgname=('python-astral')
-_module='astral'
-pkgver='1.6'
-pkgrel=0
+pkgbase='python-astral'
+pkgname=('python-astral' 'python2-astral')
+_name='astral'
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="Calculations for the position of the sun and moon."
 url="https://github.com/sffjunkie/astral"
-depends=('python' 'python-pytz')
-makedepends=('python-setuptools')
-license=('unknown')
+makedepends=('python-setuptools' 'python2-setuptools')
+license=('Apache')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/52/10/e9fbc6f7c9f8cc411003a3fd3e3df75de79447a8b965ae96272d526fba28/astral-${pkgver}.tar.gz")
-sha256sums=('874b397ddbf0a4c1d8d644b21c2481e8a96b61343f820ad52d8a322d61a15083')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('ab0c08f2467d35fcaeb7bad15274743d3ac1ad18b5391f64a0058a9cd192d37d')
 
-build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+package_python-astral() {
+    depends=('python-requests' 'python-pytz')
+
+    cd "${srcdir}/${_name}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
 
-package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+package_python2-astral() {
+    depends=('python2-requests' 'python2-pytz')
+
+    cd "${srcdir}/${_name}-${pkgver}"
+    python2 setup.py install --root="${pkgdir}" --optimize=1
 }
