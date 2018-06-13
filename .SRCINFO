@@ -1,0 +1,13 @@
+pkgbase = r-abind
+	pkgdesc = Combine Multidimensional Arrays
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=abind
+	arch = any
+	license = LGPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/abind_1.4-5.tar.gz
+	md5sums = 136f981e1c4f618b64a87faaa7797c97
+
+pkgname = r-abind
+
