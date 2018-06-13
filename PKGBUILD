@@ -2,7 +2,7 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 pkgname=taffybar
 pkgver=2.1.1
-pkgrel=5``
+pkgrel=6
 license=('BSD3')
 pkgdesc="A desktop bar similar to xmobar, but with more GUI"
 url="http://github.com/travitch/taffybar"
@@ -53,11 +53,11 @@ install=taffybar.install
 source=("http://hackage.haskell.org/packages/archive/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "dynamic-compilation.patch"
         "taffybar.install"
-        "https://raw.githubusercontent.com/taffybar/taffybar/master/xmonad.hs.example")
+        "https://raw.githubusercontent.com/taffybar/taffybar/13b32fc2bc62129093494e939339a979d641691c/xmonad.hs.example")
 
 sha256sums=('1352a3d2937a4694010e55fbb353779d53223c3ec4b2e18847d388c59b07778d'
             'ff90b6e3d05b3bb94cfc2365708bbabbb96fd9a9a4919c0face6f8d2b69037e7'
-            'ce653be1ce3bd057e5779fb129e91708e34a5c686e1c3d65798790559330185f'
+            'e1a1c820057c64fab4521de3c9b153e4d54e7df9a96d94679dbffc9cec245076'
             '1a8ca4f177891941960585e228d5386ea9f120a1bb12ac0a956200de839032cb')
 
 # PKGBUILD functions

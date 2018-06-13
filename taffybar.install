@@ -2,8 +2,8 @@
 
 post_install(){
 
-  msg2 'Place a taffybar.hs config file in $HOME/.config/taffybar to use.'
-  msg2 'There is an example one at /usr/share/doc/taffybar/taffbar.hs.example'
-  msg2 'there is an example xmonad.hs in the above folder'
+  echo 'Place a taffybar.hs config file in $HOME/.config/taffybar to use.'
+  echo 'There is an example one at /usr/share/doc/taffybar/taffbar.hs.example'
+  echo 'there is an example xmonad.hs in the above folder'
 
 }
