@@ -9,9 +9,11 @@ pkgbase = pseuco-ide
 	conflicts = pseuco-ide
 	source = https://dgit.cs.uni-saarland.de/pseuco/pseuco-ide/-/jobs/artifacts/master/download?job=jar
 	source = pseuco-ide.desktop
+	source = pseuco-ide
 	source = .install
 	sha256sums = SKIP
 	sha256sums = 87186ce1e69f6737c02929ec3fa5898d795a567200b6fa5ff3eee40a55a78df7
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pseuco-ide
