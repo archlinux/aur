@@ -1,0 +1,15 @@
+pkgbase = r-foreach
+	pkgdesc = Provides Foreach Looping Construct for R
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=foreach
+	arch = any
+	license = Apache
+	depends = r
+	depends = r-iterators
+	optdepends = r-randomforest
+	source = https://cran.r-project.org/src/contrib/foreach_1.4.4.tar.gz
+	md5sums = c397f4c76a92e52b6fca7f18cb2ee791
+
+pkgname = r-foreach
+
