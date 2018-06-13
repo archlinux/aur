@@ -1,0 +1,16 @@
+pkgbase = r-gower
+	pkgdesc = Gowers Distance
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gower
+	arch = x86_64
+	license = GPL3
+	depends = r
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/gower_0.1.2.tar.gz
+	md5sums = 015edef1ad21557bbb18751dd827fde4
+
+pkgname = r-gower
+
