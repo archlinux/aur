@@ -11,7 +11,7 @@
 pkgname=ffmpeg-qsv
 _srcname=ffmpeg
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Record, convert and stream audio and video (including qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -25,12 +25,17 @@ depends=(
 'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt'
 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
-'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'opencl-icd-loader' 'mesa' 'sndio'
+'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'ocl-icd' 'mesa' 'sndio'
 'sdl2' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio'
 'libva' 'libdrm' 'libvdpau'
 'libfdk-aac' 'intel-media-sdk')
 makedepends=('ffnvcodec-headers' 'nasm' 'opencl-headers')
-optdepends=('beignet: OpenCL implementation for Intel IvyBridge+ iGPUs')
+optdepends=('compute-runtime: Intel(R) Graphics Compute Runtime for OpenCL(TM).'
+'beignet: OpenCL implementation for Intel IvyBridge+ iGPUs'
+'opencl-mesa: OpenCL support for AMD/ATI Radeon mesa drivers'
+'opencl-amd: OpenCL userspace driver as provided in the amdgpu-pro driver stack'
+'opencl-nvidia: OpenCL implemention for NVIDIA'
+)
 provides=('ffmpeg' 'ffmpeg-libfdk_aac' 'qt-faststart'
 'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
