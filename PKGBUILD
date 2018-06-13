@@ -1,6 +1,6 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
 pkgname=limesuite
-pkgver=18.04.1
+pkgver=18.06.0
 pkgrel=1
 pkgdesc="Driver and GUI for LMS7002M-based SDR platforms (LimeSDR, Novena RF7, etc.)"
 arch=(any)
@@ -15,7 +15,7 @@ source=(
   'limesuitegui.desktop'
 )
 sha256sums=(
-  '188adf3f464b231b7ee9fea9d3cfc5d7053be8fa5a5a9a6adbb39d63228c5382'
+  '8d214b5bdffdadba9499b058d41ff8a705f73054497408fe10ff9451a5a92396'
   'b00c833a1dcd0b7e23a735aa4dd0a4060032f915de85ef7396f938b1bcedfecf'
 )
 
