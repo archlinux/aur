@@ -5,18 +5,18 @@
 
 pkgname=('heimdall-nogui-git')
 _gitname="heimdall"
-pkgver=1.4.1.r34.g7ebee1e
+pkgver=1.4.2.r3.g9bcc42d
 pkgrel=1
 pkgdesc="A cross-platform open-source utility to flash firmware (aka ROMs) onto Samsung Galaxy S devices."
 arch=('i686' 'x86_64')
-url="http://www.glassechidna.com.au/products/heimdall/"
+url="http://glassechidna.com.au/heimdall/"
 license=('MIT')
 depends=('libusb')
 makedepends=('cmake' 'git')
 optdepends=('android-udev: Udev rules to connect Android devices to you linux box')
 conflicts=('heimdall')
 provides=('heimdall')
-source=("$_gitname::git://github.com/Benjamin-Dobell/Heimdall.git"
+source=("$_gitname::git+https://gitlab.com/BenjaminDobell/Heimdall.git"
         "BridgeManager.patch")
 md5sums=('SKIP'
          '8fce869eb9539b6b410b1a52370c3824')
