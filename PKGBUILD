@@ -17,7 +17,7 @@ _opt_DKMS=1            # This can be toggled between installs
 
 set -u
 pkgname='connecttech-cti-serial'
-pkgver='1.41'
+pkgver='1.42'
 pkgrel='1'
 pkgdesc='tty UART driver for BlueStorm BlueHeat Xtreme/104-Plus Titan and Xtreme/104-Express families'
 arch=('i686' 'x86_64')
@@ -31,10 +31,8 @@ install="${pkgname}-install.sh"
 _srcdir="cti_serial_${pkgver//./}"
 source=(
   "file://${_srcdir}.tgz"
-  '0000-Kernel-4-15-timers.patch'
 )
-sha256sums=('d5e7781d518091c817624f0d7e681180ff871fa535ec70e92795e90bdd54d44c'
-            '928ac0a2e815bbfae2041b095b7eab27ff3df825b31e8108f4ac92fb1fc8379d')
+sha256sums=('9833dfcac4b9116c1d22dcee16bb0533e7b3ab0ae3291c4570e716e1e991f042')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -92,12 +90,6 @@ prepare() {
   sed -e 's: /lib/modules: /usr/lib/modules:g' -i 'Makefile'
 
   popd > /dev/null
-
-  # Patch
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}
-  #diff -pNaru5 cti_serial_141{.orig-0000,} > '0000-Kernel-4-15-timers.patch'
-  patch -Nup1 -i "${srcdir}/0000-Kernel-4-15-timers.patch"
-
   set +u
 }
 
