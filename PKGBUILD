@@ -39,15 +39,12 @@ CONFIG_LOCALVERSION_AUTO=n
 END
 
   # set extraversion to pkgrel and empty localversion
-  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
-      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
-      -i Makefile
+  #sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+  #    -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+  #    -i Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-
-  # get kernel version
-  make prepare
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
@@ -60,6 +57,9 @@ END
 
   # rewrite configuration
   yes "" | make config >/dev/null
+
+  # get kernel version
+  make prepare
 }
 
 build() {
