@@ -160,7 +160,7 @@ void* iex_store_company(void* vpInfo);
  * Designed for threading
  *
  * Queries IEX's quote endpoint and stores the data in the Info object pointed to by vpInfo. intraday_time, price,
- * marketcap, volume_1d, and pe_ratio are stored.
+ * price_last_close, marketcap, volume_1d, and pe_ratio are stored.
  * @param vpInfo Info*
  * @return NULL
  */
@@ -189,7 +189,7 @@ void* iex_store_earnings(void* vpInfo);
 /**
  * Designed for threading
  *
- * Queries IEX's chart endpoint and stores the data in the Info object pointed to by vpInfo. change_1d, change_7d,
+ * Queries IEX's chart endpoint and stores the data in the Info object pointed to by vpInfo. change_7d,
  * change_30d, and points are stored.
  * @param vpInfo Info*
  * @return NULL

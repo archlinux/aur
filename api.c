@@ -121,14 +121,12 @@ void* iex_store_quote(void* vpInfo) {
 
     symbol_info->price = json_object_get_double(json_object_object_get(jobj, "latestPrice"));
     symbol_info->intraday_time = json_object_get_int64(json_object_object_get(jobj, "latestUpdate"));
+    symbol_info->price_last_close = json_object_get_double(json_object_object_get(jobj, "previousClose"));
+    if (symbol_info->price_last_close == 0) // May be 0 over weekend
+        symbol_info->price_last_close = EMPTY;
     symbol_info->marketcap = json_object_get_int64(json_object_object_get(jobj, "marketCap"));
     symbol_info->volume_1d = json_object_get_int64(json_object_object_get(jobj, "latestVolume"));
     symbol_info->pe_ratio = json_object_get_double(json_object_object_get(jobj, "peRatio"));
-    if (symbol_info->amount != EMPTY) {
-        symbol_info->current_value = symbol_info->amount * symbol_info->price;
-        symbol_info->profit_total = symbol_info->current_value - symbol_info->total_spent;
-        symbol_info->profit_total_percent = 100 * (symbol_info->current_value / symbol_info->total_spent - 1);
-    }
     json_object_put(jobj);
     string_destroy(&pString);
     return NULL;
@@ -224,28 +222,12 @@ void* iex_store_chart(void* vpInfo) {
     for (size_t i = 0; i < len; i++)
         symbol_info->points[i] = json_object_get_double(
                 json_object_object_get(json_object_array_get_idx(jobj, i), "close"));
-
-    len = 0;
-    while (symbol_info->points[len] != '\0')
-        len++;
-    time_t now = time(NULL);
-    struct tm* ts = localtime(&now);
-    mktime(ts);
-    int after_close = ts->tm_hour > 16 && ts->tm_wday != 0 && ts->tm_wday != 6;
-    symbol_info->price_last_close = symbol_info->points[len - 2 + after_close];
-    symbol_info->price_7d = symbol_info->points[len - 6 + after_close];
-    symbol_info->price_30d = symbol_info->points[len - 22 + after_close];
-    if (symbol_info->amount != EMPTY) {
-        symbol_info->profit_last_close = symbol_info->amount * (symbol_info->price - symbol_info->price_last_close);
-        symbol_info->profit_last_close_percent = 100 * (symbol_info->current_value / (symbol_info->current_value -
-                symbol_info->profit_last_close) - 1);
-        symbol_info->profit_7d = symbol_info->amount * (symbol_info->price - symbol_info->price_7d);
-        symbol_info->profit_7d_percent = 100 * (symbol_info->current_value / (symbol_info->current_value -
-                symbol_info->profit_7d) - 1);
-        symbol_info->profit_30d = symbol_info->amount * (symbol_info->price - symbol_info->price_30d);
-        symbol_info->profit_30d_percent = 100 * (symbol_info->current_value / (symbol_info->current_value -
-                                                                              symbol_info->profit_30d) - 1);
-    }
+    if (symbol_info->price_last_close == EMPTY) // May be 0 over weekend, so get last close from points array
+        symbol_info->price_last_close = symbol_info->points[len - 1];
+    if (len > 5)
+        symbol_info->price_7d = symbol_info->points[len - 5];
+    if (len > 21)
+        symbol_info->price_30d = symbol_info->points[len - 21];
     json_object_put(jobj);
     string_destroy(&pString);
     return NULL;
@@ -294,7 +276,8 @@ void* iex_store_news(void* vpInfo) {
         if (json_object_object_get(idx, "source") != NULL)
             strcpy(symbol_info->articles[i]->source, json_object_get_string(json_object_object_get(idx, "source")));
         if (json_object_object_get(idx, "dateTime") != NULL)
-            strncpy(symbol_info->articles[i]->date, json_object_get_string(json_object_object_get(idx, "datetime")), 10);
+            strncpy(symbol_info->articles[i]->date,
+                    json_object_get_string(json_object_object_get(idx, "datetime")), 10);
         symbol_info->articles[i]->date[10] = '\0';
         if (json_object_object_get(idx, "summary") != NULL)
             strcpy(symbol_info->articles[i]->summary, json_object_get_string(json_object_object_get(idx, "summary")));
