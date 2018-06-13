@@ -64,10 +64,10 @@ _rev_override="n"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-clear
-__basekernel=4.16
-_minor=15
+__basekernel=4.17
+_minor=1
 pkgver=${__basekernel}.${_minor}
-#_clearver=${__basekernel}.12-578
+#_clearver=${__basekernel}.1-578
 _clearver=2dceb29264145db81698e2d07778dd57c28d4b7a
 pkgrel=1
 arch=('x86_64')
@@ -93,9 +93,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
+sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '5c53d2e38208c1616c4b7139a666e91d87d5e10538b70a4f410b5f11e187866a'
+            '31f2f5309d99db632160538d43cf737166ae8b24c1b8091522ca1f9a804c25a1'
             'SKIP'
             'SKIP'
             'f0d2492f4561e2559f6c9471b231cb8262d45762c0e7cccf787be5c189b4e2d6'
@@ -114,7 +114,7 @@ prepare() {
   patch -p1 -i ../patch-${pkgver}
 
   # Apply clearlinux patches
-  for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0115|^Patch0500|^Patch0504|^Patch200' | sed -n 's/.*: //p'); do
+  for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0115|^Patch200|^Patch300|^Patch0500' | sed -n 's/.*: //p'); do
     msg "Applying ${i}"
     patch -p1 -i "$srcdir/clearlinux/${i}"
   done
