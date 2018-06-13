@@ -10,7 +10,7 @@ license=('MIT')
 source=("$url/releases/download/$pkgver/linux_386_$pkgname"
   "$url/releases/download/$pkgver/linux_amd64_$pkgname")
 noextract=(${source[@]%%::*})
-sha1sums=('3155c17989994b8ec63104356a404e4cdf69072a' 'b7f0666c2be7be34a6cc55f5cb6979f2a7cb49df')
+sha1sums=('6d0681d54c972ef779f210dd7d3f79aff9729a11' '07f4321c4e3d317042f3040ff9b05b38ffefcd15')
 package() {
   mkdir -p ${srcdir}/${pkgname}-${pkgver}
   cd "${srcdir}/${pkgname}-${pkgver}"
