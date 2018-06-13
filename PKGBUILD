@@ -6,9 +6,11 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 
-_stable_branch="v4_0_x"
+_branch1=$(git ls-remote -t --refs https://github.com/qbittorrent/qBittorrent.git | awk '{print $2}' | LC_ALL=C sort -bfV | tail -n1 | sed 's/[^0-9,.]*//g')
+_stable_branch=$(_branch2=${_branch1//./_}; _branch3="${_branch2%*_*}"; printf "v%s_x" "$_branch3")
+#_stable_branch="v4_0_x"
 pkgname=qbittorrent-stable-git
-pkgver=4.0.3.r34.g239d14fd1
+pkgver=4.1.1.r0.gea5a29018
 pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. Built from source."
 arch=('i686' 'x86_64')
