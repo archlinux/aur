@@ -1,0 +1,35 @@
+pkgbase = r-dimred
+	pkgdesc = A Framework for Dimensionality Reduction
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=dimRed
+	arch = x86_64
+	license = GPL3
+	license = custom
+	depends = r
+	depends = r-drr
+	optdepends = r-rann
+	optdepends = r-rspectra
+	optdepends = r-rtsne
+	optdepends = r-coranking
+	optdepends = r-diffusionmap
+	optdepends = r-energy
+	optdepends = r-fastica
+	optdepends = r-ggplot2
+	optdepends = r-igraph
+	optdepends = r-kernlab
+	optdepends = r-lle
+	optdepends = r-loe
+	optdepends = r-optimx
+	optdepends = r-pcapp
+	optdepends = r-rgl
+	optdepends = r-scales
+	optdepends = r-scatterplot3d
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	optdepends = r-vegan
+	source = https://cran.r-project.org/src/contrib/dimRed_0.1.0.tar.gz
+	md5sums = 0f8818edd6a9b663ddf5d1e6a28dd8bc
+
+pkgname = r-dimred
+
