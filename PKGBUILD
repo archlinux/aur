@@ -3,7 +3,7 @@
 
 pkgname='mythes-en-us'
 pkgver=20060306
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="http://wiki.services.openoffice.org/wiki/Dictionaries#English_.28AU.2CCA.2CGB.2CNZ.2CUS.2CZA.29"
 license=('LGPL')
@@ -11,7 +11,7 @@ pkgdesc="English thesaurus (en_US only)"
 optdepends=('libmythes: offers thesaurus library functions')
 conflicts=('mythes-en')
 # Fedora uses http://www.danielnaber.de/wn2ooo/ but it doesn't look more fresh
-source=("http://vesta.informatik.rwth-aachen.de/ftp/pub/mirror/OpenOffice/contrib/dictionaries/thes_en_US_v2.zip")
+source=("http://www.mirrorservice.org/sites/download.openoffice.org/contrib/dictionaries/thes_en_US_v2.zip")
 sha256sums=('0e1362f89572ec50aa46ca2db4980356b7c759a5a5610e892802a28427425a3b')
 
 package() {
