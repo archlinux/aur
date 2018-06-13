@@ -1,6 +1,6 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
 _cranname=stringi
-_cranver=1.2.2
+_cranver=1.2.3
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-stringi
 pkgver=${_cranver//[:-]/.}
@@ -14,7 +14,7 @@ depends=('r' )
 
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('815e5ffc073eea5e10cf56a1af12facc')
+md5sums=('20ea105bdfb3577ac25b316c2274e1c7')
 
 build(){
     R CMD INSTALL ${_pkgtar} -l $srcdir
