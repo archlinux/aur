@@ -10,8 +10,8 @@ url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
 depends=('hicolor-icon-theme'
          'libgl'
-         'libjpeg'
          'libgme'
+         'libjpeg'
          'sdl2')
 makedepends=('cmake'
              'desktop-file-utils'
@@ -35,22 +35,30 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'libsndfile: WAV/FLAC/OGG audio support'
             'mpg123: MP3 audio support'
             'openal: in-game sound'
+            'soundfont-fluid: FluidR3 soundfont for FluidSynth'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
-            'timidity++: Timidity MIDI device'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
 provides=("${_name}")
 conflicts=("${_name}")
 source=("${_name}::git://github.com/raa-eruanna/${_name}.git"
-        "${_name}.desktop")
+        "${_name}.desktop"
+        '0001-Fix-soundfont-search-path.patch')
 sha256sums=('SKIP'
-            '0b3bcbe2cdebda2fed887b796f4ff0fa51f3d544e80cab16b3b1cbd7813b7e04')
+            '0b3bcbe2cdebda2fed887b796f4ff0fa51f3d544e80cab16b3b1cbd7813b7e04'
+            '26cd2fa2285bcf4c9147a7f1763c217c3e7056bd4a729824f9af0104f6f410c9')
 
 pkgver() {
     cd $_name
 
     git describe --tags --match 'q*' | sed -r 's/^q//;s/-/+/g'
+}
+
+prepare() {
+    cd $_name
+
+    patch -p1 -i"$srcdir"/0001-Fix-soundfont-search-path.patch
 }
 
 build() {
@@ -71,11 +79,13 @@ package() {
     cd $_name
 
     make install DESTDIR="$pkgdir"
+    install -D -m644 soundfonts/gzdoom.sf2 \
+            "$pkgdir"/usr/share/$_name/soundfonts/gzdoom.sf2
 
     desktop-file-install --dir="$pkgdir"/usr/share/applications \
                          "$srcdir"/${_name}.desktop
     install -D -m644 src/posix/zdoom.xpm \
-            "$pkgdir"/usr/share/icons/hicolor/48x48/apps/${_name}.xpm
+            "$pkgdir"/usr/share/icons/hicolor/256x256/apps/${_name}.xpm
 
     install -d "$pkgdir"/usr/share/licenses
     ln -s /usr/share/doc/$_name/licenses "$pkgdir"/usr/share/licenses/$pkgname
