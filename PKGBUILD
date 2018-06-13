@@ -46,8 +46,8 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  sed -i -e "/update_modules/d" -e "s/unicode/str/g" -e "/reload\|setdefaultencoding/d" bazarr.py
-  sed -i "s/unicode/str/g" get_series.py
+  sed -i "/reload\|setdefaultencoding/d" bazarr.py
+  /usr/bin/2to3 -w -n .
 }
 
 package() {
