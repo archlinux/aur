@@ -1,7 +1,7 @@
 # Current Maintainer: sigmacool
 # Original Packager: sigmacool
 
-pkgname=lanshare-git
+pkgname=lanshare
 pkgver=1.2.1
 pkgrel=1
 pkgdesc="LAN Share is a cross platform local area network file transfer application, built using Qt GUI framework."
