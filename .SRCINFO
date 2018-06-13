@@ -1,0 +1,27 @@
+pkgbase = r-robustbase
+	pkgdesc = Basic Robust Statistics
+	pkgver = 0.93.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=robustbase
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-deoptimr
+	optdepends = r-robust
+	optdepends = r-fit.models
+	optdepends = r-mpv
+	optdepends = r-xtable
+	optdepends = r-ggplot2
+	optdepends = r-ggally
+	optdepends = r-rcolorbrewer
+	optdepends = r-reshape2
+	optdepends = r-sfsmisc
+	optdepends = r-catdata
+	optdepends = r-doparallel
+	optdepends = r-foreach
+	optdepends = r-skewt
+	source = https://cran.r-project.org/src/contrib/robustbase_0.93-0.tar.gz
+	md5sums = 532028dbc82bc3d2903ba667fd989bfa
+
+pkgname = r-robustbase
+
