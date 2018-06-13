@@ -5,7 +5,6 @@ pkgbase = gr-limesdr
 	url = https://github.com/myriadrf/gr-limesdr
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = cmake
 	depends = boost
 	depends = gnuradio

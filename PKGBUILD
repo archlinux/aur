@@ -13,7 +13,7 @@ optdepends=(
   'python2: python bindings'
 )
 depends=('boost' 'gnuradio' 'limesuite')
-makedepends=('git' 'cmake')
+makedepends=('cmake')
 provides=('gr-limesdr')
 conflicts=('gr-limesdr')
 source=("$url/archive/v$_gitver.tar.gz")
