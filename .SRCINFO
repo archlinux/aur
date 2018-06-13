@@ -1,0 +1,18 @@
+pkgbase = r-ddalpha
+	pkgdesc = Depth-Based Classification and Calculation of Data Depth
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ddalpha
+	arch = x86_64
+	license = GPL2
+	depends = r
+	depends = r-robustbase
+	depends = r-sfsmisc
+	depends = r-geometry
+	depends = r-rcpp>=0.11.0
+	depends = r-bh
+	source = https://cran.r-project.org/src/contrib/ddalpha_1.3.3.tar.gz
+	md5sums = 1daa14e9b630d0f4a7f36d18d1cd3ce6
+
+pkgname = r-ddalpha
+
