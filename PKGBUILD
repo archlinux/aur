@@ -46,7 +46,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  sed -i -e "/update_modules/d" -e "s/unicode/str/g" bazarr.py
+  sed -i -e "/update_modules/d" -e "s/unicode/str/g" -e "/reload/d" bazarr.py
   sed -i "s/unicode/str/g" get_series.py
 }
 
