@@ -3,7 +3,7 @@
 pkgname=haskell-gtk-strut
 _hkgname=gtk-strut
 pkgver=0.1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Libary for creating strut windows with gi-gtk."
 url=https://hackage.haskell.org/package/gi-glib
 license=('LGPL-2.1')

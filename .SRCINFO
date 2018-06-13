@@ -1,7 +1,7 @@
 pkgbase = haskell-gtk-strut
 	pkgdesc = Libary for creating strut windows with gi-gtk.
 	pkgver = 0.1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/gi-glib
 	arch = i686
 	arch = x86_64
