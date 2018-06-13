@@ -1,7 +1,7 @@
 pkgbase = fingerprint-gui
 	pkgdesc = Application for fingerprint-based authentication, automatically support UPEK fingerprint readers with non-free library
 	pkgver = 1.09
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.ullrich-online.cc/fingerprint/
 	install = fingerprint-gui.install
 	arch = i686

@@ -4,7 +4,7 @@
 
 pkgname=fingerprint-gui
 pkgver=1.09
-pkgrel=5
+pkgrel=6
 pkgdesc="Application for fingerprint-based authentication, automatically support UPEK fingerprint readers with non-free library"
 arch=('i686' 'x86_64')
 url="http://www.ullrich-online.cc/fingerprint/"
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}-qt5"
-  qmake PREFIX=/usr LIB=/usr/lib
+  qmake PREFIX=/usr LIB=/usr/lib QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${CXXFLAGS}"
   make
 }
 
