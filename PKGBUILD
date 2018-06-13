@@ -3,7 +3,7 @@
 pkgname=python-glue-core
 _pyname=glue-core
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linked Data Visualizations Across Multiple Files -- core library"
 arch=('i386' 'x86_64')
 url="http://glueviz.org/"
