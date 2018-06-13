@@ -1,9 +1,9 @@
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=mylar-git
-pkgver=r1072.9c65a0d
-pkgrel=2
+pkgver=r1169.6ab1715
+pkgrel=1
 pkgdesc="Comic book downloader for usenet and torrents"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/evilhero/mylar"
 license=('GPL3')
 depends=('python2')
