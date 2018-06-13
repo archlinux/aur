@@ -5,11 +5,11 @@
 
 _pkgname=librime
 pkgname=$_pkgname-git
-pkgver=1.2.10.r3.g9e1114e5
+pkgver=1.3.1.r7.g99573e36
 pkgrel=1
 pkgdesc="Rime input method engine"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/rimeime/"
+url="http://rime.im/"
 license=('GPL3')
 depends=('boost-libs' 'opencc' 'yaml-cpp' 'leveldb' 'google-glog' 'marisa')
 optdepends=('brise: Rime schema repository')
