@@ -6,12 +6,13 @@ _hkgname=HStringTemplate
 # PKGBUILD options/directives
 pkgname=haskell-hstringtemplate
 pkgver=0.8.7
-pkgrel=2
+pkgrel=3
 license=(BSD3)
 pkgdesc="StringTemplate implementation in Haskell."
 url="http://hackage.haskell.org/package/${_hkgname}"
 arch=('i686' 'x86_64')
-depends=("ghc"
+makedepends=('ghc')
+depends=("ghc-libs"
          "haskell-blaze-builder"
          "haskell-mtl"
          "haskell-old-locale"
