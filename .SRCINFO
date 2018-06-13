@@ -18,6 +18,7 @@ pkgbase = python-glue-core
 	depends = python-qtconsole
 	depends = python-dill
 	depends = python-h5py
+	depends = python-mpl-scatter-density
 	source = https://files.pythonhosted.org/packages/c1/5b/abcfa7d826d58c1016d51306b11cb994b20dd11ecb1a35f6c80f095758c7/glue-core-0.13.2.tar.gz
 	sha256sums = 9a52bdbfac355579caed2735ba7644113d861ce2c4e084830c99a69374043495
 
