@@ -1,0 +1,18 @@
+pkgbase = r-drr
+	pkgdesc = Dimensionality Reduction via Regression
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=DRR
+	arch = any
+	license = GPL3
+	license = custom
+	depends = r
+	depends = r-kernlab
+	depends = r-cvst
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/DRR_0.0.3.tar.gz
+	md5sums = 3642d5895c4f82061298b5e617785b0d
+
+pkgname = r-drr
+
