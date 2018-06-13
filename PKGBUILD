@@ -2,7 +2,7 @@
 
 _pkgname=bazarr
 pkgname=$_pkgname-git
-pkgver=r360.4c352b8
+pkgver=r444.c64c4ce
 pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr."
 arch=('any')
@@ -21,6 +21,7 @@ depends=('python'
          'python-pycountry'
          'python-requests'
          'subliminal'
+         'python-tzlocal'
          'python-urllib3'
          'python-waitress'
          'python-langdetect'
@@ -35,7 +36,7 @@ source=("git+https://github.com/morpheus65535/bazarr"
         "bazarr.sysusers")
 sha256sums=('SKIP'
             '47f59d5acf0df99d8dabfec617fdc57d7620d7843ce871dedc7f46cdae9c7420'
-            '9e911b1498fe3eb68ee665ec8640c2636ab94822abe86aa9b4e816755e80e5ba'
+            'a87cb97e29a72b6fa7c8e48b5044a8dd70efea717ef8991c3bd11fb848b31166'
             '288dbffb34c13cc6e3d599144138dd5d0de2ef40807649e3641669a0cb0788fa')
 
 pkgver() {
