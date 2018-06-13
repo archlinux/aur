@@ -2,8 +2,8 @@
 
 
 pkgname=octopi-kde-git
-_pkgver=0.8.1
-pkgver=0.8.1.1398
+_pkgver=0.9.0
+pkgver=0.9.0.1408
 pkgrel=1
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs (git version for KDE)"
 url="https://github.com/aarnt/octopi"
@@ -22,7 +22,7 @@ conflicts=('octopi' 'octopi-git' 'octopi-notifier-frameworks' 'octopi-notifier-q
            'octopi-pacmanhelper')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/aarnt/octopi.git"
-        "icons::git+https://github.com/kikadf/octopicons.git"
+        "icons::git+https://gitlab.com/kikadf/octopicons.git"
         "https://code.chakralinux.org/packages/desktop/raw/master/octopi/0001-remove-qtermwidget.patch")
 md5sums=('SKIP'
          'SKIP'
