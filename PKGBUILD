@@ -7,6 +7,7 @@ arch=(any)
 url="https://github.com/myriadrf/LimeSuite"
 license=('Apache')
 depends=('sqlite3' 'wxgtk3' 'opengl-driver' 'libusb>=1.0' 'soapysdr')
+optdepends=('wget: download firmware messages')
 makedepends=('cmake')
 provides=('limesuite' 'limesdr' 'soapylms7')
 conflicts=('limesuite' 'limesdr' 'soapylms7')

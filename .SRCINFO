@@ -11,6 +11,7 @@ pkgbase = limesuite
 	depends = opengl-driver
 	depends = libusb>=1.0
 	depends = soapysdr
+	optdepends = wget: download firmware messages
 	provides = limesuite
 	provides = limesdr
 	provides = soapylms7
