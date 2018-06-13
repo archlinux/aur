@@ -45,7 +45,7 @@ source=('octopi-repoeditor.desktop'
         "icons::git+https://gitlab.com/kikadf/octopicons.git")
 sha256sums=('131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef'
             'bdf668ae3bcbac4bf908d96ce4115bac77bf8d4e58796d12fc2cd4e8ee8294e7'
-            '70a2fd1021fe2e2e00a206bd42e58518259babdce4f7db5f2e511142aa8c841f'
+            '18d3ee70f520045035c5d9ede6dc5e6121f0f258fe4eaa743551aaf6bd9b0181'
             'SKIP')
 if [ "${USE_SOURCE}" = "" ]; then
 	source+=("https://github.com/aarnt/${pkgname}/archive/v${pkgver}.tar.gz")
