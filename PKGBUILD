@@ -1,5 +1,5 @@
-# Maintainer: Pico Paco Nano <founderofjp@gmail.com>
-# Contributer: felix.s <felix.von.s@posteo.de>
+# Contributor: Pico Paco Nano <founderofjp@gmail.com>
+# Contributpr: felix.s <felix.von.s@posteo.de>
 pkgbase=weborf
 pkgname=(weborf qweborf)
 pkgver=0.14
@@ -9,11 +9,11 @@ arch=(i686 x86_64)
 license=(GPL3)
 source=(
 	"https://github.com/ltworf/weborf/releases/download/${pkgver}/weborf_${pkgver}.orig.tar.gz"
-#	"https://github.com/ltworf/weborf/releases/download/${pkgver}/weborf_${pkgver}.orig.tar.gz.asc"
+	"https://github.com/ltworf/weborf/releases/download/${pkgver}/weborf_${pkgver}.orig.tar.gz.asc"
 )
 sha256sums=(
 	'921f12537f685c067571dc6252e2ccc09a9068239b37f565f50b1eeccb901359'
-#	'SKIP'
+	'SKIP'
 )
 #validpgpkeys=('42748B9E76D899799E1FBE14B3A7CF0C801886CF')
 # Salvo 'LtWorf' Tomaselli (many e-mail addresses)

@@ -7,7 +7,9 @@ pkgbase = weborf
 	license = GPL3
 	makedepends = python-pyqt5
 	source = https://github.com/ltworf/weborf/releases/download/0.14/weborf_0.14.orig.tar.gz
+	source = https://github.com/ltworf/weborf/releases/download/0.14/weborf_0.14.orig.tar.gz.asc
 	sha256sums = 921f12537f685c067571dc6252e2ccc09a9068239b37f565f50b1eeccb901359
+	sha256sums = SKIP
 
 pkgname = weborf
 	pkgdesc = A lightweight web server designed for rapidly sharing files over HTTP
