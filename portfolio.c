@@ -273,6 +273,34 @@ void portfolio_print_all(Info_Array* portfolio_data) {
     noecho(); // Don't echo keystrokes
     keypad(stdscr, TRUE); // Enables extra keystrokes
     curs_set(FALSE); // Hides cursor
+    start_color();
+    init_pair(2, COLOR_WHITE, COLOR_BLACK); // Init black background, white foreground
+    bkgd(COLOR_PAIR(2)); // set background/foreground
+    refresh();
+
+    int rows, cols;
+    getmaxyx(stdscr, rows, cols);
+    if (cols < 110) {
+        puts("Terminal too small.");
+        endwin();
+        return;
+    }
+
+    WINDOW* header_window = newwin(1, cols, 0, 0), * list_window, * total_window;
+    int scroll_on = portfolio_data->length > (size_t) rows - 3;
+    if (scroll_on)
+        list_window = newwin(rows - 3, cols, 1, 0);
+    else list_window = newwin((int) portfolio_data->length, cols, 1, 0);
+    if (scroll_on)
+        total_window = newwin(1, cols, rows - 1, 0);
+    else total_window = newwin(1, cols, (int) portfolio_data->length + 2, 0);
+
+    int sort_option = SORT_ALPHA; // Defaults to sort alphabetically
+    int highlight_index = HIGHLIGHT_NONE; // Defaults to no highlight
+    char highlight_sym[SYMBOL_MAX_LENGTH]; // Symbol of highlighted index
+    int scroll_index = 0; // Defaults to first index
+    int ch = 0; // getch() data from keyboard
+
     double total_owned = 0, total_spent = 0, total_profit_1d = 0, total_profit_7d = 0, total_profit_30d = 0;
     for (size_t i = 0; i < portfolio_data->length; i++) { // Add collected values to totals
         total_owned += portfolio_data->array[i]->current_value;
@@ -282,49 +310,58 @@ void portfolio_print_all(Info_Array* portfolio_data) {
         total_profit_30d += portfolio_data->array[i]->profit_30d;
     }
 
-    int sort_option = SORT_ALPHA; // Defaults to sort alphabetically
-    int highlight_index = HIGHLIGHT_NONE;
-    char highlight_sym[SYMBOL_MAX_LENGTH];
     // For printing/formatting categories
     char* sort_categories_str[] = {"SYMBOL", "VALUE", "SPENT", "PROFIT", "(%)", "24H", "(%)", "7D", "(%)", "30D", "(%)"}
     , * sort_spacing_str[] = {"    ", "    ", "   ", "       ", "      ", "       ", "       ", "       ", "      ",
                               "       ", "\n"};
-    int ch = 0; // getch() data from keyboard
-    Info* info;
     do {
-        portfolio_sort(portfolio_data, sort_option); // Sort security array
-        move(0, 0);
-        attron(A_BOLD); // Bold categories
-        printw("  AMOUNT ");
+        /** HEADER **/
+        wattron(header_window, A_BOLD); // Bold categories
+        mvwprintw(header_window, 0, 0, "  AMOUNT ");
         for (int i = 0; i < SORT_PROFIT_30D_PERCENT + 1; i++) {
             if (sort_option == i) // Highlight current sorting category
-                attron(A_STANDOUT);
-            printw("%s", sort_categories_str[i]);
+                wattron(header_window, A_STANDOUT);
+            wprintw(header_window, "%s", sort_categories_str[i]);
             if (sort_option == i)
-                attroff(A_STANDOUT);
-            printw("%s", sort_spacing_str[i]);
+                wattroff(header_window, A_STANDOUT);
+            wprintw(header_window, "%s", sort_spacing_str[i]);
         }
-        attroff(A_BOLD);
+        wattroff(header_window, A_BOLD);
+        wrefresh(header_window);
 
-        for (size_t i = 0; i < portfolio_data->length; i++) {
-            if (highlight_index == (signed) i)
-                attron(A_BOLD);
+        /** LIST **/
+        portfolio_sort(portfolio_data, sort_option); // Sort using sort_option
+
+        Info* info;
+        for (int i = scroll_index; i < (int) portfolio_data->length && i < getmaxy(list_window) + scroll_index; i++) {
+            if (highlight_index == i) // Bold highlighted index
+                wattron(list_window, A_BOLD);
             info = portfolio_data->array[i]; // Print security data one at a time
-            printw("%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
+            mvwprintw(list_window, i - scroll_index, 0, "%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf "
+                                         "(%6.2lf%%) %8.2lf (%6.2lf%%)\n",
                    info->amount, info->symbol, info->current_value, info->total_spent, info->profit_total,
                    info->profit_total_percent, info->profit_last_close, info->profit_last_close_percent,
                    info->profit_7d, info->profit_7d_percent, info->profit_30d, info->profit_30d_percent);
-            if (highlight_index == (signed) i)
-                attroff(A_BOLD);
+            if (highlight_index == i)
+                wattroff(list_window, A_BOLD);
         }
-        attron(A_BOLD); // Bold totals
-        printw("\n         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)"
+        wrefresh(list_window);
+
+        /** TOTALS **/
+        wattron(total_window, A_BOLD); // Bold totals
+        mvwprintw(total_window, 0, 0, "         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf "
+                                    "(%6.2lf%%) %8.2lf (%6.2lf%%)"
                , total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,
                total_profit_1d, 100 * total_profit_1d / total_spent, total_profit_7d,
                100 * total_profit_7d / total_spent, total_profit_30d, 100 * total_profit_30d / total_spent);
-        attroff(A_BOLD);
+        wattroff(total_window, A_BOLD);
+        wrefresh(total_window);
 
-        ch = getch(); // Get keyboard input -- also flushes output buffer
+
+        /** USER INPUT **/
+        ch = getch(); // Get keyboard input
+
+        // If key right and not right-most sort option
         if (ch == KEY_RIGHT && sort_option != SORT_PROFIT_30D_PERCENT) { // key RIGHT -- moves sort category right
             if (highlight_index != HIGHLIGHT_NONE) {
                 strcpy(highlight_sym, portfolio_data->array[highlight_index]->symbol);
@@ -334,6 +371,8 @@ void portfolio_print_all(Info_Array* portfolio_data) {
                     if (strcmp(portfolio_data->array[i]->symbol, highlight_sym) == 0)
                         highlight_index = (int) i; // Make sure the same security stays highlighted
             } else sort_option++;
+
+            // If key left and not left-most sort option
         } else if (ch == KEY_LEFT && sort_option != SORT_ALPHA) { // key LEFT -- moves sort category left
             if (highlight_index != HIGHLIGHT_NONE) {
                 strcpy(highlight_sym, portfolio_data->array[highlight_index]->symbol);
@@ -343,16 +382,18 @@ void portfolio_print_all(Info_Array* portfolio_data) {
                     if (strcmp(portfolio_data->array[i]->symbol, highlight_sym) == 0)
                         highlight_index = (int) i; // Make sure the same security stays highlighted
             } else sort_option--;
-        } else if (ch == KEY_DOWN) {
+
+            // If key down and not highlighting last index
+        } else if (ch == KEY_DOWN && highlight_index < (int) portfolio_data->length - 1) {
             highlight_index++;
-            if (highlight_index == (signed) portfolio_data->length) // Wrap around
-                highlight_index = 0;
-        } else if (ch == KEY_UP) {
+            if (scroll_on && highlight_index == getmaxy(list_window) + scroll_index) // Scroll down
+                scroll_index++;
+            // If key down and not highlighting first index
+        } else if (ch == KEY_UP && highlight_index > 0) {
             highlight_index--;
-            if (highlight_index < 0) // Wrap around
-                highlight_index = (signed) portfolio_data->length -1;
-        } else if (ch == KEY_ESCAPE)
-            highlight_index = HIGHLIGHT_NONE;
+            if (scroll_on && highlight_index == scroll_index - 1) // Scroll up
+                scroll_index--;
+        }
     } while (ch != 'q'); // "q" to quit
     endwin();
     api_info_array_destroy(&portfolio_data);
