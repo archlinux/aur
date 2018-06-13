@@ -1,0 +1,20 @@
+pkgbase = python-systemd-dbus-git
+	pkgdesc = Python wrapper for systemd system and session manager dbus interfaces
+	pkgver = 0.1.r29.d930fea
+	pkgrel = 1
+	url = https://github.com/wiliamsouza/python-systemd
+	arch = any
+	license = LGPL-2.1
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = systemd-dbus::git+https://github.com/wiliamsouza/python-systemd.git
+	sha1sums = SKIP
+
+pkgname = python-systemd-dbus-git
+	provides = python-systemd-dbus
+	conflicts = python-systemd-dbus
+
+pkgname = python2-systemd-dbus-git
+	provides = python2-systemd-dbus
+	conflicts = python2-systemd-dbus
+
