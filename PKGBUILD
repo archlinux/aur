@@ -21,8 +21,8 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 package() {
 
   tar xf  data.tar.xz 
-  chmod -R 755 usr/
-  chmod -R 775 usr/lib/LANShare
+  #chmod -R 755 usr/
+  #chmod -R 775 usr/lib/LANShare
   mv usr/ "$pkgdir"
 
   install -Dm 0755 "$pkgdir/usr/lib/LANShare/LANShare" "$pkgdir/usr/bin/LANShare"
