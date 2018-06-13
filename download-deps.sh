@@ -112,6 +112,7 @@ downloaddeps() {
     local target="$(onlinebestmatch "$package" "$semverspec")"
     recursivedownloaddeps "$target"
   done
+  recursivedownloaddeps "babel-core-6.26.0.tgz"
 }
 
 createlist() {
