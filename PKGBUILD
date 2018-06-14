@@ -1,7 +1,7 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=atelier-git
-confilicts=('atelier')
-pkgver=bac5626
+conflicts=('atelier')
+pkgver=b53cb3c
 pkgrel=1
 pkgdesc="KDE 3D Printer Host"
 arch=('i686' 'x86_64')

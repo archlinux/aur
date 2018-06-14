@@ -1,6 +1,6 @@
 pkgbase = atelier-git
 	pkgdesc = KDE 3D Printer Host
-	pkgver = bac5626
+	pkgver = b53cb3c
 	pkgrel = 1
 	url = https://www.kde.org/
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = atelier-git
 	depends = qwt
 	depends = qt5-multimedia
 	depends = gst-plugins-good
+	conflicts = atelier
 	source = git://anongit.kde.org/atelier.git
 	md5sums = SKIP
 
