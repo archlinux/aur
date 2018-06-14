@@ -1,13 +1,14 @@
 # Alloy is developed by the Software Design Group at MIT.
-# See http://sdg.csail.mit.edu/ or http://alloy.mit.edu
-# Maintainer: Ivan Kuraj <kaptoxic _at_ yahoo _dot_ com >
+# See https://sdg.csail.mit.edu/ or http://alloytools.org
+# Maintainer: Markus Legner <markus@legner.ch>
+# Contributor: Ivan Kuraj <kaptoxic _at_ yahoo _dot_ com >
 # Contributor: Rodney Price <rod@thirdoption.info>
 
 pkgname="alloy"
 pkgver=4.2.5
 pkgrel=1
 pkgdesc="A lightweight modelling language for software design."
-url="http://alloy.mit.edu/alloy/"
+url="http://alloytools.org/"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('java-runtime')
@@ -16,7 +17,7 @@ conflicts=()
 replaces=()
 backup=()
 install=
-source=("http://alloy.mit.edu/alloy/downloads/alloy4.2_2015-02-22.jar"
+source=("http://alloytools.org/download/alloy4.2_2015-02-22.jar"
         "alloy" "alloy.png" "alloy.desktop")
 md5sums=('de970bf9dad3819532422629b48ae296'
          '51313a5e566f50ef580231d7e3596d1d'
