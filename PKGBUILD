@@ -32,7 +32,7 @@ build () {
     mkdir -p deps/lib64
     ln -s lib64 deps/lib
 
-	cmake ..
+	cmake -DTESTS=OFF -DTOOLS=OFF ..
 	cmake --build .
 }
 
