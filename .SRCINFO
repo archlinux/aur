@@ -1,0 +1,23 @@
+pkgbase = grumpy-irc-git
+	pkgdesc = Modern, yet oldschool IRC client with distributed core, written in C++
+	pkgver = v1.0.0.alpha.r205.g61d441a
+	pkgrel = 1
+	url = https://github.com/grumpy-irc/grumpy
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = unzip
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	provides = grump-irc
+	provides = libircclient
+	conflicts = grumpy-irc
+	conflicts = libircclient
+	source = grumpy-irc::git+https://github.com/grumpy-irc/grumpy
+	source = https://patch-diff.githubusercontent.com/raw/grumpy-irc/libgp/pull/1.diff
+	sha256sums = SKIP
+	sha256sums = 74ba86bd7e648d8680708636488aea77e9f7313af1f5780d8292a3618e29b1c3
+
+pkgname = grumpy-irc-git
+
