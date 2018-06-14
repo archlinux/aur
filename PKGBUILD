@@ -1,6 +1,6 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=blackchocobo
-confilicts=('blackchocobo-git')
+conflicts=('blackchocobo-git')
 pkgver=1.9.90
 pkgrel=1
 pkgdesc="Final Fantasy 7 Save Editor"
