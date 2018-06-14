@@ -406,8 +406,9 @@ void portfolio_print_stock(const char* symbol) {
 
     Json* jobj = json_tokener_parse(pString->data);
     size_t i = 0, len = json_object_array_length(jobj);
-    while (i++ < len && strcmp(json_object_get_string(json_object_object_get(
-            json_object_array_get_idx(jobj, i), "Symbol")), symbol) != 0);
+    while (i < len && strcmp(
+            json_object_get_string(json_object_object_get(json_object_array_get_idx(jobj, i), "Symbol")), symbol) != 0)
+        i++;
 
     Info* info = NULL;
     if (i != len)
