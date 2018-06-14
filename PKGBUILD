@@ -1,6 +1,6 @@
 # Maintainer: Papajoker <papajoker [at] manjaro [dot] fr>
 pkgname=pacnew-chaser
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 url="https://www.manjaro.fr/forum/"
 pkgdesc="finding .pacnew files, compare and load merge (qt) - dev version"
@@ -15,7 +15,7 @@ source=("https://www.manjaro.fr/forum/datas/pacnew-chaser-qt.tar.gz")
 conflicts=('pacnew-chaser-gtk')
 replaces=('pacnew-chaser-gtk')
 #install='.install' 
-md5sums=('adffaa8ec36383634c748fec20da6710')
+md5sums=('8320ceb615803ea1dd68c890d323b6ae')
 
 package() {
   cd "$srcdir"
