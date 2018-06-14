@@ -22,7 +22,7 @@ source=(
         'rpcs3-common::git+https://github.com/RPCS3/common.git'
         'rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git'
         'rpcs3-llvm::git+https://github.com/RPCS3/llvm.git'
-        'rpcs3-yaml-cpp::git+https://github.com/jbeder/yaml-cpp.git'
+        'git+https://github.com/jbeder/yaml-cpp.git'
         'git+https://github.com/kobalicek/asmjit.git'
         'git+https://github.com/Microsoft/GSL.git'
         'git+https://github.com/KhronosGroup/glslang.git'
@@ -61,7 +61,7 @@ prepare() {
   git config submodule.Optional.url ../Optional
   git config submodule.pugixml.url ../pugixml
   git config submodule.xxHash ../xxHash
-  git config submodule.yaml-cpp ../rpcs3-yaml-cpp
+  git config submodule.yaml-cpp ../yaml-cpp
   git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash,yaml-cpp} asmjit Vulkan/glslang llvm
 
   popd
@@ -74,8 +74,6 @@ prepare() {
 
 build() {
   cd build
-
-    #-DCMAKE_EXE_LINKER_FLAGS='-ldl -lyaml-cpp' \
 
   cmake ../rpcs3 \
     -DCMAKE_BUILD_TYPE='Release' \
