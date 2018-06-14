@@ -1,7 +1,7 @@
 # Maintainer: Matthias Riegler <matthias@xvzf.tech>
 pkgname=dataleech
 pkgdesc="Backup plan using ZFS..."
-pkgver=1.0.3
+pkgver=1.0.5
 pkgrel=1
 arch=("any")
 url="https://github.com/xvzf/dataleech"
@@ -10,7 +10,7 @@ depends=("zfs-utils" "python" "python-click" "pv" "openssh" "cronie")
 provides=("dataleech" "superman")
 backup=("etc/dataleech/datasets")
 source=("https://github.com/xvzf/dataleech/archive/${pkgver}.tar.gz")
-sha256sums=("128b48766d5283c0b25f57048566a55d8906294a44e91ae8a73c70322c405ee3")
+sha256sums=("076d17fa5394cd32dfefb20458068a3b04f8552b27d590140a66679aaf37d2b6")
 
 build() {
   cd "${srcdir}/dataleech-${pkgver}/"
