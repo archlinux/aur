@@ -1,21 +1,21 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=edisyn
-_githash="aa653caa498f8cc9bf582cf77279e2568023ad41"
+_githash="71bc00f96dc83e0da3fee31b02bb6e4ad18d21d3"
 pkgname="${_pkgname}-bin"
-pkgver=13
-pkgrel=3
+pkgver=16b
+pkgrel=1
 pkgdesc="A cross-platform synthesizer patch editor library"
 arch=('i686' 'x86_64')
 url="https://github.com/eclab/edisyn/"
 license=('Apache')
-depends=('java-runtime>=7')
+depends=('java-runtime>=8')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://github.com/eclab/edisyn/raw/${_githash}/jar/edisyn.jar"
         "${_pkgname}.desktop"
         "${_pkgname}.sh")
-md5sums=('c4ef78b127533bbf40325bda77f657f1'
+md5sums=('cc3b699ecaf3255de334506b7442a35b'
          '5022b2d274e99ca6704f4dd69e17a1cb'
          'a6f1544c7b08354593f2c5b91258d88c')
 
