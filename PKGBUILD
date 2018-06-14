@@ -21,16 +21,16 @@ sha512sums=('SKIP'
 prepare() {
 	cd "${srcdir}/${_gitname}"
 	git submodule update --init
-    git apply "${srcdir}/catch-by-value-patch.diff"
+	git apply "${srcdir}/catch-by-value-patch.diff"
 }
 
 build () {
 	cd "${srcdir}/${_gitname}"
-    rm -rf build
+	rm -rf build
 	mkdir -p build
 	cd build/
-    mkdir -p deps/lib64
-    ln -s lib64 deps/lib
+	mkdir -p deps/lib64
+	ln -s lib64 deps/lib
 
 	cmake -DTESTS=OFF -DTOOLS=OFF ..
 	cmake --build .
