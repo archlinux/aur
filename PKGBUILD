@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-ex-git
-pkgver=0.0.5.r430.ea1bb3b90
+pkgver=0.0.5.r491.ddded7ba5
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator (with RPCS3 custom LLVM)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/RPCS3/rpcs3'
 license=('GPL2')
 depends=('alsa-lib' 'gcc-libs' 'glew' 'glibc' 'glu' 'libevdev' 'libgl' 'libice'
          'libpng' 'libpulse' 'libsm' 'libx11' 'libxext' 'llvm' 'openal'
-         'qt5-base' 'qt5-declarative' 'vulkan-icd-loader' 'yaml-cpp' 'zlib'
+         'qt5-base' 'qt5-declarative' 'vulkan-icd-loader' 'zlib'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libncursesw.so'
          'libswscale.so' 'libudev.so')
 makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git' 'vulkan-validation-layers')
@@ -22,6 +22,7 @@ source=(
         'rpcs3-common::git+https://github.com/RPCS3/common.git'
         'rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git'
         'rpcs3-llvm::git+https://github.com/RPCS3/llvm.git'
+        'rpcs3-yaml-cpp::git+https://github.com/jbeder/yaml-cpp.git'
         'git+https://github.com/kobalicek/asmjit.git'
         'git+https://github.com/Microsoft/GSL.git'
         'git+https://github.com/KhronosGroup/glslang.git'
@@ -31,6 +32,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -50,7 +52,7 @@ pkgver() {
 prepare() {
   pushd rpcs3
 
-  git submodule init 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit Vulkan/glslang llvm
+  git submodule init 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash,yaml-cpp} asmjit Vulkan/glslang llvm
   git config submodule.asmjit.url ../asmjit
   git config submodule.glslang.url ../glslang
   git config submodule.GSL.url ../GSL
@@ -59,7 +61,8 @@ prepare() {
   git config submodule.Optional.url ../Optional
   git config submodule.pugixml.url ../pugixml
   git config submodule.xxHash ../xxHash
-  git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit Vulkan/glslang llvm
+  git config submodule.yaml-cpp ../rpcs3-yaml-cpp
+  git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash,yaml-cpp} asmjit Vulkan/glslang llvm
 
   popd
 
@@ -72,10 +75,11 @@ prepare() {
 build() {
   cd build
 
+    #-DCMAKE_EXE_LINKER_FLAGS='-ldl -lyaml-cpp' \
+
   cmake ../rpcs3 \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_EXE_LINKER_FLAGS='-ldl -lyaml-cpp' \
     -DCMAKE_SKIP_RPATH='ON' \
     -DUSE_SYSTEM_FFMPEG='ON' \
     -DUSE_SYSTEM_LIBPNG='ON' \
