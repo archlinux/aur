@@ -3,7 +3,7 @@
 _pkgbase=discordrp-mpris
 # _name=${_pkgbase#python-}
 pkgname="${_pkgbase}-git"
-pkgver=0.1.1.r0.g2e15d4e
+pkgver=0.2.0.r0.g6628b6f
 pkgrel=1
 pkgdesc="Discord Rich Presence based on mpris2 media players"
 arch=(any)
@@ -34,5 +34,5 @@ package() {
     python setup.py install --root="$pkgdir/" --optimize=1
 
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 discordrp-mpris.service "${pkgdir}/usr/lib/systemd/user/discordrp-mpris.service"
+    install -D -m644 systemd/discordrp-mpris.service "${pkgdir}/usr/lib/systemd/user/discordrp-mpris.service"
 }
