@@ -1,0 +1,17 @@
+pkgbase = musct-git
+	pkgdesc = Simple configuration unpacker written in python
+	pkgver = 0.0.r0.0
+	pkgrel = 0
+	url = https://gitlab.com/xythrez/musct
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-pyaml
+	optdepends = libyaml: For native yaml parsing
+	provides = musct
+	conflicts = musct
+	source = musct::git+https://gitlab.com/xythrez/musct.git
+	sha256sums = SKIP
+
+pkgname = musct-git
+
