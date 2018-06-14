@@ -13,7 +13,7 @@ OMNETPP_EDITION = Academic Public License -- NOT FOR COMMERCIAL USE
 #
 WITH_QTENV ?= yes
 WITH_OSG ?= yes
-WITH_OSGEARTH ?= yes
+WITH_OSGEARTH ?= no
 WITH_NETBUILDER ?= yes
 WITH_PARSIM ?= yes
 WITH_SYSTEMC ?= no
@@ -157,7 +157,7 @@ QTENV_LDFLAGS = -Wl,-rpath-link=/usr/lib
 OSG_CFLAGS = 
 OSG_LIBS = -losg -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads
 OSGEARTH_CFLAGS = 
-OSGEARTH_LIBS = -losgEarth -losgEarthUtil
+OSGEARTH_LIBS = 
 ZLIB_CFLAGS = 
 ZLIB_LIBS = -lz
 MPI_CFLAGS = -pthread

@@ -7,8 +7,8 @@ _pkgname='omnetpp'
 pkgdesc='OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: QT version'
 url='http://www.omnetpp.org'
 license=('custom')
-depends=(libxml2 qt5-base tcl tk blt jdk8-openjdk openmpi libpcap doxygen graphviz clang openscenegraph osgearth-git)
-makedepends=(sh wget qt5-base cmake gcc bison flex perl openscenegraph osgearth-git)
+depends=(libxml2 qt5-base tcl tk blt jdk8-openjdk openmpi libpcap doxygen graphviz clang openscenegraph)
+makedepends=(sh wget qt5-base cmake gcc bison flex perl openscenegraph)
 arch=('i686' 'x86_64')
 provides=('omnetpp')
 conflicts=('omnetpp')
@@ -28,9 +28,9 @@ source=(OMNeT++.desktop
 omnetpp-${pkgver}-src-linux.tgz::https://www.omnetpp.org/component/jdownloads/send/31-release-test-versions/2331-omnetpp-${_pkgver}-linux)
 
 sha512sums=('a5772a605592ed2db839609f8298d1d71fb9141eb1b30dac584b788414dfe49b250ba803351a3a84f90c6b89f8e09e7b129a037af17c9b94c22dff2003a5edd8'
-'21520f76019cde594f27e4adbc15ebb0ec890f8e265863656f3e261c1864d843a229c30d6309f465fbbae7cb27a2b6e603378bab6b87149bdf629f55a9abf8df'
-'a23a6ebb71c4fa0aa86263a6306378783b9b3cb249e3d7ec1cd7d184b48cd6a57c9974c21d3161aef1806177e379e895838c52e335fae2e8769f6c3befeb13cc'
-'799d9aa8ae5d9804706188ff237f9e662e678fd88fb2da45023fe04f71e67e87243f1df4b6a33e9e3c6fd6e6f1309f779b3c3ad7c6d8ff34f9ceb49116ab3558'
+'94f08a8e03e441a4609d0bfb35b92b4c8c702b7e3f9f39f2455572ef8e50894be781cc33792d50a730e801f232457f140b944f49931910e0d6c7f00b45d0b618'
+'325fd32ca57295ae1968e356146942753d450b167e5b506ff8e802839d525a4e45e91ed2fcbd069ba8ba23ba7903c7a938c2c8276d6eb22428d06a8670a00c97'
+'b4d36b1104b0f341cc133111559ad9af7fb76d80a8281f61ae990e5e0e813fb7bd2ae4a1b73941c53ca87f81b14e5cf7396d1009f4a06d2066910677b73f7d21'
 'c33f06978b91b57b16244ceef7296609f93195ec4a99be98d42fdfb68f223fff26de66aacd0165e94f212bae7b9f5b622c512e92265c660a356195ca876a717d'
 'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1'
 '6104720105bc1bc3903e3530281cbced5ad7a973c9d3e65150ae87418316b1f9b54e02462988d040eb28709cd44adeb3ee5ca74f29e353dd55a9daa0199f52a2'
@@ -43,7 +43,7 @@ build() {
 	cp qtenv.pri ${srcdir}/${_pkgname}-${pkgver}/src/qtenv/
 	cp ver.h ${srcdir}/${_pkgname}-${pkgver}/src/common/
 	cd ${srcdir}/${_pkgname}-${pkgver}
-	#echo WITH_OSGEARTH=no >> configure.user
+	echo WITH_OSGEARTH=no >> configure.user
 	PATH=${srcdir}/${_pkgname}-${pkgver}/bin:$PATH
 	LD_LIBRARY_PATH=${srcdir}/${_pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
 	make
