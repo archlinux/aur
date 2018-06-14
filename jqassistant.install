@@ -1,0 +1,21 @@
+post_install() {
+    if ! getent group jqassistant >/dev/null; then
+        groupadd --system jqassistant
+    fi
+    if ! getent passwd jqassistant >/dev/null; then
+        useradd --system -g jqassistant -d /var/lib/neo4j -s /bin/false jqassistant
+    fi
+    
+    chown -R jqassistant:users /opt/jqassistant/jqassistant
+}
+
+post_upgrade() {
+    if ! getent group jqassistant >/dev/null; then
+        groupadd --system jqassistant
+    fi
+    if ! getent passwd jqassistant >/dev/null; then
+        useradd --system -g jqassistant -d /var/lib/neo4j -s /bin/false jqassistant
+    fi
+    
+    chown -R jqassistant:users /opt/jqassistant/jqassistant
+}
