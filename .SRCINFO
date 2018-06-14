@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-mpdecimal
+	pkgdesc = Package for correctly-rounded arbitrary precision decimal floating point arithmetic (mingw-w64)
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = http://www.bytereef.org/mpdecimal/index.html
+	arch = any
+	license = custom
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://www.bytereef.org/software/mpdecimal/releases/mpdecimal-2.4.2.tar.gz
+	source = msys2-mingw-fixes.patch
+	md5sums = aa63cab5d06a96855a44da2db90a29d9
+	md5sums = c9bc7fb46b559da9ce5cb31f405b5e22
+
+pkgname = mingw-w64-mpdecimal
+
