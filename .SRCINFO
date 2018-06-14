@@ -1,13 +1,13 @@
 pkgbase = anbox-image
 	pkgdesc = Android image for running in Anbox
-	pkgver = 2018.05.23
+	pkgver = 2018.06.12
 	pkgrel = 1
 	epoch = 1
 	url = http://anbox.io/
 	arch = x86_64
 	license = custom
-	source = http://build.anbox.io/android-images/2018/05/23/android_amd64.img
-	sha256sums = cbcb8c4740ed38dbc243122df2d8d87511a9c8dcc162781f2eabb5dc1ea079fe
+	source = http://build.anbox.io/android-images/2018/06/12/android_amd64.img
+	sha256sums = 5c4b8f7caeaf604770e37a29b65c7711b26d009a548b4fac8dfb77585e56dc73
 
 pkgname = anbox-image
 
