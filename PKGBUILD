@@ -7,10 +7,18 @@ arch=('x86_64' 'i686')
 url="https://github.com/syui/twg"
 options=('!strip' '!emptydirs')
 license=('MIT')
-source=("$url/releases/download/$pkgver/linux_386_$pkgname"
-  "$url/releases/download/$pkgver/linux_amd64_$pkgname")
+if [ "`uname -m`" = "x86_64" ];then
+  source=("$url/releases/download/$pkgver/linux_386_$pkgname")
+  sha1sums=('e7202e10d958e1a9ab893fe24765317b18e12609')
+fi
+if [ "`uname -m`" = "i684" ];then
+  source=("$url/releases/download/$pkgver/linux_amd64_$pkgname")
+  sha1sums=('d0de749db19bceb7fbc9212c42e8ecf9a355bc27')
+fi
 noextract=(${source[@]%%::*})
-sha1sums=('e7202e10d958e1a9ab893fe24765317b18e12609' 'd0de749db19bceb7fbc9212c42e8ecf9a355bc27')
+build() {
+  :
+}
 package() {
   mkdir -p ${srcdir}/${pkgname}-${pkgver}
   cd "${srcdir}/${pkgname}-${pkgver}"
