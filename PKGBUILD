@@ -5,14 +5,13 @@ pkgbase="python-keras"
 pkgname=("python-keras" "python2-keras")
 _pkgname="keras"
 pkgver="2.2.0"
-pkgrel=6
+pkgrel=7
 pkgdesc="Deep Learning library (convnets, recurrent neural networks, and more)"
 arch=('any')
 url="https://github.com/fchollet/keras"
 license=('MIT')
-depends=('python' 'python2')
-makedepends=('python-numpy'  'python-scipy'  'python-h5py'  'python-yaml'
-             'python2-numpy' 'python2-scipy' 'python2-h5py' 'python2-yaml'
+makedepends=('python-setuptools' 'python-numpy'  'python-scipy'  'python-h5py'  'python-yaml'
+             'python2-setuptools' 'python2-numpy' 'python2-scipy' 'python2-h5py' 'python2-yaml'
             )
 optdepends=('python-keras-preprocessing: Utilities for working with image data, text data, and sequence data.'
             'python-keras-applications: Reference implementations of popular deep learning models.'
