@@ -1,7 +1,7 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
 pkgname=lc0-client-git
 _pkgname=lc0-client
-pkgver=65
+pkgver=81
 pkgrel=1
 pkgdesc="Client for games generation to train Leela Chess Zero."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://lczero.org/"
 license=('GPLv3')
 depends=('lc0-cudnn-git')
 makedepends=('git' 'go')
-source=("${_pkgname}::git+https://github.com/LeelaChessZero/lczero-client.git")
+source=("${_pkgname}::git+https://github.com/LeelaChessZero/lczero-client.git#branch=master")
 md5sums=('SKIP')
 
 prepare() {
