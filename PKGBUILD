@@ -4,7 +4,7 @@
 
 pkgname=picard
 pkgver=2.0.0beta3
-pkgrel=1
+pkgrel=2
 pkgdesc='Official MusicBrainz tagger'
 url='http://picard.musicbrainz.org/'
 license=('GPL')
@@ -27,4 +27,5 @@ package() {
 	cd "${srcdir}/picard"
 	python setup.py install --root="${pkgdir}"
 	rm "${pkgdir}/usr/picard.in"
+	rm -fr "${pkgdir}"/usr/lib/python*/site-packages/picard-*.egg-info
 }
