@@ -1,26 +1,28 @@
 # Maintainer: kpcyrd <git@rxv.cc>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 _gitname=usbctl
 pkgname=usbctl-git
 pkgver=1.0.r1.g7c5bf0e
-pkgrel=1
-pkgdesc="hardened linux deny_new_usb control"
-url="https://github.com/anthraxx/usbctl"
-depends=('bash' 'usbutils')
-makedepends=('git')
+pkgrel=2
+pkgdesc='Linux-hardened deny_new_usb control'
+url='https://github.com/anthraxx/usbctl'
 arch=('any')
 license=('MIT')
-source=("git+https://github.com/anthraxx/$_gitname.git")
+depends=('linux-hardened' 'bash' 'usbutils' 'coreutils' 'diffutils' 'procps-ng' 'grep' 'util-linux')
+makedepends=('git')
+provides=('usbctl')
+conflicts=('usbctl')
+source=(git+https://github.com/anthraxx/$_gitname.git)
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$_gitname"
+  cd $_gitname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$_gitname"
-
+  cd $_gitname
   install -Dm755 usbctl -t "$pkgdir/usr/bin"
   install -Dm644 contrib/systemd/deny-new-usb.service -t "$pkgdir/usr/lib/systemd/system"
   install -Dm644 contrib/completion/bash/usbctl -t "$pkgdir/usr/share/bash-completion/completions"
