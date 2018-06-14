@@ -1,0 +1,18 @@
+pkgbase = lash
+	pkgdesc = A session management system for JACK and ALSA
+	pkgver = 0.6.0~rc2
+	pkgrel = 13
+	url = http://lash.nongnu.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = gtk2
+	depends = jack
+	depends = python2
+	optdepends = gtk2: For lash_panel, lash_save_button and lash_synth
+	source = https://download.savannah.gnu.org/releases/lash/lash-0.6.0~rc2.tar.bz2
+	source = fix-manual-generation.patch
+	sha512sums = 704e24ccadccb469e820be5fb58dd4d953a8fc2903cd857a290267a87dda596639ec381d5cb7cdfcd715df7d98d6570e52731bddd17f8a3425edd8b699632401
+	sha512sums = 25bb9f97bc6ff7543fea39242bc321b40cd35ba042248671e958348f9e250f810ea1e4753918aceba799b0fdd886184af57a7c497796034b999ca8d6b85e1252
+
+pkgname = lash
+
