@@ -2,9 +2,10 @@
 
 pkgname=i3wsr
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small program to change the name of an i3 workspace based on its contents."
 url="https://github.com/roosta/i3wsr"
+depends=('i3-wm')
 makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
