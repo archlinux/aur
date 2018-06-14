@@ -3,14 +3,14 @@
 
 pkgbase=lua-gumbo-git
 pkgname=(lua-gumbo-git lua52-gumbo-git lua51-gumbo-git)
-pkgver=0.4+331+gc340c15
+pkgver=0.4+350+g54ebc5b
 pkgrel=1
 pkgdesc='Lua HTML5 parser and DOM API'
 arch=(i686 x86_64)
-url="https://craigbarnes.github.io/lua-gumbo/"
+url="https://craigbarnes.gitlab.io/lua-gumbo/"
 license=('Apache')
 makedepends=(git lua lua52 lua51)
-source=(git+https://github.com/craigbarnes/lua-gumbo.git)
+source=(git+https://gitlab.com/craigbarnes/lua-gumbo.git)
 md5sums=(SKIP)
 
 pkgver() {
