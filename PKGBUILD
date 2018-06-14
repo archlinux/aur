@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.17
-_stable=4.17
-_patchver=4.17.1
+_stable=4.17.1
+_patchver=4.17.2
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -28,6 +28,7 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+  0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -35,16 +36,17 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            'a7c0ad433bb92f6ce611c6aa070eccdbc1f38778b00331550f33b152bad98b8e'
+            '7157e8002ffb86af78d884461223454d476caed68e5d8d57c1bad6a78fa7a476'
             'SKIP'
-            '91e7d0ebe6bdbe66a5b523e0181b34b59e1a1c04c4428fb7f84b512fd84bbb08'
+            '31f2f5309d99db632160538d43cf737166ae8b24c1b8091522ca1f9a804c25a1'
             'SKIP'
             '0269d9a56f0d0306c9bd5c179a7e32214b0a1c082d3bca581661203b27305f17'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '0b77e6bef12735bc91e3f0e8232512e973688466f2e8a2c3a93502cb2d4b4eed'
-            '92615acad59cbef9fd43b2710f5a77ffea45a86543ccff1b12eb676a9c8058cc')
+            'e3c08f9b91611186e5ec579187ecea2a0143e5c2dc7ffc30ac6ea6e2b6d130fd'
+            '5403dead9161344b2c01027526146a250147680f4a2d32a54d40c55fc1becc8a'
+            'd55e7de60b12bca26ded4c1bb8eb5860a9092374914a201a0f6a0ed2849d099f')
 
 _kernelname=${pkgbase#linux}
 
@@ -53,7 +55,7 @@ prepare() {
 
   # add upstream patch
   # ONLY comment out for initial rc (ie 4.10 --> 4.10.1rc1) -- needed for all others
-  #patch -p1 -i "../patch-${_stable}"
+  patch -p1 -i "../patch-${_stable}"
 
   # add rc patch
   patch -p1 -i "../$_rcpatch"
@@ -66,6 +68,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+
+  # https://bugs.archlinux.org/task/56780
+  patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
