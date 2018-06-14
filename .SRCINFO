@@ -48,7 +48,7 @@ pkgbase = liquidsoap
 	source = liquidsoap.service
 	source = liquidsoap.tmpfilesd
 	md5sums = SKIP
-	md5sums = 2e355a97b2e9730c6b8f300e59cbeca3
+	md5sums = 1005d51e97eacc4b55cb9daadb331749
 	md5sums = 762d6607ff0889e34b8c874970b38bc9
 	md5sums = f9106e5c42cabc21c4c8464d9b1ad63e
 

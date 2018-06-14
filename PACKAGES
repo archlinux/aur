@@ -77,7 +77,7 @@ ocaml-theora
 ocaml-opus
 
 # FDK-AAC is for AAC and AAC+ encoding
-#ocaml-fdkaac
+ocaml-fdkaac
 
 # FAAD for AAC decoding.
 #ocaml-faad

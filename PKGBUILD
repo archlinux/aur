@@ -21,8 +21,8 @@ conflicts=('liquidsoap-git' 'liquidsoap-full')
 
 prepare() {
 	cd $srcdir/$pkgname-$pkgver-full
-	./bootstrap
-	git submodule update --remote --merge
+	make init
+	make update
 	cp $srcdir/PACKAGES PACKAGES
 }
 
@@ -44,6 +44,6 @@ package() {
 }
 
 md5sums=('SKIP'
-         '2e355a97b2e9730c6b8f300e59cbeca3'
-         '762d6607ff0889e34b8c874970b38bc9'
-         'f9106e5c42cabc21c4c8464d9b1ad63e')
+	'1005d51e97eacc4b55cb9daadb331749'
+	'762d6607ff0889e34b8c874970b38bc9'
+'f9106e5c42cabc21c4c8464d9b1ad63e')
