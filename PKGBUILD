@@ -6,14 +6,14 @@
 _pkgname=kcm-fcitx5
 pkgname=$_pkgname-git
 pkgver=r239.d0d04ea
-pkgrel=1
+pkgrel=1.1
 pkgdesc="KDE Config Module for Fcitx5"
 arch=('i686' 'x86_64')
-url="https://github.com/fcitx/kcm-fcitx5"
+url="https://gitlab.com/fcitx/kcm-fcitx5"
 license=('GPL')
 depends=('fcitx5-qt5-git' 'knewstuff' 'kcmutils')
 makedepends=('extra-cmake-modules' 'python' 'git')
-source=("git+https://github.com/fcitx/kcm-fcitx5.git")
+source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
