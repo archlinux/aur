@@ -1,6 +1,7 @@
-# Maintainer: Flat <flat@imo.uto.moe>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=shinjiru-git
-pkgver=r77.6720a8b
+_pkgname=shinjiru
+pkgver=v3.1.0.r15.g6720a8b
 pkgrel=1
 pkgdesc="Shinjiru is an anime list management tool built with Qt designed to automatically update your progress to AniList and act an desktop manager for AniList."
 arch=('i686' 'x86_64')
@@ -16,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -33,4 +34,8 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make INSTALL_ROOT="$pkgdir/" install
+
+  install -Dm644 res/icon_48.png "$pkgdir/usr/share/icons/hicolor/48x48/${_pkgname}.png"
+  install -Dm644 res/icon_256.png "$pkgdir/usr/share/icons/hicolor/256x256/${_pkgname}.png"
+  install -Dm644 res/icon.png "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
 }
