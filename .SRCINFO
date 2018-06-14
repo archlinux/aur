@@ -1,7 +1,7 @@
 pkgbase = wtfutil
 	pkgdesc = Personal information dashboard for your terminal
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wtfutil.com
 	arch = x86_64
 	license = MIT
