@@ -1,0 +1,18 @@
+pkgbase = smartservoframework-git
+	pkgdesc = A multi-platform C++ framework used to drive 'smart servo' devices like Dynamixel or HerkuleX actuators.
+	pkgver = 0.98_216.cb9707d
+	pkgrel = 1
+	url = https://github.com/emericg/SmartServoFramework
+	arch = armv6h
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	provides = smartservoframework
+	conflicts = smartservoframework
+	source = git+https://github.com/emericg/SmartServoFramework.git
+	sha256sums = SKIP
+
+pkgname = smartservoframework-git
+
