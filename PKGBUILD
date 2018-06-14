@@ -3,16 +3,17 @@
 # Contributor: csslayer <wengxt AT gmail com>
 
 pkgname=fcitx5-git
-pkgver=r251.79b4615
+pkgver=r404.91816c5
 pkgrel=1
 pkgdesc="Next generation of fcitx"
 arch=('i686' 'x86_64')
-url="https://github.com/fcitx/fcitx5"
+url="https://gitlab.com/fcitx/fcitx5"
 license=('GPL')
 depends=('cairo' 'enchant' 'iso-codes' 'libgl' 'libxkbcommon-x11' 'pango' 'systemd' 'wayland'
-         'wayland-protocols' 'xcb-imdkit-git' 'xcb-util-wm' 'libxkbfile' 'fmt' 'gdk-pixbuf2')
+         'wayland-protocols' 'xcb-imdkit-git' 'xcb-util-wm' 'libxkbfile'
+    	 'fmt' 'libxkbfile' 'gdk-pixbuf2')
 makedepends=('extra-cmake-modules' 'git')
-source=("git+https://github.com/fcitx/fcitx5.git")
+source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
