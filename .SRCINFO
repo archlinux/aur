@@ -27,5 +27,5 @@ pkgbase = transmission-csd
 	source = git://github.com/transmission/transmission.git#branch=wip/gtk-3.14
 	md5sums = SKIP
 
-pkgname = transmission-csd
+pkgname = transmission-csd-git
 

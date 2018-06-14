@@ -1,6 +1,6 @@
 # Maintainer: Falk Alexander Seidl <fa@terminal.run>
 
-pkgname=transmission-csd
+pkgname=transmission-csd-git
 _gitname=transmission
 _gitbranch="wip/gtk-3.14"
 pkgver=r1000
