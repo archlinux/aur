@@ -1,0 +1,15 @@
+pkgbase = usbctl-git
+	pkgdesc = hardened linux deny_new_usb control
+	pkgver = 1.0.r1.g7c5bf0e
+	pkgrel = 1
+	url = https://github.com/anthraxx/usbctl
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = usbutils
+	source = git+https://github.com/anthraxx/usbctl.git
+	sha512sums = SKIP
+
+pkgname = usbctl-git
+
