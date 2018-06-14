@@ -8,7 +8,7 @@ url="https://mimic.mycroft.ai/"
 license=('custom')
 groups=()
 depends=(alsa-lib)
-makedepends=('git' 'libtool' 'autoconf' 'automake')
+makedepends=('git' 'libtool' 'autoconf' 'automake' 'icu')
 replaces=()
 backup=()
 options=()
@@ -21,10 +21,6 @@ md5sums=('fb9c7fc35854379ba56a11040ef2b47f')
 # a description of each element in the source array.
 
 build() {
-	# mimic does not support building with BUILDDIR set
-	# (yaourt does this)
-	unset BUILDDIR
-
 	cd "$srcdir/$pkgname-$pkgver"
 	./autogen.sh
 	./configure --prefix=/usr
