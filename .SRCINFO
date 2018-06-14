@@ -9,7 +9,6 @@ pkgbase = mariadb-all
 	makedepends = boost
 	makedepends = bzip2
 	makedepends = cmake
-	makedepends = jemalloc
 	makedepends = libaio
 	makedepends = libxml2
 	makedepends = lz4
@@ -17,6 +16,20 @@ pkgbase = mariadb-all
 	makedepends = openssl
 	makedepends = systemd
 	makedepends = zlib
+	depends = bzip2
+	depends = libaio
+	depends = lz4
+	depends = lzo
+	depends = openssl
+	depends = xz
+	depends = zlib
+	depends = perl
+	depends = perl-dbd-mysql
+	depends = perl-term-readkey
+	depends = mariadb-clients=10.3.7
+	depends = inetutils
+	depends = libsystemd
+	depends = libxml2
 	provides = mariadb=10.3.7
 	provides = libmariadbclient=10.3.7
 	provides = mariadb-clients=10.3.7

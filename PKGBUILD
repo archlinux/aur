@@ -10,7 +10,7 @@ url="https://mariadb.com"
 license=('GPL')
 groups=()
 depends=('bzip2' 'libaio' 'lz4' 'lzo' 'openssl' 'xz' 'zlib' 'perl' 'perl-dbd-mysql' 'perl-term-readkey' "mariadb-clients=${pkgver}" 'inetutils' 'libsystemd' 'libxml2')
-makedepends=('boost' 'bzip2' 'cmake' 'jemalloc' 'libaio' 'libxml2' 'lz4' 'lzo'
+makedepends=('boost' 'bzip2' 'cmake' 'libaio' 'libxml2' 'lz4' 'lzo'
              'openssl' 'systemd' 'zlib')
 provides=("mariadb=${pkgver}" "libmariadbclient=${pkgver}" "mariadb-clients=${pkgver}" "mytop=${pkgver}")
 conflicts=("mytop" "mariadb" "libmariadbclient" "mariadb-clients")
@@ -69,7 +69,11 @@ build() {
 	-DWITH_TOKUDB_STORAGE_ENGINE=1 \
 	-DWITHOUT_EXAMPLE_STORAGE_ENGINE=1 \
 	-DWITHOUT_FEDERATED_STORAGE_ENGINE=1 \
-	-DWITHOUT_PBXT_STORAGE_ENGINE=1 
+	-DWITHOUT_PBXT_STORAGE_ENGINE=1 \
+	-DCMAKE_C_FLAGS="-fPIC $CFLAGS -fno-strict-aliasing -DBIG_JOINS=1 -fomit-frame-pointer -fno-delete-null-pointer-checks" \
+	-DCMAKE_CXX_FLAGS="-fPIC $CXXFLAGS -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti -fno-delete-null-pointer-checks" \
+	-DWITH_MYSQLD_LDFLAGS="-pie ${LDFLAGS},-z,now"
+
 	make
 }
 
@@ -81,3 +85,4 @@ package() {
 	mkdir $pkgdir/etc/my.cnf.d
 	rm "$pkgdir"/usr/lib/*.a
 }
+
