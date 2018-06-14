@@ -1,0 +1,116 @@
+diff -ur opentx-2.2.1/companion/src/CMakeLists.txt opentx-2.2.1.fix/companion/src/CMakeLists.txt
+--- opentx-2.2.1/companion/src/CMakeLists.txt	2017-12-17 10:07:54.000000000 +0100
++++ opentx-2.2.1.fix/companion/src/CMakeLists.txt	2018-06-14 08:53:05.635342446 +0200
+@@ -193,8 +193,8 @@
+ #add_custom_target(gen_qrc DEPENDS ${common_RCC} ${companion_QM})
+ 
+ add_library(common ${common_SRCS} ${common_RCC})
+-qt5_use_modules(common Core Xml Widgets)
+-target_link_libraries(common PRIVATE simulation)
++#qt5_use_modules(common Core Xml Widgets)
++target_link_libraries(common PRIVATE simulation Qt5::Core Qt5::Xml Qt5::Widgets)
+ #add_dependencies(common gen_qrc)
+ 
+ set(CPN_COMMON_LIB common)
+@@ -304,7 +304,7 @@
+ qt5_wrap_cpp(companion_SRCS ${companion_MOC_HDRS})
+ 
+ add_executable(${COMPANION_NAME} MACOSX_BUNDLE ${WIN_EXECUTABLE_TYPE} ${companion_SRCS} ${icon_RC})
+-qt5_use_modules(${COMPANION_NAME} Core Widgets Network)
++#qt5_use_modules(${COMPANION_NAME} Core Widgets Network)
+ target_link_libraries(${COMPANION_NAME} PRIVATE generaledit modeledit simulation ${CPN_COMMON_LIB} qcustomplot shared storage ${PTHREAD_LIBRARY} ${SDL_LIBRARY} ${WIN_LINK_LIBRARIES})
+ 
+ PrintTargetReport("${COMPANION_NAME}")
+diff -ur opentx-2.2.1/companion/src/generaledit/CMakeLists.txt opentx-2.2.1.fix/companion/src/generaledit/CMakeLists.txt
+--- opentx-2.2.1/companion/src/generaledit/CMakeLists.txt	2017-12-17 10:07:54.000000000 +0100
++++ opentx-2.2.1.fix/companion/src/generaledit/CMakeLists.txt	2018-06-14 08:33:52.072648515 +0200
+@@ -28,5 +28,5 @@
+ qt5_wrap_cpp(generaledit_SRCS ${generaledit_HDRS})
+ 
+ add_library(generaledit ${generaledit_SRCS})
+-qt5_use_modules(generaledit Widgets Xml Multimedia)
+-target_link_libraries(generaledit PRIVATE ${CPN_COMMON_LIB})
++#qt5_use_modules(generaledit Widgets Xml Multimedia)
++target_link_libraries(generaledit PRIVATE ${CPN_COMMON_LIB} Qt5::Multimedia)
+diff -ur opentx-2.2.1/companion/src/modeledit/CMakeLists.txt opentx-2.2.1.fix/companion/src/modeledit/CMakeLists.txt
+--- opentx-2.2.1/companion/src/modeledit/CMakeLists.txt	2017-12-17 10:07:54.000000000 +0100
++++ opentx-2.2.1.fix/companion/src/modeledit/CMakeLists.txt	2018-06-14 08:17:00.145716807 +0200
+@@ -60,5 +60,5 @@
+ qt5_wrap_cpp(modeledit_SRCS ${modeledit_HDRS})
+ 
+ add_library(modeledit ${modeledit_SRCS})
+-qt5_use_modules(modeledit Widgets Xml Multimedia)
+-target_link_libraries(modeledit PRIVATE ${CPN_COMMON_LIB})
++#qt5_use_modules(modeledit Widgets Xml Multimedia)
++target_link_libraries(modeledit PRIVATE ${CPN_COMMON_LIB} Qt5::Multimedia)
+diff -ur opentx-2.2.1/companion/src/shared/CMakeLists.txt opentx-2.2.1.fix/companion/src/shared/CMakeLists.txt
+--- opentx-2.2.1/companion/src/shared/CMakeLists.txt	2017-12-17 10:07:54.000000000 +0100
++++ opentx-2.2.1.fix/companion/src/shared/CMakeLists.txt	2018-06-14 08:21:36.524073161 +0200
+@@ -19,4 +19,5 @@
+ qt5_wrap_cpp(shared_SRCS ${shared_HDRS})
+ 
+ add_library(shared ${shared_SRCS})
+-qt5_use_modules(shared Widgets)
+\ Geen regeleindeteken (LF) aan einde van bestand
++target_link_libraries(shared Qt5::Widgets)
++#qt5_use_modules(shared Widgets)
+diff -ur opentx-2.2.1/companion/src/simulation/CMakeLists.txt opentx-2.2.1.fix/companion/src/simulation/CMakeLists.txt
+--- opentx-2.2.1/companion/src/simulation/CMakeLists.txt	2017-12-17 10:07:54.000000000 +0100
++++ opentx-2.2.1.fix/companion/src/simulation/CMakeLists.txt	2018-06-14 08:34:05.419295334 +0200
+@@ -92,4 +92,5 @@
+ qt5_wrap_cpp(simulation_SRCS ${simulation_HDRS})
+ 
+ add_library(simulation ${simulation_SRCS} ${simulation_HDRS})
+-qt5_use_modules(simulation Core Widgets Svg)
++target_link_libraries(simulation Qt5::Core Qt5::Widgets Qt5::Svg)
++#qt5_use_modules(simulation Core Widgets Svg)
+diff -ur opentx-2.2.1/companion/src/storage/CMakeLists.txt opentx-2.2.1.fix/companion/src/storage/CMakeLists.txt
+--- opentx-2.2.1/companion/src/storage/CMakeLists.txt	2017-12-17 10:07:54.000000000 +0100
++++ opentx-2.2.1.fix/companion/src/storage/CMakeLists.txt	2018-06-14 08:22:04.997603631 +0200
+@@ -27,5 +27,5 @@
+ endforeach()
+ 
+ add_library(storage ${storage_SRCS})
+-qt5_use_modules(storage Core Xml Widgets)
+-target_link_libraries(storage PRIVATE ${CPN_COMMON_LIB})
++#qt5_use_modules(storage Core Xml Widgets)
++target_link_libraries(storage PRIVATE ${CPN_COMMON_LIB} Qt5::Core Qt5::Xml Qt5::Widgets)
+diff -ur opentx-2.2.1/companion/src/thirdparty/qcustomplot/CMakeLists.txt opentx-2.2.1.fix/companion/src/thirdparty/qcustomplot/CMakeLists.txt
+--- opentx-2.2.1/companion/src/thirdparty/qcustomplot/CMakeLists.txt	2017-12-17 10:07:54.000000000 +0100
++++ opentx-2.2.1.fix/companion/src/thirdparty/qcustomplot/CMakeLists.txt	2018-06-14 08:17:48.509302945 +0200
+@@ -9,4 +9,5 @@
+ qt5_wrap_cpp(qcustomplot_SRCS ${qcustomplot_HDRS})
+ 
+ add_library(qcustomplot ${qcustomplot_SRCS})
+-qt5_use_modules(qcustomplot Widgets PrintSupport)
++#qt5_use_modules(qcustomplot Widgets PrintSupport)
++target_link_libraries(qcustomplot PRIVATE ${CPN_COMMON_LIB} Qt5::Widgets Qt5::PrintSupport)
+diff -ur opentx-2.2.1/radio/src/targets/simu/CMakeLists.txt opentx-2.2.1.fix/radio/src/targets/simu/CMakeLists.txt
+--- opentx-2.2.1/radio/src/targets/simu/CMakeLists.txt	2017-12-17 10:07:54.000000000 +0100
++++ opentx-2.2.1.fix/radio/src/targets/simu/CMakeLists.txt	2018-06-14 08:18:34.846234636 +0200
+@@ -31,8 +31,8 @@
+   add_library(${SIMULATOR_TARGET} SHARED ${SIMULATOR_SRC})
+   add_dependencies(${SIMULATOR_TARGET} ${FIRMWARE_DEPENDENCIES})
+   target_compile_definitions(${SIMULATOR_TARGET} PUBLIC ${APP_COMMON_DEFINES})  # set in top-level CMakeLists
+-  target_link_libraries(${SIMULATOR_TARGET} ${SDL_LIBRARY})
+-  qt5_use_modules(${SIMULATOR_TARGET} Core)
++  #qt5_use_modules(${SIMULATOR_TARGET} Core)
++  target_link_libraries(${SIMULATOR_TARGET} ${SDL_LIBRARY} Qt5::Core)
+   add_custom_target(libsimulator DEPENDS ${SIMULATOR_TARGET})
+ 
+   # Prepare the "all-simu-libs" target to build simulator libraries for *every* supported PCB type (PCB_TYPES list)
+diff -ur opentx-2.2.1/radio/src/tests/CMakeLists.txt opentx-2.2.1.fix/radio/src/tests/CMakeLists.txt
+--- opentx-2.2.1/radio/src/tests/CMakeLists.txt	2017-12-17 10:07:54.000000000 +0100
++++ opentx-2.2.1.fix/radio/src/tests/CMakeLists.txt	2018-06-14 08:19:51.093371690 +0200
+@@ -38,9 +38,9 @@
+   use_cxx11()  # ensure gnu++11 in CXX_FLAGS with CMake < 3.1
+ 
+   add_executable(gtests EXCLUDE_FROM_ALL ${TEST_SRC_FILES} ${CMAKE_CURRENT_SOURCE_DIR}/location.h ${RADIO_SRC} ../targets/simu/simpgmspace.cpp ../targets/simu/simueeprom.cpp ../targets/simu/simufatfs.cpp)
+-  qt5_use_modules(gtests Core Widgets)
++  #qt5_use_modules(gtests Core Widgets)
+   add_dependencies(gtests ${FIRMWARE_DEPENDENCIES} gtests-lib)
+-  target_link_libraries(gtests gtests-lib pthread)
++  target_link_libraries(gtests gtests-lib pthread Qt5::Core Qt5::Widgets)
+   message(STATUS "Added optional gtests target")
+ else()
+   message(WARNING "WARNING: gtests target will not be available (check that GTEST_INCDIR, GTEST_SRCDIR, and Qt5Widgets are configured).")
