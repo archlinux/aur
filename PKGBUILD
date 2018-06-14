@@ -1,5 +1,5 @@
 pkgname=mingw-w64-tk
-pkgver=8.6.7
+pkgver=8.6.8
 pkgrel=1
 pkgdesc="A windowing toolkit for use with tcl (mingw-w64)"
 arch=(any)
@@ -9,12 +9,12 @@ options=(staticlibs !strip !buildflags)
 license=("custom")
 url="http://tcl.sourceforge.io"
 source=("http://downloads.sourceforge.net/sourceforge/tcl/tk${pkgver}-src.tar.gz"
-"tk-prevent-tclStubsPtr-segfault.patch"
-"tk-install-man.patch"
-"tk-implib-name.patch"
-"tk-fix-forbidden-colon-in-paths.patch"
-"tk-dont-link-shared-with-static-libgcc.patch")
-sha256sums=('061de2a354f9b7c7d04de3984c90c9bc6dd3a1b8377bb45509f1ad8a8d6337aa'
+        "tk-prevent-tclStubsPtr-segfault.patch"
+        "tk-install-man.patch"
+        "tk-implib-name.patch"
+        "tk-fix-forbidden-colon-in-paths.patch"
+        "tk-dont-link-shared-with-static-libgcc.patch")
+sha256sums=('49e7bca08dde95195a27f594f7c850b088be357a7c7096e44e1158c7a5fd7b33'
             '0029fde6782ce7635e9957412d3e36a7e76d304399d57d64a42818f93e705621'
             '8516749dd73c084ece7b9df6d1ba5708e652e8ba39cad59120c7f909f61747f0'
             '441f2f5bdf1ee2bf6697569365207d554130bd5a2bac01e10a6e1a37738d8006'
