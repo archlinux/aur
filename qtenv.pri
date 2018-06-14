@@ -10,7 +10,7 @@ equals(WITH_OSG, yes) {
   DEFINES += WITH_OSG
 }
 
-WITH_OSGEARTH = no
+WITH_OSGEARTH = yes
 equals(WITH_OSGEARTH, yes) {
   DEFINES += WITH_OSGEARTH
 }

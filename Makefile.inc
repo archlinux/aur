@@ -3,24 +3,21 @@
 # Your changes will be lost the next time ./configure is run.
 #
 OMNETPP_PRODUCT = OMNeT++
-OMNETPP_RELEASE = omnetpp-5.3p1
-OMNETPP_VERSION = 5.3p1
-OMNETPP_BUILDID = 171221-c6b3c50
+OMNETPP_RELEASE = omnetpp-5.4
+OMNETPP_VERSION = 5.4
+OMNETPP_BUILDID = 180611-572210e
 OMNETPP_EDITION = Academic Public License -- NOT FOR COMMERCIAL USE
-
-# variable to show that the message compiler has a temporary patch applied
-OMNETPP_MSGC_PATCH_VER = 1
 
 #
 # Optional features (set to "yes" to enable the feature)
 #
 WITH_QTENV ?= yes
 WITH_OSG ?= yes
-WITH_OSGEARTH ?= no
+WITH_OSGEARTH ?= yes
 WITH_NETBUILDER ?= yes
 WITH_PARSIM ?= yes
 WITH_SYSTEMC ?= no
-WITH_TKENV ?= yes
+WITH_TKENV ?= no
 EMBED_TCL_CODE ?= yes
 PREFER_SQLITE_RESULT_FILES ?= no
 
@@ -116,7 +113,7 @@ CXX = clang++
 TOOLCHAIN_NAME = clang
 DEFINES = -DHAVE_SWAPCONTEXT -DWITH_MPI
 CFLAGS_DEBUG = -g -Wall
-CFLAGS_RELEASE = -O3 -march=native -mtune=native -DNDEBUG=1
+CFLAGS_RELEASE = -O3 -DNDEBUG=1
 CFLAGS += -MMD -MP -MF $(basename $@).d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-stack-protector $(DEFINES)
 CXXFLAGS =  -std=c++11
 LDFLAG_LIBPATH = -L
@@ -139,12 +136,12 @@ RANLIB = ranlib
 SHLIB_LD = clang++ -shared -fPIC
 DLLTOOL = dlltool
 STRIP = strip
-WISH = wish
+WISH = 
 MAKEDEPEND = opp_makedep -Y --objdirtree
 LN = ln -f
 MKPATH = mkdir -p
 SHLIB_POSTPROCESS = opp_shlib_postprocess
-SWIG = swig
+SWIG = not found
 QMAKE = /usr/bin/qmake
 MOC=/usr/bin/moc
 UIC=/usr/bin/uic
@@ -153,27 +150,27 @@ RCC=/usr/bin/rcc
 HAVE_DLOPEN = 1
 SYS_LIBS = -ldl -lstdc++ 
 TK_CFLAGS = 
-TK_LIBS = -ltk8.6 -ltcl8.6
+TK_LIBS = 
 QT_CFLAGS = -isystem /usr/include/qt -isystem /usr/include/qt/QtCore -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtOpenGL -isystem /usr/include/qt/QtPrintSupport
 QT_LIBS = -lQt5Gui -lQt5Core -lQt5Widgets -lQt5PrintSupport -lQt5OpenGL -L/usr/lib -Wl,-rpath=/usr/lib
 QTENV_LDFLAGS = -Wl,-rpath-link=/usr/lib
 OSG_CFLAGS = 
 OSG_LIBS = -losg -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads
 OSGEARTH_CFLAGS = 
-OSGEARTH_LIBS = 
+OSGEARTH_LIBS = -losgEarth -losgEarthUtil
 ZLIB_CFLAGS = 
 ZLIB_LIBS = -lz
 MPI_CFLAGS = -pthread
 MPI_LIBS = -pthread -Wl,-rpath -Wl,/usr/lib/openmpi -Wl,--enable-new-dtags -L/usr/lib/openmpi -lmpi_cxx -lmpi
 PTHREAD_CFLAGS = 
 PTHREAD_LIBS = -lpthread
-XMLPARSER = expat
-XML_CFLAGS = 
-XML_LIBS = -lexpat
+XMLPARSER = libxml
+XML_CFLAGS = -I/usr/include/libxml2
+XML_LIBS = -lxml2
 DEFINES += -DXMLPARSER=$(XMLPARSER)
 AKAROA_CFLAGS = -I/usr/local/akaroa/include
 AKAROA_LIBS = -L/usr/local/akaroa/lib -lakaroa -lfl
-JNILIBS_IF_POSSIBLE = jnilibs
+JNILIBS_IF_POSSIBLE = missing-dependency
 JAVA_CFLAGS = 
 JAVA_LIBS = 
 
