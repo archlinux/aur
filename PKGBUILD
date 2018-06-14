@@ -5,15 +5,15 @@
 _pkgname=fcitx5-qt
 pkgbase=$_pkgname-git
 pkgname=(fcitx5-qt5-git fcitx5-qt4-git)
-pkgver=r132.84ea7b2
+pkgver=r133.4781aa0
 pkgrel=1
 pkgdesc="Fcitx Qt Library"
 arch=('x86_64')
-url="https://github.com/fcitx/fcitx5"
+url="https://gitlab.com/fcitx/fcitx5-qt"
 license=('GPL')
 depends=('fcitx5-git')
 makedepends=('extra-cmake-modules' 'git' 'qt4' 'qt5-x11extras' 'qt5-quickcontrols')
-source=("git+https://github.com/fcitx/fcitx5-qt.git")
+source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
