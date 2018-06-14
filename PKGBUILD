@@ -1,6 +1,8 @@
-# Maintainer: Denis A. Altoé Falqueto <denisfalqueto@gmail.com>
+# Maintainer: Francois Menning <f.menning@pm.me>
+# Contributor: Denis A. Altoé Falqueto <denisfalqueto@gmail.com>
+
 pkgname=python-pychromecast-git
-pkgver=272.97aa41a
+pkgver=340.124510e
 pkgrel=1
 pkgdesc="Library for Python 3 to communicate with the Google Chromecast."
 arch=('any')
