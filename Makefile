@@ -4,6 +4,10 @@ build: namcap
 	makepkg
 	mksrcinfo
 
+clean:
+	git clean -fd
+	rm -rf pkg src *.deb *.tar.xz
+
 namcap:
 	namcap PKGBUILD
 
