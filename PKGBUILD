@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 _module='osprofiler'
 pkgname=('python-osprofiler' 'python2-osprofiler')
-pkgver='2.0.0'
-pkgrel='2'
+pkgver='2.1.0'
+pkgrel='1'
 pkgdesc='Library for cross-project profiling library'
 arch=('any')
 url="https://docs.openstack.org/developer/${_module}/"
