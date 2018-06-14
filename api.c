@@ -119,8 +119,15 @@ void* iex_store_quote(void* vpInfo) {
         return NULL;
     }
 
-    symbol_info->price = json_object_get_double(json_object_object_get(jobj, "latestPrice"));
-    symbol_info->intraday_time = json_object_get_int64(json_object_object_get(jobj, "latestUpdate"));
+    // If latest price is in extended hours
+    if (json_object_get_int64(json_object_object_get(jobj, "extendedPriceTime")) >
+        json_object_get_int64(json_object_object_get(jobj, "latestUpdate"))) {
+        symbol_info->price = json_object_get_double(json_object_object_get(jobj, "extendedPrice"));
+        symbol_info->intraday_time = json_object_get_int64(json_object_object_get(jobj, "extendedPriceTime")) / 1000;
+    } else {
+        symbol_info->price = json_object_get_double(json_object_object_get(jobj, "latestPrice"));
+        symbol_info->intraday_time = json_object_get_int64(json_object_object_get(jobj, "latestUpdate")) / 1000;
+    }
     symbol_info->price_last_close = json_object_get_double(json_object_object_get(jobj, "previousClose"));
     if (symbol_info->price_last_close == 0) // May be 0 over weekend
         symbol_info->price_last_close = EMPTY;

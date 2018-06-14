@@ -62,7 +62,7 @@ void interface_print(const char* symbol) {
 void header_printw(WINDOW* window, Info* symbol_info) {
     if (symbol_info->intraday_time != EMPTY) {
         char time_str[32];
-        time_t time = symbol_info->intraday_time / 1000; // divide into second instead of milliseconds
+        time_t time = symbol_info->intraday_time; // divide into second instead of milliseconds
         struct tm* ts = localtime(&time);
         strftime(time_str, 32, "%F %T", ts);
         mvwprintw(window, 0, 0, "%s", time_str);
