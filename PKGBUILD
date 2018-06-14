@@ -1,8 +1,8 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=atcore-git
-confilicts=('atcore')
+conflicts=('atcore')
 provides=('atcore')
-pkgver=d9fee10
+pkgver=eef3b5d
 pkgrel=1
 pkgdesc="KDE 3D Printing libary"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
