@@ -3,15 +3,15 @@
 # Contributor: csslayer <wengxt AT gmail com>
 
 pkgname=fcitx5-chinese-addons-git
-pkgver=r112.b5d671c
+pkgver=r114.6234bb9
 pkgrel=1
 pkgdesc="Addons related to Chinese, including IME previous bundled inside fcitx4"
 arch=('i686' 'x86_64')
-url="https://github.com/fcitx/fcitx5-chinese-addons"
+url="https://gitlab.com/fcitx/fcitx5-chinese-addons"
 license=('GPL')
-depends=('boost-libs' 'curl' 'fcitx5-git' 'libime-git' 'opencc' 'qt5-webengine')
+depends=('curl' 'libime-git' 'qt5-webengine' 'fcitx5-qt5-git' 'boost-libs' 'opencc' 'fcitx5-git' 'fcitx5-qt5-git')
 makedepends=('boost' 'extra-cmake-modules' 'git')
-source=("git+https://github.com/fcitx/fcitx5-chinese-addons.git")
+source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
