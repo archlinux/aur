@@ -1,17 +1,17 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=shinjiru-git
-pkgver=r711.bb3ee6e
+pkgver=r77.6720a8b
 pkgrel=1
 pkgdesc="Shinjiru is an anime list management tool built with Qt designed to automatically update your progress to AniList and act an desktop manager for AniList."
 arch=('i686' 'x86_64')
 url="https://github.com/Kazakuri/Shinjiru"
 license=('GPL')
 groups=()
-depends=('hicolor-icon-theme' 'qt5-base' 'qt5-webengine' 'gcc-libs-multilib')
+depends=('hicolor-icon-theme' 'libxinerama' 'qt5-networkauth' 'qt5-base' 'qt5-webkit' 'qt5-webengine' 'gcc-libs-multilib')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('shinjiru::git+https://github.com/Kazakuri/Shinjiru.git')
+source=('shinjiru::git+https://github.com/ShinjiruApp/Shinjiru')
 md5sums=('SKIP')
 
 pkgver() {
