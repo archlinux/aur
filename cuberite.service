@@ -10,3 +10,4 @@ User=cuberite
 Group=cuberite
 
 [Install]
+WantedBy=multi-user.target
