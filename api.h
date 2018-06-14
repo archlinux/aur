@@ -290,6 +290,12 @@ Info* api_get_check_info(const char* symbol);
 Info* api_get_info(const char* symbol);
 
 /**
+ * Returns a pointer to an Info_Array containing a list of all iex listed securities.
+ * @return Info_Array*
+ */
+Info_Array* iex_get_valid_symbols(void);
+
+/**
  * Destroys News object and frees memory. Sets the pointer of the News to NULL
  * @param phNews the News to destroy
  */

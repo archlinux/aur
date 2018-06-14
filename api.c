@@ -546,6 +546,29 @@ Info* api_get_info(const char* symbol) {
     return coinmarketcap_get_info(symbol);
 }
 
+Info_Array* iex_get_valid_symbols(void) {
+    char* iex_api_string = "https://api.iextrading.com/1.0/ref-data/symbols";
+    String* pString = api_curl_data(iex_api_string);
+    if (pString == NULL)
+        return NULL;
+
+    Json* jobj = json_tokener_parse(pString->data), * idx;
+    Info_Array* list = api_info_array_init();
+    list->length = json_object_array_length(jobj);
+    list->array = malloc(sizeof(Info*) * list->length);
+    pointer_alloc_check(list->array);
+    for (size_t i = 0; i < list->length; i++) {
+        list->array[i] = api_info_init();
+        idx = json_object_array_get_idx(jobj, i);
+        strcpy(list->array[i]->symbol, json_object_get_string(json_object_object_get(idx, "symbol")));
+        strcpy(list->array[i]->name, json_object_get_string(json_object_object_get(idx, "name")));
+    }
+
+    json_object_put(jobj);
+    string_destroy(&pString);
+    return list;
+}
+
 void api_news_destroy(News** phNews) {
     free(*phNews);
     *phNews = NULL;
