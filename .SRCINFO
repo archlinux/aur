@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-sassc
+	pkgdesc = C implementation of Sass CSS preprocessor (mingw-w64)
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = http://libsass.org/
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-libsass
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = sassc-3.5.0.tar.gz::https://github.com/sass/sassc/archive/3.5.0.tar.gz
+	md5sums = f5c6aeb4e98c96d093f20295fc490f2c
+
+pkgname = mingw-w64-sassc
+
