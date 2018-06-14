@@ -1,7 +1,7 @@
 # Maintainer: peterix@gmail.com
 
 pkgname=multimc-git
-pkgver=0.6.2.r2.g584f1e89
+pkgver=0.6.2.r7.g19bb50b8
 pkgrel=1
 pkgdesc="Free, open source launcher and instance manager for Minecraft."
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ license=('Apache')
 depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg' 'xorg-xrandr')
 makedepends=('git' 'cmake' 'qt5-tools' 'qt5-x11extras' 'java-environment')
 conflicts=('multimc' 'multimc5' 'multimc5-git')
+provides=('multimc' 'multimc5' 'multimc5-git')
 replaces=('multimc5-git')
 source=("$pkgname"::"git://github.com/MultiMC/MultiMC5.git")
 sha512sums=('SKIP')
@@ -36,6 +37,10 @@ build() {
         -DMultiMC_NOTIFICATION_URL:STRING=http://files.multimc.org/notifications.json \
         ..
   make
+}
+
+check() {
+  cd "$srcdir/$pkgname/build"
   make test
 }
 
