@@ -4,12 +4,12 @@ _pkgname=edisyn
 _githash="aa653caa498f8cc9bf582cf77279e2568023ad41"
 pkgname="${_pkgname}-bin"
 pkgver=13
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform synthesizer patch editor library"
 arch=('i686' 'x86_64')
 url="https://github.com/eclab/edisyn/"
 license=('Apache')
-depends=('java-runtime=7')
+depends=('java-runtime>=7')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://github.com/eclab/edisyn/raw/${_githash}/jar/edisyn.jar"
