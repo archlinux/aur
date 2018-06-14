@@ -1,11 +1,11 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=cc65-git
-pkgver=2.16.r56.308f74561
+pkgver=2.17.r61.6c320f7d6
 pkgrel=1
 pkgdesc='C compiler for 6502 family microprocessors'
 arch=('i686' 'x86_64')
-makedepends=('git' 'linuxdoc-tools')
+makedepends=('git')
 conflicts=('cc65')
 provides=('cc65')
 license=('BSD')
@@ -25,7 +25,6 @@ build() {
   cd "${pkgname/-git//}"
 
   make
-  make doc
 }
 
 package() {
