@@ -1,0 +1,14 @@
+pkgbase = javafx10-scenebuilder
+	pkgdesc = The latest version of Gluon Scene Builder for Java 10, it was released on Jun 5, 2018.
+	pkgver = 10.0.0
+	pkgrel = 2
+	url = http://gluonhq.com/labs/scene-builder/
+	arch = x86_64
+	arch = i686
+	license = BSD License
+	depends = libarchive
+	source = http://download.gluonhq.com/scenebuilder/10.0.0/install/linux/scenebuilder-10.0.0.deb
+	sha1sums = 5fdc040e25075fa4f6ddaa80b51ffacb93cef8aa
+
+pkgname = javafx10-scenebuilder
+
