@@ -1,6 +1,6 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
 pkgname=mimic-git
-pkgver=1.2.0.r0.eb4613e
+pkgver=1.2.0.2.r0.67e43bf
 pkgrel=1
 pkgdesc="Text-to-speech voice synthesis from the Mycroft project."
 arch=(x86_64 i686)
@@ -8,7 +8,7 @@ url="https://mimic.mycroft.ai/"
 license=('custom')
 groups=()
 depends=(alsa-lib)
-makedepends=('git' 'libtool' 'autoconf' 'automake')
+makedepends=('git' 'libtool' 'autoconf' 'automake' 'icu')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -33,17 +33,11 @@ pkgver() {
 }
 
 build() {
-	# mimic does not support building with BUILDDIR set
-	# (yaourt does this)
-	unset BUILDDIR
-
 	cd "$srcdir/${pkgname%-git}"
 	./autogen.sh
 	./configure --prefix=/usr
 
-	#make
-	# Temporary workaround for https://github.com/MycroftAI/mimic/issues/95
-	make CFLAGS='-D_DEFAULT_SOURCE -O2'
+	make
 }
 
 check() {
