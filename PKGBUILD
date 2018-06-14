@@ -10,6 +10,7 @@ url="http://anbox.io/"
 license=('GPL3')
 makedepends=('cmake' 'git' 'glm' 'dbus-cpp' 'lxc' 'sdl2_image' 'protobuf' 'boost' 'properties-cpp' 'gtest')
 source=("git+https://github.com/anbox/anbox.git"
+	"git+https://github.com/anbox/anbox-modules.git"
 	'anbox-container-manager.service'
 	'anbox-session-manager.service'
 	'99-anbox.rules'
@@ -18,6 +19,7 @@ source=("git+https://github.com/anbox/anbox.git"
 	'anbox-bridge.network'
 	'anbox-bridge.netdev')
 sha256sums=('SKIP'
+            'SKIP'
             '5be94b63dc30d141f15ca7d1be6e3e81f26ef33f844614975537562f5d08236c'
             '1f22dbb5a3ca6925bbf62899cd0f0bbaa0b77c879adcdd12ff9d43adfa61b1d8'
             '210eb93342228168f7bb632c8b93d9bfda6f53f62459a6b74987fa1e17530475'
@@ -40,19 +42,13 @@ prepare() {
   # Don't build tests
   truncate -s 0 cmake/FindGMock.cmake
   truncate -s 0 tests/CMakeLists.txt
-
-  # Fix loading translators
-  sed -i 's/${CMAKE_INSTALL_PREFIX}\/${ANBOX_TRANSLATOR_INSTALL_DIR}/${ANBOX_TRANSLATOR_INSTALL_DIR}/' CMakeLists.txt
-
-  # Fix usage of Python 2
-  sed -i 's:#!.*python$:&2:' scripts/*.py
 }
 
 build() {
   mkdir -p "$srcdir/${_pkgname}/build"
   cd "$srcdir/${_pkgname}/build"
 
-  cmake .. -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake .. -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_FLAGS="-Wno-error=implicit-fallthrough" -DCMAKE_BUILD_TYPE=Release
   make
 }
 
@@ -77,11 +73,11 @@ package_anbox-modules-dkms-git() {
   pkgdesc="Required kernel module sources for Android"
   depends=('dkms')
 
-  cd "$srcdir/${_pkgname}"
+  cd "$srcdir/anbox-modules"
   modules=(ashmem binder)
   for mod in "${modules[@]}"; do
     install -dm 755 $pkgdir/usr/src
-    cp -a kernel/$mod $pkgdir/usr/src/anbox-modules-$mod-$pkgver
+    cp -a $mod $pkgdir/usr/src/anbox-modules-$mod-$pkgver
   done;
 
   install -Dm 644 -t $pkgdir/usr/lib/modules-load.d $srcdir/anbox.conf
