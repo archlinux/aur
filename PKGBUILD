@@ -3,7 +3,7 @@
 pkgname=libulfius
 _gitname=ulfius
 pkgver=2.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP Framework for REST API in C, using JSON, with websockets and streaming data"
 arch=(x86_64)
 url="https://github.com/babelouest/${_gitname}"
@@ -15,7 +15,8 @@ sha256sums=("dbf1c4f32768d41b6e45b844f32927b9ae8dbccfa2cc8c6607755a6ee105d9a6")
 
 prepare() {
     cd "${srcdir}/${_gitname}-${pkgver}"
-    GIT_DISCOVERY_ACROSS_FILESYSTEM=1 git submodule update --init
+    git init
+    git submodule update --init
     mkdir -p build
 }
 
