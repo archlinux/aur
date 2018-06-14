@@ -18,7 +18,7 @@ _UNIFONT_VER="10.0.06"
 [[ "${CARCH}" == "i686" ]] && _EMU_ARCH="i386"
 
 pkgname="grub-git"
-pkgver=2.02.r86.gb4d709b6e
+pkgver=2.02.r147.gba474d531
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
@@ -51,18 +51,20 @@ install="${pkgname}.install"
 source=("grub::git+git://git.savannah.gnu.org/grub.git"
         "grub-extras::git+git://git.savannah.gnu.org/grub-extras.git"
         "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
-        'intel-ucode.patch'
         '10_linux-detect-archlinux-initramfs.patch'
         'add-GRUB_COLOR_variables.patch'
+        'freetype-capitalise-variables.patch'
+        'freetype-pkg-config.patch'
         'grub.default'
         'grub.cfg')
 sha256sums=('SKIP'
             'SKIP'
             '0d81571fc519573057b7641d26a31ead55cc0b02a931589fb346a3a534c3dcc1'
             'SKIP'
-            '37adb95049f6cdcbdbf60ed6b6440c5be99a4cd307a0f96c3c3837b6c2e07f3c'
             'b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
+            '4153565a0e1428bdacf09a0c646d2106c75182f1753e2a044896d23752295569'
+            '3da2764ecc0c2f3cf9a3f94660ed3ebfc1192c6b3df0ee27d78622bf9718228d'
             '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82'
             'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
 validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' Serbinenko <phcoder@gmail.com>
@@ -70,10 +72,6 @@ validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' S
  
 prepare() {
 	cd grub
-
-	msg "Patch to load Intel microcode"
-	patch -Np1 -i "${srcdir}/intel-ucode.patch"
-	echo
 
 	msg "Patch to detect of Arch Linux initramfs images by grub-mkconfig"
 	patch -Np1 -i "${srcdir}/10_linux-detect-archlinux-initramfs.patch"
@@ -83,6 +81,12 @@ prepare() {
 	## Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
 	patch -Np1 -i "${srcdir}/add-GRUB_COLOR_variables.patch"
 	echo
+
+	msg "Capitalise FreeType vairables to conform to pkg-config macros"
+	patch -Np1 -i "${srcdir}/freetype-capitalise-variables.patch"
+
+	msg "Use pkg-config to locate FreeType"
+	patch -Np1 -i "${srcdir}/freetype-pkg-config.patch"
 
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
@@ -100,7 +104,8 @@ prepare() {
 	msg "Remove not working langs which need LC_ALL=C.UTF-8"
 	sed -e 's#en@cyrillic en@greek##g' -i "po/LINGUAS"
 
-	msg "Avoid problem with unifont during compile of grub, http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847"
+	msg "Avoid problem with unifont during compile of grub"
+	# http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
 	cp "${srcdir}/unifont-${_UNIFONT_VER}.bdf" "unifont.bdf"
 }
 
@@ -175,6 +180,12 @@ _build_grub-efi() {
 	msg "Copy the source for building the ${_EFI_ARCH} efi part"
 	cp -r "${srcdir}/grub" "${srcdir}/grub-efi-${_EFI_ARCH}"
 	cd "${srcdir}/grub-efi-${_EFI_ARCH}"
+
+	if [[ "${_EFI_ARCH}" == "i386" ]]; then
+		msg "Fix EFI build for i386"
+		sed '/i386 = lib\/i386\/reboot.c;/d' -i "grub-core/Makefile.core.def"
+		sed '/i386 = lib\/i386\/reboot_trampoline.S;/d' -i "grub-core/Makefile.core.def"
+	fi
 
 	msg "Unset all compiler FLAGS for ${_EFI_ARCH} efi build"
 	unset CFLAGS
