@@ -2,58 +2,59 @@
 
 _pkgname=bazarr
 pkgname=$_pkgname-git
-pkgver=r444.c64c4ce
+pkgver=r489.d130adf
 pkgrel=1
-pkgdesc="Manage and download subtitles for Sonarr."
+pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
 license=('GPL3')
-depends=('python'
-         'python-apscheduler'
-         'python-babelfish'
-         'python-bottle'
-         'python-bottle-fdsend'
-         'python-dogpile.cache'
-         'python-enzyme'
-         'python-gitpython'
-         'python-pillow'
-         'python-py-pretty'
-         'python-pycountry'
-         'python-requests'
+depends=('python2'
          'subliminal'
-         'python-tzlocal'
-         'python-urllib3'
-         'python-waitress'
-         'python-langdetect'
-         'python-apprise')
+         'python2-apprise'
+         'python2-apscheduler'
+         'python2-babelfish'
+         'python2-bottle'
+         'python2-bottle-fdsend'
+         'python2-dogpile.cache'
+         'python2-enzyme'
+         'python2-gitpython'
+         'python2-langdetect'
+         'python2-logutils'
+         'python2-pillow'
+         'python2-py-pretty'
+         'python2-pycountry'
+         'python2-pytz'
+         'python2-requests'
+         'python2-tzlocal'
+         'python2-urllib3'
+         'python2-waitress'
+         'python2-webtest')
+
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-install=$_pkgname.install
-source=("git+https://github.com/morpheus65535/bazarr"
-        "bazarr.sh"
-        "bazarr.service"
-        "bazarr.sysusers")
+source=('git+https://github.com/morpheus65535/bazarr'
+        'bazarr.service'
+        'bazarr.sysusers'
+        'bazarr.tmpfiles')
+
 sha256sums=('SKIP'
-            '47f59d5acf0df99d8dabfec617fdc57d7620d7843ce871dedc7f46cdae9c7420'
-            'a87cb97e29a72b6fa7c8e48b5044a8dd70efea717ef8991c3bd11fb848b31166'
-            '288dbffb34c13cc6e3d599144138dd5d0de2ef40807649e3641669a0cb0788fa')
+            'e3c57f1a1d9ddd87d097efe2df5148f10de79c445fe6eee158f64b4335f3e174'
+            '92fd48cbd7e5fe3a0388bbe756a52098fc461ef2dc87d9e886452e4f15acdcdc'
+            '2087276827bb090edf8743d5debfcc22a0c434b36d3b680bbea85dbd9a3b4539')
 
 pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "$_pkgname"
-  sed -i "/reload\|setdefaultencoding/d" bazarr.py
-  /usr/bin/2to3 -w -n .
-}
-
 package() {
-  install -dm755 "${pkgdir}/usr/share"
-  cp -dpr --no-preserve=ownership bazarr "${pkgdir}/usr/share/bazarr"
-  install -Dm755 bazarr.sh "${pkgdir}/usr/bin/bazarr"
-  install -Dm644 bazarr.service "${pkgdir}/usr/lib/systemd/system/bazarr.service"
-  install -Dm644 bazarr.sysusers "$pkgdir/usr/lib/sysusers.d/bazarr.conf"
+  install -d -m 755 "${pkgdir}/usr/lib/bazarr"
+  cp -dpr --no-preserve=ownership "${srcdir}/bazarr" "${pkgdir}/usr/lib/"
+  rm -rf ${pkgdir}/usr/lib/bazarr/.git
+  rm -f ${pkgdir}/usr/lib/bazarr/.gitignore ${pkgdir}/usr/lib/bazarr/.gitattributes
+
+  install -D -m 644 "${srcdir}/bazarr.service" "${pkgdir}/usr/lib/systemd/system/bazarr.service"
+  install -D -m 644 "${srcdir}/bazarr.sysusers" "${pkgdir}/usr/lib/sysusers.d/bazarr.conf"
+  install -D -m 644 "${srcdir}/bazarr.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/bazarr.conf"
 }

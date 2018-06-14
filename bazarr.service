@@ -3,11 +3,12 @@ Description=Bazarr Service
 After=network.target
 
 [Service]
-Environment=MONO_TLS_PROVIDER=legacy
 User=bazarr
-ExecStart=/usr/bin/bazarr
+Group=bazarr
 Type=simple
-TimeoutStopSec=20
+ExecStart=/usr/bin/python2 /usr/lib/bazarr/bazarr.py
+Restart=always
+TimeoutStopSec=30
 
 [Install]
 WantedBy=multi-user.target
