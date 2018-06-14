@@ -1,7 +1,8 @@
-# https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/linux 
+# https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/linux
 # Maintainer: alzeih <alzeih@users.noreply.github.com>
 
 pkgbase=linux-apparmor
+#pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.16
 pkgver=4.16.12
 pkgrel=1
