@@ -5,7 +5,7 @@
 
 _pkgname=gjs
 pkgname=gjs-fix-leaks
-pkgver=1.52.2
+pkgver=1.52.3
 pkgrel=1
 epoch=1
 pkgdesc="Javascript Bindings for GNOME"
@@ -17,7 +17,7 @@ makedepends=(gobject-introspection git autoconf-archive xorg-server-xvfb)
 conflicts=(gjs)
 provides=(gjs)
 checkdepends=(valgrind)
-_commit=9a331f9ba850f20734547eb3eaa2f4b1c79bb527  # tags/1.52.2^0
+_commit=9e63c335e84613a6e499c61aa1afcd5107c36b10  # tags/1.52.3^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gjs.git#commit=$_commit"
   "fix-leaks-lp1672297-1-context-Add-API-to-force-GC-schedule.patch"
