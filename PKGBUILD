@@ -1,6 +1,6 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=atcore
-confilicts=('atcore-git')
+conflicts=('atcore-git')
 provides=('atcore')
 pkgver=1.0.0
 pkgrel=1
