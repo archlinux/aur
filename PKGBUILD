@@ -32,8 +32,8 @@ package() {
     mv ../linux_386_$pkgname $pkgname 
     chmod +x $pkgname
   fi
-  mkdir -p $pkgdir/usr/bin
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  #mkdir -p $pkgdir/usr/bin
+  install -Dm755 "$pkgname" "/usr/bin/$pkgname"
   #sudo install -Dm755 "$pkgdir/usr/bin/$pkgname" /usr/bin
 }
 
