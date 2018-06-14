@@ -1,0 +1,11 @@
+[Unit]
+Description=Let the user set the wakeup triggers of system suspension
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/wakeup-triggers.sh start
+ExecStop=/usr/bin/wakeup-triggers.sh stop
+
+[Install]
+WantedBy=multi-user.target
