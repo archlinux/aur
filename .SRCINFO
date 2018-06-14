@@ -1,6 +1,6 @@
 pkgbase = blackchocobo-git
 	pkgdesc = Final Fantasy 7 Save Editor
-	pkgver = 1.9.83.r32.g8dd23f8
+	pkgver = 1.9.83.r131.ga02967e
 	pkgrel = 1
 	url = http://www.blackchocobo.com/
 	install = blackchocobo-git.install
@@ -9,6 +9,7 @@ pkgbase = blackchocobo-git
 	license = GPL3
 	depends = qt5-base
 	depends = openssl
+	conflicts = blackchocobo
 	source = git://github.com/sithlord48/blackchocobo.git
 	md5sums = SKIP
 
