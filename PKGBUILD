@@ -3,8 +3,8 @@
 
 pkgname=play-emu-ninja-git
 _gitname=Play-Build
-pkgver=r3.462d986
-pkgrel=4
+pkgver=r4322.4154887e
+pkgrel=1
 pkgdesc="Play! is an experimental Playstation 2 emulator. (build using ninja)"
 arch=('i686' 'x86_64')
 url="https://github.com/jpd002"
@@ -22,10 +22,8 @@ md5sums=('SKIP'
 	 '2c6db31d8119437e5af6fa95b4c1fb8f')
 
 pkgver() {
-
-  cd $_gitname
+  cd $_gitname/Play
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
 }
 
 prepare () {
@@ -52,4 +50,3 @@ package() {
     install -m755 play.png $pkgdir/usr/share/pixmaps/play.png
     install -m755 play-emu.desktop $pkgdir/usr/share/applications/play-emu.desktop
 }
-
