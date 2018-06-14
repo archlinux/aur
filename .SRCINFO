@@ -8,8 +8,8 @@ pkgbase = python2-enzyme
 	makedepends = python2-distribute
 	depends = python2
 	conflicts = python2-enzyme-git
-	source = http://pypi.python.org/packages/source/e/enzyme/enzyme-0.4.1.tar.gz
-	md5sums = 1656e262295df6580db5498cf136d23a
+	source = https://pypi.python.org/packages/source/e/enzyme/enzyme-0.4.1.tar.gz
+	sha512sums = 62a85c076a7eb320249a507dcc9dd26572e3a9b9643e0a960ed114a80c75213e6e5028a726fbcdd0c2c46c53af980a69828a54a66af9a17af3210273376395b3
 
 pkgname = python2-enzyme
 
