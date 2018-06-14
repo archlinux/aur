@@ -2,13 +2,13 @@
 
 pkgname=('anbox-git' 'anbox-modules-dkms-git')
 _pkgname=anbox
-pkgver=r702.3cf7d60
+pkgver=r880.69e75c9
 pkgrel=1
 epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
 license=('GPL3')
-makedepends=('cmake' 'git' 'glm' 'dbus-cpp' 'lxc' 'sdl2_image' 'protobuf' 'boost' 'properties-cpp' 'gtest')
+makedepends=('cmake' 'git' 'glm' 'lxc' 'sdl2_image' 'protobuf' 'boost' 'properties-cpp' 'gtest')
 source=("git+https://github.com/anbox/anbox.git"
 	"git+https://github.com/anbox/anbox-modules.git"
 	'anbox-container-manager.service'
@@ -53,7 +53,7 @@ build() {
 }
 
 package_anbox-git() {
-  depends=('dbus-cpp' 'lxc' 'sdl2_image' 'protobuf' 'anbox-image')
+  depends=('lxc' 'sdl2_image' 'protobuf' 'anbox-image' 'libsystemd' 'boost-libs')
   optdepends=('anbox-modules-dkms-git: Required Android kernel modules')
   pkgdesc="Running Android in a container"
 
@@ -72,6 +72,7 @@ package_anbox-git() {
 package_anbox-modules-dkms-git() {
   pkgdesc="Required kernel module sources for Android"
   depends=('dkms')
+  arch=('any')
 
   cd "$srcdir/anbox-modules"
   modules=(ashmem binder)
