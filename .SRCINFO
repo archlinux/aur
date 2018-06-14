@@ -1,0 +1,19 @@
+pkgbase = icecream-sundae-git
+	pkgdesc = A commandline monitor for Icecream. Git version.
+	pkgver = df4240e
+	pkgrel = 1
+	url = https://github.com/JPEWdev/icecream-sundae
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = meson
+	makedepends = gcc
+	makedepends = automake
+	makedepends = pkgconfig
+	depends = icecream
+	source = icecream-sundae-git::git+https://github.com/JPEWdev/icecream-sundae
+	sha512sums = SKIP
+
+pkgname = icecream-sundae-git
+
