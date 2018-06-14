@@ -7,10 +7,13 @@ pkgbase = twg
 	arch = i686
 	license = MIT
 	noextract = https://github.com/syui/twg/releases/download/0.2/linux_386_twg
+	noextract = https://github.com/syui/twg/releases/download/0.2/linux_amd64_twg
 	options = !strip
 	options = !emptydirs
 	source = https://github.com/syui/twg/releases/download/0.2/linux_386_twg
+	source = https://github.com/syui/twg/releases/download/0.2/linux_amd64_twg
 	sha1sums = e7202e10d958e1a9ab893fe24765317b18e12609
+	sha1sums = d0de749db19bceb7fbc9212c42e8ecf9a355bc27
 
 pkgname = twg
 
