@@ -1,0 +1,7 @@
+[Unit]
+Description=Taffybar status bar
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/taffybar
+Restart=on-failure
