@@ -26,6 +26,11 @@ build() {
   make
 }
 
+check() {
+  cd "$srcdir/build"
+  make tests
+}
+
 package() {
   cd "$srcdir/build"
   PKG_CONFIG_LIBDIR="${pkgdir}/usr/lib/pkgconfig/" \
