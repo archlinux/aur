@@ -1,0 +1,126 @@
+diff -rupN a/gtk/sass/3.22/_3rd-party.scss b/gtk/sass/3.22/_3rd-party.scss
+--- a/gtk/sass/3.22/_3rd-party.scss	2018-09-03 18:59:11.398964000 +0200
++++ b/gtk/sass/3.22/_3rd-party.scss	2018-09-03 19:31:59.897701633 +0200
+@@ -2340,6 +2340,35 @@ widget box.horizontal > widget + box.hor
+ //  * XFce4 *
+ //  *********/
+ 
++// Start patch for icon view Manjaro //
++
++XfdesktopIconView.view {
++  background-color: rgba(0,0,0,0.0);
++}
++
++XfdesktopIconView.view:active {
++    background-color: rgba(0,0,0,0.1);
++    color: $selected_bg_color;
++    border-radius: 1px;
++}
++
++XfdesktopIconView.rubberband {
++  background-color: rgba(0,0,0,0.3);
++}
++
++XfdesktopIconView.label {
++  color: white;
++  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
++}
++
++XfdesktopIconView.label:active {
++  background-color: rgba(0,0,0,0.15);
++  color: white;
++  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
++}
++
++// End patch for icons //
++
+ .XfceHeading {
+   border: 0 none transparent;
+   background-color: $bg_color;
+@@ -2423,49 +2452,52 @@ XfdesktopIconView.view {
+   .rubberband { @extend rubberband; }
+ }
+ 
+-window#whiskermenu-window {
+-  background-color: $secondary_base_color;
+-
+-  // no CSD class even if the sw compositor was enabled.
+-  > frame > border {
+-    border-radius: 0;
+-    border-top-color: $menu_highlight_color;
+-  }
+-
+-  // why wasn't .popup class implemented in this window node? :/
+-  > decoration { box-shadow: $z-depth-3; }
+-
+-  stack > box > box.horizontal {
+-    &:first-child widget,
+-    &:last-child > widget:last-child { // ugly resize-grip
+-      color: $outline_track_color;
+-    }
+-  }
++// Start patch for Wisker menù Manjaro //
+ 
+-  scrolledwindow {
+-    > viewport button.radio {
+-      &:not(:disabled) {
+-        border-radius: 0;
++window#whiskermenu-window {
++  color: $inverted_fg_color;
++  background-color: if($variant == light, $inverted_base_color,
++         $dark_color);
++  outline-color: rgba(0, 0, 0, 0.3);
++  box-shadow: inset 0 -2px $outline_track_color;
++
++  entry {
++    background-color: $fixed_base_color;
++    color: $fixed_fg_color;
++    font-weight: 500;
++  }
++   
++    button {
++      background-color: transparent;
++      background-image: none;
++      color: $inverted_fg_color;
++      transition: none;
++      &:hover {
++        background-color: transparent;
+         background-image: none;
+-        animation: none;
++        color: $selected_fg_color;
++        box-shadow: inset 0 -2px $outline_track_color;
+         transition: none;
+-      }
+-      &:hover { background-color: $track_color; }
+-      &:checked {
+-        background-color: gtkopacity($selected_bg_color, 0.12);
+-        color: $selected_bg_color;
+-      }
+     }
+ 
+-    treeview.view {
+-      &:selected:hover {
+-        background-color: transparent;
+-        color: $fg_color;
+-      }
++    &:active,
++    &:checked,
++    &:hover:checked,
++    &:disabled:checked { // 'checked' = 'active'
++      background-color: transparent;
++      background-image: none;
++      color: $selected_fg_color;
++      box-shadow: inset 0 -2px $selected_bg_color;
++      transition: none;
++      animation: none;
++    }
++    &:active {
++      &, &:hover { background-color: gtkopacity($inverted_fg_color, 0.12); }
+     }
+   }
+ }
+ 
++// End patched code for Wisker menù //
+ 
+ // /**********
+ //  * Thunar *
