@@ -1,1 +1,1 @@
-export CC65_HOME=/usr/lib/cc65
+export CC65_HOME=/usr/share/cc65
