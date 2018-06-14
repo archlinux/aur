@@ -1,8 +1,46 @@
 # Change Log
 
-## [Unreleased](https://github.com/langurmonkey/gaiasky/tree/HEAD)
+## [2.0.1](https://github.com/langurmonkey/gaiasky/tree/2.0.1) (2018-06-14)
+[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/2.0.0-vr...2.0.1)
 
-[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/1.5.0...HEAD)
+**Implemented enhancements:**
+
+- Lazy mesh initialization [\#284](https://github.com/langurmonkey/gaiasky/issues/284)
+- Improve DR2 catalogs [\#283](https://github.com/langurmonkey/gaiasky/issues/283)
+- Add support for new galaxy meshes [\#282](https://github.com/langurmonkey/gaiasky/issues/282)
+- Fix Gaia Sky logo resolution [\#279](https://github.com/langurmonkey/gaiasky/issues/279)
+- Add utility to see logs [\#278](https://github.com/langurmonkey/gaiasky/issues/278)
+- Improve grid rendering [\#277](https://github.com/langurmonkey/gaiasky/issues/277)
+- Add maximum FPS option [\#273](https://github.com/langurmonkey/gaiasky/issues/273)
+- Create contributing.md files with guidelines as to how to contribute [\#272](https://github.com/langurmonkey/gaiasky/issues/272)
+- Only Xbox 360 controls, no XBone [\#199](https://github.com/langurmonkey/gaiasky/issues/199)
+
+**Fixed bugs:**
+
+- Fix Windows 32-bit build [\#274](https://github.com/langurmonkey/gaiasky/issues/274)
+
+**Closed issues:**
+
+- Maximum time reached [\#271](https://github.com/langurmonkey/gaiasky/issues/271)
+
+## [2.0.0-vr](https://github.com/langurmonkey/gaiasky/tree/2.0.0-vr) (2018-05-09)
+[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/2.0.0...2.0.0-vr)
+
+**Implemented enhancements:**
+
+- Add night theme [\#270](https://github.com/langurmonkey/gaiasky/issues/270)
+
+**Fixed bugs:**
+
+- Fix SAMP issues when loading [\#266](https://github.com/langurmonkey/gaiasky/issues/266)
+- Fix constellation name flickering when planets are turned off [\#264](https://github.com/langurmonkey/gaiasky/issues/264)
+
+**Closed issues:**
+
+- Is it possible to extend the size of the user interface [\#269](https://github.com/langurmonkey/gaiasky/issues/269)
+
+## [2.0.0](https://github.com/langurmonkey/gaiasky/tree/2.0.0) (2018-04-24)
+[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/1.5.0...2.0.0)
 
 **Implemented enhancements:**
 
