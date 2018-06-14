@@ -12,6 +12,7 @@ pkgbase = icecream-sundae-git
 	makedepends = automake
 	makedepends = pkgconfig
 	depends = icecream
+	conflicts = icecream-sundae
 	source = icecream-sundae-git::git+https://github.com/JPEWdev/icecream-sundae
 	sha512sums = SKIP
 

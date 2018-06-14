@@ -9,6 +9,7 @@ url="https://github.com/JPEWdev/icecream-sundae"
 license=('GPL2')
 depends=('icecream')
 makedepends=('git' 'meson' 'gcc' 'automake' 'pkgconfig')
+conflicts=('icecream-sundae')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
