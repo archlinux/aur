@@ -16,12 +16,12 @@ package_python-django-jsonfield() {
     depends=('python-django')
     cd "$srcdir/django-jsonfield-$pkgver"
     install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	python './setup.py' install --root="$pkgdir" --optimize=1
+    python './setup.py' install --root="$pkgdir" --optimize=1
 }
 
 package_python2-django-jsonfield() {
     depends=('python2-django')
     cd "$srcdir/django-jsonfield-$pkgver"
     install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	python2 './setup.py' install --root="$pkgdir" --optimize=1
+    python2 './setup.py' install --root="$pkgdir" --optimize=1
 }
