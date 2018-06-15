@@ -35,13 +35,7 @@ check() {
 package() {
   cd libdeflate
 
-  install -Dm755 "gzip" "$pkgdir/usr/bin/libdeflate-gzip"
-  ln "$pkgdir/usr/bin/libdeflate-gzip" "$pkgdir/usr/bin/libdeflate-gunzip"
-
-  install -Dm755 "libdeflate.so" "$pkgdir/usr/lib/libdeflate.so"
-  install -Dm644 "libdeflate.h" "$pkgdir/usr/include/libdeflate.h"
-  install -Dm644 "libdeflate.a" "$pkgdir/usr/lib/libdeflate.a"
-
+  make install DESTDIR="$pkgdir"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README* NEWS
   install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
