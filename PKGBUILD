@@ -1,7 +1,7 @@
 # Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=peerflix
-pkgver=0.38.0
+pkgver=0.39.0
 pkgrel=1
 pkgdesc="Streaming torrent client for node.js"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mafintosh/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('640df105f7da0d8d96c10d97658987621742a360ed429500a9fbd42e55d7158a')
+sha256sums=('4255940099097670cce308e643c510a05936fa3720a35f25b5ef4c3ce185b80d')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
