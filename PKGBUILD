@@ -1,8 +1,8 @@
 # Maintainer: now-im <now.im.627@gmail.com>
 
 pkgname=sonar-icon-theme
-pkgver=11.3.1.70.9
-realver=11.3.1-70.9
+pkgver=11.3.1.73.3
+realver=11.3.1-73.3
 pkgrel=1
 pkgdesc="Icon theme from Suse 11.3 (tecnically from factory), based on the default gnome 3.0.0 icon theme."
 arch=('any')
@@ -12,7 +12,7 @@ provides=('icon-theme-sonar' 'sonar-icon-theme')
 optdepends=('gnome-icon-theme: For correct integration into the desktop')
 makedepends=('rpmextract')
 source=("http://download.opensuse.org/repositories/GNOME:/Factory/openSUSE_Factory/noarch/$pkgname-$realver.noarch.rpm")
-sha256sums=('edf072fbc3865b94ad25e7c3a7804bfb24f70a4deb5d78485eb5130da3c55f29')
+sha256sums=('02db20b8191457e36f389d02f3497c051cb2060304f810fabffd6c5b79e0acb2')
 
 build(){
 	cd $srcdir
