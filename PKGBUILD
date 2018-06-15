@@ -3,13 +3,13 @@
 
 _pkgname=hydrogen
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.beta1.r3165.4ae42ba1
+pkgver=1.0.0.beta1.r3198.e49b0892
 pkgrel=1
 pkgdesc="An advanced drum machine (git version)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/hydrogen-music/hydrogen"
-depends=('libarchive' 'liblrdf' 'qt5-xmlpatterns' 'libpulse' 'lash' 'liblo')
+depends=('hicolor-icon-theme' 'jack' 'libarchive' 'liblrdf' 'liblo' 'libpulse' 'qt5-xmlpatterns')
 makedepends=('git' 'cmake' 'docbook-xml' 'docbook-sgml' 'docbook-utils' 'docbook-xsl' 'poxml' 'xmlto')
 source=("${_pkgname}"::'git://github.com/hydrogen-music/hydrogen.git'
         'fix_dtd_version.patch'
@@ -59,7 +59,7 @@ build() {
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWANT_LASH=ON \
+    -DWANT_LASH=OFF \
     -DWANT_LRDF=ON \
     -DWANT_DEBUG=OFF \
     -DWANT_CPPUNIT=OFF
