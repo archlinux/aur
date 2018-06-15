@@ -3,13 +3,15 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=hidapi-git
-pkgver=366.d17db57
+pkgver=374.a6a622f
 pkgrel=1
 pkgdesc="A Simple library for communicating with USB and Bluetooth HID devices."
 arch=(any)
 url="http://www.signal11.us/oss/hidapi/"
 license=('GPL3' 'BSD' 'custom')
 depends=('systemd-tools' 'libusb' 'fox')
+conflicts=('hidapi')
+provides=('hidapi')
 makedepends=('git')
 options=('!libtool')
 
