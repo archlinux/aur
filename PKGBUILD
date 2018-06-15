@@ -2,7 +2,7 @@
 # Maintainer: dev@2ion.de
 #
 pkgname=packer-io-bin
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Hashicorp Packer -- upstream binary build"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('packer-io')
 conflicts=('packer-io')
 replaces=('packer-io')
 source=("https://releases.hashicorp.com/packer/${pkgver}/packer_${pkgver}_linux_amd64.zip")
-sha256sums=('822fe76c2dfe699f187ef8c44537d10453a1545db620e40b345cf6991a690f7d')
+sha256sums=('258d1baa23498932baede9b40f2eca4ac363b86b32487b36f48f5102630e9fbb')
 
 package() {
 	install -Dm755 packer "$pkgdir"/usr/bin/packer-io
