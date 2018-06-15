@@ -3,12 +3,12 @@
 
 pkgname=ibus-kmfl
 pkgver=10.99.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyman input method: ibus engine"
 arch=('i686' 'x86_64')
 url="https://keyman.com/"
 license=('MIT')
-depends=('ibus' 'libkmfl')
+depends=('ibus' 'libkmfl' 'kmflcomp')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-alpha-$pkgver.tar.gz")
 md5sums=('cd4b8bbe0b528d68c28da4fa6dd90c43')
 
