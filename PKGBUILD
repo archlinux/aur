@@ -20,7 +20,7 @@ package_python-django-simple-captcha() {
         'python-django-ranged-response'
     )
     cd "$srcdir/django-simple-captcha-$pkgver"
-	install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python './setup.py' install --root="$pkgdir" --optimize=1
 }
 
@@ -32,6 +32,6 @@ package_python2-django-simple-captcha() {
         'python2-django-ranged-response'
     )
     cd "$srcdir/django-simple-captcha-$pkgver"
-	install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python2 './setup.py' install --root="$pkgdir" --optimize=1
 }
