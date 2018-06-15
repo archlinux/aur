@@ -3,7 +3,7 @@
 
 pkgname=python-dask
 _pkgname=dask
-pkgver=0.17.5
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('python-bcolz'
   'python-s3fs: S3 support')
 makedepends=('python-setuptools')
 source=("https://github.com/dask/dask/archive/$pkgver.tar.gz")
-sha256sums=('594aec89340a2276e85e447acbad814f819c5d7286ec7165f7c1b65dc49f9512')
+sha256sums=('560df01fb05ebb804ecffd94807363d833eb781f59a0bed616bc84bd31223861')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
