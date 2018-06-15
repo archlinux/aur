@@ -1,7 +1,7 @@
 # Maintainer: Myles English <myles at tdma dot co>
 pkgname=pastix
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="high performance parallel solver for very large sparse linear systems based on direct methods"
 arch=('x86_64')
 url="https://gitlab.inria.fr/solverstack/pastix"
@@ -12,7 +12,6 @@ makedepends=('gcc-fortran' 'cmake')
 #optdepends=('metis' 'parmetis')
 #conflicts=("pastix-git")
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-_fname="pastix-6.0.0-bb8b9e320bac1109cf036f9f31f37e258b53a6c7"
 md5sums=("SKIP")
 
 prepare() {
@@ -32,9 +31,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}/build"
-
     make install DESTDIR="${pkgdir}"
-
-    mkdir "${pkgdir}/usr/share" "${pkgdir}/usr/share/pastix"
-    mv  "${pkgdir}/usr/examples" "${pkgdir}/usr/share/doc/pastix/"
+    install -Dm644 "${pkgdir}/usr/examples" "${pkgdir}/usr/share/doc/pastix/examples" && \ 
+	    rm -rf "${pkgdir}/usr/examples"
 }
