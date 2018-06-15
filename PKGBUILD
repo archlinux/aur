@@ -1,7 +1,7 @@
 # Maintainer: solaraquarion <shlomochoina@gmail.com>
 
 pkgname=domterm-git
-pkgver=1.0.r32.g53a3a64
+pkgver=1.0.r45.ga1c99a2
 pkgrel=1
 pkgdesc="Terminal emulator capable of display html and images from command output"
 arch=('any')
@@ -9,7 +9,7 @@ url=https://github.com/PerBothner/DomTerm
 license=('BSD')
 groups=()
 conflicts=(qtdomterm)
-makedepends=('git' 'asciidoctor')
+makedepends=('git' 'vim' 'asciidoctor')
 depends=(json-c qt5-webengine qt5-webchannel libwebsockets)
 source=('git+https://github.com/PerBothner/DomTerm.git')
 md5sums=('SKIP')
@@ -21,7 +21,7 @@ pkgver(){
 build() {
     cd "$srcdir"/DomTerm
     autoreconf
-    ./configure --enable-pty --with-qtwebengine --with-libwebsockets --prefix=/usr
+    ./configure --with-qtwebengine --with-libwebsockets --prefix=/usr
     make
 }
 
