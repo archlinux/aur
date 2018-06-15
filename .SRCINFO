@@ -1,16 +1,15 @@
 pkgbase = ibus-kmfl
-	pkgdesc = Keyboard Mapping for Linux (KMFL) input method for IBus
-	pkgver = 1.0.8
+	pkgdesc = Keyman input method: ibus engine
+	pkgver = 10.99.0.2
 	pkgrel = 1
-	url = http://kmfl.sourceforge.net/
+	url = https://keyman.com/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	depends = kmflcomp
+	license = MIT
+	depends = ibus
 	depends = libkmfl
-	depends = libibus
-	source = https://sourceforge.net/projects/kmfl/files/kmfl/ibus-kmfl/ibus-kmfl-1.0.8.tar.gz
-	md5sums = af2357d253b6db9f5d8e9a15d6af6f93
+	source = ibus-kmfl-10.99.0.2.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-alpha-10.99.0.2.tar.gz
+	md5sums = cd4b8bbe0b528d68c28da4fa6dd90c43
 
 pkgname = ibus-kmfl
 

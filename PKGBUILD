@@ -2,46 +2,36 @@
 # Maintainer 2018-now : Vitrum <wqdxosty1yhj at bk dot ru>
 
 pkgname=ibus-kmfl
-pkgver=1.0.8
+pkgver=10.99.0.2
 pkgrel=1
-pkgdesc="Keyboard Mapping for Linux (KMFL) input method for IBus"
+pkgdesc="Keyman input method: ibus engine"
 arch=('i686' 'x86_64')
-url="http://kmfl.sourceforge.net/"
-license=('GPL')
-source=("https://sourceforge.net/projects/kmfl/files/kmfl/ibus-kmfl/ibus-kmfl-$pkgver.tar.gz")
-depends=('kmflcomp' 'libkmfl' 'libibus')
-noextract=()
-options=()
-md5sums=('af2357d253b6db9f5d8e9a15d6af6f93')
+url="https://keyman.com/"
+license=('MIT')
+depends=('ibus' 'libkmfl')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-alpha-$pkgver.tar.gz")
+md5sums=('cd4b8bbe0b528d68c28da4fa6dd90c43')
+
+prepare() {
+    basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
+    cd "$basedir/$pkgname"
+    sed -i 's/${libexecdir}/\/usr\/lib\/ibus/g' src/kmfl.xml.in.in
+}
 
 build() {
-	LDFLAGS="${LDFLAGS} -lX11"
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+    basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
+    cd "$basedir/$pkgname"
+    autoreconf
+    ./configure \
+        CPPFLAGS="-I/usr/include" LDFLAGS="-L/usr/lib" \
+        --prefix=$pkgdir/usr \
+        --libexecdir=$pkgdir/usr/lib/ibus \
+        --datadir=$pkgdir/usr/share
+    make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+    basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
+    cd "$basedir/$pkgname"
+    make install
 }
-
-post_install() {
-	echo '-----------------------------------------------------------------------------'
-	echo 'INFORMATION: newly installed ibus-kmfl engine does not contain keyboard'
-	echo 'layouts which can be obtained from the web-sites:'
-	echo ''
-	echo '* http://tavultesoft.com/keyman/downloads/keyboards/'
-	echo '* https://github.com/keymanapp/keyboards'
-	echo ''
-	echo 'Uncompiled Keyman-style keyboard files (*.kmn) should be copied into the'
-	echo "user's directory ~/.kmfl/ or system-wide /usr/share/kmfl/."
-	echo ''
-	echo 'After restarting ibus-deamon new layouts will be available in the'
-	echo 'subcategory "Other". More information about the file format and layout'
-	echo 'description language see on the web-site:'
-	echo ''
-	echo '* https://help.keyman.com/developer/'
-	echo '-----------------------------------------------------------------------------'
-}
-
