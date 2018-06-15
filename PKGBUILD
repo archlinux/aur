@@ -1,8 +1,8 @@
 # Maintainer: Adam Fontenot <fontenot@ucla.edu>
 
 pkgname=libheif
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="HEIF file format decoder and encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/strukturag/libheif"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('libde265')
 optdepends=('x265: HEIF encoding')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ba6eeb9494cfaeeebddacc7803862ef5256eb4a1bff50c07f1385c3f8b282869')
+sha256sums=('f8abfbda4236b7efe8a28476e58c4baeac6a56f25d4e3acfa687ac5631d9188a')
 
 prepare() {
   cd "$pkgname-$pkgver"

@@ -1,15 +1,15 @@
 pkgbase = libheif
 	pkgdesc = HEIF file format decoder and encoder
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/strukturag/libheif
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = libde265
 	optdepends = x265: HEIF encoding
-	source = libheif-1.2.0.tar.gz::https://github.com/strukturag/libheif/archive/v1.2.0.tar.gz
-	sha256sums = ba6eeb9494cfaeeebddacc7803862ef5256eb4a1bff50c07f1385c3f8b282869
+	source = libheif-1.3.0.tar.gz::https://github.com/strukturag/libheif/archive/v1.3.0.tar.gz
+	sha256sums = f8abfbda4236b7efe8a28476e58c4baeac6a56f25d4e3acfa687ac5631d9188a
 
 pkgname = libheif
 
