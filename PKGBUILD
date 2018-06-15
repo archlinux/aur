@@ -4,7 +4,7 @@
 
 pkgname=eureka
 pkgver=1.21
-pkgrel=2
+pkgrel=3
 pkgdesc="A map editor for the classic DOOM games"
 arch=('i686' 'x86_64')
 url="http://eureka-editor.sourceforge.net"
@@ -25,7 +25,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver-source
 
-  make PREFIX=/usr OPTIMISE="$CXXFLAGS"
+  make PREFIX=/usr OPTIMISE="$CXXFLAGS $CPPFLAGS"
 }
 
 package() {
