@@ -19,7 +19,7 @@ package_python-cas() {
         'python-lxml'
     )
     cd "$srcdir/python-cas-$pkgver"
-	install -Dm644 './LICENSE.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 './LICENSE.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python './setup.py' install --root="$pkgdir" --optimize=1
 }
 
@@ -30,6 +30,6 @@ package_python2-cas() {
         'python2-lxml'
     )
     cd "$srcdir/python-cas-$pkgver"
-	install -Dm644 './LICENSE.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 './LICENSE.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python2 './setup.py' install --root="$pkgdir" --optimize=1
 }
