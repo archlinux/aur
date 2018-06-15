@@ -1,15 +1,3 @@
-diff --git a/scripts/setup-seafile-mysql.sh b/scripts/setup-seafile-mysql.sh
-index cb8b8c5..a8f18df 100755
---- a/scripts/setup-seafile-mysql.sh
-+++ b/scripts/setup-seafile-mysql.sh
-@@ -8,6 +8,7 @@ set -e
- 
- SCRIPT=$(readlink -f "$0")
- INSTALLPATH=$(dirname "${SCRIPT}")
-+PYTHON='/usr/lib/seahub/bin/python2'
- 
- cd "$INSTALLPATH"
- 
 diff --git a/scripts/setup-seafile-mysql.py b/scripts/setup-seafile-mysql.py
 index 596687c..39ed520 100644
 --- a/scripts/setup-seafile-mysql.py

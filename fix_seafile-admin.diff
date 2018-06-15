@@ -7,7 +7,7 @@ index 5e3658b..90c68a8 100755
  SCRIPT_NAME = os.path.basename(sys.argv[0])
  
 -PYTHON = sys.executable
-+PYTHON = '/usr/lib/seahub/bin/python2.7'
++PYTHON = '/usr/bin/python2.7'
  
  conf = {}
  CONF_SERVER_NAME = 'server_name'
@@ -39,7 +39,7 @@ index 5e3658b..90c68a8 100755
  def start_seahub_gunicorn():
      argv = [
 -        'gunicorn',
-+        '/usr/lib/seahub/bin/gunicorn',
++        'gunicorn-python2',
          'seahub.wsgi:application',
          '-c',
          conf[CONF_SEAHUB_CONF],

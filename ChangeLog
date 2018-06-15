@@ -1,3 +1,8 @@
+2018-06-15 Joffrey <j-off@live.fr>
+	* Version: 6.3.1-1
+
+	* *.diff: Remove patchs for python virtualenv
+
 2018-06-03 Joffrey <j-off@live.fr>
 	* Version: 6.3.0-1
 
