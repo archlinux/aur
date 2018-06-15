@@ -4,7 +4,7 @@
 _name=schema
 pkgbase="python-$_name"
 pkgname=("python2-$_name" "python-$_name")
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=2
 pkgdesc='Python module to validate and convert data structures.'
 arch=(any)
@@ -13,7 +13,7 @@ license=(MIT)
 makedepends=(python-pip python2-pip)
 _wheel="$_name-$pkgver-py2.py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/$_wheel")
-sha256sums=('a058daf5d926e4ece9f13c4c2366a836143ca7913ef053c5023c569e00175b2a')
+sha256sums=('d994b0dc4966000037b26898df638e3e2a694cc73636cb2050e652614a350687')
 noextract=("$_wheel")
 
 do_package() {
