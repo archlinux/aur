@@ -10,21 +10,24 @@ pkgdesc="An astronomical image mosaic engine"
 arch=('i686' 'x86_64')
 url="http://montage.ipac.caltech.edu/"
 license=('custom')
-depends=('freetype2')
+depends=('freetype2' 'wcslib')
 makedepends=()
 provides=()
 conflicts=('montage')
 #source=("http://montage.ipac.caltech.edu/download/Montage_v$pkgver.tar.gz")
 source=("git+https://github.com/Caltech-IPAC/Montage.git"
-	"freetype.patch")
+	"freetype.patch"
+	"wcslib.patch")
 #sha1sums=('c66d7ea01d3c11506b43759ade68c817092b120e')
 sha1sums=('SKIP'
 	'ac0c1e23d74b1c016eeb1bf63de240e788f4ff72'
+	'80621edd384225fed83c550b4f22bc849e9a3d3d'
 	)
 
 prepare() {
   cd $srcdir/$_pkgname
   patch -p1 -i $srcdir/freetype.patch
+  patch -p1 -i $srcdir/wcslib.patch
 }
 
 build() {

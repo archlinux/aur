@@ -1,0 +1,19 @@
+diff --git a/Makefile b/Makefile
+index 27d0c90..c94e9e8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -6,7 +6,7 @@ all:
+ 	if test -d util;       then (cd util;       make); fi
+ 	if test -d grid;       then (cd grid;       make); fi
+ 	if test -d MontageLib; then (cd MontageLib; make); fi
+-	if test -d ancillary;  then (cd ancillary;  make; make install); fi
++#	if test -d ancillary;  then (cd ancillary;  make; make install); fi
+ 
+ clean:
+ 	mkdir -p bin
+@@ -17,4 +17,4 @@ clean:
+ 	if test -d util;       then (cd util;       make clean); fi
+ 	if test -d grid;       then (cd grid;       make clean); fi
+ 	if test -d MontageLib; then (cd MontageLib; make clean); fi
+-	if test -d ancillary;  then (cd ancillary;  make clean); fi
++#	if test -d ancillary;  then (cd ancillary;  make clean); fi
