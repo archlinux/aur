@@ -20,7 +20,7 @@ package_python-django-webpack-loader() {
         'python-requests'
     )
     cd "$srcdir/django-webpack-loader-$pkgver"
-	install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python './setup.py' install --root="$pkgdir" --optimize=1
 }
 
@@ -32,6 +32,6 @@ package_python2-django-webpack-loader() {
         'python2-requests'
     )
     cd "$srcdir/django-webpack-loader-$pkgver"
-	install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python2 './setup.py' install --root="$pkgdir" --optimize=1
 }
