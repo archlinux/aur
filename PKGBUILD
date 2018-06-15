@@ -26,7 +26,7 @@ validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
 pkgdesc="A compatibility layer for running Windows programs - Staging branch, optimized for audio low latency on osu!"
-url="http://www.wine-staging.com"
+url="https://blog.thepoon.fr/osuLinuxAudioLatency/"
 arch=(x86_64)
 options=(staticlibs)
 license=(LGPL)
