@@ -1,0 +1,77 @@
+diff -Naur tcl8.6.5-orig/win/configure.in tcl8.6.5/win/configure.in
+--- tcl8.6.5-orig/win/configure.in	2016-03-01 04:59:35.000000000 +0300
++++ tcl8.6.5/win/configure.in	2016-03-03 08:47:47.115572500 +0300
+@@ -127,16 +127,7 @@
+   tcl_ok=yes
+ ])
+ AS_IF([test "$tcl_ok" = "yes"], [
+-  AC_SUBST(ZLIB_DLL_FILE,[\${ZLIB_DLL_FILE}])
+-  AS_IF([test "$do64bit" = "yes"], [
+-    AS_IF([test "$GCC" == "yes"],[
+-      AC_SUBST(ZLIB_LIBS,[\${ZLIB_DIR_NATIVE}/win64/libz.dll.a])
+-    ], [
+-      AC_SUBST(ZLIB_LIBS,[\${ZLIB_DIR_NATIVE}/win64/zdll.lib])
+-    ])
+-  ], [
+-    AC_SUBST(ZLIB_LIBS,[\${ZLIB_DIR_NATIVE}/win32/zdll.lib])
+-  ])
++    AC_SUBST(ZLIB_LIBS,[-lz])
+ ], [
+   AC_SUBST(ZLIB_OBJS,[\${ZLIB_OBJS}])
+ ])
+diff -Naur tcl8.6.5-orig/win/Makefile.in tcl8.6.5/win/Makefile.in
+--- tcl8.6.5-orig/win/Makefile.in	2016-03-01 04:59:35.000000000 +0300
++++ tcl8.6.5/win/Makefile.in	2016-03-03 08:47:47.129571100 +0300
+@@ -146,9 +146,8 @@
+ REG_LIB_FILE		= @LIBPREFIX@tclreg$(REGVER)${LIBSUFFIX}
+ TEST_DLL_FILE		= tcltest$(VER)${DLLSUFFIX}
+ TEST_LIB_FILE		= @LIBPREFIX@tcltest$(VER)${LIBSUFFIX}
+-ZLIB_DLL_FILE		= zlib1.dll
+ 
+-SHARED_LIBRARIES 	= $(TCL_DLL_FILE) @ZLIB_DLL_FILE@
++SHARED_LIBRARIES 	= $(TCL_DLL_FILE)
+ STATIC_LIBRARIES	= $(TCL_LIB_FILE)
+ 
+ TCLSH			= tclsh$(VER)${EXESUFFIX}
+@@ -188,7 +187,7 @@
+ SHLIB_LD_LIBS	= @SHLIB_LD_LIBS@
+ SHLIB_CFLAGS	= @SHLIB_CFLAGS@
+ SHLIB_SUFFIX	= @SHLIB_SUFFIX@
+-LIBS		= @LIBS@ $(shell $(CYGPATH) '@ZLIB_LIBS@')
++LIBS		= @LIBS@ @ZLIB_LIBS@
+ 
+ RMDIR		= rm -rf
+ MKDIR		= mkdir -p
+@@ -446,7 +445,7 @@
+ 	@MAKE_STUB_LIB@ ${STUB_OBJS}
+ 	@POST_MAKE_LIB@
+ 
+-${TCL_DLL_FILE}: ${TCL_OBJS} tcl.$(RES) @ZLIB_DLL_FILE@
++${TCL_DLL_FILE}: ${TCL_OBJS} tcl.$(RES)
+ 	@$(RM) ${TCL_DLL_FILE} $(TCL_LIB_FILE)
+ 	@MAKE_DLL@ ${TCL_OBJS} tcl.$(RES) $(SHLIB_LD_LIBS)
+ 	@VC_MANIFEST_EMBED_DLL@
+@@ -466,14 +465,6 @@
+ 	@$(RM) ${TEST_DLL_FILE} ${TEST_LIB_FILE}
+ 	@MAKE_DLL@ ${TCLTEST_OBJS} $(TCL_STUB_LIB_FILE) $(SHLIB_LD_LIBS)
+ 
+-# use pre-built zlib1.dll
+-${ZLIB_DLL_FILE}: ${TCL_STUB_LIB_FILE}
+-	@if test "@ZLIB_LIBS@set" != "${ZLIB_DIR_NATIVE}/win32/zdll.libset" ; then \
+-		$(COPY) $(ZLIB_DIR)/win64/${ZLIB_DLL_FILE} ${ZLIB_DLL_FILE}; \
+-	else \
+-		$(COPY) $(ZLIB_DIR)/win32/${ZLIB_DLL_FILE} ${ZLIB_DLL_FILE}; \
+-	fi;
+-
+ # Add the object extension to the implicit rules. By default .obj is not
+ # automatically added.
+ 
+@@ -579,7 +570,7 @@
+ 		else true; \
+ 		fi; \
+ 	    done;
+-	@for i in $(TCL_DLL_FILE) $(ZLIB_DLL_FILE) $(TCLSH); \
++	@for i in $(TCL_DLL_FILE) $(TCLSH); \
+ 	    do \
+ 	    if [ -f $$i ]; then \
+ 		echo "Installing $$i to $(BIN_INSTALL_DIR)/"; \
