@@ -3,6 +3,8 @@ Description=Mattermost bridge to many other protocols
 After=network.target
 
 [Service]
+User=nobody
+Group=nobody
 ExecStart=/usr/bin/matterbridge -conf /etc/matterbridge.toml
 Type=simple
 
