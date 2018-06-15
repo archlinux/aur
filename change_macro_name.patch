@@ -1,0 +1,12 @@
+diff -ura python-sipsimple-release-3.1.1/deps/pjsip/pjmedia/src/pjmedia-codec/ffmpeg_vid_codecs.c python-sipsimple-release-3.1.1.new/deps/pjsip/pjmedia/src/pjmedia-codec/ffmpeg_vid_codecs.c
+--- python-sipsimple-release-3.1.1/deps/pjsip/pjmedia/src/pjmedia-codec/ffmpeg_vid_codecs.c	2017-05-05 10:29:51.000000000 -0400
++++ python-sipsimple-release-3.1.1.new/deps/pjsip/pjmedia/src/pjmedia-codec/ffmpeg_vid_codecs.c	2018-06-15 05:25:58.085280922 -0400
+@@ -1689,7 +1689,7 @@
+      * Normally, encoded buffer is allocated more than needed, so lets just
+      * bzero the input buffer end/pad, hope it will be just fine.
+      */
+-    pj_bzero(avpacket.data+avpacket.size, FF_INPUT_BUFFER_PADDING_SIZE);
++    pj_bzero(avpacket.data+avpacket.size, AV_INPUT_BUFFER_PADDING_SIZE);
+ 
+     output->bit_info = 0;
+     output->timestamp = input->timestamp;
