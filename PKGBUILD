@@ -12,6 +12,6 @@ source=("https://github.com/ndparker/rjsmin/archive/$pkgver.tar.gz")
 sha256sums=('cc44516dbdac13219179765f0b2a847e92ecb03d3c40fbec2da0aeb711e1c25f')
 
 package() {
-	cd "$srcdir/rjsmin-$pkgver"
-	python2 './setup.py' install --root="$pkgdir" --optimize=1 # --without-c-extensions
+    cd "$srcdir/rjsmin-$pkgver"
+    python2 './setup.py' install --root="$pkgdir" --optimize=1 # --without-c-extensions
 }
