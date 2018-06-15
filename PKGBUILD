@@ -52,6 +52,8 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/libtre/build-${_arch}"
     make DESTDIR="$pkgdir" install
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     install -Dm644 "${srcdir}/libtre/LICENSE" "${pkgdir}/usr/${_arch}/share/licenses/libtre/LICENSE"
   done
 }
