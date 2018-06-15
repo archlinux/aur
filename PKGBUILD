@@ -2,7 +2,7 @@
 
 pkgname_=fastr
 pkgname=${pkgname_}-bin
-pkgver_=1.0.0-rc1
+pkgver_=1.0.0-rc2
 pkgver=${pkgver_/-/_}
 pkgrel=1
 pkgdesc='Graal based, high-performance implementation of the R language'
@@ -15,13 +15,13 @@ optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver_}/r-installable-linux-amd64.jar")
-sha256sums=('8293611f4640de8a5783ae23e4ad5c853117b66b589c015fc1f8a8ac6c8e8c68')
+sha256sums=('e01289e5e107b6cc235a7de0b4b34db59aff96acf20e84aa7797bbd66ba7d623')
 
 package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-8-graal/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-8-graal/" docs/ jre/
+    cp -a -t "$pkgdir/usr/lib/jvm/java-8-graal/" jre/
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
@@ -54,5 +54,5 @@ package() {
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-8-graal/$name"
     done < META-INF/symlinks
 
-    install -Dm644 jre/languages/R/GraalCE_R_license_3rd_party_license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" jre/languages/R/LICENSE_FASTR
 }
