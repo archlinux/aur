@@ -4,14 +4,14 @@ _pkgname=rust
 
 pkgname=mingw-w64-rust-bin
 pkgver=1.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)"
 arch=('x86_64')
 url="https://www.rust-lang.org"
 license=('MIT' 'Apache' 'custom')
 depends=('gcc-libs'
          'curl'
-         'mingw-w64-crt<5.0.3.20180112'
+         'mingw-w64-crt<5.0.4.20180112'
          'libgit2'
          'mingw-w64-gcc')
 optdepends=('mingw-w64-wine: for cargo test support')
@@ -124,7 +124,7 @@ EOF
              "-C", "panic=abort",
 EOF
   fi
-  if pacman -T "mingw-w64-crt>5.0.3.20171219" ; then
+  if pacman -T "mingw-w64-crt-git>5.0.4.20171219" ; then
     cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
              "-C", "link-arg=-lmsvcrt",
 EOF
