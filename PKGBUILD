@@ -3,7 +3,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=payara
-pkgver=5.181
+pkgver=5.182
 pkgrel=1
 pkgdesc="A Java EE application server, drived from GlassFish Open Source Edition."
 url="http://www.payara.fish/"
@@ -16,7 +16,7 @@ options=(!strip)
 source=("$pkgname-$pkgver.zip::https://search.maven.org/remotecontent?filepath=fish/$pkgname/distributions/$pkgname/$pkgver/$pkgname-$pkgver.zip"
         "payara.service")
 
-sha256sums=('b2e96f1ad5deb2e8dcd854944dde86225d58de5f1326824b17f1b6a58a31bc7f'
+sha256sums=('07386f5b93482ae80020e5eb45af313f2563ccbd84756df950eb65f42977186e'
             '20be1d3d7c83fe75580e72154728929e560333a4027f5be39799babbe5da860d')
 
 package() {
