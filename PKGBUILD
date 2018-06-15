@@ -6,7 +6,7 @@
 pkgname=unbound-ecs
 _pkgname=unbound
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Validating, recursive, and caching DNS resolver, enable EDNS client subnet'
 url='https://unbound.net/'
 license=('custom:BSD')
@@ -24,10 +24,10 @@ source=("https://unbound.net/downloads/${_pkgname}-${pkgver}.tar.gz"
         'hook'
         'conf')
 sha256sums=('a85fc7bb34711992cf128b2012638ebb8dc1fe15818baa381f6489240845eaa0'
-            '66e531fed2b5b25378c89209525087cb137206fd80b70c1f576d6333ec368402'
-            'e527e51a97d1e3280f0737021fca616909375ebf0bd1050c18d1abff75b8bb2b'
-            '6f4d89fbc52ed64dc3bb90d1b47a5acbff7915c17bbf76cce5f49396df0583da'
-            '8d27e8420039fac40b9f7a24fc6962c62e9b65e8709cf64486dec0f97bbe83cf'
+            '85b8f00881fb93bcce83bdfe3246463a396eb5b352c0d7f5fca32fcb839d22fa'
+            '31a573f43287dd7e3678be1680388bfc7d8dee8280eb2443f521a4b349aaa6b6'
+            '526ee18a5394073404ee10a67addf9894efa43fa234234562e84a1641d54b556'
+            '2746aede36b1f57efdcc370b7643ce31ff9e6acb9a1f62705987b07eaed866a3'
             '07d764f4f42adfba9685c5c7feef81116118f4a1772b118aa3ebbe059e8a513e')
 
 build() {
