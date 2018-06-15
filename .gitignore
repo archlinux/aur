@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/BOSSA/
+*.pkg.tar.xz
+*.swp
+*~
