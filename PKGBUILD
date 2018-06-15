@@ -15,5 +15,6 @@ sha512sums=('56bc0e87496d5bc361430c4ee396b20374da697014203bdc4dda12341918e67c98a
 
 package() {
   cd "${srcdir}/subliminal-${pkgver}"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  mv "${pkgdir}/usr/bin/subliminal" "${pkgdir}/usr/bin/python2-subliminal"
 }
