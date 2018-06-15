@@ -29,11 +29,11 @@ ocaml-ao
 
 # PulseAudio is a cross-plateform audio sound server. It is intended to
 # be a single replacement for sound support under linux, windows or OSX.
-#ocaml-pulseaudio
+ocaml-pulseaudio
 
 # JACK is an audio connection kit, designed for low latency
 # and easy communication between audio applications.
-#ocaml-bjack
+ocaml-bjack
 
 # Gstreamer is a library for constructing graphs of media-handling components.
 # It is currently used to provide audio and video encoding and decoding
@@ -107,7 +107,7 @@ ocaml-samplerate
 # is very efficient and has a quality setting for
 # tweaking load vs. quality of the conversion.
 # It is the recommended module to use with video
-#ocaml-gavl
+ocaml-gavl
 
 # FFMPEG is currently only used to convert from
 # and to many formats.

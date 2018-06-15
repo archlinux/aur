@@ -2,13 +2,13 @@
 
 pkgname=liquidsoap
 pkgver=1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('GPL')
 depends=('faad2' 'ffmpeg' 'fluidsynth' 'gavl' 'gd' 'giflib' 'gst-plugins-bad'  'gst-plugins-base'  'gst-plugins-good'  'gst-plugins-ugly' 'libao' 'libfdk-aac' 'liblo' 'libmad' 'libxpm' 'ocaml-camomile' 'openssl' 'sdl_image' 'sdl_ttf' 'soundtouch' 'taglib')
-makedepends=('dssi' 'frei0r-plugins' 'git' 'ladspa' 'libxml-perl' 'ocaml-gd4o' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
+makedepends=('camlp4' 'dssi' 'frei0r-plugins' 'git' 'ladspa' 'libxml-perl' 'ocaml-findlib' 'ocaml-gd4o' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
 source=("$pkgname-$pkgver-full::git+https://github.com/savonet/liquidsoap-full"
 	PACKAGES
 	$pkgname.service
@@ -44,6 +44,6 @@ package() {
 }
 
 md5sums=('SKIP'
-	'1005d51e97eacc4b55cb9daadb331749'
-	'762d6607ff0889e34b8c874970b38bc9'
-'f9106e5c42cabc21c4c8464d9b1ad63e')
+         'bafeb8cb204a8c3368a81778e03cfcc5'
+         '762d6607ff0889e34b8c874970b38bc9'
+         'f9106e5c42cabc21c4c8464d9b1ad63e')
