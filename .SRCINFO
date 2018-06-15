@@ -1,0 +1,24 @@
+pkgbase = python-django-webpack-loader
+	pkgdesc = Transparently use webpack with django
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/owais/django-webpack-loader
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/owais/django-webpack-loader/archive/0.6.0.tar.gz
+	sha256sums = 5859d1794a08a02d2453b29a4a5c847bb2e16e415c4b9b13979f7cd90e209005
+
+pkgname = python-django-webpack-loader
+	depends = python-django
+	depends = python-lxml
+	depends = python-six
+	depends = python-requests
+
+pkgname = python2-django-webpack-loader
+	depends = python2-django
+	depends = python2-lxml
+	depends = python2-six
+	depends = python2-requests
+
