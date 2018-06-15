@@ -5,7 +5,7 @@
 
 pkgname=discord-canary
 pkgver=0.0.52
-pkgrel=3
+pkgrel=5
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -43,6 +43,7 @@ package() {
   sed -i s%/usr/share%/opt% ${pkgdir}/usr/share/applications/${pkgname}.desktop``
   # Main binary
   #install "${srcdir}/Discord.sh" "${pkgdir}/usr/bin/discord"
+  mkdir -p $pkgdir/usr/bin
   ln -s "/opt/${pkgname}/DiscordCanary" "${pkgdir}/usr/bin/${pkgname}"
 
   # Create symbolic link to the icon
