@@ -4,9 +4,9 @@
 # Contributor: JD Steffen
 
 pkgname=hexen2
-pkgver=1.5.8
-_gamecodever=1.29a
-pkgrel=2
+pkgver=1.5.9
+_gamecodever=1.29b
+pkgrel=1
 pkgdesc="Hammer of Thyrion: Raven Software's Hexen II source port (based on Anvil of Thyrion)"
 arch=('i686' 'x86_64')
 url="http://uhexen2.sourceforge.net/"
@@ -16,12 +16,12 @@ makedepends=('nasm')
 provides=('hexenworld')
 install=hexen2.install
 source=("http://downloads.sourceforge.net/uhexen2/hexen2source-$pkgver.tgz"
-        "http://downloads.sourceforge.net/uhexen2/hexen2source-gamecode-${pkgver}.tgz"
+        "http://downloads.sourceforge.net/uhexen2/hexen2source-gamecode-$pkgver.tgz"
         "http://downloads.sourceforge.net/uhexen2/hexenworld-pakfiles-0.15.tgz"
         "hexen2.desktop"
         "hexen2.sh")
-sha256sums=('fbe6d05b4a10b82d1817faeccc18996a93b26d0814fe4e5f6e75d94862660463'
-            '5ba7f996a282305a157de9d1735b416c7151f59d6e84a580e1e9ed8bb66c4044'
+sha256sums=('2aa84c141a820f9087850aacf3684a5f71c434428bc57545899eda1b9a28c3e0'
+            '15188ecace6f8431af88d096aae2c4ff9e41c0e1b3e107eee0c4f5f9d09d34bb'
             '49462cdf984deee7350d03c7d192d1c34d682647ffc9d06de4308e0a7c71c4d9'
             'fa0bde060ba3afda3683b96d7ece23161816a04a2365ba996c1cb07268d6580f'
             '9882421ee54afa4995c11e3759ab7fffb59a448291f0d647b3857d43b5cf27a9')
