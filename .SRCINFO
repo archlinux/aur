@@ -1,15 +1,13 @@
 pkgbase = kmfl-keyboard-eurolatin
 	pkgdesc = EuroLatin keyboard for KMFL
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tavultesoft.com/eurolatin/
 	arch = any
 	license = custom
-	depends = ibus-kmfl
+	optdepends = ibus-kmfl: Keyman input method
 	source = http://tavultesoft.com/eurolatin/eurolatin-source-1.6.zip
-	source = package.patch
 	md5sums = c3dbc380da4ef9249c4699a4c0a98f80
-	md5sums = 3ead5f14aad656643a5ac964c54b7134
 
 pkgname = kmfl-keyboard-eurolatin
 
