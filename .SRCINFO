@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-gts
+	pkgdesc = Provides useful functions to deal with 3D surfaces meshed with interconnected triangles (mingw-w64)
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = http://gts.sourceforge.net/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-wine
+	depends = mingw-w64-crt
+	depends = mingw-w64-glib2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://downloads.sourceforge.net/project/gts/gts/0.7.6/gts-0.7.6.tar.gz
+	source = gts-mingw.patch
+	sha256sums = 059c3e13e3e3b796d775ec9f96abdce8f2b3b5144df8514eda0cc12e13e8b81e
+	sha256sums = d16c24ce5766c9dc36a2ad02d1298c79f7576a29ac8ec79268020fa9bc453f60
+
+pkgname = mingw-w64-gts
+

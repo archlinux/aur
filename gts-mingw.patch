@@ -1,0 +1,27 @@
+diff -Naur gts-0.7.6.orig/src/Makefile.am gts-0.7.6/src/Makefile.am
+--- gts-0.7.6.orig/src/Makefile.am	2018-06-15 07:53:09.209430583 -0400
++++ gts-0.7.6/src/Makefile.am	2018-06-15 07:57:00.839780556 -0400
+@@ -13,7 +13,7 @@
+ lib_LTLIBRARIES = libgts.la
+
+ libgts_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)\
+-	-release $(LT_RELEASE) -export-dynamic
++	-release $(LT_RELEASE) -export-dynamic -no-undefined
+
+ libgts_la_DEPENDENCIES = \
+ 	predicates_init.h
+@@ -65,11 +65,11 @@
+ predicates.o: predicates.c predicates_init.h predicates.h
+ 	$(COMPILE) -c $(srcdir)/predicates.c
+
+-predicates_init: predicates_init.c rounding.h
+-	$(COMPILE) $(srcdir)/predicates_init.c -o $(srcdir)/predicates_init
++predicates_init$(EXEEXT): predicates_init.c rounding.h
++	$(COMPILE) $(srcdir)/predicates_init.c -o $(srcdir)/predicates_init$(EXEEXT)
+
+-predicates_init.h: predicates_init
+-	./predicates_init >  $(srcdir)/predicates_init.h
++predicates_init.h: predicates_init$(EXEEXT)
++	./predicates_init$(EXEEXT) >  $(srcdir)/predicates_init.h
+
+ CLEANFILES = $(BUILT_SOURCES)
