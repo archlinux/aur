@@ -1,0 +1,78 @@
+diff --git a/MontageLib/Viewer/Makefile.LINUX b/MontageLib/Viewer/Makefile.LINUX
+index e13fa06..5d7b810 100644
+--- a/MontageLib/Viewer/Makefile.LINUX
++++ b/MontageLib/Viewer/Makefile.LINUX
+@@ -8,13 +8,14 @@
+ .SUFFIXES: .c .o
+ 
+ DATA_DIR = $(shell cd ../../data; pwd)
++FREETYPE = $(shell pkg-config --cflags freetype2)
+ 
+ CC     =        gcc -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -std=c99 -fPIC \
+                 -DFONT_DIR='"$(DATA_DIR)/fonts/"'
+-CFLAGS =	-g -I. -I.. -I../../lib/include -I../../lib/freetype/include \
+-		-I../../lib/freetype/include/freetype2 -I../../Montage -Wall
++CFLAGS =	-g -I. -I.. -I../../lib/include \
++		$(FREETYPE) -I../../Montage -Wall
+ LIBS   =        -L../../lib -lwcs -lcoord -lcfitsio -ljpeg -llodepng -lmtbl -ljson -lcmd \
+-                -L../../lib/freetype/lib -lfreetype -lnsl -lm
++                -lfreetype -lnsl -lm
+ 
+ .c.o:
+ 		$(CC) $(CFLAGS)  -c  $*.c
+diff --git a/MontageLib/Viewer/mViewer_graphics.c b/MontageLib/Viewer/mViewer_graphics.c
+index 932ca5f..f3a461e 100644
+--- a/MontageLib/Viewer/mViewer_graphics.c
++++ b/MontageLib/Viewer/mViewer_graphics.c
+@@ -1,7 +1,7 @@
+ #include <stdio.h>
+ #include <math.h>
+-#include <freetype2/ft2build.h>
+-#include <freetype.h>
++#include <ft2build.h>
++#include FT_FREETYPE_H
+ 
+ void  mViewer_labeledCurve (char *face_path, int fontsize, int showLine,
+                             double *xcurve, double *ycurve, int npt,  
+diff --git a/util/Viewer/Makefile.LINUX b/util/Viewer/Makefile.LINUX
+index 459664f..62919c8 100644
+--- a/util/Viewer/Makefile.LINUX
++++ b/util/Viewer/Makefile.LINUX
+@@ -4,17 +4,20 @@
+ # -------  ---------------  -------  -----------------------
+ # 1.0      John Good        03Jan11  Original SunOS Makefile
+ 
++# ref: https://gist.github.com/astrograzl/fa90ad9a6a8cb082e6afdd13f5468f43
++
+ .SUFFIXES:
+ .SUFFIXES: .c .o
+ 
+ DATA_DIR = $(shell cd ../../data; pwd)
++FREETYPE = $(shell pkg-config --cflags freetype2)
+ 
+ CC     =        gcc -std=c99 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -std=c99 \
+                 -DFONT_DIR='"$(DATA_DIR)/fonts/"'
+-CFLAGS =	-g -I. -I../../lib/include -I../../lib/freetype/include \
+-		-I../../lib/freetype/include/freetype2 -I../../Montage
++CFLAGS =	-g -I. -I../../lib/include \
++		$(FREETYPE) -I../../Montage
+ LIBS   =        -L../../lib -lwcs -lcoord -lcfitsio -ljpeg -llodepng -lmtbl -lcmd \
+-                -L../../lib/freetype/lib -lfreetype -lnsl -lm
++                -lfreetype -lnsl -lm
+ 
+ .c.o:
+ 		$(CC) $(CFLAGS)  -c  $*.c
+diff --git a/util/Viewer/graphics.c b/util/Viewer/graphics.c
+index 6bb7d8d..2b1b2b5 100644
+--- a/util/Viewer/graphics.c
++++ b/util/Viewer/graphics.c
+@@ -1,7 +1,7 @@
+ #include <stdio.h>
+ #include <math.h>
+-#include <freetype2/ft2build.h>
+-#include <freetype.h>
++#include <ft2build.h>
++#include FT_FREETYPE_H
+ 
+ void labeled_curve (char *face_path, int fontsize, int showLine,
+                     double *xcurve, double *ycurve, int npt,  
