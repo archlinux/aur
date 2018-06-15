@@ -2,7 +2,7 @@
 # Contributor: svalo <me@valo.space>
 
 pkgname=dino-git
-pkgver=r222.b482c57
+pkgver=r268.df8b5fc
 pkgrel=1
 pkgdesc="Simple and modern Jabber/XMPP client written in vala"
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,13 +10,20 @@ url="https://github.com/dino/dino"
 license=('GPL3')
 depends=('glib2>=2.38' 'glib-networking' 'gtk3>=3.22' 'gpgme' 'libgee>=0.10' 'libgcrypt' 'libsoup' 'sqlite')
 makedepends=('git' 'cmake' 'vala>=0.34' 'ninja')
+optdepends=('libcanberra: audio notification support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('dino::git+https://github.com/dino/dino')
 sha512sums=('SKIP')
 
-# Any or all of the following plugin can be disabled: omemo, openpgp, http-files. Populate following string as per your needs and uncomment it
-#_DISABLE_PLUGINS="--disable-plugin='omemo;openpgp;http-files'"
+### Any or all of the following plugin can be disabled: omemo, openpgp, http-files. Populate following string as per your needs and uncomment it.
+
+# _DISABLE_PLUGINS="--disable-plugin='omemo;openpgp;http-files'"
+
+### Any or all of the following plugin can be enabled: notification-sound. Populate the following string as per you needs and uncomment it.
+### Install any needed optional dependency before
+
+#_ENABLE_PLUGINS="--enable-plugin='notification-sound'"
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
@@ -25,7 +32,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    ./configure $_DISABLE_PLUGINS --prefix="/usr" --with-tests CC="$CC" CFLAGS="$CFLAGS" VALACFLAGS="$VALACFLAGS"
+    ./configure $_DISABLE_PLUGINS $_ENABLE_PLUGINS --prefix="/usr" --with-tests CC="$CC" CFLAGS="$CFLAGS" VALACFLAGS="$VALACFLAGS"
     make
 }
 
