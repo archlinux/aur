@@ -1,14 +1,14 @@
 pkgbase = i3-workspace-names
 	pkgdesc = Dynamically rename i3wm workspaces depending on windows
-	pkgver = 0.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://gitlab.com/flib99/i3-workspace-names
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/i/i3-workspace-names/i3-workspace-names-0.3.tar.gz
-	md5sums = 5336774230539ea57870231b0d5bceae
+	source = https://files.pythonhosted.org/packages/source/i/i3-workspace-names/i3-workspace-names-0.3.1.tar.gz
+	md5sums = SKIP
 
 pkgname = i3-workspace-names
 	depends = python
