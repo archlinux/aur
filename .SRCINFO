@@ -1,0 +1,19 @@
+pkgbase = wifikill-linux-git
+	pkgdesc = wifikill-linux: A simple wifikill script for linux
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.com/tim241/wifikill-linux
+	arch = any
+	license = NONE
+	depends = bash
+	depends = dsniff
+	depends = net-tools
+	depends = nmap
+	depends = gawk
+	provides = wifikill-linux
+	conflicts = wifikill-linux
+	source = git+https://gitlab.com/tim241/wifikill-linux.git
+	sha256sums = SKIP
+
+pkgname = wifikill-linux-git
+
