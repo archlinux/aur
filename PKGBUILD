@@ -2,16 +2,16 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgbase=pyside2
-pkgname=(python-pyside2 python2-pyside2)
+pkgname=(pyside2 python-pyside2 python2-pyside2)
 _qtver=5.11.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='http://qt-project.org/'
-license=(GPL3 LGPL3 FDL custom)
+license=(LGPL)
 pkgdesc='Enables the use of Qt5 APIs in Python applications'
-makedepends=(python-setuptools python2-setuptools clang llvm cmake libxslt
-             qt5-xmlpatterns qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
+makedepends=(shiboken2 python-shiboken2 python2-shiboken2 cmake
+             qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
              qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras)
 groups=(qt qt5)
 _pkgfqn=pyside-setup-everywhere-src-${_qtver}
@@ -19,21 +19,37 @@ source=("http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pk
 sha256sums=('fbc412c4544bca308291a08a5173a949ca530d801f00b8337902a5067e490922')
 
 prepare() {
-  cp -r ${_pkgfqn} ${_pkgfqn}-py2
+  mkdir -p build{,2}
 }
 
 build() {
-  cd ${_pkgfqn}
-  python setup.py build
+  cd build
+  cmake ../${_pkgfqn}/sources/pyside2 \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTS=OFF \
+    -DUSE_PYTHON_VERSION=3
+  make
 
-  cd ../${_pkgfqn}-py2
-  python2 setup.py build
+  cd ../build2
+  cmake ../${_pkgfqn}/sources/pyside2 \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTS=OFF \
+    -DUSE_PYTHON_VERSION=2
+  make
+}
+
+package_pyside2() {
+  depends=()
+
+  cd build
+  make DESTDIR="$pkgdir" install
+# Provided in python-pyside2
+  rm -r "$pkgdir"/usr/lib/{python*,lib*,cmake/*/*python*}
 }
 
 package_python-pyside2() {
-  depends=(python qt5-base)
-  optdepends=('clang: for shiboken'
-              'qt5-svg: QtSvg bindings'
+  depends=(python-shiboken2 qt5-base)
+  optdepends=('qt5-svg: QtSvg bindings'
               'qt5-script: QtScript bindings'
               'qt5-speech: QtTextToSpeech bindings'
               'qt5-websockets: QtWebSockets bindings'
@@ -45,17 +61,15 @@ package_python-pyside2() {
               'qt5-x11extras: QtX11Extras bindings'
               'qt5-charts: QtCharts bindings'
               'qt5-tools: QtHelp bindings')
-  cd ${_pkgfqn}
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt5-base "$pkgdir"/usr/share/licenses/${pkgname}
+  cd build
+  make DESTDIR="$pkgdir" install
+# Provided in pyside2
+  rm -r "$pkgdir"/usr/{include,share,lib/{pkgconfig,cmake/*/PySide2Config{.cmake,Version.cmake}}}
 }
 
 package_python2-pyside2() {
-  depends=(python2 qt5-base)
-  optdepends=('clang: for shiboken'
-              'qt5-svg: QtSvg bindings'
+  depends=(python2-shiboken2 qt5-base)
+  optdepends=('qt5-svg: QtSvg bindings'
               'qt5-script: QtScript bindings'
               'qt5-speech: QtTextToSpeech bindings'
               'qt5-websockets: QtWebSockets bindings'
@@ -67,12 +81,8 @@ package_python2-pyside2() {
               'qt5-x11extras: QtX11Extras bindings'
               'qt5-charts: QtCharts bindings'
               'qt5-tools: QtHelp bindings')
-  cd ${_pkgfqn}-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt5-base "$pkgdir"/usr/share/licenses/${pkgname}
-
-  # Fix conflict with python-pyside2
-  rm -r "$pkgdir"/usr/bin
+  cd build2
+  make DESTDIR="$pkgdir" install
+# Provided in pyside2
+  rm -r "$pkgdir"/usr/{include,share,lib/{pkgconfig,cmake/*/PySide2Config{.cmake,Version.cmake}}}
 }
