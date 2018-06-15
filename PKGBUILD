@@ -18,7 +18,7 @@ package_python-django-statici18n() {
         'python-django-appconf'
     )
     cd "$srcdir/django-statici18n-$pkgver"
-	install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python './setup.py' install --root="$pkgdir" --optimize=1
 }
 
@@ -28,6 +28,6 @@ package_python2-django-statici18n() {
         'python2-django-appconf'
     )
     cd "$srcdir/django-statici18n-$pkgver"
-	install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python2 './setup.py' install --root="$pkgdir" --optimize=1
 }
