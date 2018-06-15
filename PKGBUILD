@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.5.r427.84ae64369
+pkgver=0.0.5.r493.903da117e
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
@@ -26,8 +26,10 @@ source=('git+https://github.com/RPCS3/rpcs3.git'
         'git+https://github.com/KhronosGroup/glslang.git'
         'git+https://github.com/akrzemi1/Optional.git'
         'git+https://github.com/zeux/pugixml.git'
-        'git+https://github.com/Cyan4973/xxHash.git')
+        'git+https://github.com/Cyan4973/xxHash.git'
+        'git+https://github.com/jbeder/yaml-cpp.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -47,7 +49,7 @@ pkgver() {
 prepare() {
   pushd rpcs3
 
-  git submodule init 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit llvm Vulkan/glslang
+  git submodule init 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
   git config submodule.asmjit.url ../asmjit
   git config submodule.glslang.url ../glslang
   git config submodule.GSL.url ../GSL
@@ -56,7 +58,8 @@ prepare() {
   git config submodule.Optional.url ../Optional
   git config submodule.pugixml.url ../pugixml
   git config submodule.xxHash ../xxHash
-  git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash} asmjit llvm Vulkan/glslang
+  git config submodule.yaml-cpp ../yaml-cpp
+  git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
 
   popd
 
