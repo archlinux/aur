@@ -25,5 +25,5 @@ package() {
   cp -r usr/local/share usr
   rm -rf usr/local
 
-  chmod 755 opt/microsoft/powershell/$version/pwsh
+  chmod 755 opt/microsoft/powershell/$_version/pwsh
 }
