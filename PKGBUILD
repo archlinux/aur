@@ -1,8 +1,8 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-ncurses
-_base_ver=6.0
-_date_rev=20180106
+_base_ver=6.1
+_date_rev=20180526
 pkgver=${_base_ver}.${_date_rev}
 pkgrel=1
 pkgdesc="System V Release 4.0 curses emulation library (mingw-w64)"
@@ -14,7 +14,7 @@ depends=('mingw-w64-crt' 'mingw-w64-libsystre')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("ncurses-${pkgver}.tar.gz"::"https://invisible-mirror.net/archives/ncurses/current/ncurses-${_base_ver}-${_date_rev}.tgz"
         001-use-libsystre.patch)
-md5sums=('5f4114b86adf15121ec5ae71e8c1ef73'
+md5sums=('350deaa0dc32c30a791ec315851cb519'
          'b669861903d0699b6535b7c6e028880d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -58,6 +58,7 @@ package() {
     make DESTDIR="${pkgdir}" install
     cp -R ${pkgdir}/usr/${_arch}/include/ncursesw ${pkgdir}/usr/${_arch}/include/ncurses
     cp ${pkgdir}/usr/${_arch}/lib/libncursesw.a ${pkgdir}/usr/${_arch}/lib/libncurses.a
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
-
