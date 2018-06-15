@@ -4,14 +4,13 @@
 
 _pkgname=calf
 pkgname="${_pkgname}-git"
-pkgver=0.0.60.r2370.e7daf55
+pkgver=0.90.0.r2499.bc104350
 pkgrel=1
 pkgdesc="LV2/JACK audio plug-ins for musicians (git version)"
 arch=('i686' 'x86_64')
 url="http://calf-studio-gear.org/"
 license=('GPL' 'LGPL')
-depends=('desktop-file-utils' 'fluidsynth' 'gtk-update-icon-cache' 'lash'
-         'lv2')
+depends=('desktop-file-utils' 'fluidsynth' 'gtk-update-icon-cache' 'lv2')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -32,8 +31,8 @@ build() {
   ./autogen.sh \
     --prefix="/usr" \
     --enable-static=no \
-    --enable-experimental \
-    --enable-sse
+    --enable-sse \
+    --without-lash
   make
 }
 
