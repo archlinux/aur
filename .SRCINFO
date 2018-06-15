@@ -1,0 +1,22 @@
+pkgbase = python-cas
+	pkgdesc = Python utilities to implement CAS protocol (Central Authentication Service)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/python-cas/python-cas
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/python-cas/python-cas/archive/v1.2.0.tar.gz
+	sha256sums = 82e14ee3fb050063ecae43d808b857a1460148ebdb14fcac2cfccbfa41328211
+
+pkgname = python-cas
+	depends = python-six
+	depends = python-requests
+	depends = python-lxml
+
+pkgname = python2-cas
+	depends = python2-six
+	depends = python2-requests
+	depends = python2-lxml
+
