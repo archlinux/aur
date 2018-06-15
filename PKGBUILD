@@ -5,16 +5,15 @@
 _pkgname=calf
 pkgname="${_pkgname}-git"
 pkgver=0.90.0.r2499.bc104350
-pkgrel=1
+pkgrel=2
 pkgdesc="LV2/JACK audio plug-ins for musicians (git version)"
 arch=('i686' 'x86_64')
 url="http://calf-studio-gear.org/"
 license=('GPL' 'LGPL')
-depends=('desktop-file-utils' 'fluidsynth' 'gtk-update-icon-cache' 'lv2')
+depends=('fluidsynth' 'gtk2' 'lv2')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-install="$pkgname.install"
 source=("${_pkgname}::git+https://github.com/calf-studio-gear/calf")
 md5sums=('SKIP')
 
