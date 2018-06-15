@@ -2,32 +2,34 @@
 # Based on wine-staging PKGBUILD
 
 #Additional patches:
-# -Gallium Nine support
-# -Keybind patch reversion
-# -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
-# -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
-# -Linked lists perfomances improvements
-# -Wine-PBA (disabled by default)
+# - Gallium Nine support
+# - Keybind patch reversion
+# - Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
+# - Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
+# - Linked lists perfomances improvements
+# - Wine-PBA
+# - Fix for Path of Exile
+# - Hack for F4SE and SKSE
 
 pkgname=wine-gaming-nine
-pkgver=3.9
+pkgver=3.10
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
 _stagingversion="$pkgver"
-_d3d9version="3.8"
-_pbarevision="8f20f0718a47e3773f0f3f30c475516378191c67"
+_d3d9version="3.10"
+_f4sehashrevision="b13af93bc951257d3d78bcc63e9894680f669913"
 
-_stagingdir="wine-staging-$_stagingversion"
+_stagingdir="wine-staging-wine-staging-pba-v$_stagingversion"
 _d3d9dir="wine-d3d9-patches-wine-d3d9-$_d3d9version"
-_pbadir="wine-pba-$_pbarevision/patches"
+_f4sehackdir="wine-hackery-$_f4sehashrevision/f4se"
 
 source=(
 	https://dl.winehq.org/wine/source/3.x/wine-$_pkgbasever.tar.xz
-	https://github.com/wine-staging/wine-staging/archive/v$_stagingversion.tar.gz
+	https://github.com/Firerat/wine-staging/archive/wine-staging-pba-v$_stagingversion.tar.gz
 	https://github.com/sarnex/wine-d3d9-patches/archive/wine-d3d9-$_d3d9version.tar.gz
-	https://github.com/acomminos/wine-pba/archive/$_pbarevision.tar.gz
+	https://github.com/hdmap/wine-hackery/archive/$_f4sehashrevision.tar.gz
 	harmony-fix.patch
 	30-win32-aliases.conf
 	wine-binfmt.conf
@@ -38,10 +40,10 @@ source=(
 	wine-list.h-linked-list-cache-line-prefetching.patch
 )
 sha512sums=(
-	'4c4e5a741a61b9427c175e015177df5806638736f7dfd92098ed95239d41a373cbab876c054d3c948e1db6a7de359db3babd63bc194edc8c2c3be28b58f75e64'
-	'4f52937621b7e5a3f4b3e52ecba8c7d318c621e76c8e4ce3be176d56b382bf06e3a0453d37c3b725df63f0a7349f53a7c075148c7e1ed89a028696538e31acad'
-	'e036f9da5993732415752d1f076eba5fd378ad49949a12d094081ff02454dfd8ce2156a5f418b77aa1426772f0b0785f3b0ffb9fc84e80c6265b6e5b7226bf15'
-	'5ca7651d5e0b147f8d1d47ce6bf225cd89048f3987b8744a6ca30a56586240b210581e5502f99b0a2b7f161ba8b359c1bd7f2ed7c4ac1d54d5ee69dd90b00d0d'
+	'bb1a1d8e8ad7f48d9fcf48ebbf0ebbb8e3b45ea211736bd7837144ea34b373f74955d3c0ccc4cdc44020eea23c8af8e67252e1c5cd6115e11419ad5f6ef24843'
+	'5162ff5f792461a0144a83de3e22202a92c1dbeb1ad866ca95bddfd592b3d906fa548fefe1e45f07f73eed418fb4d9e3545bbd25e7ac435070c020519da3e8c0'
+	'6397005616ab6424ba9e5c289e935c15b3b789717d887afb28bee1b30912052d6c47495d9b91952c38da7be03382dd0dc708fea42f7fe4c6221cf315c5faa810'
+	'cb3e8d6e448388afc828ddea2eda937fa95707c10c28da70eb4b31ec99473b13154a4e5545c0809719617da051d41bbe8af41bef175a1f839ac0b956b5e61a38'
 	'b86edf07bfc560f403fdfd5a71f97930ee2a4c3f76c92cc1a0dbb2e107be9db3bed3a727a0430d8a049583c63dd11f5d4567fb7aa69b193997c6da241acc4f2e'
 	'6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
 	'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
@@ -129,9 +131,9 @@ conflicts=('wine' 'wine-wow64' 'wine-staging')
 makedepends=(${makedepends[@]} ${depends[@]})
 install=wine.install
 
-_pbaprepare() {
-  for _f in $(ls $_pbadir); do
-    patch -d $pkgname -Np1 < $_pbadir/$_f
+_f4sehackprepare() {
+  for _f in $_f4sehackdir/*.patch; do
+    patch -d $pkgname -Np1 < $_f
   done
 }
 
@@ -157,8 +159,7 @@ prepare() {
   patch -d $pkgname -Np1 < $_d3d9dir/staging-helper.patch
   patch -d $pkgname -Np1 < $_d3d9dir/wine-d3d9.patch
 
-  # Uncomment if you want wine-pba optimizations
-  # _pbaprepare
+  _f4sehackprepare
 
   autoreconf -f "$pkgname"
 
