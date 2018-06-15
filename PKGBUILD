@@ -2,7 +2,7 @@
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com> 
 
 pkgname=rtags-git
-pkgver=v2.18.r81.g1779d7e8
+pkgver=v2.18.r103.g1ea5e1d1
 pkgrel=1
 pkgdesc="RTags is a client/server application that indexes C/C++ code."
 arch=('i686' 'x86_64')
@@ -32,7 +32,8 @@ build() {
     cmake . \
 	  -DCMAKE_BUILD_TYPE=Release \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
-          -DRTAGS_NO_BUILD_CLANG=1
+          -DRTAGS_NO_BUILD_CLANG=1 \
+          -DBUILD_TESTING=OFF
     make
     sed -i "s#\$RDM#/usr/bin/rdm#" ${srcdir}/rtags/share/etc/services/system/rdm.service
 }
