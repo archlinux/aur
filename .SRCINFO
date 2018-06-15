@@ -1,7 +1,7 @@
 pkgbase = elasticsearch5
 	pkgdesc = Distributed RESTful search engine built on top of Lucene
 	pkgver = 5.6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.elastic.co/products/elasticsearch
 	install = elasticsearch.install
 	arch = any

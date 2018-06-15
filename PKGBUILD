@@ -6,7 +6,7 @@
 _pkgname=elasticsearch
 pkgname=elasticsearch5
 pkgver=5.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('any')
 url="https://www.elastic.co/products/elasticsearch"
