@@ -8,8 +8,8 @@ url="http://portablesigner.sourceforge.net/"
 license=('EUPL')
 depends=('java-runtime>=8')
 provides=('portablesigner')
-source=("https://joinup.ec.europa.eu/system/files/project/9d/de/d0/PortableSigner-Generic-${pkgver}.zip"
-"https://joinup.ec.europa.eu/sites/default/files/eupl1.1.-licence-en.pdf")
+source=("PortableSigner-Generic-2.0.38c0573.zip::https://sourceforge.net/projects/portablesigner/files/portablesigner/2.0-Release/PortableSigner-Generic-${pkgver}.zip/download"
+"eupl1.1.-licence-en.pdf::http://ec.europa.eu/idabc/servlets/Docbb6d.pdf?id=31979")
 noextract=("PortableSigner-Generic-${pkgver}.zip")
 
 package() {
@@ -50,5 +50,5 @@ package() {
     install -Dm644 ${srcdir}/eupl1.1.-licence-en.pdf ${pkgdir}/usr/share/licenses/portablesigner/EUPL_v.1.1_-_Licence.pdf || return 1
 }
 
-md5sums=('2eb7c2d778d60dd6e906f1772bf3e058'
+md5sums=('5b52ea8d539a3bce6e0a790ad7038987'
          '31de38780168403d46a720de99196f81')
