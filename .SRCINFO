@@ -1,0 +1,17 @@
+pkgbase = perl6-geoip2
+	pkgdesc = MaxMind GeoIP v2 databases reader
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://github.com/bbkr/GeoIP2
+	arch = any
+	groups = perl6
+	license = PerlArtistic
+	checkdepends = perl
+	makedepends = git
+	depends = geoip2-database
+	depends = perl6
+	source = perl6-geoip2-1.0::git+https://github.com/bbkr/GeoIP2
+	sha256sums = SKIP
+
+pkgname = perl6-geoip2
+
