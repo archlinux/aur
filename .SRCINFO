@@ -1,6 +1,6 @@
 pkgbase = nuvola-app-pocket-casts
 	pkgdesc = pocket casts integration for Nuvola Player.
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/tiliado/nuvola-app-pocket-casts
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = nuvola-app-pocket-casts
 	makedepends = scour
 	depends = nuvolaruntime
 	depends = imagemagick
-	source = https://github.com/tiliado/nuvola-app-pocket-casts/archive/1.0.tar.gz
-	sha256sums = 08a034819dc68f90e456ae901cee112de019e9d8f86cfa75dab2ec034ad5fd34
+	source = https://github.com/tiliado/nuvola-app-pocket-casts/archive/1.1.tar.gz
+	sha256sums = 39b645c4d6ea5fc9f4b048904d003e4442aba87c6fffcec47267b52ba5e38321
 
 pkgname = nuvola-app-pocket-casts
 
