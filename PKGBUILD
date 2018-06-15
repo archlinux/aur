@@ -11,27 +11,27 @@ arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/haiwen/seafile-server'
 license=('AGPL3')
 depends=(
-	"ccnet-server>=$pkgver"
-	'fuse2'
-	'libevhtp-seafile'
-	'libarchive'
+    "ccnet-server>=$pkgver"
+    'fuse2'
+    'libevhtp-seafile'
+    'libarchive'
 )
 makedepends=('vala')
 conflicts=('seafile')
 changelog='ChangeLog'
 source=(
-	"https://github.com/haiwen/$pkgname/archive/v$pkgver-server.tar.gz"
-	'fix_pids-folder-out-of-seafile-data.diff'
-	'fix_seafile-admin.diff'
-	'fix_mysql_support.diff'
-	'seafile-server@.service'
+    "https://github.com/haiwen/$pkgname/archive/v$pkgver-server.tar.gz"
+    'fix_pids-folder-out-of-seafile-data.diff'
+    'fix_seafile-admin.diff'
+    'fix_mysql_support.diff'
+    'seafile-server@.service'
 )
 sha256sums=(
-	'ccde67afe34baeea076e9bbfe98328d9328dadcafd915dc9f1ddbca3d2e0d9fe'
-	'd725bda36aedd424d426d7ce62e19c7036ccfc6a5759df12f139656ba15e425c'
-	'51a7f13b8c3dfcb3f510c68c9791bf6ace1a0b332ba26fdf55c850409bf387fa'
-	'd625d1ac5fc666386a53059b1d31bce0e63c79b69c11bfb769f6390afb629611'
-	'da31d1b61031cbacc42e1ab708c67c83dba933ff391b07677dabab7ab79729f4'
+    'ccde67afe34baeea076e9bbfe98328d9328dadcafd915dc9f1ddbca3d2e0d9fe'
+    'd725bda36aedd424d426d7ce62e19c7036ccfc6a5759df12f139656ba15e425c'
+    '51a7f13b8c3dfcb3f510c68c9791bf6ace1a0b332ba26fdf55c850409bf387fa'
+    'd625d1ac5fc666386a53059b1d31bce0e63c79b69c11bfb769f6390afb629611'
+    'da31d1b61031cbacc42e1ab708c67c83dba933ff391b07677dabab7ab79729f4'
 )
 
 prepare() {
@@ -74,6 +74,6 @@ package() {
        "$pkgdir/usr/share/$pkgname/"
 
     install -Dm644 \
-		"$srcdir/seafile-server@.service" \
+        "$srcdir/seafile-server@.service" \
         "$pkgdir/usr/lib/systemd/system/seafile-server@.service"
 }
