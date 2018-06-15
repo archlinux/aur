@@ -1,22 +1,32 @@
+## UPSTREAM:
+# Author: Guillaume Chazarain <guichaz<at>gmail<dot>com>
+# Maintainer: Enre Hasegeli <emre<at>hasegeli<dot>com>
+# Maintainer: Patrick Meyer <git<at>the-space<dot>agency>
+
+## PACKAGE:
 # Maintainer: Mike Sampson <mike at sambodata dot com>
+# Maintainer: Mikhail f. Shiryaev <mr<dot>felixoid<at>gmail<dot>com>
+
 pkgname=polysh
-pkgver=0.4
+pkgver=0.9
 pkgrel=1
 pkgdesc="a tool to aggregate several remote shells into one."
-arch=('any')
-url="http://guichaz.free.fr/polysh/"
-license=('GPL2')
-depends=('python2')
+arch=("any")
+url="https://pypi.org/project/polysh/"
+license=("GPL2")
+depends=("python" "openssh")
+makedepends=("python-setuptools" "python-docutils")
 options=(!emptydirs)
-source=("http://guichaz.free.fr/polysh/files/polysh-0.4.tar.bz2")
-md5sums=('1d267caad5398b841c36d8c68b883a29')
+source=("https://github.com/innogames/polysh/archive/polysh-${pkgver}.tar.gz")
+sha256sums=("3f45061ad42fd9402fe6629e72e9f3d9f94b9f0b1401e76c3c1f69dcc713d2da")
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  sed -i -e 's|env python|env python2|' polysh.py
-  sed -i -e 's|env python|env python2|' polysh/rb_tree.py
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  chmod 644 "$pkgdir/usr/share/man/man1/polysh.1"
+  # TODO: fix in upstream
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  # TODO: implement proper documentation in upstream
+  mkdir -p "${pkgdir}/usr/share/man/man1"
+  rst2man README.rst "${pkgdir}/usr/share/man/man1/polysh.1"
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:

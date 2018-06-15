@@ -1,14 +1,17 @@
 pkgbase = polysh
 	pkgdesc = a tool to aggregate several remote shells into one.
-	pkgver = 0.4
+	pkgver = 0.9
 	pkgrel = 1
-	url = http://guichaz.free.fr/polysh/
+	url = https://pypi.org/project/polysh/
 	arch = any
 	license = GPL2
-	depends = python2
+	makedepends = python-setuptools
+	makedepends = python-docutils
+	depends = python
+	depends = openssh
 	options = !emptydirs
-	source = http://guichaz.free.fr/polysh/files/polysh-0.4.tar.bz2
-	md5sums = 1d267caad5398b841c36d8c68b883a29
+	source = https://github.com/innogames/polysh/archive/polysh-0.9.tar.gz
+	sha256sums = 3f45061ad42fd9402fe6629e72e9f3d9f94b9f0b1401e76c3c1f69dcc713d2da
 
 pkgname = polysh
 
