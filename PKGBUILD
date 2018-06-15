@@ -2,7 +2,7 @@
 # Please submit comments/issues here: https://github.com/JoshuaRLi/PKGBUILDs
 
 pkgname=vape
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A command-line tool that converts text into 'vaporwave' text - fullwidth UTF-8 characters."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('rust')
 
 source_x86_64=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums_x86_64=('d0f566c3f39f73a34fb535bff6f6e3cb2774240a03c35578fd8e051c9a6434fc45aa469404ebc5b6a2a6b637a1a59b7947cc6ce3091ff21e953a4d5717252e4e')
+sha512sums_x86_64=('cb998702675ab077267f9b87c439e7c8e297e83466503c6eaee5399bcc754437c008d9caa44cc32a09bb66082ddd5a35ea913f05d322a03de990335a6155a5cf')
 
 _srcdir_="${_ghrepo_}-${pkgver}"
 
