@@ -13,13 +13,13 @@ source=("https://files.pythonhosted.org/packages/70/e3/9372fcdca8e9c3205e7979528
 sha256sums=('f71fff352a37316b9bead717fc76e4ddd6c9b99c4680cdf4783b9755af1cf985')
 
 package_python-django-ranged-response() {
-	depends=('python-django')
+    depends=('python-django')
     cd "$srcdir/django-ranged-response-$pkgver"
     python './setup.py' install --root="$pkgdir" --optimize=1
 }
 
 package_python2-django-ranged-response() {
-	depends=('python2-django')
+    depends=('python2-django')
     cd "$srcdir/django-ranged-response-$pkgver"
     python2 './setup.py' install --root="$pkgdir" --optimize=1
 }
