@@ -2,7 +2,7 @@
 
 pkgname_=graalpython
 pkgname=${pkgname_}-bin
-pkgver_=1.0.0-rc1
+pkgver_=1.0.0-rc2
 pkgver=${pkgver_/-/_}
 pkgrel=2
 pkgdesc='Graal based, high-performance implementation of the Python language (early development)'
@@ -15,7 +15,7 @@ optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
 source=("https://github.com/graalvm/$pkgname_/releases/download/vm-${pkgver_}/python-installable-linux-amd64.jar")
-sha256sums=('19bafeda777a5522d430629ff2573aeaf9aa280a3475acc82bad354513c469ee')
+sha256sums=('f5a2e8d91ccc8a0ac5694c6ab584d567ff282bd09b78d36101e2cc4ccf4aa0eb')
 
 package() {
     local file eq permissions mode name target
@@ -54,7 +54,7 @@ package() {
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-8-graal/$name"
     done < META-INF/symlinks
 
-    install -Dm644 jre/languages/python/GraalCE_Python_license_3rd_party_license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" jre/languages/python/LICENSE_GRAALPYTHON
 
     ln -s ../lib/jvm/java-8-graal/bin/${pkgname_} "$pkgdir/usr/bin/"
 }
