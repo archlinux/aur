@@ -3,9 +3,6 @@
 # Contributor: Cayde Dixon <me@cazzar.net>
 # Contributor: Anthony Anderson <aantony4122@gmail.com>
 
-
-_branch='discord-canary'
-
 pkgname=discord-canary
 pkgver=0.0.52
 pkgrel=3
@@ -22,10 +19,10 @@ optdepends=(
 )
 
 install="DiscordCanary.install"
-source=(LICENSE)
-source_x86_64=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_branch}-${pkgver}.tar.gz")
-md5sums=('26b3229c74488c64d94798e48bc49fcd')
-md5sums_x86_64=('46365246d0733505874f77480f1ca580')
+source=(LICENSE
+"https://dl-canary.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('26b3229c74488c64d94798e48bc49fcd'
+         '46365246d0733505874f77480f1ca580')
 
 
 
@@ -43,14 +40,15 @@ package() {
   # Desktop Entry
   install -d "${pkgdir}/usr/share/applications"
   install "${pkgdir}/opt/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
-  sed -i s%/usr/share%/opt% ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  sed -i s%/usr/share%/opt% ${pkgdir}/usr/share/applications/${pkgname}.desktop``
   # Main binary
-  install -d "${pkgdir}/usr/bin"
   #install "${srcdir}/Discord.sh" "${pkgdir}/usr/bin/discord"
   ln -s "/opt/${pkgname}/DiscordCanary" "${pkgdir}/usr/bin/${pkgname}"
+
   # Create symbolic link to the icon
   install -d "${pkgdir}/usr/share/pixmaps"
   ln -s "/opt/${pkgname}/discord.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
   # License
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
