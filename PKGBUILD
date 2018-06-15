@@ -12,6 +12,6 @@ source=("https://github.com/ndparker/rcssmin/archive/$pkgver.tar.gz")
 sha256sums=('ae83923e40cbb833ac0bd59df0e706700cbaa95743d8db70a3c5d66eac878811')
 
 package() {
- 	cd "$srcdir/rcssmin-$pkgver"
-	python2 './setup.py' install --root="$pkgdir" --optimize=1 # --without-c-extensions
+    cd "$srcdir/rcssmin-$pkgver"
+    python2 './setup.py' install --root="$pkgdir" --optimize=1 # --without-c-extensions
 }
