@@ -1,0 +1,17 @@
+pkgbase = python2-rjsmin
+	pkgdesc = rJSmin is a javascript minifier written in python
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://github.com/ndparker/rjsmin
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = Apache
+	depends = python2>=2.4
+	source = https://github.com/ndparker/rjsmin/archive/1.0.12.tar.gz
+	sha256sums = cc44516dbdac13219179765f0b2a847e92ecb03d3c40fbec2da0aeb711e1c25f
+
+pkgname = python2-rjsmin
+
