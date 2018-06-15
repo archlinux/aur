@@ -1,7 +1,7 @@
 # Maintainer: Jaan Toots <jaantoots@gmail.com>
 pkgname=digidoc4-client
-pkgver=0.6.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Application for digitally signing and encrypting documents"
 arch=('x86_64')
 url="https://github.com/open-eid/DigiDoc4-Client"
@@ -10,7 +10,7 @@ depends=('hicolor-icon-theme' 'libdigidocpp' 'opensc' 'qt5-svg')
 optdepends=('ccid: smart card support')
 makedepends=('cmake' 'git' 'qt5-tools')
 conflicts=('qdigidoc')
-source=("$pkgname::git+https://github.com/open-eid/DigiDoc4-Client.git#tag=v$pkgver-BETA"
+source=("$pkgname::git+https://github.com/open-eid/DigiDoc4-Client.git#tag=v$pkgver"
         "git+https://github.com/open-eid/cmake.git"
         "git+https://github.com/open-eid/qt-common.git"
         "digidoc4-client.patch"
@@ -39,6 +39,8 @@ prepare() {
 build() {
   cd "$pkgname-build"
   cmake "../$pkgname" \
+        -DCMAKE_C_FLAGS:STRING="${CFLAGS} -ffile-prefix-map=$srcdir=." \
+        -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -ffile-prefix-map=$srcdir=." \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="lib" \
         -DCMAKE_INSTALL_SYSCONFDIR="/etc"

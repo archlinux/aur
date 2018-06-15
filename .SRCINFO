@@ -1,7 +1,7 @@
 pkgbase = digidoc4-client
 	pkgdesc = Application for digitally signing and encrypting documents
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://github.com/open-eid/DigiDoc4-Client
 	arch = x86_64
 	license = LGPL2.1
@@ -14,7 +14,7 @@ pkgbase = digidoc4-client
 	depends = qt5-svg
 	optdepends = ccid: smart card support
 	conflicts = qdigidoc
-	source = digidoc4-client::git+https://github.com/open-eid/DigiDoc4-Client.git#tag=v0.6.0-BETA
+	source = digidoc4-client::git+https://github.com/open-eid/DigiDoc4-Client.git#tag=v4.0.0
 	source = git+https://github.com/open-eid/cmake.git
 	source = git+https://github.com/open-eid/qt-common.git
 	source = digidoc4-client.patch
