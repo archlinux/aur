@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=60.0.1
+pkgver=60.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -26,7 +26,7 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch.xz
         complete-csd-window-offset-mozilla-1457691.patch.xz
         no-crmf.diff)
-sha256sums=('a98dfc16173039f3bd604049e1533991e23ef89bb56eb6fc03116a701e7594a2'
+sha256sums=('4c629edac14e15c41b04320b0f66a46f25537661324cdc0ed30dc0799d7708a0'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '8422030440032535d918844263fbd92d39bff207acb5fff55ed0afee38bcf582'
@@ -47,8 +47,8 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
-  mkdir -p path
-  ln -sf /usr/bin/python2 path/python
+#  mkdir -p path
+#  ln -sf /usr/bin/python2 path/python
 
   cd firefox-${pkgver}
 
@@ -114,7 +114,7 @@ build() {
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
 
-  export PATH="$srcdir/path:$PATH"
+#  export PATH="$srcdir/path:$PATH"
 
   # Do PGO
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
