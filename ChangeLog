@@ -1,4 +1,9 @@
 2018-06-03 Joffrey <j-off@live.fr>
+	* Version: 6.3.1-1
+
+	* PKGBUILD: python virtualenv is no longer used
+
+2018-06-03 Joffrey <j-off@live.fr>
 	* Version: 6.3.0-1
 
 	* PKGBUILD: fix future depends '>=' (for now use 'pacman -Udd pkg')

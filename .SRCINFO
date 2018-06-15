@@ -1,6 +1,6 @@
 pkgbase = seahub
 	pkgdesc = The web frontend for seafile server
-	pkgver = 6.3.0
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = https://github.com/haiwen/seahub
 	changelog = ChangeLog
@@ -9,19 +9,38 @@ pkgbase = seahub
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
-	license = custom:Apache PSF MIT BSD GPL
-	makedepends = python2-virtualenv
-	makedepends = git
-	depends = seafile-server>=6.3.0
-	depends = libmemcached
-	depends = freetype2
-	depends = openjpeg2
-	optdepends = mariadb: For use MySQL databases
-	optdepends = memcached: For better caching performance
+	license = Apache
+	depends = seafile-server>=6.3.1
+	depends = python2-dateutil
+	depends = python2-memcached
+	depends = python2-chardet
+	depends = python2-six
+	depends = python2-pillow
+	depends = python2-django
+	depends = python2-django-compressor
+	depends = python2-django-post-office
+	depends = python2-django-statici18n
+	depends = python2-django-rest-framework
+	depends = python2-django-constance
+	depends = python2-openpyxl
+	depends = python2-pytz
+	depends = python2-django-formtools
+	depends = python2-qrcode
+	depends = python2-requests
+	depends = python2-requests-oauthlib
+	depends = python2-django-simple-captcha
+	depends = python2-flup
+	depends = python2-gunicorn
+	depends = python2-django-webpack-loader
+	depends = python2-cas
+	depends = python2-django-picklefield
+	optdepends = mysql-python: MySQL support
+	optdepends = python2-wsgidav-seafile: Webdav support
+	optdepends = python2-django-pylibmc: Memcached support
 	optdepends = ffmpeg: For video thumbnails
 	options = !strip
-	source = seahub-6.3.0-server.tar.gz::https://github.com/haiwen/seahub/archive/v6.3.0-server.tar.gz
-	sha256sums = 89b52185ecf6a90417b4c52b4e24fb7af941996b7a9f92875dfc00967719627f
+	source = seahub-6.3.1-server.tar.gz::https://github.com/haiwen/seahub/archive/v6.3.1-server.tar.gz
+	sha256sums = 4fb4742d22a23709e1ff227dbf186cd48cfdfceb04fe63703fe8ba6b5b08616a
 
 pkgname = seahub
 
