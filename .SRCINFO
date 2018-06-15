@@ -1,0 +1,21 @@
+pkgbase = tantum-git
+	pkgdesc = Double-entry accounting system
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/atweiden/tantum
+	arch = any
+	groups = perl6
+	license = UNLICENSE
+	checkdepends = perl
+	makedepends = git
+	depends = mktxn
+	depends = perl6
+	depends = perl6-config-toml
+	depends = perl6-file-presence
+	source = tantum-0.0.1::git+https://github.com/atweiden/tantum
+	source = git+https://github.com/atweiden/txn-examples
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tantum-git
+
