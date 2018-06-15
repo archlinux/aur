@@ -1,0 +1,24 @@
+pkgbase = nagome-electron
+	pkgdesc = NicoNama comment viewer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/diginatu/nagome-electron
+	arch = x86_64
+	license = MIT
+	depends = gtk2
+	depends = libxss
+	depends = libxtst
+	depends = gconf
+	depends = alsa-lib
+	depends = nss
+	source = https://github.com/diginatu/nagome-electron/releases/download/v1.0.0/nagome-electron-1.0.0.tar.xz
+	source = https://raw.githubusercontent.com/diginatu/nagome-electron/master/images/icon.png
+	source = https://raw.githubusercontent.com/diginatu/nagome-electron/master/LICENSE
+	source = nagome-electron.desktop
+	md5sums = 6868eb158d107d7be05c13f120057ea8
+	md5sums = dcf67353e015d7489f5b771e0c9e8ffe
+	md5sums = 726fff92b313b3d527d0075756e34892
+	md5sums = 1db0c25395efc437035a1c087d308268
+
+pkgname = nagome-electron
+

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Nagome-electron
+Comment=Cross-platform "Nico Nama" comment viewer
+Exec=nagome-electron
+NoDisplay=false
+Terminal=0
+TerminalOptions=
+Type=Application
+Icon=nagome-electron
+Categories=Network;
+StartupNotify=true
+X-KDE-SubstituteUID=false
+X-KDE-Username=
