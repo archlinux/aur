@@ -1,14 +1,14 @@
 pkgbase = libkmfl
-	pkgdesc = Keyboard Mapping for Linux (KMFL) runtime library
-	pkgver = 0.9.12
+	pkgdesc = Keyman input method: runtime
+	pkgver = 10.99.0.2
 	pkgrel = 1
-	url = http://kmfl.sourceforge.net/
+	url = https://keyman.com/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = MIT
 	depends = kmflcomp
-	source = https://sourceforge.net/projects/kmfl/files/kmfl/libkmfl/libkmfl-0.9.12.tar.gz
-	md5sums = e70f845e1a29beab30e1328209d4eb34
+	source = libkmfl-10.99.0.2.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-alpha-10.99.0.2.tar.gz
+	md5sums = cd4b8bbe0b528d68c28da4fa6dd90c43
 
 pkgname = libkmfl
 

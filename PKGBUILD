@@ -2,25 +2,34 @@
 # Maintainer 2018-now : Vitrum <wqdxosty1yhj at bk dot ru>
 
 pkgname=libkmfl
-pkgver=0.9.12
+pkgver=10.99.0.2
 pkgrel=1
-pkgdesc="Keyboard Mapping for Linux (KMFL) runtime library"
+pkgdesc="Keyman input method: runtime"
 arch=('i686' 'x86_64')
-url="http://kmfl.sourceforge.net/"
-license=('GPL')
-source=("https://sourceforge.net/projects/kmfl/files/kmfl/libkmfl/libkmfl-$pkgver.tar.gz")
+url="https://keyman.com/"
+license=('MIT')
 depends=('kmflcomp')
-noextract=()
-options=()
-md5sums=('e70f845e1a29beab30e1328209d4eb34')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-alpha-$pkgver.tar.gz")
+md5sums=('cd4b8bbe0b528d68c28da4fa6dd90c43')
+
+prepare() {
+    basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
+    cd "$basedir/$pkgname"
+    sed -i 's/${prefix}\/doc\/libkmfl/${docdir}/g' Makefile.am
+}
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+    basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
+    cd "$basedir/$pkgname"
+    autoreconf
+    ./configure \
+        CPPFLAGS="-I/usr/include" LDFLAGS="-L/usr/lib" \
+        --prefix=$pkgdir/usr
+    make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+    basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
+    cd "$basedir/$pkgname"
+    make install
 }
