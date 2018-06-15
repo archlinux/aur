@@ -1,0 +1,10 @@
+[Unit]
+Description=Mattermost bridge to many other protocols
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/matterbridge -conf /etc/matterbridge.toml
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
