@@ -3,8 +3,7 @@
 
 pkgname=polo-bin
 _name=polo-file-manager
-pkgver=18.3
-_pkgver2=18.3.1
+pkgver=18.6
 _channel=beta
 pkgrel=1
 pkgdesc="A modern, light-weight GTK file manager for Linux, currently in beta (.deb binary version)"
@@ -24,11 +23,11 @@ optdepends=('mediainfo: read media properties from audio and video files'
             'polo-donation-plugins')
 provides=('polo')
 conflicts=('polo' 'polo-bin')
-source_i686=("https://github.com/teejee2008/polo/releases/download/v${pkgver}-${_channel}/${_name}-v${_pkgver2}-i386.deb")
-source_x86_64=("https://github.com/teejee2008/polo/releases/download/v${pkgver}-${_channel}/${_name}-v${_pkgver2}-amd64.deb")
+source_i686=("https://github.com/teejee2008/polo/releases/download/v${pkgver}-${_channel}/${_name}-v${pkgver}-i386.deb")
+source_x86_64=("https://github.com/teejee2008/polo/releases/download/v${pkgver}-${_channel}/${_name}-v${pkgver}-amd64.deb")
 
-sha256sums_i686=('b8ba3b9bcb70ce82a9ff3d899297daefeb58599b97800d285294f393b331501c')
-sha256sums_x86_64=('27fb082c2c410f48f22e44e05dbe27ce2d1accb8ce72120581046fb9e37cbdca')
+sha256sums_i686=('61e267149c39dd53b03a1b0480d38b6cac877b693edcc492bc10a29c5edb2080')
+sha256sums_x86_64=('03807c08094ac703230f6b4a1ece644e54ed446e99495c0cc65885da51032086')
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
