@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: t-onoz <t [dot] onozuka [dot] 1990 [at] (g-mail)>>
 pkgname=nagome-electron
 pkgver=1.0.0
 pkgrel=1
