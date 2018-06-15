@@ -34,7 +34,7 @@ depends=(
     'python2-gunicorn'
     'python2-django-webpack-loader'
     'python2-cas'
-	'python2-django-picklefield'
+    'python2-django-picklefield'
 )
 optdepends=(
     'mysql-python: MySQL support'
