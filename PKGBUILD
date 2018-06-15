@@ -4,39 +4,38 @@
 
 pkgname=ted
 pkgver=2.23
-pkgrel=8
+pkgrel=9
 pkgdesc="Lightweight RTF text processor"
-arch=('i686' 'x86_64')
-url="http://www.nllgg.nl/Ted/"
-depends=('freetype2' 'desktop-file-utils' 'ghostscript' 'gtk2' 'libjpeg' 'libpaper' 'libpng' 'libtiff' 'libxpm' 'pcre' 'zlib')
-makedepends=('lsb-release')
+arch=('x86_64')
+url="https://www.nllgg.nl/Ted/"
+depends=('desktop-file-utils' 'freetype2' 'ghostscript' 'gtk2' 'libjpeg' 'libpaper' 'libpng' 'libtiff' 'libxpm' 'pcre' 'zlib')
 license=('GPL')
-install=$pkgname.install
-source=(http://ftp.nluug.nl/pub/editors/$pkgname/$pkgname-$pkgver.src.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_nl_NL.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_en_GB.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_de_DE.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_es_ES.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_es_AR.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_pt_PT.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_pt_BR.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_fr_FR.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_it_IT.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_cs_CZ.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_da_DK.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_sv_SE.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_nb_NO.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_pl_PL.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_sk_SK.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_hu_HU.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_mg_MG.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_bg_BG.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_ru_RU.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_hr_HR.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/ted_fi_FI.tar.gz
-        http://ftp.nluug.nl/pub/editors/ted/TedDocument-de_DE.rtf
-        http://ftp.nluug.nl/pub/editors/ted/TedDocument-fr_FR.rtf
-        http://ftp.nluug.nl/pub/editors/ted/TedDocument-mg_MG.rtf)
+makedepends=('inetutils' 'lsb-release')    # hostname and lsb_release commands
+source=(https://ftp.nluug.nl/pub/editors/$pkgname/$pkgname-$pkgver.src.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_nl_NL.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_en_GB.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_de_DE.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_es_ES.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_es_AR.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_pt_PT.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_pt_BR.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_fr_FR.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_it_IT.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_cs_CZ.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_da_DK.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_sv_SE.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_nb_NO.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_pl_PL.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_sk_SK.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_hu_HU.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_mg_MG.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_bg_BG.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_ru_RU.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_hr_HR.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/ted_fi_FI.tar.gz
+        https://ftp.nluug.nl/pub/editors/ted/TedDocument-de_DE.rtf
+        https://ftp.nluug.nl/pub/editors/ted/TedDocument-fr_FR.rtf
+        https://ftp.nluug.nl/pub/editors/ted/TedDocument-mg_MG.rtf)
 md5sums=('4199df0deb82a90450135ec3f2b7d915'
          'e68939d2d8533491c8c14bd380d6650c'
          '3f43d0fe3ac66f21943f547f2080e478'
@@ -71,14 +70,14 @@ build() {
 
 package() {
   install -dm755 "$pkgdir/usr/share/Ted"
-  install -m644 TedDocument-*_*.rtf "$pkgdir/usr/share/Ted"
+  install -m644 TedDocument-*_*.rtf "$pkgdir/usr/share/Ted/"
 
   cd Ted-$pkgver/tedPackage
   DESTDIR="$pkgdir" make install
 
   cd "$pkgdir"
   for _file in "$srcdir/"ted_*_*.tar.gz; do
-    tar xzf "$_file"
+    tar xf "$_file"
   done
 }
 
