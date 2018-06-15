@@ -4,7 +4,7 @@
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 
 pkgname=lib32-libbsd
-pkgver=0.8.7
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Provides useful functions commonly found on BSD systems like strlcpy()'
 arch=('x86_64')
@@ -12,8 +12,8 @@ url='http://libbsd.freedesktop.org'
 license=('custom')
 depends=('lib32-glibc' 'libbsd')
 makedepends=('gcc-multilib')
-source=("http://libbsd.freedesktop.org/releases/libbsd-${pkgver}.tar.xz")
-sha256sums=('f548f10e5af5a08b1e22889ce84315b1ebe41505b015c9596bad03fd13a12b31')
+source=("https://libbsd.freedesktop.org/releases/libbsd-${pkgver}.tar.xz")
+sha256sums=('56d835742327d69faccd16955a60b6dcf30684a8da518c4eca0ac713b9e0a7a4')
 
 build() {
   cd libbsd-${pkgver}
