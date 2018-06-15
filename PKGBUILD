@@ -1,9 +1,9 @@
-# Maintainer : E5ten
-# Maintainer : Shawn Dellysse sdellysse@gmail.com
+# Maintainer : E5ten <e5ten.arch@gmail.com>
+# Contributor : Shawn Dellysse sdellysse@gmail.com
 
 pkgname=parsec-bin
 pkgver=146_18
-pkgrel=2
+pkgrel=3
 pkgdesc="Remotely connect to a gaming pc for a low latency remote computing experience"
 url=http://parsec.tv
 arch=('x86_64')

@@ -1,7 +1,7 @@
 pkgbase = parsec-bin
 	pkgdesc = Remotely connect to a gaming pc for a low latency remote computing experience
 	pkgver = 146_18
-	pkgrel = 2
+	pkgrel = 3
 	url = http://parsec.tv
 	arch = x86_64
 	depends = gtk2
