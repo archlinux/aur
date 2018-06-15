@@ -8,15 +8,15 @@ pkgname=('nginx-unitd'
          'nginx-unit-php'
          'nginx-unit-go')
 _shortname='unit'
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Dynamic web application server, designed to run applications in multiple languages."
 arch=('i686' 'x86_64')
-url="http://unit.nginx.org/"
+url="https://unit.nginx.org/"
 license=('Apache')
 source=("https://unit.nginx.org/download/unit-$pkgver.tar.gz"
         'unit.service')
-sha256sums=('7c66365f5ea87e7e8903bac9d639676947fe2ab7aa799ce35defc426b3409ee0'
+sha256sums=('d8637115b44cc1e32f4f74db302fd7871dbe480cf172285b359dc94db4ed43e0'
             '8c9b2f732d6e50aa747aa7703303e5fff69f5abc6f5fc1741b774b422e029606')
 makedepends=('php-embed' 'python' 'python2' 'go')
 
