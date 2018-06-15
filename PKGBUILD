@@ -26,8 +26,8 @@ build () {
     ./autogen.sh
     ./configure \
         --enable-ldap \
-		--enable-python \
-		--enable-console \
+        --enable-python \
+        --enable-console \
         --prefix=/usr PYTHON='/usr/bin/python2'
     make
 }
