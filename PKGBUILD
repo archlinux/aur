@@ -39,7 +39,7 @@ pkgver()
 
 package()
 {
-  install -Dm644 fenrirscreenreader.service "/usr/lib/systemd/system/"
+  install -Dm644 fenrirscreenreader.service "$pkgdir/usr/lib/systemd/system/"
   cd "$srcdir/$_gitname"
   python setup.py install --force-settings --root="${pkgdir}/" --optimize=1
 }
