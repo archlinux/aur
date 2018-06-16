@@ -47,7 +47,7 @@ prepare() {
     patch -p1 -i "$patch"
   done
   
-  cp -r $srcdir/psi/cmake $srcdir/plugins/cmake
+  # copy to proper path
   cp -r $srcdir/plugins $srcdir/psi/src/
 }
     
