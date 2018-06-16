@@ -8,6 +8,7 @@ pkgbase = gjacktransport
 	license = GPL
 	depends = gtk2
 	depends = jack
+	depends = intltool
 	backup = etc/gjackclockrc
 	backup = etc/gjacktransportrc
 	source = http://downloads.sourceforge.net/project/gjacktransport/gjacktransport/v0.6/gjacktransport-0.6.4.tar.gz
