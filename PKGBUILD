@@ -4,7 +4,7 @@ _gitname=randrctl
 pkgname=$_gitname-git
 pkgdesc="Lightweight profile based screen manager for X"
 pkgver=1.0.r1.312e37c
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://github.com/edio/randrctl"
 license=('GPLv3')
@@ -29,7 +29,6 @@ package() {
   rm bin/randrctl-setup
 
   python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 randrctl/misc/config.ini "$pkgdir/etc/randrctl/config.ini"
   install -Dm644 randrctl/misc/completion/zsh/_randrctl "$pkgdir/usr/share/zsh/site-functions/_randrctl"
   install -Dm644 randrctl/misc/completion/bash/randrctl "$pkgdir/usr/share/bash-completion/completions/randrctl"
   install -Dm644 randrctl/misc/udev/99-randrctl.rules "$pkgdir/usr/lib/udev/rules.d/99-randrctl.rules"
