@@ -28,7 +28,7 @@ source=("git+https://github.com/chrys87/${_gitname}.git"
   'fenrir-git.install')
 md5sums=('SKIP'
          '0c2d1bd344b53d1fa5de6c49455b5a4f'
-         '43cb2326193e429bc85f112d21f06e3f')
+         'a0ffeb2a5eb3a4569b65e22239063ff7')
 
 pkgver()
 {
