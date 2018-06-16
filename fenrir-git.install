@@ -1,4 +1,5 @@
 post_upgrade() {
 fold -s << EOF
 If you have the fenrir systemd service enabled, and haven't done so, you will need to re-enable it. You only need to do this once.
+EOF
 }
