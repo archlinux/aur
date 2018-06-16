@@ -9,7 +9,7 @@ diff -ur kopete-17.08.3/protocols/jabber/libjingle/talk/base/openssladapter.cc k
  static BIO_METHOD methods_socket = {
    BIO_TYPE_BIO,
    "socket",
-@@ -98,16 +99,36 @@
+@@ -98,16 +99,40 @@
  };
  
  BIO_METHOD* BIO_s_socket2() { return(&methods_socket); }
@@ -34,7 +34,12 @@ diff -ur kopete-17.08.3/protocols/jabber/libjingle/talk/base/openssladapter.cc k
 +#endif
  
  BIO* BIO_new_socket(talk_base::AsyncSocket* socket) {
-   BIO* ret = BIO_new(BIO_s_socket2());
++  const BIO_METHOD *socket2 = BIO_s_socket2();
++  if (socket2 == NULL) {
++          return NULL;
++  }
+-  BIO* ret = BIO_new(BIO_s_socket2());
++  BIO* ret = BIO_new(socket2);
    if (ret == NULL) {
            return NULL;
    }

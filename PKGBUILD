@@ -5,7 +5,7 @@
 
 pkgname=kopete
 pkgver=18.04.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Instant Messenger'
 url='https://kde.org/applications/internet/kopete/'
 arch=(x86_64)
@@ -22,7 +22,7 @@ sha256sums=('edc286cf69d94ca5805f1b3e08cda1477e4f8398d9982f59bec79aba7ad0d2e8'
             'SKIP'
             'c34a268aaa058e563174581dbe37c15fed91e82326ec704d2a872463139865e0'
             'ceed663f7007654d186d918cf7a0742972ed5bd319879021e9ba80e395177700'
-            'e3271a11814dce26666d05b02d04e57a9fc6d66aa69e6d869c0aa2e9bb6d9782'
+            'a12ea422e5162ef11274a98fd53658d6e780cafbe2e0fac70c8bc7d3291fef8b'
             'a7ebdd8dd4336b7ec085ef254bf18040f473b73379a8cd84569b28441a6c71df')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
