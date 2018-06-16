@@ -46,6 +46,8 @@ depends=(
   libsm            lib32-libsm
   gcc-libs         lib32-gcc-libs
   libpcap          lib32-libpcap
+  gnutls           lib32-gnutls
+  libpulse         lib32-libpulse
   desktop-file-utils
 )
 
@@ -82,11 +84,9 @@ optdepends=(
   giflib                lib32-giflib
   libpng                lib32-libpng
   libldap               lib32-libldap
-  gnutls                lib32-gnutls
   mpg123                lib32-mpg123
   openal                lib32-openal
   v4l-utils             lib32-v4l-utils
-  libpulse              lib32-libpulse
   alsa-plugins          lib32-alsa-plugins
   alsa-lib              lib32-alsa-lib
   libjpeg-turbo         lib32-libjpeg-turbo
