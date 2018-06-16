@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-git
-pkgver=20180330
-pkgrel=2
+pkgver=20180616
+pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/bitcoin/bitcoin"
@@ -87,9 +87,6 @@ package() {
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%%-*}"
-
-  msg2 'Installing man pages...'
-  install -Dm 644 doc/man/*.1 -t "$pkgdir/usr/share/man/man1"
 
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
