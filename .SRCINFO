@@ -1,0 +1,15 @@
+pkgbase = python-face_recognition
+	pkgdesc = The world's simplest facial recognition api for Python and the command line
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/ageitgey/face_recognition
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-dlib-cuda
+	depends = python-face_recognition_models
+	source = https://files.pythonhosted.org/packages/e1/da/b607fc6c80eb8e82487b1cb3cff445450d712eb0456f562790c7a761f781/face_recognition-1.2.2.tar.gz
+	sha256sums = f70d92c8582113fed669832cd8036819b66eebf4a535b1b43b1c0cede0072fb7
+
+pkgname = python-face_recognition
+
