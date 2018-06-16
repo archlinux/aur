@@ -1,8 +1,8 @@
 pkgbase = qomp-git
 	pkgdesc = Quick(Qt) Online Music Player
-	pkgver = 1.2.1.r59.gbb0cdba
-	pkgrel = 1
-	url = http://qomp.sourceforge.net/
+	pkgver = 1.3.1.r11.g78886ed
+	pkgrel = 2
+	url = https://qomp.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -20,7 +20,13 @@ pkgbase = qomp-git
 	depends = gst-plugins-good
 	optdepends = gst-plugins-bad
 	optdepends = gst-plugins-ugly
-	source = git+https://github.com/qomp/qomp.git
+	source = qomp-git::git+https://github.com/qomp/qomp
+	source = git+https://github.com/qomp/translations
+	source = git+https://github.com/qomp/themes
+	source = git+https://github.com/wadealer/SingleApplication
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = qomp-git
