@@ -1,7 +1,7 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=shellharden
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc='Bash syntax highlighter'
 arch=('x86_64')
