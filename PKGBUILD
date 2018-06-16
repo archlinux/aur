@@ -2,7 +2,7 @@
 # Maintainer: Isaac Curtis <isaaccurtis1@gmail.com>
 
 pkgname=zotero-beta
-pkgver="5.0.51_beta.3+72481b072"
+pkgver="5.0.52_beta.1+f3a62f5a6"
 pkgrel=1
 pkgdesc="Zotero Standalone. A free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
 arch=('i686' 'x86_64')
@@ -72,3 +72,6 @@ sha256sums_x86_64=('4d428371f9cc4b8c6055f77ccd8c035c85cc0717da47da4b5a7119f6605f
 sha256sums=('8ec2a82b5c9b37e30cbe5ef968f5baa29e324a0e024a8cc28c38738ca3db7c7a')
 sha256sums_i686=('80661e64b3e05d9df9484d0a102a82ea67287418d4edddce1833fb4ccd1c82a4')
 sha256sums_x86_64=('27569d40393749bd56245e5ba46841845f8028804f14663537e9cb5df971c65b')
+sha256sums=('8ec2a82b5c9b37e30cbe5ef968f5baa29e324a0e024a8cc28c38738ca3db7c7a')
+sha256sums_i686=('49a22d1f5f754dab82e95f51ed7d8f217202375f5fab407b6632919eef6db2aa')
+sha256sums_x86_64=('9ad3b1676db8a44c3e9b776ede1dbecfbc7307c7f3e423b58b845cf4dcebd037')
