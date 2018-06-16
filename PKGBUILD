@@ -1,7 +1,7 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 # Contributor: j1simon
 pkgname=buttercup-desktop
-pkgver=1.6.2
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
 arch=('i686' 'x86_64')
@@ -9,10 +9,8 @@ url="https://github.com/buttercup/buttercup-desktop"
 license=('GPL3')
 depends=('gtk2' 'gconf' 'libxtst' 'alsa-lib' 'libxss' 'nss')
 makedepends=('npm' 'sed')
-source=("https://github.com/buttercup/buttercup-desktop/archive/v$pkgver.tar.gz"
-	"buttercup-desktop.desktop")
-sha512sums=('961e91add9ed13635d086150dffa4e38ca3ee6083c24f6278e9e39ff495b3cdcee74dda7ecc2287bcdafcf977fdbe973e133cbd7d90262082963277749ff9b2f'
-            '7ecea9e3e00b3b967d669ddb1777f194c5a4ae3e7e6bd941831b9a594ddb5215d264e513d25203268a1de1fa684a2a9ec4642f32233c403b5e425ecf9e7ae988')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/buttercup/buttercup-desktop/archive/v$pkgver.tar.gz")
+sha512sums=('7f54634f88004e88b1178b500ec372e78c859b15272111a480e8eb2bb5ef70b4fa6e0073d7718f5c6b0206ed6d7f3e697182f9fc9285c15273a24d57c7dd6235')
 prepare() {
 	sed -i '/"rpm",/d' "$srcdir/$pkgname-$pkgver/package.json"
 	sed -i '/"AppImage",/d' "$srcdir/$pkgname-$pkgver/package.json"
@@ -30,13 +28,13 @@ build() {
 }
 package() {
 	install -Dm644 "$srcdir/$pkgname-$pkgver/build/badge.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/buttercup.svg"
-	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm644 "$srcdir/$pkgname-$pkgver/build/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	if [[ $CARCH == "i686" ]]; then
 		_distname="linux-ia32-unpacked"
 	else
 		_distname="linux-unpacked"
 	fi
-	mkdir -p "$pkgdir"/usr/{lib,bin}
-	mv "$srcdir/$pkgname-$pkgver/release/$_distname" "$pkgdir/usr/lib/$pkgname"
-	ln -sf /usr/lib/$pkgname/$pkgname "$pkgdir/usr/bin/buttercup"
+	mkdir -p "$pkgdir"/{usr/bin,opt}
+	cp -rf "$srcdir/$pkgname-$pkgver/release/$_distname" "$pkgdir/opt/$pkgname"
+	ln -sf /opt/$pkgname/$pkgname "$pkgdir/usr/bin/buttercup"
 }
