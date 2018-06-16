@@ -1,4 +1,4 @@
-pkgbase = rtlamr-git
+pkgbase = rtlamr
 	pkgdesc = An rtl-sdr receiver for Itron ERT compatible smart meters operating in the 900MHz ISM band.
 	pkgver = 0.8.0
 	pkgrel = 1
