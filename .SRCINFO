@@ -1,0 +1,30 @@
+pkgbase = abcde-musicbrainz
+	pkgdesc = Command-line CD ripping, encoding and tagging utility in one go, with default musicbrainz support
+	pkgver = 2.9.1
+	pkgrel = 1
+	url = https://abcde.einval.com/
+	arch = any
+	license = GPL
+	depends = bash
+	depends = cd-discid
+	depends = wget
+	depends = vorbis-tools
+	depends = perl-webservice-musicbrainz
+	depends = perl-musicbrainz-discid
+	optdepends = cdparanoia: Paranoia ripping support
+	optdepends = flac: FLAC encoding support
+	optdepends = glyr: album art support
+	optdepends = lame: MP3 encoding support
+	optdepends = python-eyed3: ID3 tag support
+	optdepends = vorbisgain: Ogg Vorbis normalization support
+	provides = conflicts
+	backup = etc/abcde.conf
+	source = https://abcde.einval.com/download/abcde-2.9.1.tar.gz
+	source = https://abcde.einval.com/download/abcde-2.9.1.tar.gz.sign
+	validpgpkeys = CEBB52301D617E910390FE16587979573442684E
+	validpgpkeys = 742D444A5AFAF2951EF33E7BF8FB375D9CC820B3
+	sha256sums = 70ec6e06b791115fbe88dee313f58f691f9b559ee992f2af5ed64fe6ad2e55d7
+	sha256sums = SKIP
+
+pkgname = abcde-musicbrainz
+
