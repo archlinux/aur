@@ -1,12 +1,12 @@
 # Maintainer: David Adler <d dot adler at posteo dot de>
 pkgname=tapeutape
 pkgver=0.1.1
-pkgrel=7
+pkgrel=8
 pkgdesc="MIDI controllable sampler"
 arch=('i686' 'x86_64')
 url="http://hitmuri.net/index.php/software/tapeutape"
 license=('GPL')
-depends=('fltk' 'lash')
+depends=('fltk' 'jack' 'libsamplerate')
 makedepends=('scons')
 source=(http://www.hitmuri.net/uploads/Software/$pkgname-$pkgver.tar.gz sconstruct_tapeutape.diff)
 md5sums=('ac1168e2b93a2ae1a18d583f904c9dd1'
@@ -27,7 +27,7 @@ prepare() {
 
 build() { 
   cd "$srcdir/$pkgname-$pkgver"
-  scons
+  scons lash=0
 }
 
 package() {
@@ -35,4 +35,3 @@ package() {
   scons DESTDIR="$pkgdir" PREFIX=/usr install
 }
 
-# vim:set ts=2 sw=2 et:
