@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=4.1.r91226.gd8c0bbb0aa
-pkgrel=3
+pkgver=4.1.r91303.g8331e59133
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -193,6 +193,7 @@ build() {
         --enable-lzma \
         --enable-decklink \
         --enable-libndi_newtek \
+        --disable-mbedtls \
         --enable-libmysofa \
         --enable-openal \
         --enable-opencl \
