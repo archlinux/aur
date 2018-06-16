@@ -7,7 +7,7 @@
 pkgname=vtk6
 pkgver=6.3.0
 _majorver=6.3
-pkgrel=11
+pkgrel=12
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization. Legacy 6.3 version.'
 arch=('x86_64')
 url='https://www.vtk.org/'
@@ -92,7 +92,7 @@ build() {
     -DBUILD_DOCUMENTATION:BOOL=ON \
     -DDOCUMENTATION_HTML_HELP:BOOL=ON \
     -DDOCUMENTATION_HTML_TARZ:BOOL=ON \
-    -DBUILD_EXAMPLES:BOOL=ON \
+    -DBUILD_EXAMPLES:BOOL=OFF \
     -DVTK_USE_FFMPEG_ENCODER:BOOL=ON \
     -DVTK_BUILD_ALL_MODULES:BOOL=ON \
     -DVTK_USE_LARGE_DATA:BOOL=ON \
@@ -103,7 +103,7 @@ build() {
     -DVTK_JAVA_SOURCE_VERSION="1.7" \
     -DVTK_JAVA_TARGET_VERSION="1.7" \
     -DCMAKE_CXX_FLAGS="-D__STDC_CONSTANT_MACROS" \
-    -DVTK_CUSTOM_LIBRARY_SUFFIX="" \
+    -DVTK_CUSTOM_LIBRARY_SUFFIX="6" \
     -DVTK_INSTALL_INCLUDE_DIR:PATH=include/vtk \
     ${cmake_system_flags} \
     ${cmake_system_python_flags} \

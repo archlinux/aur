@@ -1,7 +1,7 @@
 pkgbase = vtk6
 	pkgdesc = A software system for 3D computer graphics, image processing, and visualization. Legacy 6.3 version.
 	pkgver = 6.3.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://www.vtk.org/
 	arch = x86_64
 	license = BSD
