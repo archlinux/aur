@@ -4,7 +4,7 @@ pkgname=sia-ui
 _pkgname=sia
 pkgver=1.3.3
 _pkgver="v${pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Blockchain-based marketplace for file storage"
 arch=('x86_64')
 url="https://sia.tech"
@@ -14,7 +14,7 @@ source=("https://github.com/NebulousLabs/Sia-UI/releases/download/${_pkgver}/Sia
         "https://github.com/NebulousLabs/Sia-UI/raw/master/assets/siaLogo.svg"
         "${_pkgname}.desktop")
 sha256sums=('faaed871a5060c49809ca318f33a495d02bfd0c5e65febab4e734d4083d02f7e'
-            'a02a534c151b49de1c6cb9f63502043ed3e06d0cbb058126198f821ec2a9a1c2'
+            '8cba29d128271c309f52c008f6de9018404d561f69ae244f3fcb0c362388b806'
             '56c2ee24ac0ed3f43579ecc77cae29f2f15ee75b505b01b9d37b30a2330cc489')
 
 package() {
