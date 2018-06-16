@@ -52,15 +52,13 @@ prepare() {
 }
     
 build() {
-  cd $srcdir/psi/src/plugins
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cd $srcdir/psi
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DONLY_PLUGINS=ON -DIS_PSIPLUS=ON..
   make
 }
 
 package() {
-  cd $srcdir/psi/src/plugins/build
+  cd $srcdir/psi
 
   make DESTDIR="$pkgdir" install
 }
