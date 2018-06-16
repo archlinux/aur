@@ -1,7 +1,8 @@
 # Maintainer: Eugene Cherny <iam@oscii.ru>
+# Maintainer: Zoë Sparks <zoe@milky.flowers>
 pkgname=cabbage-git
 pkgrel=1 
-pkgver=2.0.0r1226
+pkgver=2.0.0r1236
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
@@ -12,14 +13,12 @@ depends=('csound' 'steinberg-vst36')
 conflicts=('cabbage')
 provides=('cabbage')
 source=('git+https://github.com/rorywalsh/cabbage.git#branch=master'
-        'git+https://github.com/WeAreROLI/JUCE.git#tag=5.2.0'
-        'buildCabbage.patch'
+        'git+https://github.com/WeAreROLI/JUCE.git#tag=5.3.2'
         'cabbage.png'
         'Cabbage.desktop'
         'CabbageLite.desktop')
 md5sums=('SKIP'
          'SKIP'
-         '123ac4cc22f58bb00e2dd34a290f3156'
          'c3c8e35dd46c86f22a3565aa4dd828a8'
          '35cfc89844c90769f4dc4f8309b340b1'
          'c39a85709e31e03a0850f2e324a4faea')
@@ -85,9 +84,6 @@ prepare() {
   sed -i "/CabbageBuild\/cabbage.desktop/d" "$b"
 
   dos2unix "${srcdir}/cabbage/Source/Settings/CabbageSettings.cpp"
-
-  cd "$srcdir"
-  patch -p0 < buildCabbage.patch
 }
 
 pkgver() {
