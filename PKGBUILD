@@ -11,8 +11,14 @@ license=('GPLv3')
 makedepends=('git' 'python-pip')
 depends=('python' 'xorg-xrandr')
 optdepends=('bash-completion')
-source=('git+https://github.com/edio/randrctl.git')
-md5sums=('SKIP')
+source=(
+  'git+https://github.com/edio/randrctl.git'
+  'completion'
+)
+md5sums=(
+  'SKIP' 
+  '0557733f74c7724ac0680e6166807b83'
+)
 provides=("$_gitname")
 conflicts=("$_gitname")
 install="randrctl.install"
@@ -28,9 +34,8 @@ package() {
   # PKGBUILD handles setup
 
   python setup.py install --root="$pkgdir/" --optimize=1
-  $pkgdir/usr/bin/randrctl setup completion > completion
-  install -Dm644 completion "$pkgdir/usr/share/bash-completion/completions/randrctl"
-  install -Dm644 randrctl/misc/udev/99-randrctl.rules "$pkgdir/usr/lib/udev/rules.d/99-randrctl.rules"
+  install -Dm644 "$srcdir/completion" "$pkgdir/usr/share/bash-completion/completions/randrctl"
+  install -Dm644 "randrctl/misc/udev/99-randrctl.rules" "$pkgdir/usr/lib/udev/rules.d/99-randrctl.rules"
 }
 
 # vim:set ts=2 sw=2 et:

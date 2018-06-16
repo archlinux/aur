@@ -14,7 +14,9 @@ pkgbase = randrctl-git
 	provides = randrctl
 	conflicts = randrctl
 	source = git+https://github.com/edio/randrctl.git
+	source = completion
 	md5sums = SKIP
+	md5sums = 0557733f74c7724ac0680e6166807b83
 
 pkgname = randrctl-git
 
