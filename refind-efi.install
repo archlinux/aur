@@ -20,6 +20,9 @@ HTML Documentation is available at /usr/share/refind/docs/html/
 
 More info: https://wiki.archlinux.org/index.php/rEFInd 
 
+PLEASE ALSO SEE ADDITIONAL INFO ABOUT THE PATCHED VERSION HERE:
+https://github.com/kogli/refind-patched/wiki
+
 EOF
 	
 }

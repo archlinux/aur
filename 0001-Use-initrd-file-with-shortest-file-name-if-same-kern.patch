@@ -1,0 +1,35 @@
+From b916de65adc1a19b5eca16ea442a948d5a370c79 Mon Sep 17 00:00:00 2001
+From: Jan Neumann <janneumannprg@gmail.com>
+Date: Fri, 15 Jun 2018 23:14:27 +0200
+Subject: [PATCH 1/2] Use initrd file with shortest file name if same kernel
+ version number
+
+---
+ refind/main.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/refind/main.c b/refind/main.c
+index 5fdfb0c..ca10ed1 100644
+--- a/refind/main.c
++++ b/refind/main.c
+@@ -545,6 +545,8 @@ static VOID StartLoader(LOADER_ENTRY *Entry, CHAR16 *SelectionName)
+ // If more than one initrd file matches the extracted version string, the one
+ // that matches more characters AFTER (actually, from the start of) the version
+ // string is used.
++// If more than one initrd file matches the extracted version string AND they match
++// the same amount of characters, the initrd file with the shortest file name is used.
+ // If no matching init file can be found, returns NULL.
+ static CHAR16 * FindInitrd(IN CHAR16 *LoaderPath, IN REFIT_VOLUME *Volume) {
+     CHAR16              *InitrdName = NULL, *FileName, *KernelVersion, *InitrdVersion, *Path;
+@@ -595,7 +597,7 @@ static CHAR16 * FindInitrd(IN CHAR16 *LoaderPath, IN REFIT_VOLUME *Volume) {
+                 KernelPostNum = MyStrStr(LoaderPath, KernelVersion);
+                 InitrdPostNum = MyStrStr(CurrentInitrdName->Value, KernelVersion);
+                 SharedChars = NumCharsInCommon(KernelPostNum, InitrdPostNum);
+-                if (SharedChars > MaxSharedChars) {
++                if (SharedChars > MaxSharedChars || (SharedChars == MaxSharedChars && StrLen(CurrentInitrdName->Value) < StrLen(MaxSharedInitrd->Value))) {
+                     MaxSharedChars = SharedChars;
+                     MaxSharedInitrd = CurrentInitrdName;
+                 } // if
+-- 
+2.17.1
+

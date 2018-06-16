@@ -1,0 +1,87 @@
+From 8525da31174d2e1ca262c3be650cfe99e12f4791 Mon Sep 17 00:00:00 2001
+From: Jan Neumann <janneumannprg@gmail.com>
+Date: Fri, 15 Jun 2018 23:20:34 +0200
+Subject: [PATCH 2/2] Added initrd path variable to refind_linux.conf
+
+---
+ refind/lib.c  | 16 ++++++++++++++++
+ refind/lib.h  |  1 +
+ refind/main.c | 13 ++++++++++++-
+ 3 files changed, 29 insertions(+), 1 deletion(-)
+
+diff --git a/refind/lib.c b/refind/lib.c
+index 74af206..6d7875e 100644
+--- a/refind/lib.c
++++ b/refind/lib.c
+@@ -1455,6 +1455,22 @@ CHAR16 * StripEfiExtension(IN CHAR16 *FileName) {
+     return Copy;
+ } // CHAR16 * StripExtension()
+ 
++// Remove the .img extension from FileName -- for instance, if FileName is
++// "fred.img", returns "fred". If the filename contains no .img extension,
++// returns a copy of the original input.
++CHAR16 * StripImgExtension(IN CHAR16 *FileName) {
++    UINTN  Length;
++    CHAR16 *Copy = NULL;
++
++    if ((FileName != NULL) && ((Copy = StrDuplicate(FileName)) != NULL)) {
++        Length = StrLen(Copy);
++        if ((Length >= 4) && MyStriCmp(&Copy[Length - 4], L".img")) {
++            Copy[Length - 4] = 0;
++        } // if
++    } // if
++    return Copy;
++} // CHAR16 * StripExtension()
++
+ //
+ // memory string search
+ //
+diff --git a/refind/lib.h b/refind/lib.h
+index aad510f..eeb2ae6 100644
+--- a/refind/lib.h
++++ b/refind/lib.h
+@@ -115,6 +115,7 @@ EFI_STATUS DirIterClose(IN OUT REFIT_DIR_ITER *DirIter);
+ 
+ CHAR16 * Basename(IN CHAR16 *Path);
+ CHAR16 * StripEfiExtension(CHAR16 *FileName);
++CHAR16 * StripImgExtension(CHAR16 *FileName);
+ 
+ INTN FindMem(IN VOID *Buffer, IN UINTN BufferLength, IN VOID *SearchString, IN UINTN SearchStringLength);
+ VOID ReinitVolumes(VOID);
+diff --git a/refind/main.c b/refind/main.c
+index ca10ed1..78b82db 100644
+--- a/refind/main.c
++++ b/refind/main.c
+@@ -710,6 +710,10 @@ LOADER_ENTRY *InitializeLoaderEntry(IN LOADER_ENTRY *Entry) {
+ // Adds InitrdPath to Options, but only if Options doesn't already include an
+ // initrd= line. Done to enable overriding the default initrd selection in a
+ // refind_linux.conf file's options list.
++// If a '%s' substring is found in Options, it is replaced with the initrd path
++// WITHOUT 'initrd=' and without '.img' extension. Done to allow more complex
++// customization of initrd options. The '%s' substring therefore acts like a
++// variable.
+ // Returns a pointer to a new string. The calling function is responsible for
+ // freeing its memory.
+ static CHAR16 *AddInitrdToOptions(CHAR16 *Options, CHAR16 *InitrdPath) {
+@@ -717,10 +721,17 @@ static CHAR16 *AddInitrdToOptions(CHAR16 *Options, CHAR16 *InitrdPath) {
+ 
+     if (Options != NULL)
+         NewOptions = StrDuplicate(Options);
+-    if ((InitrdPath != NULL) && !StriSubCmp(L"initrd=", Options)) {
++
++    if (InitrdPath != NULL) {
++        if(StriSubCmp(L"%s", Options)) {
++            CHAR16 *InitrdPathNoExt = StripImgExtension(InitrdPath);
++            ReplaceSubstring(&NewOptions, L"%s", InitrdPathNoExt);
++        } else if (!StriSubCmp(L"initrd=", Options)) {
+         MergeStrings(&NewOptions, L"initrd=", L' ');
+         MergeStrings(&NewOptions, InitrdPath, 0);
+     }
++    }
++
+     return NewOptions;
+ } // CHAR16 *AddInitrdToOptions()
+ 
+-- 
+2.17.1
+

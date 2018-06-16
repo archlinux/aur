@@ -1,4 +1,5 @@
-# Maintainer: nl6720 <nl6720@gmail.com>
+# Maintainer: Jan Neumann <koglimail at gmail>
+# Contributor: nl6720 <nl6720@gmail.com>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
@@ -11,10 +12,10 @@ _PXE='0'
 #######
 
 _pkgname='refind'
-pkgname="${_pkgname}-efi-git"
-pkgver=0.10.8.1.r558.85e61fb
+pkgname="${_pkgname}-efi-git-patched"
+pkgver=0.11.2.r604.fb5631a
 pkgrel=1
-pkgdesc='rEFInd Boot Manager - git version'
+pkgdesc='rEFInd Boot Manager - patched git version'
 url='http://www.rodsbooks.com/refind/'
 arch=('x86_64')
 license=('GPL3' 'custom')
@@ -31,16 +32,20 @@ optdepends=('sudo: privilege elevation'
 
 options=('!strip' '!buildflags' '!makeflags')
 
-conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}=${pkgver}")
+conflicts=("${pkgname%-patched}" "${pkgname%-git-patched}")
+provides=("${pkgname%-git-patched}=${pkgver}")
 
-install="${pkgname%-git}.install"
+install="${pkgname%-git-patched}.install"
 
-source=("refind::git+https://git.code.sf.net/p/refind/code#branch=master"
-        'refind_linux.conf')
+source=("refind::git+https://git.code.sf.net/p/refind/code#commit=fb5631a"
+        'refind_linux.conf'
+	'0001-Use-initrd-file-with-shortest-file-name-if-same-kern.patch'
+	'0002-Added-initrd-path-variable-to-refind_linux.conf.patch')
 
 sha512sums=('SKIP'
-            'd54b1a0b135594de9a8583a50f54de6daf3c8e38f1bc453794fa3959e826989a44a286e14cf8d8cb2eb04a1e97c984e62292a03e92c98aed044373381bca52d8')
+            'c6a4fbd7604635ed9d562f018c6c426ab8b67184aad66b23a060e4e96b251fea371e6c41575a839e53baccc5093d3947c617c485f1f30efc2814f4deccd43169'
+	    '61d1e211a8b84e91a503f88aa695894085f6788b236f828a7cc256e2587f944cbe5a7c50ab1fa34eeab4fa417ca3718af7b01724a5f65f3027cb12916ff1c075'
+	    'b9c73c12e1dc2bde0237045f3243619cd537c39977fc447f04675bc2f6bf9ca1ef006c8555c4c53f473b26438b8cd10773c8897ad033e979392f4034be3e6065')
 
 if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 
@@ -147,6 +152,8 @@ _prepare_refind_sources() {
 	# Clean rEFInd git repo
 	git clean -x -d -f
 
+	git am < ../0001-Use-initrd-file-with-shortest-file-name-if-same-kern.patch ../0002-Added-initrd-path-variable-to-refind_linux.conf.patch
+
 	if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 		# Enable GNU_EFI_USE_MS_ABI
 		sed "s|-DEFI_FUNCTION_WRAPPER|-DEFI_FUNCTION_WRAPPER -maccumulate-outgoing-args|g" -i "${srcdir}/${_pkgname}_build/Make.common" || true
@@ -165,7 +172,6 @@ _prepare_refind_sources() {
 }
 
 prepare() {
-
 	if [[ "${_USE_GNU_EFI}" != '1' ]]; then
 		_setup_tianocore_env_vars
 
