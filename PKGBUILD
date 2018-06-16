@@ -1,18 +1,23 @@
-# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
-# https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=polo-donation-plugins
 _channel=beta.10
 pkgver=18.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Complimentary package for users who have donated to Polo or contributed in other ways such as translations, code changes, etc."
 arch=('i686' 'x86_64')
-url="http://www.teejeetech.in/"
-depends=('polo'
-         'youtube-dl'
-         'pngcrush'
-         'ghostscript'
-         'pdftk-bin' )
+url="https://github.com/teejee2008/polo/wiki/Donation-Features"
+depends=('polo')
+optdepednds=(
+         'clamav: for ClamAV plugin'
+         'ghostscript: for PDF plugin'
+         'pdftk: for PDF plugin'
+         'pdftk-bin: for PDF plugin'
+         'pngcrush: for Image plugin'
+         'qemu: for ISO plugin'
+         'samba: for ISO plugin (kvm -smb)'
+         'youtube-dl: for Video download plugin'
+)
 provides=('polo-donations-plugins')
 conflicts=('polo-donations-plugins')
 source_i686=("local://${pkgname}-v${pkgver}-i386.deb") 
@@ -28,4 +33,7 @@ if [[ "${CARCH}" = 'x86_64' ]]; then
         bsdtar xf "${pkgname}-v${pkgver}-amd64.deb"
     fi
   bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s /usr/bin/qemu-system-x86_64 ${pkgdir}/usr/bin/kvm
 }

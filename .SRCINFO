@@ -1,15 +1,11 @@
 pkgbase = polo-donation-plugins
 	pkgdesc = Complimentary package for users who have donated to Polo or contributed in other ways such as translations, code changes, etc.
 	pkgver = 18.2
-	pkgrel = 1
-	url = http://www.teejeetech.in/
+	pkgrel = 2
+	url = https://github.com/teejee2008/polo/wiki/Donation-Features
 	arch = i686
 	arch = x86_64
 	depends = polo
-	depends = youtube-dl
-	depends = pngcrush
-	depends = ghostscript
-	depends = pdftk-bin
 	provides = polo-donations-plugins
 	conflicts = polo-donations-plugins
 	source_i686 = local://polo-donation-plugins-v18.2-i386.deb
