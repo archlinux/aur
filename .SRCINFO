@@ -1,0 +1,15 @@
+pkgbase = metakit
+	pkgdesc = An efficient embedded database library with a small footprint
+	pkgver = 2.4.9.8
+	pkgrel = 1
+	url = https://equi4.com/metakit/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = tcl
+	optdepends = tcl: Tcl bindings
+	source = metakit-2.4.9.8.tar.gz::https://git.jeelabs.org/jcw/metakit/archive/2.4.9.8.tar.gz
+	sha256sums = a496db77628766766600585ff3f8f98eabd770e003bf1f32a60644e8e835d621
+
+pkgname = metakit
+
