@@ -1,0 +1,13 @@
+pkgbase = ddptools
+	pkgdesc = Create, inspect, verify and convert DDP 2.00 masters for Red Book CD audio recplicaton
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://ddp.andreasruge.de/
+	arch = x86_64
+	groups = pro-audio
+	license = unknown
+	source = http://ddp.andreasruge.de/dist/ddptools-1.1-x86_64-elf.tar.gz
+	md5sums = 49d9a2af6562fa597123620f1c7bb166
+
+pkgname = ddptools
+
