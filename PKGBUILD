@@ -1,19 +1,19 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=gravit-designer-bin
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="A cross-platform, free design tool for the 21st century empowering everyone to design"
 arch=('x86_64')
 url="https://designer.io/"
 license=('custom:freeware')
 depends=('alsa-lib' 'libxss' 'gtk2' 'gconf' 'libxtst' 'nss')
-source=("${pkgname}-${pkgver}.zip::https://designer.gravit.io/_downloads/linux/GravitDesigner.zip?v=${pkgver}"
+source=("${pkgname}-${pkgver}.zip::https://designer.gravit.io/_downloads/linux/GravitDesigner.zip"
         "gravit-designer.desktop"
         "gravit-designer.png"
         "LICENSE")
 #changelog=https://discuss.gravit.io/t/changelog-for-gravit-designer/71
-md5sums=('71479dd4a85e1e5cd42a77058ea8582f'
+md5sums=('fbf8cd3a7f2efbc1d12c420a94cde688'
          '689ceb636418b52236edd98207fb9387'
          'a9c256cb9eb6bc9a280c5dccee2ad9af'
          '021ccafc0993d3c34265ae59048d4bf2')
