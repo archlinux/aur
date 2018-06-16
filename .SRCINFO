@@ -1,7 +1,7 @@
 pkgbase = lib32-sdl-hg
 	pkgdesc = A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (32-bit)
-	pkgver = 1.2.15.r11056.1138bf8c009a
-	pkgrel = 2
+	pkgver = 1.2.15.r11979.d684a767e240
+	pkgrel = 1
 	url = http://www.libsdl.org
 	arch = x86_64
 	license = LGPL
@@ -17,10 +17,10 @@ pkgbase = lib32-sdl-hg
 	depends = sdl
 	optdepends = lib32-alsa-lib: ALSA audio driver
 	optdepends = lib32-libpulse: PulseAudio audio driver
-	provides = lib32-sdl=1.2.15.r11056.1138bf8c009a
+	provides = lib32-sdl=1.2.15.r11979.d684a767e240
 	conflicts = lib32-sdl
 	options = staticlibs
-	source = hg+http://hg.libsdl.org/SDL#branch=SDL-1.2
+	source = hg+https://hg.libsdl.org/SDL#branch=SDL-1.2
 	md5sums = SKIP
 
 pkgname = lib32-sdl-hg
