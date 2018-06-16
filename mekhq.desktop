@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MekHQ
+GenericName=Campaign manager for MegaMek
+Exec=mekhq
+Terminal=false
+Type=Application
+Icon=megamek
+Categories=Games;Java;
+StartupWMClass=SWT
