@@ -5,7 +5,7 @@ post_upgrade() {
   ==> New rc files installed as:
   ==>
   ==> /etc/gjackclockrc.pacnew
-  ==> /etc/gjacktransport.pacnew
+  ==> /etc/gjacktransportrc.pacnew
   ==>
   ==> Remember, due to changes, your old rc files may not work.
   ==> If this happens, replace the old rc with the new one.

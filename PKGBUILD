@@ -1,15 +1,14 @@
-# Maintainer: David Adler <david dot jo dot adler at gmail dot com>
+# Maintainer: David Adler <d dot adler at posteo dot de>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=gjacktransport
 pkgver=0.6.4
-pkgrel=1
-pkgdesc="graphical slider for controlling JACK Transport"
-arch=('i686' 'x86_64')
+pkgrel=2
+pkgdesc="graphical slider and clock for JACK Transport"
+arch=('x86_64')
 url="http://gjacktransport.sourceforge.net/"
 license=('GPL')
-depends=('intltool' 'gtk2' 'jack')
-optdepends=('lash: LASH Audio Session Handler support')
+depends=('gtk2' 'jack')
 backup=('etc/gjackclockrc' 'etc/gjacktransportrc')
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/v0.6/$pkgname-$pkgver.tar.gz")
@@ -19,8 +18,8 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   
   ./configure \
-	  --prefix="/usr" \
-	  --sysconfdir="/etc/"
+	  --prefix=/usr \
+	  --sysconfdir=/etc/
   make
 }
 
@@ -31,7 +30,6 @@ package() {
 
   # Install desktop files
   install -Dm644 gjackclock.desktop "$pkgdir/usr/share/applications/gjackclock.desktop"
-  install -Dm644 gjacktransport.desktop "$pkgdir/usr/share/applications"
+  install -Dm644 gjacktransport.desktop "$pkgdir/usr/share/applications/gjacktransport.desktop"
 }
 
-# vim:set ts=2 sw=2 et:
