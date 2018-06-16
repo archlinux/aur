@@ -1,7 +1,7 @@
 # Maintainer: David Schury <dasc@posteo.de>
 pkgname=mingw-w64-libsigc++
 _pkgname=libsigc++
-pkgver=2.8.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Libsigc++ implements a full callback system for use in widget libraries - V2 (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://ftp.gnome.org/pub/GNOME/sources/$_pkgname/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz")
-md5sums=('3d26acbc813fa54edd4401ce1a981677')
+md5sums=('70bcbde2c900e4925d6ef4bf50954195')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -25,7 +25,8 @@ build() {
       --host=${_arch} \
       --enable-shared \
       --enable-static \
-      --disable-documentation
+      --disable-documentation \
+      ..
     make
     popd
   done
