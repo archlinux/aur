@@ -1,6 +1,6 @@
 pkgbase = psi-plus-git
 	pkgdesc = Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (built with Qt 5.x)
-	pkgver = 1.3.307.1.g336c5f62
+	pkgver = 1.3.369.g1a3a94b7
 	pkgrel = 1
 	url = https://psi-plus.com
 	arch = x86_64
@@ -18,16 +18,20 @@ pkgbase = psi-plus-git
 	depends = qt5-svg
 	depends = hunspell
 	depends = qtkeychain
-	provides = psi-plus=1.3.307.1.g336c5f62
-	provides = psi-plus-qt5-git=1.3.307.1.g336c5f62
+	provides = psi-plus=1.3.369.g1a3a94b7
+	provides = psi-plus-qt5-git=1.3.369.g1a3a94b7
 	conflicts = psi-plus
 	conflicts = psi-plus-qt5-git
 	conflicts = psi-plus-webkit-qt5-git
 	conflicts = psi-plus-webkit-git
-	source = git://github.com/psi-plus/psi-plus-snapshots
-	source = join.patch
+	source = git://github.com/psi-im/psi.git
+	source = psi-plus::git://github.com/psi-plus/main.git
+	source = git://github.com/psi-im/iris.git
+	source = git://github.com/psi-im/libpsi.git
 	sha256sums = SKIP
-	sha256sums = ea25a58c7efe25979b8d257598608187380e8f35ace25e96cab9c357dcdbc974
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = psi-plus-git
 
