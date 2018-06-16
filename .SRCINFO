@@ -1,7 +1,7 @@
 pkgbase = doomseeker
 	pkgdesc = A cross-platform Doom server browser
 	pkgver = 1.2
-	pkgrel = 20180616
+	pkgrel = 20180328
 	url = http://doomseeker.drdteam.org/
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = doomseeker
 	optdepends = odamex: Classic client/server multiplayer fork
 	optdepends = chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom
 	optdepends = srb2: A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")
-	source = hg+https://bitbucket.org/Doomseeker/doomseeker#revision=c2c7f37
+	source = hg+https://bitbucket.org/Doomseeker/doomseeker#revision=5aaddc0
 	source = doomseeker.desktop
 	source = doomseeker-launch-script.sh
 	sha256sums = SKIP

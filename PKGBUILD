@@ -3,7 +3,7 @@
 
 pkgname=doomseeker
 pkgver=1.2
-pkgrel=20180616
+pkgrel=20180328
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
@@ -17,7 +17,7 @@ optdepends=('qt4: A cross-platform application and UI framework'
             'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom'
             'srb2: A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")')
 
-source=("hg+https://bitbucket.org/Doomseeker/doomseeker#revision=c2c7f37"
+source=("hg+https://bitbucket.org/Doomseeker/doomseeker#revision=5aaddc0"
         "doomseeker.desktop"
         "doomseeker-launch-script.sh")
 
@@ -30,7 +30,7 @@ build() {
     cd $srcdir/$_bbdir
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release .. && \
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=true -DCMAKE_INSTALL_PREFIX=/usr .. && \
     make -j$(nproc)
 }
 
