@@ -9,7 +9,7 @@ url='https://cancel.fm/ripcord/'
 license=('custom')
 validpgpkeys=('ABBAD1CB484F53024CF5868B69332F9203F21F5C')
 
-_file="Ripcord-${_pkgver}-${CARCH}.AppImage"
+_file="Ripcord-${pkgver}-${CARCH}.AppImage"
 source=("https://cancel.fm/dl/$_file")
 sha256sums=('bdad89163feed7c0e52c93112ef684a7a29fa63aa9826effce9775647a1c0ef4')
 
