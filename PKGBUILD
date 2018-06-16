@@ -3,13 +3,12 @@
 pkgname=polo-donation-plugins
 _channel=beta.10
 pkgver=18.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Complimentary package for users who have donated to Polo or contributed in other ways such as translations, code changes, etc."
 arch=('i686' 'x86_64')
 url="https://github.com/teejee2008/polo/wiki/Donation-Features"
 depends=('polo')
 optdepednds=(
-         'clamav: for ClamAV plugin'
          'ghostscript: for PDF plugin'
          'pdftk: for PDF plugin'
          'pdftk-bin: for PDF plugin'

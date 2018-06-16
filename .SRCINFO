@@ -1,7 +1,7 @@
 pkgbase = polo-donation-plugins
 	pkgdesc = Complimentary package for users who have donated to Polo or contributed in other ways such as translations, code changes, etc.
 	pkgver = 18.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/teejee2008/polo/wiki/Donation-Features
 	arch = i686
 	arch = x86_64
