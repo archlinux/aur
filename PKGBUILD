@@ -1,8 +1,8 @@
 # Maintainer: patrickelectric <patrickelectric {a.t} gmail {d.o.t} com>
 
 pkgname=vrep
-pkgver=3_4_0
-pkgrel=3
+pkgver=3_5_0
+pkgrel=4
 epoch=1
 pkgdesc="V-REP is the Swiss army knife among robot simulators.
 
@@ -17,9 +17,9 @@ makedepends=('')
 #optdepends=('')
 options=(!strip)
 install=""
-source=("http://coppeliarobotics.com/files/V-REP_PRO_EDU_V${pkgver}_Linux.tar.gz"
+source=("http://coppeliarobotics.com/files/V-REP_PRO_EDU_V3_5_0_Linux.tar.gz"
         "vrep.sh")
-md5sums=('a3c0f872b91703909608aee092ad03df'
+md5sums=('9d13015c305a0c1d9ba007ef67b4858b'
          'a5f75fcd3c08b1a8c93f74997006e5d5')
 prepare()
 {
