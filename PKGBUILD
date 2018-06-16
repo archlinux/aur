@@ -11,11 +11,11 @@
 # Contributor: Kamil Śliwak <cameel2 gmail>
 
 pkgname=meteor-js
-pkgver=1.6.1
+pkgver=1.7.0.3
 pkgrel=1
 pkgdesc='Full-stack JavaScript platform for developing modern web and mobile applications'
 arch=(i686 x86_64)
-url='https://www.meteor.com'
+url=https://www.meteor.com
 license=(MIT)
 depends=(nodejs mongodb)
 options=(!strip)
@@ -24,8 +24,8 @@ source_i686=(meteor-bootstrap-os.linux.$pkgver.i686.tar.gz::https://meteorinstal
 source_x86_64=(meteor-bootstrap-os.linux.$pkgver.x86_64.tar.gz::https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz)
 source=(meteor.sh
         meteor.install)
-sha512sums_i686=(7a8ab0158deb889e13d44841433b37247b760be055383df48b84d017a7adc6d28620ce77b16f85f85fbca13385c27b87091b6201491d72c5c1d314f4ba1de06a)
-sha512sums_x86_64=(a5f937d1019f8a98db1358966452a9ef77dbb48e8f038e362523a9950862d491f4cd80de94905d772c8d6dd0bae70db5e5ecca34e5217c0525c8fe352774a8bb)
+sha512sums_i686=(0a377c8fd7695f3284a75029618be342f81a971f380a6e15a1becedaf74ff1ae58f3e8f2931fcad0644ca2c250df11ae5578fb6a3a52be13e349b5c7a181484e)
+sha512sums_x86_64=(1c90c4f418c3b0e597e70acfa639f6842644a566235db288922944d305310a0730c7359e7efe9f28034e30bfcd23a7e6304a7455cf76e7cb2a47b882d4491672)
 sha512sums=(6322041c40be5740da446ee8c707cf611412aab1433a4726f08a7f8f7865224f21e59b0e0bf5d2b57871018d4eedef588fcbbab61df9a1c8ca95edbb91058275
             54ccc626d24f5f00502f4f0b38087f2979ae8a7907e5fd41ae8fb708052815a9bc381c9e525f9f41ee5fa9f34b9429e6c4d6f36030387e58b60d38488cf03eaa)
 
