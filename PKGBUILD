@@ -1,22 +1,20 @@
-# Maintainer: Anton Kudryavtsev <anton@anibit.ru>
-# Contributor: Francois Menning <f.menning@protonmail.com>
+# Maintainer: Francois Menning <f.menning@pm.me>
+# Contributor: Anton Kudryavtsev <anton@anibit.ru>
 # Contributor: Frederik Schwan <frederik dot schwan at linux dot com>
 # Contributor: Thomas Fanninger <thomas@fanninger.at>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Thomas Laroche <tho.laroche@gmail.com>
 
-_pkgname="gitea"
-_gourl="code.gitea.io"
-
+_pkgname='gitea'
+_gourl='code.gitea.io'
 pkgname=gitea-git
 pkgrel=1
-pkgver=r5999.400232817
-pkgdesc="A painless self-hosted Git service."
-url="https://gitea.io/"
-license=("MIT")
+pkgver=r6429.85414d8b7
+pkgdesc='A painless self-hosted Git service.'
+url='https://gitea.io/'
+license=('MIT')
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-depends=("git")
-makedepends=("go")
+depends=('git' 'go')
 optdepends=('sqlite: SQLite support'
             'mariadb: MariaDB support'
             'postgresql: PostgreSQL support'
@@ -24,17 +22,20 @@ optdepends=('sqlite: SQLite support'
             'redis: Redis support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
-conflicts=("gitea")
-provides=("gitea")
-options=("!strip" "emptydirs")
-backup=("etc/gitea/app.ini")
+conflicts=('gitea')
+provides=('gitea')
+options=('!strip' 'emptydirs')
+backup=('etc/gitea/app.ini')
 install=gitea.install
-source=("git://github.com/go-gitea/gitea.git"
-        "01-adjust-config.patch"
-        "02-adjust-service.patch")
+source=('git://github.com/go-gitea/gitea.git'
+        '01-adjust-config.patch'
+        '02-adjust-service.patch'
+        'gitea.tmpfiles'
+)
 sha512sums=('SKIP'
-            '67c61dbfb0002ec714423eda9310325158b6fed998969e9049c49f521f0f1ad0727f090460e00c26390bb1f817cfb55a7aed720f7b34d4afc8b10369c4fe5322'
-            'dab5e8221c3d87062a079bb0289e3d9609122e76fca3b2b9faf3bce810602661af9435e46585c479151c2e46ff83edce7d18072dee7cbf4ac50c2419d8871c53')
+            '3f96361a5135ea11b438e2cad29f2033221c63c11d1f260474d589c469e5db760fbf4da0718f9d015e106b72a13c02ad2899a8a90ac07365e20b935b59e95a6c'
+            'a2be7742c6d39a78ebfa3a79fa32854fad8b4fb6595274b77a2f9244f574c4a47172e090f06fba411e498f9973d726e08c1f070891583b315de01442d434f1d4'
+            '0c6c9729f8dfd5b5fe2badf998e89624b00800f87ae1b28a68acd52f2621f3434cc3930a578d2bb3e27005f8ffbb0f4a0e4e4d3d2e2371d0214d36c805d65573')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -52,21 +53,18 @@ prepare() {
 
 build() {
   cd "${srcdir}/src/${_gourl}/${_pkgname}"
-  GOPATH="${srcdir}" go get -v -u github.com/go-macaron/bindata
-  PATH="${srcdir}/bin:$PATH" GOPATH="${srcdir}" make DESTDIR="${pkgdir}/" TAGS="bindata sqlite tidb pam" clean generate build
+  PATH="${srcdir}/bin:$PATH" GOPATH="${srcdir}" make DESTDIR="${pkgdir}/" TAGS="sqlite tidb pam" clean generate build
 }
 
 package() {
-  install -dm0700 "${pkgdir}/var/log/${_pkgname}/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/"
-  install -dm0755 "${pkgdir}/usr/share/${_pkgname}/"
+  cd "${srcdir}/src/${_gourl}/${_pkgname}"
 
-  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/custom" "${pkgdir}/usr/share/${_pkgname}"
-  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/public" "${pkgdir}/usr/share/${_pkgname}"
-  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/templates" "${pkgdir}/usr/share/${_pkgname}"
+  install -dm0750 "${pkgdir}/"{etc,var/log,var/lib}/${_pkgname}
 
-  install -Dm0755 "${srcdir}/src/${_gourl}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/custom/conf/app.ini.sample" "${pkgdir}/etc/${_pkgname}/app.ini"
-  install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-  install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
+  cp -r {custom,public,options,templates} "${pkgdir}/var/lib/${_pkgname}"
+
+  install -Dm0755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm0644 "custom/conf/app.ini.sample" "${pkgdir}/etc/${_pkgname}/app.ini"
+  install -Dm0644 "contrib/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm0644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
 }

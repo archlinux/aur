@@ -1,6 +1,6 @@
 pkgbase = gitea-git
 	pkgdesc = A painless self-hosted Git service.
-	pkgver = r5999.400232817
+	pkgver = r6429.85414d8b7
 	pkgrel = 1
 	url = https://gitea.io/
 	install = gitea.install
@@ -11,8 +11,8 @@ pkgbase = gitea-git
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = go
 	depends = git
+	depends = go
 	optdepends = sqlite: SQLite support
 	optdepends = mariadb: MariaDB support
 	optdepends = postgresql: PostgreSQL support
@@ -28,9 +28,11 @@ pkgbase = gitea-git
 	source = git://github.com/go-gitea/gitea.git
 	source = 01-adjust-config.patch
 	source = 02-adjust-service.patch
+	source = gitea.tmpfiles
 	sha512sums = SKIP
-	sha512sums = 67c61dbfb0002ec714423eda9310325158b6fed998969e9049c49f521f0f1ad0727f090460e00c26390bb1f817cfb55a7aed720f7b34d4afc8b10369c4fe5322
-	sha512sums = dab5e8221c3d87062a079bb0289e3d9609122e76fca3b2b9faf3bce810602661af9435e46585c479151c2e46ff83edce7d18072dee7cbf4ac50c2419d8871c53
+	sha512sums = 3f96361a5135ea11b438e2cad29f2033221c63c11d1f260474d589c469e5db760fbf4da0718f9d015e106b72a13c02ad2899a8a90ac07365e20b935b59e95a6c
+	sha512sums = a2be7742c6d39a78ebfa3a79fa32854fad8b4fb6595274b77a2f9244f574c4a47172e090f06fba411e498f9973d726e08c1f070891583b315de01442d434f1d4
+	sha512sums = 0c6c9729f8dfd5b5fe2badf998e89624b00800f87ae1b28a68acd52f2621f3434cc3930a578d2bb3e27005f8ffbb0f4a0e4e4d3d2e2371d0214d36c805d65573
 
 pkgname = gitea-git
 
