@@ -1,10 +1,11 @@
 pkgbase = paper-icon-theme
 	pkgdesc = Paper is an open source desktop theme and icon project by Sam Hewitt
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://snwh.org/paper
 	arch = any
 	license = CCPL:by-sa-4.0
+	makedepends = meson
 	depends = gtk-update-icon-cache
 	provides = paper-icon-theme
 	conflicts = paper-icon-theme-git
