@@ -20,7 +20,15 @@ pkgbase = qomp
 	optdepends = gst-plugins-bad
 	optdepends = gst-plugins-ugly
 	source = git+https://github.com/qomp/qomp#commit=230443ed40a99cedbfee7624dcce6db16977a9f6
+	source = git+https://github.com/qomp/translations
+	source = git+https://github.com/qomp/themes
+	source = git+https://github.com/wadealer/SingleApplication
+	source = 0001-Fixed-compilation-with-Qt-5.11.patch
 	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 83664a00dc0d2ea7cd81a69ff51c40f3
 
 pkgname = qomp
 
