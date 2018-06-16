@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=4.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -96,7 +96,6 @@ build() {
         --prefix='/usr' \
         --extra-cflags="$_cflags" \
         --extra-ldflags="$_ldflags" \
-        --extra-libs='-lpthread' \
         \
         --disable-rpath \
         --enable-gpl \
