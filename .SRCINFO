@@ -3,7 +3,6 @@ pkgbase = tapeutape
 	pkgver = 0.1.1
 	pkgrel = 8
 	url = http://hitmuri.net/index.php/software/tapeutape
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = scons
