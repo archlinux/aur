@@ -10,7 +10,7 @@ ExecStart=/usr/bin/xmrig -c %i.conf -B
 WorkingDirectory=/etc/xmrig
 Restart=on-failure
 RestartSec=20s
-StartLimitInterval=30m
+StartLimitInterval=30min
 StartLimitBurst=30
 
 [Install]
