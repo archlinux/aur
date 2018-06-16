@@ -1,8 +1,8 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: Doug Newgard <scimmia at archlinux dot org>
 # Contributor: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname=grass
-pkgver=7.4.0
+pkgver=7.4.1
 pkgrel=1
 _shortver=${pkgver%.*}; _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
@@ -16,7 +16,7 @@ makedepends=('libxt')
 optdepends=('postgresql: PostgreSQL database interface'
             'sqlite: SQLite database interface')
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
-md5sums=('15b9eb019d6c132c1a65455b3283cf69')
+md5sums=('bf7add62cbeb05a3ed5ad832344ba524')
 
 prepare() {
   cd $pkgname-$pkgver
