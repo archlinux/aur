@@ -1,0 +1,21 @@
+pkgbase = playmyvideos-git
+	pkgdesc = Cinema is a video player for Pantheon, developed by Artem Anufrij
+	pkgver = 1.0.0.r4.g9ee5fc1
+	pkgrel = 1
+	url = http://anufrij.org/cinema
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	makedepends = git
+	depends = libgranite.so
+	depends = gtk3
+	depends = clutter-gtk
+	depends = clutter-gst
+	depends = gst-plugins-base
+	depends = sqlite
+	source = playmyvideos-git::git+https://github.com/artemanufrij/playmyvideos.git
+	sha256sums = SKIP
+
+pkgname = playmyvideos-git
+
