@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=blackmagic-decklink-sdk
-pkgver=10.9.12
+pkgver=10.11
 pkgrel=1
 pkgdesc='Blackmagic DeckLink SDK'
 arch=('any')
@@ -13,14 +13,14 @@ source=('LICENSE')
 sha256sums=('cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df')
 
 _srcfile="Blackmagic_DeckLink_SDK_${pkgver}.zip"
-_downloadid='1a1e9345f88b41069bc9715f612c791b'
-_referid='c48ce6a0255b411499ad5479b3c83fcb'
+_downloadid='a9e081e6b3df4cf1834027c7e3b8f0df'
+_referid='e3d7c1c415de41d882ac814c49e44772'
 _srcurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
-_expected_sha256sum='dd7813ec17a48a7d7bdbdacac1e8afb2c5ed9073e273e2707a25cbccdac5fbe5'
+_expected_sha256sum='060e69714197127d30e02861f919357fce5568ef8a985e07284620f8dad8310a'
 
-_useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64) \
+_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/66.0.3359.117 \
+                        Chrome/67.0.3396.87 \
                         Safari/537.36"
 _reqjson="{ \
     \"platform\": \"Linux\", \
