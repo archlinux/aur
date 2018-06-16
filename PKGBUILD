@@ -7,13 +7,13 @@
 # - Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
 # - Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 # - Linked lists perfomances improvements
-# - Wine-PBA
+# - Wine-PBA (disabled by default)
 # - Fix for Path of Exile
 # - Hack for F4SE and SKSE
 
 pkgname=wine-gaming-nine
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -154,7 +154,7 @@ prepare() {
 
   patch -d $pkgname -Np1 -R < keybindings.patch
 
-  $_stagingdir/patches/patchinstall.sh DESTDIR=$pkgname --all
+  $_stagingdir/patches/patchinstall.sh DESTDIR=$pkgname --all -W wined3d-Persistent_Buffer_Allocator
 
   patch -d $pkgname -Np1 < $_d3d9dir/staging-helper.patch
   patch -d $pkgname -Np1 < $_d3d9dir/wine-d3d9.patch
