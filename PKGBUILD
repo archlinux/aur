@@ -1,6 +1,6 @@
 pkgname=stack-client
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The STACK Client provides file sync to desktop clients."
 arch=('x86_64')
 url='https://www.transip.nl/stack/'
@@ -11,11 +11,14 @@ integration with Nemo')
 makedepends=('cmake' 'qt5-tools')
 conflicts=('stack-client-bin')
 source=("client-v${pkgver}.tar.gz::https://github.com/owncloud/client/archive/v${pkgver}.tar.gz"
-        "http://mirror.transip.net/stack/software/source/stack-client-source-${pkgver}.tar.gz")
+        "http://mirror.transip.net/stack/software/source/stack-client-source-${pkgver}.tar.gz"
+        "cmake_qt5.patch")
 sha256sums=('89a29ce91f49160cae4f04129a9d1e0757b665300db68d4449849c847627d337'
-            '802b9032408118cff2852965f8c0ae87733205db86a8d386c2a4fb3c43e9a4d8')
+            '802b9032408118cff2852965f8c0ae87733205db86a8d386c2a4fb3c43e9a4d8'
+            '25ab3c8010f5b031bad4b671d80487889506b43e42b3f16f2329e58bfabe5fae')
  
 prepare() {
+  patch -p1 < ${srcdir}/cmake_qt5.patch
   cd client-2.4.1
   for file in ${srcdir}/patches/*
   do
@@ -35,6 +38,7 @@ build() {
         -DCMAKE_INSTALL_SYSCONFDIR=/etc/${pkgname} \
         -DWITH_DOC=FALSE \
         -DOEM_THEME_DIR=${srcdir}/transiptheme \
+        -DNO_SHIBBOLETH=ON \
         -DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
         -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
         -DMIRALL_VERSION_SUFFIX= \
