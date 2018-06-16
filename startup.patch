@@ -1,0 +1,29 @@
+62,68d61
+< if ! test -z "$MEGAMEK_CONFPATH"; then
+<     if ! test -d "/.$MEGAMEK_CONFPATH" -a \
+<         -f "/.$MEGAMEK_CONFPATH/$MEGAMEK_DEFAULT_JARNAME"; then
+<         echo "Relative path: $MEGAMEK_CONFPATH.  Clearing."
+<         MEGAMEK_CONFPATH=""
+<     fi
+< fi
+70,71c63,67
+<     if test -w $PWD; then
+<         MEGAMEK_CONFPATH=$PWD
+---
+>     conf=$HOME/.config/megamek
+> 
+>     if [[ -n "$XGD_CONFIG_HOME" ]]
+>     then
+>         conf="$XDG_CONFIG_HOME/megamek"
+72a69,75
+> 
+>     if [[ ! -d "$conf" ]]
+>     then
+>         mkdir -p "$conf"
+>     fi
+> 
+>     MEGAMEK_CONFPATH="$conf"
+76c79
+< if test -z "$MEGAMEK_CONFPATH"; then
+---
+> if ! test -d "$MEGAMEK_CONFPATH"; then

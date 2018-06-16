@@ -1,0 +1,18 @@
+pkgbase = megamek
+	pkgdesc = MegaMek is a networked Java clone of BattleTech, a turn-based sci-fi boardgame for 2+ players. Fight using giant robots, tanks, and/or infantry on a hex-based map.
+	pkgver = 0.43.11
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = jdk10-openjdk
+	source = https://github.com/MegaMek/megamek/releases/download/v0.43.11/megamek-0.43.11-RC5.tar.gz
+	source = megamek.desktop
+	source = startup.patch
+	source = megamek.sh
+	sha256sums = 23b071342fc1973600c77fe993e149517bdc2c4ea5584c5e8bfe60bca2cb2988
+	sha256sums = caf5bf3e7294029c7b6dec974eed0253d6caf3804a6a9fcc953edc3c9be98b16
+	sha256sums = 1cf6d9253142d1392f613c8d288b5622247a9452fcd0b90c5230379c4bf8867c
+	sha256sums = deb984a86a5de85e9e9eef8a2e702825c58842de5780f063e688ffd33b45a7ed
+
+pkgname = megamek
+
