@@ -1,6 +1,6 @@
 pkgbase = keepass-plugin-keetraytotp
 	pkgdesc = Fork of the Tray TOTP Keepass plugin adding Steam 2FA.
-	pkgver = 0.93
+	pkgver = 0.94
 	pkgrel = 1
 	url = https://github.com/victor-rds/KeeTrayTOTP
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = keepass-plugin-keetraytotp
 	depends = keepass
 	provides = keepass-plugin-traytotp
 	conflicts = keepass-plugin-traytotp
-	source = https://github.com/victor-rds/KeeTrayTOTP/releases/download/0.93-Beta/KeeTrayTOTP.plgx
-	sha256sums = d4f46a850fb8f8736191184725e6b3275647deb830bba82cc6649503b0fe2ce3
+	source = https://github.com/victor-rds/KeeTrayTOTP/releases/download/0.94-Beta/KeeTrayTOTP.plgx
+	sha256sums = 92154e2a3ed42d31ff784204387653495f6029b46c6361528534579e95241379
 
 pkgname = keepass-plugin-keetraytotp
 
