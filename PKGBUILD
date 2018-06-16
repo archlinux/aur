@@ -3,13 +3,13 @@
 pkgname=libfaction
 _pkgname=faction
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library for test-driven software development"
 arch=("x86_64" "i686")
 url="https://timetoplatypus.com/static/faction"
 license=("BSD")
 source=("https://timetoplatypus.com/static/faction/$_pkgname-$pkgver.tar.gz")
-md5sums=("da6be53726cb5a926749f9aeeb0dd1c4")
+md5sums=("8e77c490680bc0cda3739921c5a34b8b")
 
 package() {
   mkdir -p "$pkgdir/usr/include/"

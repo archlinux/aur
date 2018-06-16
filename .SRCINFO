@@ -1,13 +1,13 @@
 pkgbase = libfaction
 	pkgdesc = A C library for test-driven software development
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://timetoplatypus.com/static/faction
 	arch = x86_64
 	arch = i686
 	license = BSD
 	source = https://timetoplatypus.com/static/faction/faction-0.0.4.tar.gz
-	md5sums = da6be53726cb5a926749f9aeeb0dd1c4
+	md5sums = 8e77c490680bc0cda3739921c5a34b8b
 
 pkgname = libfaction
 
