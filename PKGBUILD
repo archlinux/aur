@@ -3,7 +3,7 @@
 # Mantainer: XenGi
 pkgname=unrealtournament
 pkgver=451
-pkgrel=10
+pkgrel=11
 pkgdesc="The classic Unreal Tournament from 1999 (Retail CD or DVD required)"
 arch=('i686' 'x86_64')
 url="http://www.unrealtournament.com/"
@@ -14,16 +14,16 @@ groups=(ut1999-goty)
 makedepends=(makepkg-unreal unshield lib32-fakeroot)
 provides=(ut1999)
 conflicts=(ut1999 ut ut-server)
-source=(ut436.run::'https://raw.github.com/XenGi/oldgames/master/ut/unreal.tournament_436-multilanguage.run'
-        ut436goty.run::'https://raw.github.com/XenGi/oldgames/master/ut/unreal.tournament_436-multilanguage.goty.run'
-        https://raw.github.com/XenGi/oldgames/master/ut/ALAudio-86eade1c.zip
-	    https://raw.github.com/XenGi/oldgames/master/ut/OpenGLDrv-3.6-86eade1c.zip
-        https://raw.github.com/XenGi/oldgames/master/ut/UTPGPatch451.tar.bz2
+source=(ut436.run::'https://gitlab.com/XenGi/oldgames/raw/master/ut/unreal.tournament_436-multilanguage.run'
+        ut436goty.run::'https://gitlab.com/XenGi/oldgames/raw/master/ut/unreal.tournament_436-multilanguage.goty.run'
+        https://gitlab.com/XenGi/oldgames/raw/master/ut/ALAudio-86eade1c.zip
+	    https://gitlab.com/XenGi/oldgames/raw/master/ut/OpenGLDrv-3.6-86eade1c.zip
+        https://gitlab.com/XenGi/oldgames/raw/master/ut/UTPGPatch451.tar.bz2
         ut.desktop
         disk.list
         utpg.list
         utcustom.sh
-        https://raw.github.com/XenGi/oldgames/master/ut/ut.svgz)
+        https://gitlab.com/XenGi/oldgames/raw/master/ut/ut.svgz)
 noextract=(UTPGPatch451.tar.bz2)
 sha512sums=('e3ab99af410eaa486a62cc21a40c5047996d0667ace963ccf2db666e5af9365ec49b707310fabf0bb1ed4d31ca78d9eb1e26a02ed6f258a4c1154bcc7184f518'
             '6ba8dbf3a05b293eccc500e9edcf5417f38d0b60ff31f8df728e8791ec902e95d2d21feb025655ad5e464b9f0f025c79054baf43bd70bfd6e4644b693f6a4a49'
