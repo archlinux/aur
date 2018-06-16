@@ -1,0 +1,16 @@
+pkgbase = sparky-dashboard-git
+	pkgdesc = The Sparky dashboard displays applications from /usr/share/applications dir into yad based window
+	pkgver = r4.46912d8
+	pkgrel = 1
+	url = https://github.com/sparkylinux/sparky-dashboard
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = yad
+	provides = sparky-dashboard
+	conflicts = sparky-dashboard
+	source = sparky-dashboard-git::git+https://github.com/sparkylinux/sparky-dashboard.git
+	md5sums = SKIP
+
+pkgname = sparky-dashboard-git
+
