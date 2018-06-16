@@ -12,7 +12,7 @@ pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
 _commit='f58e62cbbc1c2842881a2a6ab9beda7bcb044a30'
 pkgver=238.133
-pkgrel=1
+pkgrel=4
 arch=('x86_64')
 url="https://www.github.com/systemd/systemd"
 groups=('selinux')
@@ -33,10 +33,10 @@ validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <
 # you need to update the remotes of the git repositories, for example with the following commands:
 #   git -C systemd-stable remote set-url origin https://github.com/systemd/systemd-stable
 #   git -C systemd remote set-url origin https://github.com/systemd/systemd
-source=('git+https://github.com/systemd/systemd-stable'
-        'git+https://github.com/systemd/systemd'
+source=(# fragment is latest tag for source verification, final merge in prepare()
+        "git+https://github.com/systemd/systemd-stable#tag=v${pkgver%.*}?signed"
+        "git+https://github.com/systemd/systemd#tag=v${pkgver%.*}?signed"
         '0001-Use-Arch-Linux-device-access-groups.patch'
-        'gnupg-keys.gpg'
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
@@ -57,7 +57,6 @@ source=('git+https://github.com/systemd/systemd-stable'
 sha512sums=('SKIP'
             'SKIP'
             '9348683829190628e25b7b3300fd880c426d555bde330d5fc5150a9a54b3ad9d4d1f2e69ea1dc6d6f086693dacc53c5af30f1fa7ad9b479791fd77bcdafa430e'
-            '42dcacfa0b0c68b04267446d2c360e508dab13f06c07506f46632b19fca0561c27bb5813cd916f7d28b53f853f7197f721c1a02aacd7a3cc8d8742bb6a393cff'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
             '01de24951a05d38eca6b615a7645beb3677ca0e0f87638d133649f6dc14dcd2ea82594a60b793c31b14493a286d1d11a0d25617f54dbfa02be237652c8faa691'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
@@ -65,61 +64,47 @@ sha512sums=('SKIP'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
             'b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19'
-            '462ed39bd5c90168079956a402abafe8f0910882e6876b165a2c27af73833d0cad1be9cdbcb3549b34652ea86e5d0dba044946a38797bd533fdd1f5a0083f63b'
-            '46f93725bc94381300535737fd0186a3c096fa83661179eab0c450c7b164a87d9a5dd9abcf6ae98bdeb4bf50a4ba4f1944769948c236e4814f166ff03b0ee177'
+            '6b82386fc20619eefa911cd9cdac8efbd0c7137bba4955e8ae75a0ea378d19dbfccc1f7bde6684f03e5f2badefa4abf20623153d88a170d14499167319586db7'
+            '5a6b6beef8c31c79018884d948de840f4d3dfb07d9a87081ebf65e2b8fe595bc8c96dbd7742920ccf948c233213ed0026abc913650cefd77ad90c6f8c89bddb8'
             '4cff2ebd962e26e2f516d8b4ac45c839dbfa54dd0588b423c224a328b9f7c62306ca7b2f6cb55240c564caf9972d5bcd2e0efaf2de49d64729aeb3bc1560c9eb'
             '872de70325e9798f0b5a77e991c85bd2ab6de24d9b9ba4e35002d2dd5df15f8b30739a0042a624776177ffc14a838cde7ee98622016ed41df3efda9a659730b2'
             '471342b8d0e05533908cda5d6a906050a51e3181beda1239e91d717029ee40a9eaed714996a445417d87c4e31b7f8522a665de176077fe0536d538369594996d'
-            '3b11e8956169e6d80eca6e6de1b3e42641454d9d7be48961d400754f2242077d69fb7bfbeb0904f35ce569511036a7c9614a4a1cc3096fba993f46ae65e02895'
-            'bf3225011760695040e9f7be2560348e68e86eac0295f5a17a6f7e3dda7ad7c008812a15904e2071b53d5f8048891602c8a9a18608ac64930f2d8cc4fac2a319'
-            'ff1429a7c88e21d578c25d07e8cd9568577feb5a940fe39a7a815cf8431c57ca951ac6b394c53d2cdeb4efc645572c0b1b670a48cafcc405db41a6602b548e35'
+            'da783e3bfc6469b92dee4064a13e2b427520d3d96b57c95a4e07aaca3e844d95210a8b16122b022080f5452d65096f274dd1c1467725bbdb2e40ef304b78774a'
+            '08a590d08043a21f30f04252164b94df972b1ff1022a0469d6aef713e14484a3a037cce290a2a582851e6fac3e64add69d6cc8fc130bbeeaea08626ebf3e1763'
+            '577e33a1c50b4b41157a67f64162b035dd0c4a541e19cee55a100048bdb50cb2c82852741b1372989a0fe4c4782ba477522747fcc81d72aed99b3db512a86447'
             'e4a9d7607fe93daf1d45270971c8d8455c4bfc2c0bea8bcad05aeb89847edee23cd1a41073a72042622acf417018fe254f5bfc137604fe2c71292680bf67a1c2'
             '209b01b044877cc986757fa4009a92ea98f480306c2530075d153203c3cd2b3afccab6aacc1453dee8857991e04270572f1700310705d7a0f4d5bed27fab8c67')
 
 _backports=(
   # nspawn: wait for network namespace creation before interface setup (#8633)
   '7511655807e90aa33ea7b71991401a79ec36bb41'
+
+  # sd-shutdown improvements #8429
+  # umount: Add more asserts and remove some unused arguments
+  '0494cae03d762eaf2fb7217ee7d70f615dcb5183'
+  # umount: Decide whether to remount read-only earlier
+  '1d62d22d9432d5c4a637002c9a29b20d52f25d9a'
+  # umount: Provide the same mount flags too when remounting read-only
+  '3bc341bee9fc7dfb41a131246b6fb0afd6ff4407'
+  # umount: Try unmounting even if remounting read-only failed
+  '8645ffd12b3cc7b0292acd9e1d691c4fab4cf409'
+  # umount: Don't bother remounting api and ro filesystems read-only
+  'e783b4902f387640bba12496936d01e967545c3c'
+  # shutdown: Reduce log level of unmounts
+  '456b2199f6ef0378da007e71347657bcf83ae465'
 )
 
 _reverts=(
 )
 
-_validate_tag() (
-  local success fingerprint trusted status tag=v${pkgver%.*}
-
-  cd "$srcdir/${pkgbase/-selinux}-stable"
-  parse_gpg_statusfile /dev/stdin < <(git verify-tag --raw "$tag" 2>&1)
-
-  if (( ! success )); then
-    error 'failed to validate tag %s\n' "$tag"
-    return 1
-  fi
-
-  if ! in_array "$fingerprint" "${validpgpkeys[@]}" && (( ! trusted )); then
-    error 'unknown or untrusted public key: %s\n' "$fingerprint"
-    return 1
-  fi
-
-  case $status in
-    'expired')
-      warning 'the signature has expired'
-      ;;
-    'expiredkey')
-      warning 'the key has expired'
-      ;;
-  esac
-
-  return 0
-)
-
 prepare() {
   cd "${pkgbase/-selinux}-stable"
 
-  # import gpg keys for verification
-  gpg --import ../gnupg-keys.gpg
-
+  # add upstream repository for cherry-picking
   git remote add -f upstream ../systemd
-  git checkout "$_commit"
+  # merge the latest stable commit (fast-foward only to make sure
+  # the verified tag is in)
+  git merge --ff-only "${_commit}"
 
   local c
   for c in "${_backports[@]}"; do
@@ -144,8 +129,6 @@ pkgver() {
 }
 
 build() {
-  _validate_tag || return
-
   local timeservers=({0..3}.arch.pool.ntp.org)
 
   local meson_options=(
