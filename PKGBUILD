@@ -1,5 +1,5 @@
 pkgname=paper-icon-theme
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Paper is an open source desktop theme and icon project by Sam Hewitt"
 arch=('any')
@@ -8,9 +8,9 @@ license=("CCPL:by-sa-4.0")
 depends=('gtk-update-icon-cache')
 provides=('paper-icon-theme')
 conflicts=('paper-icon-theme-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/snwh/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('076e1dfa1bc5928f4c6616ffd933926a')
-sha512sums=('8089a926d61d22fea9f5145ae383e1558c792bd4bf0dc4b74b1bab0b6bfae987275512ec54e7d966fb18329804470f08759205ad0270624a0243a0394b1d0727')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/snwh/$pkgname/archive/v.$pkgver.tar.gz")
+md5sums=('e7e2e22a4a34432f43846c815cbdbeb4')
+sha512sums=('be84bc332eba0e9c216435a130d3eed180fe1807d81ff7b3aadb3914fc130c9e243fb7fccef8febae1da6655f8e8a1bcf9420afb429e11e4c79bcbbb5bcd291b')
 
 build() {
   cd "$pkgname-$pkgver"
