@@ -15,7 +15,9 @@ makedepends=('git'
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
+
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
@@ -38,4 +40,8 @@ build() {
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
   install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
+
+  install -Dm644 "${_plug}/RainbowSmooth.py" "${pkgdir}${_site_packages}/RainbowSmooth.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/RainbowSmooth.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/RainbowSmooth.py"
 }
