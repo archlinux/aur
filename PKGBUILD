@@ -2,7 +2,7 @@
 
 _srcpkg="google-cloud-sdk"
 pkgname="google-cloud-sdk-minimal"
-pkgver=203.0.0
+pkgver=205.0.0
 pkgrel=1
 pkgdesc="Minimal SDK for the Google Cloud Platform (gsutil, gcloud w/beta commands, man pages)"
 url="https://cloud.google.com/sdk/"
@@ -17,7 +17,7 @@ options=('!strip' 'staticlibs')
 source=("https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${_srcpkg}_${pkgver}.orig.tar.gz"
         "gcp-sdk-profile.sh")
 sha256sums=(
-        '173d4ea2bd0616a1d3953caf7e08387b2b8aa2ba198b2a55b30e14979321658c'
+        '419a2b81acd3f57115e28da2dab54efd5be3f897d36826ae698b7d6968145836'
         '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 
 prepare() {
@@ -61,7 +61,8 @@ package() {
     xargs sed -i 's|#!.*python\b|#!/usr/bin/env python2|g'
   find "${pkgdir}/opt/${_srcpkg}/bin/" -maxdepth 1 -type f -exec \
     sed -i 's/CLOUDSDK_PYTHON=python\b/CLOUDSDK_PYTHON=python2/g' {} \;
-  python2 -m compileall -q -f -x python3 "${pkgdir}/opt/${_srcpkg}/"
+  python2 -m compileall -q -f -x python3 -d "/opt/google-cloud-sdk" \
+    "${pkgdir}/opt/${_srcpkg}/"
 
   msg2 "Installing man pages"
   mkdir -p "${pkgdir}/usr/share"
