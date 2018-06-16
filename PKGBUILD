@@ -56,7 +56,7 @@ build() {
 
 package() {
   for _arch in $_architectures; do
-    cd "$srcdir/hdf5-${_arch}/build-${_arch}"
+    cd "$srcdir/hdf5-${pkgver/_/-}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
     rm "$pkgdir"/usr/${_arch}/share/{COPYING,*.txt}
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
