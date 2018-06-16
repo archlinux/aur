@@ -12,7 +12,7 @@ provides=('musct')
 conflicts=('musct')
 makedepends=('git')
 optdepends=('libyaml: For native yaml parsing')
-depends=('python-pyaml')
+depends=('python' 'python-setuptools' 'python-pyaml')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
