@@ -8,7 +8,7 @@ url="http://sourceware.org/systemtap/"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('elfutils' 'nss' 'python2')
-makedepends=('python2-setuptools' 'xmlto')
+makedepends=('python-setuptools' 'xmlto')
 optdepends=('sqlite3: for storing results in a database')
 source=("${pkgname}-${pkgver}.tar.gz::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz.asc"
