@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/Sia"
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
 }
 
 build() {
