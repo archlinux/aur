@@ -6,7 +6,7 @@ pkgbase = ripcord
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://cancel.fm/dl/Ripcord--x86_64.AppImage
+	source = https://cancel.fm/dl/Ripcord-0.2.95-x86_64.AppImage
 	validpgpkeys = ABBAD1CB484F53024CF5868B69332F9203F21F5C
 	sha256sums = INVALID
 
