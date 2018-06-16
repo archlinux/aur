@@ -1,0 +1,17 @@
+pkgbase = browthon
+	pkgdesc = EN - Webbrowser in Python | FR - Navigateur Web en Python
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/LavaPower/Browthon
+	arch = any
+	license = GPL3
+	depends = python3
+	depends = python-pyqt5
+	depends = pyqt5-common
+	depends = tk
+	depends = gksu
+	source = http://pastagames.fr.nf/browthon/Browthon.tar.gz
+	md5sums = e213005eb681aab37cd6fed40ac9cc95
+
+pkgname = browthon
+
