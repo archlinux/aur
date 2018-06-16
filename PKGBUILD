@@ -28,7 +28,7 @@ depends=('lib32-expat' 'lib32-fontconfig' 'lib32-freetype2' 'lib32-glibc'
 
 makedepends=('unzip' 'metakit' 'tcl-cookfs' 'tdom' 'patchelf')
 
-source=("http://download.altera.com/akdlm/software/acdsinst/${_mainver}std${_patchver/.0//}/${_buildver}/ib_tar/Quartus-lite-${pkgver}-linux.tar"
+source=("http://download.altera.com/akdlm/software/acdsinst/${_mainver}std${_patchver/.0/}/${_buildver}/ib_tar/Quartus-lite-${pkgver}-linux.tar"
         'quartus.sh' 'quartus.desktop' 'modelsim-ase.desktop' '51-usbblaster.rules' 'installFiles.tcl')
 sha256sums=('25d40a57c1c2e66a36f18fd7545b5ba39e75e7db6201bb0c86da8e909d5a8915'
             '2a3d61e6f01aa16c9d3ddd40e9741b9fd080496db5437530b4e38faf6771c1ed'
