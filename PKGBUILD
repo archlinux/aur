@@ -25,11 +25,12 @@ makedepends=(
 	"parallel"
 )
 optdepends=(
-	"gnome-flashback>=3.18.2"
-	"pop-icon-theme-git: Recommended icon theme"
+	"gnome-flashback"
 	"ttf-fira-sans: Recommended font for window titles and interface"
 	"ttf-fira-mono: Recommended monospace font"
 	"ttf-roboto-slab: Recommended font for documents"
+	"pop-gtk-theme-git: Recommended gtk theme"
+	"pop-icon-theme-git: Recommended icon theme"
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

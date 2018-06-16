@@ -19,11 +19,12 @@ pkgbase = pop-shell-theme-git
 	depends = gdk-pixbuf2>=2.24.30
 	depends = gtk-engine-murrine>=0.98.1
 	depends = glib2
-	optdepends = gnome-flashback>=3.18.2
-	optdepends = pop-icon-theme-git: Recommended icon theme
+	optdepends = gnome-flashback
 	optdepends = ttf-fira-sans: Recommended font for window titles and interface
 	optdepends = ttf-fira-mono: Recommended monospace font
 	optdepends = ttf-roboto-slab: Recommended font for documents
+	optdepends = pop-gtk-theme-git: Recommended gtk theme
+	optdepends = pop-icon-theme-git: Recommended icon theme
 	provides = gnome-shell-theme
 	conflicts = gnome-shell-theme
 	source = git+https://github.com/pop-os/gnome-shell-theme.git
