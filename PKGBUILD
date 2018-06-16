@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libgpg-error
-pkgver=1.27
+pkgver=1.31
 pkgrel=1
 pkgdesc="Support library for libgcrypt (mingw-w64)"
 arch=(any)
@@ -11,12 +11,14 @@ options=(staticlibs !strip !buildflags)
 source=("ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"{,.sig}
 "01-mingw32-fix-potomo.mingw.patch"
 "02-fix-symbollist-on.mingw.patch"
-"05-w32-gen.all.patch")
-sha1sums=('a428758999ff573e62d06892e3d2c0b0f335787c'
+"05-w32-gen.all.patch"
+"07-windows-build.patch")
+sha1sums=('2bafad316d4e3e12bae4822b14ed9020090e6acf'
           'SKIP'
           'b32a305f593835132a610272aeb219165dc354c4'
           'a7bbc4637aba322cd43aa7c5a6d99faa8f801133'
-          '07f1c34b3861bc2658d1cad4fafe895f654815df')
+          '07f1c34b3861bc2658d1cad4fafe895f654815df'
+          '86977605a345a0684c8066824f935042990b085f')
 validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'  # Werner Koch
               '031EC2536E580D8EA286A9F22071B08A33BD3F06') # NIIBE Yutaka (GnuPG Release Key) <gniibe@fsij.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -26,6 +28,7 @@ prepare() {
 	patch -p1 -i ${srcdir}/01-mingw32-fix-potomo.mingw.patch
 	patch -p1 -i ${srcdir}/02-fix-symbollist-on.mingw.patch
 	patch -p1 -i ${srcdir}/05-w32-gen.all.patch
+  patch -p1 -i ${srcdir}/07-windows-build.patch
   autoreconf -fi
 }
 
