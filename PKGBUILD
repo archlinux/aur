@@ -1,8 +1,12 @@
 # Maintainer: Michael Healy <horsemanoffaith@gmail.com>
+# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Contributor: Christopher Reimer <github@creimer.net>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=gtk+3.0, repo=bionic
+# vercheck-ubuntu: name=gtk+3.0, repo=cosmic
 # vercheck-archlinux: name=gtk3, repo=extra, arch=x86_64
 # vercheck-gnome: name=gtk+, majorver=3.22
 # vercheck-ppa: name=gtk+3.0, url=ppa:gnome3-team/gnome3-staging
@@ -14,14 +18,11 @@ pkgname=(gtk3-ubuntu gtk-update-icon-cache-ubuntu)
 _ubuntu_ver=3.22.30
 _ubuntu_rel=1ubuntu1
 pkgver=3.22.30
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform toolkit"
 arch=(x86_64)
 url="http://www.gtk.org/"
-depends=(adwaita-icon-theme at-spi2-atk atk cairo cantarell-fonts colord dconf desktop-file-utils
-	gdk-pixbuf2 gtk-update-icon-cache json-glib libcanberra libcloudproviders libcups libepoxy
-	librsvg	libxcomposite libxcursor libxdamage libxi libxinerama libxkbcommon libxrandr mesa
-	pango rest shared-mime-info wayland wayland-protocols gtk-update-icon-cache)
+depends=(adwaita-icon-theme at-spi2-atk atk cairo cantarell-fonts colord dconf desktop-file-utils gdk-pixbuf2 gtk-update-icon-cache json-glib libcanberra libcups libepoxy librsvg libxcomposite libxcursor libxdamage libxi libxinerama libxkbcommon libxrandr mesa pango rest shared-mime-info wayland wayland-protocols gtk-update-icon-cache)
 makedepends=(gobject-introspection git gtk-doc glib2-docs sassc)
 license=(LGPL)
 _commit=2e7ac262be15fb402c4103d28533c6c6d955bf65  # tags/3.22.30^0
