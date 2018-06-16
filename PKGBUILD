@@ -7,7 +7,7 @@
 
 pkgname=wine-osu
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
