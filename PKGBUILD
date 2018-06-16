@@ -2,7 +2,7 @@
 
 pkgname=python-torf
 _name=torf
-pkgver=1.3
+pkgver=1.4
 pkgrel=3
 pkgdesc="Python module to create, parse and edit torrent files and magnet links"
 arch=('any')
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("$_name-$pkgver.tar.gz::https://github.com/rndusr/${_name}/archive/v${pkgver}.tar.gz")
-md5sums=('6bb2f502f97182bbcb18cad790f64da8')
+md5sums=('8dbac643ae0c236ad7cdd9eb404a3983')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
