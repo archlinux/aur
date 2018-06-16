@@ -1,7 +1,7 @@
 # Maintainer: JP Cimalando <jp-dev inbox.ru>
 pkgname=opl3bankeditor-git
 _pkgname=OPL3BankEditor
-pkgver=1.3.beta.r318.gbdd6f06
+pkgver=1.3.beta.r327.g1add5f4
 pkgrel=1
 epoch=
 pkgdesc="A small cross-platform editor of the OPL3 FM banks of different formats"
@@ -49,6 +49,4 @@ build() {
 package() {
   cd "$_pkgname"
   make -C build install DESTDIR="$pkgdir"
-  install -D -m644 src/resources/opl3_48.png "$pkgdir"/usr/share/pixmaps/opl3_bank_editor.png
-  install -D -m644 "$srcdir"/opl3_bank_editor.desktop "$pkgdir"/usr/share/applications/opl3_bank_editor.desktop
 }
