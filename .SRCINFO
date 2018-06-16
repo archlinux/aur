@@ -1,6 +1,6 @@
 pkgbase = iproute2-selinux
 	pkgdesc = IP Routing Utilities with SELinux support
-	pkgver = 4.16.0
+	pkgver = 4.17.0
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2.git
 	arch = x86_64
@@ -13,12 +13,8 @@ pkgbase = iproute2-selinux
 	depends = libselinux
 	optdepends = linux-atm: ATM support
 	provides = iproute
-	provides = iproute2=4.16.0-1
-	conflicts = iproute
-	conflicts = iproute2-doc
+	provides = iproute2=4.17.0-1
 	conflicts = iproute2
-	conflicts = iproute2-selinux-doc
-	replaces = iproute2-selinux-doc
 	options = staticlibs
 	backup = etc/iproute2/ematch_map
 	backup = etc/iproute2/rt_dsfield
@@ -26,11 +22,11 @@ pkgbase = iproute2-selinux
 	backup = etc/iproute2/rt_realms
 	backup = etc/iproute2/rt_scopes
 	backup = etc/iproute2/rt_tables
-	source = https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.16.0.tar.xz
-	source = https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.16.0.tar.sign
+	source = https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.17.0.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.17.0.tar.sign
 	source = 0001-make-iproute2-fhs-compliant.patch
 	validpgpkeys = 9F6FC345B05BE7E766B83C8F80A77F6095CDE47E
-	sha256sums = 0c5c24020fd7349fe25728c5edee9fb6a1bc8a38f08e23be5c57a6301e55ee0a
+	sha256sums = 6fa991b092315887775b9e47dc6a89af7ae09dd3ad4ccff754d055c566b4be6e
 	sha256sums = SKIP
 	sha256sums = f60fefe4c17d3b768824bb50ae6416292bcebba06d73452e23f4147b46b827d3
 

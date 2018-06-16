@@ -3,9 +3,12 @@
 # Maintainer: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+#
+# This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
+# If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=iproute2-selinux
-pkgver=4.16.0
+pkgver=4.17.0
 pkgrel=1
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('x86_64')
@@ -15,10 +18,7 @@ url='https://git.kernel.org/pub/scm/network/iproute2/iproute2.git'
 depends=('glibc' 'iptables' 'libelf' 'libselinux')
 optdepends=('linux-atm: ATM support')
 provides=('iproute' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
-# Upstream commit b2fd7a0e6efa7b85a041b5cb9ea6fc1a6a798fd3 removed old documentation.
-# Add conflict and replace to get rid of the package. TODO: Remove anytime soon.
-conflicts=('iproute' 'iproute2-doc' "${pkgname/-selinux}" 'iproute2-selinux-doc')
-replaces=('iproute2-selinux-doc')
+conflicts=("${pkgname/-selinux}")
 backup=('etc/iproute2/ematch_map'
         'etc/iproute2/rt_dsfield'
         'etc/iproute2/rt_protos'
@@ -30,7 +30,7 @@ options=('staticlibs')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("https://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch')
-sha256sums=('0c5c24020fd7349fe25728c5edee9fb6a1bc8a38f08e23be5c57a6301e55ee0a'
+sha256sums=('6fa991b092315887775b9e47dc6a89af7ae09dd3ad4ccff754d055c566b4be6e'
             'SKIP'
             'f60fefe4c17d3b768824bb50ae6416292bcebba06d73452e23f4147b46b827d3')
 
