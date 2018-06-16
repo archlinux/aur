@@ -1,0 +1,15 @@
+[Unit]
+Description=Fenrir screenreader
+Wants=systemd-udev-settle.service
+After=systemd-udev-settle.service getty.target
+[Service]
+Type=forking
+PIDFile=/var/run/fenrir.pid
+ExecStart=/usr/bin/fenrir-daemon
+ExecReload=/usr/bin/kill -HUP $MAINPID
+Restart=always
+#Group=fenrirscreenreader
+#User=fenrirscreenreader
+
+[Install]
+WantedBy=getty.target

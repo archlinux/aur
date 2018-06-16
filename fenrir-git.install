@@ -1,6 +1,4 @@
-pre_upgrade() {
-    if [[ -d /etc/fenrir ]]; then
-        [[ -d /etc/fenrirscreenreader ]] || cp -r /etc/fenrir /etc/fenrirscreenreader
-    fi
-    echo "Fenrir's settings directory is now located at /etc/fenrirscreenreader. Your settings have been copied over to the new location. You can remove the old /etc/fenrir directory when you are sure you no longer need it."
+post_upgrade() {
+fold -s << EOF
+If you have the fenrir systemd service enabled, and haven't done so, you will need to re-enable it. You only need to do this once.
 }
