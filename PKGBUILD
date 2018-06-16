@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=4.1.r91226.gd8c0bbb0aa
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -17,8 +17,8 @@ depends=(
         'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt'
         'libssh' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab'
         'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore'
-        'libxml2' 'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'opencl-icd-loader' 'mesa'
-        'sndio' 'sdl2' 'vapoursynth' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio'
+        'libxml2' 'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'ocl-icd' 'libgl' 'sndio'
+        'sdl2' 'vapoursynth' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio'
         'libva' 'libdrm' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'aom-git' 'codec2' 'flite1-patched' 'libilbc' 'kvazaar'
