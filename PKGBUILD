@@ -1,7 +1,7 @@
 # Maintainer: bemasher <bemasher@gmail.com>
 
-pkgname=rtlamr
-pkgver=0.6.2
+pkgname=rtlamr-git
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="An rtl-sdr receiver for Itron ERT compatible smart meters operating in the 900MHz ISM band."
 arch=('x86_64' 'i686')
