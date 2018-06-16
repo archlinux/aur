@@ -1,7 +1,7 @@
 # Maintainer: JP Cimalando <jp-dev inbox.ru>
 pkgname=opl3bankeditor-git
 _pkgname=OPL3BankEditor
-pkgver=1.3.beta.r176.g8b5b03f
+pkgver=1.3.beta.r318.gbdd6f06
 pkgrel=1
 epoch=
 pkgdesc="A small cross-platform editor of the OPL3 FM banks of different formats"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/Wohlstand/OPL3BankEditor"
 license=('GPL3')
 groups=()
-depends=('qt5-multimedia')
+depends=('qt5-base' 'jack' 'libpulse')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -40,13 +40,15 @@ prepare() {
 
 build() {
   cd "$_pkgname"
-  qmake
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
   make
 }
 
 package() {
   cd "$_pkgname"
-  install -D -m755 bin-debug/opl3_bank_editor "$pkgdir"/usr/bin/opl3_bank_editor
+  make -C build install DESTDIR="$pkgdir"
   install -D -m644 src/resources/opl3_48.png "$pkgdir"/usr/share/pixmaps/opl3_bank_editor.png
   install -D -m644 "$srcdir"/opl3_bank_editor.desktop "$pkgdir"/usr/share/applications/opl3_bank_editor.desktop
 }
