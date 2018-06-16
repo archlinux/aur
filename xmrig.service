@@ -8,7 +8,10 @@ Group=xmrig
 Type=forking
 ExecStart=/usr/bin/xmrig -c %i.conf -B
 WorkingDirectory=/etc/xmrig
-Restart=always
+Restart=on-failure
+RestartSec=20s
+StartLimitInterval=30m
+StartLimitBurst=30
 
 [Install]
 WantedBy=multi-user.target
