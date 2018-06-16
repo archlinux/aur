@@ -2,7 +2,7 @@
 
 _name=ddnet
 pkgname=$_name-git
-pkgver=11.1.9.r0.g626de24d6
+pkgver=11.1.9.r18.gd52143ffd
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("git+https://github.com/$_name/$_name"
         'ddnet.desktop' 'ddnet-server.desktop'
         'DDNet.png' 'DDNet-Server.png')
 sha256sums=('SKIP'
-            '11402ed2cf323e350e381588c7cb4fa1d450c19645a0a079897912134bb436bd'
+            'c60de83f47b5981e79dc0d028c1fe239c898f6319653b94bb74e578cf699a216'
             'fc8c27e129f92c5dddf96a079306a2439c8cc14d4b8ce719c5fa2f59aceee367'
             '1dc83efd9fdab2597fc4d41358628422a9550d4d23b60d273f2f30cf7b76dfaa'
             'e4083f1c40569146caabd21b8f24fdd7862e2f3040552e9c6a260df603249274')
