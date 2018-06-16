@@ -4,14 +4,14 @@
 
 pkgbase='pyside2-tools-git'
 pkgname=('python2-pyside2-tools-git' 'python-pyside2-tools-git' 'pyside2-tools-common-git')
-pkgver=2.0.0.r109.413ecc7
-_upver=2.0.0
+pkgver=5.11.1.r109.413ecc7
+_upver=5.11.1
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
 url='https://qt-project.org/wiki/PySide'
 makedepends=('git' 'cmake' 'python' 'python2' 'shiboken2-git' python{,2}-pyside2-git)
-source=("$pkgbase::git+https://code.qt.io/pyside/pyside-tools.git#branch=5.9")
+source=("$pkgbase::git+https://code.qt.io/pyside/pyside-tools.git#branch=5.11")
 md5sums=('SKIP')
 
 pkgver() {
