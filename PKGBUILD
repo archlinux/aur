@@ -1,7 +1,7 @@
 # Maintainer: PastaGames <lavapower84@gmail.com>
 pkgname=browthon
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EN - Webbrowser in Python | FR - Navigateur Web en Python"
 arch=(any)
 url="https://github.com/LavaPower/Browthon"
