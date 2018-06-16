@@ -1,8 +1,8 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=nbfc-git
-pkgver=1.5.3.r65.ga2465ad
-pkgrel=2
+pkgver=1.5.3.r69.gd66bb13
+pkgrel=1
 pkgdesc="Cross-platform fan control service for notebooks (Development version)"
 arch=("i686" "x86_64")
 url="https://github.com/hirschmann/nbfc"
@@ -39,7 +39,6 @@ package() {
 
 	# Make nbfc executable from CLI:
 	mkdir -p "${pkgdir}/usr/bin"
-	# Executables:
 	echo "mono /opt/nbfc/nbfc.exe \"\$@\" 2>&1 | sed 's/nbfc.exe/nbfc/g'" > "${pkgdir}/usr/bin/nbfc"
 	chmod 0755 "${pkgdir}/usr/bin/nbfc"
 	echo "mono /opt/nbfc/ec-probe.exe \"\$@\" 2>&1 | sed 's/ec-probe.exe/ec-probe/g'" > "${pkgdir}/usr/bin/ec-probe"
