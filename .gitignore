@@ -3,5 +3,7 @@
 /*.tar.xz
 /*.zip
 /*.7z
+/*.pkg.tar
 /pkg/
 /src/
+/doomseeker/

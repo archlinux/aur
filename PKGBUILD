@@ -3,7 +3,7 @@
 
 pkgname=doomseeker
 pkgver=1.2
-pkgrel=20180328
+pkgrel=20180616
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
@@ -38,9 +38,9 @@ package() {
     mkdir -p $pkgdir/usr/games/doomseeker/engines/
     cd $srcdir/$_bbdir/build
     install -Dm755 doomseeker "$pkgdir/usr/games/doomseeker"
-    install -Dm755 libwadseeker.so "$pkgdir/usr/games/doomseeker"
-    install -Dm755 libwadseeker.so.1 "$pkgdir/usr/games/doomseeker"
-    install -Dm755 libwadseeker.so.1.2 "$pkgdir/usr/games/doomseeker"
+    for f in libwadseeker.so*; do
+        install -Dm755 $f "$pkgdir/usr/games/doomseeker"
+    done
     cd engines
     for f in *.so; do
         install -Dm755 $f "$pkgdir/usr/games/doomseeker/engines/$f"
