@@ -4,7 +4,7 @@ conf=$HOME/.config/megamek
 
 if [[ -n "$XGD_CONFIG_HOME" ]]
 then
-    conf="$XDG_CONFIG_HOME"
+    conf="$XDG_CONFIG_HOME/megamek"
 fi
 
 if [[ ! -d "$conf" ]]
