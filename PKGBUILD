@@ -25,7 +25,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "SDL/"
   printf "%s.r%s.%s" \
-    "$(hg log -r . -T "{latesttag}" | sed 's/release-//')" \
+    "$(hg log -r . -T "{latesttag}" | sed 's/^release-//')" \
     "$(hg identify -n | sed 's/+//')" \
     "$(hg identify -i | sed 's/+//')"
 }
