@@ -7,13 +7,13 @@ pkgbase = pop-icon-theme-git
 	license = GPL2
 	license = CCPL
 	makedepends = git
-	optdepends = gnome-shell>=3.18.3
-	optdepends = gnome-flashback>=3.18.2
-	optdepends = budgie-desktop>=10.2.7
-	optdepends = xfce4-session>=4.12.2
-	optdepends = mate-desktop>=1.14.0
-	optdepends = mate-desktop>=1.14.0
-	optdepends = lxde-common>=0.99.1
+	optdepends = gnome-shell
+	optdepends = gnome-flashback
+	optdepends = budgie-desktop
+	optdepends = xfce4-session
+	optdepends = mate-desktop
+	optdepends = mate-desktop
+	optdepends = lxde-common
 	optdepends = pop-gtk-theme-git: Recommended gtk theme
 	optdepends = pop-shell-theme-git: Recommended shell theme
 	provides = pop-icon-theme
