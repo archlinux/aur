@@ -8,7 +8,7 @@
 pkgbase=pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
 pkgver=5.11.0.r5599.e01afb09
-_upver=5.11.0
+_upver=5.11.1
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
