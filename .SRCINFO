@@ -16,8 +16,8 @@ pkgbase = pingtcp
 	depends = libunwind
 	depends = gperftools
 	optdepends = torsocks: for TOR support
-	source = pingtcp-0.0.4.tar.gz::https://github.com/pfactum/pingtcp/archive/v0.0.4.tar.gz
-	sha256sums = ba6f3eb2660f703394bd0d40271a71f4d03434c89d71ae92ba2a2dcb50fd6ea6
+	source = pingtcp-0.0.4.tar.gz::https://gitlab.com/post-factum/pingtcp/-/archive/v0.0.4/pingtcp-v0.0.4.tar.gz
+	sha256sums = 23582f215881f635911e03aeb5789f32d385ddacab5726f9eabbcff59b61aa7c
 
 pkgname = pingtcp
 
