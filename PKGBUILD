@@ -7,13 +7,13 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=3.0.1
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'libtiger' 'lua'
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libarchive' 'freetype2' 'fribidi' 'harfbuzz' 'fontconfig' 'libxml2'
@@ -45,7 +45,6 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'ttf-freefont: subtitle font '
             'ttf-dejavu: subtitle font'
             'libssh2: sftp access'
-            'opencv: opencv video'
             'libnfs: NFS access'
             'mpg123: mpg123 codec'
             'protobuf: chromecast streaming'
@@ -91,7 +90,7 @@ options=('!emptydirs')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         update-vlc-plugin-cache.hook
         lua53_compat.patch)
-sha512sums=('f2ba7586e8fb8c04484e62809265ec998e875b1eff03262bbf463370277a318816cbb8d260901c774e59443393b16b040cb714019c80e051578008abbf91b13c'
+sha512sums=('1569cefa6623b2631a832679bc9a63ebeba222901e5221d254e896a68d2ee467054da8de9eda566924e80a11bb29a673a9f0c4243793845547d8027b58a238ab'
             '80357bae69e32b353d3784932d854e294906798e14faffb87c3383c3b6f6bdc57cbabb9c6e3f3c1adf0f8ddbb24153e72104c963cf1934970c2983c96daef9df'
             '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f')
 
