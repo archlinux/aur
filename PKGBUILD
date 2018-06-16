@@ -1,30 +1,28 @@
 # Maintainer: Andrew O'Neill <andrew at meanjollies dot com>
 
 pkgname=musikcube
-pkgver=0.42.0
+pkgver=0.50.0
 pkgrel=1
-pkgdesc="A terminal-based cross-platform music player, audio engine, metadata indexer, and server"
+pkgdesc='A terminal-based cross-platform music player, audio engine, metadata indexer, and server'
 arch=('x86_64')
-url="https://github.com/clangen/$pkgname"
+url="https://github.com/clangen/${pkgname}"
 license=('BSD')
-conflicts=("$pkgname-git")
+conflicts=("${pkgname}-git")
 depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame' 'ncurses' 'boost' 'pulseaudio' 'libpulse' 'libev' 'alsa-lib' 'curl')
 makedepends=('cmake')
-source=(https://github.com/clangen/musikcube/archive/$pkgver.tar.gz
-        LICENSE.txt)
-sha256sums=('da23cf524160f874c07fe0dbaf52447abb910ab7aba57aa0599ded7519371d0c'
-            'f6b4cd2e08c8a93cd447eb4a077ecb0c7eca8c3d175aaeedb1f49731f86c8e5b')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('ffb580937c8914f13e7ea804a05d6d024639109d981220a97ffa57d9396b2336')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
-  make DESTDIR=$pkgdir install
-  install -Dm644 $srcdir/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
