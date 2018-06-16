@@ -3,7 +3,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-plugins-git
-pkgver=1.3.334.0.g124c1822
+pkgver=1.1.98.ga8cf677
 pkgrel=1
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('x86_64')
@@ -15,24 +15,52 @@ provides=("psi-plus-plugins=$pkgver" "psi-plus-plugins-qt5-git=$pkgver")
 makedepends=('libotr' 'tidy' 'git')
 optdepends=('libotr: for OTR plugin'
             'tidy: for OTR plugin')
-source=('git://github.com/psi-plus/psi-plus-snapshots')
-md5sums=('SKIP')
+source=('git://github.com/psi-im/plugins'
+        'git://github.com/psi-im/psi.git'
+        'psi-plus::git://github.com/psi-plus/main.git'
+        'git://github.com/psi-im/iris.git'
+        'git://github.com/psi-im/libpsi.git')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
-  cd psi-plus-snapshots
+  cd plugins
   git describe --long --tags | sed 's/^v//;s/-/./g'
-}            
+}
+
+prepare() {
+  cd psi
+  
+  # makepkg doesn't support --recursive
+  # so setup git modules manually
+  git submodule init
+  git config submodule.iris.url "$srcdir/iris"
+  git config submodule.src/libpsi.url "$srcdir/libpsi"
+  git submodule update
+
+  # patches from Psi+ project
+  for patch in "$srcdir"/psi-plus/patches/*.diff; do
+    echo "* Appling ${patch##*/}"
+    patch -p1 -i "$patch"
+  done
+  
+  cp -r $srcdir/psi/cmake $srcdir/plugins/cmake
+  cp -r $srcdir/plugins $srcdir/psi/src/
+}
     
 build() {
-  cd psi-plus-snapshots
+  cd $srcdir/psi/src/plugins
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DONLY_PLUGINS=ON  ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
-  cd psi-plus-snapshots/build
+  cd $srcdir/psi/src/plugins/build
 
   make DESTDIR="$pkgdir" install
 }
