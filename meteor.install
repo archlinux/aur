@@ -1,0 +1,10 @@
+post_install() {
+  echo "==> This package will not upgrade every user's Meteor installation when \`meteor\`"
+  echo "==> is run, it will only create \"~/.meteor/\" once per user, and copy the"
+  echo "==> contents of \"/usr/share/meteor/\" to it. To upgrade Meteor, manually delete"
+  echo "==> your user's \"~/.meteor/\" directory, then run \`meteor\` once again."
+}
+
+post_upgrade() {
+  post_install
+}
