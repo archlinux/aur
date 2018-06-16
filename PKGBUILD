@@ -18,4 +18,4 @@ package()
 	cp -r usr "$pkgdir"
 }
 source=(http://pastagames.fr.nf/browthon/Browthon.tar.gz)
-md5sums=('00a301785e8ccfdfbe7dc40f7de0f761') 
+md5sums=('e213005eb681aab37cd6fed40ac9cc95') 
