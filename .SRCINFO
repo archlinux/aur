@@ -1,0 +1,24 @@
+pkgbase = playmymusic-git
+	pkgdesc = Melody is a music player for Pantheon, developed by Artem Anufrij
+	pkgver = 1.0.1.r30.g43b3ad0
+	pkgrel = 1
+	url = http://anufrij.org/melody/
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	makedepends = git
+	depends = libgranite.so
+	depends = libsoup
+	depends = gst-plugins-base-libs
+	depends = taglib
+	depends = gtk3
+	optdepends = gst-plugins-base: "Base" plugin libraries
+	optdepends = gst-plugins-good: "Good" plugin libraries
+	optdepends = gst-plugins-bad: "Bad" plugin libraries
+	optdepends = gst-plugins-ugly: "Ugly" plugin libraries
+	source = playmymusic-git::git+https://github.com/artemanufrij/playmymusic.git
+	sha256sums = SKIP
+
+pkgname = playmymusic-git
+
