@@ -2,7 +2,7 @@
 
 pkgname=or-tools
 pkgver=6.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's Operations Research tools"
 arch=('x86_64' 'i686')
 url="https://github.com/google/or-tools"
@@ -47,5 +47,5 @@ package() {
     rm -rf lib/pkgconfig
     rm -rf lib/cmake/{Cbc,gflags,glog,protobuf,ZLIB}
     rm -rf include/{cbc,gflags,glog,google}
-    rm -rf include/*.h
+    rm -rf include/{zconf,zlib}.h
 }
