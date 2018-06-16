@@ -8,7 +8,7 @@ _ubver=0ubuntu2
 
 pkgname=fontconfig-ubuntu
 pkgver=2.12.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for configuring and customizing font access (with Ubuntu patches)'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/ubuntu/+source/fontconfig'
