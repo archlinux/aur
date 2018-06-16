@@ -4,18 +4,18 @@ _pkgbase=jucipp
 pkgbase=$_pkgbase-git
 pkgname=("$_pkgbase-git")
 pkgdesc='A lightweight platform-independent C++ IDE'
-pkgver=r1629.0406b7c
+pkgver=r2120.7d53bca
 pkgrel=1
 
 arch=('i686' 'x86_64')
-url="https://github.com/cppit/jucipp"
+url="https://gitlab.com/cppit/jucipp"
 license=('MIT')
-depends=('gtksourceviewmm' 'clang' 'aspell' 'lldb' 'boost-libs' 'libgit2' 'ctags')
+depends=('gtksourceviewmm' 'clang' 'aspell-en' 'lldb' 'boost-libs' 'libgit2' 'ctags')
 makedepends=('git' 'cmake' 'pkg-config' 'boost') 
 
-source=("$_pkgbase::git+https://github.com/cppit/jucipp.git"
-  "git+https://github.com/cppit/libclangmm.git"
-  "git+https://github.com/eidheim/tiny-process-library")
+source=("$_pkgbase::git+https://gitlab.com/cppit/jucipp.git"
+  "git+https://gitlab.com/cppit/libclangmm.git"
+  "git+https://gitlab.com/eidheim/tiny-process-library")
 sha1sums=('SKIP' 'SKIP' 'SKIP') 
 
 pkgver() {
@@ -27,8 +27,8 @@ prepare() {
   cd "$srcdir/$_pkgbase"
 
   git submodule init
-  git config submodule.libclangmm.url "$srcdir/libclangmm"
-  git config submodule.tiny-process-library.url "$srcdir/tiny-process-library"
+  git config submodule.libclangmm.url "$srcdir/lib/libclangmm"
+  git config submodule.tiny-process-library.url "$srcdir/lib/tiny-process-library"
   git submodule update
 
   mkdir -p build
