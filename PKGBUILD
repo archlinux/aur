@@ -1,12 +1,12 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=zyn-fusion
 pkgver=3.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="ZynAddSubFX with a new interactive UI"
 arch=('i686' 'x86_64')
 url="http://zynaddsubfx.sourceforge.net/zyn-fusion.html"
 license=('GPL2' 'LGPL2.1')
-depends=('fftw' 'libglvnd' 'mxml' 'jack' 'liblo' 'lash' 'alsa-lib' 'portaudio')
+depends=('fftw' 'libglvnd' 'mxml' 'jack' 'liblo' 'alsa-lib' 'portaudio')
 makedepends=('git' 'wget' 'cmake' 'python' 'ruby-rake'
              'glu' # For building pugl, which does not seem to actually need it at runtime
 )

@@ -1,7 +1,7 @@
 pkgbase = zyn-fusion
 	pkgdesc = ZynAddSubFX with a new interactive UI
 	pkgver = 3.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://zynaddsubfx.sourceforge.net/zyn-fusion.html
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,6 @@ pkgbase = zyn-fusion
 	depends = mxml
 	depends = jack
 	depends = liblo
-	depends = lash
 	depends = alsa-lib
 	depends = portaudio
 	provides = zynaddsubfx
