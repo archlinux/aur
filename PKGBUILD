@@ -2,36 +2,35 @@
 pkgbase=qt5-datasync
 pkgname=(qt5-datasync qt5-datasync-kwallet-keystore qt5-datasync-secret-keystore qt5-datasync-doc)
 group=qt5-datasync-full
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtDataSync"
 license=('BSD')
-depends=('qt5-base' 'qt5-jsonserializer' 'qt5-websockets' 'qt5-scxml' 'qt5-remoteobjects>=5.11.0' 'crypto++')
+depends=('qt5-base' 'qt5-jsonserializer' 'qt5-websockets' 'qt5-scxml' 'qt5-remoteobjects>=5.11.0' 'qt5-service' 'crypto++')
 makedepends=('qt5-tools' 'git' 'qpmx-qpmsource' 'qt5-declarative' 'pkg-config' 'python' 'doxygen' 'graphviz' 'libsecret' 'kwallet')
 optdepends=("repkg: Automatically rebuild the package on dependency updates"
 			"qt5-datasync-kwallet-keystore: Support for KWallet as keystore"
 			"qt5-datasync-secret-keystore: Support for secret service as keystore (includes gnome keyring)")
 _pkgfqn=$pkgname-$pkgver
-source=("$_pkgfqn::git+https://github.com/Skycoder42/QtDataSync.git#tag=${pkgver}-2" #TODO temporary for Qt 5.11 rebuild
+source=("$_pkgfqn::git+https://github.com/Skycoder42/QtDataSync.git#tag=${pkgver}"
 		"${pkgname}.rule"
 		"subpkg.rule")
 sha256sums=('SKIP'
-            '4ac39788aa336a6505fc6a15cb172a48b76832d52cd2e7a68203201b7feb913e'
+            'a007d798b34d1c7e5d27ced99a34bb3f027df0631c0edfc7082f0ef20321049b'
             '321d7d24f490983f54acb9e7f58ebc2a170b520cd978c4989e28bc1a76513f3b')
 
 prepare() {
   mkdir -p build
 
   cd "$_pkgfqn"
-  echo "CONFIG+=system_cryptopp" >> .qmake.conf
 }
 
 build() {
   cd build
 
-  qmake "../$_pkgfqn/"
+  qmake "CONFIG+=system_cryptopp install_system_service" "../$_pkgfqn/"
   make qmake_all
   make
   make lrelease
@@ -53,6 +52,9 @@ package_qt5-datasync() {
   # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
   find "$pkgdir/usr/lib" -type f -name '*.prl' \
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+
+  # Set systemd service file target
+  sed -i -e 's/#WantedBy=multi-user/WantedBy=multi-user/g' $pkgdir/usr/lib/systemd/system/qdsapp.service
 
   install -D -m644 "../$_pkgfqn/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
@@ -90,4 +92,7 @@ package_qt5-datasync-doc() {
   # DROP file paths from doc tags
   find "$pkgdir/usr/share/doc/qt" -type f -name '*.tags' \
     -exec sed -i -e 's:<path>[^<]*<\/path>:<path>/usr/include/qt/QtDataSync</path>:g' {} \;
+
+  # install manpages
+  install -Dm644 -t "$pkgdir/usr/share/man/man3" man/man3/*.3
 }

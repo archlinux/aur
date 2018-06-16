@@ -1,1 +1,1 @@
-qt5-base qt5-jsonserializer qt5-websockets qt5-scxml qt5-remoteobjects qt5-declarative crypto++
+qt5-base qt5-jsonserializer qt5-websockets qt5-scxml qt5-remoteobjects qt5-service qt5-declarative crypto++
