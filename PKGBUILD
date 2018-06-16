@@ -1,19 +1,19 @@
 pkgname=mingw-w64-libgcrypt
-pkgver=1.8.0
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="General purpose cryptographic library based on the code from GnuPG (mingw-w64)"
 arch=("any")
 url="http://www.gnupg.org"
 license=("LGPL")
-depends=(mingw-w64-libgpg-error)
-makedepends=(mingw-w64-configure fig2dev ghostscript)
+depends=('mingw-w64-libgpg-error')
+makedepends=('mingw-w64-configure')
 options=(staticlibs !buildflags !strip !emptydirs)
-source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"{,.sig}
+source=("https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"{,.sig}
 "libgcrypt-use-correct-def-file.patch"
 "Smarter-fig2dev-detection.all.patch")
-sha1sums=('b4ffb20369f2ab8249d5cc0fb8b3b31371f6b112'
+sha1sums=('13bd2ce69e59ab538e959911dfae80ea309636e3'
           'SKIP'
-          'ccd4860aabc08793174376cffa357a7d094ae451'
+          '0f03d59dee4b967dfa80621ef4b1efea61772c16'
           '3613a5454aeaef8d264011f2bc9f2303248fb933')
 validpgpkeys=('031EC2536E580D8EA286A9F22071B08A33BD3F06' # "NIIBE Yutaka (GnuPG Release Key) <gniibe@fsij.org>"
               'D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
@@ -21,7 +21,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/libgcrypt-${pkgver}"
-  patch -p0 -i "$srcdir"/libgcrypt-use-correct-def-file.patch
+  patch -p1 -i "$srcdir"/libgcrypt-use-correct-def-file.patch
   patch -p1 -i "${srcdir}"/Smarter-fig2dev-detection.all.patch
   autoreconf -fi
 }
@@ -32,8 +32,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
-      --with-gpg-error-prefix=/usr/${_arch} \
-      --disable-padlock-support
+      --with-gpg-error-prefix=/usr/${_arch}
     make
     popd
   done
@@ -49,4 +48,3 @@ package() {
     rm "$pkgdir/usr/${_arch}/share/info/dir"
   done
 }
-
