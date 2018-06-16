@@ -1,0 +1,18 @@
+pkgbase = breeze-blurred-git
+	pkgdesc = BreezeBlurred is a fork of KDE Breeze window decoration written in Qt C++
+	pkgver = 18.63e91c1
+	pkgrel = 2
+	url = https://github.com/alex47/BreezeBlurred
+	arch = any
+	license = UNKNOWN
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kdecoration
+	depends = qt5-declarative
+	depends = qt5-x11extras
+	source = git+https://github.com/alex47/BreezeBlurred
+	md5sums = SKIP
+
+pkgname = breeze-blurred-git
+
