@@ -23,12 +23,12 @@ makedepends=(
 	"parallel"
 )
 optdepends=(
-	"gnome-shell>=3.18.3"
-	"gnome-flashback>=3.18.2"
-	"budgie-desktop>=10.2.7"
-	"xfce4-session>=4.12.2"
-	"mate-desktop>=1.14.0"
-	"lxde-common>=0.99.1"
+	"gnome-shell"
+	"gnome-flashback"
+	"budgie-desktop"
+	"xfce4-session"
+	"mate-desktop"
+	"lxde-common"
 	"pop-icon-theme-git: Recommended icon theme"
 	"pop-shell-theme-git: Recommended shell theme"
 	"ttf-fira-sans: Recommended font for window titles and interface"
