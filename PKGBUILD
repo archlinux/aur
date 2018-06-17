@@ -7,7 +7,7 @@ pkgname='ros-melodic-bondcpp'
 pkgver='1.8.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-bond
@@ -34,9 +34,13 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="bond_core-release-release-melodic-bondcpp-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bondcpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('efddb54b16d5b2a10b7673832c10cc352bb34354666be2d68b2307ecc742d8e9')
+#_dir="bond_core-release-release-melodic-bondcpp-${pkgver}-${_pkgver_patch}"
+#source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bondcpp/${pkgver}-${_pkgver_patch}.tar.gz")
+#sha256sums=('efddb54b16d5b2a10b7673832c10cc352bb34354666be2d68b2307ecc742d8e9')
+_branch="kinetic-devel"
+_dir=${pkgname}
+source=("${_dir}"::"git+https://github.com/ros/bond_core.git"#branch=${_branch})
+sha256sums=('SKIP')
 
 build() {
   # Use ROS environment variables
@@ -51,7 +55,7 @@ build() {
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake ${srcdir}/${_dir}/bondcpp/ \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \

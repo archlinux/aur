@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-bondcpp
 	pkgdesc = ROS - C++ implementation of bond, a mechanism for checking when another process has terminated.
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/bondcpp
 	arch = any
 	license = BSD
@@ -19,8 +19,8 @@ pkgbase = ros-melodic-bondcpp
 	depends = ros-melodic-roscpp
 	depends = util-linux
 	depends = boost
-	source = ros-melodic-bondcpp-1.8.2-0.tar.gz::https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bondcpp/1.8.2-0.tar.gz
-	sha256sums = efddb54b16d5b2a10b7673832c10cc352bb34354666be2d68b2307ecc742d8e9
+	source = ros-melodic-bondcpp::git+https://github.com/ros/bond_core.git#branch=kinetic-devel
+	sha256sums = SKIP
 
 pkgname = ros-melodic-bondcpp
 
