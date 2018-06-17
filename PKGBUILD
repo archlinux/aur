@@ -2,9 +2,9 @@
 
 pkgname=pakku
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman wrapper with AUR support'
-arch=('x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/kitsunyan/$pkgname"
 license=('GPL3')
 depends=('libcurl.so' 'git')
