@@ -3,7 +3,7 @@
 pkgname=mimegpg
 _srcname=sqwebmail
 _srcdirname=webmail
-pkgver=5.8.3
+pkgver=5.9.2
 pkgrel=1
 pkgdesc="A command-line utility to sign, encrypt or decrypt MIME-formatted e-mail messages using GnuPG. (Extracted from Courier SqWebMail.)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,7 +12,7 @@ url="http://courier-mta.org/sqwebmail/"
 depends=('courier-unicode>=1.3')
 options=(!libtool)
 source=(http://downloads.sourceforge.net/project/courier/${_srcdirname}/${pkgver}/${_srcname}-${pkgver}.tar.bz2)
-sha512sums=('313a8b860e1e55e2f1caded8984e8437b83ccb1e051735532a2d74295583f94be80461cdcaad79d9618b374249b5ef87807cd191c0462e4b18880dd6395d027e')
+sha512sums=('604cc0021e7e84dcd3d0d7f50e7626cdac09e9d8358fba8ba6288d7e84a152218a461d4144f23c7859caa15f5464794804bd4689ab8b0e0f5bf256d780dc921c')
 
 build() {
   for lib in numlib rfc822 rfc2045
