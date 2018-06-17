@@ -1,0 +1,44 @@
+# Maintainer: LambdAurora <aurora42lambda@gmail.com>
+pkgname=lambdacommon-git
+pkgver=v1.5.12.r0.ea42603
+pkgrel=1
+pkgdesc="A library written in C++ with common features."
+arch=('i686' 'x86_64' 'armv7h')
+url="https://github.com/AperLambda/lambdacommon"
+license=('MIT')
+depends=()
+makedepends=('cmake' 'git')
+options=()
+install=
+source=('lambdacommon::git+https://github.com/AperLambda/lambdacommon')
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+	#./autogen.sh
+	#./configure --prefix=/usr
+	cmake .\
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release
+	cmake --build .
+}
+
+check() {
+	cd "$srcdir/${pkgname%-git}"
+	#./tests/lambdacommon_test
+}
+
+package() {
+	cd "$srcdir/${pkgname%-git}"
+	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+	make DESTDIR="$pkgdir/" install
+}

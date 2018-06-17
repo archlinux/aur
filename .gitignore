@@ -1,0 +1,5 @@
+# Ignore file of lambdacommon-git package
+lambdacommon
+lambdacommon*.pkg.tar.xz
+pkg
+src
