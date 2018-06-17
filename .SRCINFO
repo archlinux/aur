@@ -1,0 +1,31 @@
+pkgbase = ros-melodic-ps3joy
+	pkgdesc = ROS - Playstation 3 SIXAXIS or DUAL SHOCK 3 joystick driver.
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = http://www.ros.org/wiki/ps3joy
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-diagnostic-msgs
+	makedepends = ros-melodic-rosgraph
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-rospy
+	makedepends = linuxconsole
+	makedepends = bluez
+	makedepends = python2-pybluez
+	makedepends = libusb-compat
+	depends = ros-melodic-diagnostic-msgs
+	depends = ros-melodic-rosgraph
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-rospy
+	depends = linuxconsole
+	depends = bluez
+	depends = python2-pybluez
+	depends = libusb-compat
+	source = ros-melodic-ps3joy-1.12.0-0.tar.gz::https://github.com/ros-gbp/joystick_drivers-release/archive/release/melodic/ps3joy/1.12.0-0.tar.gz
+	sha256sums = c3b9aa3c6b572091d412fa7e2904b1c799471ba99aed7dd1b906f2b9e35b0f2a
+
+pkgname = ros-melodic-ps3joy
+
