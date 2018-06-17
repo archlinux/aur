@@ -1,6 +1,6 @@
 pkgbase = ps3netsrv
 	pkgdesc = PS3 Net Server (mod by aldostools)
-	pkgver = 1.47.06
+	pkgver = 20170310
 	pkgrel = 1
 	url = https://github.com/aldostools/webMAN-MOD/
 	arch = x86_64

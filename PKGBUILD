@@ -1,7 +1,8 @@
 # Maintainer: nl6720 <nl6720@gmail.com>
 
 pkgname=ps3netsrv
-pkgver=1.47.06
+_wMM_version=1.47.06
+pkgver=20170310
 pkgrel=1
 pkgdesc='PS3 Net Server (mod by aldostools)'
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 backup=("etc/conf.d/${pkgname}")
 source=(
-	"webMAN-MOD-${pkgver}.tar.gz::https://github.com/aldostools/webMAN-MOD/archive/${pkgver}.tar.gz"
+	"webMAN-MOD-${_wMM_version}.tar.gz::https://github.com/aldostools/webMAN-MOD/archive/${_wMM_version}.tar.gz"
 	"${pkgname}.service"
 	"${pkgname}.conf"
 )
@@ -21,22 +22,26 @@ sha512sums=(
 	'c81e3ef6a4bf07cd150b205793ca5a3886cf9d76c1087cc1d1325ca779628c074cfcbe8349b0bda691f61ab4f394d8594af1ed945c7207acc5712057dc5fbe59'
 )
 
+pkgver() {
+	grep -Po 'ps3netsrv build \K[\d]+' "${srcdir}/webMAN-MOD-${_wMM_version}/_Projects_/${pkgname}/main.cpp"
+}
+
 prepare() {
-	cd "${srcdir}/webMAN-MOD-${pkgver}/_Projects_/${pkgname}"
+	cd "${srcdir}/webMAN-MOD-${_wMM_version}/_Projects_/${pkgname}"
 	chmod +x Make.sh
 }
 
 build() {
-	cd "${srcdir}/webMAN-MOD-${pkgver}/_Projects_/${pkgname}"
+	cd "${srcdir}/webMAN-MOD-${_wMM_version}/_Projects_/${pkgname}"
 	./Make.sh
 }
 
 
 package() {
-	install -Dm755 "${srcdir}/webMAN-MOD-${pkgver}/_Projects_/${pkgname}/ps3netsrv" "$pkgdir/usr/bin/ps3netsrv"
+	install -Dm755 "${srcdir}/webMAN-MOD-${_wMM_version}/_Projects_/${pkgname}/ps3netsrv" "$pkgdir/usr/bin/ps3netsrv"
 	install -Dm644 "${srcdir}/${pkgname}.service" "$pkgdir/usr/lib/systemd/system/${pkgname}.service"
 	install -Dm644 "${srcdir}/${pkgname}.conf" "$pkgdir/etc/conf.d/${pkgname}"
-	install -Dm644 "${srcdir}/webMAN-MOD-${pkgver}/_Projects_/${pkgname}/LICENSE.TXT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.TXT"
+	install -Dm644 "${srcdir}/webMAN-MOD-${_wMM_version}/_Projects_/${pkgname}/LICENSE.TXT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.TXT"
 
 echo 'u ps3netsrv - "PS3 Net Server daemon"' |
 	install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
