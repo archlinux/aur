@@ -1,0 +1,5 @@
+src
+pkg
+*.xz
+google-chat-linux
+updateSRCINFO.sh

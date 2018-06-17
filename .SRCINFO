@@ -1,5 +1,5 @@
 pkgbase = google-chat-linux-git
-	pkgdesc = Desktop client for Google Chat
+	pkgdesc = Unofficial electron-based desktop client for Google Chat
 	pkgver = r15.2d1d3c9
 	pkgrel = 1
 	url = https://github.com/robyf/google-chat-linux

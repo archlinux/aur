@@ -2,7 +2,7 @@
 pkgname=google-chat-linux-git
 pkgver=r15.2d1d3c9
 pkgrel=1
-pkgdesc="Desktop client for Google Chat"
+pkgdesc="Unofficial electron-based desktop client for Google Chat"
 arch=('x86_64' 'i686')
 url="https://github.com/robyf/google-chat-linux"
 license=('MIT')
