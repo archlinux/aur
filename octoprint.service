@@ -10,3 +10,4 @@ ExecStart=/usr/lib/octoprint/bin/octoprint-serve
 
 [Install]
 WantedBy=multi-user.target
+
