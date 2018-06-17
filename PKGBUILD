@@ -4,7 +4,7 @@ pkgdesc="ROS - rostopic contains the rostopic command-line tool for displaying d
 url='http://ros.org/wiki/rostopic'
 
 pkgname='ros-melodic-rostopic'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rostopic-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rostopic/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('30d3e4dcc808f1c3e8e1250ffb056d071197a964d23b02b496ff0bf85fec4847')
+sha256sums=('7bb66e8cbee54e173e6757c3f1d78b54927ef11e3441db7299b3a7f79ccc8b82')
 
 build() {
   # Use ROS environment variables
