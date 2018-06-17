@@ -34,5 +34,6 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/sassc-${pkgver}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
   done
 }
