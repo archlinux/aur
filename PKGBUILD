@@ -4,7 +4,7 @@ pkgdesc="ROS - System-wide logging mechanism for messages sent to the /rosout to
 url='http://ros.org/wiki/rosout'
 
 pkgname='ros-melodic-rosout'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosout-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosout/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('fc88eb5c34ebb98537c391eaf9486ded64927f7e42711bdfecfbfcf5e21a680b')
+sha256sums=('c4080999cd791a1286b17039b9ed60db4e92ff87b3c66164a35bd6bc2e51d58a')
 
 build() {
   # Use ROS environment variables
