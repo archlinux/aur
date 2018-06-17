@@ -9,7 +9,7 @@ pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
 url='https://graph-tool.skewed.de'
 license=(GPL3)
-depends=(boost python3 expat python3-scipy python3-numpy cgal cairomm python-cairo)
+depends=(boost python3 expat python3-scipy python-numpy cgal cairomm python-cairo)
 makedepends=(sparsehash cairomm python-cairo autoconf-archive)
 optdepends=('graphviz: graph layout'
 'python-matplotlib: graph drawing')
