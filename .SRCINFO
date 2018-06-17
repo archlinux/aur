@@ -1,0 +1,15 @@
+pkgbase = dallas-git
+	pkgdesc = TI-BASIC compiler written in Go
+	pkgver = 1460109
+	pkgrel = 1
+	url = https://github.com/Mitchell-Riley/dallas
+	arch = x86_64
+	license = unknown
+	makedepends = go
+	provides = dallas
+	conflicts = dallas
+	source = dallas-git::git+https://github.com/Mitchell-Riley/dallas.git
+	sha256sums = SKIP
+
+pkgname = dallas-git
+
