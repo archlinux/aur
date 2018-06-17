@@ -2,28 +2,24 @@
 
 pkgname=lombok-eclipse
 pkgver=1.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Project Lombok integrated to Eclipse installation"
 arch=("any")
 url="http://projectlombok.org"
 license=('MIT')
 makedepends=('java-runtime')
-depends=('eclipse' 'java-runtime')
+depends=('eclipse-java' 'java-runtime')
 install=lombok.install
-source=('lombok.jar'::"https://projectlombok.org/downloads/lombok-${pkgver}.jar")
+source=("https://projectlombok.org/downloads/lombok-${pkgver}.jar")
+sha256sums=('88ed9af526d13a84361cbe1216f815ee78c82c342618ea1a48b6de1acbb9d2b4')
 noextract=("lombok.jar")
-options=(!makeflags)
 
 build() {
-    cd "${srcdir}"
-    java -jar lombok.jar publicApi
+    java -jar lombok-$pkgver.jar publicApi
 }
+
 package() {
-    mkdir -p "${pkgdir}"/usr/lib/eclipse
-    cp "$srcdir"/lombok.jar "${pkgdir}"/usr/lib/eclipse
-    cp "$srcdir"/lombok-api.jar "${pkgdir}"/usr/lib/eclipse
+    install -Dm644 lombok-$pkgver.jar "${pkgdir}"/usr/lib/eclipse/lombok.jar
+    install -Dm644 lombok-api.jar "${pkgdir}"/usr/lib/eclipse/lombok-api.jar
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
-
-sha256sums=('88ed9af526d13a84361cbe1216f815ee78c82c342618ea1a48b6de1acbb9d2b4')
-
-# vim:set ts=2 sw=2 et:
