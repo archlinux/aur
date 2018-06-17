@@ -4,7 +4,7 @@ pkgdesc="ROS - gazebo_ros_control."
 url='http://ros.org/wiki/gazebo_ros_control'
 
 pkgname='ros-melodic-gazebo-ros-control'
-pkgver='2.8.2'
+pkgver='2.8.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -47,7 +47,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-melodic-gazebo_ros_control-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/melodic/gazebo_ros_control/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('092cac290eb014375b7facd7bee2751eebdfd8814e2331667c2f9949c8709626')
+sha256sums=('8aa4fc7be1008a047a8b5e5186fc0aa480c0de92e68fd002ccf03d0aca94fd44')
 
 build() {
   # Use ROS environment variables
