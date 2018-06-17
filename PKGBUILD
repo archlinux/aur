@@ -4,12 +4,13 @@
 _gemname=rake-compiler
 pkgname=ruby-$_gemname
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Rake-based Ruby Extension (C, Java) task generator.'
 arch=(any)
 url='https://github.com/rake-compiler/rake-compiler'
 license=(MIT)
 depends=(ruby)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
