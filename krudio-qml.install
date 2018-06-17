@@ -1,10 +1,10 @@
 #/bin/bash
 
 post_install() {
-ln -s /usr/share/krudio-qml/data/krudio-qml.svg /usr/share/icons/hicolor/48x48/apps/krudio-qml.svg
+
 }
 
 post_remove() {
-rm /usr/share/icons/hicolor/48x48/apps/krudio-qml.svg
+
 }
 
