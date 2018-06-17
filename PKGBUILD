@@ -5,10 +5,10 @@
 
 pkgname=dwarffortress-ironhand
 _pkgname=dwarffortress
-pkgver=0.44.09
-_pkgver=44_09
+pkgver=0.44.10
+_pkgver=44_10
 pkgrel=1
-tilesetver=44.07
+tilesetver=44.10
 pkgdesc="A single-player fantasy game in which you build a dwarven outpost or play an adventurer in a randomly generated world"
 arch=('x86_64' 'i686')
 url="http://www.bay12games.com/dwarves/"
@@ -29,13 +29,13 @@ source=("dwarffortress-unfuck-$pkgver.tar.gz::https://github.com/svenstaro/dwarf
         dwarffortress.png)
 source_x86_64=(http://www.bay12games.com/dwarves/df_"${_pkgver}"_linux.tar.bz2)
 source_i686=(http://www.bay12games.com/dwarves/df_"${_pkgver}"_linux32.tar.bz2)
-sha256sums=('04a00edd5dc662bbc23fefbd5940e381cd8e87a88cc218c063931f0e9807f02c'
+sha256sums=('ebef5dd83b82a0ab27b79668cfb3bcef90300df0b8116e867d211571cb991c42'
             '211eaec6559d4fd5c08341dbed1f27bfab997a57bdf61fd268f9940e244652c5'
             'e79e3d945c6cc0da58f4ca30a210c7bf1bc3149fd10406d1262a6214eb40445a'
-            '51f842626e8af972c260d8ba8b33f1ce60f9d3871c2cf807a0285aeec4ae6c1d'
+            'd9495d7c936c158f2e7fe331835651381ef7446aa992779d48d520450965577e'
             '83183abc70b11944720b0d86f4efd07468f786b03fa52fe429ca8e371f708e0f')
-sha256sums_x86_64=('beb11c4e2757eb2edd8079a18b51e1dc8c9b42ed384cfc7ff6f88637ad9f51c1')
-sha256sums_i686=('484eba290a3316df189ece4bd9317770771f0ec2164ed07d91bc497e5ccbab52')
+sha256sums_x86_64=('e2d69eeff5737a27328294bd607364e25ca910c1bc1d7f146a29ab61e12015b3')
+sha256sums_i686=('d6e411607f211898db23528da3c129382bb38a430af2ae63e3b68883b036ab3d')
 
 conflicts=(dwarffortress dwarffortress-obsidian)
 provides=("dwarffortress=$pkgver")
