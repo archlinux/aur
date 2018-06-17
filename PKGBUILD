@@ -1,6 +1,6 @@
 # Maintainer: kittyhacker101 <kittyhacker101@protonmail.com>
 pkgname=katweb
-pkgver=1.9.7
+pkgver=1.9.8
 pkgrel=1
 pkgdesc="A lightweight static web server and reverse proxy designed for the modern web."
 arch=("any")
