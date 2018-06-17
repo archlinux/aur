@@ -1,48 +1,26 @@
-# Maintainer: David Adler <david dot jo dot adler at gmail dot com>
-pkgname=jm2cv-git
+# Maintainer: David Adler <d dot adler at posteo dot de>
+_pkgname=jm2cv
+pkgname=$_pkgname-git
 pkgver=20130518
-pkgrel=1
+pkgrel=2
 pkgdesc="converts between JACK MIDI and CV control voltage"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://git.fuzzle.org/cgit/jm2cv.git/"
 license=('GPL')
 depends=('jack')
 provides=('jm2cv')
 conflicts=('jm2cv')
-
-_gitroot="http://git.fuzzle.org/cgit/jm2cv.git"
-_gitname="jm2cv"
-
+source=("$_pkgname::git+http://git.fuzzle.org/cgit/jm2cv.git")
+md5sums=('SKIP')
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
-
+  cd "$srcdir/$_pkgname"
   cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" .
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build" 
+  cd "$srcdir/$_pkgname" 
   make install
 }
 
-# vim:set ts=2 sw=2 et:
