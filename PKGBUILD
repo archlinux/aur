@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides ROS plugins that offer message and service publishers fo
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-melodic-gazebo-ros'
-pkgver='2.8.2'
+pkgver='2.8.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -48,7 +48,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-melodic-gazebo_ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/melodic/gazebo_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3f4ca2c5c3ee6786465adb44acc4f3aa163355214d84dc228e2e9080e6d50c44')
+sha256sums=('757d97c83c95522b07f56a68e1181552ed76b8992e9a0c955a30478790f0a191')
 
 build() {
   # Use ROS environment variables
