@@ -7,7 +7,7 @@
 pkgname=root-extra
 _pkgname=root
 pkgver=6.14.00
-pkgrel=1
+pkgrel=2
 provides=('root' 'root-extra')
 conflicts=('root')
 pkgdesc='C++ data analysis framework and interpreter from CERN with extra features enabled.'
@@ -16,6 +16,7 @@ url='http://root.cern.ch'
 license=('LGPL2.1')
 makedepends=('cmake')
 depends=('cfitsio'
+         'cern-vdt'
          'fcgi'
          'fftw'
          'ftgl'
