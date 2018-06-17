@@ -12,7 +12,6 @@ optdepends=('jack: for JACK I/O support')
 makedepends=('cython' 'git')
 source=("friture::git+https://github.com/tlecomte/friture.git"
 friture.desktop)
-md5sums=('866407aefd359ae16015f4ce6a2cd212')
 
 build() {
 	cd friture
