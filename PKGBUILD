@@ -2,7 +2,7 @@
 
 _pkgname=bazarr
 pkgname=$_pkgname-git
-pkgver=r489.d130adf
+pkgver=r492.e94819c
 pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
@@ -41,7 +41,7 @@ source=('git+https://github.com/morpheus65535/bazarr'
 sha256sums=('SKIP'
             'e3c57f1a1d9ddd87d097efe2df5148f10de79c445fe6eee158f64b4335f3e174'
             '92fd48cbd7e5fe3a0388bbe756a52098fc461ef2dc87d9e886452e4f15acdcdc'
-            '2087276827bb090edf8743d5debfcc22a0c434b36d3b680bbea85dbd9a3b4539')
+            '7f75f2c2634524e90b1dea7649fceceb57949efa9db365cfa9e29e58690def4e')
 
 pkgver() {
   cd "$_pkgname"
@@ -52,7 +52,8 @@ package() {
   install -d -m 755 "${pkgdir}/usr/lib/bazarr"
   cp -dpr --no-preserve=ownership "${srcdir}/bazarr" "${pkgdir}/usr/lib/"
   rm -rf ${pkgdir}/usr/lib/bazarr/.git
-  rm -f ${pkgdir}/usr/lib/bazarr/.gitignore ${pkgdir}/usr/lib/bazarr/.gitattributes
+  find ${pkgdir}/usr/lib/bazarr/ -name '*.gitignore' -delete
+  find ${pkgdir}/usr/lib/bazarr/ -name '*.gitattributes' -delete
 
   install -D -m 644 "${srcdir}/bazarr.service" "${pkgdir}/usr/lib/systemd/system/bazarr.service"
   install -D -m 644 "${srcdir}/bazarr.sysusers" "${pkgdir}/usr/lib/sysusers.d/bazarr.conf"
