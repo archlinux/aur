@@ -1,16 +1,15 @@
 pkgname=krudio-qml
 pkgver=20180618
-_git=75623dbeb174d5a600a51fc17d890cc1c2132160
+_git=bf8ec8fbe0a64012c647a2cfad39208e160a292c
 _repo=krudio-qml
-pkgrel=6
+pkgrel=7
 pkgdesc="Simple Qt5 QML radio player"
 arch=('i686' 'x86_64')
 url="https://github.com/loast/${_repo}"
 license=('MIT')
 makedepends=('git' 'qt5-multimedia' 'qt5-quickcontrols2' 'hicolor-icon-theme')
 depends=('git' 'qt5-multimedia' 'qt5-quickcontrols2' 'hicolor-icon-theme')
-source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-install=$pkgname.install
+source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz") 
 md5sums=('SKIP')
 
 package() {
