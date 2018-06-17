@@ -1,14 +1,14 @@
 # Maintainer: Spyhawk
 
 pkgname=zypper-git
-pkgver=1.11.16.4.g9565572
-pkgrel=2
+pkgver=1.14.6.8.g31545c99
+pkgrel=1
 pkgdesc="Command line software manager using libzypp"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/zypper"
 license=('GPL')
 depends=('libzypp-git' 'libxml2' 'procps' 'readline' 'augeas')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cmake' 'boost' 'asciidoc')
 provides=('zypper' 'apt')
 conflicts=('zypper' 'apt')
 source=('git+https://github.com/openSUSE/zypper.git'
