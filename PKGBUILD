@@ -8,6 +8,7 @@ url="https://www.dartlang.org/tools/sdk/archive"
 license=('custom')
 depends=('unzip')
 conflicts=('dart')
+provides=('dart')
 source=("https://storage.googleapis.com/dart-archive/channels/dev/release/${pkgver//_/-}/sdk/dartsdk-linux-x64-release.zip")
 sha256sums=('ad310cea725c1dbbc22779cbceeda4f0293408fcdbb1183deaccf4cad473496a')
 
@@ -21,8 +22,4 @@ package() {
   ln -s /opt/$pkgname/bin/* $pkgdir/usr/bin/
 
   chmod -R ugo+rX $pkgdir/opt
-  
-  printf "\n#################################### \n\n"
-  printf "\tMake sure to add '/opt/dart-sdk-dev/bin' to your PATH!\n"
-  printf "\n#################################### \n\n"
 }
