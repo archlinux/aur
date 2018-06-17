@@ -3,7 +3,7 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=56.2.0
+pkgver=56.2.1
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -24,8 +24,8 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=d27e63b27954615324864f3f9f7088a84ad60ebd
-source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
+_commit=04c6debaf8d1391ea48b3872019a3aa38a1f211e
+source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
         no-crmf.diff
@@ -40,8 +40,6 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
         jack-system-ports.patch
         "fix_crash_e10s_upload_cancel.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/fix_crash_e10s_upload_cancel.patch"
         wifi-disentangle.patch
-        0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
-        "mozilla-ucontext-$_patchrev.patch::$_patchurl/mozilla-ucontext.patch"
         no-plt.diff
         "unity-menubar-$pkgver.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox.xenial/download/1222/unitymenubar.patch-20130215095938-1n6mqqau8tdfqwhg-1/unity-menubar.patch"
         .gitignore)
@@ -60,8 +58,6 @@ sha256sums=('SKIP'
             'be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c'
             '73e13bf689838e4b27cdb08f040fbafb308aaf2990f5e1bf193a69a9dd736794'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
-            'aba767995ffb1a55345e30aaba667f43d469e23bd9b1b68263cf71b8118acc96'
-            '96d9accb74e19f640e356572b3c0914c6be867cbdf351392b0cb5c00161ee012'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
             '5903f99dce010279e2a2f0e56d98e756c5abf9a57e27df5e2239076038868d3d'
             'e7ae75f0d1305066a5ba7b60a513d812c769beadaf890a13d1433c9f93242166')
@@ -82,17 +78,10 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i ../no-crmf.diff
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
-  patch -Np1 -i ../mozilla-ucontext-$_patchrev.patch
   
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i ../wifi-disentangle.patch
   patch -Np1 -i ../wifi-fix-interface.patch
-  
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1384062
-  patch -Np1 -i ../0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
   
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
   patch -Np1 -i ../no-plt.diff
