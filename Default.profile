@@ -9,6 +9,7 @@ s0_transparent_manual_only = false
 
 [composite]
 s0_detect_refresh_rate = false
+s0_refresh_rate = 60
 
 [place]
 s0_viewport_matches = class=Firefox | class=Epiphany;class=Io.elementary.files;class=Io.elementary.videos;class=Io.elementary.terminal;
@@ -26,6 +27,7 @@ s0_left_edge_threshold = 100
 s0_right_edge_threshold = 100
 s0_top_edge_threshold = 100
 s0_bottom_edge_threshold = 100
+s0_animation_duration = 250
 
 [shift]
 s0_mipmaps = true
@@ -59,19 +61,19 @@ s0_draw_bottom = false
 s0_opacity = 90
 s0_snapback_semimaximized = false
 s0_lazy_positioning = true
-s0_mode = 1
 
 [firepaint]
 s0_initiate_button = Button8
 s0_clear_button = Button2
 s0_bg_brightness = 100.000000
+s0_fire_size = 6.000000
 
 [resize]
 s0_mode = 1
 
 [obs]
-s0_opacity_matches = class=Io.elementary.files | class=Io.elementary.terminal | class=Firefox | class=Epiphany;
-s0_opacity_values = 90;0;
+s0_opacity_matches = class=Io.elementary.files | class=Io.elementary.terminal | class=Epiphany | class=Firefox | class=Transmission-gtk;class=Pavucontrol | class=Ccsm | class=Switchboard | class=Dconf-editor;
+s0_opacity_values = 90;90;0;
 
 [gnomecompat]
 s0_run_command_terminal_key = <Control><Alt>t
@@ -86,7 +88,7 @@ s0_title_enabled = false
 s0_texture_filter = 2
 
 [core]
-s0_active_plugins = core;composite;opengl;compiztoolbox;decor;firepaint;gnomecompat;grid;mousepoll;move;neg;obs;place;regex;resize;staticswitcher;text;thumbnail;wallpaper;winrules;workspacenames;commands;cube;rotate;cubeaddon;
+s0_active_plugins = core;composite;opengl;decor;compiztoolbox;mousepoll;text;cube;place;grid;commands;regex;workspacenames;wallpaper;move;firepaint;resize;obs;gnomecompat;thumbnail;neg;staticswitcher;rotate;winrules;cubeaddon;expo;
 s0_focus_prevention_level = 2
 
 [decor]
@@ -128,4 +130,6 @@ s0_rotate_right_button = Button7
 [winrules]
 s0_above_match = class=Wingpanel | class=Plank
 s0_below_match = class=Io.elementary.videos | class=Firefox | class=Epiphany | class=Io.elementary.files | class=Io.elementary.terminal
+s0_fullscreen_match = class=Io.elementary.videos
+s0_maximize_match = class=Epiphany | class=Io.elementary.files | class=Io.elementary.terminal | class=Firefox
 
