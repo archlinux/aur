@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Package Tool."
 url='http://wiki.ros.org/rospack'
 
 pkgname='ros-melodic-rospack'
-pkgver='2.5.0'
+pkgver='2.5.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -20,7 +20,7 @@ makedepends=('cmake' 'ros-build-tools'
   boost
   python2)
 
-ros_depends=()
+ros_depends=(ros-melodic-ros-environment)
 depends=(${ros_depends[@]}
   tinyxml2
   python2-rosdep
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rospack-release-release-melodic-rospack-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/melodic/rospack/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('132fabb7015379f5ffaea05cd6cd737848ebf6edb7b584d147be2793005d3d4b')
+sha256sums=('38312bfde519803221a3dd73f72349b151e8c9e4288064f3ff2627b283ffef22')
 
 build() {
   # Use ROS environment variables
