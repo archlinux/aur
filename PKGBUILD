@@ -4,7 +4,7 @@ pkgdesc="ROS - cpp_common contains C++ code for doing things that are not necess
 url='http://www.ros.org/wiki/cpp_common'
 
 pkgname='ros-melodic-cpp-common'
-pkgver='0.6.10'
+pkgver='0.6.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-melodic-cpp_common-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/cpp_common/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('622f8dd48003545e16c3512d21e59d04a597076c7cb08428a81fe1c9d0ec6ce1')
+sha256sums=('475ea3025290073d5956d8a73e2b8ecb810bb3351b3731df7cbba63324e864af')
 
 build() {
   # Use ROS environment variables
