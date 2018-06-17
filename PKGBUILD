@@ -4,7 +4,7 @@ pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic 
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-melodic-gazebo-plugins'
-pkgver='2.8.2'
+pkgver='2.8.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -73,7 +73,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-melodic-gazebo_plugins-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/melodic/gazebo_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('faa163c8d6c1686dbf8fcacff3a775dd4229e0f0b266700caa65ab7f878a2093')
+sha256sums=('1ab1e508c9a6898db067493087bf438e726cced9f4024b6f1bb36c644f9e4950')
 
 build() {
   # Use ROS environment variables
