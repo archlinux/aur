@@ -1,7 +1,7 @@
 pkgbase = zypper-git
 	pkgdesc = Command line software manager using libzypp
-	pkgver = 1.11.16.4.g9565572
-	pkgrel = 2
+	pkgver = 1.14.6.8.g31545c99
+	pkgrel = 1
 	url = https://github.com/openSUSE/zypper
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = zypper-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
+	makedepends = asciidoc
 	depends = libzypp-git
 	depends = libxml2
 	depends = procps
