@@ -1,7 +1,7 @@
 pkgbase = krudio-qml
 	pkgdesc = Simple Qt5 QML radio player
 	pkgver = 20180618
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/loast/krudio-qml
 	install = krudio-qml.install
 	arch = i686
