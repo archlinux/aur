@@ -1,3 +1,8 @@
+3.0
+  * Support for blacklisting applications
+	* Support for keeping images in history
+	* Fix exception with clear commands
+
 2.1
   * Support ~ expansion in config file
 
