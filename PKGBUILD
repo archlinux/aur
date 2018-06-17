@@ -3,7 +3,7 @@
 
 pkgname=nteract-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.8.4
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Interactive literate coding notebook"
 url='https://nteract.io'
@@ -20,7 +20,7 @@ install=$pkgname.install
 
 source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v${pkgver}/nteract_${pkgver}_amd64.deb"
         "LICENSE")
-sha256sums=('7aa3184760cb6882d3319f94acf7c13e06de96fe3a2f3200e96f99e11a19b51e'
+sha256sums=('3e98995dbfbbbf3a6f82a08ff67d20b625fdff43f773b0c40fa9b17ace9f73fd'
             '866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71')
 
 package() {
