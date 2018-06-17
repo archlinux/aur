@@ -1,0 +1,19 @@
+pkgbase = plasma5-applets-pk-updates
+	pkgdesc = Plasma applet for software updates using PackageKit
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/KDE/plasma-pk-updates
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = packagekit-qt5
+	depends = packagekit
+	depends = plasma-workspace
+	depends = kdoctools
+	depends = kdesignerplugin
+	source = https://github.com/KDE/plasma-pk-updates/archive/v0.3.2.tar.gz
+	sha256sums = aec868f4c1b296d079fdf13d6ebada6e3d4c3b8dcfbdb00bb66c91f606b80763
+
+pkgname = plasma5-applets-pk-updates
+
