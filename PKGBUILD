@@ -2,8 +2,8 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r355.69a0e08
-pkgrel=2
+pkgver=r358.5a038ca
+pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
@@ -33,7 +33,7 @@ sha256sums=('SKIP'
             '7f972d79b4d72f7b274a96e1a5150cba0e3869ad85215ae01ad2bc19802cdbb9'
             '21e95aec3fbb920f3b8ef34b00bf4fc99f431e1837f84f020d5d00c4e3aaca0b'
             'b1902c1d44ac546df63cd0224a7d2ef2cb6394ca556512c30c370d387db7bbab'
-            'da77ed83459b7d49056f35b9de1dd8b487b3c51234911f43b2fa401a38b6dd4a')
+            '6f9a37b8d0641761c9a4f7dcadb46d063e04504d7af95af5744a60c2c424aa7f')
 
 pkgver() {
   cd wingpanel

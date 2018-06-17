@@ -1,7 +1,7 @@
-diff --git a/wingpanel/schemas/org.pantheon.desktop.wingpanel.gschema.xml b/wingpanel-qq/schemas/org.pantheon.desktop.wingpanel.gschema.xml
+diff --git a/wingpanel/schemas/io.elementary.desktop.wingpanel.gschema.xml b/wingpanel-qq/schemas/io.elementary.desktop.wingpanel.gschema.xml
 index c81abd5..890e277 100644
---- a/wingpanel/schemas/org.pantheon.desktop.wingpanel.gschema.xml
-+++ b/wingpanel-qq/schemas/org.pantheon.desktop.wingpanel.gschema.xml
+--- a/wingpanel/schemas/io.elementary.desktop.wingpanel.gschema.xml
++++ b/wingpanel-qq/schemas/io.elementary.desktop.wingpanel.gschema.xml
 @@ -6,5 +6,15 @@
  			<summary>Sets if the panel uses transparency.</summary>
  			<description>Disable this to provide higher contrasts and make indicators better readable.</description>
@@ -194,5 +194,5 @@ index 3bcd0a7..eeecbb8 100644
 +        public string autohide { get; set; }
 +
          public PanelSettings () {
-             base ("org.pantheon.desktop.wingpanel");
+             base ("io.elementary.desktop.wingpanel");
          }
