@@ -1,7 +1,7 @@
 pkgbase = pymacs
 	pkgdesc = Interface between Emacs Lisp and Python.
 	pkgver = 0.25
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pymacs.progiciels-bpi.ca/
 	install = pymacs.install
 	arch = any
