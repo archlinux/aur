@@ -5,10 +5,12 @@ CFLAGS = -g -Wall --std=c99 -D_FORTIFY_SOURCE=2 -O2 \
 -Wswitch-default -Wswitch-enum -Wcast-align -Wpointer-arith \
 -Wbad-function-cast -Wstrict-prototypes -Winline \
 -Wundef -Wnested-externs -Wcast-qual -Wunreachable-code \
--ggdb3 -fno-omit-frame-pointer -ffloat-store -fno-common -fstrict-aliasing
-OBJECTS = main.o api.o portfolio.o rc4.o string-tick.o info.o
-LIBS = -lcurl -ljson-c -lm -lncurses -lpthread
+-ggdb3 -fno-omit-frame-pointer -ffloat-store -fno-common -fstrict-aliasing \
+`pkg-config --cflags gtk+-3.0` -Wl,--export-dynamic
+OBJECTS = main.o api.o portfolio.o rc4.o string-tick.o info.o gtk_win.o
+LIBS = -lcurl -ljson-c -lm -lncurses -lpthread `pkg-config --libs gtk+-3.0 gmodule-export-2.0`
 BIN = tick
+GLADE_FILES = window_main
 DESTDIR = /usr
 
 $(BIN): $(OBJECTS)
@@ -18,10 +20,12 @@ install: $(BIN)
 	install -Dm755 $(BIN) $(DESTDIR)/bin/$(BIN)
 	install -Dm644 LICENSE $(DESTDIR)/share/licenses/$(BIN)/LICENSE
 	install -Dm644 $(BIN).1.gz $(DESTDIR)/share/man/man1/$(BIN).1.gz
+	install -Dm644 $(GLADE_FILES).glade $(DESTDIR)/share/$(BIN)/$(GLADE_FILES).glade
 uninstall:
 	-rm $(DESTDIR)/bin/$(BIN)
 	-rm $(DESTDIR)/share/licenses/$(BIN)/LICENSE
 	-rm $(DESTDIR)/share/man/man1/$(BIN).1.gz
+	-rm $(DESTDIR)/share/$(BIN)/$(GLADE_FILES).glade
 clean:
 	-rm $(BIN) $(OBJECTS)
 	-gunzip $(BIN).1.gz
