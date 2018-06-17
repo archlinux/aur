@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="Blocks based status bar for X window managers"
 arch=("i686" "x86_64")
 url="https://gitlab.com/sambazley/blockbar"
+license=("ZLIB")
 makedepends=("cmake")
 depends=("cairo" "pango" "xorg-xrandr")
 source=("git+https://gitlab.com/sambazley/blockbar.git")
@@ -16,18 +17,20 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir"/blockbar
+    cd "$srcdir/blockbar"
     git submodule init
     git submodule update
 }
 
 build() {
-    cd "$srcdir"/blockbar
+    cd "$srcdir/blockbar"
     cmake .
     make
 }
 
 package() {
-    install -Dm755 blockbar/blockbar "$pkgdir"/usr/bin/blockbar
-    install -Dm755 blockbar/bbc "$pkgdir"/usr/bin/bbc
+    install -Dm755 blockbar/blockbar "$pkgdir/usr/bin/blockbar"
+    install -Dm755 blockbar/bbc "$pkgdir/usr/bin/bbc"
+
+    install -Dm644 blockbar/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -5,6 +5,7 @@ pkgbase = blockbar-git
 	url = https://gitlab.com/sambazley/blockbar
 	arch = i686
 	arch = x86_64
+	license = ZLIB
 	makedepends = cmake
 	depends = cairo
 	depends = pango
