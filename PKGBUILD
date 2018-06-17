@@ -6,10 +6,9 @@ arch=(any)
 url="https://github.com/snwh/paper-icon-theme"
 license=('CC BY-SA 4.0')
 depends=('gtk-update-icon-cache')
-makedepends=('git' 'automake')
+makedepends=('git' 'meson')
 provides=('paper-icon-theme')
 source=("$pkgname"::'git+https://github.com/snwh/paper-icon-theme.git')
-# Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 
 pkgver() {
