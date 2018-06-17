@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-python2
 	pkgdesc = A high-level scripting language (mingw-w64)
-	pkgver = 2.7.14
+	pkgver = 2.7.15
 	pkgrel = 1
 	url = http://www.python.org/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = mingw-w64-python2
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
 	makedepends = mingw-w64-configure
-	makedepends = python2>=2.7.14
+	makedepends = python2>=2.7.15
 	makedepends = wine
 	depends = mingw-w64-crt
 	depends = mingw-w64-expat
@@ -22,10 +22,10 @@ pkgbase = mingw-w64-python2
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = http://www.python.org/ftp/python/2.7.14/Python-2.7.14.tar.xz
+	source = http://www.python.org/ftp/python/2.7.15/Python-2.7.15.tar.xz
 	source = patches.tar.gz
-	sha1sums = cf146474fc988b4b6b53fdd81b71c2815873b469
-	sha1sums = fa7bedb476ef593e87f2613d3dc029a1174c350e
+	sha1sums = f99348a095ec4a6411c84c0d15343d11920c9724
+	sha1sums = 7bd3d920902d6edfcab4605e5e056342131f1771
 
 pkgname = mingw-w64-python2
 
