@@ -1,5 +1,5 @@
 pkgname=paper-icon-theme-git
-pkgver=749.c153195c
+pkgver=800.7860fba8
 pkgrel=1
 pkgdesc="Paper is an icon theme for GTK based desktops and fits perfectly the paper-gtk-theme"
 arch=(any)
@@ -8,26 +8,26 @@ license=('CC BY-SA 4.0')
 depends=('gtk-update-icon-cache')
 makedepends=('git' 'automake')
 provides=('paper-icon-theme')
-source=("$pkgname"::'git+https://github.com/snwh/paper-icon-theme.git'
-	"configure.ac.patch")
+source=("$pkgname"::'git+https://github.com/snwh/paper-icon-theme.git')
 # Because the sources are not static, skip Git checksum:
-md5sums=('SKIP'
-	 '1aeca8418ee2f609ca5d86557ffcad89')
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
+prepare() {
+    cd "${pkgname}"
+    meson build --prefix=/usr
+}
+
 build() {
-	cd $srcdir/$pkgname
-	patch configure.ac $srcdir/configure.ac.patch
-	./autogen.sh --prefix=/usr
-	make
+    cd "${pkgname}/build"
+    ninja
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
-  rm -f "${pkgdir}/usr/share/icons/gnome/icon-theme.cache"
+    cd "${pkgname}/build"
+    DESTDIR="$pkgdir" ninja install
 }
