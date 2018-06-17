@@ -1,0 +1,30 @@
+pkgbase = nextcloud-desktop-git
+	pkgdesc = Nextcloud desktop client
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://nextcloud.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qtkeychain
+	depends = qt5-webkit
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = qt5-webengine
+	optdepends = python2-nautilus: integration with Nautilus
+	optdepends = nemo-python: integration with Nemo
+	provides = nextcloud-client
+	conflicts = mirall-git
+	conflicts = owncloud-client
+	conflicts = owncloud-client-ngs
+	conflicts = owncloud-client-git
+	conflicts = nextcloud-client
+	conflicts = nextcloud-client-git
+	conflicts = nextcloud-desktop
+	source = nextcloud-desktop-git::git+https://github.com/nextcloud/desktop.git
+	sha256sums = SKIP
+
+pkgname = nextcloud-desktop-git
+
