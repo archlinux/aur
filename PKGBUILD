@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Master implementation."
 url='http://ros.org/wiki/rosmaster'
 
 pkgname='ros-melodic-rosmaster'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosmaster-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosmaster/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('fa5af4742e0df4c0e4ad0a8695337dd32190083912e7d3759b7d1a403a71e00d')
+sha256sums=('c9f77088cdb60d9f70456b39bdd8366e85cab6659e2e6c792d4159c5adda52e9')
 
 build() {
   # Use ROS environment variables
