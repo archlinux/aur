@@ -1,0 +1,13 @@
+src/*
+pkg/*
+*.tar.*
+*.t?z
+psi-plus-l10n/*
+psi-plus-resources/*
+psi-plus-snapshots/*
+iris/*
+libpsi/*
+plugins/*
+psi/*
+psi-plus/*
+
