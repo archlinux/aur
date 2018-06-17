@@ -1,10 +1,11 @@
 [Desktop Entry]
+Name=PhpStorm EAP
 Version=1.0
 Type=Application
-Name=PhpStorm-EAP
 Exec="/opt/phpstorm-eap/bin/phpstorm.sh" %f
 Icon=phpstorm-eap
-Comment=Lightweight and Smart PHP IDE 30-day free trial
+Comment=Lightweight and Smart PHP IDE
 Categories=Development;IDE;
 Terminal=false
+StartupNotify=true
 StartupWMClass=jetbrains-phpstorm
