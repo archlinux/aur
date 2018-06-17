@@ -3,8 +3,9 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=vbam-git
-pkgver=2.303.g997b9757
+pkgver=2.0.2.r81.g9222894c
 pkgrel=1
+epoch=1
 pkgdesc='Nintendo Game Boy Advance emulator'
 arch=('i686' 'x86_64')
 url='https://github.com/visualboyadvance-m/visualboyadvance-m'
@@ -22,7 +23,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd vbam
-  git describe | perl -pe 'tr/-/./; s/^\D+//'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
