@@ -9,6 +9,7 @@ pkgbase = qtwilist-git
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = streamlink
+	depends = hicolor-icon-theme
 	provides = qtwilist
 	conflicts = qtwilist
 	source = git+https://github.com/npmiller/qtwilist.git
