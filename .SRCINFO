@@ -1,0 +1,14 @@
+pkgbase = libviperfx-nonfree-bin
+	pkgdesc = ViPER FX core binary library (non free)
+	pkgver = r11.6f7d0da
+	pkgrel = 1
+	url = https://github.com/vipersaudio/viperfx_core_binary
+	arch = x86_64
+	license = custom
+	provides = libviperfx
+	conflicts = libviperfx
+	source = git+https://github.com/vipersaudio/viperfx_core_binary.git
+	sha256sums = SKIP
+
+pkgname = libviperfx-nonfree-bin
+
