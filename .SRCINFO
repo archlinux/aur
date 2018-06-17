@@ -8,7 +8,6 @@ pkgbase = weka
 	arch = any
 	license = GPL
 	makedepends = java-environment
-	makedepends = gif2png
 	depends = java-runtime
 	source = http://downloads.sourceforge.net/sourceforge/weka/weka-3-8-2.zip
 	source = weka.sh
