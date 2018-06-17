@@ -4,7 +4,7 @@ pkgdesc="ROS - Hardware Interface base class."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-melodic-hardware-interface'
-pkgver='0.14.2'
+pkgver='0.15.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_control-release-release-melodic-hardware_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/melodic/hardware_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2906fa3e8dcd14c18ab30d2ce486f734b7805ea0469c536f17a09594fe1cf403')
+sha256sums=('2103a99aee183e5c54c23f9c42859759ddc525b6012b49134c500da7f4828970')
 
 build() {
   # Use ROS environment variables
