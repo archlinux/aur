@@ -1,19 +1,24 @@
-# Maintainer: Greg Greenaae <ggreenaae@gmail.com>
+# Contributor: Doug Newgard <scimmia at archlinux dot org>
+# Contributor: Greg Greenaae <ggreenaae@gmail.com>
+
 pkgname=beersmith2
 pkgver=2.3.12
-pkgrel=1
-pkgdesc="BeerSmith features graphical recipe design, over a dozen standalone brewing tools, a beer style guide, inventory management, calendar and integrated shopping list."
-arch=(x86_64)
-url="http://www.beersmith.com"
-license=('unknown')
-depends=(webkit2gtk)
-source_x86_64=("http://s3.amazonaws.com/beersmith2-3/BeerSmith-2.3.12_amd64.deb")
-md5sums_x86_64=('b45e81e8187879820c0a2c6fdf75894e')
+_series=${pkgver%.*} _minor=${_series##*.} _major=${_series%%.*}
+pkgrel=4
+pkgdesc='Complete software suite for brewers'
+arch=('x86_64')
+url='https://beersmith.com'
+license=('commercial')
+source_x86_64=("https://s3.amazonaws.com/beersmith$_major-$_minor/BeerSmith-${pkgver}_amd64.deb")
+sha256sums_x86_64=('2b67b7c232e2b0a9a6e08826c33ea0e0c02772b0ffa542bbdeb8fa7d9706f5e1')
 
 package() {
-  msg2 "Extracting the data.tar.gz..."
-  tar -xJf data.tar.xz -C "$pkgdir/"
+  depends=('cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2'
+           'libsm' 'libx11' 'libxxf86vm' 'libpng12' 'pango' 'webkitgtk2' 'zlib')
 
-  msg2 "Removing unnecessities (e.g. etc)..."
-  rm -r "$pkgdir"/etc
+  bsdtar -xf data.tar.xz -C "$pkgdir"
+
+  rm -r "$pkgdir"{/etc/,/usr/share/menu/}
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -sr "$pkgdir/usr/share/BeerSmith$_major/license.rtf" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
