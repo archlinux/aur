@@ -3,15 +3,15 @@
 pkgname=minizip-git
 _pkgname=minizip
 epoch=2
-pkgver=1.2.11
+pkgver=2.3.3
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 url="https://github.com/nmoinvaz/minizip"
-depends=('glibc')
+depends=('glibc' 'libbsd' 'zlib')
 makedepends=('git' 'cmake')
 conflicts=('minizip')
-source=("git+https://github.com/nmoinvaz/minizip.git")
+source=("git+https://github.com/nmoinvaz/minizip.git#commit=7bdfbf4")
 sha256sums=('SKIP')
 
 build() {
