@@ -1,5 +1,5 @@
 pkgname=psi-plus-full
-pkgver=1.3.373.g40ef6303
+pkgver=1.3.384
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client. Built with all plugins, translations, skins and extras"
 url="https://psi-plus.com"
@@ -50,8 +50,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-    cd psi
-    git describe --long --tags | sed 's/^v//;s/-/./g'
+  cat "${srcdir}/psi/version" | cut -d ' ' -f 1
 }
 
 prepare() {
