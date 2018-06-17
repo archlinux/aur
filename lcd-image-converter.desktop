@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=LCD Image Converter
+Comment=Tool to create bitmaps and fonts for embedded applications.
+Exec=/usr/bin/lcd-image-converter
+Icon=lcd-image-converter
+Type=Application
+StartupNotify=false
