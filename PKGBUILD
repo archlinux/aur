@@ -5,10 +5,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20180405
+pkgver=4.0.0v20180616
 _pkgver=4.0.0
-_snapshot_=20180405
-_snapver_=0243
+_snapshot_=20180616
+_snapver_=0251
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -18,7 +18,7 @@ arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'libtiger' 'lua'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
-         'libmpeg2' 'xcb-util-keysyms' 'mesa' 'libtar' 'libxinerama' 'libsecret'
+         'libmpeg2' 'xcb-util-keysyms' 'mesa' 'libtar' 'libxinerama' 'libxkbcommon' 'libsecret'
          'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
          'wayland-protocols')
@@ -26,7 +26,7 @@ makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'flac' 'kdelibs' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
              'libmtp' 'libmicrodns' 'libdvdcss' 'smbclient'
-             'vcdimager' 'libssh2' 'mesa' 'protobuf' 'opencv' 'libnfs' 'mpg123'
+             'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
              'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng'
              'libjpeg-turbo' 'libx265.so' 'libx264.so' 'zvbi' 'libass'
@@ -34,7 +34,7 @@ makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'libsamplerate' 'libsoxr' 'lirc' 'libgoom2' 'projectm'
              'chromaprint'
 
-             'libfdk-aac' 'portaudio' 'sidplay2-libs' 'daala-git' 'sndio')
+             'libfdk-aac' 'portaudio' 'sidplay2-libs' 'sndio')
 optdepends=('avahi: service discovery using bonjour protocol'
             'gst-plugins-base-libs: for libgst plugins'
             'libdvdcss: decoding encrypted DVDs'
@@ -56,7 +56,6 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'ttf-freefont: subtitle font '
             'ttf-dejavu: subtitle font'
             'libssh2: sftp access'
-            'opencv: opencv video'
             'libnfs: NFS access'
             'mpg123: mpg123 codec'
             'protobuf: chromecast streaming'
@@ -97,13 +96,11 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'ncurses: ncurses interface'
             'libnotify: notification plugin'
             'gtk3: notification plugin'
-
             'libfdk-aac: FDK AAC codec'
             'portaudio: portaudio support'
             'vcdimager: navigate VCD with libvcdinfo'
             'schroedinger: schroedinger codec support'
             'sidplay2-libs: for C64 sid demuxer'
-            'daala-git: for Daala video support'
             'sndio: for OpenBSD sndio audio output')
 conflicts=("${_appname_}-plugin" "${_appname_}")
 provides=("${_appname_}")
@@ -125,7 +122,7 @@ prepare() {
   ./bootstrap
 
   patch -Np1 -i "${srcdir}/0001-lua-fix-build-using-lua-5.3.patch"
-  patch -Np1 -i "${srcdir}/0002-Fix-compatibility-with-OpenCV-3.4.1.patch"
+  #patch -Np1 -i "${srcdir}/0002-Fix-compatibility-with-OpenCV-3.4.1.patch"
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
   sed 's|whoami|echo builduser|g' -i configure
@@ -137,7 +134,7 @@ build() {
 
   export CFLAGS+=" -I/usr/include/samba-4.0" 
   export CPPFLAGS+=" -I/usr/include/samba-4.0" 
-  export CXXFLAGS+=" -std=gnu++11"
+  export CXXFLAGS+=" -std=c++11"
   export LUAC=/usr/bin/luac
   export LUA_LIBS="`pkg-config --libs lua`"
   export RCC=/usr/bin/rcc-qt5
@@ -153,7 +150,7 @@ build() {
               --enable-dvdread \
               --enable-dvdnav \
               --enable-bluray \
-              --enable-opencv \
+              --disable-opencv \
               --enable-smbclient \
               --enable-sftp \
               --enable-nfs \
@@ -233,7 +230,7 @@ build() {
               --enable-vlc \
               \
               --libexecdir=/usr/lib \
-              --enable-daala \
+              --disable-daala \
               --enable-fdkaac
   make V=1
 }
@@ -258,7 +255,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('a53d8d44c461d21c945f2ce80829c1139e38ff3ece3a576efaed74535802757d'
+sha256sums=('53de98bfed89eec7c43ce2ac217177a55ffee8f160ec1ecce1f3088ad5779c07'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '75ad8802bad1a79754e40fd107f5a6922c54f7467dadef8b439b49d410c8f7d2'
             '4e5c7582b2c1090e598710a6afa6062348f4e87b3909c3d9f12f12e08e0eea6c'
