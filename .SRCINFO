@@ -1,14 +1,14 @@
 pkgbase = nodejs-foreman
 	pkgdesc = Node Implementation of Foreman
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://strongloop.github.io/node-foreman/
 	arch = any
 	makedepends = npm
 	depends = nodejs
-	noextract = foreman-2.0.0-1.tgz
-	source = http://registry.npmjs.org/foreman/-/foreman-2.0.0-1.tgz
-	sha1sums = bb54bc8f0f45ab8a07d4ce93ab54172ceacdac7f
+	noextract = foreman-3.0.0.tgz
+	source = http://registry.npmjs.org/foreman/-/foreman-3.0.0.tgz
+	sha1sums = 19f89eb6d496ac864767f9938dce6914e20568f5
 
 pkgname = nodejs-foreman
 
