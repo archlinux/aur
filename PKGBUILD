@@ -1,7 +1,7 @@
 # $Id$
 
 pkgname=xscreensaver-xmatrix-color
-pkgver=5.37
+pkgver=5.39
 pkgrel=1
 pkgdesc="Screen saver and locker for the X Window System, modified xmatrix with variable color."
 arch=('i686' 'x86_64')
@@ -17,9 +17,9 @@ source=(http://www.jwz.org/xscreensaver/${pkgname%%-*}-${pkgver}.tar.gz
         xscreensaver-add-electricsheep.diff
 	xmatrix-color.diff
 	LICENSE)
-sha1sums=('22e438589c25a485a12ba5ae8462e38c5f5f0e07'
+sha1sums=('7166c9f4a860785e0829df046f0328f5be74c0d7'
           'e8dc57b6471fb3867ee099304ac6bf628351cb98'
-          '8b63742086f2f8b3c97a3383ba370df5f5a27622'
+          'faca46b814a8791dfe3619e755089ecb88ddf71c'
           'bf8995d86609cdab678ca277ae685407f82691db')
 
 prepare() {
