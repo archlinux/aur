@@ -7,14 +7,14 @@ pkgname='ros-melodic-geometry-tutorials'
 pkgver='0.2.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(#ros-melodic-turtle-tf
+ros_depends=(ros-melodic-turtle-tf
   ros-melodic-turtle-tf2)
 depends=(${ros_depends[@]})
 
