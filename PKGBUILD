@@ -4,7 +4,7 @@ pkgdesc="ROS - Interface for using ROS with the Gazebo simulator."
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-melodic-gazebo-ros-pkgs'
-pkgver='2.8.2'
+pkgver='2.8.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-melodic-gazebo_ros_pkgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/melodic/gazebo_ros_pkgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e073e08152fb0b55d9f44b230654b79706bd1cfa63dec81fab77faf65609a310')
+sha256sums=('485372164a996bc2c9e39fce423797fd3388f9bc47a0d5ea67a887d96fa9bf22')
 
 build() {
   # Use ROS environment variables
