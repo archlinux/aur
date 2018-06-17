@@ -1,18 +1,33 @@
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+
 pkgname=mingw-w64-freeglut
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides functionality for small OpenGL programs (mingw-w64)"
 arch=(any)
 url="http://freeglut.sourceforge.net/"
 license=("MIT")
-depends=(mingw-w64-crt)
-makedepends=(mingw-w64-cmake)
+depends=('mingw-w64-crt')
+makedepends=('mingw-w64-cmake')
 options=(!strip !buildflags staticlibs)
-source=("http://downloads.sourceforge.net/freeglut/freeglut-${pkgver}.tar.gz")
-md5sums=('90c3ca4dd9d51cf32276bc5344ec9754')
-sha1sums=('fca52242f9344627a30f11487ee42002e6b0dacd')
+source=("http://downloads.sourceforge.net/freeglut/freeglut-${pkgver}.tar.gz"
+        "0001-Emit-the-correct-LIBNAME-to-.pc-files.patch")
+md5sums=('90c3ca4dd9d51cf32276bc5344ec9754'
+         '60f8ec454e4fcd6e9fe1b5f2109d9903')
+sha1sums=('fca52242f9344627a30f11487ee42002e6b0dacd'
+          '8742daa8325f9e518a664f3d1e458dee605739e7')
+noextract=("freeglut-${pkgver}.tar.gz")
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  # Clean up old sources so re-patching doesn't fail.
+  [[ -d ${srcdir}/freeglut-${pkgver} ]] && rm -rf ${srcdir}/freeglut-${pkgver}
+  tar -xzvf ${srcdir}/freeglut-${pkgver}.tar.gz -C ${srcdir}
+  # Upstreaming at https://github.com/dcnieho/FreeGLUT/pull/41
+  cd ${srcdir}/freeglut-${pkgver}
+  patch -p3 -i "${srcdir}"/0001-Emit-the-correct-LIBNAME-to-.pc-files.patch
+}
 
 build() {
   cd "${srcdir}/freeglut-${pkgver}"
