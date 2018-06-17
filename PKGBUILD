@@ -40,6 +40,7 @@ build() {
 
 package_pyside2-tools-common-git() {
     pkgdesc='PySide lupdate, rcc, and uic development tools (Common Files)'
+    conflicts=(pyside2-tools)
 
     cd "$srcdir/$pkgbase/build-py3"
     make DESTDIR="${pkgdir}" install
@@ -72,6 +73,8 @@ package_python2-pyside2-tools-git() {
 package_python-pyside2-tools-git() {
     depends=('python-pyside2-git' 'pyside2-tools-common-git')
     pkgdesc='PySide lupdate, rcc, and uic development tools (for Python 3)'
+    provides=(pyside2-tools)
+    conflicts=(pyside2-tools)
 
     cd "$srcdir/$pkgbase/build-py3"
     make DESTDIR="${pkgdir}" install
