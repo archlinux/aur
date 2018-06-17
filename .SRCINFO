@@ -1,0 +1,29 @@
+pkgbase = manocoin-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://manocoin.org/
+	install = manocoin-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = manocoin
+	source = manocoin-qt::git+https://github.com/MasternodeFoundation/MANOcoin.git
+	source = manocoin-qt.desktop
+	source = secp256k1.patch
+	sha256sums = SKIP
+	sha256sums = cd17b24fd5ca7d2d1faa810ad791b762f7a4a858d5db27bbf0908b340eb58cbb
+	sha256sums = d4968b2e3c100ee78f0305a6ebacee60466ebb7382fb1e51a58e39f1439daf92
+
+pkgname = manocoin-qt
+

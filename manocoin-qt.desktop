@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Manocoin
+Comment=Manocoin P2P Cryptocurrency
+Exec=/usr/bin/manocoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/manocoin128.png
+MimeType=x-scheme-handler/manocoin;
+Categories=Office;
+Name[en_US]=manocoin-qt.desktop

@@ -1,0 +1,207 @@
+diff '--color=auto' -Nura manocoin-qt.orig/src/secp256k1/build-aux/m4/ax_prog_cc_for_build.m4 manocoin-qt.new/src/secp256k1/build-aux/m4/ax_prog_cc_for_build.m4
+--- manocoin-qt.orig/src/secp256k1/build-aux/m4/ax_prog_cc_for_build.m4	1969-12-31 19:00:00.000000000 -0500
++++ manocoin-qt.new/src/secp256k1/build-aux/m4/ax_prog_cc_for_build.m4	2018-05-27 07:22:09.661829000 -0400
+@@ -0,0 +1,125 @@
++# ===========================================================================
++#   http://www.gnu.org/software/autoconf-archive/ax_prog_cc_for_build.html
++# ===========================================================================
++#
++# SYNOPSIS
++#
++#   AX_PROG_CC_FOR_BUILD
++#
++# DESCRIPTION
++#
++#   This macro searches for a C compiler that generates native executables,
++#   that is a C compiler that surely is not a cross-compiler. This can be
++#   useful if you have to generate source code at compile-time like for
++#   example GCC does.
++#
++#   The macro sets the CC_FOR_BUILD and CPP_FOR_BUILD macros to anything
++#   needed to compile or link (CC_FOR_BUILD) and preprocess (CPP_FOR_BUILD).
++#   The value of these variables can be overridden by the user by specifying
++#   a compiler with an environment variable (like you do for standard CC).
++#
++#   It also sets BUILD_EXEEXT and BUILD_OBJEXT to the executable and object
++#   file extensions for the build platform, and GCC_FOR_BUILD to `yes' if
++#   the compiler we found is GCC. All these variables but GCC_FOR_BUILD are
++#   substituted in the Makefile.
++#
++# LICENSE
++#
++#   Copyright (c) 2008 Paolo Bonzini <bonzini@gnu.org>
++#
++#   Copying and distribution of this file, with or without modification, are
++#   permitted in any medium without royalty provided the copyright notice
++#   and this notice are preserved. This file is offered as-is, without any
++#   warranty.
++
++#serial 8
++
++AU_ALIAS([AC_PROG_CC_FOR_BUILD], [AX_PROG_CC_FOR_BUILD])
++AC_DEFUN([AX_PROG_CC_FOR_BUILD], [dnl
++AC_REQUIRE([AC_PROG_CC])dnl
++AC_REQUIRE([AC_PROG_CPP])dnl
++AC_REQUIRE([AC_EXEEXT])dnl
++AC_REQUIRE([AC_CANONICAL_HOST])dnl
++
++dnl Use the standard macros, but make them use other variable names
++dnl
++pushdef([ac_cv_prog_CPP], ac_cv_build_prog_CPP)dnl
++pushdef([ac_cv_prog_gcc], ac_cv_build_prog_gcc)dnl
++pushdef([ac_cv_prog_cc_works], ac_cv_build_prog_cc_works)dnl
++pushdef([ac_cv_prog_cc_cross], ac_cv_build_prog_cc_cross)dnl
++pushdef([ac_cv_prog_cc_g], ac_cv_build_prog_cc_g)dnl
++pushdef([ac_cv_exeext], ac_cv_build_exeext)dnl
++pushdef([ac_cv_objext], ac_cv_build_objext)dnl
++pushdef([ac_exeext], ac_build_exeext)dnl
++pushdef([ac_objext], ac_build_objext)dnl
++pushdef([CC], CC_FOR_BUILD)dnl
++pushdef([CPP], CPP_FOR_BUILD)dnl
++pushdef([CFLAGS], CFLAGS_FOR_BUILD)dnl
++pushdef([CPPFLAGS], CPPFLAGS_FOR_BUILD)dnl
++pushdef([LDFLAGS], LDFLAGS_FOR_BUILD)dnl
++pushdef([host], build)dnl
++pushdef([host_alias], build_alias)dnl
++pushdef([host_cpu], build_cpu)dnl
++pushdef([host_vendor], build_vendor)dnl
++pushdef([host_os], build_os)dnl
++pushdef([ac_cv_host], ac_cv_build)dnl
++pushdef([ac_cv_host_alias], ac_cv_build_alias)dnl
++pushdef([ac_cv_host_cpu], ac_cv_build_cpu)dnl
++pushdef([ac_cv_host_vendor], ac_cv_build_vendor)dnl
++pushdef([ac_cv_host_os], ac_cv_build_os)dnl
++pushdef([ac_cpp], ac_build_cpp)dnl
++pushdef([ac_compile], ac_build_compile)dnl
++pushdef([ac_link], ac_build_link)dnl
++
++save_cross_compiling=$cross_compiling
++save_ac_tool_prefix=$ac_tool_prefix
++cross_compiling=no
++ac_tool_prefix=
++
++AC_PROG_CC
++AC_PROG_CPP
++AC_EXEEXT
++
++ac_tool_prefix=$save_ac_tool_prefix
++cross_compiling=$save_cross_compiling
++
++dnl Restore the old definitions
++dnl
++popdef([ac_link])dnl
++popdef([ac_compile])dnl
++popdef([ac_cpp])dnl
++popdef([ac_cv_host_os])dnl
++popdef([ac_cv_host_vendor])dnl
++popdef([ac_cv_host_cpu])dnl
++popdef([ac_cv_host_alias])dnl
++popdef([ac_cv_host])dnl
++popdef([host_os])dnl
++popdef([host_vendor])dnl
++popdef([host_cpu])dnl
++popdef([host_alias])dnl
++popdef([host])dnl
++popdef([LDFLAGS])dnl
++popdef([CPPFLAGS])dnl
++popdef([CFLAGS])dnl
++popdef([CPP])dnl
++popdef([CC])dnl
++popdef([ac_objext])dnl
++popdef([ac_exeext])dnl
++popdef([ac_cv_objext])dnl
++popdef([ac_cv_exeext])dnl
++popdef([ac_cv_prog_cc_g])dnl
++popdef([ac_cv_prog_cc_cross])dnl
++popdef([ac_cv_prog_cc_works])dnl
++popdef([ac_cv_prog_gcc])dnl
++popdef([ac_cv_prog_CPP])dnl
++
++dnl Finally, set Makefile variables
++dnl
++BUILD_EXEEXT=$ac_build_exeext
++BUILD_OBJEXT=$ac_build_objext
++AC_SUBST(BUILD_EXEEXT)dnl
++AC_SUBST(BUILD_OBJEXT)dnl
++AC_SUBST([CFLAGS_FOR_BUILD])dnl
++AC_SUBST([CPPFLAGS_FOR_BUILD])dnl
++AC_SUBST([LDFLAGS_FOR_BUILD])dnl
++])
+diff '--color=auto' -Nura manocoin-qt.orig/src/secp256k1/build-aux/m4/bitcoin_secp.m4 manocoin-qt.new/src/secp256k1/build-aux/m4/bitcoin_secp.m4
+--- manocoin-qt.orig/src/secp256k1/build-aux/m4/bitcoin_secp.m4	1969-12-31 19:00:00.000000000 -0500
++++ manocoin-qt.new/src/secp256k1/build-aux/m4/bitcoin_secp.m4	2018-05-27 07:22:09.661829000 -0400
+@@ -0,0 +1,65 @@
++dnl libsecp25k1 helper checks
++AC_DEFUN([SECP_INT128_CHECK],[
++has_int128=$ac_cv_type___int128
++])
++
++dnl 
++AC_DEFUN([SECP_64BIT_ASM_CHECK],[
++AC_MSG_CHECKING(for x86_64 assembly availability)
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++  #include <stdint.h>]],[[
++  uint64_t a = 11, tmp;
++  __asm__ __volatile__("movq $0x100000000,%1; mulq %%rsi" : "+a"(a) : "S"(tmp) : "cc", "%rdx");
++  ]])],[has_64bit_asm=yes],[has_64bit_asm=no])
++AC_MSG_RESULT([$has_64bit_asm])
++])
++
++dnl
++AC_DEFUN([SECP_OPENSSL_CHECK],[
++  has_libcrypto=no
++  m4_ifdef([PKG_CHECK_MODULES],[
++    PKG_CHECK_MODULES([CRYPTO], [libcrypto], [has_libcrypto=yes],[has_libcrypto=no])
++    if test x"$has_libcrypto" = x"yes"; then
++      TEMP_LIBS="$LIBS"
++      LIBS="$LIBS $CRYPTO_LIBS"
++      AC_CHECK_LIB(crypto, main,[AC_DEFINE(HAVE_LIBCRYPTO,1,[Define this symbol if libcrypto is installed])],[has_libcrypto=no])
++      LIBS="$TEMP_LIBS"
++    fi
++  ])
++  if test x$has_libcrypto = xno; then
++    AC_CHECK_HEADER(openssl/crypto.h,[
++      AC_CHECK_LIB(crypto, main,[
++        has_libcrypto=yes
++        CRYPTO_LIBS=-lcrypto
++        AC_DEFINE(HAVE_LIBCRYPTO,1,[Define this symbol if libcrypto is installed])
++      ])
++    ])
++    LIBS=
++  fi
++if test x"$has_libcrypto" = x"yes" && test x"$has_openssl_ec" = x; then
++  AC_MSG_CHECKING(for EC functions in libcrypto)
++  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    #include <openssl/ec.h>
++    #include <openssl/ecdsa.h>
++    #include <openssl/obj_mac.h>]],[[
++    EC_KEY *eckey = EC_KEY_new_by_curve_name(NID_secp256k1);
++    ECDSA_sign(0, NULL, 0, NULL, NULL, eckey);
++    ECDSA_verify(0, NULL, 0, NULL, 0, eckey);
++    EC_KEY_free(eckey);
++  ]])],[has_openssl_ec=yes],[has_openssl_ec=no])
++  AC_MSG_RESULT([$has_openssl_ec])
++fi
++])
++
++dnl
++AC_DEFUN([SECP_GMP_CHECK],[
++if test x"$has_gmp" != x"yes"; then
++  CPPFLAGS_TEMP="$CPPFLAGS"
++  CPPFLAGS="$GMP_CPPFLAGS $CPPFLAGS"
++  LIBS_TEMP="$LIBS"
++  LIBS="$GMP_LIBS $LIBS"
++  AC_CHECK_HEADER(gmp.h,[AC_CHECK_LIB(gmp, __gmpz_init,[has_gmp=yes; GMP_LIBS="$GMP_LIBS -lgmp"; AC_DEFINE(HAVE_LIBGMP,1,[Define this symbol if libgmp is installed])])])
++  CPPFLAGS="$CPPFLAGS_TEMP"
++  LIBS="$LIBS_TEMP"
++fi
++])
+diff '--color=auto' -Nura manocoin-qt.orig/src/secp256k1/Makefile.am manocoin-qt.new/src/secp256k1/Makefile.am
+--- manocoin-qt.orig/src/secp256k1/Makefile.am	2018-06-17 18:27:44.679037365 -0400
++++ manocoin-qt.new/src/secp256k1/Makefile.am	2018-05-27 07:22:09.655162000 -0400
+@@ -1,5 +1,4 @@
+ ACLOCAL_AMFLAGS = -I build-aux/m4
+-+CC_FOR_BUILD = gcc
+ 
+ lib_LTLIBRARIES = libsecp256k1.la
+ include_HEADERS = include/secp256k1.h
