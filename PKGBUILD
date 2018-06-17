@@ -4,7 +4,7 @@
 
 pkgname=libunique3
 pkgver=3.0.2
-pkgrel=7
+pkgrel=8
 pkgdesc='Library for writing single instance applications for GTK3'
 arch=('i686' 'x86_64')
 url='http://live.gnome.org/LibUnique'
@@ -14,8 +14,8 @@ makedepends=('gtk-doc' 'gobject-introspection')
 makepkgopt=('strip' 'docs' '!libtool' '!staticlibs' 'emptydirs' 'zipman' 'purge' '!upx' '!debug')
 provides=('libunique3')
 conflicts=('libunique3')
-source_i686=('https://archive.archlinux.org/repos/2014/07/01/extra/os/i686/libunique3-3.0.2-3-i686.pkg.tar.xz')
-source_x86_64=('https://archive.archlinux.org/repos/2014/07/01/extra/os/x86_64/libunique3-3.0.2-3-x86_64.pkg.tar.xz')
+source_i686=('https://archive.archlinux.org/packages/l/libunique3/libunique3-3.0.2-3-i686.pkg.tar.xz')
+source_x86_64=('https://archive.archlinux.org/packages/l/libunique3/libunique3-3.0.2-3-x86_64.pkg.tar.xz')
 sha256sums_i686=('bb3fcdf763d0cf4fe35eb6eb6a49321ebac4de9251f7840c8b2977968f48ddb0')
 sha256sums_x86_64=('ee634bcbbdf420edec1ce34b5d55dedfa6c77bc1df43309647517533a240aee8')
 
