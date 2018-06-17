@@ -1,0 +1,25 @@
+From 4e0d0d0d15d50fb5f9ab28dbf49069cf0f895b27 Mon Sep 17 00:00:00 2001
+From: Davide Depau <davide@depau.eu>
+Date: Sun, 17 Jun 2018 01:55:03 +0200
+Subject: [PATCH] Set license to a gst-supported one
+
+---
+ src/gstviperfx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gstviperfx.c b/src/gstviperfx.c
+index 0a50765..3120e77 100644
+--- a/src/gstviperfx.c
++++ b/src/gstviperfx.c
+@@ -1558,7 +1558,7 @@ GST_PLUGIN_DEFINE (
+     "viperfx element",
+     viperfx_init,
+     VERSION,
+-    "NonGPL",
++    "Proprietary",
+     "GStreamer",
+     "http://gstreamer.net/"
+ )
+-- 
+2.17.1
+
