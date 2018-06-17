@@ -6,13 +6,14 @@
 
 pkgname=root
 pkgver=6.14.00
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
 license=('LGPL2.1')
 makedepends=('cmake')
 depends=('cfitsio'
+         'cern-vdt'
          'fftw'
          'ftgl'
          'gl2ps'

@@ -1,7 +1,7 @@
 pkgbase = root
 	pkgdesc = C++ data analysis framework and interpreter from CERN.
 	pkgver = 6.14.00
-	pkgrel = 1
+	pkgrel = 2
 	url = http://root.cern.ch
 	install = root.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = root
 	license = LGPL2.1
 	makedepends = cmake
 	depends = cfitsio
+	depends = cern-vdt
 	depends = fftw
 	depends = ftgl
 	depends = gl2ps
