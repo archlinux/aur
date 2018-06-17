@@ -4,7 +4,7 @@
 
 pkgname=simp_le-git
 _pkgname=simp_le
-pkgver=0.2.0.r15.g09e5226
+pkgver=0.9.0.r0.g77bbed5
 pkgrel=1
 epoch=1
 pkgdesc="Simple Let's Encrypt client."
@@ -22,12 +22,20 @@ depends=('ca-certificates'
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}"::"git+https://github.com/zenhack/simp_le.git")
-md5sums=('SKIP')
+source=("${_pkgname}"::"git+https://github.com/zenhack/simp_le.git"
+        'remove-deps-version-bounds.patch')
+sha256sums=('SKIP'
+            '31572e2828b6450b1b3859ecbdb88061e9d14b27af0944a86324956465cf9fe6')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+
+    patch -Np1 -i "${srcdir}/remove-deps-version-bounds.patch"
 }
 
 package() {
