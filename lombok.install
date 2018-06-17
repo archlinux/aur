@@ -1,4 +1,3 @@
-# arg 1:  the new package version
 post_install() {
 	echo ""
 	java -jar /usr/lib/eclipse/lombok.jar install /usr/lib/eclipse || exit 1
@@ -9,19 +8,11 @@ post_install() {
 	echo ""
 }
 
-# arg 1:  the new package version
-# arg 2:  the old package version
 post_upgrade() {
 	post_install
 }
 
-# arg 1:  the old package version
 pre_remove() {
 	java -jar /usr/lib/eclipse/lombok.jar uninstall /usr/lib/eclipse || exit 1
 }
-
-op=$1
-shift
-
-$op $*
 
