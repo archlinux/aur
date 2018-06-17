@@ -4,7 +4,7 @@ pkgdesc="ROS - Underlying data libraries for roscpp messages."
 url='http://www.ros.org/wiki/roscpp_core'
 
 pkgname='ros-melodic-roscpp-core'
-pkgver='0.6.10'
+pkgver='0.6.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-melodic-roscpp_core-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/roscpp_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('be7d1da25ecc73175d9538f889bd52de058a900207be655a43eb48e88bf699e2')
+sha256sums=('f195a1b5f4eccdfc3f0ffe2e409fff600f0d65eb9c3c9b158eea1604bbee0e2d')
 
 build() {
   # Use ROS environment variables
