@@ -5,14 +5,13 @@
 # Contributor: Daniele Paolella <danielepaolella@email.it>
 pkgname=jack-rack
 pkgver=1.4.7
-pkgrel=5
+pkgrel=6
 pkgdesc="Effects rack for JACK"
 url="http://jack-rack.sourceforge.net"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('jack' 'gtk2' 'libxml2' 'ladspa')
-optdepends=('lash: LASH support'
-            'raptor1: LRDF support'
+optdepends=('raptor1: LRDF support'
             'liblrdf: LRDF support'
             'python2: ecarack')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
