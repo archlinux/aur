@@ -4,7 +4,7 @@ pkgdesc="ROS - XmlRpc++ is a C++ implementation of the XML-RPC protocol."
 url='http://xmlrpcpp.sourceforge.net'
 
 pkgname='ros-melodic-xmlrpcpp'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-xmlrpcpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/xmlrpcpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c07f3299f3d9d48d4bc6df52cd9536fbbf854099fd4bc5aa2eb551b1f4988eeb')
+sha256sums=('030a0ddb8ea6614f919fe99d57f5035e054b6e0ece91a21b1853a0486af55230')
 
 build() {
   # Use ROS environment variables
