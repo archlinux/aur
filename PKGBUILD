@@ -4,7 +4,7 @@ pkgdesc="ROS - Tools for directing, throttling, selecting, and otherwise messing
 url='http://ros.org/wiki/topic_tools'
 
 pkgname='ros-melodic-topic-tools'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -40,7 +40,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-topic_tools-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/topic_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('96ac8d66e3ed9d5ef6293c07ba89ea3d2e0875182307e395cc702076eb87e166')
+sha256sums=('ad65678d1b584f21f546a84d8d42c5eacda10e56c5805bb35e5f9be324e3f249')
 
 build() {
   # Use ROS environment variables
