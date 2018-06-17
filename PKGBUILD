@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS communications-related packages, including core client librar
 url='http://www.ros.org/wiki/ros_comm'
 
 pkgname='ros-melodic-ros-comm'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -47,7 +47,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-ros_comm-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/ros_comm/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('bbf794178d4b567d2271f715a8ebde1e7209afcad79dfa2b5300ce8fd5559839')
+sha256sums=('2866678d01ab64234e1a6cfd3267520451ac668d9d124ad9517cbf22646f5c2c')
 
 build() {
   # Use ROS environment variables
