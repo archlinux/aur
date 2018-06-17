@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=fac
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Easy-to-use command line tool for fixing git conflicts"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=(
   'go'
 )
 source=("https://github.com/mkchoi212/fac/archive/v${pkgver}.tar.gz")
-sha256sums=('0a38e091686a5311565a0e47c60471c40dcb1ace5cc9a07588be67dfd82f1bb8')
+sha256sums=('0680c5f3984a6fd4a2bb79a7a527585b4beb93a29adbf1f277d2f79e0a28e227')
 
 prepare(){
   export GOPATH="$srcdir/go"
@@ -20,6 +20,8 @@ prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
   [ -d "$GOPATH/src/github.com/mkchoi212/fac/color" ] || mv "$srcdir/$pkgname-$pkgver/color" "$GOPATH/src/github.com/mkchoi212/fac"
   [ -d "$GOPATH/src/github.com/mkchoi212/fac/conflict" ] || mv "$srcdir/$pkgname-$pkgver/conflict" "$GOPATH/src/github.com/mkchoi212/fac"
+  [ -d "$GOPATH/src/github.com/mkchoi212/fac/editor" ] || mv "$srcdir/$pkgname-$pkgver/editor" "$GOPATH/src/github.com/mkchoi212/fac"
+  [ -d "$GOPATH/src/github.com/mkchoi212/fac/binding" ] || mv "$srcdir/$pkgname-$pkgver/binding" "$GOPATH/src/github.com/mkchoi212/fac"
   go get -d
 }
 
