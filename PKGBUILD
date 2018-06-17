@@ -5,10 +5,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20180616
+pkgver=4.0.0v20180617
 _pkgver=4.0.0
-_snapshot_=20180616
-_snapver_=0251
+_snapshot_=20180617
+_snapver_=0244
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -137,6 +137,7 @@ build() {
   export CXXFLAGS+=" -std=c++11"
   export LUAC=/usr/bin/luac
   export LUA_LIBS="`pkg-config --libs lua`"
+  export LDFLAGS+=" `pkg-config --libs xkbcommon` "
   export RCC=/usr/bin/rcc-qt5
 
   ./configure --prefix=/usr \
@@ -255,7 +256,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('53de98bfed89eec7c43ce2ac217177a55ffee8f160ec1ecce1f3088ad5779c07'
+sha256sums=('ac3d8962caf6dc2779fdcee950fff6af0a638cade4e140698fa567c927986599'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '75ad8802bad1a79754e40fd107f5a6922c54f7467dadef8b439b49d410c8f7d2'
             '4e5c7582b2c1090e598710a6afa6062348f4e87b3909c3d9f12f12e08e0eea6c'
