@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back ROS me
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-rosbag-storage'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -48,7 +48,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-rosbag_storage-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosbag_storage/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f7b08992f0792e8e1677fa535e64464c3cb1886f760bcb08e4a5011437490e9b')
+sha256sums=('c1b619edf6f84b3e6e3509af4fb529a00ed00089362362d0d632bbea3ac3479f')
 
 build() {
   # Use ROS environment variables
