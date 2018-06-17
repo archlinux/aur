@@ -12,7 +12,7 @@ News* api_news_init(void) {
 Info* api_info_init(void) {
     Info* pInfo = malloc(sizeof(Info));
     pointer_alloc_check(pInfo);
-    *pInfo = (Info) { // Set every string to NULL and every value to EMPTY
+    *pInfo = (Info) { // Null terminate every string and set every value to EMPTY
             .symbol[0] = '\0', .name[0] = '\0', .industry[0] = '\0', .website[0] = '\0', .description[0] = '\0',
             .ceo[0] = '\0', .issue_type[0] = '\0', .sector[0] = '\0', .intraday_time = EMPTY, .price = EMPTY,
             .marketcap = EMPTY, .volume_1d = EMPTY, .pe_ratio = EMPTY, .div_yield = EMPTY, .revenue = EMPTY,
@@ -21,9 +21,12 @@ Info* api_info_init(void) {
             .fiscal_period[3][0] = '\0', .eps_year_ago = {EMPTY, EMPTY, EMPTY, EMPTY}, .price_last_close = EMPTY,
             .price_7d = EMPTY, .price_30d = EMPTY, .points = NULL, .num_points = EMPTY, .articles = NULL,
             .num_articles = EMPTY, .peers = NULL, .amount = EMPTY, .total_spent = EMPTY, .current_value = 0,
-            .profit_total = EMPTY, .profit_total_percent = EMPTY, .profit_last_close = EMPTY,
-            .profit_last_close_percent = EMPTY, .profit_7d = EMPTY, .profit_7d_percent = EMPTY, .profit_30d = EMPTY,
-            .profit_30d_percent = EMPTY
+            .famount[0] = '\0', .ftotal_spent[0] = '\0', .fcurrent_value[0] = '\0', .profit_total = EMPTY,
+            .profit_total_percent = EMPTY, .profit_last_close = EMPTY, .profit_last_close_percent = EMPTY,
+            .profit_7d = EMPTY, .profit_7d_percent = EMPTY, .profit_30d = EMPTY, .profit_30d_percent = EMPTY,
+            .fprofit_total[0] = '\0', .fprofit_total_percent[0] = '\0', .fprofit_last_close[0] = '\0',
+            .fprofit_last_close_percent[0] = '\0', .fprofit_7d[0] = '\0', .fprofit_7d_percent[0] = '\0',
+            .fprofit_30d[0] = '\0', .fprofit_30d_percent[0] = '\0'
     };
     return pInfo;
 }
@@ -31,8 +34,14 @@ Info* api_info_init(void) {
 Info_Array* api_info_array_init(void) {
     Info_Array* pInfo_Array = malloc(sizeof(Info_Array));
     pointer_alloc_check(pInfo_Array);
-    pInfo_Array->array = NULL;
-    pInfo_Array->length = 0;
+    *pInfo_Array = (Info_Array) {
+            .array = NULL, .length = 0, .total_spent = EMPTY, .current_value = 0, .ftotal_spent[0] = '\0',
+            .fcurrent_value[0] = '\0', .profit_total = EMPTY, .profit_total_percent = EMPTY, .profit_last_close = EMPTY,
+            .profit_last_close_percent = EMPTY, .profit_7d = EMPTY, .profit_7d_percent = EMPTY, .profit_30d = EMPTY,
+            .profit_30d_percent = EMPTY, .fprofit_total[0] = '\0', .fprofit_total_percent[0] = '\0',
+            .fprofit_last_close[0] = '\0', .fprofit_last_close_percent[0] = '\0', .fprofit_7d[0] = '\0',
+            .fprofit_7d_percent[0] = '\0', .fprofit_30d[0] = '\0', .fprofit_30d_percent[0] = '\0'
+    };
     return pInfo_Array;
 }
 
