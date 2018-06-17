@@ -1,0 +1,25 @@
+From 8ee243ddfd44f699772cf803978a0b5f6775f5e2 Mon Sep 17 00:00:00 2001
+From: Davide Depau <davide@depau.eu>
+Date: Sun, 17 Jun 2018 15:58:55 +0200
+Subject: [PATCH] Update plugin source and set it to AUR
+
+---
+ src/gstviperfx.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/gstviperfx.c b/src/gstviperfx.c
+index 3120e77..1a395b5 100644
+--- a/src/gstviperfx.c
++++ b/src/gstviperfx.c
+@@ -1559,6 +1559,6 @@ GST_PLUGIN_DEFINE (
+     viperfx_init,
+     VERSION,
+     "Proprietary",
+-    "GStreamer",
+-    "http://gstreamer.net/"
++    "GStreamer ViPER FX Plugin (Arch User Repository)",
++    "https://aur.archlinux.org/packages/gst-plugin-viperfx-git/"
+ )
+-- 
+2.17.1
+

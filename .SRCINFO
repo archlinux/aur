@@ -1,7 +1,7 @@
 pkgbase = gst-plugin-viperfx-git
 	pkgdesc = ViPER FX core wrapper plugin for GStreamer1
 	pkgver = r2.227da1f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vipersaudio/gst-plugin-viperfx
 	arch = x86_64
 	license = custom
@@ -11,8 +11,10 @@ pkgbase = gst-plugin-viperfx-git
 	conflicts = gst-plugin-viperfx
 	source = gst-plugin-viperfx-git::git+https://github.com/vipersaudio/gst-plugin-viperfx.git
 	source = 0001-Set-license-to-a-gst-supported-one.patch
+	source = 0002-Update-plugin-source-and-set-it-to-AUR.patch
 	sha256sums = SKIP
 	sha256sums = 3f56f4b2bea7af80309b0ea668877d6fb028677aab966eb946ba4463dd118eea
+	sha256sums = c618b22ddb9e2a277efd88c4e46f05d1cd8af7d77a92b6da7bcfa7a923ad8b15
 
 pkgname = gst-plugin-viperfx-git
 

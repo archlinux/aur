@@ -2,7 +2,7 @@
 
 pkgname=gst-plugin-viperfx-git
 pkgver=r2.227da1f
-pkgrel=1
+pkgrel=2
 pkgdesc="ViPER FX core wrapper plugin for GStreamer1"
 url="https://github.com/vipersaudio/gst-plugin-viperfx"
 arch=("x86_64")
@@ -13,9 +13,11 @@ depends=("libviperfx" "gstreamer")
 source=(
 	"$pkgname::git+https://github.com/vipersaudio/gst-plugin-viperfx.git"
 	"0001-Set-license-to-a-gst-supported-one.patch"
+	"0002-Update-plugin-source-and-set-it-to-AUR.patch"
 )
 sha256sums=('SKIP'
-            '3f56f4b2bea7af80309b0ea668877d6fb028677aab966eb946ba4463dd118eea')
+            '3f56f4b2bea7af80309b0ea668877d6fb028677aab966eb946ba4463dd118eea'
+            'c618b22ddb9e2a277efd88c4e46f05d1cd8af7d77a92b6da7bcfa7a923ad8b15')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -28,6 +30,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   patch -p1 < $srcdir/0001-Set-license-to-a-gst-supported-one.patch
+  patch -p1 < $srcdir/0002-Update-plugin-source-and-set-it-to-AUR.patch
 } 
 
 build() {
