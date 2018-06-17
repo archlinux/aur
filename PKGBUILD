@@ -1,19 +1,38 @@
 # Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
-# Maintainer: Niklas <dev@n1klas.net>
-# Contributor: Yunhui Fu <yhfudev@gmail.com>
-# Contributor: Doug Richardson <dougie.richardson@gmail.com>
-# Contributor: feilen <feilen1000@gmail.com>
-# Contributor: Thermionix <thermionix@gmail.com>
 
 _pkgname=OctoPrint
 pkgname=octoprint
 # c55c568bbddf5112facf6aa3a173d500936b6cbf
 pkgver=1.3.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(x86_64 armv6h armv7h)
 url="http://octoprint.org/"
 license=('AGPL3')
+depends=(python2-babel
+		python2-argh
+		python2-frozendict
+		python2-regex
+		python2-blinker
+		python2-wrapt
+		python2-requests
+		python2-markupsafe
+		python2-markdown
+		python2-pyserial
+		python2-pathtools
+		python2-feedparser
+		python2-itsdangerous
+		python2-certifi
+		python2-backports.ssl_match_hostname
+		python2-chardet
+		python2-idna
+		python2-six
+		python2-pyasn1
+		python2-urllib3
+		python2-netaddr
+		python2-speaklater
+		python2-pytz
+		python2-watchdog)
 makedepends=('python2-virtualenv')
 optdepends=('ffmpeg: timelapse support'
 			'motion: motion detector which grabs images from video4linux devices and/or from webcams'
@@ -37,7 +56,7 @@ sha256sums=('ca1bc5352ef20778722a6b2aedef4c8dbe28d0d82c2526f84f3db07245a01aad'
             '02be5d5a18febe215809882d96f068092c4474abb4e76d82e4450b860a4e9ef5')
 
 package() {
-	virtualenv2 $pkgdir/usr/lib/$pkgname
+	virtualenv2 --system-site-packages $pkgdir/usr/lib/$pkgname
 
 	pushd $_pkgname-$pkgver
 	$pkgdir/usr/lib/$pkgname/bin/pip install .
