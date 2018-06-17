@@ -1,6 +1,6 @@
 # Maintainer: Jake <ja.ke@posteo.de>
 pkgname=script-communicator
-pkgver=5.07
+pkgver=5.08
 _pkgver=0${pkgver/./_}
 pkgrel=1
 pkgdesc="ScriptCommunicator is a scriptable terminal with Serial/TCP/UDP/SPI/CAN support"
@@ -10,9 +10,11 @@ license=('GPL3')
 depends=('qt5-script' 'qt5-serialport')
 makedepends=('qt5-tools')
 
-source=("https://github.com/szieke/ScriptCommunicator_serial-terminal/archive/Release_${_pkgver}.zip" 
+source=("https://github.com/szieke/ScriptCommunicator_serial-terminal/archive/Release_${_pkgver}.zip"
+        "qt5_11.patch"
 	"$pkgname.desktop")
-sha256sums=('a647274b3a0fe0234f6cfba5e1149e98fd42be9003fd272307598d24e1247fb7'
+sha256sums=('712742470ad11470325c510eba56971351f1093cffde34f1d2f9ce3e377cefd3'
+            'e6eb8097ecfd857b56070b33a588b2c1bcac25cd407cf22a6f72be0c72f2fb91'
             'a6ff5c6079a0af0c5bc47c8f660073fcfc31c22a68b57d98f454542aaa560566')
 
 
@@ -21,6 +23,7 @@ prepare() {
 	cd $pkgname
 	echo "DESTDIR = build" >> ScriptCommunicator.pro
 	echo "DESTDIR = build" >> ScriptEditor/ScriptEditor.pro
+	patch -Np2 -i ../qt5_11.patch
 }
 
 build() {
