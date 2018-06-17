@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='http://ros.org/wiki/roscpp'
 
 pkgname='ros-melodic-roscpp'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -45,7 +45,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-melodic-roscpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roscpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d787f7cffc29181780692aec07595003699a47d36be1e8cb21999a4d7aa5fb44')
+sha256sums=('4a7a3a951fb31b240660f80e1186a7188e312e30df395c0903436f3fcca39172')
 
 build() {
   # Use ROS environment variables
