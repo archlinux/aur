@@ -1,8 +1,8 @@
-diff --git a/audio/audio.c b/audio/audio.c
-index 7658d2af667..67585fc1a43 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -2066,3 +2066,8 @@ void AUD_set_volume_in (SWVoiceIn *sw, int mute, uint8_t lvol, uint8_t rvol)
+diff --git audio/audio.c audio/audio.c
+index 6eccdb17ee..4eb190a18f 100644
+--- audio/audio.c
++++ audio/audio.c
+@@ -2097,3 +2097,8 @@ void AUD_set_volume_in (SWVoiceIn *sw, int mute, uint8_t lvol, uint8_t rvol)
          }
      }
  }
@@ -11,23 +11,23 @@ index 7658d2af667..67585fc1a43 100644
 +{
 +    return conf.period.ticks;
 +}
-diff --git a/audio/audio_int.h b/audio/audio_int.h
-index 5b25da0a373..dee9e22e4ec 100644
---- a/audio/audio_int.h
-+++ b/audio/audio_int.h
-@@ -214,6 +214,8 @@ extern struct audio_driver pa_audio_driver;
- extern struct audio_driver spice_audio_driver;
- extern const struct mixeng_volume nominal_volume;
+diff --git audio/audio_int.h audio/audio_int.h
+index 244b454012..19ba2d7aa4 100644
+--- audio/audio_int.h
++++ audio/audio_int.h
+@@ -210,6 +210,8 @@ extern const struct mixeng_volume nominal_volume;
+ void audio_driver_register(audio_driver *drv);
+ audio_driver *audio_driver_lookup(const char *name);
  
 +int64_t audio_get_timer_ticks(void);
 +
  void audio_pcm_init_info (struct audio_pcm_info *info, struct audsettings *as);
  void audio_pcm_info_clear_buf (struct audio_pcm_info *info, void *buf, int len);
  
-diff --git a/audio/paaudio.c b/audio/paaudio.c
-index aa0a7477d3b..e175018f3cc 100644
---- a/audio/paaudio.c
-+++ b/audio/paaudio.c
+diff --git audio/paaudio.c audio/paaudio.c
+index 949769774d..cfa200fa96 100644
+--- audio/paaudio.c
++++ audio/paaudio.c
 @@ -1,16 +1,22 @@
  /* public domain */
  #include "qemu/osdep.h"
@@ -87,10 +87,21 @@ index aa0a7477d3b..e175018f3cc 100644
  } PAVoiceIn;
  
  static void qpa_audio_fini(void *opaque);
-@@ -109,182 +105,59 @@ static inline int PA_STREAM_IS_GOOD(pa_stream_state_t x)
-         }                                                               \
-     } while (0)
+@@ -89,7 +85,7 @@ static inline int PA_STREAM_IS_GOOD(pa_stream_state_t x)
+             }                                                   \
+             goto label;                                         \
+         }                                                       \
+-    } while (0)
++    } while (0);
  
+ #define CHECK_DEAD_GOTO(c, stream, rerror, label)                       \
+     do {                                                                \
+@@ -107,184 +103,61 @@ static inline int PA_STREAM_IS_GOOD(pa_stream_state_t x)
+             }                                                           \
+             goto label;                                                 \
+         }                                                               \
+-    } while (0)
+-
 -static int qpa_simple_read (PAVoiceIn *p, void *data, size_t length, int *rerror)
 -{
 -    paaudio *g = p->g;
@@ -139,7 +150,8 @@ index aa0a7477d3b..e175018f3cc 100644
 -
 -    pa_threaded_mainloop_unlock (g->mainloop);
 -    return 0;
--
++    } while (0);
+ 
 -unlock_and_fail:
 -    pa_threaded_mainloop_unlock (g->mainloop);
 -    return -1;
@@ -828,10 +840,10 @@ index aa0a7477d3b..e175018f3cc 100644
      },
      {
          .name  = "SERVER",
-diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
-index e8aa7842e67..e68830490f3 100644
---- a/hw/audio/hda-codec.c
-+++ b/hw/audio/hda-codec.c
+diff --git hw/audio/hda-codec.c hw/audio/hda-codec.c
+index e8aa7842e6..e68830490f 100644
+--- hw/audio/hda-codec.c
++++ hw/audio/hda-codec.c
 @@ -18,6 +18,7 @@
   */
  
@@ -1105,10 +1117,10 @@ index e8aa7842e67..e68830490f3 100644
          VMSTATE_END_OF_LIST()
      }
  };
-diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
-index 948268afd81..23a2cf6484c 100644
---- a/hw/audio/intel-hda.c
-+++ b/hw/audio/intel-hda.c
+diff --git hw/audio/intel-hda.c hw/audio/intel-hda.c
+index 948268afd8..23a2cf6484 100644
+--- hw/audio/intel-hda.c
++++ hw/audio/intel-hda.c
 @@ -407,13 +407,6 @@ static bool intel_hda_xfer(HDACodecDevice *dev, uint32_t stnr, bool output,
      if (st->bpl == NULL) {
          return false;
