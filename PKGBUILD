@@ -1,4 +1,4 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Vesa Kaihlavirta <vesa@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
@@ -6,7 +6,7 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=20.3.2
+pkgver=20.3.7
 _docver=20.3
 pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
