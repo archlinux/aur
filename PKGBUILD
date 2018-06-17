@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp_traits contains the message traits code as described in Me
 url='http://ros.org/wiki/roscpp_traits'
 
 pkgname='ros-melodic-roscpp-traits'
-pkgver='0.6.10'
+pkgver='0.6.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-melodic-roscpp_traits-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/roscpp_traits/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a55d03c6e4a7b7c80bf4dca4cc3df8d033091ee986992183ed790a44c089d08d')
+sha256sums=('b7e12216b2239a621861af230301bc6a4fdbaf4101ef3423ca8aa655bfa4b0dd')
 
 build() {
   # Use ROS environment variables
