@@ -1,4 +1,5 @@
 post_install() {
+	systemd-sysusers #Trigger sysusers before chown
 	chown -R octoprint:octoprint /var/lib/octoprint
 	chown -R octoprint:octoprint /opt/octoprint-venv
 

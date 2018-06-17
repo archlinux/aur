@@ -3,7 +3,7 @@
 
 pkgname=octoprint-venv
 pkgver=1.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="The snappy snappy web interface for your 3D printer! (virtualenv installation type)"
 arch=('any')
 url="http://octoprint.org/"
