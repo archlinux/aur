@@ -1,5 +1,5 @@
 pkgbase = lthemeengine
-	pkgdesc = File manager for the lumina desktop environment
+	pkgdesc = Theme engine for the Lumina Desktop Environment
 	pkgver = 1.4.0p1
 	pkgrel = 1
 	url = https://github.com/trueos/lumina
