@@ -6,7 +6,7 @@ pkgdesc="Python's Intergrated Development and Learning Environment"
 arch=('any')
 url="https://gitlab.com/BobyMCbobs/${pkgname}"
 license=('GPL')
-depends=('python' 'python2')
+depends=('python' 'python2' 'tk')
 source=("https://gitlab.com/BobyMCbobs/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip")
 md5sums=('033bfaefcc566577cf8a6f5e173f3c01')
 
