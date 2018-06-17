@@ -167,6 +167,13 @@ Info_Array* portfolio_get_info_array(void) {
     portfolio_data->array = malloc(sizeof(Info*) * portfolio_data->length); // malloc portfolio array length pointers
     pointer_alloc_check(portfolio_data->array);
 
+    portfolio_data->total_spent = 0;
+    portfolio_data->current_value = 0;
+    portfolio_data->profit_total = 0;
+    portfolio_data->profit_last_close = 0;
+    portfolio_data->profit_7d = 0;
+    portfolio_data->profit_30d = 0;
+
     pthread_t threads[portfolio_data->length];
     char syms[portfolio_data->length][SYMBOL_MAX_LENGTH];
     for (size_t i = 0; i < portfolio_data->length; i++) {
@@ -199,7 +206,19 @@ Info_Array* portfolio_get_info_array(void) {
         portfolio_data->array[i]->total_spent = json_object_get_double(json_object_object_get(json_object_array_get_idx(
                 jobj, i), "USD_Spent"));
         calculate_check_data(portfolio_data->array[i]);
+
+        portfolio_data->total_spent += portfolio_data->array[i]->total_spent;
+        portfolio_data->current_value += portfolio_data->array[i]->current_value;
+        portfolio_data->profit_total += portfolio_data->array[i]->profit_total;
+        portfolio_data->profit_last_close += portfolio_data->array[i]->profit_last_close;
+        portfolio_data->profit_7d += portfolio_data->array[i]->profit_7d;
+        portfolio_data->profit_30d += portfolio_data->array[i]->profit_30d;
     }
+    portfolio_data->profit_total_percent = (100 * (portfolio_data->current_value - portfolio_data->total_spent)) /
+            portfolio_data->total_spent;
+    portfolio_data->profit_last_close_percent = 100 *  portfolio_data->profit_last_close/ portfolio_data->total_spent;
+    portfolio_data->profit_7d_percent = 100 *  portfolio_data->profit_7d/ portfolio_data->total_spent;
+    portfolio_data->profit_30d_percent = 100 *  portfolio_data->profit_30d/ portfolio_data->total_spent;
 
     json_object_put(jobj);
     string_destroy(&pString);
@@ -301,15 +320,6 @@ void portfolio_print_all(Info_Array* portfolio_data) {
     int scroll_index = 0; // Defaults to first index
     int ch = 0; // getch() data from keyboard
 
-    double total_owned = 0, total_spent = 0, total_profit_1d = 0, total_profit_7d = 0, total_profit_30d = 0;
-    for (size_t i = 0; i < portfolio_data->length; i++) { // Add collected values to totals
-        total_owned += portfolio_data->array[i]->current_value;
-        total_spent += portfolio_data->array[i]->total_spent;
-        total_profit_1d += portfolio_data->array[i]->profit_last_close;
-        total_profit_7d += portfolio_data->array[i]->profit_7d;
-        total_profit_30d += portfolio_data->array[i]->profit_30d;
-    }
-
     // For printing/formatting categories
     char* sort_categories_str[] = {"SYMBOL", "VALUE", "SPENT", "PROFIT", "(%)", "24H", "(%)", "7D", "(%)", "30D", "(%)"}
     , * sort_spacing_str[] = {"    ", "    ", "   ", "       ", "      ", "       ", "       ", "       ", "      ",
@@ -350,10 +360,11 @@ void portfolio_print_all(Info_Array* portfolio_data) {
         /** TOTALS **/
         wattron(total_window, A_BOLD); // Bold totals
         mvwprintw(total_window, 0, 0, "         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf "
-                                    "(%6.2lf%%) %8.2lf (%6.2lf%%)"
-               , total_owned, total_spent, total_owned - total_spent, (100 * (total_owned - total_spent)) / total_spent,
-               total_profit_1d, 100 * total_profit_1d / total_spent, total_profit_7d,
-               100 * total_profit_7d / total_spent, total_profit_30d, 100 * total_profit_30d / total_spent);
+                                    "(%6.2lf%%) %8.2lf (%6.2lf%%)", portfolio_data->current_value,
+                  portfolio_data->total_spent, portfolio_data->profit_total, portfolio_data->profit_total_percent,
+                  portfolio_data->profit_last_close, portfolio_data->profit_last_close_percent,
+                  portfolio_data->profit_7d, portfolio_data->profit_7d_percent, portfolio_data->profit_30d,
+                  portfolio_data->profit_30d_percent);
         wattroff(total_window, A_BOLD);
         wrefresh(total_window);
 
