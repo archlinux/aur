@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+post_install() {
+	# If config doesn't exist, copy the example over it.
+	cp /etc/rocketchat-server/example.env /etc/rocketchat-server/config.env
+	echo "Server will use port 22020."
+}
+

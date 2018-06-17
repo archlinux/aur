@@ -1,0 +1,15 @@
+[Unit]
+Description=Rocket.chat docker-compose service
+Wants=network-online.target
+After=network-online.target
+Requires=docker.service
+
+[Service]
+Restart=always
+WorkingDirectory=/usr/share/rocketchat-server/
+ExecStart=/usr/bin/docker-compose up
+ExecStop=/usr/bin/docker-compose down
+
+[Install]
+WantedBy=local.target
+
