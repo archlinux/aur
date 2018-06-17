@@ -1,7 +1,7 @@
 # Maintainer: Henninger Henningstone <henritees at mein-twserver dot de>
 
 pkgname=allthehaxx
-pkgver=0.36.3
+pkgver=0.36.4
 pkgrel=0
 pkgdesc="AllTernative Teeworlds Client"
 arch=('x86_64')
@@ -21,7 +21,7 @@ install=allthehaxx.install
 _archive="$pkgname-$pkgver.tar.gz"
 source=("$_archive::https://netix.dl.sourceforge.net/project/allthehaxx/$pkgver/$pkgver.tar.gz") # https://github.com/AllTheHaxx/AllTheHaxx/archive/$pkgver.tar.gz
 noextract=("$_archive")
-sha256sums=('caa305a560524a08605c0feecaa469b51b5db9647ae01b82a45b54f820b81f9b')
+sha256sums=('2ac5001f7ef66996406e5618aaa20e8df9add19b311064c6b31a12a3bab90322')
 
 
 prepare() {
@@ -38,7 +38,7 @@ build() {
     cd "$srcdir/AllTheHaxx-$pkgver/"
     bam config installation_root="/"
     bam client_release
-    bam tools_release
+    #bam tools_release
 }
 
 package() {
@@ -47,25 +47,25 @@ package() {
     install -d -m755                   "$pkgdir/usr/bin/"
     install -m755 AllTheHaxx           "$pkgdir/usr/bin/"
 
-      # Install extra tools
-    install -d -m755                   "$pkgdir/usr/share/allthehaxx/tools"
-    install -m755 colorcode            "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 config_retrieve      "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 config_store         "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 confusables          "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 crapnet              "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 dilate               "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 dummy_map            "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 fake_server          "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 map_resave           "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 map_version          "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 packetgen            "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 slc_unpack           "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 tileset_borderadd    "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 tileset_borderfix    "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 tileset_borderrem    "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 tileset_borderset    "$pkgdir/usr/share/allthehaxx/tools/"
-    install -m755 uuid                 "$pkgdir/usr/share/allthehaxx/tools/"
+      # Install extra tools (currently broken but also unnecessary)
+    #install -d -m755                   "$pkgdir/usr/share/allthehaxx/tools"
+    #install -m755 colorcode            "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 config_retrieve      "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 config_store         "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 confusables          "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 crapnet              "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 dilate               "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 dummy_map            "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 fake_server          "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 map_resave           "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 map_version          "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 packetgen            "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 slc_unpack           "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 tileset_borderadd    "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 tileset_borderfix    "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 tileset_borderrem    "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 tileset_borderset    "$pkgdir/usr/share/allthehaxx/tools/"
+    #install -m755 uuid                 "$pkgdir/usr/share/allthehaxx/tools/"
 
       # Install data files
     install -d -m755 "$pkgdir/usr/share/allthehaxx/data/"
