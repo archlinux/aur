@@ -1,7 +1,7 @@
 # Maintainer: Konstantinos Sideris <siderisk at auth dot gr>
 
 pkgname=nheko-git
-pkgver=0.4.0.r571.e032f293
+pkgver=0.4.3.r678.87042659
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
@@ -9,7 +9,7 @@ arch=("i686" "x86_64")
 url="https://github.com/mujx/nheko"
 license=("GPL3")
 
-depends=("qt5-base" "lmdb" "qt5-multimedia" "qt5-svg")
+depends=("qt5-base" "lmdb" "qt5-multimedia" "qt5-svg" "boost" "libsodium" "openssl")
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools")
 
 provides=("nheko")
@@ -24,11 +24,14 @@ prepare() {
 
 pkgver() {
     cd "$pkgname"
-    printf "0.4.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.4.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "$pkgname"
+    cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF
+    cmake --build .deps
+
     cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release
     cmake --build build
 }
