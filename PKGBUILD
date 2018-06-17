@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=racket-git
-pkgver=6.90.0.29.38628.a539825dc9
+pkgver=7.0.0.2.38715.5a4ea2cd1b
 pkgrel=1
 pkgdesc="Minimal Racket installation, without DrRacket, from git"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=('racket')
 conflicts=('racket')
 options=('!strip' '!emptydirs')
-source=("git://github.com/racket/racket.git")
+source=("git://github.com/racket/racket.git#commit=5a4ea2cd1b2bd13a7633a80c1ddff9755a11fd42")
 _gitname="racket"
 md5sums=('SKIP')
 
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 build() {
-  cd ${srcdir}/${_gitname}/${_gitname}/src
+  cd ${_gitname}/${_gitname}/src
   [[ -d build ]] || mkdir build
   cd build
   [[ "$CARCH" == "x86_64" ]] && export CFLAGS+=" -fPIC -O2"
@@ -35,6 +35,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${_gitname}/${_gitname}/src/build
+  cd ${_gitname}/${_gitname}/src/build
   make DESTDIR="${pkgdir}" install
 }
