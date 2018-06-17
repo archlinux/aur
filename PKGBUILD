@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.3.beta1.r0.g6fc1e20c66
+pkgver=8.3.beta6.r0.g8a6bc91f55
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -31,7 +31,7 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'latte-integrale: integral point count in polyhedra' 'polymake: polymake backend for polyhedral computations'
   'shared_meataxe: faster matrix arithmetic over finite fields' 'openblas: faster linear algebra'
   'sirocco: for computing the fundamental group of the complement of a plane curve' 'primecount: faster prime_pi implementation'
-  'three.js: alternative 3D plots engine')
+  'three.js: alternative 3D plots engine' 'dot2tex: for displaying some diagrams')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
   mcqd coxeter bliss-graphs tdlib python2-pkgconfig shared_meataxe libfes primecount git)
 source=(git://git.sagemath.org/sage.git#branch=develop
@@ -40,7 +40,7 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-networkx2.patch sagemath-scipy-1.0.patch sagemath-singular-4.1.1.patch sagemath-lcalc-c++11.patch
         pari-ratpoints.patch::"https://github.com/sagemath/sage/commit/83458400.patch")
 sha256sums=('SKIP'
-            '6f95ef6960acb3b368bc6245783d88fcadaa63537e1bf9f41d8d91b28e95ddf9'
+            '50992e8421595aee3fe84663cbc7417d8d010cbcc824851032f24930653c2950'
             '9e3c998e0ca8dcbf7ad9f5a8d591f2bc4cb792be14708e064594046081e9b60d'
             '0b680e674c11c47afa86162d8b49645620b8912722e08133d23357c29ca9310a'
             '2cad308f8adbb6c54e6603fa22b2f0eb60f6f09248d5d015000c3932ac14f646'
@@ -99,8 +99,7 @@ prepare(){
   patch -p1 -i ../fes02.patch
 
 # use python2
-  sed -e 's|#!/usr/bin/env sage-python23|#!/usr/bin/env python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' \
-    -e 's|exec python\b|exec python2|' -i src/bin/*
+  sed -e 's|#!/usr/bin/env sage-python23|#!/usr/bin/env python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
   sed -e 's|cython {OPT}|cython2 {OPT}|' -e 's|python setup.py|python2 setup.py|' -i src/sage/misc/cython.py
   sed -e 's|exec ipython\b|exec ipython2|' -e 's|cygdb|cygdb2|g' -i src/bin/sage
   sed -e "s|'cython'|'cython2'|" -i src/bin/sage-cython

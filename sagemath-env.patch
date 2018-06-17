@@ -101,14 +101,6 @@
  if [ "$PYTHON_EGG_CACHE" = "" ]; then
      PYTHON_EGG_CACHE="$DOT_SAGE/.python-eggs"
      export PYTHON_EGG_CACHE
-@@ -488,7 +488,6 @@
-         fi
-     fi
- fi
--export MAXIMA_PREFIX="$SAGE_LOCAL"
- 
- PERL5LIB="$SAGE_LOCAL/lib/perl5:$PERL5LIB" && export PERL5LIB
- 
 @@ -608,9 +608,6 @@
      LD_LIBRARY_PATH="$SAGE_LOCAL/bin:$LD_LIBRARY_PATH" && export LD_LIBRARY_PATH
  fi
