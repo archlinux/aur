@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp_serialization contains the code for serialization as descr
 url='http://ros.org/wiki/roscpp_serialization'
 
 pkgname='ros-melodic-roscpp-serialization'
-pkgver='0.6.10'
+pkgver='0.6.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-melodic-roscpp_serialization-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/roscpp_serialization/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f74464ebf956d0d6cb60770875781900d84e3ff7eb56fdf8be0402ce4f5fe6ee')
+sha256sums=('9df0441f142422b87b6fa226c98d08456c26f18f32590d26bbbd417950ada3b5')
 
 build() {
   # Use ROS environment variables

@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-roscpp-serialization
 	pkgdesc = ROS - roscpp_serialization contains the code for serialization as described in MessagesSerializationAndAdaptingTypes.
-	pkgver = 0.6.10
+	pkgver = 0.6.11
 	pkgrel = 1
 	url = http://ros.org/wiki/roscpp_serialization
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-roscpp-serialization
 	depends = ros-melodic-roscpp-traits
 	depends = ros-melodic-cpp-common
 	depends = ros-melodic-rostime
-	source = ros-melodic-roscpp-serialization-0.6.10-0.tar.gz::https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/roscpp_serialization/0.6.10-0.tar.gz
-	sha256sums = f74464ebf956d0d6cb60770875781900d84e3ff7eb56fdf8be0402ce4f5fe6ee
+	source = ros-melodic-roscpp-serialization-0.6.11-0.tar.gz::https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/roscpp_serialization/0.6.11-0.tar.gz
+	sha256sums = 9df0441f142422b87b6fa226c98d08456c26f18f32590d26bbbd417950ada3b5
 
 pkgname = ros-melodic-roscpp-serialization
 
