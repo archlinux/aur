@@ -8,12 +8,12 @@ arch=('i686' 'x86_64')
 url="http://www.vi-hps.org/projects/score-p/"
 license=('BSD')
 depends=('cube-perf' 'openmpi' 'otf2' 'opari2')
-source=(http://www.vi-hps.org/upload/packages/$pkgname/$pkgname-$pkgver.tar.gz gcc7.patch)
-sha1sums=('54680084955ec8190632f89f508643488a95e4cc' 'c7233fcb8c8ddae0e168f38ef614c439aabb9b84')
+source=(http://www.vi-hps.org/upload/packages/$pkgname/$pkgname-$pkgver.tar.gz gcc8.patch)
+sha1sums=('54680084955ec8190632f89f508643488a95e4cc' 'f5bf07a4571729a0679d6ab2f9e6e0c7138b88d1')
 
 prepare() {
  cd $srcdir/$pkgname-$pkgver
- patch -Np1 -i "${srcdir}/gcc7.patch"
+ patch -Np1 -i "${srcdir}/gcc8.patch"
 }
 
 build() {
