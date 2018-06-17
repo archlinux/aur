@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Rider EAP
-Version=
+Version=1.0
 Type=Application
 Exec="/opt/rider-eap/bin/rider.sh" %f
 Icon=/opt/rider-eap/bin/rider.png
