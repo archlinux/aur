@@ -4,7 +4,7 @@ pkgdesc="ROS - Interface base class for controllers."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-melodic-controller-interface'
-pkgver='0.14.2'
+pkgver='0.15.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_control-release-release-melodic-controller_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/melodic/controller_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ab30aafc8d549b2987425111e6d134cc0d2b1489565953fd028c44a1b0473e91')
+sha256sums=('df7ea5f1444a2f85e60e30428731e619ab97cf9c8649172d0f70a8ea58ef56f6')
 
 build() {
   # Use ROS environment variables
