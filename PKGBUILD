@@ -1,18 +1,18 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='xcursor-hackneyed'
 pkgdesc='Cursor theme inspired by Windows 3.x with high-contrast and sensible use of colors'
-pkgver='0.5.2'
+pkgver='0.6'
 pkgrel='1'
-url='https://github.com/Enthymem/hackneyed-x11-cursors'
+url='https://gitlab.com/Enthymeme/hackneyed-x11-cursors/'
 license=('custom:MIT')
 arch=('any')
 makedepends=('make' 'xorg-xcursorgen' 'inkscape>=0.48.4' 'imagemagick>=6.8.6')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('5dd05c860c5f7d2cf001b790db9a192e53532c89e35af6a458fd52b6e133ee17ee2a0e1dcb8c045b39c89117c05404be88864a3ebd4b0602c17ab1b64649ad1c')
+source=("${url}/-/archive/${pkgver}/hackneyed-x11-cursors-${pkgver}.tar.bz2")
+sha512sums=('e41667779c788b975a0083c274e776dac04d08bea33f80865242db49df44a6fa7337e8f36398752654cb4ce15fdb7f0716b59e714732c09adbf8a64bf5906d96')
 
 build () {
 	cd "hackneyed-x11-cursors-${pkgver}"
-	make -j$(nproc) all lall PREFIX=/usr
+	make -j$(nproc) all all.left PREFIX=/usr
 }
 
 package () {
