@@ -3,7 +3,7 @@
 pkgname=rocketchat-server-docker
 _pkgname=rocketchat-server
 pkgver=0.65.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source web chat platform, docker-compose package for minimal setup."
 arch=("any")
 conflicts=("rocketchat-server")
@@ -21,7 +21,7 @@ source=(
 	"rocketchat.service"
 )
 sha512sums=(
-	"b23886f89ac5e962e0dd2065c3e73651b0adadfcac5fac89a6b9996e9015c50b2e11ffbafe3fa71b5dc6598676d0bf3cf08537657584b79970a61ba1c5423028"
+	"8e40c069434f06769993939fe6c033892c2676f14feb58b98514ed330b41e14cd3851000e78276ac9b48ba25cf8dd069c96abeb636561fa066bec02a241708fe"
 	"53f012f89511b7ce0d1b1c8c4e6ac0cc376dfae558619db1728257777abf3d9abd1ac22a7ecb73eaf1feabac3826950352d5ce7b7303e94d6d71c349976d6e29"
 	"56146941271dbe8edd2e593392af665f4e39f7f78b48bf93aa21a3bef3886063eb2dd423b31ac1474c435500f7e34722f4eb5641665c643b6344360b2ad37c79"
 	"92780bd28014a2cb93b30e392c1dd8a4d3a8fd7903f680c5715bfcbc3135e6d5d44b9ab7fb7b044d0fbdb042c4a7c5a36dade5a0a099db26737f62b94a5ddc03"

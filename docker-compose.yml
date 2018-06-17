@@ -16,5 +16,5 @@ services:
     links:
       - "db:db"
     ports:
-		- "22020:3000"
+      - "22020:3000"
 
