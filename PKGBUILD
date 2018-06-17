@@ -3,9 +3,9 @@
 
 _gitname=doctrina
 pkgname=${_gitname}-git
-pkgver=0.1.0
+pkgver=0.1.1.r0.g137b235
 pkgrel=1
-pkgdesc='texto texto'
+pkgdesc='The library of Software Peronista'
 arch=('x86_64')
 license=('GPL3')
 url='https://git.softwareperonista.com.ar/cdp/doctrina'
@@ -13,7 +13,7 @@ conflicts=('doctrina')
 provides=('doctrina')
 depends=('glib2' 'sqlite3')
 makedepends=('meson' 'vala' 'git')
-source=("${pkgname}::git+https://git.softwareperonista.com.ar/cdp/doctrina.git")
+source=("${pkgname}::git+https://git.softwareperonista.com.ar/cdp/${_gitname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,7 +24,6 @@ pkgver() {
 build() {
   cd ${pkgname}
 
-  git branch
   arch-meson . build
 
   ninja -C build
