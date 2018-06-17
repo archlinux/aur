@@ -1,6 +1,7 @@
-# Maintainer: Sapphira Armageddos <shadowkyogre.public@gmail.com>
+# Maintainer: bitwave < aur [aTtt] oomlu [d0ot] de>
+# Contributor: Sapphira Armageddos <shadowkyogre.public@gmail.com>
 pkgname=dilay
-pkgver=1.5.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A 3D sculpting application that provides an intuitive workflow using a number of powerful modeling tool"
 arch=('i686' 'x86_64')
@@ -24,7 +25,7 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make install
 	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 logoBg.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+	install -Dm644 "unix/icon/48x48/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
-sha1sums=('3a70e84d46313c2b348262b06d8b9cb0655f0d93')
+sha1sums=('ef62a6221118c20970545a2e0fab510bd671eb2f')
