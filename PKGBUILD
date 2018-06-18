@@ -3,14 +3,14 @@ _pkgname=trezord
 pkgname="${_pkgname}-git"
 gitname="${_pkgname}-go"
 pkgrel=1
-pkgver=2.0.8.r0.g83471aa
+pkgver=2.0.14.r0.gd749730
 pkgdesc='TREZOR Communication Daemon'
 url='https://trezor.io/'
 arch=('i686' 'x86_64')
 license=('LGPL3')
 provides=("${_pkgname}" 'trezor-bridge')
 conflicts=("${_pkgname}" 'trezor-bridge-bin')
-makedepends=('go')
+makedepends=('git' 'go')
 depends=()
 source=(
     "git://github.com/trezor/${gitname}.git"
