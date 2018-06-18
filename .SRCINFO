@@ -1,10 +1,10 @@
 pkgbase = camouflage
 	pkgdesc = camouflage
 	pkgver = 20180618.42_a9e9c56
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = MPL
 	makedepends = go
 	makedepends = git
 	source = camouflage::git://github.com/Sherlock-Holo/camouflage#branch=master
