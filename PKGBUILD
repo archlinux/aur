@@ -8,7 +8,7 @@
 # update the dependencies based on dynamic libraries when packaging..
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.28.2.r565.ga645c6b2ec
+pkgver=0.28.2.r618.gcd893626cb
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -225,6 +225,8 @@ package() {
     #install ahjolinna "config-build" files
  cp -R ${srcdir}/mpv-conf/mpv/etc/* ${pkgdir}/etc/mpv
     install -d "${pkgdir}/etc/mpv/"
+
+cp $srcdir/$_gitname/etc/encoding-profiles.conf ${pkgdir}/etc/mpv
 
   # Update dependencies automatically based on dynamic libraries
   _detected_depends=($("$srcdir"/find-deps.py "$pkgdir"/usr/{bin/mpv,lib/libmpv.so}))
