@@ -4,27 +4,30 @@
 
 pkgname=barry
 pkgver=0.18.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Barry is an Open Source application that provides a Desktop GUI, synchronization, backup, restore and program management for BlackBerry ™ devices."
-url=http://www.netdirect.ca/software/packages/barry
+url=https://github.com/NetDirect/barry
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('libusb' 'zlib' 'libglademm' 'libtar' 'libxml++2.6' 'wxgtk2' 'sdl' 'libgcal')
 optdepends=('fuse2: for mounting the BB database with bfuse'
             'ppp: for tethering with pppob')
 options=('!libtool')
-source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}-0.18.4/sources/debian/${pkgname}_${pkgver}.orig.tar.gz"
+source=("https://github.com/NetDirect/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "fix-sizeof-use.patch"
         "wx3.0-compat.patch"
-        "c++11.patch")
-sha256sums=('66cd913bcfcb5dc0fc3dfcbe8c375845d51649d573c321acba46b96b1bc0059e'
+        "c++11.patch"
+        "iterator-buildfix.patch")
+sha256sums=('cfe5224c34b25575543bbdeebf979074f76ccc7d37116f15aef20509e6c06c91'
             'aa97e456e0bb1f39cf0d95b1f35080d328947a3bcf40b2b97a0ab11ad34ccc21'
             'd1eb3ff669d5d8490112ceb4138fe9eb107bdbbc8621c98ead5ff47b9a7faf4e'
             'd89dec40916c99355426a9430130a34b9c9f8deccf2e0bd2be75c6eea46249f3'
-            'bd211b7323a36f255af7cad13b886d8bb45d74f1d2bcecef00733bb5a9080f2c')
+            'bd211b7323a36f255af7cad13b886d8bb45d74f1d2bcecef00733bb5a9080f2c'
+            '690d6d9cdd5f84ac120e5e2a0c974916217a059c25ad08dd1b45b33d858993ad')
 
 prepare() {
+  mv ${srcdir}/${pkgname}-${pkgname}-${pkgver} ${srcdir}/${pkgname}-${pkgver}
   cd ${srcdir}/${pkgname}-${pkgver}
 
   # Debian patches
@@ -33,6 +36,9 @@ prepare() {
 
   # C++11 compatibility
   patch -Np1 -i "${srcdir}/c++11.patch"
+
+  # Fix build failure for functions that return reverse iterators
+  patch -Np1 -i "${srcdir}/iterator-buildfix.patch"
 
   autoreconf -fi
 }
