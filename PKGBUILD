@@ -33,4 +33,4 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 
-sha256sums=('a17eb4e3ba7600699541a0ac1d7e820b6faf1f2dcda02f791f6e69548d7bb0aa')
+sha256sums=('1402cfbd9988cfe86d0ded47bd9732a061581f04bdb6275f156d8654e4d09a3a')
