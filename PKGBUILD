@@ -1,7 +1,7 @@
 # Maintainer: helix <stargr[at]gmail[dot]com>
 pkgname=wps-office-extension-czech-dictionary
 pkgver=20140617
-pkgrel=2
+pkgrel=3
 pkgdesc='Czech dictionary for WPS Office'
 arch=('any')
 url='http://wps-community.org/download/dicts'
@@ -10,9 +10,9 @@ depends=('wps-office')
 groups=('wps-office-extensions')
 makedepends=('unzip')
 source=(http://wps-community.org/download/dicts/cs_CZ.zip)
-sha1sums=('e1679916ec803e711c8b11d06e60d5f3918ea7cb')
+sha512sums=('dfbc7c4971363665382002076a5924c852617a6075c80cbeb627b6d209103415088c5d7ae73d41279f1f84778a7345500e21810e98e30a35aaca01dcfee988f6')
 
 package() {
-  install -dm755 $pkgdir/usr/lib/office6/dicts
-  unzip -q $srcdir/cs_CZ.zip -d $pkgdir/usr/lib/office6/dicts
+  install -dm755 $pkgdir/usr/lib/office6/dicts/spellcheck
+  unzip -q $srcdir/cs_CZ.zip -d $pkgdir/usr/lib/office6/dicts/spellcheck
 }
