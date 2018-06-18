@@ -1,24 +1,26 @@
-# Maintainer:  Eugen Zagorodniy <https://github.com/ezag>
-# Contributor: Travis Raines <rainest@carleton.edu>
-# Contributor: Vesa Kaihlavirta <vegai@iki.fi>
-# Contributor: Kristoffer Fossgård <kfs1@online.no>
-
 pkgname=terminus-cyrillic
+_pkgname=terminus-font
 pkgver=4.46
-pkgrel=2
-pkgdesc="Terminus font with dv1 and ij1 patches applied"
-depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
-provides=("terminus-font=${pkgver}")
-replaces=(xserver-terminus-fonts)
-conflicts=(terminus-font)
-arch=(any)
-source=("http://downloads.sourceforge.net/project/terminus-font/terminus-font-${pkgver}/terminus-font-${pkgver}.tar.gz")
-url="http://sourceforge.net/projects/terminus-font/"
-install=terminus-cyrillic.install
-license=('GPL-2' 'OFL')
+pkgrel=3
+pkgdesc='Terminus monospace bitmap font (for X11 and console) with patches dv1 and ij1 applied'
+arch=('any')
+url='http://sourceforge.net/projects/terminus-font/'
+license=('GPL2' 'custom:OFL')
+makedepends=('xorg-bdftopcf' 'fontconfig' 'xorg-mkfontscale' 'xorg-mkfontdir')
+optdepends=('xorg-fonts-alias')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+provides=('terminus-font')
+conflicts=('terminus-font')
+install='terminus-cyrillic.install'
+source=("http://downloads.sourceforge.net/project/$_pkgname/$_pkgname-$pkgver/$_pkgname-$pkgver.tar.gz")
+sha256sums=('4e29433e5699b76df1f5c9a96f1228cccf8ea8a16791cfef063f2b8506c75bcd')
 
-package() { 
-  cd $srcdir/terminus-font-$pkgver
+prepare() {
+  chmod +x "$_pkgname-$pkgver/configure"
+}
+
+build() {
+  cd "$_pkgname-$pkgver"
 
   # Uncomment patches you need:
   #
@@ -44,8 +46,21 @@ package() {
   # patch -i alt/ll2.diff
   # patch -i alt/td1.diff
 
-  chmod +x configure
-  ./configure --prefix=/usr --x11dir=/usr/share/fonts/local/ --psfdir=/usr/share/kbd/consolefonts/
-  make DESTDIR=$pkgdir install
+  ./configure --prefix=/usr --x11dir=/usr/share/fonts/misc \
+    --psfdir=/usr/share/kbd/consolefonts
+  make
 }
-md5sums=('368f512a88b5855fe2f12a9262da52f2')
+
+package() {
+  make -C "$_pkgname-$pkgver" DESTDIR="$pkgdir" install
+
+  install -Dm644 "$srcdir/$_pkgname-$pkgver/75-yes-terminus.conf" \
+    "$pkgdir/etc/fonts/conf.avail/75-yes-terminus.conf"
+  install -Dm644 "$srcdir/$_pkgname-$pkgver/OFL.TXT" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -d "$pkgdir/etc/fonts/conf.d"
+
+  cd "$pkgdir/etc/fonts/conf.d"
+  ln -s ../conf.avail/75-yes-terminus.conf .
+}
+
