@@ -8,7 +8,6 @@ pkgbase = mingw-w64-dbus-c++
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-crt
 	depends = mingw-w64-dbus
-	depends = mingw-w64-glib2
 	options = !strip
 	options = !buildflags
 	options = staticlibs

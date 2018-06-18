@@ -10,7 +10,7 @@ arch=('any')
 url="http://dbus-cplusplus.sourceforge.net/"
 license=('LGPL')
 makedepends=('mingw-w64-configure')
-depends=('mingw-w64-crt' 'mingw-w64-dbus' 'mingw-w64-glib2')
+depends=('mingw-w64-crt' 'mingw-w64-dbus')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://sourceforge.net/projects/${_upstream}/files/dbus-c++/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'gcc47.patch'
