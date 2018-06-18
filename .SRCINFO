@@ -1,0 +1,24 @@
+pkgbase = thunar-archive-plugin-gtk2
+	pkgdesc = Create and extract archives in Thunar (GTK2 version)
+	pkgver = 0.3.1
+	pkgrel = 7
+	url = http://goodies.xfce.org/projects/thunar-plugins/thunar-archive-plugin
+	arch = x86_64
+	groups = xfce4-goodies
+	license = GPL2
+	makedepends = intltool
+	makedepends = xfce4-dev-tools
+	depends = thunar
+	depends = hicolor-icon-theme
+	optdepends = file-roller
+	optdepends = ark
+	optdepends = xarchiver
+	provides = thunar-archive-plugin
+	conflicts = thunar-archive-plugin
+	source = https://archive.xfce.org/src/thunar-plugins/thunar-archive-plugin/0.3/thunar-archive-plugin-0.3.1.tar.bz2
+	source = 0001-Fix-file-roller-3.12.1-detection-bug-10826.patch
+	sha256sums = 9ad559b0c11308f6897ad56604e5a06dc8f369f649eb20120b2d3018ef5da54c
+	sha256sums = 4373c3011f5abd1d4119d283e832aeb858c810f14b3a59b6250cf10893aa0757
+
+pkgname = thunar-archive-plugin-gtk2
+
