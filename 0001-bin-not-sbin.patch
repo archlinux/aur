@@ -1,0 +1,25 @@
+From 6178d79e98fb3657925ff1ffcd775cbdbebdab3c Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Sun, 20 May 2018 15:31:34 -0400
+Subject: [PATCH] bin not sbin
+
+---
+ src/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index 3d27683..c7ea362 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -9,7 +9,7 @@ config_header = configure_file (
+     output: 'config.vala',
+     configuration: conf_data
+ )
+-install_path = join_paths(get_option('prefix'), 'sbin')
++install_path = join_paths(get_option('prefix'), 'bin')
+ 
+ executable(
+     meson.project_name(),
+-- 
+2.17.0
+

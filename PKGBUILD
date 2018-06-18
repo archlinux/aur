@@ -12,15 +12,15 @@ groups=('pantheon-unstable')
 depends=('cairo' 'clutter' 'clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
          'libgee' 'libgl' 'libx11' 'lightdm'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'libxfixes' 'vala' 'wingpanel-git')
+makedepends=('meson' 'git' 'granite-git' 'libglvnd' 'libxfixes' 'vala'
+             'wingpanel-git')
 provides=('lightdm-pantheon-greeter')
 conflicts=('lightdm-pantheon-greeter')
-replaces=('lightdm-pantheon-greeter-bzr')
 install='lightdm-pantheon-greeter.install'
 source=('lightdm-pantheon-greeter::git+https://github.com/elementary/greeter.git'
-        'lightdm-pantheon-greeter-paths.patch')
+        '0001-bin-not-sbin.patch')
 sha256sums=('SKIP'
-            'aaf0d9ba865bc5c25e463d2bcd2732fb1fa50e3e40a22021fd370f31e258c185')
+            'f1fd5a443caa80cf95ee36a05421f3418cb1bc86714e47f1314c61128b77054b')
 
 pkgver() {
   cd lightdm-pantheon-greeter
@@ -29,30 +29,26 @@ pkgver() {
 }
 
 prepare() {
-  cd lightdm-pantheon-greeter
-
-  patch -Np1 -i ../lightdm-pantheon-greeter-paths.patch
-
   if [[ -d build ]]; then
     rm -rf build
   fi
   mkdir build
+
+  cd lightdm-pantheon-greeter
+
+  patch -Np1 -i ../0001-bin-not-sbin.patch
 }
 
 build() {
-  cd lightdm-pantheon-greeter/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DGSETTINGS_COMPILE='OFF'
-  make
+  arch-meson ../lightdm-pantheon-greeter
 }
 
 package() {
-  cd lightdm-pantheon-greeter/build
+  build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
