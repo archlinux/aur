@@ -1,12 +1,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatmail-git
-pkgver=r8.f8bb742
+pkgver=r50.12d9c4e
 pkgrel=1
 epoch=
 pkgdesc="A command-line mail client."
 arch=('i686' 'x86_64')
 url="http://repo.or.cz/neatmail.git"
-license=('custom:BSD')
+license=('ISC')
 groups=()
 depends=('')
 makedepends=('git')
@@ -28,11 +28,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-#prepare() {
-#  cd "$srcdir/$pkgname"
-#  ./autogen.sh
-#}
-
 build() {
   cd "$srcdir/$pkgname"
   make
@@ -41,6 +36,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 mail $pkgdir/usr/bin/neatmail
-  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
+  install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
 }
 
