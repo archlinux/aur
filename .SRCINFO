@@ -19,6 +19,7 @@ pkgbase = nvidia-beta-dkms
 	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/396.24/NVIDIA-Linux-x86_64-396.24-no-compat32.run
 	source = drm-control-allow.patch
 	sha256sums = 41b80d2a4519ac78ac17c02fec976256d2ba5c9618640d2a9be9cb70685b2a9c
+	sha256sums = 87e0b5312425a56cda82873667563073fd9d2acc7f65d960e14c3eb0f4608ac0
 
 pkgname = nvidia-beta-dkms
 

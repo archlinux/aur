@@ -9,7 +9,7 @@
 
 pkgname=nvidia-beta-dkms
 pkgver=396.24
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA kernel module sources (DKMS) - BETA version"
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -24,7 +24,8 @@ install=${pkgname}.install
 _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
 drm-control-allow.patch)
-sha256sums=('41b80d2a4519ac78ac17c02fec976256d2ba5c9618640d2a9be9cb70685b2a9c')
+sha256sums=('41b80d2a4519ac78ac17c02fec976256d2ba5c9618640d2a9be9cb70685b2a9c'
+            '87e0b5312425a56cda82873667563073fd9d2acc7f65d960e14c3eb0f4608ac0')
 
 prepare() {
   # Remove previous builds
