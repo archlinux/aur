@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 
 pkgname=mkl-dnn
-pkgver=0.13
+pkgver=0.14
 pkgrel=0
 
 epoch=
