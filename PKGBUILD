@@ -2,19 +2,19 @@
 
 pkgname=xcursor-theme-wii
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete port of the 'Wii Cursors' theme by allewun"
 arch=('any')
 url="https://www.gnome-look.org/content/show.php/Wii+Cursors?content=100367"
 license=('GPL')
 conflicts=('')
-source=('https://dl.opendesktop.org/api/files/downloadfile/id/1460735332/s/5f5dde1d18c509f44e421936bd3a772c/t/1529250171/u//100367-WiiCursors-0.3.1.tar.bz2')
-md5sums=('3fa928f448f974bc1bea15e30777bca6')
+
+source=('http://acidhub.click/downloads/WiiCursorTheme-0.3.1.tar.gz')
+
+md5sums=('7fa791c9ea62fd3257a642fe594bc69d')
 
 package() {
-  # Create installation directories
-  install -d -m755 "${pkgdir}/usr/share/icons/"
-  # Install the cursor theme
-  cp -rf "WiiCcwCursorTheme" "${pkgdir}/usr/share/icons/"
-  cp -rf "WiiCursorTheme" "${pkgdir}/usr/share/icons/"
+  mkdir -pm755 "$pkgdir/usr/share/icons/"
+  cp -r "WiiCursorTheme" "$pkgdir/usr/share/icons/"
+  cp -r "WiiCcwCursorTheme" "$pkgdir/usr/share/icons/"
 }
