@@ -7,12 +7,12 @@ pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
 url='https://github.com/RPCS3/rpcs3'
 license=('GPL2')
-depends=('alsa-lib' 'gcc-libs' 'glew' 'glibc' 'glu' 'libevdev' 'libgl' 'libice'
-         'libpng' 'libpulse' 'libsm' 'libx11' 'libxext' 'openal' 'qt5-base'
-         'qt5-declarative' 'vulkan-icd-loader' 'yaml-cpp' 'zlib'
+depends=('alsa-lib' 'glew' 'glu' 'libevdev' 'libgl' 'libice' 'libpng'
+         'libpulse' 'libsm' 'libx11' 'libxext' 'openal' 'qt5-base'
+         'qt5-declarative' 'vulkan-icd-loader' 'zlib'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libncursesw.so'
          'libswscale.so' 'libudev.so')
-makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git'
+makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git' 'libglvnd'
              'vulkan-validation-layers')
 provides=('rpcs3')
 conflicts=('rpcs3')
