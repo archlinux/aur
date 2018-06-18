@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 
+
+The MIT License (MIT)
+
+Copyright (c) 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+Authors:
+Antony Kellermann
+https://github.com/aokellermann/
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <!-- interface-license-type mit -->
+  <!-- interface-name Tick -->
+  <!-- interface-description Command line stock and cryptocurrency portfolio tracker.  -->
+  <!-- interface-authors Antony Kellermann\nhttps://github.com/aokellermann/ -->
+  <object class="GtkListStore" id="check_list">
+    <columns>
+      <!-- column-name Amount -->
+      <column type="gchararray"/>
+      <!-- column-name Symbol -->
+      <column type="gchararray"/>
+      <!-- column-name Value -->
+      <column type="gchararray"/>
+      <!-- column-name Spent -->
+      <column type="gchararray"/>
+      <!-- column-name Profit -->
+      <column type="gchararray"/>
+      <!-- column-name Profit1 -->
+      <column type="gchararray"/>
+      <!-- column-name Profit24H -->
+      <column type="gchararray"/>
+      <!-- column-name 24H% -->
+      <column type="gchararray"/>
+      <!-- column-name Profit7D -->
+      <column type="gchararray"/>
+      <!-- column-name 7D% -->
+      <column type="gchararray"/>
+      <!-- column-name Profit30D -->
+      <column type="gchararray"/>
+      <!-- column-name 30D% -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkApplicationWindow" id="window_main">
+    <property name="can_focus">False</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkScrolledWindow" id="scroll_window">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="shadow_type">in</property>
+        <child>
+          <object class="GtkTreeView" id="check_tree_view">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hscroll_policy">natural</property>
+            <property name="vscroll_policy">natural</property>
+            <property name="model">check_list</property>
+            <property name="enable_search">False</property>
+            <property name="fixed_height_mode">True</property>
+            <property name="show_expanders">False</property>
+            <property name="enable_grid_lines">both</property>
+            <child internal-child="selection">
+              <object class="GtkTreeSelection"/>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="amount_column">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min_width">100</property>
+                <property name="title" translatable="yes">Amount</property>
+                <property name="expand">True</property>
+                <property name="clickable">True</property>
+                <property name="sort_indicator">True</property>
+                <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                <child>
+                  <object class="GtkCellRendererText" id="amount_renderer">
+                    <property name="xalign">1</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">0</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="symbol_column">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min_width">100</property>
+                <property name="title" translatable="yes">Symbol</property>
+                <property name="expand">True</property>
+                <property name="clickable">True</property>
+                <property name="sort_indicator">True</property>
+                <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                <child>
+                  <object class="GtkCellRendererText" id="symbol_renderer">
+                    <property name="xalign">0</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">1</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="value_column">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min_width">100</property>
+                <property name="title" translatable="yes">Value</property>
+                <property name="expand">True</property>
+                <property name="clickable">True</property>
+                <property name="sort_indicator">True</property>
+                <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                <child>
+                  <object class="GtkCellRendererText" id="value_renderer">
+                    <property name="xalign">1</property>
+                    <property name="alignment">right</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">2</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="spent_column">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min_width">100</property>
+                <property name="title" translatable="yes">Spent</property>
+                <property name="expand">True</property>
+                <property name="clickable">True</property>
+                <property name="sort_indicator">True</property>
+                <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                <child>
+                  <object class="GtkCellRendererText" id="spent_renderer">
+                    <property name="xalign">1</property>
+                    <property name="alignment">right</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">3</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="profit_column">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min_width">100</property>
+                <property name="title" translatable="yes">Profit</property>
+                <property name="expand">True</property>
+                <property name="clickable">True</property>
+                <property name="sort_indicator">True</property>
+                <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                <child>
+                  <object class="GtkCellRendererText" id="profit_renderer">
+                    <property name="xalign">1</property>
+                    <property name="alignment">right</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">4</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="profit_percent_column">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min_width">65</property>
+                <property name="title" translatable="yes">%</property>
+                <property name="expand">True</property>
+                <property name="clickable">True</property>
+                <property name="sort_indicator">True</property>
+                <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                <child>
+                  <object class="GtkCellRendererText" id="profit_percent_renderer">
+                    <property name="xalign">1</property>
+                    <property name="alignment">right</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">5</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="profit_24h_column">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min_width">65</property>
+                <property name="title" translatable="yes">24H</property>
+                <property name="expand">True</property>
+                <property name="clickable">True</property>
+                <property name="sort_indicator">True</property>
+                <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                <child>
+                  <object class="GtkCellRendererText" id="profit_24h_renderer">
+                    <property name="xalign">1</property>
+                    <property name="alignment">right</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">6</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="profit_24h_percent_column">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min_width">65</property>
+                <property name="title" translatable="yes">24H%</property>
+                <property name="expand">True</property>
+                <property name="clickable">True</property>
+                <property name="sort_indicator">True</property>
+                <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                <child>
+                  <object class="GtkCellRendererText" id="profit_24h_percent_renderer">
+                    <property name="xalign">1</property>
+                    <property name="alignment">right</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">7</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="profit_7d_column">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min_width">65</property>
+                <property name="title" translatable="yes">7D</property>
+                <property name="expand">True</property>
+                <property name="clickable">True</property>
+                <property name="sort_indicator">True</property>
+                <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                <child>
+                  <object class="GtkCellRendererText" id="profit_7d_renderer">
+                    <property name="xalign">1</property>
+                    <property name="alignment">right</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">8</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="profit_7d_percent_column">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min_width">65</property>
+                <property name="title" translatable="yes">7D%</property>
+                <property name="expand">True</property>
+                <property name="clickable">True</property>
+                <property name="sort_indicator">True</property>
+                <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                <child>
+                  <object class="GtkCellRendererText" id="profit_7d_percent_renderer">
+                    <property name="xalign">1</property>
+                    <property name="alignment">right</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">9</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="profit_30d_column">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min_width">80</property>
+                <property name="title" translatable="yes">30D</property>
+                <property name="expand">True</property>
+                <property name="clickable">True</property>
+                <property name="sort_indicator">True</property>
+                <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                <child>
+                  <object class="GtkCellRendererText" id="profit_30d_renderer">
+                    <property name="xalign">1</property>
+                    <property name="alignment">right</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">10</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="profit_30d_percent_column">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min_width">65</property>
+                <property name="title" translatable="yes">30D%</property>
+                <property name="expand">True</property>
+                <property name="clickable">True</property>
+                <property name="sort_indicator">True</property>
+                <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                <child>
+                  <object class="GtkCellRendererText" id="profit_30d_percent_renderer">
+                    <property name="xalign">1</property>
+                    <property name="alignment">right</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">11</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

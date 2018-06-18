@@ -1,16 +1,15 @@
 #include "portfolio.h"
 #include "info.h"
+#include "gtk_win.h"
 
 int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        puts("Invalid arguments. Type \"man tick\" for help.");
-        return 0;
+    char* cmd = NULL, * sym = NULL;
+    if (argc > 1) {
+        cmd = malloc(strlen(argv[1]) + 1);
+        pointer_alloc_check(cmd);
+        strcpy(cmd, argv[1]);
+        strtolower(cmd);
     }
-    char cmd[strlen(argv[1]) + 1];
-    strcpy(cmd, argv[1]);
-    strtolower(cmd);
-
-    char* sym = NULL;
     if (argc > 2) {
         sym = malloc(strlen(argv[2]) + 1);
         pointer_alloc_check(sym);
@@ -27,8 +26,12 @@ int main(int argc, char* argv[]) {
     // Portfolio modify operation
     int modop = -1;
 
-        // News
-    if (strcmp(cmd, "news") == 0 && (argc == 3 || argc == 4)) {
+    // GTK+ window
+    if (argc == 1)
+        window_main();
+
+    // News
+    else if (strcmp(cmd, "news") == 0 && (argc == 3 || argc == 4)) {
         int num_articles = 3; // Default
         if (argc == 4)
             num_articles = (int) strtol(argv[3], NULL, 10);
@@ -103,6 +106,7 @@ int main(int argc, char* argv[]) {
     }
     free(portfolio_file);
     free(sym);
+    free(cmd);
     curl_global_cleanup();
     return 0;
 }
