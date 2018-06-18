@@ -9,6 +9,7 @@ url="https://github.com/timelens/timelens"
 license=('GPL')
 provides=('timelens')
 conflicts=('timelens')
+depends=('gstreamer')
 makedepends=('git' 'cargo')
 source=("$pkgname::git+https://github.com/timelens/timelens")
 sha1sums=('SKIP')
