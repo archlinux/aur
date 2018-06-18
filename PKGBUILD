@@ -7,7 +7,7 @@
 pkgname=deluge-stable-git
 _gitname="deluge"
 _gitbranch="1.3-stable"
-pkgver=1.3.15.r14.gb8e5ebe82
+pkgver=1.3.15.r15.ga2fcebe15
 pkgrel=1
 pkgdesc="A bittorrent client written with python and pygtk - Git Stable branch Version"
 arch=('any')
@@ -57,15 +57,12 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  2to3 -w *.py deluge tests
-  python setup.py build
+  python2 setup.py build
 }
 
 package() {
   cd "${srcdir}/$_gitname"
-  2to3 -w *.py deluge tests
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  
+  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   cd "${srcdir}"
   install -Dm644 deluge.tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/deluge.conf"
   install -Dm644 deluged.service "$pkgdir/usr/lib/systemd/system/deluged.service"
