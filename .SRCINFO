@@ -1,6 +1,6 @@
 pkgbase = kicad-symbols
 	pkgdesc = Official KiCad schematic symbol libraries -- stable release
-	pkgver = 5.0.0rc1
+	pkgver = 5.0.0rc2
 	pkgrel = 3
 	url = https://kicad.github.io/symbols
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = kicad-symbols
 	conflicts = kicad-library
 	conflicts = kicad-symbols-git
 	conflicts = kicad-pretty-git
-	source = https://github.com/KiCad/kicad-symbols/archive/5.0.0-rc1.tar.gz
-	md5sums = 6287e48816ae4c4ae778c9fbceb7181d
+	source = https://github.com/KiCad/kicad-symbols/archive/5.0.0-rc2.tar.gz
+	md5sums = 3b518af6eaa8be9cd40f17d4e65b9eab
 
 pkgname = kicad-symbols
 
