@@ -2,7 +2,7 @@ diff --git a/wingpanel/schemas/io.elementary.desktop.wingpanel.gschema.xml b/win
 index c81abd5..890e277 100644
 --- a/wingpanel/schemas/io.elementary.desktop.wingpanel.gschema.xml
 +++ b/wingpanel-qq/schemas/io.elementary.desktop.wingpanel.gschema.xml
-@@ -6,5 +6,15 @@
+@@ -6,5 +6,21 @@
  			<summary>Sets if the panel uses transparency.</summary>
  			<description>Disable this to provide higher contrasts and make indicators better readable.</description>
  		</key>
@@ -15,6 +15,12 @@ index c81abd5..890e277 100644
 +			<default>'Disabled'</default>
 +			<summary>Sets if and how the panel will autohide.</summary>
 +			<description>Enable this to increase available desktop area and reduce clutter.</description>
++		</key>
++		<key type="i" name="delay">
++			<range min="0" max="1000"/>
++			<default>200</default>
++			<summary>Sets how long before the panel will autohide in milliseconds.</summary>
++			<description>Increase or decrease this value to your preference.</description>
 +		</key>
  	</schema>
  </schemalist>
@@ -32,13 +38,14 @@ index c48b5ea..81ec2f2 100644
      private int monitor_number;
      private int monitor_width;
      private int monitor_height;
-@@ -30,6 +33,9 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+@@ -30,6 +33,10 @@ public class Wingpanel.PanelWindow : Gtk.Window {
      private bool expanded = false;
      private int panel_displacement;
      private uint shrink_timeout = 0;
 +    private bool hiding = false;
 +    private bool restrut = true;
 +    private string autohide = Services.PanelSettings.get_default ().autohide;
++    private int autohide_delay = Services.PanelSettings.get_default ().delay;
  
      public PanelWindow (Gtk.Application application) {
          Object (
@@ -52,13 +59,17 @@ index c48b5ea..81ec2f2 100644
  
          update_visual ();
  
-@@ -71,17 +79,33 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+@@ -71,17 +79,40 @@ public class Wingpanel.PanelWindow : Gtk.Window {
          application.add_accelerator ("<Control>Tab", "app.cycle", null);
          application.add_accelerator ("<Control><Shift>Tab", "app.cycle-back", null);
  
 +        Services.PanelSettings.get_default ().notify["autohide"].connect (() => {
 +            autohide = Services.PanelSettings.get_default ().autohide;
 +            update_autohide_mode ();
++        });
++
++        Services.PanelSettings.get_default ().notify["delay"].connect (() => {
++            autohide_delay = Services.PanelSettings.get_default ().delay;
 +        });
 +
          add (panel);
@@ -70,12 +81,18 @@ index c48b5ea..81ec2f2 100644
 +        if (hiding != true) {
 +            if (panel_displacement <= panel_height * (-1)) {
 +                timeout = 0;
++                if (restrut == true) {
++                    update_panel_dimensions ();
++                }
 +                return false;
 +            }
 +            panel_displacement--;
 +        } else {
 +            if (panel_displacement >= -1 || popover_manager.current_indicator != null) {
 +                timeout = 0;
++                if (restrut == true) {
++                    update_panel_dimensions ();
++                }
 +                return false;
 +            }
 +            panel_displacement++;
@@ -84,9 +101,6 @@ index c48b5ea..81ec2f2 100644
 -        panel_displacement--;
 -
 -        update_panel_dimensions ();
-+        if (restrut == true) {
-+            update_panel_dimensions ();
-+        }
 +        animate_panel ();
  
          return true;
@@ -112,10 +126,10 @@ index c48b5ea..81ec2f2 100644
 +            if (timeout > 0) {
 +                Source.remove (timeout);
 +            }
-+            if (autohide == "Dodge") {
-+                restrut = true;
-+                timeout = Timeout.add (300 / panel_height, animation_step);
-+            } else if (autohide == "Autohide") {
++            if (popover_manager.current_indicator == null) {
++                Thread.usleep (autohide_delay * 1000);
++            }
++            if (autohide == "Autohide" || autohide == "Dodge") {
 +                restrut = true;
 +                timeout = Timeout.add (100 / panel_height, animation_step);
 +            } else if (autohide == "Float") {
@@ -132,10 +146,10 @@ index c48b5ea..81ec2f2 100644
 +            if (timeout > 0) {
 +                Source.remove (timeout);
 +            }
-+            if (autohide == "Dodge") {
-+                restrut = true;
-+                timeout = Timeout.add (300 / panel_height, animation_step);
-+            } else if (autohide == "Autohide") {
++            if (popover_manager.current_indicator == null) {
++                Thread.usleep (autohide_delay * 1000);
++            }
++            if (autohide == "Autohide" || autohide == "Dodge") {
 +                restrut = true;
 +                timeout = Timeout.add (100 / panel_height, animation_step);
 +            } else if (autohide == "Float") {
@@ -150,7 +164,7 @@ index c48b5ea..81ec2f2 100644
 +        restrut = true;
 +        if (autohide == "Disabled" || autohide == "Dodge") {
 +            hiding = false;
-+            timeout = Timeout.add (300 / panel_height, animation_step);
++            timeout = Timeout.add (100 / panel_height, animation_step);
 +        } else {
 +            hiding = true;
 +            timeout = Timeout.add (100 / panel_height, animation_step);
@@ -187,11 +201,13 @@ diff --git a/wingpanel/src/Services/Settings.vala b/wingpanel-qq/src/Services/Se
 index 3bcd0a7..eeecbb8 100644
 --- a/wingpanel/src/Services/Settings.vala
 +++ b/wingpanel-qq/src/Services/Settings.vala
-@@ -23,6 +23,8 @@ namespace Wingpanel.Services {
+@@ -23,6 +23,10 @@ namespace Wingpanel.Services {
  
          public bool use_transparency { get; set; }
  
 +        public string autohide { get; set; }
++
++        public int delay { get; set; }
 +
          public PanelSettings () {
              base ("io.elementary.desktop.wingpanel");
