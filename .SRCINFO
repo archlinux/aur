@@ -11,7 +11,7 @@ pkgbase = movie-monad
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	source = https://www.github.com/lettier/movie-monad/releases/download/0.0.6.1/movie-monad-linux-0.0.6.1.tar.gz
-	md5sums = cd14df926fbc003b59e8db48c8078a7c
+	md5sums = 0beceb6847555d227693cd65e899e894
 
 pkgname = movie-monad
 

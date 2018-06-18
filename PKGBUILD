@@ -13,7 +13,7 @@ makedepends=()
 depends=("gtk3" "gstreamer" "gst-plugins-base-libs" "gst-plugins-base" "gst-plugins-good")
 options=()
 source=("https://www.github.com/lettier/${_name}/releases/download/${_ver}/${_name}-linux-${_ver}.tar.gz")
-md5sums=('cd14df926fbc003b59e8db48c8078a7c')
+md5sums=('0beceb6847555d227693cd65e899e894')
 
 package() {
   cd "${srcdir}/${_name}-linux-${_ver}"
