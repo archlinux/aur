@@ -1,6 +1,6 @@
 # Maintainer: Seppia <seppia@seppio.fish>
 pkgname=repofish
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="My friends told me to make available this script I wrote to manage my local archlinux repo and AUR packages, so here it is."
 arch=('any')
@@ -15,7 +15,7 @@ backup=()
 options=()
 install=
 source=("https://git.seppia.net/repofish.git/snapshot/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f797fd06f8fbe71d3d392c882b3f49187fea6cdd618484945c7b0d38aaa27715')
+sha256sums=('695a1e50fe04b7e58db60c101757621c5f699929a815fb5688fb461c90718105')
 
 package() {
 	cd "$srcdir/${pkgname}-${pkgver}"

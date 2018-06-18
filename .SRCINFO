@@ -1,6 +1,6 @@
 pkgbase = repofish
 	pkgdesc = My friends told me to make available this script I wrote to manage my local archlinux repo and AUR packages, so here it is.
-	pkgver = 0.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://git.seppia.net/repofish.git
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = repofish
 	depends = jq
 	provides = repofish
 	conflicts = repofish-git
-	source = https://git.seppia.net/repofish.git/snapshot/repofish-0.3.tar.gz
-	sha256sums = f797fd06f8fbe71d3d392c882b3f49187fea6cdd618484945c7b0d38aaa27715
+	source = https://git.seppia.net/repofish.git/snapshot/repofish-0.3.1.tar.gz
+	sha256sums = 695a1e50fe04b7e58db60c101757621c5f699929a815fb5688fb461c90718105
 
 pkgname = repofish
 
