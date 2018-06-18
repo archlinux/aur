@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=fzf-extras
-pkgver=0.0.22
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Extra keybindings for fzf"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('ctags: select tags'
 url="https://github.com/atweiden/fzf-extras"
 license=('MIT')
 source=(https://github.com/atweiden/fzf-extras/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('d9c21f6b0beca7d77539db6eb043bcbe16210e0ae3d34aa8dd26e988caea066e')
+sha256sums=('d177ecca607120547a372f8c6cf854920d66c3245d4d612aa2a91fa10c0d69b9')
 install=fzf-extras.install
 
 package() {
