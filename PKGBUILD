@@ -2,15 +2,15 @@
 
 _name=shippai
 pkgname=python-${_name}
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Rust failures in other languages"
 arch=('any')
 url="https://github.com/untitaker/shippai"
 license=('MIT')
 depends=()
-source=(${_name}-${pkgver}.tar.gz::"https://files.pythonhosted.org/packages/de/16/7e9ae164d3cd88d855d5e2625d3e86955a3e4b58c6d09dddde7367736d47/shippai-0.2.4.tar.gz")
-sha512sums=('eebd4a7253dbda3d86eb770479548805a1fe5b07c896a701ce0cb02a5311b16d270bfecb0c5da6041c1ef29cacb2826d7120dee39464b7682ee3a2c10d2c8f57')
+source=(${_name}-${pkgver}.tar.gz::"https://files.pythonhosted.org/packages/08/08/b2ac300df2b575cdb50605527bd35454493cf0d24a09297b30835eff9317/shippai-0.3.0.tar.gz")
+sha512sums=('bb55c731db5430e349c6a30e79a86d0692da03899352a7c62f2b76284d70ccf8377561007a19ad636025aaa3ea944cfca5468ffd5ceac81728ffec4b8caf0656')
 
 build() {
   cd "${_name}-${pkgver}"
