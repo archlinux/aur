@@ -7,7 +7,7 @@
 
 pkgname=chromium-gtk2
 _pkgname=chromium
-pkgver=67.0.3396.79
+pkgver=67.0.3396.87
 pkgrel=1
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security (GTK2 version)"
@@ -32,13 +32,15 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         x11-fix-mixup-between-DIP-pixel-coordinates.patch
         chromium-ffmpeg-r1.patch
         chromium-widevine-r2.patch
+        chromium-disable_xml_catalogs.patch
         chromium-skia-harmony.patch)
-sha256sums=('f8b1e5319163e378027826b12cf256b97423bb90e10e2013469d96e03bc9db8a'
+sha256sums=('5d27a72f0cb8247343034f63fdd9747ff388c05b9fceb541668dd04fb372db1d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '2cc80f5ed8a9b42495a0f3ab3c1bae026b9081972269a1b6d407331d33f7d257'
             'e2c2754536243a60fa70541bbd4121715eccd83caa8f1fb1873bd994cd81f871'
             'aa885330bc4180b78d915f9dfdfc3210038a0acab7b16735ea9828ab6a633bde'
             '02c69bb3954087db599def7f5b6d65cf8f7cf2ed81dfbdaa4bb7b51863b4df15'
+            'f9d191e89ed9b2b2641bbbb370ea0a11868409a13cad181f7b63f6007de002a1'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -55,7 +57,7 @@ declare -gA _system_libs=(
   #[libpng]=libpng            # https://crbug.com/752403#c10
   #[libvpx]=libvpx            # needs unreleased libvpx
   [libwebp]=libwebp
-  #[libxml]=libxml2           # https://crbug.com/736026
+  [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
   [re2]=re2
@@ -95,6 +97,7 @@ prepare() {
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-ffmpeg-r1.patch
   patch -Np1 -i ../chromium-widevine-r2.patch
+  patch -Np1 -i ../chromium-disable_xml_catalogs.patch
 
   # Remove compiler flags not supported by our system clang
   sed -i \
