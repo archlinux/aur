@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Creativecoin
+Comment=Creativecoin P2P Cryptocurrency
+Exec=/usr/bin/creativecoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/creativecoin128.png
+MimeType=x-scheme-handler/creativecoin;
+Categories=Office;
+Name[en_US]=creativecoin-qt.desktop

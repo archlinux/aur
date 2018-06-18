@@ -1,0 +1,29 @@
+pkgbase = creativecoin-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://creativechain.org/
+	install = creativecoin-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = creativecoin
+	source = creativecoin-qt::git+https://github.com/creativechain/creativechain-core.git
+	source = creativecoin-qt.desktop
+	source = boost166.patch
+	sha256sums = SKIP
+	sha256sums = e1f166f658e2234913de9c80f82cbf05259e67bf705aa6f9500def4524045df8
+	sha256sums = f3828f3633d0534efb60399a44b315b155d6bc0105195095d374039e8020164e
+
+pkgname = creativecoin-qt
+
