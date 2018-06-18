@@ -2,11 +2,11 @@
 _pkgname=linux_media
 _gitname=media_build
 pkgname="tbs-$_pkgname-git"
-pkgver=r1052.a0d62eb_4.16.2_2_ARCH
-_extramodules=extramodules-4.16-ARCH
+pkgver=r1053.2213557_4.17.2_1_ARCH
+_extramodules=extramodules-4.17-ARCH
 pkgrel=1
 pkgdesc="TBS linux open source drivers"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/tbsdtv/linux_media"
 license=('GPL2')
 depends=('tbs-firmware')
