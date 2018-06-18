@@ -1,7 +1,7 @@
 pkgbase = mt7601u-ap-dkms
 	pkgdesc = Kernel module for Ralink MT7601U chipset wireless adaptors with Access Point (AP / Master) support.
 	pkgver = 3.0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ralinktech.com
 	install = mt7601u-ap-dkms.install
 	arch = any

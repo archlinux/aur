@@ -1,0 +1,24 @@
+diff -ru MT7601u-2/src/include/os/rt_linux.h MT7601u/src/include/os/rt_linux.h
+--- MT7601u-2/src/include/os/rt_linux.h	2018-06-17 19:34:56.006528978 +0700
++++ MT7601u/src/include/os/rt_linux.h	2018-06-18 04:09:48.253593046 +0700
+@@ -83,6 +83,8 @@
+ #include <linux/kthread.h>
+ #endif /* KTHREAD_SUPPORT */
+ 
++/* For usage of kill_pid and friends. */
++#include <linux/sched/signal.h>
+ 
+ #include "os/rt_linux_cmm.h"
+ 
+diff -ru MT7601u-2/src/os/linux/rt_linux.c MT7601u/src/os/linux/rt_linux.c
+--- MT7601u-2/src/os/linux/rt_linux.c	2018-06-17 19:34:56.026529050 +0700
++++ MT7601u/src/os/linux/rt_linux.c	2018-06-18 05:15:53.294949852 +0700
+@@ -1165,7 +1165,7 @@
+         /* The object must have a read method */
+         if (osfd->f_op /*&& osfd->f_op->read*/) {
+                 //return osfd->f_op->read(osfd, pDataPtr, readLen, &osfd->f_pos);
+-                return vfs_read(osfd, pDataPtr, readLen, &osfd->f_pos);
++                return kernel_read(osfd, pDataPtr, readLen, &osfd->f_pos);
+         } else {
+                 DBGPRINT(RT_DEBUG_ERROR, ("no file read method\n"));
+                 return -1;
