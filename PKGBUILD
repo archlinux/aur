@@ -60,7 +60,7 @@ pkgbase=linux-rt-bfq
 _major=4.16
 _srcname=linux-${_major}
 _minor=15
-_rtver=6
+_rtver=7
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _rtpatchver=rt${_rtver}
@@ -421,7 +421,7 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             'SKIP'
             '496a8a85758b4bae9b3082c45d7e9c8a87bd10a8a2ffbb086f96b83e0ed2e3449ebe8bdd50d138219a55c96a93dd87c9d4802dc0962112e8e78115de77d3c363'
             'SKIP'
-            '86bc19b802165e5b789c8955fb1252fb00e5fb2f264f8f030c33f62c9c09818a2401884961c0f4b473df126872f39f48bbf6ea805007a066a947891ff64d0203'
+            '72e3418d30a1818921647543c150c634a492395aee86f581606be6ae91e9bb2e712c5fc1154f584b40639a0e84c8c40c0113db1bfedb664e308153caa89305cb'
             'SKIP'
             'eac92c83cee6907f155434f8373a0ef2dbff9095d3aa7b8b0bd383d6dda03fe52c8f79cf6933e55e6b668cb762b3babbfc40fe801d2a2440e92d3200ced2b4e0'
             '9737f30e748e043a1b6ab56bd0df6dc9607b4a2749243e599f5563b157aaf339ad43020a526a11a6fc809cc1abe50ac1cb12188bf5b367f6458fa0dbc2c1824d'
