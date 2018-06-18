@@ -75,7 +75,7 @@ build() {
   cmake ../rpcs3 \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_EXE_LINKER_FLAGS='-ldl -lyaml-cpp' \
+    -DCMAKE_EXE_LINKER_FLAGS='-ldl' \
     -DCMAKE_SKIP_RPATH='ON' \
     -DUSE_SYSTEM_FFMPEG='ON' \
     -DUSE_SYSTEM_LIBPNG='ON' \
