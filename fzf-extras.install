@@ -6,8 +6,10 @@ read -d '' fzfin <<'EOF'
 fzf-extras
 ==========
 
-Add the following to your shell config:
+To source fzf-extras, add the following to your shell config:
 
-    . /etc/profile.d/fzf-extras.bash # when bash
-    . /etc/profile.d/fzf-extras.zsh # when zsh
+    # when bash
+    . /etc/profile.d/fzf-extras.bash
+    # when zsh
+    . /etc/profile.d/fzf-extras.zsh
 EOF

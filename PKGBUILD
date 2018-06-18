@@ -1,13 +1,14 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=fzf-extras-git
-pkgver=20171005
+pkgver=20180618
 pkgrel=1
 pkgdesc="Extra keybindings for fzf"
 arch=('any')
-depends=('fzf')
+depends=('bash' 'fzf' 'tmux')
 makedepends=('git')
 optdepends=('ctags: select tags'
+            'fasd: fuzzy find frecency files, directories'
             'git: git checkout fuzzy commits, branches'
             'mlocate: locate files'
             'xdg-utils: open files'
