@@ -20,7 +20,7 @@ install: $(BIN)
 	install -Dm755 $(BIN) $(DESTDIR)/bin/$(BIN)
 	install -Dm644 LICENSE $(DESTDIR)/share/licenses/$(BIN)/LICENSE
 	install -Dm644 $(BIN).1.gz $(DESTDIR)/share/man/man1/$(BIN).1.gz
-	install -Dm644 $(GLADE_FILES).glade $(DESTDIR)/share/$(BIN)/$(GLADE_FILES).glade
+	install -Dm755 $(GLADE_FILES).glade $(DESTDIR)/share/$(BIN)/$(GLADE_FILES).glade
 uninstall:
 	-rm $(DESTDIR)/bin/$(BIN)
 	-rm $(DESTDIR)/share/licenses/$(BIN)/LICENSE
