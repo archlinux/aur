@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=elementary-icon-theme-git
-pkgver=r2236.4cdca93d
+pkgver=r2248.998c963b
 pkgrel=1
 pkgdesc='Named, vector icons for elementary OS'
 arch=('any')
@@ -40,6 +40,7 @@ package() {
   cd build
 
   DESTDIR="${pkgdir}" ninja install
+  rm "${pkgdir}"/.VolumeIcon*
 }
 
 # vim: ts=2 sw=2 et:
