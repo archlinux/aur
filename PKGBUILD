@@ -3,7 +3,7 @@
 # Contributor: Gergely Imreh <imrehgATgmailDOTcom>
 # Contributor: Eric Belanger <eric@archlinux.org>
 pkgname=plplot
-pkgver=5.12.0
+pkgver=5.13.0
 pkgrel=1
 pkgdesc="A cross-platform software package for creating scientific plots"
 arch=('i686' 'x86_64')
@@ -22,6 +22,7 @@ optdepends=('qhull: calculating convex hulls'
             'cairo: displays plots and save to different file formats')
 options=('!libtool' '!makeflags')
 source=(http://downloads.sourceforge.net/sourceforge/plplot/${pkgname}-${pkgver}.tar.gz)
+md5sums=('bfefeae7fb9a23377c6dc37b44a7da8a')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -43,4 +44,3 @@ package() {
     make DESTDIR=${pkgdir} install
     install -D -m644 ../Copyright ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-md5sums=('998a05be218e5de8f2faf988b8dbdc51')
