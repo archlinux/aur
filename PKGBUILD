@@ -5,9 +5,10 @@
 
 pkgname=terminus-cyrillic
 pkgver=4.46
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminus font with dv1 and ij1 patches applied"
 depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
+provides=("terminus-font=${pkgver}")
 replaces=(xserver-terminus-fonts)
 conflicts=(terminus-font)
 arch=(any)
