@@ -2,7 +2,7 @@
 
 pkgname='hebcal'
 pkgver=4.13
-pkgrel=1
+pkgrel=2
 pkgdesc='A Jewish calendar generator'
 arch=('any')
 url='https://github.com/hebcal/hebcal'
