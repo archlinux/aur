@@ -12,7 +12,7 @@ depends=('alsa-lib' 'glew' 'glu' 'libevdev' 'libgl' 'libice' 'libpng'
          'qt5-declarative' 'vulkan-icd-loader' 'zlib'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libncursesw.so'
          'libswscale.so' 'libudev.so')
-makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git' 'libglvnd'
+makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git' 'libglvnd' 'python'
              'vulkan-validation-layers')
 provides=('rpcs3')
 conflicts=('rpcs3')
