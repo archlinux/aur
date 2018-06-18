@@ -50,16 +50,16 @@ _1k_HZ_ticks=
 
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
-_major=4.16
+_major=4.17
 _srcname=linux-${_major}
-_minor=16
+_minor=2
 pkgver=${_major}.${_minor}
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
 options=('!strip')
-#makedepends=('kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master"
@@ -75,7 +75,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         "${_uksm_path}/${_uksm_patch}"
-        "${_lucjanpath}/0006-include-linux-add-gcc8-support.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -87,8 +86,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch'
-        '0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch')
+        '0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch'
+        '0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-uksm} 
@@ -104,17 +103,13 @@ prepare() {
         msg "Disable USER_NS for non-root users by default"
         patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
     
-    ### Fix https://bugs.archlinux.org/task/56780
-        msg "Fix #56780"
-        patch -Np1 -i ../0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
-    
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
-        patch -Np1 -i ../0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
-
-    ### Fix gcc8 bogus warnings
-        msg "Fix gcc8 bogus warnings"
-        patch -Np1 -i ../0006-include-linux-add-gcc8-support.patch
+        patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+    
+    ### Fix https://bugs.archlinux.org/task/56780
+        msg "Fix #56780"
+        patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
     
     ### Patch source with UKSM
         msg "Patching source with UKSM"
@@ -377,21 +372,20 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2d06317dc1683c51a472a9a631573a9b1e7258d6281a2ee189897827f14662'
+sha512sums=('4d9de340a26155a89ea8773131c76220cc2057f2b5d031b467b60e8b14c1842518e2d60a863d8c695f0f7640f3f18d43826201984a238dade857b6cef79837db'
             'SKIP'
-            '9b3fdf982b16a7962305acb03adfa7ff077cba82bac02e1f7bc8cf6a6b6a4f4ef6c16c5e83d024fb0bd3763740c0e6169f4c236eaf6e175ed77dce49e4a06e9c'
+            'd85fc2637720c19320e82fa221e0e8e2b640d2b8c6faf4678f3902ca8a634a1e2cdcac1242628da9d9500921a41c6c8cec7371098533e5035034a1faa2373c65'
             'SKIP'
             'a0f37a9b8dbd11f8ef4450b06afee0a6e5519cb5a5cd78f84896812b007ef645bcb9c733ae9817c24d1f4a4c2114258015abceb5a94c7e08d2bb00531a6f04c7'
-            'ab962157c2c20faf0bd164a82c2e28ce35fd581d640409ae6419dc2a64c82b7f49e7215149de0bc028dd3d517434160d68127b05137f6b6611641cc871f6c76e'
-            '9737f30e748e043a1b6ab56bd0df6dc9607b4a2749243e599f5563b157aaf339ad43020a526a11a6fc809cc1abe50ac1cb12188bf5b367f6458fa0dbc2c1824d'
-            '0fa428be07dabdce70cf5e1b3e6e344b8f8df362512a1e3b833093de0e4441b5b9bec879e0c2e91aa692cf88c098317e1531bccdebea9d221469111be6d2e9f7'
+            '30fc872a19686bd75b0cfa0614980a41d74f4cd40c9fd2c98f82ab4554ad39ccd7ddace9068f354572c1bdf14eed55c8e6d3390127c1a83ec093cf1487a31a0d'
+            '28df1e473be8d94b43c71815b78aaf0dafc2d407b1173c68b111b03e01dffc9c30bd0013f536dc43811b861c13d46e076dff2cdc06dd2c2e11060e7fef7a8dc3'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '26619b938a47c841f0c480a113cfbb1ee6f1121c21dfecbe246c1f7af7697f86cfb8253f09966eab2e386734ce4ad156159babdba4365c2f199c369c3d7e8ee8'
-            'f6aed92697c35e7919a0d784185e7af15b6be2762e3dd235267ca9744a826ac693d0ffcb07b9d1cc8571f57d518c1ce1c276cf7677e8375188f05f71d4added0'
-            'cc8852b089aa24f588ad1af726503ecd1012ad7e1cbc47ea77f03a5f7aecd25306d40f2e16b8a1afeafe7e2e97b6b6840c9f462ed7be358090117e2e024df1bd')
+            'b6133ce52c3a900d34db23568aaf5cdffab3d50b5e9c2008f1f7fcc650cb434101c718b5446e525ebe71050b0591d3be66ac930cf9986c906abcc3bfcf42f763'
+            '8ed1b4ef95120e9025299d9ae392cba49905bfcb29e3a1dfb9dd95a7925f25f52f57774b381410d70167cf2edef99271e7c12fac2b1aa4e9c8aa6655d150d22c'
+            'cddf8e907b4fbb5935a5239dd5a2b788b3f3fa1f91825d5191d154434a62c4dc16f4ccffc2ea4c5446d0c69457a918f9a2ca6d817bae3ddd694df4b50ab3e89b')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
