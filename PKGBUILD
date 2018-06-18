@@ -1,16 +1,17 @@
 pkgname=cairo-ubuntu
 _realpkg=cairo
 pkgver=1.15.12
-pkgrel=2
+pkgrel=3
 pkgdesc="2D graphics library with support for multiple output devices (with ubuntu patches)"
 url="https://cairographics.org/"
 arch=(x86_64)
 provides=("${_realpkg}=${pkgver}")
 license=(LGPL MPL)
+conflicts=("cairo")
 depends=(libpng libxrender libxext fontconfig pixman glib2 lzo)
 makedepends=(librsvg gtk2 poppler-glib libspectre gtk-doc valgrind git)
 _commit=7149686456ec3c481fa1d3dbe76a0dab1e42b519  # tags/1.15.12^0
-source=("git+https://anongit.freedesktop.org/git/cairo#commit=$_commit"
+source=("cairo::git+https://anongit.freedesktop.org/git/cairo#commit=$_commit"
         utf-8.diff
         cairo-respect-fontconfig_pb.patch
         cairo-server-side-gradients.patch
