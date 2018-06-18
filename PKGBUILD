@@ -1,6 +1,6 @@
 pkgname=jupyterlab
 pkgver=0.32.1
-pkgrel=1
+pkgrel=2
 pkgdesc="JupyterLab computational environment"
 arch=(any)
 url="https://github.com/jupyterlab/jupyterlab"
@@ -11,6 +11,7 @@ sha256sums=('727b8e0ff922fdf25f3392478d6da8718f5202638a134d8447975cd5078b4d3d')
 
 build() {
   cd $pkgname-$pkgver
+  sed -i "s|jupyterlab_launcher>=0.10.0,<0.11.0|jupyterlab_launcher>=0.10.0|g" setup.py
   python setup.py build 
 }
 
