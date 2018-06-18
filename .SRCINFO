@@ -1,7 +1,7 @@
 pkgbase = krudio-qml
 	pkgdesc = Simple Qt5 QML radio player
-	pkgver = 20180618
-	pkgrel = 7
+	pkgver = 20180619
+	pkgrel = 1
 	url = https://github.com/loast/krudio-qml
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = krudio-qml
 	depends = qt5-multimedia
 	depends = qt5-quickcontrols2
 	depends = hicolor-icon-theme
-	source = krudio-qml-20180618.tar.gz::https://github.com/loast/krudio-qml/archive/bf8ec8fbe0a64012c647a2cfad39208e160a292c.tar.gz
+	source = krudio-qml-20180619.tar.gz::https://github.com/loast/krudio-qml/archive/99b0ca2d6f63e215e7399bd3818f9bac9bdcd1d8.tar.gz
 	md5sums = SKIP
 
 pkgname = krudio-qml
