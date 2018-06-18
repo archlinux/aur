@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-gnutls
 pkgver=3.5.18
-pkgrel=1
+pkgrel=2
 pkgdesc='A library which provides a secure layer over a reliable transport layer (mingw-w64)'
 arch=('any')
 url="http://www.gnu.org/software/gnutls"
@@ -48,7 +48,6 @@ build() {
       --with-zlib \
       --with-libiconv-prefix=/usr/$_arch \
       --with-regex-libs=-lsystre \
-      --with-default-trust-store-pkcs11="pkcs11:model=p11-kit-trust;manufacturer=PKCS%2311%20Kit" \
       --enable-nls \
       --enable-cxx \
       --enable-local-libopts \
