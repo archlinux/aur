@@ -1,2 +1,4 @@
-simavr
+simavr-git
+pkg
+src
 *.xz
