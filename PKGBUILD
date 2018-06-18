@@ -8,7 +8,6 @@ url="https://www.zapcc.com/"
 provides=('zapcc')
 conflicts=('zapcc')
 depends=('ncurses' 'zlib')
-conflicts=('clang50')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/yrnkrn/zapcc.git")
 sha256sums=('SKIP')
