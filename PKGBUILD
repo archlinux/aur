@@ -12,6 +12,7 @@ url="https://github.com/chrisallenlane/cheat"
 depends=('python2' 'python2-docopt')
 optdepends=('python2-pygments' 'bash-completion')
 makedepends=('git')
+conflicts=('cheat-bash-git' 'python-cheat')
 source=("$pkgname::git+https://github.com/chrisallenlane/cheat.git")
 md5sums=('SKIP')
 
