@@ -1,0 +1,17 @@
+pkgbase = packer-builder-hcloud-git
+	pkgdesc = Packer builder plugin for Hetzner Cloud
+	pkgver = 2018.02.17
+	pkgrel = 1
+	url = https://github.com/m110/packer-builder-hcloud
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = dep
+	provides = packer-provider-hcloud
+	conflicts = packer-provider-hcloud
+	source = git+https://github.com/m110/packer-builder-hcloud.git
+	sha256sums = SKIP
+
+pkgname = packer-builder-hcloud-git
+
