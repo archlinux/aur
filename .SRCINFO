@@ -1,0 +1,27 @@
+pkgbase = straks-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.14.7
+	pkgrel = 3
+	url = https://www.straks.tech/
+	install = straks-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = straks
+	source = straks-qt::git+https://github.com/straks/straks.git
+	source = straks-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 779e1b3cd7d97a06f98137be94de99a0abd0717ebd4fab054f6a33057de944d8
+
+pkgname = straks-qt
+

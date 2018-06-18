@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Straks
+Comment=Straks P2P Cryptocurrency
+Exec=/usr/bin/straks-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/straks128.png
+MimeType=x-scheme-handler/straks;
+Categories=Office;
+Name[en_US]=straks-qt.desktop
