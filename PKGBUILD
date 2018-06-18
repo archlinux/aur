@@ -16,6 +16,8 @@ depends=(
   'python-six'
   'python-certifi'
   'python-dateutil'
+  'python-requests'
+  'python-tqdm'
 )
 makedepends=(
   'python-setuptools'
@@ -26,6 +28,14 @@ source=(
 )
 
 md5sums=('8cb1fe36fc023c56c09091f143774694')
+
+prepare() {
+  cd "$srcdir"/kaggle-api-$_branch
+  # remove urllib3 version restriction
+  sed -e '/urllib3/d' \
+      -e "s/,<.*'/'/" \
+      -i setup.py
+}
 
 package() {
   cd "${pkgname}-${_branch}"

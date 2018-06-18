@@ -11,6 +11,8 @@ pkgbase = kaggle-api
 	depends = python-six
 	depends = python-certifi
 	depends = python-dateutil
+	depends = python-requests
+	depends = python-tqdm
 	source = https://github.com/Kaggle/kaggle-api/archive/cd2a0921aa74d1f85f0fc65dc6cef1b6e4dd0438.tar.gz
 	md5sums = 8cb1fe36fc023c56c09091f143774694
 
