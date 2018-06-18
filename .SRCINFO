@@ -8,6 +8,7 @@ pkgbase = timelens-git
 	license = GPL
 	makedepends = git
 	makedepends = cargo
+	depends = gstreamer
 	provides = timelens
 	conflicts = timelens
 	source = timelens-git::git+https://github.com/timelens/timelens
