@@ -5,7 +5,7 @@ _name='xdis'
 pkgbase="python-${_name}"
 pkgname=("python-${_name}" "python2-${_name}")
 pkgver=3.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python cross-version byte-code disassembler and marshal routines."
 arch=('any')
 url="https://github.com/rocky/python-xdis/"
@@ -15,14 +15,14 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_
 sha256sums=('6b6b44f90b55cc4099834ec4a92ac93717e00871dfcbaed6b5390e331ea34461')
 
 package_python-xdis() {
-    depends=('python-click')
+    depends=('python-click' 'python-six>=1.10.0')
 
     cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-xdis() {
-    depends=('python2-click')
+    depends=('python2-click' 'python2-six>=1.10.0')
 
     cd "$srcdir/$_name-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1
