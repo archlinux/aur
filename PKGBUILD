@@ -2,8 +2,8 @@
 # Contributor: Denis Gagnon <gagnon88 at gm41l dot com>
 
 pkgname=fftw-mpi
-pkgver=3.3.7
-pkgrel=2
+pkgver=3.3.8
+pkgrel=1
 pkgdesc="FFTW, compiled with MPI and OpenMP support: header files, static and shared libraries"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -15,7 +15,7 @@ source=("http://www.fftw.org/fftw-${pkgver}.tar.gz")
 provides=('fftw')
 options=('staticlibs')
 install=fftw.install
-sha1sums=('2ae980a8d44c161ce4a09c6e2d1c79243ecbabb2')
+sha1sums=('59831bd4b2705381ee395e54aa6e0069b10c3626')
 
 # notes:
 # http://www.fftw.org/fftw2_doc/fftw_6.html#SEC69
@@ -32,7 +32,7 @@ build() {
   
 
   # use upstream default CFLAGS while keeping our -march/-mtune
-  CFLAGS+=" -O3 -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math"
+  CFLAGS+=" -O3 -fPIC -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math"
 
   CONFIGURE="./configure F77=gfortran --prefix=/usr \
                  --enable-shared --enable-threads --enable-mpi --enable-openmp"
