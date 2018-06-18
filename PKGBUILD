@@ -1,60 +1,79 @@
 # Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
-# Contributor: Teteros <teteros -at- opmbx -dot- org>
+# Contributor: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.4.2
+pkgver=5.7.8
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
 url="https://users.notam02.no/~kjetism/radium/"
 license=('GPL')
 depends=(
-    'python2'
-    'libxaw'
+    'fftw'
+    'glu'
+    'hicolor-icon-theme'
+    'jack'
     'liblrdf'
+    'libmpc'
+    'libsamplerate'
+    'libxaw'
+    'libxcursor'
+    'libxinerama'
+    'libxkbfile'
+    'python2'
     'qt5-webkit'
     'qt5-x11extras'
-    'libxkbfile'
-    'glu'
     'speex'
-    'fftw'
-    'jack'
-    'libxinerama'
-    'libxcursor'
-    'hicolor-icon-theme'
     'libmpc'
 )
-optdepends=('calf-ladspa' 'ladspa-plugins')
+optdepends=('calf-ladspa' 'ladspa-plugins' 'tcl')
 makedepends=(
-    'cmake'
     'boost'
-    'llvm39'
-    'lld'
-    'qt5-tools'
+    'cmake'
     'libxrandr'
+    'lld'
+    'llvm40'
+    'qt5-tools'
     'steinberg-vst36'
 )
 options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
+        "include-glibc-rpc.patch"
         "radium"
+        "use-llvm40-static-libs.patch"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch"
 )
-md5sums=('123b4ee8119010e3bb8c7fc036477ae2'
-         '092735a1ff69f02e41b28a0e849179f4'
-         'ec8251af460ad72ebba82c718615de1b'
-         'f20b79f1adb0fe9b87acb249094c9103')
+sha256sums=('c4196d00fa055228683909fdfaff38a8c5a7cebed69fd6efc0235d1bf4937480'
+            '3436c478637fd1c8f7ff4089c30ba7f2048a71de8243756893df35cdb25be893'
+            '6ea834fbf695187c244bbb1dacc1d462ded807ee4997761fdaa60d5373b386cd'
+            '4155b427be299ba74c1d9278bcf2b72f720f55c814e01ca38f6f0afbda282890'
+            'ac41c94513ca615a71198a91160b2d605ea73c8a97a0192d275105248669df8d'
+            'ef87542ffc247109c869739e307aac79678953ef6c3074e3d1920f8da0eede9d')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
 
+    # glibc legacy rpc includes were moved to libtirpc, this patch radium's libpd to locate them
+    msg2 "Patching libpd to use legacy rpc includes in libtirpc"
+    patch -Nsp1 < "${srcdir}/include-glibc-rpc.patch"
+
+    # LLVM5 is not currently supported by Radium's faust fork so we need to
+    # link llvm40 statically to avoid conflicts with any other system llvm
+    # See https://github.com/kmatheussen/radium/issues/1068
+    # and https://users.notam02.no/~kjetism/radium/forum/viewtopic.php?f=7&t=39
+    msg2 "Patching faust to link with llvm40-libs statically"
+    patch -Nsp1 < "${srcdir}/use-llvm40-static-libs.patch"
+
+    # Radium bundles libxcb 1.13+ as F22 has an older version available in repos
+    # We can use libxcb from extra repo instead
     msg2 "Switching to system-wide libxcb"
     patch -Nsp1 < "${srcdir}/use-system-libxcb.patch"
 
-    # Use the VST SDK from steinberg-vst36, so the user doesn't have to
-    # manually put it into his home directory
-    msg2 "Switching to system-wide VST SDK"
+    # Patch paths to use VST SDK from steinberg-vst36 AUR package as
+    # JUCE expects the SDK in the users home directory
+    msg2 "Using VST SDK from steinberg-vst36 package"
     patch -Nsp1 < "${srcdir}/use-system-vstsdk.patch"
 }
 
@@ -90,10 +109,13 @@ package() {
     cp -a "bin/packages/libpd-master/pure-data/" \
         "${pkgdir}/opt/radium/packages/libpd-master/"
 
-    # Radium will complain if these are missing
-    msg2 "Installing Faust GUI styles"
-    install -Dm644 -t "${pkgdir}/opt/radium/packages/faust2/architecture/faust/gui/Styles" \
-        "bin/packages/faust2/architecture/faust/gui/Styles/"*".qss"
+    msg2 "Installing FAUST libraries and GUI styles"
+    install -dm755 "${pkgdir}/opt/radium/packages/faust2/architecture/faust/gui/Styles"
+    cp -a "bin/packages/faust2/architecture/faust/gui/Styles" \
+        "${pkgdir}/opt/radium/packages/faust2/architecture/faust/gui"
+    # Copy faust's *.lib files to be able to import them in faustdev
+    cp -a "bin/packages/faust2/architecture/"*".lib" \
+        "${pkgdir}/opt/radium/packages/faust2/architecture/"
 
     msg2 "Installing .desktop, icon and mimetype files"
     install -dm755 "${pkgdir}/usr/share/applications"
