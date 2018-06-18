@@ -17,16 +17,19 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=('!emptydirs')
 install=
 changelog=
-source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgver}_i386.deb")
-noextract=("${pkgname}_${pkgver}_i386.deb")
-md5sums=('954c963c03c20e2729b8c4e73306bbae')
+[[ "$CARCH" = "i686" ]] && _archext=i386 || _archext=amd64
+source_i686=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+source_x86_64=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
+noextract=("${pkgname}_${pkgver}_${_archext}.deb")
+md5sums_i686=('954c963c03c20e2729b8c4e73306bbae')
+md5sums_x86_64=('47b248b17f0bad43aeab5464f646e0d4')
 validpgpkeys=()
 
 prepare() {
-	ar -x ${pkgname}_${pkgver}_i386.deb
+	ar -x ${pkgname}_${pkgver}_${_archext}.deb
 	mkdir ${pkgname}-${pkgver}
 	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}"	
 }

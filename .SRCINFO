@@ -8,9 +8,12 @@ pkgbase = deepin-wine-plugin
 	license = Proprietary
 	makedepends = tar
 	depends = gtk2
-	noextract = deepin-wine-plugin_1.0deepin2_i386.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine-plugin/deepin-wine-plugin_1.0deepin2_i386.deb
-	md5sums = 954c963c03c20e2729b8c4e73306bbae
+	noextract = deepin-wine-plugin_1.0deepin2_amd64.deb
+	options = !emptydirs
+	source_i686 = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine-plugin/deepin-wine-plugin_1.0deepin2_i386.deb
+	md5sums_i686 = 954c963c03c20e2729b8c4e73306bbae
+	source_x86_64 = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine-plugin/deepin-wine-plugin_1.0deepin2_amd64.deb
+	md5sums_x86_64 = 47b248b17f0bad43aeab5464f646e0d4
 
 pkgname = deepin-wine-plugin
 
