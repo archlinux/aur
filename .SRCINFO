@@ -1,7 +1,7 @@
 pkgbase = wps-office-extension-russian-dictionary
 	pkgdesc = Russian dictionary for WPS Office
 	pkgver = 20131121
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wps-community.org/download/dicts
 	arch = any
 	groups = wps-office-extensions
@@ -9,7 +9,7 @@ pkgbase = wps-office-extension-russian-dictionary
 	makedepends = unzip
 	depends = wps-office
 	source = http://wps-community.org/download/dicts/ru_RU.zip
-	sha1sums = f9ee7f90a296a920f4edaf746bca14de605327ae
+	sha512sums = 04139068de23f29835b5ed604e5459ae3356e657d2193d4625ce4a121c99a0c792b34c1df071039a710141cbe38c3a6c1ed9a0f4e17c4dbd72fa003be6167bee
 
 pkgname = wps-office-extension-russian-dictionary
 
