@@ -8,7 +8,7 @@ url="https://gitlab.com/BobyMCbobs/${pkgname}"
 license=('GPL')
 depends=('bash' 'qemu' 'qemu-user-static' 'binfmt-support')
 source=("https://gitlab.com/BobyMCbobs/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip")
-md5sums=('2676b02dc78b087415fd1dc5b8e9ce8d')
+md5sums=('7c0526112a5cfce616cadaff345d236c')
 
 package() {
 	cd "$pkgname-$pkgver"
