@@ -7,7 +7,7 @@ arch=("i686" "x86_64")
 url="https://gitlab.com/sambazley/blockbar"
 license=("ZLIB")
 makedepends=("cmake")
-depends=("cairo" "pango" "xorg-xrandr")
+depends=("cairo" "pango" "libxrandr")
 source=("git+https://gitlab.com/sambazley/blockbar.git")
 md5sums=("SKIP")
 

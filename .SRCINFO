@@ -9,7 +9,7 @@ pkgbase = blockbar-git
 	makedepends = cmake
 	depends = cairo
 	depends = pango
-	depends = xorg-xrandr
+	depends = libxrandr
 	source = git+https://gitlab.com/sambazley/blockbar.git
 	md5sums = SKIP
 
