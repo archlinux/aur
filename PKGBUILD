@@ -14,7 +14,7 @@ md5sums=('07206a3654484437dbcb0c558354bb37')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --enable-org-export
+  ./configure --prefix=/usr
   make
   make pdf
   make html
