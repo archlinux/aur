@@ -9,7 +9,7 @@ pkgver=2.96.126
 pkgrel=4
 pkgdesc="Standard C++ libraries for Red Hat 7.3 backwards compatibility compiler. With additions from OpenSUSE 13.1. Provides libstdc++-libc6.2-2.so.3"
 arch=("x86_64")
-url="http://rpmfind.net"
+url="http://rpm.pbone.net"
 license=('GPL')
 groups=()
 depends=()
@@ -22,7 +22,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("libstdc++296.rpm::http://rpmfind.net/linux/opensuse/distribution/openSUSE-stable/repo/oss/suse/x86_64/compat-32bit-2010.1.31-4.3.x86_64.rpm")
+source=("libstdc++296.rpm::ftp://mirror.switch.ch/pool/4/mirror/opensuse/opensuse/distribution/leap/42.3/repo/oss/suse/x86_64/compat-32bit-2010.1.31-4.3.x86_64.rpm")
 noextract=()
 
 
