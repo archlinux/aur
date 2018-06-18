@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xorgxrdp
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'xrdp')
 makedepends=('nasm' 'xorg-server-devel')
 options=('staticlibs')
 source=("https://github.com/neutrinolabs/xorgxrdp/releases/download/v$pkgver/xorgxrdp-$pkgver.tar.gz"{,.asc})
-sha256sums=('becc9d0f2d0c18877f5f500533abd8d490afd10f38e5d67206e3cf7d51fba797'
+sha256sums=('5c37a01723d6caa6025243c471dac238906d80e1e745526e5fb74c4ed15b7ae6'
             'SKIP')
 validpgpkeys=('61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB')  # Koichiro IWAO <meta@vmeta.jp>
 
