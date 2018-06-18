@@ -5,16 +5,18 @@ pkgbase = google-chat-linux-git
 	url = https://github.com/robyf/google-chat-linux
 	arch = x86_64
 	arch = i686
-	license = MIT
+	license = WTFPL
 	makedepends = nodejs
 	makedepends = npm
-	depends = electron>=1.4.0
+	depends = electron>=1.8.4
 	source = google-chat-linux::git+https://github.com/robyf/google-chat-linux#branch=master
 	source = google-chat-linux.desktop
 	source = google-chat-linux.sh
+	source = package.json
 	sha256sums = SKIP
 	sha256sums = e65b8b9b0556dded2521aa12b6d8e87c59f08a79b9e8cbee4273a7a659f72a6a
 	sha256sums = d23052d27c870090987d1844e7c82bc42b878afa42c8af9a363d8414560ea34d
+	sha256sums = 25b73ffc5ea40317faffaa277243617b1a2daed5bec7ddfb39e31274c5a88a79
 
 pkgname = google-chat-linux-git
 
