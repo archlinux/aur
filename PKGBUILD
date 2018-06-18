@@ -4,7 +4,7 @@
 # Contributor: shamrok <szamrok@gmail.com>
 
 pkgname=kraft
-pkgver=0.80
+pkgver=0.81
 pkgrel=1
 pkgdesc="A program suitable for all trades or crafts"
 arch=('i686' 'x86_64')
@@ -36,5 +36,5 @@ package() {
   make "DESTDIR=${pkgdir}" install
 }
 
-sha256sums=('837e2c0adef85a1aeb36fd16cda48c5e210ef043eb08272b98e7e552a55e1164'
+sha256sums=('3f3a75ecdf0f5a776205974e49117643c9bfdd6130ecd6346f287d405dd66da4'
             '2a98be3f535be36161c16ee1f49baba72eab410f222cfc32697c490cfd412370')
