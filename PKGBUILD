@@ -54,19 +54,19 @@ source=(
     'php.ini.patch'
     'php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch'
     'php-icu-1101-Simplify-namespace-access.patch'
+    'freetype2.patch'
 )
-sha512sums=(
-    '1f0914ebda79247aa65ace63f6c8c4fcd850b21a82704f7b6482760259239cc5fee4cfd5aa2ed590b56822b4d69330ac472f46537e7f25d59e73ba63a48827c5'
-    '7a3fc590924cf8ab3acc79a313e533cf8fed24439c90ec3621523fc432248d309474960ee9b5a449d70150b05da2beefa6fe58f919de238e4762ccb614acf126'
-    'f5e5431993c2e0c1806c4edf392030d0b605f4b3c4cebec036e810ff771b2327983f347221735673506e2c91ce2e18ad37ab7600261b684fe29491206171b4f3'
-    '30cdc281c6e288cf8a0bf58a0ad74ad5b4e8205d2b0b6ab465fad97d810f7bfae4581ad836712998e834d2e90d38cacd22f19bb01e77fc4c9d200d95613fc669'
-    '2d5f3aa71ce7d8da43f0f683f81b06258e3a0d95df4807a8acac91ff89fbe60484ef97856a908bce625b1610d0004767a6a8c622246086afe2f2d464977088b5'
-    'e567dbe8b348364c0efb2d96492d4747e96f835adc2b3cb0c1563049fe6cabe9b1fde8ba24b690fb5d64339673e3088b2336f8cb5aa2c85e2f9fa50efd665865'
-    'fde017c6382d687b80d660253cbe5d581ca886fee0d762bf519b245c6e39677194be542ec26c71c81d104422b444a0fdadd92ac1a17e9ea1e6ec34bfb204ca7d'
-    'a98bba8d648853d653946c7a379ef62760282d8856fc1f79f84d66ac3c2082ef62c2fc0ed6a6762b50560ac60168fcdf946536a99131d397e89e906ee855419c'
-    '70c859feff58650ff4a291b1725bce8f290ac6d92cacc4420d3ead5cbbdbcf567cd0ed4d79fdd8b0435cf6833f7b50fff798b2fae274c5fb1bb37a0984a45f9d'
-    '33d40f3ae500cf583519ecfa271e36d727c38ff4ea9547d3d2c4d51c9fadd317ed614a048077ebdb116e3c84c11db95e6455cdfc80d092d217d070c98af56525'
-)
+sha512sums=('1f0914ebda79247aa65ace63f6c8c4fcd850b21a82704f7b6482760259239cc5fee4cfd5aa2ed590b56822b4d69330ac472f46537e7f25d59e73ba63a48827c5'
+            'SKIP'
+            'f5e5431993c2e0c1806c4edf392030d0b605f4b3c4cebec036e810ff771b2327983f347221735673506e2c91ce2e18ad37ab7600261b684fe29491206171b4f3'
+            '30cdc281c6e288cf8a0bf58a0ad74ad5b4e8205d2b0b6ab465fad97d810f7bfae4581ad836712998e834d2e90d38cacd22f19bb01e77fc4c9d200d95613fc669'
+            '2d5f3aa71ce7d8da43f0f683f81b06258e3a0d95df4807a8acac91ff89fbe60484ef97856a908bce625b1610d0004767a6a8c622246086afe2f2d464977088b5'
+            'e567dbe8b348364c0efb2d96492d4747e96f835adc2b3cb0c1563049fe6cabe9b1fde8ba24b690fb5d64339673e3088b2336f8cb5aa2c85e2f9fa50efd665865'
+            'fde017c6382d687b80d660253cbe5d581ca886fee0d762bf519b245c6e39677194be542ec26c71c81d104422b444a0fdadd92ac1a17e9ea1e6ec34bfb204ca7d'
+            'a98bba8d648853d653946c7a379ef62760282d8856fc1f79f84d66ac3c2082ef62c2fc0ed6a6762b50560ac60168fcdf946536a99131d397e89e906ee855419c'
+            '70c859feff58650ff4a291b1725bce8f290ac6d92cacc4420d3ead5cbbdbcf567cd0ed4d79fdd8b0435cf6833f7b50fff798b2fae274c5fb1bb37a0984a45f9d'
+            '33d40f3ae500cf583519ecfa271e36d727c38ff4ea9547d3d2c4d51c9fadd317ed614a048077ebdb116e3c84c11db95e6455cdfc80d092d217d070c98af56525'
+            'a4bc399c805f662ac68e142d0981196d130e6fb63764ed81f5452d930d62bd22b5320e56fc60de28a888bbc8bf166c6cb4b5eea7a5c3213e17999df4560b1032')
 
 validpgpkeys=(
     # PGP keys from PHP maintainer (upstream)
@@ -97,6 +97,7 @@ prepare() {
     patch -p0 -i ${srcdir}/enchant-2.patch
     patch -p1 -i ${srcdir}/php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch
     patch -p1 -i ${srcdir}/php-icu-1101-Simplify-namespace-access.patch
+    patch -p1 -i ${srcdir}/freetype2.patch
 
 
     # Build against specific libs in order to avoid clashes with official Arch Linux php package.
@@ -149,6 +150,7 @@ build() {
         --with-curl=shared \
         --with-db4=/usr \
         --with-enchant=shared,/usr \
+        --with-freetype-dir=/usr \
         --with-gd=shared,/usr \
         --with-gdbm \
         --with-gettext=shared \
