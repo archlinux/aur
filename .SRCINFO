@@ -9,6 +9,7 @@ pkgbase = timelens-git
 	makedepends = git
 	makedepends = cargo
 	depends = gstreamer
+	depends = gst-plugins-base-libs
 	provides = timelens
 	conflicts = timelens
 	source = timelens-git::git+https://github.com/timelens/timelens
