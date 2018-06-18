@@ -1,5 +1,5 @@
-From c7a6a2312313a971089fb592deb8c476be4dca0f Mon Sep 17 00:00:00 2001
-Message-Id: <c7a6a2312313a971089fb592deb8c476be4dca0f.1513462508.git.jan.steffens@gmail.com>
+From 7053fd3cef88991e2da6aac5f1dda2c30ce22b4c Mon Sep 17 00:00:00 2001
+Message-Id: <7053fd3cef88991e2da6aac5f1dda2c30ce22b4c.1525259379.git.jan.steffens@gmail.com>
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 23 Jun 2015 08:40:29 +0200
 Subject: [PATCH 1/4] Enable table validation modules
@@ -9,11 +9,11 @@ Subject: [PATCH 1/4] Enable table validation modules
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/modules.cfg b/modules.cfg
-index 56a2340e56d187aa..3a028329187275df 100644
+index 4bf344524..f9aa44b2a 100644
 --- a/modules.cfg
 +++ b/modules.cfg
 @@ -120,30 +120,30 @@ AUX_MODULES += cache
- # TrueType GX/AAT table validation.  Needs ftgxval.c below.
+ # TrueType GX/AAT table validation.  Needs `ftgxval.c' below.
  #
  # No FT_CONFIG_OPTION_PIC support.
 -# AUX_MODULES += gxvalid
@@ -37,7 +37,7 @@ index 56a2340e56d187aa..3a028329187275df 100644
  # No FT_CONFIG_OPTION_PIC support.
  AUX_MODULES += bzip2
  
- # OpenType table validation.  Needs ftotval.c below.
+ # OpenType table validation.  Needs `ftotval.c' below.
  #
  # No FT_CONFIG_OPTION_PIC support.
 -# AUX_MODULES += otvalid
@@ -46,5 +46,5 @@ index 56a2340e56d187aa..3a028329187275df 100644
  # Auxiliary PostScript driver component to share common code.
  #
 -- 
-2.15.1
+2.17.0
 

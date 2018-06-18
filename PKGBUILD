@@ -5,8 +5,8 @@
 
 _pkgbasename=freetype2
 pkgname=lib32-$_pkgbasename-old-hinting
-pkgver=2.9
-pkgrel=2
+pkgver=2.9.1
+pkgrel=1
 pkgdesc="TrueType font rendering library (including the old hinting engine; 32-bit)"
 arch=(x86_64)
 license=('GPL')
@@ -20,14 +20,12 @@ conflicts=("lib32-$_pkgbasename")
 source=(https://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
         0001-Enable-table-validation-modules.patch
         0002-Enable-infinality-subpixel-hinting.patch
-        0003-Enable-long-PCF-family-names.patch
-        0001-psaux-Correctly-handle-Flex-features-52846.patch)
-sha1sums=('94c4399b1a55c5892812e732843fcb4a7c2fe657'
+        0003-Enable-long-PCF-family-names.patch)
+sha1sums=('220c82062171c513e4017c523d196933c9de4a7d'
           'SKIP'
-          'b69531770c343d403be294b7e4d25ac45738c833'
-          '3d26a569f0cb94c28a550577f5dcaadb4e193d91'
-          '770f1981734a837bcf065564c91644b4cc5e256a'
-          '21ad7dd31e16adb5b39adfa5671018a736626562')
+          'd9eb22e5c962923089b0c9fc5491cf28a19bd982'
+          'd13503902e0404cf3558db76b477f23f9910d06e'
+          'fc49742fb6c19fe0677e3552bb7c00aac8530265')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
 prepare() {
@@ -38,10 +36,6 @@ prepare() {
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
-
-  # Freetype 2.9 regression: bad rendering for some Type 1 fonts
-  # https://savannah.nongnu.org/bugs/?52846
-  patch -Np1 -i ../0001-psaux-Correctly-handle-Flex-features-52846.patch
 
   sed -ri 's|/\* +(#define +CFF_CONFIG_OPTION_OLD_ENGINE) +\*/|\1|' include/freetype/config/ftoption.h
 }
@@ -65,7 +59,7 @@ package() {
   cd freetype2
   make DESTDIR="${pkgdir}" install
 
-  rm -r "${pkgdir}"/usr/{include,share,bin}
+  rm -r "${pkgdir}"/usr/{include,share}
 }
 
 # vim:set ts=2 sw=2 et:
