@@ -5,7 +5,7 @@
 
 pkgbase='python-toolz'
 pkgname='python-toolz'
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A set of utility functions for iterators, functions, and dictionaries."
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/t/toolz/toolz-${pkgver}.tar.gz"
         "toolz_LICENSE::https://github.com/pytoolz/toolz/raw/master/LICENSE.txt")
-sha256sums=('4a13c90c426001d6299c5568cf5b98e095df9c985df194008a67f84ef4fc6c50'
+sha256sums=('929f0a7ea7f61c178bd951bdae93920515d3fbdbafc8e6caf82d752b9b3b31c9'
             '053664057b295b2f0c1332291a77102f01a099d87926e449e08a117eea9660bf')
 
 package_python-toolz() {
