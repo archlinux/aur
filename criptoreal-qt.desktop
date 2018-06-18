@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Criptoreal
+Comment=Criptoreal P2P Cryptocurrency
+Exec=/usr/bin/criptoreal-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/criptoreal128.png
+MimeType=x-scheme-handler/criptoreal;
+Categories=Office;
+Name[en_US]=criptoreal-qt.desktop

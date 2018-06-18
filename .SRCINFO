@@ -1,0 +1,29 @@
+pkgbase = criptoreal-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://criptoreal.org/en/
+	install = criptoreal-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = criptoreal
+	source = criptoreal-qt::git+https://github.com/CriptoReal/Criptoreal.git
+	source = criptoreal-qt.desktop
+	source = secp256k1.patch
+	sha256sums = SKIP
+	sha256sums = 36074a1504e5307cdf577ce7efe63a6aabef7ca866fdf40294d09b14acdd86e5
+	sha256sums = 684bc456ea471d2dbc7c5463e386f94b245062b28fb50fb741799f76a74446d5
+
+pkgname = criptoreal-qt
+
