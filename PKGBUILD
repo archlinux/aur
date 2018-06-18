@@ -7,7 +7,7 @@
 
 pkgname=kimchi
 pkgver=2.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="KVM management plugin for WoK."
 arch=(any)
 url="https://github.com/kimchi-project/kimchi"
@@ -38,7 +38,7 @@ backup=('etc/wok/plugins.d/kimchi.conf')
 
 source=('https://github.com/kimchi-project/'${pkgname}'/archive/'${pkgver}'.tar.gz')
 
-sha256sums=('45a04534abcdd31550b1604b42f72397285b80006be404cac8248b4ceddc7eb6')
+sha256sums=('ae800047b4bd1ee0be3f7c8b6a75665683d6c53608dd073a2d2ad996c2724290')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
