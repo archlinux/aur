@@ -1,6 +1,6 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
 _npmname=thumbsup
-_npmver=2.3.1
+_npmver=2.4.0
 pkgname=nodejs-thumbsup # All lowercase
 pkgver=${_npmver//-/}
 pkgrel=1
@@ -13,7 +13,7 @@ optdepends=('ffmpeg: for video support')
 makedepends=('git' 'python' 'python2')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('9487af07c6e177900fe6a91c1594e40e1db4d2d8')
+sha1sums=('9b7ceba391bdb6d0bfd602cf64c776c38a2313aa')
 
 package() {
   cd $srcdir
