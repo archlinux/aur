@@ -2,7 +2,7 @@
 # Contributor: josephbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-physfs
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A library to provide abstract access to various archives (32 bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom: zlib')
 depends=('physfs' 'lib32-glibc')
 makedepends=('cmake' 'gcc-multilib')
 source=("${url}downloads/physfs-$pkgver.tar.bz2")
-sha256sums=('f2617d6855ea97ea42e4a8ebcad404354be99dfd8a274eacea92091b27fd7324')
+sha256sums=('b77b9f853168d9636a44f75fca372b363106f52d789d18a2f776397bf117f2f1')
 
 prepare() {
   rm -rf build

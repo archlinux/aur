@@ -1,6 +1,6 @@
 pkgbase = lib32-physfs
 	pkgdesc = A library to provide abstract access to various archives (32 bit)
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://icculus.org/physfs/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = lib32-physfs
 	makedepends = gcc-multilib
 	depends = physfs
 	depends = lib32-glibc
-	source = https://icculus.org/physfs/downloads/physfs-3.0.0.tar.bz2
-	sha256sums = f2617d6855ea97ea42e4a8ebcad404354be99dfd8a274eacea92091b27fd7324
+	source = https://icculus.org/physfs/downloads/physfs-3.0.1.tar.bz2
+	sha256sums = b77b9f853168d9636a44f75fca372b363106f52d789d18a2f776397bf117f2f1
 
 pkgname = lib32-physfs
 
