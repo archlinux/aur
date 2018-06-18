@@ -18,8 +18,8 @@
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=4.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ depends=('alsa-lib' 'aom-git' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2' 'fontco
          'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'libgme' 'libiec61883'
          'libilbc' 'libmodplug' 'libomxil-bellagio' 'libmysofa' 'libpulse' 
          'librsvg' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libxcb'
-         'libxext' 'libwebp' 'libxml2' 'libxv' 'lilv' 'mesa' 'ndi-sdk' 'openal'
+         'libxext' 'libwebp' 'libxml2' 'libxv' 'lilv' 'libgl' 'ndi-sdk' 'openal'
          'opencore-amr' 'opencl-driver' 'opencl-icd-loader' 'openh264'
          'openjpeg2' 'libopenmpt-svn' 'opus' 'rockchip-mpp' 'rubberband'
          'rtmpdump' 'sdl2' 'smbclient' 'speex' 'srt' 'shine' 'tesseract'
@@ -51,7 +51,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 source=(https://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz{,.asc}
         'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f'
+sha256sums=('605f5c01c60db35d3b617a79cabb2c7032412be243554602eeed1b628125c0ee'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
@@ -88,7 +88,6 @@ build() {
     --prefix=/usr \
     --extra-cflags="${_cflags}" \
     --extra-ldflags="${_ldflags}" \
-    --extra-libs='-lpthread' \
     \
     --toolchain=hardened \
     \
