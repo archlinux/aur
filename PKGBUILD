@@ -4,7 +4,7 @@
 pkgname=keepass-plugin-keetraytotp
 _pluginname=KeeTrayTOTP
 pkgver=0.94
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the Tray TOTP Keepass plugin adding Steam 2FA."
 license=('GPL3')
 depends=('keepass')
