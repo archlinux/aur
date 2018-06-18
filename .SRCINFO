@@ -1,7 +1,7 @@
 pkgbase = shinjiru-git
 	pkgdesc = Shinjiru is an anime list management tool built with Qt designed to automatically update your progress to AniList and act an desktop manager for AniList.
-	pkgver = v3.1.0.r15.g6720a8b
-	pkgrel = 2
+	pkgver = v3.2.0.r0.g17fea8d
+	pkgrel = 1
 	url = https://github.com/Kazakuri/Shinjiru
 	arch = i686
 	arch = x86_64
