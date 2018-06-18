@@ -12,22 +12,24 @@ pkgdesc="A WYSIWYG text editor that aims at bringing the concept of a wiki to th
 arch=(any)
 license=('GPL' 'PerlArtistic')
 url="http://zim-wiki.org/"
-depends=('pygtk' 'ttf-dejavu')
+depends=('python2')
 conflicts=('zim')
 replaces=('zim')
 optdepends=('bzr: Version Control plugin'
-            'git: Version Control plugin'
-            'mercurial: Version Control plugin'
-            'gnuplot: Insert Gnuplot plugin'
             'ditaa: Insert Ditaa plugin'
+            'git: Version Control plugin'
+            'gnuplot: Insert Gnuplot plugin'
             'graphviz: Insert Diagram & Link Map plugins'
+            'hicolor-icon-theme: hicolor theme hierarchy'
+            'lilypond: Insert Score plugin'
+            'mercurial: Version Control plugin'
+            'pygtksourceview2: Source View plugin'
             'python2-gtkspell: Spell Checker plugin'
             'r: Insert GNU R Plot plugin'
             'scrot: Insert Screenshot plugin'
+            'texlive-bin: Insert Equation plugin'
             'zeitgeist: Log events with Zeitgeist plugin'
-            'lilypond: Insert Score plugin'
-            'pygtksourceview2: Source View plugin'
-            'texlive-bin: Insert Equation plugin')
+)
 
 source=('zim-git::git+https://github.com/jaap-karssenberg/zim-desktop-wiki.git')
 md5sums=('SKIP')
