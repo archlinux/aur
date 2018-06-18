@@ -1,0 +1,25 @@
+pkgbase = msp430-elf-gcc-bin
+	pkgdesc = GNU Tools for TI MSP430 microcontroller family (binary distribution, release 6_0_1_0)
+	pkgver = 7.3.1.24
+	pkgrel = 1
+	url = http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/index_FDS.html
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = gcc
+	optdepends = msp430-elf-mcu
+	provides = msp430-elf-gcc
+	provides = msp430-elf-gdb
+	provides = msp430-elf-binutils
+	provides = msp430-elf-newlib
+	conflicts = msp430-elf-gcc
+	conflicts = msp430-elf-gdb
+	conflicts = msp430-elf-binutils
+	conflicts = msp430-elf-newlib
+	options = !strip
+	options = staticlibs
+	source = http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/6_0_1_0/exports/msp430-gcc-7.3.1.24_linux64.tar.bz2
+	sha256sums = 13a362cb459ae510d1b41c074d72298be45a5b7fd53ae189c38fcfdb19bcd8ac
+
+pkgname = msp430-elf-gcc-bin
+
