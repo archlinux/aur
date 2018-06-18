@@ -1,7 +1,7 @@
 pkgbase = wps-office-extension-swedish-dictionary
 	pkgdesc = Swedish dictionary for WPS Office
 	pkgver = 20131121
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wps-community.org/download/dicts
 	arch = any
 	groups = wps-office-extensions
@@ -9,7 +9,7 @@ pkgbase = wps-office-extension-swedish-dictionary
 	makedepends = unzip
 	depends = wps-office
 	source = http://wps-community.org/download/dicts/sv_SE.zip
-	sha1sums = 828655a2418709d5415dfae9f91fca95e28f90be
+	sha512sums = 773f6b58b30ebdef3c30e14bff0cbe9fe578795746720322cfc496df57af2ab8ccf90e6bd1a9b5f3b817678bf7c4fa6e39e1e1421af5aae771b540ab846c51dc
 
 pkgname = wps-office-extension-swedish-dictionary
 
