@@ -1,0 +1,27 @@
+pkgbase = mingw-w64-dbus-c++
+	pkgdesc = A C++ API for D-BUS (mingw-w64)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://dbus-cplusplus.sourceforge.net/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-dbus
+	depends = mingw-w64-glib2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://sourceforge.net/projects/dbus-cplusplus/files/dbus-c++/0.9.0/libdbus-c++-0.9.0.tar.gz
+	source = gcc47.patch
+	source = disable-threading.patch
+	source = fix-writechar.patch
+	source = dbus-c++-0.9.0-mingw.patch
+	sha512sums = 7acebbb4254b2886cc0f05c5ddeeeac0b5863c5552d32249463b89380b0b95b8225c80bd98b8c7fcaada42ab770b5eff41b15390cd0d78bf1ee322ac6c2de319
+	sha512sums = d8618e1eafd25be074ffecf958fbc04f1b2a844c865ec2d795565809a5d11e7f60c1a8c3a6d952b1485af6b199753b36c06f1759a5559274eed55cf5e6585e20
+	sha512sums = 94d95089ea84af1438191285955bf0866a7d7cbe535ac7fb8282ef6fb96c4ee052f439fb8c9d0b18b9ebec65d39cc45754bb48192ffb46c3d0c4ed6b1b6693a6
+	sha512sums = df0a3a80d139877eaea5f352da5dfa2bc0407360ddfb59301707c77bd4329ecd986f366f27bbdd7e4ce385125c6ec46fcf115854aa01d97cf11dff905cd9a385
+	sha512sums = 49198f9930dacfc7569e4626adca649039f7d21c69a75067a20f43280e18370c67f5b56efa9866962043e47923f1d225115ab4bf488510eb343b58b75f777e1d
+
+pkgname = mingw-w64-dbus-c++
+
