@@ -12,8 +12,8 @@
 _clang_completer=y
 
 pkgname=neovim-youcompleteme-core-git
-pkgver=r2282.788c293a
-pkgrel=2
+pkgver=r2359.e49f817b
+pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
 url='https://valloric.github.io/YouCompleteMe/'
@@ -26,7 +26,7 @@ optdepends=(
 	'nodejs-tern: JavaScript semantic completion'
 	'racerd-git: Rust semantic completion'
 	'typescript: Typescript semantic completion'
-	'python-jedihttp-git: Python semantic completion')
+	'python-jedi: Python semantic completion')
 # https://github.com/Valloric/ycmd/pull/213
 #'omnisharp-roslyn: C# semantic completion'
 
@@ -46,10 +46,9 @@ fi
 
 prepare() {
 	cd "${srcdir}/YouCompleteMe"
-	git reset --hard
-	git -C 'third_party/ycmd' reset --hard
 	git config submodule.third_party/ycmd.url "${srcdir}/ycmd"
 	git submodule update --init 'third_party/ycmd'
+	git -C third_party/ycmd checkout master
 }
 
 build() {
@@ -79,11 +78,9 @@ package() {
 		unset clang_version
 	fi
 
-        install -Ddm755 "${pkg_ycmd_dir}/third_party/JediHTTP"
         install -Ddm755 "${pkg_ycmd_dir}/third_party/tern_runtime/node_modules/"
         install -Ddm755 "${pkg_ycmd_dir}/third_party/gocode/"
         install -Ddm755 "${pkg_ycmd_dir}/third_party/godef/"
-        ln -s /usr/bin/jedihttp "${pkg_ycmd_dir}/third_party/JediHTTP/jedihttp"
         ln -s /usr/lib/node_modules/tern "${pkg_ycmd_dir}/third_party/tern_runtime/node_modules/"
         ln -s /usr/bin/gocode "${pkg_ycmd_dir}/third_party/gocode/"
         ln -s /usr/bin/godef "${pkg_ycmd_dir}/third_party/godef/"
