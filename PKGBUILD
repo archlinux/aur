@@ -32,13 +32,13 @@ _localmodcfg=
 
 pkgbase=linux-gc
 _srcname=linux-4.17
-pkgver=4.17.1
+pkgver=4.17.2
 pkgrel=1
 _pdsversion=098r
 arch=('x86_64')
 url="http://cchalpha.blogspot.co.uk/"
 license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _psd_patch="v${_srcname#*-}_pds${_pdsversion}.patch"
 _gcc_more_v='20180509'
@@ -61,9 +61,9 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '31f2f5309d99db632160538d43cf737166ae8b24c1b8091522ca1f9a804c25a1'
+            'a528b102daad9d3072b328f68d4fc7b4eff7641ad301d1a54e5b8f5385efeb0b'
             'SKIP'
-            '1da121e11032e99124e24ab42f5b97bf5c1883f468b40ce78a2144a2ebdc91bf'
+            '7d25af8d402388f5b08b5351fb49d6e1b4108b121acd23f2bc5c2a59ff497f69'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
