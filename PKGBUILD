@@ -8,6 +8,7 @@ url="https://www.zapcc.com/"
 provides=('zapcc')
 conflicts=('zapcc')
 depends=('ncurses' 'zlib')
+conflicts=('clang50')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/yrnkrn/zapcc.git")
 sha256sums=('SKIP')
@@ -30,8 +31,9 @@ build() {
 
 package() {
   cd "$srcdir/zapcc/build"
-  install -d "$pkgdir"/usr/bin
+  install -d "$pkgdir"/usr/{lib,bin}
   install -m755 ./bin/zapcc ./bin/zapccs "$pkgdir"/usr/bin
   install -m644 ./bin/zapccs.config "$pkgdir"/usr/bin
+  cp -r ./lib/clang/ "$pkgdir"/usr/lib
   cd "$pkgdir"/usr/bin && ln -s zapcc zapcc++
 }
