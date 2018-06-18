@@ -3,7 +3,7 @@
 
 pkgbase=dolphin-emu-git
 pkgname=('dolphin-emu-git' 'dolphin-emu-cli-git' 'dolphin-emu-wx-git')
-pkgver=5.0.r7139.ad836b9071
+pkgver=5.0.r8143.29d51ff692
 pkgrel=1
 pkgdesc='A GameCube / Wii / Triforce emulator'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('alsa-lib' 'bluez-libs' 'enet' 'gcc-libs' 'gdk-pixbuf2' 'glib2'
          'qt5-base' 'sfml' 'zlib'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
          'libswscale.so' 'libudev.so' 'libusb-1.0.so')
-makedepends=('cairo' 'cmake' 'git' 'gtk2' 'pango')
+makedepends=('cairo' 'cmake' 'git' 'gtk2' 'libglvnd' 'pango')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!emptydirs')
 source=('dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git')
