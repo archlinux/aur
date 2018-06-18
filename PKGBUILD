@@ -1,6 +1,6 @@
 #Maintainer: Sam Bazley <sambazley@protonmail.com>
 pkgname=blockbar-git
-pkgver=20180617002646
+pkgver=20180618174439
 pkgrel=1
 pkgdesc="Blocks based status bar for X window managers"
 arch=("i686" "x86_64")
@@ -24,13 +24,12 @@ prepare() {
 
 build() {
     cd "$srcdir/blockbar"
-    cmake .
+    cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" .
     make
 }
 
 package() {
-    install -Dm755 blockbar/blockbar "$pkgdir/usr/bin/blockbar"
-    install -Dm755 blockbar/bbc "$pkgdir/usr/bin/bbc"
-
-    install -Dm644 blockbar/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd blockbar
+    make install
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
