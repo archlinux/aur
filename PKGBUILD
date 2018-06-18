@@ -1,7 +1,7 @@
 # Maintainer: helix <stargr[at]gmail[dot]com>
 pkgname=wps-office-extension-romanian-dictionary
 pkgver=20140108
-pkgrel=2
+pkgrel=3
 pkgdesc='Romanian dictionary for WPS Office'
 arch=('any')
 url='http://wps-community.org/download/dicts'
@@ -10,9 +10,9 @@ depends=('wps-office')
 groups=('wps-office-extensions')
 makedepends=('unzip')
 source=(http://wps-community.org/download/dicts/ro_RO.zip)
-sha1sums=('b7d1365c4d22daf997d5ce46e2a253690e6ea26b')
+sha512sums=('be7c63a1f8563110da663572a81599e5042a42ad0a36e319435b918ae41e8c639797a59b7ec271dc3cf737ed9c64ae6ef347fa2a134bdb804b2cc6dc0ee731b2')
 
 package() {
-  install -dm755 $pkgdir/usr/lib/office6/dicts
-  unzip -q $srcdir/ro_RO.zip -d $pkgdir/usr/lib/office6/dicts
+  install -dm755 $pkgdir/usr/lib/office6/dicts/spellcheck
+  unzip -q $srcdir/ro_RO.zip -d $pkgdir/usr/lib/office6/dicts/spellcheck
 }
