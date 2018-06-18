@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 
 pkgname=python-osc
-pkgver=1.6.4
+pkgver=1.6.7
 pkgrel=1
 pkgdesc='Open Sound Control server and client implementations in pure Python'
 arch=('any')
@@ -9,8 +9,10 @@ url="https://github.com/attwad/python-osc"
 license=('custom')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/attwad/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('775a425c7b3e59de754800e5e0e91878af8bc55d43959a78adf89d3698ed760f383bf139e87437bb7e3373caa5773e10321c9e083e9275b184a89355606e852c')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/attwad/${pkgname}/master/LICENSE.txt")
+sha512sums=('fa0a6f72b82431b2842d7d1af9c404e10a43cbc16c7e14902d2b2c01b40a49430dcb637cfe657cfdcd541dc26e6770987ae9d43a9bffd6cc94adad64ae20a0a3'
+            'aa647966e7fb62ffcd7bfc1e56a8ebe38e8384a36c14e07fec4ccf3be91ffa1b3bbd9798901fa7956056c26d124f067582366bdb9581db1f742291c86e64e39d')
 
 check() {
   cd "${pkgname}-${pkgver}"
@@ -29,10 +31,7 @@ package() {
     --prefix=/usr \
     --root="${pkgdir}/"
 
-  install -Dm0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm0644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
-  install -t "${pkgdir}/usr/share/doc/${pkgname}/scripts/" -Dm644 scripts/*.py
-  install -t "${pkgdir}/usr/share/doc/${pkgname}/examples/" -Dm644 \
-    examples/*.py
-
+  install -vDm 644 ../LICENSE.txt \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
