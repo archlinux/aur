@@ -1,7 +1,7 @@
 pkgbase = wokd
 	pkgdesc = Webserver originated from Kimchi - a cherrypy framework for multi-purpose plug-ins
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kimchi-project/wok/
 	install = wokd.install
 	arch = any
@@ -27,9 +27,7 @@ pkgbase = wokd
 	conflicts = wokd-git
 	backup = etc/wok/wok.conf
 	source = https://github.com/kimchi-project/wok/archive/2.5.0.tar.gz
-	source = wokd.install
-	sha256sums = d400333eb4b133e331beac0418962ad5ff0f64c08d6071eb9fca3ff4ad35e643
-	sha256sums = b3c549d393739c0a0ffda289dc8d20c1f1228963ad82d1a107e986e74b52939c
+	sha256sums = 2fd4c4ec3bd98e299e6f9896e82ed341154bb61b0e3027b0f40210ca50c8520b
 
 pkgname = wokd
 

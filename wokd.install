@@ -1,4 +1,12 @@
 post_install() {
+  if [ ! -e /etc/wok/dhparams.pem ]; then
+    openssl dhparam -dsaparam -out /etc/wok/dhparams.pem 2048 >/dev/null 2>&1 || :
+  fi
+    	
+  if [ ! -e /etc/wok/wok-key.pem ] || [ ! -e /etc/wok/wok-cert.pem ]; then
+    openssl req -x509 -newkey rsa:4096 -keyout /etc/wok/wok-key.pem -out /etc/wok/wok-cert.pem -days 365 -nodes -subj "/C=US/CN=wok/O=kimchi-project.org" >/dev/null 2>&1 || :
+  fi
+      
   echo "Add wokd to your nginx configuration."
   echo "Start and optionally enable wokd.service."
   echo "Connect your browser to https://<wok-host>:8001."

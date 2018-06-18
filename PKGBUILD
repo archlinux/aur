@@ -8,7 +8,7 @@ pkgname=('wokd')
 
 # Version
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 #epoch=
 
 # Generic
@@ -48,7 +48,7 @@ install=wokd.install
 #changelog=
 
 # Sources
-source=('https://github.com/kimchi-project/wok/archive/'${pkgver}'.tar.gz' 'wokd.install')
+source=('https://github.com/kimchi-project/wok/archive/'${pkgver}'.tar.gz')
 #source_i686=("")
 #source_x86_64=("")
 #noextract=()
@@ -59,9 +59,7 @@ source=('https://github.com/kimchi-project/wok/archive/'${pkgver}'.tar.gz' 'wokd
 #md5sums_i686=()
 #md5sums_x86_64=()
 #sha1sums=()
-sha256sums=('d400333eb4b133e331beac0418962ad5ff0f64c08d6071eb9fca3ff4ad35e643'
-            'b3c549d393739c0a0ffda289dc8d20c1f1228963ad82d1a107e986e74b52939c')
-
+sha256sums=('2fd4c4ec3bd98e299e6f9896e82ed341154bb61b0e3027b0f40210ca50c8520b')
 #pkgver() {
 #}
 
