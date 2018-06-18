@@ -1,7 +1,7 @@
 pkgbase = wps-office-extension-spanish-catalan-dictionary
 	pkgdesc = Spanish (Catalan) dictionary for WPS Office
 	pkgver = 20150407
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wps-community.org/download/dicts
 	arch = any
 	groups = wps-office-extensions
@@ -9,7 +9,7 @@ pkgbase = wps-office-extension-spanish-catalan-dictionary
 	makedepends = unzip
 	depends = wps-office
 	source = http://wps-community.org/download/dicts/ca_ES.zip
-	sha1sums = 974af03ac6f7995f4a5a82e24e4ac6ee0b9d15fe
+	sha512sums = 6fa5f7283e13aa2c4308859faf97be222d822866fc0ea4c872246450447019f212e66abc309081cad7a3a77a74c13a736298a30c4c12964ed296fd077433f959
 
 pkgname = wps-office-extension-spanish-catalan-dictionary
 
