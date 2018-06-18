@@ -1,5 +1,6 @@
 # $Id$
 # Maintainer : George Eleftheriou <eleftg>
+# Contributor: Jingbei Li <petronny>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <archange@archlinux.org>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
@@ -12,7 +13,7 @@ _pkgname=hdf5
 _mpi=openmpi
 pkgname=${_pkgname}-${_mpi}-java
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose library and file format for storing scientific data (${_mpi} version) (full version including its Java Native Interfaces)"
 arch=('x86_64')
 url="https://www.hdfgroup.org/HDF5/"
@@ -46,6 +47,7 @@ build() {
         F9X="mpif90" \
         RUNPARALLEL="mpirun" \
         OMPI_MCA_disable_memory_allocator=1 \
+        JAVADOC='javadoc -Xdoclint:none' \
         --prefix=/usr \
         --docdir=/usr/share/doc/hdf5 \
         --disable-static \
@@ -54,7 +56,6 @@ build() {
         --enable-hl \
         --enable-cxx \
         --enable-fortran \
-        --enable-fortran2003 \
         --enable-java \
         --enable-parallel \
         --enable-unsupported \
