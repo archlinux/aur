@@ -62,7 +62,7 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.16.16
+pkgver=4.17.2
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
 pkgrel=1
@@ -90,7 +90,6 @@ source=(# mainline kernel patches
         "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         # bfq-mq patch
         "${_lucjanpath}/${_bfq_mq_patch}"
-        "${_lucjanpath}/0006-include-linux-add-gcc8-support.patch"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
          # the main kernel config files
         'config'
@@ -103,26 +102,24 @@ source=(# mainline kernel patches
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch'
-        '0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch'
-)
+        '0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch'
+        '0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch')
 
-sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
+sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            'fd8a68ffcc729e69f0c0a3d202d08d7c5fa612d1ac65dfff3c5ef2f64d183a2e'
+            'a528b102daad9d3072b328f68d4fc7b4eff7641ad301d1a54e5b8f5385efeb0b'
             'SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '1f2b2e67b83c297e00b844f3c3708d5113f215b99bc0b2c042271818fa4f7340'
-            'dcdf569053b086db277ff085390085592ef5b9c71980ee6d4093e2f92f537ef5'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '2b7b0b7f690d474d22cfd243738d994977be6b3acc15957a0fad4f27ee82645f'
+            '1477ecead9433ff610c56016e13369f42ccab3249745b4d689af48e29257f381'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '8d6a5f34b3d79e75b0cb888c6bcf293f84c5cbb2757f7bdadafee7e0ea77d7dd'
-            '2454c1ee5e0f5aa119fafb4c8d3b402c5e4e10b2e868fe3e4ced3b1e2aa48446'
-            '8114295b8c07795a15b9f8eafb0f515c34661a1e05512da818a34581dd30f87e')
+            'e3c08f9b91611186e5ec579187ecea2a0143e5c2dc7ffc30ac6ea6e2b6d130fd'
+            '5403dead9161344b2c01027526146a250147680f4a2d32a54d40c55fc1becc8a'
+            'd55e7de60b12bca26ded4c1bb8eb5860a9092374914a201a0f6a0ed2849d099f')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -142,24 +139,23 @@ prepare() {
         msg "Disable USER_NS for non-root users by default"
         patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
     
-    ###  Fix https://bugs.archlinux.org/task/56780
-         msg "Fix #56780"
-         patch -Np1 -i ../0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
-    
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
-        patch -Np1 -i ../0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+        patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
    
-   ### Fix gcc8 bogus warnings
-        msg "Fix gcc8 bogus warnings"
-        patch -Np1 -i ../0006-include-linux-add-gcc8-support.patch
+   ### Fix https://bugs.archlinux.org/task/56780
+        msg "Fix #56780"
+        patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
    
    ### Patch source with BFQ-SQ-MQ
-        _ver="$(cat Makefile | grep -m1 -e SUBLEVEL | grep -o "[[:digit:]]*")"
+        _ver1="$(cat Makefile | grep -m1 -e PATCHLEVEL | grep -o "[[:digit:]]*")"
+        _ver2="$(cat Makefile | grep -m1 -e SUBLEVEL | grep -o "[[:digit:]]*")"
         msg "Fix naming schema in BFQ-SQ-MQ patch"
-        sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_ver}|g" \
+        sed -i -e "s|PATCHLEVEL = 16|PATCHLEVEL = ${_ver1}|g" \
+            -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_ver2}|g" \
             -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
-            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" ../${_bfq_mq_patch}
+            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g"  \
+            -i -e "s|NAME = Fearless Coyote|NAME = Merciless Moray|g" ../${_bfq_mq_patch}
         msg "Patching source with BFQ-SQ-MQ patches"
         patch -Np1 -i ../${_bfq_mq_patch}
 
