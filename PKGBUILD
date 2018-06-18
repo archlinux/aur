@@ -4,15 +4,15 @@
 _name='xdis'
 pkgbase="python-${_name}"
 pkgname=("python-${_name}" "python2-${_name}")
-pkgver=3.8.3
-pkgrel=3
+pkgver=3.8.4
+pkgrel=1
 pkgdesc="Python cross-version byte-code disassembler and marshal routines."
 arch=('any')
 url="https://github.com/rocky/python-xdis/"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('edf8188d12fb1f29246b2f9232bcc0e361ed5ad6845f312178e8060e14ffc78d')
+sha256sums=('6b6b44f90b55cc4099834ec4a92ac93717e00871dfcbaed6b5390e331ea34461')
 
 package_python-xdis() {
     depends=('python-click')
