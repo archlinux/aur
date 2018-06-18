@@ -1,7 +1,6 @@
 # Maintainer: Peter Reschenhofer <peter.reschenhofer@gmail.com>
 pkgname=gocryptfs
-pkgver=1.4.4
-_tag=v1.4.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Encrypted overlay filesystem written in Go."
 arch=('i686' 'x86_64' 'armv7h')
@@ -9,15 +8,15 @@ url="https://github.com/rfjakob/gocryptfs"
 license=('MIT')
 depends=('gcc-libs' 'openssl' 'fuse')
 makedepends=('git' 'go')
-source=("git+https://github.com/rfjakob/gocryptfs.git#tag=$_tag"
+source=("$pkgname-git::git+https://github.com/rfjakob/gocryptfs.git#tag=v${pkgver}"
         "gocryptfs.1")
 md5sums=('SKIP'
-         '237b1b4b5213e33d30cb3ae670fee753')
+         '9623b72dbbb5df3e8c0f45daf4e2e7fa')
 
 prepare() {
     export GOPATH="$PWD/GO"
     mkdir -p $GOPATH/src/github.com/rfjakob
-    ln -sf $PWD/gocryptfs $GOPATH/src/github.com/rfjakob/
+    ln -sf $PWD/$pkgname-git $GOPATH/src/github.com/rfjakob/
     go get -d github.com/rfjakob/gocryptfs
 }
 
