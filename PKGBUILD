@@ -1,7 +1,7 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-pyswip
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='Python wrapper for SWI-Prolog'
 arch=('any')
