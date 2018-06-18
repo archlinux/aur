@@ -2,7 +2,7 @@
 # Contributor: Paul Dino Jones "ZitZ" <Raptorman18@gmail.com>
 
 pkgname=openjazz
-pkgver=20171024
+pkgver=20180522
 pkgrel=1
 pkgdesc="A free, open-source version of the classic Jazz Jackrabbit™ games"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('zlib' 'sdl' 'libmodplug')
 install=openjazz.install
 source=("https://github.com/AlisterT/openjazz/releases/download/$pkgver/openjazz-$pkgver.tar.xz")
-sha256sums=('ee1f2441a8a63cfe9ef11978e0635ccdacd847bc7b00781e363d422aa5770e3b')
+sha256sums=('35260066f307ff7e31304907a2a430a20b8d1fa5f90ad2c13275ab3aca337c24')
 
 prepare() {
   # look in home directory for data files

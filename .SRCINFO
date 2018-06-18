@@ -1,6 +1,6 @@
 pkgbase = openjazz
 	pkgdesc = A free, open-source version of the classic Jazz Jackrabbit™ games
-	pkgver = 20171024
+	pkgver = 20180522
 	pkgrel = 1
 	url = http://alister.eu/jazz/oj/
 	install = openjazz.install
@@ -10,8 +10,8 @@ pkgbase = openjazz
 	depends = zlib
 	depends = sdl
 	depends = libmodplug
-	source = https://github.com/AlisterT/openjazz/releases/download/20171024/openjazz-20171024.tar.xz
-	sha256sums = ee1f2441a8a63cfe9ef11978e0635ccdacd847bc7b00781e363d422aa5770e3b
+	source = https://github.com/AlisterT/openjazz/releases/download/20180522/openjazz-20180522.tar.xz
+	sha256sums = 35260066f307ff7e31304907a2a430a20b8d1fa5f90ad2c13275ab3aca337c24
 
 pkgname = openjazz
 
