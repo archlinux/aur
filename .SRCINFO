@@ -1,0 +1,34 @@
+pkgbase = thunar-gtk2
+	pkgdesc = Modern file manager for Xfce (GTK2 version)
+	pkgver = 1.6.15
+	pkgrel = 1
+	url = http://thunar.xfce.org
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	license = LGPL2.1
+	makedepends = intltool
+	makedepends = xfce4-panel
+	depends = desktop-file-utils
+	depends = libexif
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libgudev
+	depends = gtk2
+	depends = exo
+	depends = libxfce4util
+	depends = libxfce4ui
+	depends = libpng
+	optdepends = gvfs: for trash support, mounting with udisk and remote filesystems
+	optdepends = xfce4-panel: for trash applet
+	optdepends = tumbler: for thumbnail previews
+	optdepends = thunar-volman: manages removable devices
+	optdepends = thunar-archive-plugin: create and deflate archives
+	optdepends = thunar-media-tags-plugin: view/edit id3/ogg tags
+	provides = thunar
+	conflicts = thunar
+	source = https://archive.xfce.org/src/xfce/thunar/1.6/Thunar-1.6.15.tar.bz2
+	sha256sums = e81291a8519f495e0a059ff1f2d29608bc6d37c0be83b1f38f3c9aa25f8d252d
+
+pkgname = thunar-gtk2
+
