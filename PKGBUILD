@@ -11,13 +11,13 @@
 _pkgname=socat2
 pkgname=${_pkgname}-git
 pkgver=2.0.0.b9.0.g7beb9b3
-pkgrel=2
+pkgrel=3
 pkgdesc='Multipurpose relay (development version)'
 url='http://www.dest-unreach.org/socat/socat-version2.html'
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('readline' 'openssl-1.0')
-makedepends=('yodl')
+makedepends=('yodl' 'git')
 source=(
     "$_pkgname"::"git+http://repo.or.cz/socat.git#branch=socat2"
     sslv3.patch
