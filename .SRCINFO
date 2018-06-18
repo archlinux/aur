@@ -1,0 +1,13 @@
+pkgbase = libstudxml
+	pkgdesc = A streaming XML pull parser and streaming XML serializer implementation for modern, standard C++
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.codesynthesis.com/projects/libstudxml/
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	source = https://www.codesynthesis.com/download/libstudxml/1.0/libstudxml-1.0.1.tar.bz2
+	sha1sums = 59e40dd960e202648dca6a93b491dbe8823499c7
+
+pkgname = libstudxml
+
