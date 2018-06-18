@@ -1,7 +1,7 @@
 # Maintainer: Henninger Henningstone <henritees at mein-twserver dot de>
 
 pkgname=allthehaxx
-pkgver=0.36.4
+pkgver=0.36.4a
 pkgrel=0
 pkgdesc="AllTernative Teeworlds Client"
 arch=('x86_64')
@@ -21,7 +21,7 @@ install=allthehaxx.install
 _archive="$pkgname-$pkgver.tar.gz"
 source=("$_archive::https://netix.dl.sourceforge.net/project/allthehaxx/$pkgver/$pkgver.tar.gz") # https://github.com/AllTheHaxx/AllTheHaxx/archive/$pkgver.tar.gz
 noextract=("$_archive")
-sha256sums=('2ac5001f7ef66996406e5618aaa20e8df9add19b311064c6b31a12a3bab90322')
+sha256sums=('35d0221e4d20c4f90da9487d29387083dcc008dc145b12c0cd3eaacc4fd9bb3d')
 
 
 prepare() {
