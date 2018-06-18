@@ -1,6 +1,6 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 pkgname=camouflage
-pkgver=20180614.35_4a56a0f
+pkgver=20180618.41_98e8782
 pkgrel=1
 pkgdesc="camouflage"
 arch=('i686' 'x86_64')
@@ -24,11 +24,6 @@ backup=(
 )
 
 pkgver() {
-	if [[ "$PKGVER" ]]; then
-		echo "$PKGVER"
-		return
-	fi
-
 	cd "$srcdir/$pkgname"
 	local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
 	local count=$(git rev-list --count HEAD)
