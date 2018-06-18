@@ -1,7 +1,7 @@
 pkgbase = wps-office-extension-croatian-dictionary
 	pkgdesc = Croatian dictionary for WPS Office
 	pkgver = 20160323
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wps-community.org/download/dicts
 	arch = any
 	groups = wps-office-extensions
@@ -9,7 +9,7 @@ pkgbase = wps-office-extension-croatian-dictionary
 	makedepends = unzip
 	depends = wps-office
 	source = http://wps-community.org/download/dicts/hr_HR.zip
-	sha1sums = 048f06abdb224eaee744f350547576c3be9c485a
+	sha512sums = 1ae43d506bf35483e65a8ef2f289a854785269a9ef5a39126996d17cd0c9469381cd567925e98cd863bddf2d981bf281880be94250579b506e82e9747114fb35
 
 pkgname = wps-office-extension-croatian-dictionary
 

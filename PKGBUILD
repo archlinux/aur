@@ -1,7 +1,7 @@
 # Maintainer: helix <stargr[at]gmail[dot]com>
 pkgname=wps-office-extension-croatian-dictionary
 pkgver=20160323
-pkgrel=1
+pkgrel=2
 pkgdesc='Croatian dictionary for WPS Office'
 arch=('any')
 url='http://wps-community.org/download/dicts'
@@ -10,9 +10,9 @@ depends=('wps-office')
 groups=('wps-office-extensions')
 makedepends=('unzip')
 source=(http://wps-community.org/download/dicts/hr_HR.zip)
-sha1sums=('048f06abdb224eaee744f350547576c3be9c485a')
+sha512sums=('1ae43d506bf35483e65a8ef2f289a854785269a9ef5a39126996d17cd0c9469381cd567925e98cd863bddf2d981bf281880be94250579b506e82e9747114fb35')
 
 package() {
-  install -dm755 $pkgdir/usr/lib/office6/dicts
-  unzip -q $srcdir/hr_HR.zip -d $pkgdir/usr/lib/office6/dicts
+  install -dm755 $pkgdir/usr/lib/office6/dicts/spellcheck
+  unzip -q $srcdir/hr_HR.zip -d $pkgdir/usr/lib/office6/dicts/spellcheck
 }
