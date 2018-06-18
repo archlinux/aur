@@ -2,8 +2,8 @@
 
 pkgname=mariadb-connector-odbc
 conflicts=('mariadb-connector-odbc-bin')
-pkgver=3.0.3
-pkgrel=2
+pkgver=3.0.5
+pkgrel=1
 pkgdesc="MariaDB Connector/ODBC is a standardized, LGPL licensed database driver using the industry standard ODBC API"
 arch=('x86_64' 'i686')
 url="https://mariadb.com/kb/en/mariadb/mariadb-connector-odbc/"
@@ -13,22 +13,20 @@ makedepends=("mariadb-connector-c>=$pkgver" "mariadb-connector-c<4")
 options=('staticlibs')
 source=("https://downloads.mariadb.org/interstitial/connector-odbc-${pkgver}/${pkgname}-${pkgver}-ga-src.tar.gz")
 
-sha1sums=('841b89bc8f98ebb84c27ad5cd38843f742b1a28d')
+sha1sums=('c2b26efbc9332dec5322a5de70436e5516cda8fa')
 
 install=mariadb-connector-odbc.install
 
 prepare() {
     cd "$srcdir"
-    rm -Rf build
+    rm -Rf build $pkgname-$pkgver-ga-src/CMakeCache.txt
     mkdir build
     cd build
     cmake ../$pkgname-$pkgver-ga-src \
         -G"Unix Makefiles" \
         -DWITH_OPENSSL=ON \
         -DCMAKE_BUILD_TYPE=release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DMARIADB_INCLUDE_DIR=/usr/include/mariadb \
-        -DMARIADB_LIBRARY_DIR=/usr/lib/mariadb
+        -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
