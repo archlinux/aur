@@ -1,0 +1,22 @@
+--- ZThread-2.3.2/Makefile.am.orig	2005-03-13 10:56:18.000000000 +0100
++++ ZThread-2.3.2/Makefile.am	2008-09-10 18:36:38.836984794 +0200
+@@ -27,14 +27,14 @@
+ 
+ ## install the config script
+ install-exec-hook:
+-	$(mkinstalldirs) $(bindir)
+-	$(INSTALL_PROGRAM) $(top_srcdir)/share/zthread-config $(bindir)
++	$(mkinstalldirs) $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) $(top_srcdir)/share/zthread-config $(DESTDIR)$(bindir)
+ 
+ ## install the config script & m4 macros
+ install-data-hook:
+-	$(mkinstalldirs) $(datadir)/aclocal
+-	$(INSTALL_DATA) $(top_srcdir)/share/zthread.m4 $(datadir)/aclocal
+-	$(INSTALL_DATA) $(top_srcdir)/share/pthread.m4 $(datadir)/aclocal
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/aclocal
++	$(INSTALL_DATA) $(top_srcdir)/share/zthread.m4 $(DESTDIR)$(datadir)/aclocal
++	$(INSTALL_DATA) $(top_srcdir)/share/pthread.m4 $(DESTDIR)$(datadir)/aclocal
+ 	mkdir -p $(DESTDIR)$(includedir)/zthread
+ 	cp -pR $(top_srcdir)/include/zthread $(DESTDIR)$(includedir)/
+ 

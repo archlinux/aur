@@ -1,9 +1,9 @@
-# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public@gmail.com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=zthread
 _pkgname=ZThread
 pkgver=2.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A platform-independent, multi-threading and synchronization library for C++'
 arch=('i686' 'x86_64')
 url='http://zthread.sourceforge.net/'
@@ -11,12 +11,12 @@ license=('MIT')
 depends=(bash)
 makedepends=('automake=1.7')
 options=(!emptydirs libtool)
-source=("$pkgname-$pkgver.tar.gz::http://prdownloads.sourceforge.net/zthread/ZThread-${pkgver}.tar.gz"
+source=("$_pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/zthread/files/ZThread/2.3.2/ZThread-2.3.2.tar.gz"
 zthread.patch
 https://raw.github.com/freddix/pkgs.old/master/ZThread/ZThread-destdir.patch
 )
 sha256sums=('950908b7473ac10abb046bd1d75acb5934344e302db38c2225b7a90bd1eda854'
-            'd0c996aad95f90d7465171b184c0f062145e8b0bea7a74df9ddc2e659f3f13f4'
+            'c5f5894386ab06aa40dd45c25c2cdc4babe09c48b43ad2db43bcb3e692b8216b'
             '67401dc12da4f96d598689aa8aa0f2caa9e6a82a31cad62f0d6d9a3eb7fdbb6c')
 prepare(){
   cd "$srcdir"/$_pkgname-$pkgver
