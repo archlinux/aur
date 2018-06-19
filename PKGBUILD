@@ -4,7 +4,7 @@ pkgver=r43.bdf596f
 pkgrel=1
 pkgdesc="AppEditor allows you to edit application entries in the application menu."
 arch=('i686' 'x86_64')
-url="https://github.com/donadigo/${pkgname}"
+url="https://github.com/donadigo/appeditor"
 license=('GPL')
 depends=(
 				 'vala'
@@ -12,7 +12,7 @@ depends=(
 				 'granite'
 				 'meson'
 				)
-makedepends=('ninja')
+makedepends=('ninja' 'git')
 source=("git://github.com/donadigo/appeditor.git")
 md5sums=('SKIP')
 
