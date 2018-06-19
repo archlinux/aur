@@ -2,7 +2,7 @@
 
 gitname=s3cmd
 pkgname=${gitname}-git
-pkgver=1606.d07bcfa
+pkgver=1705.c0d66ac
 pkgrel=1
 pkgdesc="A command line client for Amazon S3 (git)"
 arch=('any')
