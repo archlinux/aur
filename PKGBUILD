@@ -8,17 +8,17 @@ license=('GPL')
 depends=(
 )
 makedepends=(
-	'go'
-	'git'
+    'go'
+    'git'
 )
 
 source=(
-	"$pkgname::git://github.com/golang/tools#branch=${BRANCH:-master}"
+    "$pkgname::git://github.com/golang/tools#branch=${BRANCH:-master}"
     "fix-package-name.patch"
 )
 
 md5sums=(
-	'SKIP'
+    'SKIP'
     'SKIP'
 )
 
@@ -26,44 +26,44 @@ backup=(
 )
 
 pkgver() {
-	if [[ "$PKGVER" ]]; then
-		echo "$PKGVER"
-		return
-	fi
+    if [[ "$PKGVER" ]]; then
+        echo "$PKGVER"
+        return
+    fi
 
-	cd "$srcdir/$pkgname"
-	local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
-	local count=$(git rev-list --count HEAD)
-	local commit=$(git rev-parse --short HEAD)
-	echo "$date.${count}_$commit"
+    cd "$srcdir/$pkgname"
+    local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
+    local count=$(git rev-list --count HEAD)
+    local commit=$(git rev-parse --short HEAD)
+    echo "$date.${count}_$commit"
 }
 
 build() {
-	if [ -L "$srcdir/$pkgname" ]; then
-		rm "$srcdir/$pkgname" -rf
-		mv "$srcdir/go/src/$pkgname/" "$srcdir/$pkgname"
-	fi
+    if [ -L "$srcdir/$pkgname" ]; then
+        rm "$srcdir/$pkgname" -rf
+        mv "$srcdir/go/src/$pkgname/" "$srcdir/$pkgname"
+    fi
 
-	rm -rf "$srcdir/go/src"
-	mkdir -p "$srcdir/go/src/golang.org/x/"
+    rm -rf "$srcdir/go/src"
+    mkdir -p "$srcdir/go/src/golang.org/x/"
 
-	mv "$srcdir/$pkgname" "$srcdir/go/src/golang.org/x/tools/"
+    mv "$srcdir/$pkgname" "$srcdir/go/src/golang.org/x/tools/"
     cd "$srcdir/go/src/golang.org/x/tools/"
 
-	git submodule update --init
+    git submodule update --init
 
-	export GOPATH="$srcdir/go"
-	export GOBIN=""
+    export GOPATH="$srcdir/go"
+    export GOBIN=""
 
     patch -p1 < $srcdir/../fix-package-name.patch
 
-	go get -v \
-		-gcflags "-trimpath $GOPATH/src" \
-		./cmd/goimports
+    go get -v \
+        -gcflags "-trimpath $GOPATH/src" \
+        ./cmd/goimports
 }
 
 package() {
-	find "$srcdir/go/bin/" -type f -executable | while read filename; do
-		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
-	done
+    find "$srcdir/go/bin/" -type f -executable | while read filename; do
+        install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
+    done
 }

@@ -1,8 +1,17 @@
 diff --git a/imports/fix.go b/imports/fix.go
-index de660879..380ec8e9 100644
+index ebb228d1..42c2cf67 100644
 --- a/imports/fix.go
 +++ b/imports/fix.go
-@@ -908,9 +908,19 @@ func findImportGoPath(pkgName string, symbols map[string]bool, filename string)
+@@ -350,7 +350,7 @@ func fixImports(fset *token.FileSet, f *ast.File, filename string) (added []stri
+ 	}()
+ 
+ 	for result := range results {
+-		if result.name != "" {
++		if result.name != "" && isNeedToRename(result.ipath, result.name) {
+ 			astutil.AddNamedImport(fset, f, result.name, result.ipath)
+ 		} else {
+ 			astutil.AddImport(fset, f, result.ipath)
+@@ -951,14 +951,27 @@ func findImportGoPath(ctx context.Context, pkgName string, symbols map[string]bo
  		if pkg == nil {
  			continue
  		}
@@ -10,16 +19,24 @@ index de660879..380ec8e9 100644
  		// If the package name in the source doesn't match the import path's base,
  		// return true so the rewriter adds a name (import foo "github.com/bar/go-foo")
 -		needsRename := path.Base(pkg.importPath) != pkgName
-+		baseName := path.Base(pkg.importPath)
-+		for _, prefix := range []string{"go.", "go-"} {
-+			baseName = strings.TrimPrefix(baseName, prefix)
-+		}
-+		for _, suffix := range []string{".go", "-go"} {
-+			baseName = strings.TrimSuffix(baseName, suffix)
-+		}
-+
-+		needsRename := baseName != pkgName
++		needsRename := isNeedToRename(pkg.importPath, pkgName)
 +
  		return pkg.importPathShort, needsRename, nil
  	}
  	return "", false, nil
+ }
+ 
++func isNeedToRename(ipath string, pkgName string) bool {
++	baseName := path.Base(ipath)
++	for _, prefix := range []string{"go.", "go-"} {
++		baseName = strings.TrimPrefix(baseName, prefix)
++	}
++	for _, suffix := range []string{".go", "-go"} {
++		baseName = strings.TrimSuffix(baseName, suffix)
++	}
++	return baseName != pkgName
++}
++
+ // pkgIsCandidate reports whether pkg is a candidate for satisfying the
+ // finding which package pkgIdent in the file named by filename is trying
+ // to refer to.
