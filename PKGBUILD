@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-git
-pkgver=0.2.10.r7.da4e06bbc
+pkgver=0.5.5.r27.bb23a110e
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -53,4 +53,5 @@ package() {
   cp -ra "${srcdir}/${pkgname%-git}" "${pkgdir}/opt/"
   find "${pkgdir}/opt/${pkgname%-git}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname%-git}" -type f -exec chmod a+r {} +
+  chmod a+rw "${pkgdir}/opt/${pkgname%-git}/bin/cache/lockfile" "${pkgdir}/opt/${pkgname%-git}/version"
 }
