@@ -1,4 +1,4 @@
-pkgbase = mindforger-bin
+pkgbase = mindforger
 	pkgdesc = Thinking notebook and Markdown IDE. Search, browse, view and edit your Markdown files. Get as much as possible from knowledge in your remarks.
 	pkgver = 1.42.0
 	pkgrel = 1
