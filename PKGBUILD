@@ -106,8 +106,10 @@ source 'PKGBUILD.local'
 
 set -u
 pkgname='dgrp'
-pkgver='1.9.38'
-pkgrel='4'
+#_pkgver='1.9-36'; _dl='81000137_X.tgz'
+_pkgver='1.9-38'; _dl='81000137_Y.tgz'
+pkgver="${_pkgver//-/.}"
+pkgrel='5'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -170,11 +172,10 @@ _srcdir="dgrp-${_filever%%-*}"
 source=(
   #"${pkgname}-${pkgver}-81000137_X.tgz::http://ftp1.digi.com/support/driver/81000137_X.tgz"
   #"${pkgname}-${pkgver}-beta.tgz::ftp://ftp1.digi.com/support/driver/RealPort%20Linux%20Beta%20Driver/dgrp-${_filever}_y1p.tgz.rpm"
-  "${pkgname}-${pkgver}-81000137_Y.tgz::http://ftp1.digi.com/support/driver/81000137_Y.tgz"
+  "${pkgname##*-}-${pkgver}-${_dl}::http://ftp1.digi.com/support/driver/${_dl}"
   'drpadmin' 'drpadmin.1' # "autorebuild-${pkgname}.sh"
   'addp_perl-1.0.tgz::https://github.com/severach/addp/archive/f92a6fd2050c9f32a5a11cac18cd9def78138530.tar.gz'
   'ftp://ftp1.digi.com/support/utilities/AddpClient.zip'
-  'dgrp-patch-signal_pending-kernel-4-11.patch'
   "${_mibs[@]/#/${_mibsrc}}"
   '0000-Kernel-4-13-CLASS_ATTR_STRING.patch' # https://www.digi.com/support/forum/67157/realport-compile-error-with-fedora-27-kernel-4-14-14 https://www.digi.com/support/forum/65817/class_attr_driver_version-error-compiling-in-kernel-4-13
   '0001-Kernel-4-15-timers.patch' # https://forum.blackmagicdesign.com/viewtopic.php?uid=16&f=3&t=68382&start=0
@@ -188,7 +189,6 @@ sha256sums=('e474518da5b3feddd1f4dd0083ac8125e34ba07da9884cbd3ebd1955006891d7'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
             '9d79df8617e2bb1042a4b7d34311e73dc4afcdfe4dfa66703455ff54512427f5'
             '00d7b452a4f16599f7162f512a05599614115554992b872fc5302b521ea04468'
-            '83c90a2a9518fde5f500f336a181e86662b62065929bedd60fbd380dc2f4a9da'
             '4b54148008b02a2544d8b33f07c471a068b0973ac5402967af8bf73a28b6a8b6'
             'a1833d877b07b0f424676241b3e1070e116d07965db3131a61a3b6ce0ff90063'
             '6fca5df11304d905f561a0c251419619960a8da8e724d36b34e9977e97f02528'
@@ -222,6 +222,8 @@ if [ "${_opt_DKMS}" -ne 0 ]; then
 else
   makedepends+=('linux-headers')
 fi
+
+_modulename='dgrp'
 
 # Check for updates and case errors to the 2 mib lists
 _fn_mibcheck() {
@@ -284,11 +286,30 @@ prepare() {
   set -u
   cd "${_srcdir}"
 
-  rm -f daemon/openssl-*.tar.gz # I don't want their version to build if OpenSSL version detection fails in the future
+  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}
+  #diff -pNaru5 dgrp-1.9{.orig,} > '0000-Kernel-4-13-CLASS_ATTR_STRING.patch'
+  patch -Nup1 -i "${srcdir}/0000-Kernel-4-13-CLASS_ATTR_STRING.patch"
+  test ! -d "${srcdir}/${_srcdir}.orig-0000" || echo "${}"
+
+  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0001}
+  #diff -pNaru5 dgrp-1.9{.orig-0001,} > '0001-Kernel-4-15-timers.patch'
+  patch -Nup1 -i "${srcdir}/0001-Kernel-4-15-timers.patch"
+  test ! -d "${srcdir}/${_srcdir}.orig-0001" || echo "${}"
+
+  # Version check
+  if [ "${_pkgver}" != "$(grep -e 'TRUE_VERSION=' ./Makefile.inc | cut -d'"' -f2)" ]; then
+    set +u
+    echo 'Version mismatch'
+    false
+  fi
 
   # Standardize name of RealPort
   sed -e "s/RealPort/${_opt_RealPort}/gI" -i $(grep -lrF $'RealPort\nRealport' .)
   # grep -ri realport . | grep -vF $'RealPort\nRealport'
+
+  rm -f daemon/openssl-*.tar.gz # I don't want their version to build if OpenSSL version detection fails in the future
+
+  # Fix configure
   sed -e '# Cosmetic fix for newer gcc compilers' \
       -e 's:\(3.9\*|4.\*\))$:\1|5.*|6.*|7.*|8.*):g' \
       -e "# I can't find any other way to fix the modules dir" \
@@ -296,10 +317,13 @@ prepare() {
       -e '# Kill a harmless mkdir error. They mkdir the folder then dont use it.' \
       -e 's@^\(\s\+\)\(mkdir -p /usr/lib/modules/${osrel}/misc\)$@\1: #\2@g' \
     -i 'configure'
-  # Eradicate sbin before we even get started
+
+  # Some files ignore configure --sbindir
   sed -e 's:/usr/sbin:/usr/bin:g' -e 's:/sbin/:/usr/bin/:g' -i 'configure' Makefile* */Makefile scripts/{preun,post}install
-  # Fix the installers. We do in PKBGUILD what we can and the just a little in install.
-  # cp -p 'scripts/postinstall' 'scripts/postinstall.Arch' # DEBUG for comparison
+
+  # make postinstall package compatible
+  # some postinstall is done in install
+  # cp -p 'scripts/postinstall'{,.Arch} # DEBUG for comparison
   sed -e '# Some security for root' \
       -e 's:^#!\s*/bin/sh$:&\nif [ "${EUID}" -ne 0 ]; then\n  echo "Must be root!"\n  exit 1\nfi:g' \
       -e '# Remove Install noise' \
@@ -320,6 +344,7 @@ prepare() {
       -e 's:^\(\s\+\)ln -s /usr/bin/\([^ ]\+\) \(.\+\)$:\1ln -sf "\2" "${_DESTDIR}\3":g' \
       -e "# All that's left is config conversion" \
     -i 'scripts/postinstall'
+  test ! -s 'scripts/postinstall.Arch'
   #cp -p 'scripts/preuninstall' 'scripts/preuninstall.Arch' # For comparison
   sed -e '# Some security for root' \
       -e 's:^#!\s*/bin/sh$:&\nif [ "${EUID}" -ne 0 ]; then\n  echo "Must be root!"\n  exit 1\nfi:g' \
@@ -336,7 +361,7 @@ prepare() {
       -e 's;^\(\s*\)\(rm -f \);\1: #\2;g' \
       -e '# Fixing this file was almost useless. All it does after we disable everything is an rmmod' \
     -i 'scripts/preuninstall'
-  test ! -f 'scripts/postinstall.Arch' -a ! -f 'scripts/preuninstall.Arch'
+  test ! -s 'scripts/preuninstall.Arch'
 
   # Change insmod to modprobe
   sed -e 's:\${INSMOD}.*$:modprobe "${DGRP_DRIVER}" # &:g' -i 'config/dgrp_cfg_node'
@@ -354,20 +379,10 @@ prepare() {
       -e '/^dgrp_init_module/,/^$/ s@version: %s@& Arch Linux@g' \
     -i driver/[0-9]*/dgrp_driver.c
 
-  #diff -pNaru5 dgrp-1.9{.orig,} > '0000-Kernel-4-13-CLASS_ATTR_STRING.patch'
-  patch -Nup1 < "${srcdir}/0000-Kernel-4-13-CLASS_ATTR_STRING.patch"
-
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig}
-  #diff -pNaru5 dgrp-1.9{.orig,} > '0001-Kernel-4-15-timers.patch'
-  patch -Nup1 < "${srcdir}/0001-Kernel-4-15-timers.patch"
-
   set +u
 }
 
-build() {
-  set -u
-  cd "${_srcdir}"
-
+_configure() {
   if [ ! -s 'Makefile' ]; then
     # this generates a harmless error as it tries to make a folder in /usr/lib/modules...
     # --with-ssl-dir supplies to -I but mainly for configure. CFLAGS goes everywhere.
@@ -376,6 +391,12 @@ build() {
     LDFLAGS="${LDFLAGS} -L/usr/lib/openssl-1.0" \
     ./configure -q --sbindir='/usr/bin' --prefix='/usr' --mandir='/usr/share/man' --with-ssl-dir='/usr/include/openssl-1.0'
   fi
+}
+
+build() {
+  set -u
+  cd "${_srcdir}"
+  _configure
 
   #. 'config/file_locations.Arch'
   make -s all -j1 # This package doesn't support threaded make and it's too small to fix
@@ -387,23 +408,25 @@ _daemons=('daemon' 'ditty')
 
 package() {
   set -u
+  cd "${_srcdir}"
   if [ "${_opt_DKMS}" -eq 0 ]; then
     # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
     local _kernelversionsmall="$(uname -r)"
     _kernelversionsmall="${_kernelversionsmall%%-*}"
     _kernelversionsmall="${_kernelversionsmall%\.0}" # trim 4.0.0 -> 4.0, 4.1.0 -> 4.1
     # prevent the mksrcinfo bash emulator from getting these vars!
-    eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
+    #eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
     eval 'dep''ends+=("linux=${_kernelversionsmall}")'
   fi
 
-  cd "${_srcdir}"
   #. 'config/file_locations.Arch'
 
   make -s -j1 RPM_BUILD_ROOT="${pkgdir}" install
   install -m644 'dinc/dinc.1' -t "${pkgdir}/usr/share/man/man1/" # They bypass the Makefile that does this
   chmod 644 "${pkgdir}/usr/bin/dgrp/config"/{dgrp.gif,file_locations}
   chmod 744 "${pkgdir}/usr/bin/"{dgelreset,dgipserv}
+
+  # Postinstall
   # Create the links, customized for us by prepare above
   grep 'ln -sf ' 'scripts/postinstall' |\
   _DESTDIR="${pkgdir}" \
@@ -527,7 +550,7 @@ EOF
 
   # DKMS
   if [ "${_opt_DKMS}" -ne 0 ]; then
-    rm -rf "${pkgdir}/usr/lib/modules/"
+    rm -r "${pkgdir}/usr/lib/modules/"
     local _dkms="${pkgdir}/usr/src/${pkgname}-${pkgver}"
     install -Dm644 <(cat << EOF
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
@@ -537,7 +560,7 @@ PACKAGE_NAME="${pkgname}"
 PACKAGE_VERSION="${pkgver}"
 AUTOINSTALL="yes"
 
-BUILT_MODULE_NAME[0]="dgrp"
+BUILT_MODULE_NAME[0]="${_modulename}"
 BUILT_MODULE_LOCATION[0]="driver/build"
 # Using all processors doesn't compile this tiny module any faster.
 MAKE[0]="make -j1 -C 'driver/build'"
