@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=mastodon
-WorkingDirectory=/var/lib/mastodon/live
+WorkingDirectory=/var/lib/mastodon
 Environment="RAILS_ENV=production"
 Environment="PORT=3000"
 ExecStart=/usr/bin/bundle exec puma -C config/puma.rb
