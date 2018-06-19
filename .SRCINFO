@@ -1,7 +1,7 @@
 pkgbase = arc-x-icons-theme
 	pkgdesc = Modern free desktop icon theme whose design is based around the use of bold colours and simple geometric shapes to compose icons with pixel perfect rendering.
 	pkgver = 2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/LinxGem33/Arc-X-Icons
 	arch = any
 	license = GPL3

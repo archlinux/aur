@@ -5,7 +5,7 @@
 _pkgname="Arc-X-Icons"
 pkgname="arc-x-icons-theme"
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern free desktop icon theme whose design is based around the\
  use of bold colours and simple geometric shapes to compose icons with\
  pixel perfect rendering."
@@ -23,15 +23,14 @@ prepare() {
     cd "${_pkgname}-v${pkgver}"
     sed -i 's|Name=Arc|Name=Arc-X-D|' "src/Arc-OSX-D/index.theme"
     sed -i 's|Name=Arc|Name=Arc-X-P|' "src/Arc-OSX-P/index.theme"
-    mv "src/Arc-OSX-D" "src/Arc-X-D"
-    mv "src/Arc-OSX-P" "src/Arc-X-P"
-    rm -rf "src/Paper"*
+    rm -rf ./src/Paper*
 }
 
 package() {
     cd "${_pkgname}-v${pkgver}"
-    install -d ${pkgdir}/usr/share/{icons,licenses/${pkgname}}
-    cp -a src/* "${pkgdir}/usr/share/icons/"
+    install -d ${pkgdir}/usr/share/{icons/Arc-X-D,icons/Arc-X-P,licenses/${pkgname}}
+    cp -a src/Arc-OSX-D/* "${pkgdir}/usr/share/icons/Arc-X-D/"
+    cp -a src/Arc-OSX-P/* "${pkgdir}/usr/share/icons/Arc-X-P/"
     install -D -m644 ./{LICENSE,COPYING} "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
