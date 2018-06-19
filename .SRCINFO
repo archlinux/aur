@@ -1,6 +1,6 @@
 pkgbase = minishift
 	pkgdesc = Run OpenShift locally
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/minishift/minishift
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = minishift
 	makedepends = git
 	optdepends = virtualbox: to use minishift with VirtualBox virtualization
 	optdepends = docker-machine-kvm: to use minishisft with KVM virtualization
-	source = https://github.com/minishift/minishift/archive/v1.18.0.tar.gz
-	sha512sums = 4b5873f64e48c9a3049f7fc1bf40a81db3141eab54c6b62b8fa6be88122257b599d4660c51d5cd2f522bed0cd377de1dd78502e133671aaf9247414b958722b5
+	source = https://github.com/minishift/minishift/archive/v1.19.0.tar.gz
+	sha512sums = 11cec97c469e49d1f51039c961ee0261ecd62e9afbc6fddde56abb71b009cdaa884336aa9651db68c79136b9785ef3557d93d4fb569bcbf2cc6c529a03a942d0
 
 pkgname = minishift
 
