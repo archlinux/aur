@@ -76,10 +76,10 @@ package() {
 	virtualenv2 --system-site-packages $pkgdir/usr/lib/$pkgname
 
 	pushd $_pkgname-$pkgver
-	$pkgdir/usr/lib/$pkgname/bin/pip install .
+	$pkgdir/usr/lib/$pkgname/bin/pip install --install-option '--optimize=1' .
 	popd
 
-	find $pkgdir/usr/lib/$pkgname -type f -exec grep -q $pkgdir {} \; -exec sed -i "s:$pkgdir::g" {} \;
+#	find $pkgdir/usr/lib/$pkgname -type f -exec grep -q $pkgdir {} \; -exec sed -i "s:$pkgdir::g" {} \;
 
 	install -Dm644 octoprint.sysusers $pkgdir/usr/lib/sysusers.d/octoprint.conf
 	install -Dm644 octoprint.service $pkgdir/usr/lib/systemd/system/octoprint.service
