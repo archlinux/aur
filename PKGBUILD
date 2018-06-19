@@ -3,7 +3,7 @@
 pkgname=mastodon-git
 pkgver=1.2.2_22_ga0ed88a9
 _branch=master
-pkgrel=0.3
+pkgrel=0.4
 pkgdesc="A GNU Social-compatible microblogging server"
 arch=('i686' 'x86_64')
 url="https://mastodon.social"
@@ -56,7 +56,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  RAILS_ENV=production bundle exec rails assets:precompile
+  RAILS_ENV=production bundle exec rake mastodon:setup
 }
 
 post_install() {
