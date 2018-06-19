@@ -14,7 +14,7 @@ install=$pkgname.install
 source=("https://github.com/Chocobozzz/PeerTube/releases/download/v$_pkgver/$pkgname-v$_pkgver.zip"
         "$pkgname.install")
 sha256sums=("c140fd5cc1ea1a6b142afd81b741a0dbe20d4720d3473701ac11fa5024ef4108"
-"5ed711bbe6342462cb91e57b23eb65b30376e02d6d2582166315424e7b0dcbca")
+"d4c5c6d5de78af18bc4d9c090950b0ad71ae056ed85992baee66dcd21600a51a")
 
 build() {
         cd "$pkgname-v$_pkgver"

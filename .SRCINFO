@@ -19,7 +19,7 @@ pkgbase = peertube
 	source = https://github.com/Chocobozzz/PeerTube/releases/download/v1.0.0-beta.8/peertube-v1.0.0-beta.8.zip
 	source = peertube.install
 	sha256sums = c140fd5cc1ea1a6b142afd81b741a0dbe20d4720d3473701ac11fa5024ef4108
-	sha256sums = 5ed711bbe6342462cb91e57b23eb65b30376e02d6d2582166315424e7b0dcbca
+	sha256sums = d4c5c6d5de78af18bc4d9c090950b0ad71ae056ed85992baee66dcd21600a51a
 
 pkgname = peertube
 
