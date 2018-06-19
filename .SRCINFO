@@ -1,0 +1,16 @@
+pkgbase = kiwix-tools
+	pkgdesc = kiwix command line tools
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/kiwix/kiwix-tools
+	arch = any
+	license = GPL3
+	makedepends = meson
+	depends = kiwix-lib>=2.0.1
+	depends = libmicrohttpd
+	replaces = kiwix-cli-git
+	source = https://github.com/kiwix/kiwix-tools/archive/0.6.0.tar.gz
+	sha256sums = 0907b21937d64bf89950c50ea8a8d396cf88bb8db76cc51f4fdcbdedbbd71cc2
+
+pkgname = kiwix-tools
+
