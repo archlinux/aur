@@ -1,6 +1,5 @@
 #! /bin/bash
 
-echo $@
 BEGIN=1
 END=0
 filename=""
@@ -29,12 +28,12 @@ if [ $filename == "" ]; then
   exit 99
 fi  
 
-if [ $END == 0 ]; then 
+if [ $END == 0 ]; then   # apply default : last page of the pdf
   END=$(pdfinfo $filename | grep Pages | awk '{print $2}')
 fi  
 
-echo "BEGIN="$BEGIN
-echo "END="$END
+echo "BEGIN="$BEGIN " first page"
+echo "END="$END " last page"
 echo "filename="$filename
 
   # get non-blank ranges
