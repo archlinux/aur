@@ -1,5 +1,4 @@
 # Maintainer: Jake <aur@ja-ke.tech>
-# This uses the install and service file from octoprint[AUR], thanks to all Maintainers/Contributors!
 
 pkgname=octoprint-venv
 pkgver=1.3.8
@@ -25,20 +24,20 @@ sha256sums=('ca1bc5352ef20778722a6b2aedef4c8dbe28d0d82c2526f84f3db07245a01aad'
 
 
 package() {
-    cd ${srcdir}/OctoPrint-${pkgver}
+    cd "${srcdir}/OctoPrint-${pkgver}"
     
-    virtualenv2 ${pkgdir}/opt/$pkgname
-    ${pkgdir}/opt/$pkgname/bin/python2 setup.py install --optimize=1
-    sed -i "s|${pkgdir}/opt/$pkgname|/opt/$pkgname|g" ${pkgdir}/opt/$pkgname/bin/* # relocate without breaking plugin system
+    virtualenv2 "${pkgdir}/opt/$pkgname"
+    "${pkgdir}/opt/$pkgname/bin/python2" setup.py install --optimize=1
+    sed -i "s|${pkgdir}/opt/$pkgname|/opt/$pkgname|g" "${pkgdir}/opt/$pkgname/bin/"* # relocate without breaking plugin system
     
-    install -Dm644 ${srcdir}/octoprint.service ${pkgdir}/usr/lib/systemd/system/octoprint.service
-    install -Dm644 ${srcdir}/octoprint.sysusers $pkgdir/usr/lib/sysusers.d/octoprint.conf
-    install -Dm644 ${srcdir}/octoprint.tmpfiles $pkgdir/usr/lib/tmpfiles.d/octoprint.conf
+    install -Dm644 "${srcdir}/octoprint.service" "${pkgdir}/usr/lib/systemd/system/octoprint.service"
+    install -Dm644 "${srcdir}/octoprint.sysusers" "${pkgdir}/usr/lib/sysusers.d/octoprint.conf"
+    install -Dm644 "${srcdir}/octoprint.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/octoprint.conf"
     
-    install -d ${pkgdir}/usr/bin/
-    ln -s /opt/$pkgname/bin/octoprint ${pkgdir}/usr/bin/octoprint
+    install -d "${pkgdir}/usr/bin/"
+    ln -s /opt/$pkgname/bin/octoprint "${pkgdir}/usr/bin/octoprint"
     
-    install -d ${pkgdir}/var/lib/octoprint ${pkgdir}/etc/
-    ln -s /var/lib/octoprint/.octoprint/ ${pkgdir}/etc/octoprint
+    install -d "${pkgdir}/var/lib/octoprint" "${pkgdir}/etc/"
+    ln -s /var/lib/octoprint/.octoprint/ "${pkgdir}/etc/octoprint"
     
 }
