@@ -1,6 +1,6 @@
 pkgname=mingw-w64-paraview
 _majordotminor=5.5
-pkgver=${_majordotminor}.1
+pkgver=${_majordotminor}.2
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
@@ -11,11 +11,15 @@ depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mi
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-wine')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${_pkgver}.tar.gz"
+        "compile-tools.patch"
         "vtk-fix-jsoncpp-module.patch"
-        "support-qt5.11.patch")
-sha256sums=('a6e67a95a7a5711a2b5f95f38ccbff4912262b3e1b1af7d6b9afe8185aa85c0d'
+        "support-qt5.11.patch"
+        "fix-invalid-conversion.patch")
+sha256sums=('64561f34c4402b88f3cb20a956842394dde5838efd7ebb301157a837114a0e2d'
+            'ea4211078f1e1d7d2bb999861d81fbcb0cc6176844fead431c473035e94bd4bb'
             '86af85dddde9d02877d6eda60c440db3ae903e525238d4dc19be7a25a92597f7'
-            '4a6103ddaf51ada6011ecc752ce9abde227bf5deb35bccf08b94a8db97e5a51c')
+            '4a6103ddaf51ada6011ecc752ce9abde227bf5deb35bccf08b94a8db97e5a51c'
+            '7f159d4034fa0fcc2f976254129c288af4e732fe1d799310f3d2ab252460ebab')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -23,10 +27,10 @@ prepare() {
   cd "${srcdir}/ParaView-v${_pkgver}"
 
   # cannot be modified upstream, see https://gitlab.kitware.com/paraview/paraview/merge_requests/1716
-  sed -i "s|IF(NOT CMAKE_CROSSCOMPILING)|IF(NOT PARAVIEW_COMPILE_TOOLS_IMPORTED)|g" ThirdParty/protobuf/vtkprotobuf/src/CMakeLists.txt
+  patch -p1 -i "${srcdir}/compile-tools.patch"
 
   # https://gitlab.kitware.com/vtk/vtk/merge_requests/4017
-  sed -i "s|GetLibraryPathForSymbolWin32(\&function)|GetLibraryPathForSymbolWin32(reinterpret_cast<const void*>(\&function))|g" VTK/Common/Misc/vtkResourceFileLocator.h
+  patch -p1 -i "${srcdir}/fix-invalid-conversion.patch"
 
   # https://gitlab.kitware.com/vtk/vtk/merge_requests/4107
   patch -p1 -i "${srcdir}/vtk-fix-jsoncpp-module.patch"
