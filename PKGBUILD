@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <yochanan.marqos@gmail.com>
 pkgname=battery-monitor-devel-git
 pkgver=0.5.3.r34.gf7a83dd
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux.'
 arch=('x86_64')
 url="https://github.com/maateen/battery-monitor"
 license=('GPL3')
-depends=('python-gobject' 'python2-gobject' 'gtk3' 'libappindicator-gtk3' 'acpi' 'libnotify')
+depends=('acpi' 'python' 'libnotify' 'libappindicator-gtk3')
 makedepends=('git')
 conflicts=('battery-monitor')
 provides=('battery-monitor')
