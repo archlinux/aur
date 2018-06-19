@@ -1,0 +1,19 @@
+pkgbase = screencloud-bin
+	pkgdesc = Easy to use screenshot sharing application. Binary version.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/olav-st/screencloud
+	arch = x86_64
+	license = GPL2
+	depends = pythonqt-for-screencloud
+	depends = quazip
+	depends = qt5-x11extras
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	conflicts = screencloud
+	conflicts = screencloud-git
+	source_x86_64 = https://download.opensuse.org/repositories/home:/olav-st/Debian_9.0/amd64/screencloud_1.3.0-1qt5_amd64.deb
+	sha256sums_x86_64 = fb4c2263d38af6e14fdf0074dc6c1b147584246ff73a827376b8e3ceb370ab5a
+
+pkgname = screencloud-bin
+
