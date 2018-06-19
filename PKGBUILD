@@ -1,7 +1,7 @@
 # Maintainer: Maurizio Porrato <maurizio.porrato@gmail.com>
 
 pkgname=janus-gateway
-pkgver=0.3.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="WebRTC gateway."
 arch=('i686' 'x86_64')
@@ -9,14 +9,14 @@ url="http://janus.conf.meetecho.com/"
 license=('GPL3')
 depends=('libmicrohttpd' 'jansson' 'libnice' 'openssl' 'libsrtp'
          'sofia-sip' 'libusrsctp-git' 'libwebsockets' 'libevent' 
-         'librabbitmq-c' 'opus' 'libogg' 'glib2' 'ding-libs')
+         'librabbitmq-c' 'opus' 'libogg' 'glib2' 'ding-libs' 'lua>=5.3')
 makedepends=('gengetopt' 'paho-mqtt-c-git')
 provides=(janus-gateway)
 backup=('etc/janus/janus.cfg')
 install=janus-gateway.install
 
 source=("https://github.com/meetecho/janus-gateway/archive/v${pkgver}.tar.gz")
-sha256sums=('fb212257a7024da50cda5f81b801b7fcfb21519417385bbf59bf950bcca6d107')
+sha256sums=('8c3386fe73fefaec4262c9b7af5bd7ee14118dfa895632f1f53d97e7a468d051')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
