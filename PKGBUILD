@@ -41,7 +41,6 @@ here
     # icons
     for RES in 16 24 32 48 64 128 256
     do
-        convert -resize ${RES}x${RES} Superposition.png Superposition_${RES}.png
-        install -Dm644 Superposition_${RES}.png "${pkgdir}/usr/share/icons/hicolor/${RES}x${RES}/apps/Superposition.png"
+        install -Dm644 icons/superposition_icon_${RES}.png "${pkgdir}/usr/share/icons/hicolor/${RES}x${RES}/apps/Superposition.png"
     done
 }
