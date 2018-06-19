@@ -4,9 +4,8 @@
 
 pkgbase=transmission-sequential
 pkgname=(transmission-sequential-cli transmission-sequential-gtk transmission-sequential-qt)
-pkgver=2.93
+pkgver=2.94
 pkgrel=1
-svnrev=14714 #The SVN revision corresponding to the tag ${pkgver}
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
@@ -17,14 +16,13 @@ source=("https://github.com/Mikayex/transmission/archive/${pkgver}-seq.tar.gz"
         transmission-2.90-libsystemd.patch
         transmission-sequential-cli.sysusers
         transmission-sequential-cli.tmpfiles)
-sha256sums=('a14964492eef8485eebc6faa34c8ebca5ed4f62086bdec3433447cd1078d5c57'
+sha256sums=('220ba1b500d13c36ed1e55e90bb2c3d6d4babddcae3b7df08a374617af1b5670'
             '9f8f4bb532e0e46776dbd90e75557364f495ec95896ee35900ea222d69bda411'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
             '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
 prepare() {
   cd transmission-$pkgver-seq
-  echo ${svnrev} > REVISION
   patch -p1 -i "$srcdir/transmission-2.90-libsystemd.patch"
 
   rm -f m4/glib-gettext.m4
