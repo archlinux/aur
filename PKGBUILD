@@ -3,7 +3,7 @@
 cpaname=Regexp-RegGrp
 cpanauthor=LEEJO
 pkgname=perl-regexp-reggrp
-pkgver=2.00
+pkgver=2.01
 pkgrel=1
 pkgdesc="Groups a regular expressions collection"
 arch=('any')
@@ -13,9 +13,9 @@ depends=('perl>=5.8.9')
 makedepends=('perl-extutils-makemaker>=6.6302')
 url=http://search.cpan.org/dist/${cpaname}
 source=("http://search.cpan.org/CPAN/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-md5sums=('c593021a19341130348f11560d15d303')
-sha256sums=('0dbce0eefd5a1b9d7a54e8f08ba95648e29db15934eda5a579fc8ae3caf9baea')
-sha512sums=('20a9bb52c403a98a8be6ace6fa2f3896edaeedd2c46fa44233787638ad2266f7858757d50862fee25fddb4eff0847487f9d1c2469687a9002ebb86e6d119dbc9')
+md5sums=('95aac0fb5c099ee8dcd81b2f42221918')
+sha256sums=('02118337e7f09fa76cb585c79030e439f017ca791b0a662f8d34008603b7168d')
+sha512sums=('742c9760628d32fd60c28fabb4b7e60691e004ed22ae19d0d847e8c432827c9dd150d9d7d0f900274a270d596322d864e976b11e2bcb1135bfc473e61784c542')
 
 build() {
   cd "${srcdir}/${cpaname}-${pkgver}"

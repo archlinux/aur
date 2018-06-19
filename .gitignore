@@ -1,3 +1,4 @@
-perl-regexp-reggrp-*.log
-perl-regexp-reggrp-*.pkg.tar.xz
-perl-regexp-reggrp-*.pkg.tar.xz.sig
+/perl-regexp-reggrp-*.log
+/perl-regexp-reggrp-*.pkg.tar.xz
+/perl-regexp-reggrp-*.pkg.tar.xz.sig
+/Regexp-RegGrp-*.tar.gz
