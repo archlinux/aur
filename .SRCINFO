@@ -15,8 +15,6 @@ pkgbase = yay
 	depends = git
 	conflicts = yay-bin
 	conflicts = yay-git
-	options = !strip
-	options = !emptydirs
 	source = yay-7.885.tar.gz::https://github.com/Jguer/yay/archive/v7.885.tar.gz
 	sha1sums = fa772179c6827c221ca3438f4cfdb77c9d08cb7e
 
