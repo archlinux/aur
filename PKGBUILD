@@ -3,7 +3,7 @@
 
 pkgname=rtl-sdr-git
 pkgrel=1
-pkgver=v0.5.3.r18.gb04c2f9
+pkgver=0.5.4.r8.g8a26aba
 epoch=1
 pkgdesc="Tuner for DVB-T sticks based on the Realtek RTL2832U, which can be used as a cheap SDR, since the chip allows transferring the raw I/Q samples to the host."
 arch=('i686' 'x86_64' 'aarch64')
