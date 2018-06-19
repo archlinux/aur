@@ -1,8 +1,8 @@
 pkgname=zapcc-git
-pkgver=r8.5d3778f1
+pkgver=r11.faccefa7
 pkgrel=1
 pkgdesc="caching C++ compiler based on clang, designed to perform faster compilations"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom:University of Illinois/NCSA Open Source License')
 url="https://www.zapcc.com/"
 provides=('zapcc')
@@ -30,9 +30,9 @@ build() {
 
 package() {
   cd "$srcdir/zapcc/build"
-  install -d "$pkgdir"/usr/{lib,bin}
-  install -m755 ./bin/zapcc ./bin/zapccs "$pkgdir"/usr/bin
-  install -m644 ./bin/zapccs.config "$pkgdir"/usr/bin
-  cp -r ./lib/clang/ "$pkgdir"/usr/lib
-  cd "$pkgdir"/usr/bin && ln -s zapcc zapcc++
+  # minimal install to avoid conflicts with llvm/clang packages
+  for component in clang-headers zapcc zapccs
+  do
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=${component} -P ./cmake_install.cmake
+  done
 }
