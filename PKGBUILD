@@ -28,6 +28,7 @@ prepare() {
 
 build() {
   export GOPATH="$srcdir/build"
+  export PATH=$GOPATH/bin:$PATH
   cd $GOPATH/src/$gopkgname
   make GOPATH=$GOPATH godeps
   make GOPATH=$GOPATH
