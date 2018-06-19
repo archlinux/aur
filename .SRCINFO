@@ -1,0 +1,28 @@
+pkgbase = libresprite
+	pkgdesc = fork of last GPL version of aseprite
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://github.com/LibreSprite/LibreSprite
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	depends = pixman
+	depends = curl
+	depends = giflib
+	depends = zlib
+	depends = libpng
+	depends = libjpeg-turbo
+	depends = tinyxml
+	depends = freetype2
+	depends = libwebp
+	conflicts = aseprite
+	conflicts = aseprite-git
+	conflicts = aseprite-gpl
+	source = git+https://github.com/LibreSprite/LibreSprite.git#tag=v1.1.7
+	source = aseprite.desktop
+	sha256sums = SKIP
+	sha256sums = d234924baf107e8ede619261814f5debbb1835bd59ffda5e5bf76fe62ce139ab
+
+pkgname = libresprite
+
