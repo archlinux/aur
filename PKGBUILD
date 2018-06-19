@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=mako
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
 makedepends=("meson" "scdoc")
@@ -16,14 +16,14 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/emersion/${pkgname}/arc
 md5sums=('524114054b46f2b276577f168a0fe170')
 
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	meson --prefix=/usr . build
 	ninja -C build
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	DESTDIR="$pkgdir/" ninja -C build install
 }
