@@ -16,7 +16,7 @@ source=("https://www.dbschema.com/download/DbSchema_unix_8_0_1.tar.gz"
         "dbschema"
         "dbschema.desktop"
         "dbschema.install")
-sha512sums=('12b9df46a5319bdf97c70bdc9591f7afbeb078610f12dd36c46246b372ddc746372fb6a9202d96ac77ec9c5c5417a500f91ba1d2ea4d1c51de5942954f38a8b5'
+sha512sums=('68d3e27d9b539a2b33f7674cb67535a4f9780c932943f55dcb79c6911991fd2de54f36353681254c6c2efcbbc8c0c43a1a527c2addecd02adbdfb3dc016dd9ff'
             'b0268f7aed11e3b1e54644d5e93938922f497c079b37dc18a5c965444ab3a52e9a170a747a139555a1e802d2ebea45ef07e295699e4cbccce8a6a2246f35ee65'
             'b0f62b502a758fdfb550cc1dc91237b37b0e5b0ceadbad9c76dd67cba20756e786573f2c99fe185bea115f5d97f8beaac42b834e1b0be6f0bdaafff711987b09'
             'bd69df33d839cf87430da26e97b6bd2a8f9f1bbf7f29f474e8ba540c9ceb2bbea19e684a8d6c4e9b4db32ed1e0e5762a8b28419e3079aa4e4d55ae3d04c1ba14')
