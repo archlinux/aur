@@ -3,7 +3,7 @@
 cpaname=CSS-Packer
 cpanauthor=LEEJO
 pkgname=perl-css-packer
-pkgver=2.02
+pkgver=2.05
 pkgrel=1
 pkgdesc="Perl CSS::Packer CPAN module"
 arch=('any')
@@ -11,8 +11,9 @@ url="http://search.cpan.org/dist/${cpaname}/"
 license=('unknown')
 options=('!emptydirs')
 depends=('perl' 'perl-test-simple' 'perl-regexp-reggrp')
+makedepends=('perl-test-file-contents' 'perl-test-memory-cycle' 'perl-test-pod')
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('df4a7eb1b8e45f68e94cb4fdde6710af07f2e3ae647793323ca933f1bddfc189')
+sha256sums=('f798e49ed789d3a386ae15c506f09653217ea56fc9836f025d3a309e3d671d15')
 
 build() {
 	 cd "${srcdir}/${cpaname}-${pkgver}"
