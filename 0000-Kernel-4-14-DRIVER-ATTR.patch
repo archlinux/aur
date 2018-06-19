@@ -1,0 +1,119 @@
+diff -pNaru5 dgnc-1.3.orig-0000/driver/2.6.27/dgnc_sysfs.c dgnc-1.3/driver/2.6.27/dgnc_sysfs.c
+--- dgnc-1.3.orig-0000/driver/2.6.27/dgnc_sysfs.c	2017-10-21 10:39:21.000000000 -0400
++++ dgnc-1.3/driver/2.6.27/dgnc_sysfs.c	2018-06-16 02:32:19.410112569 -0400
+@@ -50,39 +50,64 @@
+ 
+ static ssize_t dgnc_driver_version_show(struct device_driver *ddp, char *buf)
+ {
+ 	return snprintf(buf, PAGE_SIZE, "%s\n", DG_PART);
+ }
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,14,0)
+ static DRIVER_ATTR(version, S_IRUSR, dgnc_driver_version_show, NULL);
++#else
++static DRIVER_ATTR_RO(dgnc_driver_version);
++#define driver_attr_version driver_attr_dgnc_driver_version
++#endif
+ 
+ 
+ static ssize_t dgnc_driver_boards_show(struct device_driver *ddp, char *buf)
+ {
+ 	return snprintf(buf, PAGE_SIZE, "%d\n", dgnc_NumBoards);
+ }
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,14,0)
+ static DRIVER_ATTR(boards, S_IRUSR, dgnc_driver_boards_show, NULL);
++#else
++static DRIVER_ATTR_RO(dgnc_driver_boards);
++#define driver_attr_boards driver_attr_dgnc_driver_boards
++#endif
+ 
+ 
+ static ssize_t dgnc_driver_maxboards_show(struct device_driver *ddp, char *buf)
+ {
+ 	return snprintf(buf, PAGE_SIZE, "%d\n", MAXBOARDS);
+ }
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,14,0)
+ static DRIVER_ATTR(maxboards, S_IRUSR, dgnc_driver_maxboards_show, NULL);
++#else
++static DRIVER_ATTR_RO(dgnc_driver_maxboards);
++#define driver_attr_maxboards driver_attr_dgnc_driver_maxboards
++#endif
+ 
+ 
+ static ssize_t dgnc_driver_pollcounter_show(struct device_driver *ddp, char *buf)
+ {
+ 	return snprintf(buf, PAGE_SIZE, "%ld\n", dgnc_poll_counter);
+ }
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,14,0)
+ static DRIVER_ATTR(pollcounter, S_IRUSR, dgnc_driver_pollcounter_show, NULL);
++#else
++static DRIVER_ATTR_RO(dgnc_driver_pollcounter);
++#define driver_attr_pollcounter driver_attr_dgnc_driver_pollcounter
++#endif
+ 
+ 
+ static ssize_t dgnc_driver_state_show(struct device_driver *ddp, char *buf)
+ {
+ 	return snprintf(buf, PAGE_SIZE, "%s\n", dgnc_driver_state_text[dgnc_driver_state]);
+ }
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,14,0)
+ static DRIVER_ATTR(state, S_IRUSR, dgnc_driver_state_show, NULL);
++#else
++static DRIVER_ATTR_RO(dgnc_driver_state);
++#define driver_attr_state driver_attr_dgnc_driver_state
++#endif
+ 
+ 
+ static ssize_t dgnc_driver_debug_show(struct device_driver *ddp, char *buf)
+ {
+ 	return snprintf(buf, PAGE_SIZE, "0x%x\n", dgnc_debug);
+@@ -91,11 +116,16 @@ static ssize_t dgnc_driver_debug_show(st
+ static ssize_t dgnc_driver_debug_store(struct device_driver *ddp, const char *buf, size_t count)
+ {
+ 	sscanf(buf, "0x%x\n", &dgnc_debug);
+ 	return count;
+ }
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,14,0)
+ static DRIVER_ATTR(debug, (S_IRUSR | S_IWUSR), dgnc_driver_debug_show, dgnc_driver_debug_store);
++#else
++static DRIVER_ATTR_RW(dgnc_driver_debug);
++#define driver_attr_debug driver_attr_dgnc_driver_debug
++#endif
+ 
+ 
+ static ssize_t dgnc_driver_rawreadok_show(struct device_driver *ddp, char *buf)
+ {
+ 	return snprintf(buf, PAGE_SIZE, "0x%x\n", dgnc_rawreadok);
+@@ -104,11 +134,16 @@ static ssize_t dgnc_driver_rawreadok_sho
+ static ssize_t dgnc_driver_rawreadok_store(struct device_driver *ddp, const char *buf, size_t count)
+ {
+ 	sscanf(buf, "0x%x\n", &dgnc_rawreadok);
+ 	return count;
+ }
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,14,0)
+ static DRIVER_ATTR(rawreadok, (S_IRUSR | S_IWUSR), dgnc_driver_rawreadok_show, dgnc_driver_rawreadok_store);
++#else
++static DRIVER_ATTR_RW(dgnc_driver_rawreadok);
++#define driver_attr_rawreadok driver_attr_dgnc_driver_rawreadok
++#endif
+ 
+ 
+ static ssize_t dgnc_driver_pollrate_show(struct device_driver *ddp, char *buf)
+ {
+ 	return snprintf(buf, PAGE_SIZE, "%dms\n", dgnc_poll_tick);
+@@ -117,11 +152,16 @@ static ssize_t dgnc_driver_pollrate_show
+ static ssize_t dgnc_driver_pollrate_store(struct device_driver *ddp, const char *buf, size_t count)
+ {
+ 	sscanf(buf, "%d\n", &dgnc_poll_tick);
+ 	return count;
+ }
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,14,0)
+ static DRIVER_ATTR(pollrate, (S_IRUSR | S_IWUSR), dgnc_driver_pollrate_show, dgnc_driver_pollrate_store);
++#else
++static DRIVER_ATTR_RW(dgnc_driver_pollrate);
++#define driver_attr_pollrate driver_attr_dgnc_driver_pollrate
++#endif
+ 
+ 
+ void dgnc_create_driver_sysfiles(struct pci_driver *dgnc_driver)
+ {
+ 	int rc = 0;
