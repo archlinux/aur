@@ -3,7 +3,7 @@
 # Contributor: Duck Hunt <vaporeon@tfwno.gf>
 
 pkgname=libretro-ppsspp-git
-pkgver=r24058.29de4b5a1
+pkgver=r24191.9c9432e75
 pkgrel=1
 pkgdesc='Sony PlayStation Portable core'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/libretro/libretro-ppsspp'
 license=('GPL2')
 groups=('libretro-unstable')
 depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'libretro-core-info' 'sdl2' 'zlib')
-makedepends=('cmake' 'git' 'glu')
+makedepends=('cmake' 'git' 'glu' 'libglvnd')
 provides=('libretro-ppsspp')
 conflicts=('libretro-ppsspp')
 source=('libretro-ppsspp::git+https://github.com/libretro/ppsspp.git'
