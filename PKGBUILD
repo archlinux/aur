@@ -8,7 +8,7 @@
 _pkgname=python-sipsimple
 pkgname=python2-sipsimple
 pkgver=3.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Python SDK for development of SIP end-points"
 license=('custom:MIT' 'LGPL')
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ sha256sums=('b58936acc596761020d41a8b3e617a9240e74607d8f1d07d0e87cb28eebf206a'
 
 prepare() {
   cd  "${srcdir}/${_pkgname}-release-${pkgver}"
-  patch -p1 < ../../change_macro_name.patch
+  patch -p1 < ../change_macro_name.patch
 }
 
 build() {
