@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Get the executable's absolute path
+DIRNAME=`dirname $0`
+DIRNAME=`cd $DIRNAME/..; pwd`
+
+# set env. vars
+export PUREGEV_ROOT=$DIRNAME
+export GENICAM_ROOT=$DIRNAME/share/genicam
+export GENICAM_ROOT_V2_3=$GENICAM_ROOT
+export GENICAM_LOG_CONFIG=$GENICAM_ROOT/log/config/DefaultLogging.properties
+export GENICAM_LOG_CONFIG_V2_3=$GENICAM_LOG_CONFIG
+export GENICAM_CACHE_V2_3=$HOME/.config/Pleora/genicam_cache_v2_3
+export GENICAM_CACHE=$GENICAM_CACHE_V2_3
+mkdir -p $GENICAM_CACHE
+
+# add to the LD_LIBRARIES_PATH
+if ! echo ${LD_LIBRARY_PATH} | /bin/grep -q $PUREGEV_ROOT/lib; then
+   if [ "$LD_LIBRARY_PATH" = "" ]; then
+      LD_LIBRARY_PATH=$PUREGEV_ROOT/lib
+   else
+      LD_LIBRARY_PATH=$PUREGEV_ROOT/lib:${LD_LIBRARY_PATH}
+   fi
+fi
+
+GENICAM_LIBDIR=$DIRNAME/lib/genicam
+if ! echo ${LD_LIBRARY_PATH} | /bin/grep -q $GENICAM_LIBDIR; then
+   LD_LIBRARY_PATH=$GENICAM_LIBDIR:${LD_LIBRARY_PATH}
+fi
+
+export LD_LIBRARY_PATH
+
+$PUREGEV_ROOT/bin/GEVPlayer.bin
+

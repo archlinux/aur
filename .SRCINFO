@@ -1,0 +1,19 @@
+pkgbase = ebus-sdk
+	pkgdesc = toolset for digital video systems and cameras
+	pkgver = 3.1.14.3284
+	pkgrel = 1
+	url = https://www.pleora.com/products/ebus-sdk/
+	arch = x86_64
+	license = custom
+	depends = curl
+	depends = log4cxx
+	optdepends = qt4: for GUI tools
+	source = ebus-sdk-3.1.14.3284.tar.bz2::http://www.photonfocus.com/fileadmin/web/downloads/ebus_sdk_3.1.14.3284_rhel-6-x86_64.zip
+	source = GEVPlayer
+	source = PvDualSourceSample
+	sha512sums = 3f10ae59550f7358088c048200c10a336d95d365549d861da12fa03fbfea14b507268bf3ba8db40f290aafbcb9b5430f2158fbadaeeda40cdd11fa5a20edce75
+	sha512sums = 27e1dfab6446969b8e5b3e5b09fbcaf29998678aeea8fdf0b12e0bd99b086236d2135a43d8a4b6463366f3e97bc667faed55e54f17fa6fb76b25dee15dda8477
+	sha512sums = fa881d1a4d8e255e7c782bdf3b82478761837af234d152d0a1bc808cc05a79298edf504aa1e33e9b15d6723c9c0ffdfb6258719966d0225f3b2278f95a0e63c5
+
+pkgname = ebus-sdk
+
