@@ -1,29 +1,27 @@
-# Maintainer: Hugo Courtial <hugo [at] courtial [not colon] me>
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
+# Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
+# Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-io
-pkgver=2.3.4
-pkgrel=2
+pkgver=2.3.12
+pkgrel=1
 arch=("x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
-url="https://github.com/MrKepzie/openfx-io"
-license=("GPL2")
-depends=("seexpr" "openimageio" "ffmpeg") 
-#depends=("opencolorio" "openexr" "openimageio" "ffmpeg" "boost-libs")
-makedepends=("git" "expat" "boost")
-optdepends=("openfx-gmic-bin" "natron-plugins")
-source=("$pkgname::git+https://github.com/MrKepzie/openfx-io.git#tag=Natron-$pkgver"
-        'git+https://github.com/devernay/openfx.git'
-        'git+https://github.com/MrKepzie/SequenceParsing'
-        'git+https://github.com/devernay/openfx-supportext.git'
-        'git+https://github.com/MrKepzie/tinydir')
+url="https://github.com/NatronGitHub/openfx-io"
+license=("GPL")
+depends=("ffmpeg" "openimageio" "seexpr")
+makedepends=("git")
+optdepends=("natron-plugins")
+source=("$pkgname::git+https://github.com/NatronGitHub/openfx-io#tag=Natron-$pkgver"
+        'git+https://github.com/NatronGitHub/openfx'
+        'git+https://github.com/NatronGitHub/SequenceParsing'
+        'git+https://github.com/NatronGitHub/openfx-supportext'
+        'git+https://github.com/NatronGitHub/tinydir')
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
-
-_bits=32 ; [[ "$CARCH" = 'x86_64' ]] && _bits=64
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -39,11 +37,14 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make CONFIG=release BITS=$_bits
+  make CONFIG=release \
+       BITS=64
 }
 
 package() {
   cd "$srcdir/$pkgname"
   mkdir -p "$pkgdir/usr/OFX/Plugins"
-  make install PLUGINPATH=$pkgdir/usr/OFX/Plugins CONFIG=release BITS=$_bits
+  make install PLUGINPATH=$pkgdir/usr/OFX/Plugins \
+               CONFIG=release \
+               BITS=64
 }
