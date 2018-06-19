@@ -1,7 +1,7 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 
 pkgname=tinydns
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 
 pkgdesc='Tiny cache DNS server'
@@ -9,7 +9,7 @@ arch=('any')
 url=https://github.com/CupIvan/${pkgname}
 
 source=(https://github.com/CupIvan/${pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=('226dbdf8d1c808c6b79b1e3cb14a352f')
+md5sums=('e5a7860af4617437215e1518c82fb076')
 dir=${pkgname}-${pkgver}
 
 #source=(git+https://github.com/CupIvan/${pkgname}.git)
