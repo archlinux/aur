@@ -1,0 +1,16 @@
+pkgbase = rash-git
+	pkgdesc = Rust-based file hashing tool
+	pkgver = 0.3.0.r20.g767650d
+	pkgrel = 1
+	url = https://github.com/themadprofessor/rash
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	source = git+https://github.com/themadprofessor/rash
+	sha1sums = SKIP
+
+pkgname = rash-git
+
