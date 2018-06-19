@@ -2,7 +2,7 @@
 # Contributer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=ucsc-kent-genome-tools
-pkgver=366
+pkgver=353
 pkgrel=1
 pkgdesc="UCSC Kent bioinformatics utilities: kent source utilities"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 sha256sums=(
   '359db5b022847d3d674f21821fa08a363d2183379d59a2b63129fcf90954d674'
   '5ccec9d5e4de9be22746fab1591127b61176c8c4d586c0dd1df13ee5e52a5367'
-  'c110a27acd25df5c4ae56a9d4c359b40e83e3b1cca7cb61361e623fc8574bdd7'
+  'f3e7609069b195ef5219e39e0181ced1988f8d3843579d36549fc47e808b27a1'
 )
 
 prepare() {
