@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mojolicious'
-pkgver='7.84'
+pkgver='7.85'
 pkgrel='1'
 pkgdesc="Real-time web framework"
 arch=('any')
@@ -13,8 +13,8 @@ depends=('perl>=5.10.1')
 makedepends=()
 url='https://metacpan.org/release/Mojolicious'
 source=("https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-${pkgver}.tar.gz")
-md5sums=('2aca5046a2efc7ce596c4470893b555f')
-sha512sums=('acd4459553ab35bf5f65540b9bc8fa8c4f942560388ee1ee8ad7aebabc403bdd8bd916b257ab2f16b4229b499d5c2576d1abf794293f10f10a7d3eb84de753c1')
+md5sums=('404686c7fcf73d6d7a6602ce1fbc4fcf')
+sha512sums=('be0f34f1c90494ebe6e2f29063a0d2dddb096f5e8629c01700e552dfd4efccc28a590983dabe93bfe496af882c219a1d64136fffba31c043108d032b51b1b723')
 _distdir="Mojolicious-${pkgver}"
 
 build() {
