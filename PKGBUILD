@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-dev
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -27,9 +27,9 @@ install="${pkgname%-dev}.install"
 source=("${pkgname%-dev}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/dev/linux/${pkgname%-dev}_linux_v${pkgver}-dev.tar.xz"
         "${pkgname%-dev}.sh"
         "${pkgname%-dev}.csh")
-sha256sums=('413e51c908913bf5e7acb303cdd8c7c522244b4ee69c0c67890595e7dd5835ae'
-            '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
-            '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
+sha256sums=("adcc8254955786caefca3a506c32cad66a666ccc277522d833c827cb94a0f32f"
+            "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
+            "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f")
 
 build() {
   cd "${srcdir}/${pkgname%-dev}"
@@ -44,4 +44,5 @@ package() {
   cp -ra "${srcdir}/${pkgname%-dev}" "${pkgdir}/opt/"
   find "${pkgdir}/opt/${pkgname%-dev}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname%-dev}" -type f -exec chmod a+r {} +
+  chmod a+rw "${pkgdir}/opt/${pkgname%-dev}/bin/cache/lockfile" "${pkgdir}/opt/${pkgname%-dev}/version"
 }
