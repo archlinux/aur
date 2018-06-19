@@ -1,13 +1,13 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist
-pkgver=0.7.2.beta7
+pkgver=0.7.2.beta8
 pkgrel=1
 pkgdesc='Screenwriting software, which developed in Russia.'
 url='https://kitscenarist.ru'
 arch=('x86_64')
 license=('GPL3')
-depends=('qt5-multimedia' 'qt5-webengine')
+depends=('qt5-multimedia' 'qt5-svg' 'qt5-webengine')
 makedepends=('git')
 source=(
   "${pkgname}::git+https://github.com/dimkanovikov/KITScenarist.git#tag=${pkgver}"
@@ -25,6 +25,11 @@ md5sums=(
 prepare() {
   cd "${pkgname}"
   git submodule update --init
+  
+  # error: invalid use of incomplete type ‘class QClassName’
+  cd "${srcdir}/${pkgname}/src/bin/scenarist-desktop/UserInterfaceLayer"
+  sed -i '1 s/^/#include <QButtonGroup>\n/' "Export/ExportDialog.cpp" "Onboarding/OnboardingView.cpp"
+  sed -i '1 s/^/#include <QStyle>\n/' "Account/LoginDialog.cpp" "_tools/UIConfigurator.cpp"
 }
 
 build() {
