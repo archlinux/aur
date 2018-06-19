@@ -1,6 +1,6 @@
 # Maintainer: Tyler Johnson <mail@tyler-johnson.ca>
 pkgname=fdic
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 epoch=
 pkgdesc="Dictionary filter for STDIN"
