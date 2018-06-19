@@ -1,9 +1,9 @@
-# Maintainer: AndyRTR <andyrtr@archlinux.org>
+# Maintainer: Vitrum <wqdxosty1yhj at bk dot ru>
 
 pkgbase=hunspell-hy
 pkgname=('hunspell-hy-classical' 'hunspell-hy-reformed')
 pkgver=3.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Armenian hunspell dictionaries"
 arch=(any)
 url="https://github.com/hyspell/"

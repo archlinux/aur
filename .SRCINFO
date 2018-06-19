@@ -1,7 +1,7 @@
 pkgbase = hunspell-hy
 	pkgdesc = Armenian hunspell dictionaries
 	pkgver = 3.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hyspell/
 	arch = any
 	license = MIT
