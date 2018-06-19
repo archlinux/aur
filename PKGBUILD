@@ -3,7 +3,7 @@
 
 pkgname=gadmin-bind
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK+ Application to help administrate BIND"
 arch=('i686' 'x86_64')
 url="http://dalalven.dtdns.net/linux/gadmintools-webpage/app_pages/gadmin-bind.html"
@@ -20,7 +20,7 @@ md5sums=('ae4686c0417ac542b54aaf6d7a76d893'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  NAMED_BINARY=/usr/bin/named SYSLOG_PATH=/var/log/messages ./configure --prefix=/usr
   make
 }
 
