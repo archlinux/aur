@@ -4,20 +4,26 @@
 # Contributor: liberodark
 
 pkgname=natron
-pkgver=2.3.11
+pkgver=2.3.12
 pkgrel=1
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
 url="https://github.com/NatronGitHub/Natron"
 license=("GPL")
-depends=('fontconfig' 'qt4' 'python2-pyside' 'python2-shiboken' 'boost-libs' 'pixman' 'glfw-x11' 'cairo' 'openfx-io' 'openfx-misc')
-makedepends=('git' 'expat' 'boost')
-optdepends=('openfx-arena: Extra OpenFX plugins for Natron includes text node' 'natron-plugins')
-source=("$pkgname::git+https://github.com/NatronGitHub/Natron.git#tag=$pkgver"
-        "git+https://github.com/NatronGitHub/openfx.git"
-        "git+https://github.com/NatronGitHub/google-test.git"
-        "git+https://github.com/NatronGitHub/google-mock.git"
-        "git+https://github.com/NatronGitHub/SequenceParsing.git"
+depends=('boost-libs' 'cairo' 'fontconfig' 'glfw-x11' 'openfx-io' 'openfx-misc' 'openmp' 'pixman' 'python2-pyside' 'python2-shiboken' 'qt4')
+makedepends=('boost' 'expat' 'git')
+optdepends=('openfx-arena: Extra OpenFX plugins for Natron, includes text node' 'natron-plugins')
+
+# Natron source modified because the released version blocks build in GCC (>=8.1)
+# For more information, check the following issue:
+# https://github.com/NatronGitHub/Natron/issues/279
+
+source=("$pkgname::git+https://github.com/NatronGitHub/Natron#commit=6f49bf0"
+        "git+https://github.com/NatronGitHub/google-breakpad"
+        "git+https://github.com/NatronGitHub/google-mock"
+        "git+https://github.com/NatronGitHub/google-test"
+        "git+https://github.com/NatronGitHub/openfx"
+        "git+https://github.com/NatronGitHub/SequenceParsing"
         "git+https://github.com/NatronGitHub/tinydir"
         "https://github.com/NatronGitHub/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
         "config.pri")
@@ -28,18 +34,25 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '48017b7b9cd1854064b9ddffecedef89a4d38070f9a7d2cd506aad481a8061c5cffe5e5c84fc9b0ac5216fc99e093481db367e91ce52cb2a8a66223c4209402a')
+options=('!buildflags' '!makeflags')
 
 prepare() {
   cd "$srcdir/$pkgname"
   
+  if [ -d "$srcdir/$pkgname/OpenColorIO-Configs" ]; then
+    rm -rf "$srcdir/$pkgname/OpenColorIO-Configs"
+  fi
+  
   mv "$srcdir/OpenColorIO-Configs-Natron-v${pkgver%.*}" "$srcdir/$pkgname/OpenColorIO-Configs"
 
   # Git submodules
+  git config submodule.libs/google-breakpad.url $srcdir/google-breakpad
   git config submodule.libs/OpenFX.url $srcdir/openfx
+  git config submodule.libs/SequenceParsing.url $srcdir/SequenceParsing
   git config submodule.Tests/google-mock.url $srcdir/google-mock
   git config submodule.Tests/google-test.url $srcdir/google-test
-  git config submodule.libs/SequenceParsing.url $srcdir/SequenceParsing
   git submodule update
 
   cd libs/SequenceParsing
@@ -59,7 +72,16 @@ build() {
 
   [[ -d build ]] && rm -r build; mkdir build; cd build
 
-  qmake-qt4 -r "$srcdir/natron/Project.pro" PREFIX=/usr CONFIG+=release DEFINES+=QT_NO_DEBUG_OUTPUT QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
+  qmake-qt4 -r "$srcdir/natron/Project.pro" \
+               PREFIX=/usr \
+               BUILD_USER_NAME="ArchLinux" \
+               CONFIG+=custombuild \
+               CONFIG+=openmp \
+               CONFIG+=enforce-gcc8 \
+               DEFINES+=QT_NO_DEBUG_OUTPUT \
+               QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
+               QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
+               QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
 
   make
 }
