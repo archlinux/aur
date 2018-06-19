@@ -2,12 +2,11 @@
 
 pkgname=(pythonqt-for-screencloud)
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic Python binding for Qt applications, like screencloud. Binary version."
 arch=('x86_64')
 url="http://pythonqt.sourceforge.net/"
 license=('GPL2')
-depends=('screencloud-bin')
 conflicts=('pythonqt')
 
 source_x86_64=('https://download.opensuse.org/repositories/home:/olav-st/Debian_9.0/amd64/libpythonqt-qt5_3.0-1_amd64.deb')
