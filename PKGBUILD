@@ -1,10 +1,10 @@
-# Maintainer: Jorge Araya Navarro <elcorreo@deshackra.com>
+# Maintainer: Jorge Araya Navarro <jorge@esavara.cr>
 # Contributor: Cristian Porras <porrascristian@gmail.com>
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot-pulse
-pkgver=3.0.2
-pkgrel=3
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine, with pulseaudio"
 url="http://www.godotengine.org"
 license=('MIT')
@@ -22,7 +22,7 @@ fi
 source=(
   "https://github.com/godotengine/godot/archive/${pkgver}-stable.tar.gz"
 )
-sha256sums=('15bc91dcbc92fe49624118678fcab119ff332dc295b25f4921700a4ee498b651')
+sha256sums=('db6bf2a2cee8e058254fc0b43c38c68a5226b18315b852e266cb3b95e23618c1')
 
 build() {
   cd "${srcdir}"/${pkgname%-*}-${pkgver}-stable
