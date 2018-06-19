@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-menu-git
-pkgver=0.6.0.g87b3493
-pkgrel=2
+pkgver=0.7.0.g7dbf50a
+pkgrel=1
 pkgdesc="XDG compliant menu generator"
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/xde-menu"
