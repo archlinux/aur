@@ -2,7 +2,7 @@
 # Maintainer: Andre Klitzing <aklitzing () gmail () com>
 pkgname=gcovr
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The gcovr script applies the Unix gcov command and generate a simple report that summarizes the coverage."
 arch=('any')
 url="http://gcovr.com"

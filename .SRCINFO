@@ -1,7 +1,7 @@
 pkgbase = gcovr
 	pkgdesc = The gcovr script applies the Unix gcov command and generate a simple report that summarizes the coverage.
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcovr.com
 	arch = any
 	license = custom
