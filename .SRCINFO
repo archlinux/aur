@@ -16,5 +16,5 @@ pkgbase = mindforger
 	source_x86_64 = https://github.com/dvorka/mindforger/releases/download/1.42.0/mindforger_1.42.0-1_amd64.deb
 	sha512sums_x86_64 = 1413588d343155428a441e6991e2d0e39df4b7b11ffdd9a79b72f114ba9b219519b98503a5f7592aa1a55a128be621d64dbce179be9548c3eeafc33b043e28da
 
-pkgname = mindforger-bin
+pkgname = mindforger
 
