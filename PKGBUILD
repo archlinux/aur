@@ -3,9 +3,9 @@
 # Contributor: Dean Galvin <deangalvin3@gmail.com>
 # Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 
-pkgname="home-assistant"
+pkgname=home-assistant
 pkgdesc='Open-source home automation platform running on Python 3'
-pkgver=0.68.1
+pkgver=0.71.0
 pkgrel=1
 url="https://home-assistant.io/"
 license=('APACHE')
@@ -14,25 +14,28 @@ replaces=('python-home-assistant')
 makedepends=('python-setuptools')
 # NB: this package will install additional python packages in /var/lib/hass/lib depending on components present in the configuration files.
 depends=('python'
+         'python-aiohttp'
+         'python-aiohttp-cors>=0.5.3'
+         'python-astral>=1.6.1'
+         'python-async-timeout'
+         'python-async-timeout>=2.0.0'
+         'python-attrs>=18.1.0'
+         'python-certifi>=2018.04.16'
+         'python-chardet>=3.0.4'
+         'python-distro>=1.3.0'
+         'python-jinja>=2.9.5'
+         'python-netifaces'
          'python-pip'
-         'python-requests>=2.14.2'
-         'python-yaml'
+         'python-pytz>=2018.4'
          'python-pytz>=2017.2'
+         'python-requests>=2.14.2'
+         'python-sqlalchemy>=1.2.8'
          'python-vincenty'
          'python-voluptuous>=0.9.3'
-         'python-netifaces'
          'python-webcolors'
-         'python-async-timeout>=2.0.0'
-         'python-aiohttp>=3.1.2'
-         'python-aiohttp-cors>=0.5.3'
-         'python-jinja>=2.9.5'
+         'python-yaml'
          'python-yarl'
-         'python-chardet>=3.0.4'
-         'python-astral>=1.6'
-         'python-certifi' 
-         'python-attrs'
-         'python-async-timeout'
-         'python-sqlalchemy>=1.2.6')
+         )
 optdepends=('git: install component requirements from github'
             'net-tools: necessary for nmap discovery')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
@@ -40,7 +43,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
         "home-assistant.sysusers"
         "home-assistant-tmpfile.conf"
         "hass.install")
-sha512sums=('35d0528ef756697b9a68bc32c83989b2945cf269129dea9e286f00b117ab7ca7eee2fb69d53742de1310478a366b398323c7623188f54d3a9ede2cf23dc6f457'
+sha512sums=('2b71ae972e987a7c2dd8a82846b886de218389c0a27c137fb04b9801fe102a0d97dd7c56864b6734c8acb7178930b9ca16ca3cdd53e4cbe4489e68197715e6b1'
             'fe96bd3df3ba666fd9f127c466d1dd1dd7314db2e57826a2b319c8a0bfad7aedeac398e748f93c6ecd9c2247ebbae196b8b0e7263b8681e2b7aeab6a8bfeab80'
             '100665ac35370c3ccec65d73521568de21cebf9e46af364124778861c94e338e32ad9abb675d3917f97d351dd7867e3ab2e80c26616330ae7cf0d9dc3f13369b'
             '8babcf544c97ec5ad785014f0b0d5dca556a2f5157dadcbe83d49d4669b74f6349e274810ec9a028fcec208c6c8fbbe6b3899d2933b56163b9e506570879a3ad'
