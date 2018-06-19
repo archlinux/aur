@@ -23,7 +23,7 @@ do
    esac
 done
 
-if [ $filename == "" ]; then 
+if [ -z "$filename" ]; then  
   echo "-f <PDF-file> is missing ; aborted"
   exit 99
 fi  
