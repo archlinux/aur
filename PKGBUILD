@@ -13,6 +13,7 @@ conflicts=("${pkgname%-git}" "${pkgname%-git}-docker" "${pkgname%-git}-docker-gi
 makedepends=(
     'yarn'
     'ruby-bundler>=1.14.6'
+    'protobuf'
     )
 depends=(
     'ffmpeg'
