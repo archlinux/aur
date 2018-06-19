@@ -3,7 +3,7 @@
 pkgbase=hunspell-hy
 pkgname=('hunspell-hy-classical' 'hunspell-hy-reformed')
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Armenian hunspell dictionaries"
 arch=(any)
 url="https://github.com/hyspell/"
@@ -36,7 +36,7 @@ package_hunspell-hy-classical() {
     install -dm755 ${pkgdir}/usr/share/hunspell
     install -m644 hy-c.aff $pkgdir/usr/share/hunspell/hy_AM.aff
     install -m644 hy-c.dic $pkgdir/usr/share/hunspell/hy_AM.dic
-    package_common
+    _common
 }
 
 package_hunspell-hy-reformed() {
@@ -47,11 +47,11 @@ package_hunspell-hy-reformed() {
     install -dm755 ${pkgdir}/usr/share/hunspell
     install -m644 hy-r.aff $pkgdir/usr/share/hunspell/hy_AM.aff
     install -m644 hy-r.dic $pkgdir/usr/share/hunspell/hy_AM.dic
-    package_common
+    _common
 }
 
-package_common() {
-    # the symlinks
+_common() {
+    # MySpell symlinks
     install -dm755 ${pkgdir}/usr/share/myspell/dicts
     pushd $pkgdir/usr/share/myspell/dicts
     for file in $pkgdir/usr/share/hunspell/*; do
