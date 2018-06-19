@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 package() {
     install -dm755 $pkgdir/boot/grub/themes/
-    cd grub2-themes/grub-themes-vimix
+    cd $srcdir/grub2-themes/grub-theme-vimix
     cp Vimix $pkgdir/boot/grub/themes/ -r
     
     echo '======='
