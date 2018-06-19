@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegram MTProto proxy written in pure python
+After=network.target network-online.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/usr/bin/mtprotoproxy /etc/mtprotoproxy.conf
+Restart=always
+RestartSec=10
+NoNewPrivileges=true
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
+
+[Install]
+WantedBy=multi-user.target
