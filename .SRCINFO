@@ -1,5 +1,5 @@
 pkgbase = libaria2
-	pkgdesc = Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink
+	pkgdesc = Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink. Build with --enable-libaria2
 	pkgver = 1.34.0
 	pkgrel = 1
 	url = http://aria2.sourceforge.net/
