@@ -5,8 +5,8 @@ pkgbase = gcovr
 	url = http://gcovr.com
 	arch = any
 	license = custom
-	makedepends = python2-distribute
 	depends = python
+	depends = python-jinja
 	source = https://github.com/gcovr/gcovr/archive/4.0.tar.gz
 	sha256sums = f9731a0ea516f2087e13b3bc310dbd8edaec4ce6a56b2462f5603ee925f40377
 
