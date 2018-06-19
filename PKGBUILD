@@ -1,7 +1,7 @@
 # Maintainer: Heiko Nickerl <dev at heiko-nickerl dot com>
 pkgname="sodalite"
-pkgver=0.11
-pkgrel=1
+pkgver=0.11.0
+pkgrel=2
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
 url="www.github.com/hnicke/sodalite"
