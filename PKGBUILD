@@ -15,7 +15,7 @@ md5sums=("SKIP")
 
 build() {
 	cd "$_reponame-$pkgver"
-  g++ -Wall -o fdic fdic.cpp dictionary.cpp
+  g++ -O3 -std=c++17 -Wall -o fdic fdic.cpp dictionary.cpp
 }
 
 check() {
