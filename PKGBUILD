@@ -1,28 +1,28 @@
+# Maintainer: Ivan Semkin (ivan at semkin dot ru)
 # Contributor: Cody P Schafer <archlinux at codyps.com>
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=dbus-test-runner
-pkgver=12.10.1
-pkgrel=1
-pkgdesc="A small little utility to run a couple of executables under a new DBus session for testing"
-arch=(x86_64 )
-url="https://launchpad.net/dbus-test-runner"
-license=('GPLv3')
-makedepends=('gnome-common')
-options=(!emptydirs)
-source=("https://launchpad.net/dbus-test-runner/12.10/12.10.1/+download/dbus-test-runner-${pkgver}.tar.gz")
-sha256sums=('71f2aa4a48a8f88f1629389f902bbfaf42df4b1fcbea9473acc78de75fab525f')
+pkgver=15.04.0
+pkgrel=2
+pkgdesc='A small little utility to run a couple of executables under a new DBus session for testing'
+url='https://launchpad.net/dbus-test-runner'
+arch=(x86_64 i686 armv7h aarch64)
+license=(GPL3)
+depends=(dbus-glib)
+makedepends=(gnome-common)
+provides=(dbus-test-runner)
+conflicts=(dbus-test-runner)
+source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/dbus-test-runner/${pkgver}+16.10.20160906-0ubuntu1/dbus-test-runner_${pkgver}+16.10.20160906.orig.tar.gz")
+sha256sums=('7d06a2d4af8979b569fbef5c6da2c32ddfcc6d1063e7ccbfc2f673013352d3d8')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
   export CFLAGS="${CFLAGS:-} -Wno-error=deprecated -Wno-error=deprecated-declarations"
-  ./configure --prefix=/usr
+  ./autogen.sh --prefix=/usr --libexecdir=/usr/lib
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
 }
-
 # vim:set ts=2 sw=2 et:
