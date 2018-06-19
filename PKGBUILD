@@ -1,9 +1,8 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 
 _opt_DKMS=1            # This can be toggled between installs
-#_opt_defaultmode='666' # default: 660
+_opt_defaultmode='660' # default: 620
 
-# Todo: Implement _opt_defaultmode
 # Todo: Test secure mode
 
 # Todo: python tools should be updated to python3
@@ -11,6 +10,9 @@ _opt_DKMS=1            # This can be toggled between installs
 # Todo: TUI firmware updater.
 # Todo: Comtrol icons for nslinktool and the firmware updater
 # Todo: nslinktool set the mouse pointer to a spinning circle far too long after startup
+# Todo: rm /dev/ttySI* on rmmod nslink
+
+# Todo: nslinktool, HUB IP Admin, [Get] with SocketServer, error getting IP info, did not get ip6info reply
 
 # Uninstall cleanup: sudo rm -f /etc/nslink.conf*
 
@@ -20,7 +22,7 @@ _opt_DKMS=1            # This can be toggled between installs
 set -u
 pkgname='nslink'
 pkgver='7.28'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
@@ -42,9 +44,11 @@ source=("http://downloads.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-li
 #source+=('ftp://ftp.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
 source+=('http://downloads.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
 source+=('dmupdate.py.usage.patch')
+source+=('0000-Invalid-MKDEV-macro.patch')
 sha256sums=('900d0681a86d0732cf3e71e56a013456d5a77a68f7faa2afb955e275f73353fb'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
+            '6968b10cd66d783f86f587a03584e78af4a2766d223b8d5c24c3ea4fe79f7230'
             '5c00939eb945c98336211cd61408b5a8623b01a7059356e663ccc638b0d159fb')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -60,27 +64,34 @@ if [ "${_opt_DKMS}" -ne 0 ]; then
   # 7.28 supports Kernels 4.15 through 4.17.x.
   _opt_LEGACY_VER='7.26'
   if [ "$(vercmp "${pkgver}" "${_opt_LEGACY_VER}")" -gt 0 ]; then
-    source+=("http://downloads.comtrol.com/legacy/dev_mstr/rts/drivers/linux/${_opt_LEGACY_VER}/devicemaster-linux-${_opt_LEGACY_VER}.tar.gz")
+    _srcalt="${_srcdir//${pkgver}/${_opt_LEGACY_VER}}"
+    source+=("http://downloads.comtrol.com/legacy/dev_mstr/rts/drivers/linux/${_opt_LEGACY_VER}/${_srcalt}.tar.gz")
   else
     _opt_LEGACY_VER=''
   fi
 fi
 
-prepare() {
-  set -u
-  cd "${_srcdir}"
+_fn_patch_km() {
+  set +u; msg2 "patch_km $1"; set -u
 
   # Fix permissions
   find -type 'f' -perm '/111' -exec chmod 644 '{}' '+'
   chmod 755 *.sh *.py 'nslinktool'
-  local _ver="$(sed -n -e 's:^#define\sSI_VERSION\s"\([^"]\+\).*$:\1:p' 'version.h')"
-  if [ "${pkgver}" != "${_ver}" ]; then
-    echo "Version mismatch ${pkgver} != ${_ver}"
+
+  #diff -pNau5 nslinkd.c{.orig,} > '0000-Invalid-MKDEV-macro.patch'
+  patch -Nbup0 -i "${srcdir}/0000-Invalid-MKDEV-macro.patch"
+
+  # Version check
+  local _ver
+  _ver="$(sed -n -e 's:^#define\sSI_VERSION\s"\([^"]\+\).*$:\1:p' 'version.h')"
+  if [ "$1" != "${_ver}" ]; then
+    echo "Version mismatch $1 != ${_ver}"
     set +u
     false
   fi
   unset _ver
 
+  # Make package compatible
   #cp -p 'install.sh' 'install.sh.Arch' # testmode for diff comparison
   sed -e '# Fix some paths' \
       -e 's: /lib/: /usr/lib/:g' \
@@ -103,7 +114,7 @@ prepare() {
       -e '# Get rid of the start messages lest someone believes them' \
       -e 's:^\s\+if\s\[\s"$WillStart"\s=\syes\s\]:return\n&:g' \
     -i 'install.sh'
-  test -s 'install.sh.Arch' && echo "${}"
+  test ! -s 'install.sh.Arch' || echo "${}"
 
   # Switch to python2
   sed -e '# Why using local on just this one?' \
@@ -127,6 +138,24 @@ prepare() {
   # Fix makefile
   sed -e 's:=/lib/modules:=/usr/lib/modules:g' -i 'Makefile'
 
+  # Correct group and chmod for serial
+  sed -e '/getgrnam/ s:"tty":"uucp":g' \
+      -e '# This method results in 666' \
+      -e '#s:\(mode_t mode\) = [0-9]\+\(.*;\)'":\1 = ${_opt_defaultmode}\2:g" \
+      -e "/mknod/ s:mode:0${_opt_defaultmode}:g" \
+    -i 'nslinkd.c'
+}
+
+prepare() {
+  set -u
+  cd "${_srcdir}"
+  _fn_patch_km "${pkgver}"
+  if [ ! -z "${_opt_LEGACY_VER}" ]; then
+    pushd "${srcdir}/${_srcalt}" > /dev/null
+    _fn_patch_km "${_opt_LEGACY_VER}"
+    popd > /dev/null
+  fi
+
   # Fix up the firmware downloaders
   cd "${srcdir}/${_srcdir2}"
 
@@ -142,8 +171,7 @@ prepare() {
 
   # Patch usage and help into command line tool
   #diff -pNau5 dmupdate.py{.orig,} > '../dmupdate.py.usage.patch'
-  patch -Nbup0 < "${srcdir}/dmupdate.py.usage.patch"
-
+  patch -Nbup0 -i "${srcdir}/dmupdate.py.usage.patch"
   set +u
 }
 
@@ -167,7 +195,7 @@ package() {
     _kernelversionsmall="${_kernelversionsmall%%-*}"
     _kernelversionsmall="${_kernelversionsmall%\.0}" # trim 4.0.0 -> 4.0, 4.1.0 -> 4.1
     # prevent the mksrcinfo bash emulator from getting these vars!
-    eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
+    #eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
     eval 'dep''ends+=("linux=${_kernelversionsmall}")'
   fi
 
@@ -248,6 +276,9 @@ _fn_dkmsinst() {
       sed -e "/^MAKE/ s:make :${_dkms#${pkgdir}}/makedkms.sh"' KERNELRELEASE=$kernelver :g' -i "${_dkms}/dkms.conf"
       install -Dm744 <(cat << EOF
 #!/usr/bin/bash
+
+# Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
+# https://aur.archlinux.org/
 
 set -e
 set -u
