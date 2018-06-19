@@ -24,6 +24,7 @@ pkgver() {
 
 build() {
   arch-meson switchboard-plug-security-privacy build
+  ninja -C build
 }
 
 package() {
