@@ -1,3 +1,5 @@
+# Contributor: Daniel Miranda (dmiranda)
+
 _gitname=suru-plus
 pkgname=suru-plus-git
 pkgver=r2.84b10a5
@@ -24,9 +26,5 @@ package() {
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
     find ${pkgdir}/usr -type f -name '.directory' -delete
-    rm -rf "$pkgdir/usr/share/icons/suru-plus/.gitignore"
-    rm -rf "$pkgdir/usr/share/icons/suru-plus/.git"
-    rm -rf "$pkgdir/usr/share/icons/suru-plus/.github"
-    rm -rf "$pkgdir/usr/share/icons/suru-plus/.product"
-    rm -rf "$pkgdir/usr/share/icons/suru-plus/configure"
+    rm -rf "$pkgdir"/usr/share/icons/suru-plus/{configure, .git, .github, .gitattributes, .gitignore,*.md,*.jpg,*.svg,*.png, .product, 'nuove icone' 'Suru++ OpenDesktop'}
 }
