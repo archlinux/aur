@@ -1,6 +1,6 @@
 pkgbase = dolphin-klook
 	pkgdesc = KDE File Manager with KLook support
-	pkgver = 16.12.2
+	pkgver = 18.04.2
 	pkgrel = 1
 	url = http://kde.org/applications/system/dolphin/
 	install = dolphin.install
@@ -28,18 +28,18 @@ pkgbase = dolphin-klook
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
 	optdepends = konsole: terminal panel
 	provides = dolphin
-	conflicts = kdebase-dolphin<15.08
+	conflicts = kdebase-dolphin<18.04
 	conflicts = kdebase-dolphin-klook
 	conflicts = dolphin
 	conflicts = dolphin-klook-frameworks
 	replaces = kdebase-dolphin
-	source = http://download.kde.org/stable/applications/16.12.2/src/dolphin-16.12.2.tar.xz
-	source = http://download.kde.org/stable/applications/16.12.2/src/dolphin-16.12.2.tar.xz.sig
+	source = http://download.kde.org/stable/applications/18.04.2/src/dolphin-18.04.2.tar.xz
+	source = http://download.kde.org/stable/applications/18.04.2/src/dolphin-18.04.2.tar.xz.sig
 	source = dolphin-klook.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
-	sha256sums = c657a80e241a341e85b28c30d064153df319319cee345dc7cc997576e1cc13f7
+	sha256sums = b27ecfc4864638d88f2efd59f183d469f801ba0d85c37ca872e85ed70ba8683e
 	sha256sums = SKIP
-	sha256sums = b16c02d30cc41984d6b9a2adaf4e698ad4a1cea26a992f404d786bf763974cfc
+	sha256sums = e76ff2915e3fa7f4405a80b002a2062ca0f2d9e7f57775162815c02eec547fde
 
 pkgname = dolphin-klook
 

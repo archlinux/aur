@@ -11,7 +11,7 @@
 
 pkgname=dolphin-klook
 _origpkgname="${pkgname%%-*}"
-pkgver=16.12.2
+pkgver=18.04.2
 pkgrel=1
 pkgdesc="KDE File Manager with KLook support"
 arch=(i686 x86_64)
@@ -22,16 +22,16 @@ makedepends=(extra-cmake-modules kdoctools python)
 optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: Video thumbnails' 'ruby: installing new service menus with GHNS'
             'ruby: installing new service menus with GHNS' 'plasma-desktop: remote:// protocol'
             'kdegraphics-thumbnailers: PDF and PS thumbnails' 'konsole: terminal panel')
-conflicts=('kdebase-dolphin<15.08' kdebase-dolphin-klook "$_origpkgname" "dolphin-klook-frameworks")
+conflicts=('kdebase-dolphin<18.04' kdebase-dolphin-klook "$_origpkgname" "dolphin-klook-frameworks")
 replaces=(kdebase-dolphin)
 provides=("$_origpkgname")
 groups=(kde-applications kdebase)
 source=("http://download.kde.org/stable/applications/$pkgver/src/$_origpkgname-$pkgver.tar.xz"{,.sig}
         "dolphin-klook.patch")
 install="dolphin.install"
-sha256sums=('c657a80e241a341e85b28c30d064153df319319cee345dc7cc997576e1cc13f7'
+sha256sums=('b27ecfc4864638d88f2efd59f183d469f801ba0d85c37ca872e85ed70ba8683e'
             'SKIP'
-            'b16c02d30cc41984d6b9a2adaf4e698ad4a1cea26a992f404d786bf763974cfc')
+            'e76ff2915e3fa7f4405a80b002a2062ca0f2d9e7f57775162815c02eec547fde')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7) # Albert Astals Cid <aacid@kde.org>
 
 prepare() {
