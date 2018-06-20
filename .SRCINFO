@@ -1,6 +1,6 @@
 pkgbase = suru-plus-dark-git
-	pkgdesc = A dark third-party Suru icons for Ubuntu 18.04 A dark elegant, modern and sweet Suru icons based on Suru Icons by Sam Hewitt
-	pkgver = r1.0
+	pkgdesc = A dark and elegant third-party icons, based on Sam Hewitt's Suru Icons
+	pkgver = r1.1
 	pkgrel = 1
 	url = https://github.com/gusbemacbe/suru-plus-dark
 	arch = any

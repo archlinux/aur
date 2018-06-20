@@ -3,10 +3,9 @@
 
 _gitname=suru-plus-dark
 pkgname=suru-plus-dark-git
-pkgver=r1.0
+pkgver=r1.1
 pkgrel=1
-pkgdesc="A dark third-party Suru icons for Ubuntu 18.04
-A dark elegant, modern and sweet Suru icons based on Suru Icons by Sam Hewitt"
+pkgdesc="A dark and elegant third-party icons, based on Sam Hewitt's Suru Icons"
 arch=('any')
 url="https://github.com/gusbemacbe/${_gitname}"
 license=('GPL3')
