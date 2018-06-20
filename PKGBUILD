@@ -2,7 +2,7 @@
 
 pkgname=ttf-symbola-ib
 pkgver=11.00
-pkgrel=2
+pkgrel=3
 depends=('fontconfig')
 pkgdesc="Symbola is a free symbol-type font."
 url="http://users.teilar.gr/~g1951d/"
@@ -14,18 +14,18 @@ groups=('infinality-bundle-fonts')
 license=('custom')
 #Symbola has become non redistributable so we'll just do the file:// and allow each one to download manually
 source=("file://Symbola.zip"
-        "COPYING"
+        "LICENSE"
         "45-symbola.conf"
         "90-tt-symbola.conf")
-sha512sums=('d1cf09eb87be4d302a790b25b31f874eb8b1b8e766d94db78ba45084791eaf13d04ad0c61d7fb0848e243fd84b3b1639c71239854c3eca2cf0e81b128c1f0738'
-            'fc2c85cbf477fe5600bc1fde7ab7739df1a65a0250259c13df830b60d9afd888b399d137edbb59b74f26e17b2869166cfba0feef90cc925c31ded40931caddf3'
+sha512sums=('be7b3fd8b2070a6713b189c0ee0c6d8aef481eb0c7e476dabfa3eb1a599cc7f3a00f14d7b9ca1f563722d550c098f272f62bb99fc490aba8132ed5ae7de59a7b'
+            'e61b7ade8d2a9bd039821663d064153167f6a62d425e67e8a3f93d0dd7667b40e325bdc9d0020fcbf0248f49a3e97c1865d434a45fa6675479dfc8c41620adfb'
             'e30c8c2ccf70f89602e2326fc969d1ccaa1a14fb07ff19314d98554c1f3051078476a3fb8bce2ee56e22cd1574cd5d6fd2efd5eb4ca88ca04e9cd4586e29c4fe'
             'af22a299541b042694ce1b962beef101b612a0992318fb8c9a003defbd4e53c2ffbcb9f584eaa8d0b1fd55cfa175c978aaa495837242dfa38c74d51b19d11044')
 
 package(){
   cd $srcdir
-  install -D -m644 COPYING \
-    "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING
+  install -D -m644 LICENSE \
+    "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   install -D -m644 Symbola_Hinted.ttf \
     "${pkgdir}"/usr/share/fonts/"${pkgname}"/Symbola_Hinted.ttf
