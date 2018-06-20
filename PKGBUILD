@@ -8,7 +8,8 @@ url="www.github.com/hnicke/sodalite"
 license=('GPL')
 conflicts=('sodalite')
 makedepends=('git' 'awk' )
-depends=('python-binaryornot' 'python-npyscreen-git' 'python-yaml' 'python-pyperclip')
+depends=('python-binaryornot' 'python-urwid' 'python-yaml' 
+'python-pyperclip' 'python-pygments' 'xdg-utils' 'python-watchdog')
 source=('git+https://github.com/hnicke/sodalite.git')
 backup=('etc/sodalite.conf')
 md5sums=('SKIP')
