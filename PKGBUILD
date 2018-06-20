@@ -2,21 +2,19 @@
 
 _pkgname=bazarr
 pkgname=$_pkgname-git
-pkgver=r492.e94819c
+pkgver=r496.0b8ae19
 pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
 license=('GPL3')
 depends=('python2'
-         'subliminal'
          'python2-apprise'
          'python2-apscheduler'
          'python2-babelfish'
          'python2-bottle'
          'python2-bottle-fdsend'
          'python2-dogpile.cache'
-         'python2-enzyme'
          'python2-gitpython'
          'python2-langdetect'
          'python2-logutils'
