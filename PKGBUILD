@@ -2,8 +2,8 @@
 
 pkgname=gearhead2
 _reponame=gearhead-2
-pkgver=0.630
-pkgrel=2
+pkgver=0.701
+pkgrel=1
 pkgdesc="A rougelike mecha role playing game, second game in the GearHead series"
 arch=(i686 x86_64)
 url="http://www.gearheadrpg.com/"
@@ -14,7 +14,7 @@ source=("https://github.com/jwvhewitt/${_reponame}/archive/v${pkgver}.tar.gz"
 		${pkgname}.sh
 		${pkgname}.desktop
 		${pkgname}.png)
-md5sums=('7c59dc2aea945ef77e97917bb85fb347'
+md5sums=('4d556f800b18dcd1287f64b2cd562fb5'
          '713ec01c46263b196ba5dd658248eeed'
          '6d0e194ef934b66fefade9b5d2d5efe1'
          '19f59e008bbe3fdcf39363818d3a5cf1')
