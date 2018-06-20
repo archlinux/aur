@@ -24,8 +24,8 @@ noextract=()
 sha256sums=("a56cbba8e60e972e9db20757554db344de912ff9e7cd72e76d542796b9fa43ed")
 
 package() {
-        kill -9 "$pid_greenclip" || test 1
-        rm -rf ~/.config/greenclip.cfg ~/.cache/greenclip.*
+#        kill -9 "$pid_greenclip" || test 1
+#        rm -rf ~/.config/greenclip.cfg ~/.cache/greenclip.*
         install -Dm 755 greenclip "$pkgdir/usr/bin/greenclip"
 }
 
