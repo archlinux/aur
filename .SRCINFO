@@ -1,0 +1,20 @@
+pkgbase = eclipse-modeling-tools
+	pkgdesc = The eclipse IDE with the eclipse modeling tools as a standalone package (not directly interfering with a standard eclipse)
+	pkgver = 4.7.3a
+	pkgrel = 1
+	url = https://www.eclipse.org/modeling
+	arch = x86_64
+	license = EPL
+	depends = java-environment>=8
+	depends = unzip
+	depends = webkit2gtk
+	options = !strip
+	source = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/oxygen/3a/eclipse-modeling-oxygen-3a-linux-gtk-x86_64.tar.gz
+	source = eclipse-modeling.sh
+	source = eclipse-modeling.desktop
+	sha512sums = c859e65bd2d824e70cec5f3b5f8617d6c59cf74ba703c3193290825577ce8d252f5530c4576df29cf1781ddc084eced762898de0ff23c0288765266dcda3696e
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = eclipse-modeling-tools
+
