@@ -8,6 +8,7 @@ pkgbase = python-libvmi-git
 	makedepends = python-pkgconfig
 	depends = python-cffi
 	depends = python-future
+	depends = libvmi
 	source = python-libvmi-git::git+https://github.com/libvmi/python.git
 	sha256sums = SKIP
 
