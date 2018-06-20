@@ -7,7 +7,12 @@ pkgdesc="An interactive TLS-capable intercepting HTTP proxy for penetration test
 arch=('any')
 url="https://mitmproxy.org/"
 license=('MIT')
-depends=('openssl' 'python2-urwid' 'python2-pyopenssl' 'python2-pyasn1' 'python2-imaging' 'python2-lxml' 'python2-flask' 'python2-requests' 'python2-passlib' 'python2-configargparse' 'python2-tornado' 'python2-blinker>=1.3' 'python2-pyperclip>=1.5.8' 'python2-wsproto')
+depends=(
+  'openssl' 'brotlipy' 'certifi' 'h2' 'hyperframe' 'kaitaistruct' 'ldap3'
+  'python3-urwid' 'python3-pyopenssl' 'python3-pyasn1' 'python3-imaging'
+  'python3-lxml' 'python3-flask' 'python3-requests' 'python3-passlib'
+  'python3-configargparse' 'python3-tornado' 'python3-wsproto'
+  'python3-pyperclip>=1.5.8' 'python3-blinker>=1.3')
 conflicts=('mitmproxy')
 provides=('mitmproxy')
 source=("git+https://github.com/mitmproxy/mitmproxy.git")
@@ -20,5 +25,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/mitmproxy"
-  python2 setup.py install --root=$pkgdir || return 1
+  python setup.py install --root=$pkgdir
 }
