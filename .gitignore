@@ -1,0 +1,7 @@
+# Ignored folders
+src/
+pkg/
+libvmi-git/
+
+# Ignored files
+*.pkg.tar.xz

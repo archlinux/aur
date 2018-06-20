@@ -1,0 +1,19 @@
+pkgbase = libvmi-git
+	pkgdesc = LibVMI is a virtual machine introspection library
+	pkgver = 0.10.r804.g69b3198
+	pkgrel = 1
+	url = http://libvmi.com
+	arch = any
+	license = GPL
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = libtool
+	makedepends = bison
+	makedepends = flex
+	depends = json-c
+	optdepends = libvirt: required for KVM/libvirt usage
+	source = libvmi-git::git+https://github.com/libvmi/libvmi.git
+	sha256sums = SKIP
+
+pkgname = libvmi-git
+
