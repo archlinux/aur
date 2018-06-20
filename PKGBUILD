@@ -1,9 +1,10 @@
-# Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
+# Maintainer: gspu <bssbk2455[at]gmail[dot]com>
+# Contributor: Previous maintainer Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
 pkgname=peazip-gtk2
-pkgver=6.5.1
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="GTK2 archiver utility"
 arch=(i686 x86_64)
@@ -18,10 +19,8 @@ options=('!strip')
 install=peazip.install
 source=("$pkgname-$pkgver.tgz"::"https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.LINUX.GTK2.tgz"
         "peazip.desktop")
-sha256sums=('bf48f5b15434bf8d8d497de6772aca46b0aa5384574357c29387874d58eca5e6'
+sha256sums=('4778575473883d75e025eb2792fe6725ad27ba066d861d3f67b8bac2b5841568'
             '4d876c6a61f25a7e2f3dfa69b1c80e61fdda9220bbf8e23a407e34eae377091b')
-sha512sums=('422e46b63a021504b0fb4203e450295585f9a627f5bf46effe40af1703ef4bcee6561dcb337385f66a49310ac221b73defb2db32537fbf04fba88a3d8aaa4b67'
-            'bc86d42b33285c2709081ddca7c06fe789cc2d42c69c4cbed595c077a776d91e5526eb799dcdc404375a3bfb212927165a02d3d79301f53adb8a89039bf7bb5f')
 
 package() {
   _pkgres="$pkgdir/usr/lib/peazip/res"
