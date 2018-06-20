@@ -22,23 +22,23 @@ source=("x11vnc::git+https://github.com/LibVNC/x11vnc.git")
 sha1sums=('SKIP')
 
 pkgver() {
-	cd ${pkgname}
+	cd x11vnc
 	printf "0.9.14.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd ${pkgname}
+	cd x11vnc
 	autoreconf -fiv
 }
 
 build() {
-	cd ${pkgname}
+	cd x11vnc
 	./configure --prefix=/usr
 	make AM_LDFLAGS='-lturbojpeg'
 }
 
 package() {
-	cd ${pkgname}
+	cd x11vnc
 	make DESTDIR="${pkgdir}" install
 	install -m755 tkx11vnc misc/{rx11vnc,Xdummy} "${pkgdir}/usr/bin"
 }
