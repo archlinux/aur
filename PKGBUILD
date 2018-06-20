@@ -1,7 +1,7 @@
 # Maintainer: Squalou <squalou.jenkins [at] gmail [dot] com>
 pkgname=google-chat-linux-git
 pkgver=r15.2d1d3c9
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial electron-based desktop client for Google Chat"
 arch=('x86_64' 'i686')
 url="https://github.com/robyf/google-chat-linux"
@@ -14,12 +14,14 @@ makedepends=('nodejs' 'npm')
 source=("${pkgname%-git}::git+${url}#branch=master"
     "${pkgname%-git}.desktop"
     "${pkgname%-git}.sh"
-    "package.json")
+    "package.json"
+    "chat-favicon-new-non-notif-256dp.png")
 
 sha256sums=('SKIP'
     'e65b8b9b0556dded2521aa12b6d8e87c59f08a79b9e8cbee4273a7a659f72a6a'
     'd23052d27c870090987d1844e7c82bc42b878afa42c8af9a363d8414560ea34d'
-    '25b73ffc5ea40317faffaa277243617b1a2daed5bec7ddfb39e31274c5a88a79')
+    '25b73ffc5ea40317faffaa277243617b1a2daed5bec7ddfb39e31274c5a88a79'
+    '807fa77054d1b9ebeccaabfe5200e9e52c2dc603bdba3647c2da7c0cc34c2a83')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -31,6 +33,7 @@ pkgver() {
 
 build() {
   cp "$srcdir/package.json" "$srcdir/${pkgname%-git}/"
+  cp "$srcdir/chat-favicon-new-non-notif-256dp.png" "$srcdir/${pkgname%-git}/assets/icon"
   cd "$srcdir/${pkgname%-git}"
   npm install --production=false
 }
