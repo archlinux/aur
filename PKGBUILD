@@ -13,7 +13,7 @@ conflicts=('apache-netbeans')
 source=("http://www-eu.apache.org/dist/incubator/netbeans/incubating-netbeans-java/incubating-9.0-rc1/incubating-netbeans-java-9.0-rc1-bin.zip"
         "apache-netbeans.desktop")
 sha256sums=("ef326d72aa5c7c2d34550e07c0ebd08cc74025e04f2548379407648ad8bccd02"
-            "b502a7eb3090321e645ce5f41485700091f8f8eb19ed2713c7c3bb55f360a7c9")
+            "1f532b1414567911795a5f8f2776452771730bb4a441abd788a6ac3ad097012f")
 
 package() {
     mkdir -p $pkgdir/usr/share/apache-netbeans
