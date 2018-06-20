@@ -1,0 +1,6 @@
+post_install() {
+    echo "You need to set up at least two parameters at postgresql.conf:
+
+wal_level = logical
+max_replication_slots = 1"
+}
