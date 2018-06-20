@@ -4,6 +4,7 @@ pkgbase = rofi-greenclip
 	pkgrel = 0
 	epoch = 0
 	url = https://github.com/erebe/greenclip
+	changelog = changelog
 	arch = x86_64
 	license = GPL
 	depends = rofi
@@ -11,7 +12,7 @@ pkgbase = rofi-greenclip
 	conflicts = rofi-greenclip-beta
 	replaces = rofi-greenclip-beta
 	options = !strip
-	source = https://github.com/erebe/greenclip/releases/download/3.0-beta/greenclip
+	source = https://github.com/erebe/greenclip/releases/download/3.0/greenclip
 	sha256sums = a56cbba8e60e972e9db20757554db344de912ff9e7cd72e76d542796b9fa43ed
 
 pkgname = rofi-greenclip
