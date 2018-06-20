@@ -1,13 +1,12 @@
 # Contributor: Fabio ‘Lolix’ Loli <lolix at disroot dot org>
 # Contributor: Daniel Miranda <dmiranda at gmail dot com>
-# Contributor: Yochanan <yochananmarqos>
+# Contributor: Mark Wagie <yochanan dot marqos at gmail dot com>
 # Maintainer: Gustavo Costa <gusbemacbe@gmail.com>
 
 pkgname=suru-plus-pack-git
 pkgver=r207.533484b
 pkgrel=1
-pkgdesc="A full colelction of Suru++ icons themes, based on Sam Hewitt's Suru icons
-The Suru++ Pack comes with three icons theme - Suru++, Suru++ Dark and Suru++ Telinkrin"
+pkgdesc="A full colelction of Suru++ icons themes, based on Sam Hewitt's Suru icons and comes with three icons theme — Suru++, Suru++ Dark and Suru++ Telinkrin"
 arch=('any')
 license=('GPL3')
 makedepends=('git')
