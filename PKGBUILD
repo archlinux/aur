@@ -2,7 +2,7 @@
 
 _pkgname=thunar
 pkgname=${_pkgname}-devel
-pkgver=1.7.2
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='file manager for xfce'
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
 provides=("${_pkgname}=${pkgver}" 'libthunarx-3.so')
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
-source=("http://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname^}-${pkgver}.tar.bz2")
-sha256sums=('e79c280d271a3b7bf21bd8229fc21af62671643f87a071cc3d46cd2669644de9')
+source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname^}-${pkgver}.tar.bz2")
+sha256sums=('96fabaa68db32f513e9bcb34fa2a26c1462127727fad0bc25a8a5ba9aab4c12c')
 
 prepare() {
     cd "${_pkgname^}-${pkgver}"
