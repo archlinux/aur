@@ -42,7 +42,7 @@ package() {
 
 	find "$pkgdir"/opt/dropbox/ -type f -exec chmod 644 {} \;
 	chmod 755 "$pkgdir"/opt/dropbox/dropboxd
-	chmod 755 "$pkgdir"/opt/dropbox/dropbox{,_py3}
+	chmod 755 "$pkgdir"/opt/dropbox/dropbox
 
 	install -d "$pkgdir"/usr/bin
 	ln -s ../../opt/dropbox/dropbox "$pkgdir"/usr/bin/dropbox
