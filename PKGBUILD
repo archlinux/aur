@@ -2,12 +2,12 @@
 
 pkgname='compute-runtime-git'
 pkgdesc="Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond. Git version."
-pkgver='18.20.10830.r19.g01c1df3'
+pkgver=18.23.10915.r37.g0c84994
 pkgrel=1
 arch=('x86_64')
 url='https://01.org/compute-runtime'
 license=('MIT')
-makedepends=('gcc54' 'llvm' 'clang' 'python2' 'opencl-headers')
+makedepends=('git' 'gcc54' 'llvm' 'clang' 'python2' 'opencl-headers')
 optdepends=('libva: for cl_intel_va_api_media_sharing'
             'libdrm: for cl_intel_va_api_media_sharing')
 depends=('ocl-icd')
