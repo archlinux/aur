@@ -1,7 +1,7 @@
 # Maintainer: Martynas Janu <martynas.janu at googlemail dot com>
 pkgname=apache-netbeans
 pkgver=9.0rc1
-pkgrel=3
+pkgrel=4
 pkgdesc="Apache Netbeans IDE development platform"
 arch=('i686' 'x86_64')
 url="https://netbeans.apache.org"
