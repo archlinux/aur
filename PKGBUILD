@@ -4,9 +4,9 @@
 # Maintainer: Gustavo Costa <gusbemacbe@gmail.com>
 
 pkgname=suru-plus-pack-git
-pkgver=r207.533484b
+pkgver=r1.6
 pkgrel=1
-pkgdesc="A full colelction of Suru++ icons themes, based on Sam Hewitt's Suru icons and comes with three icons theme — Suru++, Suru++ Dark and Suru++ Telinkrin"
+pkgdesc="A full collection of three Suru++ icons themes, based on Sam Hewitt's Suru Icons"
 arch=('any')
 license=('GPL3')
 makedepends=('git')
@@ -35,5 +35,5 @@ package()
   find "${pkgdir}"/usr -type d -exec chmod 755 {} \;
 
   rm -r "$pkgdir"/usr/share/icons/suru-plu{s,s-dark,s-telinkrin}/{.git,.github}
-  rm -f "$pkgdir"/usr/share/icons/suru-plu{s,s-dark,s-telinkrin}/{.gitattributes,.gitignore,*.md,*.jpg,*.svg,*.png,'Suru++ OpenDesktop'}
+  rm -f "$pkgdir"/usr/share/icons/suru-plu{s,s-dark,s-telinkrin}/{.gitattributes,.gitignore,*.md,*.jpg,*.svg,*.png, 'Suru++ OpenDesktop'}
 }
