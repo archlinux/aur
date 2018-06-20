@@ -22,13 +22,13 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-storage-python-plugin")
 
 pkgver=17.2.5
-pkgrel=3
+pkgrel=4
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
-makedepends=('libmariadbclient' 'postgresql-libs' 'sqlite3')
+makedepends=('libmariadbclient' 'postgresql-libs' 'sqlite3' 'python2')
 source=("git+https://github.com/bareos/bareos.git#tag=Release/$pkgver")
 md5sums=('SKIP')
 
@@ -263,7 +263,7 @@ package_bareos-director() {
     usr/share/bareos/config/bareos-dir.d/fileset/Catalog.conf \
     usr/share/bareos/config/bareos-dir.d/fileset/LinuxAll.conf \
     usr/share/bareos/config/bareos-dir.d/fileset/SelfTest.conf \
-    "usr/share/bareos/config/bareos-dir.d/fileset/Windows All Drives.conf" \
+    usr/share/bareos/config/bareos-dir.d/fileset/Windows\ All\ Drives.conf \
     usr/share/bareos/config/bareos-dir.d/job/backup-bareos-fd.conf \
     usr/share/bareos/config/bareos-dir.d/job/BackupCatalog.conf \
     usr/share/bareos/config/bareos-dir.d/job/RestoreFiles.conf \
@@ -282,7 +282,9 @@ package_bareos-director() {
     usr/share/man/man8/bareos-dir.8.gz \
     usr/share/man/man8/bareos.8.gz \
   ; do
-    _cp "$srcdir/install/$f" "$pkgdir/$f"
+    # pacman LINT tool currently does not like spaces
+    space_removal=`echo $f | tr ' ' '_'`
+    _cp "$srcdir/install/$f" "$pkgdir/$space_removal"
   done
 
   # Currently upstream systemd file does not automatically create run directory
