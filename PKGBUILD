@@ -1,20 +1,20 @@
-# Maintainer: David McInnis <davidm@eagles.ewu.edu>
+# Previous Maintainer: David McInnis <davidm@eagles.ewu.edu>
 # Contributor: Previous Ismo Toijala <ismo.toijala@gmail.com>
 # Contributor: Previous Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
 # Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
-# Previous maintainer:
+# Maintainer: khomutsky <bogdan@khomutsky.com>
 
 pkgname=python-numpydoc
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Sphinx extension to support docstrings in Numpy format"
 arch=('any')
-url="https://github.com/numpy/numpydoc"
+url='https://numpydoc.readthedocs.io'
 license=('BSD')
 depends=('python' 'python-sphinx')
-options=(!emptydirs)
-source=(https://pypi.python.org/packages/21/94/0e087bd669bb69da3b0996acfee97cee9f7d91c825991ad76eb863dc020d/numpydoc-$pkgver.tar.gz)
-sha256sums=('2dc7b2c4e3914745e38e370946fa4c109817331e6d450806285c08bce5cd575a')
+options=('!emptydirs')
+source=('https://files.pythonhosted.org/packages/95/a8/b4706a6270f0475541c5c1ee3373c7a3b793936ec1f517f1a1dab4f896c0/numpydoc-${pkgver}.tar.gz')
+sha256sums=('61f4bf030937b60daa3262e421775838c945dcdd671f37b69e8e4854c7eb5ffd')
 
 package() {
   cd "$srcdir/numpydoc-$pkgver"
