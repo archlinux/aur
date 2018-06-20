@@ -1,19 +1,20 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
+# Maintainer: khomutsky <bogdan@khomutsky.com>
 
 
 pkgbase=python-algopy
 pkgname=('python2-algopy' 'python-algopy')
-pkgver=0.5.3
+pkgver=0.5.7
 pkgrel=1
 pkgdesc='A tool for Algorithmic Differentiation (AD) and Taylor polynomial approximations.'
-url='http://packages.python.org/algopy/'
-license=("BSD")
+url='https://pythonhosted.org/algopy/'
+license=('BSD')
 arch=('any')
 depends=()
 makedepends=('python2-setuptools' 'python-setuptools')
 options=('!libtool')
 source=("https://pypi.python.org/packages/source/a/algopy/algopy-${pkgver}.zip")
-sha1sums=('4ebb09d8cf1b11c69d02c4d6c8806462831037d4') 
+sha256sums=('6955f676fce3858fa3585cb7f3f7e1796cb93377d24016419b6699291584b7df') 
 
 prepare() {
   cd "$srcdir"
