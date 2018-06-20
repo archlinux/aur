@@ -9,10 +9,10 @@ url="https://mitmproxy.org/"
 license=('MIT')
 depends=(
   'openssl' 'brotlipy' 'certifi' 'h2' 'hyperframe' 'kaitaistruct' 'ldap3'
-  'python3-urwid' 'python3-pyopenssl' 'python3-pyasn1' 'python3-imaging'
-  'python3-lxml' 'python3-flask' 'python3-requests' 'python3-passlib'
-  'python3-configargparse' 'python3-tornado' 'python3-wsproto'
-  'python3-pyperclip>=1.5.8' 'python3-blinker>=1.3')
+  'python-urwid' 'python-pyopenssl' 'python-pyasn1' 'python-imaging'
+  'python-lxml' 'python-flask' 'python-requests' 'python-passlib'
+  'python-configargparse' 'python-tornado' 'python-wsproto'
+  'python-pyperclip>=1.5.8' 'python-blinker>=1.3')
 conflicts=('mitmproxy')
 provides=('mitmproxy')
 source=("git+https://github.com/mitmproxy/mitmproxy.git")
