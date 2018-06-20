@@ -5,11 +5,11 @@ make_srcinfo () {
 }
 
 build () {
-  makepkg -s "${@}"
+  updpkgsums && makepkg -s "${@}"
 }
 
 clean () {
-  rm -rf *.pkg.tar.xz *.tar.gz tflint_linux*.zip ; rm -rf ./pkg ./src ; true
+  rm -rf *.pkg.tar.xz *.tar.gz ; rm -rf ./pkg ./src ; true
 }
 
 main () {
