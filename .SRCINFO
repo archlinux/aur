@@ -1,18 +1,22 @@
 pkgbase = mt7601u-ap-dkms
 	pkgdesc = Kernel module for Ralink MT7601U chipset wireless adaptors with Access Point (AP / Master) support.
 	pkgver = 3.0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ralinktech.com
 	install = mt7601u-ap-dkms.install
 	arch = any
 	license = GPL
 	depends = dkms
 	options = !strip
-	source = https://github.com/housq/mt7601u/archive/master.zip
+	source = https://github.com/setarcos/MT7601u/archive/master.zip
 	source = mt7601u-ap.conf
+	source = blacklist-mt7601u.conf
+	source = 001-MT7601u-Linux-4.x.patch
 	source = dkms.conf
-	sha256sums = 952e6200163132fd1ee3f01b739b842129dfc05282e6366c80ac191d87b38da6
+	sha256sums = 53a0b97563b61396b0bcde9ffeb677f7dbe46db764fb367517e0c99e90fd6e2f
 	sha256sums = 5cb57146dcbc238feff1c0e1836dea995c33180892327eba02804a0755ce9a81
+        sha256sums = 2c14cefbb3fe1229412f09129675948db40e60550ad8413dd31e8e24c9d7b189
+        sha256sums = 1dbb027a32cffafbaf457f8d8672be669d1bdcac7d6184003afb6a11c70663f6
 	sha256sums = a4d4f94c9492f344d4baa05d5f5ce132eb3bf0f9fb6eec161a87eea9450ebc12
 
 pkgname = mt7601u-ap-dkms

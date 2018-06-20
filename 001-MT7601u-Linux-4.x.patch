@@ -1,6 +1,6 @@
-diff -ru MT7601u-2/src/include/os/rt_linux.h MT7601u/src/include/os/rt_linux.h
---- MT7601u-2/src/include/os/rt_linux.h	2018-06-17 19:34:56.006528978 +0700
-+++ MT7601u/src/include/os/rt_linux.h	2018-06-18 04:09:48.253593046 +0700
+diff -ru a/src/include/os/rt_linux.h b/src/include/os/rt_linux.h
+--- a/src/include/os/rt_linux.h
++++ b/src/include/os/rt_linux.h
 @@ -83,6 +83,8 @@
  #include <linux/kthread.h>
  #endif /* KTHREAD_SUPPORT */
@@ -10,9 +10,9 @@ diff -ru MT7601u-2/src/include/os/rt_linux.h MT7601u/src/include/os/rt_linux.h
  
  #include "os/rt_linux_cmm.h"
  
-diff -ru MT7601u-2/src/os/linux/rt_linux.c MT7601u/src/os/linux/rt_linux.c
---- MT7601u-2/src/os/linux/rt_linux.c	2018-06-17 19:34:56.026529050 +0700
-+++ MT7601u/src/os/linux/rt_linux.c	2018-06-18 05:15:53.294949852 +0700
+diff -ru a/src/os/linux/rt_linux.c b/src/os/linux/rt_linux.c
+--- a/src/os/linux/rt_linux.c
++++ b/src/os/linux/rt_linux.c
 @@ -1165,7 +1165,7 @@
          /* The object must have a read method */
          if (osfd->f_op /*&& osfd->f_op->read*/) {

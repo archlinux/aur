@@ -5,7 +5,7 @@ _pkgname=mt7601u-ap
 pkgname=${_pkgname}-dkms
 pkgver=3.0.0.3
 _pkg=${_pkgname}-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for Ralink MT7601U chipset wireless adaptors with Access Point (AP / Master) support."
 arch=('any')
 url="http://www.ralinktech.com"
@@ -26,7 +26,7 @@ source=("https://github.com/setarcos/MT7601u/archive/master.zip"
 sha256sums=('53a0b97563b61396b0bcde9ffeb677f7dbe46db764fb367517e0c99e90fd6e2f'
             '5cb57146dcbc238feff1c0e1836dea995c33180892327eba02804a0755ce9a81'
             '2c14cefbb3fe1229412f09129675948db40e60550ad8413dd31e8e24c9d7b189'
-            '3eacca3e1b034aba788ced29f452c47706e9b31ed7c624fb5c006ce751406f40'
+            '1dbb027a32cffafbaf457f8d8672be669d1bdcac7d6184003afb6a11c70663f6'
             'a4d4f94c9492f344d4baa05d5f5ce132eb3bf0f9fb6eec161a87eea9450ebc12')
 
 prepare() {
