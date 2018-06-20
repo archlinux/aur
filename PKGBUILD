@@ -3,14 +3,14 @@
 
 pkgname=vivaldi-snapshot
 pkgver=1.16.1211.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
 options=(!strip !zipman)
 license=('custom')
 arch=('x86_64')
 depends=('gtk3' 'libcups' 'nss' 'gconf' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
-makedepends=('w3m')
+makedepends=('w3m' 'imagemagick')
 optdepends=(
     'vivaldi-snapshot-ffmpeg-codecs: playback of proprietary video/audio'
     'pepper-flash: flash support'
@@ -33,6 +33,18 @@ package() {
         install -dm755 "$pkgdir/usr/bin"
         ln -s /opt/$pkgname/$pkgname "$binf"
     fi
+
+    # 256 and 24 are proper colored icons
+    for res in 128 64 48 32; do
+        convert "$pkgdir/opt/$pkgname/product_logo_256.png" \
+            -resize ${res}x${res} \
+            "$pkgdir/opt/$pkgname/product_logo_$res.png"
+    done
+    for res in 22 16; do
+        convert "$pkgdir/opt/$pkgname/product_logo_24.png" \
+            -resize ${res}x${res} \
+            "$pkgdir/opt/$pkgname/product_logo_$res.png"
+    done
 
     # install icons
     for res in 16 22 24 32 48 64 128 256; do
