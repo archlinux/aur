@@ -46,4 +46,7 @@ package() {
   cd ${pkgname}
   make DESTDIR="$pkgdir/" install
   install -DTm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+
+  # Copy header files into package (not sure why stuff like libvmi/events.h isn't installed by default)
+  cp ${srcdir}/${pkgname}/libvmi/*.h ${pkgdir}/usr/include/libvmi/
 }
