@@ -1,7 +1,7 @@
 # Maintainer: Martynas Janu <martynas.janu at googlemail dot com>
 pkgname=apache-netbeans
 pkgver=9.0rc1
-pkgrel=2
+pkgrel=3
 pkgdesc="Apache Netbeans IDE development platform"
 arch=('i686' 'x86_64')
 url="https://netbeans.apache.org"
@@ -19,8 +19,9 @@ package() {
     mkdir -p $pkgdir/usr/share/apache-netbeans
     mv $srcdir/netbeans $srcdir/apache-netbeans
     cp -R $srcdir/apache-netbeans $pkgdir/usr/share
-    chmod -R 0751 $pkgdir/usr/share/apache-netbeans
+    chmod -R 0755 $pkgdir/usr/share/apache-netbeans
     chmod +x $pkgdir/usr/share/apache-netbeans/bin/netbeans
-    rm -rf $pkgdir/usr/share/apache-netbeans/bin/netbeans.*
+    rm -f $pkgdir/usr/share/apache-netbeans/bin/netbeans.exe
+    rm -f $pkgdir/usr/share/apache-netbeans/bin/netbeans64.exe
     install -Dm755 apache-netbeans.desktop "${pkgdir}/usr/share/applications/apache-netbeans.desktop"
 }
