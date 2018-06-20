@@ -2,7 +2,7 @@
 
 _branch="fracture_modifier"
 _sufix=${_branch}
-_blenver=2.79
+_blenver=2.81
 _fragment="#branch=${_branch}"
 pkgname=blender-${_sufix}-git
 pkgver=v2.79b.r2130.g9a21afd18d4
@@ -34,6 +34,7 @@ source=("git://git.blender.org/blender.git${_fragment}" \
         blender-fracture_modifier.desktop \
         SelectCudaComputeArch.patch \
         gcc8.patch \
+        version.patch \
         ffmpeg.patch \
         openvdb.patch \
         )
@@ -46,6 +47,7 @@ md5sums=('SKIP'
          '0a4847775c9eec16a76ec7d3a03a678d'
          '9454ff7e994f72ead5027356e227cbd2'
          'df6f12c3327678b0a05f9e48e9ace67c'
+         '975cef0e17c77517ed8727701abc8a0c'
          'bb325c8c879d677ad1f1c54797268716'
          'fe709e616e52c1acc47c1cc0f77c2694')
 
@@ -71,6 +73,7 @@ prepare() {
   git apply -v ${srcdir}/gcc8.patch
   git apply -v ${srcdir}/ffmpeg.patch
   git apply -v ${srcdir}/openvdb.patch
+  git apply -v ${srcdir}/version.patch
 }
 
 build() {

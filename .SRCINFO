@@ -44,6 +44,7 @@ pkgbase = blender-fracture_modifier-git
 	source = blender-fracture_modifier.desktop
 	source = SelectCudaComputeArch.patch
 	source = gcc8.patch
+	source = version.patch
 	source = ffmpeg.patch
 	source = openvdb.patch
 	md5sums = SKIP
@@ -55,6 +56,7 @@ pkgbase = blender-fracture_modifier-git
 	md5sums = 0a4847775c9eec16a76ec7d3a03a678d
 	md5sums = 9454ff7e994f72ead5027356e227cbd2
 	md5sums = df6f12c3327678b0a05f9e48e9ace67c
+	md5sums = 975cef0e17c77517ed8727701abc8a0c
 	md5sums = bb325c8c879d677ad1f1c54797268716
 	md5sums = fe709e616e52c1acc47c1cc0f77c2694
 
