@@ -1,7 +1,7 @@
 pkgbase = python-lib389
 	pkgdesc = 389 Directory Server Python library.
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://port389.org
 	arch = any
 	license = Apache
@@ -12,9 +12,9 @@ pkgbase = python-lib389
 
 pkgname = python-lib389
 	pkgdesc = 389 Directory Server Python library. (python3 version)
-	depends = python
+	depends = python-ldap
 
 pkgname = python2-lib389
 	pkgdesc = 389 Directory Server Python library. (python2 version)
-	depends = python2
+	depends = python2-ldap
 
