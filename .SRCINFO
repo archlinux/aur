@@ -1,0 +1,15 @@
+pkgbase = suru-plus-telinkrin-git
+	pkgdesc = A desaturated-blue-coloured theme, designed by Paul Beyens, based on Andrea Bonnani's Suru++ and adapted to the Telinkrin GTK theme
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://github.com/gusbemacbe/suru-plus-telinkrin
+	arch = any
+	license = GPL3
+	makedepends = git
+	conflicts = suru-plus-telinkrin
+	options = !strip
+	source = git+https://github.com/gusbemacbe/suru-plus-telinkrin.git
+	sha256sums = SKIP
+
+pkgname = suru-plus-telinkrin-git
+
