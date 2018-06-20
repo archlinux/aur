@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.r-tt.com/data_recovery_linux/"
 license=('custom')
 depends=('xdg-utils')
-source_x86_64=("http://www.r-studio.com/downloads/RStudio4_x64.deb")
+source_x86_64=("https://www.r-studio.com/downloads/RStudio4_x64.deb")
 source=($pkgname.desktop
         $pkgname.png)
 sha512sums=('c33acb398f1c8cdc680b981344f51b7f1f4e651c9a215e37d38d9daae08d187b4b936e4e8eea3fa81a850a3e0803d738c160f44232abb2f5422f9d60727a77b7'
