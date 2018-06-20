@@ -1,27 +1,26 @@
-#Maintainer: Stuart Reilly <stu at reilly-family dot co dot uk>
+# Maintainer: Stuart Reilly <stu at reilly-family dot co dot uk>
 pkgname=rash-git
-pkgver=0.3.0.r20.g767650d
-pkgdesc='Rust-based file hashing tool'
+pkgver=0.3.1.r23.g87f0710
 pkgrel=1
+makedepends=('rust' 'cargo')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+pkgdesc="Rust-based file hashing tool"
 license=('MIT' 'Apache')
-makedepends=('cargo' 'git')
-arch=('x86_64')
-url='https://github.com/themadprofessor/rash'
+url="https://github.com/themadprofessor/rash"
+source=("git+$url")
 sha1sums=('SKIP')
 
-source=("git+$url")
-
 pkgver() {
-	cd "$srcdir/${pkgname%-*}"
-	echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --always)
+  cd "${pkgname%-*}"
+  echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --always)
 }
 
 build() {
-	cd "${pkgname%-*}"
+	cd "$srcdir/${pkgname%-*}"
 	cargo build --release
 }
 
 package() {
-	cd "${pkgname%-*}"
-	install -Dm755 target/release/rash "$pkgdir/usr/bin/rash"
+    	cd "$srcdir/${pkgname%-*}"
+    	install -Dm755 target/release/rash $pkgdir/usr/bin/rash
 }
