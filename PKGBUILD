@@ -10,6 +10,7 @@ makedepends=('git' 'awk' )
 depends=('python-binaryornot' 'python-urwid' 'python-yaml' 
 'python-pyperclip' 'python-pygments' 'xdg-utils' 'python-watchdog')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hnicke/sodalite/archive/v$pkgver.tar.gz")
+backup=('etc/sodalite.conf')
 md5sums=('SKIP')
 install=sodalite.install
 

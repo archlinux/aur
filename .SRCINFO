@@ -15,6 +15,7 @@ pkgbase = sodalite
 	depends = python-pygments
 	depends = xdg-utils
 	depends = python-watchdog
+	backup = etc/sodalite.conf
 	source = sodalite-0.12.0.tar.gz::https://github.com/hnicke/sodalite/archive/v0.12.0.tar.gz
 	md5sums = SKIP
 
