@@ -10,6 +10,7 @@ conflicts=('sodalite')
 makedepends=('git' 'awk' )
 depends=('python-binaryornot' 'python-npyscreen-git' 'python-yaml' 'python-pyperclip')
 source=('git+https://github.com/hnicke/sodalite.git')
+backup=('etc/sodalite.conf')
 md5sums=('SKIP')
 install=sodalite.install
 
