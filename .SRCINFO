@@ -1,16 +1,15 @@
 pkgbase = dh-make
-	pkgdesc = tool that converts source archives into Debian package source
-	pkgver = 2.201701
-	pkgrel = 2
+	pkgdesc = Tool that converts source archives into Debian package source
+	pkgver = 2.201801
+	pkgrel = 1
 	url = http://packages.debian.org/sid/dh-make
 	arch = any
 	license = GPL
 	depends = dpkg
-	depends = perl
 	depends = make
 	depends = python
-	source = http://ftp.debian.org/debian/pool/main/d/dh-make/dh-make_2.201701.tar.xz
-	sha256sums = ba9b5f698ac2ec3f5e1cac4af9a51f0f3f7593297092f00936b644a6ae0f70e7
+	source = http://http.debian.org/debian/pool/main/d/dh-make/dh-make_2.201801.tar.xz
+	sha256sums = c94a3de25822007b95b27427dcb95f52631dafb2cb902b615a3417e8f8dcde29
 
 pkgname = dh-make
 
