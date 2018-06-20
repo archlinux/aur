@@ -1,7 +1,7 @@
 # Maintainer: Stuart Reilly <stu at reilly-family dot co dot uk>
 pkgname=rash-git
 pkgver=0.3.1.r23.g87f0710
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Rust-based file hashing tool"
