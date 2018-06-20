@@ -2,7 +2,7 @@
 # Contributor: Previous maintainer Vasil Yonkov <vasily@mm.st>
 
 pkgname=xmr-stak_cpu
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Unified All-in-one Monero miner"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 depends=('hwloc' 'openssl' 'libmicrohttpd')
 source=("https://github.com/fireice-uk/xmr-stak/archive/${pkgver}.tar.gz"
         'disable_donation.diff')
-sha256sums=('61a14a30556dc6b5dee61bb6688818395dd9ae5975a716eb5710b4896858e859'
+sha256sums=('deecf9c080465c6a124b64810e4fc2ef9e8346c722d1e193ae2fa6df2afea6d7'
             '53062ef6b0a104164ac95f006201ca00d8c5c80b5cd2629ae0315a1ccefae856')
 
 prepare() {
