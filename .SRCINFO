@@ -1,0 +1,19 @@
+pkgbase = qt5-quick1-git
+	pkgdesc = Qt Declarative is provided for Qt 4 compatibility
+	pkgver = 5.8.0.fa02271a
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	license = GPL3
+	makedepends = git
+	depends = qt5-webkit
+	depends = qt5-script
+	provides = qt5-quick1
+	conflicts = qt5-quick1
+	source = git+https://github.com/qt/qtquick1
+	sha1sums = SKIP
+
+pkgname = qt5-quick1-git
+
