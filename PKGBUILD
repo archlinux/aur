@@ -7,8 +7,8 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=69.0.3447.0
-pkgrel=3
+pkgver=69.0.3460.0
+pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
 arch=('i686' 'x86_64')
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 
 
 
-sha256sums=('34b9bfe380d463be744dfdcf557f5208a2eaa1b4f51d217c9b5a9289d2e218fa'
+sha256sums=('d7839487cf9168ce0c904358eafd5fd82023e42fe3afa19541ac0de692584e35'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -155,7 +155,7 @@ sha256sums=('34b9bfe380d463be744dfdcf557f5208a2eaa1b4f51d217c9b5a9289d2e218fa'
             '0a148b0a15a63feb08ed79695a80d09ad39db7a3373b217cd499909218b94fda'
             '9465f89adc5b177050fd154b3be459f167fd3e157a1ebc0537b29070f0dbda5d'
             '5a4ec61000266fd623e0a3377210ed324ed62eeba6c61ecd95ffb49d4d20640f'
-            '269e5219e2630915c5aed2c53bc3a7607e0e66478b77758a0554c85e8e133213'
+            'f78c1e97f748e169f15dd7ec0d16ad4637a3750d9409bd71d62c95a42015fef0'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
@@ -189,12 +189,12 @@ sha256sums=('34b9bfe380d463be744dfdcf557f5208a2eaa1b4f51d217c9b5a9289d2e218fa'
             'a31bfe021beb091a37252a443c452ba6f3bc50299f237f47880ae5163d014b28'
             'c367599e25bd9d408d52dd26ceec9f0048b0991cc74980c8c40d602e61a2a844'
             'b54a69d6eeb03bf56e5a6430cbc07fd8d12532709876d38828e4c455eca29e3b'
-            'fda2fd5bf13e685ad19daff3f2348e58c18d628086e46866bd6ec2a8047fdef6'
+            '007088c0c4ef4bec5ae50deb80a4bccbe4020af623b995cc468e1441793b974b'
             'a0fc68d001dc6bad673997394184112eed59b74b8e6bbcd173db55402c95c121'
             'fb3abae54309adf69b98bd2435fbc23f17bc526dbf1d1e97907da87e7cf0aeed'
             'fb7c96ecf7f97fd6d356b8ca714efc518fc5bf40d92a23a5ff1ad8462d56b248'
             '541136a480187de769d7dfd9da6ac63b3bb65583a553b32615ad5a9e6331ea65'
-            'a4a71617e9333e540096da7b7db189dbc66b46842c6367e093af015964656a7b'
+            '7c526c9cd6bd1083c432bdb5545071915fd0fc794f75bb8eef730e2d20f3dff1'
             '6d3251fb5aa200725a8cdc977d203ef98aaf8ed1564d0a4fa3b67c29a56520a9'
             'aaf6af367fcd478499f306cb1db44bbd4f58fadfc4b969046ec9fb47a2327db7'
             '51a336bee649d77a623b5da536c3b77b81ea67dbc9c1c34f9539c739d420379e'
@@ -214,6 +214,7 @@ sha256sums=('34b9bfe380d463be744dfdcf557f5208a2eaa1b4f51d217c9b5a9289d2e218fa'
             '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
+
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -323,7 +324,7 @@ patch -Np1 -i ../nd.patch
 
 
 patch -Np1 -i ../a.patch
-patch -Np1 -i ../b.patch
+#patch -Np1 -i ../b.patch
 patch -Np1 -i ../c.patch
 patch -Np1 -i ../d.patch
 patch -Np1 -i ../k.patch
@@ -339,7 +340,7 @@ patch -Np1 -i ../narnia1.patch
 
 
 
-patch -Np1 -i ../9k.patch
+#patch -Np1 -i ../9k.patch
 patch -Np1 -i ../048.patch
 
 patch -Np1 -i ../12.patch
@@ -399,6 +400,8 @@ build() {
   mkdir -p "$TMPDIR"
 
    local _flags=(
+    "custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
+    "host_toolchain=\"//build/toolchain/linux/unbundle:default\""
     'symbol_level=0'
     'is_debug=false'
     'fatal_linker_warnings=false'
@@ -409,11 +412,9 @@ build() {
     'proprietary_codecs=true'
     'link_pulseaudio=true'
     'use_gnome_keyring=false'
-    'use_gold=false'
     'use_sysroot=false'
     'linux_use_bundled_binutils=false'
     'use_custom_libcxx=false'
-    'use_system_libjpeg=true'
     'use_vaapi=false'
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
@@ -423,7 +424,6 @@ build() {
     'enable_google_now=false'
     'enable_print_preview=true'
     'enable_remoting=false'
-    'use_lld=false'
   )
 
       _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin"
@@ -456,9 +456,8 @@ python2 build/util/lastchange.py -m GPU_LISTS_VERSION \
 
 #its optimized for 16 ram, if you get segfaults or crashes read linuxfromscratch.org/blfs/view/svn/xsoft/chromium.html
 
-msg2 'you may get oom errors if you make something edgy while you are building me'
-
   ninja -j8 -C out/Release  pdf chrome chrome_sandbox chromedriver
+
 }
 
 package() {
