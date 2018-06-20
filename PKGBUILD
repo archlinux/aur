@@ -2,14 +2,14 @@
 # Contributor:
 
 pkgname=photoflare-git
-pkgver=1.5.3.r4.g07690d3
+pkgver=1.5.3.r33.gf1c67b6
 pkgrel=1
 pkgdesc="Quick, simple but powerful Cross Platform image editor."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://photoflare.io/"
 license=('GPL3')
 depends=('desktop-file-utils' 'graphicsmagick' 'qt5-base')
-makedepends=('git')
+makedepends=('git' 'qt5-tools')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}")
 replaces=('photofiltrelx')
@@ -27,15 +27,13 @@ prepare() {
 
 build() {
   cd "${pkgname%-*}"
-  qmake-qt5 PhotoFlare.pro
+  qmake-qt5 PREFIX=/usr PhotoFlare.pro \
+    QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
+    QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
+    QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
   make
 }
 
 package() {
-  cd "${pkgname%-*}"
-  install -Dm755 PhotoFlare "$pkgdir/usr/bin/PhotoFlare"
-  install -Dm644 installers/deb/DEBIAN/usr/share/applications/photoflare.desktop \
-    "$pkgdir/usr/share/applications/photoflare.desktop"
-  sed -i 's|Icon=PhotoFlare|Icon=/usr/share/pixmaps/PhotoFlare.png|' "$pkgdir/usr/share/applications/photoflare.desktop"
-  install -Dm644 assets/pixmaps/logo.png "$pkgdir/usr/share/pixmaps/PhotoFlare.png"
+  make -C "${pkgname%-*}" INSTALL_ROOT="$pkgdir/" install
 }
