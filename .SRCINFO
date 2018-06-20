@@ -12,6 +12,8 @@ pkgbase = libvmi-git
 	makedepends = flex
 	depends = json-c
 	optdepends = libvirt: required for KVM/libvirt usage
+	provides = libvmi
+	conflicts = libvmi
 	source = libvmi-git::git+https://github.com/libvmi/libvmi.git
 	sha256sums = SKIP
 

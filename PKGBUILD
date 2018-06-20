@@ -10,6 +10,8 @@ license=('GPL')
 makedepends=('automake' 'autoconf' 'libtool' 'bison' 'flex')
 depends=('json-c')
 optdepends=('libvirt: required for KVM/libvirt usage')
+provides=('libvmi')
+conflicts=('libvmi')
 source=("${pkgname}::git+https://github.com/libvmi/libvmi.git")
 sha256sums=('SKIP')
 
