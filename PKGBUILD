@@ -1,14 +1,15 @@
 # Previous Maintainer: Rainmaker <rainmaker52@gmail.com>
-# Maintainer: gary9872	<garysBoXatgeemale.com>
+# Previous Maintainer: gary9872	<garysBoXatgeemale.com>
+# Maintainer: khomutsky <bogdan@khomutsky.com>
 # Original script by: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=5.2.10
-_build=122088
+pkgver=5.2.12
+_build=122591
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
-arch=('i686' 'x86_64')
-url='http://virtualbox.org/'
+arch=('x86_64')
+url='https://www.virtualbox.org/'
 license=('GPL2')
 options=('!strip')
 depends=(
@@ -171,7 +172,7 @@ EOF
 # vim:set ts=2 sw=2 ft=sh et:
 
 
-md5sums=('756b1d59bbe5fed3b6f7131dd6f7d223'
+md5sums=('2f9d2a24222ef529d79b9e5d6a9ab94b'
          '2d04c2e2d8c71558c910a51ec773731a'
          'fe60f9510502bea67383d9198ae8c13c'
          'c159d683ba1947290fc2ad2c64194150'
