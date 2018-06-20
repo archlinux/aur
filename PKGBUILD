@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-devel
-pkgver=4.13.2
+pkgver=4.13.3
 pkgrel=1
 pkgdesc="Settings manager for xfce"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('libcanberra: for sound control')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('6ed1ef823fe4e26764064d7994fa4849d332cafaf1575784423035a95579a214')
+sha256sums=('24b1d45a93bb91ffb68f82f59a8822b86f98115d27cc72dc9faecb09b3afd244')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
