@@ -3,13 +3,13 @@
 name=watchghost
 pkgname=$name
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Your invisible but loud monitoring pet"
 arch=('any')
 url='https://gitlab.com/localg-host/watchghost/'
 license=('AGPLv3')
-depends=('python-tornado' 'python-aioftp' 'python-asyncssh')
+depends=('python-tornado' 'python-aioftp' 'python-asyncssh' 'python-watchdog')
 makedepends=('python-setuptools')
 source=("https://gitlab.com/localg-host/watchghost/-/archive/${pkgver}/watchghost-${pkgver}.tar.gz")
 sha256sums=('3cd3de253a47f0bfc4225bd806156dd1d364aeae983153aca28391b2a8a39214')
@@ -23,14 +23,14 @@ backup=(
 )
 
 package() {
-    cd "$srcdir/$name"
+    cd "${srcdir}/${name}-${pkgver}"
     python3 setup.py build
     python3 setup.py install --prefix=/usr --root="${pkgdir}"
 
     install -D $startdir/sysusers.conf $pkgdir/usr/lib/sysusers.d/watchghost.conf
     install -D $startdir/watchghost.service $pkgdir/usr/lib/systemd/system/watchghost.service
     for filename in groups loggers servers watchers ; do
-      install -D $srcdir/watchghost/watchghost/etc/$filename $pkgdir/etc/watchghost/$filename
+      install -D $srcdir/${name}-${pkgver}/watchghost/etc/$filename $pkgdir/etc/watchghost/$filename
     done
 }
 
