@@ -2,7 +2,7 @@
 # Maintainer: Milo Gilad <myl0gcontact@gmail.com>
 pkgname=bitwarden
 pkgver=1.3.0
-pkgrel=3
+pkgrel=1
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
 url="https://bitwarden.com"
