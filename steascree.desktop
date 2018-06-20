@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=SteaScree
+Categories=Game;Utility;QT;
+GenericName=Steam screenshot tool
+Comment=Allows you to inject screenshots in Steam screenshot uploader
+Exec=/usr/bin/SteaScree
+Icon=/usr/share/icons/SteaScree.svg
+StartupNotify=false
