@@ -1,7 +1,7 @@
 # Maintainer: Heiko Nickerl <dev at heiko-nickerl dot com>
 pkgname="sodalite-git"
 pkgver=r45.ece430f
-pkgrel=6
+pkgrel=1
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
 url="www.github.com/hnicke/sodalite"
@@ -9,7 +9,7 @@ license=('GPL')
 conflicts=('sodalite')
 makedepends=('git' 'awk' )
 depends=('python-binaryornot' 'python-urwid' 'python-yaml' 
-'python-pyperclip' 'python-pygments' 'xdg-utils' 'python-watchdog')
+'python-pyperclip' 'python-pygments' 'python-watchdog')
 source=('git+https://github.com/hnicke/sodalite.git')
 backup=('etc/sodalite.conf')
 md5sums=('SKIP')
