@@ -4,10 +4,10 @@
 
 _pkgname=electricsheep
 pkgname=${_pkgname}-git
-pkgref=51f33cae7c6694515ba806caa911e44010ab3294
+pkgref=92b063720552e862e3912539b8243a707e0fac9c
 pkgzip=${pkgref}.zip
 pkgurl="https://github.com/scottdraves/electricsheep/archive/${pkgzip}"
-pkgver=3.0.git.${pkgref}
+pkgver=3.0.2.git.${pkgref}
 pkgrel=1
 pkgdesc="Electric Sheep is a collaborative abstract artwork founded by Scott Draves. (gold sheep supported!)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('xscreensaver: to use electricsheep with xscreensaver')
 provides=('electricsheep')
 conflicts=('electricsheep' 'electricsheep-svn')
 source=(${pkgurl})
-sha512sums=('76d7626a03320b075ea537270e9578cc07660905fa7cac04b66d36de3d61139f5f27b2d508929732b31f7f86c03669fe3646f3ecbb27fa0d8485bbfeb9bffeb6')
+sha512sums=('28200b152689b9fbdfd1b3b12891a5fabad89b2b282387fe961212a0e8f2623cd61fc664366b914584063b2eec1e208ea7ea1994f398647fdd2e28a5cf3c7611')
 
 prepare() {
   pushd "${srcdir}/${_pkgname}-${pkgref}/client_generic"
@@ -38,7 +38,7 @@ build() {
     ./autogen.sh
     CPPFLAGS+=" -I/usr/include/lua5.1" ./configure --prefix=/usr
     sed -i 's|-I /usr/include/libavutil||' MSVC/SettingsGUI/Makefile
-    make CXXFLAGS+="-DUSE_NEW_FFMPEG_API=1" GLEE_LIBS="-lGLee"
+    make CXXFLAGS+="-DUSE_NEW_FFMPEG_API=1 -lpthread" GLEE_LIBS="-lGLee"
   popd
 }
 
