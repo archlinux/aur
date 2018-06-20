@@ -1,7 +1,7 @@
 pkgbase = lesstif
 	pkgdesc = LGPL'd re-implementation of Motif
 	pkgver = 0.95.2
-	pkgrel = 7
+	pkgrel = 8
 	url = http://sourceforge.net/projects/lesstif/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = lesstif
 	depends = freetype2
 	depends = libxt
 	depends = libxp
+	conflicts = openmotif
 	options = !makeflags
 	options = !buildflags
 	source = http://downloads.sourceforge.net/lesstif/lesstif-0.95.2.tar.bz2
