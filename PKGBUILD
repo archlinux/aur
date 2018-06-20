@@ -8,10 +8,10 @@ arch=('any')
 url="https://mitmproxy.org/"
 license=('MIT')
 depends=(
-  'openssl' 'brotlipy' 'certifi' 'h2' 'hyperframe' 'kaitaistruct' 'ldap3'
-  'python-urwid' 'python-pyopenssl' 'python-pyasn1' 'python-imaging'
-  'python-lxml' 'python-flask' 'python-requests' 'python-passlib'
-  'python-configargparse' 'python-tornado' 'python-wsproto'
+  'openssl' 'python-brotlipy' 'python-certifi' 'python-h2' 'python-ldap3'
+  'python-pyopenssl' 'python-pyasn1' 'python-imaging' 'python-hyperframe'
+  'python-lxml' 'python-flask' 'python-requests' 'python-passlib' 'python-urwid'
+  'python-configargparse' 'python-tornado' 'python-wsproto' 'python-kaitaistruct'
   'python-pyperclip>=1.5.8' 'python-blinker>=1.3')
 conflicts=('mitmproxy')
 provides=('mitmproxy')
