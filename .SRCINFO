@@ -1,5 +1,5 @@
 pkgbase = motionbuilder
-	pkgdesc = 3D character animation software
+	pkgdesc = Autodesk 3D character animation software
 	pkgver = 2017
 	pkgrel = 1
 	url = https://www.autodesk.com/products/motionbuilder/overview

@@ -4,7 +4,7 @@
 pkgname=motionbuilder
 pkgver=2017
 pkgrel=1
-pkgdesc="3D character animation software"
+pkgdesc="Autodesk 3D character animation software"
 arch=('x86_64')
 url="https://www.autodesk.com/products/motionbuilder/overview"
 license=('custom: unlimited')
