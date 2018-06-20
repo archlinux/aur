@@ -1,0 +1,15 @@
+pkgbase = python2-libvmi-git
+	pkgdesc = Libvmi Python2 bindings
+	pkgver = 6e38865
+	pkgrel = 1
+	url = http://libvmi.com
+	arch = any
+	license = GPLv3
+	makedepends = python2-pkgconfig
+	depends = python2-cffi
+	depends = python2-future
+	source = python2-libvmi-git::git+https://github.com/libvmi/python.git
+	sha256sums = SKIP
+
+pkgname = python2-libvmi-git
+

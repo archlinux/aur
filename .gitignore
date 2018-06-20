@@ -1,0 +1,7 @@
+# Ignored folders
+src/
+pkg/
+python2-libvmi-git/
+
+# Ignored files
+*.pkg.tar.xz
