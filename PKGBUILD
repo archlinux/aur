@@ -1,10 +1,11 @@
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Tom < tomgparchaur at gmail dot com >
 # Contributor: David Manouchehri <d@32t.ca>
 
 pkgname=dropbox
 pkgver=52.4.58
-pkgrel=1
+pkgrel=2
 pkgdesc="A free service that lets you bring your photos, docs, and videos anywhere and share them easily."
 arch=("i686" "x86_64")
 url="https://www.dropbox.com"
@@ -24,7 +25,7 @@ source_x86_64=("https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbo
 
 sha256sums=('e7d245f5d1a3d5322614b61400ae2913a8caef44bc86717ff7d8197a15dd7f01'
             '541f2fd2de0d601a08cde7853e404062f542af21e6e7106825b5e68177168e0f'
-            'c39d63bcfc0d40002a5df052298feb79f2e8dd3d93da27ef31eb672b8d2fc70e'
+            '34605b2f36fe6b4bde9b858da3f73ac1505986af57be78bbb1c2c9cf1a611578'
             '6c67a9c8c95c08fafafd2f1d828074b13e3347b05d2e4f4bf4e62746115d7477'
             '98581e65a91ae1f19ed42edcdaaa52e102298b5da0d71b50089393d364474d3d')
 sha256sums_i686=('fd7026ce1a144f3c787dee5a0436e0aca693c5947933d2999e20dc237a6335f8')
