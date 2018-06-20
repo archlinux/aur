@@ -8,7 +8,7 @@ url='http://libvmi.com'
 arch=('any')
 license=('GPLv3')
 makedepends=('python2-pkgconfig')
-depends=('python2-cffi' 'python2-future')
+depends=('python2-cffi' 'python2-future' 'libvmi')
 source=("${pkgname}::git+https://github.com/libvmi/python.git")
 sha256sums=('SKIP')
 
