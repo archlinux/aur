@@ -1,6 +1,6 @@
 pkgbase = pulseeffects
 	pkgdesc = Audio Effects for Pulseaudio Applications
-	pkgver = 4.0.7
+	pkgver = 4.0.8
 	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = pulseeffects
 	optdepends = lsp-plugins-lv2-bin: delay and expander
 	optdepends = rubberband: pitch shifting
 	options = !emptydirs
-	source = pulseeffects-4.0.7::https://github.com/wwmm/pulseeffects/archive/v4.0.7.tar.gz
-	md5sums = 432192f54b74c42306d084f03c3ebb0b
+	source = pulseeffects-4.0.8::https://github.com/wwmm/pulseeffects/archive/v4.0.8.tar.gz
+	md5sums = 80811ec1e86014785fa43e41b2836d80
 
 pkgname = pulseeffects
 
