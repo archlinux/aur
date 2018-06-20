@@ -2,7 +2,7 @@
 
 _pkgname=xfdesktop
 pkgname=${_pkgname}-devel
-pkgver=4.13.1
+pkgver=4.13.2
 pkgrel=1
 pkgdesc="A desktop manager for Xfce"
 arch=('i686' 'x86_64')
@@ -43,4 +43,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('9e7d04e79053cf9ec077f55425f234c6')
+md5sums=('c05569c1c39ccd314fb5da20d5086909')
