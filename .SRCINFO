@@ -1,4 +1,4 @@
-pkgbase = open-siddur-hebrew-fonts
+pkgbase = opensiddur-hebrew-fonts
 	pkgdesc = The Open Siddur Project's open-source Unicode Hebrew font pack. open-source licensed Unicode fonts in Hebrew, Latin, Greek, Cyrillic, Arabic, and Amharic scripts
 	pkgver = 1.18.2
 	pkgrel = 1
@@ -19,5 +19,5 @@ pkgbase = open-siddur-hebrew-fonts
 	source = master.zip::https://github.com/aharonium/fonts/archive/master.zip
 	sha256sums = SKIP
 
-pkgname = open-siddur-hebrew-fonts
+pkgname = opensiddur-hebrew-fonts
 
