@@ -2,7 +2,7 @@
 
 pkgname=intel-seapi-git
 pkgver=17.01.28.r25.gf41831f
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Single Event API (Intel SEAPI) (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/IntelSEAPI/'
@@ -12,7 +12,7 @@ makedepends=('git' 'python' 'cmake' 'java-environment' 'classpath')
 optdepends=('python: for using runtool scripts')
 provides=('intel-seapi' 'intel-ittnotify' 'intel-ittnotify-git')
 conflicts=('intel-seapi' 'intel-ittnotify' 'intel-ittnotify-git')
-source=("$pkgname"::'git+https://github.com/intel/IntelSEAPI.git')
+source=('git+https://github.com/intel/IntelSEAPI.git')
 sha256sums=('SKIP')
 
 [ "$CARCH" = 'i686'   ] && _architecture='32'

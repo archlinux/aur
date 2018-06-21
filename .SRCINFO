@@ -1,7 +1,7 @@
 pkgbase = intel-seapi-git
 	pkgdesc = Intel Single Event API (Intel SEAPI) (git version)
 	pkgver = 17.01.28.r25.gf41831f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/IntelSEAPI/
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = intel-seapi-git
 	conflicts = intel-seapi
 	conflicts = intel-ittnotify
 	conflicts = intel-ittnotify-git
-	source = intel-seapi-git::git+https://github.com/intel/IntelSEAPI.git
+	source = git+https://github.com/intel/IntelSEAPI.git
 	sha256sums = SKIP
 
 pkgname = intel-seapi-git
