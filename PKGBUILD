@@ -1,3 +1,5 @@
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+
 pkgname=mingw-w64-mpfi
 pkgver=1.5.3
 pkgrel=1
