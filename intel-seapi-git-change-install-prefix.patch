@@ -1,0 +1,11 @@
+diff -Naurp a/buildall.py b/buildall.py
+--- a/buildall.py	2018-06-21 17:17:32.000000000 +0000
++++ b/buildall.py	2018-06-21 17:18:30.671276905 +0000
+@@ -289,6 +289,7 @@ def main():
+         run_shell('%s "%s" -G"%s" %s' % (cmake, work_dir, generator, " ".join([
+             ("-DFORCE_32=ON" if bits == '32' else ""),
+             ("-DCMAKE_BUILD_TYPE=Debug" if args.debug else ""),
++            ("-DCMAKE_INSTALL_PREFIX:PATH='/usr'"),
+             ("-DYOCTO=1" if yocto else ""),
+             (('-DJDK="%s"' % jdk_path) if jdk_path else ""),
+             ('-DCO_PILOT=1' if perf_co_pilot else ""),
