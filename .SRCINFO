@@ -1,6 +1,6 @@
 pkgbase = vlc-nightly
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot
-	pkgver = 4.0.0v20180617
+	pkgver = 4.0.0v20180620
 	pkgrel = 1
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
@@ -170,15 +170,13 @@ pkgbase = vlc-nightly
 	conflicts = vlc
 	replaces = vlc-plugin
 	options = !emptydirs
-	source = http://nightlies.videolan.org/build/source/vlc-4.0.0-20180617-0244-dev.tar.xz
+	source = http://nightlies.videolan.org/build/source/vlc-4.0.0-20180620-0241-dev.tar.xz
 	source = update-vlc-plugin-cache.hook
 	source = 0001-lua-fix-build-using-lua-5.3.patch
-	source = 0002-Fix-compatibility-with-OpenCV-3.4.1.patch
 	source = find-deps.py
-	sha256sums = ac3d8962caf6dc2779fdcee950fff6af0a638cade4e140698fa567c927986599
+	sha256sums = 1a2a77fe67f71b9ff8cd4ec9022e62e2b454a6e30cf6e26e9bb3729ba1a63f57
 	sha256sums = c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a
 	sha256sums = 75ad8802bad1a79754e40fd107f5a6922c54f7467dadef8b439b49d410c8f7d2
-	sha256sums = 4e5c7582b2c1090e598710a6afa6062348f4e87b3909c3d9f12f12e08e0eea6c
 	sha256sums = 90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7
 
 pkgname = vlc-nightly

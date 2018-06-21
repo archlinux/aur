@@ -5,10 +5,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20180617
+pkgver=4.0.0v20180620
 _pkgver=4.0.0
-_snapshot_=20180617
-_snapver_=0244
+_snapshot_=20180620
+_snapver_=0241
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -109,7 +109,6 @@ options=('!emptydirs')
 source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-${_suffix_}.tar.xz"
         'update-vlc-plugin-cache.hook'
         '0001-lua-fix-build-using-lua-5.3.patch'
-        '0002-Fix-compatibility-with-OpenCV-3.4.1.patch'
         'find-deps.py')
 
 pkgver() {
@@ -122,7 +121,6 @@ prepare() {
   ./bootstrap
 
   patch -Np1 -i "${srcdir}/0001-lua-fix-build-using-lua-5.3.patch"
-  #patch -Np1 -i "${srcdir}/0002-Fix-compatibility-with-OpenCV-3.4.1.patch"
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
   sed 's|whoami|echo builduser|g' -i configure
@@ -256,8 +254,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('ac3d8962caf6dc2779fdcee950fff6af0a638cade4e140698fa567c927986599'
+sha256sums=('1a2a77fe67f71b9ff8cd4ec9022e62e2b454a6e30cf6e26e9bb3729ba1a63f57'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '75ad8802bad1a79754e40fd107f5a6922c54f7467dadef8b439b49d410c8f7d2'
-            '4e5c7582b2c1090e598710a6afa6062348f4e87b3909c3d9f12f12e08e0eea6c'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
