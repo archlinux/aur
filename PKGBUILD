@@ -2,21 +2,21 @@
 
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-devel
-pkgver=4.13.3
+pkgver=4.13.4
 pkgrel=1
 pkgdesc="Settings manager for xfce"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4')
-depends=('exo>=0.11.0' 'garcon' 'libxfce4ui>=4.13' 'libnotify' 'libxklavier'
-         'gnome-icon-theme' 'gtk-engines' 'dbus-glib' 'xfconf>4.13.0' 'upower')
+depends=('exo' 'garcon' 'libxfce4ui>=4.13' 'libnotify' 'libxklavier'
+         'gnome-icon-theme' 'gtk-engines' 'xfconf>4.13.0' 'upower')
 makedepends=('intltool')
 optdepends=('libcanberra: for sound control')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('24b1d45a93bb91ffb68f82f59a8822b86f98115d27cc72dc9faecb09b3afd244')
+sha256sums=('620b8af80194302229c1746182d1f6cd33f381f3701b4bec3286c012328f730e')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
