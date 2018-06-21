@@ -26,9 +26,6 @@ source=("${pkgname%-git}::git+http://github.com/${pkgname%-git}/${pkgname%-git}.
 noextract=()
 md5sums=('SKIP')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
@@ -66,5 +63,6 @@ package() {
 	rm -f "${pkgdir}/usr/share/doc/${pkgname%-git}/LICENSE"
 
 	install -m644 "$srcdir"/lib-target/lib/prim/Agda/Primitive.agdai "$pkgdir"/usr/share/agda/lib/prim/Agda/Primitive.agdai
+  install -m644 "$srcdir"/lib-target/lib/prim/Agda/Primitive/*.agdai "$pkgdir"/usr/share/agda/lib/prim/Agda/Primitive/
 	install -m644 "$srcdir"/lib-target/lib/prim/Agda/Builtin/*.agdai "$pkgdir"/usr/share/agda/lib/prim/Agda/Builtin/
 }
