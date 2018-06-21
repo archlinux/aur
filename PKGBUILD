@@ -13,7 +13,7 @@ url='https://numpydoc.readthedocs.io'
 license=('BSD')
 depends=('python' 'python-sphinx')
 options=('!emptydirs')
-source=('https://files.pythonhosted.org/packages/95/a8/b4706a6270f0475541c5c1ee3373c7a3b793936ec1f517f1a1dab4f896c0/numpydoc-${pkgver}.tar.gz')
+source=("https://files.pythonhosted.org/packages/95/a8/b4706a6270f0475541c5c1ee3373c7a3b793936ec1f517f1a1dab4f896c0/numpydoc-${pkgver}.tar.gz")
 sha256sums=('61f4bf030937b60daa3262e421775838c945dcdd671f37b69e8e4854c7eb5ffd')
 
 package() {
