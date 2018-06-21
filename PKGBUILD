@@ -12,8 +12,8 @@ optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH' 'libappindicator-gtk
 provides=('airvpn')
 conflicts=('airvpn' 'airvpn-beta-bin')
 install=airvpn.install
-source_i686=("airvpn_linux_x86_debian_${pkgver}.deb::https://eddie.website/download/?platform=linux&arch=x86&ui=ui&format=debian.deb&version=${pkgver}")
-source_x86_64=("airvpn_linux_x64_debian_${pkgver}.deb::https://eddie.website/download/?platform=linux&arch=x64&ui=ui&format=debian.deb&version=${pkgver}")
+source_i686=("eddie-ui_${pkgver}_linux_x86_debian.deb::https://eddie.website/download/?platform=linux&arch=x86&ui=ui&format=debian.deb&version=${pkgver}")
+source_x86_64=("eddie-ui_${pkgver}_linux_x64_debian.deb::https://eddie.website/download/?platform=linux&arch=x64&ui=ui&format=debian.deb&version=${pkgver}")
 md5sums_i686=('839500046dc9dcd52618a54ff696ad61')
 md5sums_x86_64=('fd7a2b461b526b9a0257ebdea04228cc')
 sha256sums_i686=('34d80fd55125a4f17165bffed4490405165798f18f2b5a490761d0260e54ed26')
