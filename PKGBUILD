@@ -19,7 +19,7 @@ pkgver() {
 package() {
     REFIND_HOME="${pkgdir}/boot/EFI/refind"
 
-    mkdir -p "${REFIND_HOME}/themes"
+    mkdir -p "${REFIND_HOME}/themes/tux"
     cp -r "${srcdir}/tux4ubuntu/tux-refind-theme/" "${REFIND_HOME}/themes/tux/"
     chmod -R 644 "${REFIND_HOME}/themes/tux"
 
