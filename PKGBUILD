@@ -1,5 +1,5 @@
 pkgname=osvr-rendermanager-git
-pkgver=v00_06_52.r278.g24398fd
+pkgver=v00_06_52.r312.g32bb995
 pkgrel=1
 pkgdesc="TW, ATW and high performance rendering with OpenGL and GLES"
 arch=(i686 x86_64)
@@ -9,9 +9,11 @@ url="https://github.com/sensics/OSVR-RenderManager"
 makedepends=('git' 'cmake')
 depends=('osvr-core-git' 'eigen') #TODO: add more deps
 source=("osvr-rendermanager::git+https://github.com/sensics/OSVR-RenderManager.git"
-  "vendor-vrpn::git+https://github.com/vrpn/vrpn.git")
+  "vendor-vrpn::git+https://github.com/vrpn/vrpn.git"
+  "use_core_profile_unconditionally.diff")
 md5sums=('SKIP'
-         'SKIP')
+         'SKIP'
+         '4f58517e2c39fd486f84b34afe7d07ad')
 
 pkgver() {
   cd "$srcdir/osvr-rendermanager"
@@ -30,6 +32,9 @@ prepare() {
 
   mkdir -p "$srcdir/osvr-rendermanager-build"
 
+  # fix library naming of jsoncpp
+  sed -i "s/jsoncpp_lib/jsoncpp/g" "$srcdir"/osvr-rendermanager/cmake/FindJsonCpp.cmake
+
   # this copies over osvr-core files from the system into the install directory so they would simply be overwritten in /usr/lib
   sed -i "/osvrrm_copy_deps(osvr::osvrClientKit osvr::osvrClient osvr::osvrCommon osvr::osvrUtil)/d" CMakeLists.txt
 
@@ -45,7 +50,7 @@ prepare() {
   case "$REPLY" in 
   y*|Y*|"" )
     echo "Patching rendermanager to use a core profile..."
-    git apply -vvv "$srcdir"/../use_core_profile_unconditionally.diff
+    git apply -vvv "$srcdir"/use_core_profile_unconditionally.diff
     echo "Patched..."
     ;;
   * )
