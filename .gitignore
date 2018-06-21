@@ -1,0 +1,6 @@
+# makepkg files
+*.xz
+iqmol
+
+# source files
+*.deb
