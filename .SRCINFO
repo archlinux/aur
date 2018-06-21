@@ -1,6 +1,6 @@
 pkgbase = handbrake-fdkaac-git
-	pkgver = 1.0.0.r495.g2123622dd
-	pkgrel = 2
+	pkgver = 1.1.0.r247.g9f9aecdad
+	pkgrel = 1
 	url = https://github.com/HandBrake/HandBrake
 	arch = i686
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = handbrake-fdkaac-git
 	license = custom:FDKAAC
 	makedepends = intltool
 	makedepends = python2
-	makedepends = yasm
+	makedepends = nasm
 	makedepends = wget
 	makedepends = cmake
 	makedepends = bzip2
