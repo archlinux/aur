@@ -1,7 +1,7 @@
 pkgbase = libmaus
 	pkgdesc = Bioinformatics data structures and algorithms in C++
 	pkgver = 2.0.504
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/german.tischler/libmaus2
 	arch = x86_64
 	license = GPL2
