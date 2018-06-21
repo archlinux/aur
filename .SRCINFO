@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-libilbc
+	pkgdesc = A friendly copy of the iLBC codec from the WebRTC project (mingw-w64)
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/TimothyGu/libilbc/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = libilbc-2.0.2.tar.bz2::https://github.com/TimothyGu/libilbc/releases/download/v2.0.2/libilbc-2.0.2.tar.bz2
+	sha256sums = 88e2dc14e1fccd7b7a0d7f84e96ac22a33c3c86820cee4b0a05e3dcc08c2b096
+
+pkgname = mingw-w64-libilbc
+
