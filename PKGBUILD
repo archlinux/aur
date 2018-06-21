@@ -2,7 +2,7 @@
 # Co-Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 # Co-Maintainer: Ariel AxionL <arielaxionl@gmail.com | axionl@aosc.io>
 
-pkgname=teleport
+pkgname=teleport-bin
 pkgver=2.6.2
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"

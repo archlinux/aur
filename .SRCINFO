@@ -1,4 +1,4 @@
-pkgbase = teleport
+pkgbase = teleport-bin
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure
 	pkgver = 2.6.2
 	pkgrel = 1
@@ -18,5 +18,5 @@ pkgbase = teleport
 	sha256sums_arm = caef6827cbc31af4a8a49997c54272e1661f7a112d47b06153d4afd88d23b5fb
 	sha256sums_arm = 3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc
 
-pkgname = teleport
+pkgname = teleport-bin
 
