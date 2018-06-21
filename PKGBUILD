@@ -1,13 +1,13 @@
 # Maintainer: Tom Hutchinson <aur [@] tomisme [dot] com>
 pkgname=stout-bin
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A reliable static website deploy tool"
 arch=(any)
-url="https://github.com/EagerIO/Stout"
+url="https://github.com/cloudflare/Stout"
 license=('MIT')
-source=("https://github.com/EagerIO/Stout/releases/download/v$pkgver/stout-linux")
-md5sums=('983cdd64383ae5d5c936d40cb919b815')
+source=("https://github.com/cloudflare/Stout/releases/download/v$pkgver/stout-linux")
+md5sums=('62104b37707ad2ef802dcb5cb7625911')
 
 package() {
 				cd "$srcdir"
