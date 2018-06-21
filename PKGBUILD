@@ -1,7 +1,7 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
 pkgname=lc0-cudnn-git
 _pkgname=lc0-cudnn
-pkgver=450
+pkgver=505
 pkgrel=1
 pkgdesc="CudNN version of Leela Chess Zero."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    ./build.sh release || return 1
+    PATH=$PATH:/opt/cuda/bin ./build.sh release || return 1
 }
 
 package() {
