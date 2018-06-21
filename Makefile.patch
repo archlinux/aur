@@ -1,5 +1,5 @@
---- Makefile.orig	2015-07-04 18:23:14.000000000 +0300
-+++ Makefile		2016-02-14 17:58:32.246196892 +0300
+--- Makefile_orig	2018-02-04 03:55:50.000000000 +0100
++++ Makefile	2018-06-21 09:49:49.674661662 +0200
 @@ -1,5 +1,5 @@
  DEST=fuse-zip
 -prefix=/usr/local
@@ -7,3 +7,12 @@
  exec_prefix=$(prefix)
  bindir=$(exec_prefix)/bin
  datarootdir=$(prefix)/share
+@@ -10,7 +10,7 @@
+ LIBS=-Llib -lfusezip $(shell pkg-config fuse --libs) $(shell pkg-config libzip --libs)
+ LIB=lib/libfusezip.a
+ CXXFLAGS=-g -O0 -Wall -Wextra -Werror
+-RELEASE_CXXFLAGS=-O2 -Wall -Wextra -Werror
++RELEASE_CXXFLAGS=-O2 -Wall
+ FUSEFLAGS=$(shell pkg-config fuse --cflags)
+ ZIPFLAGS=$(shell pkg-config libzip --cflags)
+ SOURCES=main.cpp
