@@ -1,40 +1,34 @@
-# Maintainer: Youngbin Han <sukso96100@gmail.com>
-# Submitter: Youngbin Han <sukso96100@gmail.com>
-# Contributor: Changjoo Lee <icj7061@gmail.com>
-# Contributor: ywen407 <ywen407@naver.com>
+# Maintainer: Hodong Kim <cogniti@gmail.com>
 
 pkgname=nimf-git
-_pkgname=nimf
-pkgver=2017.01.28.aa61961
+pkgver=master
 pkgrel=1
-pkgdesc="Nimf is an input method framework"
+pkgdesc="Nimf is an input method framework."
 arch=('any')
-url="https://cogniti.github.io/${_pkgname}"
-license=('GNU LGPL v3')
-depends=('gtk2' 'gtk3' 'qt4' 'qt5-base' 'libxkbcommon' 'glib2' 
-'libappindicator-gtk3' 'libhangul' 'sunpinyin' 'sunpinyin-data' 'anthy' 'libchewing' 'librime' 'brise')
-makedepends=('gtk2' 'gtk3' 'qt4' 'qt5-base' 'intltool' 
-'gobject-introspection' 'glib2' 'libappindicator-gtk3' 'git' 'librsvg' 
-'noto-fonts-cjk' 'libhangul' 'sunpinyin' 'sunpinyin-data' 'anthy' 
-'libchewing' 'librime' 'brise' 'audit')
-conflicts=("nimf")
-source=("${_pkgname}"::"git+https://github.com/cogniti/${_pkgname}.git")
+url="https://gitlab.com/hodong/nimf"
+license=('LGPL3')
+makedepends=('glib2' 'intltool' 'gtk3' 'gtk2' 'qt4' 'qt5-base'
+             'libappindicator-gtk3' 'librsvg' 'noto-fonts-cjk' 'libhangul'
+             'anthy' 'libchewing' 'librime' 'libxkbcommon' 'wayland' 'audit')
+depends=('glib2' 'gtk3' 'gtk2' 'qt4' 'qt5-base' 'libappindicator-gtk3'
+         'libhangul' 'anthy' 'libchewing' 'librime' 'brise' 'libxkbcommon'
+         'wayland' 'audit')
+source=("https://gitlab.com/hodong/nimf/-/archive/master/nimf-master.tar.bz2")
 md5sums=('SKIP')
-options=(!buildflags)
-install=$pkgname.install
-groups=('nimf')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	echo "$(git tag | sort -V | tail -1).$(git rev-parse --short HEAD)"
+	cd "$srcdir/nimf-master"
+	grep AC_INIT configure.ac | grep -Po '\d{4}.\d{2}.\d{2}'
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
+	cd "$srcdir/nimf-master"
 	./autogen.sh --prefix=/usr
 	make
 }
+
 package() {
-	cd "${srcdir}/${_pkgname}"
+	cd "$srcdir/nimf-master"
 	make DESTDIR="${pkgdir}/" install
+	ldconfig
 }
