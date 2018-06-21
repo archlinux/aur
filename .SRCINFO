@@ -1,7 +1,7 @@
 pkgbase = intel-seapi
 	pkgdesc = Intel Single Event API (Intel SEAPI)
 	pkgver = 17.01.28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/intel/IntelSEAPI/
 	arch = i686
 	arch = x86_64
@@ -12,13 +12,15 @@ pkgbase = intel-seapi
 	makedepends = java-environment
 	makedepends = classpath
 	depends = gcc-libs
-	optdepends = python: for using runtool scripts
+	optdepends = python: for using runtool modules
 	provides = intel-ittnotify
 	conflicts = intel-seapi-git
 	conflicts = intel-ittnotify
 	conflicts = intel-ittnotify-git
 	source = intel-seapi-17.01.28::https://github.com/intel/IntelSEAPI/archive/17.01.28.tar.gz
+	source = intel-seapi-change-install-prefix.patch
 	sha256sums = 57020dfa8b5c1a62a3700e0c93a60011a42b6ec4b80824510aaaa830a256c76b
+	sha256sums = 5a4666d324f11e8c57b51aa1e4680d77790f3449cb319f4cf9223c25dce0d1a0
 
 pkgname = intel-seapi
 
