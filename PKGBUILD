@@ -1,16 +1,20 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=libmaus
-pkgver=2.0.442
+pkgver=2.0.504
 pkgrel=1
-_release=20180115152528
+_release=20180619115641
 pkgdesc="Bioinformatics data structures and algorithms in C++"
 arch=('x86_64')
-url="https://github.com/gt1/libmaus2"
-license=('GPL3')
-source=(https://github.com/gt1/"${pkgname}"2/archive/"${pkgver}"-release-"${_release}".tar.gz)
-sha256sums=('17efe43b3a8ab2b6f560931b2936f5d5f1cf59541406cfc02eaac359238593e8')
-MAKEFLAGS="-j$(nproc)"
+url=https://gitlab.com/german.tischler/libmaus2
+license=('GPL2')
+source=(https://gitlab.com/german.tischler/"${pkgname}"2/-/archive/"${pkgver}"-release-20180619115641/"${pkgname}"2-"${pkgver}"-release-"${_release}".tar.gz)
+sha256sums=('e134287064723593844fd9bff35872e2e618d825e3389166cfbba2b49ff3bcc5')
+
+prepare() {
+  cd "${srcdir}"/libmaus2-"${pkgver}"-release-"${_release}"
+  make clean
+}
 
 build() {
   cd "${srcdir}"/libmaus2-"${pkgver}"-release-"${_release}"
@@ -25,6 +29,6 @@ check() {
 
 package() {
   cd "${srcdir}"/libmaus2-"${pkgver}"-release-"${_release}"
-  make install
-  mv "${pkgdir}"/lib "${pkgdir}"/usr/lib
+  make install && mv "${pkgdir}"/lib "${pkgdir}"/usr/lib
+  install -Dm644 AUTHORS "${pkgdir}"/usr/share/licenses/"${pkgname}"2/AUTHORS
 }
