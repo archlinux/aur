@@ -2,7 +2,7 @@
 
 pkgname=python-torf-cli
 _name=torf-cli
-pkgver=1.1
+pkgver=2.0
 pkgrel=2
 pkgdesc="CLI tool for creating, reading and editing torrent files"
 arch=('any')
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("$_name-$pkgver.tar.gz::https://github.com/rndusr/${_name}/archive/v${pkgver}.tar.gz")
-md5sums=('9cf3e21aa79d276ebf3f7812accdbd4b')
+md5sums=('8274c726404ffcc77f53ac0655f04c25')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
