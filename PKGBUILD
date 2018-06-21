@@ -2,12 +2,14 @@
 
 pkgname=('sat-templates-hg')
 _realname=sat_templates
-pkgver=0.7.r149.e5ec33c4a8a8
+pkgver=0.7.r155.954759f0e8fa
 _version=0.7
 pkgrel=1
 url="https://salut-a-toi.org/"
+pkgdesc="sat-templates is a collection of templates for Salut à Toi, the multi-frontends multi-purposes XMPP client (core). For now, it needs to be accessible in the PYTHONPATH"
+
 arch=('any')
-depends=('python2')
+depends=('python2' 'python2-jinja')
 makedepends=('mercurial')
 conflicts=('sat-templates')
 provides=('sat-templates')
@@ -24,14 +26,9 @@ pkgver() {
 build() {
   cd "$srcdir/$_realname"
   python2 setup.py build
-  python2 setup.py install --root="$srcdir/" --prefix=/usr --optimize=1
 }
 
 package(){
-  pkgdesc="sat-templates is a collection of templates for Salut à Toi, the multi-frontends multi-purposes XMPP client (core). For now, it needs to be accessible in the PYTHONPATH"
-  depends=('python2-jinja')
-  cd "$pkgdir"
-  install -dm755 "usr/lib/python2.7/site-packages/$_realname"
-  cd	"$srcdir/"
-  mv -v "usr/lib/python2.7/site-packages/$_realname" "$pkgdir/usr/lib/python2.7/site-packages/"
+  cd "$srcdir/$_realname"
+  python2 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1  --skip-build
 }
