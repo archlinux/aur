@@ -4,7 +4,7 @@
 
 pkgname=vocal
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful, beautiful and simple podcast client for the modern free desktop'
 arch=(x86_64)
 url='https://vocalproject.net/'
