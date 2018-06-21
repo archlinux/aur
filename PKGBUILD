@@ -1,8 +1,8 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=spice-guest-tools-windows
-pkgver=0.132
-pkgrel=2
+pkgver=0.141
+pkgrel=1
 pkgdesc='Windows XP-10/2003-2016 guest drivers and agent for SPICE-enabled QEMU VMs'
 arch=('any')
 url="https://www.spice-space.org/"
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('dos2unix' 'xorriso')
 install=spice-guest-tools-windows.install
 source=(${url}download/windows/spice-guest-tools/spice-guest-tools-${pkgver}/spice-guest-tools-${pkgver}.exe)
-sha512sums=('dfd94af10cf2c8afc9344f69c87f6ec5141f82058a7a20d0d4a873d3693c8cda29497e058ab2f54294be571d8e7f1d0a7b1d779710eb9c601b0607228208b69f')
+sha512sums=('e040df9494f7eb585bb76543fc9f718a1054397f6eba35ec88701a9a80326715d2dd6811d092395d9857af1ab3468a62e9d3e855b70875084a5f015d5c294843')
 
 build() {
   cd "$srcdir"
