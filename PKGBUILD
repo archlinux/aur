@@ -7,7 +7,7 @@
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-_enable_gcc_more_v="n"
+_enable_gcc_more_v="y"
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build 
 # which will cause a failure to build if using makechrootpkg. Note that the
@@ -67,9 +67,9 @@ pkgbase=linux-clear
 __basekernel=4.17
 _minor=2
 pkgver=${__basekernel}.${_minor}
-#_clearver=${__basekernel}.1-579
-_clearver=21254c1e1eb22a12df00ca0d7decdb9e211b282c
-pkgrel=1
+#_clearver=${__basekernel}.1-582
+_clearver=b8b3652063aacc45f5bcc61d7904aec6e60ada0b
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
