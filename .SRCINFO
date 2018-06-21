@@ -1,0 +1,13 @@
+pkgbase = otf-sfmono
+	pkgdesc = San Francisco Mono font from Apple
+	pkgver = 20180608
+	pkgrel = 1
+	url = http://www.apple.com/safari/
+	arch = any
+	license = custom
+	makedepends = git
+	source = otf-sfmono::git+https://github.com/ZulwiyozaPutra/SF-Mono-Font.git
+	sha256sums = SKIP
+
+pkgname = otf-sfmono
+
