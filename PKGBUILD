@@ -18,11 +18,12 @@
 
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
-pkgver=18.0a1
-pkgrel=13
+pkgver=18.0a2
+pkgrel=1
 _codename=Leia
 _rtype=Alpha
 _rver=1
+_dver=3
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -41,18 +42,18 @@ makedepends=(
 # $CHROOT/build/kodi-pre-release/src/kodi-build/build/download
 #
 # https://github.com/xbmc/FFmpeg/tags
-# https://github.com/xbmc/libdvdread/tags
-# https://github.com/xbmc/libdvdnav/tags
 # https://github.com/xbmc/libdvdcss/tags
-_ffmpeg_version="3.4.1-$_codename-$_rtype-$_rver"
-_libdvdcss_version="1.4.1-$_codename-$_rtype-$_rver"
-_libdvdnav_version="6.0.0-$_codename-$_rtype-$_rver"
-_libdvdread_version="6.0.0-$_codename-$_rtype-$_rver"
+# https://github.com/xbmc/libdvdnav/tags
+# https://github.com/xbmc/libdvdread/tags
+_ffmpeg_version="4.0-$_codename-$_rtype-$_rver"
+_libdvdcss_version="1.4.1-$_codename-$_rtype-$_dver"
+_libdvdnav_version="6.0.0-$_codename-$_rtype-$_dver"
+_libdvdread_version="6.0.0-$_codename-$_rtype-$_dver"
 source=(
   "${pkgbase%%-*}-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
-  "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.1-$_codename-$_rtype-$_rver.tar.gz"
-  "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.0.0-$_codename-$_rtype-$_rver.tar.gz"
-  "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/6.0.0-$_codename-$_rtype-$_rver.tar.gz"
+  "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.1-$_codename-$_rtype-$_dver.tar.gz"
+  "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.0.0-$_codename-$_rtype-$_dver.tar.gz"
+  "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/6.0.0-$_codename-$_rtype-$_dver.tar.gz"
   "ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
   'cheat-sse-build.patch'
   'cpuinfo'
@@ -63,11 +64,11 @@ noextract=(
   "libdvdread-$_libdvdread_version.tar.gz"
   "ffmpeg-$_ffmpeg_version.tar.gz"
 )
-sha256sums=('8892498d5248eea29c30db7c128a5910afc60d1b0b894aea472604bb879a0310'
+sha256sums=('937d755c638324bf388fc9e971c5d8f90fcc0ab9362f0b15bbad5e47f0bc67d6'
             '6e89b7fc36e26d27fcc8fadf97176ca7684f1702634ecdbe4d8df62a4a967de3'
             '4af19a750f468a0b926ce5051e70951ee5815d5913d3dd44260dd93ca74fc4c1'
             'd2c19c1d719caba031241fa9f4f7740ab84ad8033ab381bf9f7b8c59f259b441'
-            '5f7b367f2b451098302f5a78a73e35924bbea24e9b1ac0af73cd32b4ee5942e3'
+            'b486ab7bb76e0e2e5a30912640a74da2d2a1ce7640b6134507988fdd1eb44ae9'
             '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
 
@@ -112,7 +113,7 @@ package_kodi-pre-release() {
   depends=(
     'bluez-libs' 'desktop-file-utils' 'freetype2' 'fribidi'
     'hicolor-icon-theme' 'libass' 'libcdio' 'libjpeg-turbo' 'libmariadbclient'
-    'libmicrohttpd' 'libpulse' 'libssh' 'libva' 'libvdpau' 'libxrandr'
+    'libmicrohttpd' 'libpulse' 'libssh' 'libva' 'libvdpau' 'libxrandr' 'libcec'
     'libxslt' 'lzo' 'mesa' 'python2-pillow' 'python2-simplejson' 'smbclient'
     'speex' 'taglib' 'tinyxml' 'xorg-xdpyinfo' 'yajl'
   )
@@ -122,7 +123,6 @@ package_kodi-pre-release() {
     'python2-pybluez: Bluetooth support'
     'libnfs: NFS shares support'
     'libplist: AirPlay support'
-    'libcec: Pulse-Eight USB-CEC adapter support'
     'lirc: Remote controller support'
     'lsb-release: log distro information in crashlog'
     'pulseaudio: PulseAudio support'
