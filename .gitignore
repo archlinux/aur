@@ -1,0 +1,4 @@
+Minecraft.tar.gz
+*.pkg.tar.xz
+pkg/
+src/
