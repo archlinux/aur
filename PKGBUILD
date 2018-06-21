@@ -2,7 +2,7 @@
 # Contributor: Sean Haugh <seanphaugh@gmail.com>
 
 pkgname=python-pywal
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Generate and change colorschemes on the fly"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('feh: set wallpaper'
             'nitrogen: set wallpaper'
 	    'python2: reload gtk2 themes on the fly')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dylanaraps/pywal/archive/${pkgver}.tar.gz")
-sha256sums=('d0fd3980a0cb47742292231da3da30ba0b57ed17d65b4e6b7359bca1d9f21108')
+sha256sums=('2d17982b5803de3da09a0678523c009d9154f2a53cfe643f727445e758d6f4ba')
 
 build(){
   cd "pywal-${pkgver}"
