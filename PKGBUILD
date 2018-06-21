@@ -1,7 +1,7 @@
 # Maintainer: Eugene Cherny <iam@oscii.ru>
 # Maintainer: Zoë Sparks <zoe@milky.flowers>
 pkgname=cabbage-git
-pkgrel=1 
+pkgrel=2
 pkgver=2.0.0r1236
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://cabbageaudio.com/"
 license=('GPLv3')
 makedepends=('freeglut' 'curl' 'jack' 'libxcomposite' 'libxrandr' 'libxcursor'
              'libx11' 'libxinerama' 'mesa' 'gtk3' 'vim' 'dos2unix')
-depends=('csound' 'steinberg-vst36')
+depends=('csound' 'steinberg-vst36' 'webkit2gtk')
 conflicts=('cabbage')
 provides=('cabbage')
 source=('git+https://github.com/rorywalsh/cabbage.git#branch=master'

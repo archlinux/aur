@@ -1,7 +1,7 @@
 pkgbase = cabbage-git
 	pkgdesc = A framework for audio software development
 	pkgver = 2.0.0r1236
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cabbageaudio.com/
 	arch = x86_64
 	license = GPLv3
@@ -19,6 +19,7 @@ pkgbase = cabbage-git
 	makedepends = dos2unix
 	depends = csound
 	depends = steinberg-vst36
+	depends = webkit2gtk
 	provides = cabbage
 	conflicts = cabbage
 	source = git+https://github.com/rorywalsh/cabbage.git#branch=master
