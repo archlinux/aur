@@ -1,0 +1,7 @@
+# Ignored folders
+src/
+pkg/
+rekall-git/
+
+# Ignored files
+*.pkg.tar.xz

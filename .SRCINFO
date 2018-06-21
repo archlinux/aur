@@ -1,0 +1,15 @@
+pkgbase = rekall-git
+	pkgdesc = Rekall Memory Forensic Framework
+	pkgver = 1.0rc11.r551.g8db49aa9
+	pkgrel = 1
+	url = http://www.rekall-forensic.com
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	source = rekall-git::git+https://github.com/google/rekall.git
+	sha256sums = SKIP
+
+pkgname = rekall-git
+
