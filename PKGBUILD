@@ -19,8 +19,8 @@ pkgver() {
 package() {
     REFIND_HOME="${pkgdir}/boot/EFI/refind"
 
-    mkdir -p "${REFIND_HOME}/themes/tux-refind-theme"
-    cp -r "${srcdir}/tux4ubuntu/tux-refind-theme/" "${REFIND_HOME}/themes/tux-refind-theme/"
+    mkdir -p "${REFIND_HOME}/themes"
+    cp -r "${srcdir}/tux4ubuntu/tux-refind-theme" "${REFIND_HOME}/themes/"
     chmod -R 644 "${REFIND_HOME}/themes/tux-refind-theme"
 
     echo 'Remember to add "include themes/tux-refind-theme/theme.conf" to your refind.conf file'
