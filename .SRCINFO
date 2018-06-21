@@ -6,6 +6,7 @@ pkgbase = mingw-w64-libthai
 	arch = any
 	license = LGPL
 	makedepends = mingw-w64-configure
+	makedepends = libdatrie
 	depends = mingw-w64-crt
 	depends = mingw-w64-libdatrie
 	options = !strip
