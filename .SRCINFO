@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-libthai
+	pkgdesc = Thai language support routines (mingw-w64)
+	pkgver = 0.1.27
+	pkgrel = 1
+	url = https://linux.thai.net/projects/libthai
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-libdatrie
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://linux.thai.net/pub/thailinux/software/libthai/libthai-0.1.27.tar.xz
+	sha256sums = 1659fa1b7b1d6562102d7feb8c8c3fd94bb2dc5761ed7dbaae4f300e1c03eff6
+
+pkgname = mingw-w64-libthai
+
