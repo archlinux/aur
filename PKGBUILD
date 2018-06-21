@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Auder <benjamin.a@mailoo.org>
 pkgname=fuse-zip
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 epoch=
 pkgdesc="FUSE file system to navigate, extract, create and modify ZIP and ZIP64 archives"
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("https://bitbucket.org/agalanin/fuse-zip/downloads/$pkgname-$pkgver.tar.gz" "Makefile.patch")
-md5sums=('2720d465742e778c2895588831fc1dc7'
+md5sums=('418e900ddcfe9ea07e464d75e2065f5e'
          'a03002585136591f3c99331108104449')
 noextract=()
 validpgpkeys=()
