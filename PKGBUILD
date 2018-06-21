@@ -1,15 +1,9 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-# NOTE:
-# To enable the Instrumentation and Tracing Technology API (ittnotify),
-# firstly install the package intel-seapi and then build intel-media-sdk-git.
-# It will be autodetected by the build system, serving as a makedepend.
-# Currently it will not be a mandatory makedepend.
-
 _srcname=MediaSDK
 pkgname=intel-media-sdk-git
-pkgver=2018.Q2.1.r69.gc34cc32
-pkgrel=3
+pkgver=2018.Q2.1.r135.g9033e41
+pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -38,9 +32,6 @@ prepare() {
         git clone https://github.com/Intel-Media-SDK/MediaSDK.git
         cd "$_srcname"
     fi
-    
-    # fix ittnotify (intel-seapi) detection in the build system
-    sed -i '/ITT_LIB/s/\$ENV{ITT_PATH}/$ENV{ITT_PATH}\/lib/' builder/FindVTune.cmake
 }
 
 pkgver() {
@@ -53,8 +44,6 @@ pkgver() {
 
 build() {
     cd "$_srcname"
-    
-    export ITT_PATH='/usr'
     
     mkdir -p build
     cd build
@@ -74,6 +63,7 @@ build() {
         -DENABLE_WAYLAND:BOOL='ON' \
         -DENABLE_X11:BOOL='ON' \
         -DENABLE_X11_DRI3:BOOL='ON' \
+        -DENABLE_ITT:BOOL='OFF' \
         --no-warn-unused-cli \
         -Wno-dev \
         ..
