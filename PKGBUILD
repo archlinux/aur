@@ -2,7 +2,7 @@
 
 pkgname=guacamole-server-git
 _gitname=guacamole-server
-pkgver=0.9.13.incubating.r42.g6236eb8f
+pkgver=0.9.14.r169.gc120aa02
 pkgrel=1
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64')
@@ -23,10 +23,13 @@ optdepends=('libssh: for ssh protocol support'
 source=(
 		"$_gitname::git+https://github.com/apache/incubator-guacamole-server.git" 
 		'guacd.service'
+		'libavcodec.patch'
 	   )
  
 md5sums=('SKIP'
-         'dfaa29349d2e73af6dac75d6cafbd762')
+         'dfaa29349d2e73af6dac75d6cafbd762'
+		 '6cf58f3148d0ea3f24b4fa362ca79807'		 
+		 )
  
 pkgver() {
   cd "$srcdir"/$_gitname
@@ -34,17 +37,18 @@ pkgver() {
 }
 
 build() {
+	## Wno-error=format-overflow added to workaround build in GCC 7.1.1
 	cd "$srcdir"/$_gitname
+	patch -Np1 -i ../libavcodec.patch
 	autoreconf -fi
-	PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
-	CFLAGS+=" -I/usr/include/openssl-1.0" \
-	LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl" \
+	#PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
+	#CFLAGS+=" -I/usr/include/openssl-1.0" \
+	#LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl" \
 	./configure \
-		--with-openssl \
 		--prefix=/usr \
-		--sbindir=/usr/bin \
+		--sbindir=/usr/bin  \
 		CPPFLAGS="-Wno-error=pedantic -Wno-error=format-overflow"
-	make
+		make
 }
  
 package() {
