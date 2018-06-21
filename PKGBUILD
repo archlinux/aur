@@ -7,7 +7,7 @@
 pkgname=root-extra
 _pkgname=root
 pkgver=6.14.00
-pkgrel=3
+pkgrel=4
 provides=('root' 'root-extra')
 conflicts=('root')
 pkgdesc='C++ data analysis framework and interpreter from CERN with extra features enabled.'
@@ -29,8 +29,8 @@ depends=('cfitsio'
          'libafterimage'
          'libiodbc'
          'libmariadbclient'
-         'llvm50'
-         'llvm50-libs'
+         # 'llvm50'
+         # 'llvm50-libs'
          'postgresql-libs'
          'pythia>=8.2.23-3'
          'python'
@@ -63,7 +63,7 @@ sha256sums=('7946430373489310c2791ff7a3520e393dc059db1371272bcd9d9cf0df347a0b'
             '9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7'
             '50c08191a5b281a39aa05ace4feb8d5405707b4c54a5dcba061f954649c38cb0'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
-            '831cf1661ed6f84fd7baceb28a0f33e735edcec7c7d37ed1a05fd65c1fa3291c'
+            'be9b2cd08ce0489053d1210df27f7eda139cd83891a472edfc2070d8e41eb471'
             '59d9e5b3647469fbb0b0cd5f159b7dbbe9257e479ed0c87d77ce73a384efa257')
 prepare() {
     cd "${_pkgname}-${pkgver}"
