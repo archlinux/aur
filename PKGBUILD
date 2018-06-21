@@ -83,14 +83,14 @@ prepare()
 }
 
 package() {
-	virtualenv2 --system-site-packages --no-wheel $pkgdir/usr/lib/$pkgname
+	virtualenv2 --system-site-packages --no-setuptools --no-wheel $pkgdir/usr/lib/$pkgname
 
 	pushd $_pkgname-$pkgver
 	$pkgdir/usr/lib/$pkgname/bin/pip install --install-option '--optimize=1' .
-	$pkgdir/usr/lib/$pkgname/bin/pip uninstall -y setuptools
 	popd
 
 	find $pkgdir/usr/lib/$pkgname/bin -type f -exec grep -q $pkgdir {} \; -exec sed -i "s:$pkgdir::g" {} \;
+	find $pkgdir/usr/lib/$pkgname/lib -type d \( -name testsuite -o -name tests \) -exec rm -rf {} \; 2>/dev/null || true
 
 	install -Dm644 octoprint.sysusers $pkgdir/usr/lib/sysusers.d/octoprint.conf
 	install -Dm644 octoprint.service $pkgdir/usr/lib/systemd/system/octoprint.service
