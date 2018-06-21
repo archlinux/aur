@@ -2,8 +2,8 @@
 # Co-Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 
 pkgname=teleport
-pkgver=2.6.1
-pkgrel=2
+pkgver=2.6.2
+pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('x86_64' 'arm')
 url="https://gravitational.com/teleport"
@@ -15,7 +15,7 @@ source_x86_64=(
     "teleport.service"
     )
 sha256sums_x86_64=(
-    'dec6b72923461c8a5c78191e8e5908e46e413a640d940e35dab11f27b76e299e'
+    'd2918db9fccc0346dde66f57e6c82035759095fabafade8c1c3d93b003733ac0'
     '3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc'
     )
 source_arm=(
@@ -23,7 +23,7 @@ source_arm=(
     "teleport.service"
     )
 sha256sums_arm=(
-    'f13ca9e04e78546b8837c02ad0c9ba304f843e011eb4a0b91d12e518c61bb8b0'
+    'caef6827cbc31af4a8a49997c54272e1661f7a112d47b06153d4afd88d23b5fb'
     '3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc'
     )
 options=(!strip)
@@ -35,3 +35,4 @@ package() {
     install -m755 -t "${pkgdir}/usr/bin/" teleport tctl tsh
     # no man pages, docs or web assets in release tarball
 }
+
