@@ -1,16 +1,22 @@
 pkgbase = make-3.81
 	pkgdesc = GNU make utility to maintain groups of programs (3.81 version)
 	pkgver = 3.81
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/make
-	install = make-3.81.install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	checkdepends = procps-ng
 	depends = glibc
-	depends = sh
-	source = ftp://ftp.gnu.org/gnu/make/make-3.81.tar.gz
-	md5sums = a4e9494ac6dc3f6b0c5ff75c5d52abba
+	source = https://ftpmirror.gnu.org/make/make-3.81.tar.gz
+	source = https://ftpmirror.gnu.org/make/make-3.81.tar.gz.sig
+	source = https://raw.githubusercontent.com/InuSasha/LibreELEC.tv/master/packages/devel/make/patches/make-glibc_alloc_fix.patch
+	source = perl-use_safe_inclusion.patch::https://git.savannah.gnu.org/cgit/make.git/patch/?id=d9d4e06084a4c7da480bd49a3487aadf6ba77b54
+	validpgpkeys = 3D2554F0A15338AB9AF1BB9D96B047156338B6D4
+	sha256sums = 16b77de9f013bcd536b7bc1efbe314223aedfe250f9063e33cbb4dfd347215a2
+	sha256sums = SKIP
+	sha256sums = 7145e958d5209c3de5a40fe77f71141363dadfbbe7a206826d7b7d7c09c8f98f
+	sha256sums = 94368caa194cbdccc0a0c9ad31c515fe5b7a02bc66e2d01be4327335f60cbe33
 
 pkgname = make-3.81
 
