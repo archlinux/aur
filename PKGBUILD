@@ -1,3 +1,5 @@
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+
 pkgname=mingw-w64-c-ares
 pkgver=1.14.0
 pkgrel=1
