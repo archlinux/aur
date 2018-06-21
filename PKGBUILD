@@ -5,7 +5,7 @@
 # speps, and Bernardo Barros.
 
 pkgname='csound-git'
-pkgver='6.11.0.r100.ge4ca0b12a'
+pkgver='6.11.0.r29478.g94f0ca6a9'
 pkgrel=1
 pkgdesc="A programming language for sound rendering and signal processing."
 arch=('x86_64')
@@ -23,7 +23,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  git checkout e4ca0b12a96c4a
+  git checkout 94f0ca6
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
