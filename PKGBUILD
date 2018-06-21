@@ -6,39 +6,36 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-tomoyo
-_srcname=linux-4.16
-pkgver=4.16.11
+_srcname=linux-4.17
+pkgver=4.17.2
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        # the main kernel config files
-        'config'
-        # pacman hook for initramfs regeneration
-        '60-linux.hook'
-        '90-linux.hook'
-        # standard config files for mkinitcpio ramdisk
-        'linux.preset'
+source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
+        https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+        config         # the main kernel config files
+        60-linux.hook  # pacman hook for depmod
+        90-linux.hook  # pacman hook for initramfs regeneration
+        linux.preset   # standard config files for mkinitcpio ramdisk
         0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-        0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+        0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+        0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
         )
 
-sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
+sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            'd0d998f193c3feeab95f1378dea15aa6ba145f591661547cc00ef16d161651fe'
+            'a528b102daad9d3072b328f68d4fc7b4eff7641ad301d1a54e5b8f5385efeb0b'
             'SKIP'
-            'e39c02fd021f125a6202f7e4c0692dfd3ced93d404ecb6c8dca6994c8e17b227'
+            '0269d9a56f0d0306c9bd5c179a7e32214b0a1c082d3bca581661203b27305f17'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'b01e9bd4e0f3cc2b91db1d8c043b2d85329bd0c9a9441a91d337c3c33661b658'
-            '09170daf49fe4cb720f331cd2da1c75771eb4f9f124353bf035218b1f8ca57d1')
+            'e3c08f9b91611186e5ec579187ecea2a0143e5c2dc7ffc30ac6ea6e2b6d130fd'
+            '5403dead9161344b2c01027526146a250147680f4a2d32a54d40c55fc1becc8a'
+            'd55e7de60b12bca26ded4c1bb8eb5860a9092374914a201a0f6a0ed2849d099f')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -60,7 +57,10 @@ prepare() {
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+
+  # https://bugs.archlinux.org/task/56780
+  patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
