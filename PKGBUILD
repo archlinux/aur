@@ -19,9 +19,9 @@ pkgver() {
 package() {
     REFIND_HOME="${pkgdir}/boot/EFI/refind"
 
-    mkdir -p "${REFIND_HOME}/themes/metro"
-    cp -r ${srcdir}/rEFInd-Metro/* "${REFIND_HOME}/themes/metro/"
-    chmod -R 644 "${REFIND_HOME}/themes/metro"
+    mkdir -p "${REFIND_HOME}/themes/rEFInd-Metro"
+    cp -r ${srcdir}/rEFInd-Metro/* "${REFIND_HOME}/themes/rEFInd-Metro/"
+    chmod -R 644 "${REFIND_HOME}/themes/rEFInd-Metro"
 
-    echo 'Remember to add "include themes/metro/theme.conf" to your refind.conf file'
+    echo 'Remember to add "include themes/rEFInd-Metro/theme.conf" to your refind.conf file'
 }
