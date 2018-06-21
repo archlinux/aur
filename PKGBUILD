@@ -1,3 +1,5 @@
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+
 pkgname=mingw-w64-json-c
 pkgver=0.13.1
 pkgrel=1
