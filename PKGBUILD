@@ -8,16 +8,16 @@
 
 pkgname=intel-media-sdk-git
 pkgver=2018.Q2.1.r69.gc34cc32
-pkgrel=1
+pkgrel=2
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
 depends=(
     # official repositories:
-        'gcc-libs' 'libva' 'libdrm' 'wayland'
+        'gcc-libs' 'libdrm' 'wayland'
     # AUR:
-        'intel-media-driver'
+        'libva-git' 'intel-media-driver'
 )
 makedepends=('git' 'git-lfs' 'cmake' 'libx11' 'libxcb')
 provides=('intel-media-sdk' 'libmfx')
