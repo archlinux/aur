@@ -5,7 +5,7 @@
 
 pkgname='sat-xmpp-hg'
 _realname=sat
-pkgver=0.7.0.r2608.0883bac573fd
+pkgver=0.7.0.r2616.1cc88adb5142
 _version=0.7.0
 pkgrel=1
 url="http://salut-a-toi.org/"
@@ -26,17 +26,9 @@ pkgver() {
 build() {
     cd "$srcdir/$_realname"
     python2 setup.py build
-    python2 setup.py install --root="$srcdir/" --prefix=/usr --optimize=1
 }
 
 package(){
-    cd "$pkgdir"
-    install -dm755 usr/bin/
-    install -dm755 usr/lib/python2.7/site-packages/
-    install -dm755 usr/lib/python2.7/site-packages/sat_frontends
-    cd "$srcdir/"
-    mv -v usr/bin/* "$pkgdir/usr/bin/"
-    mv -v usr/share/ "$pkgdir/usr/"
-    mv -v usr/lib/python2.7/site-packages/{sat-*,sat_frontends,sat} "$pkgdir/usr/lib/python2.7/site-packages/"
-    mv -v usr/lib/python2.7/site-packages/twisted/ "$pkgdir/usr/lib/python2.7/site-packages/"
+    cd "$srcdir/$_realname"
+    python2 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build
  }
