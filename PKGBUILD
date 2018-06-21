@@ -6,7 +6,7 @@
 # https://bugzilla.novell.com/768506
 # https://bugzilla.novell.com/765524
 
-_kver=4.16
+_kver=4.17
 _gitroot=git://repo.or.cz/linux.git
 _gitcommit=linux-$_kver.y
 _cur_kernel="$(uname -r)"
@@ -14,7 +14,7 @@ _EXTRAMODULES=$(readlink -f /usr/lib/modules/"$_cur_kernel/extramodules")
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=2
+pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -29,9 +29,9 @@ source=(
 	kernel.patch
 )
 
-sha256sums=('12af49b38dab4ec1b7015cfa992dd54c688a18c4be4520eb7dab9c4272ad3b3f'
+sha256sums=('8f19ce3d35be90ac06df6cae2a910c1bf39262f405b47fc1971b90201148cae5'
             'b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c'
-            '1ede260c727568379e2c436ccaf66ac018335d0564d8d22edd3e12dd18fe3250')
+            '5772c0adfc86f7fff1692c220c069c427725fe196263942818d372ffdc09f88a')
 
 build() {
 	msg2 "Module will be installed to: $_EXTRAMODULES"

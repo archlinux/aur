@@ -18,8 +18,8 @@ diff -ur old/drivers/input/mouse/Kconfig new/drivers/input/mouse/Kconfig
  	bool "Fujitsu Lifebook PS/2 mouse protocol extension" if EXPERT
  	default y
 diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
---- old/drivers/input/mouse/synaptics.c	2017-08-30 11:32:30.000000000 +0300
-+++ new/drivers/input/mouse/synaptics.c	2017-09-01 09:02:43.033831830 +0300
+--- old/drivers/input/mouse/synaptics.c
++++ new/drivers/input/mouse/synaptics.c
 @@ -29,6 +29,7 @@
  #include <linux/input/mt.h>
  #include <linux/serio.h>
@@ -170,7 +170,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  /*****************************************************************************
   *	Functions to interpret the absolute mode packets
   ****************************************************************************/
-@@ -1391,6 +1527,7 @@
+@@ -1400,6 +1536,7 @@
  		device_remove_file(&psmouse->ps2dev.serio->dev,
  				   &psmouse_attr_disable_gesture.dattr);
  
@@ -178,25 +178,26 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  	synaptics_reset(psmouse);
  	kfree(priv);
  	psmouse->private = NULL;
-@@ -1450,6 +1587,8 @@
+@@ -1459,6 +1596,8 @@
  			    priv->info.ext_cap, info.ext_cap);
  		return -ENXIO;
  	}
-+ 
++
 +	synaptics_sync_led(psmouse);
 
  	return 0;
  }
-@@ -1569,6 +1708,9 @@
+@@ -1578,6 +1717,9 @@
  		     info->capabilities, info->ext_cap, info->ext_cap_0c,
  		     info->ext_cap_10, info->board_id, info->firmware_id);
  
 +	if (synaptics_init_led(psmouse) < 0)
 +		goto init_fail;
 +
- 	set_input_params(psmouse, priv);
- 
- 	/*
+	err = set_input_params(psmouse, priv);
+	if (err) {
+		psmouse_err(psmouse,
+
 diff -ur old/drivers/input/mouse/synaptics.h new/drivers/input/mouse/synaptics.h
 --- old/drivers/input/mouse/synaptics.h	2017-08-30 11:32:30.000000000 +0300
 +++ new/drivers/input/mouse/synaptics.h	2017-09-01 08:27:07.849088154 +0300
