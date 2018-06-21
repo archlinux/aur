@@ -1,12 +1,11 @@
 pkgname=godot-mono
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine."
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://godotengine.org/"
 license=('MIT')
-depends=('mono>=5.4.0' 'xterm' 'msbuild-stable')
-optdepends=('dotnet-sdk')
+depends=('mono>=5.12.0' 'msbuild-stable' 'dotnet-sdk')
 makedepends=(
     'scons>=3.0' 
     'libxcursor' 
@@ -35,11 +34,11 @@ build() {
     git checkout ${pkgver}-stable
 
     #Build temporary binaries to generate needed files for mono support
-    TERM=xterm scons platform=x11 tools=yes module_mono_enabled=yes mono_glue=no
+    scons platform=x11 tools=yes module_mono_enabled=yes mono_glue=no
     bin/godot.x11.tools.64.mono --generate-mono-glue modules/mono/glue
 
     # Build normal binaries
-    TERM=xterm scons platform=x11 target=release_debug tools=yes module_mono_enabled=yes bits=64
+    scons platform=x11 target=release_debug tools=yes module_mono_enabled=yes bits=64
 }
 
 package() {
@@ -54,7 +53,7 @@ package() {
     # I have to use TERM=xterm because of an bug in mono
     cat > "${pkgdir}/usr/bin/${pkgname}" <<-EOF
 		#!/usr/bin/env bash
-		TERM=xterm /opt/godot-mono/bin/godot.x11.opt.tools.64.mono
+		/opt/godot-mono/bin/godot.x11.opt.tools.64.mono
 	EOF
     
     chmod a+x ${pkgdir}/usr/bin/${pkgname}
