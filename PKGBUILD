@@ -1,47 +1,45 @@
-# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
-pkgname=pantheon-default-settings-git
-pkgver=r310.39b0a63
-pkgrel=2
+pkgbase=pantheon-default-settings-git
+pkgname=('pantheon-default-settings-git')
+pkgver=5.0.r0.ga01a83e
+pkgrel=1
 arch=('any')
 url='https://github.com/elementary/default-settings'
 license=('GPL')
 groups=('pantheon-unstable')
 makedepends=('git')
-source=('pantheon-default-settings::git+https://github.com/elementary/default-settings.git#branch=meson'
+source=('pantheon-default-settings::git+https://github.com/elementary/default-settings.git'
         'arch-tweaks.patch')
 sha256sums=('SKIP'
-            'b13ef0db2c0a38405ca386e77982959867041038f2c7cb96a2b676261691ca42')
+            '16a22594ad9aeda370eb04438ef024861e45f345acf1d48ab38913f76fcc5328')
 
 pkgver() {
-  cd $srcdir/pantheon-default-settings
+  cd pantheon-default-settings
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $srcdir/pantheon-default-settings
+  cd pantheon-default-settings
 
-  patch -Np1 -i ../arch-tweaks.patch
+patch -Np1 -i ../arch-tweaks.patch
 }
-
 
 package() {
   pkgdesc='Default settings for Pantheon'
-  depends=('elementary-icon-theme' 'gtk-theme-elementary-git'
-           'gnome-themes-standard' 'elementary-wallpapers-git'
-           'ttf-droid' 'ttf-opensans')
+  depends=('elementary-icon-theme-git' 'gtk-theme-elementary-git'
+           'elementary-wallpapers-git' 'ttf-droid' 'ttf-opensans')
   provides=('pantheon-default-settings')
   conflicts=('pantheon-default-settings')
 
-  cd $srcdir/pantheon-default-settings
-  meson build
-  DESTDIR=$pkgdir ninja -C build install
+  cd pantheon-default-settings
 
-  install -dm 755 "${pkgdir}"/usr/share/glib-2.0/schemas
-  install -m 644 debian/elementary-default-settings.gsettings-override "${pkgdir}"/usr/share/glib-2.0/schemas/25_pantheon-default-settings.gschema.override
-  install -Dm 755 $pkgdir/etc/lightdm/lightdm.conf $pkgdir/etc/skel/.config/lightdm/lightdm.conf
-  rm $pkgdir/etc/lightdm/lightdm.conf
+  install -Dm 644 debian/elementary-default-settings.gsettings-override "${pkgdir}"/usr/share/glib-2.0/schemas/25_pantheon-default-settings.gschema.override
+  install -Dm 644 settings.ini -t "${pkgdir}"/etc/gtk-3.0/
+  install -dm 755 "${pkgdir}"/etc/skel/.config
+  cp -dr --no-preserve='ownership' plank "${pkgdir}"/etc/skel/.config/
+  cp -dr --no-preserve='ownership' profile.d "${pkgdir}"/etc/
 }
 
 # vim: ts=2 sw=2 et:
