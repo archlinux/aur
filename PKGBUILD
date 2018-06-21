@@ -12,7 +12,7 @@ conflicts=('uirc3')
 provides=('uirc3')
 makedepends=('cmake' 'pkg-config' 'git' 'help2man')
 depends=('openssl' 'readline' 'ncurses' 'libffi')
-optdepends=('lua>=5.3: support for Lua plugins')
+optdepends=('lua: support for Lua plugins (5.3 and possibly later)')
 source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
 
