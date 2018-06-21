@@ -3,7 +3,7 @@
 _srcname=IntelSEAPI
 pkgname=intel-seapi
 pkgver=17.01.28
-pkgrel=3
+pkgrel=4
 pkgdesc='Intel Single Event API (Intel SEAPI)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/IntelSEAPI/'
@@ -13,7 +13,7 @@ makedepends=('python' 'cmake' 'java-environment' 'classpath')
 optdepends=('python: for using runtool modules')
 provides=('intel-ittnotify')
 conflicts=('intel-seapi-git' 'intel-ittnotify' 'intel-ittnotify-git')
-source=("${pkgname}-${pkgver}"::"https://github.com/intel/IntelSEAPI/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/intel/IntelSEAPI/archive/${pkgver}.tar.gz"
         'intel-seapi-change-install-prefix.patch')
 sha256sums=('57020dfa8b5c1a62a3700e0c93a60011a42b6ec4b80824510aaaa830a256c76b'
             '5a4666d324f11e8c57b51aa1e4680d77790f3449cb319f4cf9223c25dce0d1a0')
