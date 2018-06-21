@@ -4,13 +4,14 @@
 
 pkgname=obexftp
 pkgver=0.24.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for transfer files to/from any OBEX enabled device"
 arch=('x86_64')
 url="http://dev.zuckschwerdt.org/openobex/wiki/ObexFtp"
 license=('GPL')
 provides=('obexfs')
 replaces=('obexfs')
+conflicts=('obexfs')
 depends=('openobex' 'expat' 'fuse2')
 makedepends=('cmake' 'asciidoc' 'xmlto' 'swig' 'ruby' 'tk')
 optdepends=('ruby: ruby bindings'
