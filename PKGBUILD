@@ -3,7 +3,7 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20180525.b18b10b46
+pkgver=20180621.693604753
 pkgrel=1
 pkgdesc='Divelog program'
 url='https://subsurface-divelog.org/'
@@ -28,6 +28,9 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+	git revert -n a76f15f0f67c3f138362ec8c503f645dc1211cf5
+	git revert -n d21d42b69117aae04b68ecc9cc2139e034bde146
+
 	install -d build
 	cd build
 	cmake \
