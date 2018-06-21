@@ -1,0 +1,13 @@
+pkgbase = flen
+	pkgdesc = Word length filter for STDIN
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tejohnso/length-filter
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = https://github.com/tejohnso/length-filter/archive/1.0.0.tar.gz
+	md5sums = SKIP
+
+pkgname = flen
+
