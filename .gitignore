@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/rEFInd-minimal/
+*.pkg.tar
+*.pkg.tar.xz

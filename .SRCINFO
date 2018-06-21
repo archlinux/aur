@@ -1,0 +1,14 @@
+pkgbase = refind-theme-minimal-git
+	pkgdesc = A clean and minimal rEFInd theme
+	pkgver = r56.4a6dd29
+	pkgrel = 1
+	url = https://github.com/EvanPurkhiser/rEFInd-minimal
+	arch = any
+	license = mit
+	makedepends = git
+	depends = refind-efi
+	source = git+https://github.com/EvanPurkhiser/rEFInd-minimal.git
+	md5sums = SKIP
+
+pkgname = refind-theme-minimal-git
+
