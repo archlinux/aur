@@ -65,21 +65,23 @@ pkgbase=linux-bfq-mq
 pkgver=4.17.2
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
-_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.16"
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.16"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.17"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.17"
 _gcc_name="kernel_gcc_patch"
 _gcc_rel='20180509'
 _gcc_path="https://github.com/graysky2/${_gcc_name}/archive"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
-_bfq_mq_ver='20180531-v2'
-_bfq_mq_patch="4.16-bfq-sq-mq-git-${_bfq_mq_ver}.patch"
+_bfq_sq_mq_path="bfq-sq-mq"
+_bfq_sq_mq_ver='v8r12'
+_bfq_sq_mq_rel='2K180531-v3'
+_bfq_sq_mq_patch="${pkgver%%\.${_srcpatch}}-bfq-sq-mq-${_bfq_sq_mq_ver}-${_bfq_sq_mq_rel}.patch"
 
 source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -89,7 +91,7 @@ source=(# mainline kernel patches
         # gcc cpu optimizatons from graysky and ck
         "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         # bfq-mq patch
-        "${_lucjanpath}/${_bfq_mq_patch}"
+        "${_lucjanpath}/${_bfq_sq_mq_path}/${_bfq_sq_mq_patch}"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
          # the main kernel config files
         'config'
@@ -110,7 +112,7 @@ sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'a528b102daad9d3072b328f68d4fc7b4eff7641ad301d1a54e5b8f5385efeb0b'
             'SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '1f2b2e67b83c297e00b844f3c3708d5113f215b99bc0b2c042271818fa4f7340'
+            'ceaad5e91d47faaed8bea769fb9888caece388259beba2801ae1f4c5ac6fb256'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             '1477ecead9433ff610c56016e13369f42ccab3249745b4d689af48e29257f381'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -147,17 +149,9 @@ prepare() {
         msg "Fix #56780"
         patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
    
-   ### Patch source with BFQ-SQ-MQ
-        _ver1="$(cat Makefile | grep -m1 -e PATCHLEVEL | grep -o "[[:digit:]]*")"
-        _ver2="$(cat Makefile | grep -m1 -e SUBLEVEL | grep -o "[[:digit:]]*")"
-        msg "Fix naming schema in BFQ-SQ-MQ patch"
-        sed -i -e "s|PATCHLEVEL = 16|PATCHLEVEL = ${_ver1}|g" \
-            -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_ver2}|g" \
-            -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
-            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g"  \
-            -i -e "s|NAME = Fearless Coyote|NAME = Merciless Moray|g" ../${_bfq_mq_patch}
+    ### Patch source with BFQ-SQ-MQ
         msg "Patching source with BFQ-SQ-MQ patches"
-        patch -Np1 -i ../${_bfq_mq_patch}
+        patch -Np1 -i ../${_bfq_sq_mq_patch}
 
    ### Patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
         if [ -n "$_use_tentative_patches" ]; then
