@@ -6,9 +6,10 @@
 # It will be autodetected by the build system, serving as a makedepend.
 # Currently it will not be a mandatory makedepend.
 
+_srcname=MediaSDK
 pkgname=intel-media-sdk-git
 pkgver=2018.Q2.1.r69.gc34cc32
-pkgrel=2
+pkgrel=3
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -26,16 +27,16 @@ options=('!emptydirs')
 
 prepare() {
     # makepkg does not support cloning git-lfs repositories
-    if [ -d "$pkgname" ] 
+    if [ -d "$_srcname" ] 
     then
-        msg2 "Updating '${pkgname}' git repo..."
-        cd "$pkgname"
+        msg2 "Updating ${_srcname} git repo..."
+        cd "$_srcname"
         git pull origin
     else
-        msg2 "Cloning '${pkgname}' git repo..."
+        msg2 "Cloning ${_srcname} git repo..."
         git lfs install
-        git clone https://github.com/Intel-Media-SDK/MediaSDK.git "$pkgname"
-        cd "$pkgname"
+        git clone https://github.com/Intel-Media-SDK/MediaSDK.git
+        cd "$_srcname"
     fi
     
     # fix ittnotify (intel-seapi) detection in the build system
@@ -43,7 +44,7 @@ prepare() {
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     local _prefix='MediaSDK-'
@@ -51,9 +52,8 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
-    export MFX_HOME="$(pwd)"
     export ITT_PATH='/usr'
     
     mkdir -p build
@@ -82,7 +82,7 @@ build() {
 }
 
 package() {
-    cd "${pkgname}/build"
+    cd "${_srcname}/build"
     
     make DESTDIR="$pkgdir" install
     
@@ -97,6 +97,6 @@ package() {
     done
     
     # license
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_srcname}"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
