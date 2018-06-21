@@ -2,8 +2,8 @@
 
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
-pkgver=18.20.579836
-pkgrel=2
+pkgver='18.20.606296'
+pkgrel=1
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
@@ -15,11 +15,11 @@ DLAGENTS='https::/usr/bin/wget --referer https://support.amd.com/en-us/kb-articl
 
 prefix='amdgpu-pro-'
 major='18.20'
-minor='579836'
+minor='606296'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 
 source=("https://www2.ati.com/drivers/linux/ubuntu/${prefix}${major}-${minor}.tar.xz")
-sha256sums=('5168571ead4613bec85c4b321617eb20825a1d752f393fe4148b296a278d2473')
+sha256sums=('6a5058e84c378844d7d661906f10907de321e9f59a43b1804ff1244d13c6b765')
 
 pkgver() {
 	echo "${major}.${minor}"
