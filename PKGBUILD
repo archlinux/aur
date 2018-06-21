@@ -2,7 +2,7 @@
 # Original author: kalenz <archlinux@kalenz.fr>
 
 pkgname="python2-androguard"
-pkgver=v2.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Python framework for Android application analysis."
 arch=("any")
@@ -12,28 +12,22 @@ depends=("python2" "python2-setuptools")
 optdepends=(
     "ipython2: interactive analysis support"
     "python2-pygments: color support"
-    "pydot: CFG support"
+    #"pydot: CFG support"
     "python2-magic: file identification support"
     "sparsehash: elsim support"
     "muparser: elsim support"
     "snappy: elsim support"
     "bzip2: elsim support"
     "zlib: elsim support"
-    "psyco2-svn: acceleration support"
+    #"psyco2-svn: acceleration support"
     "python2-pyside: GUI"
 )
 makedepends=("git")
 options=(!emptydirs)
-source=("androguard::git://github.com/androguard/androguard.git#tag=v2.0")
-md5sums=('SKIP')
-
-_gitname="androguard"
-
-build() {
-    cd "$srcdir/$_gitname"
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/androguard/androguard/archive/v${pkgver}.tar.gz")
+md5sums=('1d0af15d39230d9524bc2a34c84fadf8')
 
 package() {
-    cd "$srcdir/$_gitname"
+    cd "$srcdir/androguard-$pkgver"
     python2 setup.py install --root="$pkgdir/" --optimize=1
 }
