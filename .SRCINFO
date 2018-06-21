@@ -1,6 +1,6 @@
 pkgbase = mint-y-icons
 	pkgdesc = New icons from LinuxMint 18 inspired by the Moka icon set. Stable releases
-	pkgver = 1.2.8
+	pkgver = 1.2.9
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mint-y-icons
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = mint-y-icons
 	depends = gtk-update-icon-cache
 	optdepends = mint-x-icons: enable additional icons to inheritage
 	conflicts = mint-y-icons-git
-	source = http://packages.linuxmint.com/pool/main/m/mint-y-icons/mint-y-icons_1.2.8.tar.xz
-	sha256sums = 1d5d1f5d082a2a35c577369d3b767ab8149da06b0e5f8ed108401a09c724e7cc
+	source = http://packages.linuxmint.com/pool/main/m/mint-y-icons/mint-y-icons_1.2.9.tar.xz
+	sha256sums = 13a67a3652f5c94ba3806df9ebbebc4a363724730be242a44987a9b5d71b3d0b
 
 pkgname = mint-y-icons
 
