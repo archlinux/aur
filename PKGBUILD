@@ -8,12 +8,12 @@
 
 pkgname=nexuiz
 pkgver=2.5.2
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 pkgdesc="Fast-paced multiplayer first-person shooter."
 url="http://www.alientrap.org/nexuiz/"
 license=("GPL2")
-depends=('alsa-lib' 'libjpeg>=8' 'libxpm' 'libxxf86dga' 'libxxf86vm' 'hicolor-icon-theme' 'sdl')
+depends=('libgl' 'alsa-lib' 'libjpeg>=8' 'libxpm' 'libxxf86dga' 'libxxf86vm' 'hicolor-icon-theme' 'sdl')
 conflicts=('nexuiz-data')
 provides=('nexuiz-data')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver//./}.zip" \
