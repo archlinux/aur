@@ -3,15 +3,15 @@
 pkgname=openfaas-cli
 pkgdir="pkg-build"
 pkgdesc="OpenFaaS CLI"
-pkgver=0.6.8
-pkgrel=7
+pkgver=0.6.10
+pkgrel=1
 arch=('i686' 'x86_64' 'arm64')
 url="https://github.com/openfaas/faas-cli"
 license=('mit')
-makedepends=('go' 'godep')
+makedepends=('go' 'dep')
 
 source=("https://github.com/openfaas/faas-cli/archive/$pkgver.tar.gz")
-sha256sums=('c9bab5c1ed2bab75339745439f30e40362fe1b2d3cf05518b569b5683c66ac68')
+sha256sums=('98cb932cda4afe21e70869aa96520f2dc68a70943315da0ef785cb494aae35ae')
 
 build() {
   GOPATH=$startdir
@@ -19,7 +19,7 @@ build() {
   cd "$srcdir/faas-cli-$pkgver"
 
   dep ensure
-  CGO_ENABLED=0 GOOS=linux go build --ldflags "-s -w -X github.com/openfaas/faas-cli/version.Version=0.6.8" -a -installsuffix cgo -o faas-cli
+  CGO_ENABLED=0 GOOS=linux go build --ldflags "-s -w -X github.com/openfaas/faas-cli/version.Version=0.6.10" -a -installsuffix cgo -o faas-cli
 }
 
 package() {
