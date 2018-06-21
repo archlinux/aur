@@ -1,21 +1,21 @@
 pkgbase = scotch-mpich
 	pkgdesc = Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the parallel version using the MPICH implementation (MPICH/ptesmumps).
-	pkgver = 6.0.4
-	pkgrel = 5
+	pkgver = 6.0.5a
+	pkgrel = 1
 	url = http://www.labri.fr/perso/pelegrin/scotch/
 	arch = i686
 	arch = x86_64
 	license = custom:CeCILL-C
 	makedepends = flex-git
-	depends = zlib
+	makedepends = mpich
+	depends = openmpi
 	depends = bzip2
-	depends = mpich
 	provides = scotch
 	provides = ptscotch-mpich
 	conflicts = scotch
 	conflicts = ptscotch-mpich
-	source = http://gforge.inria.fr/frs/download.php/file/34618/scotch_6.0.4.tar.gz
-	sha256sums = f53f4d71a8345ba15e2dd4e102a35fd83915abf50ea73e1bf6efe1bc2b4220c7
+	source = http://gforge.inria.fr/frs/download.php/file/37401/scotch_6.0.5a.tar.gz
+	sha256sums = 5b21b95e33acd5409d682fa7253cefbdffa8db82875549476c006d8cbe7c556f
 
 pkgname = scotch-mpich
 

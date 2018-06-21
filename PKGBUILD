@@ -4,28 +4,26 @@
 # Contributor: eolianoe <eolianoe>
  
 pkgname=scotch-mpich
-pkgver=6.0.4
-_downloadnum=34618  # gforge is insane
-pkgrel=5
+pkgver=6.0.5a
+_downloadnum=37401  # gforge is insane
+pkgrel=1
 _prefix=/usr
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the parallel version using the MPICH implementation (MPICH/ptesmumps)."
 url="http://www.labri.fr/perso/pelegrin/scotch/"
 license=("custom:CeCILL-C")
-depends=('zlib' 'bzip2' 'mpich')
-makedepends=('flex-git') # flex won't work
+depends=('openmpi' 'bzip2')
+makedepends=('flex-git' 'mpich') # flex won't work
 provides=('scotch' 'ptscotch-mpich')
 conflicts=('scotch' 'ptscotch-mpich')
 arch=('i686' 'x86_64')
 source=("http://gforge.inria.fr/frs/download.php/file/${_downloadnum}/scotch_${pkgver}.tar.gz")
-sha256sums=('f53f4d71a8345ba15e2dd4e102a35fd83915abf50ea73e1bf6efe1bc2b4220c7')
+sha256sums=('5b21b95e33acd5409d682fa7253cefbdffa8db82875549476c006d8cbe7c556f')
  
 prepare() {
-  cd "${srcdir}/scotch_${pkgver}/src"
+  cd scotch_${pkgver}/src
  
   [ -e Makefile.inc ] && rm Makefile.inc
   cp "Make.inc/Makefile.inc.${CARCH/_/-}_pc_linux2.shlib" Makefile.inc
- 
-  # Use the CFLAGS defined /etc/makepkg.conf
   sed -i "s/-O3/${CFLAGS} -fPIC/g" Makefile.inc
  
   # disable SCOTCH_PTHREAD
@@ -50,25 +48,28 @@ prepare() {
 
   # fix an installation bug (which is usually ignored anyway)
   sed -i "/\.\.\/bin\/\[agm\]/d" Makefile
+  sed -i 's/mpirun/mpirun --oversubscribe/' check/Makefile
 }
  
 build() {
-  cd "${srcdir}/scotch_${pkgver}/src"
+  cd scotch_${pkgver}/src
  
   make ptscotch
   make -j1 ptesmumps
 }
  
 check() {
-  cd "${srcdir}/scotch_${pkgver}/src"
+  cd scotch_${pkgver}/src
  
   make ptcheck LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:../../lib"
 }
  
 package() {
-  cd "${srcdir}/scotch_${pkgver}/src"
+  cd scotch_${pkgver}/src
  
-  make install prefix="${pkgdir}/${_prefix}" includedir="${pkgdir}/${_prefix}/include/scotch"
+  make install prefix="$pkgdir"/$_prefix \
+       includedir="$pkgdir"/$_prefix/include/scotch
  
-  install -m 644 -D "${srcdir}/scotch_${pkgver}/doc/CeCILL-C_V1-en.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m 644 -D "$srcdir"/scotch_${pkgver}/doc/CeCILL-C_V1-en.txt \
+	  "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
