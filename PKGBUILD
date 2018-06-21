@@ -23,4 +23,17 @@ build() {
 package() {
     	cd "$srcdir/${pkgname%-*}"
     	install -Dm755 target/release/rash $pkgdir/usr/bin/rash
+	shell=`basename $SHELL`
+	case $shell in
+		zsh)
+			install -Dm644 _rash $pkgdir/usr/share/zsh/site-functions
+			;;
+		bash)
+			install -Dm644 rash.bash $pkgdir`pkg-config --variable=completionsdir bash-completion`
+			;;
+		fish)
+			dir=${XDG_CONFIG_HOME:-$HOME/.config}
+			install -Dm644 rash.fish $pkgdir$dir/fish/completions
+			;;
+	esac
 }
