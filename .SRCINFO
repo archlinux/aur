@@ -1,13 +1,13 @@
 pkgbase = myrddin-git
 	pkgdesc = Compiler and tools for the Myrddin programming language.
-	pkgver = 0.3945.5d433bd
+	pkgver = 0.4837.5d5d5e41
 	pkgrel = 1
 	url = https://myrlang.org/
 	install = myrddin.install
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = git://git.eigenstate.org/git/ori/mc.git
+	source = git://git.eigenstate.org/ori/mc.git
 	md5sums = SKIP
 
 pkgname = myrddin-git
