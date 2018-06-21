@@ -7,9 +7,10 @@ pkgdesc="Universal Radio Hacker: investigate wireless protocols like a boss"
 arch=('i686' 'x86_64')
 url="https://github.com/jopohl/urh"
 depends=('python>=3.4' 'python-pyqt5' 'python-numpy' 'python-psutil' 'python-pyzmq')
-makedepends=('gcc' 'python-setuptools')
+makedepends=('gcc' 'python-setuptools' 'cython')
 optdepends=(
   'airspy: for native airspy backend'
+  'cython: for recompiling native backends right from inside URH'
   'hackrf: for native hackrf backend'
   'libuhd: for native USRP backend'
   'rtl-sdr: for native RTL-SDR backend'
