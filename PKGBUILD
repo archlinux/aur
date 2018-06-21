@@ -12,7 +12,7 @@ _pkgname=hdf5
 _mpi=mpich
 pkgname=${_pkgname}-${_mpi}
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose library and file format for storing scientific data (${_mpi} version) (full version including its Java Native Interfaces)"
 arch=('x86_64')
 url="https://www.hdfgroup.org/HDF5/"
@@ -44,6 +44,7 @@ build() {
         FC="/opt/mpich/bin/mpif90" \
         F9X="/opt/mpich/bin/mpif90" \
         RUNPARALLEL="/opt/mpich/bin/mpirun" \
+        JAVADOC='javadoc -Xdoclint:none' \
         --prefix=/usr \
         --disable-static \
         --disable-sharedlib-rpath \
