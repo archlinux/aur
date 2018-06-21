@@ -6,7 +6,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-pango
 pkgver=1.42.1+4+g5d46e21d
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=('any')
 url="http://www.pango.org"
@@ -14,11 +14,12 @@ license=('LGPL')
 depends=('mingw-w64-harfbuzz'
          'mingw-w64-fribidi'
          'mingw-w64-fontconfig'
-         'mingw-w64-freetype'
+         'mingw-w64-freetype2'
          'mingw-w64-cairo')
 makedepends=('gtk-doc'
              'gobject-introspection'
              'mingw-w64-meson'
+             'mingw-w64-wine'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://git.gnome.org/browse/pango#commit=${_commit}")
@@ -35,6 +36,7 @@ prepare() {
 }
 
 build() {
+  export NEED_WINE=1
   cd "${srcdir}/pango"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
@@ -50,6 +52,7 @@ build() {
 }
 
 package() {
+  export NEED_WINE=1
   for _arch in ${_architectures}; do
     cd "${srcdir}/pango/build-${_arch}"
     DESTDIR="${pkgdir}" ninja install
