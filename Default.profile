@@ -59,6 +59,7 @@ s0_draw_bottom = false
 
 [move]
 s0_opacity = 90
+s0_snapoff_distance = 150
 s0_snapback_semimaximized = false
 s0_lazy_positioning = true
 
