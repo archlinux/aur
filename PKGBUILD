@@ -67,7 +67,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcname=linux-4.16
 pkgver=4.16.17
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -97,7 +97,7 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
             '13f658fe58d3255d2e63fd236d90a2a1603fb5ab68b4a3ca7249b99033cb1d75'
             'SKIP'
-            '7ae242be3f32e166dce20b86b1bf78d605fc6bf697399dfdd15607f18dd3b367'
+            'bb11db49cd6fbd6b203fefc8ac6fb55a9ac6bad17b5b5e41a879c8d36913d080'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
