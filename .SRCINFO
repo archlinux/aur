@@ -8,7 +8,7 @@ pkgbase = aspell-bn
 	license = GPL2
 	depends = aspell
 	source = https://gitlab.com/Pavel-Sayekat/aspell-bn/-/archive/master/aspell-bn-master.tar.bz2
-	sha256sums = 7beee4cf3e4431012fd57c07d8f762617c0a1e04bcb2e889a71d21b238516fca
+	sha256sums = d20932117f8fdd91ef37c30f0a54d2261ead25654c04ce3fb72d7fadd4069113
 
 pkgname = aspell-bn
 
