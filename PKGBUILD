@@ -1,17 +1,18 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 _pkgname=LightGBM
-pkgname=lightgbm
-pkgver=2.1.1
-pkgrel=2
+pkgbase=lightgbm
+pkgname=("${pkgbase}" "python-${pkgbase}")
+pkgver=2.1.2
+pkgrel=1
 pkgdesc="Distributed gradient boosting framework based on decision tree algorithms."
 arch=('x86_64')
 url="https://github.com/Microsoft/LightGBM"
 license=('MIT')
-depends=('python' 'boost-libs' 'ocl-icd')
-makedepends=('boost' 'cmake' 'opencl-headers')
-source=("https://github.com/Microsoft/LightGBM/archive/v${pkgver}.tar.gz")
-sha256sums=('07da54e835f4d9991fbc526b4e0c9d0d2a47e514c6eb94de2fbb49c33c8a1e6e')
+depends=('boost-libs' 'ocl-icd' 'openmpi')
+makedepends=('boost' 'cmake' 'opencl-headers' 'python-setuptools')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('2687a6379f9f438eabb2f460f7302bfeb765ff6f283528b821541d83622e80e6')
 
 build() {
     cd "${_pkgname}-${pkgver}"
@@ -24,19 +25,23 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_OPENMP=ON \
         -DUSE_GPU=ON \
+        -DUSE_MPI=ON \
 
     cmake --build build
 }
 
-package() {
+package_lightgbm() {
     cd "${_pkgname}-${pkgver}"
     cmake --build build -- DESTDIR="${pkgdir}" install
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
 
-    # Python
-    cd python-package
-    python setup.py install --root="$pkgdir/" --optimize=1 --gpu --precompile
+package_python-lightgbm() {
+    depends=('lightgbm' 'python-numpy' 'python-scipy' 'python-scikit-learn')
+
+    cd "${_pkgname}-${pkgver}/python-package"
+    # use library from /usr/lib instead of making a copy
+    sed -i 's/..\/..\/lib\//\/usr\/lib\//' lightgbm/libpath.py
+    python setup.py install --root="$pkgdir/" --optimize=1 --gpu --mpi --precompile
     rm "$pkgdir/usr/lib/python3.6/site-packages/lightgbm/lib_lightgbm.so"
-    # they should check the env first and not hardlink
-    ln -s "$pkgdir/usr/lib/lib_lightgbm.so" "$pkgdir/usr/lib/python3.6/site-packages/lightgbm/lib_lightgbm.so"
 }
