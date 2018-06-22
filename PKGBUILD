@@ -5,9 +5,9 @@ url='http://ros.org/wiki/urdf'
 
 pkgname='ros-melodic-urdf'
 pkgver='1.13.1'
-_pkgver_patch=0
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-urdf-parser-plugin
@@ -15,7 +15,8 @@ ros_makedepends=(ros-melodic-urdf-parser-plugin
   ros-melodic-catkin
   ros-melodic-pluginlib
   ros-melodic-rosconsole-bridge
-  ros-melodic-cmake-modules)
+  ros-melodic-cmake-modules
+  ros-melodic-rostest)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   tinyxml2
