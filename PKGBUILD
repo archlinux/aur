@@ -19,7 +19,7 @@
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0a2
-pkgrel=1
+pkgrel=2
 _codename=Leia
 _rtype=Alpha
 _rver=1
@@ -65,9 +65,9 @@ noextract=(
   "ffmpeg-$_ffmpeg_version.tar.gz"
 )
 sha256sums=('937d755c638324bf388fc9e971c5d8f90fcc0ab9362f0b15bbad5e47f0bc67d6'
-            '6e89b7fc36e26d27fcc8fadf97176ca7684f1702634ecdbe4d8df62a4a967de3'
-            '4af19a750f468a0b926ce5051e70951ee5815d5913d3dd44260dd93ca74fc4c1'
-            'd2c19c1d719caba031241fa9f4f7740ab84ad8033ab381bf9f7b8c59f259b441'
+            '6af3d4f60e5af2c11ebe402b530c07c8878df1a6cf19372e16c92848d69419a5'
+            '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
+            'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
             'b486ab7bb76e0e2e5a30912640a74da2d2a1ce7640b6134507988fdd1eb44ae9'
             '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
