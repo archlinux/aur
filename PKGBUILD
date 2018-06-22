@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url="http://aspell.net/"	
 license=('GPL2')
 depends=('aspell')
-source=("https://github.com/Pavel-Sayekat/aspell-bn/archive/master.zip")
-sha256sums=('03a812d859bb133af7acd3246d973de3d4a7388d346ff2290df1e86e7d4bc382')
+source=("https://gitlab.com/Pavel-Sayekat/aspell-bn/-/archive/master/aspell-bn-master.tar.bz2")
+sha256sums=('56386243e3b6ebbd6167ac37814f27ad51d94aa9e9a7c9d93020c41f2d38cf99')
 build() {
   cd "${srcdir}/aspell-bn-master"
 
