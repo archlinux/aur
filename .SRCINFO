@@ -1,5 +1,5 @@
 pkgbase = audacity-wxgtk2
-	pkgdesc = A program that lets you manipulate digital audio waveforms
+	pkgdesc = Record and edit audio files
 	pkgver = 2.2.2
 	pkgrel = 3
 	url = https://audacityteam.org
