@@ -4,26 +4,25 @@
 _base=fiat
 pkgname=python-${_base}
 pkgdesc="Supports generation of arbitrary order instances of the Lagrange elements on lines, triangles, and tetrahedra (stable)."
-pkgver=2017.2.0
+pkgver=2018.1.0
 pkgrel=1
 arch=('any')
 url="https://bitbucket.org/fenics-project/${_base}"
-license=('GPL3')
+license=('LGPL3')
 groups=('fenics')
 conflicts=('python-fiat-git')
 depends=('python-numpy' 'python-sympy')
-makedepends=('git')
 options=(!emptydirs)
-source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git#tag=${pkgver}")
-md5sums=('SKIP')
+source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz)
+sha256sums=('3d897d99fdc94441f9c8720fb5a3bcaf8a0b9ede897a0600cb1f329dacec5c92')
 
 build() {
- 	cd ${_base}
+	cd ${srcdir}/${_base}-${pkgver}
  	python setup.py build
 }
 
 package() {
- 	cd ${_base}
+	cd ${srcdir}/${_base}-${pkgver}
  	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
 
