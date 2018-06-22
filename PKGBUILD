@@ -1,8 +1,8 @@
 # Maintainer: Weitian Leung <weitianleung[at]gmail[dot]com>
 
 pkgname=bing-wallpaper-git
-pkgver=r46
-pkgrel=2
+pkgver=r60
+pkgrel=1
 pkgdesc="Bing Wallpaper of the Day as your Linux Desktop's wallpaper"
 arch=(any)
 url="https://github.com/marguerite/linux-bing-wallpaper"
@@ -15,11 +15,6 @@ makedepends=('git' 'go')
 source=("$pkgname::git+https://github.com/marguerite/linux-bing-wallpaper.git")
 sha512sums=('SKIP')
 install=${pkgname}.install
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    git checkout golang
-}
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
