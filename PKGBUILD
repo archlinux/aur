@@ -1,6 +1,6 @@
 # Maintainer: Heiko Nickerl <dev at heiko-nickerl dot com>
 pkgname="sodalite"
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
@@ -18,5 +18,5 @@ _gitroot=https://github.com/hnicke/$pkgname.git
 
 package() {
     cd "${srcdir}/$pkgname-$pkgver"
-    FAKE_ROOT=$pkgdir ./install
+    make prefix=/usr localstatedir=/var DESTDIR="$pkgdir" install
 }
