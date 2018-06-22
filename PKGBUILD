@@ -14,7 +14,8 @@ source=("http://download.navigraph.com/software/fmsdatamanager/${_dname}-${pkgve
         "ngfmsmanager"
         "${pkgname}.desktop")
 sha256sums=('bbb7d69f4c74f5ea3eabd24742ed7c96acc9634c6c485359e13f52276daee57b'
-            '8d781e2207ed19f38c90d7e63600355c5e2761d2cb1f02b2a252cf84b13cb04d')
+            '55c1c96d2ca058cc4c84945a022435658a6a225f44d9032d765fe338c8e63f23'
+            '7d5780545fd49fb41fd2f88a4b93a98d682387ca5b59d44ebf25acaee46d363a')
 
 
 package() {

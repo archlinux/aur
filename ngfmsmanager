@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+env LD_LIBRARY_PATH=/usr/lib/openssl-1.0:/opt/navigraph/fms-data-manager/lib /opt/navigraph/fms-data-manager/NGFMSManager
