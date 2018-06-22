@@ -1,7 +1,7 @@
 #Maintainer: Alia Skywol <skywol@qq.com>
 
 pkgname=marea-icon-theme
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc="Marea Icons"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 replaces=('')
 conflicts=('')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Marea-Icons/Marea/archive/master.tar.gz")
-sha512sums=('85df2ed6e1bd76c200d264e16ca52fb9b1e2f03015a21512b47e132da598bb11944985dce8e036f969d6473d500815942a4f7ca266414ce2a041f2509781f0f0')
+sha512sums=('e7cd62022f8af6be79ab8008e355d99002d2eeecdfcc8b6e232f97ed3e53d045d943040848130fccb43f070b95ed2fb3fe9e72165022706e6c603157a5bf1fd9')
 
 package() {
   mkdir $pkgname-$pkgver
