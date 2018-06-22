@@ -12,8 +12,7 @@ url='https://github.com/elementary/mail'
 license=('GPL3')
 depends=('cairo' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc' 'gmime' 'gtk3'
          'libaccounts-glib' 'libcanberra' 'libgee' 'libgsignon-glib'
-         'libsecret' 'libxml2' 'pango' 'sqlite' 'webkitgtk'
-         'libgranite.so')
+         'libsecret' 'libxml2' 'pango' 'sqlite' 'webkitgtk')
 makedepends=('cmake' 'git' 'gnome-doc-utils' 'gobject-introspection'
              'granite' 'intltool' 'vala')
 provides=('pantheon-mail')

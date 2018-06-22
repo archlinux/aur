@@ -29,7 +29,6 @@ pkgbase = pantheon-mail
 	depends = pango
 	depends = sqlite
 	depends = webkitgtk
-	depends = libgranite.so
 	provides = pantheon-mail
 	conflicts = pantheon-mail
 	replaces = pantheon-mail-bzr
