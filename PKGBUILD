@@ -5,7 +5,7 @@
 pkgname=pantheon-mail
 _gname=mail
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pantheon Mail Client'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/mail'
