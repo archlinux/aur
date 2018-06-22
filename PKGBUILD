@@ -4,7 +4,7 @@ pkgbase=python-pre-commit
 pkgname=(python-pre-commit python2-pre-commit)
 pypi_name=pre_commit
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A framework for managing and maintaining multi-language pre-commit hooks."
 arch=('any')
 license=('MIT')
@@ -30,7 +30,8 @@ build() {
 
 package_python-pre-commit() {
   pkgdesc='Python 3 client for pre-commit'
-  depends=('python' 'python-nodeenv' 'python-aspy-yaml' 'python-virtualenv' 'python-cached-property' 'python-identify')
+  depends=('python' 'python-nodeenv' 'python-aspy-yaml' 'python-virtualenv' 'python-cached-property' 'python-identify'
+           'python-toml' 'python-cfgv')
 
   cd "${srcdir}/${pypi_name}-${pkgver}"
   python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
@@ -38,11 +39,14 @@ package_python-pre-commit() {
 
 package_python2-pre-commit() {
   pkgdesc='Python 2 client for pre-commit'
-  depends=('python2' 'python-nodeenv' 'python2-aspy-yaml' 'python2-virtualenv' 'python2-cached-property' 'python2-identify')
+  depends=('python2' 'python-nodeenv' 'python2-aspy-yaml' 'python2-virtualenv' 'python2-cached-property' 'python2-identify'
+           'python2-toml' 'python2-cfgv')
 
   cd "${srcdir}/${pypi_name}-${pkgver}-python2"
   python2 setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
   mv ${pkgdir}/usr/bin/pre-commit ${pkgdir}/usr/bin/pre-commit2
+  mv ${pkgdir}/usr/bin/pre-commit-validate-config ${pkgdir}/usr/bin/pre-commit2-validate-config
+  mv ${pkgdir}/usr/bin/pre-commit-validate-manifest ${pkgdir}/usr/bin/pre-commit2-validate-manifest
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
