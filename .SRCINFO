@@ -1,6 +1,6 @@
 pkgbase = camouflage
 	pkgdesc = camouflage
-	pkgver = 20180622.48_0dbcbeb
+	pkgver = 20180622.49_d6de8e6
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
