@@ -2,13 +2,13 @@
 
 pkgname=pext
 _pkgname=Pext
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc='Python-based extendable tool'
 url='https://pext.hackerchick.me/'
 arch=(any)
 license=(GPL3)
-depends=(python-dulwich libnotify python-pip python-pyqt5 qt5-quickcontrols)
+depends=(python-dulwich python-pynput python-pip python-pyqt5 qt5-quickcontrols)
 makedepends=(python-setuptools)
 optdepends=('pass: password manager support'
             'ffmpeg: radiobrowser music support'
@@ -16,7 +16,7 @@ optdepends=('pass: password manager support'
 provides=(pext)
 conflicts=(pext)
 source=("https://github.com/Pext/Pext/archive/v$pkgver.tar.gz")
-sha256sums=('b65f0f7e4623811ba74fa85efec964c41d17d8f845a520b2c0a6de0a0d63b389')
+sha256sums=('557a2e12a763e8fa250ec88687aa2d31176feee319ab05e5eeaf490d91c18f17')
 
 prepare() {
   sed "s/'pyqt5'//g" -i ${srcdir}/${_pkgname}-${pkgver}/setup.py
