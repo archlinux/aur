@@ -31,5 +31,4 @@ build() {
 package() {
 	cd "$srcdir/nimf-master"
 	make DESTDIR="${pkgdir}/" install
-	ldconfig
 }
