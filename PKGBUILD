@@ -8,7 +8,7 @@ pkgname=git-ssh-git
 # shellcheck disable=SC2034
 pkgdesc="A wrapper around git to work with multiple SSH keys"
 # shellcheck disable=SC2034
-pkgver=r181.0ffd8e6
+pkgver=r194.7acaaa9
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -63,5 +63,10 @@ package() {
   # shellcheck disable=SC2154
   python setup.py install --root="${pkgdir}" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+
+  # Install shell completion
+  shell_target="${pkgdir}/usr/share/bash-completion/completions/${_gitname}"
+  mkdir -p "$(dirname "${shell_target}")"
+  install -Dm 644 "res/shell/bash/bash_completion" "${shell_target}"
 }
 
