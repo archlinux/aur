@@ -11,12 +11,12 @@ depends=('python-binaryornot' 'python-urwid' 'python-yaml'
 'python-pyperclip' 'python-pygments' 'python-watchdog')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hnicke/sodalite/archive/v$pkgver.tar.gz")
 backup=('etc/sodalite.conf')
-md5sums=('SKIP')
+sha256sums=('eda36f28dfdb440c934c1f316334f65334b106a4667101aa46a8ead7b44e96f4')
 install=sodalite.install
 
 _gitroot=https://github.com/hnicke/$pkgname.git
 
 package() {
     cd "${srcdir}/$pkgname-$pkgver"
-    make prefix=/usr localstatedir=/var DESTDIR="$pkgdir" install
+    make sysconfdir=/etc prefix=/usr localstatedir=/var DESTDIR="$pkgdir" install
 }
