@@ -1,8 +1,8 @@
 # Maintainer: Neal Miller <ac9qd@protonmail.com>
 
 pkgname=wsjtx-superbuild-git
-pkgver=r30.1967f54
-pkgrel=3
+pkgver=r32.bce3bea
+pkgrel=1
 pkgdesc='Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - Superbuild/git version, hamlib not required'
 arch=('i686' 'x86_64')
 url='http://physics.princeton.edu/pulsar/k1jt/wsjtx.html'
