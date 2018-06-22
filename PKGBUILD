@@ -2,13 +2,13 @@
 
 pkgname='gr-ieee802-11'
 pkgver='b83d008'
-pkgrel=1
+pkgrel=2
 pkgdesc="An IEEE 802.11 a/g/p transceiver for GNU Radio."
 arch=('any')
 url="https://github.com/bastibl/gr-ieee802-11"
 license=('unknown')
 depends=('gnuradio' 'swig' 'log4cpp' 'gr-foo')
-makedepends=('cmake')
+makedepends=('cmake' 'boost')
 provides=('gr-ieee802-11')
 source=('git+https://github.com/bastibl/gr-ieee802-11')
 sha1sums=('SKIP')
