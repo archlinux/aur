@@ -1,10 +1,15 @@
 pkgbase = nimf-git
-	pkgdesc = Nimf is an input method framework
+	pkgdesc = Nimf is an input method framework.
 	pkgver = master
 	pkgrel = 1
 	url = https://gitlab.com/hodong/nimf
 	arch = any
 	license = LGPL3
+	makedepends = binutils
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = make
 	makedepends = glib2
 	makedepends = intltool
 	makedepends = gtk3
@@ -39,3 +44,4 @@ pkgbase = nimf-git
 	md5sums = SKIP
 
 pkgname = nimf-git
+

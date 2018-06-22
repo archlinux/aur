@@ -7,9 +7,10 @@ pkgdesc="Nimf is an input method framework."
 arch=('any')
 url="https://gitlab.com/hodong/nimf"
 license=('LGPL3')
-makedepends=('glib2' 'intltool' 'gtk3' 'gtk2' 'qt4' 'qt5-base'
-             'libappindicator-gtk3' 'librsvg' 'noto-fonts-cjk' 'libhangul'
-             'anthy' 'libchewing' 'librime' 'libxkbcommon' 'wayland' 'audit')
+makedepends=('binutils' 'autoconf' 'automake' 'gcc' 'make' 'glib2' 'intltool'
+             'gtk3' 'gtk2' 'qt4' 'qt5-base' 'libappindicator-gtk3' 'librsvg'
+             'noto-fonts-cjk' 'libhangul' 'anthy' 'libchewing' 'librime'
+             'libxkbcommon' 'wayland' 'audit')
 depends=('glib2' 'gtk3' 'gtk2' 'qt4' 'qt5-base' 'libappindicator-gtk3'
          'libhangul' 'anthy' 'libchewing' 'librime' 'brise' 'libxkbcommon'
          'wayland' 'audit')
