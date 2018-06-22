@@ -5,9 +5,9 @@ url='http://ros.org/wiki/urdf'
 
 pkgname='ros-melodic-urdf'
 pkgver='1.13.1'
-_pkgver_patch=1
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-urdf-parser-plugin
