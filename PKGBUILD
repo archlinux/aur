@@ -4,6 +4,8 @@ pkgbase=wps-office-mui
 
 pkgver=10.1.0.6634
 pkgrel=1
+pkgdesc="WPS Office MUI packages"
+depends=(wps-office=${pkgver})
 
 arch=('any')
 url="http://wps-community.org/"
@@ -43,7 +45,7 @@ sha256sums=(
         )
 
 _package() {
-    pkgdesc="$2 mui pack for WPS Office"
+    pkgdesc="$2 mui package for WPS Office"
     depends=("wps-office=${pkgver}")
     provides=("wps-office-mui-${1,,}")
 
