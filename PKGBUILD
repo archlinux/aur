@@ -15,6 +15,8 @@ source=('git+https://git.code.sf.net/p/wsjt/wsjtx-superbuild/'
         'wsjtx.patch')
 md5sums=('SKIP'
          'c5a2c0b91c2709e070d7ebcb75621354')
+#set branch to build with WSJTX_TAG variable, or a specific version eg. tags/wsjtx-1.9.0
+_wsjtx_tag=master
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -25,7 +27,7 @@ build() {
     cp wsjtx.patch "$srcdir/${pkgname%-git}"
 	mkdir -p "$srcdir/${pkgname%-git}/build"
 	cd "$srcdir/${pkgname%-git}/build"
-        cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+        cmake -D WSJTX_TAG=$_wsjtx_tag -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
 	make
 }
 
