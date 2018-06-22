@@ -6,7 +6,7 @@
 
 pkgname=osu-lazer
 pkgver=2018.616.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeware rhythm video game - lazer version $pkgver"
 arch=('x86_64')
 license=('MIT' 'custom:CC-BY-NC 4.0')
