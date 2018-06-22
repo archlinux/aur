@@ -1,0 +1,27 @@
+pkgbase = audacity-wxgtk2
+	pkgdesc = A program that lets you manipulate digital audio waveforms
+	pkgver = 2.2.2
+	pkgrel = 3
+	url = https://audacityteam.org
+	arch = x86_64
+	groups = pro-audio
+	license = GPL2
+	license = CCPL
+	makedepends = cmake
+	depends = libmad
+	depends = libid3tag
+	depends = wxgtk2
+	depends = soundtouch
+	depends = ffmpeg
+	depends = vamp-plugin-sdk
+	depends = portsmf
+	depends = twolame
+	depends = suil
+	depends = lilv
+	provides = audacity
+	conflicts = audacity
+	source = https://github.com/audacity/audacity/archive/Audacity-2.2.2.tar.gz
+	sha512sums = 311a5f3413e7faf40dc5639b2b9f8b0d03d1a410c50d894ca7abf3fe5733a29b710ccf7e3215d97dd9142e93c0ab5e13955dfd13146b03f927f74465459a6457
+
+pkgname = audacity-wxgtk2
+
