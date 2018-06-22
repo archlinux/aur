@@ -37,7 +37,11 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
   python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 urh.desktop "${pkgdir}/usr/share/applications/urh.desktop"
+  if [ -f urh.desktop ]; then
+    install -Dm644 urh.desktop "${pkgdir}/usr/share/applications/urh.desktop"
+  else
+    install -Dm644 ./data/urh.desktop "${pkgdir}/usr/share/applications/urh.desktop"
+  fi
   install -Dm644 ./data/icons/appicon.png "${pkgdir}/usr/share/pixmaps/urh.png"
   install -Dm644 README.md "${pkgdir}/usr/share/docs/${pkgname}/README.md"
 }
