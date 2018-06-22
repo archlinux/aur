@@ -1,0 +1,20 @@
+pkgbase = gr-ieee802-15-4
+	pkgdesc = An 802.15.4 ZigBee transceiver for GNU Radio.
+	pkgver = v3.6.99.gc969b3f
+	pkgrel = 1
+	url = https://github.com/bastibl/gr-ieee802-15-4
+	arch = any
+	license = unknown
+	makedepends = cmake
+	makedepends = boost
+	depends = gnuradio
+	depends = swig
+	depends = log4cpp
+	depends = gr-foo
+	optdepends = python2-matplotlib: To run the GUI sample application
+	provides = gr-ieee802-15-4
+	source = git+https://github.com/bastibl/gr-ieee802-15-4
+	sha1sums = SKIP
+
+pkgname = gr-ieee802-15-4
+
