@@ -7,7 +7,7 @@ pkgname='ros-melodic-laser-assembler'
 pkgver='1.7.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf
@@ -52,6 +52,8 @@ build() {
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
+
+  sed -i -e 's/boost::posix_time::milliseconds(1000.0f)/boost::posix_time::milliseconds(1000)/g' ${srcdir}/${_dir}/test/test_assembler.cpp
 
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
