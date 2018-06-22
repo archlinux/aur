@@ -1,6 +1,7 @@
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+
 pkgname=mingw-w64-libatomic_ops
-pkgver=7.4.2
-_tag=libatomic_ops-${pkgver//./_}
+pkgver=7.6.4
 pkgrel=1
 pkgdesc="Provides semi-portable access to hardware provided atomic memory operations (mingw-w64)"
 arch=('any')
@@ -9,23 +10,18 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL2' 'MIT')
-source=("https://github.com/ivmai/libatomic_ops/archive/$_tag.zip")
-sha1sums=('8f0831cac2e25ec4e87e3d71b047f7af9f46ed32')
+source=("https://github.com/ivmai/libatomic_ops/releases/download/v${pkgver}/libatomic_ops-${pkgver}.tar.gz")
+sha1sums=('84b0afa2ae9341bf8fe8fba566f7721f1f32bb32')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd "${srcdir}"/libatomic_ops-$_tag
-
-  # Fix makefile preventing AO_pause undefined in libatomic_ops_gpl
-  wget -c https://github.com/ivmai/libatomic_ops/commit/c63463.patch
-  patch -p1 -i c63463.patch
-
-  autoreconf -fi
+  cd "${srcdir}"/libatomic_ops-${pkgver}
+  ./autogen.sh
 }
 
 build() {
-  cd "${srcdir}"/libatomic_ops-$_tag
+  cd "${srcdir}"/libatomic_ops-${pkgver}
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure ..
@@ -36,7 +32,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/libatomic_ops-$_tag/build-${_arch}"
+    cd "${srcdir}/libatomic_ops-${pkgver}/build-${_arch}"
     make install DESTDIR="${pkgdir}"
     rm -r "${pkgdir}"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
