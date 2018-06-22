@@ -1,7 +1,7 @@
 pkgbase = mpv-vittgam
 	pkgdesc = My stable and sensible version of the mpv player that does not make me curse when newer upstream versions break and/or change things at random. :)
 	pkgver = 0.17.0
-	pkgrel = 8
+	pkgrel = 9
 	epoch = 1
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mpv-vittgam
 	makedepends = mesa
 	makedepends = python-docutils
 	makedepends = ladspa
-	depends = ffmpeg
+	depends = ffmpeg3.4
 	depends = lcms2
 	depends = libcdio-paranoia
 	depends = libgl

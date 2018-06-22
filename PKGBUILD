@@ -9,14 +9,14 @@ _origpkgname=mpv
 pkgname=${_origpkgname}-vittgam
 epoch=1
 pkgver=0.17.0
-pkgrel=8
+pkgrel=9
 _gitcommit=16b32c9c77b73deb67057ad14c2682a4556ab639
 _waf_version=1.8.12
 pkgdesc='My stable and sensible version of the mpv player that does not make me curse when newer upstream versions break and/or change things at random. :)'
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
 depends=(
-  'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'enca' 'libxss'
+  'ffmpeg3.4' 'lcms2' 'libcdio-paranoia' 'libgl' 'enca' 'libxss'
   'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
   'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
   'libxrandr' 'jack' 'smbclient' 'rubberband'
@@ -40,7 +40,7 @@ prepare() {
 build() {
   cd ${pkgname}-${_gitcommit}
 
-  ./waf configure --prefix=/usr \
+  PKG_CONFIG_PATH=/usr/lib/ffmpeg3.4/pkgconfig ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
     --enable-cdda \
     --enable-encoding \
