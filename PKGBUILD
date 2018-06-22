@@ -4,7 +4,7 @@
 _base=dijitso
 pkgname=python-${_base}
 pkgdesc="A Python module for distributed just-in-time shared library building (stable)."
-pkgver=2017.2.0
+pkgver=2018.1.0
 pkgrel=1
 arch=('any')
 url="https://bitbucket.org/fenics-project/${_base}"
@@ -12,19 +12,18 @@ license=('GPL3')
 groups=('fenics')
 conflicts=('python-dijitso-git')
 depends=('python-numpy')
-makedepends=('git')
 optdepends=('mpi4py: for running tests with MPI')
 options=(!emptydirs)
-source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git#tag=${pkgver}")
-md5sums=('SKIP')
+source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz)
+sha256sums=('2084ada1e7bd6ecec0999b15a17db98c72e26f1ccbf3fcbe240b1a035a1a2e64')
 
 build() {
-	cd ${_base}
+	cd ${srcdir}/${_base}-${pkgver}
 	python setup.py build
 }
 
 package() {
-	cd ${_base}
+	cd ${srcdir}/${_base}-${pkgver}
 	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
 
