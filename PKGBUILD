@@ -2,7 +2,7 @@
 
 pkgname=python-vunit_hdl
 _name=vunit_hdl
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="Unit Testing Framework for VHDL/SystemVerilog"
 arch=('any')
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('7f176a2c0bb9695035feaf18bb9f84a7')
+md5sums=('4234705f3510705e571bcecb17d25005')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
