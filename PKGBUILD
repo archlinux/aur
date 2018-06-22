@@ -11,6 +11,7 @@ url="https://www.navigraph.com/FmsDataManager.aspx"
 license=('unknown')
 depends=('openssl-1.0')
 source=("http://download.navigraph.com/software/fmsdatamanager/${_dname}-${pkgver}.${arch}.rpm"
+        "ngfmsmanager"
         "${pkgname}.desktop")
 sha256sums=('bbb7d69f4c74f5ea3eabd24742ed7c96acc9634c6c485359e13f52276daee57b'
             '8d781e2207ed19f38c90d7e63600355c5e2761d2cb1f02b2a252cf84b13cb04d')
@@ -22,7 +23,5 @@ package() {
     cp -r "navigraph" "${pkgdir}/opt"
     install -Dm644 "navigraph/fms-data-manager/res/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
     install -Dm755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -d "${pkgdir}/usr/bin"
-    echo 'env LD_LIBRARY_PATH=/usr/lib/openssl-1.0:/opt/navigraph/fms-data-manager/lib /opt/navigraph/fms-data-manager/NGFMSManager'
-    > "${pkgdir}/usr/bin/ngfmsmanager"
+    install -Dm755 "${srcdir}/ngfmsmanager" "${pkgdir}/usr/bin/ngfmsmanager"
 }
