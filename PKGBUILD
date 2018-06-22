@@ -2,7 +2,7 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio
-pkgver=0.16.36
+pkgver=0.16.51
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories."
 arch=('x86_64')
