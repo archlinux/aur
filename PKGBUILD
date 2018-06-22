@@ -22,4 +22,7 @@ package() {
     cp -r "navigraph" "${pkgdir}/opt"
     install -Dm644 "navigraph/fms-data-manager/res/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
     install -Dm755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -d "${pkgdir}/usr/bin"
+    echo 'env LD_LIBRARY_PATH=/usr/lib/openssl-1.0:/opt/navigraph/fms-data-manager/lib /opt/navigraph/fms-data-manager/NGFMSManager'
+    > "${pkgdir}/usr/bin/ngfmsmanager"
 }
