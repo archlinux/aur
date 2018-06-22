@@ -1,0 +1,11 @@
+--- pr/src/io/prmapopt.c	2009-05-02 01:08:04.000000000 +0200
++++ pr/src/io/prmapopt.c	2011-09-27 21:07:11.000000000 +0200
+@@ -195,8 +195,6 @@
+     if (PR_SockOpt_Nonblocking == data->option)
+     {
+ #ifdef WINNT
+-        PR_ASSERT((fd->secret->md.io_model_committed == PR_FALSE)
+-            || (fd->secret->nonblocking == data->value.non_blocking));
+         if (fd->secret->md.io_model_committed
+             && (fd->secret->nonblocking != data->value.non_blocking))
+         {
