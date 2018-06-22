@@ -1,6 +1,6 @@
 # Maintainer: Heiko Nickerl <dev at heiko-nickerl dot com>
 pkgname="sodalite-git"
-pkgver=r45.ece430f
+pkgver=r187.0379229
 pkgrel=2
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
@@ -26,5 +26,5 @@ pkgver() {
 
 package() {
     cd "${srcdir}/$_gitname"
-    make prefix=/usr localstatedir=/var DESTDIR="$pkgdir" install
+    make prefix=/usr sysconfdir=/etc localstatedir=/var DESTDIR="$pkgdir" install
 }
