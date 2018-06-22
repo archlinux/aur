@@ -1,0 +1,14 @@
+pkgbase = python-dopy
+	pkgdesc = Digital Ocean API Python wrapper
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/dopy
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-requests
+	source = https://pypi.python.org/packages/source/d/dopy/dopy-0.3.7.tar.gz
+	sha256sums = 8d1a7a15ef5711220ee9fc3fd489e738bb365cdad042c4f791cd5c16f2dbf9fd
+
+pkgname = python-dopy
+
