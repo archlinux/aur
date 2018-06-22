@@ -1,0 +1,21 @@
+pkgbase = sbsigntools-git
+	pkgdesc = Signing utility for UEFI secure boot
+	pkgver = 0.9.1.r0.ga631793
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gnu-efi-libs
+	makedepends = help2man
+	depends = glibc
+	depends = libutil-linux
+	depends = openssl
+	provides = sbsigntools
+	conflicts = sbsigntools
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git
+	sha256sums = SKIP
+
+pkgname = sbsigntools-git
+
