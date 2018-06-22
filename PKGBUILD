@@ -1,6 +1,6 @@
 # Maintainer: Tyler Brock <tyler.brock@gmail.com>
 pkgname=saw
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Fast, multipurpose tool for AWS CloudWatch Logs"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ url="https://github.com/TylerBrock/$pkgname"
 license=('MIT')
 makedepends=('go' 'git' 'dep')
 source=("https://github.com/TylerBrock/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('41e83c51fdcd76cbb31a33b89dbf8eee')
+md5sums=('bfee187a356169d9fd7cd32386622368')
 
 prepare() {
   mkdir -p "${srcdir}/go/src/github.com/TylerBrock/"
