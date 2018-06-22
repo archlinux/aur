@@ -1,19 +1,20 @@
 # Maintainer: Sherlock HOlo <sherlockya(at)gmail.com>
 
 pkgname=system-storage-manager
-pkgver=0.5
-pkgrel=3
+_pkgver=1.0
+pkgver=v$_pkgver
+pkgrel=1
 pkgdesc='A single tool to manage your storage'
 arch=('i686' 'x86_64')
 url='https://github.com/system-storage-manager/ssm'
 license=('GPL2')
 depends=('python' 'btrfs-progs' 'dmraid')
 makedepends=('python-sphinx')
-source=("$url/archive/system-storage-manager-0.5.tar.gz")
-sha256sums=('04ae88f42967a45fb832d8528a2f688f40e4593c11efd5111cb515da842874e2')
+source=("$url/archive/system-storage-manager-$_pkgver.tar.gz")
+sha256sums=('2c35e7192cb00e02f78c7beadde6f4bf8b1957ed5e238448517c542251b3f91f')
 
 prepare() {
-	cd $srcdir/ssm-$pkgname-$pkgver/doc
+	cd $srcdir/ssm-$pkgname-$_pkgver/doc
 	make man
 	#sed -i 's/data_files/#data_files/g' setup.py
 	#sed -i "s/ ('/#('/g" setup.py
@@ -23,6 +24,6 @@ prepare() {
 }
 
 package() {
-    cd $srcdir/ssm-$pkgname-$pkgver
+    cd $srcdir/ssm-$pkgname-$_pkgver
     python setup.py install --prefix="/usr" --root="$pkgdir" --optimize=1
 }
