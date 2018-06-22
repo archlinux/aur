@@ -1,0 +1,12 @@
+pkgbase = nemo-peazip
+	pkgdesc = Peazip Actions For Nemo File Manager.
+	pkgver = r22.54ced3a
+	pkgrel = 1
+	url = https://github.com/LinArcX/nemo-actions
+	arch = any
+	license = GPL-3.0
+	source = nemo-peazip::git+https://github.com/LinArcX/nemo-actions
+	sha256sums = SKIP
+
+pkgname = nemo-peazip
+
