@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Navigraph FMS Data Manager
+GenericName=Navigraph FMS Data Manager
+Comment=A client software which allows you to effortlessly download and install FMS Data for your flight simulation addons and tools
+Comment[fr]=Un logiciel client qui vous permet de télécharger et d'installer sans effort les données FMS pour vos addons et outils de simulation de vol
+Exec=env LD_LIBRARY_PATH=/usr/lib/openssl-1.0:/opt/navigraph/fms-data-manager/lib /opt/navigraph/fms-data-manager/NGFMSManager
+Icon=navigraph-fms-data-manager-beta
+Type=Application
+Terminal=false
+Categories=Utility
+Keywords=fms;flight;simulation
