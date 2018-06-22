@@ -2,8 +2,8 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=gtk-sni-tray
 _hkgname=gtk-sni-tray
-pkgver=0.1.3.1
-pkgrel=2
+pkgver=0.1.3.2
+pkgrel=1
 pkgdesc="A standalone StatusNotifierItem/AppIndicator tray in haskell"
 url=https://hackage.haskell.org/package/gtk-sni-tray
 license=('BSD')
@@ -19,7 +19,7 @@ depends=( 'haskell-base' 'ghc-libs' 'haskell-bytestring'
 'haskell-gi-overloading' 'haskell-text' 'haskell-transformers' 'libdbusmenu-gtk3')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('5c69a40968169b7347c928aa326824cd234074edd8a231896121f47b483b58f3')
+sha256sums=('5c37ac76ebb195c1611da9eee594d2e4910f4b141c304433a024ead08c021b67')
 
 
 build() {
