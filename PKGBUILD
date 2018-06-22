@@ -9,7 +9,7 @@ url="http://aspell.net/"
 license=('GPL2')
 depends=('aspell')
 source=("https://gitlab.com/Pavel-Sayekat/aspell-bn/-/archive/master/aspell-bn-master.tar.bz2")
-sha256sums=('05c8fa9f0c02b00426058844c981a05436594af0d813d124b17b66f10c5bdd9b')
+sha256sums=('7beee4cf3e4431012fd57c07d8f762617c0a1e04bcb2e889a71d21b238516fca')
 build() {
   cd "${srcdir}/aspell-bn-master"
 
