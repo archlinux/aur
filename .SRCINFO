@@ -1,6 +1,6 @@
 pkgbase = freecad-python3-git
 	pkgdesc = A general purpose 3D CAD modeler
-	pkgver = 0.17_pre.r6798.g85b42a16d
+	pkgver = 0.17.r474.g8f1c6f77c
 	pkgrel = 1
 	url = http://www.freecadweb.org/
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = freecad-python3-git
 	depends = hicolor-icon-theme
 	depends = python-pyside2-git
 	depends = python-pivy-git
+	depends = glew
 	source = freecad-python3::git+https://github.com/FreeCAD/FreeCAD.git
 	source = python_version.patch
 	source = FreeCAD-Python3
