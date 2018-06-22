@@ -24,7 +24,7 @@ EOF
 exit 0
 }
 
-while getopts dhp: options
+while getopts dhpr: options
 do
 case $options in
   d) echo "default profile directory is "$PROFDIR"$LINK"
