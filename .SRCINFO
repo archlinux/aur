@@ -1,7 +1,7 @@
 pkgbase = tomatoes
-	pkgdesc = How many tomatoes can you smash in ten short minutes?
+	pkgdesc = I Have No Tomatoes - tomato smashing game
 	pkgver = 1.55
-	pkgrel = 15
+	pkgrel = 16
 	url = http://tomatoes.sourceforge.net
 	arch = i686
 	arch = x86_64

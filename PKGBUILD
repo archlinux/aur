@@ -3,8 +3,8 @@
 
 pkgname=tomatoes
 pkgver=1.55
-pkgrel=15
-pkgdesc="How many tomatoes can you smash in ten short minutes?"
+pkgrel=16
+pkgdesc="I Have No Tomatoes - tomato smashing game"
 url="http://tomatoes.sourceforge.net"
 license=('ZLIB')
 arch=('i686' 'x86_64')
@@ -30,8 +30,7 @@ prepare() {
 
   sed -n '7,27p' README-src > LICENSE
 
-  gendesk -f -n --pkgname=$pkgname --comment="I Have No Tomatoes" \
-    --categories="Application;Game;ArcadeGame;"
+  gendesk -f -n --pkgname=$pkgname --pkgdesc="$pkgdesc"
 }
 
 build() {
