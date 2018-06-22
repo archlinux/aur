@@ -1,6 +1,6 @@
 pkgbase = lwks-beta
 	pkgdesc = Lightworks is a professional video editing suite
-	pkgver = 14.5.0.0.106761
+	pkgver = 14.5.0.0.107216
 	pkgrel = 1
 	url = http://www.lwks.com/
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = lwks-beta
 	provides = lightworks
 	conflicts = lightworks
 	conflicts = lwks
-	source = http://downloads.lwks.com/Lightworks-145RC6-106761-14.5.0.0.deb
-	sha256sums = 36281fdd623cfaebe3570ba6f0a02fc7bb6d40939cea968cd63cfcd55a4e91b1
+	source = http://downloads.lwks.com/Lightworks-145RC7-107216-14.5.0.0.deb
+	sha256sums = d50dd2adee72dd93f13f2364d54f4b4980d98932169e146b95d2e2647dc638b0
 
 pkgname = lwks-beta
 
