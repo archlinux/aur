@@ -3,9 +3,9 @@
 
 
 pkgname=pharo-launcher
-pkgver=1.2
-pkgrel=2
 epoch=1
+pkgver=1.3
+pkgrel=1
 pkgdesc="Pharo Launcher helps you manage your Pharo images"
 arch=(x86_64)
 source=($pkgname-$pkgver.tar.gz)
@@ -14,11 +14,11 @@ license=('MIT')
 makedepends=('gendesk')
 
 source=(
-	'http://files.pharo.org/pharo-launcher/1.2/PharoLauncher-linux-1.2-x64.zip'
+	'http://files.pharo.org/pharo-launcher/1.3/PharoLauncher-linux-1.3-x64.zip'
 )
 
 md5sums=(
-	'6f3c5fdaa282cecddb45ed3f92a3db25'
+	'f5ed53c2f976ac976d5443d2c188c75b'
 )
 
 prepare() {
