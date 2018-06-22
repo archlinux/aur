@@ -1,12 +1,12 @@
 pkgname=psi-plus-full
-pkgver=1.3.384
+pkgver=1.3.388
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client. Built with all plugins, translations, skins and extras"
 url="https://psi-plus.com"
 license=('GPL2')
 arch=('x86_64')
 depends=('minizip' 'qt5-base' 'qt5-multimedia' 'qt5-x11extras' 'qca-qt5' 'libidn' 'libxss' 'qt5-svg' 'hunspell' 'qtkeychain' 'qt5-webengine')
-makedepends=('git' 'patch' 'cmake' 'libotr' 'tidy' 'qt5-tools' 'git')
+makedepends=('git' 'patch' 'cmake' 'libotr' 'tidy' 'qt5-tools' 'git' 'libsignal-protocol-c')
 optdepends=('libotr: for OTR plugin'
             'tidy: for OTR plugin')
 provides=(
