@@ -1,7 +1,7 @@
 # Maintainer: Que Quotion <quequotion@bugmenot.com>
 # Contributor: Ramana Kumar <firstname@member.fsf.org>
 pkgname=firefox-sync
-pkgver=20180118
+pkgver=20180623
 pkgrel=1
 pkgdesc="Speed up Firefox using tmpfs"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('rsync' 'firefox')
 makedepends=('bash')
 source=(${pkgname} "${pkgname}.service")
-md5sums=('069e493c9025889787f0181c75f8c727'
+md5sums=('a9d54d453586701deb04bea69a7de995'
          'bc73b9d80232fea8a8bef24bfb125fe6')
 package() {
   sed -i "3 c\
