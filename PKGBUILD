@@ -3,8 +3,8 @@
 # Contributor: Matthew Stobbs <matthew@stobbstechnical.com>
 
 _pkgname=lxqt-admin
-pkgname=$_pkgname-git
-pkgver=0.10.0.19.g6ce3e29
+pkgname=${_pkgname}-git
+pkgver=0.13.0.85.g30115e4
 pkgrel=1
 pkgdesc='LXQt system administration'
 arch=('i686' 'x86_64' 'armv6h')
@@ -12,25 +12,25 @@ url='http://lxqt.org'
 license=('LGPL')
 depends=('libqtxdg-git' 'liblxqt-git' 'polkit')
 optdepends=('lxqt-policykit-git: polkit authentication agent provided by LXQt')
-makedepends=('git' 'cmake' 'qt5-tools')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+https://github.com/lxde/$_pkgname.git")
+makedepends=('git' 'cmake' 'qt5-tools' 'lxqt-build-tools-git')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+https://github.com/lxqt/${_pkgname}.git")
 sha256sums=("SKIP")
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
+  cd "${srcdir}/${_pkgname}"
+  git describe --always | sed "s/-/./g"
 }
 
 build() {
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/$_pkgname"
-	make
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr "${srcdir}/${_pkgname}"
+  make
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir" install
+  cd build
+  make DESTDIR="${pkgdir}" install
 }
