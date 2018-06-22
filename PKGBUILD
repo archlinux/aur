@@ -1,7 +1,7 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
-pkgname=('python-pynput' 'python2-pynput')
+pkgname=('python-pynput')
 pkgver=1.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to monitor and control user input devices"
 arch=('any')
 url="https://github.com/moses-palmer/pynput"
@@ -14,11 +14,4 @@ package_python-pynput() {
     depends=('python-xlib' 'python-six')
     cd "$srcdir/pynput-${pkgver}"
     python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1;
-}
-
-package_python2-pynput() {
-    makedepends=('python2-setuptools' 'python2-sphinx')
-    depends=('python2-xlib' 'python2-six' 'python2-enum34')
-    cd "$srcdir/pynput-${pkgver}"
-    python2 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1;
 }
