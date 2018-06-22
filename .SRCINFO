@@ -1,13 +1,13 @@
 pkgbase = nextflow
 	pkgdesc = A DSL for data-driven computational pipelines.
-	pkgver = 0.30.1
+	pkgver = 0.30.2
 	pkgrel = 1
 	url = https://nextflow.io
 	arch = any
 	license = GPL-3
 	depends = java-environment>=8
-	source = https://github.com/nextflow-io/nextflow/releases/download/v0.30.1/nextflow
-	md5sums = 9aaaeb5b984efd08bfdb8e46653bdf65
+	source = https://github.com/nextflow-io/nextflow/releases/download/v0.30.2/nextflow
+	md5sums = 77eb14237cf369fc96df99aac49a0601
 
 pkgname = nextflow
 
