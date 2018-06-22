@@ -1,6 +1,6 @@
 # Maintainer: LambdAurora <aurora42lambda@gmail.com>
 pkgname=lambdacommon-git
-pkgver=v1.5.12.r0.ea42603
+pkgver=v1.6.0
 pkgrel=1
 pkgdesc="A library written in C++ with common features."
 arch=('i686' 'x86_64' 'armv7h')
