@@ -1,45 +1,45 @@
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
 pkgname=libseccomp-git
-_pkgname=libseccomp
-pkgver=2.2.0.r179.g9e61fd7
+pkgver=2.2.0.r223.g8ad3638
 pkgrel=1
-pkgdesc='Enhanced seccomp library'
-url=https://github.com/seccomp/libseccomp
+pkgdesc="Interface to the Linux Kernel's syscall filtering mechanism"
 arch=('i686' 'x86_64')
-license=('LGPL2.1')
+url="https://github.com/seccomp/libseccomp"
+license=('LGPL')
 depends=('glibc')
 makedepends=('git')
-provides=(libseccomp)
-conflicts=(libseccomp)
-source=(git+https://github.com/seccomp/libseccomp)
-md5sums=('SKIP')
+provides=('libseccomp')
+conflicts=('libseccomp')
+options=('staticlibs')
+source=("git+https://github.com/seccomp/libseccomp.git")
+sha256sums=('SKIP')
+
 
 pkgver() {
-  cd $_pkgname
-  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-}
+  cd "libseccomp"
 
-prepare() {
-  cd $_pkgname
-  ./autogen.sh
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkgname
+  cd "libseccomp"
 
-  ./configure --prefix=/usr
-   make
+  ./autogen.sh
+  ./configure --prefix="/usr"
+  make
+}
+
+check() {
+  cd "libseccomp"
+
+  #make check
 }
 
 package() {
-  cd $_pkgname
+  cd "libseccomp"
+
   make DESTDIR="$pkgdir" install
-
-  #mkdir -m 0755 -p "$pkgdir/usr/share/doc/$_pkgname"
-
-  #find . -maxdepth 1 -type f | grep -v "[a-z]" | while read somefile; do
-    #install "$somefile" "$pkgdir/usr/share/doc/$_pkgname"
-  #done
 }
