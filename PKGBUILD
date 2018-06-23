@@ -4,7 +4,7 @@
 # It is unlikely that he will port to FF 57.
 
 _plugin_name=user-agent-switcher
-_plugin_version=1.1.2
+_plugin_version=1.2.0
 _plugin_ext="-an+fx"
 pkgdesc="Firefox extension to override the browser's User-Agent string"
 license=('GPL')
@@ -15,9 +15,12 @@ pkgrel=1
 arch=('any')
 url="https://gitlab.com/alexander255/user-agent-switcher"
 depends=("firefox>=57")
-source=("https://addons.mozilla.org/firefox/downloads/file/785722/user_agent_switcher-${pkgver}${_plugin_ext}.xpi")
+source=("https://addons.mozilla.org/firefox/downloads/file/953860/user_agent_switcher-${pkgver}${_plugin_ext}.xpi")
 noextract=('user_agent_switcher-${pkgver}${_plugin_ext}.xpi')
-sha256sums=('68ee6e0aae370bf6c1aee0e5a070aa4b8f587487c0aedb76a6efece18d82c076')
+sha256sums=('dfaa82d5b16dbb937f73b43f87331945b92db47dc9360a327b0649297cfb6fbf')
+
+https://addons.mozilla.org/firefox/downloads/file/953860/user_agent_switcher-${pkgver}${_plugin_ext}.xpi
+
 package() {
   cd "${srcdir}"
   _extension_id="user-agent-switcher@ninetailed.ninja"
