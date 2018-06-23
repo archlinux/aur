@@ -1,0 +1,20 @@
+pkgbase = gr-adapt-git
+	pkgdesc = Adaptive filters for GNU Radio
+	pkgver = r4.3cbe154
+	pkgrel = 1
+	url = https://github.com/karel/gr-adapt
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = cmake
+	makedepends = git
+	depends = gnuradio
+	depends = libvolk
+	optdepends = armadillo: QR decomposition based filters
+	provides = gr-adapt
+	conflicts = gr-adapt
+	source = gr-adapt-git::git+https://github.com/karel/gr-adapt.git
+	sha256sums = SKIP
+
+pkgname = gr-adapt-git
+
