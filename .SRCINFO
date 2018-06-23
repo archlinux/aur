@@ -1,0 +1,35 @@
+pkgbase = autosuspend-git
+	pkgdesc = A daemon to suspend your server in case of inactivity
+	pkgver = 2.0.0.186
+	pkgrel = 1
+	url = https://github.com/languitar/autosuspend
+	install = autosuspend-git.install
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	makedepends = python-pytest-runner
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-issues
+	depends = python
+	depends = python-psutil
+	optdepends = python-dbus: logind session discovery
+	optdepends = python-mpd2: MPD playing status check
+	optdepends = python-requests: network-based checks
+	optdepends = python-lxml: XPath check
+	optdepends = python-dbus: logind-based checks
+	optdepends = python-icalendar: iCalendar checks
+	optdepends = python-dateutil: iCalendar checks
+	optdepends = python-tzlocal: iCalendar checks
+	optdepends = python-requests-file: file:// URL support
+	optdepends = iputils: ping check
+	optdepends = xprintidle: X server idle time check
+	provides = autosuspend
+	conflicts = autosuspend
+	backup = etc/autosuspend.conf
+	backup = etc/autosuspend-logging.conf
+	source = git+https://github.com/languitar/autosuspend.git
+	sha256sums = SKIP
+
+pkgname = autosuspend-git
+
