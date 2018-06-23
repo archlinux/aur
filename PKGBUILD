@@ -3,7 +3,7 @@
 
 _base=dolfin
 pkgname=${_base}
-pkgdesc="the C++ interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations."
+pkgdesc="The C++ interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations (stable)."
 pkgver=2018.1.0
 pkgrel=1
 arch=('i686' 'x86_64')
