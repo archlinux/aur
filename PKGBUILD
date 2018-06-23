@@ -5,7 +5,7 @@
 
 pkgname='seahub'
 pkgver='6.3.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='The web frontend for seafile server'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/haiwen/seahub'
@@ -44,11 +44,11 @@ optdepends=(
 )
 changelog="ChangeLog"
 source=("$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz")
-sha256sums=('4fb4742d22a23709e1ff227dbf186cd48cfdfceb04fe63703fe8ba6b5b08616a')
+sha256sums=('609b0348ed72bfef880e3de0e9aa379dc0495c0b0c76673c07ba32185ceeb155')
 options=('!strip')
 
 prepare() {
-    cd "$srcdir/${pkgname}-${pkgver}-server"
+    cd "$srcdir/$pkgname-$pkgver-server"
     # Remove useless files and directories
     rm -rf \
         './'{CONTRIBUTORS,HACKING,Makefile} \

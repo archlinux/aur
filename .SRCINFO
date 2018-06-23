@@ -1,7 +1,7 @@
 pkgbase = seahub
 	pkgdesc = The web frontend for seafile server
 	pkgver = 6.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seahub
 	changelog = ChangeLog
 	arch = i686
@@ -40,7 +40,7 @@ pkgbase = seahub
 	optdepends = ffmpeg: For video thumbnails
 	options = !strip
 	source = seahub-6.3.1-server.tar.gz::https://github.com/haiwen/seahub/archive/v6.3.1-server.tar.gz
-	sha256sums = 4fb4742d22a23709e1ff227dbf186cd48cfdfceb04fe63703fe8ba6b5b08616a
+	sha256sums = 609b0348ed72bfef880e3de0e9aa379dc0495c0b0c76673c07ba32185ceeb155
 
 pkgname = seahub
 
