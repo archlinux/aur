@@ -1,0 +1,6 @@
+post_install() {
+    echo "Example mainnet configuration files are located in /etc/go-nebulas"
+    echo "You can delete the suffix *.example to use them"
+    echo "Then, you can use \"systemctl start go-nebulas\" to start the node"
+    echo "For more information, please visit: https://github.com/nebulasio/wiki/wiki"
+}
