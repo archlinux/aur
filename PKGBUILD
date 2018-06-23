@@ -1,6 +1,6 @@
 #Maintainer : Papajoke <papajoke [at] manjaro [dot] fr>
 pkgname=pacnew-chaser
-pkgver=0.9.14
+pkgver=0.9.15
 pkgrel=1
 url="https://www.manjaro.fr/forum/"
 pkgdesc="manage .pacnew files, compare and merge (qt gui) - dev version"
@@ -15,7 +15,7 @@ source=("https://www.manjaro.fr/forum/datas/pacnew-chaser-qt.tar.gz")
 #conflicts=('pacnew-chaser-gtk')
 #replaces=('pacnew-chaser-gtk')
 #install='.install' 
-sha512sums=('6ec4938132a0b44047231ec4862857550535c018d33008318410184e21d20ab39edb84748346e5cc20930665ac9aa835269e286066629b908ddebd3d480ddc38')
+sha512sums=('369abf5862df53468a6c225a970893300c4855d0f95774ede01e57c0bae0c28350f3f7371ae9d3e6ebe799e6951b38cbe87ef076e181983c9d33666cf4dd2996')
 
 package() {
   cd "$srcdir"
@@ -28,7 +28,7 @@ package() {
   install -m644 "images/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   #mkdir -p "${pkgdir}/usr/share/polkit-1/actions/"
   msg2 "install polkit policies"
-  for p in diffuse meld kompare rm ; do
+  for p in diffuse meld kompare rm vscode ; do
     install -m644 "policies/org.manjaro.fr.pacnew.${p}.policy" "${pkgdir}/usr/share/polkit-1/actions/"
   done
 }
