@@ -1,7 +1,7 @@
 # Maintainer: Muhammad Fairuzi Teguh <mfairuzit at gmail dot com>
 # Contributor: Grant Hames-Morgan <nthmorgan at gmail dot com>
 pkgname=marp
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="Markdown presentation writer, powered by Electron"
 arch=('x86_64' 'i686')
@@ -47,3 +47,7 @@ md5sums=('095ab0c670c1d311be1b066e416efed3'
          '734a3e3bd102ee9de4bc78d25008a92d')
 md5sums_x86_64=('cfd3db228228cc54730f396d6c1d1a84')
 md5sums_i686=('4f02c454197b53b4c25c4276910e21bc')
+md5sums=('095ab0c670c1d311be1b066e416efed3'
+         '734a3e3bd102ee9de4bc78d25008a92d')
+md5sums_x86_64=('04cdc0d42c10a32289b5bafb4de694e9')
+md5sums_i686=('2eb5f02c2baef7bce4d6de90c6d2fe5f')
