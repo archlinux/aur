@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=BLHeli Configurator
+Comment=Crossplatform configuration tool for BLHeli based ESCs
+Exec=/opt/blheli-configurator/blheli-configurator
+Icon=/opt/blheli-configurator/blheli_icon_128.png
+Terminal=false
+Type=Application
