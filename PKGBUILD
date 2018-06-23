@@ -1,4 +1,5 @@
-# Maintainer:  Nascher <kevin@nascher.org>
+# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Contributor:  Nascher <kevin@nascher.org>
 # Contributor: Artefact2 <artefact2@gmail.com>
 # Contributor: Philip Sequeira <phsequei@gmail.com>
 # Contributor: Lauri Niskanen <ape@ape3000.com>
@@ -9,7 +10,7 @@
 
 pkgname=stepmania
 pkgver=5.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A free dance and rhythm game (was previously sm-ssc)'
 url='http://www.stepmania.com/'
 license=('MIT')
@@ -29,8 +30,10 @@ build() {
   cd "$srcdir/$pkgname-$pkgver/Build"
   export CC=/usr/bin/gcc-5
   export CXX=/usr/bin/g++-5
+  export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong"
+  export CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong"
 
-  cmake -D WITH_SYSTEM_FFMPEG=Off ..
+  cmake -D WITH_SYSTEM_FFMPEG=Off -DWITH_MINIMAID=OFF ..
   make
 }
 
@@ -48,5 +51,4 @@ package() {
 
   install -D -m644 Docs/Licenses.txt "$pkgdir/usr/share/licenses/$pkgname/Licenses.txt"
   cp -ar icons "$pkgdir/usr/share/"
-
 }
