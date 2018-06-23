@@ -10,9 +10,8 @@ url='http://www.freecadweb.org/'
 license=('LGPL')
 depends=('netcdf' 'boost-libs' 'coin-hg' 'med' 'opencascade7' 'python-numpy'
          'xerces-c' 'qt5-svg' 'qt5-webkit' 'jsoncpp' 'hicolor-icon-theme'
-         'python-pyside2-git' 'python-pivy-git' 'glew')
-makedepends=('git' 'cmake' 'boost' 'eigen' 'desktop-file-utils' 'qt5-tools'
-             'python-pyside2-tools-git')
+         'python-pyside2' 'python-pivy-git' 'glew')
+makedepends=('git' 'cmake' 'boost' 'eigen' 'desktop-file-utils' 'qt5-tools')
 source=("${_appname}::git+https://github.com/FreeCAD/FreeCAD.git"
         "python_version.patch"
         "FreeCAD-Python3"
@@ -46,9 +45,7 @@ build() {
           -DCMAKE_PREFIX_PATH="/opt/opencascade7" \
           -DCMAKE_INCLUDE_PATH="/opt/opencascade7/include/opencascade" \
           -DCMAKE_LIBRARY_PATH="/opt/opencascade7/lib" \
-          -DCMAKE_INSTALL_RPATH="/opt/opencascade7/lib;/usr/lib" \
-          -DPYSIDE2RCCBINARY="/usr/bin/pyside2-rcc" \
-          -DPYSIDE2UICBINARY="/usr/bin/pyside2-uic"
+          -DCMAKE_INSTALL_RPATH="/opt/opencascade7/lib;/usr/lib"
 
     make
 }
