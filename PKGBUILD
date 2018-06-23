@@ -4,14 +4,14 @@
 pkgbase=imagemagick-fftw
 pkgname=(libmagick-fftw imagemagick-fftw)
 pkgver=7.0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program"
 url="https://www.imagemagick.org/"
 arch=(x86_64)
 license=(custom)
 depends=(libltdl lcms2 fontconfig libxext liblqr libraqm libpng libxml2)
 makedepends=(ghostscript openexr libwmf librsvg libxml2 openjpeg2 libraw opencl-headers libwebp
-             chrpath ocl-icd glu ghostpcl ghostxps 'fftw')
+             chrpath ocl-icd glu ghostpcl ghostxps libheif 'fftw')
 checkdepends=(gsfonts ttf-dejavu)
 _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
@@ -81,6 +81,7 @@ package_libmagick-fftw() {
   conflicts=("libmagick")
   pkgdesc+=" (library)"
   optdepends=('ghostscript: PS/PDF support'
+              'libheif: HEIF support'
               'libraw: DNG support'
               'librsvg: SVG support'
               'libwebp: WEBP support'
@@ -121,15 +122,6 @@ package_imagemagick-fftw() {
   mv binpkg/* "$pkgdir"
 
   find "$pkgdir/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
-
-# template start; name=perl-binary-module-dependency; version=1;
-#if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
-#        _perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
-#        _perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
-#        echo $_perlver_min $_perlver_max
-#        depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
-#fi
-# template end;
 
   cd $_tarname
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE NOTICE
