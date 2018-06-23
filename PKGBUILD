@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=simpleconvert
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc='Application to convert multiple files to another filetype using FFMPEG.'
 url='https://github.com/bartkessels/simpleconvert'
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('GPL3')
 depends=('ffmpeg' 'hicolor-icon-theme' 'qt5-base')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4992e234a88a9a74547685d89396b19061472c52b4edc5e8ff395cb1ac4778a0')
+sha256sums=('acf3f6ef13eb9a0b2c7c9a112b1fb72d8e9a51a58ed10fabe4b148b11ac8bb2e')
 
 build() {
   cd "${pkgname}-${pkgver}"
