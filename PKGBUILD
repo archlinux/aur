@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=simpleconvert-git
-pkgver=3.0.r2.g712a966
+pkgver=3.1.r1.g3467c2a
 pkgrel=1
 pkgdesc='Application to convert multiple files to another filetype using FFMPEG.'
 url='https://github.com/bartkessels/simpleconvert'
