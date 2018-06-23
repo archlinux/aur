@@ -1,0 +1,6 @@
+# Ignore file of lambdacommon package
+lambdacommon
+lambdacommon*.pkg.tar.xz
+pkg
+src
+v*.tar.gz
