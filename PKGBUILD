@@ -37,8 +37,6 @@ build() {
 	[ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
 	[ -n "$SLEPC_DIR" ] && source /etc/profile.d/slepc.sh
 
-	# patch ../doc/parse_doxygen.py < ../../../parse_doxygen.patch 
-
 	cmake ..\
 		-DCMAKE_INSTALL_PREFIX="${pkg}"/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
@@ -46,7 +44,6 @@ build() {
 		-DCMAKE_SKIP_BUILD_RPATH=TRUE \
 		-DCMAKE_SKIP_RPATH=TRUE \
 		-DCMAKE_BUILD_TYPE="Release"
-		# -DDOLFIN_ENABLE_DOCS=FALSE \
 
 	make
 }
