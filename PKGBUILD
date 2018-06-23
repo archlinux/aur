@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libsrtp
-pkgver=1.6.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Library for SRTP (Secure Realtime Transport Protocol) (mingw-w64)"
 arch=('any')
@@ -9,17 +9,10 @@ license=('BSD')
 makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "0001-Don-t-create-a-symlink-if-there-is-no-SHAREDLIBVERSI.patch")
-sha256sums=('1a3e7904354d55e45b3c5c024ec0eab1b8fa76fdbf4dd2ea2625dad2b3c6edde'
-  '27c399254f21e3155b1e4e4fb3772e4a6bce85b40eddefafeffaa37c9d2ef222')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('44fd7497bce78767e96b54a11bca520adb2ad32effd515f04bce602b60a1a50b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd "${srcdir}/libsrtp-${pkgver}"
-  patch -p1 -i ${srcdir}/0001-Don-t-create-a-symlink-if-there-is-no-SHAREDLIBVERSI.patch
-}
 
 build() {
   export ac_cv_lib_pcap_pcap_create=no
