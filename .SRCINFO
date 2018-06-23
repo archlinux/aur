@@ -6,9 +6,9 @@ pkgbase = python-ffc
 	arch = any
 	groups = fenics
 	license = LGPL3
-	depends = python-dijitso
-	depends = python-fiat
-	depends = python-ufl
+	depends = python-dijitso=2018.1.0
+	depends = python-fiat=2018.1.0
+	depends = python-ufl=2018.1.0
 	depends = pybind11
 	conflicts = python-ffc-git
 	options = !emptydirs

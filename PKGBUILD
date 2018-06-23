@@ -11,7 +11,10 @@ url="https://bitbucket.org/fenics-project/${_base}"
 license=('LGPL3')
 groups=('fenics')
 conflicts=('python-ffc-git')
-depends=('python-dijitso' 'python-fiat' 'python-ufl' 'pybind11')
+depends=('python-dijitso=2018.1.0'
+         'python-fiat=2018.1.0'
+				 'python-ufl=2018.1.0'
+				 'pybind11')
 options=(!emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz)
 sha256sums=('c5a6511693106d1cd2fc013148d0cd01cd1b99fc65dab461ca0b95851a9ea271')
