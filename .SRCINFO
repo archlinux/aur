@@ -1,6 +1,6 @@
 pkgbase = perl-html-lint
 	pkgdesc = Perl module to check for HTML errors in a string or file
-	pkgver = 2.30
+	pkgver = 2.32
 	pkgrel = 1
 	url = http://search.cpan.org/dist/HTML-Lint
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = perl-html-lint
 	depends = perl-html-parser>=3.47
 	depends = perl-html-tagset>=3.03
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/HTML-Lint-2.30.tar.gz
-	md5sums = 236b8035dd89bf7495ab5863b7328550
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/HTML-Lint-2.32.tar.gz
+	md5sums = 8e8f7d84af7a1d85b66af966c14c6855
 
 pkgname = perl-html-lint
 
