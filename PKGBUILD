@@ -2,10 +2,11 @@
 pkgname='python-keras-vis'
 _name='keras-vis'
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Neural Network visualization toolkit for keras'
 url='https://github.com/raghakot/keras-vis'
 depends=('python' 'python-keras')
+makedepends=('python-pip')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/${_name}/keras_vis-${pkgver}-py2.py3-none-any.whl")
