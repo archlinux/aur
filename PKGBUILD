@@ -3,7 +3,7 @@
 
 pkgname=wsjtx-git
 pkgver=r4218.f962caac
-pkgrel=1
+pkgrel=2
 pkgdesc='Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)'
 arch=('i686' 'x86_64')
 url='http://physics.princeton.edu/pulsar/k1jt/wsjtx.html'
@@ -15,7 +15,7 @@ conflicts=('wsjtx')
 source=('git+https://git.code.sf.net/p/wsjt/wsjtx/'
         'wsjtx.patch')
 md5sums=('SKIP'
-         'c5a2c0b91c2709e070d7ebcb75621354')
+         'db95112aa92f4f974df85c4afc50fedc')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -26,7 +26,6 @@ prepare() {
     cp wsjtx.patch "$srcdir/${pkgname%-git}"
 	cd "$srcdir/${pkgname%-git}"
     patch -i wsjtx.patch
-	sed -ri 's/^find_package \(hamlib 3 REQUIRED\)/set \(hamlib_LIBRARIES hamlib\)/' CMakeLists.txt
 }
 
 build() {

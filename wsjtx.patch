@@ -1,6 +1,15 @@
 diff -ur /CMakeLists.txt /CMakeLists.txt
 --- /CMakeLists.txt	2018-05-31 02:29:47.000000000 +0200
 +++ /CMakeLists.txt	2018-06-03 09:34:15.109877528 +0200
+@@ -861,7 +861,7 @@
+ # libhamlib setup
+ #
+ set (hamlib_STATIC 1)
+-find_package (hamlib 3 REQUIRED)
++set (hamlib_LIBRARIES hamlib)
+ find_program (RIGCTL_EXE rigctl)
+ find_program (RIGCTLD_EXE rigctld)
+ 
 @@ -1343,7 +1343,8 @@
        )
    endif ()
