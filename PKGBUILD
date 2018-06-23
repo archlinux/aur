@@ -2,7 +2,7 @@
 
 pkgname=python-maxminddb
 _name=maxminddb
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=2
 pkgdesc="Python MaxMind DB reader extension"
 arch=('any')
@@ -19,7 +19,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("$_name-$pkgver.tar.gz::https://github.com/maxmind/MaxMind-DB-Reader-python/archive/v${pkgver}.tar.gz")
-md5sums=('1bfe52a6ff6172c0be4654c8a967b0b5')
+md5sums=('b8ead710583b23e82073190f053c5a21')
 
 package() {
   mv "${srcdir}/MaxMind-DB-Reader-python-${pkgver}" $_name-$pkgver
