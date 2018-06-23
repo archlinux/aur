@@ -1,7 +1,7 @@
 #Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 
 pkgname="social-engineer-toolkit"
-pkgver=7.7.5
+pkgver=7.7.8
 pkgrel=1
 pkgdesc="The Social-Engineer Toolkit (SET)"
 arch=("any")
@@ -10,11 +10,11 @@ license=("custom")
 makedepends=("python2")
 depends=("python2-pexpect" "python2-crypto" "python2-requests"
          "python2-pyopenssl" "python2-pefile" "impacket"
-         "python2-pillow" "python2-qrcode" "python2-beautifulsoup3")
+         "python2-pillow" "python2-qrcode" "python2-beautifulsoup4")
 optdepends=("metasploit")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trustedsec/social-engineer-toolkit/archive/${pkgver}.tar.gz"
         "setoolkit")
-sha512sums=('aee9add5a5f7520283c80e85576fabc31ee47e0fbccdedeeafe8ae22ddadfc5e8635425eeaf6592c55e41384ab5ad3c41e874a7cc6b1b99b9e81576aa2b4baa3'
+sha512sums=('4031e3f8ef3be8db4da0fb8e63609d329f82065eb28645dea6551be079fbe655077eb3e917ef523e58d72bd6eaeff37a758babf98c27ef6806f2446be107c9ee'
             '130df5c3be2a75466933c086a10194a8e276b699698389af1528d2aa0f445d1dd41a82bf27e01749d59481df3d1071ac37605c4ee3e57c8bf99dd2410dd23a0b')
 
 build() {
