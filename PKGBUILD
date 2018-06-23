@@ -9,7 +9,7 @@ depends=('flac' 'lame' 'python' 'python-mutagen')
 makedepends=('python-setuptools')
 license=('APACHE')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/h/harmonize/harmonize-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('9f87fb510d37a3aeb8a566a604ecdc811f9353f623e30ea776b5bb646120955d')
 
 package() {
