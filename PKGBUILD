@@ -3,7 +3,7 @@
 
 pkgname=go-nebulas-git
 pkgver=r2209.78433128
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Go implementation of the Nebulas protocol"
 arch=("x86_64")
 url="https://github.com/nebulasio/go-nebulas"
@@ -63,7 +63,7 @@ package() {
     install -Dm644 config.conf ${pkgdir}/etc/go-nebulas/config.conf.example
     install -Dm644 genesis.conf ${pkgdir}/etc/go-nebulas/genesis.conf.example
     cp -r ${_dir}/keydir ${pkgdir}/etc/go-nebulas/keydir.example
-    install -Dm644 go-nebulas.service ${pkgdir}/usr/lib/systemd/system/caddy.service
+    install -Dm644 go-nebulas.service ${pkgdir}/usr/lib/systemd/system/go-nebulas.service
 }
 
 # vim: ts=2 sw=2 et:
