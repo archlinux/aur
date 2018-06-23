@@ -1,5 +1,6 @@
 # Maintained by RetardedOnion@archlinux-irc
 # Based on https://aur.archlinux.org/packages/linux-mainline/
+# acs-patch from https://gitlab.com/Queuecumber/linux-acs-override/tree/master/workspaces
 ##
 ## Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
 ##
