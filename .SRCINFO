@@ -9,6 +9,8 @@ pkgbase = lambdacommon-git
 	license = MIT
 	makedepends = cmake
 	makedepends = git
+	provides = lambdacommon
+	conflicts = lambdacommon
 	source = lambdacommon::git+https://github.com/AperLambda/lambdacommon
 	md5sums = SKIP
 
