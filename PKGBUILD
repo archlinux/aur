@@ -1,7 +1,7 @@
 # Maintainer: KingofToasters <themanhimself at sgregoratto dot me>
 
 pkgname=cointop
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="An interactive, real-time cryptocurrency monitor"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('APACHE')
 makedepends=('go')
 options=('!strip' '!emptydirs')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('2c780c3fe7fa7dd0d51ad0f0d1b1b7b7ee3f8365b9605ab73f21557e72077d78')
+sha256sums=('6188f21e7fcdfe686324a30a5ccc89a684e2a9acd81f2b042309ec0b28c26272')
 
 prepare() {
     cd "$pkgname-$pkgver"
