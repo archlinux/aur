@@ -8,7 +8,7 @@ pkgname=ipwaiter-git
 # shellcheck disable=SC2034
 pkgdesc="ipwaiter serves iptables"
 # shellcheck disable=SC2034
-pkgver=r70.148b516
+pkgver=r72.f39060b
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -64,6 +64,6 @@ package() {
   # as well as install system files to the correct locations
 
   # shellcheck disable=SC2154
-  DESTDIR="${pkgdir}" ./install.sh
+  DESTDIR="${pkgdir}" ./install.sh install
 }
 
