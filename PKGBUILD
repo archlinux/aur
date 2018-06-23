@@ -1,6 +1,6 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
 _cranname=robustbase
-_cranver=0.93-0
+_cranver=0.93-1
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-robustbase
 pkgver=${_cranver//[:-]/.}
@@ -14,7 +14,7 @@ depends=('r' 'gcc-fortran' 'r-deoptimr')
 optdepends=('r-robust' 'r-fit.models' 'r-mpv' 'r-xtable' 'r-ggplot2' 'r-ggally' 'r-rcolorbrewer' 'r-reshape2' 'r-sfsmisc' 'r-catdata' 'r-doparallel' 'r-foreach' 'r-skewt')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('532028dbc82bc3d2903ba667fd989bfa')
+md5sums=('9311aaa97e4ec23b1b6b3b43ce7be072')
 
 build(){
     R CMD INSTALL ${_pkgtar} -l $srcdir
