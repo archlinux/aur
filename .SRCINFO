@@ -12,6 +12,7 @@ pkgbase = compute-runtime-bin
 	optdepends = libva
 	optdepends = ocl-icd
 	provides = opencl-driver
+	provides = compute-runtime
 	conflicts = beignet
 	conflicts = compute-runtime
 	source = https://github.com/intel/compute-runtime/releases/download/18.24.10921/intel-opencl_18.24.10921_amd64.deb
