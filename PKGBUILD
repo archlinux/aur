@@ -1,7 +1,7 @@
 # Contributor: Michael Spradling <mike@mspradling.com>
 # Maintainer: Michael Spradling <mike@mspradling.com>
 pkgname=emq
-pkgver=2.3.0
+pkgver=2.3.9
 pkgrel=1
 pkgdesc="emqtt: The Massively Scalable MQTT Broker for IoT and Mobile Applications"
 url="http://emqtt.io"

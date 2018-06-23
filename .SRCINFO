@@ -1,6 +1,6 @@
 pkgbase = emq
 	pkgdesc = emqtt: The Massively Scalable MQTT Broker for IoT and Mobile Applications
-	pkgver = 2.3.0
+	pkgver = 2.3.9
 	pkgrel = 1
 	url = http://emqtt.io
 	install = emqttd.install
@@ -33,7 +33,7 @@ pkgbase = emq
 	backup = etc/emqttd/plugins/emq_sn.conf
 	backup = etc/emqttd/plugins/emq_stomp.conf
 	backup = etc/emqttd/plugins/emq_web_hook.conf
-	source = emq::git+https://github.com/emqtt/emq-relx.git#tag=v2.3.0
+	source = emq::git+https://github.com/emqtt/emq-relx.git#tag=v2.3.9
 	source = emq.service
 	source = 0001-Update-vars-for-build.patch
 	md5sums = SKIP
