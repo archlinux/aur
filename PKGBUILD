@@ -5,7 +5,7 @@
 
 pkgname='ccnet-server'
 pkgver='6.3.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Internal communication framework and user/group management for seafile server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/$pkgname"
@@ -14,7 +14,7 @@ depends=('libevent' 'libsearpc' 'libldap' 'libmariadbclient' 'postgresql-libs')
 makedepends=('vala')
 conflicts=('ccnet')
 source=("$pkgname-v$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz")
-sha256sums=('024e559b9eddbfdb766339027999decee1a1ea92a81c309d6f6e00046a60700a')
+sha256sums=('167dcd531125035f324927199395bec024d8d993e1b0c04a5ffc6f8634252f12')
 
 prepare () {
     cd "$srcdir/$pkgname-$pkgver-server"
