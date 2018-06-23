@@ -3,7 +3,7 @@
 _name=horizon
 pkgname=${_name}-git
 pkgver=r185.59b2f6b
-pkgrel=1
+pkgrel=2
 pkgdesc="free EDA package written in C++"
 arch=('x86_64' 'i686')
 url="https://github.com/carrotIndustries/horizon"
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-    for f in horizon-imp horizon-pool horizon-pool-mgr horizon-prj horizon-prj-mgr
+    for f in horizon-imp horizon-pool horizon-eda horizon-prj
     do
         install -Dm755 $srcdir/$_name/$f $pkgdir/usr/bin/$f
     done
