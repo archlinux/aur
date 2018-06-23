@@ -3,7 +3,7 @@
 
 pkgname=go-nebulas
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Go implementation of the Nebulas protocol"
 arch=("x86_64")
 url="https://github.com/nebulasio/go-nebulas"
