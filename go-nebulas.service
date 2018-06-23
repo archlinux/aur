@@ -4,7 +4,8 @@ Documentation=https://github.com/nebulasio/wiki
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/neb -c /etc/go-nebulas/config.conf
+ExecStart=/usr/bin/neb -c /opt/go-nebulas-git/conf/config.conf
+WorkingDirectory=/opt/go-nebulas-git
 
 [Install]
 WantedBy=multi-user.target
