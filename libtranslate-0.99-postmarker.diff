@@ -1,0 +1,13 @@
+diff -Nrbu libtranslate-0.99/src/modules/translate-generic-service.c libtranslate-0.99-OK/src/modules/translate-generic-service.c
+--- libtranslate-0.99/src/modules/translate-generic-service.c	2007-12-06 17:27:26.000000000 +0300
++++ libtranslate-0.99-OK/src/modules/translate-generic-service.c	2007-12-06 17:27:10.000000000 +0300
+@@ -955,7 +955,7 @@
+ 		    raw = g_strndup(work, s - work);
+ 		}
+ 	      else
+-		raw = g_strdup(response);
++		raw = g_strdup(work);
+ 	    }
+ 
+ 	  if (raw)
+
