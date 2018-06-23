@@ -2,7 +2,7 @@
 # Fri Jan 19 11:16:50 UTC 2018
 pkgbase = nfs-ganesha
 	pkgdesc = Nfs-ganesha supports both the NFS and 9P protocols.
-	pkgver = 2.5.4
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = http://nfs-ganesha.github.io/
 	arch = i686
@@ -18,4 +18,3 @@ pkgbase = nfs-ganesha
 	md5sums = SKIP
 
 pkgname = nfs-ganesha
-
