@@ -1,7 +1,7 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=forked-daapd
 pkgver=26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="iTunes-compatible media server, originally intended as a rewrite of Firefly Media Server (mt-daapd)."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/ejurgensen/forked-daapd"
@@ -60,4 +60,5 @@ package() {
 
   install -D -m644 "$srcdir/forked-daapd.service" "$pkgdir/usr/lib/systemd/system/forked-daapd.service"
   make DESTDIR="$pkgdir/" install
+  rmdir $pkgdir/var/run
 }
