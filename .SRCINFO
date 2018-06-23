@@ -36,10 +36,11 @@ pkgbase = nimf-git
 	depends = anthy
 	depends = libchewing
 	depends = librime
-	depends = brise
 	depends = libxkbcommon
 	depends = wayland
 	depends = audit
+	optdepends = brise: Rime schema repository
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
 	source = https://gitlab.com/hodong/nimf/-/archive/master/nimf-master.tar.bz2
 	md5sums = SKIP
 
