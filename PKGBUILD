@@ -7,10 +7,10 @@ _channel=earlybird
 _milestone=62.0a1
 
 _release_year=2018
-_release_month=05
-_release_day=29
-_release_time=$_release_year-$_release_month-$_release_day-10-01-29
-_buildid=20180529100129
+_release_month=06
+_release_day=23
+_release_time=$_release_year-$_release_month-$_release_day-10-01-59
+_buildid=20180623100159
 
 
 pkgver=62.0a1.$_buildid
@@ -34,8 +34,8 @@ source_i686=("$_base_url/thunderbird-62.0a1.en-US.linux-i686.tar.bz2")
 source_x86_64=("$_base_url/thunderbird-62.0a1.en-US.linux-x86_64.tar.bz2")
 
 sha512sums=('a36bb5710b9cd6637cf6f538808e2fba8c99fdd1d486446ff9ee8094ca30b5592c17b3e808cae1da7ff2b28123f54902ed4ee1501585a8dcfc54d581588638d3')
-sha512sums_i686=('6fe0009a054e8624bcb4457f18852beb5cc490eaf98b9f6bd85410b823dff38f2374a6e14d6e2d28795e181705e7fc823b994bdef1fc5f8219810014a6ad065f')
-sha512sums_x86_64=('d6cb4cc9ab278c72719190c963e93b31e3909573f3770806e946be13a7d311f77502ba859d7949b2db3fd0641bdc4c18db0ac51ea782d54d30658151ed134e95')
+sha512sums_i686=('090dc81d17335ced0b6ffbb98e8d4b3cf233ffca0a7697265dcd8eb598a88f9864febeb5d470258db4a98b9dd083be5368d130a7deced7f2458c18b1ebaa0d5b')
+sha512sums_x86_64=('bc6e74d94a577957109fa63835a622514f759440160f18f2bbaf925327312d6ed3c1af5a99a53e1ad6be821e82839ac4c015e5afbda5a37787a5a930dc78e655')
 
 pkgver() {
     cd "${_name}"
