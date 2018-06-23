@@ -19,11 +19,7 @@
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0a2
-pkgrel=2
-_codename=Leia
-_rtype=Alpha
-_rver=1
-_dver=3
+pkgrel=3
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -32,7 +28,7 @@ makedepends=(
   'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'libaacs' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libssh' 'libva'
-  'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'nasm' 'nss-mdns'
+  'libvdpau' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm' 'nss-mdns'
   'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'rtmpdump'
   'shairplay' 'smbclient' 'speex' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower'
   'yajl' 'zip' 'git' 'giflib' 'rapidjson'
@@ -45,6 +41,10 @@ makedepends=(
 # https://github.com/xbmc/libdvdcss/tags
 # https://github.com/xbmc/libdvdnav/tags
 # https://github.com/xbmc/libdvdread/tags
+_codename=Leia
+_rtype=Alpha
+_rver=1
+_dver=3
 _ffmpeg_version="4.0-$_codename-$_rtype-$_rver"
 _libdvdcss_version="1.4.1-$_codename-$_rtype-$_dver"
 _libdvdnav_version="6.0.0-$_codename-$_rtype-$_dver"
@@ -87,13 +87,12 @@ build() {
   cd kodi-build
 
   ### Optionally uncomment and setup to your liking
-  # export CFLAGS+=" -march=native -fdiagnostics-color"
+  # export CFLAGS+=" -march=native"
   # export CXXFLAGS="${CFLAGS}"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DENABLE_EVENTCLIENTS=ON \
-    -DLIRC_DEVICE=/run/lirc/lircd \
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
@@ -114,7 +113,7 @@ package_kodi-pre-release() {
     'bluez-libs' 'desktop-file-utils' 'freetype2' 'fribidi'
     'hicolor-icon-theme' 'libass' 'libcdio' 'libjpeg-turbo' 'libmariadbclient'
     'libmicrohttpd' 'libpulse' 'libssh' 'libva' 'libvdpau' 'libxrandr' 'libcec'
-    'libxslt' 'lzo' 'mesa' 'python2-pillow' 'python2-simplejson' 'smbclient'
+    'libxslt' 'lirc' 'lzo' 'mesa' 'python2-pillow' 'python2-simplejson' 'smbclient'
     'speex' 'taglib' 'tinyxml' 'xorg-xdpyinfo' 'yajl'
   )
   optdepends=(
@@ -123,7 +122,6 @@ package_kodi-pre-release() {
     'python2-pybluez: Bluetooth support'
     'libnfs: NFS shares support'
     'libplist: AirPlay support'
-    'lirc: Remote controller support'
     'lsb-release: log distro information in crashlog'
     'pulseaudio: PulseAudio support'
     'shairplay: AirPlay support'
