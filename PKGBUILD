@@ -27,7 +27,7 @@ build() {
     cp wsjtx.patch "$srcdir/${pkgname%-git}"
 	mkdir -p "$srcdir/${pkgname%-git}/build"
 	cd "$srcdir/${pkgname%-git}/build"
-        cmake -D WSJTX_TAG=$_wsjtx_tag -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+        cmake -DWSJTX_TAG=$_wsjtx_tag -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
 	make
 }
 
