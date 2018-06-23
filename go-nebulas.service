@@ -1,0 +1,10 @@
+[Unit]
+Description=Official Go implementation of the Nebulas protocol
+Documentation=https://github.com/nebulasio/wiki
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/neb -c /etc/go-nebulas/config.conf
+
+[Install]
+WantedBy=multi-user.target
