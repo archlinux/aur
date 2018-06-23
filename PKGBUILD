@@ -3,19 +3,15 @@
 
 _base=dolfin
 pkgname=${_base}
-pkgdesc="the C++ and Python interfaces of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations (stable)."
-pkgver=2017.2.0
+pkgdesc="the C++ interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations."
+pkgver=2018.1.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/fenics-project/${_base}"
-license=('GPL3')
+license=('LGPL3')
 groups=('fenics')
 conflicts=('dolfin-git')
-depends=('python-instant'
-         'python-pkgconfig'
-				 'python-ply'
-				 'swig'
-				 'cppunit'
+depends=('cppunit'
 				 'eigen'
 				 'gl2ps'
 				 'hdf5'
@@ -23,19 +19,15 @@ depends=('python-instant'
 				 'petsc'
 				 'suitesparse')
 optdepends=('scotch: libraries for graph, mesh and hypergraph partitioning'
-            'python-mpi4py: MPI library for python'
-            'slepc: eigenvalue problem solvers'
-            'petsc4py: interface with PETSc from python'
-            'slepc4py: interface with SLEPc from python'
-            'python-matplotlib: plotting support')
+'slepc: eigenvalue problem solvers')
 options=(!emptydirs)
-source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git#tag=${pkgver}")
-md5sums=('SKIP')
+source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz)
+sha256sums=('5d1836df4dcc1d55f63ecc20635305a6d5b39cbfc63584b43ec2568452dc5e71')
 
 export MAKEFLAGS="-j1"
 
 build() {
-	cd ${_base}
+	cd ${srcdir}/${_base}-${pkgver}
 	[ -d build ] && rm -rf build
 	mkdir build
 	cd build
@@ -45,11 +37,11 @@ build() {
 	[ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
 	[ -n "$SLEPC_DIR" ] && source /etc/profile.d/slepc.sh
 
-	echo $(pwd)
-	patch ../doc/parse_doxygen.py < ../../../parse_doxygen.patch 
+	# patch ../doc/parse_doxygen.py < ../../../parse_doxygen.patch 
 
 	cmake ..\
 		-DCMAKE_INSTALL_PREFIX="${pkg}"/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
 		-DPYTHON_EXECUTABLE="${py_interp}" \
 		-DCMAKE_SKIP_BUILD_RPATH=TRUE \
 		-DCMAKE_SKIP_RPATH=TRUE \
@@ -60,7 +52,7 @@ build() {
 }
 
 package() {
-	cd ${_base}/build
+	cd ${srcdir}/${_base}-${pkgver}/build
 	make install DESTDIR="${pkgdir}"
 }
 

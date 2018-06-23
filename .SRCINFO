@@ -1,16 +1,12 @@
 pkgbase = dolfin
-	pkgdesc = the C++ and Python interfaces of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations (stable).
-	pkgver = 2017.2.0
+	pkgdesc = the C++ interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations.
+	pkgver = 2018.1.0
 	pkgrel = 1
 	url = https://bitbucket.org/fenics-project/dolfin
 	arch = i686
 	arch = x86_64
 	groups = fenics
-	license = GPL3
-	depends = python-instant
-	depends = python-pkgconfig
-	depends = python-ply
-	depends = swig
+	license = LGPL3
 	depends = cppunit
 	depends = eigen
 	depends = gl2ps
@@ -19,15 +15,11 @@ pkgbase = dolfin
 	depends = petsc
 	depends = suitesparse
 	optdepends = scotch: libraries for graph, mesh and hypergraph partitioning
-	optdepends = python-mpi4py: MPI library for python
 	optdepends = slepc: eigenvalue problem solvers
-	optdepends = petsc4py: interface with PETSc from python
-	optdepends = slepc4py: interface with SLEPc from python
-	optdepends = python-matplotlib: plotting support
 	conflicts = dolfin-git
 	options = !emptydirs
-	source = dolfin::git+https://bitbucket.org/fenics-project/dolfin.git#tag=2017.2.0
-	md5sums = SKIP
+	source = dolfin-2018.1.0.tar.gz::https://bitbucket.org/fenics-project/dolfin/downloads/dolfin-2018.1.0.tar.gz
+	sha256sums = 5d1836df4dcc1d55f63ecc20635305a6d5b39cbfc63584b43ec2568452dc5e71
 
 pkgname = dolfin
 
