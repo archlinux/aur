@@ -1,7 +1,7 @@
 # Maintainer: Daniel Hillenbrand <codeworkx@bbqlinux.org>
 pkgname=openhab-beta
-_pkgver=2.3.0
-pkgver=2.3.0_20180302
+_pkgver=2.4.0
+pkgver=2.4.0_20180623
 pkgrel=1
 pkgdesc="openHAB2 open source home automation software"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('unzip')
 conflicts=('openhab-runtime' 'openhab-addons' 'openhab2')
 
 backup=('etc/openhab/conf/services/addons.cfg'
-		'etc/openhab/conf/services/runtime.cfg')
+        'etc/openhab/conf/services/runtime.cfg')
 
 source=("https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab/target/openhab-${_pkgver}-SNAPSHOT.zip"
         "openhab.service")
@@ -28,26 +28,24 @@ pkgver() {
 }
 
 prepare() {
-	mkdir -p "$srcdir/openhab"
-	cd "$srcdir/openhab"
-
-	unzip "$srcdir/openhab-${_pkgver}-SNAPSHOT.zip"
+    mkdir -p "$srcdir/openhab"
+    cd "$srcdir/openhab"
+    unzip "$srcdir/openhab-${_pkgver}-SNAPSHOT.zip"
 }
 
 package() {
-	cd $pkgdir
+    cd $pkgdir
 
     mkdir -p etc/openhab
-	mkdir -p opt
-	mkdir -p usr/lib/systemd/system
+    mkdir -p opt
+    mkdir -p usr/lib/systemd/system
 
-	cp $srcdir/openhab.service usr/lib/systemd/system
+    cp $srcdir/openhab.service usr/lib/systemd/system
+    cp -r $srcdir/openhab opt/
 
-	cp -r $srcdir/openhab opt/
+    mv opt/openhab/conf etc/openhab/conf
+    ln -s /etc/openhab/conf opt/openhab/conf
 
-	mv opt/openhab/conf etc/openhab/conf
-	ln -s /etc/openhab/conf opt/openhab/conf
-    
     mv opt/openhab/addons etc/openhab/addons
-	ln -s /etc/openhab/addons opt/openhab/addons
+    ln -s /etc/openhab/addons opt/openhab/addons
 }
