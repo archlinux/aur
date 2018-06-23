@@ -15,7 +15,7 @@ source=("https://www.manjaro.fr/forum/datas/pacnew-chaser-qt.tar.gz")
 #conflicts=('pacnew-chaser-gtk')
 #replaces=('pacnew-chaser-gtk')
 #install='.install' 
-sha512sums=('05757d25c648dda750f4bcd939e70c5dc4b371a91ba35790aa81054a89d589176c2a5e6742c19eb6280447ec94a57dc4a61fe4f20181a491fec0b0da0a74e1d0')
+sha512sums=('6ec4938132a0b44047231ec4862857550535c018d33008318410184e21d20ab39edb84748346e5cc20930665ac9aa835269e286066629b908ddebd3d480ddc38')
 
 package() {
   cd "$srcdir"
