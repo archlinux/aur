@@ -5,7 +5,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Thanks to mobo's package, https://aur.archlinux.org/packages/zandronum2/
 pkgname=zandronum
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 _fmod_ver_true="4.24.16"
 _fmod_ver="$(echo ${_fmod_ver_true} | sed -e 's/\.//g')"
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer"
@@ -16,7 +16,7 @@ depends=('sdl' 'libjpeg6-turbo' 'glu' 'openssl' 'fluidsynth')
 optdepends=('timidity++: midi support' 'freedoom: free IWAD' 'gtk2: for a GUI selection screen')
 makedepends=( 'zlib' 'sdl' 'libjpeg-turbo' 'nasm' 'gtk2' 'cmake' 'mercurial' 'fluidsynth' 'mesa' 'glu' )
 _pkgname=zandronum
-conflicts=('zandronum2' 'zandronum-hg')
+conflicts=('zandronum2')
 install=zandronum.install
 source=("LICENSE.txt"
 	"${pkgname}.launcher"
