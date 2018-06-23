@@ -17,10 +17,6 @@ post_install() {
 		xdg-settings set default-web-browser garcon_host_browser.desktop
 	fi
 
-	# TODO(crbug.com/835959): Remove this once we fix mesa.
-	mkdir -p /usr/lib64/dri
-	ln -sf /opt/google/cros-containers/lib/swrast_dri.so /usr/lib64/dri/swrast_dri.so
-
 cat << EOF
 
 	(!) This package is permanently work in progress until Crostini 
@@ -46,10 +42,5 @@ post_remove() {
 	# workaround for https://bugs.archlinux.org/task/58701, remove after fix
 	rm /usr/share/themes/CrosAdapta
 	rm /usr/bin/sommelier
-
-	# TODO(crbug.com/835959): Remove this once we fix mesa.
-	rm /usr/lib64/dri/swrast_dri.so
-	rmdir /usr/lib64/dri 2>/dev/null
-	rmdir /usr/lib64 2>/dev/null
 
 }

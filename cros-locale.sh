@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# termina force debian-specifi C.UTF-8 locale inside the container when
+# termina force debian-specific C.UTF-8 locale inside the container when
 # launched via the Terminal app. We want to override this and set locate
 # defined inside container itself
 if [ "$LANG" = "C.UTF-8" ]; then
