@@ -14,7 +14,7 @@ build() {
   cd "${srcdir}/aspell-bn-master"
 
   ./configure
-  make
+  make &>/dev/null
 }
 
 package() {
