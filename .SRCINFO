@@ -1,7 +1,7 @@
 pkgbase = spotifyd
 	pkgdesc = A spotify playing daemon
-	pkgver = 0.2.1
-	pkgrel = 3
+	pkgver = 0.2.2
+	pkgrel = 1
 	url = https://github.com/Spotifyd/spotifyd
 	arch = x86_64
 	arch = armv7h
@@ -12,17 +12,13 @@ pkgbase = spotifyd
 	depends = alsa-lib
 	depends = libogg
 	depends = gcc-libs
-	conflicts = spotifyd-bin
-	conflicts = spotifyd-git
-	source = spotifyd-0.2.1.tar.gz::https://github.com/Spotifyd/spotifyd/archive/v0.2.1.tar.gz
-	sha256sums = 6e092b7e78c42fc2a4865b6b8571b71b63acc3d8941e15250e1f033508b151e1
+	source = spotifyd-0.2.2.tar.gz::https://github.com/Spotifyd/spotifyd/archive/v0.2.2.tar.gz
+	sha256sums = 6b79072efbfe1f3c831e898da2c340d806f778d598e6797347e5605d2201ec43
 
 pkgname = spotifyd
 
 pkgname = spotifyd-pulseaudio
 	pkgdesc = A spotify playing daemon, with pulseaudio support
 	depends = libpulse
-	conflicts = spotifyd-bin
-	conflicts = spotifyd-git
 	conflicts = spotifyd
 
