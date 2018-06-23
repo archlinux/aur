@@ -1,0 +1,19 @@
+pkgbase = clonehero
+	pkgdesc = Clone of Guitar Hero and Rockband-style games
+	pkgver = 0.20
+	pkgrel = 1
+	url = https://www.reddit.com/r/CloneHero/
+	arch = x86_64
+	license = freeware-proprietary
+	makedepends = p7zip
+	depends = gtk2
+	noextract = clonehero-0.20.rar
+	source = clonehero-0.20.rar::https://drive.google.com/uc?export=download&id=13XrAOJoihFMrdyjYnmENAC5FOApSPcin
+	source = clonehero.sh
+	source = clonehero.desktop
+	sha256sums = 566c2f6a82a7254a937d0e755eb644ad62bc329ffb5e56998768d8741177cdbf
+	sha256sums = 821939bd6b5c60f27172003492250135ccf1ea45f7dcb681643749aef30e02f3
+	sha256sums = 869ceab4a12d7d0586ed1227288f9b65c93d2295bd7cffebbc235f7bc97459e1
+
+pkgname = clonehero
+

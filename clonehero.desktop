@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Clone Hero
+GenericName=Clone Hero
+Comment=A clone of Guitar Hero and Rockband-like games
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Exec=/usr/bin/clonehero
+Categories=Game;
