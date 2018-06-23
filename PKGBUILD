@@ -3,7 +3,7 @@
 
 pkgname=go-nebulas
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Official Go implementation of the Nebulas protocol"
 arch=("x86_64")
 url="https://github.com/nebulasio/go-nebulas"
@@ -34,7 +34,7 @@ noextract=("$pkgname.tar.gz" "vendor.tar.gz")
 prepare() {
     echo "  -> Extracting files ..."
     _extract_path="src/github.com/nebulasio"
-    
+
     # extract
     bsdtar -zxf vendor.tar.gz
     mv vendor src
@@ -45,7 +45,7 @@ prepare() {
 build() {
     echo "  -> Building binary ..."
     export GOPATH=${srcdir}
-    _dir="${srcdir}/src/github.com/nebulasio/$pkgname"
+    _dir="${srcdir}/src/github.com/nebulasio/${pkgname}"
 
     # neb
     cd ${_dir}/cmd/neb
@@ -57,21 +57,26 @@ build() {
 }
 
 package() {
-    _dir="${srcdir}/src/github.com/nebulasio/$pkgname"
+    echo "  -> Installing ..."
+    _dir="${srcdir}/src/github.com/nebulasio/${pkgname}"
 
     # install library
-    install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
     install -dm755 ${pkgdir}/usr/lib/${pkgname}
-    cp -r ${_dir}/nf/nvm/native-lib/*.so ${pkgdir}/usr/lib/${pkgname}/
+    install -Dm755 ${_dir}/nf/nvm/native-lib/*.so ${pkgdir}/usr/lib/${pkgname}
+    install -dm755 ${pkgdir}/opt/${pkgname}/lib
+    cp -r ${_dir}/nf/nvm/v8/lib/{1.0.0,1.0.5} ${pkgdir}/opt/${pkgname}/lib
 
     # install binary
-    install -Dm755 ${_dir}/neb ${pkgdir}/usr/bin/neb
-    install -Dm755 ${_dir}/neb-crashreporter ${pkgdir}/usr/bin/neb-crashreporter
+    install -dm755 ${pkgdir}/usr/bin
+    install -dm755 ${pkgdir}/opt/${pkgname}
+    install -Dm755 ${_dir}/{neb,neb-crashreporter} ${pkgdir}/opt/${pkgname}
+    ln -s ${pkgdir}/opt/${pkgname}/{neb,neb-crashreporter} ${pkgdir}/usr/bin
 
     # install license
     install -Dm755 ${_dir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
     # add example config
+    install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
     install -Dm644 config.conf ${pkgdir}/etc/${pkgname}/config.example.conf
     install -Dm644 genesis.conf ${pkgdir}/etc/${pkgname}/gnesis.example.conf
     cp -r ${_dir}/keydir ${pkgdir}/etc/${pkgname}/keydir
