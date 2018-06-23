@@ -3,7 +3,7 @@
 # Contributor bitwave < aur [at] oomlu [d0t] de >
 # Alex say thanks to Filip about support this package while he was away from Arch.
 pkgname=(scst scst_local iscsi-scst scstadmin)
-pkgver=3.2.0.7211
+pkgver=3.3.0.7403
 pkgrel=1
 pkgdesc="Generic SCSI Target Subsystem For Linux"
 arch=('i686' 'x86_64')
@@ -11,14 +11,22 @@ url="http://scst.sourceforge.net"
 license=('GPL')
 install=${pkgname}.install
 makedepends=('linux' 'linux-headers')
+_version="3.3.0"
+_branch="3.3.x"
 source=(
-# use SVN version so we succeeded with latest kernel
-    "scst-svn-7211-branches-3.2.x.zip:https://sourceforge.net/code-snapshots/svn/s/sc/scst/svn/scst-svn-7211-branches-3.2.x.zip"
-#    "scst-${pkgver}.tar.bz2::https://sourceforge.net/projects/scst/files/scst-${pkgver}.tar.bz2/download"
+    # use SVN version so we succeeded with latest kernel
+    "scst-svn::svn+https://svn.code.sf.net/p/scst/svn/trunk/branches/$_branch"
 )
 md5sums=(
     'SKIP'
 )
+
+pkgver() {
+  cd $(find "$srcdir" -maxdepth 1 -type d -name 'scst*')
+
+  local ver="$(svnversion)"
+  printf "${_version}.%s" "${ver//[[:alpha:]]}"
+}
 
 _base() {
   cd $(find "$srcdir" -maxdepth 1 -type d -name 'scst*')
