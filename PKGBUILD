@@ -8,11 +8,11 @@
 
 pkgname=caffe-git
 _srcname=caffe
-pkgver=1.0.r108.g864520713
+pkgver=1.0.r117.g2a1c552b6
 pkgrel=1
-pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (git version, gpu enabled)"
+pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (git version, gpu enabled)'
 arch=('x86_64')
-url="http://caffe.berkeleyvision.org/"
+url='http://caffe.berkeleyvision.org/'
 license=('BSD')
 depends=(
     # official repositories:
@@ -36,11 +36,11 @@ makedepends=('git' 'gcc7' 'doxygen' 'texlive-core')
 provides=('caffe')
 conflicts=('caffe' 'caffe-cpu' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git'
            'caffe2' 'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git')
-source=("${pkgname}"::"git+https://github.com/BVLC/caffe.git")
+source=('git+https://github.com/BVLC/caffe.git')
 sha256sums=('SKIP')
 
 prepare() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # prepare to configure options in Makefile.config
     cp -f Makefile.config.example Makefile.config
@@ -57,7 +57,7 @@ prepare() {
     sed -i '/USE_LMDB/s/^#[[:space:]]//;/USE_LMDB/s/0/1/'       Makefile.config
     sed -i '/OPENCV_VERSION/s/^#[[:space:]]//g'                 Makefile.config
     
-    # use gcc6 (CUDA 9.2 code requires gcc7)
+    # use gcc7 (CUDA 9.2 code requires gcc7)
     sed -i '/CUSTOM_CXX/s/^#[[:space:]]//;/CUSTOM_CXX/s/$/-7/' Makefile.config
     
     # set CUDA directory
@@ -101,14 +101,14 @@ prepare() {
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     msg2 "Building target 'all'..."
     make all
@@ -126,7 +126,7 @@ build() {
 
 # uncomment this block if you want to run the checks/tests
 #check() {
-#    cd "$pkgname"
+#    cd "$_srcname"
 #    msg2 "Building target 'test'..."
 #    make test
 #    msg2 "Making target 'runtest'..."
@@ -138,27 +138,27 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/include/caffe/"{layers,proto,test,util}
     mkdir -p "${pkgdir}/usr/lib/python3.6/site-packages/caffe/"{imagenet,proto,test}
-    mkdir -p "${pkgdir}/usr/share/"{caffe,doc/"${_srcname}"/search,licenses/"${pkgname}"}
+    mkdir -p "${pkgdir}/usr/share/"{caffe,doc/"${_srcname}"/search,licenses/"${_srcname}"}
     
     # binaries
-    cd "${pkgname}/distribute/bin"
+    cd "${_srcname}/distribute/bin"
     install -D -m755 * "${pkgdir}/usr/bin"
     
     # libraries
-    cd "${srcdir}/${pkgname}/distribute/lib"
+    cd "${srcdir}/${_srcname}/distribute/lib"
     install -D -m755 *.so "${pkgdir}/usr/lib"
     
     # includes
-    cd "${srcdir}/${pkgname}/distribute/include/caffe"
+    cd "${srcdir}/${_srcname}/distribute/include/caffe"
     install -D -m644 *.hpp "${pkgdir}/usr/include/caffe"
     for _dir in layers proto test util
     do
-        cd "${srcdir}/${pkgname}/distribute/include/caffe/${_dir}"
+        cd "${srcdir}/${_srcname}/distribute/include/caffe/${_dir}"
         install -D -m644 * "${pkgdir}/usr/include/caffe/${_dir}"
     done
     
     # python
-    cd "${srcdir}/${pkgname}/distribute/python"
+    cd "${srcdir}/${_srcname}/distribute/python"
     install -D -m755 *.py "${pkgdir}/usr/bin"
     rm -rf python # remove duplicated 'python' folder
     
@@ -172,7 +172,7 @@ package() {
     
     for _dir in imagenet proto test
     do
-        cd "${srcdir}/${pkgname}/distribute/python/caffe/${_dir}"
+        cd "${srcdir}/${_srcname}/distribute/python/caffe/${_dir}"
         for _file in *
         do
             _mode="$(stat --format '%a' "$_file")"
@@ -181,11 +181,11 @@ package() {
     done
     
     # proto
-    cd "${srcdir}/${pkgname}/distribute/proto"
+    cd "${srcdir}/${_srcname}/distribute/proto"
     install -D -m644 * "${pkgdir}/usr/share/caffe"
     
     # docs
-    cd "${srcdir}/${pkgname}/doxygen/html"
+    cd "${srcdir}/${_srcname}/doxygen/html"
     for _file in *
     do
         [ -d "$_file" ] && continue # skip directories
@@ -195,6 +195,6 @@ package() {
     install -D -m644 * "${pkgdir}/usr/share/doc/${_srcname}/search"
     
     # license
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_srcname}"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
