@@ -15,11 +15,11 @@ depends=('cppunit'
 				 'eigen'
 				 'gl2ps'
 				 'hdf5'
-				 'python-ffc'
+				 'python-ffc=2018.1.0'
 				 'petsc'
 				 'suitesparse')
 optdepends=('scotch: libraries for graph, mesh and hypergraph partitioning'
-'slepc: eigenvalue problem solvers')
+            'slepc: eigenvalue problem solvers')
 options=(!emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz)
 sha256sums=('5d1836df4dcc1d55f63ecc20635305a6d5b39cbfc63584b43ec2568452dc5e71')
