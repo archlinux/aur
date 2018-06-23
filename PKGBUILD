@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=guile-git
-pkgver=3.0.0.220.gda7144d93
+pkgver=3.0.0.459.g1234bb185
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,10 +12,11 @@ depends=('gc' 'libtool' 'libffi' 'libunistring' 'gmp' 'readline')
 provides=('guile')
 conflicts=('guile4emacs')
 options=('!strip' '!makeflags' 'libtool')
-source=("git://git.sv.gnu.org/${pkgname%-git}.git" version.patch)
+source=("git://git.sv.gnu.org/${pkgname%-git}.git" version.patch rename_scm.h.patch)
 url="http://www.gnu.org/software/guile/"
 sha256sums=('SKIP'
-            '7f902891a717cd6606a6a768e6e59b40c96757cbfa9a2262722567bea31b3774')
+            '7f902891a717cd6606a6a768e6e59b40c96757cbfa9a2262722567bea31b3774'
+            'c43e79fd27442e039a7c21d958eae059ec3d7ce5b9f0c9cf680141683a2a64f8')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -24,15 +25,15 @@ pkgver() {
 
 prepare() {
   cd ${pkgname%-git}
-  patch -Np1 < "$srcdir"/version.patch
+  patch -Np1 < "$srcdir"/version.patch || true
+  patch -Np1 < "$srcdir"/rename_scm.h.patch || true
 }
 
 build() {
   cd ${pkgname%-git}
   ./autogen.sh
-  ./configure --prefix=/usr --disable-error-on-warning \
-	--program-suffix=3.0
-  make LDFLAGS+="-lpthread"
+  ./configure --prefix=/usr --program-suffix=3.0
+  make LDFLAGS+=" -lpthread"
 }
 
 package() {
