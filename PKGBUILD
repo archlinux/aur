@@ -4,9 +4,9 @@
 pkgname=('nvidia-vulkan' 'nvidia-utils-vulkan' 'nvidia-egl-wayland-vulkan' 'nvidia-libgl-vulkan' 'opencl-nvidia-vulkan' 
          'lib32-nvidia-utils-vulkan' 'lib32-nvidia-libgl-vulkan' 'lib32-opencl-nvidia-vulkan')
 pkgver=396.24.02
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-url="http://www.nvidia.com/"
+url="https://developer.nvidia.com/vulkan-driver"
 license=('custom:NVIDIA')
 makedepends=('linux-headers')
 options=('!strip')
@@ -306,7 +306,7 @@ package_nvidia-utils-vulkan() {
 }
 
 package_nvidia-vulkan() {
-  pkgdesc="Full NVIDIA driver package for Arch's official 'linux' package (driver, utilities, and libraries) (beta version)"
+  pkgdesc="NVIDIA driver package for Arch's official 'linux' package (driver, utilities, and libraries) (vulkan developer branch)"
   depends=('linux' "nvidia-utils-vulkan>=$pkgver" 'libgl')
   provides=("nvidia=$pkgver")
   conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
