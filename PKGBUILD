@@ -3,7 +3,7 @@
 pkgname=nfs-ganesha
 pkgver=2.6.2
 pkgrel=1
-pkgdesc="NFS-Ganesha supports both the NFS and 9P protocols."
+pkgdesc="NFS-Ganesha supports both the NFS and 9P protocols in user mode."
 arch=('i686' 'x86_64')
 url="http://nfs-ganesha.github.io/"
 license=('GPL3')
