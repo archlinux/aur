@@ -5,10 +5,10 @@ post_install() {
     	dconf update
 	fi
 
-	# mask systemd-journald-audit.socket, which failes inside unprivileged container
+	# mask systemd-journald-audit.socket, which fails inside unprivileged container
 	systemctl mask systemd-journald-audit.socket
 
-	# workaround for https://bugs.archlinux.org/task/58701, remove after fix
+	# workaround for https://bugs.archlinux.org/task/58701 - remove after fix
 	ln -sf /opt/google/cros-containers/cros-adapta /usr/share/themes/CrosAdapta
 	ln -sf /opt/google/cros-containers/bin/sommelier /usr/bin/sommelier
 
@@ -17,13 +17,18 @@ post_install() {
 		xdg-settings set default-web-browser garcon_host_browser.desktop
 	fi
 
+	post_upgrade
+}
+
+post_upgrade() {
+
 cat << EOF
 
 	(!) This package is permanently work in progress until Crostini 
-	considered to be stable by Google!
+	considered to be stable by Google, issues and bugs are expected!
 
-	Developed and tested on Samsung Chromebook Plus, should work on 
-	other Chromebooks with Crostini enabled.
+	Tested on Google Pixelbook and Samsung Chromebook Plus, should
+	work fine on other Chromebooks/Chromeboxes with Crostini enabled.
 
 EOF
 
@@ -39,7 +44,7 @@ post_remove() {
 	# unmask systemd-journald-audit.socket
 	systemctl unmask systemd-journald-audit.socket
 
-	# workaround for https://bugs.archlinux.org/task/58701, remove after fix
+	# workaround for https://bugs.archlinux.org/task/58701 - remove after fix
 	rm /usr/share/themes/CrosAdapta
 	rm /usr/bin/sommelier
 

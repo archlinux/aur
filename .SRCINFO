@@ -6,10 +6,9 @@ pkgbase = cros-container-guest-tools-git
 	install = cros-container-guest-tools.install
 	arch = any
 	license = custom
-	optdepends = xdg-utils: for setting default-web-browser to ChromeOS host via garcon bridge
-	optdepends = xorg-apps: for XWayland functionality
-	optdepends = wayland: for Wayland functionality
-	optdepends = qt5-wayland: Qt5 Wayland backend
+	depends = openssh
+	depends = xdg-utils
+	depends = xkeyboard-config
 	source = git+https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools
 	source = cros-sftp-conditions.conf
 	source = cros-garcon-conditions.conf
@@ -17,7 +16,7 @@ pkgbase = cros-container-guest-tools-git
 	sha1sums = SKIP
 	sha1sums = 0827ce6d673949a995be2d69d4974ddd9bdf16f1
 	sha1sums = d326cd35dcf150f9f9c8c7d6336425ec08ad2433
-	sha1sums = b5a315f5b8f474a31dc3576efa3ef19881ec80d6
+	sha1sums = 8586cf72dacdcca82022519467065f70fe4a3294
 
 pkgname = cros-container-guest-tools-git
 

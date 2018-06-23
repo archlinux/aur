@@ -5,13 +5,7 @@ pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
-depends=()
-optdepends=(
-	'xdg-utils: for setting default-web-browser to ChromeOS host via garcon bridge'
-	'xorg-apps: for XWayland functionality'
-	'wayland: for Wayland functionality'
-	'qt5-wayland: Qt5 Wayland backend'
-)
+depends=('openssh' 'xdg-utils' 'xkeyboard-config')
 install=cros-container-guest-tools.install
 url="https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools"
 source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf' 'cros-locale.sh')
@@ -108,6 +102,7 @@ package() {
 
 	install -m440 -D ${srcdir}/${_pkgname}/cros-sudo-config/10-cros-nopasswd \
 					 ${pkgdir}/etc/sudoers.d/10-cros-nopasswd
+
 	# replace sudo group with wheel group for no password sudo access
 	sed -i 's/%sudo/%wheel/1' ${pkgdir}/etc/sudoers.d/10-cros-nopasswd
 
