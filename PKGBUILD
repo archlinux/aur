@@ -27,10 +27,10 @@ _COMPILER="GCC5"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=20052.ed72804
+pkgver=24185.3b03b5e990
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
-url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
+url="https://github.com/tianocore/edk2"
 arch=('x86_64' 'i686')
 license=('BSD')
 
@@ -39,7 +39,7 @@ makedepends=('git' 'python2' 'nasm')
 options=('!strip' '!makeflags')
 
 conflicts=('uefi-shell' 'uefi-shell-svn')
-provides=('uefi-shell' 'uefi-shell-svn')
+provides=('uefi-shell')
 
 install="${_pkgname}.install"
 
