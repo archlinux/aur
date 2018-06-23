@@ -61,7 +61,7 @@ package() {
 
     # install library
     install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
-    install -dm755 ${pkgdir}/usr/lib/${pkgname}/lib
+    install -dm755 ${pkgdir}/usr/lib/${pkgname}
     cp -r ${_dir}/nf/nvm/native-lib/*.so ${pkgdir}/usr/lib/${pkgname}/
 
     # install binary
