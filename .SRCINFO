@@ -1,0 +1,30 @@
+pkgbase = mingw-w64-shishi-git
+	pkgdesc = a GNU implementation of the Kerberos 5 network security system (mingw-w64)
+	pkgver = r3586.5d0b4802
+	pkgrel = 1
+	url = https://www.gnu.org/software/shishi/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-wine
+	makedepends = wget
+	makedepends = git
+	makedepends = gengetopt
+	depends = mingw-w64-crt
+	depends = mingw-w64-gnutls
+	depends = mingw-w64-libidn
+	depends = mingw-w64-libgcrypt
+	depends = mingw-w64-libgpg-error
+	depends = mingw-w64-libtasn1
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = shishi::git+https://git.savannah.gnu.org/git/shishi.git
+	source = 003-no-shishid.patch
+	source = 004-fix-download-po.patch
+	sha256sums = SKIP
+	sha256sums = a5b17bb2840d95d90d591c170ca430726d2cac0e77523cb6e1b84925e8e1cf76
+	sha256sums = 329258931329937824fe37f09666e0b0fc2bd0140a50429e04e4ea40fbd2c411
+
+pkgname = mingw-w64-shishi-git
+
