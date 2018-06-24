@@ -2,23 +2,25 @@
 # Maintainer: Stijn Seghers <stijnseghers at gmail dot com>
 
 pkgname=stylelint-config-standard
-pkgver=18.0.0
+pkgver=18.2.0
 pkgrel=1
 pkgdesc='The standard shareable config for stylelint'
 arch=('any')
 url='https://github.com/stylelint/stylelint-config-standard'
 license=('MIT')
-depends=('nodejs' 'stylelint')
+depends=()
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('0e7baba8ec790ae9b2bb060fbee36b0671352e775e98593297c19091e1e1d6420bd75d4ccc1227329709bcbfa12a852b1db671e7d8afba893eb107a4385f8c22')
+sha512sums=('d3bc744da488cef5e56ce8a8514e0e464088334ee4c88ba88e46d2542c8558d5605cc5d81df8674120a4aaefa81d625fdd80030273c65b3749e7737192827b44')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
+  npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
 
-  rm -r "$pkgdir/usr/etc"
+  # For some odd reason, npm makes some directories world writeable D:
+  find "$pkgdir/usr" -type d -exec chmod 755 {} +
 
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s "../../../lib/node_modules/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Install license in the usual place
+  local _npmdir="$pkgdir/usr/lib/node_modules/"
+  install -Dm644 "$_npmdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
