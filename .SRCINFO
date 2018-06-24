@@ -1,0 +1,13 @@
+pkgbase = pkgsizes
+	pkgdesc = Python script that prints a table with actual sizes of packages
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/AndreyBalandin/archlinux-pkgsizes/
+	arch = any
+	license = GPL3
+	depends = python
+	source = https://github.com/AndreyBalandin/archlinux-pkgsizes/raw/master/pkgsizes.py
+	md5sums = SKIP
+
+pkgname = pkgsizes
+
