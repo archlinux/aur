@@ -2,9 +2,9 @@
 
 _gitname=snail
 pkgname=snail-git
-pkgver=0.1.0.r8.gfdf9ad4
+pkgver=0.1.0.r11.g78491b4
 pkgrel=1
-pkgdesc="Secure multithreaded packet sniffer"
+pkgdesc="Parasitic network manager"
 url="https://github.com/kpcyrd/snail"
 depends=('zeromq' 'libseccomp' 'dbus')
 makedepends=('cargo' 'git')
