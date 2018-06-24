@@ -1,34 +1,29 @@
-# Maintainer: Jaroslav Lichtblau <dragonlor@aur.archlinux.org>
-
+# Maintainer: Lukas Sabota <lukas@lwsabota.com>
 pkgname=ggmud
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.9.4
+pkgrel=1
+epoch=
 pkgdesc="GTK2 mud client inspired by tintin and sclient"
 arch=('i686' 'x86_64')
 url="http://www.ggsoft.org/ggmud/"
 license=('GPL')
-depends=('gtk2')
-source=(http://downloads.sourceforge.net/$pkgname/GGMud-$pkgver-src.tar.gz)
-sha256sums=('e7ad1e242a26f4e503c63375025c4581215afb7702b572e1fbcc99fd2b7a10bb')
+depends=('gtk2' 'lua')
+source=("https://sourceforge.net/projects/ggmud/files/ggmud/$pkgver/GGMud-src.tar.gz")
+md5sums=('653a1cb6177b1d0419ee50597540b9e0')
 
 build() {
-  cd "${srcdir}"/$pkgname-$pkgver
-
-  sed -i s/COMMONLIBS\ =\ -Ltt\ -ltt\ -Llua\ -llua\ -Lzlib\ -lzlib/COMMONLIBS\ =\ -Ltt\ -ltt\ -Llua\ -llua\ -Lzlib\ -lzlib\ -lm\ -ldl/ Makefile
-  sed -i s/--as-needed// Makefile
-  
-  make CC="gcc $CFLAGS"
+	cd "$pkgname-$pkgver"
+	mkdir -p build
+	cd build
+	sed -i "s/httpfetch zlib/httpfetch zlib m dl/" ../CMakeLists.txt
+	cmake ../
+	make
 }
 
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver
-
-  install -D -m755 "$pkgname" "${pkgdir}"/usr/bin/$pkgname
-  install -D -m644 "gg_help.txt" "${pkgdir}"/usr/share/$pkgname/gg_help.txt
-
-#.desktop + icon file
-  install -D -m644 "${srcdir}"/$pkgname-$pkgver/$pkgname.desktop \
-    "${pkgdir}"/usr/share/applications/$pkgname.desktop
-  install -D -m644 "${srcdir}"/$pkgname-$pkgver/$pkgname.png \
-    "${pkgdir}"/usr/share/pixmaps/$pkgname.png
+	cd "$pkgname-$pkgver/build"
+	install -D -m755 ggmud "$pkgdir/usr/bin/$pkgname"
+	install -D -m644 ../gg_help.txt "${pkgdir}/usr/share/$pkgname/gg_help.txt"
+	install -D -m644 ../ggmud.desktop "${pkgdir}/usr/share/applications/$pkgname.desktop"
+	install -D -m644 ../ggmud.png "${pkgdir}/usr/share/pixmaps/$pkgname.png"
 }
