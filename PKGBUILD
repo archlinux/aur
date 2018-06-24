@@ -1,8 +1,8 @@
 # Maintainer: KopfKrieg <archlinux [at] absolem [dot] cc> 
 
 pkgname=python-gnupg-isis
-_gitname=python-gnupg
-pkgver=2.3.0
+name=python-gnupg
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='A modified version of python-gnupg, including security patches, extensive documentation, and extra features. The gnupg module allows Python programs to make use of the functionality provided by the GNU Privacy Guard.'
 url='https://github.com/isislovecruft/python-gnupg'
@@ -11,18 +11,15 @@ arch=('any')
 depends=('python' 'gnupg' 'python-psutil')
 conflicts=('python-gnupg')
 provides=('python-gnupg')
-replaces=('python-gnupg-ng')
-source=('git://github.com/isislovecruft/python-gnupg.git')
-md5sums=('SKIP')
+source=("https://github.com/isislovecruft/python-gnupg/archive/$pkgver.tar.gz")
+md5sums=('b08128652940f0dc1fd1b94d2e4efea2')
 
 build() {
-  cd $_gitname
-  git checkout $pkgver
+  cd $name-$pkgver
   python setup.py build
 }
 
 package() {
-  cd $_gitname
-  git checkout $pkgver
+  cd $name-$pkgver
   python setup.py install --root=${pkgdir} --optimize=1
 }
