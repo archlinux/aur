@@ -37,7 +37,9 @@ build() {
   cd "${srcdir}/shishi"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure ..
+    ${_arch}-configure \
+      --disable-nls \
+      ..
     make
     popd
   done
