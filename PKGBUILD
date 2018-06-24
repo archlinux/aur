@@ -5,7 +5,7 @@
 
 _gitname='libsigrok'
 pkgname="${_gitname}-git"
-pkgver=0.2.1.r2777.gb2e9b6d4
+pkgver=0.2.1.r3082.g0f523f2b
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, core library (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -38,4 +38,5 @@ package() {
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 
   install -Dm 644 'contrib/60-libsigrok.rules' "${pkgdir}/usr/lib/udev/rules.d/60-libsigrok.rules"
+  install -Dm 644 'contrib/61-libsigrok-uaccess.rules' "${pkgdir}/usr/lib/udev/rules.d/61-libsigrok-uaccess.rules"
 }
