@@ -7,7 +7,7 @@ pkgname=('houdini' 'houdini-maya-engine' 'houdini-unity-engine' 'python2-hqueue'
 pkgbase=houdini
 _pkgver_major=16
 _pkgver_minor=5
-_pkgver_build=323
+_pkgver_build=496
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_build}
 pkgrel=1
 pkgdesc="High-end 3D animation package"
@@ -26,7 +26,7 @@ _validgccs=(4.8)
 
 # The file needs to be downloaded manually
 source=(file://${pkgname}-${pkgver}-linux_x86_64_gcc${_gccver}.tar.gz)
-[[ "$_gccver" == 4.8 ]] && sha1sums=('33ca8891d7cc127953c4272ecbbeab82974f4a08')
+[[ "$_gccver" == 4.8 ]] && sha1sums=('b87c991ee1053831e670508aa73348c27bc635e3')
 
 source+=('LICENSE' 'sesinetd.service')
 sha1sums+=('25317e6850d453e86f8bc868efe1ef95f81a2174' 'b6eca8f67aeedb9c5b7a5863c3d24edaf2b93cf3')
@@ -45,19 +45,21 @@ _install_houdini_file() {
 
 package_houdini() {
 	depends=(
-	'expat' 'fontconfig' 'glu' 'icu' 'libx11' 'libglvnd' 'ocl-icd' 'python2-mako'
+	'expat' 'fontconfig' 'glu' 'icu' 'libx11' 'libglvnd' 'ocl-icd'
 	)
 	optdepeds=(
 	'alsa-lib: Audio support'
 	'ilmbase: OpenEXR file format support'
-	'python2-flask: In application documentation browser'
-	'python2-pygments: In application documentation browser'
 	)
 
 	cd ${srcdir}/houdini-${pkgver}-linux_x86_64_gcc${_gccver}
 
 	install -d ${pkgdir}/opt/houdini
 	tar xzf houdini.tar.gz -C ${pkgdir}/opt/houdini
+
+	install -d ${pkgdir}/opt/houdini/python
+	tar xzf pythonlibdeps.tar.gz -C ${pkgdir}/opt/houdini/python
+	tar xzf python2.7.tar.gz -C ${pkgdir}/opt/houdini/python
 
 	for i in {gplay,hkey,houdini,houdinifx,houdinicore,hindie,mplay,hview,happrentice,orbolt_url};
 	do
