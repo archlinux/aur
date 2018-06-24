@@ -2,7 +2,7 @@
 
 pkgname=powerline-i3-git
 _pkgname=powerline
-pkgver=1.7.17.0
+pkgver=1.7.18.1
 pkgrel=1
 pkgdesc="The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager."
 arch=('i686' 'x86_64')
@@ -49,5 +49,5 @@ package() {
     echo ">>>      status_command i3status"
     echo ">>>   }"
     echo ">>> in your i3/config with this line:"
-    echo ">>> exec_always \"killall powerline-lemonbar; powerline-lemonbar --i3 --height 16 -- -a 40 -b -f \'DejaVu Sans Mono-11\' -f \'PowerlineSymbols-12\' -f \'FontAwesome-11\'\""
+    echo ">>> exec_always \"killall powerline-lemonbar; powerline-lemonbar --i3 --height 16 -- -a 40 -b -f 'DejaVu Sans Mono-11' -f 'PowerlineSymbols-12' -f 'FontAwesome-11'\""
 }
