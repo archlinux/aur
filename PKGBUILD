@@ -30,7 +30,6 @@ prepare() {
   patch -p1 -i ${srcdir}/004-fix-download-po.patch
 
   WANT_AUTOMAKE=latest autoreconf -fi
-  make update-po
 }
 
 
