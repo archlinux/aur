@@ -1,0 +1,10 @@
+post_install() {
+  local period="`/usr/bin/ipwm read 2> /dev/null |
+  grep -Po '(?<=period=)[0-9a-f]+'`"
+  if [ "${#period}" = '4' ] && [ ! "$period" = '0000' ]; then
+    sed -e "s/^period 0000$/period $period/" -i '/etc/ipwm.conf'
+  else
+    echo 'WARNING: Failed to extract the current PWM period.'
+    echo '         You should edit /etc/ipwm.conf before reboot.'
+  fi
+}
