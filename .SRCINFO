@@ -1,7 +1,7 @@
 pkgbase = gnucash-python
 	pkgdesc = A personal and small-business financial-accounting application with enabled python bindings.
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnucash.org
 	arch = i686
 	arch = x86_64
@@ -29,7 +29,6 @@ pkgbase = gnucash-python
 	conflicts = gnucash
 	options = !makeflags
 	options = !emptydirs
-	backup = etc/gnucash/config
 	backup = etc/gnucash/environment
 	source = git+https://github.com/Gnucash/gnucash.git#commit=2e53d647263c20a9e1a9a7fd6893ec7ef186280f
 	sha256sums = SKIP

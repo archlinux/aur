@@ -7,7 +7,7 @@
 pkgname=gnucash-python
 _realname=gnucash
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal and small-business financial-accounting application with enabled python bindings."
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
@@ -26,8 +26,7 @@ conflicts=('gnucash')
 source=(git+https://github.com/Gnucash/gnucash.git#commit=2e53d647263c20a9e1a9a7fd6893ec7ef186280f)
 sha256sums=('SKIP')
 
-backup=('etc/gnucash/config'
-	'etc/gnucash/environment') 
+backup=('etc/gnucash/environment') 
 
 build() {
   cd $_realname
