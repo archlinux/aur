@@ -26,7 +26,8 @@ pkgver() {
 }
 
 build() {
-  arch-meson pantheon-photos build
+  arch-meson pantheon-photos build \
+    -Dlibunity='false'
   ninja -C build
 }
 
