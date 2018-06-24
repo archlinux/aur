@@ -8,9 +8,9 @@ pkgdesc='A general purpose 3D CAD modeler'
 arch=('x86_64')
 url='http://www.freecadweb.org/'
 license=('LGPL')
-depends=('netcdf' 'boost-libs' 'coin-hg' 'med' 'opencascade7' 'python-numpy'
+depends=('netcdf' 'boost-libs' 'med' 'oce' 'vtk' 'python-numpy' 'glew'
          'xerces-c' 'qt5-svg' 'qt5-webkit' 'jsoncpp' 'hicolor-icon-theme'
-         'python-pyside2' 'python-pivy-git' 'glew')
+         'python-pyside2' 'python-pivy-git')
 makedepends=('git' 'cmake' 'boost' 'eigen' 'desktop-file-utils' 'qt5-tools')
 source=("${_appname}::git+https://github.com/FreeCAD/FreeCAD.git"
         "FreeCAD-Python3"
@@ -32,14 +32,9 @@ build() {
     cd "$srcdir/${_appname}"
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX="/opt/${_appname}" \
+          -DFREECAD_USE_OCC_VARIANT="Community Edition" \
           -DPYTHON_EXECUTABLE="/usr/bin/python3" \
-          -DBUILD_QT5=ON \
-          -DOCC_INCLUDE_DIR="/opt/opencascade7/include/opencascade" \
-          -DOCC_LIBRARY_DIR="/opt/opencascade7/lib" \
-          -DCMAKE_PREFIX_PATH="/opt/opencascade7" \
-          -DCMAKE_INCLUDE_PATH="/opt/opencascade7/include/opencascade" \
-          -DCMAKE_LIBRARY_PATH="/opt/opencascade7/lib" \
-          -DCMAKE_INSTALL_RPATH="/opt/opencascade7/lib;/usr/lib"
+          -DBUILD_QT5=ON
 
     make
 }
