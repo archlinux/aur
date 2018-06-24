@@ -1,0 +1,16 @@
+post_install() {
+  cat << EOF
+---------------------------------------------------
+==> Run 'sudo openpyn --init' to initialize openpyn
+---------------------------------------------------
+EOF
+}
+
+pre_remove() {
+  openpyn -k
+}
+
+post_remove() {
+  rm -rf /usr/share/openpyn/{files,credentials}
+  rm /etc/systemd/system/openpyn.service
+}
