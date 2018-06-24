@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
 depends=('aqbanking' 'webkit2gtk' 'guile' 'libdbi' 'boost-libs' 'libsecret')
-makedepends=('git' 'boost' 'gmock' 'gwenhywfar' 'cmake' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs')
+makedepends=('git' 'boost' 'gmock' 'gwenhywfar' 'cmake' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'swig')
 optdepends=(
        'gnucash-docs: for documentation'
        'iso-codes: for translation of currency names'
