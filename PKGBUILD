@@ -1,9 +1,10 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-# https://github.com/ValHue/AUR-PKGBUILDs
-
+#
+# Contributor: ValHue <vhuelamo at gmail dot com>
+#
 pkgname="wp-desktop"
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
 arch=('i686' 'x86_64')
@@ -32,7 +33,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/WordPress.com-linux-*
+    cd "${srcdir}"/WordPress*
     install -d ${pkgdir}/usr/share/wpcom
     mv * ${pkgdir}/usr/share/wpcom
     install -d ${pkgdir}/usr/share/applications
@@ -44,10 +45,9 @@ package() {
     install -m 644 *.desktop ${pkgdir}/usr/share/applications
 
     cd "${pkgdir}/usr/share/wpcom"
-    install -m 644 WordPress.png ${pkgdir}/usr/share/pixmaps/wpcom.png
-    install -m 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    mv WordPress.com wpcom
+    install -m 644 ./resources/app/public_desktop/app-logo.png ${pkgdir}/usr/share/pixmaps/wpcom.png
+    install -m 644 LICENSE.electron.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     ln -s /usr/share/wpcom/wpcom ${pkgdir}/usr/bin/wpcom
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim:set ts=4 sw=2 ft=sh et syn=sh ft=sh:
