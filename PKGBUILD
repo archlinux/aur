@@ -3,18 +3,18 @@
 
 pkgname=migrate
 
-pkgver=v3.0.1.r89.gd23f71b
+pkgver=v3.3.0.r3.g6070aa8
 pkgrel=1
 pkgdesc="Database migration handling in Golang"
-url="https://github.com/mattes/migrate"
+url="https://github.com/golang-migrate/migrate"
 license=('MIT')
 arch=('x86_64' 'i686')
-makedepends=('go')
+makedepends=('go', 'dep')
 options=('!strip' '!emptydirs')
 depends=()
 makedepends=()
 
-source=(git://github.com/mattes/migrate.git)
+source=(git://github.com/golang-migrate/migrate.git)
 sha512sums=('SKIP')
 
 pkgver() {
@@ -23,15 +23,17 @@ pkgver() {
 }
 
 build() {
-    GOPATH="$srcdir"
-    rm -rf "$srcdir/src/github.com/mattes"
-    mkdir -p "$srcdir/src/github.com/mattes"
-    mv "$srcdir/migrate" "$srcdir/src/github.com/mattes"
-
-    go build -v -o migrate-bin github.com/mattes/migrate
+    GOPATH="$srcdir/gopath"
+    mkdir -p "$GOPATH/src/github.com/golang-migrate"
+    mv "$srcdir/migrate" "$GOPATH/src/github.com/golang-migrate"
+    cd "$GOPATH/src/github.com/golang-migrate/migrate"
+    dep ensure -v
+    cd $srcdir
+    go install -v github.com/golang-migrate/migrate/cli
 }
 
 package() {
-    install -Dm755 "migrate-bin" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 "$srcdir/src/github.com/mattes/migrate/LICENSE" "$pkgdir/usr/share/licenses/migrate/LICENSE"
+    GOPATH="$srcdir/gopath"
+    install -Dm755 "$GOPATH/bin/cli" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "$GOPATH/src/github.com/golang-migrate/migrate/LICENSE" "$pkgdir/usr/share/licenses/migrate/LICENSE"
 }
