@@ -9,8 +9,8 @@ pkgbase = nvidia-zen
 	makedepends = nvidia-libgl
 	makedepends = nvidia-utils=390.48
 	makedepends = linux-zen
-	makedepends = linux-zen-headers>=4.16
-	makedepends = linux-zen-headers<4.17
+	makedepends = linux-zen-headers>=4.17
+	makedepends = linux-zen-headers<4.18
 	options = !strip
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/390.48/NVIDIA-Linux-x86-390.48.run
 	sha512sums_i686 = 9d80616abbf1f95c89bb3e6bda864708adc887a62ccdf8865e956c305bb013b0e54ffb3f495805363ee60a9115ab5fb38adf1534750a6afb69a457a4d034daeb
@@ -20,8 +20,8 @@ pkgbase = nvidia-zen
 pkgname = nvidia-zen
 	pkgdesc = NVIDIA drivers for linux-zen
 	install = nvidia.install
-	depends = linux-zen>=4.16
-	depends = linux-zen<4.17
+	depends = linux-zen>=4.17
+	depends = linux-zen<4.18
 	depends = nvidia-utils=390.48
 	depends = libgl
 
