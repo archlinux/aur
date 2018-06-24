@@ -3,13 +3,13 @@
 
 pkgbase=tensorflow-git
 pkgname=(tensorflow-git tensorflow-cuda-git python-tensorflow-git python-tensorflow-cuda-git)
-pkgver=1.8.0+rc1+930+gadf045607c
+pkgver=1.8.0+3475+ga8c59ba450
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
 license=('Apache2')
 arch=('x86_64')
-makedepends=(git bazel python-numpy gcc6 cuda cudnn python-pip python-wheel python-setuptools)
+makedepends=(git bazel python-numpy gcc7 cuda cudnn python-pip python-wheel python-setuptools)
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
 source=("git+https://github.com/tensorflow/tensorflow")
@@ -59,7 +59,7 @@ build() {
 
   cd ${srcdir}/tensorflow-cuda
   export TF_NEED_CUDA=1
-  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-6
+  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-7
   export TF_CUDA_CLANG=0
   # export CLANG_CUDA_COMPILER_PATH=/usr/bin/clang
   export CUDA_TOOLKIT_PATH=/opt/cuda
