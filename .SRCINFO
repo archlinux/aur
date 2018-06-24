@@ -1,7 +1,7 @@
 pkgbase = domoticz
 	pkgdesc = Web based home automation
-	pkgver = 3.8153
-	pkgrel = 2
+	pkgver = 4.9700
+	pkgrel = 1
 	url = http://www.domoticz.com
 	install = domoticz.install
 	arch = i686
@@ -20,12 +20,10 @@ pkgbase = domoticz
 	depends = boost-libs
 	depends = lua
 	depends = mosquitto
-	source = https://github.com/domoticz/domoticz/archive/3.8153.tar.gz
+	source = https://github.com/domoticz/domoticz/archive/4.9700.tar.gz
 	source = domoticz.service
-	source = boost1.66.patch
-	sha256sums = 5ea8f37f2ef900e9bd17b1b5375e75bfdec4f09001e3e2e0b647a260989d014c
+	sha256sums = c31f185a1ffac01b86a77bf33e059a4403d814e826c9d6639c63c2e9afa55a46
 	sha256sums = 52ea28893fc70a278a728f975c249ace48e48f595c9da01895bde115e8e6b255
-	sha256sums = 04bf1daa167c00f621715578e6d6631cc059b7d7ca3741e44b2b7b316a2cf3a5
 
 pkgname = domoticz
 
