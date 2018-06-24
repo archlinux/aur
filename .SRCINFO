@@ -1,7 +1,7 @@
 pkgbase = ggmud-svn
 	pkgdesc = GTK2 mud client inspired by tintin and sclient.
-	pkgver = r267
-	pkgrel = 1
+	pkgver = 273
+	pkgrel = 2
 	url = http://www.ggsoft.org/ggmud/
 	arch = i686
 	arch = x86_64
