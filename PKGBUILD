@@ -6,8 +6,8 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=3.2
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
 arch=('any')
@@ -51,16 +51,9 @@ conflicts=("${pkgname}")
 install="${pkgname}.install"
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/fyookball/electrum/archive/${pkgver/.0}.tar.gz"
-  "${pkgname}.install"
-  "0001-Revert-Improve-argument-parsing-in-setup.py-Unix-dat.patch")
-sha256sums=('0a50bcad327ee0914c444cdba4d1334a93dfc4fea30e04fc299c4913efe53181'
-            'd682766321f9981ee38aee26dc050209882d8c1c6006e3e509649b47fa1bb073'
-            '8f8ba0cb62c9b24f12b2ad39c78f4e18f451231647a7f3bf06ad55b77776a8ac')
-
-prepare() {
-  cd "${pkgname/on-cash/um}-${pkgver/.0}"
-  patch -Np1 -i "${srcdir}/0001-Revert-Improve-argument-parsing-in-setup.py-Unix-dat.patch"
-}
+  "${pkgname}.install")
+sha256sums=('92df7f89321cda8f6d886c203298daa1bf8463ff25a5d58b93907579d181f7f8'
+            'd682766321f9981ee38aee26dc050209882d8c1c6006e3e509649b47fa1bb073')
 
 build() {
   cd "${pkgname/on-cash/um}-${pkgver/.0}"
