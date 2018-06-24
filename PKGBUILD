@@ -1,14 +1,15 @@
+
 # Maintainer: excalibur1234 @forum.manjaro.org
 
 _pkgname=pacui
 pkgname=$_pkgname-git
-pkgver=r835.70f6032
+pkgver=r870.27b1422
 pkgrel=1
-pkgdesc="Bash script providing advanced Pacman and Trizen/Yay/Yaourt/Pikaur/Pacaur functionality in a simple UI"
+pkgdesc="Bash script providing advanced Pacman and Trizen/Yay/Pikaur/Yaourt/Pacaur functionality in a simple UI"
 arch=(any)
 url="https://github.com/excalibur1234/$_pkgname"
 license=('GPL3')
-depends=('expac' 'wget' 'sudo' 'fzf')
+depends=('pacman-contrib' 'expac' 'wget' 'sudo' 'fzf')
 makedepends=('git')
 provides=('pacui')
 conflicts=("$_pkgname")
