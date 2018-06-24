@@ -1,0 +1,5 @@
+pkg/
+src/
+gitsrc/
+*.tar.xz
+*.log
