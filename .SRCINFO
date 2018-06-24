@@ -9,6 +9,7 @@ pkgbase = zig-git
 	makedepends = cmake
 	makedepends = git
 	depends = clang
+	depends = llvm
 	provides = zig
 	conflicts = zig
 	source = git://github.com/zig-lang/zig.git
