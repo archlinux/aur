@@ -4,7 +4,7 @@ _pkgbase=hid-lg-g710-plus
 _pkgname=${_pkgbase}-dkms
 pkgname=${_pkgname}-git
 pkgver=r19.ecd2099
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux dkms kernel module to allow use of extra keys on the Logitech g710+ (logitech-g710-linux-driver)"
 arch=('i686' 'x86_64')
 url="http://github.com/Wattos/logitech-g710-linux-driver"
@@ -15,8 +15,12 @@ provides=('hid-lg-g710-plus')
 conflicts=('logitech-g710-kmod-git' 'hid-lg-g710-plus' 'logitech-g710')
 install='hid-lg-g710-plus-dkms.install'
 
-source=("${_pkgbase}::git://github.com/Wattos/logitech-g710-linux-driver.git")
-md5sums=('SKIP')
+source=(
+  "${_pkgbase}::git://github.com/Wattos/logitech-g710-linux-driver.git"
+  "makefile.patch"
+)
+sha1sums=('SKIP'
+          '2b10d777054612312219d568c8a48797366ff424')
 
 
 pkgver() {
@@ -30,6 +34,9 @@ pkgver() {
 # }
 
 package() {
+  # patch kernel version detection
+  patch "$srcdir/$_pkgbase/src/kernel/Makefile" < "../../makefile.patch"
+
   cd "$srcdir/$_pkgbase"
 
   local rev="$(git rev-parse --short HEAD)"

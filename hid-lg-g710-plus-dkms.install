@@ -2,7 +2,8 @@
 # new version (without -$pkgrel): ${2%%-*}
 
 post_install() {
-    dkms install hid-lg-g710-plus/${1%%-*}
+    export KVERSION="$(pacman -Q | grep "^linux " | cut -d " " -f 2)-ARCH"
+    dkms install hid-lg-g710-plus/${1%%-*} -k $KVERSION
 }
 
 pre_upgrade() {
@@ -14,5 +15,8 @@ post_upgrade() {
 }
 
 pre_remove() {
-    dkms remove hid-lg-g710-plus/${1%%-*} --all
+    dkms status | grep "^hid-lg-g710-plus, ${1%%-*}"
+    if [ $? -eq 0 ]; then
+        dkms remove hid-lg-g710-plus/${1%%-*} --all
+    fi
 }
