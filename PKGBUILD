@@ -5,26 +5,29 @@
 pkgname=mingw-w64-python2
 pkgver=2.7.15
 _pybasever=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level scripting language (mingw-w64)"
 arch=('any')
 license=('PSF')
 url="http://www.python.org/"
 depends=('mingw-w64-crt'
          'mingw-w64-expat'
-	 'mingw-w64-bzip2'
-	 'mingw-w64-ncurses'
-	 'mingw-w64-openssl'
-	 'mingw-w64-libffi'
-   'mingw-w64-tcl'
-   'mingw-w64-tk'
-	 'mingw-w64-zlib')
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-configure' "python2>=${pkgver}" 'wine')
+	       'mingw-w64-bzip2'
+	       'mingw-w64-ncurses'
+	       'mingw-w64-openssl'
+	       'mingw-w64-libffi'
+         'mingw-w64-tcl'
+         'mingw-w64-tk'
+	       'mingw-w64-zlib'
+         'mingw-w64-wine')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-configure' "python2>=${pkgver}" 'mingw-w64-wine')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
-        'patches.tar.gz')
+        'patches.tar.gz'
+        'descr_ref.patch')
 sha1sums=('f99348a095ec4a6411c84c0d15343d11920c9724'
-          '7bd3d920902d6edfcab4605e5e056342131f1771')
+          'ecc4f9469bb16c03d860ae1a6f4cc1f6d1ee3bcb'
+          '8cc6ac63e909063eb16bbdabc0f0eac7d24ff0c1')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 # Helper macros to help make tasks easier #
@@ -184,6 +187,10 @@ prepare() {
   sed -i "s|\\\$(PGEN) \\\$(GRAMMAR_INPUT)|wine \\\$(PGEN) \\\$(GRAMMAR_INPUT)|g" Makefile.pre.in
 
   autoreconf -vfi
+  
+  # Temporary workaround for FS#22322
+  # See http://bugs.python.org/issue10835 for upstream report
+  sed -i "/progname =/s/python/python${_pybasever}/" Python/pythonrun.c
 
   # Enable built-in SQLite module to load extensions (fix FS#22122)
   sed -i "/SQLITE_OMIT_LOAD_EXTENSION/d" setup.py
@@ -208,6 +215,17 @@ prepare() {
   rm -r Modules/expat
   rm -r Modules/zlib
   rm -r Modules/_ctypes/{darwin,libffi}*
+  
+  # clean up #!s
+  find . -name '*.py' | \
+    xargs sed -i "s|#[ ]*![ ]*/usr/bin/env python$|#!/usr/bin/env python2|"
+    
+  # Workaround asdl_c.py/makeopcodetargets.py errors after we touched the shebangs
+  touch Include/Python-ast.h Python/Python-ast.c Python/opcode_targets.h
+
+  # FS#48761
+  # http://bugs.python.org/issue25750
+  patch -Np1 -i ../descr_ref.patch
 }
 
 build() {
@@ -298,7 +316,8 @@ package() {
   sed -i "s|#!${pkgdir}/usr/${_arch}/bin/python${_pybasever}.exe|#!/usr/bin/env python${_pybasever}.exe|" "${pkgdir}/usr/${_arch}"/bin/python-config
 
   # fix permissons
-  find ${pkgdir}/usr/${_arch} -type f \( -name "*.dll" -o -name "*.exe" \) | xargs chmod 0755
+  find ${pkgdir}/usr/${_arch} -type f \( -name "*.dll" \) | xargs chmod 0755
+  find ${pkgdir}/usr/${_arch} -type f \( -name "*.exe" \) | xargs chmod 0755
   find ${pkgdir}/usr/${_arch} -type f \( -name "*.a" \) | xargs chmod 0755
 
   # replace paths in sysconfig
