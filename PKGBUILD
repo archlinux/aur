@@ -13,13 +13,11 @@ depends=('netcdf' 'boost-libs' 'coin-hg' 'med' 'opencascade7' 'python-numpy'
          'python-pyside2' 'python-pivy-git' 'glew')
 makedepends=('git' 'cmake' 'boost' 'eigen' 'desktop-file-utils' 'qt5-tools')
 source=("${_appname}::git+https://github.com/FreeCAD/FreeCAD.git"
-        "python_version.patch"
         "FreeCAD-Python3"
         "FreeCADCmd-Python3"
         "freecad-python3.desktop"
         "freecad-python3.xml")
 md5sums=('SKIP'
-         'c6fcaa9963687bcadf4df8afb44effc5'
          '11de902a9afd6b1e4a6cde867e167bb0'
          '6ef4c2f2e40d5185401819c8e76453e5'
          'bc7b8caca5f8e6b7812f47af2dfa79c6'
@@ -30,15 +28,11 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "$srcdir/${_appname}"
-    patch -p1 -i "$srcdir/python_version.patch"
-}
-
 build() {
     cd "$srcdir/${_appname}"
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX="/opt/${_appname}" \
+          -DPYTHON_EXECUTABLE="/usr/bin/python3" \
           -DBUILD_QT5=ON \
           -DOCC_INCLUDE_DIR="/opt/opencascade7/include/opencascade" \
           -DOCC_LIBRARY_DIR="/opt/opencascade7/lib" \
