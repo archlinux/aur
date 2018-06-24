@@ -7,8 +7,8 @@ pkgbase = hunspell-uk
 	groups = dict-uk
 	license = MPL
 	optdepends = hunspell: the spell checking libraries and apps
-	source = https://extensions.libreoffice.org/extensions/ukrainian-spelling-dictionary-and-thesaurus/3-7.5/@@download/file/dict-uk_ua-3.7.5.oxt
-	sha256sums = f968c76098a57329a7807fcc35d570eb1381d90492a5856ee53611cbc2b42a94 
+	source = https://extensions.libreoffice.org/extensions/ukrainian-spelling-dictionary-and-thesaurus/4-0.0/@@download/file/dict-uk_ua-4.0.0.oxt
+	sha256sums = f968c76098a57329a7807fcc35d570eb1381d90492a5856ee53611cbc2b42a94
 
 pkgname = hunspell-uk
 
