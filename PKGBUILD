@@ -5,19 +5,19 @@
 pkgname=java-p7zip-binding
 pkgver=9.20_2.00beta
 _pkgver=9.20-2.00beta
-pkgrel=2
+pkgrel=3
 pkgdesc="Java wrapper for 7-Zip C++ library."
 arch=('i686' 'x86_64')
 url="https://github.com/borisbrodski/sevenzipjbinding"
 license=('LGPL')
 depends=('java-runtime')
-makedepends=('cmake' 'java-environment')
+makedepends=('cmake' 'jdk7-openjdk')
 source=(https://github.com/borisbrodski/sevenzipjbinding/archive/Release-$_pkgver.tar.gz)
 md5sums=('9a755e13f67eb83de978d200c0918c82')
 
 build() {
   cd "$srcdir"/sevenzipjbinding-Release-$_pkgver
-  cmake .
+  cmake -DJAVA_JDK=/usr/lib/jvm/java-7-openjdk/ . 
   make 7-Zip-JBinding
   make sevenzipjbinding-jar
   make sevenzipjbinding-lib-jar
