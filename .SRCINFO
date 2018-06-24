@@ -1,8 +1,8 @@
 pkgbase = qarv-git
 	pkgdesc = Qt GUI and API interfaces to ethernet cameras via Aravis
-	pkgver = 20150207
+	pkgver = 20180625
 	pkgrel = 1
-	url = https://gitorious.org/adv/qarv
+	url = https://github.com/AD-Vega/qarv
 	install = qarv-git.install
 	arch = i686
 	arch = x86_64
