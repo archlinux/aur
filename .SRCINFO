@@ -1,0 +1,21 @@
+pkgbase = acarsdec-git
+	pkgver = 3.4.r91.ac7f7a2
+	pkgrel = 1
+	url = https://github.com/TLeconte/acarsdec
+	arch = x86_64
+	license = GPL
+	optdepends = acarsserv: Store messages in sqlite database
+	provides = acarsdec
+	conflicts = acarsdec
+	source = acarsdec-git::git+https://github.com/TLeconte/acarsdec.git
+	sha256sums = SKIP
+
+pkgname = acarsdec-git-airspy
+	pkgdesc = Multi-channel ACARS decoder with airspy backend
+	depends = airspy
+	depends = libusb
+
+pkgname = acarsdec-git-rtl-sdr
+	pkgdesc = Multi-channel ACARS decoder with rtl_sdr backend
+	depends = rtl-sdr
+
