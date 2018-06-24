@@ -3,8 +3,8 @@
 # Contributor: Ciarán Coffey <ciaran@ccoffey.ie>
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
-pkgver=13.9.1
-pkgrel=2
+pkgver=13.10
+pkgrel=1
 pkgdesc="Citrix Receiver for x86_64 (64bit) Linux (ICAClient)"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://www.citrix.com/products/receiver/"
@@ -30,9 +30,9 @@ md5sums=('71aca6257f259996ac59729604f32978'
          '1f214f6f456f59afd1a3275580f4240e'
          '59f8e50cc0e0c399d47eb7ace1df5a32'
          'dca5a1f51449ef35f1441b900d622276')
-sha256sums_x86_64=('A9A9157CE8C287E8AA11447A0E3C3AB7C227330E9D8882C6F7B938A4DD5925BC')
-sha256sums_i686=('A93E9770FD10FDD3586A2D47448559EA037265717A7000B9BD2B1DCCE7B0A483')
-sha256sums_armv7h=('b224d894c980e29298398e1d6c1d837ad67ce201fa9ffea7d283fa3d368f23b7')
+sha256sums_x86_64=('7025688C7891374CDA11C92FC0BA2FA8151AEB4C4D31589AD18747FAE943F6EA')
+sha256sums_i686=('2DCA3C8EDED11C5D824D579BC3A6B7D531EAEDDCBFB16E91B5702C72CAE9DEE4')
+sha256sums_armv7h=('F543C7A956AFC4AD38577DCF1F2FE697AF3244F80EE4FF1C5B95391FC4C232C5')
 install=citrix-client.install
 
 package() {
