@@ -1,8 +1,7 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
-
 pkgname=dsdcc
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Digital Speech Decoder (DSD) rewritten as a C++ library"
 arch=('any')
@@ -12,8 +11,8 @@ depends=('mbelib' 'serialdv')
 makedepends=('cmake')
 provides=('dsdcc')
 conflicts=('dsdcc')
-source=("https://github.com/f4exb/dsdcc/archive/v$pkgver.tar.gz")
-sha256sums=('8cd9d598e370222b74e607f3ec861b7e81f1ec0a04eed51bc0ecca42f9169a40')
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('6fa4ea871180c98e96ea178a8fbd6fc5c9dc4caa9f521ff972b93b1d0ccacb81')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
