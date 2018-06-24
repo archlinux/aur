@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/google/zopfli"
 license=('apache')
 depends=('glibc')
-source=("https://github.com/google/zopfli/archive/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/google/zopfli/archive/$pkgbase-$pkgver.tar.gz")
 sha256sums=('4a570307c37172d894ec4ef93b6e8e3aacc401e78cbcc51cf85b212dbc379a55')
 
 
