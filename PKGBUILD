@@ -29,18 +29,26 @@ pkgver() {
 }
 
 prepare() {
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build
+
   cd lightdm-pantheon-greeter
 
   patch -Np1 -i ../0001-bin-not-sbin.patch
 }
 
 build() {
-  arch-meson lightdm-pantheon-greeter build
-  ninja -C build
+  cd build
+
+  arch-meson ../lightdm-pantheon-greeter
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  build
+
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
