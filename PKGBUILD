@@ -30,6 +30,6 @@ package() {
 	cd ggmud/build
 	install -D -m755 ggmud "$pkgdir/usr/bin/$pkgname"
 	install -D -m644 ../gg_help.txt "${pkgdir}/usr/share/$pkgname/gg_help.txt"
-	install -D -m644 "${srcdir}/ggmud/ggmud.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
-	install -D -m644 "${srcdir}/ggmud/ggmud.png" "${pkgdir}/usr/share/pixmaps/$pkgname.png"
+	install -D -m644 ../ggmud.desktop "${pkgdir}/usr/share/applications/$pkgname.desktop"
+	install -D -m644 ../ggmud.png "${pkgdir}/usr/share/pixmaps/$pkgname.png"
 }
