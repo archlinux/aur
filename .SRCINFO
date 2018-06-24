@@ -1,10 +1,11 @@
 pkgbase = pacui
 	pkgdesc = Bash script providing advanced Pacman and Trizen/Yay/Pikaur/Yaourt/Pacaur functionality in a simple UI
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = https://github.com/excalibur1234/pacui
 	arch = any
 	license = GPL3
+	depends = pacman-contrib
 	depends = expac
 	depends = wget
 	depends = sudo
@@ -18,8 +19,8 @@ pkgbase = pacui
 	optdepends = reflector: Needed for Arch Linux mirror support
 	optdepends = downgrade: Needed for hidden "downgrade" option.
 	conflicts = pacui-git
-	source = https://github.com/excalibur1234/pacui/archive/1.10.2.tar.gz
-	md5sums = 6dbdff81a25a0223bcbfc80e2690fcbb
+	source = https://github.com/excalibur1234/pacui/archive/1.10.3.tar.gz
+	md5sums = 8fcc4c5f85be56de69f6660ac91544e9
 
 pkgname = pacui
 
