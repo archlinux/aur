@@ -1,0 +1,12 @@
+[Unit]
+Description=Argo Tunnel client daemon for %i
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/cloudflared --config /etc/cloudflared/%i.yml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

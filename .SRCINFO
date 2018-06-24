@@ -1,0 +1,23 @@
+pkgbase = cloudflared-bin
+	pkgdesc = An Argo Tunnel client which proxies any local webserver through the Cloudflare network
+	pkgver = 2018.6.2
+	pkgrel = 1
+	url = https://developers.cloudflare.com/argo-tunnel/
+	arch = x86_64
+	arch = arm
+	license = custom
+	provides = cloudflared
+	conflicts = cloudflared
+	source = https://raw.githubusercontent.com/cloudflare/cloudflared/master/LICENSE
+	source = cloudflared.yml
+	source = cloudflared@.service
+	sha256sums = 6a486a0f6c00e87cce1caf0aa8db45ea9fefd0bf91d9be6fc44460160dc0dbda
+	sha256sums = 4e06eb54143d872f73707ed2bba2ba2198649d3066df741bd0cfda5d1a5f334d
+	sha256sums = a2d6beef87b531ec43837ce1c2ebd7411058466a11bd6a899a8659582b25e3c2
+	source_x86_64 = https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.tgz
+	sha256sums_x86_64 = 13f34fbfef05104496c913807b21c3c8b09b519537acbaa3a8d70ade5dcf97b2
+	source_arm = https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
+	sha256sums_arm = 829b42e05df6d0b47b0180b84247a3ab43bdfaf443aa027306382fda053a0592
+
+pkgname = cloudflared-bin
+
