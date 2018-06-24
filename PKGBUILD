@@ -15,7 +15,7 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
 makedepends=('meson' 'boost')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wwmm/pulseeffects/archive/v$pkgver.tar.gz")
-sha256sums=('648ba9dd9cc77260e82311d3e8b439c407bfcc101cb54fc5e51f1c8ef63a650e')
+sha256sums=('f8323e4a96b3f7d0dcc8392f2a7563c817799b1db18e15b6b6635e03cb17ba67')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
