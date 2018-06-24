@@ -1,4 +1,5 @@
 /pkg
 /src
 *.tar.xz
-BytecodeViewer*.zip
+*.jar
+*.tar
