@@ -30,6 +30,7 @@ prepare() {
   patch -p1 -i ${srcdir}/004-fix-download-po.patch
 
   WANT_AUTOMAKE=latest autoreconf -fi
+  make update-po
 }
 
 
@@ -38,7 +39,6 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
-      --disable-nls \
       ..
     make
     popd
