@@ -8,6 +8,7 @@ pkgbase = zig
 	makedepends = cmake
 	makedepends = git
 	depends = clang
+	depends = llvm
 	source = https://ziglang.org/download/0.2.0/zig-0.2.0.tar.xz
 	source = force_dynamic_llvm.patch
 	source = no_stage2_artifacts.patch
