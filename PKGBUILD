@@ -5,7 +5,7 @@
 pkgname=pharo-launcher
 epoch=1
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pharo Launcher helps you manage your Pharo images"
 arch=(x86_64)
 source=($pkgname-$pkgver.tar.gz)
@@ -22,7 +22,7 @@ md5sums=(
 )
 
 prepare() {
-	gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc"
+	gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --categories "Development"
 }
 
 
