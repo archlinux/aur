@@ -5,7 +5,7 @@ pkgver=r47.77485fd
 pkgrel=1
 pkgdesc="Dynamic Battery extension for GNOME Shell."
 arch=(any)
-url="https://gitlab.gnome.org/exalm/gnome-shell-extension-dynamic-battery"
+url="https://gitlab.com/exalm/gnome-shell-extension-dynamic-battery"
 license=(GPL2)
 depends=('gnome-shell>=3.20')
 provides=("${pkgname%-git}")
