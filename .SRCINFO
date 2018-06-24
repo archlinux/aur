@@ -1,15 +1,15 @@
 pkgbase = qtfm
 	pkgdesc = A lightweight file manager
-	pkgver = 6.0.0_beta1
-	pkgrel = 2
+	pkgver = 6.0.0
+	pkgrel = 1
 	url = https://github.com/rodlie/qtfm/releases
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = qt5-base
-	source = https://github.com/rodlie/qtfm/releases/download/6.0.0-beta1/qtfm-6.0.0-beta1.tar.xz
+	source = https://github.com/rodlie/qtfm/releases/download/6.0.0/qtfm-6.0.0.tar.xz
 	source = make_it_build_fixes.patch
-	md5sums = abf140cc5e49eea07df91e90a033f7a3
+	md5sums = b1e48dc5065f0986b59eef3c4c390b4e
 	md5sums = 4d2128e6abe88e3f03a2ffc2e4700ee1
 
 pkgname = qtfm
