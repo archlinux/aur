@@ -15,5 +15,5 @@ sha256sums=('b95539396580882e498661cfd150cd4a46f4efbc54ec1e170a8fdb57d31dc1ed')
 
 package(){
   install -d "$pkgdir"/usr/share
-  cp -R "$srcdir"/share/doc/ "$srcdir}"/share/omf/ "$pkgdir"/usr/share/
+  cp -R "$srcdir"/share/doc/ "$srcdir"/share/omf/ "$pkgdir"/usr/share/
 }
