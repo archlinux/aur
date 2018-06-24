@@ -1,23 +1,25 @@
-# Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
+# Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
+# Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
+
 pkgname=acarsdec
-pkgver=3.2
+pkgver=3.4
 pkgrel=1
 pkgdesc="Multi-channel ACARS decoder for rtl_sdr"
-arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/acarsdec/"
+arch=('x86_64')
+url="https://github.com/TLeconte/acarsdec"
 license=('GPL')
-depends=('rtl-sdr' 'alsa-lib' 'sqlite')
-source=("http://downloads.sourceforge.net/project/acarsdec/acarsdec/$pkgver/acarsdec-$pkgver.tar.gz")
-sha256sums=('579a63f4f68618aee7de04e3ea1081ec7bd0f0853ea0debc3080a23f9b8f4a9f')
+depends=('alsa-lib' 'libsndfile' 'rtl-sdr')
+source=("https://github.com/TLeconte/acarsdec/archive/$pkgname-$pkgver.tar.gz")
+sha256sums=('1db09410ea58f1a8f65f4310f94c2fef419c38f4d05c723de9b2e77a6f936e1f')
 
 build() {
-    cd "$pkgname-$pkgver"
-    make
-    make acarsserv
+  cd "$pkgname-$pkgname-$pkgver"
+  make
+  make acarsserv
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-    install -Dm 0755 acarsdec ${pkgdir}/usr/bin/acarsdec
-    install -Dm 0755 acarsserv ${pkgdir}/usr/bin/acarsserv
+  cd "$pkgname-$pkgname-$pkgver"
+  install -Dm755 acarsdec "$pkgdir/usr/bin/acarsdec"
+  install -Dm755 acarsserv "$pkgdir/usr/bin/acarsserv"
 }
