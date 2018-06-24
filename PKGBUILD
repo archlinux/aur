@@ -5,10 +5,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20180620
+pkgver=4.0.0v20180624
 _pkgver=4.0.0
-_snapshot_=20180620
-_snapver_=0241
+_snapshot_=20180624
+_snapver_=0251
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -16,13 +16,13 @@ pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'libtiger' 'lua'
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'glibc' 'libtiger' 'lua'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'mesa' 'libtar' 'libxinerama' 'libxkbcommon' 'libsecret'
          'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
          'wayland-protocols')
-makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
+makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'glibc' 'libbluray'
              'flac' 'kdelibs' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
              'libmtp' 'libmicrodns' 'libdvdcss' 'smbclient'
@@ -254,7 +254,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('1a2a77fe67f71b9ff8cd4ec9022e62e2b454a6e30cf6e26e9bb3729ba1a63f57'
+sha256sums=('ff08f92a87f707e4d85ed8d84c34725ecb3fc48a19b4ef26107578cf7bb571eb'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '75ad8802bad1a79754e40fd107f5a6922c54f7467dadef8b439b49d410c8f7d2'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
