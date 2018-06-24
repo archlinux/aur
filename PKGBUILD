@@ -1,7 +1,7 @@
 # Maintainer: John Gowers <wjg27 AT bath DOT ac DOT uk>
 # See also the 'agda' package in the 'community' repository.
 pkgname=agda-git
-pkgver=2.5.1.r5468.a4e5f12bc
+pkgver=2.5.1.r5471.51914041f
 pkgrel=1
 pkgdesc="A dependently typed functional programming language and proof assistant: development version"
 arch=('x86_64')
@@ -37,6 +37,8 @@ prepare() {
 	sed -e "s|rawSystem agda \\[|rawSystem \"env\" [\"Agda_datadir=$PWD/lib-target\", \"LD_LIBRARY_PATH=$PWD/${pkgname%-git}/dist/build\", agda,|" \
 		-e "s|(ms, datadir dirs|(ms, \"$PWD/lib-target\"|" \
 		-i ${pkgname%-git}/Setup.hs
+	# Temporary workaround to problem where Sigma.agdai is not built.
+	sed 's/"Reflection", "Size"/"Reflection", "Sigma", "Size"/' -i ${pkgname%-git}/Setup.hs
 }
 
 build() {
@@ -63,6 +65,7 @@ package() {
 	rm -f "${pkgdir}/usr/share/doc/${pkgname%-git}/LICENSE"
 
 	install -m644 "$srcdir"/lib-target/lib/prim/Agda/Primitive.agdai "$pkgdir"/usr/share/agda/lib/prim/Agda/Primitive.agdai
-  install -m644 "$srcdir"/lib-target/lib/prim/Agda/Primitive/*.agdai "$pkgdir"/usr/share/agda/lib/prim/Agda/Primitive/
+        install -m644 "$srcdir"/lib-target/lib/prim/Agda/Primitive/*.agdai "$pkgdir"/usr/share/agda/lib/prim/Agda/Primitive/
 	install -m644 "$srcdir"/lib-target/lib/prim/Agda/Builtin/*.agdai "$pkgdir"/usr/share/agda/lib/prim/Agda/Builtin/
+	install -m644 "$srcdir"/lib-target/lib/prim/Agda/Builtin/Cubical/*.agdai "$pkgdir"/usr/share/agda/lib/prim/Agda/Builtin/Cubical/
 }
