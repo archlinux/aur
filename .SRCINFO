@@ -1,0 +1,18 @@
+pkgbase = zopfli
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/google/zopfli
+	arch = i686
+	arch = x86_64
+	license = apache
+	depends = glibc
+	source = https://github.com/google/zopfli/archive/zopfli-1.0.2.tar.gz
+	sha256sums = 4a570307c37172d894ec4ef93b6e8e3aacc401e78cbcc51cf85b212dbc379a55
+
+pkgname = zopfli
+	pkgdesc = Zopfli compression algorithm library
+
+pkgname = zopflipng
+	pkgdesc = PNG optimization program using zopfli compression algorithm
+	depends = gcc-libs
+
