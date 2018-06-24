@@ -22,7 +22,7 @@ _UNIFONT_VER="10.0.06"
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.02
-pkgrel=6
+pkgrel=7
 epoch=2
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64')
@@ -84,31 +84,50 @@ sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             'fcd5a626d4af33665d041ce42df813f1f198d8230ea186481b155a5b676f3b87'
             '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82'
             'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
+		
+_configure_options=(
+	FREETYPE="pkg-config freetype2"
+	BUILD_FREETYPE="pkg-config freetype2"
+	--enable-mm-debug
+	--enable-nls
+	--enable-device-mapper
+	--enable-cache-stats
+	--enable-grub-mkfont
+	--enable-grub-mount
+	--prefix="/usr"
+	--bindir="/usr/bin"
+	--sbindir="/usr/bin"
+	--mandir="/usr/share/man"
+	--infodir="/usr/share/info"
+	--datarootdir="/usr/share"
+	--sysconfdir="/etc"
+	--program-prefix=""
+	--with-bootdir="/boot"
+	--with-grubdir="grub"
+	--disable-silent-rules
+	--disable-werror
+)
 
 prepare() {
 	cd "${srcdir}/grub-${pkgver}/"
 
 	msg "Patch to detect of Arch Linux initramfs images by grub-mkconfig"
 	patch -Np1 -i "${srcdir}/0003-10_linux-detect-archlinux-initramfs.patch"
-	echo
 
 	msg "Patch to enable GRUB_COLOR_* variables in grub-mkconfig"
 	## Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
 	patch -Np1 -i "${srcdir}/0004-add-GRUB_COLOR_variables.patch"
-	echo
 
 	msg "Patch to allow GRUB to mount ext2/3/4 filesystems that have the encryption feature"
 	patch -Np1 -i "${srcdir}/0005-Allow_GRUB_to_mount_ext234_filesystems_that_have_the_encryption_feature.patch"
-	echo
 
 	msg "Patch to change default tsc calibration method to pmtimer on EFI systems"
 	patch -Np1 -i "${srcdir}/0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch"
-	echo
 
-	msg "Support multiple early initrd images"
+	msg "Patch to Support multiple early initrd images"
 	patch -Np1 -i "${srcdir}/0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch"
 
-	msg "Fix packed-not-aligned error on GCC 8"
+	msg "Patch to fix packed-not-aligned error on GCC 8"
 	patch -Np1 -i "${srcdir}/0008-Fix-packed-not-aligned-error-on-GCC-8.patch"
 
 	msg "xfs: Accept filesystem with sparse inodes"
@@ -125,7 +144,6 @@ prepare() {
 
 	msg "Pull in latest language files"
 	./linguas.sh
-	echo
 
 	msg "Remove not working langs which need LC_ALL=C.UTF-8"
 	sed -e 's#en@cyrillic en@greek##g' -i "po/LINGUAS"
@@ -133,6 +151,9 @@ prepare() {
 	msg "Avoid problem with unifont during compile of grub"
 	# http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
 	cp "${srcdir}/unifont-${_UNIFONT_VER}.bdf" "unifont.bdf"
+	
+	msg "Run autogen.sh"
+	./autogen.sh
 }
 
 _build_grub-common_and_bios() {
@@ -160,40 +181,16 @@ _build_grub-common_and_bios() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 
-	msg "Run autogen.sh for bios build"
-	./autogen.sh
-	echo
-
 	msg "Run ./configure for bios build"
 	./configure \
-		FREETYPE="pkg-config freetype2" \
 		--with-platform="pc" \
 		--target="i386" \
 		"${_EFIEMU}" \
-		--enable-mm-debug \
-		--enable-nls \
-		--enable-device-mapper \
-		--enable-cache-stats \
 		--enable-boot-time \
-		--enable-grub-mkfont \
-		--enable-grub-mount \
-		--prefix="/usr" \
-		--bindir="/usr/bin" \
-		--sbindir="/usr/bin" \
-		--mandir="/usr/share/man" \
-		--infodir="/usr/share/info" \
-		--datarootdir="/usr/share" \
-		--sysconfdir="/etc" \
-	 	--program-prefix="" \
-		--with-bootdir="/boot" \
-		--with-grubdir="grub" \
-		--disable-silent-rules \
-		--disable-werror
-	echo
+		"${_configure_options[@]}"
 
 	msg "Run make for bios build"
 	make
-	echo
 }
 
 _build_grub-efi() {
@@ -208,40 +205,16 @@ _build_grub-efi() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 
-	msg "Run autogen.sh for ${_EFI_ARCH} efi build"
-	./autogen.sh
-	echo
-
 	msg "Run ./configure for ${_EFI_ARCH} efi build"
 	./configure \
-		FREETYPE="pkg-config freetype2" \
 		--with-platform="efi" \
 		--target="${_EFI_ARCH}" \
 		--disable-efiemu \
-		--enable-mm-debug \
-		--enable-nls \
-		--enable-device-mapper \
-		--enable-cache-stats \
 		--enable-boot-time \
-		--enable-grub-mkfont \
-		--enable-grub-mount \
-		--prefix="/usr" \
-		--bindir="/usr/bin" \
-		--sbindir="/usr/bin" \
-		--mandir="/usr/share/man" \
-		--infodir="/usr/share/info" \
-		--datarootdir="/usr/share" \
-		--sysconfdir="/etc" \
-		--program-prefix="" \
-		--with-bootdir="/boot" \
-		--with-grubdir="grub" \
-		--disable-silent-rules \
-		--disable-werror
-	echo
+		"${_configure_options[@]}"
 
 	msg "Run make for ${_EFI_ARCH} efi build"
 	make
-	echo
 }
 
 _build_grub-emu() {
@@ -256,41 +229,17 @@ _build_grub-emu() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 
-	msg "Run autogen.sh for emu build"
-	./autogen.sh
-	echo
-
 	msg "Run ./configure for emu build"
 	./configure \
-		FREETYPE="pkg-config freetype2" \
 		--with-platform="emu" \
 		--target="${_EMU_ARCH}" \
-		--enable-mm-debug \
-		--enable-nls \
-		--enable-device-mapper \
-		--enable-cache-stats \
-		--enable-grub-mkfont \
-		--enable-grub-mount \
 		--enable-grub-emu-usb=no \
 		--enable-grub-emu-sdl=no \
 		--disable-grub-emu-pci \
-		--prefix="/usr" \
-		--bindir="/usr/bin" \
-		--sbindir="/usr/bin" \
-		--mandir="/usr/share/man" \
-		--infodir="/usr/share/info" \
-		--datarootdir="/usr/share" \
-		--sysconfdir="/etc" \
-		--program-prefix="" \
-		--with-bootdir="/boot" \
-		--with-grubdir="grub" \
-		--disable-silent-rules \
-		--disable-werror
-	echo
+		"${_configure_options[@]}"
 
 	msg "Run make for emu build"
 	make
-	echo
 }
 
 build() {
@@ -298,22 +247,18 @@ build() {
 
 	msg "Build grub bios stuff"
 	_build_grub-common_and_bios
-	echo
 
 	msg "Build grub ${_EFI_ARCH} efi stuff"
 	_build_grub-efi
-	echo
 
 	if [[ "${CARCH}" == "x86_64" ]] && [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
 		msg "Build grub i386 efi stuff"
 		_EFI_ARCH="i386" _build_grub-efi
-		echo
 	fi
 
 	if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
 		msg "Build grub emu stuff"
 		_build_grub-emu
-		echo
 	fi
 }
 
@@ -322,7 +267,6 @@ _package_grub-common_and_bios() {
 
 	msg "Run make install for bios build"
 	make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
-	echo
 
 	msg "Remove gdb debugging related files for bios build"
 	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.module || true
@@ -341,7 +285,6 @@ _package_grub-efi() {
 
 	msg "Run make install for ${_EFI_ARCH} efi build"
 	make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
-	echo
 
 	msg "Remove gdb debugging related files for ${_EFI_ARCH} efi build"
 	rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/*.module || true
@@ -354,7 +297,6 @@ _package_grub-emu() {
 
 	msg "Run make install for emu build"
 	make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
-	echo
 
 	msg "Remove gdb debugging related files for emu build"
 	rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.module || true
@@ -371,13 +313,11 @@ package() {
 	if [[ "${CARCH}" == "x86_64" ]] && [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
 		msg "Package grub i386 efi stuff"
 		_EFI_ARCH="i386" _package_grub-efi
-		echo
 	fi
 
 	if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
 		msg "Package grub emu stuff"
 		_package_grub-emu
-		echo
 	fi
 
 	msg "Package grub bios stuff"
