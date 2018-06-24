@@ -1,7 +1,8 @@
-From 8afeb76790377fe42c4c91c9cb7d311078e9a7ae Mon Sep 17 00:00:00 2001
+From 220e23ae8d0d346e1b16d843649dd137ba76861c Mon Sep 17 00:00:00 2001
 From: Mark Weiman <mark.weiman@markzz.com>
-Date: Fri, 20 Apr 2018 13:17:23 -0400
-Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.16)
+Date: Sun, 24 Jun 2018 12:31:25 -0400
+Subject: [PATCH] [PATCH] pci: Enable overrides for missing ACS capabilities
+ (4.17)
 
 This an updated version of Alex Williamson's patch from:
 https://lkml.org/lkml/2013/5/30/513
@@ -52,10 +53,10 @@ Signed-off-by: Mark Weiman <mark.weiman@markzz.com>
  2 files changed, 110 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 1d1d53f85ddd..fa7110ca99e2 100644
+index f2040d46f095..33ccd3daa8bc 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -2983,6 +2983,15 @@
+@@ -3019,6 +3019,15 @@
  		nomsi		[MSI] If the PCI_MSI kernel config parameter is
  				enabled, this kernel boot option can be used to
  				disable the use of MSI interrupts system-wide.
@@ -72,10 +73,10 @@ index 1d1d53f85ddd..fa7110ca99e2 100644
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 46d47bd6ca1f..90aaf6ae8544 100644
+index 2990ad1e7c99..962372b61e26 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -3687,6 +3687,106 @@ static int __init pci_apply_final_quirks(void)
+@@ -3533,6 +3533,106 @@ static int __init pci_apply_final_quirks(void)
  
  fs_initcall_sync(pci_apply_final_quirks);
  
@@ -182,14 +183,14 @@ index 46d47bd6ca1f..90aaf6ae8544 100644
  /*
   * Following are device-specific reset methods which can be used to
   * reset a single function if other methods (e.g. FLR, PM D0->D3) are
-@@ -4523,6 +4623,7 @@ static const struct pci_dev_acs_enabled {
+@@ -4372,6 +4472,7 @@ static const struct pci_dev_acs_enabled {
  	{ PCI_VENDOR_ID_CAVIUM, PCI_ANY_ID, pci_quirk_cavium_acs },
  	/* APM X-Gene */
  	{ PCI_VENDOR_ID_AMCC, 0xE004, pci_quirk_xgene_acs },
-+	{ PCI_ANY_ID, PCI_ANY_ID, pcie_acs_overrides },
- 	{ 0 }
- };
- 
++    { PCI_ANY_ID, PCI_ANY_ID, pcie_acs_overrides },
+ 	/* Ampere Computing */
+ 	{ PCI_VENDOR_ID_AMPERE, 0xE005, pci_quirk_xgene_acs },
+ 	{ PCI_VENDOR_ID_AMPERE, 0xE006, pci_quirk_xgene_acs },
 -- 
-2.17.0
+2.17.1
 
