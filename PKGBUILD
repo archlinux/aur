@@ -11,7 +11,7 @@ groups=('pantheon-unstable')
 depends=('accountsservice' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gnome-desktop' 'gtk3' 'libgee' 'libpwquality' 'polkit'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('git' 'gobject-introspection' 'granite-git' 'meson'
+makedepends=('cmake' 'git' 'gobject-introspection' 'granite-git'
              'switchboard-git' 'vala')
 source=("switchboard-plug-user-accounts::git+https://github.com/elementary/switchboard-plug-useraccounts.git")
 sha256sums=('SKIP')
@@ -22,13 +22,29 @@ pkgver() {
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd switchboard-plug-user-accounts
+
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build
+}
+
 build() {
-  arch-meson switchboard-plug-user-accounts build
-  ninja -C build
+  cd switchboard-plug-user-accounts/build
+
+  cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
+  make
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  cd switchboard-plug-user-accounts/build
+
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim: ts=2 sw=2 et:
