@@ -1,32 +1,29 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 
 _pkgname=qr-filetransfer
+_gourl="github.com/claudiodangelis/$_pkgname"
 pkgname="$_pkgname-git"
-pkgver=r13.8b609c5
+pkgver=r89.2df55ab
 pkgrel=1
 pkgdesc="Transfer files over wifi from your computer to your mobile device by scanning a QR code without leaving the terminal."
 arch=('any')
-url="https://github.com/claudiodangelis/$_pkgname/"
+url="https://$_gourl"
 license=('MIT')
-makedepends=('go' 'git')
+makedepends=('go>=1.8' 'git')
 provides=("$_pkgname")
 options=('!strip' '!emptydirs')
-source=("$_pkgname::git://github.com/claudiodangelis/$_pkgname.git")
-md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
+	git clone -n "$url.git" "$srcdir/pkgver"
+	cd "$srcdir/pkgver"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-	go build
+	GOPATH="$srcdir" go get -fix -v -x "$_gourl"
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-
-	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dpm755 "$srcdir/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm644 "$srcdir/src/$_gourl/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
