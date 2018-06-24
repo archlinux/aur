@@ -6,7 +6,6 @@ pkgbase = acarsserv-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = acarsdec
 	depends = sqlite
 	optdepends = acarsdec: Source for messages
 	provides = acarsserv
