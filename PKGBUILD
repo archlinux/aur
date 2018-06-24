@@ -43,7 +43,7 @@ depends=(
          'libpulse'
 #          'libwebp'
          'opus'
-         'libav'
+         'libva'
          )
 makedepends=(
              'gperf'
