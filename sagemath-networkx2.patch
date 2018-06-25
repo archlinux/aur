@@ -1,8 +1,145 @@
+diff --git a/build/pkgs/networkx/SPKG.txt b/build/pkgs/networkx/SPKG.txt
+index c70a3c1..ca598bb 100644
+--- a/build/pkgs/networkx/SPKG.txt
++++ b/build/pkgs/networkx/SPKG.txt
+@@ -10,65 +10,4 @@ BSD
+ 
+ == Upstream Contact ==
+ 
+-See http://networkx.lanl.gov/
+-
+-== Dependencies ==
+- * numpy
+- * scipy
+-
+-== Option Dependencies ==
+- * matplotlib
+-
+-== Special Update/Build Instructions ==
+- * remove the src/doc/data directory containing various pngs
+-
+-== Changelog ==
+-
+-=== networkx-1.6 (Daniel Krenn, April 1, 2012) ===
+-
+-* upgraded to 1.6 release
+-* removed previous patches, since they are fixed in this version
+-
+-=== networkx-1.2.p2 (Dima Pasechnik, November 26, 2011) ===
+-
+-* removed symbolic links to work around tar bugs on Cygwin
+-
+-=== networkx-1.2.p1 (Ben Edwards, August 10, 2010) ===
+-
+-* Patches small readwrite which allows for the reading of gml
+-  graphs using matplotlibs version of pyparser.
+-
+-=== networkx-1.2 (Ben Edwards, July 20,2010) ===
+-
+-* upgraded to 1.2 release
+-* removed previous patch which is fixed in this version
+-
+-=== networkx-1.1 (Ben Edwards, July 20,2010) ===
+- * upgraded to the 1.1 release
+- * Added patch that fixes bug in random_powerlaw_graph, reported upstream
+-   should be fixed in networkx-1.2
+-
+-=== networkx-1.0.1 (Gregory McWhirter, January 27, 2010) ===
+- * upgraded to the 1.0.1 release (see #7608)
+- * deleted obsolete patches to nx_pylab.py
+-
+-=== networkx-0.99.p1 (Jason Grout, September 1st, 2009) ===
+- * patch matplotlib routines to use numpy instead of the now-deprecated matplotlib.numerix
+-
+-=== networkx-0.99.p0 (Michael Abshoff, January 28th, 2009) ===
+- * cleanup SPKG.txt
+- * cleanup spkg-install
+-
+-=== networkx-0.99 (Robert Miller, Dec. 23rd, 2008) ===
+- * upgraded to the 0.99 release
+-
+-=== networkx-0.36.p1 (Michael Abshoff, Jan. 31st, 2008) ===
+- * remove .svn directories (#2009)
+-
+-=== networkx-0.36.p0 ===
+- * add hg repo, check in files
+-
+-=== networkx-0.36 ===
+- * update to the 0.36 release (Robert Miller)
+- * remove src/doc/data directory to cut down the size (Michael Abshoff)
+-
++https://networkx.github.io/
+diff --git a/build/pkgs/networkx/checksums.ini b/build/pkgs/networkx/checksums.ini
+index 3ca7296..0216ba0 100644
+--- a/build/pkgs/networkx/checksums.ini
++++ b/build/pkgs/networkx/checksums.ini
+@@ -1,4 +1,4 @@
+ tarball=networkx-VERSION.tar.gz
+-sha1=ac24380b13dfe92633370ad2091c0c04b6d098a2
+-md5=6ef584a879e9163013e9a762e1cf7cd1
+-cksum=1278894037
++sha1=cbd567e3ad8cf4d2f382b72f05a1af8fc508a815
++md5=7655d7aba670b1573c3adb90f8830c1e
++cksum=3151275585
+diff --git a/build/pkgs/networkx/package-version.txt b/build/pkgs/networkx/package-version.txt
+index 0b1ce62..879b416 100644
+--- a/build/pkgs/networkx/package-version.txt
++++ b/build/pkgs/networkx/package-version.txt
+@@ -1 +1 @@
+-1.11.p0
++2.1
 diff --git a/src/sage/graphs/base/graph_backends.pyx b/src/sage/graphs/base/graph_backends.pyx
-index ff1d02900a..bad4a18539 100644
+index 2edc256..bef61a6 100644
 --- a/src/sage/graphs/base/graph_backends.pyx
 +++ b/src/sage/graphs/base/graph_backends.pyx
-@@ -800,9 +800,9 @@ class NetworkXGraphDeprecated(SageObject):
+@@ -1,9 +1,9 @@
++# -*- coding: utf-8 -*-
+ r"""
+ Backends for Sage (di)graphs.
+ 
+ This module implements :class:`GenericGraphBackend` (the base class for
+-backends) and :class:`NetworkXGraphBackend` (a wrapper for `NetworkX
+-<http://networkx.lanl.gov/>`__ graphs)
++backends).
+ 
+ Any graph backend must redefine the following methods (for which
+ :class:`GenericGraphBackend` raises a ``NotImplementedError``)
+@@ -48,12 +48,16 @@ Classes and methods
+ -------------------
+ """
+ 
+-#*******************************************************************************
+-#        Copyright (C) 2008 Robert L. Miller <rlmillster@gmail.com>
++# ****************************************************************************
++#       Copyright (C) 2008 Robert L. Miller <rlmillster@gmail.com>
++#                     2018 Julian Rüth <julian.rueth@fsfe.org>
+ #
+-# Distributed  under  the  terms  of  the  GNU  General  Public  License (GPL)
+-#                         http://www.gnu.org/licenses/
+-#*******************************************************************************
++# This program is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, either version 2 of the License, or
++# (at your option) any later version.
++#                  https://www.gnu.org/licenses/
++# ****************************************************************************
+ from __future__ import absolute_import
+ 
+ from .c_graph cimport CGraphBackend, CGraph
+@@ -690,12 +694,6 @@ cdef class GenericGraphBackend(SageObject):
+             multiedges = (<CGraphBackend> self)._multiple_edges
+             directed   = (<CGraphBackend> self)._directed
+             loops      = (<CGraphBackend> self)._loops
+-        elif isinstance(self, NetworkXGraphBackend):
+-            data_structure = "implementation"
+-            implementation = "networkx"
+-            multiedges =  self._nxg.is_multigraph()
+-            directed   =  self._nxg.is_directed()
+-            loops      =  bool(self._nxg.number_of_selfloops)
+         else:
+             raise Exception
+ 
+@@ -800,9 +798,9 @@ class NetworkXGraphDeprecated(SageObject):
              sage: X.multiedges = True
              sage: G = X.mutate()
              sage: G.edges()
@@ -14,7 +151,7 @@ index ff1d02900a..bad4a18539 100644
  
          """
          import networkx
-@@ -868,11 +868,9 @@ class NetworkXDiGraphDeprecated(SageObject):
+@@ -868,11 +866,11 @@ class NetworkXDiGraphDeprecated(SageObject):
              sage: X.multiedges = True
              sage: G = X.mutate()
              sage: G.edges()
@@ -24,42 +161,854 @@ index ff1d02900a..bad4a18539 100644
 -            [(1, 2, {'weight': 7}),
 -             (2, 1, {7: {}, 8: {}}),
 -             (2, 3, {4: {}, 5: {}, 6: {}, 7: {}})]
-+            OutMultiEdgeDataView([(1, 2, {'weight': 7}), (2, 1, {8: {}, 7: {}}), (2, 3, {4: {}, 5: {}, 6: {}, 7: {}})])
++            OutMultiEdgeDataView([(1, 2, {'weight': 7}),
++                                  (2, 1, {8: {}, 7: {}}),
++                                  (2, 3, {4: {}, 5: {}, 6: {}, 7: {}})])
  
          """
          import networkx
-@@ -1154,7 +1152,7 @@ class NetworkXGraphBackend(GenericGraphBackend):
-         import networkx
-         try:
-             if self._nxg.is_multigraph():
+@@ -899,735 +897,3 @@ class NetworkXDiGraphDeprecated(SageObject):
+ from sage.misc.persist import register_unpickle_override
+ register_unpickle_override('networkx.xgraph','XGraph', NetworkXGraphDeprecated)
+ register_unpickle_override('networkx.xdigraph','XDiGraph', NetworkXDiGraphDeprecated)
+-
+-class NetworkXGraphBackend(GenericGraphBackend):
+-    """
+-    A wrapper for NetworkX as the backend of a graph.
+-
+-    TESTS::
+-
+-        sage: import sage.graphs.base.graph_backends
+-
+-    """
+-
+-    _nxg = None
+-
+-    def __init__(self, N=None):
+-        """
+-        Initialize the backend with NetworkX graph N.
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            doctest:...: DeprecationWarning: This class is not supported anymore and will soon be removed
+-            See http://trac.sagemath.org/18375 for details.
+-            sage: G.iterator_edges([],True)
+-            <generator object at ...>
+-        """
+-        if N is None:
+-            import networkx
+-            N = networkx.MultiGraph()
+-        self._nxg = N
+-        from sage.misc.superseded import deprecation
+-        deprecation(18375,"This class is not supported anymore and will "
+-                    "soon be removed")
+-
+-    def __setstate__(self,state):
+-        r"""
+-        Fix the deprecated class if necessary.
+-        """
+-        for k,v in state.iteritems():
+-            self.__dict__[k] = v
+-        if isinstance(self._nxg, (NetworkXGraphDeprecated, NetworkXDiGraphDeprecated)):
+-            from sage.misc.superseded import deprecation
+-            deprecation(18375,"You unpickled an object which relies on an old "
+-                        "data structure. Save it again to update it, for it "
+-                        "may break in the future.")
+-            self._nxg = self._nxg.mutate()
+-
+-    def add_edge(self, u, v, l, directed):
+-        """
+-        Add an edge (u,v) to self, with label l.  If directed is True, this is
+-        interpreted as an arc from u to v.
+-
+-        INPUT:
+-
+-        - ``u,v`` -- vertices
+-        - ``l`` -- edge label
+-        - ``directed`` -- boolean
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.add_edge(1,2,'a',True)
+-        """
+-
+-        if u is None: u = self.add_vertex(None)
+-        if v is None: v = self.add_vertex(None)
+-
+-        if l:
+-            self._nxg.add_edge(u, v, weight=l)
+-        else:
+-            self._nxg.add_edge(u, v)
+-
+-    def add_edges(self, edges, directed):
+-        """
+-        Add a sequence of edges to self.  If directed is True, these are
+-        interpreted as arcs.
+-
+-        INPUT:
+-
+-        - ``edges`` -- list/iterator of edges to be added.
+-        - ``directed`` -- boolean
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.add_edges([],True)
+-        """
+-        for e in edges:
+-            try:
+-                u,v,l = e
+-            except ValueError:
+-                u,v = e
+-                l = None
+-            self.add_edge(u,v,l,directed)
+-
+-    def add_vertex(self, name):
+-        """
+-        Add a labelled vertex to self.
+-
+-        INPUT:
+-
+-        - ``name``: vertex label
+-
+-        OUTPUT:
+-
+-        If ``name=None``, the new vertex name is returned. ``None`` otherwise.
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.add_vertex(0)
+-        """
+-        if isinstance(self._nxg, (NetworkXGraphDeprecated, NetworkXDiGraphDeprecated)):
+-            self._nxg = self._nxg.mutate()
+-
+-        retval = None
+-        if name is None: # then find an integer to use as a key
+-            i = 0
+-            while self.has_vertex(i):
+-                i=i+1
+-            name = i
+-            retval = name
+-
+-        self._nxg.add_node(name)
+-
+-        return retval
+-
+-    def add_vertices(self, vertices):
+-        """
+-        Add labelled vertices to self.
+-
+-        INPUT:
+-
+-        - ``vertices``: iterator of vertex labels. A new label is created, used and returned in
+-          the output list for all ``None`` values in ``vertices``.
+-
+-        OUTPUT:
+-
+-        Generated names of new vertices if there is at least one ``None`` value
+-        present in ``vertices``. ``None`` otherwise.
+-
+-        EXAMPLES::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.add_vertices([1,2,3])
+-            sage: G.add_vertices([4,None,None,5])
+-            [0, 6]
+-        """
+-        vertices = list(vertices)
+-        nones = vertices.count(None)
+-        vertices = [v for v in vertices if v is not None]
+-        self._nxg.add_nodes_from(vertices)
+-
+-        new_names = []
+-        i = 0
+-        while nones > 0:
+-            while self.has_vertex(i):
+-                i += 1
+-            self._nxg.add_node(i)
+-            new_names.append(i)
+-
+-            nones -= 1
+-            i += 1
+-
+-        return new_names if new_names != [] else None
+-
+-    def degree(self, v, directed):
+-        """
+-        Return the total number of vertices incident to `v`.
+-
+-        INPUT:
+-
+-        - ``v`` -- a vertex label
+-        - ``directed`` -- boolean
+-
+-        OUTPUT:
+-
+-            degree of v
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.add_vertices(range(3))
+-            sage: G.degree(1, False)
+-            0
+-        """
+-        return self._nxg.degree(v)
+-
+-    def in_degree(self, v):
+-        """
+-        Return the in-degree of `v`.
+-
+-        INPUT:
+-
+-        - ``v`` -- a vertex label
+-
+-        OUTPUT:
+-
+-            degree of v
+-
+-        TESTS::
+-
+-            sage: G = DiGraph(digraphs.Path(5),implementation="networkx")
+-            doctest:...: DeprecationWarning: The 'implementation' keyword is deprecated, and the graphs has been stored as a 'c_graph'
+-            See http://trac.sagemath.org/18375 for details.
+-            sage: G = G._backend
+-            sage: G.in_degree(0)
+-            0
+-            sage: G.in_degree(4)
+-            1
+-        """
+-        return self._nxg.in_degree(v)
+-
+-    def out_degree(self, v):
+-        """
+-        Return the out-degree of `v`.
+-
+-        INPUT:
+-
+-        - ``v`` -- a vertex label
+-
+-        OUTPUT:
+-
+-            degree of v
+-
+-        TESTS::
+-
+-            sage: G = DiGraph(digraphs.Path(5),implementation="networkx")
+-            doctest:...: DeprecationWarning: The 'implementation' keyword is deprecated, and the graphs has been stored as a 'c_graph'
+-            See http://trac.sagemath.org/18375 for details.
+-            sage: G = G._backend
+-            sage: G.out_degree(0)
+-            1
+-            sage: G.out_degree(4)
+-            0
+-        """
+-        return self._nxg.out_degree(v)
+-
+-    def del_edge(self, u, v, l, directed):
+-        """
+-        Delete the edge `(u,v)` with label `l`.
+-
+-        INPUT:
+-
+-        - ``u,v`` -- vertices
+-        - ``l`` -- edge label
+-        - ``directed`` -- boolean
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.del_edge(1,2,'a',True)
+-        """
+-        import networkx
+-        try:
+-            if self._nxg.is_multigraph():
 -                for k,d in self._nxg.edge[u][v].iteritems():
-+                for u0,v0,k,d in self._nxg.edges([u,v],True,keys=True):
-                     if d.get('weight',None) == l:
-                         self._nxg.remove_edge(u,v,k)
-                         break
-@@ -1223,7 +1221,7 @@ class NetworkXGraphBackend(GenericGraphBackend):
-         """
-         cdef dict E
-         try:
+-                    if d.get('weight',None) == l:
+-                        self._nxg.remove_edge(u,v,k)
+-                        break
+-            else:
+-                if l is None or self._nxg.edge[u][v].get('weight',None) == l:
+-                    self._nxg.remove_edge(u,v)
+-        except (KeyError, networkx.NetworkXError):
+-            pass
+-
+-
+-    def del_vertex(self, v):
+-        """
+-        Delete a labelled vertex in self.
+-
+-        INPUT:
+-
+-        - ``v`` -- vertex label
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.del_vertex(0)
+-            Traceback (most recent call last):
+-            ...
+-            NetworkXError: The node 0 is not in the graph.
+-        """
+-        self._nxg.remove_node(v)
+-
+-    def del_vertices(self, vertices):
+-        """
+-        Delete labelled vertices in self.
+-
+-        INPUT:
+-
+-        - ``vertices`` -- iterator of vertex labels
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.del_vertices([1,2,3])
+-            Traceback (most recent call last):
+-            ...
+-            NetworkXError: The node 1 is not in the graph.
+-        """
+-        for v in vertices:
+-            self._nxg.remove_node(v)
+-
+-    def get_edge_label(self, u, v):
+-        """
+-        Return the edge label of `(u,v)`.
+-
+-        INPUT:
+-
+-        - ``u,v`` -- vertex labels
+-
+-        OUTPUT:
+-            label of `(u,v)`
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.get_edge_label(1,2)
+-            Traceback (most recent call last):
+-            ...
+-            NetworkXError: Edge (1,2) requested via get_edge_label does not exist.
+-        """
+-        cdef dict E
+-        try:
 -            E = self._nxg.edge[u][v]
-+            E = self._nxg.edges[u,v,0]
-         except KeyError:
-             from networkx import NetworkXError
-             raise NetworkXError("Edge (%s,%s) requested via get_edge_label does not exist."%(u,v))
-@@ -1412,7 +1410,7 @@ class NetworkXGraphBackend(GenericGraphBackend):
-             sage: G.iterator_nbrs(0)
-             <dictionary-keyiterator object at ...>
-         """
+-        except KeyError:
+-            from networkx import NetworkXError
+-            raise NetworkXError("Edge (%s,%s) requested via get_edge_label does not exist."%(u,v))
+-
+-        if self._nxg.is_multigraph():
+-            return [ e.get('weight',None) for e in E.itervalues() ]
+-        else:
+-            return E.get('weight',None)
+-
+-    def has_edge(self, u, v, l):
+-        """
+-        True if self has an edge (u,v) with label l.
+-
+-        INPUT:
+-
+-        - ``u,v`` -- vertex labels
+-        - ``l`` -- label
+-
+-        OUTPUT:
+-            boolean
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.has_edge(1,2,'a')
+-            False
+-        """
+-        if not self._nxg.has_edge(u, v):
+-            return False
+-        if l is None:
+-            return True
+-        cdef dict E = self._nxg.adj[u][v]
+-        if self._nxg.is_multigraph():
+-            return any(e.get('weight', None) == l
+-                       for e in E.itervalues())
+-        else:
+-            return any(e == l for e in E.itervalues())
+-
+-    def has_vertex(self, v):
+-        """
+-        True if self has a vertex with label v.
+-
+-        INPUT:
+-
+-        - ``v`` -- vertex label
+-
+-        OUTPUT:
+-            boolean
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.has_vertex(0)
+-            False
+-        """
+-        return self._nxg.has_node(v)
+-
+-    def iterator_edges(self, vertices, labels):
+-        """
+-        Iterate over the edges incident to a sequence of vertices. Edges are
+-        assumed to be undirected.
+-
+-        INPUT:
+-
+-        - ``vertices`` -- a list of vertex labels
+-        - ``labels`` -- boolean
+-
+-        OUTPUT:
+-            a generator which yields edges, with or without labels
+-            depending on the labels parameter.
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.iterator_edges([],True)
+-            <generator object at ...>
+-        """
+-        if labels:
+-            for u,v,d in self._nxg.edges_iter(data=True):
+-                if u in vertices or v in vertices:
+-                    yield (u,v,d.get('weight',None))
+-        else:
+-            for u,v in self._nxg.edges_iter():
+-                if u in vertices or v in vertices:
+-                    yield (u,v)
+-
+-    def _iterator_in_edges_with_labels(self, vertices):
+-        """
+-        Iterate over the incoming edges incident to a sequence of vertices.
+-        Special case, only for internal use.
+-
+-        EXAMPLES::
+-
+-            sage: g = DiGraph(graphs.PetersenGraph(), implementation="networkx")._backend
+-            doctest:...: DeprecationWarning: The 'implementation' keyword is deprecated, and the graphs has been stored as a 'c_graph'
+-            See http://trac.sagemath.org/18375 for details.
+-            sage: sorted(list(g.iterator_in_edges([0,1], True)))
+-            [(0, 1, None), (1, 0, None), (2, 1, None), (4, 0, None), (5, 0, None), (6, 1, None)]
+-        """
+-        for u,v,d in self._nxg.in_edges_iter(vertices,data=True):
+-            yield (u,v,d.get('weight',None))
+-
+-    def iterator_in_edges(self, vertices, labels):
+-        """
+-        Iterate over the incoming edges incident to a sequence of vertices.
+-
+-        INPUT:
+-
+-        - ``vertices`` -- a list of vertex labels
+-        - ``labels`` -- boolean
+-
+-        OUTPUT:
+-            a generator which yields edges, with or without labels
+-            depending on the labels parameter.
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: i = G.iterator_in_edges([],True)
+-        """
+-        if self._nxg.is_directed():
+-            if labels:
+-                return self._iterator_in_edges_with_labels(vertices)
+-            else:
+-                return self._nxg.in_edges_iter(vertices)
+-        else:
+-            return self.iterator_edges(vertices,labels)
+-
+-    def _iterator_out_edges_with_labels(self, vertices):
+-        """
+-        Iterate over the outbound edges incident to a sequence of vertices.
+-        Special case, only for internal use.
+-
+-        EXAMPLES::
+-
+-            sage: g = DiGraph(graphs.PetersenGraph(), implementation="networkx")._backend
+-            doctest:...: DeprecationWarning: The 'implementation' keyword is deprecated, and the graphs has been stored as a 'c_graph'
+-            See http://trac.sagemath.org/18375 for details.
+-            sage: sorted(list(g.iterator_out_edges([0,1], True)))
+-            [(0, 1, None), (0, 4, None), (0, 5, None), (1, 0, None), (1, 2, None), (1, 6, None)]
+-        """
+-        for u,v,d in self._nxg.out_edges_iter(vertices,data=True):
+-            yield (u,v,d.get('weight',None))
+-
+-    def iterator_out_edges(self, vertices, labels):
+-        """
+-        Iterate over the outbound edges incident to a sequence of vertices.
+-
+-        INPUT:
+-
+-        - ``vertices`` -- a list of vertex labels
+-        - ``labels`` -- boolean
+-
+-        OUTPUT:
+-            a generator which yields edges, with or without labels
+-            depending on the labels parameter.
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: i = G.iterator_out_edges([],True)
+-        """
+-        if self._nxg.is_directed():
+-            if labels:
+-                return self._iterator_out_edges_with_labels(vertices)
+-            else:
+-                return self._nxg.out_edges_iter(vertices)
+-        else:
+-            return self.iterator_edges(vertices,labels)
+-
+-    def iterator_nbrs(self, v):
+-        """
+-        Iterate over the vertices adjacent to v.
+-
+-        INPUT:
+-
+-        - ``v`` -- vertex label
+-
+-        OUTPUT:
+-            a generator which yields vertex labels
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.add_vertex(0)
+-            sage: G.iterator_nbrs(0)
+-            <dictionary-keyiterator object at ...>
+-        """
 -        return self._nxg.neighbors_iter(v)
-+        return self._nxg.neighbors(v)
+-
+-    def iterator_in_nbrs(self, v):
+-        """
+-        Iterate over the vertices u such that the edge (u,v) is in self
+-        (that is, predecessors of v).
+-
+-        INPUT:
+-
+-        - ``v`` -- vertex label
+-
+-        OUTPUT:
+-            a generator which yields vertex labels
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.iterator_in_nbrs(0)
+-            Traceback (most recent call last):
+-            ...
+-            AttributeError: 'MultiGraph' object has no attribute 'predecessors_iter'
+-        """
+-        return self._nxg.predecessors_iter(v)
+-
+-    def iterator_out_nbrs(self, v):
+-        """
+-        Iterate over the vertices u such that the edge (v,u) is in self
+-        (that is, successors of v).
+-
+-        INPUT:
+-
+-        - ``v`` -- vertex label
+-
+-        OUTPUT:
+-            a generator which yields vertex labels
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.iterator_out_nbrs(0)
+-            Traceback (most recent call last):
+-            ...
+-            AttributeError: 'MultiGraph' object has no attribute 'successors_iter'
+-        """
+-        return self._nxg.successors_iter(v)
+-
+-    def iterator_verts(self, verts):
+-        """
+-        Iterate over the vertices v with labels in verts.
+-
+-        INPUT:
+-
+-        - ``vertex`` -- vertex labels
+-
+-        OUTPUT:
+-            a generator which yields vertices
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.iterator_verts(0)
+-            <generator object bunch_iter at ...>
+-        """
+-        return self._nxg.nbunch_iter(verts)
+-
+-    def loops(self, new=None):
+-        """
+-        Get/set whether or not self allows loops.
+-
+-        INPUT:
+-
+-        - ``new`` -- can be a boolean (in which case it sets the value) or
+-          ``None``, in which case the current value is returned. It is set to
+-          ``None`` by default.
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.loops(True)
+-            sage: G.loops(None)
+-            True
+-        """
+-        if new is None:
+-            return self._loops
+-        if new:
+-            self._loops = True
+-        else:
+-            self._loops = False
+-
+-    def multiple_edges(self, new=None):
+-        """
+-        Get/set whether or not self allows multiple edges.
+-
+-        INPUT:
+-
+-        - ``new`` -- can be a boolean (in which case it sets the value) or
+-          ``None``, in which case the current value is returned. It is set to
+-          ``None`` by default.
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.multiple_edges(True)
+-            sage: G.multiple_edges(None)
+-            True
+-        """
+-        from networkx import Graph,MultiGraph,DiGraph,MultiDiGraph
+-        if new is None:
+-            return self._nxg.is_multigraph()
+-        if new == self._nxg.is_multigraph():
+-            return
+-        if new:
+-            if self._nxg.is_directed():
+-                self._nxg = MultiDiGraph(self._nxg)
+-            else:
+-                self._nxg = MultiGraph(self._nxg)
+-        else:
+-            if self._nxg.is_directed():
+-                self._nxg = DiGraph(self._nxg)
+-            else:
+-                self._nxg = Graph(self._nxg)
+-
+-    def name(self, new=None):
+-        """
+-        Get/set name of self.
+-
+-        INPUT:
+-
+-        - ``new`` -- can be a string (in which case it sets the value) or
+-          ``None``, in which case the current value is returned. It is set to
+-          ``None`` by default.
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.name("A NetworkX Graph")
+-            sage: G.name(None)
+-            'A NetworkX Graph'
+-        """
+-        if new is None:
+-            return self._nxg.name
+-        self._nxg.name = new
+-
+-    def num_edges(self, directed):
+-        """
+-        The number of edges in self
+-
+-        INPUT:
+-
+-        - ``directed`` -- boolean
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.num_edges(True)
+-            0
+-            sage: G.num_edges(False)
+-            0
+-        """
+-        return self._nxg.size()
+-
+-    def num_verts(self):
+-        """
+-        The number of vertices in self
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.num_verts()
+-            0
+-        """
+-        return self._nxg.order()
+-
+-    def relabel(self, perm, directed):
+-        """
+-        Relabel the vertices of self by a permutation.
+-
+-        INPUT:
+-
+-        - ``perm`` -- permutation
+-        - ``directed`` -- boolean
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.relabel([],False)
+-        """
+-        from networkx import relabel_nodes
+-        name = self._nxg.name
+-        self._nxg = relabel_nodes(self._nxg,perm)
+-        self._nxg.name = name
+-
+-    def set_edge_label(self, u, v, l, directed):
+-        """
+-        Label the edge (u,v) by l.
+-
+-        INPUT:
+-
+-        - ``u,v`` -- vertices
+-        - ``l`` -- edge label
+-        - ``directed`` -- boolean
+-
+-        TESTS::
+-
+-            sage: G = sage.graphs.base.graph_backends.NetworkXGraphBackend()
+-            sage: G.set_edge_label(1,2,'a',True)
+-        """
+-        if not self.has_edge(u, v, None):
+-            return
+-        if self.multiple_edges(None):
+-            self._nxg[u][v].clear()
+-            self._nxg[u][v][0] = dict(weight=l)
+-            if directed is False:
+-                self._nxg[v][u].clear()
+-                self._nxg[v][u][0] = dict(weight=l)
+-        else:
+-            self._nxg[u][v]['weight'] = l
+-            if directed is False:
+-                self._nxg[v][u]['weight'] = l
+diff --git a/src/sage/graphs/bipartite_graph.py b/src/sage/graphs/bipartite_graph.py
+index a831f9a..738f571 100644
+--- a/src/sage/graphs/bipartite_graph.py
++++ b/src/sage/graphs/bipartite_graph.py
+@@ -1,3 +1,4 @@
++# -*- coding: utf-8 -*-
+ r"""
+ Bipartite graphs
  
-     def iterator_in_nbrs(self, v):
-         """
+@@ -27,10 +28,14 @@ TESTS::
+ 
+ #*****************************************************************************
+ #         Copyright (C) 2008 Robert L. Miller <rlmillster@gmail.com>
++#                       2018 Julian Rüth <julian.rueth@fsfe.org>
+ #
+-# Distributed  under  the  terms  of  the  GNU  General  Public  License (GPL)
+-#                         http://www.gnu.org/licenses/
+-#*****************************************************************************
++# This program is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, either version 2 of the License, or
++# (at your option) any later version.
++#                  https://www.gnu.org/licenses/
++# ****************************************************************************
+ from __future__ import print_function
+ from __future__ import absolute_import
+ from six import iteritems
+@@ -1421,7 +1426,7 @@ class BipartiteGraph(Graph):
+             sage: G = graphs.CycleGraph(4)
+             sage: B = BipartiteGraph([(u,v,2) for u,v in G.edges(labels=0)])
+             sage: B.matching(use_edge_labels=True)
+-            [(0, 3, 2), (1, 2, 2)]
++            [(1, 2, 2), (0, 3, 2)]
+             sage: B.matching(use_edge_labels=True, value_only=True)
+             4
+             sage: B.matching(use_edge_labels=True, value_only=True, algorithm='Edmonds')
+@@ -1480,7 +1485,7 @@ class BipartiteGraph(Graph):
+             g = networkx.Graph()
+             if use_edge_labels:
+                 for u, v in W:
+-                    g.add_edge(u, v, attr_dict={"weight": W[u, v]})
++                    g.add_edge(u, v, weight=W[u, v])
+             else:
+                 for u, v in L:
+                     g.add_edge(u, v)
 diff --git a/src/sage/graphs/digraph.py b/src/sage/graphs/digraph.py
-index 003a8d6bcb..986137a9b0 100644
+index 5e67a6d..7151554 100644
 --- a/src/sage/graphs/digraph.py
 +++ b/src/sage/graphs/digraph.py
-@@ -755,7 +755,7 @@ class DiGraph(GenericGraph):
+@@ -1,3 +1,4 @@
++# -*- coding: utf-8 -*-
+ r"""
+ Directed graphs
+ 
+@@ -112,6 +113,50 @@ graphs. Here is what they can do
+ Methods
+ -------
+ """
++
++# ****************************************************************************
++#       Copyright (C) 2010      Alexandre Blondin Masse <alexandre.blondin.masse at gmail.com>
++#                               Carl Witty <cwitty@newtonlabs.com>
++#                               Gregory McWhirter <gmcwhirt@uci.edu>
++#                               Minh Van Nguyen <nguyenminh2@gmail.com>
++#                     2010-2011 Robert L. Miller <rlm@rlmiller.org>
++#                     2010-2015 Nathann Cohen <nathann.cohen@gmail.com>
++#                               Nicolas M. Thiery <nthiery@users.sf.net>
++#                     2011      Johannes Klaus Fichte <fichte@kr.tuwien.ac.at>
++#                     2012      Javier López Peña <vengoroso@gmail.com>
++#                     2012      Jim Stark <jstarx@gmail.com>
++#                     2012      Karl-Dieter Crisman <kcrisman@gmail.com>
++#                     2012      Keshav Kini <keshav.kini@gmail.com>
++#                     2012      Lukas Lansky <lansky@kam.mff.cuni.cz>
++#                     2012-2015 Volker Braun <vbraun.name@gmail.com>
++#                     2012-2017 Jeroen Demeyer <jdemeyer@cage.ugent.be>
++#                     2012-2018 David Coudert <david.coudert@inria.fr>
++#                     2013      Emily Gunawan <egunawan@umn.edu>
++#                     2013      Gregg Musiker <musiker@math.mit.edu>
++#                     2013      Mathieu Guay-Paquet <mathieu.guaypaquet@gmail.com>
++#                     2013-2014 Simon King <simon.king@uni-jena.de>
++#                     2014      Clemens Heuberger <clemens.heuberger@aau.at>
++#                               Erik Massop <e.massop@hccnet.nl>
++#                               R. Andrew Ohana <andrew.ohana@gmail.com>
++#                               Wilfried Luebbe <wluebbe@gmail.com>
++#                     2014-2015 André Apitzsch <andre.apitzsch@etit.tu-chemnitz.de>
++#                               Darij Grinberg <darijgrinberg@gmail.com>
++#                               Travis Scrimshaw <tscrim at ucdavis.edu>
++#                               Vincent Delecroix <20100.delecroix@gmail.com>
++#                     2014-2017 Frédéric Chapoton <chapoton@math.univ-lyon1.fr>
++#                     2015      Michele Borassi <michele.borassi@imtlucca.it>
++#                     2015-2017 John H. Palmieri <palmieri@math.washington.edu>
++#                               Jori Mäntysalo <jori.mantysalo@uta.fi>
++#                     2016      Dima Pasechnik <dimpase@gmail.com>
++#                     2018      Meghana M Reddy <mreddymeghana@gmail.com>
++#                               Julian Rüth <julian.rueth@fsfe.org>
++#
++# This program is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, either version 2 of the License, or
++# (at your option) any later version.
++#                  https://www.gnu.org/licenses/
++# ****************************************************************************
+ from __future__ import print_function, absolute_import
+ 
+ from copy import copy
+@@ -753,7 +798,7 @@ class DiGraph(GenericGraph):
              self.allow_multiple_edges(multiedges,check=False)
              self.allow_loops(loops,check=False)
              self.add_vertices(data.nodes())
@@ -68,66 +1017,381 @@ index 003a8d6bcb..986137a9b0 100644
          elif format == 'igraph':
              if not data.is_directed():
                  raise ValueError("A *directed* igraph graph was expected. To "+
-@@ -2846,7 +2846,7 @@ class DiGraph(GenericGraph):
+@@ -2817,9 +2862,8 @@ class DiGraph(GenericGraph):
+         INPUT:
+ 
+         - ``implementation`` -- Use the default Cython implementation
+-          (``implementation = default``), the default NetworkX library
+-          (``implementation = "NetworkX"``) or the recursive NetworkX
+-          implementation (``implementation = "recursive"``)
++          (``implementation = default``), or the default NetworkX library
++          (``implementation = "NetworkX"``)
+ 
+         .. SEEALSO::
+ 
+@@ -2843,12 +2887,7 @@ class DiGraph(GenericGraph):
+ 
          Using the NetworkX implementation ::
  
-             sage: D.topological_sort(implementation = "NetworkX")
+-            sage: D.topological_sort(implementation = "NetworkX")
 -            [4, 5, 6, 9, 0, 1, 2, 3, 7, 8, 10]
-+            [4, 5, 6, 9, 0, 3, 2, 7, 1, 8, 10]
+-
+-        Using the NetworkX recursive implementation ::
+-
+-            sage: D.topological_sort(implementation = "recursive")
++            sage: list(D.topological_sort(implementation = "NetworkX"))
+             [4, 5, 6, 9, 0, 3, 2, 7, 1, 8, 10]
  
-         Using the NetworkX recursive implementation ::
+         ::
+@@ -2860,21 +2899,6 @@ class DiGraph(GenericGraph):
+             TypeError: Digraph is not acyclic; there is no topological
+             sort.
  
-@@ -2872,9 +2872,7 @@ class DiGraph(GenericGraph):
-               sage: D = DiGraph({ 0:[1,2,3], 4:[2,5], 1:[8], 2:[7], 3:[7],
-               ....:   5:[6,7], 7:[8], 6:[9], 8:[10], 9:[10] })
-               sage: N = D.networkx_graph()
+-        .. note::
+-
+-           There is a recursive version of this in NetworkX, it used to
+-           have problems in earlier versions but they have since been
+-           fixed::
+-
+-              sage: import networkx
+-              sage: D = DiGraph({ 0:[1,2,3], 4:[2,5], 1:[8], 2:[7], 3:[7],
+-              ....:   5:[6,7], 7:[8], 6:[9], 8:[10], 9:[10] })
+-              sage: N = D.networkx_graph()
 -              sage: networkx.topological_sort(N)
 -              [4, 5, 6, 9, 0, 1, 2, 3, 7, 8, 10]
 -              sage: networkx.topological_sort_recursive(N)
-+              sage: list(networkx.topological_sort(N))
-               [4, 5, 6, 9, 0, 3, 2, 7, 1, 8, 10]
- 
+-              [4, 5, 6, 9, 0, 3, 2, 7, 1, 8, 10]
+-
          TESTS:
-@@ -2897,10 +2895,7 @@ class DiGraph(GenericGraph):
  
-         elif implementation == "NetworkX" or implementation == "recursive":
+         A wrong value for the ``implementation`` keyword::
+@@ -2893,12 +2917,9 @@ class DiGraph(GenericGraph):
+             else:
+                 raise TypeError('Digraph is not acyclic; there is no topological sort.')
+ 
+-        elif implementation == "NetworkX" or implementation == "recursive":
++        elif implementation == "NetworkX":
              import networkx
 -            if implementation == "NetworkX":
 -                S = networkx.topological_sort(self.networkx_graph(copy=False))
 -            else:
 -                S = networkx.topological_sort_recursive(self.networkx_graph(copy=False))
-+            S = list(networkx.topological_sort(self.networkx_graph(copy=False)))
++            S = networkx.topological_sort(self.networkx_graph(copy=False))
              if S is None:
                  raise TypeError('Digraph is not acyclic; there is no topological sort.')
              else:
+diff --git a/src/sage/graphs/generators/degree_sequence.py b/src/sage/graphs/generators/degree_sequence.py
+index baa8836..bcea8db 100644
+--- a/src/sage/graphs/generators/degree_sequence.py
++++ b/src/sage/graphs/generators/degree_sequence.py
+@@ -5,17 +5,17 @@ Graphs with a given degree sequence
+ The methods defined here appear in :mod:`sage.graphs.graph_generators`.
+ """
+ 
+-###########################################################################
++# ****************************************************************************
++#       Copyright (C) 2006 Robert L. Miller <rlmillster@gmail.com>
++#                          Emily A. Kirkman
++#                     2009 Michael C. Yurko <myurko@gmail.com>
+ #
+-#           Copyright (C) 2006 Robert L. Miller <rlmillster@gmail.com>
+-#                              and Emily A. Kirkman
+-#           Copyright (C) 2009 Michael C. Yurko <myurko@gmail.com>
+-#
+-# Distributed  under  the  terms  of  the  GNU  General  Public  License (GPL)
+-#                         http://www.gnu.org/licenses/
+-###########################################################################
+-
+-# import from Sage library
++# This program is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, either version 2 of the License, or
++# (at your option) any later version.
++#                  https://www.gnu.org/licenses/
++# ****************************************************************************
+ from sage.graphs.graph import Graph
+ from sage.misc.randstate import current_randstate
+ 
+@@ -162,12 +162,8 @@ def DegreeSequenceConfigurationModel(deg_sequence, seed=None):
+     ::
+ 
+         sage: G = graphs.DegreeSequenceConfigurationModel([3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3])
+-        sage: sorted(G.edges(labels=False))
+-        [(0, 2), (0, 10), (0, 15), (1, 6), (1, 16), (1, 17), (2, 5), (2, 19),
+-        (3, 7), (3, 14), (3, 14), (4, 9), (4, 13), (4, 19), (5, 6),
+-        (5, 15), (6, 11), (7, 11), (7, 17), (8, 11), (8, 18), (8, 19),
+-        (9, 12), (9, 13), (10, 15), (10, 18), (12, 13), (12, 16), (14, 17),
+-        (16, 18)]
++        sage: len(G.edges())
++        30
+         sage: G.show()  # long time
+ 
+     REFERENCE:
 diff --git a/src/sage/graphs/generators/families.py b/src/sage/graphs/generators/families.py
-index 8f81333685..1540ec0dcc 100644
+index 8d85f90..016cac2 100644
 --- a/src/sage/graphs/generators/families.py
 +++ b/src/sage/graphs/generators/families.py
-@@ -197,7 +197,7 @@ def BalancedTree(r, h):
+@@ -5,18 +5,18 @@ Families of graphs
+ The methods defined here appear in :mod:`sage.graphs.graph_generators`.
+ """
+ 
+-###########################################################################
++# ****************************************************************************
++#       Copyright (C) 2006 Robert L. Miller <rlmillster@gmail.com>
++#                          Emily A. Kirkman
++#                     2009 Michael C. Yurko <myurko@gmail.com>
++#                     2016 Rowan Schrecker <rowan.schrecker@hertford.ox.ac.uk>
+ #
+-#           Copyright (C) 2006 Robert L. Miller <rlmillster@gmail.com>
+-#                              and Emily A. Kirkman
+-#           Copyright (C) 2009 Michael C. Yurko <myurko@gmail.com>
+-#
+-#           Copyright (C) 2016 Rowan Schrecker <rowan.schrecker@hertford.ox.ac.uk>
+-#            (Rowan Schrecker supported by UK EPSRC grant EP/K040251/2)
+-#
+-# Distributed  under  the  terms  of  the  GNU  General  Public  License (GPL)
+-#                         http://www.gnu.org/licenses/
+-###########################################################################
++# This program is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, either version 2 of the License, or
++# (at your option) any later version.
++#                  https://www.gnu.org/licenses/
++# ****************************************************************************
+ from __future__ import print_function, division
+ import six
+ from six.moves import range
+@@ -197,22 +197,13 @@ def BalancedTree(r, h):
      gracefully::
  
          sage: graphs.BalancedTree(1, 10)
 -        Balanced tree: Graph on 2 vertices
+-
+-        sage: graphs.BalancedTree(-1, 10)
+-        Balanced tree: Graph on 1 vertex
 +        Balanced tree: Graph on 11 vertices
  
-         sage: graphs.BalancedTree(-1, 10)
-         Balanced tree: Graph on 1 vertex
-@@ -208,9 +208,6 @@ def BalancedTree(r, h):
+     Similarly, we usually want the tree must have height `h \geq 1`
+     but the algorithm also degenerates gracefully here::
+ 
          sage: graphs.BalancedTree(3, 0)
          Balanced tree: Graph on 1 vertex
- 
+-
 -        sage: graphs.BalancedTree(5, -2)
 -        Balanced tree: Graph on 0 vertices
 -
-         sage: graphs.BalancedTree(-2,-2)
-         Balanced tree: Graph on 0 vertices
+-        sage: graphs.BalancedTree(-2,-2)
+-        Balanced tree: Graph on 0 vertices
      """
+     import networkx
+     return Graph(networkx.balanced_tree(r, h), name="Balanced tree")
+diff --git a/src/sage/graphs/generic_graph.py b/src/sage/graphs/generic_graph.py
+index 3b1dd88..fda843a 100644
+--- a/src/sage/graphs/generic_graph.py
++++ b/src/sage/graphs/generic_graph.py
+@@ -317,6 +317,98 @@ can be applied on both. Here is what it can do:
+ Methods
+ -------
+ """
++
++# ****************************************************************************
++#
++#       Copyright (C) 2010      Alexandre Blondin Masse <alexandre.blondin.masse at gmail.com>
++#                               Ben Edwards <bedwards@cs.unm.edu>
++#                               Carl Witty <cwitty@newtonlabs.com>
++#                               Gregory McWhirter <gmcwhirt@uci.edu>
++#                               Johan Sebastian Rosenkilde Nielsen <j.s.r.nielsen@mat.dtu.dk>
++#                               Minh Van Nguyen <nguyenminh2@gmail.com>
++#                               Mitesh Patel <qed777@gmail.com>
++#                               Sebastian Pancratz <sage@pancratz.org>
++#                               Tom Boothby <boothby@u.washington.edu>
++#                     2010-2011 Robert L. Miller <rlm@rlmiller.org>
++#                               Fidel Barrera-Cruz <fidel.barrera@gmail.com>
++#                               Leif Leonhardy <not.really@online.de>
++#                               Rob Beezer <beezer@ups.edu>
++#                     2010-2012 Dmitrii Pasechnik <dimpase@gmail.com>
++#                               Jason Grout <jason-sage@creativetrax.com>
++#                     2010-2013 Burcin Erocal <burcin@erocal.org>
++#                     2010-2014 Mike Hansen <mhansen@gmail.com>
++#                     2010-2015 Nicolas M. Thiery <nthiery@users.sf.net>
++#                     2010-2016 Nathann Cohen <nathann.cohen@gmail.com>
++#                     2010-2017 J. H. Palmieri <palmieri@math.washington.edu>
++#                     2010-2018 Christian Stump <christian.stump@univie.ac.at>
++#                               Vincent Delecroix <20100.delecroix at gmail.com>
++#                     2011      Anne Schilling <anne@math.ucdavis.edu>
++#                               Diego de Estrada <destrada@dc.uba.ar>
++#                               Eviatar Bach <eviatarbach@gmail.com>
++#                               Geoffrey Ehrman <gehrman@gmail.com>
++#                               Ivan Andrus <darthandrus@gmail.com>
++#                               Michael Orlitzky <michael@orlitzky.com>
++#                     2011-2012 Lukas Lansky <lansky@kam.mff.cuni.cz>
++#                     2011-2013 Robert Miller <rlm@rlmiller.org>
++#                     2011-2015 André Apitzsch <andre.apitzsch@st.ovgu.de>
++#                               Andrey Novoseltsev <novoselt@gmail.com>
++#                     2011-2018 Jeroen Demeyer <jdemeyer@cage.ugent.be>
++#                     2012      Dan Drake <drake@kaist.edu>
++#                               Javier López Peña <vengoroso@gmail.com>
++#                               Karl-Dieter Crisman <kcrisman@gmail.com>
++#                               Keshav Kini <keshav.kini@gmail.com>
++#                               Lauren Keough <s-lkeough1@math.unl.edu>
++#                               Nathan Carter <ncarter@bentley.edu>
++#                               Punarbasu Purkayastha <ppurka@gmail.com>
++#                               Stefano Leucci <leucci.stefano@gmail.com>
++#                     2012-2013 Frederic Chapoton <chapoton at math.univ-lyon1.fr>
++#                     2012-2015 Jernej Azarija <jernej.azarija@gmail.com>
++#                                Volker Braun <vbraun.name@gmail.com>
++#                     2012-2018 Julian Rueth <julian.rueth@gmail.com>
++#                     2013      Alexandre Prusch Züge <alexandrezuge@gmail.com>
++#                               Austin Roberts <austinis@math.washington.edu>
++#                               Birk Eisermann <eisermbi@fastmail.fm>
++#                               Uros Slana <urossla@gmail.com>
++#                     2013-2014 R. Andrew Ohana <andrew.ohana@gmail.com>
++#                               Simon King <simon.king@uni-jena.de>
++#                     2013-2018 Darij Grinberg <darijgrinberg@gmail.com>
++#                               Frédéric Chapoton <chapoton@math.univ-lyon1.fr>
++#                     2014      Emmanuel Charpentier <emm.charpentier@free.fr>
++#                               Erick Matsen <matsen@fhcrc.org>
++#                               Erik Massop <e.massop@hccnet.nl>
++#                               Florian Oosterhof <f.m.oosterhof@student.tue.nl>
++#                               Jean-Pierre Flori <jean-pierre.flori@ssi.gouv.fr>
++#                               Ralf Stephan <ralf@ark.in-berlin.de>
++#                               Robert Lipshitz <lipshitz@math.columbia.edu>
++#                               Thierry Monteil <sage@lma.metelu.net>
++#                     2014-2015 Wilfried Luebbe <wluebbe@gmail.com>
++#                     2014-2017 Travis Scrimshaw <tscrim at ucdavis.edu>
++#                     2014-2018 David Coudert <david.coudert@inria.fr>
++#                               Jori Mäntysalo <jori.mantysalo@uta.fi>
++#                     2015      David Einstein <deinst@gmail.com>
++#                               François Bissey <francois.bissey@canterbury.ac.nz>
++#                               Michele Borassi <michele.borassi@imtlucca.it>
++#                               Sergios Lenis <sergioslenis@gmail.com>
++#                     2015-2016 Janoš Vidali <janos.vidali@fmf.uni-lj.si>
++#                     2015-2018 Dima Pasechnik <dimpase@gmail.com>
++#                     2016      Jeremias Epperlein <jeremias.epperlein@gmail.com>
++#                               Marco Cognetta <cognetta.marco@gmail.com>
++#                               Peleg Michaeli <freepeleg@gmail.com>
++#                     2016-2018 Sébastien Labbé <slabqc@gmail.com>
++#                     2017      Emile Nadeau <nadeau.emile@gmail.com>
++#                               John Cremona <john.cremona@gmail.com>
++#                               Lokesh Jain <lokeshj1703@gmail.com>
++#                               Zachary Gershkoff <zgershkoff@gmail.com>
++#                     2017-2018 Moritz Firsching <moritz@math.fu-berlin.de>
++#                     2018      Erik M. Bray <erik.bray@lri.fr>
++#                               Meghana M Reddy <mreddymeghana@gmail.com>
++#
++# This program is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, either version 2 of the License, or
++# (at your option) any later version.
++#                  https://www.gnu.org/licenses/
++# ****************************************************************************
+ from __future__ import print_function, absolute_import, division
+ from six.moves import range, zip
+ from six import itervalues, iteritems, integer_types
+@@ -376,18 +468,6 @@ class GenericGraph(GenericGraph_pyx):
+         """
+         for k,v in iteritems(state):
+             self.__dict__[k] = v
+-        from sage.graphs.base.graph_backends import NetworkXGraphBackend
+-        if isinstance(self._backend, NetworkXGraphBackend):
+-            from sage.misc.superseded import deprecation
+-            deprecation(1000,"You unpickled an object which relies on an old "
+-                        "data structure. Save it again to update it, for it "
+-                        "may break in the future.")
+-            g = self._backend._nxg
+-            if g.is_directed():
+-                from sage.graphs.digraph import DiGraph as constructor
+-            else:
+-                from sage.graphs.graph   import Graph   as constructor
+-            self._backend = constructor(g)._backend
+ 
+     def __add__(self, other):
+         """
+@@ -13130,18 +13210,18 @@ class GenericGraph(GenericGraph_pyx):
+              6: 1/3, 7: 1/3, 8: 0, 9: 1/3, 10: 1/3, 11: 0}
+ 
+             sage: (graphs.FruchtGraph()).clustering_coeff(weight=True)
+-            {0: 0.3333333333333333, 1: 0.3333333333333333, 2: 0.0,
++            {0: 0.3333333333333333, 1: 0.3333333333333333, 2: 0,
+             3: 0.3333333333333333, 4: 0.3333333333333333,
+             5: 0.3333333333333333, 6: 0.3333333333333333,
+-            7: 0.3333333333333333, 8: 0.0, 9: 0.3333333333333333,
+-            10: 0.3333333333333333, 11: 0.0}
++            7: 0.3333333333333333, 8: 0, 9: 0.3333333333333333,
++            10: 0.3333333333333333, 11: 0}
+ 
+             sage: (graphs.FruchtGraph()).clustering_coeff(nodes=[0,1,2])
+             {0: 0.3333333333333333, 1: 0.3333333333333333, 2: 0.0}
+ 
+             sage: (graphs.FruchtGraph()).clustering_coeff(nodes=[0,1,2],
+             ....:   weight=True)
+-            {0: 0.3333333333333333, 1: 0.3333333333333333, 2: 0.0}
++            {0: 0.3333333333333333, 1: 0.3333333333333333, 2: 0}
+ 
+             sage: (graphs.GridGraph([5,5])).clustering_coeff(nodes=[(0,0),(0,1),(2,2)])
+             {(0, 0): 0.0, (0, 1): 0.0, (2, 2): 0.0}
+@@ -14592,20 +14672,14 @@ class GenericGraph(GenericGraph_pyx):
+                 G = self.networkx_graph(copy=False)
+             G.add_nodes_from(self.vertices())
+ 
++            degree = self.out_degree if self.is_directed else self.degree
+             if vert is None:
+-                closeness = networkx.closeness_centrality(G,vert,
+-                                                          distance = 'weight'
+-                                                          if by_weight
+-                                                          else None)
+-                return {v:c for v,c in iteritems(closeness) if c != 0}
++                closeness = networkx.closeness_centrality(G, vert, reverse=True, distance = 'weight' if by_weight else None)
++                return {v:c for v,c in iteritems(closeness) if degree(v) != 0}
+             closeness = {}
+-            degree = self.out_degree if self.is_directed else self.degree
+             for x in v_iter:
+                 if degree(x) != 0:
+-                    closeness[x] = networkx.closeness_centrality(G, x,
+-                                                             distance = 'weight'
+-                                                             if by_weight
+-                                                             else None)
++                    closeness[x] = networkx.closeness_centrality(G, x, reverse=True, distance='weight' if by_weight else None)
+             if onlyone:
+                 return closeness.get(vert, None)
+             else:
 diff --git a/src/sage/graphs/graph.py b/src/sage/graphs/graph.py
-index 3550f990ef..490813e619 100644
+index cd00df0..07a2a04 100644
 --- a/src/sage/graphs/graph.py
 +++ b/src/sage/graphs/graph.py
-@@ -1199,7 +1199,7 @@ class Graph(GenericGraph):
+@@ -83,6 +83,8 @@ AUTHORS:
+ 
+ - Amritanshu Prasad (2014-08): added clique polynomial
+ 
++- Julian Rüth (2018-06-21): upgrade to NetworkX 2
++
+ Graph Format
+ ------------
+ 
+@@ -409,12 +411,17 @@ Methods
+ -------
+ """
+ 
+-#*****************************************************************************
+-#      Copyright (C) 2006 - 2007 Robert L. Miller <rlmillster@gmail.com>
++
++# ****************************************************************************
++#       Copyright (C) 2006-2007 Robert L. Miller <rlmillster@gmail.com>
++#                          2018 Julian Rüth <julian.rueth@fsfe.org>
+ #
+-# Distributed  under  the  terms  of  the  GNU  General  Public  License (GPL)
+-#                         http://www.gnu.org/licenses/
+-#*****************************************************************************
++# This program is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, either version 2 of the License, or
++# (at your option) any later version.
++#                  https://www.gnu.org/licenses/
++# ****************************************************************************
+ from __future__ import print_function
+ from __future__ import absolute_import
+ import six
+@@ -1199,7 +1206,7 @@ class Graph(GenericGraph):
              self.allow_loops(loops, check=False)
              self.allow_multiple_edges(multiedges, check=False)
              self.add_vertices(data.nodes())
@@ -136,25 +1400,40 @@ index 3550f990ef..490813e619 100644
          elif format == 'igraph':
              if data.is_directed():
                  raise ValueError("An *undirected* igraph graph was expected. "+
-@@ -4621,7 +4621,7 @@ class Graph(GenericGraph):
- 
-             sage: g = Graph([(0,1,0), (1,2,999), (2,3,-5)])
+@@ -4585,8 +4592,7 @@ class Graph(GenericGraph):
+             ....: , (1,2,3), (1,3,3), (2,3,3)]
+             sage: g = Graph(edge_list, loops=True, multiedges=True)
              sage: g.matching(use_edge_labels=True)
--            [(1, 2, 999)]
-+            [(0, 1, 0), (2, 3, -5)]
-             sage: g.matching(algorithm="LP", use_edge_labels=True)
-             [(1, 2, 999)]
+-            [(0, 3, 3), (1, 2, 6)]
+-
++            [(1, 2, 6), (0, 3, 3)]
  
-@@ -4671,7 +4671,7 @@ class Graph(GenericGraph):
+         TESTS:
+ 
+@@ -4621,18 +4627,18 @@ class Graph(GenericGraph):
+             g = networkx.Graph()
+             if use_edge_labels:
+                 for u, v in W:
+-                    g.add_edge(u, v, attr_dict={"weight": W[u, v]})
++                    g.add_edge(u, v, weight=W[u, v])
              else:
                  for u, v in L:
                      g.add_edge(u, v)
--            d = networkx.max_weight_matching(g)
-+            d = dict(networkx.max_weight_matching(g).union(t[::-1] for t in networkx.max_weight_matching(g)))
+             d = networkx.max_weight_matching(g)
              if value_only:
                  if use_edge_labels:
-                     return sum(W[u, v] for u, v in six.iteritems(d) if u < v)
-@@ -6305,7 +6305,7 @@ class Graph(GenericGraph):
+-                    return sum(W[u, v] for u, v in six.iteritems(d) if u < v)
++                    return sum(W[min(u, v), max(u, v)] for u, v in d)
+                 else:
+-                    return Integer(len(d) // 2)
++                    return Integer(len(d))
+             else:
+-                return [(u, v, L[u, v]) for u, v in six.iteritems(d) if u < v]
++                return [(u, v, L[min(u, v), max(u, v)]) for u, v in d]
+ 
+         elif algorithm == "LP":
+             g = self
+@@ -6261,7 +6267,7 @@ class Graph(GenericGraph):
          return networkx.number_of_cliques(self.networkx_graph(copy=False), vertices, cliques)
  
      @doc_index("Clique-related methods")
@@ -163,7 +1442,18 @@ index 3550f990ef..490813e619 100644
          """
          Return the clique graph.
  
-@@ -6336,7 +6336,7 @@ class Graph(GenericGraph):
+@@ -6276,10 +6282,6 @@ class Graph(GenericGraph):
+             Currently only implemented for undirected graphs. Use to_undirected
+             to convert a digraph to an undirected graph.
+ 
+-        INPUT:
+-
+-        -  ``name`` - The name of the new graph.
+-
+         EXAMPLES::
+ 
+             sage: (graphs.ChvatalGraph()).cliques_get_max_clique_graph()
+@@ -6292,7 +6294,7 @@ class Graph(GenericGraph):
              sage: (G.cliques_get_max_clique_graph()).show(figsize=[2,2])
          """
          import networkx
@@ -172,4 +1462,3 @@ index 3550f990ef..490813e619 100644
  
      @doc_index("Clique-related methods")
      def cliques_get_clique_bipartite(self, **kwds):
-
