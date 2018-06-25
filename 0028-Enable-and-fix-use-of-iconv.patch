@@ -1,4 +1,4 @@
-From 075aed08de151f6fc1c8dad91214c66ce4e614d5 Mon Sep 17 00:00:00 2001
+From c7eb8dbf86904eab61b3bb53f52563d861372f65 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 21:08:20 +0100
 Subject: [PATCH 28/33] Enable and fix use of iconv
@@ -63,7 +63,7 @@ index 330eb7c038..88a782b863 100644
  #else
      char **inBytesPtr = &inBytes;
 diff --git a/src/corelib/configure.json b/src/corelib/configure.json
-index 5e48024def..15e7372dcb 100644
+index dfb575da0d..a630d7abf3 100644
 --- a/src/corelib/configure.json
 +++ b/src/corelib/configure.json
 @@ -539,9 +539,9 @@
@@ -79,5 +79,5 @@ index 5e48024def..15e7372dcb 100644
          },
          "icu": {
 -- 
-2.17.0
+2.18.0
 

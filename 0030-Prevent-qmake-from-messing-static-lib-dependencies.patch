@@ -1,4 +1,4 @@
-From a401f6740c459cc21909ec406814852ff3ec233d Mon Sep 17 00:00:00 2001
+From cfdde9962386c34c3f2bfe902aa2a522b0530dba Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 7 Feb 2017 18:25:28 +0100
 Subject: [PATCH 30/33] Prevent qmake from messing static lib dependencies
@@ -11,7 +11,7 @@ static freetype2 and harfbuzz
  2 files changed, 6 insertions(+)
 
 diff --git a/qmake/generators/unix/unixmake.cpp b/qmake/generators/unix/unixmake.cpp
-index 30f99174f8..154edd67d4 100644
+index 894020d2bd..5f57d6f5cb 100644
 --- a/qmake/generators/unix/unixmake.cpp
 +++ b/qmake/generators/unix/unixmake.cpp
 @@ -414,6 +414,9 @@ UnixMakefileGenerator::fixLibFlag(const ProString &lib)
@@ -39,5 +39,5 @@ index 2e6d5d94a9..a8320bae09 100644
    static const char * const lflags[] = { "QMAKE_LIBS", "QMAKE_LIBS_PRIVATE", 0 };
    for (int i = 0; lflags[i]; i++) {
 -- 
-2.17.0
+2.18.0
 
