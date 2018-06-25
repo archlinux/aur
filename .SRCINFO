@@ -1,0 +1,19 @@
+pkgbase = termtosvg-git
+	pkgdesc = record terminal sessions as svg animations
+	pkgver = 0.2.2.r1.g8b37598
+	pkgrel = 1
+	url = https://github.com/nbedos/termtosvg
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-pyte
+	depends = python-svgwrite
+	depends = python-xlib
+	provides = termtosvg
+	conflicts = termtosvg
+	source = git+https://github.com/nbedos/termtosvg
+	sha256sums = SKIP
+
+pkgname = termtosvg-git
+
