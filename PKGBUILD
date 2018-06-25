@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret@protonmail.com>
 pkgname=peertube
-pkgver=1.0.0_beta.8
-_pkgver=1.0.0-beta.8
+pkgver=1.0.0_beta.9
+_pkgver=1.0.0-beta.9
 pkgrel=1
 pkgdesc="Federated (ActivityPub) video streaming platform using P2P (BitTorrent) directly in the web browser with WebTorrent and Angular."
 arch=("x86_64")
@@ -42,3 +42,5 @@ package() {
 	rm -rf "$pkgname-v$_pkgver"/{config,*.md,LICENSE}
 	cp -a "$pkgname-v$_pkgver" "$pkgdir/usr/share/webapps/$pkgname"
 }
+sha256sums=('bc9b1fcae47dc37fd00dbe91518d7723a0d0e4fb929371df7ee1108f48a9c816'
+            'd4c5c6d5de78af18bc4d9c090950b0ad71ae056ed85992baee66dcd21600a51a')
