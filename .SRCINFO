@@ -9,7 +9,7 @@ pkgbase = php-redis-3
 	arch = aarch64
 	license = PHP
 	depends = php>=7.0.0
-	conflicts = php-redis,
+	conflicts = php-redis
 	conflicts = phpredis-git
 	backup = etc/php/conf.d/redis.ini
 	source = http://pecl.php.net/get/redis-3.1.6.tgz

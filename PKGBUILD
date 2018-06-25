@@ -11,7 +11,7 @@ depends=(
     'php>=7.0.0'
 )
 conflicts=(
-    'php-redis',
+    'php-redis'
     'phpredis-git'
 )
 backup=('etc/php/conf.d/redis.ini')
