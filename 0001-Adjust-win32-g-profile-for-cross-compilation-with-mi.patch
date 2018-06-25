@@ -1,4 +1,4 @@
-From bd010d1fb00f61dd6cca52c93a4285c5d967029b Mon Sep 17 00:00:00 2001
+From 955c44726565654efbf8099a66b1e3b23e2d41df Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
 Subject: [PATCH 01/33] Adjust win32-g++ profile for cross compilation with
@@ -13,16 +13,16 @@ Also see the following issues:
 * https://github.com/Martchus/PKGBUILDs/issues/59
 * https://github.com/Martchus/PKGBUILDs/issues/60
 ---
- mkspecs/common/g++-win32.conf      | 56 +++++++++++++++++++++---------
+ mkspecs/common/g++-win32.conf      | 53 ++++++++++++++++++++----------
  mkspecs/win32-clang-g++/qmake.conf |  4 +--
  mkspecs/win32-g++/qmake.conf       |  4 +--
- 3 files changed, 43 insertions(+), 21 deletions(-)
+ 3 files changed, 40 insertions(+), 21 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index 610503379d..f099380cca 100644
+index 610503379d..e747ef16af 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
-@@ -8,22 +8,31 @@
+@@ -8,18 +8,24 @@
  # Compiler-specific settings go into win32-g++/qmake.conf and
  # win32-clang-g++/qmake.conf
  #
@@ -50,14 +50,7 @@ index 610503379d..f099380cca 100644
  # can't add 'DEFINES += WIN64' and 'QMAKE_COMPILER_DEFINES += _WIN64' defines for
  # x86_64 platform similar to 'msvc-desktop.conf' toolchain, because, unlike for MSVC,
  # 'QMAKE_TARGET.arch' is inherently unavailable.
- 
-+# prevent definition of _xgetbv() in psdk_inc/intrin-impl.h (already defined in xsaveintrin.h)
-+DEFINES                += __INTRINSIC_DEFINED__xgetbv
-+
- QMAKE_LEX               = flex
- QMAKE_LEXFLAGS          =
- QMAKE_YACC              = bison -y
-@@ -34,6 +43,7 @@ QMAKE_CFLAGS_SSE2      += -mstackrealign
+@@ -34,6 +40,7 @@ QMAKE_CFLAGS_SSE2      += -mstackrealign
  QMAKE_CXXFLAGS_RTTI_ON  = -frtti
  QMAKE_CXXFLAGS_RTTI_OFF = -fno-rtti
  QMAKE_CXXFLAGS_EXCEPTIONS_ON = -fexceptions -mthreads
@@ -65,7 +58,7 @@ index 610503379d..f099380cca 100644
  
  QMAKE_INCDIR            =
  
-@@ -42,41 +52,53 @@ QMAKE_RUN_CC_IMP        = $(CC) -c $(CFLAGS) $(INCPATH) -o $@ $<
+@@ -42,41 +49,53 @@ QMAKE_RUN_CC_IMP        = $(CC) -c $(CFLAGS) $(INCPATH) -o $@ $<
  QMAKE_RUN_CXX           = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $obj $src
  QMAKE_RUN_CXX_IMP       = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
  
@@ -170,5 +163,5 @@ index ed131c6823..b77d86cd6b 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.17.0
+2.18.0
 

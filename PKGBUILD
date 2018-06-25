@@ -36,7 +36,7 @@ isNoOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base-nostatx
-pkgver=5.11.0
+pkgver=5.11.1
 pkgrel=1
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
@@ -86,40 +86,40 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0032-Fix-linking-against-static-plugins-with-qmake.patch'
         '0033-Disable-hardware-randomizer-for-32-bit.patch'
         qt-no-statx.patch)
-sha256sums=('ed6e46db84f7d34923ab4eae165c63e05ab3cfa9d19a73d3f57b4e7bfd41de66'
-            'd01df5be5f96578f65c0343b1ae6eaac31e0c7608fb9b69e745865a5dfc8a1a3'
-            '29621ba67b026c9fb61ba865ba9d6198d3b8914623609b97bbc375feb33415b2'
-            '58435fde3af1478450c49637581884c217bd9080704dc80d035eb38df4706a6e'
-            '3b4dff095110e60257f794c31e5c3b7f73c91d690c7acb3182b489d04988dd27'
-            '2b62c549626e76da5c36779fe7dd18bddb8041fdb1b983cd29651cf5b0a2b905'
-            '5c94228d93b7a6340098968738477f9720908a360358f51cd1bc6590e83679c0'
-            '164b09da056113e19b859a151f93803f19e0c9ea5130db916722f5f0bcb7a8cd'
-            '351e61261c87d700f4076c6d3f19e81a60d1bfcc0e64f2164cb2696c47a0fafc'
-            'a1ed220ddba56656fdbc37163e794f3b43e9a5dae6099b2b23967e870cd9214e'
-            '844d136f65d498dc1eea11e1882cf2645320d249c82fdcec5d25875e9158cb39'
-            'a4a4f5ea9bc79b474ea3c5d86903054d6e9242a22b84589c210b3b8c2f797447'
-            '7d1d1d57bff00ae77d5480955b85737bd4f30185f5b99f8b34d89f90976f53fb'
-            '1937bb971912fa7021295174aee8c250a7be9c2d3e3ad76f700d9f7d80fd1117'
-            '504fd54855d13a326cb65cffc006d1c67d9e6236830df9f581106ae8fe319fff'
-            'b732bca79bced6595e278e9e7ceec79306f51be121e78db0a9faa461344c918d'
-            'f86242c7e013971812c9a17d667db362ac10d19a63b51cda23d1f306bc8f3242'
-            'da007b133f51f27342854e0fb251a1784096f24dab454def99c8496c143f38e5'
-            'e6e8f2290a019071ded71c090c3cb8b24e0e33a37dcabdc6f676b886c18dd06a'
-            '83645b01666aae48121ea9a952c6cfce9ba2aedb3edb9e1b11a893a5d8882831'
-            'bb7e54a090ceb6cddac43acee2f34d888a15df2ae0e99808ef6aad9ff6e9ebcf'
-            '7166f4ab8b7c5a60c4a6e3ac86411719fab67ef6a6c5a16463c6541e9955ce17'
-            'bf1defbedd5c0d26aa000178092ac2c87ecb70b992184dc8ffff4502351e70c2'
-            '29289ac6b2380c4a5d551d3c9b331f9b13190f4dafabdc203dcbfabcb4075c4d'
-            '0494a41d31ff097cd59117557a6869c5e0e7670eef33267f93974c15e4445e76'
-            'bc53b50f4055170fea15b669366b8961e896d2705f91382ee3beea013979408e'
-            '08d299eb938edc1d535bbb68b5b720203e2dffbc49129218bb1368791e6fb384'
-            '20d945b374b0e73501013fcf6ba9fd7e8732b76060c948faeb42c605f2f9dd1f'
-            'd9eeaceb89efd143918a1bfed6b60d33e004e8421a613036647f318320b25d6a'
-            'fb54191f4479ed66446d9c6b9066be11c5d2d580ff4aa0910a3ad29183329e75'
-            'df8bfa7901b6af9de447a4f4d0983419f7c1fe5882cc97614d0e5b0759c67dec'
-            '65d4a1aedc465dd9f5284cd1e2a352bc3c21e8e8e697e58ff9e89f54e5fcb173'
-            '178144d85cf4c69ae5cea694959a555c4a8eb3a0a5ad5116a2c979beac0e36c0'
-            '704c95d7fc157e58cc7d4436eb74bdcc0453ba29bb3326a3fe511ee35273e4c3'
+sha256sums=('a0d047b2da5782c8332c59ae203984b64e4d5dc5f4ba9c0884fdbe753d0afb46'
+            'e1973bda25994e3dc3d6c1b4d9b78fbbb540490d2da43db166df14f776a39039'
+            '46da072fdffff5edee7c23a024f4a28ca55b5ae57890145fb59ebe00bbeb897e'
+            '48a9629a9f26b7e828d6021e7db0149421ad05c3927cb9b60147c90caa487f9b'
+            'b8d97a80c547e90e1348fa722b26dbda3d1f07ddfa4a00a0a268a5dbb3de489d'
+            '765501ce588fe5ebaccc8e54f3a588a08abceae304a19988358dd118fead847c'
+            '80181dda780b44bc24d3d7f0eb6b7c496170ef0db5955dd2d7e4214a24b48169'
+            '22974a0a1f902f812a655e86fb0bb18a7931be89240aef3a5b5eebadf085cbce'
+            '1eeeaf5b710df4846c94ad3e06802cd204ebfaf481905fe2644421efd557ff0f'
+            'd26c120c12eddc18f1a424117e38c27c8171dfccb7d5ba1fcf3991d57328b9d7'
+            'a8e27ad9ef209661ba42112a49f0fbf29fdb9bc94d6ad51f715e59b031d3230d'
+            'dacf9cbed1f0f309b8394d4a1a27d60b641f3d19e70352827b1ef123dcf194a8'
+            '7e919946802ba7b3d666b69c661dff396abfc24b046edb439b684d4b3cc7f42f'
+            '03003c3a2a16d6f7b36436d8b63496fb5eb97c5da9770eb3f0d0bc3090b5d4e4'
+            '910f6198069a5d72b88bab70bfef2de50cf44f253a61a37e24c10d3d2d1f2590'
+            'a262866828f5fd77c49d4dd62aa49447ab2e59eb7031a3bc09304ef100837ce5'
+            '613246baff8474c33314c6320fbf163835d36e9aae3221ab1c3ad87a55bcab9a'
+            '3e08a5af6515821049d611143782bfe1bea7b75c46b25a1a8cdd5b5d66f01cde'
+            '9ab6cd425c778cded2575d22a4577d5ae220f7a031e3ebc9581fe871f5bbda98'
+            '90bd7cfdb2a8e890db775293b498008264ccb5571247c77a1dbca21ef96f0e3f'
+            '37fa408528ff94f4f41e27097a619acc7dd97e66a9f2584178517079e3c5232c'
+            '4b293b11424efabcf25fc634fd7eec058351297474fcaaad6bbbf3b7be94e39f'
+            '3878d33beb40fc2907ccfaf7f656e983e30399bd0f6afa78658d802715e2e91d'
+            'f96bea78b8a04a5d278cd01fdc6478a79beea6bba8f922a7ba91b14acd7998b3'
+            'c0dc173b900ea5edc45ab2695406b1ca11c08113d8c402672208bee95deff4c7'
+            'feb8bf1ee858b8c499c3644c95454880835adc85a5039f6d2027b06caa552be1'
+            'e463ff31d6bc218a3724d95463b405f63ee66fb270ac1bbc0f3fc3d1e81c6444'
+            'faeac0d51bc8ddda40fd02fdf8aff5f35187d9a3bcfa9c0a02d6d19a7314f91c'
+            '241790c3788449d71ef38c84c15fa158408057730b782fb7976e93ba26df4876'
+            'e2983e47533094c5add54bdc4d565f7107b5508a2b23c3de8e0e92bf93627505'
+            '5a8f2561eb06951b5923f115cdcb7df863169c4db01207dc216ede107e9fca7c'
+            'e907fb9111c9a54ac91a538a40b420088d54f86f047c129b0b6e4ff4423ae982'
+            '60cdf773863423f33207526b343cf72c76ee1680af27fb3c494f63ce9a58f9e8'
+            '7e353383fbd5ce8368089b5ec4ced6f19674c4490a46d4e0db81e1ea6800b180'
             SKIP)
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -145,25 +145,12 @@ if ! isDefault; then
   fi
 fi
 
-patch() {
-  local input_found=
-  local patch_file=
-  for arg in $@; do
-    if [[ $input_found ]]; then
-      patch_file="$arg"
-      break
-    fi
-    [[ $arg == -i ]] && input_found=1
-  done
-  msg2 "Applying patch $patch_file"
-  /usr/bin/patch $@
-}
-
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
 
   # apply patches; further descriptions can be found in patch files itself
   for patch in "$srcdir/"*.patch; do
+    msg2 "Applying patch $patch"
     patch -p1 -i "$patch"
   done
 

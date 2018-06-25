@@ -1,4 +1,4 @@
-From 4e2e5f7c439f46101f59525af6f271912df5b133 Mon Sep 17 00:00:00 2001
+From 244565bea2e8c84287b0a5dbbacea3db7e186f6d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Aug 2017 21:14:26 +0200
 Subject: [PATCH 23/33] Allow usage of static version with CMake
@@ -22,10 +22,10 @@ installed in the same prefix
  create mode 100644 mkspecs/features/data/cmake/Qt5StaticOnlyRedirection.cmake.in
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 3e5ec55dae..b6c47124cc 100644
+index 2a94964b49..839a51f377 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
-@@ -38,7 +38,7 @@ split_incpath {
+@@ -42,7 +42,7 @@ split_incpath {
              $$QT_MODULE_INCLUDE_BASE/Qt$${CMAKE_MODULE_NAME}/$$eval(QT.$${MODULE}.VERSION)/Qt$${CMAKE_MODULE_NAME})
  
      cmake_extra_source_includes.input = $$PWD/data/cmake/ExtraSourceIncludes.cmake.in
@@ -992,5 +992,5 @@ index 2a575958ae..ca0e3be3b5 100644
      INTERFACE_COMPILE_DEFINITIONS QT_TESTCASE_BUILDDIR=\\\"\${CMAKE_BINARY_DIR}\\\"
  )
 -- 
-2.17.0
+2.18.0
 
