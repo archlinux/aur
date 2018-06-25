@@ -1,7 +1,7 @@
 # Maintainer: Connor Behan <connor.behan@gmail.com>
 # Contributor: Rémy Oudompheng <oudomphe@clipper.ens.fr>
 pkgname=singular-factory
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Computer Algebra System for polynomial computations: factory and libfac"
 arch=('i686' 'x86_64')
@@ -14,12 +14,14 @@ source=(http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/Factory/factory-$p
 build() {
 	cd "$srcdir"/factory-$pkgver
 
+        autoreconf -vfi
+        cp cf_assert.h include/factory/
 	./configure --prefix=/usr \
 		    --libdir=/usr/lib \
 		    --includedir=/usr/include/singular \
-		    --with-NTL \
+		    --with-ntl \
 		    --with-gmp \
-		    --without-omalloc \
+		    --disable-omalloc \
 		    --without-Singular
 
 	make
@@ -30,4 +32,4 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-md5sums=('4674707d68a4413d8393db8bdbbdb643')
+md5sums=('f2bed6e0e0f88a8cfb6a7225b26931c6')
