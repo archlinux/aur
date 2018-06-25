@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-charts
 	pkgdesc = Provides a set of easy to use chart components (mingw-w64)
-	pkgver = 5.11.0
+	pkgver = 5.11.1
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = mingw-w64-qt5-charts
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.11/5.11.0/submodules/qtcharts-everywhere-src-5.11.0.tar.xz
-	sha256sums = c46e12beeaabf731ce918c7508d8ab62ae3b675870992faf36878268da4ee351
+	source = https://download.qt.io/official_releases/qt/5.11/5.11.1/submodules/qtcharts-everywhere-src-5.11.1.tar.xz
+	sha256sums = 62f65f08b08c1fdce4f358103be1f7d7aba54d21774e1a9bfff91314ad667a2b
 
 pkgname = mingw-w64-qt5-charts
 
