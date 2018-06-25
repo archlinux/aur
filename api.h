@@ -126,30 +126,7 @@ struct info {
 struct info_array {
     Info** array;
     size_t length;
-
-    double total_spent;                 // Total USD spent
-    double current_value;               // Total USD value
-
-    char ftotal_spent[CELL_MAX_LENGTH];                 // Total USD spent
-    char fcurrent_value[CELL_MAX_LENGTH];               // Total USD value
-
-    double profit_total;                // Total profit
-    double profit_total_percent;        // Total profit %
-    double profit_last_close;           // Profit since last close
-    double profit_last_close_percent;   // Profit since last close %
-    double profit_7d;                   // Profit since seven days ago
-    double profit_7d_percent;           // Profit since seven days ago %
-    double profit_30d;                  // Profit since thirty days ago
-    double profit_30d_percent;          // Profit since thirty days ago %
-
-    char fprofit_total[CELL_MAX_LENGTH];                // Total profit
-    char fprofit_total_percent[CELL_MAX_LENGTH];        // Total profit %
-    char fprofit_last_close[CELL_MAX_LENGTH];           // Profit since last close
-    char fprofit_last_close_percent[CELL_MAX_LENGTH];   // Profit since last close %
-    char fprofit_7d[CELL_MAX_LENGTH];                   // Profit since seven days ago
-    char fprofit_7d_percent[CELL_MAX_LENGTH];           // Profit since seven days ago %
-    char fprofit_30d[CELL_MAX_LENGTH];                  // Profit since thirty days ago
-    char fprofit_30d_percent[CELL_MAX_LENGTH];          // Profit since thirty days ago %
+    Info* totals;
 };
 
 /**
@@ -170,6 +147,12 @@ Info* api_info_init(void);
  * @return Info_Array*
  */
 Info_Array* api_info_array_init(void);
+
+/**
+ * Adds up values of Info array and sets values in totals.
+ * @param pInfo_Array
+ */
+void info_array_calculate_totals(Info_Array* pInfo_Array);
 
 /**
  * writefunction for cURL HTTP GET/POST

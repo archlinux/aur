@@ -35,14 +35,29 @@ Info_Array* api_info_array_init(void) {
     Info_Array* pInfo_Array = malloc(sizeof(Info_Array));
     pointer_alloc_check(pInfo_Array);
     *pInfo_Array = (Info_Array) {
-            .array = NULL, .length = 0, .total_spent = EMPTY, .current_value = 0, .ftotal_spent[0] = '\0',
-            .fcurrent_value[0] = '\0', .profit_total = EMPTY, .profit_total_percent = EMPTY, .profit_last_close = EMPTY,
-            .profit_last_close_percent = EMPTY, .profit_7d = EMPTY, .profit_7d_percent = EMPTY, .profit_30d = EMPTY,
-            .profit_30d_percent = EMPTY, .fprofit_total[0] = '\0', .fprofit_total_percent[0] = '\0',
-            .fprofit_last_close[0] = '\0', .fprofit_last_close_percent[0] = '\0', .fprofit_7d[0] = '\0',
-            .fprofit_7d_percent[0] = '\0', .fprofit_30d[0] = '\0', .fprofit_30d_percent[0] = '\0'
+            .array = NULL, .length = 0, .totals = NULL
     };
     return pInfo_Array;
+}
+
+void info_array_calculate_totals(Info_Array* pInfo_Array) {
+    strcpy(pInfo_Array->totals->symbol, "TOTALS");
+    for (size_t i = 0; i < pInfo_Array->length; i++) {
+        pInfo_Array->totals->total_spent += pInfo_Array->array[i]->total_spent;
+        pInfo_Array->totals->current_value += pInfo_Array->array[i]->current_value;
+        pInfo_Array->totals->profit_total += pInfo_Array->array[i]->profit_total;
+        pInfo_Array->totals->profit_last_close += pInfo_Array->array[i]->profit_last_close;
+        pInfo_Array->totals->profit_7d += pInfo_Array->array[i]->profit_7d;
+        pInfo_Array->totals->profit_30d += pInfo_Array->array[i]->profit_30d;
+    }
+    pInfo_Array->totals->profit_total_percent = (100 * (pInfo_Array->totals->current_value -
+            pInfo_Array->totals->total_spent)) / pInfo_Array->totals->total_spent;
+    pInfo_Array->totals->profit_last_close_percent = 100 *
+            pInfo_Array->totals->profit_last_close / pInfo_Array->totals->total_spent;
+    pInfo_Array->totals->profit_7d_percent = 100 *  pInfo_Array->totals->profit_7d /
+            pInfo_Array->totals->total_spent;
+    pInfo_Array->totals->profit_30d_percent = 100 *  pInfo_Array->totals->profit_30d /
+            pInfo_Array->totals->total_spent;
 }
 
 size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pString) {
@@ -610,6 +625,7 @@ void api_info_array_destroy(Info_Array** phInfo_Array) {
     for (size_t i = 0; i < pInfo_Array->length; i++)
         api_info_destroy(&pInfo_Array->array[i]);
     free(pInfo_Array->array);
+    api_info_destroy(&pInfo_Array->totals);
     free(*phInfo_Array);
     *phInfo_Array = NULL;
 }
