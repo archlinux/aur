@@ -7,7 +7,7 @@ pkgdesc="Netease cloud music song downloader, with full ID3 metadata, eg: front 
 arch=('any')
 url="https://github.com/codezjx/netease-cloud-music-dl"
 license=('MIT')
-depends=('python' 'python-requests>=2.17.3' 'python-pycryptodome>=2.6.1' 'python-mutagen>=1.38.0' 'python-pillow>=4.3.0')
+depends=('python' 'python-requests>=2.17.3' 'python-crypto>=2.6.1' 'python-mutagen>=1.38.0' 'python-pillow>=4.3.0')
 makedepends=('git' 'python-setuptools')
 options=(!emptydirs)
 source=("git+https://github.com/codezjx/netease-cloud-music-dl")
