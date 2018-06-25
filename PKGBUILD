@@ -4,7 +4,7 @@
 
 pkgname=xf86-input-synaptics-gesturesonly
 _pkgname=xf86-input-synaptics
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Synaptics driver for notebook touchpads"
 arch=('i686' 'x86_64')

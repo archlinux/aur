@@ -78,7 +78,7 @@ index c776e6c..05c3c2b 100644
          return BadValue;        /* read-only */
      else { /* unknown property */
 diff --git a/src/synaptics.c b/src/synaptics.c
-index c7ba9ad..f67e470 100644
+index 1df1ca7..603c752 100644
 --- a/src/synaptics.c
 +++ b/src/synaptics.c
 @@ -673,6 +673,7 @@ set_default_parameters(InputInfoPtr pInfo)
@@ -89,7 +89,7 @@ index c7ba9ad..f67e470 100644
      pars->clickpad = xf86SetBoolOption(opts, "ClickPad", pars->clickpad);       /* Probed */
      if (pars->clickpad)
          pars->has_secondary_buttons = xf86SetBoolOption(opts,
-@@ -3138,7 +3139,7 @@ HandleState(InputInfoPtr pInfo, struct SynapticsHwState *hw, CARD32 now,
+@@ -3120,7 +3121,7 @@ HandleState(InputInfoPtr pInfo, struct SynapticsHwState *hw, CARD32 now,
          buttons |= 1 << (priv->tap_button - 1);
  
      /* Post events */
