@@ -1,0 +1,21 @@
+pkgbase = gnatcoll-gmp-git
+	pkgdesc = GNAT Components Collection - Bindings to GMP
+	pkgver = r2778.93907d7d
+	pkgrel = 1
+	url = https://github.com/AdaCore/gnatcoll-bindings/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gprbuild
+	depends = gcc-ada
+	depends = gmp
+	depends = gnatcoll-core
+	provides = gnatcoll-gmp
+	conflicts = gnatcoll-gmp
+	conflicts = gnatcoll
+	source = git+https://github.com/AdaCore/gnatcoll-bindings.git
+	sha1sums = SKIP
+
+pkgname = gnatcoll-gmp-git
+
