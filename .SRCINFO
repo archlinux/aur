@@ -1,16 +1,16 @@
 pkgbase = razen
 	pkgdesc = A cross-platform PCB design tool that allows you to quickly design and fabricate boards.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = http://razencad.com/
 	arch = i686
 	arch = x86_64
 	license = freeware
 	depends = mercurial
-	source = https://s3.amazonaws.com/razen/razen-lin32-1.0.0-r2193.tar.gz
+	source = https://s3.amazonaws.com/razen/razen-lin64-1.0.1-r2207.tar.gz
 	source = razen.sh
-	md5sums = cbb920ce704f9683c6c9bbc83bf96377
-	md5sums = aa248c787eb6c15e7fdf49fe17a95bed
+	sha512sums = 478fb43b26640742fedfed0ff692e7da7c2c1c45f3e5863ba9c8231e029dfb0cfa95b89574a00570ecdf4413c0fddeb08c1ed9cf69da5eb89cc1e1d583e26235
+	sha512sums = 17388b659998345126f02024f3e2dff411588538d10540a20a3428b3036c707a97f39acbcb737def9d2686501de5903054a8f6c6e8c22005d78cda87092dc4a0
 
 pkgname = razen
 
