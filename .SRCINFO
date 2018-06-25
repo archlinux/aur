@@ -1,7 +1,7 @@
 pkgbase = pentaxpj-filter
 	pkgdesc = Printer filter for Pentax PocketJet 200 and PocketJet II printers. Needed in addition to the PPDs/ files that come with foomatic-db/ CUPS. Includes printer documentation.
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 0
 	url = http://ww1.pragana.net/gdiprinters.html#pentaxpj
 	install = pentaxpj-filter.install

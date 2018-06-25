@@ -7,7 +7,7 @@ pkgname="${_pkgname}"
 epoch=0
 _pkgver=1.0.0
 pkgver="${_pkgver}"
-pkgrel=4
+pkgrel=5
 pkgdesc="Printer filter for Pentax PocketJet 200 and PocketJet II printers. Needed in addition to the PPDs/ files that come with foomatic-db/ CUPS. Includes printer documentation."
 arch=('i686' 'x86_64')
 url="http://ww1.pragana.net/gdiprinters.html#pentaxpj"
@@ -85,7 +85,7 @@ package() {
   _instdirbase="/opt/${_pkgname}"
   _instdir="${pkgdir}/${_instdirbase}"
   _bindirbase="/usr/bin"
-  _bindir="${pkgdir}/${_execdirbase}"
+  _bindir="${pkgdir}/${_bindirbase}"
   _filterdirbase="/usr/lib/cups/filter"
   _filterdir="${pkgdir}/${_filterdirbase}"
   _spooldirbase="/var/spool/lpd"
@@ -116,26 +116,18 @@ package() {
     install -v -D -m644 "${srcdir}/${_docfile}" "${_docdir}/${_docfile}"
   done
   
-  (
-    cd "${_docdir}"
-    ln -sv "${_instdirbase}"/test-page.ps.gz .
-  )
+  install -v -d -m755 "${_docdir}"
+  ln -sv "${_instdirbase}"/test-page.ps.gz "${_docdir}"/test-page.ps.gz
   
   install -v -D -m664 pentaxpj.conf.a4 "${_etcdir}"/pentaxpj.conf
   
   install -v -d -m755 "${_bindir}"
-  (
-    cd "${_bindir}"
-    ln -sv "${_instdirbase}"/pentaxpj_sh pentaxpj_sh
-    ln -sv "${_instdirbase}"/pentaxpj pentaxpj
-    ln -sv "${_instdirbase}"/pentaxsetup .
-  )
+  ln -sv "${_instdirbase}"/pentaxpj_sh "${_bindir}"/pentaxpj_sh
+  ln -sv "${_instdirbase}"/pentaxpj "${_bindir}"/pentaxpj
+  ln -sv "${_instdirbase}"/pentaxsetup "${_bindir}"/pentaxsetup
   
   install -v -d -m755 "${_filterdir}"
-  (
-    cd "${_filterdir}"
-    ln -sv "${_instdirbase}"/pentaxpj_sh pentaxpj_sh
-  )
+  ln -sv "${_instdirbase}"/pentaxpj_sh "${_filterdir}"/pentaxpj_sh
   
   install -v -D -m644 license_users-guide_info.txt ${_licensedir}/license_users-guide_info.txt
   
