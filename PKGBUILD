@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="LaTeX class for authors of the Institute of Electrical and Electronics Engineers (IEEE) transactions journals and conferences."
 arch=('any')
 depends=('texlive-bin')
+conflicts=('texlive-publishers')
 url="http://www.ctan.org/tex-archive/macros/latex/contrib/"$_basename"/"
 license=('LPPL')
 source=(http://mirrors.ctan.org/macros/latex/contrib/"$_basename".zip)
