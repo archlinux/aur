@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.3.beta6.r0.g8a6bc91f55
+pkgver=8.3.beta7.r0.g010ba97de0
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -35,7 +35,7 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
   mcqd coxeter bliss-graphs tdlib python2-pkgconfig shared_meataxe libfes primecount git)
 source=(git://git.sagemath.org/sage.git#branch=develop
-        sagemath-env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
+        sagemath-env.patch package.patch latte-count.patch sagemath-python3-notebook.patch test-optional.patch
         r-no-readline.patch fes02.patch sagemath-threejs.patch sagemath-ignore-warnings.patch
         sagemath-networkx2.patch sagemath-scipy-1.0.patch sagemath-singular-4.1.1.patch sagemath-lcalc-c++11.patch
         pari-ratpoints.patch::"https://github.com/sagemath/sage/commit/83458400.patch")
@@ -43,7 +43,6 @@ sha256sums=('SKIP'
             '50992e8421595aee3fe84663cbc7417d8d010cbcc824851032f24930653c2950'
             '9e3c998e0ca8dcbf7ad9f5a8d591f2bc4cb792be14708e064594046081e9b60d'
             '0b680e674c11c47afa86162d8b49645620b8912722e08133d23357c29ca9310a'
-            '2cad308f8adbb6c54e6603fa22b2f0eb60f6f09248d5d015000c3932ac14f646'
             '962ce805c87147212b21fc2ab0ac9af9bd0033942c7a6905b9906645b48e8a4f'
             '18edeafb01cc1ed7270c2dfb41a58717918680c98e8eada1858736acd65d92ba'
             'afd0952b9bb8f52fd428eae36cf719a58ff85a894baae88cbb2124e043768cc7'
@@ -71,8 +70,6 @@ prepare(){
   patch -p0 -i ../sagemath-env.patch
 # don't list optional packages when running tests
   patch -p0 -i ../test-optional.patch
-# set jupyter path
-  patch -p0 -i ../jupyter-path.patch
 # fix freezes in R interface with readline 7 (Debian)
   patch -p1 -i ../r-no-readline.patch
 # use correct latte-count binary name
@@ -123,7 +120,7 @@ package_sagemath-git() {
 
   export SAGE_ROOT="$PWD"
   export SAGE_LOCAL="/usr"
-  export JUPYTER_PATH="$pkgdir"/usr/share/jupyter
+  export SAGE_EXTCODE="$PWD"/ext
 
   python2 setup.py install --root="$pkgdir" --optimize=1
 
@@ -160,7 +157,11 @@ package_sagemath-jupyter-git() {
 
   export SAGE_ROOT="$PWD"
   export SAGE_LOCAL="/usr"
-  export JUPYTER_PATH="$pkgdir"/usr/share/jupyter
 
-  python2 -c "from sage.repl.ipython_kernel.install import SageKernelSpec; SageKernelSpec.update()"
+  python2 -c "from sage.repl.ipython_kernel.install import SageKernelSpec; SageKernelSpec.update(prefix='$pkgdir/usr')"
+# fix symlinks to assets
+  for _i in $(ls ext/notebook-ipython); do
+    rm "$pkgdir"/usr/share/jupyter/kernels/sagemath/$_i
+    ln -s /usr/share/sage/ext/notebook-ipython/$_i "$pkgdir"/usr/share/jupyter/kernels/sagemath/
+  done
 }
