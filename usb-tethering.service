@@ -8,3 +8,6 @@ ConditionPathExists=/sys/class/android_usb/android0
 [Service]
 Type=oneshot
 ExecStart=/bin/bash /usr/bin/usb-tethering
+
+[Install]
+WantedBy=multi-user.target

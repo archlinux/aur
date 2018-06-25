@@ -2,7 +2,7 @@
 
 pkgname=hybris-usb
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="USB control for Android with hybris"
 arch=('armv7h' 'aarch64')
 url=""
@@ -16,7 +16,7 @@ source=('usb-tethering'
 	'dhcpd4.service-customexec.conf'
 	'tmpfiles.d.hybris-usb.conf')
 md5sums=('2d270508c91e94997236e5dacd7bbc8d'
-         '7976b6c3d662802cc54e3458ec3b891e'
+         '3d18718e97e5652af2464dfbef69eedc'
          '8d25b1c3f1146635800db77f300b908c'
          '0aff78dea49297c615946ee310c49a6b'
          '91422a3f2a69c9800d25cd65358fe5df')
