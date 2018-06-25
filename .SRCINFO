@@ -1,0 +1,16 @@
+pkgbase = dict-freedict-nld-eng
+	pkgdesc = Dutch -> English dictionary for dictd et al. from Freedict.org
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.freedict.org/
+	install = dict-freedict-nld-eng.install
+	arch = any
+	license = GPL
+	makedepends = dictd
+	makedepends = freedict-tools
+	optdepends = dictd: dict client and server
+	source = https://download.freedict.org/dictionaries/nld-eng/0.2/freedict-nld-eng-0.2.src.tar.xz
+	sha512sums = 23d938bcc48894b10c68bf4e3b769625f6fdc72d9deb12b46dff557079d1bea0d1847af7d375a92a78afdc10033e60904a8f55ce0dbcc6849d8ca6f63cd7dae2
+
+pkgname = dict-freedict-nld-eng
+
