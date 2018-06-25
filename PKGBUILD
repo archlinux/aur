@@ -8,7 +8,7 @@ arch=(any)
 license=('GPL3')
 url="https://github.com/mclauncher/HMCL"
 makedepends=('unzip')
-depends=('java-environment>=8' 'hicolor-icon-theme')
+depends=('java-openjfx>=8' 'hicolor-icon-theme')
 noextract=("HMCL-$pkgver.jar")
 source=('hmcl-launch-script'
         'hmcl.desktop.in'
@@ -19,7 +19,7 @@ source=('hmcl-launch-script'
 
 prepare() {
     cd "$srcdir"
-    sed "s|@@VERSION@@|$pkgver|" hmcl.desktop.in > hmcl.desktop
+#    sed "s|@@VERSION@@|$pkgver|" hmcl.desktop.in > hmcl.desktop
     unzip -o "HMCL-$pkgver.jar" assets/img/icon.png
 }
 
