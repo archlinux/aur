@@ -5,8 +5,8 @@
 
 pkgbase=network-manager-applet-git
 pkgname=(nm-connection-editor-git network-manager-applet-git)
-pkgver=1.8.11.dev.r65.gf8fea28f
-pkgrel=2
+pkgver=1.8.15.dev.r0.g69fb2d62
+pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -33,8 +33,8 @@ build() {
 	cd $srcdir/network-manager-applet
 	
 	arch-meson build \
-	-Dgtk_doc=true \
-	-Dlibnm_gtk=false \
+    -Dgtk_doc=false \
+	  -Dlibnm_gtk=false \
     -Dintrospection=true \
     -Dld_gc=true \
     -Dteam=true \
