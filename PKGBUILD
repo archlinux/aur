@@ -3,7 +3,7 @@
 # Contributor: grimi <grimi at poczta dot fm>
 
 pkgname=urbanterror
-pkgver=4.3.3
+pkgver=4.3.4
 pkgrel=1
 epoch=1
 pkgdesc="A team-based tactical shooter based on the Quake 3 Engine"
@@ -18,7 +18,7 @@ source=("http://www.happyurtday.com/releases/4x/UrbanTerror${pkgver//.}_full.zip
         "urbanterror-server.sh"
         "urbanterror.desktop"
         "urbanterror.png")
-sha512sums=('85f1311d26a510f7a3cf71447c506b486a0c8d6dad83038e2b1ace662b125ba904bcb91ec036e8468277671bcaff84a99a82e4663790ff2136e150637483f490'
+sha512sums=('4debd6f998943cf9944ed891a3d1f3fa7d016d181d7af7cd5c28690bcd765928b4befc3f3705a4315bfa709acdd34160ed8f2d7437a54cfd10f6c48fea60af39'
             'd296cee59c9a344b03485b2400278f05d4a4edd8f782f72b10857d4654d46ff1b6f181c51abb5a718d6b4a7227601d67fb2ba2b3fe7876bfec17b7c9827525a0'
             '6f444b1203b8c1a66c86a2112f3565059ba1135940cef37208ea05933290e1b3b9d8325c7fc86466fd8646338c8deaa168a22049104bda0631eab76a21a77e51'
             '33cb13820002f6620075143a1729018caf70a7cceb9b606db295fd621833add127474f1399626d722a3a8a7d9ba001b6dada4ca877ec87251a32d616367991d4'
