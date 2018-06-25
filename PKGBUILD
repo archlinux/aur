@@ -77,8 +77,6 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # make 'sage -notebook=jupyter' work with our python3 jupyter-notebook package
   patch -p1 -i ../sagemath-python3-notebook.patch
-# adapt to networkx 2 changes
-  patch -p1 -i ../sagemath-networkx2.patch
 # fix three.js plotting backend
   patch -p1 -i ../sagemath-threejs.patch
 # don't show PARI stack size increase or GLPK warnings during doctesting (Debian)
@@ -97,6 +95,8 @@ prepare(){
   patch -p1 -i ../fes02.patch
 # use Features to detect Cremona databases https://trac.sagemath.org/ticket/24718
   patch -p1 -i ../sagemath-cremona.patch
+# adapt to networkx 2 changes https://trac.sagemath.org/ticket/24374
+  patch -p1 -i ../sagemath-networkx2.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env sage-python23|#!/usr/bin/env python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
