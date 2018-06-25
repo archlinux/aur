@@ -1,4 +1,4 @@
-From 27154b3c619f5ffeb9925ed7cfcea8bda99bbe12 Mon Sep 17 00:00:00 2001
+From 293a6fe9c3986a96d3dc129a4b5316f4211eb883 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 17:21:08 +0200
 Subject: [PATCH 2/2] Handle win64 in dumpcpp and
@@ -11,7 +11,7 @@ See https://bugreports.qt.io/browse/QTBUG-46827
  2 files changed, 12 insertions(+)
 
 diff --git a/src/activeqt/container/qaxbase.cpp b/src/activeqt/container/qaxbase.cpp
-index fa3eacf..8dcd345 100644
+index 883f1e9..2680baf 100644
 --- a/src/activeqt/container/qaxbase.cpp
 +++ b/src/activeqt/container/qaxbase.cpp
 @@ -2180,6 +2180,10 @@ void MetaObjectGenerator::readClassInfo()
@@ -26,7 +26,7 @@ index fa3eacf..8dcd345 100644
                      break;
              }
 diff --git a/tools/dumpcpp/main.cpp b/tools/dumpcpp/main.cpp
-index 8a37f33..66fb3a8 100644
+index 60a1d56..5e9f56d 100644
 --- a/tools/dumpcpp/main.cpp
 +++ b/tools/dumpcpp/main.cpp
 @@ -1539,6 +1539,10 @@ int main(int argc, char **argv)
@@ -52,5 +52,5 @@ index 8a37f33..66fb3a8 100644
      }
  
 -- 
-2.17.0
+2.18.0
 
