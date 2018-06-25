@@ -2,14 +2,14 @@
 ## Based on rtorrent [community]
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rtorrent-git
-pkgver=0.9.4.r184.g226e670
+pkgver=0.9.7.r23.gf0207ce
 pkgrel=1
 pkgdesc="A ncurses BitTorrent client written in C++, based on the libTorrent libraries for Unix."
 url="https://github.com/rakshasa/rtorrent/"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('curl' 'libtorrent-git' 'xmlrpc-c')
-makedepends=('git' 'cppunit')
+makedepends=('git')
 conflicts=('rtorrent')
 provides=('rtorrent')
 install=${pkgname}.install
@@ -18,7 +18,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long | sed -r "s/([^-]*-g)/r\1/;s/-/./g"
+  git describe --long | sed -r "s/([^-]*-g)/r\1/;s/-/./g;s/^v//"
 }
 
 build() {
