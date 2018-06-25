@@ -1,0 +1,17 @@
+pkgbase = lfe
+	pkgdesc = LISP Flavoured Erlang
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/rvirding/lfe
+	arch = x86_64
+	license = Apache
+	makedepends = make>=4.0.0,
+	makedepends = gcc>=8.0.0
+	depends = erlang>=20.3.8
+	source = lfe-1.3.tar.gz::https://github.com/rvirding/lfe/archive/1.3.tar.gz
+	md5sums = c57494020a7227978172803277048749
+	sha1sums = f5875799a8e06dca1636c736df79366c384eadb4
+	sha256sums = 1946c0df595ae49ac33fe583f359812dec6349da6acf43c1458534de3267036b
+
+pkgname = lfe
+
