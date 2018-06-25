@@ -1,7 +1,7 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=openloops
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A particle physics package for the fast numerical evaluation of tree and one-loop matrix elements."
 arch=('x86_64' 'i686')
 url="http://openloops.hepforge.org"
@@ -13,6 +13,8 @@ md5sums=('86e950848827b34b4abb28024ff36f25')
 build() {
 	cd "$srcdir/OpenLoops-$pkgver"
         sed -i -e's/install_path = os.getcwd()/install_path = "\/usr\/lib\/openloops"/g' SConstruct
+        rm ./scons
+        ln -s /usr/bin/scons
         scons
         ./openloops libinstall ppll ppllj ppln pptt ppww ppzw ppzz ppaa ppaj
 }
