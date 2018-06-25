@@ -424,11 +424,9 @@ build() {
     'proprietary_codecs=true'
     'link_pulseaudio=true'
     'use_gnome_keyring=false'
-    'use_gold=false'
     'use_sysroot=false'
     'linux_use_bundled_binutils=false'
     'use_custom_libcxx=false'
-    'use_system_libjpeg=true'
     'use_vaapi=false'
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
@@ -439,7 +437,6 @@ build() {
     'enable_google_now=false'
     'enable_print_preview=true'
     'enable_remoting=false'
-    'use_lld=false'
   )
 
       _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin"
