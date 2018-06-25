@@ -1,4 +1,5 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=flatbuffers-static
@@ -25,7 +26,8 @@ build() {
   cd build
   cmake ../$_pkgname-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_CXX_FLAGS="-Wno-ignored-qualifiers"
   make
 }
 
