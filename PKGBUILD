@@ -2,7 +2,7 @@ pkgname=xargo-git
 _pkgname=xargo
 pkgdesc="The sysroot manager that lets you build and customize std"
 pkgrel=1
-pkgver=0.3.8.222
+pkgver=0.3.12.268
 arch=('i686' 'x86_64')
 conflicts=("xargo")
 provides=("xargo")
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
 	cd $_pkgname
+	sed -i "1d" src/main.rs
 	env CARGO_INCREMENTAL=0 cargo build --release
 }
 
