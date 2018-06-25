@@ -1,10 +1,10 @@
 # Maintainer: Irvine <irvinemcminn_at_that gmail_place>
 
 pkgbase=linux-hardened-apparmor
-_srcname=linux-4.16
-_pkgver=4.16.16
+_srcname=linux-4.17
+_pkgver=4.17.2
 pkgver=${_pkgver}.a
-pkgrel=1
+pkgrel=2
 url='https://github.com/anthraxx/linux-hardened'
 arch=('x86_64')
 license=('GPL2')
@@ -21,22 +21,22 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         linux.preset   # standard config files for mkinitcpio ramdisk
 
         # https://bugs.archlinux.org/task/56780
-        ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
+        ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
         # https://bugs.archlinux.org/task/56711
         Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 )
 replaces=('linux-grsec')
-sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
+sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            'fd8a68ffcc729e69f0c0a3d202d08d7c5fa612d1ac65dfff3c5ef2f64d183a2e'
+            'a528b102daad9d3072b328f68d4fc7b4eff7641ad301d1a54e5b8f5385efeb0b'
             'SKIP'
-            'daf408ea562fbf27daefd2b2759790ba000b8a077fa319a57e678dbde3ad327e'
+            'c8d5c08c36dd6ac00a3b0e8ba8f113acd1703bf39838bfefb1ce8195da979234'
             'SKIP'
-            '70945ec9f8ea5578814de59ce374c4180e7c518bfea17a10749d86507f6859ec'
+            '57d697539b5676d6a88f45fa32229bf5d79ae47415337ab50ffbc9b28c1ba29d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '655534c9dda90ff8cea6f48f114bf3cd9118826bd6cb7bd24734dabde9997221'
+            'd744e7f4552896670bc8b99361534eec7ba095bebc2462ef0e5ee433e6341a0a'
             '8114295b8c07795a15b9f8eafb0f515c34661a1e05512da818a34581dd30f87e')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
