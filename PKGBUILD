@@ -4,7 +4,7 @@ _pkgname=OctoPrint
 pkgname=octoprint
 # c55c568bbddf5112facf6aa3a173d500936b6cbf
 pkgver=1.3.8
-pkgrel=7
+pkgrel=8
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(x86_64 armv6h armv7h)
 url="http://octoprint.org/"
@@ -60,7 +60,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/foosel/$_pkgname/archive/$pk
 		0020-click.patch
 		)
 
-sha256sums=('ca1bc5352ef20778722a6b2aedef4c8dbe28d0d82c2526f84f3db07245a01aad'
+sha256sums=('f447d2888004ff85971691a0e0f01d74dec6169b7ac599ec51bf44cfe42f2f92'
             'bd9b7f989aefb02da1ac414f306861f21f084d886f0283eea11516482b407d65'
             '231685e84b0241a466766c766f8d3ba31efda3238f19e9adedea380e7b861737'
             '08e6ff10fb7f61c40e5770b67e8f7201d02d82d3bd46c5441a7f2b0435fbe9c2'
