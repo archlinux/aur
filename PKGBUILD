@@ -1,7 +1,7 @@
-# Maintainer: Lin Ruoshui <lin.ruohshoei@gmail.com>
+# Maintainer: Lin Ruoshui <LinRs at yandex.com>
 # Contributor: hexchain <i at hexchain.org>
 pkgname=hmcl
-pkgver=3.1.63
+pkgver=3.1.64
 pkgrel=1
 pkgdesc="Hello Minecraft! Launcher, a powerful Minecraft launcher."
 arch=(any)
@@ -19,7 +19,7 @@ source=('hmcl-launch-script'
 
 prepare() {
     cd "$srcdir"
-#    sed "s|@@VERSION@@|$pkgver|" hmcl.desktop.in > hmcl.desktop
+    sed "s|@@VERSION@@|1.1|" hmcl.desktop.in > hmcl.desktop
     unzip -o "HMCL-$pkgver.jar" assets/img/icon.png
 }
 
@@ -45,5 +45,5 @@ package() {
      done
 }
 sha256sums=('0300218f29af82e9b302a94b37a4c9a92aea26b960bfd1b2e16c0130ac61cfcf'
-            '902a51543e6fc45f8f050233dcee493a5125052df14a7e10548edfc48cf4d528'
-            '242d4e9463194c13b9ba7f995cd440d28e02fecff80666c7de562bc41bda04ab')
+            '648306b8b67fa9bcb531f065dabec20502ec8717788d1f65cf8e21b55c6c706c'
+            '25ec473cf5624ee6280d4cd620f524f15c8fe47a9ec1f48775c1082d57f2dde3')
