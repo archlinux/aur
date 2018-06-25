@@ -1,7 +1,7 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=python-pysmb
-pkgver=1.1.22
+pkgver=1.1.23
 pkgrel=1
 pkgdesc="An experimental SMB/CIFS library written in Python"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://miketeo.net/wp/index.php/projects/pysmb"
 license=('ZLIB')
 depends=('python' 'python-setuptools' 'python-pyasn1')
 source=("https://miketeo.net/files/Projects/pysmb/pysmb-${pkgver}.zip")
-sha1sums=('e64c247bf69925b2eaf08472e08fc990d3cfe00d')
+sha1sums=('b7eb338b584758b255f9263d14b2e01cf764d628')
 
 package() {
   cd pysmb-$pkgver
