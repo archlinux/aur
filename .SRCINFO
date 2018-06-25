@@ -12,7 +12,7 @@ pkgbase = rash-git
 	makedepends = rust
 	makedepends = cargo
 	source = git+https://github.com/themadprofessor/rash
-	sha1sums = SKIP
+	sha512sums = SKIP
 
 pkgname = rash-git
 
