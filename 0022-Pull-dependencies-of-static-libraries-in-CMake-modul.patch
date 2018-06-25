@@ -1,4 +1,4 @@
-From a9a2bb15ac7ae34e43ff146c8dad6f15e3877dd7 Mon Sep 17 00:00:00 2001
+From 86e3c50a96608acab006e9e525c23e4f420d8b4d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
 Subject: [PATCH 22/33] Pull dependencies of static libraries in CMake modules
@@ -251,7 +251,7 @@ index 5baf0fdb10..ec5f3cc437 100644
 +
 +endif()
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index 5e84628e72..43f570fb2c 100644
+index 736af1c843..a1972b7eb0 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
 @@ -994,10 +994,18 @@ MakefileGenerator::writePrlFile(QTextStream &t)
@@ -278,5 +278,5 @@ index 5e84628e72..43f570fb2c 100644
  }
  
 -- 
-2.17.0
+2.18.0
 

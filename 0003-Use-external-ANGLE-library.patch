@@ -1,4 +1,4 @@
-From cb3fe1244a3c10139b4019d3378e644d41b6db6c Mon Sep 17 00:00:00 2001
+From f17fa5afa2f24bc569eda2bbe35b77a4ab268608 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:41:38 +0200
 Subject: [PATCH 03/33] Use external ANGLE library
@@ -93,5 +93,5 @@ index 1f7c5d99c1..24e24ef7f1 100644
          SUBDIRS += src_3rdparty_libpng
          src_3rdparty_freetype.depends += src_3rdparty_libpng
 -- 
-2.17.0
+2.18.0
 

@@ -1,4 +1,4 @@
-From 9204f18623db15d10cadbd4c659f47550584984a Mon Sep 17 00:00:00 2001
+From 400f992fa24ed2b62be4258d5d26bff3846d95ce Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
 Subject: [PATCH 26/33] Fix macro invoking moc, rcc and uic
@@ -18,7 +18,7 @@ Change-Id: I6fde86d0a3ade37b4376604a1eb6d5723eda8b4c
  2 files changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/src/corelib/Qt5CoreMacros.cmake b/src/corelib/Qt5CoreMacros.cmake
-index 1627de4002..ed0f6555a7 100644
+index 819b48f973..f11a61be6b 100644
 --- a/src/corelib/Qt5CoreMacros.cmake
 +++ b/src/corelib/Qt5CoreMacros.cmake
 @@ -132,8 +132,9 @@ function(QT5_CREATE_MOC_COMMAND infile outfile moc_flags moc_options moc_target
@@ -70,5 +70,5 @@ index 737371a5ad..d103278cdf 100644
            MAIN_DEPENDENCY ${infile} VERBATIM)
          set_source_files_properties(${infile} PROPERTIES SKIP_AUTOUIC ON)
 -- 
-2.17.0
+2.18.0
 
