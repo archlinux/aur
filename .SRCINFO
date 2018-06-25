@@ -8,11 +8,11 @@ pkgbase = py3status-modules
 	license = GPL3
 	depends = python>=3.2
 	depends = py3status>=2.0
-	optdepends = task>=2.4.4: taskstatus module
-	optdepends = python-mpd2>=0.4.6: mpdstatus module
-	optdepends = upower>=0.99.0: batterystatus module
-	optdepends = python-dbus>=1.2.0: batterystatus module
-	optdepends = alsa-utils>=1.0.29: alsastatus module
+	optdepends = task: taskstatus module
+	optdepends = python-mpd2: mpdstatus module
+	optdepends = upower: batterystatus module
+	optdepends = python-dbus: batterystatus module
+	optdepends = alsa-utils: alsastatus module
 	conflicts = py3status-modules
 	source = https://github.com/tablet-mode/py3status-modules/archive/0.5.0.tar.gz
 	md5sums = 1379189f3688dab41802fde6a7d1fed1
