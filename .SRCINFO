@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgver = 4.17.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-clear
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.sign
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.2.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.2.sign
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#commit=b8b3652063aacc45f5bcc61d7904aec6e60ada0b
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#commit=0f69acc6f23759737119b08ce89e206b04c900b2
 	source = https://downloadmirror.intel.com/27776/eng/microcode-20180425.tgz
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = 60-linux.hook
