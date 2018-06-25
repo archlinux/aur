@@ -8,15 +8,9 @@ arch=('any')
 url="https://github.com/AndreyBalandin/archlinux-pkgsizes/"
 license=('GPL3')
 depends=('python')
-source=("https://github.com/AndreyBalandin/archlinux-pkgsizes/raw/master/$pkgname.py")
+source=("pkgsizes-${pkgver}.py::https://raw.githubusercontent.com/AndreyBalandin/archlinux-pkgsizes/v${pkgver}/pkgsizes.py")
 md5sums=('SKIP')
 
-pkgver() {
-    cd $srcdir
-    # extract version from script with pattern: $pkgname v(XX.YY.ZZ)
-    sed -n "0,/.*$pkgname v\([0-9]\+.[0-9]\+.[0-9]\+\).*/s//\1/p" $pkgname.py
-}
-
 package() {
-    install -D $pkgname.py "$pkgdir/usr/bin/$pkgname.py"
+    install -D pkgsizes-${pkgver}.py "${pkgdir}/usr/bin/pkgsizes.py"
 }

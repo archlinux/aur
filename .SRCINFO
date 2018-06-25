@@ -6,7 +6,7 @@ pkgbase = pkgsizes
 	arch = any
 	license = GPL3
 	depends = python
-	source = https://github.com/AndreyBalandin/archlinux-pkgsizes/raw/master/pkgsizes.py
+	source = pkgsizes-0.1.1.py::https://raw.githubusercontent.com/AndreyBalandin/archlinux-pkgsizes/v0.1.1/pkgsizes.py
 	md5sums = SKIP
 
 pkgname = pkgsizes
