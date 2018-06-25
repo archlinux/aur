@@ -3,8 +3,8 @@
 
 _pkgname=libdca
 pkgname=lib32-${_pkgname}
-pkgver=0.0.5
-pkgrel=4
+pkgver=0.0.6
+pkgrel=1
 pkgdesc="Free library for decoding DTS Coherent Acoustics streams (32 bit)"
 arch=('x86_64')
 license=('GPL')
@@ -12,8 +12,8 @@ url="http://www.videolan.org/developers/libdca.html"
 depends=('lib32-glibc' "${_pkgname}")
 makedepends=('gcc-multilib')
 options=('!emptydirs')
-source=("http://download.videolan.org/pub/videolan/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('dab6b2795c66a82a6fcd4f8343343021')
+source=("https://download.videolan.org/pub/videolan/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
+sha512sums=('d264128019e7fd295a35691636311f81960c17802dbbc67764c4e00b2fdf12ebc69b057a4947b57551a130e5cfd1fef3fe3558c7067216ea04a0b6bbb881b4f1')
 
 build() {
 export CC='gcc -m32'
