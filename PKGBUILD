@@ -12,14 +12,15 @@ url="http://sourceforge.net/projects/opencore-amr/"
 license=('APACHE')
 depends=('glibc')
 options=('!emptydirs' '!libtool')
-source=(http://heanet.dl.sourceforge.net/project/opencore-amr/vo-aacenc/$_pkgname-$pkgver.tar.gz)
-sha256sums=('e51a7477a359f18df7c4f82d195dab4e14e7414cbd48cf79cc195fc446850f36')
+source=(https://github.com/mstorsjo/vo-aacenc/archive/v${pkgver}.tar.gz)
+sha256sums=('ae38610405f862237f6c70360c406297cc4222abf82e86722c505ba74b53a97d')
 
 build() {
   export CC="clang -m32"
   export CXX="clang++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   cd "$srcdir/$_pkgname-$pkgver"
+  autoreconf -vfi
   ./configure --prefix=/usr \
     --libdir=/usr/lib32
   make
