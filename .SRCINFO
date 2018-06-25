@@ -1,8 +1,9 @@
 pkgbase = libhybris-git
-	pkgver = 1237.cfd9823
-	pkgrel = 2
+	pkgver = 1303.07b547e
+	pkgrel = 1
 	url = https://github.com/libhybris/libhybris
 	arch = armv7h
+	arch = aarch64
 	license = Apache
 	makedepends = wayland
 	makedepends = hybris-android-headers

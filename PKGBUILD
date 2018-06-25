@@ -3,9 +3,9 @@
 pkgbase=libhybris-git
 pkgname=('libhybris-git' 'libhybris-libgl-git' 'libhybris-wayland-egl-git')
 _pkgbase=libhybris
-pkgver=1237.cfd9823
-pkgrel=2
-arch=('armv7h')
+pkgver=1303.07b547e
+pkgrel=1
+arch=('armv7h' 'aarch64')
 url="https://github.com/libhybris/libhybris"
 license=('Apache')
 makedepends=('wayland' 'hybris-android-headers')
@@ -25,7 +25,22 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgbase}/hybris"
 
+  # set target arch for libhybris
+  case "$CARCH" in
+    "armv7h")
+      _carch="arm"
+      ;;
+    "aarch64")
+      _carch="arm64"
+      ;;
+    *)
+      _carch="$CARCH"
+  esac
+
+  echo "Target architecture for libhybris: $_carch"
+
   ./autogen.sh \
+    --enable-arch=$_carch \
     --prefix=/opt/android/hybris \
     --with-android-headers=/opt/android/include \
     --enable-wayland
