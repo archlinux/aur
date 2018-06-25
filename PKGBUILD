@@ -1,7 +1,7 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 
 pkgname=ola-git
-pkgver=0.10.6.r1195.g79c4fd762
+pkgver=0.10.6.r1355.g671e66b85
 pkgrel=1
 
 python="python"
@@ -13,9 +13,9 @@ arch=('i686' 'x86_64')
 url="https://www.openlighting.org/ola/"
 license=('LGPL2.1' 'GPL2')
 
-makedepends=('git')
+makedepends=('git' 'liblo' 'avahi' 'libusb' 'libusb-compat' 'libftdi-compat' 'flex' 'bison' "${python}" "${python}-protobuf")
 depends=('libmicrohttpd' 'cppunit' 'protobuf')
-optdepends=('liblo' 'avahi' 'libusb' 'libusb-compat' 'libftdi-compat' 'openslp' 'flex' 'bison' "${python}" "${python}-protobuf")
+optdepends=('liblo' 'libftdi-compat' 'libusb' 'openslp' 'avahi' "${python}-protobuf")
 
 provides=('ola')
 conflicts=('ola')
