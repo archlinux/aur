@@ -5,7 +5,7 @@
 pkgname=lib32-vo-aacenc
 _pkgname=vo-aacenc
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="VisualOn Advanced Audio Coding (AAC) encoder"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/opencore-amr/"
