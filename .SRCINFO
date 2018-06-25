@@ -1,0 +1,13 @@
+pkgbase = adr-tools
+	pkgdesc = CLI tool for working with Architecture Decision Records
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/npryce/adr-tools
+	arch = any
+	license = GPL3
+	depends = bash
+	source = https://github.com/npryce/adr-tools/archive/2.1.0.tar.gz
+	sha256sums = 1ef028cfeaa1b262a5c62845aa8965be169705370983f9ff73b17ec77bf75f70
+
+pkgname = adr-tools
+
