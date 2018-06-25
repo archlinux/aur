@@ -1,7 +1,7 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
 	pkgver = 3.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mcs.anl.gov/petsc/
 	install = petsc.install
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = petsc
 	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.9.2.tar.gz
 	source = test_optdepends.sh
 	sha256sums = ab396ae5dbfff808df1b5648f5ce30f3021ec70faec3d5cd63df324d416ac6ac
-	sha256sums = c7b0d839c43bbae0405b8b007588debcd0da526e9a999c5933278d347a0900e2
+	sha256sums = dc5ac9fe550250480dcb97bc4c6b0671296ec1e8794e92fe244785b4d7d3668e
 
 pkgname = petsc
 

@@ -11,7 +11,15 @@ CONFOPTS=""
 
 # Add hypre support
 if [ -f "/usr/lib/libHYPRE.so" ]; then
-	CONFOPTS="${CONFOPTS} --with-hypre=1"
+	VERSION_MIN=2.14.2
+	VERSION=$(readlink -f '/usr/lib/libHYPRE.so' | sed 's/^.*\.so\.')
+
+	if [ "$VERSION_MIN" = "$(printf '%s\n' "$VERSION_MIN" "$VERSION" | sort -V | head -n1)" ]; then
+		CONFOPTS="${CONFOPTS} --with-hypre=1"
+	else
+		(>&2 echo "WARNING: COMPILING PETSc WITHOUT HYPRE.")
+		(>&2 echo "HYPRE $VERSION FOUND BUT AT LEAST $VERSION_MIN IS REQUIRED.")
+	fi
 fi
 
 # Add mumps support
