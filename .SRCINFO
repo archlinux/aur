@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-multimedia
 	pkgdesc = Classes for audio, video, radio and camera functionality (mingw-w64)
-	pkgver = 5.11.0
+	pkgver = 5.11.1
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -18,12 +18,12 @@ pkgbase = mingw-w64-qt5-multimedia
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.11/5.11.0/submodules/qtmultimedia-everywhere-src-5.11.0.tar.xz
+	source = https://download.qt.io/official_releases/qt/5.11/5.11.1/submodules/qtmultimedia-everywhere-src-5.11.1.tar.xz
 	source = 0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch
 	source = 0002-Fix-build-with-ANGLE.patch
-	sha256sums = ef5328f111ed2d27eff16e50febb66d1480e99f6a6df703f2ab8c650040f9d3c
-	sha256sums = b574d0df6d11e4569bb2153640def0b8b40ac554c5c1a0c3dc24831d573da7a8
-	sha256sums = 9a3e20370c4d9fafd4069f1257039903c6771be166e0a829c54dd8abaa4dc79f
+	sha256sums = f28bb57890b4666a9aafaa116a30c51dedb0f23b60a510280a27eb032b58c90c
+	sha256sums = 2818f84cd4a00222517a2192702c5341bfd65dafaa330859a8a0c8ff6b4f03bb
+	sha256sums = 7ec08be14199f3eed6e851673ceeeecf063926498823d415304f495ccfe9d890
 
 pkgname = mingw-w64-qt5-multimedia
 
