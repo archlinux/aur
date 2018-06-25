@@ -1,14 +1,15 @@
-# Maintainer: Danilo Bargen <aur at dbrgn dot ch>
+# Maintainer: Georg Nagel <g.schlmm at gmail dot com>
+# Contributor: Danilo Bargen <aur at dbrgn dot ch>
 _pkgname=ti
 pkgname=ti-git
-pkgver=r137.39cfe91
-pkgrel=2
-pkgdesc="A simple command line time tracker"
+pkgver=r153.bfb0a95
+pkgrel=3
+pkgdesc="A silly simple time tracker"
 arch=('any')
-url="http://ti.sharats.me/"
+url="https://pypi.org/project/ti/"
 license=('MIT')
 groups=()
-depends=('python2' 'python2-yaml' 'python2-colorama')
+depends=('python' 'python-yaml' 'python-colorama')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -16,22 +17,21 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname}::git+https://github.com/sharat87/ti")
+source=("${pkgname}::git+https://github.com/tbekolay/ti")
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/${pkgname%}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%}"
-    sed -i 's/env python$/env python2/' bin/ti
+    cd "$srcdir/${pkgname%}"
+    python setup.py build
 }
 
 package() {
-	cd "$srcdir/${pkgname%}"
-	mkdir -p $pkgdir/usr/local/bin
-    install -m 755 bin/ti $pkgdir/usr/local/bin
+    cd "$srcdir/${pkgname%}"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
