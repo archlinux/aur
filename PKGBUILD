@@ -1,4 +1,4 @@
-# Maintainer: chenjunyu19 <chenjunyu19@qq.com>
+# Maintainer: chenjunyu19 <1335546814@qq.com>
 
 pkgname=netease-dl-git
 pkgver=r37.84b226f
