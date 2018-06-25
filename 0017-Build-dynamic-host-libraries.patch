@@ -1,4 +1,4 @@
-From 2cfb089ea3b0155758be97c7ea8724d77f63a704 Mon Sep 17 00:00:00 2001
+From c79c2a4f048484d235574a69e6f6ba3dcff23abe Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:27:28 +0200
 Subject: [PATCH 17/33] Build dynamic host libraries
@@ -37,5 +37,5 @@ index c3ed27d979..30d2114aa1 100644
 -INSTALLS = lib
 +INSTALLS += lib
 -- 
-2.17.0
+2.18.0
 
