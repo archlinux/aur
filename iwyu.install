@@ -1,0 +1,25 @@
+msg() {
+  echo -e "\x1b[94m::\x1b[0m $1"
+}
+
+show-msg() {
+echo
+msg "To avoid conflict with another packages these files were renamed:"
+
+  cat << EOF
+
+    fix_includes.py -> iwyu-fix-includes
+    iwyu_tool.py -> iwyu-tool
+
+EOF
+}
+
+post_install() {
+  show-msg
+}
+
+post_upgrade() {
+  show-msg
+}
+
+# vim:set ts=2 sw=2 ft=sh et:
