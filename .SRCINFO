@@ -1,13 +1,13 @@
 pkgbase = openlibm
 	pkgdesc = standalone implementation of C mathematical functions
-	pkgver = 0.5.5
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = http://openlibm.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	source = openlibm-0.5.5.tar.gz::https://github.com/JuliaLang/openlibm/archive/v0.5.5.tar.gz
-	sha256sums = 07dcc5f59e695fb45167c81406b8e201c5ad91ebf24e3e55ae13298670910cfd
+	source = openlibm-0.6.0.tar.gz::https://github.com/JuliaLang/openlibm/archive/v0.6.0.tar.gz
+	sha256sums = d45439093d1fd15e2ac3acf69955e462401c7a160d3330256cb4a86c51bdae28
 
 pkgname = openlibm
 

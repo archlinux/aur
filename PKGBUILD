@@ -1,14 +1,15 @@
-# Maintainer: Arthur Zamarin <arthurzam@gmail.com> 
+# Maintainer: Lex Black <autumn-wind@web.de>
+# Contributor: Arthur Zamarin <arthurzam@gmail.com>
 
 pkgname=openlibm
-pkgver=0.5.5
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="standalone implementation of C mathematical functions"
 arch=(i686 x86_64)
 url="http://openlibm.org/"
 license=('BSD')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JuliaLang/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('07dcc5f59e695fb45167c81406b8e201c5ad91ebf24e3e55ae13298670910cfd')
+sha256sums=('d45439093d1fd15e2ac3acf69955e462401c7a160d3330256cb4a86c51bdae28')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
