@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=parcel-bundler
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Blazing fast, zero configuration web application bundler"
 arch=(any)
@@ -24,4 +24,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('979fe35f76c57a553416fdea3df6ebd29f1679cd373ac029f668b12c9efd5cc1')
+sha256sums=('1d0c462b9ab3032b5be5dde707beb0341821bc1ec1f74127f8cfe6e1e01053f0')
