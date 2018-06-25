@@ -3,13 +3,13 @@
 pkgname=mariadb-connector-odbc
 conflicts=('mariadb-connector-odbc-bin')
 pkgver=3.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="MariaDB Connector/ODBC is a standardized, LGPL licensed database driver using the industry standard ODBC API"
 arch=('x86_64' 'i686')
 url="https://mariadb.com/kb/en/mariadb/mariadb-connector-odbc/"
 license=('LGPL')
 depends=('unixodbc>=2.3' 'openssl')
-makedepends=()
+makedepends=('git' 'cmake')
 options=('staticlibs')
 source=("https://downloads.mariadb.org/interstitial/connector-odbc-${pkgver}/${pkgname}-${pkgver}-ga-src.tar.gz")
 
@@ -31,11 +31,14 @@ prepare() {
 
 build() {
     cd build
-    make
+    make maodbc
 }
 
 package() {
-    cd build
-    make DESTDIR="${pkgdir}" install
-    mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
+    # The cmake install is completely hosed right now so do it manually. It's only 3 files.
+    cd "$pkgdir"
+    mkdir -p usr/lib usr/share/licenses/$pkgname
+    install "${srcdir}/build/libmaodbc.so" usr/lib/libmaodbc.so
+    install "$srcdir/$pkgname-$pkgver-ga-src/COPYING" usr/share/licenses/$pkgname/COPYING
+    install "$srcdir/$pkgname-$pkgver-ga-src/README" usr/share/licenses/$pkgname/README
 }
