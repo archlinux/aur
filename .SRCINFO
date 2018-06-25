@@ -1,7 +1,7 @@
 pkgbase = rash-git
 	pkgdesc = Rust-based file hashing tool
-	pkgver = 0.3.1.r23.g87f0710
-	pkgrel = 3
+	pkgver = 0.3.1.r25.g0168b95
+	pkgrel = 4
 	url = https://github.com/themadprofessor/rash
 	arch = i686
 	arch = x86_64

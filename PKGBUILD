@@ -1,7 +1,7 @@
 # Maintainer: Stuart Reilly <stu at reilly-family dot co dot uk>
 pkgname=rash-git
-pkgver=0.3.1.r23.g87f0710
-pkgrel=3
+pkgver=0.3.1.r25.g0168b95
+pkgrel=4
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Rust-based file hashing tool"
@@ -26,14 +26,14 @@ package() {
 	shell=`basename $SHELL`
 	case $shell in
 		zsh)
-			install -Dm644 _rash $pkgdir/usr/share/zsh/site-functions
+			install -Dm644 _rash $pkgdir/usr/share/zsh/site-functions/_rash
 			;;
 		bash)
-			install -Dm644 rash.bash $pkgdir`pkg-config --variable=completionsdir bash-completion`
+			install -Dm644 rash.bash $pkgdir`pkg-config --variable=completionsdir bash-completion`/rash.bash
 			;;
 		fish)
 			dir=${XDG_CONFIG_HOME:-$HOME/.config}
-			install -Dm644 rash.fish $pkgdir$dir/fish/completions
+			install -Dm644 rash.fish $pkgdir$dir/fish/completions/rash.fish
 			;;
 	esac
 }
