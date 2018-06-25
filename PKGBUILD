@@ -1,15 +1,14 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=oh-git
-pkgver=r834.07fb449
+pkgver=r956.6ae1704
 pkgrel=1
 epoch=
-pkgdesc="A surprisingly powerful Unix shell "
+pkgdesc="A surprisingly powerful Unix shell."
 arch=('i686' 'x86_64')
 url="https://github.com/michaelmacinnis/oh"
 license=('MIT')
-categories=()
 groups=()
-depends=('')
+depends=()
 makedepends=('git' 'go')
 optdepends=()
 checkdepends=()
