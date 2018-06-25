@@ -2,7 +2,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fusecompress-git
 pkgver=2.1.r152.gd3fe3f8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Transparent (using fuse) compressing filesystem."
 arch=('i686' 'x86_64')
@@ -31,6 +31,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
+  CPPFLAGS="-DBOOST_DISABLE_ASSERTS"
+  export CPPFLAGS
   ./configure --prefix=/usr --with-lzma --with-z --with-bz2 --with-lzo2
   make
 }
