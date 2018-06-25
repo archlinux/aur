@@ -1,10 +1,10 @@
 # Maintainer: Jure Varlec <jure.varlec@ad-vega.si>
 pkgname=qarv
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Qt GUI and API interfaces to ethernet cameras via Aravis"
 arch=( i686 x86_64 )
-url="https://gitorious.org/adv/${pkgname}"
+url="https://github.com/AD-Vega/${pkgname}"
 license=('GPL3')
 depends=( qt4 aravis ffmpeg opencv gstreamer )
 makedepends=( cmake doxygen graphviz )
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=$pkgname.install
 changelog=
-source=( "http://software.ad-vega.si/$pkgname/$pkgname-$pkgver.tar.xz" )
+source=( "${pkgname}-${pkgver}.tar.gz::https://github.com/AD-Vega/${pkgname}/archive/${pkgver}.tar.gz" )
 noextract=()
-md5sums=( '23bc48cf980ced64a199c9874f21c7a1' )
+md5sums=( 'c2ec45d07a9ccee295c19c0d2be0b3fd' )
 
 build() {
   cd $srcdir
