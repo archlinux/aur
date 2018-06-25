@@ -36,7 +36,7 @@ makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhom
   mcqd coxeter bliss-graphs tdlib python2-pkgconfig shared_meataxe libfes primecount git)
 source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-env.patch package.patch latte-count.patch sagemath-python3-notebook.patch test-optional.patch
-        r-no-readline.patch fes02.patch sagemath-threejs.patch sagemath-ignore-warnings.patch
+        r-no-readline.patch fes02.patch sagemath-threejs.patch sagemath-ignore-warnings.patch sagemath-cremona.patch
         sagemath-networkx2.patch sagemath-scipy-1.0.patch sagemath-singular-4.1.1.patch sagemath-lcalc-c++11.patch
         pari-ratpoints.patch::"https://github.com/sagemath/sage/commit/83458400.patch")
 sha256sums=('SKIP'
@@ -49,6 +49,7 @@ sha256sums=('SKIP'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             '2d13b15ad2d1511bb3d752a261497060a8901882b1c2fa9813219781b7a71d83'
             'a4a6c87b46ff23b89608aca66d00427334502e8bfb5dfe68b94497d19be1c7ae'
+            '71cc42d168545d460bc7f67a30486ff1534093e2b4deeb83deda8ff5bd081e7b'
             '8253730940687992dd29d90d95bea7e2685bb4854db004090c8196ce92859b64'
             '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
             '369f1483e0364031d73d43d9e63b7bf2b0929c8a1d470c1596f98f9f1aa80750'
@@ -94,6 +95,8 @@ prepare(){
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
   patch -p1 -i ../fes02.patch
+# use Features to detect Cremona databases https://trac.sagemath.org/ticket/24718
+  patch -p1 -i ../sagemath-cremona.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env sage-python23|#!/usr/bin/env python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
