@@ -11,7 +11,7 @@
 
 _qt_module=qtvirtualkeyboard
 pkgname="mingw-w64-qt5-virtualkeyboard"
-pkgver=5.11.0
+pkgver=5.11.1
 pkgrel=1
 arch=('any')
 pkgdesc="Virtual keyboard framework (translations, mingw-w64)"
@@ -23,7 +23,7 @@ license=('GPL3')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('914de601a81b32acdddc572d3ade41129b018f3693d9cecdc5dad32424913cbd')
+sha256sums=('5b330dcc770976a2cfb8d85711d72a57c9764c1a9efb889c91e81f6071bbbf9b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
