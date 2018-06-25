@@ -1,6 +1,7 @@
-# Maintainer: Peter Lamby <peterlamby@web.de>
+# Contributor: Peter Lamby <peterlamby@web.de>
+# Maintainer: C. N. Hsing
 pkgname=deadbeef-opus-git
-pkgver=0.6.r2.g330e3a3
+pkgver=0.8.r1.gfd9333b
 pkgrel=1
 pkgdesc="opus plugin for the DeaDBeeF music player"
 arch=('i686' 'x86_64')
