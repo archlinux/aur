@@ -1,0 +1,17 @@
+pkgbase = python-svgwrite-git
+	pkgdesc = write svg files
+	pkgver = 1.1.12.r1.g5ce5ed5
+	pkgrel = 1
+	url = https://github.com/mozman/svgwrite
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-svgwrite
+	conflicts = python-svgwrite
+	source = git+https://github.com/mozman/svgwrite
+	sha256sums = SKIP
+
+pkgname = python-svgwrite-git
+
