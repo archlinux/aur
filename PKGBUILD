@@ -8,11 +8,11 @@ url="https://github.com/tablet-mode/py3status-modules"
 license=('GPL3')
 depends=('python>=3.2' 'py3status>=2.0')
 optdepends=(
-    'task>=2.4.4: taskstatus module'
-    'python-mpd2>=0.4.6: mpdstatus module'
-    'upower>=0.99.0: batterystatus module'
-    'python-dbus>=1.2.0: batterystatus module'
-    'alsa-utils>=1.0.29: alsastatus module'
+    'task: taskstatus module'
+    'python-mpd2: mpdstatus module'
+    'upower: batterystatus module'
+    'python-dbus: batterystatus module'
+    'alsa-utils: alsastatus module'
 )
 conflicts=("$pkgname")
 source=(https://github.com/tablet-mode/$pkgname/archive/$pkgver.tar.gz)
