@@ -11,7 +11,7 @@ optdepends=('dictd: dict client and server')
 makedepends=('dictd' 'freedict-tools')
 install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.src.tar.xz")
-sha512sums=('23d938bcc48894b10c68bf4e3b769625f6fdc72d9deb12b46dff557079d1bea0d1847af7d375a92a78afdc10033e60904a8f55ce0dbcc6849d8ca6f63cd7dae2')
+sha512sums=('036ca95790159f8cd7e7a42ec799dd686481e74024716ee34cefa1f7d04ab06968ab18b1de4482bca83f06a36378bf36f3f7fff4a2272417f29a9eb1d10ce872')
 
 build()
 {
