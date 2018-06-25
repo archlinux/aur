@@ -166,13 +166,15 @@ Info_Array* portfolio_get_info_array(void) {
     portfolio_data->length = json_object_array_length(jobj);
     portfolio_data->array = malloc(sizeof(Info*) * portfolio_data->length); // malloc portfolio array length pointers
     pointer_alloc_check(portfolio_data->array);
+    portfolio_data->totals = api_info_init();
 
-    portfolio_data->total_spent = 0;
-    portfolio_data->current_value = 0;
-    portfolio_data->profit_total = 0;
-    portfolio_data->profit_last_close = 0;
-    portfolio_data->profit_7d = 0;
-    portfolio_data->profit_30d = 0;
+    // Initialize totals to 0
+    portfolio_data->totals->total_spent = 0;
+    portfolio_data->totals->current_value = 0;
+    portfolio_data->totals->profit_total = 0;
+    portfolio_data->totals->profit_last_close = 0;
+    portfolio_data->totals->profit_7d = 0;
+    portfolio_data->totals->profit_30d = 0;
 
     pthread_t threads[portfolio_data->length];
     char syms[portfolio_data->length][SYMBOL_MAX_LENGTH];
@@ -206,20 +208,8 @@ Info_Array* portfolio_get_info_array(void) {
         portfolio_data->array[i]->total_spent = json_object_get_double(json_object_object_get(json_object_array_get_idx(
                 jobj, i), "USD_Spent"));
         calculate_check_data(portfolio_data->array[i]);
-
-        portfolio_data->total_spent += portfolio_data->array[i]->total_spent;
-        portfolio_data->current_value += portfolio_data->array[i]->current_value;
-        portfolio_data->profit_total += portfolio_data->array[i]->profit_total;
-        portfolio_data->profit_last_close += portfolio_data->array[i]->profit_last_close;
-        portfolio_data->profit_7d += portfolio_data->array[i]->profit_7d;
-        portfolio_data->profit_30d += portfolio_data->array[i]->profit_30d;
     }
-    portfolio_data->profit_total_percent = (100 * (portfolio_data->current_value - portfolio_data->total_spent)) /
-            portfolio_data->total_spent;
-    portfolio_data->profit_last_close_percent = 100 *  portfolio_data->profit_last_close/ portfolio_data->total_spent;
-    portfolio_data->profit_7d_percent = 100 *  portfolio_data->profit_7d/ portfolio_data->total_spent;
-    portfolio_data->profit_30d_percent = 100 *  portfolio_data->profit_30d/ portfolio_data->total_spent;
-
+    info_array_calculate_totals(portfolio_data);
     json_object_put(jobj);
     string_destroy(&pString);
     return portfolio_data;
@@ -300,8 +290,9 @@ void portfolio_print_all(Info_Array* portfolio_data) {
     int rows, cols;
     getmaxyx(stdscr, rows, cols);
     if (cols < 110) {
-        puts("Terminal too small.");
         endwin();
+        puts("Terminal too small.");
+        api_info_array_destroy(&portfolio_data);
         return;
     }
 
@@ -359,12 +350,16 @@ void portfolio_print_all(Info_Array* portfolio_data) {
 
         /** TOTALS **/
         wattron(total_window, A_BOLD); // Bold totals
-        mvwprintw(total_window, 0, 0, "         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf "
-                                    "(%6.2lf%%) %8.2lf (%6.2lf%%)", portfolio_data->current_value,
-                  portfolio_data->total_spent, portfolio_data->profit_total, portfolio_data->profit_total_percent,
-                  portfolio_data->profit_last_close, portfolio_data->profit_last_close_percent,
-                  portfolio_data->profit_7d, portfolio_data->profit_7d_percent, portfolio_data->profit_30d,
-                  portfolio_data->profit_30d_percent);
+        mvwprintw(total_window, 0, 0,
+                  "         TOTALS %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf "
+                  "(%6.2lf%%) %8.2lf (%6.2lf%%)", portfolio_data->totals->current_value,
+                  portfolio_data->totals->total_spent, portfolio_data->totals->profit_total,
+                  portfolio_data->totals->profit_total_percent,
+                  portfolio_data->totals->profit_last_close,
+                  portfolio_data->totals->profit_last_close_percent,
+                  portfolio_data->totals->profit_7d, portfolio_data->totals->profit_7d_percent,
+                  portfolio_data->totals->profit_30d,
+                  portfolio_data->totals->profit_30d_percent);
         wattroff(total_window, A_BOLD);
         wrefresh(total_window);
 
@@ -429,7 +424,8 @@ void portfolio_print_stock(const char* symbol) {
     info->amount = json_object_get_double(json_object_object_get(json_object_array_get_idx(jobj, i), "Shares"));
     info->total_spent = json_object_get_double(json_object_object_get(json_object_array_get_idx(jobj, i), "USD_Spent"));
     calculate_check_data(info);
-    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)      7D       (%%)      30D      "
+    printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)      7D    "
+           "    (%%)      30D      "
            " (%%)\n%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
            info->amount, info->symbol, info->current_value, info->total_spent, info->profit_total,
            info->profit_total_percent, info->profit_last_close, info->profit_last_close_percent,
