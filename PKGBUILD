@@ -1,7 +1,7 @@
 # Maintainer: rhssk <rssk@protonmail.com>
 pkgname='kicost-git'
 _gitname='kicost'
-pkgver=r797.e94d6d8
+pkgver=r915.72c887d
 pkgrel=1
 pkgdesc="Build cost spreadsheet for a KiCad project"
 url="https://xesscorp.github.io/KiCost"
@@ -16,6 +16,7 @@ depends=(
     'python-tqdm'
     'python-currencyconverter'
     'python-pycountry'
+    'python-requests'
 )
 makedepends=('git')
 provides=("${_gitname}")

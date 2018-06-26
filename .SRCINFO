@@ -1,6 +1,6 @@
 pkgbase = kicost-git
 	pkgdesc = Build cost spreadsheet for a KiCad project
-	pkgver = 0.r797.e94d6d8
+	pkgver = r915.72c887d
 	pkgrel = 1
 	url = https://xesscorp.github.io/KiCost
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = kicost-git
 	depends = python-tqdm
 	depends = python-currencyconverter
 	depends = python-pycountry
+	depends = python-requests
 	provides = kicost
 	conflicts = kicost
 	source = git+https://github.com/xesscorp/kicost.git
