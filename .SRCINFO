@@ -16,7 +16,7 @@ pkgbase = sodalite
 	depends = python-watchdog
 	backup = etc/sodalite.conf
 	source = sodalite-0.14.3.tar.gz::https://github.com/hnicke/sodalite/archive/v0.14.3.tar.gz
-	sha256sums = 0e3523666de4a1b3f169f52b1081e126f68d283065ea7d998582f1c8f1568d62
+	sha256sums = 735de949c85bd4fe192e8394443031b81a974fe8a5adaa3b44bd23ab49569d4f
 
 pkgname = sodalite
 
