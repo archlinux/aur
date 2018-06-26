@@ -236,7 +236,7 @@ build_aur () {
     echo " => Buiilding ${package}"
     # 2>&1
     su - builder -c "(cd ${build_dir}; makepkg -s --noconfirm)" >/dev/null
-    sed -i 's/%wheel ALL=(ALL) NO/# %wheel ALL=(ALL) NO/' /etc/sudoers
+    sed -i 's/# %wheel ALL=(ALL) NO/%wheel ALL=(ALL) NO/' /etc/sudoers
 
     echo " => Adding ${package} to local AUR hosting directory ${offline_mirror_path}"
     mkdir -p ${offline_mirror_path}
