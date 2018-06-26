@@ -1,7 +1,7 @@
 # Maintainer: David Mehren <david.mehren@udo.edu>
 pkgname=sdaps-git
-pkgver=r980.cd1d872
-pkgrel=1
+pkgver=r982.bea1fab
+pkgrel=2
 pkgdesc="Scripts for data acquisition with paper based surveys"
 arch=('any')
 url="https://github.com/sdaps/sdaps"
@@ -24,7 +24,7 @@ checkdepends=('opencv'
               'texlive-science' 
 )
 source=('git+https://github.com/sdaps/sdaps.git'
-        'git+https://github.com/sdaps/sdaps-class.git')
+        'git+https://github.com/davidmehren/sdaps-class.git')
 md5sums=('SKIP'
          'SKIP')
 
