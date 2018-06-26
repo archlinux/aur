@@ -2,7 +2,7 @@ pkgbase = hex-git
 	pkgdesc = Hex viewer
 	pkgver = r22.233a69e
 	pkgrel = 1
-	url = https://github.com/pjanouch/hex
+	url = https://git.janouch.name/p/hex
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -17,7 +17,7 @@ pkgbase = hex-git
 	provides = hex
 	conflicts = hex
 	options = zipman
-	source = git+https://github.com/pjanouch/hex.git
+	source = git+https://git.janouch.name/p/hex.git
 	md5sums = SKIP
 
 pkgname = hex-git

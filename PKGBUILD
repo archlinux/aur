@@ -4,7 +4,7 @@ _pkgname=hex
 pkgver=r22.233a69e
 pkgrel=1
 pkgdesc="Hex viewer"
-url="https://github.com/pjanouch/hex"
+url="https://git.janouch.name/p/hex"
 arch=('i686' 'x86_64')
 license=('BSD')
 options=(zipman)
@@ -12,7 +12,7 @@ conflicts=('hex')
 provides=('hex')
 makedepends=('cmake' 'pkg-config' 'git' 'help2man')
 depends=('readline' 'ncurses' 'libunistring' 'lua')
-source=("git+https://github.com/pjanouch/$_pkgname.git")
+source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
