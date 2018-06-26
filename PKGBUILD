@@ -4,7 +4,7 @@ _pkgname=logdiag
 pkgver=v0.1.2.r100.g24731d6
 pkgrel=1
 pkgdesc="Schematic editor"
-url="https://github.com/pjanouch/logdiag"
+url="https://git.janouch.name/p/logdiag"
 arch=('i686' 'x86_64')
 license=('BSD')
 options=(zipman)
@@ -13,7 +13,7 @@ provides=('logdiag')
 makedepends=('cmake' 'pkg-config' 'git')
 depends=('gtk3' 'lua' 'json-glib')
 install=logdiag.install
-source=("git+https://github.com/pjanouch/$_pkgname.git")
+source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
