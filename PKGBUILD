@@ -26,9 +26,9 @@ pkgname=()
 # If we're building more than one package, create a common package
 [[ ${#pkgname[@]} -gt 1 ]] && pkgname=('eclipse-common-devel' "${pkgname[@]}")
 
-epoch=1
-_milestone=RC3
-pkgver=4.8.0${_milestone}
+epoch=2
+_milestone=R
+pkgver=4.8.0 #${_milestone}
 pkgrel=1
 _release=photon-${_milestone}
 pkgdesc="Highly extensible IDE"
