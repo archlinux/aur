@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=4.1.r91303.g8331e59133
+pkgver=4.1.r91368.g52e8a0d96d
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=(
         'sdl2' 'vapoursynth' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio'
         'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'aom-git' 'codec2' 'flite1-patched' 'libilbc' 'kvazaar'
+        'chromaprint-fftw' 'libaom' 'codec2' 'flite1-patched' 'libilbc' 'kvazaar'
         'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
         'rockchip-mpp'
 )
