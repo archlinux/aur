@@ -1,7 +1,7 @@
 pkgbase = brackets
 	pkgdesc = An open source code editor for the web, written in JavaScript, HTML and CSS.
-	pkgver = 1.12
-	pkgrel = 3
+	pkgver = 1.13
+	pkgrel = 1
 	url = http://brackets.io
 	install = brackets.install
 	arch = i686
@@ -30,8 +30,8 @@ pkgbase = brackets
 	optdepends = hicolor-icon-theme: for hicolor theme hierarchy
 	conflicts = brackets-git
 	conflicts = brackets-bin
-	source = git+https://github.com/adobe/brackets#tag=release-1.12
-	source = git+https://github.com/adobe/brackets-shell#tag=release-1.12
+	source = git+https://github.com/adobe/brackets#tag=release-1.13
+	source = git+https://github.com/adobe/brackets-shell#tag=release-1.13
 	md5sums = SKIP
 	md5sums = SKIP
 
