@@ -74,6 +74,7 @@ package() {
   ln -s libmumble.so.$_pkgver "$pkgdir"/usr/lib/mumble/libmumble.so.${_pkgver:0:3}
   install -m755 -D ./release/plugins/liblink.so "$pkgdir"/usr/lib/mumble/liblink.so
   install -m755 -D ./release/libcelt* "$pkgdir"/usr/lib/mumble/
+  install -m755 -D ./release/librnnoise.so.0 "$pkgdir"/usr/lib/librnnoise.so.0
 
   # other stuff
   install -m644 -D ./scripts/mumble.desktop "$pkgdir"/usr/share/applications/mumble.desktop
