@@ -1,0 +1,23 @@
+pkgbase = lxqt-archiver-git
+	pkgdesc = A simple & lightweight desktop-agnostic Qt file archiver
+	pkgver = r4.ef82069
+	pkgrel = 1
+	url = https://lxqt.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	makedepends = lxqt-build-tools-git
+	depends = libfm-qt-git
+	depends = qt5-x11extras
+	depends = glib2
+	depends = json-glib
+	provides = lxqt-archiver=r4.ef82069
+	conflicts = lxqt-archiver
+	source = git+https://github.com/lxqt/lxqt-archiver.git
+	sha256sums = SKIP
+
+pkgname = lxqt-archiver-git
+
