@@ -1,6 +1,6 @@
 pkgbase = dups-git
 	pkgdesc = It deduplicates things - Backup as simple as possible.
-	pkgver = 4f5bb96
+	pkgver = c6d78c5
 	pkgrel = 1
 	url = https://github.com/linuxwhatelse/dups
 	install = dups.install
@@ -13,8 +13,8 @@ pkgbase = dups-git
 	depends = python-dbus
 	depends = python-paramiko
 	depends = python-ruamel-yaml
-	provides = dups-git
-	source = dups-git::git+https://github.com/linuxwhatelse/dups.git
+	provides = dups
+	source = dups::git+https://github.com/linuxwhatelse/dups.git
 	md5sums = SKIP
 
 pkgname = dups-git
