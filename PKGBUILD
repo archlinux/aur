@@ -36,5 +36,5 @@ package() {
 #install systemd service
   cd /$srcdir
   install -Dm755 $_add_group.script $pkgdir/usr/bin/$_add_group
-  install -Dm644 $_add_group.service $pkgdir/etc/systemd/system/$_add_group.serv
+  install -Dm644 $_add_group.service $pkgdir/etc/systemd/system/$_add_group.service
 }
