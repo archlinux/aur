@@ -1,7 +1,7 @@
 pkgbase = spoqa-han-sans
 	pkgdesc = TTF font for korean, english and japanese
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.spoqa-han-sans.com/
 	arch = any
 	license = sil
