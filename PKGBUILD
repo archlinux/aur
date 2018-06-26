@@ -65,11 +65,11 @@ _rev_override="n"
 
 pkgbase=linux-clear
 __basekernel=4.17
-_minor=2
+_minor=3
 pkgver=${__basekernel}.${_minor}
 #_clearver=${__basekernel}.2-586
 _clearver=0f69acc6f23759737119b08ce89e206b04c900b2
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -95,7 +95,7 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            'a528b102daad9d3072b328f68d4fc7b4eff7641ad301d1a54e5b8f5385efeb0b'
+            '01d5cc024dcfed615f84fd83be9c248261d8fc2c062520d38397cead6857b596'
             'SKIP'
             'SKIP'
             'f0d2492f4561e2559f6c9471b231cb8262d45762c0e7cccf787be5c189b4e2d6'
@@ -142,6 +142,13 @@ prepare() {
   if [ "${_rev_override}" = "y" ]; then
     sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
   fi
+
+  # bluez package on arch needs this module for bluetooth to work
+  # https://bugs.archlinux.org/task/55880
+  sed -i "s|# CONFIG_CRYPTO_USER is not set|CONFIG_CRYPTO_USER=m|g" ./.config
+
+  # fix typo in .config
+  sed -i "s|SQUASHFS_LZ4y|SQUASHFS_LZ4=y|g" ./.config
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
