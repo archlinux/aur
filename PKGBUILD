@@ -11,7 +11,7 @@ license=('GPL')
 depends=('bash')
 backup=("etc/$pkgname.conf")
 
-source=("http://fossies.org/linux/misc/old/$pkgname-$pkgver.tar.gz"
+source=("https://fossies.org/linux/misc/old/$pkgname-$pkgver.tar.gz"
 	    "$pkgname.service")
 
 sha256sums=('5830fd4ac14ba3677e49159adbb7cd61e3d42d1f0b9aa73e4ed0aa154af6cd8d'
