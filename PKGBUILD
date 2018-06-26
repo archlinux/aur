@@ -12,14 +12,14 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.0_devel.102754.4d08c1e7d1
+pkgver=18.2.0_devel.103089.ff6db94c18
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
               'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'libclc' 'wayland' 'wayland-protocols')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'libclc' 'wayland')
+         'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'libclc' 'wayland' 'lm_sensors')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-mesa' 'opencl-driver' 'opengl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
@@ -32,11 +32,6 @@ sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
 )
 
-prepare() {
-  cd mesa
-  autoreconf -vfi
-}
-
 pkgver() {
     cd mesa
     read -r _ver <VERSION
@@ -44,80 +39,52 @@ pkgver() {
 }
 
 build () {
-  cd mesa
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
-    --with-dri-drivers=i915,i965,r200,radeon,nouveau \
-    --with-platforms=x11,drm,surfaceless,wayland \
-    --with-vulkan-drivers=intel,radeon \
-    --enable-gallium-osmesa \
-    --enable-xa \
-    --enable-nine \
-    --disable-xvmc \
-    --enable-vdpau \
-    --enable-omx-bellagio \
-    --enable-opencl \
-    --enable-opencl-icd \
-    --enable-glx-tls \
-    --enable-libglvnd
-
-
-
-# Used configure settings
-#
-# --prefix=PREFIX                   install architecture-independent files in PREFIX
-# --sysconfdir=DIR                  read-only single-machine data 
-#                                   [PREFIX/etc]
-# --with-gallium-drivers[=DIRS...]  comma delimited Gallium drivers list, e.g. "i915,ilo,nouveau,r300,r600,radeonsi,freedreno,svga,swrast,vc4,virgl"
-#                                   [default=r300,r600,svga,swrast]
-# --with-dri-drivers[=DIRS...]      comma delimited classic DRI drivers list, e.g. "swrast,i965,radeon"
-#                                   [default=auto]
-# --with-platforms[=DIRS...]        comma delimited native platforms libEGL/Vulkan/other
-#                                   supports, e.g. "x11,drm,wayland,surfaceless..."
-#                                   [default=auto]
-# --with-vulkan-drivers[=DIRS...]   comma delimited Vulkan drivers list, e.g. "intel"
-#                                   [default=no]
-# --enable-gallium-osmesa           enable Gallium implementation of the OSMesa library
-#                                   [default=disabled]
-# --enable-xa                       enable build of the XA X Acceleration API
-#                                   [default=disabled]
-# --enable-nine                     enable build of the nine Direct3D9 API
-#                                   [default=no]
-# --disable-xvmc                    enable xvmc library
-#                                   [default=auto]
-# --enable-vdpau                    enable vdpau library
-#                                    [default=auto]
-# --enable-omx-bellagio             enable OpenMAX Bellagio library
-#                                   [default=disabled]
-# --enable-opencl                   enable OpenCL library
-#                                   [default=disabled]
-# --enable-opencl-icd               Build an OpenCL ICD library to be loaded by an ICD implementation
-#                                   [default=disabled]
-# --enable-glx-tls                  enable TLS support in GLX
-#                                   [default=disabled]
-# --enable-libglvnd                 Build GLX and EGL for libglvnd 
-#                                   [default=disabled]
-
-  make
-
+    if [  -d _build ]; then
+        rm -rf _build
+    fi
+    meson setup mesa _build \
+       -D b_ndebug=true \
+       -D buildtype=plain \
+       --wrap-mode=nofallback \
+       -D prefix=/usr \
+       -D sysconfdir=/etc \
+       -D platforms=x11,wayland,drm,surfaceless \
+       -D dri-drivers=i915,i965,r200,r100,nouveau \
+       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+       -D vulkan-drivers=amd,intel \
+       -D dri3=true \
+       -D egl=true \
+       -D gallium-extra-hud=true \
+       -D gallium-nine=true \
+       -D gallium-omx=bellagio \
+       -D gallium-opencl=icd \
+       -D gallium-va=true \
+       -D gallium-vdpau=true \
+       -D gallium-xa=true \
+       -D gallium-xvmc=false \
+       -D gbm=true \
+       -D gles1=true \
+       -D gles2=true \
+       -D glvnd=true \
+       -D glx=dri \
+       -D libunwind=true \
+       -D llvm=true \
+       -D lmsensors=true \
+       -D osmesa=gallium \
+       -D shared-glapi=true \
+       -D valgrind=false
+    meson configure _build
+    ninja -C _build
 }
 
 
 package_mesa-git() {
 
-  cd mesa
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C _build install
 
   # remove files provided by libglvnd
   rm "$pkgdir"/usr/lib/libGLESv{1_CM,2}.so*
    
-  # remove files provided by wayland
-  # rm "$pkgdir"/usr/lib/libwayland-egl.so*
-  # rm "$pkgdir"/usr/lib/pkgconfig/wayland-egl.pc
-
-
   # indirect rendering
   ln -s /usr/lib/libGLX_mesa.so.0 ${pkgdir}/usr/lib/libGLX_indirect.so.0
 

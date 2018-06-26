@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 18.2.0_devel.102754.4d08c1e7d1
+	pkgver = 18.2.0_devel.103089.ff6db94c18
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
@@ -33,6 +33,7 @@ pkgbase = mesa-git
 	depends = libglvnd
 	depends = libclc
 	depends = wayland
+	depends = lm_sensors
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = mesa
 	provides = vulkan-intel
