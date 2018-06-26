@@ -1,0 +1,27 @@
+pkgbase = linphone-desktop-all-git
+	pkgdesc = A free VoIP and video softphone based on the SIP protocol (All deps included).
+	pkgver = 4.1.1.r415.efa3e107
+	pkgrel = 1
+	url = https://www.linphone.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = qt5-tools
+	provides = linphone-desktop
+	conflicts = linphone-desktop
+	source = linphone-desktop::git://git.linphone.org/linphone-desktop
+	source = mediastreamer2.patch
+	source = belle-sip.patch
+	source = linphone.patch
+	sha256sums = SKIP
+	sha256sums = bc0589eb2739aee429db9c67aa4308fcd817324ef5248b1766efee717798a900
+	sha256sums = 8a365864cfa8c6eb517701bcb2a2a7d51009bf504c104884ed3fbd05a36b3a84
+	sha256sums = 1db32dff8a93d7508dbbb7d293860f72a33a54da3e3499f5a5535d2a351a88ce
+
+pkgname = linphone-desktop-all-git
+
