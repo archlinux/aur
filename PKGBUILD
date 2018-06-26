@@ -4,7 +4,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=4.15
+pkgver=4.20
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
@@ -21,7 +21,7 @@ optdepends=('microchip-mplabxc8-bin: C compiler for PIC10 PIC12 PIC16 PIC18 MCUs
             )
 provides=(mplab)
 conflicts=(mplab)
-options=(!strip docs libtool emptydirs !zipman !upx)
+options=(!strip docs libtool emptydirs !zipman)
 install="${pkgname}.install"
 
 _mplabx_dir="/opt/microchip/mplabx/v${pkgver}"
@@ -32,7 +32,7 @@ _mplabcomm_dir="/opt/microchip/mplabcomm"
 source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.tar"
         "LICENSE")
 
-md5sums=('83242bc5ca1bb42ed47905599ac9d1e8'
+md5sums=('0be93bc5d7db3fd28c98923fa9b0437c'
          'a34a85b2600a26f1c558bcd14c2444bd')
 
 backup=("etc/mplab_ide.conf")
@@ -69,26 +69,25 @@ EOF
   # Remove uninstaller files
   rm -f "${pkgdir}${_mplabx_dir}"/Uninstall_*
 
-  # Fix ugly fonts
-  sed -i 's/^default_options="/default_options="-J-Dawt.useSystemAAFontSettings=on /' "${pkgdir}${_mplabx_dir}/mplab_ide/etc/mplab_ide.conf"
+  # Fix permissions
+  chmod -R og-w "${pkgdir}"
 
-  # Fix broken udev rules
-  sed -i '/^BUS!="usb"/c \ACTION!="add", SUBSYSTEM!="usb_device", GOTO="jlink_rules_end"\r' "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
+  # Fix ugly fonts
+  sed -i 's/^default_options="/default_options="-J-Dawt.useSystemAAFontSettings=on /' "${pkgdir}${_mplabx_dir}/mplab_platform/etc/mplab_ide.conf"
 
   # Rename udev rules to avoid conflict with jlink-software-and-documentation
   mv "${pkgdir}"/etc/udev/rules.d/{99-jlink,98-jlink-mplabx}.rules
 
   # Patch jdkhome to use system JRE
   local conf
-  for conf in mplab_ipe/mplab_ipe mplab_ipe/ipecmd.sh mplab_ide/etc/mplab_ide.conf; do
-    sed -i '/^jdkhome=/c \jdkhome=/usr/lib/jvm/default-runtime/' "${pkgdir}${_mplabx_dir}/${conf}"
+  for conf in etc/mplab_ide.conf etc/mplab_ipe.conf harness/etc/app.conf mplab_ipe/ipecmd.sh; do
+    sed -i -r '\@^#?jdkhome=@c\jdkhome=/usr/lib/jvm/default-runtime/' "${pkgdir}${_mplabx_dir}/mplab_platform/${conf}"
   done
-  sed -i '/^"$jdkhome"bin\/java/c\ java -jar '${_mplabx_dir}'/mplab_ipe/ipe.jar' "${pkgdir}${_mplabx_dir}/mplab_ipe/mplab_ipe"
 
   # Move config file to /etc (and add a symlink into the old location)
-  mv "${pkgdir}${_mplabx_dir}/mplab_ide/etc/mplab_ide.conf" "${pkgdir}/etc/"
+  mv "${pkgdir}${_mplabx_dir}/mplab_platform/etc/mplab_ide.conf" "${pkgdir}/etc/"
 
-  ln -sf /etc/mplab_ide.conf "${pkgdir}${_mplabx_dir}/mplab_ide/etc/"
+  ln -sf /etc/mplab_ide.conf "${pkgdir}${_mplabx_dir}/mplab_platform/etc/"
 
   # Remove bundled JRE
   rm -rf "${pkgdir}${_mplabx_dir}/sys/java"
@@ -103,10 +102,10 @@ EOF
   _mplabcomm_dstdir="${_mplabcomm_dir}/${_mplabcomm_version}"
 
   # Symlink executables
-  ln -sf "${_mplabx_dir}/mplab_ide/bin/mplab_ide" "${pkgdir}/usr/bin/"
-  ln -sf "${_mplabx_dir}/mplab_ide/bin/mdb.sh" "${pkgdir}/usr/bin/mdb"
-  ln -sf "${_mplabx_dir}/mplab_ide/bin/prjMakefilesGenerator.sh" "${pkgdir}/usr/bin/prjMakefilesGenerator"
-  ln -sf "${_mplabx_dir}/mplab_ipe/mplab_ipe" "${pkgdir}/usr/bin/"
+  ln -sf "${_mplabx_dir}/mplab_platform/bin/mplab_ide" "${pkgdir}/usr/bin/"
+  ln -sf "${_mplabx_dir}/mplab_platform/bin/mdb.sh" "${pkgdir}/usr/bin/mdb"
+  ln -sf "${_mplabx_dir}/mplab_platform/bin/prjMakefilesGenerator.sh" "${pkgdir}/usr/bin/prjMakefilesGenerator"
+  ln -sf "${_mplabx_dir}/mplab_platform/bin/mplab_ipe" "${pkgdir}/usr/bin/"
   ln -sf "${_mplabcomm_dstdir}/lib/mchplinusbdevice" "${pkgdir}/etc/.mplab_ide/"
 
   # Symlink libs from MPLABCOMM
