@@ -4,7 +4,7 @@ _pkgname=pdf-simple-sign
 pkgver=r2.41f8165
 pkgrel=1
 pkgdesc="Simple PDF signer"
-url="https://github.com/pjanouch/pdf-simple-sign"
+url="https://git.janouch.name/p/pdf-simple-sign"
 arch=('i686' 'x86_64')
 license=('BSD')
 options=(zipman)
@@ -12,7 +12,7 @@ conflicts=('pdf-simple-sign')
 provides=('pdf-simple-sign')
 makedepends=('meson' 'git')
 depends=('openssl')
-source=("git+https://github.com/pjanouch/$_pkgname.git")
+source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {

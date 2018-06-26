@@ -4,7 +4,7 @@ pkgbase = pdf-simple-sign-git
 	pkgdesc = Simple PDF signer
 	pkgver = r2.41f8165
 	pkgrel = 1
-	url = https://github.com/pjanouch/pdf-simple-sign
+	url = https://git.janouch.name/p/pdf-simple-sign
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -14,7 +14,7 @@ pkgbase = pdf-simple-sign-git
 	provides = pdf-simple-sign
 	conflicts = pdf-simple-sign
 	options = zipman
-	source = git+https://github.com/pjanouch/pdf-simple-sign.git
+	source = git+https://git.janouch.name/p/pdf-simple-sign.git
 	md5sums = SKIP
 
 pkgname = pdf-simple-sign-git
