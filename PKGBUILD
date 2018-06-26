@@ -13,11 +13,11 @@ pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=18.2.0_devel.103089.ff6db94c18
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
-              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'libclc' 'wayland' 'wayland-protocols')
+              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'libclc' 'wayland' 'wayland-protocols' 'meson')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'libclc' 'wayland' 'lm_sensors')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
