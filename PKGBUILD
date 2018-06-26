@@ -1,16 +1,16 @@
 pkgname=librepo
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Repodata downloading library"
 arch=('i686' 'x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('LGPL2.1')
-depends=('curl' 'expat' 'glib2' 'gpgme')
+depends=('curl' 'glib2' 'gpgme' 'libxml2')
 makedepends=('cmake' 'python')
 checkdepends=('check' 'python-flask' 'python-nose' 'python-pygpgme' 'python-pyxattr')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('01fe130eb421580d62e97e4991e94df7')
+md5sums=('156ae4fce1791b5054f757e3bd5bf6f2')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -30,9 +30,7 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"/build
-	# Unfortunately several tests crash randomly. Some failures seems to be
-	# caused by building in clean chroot with makechrootpkg.
-	#make ARGS="-V" test
+	make ARGS="-V" test
 }
 
 package() {
