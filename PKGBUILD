@@ -9,7 +9,7 @@ url="https://github.com/raspberrypi/firmware"
 license=('custom')
 options=(!strip)
 source=("https://github.com/raspberrypi/firmware/archive/${pkgver}.zip")
-sha1sums=('56f88ee104c8912099250a9d25d0810b69320b94')
+sha1sums=('a21ec4d34ee34025161a99a9b93a9b925f01a9b7')
 
 package() {
   mkdir -p "${pkgdir}/boot"
