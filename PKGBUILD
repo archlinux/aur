@@ -26,14 +26,14 @@ package() {
 	shell=`basename $SHELL`
 	case $shell in
 		zsh)
-			install -Dm644 _rash $pkgdir/usr/share/zsh/site-functions/_rash
+			install -Dm644 target/release/build/rash*/out/_rash $pkgdir/usr/share/zsh/site-functions/_rash
 			;;
 		bash)
-			install -Dm644 rash.bash $pkgdir`pkg-config --variable=completionsdir bash-completion`/rash.bash
+			install -Dm644 target/release/build/rash*/out/rash.bash $pkgdir`pkg-config --variable=completionsdir bash-completion`/rash.bash
 			;;
 		fish)
 			dir=${XDG_CONFIG_HOME:-$HOME/.config}
-			install -Dm644 rash.fish $pkgdir$dir/fish/completions/rash.fish
+			install -Dm644 target/release/build/rash*/out/rash.fish $pkgdir$dir/fish/completions/rash.fish
 			;;
 	esac
 }
