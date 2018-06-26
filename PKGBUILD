@@ -60,7 +60,7 @@ package() {
   done
 
   # Use system-provided dictionaries
-  rm -r "$pkgdir"/opt/$_pkgname/dictionaries
+  #rm -r "$pkgdir"/opt/$_pkgname/dictionaries
   ln -Ts /usr/share/hunspell "$pkgdir"/opt/$_pkgname/dictionaries
   ln -Ts /usr/share/hyphen "$pkgdir"/opt/$_pkgname/hyphenation
 
