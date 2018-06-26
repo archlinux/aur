@@ -1,0 +1,9 @@
+post_install() {
+    cp /etc/lightdm/lightdm.conf /etc/lightdm.conf.save
+    sed -i '/^greeter-session=/c\greeter-session=lightdm-slick-greeter' /etc/lightdm/lightdm.conf
+}
+
+post_remove() {
+    echo ":: Restoring previous lightdm.conf"
+	mv /etc/lightdm/lightdm.conf.save /etc/lightdm/lightdm.conf
+}
