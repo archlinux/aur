@@ -1,0 +1,22 @@
+pkgbase = gnurl-git
+	pkgdesc = gnurl is a fork of curl
+	pkgver = 7.60.0.r1.g5cf58a8cf
+	pkgrel = 1
+	url = https://gnunet.org/gnurl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = gnutls
+	depends = krb5
+	depends = libnghttp2
+	depends = libpsl
+	provides = gnurl
+	conflicts = gnurl
+	options = staticlibs
+	source = git+https://git.taler.net/gnurl.git
+	sha256sums = SKIP
+
+pkgname = gnurl-git
+
