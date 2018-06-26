@@ -1,58 +1,60 @@
-# Maintainer: Zirrald <zirrald at yandex dot ru>
-# Based on opera-ffmpeg-codecs package <Maintainer: BlackIkeEagle>
+# Maintainer: Ivan Burmin <osguot@gmail.com>
+# Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=yandex-browser-ffmpeg-codecs
-pkgver=60.0.3112.90
+pkgver=68.0.3440.15
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for yandex browser"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('glibc')
 makedepends=(
-  'gtk2' 'gtk3' 'libexif' 'libpulse' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
-  'xdg-utils'
+  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
+  'xdg-utils' 'ncurses5-compat-libs'
 )
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r1.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r8.patch'
+  'chromium-FORTIFY_SOURCE-r2.patch'
 )
-sha256sums=('b42f7965764b4528116622a71a60f52becd4186ff8854f3051bf45c6368739e6'
-            'd3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e'
-            'bbb2782f2681a3d4366ab122485497f42b4eef9856ca0dcdfa655efad2886fa5'
-            '06345804c00d9618dad98a2dc04f31ef19912cdf6e9d6e577ef7ffb1fa57003f')
-
+sha512sums=('683b5504dbd432b40ba00e2e29cea1c75cfbfc18bfa1f572ad86925aea9713fd41e494b141a7f3fad01a12ef1e18adc136fb96e155378daa6de1015f3065d2ae'
+            '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
+            '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
   # Use Python 2
-  find . -name '*.py' -exec sed -r 's|/usr/bin/python$|&2|g' -i {} +
-  find . -name '*.py' -exec sed -r 's|/usr/bin/env python$|&2|g' -i {} +
-  # There are still a lot of relative calls which need a workaround
-  [[ -d "$srcdir/python2-path" ]] && rm -rf "$srcdir/python2-path"
-  mkdir "$srcdir/python2-path"
-  ln -s /usr/bin/python2 "$srcdir/python2-path/python"
+  find -name '*.py' | xargs sed -e 's|env python|&2|g' -e 's|bin/python|&2|g' -i
 
-  # chromium 46 gives an error about a missing file
-  # workaround create empty
-  touch chrome/test/data/webui/i18n_process_css_test.html
+  # force some 'older' binaries in the path
+  [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
+  mkdir "$srcdir/path"
+  ln -s /usr/bin/python2 "$srcdir/path/python"
 
   patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
-  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r1.patch"
-  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r8.patch"
+  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r2.patch"
 }
 
 build() {
   cd "$srcdir/chromium-$pkgver"
 
-  export PATH="$srcdir/python2-path:$PATH"
+  python2 tools/clang/scripts/update.py --without-android
 
-  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true use_gconf=false use_gio=false use_gnome_keyring=false use_kerberos=false use_cups=false use_sysroot=false use_gold=false linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false is_clang=false is_component_build=true is_debug=false symbol_level=0"
-  python2 tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "$args"
+  export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$srcdir/path:$PATH"
+  #_clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin/"
+  # Bundled clang not like this.
+  #CXXFLAGS="${CXXFLAGS//-fno-plt/}"
+  #CFLAGS="${CFLAGS//-fno-plt/}"
+
+  #export CC="${_clang_path}clang"
+  #export CXX="${_clang_path}clang++"
+
+  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true use_gnome_keyring=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=true clang_use_chrome_plugins=true is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false use_lld=false use_jumbo_build=false"
+
+  python2 tools/gn/bootstrap/bootstrap.py -v -s
   out/Release/gn gen out/Release -v --args="$args" --script-executable=/usr/bin/python2
 
   ninja -C out/Release -v media/ffmpeg
@@ -61,9 +63,8 @@ build() {
 package() {
   cd "$srcdir/chromium-$pkgver"
 
-  install -Dm 644 out/Release/libffmpeg.so \
+  install -Dm644 out/Release/libffmpeg.so \
     "$pkgdir/opt/yandex/browser-beta/libffmpeg.so"
-
 }
 
 # vim:set ts=2 sw=2 et:
