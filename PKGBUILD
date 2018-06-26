@@ -1,4 +1,4 @@
-# Maintainer: Thomas KÃhnel <kuehnelth@gmail.com>
+# Maintainer: Thomas KÃ¼hnel <kuehnelth@gmail.com>
 # Contributor: Mario Vazquez <mariovazq@gmail.com>
 
 pkgname=tcltls
