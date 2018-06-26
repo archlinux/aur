@@ -4,7 +4,7 @@ _pkgname=sdtui
 pkgver=r100.ee9f055
 pkgrel=1
 pkgdesc="StarDict terminal UI"
-url="https://github.com/pjanouch/sdtui"
+url="https://git.janouch.name/p/sdtui"
 arch=('i686' 'x86_64')
 license=('BSD')
 options=(zipman)
@@ -13,7 +13,7 @@ provides=('sdtui')
 makedepends=('cmake' 'pkg-config' 'git' 'libxslt')
 depends=('zlib' 'glib2' 'ncurses' 'pango')
 optdepends=('gtk3: clipboard watcher')
-source=("git+https://github.com/pjanouch/$_pkgname")
+source=("git+https://git.janouch.name/p/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
