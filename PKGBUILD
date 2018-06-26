@@ -10,8 +10,6 @@ pkgdesc='A collection of Python WSGI modules'
 arch=('any')
 url='https://www.saddi.com/software/flup/'
 license=('MIT')
-conflicts=('python-flup<=1.0.2-3')
-replaces=('python-flup<=1.0.2-3')
 makedepends=('python2-distribute' 'python-distribute')
 source=("https://pypi.python.org/packages/source/f/flup/flup-${pkgver}.tar.gz"
         'LICENSE')
