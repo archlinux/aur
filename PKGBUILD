@@ -17,8 +17,8 @@ pkgbase=mesa-hybris
 _pkgbase=mesa
 pkgname=('mesa-hybris' 'mesa-hybris-libgl' 'mesa-hybris-wayland-egl')
 pkgver=17.0.5
-pkgrel=1
-arch=('i686' 'x86_64' 'armv7h')
+pkgrel=2
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto'
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'wayland' 'elfutils' 'llvm'
              'libomxil-bellagio' 'clang')
