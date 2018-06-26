@@ -2,15 +2,14 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 ########[ OPTIONS ]########################################
+#
 # Uncomment if you do not want to build all language translations
 #export LG2=en
-
-# Download sources from within i2p
-#_i2p_fetch=1
+#
 ###########################################################
 
 pkgname=i2p
-pkgver=0.9.34
+pkgver=0.9.35
 pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
@@ -30,14 +29,7 @@ _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
-[[ $_i2p_fetch ]] && {
-    export http_proxy=127.0.0.1:4444
-    source=("http://echelon.i2p/${pkgver}/i2psource_${pkgver}.tar.bz2"{,.sig}
-            #"http://whnxvjwjhzsske5yevyokhskllvtisv5ueokw6yvh6t7zqrpra2q.b32.i2p/releases/${pkgver}/i2psource_${pkgver}.tar.bz2"{,.sig}
-            'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
-}
-
-sha256sums=('30a2cd843e379c2e0d1b3f917ef4e98ea967f3759b81fcb7e0fe47f509aed813'
+sha256sums=('8bb88d3db355ebfa5be65d48089db60919875ac298b7217b7f8150048ea5079e'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
