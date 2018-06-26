@@ -1,8 +1,9 @@
-# Maintainer: longifn <longfinfunnel@gmail.com>
+# Maintainer: JunYoung Gwak <i@jgwak.com>
+# Contributor: longifn <longfinfunnel@gmail.com>
 
 pkgname=spoqa-han-sans
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='TTF font for korean, english and japanese'
 arch=('any')
 url="http://www.spoqa-han-sans.com/"
