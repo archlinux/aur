@@ -2,7 +2,7 @@ pkgbase = ponymap-git
 	pkgdesc = Experimental network scanner
 	pkgver = r87.9c16e19
 	pkgrel = 1
-	url = https://github.com/pjanouch/ponymap
+	url = https://git.janouch.name/p/ponymap
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -17,7 +17,7 @@ pkgbase = ponymap-git
 	provides = ponymap
 	conflicts = ponymap
 	options = zipman
-	source = git+https://github.com/pjanouch/ponymap.git
+	source = git+https://git.janouch.name/p/ponymap.git
 	md5sums = SKIP
 
 pkgname = ponymap-git

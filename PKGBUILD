@@ -4,7 +4,7 @@ _pkgname=ponymap
 pkgver=r87.9c16e19
 pkgrel=1
 pkgdesc="Experimental network scanner"
-url="https://github.com/pjanouch/ponymap"
+url="https://git.janouch.name/p/ponymap"
 arch=('i686' 'x86_64')
 license=('BSD')
 options=(zipman)
@@ -13,7 +13,7 @@ provides=('ponymap')
 makedepends=('cmake' 'pkg-config' 'git' 'help2man')
 depends=('ncurses' 'jansson' 'openssl')
 optdepends=('lua>=5.3: support for Lua plugins')
-source=("git+https://github.com/pjanouch/$_pkgname.git")
+source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
