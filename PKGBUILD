@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=zoom
-pkgver=2.1.103753.0521
+pkgver=2.2.128000.0623
 pkgrel=1
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('fontconfig' 'glib2' 'libpulse' 'libsm' 'libx11' 'libxcb' 'libxcomposit
 	'qt5-svg' 'qt5-webengine' 'qt5-quickcontrols2')
 options=(!strip)
 source=("${pkgname}-${pkgver}_orig_x86_64.pkg.tar.xz"::"https://zoom.us/client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-sha512sums=('1b6b0d1f38c5cf51de534e7ea5a5d8309934652f5adad824baee951c5bfa14553bffaf805f36077796c9462d77c985754227afd56cfec800e3866dec0ed4d614')
+sha512sums=('15fe460856e33a2e49baddef5c9dbf8c95c75bd3f01147be434d03dead909249bc0287ae58c43cedabf3199bd99d1a4bf12eebe7bf8ee4fa23ee72b2e6c2b3e5')
 
 package() {
 	cp -dpr --no-preserve=ownership opt usr "${pkgdir}"
