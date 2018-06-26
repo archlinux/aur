@@ -1,0 +1,24 @@
+pkgbase = libaom
+	pkgdesc = AV1 video codec from Alliance for Open Media
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aomedia.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = perl
+	makedepends = yasm
+	makedepends = doxygen
+	depends = gcc-libs
+	provides = aom
+	provides = libaom.so
+	conflicts = libaom-git
+	conflicts = aom
+	conflicts = aom-git
+	source = libaom-git::git+https://aomedia.googlesource.com/aom#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = libaom
+
