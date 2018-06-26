@@ -1,0 +1,17 @@
+pkgbase = arxfatalis-data-steam
+	pkgdesc = Arx Fatalis game data from Steam. Multilingual.
+	pkgver = 1.21
+	pkgrel = 1
+	url = https://store.steampowered.com/app/1700/Arx_Fatalis/
+	arch = any
+	license = custom:commercial
+	optdepends = arxlibertatis-bin: native Linux game executable (only binaries)
+	optdepends = arxlibertatis-git: native Linux game executable (git version)
+	optdepends = arxlibertatis: native Linux game executable (from source)
+	source = https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+	source = arx-downloader
+	md5sums = 70a38a1c8688d170c48b7f4990782c7a
+	md5sums = c9e1fcdbde783842b62d9c4593fda639
+
+pkgname = arxfatalis-data-steam
+

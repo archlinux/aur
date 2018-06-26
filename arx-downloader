@@ -1,0 +1,85 @@
+#!/bin/bash
+
+## Update SteamCMD
+echo ""
+echo "#################"
+echo "Updating SteamCMD"
+echo "#################"
+echo ""
+./steamcmd.sh +login anonymous +quit
+
+## Set Steam login and password
+echo ""
+echo "######################################"
+echo "Enter your Steam Username and Password"
+echo "######################################"
+echo ""
+echo "Login:"
+read login
+echo ""
+echo "Password:"
+read -s password
+loginpass="$login $password"
+
+## Game language selection
+echo ""
+echo "#############################"
+echo "Choose prefered game language"
+echo "#############################"
+echo ""
+echo "1 - English | 2 - Russian | 3 - French | 4 - Italian | 5 - German | 6 - Spanish"
+read lang
+case $lang in
+    1)
+        language="english";;
+    2)
+        language="russian";;
+    3)
+        language="french";;
+    4)
+        language="italian";;
+    5)
+        language="german";;
+    6)
+        language="spanish";;
+    *)
+        echo "Oook. English.."
+        language="english"
+esac
+
+echo ""
+echo ""
+echo "Satrting download $language version"
+echo ""
+echo ""
+
+## Download Arx Fatalis
+./steamcmd.sh +@sSteamCmdForcePlatformType windows +login $loginpass +force_install_dir ./arx +app_update 1700 validate -language $language +quit
+
+## Check and Clean up
+if [ -e ./arx/arx.exe ]
+then
+    #echo "Success"
+    cd ./arx
+    ## Remove unnesessary files
+    rm -rf steamapps arx.exe 'ARX FAQ.txt' ARX_SCRIPT_DEBUGGER.dll Athena.dll cfg_default.ini cfg.ini MD5_MIT_license.txt readme_r1.21.txt readme.txt unicows.dll
+    ## Rename all files to lowercase
+    for i in *; do mv $i `echo $i | tr [:upper:] [:lower:]`; done
+    if [ $? -eq "0" ]
+    then
+        echo ""
+        echo "####################################"
+        echo "Arx Fatalis successfully downloaded."
+        echo "####################################"
+        echo ""
+    fi
+else
+    echo ""
+    echo "####################################"
+    echo "An error occurred. Please try again."
+    echo "####################################"
+    echo ""
+    
+    ## Exit with code 1 if error
+    exit 1
+fi
