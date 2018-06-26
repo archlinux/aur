@@ -1,20 +1,20 @@
 pkgname=libdnf
-pkgver=0.11.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Library providing simplified C and Python API to libsolv"
 arch=('i686' 'x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('LGPL2.1')
-depends=('glib2' 'librepo' 'libsolv' 'rpm-org' 'zlib')
-makedepends=('cmake' 'gobject-introspection' 'gtk-doc' 'python'
-             'python-sphinx')
-checkdepends=('check' 'python-nose')
+depends=('glib2' 'json-c' 'libmodulemd' 'librepo' 'libsolv'
+         'rpm-org' 'sqlite' 'zlib')
+makedepends=('cmake' 'gtk-doc' 'python' 'python-sphinx' 'swig')
+checkdepends=('check' 'cppunit' 'python-nose')
 optdepends=('python: for python bindings')
 provides=( 'hawkey')
 conflicts=('hawkey')
 replaces=( 'hawkey')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('d62c97d5534394c365fe77978ce9cdd5')
+md5sums=('88d78e5364b611ee38c2072f13a5ecde')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -32,9 +32,11 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"/build
 
-	cmake -DCMAKE_BUILD_TYPE=Release  \
+	cmake -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_C_FLAGS="$CFLAGS $CPPFLAGS" \
+	      -DCMAKE_CXX_FLAGS="$CXXFLAGS $CPPFLAGS" \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
-	      -DPYTHON_DESIRED=3          \
+	      -DPYTHON_DESIRED=3 \
 	      ..
 
 	make
