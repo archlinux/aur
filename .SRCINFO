@@ -1,0 +1,16 @@
+pkgbase = beesat-sdr-git
+	pkgdesc = GnuRadio lib to decode BEESAT
+	pkgver = r14.1f689f7
+	pkgrel = 1
+	url = https://github.com/kappiman/beesat-sdr
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cmake
+	depends = gnuradio
+	source = beesat-sdr-git::git+https://github.com/kappiman/beesat-sdr.git
+	source = beesat_boost.patch
+	sha256sums = SKIP
+	sha256sums = baad5f77155b863a93e366ddf45686f4e2adb7e5a877324b6ffc5d915d46e1ad
+
+pkgname = beesat-sdr-git
+

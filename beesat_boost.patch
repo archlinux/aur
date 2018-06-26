@@ -1,0 +1,26 @@
+diff --git a/gr-tnc_nx/lib/tnc_b1_impl.cc b/gr-tnc_nx/lib/tnc_b1_impl.cc
+index fee1619..52a5c6b 100644
+--- a/gr-tnc_nx/lib/tnc_b1_impl.cc
++++ b/gr-tnc_nx/lib/tnc_b1_impl.cc
+@@ -85,7 +85,7 @@ namespace gr {
+      * TIMER HANDLER *
+      *****************/
+     void tnc_b1_impl::handle_timeout(const boost::system::error_code& ec) {
+-      if (ec == 0) {
++      if (ec.value() == 0) {
+         std::cout << "TM Timeout" << std::endl;
+         message_port_pub(pmt::mp("Output"), g.out_ack(SAT_NOK));
+         set_idle();
+diff --git a/gr-tnc_nx/lib/tnc_impl.cc b/gr-tnc_nx/lib/tnc_impl.cc
+index a722006..ad073bd 100644
+--- a/gr-tnc_nx/lib/tnc_impl.cc
++++ b/gr-tnc_nx/lib/tnc_impl.cc
+@@ -91,7 +91,7 @@ tnc_impl::~tnc_impl() {
+  * TIMEOUT HANDLER *
+  *******************/
+ void tnc_impl::handle_timeout(const boost::system::error_code& ec) {
+-  if (ec == 0) {
++  if (ec.value() == 0) {
+     switch (p_state) {
+ 
+       case wait_msg:
