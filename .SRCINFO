@@ -7,6 +7,7 @@ pkgbase = epm-git
 	arch = x86_64
 	license = GPL2
 	depends = glibc
+	replaces = epm
 	source = epm::git+https://github.com/michaelrsweet/epm.git
 	md5sums = SKIP
 

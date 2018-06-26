@@ -10,6 +10,7 @@ url="https://github.com/michaelrsweet/epm"
 source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
 depends=('glibc')
+replaces=('epm')
 
 pkgver() {
   git -C "${_pkgname}" describe --long --tags | sed "s/-/.r/;s/-/./g"
