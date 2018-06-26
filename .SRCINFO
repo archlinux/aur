@@ -1,6 +1,6 @@
 pkgbase = snail
 	pkgdesc = Parasitic network manager
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/kpcyrd/snail
 	arch = i686
@@ -11,11 +11,11 @@ pkgbase = snail
 	makedepends = cargo
 	depends = zeromq
 	depends = libseccomp
-	backup = etc/snail.conf
-	source = https://github.com/kpcyrd/snail/archive/v0.1.0/snail-0.1.0.tar.gz
-	source = snail.conf
-	sha512sums = e3cb2c3efc448bd2e4a3f83f76923bc7d09ace6de28c97b0408ca17e72c423be4928594a73bf76e139a6d19b0a4b89db059d600a8e768957ccb1a669686d7db4
-	sha512sums = cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+	depends = dbus
+	depends = dhcpcd
+	backup = etc/snail/snail.conf
+	source = https://github.com/kpcyrd/snail/archive/v0.2.0/snail-0.2.0.tar.gz
+	sha512sums = fec3f804ebd09903d5469eacc5c8b4b8b0c395b615b812d0bddc5011e5a291dc1d24ca43cfa18afee52ce49253a43414a349997d7dc5efeb4b32cf95976ce8e6
 
 pkgname = snail
 
