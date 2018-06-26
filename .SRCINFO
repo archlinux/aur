@@ -1,16 +1,13 @@
 pkgbase = cinnamon-remove-application
 	pkgdesc = Arch linux version of cinnamon-remove-application (enables the uninstall option in the right click Cinnamon application menu)
-	pkgver = 0.0.2
-	pkgrel = 2
+	pkgver = 0.0.3
+	pkgrel = 1
 	url = https://github.com/rapgenic/cinnamon-remove-application
 	arch = any
 	license = GPL2
-	depends = gtk3
-	depends = pacman
 	depends = cinnamon
-	depends = gksu
-	source = https://github.com/rapgenic/cinnamon-remove-application/archive/0.0.2.zip
-	md5sums = f47abdd41600302f784d72edf5b6b70e
+	source = https://github.com/rapgenic/cinnamon-remove-application/archive/0.0.3.zip
+	md5sums = 9cffd6cb171dbb3cfcc1c4f01bfd3d78
 
 pkgname = cinnamon-remove-application
 
