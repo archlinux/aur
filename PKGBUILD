@@ -40,6 +40,9 @@ build()
 {
     cd "$srcdir/${pkgname%-git}"
 
+    # Make the Langkit Python package tree available for import
+    export PYTHONPATH="$srcdir/${pkgname%-git}"
+
     # Build the Langkit_Support library, used by all Langkit-generated
     # libraries.
     python2 scripts/build-langkit_support.py generate
