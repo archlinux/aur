@@ -3,7 +3,7 @@
 # Derived from official Chromium and Inox PKGBUILDS and ungoogled-chromium buildkit
 
 pkgname=ungoogled-chromium
-pkgver=66.0.3359.181
+pkgver=67.0.3396.87
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
@@ -27,11 +27,11 @@ conflicts=('chromium')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src/+/$pkgver?format=TEXT
-        'https://github.com/Eloston/ungoogled-chromium/archive/66.0.3359.181-1.tar.gz')
-sha256sums=('37e6673741b365a25a837217b08f77b24b4f5fc4ad88c8581be6a5dae9a9e919'
+        'https://github.com/Eloston/ungoogled-chromium/archive/67.0.3396.87-1.tar.gz')
+sha256sums=('5d27a72f0cb8247343034f63fdd9747ff388c05b9fceb541668dd04fb372db1d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '221d0f17951e88d4d315f3160919380237b88587c4b295d619229a05b79927f1'
-            'fb928bdaa60521d34ad7f33b92d2bfe5a18103048efe6b886a17144f9cd8074a')
+            'f8aafb24bc8ef679e16ad4ad0ff4022e4fceb102d38788953ab95f7a3858febb'
+            '3c589087e163aa67a899b7f21b9a658ffed5e5944127b97028f183d677a81233')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -77,15 +77,6 @@ prepare() {
   cd "$srcdir/chromium-$pkgver"
 
   msg2 'Applying build patches'
-  # https://crbug.com/710701
-  local _chrome_build_hash=$(base64 -d ../chromium-$pkgver.txt |
-    grep -Po '^parent \K[0-9a-f]{40}$')
-  if [[ -z $_chrome_build_hash ]]; then
-    error "Unable to find Chrome build hash."
-    return 1
-  fi
-  echo "LASTCHANGE=$_chrome_build_hash-" >build/util/LASTCHANGE
-
   # Apply patches
   env QUILT_PATCHES="$_user_bundle/patches" quilt push -a
 
@@ -101,6 +92,7 @@ prepare() {
       \! -path "*third_party/$_lib/chromium/*" \
       \! -path "*third_party/$_lib/google/*" \
       \! -path './base/third_party/icu/*' \
+      \! -path './third_party/crashpad/crashpad/third_party/zlib/zlib_crashpad.h' \
       \! -path './third_party/pdfium/third_party/freetype/include/pstables.h' \
       \! -path './third_party/yasm/run_yasm.py' \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
@@ -172,6 +164,7 @@ build() {
     'use_allocator="none"'
     'use_cups=true'
     'use_custom_libcxx=false'
+    'use_gio=true'
     'use_gnome_keyring=false'
     'use_gold=true'
     'use_gtk3=true'
@@ -204,7 +197,7 @@ build() {
     --script-executable=/usr/bin/python2 --fail-on-unused-args
 
   msg2 'Building Chromium'
-  ninja -C out/Default chrome chrome_sandbox chromedriver widevinecdmadapter
+  ninja -C out/Default chrome chrome_sandbox chromedriver
 }
 
 package() {
@@ -232,7 +225,7 @@ package() {
 
   cp \
     out/Default/{chrome_{100,200}_percent,resources}.pak \
-    out/Default/{*.bin,chromedriver,libwidevinecdmadapter.so} \
+    out/Default/{*.bin,chromedriver} \
     "$pkgdir/usr/lib/chromium/"
   install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Default/locales/*.pak
 
