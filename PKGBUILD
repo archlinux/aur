@@ -1,5 +1,4 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s@gmail.com>
+# Maintainer: Thomas KÃhnel <kuehnelth@gmail.com>
 # Contributor: Mario Vazquez <mariovazq@gmail.com>
 
 pkgname=tcltls
