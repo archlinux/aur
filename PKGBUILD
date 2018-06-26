@@ -4,9 +4,9 @@
 pkgname=dfhack-twbt-bin
 _pkgname=dfhack
 pkgver=0.44.10
-_pkgver=$pkgver-r1
-_twbtver=6.46
-pkgrel=2
+_pkgver=$pkgver-r2
+_twbtver=6.49
+pkgrel=3
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it including Text Will Be Text plugin"
 arch=('x86_64')
 url="https://dfhack.readthedocs.org/"
@@ -29,8 +29,8 @@ md5sums=('e630ae2fc93c6c7b55552336da2b6c07'
          '3853c6f890d3541f710f2c4833a9e696'
          '6730da5fec400ece9102552e77996fcb'
          '052a58e7f5f1af8be3ddefe9677b8fc6'
-         '951d503403de57714bce02b4f96a2569'
-         'a237c649839540d52d35b6cc6917a447')
+         '781ffa95171b80f2a50d9f18615b6c62'
+         '60f7d66d569e39cd3c2fc95f10ed268c')
 
 prepare() {
     sed -e 's|setarch i386 -R ||' \
@@ -46,7 +46,6 @@ package() {
     install -Dm755 $srcdir/dfhack.sh     $pkgdir/usr/bin/dfhack
     install -Dm755 $srcdir/dfhack-run.sh $pkgdir/usr/bin/dfhack-run
     
-    install -Dm755 $srcdir/$_pkgver/mousequery.plug.so $pkgdir/opt/dwarffortress/hack/plugins
     install -Dm755 $srcdir/$_pkgver/twbt.plug.so $pkgdir/opt/dwarffortress/hack/plugins
     
     install -Dm755 $srcdir/shadows.png $pkgdir/opt/dwarffortress/data/art/shadows.png
