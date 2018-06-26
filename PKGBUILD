@@ -1,7 +1,10 @@
 # Maintainer: JP-Ellis <josh@jpellis.me>
 
 pkgname=madgraph
-pkgver=2.6.2
+pkgver=2.6.3.2
+_major=${pkgver%%.*}
+_minor=${pkgver#2.}
+_minor=${_minor%%.*}
 _dirname="MG5_aMC_v${pkgver//./_}"
 pkgrel=1
 pkgdesc="MadGraph5_aMC@NLO is a framework that aims at providing all the elements necessary for SM and BSM phenomenology"
@@ -25,17 +28,22 @@ optdepends=(
     'madgraph-pythia-pgs'
     'madgraph-pythia8-interface'
 )
-source=("https://launchpad.net/mg5amcnlo/${pkgver%%.*}.0/${pkgver%.*}.x/+download/MG5_aMC_v${pkgver}.tar.gz"
+source=("https://launchpad.net/mg5amcnlo/${_major}.0/${_major}.${_minor}.x/+download/MG5_aMC_v${pkgver}.tar.gz"
         "python2.patch"
+        "gcc8.patch"
         "mg5_configuration.patch")
-sha256sums=('fab5a4d55aac407492ec2a3a70bdadeaea71a43d7bfecbd47ae1317d7abebb20'
-            'fd8c41acaf6406e9ad009d0bbb8b79c5e25464971cfe6ebccc143f3d9f8aaec5'
-            'd23918cb78db3105cb616e585f52de28105acea5a2ad0af44fae7a31554ee46f')
+sha256sums=('834c9bcb98e21c214d5287f0dab65a982914a5c388173bcedd32d0d25c739f50'
+            'f1f90b0b470b2ea97e4c9ad2f9c15085d4ef6479c1a94ceb71a8078ec79ff1b8'
+            '3031fff92bcb616e2d53ef206341355e63130ccc9e23f77ce8d1baf98fdb90db'
+            'a251d1bc6be29032c051cde8b0d050330b4777ff94fea6df5a495a9506c4eadc')
 options=("!strip")
 
 prepare() {
     msg2 "Fixing python references for python2"
-    patch -p 1 < python2.patch
+    patch -p 1 -d $_dirname < python2.patch
+
+    msg2 "Patching for GCC 8"
+    patch -p 1 -d $_dirname < gcc8.patch
 
     msg2 "Extracting documentation"
     cd "${srcdir}/${_dirname}"
@@ -64,7 +72,7 @@ build() {
     rm $tmpfile
 
     msg2 "Updating configuration file"
-    patch -p 1 < mg5_configuration.patch
+    patch -p 1 -d $_dirname < mg5_configuration.patch
 }
 
 package() {
