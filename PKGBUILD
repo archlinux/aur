@@ -27,11 +27,20 @@ prepare() {
   done
 }
 
+
+build() {
+  cd "${srcdir}/flup-${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}/flup-${pkgver}-py2"
+  python2 setup.py build
+}
+
 package_python-flup() {
   depends=('python')
   cd "$srcdir/flup-$pkgver"
 
-  python setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
@@ -40,7 +49,7 @@ package_python2-flup() {
   depends=('python2')
   cd "$srcdir/flup-$pkgver-py2"
 
-  python2 setup.py install --root="$pkgdir"
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
