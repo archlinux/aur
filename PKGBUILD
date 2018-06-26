@@ -2,11 +2,11 @@
 
 _gitname=snail
 pkgname=snail-git
-pkgver=0.1.0.r11.g78491b4
+pkgver=0.2.0.r0.g6c3bfb4
 pkgrel=1
 pkgdesc="Parasitic network manager"
 url="https://github.com/kpcyrd/snail"
-depends=('zeromq' 'libseccomp' 'dbus')
+depends=('zeromq' 'libseccomp' 'dbus' 'dhcpcd')
 makedepends=('cargo' 'git')
 provides=('snail')
 conflicts=('snail')
