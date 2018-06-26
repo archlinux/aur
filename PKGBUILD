@@ -3,7 +3,7 @@
 pkgname=polo-donation-plugins
 _channel=beta.10
 pkgver=18.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Complimentary package for users who have donated to Polo or contributed in other ways such as translations, code changes, etc."
 arch=('i686' 'x86_64')
 url="https://github.com/teejee2008/polo/wiki/Donation-Features"
@@ -25,14 +25,14 @@ md5sums_i686=('648e3e55a3c8fc5f02559814683ce461')
 md5sums_x86_64=('f471ffeace0aa90368e68f8fbdcb9684')
 
 package() {
+
+  bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
+  install -d "${pkgdir}/usr/bin"
+
 if [[ "${CARCH}" = 'i686' ]]; then
-        bsdtar xf "${pkgname}-v${pkgver}-i386.deb"
+      ln -s /usr/bin/qemu-system-i686 ${pkgdir}/usr/bin/kvm
     fi
 if [[ "${CARCH}" = 'x86_64' ]]; then
-        bsdtar xf "${pkgname}-v${pkgver}-amd64.deb"
+      ln -s /usr/bin/qemu-system-x86_64 ${pkgdir}/usr/bin/kvm
     fi
-  bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
-
-  install -d "${pkgdir}/usr/bin"
-  ln -s /usr/bin/qemu-system-x86_64 ${pkgdir}/usr/bin/kvm
 }
