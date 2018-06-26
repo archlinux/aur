@@ -1,6 +1,6 @@
 pkgbase = dnf
 	pkgdesc = Package manager forked from Yum, using libsolv as a dependency resolver
-	pkgver = 2.7.5
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf
 	arch = any
@@ -10,17 +10,22 @@ pkgbase = dnf
 	makedepends = bash-completion
 	makedepends = cmake
 	makedepends = python-sphinx
-	depends = libdnf>=0.10.1
-	depends = libcomps
-	depends = librepo
-	depends = rpm-org
+	depends = libdnf>=0.14.0
+	depends = libcomps>=0.1.8
+	depends = libmodulemd>=1.4.0
+	depends = librepo>=1.9.0
 	depends = python
-	depends = python-iniparse
+	depends = python-gobject
 	depends = python-gpgme
+	depends = python-iniparse
+	depends = python-smartcols
+	depends = rpm-org
 	backup = etc/dnf/automatic.conf
 	backup = etc/dnf/dnf.conf
-	source = https://github.com/rpm-software-management/dnf/archive/2.7.5/dnf-2.7.5.tar.gz
-	md5sums = a57be9b448b4093c0943170c4a021155
+	source = https://github.com/rpm-software-management/dnf/archive/3.0.1/dnf-3.0.1.tar.gz
+	source = dnf-3.0.1-fallback-to-getuid-if-audit-is-disabled.patch
+	md5sums = f48fa08bfe26cf34ba0561f623fdee1c
+	md5sums = 51bbd2fd1ab2c11057c833adecb8b5fa
 
 pkgname = dnf
 
