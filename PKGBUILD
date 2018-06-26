@@ -3,7 +3,7 @@
 _pkgname=jdk
 pkgname=jdk-devel
 _major=11
-_build=18
+_build=19 
 _jname=${_pkgname}${_major}
 pkgver=${_major}b${_build}
 pkgrel=1
@@ -35,7 +35,7 @@ source=("https://download.java.net/java/early_access/jdk${_major}/${_build}/BCL/
         'java_16.png'
         'java_48.png'
         'LICENSE-Early-Adopter-Development-Agreement.txt')
-sha256sums=('4f839beed24bc1d34a2e7b43442e5d748d9d6bb79fd0f95bf7e3fa67ee4a5e05'
+sha256sums=('01614a272a64565fa8746f191ad9b74f14294778ef06ff902e4d986c4740a967'
             'ed7392cbad258da943d39e9a5fab1ee6ab6a287ac0c20172805d5dbfc5accedb'
             'e8544f5384d541c16973543ace0f812e2dea657eed551a70baebb1a0cd9f3771'
             'd27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed'
