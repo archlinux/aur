@@ -1,13 +1,8 @@
 # Maintainer: skydrome <skydrome@i2pmail.org>
 # Contributor: skydrome <skydrome@i2pmail.org>
 
-########[ OPTIONS ]########################################
-# Download sources from within i2p
-#_i2p_fetch=1
-###########################################################
-
 pkgname=i2p-bin
-pkgver=0.9.34
+pkgver=0.9.35
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="http://www.i2p2.de"
@@ -27,14 +22,7 @@ _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
-[[ $_i2p_fetch ]] && {
-    export http_proxy=127.0.0.1:4444
-    source=("http://echelon.i2p/${pkgver}/i2pinstall_${pkgver}.jar"{,.sig}
-            #"http://whnxvjwjhzsske5yevyokhskllvtisv5ueokw6yvh6t7zqrpra2q.b32.i2p/releases/${pkgver}/i2pinstall_${pkgver}.jar"{,.sig}
-            'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
-}
-
-sha256sums=('61a255911dbe6a3196ddae9c445ffa543c321320f98f48dc880d6f0e0cc0a259'
+sha256sums=('a256e9d36a52c314b9e8d0e659d4d1b982cc9d9af8459231eda5842e4116d298'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
