@@ -4,7 +4,7 @@ _pkgname=autistdraw
 pkgver=r43.e2bc6b0
 pkgrel=1
 pkgdesc="Terminal drawing application"
-url="https://github.com/pjanouch/autistdraw"
+url="https://git.janouch.name/p/autistdraw"
 arch=('i686' 'x86_64')
 license=('BSD')
 options=(zipman)
@@ -12,7 +12,7 @@ conflicts=('autistdraw')
 provides=('autistdraw')
 makedepends=('cmake' 'pkg-config' 'git')
 depends=('libev' 'ncurses')
-source=("git+https://github.com/pjanouch/$_pkgname")
+source=("git+https://git.janouch.name/p/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
