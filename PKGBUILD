@@ -4,7 +4,7 @@ _pkgname=nncmpp
 pkgver=r61.0999159
 pkgrel=1
 pkgdesc="MPD client"
-url="https://github.com/pjanouch/nncmpp"
+url="https://git.janouch.name/p/nncmpp"
 arch=('i686' 'x86_64')
 license=('BSD')
 options=(zipman)
@@ -12,7 +12,7 @@ conflicts=('nncmpp')
 provides=('nncmpp')
 makedepends=('cmake' 'pkg-config' 'git' 'help2man')
 depends=('readline' 'ncurses' 'libunistring' 'curl')
-source=("git+https://github.com/pjanouch/$_pkgname.git")
+source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
