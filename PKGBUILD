@@ -1,4 +1,6 @@
 # $Id$
+# Patched for rnnoise by: main()
+
 # Maintainer: Radioactiveman <thomas-lange2@gmx.de>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Lauri Niskanen <ape@ape3000.com>
@@ -8,10 +10,10 @@
 # If you want support for your G15 Keyboard, please add 'g15daemon'
 # to the depends and delete "no-g15" in the configure line below
 
-pkgname=mumble-git
-pkgver=2018.02.13
+pkgname=mumble-rnnoise
+pkgver=2018.06.27
 _pkgver=1.3.0
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A voice chat application similar to TeamSpeak'
 url='https://www.mumble.info/'
@@ -22,7 +24,7 @@ depends=('qt5-base' 'qt5-svg' 'speex' 'lsb-release' 'avahi' 'protobuf'
 makedepends=('boost' 'mesa' 'qt5-tools' 'git')
 conflicts=('mumble')
 provides=('mumble')
-source=('git://github.com/mumble-voip/mumble.git' 'https://git.xiph.org/celt.git'
+source=('git://github.com/main--/mumble.git#branch=rnnoise' 'https://git.xiph.org/celt.git'
         'git://github.com/mumble-voip/fx11.git' 'git://github.com/mumble-voip/opus.git'
         'git://github.com/mumble-voip/sbcelt.git' 'https://git.xiph.org/speex.git')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
@@ -38,7 +40,6 @@ prepare() {
   git submodule init
   git config submodule.3rdparty/fx11-src.url "$srcdir/fx11"
   git config submodule.3rdparty/celt-0.11.0-src.url "$srcdir/celt"
-  git config submodule.3rdparty/celt-0.7.0-src.url "$srcdir/celt"
   git config submodule.3rdparty/opus-src.url "$srcdir/opus"
   git config submodule.3rdparty/sbcelt-src.url "$srcdir/sbcelt"
   git config submodule.3rdparty/speex-src.url "$srcdir/speex"
