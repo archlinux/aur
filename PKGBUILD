@@ -4,7 +4,7 @@ _pkgname=sensei-raw-ctl
 pkgver=r25.2f70930
 pkgrel=1
 pkgdesc="SteelSeries Sensei Raw configuration tool"
-url="https://github.com/pjanouch/sensei-raw-ctl"
+url="https://git.janouch.name/p/sensei-raw-ctl"
 arch=('i686' 'x86_64')
 license=('BSD')
 options=(zipman)
@@ -15,7 +15,7 @@ depends=('libusb')
 optdepends=('gtk3: the GUI frontend'
             'polkit: the GUI frontend')
 install=sensei-raw-ctl.install
-source=("git+https://github.com/pjanouch/$_pkgname")
+source=("git+https://git.janouch.name/p/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
