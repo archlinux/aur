@@ -25,6 +25,7 @@ package() {
     # Install main application
     install -d -m755 "$pkgdir/usr/share/archiso/configs/offline_releng"
 
-    install -m755 build.sh            "$pkgdir/usr/share/archiso/configs/offline_releng/"
+    patch $pkgdir/usr/share/archiso/configs/offline_releng/build.sh < offline.patch
+    #install -m755 build.sh            "$pkgdir/usr/share/archiso/configs/offline_releng/"
 }
 
