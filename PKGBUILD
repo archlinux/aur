@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-es-es
-pkgver=2.49.2
+pkgver=2.49.3
 pkgrel=1
 _lang=es-ES
 pkgdesc="Spanish (Spain) language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha256sums=('82e76f9e97ee7685edc45f7425723280555591da02df207f572e57876588ece3')
+sha256sums=('699b6b554731163df8056733be743acf745609befb8a713b059ed9b4c346e891')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
