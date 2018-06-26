@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-lt
 	pkgdesc = Lithuanian language pack for SeaMonkey
-	pkgver = 2.49.2
+	pkgver = 2.49.3
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.49.2
-	noextract = seamonkey-2.49.2.lt.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.49.2/langpack/seamonkey-2.49.2.lt.langpack.xpi
-	sha256sums = 8443d56226e2c8483c57acb890c337acd7afcbd1fbce87c441a690dd4ec5c940
+	depends = seamonkey>=2.49.3
+	noextract = seamonkey-2.49.3.lt.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.49.3/langpack/seamonkey-2.49.3.lt.langpack.xpi
+	sha256sums = eaa111e36cf541f60cc88f29728cfd142fbe21fdb908742ab5292827b9e0c1e4
 
 pkgname = seamonkey-i18n-lt
 
