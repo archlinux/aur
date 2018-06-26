@@ -22,7 +22,7 @@ depends=(dbus-glib libmm-glib libndp libnewt libnl libsoup libteam libutil-linux
 checkdepends=(libx11 python-dbus)
 _pppver=2.4.7
 makedepends=(dnsmasq intltool dhclient openresolv iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
-             dbus-glib iproute2 nss polkit wpa_supplicant iwd libsoup systemd libgudev libmm-glib
+             dbus-glib iproute2 nss polkit wpa_supplicant libsoup systemd libgudev libmm-glib
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
              glib2-docs)
 optdepends=( 'iwd: alternative way to connect to wifi'
@@ -38,10 +38,10 @@ source=($pkgname::git://github.com/$_gitname/$_gitname
     NetworkManager.conf
     20-connectivity.conf)
 sha256sums=('SKIP'
-            '759db295ddae7a6dc6b29211fc0ec08695f875584d456dd146d3679e2c33e2e3'
+            '794915f947bb2eeb46301acff82a350aa691c187d4c43f07a13d971298b64928'
             '477d609aefd991c48aca93dc7ea5a77ebebf46e0481184530cceda4c0d8d72c6')
 sha512sums=('SKIP'
-            'e7bb02132503f8c5d021ac0354f156c7775c35ea6590eb48143e7ff61b1b0b6507c3d9679c69d2315eb0e15c8805d41c2f6cbef2370058b34fc8eefc0f471bc3'
+            '60f3cd070ec52c8937ee2701a8397766da0a9318d98d89c2a287e6f50ca3a3c7ea07a7debe26f5ad637bb4f24391d4107669d7581d934cbc3e4a09d7d775d4af'
             'da52ba9603c279c1c865cc3bf63606e1daeeb2a22c68e4b0077e15c312e251b494c4f0c94bcb27c9f6923f8b69cd7ab9062d9b7ce499222d3d2240864ed9345f')
 
 pkgver() {
@@ -69,7 +69,6 @@ build() {
         --localstatedir=/var \
         runstatedir=/run \
         --sbindir=/usr/bin \
-        --with-iwd=true \
         --libexecdir=/usr/lib \
         --disable-ifcfg-rh \
         --disable-ifupdown \
@@ -150,20 +149,11 @@ package_networkmanager-git() {
     cd $pkgname
     make DESTDIR="$pkgdir" install
 
-    # packaged configuration
-      install -Dm644 /dev/stdin "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf" <<END
-    [connectivity]
-    uri=http://www.archlinux.org/check_network_status.txt
-    END
-
-            install -dm700 "$pkgdir/etc/NetworkManager/system-connections"
-
+  install -dm700 "$pkgdir/etc/NetworkManager/system-connections"
   install -d "$pkgdir"/etc/NetworkManager/{conf,dnsmasq}.d
-  
-   install -m644 /dev/stdin "$pkgdir/etc/NetworkManager/NetworkManager.conf" <<END
-# Configuration file for NetworkManager.
-# See "man 5 NetworkManager.conf" for details.
-END
+  install -m644 ../NetworkManager.conf "$pkgdir/etc/NetworkManager/"
+  install -Dm644 ../20-connectivity.conf \
+    "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf"
 
 
   cd  ../libnm
