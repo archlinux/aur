@@ -1,0 +1,14 @@
+pkgbase = epm-git
+	pkgdesc = ESP Package manager is a UNIX software and file packaging program
+	pkgver = v4.4.r2.ge7b5b4c
+	pkgrel = 1
+	url = https://github.com/michaelrsweet/epm
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = epm::git+https://github.com/michaelrsweet/epm.git
+	md5sums = SKIP
+
+pkgname = epm-git
+
