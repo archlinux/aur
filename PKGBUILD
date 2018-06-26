@@ -4,17 +4,10 @@
 ########[ OPTIONS ]########################################
 # Comment out if you want to build all language translations
 export LG2=en
-
-## Clone i2p through i2p
-# Add and Start a new Standard client tunnel with the following settings:
-#   Name: pull.git.repo.i2p
-#   Port: 9450  or some other unused port
-#   Tunnel Destination: 3so7htzxzz6h46qvjm3fbd735zl3lrblerlj2xxybhobublcv67q.b32.i2p
-#   git://127.0.0.1:9450/i2p.i2p.git
 ###########################################################
 
 pkgname=i2p-dev
-pkgver=0.9.34.0
+pkgver=0.9.35.0
 pkgrel=1
 epoch=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
