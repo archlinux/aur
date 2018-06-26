@@ -1,6 +1,6 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 pkgname=camouflage
-pkgver=20180625.52_01ad148
+pkgver=20180626.54_8ad08ea
 pkgrel=1
 pkgdesc="camouflage"
 arch=('i686' 'x86_64')
