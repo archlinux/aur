@@ -1,0 +1,15 @@
+pkgbase = vim-biosyntax-git
+	pkgdesc = Syntax Highlighting for Computational Biology, vim plugin
+	pkgver = 1518543961
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = vim
+	source = biosyntax-vim::git+https://github.com/bioSyntax/bioSyntax-vim.git
+	source = vim-biosyntax.install
+	md5sums = SKIP
+	md5sums = db2324de860f43a5b639d6ec9f1f87bf
+
+pkgname = vim-biosyntax-git
+
