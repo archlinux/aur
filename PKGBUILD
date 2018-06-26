@@ -12,14 +12,14 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.0_devel.102754.4d08c1e7d1
+pkgver=18.2.0_devel.103089.ff6db94c18
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
              'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libglvnd' 'wayland-protocols' 'lib32-wayland')
 depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
-           'lib32-llvm-libs-svn' 'lib32-libunwind')
+           'lib32-llvm-libs-svn' 'lib32-libunwind' 'lib32-lm_sensors')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-opengl-driver')
 conflicts=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
@@ -33,10 +33,6 @@ sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
 )
 
-prepare() {
-  cd mesa
-  autoreconf -fi
-}
 
 pkgver() {
     cd mesa
@@ -50,68 +46,49 @@ build () {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   export LLVM_CONFIG=/usr/bin/llvm-config32
 
-  cd mesa
-  ./configure --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu \
-               --libdir=/usr/lib32 \
-               --prefix=/usr \
-               --sysconfdir=/etc \
-               --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
-               --with-dri-drivers=i915,i965,r200,radeon,nouveau \
-               --with-platforms=x11,drm,wayland,surfaceless \
-               --with-vulkan-drivers=intel,radeon \
-               --enable-gallium-osmesa \
-               --enable-xa \
-               --enable-nine \
-               --disable-xvmc \
-               --enable-vdpau \
-               --enable-glx-tls \
-               --with-va-libdir=/usr/lib32/dri \
-               --enable-libglvnd
-
-
-# Used configure settings
-#
-# --prefix=PREFIX                   install architecture-independent files in PREFIX
-# --sysconfdir=DIR                  read-only single-machine data 
-#                                   [PREFIX/etc]
-# --with-gallium-drivers[=DIRS...]  comma delimited Gallium drivers list, e.g. "i915,nouveau,r300,r600,radeonsi,freedreno,svga,swrast,vc4,virgl"
-#                                   [default=r300,r600,svga,swrast]
-# --with-dri-drivers[=DIRS...]      comma delimited classic DRI drivers list, e.g. "swrast,i965,radeon"
-#                                   [default=auto]
-# --with-egl-platforms[=DIRS...]    comma delimited native platforms libEGL supports, e.g. "x11,drm"
-#                                   [default=auto]
-# --with-vulkan-drivers[=DIRS...]   comma delimited Vulkan drivers list, e.g. "intel"
-#                                   [default=no]
-# --enable-osmesa                   enable OSMesa library
-#                                   [default=disabled]
-# --enable-xa                       enable build of the XA X Acceleration API
-#                                   [default=disabled]
-# --enable-nine                     enable build of the nine Direct3D9 API
-#                                   [default=no]
-# --disable-xvmc                     enable xvmc library
-#                                   [default=auto]
-# --enable-vdpau                    enable vdpau library
-#                                    [default=auto]
-# --enable-omx                      enable OpenMAX library
-#                                   [default=disabled]
-# --enable-opencl                   enable OpenCL library
-#                                   [default=disabled]
-# --enable-opencl-icd               Build an OpenCL ICD library to be loaded by an ICD implementation
-#                                   [default=disabled]
-# --enable-glx-tls                  enable TLS support in GLX
-#                                   [default=disabled]
-# --enable-libglvnd                 Build GLX and EGL for libglvnd 
-#                                   [default=disabled]
-
-  make
-
+      if [  -d _build ]; then
+        rm -rf _build
+    fi
+    meson setup mesa _build \
+       -D b_ndebug=true \
+       -D buildtype=plain \
+       --wrap-mode=nofallback \
+       -D prefix=/usr \
+       -D sysconfdir=/etc \
+       --libdir=/usr/lib32 \
+       -D platforms=x11,wayland,drm,surfaceless \
+       -D dri-drivers=i915,i965,r200,r100,nouveau \
+       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+       -D vulkan-drivers=amd,intel \
+       -D dri3=true \
+       -D egl=true \
+       -D gallium-extra-hud=true \
+       -D gallium-nine=true \
+       -D gallium-omx=disabled \
+       -D gallium-opencl=disabled \
+       -D gallium-va=true \
+       -D gallium-vdpau=true \
+       -D gallium-xa=true \
+       -D gallium-xvmc=false \
+       -D gbm=true \
+       -D gles1=true \
+       -D gles2=true \
+       -D glvnd=true \
+       -D glx=dri \
+       -D libunwind=true \
+       -D llvm=true \
+       -D lmsensors=true \
+       -D osmesa=gallium \
+       -D shared-glapi=true \
+       -D valgrind=false
+    meson configure _build
+    ninja -C _build
 }
 
 
 package_lib32-mesa-git () {
 
-  cd mesa
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C _build install
 
   # remove files provided by mesa-git
   rm -rf "$pkgdir"/etc
@@ -120,6 +97,8 @@ package_lib32-mesa-git () {
 
   # remove files present in lib32-libglvnd
   rm "$pkgdir"/usr/lib32/libGLESv{1_CM,2}.so*
-  
+    
+  # indirect rendering
+  ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
   install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE 
 }
