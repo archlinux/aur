@@ -1,7 +1,7 @@
 # Maintainer: Idares <idares at seznam dot cz>
 
 pkgname=nagios
-pkgver=4.3.4
+pkgver=4.4.1
 pkgrel=1
 pkgdesc="Nagios is an open source host, service and network monitoring program."
 license=('GPL')
@@ -12,8 +12,7 @@ makedepends=('unzip')
 optdepends=('monitoring-plugins: a bundle of standard plugins'
             'apache' 'php-apache' 'nginx' 'php' 'php-fpm' 'fcgiwrap')
 source=("http://downloads.sourceforge.net/nagios/$pkgname-$pkgver.tar.gz"
-        "nagios.install"
-        "nagios.service")
+        "nagios.install")
 install='nagios.install'
 
 _nagios_user="nagios"
@@ -49,19 +48,17 @@ build() {
 package() {
 	cd $srcdir/$pkgname-$pkgver
 
-	make \
-		prefix=$pkgdir/$_instdir \
-		BINDIR=$pkgdir/$_bindir \
-		LOGDIR=$pkgdir/$_vardir \
-		CFGDIR=$pkgdir/$_confdir \
-		HTTPD_CONF=$pkgdir/$_httpdconfdir \
-		CHECKRESULTDIR=$pkgdir/$_checkresultdir \
+	DESTDIR="$pkgdir/" make \
+		prefix=$_instdir \
+		BINDIR=$_bindir \
+		LOGDIR=$_vardir \
+		CFGDIR=$_confdir \
+		HTTPD_CONF=$_httpdconfdir \
+		CHECKRESULTDIR=$_checkresultdir \
 		install install-config
 
-	install -D -m 755 daemon-init $pkgdir/etc/nagios/
-#	install -D -m 644 sample-config/httpd.conf $pkgdir/$_httpdconfdir/nagios.conf
 	install -D -m 644 sample-config/httpd.conf $pkgdir/$_httpdconfdir/apache.example.conf
-	install -D -m 644 $srcdir/nagios.service $pkgdir/usr/lib/systemd/system/nagios.service
+	install -D -m 644 startup/default-service $pkgdir/usr/lib/systemd/system/nagios.service
 
 	mkdir $pkgdir/var/nagios/rw
 	chown $_nagios_user.$_nagios_group $pkgdir/var/nagios/rw
@@ -74,10 +71,8 @@ package() {
 
 }
 
-md5sums=('e2229f9a98c2577d51576daf19713e4d'
-         'e11fa7de430ed858269f82e179fc87ca'
-         '49e077f2d61ede589f55bfd03b597ab0')
-sha1sums=('15e38467fecf8c42200d1f253e5b7d4d124abec1'
-          '04008cee208226e60b099550bd9ec7dc78cb1457'
-          '0df0b4c6976c1562b03e261926b7c2cae6061595')
+md5sums=('c133c31316322e481289b642e2974be7'
+         'e11fa7de430ed858269f82e179fc87ca')
+sha1sums=('1cd1e0251a552f49f4ca7fbd6147cf5dd2dabd84'
+          '04008cee208226e60b099550bd9ec7dc78cb1457')
 
