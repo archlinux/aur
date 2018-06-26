@@ -4,7 +4,7 @@ _pkgname=json-rpc-shell
 pkgver=r45.ac5c2f4
 pkgrel=1
 pkgdesc="Shell for JSON-RPC 2.0 HTTP queries"
-url="https://github.com/pjanouch/json-rpc-shell"
+url="https://git.janouch.name/p/json-rpc-shell"
 arch=('i686' 'x86_64')
 license=('BSD')
 options=(zipman)
@@ -12,7 +12,7 @@ conflicts=('json-rpc-shell')
 provides=('json-rpc-shell')
 makedepends=('cmake' 'pkg-config' 'git' 'help2man')
 depends=('libev' 'ncurses' 'jansson' 'curl' 'readline')
-source=("git+https://github.com/pjanouch/$_pkgname.git")
+source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {

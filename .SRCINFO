@@ -2,7 +2,7 @@ pkgbase = json-rpc-shell-git
 	pkgdesc = Shell for JSON-RPC 2.0 HTTP queries
 	pkgver = r45.ac5c2f4
 	pkgrel = 1
-	url = https://github.com/pjanouch/json-rpc-shell
+	url = https://git.janouch.name/p/json-rpc-shell
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -18,7 +18,7 @@ pkgbase = json-rpc-shell-git
 	provides = json-rpc-shell
 	conflicts = json-rpc-shell
 	options = zipman
-	source = git+https://github.com/pjanouch/json-rpc-shell.git
+	source = git+https://git.janouch.name/p/json-rpc-shell.git
 	md5sums = SKIP
 
 pkgname = json-rpc-shell-git
