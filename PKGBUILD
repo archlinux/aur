@@ -2,8 +2,8 @@
 # Contributor: Thomas Gatzweiler <thomas.gatzweiler@gmail.com> wsjtx-svn maintainer
 
 pkgname=wsjtx-git
-pkgver=r4218.f962caac
-pkgrel=2
+pkgver=r4223.45427a08
+pkgrel=1
 pkgdesc='Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)'
 arch=('i686' 'x86_64')
 url='http://physics.princeton.edu/pulsar/k1jt/wsjtx.html'
