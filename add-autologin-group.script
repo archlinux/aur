@@ -1,0 +1,39 @@
+#!/bin/bash
+
+##Bash script to add autologin group into /etc/group and after creation add all users present in /etc/paswd. Systemd service
+
+#Collect users
+_users=$(awk -F'[/:]' '{if ($3 >= 1000 && $3 != 65534) print $1}' /etc/passwd)
+
+#Check if autologin group not exist and if not do the job 
+install() {
+grep "autologin" /etc/group
+	if [ "$?" -eq 1 ]; then
+		#Add autologin group
+		groupadd -r autologin
+		#Add users 
+		for i in $_users; do 
+		gpasswd -a $i autologin
+		done
+	fi
+}	
+
+#Check if a new user is created	
+check-new-user() {
+	for i in $_users ; do
+		if groups $i | grep &>/dev/null '\bautologin\b'; then
+			: #echo "User $i ok"
+		else gpasswd -a $i autologin
+		fi
+	done
+}
+
+#Job
+grep autologin /etc/group
+	if [ "$?" -eq 1 ]; then
+		install
+	else check-new-user
+	fi
+
+
+

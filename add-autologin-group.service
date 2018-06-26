@@ -1,0 +1,10 @@
+[Unit]
+Description=Check if autologin group exist and also add the users.
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/add-autologin-group
+
+[Install]
+WantedBy=multi-user.target
+
