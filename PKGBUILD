@@ -41,6 +41,7 @@ build() {
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
     -DENABLE_QT2='TRUE' \
     -DUSE_SHARED_ENET='TRUE' \
     -DDISTRIBUTOR='aur.archlinux.org'
