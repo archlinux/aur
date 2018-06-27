@@ -3,16 +3,16 @@
 
 pkgname=apache-poi
 _srcname=poi-bin
-_srcdate=20170419
-pkgver=3.16
-pkgrel=1
+_srcdate=20170915
+pkgver=3.17
+pkgrel=2
 pkgdesc="A Java library for Microsoft Documents"
 arch=('any')
 url="http://poi.apache.org/"
 license=('APACHE')
 optdepends=('java-runtime-common')
 source=("http://mirror.hosting90.cz/apache/${_srcname:0:3}/release/${_srcname:4:6}/${_srcname}-${pkgver}-${_srcdate}.tar.gz")
-sha256sums=('66711d5404aedc7ca809953af6c63ec67ff44fb764b1b93f3b2c96aa23d16b97')
+sha256sums=('c28e15f3b66bcf9a5f7d13b40ac32610f5d5e0abec85367cca69f85df9ca949c')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/java"
