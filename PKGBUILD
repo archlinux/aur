@@ -2,33 +2,32 @@
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
-_pkgname='utop'
-pkgname="ocaml-${_pkgname}"
-pkgver=1.19.3
+pkgname="ocaml-utop"
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='A toplevel for OCaml that supports completion, colors, and parenthesis matching'
 arch=('i686' 'x86_64')
 url='https://github.com/diml/utop'
 license=('BSD')
-depends=('ocaml' 'cppo' 'ocaml-lambda-term' 'ocaml-lwt' 'ocaml-findlib' 'ocaml-react' 'camlp4')
+depends=('ocaml' 'ocaml-findlib' 'ocaml-lambda-term' 'ocaml-lwt' 'ocaml-camomile' 'ocaml-react')
+makedepends=('dune' 'cppo')
 options=('!strip')
-source=("https://github.com/diml/utop/archive/${pkgver}.tar.gz")
-md5sums=('280f9a1062c53be8bae41cfd57ce29dd')
+source=("https://github.com/diml/utop/releases/download/${pkgver}/utop-${pkgver}.tbz")
+md5sums=('6c63a321379069a1b9ecb7899f80087b')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/utop-${pkgver}"
 
-  ./configure --prefix /usr --destdir "${pkgdir}" --enable-camlp4
-
-  make
+  jbuilder build
 }
 
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/utop-${pkgver}"
 
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  install -dm755 "${OCAMLFIND_DESTDIR}"
-  make install
+  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/man" "${pkgdir}/usr/share/"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
