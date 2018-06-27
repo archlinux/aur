@@ -2,14 +2,14 @@
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
 pkgname=libgpr-git
-pkgver=r3307.832b1ce6
+pkgver=r3363.f169bdd6
 pkgrel=1
 pkgdesc="Ada library to handle GPRbuild project files"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
 license=('GPL3')
 depends=('glibc' 'xmlada')
-makedepends=('git' 'gprbuild-bootstrap-git' 'xmlada')
+makedepends=('git' 'gprbuild-bootstrap-git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/AdaCore/gprbuild.git'

@@ -1,6 +1,6 @@
 pkgbase = libgpr-git
 	pkgdesc = Ada library to handle GPRbuild project files
-	pkgver = r3307.832b1ce6
+	pkgver = r3363.f169bdd6
 	pkgrel = 1
 	url = https://github.com/AdaCore/gprbuild/
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = libgpr-git
 	license = GPL3
 	makedepends = git
 	makedepends = gprbuild-bootstrap-git
-	makedepends = xmlada
 	depends = glibc
 	depends = xmlada
 	provides = libgpr
