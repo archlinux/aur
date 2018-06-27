@@ -3,7 +3,7 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
 pkgname=ocaml-lambda-term
-pkgver=1.12.0
+pkgver=1.13
 pkgrel=1
 pkgdesc='A cross-platform library for manipulating the terminal'
 arch=('i686' 'x86_64')
@@ -11,17 +11,9 @@ url='https://github.com/diml/lambda-term'
 license=('BSD')
 depends=('ocaml' 'ocaml-lwt' 'ocaml-lwt_log' 'ocaml-react' 'ocaml-zed' 'ocaml-camomile')
 makedepends=('dune')
-source=("https://github.com/diml/lambda-term/archive/${pkgver}.tar.gz"
-        "lwt_log.patch")
+source=("https://github.com/diml/lambda-term/releases/download/${pkgver}/lambda-term-${pkgver}.tbz")
 options=('!strip')
-md5sums=('6a6c7c948ed385c6f239b12c283d10de'
-         'baeb76a87738fef3a85c3efbfef25b61')
-
-prepare() {
-  cd "${srcdir}/lambda-term-${pkgver}"
-
-  patch -Np1 < "${srcdir}/lwt_log.patch"
-}
+md5sums=('c13826a97014d4d573b927b623c7e043')
 
 build() {
   cd "${srcdir}/lambda-term-${pkgver}"
