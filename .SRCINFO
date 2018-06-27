@@ -1,0 +1,15 @@
+pkgbase = lbry-app-release
+	pkgdesc = The LBRY Application built on Electron framework
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://lbry.io/
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	depends = npm
+	depends = gnome-keyring
+	source = https://github.com/lbryio/lbry-app/releases/download/v0.22.0/LBRY_0.22.0.deb
+	sha256sums = c813116cdcbd2863d7f6215d9dcc17358dc761d1478c12945648e79c66626803
+
+pkgname = lbry-app-release
+
