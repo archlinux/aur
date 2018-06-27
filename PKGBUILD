@@ -6,7 +6,7 @@
 _pkgname=lwt
 pkgname=ocaml-${_pkgname}
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for cooperative threads in OCaml"
 arch=('i686' 'x86_64')
 url="http://ocsigen.org/lwt/"
@@ -31,5 +31,6 @@ package() {
   install -dm755 "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
   jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/lib/ocaml/stubslibs" "${pkgdir}/usr/lib/ocaml/stublibs" # bug in opam
   install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
