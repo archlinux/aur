@@ -3,15 +3,15 @@
 pkgbase='flask-table'
 pkgname=('python-flask-table' 'python2-flask-table')
 _module='flask_table'
-pkgver='0.5.0'
+pkgver='0.5.1'
 pkgrel='1'
 pkgdesc='HTML tables for use with the Flask micro-framework'
 arch=('any')
 url='http://pypi.python.org/pypi/Flask-Table/'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/plumdog/flask_table/archive/v$pkgver.tar.gz")
-sha1sums=('1a19b9c3bdfc8e3ff9f520e4d160b588ebcf654a')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/nullptrT/flask_table/archive/v$pkgver.tar.gz")
+sha1sums=('0cef68a6c20e6e6ff88ddafc2078e3e683cb4131')
 
 prepare() {
   cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
@@ -40,6 +40,5 @@ package_python-flask-table() {
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build --prefix="/usr"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
 
 # vim:set ts=2 sw=2 et:
