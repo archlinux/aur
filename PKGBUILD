@@ -4,7 +4,7 @@ pkgbase='flask-table'
 pkgname=('python-flask-table' 'python2-flask-table')
 _module='flask_table'
 pkgver='0.5.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='HTML tables for use with the Flask micro-framework'
 arch=('any')
 url='http://pypi.python.org/pypi/Flask-Table/'
@@ -26,7 +26,7 @@ build() {
 }
 
 package_python2-flask-table() {
-  depends+=('python2' 'python2-flask' 'python2-flask-babel')
+  depends+=('python2' 'python2-flask' 'python2-flask-babelex')
   cd "${srcdir}/${_module}-${pkgver}-python2"
 
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build --prefix="/usr"
@@ -34,7 +34,7 @@ package_python2-flask-table() {
 }
 
 package_python-flask-table() {
-  depends+=('python' 'python-flask' 'python-flask-babel')
+  depends+=('python' 'python-flask' 'python-flask-babelex')
   cd "${srcdir}/${_module}-${pkgver}"
 
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build --prefix="/usr"
