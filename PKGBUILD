@@ -1,9 +1,5 @@
-# Contributor: Eugene Lamskoy
-# Contributor: Lex Rivera aka x-demon <aur@x-demon.org>
-# Contributor: Mantas Mikulėnas <grawity@gmail.com>
-
 pkgname=binkd-git
-pkgver=r2110.2165e9f
+pkgver=1.1a.99.r2110.2165e9f
 pkgrel=1
 pkgdesc="Binkley protocol daemon for transferring files between Fidonet systems"
 arch=('i686' 'x86_64')
@@ -21,10 +17,12 @@ sha256sums=('SKIP'
             '2ebaebb7b525f9eaa1915dfeabba1626422d300f9820981225509203e6dcbc59'
             '2ddcb26a54f7a0f9a8ab5d8819431fb1f2bd961169c6fe5e7afa7f4c89e11786'
             '5032916082884a938978f0d5168fd053baab230bd34e84008ae637515e04a685')
+provides=("binkd")
+conflicts=("binkd")
 
 pkgver() {
   cd "$srcdir/binkd"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(grep Version "$srcdir/binkd/mkfls/unix/binkd.spec" | awk '{ print $2 }')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -46,8 +44,6 @@ package() {
   make DESTDIR="$pkgdir" install
 
   mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
-
-  ln -sf "binkd-$pkgver" "$pkgdir/usr/bin/binkd"
 
   install -dm0755 "$pkgdir/etc/binkd"
   mv "$pkgdir/etc/binkd.conf-dist" "$pkgdir/etc/binkd/binkd.conf"
