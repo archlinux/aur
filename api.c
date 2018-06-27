@@ -577,6 +577,51 @@ Info* api_get_info(const char* symbol) {
     return coinmarketcap_get_info(symbol);
 }
 
+void api_info_array_populate_data(Info_Array* portfolio_data, String* pString) {
+    Json* jobj = json_tokener_parse(pString->data);
+    char syms[portfolio_data->length][SYMBOL_MAX_LENGTH];
+    double amount_array[portfolio_data->length], spent_array[portfolio_data->length];
+    pthread_t threads[portfolio_data->length];
+    for (size_t i = 0; i < portfolio_data->length; i++) {
+        strcpy(syms[i], json_object_get_string(json_object_object_get(json_object_array_get_idx(
+                jobj, i), "Symbol")));
+        amount_array[i] = json_object_get_double(json_object_object_get(json_object_array_get_idx(
+                jobj, i), "Shares"));
+        spent_array[i] = json_object_get_double(json_object_object_get(json_object_array_get_idx(
+                jobj, i), "USD_Spent"));
+        if (strcmp(syms[i], "USD$") != 0)
+            if (pthread_create(&threads[i], NULL, (void* (*)(void*)) api_get_check_info, syms[i]))
+                EXIT_MSG("Error creating thread!")
+    }
+    json_object_put(jobj);
+
+    void* temp = NULL;
+    int load_len = 0;
+    for (size_t i = 0; i < portfolio_data->length; i++) {
+        // Print loading string
+        if (i > 0)
+            for (int j = 0; j < load_len; j++)
+                putchar('\b');
+        load_len = printf("Loading data (%d/%d)", (int) i + 1, (int) portfolio_data->length);
+        fflush(stdout);
+
+        if (strcmp(syms[i], "USD$") != 0) {
+            if (pthread_join(threads[i], &temp))
+                EXIT_MSG("Error joining thread!")
+
+            portfolio_data->array[i] = temp;
+        }
+        else {
+            portfolio_data->array[i] = api_info_init();
+            strcpy(portfolio_data->array[i]->symbol, syms[i]);
+        }
+        portfolio_data->array[i]->amount = amount_array[i];
+        portfolio_data->array[i]->total_spent = spent_array[i];
+        calculate_check_data(portfolio_data->array[i]);
+    }
+    info_array_calculate_totals(portfolio_data);
+}
+
 Info_Array* iex_get_valid_symbols(void) {
     char* iex_api_string = "https://api.iextrading.com/1.0/ref-data/symbols";
     String* pString = api_curl_data(iex_api_string);
@@ -625,7 +670,8 @@ void api_info_array_destroy(Info_Array** phInfo_Array) {
     for (size_t i = 0; i < pInfo_Array->length; i++)
         api_info_destroy(&pInfo_Array->array[i]);
     free(pInfo_Array->array);
-    api_info_destroy(&pInfo_Array->totals);
+    if (pInfo_Array->totals != NULL)
+        api_info_destroy(&pInfo_Array->totals);
     free(*phInfo_Array);
     *phInfo_Array = NULL;
 }

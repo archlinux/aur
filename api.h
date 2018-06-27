@@ -310,6 +310,8 @@ Info* api_get_check_info(const char* symbol);
  */
 Info* api_get_info(const char* symbol);
 
+void api_info_array_populate_data(Info_Array* portfolio_data, String* pString);
+
 /**
  * Returns a pointer to an Info_Array containing a list of all iex listed securities.
  * @return Info_Array*
