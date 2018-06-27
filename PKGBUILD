@@ -6,12 +6,12 @@
 # Pending work: man & changelog files generated automatically.
 
 pkgname=eddie-ui
-pkgver=2.14.5
+pkgver=2.15.2
 pkgrel=1
 pkgdesc='Eddie - OpenVPN UI - stable version'
 arch=('i686' 'x86_64')
 url=https://eddie.website
-license=(GPL3)
+license=(GPLv3)
 depends=(mono openvpn sudo desktop-file-utils libnotify libappindicator-gtk2)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
 makedepends=('cmake')
@@ -20,7 +20,7 @@ conflicts=('airvpn' 'airvpn-beta-bin' 'airvpn-git')
 install=eddie-ui.install
 #source=('git+https://github.com/AirVPN/Eddie.git')
 source=(https://github.com/AirVPN/Eddie/archive/v${pkgver}.tar.gz)
-sha1sums=('54cb33f3f8a49a04cc6cfcd8304dc57f3727be5d')
+sha1sums=('8a0b34119a181de27fca78c057a295489cbe554f')
 
 case "$CARCH" in
     i686) _pkgarch="x86"

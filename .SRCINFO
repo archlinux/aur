@@ -1,12 +1,12 @@
 pkgbase = eddie-ui
 	pkgdesc = Eddie - OpenVPN UI - stable version
-	pkgver = 2.14.5
+	pkgver = 2.15.2
 	pkgrel = 1
 	url = https://eddie.website
 	install = eddie-ui.install
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPLv3
 	makedepends = cmake
 	depends = mono
 	depends = openvpn
@@ -20,8 +20,8 @@ pkgbase = eddie-ui
 	conflicts = airvpn
 	conflicts = airvpn-beta-bin
 	conflicts = airvpn-git
-	source = https://github.com/AirVPN/Eddie/archive/v2.14.5.tar.gz
-	sha1sums = 54cb33f3f8a49a04cc6cfcd8304dc57f3727be5d
+	source = https://github.com/AirVPN/Eddie/archive/v2.15.2.tar.gz
+	sha1sums = 8a0b34119a181de27fca78c057a295489cbe554f
 
 pkgname = eddie-ui
 
