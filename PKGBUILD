@@ -7,9 +7,9 @@ pkgdesc="A powerful GUI for Git"
 arch=('any')
 url="http://git-cola.github.com/"
 license=('GPL')
-depends=('git' 'python-pyqt5>=5.7' 'icu' 'qt5-svg')
-makedepends=('asciidoc' 'docbook-xsl' 'rsync' 'xmlto' 'python-sphinx>=1.1.3')
-optdepends=('python-pyinotify>=0.7.1: for inotify support'
+depends=('git' 'python-pyqt5' 'icu' 'qt5-svg')
+makedepends=('asciidoc' 'docbook-xsl' 'rsync' 'xmlto' 'python-sphinx')
+optdepends=('python-pyinotify: for inotify support'
 'tk: to use the built-in ssh-askpass handler')
 options=('!makeflags')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz")
