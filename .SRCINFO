@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-community-beta
 	pkgdesc = The official GUI for MongoDB - Community Edition (beta version)
-	pkgver = 1.15.0beta.3
+	pkgver = 1.15.0beta.5
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = mongodb-compass-community-beta
 	depends = libxss
 	optdepends = gnome-keyring
 	optdepends = libgnome-keyring
-	source = https://downloads.mongodb.com/compass/beta/mongodb-compass-community-beta-1.15.0-beta.3.x86_64.rpm
-	md5sums = a44f338401e298ff30601393720800c6
+	source = https://downloads.mongodb.com/compass/beta/mongodb-compass-community-beta-1.15.0-beta.5.x86_64.rpm
+	md5sums = 78501c5068c0de3a2345365c723fa452
 
 pkgname = mongodb-compass-community-beta
 
