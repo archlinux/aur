@@ -2,7 +2,7 @@
 
 _name=ddnet
 pkgname=$_name-git
-pkgver=11.1.9.r18.gd52143ffd
+pkgver=11.2.r6.g7c4a7e4c6
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('x86_64')
@@ -69,7 +69,6 @@ package() {
     install -m755 map_extract          "$pkgdir/usr/lib/ddnet/tools/"
     install -m755 map_replace_image    "$pkgdir/usr/lib/ddnet/tools/"
     install -m755 map_resave           "$pkgdir/usr/lib/ddnet/tools/"
-    install -m755 map_version          "$pkgdir/usr/lib/ddnet/tools/"
     install -m755 packetgen            "$pkgdir/usr/lib/ddnet/tools/"
     install -m755 tileset_borderadd    "$pkgdir/usr/lib/ddnet/tools/"
     install -m755 tileset_borderfix    "$pkgdir/usr/lib/ddnet/tools/"
