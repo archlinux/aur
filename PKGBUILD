@@ -1,5 +1,5 @@
 pkgname=psi-plus-full
-pkgver=1.3.388
+pkgver=1.3.393
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client. Built with all plugins, translations, skins and extras"
 url="https://psi-plus.com"
