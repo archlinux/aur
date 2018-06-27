@@ -1,0 +1,11 @@
+post_install() {
+_alert
+}
+
+_alert() {
+cat -s << EOF
+Usage:
+echo "Hello world" | gama_tts tts /usr/local/share/gama_tts/data/english/vtmX test.wav 
+Where X is a number from 0 to 5.
+EOF
+}
