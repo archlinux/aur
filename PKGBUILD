@@ -3,7 +3,7 @@
 pkgname=lightdm-slick-greeter
 _pkgname=slick-greeter
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A slick-looking LightDM greeter"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/${_pkgname}"
