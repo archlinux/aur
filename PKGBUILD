@@ -41,7 +41,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/build"
-  # doesn't build with gcc8 and gcc54 doesn't know -fno-plt
   cmake -DBUILD_TYPE=Release \
         -DCMAKE_BUILD_TYPE=Release \
         ../neo
