@@ -1,0 +1,33 @@
+Sep 23 2003; 0.0.0 started working with the project.
+Sep 28 2003; 1.0.0 initial release. All features working.
+Sep 29 2003; 1.1.0 added feature: branch labels.
+Sep 29 2003; 1.2.0 bugfix: didn't resolve correctly when different scopes had a label with the same name; added warning options
+Oct 3 2003; 1.3.0 added feature: jump optimization.
+Oct 8 2003; 1.3.1 bugfix: jump optimization only supports two passes. Requiring more now produces an error.
+Oct 13 2003; 1.3.2 bugfix: accidentally had broke MVN/MVP some time ago
+Nov 3 2003; 1.3.2.1 bugfix: undef; broken HTML in README.html
+Nov 3 2003; 1.3.3 added some alternative methods (pea #$8000, mvn $7E7F)
+Dec 30 2003; 1.3.4 bugfix; error-exit now deletes the broken output file
+Jan 2 2004; 1.3.4.1 bugfix; added missing files
+Jan 23 2004; 1.3.4.2 handles memory addressing a bit differently internally
+Jan 24 2004; 1.4.0 adds IPS output support
+Jan 24 2004; 1.4.1 added new program: IPS and O65 linker (BETA!)
+Jan 24 2004; 1.4.1.1 added feature: string constants in .byt
+Jan 28 2004; 1.4.1.2 IPS bugfixes; linker improved
+Jan 31 2004; 1.4.1.3 some internal changes
+Jan 31 2004; 1.4.1.4 more internal changes - aiming towards multisegment linking
+Feb 3 2004; 1.4.2 improved expression parsing
+Feb 22 2004; 1.5.0 added the linkage selection statement
+Jan 30 2005; 1.5.0.1 adds a very hackish kludge to avoid three-pass jump fixing in a certain case
+Nov 21 2005; 1.5.1 symbol support in disassembler (when given an O65 or IPS file)
+Jun 20 2006; 1.6.0 raw output support. smartptr. More shortcut labels. The .nop macro.
+Jul 26 2006; 1.7.0 smc,raw,o65 output in sneslink. "make" compatibility in error situations.
+Jul 26 2006; 1.7.1 multisegment support (data, zero, bss) should work now fine.
+Jul 27 2006; 1.7.2 adds some consistency to ROM vs SNES address space conversions.
+Mar 04 2012; 1.7.3 adds some compilation fixes and an accidental memory address hack.
+Jul 04 2012; 1.7.4 adds some compilation fixes.
+Oct 15 2012; 1.7.4.1 fixes the memory address hack.
+Jun 02 2018; 1.7.5 add support for $80 shadow bank.
+Jun 04 2018; 1.8.0 partial rewrite in C++11, fix memory leaks & crashes, nicer code
+Jun 04 2018; 1.8.1 proper support for HiROM memory mirroring; .link page directive actually works now, per segment
+Jun 27 2018; 1.8.1.1 Compilation fix
