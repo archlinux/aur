@@ -3,7 +3,7 @@
 pkgname=heroku-cli
 pkgver=7.0.98
 _builddir=cli-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool for creating and managing Heroku apps from the command line"
 arch=('i686' 'x86_64')
 url="https://devcenter.heroku.com/articles/heroku-cli"
@@ -11,6 +11,7 @@ license=('custom' 'ISC')
 optdepends=('git: Deploying to Heroku')
 provides=('heroku-cli')
 conflicts=('heroku-cli' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
+makedepends=(npm)
 source=("https://github.com/heroku/cli/archive/v7.0.98.tar.gz")
 
 build() {
