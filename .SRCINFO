@@ -1,6 +1,6 @@
 pkgbase = dups-git
 	pkgdesc = It deduplicates things - Backup as simple as possible.
-	pkgver = c6d78c5
+	pkgver = 41db0c2
 	pkgrel = 1
 	url = https://github.com/linuxwhatelse/dups
 	install = dups.install
@@ -8,8 +8,11 @@ pkgbase = dups-git
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
+	depends = openssh
+	depends = rsync
+	depends = dbus
 	depends = libnotify
-	depends = rsync>=2.6.7
+	depends = python-gobject
 	depends = python-dbus
 	depends = python-paramiko
 	depends = python-ruamel-yaml

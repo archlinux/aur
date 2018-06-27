@@ -1,13 +1,13 @@
 _pkgname=dups
 pkgname=dups-git
-pkgver=c6d78c5
+pkgver=41db0c2
 pkgrel=1
 pkgdesc="It deduplicates things - Backup as simple as possible."
 arch=("x86_64")
 url="https://github.com/linuxwhatelse/dups"
 license=('GPL3')
-depends=('python' 'libnotify' 'rsync>=2.6.7' 'python-dbus' 'python-paramiko'
-         'python-ruamel-yaml')
+depends=('python' 'openssh' 'rsync' 'dbus' 'libnotify' 'python-gobject'
+         'python-dbus' 'python-paramiko' 'python-ruamel-yaml')
 makedepends=('python-setuptools')
 provides=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/linuxwhatelse/dups.git")
