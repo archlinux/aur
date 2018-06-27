@@ -3,7 +3,7 @@
 
 pkgbase=mariadb-mainline-noconflict
 _pkgbase=mariadb
-pkgname=('libmariadbclient-mainline-noconflict' 'mariadb-clients-mainline-noconflict' 'mytop-mainline-noconflict' 'mariadb-mainline-noconflict')
+pkgname=('mariadb-mainline-noconflict' 'libmariadbclient-mainline-noconflict' 'mariadb-clients-mainline-noconflict' 'mytop-mainline-noconflict' 'mariadb-mainline-noconflict')
 pkgver=10.3.7
 pkgrel=1
 pkgdesk="MariaDB mainline version with libmysqlclient.so.18 (mariadb 10.1 compatible)"
