@@ -1,4 +1,5 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 ### BUILD OPTIONS
@@ -65,16 +66,16 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcname=linux-4.16
-pkgver=4.16.17
-pkgrel=2
+_srcname=linux-4.17
+pkgver=4.17.3
+pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_ckpatchname="patch-4.16-ck${_ckpatchversion}"
+_ckpatchname="patch-4.17-ck${_ckpatchversion}"
 _gcc_more_v='20180509'
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
@@ -85,7 +86,7 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
-  "http://ck.kolivas.org/patches/4.0/4.16/4.16-ck${_ckpatchversion}/${_ckpatchname}.xz"
+  "http://ck.kolivas.org/patches/4.0/4.17/4.17-ck${_ckpatchversion}/${_ckpatchname}.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 )
@@ -93,18 +94,18 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
+sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '13f658fe58d3255d2e63fd236d90a2a1603fb5ab68b4a3ca7249b99033cb1d75'
+            '01d5cc024dcfed615f84fd83be9c248261d8fc2c062520d38397cead6857b596'
             'SKIP'
-            'bb11db49cd6fbd6b203fefc8ac6fb55a9ac6bad17b5b5e41a879c8d36913d080'
+            '427e5b0a0dd0b6b048bd3e6bd284074d7b30b513abaf436464815955f5dbc747'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '61cd4b129eac475ad82fcdbbf9952b80e81e7c893776c00e3b6a658b950d0b26'
-            'e397e2fcdcee9fc132728e984a82542be1810adc91bb20a7e07ca0925b69b108'
-            '871900a3e918a5d52588af691f9eded0897ac4a7c97dcc66f4a0bca7af37c07e')
+            '6a0e9cce53da8c55161d01920cc02a09a3b70a60f1050ec91fafd9bb59cb6bb4'
+            'c5b2a7c60450e9fa414f7364d0ae307bd9e2c3e0ae55eb5bf431f8915876fc77'
+            '39c018fa51b62253290b01f11c6c5b348437ffe86a4af59d0be3211e2844d291')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -123,6 +124,10 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+
+  # https://bugs.archlinux.org/task/56780
+  # this patch causes ck1 to freeze on booting for some users so do not include
+  # patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatchname}"
@@ -202,8 +207,8 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.171"
-  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.171"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.172"
+  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.172"
   #pkgdesc="${_Kpkgdesc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
