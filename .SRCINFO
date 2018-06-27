@@ -17,6 +17,8 @@ pkgname = python-flask-babelex
 	depends = python-babel
 	depends = python-speaklater
 	depends = python-jinja
+	provides = 
+	provides = python-flask-babel
 
 pkgname = python2-flask-babelex
 	depends = 
@@ -25,4 +27,6 @@ pkgname = python2-flask-babelex
 	depends = python2-babel
 	depends = python2-speaklater
 	depends = python2-jinja
+	provides = 
+	provides = python2-flask-babel
 

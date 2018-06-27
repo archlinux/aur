@@ -27,6 +27,7 @@ build() {
 
 package_python2-flask-babelex() {
   depends+=('python2' 'python2-flask' 'python2-babel' 'python2-speaklater' 'python2-jinja')
+  provides+=('python2-flask-babel')
   cd "${srcdir}/${_module}-${pkgver}-python2"
 
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build --prefix="/usr"
@@ -35,6 +36,7 @@ package_python2-flask-babelex() {
 
 package_python-flask-babelex() {
   depends+=('python' 'python-flask' 'python-babel' 'python-speaklater' 'python-jinja')
+  provides+=('python-flask-babel')
   cd "${srcdir}/${_module}-${pkgver}"
 
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build --prefix="/usr"
