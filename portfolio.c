@@ -1,83 +1,67 @@
 #include "portfolio.h"
 
-char* portfolio_file;
+char* portfolio_file_path;
 
-void portfolio_file_init(void) {
+void portfolio_file_path_init(void) {
     char* home = getenv("HOME");
     char* path = malloc(strlen(home) + 30);
     pointer_alloc_check(path);
     sprintf(path, "%s/.tick_portfolio.json", home);
-    portfolio_file = path;
+    portfolio_file_path = path;
 }
 
-String* portfolio_file_get_string(char** password_ref) {
-    struct stat file_info;
-    if (stat(portfolio_file, &file_info)) // If called from portfolio_modify, file should exist (possibly size 0)
-        RETNULL_MSG("Portfolio file doesn't exist.");
-
-    if (file_info.st_size == 0) // Return new String if new file
-        return string_init();
-
-    FILE* fp = fopen(portfolio_file, "r");
-    if (fp == NULL) // If file exists, but cannot be opened, usually because of permissions
-        RETNULL_MSG("Error opening portfolio.")
-
-    String* pString = string_init();
-    pString->len = (size_t) file_info.st_size;
-    pString->data = realloc(pString->data, pString->len + 1); // Alloc with file size
-    pointer_alloc_check(pString->data);
-    pString->data[pString->len] = '\0';
-    if (fread(pString->data, sizeof(char), pString->len, fp) != pString->len) { // read file and return NULL if error
-        fclose(fp);
-        string_destroy(&pString);
-        RETNULL_MSG("Error reading file.")
-    }
-
-    fclose(fp);
-    Json* jobj = json_tokener_parse(pString->data); // Make sure portfolio is JSON formatted
-    if (jobj == NULL || !json_object_is_type(jobj, json_type_array)) { // Decrypt if not a JSON array
-        char* password = rc4_getPassword();
-        puts("Decrypting portfolio...");
-        rc4_encode_string(pString, password); // Decode using password
-        jobj = json_tokener_parse(pString->data);
-        if (jobj == NULL || !json_object_is_type(jobj, json_type_array)) { // Wrong pw if not JSON array after decrypt
-            free(password);
-            json_object_put(jobj);
-            string_destroy(&pString);
-            RETNULL_MSG("Wrong password!")
-        }
-
-        if (password_ref != NULL) // If provided a string reference, set pointer to malloc'ed password_ref
-            *password_ref = password;   // This is used for re-encrypting the portfolio when modifying
+String* portfolio_ncurses_get_plaintext_string(char** password_ref) {
+    String* pString = file_get_string(portfolio_file_path);
+    if (pString != NULL && pString->len > 0) { // NULL if error reading file
+        char* password = NULL;
+        if (!rc4_ncurses_decrypt_string(pString, &password))
+            string_destroy(&pString); // Error decrypting
+        if (password_ref != NULL)
+            *password_ref = password; // Copy password if given reference
         else free(password);
     }
-    json_object_put(jobj);
     return pString;
 }
 
-void portfolio_modify(const char* symbol, double quantity_shares, double usd_spent, int mod_option) {
+void portfolio_modify_write(const char* symbol, double quantity_shares, double usd_spent,
+                            int mod_option) {
     if (quantity_shares < 0 || usd_spent < 0) // Negative numbers
         RET_MSG("You must use positive values.")
 
     if (mod_option != SET && quantity_shares == 0 && usd_spent == 0) // Adding or removing 0
         RET_MSG("You cannot add or remove values of 0.")
 
-    FILE* fp = fopen(portfolio_file, "a"); // Creates empty file if portfolio doesn't exist
+    FILE* fp = fopen(portfolio_file_path, "a"); // Creates empty file if portfolio doesn't exist
     if (fp == NULL) // If file exists, but cannot be opened, usually because of permissions
         RET_MSG("Error opening porfolio.")
+
     fclose(fp);
 
-    char* password = NULL; // If portfolio is encrypted, store password when decrypting for re-encryption
-    String* pString = portfolio_file_get_string(&password);
-    if (pString == NULL) // Return if error or wrong password
-        return;
+    char* password = NULL; // Store password for re-encryption
+    String* pString = portfolio_ncurses_get_plaintext_string(&password);
 
-    // pString is now guaranteed to be valid unencrypted String (may be length 0)
+    // Perform modification
+    portfolio_modify_string(pString, symbol, quantity_shares, usd_spent, mod_option);
 
+    if (password != NULL) { // If need to re-encrypt
+        rc4_encode_string(pString, password);
+        puts("Re-encrypting portfolio...");
+        free(password);
+    }
+
+    string_write_file(pString, portfolio_file_path); // Write portfolio file
+    string_destroy(&pString);
+}
+
+void portfolio_modify_string(String* pString, const char* symbol, double quantity_shares,
+                             double usd_spent, int mod_option) {
     Json* jobj;
     if (pString->len == 0) // Create new array if empty file
         jobj = json_object_new_array();
     else jobj = json_tokener_parse(pString->data); // Otherwise parse
+
+    if (jobj == NULL)
+        RET_MSG("Portfolio corrupted! Check JSON formatting.");
 
     int index = portfolio_symbol_index(symbol, jobj);
     if (index == -1) { // If security is not already contained in portfolio
@@ -133,38 +117,23 @@ void portfolio_modify(const char* symbol, double quantity_shares, double usd_spe
     pString->data = realloc(pString->data, pString->len + 1); // Realloc string with size of new length
     pointer_alloc_check(pString->data);
     strcpy(pString->data, new_portfolio_str);
-    if (password != NULL) { // If data must be re-encrypted
-        puts("Re-encrypting portfolio...");
-        rc4_encode_string(pString, password);
-    }
-    string_write_portfolio(pString);
     cleanup: // CLEANUP
-    free(password);
     json_object_put(jobj);
-    string_destroy(&pString);
 }
 
-Info_Array* portfolio_get_info_array(void) {
-    String* pString = portfolio_file_get_string(NULL);
-    if (pString == NULL) // Read error or wrong password
-        return NULL;
-
-    if (pString->len == 0) { // If empty portfolio file
-        string_destroy(&pString);
+Info_Array* portfolio_info_array_init_from_portfolio(String* pString) {
+    if (pString->len == 0) // If empty portfolio file
         RETNULL_MSG("Your portfolio is empty.")
-    }
 
-    Info_Array* portfolio_data = NULL;
     Json* jobj = json_tokener_parse(pString->data);
     if (json_object_array_length(jobj) == 0) { // If empty array
         json_object_put(jobj);
-        string_destroy(&pString);
         RETNULL_MSG("Your portfolio is empty.");
     }
 
-    portfolio_data = api_info_array_init();
+    Info_Array* portfolio_data = api_info_array_init();
     portfolio_data->length = json_object_array_length(jobj);
-    portfolio_data->array = malloc(sizeof(Info*) * portfolio_data->length); // malloc portfolio array length pointers
+    portfolio_data->array = malloc(sizeof(Info*) * portfolio_data->length);
     pointer_alloc_check(portfolio_data->array);
     portfolio_data->totals = api_info_init();
 
@@ -176,42 +145,7 @@ Info_Array* portfolio_get_info_array(void) {
     portfolio_data->totals->profit_7d = 0;
     portfolio_data->totals->profit_30d = 0;
 
-    pthread_t threads[portfolio_data->length];
-    char syms[portfolio_data->length][SYMBOL_MAX_LENGTH];
-    for (size_t i = 0; i < portfolio_data->length; i++) {
-        strcpy(syms[i], json_object_get_string(json_object_object_get(json_object_array_get_idx(jobj, i), "Symbol")));
-        if (strcmp(syms[i], "USD$") != 0)
-            if (pthread_create(&threads[i], NULL, (void*(*)(void*))api_get_check_info, syms[i]))
-                EXIT_MSG("Error creating thread!")
-    }
-
-    void* temp = NULL;
-    int load_len = 0;
-    for (size_t i = 0; i < portfolio_data->length; i++) {
-        if (i > 0)
-            for (int j = 0; j < load_len; j++)
-                putchar('\b');
-        load_len = printf("Loading data (%d/%d)", (int) i + 1, (int) portfolio_data->length); // Print loading string
-        fflush(stdout);
-        if (strcmp(syms[i], "USD$") != 0) {
-            if (pthread_join(threads[i], &temp))
-                EXIT_MSG("Error joining thread!")
-
-            portfolio_data->array[i] = temp;
-        }
-        else {
-            portfolio_data->array[i] = api_info_init();
-            strcpy(portfolio_data->array[i]->symbol, syms[i]);
-        }
-        portfolio_data->array[i]->amount = json_object_get_double(json_object_object_get(json_object_array_get_idx(
-                jobj, i), "Shares"));
-        portfolio_data->array[i]->total_spent = json_object_get_double(json_object_object_get(json_object_array_get_idx(
-                jobj, i), "USD_Spent"));
-        calculate_check_data(portfolio_data->array[i]);
-    }
-    info_array_calculate_totals(portfolio_data);
     json_object_put(jobj);
-    string_destroy(&pString);
     return portfolio_data;
 }
 
@@ -402,14 +336,10 @@ void portfolio_print_all(Info_Array* portfolio_data) {
         }
     } while (ch != 'q'); // "q" to quit
     endwin();
-    api_info_array_destroy(&portfolio_data);
 }
 
 void portfolio_print_stock(const char* symbol) {
-    String* pString = portfolio_file_get_string(NULL);
-    if (pString == NULL) // Error reading portfolio, wrong password, empty portfolio array
-        return;
-
+    String* pString = portfolio_ncurses_get_plaintext_string(NULL);
     Json* jobj = json_tokener_parse(pString->data);
     size_t i = 0, len = json_object_array_length(jobj);
     while (i < len && strcmp(
@@ -447,39 +377,4 @@ int portfolio_symbol_index(const char* symbol, const Json* jarray) {
             return i;
     }
     return -1;
-}
-
-void portfolio_encrypt_decrypt(int crypt_opt) {
-    char* password = NULL;
-    String* pString = portfolio_file_get_string(&password);
-    if (pString == NULL) // Error reading portfolio or wrong password when decrypting
-        return;
-
-    if (crypt_opt == ENCRYPT && password != NULL) // Trying to encrypt an encrypted portfolio
-        GOTO_CLEAN_MSG("Portfolio is already encrypted.")
-
-    if (crypt_opt == DECRYPT && password == NULL) // Trying to decrypt a plaintext portfolio
-        GOTO_CLEAN_MSG("Portfolio isn't encrypted.")
-
-    if (crypt_opt == DECRYPT) {
-        string_write_portfolio(pString);
-        GOTO_CLEAN_MSG("Decrypted successfully")
-    }
-
-    // ENCRYPT
-    password = rc4_getPassword();
-    puts("You will be asked to enter your password again to make sure the entries match.");
-    sleep(2); // Sleep so user can read above message before ncurses initscr()
-    char* password_check = rc4_getPassword(); // Get password a second time
-    if (strcmp(password, password_check) != 0) { // Make sure the two passwords are the same
-        free(password_check);
-        GOTO_CLEAN_MSG("Passwords do not match!")
-    }
-    rc4_encode_string(pString, password);
-    string_write_portfolio(pString);
-    puts("Encrypted successfully");
-    free(password_check);
-    cleanup: // CLEANUP
-    free(password);
-    string_destroy(&pString);
 }

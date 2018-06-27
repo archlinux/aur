@@ -25,24 +25,18 @@
 
 #define HIGHLIGHT_NONE -1
 
-#define KEY_ESCAPE 27
-
-extern char* portfolio_file;
+extern char* portfolio_file_path;
 
 /**
  * Postcondition: the char* portfolio_file (the "portfolio") is allocated on the heap and contains the
  * path "$HOME/.tick_portfolio.json"
  */
-void portfolio_file_init(void);
+void portfolio_file_path_init(void);
 
-/**
- * Reads the portfolio into a String object and returns it. If the file doesn't exist or it cannot be read return NULL.
- * If the stored String is encrypted, decrypt it before returning. Return NULL if given the wrong password to decrypt.
- * @param password_ref Used as a return value. If not NULL, references a char* containing the password to the portfolio
- * @return pointer to a allocated String containing the contents of the unencrypted portfolio or NULL on error opening
- * or reading portfolio
- */
-String* portfolio_file_get_string(char** password_ref);
+String* portfolio_ncurses_get_plaintext_string(char** password_ref);
+
+void portfolio_modify_write(const char* symbol, double quantity_shares, double usd_spent,
+                            int mod_option);
 
 /**
  * Creates or modifies the portfolio in JSON format. Each security is an object in an array. Each object contains the
@@ -68,14 +62,15 @@ String* portfolio_file_get_string(char** password_ref);
  * @param usd_spent the amount of USD to modify the portfolio by
  * @param mod_option SET, REMOVE, or ADD
  */
-void portfolio_modify(const char* symbol, double quantity_shares, double usd_spent, int mod_option);
+void portfolio_modify_string(String* pString, const char* symbol, double quantity_shares,
+                             double usd_spent, int mod_option);
 
 /**
  * Returns an Info_Array containing data from the portfolio.
  * length is the number of securities in the portfolio
  * @return SDA array
  */
-Info_Array* portfolio_get_info_array(void);
+Info_Array* portfolio_info_array_init_from_portfolio(String* pString);
 
 /**
  * Sorts the SDA array based on the SORT mode.
@@ -107,16 +102,5 @@ void portfolio_print_stock(const char* symbol);
  * @return -1 if not found, the index number otherwise
  */
 int portfolio_symbol_index(const char* symbol, const Json* jarray);
-
-/**
- * Return if trying to encrypt an encrypted portfolio and trying to decrypt a non-encrypted portfolio.
- *
- * If encrypting, ask for password twice to make sure the user has specified the correct password they wish to use to
- * encrypt the portfolio. If they don't match, return. Write the portfolio file with the encrypted String.
- *
- * If decrypting, decrypt the portfolio and write the decrypted String to the file.
- * @param crypt_opt crypt option
- */
-void portfolio_encrypt_decrypt(int crypt_opt);
 
 #endif

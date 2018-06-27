@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
     }
 
     // Init portfolio path
-    portfolio_file_init();
+    portfolio_file_path_init();
 
     // Init cURL
     curl_global_init(CURL_GLOBAL_ALL);
@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 
         //Encrypt/decrypt
     else if ((strcmp(cmd, "encrypt") == 0 || strcmp(cmd, "decrypt") == 0) && argc == 2)
-        portfolio_encrypt_decrypt(strcmp(cmd, "encrypt") == 0); // 1 if encrypt, 0 if decrypt
+        portfolio_write_encrypt_decrypt(strcmp(cmd, "encrypt") == 0); // 1 if encrypt, 0 if decrypt
 
         // Info
     else if (strcmp(cmd, "info") == 0 && argc == 3)
@@ -60,9 +60,18 @@ int main(int argc, char* argv[]) {
 
         // Check
     else if (strcmp(cmd, "check") == 0 && (argc == 2 || argc == 3)) {
-        if (argc == 2)
-            portfolio_print_all(portfolio_get_info_array());
-        else portfolio_print_stock(sym);
+        if (argc == 2) {
+            String* pString = portfolio_ncurses_get_plaintext_string(NULL);
+            if (pString != NULL) {
+                Info_Array* portfolio_data = portfolio_info_array_init_from_portfolio(pString);
+                api_info_array_populate_data(portfolio_data, pString);
+                if (portfolio_data != NULL) {
+                    portfolio_print_all(portfolio_data);
+                    api_info_array_destroy(&portfolio_data);
+                }
+                string_destroy(&pString);
+            }
+        } else portfolio_print_stock(sym);
     }
 
         // Portfolio
@@ -101,10 +110,10 @@ int main(int argc, char* argv[]) {
             if (ea)
                 usd *= qty;
 
-            portfolio_modify(sym, qty, usd, modop);
+            portfolio_modify_write(sym, qty, usd, modop);
         }
     }
-    free(portfolio_file);
+    free(portfolio_file_path);
     free(sym);
     free(cmd);
     curl_global_cleanup();
