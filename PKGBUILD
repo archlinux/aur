@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=rbspy-bin
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Sampling profiler for Ruby"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=('rbspy')
 
 source=("https://github.com/rbspy/rbspy/releases/download/v${pkgver}/rbspy-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
-sha512sums=('516009ac0400cd726b23fbdd158510b89adc624022120030ea7c7b18978fd7c0d90023c153596a61328027854a1c7bf5c7c69d99d17509be9350329fc1ef9b01')
+sha256sums=('48b03e3ac1097c75097e89d891626e2fb595138ba2f682d9728ff9b86357aafa')
 
 package() {
   install -D -m755 "${srcdir}/rbspy" "${pkgdir}/usr/bin/rbspy"
