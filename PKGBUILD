@@ -1,15 +1,17 @@
 # Maintainer: graysky <graysky AT archlnux.us>
+# Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-340xx-ck
 pkgver=340.107
-_extramodules=extramodules-4.16-ck
-pkgrel=16
+_extramodules=extramodules-4.17-ck
+pkgrel=17
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-ck>=4.16' 'linux-ck<4.17' 'libgl' "nvidia-340xx-utils=${pkgver}")
-makedepends=('linux-ck-headers>=4.16' 'linux-ck-headers<4.17' 'nvidia-340xx-libgl')
+depends=('linux-ck>=4.17' 'linux-ck<4.18' 'libgl' "nvidia-340xx-utils=${pkgver}")
+makedepends=('linux-ck-headers>=4.17' 'linux-ck-headers<4.18' 'nvidia-340xx-libgl')
 conflicts=('nvidia-ck' 'nvidia-390xx-ck')
 #groups=('ck-generic')
 #replaces=()
