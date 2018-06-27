@@ -2,7 +2,7 @@
 
 pkgname=linphone-desktop-all-git
 pkgver=4.1.1.r415.efa3e107
-pkgrel=2
+pkgrel=3
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
 url="https://www.${pkgname%-desktop-all-git}.org/"
@@ -16,10 +16,10 @@ source=("${pkgname%-all-git}::git://git.${pkgname%-desktop-all-git}.org/${pkgnam
         "belle-sip.patch"
         "${pkgname%-desktop-all-git}.patch")
 sha256sums=("SKIP"
-            "08c3c4620f4734c9d3a4f1f1b2ff99ee6ddbf27f23505e670e4930733051eb43"
+            "346d983f503873811b3a4f72772e5afe4990275526c9e15c1b5cde2ad69a0544"
             "bc0589eb2739aee429db9c67aa4308fcd817324ef5248b1766efee717798a900"
             "8a365864cfa8c6eb517701bcb2a2a7d51009bf504c104884ed3fbd05a36b3a84"
-            "1db32dff8a93d7508dbbb7d293860f72a33a54da3e3499f5a5535d2a351a88ce")
+            "2657947c9311cdb3fd5167526943346bccd05a9433a242a280d9ed7f49b6ae6d")
 
 prepare() {
   cd "${srcdir}/${pkgname%-all-git}"
@@ -49,7 +49,7 @@ build() {
 
   msg2 "Preparing build..."
   ./prepare.py -c
-  ./prepare.py --list-cmake-variables
+  ./prepare.py --list-cmake-variables -DENABLE_RELATIVE_PREFIX=YES
 
   msg2 "Building..."
   make
@@ -67,4 +67,30 @@ package() {
 
   install -d "${pkgdir}/usr/share"
   mv "${pkgdir}/opt/${pkgname%-all-git}/share/icons" "${pkgdir}/usr/share"
+
+  #cp -r "OUTPUT/desktop" "${pkgdir}/usr"
+  #Conflicting packages if installed in /usr
+  #bcmatroska2-git
+  #bctoolbox-git
+  #belcard-git
+  #belle-sip-git
+  #belr-git
+  #bzrtp-git
+  #ffmpeg
+  #gsm
+  #libsrtp
+  #libvpx
+  #libxml2
+  #linphone-desktop-git
+  #linphone-git
+  #mbedtls
+  #mediastreamer-git
+  #minizip-git
+  #opus
+  #ortp-git
+  #speex
+  #speexdsp
+  #sqlite
+  #v4l-utils
+  #zlib
 }
