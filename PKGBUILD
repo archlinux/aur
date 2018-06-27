@@ -1,17 +1,16 @@
-# -*- shell-script -*-
 # Maintainer: Dmitri Kourennyi <dkour at mykolab dot com>
 # Contributor: Eric Schulte <[firstname] dot [lastname] at gmx dot com>
 pkgname=feedgnuplot
-pkgver=1.44
+pkgver=1.49
 pkgrel=1
-pkgdesc="Pipe-oriented frontend to Gnuplot"
+pkgdesc="General purpose pipe-oriented plotting tool"
 arch=('any')
 url="https://github.com/dkogan/feedgnuplot"
 license=('GPL')
 depends=('perl' 'gnuplot' 'perl-list-moreutils' 'perl-string-shellquote')
-provides=(feedgnuplot)
+provides=('feedgnuplot')
 source=("https://github.com/dkogan/feedgnuplot/archive/v${pkgver}.tar.gz")
-md5sums=("03c73ea12f51deb591198147330377fc")
+sha256sums=("5cb292761228309794cfecb7105232559433ceb1f16a5a5f80ca08ee8caf9902")
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
