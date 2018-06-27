@@ -7,7 +7,7 @@ pkgdesc="A clock which uses the X On-Screen Display library"
 arch=('i686' 'x86_64')
 source=("https://github.com/danitool/osd_clock/archive/${pkgver}.tar.gz")
 license=('GPL2')
-depends=('xosd ttf-freefont')
+depends=('xosd' 'ttf-freefont')
 makedepends=('make')
 md5sums=('93baed0d1bf3e81e649ac27c84fa8c18')
 
