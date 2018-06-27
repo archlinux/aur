@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-driver-git
-pkgver=2018.Q2.1.r42.g4cbb2c8.gmmlib.r44.d0a4870
-pkgrel=2
+pkgver=2018.2.pre2.r34.g22c0c67.gmmlib.r59.b20e484
+pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI (git version)'
 arch=('x86_64')
 url='https://github.com/intel/media-driver/'
@@ -28,8 +28,8 @@ pkgver() {
     cd "$pkgname"
     
     # git, tags available
-    local _prefix='driver-for-Intel-Media-SDK-'
-    local _driver_ver="$(git describe --long --tags | sed "s/^${_prefix}//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/Q/\.Q/")"
+    local _prefix='intel-media-'
+    local _driver_ver="$(git describe --long --tags | sed "s/^${_prefix}//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/^18\./2018./")"
     
     cd "${srcdir}/gmmlib-git"
     
@@ -45,13 +45,13 @@ build() {
     
     cmake \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+        -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL='OFF' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR:PATH='etc' \
         -DINSTALL_DRIVER_SYSCONF:BOOL='ON' \
         -DMEDIA_BUILD_FATAL_WARNINGS:BOOL='OFF' \
         -DMEDIA_VERSION='2.0.0' \
-        -DBUILD_ALONG_WITH_CMRTLIB='1' \
         -DBS_DIR_GMMLIB="$(pwd)/../gmmlib-git/Source/GmmLib/" \
         -DBS_DIR_COMMON="$(pwd)/../gmmlib-git/Source/Common/" \
         -DBS_DIR_INC="$(pwd)/../gmmlib-git/Source/inc/" \
