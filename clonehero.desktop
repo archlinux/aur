@@ -6,4 +6,5 @@ Encoding=UTF-8
 Type=Application
 Terminal=false
 Exec=/usr/bin/clonehero
+Icon=/usr/share/clonehero/icon.png
 Categories=Game;
