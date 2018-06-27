@@ -14,7 +14,6 @@ pkgbase = microchip-mplabxc16-bin
 	options = emptydirs
 	options = !zipman
 	options = staticlibs
-	options = !upx
 	source = http://ww1.microchip.com/downloads/en/DeviceDoc/xc16-v1.34-full-install-linux-installer.run
 	source = bitrock-unpacker.tcl
 	md5sums = c5d157c08a7cbc579bcb3132837f0c32

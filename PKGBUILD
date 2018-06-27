@@ -16,7 +16,7 @@ makedepends=(sdx)
 makedepends_x86_64=(lib32-tclkit)
 makedepends_i686=(tclkit)
 
-options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
+options=(!strip docs libtool emptydirs !zipman staticlibs)
 source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run" "bitrock-unpacker.tcl")
 
 md5sums=('c5d157c08a7cbc579bcb3132837f0c32'
