@@ -15,7 +15,8 @@ depends=('glib2' 'gtk3' 'gtk2' 'qt4' 'qt5-base' 'libappindicator-gtk3'
          'libhangul' 'anthy' 'libchewing' 'librime' 'libxkbcommon' 'wayland'
          'audit')
 optdepends=('brise: Rime schema repository'
-            'noto-fonts-cjk: Google Noto CJK fonts')
+            'noto-fonts-cjk: Google Noto CJK fonts'
+            'xorg-setxkbmap: Set the keyboard using the X Keyboard Extension')
 source=("https://gitlab.com/hodong/nimf/-/archive/master/nimf-master.tar.bz2")
 md5sums=('SKIP')
 

@@ -41,6 +41,7 @@ pkgbase = nimf-git
 	depends = audit
 	optdepends = brise: Rime schema repository
 	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	optdepends = xorg-setxkbmap: Set the keyboard using the X Keyboard Extension
 	source = https://gitlab.com/hodong/nimf/-/archive/master/nimf-master.tar.bz2
 	md5sums = SKIP
 
