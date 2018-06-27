@@ -4,14 +4,14 @@ pkgbase='flask-table'
 pkgname=('python-flask-table' 'python2-flask-table')
 _module='flask_table'
 pkgver='0.5.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='HTML tables for use with the Flask micro-framework'
 arch=('any')
 url='http://pypi.python.org/pypi/Flask-Table/'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/nullptrT/flask_table/archive/v$pkgver.tar.gz")
-sha1sums=('0cef68a6c20e6e6ff88ddafc2078e3e683cb4131')
+sha1sums=('f7bc8047150fa201002063fa87295d1329ceb301')
 
 prepare() {
   cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
