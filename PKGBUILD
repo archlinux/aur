@@ -3,25 +3,33 @@
 # Contributor: kfgz <kfgz@interia.pl>
 
 pkgbase=glib2-git
-_pkgame=glib2
+_pkgname=glib2
 pkgname=(glib2-git glib2-docs-git)
-pkgver=2.57.1.212.g54498aa7a
+pkgver=2.57.1.325.gc40e8a55b
 pkgrel=1
 pkgdesc="Low Level Core Library"
 arch=('x86_64')
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
-depends=(pcre libffi libutil-linux zlib)
-makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux dbus)
-checkdepends=(desktop-file-utils)
-optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
-            'libelf: gresource inspection tool')
+depends=(
+     pcre libffi libutil-linux zlib
+)
+makedepends=(
+     gettext gtk-doc shared-mime-info python libelf git util-linux dbus
+)
+checkdepends=(
+     desktop-file-utils
+)
+optdepends=(
+            'python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
+            'libelf: gresource inspection tool'
+)
 conflicts=($_pkgname)
-provides=(glib2=$pkgver)
+provides=($_pkgname=$pkgver)
 options=(!emptydirs)
 source=("git+https://gitlab.gnome.org/GNOME/glib.git"
         0001-noisy-glib-compile-schemas.patch
-        glib-compile-schemas.hook 
+        glib-compile-schemas.hook
         gio-querymodules.hook )
 sha512sums=('SKIP'
             'ddbf4a8eaf60e943a10a1ad67f2de078143558df8cc06e8009da87d8068af0cf8c66f443474b8b2848239c003e6210ff9ceb1ba5ffda1b95b80687adbf813722'
@@ -44,7 +52,7 @@ prepare() {
 build () {
      local debug=minimum
      check_option debug y && debug=yes
-  
+
     cd "$srcdir/glib"
     ./configure \
     --prefix=/usr \
@@ -65,17 +73,17 @@ build () {
 package_glib2-git() {
     cd "$srcdir/glib"
     DESTDIR="$pkgdir" make install
+
     mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
- 
-    install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 ../*.hook
+    install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 $srcdir/*.hook
 }
 
 package_glib2-docs-git() {
   pkgdesc="Documentation for GLib"
   depends=()
   optdepends=()
-  provides=(glib2-docs)
-  conflicts=(glib2-docs)
+  provides=($_pkgname-docs)
+  conflicts=($_pkgname-docs)
   license+=(custom)
 
   mkdir -p "$pkgdir/usr/share"
