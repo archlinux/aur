@@ -59,7 +59,6 @@ package() {
     install -m755 map_extract          "$pkgdir/usr/lib/ddnet/tools/"
     install -m755 map_replace_image    "$pkgdir/usr/lib/ddnet/tools/"
     install -m755 map_resave           "$pkgdir/usr/lib/ddnet/tools/"
-    #install -m755 map_version          "$pkgdir/usr/lib/ddnet/tools/"
     install -m755 packetgen            "$pkgdir/usr/lib/ddnet/tools/"
     install -m755 tileset_borderadd    "$pkgdir/usr/lib/ddnet/tools/"
     install -m755 tileset_borderfix    "$pkgdir/usr/lib/ddnet/tools/"
