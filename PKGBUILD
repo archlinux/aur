@@ -3,12 +3,13 @@
 
 pkgname=physlock
 pkgver=11
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight Linux console locking tool'
 url='https://github.com/muennich/physlock'
 license=(GPL2)
 
 depends=(pam)
+optdepends=('xss-lock: lock screen on suspend or after inactivity')
 
 arch=(x86_64)
 source=("physlock-$pkgver.tar.gz::https://github.com/muennich/physlock/archive/v$pkgver.tar.gz")
