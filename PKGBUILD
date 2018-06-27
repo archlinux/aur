@@ -3,7 +3,7 @@
 pkgbase=lapack-git
 pkgname=('lapack-git' 'blas-git' 'lapacke-git')
 pkgver=3.8.0.r70.g9fb29d8e
-pkgrel=1
+pkgrel=2
 pkgdesc="Linear Algebra PACKage"
 arch=('i686' 'x86_64')
 url="http://www.netlib.org/lapack/"
@@ -42,8 +42,8 @@ build() {
 
 package_lapack-git() {
   depends=('gcc-libs' 'blas')
-  provides=('lapack')
-  conflicts=('lapack')
+  provides=('lapack' 'lapack-manpages')
+  conflicts=('lapack' 'lapack-manpages')
 
   cd "$srcdir/_build"
   make DESTDIR="$pkgdir" install
