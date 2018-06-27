@@ -1,5 +1,4 @@
 #include "string-tick.h"
-#include "portfolio.h"
 
 String* string_init(void) {
     String* pString = (String*) malloc(sizeof(String));
@@ -45,8 +44,35 @@ char* strip_tags(char* string) {
     return string;
 }
 
-void string_write_portfolio(String* pString) {
-    FILE* fp = fopen(portfolio_file, "w");
+String* file_get_string(char* file_name) {
+    struct stat file_info;
+    if (stat(file_name, &file_info)) // If called from portfolio_modify_string, file should exist (possibly size 0)
+        RETNULL_MSG("File doesn't exist.");
+
+    if (file_info.st_size == 0) // Return new String if new file
+        return string_init();
+
+    FILE* fp = fopen(file_name, "r");
+    if (fp == NULL) // If file exists, but cannot be opened, usually because of permissions
+        RETNULL_MSG("Error opening file.")
+
+    String* pString = string_init();
+    pString->len = (size_t) file_info.st_size;
+    pString->data = realloc(pString->data, pString->len + 1); // Alloc with file size
+    pointer_alloc_check(pString->data);
+    pString->data[pString->len] = '\0';
+    if (fread(pString->data, sizeof(char), pString->len, fp) != pString->len) { // read file and return NULL if error
+        fclose(fp);
+        string_destroy(&pString);
+        RETNULL_MSG("Error reading file.")
+    }
+
+    fclose(fp);
+    return pString;
+}
+
+void string_write_file(String* pString, char* file_name) {
+    FILE* fp = fopen(file_name, "w");
     if (fp == NULL)
         RET_MSG("Error opening file.")
     if (fwrite(pString->data, sizeof(char), pString->len, fp) != pString->len)

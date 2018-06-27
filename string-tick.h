@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <sys/stat.h>
 
 typedef struct string {
     char* data;
@@ -34,7 +35,7 @@ typedef struct string {
 typedef struct json_object Json;
 
 /**
- * Creates and returns a String object with len 1 and no data
+ * Creates and returns a String object with len 0 and data allocated 1 byte null terminated.
  * @return STRING object
  */
 String* string_init(void);
@@ -67,10 +68,17 @@ char* strip_char(char* string, char c);
 char* strip_tags(char* string);
 
 /**
- * Overwrites the portfolio with the given pString
+ * Returns the contents of a file in a String
+ * @param file_name path to file
+ * @return String*
+ */
+String* file_get_string(char* file_name);
+
+/**
+ * Writes a String to a file
  * @param pString the String to overwrite with
  */
-void string_write_portfolio(String* pString);
+void string_write_file(String* pString, char* file_name);
 
 /**
  * Destroys String object and frees memory. Points the String to NULL.
