@@ -1,11 +1,12 @@
-# Maintainer: rob2uk <rob22uk at gmail dot com>
+# Maintaner:   <https://aur.archlinux.org/
+# Contributor: rob2uk <rob22uk at gmail dot com>
 # Contributor: Skydrome <skydrome@i2pmail.org>
 # Contributor: TuxSpirit <tuxspirit AT archlinux DOT fr>
 
 pkgname=rar-beta
-pkgver=5.6.b1
+pkgver=5.6.b5
 pkgrel=1
-pkgdesc="A command-line port of the rar compression utility (beta version)"
+pkgdesc="A command-line port of the rar compression utility (beta version or maybe not)"
 url="http://www.rarlab.com"
 arch=('x86_64')
 license=('custom')
@@ -17,7 +18,7 @@ source=('rar.1' 'unrar.1'
         "http://www.rarlab.com/rar/rarlinux-x64-${pkgver}.tar.gz")
 md5sums=('4cffd2771bb4a51e4a68500d799550d8'
          '594b777453751ee331ef241160f31499'
-         '39e1cf13fcd35bc665c183ccda541a72')
+         '9cff9e8d214a751d6e65547f04202e29')
 
 # the checksums of the source from rarlab.com are changing
 # almost every day so this will never be correct
