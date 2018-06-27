@@ -1,8 +1,8 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -269,1 +269,0 @@
+@@ -263,1 +263,0 @@
 -        GuiAddons
-@@ -273,1 +272,0 @@
+@@ -267,1 +266,0 @@
 -        WindowSystem
 --- a/libs/widgets/CMakeLists.txt
 +++ a/libs/widgets/CMakeLists.txt

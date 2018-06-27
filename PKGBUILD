@@ -2,7 +2,7 @@
 
 _pkgname=krita
 pkgname="${_pkgname}-minimal"
-pkgver=4.0.4
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Edit and paint images (less KDE dependencies)'
 arch=(x86_64)
@@ -11,19 +11,21 @@ license=(GPL3)
 depends=(karchive kcompletion kcoreaddons ki18n kitemviews qt5-svg
          qt5-multimedia qt5-x11extras kitemmodels
          gsl libraw exiv2 openexr fftw curl boost-libs giflib qt5-declarative hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools python boost eigen vc poppler-qt5 opencolorio python-pyqt5)
+makedepends=(extra-cmake-modules kdoctools python boost eigen vc poppler-qt5 opencolorio
+             python-pyqt5 libheif)
 optdepends=('poppler-qt5: PDF filter'
             'ffmpeg: to save animations'
             'opencolorio: for the LUT docker'
             "krita-plugin-gmic: G'MIC plugin"
-            'python-pyqt5: for the Python plugins')
+            'python-pyqt5: for the Python plugins'
+            'libheif: HEIF filter')
 provides=("${_pkgname}=${pkgver}")
 conflicts=(calligra-krita krita-l10n "${_pkgname}")
 source=("https://download.kde.org/stable/krita/$pkgver/${_pkgname}-$pkgver.tar.gz"{,.sig}
         'replace-code.patch')
-sha256sums=('f3d3f27873381897dcbf84b68497812cdbe5ae1bb49eb3826be13cd568577a7c'
+sha256sums=('78792df8165b986b806dcf9960a2679f683f2263e06f3ad5a24b0f78d8f27ed5'
             'SKIP'
-            '555238fc755429935770738e3c876dac38f78f5d071bf08a1bb16d1b8a21a7b6')
+            '1e076c7de3ee1bd6622cd40d227d0c687170b410f0e297f78f97e0b7f7270d6d')
 validpgpkeys=('05D00A8B73A686789E0A156858B9596C722EA3BD') # Boudewijn Rempt <foundation@krita.org>
 
 prepare() {
