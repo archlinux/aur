@@ -1,0 +1,11 @@
+post_install()
+{
+	echo
+	echo " → Remember to restart your terminal! ← "
+	echo
+}
+
+post_upgrade()
+{
+	post_install
+}
