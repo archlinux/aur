@@ -1,7 +1,9 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
+PKGEXT=.pkg.tar
+
 pkgname=kotlin-native-bin
-pkgver=0.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A LLVM backend for the Kotlin compiler"
 arch=('x86_64')
@@ -12,7 +14,7 @@ depends=('java-environment' 'ncurses5-compat-libs')
 provides=('kotlin-native')
 conflicts=('kotlin-native' 'kotlin-native-git')
 source=("https://github.com/JetBrains/kotlin-native/releases/download/v${pkgver}/kotlin-native-linux-${pkgver}.tar.gz")
-sha512sums=('b78b14e71b426effd8b62aad89535cf364284174bbb54a05d186478a23e92405f89336e98be6e83793cad61b9577e34ff26ae8c592b5c9eba04ded0f28b6a9d3')
+sha256sums=('a0ba4d2bb6d9035c6576383cc8d96e25eb33bc8876c299715fb7e1ca401cbe3b')
 
 package() {
   install -d "${pkgdir}/usr/bin"
