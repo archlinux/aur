@@ -7,7 +7,7 @@ pkgname='ros-melodic-image-view'
 pkgver='1.12.23'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rosconsole
@@ -23,7 +23,7 @@ ros_makedepends=(ros-melodic-rosconsole
   ros-melodic-message-generation
   ros-melodic-sensor-msgs
   ros-melodic-nodelet)
-makedepends=('cmake' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools' 'gtkglext'
   ${ros_makedepends[@]}
   gtk2)
 

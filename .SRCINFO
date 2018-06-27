@@ -1,12 +1,13 @@
 pkgbase = ros-melodic-image-view
 	pkgdesc = ROS - A simple viewer for ROS image topics.
 	pkgver = 1.12.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/image_view
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
+	makedepends = gtkglext
 	makedepends = ros-melodic-rosconsole
 	makedepends = ros-melodic-dynamic-reconfigure
 	makedepends = ros-melodic-camera-calibration-parsers
