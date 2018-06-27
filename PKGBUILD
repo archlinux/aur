@@ -2,7 +2,7 @@
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-pkgver=20.0.r2159
+pkgver=21.0.r2202
 pkgrel=1
 epoch=1
 pkgdesc="Download from Usenet using .nzb files"
@@ -19,14 +19,14 @@ provides=('nzbget'
           'nzbget-systemd')
 conflicts=('nzbget')
 install=nzbget.install
-source=("$pkgname::git+https://github.com/nzbget/nzbget.git"
+source=("$pkgname::git+https://github.com/nzbget/nzbget.git#branch=develop"
         "nzbget.service")
 sha256sums=('SKIP'
             '66b2c2fbe949f6406a49674d28a2bdd258b20780ba47a586b640d6cc4d99f7c2')
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags --long | sed -r 's/-[0-9].*//' | sed 's/-/./;s/v//'
+  printf "%s.r%s" "$(curl -s https://raw.githubusercontent.com/nzbget/nzbget/develop/configure.ac | grep -oP '(?<=AC_INIT\(nzbget, )(\d+\.\d+)')" "$(git rev-list --count develop)"
 }
 
 build() {
