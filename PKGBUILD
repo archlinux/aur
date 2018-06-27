@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_githubname}"
-  make VERSION="$pkgver" _build
+  make _build
 }
 
 package() {
