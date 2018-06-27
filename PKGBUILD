@@ -5,33 +5,31 @@
 # Contributor: Magnus Therning <magnus@therning.org>
 
 pkgname=ocaml-pcre
-pkgver=7.2.3
-pkgrel=2
+pkgver=7.3.4
+pkgrel=1
 pkgdesc="Perl compatible regular expressions for OCaml"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://mmottl.github.io/pcre-ocaml"
-license=('LGPL')
-depends=('pcre>=4.5')
-makedepends=('ocaml-findlib' 'ocamlbuild')
+license=('custom:LGPL2.1 with linking exception')
+depends=('ocaml' 'pcre')
+makedepends=('dune' 'ocaml-base' 'ocaml-stdio' 'ocaml-configurator')
 replaces=('pcre-ocaml')
 conflicts=('pcre-ocaml')
 options=('!strip' 'staticlibs')
-source=("https://github.com/mmottl/pcre-ocaml/releases/download/v$pkgver/pcre-ocaml-$pkgver.tar.gz")
-md5sums=('90b503355160d7422a7c3ef1623e6444')
+source=("https://github.com/mmottl/pcre-ocaml/releases/download/${pkgver}/pcre-${pkgver}.tbz")
+md5sums=('fc7b7b092c38bdbdb0b679ff3af2ff68')
 
 build() {
-  cd "${srcdir}/pcre-ocaml-${pkgver}"
+  cd "${srcdir}/pcre-${pkgver}"
 
-  ./configure --disable-debug --prefix /usr --destdir "${pkgdir}"
-  make all
+  jbuilder build
 }
 
 package() {
-  cd "${srcdir}/pcre-ocaml-${pkgver}"
+  cd "${srcdir}/pcre-${pkgver}"
 
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  install -dm755 "${OCAMLFIND_DESTDIR}/stublibs"
-  make install
-  mv "${pkgdir}/usr/share/doc/pcre" "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -dm755 "${pkgdir}/$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
