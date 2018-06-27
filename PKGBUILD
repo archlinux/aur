@@ -1,7 +1,7 @@
 # Maintainer: Terin Stock <terinjokes@gmail.com>
 
 pkgname=topgit
-pkgver=0.19.10
+pkgver=0.19.11
 pkgrel=1
 pkgdesc="A different patch queue manager"
 url="https://github.com/mackyle/topgit"
@@ -12,7 +12,7 @@ makedepends=()
 source=(
   "https://github.com/mackyle/topgit/archive/topgit-${pkgver}.tar.gz"
 )
-sha256sums=('8a334ac1b3dfa2bf0b0612cf565e6077b42b7b4029db1b5f54322c84ef8deb9c')
+sha256sums=('f799c007d937ace94aa3dd905695dfe36bed758149e36a8206334feae3dcc45a')
 
 package() {
   cd "$pkgname-topgit-$pkgver"
