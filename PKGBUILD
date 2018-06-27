@@ -1,15 +1,15 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
-# Contributor: Thomas Weißschuh <thomas_weissschuh lavabit.com>
+# Contributor: Thomas Weißschuh <thomas_weissschuh@lavabit.com>
 
 pkgname=mosh
 pkgver=1.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=('x86_64')
 url='https://mosh.org/'
 license=('GPL3')
-depends=('libutempter' 'perl-io-tty' 'protobuf')
+depends=('libutempter' 'openssl' 'perl-io-tty' 'protobuf')
 makedepends=('git')
 options=('!emptydirs')
 source=("git+https://github.com/mobile-shell/mosh#tag=$pkgname-$pkgver")
@@ -19,13 +19,12 @@ build() {
   cd "$pkgname"
 
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-ufw --sysconfdir=/etc
   make
 }
 
 package() {
-  make -C "$pkgname" DESTDIR="$pkgdir" install
-
+  DESTDIR="$pkgdir" make -C "$pkgname" install
   install -Dm644 "$pkgname/conf/bash-completion/completions/$pkgname" \
     "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 }
