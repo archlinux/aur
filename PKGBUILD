@@ -2,13 +2,22 @@
 
 pkgname=mastodon
 pkgver=2.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(i686 x86_64)
 url=https://joinmastodon.org
 license=(AGPL-3.0)
-depends=(ffmpeg imagemagick libpqxx libxml2 libxslt nodejs-lts-boron postgresql redis ruby)
-makedepends=(yarn ruby-bundler protobuf git python2)
+depends=(ffmpeg
+         imagemagick
+         libpqxx
+         libxml2
+         libxslt
+         nodejs-lts-boron
+         postgresql
+         redis
+         ruby-bundler
+         protobuf)
+makedepends=(yarn python2)
 conflicts=(mastodon-git)
 backup=(var/lib/mastodon/.env.production)
 install=mastodon.install
