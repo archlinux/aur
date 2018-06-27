@@ -3,19 +3,20 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile
-pkgver=6.1.8
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
 license=('GPL2')
-depends=("ccnet" "fuse" "python2" "sqlite")
+depends=("libsearpc" "libevent"
+         "fuse" "python2" "sqlite")
 makedepends=("vala" "intltool")
 conflicts=("seafile-server")
 source=("seafile-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "libseafile.in.patch"
         "seaf-cli@.service")
-sha256sums=('5d0b525446c1e15ffb7754ab0cc6bb1ea9d294dc1dddc7c6583a24780850ba24'
+sha256sums=('871ca78737c73f9580cb85ef286689ced5b3f0898a689aebfd3fff9521996b62'
             'a2d7f7cf0c59aba97650af62b3cefd0ceb71a1007c34d9369a88e5769c7f6076'
             'c37510109c1de64c774896df39aece240c056b54414d2119fca01860211156ba')
 provides=('seafile-client-cli')
