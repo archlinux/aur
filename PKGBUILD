@@ -1,7 +1,8 @@
 # Contributor: Glen Oakley <goakley123@gmail.com>
+# Contributor: Simon Doppler <dopsi@dopsi.ch>
 # Maintainer: Swift Geek
 pkgname=oregano
-pkgver=0.84.21
+pkgver=0.84.22
 pkgrel=1
 pkgdesc="Schematic capture and circuit simulator"
 arch=('x86_64' 'x86')
@@ -12,7 +13,7 @@ install='oregano.install'
 url="https://github.com/drahnr/oregano"
 license=("GPL2")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/drahnr/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('bf6e7d1174a35dbc53f941dc48c0aed20a13c0fac02df49f74d635f7f91b8917c427d3eac3ff54961b4ee0562e3f22f1256fe3d9ef4d0143a35d2108cdba522d')
+sha512sums=('bac634a08bde8216691da85291d2c62ad00c003c6acc0b9d00136481a9956c42cd48c4145458222167f62885b8fa2a8d32a8ec9fb8b1bfc22a143c148a9dccbc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
