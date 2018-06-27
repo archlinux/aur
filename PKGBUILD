@@ -1,15 +1,12 @@
-# Contributor: Lex Rivera aka x-demon <aur@x-demon.org>                
-# Contributor: Mantas Mikulėnas <grawity@gmail.com>
-
 pkgname=binkd
-pkgver=1.1a.96
-_pkgcommit=c7a1ed04e4b784db44cd87cb8ff5f003d786e977
+pkgver=1.1a.99
 pkgrel=1
 pkgdesc="Binkley protocol daemon for transferring files between Fidonet systems"
 arch=('i686' 'x86_64')
 url="https://github.com/pgul/binkd"
 license=('GPL')
 backup=("etc/binkd/binkd.conf")
+_pkgcommit=2165e9fcc1823682c2861cc61ed247685460d6cf
 source=("git+https://github.com/pgul/binkd.git#commit=$_pkgcommit"
         "binkd.service"
         "binkd@.service"
@@ -22,10 +19,10 @@ sha256sums=('SKIP'
             '2ddcb26a54f7a0f9a8ab5d8819431fb1f2bd961169c6fe5e7afa7f4c89e11786'
             '5032916082884a938978f0d5168fd053baab230bd34e84008ae637515e04a685')
 
-#pkgver() {
-#  cd "$srcdir"
-#  git describe --tags | sed 's/^binkd-//; s/-/.r/; s/[-_]/./g'
-#}
+pkgver() {
+  grep Version "$srcdir/binkd/mkfls/unix/binkd.spec" | awk '{ print $2 }'
+  #git describe --tags | sed 's/^binkd-//; s/-/.r/; s/[-_]/./g'
+}
 
 build() {
   cd "$srcdir/binkd"
@@ -46,8 +43,6 @@ package() {
   make DESTDIR="$pkgdir" install
 
   mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
-
-  ln -sf "binkd-$pkgver" "$pkgdir/usr/bin/binkd"
 
   install -dm0755 "$pkgdir/etc/binkd"
   mv "$pkgdir/etc/binkd.conf-dist" "$pkgdir/etc/binkd/binkd.conf"
