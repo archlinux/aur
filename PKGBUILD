@@ -1,8 +1,8 @@
 # Maintainer: Skywol <Skywol@qq.com>
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
 pkgname=deepin-wine-helper
-pkgver=1.1deepin9
-pkgrel=2
+pkgver=1.1deepin11
+pkgrel=1
 epoch=
 pkgdesc="Deepin Wine Helper"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgver}_i386.deb")
 noextract=("${pkgname}_${pkgver}_i386.deb")
-md5sums=('70bf22b12a4d0f5b018157ede73ced5f')
+md5sums=('3b9ec53cef4bcd8dcd06e02006b228eb')
 validpgpkeys=()
 
 prepare() {
