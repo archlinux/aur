@@ -17,7 +17,7 @@ makedepends=('intltool' 'itstool')
 depends=('id3lib' 'libid3tag' 'gtk2' 'libvorbis' 'flac' 'speex' 'wavpack' 'taglib'
          'desktop-file-utils' 'hicolor-icon-theme' 'opusfile')
 provides=("${_basename}")
-conflicts=("{$_basename}")
+conflicts=("${_basename}")
 source=(http://download.gnome.org/sources/${_basename}/${pkgver:0:3}/${_basename}-${pkgver}.tar.xz)
 sha256sums=('26437f0d698c3b16794336c335b40f53fa26aefeb77322e45e4e2501c4cff14a')
 
