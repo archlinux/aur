@@ -1,0 +1,15 @@
+pkgbase = expat1
+	pkgdesc = An XML parser library
+	pkgver = 1.95.8
+	pkgrel = 1
+	url = https://libexpat.github.io/
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = https://github.com/libexpat/libexpat/releases/download/R_1_95_8/expat-1.95.8.tar.gz
+	source = expat-1.95.8-destdir.patch
+	sha256sums = c6aaa0b427e775a0fd5a956a75ae41e5110f22760723d9bda316100010e891ca
+	sha256sums = bd61f7b436c2a3e42bc77f896b56a5cfda7f7127e93795ee312dc0056a502958
+
+pkgname = expat1
+
