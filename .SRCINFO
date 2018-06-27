@@ -21,9 +21,18 @@ pkgbase = husky-tosser
 	md5sums = 6dc36f0c2d0a49a603a107035ba5f07a
 
 pkgname = husky-tosser
-	pkgdesc = Husky Fido Tosser Bundle - hpt, areafix and other tools
+	pkgdesc = Husky Fido Tosser: hpt (tosser) and netmail/echomail tools
+	conflicts = husky-all
 
 pkgname = husky-msged
-	pkgdesc = msged from Husky Fido Tosser bundle
+	pkgdesc = Husky Fido Tosser: msged (message editor)
 	depends = husky-tosser
+	conflicts = husky-all
+
+pkgname = husky-all
+	pkgdesc = Husky Fido Tosser Complete Bundle: hpt (tosser), netmail/echomail tools, msged (message editor)
+	provides = husky-tosser=1.9_20150211
+	provides = husky-msged=1.9_20150211
+	conflicts = husky-tosser
+	conflicts = husky-msged
 

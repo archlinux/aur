@@ -1,4 +1,4 @@
-pkgname=(husky-tosser husky-msged)
+pkgname=(husky-tosser husky-msged husky-all)
 _realpkg=husky
 pkgver=1.9_20150211
 pkgrel=1
@@ -39,18 +39,31 @@ build() {
 }
 
 package_husky-tosser() {
-    pkgdesc='Husky Fido Tosser Bundle - hpt, areafix and other tools'
+    pkgdesc="Husky Fido Tosser: hpt (tosser) and netmail/echomail tools"
+    conflicts=("husky-all")
     for i in $_tosserModules; do
         cd "${srcdir}/${_realpkg}/${i}"
         make DESTDIR="$pkgdir" install
     done
 }
 package_husky-msged() {
-    pkgdesc='msged from Husky Fido Tosser bundle'
+    pkgdesc='Husky Fido Tosser: msged (message editor)'
     depends=('husky-tosser')
+    conflicts=("husky-all")
     cd "${srcdir}/${_realpkg}/msged"
     make DESTDIR="$pkgdir" install
 }
+
+package_husky-all() {
+    pkgdesc='Husky Fido Tosser Complete Bundle: hpt (tosser), netmail/echomail tools, msged (message editor)'
+    provides=("husky-tosser=${pkgver}" "husky-msged=${pkgver}")
+    conflicts=("husky-tosser" "husky-msged")
+    for i in $_buildModules; do
+        cd "${srcdir}/${_realpkg}/${i}"
+        make DESTDIR="$pkgdir" install
+    done
+}
+
 
 md5sums=('799c230ec374e22abcdb0b5452dce37c'
          '0ec212f2bb31d149cd1717ab681f519a'
