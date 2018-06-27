@@ -6,7 +6,6 @@ pkgbase = compute-runtime-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = gcc54
 	makedepends = llvm
 	makedepends = clang
 	makedepends = python2
@@ -22,8 +21,6 @@ pkgbase = compute-runtime-git
 	source = llvm_source::git+https://github.com/llvm-mirror/llvm#branch=release_40
 	source = gmmlib::git+https://github.com/intel/gmmlib
 	source = igc::git+https://github.com/intel/intel-graphics-compiler
-	source = khronos::git+https://github.com/KhronosGroup/OpenCL-Headers
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
