@@ -7,7 +7,7 @@ arch=(any)
 url="https://vaemendis.net/ubooquity/"
 license=('custom')
 depends=('java-runtime-headless>=8')
-optdepends=('java-runtime>=8: For Ubooquity GUI')
+optdepends=('java-runtime: For Ubooquity GUI')
 source=("http://vaemendis.net/ubooquity/downloads/Ubooquity-${pkgver}.zip"
         'ubooquity.service'
         'ubooquity.sysusers'

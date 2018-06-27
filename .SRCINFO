@@ -6,7 +6,7 @@ pkgbase = ubooquity
 	arch = any
 	license = custom
 	depends = java-runtime-headless>=8
-	optdepends = java-runtime>=8: For Ubooquity GUI
+	optdepends = java-runtime: For Ubooquity GUI
 	source = http://vaemendis.net/ubooquity/downloads/Ubooquity-2.1.1.zip
 	source = ubooquity.service
 	source = ubooquity.sysusers
