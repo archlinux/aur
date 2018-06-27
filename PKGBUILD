@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=libadalang-git
-pkgver=r2578.e44ddb9d
+pkgver=r2849.99e95476
 pkgrel=1
 
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language'
@@ -33,6 +33,10 @@ build()
     # be set.
     source /etc/profile.d/quex.sh
 
+    # Clang has trouble compiling the Quex-generated lexer, so make sure
+    # GPRbuild chooses GCC.
+    gprconfig -o config.cgpr --batch --config=c,,,,GCC --config=ada,,,,
+
     python2 ada/manage.py --no-langkit-support generate
 
     # Build Libadalang both as a static library and as a shared one. Ask not to
@@ -41,7 +45,7 @@ build()
     # lib.
     python2 ada/manage.py \
         --disable-static --enable-shared --no-langkit-support \
-        build --build-mode=prod --gargs="-R"
+        build --build-mode=prod --gargs="-R --config=$PWD/config.cgpr"
 
     # TODO: build & install static libraries. For now, this fails because
     # auto-initialized static libraries are built using partial linking (ld's
