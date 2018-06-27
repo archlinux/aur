@@ -1,18 +1,19 @@
 post_install() {
   getent passwd mastodon > /dev/null ||
-    useradd -rd /var/lib/mastodon -s /sbin/nologin mastodon
+    useradd -rd /var/lib/mastodon mastodon
   chown -R mastodon:mastodon /var/lib/mastodon
 
-  echo 'Enable mastodon.target to have all the Mastodon services start at boot.'
+  echo "To setup Mastodon, enable and start PostgreSQL and Redis, create the Mastodon PostgreSQL user using 'sudo -u postgres createuser -d mastodon', run 'sudo su - mastodon', then 'RAILS_ENV=production bundle exec rails mastodon:setup'.
+Enable mastodon.target to have all Mastodon's required services start at boot."
 }
 
 post_upgrade() {
   chown -R mastodon:mastodon /var/lib/mastodon
 
-  echo "To upgrade the database schema, run 'sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate'.
-To pre-compile updated assets, run 'sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile'."
+  echo "To upgrade the database schema, run 'sudo su - mastodon', then 'RAILS_ENV=production bundle exec rails db:migrate'.
+To pre-compile assets, run 'sudo su - mastodon', then 'RAILS_ENV=production bundle exec rails assets:precompile'."
 }
 
 post_remove() {
-  echo 'You may want to remove the mastodon user.'
+  echo 'You may want to remove the Mastodon user.'
 }
