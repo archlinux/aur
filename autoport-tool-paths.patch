@@ -1,0 +1,17 @@
+diff --git a/util/autoport/log_maker.go b/util/autoport/log_maker.go
+index 08b35d2195..c3ce81e57a 100644
+--- a/util/autoport/log_maker.go
++++ b/util/autoport/log_maker.go
+@@ -93,9 +93,9 @@ func MakeLogs(outDir string) {
+ 		inteltoolArgs += "f"
+ 	}
+ 
+-	RunAndSave(outDir+"/inteltool.log", "../inteltool/inteltool", inteltoolArgs)
+-	RunAndSave(outDir+"/ectool.log", "../ectool/ectool", "-pd")
+-	RunAndSave(outDir+"/superiotool.log", "../superiotool/superiotool", "-ade")
++	RunAndSave(outDir+"/inteltool.log", "inteltool", inteltoolArgs)
++	RunAndSave(outDir+"/ectool.log", "ectool", "-pd")
++	RunAndSave(outDir+"/superiotool.log", "superiotool", "-ade")
+ 
+ 	SysDir := "/sys/class/sound/card0/"
+ 	files, _ := ioutil.ReadDir(SysDir)

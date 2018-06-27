@@ -2,7 +2,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=coreboot-utils-git
-pkgver=4.8.r448.g6985a7b7d63
+pkgver=4.8.r627.gc3bc6cbe9de
 pkgrel=1
 pkgdesc='Tools and utilities to work with coreboot firmware'
 url='https://www.coreboot.org/'
@@ -14,11 +14,11 @@ makedepends=(git)
 source=(git+https://review.coreboot.org/coreboot
         # vboot provides vb2_api.h needed by cbfstool
         git+https://review.coreboot.org/vboot
-        https://raw.githubusercontent.com/corna/me_cleaner/312ef02714dcab806c9d9bfee07f51002dc61e08/me_cleaner.py
+        autoport-tool-paths.patch
 	buff_size_fix.patch)
 sha256sums=('SKIP'
             'SKIP'
-            'f27ddd0fa26c121221dc8f76b71bf308d6d7c48fdc4d84968580d04c5dc2e42e'
+            '5136f8ae6c690501b483243a33b91dc978971cf23bcf48c27bdca845db53bdb1'
             '0ab673cf5cfba4678cf7a7d567745742121cd921c4ab86081d4a9583ed679753')
 
 BUILD_AUTOPORT=y
@@ -65,7 +65,7 @@ package() {
   cd coreboot/util
   install -m755 -d "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man8"
   install -m755 -t "$pkgdir/usr/bin" cbfstool/{cbfstool,rmodtool} ifdtool/ifdtool nvramtool/nvramtool inteltool/inteltool superiotool/superiotool cbmem/cbmem romcc/romcc ectool/ectool intelmetool/intelmetool
-  install -m755 "$srcdir/me_cleaner.py" "$pkgdir/usr/bin/me_cleaner"
+  install -m755 "me_cleaner/me_cleaner.py" "$pkgdir/usr/bin/me_cleaner"
   if [ "$BUILD_AUTOPORT" == y ]; then
 	  install -m755 -t "$pkgdir/usr/bin" autoport/autoport
   fi
