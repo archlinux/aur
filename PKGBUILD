@@ -8,11 +8,11 @@ pkgdesc="Simple and beautiful calendar application designed to perfectly fit the
 url="https://wiki.gnome.org/Apps/Calendar"
 arch=('x86_64')
 license=('GPL')
-depends=('gsettings-desktop-schemas' 
+depends=('evolution-data-server' 
+    'gsettings-desktop-schemas'
     'libdazzle')
 makedepends=('appstream-glib' 
     'evolution'
-    'evolution-data-server'
     'git'
     'gtk-doc'
     'meson'
