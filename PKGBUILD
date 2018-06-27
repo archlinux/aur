@@ -3,11 +3,11 @@
 pkgname='compute-runtime'
 pkgdesc="Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond. Weekly build version."
 pkgver='18.25.10965'
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://01.org/compute-runtime'
 license=('MIT')
-makedepends=('git' 'gcc54' 'llvm' 'clang' 'python2' 'opencl-headers' 'cmake')
+makedepends=('git' 'llvm' 'clang' 'python2' 'opencl-headers' 'cmake')
 optdepends=('libva: for cl_intel_va_api_media_sharing'
             'libdrm: for cl_intel_va_api_media_sharing')
 depends=('ocl-icd')
@@ -19,11 +19,9 @@ source=("neo::git+https://github.com/intel/compute-runtime#tag=$pkgver"
         "llvm_patches::git+https://github.com/intel/llvm-patches#commit=8a7abaf"
         "llvm_source::git+https://github.com/llvm-mirror/llvm#branch=release_40"
         "gmmlib::git+https://github.com/intel/gmmlib#commit=5ff84b9"
-        "igc::git+https://github.com/intel/intel-graphics-compiler#commit=dca01ed"
-        "khronos::git+https://github.com/KhronosGroup/OpenCL-Headers#commit=f039db6")
+        "igc::git+https://github.com/intel/intel-graphics-compiler#commit=dca01ed")
 
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -41,10 +39,6 @@ build() {
   # doesn't build with gcc8 and gcc54 doesn't know -fno-plt
   cmake -DBUILD_TYPE=Release \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_C_COMPILER=gcc-5 \
-        -DCMAKE_CXX_COMPILER=g++-5 \
-        -DCMAKE_C_FLAGS="${CFLAGS/'-fno-plt'/}" \
-        -DCMAKE_CXX_FLAGS="${CFLAGS/'-fno-plt'/}" \
         ../neo
   make "$MAKEFLAGS"
 }
