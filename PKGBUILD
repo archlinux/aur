@@ -2,8 +2,8 @@
 _npmname=ArkClient
 _appname=arkclient
 pkgname=ark-desktop
-pkgver=1.5.1
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Multi Platform Ark Lite Client"
 arch=(x86_64)
 url="https://github.com/ArkEcosystem/ark-desktop"
@@ -18,7 +18,7 @@ source=(
 )
 
 sha1sums=(
-  "2dfdd79c0adc1ddb0b4827c8ac3634a6abfa783b"
+  "f33e96302456c22357dc4a1f714354b04ac0f3e6"
   "3886ec650e2912c8b0d153076ecda1d824993592"
   "e44a499a5e2e66cfd7680b4bb9e49ddbb5ff74f1"
   "9f1b28b118ee7d6071fc4d446aa018f1512406cf"
