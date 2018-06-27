@@ -133,7 +133,7 @@ install: maps
 	$(INSTALL) $(IIOPT) writmaps.is5 $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
 	$(INSTALL) $(IIOPT) writmaps.ukr $(DESTDIR)$(CFGDIR)$(DIRSEP)msged
 ifeq ($(OSTYPE), UNIX)
-	cd $(DESTDIR)$(CFGDIR) ;\
+	cd $(DESTDIR)$(CFGDIR)$(DIRSEP)msged ;\
 	$(LN) $(LNOPT) readmaps.is1 readmaps.dat ;\
 	$(LN) $(LNOPT) writmaps.is1 writmaps.dat
 else

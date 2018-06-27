@@ -1,5 +1,4 @@
 # Makefile for the Husky build environment
-export LD_LIBRARY_PATH=":$LD_LIBRARY_PATH:../huskylib:../fidoconf:../smapi:../areafix"
 # include Husky-Makefile-Config
 ifeq ($(DEBIAN), 1)
 include debian/huskymak.cfg
