@@ -65,8 +65,6 @@ package()
         install "$pkgdir/usr"
 
     # Install the Python binding
-    site_packages="$pkgdir/usr/lib/python2.7/site-packages"
-    mkdir -p "$site_packages"
-    install -m644 build/python/libadalang.py "$site_packages"
-    rm -rf "$pkgdir/usr/python"
+    cd build/python
+    python2 setup.py install --root="$pkgdir"
 }
