@@ -1,0 +1,12 @@
+post_install() {
+    gtk-update-icon-cache -q -t -f /usr/share/icons/ACYLS
+    echo "To run colour editor, run "sudo python3 /usr/share/icons/ACYLS/scripts/run.py""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    post_install
+}

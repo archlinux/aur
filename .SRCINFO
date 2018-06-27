@@ -1,0 +1,19 @@
+pkgbase = acyls-icon-theme-git
+	pkgdesc = Any Color You Like Simple icon pack
+	pkgver = 412.01a7ae3
+	pkgrel = 1
+	url = https://github.com/worron/ACYLS
+	install = acyls-icon-theme.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gtk-update-icon-cache
+	provides = acyls-icon-theme
+	conflicts = acyls-icon-theme
+	replaces = acyls-icon-theme
+	options = !strip
+	source = git+https://github.com/worron/ACYLS.git
+	sha256sums = SKIP
+
+pkgname = acyls-icon-theme-git
+
