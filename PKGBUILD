@@ -1,6 +1,7 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
+# Contributor: dpeukert
 pkgname=marktext
-pkgver=0.11.42
+pkgver=0.12.25
 pkgrel=1
 pkgdesc='Next generation markdown editor'
 arch=('x86' 'x86_64')
@@ -9,7 +10,7 @@ license=('MIT')
 depends=('gconf' 'gtk3' 'libxss' 'nss')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::http://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('4d9e2ec21accc128fe5ebe628f744b1e4bf1561cf64bc6e2d4d7a387c5482d1c221af6198af702a15128b061863e3a339de4316950757ee254671848b32ac9dd')
+sha512sums=('46c961bcb89aed13aa0d9c46ec22a20c728ff8880d758fdaf595671864f30d11aa04cf96d4c15a9066ba51a89f9c0b774ed4bd72b6a1fe42aa9604a8b75ccbeb')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -43,6 +44,11 @@ package() {
     install -D LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     install -D build/linux-unpacked/LICENSE.electron.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron.txt"
     install -D build/linux-unpacked/LICENSES.chromium.html "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+
+    # Install desktop file and icon
+    install -D "build/linux-unpacked/blink_image_resources_200_percent.pak" "$pkgdir/usr/lib/$pkgname/blink_image_resources_200_percent.pak"
+    install -D "resources/linux/marktext.desktop" "$pkgdir/usr/share/applications/marktext.desktop"
+    install -D "build/.icon-set/icon_512x512.png" "$pkgdir/usr/share/pixmaps/marktext.png"
 }
 
 # vim:ts=4:sw=4:expandtab
