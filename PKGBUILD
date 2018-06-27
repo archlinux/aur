@@ -7,10 +7,11 @@ pkgname='ros-melodic-joint-state-publisher'
 pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-catkin)
+ros_makedepends=(ros-melodic-catkin
+  ros-melodic-rostest)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
