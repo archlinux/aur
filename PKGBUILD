@@ -1,7 +1,7 @@
 pkgname=(husky-tosser husky-msged)
 _realpkg=husky
 pkgver=1.9_20170406
-pkgrel=1
+pkgrel=2
 pkgdesc="Husky Fido Tosser"
 arch=('x86_64')
 license=('GPL')

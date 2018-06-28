@@ -1,7 +1,7 @@
 pkgbase = husky-tosser
 	pkgdesc = Husky Fido Tosser
 	pkgver = 1.9_20170406
-	pkgrel = 1
+	pkgrel = 2
 	url = http://husky.sourceforge.net/hpt.html
 	arch = x86_64
 	license = GPL
