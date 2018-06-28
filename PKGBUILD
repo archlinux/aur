@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://webtorrent.io/desktop"
 license=('MIT')
 depends=('gconf' 'electron' 'libnotify')
-makedepends=('yarn')
+makedepends=('npm')
 conflicts=('webtorrent-desktop-git' 'webtorrent-desktop-bin')
 options=(!strip)
 source=("https://github.com/feross/${pkgname}/archive/v${pkgver}.tar.gz"
@@ -33,9 +33,9 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  yarn install
-  yarn run build
-  yarn install --production --ignore-scripts --prefer-offline --force
+  npm install
+  npm run build
+  npm prune --production
 }
 
 package() {
