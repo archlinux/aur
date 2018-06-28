@@ -26,7 +26,7 @@ prepare() {
 	cd "$srcdir/${_pkgname%-git}"
   # https://wiki.archlinux.org/index.php/TeX_Live#Fonts ??
   git submodule init && git submodule update
-  sed -i 's/C.UTF-8/`locale -a | grep utf`/g' doc/index.sh
+  sed -i 's/C.UTF-8/`echo $LANG`/g' doc/index.sh
 }
 
 
