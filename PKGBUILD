@@ -1,35 +1,29 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-typerep
-pkgver=113.33.03
+pkgver=0.11.0
 pkgrel=1
+epoch=1
 pkgdesc="A library for runtime types."
 arch=('i686' 'x86_64')
 url="https://github.com/janestreet/typerep"
 license=('Apache')
-depends=('ocaml')
-makedepends=('ocaml-findlib' 'ocaml-js-build-tools' 'opam')
+depends=('ocaml' 'ocaml-base')
+makedepends=('dune')
 options=('!strip')
-source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz"
-        "libdir.patch")
-md5sums=('8a1ace5ff29e625d6f1f513a4de24dec'
-         '7f0a951f1ac87385272ea7a6dd58762a')
-
-prepare() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
-
-  patch -Np1 < "${srcdir}/libdir.patch"
-}
+source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/typerep-v${pkgver}.tar.gz")
+md5sums=('9d7500376ac660c1427137310fabe9da')
 
 build() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/typerep-v${pkgver}"
 
-  ./configure --prefix=/usr
-  make
+  jbuilder build
 }
 
 package() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/typerep-v${pkgver}"
 
-  make install LIBDIR="${pkgdir}$(ocamlc -where)"
+  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
