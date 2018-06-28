@@ -3,7 +3,7 @@
 
 _hkgname=githud
 pkgname=$_hkgname
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="heads up display for the command line that will show git information"
 url="https://github.com/gbataille/gitHUD"
@@ -12,7 +12,7 @@ arch=('x86_64')
 depends=('ghc' 'ghc-libs' 'haskell-mtl' 'haskell-parsec' 'haskell-text' 'haskell-unix' 'haskell-process')
 makedepends=('ghc')
 source=(http://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz)
-sha256sums=('9096896544fa98b344dad27c856ab62fa691a9afe78dbdbb3834567d5b28ac62')
+sha512sums=('e55063d125593a9a4417f6380be7472fcb7ba52b96cb2835c5a5edd402741936e7873706ed343db9d80c57caa42e546f5e6c5810b3906225229ee413d2628d88')
 
 build() {
     cd "$srcdir/$_hkgname-$pkgver"
