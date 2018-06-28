@@ -1,0 +1,13 @@
+pkgbase = mjwm
+	pkgdesc = mjwm creates JWM application menu from (freedesktop) desktop files
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/chiku/mjwm
+	arch = x86_64
+	license = GPL2
+	depends = jwm
+	source = mjwm-4.0.0.tar.gz::https://github.com/chiku/mjwm/archive/v4.0.0.tar.gz
+	sha256sums = a58b2bc0577ba60822992dafe8d39c48d66c588e0ea1aea0c8818d880d7adfeb
+
+pkgname = mjwm
+
