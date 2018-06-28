@@ -12,13 +12,8 @@ arch=('any')
 source=("https://github.com/willthames/ansible-review/archive/v${pkgver}.tar.gz")
 sha256sums=('74ec3039ab1b8320284dfdd824234b7fb9045c8160eb9d726adf4077c3cbe2fe')
 
-build() {
-  cd "${srcdir}/${pkgname}-${pkgdir}"
-  #python setup.py build
-}
-
 package() {
-  cd "${srcdir}/${pkgname}-${pkgdir}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
