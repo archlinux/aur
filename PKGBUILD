@@ -1,6 +1,6 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=staruml
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A sophisticated software modeler"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ depends=('gconf' 'libxss' 'libxtst' 'nss' 'alsa-lib' 'gtk2')
 source_i686=("$pkgname-$pkgver-$CARCH.AppImage::http://staruml.io/download/releases/StarUML-$pkgver-i386.AppImage")
 source_x86_64=("$pkgname-$pkgver-$CARCH.AppImage::http://staruml.io/download/releases/StarUML-$pkgver-x86_64.AppImage")
 noextract=("$pkgname-$pkgver-$CARCH.AppImage")
-sha256sums_i686=('be5c4d01386e6c853a37e3b13129f32424a8f5975f65c55f505674329fa5675b')
-sha256sums_x86_64=('ddfe85e674bd292aeb43f9575a07ca703d7f4ffdb071f6452a537e30fb65faec')
+sha256sums_i686=('5b0984a2d73f4004aa71d9cbfcfdedd401db496b06eb50a4df2e641d6b788319')
+sha256sums_x86_64=('4f5b7548198402154849effe664d46c4807ae9f710e59108ade063e58cbaf8b1')
 
 prepare() {
   chmod +x $pkgname-$pkgver-$CARCH.AppImage
