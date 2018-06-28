@@ -1,35 +1,29 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ppx_core
-pkgver=113.33.03
+pkgver=0.11.0
 pkgrel=1
+epoch=1
 pkgdesc="Standard library for ppx rewriters"
 arch=('i686' 'x86_64')
 url="https://github.com/janestreet/ppx_core"
 license=('Apache')
-depends=('ocaml' 'ocaml-ppx_tools')
-makedepends=('ocaml-js-build-tools' 'ocaml-findlib' 'opam')
+depends=('ocaml' 'ocaml-ppxlib')
+makedepends=('dune')
 options=('!strip')
-source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+\.[0-9]+").tar.gz"
-        "libdir.patch")
-md5sums=('043a6c5582b7aff0f8906b11792c6080'
-         '7f0a951f1ac87385272ea7a6dd58762a')
-
-prepare() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
-
-  patch -Np1 < "${srcdir}/libdir.patch"
-}
+source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/ppx_core-v${pkgver}.tar.gz")
+md5sums=('f39ed11235935a4ee31df0b86940e774')
 
 build() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/ppx_core-v${pkgver}"
 
-  ./configure --prefix=/usr
-  make
+  jbuilder build
 }
 
 package() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/ppx_core-v${pkgver}"
 
-  make install PREFIX="${pkgdir}/usr" LIBDIR="${pkgdir}$(ocamlc -where)"
+  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
