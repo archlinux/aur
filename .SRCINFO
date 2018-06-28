@@ -1,0 +1,24 @@
+pkgbase = thinkpad-l380-yoga-scripts-git
+	pkgdesc = A collection of scripts and systemd services for tablet functionality of the ThinkPad L380 Yoga, based onthe original by AdmiralAkber
+	pkgver = 20180627
+	pkgrel = 1
+	url = https://github.com/ffejery/thinkpad-l380-yoga-scripts
+	install = thinkpad-l380-yoga-scripts-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = xorg-xrandr
+	depends = xorg-xinput
+	depends = xbindkeys
+	depends = kbd
+	depends = systemd
+	depends = gawk
+	optdepends = onboard: onscreen keyboard
+	optdepends = xf86-input-wacom: for digitizer support
+	provides = thinkpad-yoga-scripts-git
+	conflicts = thinkpad-yoga-scripts-git
+	source = thinkpad-l380-yoga-scripts::git+https://github.com/ffejery/thinkpad-l380-yoga-scripts
+	md5sums = SKIP
+
+pkgname = thinkpad-l380-yoga-scripts-git
+
