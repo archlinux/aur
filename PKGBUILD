@@ -1,7 +1,7 @@
 pkgname=husky-all
 _realpkg=husky
 pkgver=1.9_20170406
-pkgrel=1
+pkgrel=2
 pkgdesc="Husky Fido Tosser: Complete bundle"
 arch=('x86_64')
 license=('GPL')
@@ -14,7 +14,7 @@ source=('huskymak.cfg'
   'msged_maps_makefile'
   "https://datapacket.dl.sourceforge.net/project/husky/husky/1.9-current/2017.04.06/husky-all-1.9-source-20170406.tgz"
 )
-_buildModules="huskylib fidoconf smapi areafix hpt areastat bsopack nltools htick msged"
+_buildModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick msged"
 prepare() {
     cp -f huskymak.cfg ${_realpkg}/
     cp -f areastat_makefile ${_realpkg}/areastat/Makefile
