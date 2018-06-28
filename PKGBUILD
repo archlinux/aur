@@ -36,10 +36,8 @@ build() {
 
     cd "${srcdir}/${pkgname}-work"
 
-    #for i in debian/patches/* ; do patch -Np1 < "$i" ; done || return 1
     QUILT_PATCHES='debian/patches' quilt push -a
     patch -Np1 -i ../archlinux-ncal.patch
-    #patch -Np1 -i ../archlinux-libtinfo.patch
 
     for i in col colcrt colrm column hexdump look ul ; do rm -rf "usr.bin/$i" ; done
 
