@@ -2,7 +2,7 @@
 
 _pkgbase='kevin'
 pkgname="$_pkgbase-git"
-pkgver=v0.2.r0.gf978fbd
+pkgver=v0.4.r0.gfda3809
 pkgrel=1
 pkgdesc="Kevin-CI: a simple-stupid self-hosted continuous integration service"
 arch=('any')
