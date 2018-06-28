@@ -1,17 +1,17 @@
 #Maintainer : Papajoke <papajoke [at] manjaro [dot] fr>
 pkgname=pacnew-chaser
-pkgver=0.9.18
+pkgver=0.9.19
 pkgrel=1
 url="https://www.manjaro.fr/forum/viewtopic.php?f=28&t=10284"
 pkgdesc="manage .pacnew files, compare and merge (qt gui) - dev version"
 arch=('x86_64')
 license=('GPL')
-depends=('qt5pas')
+depends=('qt5pas' 'git')
 optdepends=('diffuse: editor, compare merge files'
         'kompare: editor, compare merge files'
         'meld: editor, compare merge files')
 source=("https://www.manjaro.fr/forum/datas/pacnew-chaser-qt-${pkgver}.tar.gz")
-sha512sums=('0102ccc742ea4179a2cd238ee93cac1b8ff37ed4aadcbc9a606153669b20e00e7149f5eef2c815857bfa250a39d289f20e28d18359049c6a017aa3291fd19cf5')
+sha512sums=('00ae6ca34d04fa0155f7d30887a7fc155f0d13a2a256bac2347bd66518e5776f2becd8a561c9c90cfc3f9557264547ff8a2b7f57a955762bd9e91b2e0aded2f3')
 
 package() {
   cd "$srcdir"
