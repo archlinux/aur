@@ -26,12 +26,13 @@ md5sums=('2162a1c74af9baa4aa714780ae548504'
 sha256sums=('6a7308459fe0f6f7fc135e0cb76d6c6f2006851074d7ec7732e5760fa3e74d7c'
             '2ad08e42d2774e746c2730bcc90f089e2e97ad7c79875a52c3d341ad75affdfc'
             '55ff797c3449f24f5e53186f3e08aacd98b832b7191b8893c2d7b26b52e2a375')
+#PKGEXT='.tar.gz'
 
 package() {
   set -u
   install -d "${pkgdir}/opt/"
 
-  bsdtar -C "${pkgdir}/opt/" -xf "${_file}"
+  bsdtar --no-same-owner -C "${pkgdir}/opt/" -xf "${_file}"
   mv "${pkgdir}/opt"/{Git-it-Linux-x64,git-it}
 
   install -d "${pkgdir}/usr/bin"
