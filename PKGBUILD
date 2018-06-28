@@ -9,10 +9,9 @@ pkgdesc="Functions to Inline C, C++, Fortran Function Calls from R"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('LGPL')
-depends=('r' 'gcc-fortran')
-
+depends=('r' )
 optdepends=('r-rcpp')
-
+makedepends=('gcc-fortran')
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('8f0de494120ecd628fa7a2e6d4af98cb')
 
