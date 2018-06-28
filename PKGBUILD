@@ -1,5 +1,5 @@
 pkgname=mingw-w64-python34-bin
-pkgver=3.4.3
+pkgver=3.4.4
 _pybasever=34
 pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)"
@@ -11,8 +11,8 @@ makedepends=('wine' 'mingw-w64-tools' 'mingw-w64-binutils')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.python.org/ftp/python/${pkgver}/python-${pkgver}.msi"
         "http://www.python.org/ftp/python/${pkgver}/python-${pkgver}.amd64.msi")
-md5sums=('cb450d1cc616bfc8f7a2d6bd88780bf6'
-         'f6ade29acaf8fcdc0463e69a6e7ccf87')
+sha256sums=('46c8f9f63cf02987e8bf23934b2f471e1868b24748c5bb551efcf4863b43ca6c'
+            'ace645d104bddd4f4ffbf453bedddaf2496e3609af3fa47173680d2f321d3709')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
