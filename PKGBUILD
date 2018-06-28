@@ -4,7 +4,7 @@
 
 pkgname=bsdmainutils
 pkgver=11.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Some BSD-style programs including ncal and lorder."
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/bsdmainutils"
