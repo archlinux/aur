@@ -3,26 +3,24 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=bsdmainutils
-pkgver=9.0.12
-pkgrel=2
+pkgver=11.1.2
+pkgrel=1
 pkgdesc="Some BSD-style programs including ncal and lorder."
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/bsdmainutils"
 license=(GPL)
 source=(
-    "https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}+nmu1ubuntu1.tar.gz"
+    "https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${pkgname}/${pkgver}ubuntu2/${pkgname}_${pkgver}ubuntu2.tar.gz"
     'archlinux-ncal.patch'
-    'archlinux-libtinfo.patch'
 )
 depends=(bash libbsd)
 makedepends=(gcc make ncurses patch quilt)
 sha256sums=(
-    '8e97b383aac8821dafd5f2992a33d8a713cfced31ae782db743976575f05d40d'
+    '217ad03eadb1151bfbc994655e4d629a3535f92c5fc99b0868b0bc58c95fedeb'
     '42cb05d09b0cde67d3e1cfc9bd77885107d517b55969fc252671994ebaca1d8b'
-    '60c90f1be3660551a6cb32244d31fd53f8b6d6fbfa92ce85d033f74ffb7c3078'
 )
 
-_pkgname="${pkgname}-${pkgver}+nmu1ubuntu1"
+_pkgname="${pkgname}-${pkgver}ubuntu1"
 
 build() {
 
@@ -41,7 +39,7 @@ build() {
     #for i in debian/patches/* ; do patch -Np1 < "$i" ; done || return 1
     QUILT_PATCHES='debian/patches' quilt push -a
     patch -Np1 -i ../archlinux-ncal.patch
-    patch -Np1 -i ../archlinux-libtinfo.patch
+    #patch -Np1 -i ../archlinux-libtinfo.patch
 
     for i in col colcrt colrm column hexdump look ul ; do rm -rf "usr.bin/$i" ; done
 
