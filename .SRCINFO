@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-helper
 	pkgdesc = Deepin Wine Helper
-	pkgver = 1.1deepin11
+	pkgver = 1.1deepin12
 	pkgrel = 1
 	url = http://www.deepin.org
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = deepin-wine-helper
 	makedepends = tar
 	depends = deepin-wine-plugin
 	depends = deepin-wine-plugin-virtual
-	noextract = deepin-wine-helper_1.1deepin11_i386.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine-helper/deepin-wine-helper_1.1deepin11_i386.deb
-	md5sums = 3b9ec53cef4bcd8dcd06e02006b228eb
+	noextract = deepin-wine-helper_1.1deepin12_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine-helper/deepin-wine-helper_1.1deepin12_i386.deb
+	md5sums = 719d79d0f68f31a023e4110d85e6ef31
 
 pkgname = deepin-wine-helper
 
