@@ -10,7 +10,6 @@ pkgdesc="TagSpaces is an open source personal data manager. It helps you organiz
 arch=("x86_64")
 url="http://tagspaces.org"
 license=("AGPL")
-makedepends=("bower" "gendesk")
 provides=("tagspaces")
 conflicts=("tagspaces")
 sha256sums=('e1f29188815c231c4ff9cd75c61ead0df9b6d0268c5071ba026832cc6b716f8a')
