@@ -3,7 +3,7 @@
 pkgname=betaflight-configurator-bin
 _pkgname=betaflight-configurator
 pkgver=10.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform configuration tool for the Betaflight flight control system"
 arch=('x86_64')
 url="https://github.com/betaflight/betaflight-configurator"
@@ -20,5 +20,5 @@ package() {
   cp -dpr --no-preserve=ownership "$srcdir/Betaflight Configurator" "$pkgdir/opt/betaflight/betaflight-configurator"
   ln -s "$pkgdir/opt/betaflight/betaflight-configurator/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
-  echo "Dont forget to add your user into dialout group "sudo usermod -aG dialout YOUR_USERNAME" for serial access"
+  echo 'Dont forget to add your user into dialout group "sudo usermod -aG dialout YOUR_USERNAME" for serial access'
 }
