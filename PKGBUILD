@@ -1,7 +1,7 @@
 # Maintainer: Doron Behar <doron.behar@gmail.com>
 
 pkgname=blockstack-browser
-pkgver=0.29.2
+pkgver=0.29.3
 pkgrel=1
 pkgdesc=""
 arch=('any')
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/blockstack/blockstack-browser/archive/v${pkgver}.tar.gz")
-md5sums=('2a81ae64173ac23fc08852bb5b994acc')
+md5sums=('9a01dd22b5bef20378643de83d42dab8')
 
 package() {
 	cd $srcdir/$pkgname-$pkgver
