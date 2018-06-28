@@ -11,7 +11,7 @@ _note_services(){
 	echo ''
 	echo 'Where <username> is your login username'
 	echo ''
-	echo 'Bugs/Readme: http://github.com/admiralakber/thinkpad-yoga-scripts'
+	echo 'Bugs/Readme: http://github.com/ffejery/thinkpad-l380-yoga-scripts'
 	echo 'Check the README.md for customization and different environments'
 }
 

@@ -1,4 +1,4 @@
-# Maintainer: Jeff <j.maceachern+removethisgmail.com>
+# Maintainer: ffejery
 
 pkgname='thinkpad-l380-yoga-scripts-git'
 _gitname='thinkpad-l380-yoga-scripts'
