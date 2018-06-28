@@ -1,35 +1,29 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-variantslib
-pkgver=113.33.03
+pkgver=0.11.0
 pkgrel=1
+epoch=1
 pkgdesc="OCaml variants as first class values"
 arch=('i686' 'x86_64')
 url="https://github.com/janestreet/variantslib"
 license=('Apache')
-depends=('ocaml')
-makedepends=('ocaml-findlib' 'ocaml-js-build-tools' 'opam')
+depends=('ocaml' 'ocaml-base' 'ocaml-migrate-parsetree' 'ocaml-ppxlib')
+makedepends=('dune')
 options=('!strip')
-source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+\.[0-9]+").tar.gz"
-        "libdir.patch")
-md5sums=('f8e9d6362f6dd0ba92ee706e584d4790'
-         '7f0a951f1ac87385272ea7a6dd58762a')
-
-prepare() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
-
-  patch -Np1 < "${srcdir}/libdir.patch"
-}
+source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/variantslib-v${pkgver}.tar.gz")
+md5sums=('3031317975df165cc3154578680eddfb')
 
 build() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/variantslib-v${pkgver}"
 
-  ./configure --prefix=/usr
-  make
+  jbuilder build
 }
 
 package() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/variantslib-v${pkgver}"
 
-  make install LIBDIR="${pkgdir}$(ocamlc -where)"
+  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
