@@ -1,38 +1,28 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ppx_sexp_message
-pkgver=113.33.03
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A ppx rewriter for easy construction of s-expressions"
 arch=('i686' 'x86_64')
 url="https://github.com/janestreet/ppx_sexp_message"
 license=('Apache')
-depends=('ocaml' 'ocaml-ppx_core' 'ocaml-ppx_driver' 'ocaml-ppx_here' 'ocaml-ppx_sexp_conv' 'ocaml-ppx_tools')
-makedepends=('ocaml-findlib' 'ocaml-js-build-tools' 'opam')
+depends=('ocaml' 'ocaml-base' 'ocaml-ppx_here' 'ocaml-ppx_sexp_conv' 'ocaml-migrate-parsetree' 'ocaml-ppxlib')
+makedepends=('dune')
 options=('!strip' '!emptydirs')
-source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+\.[0-9]+").tar.gz"
-        "libdir.patch"
-        "exedir.patch")
-md5sums=('91b7c60217aa86d73b1cd33ec6909a2d'
-         '7f0a951f1ac87385272ea7a6dd58762a'
-         '8c2670c9ecd0c91d1d56d71957a44e99')
-
-prepare() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
-
-  patch -Np1 < "${srcdir}/libdir.patch"
-  patch -Np1 < "${srcdir}/exedir.patch"
-}
+source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/ppx_sexp_message-v${pkgver}.tar.gz")
+md5sums=('2cec96bcf6f7c54ba79fe39fc9fc4d98')
 
 build() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/ppx_sexp_message-v${pkgver}"
 
-  ./configure --prefix=/usr
-  make
+  jbuilder build
 }
 
 package() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/ppx_sexp_message-v${pkgver}"
 
-  make install PREFIX="${pkgdir}/usr" LIBDIR="${pkgdir}$(ocamlc -where)"
+  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
