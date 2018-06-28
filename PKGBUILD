@@ -9,7 +9,7 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
         "git+https://github.com/mitchellh/vagrant-installers.git#commit=7b7fb86")
-md5sums=('eeab863af4541c3a627aa1c6193a574a'
+md5sums=('20b7a4a7b3e1bb4a57c8cac65a547ce7'
          'SKIP')
 
 build() {
