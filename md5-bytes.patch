@@ -1,0 +1,25 @@
+diff --git md5.h md5.h
+index d8b96df..86103da 100644
+--- md5.h
++++ md5.h
+@@ -124,6 +124,13 @@ private:
+ #include CRYPTOPP_INCLUDE_MD5
+ #endif
+
++#if (CRYPTOPP_VERSION >= 600) && (__cplusplus >= 201103L)
++  using byte = CryptoPP::byte;
++#else
++  typedef unsigned char byte;
++#endif
++
++
+ class MD5 {
+
+ public:
+@@ -151,4 +158,4 @@ private:
+
+ #endif //DO_NOT_USE_CRYPTOPP_MD5
+
+-#endif //MD5_H
+\ No newline at end of file
++#endif //MD5_H
