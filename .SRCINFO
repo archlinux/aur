@@ -1,0 +1,17 @@
+pkgbase = kvmd
+	pkgdesc = The main Pi-KVM daemon
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/mdevaev/pi-kvm
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = wget
+	depends = python
+	depends = python-yaml
+	depends = python-aiohttp
+	depends = python-raspberry-gpio
+	backup = etc/kvmd.yaml
+
+pkgname = kvmd
+
