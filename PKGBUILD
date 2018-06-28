@@ -7,14 +7,14 @@
 
 _pkgname=xf86-input-synaptics
 pkgname=$_pkgname-led
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Synaptics driver for notebook touchpads (with LED disable support)"
 arch=(i686 x86_64)
 license=(custom)
 url="http://xorg.freedesktop.org/"
 depends=('libxtst' 'libevdev' 'synaptics-led')
-makedepends=('xorg-server-devel' 'libxi' 'libx11' 'resourceproto' 'scrnsaverproto')
+makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION=24.1' 'libxi' 'libx11' 'resourceproto' 'scrnsaverproto')
 conflicts=('xorg-server<1.19' 'X-ABI-XINPUT_VERSION<24.1' 'X-ABI-XINPUT_VERSION>=25')
 replaces=('synaptics')
 provides=('synaptics' "$_pkgname")
@@ -25,15 +25,18 @@ source=(
 	http://xorg.freedesktop.org/releases/individual/driver/${_pkgname}-${pkgver}.tar.bz2
 	led_support.patch
 )
-md5sums=('58e5b7722a402114093bf193962d1e3a'
-         'd57b891718e1bc7696d4c5be375b70ec')
+md5sums=('cfb79d3c975151f9bbf30b727c260cb9'
+         '1d5c7e64db4357b1ead516e5b35194ad')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  # apply patch
   for p in ../*.patch; do
     msg2 "Applying patch: $p"
     patch -p1 -i "$p"
   done
+
   ./configure --prefix=/usr
   make
 }
