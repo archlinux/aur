@@ -23,11 +23,11 @@ _opt_clang=0
 
 _opt_keepdesktop=0
 # 0 = normal
-# 1 = install desktop file even in debug modes. This is dangerous as launching su in a .desktop crashes the DE
+# 1 = install desktop file even in debug modes. This is dangerous as launching sudo in a .desktop crashes the DE
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre8.dev.1.g58df46383
+pkgver=2.0pre8.257.g5b60d68a4
 pkgrel=1
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
 arch=('i686' 'x86_64')
@@ -45,6 +45,7 @@ optdepends=(
   'fluidsynth: MIDI support'
   'soundfont-fluid: or other SoundFont for MIDI support' # ERROR: Your fluidsynth is too old and soundfonts not found
   'vde2-dosemu2: networking support'
+  'fbset: graphical display on console'
 )
 makedepends=('git' 'flex' 'bison' 'binutils' 'sed' 'perl' 'bash')
 if [ "${_opt_clang}" -ne 0 ]; then
@@ -64,9 +65,13 @@ _freedos='none'
 _freedos='dosemu-freedos-1.1-bin.tgz'
 #_freedos='dosemu-freedos-bin.tgz'
 #_freedos='msdos70-bin.tgz' # install.c will need to be fixed before this is automatic
+_patches=(
+  
+)
 source=(
   "git+https://github.com/${_github}.git"
   'http://downloads.sourceforge.net/sourceforge/dosemu/dosemu-freedos-1.0-bin.tgz' # for the GNU utils
+  "${_patches[@]}"
 )
 if [ "${_freedos}" != 'none' ]; then
   #source+=("https://dl.dropboxusercontent.com/u/13513277/dosemu/${_freedos}")
@@ -90,6 +95,21 @@ pkgver() {
 prepare() {
   set -u
   cd 'dosemu2'
+
+  # diff -pNau5 src/plugin/sdl/sdl.c{.orig,} > ../SDL_Mouse_cursor.patch
+  # patch -Nbup0 -i "${startdir}/SDL_Mouse_cursor.patch"
+
+  #vi src/plugin/X/X.c
+
+  if [ "${#_patches[@]}" ]; then
+    set +u; msg 'Applying patches'; set -u
+    local _patch
+    for _patch in "${_patches[@]}"; do
+      set +u; msg2 "${_patch}"; set -u
+      patch -Nbup1 -i "${srcdir}/${_patch}"
+    done
+    unset _patch
+  fi
 
   # Some makepkg options including -i erroneously run prepare() for vcs packages
   if [ -f 'debian/rules' ]; then
@@ -122,6 +142,7 @@ _configure() { # makepkg -e compatible
     if [ "${_opt_clang}" -ne 0 ]; then
       _opts+=('CC=clang' 'CXX=clang++')
       CFLAGS="${CFLAGS//-fstack-protector-strong/} -fno-stack-protector" # Issue #332
+      CFLAGS="${CFLAGS//-Wformat-overflow=[0-9]/}"
     fi
     echo "CFLAGS=${CFLAGS}"
     CFLAGS="${CFLAGS} -Wno-unused-result" \
