@@ -1,7 +1,7 @@
 pkgname=wireguard-go
 pkgver=0.0.20180613
 pkgrel=1
-pkgdesc="Go Implementation of WireGuard (experimental)"
+pkgdesc="Go Implementation of WireGuard (not recommended by upstream, use official kernel module if possible)"
 arch=('x86_64')
 url="https://git.zx2c4.com/wireguard-go/"
 license=('GPL2')
