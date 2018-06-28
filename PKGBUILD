@@ -9,7 +9,7 @@ set -u
 _pkgname='pcre'
 pkgname="${_pkgname}-svn"
 _srcdir="${pkgname}"
-pkgver=8.41.r1707
+pkgver=8.43.r1736
 pkgrel=1
 pkgdesc='A regex library that implements Perl 5-style regular expressions, includes pcregrep'
 arch=('i686' 'x86_64')
