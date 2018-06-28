@@ -1,6 +1,6 @@
 pkgbase = kevin
 	pkgdesc = Kevin-CI: a simple-stupid self-hosted continuous integration service
-	pkgver = 0.2
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/SFTtech/kevin
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = kevin
 	depends = python-tornado
 	conflicts = kevin-git
 	options = !emptydirs
-	source = kevin-0.2.tar.gz::https://github.com/SFTtech/kevin/archive/v0.2.tar.gz
-	sha256sums = 01e84ee9a5f3f9ee8d2b0c74b1fb2b31047d25037079b7ee85bf8b3fbada81e3
+	source = kevin-0.4.tar.gz::https://github.com/SFTtech/kevin/archive/v0.4.tar.gz
+	sha256sums = ed68a0a220a9b8c45a0edff09477b99464f6eba1b99547b9ea4944c99c3ac489
 
 pkgname = kevin
 
