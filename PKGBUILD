@@ -1,5 +1,5 @@
-# Contributor: grimi <grimi at poczta dot fm>
-# Maintainer: grimi <grimi at poczta dot fm>
+# Contributor: grimi
+# Maintainer: grimi
 
 pkgname=mjwm
 pkgver=4.0.0
@@ -18,11 +18,6 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr
   make
-}
-
-check() {
-  cd "$pkgname-$pkgver"
-  make check
 }
 
 package() {
