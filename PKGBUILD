@@ -6,18 +6,15 @@
 # Contributor: post-factum
 
 pkgname=i2pd
-pkgver=2.18.0
-pkgrel=2
+pkgver=2.19.0
+pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/PurpleI2P/$pkgname"
 license=('BSD')
 depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
 makedepends=('boost' 'cmake')
-source=(https://github.com/PurpleI2P/${pkgname}/archive/${pkgver}.tar.gz
-	https://github.com/PurpleI2P/i2pd/commit/4af0caa50639c9c080034b2ea8239eb7e06f0ba3.patch
-	https://github.com/PurpleI2P/i2pd/commit/21c35f770b26ebf00f94365769bab74753fa06d1.patch
-)
+source=(https://github.com/PurpleI2P/${pkgname}/archive/${pkgver}.tar.gz)
 install=$pkgname.install
 backup=(etc/$pkgname/$pkgname.conf
         etc/$pkgname/tunnels.conf)
@@ -25,10 +22,6 @@ conflicts=("$pkgname-git")
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-
-  # GCC 8 fixes
-  patch -Np1 -i ../21c35f770b26ebf00f94365769bab74753fa06d1.patch
-  patch -Np1 -i ../4af0caa50639c9c080034b2ea8239eb7e06f0ba3.patch
 
   cd build
   cmake . -DCMAKE_CXX_FLAGS="-w" \
@@ -80,6 +73,4 @@ package(){
   	chmod -R o= $pkgdir/${_home_dest}
 }
 
-md5sums=('02a8aaa11d97d7ebd1bf600acba1cf1b'
-         'c1755b808a6a2fc528172523c2f02a68'
-         '3d39e1a51bb13d05696ccaac36afeb9e')
+md5sums=('543d8947d015741708acfc54f25dcd00')
