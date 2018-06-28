@@ -1,6 +1,6 @@
 pkgname=mingw-w64-python-bin
-pkgver=3.6.4
-_pybasever=36
+pkgver=3.7.0
+_pybasever=37
 pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)"
 arch=('any')
@@ -16,9 +16,9 @@ source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win3
         "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tgz")
 noextract=("python-${pkgver}-embed-win32.zip"
            "python-${pkgver}-embed-amd64.zip")
-sha256sums=('749eed1e2d7b5fe1db540c3c3b716c65bdddb44da28a8783148746d7f69ee402'
-            'f6ca955d6885a2ac01595dc7857c5c06ee0a5b1f7b3774f89ec52692c7cb691c'
-            '7dc453e1a93c083388eb1a23a256862407f8234a96dc4fae0fc7682020227486')
+sha256sums=('9596b23a8db1f945c2e26fe0dc1743e33f3700b4b708c68ea202cf2ac761a736'
+            '0cc08f3c74c0112abc2adafd16a534cde12fe7c7aafb42e936d59fd3ab08fcdb'
+            '85bb9feb6863e04fb1700b018d9d42d1caac178559ffa453d7e6a436e259fd0d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
