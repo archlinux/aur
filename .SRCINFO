@@ -1,0 +1,22 @@
+pkgbase = perl-cgi-compile
+	pkgdesc = Compile .cgi scripts to a code reference like ModPerl::Registry
+	pkgver = 0.22
+	pkgrel = 1
+	url = https://metacpan.org/release/CGI-Compile
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-cgi
+	checkdepends = perl-cgi-emulate-psgi
+	checkdepends = perl-switch
+	checkdepends = perl-test-nowarnings
+	checkdepends = perl-test-requires
+	makedepends = perl-module-build-tiny
+	depends = perl
+	depends = perl-file-pushd
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/CGI-Compile-0.22.tar.gz
+	md5sums = a6b364e8f3eb45f63d69ae6d5602eb21
+
+pkgname = perl-cgi-compile
+
