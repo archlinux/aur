@@ -1,12 +1,13 @@
-# Author: Dies <JerryCasiano(at)gmail(dot)com> 
+# Author: Dies <JerryCasiano(at)gmail(dot)com>
 # Maintainer: Joeny Ang <ang(dot)joeny(at)gmail(dot)com>
 # Contributor: Zaler <zldream1011(at)gmail(dot)com>
 # Contributor: joni <kljohann(at)gmail(dot)com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=font-manager-git
-_gitname=master
-pkgver=0.r148.91c509c
-pkgrel=2
+_branch=testing
+pkgver=0.7.3.r36.ga299ee3
+pkgrel=1
 pkgdesc="A simple font management application for GTK+ Desktop Environments"
 url="http://fontmanager.github.io/"
 arch=('i686' 'x86_64')
@@ -16,25 +17,24 @@ makedepends=('git' 'gnome-common' 'automake' 'intltool' 'yelp-tools' 'gobject-in
 install=font-manager.install
 provides=('font-manager')
 conflicts=('font-manager')
-source=("git+https://github.com/FontManager/${_gitname}.git")
+source=("${pkgname}::git://github.com/FontManager/master.git#branch=${_branch}")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_gitname}
-  
-  # git describe can't describe anything without tags
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname}
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${srcdir}/${_gitname}
+  cd ${pkgname}
 
   ./autogen.sh --prefix=/usr --disable-schemas-compile
   make -j1
 }
 
 package() {
-  cd ${srcdir}/${_gitname}
+  cd ${pkgname}
 
   make DESTDIR=${pkgdir} install
 }
