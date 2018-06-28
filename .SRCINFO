@@ -5,8 +5,8 @@ pkgbase = r-robustbase
 	url = https://cran.r-project.org/package=robustbase
 	arch = x86_64
 	license = GPL
+	makedepends = gcc-fortran
 	depends = r
-	depends = gcc-fortran
 	depends = r-deoptimr
 	optdepends = r-robust
 	optdepends = r-fit.models
