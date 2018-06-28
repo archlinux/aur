@@ -1,24 +1,24 @@
 # Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=pdfmixtool
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc='An application to split, merge, rotate and mix PDF files'
 arch=('i686' 'x86_64')
-url='http://www.scarpetta.eu/pdfmixtool'
+url='https://www.scarpetta.eu/pdfmixtool'
 license=('GPL')
-depends=('qt5-base' 'podofo-git' 'gtk-update-icon-cache')
-makedepends=('cmake' 'qt5-tools' 'discount')
-source=("https://github.com/marcoscarpetta/pdfmixtool/archive/v${pkgver}.tar.gz")
-sha512sums=('c7cbfe1c5aac1ed35e49fa07ab417cd48ad952fa0e96b68ad7d8aeb6f3cf799a83438d6b188778a45c68064fcd7d3193d19453df063ef1107eac7478a97eb294')
+depends=('qt5-base' 'podofo-git')
+makedepends=('cmake' 'qt5-tools')
+source=("https://gitlab.com/scarpetta/pdfmixtool/-/archive/v${pkgver}/pdfmixtool-v${pkgver}.tar.gz")
+sha512sums=('258d273fa9daae8af61031264d50bd0f49bd87463033eb64fcf3fadab2c62b59bbff349afde23fda143ff1e62fc8130490b86066675be316adfed168b4f72cb4')
 
 prepare() {
-  cd "${srcdir}/pdfmixtool-${pkgver}"
+  cd "${srcdir}/pdfmixtool-v${pkgver}"
   mkdir -p build
 }
 
-build() { 
-  cd "${srcdir}/pdfmixtool-${pkgver}/build"
+build() {
+  cd "${srcdir}/pdfmixtool-v${pkgver}/build"
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
@@ -26,6 +26,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/pdfmixtool-${pkgver}/build"
+  cd "${srcdir}/pdfmixtool-v${pkgver}/build"
   make DESTDIR="$pkgdir" install
 }
