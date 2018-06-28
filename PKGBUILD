@@ -1,35 +1,29 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ppx_sexp_conv
-pkgver=113.33.03
+pkgver=0.11.2
 pkgrel=1
+epoch=1
 pkgdesc="Generation of S-expression conversion functions from type definitions"
 arch=('i686' 'x86_64')
 url="https://github.com/janestreet/ppx_sexp_conv"
 license=('Apache')
-depends=('ocaml' 'ocaml-ppx_core' 'ocaml-ppx_tools' 'ocaml-ppx_type_conv' 'ocaml-sexplib')
-makedepends=('ocaml-findlib' 'ocaml-js-build-tools' 'opam')
+depends=('ocaml' 'ocaml-base' 'ocaml-migrate-parsetree' 'ocaml-ppxlib' 'ocaml-sexplib0')
+makedepends=('dune')
 options=('!strip')
-source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+\.[0-9]+").tar.gz"
-        "libdir.patch")
-md5sums=('065b0f514aee32a2dbcd9e19d98af85c'
-         '7f0a951f1ac87385272ea7a6dd58762a')
-
-prepare() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
-
-  patch -Np1 < "${srcdir}/libdir.patch"
-}
+source=("https://github.com/janestreet/ppx_sexp_conv/archive/v${pkgver}.tar.gz")
+md5sums=('77d3b30b3d9c5810552bde2027656b8d')
 
 build() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/ppx_sexp_conv-${pkgver}"
 
-  ./configure --prefix=/usr
-  make
+  jbuilder build
 }
 
 package() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/ppx_sexp_conv-${pkgver}"
 
-  make install PREFIX="${pkgdir}/usr" LIBDIR="${pkgdir}$(ocamlc -where)"
+  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
