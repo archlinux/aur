@@ -1,9 +1,10 @@
 # Maintainer: Skywol <Skywol@qq.com>
 pkgname=deepin.com.qq.eim
-pkgver=1.98deepin3
+_pkgname=deepin.com.qq.b.eim
+pkgver=1.90.2220deepin0
 pkgrel=1
 epoch=
-pkgdesc="Deepin Wine QQEIM 1.98"
+pkgdesc="Deepin Wine QQEIM 1.90"
 arch=('i686' 'x86_64')
 url="http://b.qq.com/"
 license=('Proprietary')
@@ -19,16 +20,18 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Skywol/deepin-wine-eim/archive/$pkgver.tar.gz")
-md5sums=('77603906689003d8d464bae8a3361857')
+source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${_pkgname}/${_pkgname}_${pkgver}_i386.deb")
+noextract=("${_pkgname}_${pkgver}_i386.deb")
+md5sums=('c6e7c4990e25e6885cb55e3b19818d5c')
 validpgpkeys=()
 
 prepare() {
-	mkdir ${pkgname}-${pkgver}
-	cp -r deepin-wine-eim-$pkgver/* $pkgname-$pkgver
+	ar -x ${_pkgname}_${pkgver}_i386.deb
+	mkdir ${_pkgname}-${pkgver}
+	tar -xf data.tar.xz --directory="${_pkgname}-${pkgver}"
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "${_pkgname}-${pkgver}"
 	cp -r ./ ${pkgdir}/
 }
