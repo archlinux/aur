@@ -3,8 +3,8 @@
 _pkgname=lenovo-throttling-fix
 pkgname=$_pkgname-git
 pkgver=0.36.1f40f7d
-pkgrel=1
-pkgdesc="Better aggregated chnroutes"
+pkgrel=2
+pkgdesc="Workaround for Intel throttling issues on Thinkpads in Linux."
 arch=('any')
 url="https://github.com/erpalma/lenovo-throttling-fix"
 license=('MIT') 
