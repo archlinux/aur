@@ -1,35 +1,30 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-core_kernel
-pkgver=113.33.03
+pkgver=0.11.0
 pkgrel=1
+epoch=1
 pkgdesc="Industrial strength alternative to OCaml's standard library (system-independent part)"
 arch=('i686' 'x86_64')
 url="https://github.com/janestreet/core_kernel"
 license=('Apache')
-depends=('ocaml' 'ocaml-bin_prot' 'ocaml-fieldslib' 'ocaml-ppx_assert' 'ocaml-ppx_bench' 'ocaml-ppx_driver' 'ocaml-ppx_expect' 'ocaml-ppx_inline_test' 'ocaml-ppx_jane' 'ocaml-result' 'ocaml-sexplib' 'ocaml-typerep' 'ocaml-variantslib')
-makedepends=('ocaml-findlib' 'ocaml-js-build-tools' 'opam')
+depends=('ocaml' 'ocaml-base' 'ocaml-bin_prot' 'ocaml-configurator' 'ocaml-fieldslib' 'ocaml-jane-street-headers' 'ocaml-ppx_assert' 'ocaml-ppx_base' 'ocaml-ppx_hash' 'ocaml-ppx_inline_test' 'ocaml-ppx_jane' 'ocaml-ppx_sexp_conv' 'ocaml-ppx_sexp_message' 'ocaml-sexplib' 'ocaml-splittable_random' 'ocaml-stdio' 'ocaml-typerep' 'ocaml-variantslib' 'ocaml-migrate-parsetree' 'ocaml-ppxlib')
+makedepends=('dune')
 options=('!strip')
-source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz"
-        "libdir.patch")
-md5sums=('e56da86bcb955e6d65a2da04a973b11f'
-         '7f0a951f1ac87385272ea7a6dd58762a')
-
-prepare() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
-
-  patch -Np1 < "${srcdir}/libdir.patch"
-}
+source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/core_kernel-v${pkgver}.tar.gz")
+md5sums=('ac08234f5799eba5009d04443ab35e8c')
 
 build() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/core_kernel-v${pkgver}"
 
-  ./configure --prefix /usr
-  make
+  jbuilder build
 }
 
 package() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/core_kernel-v${pkgver}"
 
-  make install LIBDIR="${pkgdir}$(ocamlc -where)"
+  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/lib/ocaml/stubslibs" "${pkgdir}/usr/lib/ocaml/stublibs" # bug in opam
 }
