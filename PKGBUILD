@@ -9,7 +9,7 @@ url="https://github.com/cbosoft/wwsd"
 license=('MIT')
 
 groups=()
-depends=('python' 'python-docopt' 'nitrogen' 'i3-wm' 'i3ipc-python')
+depends=('python' 'python-docopt' 'nitrogen' 'i3-wm')
 makedepends=('git')
 
 source=("${pkgname}::git+https://github.com/cbosoft/wwsd.git#branch=master")
