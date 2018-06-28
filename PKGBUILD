@@ -18,7 +18,7 @@ export ANDROID_MINIMUM_PLATFORM
 
 _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
-pkgver=5.11.0
+pkgver=5.11.1
 pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
@@ -64,7 +64,7 @@ options=('!strip'
          '!emptydirs')
 _pkgfqn="qt-everywhere-src-${pkgver}"
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz")
-md5sums=('68b7c9dd5c5df84b5c82730474c4c1f3')
+md5sums=('c6f0854d7de7bde80cfd8cc85bb7152b')
 
 prepare() {
     cd ${_pkgfqn}
