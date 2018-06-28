@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-git
-pkgver=3.8.0a0.r100955.07a1892f82
+pkgver=3.8.0a0.r101772.e76ac9d4ef
 pkgrel=1
 _pybasever=3.8
 _pkgname=cpython
@@ -54,7 +54,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   # altinstall: /usr/bin/pythonX.Y but not /usr/bin/python or /usr/bin/pythonX
-  make DESTDIR="${pkgdir}" altinstall maninstall
+  make DESTDIR="${pkgdir}" ENSUREPIP=install altinstall maninstall
 
   # Work around a conflict with 3.4 the 'python' package.
   rm "${pkgdir}/usr/lib/libpython3.so"
