@@ -1,7 +1,7 @@
 pkgbase = sonarqube
 	pkgdesc = An open source platform for continuous inspection of code quality
 	pkgver = 7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sonarqube.org/
 	install = sonarqube.install
 	arch = x86_64

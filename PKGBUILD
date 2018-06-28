@@ -3,7 +3,7 @@
 _pkgname=sonarqube
 pkgname=${_pkgname}
 pkgver=7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
 url="http://www.sonarqube.org/"
