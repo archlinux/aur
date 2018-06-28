@@ -5,12 +5,13 @@ set -u
 pkgbase="linux-lts49"
 #pkgbase=linux-lts-custom
 _srcname="linux-4.9"
-pkgver="4.9.109"
+pkgver="4.9.110"
 pkgrel='1'
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
+provides=("linux=${pkgver}")
 options=('!strip')
 _verwatch=('https://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/' '.*"patch-\(4\.9\.[0-9]\+\)\.xz.*' 'f')
 source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
@@ -22,16 +23,16 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         # standard config files for mkinitcpio ramdisk
         linux-lts.preset
         change-default-console-loglevel.patch)
+validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
+              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
+             )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            'e688e9626b60b6e3ded8545803f6c9a81ee8dcdc12c908bba757793d3ea2e427'
+            '0fda44158e49937be352034535604b4bd92fde10130bad673d75d6b23a8dc774'
             '1cf2cceaf79bff8aaf056f859228a4820193aafd5d013bddc778610a2a426f3a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
-validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
-              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
-             )
 
 _kernelname=${pkgbase#linux}
 
