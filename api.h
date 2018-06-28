@@ -310,6 +310,11 @@ Info* api_get_check_info(const char* symbol);
  */
 Info* api_get_info(const char* symbol);
 
+/**
+ * Fills an Info_Array with check api data and portfolio data. Primarily used for "check" command.
+ * @param portfolio_data Info_Array
+ * @param pString portfolio data
+ */
 void api_info_array_populate_data(Info_Array* portfolio_data, String* pString);
 
 /**

@@ -33,8 +33,27 @@ extern char* portfolio_file_path;
  */
 void portfolio_file_path_init(void);
 
+/**
+ * Returns the portfolio in a String. If it is encrypted, it will be decrypted using password
+ * input through ncurses.
+ * @param password_ref if decryption is necessary, will reference a char* of the password
+ * @return Plaintext portfolio in a String or NULL if error/wrong password
+ */
 String* portfolio_ncurses_get_plaintext_string(char** password_ref);
 
+/**
+ * If portfolio file exists, decrypts it if necessary and calls portfolio_string_modify to change
+ * the value of an element in the portfolio. If it doesn't exist, creates a new file.
+ *
+ * Afterwards, re-encrypts the portfolio and writes it to the user's home folder.
+ *
+ * @param symbol string containing the symbol of the security to add or name of the cryptocurrency
+ * @param quantity_shares the number of shares to modify the portfolio by (must be >0 for add/rm,
+ * or >=0 for set)
+ * @param usd_spent the amount of USD to modify the portfolio by (must be >0 for add/rm, or >=0
+ * for set)
+ * @param mod_option SET, REMOVE, or ADD
+ */
 void portfolio_modify_write(const char* symbol, double quantity_shares, double usd_spent,
                             int mod_option);
 

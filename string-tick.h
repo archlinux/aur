@@ -68,14 +68,15 @@ char* strip_char(char* string, char c);
 char* strip_tags(char* string);
 
 /**
- * Returns the contents of a file in a String
+ * Returns the contents of a file in a String. Will return NULL if the file doesn't exist, if the
+ * file cannot be opened, or if there is an issue reading the file.
  * @param file_name path to file
- * @return String*
+ * @return String* or NULL
  */
 String* file_get_string(char* file_name);
 
 /**
- * Writes a String to a file
+ * Writes a String to a file. Will return on error opening file.
  * @param pString the String to overwrite with
  */
 void string_write_file(String* pString, char* file_name);
