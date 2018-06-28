@@ -12,18 +12,15 @@ url='https://github.com/DeadSix27/waifu2x-converter-cpp'
 license=('MIT')
 depends=('opencv'
          'cuda'
+         'gtkglext'
          )
 makedepends=('cmake'
              'git'
              'opencl-headers'
              'gcc7'
              )
-provides=('waifu2x-converter-cpp'
-          'waifu2x'
-          )
-conflicts=('waifu2x-converter-cpp'
-           'waifu2x'
-           )
+provides=('waifu2x-converter-cpp')
+conflicts=('waifu2x-converter-cpp')
 source=('git+https://github.com/DeadSix27/waifu2x-converter-cpp.git')
 sha256sums=('SKIP')
 
