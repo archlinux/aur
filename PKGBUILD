@@ -70,6 +70,10 @@ if [[ -f uber-minimal ]]; then
   _uber_minimal=true
 fi
 
+# Only present for the sake of sanity testing the qpi.install script
+#_piver=$LOCAL_PI_VER
+#_sysroot=/mnt/pi${_piver}
+
 # Sanity check options
 if $_building && ! $_target_host; then
   if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then _piver=$LOCAL_PI_VER; fi
@@ -422,14 +426,24 @@ fi
 }
 
 create_install_script() {
-  local _install_script_location="${startdir}/${install}"
+  local _prefix=/tmp
+
+  if [[ -n "${startdir}" ]]; then
+    _prefix=${startdir}
+  else
+    startdir=$PWD
+  fi
+  
+  local _install_script_location="${_prefix}/${install}"
 
   echo _piver="${_piver}" > ${_install_script_location}
   echo _qmakepath="${_installprefix}/bin/qmake" >> ${_install_script_location}
   echo _sysroot="${_sysroot}" >> ${_install_script_location}
+  echo _toolchain="${_toolchain}" >> ${_install_script_location}
 
-  cat "${startdir}/_${install}" >> "${startdir}/${install}"
+  cat "${startdir}/_${install}" >> "${_prefix}/${install}"
 }
+#create_install_script
 
 package() {
   adjust_bin_dir

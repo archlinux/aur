@@ -1,6 +1,6 @@
 _sdktool="/usr/lib/qtcreator/sdktool"
 _altsdktool="/usr/libexec/qtcreator/sdktool"
-_devicefamily="raspberrypi"
+_devicefamily="spuddrpi"
 _devicename="${_devicefamily}${_piver}"
 _familytext="Raspberry Pi"
 _devicetext="${_familytext} ${_piver}"
@@ -9,32 +9,45 @@ if [[ -x ${_altsdktool} ]]; then
     _sdktool=${_altsdktool}
 fi
 
+# ACHTUNG: this used to work without sudo when the Qt Creator dudes let you write to a user directory
+_sdktool="sudo ${_sdktool}"
+
 setup_toolchain() {
     echo "Registering toolchain with Qt Creator"
 ${_sdktool} addTC \
-    --id "ProjectExplorer.ToolChain.Gcc:${_devicefamily}" \
-    --name "${_familytext} toolchain" \
-    --path /opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf-gcc \
-    --abi arm-linux-generic-elf-32bit \
-    --supportedAbis arm-linux-generic-elf-32bit
+    --id "${_devicename}-gcc" \
+    --language 1 \
+    --name "${_devicetext} toolchain" \
+    --path ${_toolchain}gcc \
+    --abi arm-linux-generic-elf-64bit \
+    --supportedAbis arm-linux-generic-elf-64bit
+
+${_sdktool} addTC \
+    --id "${_devicename}-g++" \
+    --language 2 \
+    --name "${_devicetext} toolchain" \
+    --path ${_toolchain}g++ \
+    --abi arm-linux-generic-elf-64bit \
+    --supportedAbis arm-linux-generic-elf-64bit
 
     echo "Registering debugger with Qt Creator"
 ${_sdktool} addDebugger \
-    --id "${_devicefamily}_gdb" \
-    --name "${_familytext} gdb" \
-    --binary /opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf-gdb \
-    --abis arm-linux-generic-elf-32bit \
+    --id "${_devicename}-gdb" \
+    --name "${_devicetext} gdb" \
+    --binary ${_toolchain}gdb \
+    --abis arm-linux-generic-elf-64bit \
     --engine 1
 }
 
 remove_toolchain() {
-#TODO: Don't remove if the other pi package is present
-#Not used at present
 ${_sdktool} rmTC \
-    --id "ProjectExplorer.ToolChain.Gcc:${_devicefamily}"
+    --id "${_devicename}-gcc"
+
+${_sdktool} rmTC \
+    --id "${_devicename}-g++"
 
 ${_sdktool} rmDebugger \
-    --id "${_devicefamily}_gdb"
+    --id "${_devicename}-gdb"
 }
 
 remove_kit() {
@@ -49,6 +62,7 @@ ${_sdktool} rmDev \
 }
 
 setup_kit() {
+  remove_toolchain
   remove_kit
   setup_toolchain
  
@@ -75,11 +89,11 @@ ${_sdktool} addQt \
 ${_sdktool} addKit \
     --id "${_devicename}_kit" \
     --name "${_devicetext} Kit" \
-    --debugger "${_devicefamily}_gdb" \
+    --debugger "${_devicename}_gdb" \
     --devicetype GenericLinuxOsType \
     --device "${_devicename}_device" \
     --sysroot ${_sysroot} \
-    --toolchain "ProjectExplorer.ToolChain.Gcc:${_devicefamily}" \
+    --toolchain "${_devicename}-g++" \
     --qt "${_devicename}_qt" \
     --mkspec "devices/linux-rpi${_piver}-g++" 
 }
@@ -106,6 +120,7 @@ pre_upgrade() {
 post_upgrade() {
   setup_kit
 }
+#post_upgrade
 
 ## arg 1:  the old package version
 pre_remove() {
@@ -117,3 +132,4 @@ pre_remove() {
 post_remove() {
   remove_kit
 }
+#post_remove
