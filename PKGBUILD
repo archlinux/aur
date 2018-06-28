@@ -1,27 +1,36 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
 
 pkgname=pulseaudio-equalizer-ladspa-ffy00-git
-pkgver=1.0.r1.358553c
+pkgver=2.7.1.r0.358553c
 pkgrel=1
 pkgdesc="A 15-band equalizer for PulseAudio"
 arch=(any)
 url="https://github.com/FFY00/pulseaudio-equalizer-ladspa"
 license=('GPL3')
-depends=('pygtk' 'swh-plugins' 'gnome-icon-theme' 'pulseaudio<12.0' 'bc' 'python2-gobject')
+depends=('pygtk' 'swh-plugins' 'gnome-icon-theme' 'pulseaudio' 'bc' 'python2-gobject')
 makedepends=('git')
 provides=('pulseaudio-equalizer-ladspa')
 conflicts=('pulseaudio-equalizer-ladspa')
-source=("${pkgname%-git}::git+https://github.com/FFY00/pulseaudio-equalizer-ladspa")
-md5sums=('SKIP')
+source=(
+  "git+$url"
+  'ladspa_lib_path.sh'
+)
+sha256sums=(
+  'SKIP'
+  'cadad5c6257fdd3a91fa2d5caf88d23aa7e59e4cc19f25a39c3bc888994ed950'
+)
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-ffy00-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 package() {
-  install -Dm644 "$srcdir/${pkgname%-git}/equalizerrc" "$pkgdir/usr/equalizerrc"
+  install -Dm644 "$srcdir/${pkgname%-ffy00-git}/equalizerrc" "$pkgdir/usr/equalizerrc"
 
-  cp -r "$srcdir/${pkgname%-git}/share" "$pkgdir/usr/"
-  cp -r "$srcdir/${pkgname%-git}/bin" "$pkgdir/usr/"
+  cp -r "$srcdir/${pkgname%-ffy00-git}/share" "$pkgdir/usr/"
+  cp -r "$srcdir/${pkgname%-ffy00-git}/bin" "$pkgdir/usr/"
+
+  mkdir -p $pkgdir/etc/profile.d
+  cp $srcdir/ladspa_lib_path.sh $pkgdir/etc/profile.d/ladspa_lib_path.sh
 }
