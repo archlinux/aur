@@ -10,6 +10,7 @@ pkgbase = wwsd-git
 	depends = python-docopt
 	depends = nitrogen
 	depends = i3-wm
+	depends = i3ipc-python
 	source = wwsd-git::git+https://github.com/cbosoft/wwsd.git#branch=master
 	md5sums = SKIP
 
