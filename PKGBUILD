@@ -14,8 +14,8 @@ source=('huskymak.cfg'
   'msged_maps_makefile'
   "https://datapacket.dl.sourceforge.net/project/husky/husky/1.9-current/2017.04.06/husky-all-1.9-source-20170406.tgz"
 )
-_buildModules="huskylib fidoconf smapi areafix hpt areastat bsopack nltools htick msged"
-_tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack nltools htick"
+_tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick"
+_buildModules="${_tosserModules} msged"
 prepare() {
     cp -f huskymak.cfg ${_realpkg}/
     cp -f areastat_makefile ${_realpkg}/areastat/Makefile
