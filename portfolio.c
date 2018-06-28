@@ -69,10 +69,13 @@ void portfolio_modify_string(String* pString, const char* symbol, double quantit
             GOTO_CLEAN_MSG("You don't have any of this security to remove")
 
         if (strcmp("USD$", symbol) != 0) { // Check that the symbol is valid, except if it's USD
-            Info* data = api_get_check_info(symbol);
-            if (data == NULL) // If NULL response from APIs, it's invalid
+            Info* data = api_info_init();
+            strcpy(data->symbol, symbol);
+            if (api_store_check_info(data) == NULL) {// If NULL response from APIs, it's invalid
+                api_info_destroy(&data);
                 GOTO_CLEAN_MSG("Invalid symbol.")
-            else api_info_destroy(&data);
+            }
+            api_info_destroy(&data);
         }
 
         Json* new_object = json_object_new_object(); // Creates new array index and adds values to it
@@ -121,7 +124,7 @@ void portfolio_modify_string(String* pString, const char* symbol, double quantit
     json_object_put(jobj);
 }
 
-Info_Array* portfolio_info_array_init_from_portfolio(String* pString) {
+Info_Array* portfolio_info_array_init_from_portfolio_string(String* pString) {
     if (pString->len == 0) // If empty portfolio file
         RETNULL_MSG("Your portfolio is empty.")
 
@@ -136,14 +139,19 @@ Info_Array* portfolio_info_array_init_from_portfolio(String* pString) {
     portfolio_data->array = malloc(sizeof(Info*) * portfolio_data->length);
     pointer_alloc_check(portfolio_data->array);
     portfolio_data->totals = api_info_init();
-
-    // Initialize totals to 0
+    strcpy(portfolio_data->totals->symbol, "TOTALS");
     portfolio_data->totals->total_spent = 0;
-    portfolio_data->totals->current_value = 0;
-    portfolio_data->totals->profit_total = 0;
-    portfolio_data->totals->profit_last_close = 0;
-    portfolio_data->totals->profit_7d = 0;
-    portfolio_data->totals->profit_30d = 0;
+    for (size_t i = 0; i < portfolio_data->length; i++) {
+        portfolio_data->array[i] = api_info_init();
+        strcpy(portfolio_data->array[i]->symbol,
+               json_object_get_string(json_object_object_get(json_object_array_get_idx(jobj, i),
+                                                             "Symbol")));
+        portfolio_data->array[i]->amount = json_object_get_double(json_object_object_get(
+                json_object_array_get_idx(jobj, i), "Shares"));
+        portfolio_data->array[i]->total_spent = json_object_get_double(json_object_object_get(
+                json_object_array_get_idx(jobj, i), "USD_Spent"));
+        portfolio_data->totals->total_spent += portfolio_data->array[i]->total_spent;
+    }
 
     json_object_put(jobj);
     return portfolio_data;
@@ -349,14 +357,16 @@ void portfolio_print_stock(const char* symbol) {
             json_object_get_string(json_object_object_get(json_object_array_get_idx(jobj, i), "Symbol")), symbol) != 0)
         i++;
 
-    Info* info = NULL;
-    if (i != len)
-        info = api_get_check_info(symbol);
-    else GOTO_CLEAN_MSG("Your portfolio does not contain any of this security.")
+    if (i == len)
+        GOTO_CLEAN_MSG("Your portfolio does not contain any of this security.")
+
+    Info* info = api_info_init();
+    strcpy(info->symbol, symbol);
+    api_store_check_info(info);
 
     info->amount = json_object_get_double(json_object_object_get(json_object_array_get_idx(jobj, i), "Shares"));
     info->total_spent = json_object_get_double(json_object_object_get(json_object_array_get_idx(jobj, i), "USD_Spent"));
-    calculate_check_data(info);
+    info_store_check_data(info);
     printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)      7D    "
            "    (%%)      30D      "
            " (%%)\n%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",

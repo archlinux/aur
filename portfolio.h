@@ -89,7 +89,7 @@ void portfolio_modify_string(String* pString, const char* symbol, double quantit
  * length is the number of securities in the portfolio
  * @return SDA array
  */
-Info_Array* portfolio_info_array_init_from_portfolio(String* pString);
+Info_Array* portfolio_info_array_init_from_portfolio_string(String* pString);
 
 /**
  * Sorts the SDA array based on the SORT mode.

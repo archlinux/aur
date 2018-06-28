@@ -40,26 +40,6 @@ Info_Array* api_info_array_init(void) {
     return pInfo_Array;
 }
 
-void info_array_calculate_totals(Info_Array* pInfo_Array) {
-    strcpy(pInfo_Array->totals->symbol, "TOTALS");
-    for (size_t i = 0; i < pInfo_Array->length; i++) {
-        pInfo_Array->totals->total_spent += pInfo_Array->array[i]->total_spent;
-        pInfo_Array->totals->current_value += pInfo_Array->array[i]->current_value;
-        pInfo_Array->totals->profit_total += pInfo_Array->array[i]->profit_total;
-        pInfo_Array->totals->profit_last_close += pInfo_Array->array[i]->profit_last_close;
-        pInfo_Array->totals->profit_7d += pInfo_Array->array[i]->profit_7d;
-        pInfo_Array->totals->profit_30d += pInfo_Array->array[i]->profit_30d;
-    }
-    pInfo_Array->totals->profit_total_percent = (100 * (pInfo_Array->totals->current_value -
-            pInfo_Array->totals->total_spent)) / pInfo_Array->totals->total_spent;
-    pInfo_Array->totals->profit_last_close_percent = 100 *
-            pInfo_Array->totals->profit_last_close / pInfo_Array->totals->total_spent;
-    pInfo_Array->totals->profit_7d_percent = 100 *  pInfo_Array->totals->profit_7d /
-            pInfo_Array->totals->total_spent;
-    pInfo_Array->totals->profit_30d_percent = 100 *  pInfo_Array->totals->profit_30d /
-            pInfo_Array->totals->total_spent;
-}
-
 size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pString) {
     size_t new_len = pString->len + size * nmemb;
     pString->data = realloc(pString->data, new_len + 1);
@@ -123,7 +103,7 @@ void* iex_store_company(void* vpInfo) {
         strcpy(symbol_info->sector, json_object_get_string(json_object_object_get(jobj, "sector")));
     json_object_put(jobj);
     string_destroy(&pString);
-    return NULL;
+    return vpInfo;
 }
 
 void* iex_store_quote(void* vpInfo) {
@@ -160,7 +140,7 @@ void* iex_store_quote(void* vpInfo) {
     symbol_info->pe_ratio = json_object_get_double(json_object_object_get(jobj, "peRatio"));
     json_object_put(jobj);
     string_destroy(&pString);
-    return NULL;
+    return vpInfo;
 }
 
 void* iex_store_stats(void* vpInfo) {
@@ -187,7 +167,7 @@ void* iex_store_stats(void* vpInfo) {
     symbol_info->debt = json_object_get_int64(json_object_object_get(jobj, "debt"));
     json_object_put(jobj);
     string_destroy(&pString);
-    return NULL;
+    return vpInfo;
 }
 
 void* iex_store_earnings(void* vpInfo) {
@@ -227,7 +207,7 @@ void* iex_store_earnings(void* vpInfo) {
     }
     json_object_put(jobj);
     string_destroy(&pString);
-    return NULL;
+    return vpInfo;
 }
 
 void* iex_store_chart(void* vpInfo) {
@@ -261,7 +241,7 @@ void* iex_store_chart(void* vpInfo) {
         symbol_info->price_30d = symbol_info->points[len - 21];
     json_object_put(jobj);
     string_destroy(&pString);
-    return NULL;
+    return vpInfo;
 }
 
 void* iex_store_news(void* vpInfo) {
@@ -269,12 +249,13 @@ void* iex_store_news(void* vpInfo) {
     if (symbol_info->symbol[0] == '\0')
         return NULL;
 
-    if (symbol_info->num_articles == EMPTY)
-        symbol_info->num_articles = DEFAULT_NUM_ARTICLES;
+    int num_articles = DEFAULT_NUM_ARTICLES;
+    if (symbol_info->num_articles != EMPTY)
+        num_articles = symbol_info->num_articles;
 
     char iex_api_string[URL_MAX_LENGTH];
-    sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/news/last/%d", symbol_info->symbol,
-            symbol_info->num_articles);
+    sprintf(iex_api_string, "https://api.iextrading.com/1.0/stock/%s/news/last/%d",
+            symbol_info->symbol, num_articles);
     String* pString = api_curl_data(iex_api_string);
     if (pString == NULL)
         return NULL;
@@ -329,7 +310,7 @@ void* iex_store_news(void* vpInfo) {
     }
     json_object_put(jobj);
     string_destroy(&pString);
-    return NULL;
+    return vpInfo;
 }
 
 void* iex_store_peers(void* vpInfo) {
@@ -363,11 +344,12 @@ void* iex_store_peers(void* vpInfo) {
     symbol_info->peers->array = malloc(sizeof(Info*) * len);
     pointer_alloc_check(symbol_info->peers->array);
     pthread_t threads[len];
-    char syms[len][SYMBOL_MAX_LENGTH];
     for (size_t i = 0; i < len; i++) {
-        strcpy(syms[i], json_object_get_string(json_object_array_get_idx(jobj, (size_t) i)));
-        // Cast function to enable it as a thread entrypoint
-        if (pthread_create(&threads[i], NULL, (void* (*)(void*)) api_get_check_info, (void*) syms[i]))
+        symbol_info->peers->array[i] = api_info_init();
+        strcpy(symbol_info->peers->array[i]->symbol, json_object_get_string(
+                json_object_array_get_idx(jobj, (size_t) i)));
+        if (pthread_create(&threads[i], NULL, api_store_check_info,
+                           symbol_info->peers->array[i]->symbol))
             EXIT_MSG("Error creating thread!");
     }
 
@@ -381,35 +363,48 @@ void* iex_store_peers(void* vpInfo) {
 
     json_object_put(jobj);
     string_destroy(&pString);
-    return NULL;
+    return vpInfo;
 }
 
-void calculate_check_data(Info* pInfo) {
-    if (pInfo->amount == EMPTY)
-        return;
+void* iex_store_all_info(void* vpInfo) {
+    pthread_t threads[7];
+    void* (*funcs[7]) (void*) = {
+            iex_store_company, iex_store_quote, iex_store_stats, iex_store_earnings,
+            iex_store_chart, iex_store_news, iex_store_peers
+    };
+    for (int i = 0; i < 7; i++)
+        if (pthread_create(&threads[i], NULL, funcs[i], vpInfo))
+            EXIT_MSG("Error creating thread!");
 
-    if (strcmp(pInfo->symbol, "USD$") != 0) {
-        pInfo->current_value = pInfo->amount * pInfo->price;
-        pInfo->profit_total = pInfo->current_value - pInfo->total_spent;
-        pInfo->profit_total_percent = 100 * (pInfo->current_value / pInfo->total_spent - 1);
-        pInfo->profit_last_close = pInfo->amount * (pInfo->price - pInfo->price_last_close);
-        pInfo->profit_last_close_percent = 100 * (pInfo->current_value / (pInfo->current_value -
-                                                                          pInfo->profit_last_close) - 1);
-        pInfo->profit_7d = pInfo->amount * (pInfo->price - pInfo->price_7d);
-        pInfo->profit_7d_percent = 100 * (pInfo->current_value / (pInfo->current_value - pInfo->profit_7d) - 1);
-        pInfo->profit_30d = pInfo->amount * (pInfo->price - pInfo->price_30d);
-        pInfo->profit_30d_percent = 100 * (pInfo->current_value / (pInfo->current_value - pInfo->profit_30d) - 1);
-    } else {
-        pInfo->current_value = pInfo->amount;
-        pInfo->profit_total = pInfo->current_value - pInfo->total_spent;
-        pInfo->profit_total_percent = 100 * pInfo->profit_total / pInfo->total_spent;
-        pInfo->profit_last_close = 0;
-        pInfo->profit_last_close_percent = 0;
-        pInfo->profit_7d = 0;
-        pInfo->profit_7d_percent = 0;
-        pInfo->profit_30d = 0;
-        pInfo->profit_30d_percent = 0;
+    void* ret = vpInfo, * thread_ret = NULL;
+    for (int i = 0; i < 7; i++) {
+        if (pthread_join(threads[i], &thread_ret))
+            EXIT_MSG("Error joining thread!");
+
+        if (thread_ret == NULL)
+            ret = NULL;
     }
+    return ret;
+}
+
+void* iex_store_check_info(void* vpInfo) {
+    pthread_t threads[2];
+    void* (*funcs[2]) (void*) = {
+            iex_store_quote, iex_store_chart
+    };
+    for (int i = 0; i < 2; i++)
+        if (pthread_create(&threads[i], NULL, funcs[i], vpInfo))
+            EXIT_MSG("Error creating thread!");
+
+    void* ret = vpInfo, * thread_ret = NULL;
+    for (int i = 0; i < 2; i++) {
+        if (pthread_join(threads[i], &thread_ret))
+            EXIT_MSG("Error joining thread!");
+
+        if (thread_ret == NULL)
+            ret = NULL;
+    }
+    return ret;
 }
 
 void* morningstar_store_info(void* vpInfo) {
@@ -455,7 +450,7 @@ void* morningstar_store_info(void* vpInfo) {
                 json_object_array_get_idx(json_object_object_get(vol, "Datapoints"), len - 1)));
     json_object_put(jobj);
     string_destroy(&pString);
-    return NULL;
+    return vpInfo;
 }
 
 void* coinmarketcap_store_info(void* vpInfo) {
@@ -486,116 +481,40 @@ void* coinmarketcap_store_info(void* vpInfo) {
     symbol_info->intraday_time = strtol(json_object_get_string(json_object_object_get(data, "last_updated")), NULL, 10);
     json_object_put(jobj);
     string_destroy(&pString);
-    return NULL;
+    return vpInfo;
 }
 
-Info* iex_get_info(const char* symbol) {
-    Info* symbol_info = api_info_init();
-    strcpy(symbol_info->symbol, symbol);
-    pthread_t threads[7];
-    void* (*funcs[7]) (void*) = {
-            iex_store_company, iex_store_quote, iex_store_stats, iex_store_earnings, iex_store_chart, iex_store_news,
-            iex_store_peers
-    };
-    for (int i = 0; i < 7; i++)
-        if (pthread_create(&threads[i], NULL, funcs[i], symbol_info))
-            EXIT_MSG("Error creating thread!");
+void* api_store_all_info(void* vpInfo) {
+    Info* pInfo = vpInfo;
+    if (strlen(pInfo->symbol) > 5) // If symbol length is greater than 5, then it must be a crypto
+        return coinmarketcap_store_info(vpInfo);
 
-    for (int i = 0; i < 7; i++)
-        if (pthread_join(threads[i], NULL))
-            EXIT_MSG("Error joining thread!");
-
-    if (symbol_info->price == EMPTY)
-        api_info_destroy(&symbol_info);
-
-    return symbol_info;
+    if (iex_store_all_info(vpInfo) == NULL && morningstar_store_info(vpInfo) == NULL &&
+        coinmarketcap_store_info(vpInfo) == NULL)
+        return NULL;
+    else return vpInfo;
 }
 
-Info* morningstar_get_info(const char* symbol) {
-    Info* symbol_info = api_info_init();
-    strcpy(symbol_info->symbol, symbol);
-    morningstar_store_info(symbol_info);
+void* api_store_check_info(void* vpInfo) {
+    Info* pInfo = vpInfo;
+    if (strlen(pInfo->symbol) > 5) // If symbol length is greater than 5, then it must be a crypto
+        return coinmarketcap_store_info(vpInfo);
 
-    if (symbol_info->price == EMPTY)
-        api_info_destroy(&symbol_info);
-
-    return symbol_info;
+    if (iex_store_check_info(vpInfo) == NULL && morningstar_store_info(vpInfo) == NULL &&
+        coinmarketcap_store_info(vpInfo) == NULL)
+        return NULL;
+    else return vpInfo;
 }
 
-Info* coinmarketcap_get_info(const char* symbol) {
-    Info* symbol_info = api_info_init();
-    strcpy(symbol_info->symbol, symbol);
-    coinmarketcap_store_info(symbol_info);
-
-    if (symbol_info->price == EMPTY)
-        api_info_destroy(&symbol_info);
-
-    return symbol_info;
-}
-
-Info* api_get_check_info(const char* symbol) {
-    if (strlen(symbol) > 5) // If symbol length is greater than 5, then it must be a crypto
-        return coinmarketcap_get_info(symbol);
-
-    Info* symbol_info = api_info_init();
-    strcpy(symbol_info->symbol, symbol);
-    pthread_t threads[2];
-    void* (*funcs[2])(void*) = {iex_store_quote, iex_store_chart};
-    for (int i = 0; i < 2; i++)
-        if (pthread_create(&threads[i], NULL, funcs[i], symbol_info))
+void* api_info_array_store_check_data(void* vpPortfolio_Data) {
+    Info_Array* portfolio_data = vpPortfolio_Data;
+    pthread_t threads[portfolio_data->length];
+    for (size_t i = 0; i < portfolio_data->length; i++)
+        if (strcmp(portfolio_data->array[i]->symbol, "USD$") != 0)
+            if (pthread_create(&threads[i], NULL, api_store_check_info, portfolio_data->array[i]))
             EXIT_MSG("Error creating thread!")
 
-    for (int i = 0; i < 2; i++)
-        if (pthread_join(threads[i], NULL))
-            EXIT_MSG("Error joining thread!")
-
-    if (symbol_info->price != EMPTY)
-        return symbol_info;
-
-    api_info_destroy(&symbol_info);
-    symbol_info = morningstar_get_info(symbol);
-
-    if (symbol_info != NULL)
-        return symbol_info;
-
-    return coinmarketcap_get_info(symbol);
-}
-
-Info* api_get_info(const char* symbol) {
-    if (strlen(symbol) > 5)
-        return coinmarketcap_get_info(symbol);
-
-    Info* symbol_info = iex_get_info(symbol);
-    if (symbol_info != NULL)
-        return symbol_info;
-
-    symbol_info = morningstar_get_info(symbol);
-
-    if (symbol_info != NULL)
-        return symbol_info;
-
-    return coinmarketcap_get_info(symbol);
-}
-
-void api_info_array_populate_data(Info_Array* portfolio_data, String* pString) {
-    Json* jobj = json_tokener_parse(pString->data);
-    char syms[portfolio_data->length][SYMBOL_MAX_LENGTH];
-    double amount_array[portfolio_data->length], spent_array[portfolio_data->length];
-    pthread_t threads[portfolio_data->length];
-    for (size_t i = 0; i < portfolio_data->length; i++) {
-        strcpy(syms[i], json_object_get_string(json_object_object_get(json_object_array_get_idx(
-                jobj, i), "Symbol")));
-        amount_array[i] = json_object_get_double(json_object_object_get(json_object_array_get_idx(
-                jobj, i), "Shares"));
-        spent_array[i] = json_object_get_double(json_object_object_get(json_object_array_get_idx(
-                jobj, i), "USD_Spent"));
-        if (strcmp(syms[i], "USD$") != 0)
-            if (pthread_create(&threads[i], NULL, (void* (*)(void*)) api_get_check_info, syms[i]))
-                EXIT_MSG("Error creating thread!")
-    }
-    json_object_put(jobj);
-
-    void* temp = NULL;
+    void* ret = vpPortfolio_Data, * thread_ret = NULL;
     int load_len = 0;
     for (size_t i = 0; i < portfolio_data->length; i++) {
         // Print loading string
@@ -605,21 +524,70 @@ void api_info_array_populate_data(Info_Array* portfolio_data, String* pString) {
         load_len = printf("Loading data (%d/%d)", (int) i + 1, (int) portfolio_data->length);
         fflush(stdout);
 
-        if (strcmp(syms[i], "USD$") != 0) {
-            if (pthread_join(threads[i], &temp))
-                EXIT_MSG("Error joining thread!")
-
-            portfolio_data->array[i] = temp;
+        if (strcmp(portfolio_data->array[i]->symbol, "USD$") != 0) {
+            if (pthread_join(threads[i], &thread_ret))
+            EXIT_MSG("Error joining thread!")
         }
-        else {
-            portfolio_data->array[i] = api_info_init();
-            strcpy(portfolio_data->array[i]->symbol, syms[i]);
-        }
-        portfolio_data->array[i]->amount = amount_array[i];
-        portfolio_data->array[i]->total_spent = spent_array[i];
-        calculate_check_data(portfolio_data->array[i]);
+        if (thread_ret == NULL)
+            ret = NULL;
+        else info_store_check_data(portfolio_data->array[i]);
     }
-    info_array_calculate_totals(portfolio_data);
+    if (ret != NULL)
+        info_array_store_totals(portfolio_data);
+    return ret;
+}
+
+void info_store_check_data(Info* pInfo) {
+    if (pInfo->amount == EMPTY)
+        return;
+
+    if (strcmp(pInfo->symbol, "USD$") != 0) {
+        pInfo->current_value = pInfo->amount * pInfo->price;
+        pInfo->profit_total = pInfo->current_value - pInfo->total_spent;
+        pInfo->profit_total_percent = 100 * (pInfo->current_value / pInfo->total_spent - 1);
+        pInfo->profit_last_close = pInfo->amount * (pInfo->price - pInfo->price_last_close);
+        pInfo->profit_last_close_percent = 100 * (pInfo->current_value / (pInfo->current_value -
+                                                                          pInfo->profit_last_close) - 1);
+        pInfo->profit_7d = pInfo->amount * (pInfo->price - pInfo->price_7d);
+        pInfo->profit_7d_percent = 100 * (pInfo->current_value / (pInfo->current_value - pInfo->profit_7d) - 1);
+        pInfo->profit_30d = pInfo->amount * (pInfo->price - pInfo->price_30d);
+        pInfo->profit_30d_percent = 100 * (pInfo->current_value / (pInfo->current_value - pInfo->profit_30d) - 1);
+    } else {
+        pInfo->current_value = pInfo->amount;
+        pInfo->profit_total = pInfo->current_value - pInfo->total_spent;
+        pInfo->profit_total_percent = 100 * pInfo->profit_total / pInfo->total_spent;
+        pInfo->profit_last_close = 0;
+        pInfo->profit_last_close_percent = 0;
+        pInfo->profit_7d = 0;
+        pInfo->profit_7d_percent = 0;
+        pInfo->profit_30d = 0;
+        pInfo->profit_30d_percent = 0;
+    }
+}
+
+void info_array_store_totals(Info_Array* pInfo_Array) {
+    pInfo_Array->totals->total_spent = 0;
+    pInfo_Array->totals->current_value = 0;
+    pInfo_Array->totals->profit_total = 0;
+    pInfo_Array->totals->profit_last_close = 0;
+    pInfo_Array->totals->profit_7d = 0;
+    pInfo_Array->totals->profit_30d = 0;
+    for (size_t i = 0; i < pInfo_Array->length; i++) {
+        pInfo_Array->totals->total_spent += pInfo_Array->array[i]->total_spent;
+        pInfo_Array->totals->current_value += pInfo_Array->array[i]->current_value;
+        pInfo_Array->totals->profit_total += pInfo_Array->array[i]->profit_total;
+        pInfo_Array->totals->profit_last_close += pInfo_Array->array[i]->profit_last_close;
+        pInfo_Array->totals->profit_7d += pInfo_Array->array[i]->profit_7d;
+        pInfo_Array->totals->profit_30d += pInfo_Array->array[i]->profit_30d;
+    }
+    pInfo_Array->totals->profit_total_percent = (100 * (pInfo_Array->totals->current_value -
+                                                        pInfo_Array->totals->total_spent)) / pInfo_Array->totals->total_spent;
+    pInfo_Array->totals->profit_last_close_percent = 100 *
+                                                     pInfo_Array->totals->profit_last_close / pInfo_Array->totals->total_spent;
+    pInfo_Array->totals->profit_7d_percent = 100 *  pInfo_Array->totals->profit_7d /
+                                             pInfo_Array->totals->total_spent;
+    pInfo_Array->totals->profit_30d_percent = 100 *  pInfo_Array->totals->profit_30d /
+                                              pInfo_Array->totals->total_spent;
 }
 
 Info_Array* iex_get_valid_symbols(void) {

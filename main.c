@@ -63,9 +63,10 @@ int main(int argc, char* argv[]) {
         if (argc == 2) {
             String* pString = portfolio_ncurses_get_plaintext_string(NULL);
             if (pString != NULL) {
-                Info_Array* portfolio_data = portfolio_info_array_init_from_portfolio(pString);
-                api_info_array_populate_data(portfolio_data, pString);
+                Info_Array* portfolio_data = portfolio_info_array_init_from_portfolio_string(
+                        pString);
                 if (portfolio_data != NULL) {
+                    api_info_array_store_check_data(portfolio_data);
                     portfolio_print_all(portfolio_data);
                     api_info_array_destroy(&portfolio_data);
                 }

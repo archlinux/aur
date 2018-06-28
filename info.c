@@ -3,9 +3,12 @@
 int zoom_months[] = {60, 48, 36, 24, 12, 9, 6, 3, 1}, zoom_change_x_months[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
 
 void interface_print(const char* symbol) {
-    Info* symbol_info = api_get_info(symbol);
-    if (symbol_info == NULL)
+    Info* symbol_info = api_info_init();
+    strcpy(symbol_info->symbol, symbol);
+    if (api_store_all_info(symbol_info) == NULL) {
+        api_info_destroy(&symbol_info);
         RET_MSG("Invalid symbol.")
+    }
 
     if (symbol_info->points == NULL) { // If a crypto print info to stdout and return
         info_print(symbol_info);
@@ -176,8 +179,7 @@ void news_print(const char* symbol, int num_articles) {
     Info* symbol_info = api_info_init();
     strcpy(symbol_info->symbol, symbol);
     symbol_info->num_articles = num_articles;
-    iex_store_news(symbol_info);
-    if (symbol_info->articles == NULL) {
+    if (iex_store_news(symbol_info) == NULL) {
         api_info_destroy(&symbol_info);
         RET_MSG("Invalid symbol");
     }
@@ -212,14 +214,19 @@ void peers_printw(WINDOW* window, Info* symbol_info) {
 }
 
 void graph_print(const char* symbol, const char* symbol2) {
-    Info* symbol_info = api_get_check_info(symbol), *symbol_info2 = NULL;
-    if (symbol_info == NULL)
+    Info* symbol_info = api_info_init(), * symbol_info2 = NULL;
+    strcpy(symbol_info->symbol, symbol);
+    if (api_store_check_info(symbol_info) == NULL) {
+        api_info_destroy(&symbol_info);
         RET_MSG("Invalid symbol")
+    }
 
     if (symbol2 != NULL) {
-        symbol_info2 = api_get_check_info(symbol2);
-        if (symbol_info2 ==  NULL) {
+        symbol_info2 = api_info_init();
+        strcpy(symbol_info2->symbol, symbol2);
+        if (api_store_check_info(symbol_info2) ==  NULL) {
             api_info_destroy(&symbol_info);
+            api_info_destroy(&symbol_info2);
             RET_MSG("Invalid symbol")
         }
     }

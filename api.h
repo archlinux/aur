@@ -149,12 +149,6 @@ Info* api_info_init(void);
 Info_Array* api_info_array_init(void);
 
 /**
- * Adds up values of Info array and sets values in totals.
- * @param pInfo_Array
- */
-void info_array_calculate_totals(Info_Array* pInfo_Array);
-
-/**
  * writefunction for cURL HTTP GET/POST
  * stolen from a nice man on stackoverflow
  */
@@ -173,7 +167,7 @@ String* api_curl_data(const char* url);
  * Queries IEX's company endpoint and stores the data in the Info object pointed to by vpInfo. symbol, name,
  * industry, website, description, ceo, issue_type, and sector are stored.
  * @param vpInfo Info*
- * @return NULL
+ * @return vpInfo on success, NULL on error
  */
 void* iex_store_company(void* vpInfo);
 
@@ -183,7 +177,7 @@ void* iex_store_company(void* vpInfo);
  * Queries IEX's quote endpoint and stores the data in the Info object pointed to by vpInfo. intraday_time, price,
  * price_last_close, marketcap, volume_1d, and pe_ratio are stored.
  * @param vpInfo Info*
- * @return NULL
+ * @return vpInfo on success, NULL on error
  */
 void* iex_store_quote(void* vpInfo);
 
@@ -193,7 +187,7 @@ void* iex_store_quote(void* vpInfo);
  * Queries IEX's stats endpoint and stores the data in the Info object pointed to by vpInfo. div_yield, revenue,
  * gross_profit, cash, and debt are stored.
  * @param vpInfo Info*
- * @return NULL
+ * @return vpInfo on success, NULL on error
  */
 void* iex_store_stats(void* vpInfo);
 
@@ -203,7 +197,7 @@ void* iex_store_stats(void* vpInfo);
  * Queries IEX's stats earnings and stores the data in the Info object pointed to by vpInfo. eps, fiscal_period, and
  * eps_year_ago are stored.
  * @param vpInfo Info*
- * @return NULL
+ * @return vpInfo on success, NULL on error
  */
 void* iex_store_earnings(void* vpInfo);
 
@@ -213,7 +207,7 @@ void* iex_store_earnings(void* vpInfo);
  * Queries IEX's chart endpoint and stores the data in the Info object pointed to by vpInfo. change_7d,
  * change_30d, and points are stored.
  * @param vpInfo Info*
- * @return NULL
+ * @return vpInfo on success, NULL on error
  */
 void* iex_store_chart(void* vpInfo);
 
@@ -223,7 +217,7 @@ void* iex_store_chart(void* vpInfo);
  * Queries IEX's news endpoint and stores the data in the Info object pointed to by vpInfo. num_articles number of
  * articles are stored.
  * @param vpInfo Info*
- * @return NULL
+ * @return vpInfo on success, NULL on error
  */
 void* iex_store_news(void* vpInfo);
 
@@ -232,16 +226,28 @@ void* iex_store_news(void* vpInfo);
  *
  * Queries IEX's peers endpoint and stores the data in the Info object pointed to by vpInfo.
  * @param vpInfo Info*
- * @return NULL
+ * @return vpInfo on success, NULL on error
  */
 void* iex_store_peers(void* vpInfo);
 
 /**
- * After API data and portfolio have already been collected, uses them to populate the Info fields current_value and
- * all the profit fields.
- * @param pInfo Info*
+ * Designed for threading
+ *
+ * Calls the above 7 iex store functions to store api data in the Info object pointed to by vpInfo.
+ * @param vpInfo Info*
+ * @return vpInfo on success, NULL on error
  */
-void calculate_check_data(Info* pInfo);
+void* iex_store_all_info(void* vpInfo);
+
+/**
+ * Designed for threading
+ *
+ * Calls iex_store_quote and iex_store_chart to store api data in the Info object pointed to by
+ * vpInfo.
+ * @param vpInfo Info*
+ * @return vpInfo on success, NULL on error
+ */
+void* iex_store_check_info(void* vpInfo);
 
 /**
  * Designed for threading
@@ -249,7 +255,7 @@ void calculate_check_data(Info* pInfo);
  * Queries Morningstar's API and stores the data in the Info object pointed to by vpInfo. price, change_1d,
  * change_7d, change_30d, points, and volume_1d are stored.
  * @param vpInfo Info*
- * @return NULL
+ * @return vpInfo on success, NULL on error
  */
 void* morningstar_store_info(void* vpInfo);
 
@@ -259,63 +265,53 @@ void* morningstar_store_info(void* vpInfo);
  * Queries Coinmarketcaps's API and stores the data in the Info object pointed to by vpInfo. name, symbol, price,
  * change_1d, change_7d, marketcap, and volume_1d are stored.
  * @param vpInfo Info*
- * @return NULL
+ * @return vpInfo on success, NULL on error
  */
 void* coinmarketcap_store_info(void* vpInfo);
 
 /**
- * Returns a pointer to an Info object containing info pertaining to the given symbol with data from IEX.
- * @param symbol stock/etf symbol
- * @return Info* if valid stock/etf or NULL otherwise
- */
-Info* iex_get_info(const char* symbol);
-
-/**
- * Returns a pointer to an Info object containing info pertaining to the given symbol with data from Morningstar.
- * @param symbol mutf/otc symbol
- * @return Info* if valid mutf/otc or NULL otherwise
- */
-Info* morningstar_get_info(const char* symbol);
-
-/**
- * Returns a pointer to an Info object containing info pertaining to the given symbol with data from Coinmarketcap.
- * @param symbol name of cryptocurrency
- * @return Info* if valid name of cryptocurrency or NULL otherwise
- */
-Info* coinmarketcap_get_info(const char* symbol);
-
-/**
- * Returns an Info* populated with information pertaining to the given symbol.
- * The function will first query IEX. If no response, it will query Morningstar. If no response, it will query
- * Coinmarketcap. If Coinmarketcap returns NULL, the function returns NULL.
+ * Stores API data in Info object pointed to by vpInfo. The function will first query IEX. If no
+ * response, it will query Morningstar. If no response, it will query Coinmarketcap.
  * 1. IEX -- NASDAQ/NYSE/NYSEARCA
  * 2. Morningstar -- MUTF/OTCMKTS
  * 3. Coinmarketcap -- CRYPTO
  *
- * In the case of using IEX, only the Quote and Chart sections will be populated.
- * @param symbol
- * @return Info* or NULL if invalid symbol
+ * @param vpInfo Info*
+ * @return vpInfo on success, NULL on error
  */
-Info* api_get_check_info(const char* symbol);
+void* api_store_all_info(void* vpInfo);
 
 /**
- * Returns an Info* populated with information pertaining to the given symbol.
- * The function will first query IEX. If no response, it will query Morningstar. If no response, it will query
- * Coinmarketcap. If Coinmarketcap returns NULL, the function returns NULL.
+ * Stores API data in Info object pointed to by vpInfo. The function will first query IEX's check
+ * data. If no response, it will query Morningstar. If no response, it will query Coinmarketcap.
  * 1. IEX -- NASDAQ/NYSE/NYSEARCA
  * 2. Morningstar -- MUTF/OTCMKTS
  * 3. Coinmarketcap -- CRYPTO
- * @param symbol
- * @return Info* or NULL if invalid symbol
+ *
+ * @param vpInfo Info*
+ * @return vpInfo on success, NULL on error
  */
-Info* api_get_info(const char* symbol);
+void* api_store_check_info(void* vpInfo);
 
 /**
- * Fills an Info_Array with check api data and portfolio data. Primarily used for "check" command.
+ * Fills an Info_Array with check api data. Primarily used for "check" command.
  * @param portfolio_data Info_Array
  * @param pString portfolio data
  */
-void api_info_array_populate_data(Info_Array* portfolio_data, String* pString);
+void* api_info_array_store_check_data(void* vpPortfolio_Data);
+
+/**
+ * After API data and portfolio have already been collected, uses them to populate the Info fields current_value and
+ * all the profit fields.
+ * @param pInfo Info*
+ */
+void info_store_check_data(Info* pInfo);
+
+/**
+ * Adds up values of Info array and sets values in totals.
+ * @param pInfo_Array
+ */
+void info_array_store_totals(Info_Array* pInfo_Array);
 
 /**
  * Returns a pointer to an Info_Array containing a list of all iex listed securities.
