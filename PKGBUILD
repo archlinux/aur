@@ -1,4 +1,4 @@
-# Maintainer: Charles Bos <charlesbos1 AT gmail>
+# Maintainer: Michael J. Pento <mjpento@verizon.net> 
 # Contributor: David Hajek <dante4d at gmail dot com>
 
 pkgname=apache-poi
