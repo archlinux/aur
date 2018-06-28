@@ -6,35 +6,29 @@
 # Contributor: Sylvester Johansson <scj(at)archlinux(dot)us>
 
 pkgname=ocaml-sexplib
-pkgver=113.33.03
+pkgver=0.11.0
 pkgrel=1
+epoch=1
 pkgdesc="Library for serializing OCaml values to and from S-expressions"
 arch=('i686' 'x86_64')
 url="https://github.com/janestreet/sexplib"
 license=('Apache')
-depends=('ocaml')
-makedepends=('ocaml-findlib' 'ocaml-js-build-tools' 'opam')
+depends=('ocaml' 'ocaml-parsexp' 'ocaml-sexplib0' 'ocaml-num')
+makedepends=('dune')
 options=('!strip')
-source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz"
-        "libdir.patch")
-md5sums=('739af487f05e0ffd8626e9acb653b33d'
-         '7f0a951f1ac87385272ea7a6dd58762a')
-
-prepare() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
-
-  patch -Np1 < "${srcdir}/libdir.patch"
-}
+source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/sexplib-v${pkgver}.tar.gz")
+md5sums=('1d53d945914b6b9a380dc8923f19e9ae')
 
 build() {
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/sexplib-v${pkgver}"
 
-  ./configure --prefix /usr
-  make
+  jbuilder build
 }
 
 package(){
-  cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
+  cd "${srcdir}/sexplib-v${pkgver}"
 
-  make install LIBDIR="${pkgdir}$(ocamlc -where)"
+  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
