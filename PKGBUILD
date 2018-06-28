@@ -1,6 +1,5 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
-
 pkgname=sdrangel
 pkgver=4.0.1
 pkgrel=1
@@ -27,14 +26,8 @@ optdependds=(
 )
 provides=("sdrangel")
 conflicts=("sdrangel")
-source=(
-  "https://github.com/f4exb/sdrangel/archive/v$pkgver.tar.gz"
-  'qt_use_modules.patch'
-)
-sha256sums=(
-  'f23cb0c4e497adca66c3c060d314db0c1f27284e364b6f2ff44cdc3f164fd7aa'
-  '5e08f2bf5c3743381142f64e0657517e1ac5ffe0effb83df13f69a78b8ca2a23'
-)
+source=("https://github.com/f4exb/sdrangel/archive/v$pkgver.tar.gz")
+sha256sums=('f23cb0c4e497adca66c3c060d314db0c1f27284e364b6f2ff44cdc3f164fd7aa')
 
 build() {
   mkdir -p $srcdir/$pkgname-$pkgver/build

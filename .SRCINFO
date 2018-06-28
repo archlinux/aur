@@ -23,9 +23,7 @@ pkgbase = sdrangel
 	provides = sdrangel
 	conflicts = sdrangel
 	source = https://github.com/f4exb/sdrangel/archive/v4.0.1.tar.gz
-	source = qt_use_modules.patch
 	sha256sums = f23cb0c4e497adca66c3c060d314db0c1f27284e364b6f2ff44cdc3f164fd7aa
-	sha256sums = 5e08f2bf5c3743381142f64e0657517e1ac5ffe0effb83df13f69a78b8ca2a23
 
 pkgname = sdrangel
 
