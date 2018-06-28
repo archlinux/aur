@@ -1,8 +1,8 @@
 # Maintainer: Gavin Lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=5.3
-pkgrel=5
+pkgver=5.4
+pkgrel=6
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven TUI written in Bash"
 depends=('dialog' 'expac' 'pacman-contrib')
 arch=('any')
@@ -11,8 +11,8 @@ license=('GPL')
 optdepends=(
   'auracle-git: AUR helper'
   'gdrive: AUR package for google drive backup'
-  'lostfiles: AUR package for finding lost files'
   'trizen: AUR helper'
+  'lostfiles: For finding lost files'
   'arch-audit: collect CVE data'
   'rmlint: Finds lint and other unwanted'
   'rkhunter: finds root kits malware'
@@ -28,7 +28,7 @@ optdepends=(
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
 
-md5sums=('33f184002f62f6193b19aab0a8a105f6')
+md5sums=('71ff0ef21bd39e29d6cf662413d0ff1b')
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     install -D -m755 main/Cylon.sh "$pkgdir"/usr/bin/"${pkgname}" 
