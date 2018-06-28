@@ -3,7 +3,7 @@
 # Contributor: Sven-Hendrik Haase <sh [at] lutzhaase [dot] com>
 
 pkgname=lib32-liblphobos
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Runtime and Phobos library for the LLVM based D compiler. (32-bit)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('git' 'llvm' 'libconfig' 'cmake')
 provides=("d-runtime" "d-stdlib")
 replaces=("lib32-liblphobos-devel")
 source=("$url/releases/download/v${pkgver}/ldc-${pkgver}-src.tar.gz")
-sha256sums=('e3f32a4dfcaae12f434e0e23638684faa83765827e7f2deb2df059dccc3169b9')
+sha256sums=('99b6e2b8dcaf28a2947318fb25e43fa0b96dd3a6377995146f987c4d17dd8371')
 
 build() {
   cd ldc-$pkgver-src
