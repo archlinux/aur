@@ -3,7 +3,7 @@ pkgname=wwsd-git
 pkgver=r20.60548b6
 pkgrel=1
 
-pkgdesc="WWSd: i3 workspace wallpaper setter daemon"
+pkgdesc="Sets wallpaper depending on user-set rules"
 arch=('any')
 url="https://github.com/cbosoft/wwsd"
 license=('MIT')
