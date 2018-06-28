@@ -29,11 +29,11 @@ _use_KSM="no"		# "yes":	Enable Kernel SamePage Merging (KSM).
 ###########################################################################################################
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
-__basekernel=4.16
-_minor=16
+__basekernel=4.17
+_minor=3
 pkgver=${__basekernel}.${_minor}
-pkgrel=3
-lqxrel=3
+pkgrel=1
+lqxrel=1
 pkgbase=linux-lqx
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
 _lqxpatchname="${pkgver}-${lqxrel}.patch"
@@ -62,10 +62,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.
          # standard config files for mkinitcpio ramdisk
         'linux.preset')
 
-sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2d06317dc1683c51a472a9a631573a9b1e7258d6281a2ee189897827f14662'
+sha512sums=('4d9de340a26155a89ea8773131c76220cc2057f2b5d031b467b60e8b14c1842518e2d60a863d8c695f0f7640f3f18d43826201984a238dade857b6cef79837db'
             'SKIP'
-            '8243d30b3a8d2e3fc51da5aea4d656c301f2df3c62d24e262f7a2fe04bcc9d7654013256e3f977a318dca0646e287e83e43f3a04ce4fa109b6720c71e3918127'
-            '2481524cf1b6f19abccf36de9cf5a7ab11120a53cf7578dd1704018bb3f9a5469866499a5898aefb42be62ba56e50c52750f7bad35f487737f3b8455a1bafd1f'
+            '5f2afc8fd15a597a91ec306538521c41d51937b41ddaf61875f947bfcaec9a78aa40e64433ba3477542e5f136923a063de7e7f726b35acf0688399d7f3cf28d5'
+            '67ab0f28bdfb65e4851e1c56b7f9893d9ed97d519c40fe04524116c02f0b99b5690faf0e8e8645cadc96bc5f6706a572ae1a841a8abd5a6666599ac268a703b7'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
