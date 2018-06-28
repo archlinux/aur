@@ -1,13 +1,13 @@
 pkgbase = pyenv
 	pkgdesc = Simple Python version management
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/pyenv/pyenv
 	arch = any
 	license = MIT
 	optdepends = mercurial: to install dev builds
-	source = https://github.com/pyenv/pyenv/archive/v1.2.4.zip
-	md5sums = dcf509146db4a7b05732187cb7fdcdb9
+	source = https://github.com/pyenv/pyenv/archive/v1.2.5.zip
+	md5sums = 7fbddab1c94a4e07acec18de9558a0a0
 
 pkgname = pyenv
 
