@@ -1,6 +1,6 @@
 pkgbase = openresty
 	pkgdesc = A Fast and Scalable Web Platform by Extending NGINX with Lua
-	pkgver = 1.13.6.1
+	pkgver = 1.13.6.2
 	pkgrel = 1
 	url = http://openresty.org/
 	install = openresty.install
@@ -29,12 +29,11 @@ pkgbase = openresty
 	source = openresty.install
 	source = openresty.sh
 	validpgpkeys = 25451EB088460026195BD62CB550E09EA0E98066
-	md5sums = 
-	md5sums = SKIP
-	md5sums = ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5
-	md5sums = 613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23
-	md5sums = f071e0fd8d0d588f03fcc7db6f3cb3f7ea1b870d3416a0bde142d9aeb839d0f6
-	md5sums = bf628aa47fb85f036f250416f13900be61dccac89736434498a80989b16ae85a
+	sha256sums = 946e1958273032db43833982e2cec0766154a9b5cb8e67868944113208ff2942
+	sha256sums = SKIP
+	sha256sums = ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5
+	sha256sums = 613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23
+	sha256sums = f071e0fd8d0d588f03fcc7db6f3cb3f7ea1b870d3416a0bde142d9aeb839d0f6
+	sha256sums = bf628aa47fb85f036f250416f13900be61dccac89736434498a80989b16ae85a
 
 pkgname = openresty
-
