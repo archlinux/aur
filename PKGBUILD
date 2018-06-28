@@ -1,6 +1,6 @@
 # Maintainer: Thiago França da Silva <tfsthiagobr98@outlook.com>
 
-pkgname=powershell-bin-preview
+pkgname=powershell-preview-bin
 _pkgver=6.1.0-preview.3
 _version=6-preview
 pkgver=${_pkgver/-/.}
