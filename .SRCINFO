@@ -1,0 +1,16 @@
+pkgbase = rofimgur-git
+	pkgdesc = Upload screenshots to imgur anonymously using rofi
+	pkgver = r9.daf1439
+	pkgrel = 1
+	url = https://github.com/cjbassi/rofimgur
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = rofi
+	depends = python
+	provides = rofimgur
+	source = git+https://github.com/cjbassi/rofimgur
+	md5sums = SKIP
+
+pkgname = rofimgur-git
+
