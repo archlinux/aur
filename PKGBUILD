@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=disptools
 pkgname=python-$_pkgname
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Generate displacement fields with known volume changes"
 arch=('x86_64')
@@ -19,5 +19,5 @@ sha512sums=('4bbbacfd7b68bf5f7cac8a43b803f92836dfa041fc0e405ab941404d04bb9c0fd0b
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	python setup.py install --optimize=1 --root="$pkgdir"
+	python setup.py install --optimize=1 --root="$pkgdir" --opt
 }
