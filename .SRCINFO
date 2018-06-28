@@ -1,21 +1,19 @@
 pkgbase = pdfmixtool-git
 	pkgdesc = An application to split, merge, rotate and mix PDF files
-	pkgver = r91.ef7f53e
+	pkgver = r116.c32ccdd
 	pkgrel = 1
-	url = http://www.scarpetta.eu/page/pdf-mix-tool
+	url = https://www.scarpetta.eu/pdfmixtool
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
-	makedepends = discount
 	depends = qt5-base
 	depends = podofo-git
-	depends = gtk-update-icon-cache
 	provides = pdfmixtool
 	conflicts = pdfmixtool
-	source = git://github.com/marcoscarpetta/pdfmixtool.git
+	source = git+https://gitlab.com/scarpetta/pdfmixtool.git
 	sha256sums = SKIP
 
 pkgname = pdfmixtool-git
