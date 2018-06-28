@@ -26,7 +26,7 @@ sha512sums=('242def9bc065a1d10b5bf48dd2f4c40e035122b51451f6928a936f9699e347fa083
 if [[ -n "$FIREFOX_ESR_BIN_PREFER_OLDER" ]]; then
     pkgver=52.9.0
     provides=('firefox=52')
-    sha512sums[0]='cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
+    sha512sums[0]='b5d7da00766354e72f5a48f4f2143623428256d79d0b3e958ed6764b680afdf2b3188c61b09a02dd1537c8b8d3ddd1a1b828b1cc13a16df02a52538a42c62954'
     [[ "$CARCH" == "i686" ]] && sha512sums[0]='f0f6b494eed4f84eb013065ed1a586efb03b50441023fea866306fbb65de3e7ebe5ff572575d868c17e3ca11958d90b1d6a8cffda0babfa8432e4bd3f19eda15'
 fi
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/linux-$CARCH/en-US/firefox-${pkgver}esr.tar.bz2
