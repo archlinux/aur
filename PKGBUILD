@@ -3,7 +3,7 @@
 
 
 pkgname="kvmd"
-pkgver="0.2"
+pkgver="0.3"
 pkgrel="1"
 pkgdesc="The main Pi-KVM daemon"
 arch=("any")
@@ -39,5 +39,5 @@ package() {
 	python setup.py install --root=$pkgdir
 
 	install -Dm644 kvmd.yaml $pkgdir/etc/kvmd.yaml
-	install -Dm644 kvmd.service "$pkgdir"/usr/lib/systemd/system/nginx.service
+	install -Dm644 kvmd.service "$pkgdir"/usr/lib/systemd/system/kvmd.service
 }
