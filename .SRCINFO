@@ -1,0 +1,25 @@
+pkgbase = stlib
+	pkgdesc = Async library that provides features related to Steam client and compatible stuffs
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/ShyPixie/stlib
+	arch = x86_64
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = gcc
+	makedepends = unzip
+	depends = python>=3.6
+	depends = python-aiohttp
+	depends = python-beautifulsoup4
+	depends = python-rsa
+	optdepends = python-aiodns: For speeding up DNS resolving by WebAPI
+	optdepends = python-cchardet: For speeding up Character Encoding
+	source = https://github.com/ShyPixie/stlib/archive/v0.4.1.tar.gz
+	source = steamworks_sdk_142.zip::file://steamworks_sdk_142.zip
+	source = depends.patch
+	sha256sums = fa938adfee9d471f509a5c44c4a70f911238b4d4b0c23275e3098b8848063af6
+	sha256sums = 7695f8e183bef16dc2e663ffbdfad2248ae266bce8ff42066a3e88e1d54f0f42
+	sha256sums = 2a0644bc1ea14bc82facf36c57e43144b8ede344cf0ea03ba3a5375b34559eb9
+
+pkgname = stlib
+
