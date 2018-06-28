@@ -340,6 +340,9 @@ void portfolio_print_all(Info_Array* portfolio_data) {
 
 void portfolio_print_stock(const char* symbol) {
     String* pString = portfolio_ncurses_get_plaintext_string(NULL);
+    if (pString == NULL)
+        return;
+
     Json* jobj = json_tokener_parse(pString->data);
     size_t i = 0, len = json_object_array_length(jobj);
     while (i < len && strcmp(
