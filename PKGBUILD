@@ -28,4 +28,10 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     python setup.py install --root="${pkgdir}" --force --quiet
+
+    install -d "${pkgdir}/usr/lib/systemd/user"
+    install -m 644 "data/systemd/dups.service" "${pkgdir}/usr/lib/systemd/user"
 }
+
+
+# vim: set syntax=sh:
