@@ -1,0 +1,53 @@
+diff --git a/Makefile b/Makefile
+index e10fdc2..bba6411 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,14 +2,6 @@ PREFIX ?= /usr
+ DESTDIR ?=
+ BINDIR ?= $(PREFIX)/bin
+ 
+-ifeq ($(shell go env GOOS),linux)
+-ifeq ($(wildcard .git),)
+-$(error Do not build this for Linux. Instead use the Linux kernel module. See wireguard.com/install/ for more info.)
+-else
+-$(shell printf 'package main\nconst UseTheKernelModuleInstead = 0xdeadbabe\n' > ireallywantobuildon_linux.go)
+-endif
+-endif
+-
+ all: wireguard-go
+ 
+ export GOPATH := $(CURDIR)/.gopath
+diff --git a/donotuseon_linux.go b/donotuseon_linux.go
+deleted file mode 100644
+index 7197375..0000000
+--- a/donotuseon_linux.go
++++ /dev/null
+@@ -1,15 +0,0 @@
+-// +build !android
+-
+-/* SPDX-License-Identifier: GPL-2.0
+- *
+- * Copyright (C) 2017-2018 Jason A. Donenfeld <Jason@zx2c4.com>. All Rights Reserved.
+- */
+-
+-package main
+-
+-const DoNotUseThisProgramOnLinux = UseTheKernelModuleInstead
+-
+-// --------------------------------------------------------
+-// Do not use this on Linux. Instead use the kernel module.
+-// See wireguard.com/install for more information.
+-// --------------------------------------------------------
+diff --git a/main.go b/main.go
+index b85ec5c..75bb0db 100644
+--- a/main.go
++++ b/main.go
+@@ -79,8 +79,6 @@ func main() {
+ 		return
+ 	}
+ 
+-	warning()
+-
+ 	// parse arguments
+ 
+ 	var foreground bool
