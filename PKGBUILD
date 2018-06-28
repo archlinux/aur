@@ -2,7 +2,7 @@
 _pkgname=disptools
 pkgname=python-$_pkgname
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate displacement fields with known volume changes"
 arch=('x86_64')
 url="https://martinopilia.com/disptools"
@@ -14,7 +14,7 @@ optdepends=('insight-toolkit: for disptools.drawing.sitk_to_itk (requires Python
             'python-ply: for disptools.io.read_elastix_parameters')
 makedepends=('python-setuptools')
 source=("https://github.com/m-pilia/disptools/archive/v${pkgver}.tar.gz")
-sha512sums=('4bbbacfd7b68bf5f7cac8a43b803f92836dfa041fc0e405ab941404d04bb9c0fd0b005ad60a97d1ddf1b9dedb0d7a7aab849995148755fedbed27ceed4a7904a')
+sha512sums=('9ef78d810a93bc5f5cec81077588f1200e602241edba57ad5baee5478cd6503cf109dce18ac2a39d7e979ff376966c0a192df616cd8f37606082b68ceb0716ad')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
