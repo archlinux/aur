@@ -1,6 +1,6 @@
 pkgbase = base-devel-meta
 	pkgdesc = Meta package for the group `base-devel`
-	pkgver = 2017.11.11
+	pkgver = 2018.06.28
 	pkgrel = 1
 	url = https://www.archlinux.org/
 	arch = any
@@ -24,14 +24,14 @@ pkgbase = base-devel-meta
 	depends = make
 	depends = pacman
 	depends = patch
-	depends = pkg-config
+	depends = pkgconf
 	depends = sed
 	depends = sudo
 	depends = systemd
 	depends = texinfo
 	depends = util-linux
 	depends = which
-	depends = util-linux
+	depends = systemd
 
 pkgname = base-devel-meta
 
