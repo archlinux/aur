@@ -3,6 +3,7 @@
 pkgname=ocaml-ppx_sexp_message
 pkgver=0.11.0
 pkgrel=1
+epoch=1
 pkgdesc="A ppx rewriter for easy construction of s-expressions"
 arch=('i686' 'x86_64')
 url="https://github.com/janestreet/ppx_sexp_message"
