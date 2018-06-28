@@ -1,0 +1,26 @@
+pkgbase = mingw-w64-wineditline
+	pkgdesc = port of the NetBSD Editline library (mingw-w64)
+	pkgver = 2.205
+	pkgrel = 1
+	url = https://mingweditline.sourceforge.io/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	makedepends = dos2unix
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://sourceforge.net/projects/mingweditline/files/wineditline-2.205.tar.bz2
+	source = 001-fix-installing.patch
+	source = 002-fix-exports.patch
+	source = 003-dont-link-with-def.patch
+	source = wineditline-fix-case.patch
+	sha256sums = dc8b25cbd503dd41241b8de0146af20182b552ac31cf0fc7e103b83aec25e448
+	sha256sums = 821d0a36115832a76497dc6d7ea4b6e45e4ce73621030a59865f851309f8db34
+	sha256sums = 38e779fbdebf2f29038b598920e733a4a51638834013c3cc73fb85a7d50cffd2
+	sha256sums = 19077726758de7780cd68f3f47d8353516fd864ede1903d55280a1fb3dbe408d
+	sha256sums = b86e7672f32b143c05ae08d4dddf267ad8e08ee27aac7374d107ff021e51abcf
+
+pkgname = mingw-w64-wineditline
+

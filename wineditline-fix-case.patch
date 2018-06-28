@@ -1,0 +1,12 @@
+diff -Naur wineditline-2.205.orig/src/fn_complete.c wineditline-2.205/src/fn_complete.c
+--- wineditline-2.205.orig/src/fn_complete.c	2018-06-27 22:22:50.718775706 -0400
++++ wineditline-2.205/src/fn_complete.c	2018-06-27 22:23:24.785651394 -0400
+@@ -53,7 +53,7 @@
+ #define NEED_REDEFINE__CRT__NO_INLINE
+ #endif
+ #endif
+-#include <Strsafe.h>
++#include <strsafe.h>
+ #ifdef NEED_REDEFINE__CRT__NO_INLINE
+ #define __CRT__NO_INLINE
+ #endif
