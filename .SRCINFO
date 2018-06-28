@@ -1,6 +1,6 @@
 pkgbase = python-num2words
 	pkgdesc = Python modules to convert numbers to words.
-	pkgver = 0.5.5
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/savoirfairelinux/num2words
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-num2words
 	checkdepends = python2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/savoirfairelinux/num2words/archive/0.5.5.tar.gz
-	sha256sums = 8e234b7bdcf25c606969b4002d514808ec79c990859279f6cead261d9803f752
+	source = https://github.com/savoirfairelinux/num2words/archive/0.5.7.tar.gz
+	sha256sums = d64de65cfe51e4cb9848592a47d16511b2fce7b6583f38ea4c2253cf5631cc06
 
 pkgname = python-num2words
 	pkgdesc = Python modules to convert numbers to words. (python3 version)
