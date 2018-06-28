@@ -10,9 +10,11 @@ license=('custom')
 depends=(electron)
 conflicts=(postman-bin)
 source=("postman-$pkgver.zip::https://dl.pstmn.io/download/version/${pkgver}/linux64"
-        'remove-updater.patch')
+        'remove-updater.patch'
+        'https://archive.archlinux.org/packages/e/electron/electron-1.8.4-2-x86_64.pkg.tar.xz')
 sha256sums=('6e08dae1524416396921337dd785e84436c1887a7d835b24c69ea68dce13290d'
-            '77366fac276f0bd139a19d7c8de5fc931544ae0651b9412f58e4714cf4d58457')
+            '77366fac276f0bd139a19d7c8de5fc931544ae0651b9412f58e4714cf4d58457'
+            'dd9c6756bd61abbaae58fdeade5570f771fe8d6f0de14f1e5a710e42f0bf35c2')
 
 prepare() {
   cd "$srcdir/Postman/app/resources/app"
@@ -27,6 +29,22 @@ package() {
   mkdir -p "$pkgdir/usr/lib/"
   cp -rp 'resources/app' "$pkgdir/usr/lib/postman"
 
+  # install electron 1.8.4 (postman will not work with electron>=2.0.0)
+  mkdir -p "$pkgdir/usr/lib/electron-postman"
+  find "$srcdir/usr/lib/electron" -mindepth 1 -maxdepth 1 -print0 | while read -rd '' line; do
+    local name="`basename "$line"`"
+    { [ "${name: -4}" = '.pak' ] ||
+    [ "$name" = 'icudtl.dat' ] ||
+    [ "$name" = 'locales' ] ||
+    [ "$name" = 'node' ]; } && {
+      ln -sf "../electron/$name" "$pkgdir/usr/lib/electron-postman/$name"
+      true
+    } || {
+      cp -rp "$line" "$pkgdir/usr/lib/electron-postman/$name"
+      true
+    }
+  done
+
   # install licenses
   find . -maxdepth 1 -iname 'license*' -print0 |
   xargs -n 1 -0 -I {} install -Dm644 {} "$pkgdir/usr/share/licenses/$pkgname/{}"
@@ -35,7 +53,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   printf '%s\n' \
   '#!/bin/sh' \
-  'exec electron /usr/lib/postman "$@"' \
+  'exec /usr/lib/electron-postman/electron /usr/lib/postman "$@"' \
   > "$pkgdir/usr/bin/postman"
   chmod a+x "$pkgdir/usr/bin/postman"
 
