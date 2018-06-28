@@ -3,30 +3,30 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
 pkgname=ocaml-re
-pkgver=1.7.1
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Pure OCaml regular expressions, with support for Perl and POSIX-style strings"
 arch=('i686' 'x86_64')
 url="https://github.com/ocaml/ocaml-re"
-license=('LGPL')
+license=('custom:LGPL2.1 with linking exception')
 depends=('ocaml')
-makedepends=('ocamlbuild' 'ocaml-findlib')
+makedepends=('dune')
 options=('!strip')
 source=("https://github.com/ocaml/ocaml-re/archive/${pkgver}.tar.gz")
-sha256sums=('eb18382d63459b0a4065315ce6fef854bc99152aec2b557bb8a43e664e6679e8')
+sha256sums=('ea55060a1c556e3ceea4837af534567b09b7f15656281dadf8911aad6712f6c5')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  ./configure --prefix /usr
-  make
+  jbuilder build
 }
 
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  mkdir -p "${OCAMLFIND_DESTDIR}"
-  make install
+  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
+  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
