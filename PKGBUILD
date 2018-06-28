@@ -14,9 +14,9 @@ source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win3
         "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tgz")
 noextract=("python-${pkgver}-embed-win32.zip"
            "python-${pkgver}-embed-amd64.zip")
-md5sums=('3ce7b067ddd9a91bb221351d9370ebe9'
-         '1b56c67f3c849446794a15189f425f53'
-         '2ed4802b7a2a7e40d2e797272bf388ec')
+sha256sums=('61ca8e983be03a85beadd74da9dd1d38d9cfb23e298b9561482a7f531d48a7b9'
+            '4b649c6ec5b2abfb9fc0f6a6d0dcbd9855d8b06ea03637fd142175822cf842f9'
+            '6ed87a8b6c758cc3299a8b433e8a9a9122054ad5bc8aad43299cff3a53d8ca44')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
