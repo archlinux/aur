@@ -1,6 +1,6 @@
 pkgbase = base-meta
 	pkgdesc = Meta package for the group `base`
-	pkgver = 2017.11.11
+	pkgver = 2018.06.28
 	pkgrel = 1
 	url = https://www.archlinux.org/
 	arch = any
@@ -38,7 +38,6 @@ pkgbase = base-meta
 	depends = netctl
 	depends = pacman
 	depends = pciutils
-	depends = pcmciautils
 	depends = perl
 	depends = procps-ng
 	depends = psmisc
@@ -55,9 +54,10 @@ pkgbase = base-meta
 	depends = vi
 	depends = which
 	depends = xfsprogs
-	depends = filesystem
+	depends = dhcpcd
 	depends = linux
-	depends = util-linux
+	depends = netctl
+	depends = systemd-sysvcompat
 
 pkgname = base-meta
 
