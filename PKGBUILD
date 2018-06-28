@@ -87,19 +87,11 @@ fi
 
 # vars
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
-if $_testing; then
-  _pkgvermajmin="5.11"
-  _pkgverpatch=".0"
-  # {alpha/beta/beta2/rc}
-  _dev_suffix="beta2"
-  pkgrel=4
-else
-  _pkgvermajmin="5.11"
-  _pkgverpatch=".0"
-  # {alpha/beta/beta2/rc}
-  _dev_suffix=""
-  pkgrel=5
-fi
+_pkgvermajmin="5.11"
+_pkgverpatch=".1"
+# {alpha/beta/beta2/rc}
+_dev_suffix=""
+pkgrel=1
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -298,11 +290,7 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-if $_testing; then
-  _tar_xz_sha256="9482538af151454f79def3df1f4f76fc9475372b96cc9ca8515d7b2112a7d8cf"
-else
-  _tar_xz_sha256="67ddb8bf33bbfd19ebc641467ccce2e57fd0b80c6082457f1f5a76e8df83c865"
-fi
+_tar_xz_sha256="39602cb08f9c96867910c375d783eed00fc4a244bffaa93b801225d17950fb2b"
 
 if ! $_build_from_head; then
   source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
@@ -382,9 +370,6 @@ if $_uber_minimal; then
   echo "QT_BUILD_MODULES = qtbase qtdeclarative" > $_qtpro
   cat $_tmp_qtpro >> $_qtpro
 fi
-
-  cd ${_srcdir}/qtdeclarative
-  patch -p1 < ${startdir}/0001-Fix-.import-within-.js-files-with-CONFIG-qtquickcomp.patch
 
   # enable reduce relocations
   sed -i '/error Symbolic function binding/d' ${_srcdir}/qtbase/configure.json
