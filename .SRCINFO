@@ -1,0 +1,14 @@
+pkgbase = nodejs-json-to-js
+	pkgdesc = Convert JSON to JS and output to stdout
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Dinoshauer/json-to-js
+	arch = any
+	license = MIT
+	depends = npm
+	noextract = json-to-js-1.0.2.tgz
+	source = http://registry.npmjs.org/json-to-js/-/json-to-js-1.0.2.tgz
+	sha256sums = a4e2eed8443bd9fd68b3b7d0921db118b9b3bd72e03d3c85143fe7734ddf1e18
+
+pkgname = nodejs-json-to-js
+
