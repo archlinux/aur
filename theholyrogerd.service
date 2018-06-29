@@ -1,0 +1,22 @@
+[Unit]
+Description=TheHolyRoger's distributed currency daemon
+After=network.target
+
+[Service]
+User=theholyroger
+Group=theholyroger
+
+Type=forking
+PIDFile=/var/lib/theholyrogerd/theholyrogerd.pid
+ExecStart=/usr/bin/theholyrogerd -daemon -pid=/var/lib/theholyrogerd/theholyrogerd.pid \
+-conf=/etc/theholyroger/theholyroger.conf -datadir=/var/lib/theholyrogerd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

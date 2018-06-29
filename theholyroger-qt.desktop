@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=TheHolyRoger
+Comment=TheHolyRoger P2P Cryptocurrency
+Exec=theholyroger-qt %u
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/theholyroger128.png
+MimeType=x-scheme-handler/theholyroger;
+Categories=Office;

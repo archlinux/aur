@@ -1,0 +1,2 @@
+d /var/lib/theholyroger 0770 theholyroger theholyroger - -
+d /etc/theholyroger     0770 theholyroger theholyroger - -
