@@ -1,0 +1,21 @@
+post_install()
+{
+	systemd-sysusers
+
+	echo ""
+	echo "To start LXDUI, run: systemctl start lxdui"
+	echo "To enable LXDUI at boot, run: systemctl enable lxdui"
+	echo ""
+}
+
+post_upgrade()
+{
+	systemctl daemon-reload
+}
+
+pre_remove()
+{
+	systemctl stop lxdui
+	systemctl disable lxdui
+}
+

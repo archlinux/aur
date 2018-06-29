@@ -1,0 +1,2 @@
+d /var/log/lxdui 0755 lxdui lxdui -
+d /run/lxdui 0755 lxdui lxdui -
