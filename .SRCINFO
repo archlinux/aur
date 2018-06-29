@@ -1,0 +1,18 @@
+pkgbase = stepseq-lv2-git
+	pkgdesc = Simple Step Sequencer
+	pkgver = r89.94dd4e4
+	pkgrel = 1
+	url = https://github.com/x42/stepseq.lv2
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = lv2
+	provides = stepseq-lv2
+	provides = stepseq-lv2-git
+	conflicts = stepseq-lv2
+	conflicts = stepseq-lv2-git
+	source = stepseq-lv2::git+https://github.com/x42/stepseq.lv2
+	md5sums = SKIP
+
+pkgname = stepseq-lv2-git
+
