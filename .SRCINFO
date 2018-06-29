@@ -1,0 +1,17 @@
+pkgbase = 1oom-git
+	pkgdesc = 1oom is a Master of Orion (1993) game engine recreation.
+	pkgver = r314.699af7e
+	pkgrel = 1
+	url = https://gitlab.com/KilgoreTroutMaskReplicant/1oom
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = sdl2
+	depends = libsamplerate
+	provides = 1oom
+	conflicts = 1oom
+	source = git+https://gitlab.com/KilgoreTroutMaskReplicant/1oom.git
+	md5sums = SKIP
+
+pkgname = 1oom-git
+
