@@ -2,10 +2,10 @@
 _pkgname=pyelastix
 pkgname=python-$_pkgname
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for the Elastix nonrigid registration toolkit"
 arch=('x86_64')
-url="http://nipy.org/dipy/"
+url="https://github.com/almarklein/pyelastix"
 license=('MIT')
 depends=('python-numpy' 'elastix')
 makedepends=('python-setuptools')

@@ -1,8 +1,8 @@
 pkgbase = python-pyelastix
 	pkgdesc = Python wrapper for the Elastix nonrigid registration toolkit
 	pkgver = 1.1
-	pkgrel = 1
-	url = http://nipy.org/dipy/
+	pkgrel = 2
+	url = https://github.com/almarklein/pyelastix
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
