@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python2-schematics
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 _libname=${pkgname/python2-/}
 pkgdesc="Python Data Structures for Humans"
@@ -12,7 +12,7 @@ replaces=('python2-dictshield')
 license=('BSD')
 arch=('any')
 source=(https://files.pythonhosted.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz)
-sha256sums=('eaecac4ae5a86faa111f16befa26510bc66dc093c52df200f3aad54459e39640')
+sha256sums=('a40b20635c0e43d18d3aff76220f6cd95ea4decb3f37765e49529b17d81b0439')
 
 build() {
 	cd "$srcdir/$_libname-$pkgver"
