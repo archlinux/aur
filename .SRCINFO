@@ -1,0 +1,14 @@
+pkgbase = dde-network-utils
+	pkgdesc = Deepin network utils
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dde-network-utils
+	arch = x86_64
+	groups = deepin
+	license = GPL3
+	makedepends = git
+	source = dde-network-utils::git+https://github.com/linuxdeepin/dde-network-utils.git
+	sha512sums = SKIP
+
+pkgname = dde-network-utils
+
