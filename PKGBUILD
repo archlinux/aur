@@ -1,7 +1,7 @@
 # Maintainer: Remi Casanova <rc.dev@tuxico.com>
 
 pkgname=xcursor-oxygen
-pkgver=5.11.1
+pkgver=5.13.1
 pkgrel=1
 
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL')
 pkgdesc="Oxygen cursor themes"
 url="https://cgit.kde.org/oxygen.git"
 
-sha256sums=("3f0544c0376ac98f063dca14f7c0414a69cff775b1e67e4033922d5630a17e2c")
+sha256sums=("02d1e3902c70dc1aa28fe6a3b75d2aa3fd9e1774f3ea374f59ef764540cd30e4")
 source=("http://download.kde.org/stable/plasma/${pkgver}/oxygen-${pkgver}.tar.xz")
 
 package() {
