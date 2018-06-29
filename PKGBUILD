@@ -4,7 +4,7 @@
 pkgname=crark-cuda
 pkgver=5.1
 download=crark51-linux.rar
-pkgrel=3
+pkgrel=4
 pkgdesc="A command-line utility for RAR 2.x-3.x password cracking, uses Password Cracking Library 2.0 that supports special password recovery language. Highly optimized for all modern processors. with CUDA support"
 arch=('i686' 'x86_64')
 url="http://www.crark.net/"
@@ -14,7 +14,7 @@ depends=(cuda)
 makedepends=('unrar')
 provides=('crark-cuda')
 source=("http://www.crark.net/download/${download}")
-md5sums=('33256ce4564f6bcfe875bc03a0300158')
+md5sums=('c2844d834d0f54db9ae8f0e3504934f8')
 noextract=(${download})
 
 if [ "$CARCH" = "i686" ]; then
