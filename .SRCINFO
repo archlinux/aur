@@ -1,6 +1,6 @@
 pkgbase = dups-git
 	pkgdesc = It deduplicates things - Backup as simple as possible.
-	pkgver = 41db0c2
+	pkgver = r57.0b1f31e
 	pkgrel = 1
 	url = https://github.com/linuxwhatelse/dups
 	install = dups.install

@@ -1,6 +1,6 @@
 _pkgname=dups
 pkgname=dups-git
-pkgver=41db0c2
+pkgver=r57.0b1f31e
 pkgrel=1
 pkgdesc="It deduplicates things - Backup as simple as possible."
 arch=("x86_64")
@@ -17,7 +17,8 @@ md5sums=("SKIP")
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git rev-parse --short HEAD
+    printf "r%s.%s" "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -35,3 +36,4 @@ package() {
 
 
 # vim: set syntax=sh:
+
