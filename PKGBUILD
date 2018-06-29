@@ -1,31 +1,30 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=twaindsm
-pkgver=2.3.1
-_gitref=76a9a900e032dfe630a4a48aa1b40430c98c2fb3
-pkgrel=2
+pkgver=2.4.2
+pkgrel=1
 pkgdesc="TWAIN Data Source Manager"
 arch=('i686' 'x86_64')
 url="http://twain.org/"
 license=('LGPL2.1')
 depends=('gcc-libs')
 makedepends=('cmake')
-source=("https://github.com/twain/twain-dsm/archive/${_gitref}.tar.gz"
-        "standard-lib-dir.patch"
+source=("https://github.com/twain/twain-dsm/raw/master/Releases/dsm_020402/tarball/twaindsm_${pkgver}.orig.tar.gz"
         "no-werror.patch")
-md5sums=('729e4b75769e18810582a29ba4972828'
-         '54b8caf90da42d6d3fc60dd89f097544'
+md5sums=('8f9c9b9a13a3225c6e5828a0561a826f'
          '7880d330686bffad0c00b6a2731be338')
 
 prepare() {
-  cd "${srcdir}/twain-dsm-${_gitref}"
+  cd "${srcdir}/TWAIN_DSM/src"
 
-  patch -Np1 < "${srcdir}/standard-lib-dir.patch"
-  patch -Np1 < "${srcdir}/no-werror.patch"
+  # Someone thought it was a good idea to distribute CMake build artifacts
+  rm -rf CMakeCache.txt CMakeFiles
+
+  patch -Np3 < "${srcdir}/no-werror.patch"
 }
 
 build() {
-  cd "${srcdir}/twain-dsm-${_gitref}/TWAIN_DSM/src"
+  cd "${srcdir}/TWAIN_DSM/src"
 
   test -d build && rm -rf build
   mkdir build
@@ -36,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/twain-dsm-${_gitref}/TWAIN_DSM/src/build"
+  cd "${srcdir}/TWAIN_DSM/src/build"
 
   make install DESTDIR="${pkgdir}"
 
