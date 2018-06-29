@@ -2,7 +2,7 @@
 
 pkgname=nana
 pkgver=1.6.1
-pkgrel=1
+pkgrel=3
 pkgdesc="An opensource cross-platform GUI library written in modern C++11 for static linking"
 arch=("i686" "x86_64")
 url="http://nanapro.org/en-us/"
