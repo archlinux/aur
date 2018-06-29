@@ -2,13 +2,13 @@
 
 pkgname=welle.io
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An open source DAB and DAB+ software defined radio (SDR) with support for rtl-sdr (RTL2832U) and airspy"
 arch=("x86_64")
 url="https://www.${pkgname}"
 license=("GPL2")
-depends=("faad2" "fftw" "qt5-charts" "qt5-declarative" "qt5-multimedia" "rtl-sdr")
-optdepends=("airspy" "qt5-quickcontrols2")
+depends=("faad2" "fftw" "qt5-charts" "qt5-declarative" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-multimedia" "rtl-sdr")
+optdepends=("airspy")
 makedepends=("gcc" "cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AlbrechtL/${pkgname}/archive/V${pkgver}.tar.gz")
 sha256sums=("669ae5d471f723c32622cbf6ee37b66c3aefd8e02d6334b55d1fb60b3c22a883")
