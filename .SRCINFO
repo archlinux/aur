@@ -1,0 +1,19 @@
+pkgbase = hyperledger-caliper-git
+	pkgdesc = A blockchain benchmark framework to measure performance of multiple blockchain solutions
+	pkgver = 116.1ac646a
+	pkgrel = 1
+	url = https://github.com/hyperledger/caliper
+	arch = i686
+	arch = x86_64
+	groups = hyperledger
+	license = APACHE
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	source = hyperledger-caliper::git+https://github.com/hyperledger/caliper.git
+	source = start.sh
+	md5sums = SKIP
+	md5sums = 4d25cd7d1853de9608554b906f0cbef4
+
+pkgname = hyperledger-caliper-git
+
