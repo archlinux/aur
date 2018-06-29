@@ -2,7 +2,7 @@
 
 pkgname='cinnamon-applet-desktop-capture-git'
 pkgver=r130.6fa16f8
-pkgrel=1
+pkgrel=2
 pkgdesc='A comprehensive screenshot and screencasting applet for Cinnamon.'
 arch=('any')
 url='https://github.com/rjanja/desktop-capture'

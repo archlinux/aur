@@ -1,7 +1,7 @@
 pkgbase = cinnamon-applet-desktop-capture-git
 	pkgdesc = A comprehensive screenshot and screencasting applet for Cinnamon.
 	pkgver = r130.6fa16f8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rjanja/desktop-capture
 	arch = any
 	license = GPL
