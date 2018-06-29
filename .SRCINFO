@@ -1,6 +1,6 @@
 pkgbase = tribler
 	pkgdesc = Privacy enhanced BitTorrent client with P2P content discovery
-	pkgver = 7.0.2
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = http://www.tribler.org/
 	arch = any
@@ -28,9 +28,10 @@ pkgbase = tribler
 	depends = python2-m2crypto
 	depends = python2-configobj
 	depends = python2-matplotlib
+	depends = python2-service_identity
 	optdepends = vlc: for internal video player
-	source = https://github.com/Tribler/tribler/releases/download/v7.0.2/Tribler-v7.0.2.tar.xz
-	md5sums = 4273969881196dba1130df6f21e8eb18
+	source = git+https://github.com/Tribler/tribler.git#tag=v7.1.0-exp3
+	sha256sums = SKIP
 
 pkgname = tribler
 
