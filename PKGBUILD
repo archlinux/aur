@@ -1,6 +1,6 @@
 _pkgname=hideIt.sh
 pkgname=hideit.sh-git
-pkgver=a1a05c9
+pkgver=r38.0538cb3
 pkgrel=1
 pkgdesc="Automagically hide/show a window"
 arch=('i686' 'x86_64')
@@ -14,7 +14,8 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git rev-parse --short HEAD
+    printf "r%s.%s" "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short HEAD)"
 }
 
 package() {
