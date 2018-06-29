@@ -1,7 +1,7 @@
 # Maintainer: danitool dgcbueu at gmail.com
 
 pkgname=osd_clock
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A clock which uses the X On-Screen Display library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ source=("https://github.com/danitool/osd_clock/archive/${pkgver}.tar.gz")
 license=('GPL2')
 depends=('xosd' 'ttf-freefont')
 makedepends=('make')
-md5sums=('93baed0d1bf3e81e649ac27c84fa8c18')
+md5sums=('423cb31dfb4d07beda34f974d5e1b9c3')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
