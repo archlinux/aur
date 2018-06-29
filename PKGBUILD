@@ -2,11 +2,11 @@
 
 _pkgname=redis-graph
 pkgname=redis-graph-git
-pkgver=r219.6de7c37
+pkgver=r24.f197a8a
 pkgrel=1
 pkgdesc="This project is a Redis module that implements a graph database."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-url="https://github.com/swilly22/$_pkgname"
+url="https://github.com/RedisLabsModules/$_pkgname"
 license=('AGPL-3.0')
 depends=('redis')
 makedepends=('git')
