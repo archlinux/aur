@@ -1,0 +1,24 @@
+diff -urb src.orig/main.c src/main.c
+--- src.orig/main.c	2018-06-29 15:48:52.973474879 -0700
++++ src/main.c	2018-06-29 15:47:59.520141549 -0700
+@@ -34,7 +34,7 @@
+ #include <utime.h>
+ 
+ #ifndef WITHOUT_XATTR
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #endif
+ 
+ #include "parse_options.h"
+diff -urb src.orig/tools.c src/tools.c
+--- src.orig/tools.c	2018-06-29 15:48:52.973474879 -0700
++++ src/tools.c	2018-06-29 15:48:10.363474879 -0700
+@@ -32,7 +32,7 @@
+ #include <dirent.h>
+ 
+ #ifndef WITHOUT_XATTR
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #endif
+ 
+ #include "tools.h"
