@@ -1,3 +1,4 @@
+# Maintainer: Michael J. Pento <mjpento@verizon.net>
 # Maintainer: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 # https://github.com/zizzfizzix/pkgbuilds
 
@@ -13,12 +14,12 @@ _buildtype='RelWithDebInfo'
 ##############################################################
 
 pkgname=jreen-git
-pkgver=v1.1.1.17.g9cb0ae2
+pkgver=v1.3.0.2.gc04c229
 pkgrel=1
 epoch=1
 pkgdesc='Free and Opensource Jabber library, written in C++ using cross-platform framework Qt. - development version'
 arch=('i686' 'x86_64')
-url='http://qutim.org/jreen'
+url='https://github.com/euroelessar/jreen'
 license=('GPL2')
 depends=('gsasl' 'qt4' 'speex')
 makedepends=('git' 'cmake')
