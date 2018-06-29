@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 pkgname=covimerage
-pkgver=0.0.4
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Generate coverage information for Vim scripts."
 arch=("any")
@@ -13,8 +13,8 @@ makedepends=("python-setuptools")
 conflicts=("${pkgname}")
 # install=$pkgname.install
 source=("https://github.com/Vimjas/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('4e9f247f949faf400c4d9f1f608e3c20')
-sha256sums=('3aaba249ad7be808dc22cbbf333e9ef97fe28f548a77916b7b2deea15dd6b5e4')
+md5sums=('7c0253119b97a2946bb37139bce2cfce')
+sha256sums=('731956afbbac2a4b43684ca418b8117451c3bf9d316ef2ac000e68ba2983c01c')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
