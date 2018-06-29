@@ -2,14 +2,14 @@
 
 pkgname=oragono
 pkgver=0.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
 url="https://github.com/oragono/oragono"
 license=('MIT')
 install=install
 depends=('glibc')
-makedepends=('go' 'git')
+makedepends=('go-pie' 'git')
 source=("git+$url#tag=v$pkgver"
         "git+https://github.com/oragono/oragono-vendor"
         "oragono.service"
