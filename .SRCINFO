@@ -1,0 +1,29 @@
+pkgbase = r-googlesheets
+	pkgdesc = Manage Google Spreadsheets from R
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=googlesheets
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-cellranger>=1.0.0
+	depends = r-dplyr>=0.4.2
+	depends = r-httr>=1.1.0
+	depends = r-jsonlite
+	depends = r-purrr
+	depends = r-readr>=0.2.2
+	depends = r-stringr
+	depends = r-tibble
+	depends = r-tidyr
+	depends = r-xml2>=1.0.0
+	optdepends = r-covr
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rprojroot
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/googlesheets_0.3.0.tar.gz
+	md5sums = 6d24aea2117d360ced41649758c62edf
+
+pkgname = r-googlesheets
+
