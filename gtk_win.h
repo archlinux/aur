@@ -9,21 +9,31 @@ typedef enum column_index {
     PROFIT_7D_PERCENT, PROFIT_30D, PROFIT_30D_PERCENT, NUM_COLS
 } Col_Index;
 
+typedef struct app_data {
+    Info_Array* portfolio_data;
+    String* portfolio_string;
+    GtkBuilder* builder;
+} App_Data;
+
 /**
  * Opens GTK+ Window and prints portfolio data to it. Currently cannot handle encrypted portfolios.
  */
 void window_main(void);
 
-/**
- * Formats text in Info structs for printing to window
- * @param portfolio_data
- */
-void format_cells(Info_Array* portfolio_data);
+void create_check_list(void);
+
+/** SIGNALS **/
+
+void on_load_button_clicked(GtkButton* button);
+
+void on_password_entry_activate(GtkEntry* entry, gpointer dialog);
+
+void on_get_password_dialog_response(GtkDialog* dialog, gint response_id, gpointer entry);
 
 /**
  * Signal handler for destroying main window. Exits the program.
  */
-void on_main_win_destroy(void);
+void on_check_window_destroy(void);
 
 /**
  * Signal handler for clicking column labels. Sorts the ListStore struct according to which
@@ -32,6 +42,14 @@ void on_main_win_destroy(void);
  * @param list_store portfolio data list
  */
 void on_column_clicked(GtkTreeViewColumn* column, GtkListStore* list_store);
+
+/** UTILS **/
+
+/**
+ * Formats text in Info structs for printing to window
+ * @param portfolio_data
+ */
+void format_cells(Info_Array* portfolio_data);
 
 /**
  * Sorts a ListStore struct according to idx.
