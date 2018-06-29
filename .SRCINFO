@@ -14,13 +14,11 @@ pkgbase = google-chat-linux-git
 	source = google-chat-linux.sh
 	source = package.json
 	source = chat-favicon-new-non-notif-256dp.png
-	source = wrappedWindow.js
 	sha256sums = SKIP
 	sha256sums = e65b8b9b0556dded2521aa12b6d8e87c59f08a79b9e8cbee4273a7a659f72a6a
 	sha256sums = d23052d27c870090987d1844e7c82bc42b878afa42c8af9a363d8414560ea34d
 	sha256sums = 25b73ffc5ea40317faffaa277243617b1a2daed5bec7ddfb39e31274c5a88a79
 	sha256sums = 807fa77054d1b9ebeccaabfe5200e9e52c2dc603bdba3647c2da7c0cc34c2a83
-	sha256sums = 3fa6a230ace92e1d61a6a0e18e33dc26f8b5f45fcc75598bc836b68e11ddb836
 
 pkgname = google-chat-linux-git
 
