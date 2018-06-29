@@ -92,3 +92,17 @@ index 3b45a38419..c0227fd364 100644
                  #p_SetCoeff(flt, n_Div( p_GetCoeff(f._poly, r) , p_GetCoeff((<NCPolynomial_plural>g)._poly, r), r), r)
                  p_SetCoeff(flt, n_Init(1, r), r)
                  return new_NCP(self,flt), g
+diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+index 809ca72c76..9610ce125d 100644
+--- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
++++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+@@ -4888,7 +4888,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         if right.is_zero():
+             raise ZeroDivisionError
+ 
+-        if not self._parent._base.is_field() and not is_IntegerRing(self._parent._base):
++        if not self._parent._base.is_field():
+             py_quo = self//right
+             py_rem = self - right*py_quo
+             return py_quo, py_rem
+
