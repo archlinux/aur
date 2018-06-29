@@ -3,7 +3,7 @@
 # Committer: Judd Vinet <jvinet@zeroflux.org>
 pkgname=gnupg1
 pkgname_=gnupg
-pkgver=1.4.21
+pkgver=1.4.23
 pkgrel=1
 pkgdesc="GNU Privacy Guard - a PGP replacement tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv6l' 'armv7h' 'armv7l' 'armv8h' 'armv8l')
@@ -12,7 +12,7 @@ depends=('zlib' 'bzip2' 'libldap>=2.4.18' 'libusb-compat' 'curl>=7.16.2' 'readli
 source=("https://gnupg.org/ftp/gcrypt/gnupg/$pkgname_-$pkgver.tar.bz2"{,.sig})
 install=gnupg.install
 url="http://www.gnupg.org/"
-sha1sums=('e3bdb585026f752ae91360f45c28e76e4a15d338'
+sha1sums=('13747486ed5ff707f796f34f50f4c3085c3a6875'
           'SKIP')
 validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
               '46CC730865BB5C78EBABADCF04376F3EE0856959'
