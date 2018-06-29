@@ -1,0 +1,20 @@
+pkgbase = dpatch
+	pkgdesc = A easy to use patch system for Debian packages, somewhat similar to the dbs package, but much simpler to use.
+	pkgver = 2.0.38+nmu1
+	pkgrel = 1
+	url = http://packages.debian.org/unstable/dpatch
+	arch = any
+	license = GPL2
+	depends = debhelper
+	depends = dpkg
+	depends = perl
+	optdepends = fakeroot
+	optdepends = patchutils
+	optdepends = curl
+	noextract = dpatch_2.0.38+nmu1_all.deb
+	options = emptydirs
+	source = dpatch_2.0.38+nmu1_all.deb::http://http.debian.net/debian/pool/main/d/dpatch/dpatch_2.0.38+nmu1_all.deb
+	sha256sums = d31edd4f5e7f769b66aabb67cc76e5b6e4c10c64becd2d60dc18b6f3c95bda5a
+
+pkgname = dpatch
+
