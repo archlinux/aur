@@ -3,12 +3,12 @@
 pkgbase=sielo-browser
 pkgname=sielo-browser
 pkgver=1.16.00
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, customizable and fast web browser"
 arch=(x86_64)
 url="https://sielo.app"
 license=('custom:MIT')
-depends=('openssl-1.0' 'qt5-base' 'qt5-webengine' 'qt5-webchannel' 'qt5-location' 'qt5-declarative')
+depends=('cmake' 'openssl-1.0' 'qt5-base' 'qt5-webengine' 'qt5-webchannel' 'qt5-location' 'qt5-declarative')
 replaces=('sielo-navigateur')
 source=(https://sielo.app/Linux/$pkgname-$pkgver.tar.gz)
 md5sums=('20e6a7a5d7fcfa6302b513efff34a1d5')

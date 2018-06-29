@@ -1,10 +1,11 @@
 pkgbase = sielo-browser
 	pkgdesc = A simple, customizable and fast web browser
 	pkgver = 1.16.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sielo.app
 	arch = x86_64
 	license = custom:MIT
+	depends = cmake
 	depends = openssl-1.0
 	depends = qt5-base
 	depends = qt5-webengine
