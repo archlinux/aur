@@ -1,13 +1,32 @@
 pkgbase = byteball
 	pkgdesc = Byteball cryptocurrency wallet client.
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = byteball.org
 	install = byteball.install
 	arch = x86_64
 	license = MIT
-	source = https://github.com/byteball/byteball/releases/download/v2.2.0/byteball-linux64.zip
-	sha256sums = fbe00ebe92412be81948588195d589a6167f0ed677abb094dc7c6d1f543cf234
+	depends = binutils
+	depends = unzip
+	depends = freetype2
+	depends = nss
+	depends = gconf
+	depends = fontconfig
+	depends = pango
+	depends = libxi
+	depends = libxcursor
+	depends = libxss
+	depends = libxcomposite
+	depends = alsa-lib
+	depends = libxdamage
+	depends = libxtst
+	depends = atk
+	depends = libxrandr
+	depends = libcups
+	depends = gtk2
+	depends = libexif
+	source = https://github.com/byteball/byteball/releases/download/v2.3.0/byteball-linux64.zip
+	sha256sums = defc8f6bb4c259b7e5568bcc7ee8df2abd54e1b160fc6ab03f19e54351c7af12
 
 pkgname = byteball
 
