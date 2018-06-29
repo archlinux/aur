@@ -12,9 +12,6 @@ then
     mkdir -p "$conf"
 fi
 
-if [[ ! -d "$conf/mmconf" ]]
-then
-    cp -af /usr/lib/mekhq/* "$conf/"
-fi
+rsync -avc /usr/lib/mekhq/ "$conf/"
 
 exec env MEGAMEK_CONFPATH="$conf" "$conf/hq.sh"

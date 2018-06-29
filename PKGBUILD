@@ -1,7 +1,7 @@
 # Maintainer: Paul Davis <paul@dangersalad.com>
 pkgname=mekhq
-pkgver=0.43.11
-_pkgver=-RC5
+pkgver=0.44.0
+_pkgver=
 pkgrel=1
 epoch=
 pkgdesc="MekHQ is a java helper program for the MegaMek game that allows users to load a list of entities from an XML file, perform repairs and customizations, and then save the new entities to another XML file that can be loaded into MegaMek."
@@ -22,13 +22,13 @@ source=("https://github.com/MegaMek/mekhq/releases/download/v${pkgver}/${pkgname
         "mekhq.sh"
         "megamek.sh")
 
-sha256sums=('6a458dcf7d6379af3f574daa1213b10abb96a4c73a3e0bd9454d0280ee2c6caf'
+sha256sums=('2e51546d94e58532fcfaf1481f15da862b8d70c741687cb4a149f171cca6f08a'
             'a6c0cc72c6f3ad773bdcec24c8036ae7d09dcaea4908f5b6d4e5ac6091cff772'
             'caf5bf3e7294029c7b6dec974eed0253d6caf3804a6a9fcc953edc3c9be98b16'
             '113d6fe539108d172db238abd6a316be55d6d1af92cf0bcb4555b7cb70427908'
             'b964aa25672d5311b98f51ae7e895f32501092bcd5382979a4af45ba3436b5ba'
-            '7134a0a0b0622abb935cea12ebe5347f1ff00b92b30f74d2b27aa2ade931bdda'
-            '9ce5b4d9f299e47de57efe1bd3bdca488079a3a3f0b7da43a55b687d9692f6d5')
+            '056b528fb478966d32eaa36354335f667a73776975ebf57794f4f992e72f41c3'
+            '7c1988808f166dca21732a6d5679acdeb55520e3bb4babcc0b0b7c1e8b671f52')
 
 package() {
 
