@@ -2,7 +2,7 @@
 
 pkgbase='hunspell-fr-ungendered'
 pkgname=(hunspell-fr-{'classical','comprehensive','modern','revised'}-ungendered)
-pkgver=6.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="French ungendered hunspell dictionary"
 arch=(any)
@@ -11,8 +11,8 @@ license=('MPL2')
 makedepends=('python')
 conflicts=('hunspell-fr')
 provides=('hunspell-fr')
-source=("git+${url}")
-sha256sums=('SKIP')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('e86eb438b81eb67c1d35122325f000d1077779e42f4f5ec27554a8b390d44922')
 
 package_hunspell-fr-classical-ungendered() {
   pkgdesc+=" (classical variant)"
@@ -36,7 +36,7 @@ package_hunspell-fr-revised-ungendered() {
 
 _package() {
   _dicname=$1
-  cd "${srcdir}/hunspell-inclusif"
+  cd "${srcdir}/hunspell-inclusif-${pkgver}"
 
   python3 scripts/generate-aff.py dicollecte/fr-${_dicname}.aff > fr.aff
   python3 scripts/generate-dic.py dicollecte/fr-${_dicname}.dic > fr.dic
