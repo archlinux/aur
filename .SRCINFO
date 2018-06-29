@@ -1,0 +1,21 @@
+pkgbase = python2-pyipv8-git
+	pkgdesc = Python implementation of the IPv8 layer
+	pkgver = r417.b3cf77c
+	pkgrel = 1
+	url = https://github.com/Tribler/py-ipv8
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python2-cryptography
+	depends = python2-libnacl
+	depends = python2-netifaces
+	depends = python2-networkx
+	depends = python2-twisted
+	depends = python2-pyopenssl
+	provides = python2-pyipv8
+	conflicts = python2-pyipv8
+	source = git+https://github.com/Tribler/py-ipv8
+	sha256sums = SKIP
+
+pkgname = python2-pyipv8-git
+
