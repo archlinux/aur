@@ -5,7 +5,7 @@
 _pkgname=tapecalc
 pkgname="${_pkgname}"
 pkgver=t20180401
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Fixed-point calculator as a fullscreen editor. You may edit at any position in the expression list. Supports basic arithmetic, interest and sales tax computation. Designed for use as a checkbook or expense-account balancing tool. Formerly known as 'add'."
 url="http://invisible-island.net/add/add.html"
@@ -31,7 +31,8 @@ conflicts=()
 options=('emptydirs' 'strip')
 
 source=(
-  "ftp://ftp.invisible-island.net/add/add.tar.gz"
+  # "ftp://ftp.invisible-island.net/add/add.tar.gz"
+  "ftp://ftp.invisible-island.net/add/add-20180401.tgz"
 )
 
 sha256sums=(
