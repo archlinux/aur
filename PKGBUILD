@@ -1,4 +1,4 @@
-# Maintainer: jD91mZM2 <me@krake.one>
+# Maintainer: cauebs <cauebs@pm.me>
 pkgname="hyperfine"
 pkgver=1.1.0
 pkgrel=1
