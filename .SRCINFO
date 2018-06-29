@@ -1,0 +1,17 @@
+pkgbase = python2-keyring
+	pkgdesc = The Python keyring lib provides an easy way to access the system keyring service from python. It can be used in any application that needs safe password storage.
+	pkgver = 13.1.0
+	pkgrel = 1
+	url = https://github.com/jaraco/keyring
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-entrypoints
+	depends = python2-secretstorage
+	provides = python2-keyring
+	conflicts = python2-keyring
+	source = https://files.pythonhosted.org/packages/33/f4//keyring-13.1.0-py2.py3-none-any.whl
+	sha256sums = fb6ad22365c2e4cbec065fd26551646405d0eed651be929e5d826dec78049dcb
+
+pkgname = python2-keyring
+
