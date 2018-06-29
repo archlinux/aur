@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=skaffold
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=("docker" "kubectl-bin")
 optdepends=("google-cloud-sdk: To use GKE" 
             "minikube: To use Minikube")
 source=("${pkgname}-${pkgver}::https://storage.googleapis.com/${pkgname}/releases/v${pkgver}/${pkgname}-linux-amd64")
-sha256sums=("e6f54cab44406243c78665127c1469ed31e98348e1e18faee3e1eb005a22b7e3")
+sha256sums=("98effc94525e36aeb0eba88612568b17dd7043fef334b176c2651ff29748cfc3")
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
