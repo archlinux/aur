@@ -1,0 +1,42 @@
+# Maintainer: Milk Brewster <milk on freenode>
+_pkgname=patroneo
+pkgname=${_pkgname}-git
+pkgver=r47.c17b1af
+pkgrel=1
+pkgdesc="Easy Pattern Sequencer - Utilizing Jack Midi and the Non Session Manager"
+arch=(x86_64)
+url=""
+license=('GPL')
+groups=()
+depends=('python' 'calfbox' 'python-pyqt5')
+makedepends=('git')
+provides=('patroneo' 'patroneo-git')
+conflicts=('patroneo' 'patroneo-git')
+install=
+source=('git+https://github.com/diovudau/patroneo')
+noextract=()
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/patroneo"
+
+  # Git, no tags available
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/patroneo"
+}
+
+build() {
+  cd "$srcdir/patroneo"
+}
+
+package() {
+  cd "$srcdir/"
+	# make PREFIX=/usr DESTDIR="$pkgdir/" install
+  mkdir -p $pkgdir/usr/lib
+  cp -r patroneo $pkgdir/usr/lib
+  mkdir -p $pkgdir/usr/bin
+  ln -s $pkgdir/usr/lib/patroneo $pkgdir/usr/bin/patroneo
+}
