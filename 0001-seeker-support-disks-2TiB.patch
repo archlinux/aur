@@ -1,0 +1,50 @@
+From: John Lane <archlinux at jelmail dot com>
+Date: Fri, 29 Jun 2018 17:03:48 +0100
+Subject: [PATCH] seeker support disks > 2TiB
+
+---
+ contrib/seeker.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/contrib/seeker.c b/contrib/seeker.c
+index 4985dde..3b9464c 100644
+--- a/contrib/seeker.c
++++ b/contrib/seeker.c
+@@ -47,8 +47,8 @@ int main(int argc, char **argv)
+ {
+ 	char buffer[BLOCKSIZE];
+ 	int fd, retval;
+-	unsigned long numblocks;
+-	off64_t offset;
++	unsigned long long numblocks;
++	unsigned long long offset;
+ 
+ 	setvbuf(stdout, NULL, _IONBF, 0);
+ 
+@@ -63,10 +63,11 @@ int main(int argc, char **argv)
+ 	fd = open(argv[1], O_RDONLY);
+ 	handle("open", fd < 0);
+ 
+-	retval = ioctl(fd, BLKGETSIZE, &numblocks);
++	retval = ioctl(fd, BLKGETSIZE64, &numblocks);
+ 	handle("ioctl", retval == -1);
+-	printf("Benchmarking %s [%luMB], wait %d seconds",
+-	       argv[1], numblocks / 2048, TIMEOUT);
++	printf("Benchmarking %s [%lu bytes | ", argv[1], numblocks);
++	numblocks = numblocks / BLOCKSIZE;
++	printf("%lu blocks]\nWait %d seconds", numblocks, TIMEOUT);
+ 
+ 	time(&start);
+ 	srand(start);
+@@ -74,7 +75,7 @@ int main(int argc, char **argv)
+ 	alarm(1);
+ 
+ 	for (;;) {
+-		offset = (off64_t) numblocks * random() / RAND_MAX;
++		offset = numblocks * random() / RAND_MAX;
+ 		retval = lseek64(fd, BLOCKSIZE * offset, SEEK_SET);
+ 		handle("lseek64", retval == (off64_t) -1);
+ 		retval = read(fd, buffer, BLOCKSIZE);
+-- 
+2.16.2
+
