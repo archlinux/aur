@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=firefox-stylus
-pkgver=1.4.5
+pkgver=1.4.7
 pkgrel=1
 pkgdesc='Easily install themes and skins for many popular sites'
 url=https://add0n.com/stylus.html
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('firefox-addons')
 source=("https://addons.cdn.mozilla.net/user-media/addons/814814/stylus-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
-sha256sums=('c2be55a901a1e97d2840492e9233202203ebd634bbeda8c76ff6fbaeec7dd6f6')
+sha256sums=('03c1945283fa856d2a9d865bce2d635a4806ccf60d8f297bd7e21bd0ee370a99')
 
 package() {
   install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}.xpi
