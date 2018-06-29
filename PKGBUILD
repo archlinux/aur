@@ -11,7 +11,7 @@ groups=()
 depends=('python' 'calfbox-git' 'python-pyqt5')
 makedepends=('git')
 optdepends=('non-sessionmanager: required to run Patroneo'
-            'raysession-git: alternative to NSM')
+            'raysession-git: alternative to non-sessionmanager')
 provides=('patroneo' 'patroneo-git')
 conflicts=('patroneo' 'patroneo-git')
 install=
