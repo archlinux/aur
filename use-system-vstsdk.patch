@@ -1,6 +1,6 @@
-diff --no-dereference -aur radium-5.7.6.pristine/check_dependencies.sh radium-5.7.6.new/check_dependencies.sh
---- radium-5.7.6.pristine/check_dependencies.sh	2018-06-16 09:43:05.000000000 +0100
-+++ radium-5.7.6.new/check_dependencies.sh	2018-06-17 08:02:25.453299941 +0100
+diff --no-dereference -aur radium-5.8.1.pristine/check_dependencies.sh radium-5.8.1.new/check_dependencies.sh
+--- radium-5.8.1.pristine/check_dependencies.sh	2018-06-29 09:21:44.000000000 +0100
++++ radium-5.8.1.new/check_dependencies.sh	2018-06-29 11:12:34.629717738 +0100
 @@ -181,8 +181,8 @@
      exit 5
  fi
@@ -12,27 +12,27 @@ diff --no-dereference -aur radium-5.7.6.pristine/check_dependencies.sh radium-5.
      echo 'You should find these files in the "VST Audio Plug-Ins SDK" from http://www.steinberg.net/en/company/developers.html . Unless Steinberg have changed the directory structure again, it should enough to unzip the file into your ~/SDKs directory.'
      exit 5
  fi
-diff --no-dereference -aur radium-5.7.6.pristine/Makefile.Qt radium-5.7.6.new/Makefile.Qt
---- radium-5.7.6.pristine/Makefile.Qt	2018-06-16 09:43:05.000000000 +0100
-+++ radium-5.7.6.new/Makefile.Qt	2018-06-17 08:02:25.453299941 +0100
+diff --no-dereference -aur radium-5.8.1.pristine/Makefile.Qt radium-5.8.1.new/Makefile.Qt
+--- radium-5.8.1.pristine/Makefile.Qt	2018-06-29 09:21:44.000000000 +0100
++++ radium-5.8.1.new/Makefile.Qt	2018-06-29 11:14:23.153047364 +0100
 @@ -235,7 +235,7 @@
  
  FLAGOPTS = $(DEFINES) -DGUIISQT -DUSE_GFX_OP_QUEUE -DFULL_VERSION=$(FULL_VERSION) -DIS_LITTLE_ENDIAN=1 -DUSE_OPENGL=1 $(VISUAL) $(REQTYPE_TYPE) $(MENU_TYPE)
  
--COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_63_0 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing
-+COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_63_0 -I /usr/include/vst36 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing
+-COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_63_0 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers
++COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_63_0 -I /usr/include/vst36 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers
  #-Wstrict-overflow=4 -Wsuggest-attribute=format -Wstringop-overflow=4
  #-Wsuggest-final-types -Wsuggest-final-methods
  
-diff --no-dereference -aur radium-5.7.6.pristine/pluginhost/Builds/Linux/Makefile radium-5.7.6.new/pluginhost/Builds/Linux/Makefile
---- radium-5.7.6.pristine/pluginhost/Builds/Linux/Makefile	2018-06-16 09:43:05.000000000 +0100
-+++ radium-5.7.6.new/pluginhost/Builds/Linux/Makefile	2018-06-17 08:04:34.729962187 +0100
+diff --no-dereference -aur radium-5.8.1.pristine/pluginhost/Builds/Linux/Makefile radium-5.8.1.new/pluginhost/Builds/Linux/Makefile
+--- radium-5.8.1.pristine/pluginhost/Builds/Linux/Makefile	2018-06-29 09:21:44.000000000 +0100
++++ radium-5.8.1.new/pluginhost/Builds/Linux/Makefile	2018-06-29 11:15:16.553045538 +0100
 @@ -8,7 +8,7 @@
    CONFIG=Debug
  endif
  
--COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\""
-+COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I /usr/include/vst36 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\""
+-COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -Wno-class-memaccess
++COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I /usr/include/vst36 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -Wno-class-memaccess
  
  ifeq ($(CONFIG),Debug)
    BINDIR := build
