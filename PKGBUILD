@@ -1,7 +1,7 @@
 pkgname=hyperledger-caliper-git
 pkgver=116.1ac646a
 pkgrel=1
-pkgdesc=" A blockchain benchmark framework to measure performance of multiple blockchain solutions"
+pkgdesc="A blockchain benchmark framework to measure performance of multiple blockchain solutions"
 arch=(i686 x86_64)
 url="https://github.com/hyperledger/caliper"
 license=('APACHE')
