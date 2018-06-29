@@ -1,7 +1,7 @@
 # Maintainer: Vivien Maisonneuve <v dot maisonneuve at gmail dot com>
 # Category: system
 pkgname='vncdotool-git'
-pkgver=0.10.0.r42.g801b0d3
+pkgver=0.12.0.r0.g7b6c661
 pkgrel=1
 pkgdesc='A command line VNC client'
 arch=('any')
