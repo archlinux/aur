@@ -1,17 +1,17 @@
-# Maintainer: Alexander Sobolevkiy <smak.nsk [at] gmail [dot] com>
+# Maintainer: Daniel Milde <daniel@milde.cz>
 # Based on https://github.com/aerospike/aerospike-client-c
 
 pkgname=aerospike-client-c-libevent
 pkgver=4.3.13
-pkgrel=1
+pkgrel=2
 pkgdesc="The Aerospike C client provides a C interface for interacting with the Aerospike Database."
 arch=('any')
 url="https://github.com/aerospike/aerospike-client-c"
-license=('Proprietary')
+license=('apache')
 depends=('libevent' 'python2')
 makedepends=('git')
 provides=('aerospike-client-c')
-conflicts=('aerospike-client-c-libev', 'aerospike-client-c-libuv')
+conflicts=('aerospike-client-c-libev' 'aerospike-client-c-libuv')
 _gitroot="https://github.com/aerospike/aerospike-client-c.git"
 _gitname="aerospike-client-c"
 
