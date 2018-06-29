@@ -13,6 +13,8 @@ depends=('python2-cryptography' 'python2-feedparser' 'python2-apsw' 'python2-che
 'python2-decorator' 'python2-netifaces' 'python2-requests' 'python2-twisted' 'libsodium' 'libtorrent-rasterbar' 'python2-m2crypto' 'python2-configobj' 'python2-matplotlib' 'python2-service_identity' 'python2-keyring' 'python2-keyring.alt')
 optdepends=('vlc: for internal video player')
 makedepends=('python2-setuptools')
+provides=('tribler' 'python2-pyipv8')
+conflicts=('tribler' 'python2-pyipv8')
 source=("git+https://github.com/Tribler/tribler.git#tag=v$_gver")
 sha256sums=('SKIP')
 
