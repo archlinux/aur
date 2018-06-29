@@ -1,7 +1,7 @@
-# Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
+# Maintainer: Michael J. Pento <mjpento@verizon.net> 
 
 pkgname='cinnamon-applet-desktop-capture-git'
-pkgver=r99.d9eb339
+pkgver=r130.6fa16f8
 pkgrel=1
 pkgdesc='A comprehensive screenshot and screencasting applet for Cinnamon.'
 arch=('any')
