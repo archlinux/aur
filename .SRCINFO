@@ -11,6 +11,7 @@ pkgbase = raysession-git
 	depends = python-pyliblo
 	provides = raysession
 	provides = raysession-git
+	provides = non-sessionmanager
 	conflicts = raysession
 	conflicts = raysession-git
 	source = git+https://github.com/Houston4444/RaySession
