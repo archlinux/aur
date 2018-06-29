@@ -10,7 +10,7 @@ license=("custom:Boost Software License")
 depends=("alsa-lib" "libjpeg-turbo" "libpng" "libx11" "libxft")
 makedepends=("alsa-lib" "cmake" "libjpeg-turbo" "libpng" "libx11" "libxft" "xorgproto")
 source=("http://downloads.sourceforge.net/project/nanapro/Nana/Nana 1.x/${pkgname} ${pkgver}.zip")
-sha256sums=('8fd227f45f3c3a1d4ce0c8268a6dbf255b025e20333e2f99d9d6c2134db2517e')
+sha256sums=('7ef6705a6d9ecad3bcb0cfec175b62638c39f5b4eb13c28489e331a3c765e273')
 
 prepare() {
     cd ${srcdir}/${pkgname}
