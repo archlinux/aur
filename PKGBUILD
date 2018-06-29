@@ -1,7 +1,7 @@
 pkgname=rtl8723bu-git-dkms
 _pkgname=rtl8723bu
-pkgver=r224.8534c0f0
-pkgrel=7
+pkgver=224
+pkgrel=8
 pkgdesc="Driver for RTL8723BU DKMS version"
 url="https://github.com/lwfinger/rtl8723bu"
 provides=('rtl8723bu-git-dkms')
@@ -21,7 +21,7 @@ pkgver() {
   cd "${_pkgname}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s" "$(git rev-list --count HEAD)"
   )
 }
 
