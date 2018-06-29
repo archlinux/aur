@@ -1,0 +1,23 @@
+pkgbase = calfbox-git
+	pkgdesc = Open source musical instrument
+	pkgver = r1307.ef8ea8d
+	pkgrel = 1
+	url = https://github.com/kfoltman/calfbox
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = fluidsynth
+	depends = libsndfile
+	depends = ncurses
+	depends = libsmf
+	depends = jack
+	depends = python3
+	provides = calfbox
+	provides = calfbox-git
+	conflicts = calfbox
+	conflicts = calfbox-git
+	source = git+https://github.com/kfoltman/calfbox
+	md5sums = SKIP
+
+pkgname = calfbox-git
+
