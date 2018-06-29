@@ -10,6 +10,8 @@ license=('GPL')
 groups=()
 depends=('python' 'calfbox-git' 'python-pyqt5')
 makedepends=('git')
+optdepends=('non-sessionmanager: required to run Patroneo'
+            'raysession-git: alternative to NSM')
 provides=('patroneo' 'patroneo-git')
 conflicts=('patroneo' 'patroneo-git')
 install=
