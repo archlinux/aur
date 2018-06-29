@@ -1,6 +1,6 @@
 pkgbase = radium
 	pkgdesc = A graphical music editor. A next generation tracker.
-	pkgver = 5.8.1
+	pkgver = 5.8.2
 	pkgrel = 1
 	url = https://users.notam02.no/~kjetism/radium/
 	arch = i686
@@ -33,18 +33,18 @@ pkgbase = radium
 	optdepends = ladspa-plugins
 	optdepends = tcl
 	options = !strip
-	source = https://github.com/kmatheussen/radium/archive/5.8.1.tar.gz
+	source = https://github.com/kmatheussen/radium/archive/5.8.2.tar.gz
 	source = include-glibc-rpc.patch
 	source = radium
 	source = use-llvm40-static-libs.patch
 	source = use-system-libxcb.patch
 	source = use-system-vstsdk.patch
-	sha256sums = ce2ec22891affdcbdc975fe3b54fabe561e4adb4c38331b60999ac7891b58416
+	sha256sums = 8bb78d6cf4f33b5cd93940c4190c4363827c7976a0e8f4592d6cdc6fa2672323
 	sha256sums = 3436c478637fd1c8f7ff4089c30ba7f2048a71de8243756893df35cdb25be893
 	sha256sums = 6ea834fbf695187c244bbb1dacc1d462ded807ee4997761fdaa60d5373b386cd
 	sha256sums = 4155b427be299ba74c1d9278bcf2b72f720f55c814e01ca38f6f0afbda282890
 	sha256sums = ac41c94513ca615a71198a91160b2d605ea73c8a97a0192d275105248669df8d
-	sha256sums = ef87542ffc247109c869739e307aac79678953ef6c3074e3d1920f8da0eede9d
+	sha256sums = 2a69303ca540e2f9c41034588fc3580b4e51bc30e8e5bcc8059c3b168ea17142
 
 pkgname = radium
 
