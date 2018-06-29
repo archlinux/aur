@@ -1,7 +1,7 @@
 pkgbase = tapecalc
 	pkgdesc = Fixed-point calculator as a fullscreen editor. You may edit at any position in the expression list. Supports basic arithmetic, interest and sales tax computation. Designed for use as a checkbook or expense-account balancing tool. Formerly known as 'add'.
 	pkgver = t20180401
-	pkgrel = 1
+	pkgrel = 2
 	url = http://invisible-island.net/add/add.html
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = tapecalc
 	arch = arm64
 	license = custom: free software
 	depends = ncurses
+	depends = libncursesw.so
 	options = emptydirs
 	options = strip
 	source = ftp://ftp.invisible-island.net/add/add.tar.gz

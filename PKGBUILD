@@ -1,9 +1,11 @@
 #!/bin/bash
 
+# Maintainer: dreieck
+
 _pkgname=tapecalc
 pkgname="${_pkgname}"
 pkgver=t20180401
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Fixed-point calculator as a fullscreen editor. You may edit at any position in the expression list. Supports basic arithmetic, interest and sales tax computation. Designed for use as a checkbook or expense-account balancing tool. Formerly known as 'add'."
 url="http://invisible-island.net/add/add.html"
@@ -18,6 +20,7 @@ arch=(
 
 depends=(
   'ncurses'
+  'libncursesw.so'
 )
 makedepends=()
 optdepends=()
