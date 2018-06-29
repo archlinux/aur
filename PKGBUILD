@@ -3,7 +3,7 @@
 _pkgbase=libomxil-bellagio
 pkgname=lib32-$_pkgbase
 pkgver=0.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="An opensource implementation of the OpenMAX Integration Layer API"
 arch=('x86_64')
 url="http://omxil.sourceforge.net"
@@ -20,13 +20,14 @@ prepare() {
 
   # Fixes from fedora repo
   patch -Np1 -i ../fedora-fixes.patch
+  sed -e 's/-Werror//' -i configure.ac
+  autoreconf -fiv
 }
 
 build() {
   export CC="gcc -m32"
   cd ${srcdir}/${_pkgbase}-${pkgver}
 
-  autoreconf -fiv
   ./configure --prefix=/usr --disable-static --libdir=/usr/lib32
 
   make -j
