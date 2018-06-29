@@ -1,6 +1,6 @@
 pkgbase = urh
 	pkgdesc = Universal Radio Hacker: investigate wireless protocols like a boss
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/jopohl/urh
 	arch = i686
@@ -8,12 +8,14 @@ pkgbase = urh
 	license = GPL3
 	makedepends = gcc
 	makedepends = python-setuptools
+	makedepends = cython
 	depends = python>=3.4
 	depends = python-pyqt5
 	depends = python-numpy
 	depends = python-psutil
 	depends = python-pyzmq
 	optdepends = airspy: for native airspy backend
+	optdepends = cython: for recompiling native backends right from inside URH
 	optdepends = hackrf: for native hackrf backend
 	optdepends = libuhd: for native USRP backend
 	optdepends = rtl-sdr: for native RTL-SDR backend
@@ -21,9 +23,9 @@ pkgbase = urh
 	optdepends = gnuradio: for USRP gnuradio backend
 	optdepends = gnuradio-osmosdr: for more gnuradio device backends (HackRF, FunCubeDongle, RTL-SDR)
 	optdepends = python-pyaudio: for soundcard support (use soundcard as SDR)
-	source = urh-2.1.1.tar.gz::https://github.com/jopohl/urh/tarball/v2.1.1
-	md5sums = c3a917e50a3440e8f6b75515b24bd71e
-	sha256sums = 4ba362ce2ca9c221ac321f27e98a1b2f1f7e2bad5b65dcb9c1305eafa95977b6
+	source = urh-2.2.0.tar.gz::https://github.com/jopohl/urh/tarball/v2.2.0
+	md5sums = 135442653e9d54dc6a36664842c2cf62
+	sha256sums = a6a7882e5ea930772bdd76f43cb7ee6de0bc5de3f674bb51ecb73876ea29737b
 
 pkgname = urh
 
