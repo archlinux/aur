@@ -2,13 +2,13 @@
 # Contributor: CyrIng <labs[at]cyring[dot]fr>
 pkgname=corefreq-git
 pkgver=1.24.7
-pkgrel=1
+pkgrel=2
 pkgdesc="CoreFreq, a processor monitoring software with a kernel module inside."
 arch=('x86_64')
 url='http://github.com/cyring/CoreFreq'
 license=('GPL2')
 depends=('dkms')
-makedepends=('git' 'linux-headers')
+makedepends=('git' 'linux-headers' 'sed')
 source=('git+https://github.com/cyring/CoreFreq.git')
 md5sums=('SKIP')
 install=${pkgname}.install
@@ -31,4 +31,9 @@ package() {
 	install -Dm644 dkms.conf "${pkgdir}/usr/src/${pkgname}-${pkgver}/dkms.conf"
 	cp --no-preserve=ownership Makefile *.h *.c dkms.conf \
 		"${pkgdir}/usr/src/${pkgname}-${pkgver}/"
+}
+
+pkgver() {
+    cd "${srcdir}/${_gitname}"
+    echo "$(sed -nE 's/#define\s+COREFREQ_VERSION\s+"([0-9\.]+)"/\1/p' coretypes.h).r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
