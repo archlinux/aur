@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=firefox-ublock-origin
-pkgver=1.16.10
+pkgver=1.16.12
 pkgrel=1
 pkgdesc='Efficient blocker add-on for various browsers. Fast, potent, and lean'
 url=https://github.com/gorhill/uBlock
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('firefox-addons')
 source=("https://addons.cdn.mozilla.net/user-media/addons/607454/ublock_origin-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
-sha256sums=('8d90d501d5470024957cabbe37880ec6a5988d05d3d05e14b4e008e2cce2f9af')
+sha256sums=('967d5bc90c2159f194a5964be50489ea1afcf285be856808927fa1abb3c98b2c')
 
 package() {
   install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/uBlock0@raymondhill.net.xpi
