@@ -24,7 +24,7 @@ char* rc4_ncurses_get_password(void);
  * @param pString The String to encode.
  * @param password the key used to encode
  */
-void rc4_encode_string(String* pString, char password[PASS_MAX]);
+void rc4_encode_string(String* pString, const char password[PASS_MAX]);
 
 int rc4_ncurses_decrypt_string(String* pString, char* password_ref[PASS_MAX]);
 

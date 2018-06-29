@@ -28,7 +28,7 @@ char* rc4_ncurses_get_password(void) {
     return (char*) pass;
 }
 
-void rc4_encode_string(String* pString, char password[PASS_MAX]) {
+void rc4_encode_string(String* pString, const char password[PASS_MAX]) {
     int keySchedule[256];
     size_t key_len = strlen(password);
     int j = 0, out;
