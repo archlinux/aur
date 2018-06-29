@@ -4,7 +4,7 @@
 # Contributor: kageurufu
 
 pkgname=burpsuite
-pkgver=1.7.34
+pkgver=1.7.35
 pkgrel=1
 pkgdesc="An integrated platform for performing security testing of web applications (free edition)."
 url="https://portswigger.net/burp/"
@@ -17,10 +17,10 @@ source=("${pkgname}-${pkgver}.jar::https://portswigger.net/Burp/Releases/Downloa
         burpsuite.desktop
         icon64.png)
 
-md5sums=('9bb1757c7201386902ba89c7ce80567b'
-         '4cb5840ee960fa96da23b7833acf8b3a'
-         '81feb47df93ef9b65e5194cf9ff6c023'
-         'c3678a3dcb77765beb6708a7cead6341')
+sha1sums=('0df6683960537b9e6d4ff6244113b1ce9c57f208'
+          '5c78bd9cfce70fe9cba679a88bef9cc9bdf19146'
+          'c87e811ff37d63e5a206516967926b3d6e4e991f'
+          'fbd3e7d3e70d817d017899ed71bc69ae7066804c')
 
 package() {
   mkdir -p ${pkgdir}/usr/bin
