@@ -9,8 +9,8 @@ license=('LGPL')
 depends=('bubblewrap' 'ostree' 'python-blessings' 'python-click'
          'python-jinja' 'python-gobject' 'python-pluginbase'
          'python-psutil' 'python-ruamel-yaml'
-         # host site dependencies
-         'bubblewrap' 'bzr' 'git' 'lzip')
+         # specific host site dependencies
+         'bzr' 'git' 'lzip')
 makedepends=('python-setuptools')
 source=("https://download.gnome.org/sources/BuildStream/${pkgver%.*}/BuildStream-$pkgver.tar.xz")
 sha256sums=('3fb0ed28948102ff7538c73a224f74a96ee909fe66e30d64ca8cd80f792452d2')
