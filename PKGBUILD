@@ -12,7 +12,7 @@ provides=('python2-keyring')
 conflicts=('python2-keyring')
 _csum='0b90a69cd0d06e783d0b8b2951050839af7da2d3d153a5a7eaf605e9fb2c'
 _rname=${pkgname#python2-}
-source=("https://files.pythonhosted.org/packages/33/f4/$sha256sums/$_rname-$pkgver-py2.py3-none-any.whl")
+source=("https://files.pythonhosted.org/packages/33/f4/$_csum/$_rname-$pkgver-py2.py3-none-any.whl")
 sha256sums=('fb6ad22365c2e4cbec065fd26551646405d0eed651be929e5d826dec78049dcb')
 
 package() {
