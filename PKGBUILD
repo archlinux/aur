@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=5.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -26,7 +26,8 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-Documen
 	"server_makefile.patch"
 	"onlyoffice-fileconverter.service"
 	"onlyoffice-spellchecker.service"
-	"onlyoffice-docservice.service")
+	"onlyoffice-docservice.service"
+	"https://github.com/ONLYOFFICE/DocumentServer/releases/download/ONLYOFFICE-DocumentServer-5.1.4/onlyoffice-documentserver_amd64.deb")
 	sha512sums=('ae62d804a733c4a738f1a583afb56c551e1f77a9ee3db237df004367508cda5f1e951f00429943c214c8b2442a9c41bdba97436dd7eb889305879394d6dd1438'
             '82541eeb585ceb95ec41074e4c92450559146c49d107a874ed0f099ef839184398620fd792ff9b2c95f6c2d7a55c59ad36e76b197023a4798a8db9169942cb45'
             '9ecb75a95f29e998b09cff7e98f3fae1408a779f59734fd8f5e1a1ab6e58f191d0c64006a9fa196ba5d932ca4ebcfc80a7fce089adfb5ec639df4646c6411222'
@@ -39,7 +40,8 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-Documen
 	    '7d3b1d04f55b93e828b287369b9eb6f5e2511004b7c737dd5d0676d8aca4c87da985b562e89f63a0b16110980719aaec9f127a731b231992e35d457c088dd5f3'
             '5c691e07eccd51f543de92cc7f7fd5a5aac77fa2a6cf786f439a4ea43abc7606180aa5a9dd3762200091a4b3a479860881f94aefd0297d8e7ed955bf25c37417'
             '428e5c3326da53ee993871ab56c3b35c40fea5d5513950bee2a87b158f25cc0ebe76d690e4fa17bceb8583dde2f164fcf0a71a60652da1c67171d215f2528e6a'
-            '6f53f9eec783dc00497e2ce495ce92dc1d78824e108ecdd914806fca4948e1748383125e0322a444bf9f8e158eacee06247b4966beb172522e3d176a8bc093a9')
+            '6f53f9eec783dc00497e2ce495ce92dc1d78824e108ecdd914806fca4948e1748383125e0322a444bf9f8e158eacee06247b4966beb172522e3d176a8bc093a9'
+	    '5e30687098ea7e977d9f9fa68f9d72e155c0c63cd11d99db7104d8ebc295f5babfaa089aaacad54445630aadaca0f1b4593a7cac27e855d6c103157909868b2a')
 install="onlyoffice-documentserver.install"
 backup=('etc/webapps/onlyoffice/documentserver/production-linux.json'
 	'etc/webapps/onlyoffice/documentserver/default.json')
@@ -79,10 +81,12 @@ prepare() {
   sed -i 's/\/var\/www\/onlyoffice/\/usr\/share\/webapps\/onlyoffice/g' server/Common/config/production-linux.json
   sed -i 's/\/etc\/onlyoffice/\/etc\/webapps\/onlyoffice/g' server/Common/config/production-linux.json
 
-  # tempfix
-  sed -i 's/freefr/netix/g' core/Common/3dParty/boost/fetch.sh
-
+  # icu compile error (it's too old, already fixed upstream)
   sed -i '68ised -i "s/xlocale/locale/" i18n/digitlst.cpp' core/Common/3dParty/icu/fetch.sh
+
+  # allfontsgen segfaults, some error in icu lib. copy compiled version from deb package
+  cd "${srcdir}"
+  tar xf "${srcdir}/data.tar.xz"
 }
 
 build() {
@@ -115,4 +119,6 @@ package() {
   install -Dm644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
   install -Dm644 "${srcdir}/onlyoffice-spellchecker.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-spellchecker.service"
+  # fix allfontsgen binary
+  cp "${srcdir}/var/www/onlyoffice/documentserver/server/tools/AllFontsGen" "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/server/tools/AllFontsGen"
 }
