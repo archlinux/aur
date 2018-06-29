@@ -2,7 +2,7 @@
 pkgname=ebus-sdk
 pkgdesc="toolset for digital video systems and cameras"
 pkgver=3.1.14.3284
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(custom)
 depends=(
@@ -16,13 +16,13 @@ url='https://www.pleora.com/products/ebus-sdk/'
 
 source=(
 	"$pkgname-$pkgver.tar.bz2::http://www.photonfocus.com/fileadmin/web/downloads/ebus_sdk_${pkgver}_rhel-6-$CARCH.zip"
-	"GEVPlayer"
-	"PvDualSourceSample"
+	"ebus-sdk-config.cmake"
+	"ebus-sdk-config-version.cmake"
 )
 
 sha512sums=('3f10ae59550f7358088c048200c10a336d95d365549d861da12fa03fbfea14b507268bf3ba8db40f290aafbcb9b5430f2158fbadaeeda40cdd11fa5a20edce75'
-            '27e1dfab6446969b8e5b3e5b09fbcaf29998678aeea8fdf0b12e0bd99b086236d2135a43d8a4b6463366f3e97bc667faed55e54f17fa6fb76b25dee15dda8477'
-            'fa881d1a4d8e255e7c782bdf3b82478761837af234d152d0a1bc808cc05a79298edf504aa1e33e9b15d6723c9c0ffdfb6258719966d0225f3b2278f95a0e63c5')
+            'c001730965a5cc01e292b2e6768bd9d44f6ab763f51b486be29b0b5e5b40e1d3333a3e3f9cd1deb762967ea4e873e5af36fe796f89ca159429973cce96385dc7'
+            'f2e263c1a4521fb323091237227c8be5bd9186a18aca3e96ab7f82bf767e88ce677078a5ba0d30fb9c2624d9721af6c16fa0b2d02e59ca61b3d7af26676a7993')
 
 _install_dir() {
 	local source_root="$1"
@@ -55,26 +55,17 @@ package() {
 	local dir="$srcdir"
 	local target_dir="$pkgdir/opt/ebus-sdk"
 
-	_install_dir  "$dir/include" "$target_dir/include" 755
-	_install_dir  "$dir/bin"     "$target_dir/bin"     755
-	_install_dir  "$dir/lib"     "$target_dir/lib"     755
-	_install_dir  "$dir/share"   "$target_dir/share"   755
-
-	#rm "$target_dir/lib/libapr-1.so"*
-	#rm "$target_dir/lib/libaprutil-1.so"*
-	#rm "$target_dir/lib/liblog4cxx.so.10.0.0"
-	rm -rf "$target_dir/lib/genicam"
-
-	_install_dir  "$dir/lib/genicam/bin/Linux64_x64" "$target_dir/lib/genicam"       755
-	_install_dir  "$dir/lib/genicam/xml"             "$target_dir/share/genicam/xml" 755
-	_install_dir  "$dir/lib/genicam/log"             "$target_dir/share/genicam/log" 755
+	_install_dir  "$dir/include" "$target_dir/include/ebus-sdk" 644
+	_install_dir  "$dir/bin"     "$target_dir/bin"              755
+	_install_dir  "$dir/lib"     "$target_dir/lib"              755
+	_install_dir  "$dir/share"   "$target_dir/share"            644
 
 	find "$pkgdir" -name '.svn' -prune -exec rm -rf '{}' ';'
 
 	_shrink_rpaths "$target_dir/lib/"*
-	_shrink_rpaths "$target_dir/lib/genicam/"*
-	_shrink_rpaths "$target_dir/lib/genicam/GenApi/Generic/"*
+	_shrink_rpaths "$target_dir/lib/genicam/bin/Linux64_x64/"*
+	_shrink_rpaths "$target_dir/lib/genicam/bin/Linux64_x64/GenApi/Generic/"*
 
-	install -m 755 -t "$target_dir/bin" "$srcdir/GEVPlayer"
-	install -m 755 -t "$target_dir/bin" "$srcdir/PvDualSourceSample"
+	install -m 644 -Dt "$pkgdir/usr/lib/cmake/$pkgname" "$srcdir/$pkgname-config.cmake"
+	install -m 644 -Dt "$pkgdir/usr/lib/cmake/$pkgname" "$srcdir/$pkgname-config-version.cmake"
 }
