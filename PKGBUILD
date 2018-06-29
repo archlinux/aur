@@ -2,7 +2,7 @@
 # Based on https://github.com/aerospike/aerospike-client-c
 
 pkgname=aerospike-client-c-libev
-pkgver=4.1.11
+pkgver=4.3.13
 pkgrel=1
 pkgdesc="The Aerospike C client provides a C interface for interacting with the Aerospike Database."
 arch=('any')
