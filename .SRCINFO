@@ -1,0 +1,19 @@
+pkgbase = kcptun-plugin-git
+	pkgdesc = SIP003-compatible KCPTUN and UDP2RAW plugins for shadowsocks-libev
+	pkgver = r23.761add6
+	pkgrel = 1
+	url = https://github.com/w1ndy/kcptun-plugins
+	install = kcptun-plugin.install
+	arch = x86_64
+	license = custom:Unlicense
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	depends = curl
+	source = kcptun-plugin::git+https://github.com/w1ndy/kcptun-plugins.git
+	source = kcptun-plugin.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kcptun-plugin-git
+
