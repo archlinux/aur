@@ -1,5 +1,5 @@
 pkgbase = stepseq.lv2-git
-	pkgdesc = Simple Step Sequencer (also available in x42-plugins package)
+	pkgdesc = Simple Step Sequencer (also available in community/x42-plugins)
 	pkgver = r89.94dd4e4
 	pkgrel = 1
 	url = https://github.com/x42/stepseq.lv2
