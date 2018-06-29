@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=obs-service-source_validator
-pkgver=0.17
+pkgver=0.18
 pkgrel=1
 _pkgrel=1.1
 pkgdesc='An OBS source service: running all the osc source-validator checks'
@@ -13,8 +13,8 @@ depends=('libxml2' 'perl')
 provides=("osc-source_validator=$pkgver")
 conflicts=('osc-source_validator<=0.1')
 
-source=("http://download.opensuse.org/source/factory/repo/oss/src/${pkgname}-${pkgver}-${_pkgrel}.src.rpm")
-sha256sums=('4a548be85f5e2238295c302a785eac85d25358e1513d6fcf0caf6f2e28691051')
+source=("http://download.opensuse.org/source/tumbleweed/repo/oss/src/${pkgname}-${pkgver}-${_pkgrel}.src.rpm")
+
 
 build() {
   cd "$srcdir"
@@ -31,3 +31,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+md5sums=('3d1611fcf6a795fb29b4942e8ab8923d')
