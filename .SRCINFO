@@ -1,0 +1,17 @@
+pkgbase = loop
+	pkgdesc = UNIX's missing loop command
+	pkgver = d18f808
+	pkgrel = 1
+	url = https://github.com/Miserlou/Loop
+	arch = any
+	license = UNKNOWN
+	makedepends = cargo
+	makedepends = git
+	makedepends = asciidoc
+	provides = loop
+	conflicts = loop
+	source = loop::git+https://github.com/Miserlou/Loop
+	sha1sums = SKIP
+
+pkgname = loop
+
