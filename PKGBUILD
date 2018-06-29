@@ -5,7 +5,7 @@
 
 pkgname='seafile-server'
 pkgver='6.3.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/haiwen/seafile-server'
@@ -27,7 +27,7 @@ source=(
     'seafile-server@.service'
 )
 sha256sums=(
-    'ccde67afe34baeea076e9bbfe98328d9328dadcafd915dc9f1ddbca3d2e0d9fe'
+    '3e21836e374e4c321f87594c7a5f5db516890c9b40f61e102750c84d638dbf37'
     'd725bda36aedd424d426d7ce62e19c7036ccfc6a5759df12f139656ba15e425c'
     '51a7f13b8c3dfcb3f510c68c9791bf6ace1a0b332ba26fdf55c850409bf387fa'
     'd625d1ac5fc666386a53059b1d31bce0e63c79b69c11bfb769f6390afb629611'
