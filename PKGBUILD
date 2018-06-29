@@ -3,7 +3,7 @@
 
 pkg=linux-sgx-driver
 pkgname=$pkg-dkms-git
-pkgver=1.9_rhel7.4.r11.gb1c4b78
+pkgver=1.9_rhel7.4.r17.g2a509c2
 pkgrel=1
 pkgdesc="Intel® SGX Linux module - dkms"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('dkms')
 optdepends=('linux-headers: Build the module for Arch kernel'
             'linux-lts-headers: Build the module for LTS Arch kernel')
-makedepends=('linux-headers>=4.12' 'linux-headers<4.15' 'linux>=4.12' 'linux<4.15')
+makedepends=('linux-headers>=4.12')
 source=("$pkg::git+https://github.com/01org/linux-sgx-driver.git"
 	dkms.conf)
 
