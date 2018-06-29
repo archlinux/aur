@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/prometheus_node_exporter
+User=nobody
 
 [Install]
 WantedBy=multi-user.target
