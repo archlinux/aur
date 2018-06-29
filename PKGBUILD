@@ -1,13 +1,15 @@
+# Maintainer: robertfoster
+
 pkgbase=hyperledger-composer
 pkgname=('hyperledger-composer-cli' 'hyperledger-composer-playground')
-pkgver=0.18.1
+pkgver=0.19.11
 pkgrel=1
 pkgdesc="A framework for building Blockchain business networks"
 arch=(i686 x86_64)
 url="https://github.com/hyperledger/composer"
 license=('APACHE')
 groups=('hyperledger')
-depends=('nodejs-lts-boron')
+depends=('nodejs-lts-carbon')
 makedepends=('npm')
 
 package_hyperledger-composer-cli() {

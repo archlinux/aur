@@ -1,6 +1,6 @@
 pkgbase = hyperledger-composer
 	pkgdesc = A framework for building Blockchain business networks
-	pkgver = 0.18.1
+	pkgver = 0.19.11
 	pkgrel = 1
 	url = https://github.com/hyperledger/composer
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = hyperledger-composer
 	groups = hyperledger
 	license = APACHE
 	makedepends = npm
-	depends = nodejs-lts-boron
+	depends = nodejs-lts-carbon
 
 pkgname = hyperledger-composer-cli
 	pkgdesc = The Hyperledger composer CLIs for administering business networks
