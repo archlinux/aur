@@ -1,28 +1,30 @@
 # Author: futpib <futpib@gmail.com>
 # Inspired by `cask' AUR package by Sebastien Duthil <duthils@duthils.net>
 
-pkgname=cask
+pkgname=cask-git
 pkgver=r882.d731e96
-pkgrel=1
+pkgrel=2
 pkgdesc="Project management tool for Emacs"
 arch=('any')
 url='https://github.com/cask/cask'
 license=('GPL')
 depends=('emacs' 'python')
 makedepends=('git')
+provides=('cask')
+conflicts=('cask')
 source=("git://github.com/cask/cask.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/cask"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "$srcdir/cask"
 
     # cask executable needs to be one directory deeper than cask-cli.el
-    __prefix="${pkgdir}/usr/share/${pkgname}"
+    __prefix="${pkgdir}/usr/share/cask"
     install -d "${__prefix}"
     install -Dm644 *.el "${__prefix}/"
     install -d "${__prefix}/bin"
@@ -34,7 +36,7 @@ package() {
     install -d "${pkgdir}/usr/bin"
     ln -s "/usr/share/cask/bin/cask" "${pkgdir}/usr/bin/"
 
-    __site_lisp="${pkgdir}/usr/share/emacs/site-lisp/${pkgname}"
+    __site_lisp="${pkgdir}/usr/share/emacs/site-lisp/cask"
     install -d "${__site_lisp}"
-    ln -s "/usr/share/${pkgname}/"cask{,-bootstrap}.el "${__site_lisp}/"
+    ln -s "/usr/share/cask/"cask{,-bootstrap}.el "${__site_lisp}/"
 }
