@@ -1,0 +1,15 @@
+pkgbase = python-pyelastix
+	pkgdesc = Python wrapper for the Elastix nonrigid registration toolkit
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://nipy.org/dipy/
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = elastix
+	source = https://github.com/almarklein/pyelastix/archive/v1.1.tar.gz
+	sha512sums = e3258111ece1ad67f9de8469200ee06a3d8db4d07b85a6ba0fa96c41ba6e37445313c5cce6bda6e96bb4e1fb0d6c60dc0a5d79e5e3ce76eb55f042550ad121da
+
+pkgname = python-pyelastix
+
