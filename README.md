@@ -4,6 +4,9 @@ Before installation, make sure all dependencies are installed:
 * curl
 * json-c
 * ncurses
+* gtk3
+* cairo
+* libglade
 ```bash
 $ git clone https://github.com/aokellermann/tick.git && cd tick
 $ sudo make install
