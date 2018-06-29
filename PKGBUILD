@@ -4,7 +4,7 @@ pkgbase=python-uproot
 _pkgbase=uproot
 pkgname=('python2-uproot' 'python-uproot')
 pkgver=2.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=('any')
 url="https://github.com/scikit-hep/uproot"
@@ -47,7 +47,7 @@ build_python-uproot() {
 package_python2-uproot() {
   depends=('python2-numpy')
   optdepends=('python2-futures: Python2 parallel processing'
-              'lz4: compression used by some ROOT files'
+              'python2-lz4: compression used by some ROOT files'
               'xrootd: access remote files over XRootD'
               'xz: compression used by some ROOT files')
   cd "${srcdir}/uproot-py2-${pkgver}"
@@ -65,7 +65,7 @@ package_python2-uproot() {
 
 package_python-uproot() {
   depends=('python-numpy')
-  optdepends=('lz4: compression used by some ROOT files'
+  optdepends=('python-lz4: compression used by some ROOT files'
               'xrootd: access remote files over XRootD')
   cd "${srcdir}/uproot-${pkgver}"
 
