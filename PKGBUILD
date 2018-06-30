@@ -25,7 +25,7 @@ optdepends=('pepper-flash: support for Flash content'
 install=inox-hard.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$name-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/inox.desktop
+        https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/snox.desktop
         https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/breakpad-use-ucontext_t.patch
         https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/crc32c-string-view-check.patch
         https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/chromium-gn-bootstrap-r17.patch
@@ -158,9 +158,9 @@ sha256sums=('5d27a72f0cb8247343034f63fdd9747ff388c05b9fceb541668dd04fb372db1d'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
-            '5e3e80bc7ed486c263bc98a2a56fc03d7010eefca1a2d318389462b059dbbefe'
+            'ee688801f9cbf3ebb5b63af8b641527d93fd2a70749ea064cc3a01aa34c65e33'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
-            '80d2974001708c288a54c24e1dc896ef25916552b740765f6066a244c05ffcd5'
+            'b02ec93b8d74e2af85c83916dcb016694d8e5d1b24274f063d2c4162044132e4'
             'e69053b14c008ee8c20134a022726c09a81b03ef18dc1298d2d8fda88211568f'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
@@ -210,7 +210,7 @@ sha256sums=('5d27a72f0cb8247343034f63fdd9747ff388c05b9fceb541668dd04fb372db1d'
             '5c6845a62c845d8b506ad3704158b96fb7b3a2f59a7a6b9eb8f14781a79a86ac'
             '519d1c2787ae7a7cc3300a55292a3be1252775e9c40e19df24d5fcb93c48adb1'
             '3f7eed89c9ceb4500b08b818fed752e79657dda590b465e7f749e5a112107204'
-            '042b36c27c788f80fcbb3d55059d22ce773a2eebf2b5e5bd7d7780d32c0a96da'
+            '70f49d5b69641669c24d0532fb723b5ef1313a56224f41bf35bf6bb07fc93974'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
 
@@ -471,28 +471,28 @@ package() {
   cd chromium-launcher-$_launcher_ver
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 LICENSE \
-    "$pkgdir/usr/share/licenses/inox/LICENSE.launcher"
+    "$pkgdir/usr/share/licenses/snox/LICENSE.launcher"
 
   cd "$srcdir/$name-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/$pk/$pk"
-  install -Dm644 "$srcdir/inox.desktop" \
-    "$pkgdir/usr/share/applications/inox.desktop"
+  install -Dm644 "$srcdir/snox.desktop" \
+    "$pkgdir/usr/share/applications/snox.desktop"
 
   install -Dm4755 out/Release/chrome_sandbox \
-    "$pkgdir/usr/lib/inox/chrome-sandbox"
+    "$pkgdir/usr/lib/snox/chrome-sandbox"
 
   cp -a \
     out/Release/{chrome_{100,200}_percent,resources}.pak \
     out/Release/{*.bin,chromedriver} \
     out/Release/locales \
-    "$pkgdir/usr/lib/inox/"
+    "$pkgdir/usr/lib/snox/"
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
-    cp out/Release/icudtl.dat "$pkgdir/usr/lib/inox/"
+    cp out/Release/icudtl.dat "$pkgdir/usr/lib/snox/"
   fi
 
-  ln -s /usr/lib/$pk/inoxdriver "$pkgdir/usr/bin/inoxdriver"
+  ln -s /usr/lib/$pk/chromedriver "$pkgdir/usr/bin/snoxdriver"
 
   for size in 16 22 24 32 48 64 128 256; do
     install -Dm644 "$srcdir/product_logo_$size.png" \
@@ -501,7 +501,7 @@ package() {
 
 
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/inox/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/snox/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
