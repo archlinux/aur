@@ -2,7 +2,7 @@
 
 pkgname=python-typed-ast
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="a fork of Python 2 and 3 ast modules with type comment support"
 arch=('x86_64')
 url="https://github.com/python/typed_ast"
