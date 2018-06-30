@@ -1,8 +1,10 @@
-# Maintainer: Carl George < arch at cgtx dot us >
+# Maintainer: Rodrigo de la Fuente < rodrigo at delafuente dot email >
+# Maintainer: pancho horrillo < pancho at pancho dot name >
+# Contributor: Carl George < arch at cgtx dot us >
 
 _name="caddy"
 pkgname="$_name-bin"
-pkgver=0.10.10
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='HTTP/2 web server with automatic HTTPS'
 arch=('x86_64')
@@ -18,12 +20,12 @@ source=("https://github.com/mholt/caddy/releases/download/v$pkgver/caddy_v${pkgv
         'caddy.service'
         'caddy.tmpfiles'
         'caddy.conf')
-sha256sums=('28b10ecbfaf4a68ace9bc2cbc9f5382e81e35bc31a60cc096338ff43830d56ba'
-            'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
-            '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
-            '69e25def317a6172011472bd060655142f3085a0c81392f8a7a9c42b6a58bbd9'
-            'bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce'
-            '38b0af1f02a8218b851febc09ebf52c3b570f0678688bbb3a48a744abf1ad266')
+sha512sums=('ae9502c86347a0b33ec9acfbfb3f5125c0bba6e76c02c7c302c27e14c506317952532149b6641063433835025329e18a90a8a87e516c2240b25f0759ab34976b'
+            'fbe0a5bf505c414d9f7dc15b89efa3e03abeecd6e4674bac1db1d3ae6302977a0a605b9b9bc4b7a969f62c5dfa9aeeb0a0b7c705f1a8e793443ee51061d0a4c9'
+            '7d8d308c9e262f0a2d6b84e996858ce4c7bb4816660c6ad1bbdafbf01d0eb35720cdccb12cc3418547e0dad6dbe87a0e6a3d15d519fb7d44d32f03f126a15117'
+            'fa249c1fe22bd02cb7e6fbeaa5d31cf11cb61e89065597d17709425b1009b0bb9eb76de6a0ee5ec5c601712976a1b8819dd60e34c76eeb1e8f339f6363633e71'
+            '3bf3a0c568be72717e935bbe0864f8fd6d472278f9d49974aed0fda9032103002f0158bf0ad32f374f80c06300c46d26f4c69798845b45b5234f7bdc594f4041'
+            'c329cfa66428287cc554274790130f94f13d53d60a2d4ffba44a229913805f8bcf50e2df0073808009e57f026f2f0962d412cc38723719e6c248d90aaa4fdd33')
 
 package() {
     install -D -m 0755 caddy "$pkgdir/usr/bin/caddy"
