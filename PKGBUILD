@@ -2,7 +2,7 @@
 
 pkgname=vim-gdscript-git
 gitname=vim-gdscript3
-pkgver=r3.3993775
+pkgver=r70.e9e0cce
 pkgrel=1
 pkgdesc="Vim syntax highliting for the Godot Game Engine scripting language GDScript"
 arch=('any')
@@ -28,5 +28,12 @@ package() {
 	install -Dm644 "ftplugin/gdscript3.vim" "$pkgdir/$vim_share/plugin/gdscript3.vim"
 	install -Dm644 "indent/gdscript3.vim" "$pkgdir/$vim_share/indent/gdscript3.vim"
 	install -Dm644 "syntax/gdscript3.vim" "$pkgdir/$vim_share/syntax/gdscript3.vim"
+	install -Dm644 "syntax/gdscript3.vim" "$pkgdir/$vim_share/syntax/gdscript3.vim"
+
+	# Recreate all the directories under the python subdirectory in our filesystem:
+	find python -type d -print -exec install -dm755 "$pkgdir/$vim_share/"{} \;
+
+	# Now copy all the files with the right permissions:
+	find python -type f -print -exec install -Dm644 {} "$pkgdir/$vim_share/"{} \;
 }
 
