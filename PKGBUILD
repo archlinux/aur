@@ -23,7 +23,7 @@ makedepends=('gtk-doc'
              'mingw-w64-wine'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://git.gnome.org/browse/pango#commit=${_commit}")
+source=("git+https://gitlab.gnome.org/GNOME/pango.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
