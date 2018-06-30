@@ -1,8 +1,8 @@
 # Maintainer: BrainDamage <braindamage springlobby.info>
 
 pkgname=cspice
-pkgver="N0065"
-pkgrel=2
+pkgver="N0066"
+pkgrel=1
 pkgdesc="A comprehensive toolkit and api to design, simulate and analyse space missions"
 arch=("x86_64")
 url="https://naif.jpl.nasa.gov/naif/aboutspice.html"
