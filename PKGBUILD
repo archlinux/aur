@@ -2,7 +2,7 @@
 
 pkgname=midifilter.lv2-git
 pkgver=0.5.0.r1.g7b99562
-pkgrel=1
+pkgrel=2
 pkgdesc="LV2 plugins to filter MIDI events"
 arch=('i686' 'x86_64')
 url="https://github.com/x42/midifilter.lv2"
@@ -11,7 +11,7 @@ groups=('lv2-plugins')
 depends=('glibc')
 makedepends=('git' 'lv2')
 provides=('midifilter.lv2')
-conflicts=('midifilter.lv2')
+conflicts=('midifilter.lv2' 'x42-plugins')
 source=("${pkgname%-*}"::'git://github.com/x42/midifilter.lv2.git')
 md5sums=('SKIP')
 
