@@ -1,4 +1,4 @@
-pkgbase = tpm
+pkgbase = tmux-tpm
 	pkgdesc = Tmux Plugin Manager
 	pkgver = 1
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = tpm
 	source = https://github.com/tmux-plugins/tpm
 	md5sums = SKIP
 
-pkgname = tpm
+pkgname = tmux-tpm
 
