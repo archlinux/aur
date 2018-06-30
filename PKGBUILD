@@ -1,29 +1,27 @@
 # Maintainer: Aleksandar Trifunović <akstrfn@gmail.com>
 
 pkgname=valhalla
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64')
 url="https://github.com/valhalla/valhalla"
 license=('custom:MIT')
-depends=('prime_server' 'boost' 'protobuf' 'python' 'lua' 'libspatialite' 'rapidjson')
-makedepends=('cmake' 'git' 'vim' 'jq')
-source=("https://github.com/valhalla/valhalla/archive/$pkgver.tar.gz")
-sha256sums=('30321f370e825be94ba49e21fef6d49bbe2267d16d9c78b228d263aa0d830d1c')
+depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'lua' 'libspatialite')
+makedepends=('cmake' 'git' 'vim' 'jq' 'boost' 'rapidjson')
+source=("${url}/archive/$pkgver.tar.gz")
+sha256sums=('d6efbda5d66ea20dddf070dc70e9b4891270df2d3fa06d801f0f800aab011126')
 
 prepare() {
   cd "$pkgname-$pkgver"
   git clone --depth=1 https://github.com/scrosby/OSM-binary third_party/OSM-binary
   git clone --depth=1 https://github.com/valhalla/osmlr-tile-spec third_party/OSMLR
+
+  # TODO this seems fixed but tests are failing upstream anyway
   # There is probably a better way to solve this. Sources:
   # https://groups.google.com/forum/#!topic/spatialite-users/YXnofHixXsM
   # https://github.com/valhalla/valhalla/issues/354
   sed -i 's/mod_spatialite/\/usr\/lib\/mod_spatialite/' src/mjolnir/admin.cc
-
-  # Make locales necessary for testing
-  cd locales
-  ./make_locales.sh
 }
 
 build() {
@@ -52,11 +50,9 @@ package() {
   cd "$pkgname-$pkgver"
   cmake --build build -- DESTDIR="$pkgdir/" install
   rm -rf "$pkgdir/usr/share/doc/"{libvalhalla-dev,libvalhalla0,python-valhalla}
-  rm -rf "$pkgdir/usr/share/doc/$pkgname/ChangeLog"
+  rm "$pkgdir/usr/share/doc/$pkgname/ChangeLog"
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm644 COPYING README.md CHANGELOG.md -t "$pkgdir/usr/share/licenses/$pkgname"
   cp -a docs/* "$pkgdir/usr/share/doc/$pkgname/"
 }
 
