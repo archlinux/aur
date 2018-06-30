@@ -67,9 +67,9 @@ pkgbase=linux-clear
 __basekernel=4.17
 _minor=3
 pkgver=${__basekernel}.${_minor}
-#_clearver=${__basekernel}.2-586
-_clearver=0f69acc6f23759737119b08ce89e206b04c900b2
-pkgrel=1
+#_clearver=${__basekernel}.3-589
+_clearver=309d2eb702410c884da0a2496454aaf8f18202cc
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -114,7 +114,7 @@ prepare() {
   patch -p1 -i ../patch-${pkgver}
 
   # Apply clearlinux patches
-  for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0115|^Patch200|^Patch300|^Patch0500' | sed -n 's/.*: //p'); do
+  for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch200|^Patch300|^Patch0500' | sed -n 's/.*: //p'); do
     msg "Applying ${i}"
     patch -p1 -i "$srcdir/clearlinux/${i}"
   done
@@ -146,9 +146,6 @@ prepare() {
   # bluez package on arch needs this module for bluetooth to work
   # https://bugs.archlinux.org/task/55880
   sed -i "s|# CONFIG_CRYPTO_USER is not set|CONFIG_CRYPTO_USER=m|g" ./.config
-
-  # fix typo in .config
-  sed -i "s|SQUASHFS_LZ4y|SQUASHFS_LZ4=y|g" ./.config
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
