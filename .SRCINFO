@@ -1,0 +1,21 @@
+pkgbase = python-pylxd
+	pkgdesc = Python module for LXD
+	pkgver = 2.2.7
+	pkgrel = 1
+	url = https://github.com/lxc/pylxd
+	arch = any
+	license = APACHE
+	depends = python
+	depends = python-pbr
+	depends = python-six
+	depends = python-ws4py
+	depends = python-requests
+	depends = python-requests-unixsocket
+	depends = python-requests-toolbelt
+	depends = python-cryptography
+	depends = python-pyopenssl
+	source = https://github.com/lxc/pylxd/archive/2.2.7.tar.gz
+	sha512sums = SKIP
+
+pkgname = python-pylxd
+
