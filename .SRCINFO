@@ -1,0 +1,16 @@
+pkgbase = perl6-file-path-resolve
+	pkgdesc = Double-entry accounting ledger file format converter
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/atweiden/file-path-resolve
+	arch = any
+	groups = perl6
+	license = UNLICENSE
+	checkdepends = perl
+	makedepends = git
+	depends = perl6
+	source = perl6-file-path-resolve-0.0.1::git+https://github.com/atweiden/file-path-resolve
+	sha256sums = SKIP
+
+pkgname = perl6-file-path-resolve
+
