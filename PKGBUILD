@@ -3,7 +3,7 @@
 pkgbase=python-nose-exclude
 pkgname=("python-nose-exclude" "python2-nose-exclude")
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Exclude specific directories from nosetests runs"
 arch=('any')
 url="https://github.com/kgrandis/nose-exclude"
