@@ -1,14 +1,13 @@
 # Maintainer: Caleb Johnson <me@calebj.io>
 _pkgname=wmidump
 pkgname=${_pkgname}-git
-provides=wmidump
-pkgrel=1
+pkgrel=2
 pkgver=r13
-conflicts=wmidump
+conflicts=(wmidump)
 pkgdesc="Dump WMI informations from ACPI tables"
 arch=('i686' 'x86_64')
 url="https://github.com/iksaif/wmidump"
-license=unknown
+license=(unknown)
 depends=()
 makedepends=(git)
 source=("${pkgname}"::'git+http://github.com/iksaif/wmidump')
