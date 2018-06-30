@@ -3,7 +3,7 @@
 pkgbase=python-nose-cover3
 pkgname=("python-nose-cover3" "python2-nose-cover3")
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Coverage 3.x support for Nose"
 arch=(any)
 url="https://github.com/ask/nosecover3"
