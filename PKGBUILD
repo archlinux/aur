@@ -1,7 +1,7 @@
 # Maintainer: Sammay Sarkar <(my-name-without-vowels)@gmail.com>
 pkgname="openbangla-keyboard"
 pkgver="1.5.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
 url="http://openbangla.github.io"
