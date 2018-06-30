@@ -4,7 +4,7 @@
 pkgbase=python-mock
 pkgname=(python2-mock python-mock)
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Mocking and Patching Library for Testing'
 url='http://www.voidspace.org.uk/python/mock/'
 makedepends=('python2' 'python' 'python-setuptools' 'python2-setuptools')
@@ -12,7 +12,7 @@ checkdepends=('python-nose' 'python2-nose' 'python-pbr' 'python2-pbr' 'python-si
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/m/mock/mock-$pkgver.tar.gz")
-md5sums=('0febfafd14330c9dcaa40de2d82d40ad')
+sha512sums=('a08007651b749d2843b94f5045d74c122958888290aea21930455538a854e6b04c07115e21d82edde996154bf597d7a8784a2f4213cbabc49a98dec22dd92238')
 
 build() {
   cd "$srcdir"
