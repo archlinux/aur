@@ -6,7 +6,7 @@
 pkgbase=python-numpy
 pkgname=('python-numpy' 'python2-numpy')
 pkgver=1.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
 license=('custom')
@@ -41,7 +41,7 @@ check() {
   cd "$srcdir"/numpy-$pkgver
   python setup.py install --root="$PWD/tmp_install" --optimize=1
   cd "$PWD/tmp_install"
-  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python3.6/site-packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
+  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python3.7/site-packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
 
   cd "$srcdir"/numpy-$pkgver-py2
   python2 setup.py install --root="$PWD/tmp_install" --optimize=1
