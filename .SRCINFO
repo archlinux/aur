@@ -1,0 +1,15 @@
+pkgbase = slimerjs
+	pkgdesc = A scriptable browser for Web developers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://slimerjs.org/
+	arch = any
+	license = MPL2
+	depends = firefox
+	depends = nodejs
+	depends = python
+	source = https://download.slimerjs.org/releases/1.0.0/slimerjs-1.0.0.tar.bz2
+	sha256sums = 466f84ce302b7c2062176a5b26c8cfd77fad91cde95a369aa6794ccb27cfc546
+
+pkgname = slimerjs
+
