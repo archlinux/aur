@@ -1,0 +1,18 @@
+pkgbase = stegosaurus-lv2-git
+	pkgdesc = lv2 drum synthersizer without sampling (patched fork)
+	pkgver = r16.7820bae
+	pkgrel = 1
+	url = https://github.com/milkmiruku/stegosaurus
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = lv2
+	provides = stegosaurus-lv2
+	provides = stegosaurus-lv2-git
+	conflicts = stegosaurus-lv2
+	conflicts = stegosaurus-lv2-git
+	source = git+https://github.com/milkmiruku/stegosaurus
+	md5sums = SKIP
+
+pkgname = stegosaurus-lv2-git
+
