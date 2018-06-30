@@ -1,8 +1,8 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 pkgname=kawaii-player
 _pkgname=kawaii_player
-pkgver=3.6.0
-pkgrel=2
+pkgver=3.7.0
+pkgrel=1
 _pkgrel=1
 pkgdesc="A powerful Audio/Video manager, multimedia player and portable media server"
 arch=(any)
@@ -15,7 +15,7 @@ makedepends=('git')
 conflicts=('kawaii-player-git')
 install=kawaii-player.install
 source=("https://github.com/kanishka-linux/${pkgname}/releases/download/v${pkgver}-${_pkgrel}/${pkgname}-${pkgver}-${_pkgrel}.tar.bz2")
-md5sums=('a1af476bab93baa37c979f1c3e9c055c')
+md5sums=('c418aa09f4d9886bab49415592b503b1')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}-${_pkgrel}
