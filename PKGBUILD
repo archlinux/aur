@@ -3,7 +3,7 @@
 pkgname=perl6-file-path-resolve
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="Double-entry accounting ledger file format converter"
+pkgdesc='Resolve file path strings which may include a leading `~`'
 arch=('any')
 depends=('perl6')
 checkdepends=('perl')

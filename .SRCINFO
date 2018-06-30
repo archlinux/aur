@@ -1,5 +1,5 @@
 pkgbase = perl6-file-path-resolve
-	pkgdesc = Double-entry accounting ledger file format converter
+	pkgdesc = Resolve file path strings which may include a leading `~`
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/atweiden/file-path-resolve
