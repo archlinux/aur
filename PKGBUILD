@@ -4,7 +4,7 @@
 # Contributor: liberodark
 
 pkgname=natron
-pkgver=2.3.12
+pkgver=2.3.13
 pkgrel=1
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
@@ -13,12 +13,7 @@ license=("GPL")
 depends=('boost-libs' 'cairo' 'fontconfig' 'glfw-x11' 'openfx-io' 'openfx-misc' 'openmp' 'pixman' 'python2-pyside' 'python2-shiboken' 'qt4')
 makedepends=('boost' 'expat' 'git')
 optdepends=('openfx-arena: Extra OpenFX plugins for Natron, includes text node' 'natron-plugins')
-
-# Natron source modified because the released version blocks build in GCC (>=8.1)
-# For more information, check the following issue:
-# https://github.com/NatronGitHub/Natron/issues/279
-
-source=("$pkgname::git+https://github.com/NatronGitHub/Natron#commit=6f49bf0"
+source=("$pkgname::git+https://github.com/NatronGitHub/Natron#tag=$pkgver"
         "git+https://github.com/NatronGitHub/google-breakpad"
         "git+https://github.com/NatronGitHub/google-mock"
         "git+https://github.com/NatronGitHub/google-test"
@@ -36,7 +31,6 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             '48017b7b9cd1854064b9ddffecedef89a4d38070f9a7d2cd506aad481a8061c5cffe5e5c84fc9b0ac5216fc99e093481db367e91ce52cb2a8a66223c4209402a')
-options=('!buildflags' '!makeflags')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -74,7 +68,7 @@ build() {
 
   qmake-qt4 -r "$srcdir/natron/Project.pro" \
                PREFIX=/usr \
-               BUILD_USER_NAME="ArchLinux" \
+               BUILD_USER_NAME="Arch_Linux" \
                CONFIG+=custombuild \
                CONFIG+=openmp \
                CONFIG+=enforce-gcc8 \
