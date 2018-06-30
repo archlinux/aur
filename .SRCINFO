@@ -1,7 +1,7 @@
 pkgbase = openbangla-keyboard-bin
 	pkgdesc = An OpenSource, Unicode compliant Bengali Input Method
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://openbangla.github.io/
 	install = openbangla-keyboard-bin.install
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = openbangla-keyboard-bin
 	provides = openbangla-keyboard
 	conflicts = openbangla-keyboard
 	conflicts = openbangla-keyboard-git
-	source = https://github.com/OpenBangla/OpenBangla-Keyboard/releases/download/1.4.0/openbangla-keyboard-1.4.0-1-x86_64-archlinux.pkg.tar.xz
-	sha256sums = b6dc4f57f58b2184d921a0a1655b3943ce8b6c30301ba0cb2e92f0efda5d0d73
+	source = https://github.com/OpenBangla/OpenBangla-Keyboard/releases/download/1.5.0/OpenBangla-Keyboard_1.5.0-archlinux.pkg.tar.xz
+	sha256sums = 16ab1846cdef21220212c157b5d11e7f8974b7a64b7425fa50595a19217f5b1b
 
 pkgname = openbangla-keyboard-bin
 
