@@ -1,0 +1,18 @@
+pkgbase = python-pywal-spotify-git
+	pkgdesc = Sync pywal colour scheme and wallpaper with Spotify
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/misguidedemails/pywal-spotify/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-pywal
+	depends = feh
+	depends = playerctl
+	depends = python-requests
+	depends = python-pillow
+	source = git+https://gitlab.com/misguidedemails/pywal-spotify.git
+	sha256sums = SKIP
+
+pkgname = python-pywal-spotify-git
+
