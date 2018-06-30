@@ -13,9 +13,9 @@ depends=('gtk2'
          'libsm'
          )
 makedepends=('nasm')
-conflicts=('xnp2')
-provides=('xnp2')
-source=("np2kai::git+https://github.com/AZO234/NP2kai.git")
+conflicts=('np2kai')
+provides=('np2kai')
+source=('np2kai::git+https://github.com/AZO234/NP2kai.git')
 sha256sums=('SKIP')
 
 pkgver() {
