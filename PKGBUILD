@@ -1,17 +1,21 @@
-# Maintainer: Shameempk <mailtoshameempk@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <fiilipe.lains@gmail.com>
+# Contributor: Shameempk <mailtoshameempk@gmail.com>
 pkgname=writefull
-pkgver=3.0.0_beta19
+_rver=3.0.0
+_bver=19
+pkgver=${_rver}_beta$_bver
 pkgrel=1
 pkgdesc="Writefull is an app that gives feedback on your writing by checking your text against databases of correct language."
 arch=('i686' 'x86_64')
 url="http://writefullapp.com/"
-license=('custom')
+license=('MIT')
 makedepends=('imagemagick')
-source_i686=("https://d3aw1w08kaciwn.cloudfront.net/${pkgver//_/-}/${pkgname}_${pkgver//_/-}_ia32.zip")
-source_x86_64=("https://d3aw1w08kaciwn.cloudfront.net/${pkgver//_/-}/${pkgname}_${pkgver//_/-}_amd64.zip")
-md5sums_i686=("56a2f9d719aa7620e3870572ef098b3a")
-md5sums_x86_64=("1a829007378ce002e2c44a4e19995508")
-noextract=("${pkgname}_${pkgver//_/-}_ia32.zip" "${pkgname}_${pkgver//_/-}_amd64.zip")
+_ver=$_rver-beta$_bver
+source_i686=("https://s3-eu-west-1.amazonaws.com/writefull-binaries/${_ver}/writefull_${_ver}_ia32.zip")
+source_x86_64=("https://s3-eu-west-1.amazonaws.com/writefull-binaries/${_ver}/writefull_${_ver}_amd64.zip")
+sha256sums_i686=('43e2237729e4b6eb267dd70ebb0aacc42a4a3ad6a97a5a5e38bab35b3eb7ad84')
+sha256sums_x86_64=('6fdc2b8bcf93c972f4691c244c3a6bcc5ba6ee6bad76e163c889a1aacedc7c39')
+
 if [ "$(uname -m)" = "x86_64" ]; then
         _arch=amd64
 	_arch_dir=x64
@@ -19,31 +23,24 @@ elif [ "$(uname -m)" = "i686" ]; then
         _arch=ia32
 	_arch_dir=ia32
 fi
-prepare() {
-	mkdir -p ${srcdir}/writefull
-	bsdtar -xf "${pkgname}_${pkgver//_/-}_${_arch}.zip" -C "${srcdir}/writefull"
-}
+
 package() {
-	install -dm755 "${pkgdir}/usr/share/${pkgname}"
-	install -dm755 "${pkgdir}/usr/bin"
+	install -dm 755 $pkgdir/usr/share/$pkgname
+	cp -dr --no-preserve=ownership $srcdir/Writefull-linux-$_arch_dir/* $pkgdir/usr/share/$pkgname
 
-	cp -a ${srcdir}/writefull/Writefull-linux-${_arch_dir}/* "${pkgdir}/usr/share/${pkgname}"
+	convert $pkgdir/usr/share/$pkgname/Writefull.ico $pkgdir/usr/share/$pkgname/Writefull.png
+	install -Dm 644 $pkgdir/usr/share/$pkgname/Writefull-0.png $pkgdir/usr/share/pixmaps/writefull.png
 
-	convert ${pkgdir}/usr/share/${pkgname}/Writefull.ico ${pkgdir}/usr/share/${pkgname}/Writefull.png
-	ln -s "/usr/share/${pkgname}/Writefull" "${pkgdir}/usr/bin/writefull"
-	
-	install -Dm644 "${pkgdir}/usr/share/${pkgname}/Writefull-0.png" "${pkgdir}/usr/share/pixmaps/writefull.png"
-	sed -i 's/Icon=.*$/Icon=\/usr\/share\/pixmaps\/writefull.png/' "${pkgdir}/usr/share/${pkgname}/writefull.desktop"
-	sed -i 's/Exec=.*$/Exec=writefull/' "${pkgdir}/usr/share/${pkgname}/writefull.desktop"
-	install -Dm644 "${pkgdir}/usr/share/${pkgname}/writefull.desktop" "${pkgdir}/usr/share/applications/writefull.desktop"
-	
-	install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+	sed -i 's|Icon=.*$|Icon=/usr/share/pixmaps/writefull.png|g' $pkgdir/usr/share/$pkgname/writefull.desktop
+	sed -i 's|Exec=.*$|Exec=writefull|g' $pkgdir/usr/share/$pkgname/writefull.desktop
+	install -Dm 644 $pkgdir/usr/share/$pkgname/writefull.desktop $pkgdir/usr/share/applications/writefull.desktop
 
-	rm "${pkgdir}/usr/share/${pkgname}/Writefull.ico"
-	rm ${pkgdir}/usr/share/${pkgname}/Writefull-*.png
-	rm "${pkgdir}/usr/share/${pkgname}/writefull.desktop"
-	rm "${pkgdir}/usr/share/${pkgname}/LICENSE"
-	rm "${pkgdir}/usr/share/${pkgname}/LICENSES.chromium.html"
+	rm $pkgdir/usr/share/$pkgname/Writefull.ico
+	rm $pkgdir/usr/share/$pkgname/Writefull-*.png
+	rm $pkgdir/usr/share/$pkgname/writefull.desktop
+	rm $pkgdir/usr/share/$pkgname/LICENSE
+	rm $pkgdir/usr/share/$pkgname/LICENSES.chromium.html
+
+	install -dm 755 $pkgdir/usr/bin
+	ln -s /usr/share/$pkgname/Writefull $pkgdir/usr/bin/writefull
 }
-
