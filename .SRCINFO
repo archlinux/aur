@@ -1,0 +1,15 @@
+pkgbase = tpm
+	pkgdesc = Tmux Plugin Manager
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/tmux-plugins/tpm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = tmux>=1.9,bash
+	source = https://github.com/tmux-plugins/tpm
+	md5sums = SKIP
+
+pkgname = tpm
+
