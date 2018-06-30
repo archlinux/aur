@@ -1,9 +1,8 @@
 pkgbase = myrddin
 	pkgdesc = Compiler and tools for the Myrddin programming language.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://myrlang.org/
-	install = myrddin.install
 	arch = i686
 	arch = x86_64
 	license = MIT
