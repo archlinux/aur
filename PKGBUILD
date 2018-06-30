@@ -19,7 +19,7 @@
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0a2
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -43,18 +43,16 @@ makedepends=(
 # https://github.com/xbmc/libdvdread/tags
 _codename=Leia
 _rtype=Alpha
-_rver=1
-_dver=3
-_ffmpeg_version="4.0-$_codename-$_rtype-$_rver"
-_libdvdcss_version="1.4.1-$_codename-$_rtype-$_dver"
-_libdvdnav_version="6.0.0-$_codename-$_rtype-$_dver"
-_libdvdread_version="6.0.0-$_codename-$_rtype-$_dver"
+_ffmpeg_version="4.0.1-$_codename-$_rtype"3-1
+_libdvdcss_version="1.4.1-$_codename-$_rtype"-3
+_libdvdnav_version="6.0.0-$_codename-$_rtype"-3
+_libdvdread_version="6.0.0-$_codename-$_rtype"-3
 source=(
   "${pkgbase%%-*}-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
-  "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.1-$_codename-$_rtype-$_dver.tar.gz"
-  "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.0.0-$_codename-$_rtype-$_dver.tar.gz"
-  "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/6.0.0-$_codename-$_rtype-$_dver.tar.gz"
   "ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
+  "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
+  "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
+  "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
   'cheat-sse-build.patch'
   'cpuinfo'
 )
@@ -65,10 +63,10 @@ noextract=(
   "ffmpeg-$_ffmpeg_version.tar.gz"
 )
 sha256sums=('937d755c638324bf388fc9e971c5d8f90fcc0ab9362f0b15bbad5e47f0bc67d6'
+            '20c38f8153384335a777806facdd4444e6b1a73bec9a16f557d6f98ca7a30f54'
             '6af3d4f60e5af2c11ebe402b530c07c8878df1a6cf19372e16c92848d69419a5'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
-            'b486ab7bb76e0e2e5a30912640a74da2d2a1ce7640b6134507988fdd1eb44ae9'
             '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
 
@@ -98,7 +96,6 @@ build() {
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
     -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
     -DENABLE_INTERNAL_FMT=ON \
-    -DENABLE_VERBOSE=ON \
     ../"xbmc-$pkgver-$_codename"
   make
   make preinstall
