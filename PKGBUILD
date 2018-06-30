@@ -27,6 +27,16 @@ prepare() {
   mkdir -p build
 
   cd np2kai/x11
+
+  cp xnp2.jman1 xnp2kai.jman1
+  cp xnp2.man1 xnp2kai.man1
+  cp xnp21.jman1 xnp21kai.jman1
+  cp xnp21.man1 xnp21kai.man1
+
+  sed -e 's|xnp2.1|xnp2kai.1|g' \
+      -e 's|xnp21.1|xnp21kai.1|g' \
+      -i Makefile.am
+
   ./autogen.sh
 
   cd "${srcdir}/build"
