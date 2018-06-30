@@ -1,6 +1,6 @@
 pkgbase = cro
 	pkgdesc = Development tools for building services and distributed systems in Perl 6 using the Cro libraries
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://github.com/croservices/cro
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = cro
 	depends = perl6-cro-websocket
 	depends = perl6-docker-file
 	depends = perl6-file-find
+	depends = perl6-file-ignore
 	depends = perl6-io-socket-async-ssl
 	depends = perl6-json-fast
 	depends = perl6-meta6
@@ -20,8 +21,8 @@ pkgbase = cro
 	depends = perl6-shell-command
 	depends = perl6-terminal-ansicolor
 	depends = perl6-yamlish
-	source = cro-0.7.5.tar.gz::https://codeload.github.com/croservices/cro/tar.gz/release-0.7.5
-	sha256sums = 3eec6be2a6935133c16c47df449707c7e8dacb1b161873fc1fd5c101fa44f860
+	source = cro-0.7.6.tar.gz::https://codeload.github.com/croservices/cro/tar.gz/release-0.7.6
+	sha256sums = 084bc15feae87ba90c4855b1bc72123f8f06a0ad6c2e2c2b39f4a40d50f95ea1
 
 pkgname = cro
 
