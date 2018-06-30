@@ -3,7 +3,7 @@
 # Contributor: Score_Under <seejay.11@gmail.com>
 
 pkgname=xnp2-svn
-pkgver=0.86.2819
+pkgver=0.86.2842
 pkgrel=1
 pkgdesc="X Neko Project II, a PC-9801 emulator. (SVN Version)"
 arch=('i686' 'x86_64')
@@ -26,20 +26,23 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd xnp2/x11
   ./autogen.sh
+
+  cd "${srcdir}/build"
+  ../xnp2/x11/configure \
+    --prefix=/usr \
+    --enable-build-all \
+    --enable-ia32
+
 }
 
 build() {
-  cd xnp2/x11
-  ./configure \
-    --prefix=/usr \
-    --enable-build-all \
-    #--enable-gtk3
-
-  LC_ALL=C make
+  make -C build
 }
 
 package() {
-  make -C "xnp2/x11" DESTDIR="${pkgdir}/" install
+  make -C build DESTDIR="${pkgdir}/" install
 }
