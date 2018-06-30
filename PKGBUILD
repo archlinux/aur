@@ -3,10 +3,10 @@
 pkgbase=python-altair
 _pyname=altair
 pkgname=('python-altair')
-depends=('python' 'python-entrypoints' 'python-jsonschema' 'python-numpy' 'python-pandas' 'python-six' 'python-toolz' 'python-typing')
+depends=('python' 'python-entrypoints' 'python-jsonschema' 'python-numpy' 'python-pandas' 'python-six' 'python-toolz')
 makedepends=('python-setuptools')
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc=" Declarative statistical visualization library for Python"
 arch=('any')
 url="https://altair-viz.github.io/"
