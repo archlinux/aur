@@ -7,7 +7,7 @@
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 
 arch=('any')
 url='http://sphinx.pocoo.org/'
