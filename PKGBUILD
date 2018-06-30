@@ -15,7 +15,9 @@ replaces=(pdfsizeopt-git)
 makedepends=('git')
 optdepends=("multivalent-pdf-tools: to optimise cross reference table and object serialisation [use --use-multivalent=true]"
             "pngout: to optimise the size of PNG parts [use --use-pngout=true]"
-            "jbig2enc: to manage JBIG2 parts [use --use-jbig2=true]")
+            "jbig2enc: to manage JBIG2 parts [use --use-jbig2=true]"
+            "ect: to further compress images [use --use-image-optimizer=ect]"
+            "zopflipng: to further compress images [use --use-image-optimizer=zopflipng]")
 source=("https://github.com/pts/${pkgname}/archive/${_pkgver}.tar.gz")
 md5sums=('SKIP')
 

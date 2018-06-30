@@ -14,6 +14,8 @@ pkgbase = pdfsizeopt
 	optdepends = multivalent-pdf-tools: to optimise cross reference table and object serialisation [use --use-multivalent=true]
 	optdepends = pngout: to optimise the size of PNG parts [use --use-pngout=true]
 	optdepends = jbig2enc: to manage JBIG2 parts [use --use-jbig2=true]
+	optdepends = ect: to further compress images [use --use-image-optimizer=ect]
+	optdepends = zopflipng: to further compress images [use --use-image-optimizer=zopflipng]
 	provides = pdfsizeopt
 	conflicts = pdfsizeopt-git
 	replaces = pdfsizeopt-git
