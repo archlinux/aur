@@ -3,7 +3,7 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=tcc-git
-pkgver=0.9.27.r11.ge76058c
+pkgver=0.9.27.r21.g65c7f19
 pkgrel=1
 pkgdesc='Tiny C Compiler'
 arch=('x86_64' 'i686')
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd tinycc
-  make test
+  make -j1 test
 }
 
 package() {

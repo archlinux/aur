@@ -1,6 +1,6 @@
 pkgbase = tcc-git
 	pkgdesc = Tiny C Compiler
-	pkgver = 0.9.27.r11.ge76058c
+	pkgver = 0.9.27.r21.g65c7f19
 	pkgrel = 1
 	url = https://bellard.org/tcc/
 	arch = x86_64
