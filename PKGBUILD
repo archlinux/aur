@@ -1,11 +1,14 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-txn-remarshal
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="Double-entry accounting ledger file format converter"
 arch=('any')
-depends=('perl6' 'perl6-file-presence' 'perl6-txn-parser')
+depends=('perl6'
+         'perl6-file-path-resolve'
+         'perl6-file-presence'
+         'perl6-txn-parser')
 checkdepends=('perl')
 makedepends=('git')
 groups=('perl6')
