@@ -4,7 +4,7 @@
 pkgbase=python-shutilwhich
 pkgname=(python-shutilwhich python2-shutilwhich)
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Backport of shutil.which"
 url="https://github.com/mbr/shutilwhich"
 arch=('any')
