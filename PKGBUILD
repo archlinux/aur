@@ -11,66 +11,65 @@
 # Can also be one of these: sm_20 sm_30 sm_50 sm_60 sm_70 etc.
 _GPU_TARGET=sm_30
 # Set _USE_CMAKE=1 to use CMake
-_USE_CMAKE=0
+_USE_CMAKE=1
 ##### End
 
 pkgname=magma
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
-pkgdesc="Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems. (with CUDA)"
-arch=("x86_64")
+pkgdesc="Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems (with CUDA)"
+arch=('x86_64')
 url="http://icl.cs.utk.edu/magma/"
-license=(custom)
-depends=("cuda>=6.5.0" "gsl" "python" "openblas-lapack")
-makedepends=("gcc-fortran")
+license=('custom')
+depends=("cuda>=6.5.0"
+         'gsl'
+         'python'
+         'openblas-lapack')
+makedepends=('gcc-fortran'
+             'cmake')
 options=('staticlibs')
-sha256sums=('010a4a057d7aa1e57b9426bffc0958f3d06913c9151463737e289e67dd9ea608')
-source=("http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${pkgver}.tar.gz")
+source=("http://icl.cs.utk.edu/projectsfiles/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('4eb839b1295405fd29c8a6f5b4ed578476010bf976af46573f80d1169f1f9a4f')
 
 build() {
-	cd "${srcdir}/magma-${pkgver}"
-
-    if ((_USE_CMAKE == 0))
-    then
-        # Modify Makefile
-        cp make.inc-examples/make.inc.openblas make.inc
-        sed -i "/#GPU_TARGET ?=/c GPU_TARGET = ${_GPU_TARGET}" make.inc
-        sed -i '/#CUDADIR/c CUDADIR   = /opt/cuda' make.inc
-        sed -i '/#OPENBLASDIR/c OPENBLASDIR   = /usr/lib' make.inc
-        sed -i 's^-L$(OPENBLASDIR)/lib^-L$(OPENBLASDIR)^g' make.inc
-
-        make clean
-        make lib
-        make sparse
-        make test
-    else
-        # FIXME: there is no shared library
-        mkdir build && cd build
-        cmake -DGPU_TARGET=${_GPU_TARGET} \
-            -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
-            -DCMAKE_INSTALL_PREFIX=/opt/magma ..
-        make
-    fi
+  cd "${srcdir}/magma-${pkgver}"
+  mkdir build-shared && pushd build-shared
+  cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS:BOOL=ON \
+    -DGPU_TARGET=${_GPU_TARGET} \
+    -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
+    -DCMAKE_INSTALL_PREFIX=/opt/magma ..
+  make magma magma_sparse
+  popd
+  mkdir build-static && pushd build-static
+  cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS:BOOL=OFF \
+    -DGPU_TARGET=${_GPU_TARGET} \
+    -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
+    -DCMAKE_INSTALL_PREFIX=/opt/magma ..
+  make magma magma_sparse
+  popd
 }
 
 package() {
-    if ((_USE_CMAKE == 0))
-    then
-        cd "${srcdir}/magma-${pkgver}"
-        make prefix="${pkgdir}/opt/magma" install
-        #rm "${pkgdir}/opt/magma/include/*.mod"
-    else
-        cd "${srcdir}/magma-${pkgver}/build"
-        make DESTDIR="${pkgdir}" install
-    fi
+  cd "${srcdir}/magma-${pkgver}/build-shared"
+  # do not build test
+  sed -i "s/install: preinstall/install: magma_sparse/g" Makefile
+  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/magma-${pkgver}/build-static"
+  # do not build test
+  sed -i "s/install: preinstall/install: magma_sparse/g" Makefile
+  make DESTDIR="${pkgdir}" install
 
-    mkdir -p ${pkgdir}/opt/magma/example
-    cp -ru ${srcdir}/magma-${pkgver}/example/* ${pkgdir}/opt/magma/example/
-
-    mkdir -p ${pkgdir}/opt/magma/testing
-    cp -ru ${srcdir}/magma-${pkgver}/testing/* ${pkgdir}/opt/magma/testing/
-
-    rm -rf ${pkgdir}/opt/magma/lib/pkgconfig
-    mkdir -p ${pkgdir}/usr/share/licenses/magma
-    cp ${srcdir}/magma-${pkgver}/COPYRIGHT ${pkgdir}/usr/share/licenses/magma/LICENSE
+  mkdir -p ${pkgdir}/opt/magma/example
+  cp -ru ${srcdir}/magma-${pkgver}/example/* ${pkgdir}/opt/magma/example/
+  mkdir -p ${pkgdir}/opt/magma/testing
+  cp -ru ${srcdir}/magma-${pkgver}/testing/* ${pkgdir}/opt/magma/testing/
+  rm -rf ${pkgdir}/opt/magma/lib/pkgconfig
+  mkdir -p ${pkgdir}/usr/share/licenses/magma
+  cp ${srcdir}/magma-${pkgver}/COPYRIGHT ${pkgdir}/usr/share/licenses/magma/LICENSE
 }
+
+# vim:set ts=2 sw=2 et:
