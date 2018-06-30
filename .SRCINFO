@@ -1,0 +1,19 @@
+pkgbase = mkcert-git
+	pkgdesc = A simple zero-config tool to make locally-trusted development certificates with any names you'd like.
+	pkgver = r22.073ee25
+	pkgrel = 1
+	url = https://github.com/FiloSottile/mkcert
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = git
+	depends = go
+	provides = mkcert
+	conflicts = mkcert
+	options = !strip
+	options = !emptydirs
+	source = git://github.com/FiloSottile/mkcert.git
+	sha1sums = SKIP
+
+pkgname = mkcert-git
+
