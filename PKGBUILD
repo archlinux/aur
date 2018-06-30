@@ -2,7 +2,7 @@
 # Maintainer: Abuzer Rafey <arafey@vyvygen.org>
 # Contributor: Jacqueline Outka <joutka@vyvygen.org>
 pkgname="mkdocs-material"
-pkgver=2.6.6
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Material design theme for MkDocs"
 arch=("any")
