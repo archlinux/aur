@@ -6,7 +6,7 @@
 pkgbase=python-pysrt
 pkgname=(python-pysrt python2-pysrt)
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python parser for SubRip (srt) files"
 arch=('any')
 url="https://github.com/byroot/pysrt"
