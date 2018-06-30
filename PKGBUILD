@@ -5,7 +5,7 @@
 pkgbase=python-bitvector
 pkgname=(python-bitvector python2-bitvector)
 pkgver=3.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A memory-efficient packed representation for bit arrays in pure Python"
 url="https://pypi.python.org/pypi/BitVector"
 license=('PSF')
