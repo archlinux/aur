@@ -1,7 +1,16 @@
 diff -ruN cinelerra-gg/cinelerra-5.1/configure.ac cinelerra-gg-new/cinelerra-5.1/configure.ac
---- cinelerra-gg/cinelerra-5.1/configure.ac	2017-08-07 10:39:25.977492228 +0800
-+++ cinelerra-gg-new/cinelerra-5.1/configure.ac	2017-08-07 10:37:58.000000000 +0800
-@@ -547,8 +547,8 @@
+--- cinelerra-gg/cinelerra-5.1/configure.ac	2018-06-28 16:38:54.885096000 +0800
++++ cinelerra-gg-new/cinelerra-5.1/configure.ac	2018-06-28 16:41:45.598921556 +0800
+@@ -525,7 +525,7 @@
+ CHECK_HEADERS([encore], [encore headers], [encore.h])
+ CHECK_LIB([giflib], [gif], [DGifOpen])
+ CHECK_HEADERS([giflib], [gif lib headers], [gif_lib.h])
+-CHECK_LIB([fdk], [fdk-aac], [faacDecInit])
++CHECK_LIB([fdk], [fdk-aac], [aacDecoder_AncDataInit])
+ CHECK_HEADERS([fdk], [fdk headers], [fdk-aac/genericStds.h])
+ CHECK_LIB([jbig], [jbig], [jbg_dec_init])
+ CHECK_LIB([vdpau], [vdpau], [vdp_device_create_x11])
+@@ -649,8 +649,8 @@
  EXRIStream() : Imf::IStream("mypath") {} };
  class EXROStream : public Imf::OStream { public: 
  EXROStream() : Imf::OStream("mypath") {} };
@@ -12,7 +21,7 @@ diff -ruN cinelerra-gg/cinelerra-5.1/configure.ac cinelerra-gg-new/cinelerra-5.1
   if test "x$RESULT" = "xyes"; then
     SHARED_openexr="$LIBS"
     CFG_CFLAGS+=" -I/usr/include/OpenEXR"
-@@ -556,9 +556,9 @@
+@@ -658,9 +658,9 @@
   LIBS="$saved_LIBS"
   CXXFLAGS="$saved_CXXFLAGS"
   AC_LANG_POP(C++)
@@ -24,7 +33,7 @@ diff -ruN cinelerra-gg/cinelerra-5.1/configure.ac cinelerra-gg-new/cinelerra-5.1
  
  # build global_config
  OBJDIR=`uname -m`
-@@ -597,7 +597,7 @@
+@@ -704,7 +704,7 @@
          libtheora/libogg libtheora/libvorbis ; do
    lib=`dirname $dep`;  needs=`basename $dep`
    eval pkg_lib="\$PKG_$lib"; eval needs_lib="\$HAVE_$needs";
@@ -33,3 +42,15 @@ diff -ruN cinelerra-gg/cinelerra-5.1/configure.ac cinelerra-gg-new/cinelerra-5.1
      eval "PKG_$needs=yes"
    fi
  done
+diff -ruN cinelerra-gg/cinelerra-5.1/thirdparty/Makefile cinelerra-gg-new/cinelerra-5.1/thirdparty/Makefile
+--- cinelerra-gg/cinelerra-5.1/thirdparty/Makefile	2018-06-28 16:38:55.658446000 +0800
++++ cinelerra-gg-new/cinelerra-5.1/thirdparty/Makefile	2018-06-28 16:39:14.942212329 +0800
+@@ -141,7 +141,7 @@
+ 		$(call inc_path,fdk,libSYS) \
+ 		$(call inc_path,fdk,libSYS/include)" \
+ 	--extra-cxxflags="-D__STDC_CONSTANT_MACROS" \
+-	--pkg-config=true \
++	--pkg-config=/usr/bin/pkg-config \
+ 	--extra-libs="-Wl,--start-group \
+ 		$(call ld_path,twolame,libtwolame/.libs) \
+ 		$(call ld_path,lame,libmp3lame/.libs) \

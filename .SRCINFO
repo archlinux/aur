@@ -1,10 +1,9 @@
 pkgbase = cin-git
 	pkgdesc = Cinelerra maintained by Good Guy (git version)
-	pkgver = 5.1.20180302
+	pkgver = 5.1.20180630
 	pkgrel = 1
-	url = https://cinelerra-cv.org/
+	url = https://cinelerra-cv.org
 	arch = x86_64
-	arch = i686
 	license = GPL
 	makedepends = yasm
 	makedepends = nasm
@@ -17,17 +16,19 @@ pkgbase = cin-git
 	depends = libpng
 	depends = libxv
 	depends = libva
+	depends = libdv
 	depends = libxft
 	depends = freetype2
 	depends = alsa-lib
 	depends = inkscape
 	depends = dvdauthor
 	depends = libvorbis
+	depends = libfdk-aac
 	depends = openexr
 	source = cinelerra-gg::git+git://git.cinelerra-cv.org/goodguy/cinelerra.git
 	source = dep.patch
-	md5sums = SKIP
-	md5sums = d232b7c72c5cf94fc352323e5580260c
+	sha256sums = SKIP
+	sha256sums = 9d4a2a8c21f0c3632317d9b3f6f88d96d544dc08a487cd8efadbcf3dfc18269e
 
 pkgname = cin-git
 
