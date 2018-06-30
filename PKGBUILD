@@ -3,7 +3,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-io
-pkgver=2.3.12
+pkgver=2.3.13
 pkgrel=1
 arch=("x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
