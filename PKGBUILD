@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Your Name <buttars0070@gmail.com>
-pkgname=tpm
+pkgname=tmux-tpm
 pkgver=1
 pkgrel=1
 epoch=
