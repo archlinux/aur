@@ -2,7 +2,7 @@
 
 pkgname=you-get
 pkgver=0.4.1099
-pkgrel=1
+pkgrel=2
 pkgdesc="A YouTube/Youku/Niconico video downloader written in Python 3."
 url="http://www.soimort.org/you-get/"
 arch=('any')
