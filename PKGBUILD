@@ -3,11 +3,11 @@
 
 
 pkgname="kvmd"
-pkgver="0.5"
+pkgver="0.6"
 pkgrel="1"
 pkgdesc="The main Pi-KVM daemon"
 arch=("any")
-url="https://github.com/mdevaev/pikvm"
+url="https://github.com/mdevaev/pi-kvm"
 license=("GPL")
 depends=(
 	"python"
@@ -20,14 +20,14 @@ makedepends=("python-setuptools" "wget")
 
 build() {
 	cd $srcdir
-	if [ ! -d pikvm-$pkgver ]; then
+	if [ ! -d pi-kvm-$pkgver ]; then
 		msg "Downloading tag v$pkgver..."
 		wget $url/archive/v$pkgver.tar.gz
 		tar -xzf v$pkgver.tar.gz
 	fi
 
 	rm -rf $pkgname-build
-	cp -r pikvm-$pkgver/kvmd $pkgname-build
+	cp -r pi-kvm-$pkgver/kvmd $pkgname-build
 	cd $pkgname-build
 
 	python setup.py build
