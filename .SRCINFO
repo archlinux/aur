@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-pango
 	pkgdesc = A library for layout and rendering of text (mingw-w64)
 	pkgver = 1.42.1+4+g5d46e21d
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pango.org
 	arch = any
 	license = LGPL
@@ -15,6 +15,7 @@ pkgbase = mingw-w64-pango
 	depends = mingw-w64-fontconfig
 	depends = mingw-w64-freetype2
 	depends = mingw-w64-cairo
+	optdepends = mingw-w64-libthai: libthai support
 	options = !strip
 	options = staticlibs
 	options = !buildflags
