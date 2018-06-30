@@ -1,3 +1,5 @@
+# Maintainer: Emilien Devos (unixfox) <contact@emiliendevos.be>
+
 pkgname=mkcert-git
 pkgver=r22.073ee25
 pkgrel=1
