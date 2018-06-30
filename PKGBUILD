@@ -4,7 +4,7 @@
 
 pkgname=python-ioflo
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Flo based programming interface in python'
 arch=('any')
 url='http://ioflo.com'
