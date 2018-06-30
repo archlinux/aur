@@ -1,17 +1,19 @@
 # Maintainer: robertfoster
 
 pkgname=xash3d-git
-pkgver=v0.19.1.r63.g09752f3e
+pkgver=v0.19.1.r65.ge16e910c
 pkgrel=1
 pkgdesc="A custom Gold Source engine rewritten from scratch"
-arch=(x86_64)
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://xash.su/"
 license=('GPL3')
-depends=('lib32-sdl2')
-makedepends=('cmake' 'gcc-multilib')
-install=
-source=("$pkgname::git+https://github.com/FWGS/xash3d.git"
-"hlsdk::git+https://github.com/FWGS/vgui-dev")
+depends=('sdl2' 'freetype2' 'fontconfig')
+depends_i686=('vgui')
+depends_x86_64=('lib32-freetype2' 'lib32-fontconfig' 'lib32-sdl2' 'lib32-vgui')
+makedepends=('make' 'binutils' 'cmake')
+makedepends=('gcc')
+makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
+source=("$pkgname::git+https://github.com/FWGS/xash3d.git")
 
 pkgver() {
 	cd $srcdir/$pkgname
@@ -27,18 +29,23 @@ prepare() {
 build() {
 	cd $srcdir/$pkgname
 	cd build
-	cmake ../. -DHL_SDK_DIR=../../hlsdk -DXASH_SDL=yes \
+	if [ "$CARCH" == "x86_64" ]; then
+		cmake ../. -DHL_SDK_DIR=/usr/include/vgui -DXASH_SDL=yes \
 		-DXASH_VGUI=yes -DCMAKE_C_FLAGS="-m32" \
 		-DCMAKE_CXX_FLAGS="-m32" -DCMAKE_EXE_LINKER_FLAGS="-m32" \
 		-DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR=lib32
-	make
+	else
+		cmake ../. -DHL_SDK_DIR=/usr/include/vgui -DXASH_SDL=yes \
+		-DXASH_VGUI=yes -DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR=lib
+	fi
+
+	make -j2
 }
 
 package() {
 	cd $srcdir/$pkgname/
 	cd build
-	make DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" V=1 install
 }
 
-md5sums=('SKIP'
-'SKIP')
+md5sums=('SKIP')

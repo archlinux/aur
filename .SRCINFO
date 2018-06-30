@@ -1,17 +1,27 @@
 pkgbase = xash3d-git
 	pkgdesc = A custom Gold Source engine rewritten from scratch
-	pkgver = v0.19.1.r63.g09752f3e
+	pkgver = v0.19.1.r65.ge16e910c
 	pkgrel = 1
 	url = http://xash.su/
+	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
 	license = GPL3
-	makedepends = cmake
-	makedepends = gcc-multilib
-	depends = lib32-sdl2
+	makedepends = gcc
+	depends = sdl2
+	depends = freetype2
+	depends = fontconfig
 	source = xash3d-git::git+https://github.com/FWGS/xash3d.git
-	source = hlsdk::git+https://github.com/FWGS/vgui-dev
 	md5sums = SKIP
-	md5sums = SKIP
+	depends_i686 = vgui
+	depends_x86_64 = lib32-freetype2
+	depends_x86_64 = lib32-fontconfig
+	depends_x86_64 = lib32-sdl2
+	depends_x86_64 = lib32-vgui
+	makedepends_x86_64 = gcc-multilib
+	makedepends_x86_64 = lib32-gcc-libs
 
 pkgname = xash3d-git
 
