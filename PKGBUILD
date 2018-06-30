@@ -1,13 +1,14 @@
 # Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
 
 pkgname=stdoutisatty-git
-pkgver=8.04881d0
+pkgver=9.ed1c5ca
 pkgrel=1
-pkgdesc='Make programs think their stdout is a tty / terminal.'
-arch=('i686' 'x86_64')
+pkgdesc="Make programs think their stdout is a tty / terminal."
+
+arch=('x86_64')
 url='https://github.com/lilydjwg/stdoutisatty'
 license=('BSD')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=('stdoutisatty::git://github.com/lilydjwg/stdoutisatty.git')
 md5sums=('SKIP')
 
