@@ -1,0 +1,16 @@
+pkgbase = perl6-file-ignore
+	pkgdesc = Parsing and application of .gitignore-style ignore files
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/jnthn/p6-file-ignore
+	arch = any
+	groups = perl6
+	license = PerlArtistic
+	checkdepends = perl
+	makedepends = git
+	depends = perl6
+	source = perl6-file-ignore-1.1::git+https://github.com/jnthn/p6-file-ignore
+	sha256sums = SKIP
+
+pkgname = perl6-file-ignore
+
