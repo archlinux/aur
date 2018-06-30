@@ -3,7 +3,7 @@
 pkgbase=python-socketpool
 pkgname=('python-socketpool' 'python2-socketpool')
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple Python socket pool"
 arch=('any')
 license=('MIT')
