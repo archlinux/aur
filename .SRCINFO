@@ -1,6 +1,6 @@
 pkgbase = openfx-misc
 	pkgdesc = Miscellaneous OpenFX plugins
-	pkgver = 2.3.12
+	pkgver = 2.3.13
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-misc
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = openfx-misc
 	makedepends = git
 	depends = libgl
 	optdepends = natron-plugins
-	source = openfx-misc::git+https://github.com/NatronGitHub/openfx-misc#tag=Natron-2.3.12
+	source = openfx-misc::git+https://github.com/NatronGitHub/openfx-misc#tag=Natron-2.3.13
 	source = git+https://github.com/NatronGitHub/openfx
 	source = git+https://github.com/NatronGitHub/openfx-supportext
 	sha512sums = SKIP

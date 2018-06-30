@@ -3,7 +3,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-misc
-pkgver=2.3.12
+pkgver=2.3.13
 pkgrel=1
 arch=("x86_64")
 pkgdesc="Miscellaneous OpenFX plugins"
