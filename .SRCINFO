@@ -1,14 +1,14 @@
 pkgbase = xlesspass-bin
 	pkgdesc = Allows you to use a single master key to obtain the key of your saved sessions.
-	pkgver = 1.10
+	pkgver = 1.11
 	pkgrel = 1
 	url = https://github.com/daltomi/XLessPass
 	arch = x86_64
 	license = GPL3
 	depends = gtk2
 	conflicts = xlesspass-git
-	source = https://github.com/daltomi/XLessPass/raw/master/bin/xlesspass-v1.10-x64.gtk2.tar.xz
-	md5sums = 2156aa29e3a29720412b47590f5547b7
+	source = https://github.com/daltomi/XLessPass/raw/master/bin/xlesspass-v1.11-x64.gtk2.tar.xz
+	md5sums = 940ae6a3da9921cd16baf678ff4a0806
 
 pkgname = xlesspass-bin
 
