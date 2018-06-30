@@ -1,6 +1,6 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='myrddin'
-pkgver='0.2.0'
+pkgver='0.3.0'
 pkgrel='1'
 pkgdesc='Compiler and tools for the Myrddin programming language.'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 url='https://myrlang.org/'
 source=("${url}/releases/${pkgname}-${pkgver}.tar.xz")
-sha512sums=('ff06f0981c8cf6c1acb4ed66d4fe02dbfeb1334278784e1b219ac60a24adcb5c7761281be155af0c7c26bd27f25532d346ddf79ee86928b14d593e529f4f7ecb')
+sha512sums=('5840d097c8365ebac8af8661d1db253dd91a092c82300e559d83d57e75c51c941c72c8d537eb64e1cfbc1b0fa233db068486711c06af289061710ff4c0f3bef0')
 install=myrddin.install
 
 build() {
