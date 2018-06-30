@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.3.beta7.r0.g010ba97de0
+pkgver=8.3.beta8.r0.g6bccacc656
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -37,7 +37,7 @@ makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhom
 source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-env.patch package.patch latte-count.patch sagemath-python3-notebook.patch test-optional.patch
         r-no-readline.patch fes02.patch sagemath-threejs.patch sagemath-ignore-warnings.patch sagemath-cremona.patch
-        sagemath-networkx2.patch sagemath-scipy-1.0.patch sagemath-singular-4.1.1.patch sagemath-lcalc-c++11.patch
+        sagemath-scipy-1.0.patch sagemath-singular-4.1.1.patch sagemath-lcalc-c++11.patch
         pari-ratpoints.patch::"https://github.com/sagemath/sage/commit/83458400.patch")
 sha256sums=('SKIP'
             '50992e8421595aee3fe84663cbc7417d8d010cbcc824851032f24930653c2950'
@@ -50,7 +50,6 @@ sha256sums=('SKIP'
             '2d13b15ad2d1511bb3d752a261497060a8901882b1c2fa9813219781b7a71d83'
             'a4a6c87b46ff23b89608aca66d00427334502e8bfb5dfe68b94497d19be1c7ae'
             '71cc42d168545d460bc7f67a30486ff1534093e2b4deeb83deda8ff5bd081e7b'
-            'c65d9259df0e416ab74fd8c269df7d10d620b973ffe5583038d3433316c67a32'
             '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
             '11a68f156647ba9f38cb01b2a5e4f9a6a78f6297f2a5a65fbfdfe32d4be69d0c'
             '5114c912f821900e5bfae1e2cfeb7984de946d0b23e1182b0bf15be1d803dfd0'
@@ -95,8 +94,6 @@ prepare(){
   patch -p1 -i ../fes02.patch
 # use Features to detect Cremona databases https://trac.sagemath.org/ticket/24718
   patch -p1 -i ../sagemath-cremona.patch
-# adapt to networkx 2 changes https://trac.sagemath.org/ticket/24374
-  patch -p1 -i ../sagemath-networkx2.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env sage-python23|#!/usr/bin/env python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
