@@ -1,6 +1,6 @@
 pkgbase = perl6-cro-http
 	pkgdesc = HTTP (including HTTPS and HTTP/2) support for the Cro library for building distributed systems in Perl 6
-	pkgver = 0.7.5
+	pkgver = 0.7.6.1
 	pkgrel = 1
 	url = https://github.com/croservices/cro-http
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = perl6-cro-http
 	depends = perl6-json-fast
 	depends = perl6-json-jwt
 	depends = perl6-oo-monitors
-	source = perl6-cro-http-0.7.5.tar.gz::https://codeload.github.com/croservices/cro-http/tar.gz/release-0.7.5
-	sha256sums = 53b71d9de2233f7e38b191e26da1be516a7db0499f4135897c8c9bd09e12a85e
+	source = perl6-cro-http-0.7.6.1.tar.gz::https://codeload.github.com/croservices/cro-http/tar.gz/release-0.7.6.1
+	sha256sums = 773c75b266786b49ac8927ecb3f2f2878dd617d1ed69b59c5610a9cfc703b5a1
 
 pkgname = perl6-cro-http
 
