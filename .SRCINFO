@@ -1,6 +1,6 @@
 pkgbase = perl6-cro-zeromq
 	pkgdesc = ZeroMQ support for the Cro library for building distributed systems in Perl 6
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://github.com/croservices/cro-zeromq
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = perl6-cro-zeromq
 	depends = perl6
 	depends = perl6-cro-core
 	depends = perl6-net-zmq
-	source = perl6-cro-zeromq-0.7.5.tar.gz::https://codeload.github.com/croservices/cro-zeromq/tar.gz/release-0.7.5
-	sha256sums = e743ae4764041617607fb597eb50a95184fc6dd06db82b35aa4085ffae979d7c
+	source = perl6-cro-zeromq-0.7.6.tar.gz::https://codeload.github.com/croservices/cro-zeromq/tar.gz/release-0.7.6
+	sha256sums = 4efd0d178075418da75be523a6c124706367d3ba1e250a265626b921ef74c3fb
 
 pkgname = perl6-cro-zeromq
 
