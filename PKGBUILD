@@ -2,12 +2,13 @@
 
 pkgname=tantum
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Double-entry accounting system"
 arch=('any')
 depends=('mktxn'
          'perl6'
          'perl6-config-toml'
+         'perl6-file-path-resolve'
          'perl6-file-presence')
 checkdepends=('perl')
 makedepends=('git')

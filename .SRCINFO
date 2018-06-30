@@ -1,7 +1,7 @@
 pkgbase = tantum
 	pkgdesc = Double-entry accounting system
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atweiden/tantum
 	arch = any
 	groups = perl6
@@ -11,6 +11,7 @@ pkgbase = tantum
 	depends = mktxn
 	depends = perl6
 	depends = perl6-config-toml
+	depends = perl6-file-path-resolve
 	depends = perl6-file-presence
 	source = tantum-0.0.1::git+https://github.com/atweiden/tantum
 	source = git+https://github.com/atweiden/txn-examples
