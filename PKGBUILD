@@ -3,7 +3,7 @@
 pkgbase=python-braintree
 pkgname=(python-braintree python2-braintree)
 pkgver=3.46.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Braintree Python Library"
 arch=('any')
 url="https://www.braintreepayments.com/docs/python"
