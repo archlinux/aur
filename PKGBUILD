@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/tmux-plugins/tpm"
 license=('MIT')
 groups=()
-depends=('tmux>=1.9','bash')
+depends=('tmux>=1.9' 'bash')
 makedepends=('git')
 source=("https://github.com/tmux-plugins/tpm")
 md5sums=('SKIP')
