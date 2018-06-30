@@ -3,7 +3,7 @@
 
 _pkgname=exaile
 pkgname=${_pkgname}-git
-pkgver=4.0.0.beta3+0+g3612b1d7
+pkgver=4.0.0+rc0+8+g0cdcb61d
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
 arch=('x86_64' 'i686')
