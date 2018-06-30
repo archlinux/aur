@@ -2,11 +2,12 @@
 
 pkgname=mktxn
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Double-entry accounting ledger packager"
 arch=('any')
 depends=('perl6'
          'perl6-config-toml'
+         'perl6-file-path-resolve'
          'perl6-file-presence'
          'perl6-txn-parser'
          'perl6-txn-remarshal')
