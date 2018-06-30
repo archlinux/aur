@@ -16,7 +16,8 @@ pkgver() {
 package() {
         cd $srcdir/$pkgname/
         install -Dm755 lib/vgui.so $pkgdir/usr/lib/vgui.so
-        cp -r include "$pkgdir/usr/"
+	mkdir $pkgdir/usr/include
+        cp -r include "$pkgdir/usr/include/vgui"
 }
 
 md5sums=('SKIP')
