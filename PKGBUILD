@@ -3,13 +3,13 @@
 _pkgname=vala-panel
 pkgname=${_pkgname}-git
 _cmakename=cmake-vala
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.51
+pkgrel=1
 pkgdesc="Gtk3 panel for compositing window managers"
 url="https://gitlab.com/vala-panel-project/vala-panel"
 arch=('i686' 'x86_64')
 license=('LGPL3')
-depends=('gtk3' 'libwnck3' 'libpeas' 'gobject-introspection')
+depends=('gtk3' 'libwnck3')
 makedepends=('cmake' 'vala')
 provides=('vala-panel=${pkgver}')
 optdepends=('vala-panel-appmenu-valapanel: Global Menu'
