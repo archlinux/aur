@@ -1,14 +1,16 @@
-# Maintainer: Falk Alexander Seidl <fa@terminal.run>
+# Maintainer: Christopher Davis <brainblastedmods@gmail.com>
+# Submitter: Falk Alexander Seidl <fa@terminal.run>
 
 pkgname=fractal-git
 _gitname=fractal
-pkgver=r582.d6145e8
+pkgver=r840.d1dba64
 pkgrel=1
 pkgdesc="Matrix.org gtk+ client"
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://gitlab.gnome.org/World/fractal"
-depends=('gtk3')
+depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good'
+        'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'gspell')
 conflics=('fractal')
 provides=('fractal')
 makedepends=('gtk3' 'rust' 'pkg-config' 'git' 'meson')
