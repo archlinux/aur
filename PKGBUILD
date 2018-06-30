@@ -2,7 +2,7 @@
 
 pkgname=xmobar-alsa
 pkgver=0.26
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minimalistic Text Based Status Bar compiled with ALSA"
 url="https://hackage.haskell.org/package/xmobar"
 license=('BSD')
@@ -11,10 +11,9 @@ conflicts=('xmobar')
 depends=('haskell-alsa-core>=0.5.0' 'haskell-alsa-mixer>0.2.0.2' 'libxft'
          'libxinerama' 'libxrandr' 'libxpm' 'ghc-libs' 'haskell-x11'
          'haskell-x11-xft' 'haskell-utf8-string' 'haskell-network-uri'
-         'haskell-hinotify' 'haskell-stm' 'haskell-parsec' 'haskell-mtl'
-         'haskell-regex-base' 'haskell-regex-compat' 'haskell-http'
-         'haskell-dbus0.10' 'haskell-libmpd' 'haskell-iwlib' 'wireless_tools'
-         'haskell-text')
+         'haskell-hinotify' 'haskell-regex-base' 'haskell-regex-compat'
+         'haskell-http' 'haskell-dbus0.10' 'haskell-libmpd' 'haskell-iwlib'
+         'wireless_tools')
 makedepends=('ghc')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jaor/xmobar/archive/${pkgver}.tar.gz)
 sha512sums=('c67c1552f7183a6f33b472f19686cda41cca27c0de89a8d0dcb1f8ea008aea85a143d75608d4392a1a1c9933737a6cbe881cff9ddd13f632d581cd0e10ca8d4d')
