@@ -1,8 +1,9 @@
 # Maintainer: Shajil K Joshy <shajilkrazy@gmail.com>
 pkgname=theeram
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Malayalam Dictionary based on Olam."
+url="https://nandakumar.co.in/apps/theeram/"
 license=('GPL3')
 depends=('glibc' 'gtk3' 'libnotify' 'libxml2')
 arch=(x86_64)
