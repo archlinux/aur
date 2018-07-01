@@ -1,0 +1,11 @@
+pkgbase = reason-cli
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://reasonml.github.io/
+	arch = any
+	depends = nodejs
+	depends = npm
+	options = !strip
+
+pkgname = reason-cli
+
