@@ -5,20 +5,19 @@
 pkgname=lib32-libsidplay
 _pkgname=libsidplay
 pkgver=1.36.59
-pkgrel=4
+pkgrel=5
 pkgdesc="A library for playing SID music files, lib32."
 arch=('x86_64')
 url="http://critical.ch/distfiles/"
 license=('GPL')
 options=('!libtool')
 depends=("${_pkgname}" "lib32-gcc-libs")
-source=("http://critical.ch/distfiles/${_pkgname}-${pkgver}.tgz"
+source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${_pkgname}/${pkgver}-11/${_pkgname}_${pkgver}.orig.tar.gz"
 	"libsidplay-1.36.59-gcc43.patch"
 	"g++-6_build.patch")
 md5sums=('37c51ba4bd57164b1b0bb7b43b9adece'
          'c24d7bca2639f4fee03c40c7dcaadfee'
          '4fbea288f7f427818462343e33794356')
-
 
 prepare() {
 cd ${_pkgname}-${pkgver}
