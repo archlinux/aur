@@ -1,0 +1,16 @@
+pkgbase = theeram
+	pkgdesc = Malayalam Dictionary based on Olam.
+	pkgver = 0.9.0
+	pkgrel = 1
+	install = theeram.install
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = gtk3
+	depends = libnotify
+	depends = libxml2
+	source = https://launchpadlibrarian.net/328067651/theeram_0.9.0_amd64.deb
+	md5sums = 6217c800260667bb671a290ad0f0f957
+
+pkgname = theeram
+
