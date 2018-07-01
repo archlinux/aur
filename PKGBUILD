@@ -4,14 +4,14 @@
 
 pkgname=edb-debugger
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EDB (Evan's Debugger) is a Qt5 based binary mode debugger with the goal of having usability on par with OllyDbg."
 arch=('i686' 'x86_64')
 url='http://www.codef00.com/projects#debugger'
 license=('GPL2')
 depends=('qt5-xmlpatterns' 'qt5-svg' 'capstone>=3.0')
 makedepends=('boost>=1.35.0' 'cmake')
-optdepends=('graphviz>=2.38.0')
+optdepends=('graphviz')
 source=("https://github.com/eteran/edb-debugger/releases/download/$pkgver/edb-debugger-$pkgver.tgz"
         'edb.desktop'
         'plugin_path.patch')
