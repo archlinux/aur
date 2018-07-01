@@ -1,7 +1,8 @@
 pkgbase = theeram
 	pkgdesc = Malayalam Dictionary based on Olam.
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://nandakumar.co.in/apps/theeram/
 	install = theeram.install
 	arch = x86_64
 	license = GPL3
