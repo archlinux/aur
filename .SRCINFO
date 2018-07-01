@@ -1,7 +1,7 @@
 pkgbase = opentoonz
 	pkgdesc = 2D animation software based on Toonz Studio Ghibli Version.
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://opentoonz.github.io
 	arch = x86_64
 	license = BSD
@@ -9,18 +9,19 @@ pkgbase = opentoonz
 	makedepends = boost-libs
 	makedepends = cmake
 	makedepends = git
+	makedepends = pkgconf
 	makedepends = qt5-tools
 	depends = cblas
 	depends = freeglut
 	depends = glew
 	depends = libmypaint
-	depends = lzo
 	depends = qt5-multimedia
 	depends = qt5-script
+	depends = qt5-svg
 	depends = sdl2
 	depends = superlu
 	conflicts = opentoonz-git
-	source = git+https://github.com/opentoonz/opentoonz.git#tag=v1.2.0
+	source = git+https://github.com/opentoonz/opentoonz.git#tag=v1.2.1
 	source = opentoonz.desktop
 	source = opentoonz.png
 	md5sums = SKIP

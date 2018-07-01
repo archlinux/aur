@@ -1,15 +1,15 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=opentoonz
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='2D animation software based on Toonz Studio Ghibli Version.'
 url='https://opentoonz.github.io'
 license=('BSD')
 arch=('x86_64')
 conflicts=('opentoonz-git')
-depends=('cblas' 'freeglut' 'glew' 'libmypaint' 'lzo' 'qt5-multimedia' 'qt5-script' 'sdl2' 'superlu')
-makedepends=('boost' 'boost-libs' 'cmake' 'git' 'qt5-tools')
+depends=('cblas' 'freeglut' 'glew' 'libmypaint' 'qt5-multimedia' 'qt5-script' 'qt5-svg' 'sdl2' 'superlu')
+makedepends=('boost' 'boost-libs' 'cmake' 'git' 'pkgconf' 'qt5-tools')
 source=(
   "git+https://github.com/opentoonz/opentoonz.git#tag=v${pkgver}"
   "${pkgname}.desktop"
