@@ -1,7 +1,7 @@
 pkgbase = hid-lg-g710-plus-dkms-git
 	pkgdesc = Linux dkms kernel module to allow use of extra keys on the Logitech g710+ (logitech-g710-linux-driver)
 	pkgver = r19.ecd2099
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/Wattos/logitech-g710-linux-driver
 	install = hid-lg-g710-plus-dkms.install
 	arch = i686
