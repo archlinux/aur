@@ -34,14 +34,11 @@ package() {
   cp -dpr --no-preserve=ownership "usr/share/icons" "${pkgdir}/usr/share"
   chmod -R 755 "${pkgdir}/usr/share/icons"
 
-  install -d "${pkgdir}/opt/${_pkgname}"
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/share/applications"
-
   # Install to /opt/appimage/
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm755 "${_pkgname}.AppImage" "${pkgdir}/opt/appimages/${_pkgname}.AppImage"
   
   # Create Link in /usr/bin/
+  install -d "${pkgdir}/usr/bin"
   ln -s "/opt/appimages/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
