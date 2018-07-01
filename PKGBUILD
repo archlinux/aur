@@ -7,7 +7,7 @@ arch=('any')
 url='https://forge.fusiondirectory.org/projects/schema2ldif'
 license=('BSD')
 
-source=("http://repos.fusiondirectory.org/sources/schema2ldif/{pkgname}-${pkgver}.tar.gz"
+source=("http://repos.fusiondirectory.org/sources/schema2ldif/${pkgname}-${pkgver}.tar.gz"
         'default-path-for-ldap-schema-manager.patch')
 md5sums=('bc4639b540f210a6afcf114fdfae56b6'
          '35cab7886fe2fd592e414099db1d500d')
