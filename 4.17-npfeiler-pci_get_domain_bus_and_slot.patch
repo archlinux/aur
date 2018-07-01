@@ -1,0 +1,24 @@
+--- archive_files/common/lib/modules/fglrx/build_mod/kcl_pci.c	2018-07-01 21:02:02.000000000 +0200
++++ archive_files2/common/lib/modules/fglrx/build_mod/kcl_pci.c	2018-07-01 21:05:54.346745135 +0200
+@@ -59,7 +59,9 @@
+ {
+     struct pci_dev* pci_dev;
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,23)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,17,0)
++	pci_dev = pci_get_domain_bus_and_slot(0, busnum, PCI_DEVFN(devnum, funcnum));
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,23)
+     pci_dev = pci_get_bus_and_slot(busnum, PCI_DEVFN(devnum, funcnum));
+ #else
+     pci_dev = pci_find_slot(busnum, PCI_DEVFN(devnum, funcnum));
+@@ -96,7 +98,9 @@
+ KCL_PCI_DevHandle ATI_API_CALL KCL_PCI_GetDevHandle(
+     KCL_TYPE_U32 bus, KCL_TYPE_U32 slot)
+ {
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,23)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,17,0)
++    return (KCL_PCI_DevHandle)pci_get_domain_bus_and_slot(0, bus, slot);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,23)
+     return (KCL_PCI_DevHandle)pci_get_bus_and_slot(bus, slot);
+ #else
+     return (KCL_PCI_DevHandle)pci_find_slot(bus, slot);
