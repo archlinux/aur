@@ -1,20 +1,24 @@
 # Maintainer: Que Quotion ( quequotion@bugmenot.com )
+# Contributor: bartus ( aur\at\bartus.33mail.com )
 
 pkgname=makepkg-optimize2
 pkgver=2
-pkgrel=1
-pkgdesc='Supplemental build and packaging optimizations for makepkg (v2)'
-arch=('i686' 'x86_64')
+pkgrel=2
+pkgdesc='Supplemental build and packaging optimizations for makepkg'
+arch=('any')
 license=('GPL')
-url='https://projects.archlinux.org/pacman.git/'
+url='https://bbs.archlinux.org/viewtopic.php?id=210350'
 conflicts=('makepkg-optimize')
 depends=('pacman-buildenv_ext-git')
 optdepends=('upx' 'optipng' 'nodejs-svgo' 'graphite')
 backup=(etc/makepkg-optimize.conf)
-source=({pgo,lto,graphite}.sh.in
-        {upx,optipng,svgo}.sh.in
-        {buildenv,destdirs,pkgopts{,-param}}_ext.conf
-        'compress-param_max.conf')
+_buildenv_ext=({pgo,lto,graphite}.sh.in)
+_tidy=({upx,optipng,svgo}.sh.in)
+_conf=({buildenv,destdirs,pkgopts{,-param}}_ext.conf 'compress-param_max.conf')
+source=(${_buildenv_ext[@]}
+        ${_tidy[@]}
+        ${_conf[@]}
+        )
 sha512sums=('cc885a45311f60f3512d562ca6502ec7a38440383bae4df82c6cb34f5fe4ff8f7fe9c627bea0aadd32c34ea531ab4acc50a04271d1dc0b807a3e3f34b3f29289'
             '566681dfc0a84f6b3f654250bb0967bfe13563ad6dcae13d9cc6e30b359f34544c5f473e3b23973e0406e405c7047d866d6459bf999c0579ff43b36d1615bfe0'
             '4cda8968bf9e2a1cd7f20987183b91be8becec190c7a56a5d47fecb1da373077190af0c7be627338160c371d4b3c68cb12b76783e9118de29df30a285f9e5bd9'
@@ -33,6 +37,7 @@ prepare() {
 
   # How to check for the unlikely possiblity that the directory was changed?
   sed -i "s|@libmakepkgdir@|/usr/share/makepkg|g"  *.sh.in
+  for file in *.sh.in; do mv $file ${file%.in}; done
 
   #Comment on additional BUIDENV options
   sed -i "/#-- sign/r buildenv_ext.conf" makepkg-optimize.conf
@@ -51,19 +56,12 @@ prepare() {
 }
 
 package() {
-  mkdir -p $pkgdir/usr/share/makepkg/{buildenv_ext,tidy}/
-
   # BUILDENV extension scripts
-  install -m755 ../pgo.sh.in $pkgdir/usr/share/makepkg/buildenv_ext/pgo.sh
-  install -m755 ../lto.sh.in $pkgdir/usr/share/makepkg/buildenv_ext/lto.sh
-  install -m755 ../graphite.sh.in $pkgdir/usr/share/makepkg/buildenv_ext/graphite.sh
+  install -m755 -D -t ${pkgdir}/usr/share/makepkg/buildenv_ext/ ${_buildenv_ext[@]%.in}
 
   # Supplemental Tidy scripts
-  install -m755 ../optipng.sh.in $pkgdir/usr/share/makepkg/tidy/optipng.sh
-  install -m755 ../svgo.sh.in $pkgdir/usr/share/makepkg/tidy/svgo.sh
-  install -m755 ../upx.sh.in $pkgdir/usr/share/makepkg/tidy/upx.sh
+  install -m755 -D -t ${pkgdir}/usr/share/makepkg/tidy/ ${_tidy[@]%.in}
 
   # Separate config file
-  mkdir -p $pkgdir/etc/
-  install -m644 makepkg-optimize.conf $pkgdir/etc/
+  install -m644 -D -t ${pkgdir}/etc/ makepkg-optimize.conf
 }
