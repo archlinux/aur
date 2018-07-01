@@ -1,0 +1,7 @@
+# we create a unique user that does not conflict with the
+# one created by plex-media-server(-plexpass) AUR package(s).
+u pplex - "Plex Media Player" /usr/lib/plexmediaplayer
+m pplex audio
+m pplex video
+m pplex network
+m pplex optical
