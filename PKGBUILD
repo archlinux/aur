@@ -2,7 +2,7 @@
 
 pkgbase=linux-surfacepro3-git
 _srcname=linux
-pkgver=4.18rc2.r223.g1904148a361a07fb2d
+pkgver=4.18rc2.r298.g883c9ab9eb595f8542
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -15,22 +15,23 @@ source=(
   # standard config files for mkinitcpio ramdisk
   "${pkgbase}.preset"
   "config" "config.x86_64" "config.sp3"
-  "touchscreen_multitouch_fixes1.patch"
-  "touchscreen_multitouch_fixes2.patch"
-  "kvm.patch")
+  "0001-HID-multitouch-add-MT_QUIRK_NOT_SEEN_MEANS_UP-to-MT_.patch"
+  "0002-HID-multitouch-don-t-check-HID_GROUP_MULTITOUCH_WIN_.patch"
+  "0003-HID-multitouch-drop-reports-containing-invalid-value.patch"
+  "0004-HID-multitouch-remove-unneeded-else-conditional-case.patch")
 sha256sums=('SKIP'
             '31d109a2f5864d865b3ce3c310158b2e9ae77f9c424f2af5a7e45548d62a2eb3'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
             '56152d1f7cac31d0a9a7414e950106c3945d5de8d50bc75cf7385fa46078b1de'
             'f3d9407345f2dce4966d2ffbc45d3d83d6f9fdcbac1efe83e8816b63e20d09b0'
-            'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
-            '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
-            '80ea7d3afaa333572d79fbf39c0370641faea3a013f76747a7465c3a96a58be6')
+            '82f1b3fd8d59ca406225c9915e3799d9bafad440a211eb50fcca0cefbb8ecb2a'
+            '28ccd02a460f65af19655d505e3fb37a12497093d70da06f58f5084c0fa1ebd9'
+            '1778e4076654d857e994062c0f92fa3528bae5595d235ec8b51f55f7c14b036b'
+            'b2b2e6d9037d04c168311c25e6b4d2295d1e153f132782c6397341d105edbafd')
 
 _sp3config="y"
 # _makenconfig="y"
 _interactive="y"
-_kvmkillable_patch="n"
 _touchscreen_patch="n"
 
 _kernelname="${pkgbase#linux}"
@@ -47,14 +48,9 @@ prepare() {
   # These patches work around buggy hardware implementations
   # in the surface pro 3 touchscreen module.
   if [[ "$_touchscreen_patch" == y ]]; then
-    patch -p1 -F5 -i "$srcdir/touchscreen_multitouch_fixes1.patch"
-    patch -p1 -F5 -i "$srcdir/touchscreen_multitouch_fixes2.patch"
-  fi
-
-  # This patch replaces the TASK_UNINTERRUPTIBLE
-  # wait implementation with a TASK_KILLABLE one.
-  if [[ "$_kvmkillable_patch" == y ]]; then
-    patch -p1 -F5 -i "$srcdir/kvm.patch"
+    for i in "$srcdir/"000*.patch; do
+      patch -p1 <"$i"
+    done
   fi
 
   ## If sp3config='y' use personal config as a base

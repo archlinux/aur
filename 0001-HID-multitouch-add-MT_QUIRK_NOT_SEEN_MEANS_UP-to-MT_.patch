@@ -1,0 +1,44 @@
+From 958e450a066289c94ba03429166c972c54be6fb3 Mon Sep 17 00:00:00 2001
+Message-Id: <958e450a066289c94ba03429166c972c54be6fb3.1530402641.git.joeypabalinas@gmail.com>
+In-Reply-To: <cover.1530402641.git.joeypabalinas@gmail.com>
+References: <cover.1530402641.git.joeypabalinas@gmail.com>
+From: Joey Pabalinas <joeypabalinas@gmail.com>
+To: linux-input@vger.kernel.org
+CC: linux-kernel@vger.kernel.org
+CC: Jiri Kosina <jikos@kernel.org>
+CC: Benjamin Tissoires <benjamin.tissoires@redhat.com>
+CC: Daniel Martin <consume.noise@gmail.com>
+CC: Joey Pabalinas <joeypabalinas@gmail.com>
+Date: Sat, 30 Jun 2018 13:13:16 -1000
+Subject: [PATCH 1/4] HID: multitouch: add MT_QUIRK_NOT_SEEN_MEANS_UP to MT_CLS_WIN_8 quirks
+
+The firmware found in the touch screen of the Surface Pro 3 is slightly
+buggy and occasionally doesn't send lift off reports for contacts; add
+MT_QUIRK_NOT_SEEN_MEANS_UP to .quirks to compensate for the missed
+reports.
+
+Signed-off-by: Joey Pabalinas <joeypabalinas@gmail.com>
+
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/hid/hid-multitouch.c b/drivers/hid/hid-multitouch.c
+index 45968f7970f87775fa..a793076139d7d0db9b 100644
+--- a/drivers/hid/hid-multitouch.c
++++ b/drivers/hid/hid-multitouch.c
+@@ -242,11 +242,12 @@ static struct mt_class mt_classes[] = {
+ 		.quirks = MT_QUIRK_ALWAYS_VALID |
+ 			MT_QUIRK_IGNORE_DUPLICATES |
+ 			MT_QUIRK_HOVERING |
+ 			MT_QUIRK_CONTACT_CNT_ACCURATE |
+ 			MT_QUIRK_STICKY_FINGERS |
+-			MT_QUIRK_WIN8_PTP_BUTTONS },
++			MT_QUIRK_WIN8_PTP_BUTTONS |
++			MT_QUIRK_NOT_SEEN_MEANS_UP },
+ 	{ .name = MT_CLS_EXPORT_ALL_INPUTS,
+ 		.quirks = MT_QUIRK_ALWAYS_VALID |
+ 			MT_QUIRK_CONTACT_CNT_ACCURATE,
+ 		.export_all_inputs = true },
+ 	{ .name = MT_CLS_WIN_8_DUAL,
+-- 
+2.18.0
+
