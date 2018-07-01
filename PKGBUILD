@@ -2,7 +2,7 @@
 
 _gitname=snail
 pkgname=snail-git
-pkgver=0.2.0.r0.g6c3bfb4
+pkgver=0.2.0.r10.gec01021
 pkgrel=1
 pkgdesc="Parasitic network manager"
 url="https://github.com/kpcyrd/snail"
@@ -41,6 +41,7 @@ package() {
   install -d "$pkgdir/etc/snail/scripts"
   install -Dm644 contrib/snail.conf -t "$pkgdir/etc/snail"
   install -Dm644 contrib/snail@.service -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 contrib/snail-tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/snail.conf"
 
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 docs/snail.7 \
