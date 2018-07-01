@@ -1,0 +1,20 @@
+post_install() {
+  echo "
+Welcome to the filebrowser!
+For the first time you need to initialize, for example:
+
+-----------------------------------------------------------------------------
+$ sudo mkdir -p /usr/share/filebrowser/storage
+$ sudo touch /usr/share/filebrowser/database.db
+$ sudo cp /etc/filebrowser/example.config.json /etc/filebrowser/config.json
+$ sudo systemctl enable --now filebrowser@config
+-----------------------------------------------------------------------------
+
+More: https://github.com/filebrowser/filebrowser
+"
+}
+
+post_remove() {
+  echo "You need to remove database and config by yourself."
+}
+# vim: set ts=2 sw=2 et:
