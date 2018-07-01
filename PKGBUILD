@@ -5,39 +5,33 @@
 
 pkgbase=mesa-noglvnd
 pkgname=('opencl-mesa-noglvnd' 'vulkan-intel-noglvnd' 'vulkan-radeon-noglvnd' 'libva-mesa-driver-noglvnd' 'mesa-vdpau-noglvnd' 'mesa-noglvnd' 'mesa-libgl-noglvnd')
-pkgver=18.0.2
+pkgver=18.1.3
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
-             'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
-             'libomxil-bellagio' 'libclc' 'clang' 'libunwind' 'lm_sensors' 'meson') # 'libglvnd')
+             'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols'
+             'elfutils' 'llvm' 'libomxil-bellagio' 'libclc' 'clang' 'libunwind' 'lm_sensors' 'meson') # 'libglvnd')
 url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE
-        0002-glvnd-fix-gl-dot-pc.patch
-        0004-meson-Add-library-versions-to-swr-drivers.patch
-        0005-meson-Version-libMesaOpenCL-like-autotools-does.patch)
-sha512sums=('77d24d01c4c22596d28421aeb74932ff232730a4f556ae1a2e8777ece2876e4e352679575385c065505df4a2a83d2c1cf30db92dcf88038417e36a2768332d7e'
+        0001-glvnd-fix-gl.pc.patch)
+sha512sums=('f6e5b81a80a309a36a04759d18364d3c71c48d1cb88f87b2f5432ef003092a22046e88ce2082031d5d52b60ba36f585d8df52e06ecc7a5158079936236f36887'
             'SKIP'
-            'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7'
-            '75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028'
-            '0f5da6e48885713c7ddef9e5715e178e0a499bcb622d7f19e15b9e4b4647331d7bf14829218b6ab80f17bae90fd95b8df6a0a81203d8081686805ca5329531ff'
-            'd3c01f61a0a0cc2f01e66e0126ad8b6386d4a53c1dc1b3b134800e4cd25507e458bac860cbed10cf4b46b04e8d50aba233870587b89c058fffd57436b48289bf')
+			'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7'
+			'2f40198eff47664c831c56e8a63f60a4d1b815cf697e6bdb0be39e6d9c5df043857f6264b7cd2ccf46c07626186c565144e80f4214b5f7936ef7024c47201437')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
               '946D09B5E4C9845E63075FF1D961C596A7203456'  # Andres Gomez <tanty@igalia.com>
-              'E3E8F480C52ADD73B278EE78E1ECBE07D7D70895') # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>"
+              'E3E8F480C52ADD73B278EE78E1ECBE07D7D70895'  # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>"
+              'A5CC9FEC93F2F837CB044912336909B6B25FADFA'  # Juan A. Suarez Romero <jasuarez@igalia.com>
+              '71C4B75620BC75708B4BDB254C95FAAB3EB073EC') # Dylan Baker <dylan@pnwbakers.com>
 
 prepare() {
   cd ${srcdir}/mesa-${pkgver}
 
   # glvnd support patches - from Fedora
   # non-upstreamed ones
-  patch -Np1 -i ../0002-glvnd-fix-gl-dot-pc.patch
-
-  # Upstreamed meson fixes
-  patch -Np1 -i ../0004-meson-Add-library-versions-to-swr-drivers.patch
-  patch -Np1 -i ../0005-meson-Version-libMesaOpenCL-like-autotools-does.patch
+  patch -Np1 -i ../0001-glvnd-fix-gl.pc.patch
 }
 
 build() {
@@ -53,7 +47,7 @@ build() {
     -D egl=true \
     -D gallium-extra-hud=true \
     -D gallium-nine=true \
-    -D gallium-omx=true \
+    -D gallium-omx=bellagio \
     -D gallium-opencl=icd \
     -D gallium-va=true \
     -D gallium-vdpau=true \
@@ -180,7 +174,6 @@ package_mesa-noglvnd() {
   _install fakeinstall/usr/lib/d3d
   _install fakeinstall/usr/lib/lib{gbm,glapi}.so*
   _install fakeinstall/usr/lib/libOSMesa.so*
-  _install fakeinstall/usr/lib/libwayland*.so*
   _install fakeinstall/usr/lib/libxatracker.so*
   _install fakeinstall/usr/lib/libswrAVX*.so*
 
@@ -189,6 +182,10 @@ package_mesa-noglvnd() {
 
   # in vulkan-headers
   rm -rv fakeinstall/usr/include/vulkan
+
+  # in wayland
+  rm -v fakeinstall/usr/lib/libwayland-egl.so*
+  rm -v fakeinstall/usr/lib/pkgconfig/wayland-egl.pc
 
   install -m755 -d ${pkgdir}/usr/lib/mesa
   # move libgl/EGL/glesv*.so to not conflict with blobs - may break .pc files ?
