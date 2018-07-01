@@ -1,7 +1,6 @@
-# Maintainer: Eugene Lamskoy
 pkgname=golded-plus-git
 pkgver=r1529.1c03dbf
-pkgrel=1
+pkgrel=2
 pkgdesc="golded-plus Fidonet Mail Reader/Editor"
 arch=('i686' 'x86_64')
 url="http://bbconf.sourceforge.net/"
@@ -30,14 +29,13 @@ prepare() {
 }
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
     cd "$pkgname"
-    mkdir -m 755 -p ${pkgdir}/usr/share/doc/goldedplus/examples/{config,template}
-    mkdir -m 755 -p ${pkgdir}/usr/share/goldedplus/cfgs/{charset,colorset}
+    mkdir -m 655 -p ${pkgdir}/usr/share/goldedplus/{config,template,charset,colorset}
     install -d ${pkgdir}/usr/bin
     install bin/*lnx bin/golded ${pkgdir}/usr/bin/
     install -d ${pkgdir}/usr/man/man1
@@ -45,14 +43,10 @@ package() {
     install -m 644 ${pkgdir}/usr/man/man1/golded.1 ${pkgdir}/usr/man/man1/gedlnx.1
     install -m 644 ${pkgdir}/usr/man/man1/goldnode.1 ${pkgdir}/usr/man/man1/gnlnx.1
     install -m 644 ${pkgdir}/usr/man/man1/rddt.1 ${pkgdir}/usr/man/man1/rddtlnx.1
-    install -m 644 -d ${pkgdir}/usr/share/doc/goldedplus
-    install -m 644 -d ${pkgdir}/usr/share/doc/goldedplus/examples
-    install -m 644 cfgs/config/* ${pkgdir}/usr/share/doc/goldedplus/examples/config
-    install -m 644 cfgs/template/* ${pkgdir}/usr/share/doc/goldedplus/examples/template
-    install -m 644 -d ${pkgdir}/usr/share/goldedplus/
-    install -m 644 cfgs/charset/* ${pkgdir}/usr/share/goldedplus/cfgs/charset
-    install -m 644 cfgs/colorset/* ${pkgdir}/usr/share/goldedplus/cfgs/colorset
+    install -m 644 cfgs/config/* ${pkgdir}/usr/share/goldedplus/config
+    install -m 644 cfgs/template/* ${pkgdir}/usr/share/goldedplus/template
+    install -m 644 cfgs/charset/* ${pkgdir}/usr/share/goldedplus/charset
+    install -m 644 cfgs/colorset/* ${pkgdir}/usr/share/goldedplus/colorset
 }
-
 
 md5sums=('SKIP')
