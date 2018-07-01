@@ -1,0 +1,11 @@
+pkgbase = katana
+	pkgdesc = VFX package for asset based look development and lighting
+	pkgver = 3.0v1
+	pkgrel = 1
+	url = https://www.foundry.com
+	arch = x86_64
+	license = custom
+	options = !strip
+
+pkgname = katana
+
