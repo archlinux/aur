@@ -1,0 +1,16 @@
+pkgbase = cloudconvert-cli-git
+	pkgdesc = Command Line Interface for CloudConvert
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cloudconvert/cloudconvert-cli
+	arch = any
+	license = unknown
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	depends = coffeescript
+	source = git+https://github.com/cloudconvert/cloudconvert-cli.git
+	sha512sums = SKIP
+
+pkgname = cloudconvert-cli-git
+
