@@ -2,7 +2,7 @@
 
 pkgname=snooscraper-git
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A small program to scrape subreddits, reddit accounts and other sites, downloading content matching your criteria"
 arch=('all')
 url="https://notabug.org/odg/snooscraper"
