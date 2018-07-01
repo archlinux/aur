@@ -2,7 +2,7 @@
 
 _pkgname=lxqt-desktop
 pkgname=$_pkgname-git
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="The LXQt desktop"
 arch=("i686" "x86_64")
@@ -13,6 +13,7 @@ depends=(
 	# components
 	"lxqt-about-git"
 	"lxqt-admin-git"
+	"lxqt-archiver-git"
 	"lxqt-config-git"
 	"lxqt-globalkeys-git"
 	"lxqt-notificationd-git"
@@ -29,6 +30,7 @@ depends=(
 optdepends=(
 	"lximage-qt-git: The LXQt image viewer"
 	"openbox: Recommended window manager"
+	"obconf-qt: Openbox configuration tool. Qt port of ObConf"
 	"sddm-git: Recommended display manager"
 	"qterminal-git: Pure Qt terminal"
 	"featherpad-git: Pure Qt text editor"
