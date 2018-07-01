@@ -1,13 +1,13 @@
 # Maintainer: Erik Westrup <erik.westrup@gmail.com>
 pkgname=zscreen
 pkgver=20150725
-pkgrel=1.4
+pkgrel=1.5
 pkgdesc="Scrot and imgur/s3 upload zenity gui"
 arch=('any')
 url="https://github.com/ChrisZeta/Scrot-and-imgur-zenity-GUI"
 license=()
 makedepends=('git')
-depends=('bash' 'curl' 'scrot' 's3cmd')
+depends=('bash' 'curl' 'scrot' 's3cmd' 'zenity')
 provides=('zscreen' 'zimgur' 'zs3upload')
 
 
