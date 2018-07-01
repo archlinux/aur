@@ -5,7 +5,7 @@
 
 pkgbase=lib32-mesa-noglvnd
 pkgname=('lib32-vulkan-intel-noglvnd' 'lib32-vulkan-radeon-noglvnd' 'lib32-libva-mesa-driver-noglvnd' 'lib32-mesa-vdpau-noglvnd' 'lib32-mesa-noglvnd' 'lib32-mesa-libgl-noglvnd')
-pkgver=18.0.2
+pkgver=18.1.3
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto'
@@ -16,29 +16,23 @@ url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE
-        0001-glvnd-fix-gl-dot-pc.patch
-        0004-meson-Add-library-versions-to-swr-drivers.patch
-        0005-meson-Version-libMesaOpenCL-like-autotools-does.patch)
-sha512sums=('77d24d01c4c22596d28421aeb74932ff232730a4f556ae1a2e8777ece2876e4e352679575385c065505df4a2a83d2c1cf30db92dcf88038417e36a2768332d7e'
+        0001-glvnd-fix-gl.pc.patch)
+sha512sums=('f6e5b81a80a309a36a04759d18364d3c71c48d1cb88f87b2f5432ef003092a22046e88ce2082031d5d52b60ba36f585d8df52e06ecc7a5158079936236f36887'
             'SKIP'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7'
-            '75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028'
-            '0f5da6e48885713c7ddef9e5715e178e0a499bcb622d7f19e15b9e4b4647331d7bf14829218b6ab80f17bae90fd95b8df6a0a81203d8081686805ca5329531ff'
-            'd3c01f61a0a0cc2f01e66e0126ad8b6386d4a53c1dc1b3b134800e4cd25507e458bac860cbed10cf4b46b04e8d50aba233870587b89c058fffd57436b48289bf')
+            '2f40198eff47664c831c56e8a63f60a4d1b815cf697e6bdb0be39e6d9c5df043857f6264b7cd2ccf46c07626186c565144e80f4214b5f7936ef7024c47201437')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
               '946D09B5E4C9845E63075FF1D961C596A7203456'  # Andres Gomez <tanty@igalia.com>
-              'E3E8F480C52ADD73B278EE78E1ECBE07D7D70895') # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>"
+              'E3E8F480C52ADD73B278EE78E1ECBE07D7D70895'  # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>"
+              'A5CC9FEC93F2F837CB044912336909B6B25FADFA'  # Juan A. Suarez Romero <jasuarez@igalia.com>
+              '71C4B75620BC75708B4BDB254C95FAAB3EB073EC') # Dylan Baker <dylan@pnwbakers.com>
 
 prepare() {
   cd mesa-${pkgver}
 
   # glvnd support patches - from Fedora
   # non-upstreamed ones
-  patch -Np1 -i ../0001-glvnd-fix-gl-dot-pc.patch
-
-  # Upstreamed meson fixes
-  patch -Np1 -i ../0004-meson-Add-library-versions-to-swr-drivers.patch
-  patch -Np1 -i ../0005-meson-Version-libMesaOpenCL-like-autotools-does.patch
+  patch -Np1 -i ../0001-glvnd-fix-gl.pc.patch
 }
 
 build() {
@@ -53,14 +47,14 @@ build() {
     -D b_ndebug=true \
     -D platforms=x11,wayland,drm,surfaceless \
     -D dri-drivers=i915,i965,r100,r200,nouveau \
-    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr \
+    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast \
     -D vulkan-drivers=amd,intel \
     -D swr-arches=avx,avx2 \
     -D dri3=true \
     -D egl=true \
     -D gallium-extra-hud=true \
     -D gallium-nine=true \
-    -D gallium-omx=false \
+    -D gallium-omx=disabled \
     -D gallium-opencl=disabled \
     -D gallium-va=true \
     -D gallium-vdpau=true \
@@ -165,12 +159,14 @@ package_lib32-mesa-noglvnd() {
   _install fakeinstall/usr/lib32/d3d
   _install fakeinstall/usr/lib32/lib{gbm,glapi}.so*
   _install fakeinstall/usr/lib32/libOSMesa.so*
-  _install fakeinstall/usr/lib32/libwayland*.so*
   _install fakeinstall/usr/lib32/libxatracker.so*
-  _install fakeinstall/usr/lib32/libswrAVX*.so*
 
 #   # in libglvnd
 #   rm -v fakeinstall/usr/lib32/libGLESv{1_CM,2}.so*
+
+  # in wayland
+  rm -v fakeinstall/usr/lib32/libwayland-egl.so*
+  rm -v fakeinstall/usr/lib32/pkgconfig/wayland-egl.pc
 
   install -m755 -d ${pkgdir}/usr/lib32/mesa
   # move libgl/EGL/glesv*.so to not conflict with blobs - may break .pc files ?
