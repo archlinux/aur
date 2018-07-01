@@ -1,6 +1,6 @@
 pkgbase = gcc-python-plugin
 	pkgdesc = GCC plugin that embeds CPython inside the compiler
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = https://gcc-python-plugin.readthedocs.io/en/latest/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = gcc-python-plugin
 	makedepends = python2-lxml
 	makedepends = python2-pygments
 	makedepends = python2-six
-	source = gcc-python-plugin-0.15.tar.gz::https://github.com/davidmalcolm/gcc-python-plugin/archive/v0.15.tar.gz
-	sha256sums = fcb7596616fcb07f611b992f7603ca80f85181b23692693d1097977913419e74
+	source = gcc-python-plugin-0.16.tar.gz::https://github.com/davidmalcolm/gcc-python-plugin/archive/v0.16.tar.gz
+	sha256sums = d2bdada56ba16134dc6b107439408af356b69dcdadea163e71ecda55a8cda8b8
 
 pkgname = gcc-python-plugin
 	depends = python-lxml

@@ -2,7 +2,7 @@
 
 pkgbase=gcc-python-plugin
 pkgname=('gcc-python-plugin' 'gcc-python2-plugin' 'gcc-python-plugin-c-api' 'gcc-python-plugin-doc')
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="GCC plugin that embeds CPython inside the compiler"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('python-lxml' 'python-pygments' 'python-six' 'python-sphinx'
              'python2-lxml' 'python2-pygments' 'python2-six')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/davidmalcolm/gcc-python-plugin/archive/v${pkgver}.tar.gz")
-sha256sums=('fcb7596616fcb07f611b992f7603ca80f85181b23692693d1097977913419e74')
+sha256sums=('d2bdada56ba16134dc6b107439408af356b69dcdadea163e71ecda55a8cda8b8')
 
 prepare() {
     cp -a "gcc-python-plugin-$pkgver" "gcc-python2-plugin-$pkgver"
