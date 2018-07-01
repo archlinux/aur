@@ -1,7 +1,7 @@
 pkgbase = sielo-browser
 	pkgdesc = A simple, customizable and fast web browser
-	pkgver = 1.16.06
-	pkgrel = 2
+	pkgver = 1.16.07
+	pkgrel = 1
 	url = https://sielo.app
 	arch = x86_64
 	license = custom:MIT
@@ -13,8 +13,8 @@ pkgbase = sielo-browser
 	depends = qt5-location
 	depends = qt5-declarative
 	replaces = sielo-navigateur
-	source = https://sielo.app/Linux/sielo-browser-1.16.06.tar.gz
-	md5sums = 8ab4fa8a4c4680f4a1e82a8d8955ba02
+	source = https://sielo.app/Linux/sielo-browser-1.16.07.tar.gz
+	md5sums = 54253f41327ef8d83befbf4bff4cb147
 
 pkgname = sielo-browser
 
