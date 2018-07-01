@@ -18,4 +18,6 @@ sha256sums=('fb6ad22365c2e4cbec065fd26551646405d0eed651be929e5d826dec78049dcb')
 package() {
   PIP_CONFIG_FILE=/dev/null pip2 install --isolated --root=$pkgdir --ignore-installed --no-deps --no-warn-script-location *.whl
   python2 -O -m compileall $pkgdir/lib/python2.7/site-packages/keyring
+
+  mv $pkgdir/usr/bin/keyring2 $pkgdir/usr/bin/keyring2
 }
