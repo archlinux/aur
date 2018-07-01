@@ -1,0 +1,28 @@
+pkgbase = brother-mfc-j5930dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J5930DW printer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	arch = i686
+	arch = x86_64
+	license = custom:Brother Industries
+	depends = cups
+	depends = ghostscript
+	depends = psutils
+	depends = a2ps
+	depends = sed
+	depends = grep
+	optdepends = ttf-dejavu: printing text files from lpr
+	optdepends = brscan4: Scanner support
+	source = http://download.brother.com/welcome/dlf103006/mfcj5930dwlpr-1.0.0-0.i386.rpm
+	source = http://download.brother.com/welcome/dlf103030/mfcj5930dwcupswrapper-1.0.0-0.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	sha256sums = e4fb55da5f3b2acf81498b9629fb96f97fb7dcf6b677b15e547c9cb8557e136b
+	sha256sums = a5719c502c236961f08cb26b43ea727f8962153afeb717ca996d631b81015521
+	sha256sums = 2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9
+	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j5930dw
+

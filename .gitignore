@@ -1,0 +1,5 @@
+test/
+*.deb
+*.rpm
+*.tar.xz
+*.sig
