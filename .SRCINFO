@@ -1,4 +1,4 @@
-pkgbase = snooscraper-git
+pkgbase = snooscraper
 	pkgdesc = A small program to scrape subreddits, reddit accounts and other sites, downloading content matching your criteria
 	pkgver = 0.1
 	pkgrel = 1
