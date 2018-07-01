@@ -1,11 +1,11 @@
 pkgbase = python2-keyring
 	pkgdesc = Provides an easy way to access the system keyring service from python.
 	pkgver = 13.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaraco/keyring
 	arch = any
 	license = MIT
-	makedepends = python2-pip
+	makedepends = python2-setuptools-scm
 	depends = python2-entrypoints
 	depends = python2-secretstorage
 	provides = python2-keyring
