@@ -39,7 +39,14 @@ build() {
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DGPU_TARGET=${_GPU_TARGET} \
     -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
-    -DCMAKE_INSTALL_PREFIX=/opt/magma ..
+    -DCMAKE_INSTALL_PREFIX=/opt/magma \
+    ..
+  if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
+    cmake \
+      -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
+      -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc-7 \
+      ..
+  fi
   make magma magma_sparse
   popd
   mkdir build-static && pushd build-static
@@ -48,7 +55,14 @@ build() {
     -DBUILD_SHARED_LIBS:BOOL=OFF \
     -DGPU_TARGET=${_GPU_TARGET} \
     -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
-    -DCMAKE_INSTALL_PREFIX=/opt/magma ..
+    -DCMAKE_INSTALL_PREFIX=/opt/magma \
+    ..
+  if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
+    cmake \
+      -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
+      -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc-7 \
+      ..
+  fi
   make magma magma_sparse
   popd
 }
