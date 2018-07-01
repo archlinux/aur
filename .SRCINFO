@@ -1,7 +1,7 @@
 pkgbase = acmetool-bin
 	pkgdesc = An easy-to-use command line tool for automatically acquiring certificates from ACME servers - Precompiled cgo binary from official repository
 	pkgver = 0.0.67
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hlandau/acme
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=acmetool-bin
 pkgver=0.0.67
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use command line tool for automatically acquiring certificates from ACME servers - Precompiled cgo binary from official repository"
 arch=('x86_64')
 url="https://github.com/hlandau/acme"
@@ -16,5 +16,7 @@ package() {
   # add bin
   cd "${srcdir}/acmetool-v${pkgver}-linux_amd64_cgo"
   install -Dm755 bin/acmetool "${pkgdir}/usr/bin/acmetool"
-  # TODO: add man page
+
+  # add man page
+  install -Dm644 doc/acmetool.8 "${pkgdir}/usr/share/man/man8/acmetool.8"
 }
