@@ -1,0 +1,5 @@
+d /var/lib/unifi 0750 unifi unifi
+d /var/lib/unifi/data 0750 unifi unifi
+d /var/lib/unifi/run 0750 unifi unifi
+d /var/lib/unifi/work 0750 unifi unifi
+d /var/log/unifi 0750 unifi unifi

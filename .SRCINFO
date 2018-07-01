@@ -14,6 +14,7 @@ pkgbase = unifi
 	source = mongod
 	source = unifi.service
 	source = unifi.sysusers
+	source = unifi.tmpfiles
 	source = LICENSE
 	sha512sums = cf7145eeeed779893c1c9709eef7364154503dd1232f88cce38facc748426d19c5422decbd5e3a80d857a2d82969258045944b491c7b228467d8e4a7c29a0ec1
 	sha512sums = ea729c0053bf82e5561ce5f4fb7dba90cbe1b84631f5c257371883090ae5ccc58bd212cb93c9df51e687cdb2b5cdfa8c9e5bfc22bc7d58dc23c9c4dce3a686b8
