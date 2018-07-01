@@ -1,6 +1,6 @@
 pkgbase = cbmc-git
 	pkgdesc = Bounded Model Checking for ANSI-C
-	pkgver = cbmc.5.8.r2000.994037085
+	pkgver = 5.8.r4266.g6fd77f4ad
 	pkgrel = 1
 	url = http://www.cprover.org/cbmc/
 	arch = i686

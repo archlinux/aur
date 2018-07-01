@@ -1,7 +1,7 @@
 # Maintainer: Python Shell <pythonshell@yeah.net>
 
 pkgname=cbmc-git
-pkgver=cbmc.5.8.r2000.994037085
+pkgver=5.8.r4266.g6fd77f4ad
 pkgrel=1
 pkgdesc="Bounded Model Checking for ANSI-C"
 arch=('i686' 'x86_64')
@@ -12,12 +12,17 @@ makedepends=('git' 'patch' 'make' 'perl-libwww' 'perl-lwp-protocol-https')
 provides=('cbmc-git')
 conflicts=('cbmc' 'cbmc-git' 'cbmc-bin')
 source=('cbmc-git::git+https://github.com/diffblue/cbmc.git')
+noextract=()
 md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    git describe --long | sed 's/^cbmc-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+#prepare() {
+#    cd "$srcdir/${pkgname%-git}"
+#}
 
 build() {
     cd "${srcdir}/${pkgname}/src/"
