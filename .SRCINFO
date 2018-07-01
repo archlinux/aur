@@ -1,7 +1,7 @@
 pkgbase = nextcloud-client-appimage-daily
 	pkgdesc = Nextcloud desktop client (official daily AppImage build)
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://download.nextcloud.com/desktop/daily/Linux/
 	arch = x86_64
 	arch = i686
