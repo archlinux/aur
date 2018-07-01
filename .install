@@ -1,7 +1,9 @@
 post_install() {
+  mkdir -p  /etc/pacman.d/hooks
   sudo ln -s /usr/lib/pacnew-chaser/pacnew-chaser.hook /etc/pacman.d/hooks/pacnew-chaser.hook
 }
 post_upgrade() {
+  mkdir -p  /etc/pacman.d/hooks
   [ -f /etc/pacman.d/hooks/pacnew-chaser.hook ]  || sudo ln -s /usr/lib/pacnew-chaser/pacnew-chaser.hook /etc/pacman.d/hooks/pacnew-chaser.hook
 }
 

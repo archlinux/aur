@@ -1,7 +1,7 @@
 pkgbase = pacnew-chaser
 	pkgdesc = manage .pacnew files, compare and merge (qt gui) - dev version
 	pkgver = 0.9.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.manjaro.fr/forum/viewtopic.php?f=28&t=10284
 	install = .install
 	arch = x86_64
