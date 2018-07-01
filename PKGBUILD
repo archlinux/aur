@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname=myrddin
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='Compiler and tools for the Myrddin programming language.'
 arch=(i686 x86_64)
 conflicts=('myrddin-git')
@@ -9,11 +9,12 @@ license=('MIT')
 depends=('glibc')
 url='https://myrlang.org/'
 source=("${url}/releases/${pkgname}-${pkgver}.tar.xz")
-sha512sums=('5840d097c8365ebac8af8661d1db253dd91a092c82300e559d83d57e75c51c941c72c8d537eb64e1cfbc1b0fa233db068486711c06af289061710ff4c0f3bef0')
+sha512sums=('99f8d933572b2e3750103c1d801a29575971242c347c7fb042a5114d2cf3fe7cca2b927190ba13728b46573e00f414015cc0ef04bca8db3c67427261600ddd95')
 
 build() {
 	cd mc
 	./configure --prefix=/usr
+	make bootstrap
 	make
 }
 
