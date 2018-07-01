@@ -1,7 +1,7 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 pkgname=camouflage
 pkgver=20180630.62_42d88a2
-pkgrel=1
+pkgrel=2
 pkgdesc="camouflage"
 arch=('i686' 'x86_64')
 license=('MPL')
