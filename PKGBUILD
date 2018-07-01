@@ -1,7 +1,7 @@
 # Maintainer: Holger Rauch <holger dot rauch at posteo dot de>
 
 pkgname=payara5-micro
-pkgver=5.181
+pkgver=5.182
 pkgrel=1
 pkgdesc="A Java EE application server, derived from GlassFish Open Source Edition. (Micro Edition)"
 url="http://www.payara.fish/"
@@ -11,13 +11,13 @@ conflicts=("$pkgname" "payara51")
 depends=("java-environment>=8")
 arch=("any")
 options=(!strip)
-source=("payara-${pkgver}-micro.zip::https://info.payara.fish/cs/c/?cta_guid=21e00628-5d9e-400a-9805-1fc99fe0de87&placement_guid=0c1037e0-adaf-4401-b888-05088602db6a&portal_id=334594&redirect_url=APefjpE_uK4aYmUfSbouXcqyPeKesliLSxqzwJIvL1ZO5ZcuNrB1CVmFm8jKOPQ7Nzx9DJRdKkh_m73mmssZeyNtJin9Lx_n9voGC4Qy6HK6WZPmkRg6BUcvLUcwNbXp6TFIAXv62C8IcIaInIhxPptyI4k_LwW9stxb4RV9_TztI0LQy86uqaxylMkFpbGUEKThy05I5uj_lByBYRdffpktE4wfWw_YZmT4DjV7CW8-Wl8kyEZ9Almr44vo1DazXyMPntZLOOfl&hsutk=620a9ed62186b8571bcc43e5e4075f89&canon=https%3A%2F%2Fwww.payara.fish%2Fdownloads&click=457f94b8-1cc5-4529-ac81-59c081b09534&utm_referrer=https%3A%2F%2Fwww.payara.fish%2Fabout&__hstc=229474563.620a9ed62186b8571bcc43e5e4075f89.1527986372648.1527986372648.1527986372648.1&__hssc=229474563.3.1527986372648&__hsfp=794664957"
+source=("payara-${pkgver}-micro.zip::https://info.payara.fish/cs/c/?cta_guid=21e00628-5d9e-400a-9805-1fc99fe0de87&placement_guid=0c1037e0-adaf-4401-b888-05088602db6a&portal_id=334594&redirect_url=APefjpHl6OFpYkrA2fSOjKKox_15up4bGrXmRTDxqXeDriYTCemsa3QOKpI_m61vAcWvPDB2WzeDtbkELlkcCK2U-LXCELFwojuT6JFInAF2cXDzV0-rpSPdTU_w8-Ycwr1sKW_uKjIcpgsr_htpC3sHqrmSVdrJibTLG-jEf99YsxEQFRdHKHChrj6HuI9EdPT4y6Xf7BXVMXMNBsasdG_SVutZDL8Z3lMSVMKPrXuAcAhiNOxhK9z2-UYVBbobNXx-W1ozIaGh&hsutk=ce9c20bff94221fd231baf88a9f6dba6&canon=https%3A%2F%2Fwww.payara.fish%2Fdownloads&click=28b80d6f-ac3e-4ac1-b64f-2d0100a482c9&utm_referrer=https%3A%2F%2Fwww.payara.fish%2F&__hstc=229474563.ce9c20bff94221fd231baf88a9f6dba6.1530483205899.1530483205899.1530483205899.1&__hssc=229474563.2.1530483205900&__hsfp=439309316"
         "payara5-micro.service")
 
-sha256sums=('d1b9fee97fa01df802dbdb169ecbdfc7f4dad59792daace81ec6f7573b01a8cc'
+sha256sums=('ea4f3fd745dad9a219a25dd83d56f035ae7f2de427548802e008977c9893e969'
             'be71a959519aa009dcee2f1f6422acb47710099651d6c778391ea736cbc22873')
 
-sha512sums=('690255fc6cf1eb807a70dbe04aa430107f854025c59c2857dac61e0113fefd9316fd07e5962c3d5f9223c2ef09a48a8ca3be93125aac738cdc83e5702c5f3dbf'
+sha512sums=('ede2528dfdd9e7879cd3001469ac3b66b92db698aff1ce81c27aa98409e26114c75104dd1146800904619a26c3edadb5f4ecfd559763c2edcc1b19bc99f49dd1'
             '3449a64d3c3dcee6e035b45198deb077520c7fc6b963fcf7468430f15514ddabc68ae2f2f8c20ce2a55d58bbb6203b34bacf543fc5e31b4df2642666c26aa3bb')
 
 package() {
