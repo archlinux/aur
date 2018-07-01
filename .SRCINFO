@@ -1,0 +1,18 @@
+pkgbase = python-black
+	pkgdesc = The uncompromising Python code formatter.
+	pkgver = 18.6b1
+	pkgrel = 1
+	url = https://github.com/ambv/black
+	arch = any
+	license = custom:MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-attrs
+	depends = python-click
+	depends = python-toml
+	depends = python-appdirs
+	source = https://files.pythonhosted.org/packages/source/b/black/black-18.6b1.tar.gz
+	sha256sums = 0c07b68fc6fc4df8b09873e81893d7b77d52794fa3431d8843b590bc33956105
+
+pkgname = python-black
+
