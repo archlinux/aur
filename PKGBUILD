@@ -2,7 +2,7 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.17
+pkgver=0.9.18
 pkgrel=1
 changelog=.CHANGELOG
 conflicts=("${pkgname}-git")
@@ -14,7 +14,7 @@ sha512sums=('SKIP'
             '52d49562cd9be4eec76b464153af1cce2211fdbd6113a6a60df042f7e8f7e6a8f1942df883dfaaa6c1bbfea004c4154d884dfa767e25fa3fadf9c58be1103fe6')
 
 _pkgname=${pkgname}
-# template start; name=lix; version=0.6;
+# template start; name=lix; version=0.7;
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
@@ -27,7 +27,8 @@ build()
 	cd "${srcdir}/${_pkgname}"
 	_r=0
 	
-	# force an upgrade of the dependencies to the local folder, without --cache=local they get added to the users home directory
+	# force an upgrade of the dependencies to the local folder, without
+	# --cache=local they get added to the users home directory
 	dub upgrade --cache=local
 	
 	# add local dependencies to search path
@@ -41,7 +42,8 @@ build()
 	# force FHS compatibility with '-b releaseXDG'
 	dub build -f -b releaseXDG --cache=local || _r=$?
 	
-	# remove local dependencies from search path so dub don't find them later again
+	# remove local dependencies from search path so dub don't find them
+	# later again
 	dub remove-local allegro-*/allegro
 	dub remove-local derelict-enet-*/derelict-enet
 	dub remove-local derelict-util-*/derelict-util
@@ -61,7 +63,8 @@ check()
 	cd "${srcdir}/${_pkgname}"
 	_r=0
 	
-	# force an upgrade of the dependencies to the local folder, without --cache=local they get added to the users home directory
+	# force an upgrade of the dependencies to the local folder, without
+	# --cache=local they get added to the users home directory
 	dub upgrade --cache=local
 	
 	# add local dependencies to search path
@@ -74,7 +77,8 @@ check()
 	
 	dub test --cache=local || _r=$?
 	
-	# remove local dependencies from search path so dub don't find them later again
+	# remove local dependencies from search path so dub don't find them
+	# later again
 	dub remove-local allegro-*/allegro
 	dub remove-local derelict-enet-*/derelict-enet
 	dub remove-local derelict-util-*/derelict-util
@@ -92,16 +96,43 @@ check()
 package()
 {
 	cd "${srcdir}"
-	install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	
+	# install application entry
+	install -Dm644 "${_pkgname}.desktop" \
+		"${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	
 	cd "${_pkgname}"
-	install -Dm644 "data/images/${_pkgname}_logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
-	install -Dm644 "doc/copying.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+	
+	# install application entry icon
+	install -Dm644 "data/images/${_pkgname}_logo.svg" \
+		"${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+	
+	# install license text
+	install -Dm644 "doc/copying.txt" \
+		"${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+		
+	# install binary
 	install -Dm755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 	
-	# https://lists.archlinux.org/pipermail/aur-general/2011-November/016777.html
-	mkdir -p "${pkgdir}/usr/share/${_pkgname}" "${pkgdir}/usr/share/doc/${_pkgname}"
-	cp -dpr --no-preserve=ownership "doc/." "${pkgdir}/usr/share/doc/${_pkgname}/"
-	cp -dpr --no-preserve=ownership "data" "images" "levels" "${srcdir}/music" "${pkgdir}/usr/share/${_pkgname}"
+	# remove unimportant files
+	# https://raw.githubusercontent.com/SimonN/LixD/master/doc/build/package.txt
+	rm -r "${srcdir}/${_pkgname}/doc/build"
+	
+	#https://lists.archlinux.org/pipermail/aur-general/2011-November/016777.html
+	# make directories
+	mkdir -p "${pkgdir}/usr/share/${_pkgname}" \
+		"${pkgdir}/usr/share/doc/${_pkgname}"
+
+	# copy documentary
+	cp -dpr --no-preserve=ownership "doc/." \
+		"${pkgdir}/usr/share/doc/${_pkgname}/"
+	
+	# copy game files
+	cp -dpr --no-preserve=ownership \
+		"data" \
+		"images" \
+		"levels" \
+		"${srcdir}/music" \
+		"${pkgdir}/usr/share/${_pkgname}"
 }
 # template end;

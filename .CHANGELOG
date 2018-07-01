@@ -1,6 +1,48 @@
 Version history
 ===============
 
+0.9.18
+------
+
+2018-07-01
+
+lemforum: Behind Bars 7/10->8/12 to remove backroute. One Step Off
+80/80->20/20. Segmentation Fault 20/40->21/40. Merge Sort, hollow terrain
+to remove red herrings. Rhapsody in Blue, aligned traps to terrain
+(removes 1-pixel gaps). Removed obviously unassignable
+imploders/exploders/cubers according to save requirement.
+
+Rubix's levels: Lost Underground, cap reachable ceiling more clearly.
+Removed obviously unassignable imploders/exploders/cubers.
+
+Tiles: Raymanni's improved carnival exit, cleaner large proxima/tiles/orange2.
+
+Fix #23: Don't show obsolete replay arrows/pickaxes/sounds when you
+framestep after a quickload.
+
+Fix #346: When you watch a replay, interrupt, and win, the solution
+replay is auto-saved.
+
+Singleplayer exits the level after nuking instead of prompting to
+framestep back.
+
+On display creation, the mouse cursor centers on the Lix window. This prevents
+edge scrolling when watching replays from the command line.
+
+Fix #340: For translations, use format strings (containing %s, %d with runtime
+checks) instead of several concatenated translated strings.
+
+Fix #341: Translate the output of the replay verifier.
+
+Fix #342: Better grammar, fewer Denglish (English words in the German
+translation even though good German words exist), add umlauts. Thanks to
+Wuzzy for this patch!
+
+In displayed strings, use typographical quotation marks. In file/shell output,
+use double quotes both to begin and end instead of asymmetric quotes.
+
+
+
 0.9.17
 ------
 
