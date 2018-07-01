@@ -4,10 +4,10 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com>
 
 pkgname=spotify-stable
-pkgver=1.0.77.338
-_commit=g758ebd78
-_ver_x86_64=41
-_ver_i686=41
+pkgver=1.0.80.480
+_commit=g51b03ac3
+_ver_x86_64=13
+_ver_i686=13
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ depends_i686=('libcurl-compat')
 optdepends=('ffmpeg-compat-54: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
             'libnotify: Desktop notifications')
-options=('!strip' '!upx')
+options=('!strip')
 provides=('spotify')
 conflicts=('spotify')
 
@@ -40,10 +40,10 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://repository-origin.spoti
 sha512sums=('73124cb25e831534c94232ad607d6cf7716c6fb5e0cbb7ad4cd0976a45f6fa9efdc50c58109cd9594021476c9879d6b1a90cdb4ecbb03d5ad89ae52c82fc473a'
             '999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
-            '3cb97fbe3d2543943dab18225fc12a4cf935f975b3ec16f21bb6f003d00755c0a2976da32667e39a44ad825a9394991d9f589a60b5821fbbbb6de2350efceab7'
-            '4a2ab5a8260de386742ef9f4a10c8e6a98b22ede61eb49f282db3e03feb0254998b2165648d06047b1f18160e1a22a89f7c89ef0d3b9efeed5004d33f95bddd3')
-sha512sums_x86_64=('c0c08d4f6af8ffef3d9784e176c6112975ce56c7eec961df11821f4ac52785dc090e794c25874fce004da5f3e42979402e921ef12fbe1cfc80f02034448724db'
-                   '0207e31bf36446a49244ec1473635ab80c234f5e8a73fe75c6e84013921dd898a88748568565dd2a2ffaf4edfc637aa71ed70c058d1b43aa5c0fe1b8f6d18372')
+            '6f12f47c6815d8114900112fe2cb0069f298bf4d7a2d510c37ff29eb30317806924ff38d22fdef9756b11e058b427603a460ad5461fd00e22240dc4b09199da8'
+            'SKIP')
+sha512sums_x86_64=('a46b1d28e6c40dbe9a86a38794186f2cdf31341fff953eaa5a5fdbb37c27c00ffe14a918b2552df0996d2842f009e6700bf8683e0667fc671dfd5b343251f20e'
+                   '76268ab6cc7b5f84ca4595a020fcce609494dadcdc1f58106291ba204a9d5e5d911184c3508f0d216791ef6335158b77603fa1654437616b21c532f967012d70')
 validpgpkeys=('0DF731E45CE24F27EEEB1450EFDC8610341D9410') # Spotify <tux@spotify.com>
 
 # Spotify uses different names for the arch
