@@ -1,0 +1,21 @@
+pkgbase = ngrok-stable
+	pkgdesc = A tunneling, reverse proxy for developing and understanding networked, HTTP services. Stable version
+	pkgver = 2.2.8
+	pkgrel = 1
+	url = https://ngrok.com
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	source_i686 = https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.tgz
+	md5sums_i686 = 3dd4ad624a9646a7605599fa114bd24d
+	source_x86_64 = https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.tgz
+	md5sums_x86_64 = 37e649abaf66cb4ebe8a3f2830cbc2a6
+	source_armv7h = https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.tgz
+	md5sums_armv7h = 4afc884d700e33444b01aebfe263c354
+	source_aarch64 = https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.tgz
+	md5sums_aarch64 = f9544077ee1d0351d87fa58e190f496c
+
+pkgname = ngrok-stable
+
