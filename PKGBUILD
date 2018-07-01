@@ -21,7 +21,7 @@ set -u
 _internal_pkgver='R'
 _package='reporting'
 pkgname="eclipse-${_package}"
-pkgver='4.7.0'; _color='oxygen'
+pkgver='4.8.0'; _color='photon'
 pkgrel='1'
 pkgdesc='an IDE for Java and other languages - JEE + BIRT package'
 arch=('i686' 'x86_64')
@@ -37,8 +37,8 @@ source=('http://svgicons.o7a.net/unofficial/eclipse.svg')
 source_x86_64=("http://mirror.cc.columbia.edu/pub/software/eclipse/|technology/epp/downloads/release/${_color}/${_internal_pkgver}/eclipse-${_package}-${_color}-${_internal_pkgver}-linux-gtk-x86_64.tar.gz")
 source_i686=("${source_x86_64[@]/-x86_64/}")
 sha256sums=('daac56ff0f7e4d2da534516cdd07b0f0a9dab85cdba7c9df8bb7bbbfa7e937a2')
-sha256sums_i686=('11207ba2f19262a0cd7bfbe871142446aa2e6bee37e0084fbeaa6ca7db217ca1')
-sha256sums_x86_64=('6d8f676d5b761d6c49a72916562624aaf7ca72fb56aec7b4fe5d3149e6af7c85')
+sha256sums_i686=('72e39ead010da73afab88ee1e74a562a0feea39c174ca059b150c629e4af2720')
+sha256sums_x86_64=('e5ccf5546571d809132a9b4bff8d68599b12883ec63c858399027c747a1e1322')
 PKGEXT='.pkg.tar.gz' # xz is only saves 10MB for 3 minutes extra compress time
 
 # https://gcc.gnu.org/mirrors.html
