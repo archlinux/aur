@@ -1,0 +1,28 @@
+diff --git a/src/cairo-ft-font.c b/src/cairo-ft-font.c
+index 3e485c5..36703d1 100644
+--- a/src/cairo-ft-font.c
++++ b/src/cairo-ft-font.c
+@@ -1336,7 +1336,7 @@ _render_glyph_outline (FT_Face                    face,
+ 		       cairo_image_surface_t	**surface)
+ {
+     int rgba = FC_RGBA_UNKNOWN;
+-    int lcd_filter = FT_LCD_FILTER_LEGACY;
++    int lcd_filter = FT_LCD_FILTER_DEFAULT;
+     FT_GlyphSlot glyphslot = face->glyph;
+     FT_Outline *outline = &glyphslot->outline;
+     FT_Bitmap bitmap;
+@@ -1371,13 +1371,13 @@ _render_glyph_outline (FT_Face                    face,
+ 	case CAIRO_LCD_FILTER_NONE:
+ 	    lcd_filter = FT_LCD_FILTER_NONE;
+ 	    break;
+-	case CAIRO_LCD_FILTER_DEFAULT:
+ 	case CAIRO_LCD_FILTER_INTRA_PIXEL:
+ 	    lcd_filter = FT_LCD_FILTER_LEGACY;
+ 	    break;
+ 	case CAIRO_LCD_FILTER_FIR3:
+ 	    lcd_filter = FT_LCD_FILTER_LIGHT;
+ 	    break;
++	case CAIRO_LCD_FILTER_DEFAULT:
+ 	case CAIRO_LCD_FILTER_FIR5:
+ 	    lcd_filter = FT_LCD_FILTER_DEFAULT;
+ 	    break;

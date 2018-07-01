@@ -1,7 +1,7 @@
 pkgname=cairo-ubuntu
 _realpkg=cairo
 pkgver=1.15.12
-pkgrel=3
+pkgrel=4
 pkgdesc="2D graphics library with support for multiple output devices (with ubuntu patches)"
 url="https://cairographics.org/"
 arch=(x86_64)
@@ -13,6 +13,7 @@ makedepends=(librsvg gtk2 poppler-glib libspectre gtk-doc valgrind git)
 _commit=7149686456ec3c481fa1d3dbe76a0dab1e42b519  # tags/1.15.12^0
 source=("cairo::git+https://anongit.freedesktop.org/git/cairo#commit=$_commit"
         utf-8.diff
+        cairo-make-lcdfilter-default.patch
         cairo-respect-fontconfig_pb.patch
         cairo-server-side-gradients.patch
         cairo-webkit-html5-fix.patch)
@@ -30,7 +31,8 @@ prepare() {
   patch -Np1 -i ../cairo-respect-fontconfig_pb.patch
   patch -Np1 -i ../cairo-server-side-gradients.patch
   patch -Np1 -i ../cairo-webkit-html5-fix.patch
-
+  patch -Np1 -i ../cairo-make-lcdfilter-default.patch
+  
   # Update gtk-doc
   cp /usr/share/aclocal/gtk-doc.m4 build/aclocal.gtk-doc.m4
   cp /usr/share/gtk-doc/data/gtk-doc.make build/Makefile.am.gtk-doc
@@ -65,8 +67,10 @@ package() {
   cd $_realpkg
   make DESTDIR="$pkgdir" install
 }
+
 md5sums=('SKIP'
          '46b1abd8e6ff88107680d907b8c247fc'
+         '1ec7560b9f05b5b0a6aca41cfdb8ea93'
          '080eac1ce1b2fa2beb550555d31d29b8'
          '4ffec1c86085da11bf9f56d6bf88fbdf'
          '6080d20e289f5e75cc013e8f40710aa3')
