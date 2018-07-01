@@ -3,7 +3,7 @@
 pkgbase = sony-sketch-ef-font
 	pkgdesc = Sony Sketch EF Font
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ffonts.net/Sony-Sketch-EF.font
 	install = sony-sketch-ef-font.install
 	arch = any
