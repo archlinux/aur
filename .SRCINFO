@@ -8,6 +8,9 @@ pkgbase = ngrok-stable
 	arch = armv7h
 	arch = aarch64
 	license = Apache
+	provides = ngrok=2.2.8
+	conflicts = ngrok
+	conflicts = ngrok-beta
 	source_i686 = https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.tgz
 	md5sums_i686 = 3dd4ad624a9646a7605599fa114bd24d
 	source_x86_64 = https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.tgz

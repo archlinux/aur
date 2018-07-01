@@ -1,8 +1,10 @@
-pkgname=(ngrok-stable)
+pkgname=ngrok-stable
 pkgver=2.2.8
 pkgrel=1
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services. Stable version'
 url='https://ngrok.com'
+conflicts=("ngrok" "ngrok-beta")
+provides=("ngrok=${pkgver}")
 license=('Apache')
 _srcpath="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-"
 source_i686=("${_srcpath}386.tgz")
