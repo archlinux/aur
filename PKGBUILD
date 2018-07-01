@@ -20,8 +20,8 @@ source=("$url/archive/v$_gitver.tar.gz")
 sha256sums=('a6be1bfd2cbfeef33aa8e91fa35720bfad9d4b7dc4a29afb08dfcee451f6c32e')
 
 build() {
-  mkdir -p $srcdir/$pkgname-$_gitver/build
-  cd $srcdir/$pkgname-$_gitver/build
+  mkdir -p "$srcdir"/$pkgname-$_gitver/build
+  cd "$srcdir"/$pkgname-$_gitver/build
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$_gitver/build
+  cd "$srcdir"/$pkgname-$_gitver/build
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
