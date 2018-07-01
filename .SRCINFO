@@ -1,6 +1,6 @@
 pkgbase = pulseeffects
 	pkgdesc = Audio Effects for Pulseaudio Applications
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
 	arch = any
@@ -18,13 +18,12 @@ pkgbase = pulseeffects
 	depends = boost-libs
 	depends = libsigc++
 	optdepends = calf: limiter, compressor exciter, bass enhancer and others
-	optdepends = zam-plugins-git: maximizer
-	optdepends = lsp-plugins-lv2-bin: delay and expander
+	optdepends = zam-plugins: maximizer
 	optdepends = rubberband: pitch shifting
 	optdepends = mda.lv2: loudness
 	options = !emptydirs
-	source = pulseeffects-4.1.1.tar.gz::https://github.com/wwmm/pulseeffects/archive/v4.1.1.tar.gz
-	sha256sums = e8c3591abd75f1658ee83f1b2a2d4faf10fe1aac4e109e22a41b942ee93cc73e
+	source = pulseeffects-4.1.2.tar.gz::https://github.com/wwmm/pulseeffects/archive/v4.1.2.tar.gz
+	sha256sums = 0a7f9f64c444e4b3ba598923f79cf42645d20f705560f1d95c4c8b38d9930c39
 
 pkgname = pulseeffects
 
