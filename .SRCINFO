@@ -1,7 +1,7 @@
 pkgbase = psysh
 	pkgdesc = PsySH is a runtime developer console, interactive debugger and REPL for PHP.
-	pkgver = 0.9.4
-	pkgrel = 4
+	pkgver = 0.9.6
+	pkgrel = 1
 	url = http://psysh.org
 	arch = x86_64
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = psysh
 	depends = php
 	optdepends = mariadb: mysql command support
 	provides = psysh
-	source = https://github.com/bobthecow/psysh/releases/download/v0.9.4/psysh-v0.9.4.tar.gz
-	source = https://raw.githubusercontent.com/bobthecow/psysh/v0.9.4/LICENSE
-	sha256sums = b891e8c306fba92b7ad630d1f5d9a6a6ef98cbb0533a17fd7ddf8e78cda0f140
+	source = https://github.com/bobthecow/psysh/releases/download/v0.9.6/psysh-v0.9.6.tar.gz
+	source = LICENSE-0.9.6::https://raw.githubusercontent.com/bobthecow/psysh/v0.9.6/LICENSE
+	sha256sums = 86cd2248fc10fbc9f43aaa670bb425f0856be53447627addad49887dacaf2c1a
 	sha256sums = ea877138671d7068328bf698de950f09a13429ff49096202414472ffbdeeab66
 
 pkgname = psysh
