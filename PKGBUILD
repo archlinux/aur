@@ -2,7 +2,7 @@
 #Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname=otter-browser-git
-pkgver=0.9.12.r1104.g24e0d7c0
+pkgver=0.9.99.r149.g6d9a7f72b
 pkgrel=1
 pkgdesc='Browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5 - git checkout'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ provides=('otter-browser')
 conflicts=('otter-browser')
 depends=( 'qt5-webkit' 'qt5-multimedia>=5.4' 'qt5-xmlpatterns>=5.4')
 makedepends=('cmake' 'git' 'qt5-declarative>=5.4')
-optdepends=('hunspell>=1.3.0: for spell checking'
+optdepends=('hunspell: for spell checking'
             'qt5-webengine: for experimental backend using the Chromium browser project')
 source=('git://github.com/OtterBrowser/otter-browser.git')
 sha256sums=('SKIP')
