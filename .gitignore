@@ -1,0 +1,8 @@
+# Package files
+*.pkg.tar.xz
+
+# Sources
+noson-app
+pkg
+src
+
