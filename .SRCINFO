@@ -1,0 +1,16 @@
+pkgbase = python-httpsig_cffi
+	pkgdesc = Sign HTTP requests with secure signatures according to the IETF HTTP Signatures specification using Cryptography
+	pkgver = 15.0.0
+	pkgrel = 1
+	url = https://github.com/hawkowl/httpsig_cffi
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	depends = python-cryptography
+	source = https://github.com/hawkowl/httpsig_cffi/archive/v15.0.0.tar.gz
+	sha256sums = d3d700429c4672a87c149e0be4248ec1e5898d689feb9e959529f0d32df72c3f
+
+pkgname = python-httpsig_cffi
+
