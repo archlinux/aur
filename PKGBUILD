@@ -1,7 +1,7 @@
 #
 pkgname=libreoffice-extension-formatting-math-formulas
 _pkgname=faf
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="This extension allows formatting of all (or selected) Math formulas in your document. Works in Writer, Calc, Draw and Impress."
 arch=('any')
@@ -10,8 +10,8 @@ license=('MIT')
 groups=('libreoffice-extensions')
 depends=(libreoffice)
 noextract=("FAF-${pkgver}.oxt")
-source=(https://extensions.libreoffice.org/extensions/formatting-of-all-math-formulas/0-1.6/@@download/file/FAF-0.1.6.oxt)
-sha512sums=('cfc5920faa7b07a660d657e1d1f85d10408135877ccaa49ee5ebebde17abe5747993da13fc7394970c6d644a9ea2e54458c995a04ad384226359dcf42448b44a')
+source=(https://extensions.libreoffice.org/extensions/formatting-of-all-math-formulas/0-1.8/@@download/file/FAF-0.1.8.oxt)
+sha512sums=('90ec126f6fb59f73494fea0d76a61230bb2052677d7c44ddb08fcc451aa07b9c80efb7b0cf6fe2673db756bf8dbc5f529f8e01a1f62c155ca87d35a4c8a157fb')
 
 package() {
 
