@@ -1,6 +1,6 @@
 pkgbase = python-internetarchive
 	pkgdesc = Wrapper for the various Internet Archive APIs (IA-S3, Metadata API, etc)
-	pkgver = 1.7.7
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/jjjake/ia-wrapper
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = python-internetarchive
 	provides = python-internetarchive
 	conflicts = python-internetarchive-git
 	conflicts = python2-internetarchive-git
-	source = python-internetarchive-1.7.7.tar.gz::https://github.com/jjjake/internetarchive/archive/v1.7.7.tar.gz
-	sha256sums = c3e2a87e779b4854b86c5f04d66bd7fbcdc5c7347c998f1332f350bd74256419
+	source = python-internetarchive-1.8.1.tar.gz::https://github.com/jjjake/internetarchive/archive/v1.8.1.tar.gz
+	sha256sums = 9db8b179434521345a93a01e73669b9fd9a8949f8a75b52fcf22f3de865229c7
 
 pkgname = python-internetarchive
 
