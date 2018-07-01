@@ -3,7 +3,7 @@
 pkgname=crow-translate-git
 pkgver=1.0.0.r0.gda2d689
 pkgrel=1
-pkgdesc="A simple and lightweight translator that allows to translate and speak the selected text using the Google Translate API"
+pkgdesc="A simple and lightweight translator that allows to translate and say selected text using the Google Translate API and much more"
 arch=('x86_64')
 url="https://github.com/Shatur95/crow-translate"
 license=('GPL3')
