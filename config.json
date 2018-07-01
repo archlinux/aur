@@ -1,6 +1,11 @@
 {
   "port": 8080,
-  "address": "0.0.0.0",
+  "noAuth": false,
+  "baseURL": "/admin",
+  "address": "127.0.0.1",
+  "alternativeReCaptcha": false,
+  "reCaptchaKey": "",
+  "reCaptchaSecret": "",
   "database": "/usr/share/filebrowser/database.db",
   "log": "stdout",
   "plugin": "",
