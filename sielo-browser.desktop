@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=sielo-browser
+Comment=A simple, customizable and fast web browser
+Exec="/usr/bin/sielo-browser"
+Terminal=false
+Type=Application
+Icon=sielo-browser
