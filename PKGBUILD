@@ -4,7 +4,7 @@
 
 set -u
 pkgname='zoiper'
-pkgver='5.2.16'
+pkgver='5.2.19'
 pkgrel='1'
 pkgdesc='a SIP and IAX2 VoIP softphone'
 arch=('i686' 'x86_64')
