@@ -1,11 +1,12 @@
 [Unit]
-Description=UniFi Controller
+Description=Ubiquiti UniFi Server
 After=network.target
 
 [Service]
 User=unifi
-ExecStart=/usr/bin/java -jar /opt/unifi/lib/ace.jar start
-ExecStop=/usr/bin/java -jar /opt/unifi/lib/ace.jar stop
+WorkingDirectory=/usr/lib/unifi
+ExecStart=/usr/bin/java -jar /usr/lib/unifi/lib/ace.jar start
+ExecStop=/usr/bin/java -jar /usr/lib/unifi/lib/ace.jar stop
 
 [Install]
 WantedBy=multi-user.target
