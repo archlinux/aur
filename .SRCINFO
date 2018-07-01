@@ -1,23 +1,37 @@
 pkgbase = python-dlib
 	pkgdesc = Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques.
-	pkgver = 19.4
+	pkgver = 19.13
 	pkgrel = 1
 	url = http://www.dlib.net/
-	arch = any
+	arch = x84_64
 	license = Boost Software License
+	makedepends = cblas
+	makedepends = cuda
+	makedepends = cudnn
+	makedepends = lapack
+	makedepends = libjpeg-turbo
+	makedepends = libpng
+	makedepends = sqlite
 	makedepends = cmake
 	makedepends = boost
-	optdepends = cblas: for BLAS support
-	optdepends = lapack: for LAPACK support
-	optdepends = libjpeg-turbo: for JPEG support
-	optdepends = libpng: for PNG support
-	optdepends = sqlite: for sqlite support
-	source = http://downloads.sourceforge.net/project/dclib/dlib/v19.4/dlib-19.4.tar.bz2
-	md5sums = 8999c4cbc71e92325fcdbe222e2bf327
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = libx11
+	optdepends = cblas
+	optdepends = cuda
+	optdepends = cudnn
+	optdepends = lapack
+	optdepends = libjpeg-turbo
+	optdepends = libpng
+	optdepends = sqlite
+	source = http://www.dlib.net//files/dlib-19.13.tar.bz2
+	md5sums = 69d806dea72789f1c0f43843f4007776
 
 pkgname = python-dlib
+	depends = libx11
 	depends = python
 
 pkgname = python2-dlib
+	depends = libx11
 	depends = python2
 
