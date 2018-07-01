@@ -1,6 +1,6 @@
 pkgname=golded-plus-git
 pkgver=r1529.1c03dbf
-pkgrel=2
+pkgrel=3
 pkgdesc="golded-plus Fidonet Mail Reader/Editor"
 arch=('i686' 'x86_64')
 url="http://bbconf.sourceforge.net/"
@@ -35,7 +35,7 @@ pkgver() {
 
 package() {
     cd "$pkgname"
-    mkdir -m 655 -p ${pkgdir}/usr/share/goldedplus/{config,template,charset,colorset}
+    mkdir -m 655 -p ${pkgdir}/usr/share/goldedplus/{docs/config/template,docs/etc/templates,charset,colorset}
     install -d ${pkgdir}/usr/bin
     install bin/*lnx bin/golded ${pkgdir}/usr/bin/
     install -d ${pkgdir}/usr/man/man1
@@ -43,10 +43,13 @@ package() {
     install -m 644 ${pkgdir}/usr/man/man1/golded.1 ${pkgdir}/usr/man/man1/gedlnx.1
     install -m 644 ${pkgdir}/usr/man/man1/goldnode.1 ${pkgdir}/usr/man/man1/gnlnx.1
     install -m 644 ${pkgdir}/usr/man/man1/rddt.1 ${pkgdir}/usr/man/man1/rddtlnx.1
-    install -m 644 cfgs/config/* ${pkgdir}/usr/share/goldedplus/config
-    install -m 644 cfgs/template/* ${pkgdir}/usr/share/goldedplus/template
+    cp -r etc ${pkgdir}/usr/share/goldedplus/docs/
+    install -m 644 cfgs/config/* ${pkgdir}/usr/share/goldedplus/docs/config
+    install -m 644 cfgs/template/* ${pkgdir}/usr/share/goldedplus/docs/config/template
     install -m 644 cfgs/charset/* ${pkgdir}/usr/share/goldedplus/charset
     install -m 644 cfgs/colorset/* ${pkgdir}/usr/share/goldedplus/colorset
+    install -m 644 docs/{rusfaq,notework}.utf8 ${pkgdir}/usr/share/goldedplus/docs
+    install -m 644 docs/{tips,linux,notework,tokencfg,tokentpl}.txt ${pkgdir}/usr/share/goldedplus/docs
 }
 
 md5sums=('SKIP')

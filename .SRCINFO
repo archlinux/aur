@@ -1,7 +1,7 @@
 pkgbase = golded-plus-git
 	pkgdesc = golded-plus Fidonet Mail Reader/Editor
 	pkgver = r1529.1c03dbf
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bbconf.sourceforge.net/
 	arch = i686
 	arch = x86_64
