@@ -1,6 +1,6 @@
 # Maintainer: Ammann Max <maximilian.ammann@googlemail.com>
 pkgname=golden-cheetah-git
-pkgver=v3.5.DEV1705X.r70.ac18d98a
+pkgver=v3.5.DEV1806.r1.28e5ef66d
 pkgrel=1
 pkgdesc="Cycling Power Analysis Software. We believe that cyclists and triathletes should be able to download their power data to the
 computer of their choice, analyze it in whatever way they see fit, and share their methods of
@@ -26,10 +26,6 @@ build() {
 
   cd "qwt/"
   cp qwtconfig.pri.in qwtconfig.pri
-  qmake-qt5 QMAKE_DEFAULT_INCDIRS=
-  make -j8
-
-  cd "../kqoauth/"
   qmake-qt5 QMAKE_DEFAULT_INCDIRS=
   make -j8
 
