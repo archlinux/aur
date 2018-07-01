@@ -3,14 +3,14 @@
 # Contributor: janezz55
 
 pkgname=dosbox-binutils
-pkgver=2.29.1
-pkgrel=2
+pkgver=2.30
+pkgrel=3
 pkgdesc="binutils for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils"
 license=('GPL')
 groups=('djgpp')
-depends=('zlib')
+depends=('zlib' 'patch')
 options=('!libtool' '!emptydirs')
 source=("http://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz"
       	"binutils-bfd-djgpp.patch"
