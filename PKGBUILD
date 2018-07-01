@@ -21,7 +21,7 @@ build() {
 
 package() {
   cd $_pkgname-$pkgver
-  python2 setup.py install --root=$pkgdir --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1
 
-  mv $pkgdir/usr/bin/keyring $pkgdir/usr/bin/keyring2
+  mv "$pkgdir"/usr/bin/keyring "$pkgdir"/usr/bin/keyring2
 }
