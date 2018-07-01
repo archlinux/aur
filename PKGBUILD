@@ -31,9 +31,15 @@ build() {
     -DUSE_AVX_INSTRUCTIONS:BOOL=ON \
     -DUSE_SSE2_INSTRUCTIONS:BOOL=ON \
     -DUSE_SSE4_INSTRUCTIONS:BOOL=ON \
-    -DCUDA_HOST_COMPILER='/usr/bin/gcc-7' \
+    -DCUDA_HOST_COMPILER='/opt/cuda/bin/gcc' \
     -DCMAKE_BUILD_TYPE=Release \
     "../${pkgname}-${pkgver}"
+  if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
+    cmake \
+      -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
+      -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc-7 \
+      "../${pkgname}-${pkgver}"
+  fi
   make
 }
 
