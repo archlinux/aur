@@ -1,0 +1,24 @@
+pkgbase = ngrok-beta
+	pkgdesc = A tunneling, reverse proxy for developing and understanding networked, HTTP services. Beta version
+	pkgver = 2.2.9
+	pkgrel = 1
+	url = https://ngrok.com
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	provides = ngrok=2.2.9
+	conflicts = ngrok
+	conflicts = ngrok-stable
+	source_i686 = https://bin.equinox.io/c/6raCnPaTf2c/ngrok-beta-linux-386.tgz
+	md5sums_i686 = 56db2e1f157460d4f8d71318eb276bae
+	source_x86_64 = https://bin.equinox.io/c/6raCnPaTf2c/ngrok-beta-linux-amd64.tgz
+	md5sums_x86_64 = 825507cf6a10c3e37134ab1cce0d121b
+	source_armv7h = https://bin.equinox.io/c/6raCnPaTf2c/ngrok-beta-linux-arm.tgz
+	md5sums_armv7h = fa4d06d6cd868fd2b990c17fdd642bdf
+	source_aarch64 = https://bin.equinox.io/c/6raCnPaTf2c/ngrok-beta-linux-arm64.tgz
+	md5sums_aarch64 = 27f43b218924770b68f2797f97e171a7
+
+pkgname = ngrok-beta
+
