@@ -1,10 +1,10 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=kubernetes
-pkgver=1.10.5
-_contribver=0.7.0
+pkgver=1.11.0
+_contribver=f4ce29dd35b68f538a5845d7e294bbf056d5d215
 pkgrel=1
-pkgdesc="Container Cluster Manager for Docker"
+pkgdesc="Production-Grade Container Scheduling and Management"
 depends=('glibc' 'bash')
 makedepends=('go' 'rsync' 'go-bindata')
 optdepends=('etcd: etcd cluster required to run Kubernetes')
@@ -22,8 +22,8 @@ backup=('etc/kubernetes/apiserver'
         'etc/kubernetes/proxy'
         'etc/kubernetes/scheduler')
 install=kubernetes.install
-sha256sums=('a1a166dca72a4fd8284ff59ebd687ca0f6e3bb6d51266fbd3fdde442678d1568'
-            'f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda'
+sha256sums=('f0b2d8e61860acaf50a9bae0dc36b8bfdb4bb41b8d0a1bb5a9bc3d87aad3b794'
+            '4bd2a2f4fc2a17b78dd53a8f7312760b4028d600d14006a3cdf5768b28b44b27'
             'fb6fce3ef4b793863286dafb5856ce28027427005d6c6fd44162844921ab714b')
 
 prepare() {
