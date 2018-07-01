@@ -1,6 +1,6 @@
 pkgbase = atheme
 	pkgdesc = IRC services
-	pkgver = 7.2.9
+	pkgver = 7.2.10
 	pkgrel = 1
 	url = http://www.atheme.org/atheme/
 	install = atheme.install
@@ -17,9 +17,9 @@ pkgbase = atheme
 	conflicts = atheme-git
 	backup = etc/atheme/atheme.conf
 	backup = etc/atheme/atheme.motd
-	source = https://github.com/atheme/atheme/releases/download/v7.2.9/atheme-7.2.9.tar.bz2
+	source = https://github.com/atheme/atheme/releases/download/v7.2.10/atheme-7.2.10.tar.xz
 	source = atheme.service
-	sha256sums = a87a046aa73fc4a97a11d41cc08c60b835135ba20bb173ca888b40e0d6b54b27
+	sha256sums = e938ee42cac245bbe2818c34e87876f9d6d711df6b15638fe2fb5ad0e442f9bb
 	sha256sums = ee9ad7658434451184872c21c7fd38196d22d1dfb6b1f37bcfaf8c363d50296f
 
 pkgname = atheme
