@@ -5,7 +5,7 @@
 # Contributor: <gucong43216@gmail.com>
 
 pkgname=openfoam-esi
-pkgver=v1712
+pkgver=v1806
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
 pkgrel=1
@@ -13,25 +13,18 @@ pkgdesc="The open source CFD toolbox (ESI-OpenCFD version)"
 arch=('i686' 'x86_64')
 url="http://www.openfoam.com/"
 license=('GPL')
-depends=('gcc7' 'cgal' 'cmake' 'fftw' 'boost' 'openmpi' 'paraview')
+depends=('gcc' 'cgal' 'cmake' 'fftw' 'boost' 'openmpi' 'paraview')
 
 source=("https://newcontinuum.dl.sourceforge.net/project/openfoamplus/${pkgver}/${_dist}.tgz"
-        "https://sourceforge.net/projects/openfoamplus/files/v1712/ThirdParty-v1712.tgz/download"
+        "https://sourceforge.net/projects/openfoamplus/files/${pkgver}/ThirdParty-${pkgver}.tgz/download"
         "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz")
 
-md5sums=('6ad92df051f4d52c7d0ec34f4b8eb3bc'
-         'c5662a79d4e997472a78b7cc6da98edd'
+md5sums=('bb244a3bde7048a03edfccffc46c763f'
+         'af4ed8cf924825d608d7d622c660b0a7'
          '5465e67079419a69e0116de24fce58fe')
 
 prepare() {
   cd "$srcdir/$_dist"
-
-  # gcc8 does currently not work, so use gcc7
-  sed -i 's/export WM_CC="gcc"/export WM_CC="gcc-7"/g' etc/config.sh/settings
-  sed -i 's/export WM_CXX="g++"/export WM_CXX="g++-7"/g' etc/config.sh/settings
-  sed -i 's/WM_COMPILER=Gcc/WM_COMPILER=Gcc7/g' etc/bashrc
-  [ ! -d wmake/rules/linux64Gcc7 ] && cp -r wmake/rules/linux64Gcc wmake/rules/linux64Gcc7
-  sed -i 's/g++ -std=c++11/g++-7 -std=c++11/g' wmake/rules/linux64Gcc7/c++
 
   # Generate and install the system preferences file
   echo "export compilerInstall=system" > ${srcdir}/prefs.sh
@@ -71,7 +64,7 @@ prepare() {
   sed -i '/ParaView_VERSION=5./d' ${srcdir}/${_distname}-${pkgver}/etc/config.sh/paraview
 
   # create link to metis
-  cd "$srcdir/ThirdParty-v1712"
+  cd "$srcdir/ThirdParty-${pkgver}"
   [[ ! -e "metis-5.1.0" ]] && ln -s ../metis-5.1.0 metis-5.1.0
   return 0
 }
@@ -79,7 +72,9 @@ prepare() {
 build() {
   export FOAM_INST_DIR=${srcdir}
   foamDotFile=${srcdir}/${_dist}/etc/bashrc
-  [ -f ${foamDotFile} ] && . ${foamDotFile}
+  [ -f ${foamDotFile} ] || return 1
+  # without && echo " ", makepkg fails
+  source ${foamDotFile} && echo " "
 
   echo " "
   echo "Give write access to cmake directory using chmod."
