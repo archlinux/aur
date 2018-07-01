@@ -1,0 +1,15 @@
+[Unit]
+Description=gitbucket.service
+After=network.target
+
+[Service]
+User=gitbucket
+Group=gitbucket
+ExecStart=/usr/lib/gitbucket/gitbucket
+StandardOutput=file:/var/log/gitbucket/console.log
+StandardError=inherit
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+

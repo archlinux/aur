@@ -1,0 +1,3 @@
+d /var/lib/gitbucket 0750 gitbucket gitbucket -
+d /var/log/gitbucket 0755 gitbucket gitbucket -
+d /run/gitbucket 0700 gitbucket gitbucket -

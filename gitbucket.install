@@ -1,0 +1,23 @@
+post_install()
+{
+	echo "To start gitbucket, run: systemctl start gitbucket"
+	echo "To enable gitbucket at boot, run: systemctl enable gitbucket"
+}
+
+post_upgrade()
+{
+	systemctl daemon-reload
+}
+
+pre_remove()
+{
+	systemctl stop gitbucket
+	systemctl disable gitbucket
+}
+
+post_remove()
+{
+	# cleanup
+	rm -rf /usr/lib/gitbucket
+}
+

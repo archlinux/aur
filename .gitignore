@@ -1,0 +1,5 @@
+src/
+pkg/
+*.war
+*.tar.xz
+*.log
