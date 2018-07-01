@@ -2,14 +2,14 @@
 
 _ref=''
 pkgname=kak-lsp-git
-pkgver=3.5.0.r6.2414454
-pkgrel=2
+pkgver=4.0.0.r0.5c556a5
+pkgrel=1
 pkgdesc='Kakoune Language Server Protocol Client'
 arch=('x86_64')
 url="https://github.com/ul/kak-lsp"
 license=('custom:unlicense')
 depends=('kakoune')
-makedepends=('git' 'rustup')
+makedepends=('git' 'rust')
 optdepends=() # Language servers
 provides=("kak-lsp")
 conflicts=("kak-lsp")
