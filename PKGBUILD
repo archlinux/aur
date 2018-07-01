@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=adr-tools
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='CLI tool for working with Architecture Decision Records'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/npryce/adr-tools'
 license=('GPL3')
 depends=('bash')
 source=("https://github.com/npryce/adr-tools/archive/${pkgver}.tar.gz")
-sha256sums=('cbf016beab165341b6cde9b29013d3e4c76734139f75182c4d03ba3caac51d59')
+sha256sums=('26eb7f445ba1d77a3a42f49aaeb17def5766e3166fdcd4a79a71a8f5c91ae5b7')
 
 package() {
   rm "${srcdir}/${pkgname}-${pkgver}/src/adr-config"
