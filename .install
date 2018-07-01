@@ -1,0 +1,14 @@
+post_install() {
+  sudo ln -s /usr/lib/pacnew-chaser/pacnew-chaser.hook /etc/pacman.d/hooks/pacnew-chaser.hook
+}
+post_upgrade() {
+  [ -f /etc/pacman.d/hooks/pacnew-chaser.hook ]  || sudo ln -s /usr/lib/pacnew-chaser/pacnew-chaser.hook /etc/pacman.d/hooks/pacnew-chaser.hook
+}
+
+post_remove() {
+  [ -f /etc/pacman.d/hooks/pacnew-chaser.hook ] && rm /etc/pacman.d/hooks/pacnew-chaser.hook
+  # rm -rf $HOME/.local/share/pacnew-chaser
+  echo "For a clean home, you can"
+  echo "remove $HOME/.local/share/pacnew-chaser/"
+  echo "remove $HOME/.config/pacnew-chaser.ini"
+}

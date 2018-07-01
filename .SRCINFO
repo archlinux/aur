@@ -1,8 +1,9 @@
 pkgbase = pacnew-chaser
 	pkgdesc = manage .pacnew files, compare and merge (qt gui) - dev version
-	pkgver = 0.9.19.1
+	pkgver = 0.9.20
 	pkgrel = 1
 	url = https://www.manjaro.fr/forum/viewtopic.php?f=28&t=10284
+	install = .install
 	arch = x86_64
 	license = GPL
 	depends = qt5pas
@@ -10,8 +11,8 @@ pkgbase = pacnew-chaser
 	optdepends = diffuse: editor, compare merge files
 	optdepends = kompare: editor, compare merge files
 	optdepends = meld: editor, compare merge files
-	source = https://www.manjaro.fr/forum/datas/pacnew-chaser-qt-0.9.19.1.tar.gz
-	sha512sums = 49c3f6521aecf50661862b9ec53908bc3531aff31fa40e7f86827e6ef3b875334b0c0cc82e18d2076dad44a30da31d115482a2e080d25b5d5885b8b57e4de6a3
+	source = https://www.manjaro.fr/forum/datas/pacnew-chaser-qt-0.9.20.tar.gz
+	sha512sums = 43f15de63c853c4635a027e100db9c5959f298f30ca4e8447b9280c01434a790e4e2228484e860440175951d0819ec0f4189a123a3ae33f58914abc58d8183bb
 
 pkgname = pacnew-chaser
 
