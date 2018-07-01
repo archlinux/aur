@@ -21,6 +21,16 @@
     exit(EXIT_FAILURE);\
 }
 
+#define RET_TRUE_MSG(msg) {\
+    puts(msg);\
+    return 1;\
+}
+
+#define RET_FALSE_MSG(msg) {\
+    puts(msg);\
+    return 0;\
+}
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
