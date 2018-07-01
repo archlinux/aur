@@ -1,0 +1,12 @@
+pkgbase = bs-platform
+	pkgdesc = BuckleScript: A JavaScript backend for OCaml focused on smooth integration and clean generated code.
+	pkgver = 3.1.5
+	pkgrel = 1
+	url = https://bucklescript.github.io/
+	arch = any
+	depends = nodejs
+	depends = npm
+	options = !strip
+
+pkgname = bs-platform
+
