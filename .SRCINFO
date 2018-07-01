@@ -1,0 +1,17 @@
+pkgbase = splatmoji-git
+	pkgdesc = Quickly look up and input emoji and/or emoticons/kaomoji on your GNU/Linux desktop via pop-up menu.
+	pkgver = r7.dc850cd
+	pkgrel = 1
+	url = https://github.com/cspeterson/splatmoji
+	arch = any
+	license = MIT
+	depends = rofi
+	depends = xdotool
+	depends = xsel
+	provides = splatmoji
+	conflicts = splatmoji
+	source = git+https://github.com/cspeterson/splatmoji.git
+	sha256sums = SKIP
+
+pkgname = splatmoji-git
+
