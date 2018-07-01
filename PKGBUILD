@@ -4,10 +4,13 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 # SELinux Contributor: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <nicky726@gmail.com>
+#
+# This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
+# If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=pam-selinux
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('x86_64')
 license=('GPL2')
@@ -19,8 +22,14 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 backup=(etc/security/{access.conf,group.conf,limits.conf,namespace.conf,namespace.init,pam_env.conf,time.conf} etc/default/passwd etc/environment)
 groups=('selinux')
-source=(http://linux-pam.org/library/Linux-PAM-$pkgver.tar.bz2)
-md5sums=('da4b2289b7cfb19583d54e9eaaef1c3a')
+source=(https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz
+        https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz.asc)
+validpgpkeys=(
+        '8C6BFD92EE0F42EDF91A6A736D1A7F052E5924BB' # Thorsten Kukuk
+)
+
+md5sums=('558ff53b0fc0563ca97f79e911822165'
+         'SKIP')
 
 options=('!emptydirs')
 
