@@ -1,9 +1,9 @@
 # Maintainer: Andrej Marolt <andrej.marolt@gmail.com>
 pkgname=openshift-source-to-image
-_release=v1.1.7
-_commit=226afa1
-pkgver=1.1.7
-pkgrel=7
+_release=v1.1.11
+_commit=78a76d97
+pkgver=1.1.11
+pkgrel=1
 pkgdesc="A tool for building artifacts from source and injecting into docker images"
 arch=('i686' 'x86_64')
 url="https://github.com/openshift/source-to-image"
