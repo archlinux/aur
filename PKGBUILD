@@ -4,7 +4,7 @@
 
 pkgname=seafile-client
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client for synchronizing your local files with seafile server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
@@ -15,7 +15,7 @@ makedepends=("cmake")
 conflicts=('seafile-client-qt5')
 provides=('seafile-client-qt5')
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('0dadb7fc567b5543b72dae2f6f3b29725e8869e1736c3953301727b27eb9dc1e')
+sha256sums=('3b5bbb16e30f70ecf2e4de50e1a1e1f26fb952115e25391e553a1212cf990ddc')
 
 prepare() {
   cd "${srcdir}"
