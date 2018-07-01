@@ -6,6 +6,7 @@ arch=('x86_64')
 url='http://www.squid-cache.org'
 depends=('openssl-1.0' 'pam' 'perl' 'libltdl' 'libcap' 'nettle' 'gnutls' 'libnsl')
 makedepends=('krb5')
+conflicts=('squid')
 license=('GPL')
 options=('emptydirs')
 backup=('etc/squid/squid.conf'
