@@ -1,0 +1,10 @@
+## arg 1:  the new package version
+post_install() {
+	echo "Remember to get the default config file for snooscraper by running one of these commands...
+
+	cp /usr/share/snooscraper/config ~/.config/tubeman/config
+
+	cp /usr/share/snooscraper/config ~/.snooscraper
+
+	...depending where you keep your config files. Then modify it as you wish."
+}

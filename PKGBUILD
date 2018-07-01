@@ -8,7 +8,10 @@ arch=('all')
 url="https://notabug.org/odg/snooscraper"
 license=('GPL')
 depends=('sh' 'curl' 'jq' 'sed' 'grep' 'find')
+<<<<<<< HEAD
 install=snooscraper.install
+=======
+>>>>>>> f70ea6d... arch package files
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 validpgpkeys=('491E0D9EE7AA9E15D089950A787966257046CC21') #Oliver Galvin
