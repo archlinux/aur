@@ -1,6 +1,6 @@
 pkgbase = coin-hg
 	pkgdesc = A high-level, retained-mode 3D graphics toolkit compatible with Open Inventor 2.1
-	pkgver = r11804.cda366684846
+	pkgver = r11806.e3c366fe1863
 	pkgrel = 1
 	url = https://bitbucket.org/Coin3D/coin
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = coin-hg
 	depends = libgl
 	provides = coin
 	conflicts = coin
-	source = coin::hg+https://bitbucket.org/Coin3D/coin
-	source = generalmsvcgeneration::hg+https://bitbucket.org/Coin3D/generalmsvcgeneration
-	source = boost-header-libs-full::hg+https://bitbucket.org/Coin3D/boost-header-libs-full
+	source = coin::hg+https://bitbucket.org/Coin3D/coin#branch=default
+	source = generalmsvcgeneration::hg+https://bitbucket.org/Coin3D/generalmsvcgeneration#branch=default
+	source = boost-header-libs-full::hg+https://bitbucket.org/Coin3D/boost-header-libs-full#branch=default
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
