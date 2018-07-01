@@ -12,6 +12,7 @@ pkgbase = fmedia-git
 	makedepends = libjpeg9
 	makedepends = unzip
 	makedepends = jdk8-openjdk
+	makedepends = dos2unix
 	depends = sqlite
 	provides = fmedia-git
 	provides = fmedia
