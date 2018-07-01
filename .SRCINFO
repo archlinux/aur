@@ -1,0 +1,18 @@
+pkgbase = u3d
+	pkgdesc = U3D is a format for 3D models that can be embedded into PDF and viewed in Adobe Acrobat/Reader
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://github.com/ningfei/u3d
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = libpng
+	depends = libjpeg
+	provides = IDTFConverter
+	provides = u3dlib
+	source = u3d.zip::https://github.com/ningfei/u3d/archive/master.zip
+	md5sums = 75c2fa1dff7068f62ecaf5b4b7bfe297
+
+pkgname = u3d
+
