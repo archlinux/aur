@@ -1,10 +1,10 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
-
 pkgname=sdrangel-git
+_pkgname=${pkgname%-git}
 pkgver=4.0.1.r0.95f39109
 pkgrel=1
-pkgdesc="Qt5/OpenGL SDR and signal analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR, SDRplay and FunCube"
+pkgdesc="Qt5/OpenGL SDR and signal analyzer frontend."
 arch=('any')
 url="https://github.com/f4exb/sdrangel"
 license=('GPL3')
@@ -31,13 +31,13 @@ source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/${pkgname%-git}
+  cd "$srcdir"/$_pkgname
   git describe --long --tags | sed 's/faup1090-//g;s/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 build() {
-  mkdir -p $srcdir/${pkgname%-git}/build
-  cd $srcdir/${pkgname%-git}/build
+  mkdir -p "$srcdir"/$_pkgname/build
+  cd "$srcdir"/$_pkgname/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
@@ -49,8 +49,8 @@ build() {
 }
 
 package() {
-  cd $srcdir/${pkgname%-git}/build
+  cd "$srcdir"/$_pkgname/build
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
 
