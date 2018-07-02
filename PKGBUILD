@@ -15,13 +15,13 @@ source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('0c865969948c5c9dd80900cb0656605d603a2ab688f98d6641bb3a6d97b592ed')
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-$pkgver
   sed -i 's|LIBSERIAL_NAMES|LIBSERIALDV_NAMES|g' cmake/Modules/FindSerialDV.cmake
 }
 
 build() {
-  mkdir -p $srcdir/$pkgname-$pkgver/build
-  cd $srcdir/$pkgname-$pkgver/build
+  mkdir -p "$srcdir"/$pkgname-$pkgver/build
+  cd "$srcdir"/$pkgname-$pkgver/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
@@ -33,6 +33,6 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver/build
-  make DESTDIR=$pkgdir install
+  cd "$srcdir"/$pkgname-$pkgver/build
+  make DESTDIR="$pkgdir" install
 }
