@@ -1,16 +1,17 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: Tharbad <thar.bad.08 AT gmail dot com . --remove all dots-->
+# Contributer: graysky <graysky AT archlinux DOT us>
 # Contributer: Ionut Biru <ibiru@archlinux.org>
 # Contributer: Sébastien Luttringer <seblu@aur.archlinux.org>
 pkgbase=(virtualbox-ck-modules)
-pkgname=(virtualbox-ck-host-modules virtualbox-ck-guest-modules)
-pkgver=5.2.10
-pkgrel=2
+pkgname=(virtualbox-ck-host-modules)
+pkgver=5.2.14
+pkgrel=1
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-ck-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.16-ck
+_extramodules=extramodules-4.16-ck-ivybridge
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -20,9 +21,6 @@ build() {
 	# build host modules
 	msg2 'Host modules'
 	dkms --dkmsframework dkms.conf build "vboxhost/${pkgver}_OSE" -k "$_kernver"
-	# build guest modules
-	msg2 'Guest modules'
-	dkms --dkmsframework dkms.conf build "vboxguest/${pkgver}_OSE" -k "$_kernver"
 }
 
 package_virtualbox-ck-host-modules() {
@@ -45,26 +43,4 @@ package_virtualbox-ck-host-modules() {
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/virtualbox-host-modules-ck.conf"
 }
 
-package_virtualbox-ck-guest-modules() {
-	#_Gpkgdesc='Guest kernel modules for VirtualBox running under Linux-ck.'
-	#pkgdesc="${_Gpkgdesc}"
-	pkgdesc='Guest kernel modules for VirtualBox running under Linux-ck.'
-	license=('GPL')
-	provides=("VIRTUALBOX-GUEST-MODULES")
-	depends=('linux-ck>=4.16' 'linux-ck<4.17')
-	#replaces=('virtualbox-ck-guest-modules-corex')
-	#groups=('ck-generic')
-
-	cd "dkms/vboxguest/${pkgver}_OSE/$_kernver/$CARCH/module"
-  install -Dt "$pkgdir/usr/lib/modules/$_extramodules" -m644 *
-
-  # compress each module individually
-  find "$pkgdir" -name '*.ko' -exec gzip -n {} +
-
-  # systemd module loading
-  printf "vboxguest\nvboxsf\nvboxvideo\n" |
-    install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/virtualbox-guest-modules-ck.conf"
-}
-
 # vim:set ts=2 sw=2 et:
-
