@@ -6,7 +6,7 @@
 pkgname=babl-git
 pkgver=0.1.50.3.g24d7ba9
 pkgrel=1
-pkgdesc="babl is a dynamic, any to any, pixel format translation library."
+pkgdesc="Dynamic, any to any, pixel format translation library."
 arch=('i686' 'x86_64')
 url="http://www.gegl.org/babl"
 license=('LGPL3')
@@ -24,7 +24,7 @@ _gitname=babl
 # Don't port to meson until babl's runtime cpu detection works there
 
 build() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir"/$_gitname
 
 	#meson builddir --prefix=/usr/ -Denable-tests=false
 	#meson builddir --prefix=/usr/ -Denable-tests=false
@@ -33,13 +33,13 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir"/$_gitname
 
 	#DESTDIR="${pkgdir}" ninja -C builddir install
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" install
 }
 
 pkgver() {
-	cd "${srcdir}/babl"
+	cd "$srcdir"/babl
 	git describe --always | sed -e 's/BABL_//g' -e 's/[_-]/./g'
 }

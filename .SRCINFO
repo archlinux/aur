@@ -1,5 +1,5 @@
 pkgbase = babl-git
-	pkgdesc = babl is a dynamic, any to any, pixel format translation library.
+	pkgdesc = Dynamic, any to any, pixel format translation library.
 	pkgver = 0.1.50.3.g24d7ba9
 	pkgrel = 1
 	url = http://www.gegl.org/babl
