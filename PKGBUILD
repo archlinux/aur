@@ -8,10 +8,7 @@ url="https://www.planet-casio.com/Fr/logiciels/voir_un_logiciel_casio.php?showid
 license=('GPL')
 depends=("jre8-openjdk")
 provides=("bide")
-source=(
-        "https://www.planet-casio.com/Fr/logiciels/dl_logiciel.php?id=118&file=1",
-        "bide.desktop"
-)
+source=("https://www.planet-casio.com/Fr/logiciels/dl_logiciel.php?id=118&file=1" "bide.desktop")
 md5sums=('735d5cc2265c137047617418dadc09ca' '286c8e2e0edd5acd78cc4c3e10b04d1d')
 
 build() {
