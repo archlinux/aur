@@ -1,5 +1,5 @@
 pkgbase = python-julia
-	pkgdesc = A Python package for offline access to Vega datasets
+	pkgdesc = python interface to julia
 	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/JuliaPy/pyjulia
