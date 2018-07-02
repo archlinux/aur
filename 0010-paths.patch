@@ -1,6 +1,6 @@
 diff -rNc lxdui-2.1.1-orig/app/api/core.py lxdui-2.1.1/app/api/core.py
 *** lxdui-2.1.1-orig/app/api/core.py	2018-06-18 22:36:37.000000000 +0300
---- lxdui-2.1.1/app/api/core.py	2018-06-29 17:26:55.789621966 +0300
+--- lxdui-2.1.1/app/api/core.py	2018-07-02 15:35:41.889414434 +0300
 ***************
 *** 14,20 ****
   Log(__name__)
@@ -32,7 +32,7 @@ diff -rNc lxdui-2.1.1-orig/app/api/core.py lxdui-2.1.1/app/api/core.py
 !     # app.run(debug=debug, host='0.0.0.0', port=port)
 diff -rNc lxdui-2.1.1-orig/app/__metadata__.py lxdui-2.1.1/app/__metadata__.py
 *** lxdui-2.1.1-orig/app/__metadata__.py	2018-06-18 22:36:37.000000000 +0300
---- lxdui-2.1.1/app/__metadata__.py	2018-06-29 17:25:26.097793995 +0300
+--- lxdui-2.1.1/app/__metadata__.py	2018-07-02 15:35:41.889414434 +0300
 ***************
 *** 26,37 ****
   lxdui.jwt.secret.key = AC8d83&21Almnis710sds
@@ -60,3 +60,47 @@ diff -rNc lxdui-2.1.1-orig/app/__metadata__.py lxdui-2.1.1/app/__metadata__.py
   lxdui.log.file = ${lxdui.log.dir}/lxdui.log
   lxdui.log.conf = ${lxdui.conf.dir}/log.conf
   #lxdui.log.rotate = true
+diff -rNc lxdui-2.1.1-orig/conf/log.conf lxdui-2.1.1/conf/log.conf
+*** lxdui-2.1.1-orig/conf/log.conf	2018-06-18 22:36:37.000000000 +0300
+--- lxdui-2.1.1/conf/log.conf	2018-07-02 15:36:02.086508796 +0300
+***************
+*** 22,34 ****
+        "class": "logging.FileHandler",
+        "level": "DEBUG",
+        "formatter": "default",
+!       "filename": "logs/lxdui.log"
+      },
+      "file": {
+        "class": "logging.FileHandler",
+        "level": "DEBUG",
+        "formatter": "default",
+!       "filename": "logs/lxdui.log",
+        "mode": "w",
+        "encoding": "utf-8"
+      }
+--- 22,34 ----
+        "class": "logging.FileHandler",
+        "level": "DEBUG",
+        "formatter": "default",
+!       "filename": "/var/log/lxdui/lxdui.log"
+      },
+      "file": {
+        "class": "logging.FileHandler",
+        "level": "DEBUG",
+        "formatter": "default",
+!       "filename": "/var/log/lxdui/lxdui.log",
+        "mode": "w",
+        "encoding": "utf-8"
+      }
+***************
+*** 46,49 ****
+    "requests.packages.urllib3.connectionpool":{
+      "level":"ERROR"
+    }
+! }
+\ No newline at end of file
+--- 46,49 ----
+    "requests.packages.urllib3.connectionpool":{
+      "level":"ERROR"
+    }
+! }
