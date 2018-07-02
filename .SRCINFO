@@ -1,0 +1,36 @@
+pkgbase = buildbot-git
+	pkgver = 1.2.0.r40.g16dff07ce
+	pkgrel = 1
+	url = https://buildbot.net
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-twisted
+	makedepends = python-jinja
+	makedepends = python-zope-interface
+	makedepends = python-future
+	makedepends = python-sqlalchemy-migrate
+	makedepends = python-dateutil
+	makedepends = python-txaio
+	makedepends = python-autobahn
+	makedepends = python-pyjwt
+	source = git+https://github.com/buildbot/buildbot.git
+	sha256sums = SKIP
+
+pkgname = buildbot-git
+	pkgdesc = The Continuous Integration Framework
+	depends = python-twisted
+	depends = python-jinja
+	depends = python-zope-interface
+	depends = python-future
+	depends = python-sqlalchemy-migrate
+	depends = python-dateutil
+	depends = python-txaio
+	depends = python-autobahn
+	depends = python-pyjwt
+
+pkgname = buildbot-worker-git
+	pkgdesc = Buildbot Worker Daemon
+	depends = python-twisted
+	depends = python-future
+
