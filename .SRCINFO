@@ -1,18 +1,40 @@
 pkgbase = virtualfish
 	pkgdesc = A virtualenv wrapper for the Fish shell
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/adambrenecki/virtualfish
 	install = virtualfish.install
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-setuptools_scm
+	makedepends = python-virtualenv
+	makedepends = python-pkgconfig
+	makedepends = python-psutil
+	makedepends = python-xdg
+	makedepends = python2-setuptools
+	makedepends = python2-setuptools_scm
+	makedepends = python2-virtualenv
+	makedepends = python2-pkgconfig
+	makedepends = python2-psutil
+	makedepends = python2-xdg
 	options = !emptydirs
 	source = virtualfish::git+https://github.com/adambrenecki/virtualfish.git#tag=1.0.6
 	sha256sums = SKIP
 
 pkgname = python-virtualfish
+	depends = python-setuptools
+	depends = python-setuptools_scm
 	depends = python-virtualenv
+	depends = python-pkgconfig
+	depends = python-psutil
+	depends = python-xdg
 
 pkgname = python2-virtualfish
+	depends = python2-setuptools
+	depends = python2-setuptools_scm
 	depends = python2-virtualenv
+	depends = python2-pkgconfig
+	depends = python2-psutil
+	depends = python2-xdg
 
