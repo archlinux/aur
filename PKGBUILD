@@ -1,10 +1,10 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
-
 pkgname=qspectrumanalyzer-git
+_pkgname=${pkgname%-git}
 pkgver=2.2.0.r8.625ba9d
 pkgrel=1
-pkgdesc="Spectrum analyzer for multiple SDR platforms (PyQtGraph based GUI for soapy_power, rx_power, rtl_power, hackrf_sweep and other backends)"
+pkgdesc="Spectrum analyzer for multiple SDR platforms."
 arch=('any')
 url="https://github.com/xmikos/qspectrumanalyzer"
 license=('GPL3')
@@ -23,16 +23,16 @@ source=('git+https://github.com/xmikos/qspectrumanalyzer.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir"/$_pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir"/$_pkgname
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir"/$_pkgname
   python setup.py install --root="$pkgdir"
 }
