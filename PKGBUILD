@@ -2,10 +2,10 @@
 
 pkgname=oxy-git
 pkgver=3.0.0~dev1+72+g478e51a
-pkgrel=1
+pkgrel=2
 pkgdesc='In-development SSH-alike that uses the Noise protocol (Git)'
 arch=(any)
-url=https://oxy-secure.app
+url=https://github.com/oxy-secure/oxy
 license=(BSD-2-Clause)
 depends=(cargo)
 makedepends=(git)
