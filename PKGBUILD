@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=apulse
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc='PulseAudio emulation for ALSA'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake')
 install=apulse.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'asoundrc.sample')
-sha256sums=('23197df38d1b7c997c9431395878c9464a59204cdb1e4ccd043f88250ead5e9d'
+sha256sums=('cfcadfe971abd785ed3ca24e576fcbaade185525c1eda76daf32dbf298e52892'
             'e851197ec9ebff528154210751cd6d5c426abfc2b1aa34343580407b1ea789a4')
 
 prepare() {
