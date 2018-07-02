@@ -3,7 +3,7 @@
 _pkgname=libtorrent
 pkgname=libtorrent-ps
 _pkgver=0.13.6
-pkgver=1.0.r272.g388cfab
+pkgver=1.1.r15.g56057fc
 pkgrel=1
 pkgdesc='BitTorrent library written in C++ for use with rtorrent-ps'
 url='https://github.com/rakshasa/libtorrent'
