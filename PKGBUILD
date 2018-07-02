@@ -1,31 +1,30 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=ocaml-gen
-pkgver=0.4.0.1
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Iterators for OCaml'
 license=('BSD')
 arch=('i686' 'x86_64')
 url='https://github.com/c-cube/gen/'
-depends=('ocaml' 'ocamlbuild')
+depends=('ocaml')
+makedepends=('ocaml-findlib' 'dune')
 source=("https://github.com/c-cube/gen/archive/${pkgver}.tar.gz")
 options=(!strip !makeflags)
-sha256sums=('ab6389821f807ac22857002c85b57f737f41bc9d4f1b81cf6472b113040792cd')
+sha256sums=('2bc625f816a4c2efe3a781552551862e7eacca26a1000ea3698fa4c08eec2c6a')
 
 build() {
-    cd "$srcdir/${pkgname/ocaml-/}-$pkgver"
+    cd "${pkgname/ocaml-/}-$pkgver"
 
-	./configure --disable-docs --disable-tests --disable-bench
-    make all
+    make
 }
 
 package() {
-    cd "$srcdir/${pkgname/ocaml-/}-$pkgver"
+    cd "${pkgname/ocaml-/}-$pkgver"
 
     export DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
-    export OCAMLFIND_DESTDIR="$DESTDIR"
     mkdir -p "$DESTDIR"
 
-    make install
+    jbuilder install --prefix="$DESTDIR" --libdir="$DESTDIR"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
