@@ -81,6 +81,9 @@ void string_write_file(String* pString, char* file_name) {
 }
 
 void string_destroy(String** phString) {
+    if (*phString == NULL)
+        return;
+
     String* pString = *phString;
     free(pString->data);
     free(*phString);

@@ -614,11 +614,17 @@ Info_Array* iex_get_valid_symbols(void) {
 }
 
 void api_news_destroy(News** phNews) {
+    if (*phNews == NULL)
+        return;
+
     free(*phNews);
     *phNews = NULL;
 }
 
 void api_info_destroy(Info** phInfo) {
+    if (*phInfo == NULL)
+        return;
+
     Info* pInfo = *phInfo;
     free(pInfo->points);
     if (pInfo->articles != NULL)
@@ -634,6 +640,9 @@ void api_info_destroy(Info** phInfo) {
 }
 
 void api_info_array_destroy(Info_Array** phInfo_Array) {
+    if (*phInfo_Array == NULL)
+        return;
+
     Info_Array* pInfo_Array = *phInfo_Array;
     for (size_t i = 0; i < pInfo_Array->length; i++)
         api_info_destroy(&pInfo_Array->array[i]);
