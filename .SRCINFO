@@ -3,6 +3,7 @@ pkgbase = splatmoji-git
 	pkgver = r7.dc850cd
 	pkgrel = 1
 	url = https://github.com/cspeterson/splatmoji
+	install = splatmoji-git.install
 	arch = any
 	license = MIT
 	depends = rofi

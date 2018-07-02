@@ -11,6 +11,7 @@ depends=('rofi' 'xdotool' 'xsel')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/cspeterson/$_pkgname.git")
+install=splatmoji-git.install
 sha256sums=('SKIP')
 
 pkgver() {
