@@ -49,7 +49,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir"/$_gitname
 
   if [ -f /usr/lib/pkgconfig/libmypaint-1.3.pc ]; then
     sed -i 's/libmypaint /libmypaint-1.3 /g' configure.ac
@@ -64,9 +64,9 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_gitname
-  make DESTDIR=$pkgdir install
-#  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' $pkgdir/usr/lib/gimp/2.0/plug-ins/*.py
-  install -D -m644 $srcdir/linux.gpl $pkgdir/usr/share/gimp/2.0/palettes/Linux.gpl
+  cd "$srcdir"/$_gitname
+  make DESTDIR="$pkgdir" install
+#  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' "$pkgdir"/usr/lib/gimp/2.0/plug-ins/*.py
+  install -D -m644 "$srcdir"/linux.gpl "$pkgdir"/usr/share/gimp/2.0/palettes/Linux.gpl
 }
 
