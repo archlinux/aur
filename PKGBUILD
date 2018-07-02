@@ -1,9 +1,9 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=sdrangel
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
-pkgdesc="Qt5/OpenGL SDR and signal analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR, SDRplay and FunCube"
+pkgdesc="Qt5/OpenGL SDR and signal analyzer frontend."
 arch=('any')
 url="https://github.com/f4exb/sdrangel"
 license=('GPL3')
@@ -27,7 +27,7 @@ optdependds=(
 provides=("sdrangel")
 conflicts=("sdrangel")
 source=("https://github.com/f4exb/sdrangel/archive/v$pkgver.tar.gz")
-sha256sums=('f23cb0c4e497adca66c3c060d314db0c1f27284e364b6f2ff44cdc3f164fd7aa')
+sha256sums=('9ce3f0156cb5d5b8a014ad8f81f6474edcef2ab11423132a10b1da5eda13a60e')
 
 build() {
   mkdir -p "$srcdir"/$pkgname-$pkgver/build
