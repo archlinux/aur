@@ -3,12 +3,12 @@
 
 pkgname=varuna-git
 pkgver=0.1.1r393.b0d2ad8
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiler for the varuna language"
 arch=('i686' 'x86_64')
 url="https://varuna-lang.github.io"
 license=('custom:BSD')
-depends=('llvm-libs>=4.0.0' 'libutil-linux')
+depends=('llvm40-libs' 'libutil-linux')
 makedepends=('cmake>=3.2.3' 'git')
 source=("git+https://github.com/varuna-lang/${pkgname%-git}.git"
     "git+https://github.com/gabime/spdlog.git"
@@ -18,17 +18,16 @@ source=("git+https://github.com/varuna-lang/${pkgname%-git}.git"
     "git+https://github.com/graeme-hill/crossguid.git"
     "git+https://github.com/vit-vit/CTPL.git"
     "git+https://github.com/varuna-lang/vastd.git"
-    "git+https://github.com/varuna-lang/vart.git"
-    "git+https://github.com/varuna-lang/llvm-binutils.git")
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+    "git+https://github.com/varuna-lang/vart.git")
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-    cd "${pkgname%-git}"
+    cd ${pkgname%-git}
     printf "%sr%s.%s" $(git describe 2>&1|head -1|cut -d " " -f6-6|tr -d \'|tr -d v) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
-    cd "$srcdir/${pkgname%-git}"
+    cd ${pkgname%-git}
     git submodule init
     git config submodule.third-party/spdlog.url "$srcdir/spdlog"
     git config submodule.third-party/cereal.url "$srcdir/cereal"
@@ -43,14 +42,17 @@ prepare() {
 }
 
 build() {
-    mkdir -p "$srcdir/${pkgname%-git}/build"
-    cd "$srcdir/${pkgname%-git}/build"
-    cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
-    make
+    [[ -d ${pkgname%-git}/build ]] || mkdir -p ${pkgname%-git}/build
+    cd ${pkgname%-git}/build
+    CMAKE_PREFIX_PATH=/usr/lib/llvm-4.0/lib/cmake/llvm cmake -G "Unix Makefiles" \
+		     -DLLVM_DIR=/usr/lib/llvm-4.0 \
+		     -DCMAKE_INSTALL_PREFIX=/usr \
+		     -DCMAKE_BUILD_TYPE=Release ..
+    LLVM_DIR=/usr/lib/llvm-4.0 make
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}/build"
+    cd ${pkgname%-git}/build
     make DESTDIR="$pkgdir/" install
-    install -D -m644 "../LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "../LICENSE" "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
