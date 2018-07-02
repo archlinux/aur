@@ -24,9 +24,9 @@ pkgbase = dump1090-mutability-git
 	source = dump1090-mutability-git::git://github.com/mutability/dump1090
 	source = dump1090-mutability
 	source = dump1090-mutability.service
-	sha1sums = SKIP
-	sha1sums = fc5315d2585bb8dd81eeefc1c43da2b8d2b79a9f
-	sha1sums = 80d6ddc3668868a63c31fcff4e34fa7d4084aa23
+	sha256sums = SKIP
+	sha256sums = 0e95c55fba7e3daf0a2e6f2c3f8bc60581ab52d547ec048b72eb67cc26d961a5
+	sha256sums = 948dac40bf03d8b4338fc7985dc674208ff18cca37049fad22e222822ac100b4
 
 pkgname = dump1090-mutability-git
 

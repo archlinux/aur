@@ -1,7 +1,6 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Martin Poljak <martin at poljak dot cz>
 # Contributor: Dan Schaper <dschaper at ganymeade dot com>
-
 pkgname=dump1090-mutability-git
 _pkgbase=dump1090-mutability
 pkgver=2.1.4.r225.fb5942d
@@ -42,18 +41,16 @@ build() {
 }
 
 package() {
-  install -Dm644 -t $pkgdir/etc $_pkgbase
-  install -Dm644 -t $pkgdir/usr/lib/systemd/system $_pkgbase.service
+  install -Dm644 -t "$pkgdir"/etc $_pkgbase
+  install -Dm644 -t "$pkgdir"/usr/lib/systemd/system $_pkgbase.service
 
   cd $pkgname
-  install -Dm755 dump1090 $pkgdir/usr/bin/dump1090-mutability
-  install -Dm755 view1090 $pkgdir/usr/bin/view1090-mutability
-  install -Dm755 faup1090 $pkgdir/usr/lib/piaware/helpers/faup1090
+  install -Dm755 dump1090 "$pkgdir"/usr/bin/dump1090-mutability
+  install -Dm755 view1090 "$pkgdir"/usr/bin/view1090-mutability
+  install -Dm755 faup1090 "$pkgdir"/usr/lib/piaware/helpers/faup1090
 
-  install -Dm644 -t $pkgdir/usr/share/$_pkgbase/html/ ./public_html/*.{js,html,gif,css}
-  install -Dm644 -t $pkgdir/usr/share/$_pkgbase/html/coolclock/ ./public_html/coolclock/*.js
-  install -Dm644 -t "$pkgdir/usr/share/$_pkgbase/html/flags-tiny" ./public_html/flags-tiny/*.{png,txt}
-  install -Dm644 ./debian/lighttpd/89-dump1090.conf "$pkgdir/usr/share/$_pkgbase/dump1090-lighttpd.conf"
-
-  install -Dm644 ./debian/copyright "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "$pkgdir"/usr/share/$_pkgbase/html/ ./public_html/*.{js,html,gif,css}
+  install -Dm644 -t "$pkgdir"/usr/share/$_pkgbase/html/coolclock/ ./public_html/coolclock/*.js
+  install -Dm644 -t "$pkgdir"/usr/share/$_pkgbase/html/flags-tiny ./public_html/flags-tiny/*.{png,txt}
+  install -Dm644 ./debian/lighttpd/89-dump1090.conf "$pkgdir"/usr/share/$_pkgbase/dump1090-lighttpd.conf
 }
