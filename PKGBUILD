@@ -1,7 +1,7 @@
 # Maintainer: Heiko Nickerl <dev at heiko-nickerl dot com>
 pkgname="sodalite-git"
 pkgver=r187.0379229
-pkgrel=3
+pkgrel=4
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
 url="www.github.com/hnicke/sodalite"
@@ -13,7 +13,6 @@ depends=('python-binaryornot' 'python-urwid' 'python-yaml'
 source=('git+https://github.com/hnicke/sodalite.git')
 backup=('etc/sodalite.conf')
 md5sums=('SKIP')
-install=sodalite.install
 
 _gitroot=https://github.com/hnicke/sodalite.git
 _gitname=sodalite
