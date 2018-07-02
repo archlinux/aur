@@ -1,0 +1,35 @@
+pkgbase = buildbot-www-git
+	pkgver = 1.2.0.r40.g16dff07ce
+	pkgrel = 1
+	url = https://buildbot.net
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = buildbot-git=1.2.0.r40.g16dff07ce
+	makedepends = buildbot-pkg-git=1.2.0.r40.g16dff07ce
+	makedepends = python-mock
+	makedepends = npm
+	makedepends = yarn
+	source = git+https://github.com/buildbot/buildbot.git
+	sha256sums = SKIP
+
+pkgname = python-buildbot-www-git
+	pkgdesc = Buildbot UI
+	depends = buildbot-git=1.2.0.r40.g16dff07ce
+
+pkgname = python-buildbot-waterfall-view-git
+	pkgdesc = Buildbot Waterfall View plugin
+	depends = buildbot-git=1.2.0.r40.g16dff07ce
+
+pkgname = python-buildbot-console-view-git
+	pkgdesc = Buildbot Console View plugin
+	depends = buildbot-git=1.2.0.r40.g16dff07ce
+
+pkgname = python-buildbot-grid-view-git
+	pkgdesc = Buildbot Grid View plugin
+	depends = buildbot-git=1.2.0.r40.g16dff07ce
+
+pkgname = python-buildbot-wsgi-dashboards-git
+	pkgdesc = Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
+	depends = buildbot-git=1.2.0.r40.g16dff07ce
+
