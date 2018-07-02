@@ -38,5 +38,5 @@ build() {
 package() {
   cd $_gname-$pkgver/build
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
