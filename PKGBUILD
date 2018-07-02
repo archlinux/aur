@@ -2,13 +2,13 @@
 
 _gitname="terraform-inventory"
 pkgname="${_gitname}-git"
-pkgver=0.7.pre.23.g1728bbc
+pkgver=0.7.pre.28.g842b8f7
 pkgrel=1
 pkgdesc="Terraform State -> Ansible Dynamic Inventory"
 arch=("x86_64")
 url="https://github.com/adammck/terraform-inventory"
 license=("MIT")
-depends=("")
+depends=()
 makedepends=("go" "git")
 provides=("${_gitname}")
 conflicts=("${_gitname}")
