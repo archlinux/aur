@@ -1,0 +1,34 @@
+pkgbase = mumble-snapshot-jack
+	pkgdesc = A high quality voice chat program. (jack support)
+	pkgver = 1.3.0_2729_g2126495
+	pkgrel = 1
+	url = https://www.mumble.info/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = qt5-tools
+	makedepends = python
+	makedepends = libsndfile
+	makedepends = speech-dispatcher
+	depends = qt5-svg
+	depends = opus
+	depends = speex
+	depends = protobuf
+	depends = hicolor-icon-theme
+	depends = libspeechd
+	depends = jack
+	optdepends = espeak: speech synthesizer
+	provides = mumble
+	conflicts = mumble
+	conflicts = mumble-snapshot
+	source = https://dl.mumble.info/mumble-1.3.0~2729~g2126495~snapshot.tar.gz
+	source = https://dl.mumble.info/mumble-1.3.0~2729~g2126495~snapshot.tar.gz.sig
+	source = jack.patch
+	validpgpkeys = F3F5324A14AD0B32568F7839F0413B5CB858BD0E
+	sha256sums = 31b199b33329be15b4c385d8a8922ecacd33c55a8e5a56930513937551c17272
+	sha256sums = SKIP
+	sha256sums = 0026bbd2c4bf2c5942be858f2ce196f23ad253f4f932ac463f0c1e3499d788af
+
+pkgname = mumble-snapshot-jack
+

@@ -1,0 +1,70 @@
+# Maintainer: Giovanni Harting <539@idlegandalf.com>
+# Contributor: synapse84 <synapse84 at gmail dot com>
+
+pkgname=mumble-snapshot-jack
+pkgver=1.3.0_2729_g2126495
+pkgrel=1
+pkgdesc="A high quality voice chat program. (jack support)"
+arch=('i686' 'x86_64')
+url="https://www.mumble.info/"
+license=('BSD')
+depends=('qt5-svg' 'opus' 'speex' 'protobuf' 'hicolor-icon-theme' 'libspeechd' 'jack')
+makedepends=('boost' 'qt5-tools' 'python' 'libsndfile' 'speech-dispatcher')
+optdepends=('espeak: speech synthesizer')
+provides=('mumble')
+conflicts=('mumble' 'mumble-snapshot')
+source=("https://dl.mumble.info/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig}
+	'jack.patch')
+validpgpkeys=('F3F5324A14AD0B32568F7839F0413B5CB858BD0E')
+sha256sums=('31b199b33329be15b4c385d8a8922ecacd33c55a8e5a56930513937551c17272'
+            'SKIP'
+            '0026bbd2c4bf2c5942be858f2ce196f23ad253f4f932ac463f0c1e3499d788af')
+
+prepare() {
+	cd $srcdir/mumble-${pkgver//_/\~}~snapshot
+	patch -Np1 -i "${srcdir}/jack.patch"
+}
+
+
+build() {
+    cd $srcdir/mumble-${pkgver//_/\~}~snapshot
+
+    qmake-qt5 main.pro \
+      CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server no-embed-qt-translations no-update no-pulseaudio jack" \
+      DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
+
+    make release
+}
+
+package() {
+    cd $srcdir/mumble-${pkgver//_/\~}~snapshot
+
+    # binaries
+    install -m755 -D ./release/mumble $pkgdir/usr/bin/mumble
+    install -m755 -D ./scripts/mumble-overlay $pkgdir/usr/bin/mumble-overlay
+
+    # libraries
+    # mumble
+    install -m755 -D ./release/libmumble.so.1.3.0 $pkgdir/usr/lib/mumble/libmumble.so.1.3.0
+    ln -s libmumble.so.1.3.0 $pkgdir/usr/lib/mumble/libmumble.so
+    ln -s libmumble.so.1.3.0 $pkgdir/usr/lib/mumble/libmumble.so.1
+    ln -s libmumble.so.1.3.0 $pkgdir/usr/lib/mumble/libmumble.so.1.3
+    # celt 11
+    install -m755 -D ./release/libcelt0.so.0.11.0 $pkgdir/usr/lib/mumble/libcelt0.so.0.11.0
+    ln -s libcelt0.so.0.11.0 $pkgdir/usr/lib/mumble/libcelt0.so
+    ln -s libcelt0.so.0.11.0 $pkgdir/usr/lib/mumble/libcelt0.so.0
+    ln -s libcelt0.so.0.11.0 $pkgdir/usr/lib/mumble/libcelt0.so.0.11
+    # celt 7
+    install -m755 -D ./release/libcelt0.so.0.7.0 $pkgdir/usr/lib/mumble/libcelt0.so.0.7.0
+    ln -s libcelt0.so.0.7.0 $pkgdir/usr/lib/mumble/libcelt0.so.0.7
+
+    # plugins
+    install -m755 -D ./release/plugins/*.so $pkgdir/usr/lib/mumble/
+
+    # other
+    install -m755 -d $pkgdir/usr/share/man/man1
+    install -m644 -D ./man/mumble* $pkgdir/usr/share/man/man1/
+    install -m644 -D ./scripts/mumble.desktop $pkgdir/usr/share/applications/mumble.desktop
+    install -m644 -D ./icons/mumble.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/mumble.svg
+    install -m644 -D ./LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+}

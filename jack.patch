@@ -1,0 +1,2919 @@
+From a1d1272b31932fd070050870c4bbc4d36d784caa Mon Sep 17 00:00:00 2001
+From: Mark Felder <feld@feld.me>
+Date: Thu, 12 Apr 2018 13:00:01 +0200
+Subject: [PATCH 01/13] Jack: add initial support
+
+Pull request #137.
+---
+ src/mumble/JackAudio.cpp | 314 +++++++++++++++++++++++++++++++++++++++++++++++
+ src/mumble/JackAudio.h   |  97 +++++++++++++++
+ src/mumble/mumble.pro    |  13 ++
+ 3 files changed, 424 insertions(+)
+ create mode 100644 src/mumble/JackAudio.cpp
+ create mode 100644 src/mumble/JackAudio.h
+
+diff --git a/src/mumble/JackAudio.cpp b/src/mumble/JackAudio.cpp
+new file mode 100644
+index 000000000..4a646d0ab
+--- /dev/null
++++ b/src/mumble/JackAudio.cpp
+@@ -0,0 +1,314 @@
++/* Copyright (C) 2011, Benjamin Jemlich <pcgod@users.sourceforge.net>
++   Copyright (C) 2011, Filipe Coelho <falktx@gmail.com>
++
++   All rights reserved.
++
++   Redistribution and use in source and binary forms, with or without
++   modification, are permitted provided that the following conditions
++   are met:
++
++   - Redistributions of source code must retain the above copyright notice,
++     this list of conditions and the following disclaimer.
++   - Redistributions in binary form must reproduce the above copyright notice,
++     this list of conditions and the following disclaimer in the documentation
++     and/or other materials provided with the distribution.
++   - Neither the name of the Mumble Developers nor the names of its
++     contributors may be used to endorse or promote products derived from this
++     software without specific prior written permission.
++
++   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++   ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
++   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
++   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
++   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
++   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
++   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
++   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
++   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++*/
++
++#include "JackAudio.h"
++#include "User.h"
++#include "Global.h"
++#include "MainWindow.h"
++#include "Timer.h"
++
++#include <cstring>
++
++static JackAudioSystem *jasys = NULL;
++
++class JackAudioInputRegistrar : public AudioInputRegistrar {
++        public:
++                JackAudioInputRegistrar();
++                virtual AudioInput *create();
++                virtual const QList<audioDevice> getDeviceChoices();
++                virtual void setDeviceChoice(const QVariant &, Settings &);
++                virtual bool canEcho(const QString &) const;
++};
++
++class JackAudioOutputRegistrar : public AudioOutputRegistrar {
++        public:
++                JackAudioOutputRegistrar();
++                virtual AudioOutput *create();
++                virtual const QList<audioDevice> getDeviceChoices();
++                virtual void setDeviceChoice(const QVariant &, Settings &);
++};
++
++class JackAudioInit : public DeferInit {
++        public:
++                JackAudioInputRegistrar *airJackAudio;
++                JackAudioOutputRegistrar *aorJackAudio;
++                void initialize() {
++                        jasys = new JackAudioSystem();
++                        jasys->init_jack();
++                        jasys->qmWait.lock();
++                        jasys->qwcWait.wait(&jasys->qmWait, 1000);
++                        jasys->qmWait.unlock();
++                        if (jasys->bJackIsGood) {
++                                airJackAudio = new JackAudioInputRegistrar();
++                                aorJackAudio = new JackAudioOutputRegistrar();
++                        } else {
++                                airJackAudio = NULL;
++                                aorJackAudio = NULL;
++                                delete jasys;
++                                jasys = NULL;
++                        }
++                };
++                void destroy() {
++                        if (airJackAudio)
++                                delete airJackAudio;
++                        if (aorJackAudio)
++                                delete aorJackAudio;
++                        if (jasys) {
++                                jasys->close_jack();
++                                delete jasys;
++                                jasys = NULL;
++                        }
++                };
++};
++
++static JackAudioInit jackinit; //unused
++
++JackAudioSystem::JackAudioSystem() {
++        bJackIsGood = false;
++        iSampleRate = 0;
++}
++
++JackAudioSystem::~JackAudioSystem() {
++}
++
++void JackAudioSystem::init_jack()
++{
++        client = jack_client_open("mumble", JackNullOption, 0);
++
++        if (client) {
++                in_port = jack_port_register(client, "input", JACK_DEFAULT_AUDIO_TYPE, JackPortIsInput, 0);
++                out_port = jack_port_register(client, "output", JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
++                jack_set_process_callback(client, process_callback, this);
++                jack_set_sample_rate_callback(client, srate_callback, this);
++                jack_on_shutdown(client, shutdown_callback, this);
++
++                iSampleRate = jack_get_sample_rate(client);
++
++                if (jack_activate(client) || in_port == NULL || out_port == NULL) {
++                    client = NULL;
++                    return;
++                }
++
++                int port_flags;
++                unsigned i = -1;
++                const char** ports = jack_get_ports(client, 0, 0, JackPortIsPhysical);
++
++                if (ports) {
++                    while (ports[++i])
++                    {
++                        jack_port_t* port = jack_port_by_name(client, ports[i]);
++                        port_flags = jack_port_flags(port);
++
++                        if (port_flags & (JackPortIsPhysical|JackPortIsOutput) && strstr(jack_port_type(port), "audio")) {
++                            jack_connect(client, ports[i], jack_port_name(in_port));
++                        }
++                        if (port_flags & (JackPortIsPhysical|JackPortIsInput) && strstr(jack_port_type(port), "audio")) {
++                            jack_connect(client, jack_port_name(out_port), ports[i]);
++                        }
++                    }
++                }
++
++                jack_free(ports);
++
++                // If we made it this far, then everything is okay
++                qhInput.insert(QString(), tr("Hardware Ports"));
++                qhOutput.insert(QString(), tr("Hardware Ports"));
++                bJackIsGood = true;
++
++            } else {
++                bJackIsGood = false;
++                client = NULL;
++            }
++}
++
++void JackAudioSystem::close_jack()
++{
++        if (client) {
++                jack_deactivate(client);
++                jack_client_close(client);
++                client = NULL;
++        }
++}
++
++int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg)
++{
++        JackAudioSystem *jas = (JackAudioSystem*)arg;
++
++        if (jas && jas->bJackIsGood) {
++                AudioInputPtr ai = g.ai;
++                AudioOutputPtr ao = g.ao;
++                JackAudioInput *jai = (JackAudioInput*)(ai.get());
++                JackAudioOutput *jao = (JackAudioOutput*)(ao.get());
++
++                if (jai && jai->bRunning && jai->iMicChannels > 0 && !jai->isFinished()) {
++                        void* input = jack_port_get_buffer(jas->in_port, nframes);
++                        if ((float*)input != 0)
++                            jai->addMic(input, nframes);
++                }
++
++                if (jao && jao->bRunning && jao->iChannels > 0 && !jao->isFinished()) {
++                        jack_default_audio_sample_t* output = (jack_default_audio_sample_t*)jack_port_get_buffer(jas->out_port, nframes);
++                        memset(output, 0, sizeof(jack_default_audio_sample_t)*nframes); //TEST
++                        jao->mix(output, nframes);
++                }
++        }
++
++        return 0;
++}
++
++int JackAudioSystem::srate_callback(jack_nframes_t frames, void *arg)
++{
++        JackAudioSystem *jas = (JackAudioSystem*)arg;
++        jas->iSampleRate = frames;
++        return 0;
++}
++
++void JackAudioSystem::shutdown_callback(void *arg)
++{
++        JackAudioSystem *jas = (JackAudioSystem*)arg;
++        jas->bJackIsGood = false;
++}
++
++JackAudioInputRegistrar::JackAudioInputRegistrar() : AudioInputRegistrar(QLatin1String("JACK"), 10) {
++}
++
++AudioInput *JackAudioInputRegistrar::create() {
++        return new JackAudioInput();
++}
++
++const QList<audioDevice> JackAudioInputRegistrar::getDeviceChoices() {
++        QList<audioDevice> qlReturn;
++
++        QStringList qlInputDevs = jasys->qhInput.keys();
++        qSort(qlInputDevs);
++
++        foreach(const QString &dev, qlInputDevs) {
++                qlReturn << audioDevice(jasys->qhInput.value(dev), dev);
++        }
++
++        return qlReturn;
++}
++
++void JackAudioInputRegistrar::setDeviceChoice(const QVariant &choice, Settings &s) {
++        Q_UNUSED(choice);
++        Q_UNUSED(s);
++}
++
++bool JackAudioInputRegistrar::canEcho(const QString &osys) const {
++        Q_UNUSED(osys);
++        return false;
++}
++
++JackAudioOutputRegistrar::JackAudioOutputRegistrar() : AudioOutputRegistrar(QLatin1String("JACK"), 10) {
++}
++
++AudioOutput *JackAudioOutputRegistrar::create() {
++        return new JackAudioOutput();
++}
++
++const QList<audioDevice> JackAudioOutputRegistrar::getDeviceChoices() {
++        QList<audioDevice> qlReturn;
++
++        QStringList qlOutputDevs = jasys->qhOutput.keys();
++        qSort(qlOutputDevs);
++
++        foreach(const QString &dev, qlOutputDevs) {
++                qlReturn << audioDevice(jasys->qhOutput.value(dev), dev);
++        }
++
++        return qlReturn;
++}
++
++void JackAudioOutputRegistrar::setDeviceChoice(const QVariant &choice, Settings &s) {
++        Q_UNUSED(choice);
++        Q_UNUSED(s);
++}
++
++JackAudioInput::JackAudioInput() {
++        bRunning = true;
++        iMicChannels = 0;
++};
++
++JackAudioInput::~JackAudioInput() {
++        bRunning = false;
++        iMicChannels = 0;
++        qmMutex.lock();
++        qwcWait.wakeAll();
++        qmMutex.unlock();
++        wait();
++}
++
++void JackAudioInput::run() {
++        if (jasys && jasys->bJackIsGood) {
++            iMicFreq = jasys->iSampleRate;
++            iMicChannels = 1;
++            eMicFormat = SampleFloat;
++            initializeMixer();
++        }
++
++        qmMutex.lock();
++        while (bRunning)
++                qwcWait.wait(&qmMutex);
++        qmMutex.unlock();
++}
++
++JackAudioOutput::JackAudioOutput() {
++        bRunning = true;
++        iChannels = 0;
++}
++
++JackAudioOutput::~JackAudioOutput() {
++        bRunning = false;
++        iChannels = 0;
++        qmMutex.lock();
++        qwcWait.wakeAll();
++        qmMutex.unlock();
++        wait();
++}
++
++void JackAudioOutput::run() {
++        if (jasys && jasys->bJackIsGood) {
++            unsigned int chanmasks[32];
++
++            chanmasks[0] = SPEAKER_FRONT_LEFT;
++            chanmasks[1] = SPEAKER_FRONT_RIGHT;
++
++            eSampleFormat = SampleFloat;
++            iMixerFreq = jasys->iSampleRate;
++            iChannels = 1;
++            initializeMixer(chanmasks);
++        }
++
++        qmMutex.lock();
++        while (bRunning)
++                qwcWait.wait(&qmMutex);
++        qmMutex.unlock();
++}
+diff --git a/src/mumble/JackAudio.h b/src/mumble/JackAudio.h
+new file mode 100644
+index 000000000..4afed9094
+--- /dev/null
++++ b/src/mumble/JackAudio.h
+@@ -0,0 +1,97 @@
++/* Copyright (C) 2011, Benjamin Jemlich <pcgod@users.sourceforge.net>
++   Copyright (C) 2011, Filipe Coelho <falktx@gmail.com>
++
++   All rights reserved.
++
++   Redistribution and use in source and binary forms, with or without
++   modification, are permitted provided that the following conditions
++   are met:
++
++   - Redistributions of source code must retain the above copyright notice,
++     this list of conditions and the following disclaimer.
++   - Redistributions in binary form must reproduce the above copyright notice,
++     this list of conditions and the following disclaimer in the documentation
++     and/or other materials provided with the distribution.
++   - Neither the name of the Mumble Developers nor the names of its
++     contributors may be used to endorse or promote products derived from this
++     software without specific prior written permission.
++
++   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++   ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
++   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
++   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
++   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
++   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
++   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
++   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
++   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++*/
++
++#ifndef _JACKAUDIO_H
++#define _JACKAUDIO_H
++
++#include "AudioInput.h"
++#include "AudioOutput.h"
++#include <jack/jack.h>
++
++class JackAudioOutput;
++class JackAudioInput;
++
++class JackAudioSystem : public QObject {
++        private:
++                Q_OBJECT
++                Q_DISABLE_COPY(JackAudioSystem)
++        protected:
++                jack_client_t* client;
++                jack_port_t* in_port;
++                jack_port_t* out_port;
++
++                static int process_callback(jack_nframes_t nframes, void *arg);
++                static int srate_callback(jack_nframes_t frames, void *arg);
++                static void shutdown_callback(void *arg);
++        public:
++                QHash<QString, QString> qhInput;
++                QHash<QString, QString> qhOutput;
++                bool bJackIsGood;
++                int iSampleRate;
++                QMutex qmWait;
++                QWaitCondition qwcWait;
++
++                void init_jack();
++                void close_jack();
++
++                JackAudioSystem();
++                ~JackAudioSystem();
++};
++
++class JackAudioInput : public AudioInput {
++                friend class JackAudioSystem;
++        private:
++                Q_OBJECT
++                Q_DISABLE_COPY(JackAudioInput)
++        protected:
++                QMutex qmMutex;
++                QWaitCondition qwcWait;
++        public:
++                JackAudioInput();
++                ~JackAudioInput();
++                void run();
++};
++
++class JackAudioOutput : public AudioOutput {
++                friend class JackAudioSystem;
++        private:
++                Q_OBJECT
++                Q_DISABLE_COPY(JackAudioOutput)
++        protected:
++                QMutex qmMutex;
++                QWaitCondition qwcWait;
++        public:
++                JackAudioOutput();
++                ~JackAudioOutput();
++                void run();
++};
++
++#endif
+diff --git a/src/mumble/mumble.pro b/src/mumble/mumble.pro
+index 91f6739ea..e6a0b516a 100644
+--- a/src/mumble/mumble.pro
++++ b/src/mumble/mumble.pro
+@@ -446,11 +446,17 @@ win32 {
+ 
+ unix {
+   HAVE_PULSEAUDIO=$$system(pkg-config --modversion --silence-errors libpulse)
++  HAVE_JACKAUDIO=$$system(pkg-config --modversion --silence-errors jack)
+ 
+   !isEmpty(HAVE_PULSEAUDIO):!CONFIG(no-pulseaudio) {
+     CONFIG *= pulseaudio
+   }
+ 
++  !isEmpty(HAVE_JACKAUDIO):!CONFIG(no-jackaudio) {
++    CONFIG *= jackaudio
++  }
++
++
+   !CONFIG(no-bundled-speex) {
+     QMAKE_CFLAGS *= -I../../3rdparty/speex-src/include -I../../3rdparty/speex-build
+     QMAKE_CXXFLAGS *= -I../../3rdparty/speex-src/include -I../../3rdparty/speex-build
+@@ -547,6 +553,13 @@ pulseaudio {
+   SOURCES *= PulseAudio.cpp
+ }
+ 
++jackaudio {
++       DEFINES *= USE_JACKAUDIO
++       PKGCONFIG *= jack
++       HEADERS *= JackAudio.h
++       SOURCES *= JackAudio.cpp
++}
++
+ portaudio {
+   DEFINES *= USE_PORTAUDIO
+   must_pkgconfig(portaudio-2.0)
+
+From 52670741b66d90f391fac11f23f855cb7788d43c Mon Sep 17 00:00:00 2001
+From: Bernd Buschinski <b.buschinski@googlemail.com>
+Date: Thu, 12 Apr 2018 13:15:29 +0200
+Subject: [PATCH 02/13] Jack: convert spaces to tabs, to fit better with
+ Mumble's coding style
+
+---
+ src/mumble/JackAudio.cpp | 372 +++++++++++++++++++++++------------------------
+ src/mumble/JackAudio.h   |  91 ++++++------
+ 2 files changed, 232 insertions(+), 231 deletions(-)
+
+diff --git a/src/mumble/JackAudio.cpp b/src/mumble/JackAudio.cpp
+index 4a646d0ab..9e8a535f0 100644
+--- a/src/mumble/JackAudio.cpp
++++ b/src/mumble/JackAudio.cpp
+@@ -40,60 +40,60 @@
+ static JackAudioSystem *jasys = NULL;
+ 
+ class JackAudioInputRegistrar : public AudioInputRegistrar {
+-        public:
+-                JackAudioInputRegistrar();
+-                virtual AudioInput *create();
+-                virtual const QList<audioDevice> getDeviceChoices();
+-                virtual void setDeviceChoice(const QVariant &, Settings &);
+-                virtual bool canEcho(const QString &) const;
++	public:
++		JackAudioInputRegistrar();
++		virtual AudioInput *create();
++		virtual const QList<audioDevice> getDeviceChoices();
++		virtual void setDeviceChoice(const QVariant &, Settings &);
++		virtual bool canEcho(const QString &) const;
+ };
+ 
+ class JackAudioOutputRegistrar : public AudioOutputRegistrar {
+-        public:
+-                JackAudioOutputRegistrar();
+-                virtual AudioOutput *create();
+-                virtual const QList<audioDevice> getDeviceChoices();
+-                virtual void setDeviceChoice(const QVariant &, Settings &);
++	public:
++		JackAudioOutputRegistrar();
++		virtual AudioOutput *create();
++		virtual const QList<audioDevice> getDeviceChoices();
++		virtual void setDeviceChoice(const QVariant &, Settings &);
+ };
+ 
+ class JackAudioInit : public DeferInit {
+-        public:
+-                JackAudioInputRegistrar *airJackAudio;
+-                JackAudioOutputRegistrar *aorJackAudio;
+-                void initialize() {
+-                        jasys = new JackAudioSystem();
+-                        jasys->init_jack();
+-                        jasys->qmWait.lock();
+-                        jasys->qwcWait.wait(&jasys->qmWait, 1000);
+-                        jasys->qmWait.unlock();
+-                        if (jasys->bJackIsGood) {
+-                                airJackAudio = new JackAudioInputRegistrar();
+-                                aorJackAudio = new JackAudioOutputRegistrar();
+-                        } else {
+-                                airJackAudio = NULL;
+-                                aorJackAudio = NULL;
+-                                delete jasys;
+-                                jasys = NULL;
+-                        }
+-                };
+-                void destroy() {
+-                        if (airJackAudio)
+-                                delete airJackAudio;
+-                        if (aorJackAudio)
+-                                delete aorJackAudio;
+-                        if (jasys) {
+-                                jasys->close_jack();
+-                                delete jasys;
+-                                jasys = NULL;
+-                        }
+-                };
++	public:
++		JackAudioInputRegistrar *airJackAudio;
++		JackAudioOutputRegistrar *aorJackAudio;
++		void initialize() {
++			jasys = new JackAudioSystem();
++			jasys->init_jack();
++			jasys->qmWait.lock();
++			jasys->qwcWait.wait(&jasys->qmWait, 1000);
++			jasys->qmWait.unlock();
++			if (jasys->bJackIsGood) {
++					airJackAudio = new JackAudioInputRegistrar();
++					aorJackAudio = new JackAudioOutputRegistrar();
++			} else {
++					airJackAudio = NULL;
++					aorJackAudio = NULL;
++					delete jasys;
++					jasys = NULL;
++			}
++		};
++		void destroy() {
++			if (airJackAudio)
++					delete airJackAudio;
++			if (aorJackAudio)
++					delete aorJackAudio;
++			if (jasys) {
++					jasys->close_jack();
++					delete jasys;
++					jasys = NULL;
++			}
++		};
+ };
+ 
+ static JackAudioInit jackinit; //unused
+ 
+ JackAudioSystem::JackAudioSystem() {
+-        bJackIsGood = false;
+-        iSampleRate = 0;
++	bJackIsGood = false;
++	iSampleRate = 0;
+ }
+ 
+ JackAudioSystem::~JackAudioSystem() {
+@@ -101,214 +101,214 @@ JackAudioSystem::~JackAudioSystem() {
+ 
+ void JackAudioSystem::init_jack()
+ {
+-        client = jack_client_open("mumble", JackNullOption, 0);
+-
+-        if (client) {
+-                in_port = jack_port_register(client, "input", JACK_DEFAULT_AUDIO_TYPE, JackPortIsInput, 0);
+-                out_port = jack_port_register(client, "output", JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
+-                jack_set_process_callback(client, process_callback, this);
+-                jack_set_sample_rate_callback(client, srate_callback, this);
+-                jack_on_shutdown(client, shutdown_callback, this);
+-
+-                iSampleRate = jack_get_sample_rate(client);
+-
+-                if (jack_activate(client) || in_port == NULL || out_port == NULL) {
+-                    client = NULL;
+-                    return;
+-                }
+-
+-                int port_flags;
+-                unsigned i = -1;
+-                const char** ports = jack_get_ports(client, 0, 0, JackPortIsPhysical);
+-
+-                if (ports) {
+-                    while (ports[++i])
+-                    {
+-                        jack_port_t* port = jack_port_by_name(client, ports[i]);
+-                        port_flags = jack_port_flags(port);
+-
+-                        if (port_flags & (JackPortIsPhysical|JackPortIsOutput) && strstr(jack_port_type(port), "audio")) {
+-                            jack_connect(client, ports[i], jack_port_name(in_port));
+-                        }
+-                        if (port_flags & (JackPortIsPhysical|JackPortIsInput) && strstr(jack_port_type(port), "audio")) {
+-                            jack_connect(client, jack_port_name(out_port), ports[i]);
+-                        }
+-                    }
+-                }
+-
+-                jack_free(ports);
+-
+-                // If we made it this far, then everything is okay
+-                qhInput.insert(QString(), tr("Hardware Ports"));
+-                qhOutput.insert(QString(), tr("Hardware Ports"));
+-                bJackIsGood = true;
+-
+-            } else {
+-                bJackIsGood = false;
+-                client = NULL;
+-            }
++	client = jack_client_open("mumble", JackNullOption, 0);
++
++	if (client) {
++		in_port = jack_port_register(client, "input", JACK_DEFAULT_AUDIO_TYPE, JackPortIsInput, 0);
++		out_port = jack_port_register(client, "output", JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
++		jack_set_process_callback(client, process_callback, this);
++		jack_set_sample_rate_callback(client, srate_callback, this);
++		jack_on_shutdown(client, shutdown_callback, this);
++
++		iSampleRate = jack_get_sample_rate(client);
++
++		if (jack_activate(client) || in_port == NULL || out_port == NULL) {
++			client = NULL;
++			return;
++		}
++
++		int port_flags;
++		unsigned i = -1;
++		const char** ports = jack_get_ports(client, 0, 0, JackPortIsPhysical);
++
++		if (ports) {
++			while (ports[++i])
++			{
++				jack_port_t* port = jack_port_by_name(client, ports[i]);
++				port_flags = jack_port_flags(port);
++
++				if (port_flags & (JackPortIsPhysical|JackPortIsOutput) && strstr(jack_port_type(port), "audio")) {
++					jack_connect(client, ports[i], jack_port_name(in_port));
++				}
++				if (port_flags & (JackPortIsPhysical|JackPortIsInput) && strstr(jack_port_type(port), "audio")) {
++					jack_connect(client, jack_port_name(out_port), ports[i]);
++				}
++			}
++		}
++
++		jack_free(ports);
++
++		// If we made it this far, then everything is okay
++		qhInput.insert(QString(), tr("Hardware Ports"));
++		qhOutput.insert(QString(), tr("Hardware Ports"));
++		bJackIsGood = true;
++
++	} else {
++		bJackIsGood = false;
++		client = NULL;
++	}
+ }
+ 
+ void JackAudioSystem::close_jack()
+ {
+-        if (client) {
+-                jack_deactivate(client);
+-                jack_client_close(client);
+-                client = NULL;
+-        }
++	if (client) {
++		jack_deactivate(client);
++		jack_client_close(client);
++		client = NULL;
++	}
+ }
+ 
+ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg)
+ {
+-        JackAudioSystem *jas = (JackAudioSystem*)arg;
+-
+-        if (jas && jas->bJackIsGood) {
+-                AudioInputPtr ai = g.ai;
+-                AudioOutputPtr ao = g.ao;
+-                JackAudioInput *jai = (JackAudioInput*)(ai.get());
+-                JackAudioOutput *jao = (JackAudioOutput*)(ao.get());
+-
+-                if (jai && jai->bRunning && jai->iMicChannels > 0 && !jai->isFinished()) {
+-                        void* input = jack_port_get_buffer(jas->in_port, nframes);
+-                        if ((float*)input != 0)
+-                            jai->addMic(input, nframes);
+-                }
+-
+-                if (jao && jao->bRunning && jao->iChannels > 0 && !jao->isFinished()) {
+-                        jack_default_audio_sample_t* output = (jack_default_audio_sample_t*)jack_port_get_buffer(jas->out_port, nframes);
+-                        memset(output, 0, sizeof(jack_default_audio_sample_t)*nframes); //TEST
+-                        jao->mix(output, nframes);
+-                }
+-        }
+-
+-        return 0;
++	JackAudioSystem *jas = (JackAudioSystem*)arg;
++
++	if (jas && jas->bJackIsGood) {
++		AudioInputPtr ai = g.ai;
++		AudioOutputPtr ao = g.ao;
++		JackAudioInput *jai = (JackAudioInput*)(ai.get());
++		JackAudioOutput *jao = (JackAudioOutput*)(ao.get());
++
++		if (jai && jai->bRunning && jai->iMicChannels > 0 && !jai->isFinished()) {
++			void* input = jack_port_get_buffer(jas->in_port, nframes);
++			if ((float*)input != 0)
++				jai->addMic(input, nframes);
++		}
++
++		if (jao && jao->bRunning && jao->iChannels > 0 && !jao->isFinished()) {
++			jack_default_audio_sample_t* output = (jack_default_audio_sample_t*)jack_port_get_buffer(jas->out_port, nframes);
++			memset(output, 0, sizeof(jack_default_audio_sample_t)*nframes); //TEST
++			jao->mix(output, nframes);
++		}
++	}
++
++	return 0;
+ }
+ 
+ int JackAudioSystem::srate_callback(jack_nframes_t frames, void *arg)
+ {
+-        JackAudioSystem *jas = (JackAudioSystem*)arg;
+-        jas->iSampleRate = frames;
+-        return 0;
++	JackAudioSystem *jas = (JackAudioSystem*)arg;
++	jas->iSampleRate = frames;
++	return 0;
+ }
+ 
+ void JackAudioSystem::shutdown_callback(void *arg)
+ {
+-        JackAudioSystem *jas = (JackAudioSystem*)arg;
+-        jas->bJackIsGood = false;
++	JackAudioSystem *jas = (JackAudioSystem*)arg;
++	jas->bJackIsGood = false;
+ }
+ 
+ JackAudioInputRegistrar::JackAudioInputRegistrar() : AudioInputRegistrar(QLatin1String("JACK"), 10) {
+ }
+ 
+ AudioInput *JackAudioInputRegistrar::create() {
+-        return new JackAudioInput();
++	return new JackAudioInput();
+ }
+ 
+ const QList<audioDevice> JackAudioInputRegistrar::getDeviceChoices() {
+-        QList<audioDevice> qlReturn;
++	QList<audioDevice> qlReturn;
+ 
+-        QStringList qlInputDevs = jasys->qhInput.keys();
+-        qSort(qlInputDevs);
++	QStringList qlInputDevs = jasys->qhInput.keys();
++	qSort(qlInputDevs);
+ 
+-        foreach(const QString &dev, qlInputDevs) {
+-                qlReturn << audioDevice(jasys->qhInput.value(dev), dev);
+-        }
++	foreach(const QString &dev, qlInputDevs) {
++		qlReturn << audioDevice(jasys->qhInput.value(dev), dev);
++	}
+ 
+-        return qlReturn;
++	return qlReturn;
+ }
+ 
+ void JackAudioInputRegistrar::setDeviceChoice(const QVariant &choice, Settings &s) {
+-        Q_UNUSED(choice);
+-        Q_UNUSED(s);
++	Q_UNUSED(choice);
++	Q_UNUSED(s);
+ }
+ 
+ bool JackAudioInputRegistrar::canEcho(const QString &osys) const {
+-        Q_UNUSED(osys);
+-        return false;
++	Q_UNUSED(osys);
++	return false;
+ }
+ 
+ JackAudioOutputRegistrar::JackAudioOutputRegistrar() : AudioOutputRegistrar(QLatin1String("JACK"), 10) {
+ }
+ 
+ AudioOutput *JackAudioOutputRegistrar::create() {
+-        return new JackAudioOutput();
++	return new JackAudioOutput();
+ }
+ 
+ const QList<audioDevice> JackAudioOutputRegistrar::getDeviceChoices() {
+-        QList<audioDevice> qlReturn;
++	QList<audioDevice> qlReturn;
+ 
+-        QStringList qlOutputDevs = jasys->qhOutput.keys();
+-        qSort(qlOutputDevs);
++	QStringList qlOutputDevs = jasys->qhOutput.keys();
++	qSort(qlOutputDevs);
+ 
+-        foreach(const QString &dev, qlOutputDevs) {
+-                qlReturn << audioDevice(jasys->qhOutput.value(dev), dev);
+-        }
++	foreach(const QString &dev, qlOutputDevs) {
++		qlReturn << audioDevice(jasys->qhOutput.value(dev), dev);
++	}
+ 
+-        return qlReturn;
++	return qlReturn;
+ }
+ 
+ void JackAudioOutputRegistrar::setDeviceChoice(const QVariant &choice, Settings &s) {
+-        Q_UNUSED(choice);
+-        Q_UNUSED(s);
++	Q_UNUSED(choice);
++	Q_UNUSED(s);
+ }
+ 
+ JackAudioInput::JackAudioInput() {
+-        bRunning = true;
+-        iMicChannels = 0;
++	bRunning = true;
++	iMicChannels = 0;
+ };
+ 
+ JackAudioInput::~JackAudioInput() {
+-        bRunning = false;
+-        iMicChannels = 0;
+-        qmMutex.lock();
+-        qwcWait.wakeAll();
+-        qmMutex.unlock();
+-        wait();
++	bRunning = false;
++	iMicChannels = 0;
++	qmMutex.lock();
++	qwcWait.wakeAll();
++	qmMutex.unlock();
++	wait();
+ }
+ 
+ void JackAudioInput::run() {
+-        if (jasys && jasys->bJackIsGood) {
+-            iMicFreq = jasys->iSampleRate;
+-            iMicChannels = 1;
+-            eMicFormat = SampleFloat;
+-            initializeMixer();
+-        }
+-
+-        qmMutex.lock();
+-        while (bRunning)
+-                qwcWait.wait(&qmMutex);
+-        qmMutex.unlock();
++	if (jasys && jasys->bJackIsGood) {
++		iMicFreq = jasys->iSampleRate;
++		iMicChannels = 1;
++		eMicFormat = SampleFloat;
++		initializeMixer();
++	}
++
++	qmMutex.lock();
++	while (bRunning)
++		qwcWait.wait(&qmMutex);
++	qmMutex.unlock();
+ }
+ 
+ JackAudioOutput::JackAudioOutput() {
+-        bRunning = true;
+-        iChannels = 0;
++	bRunning = true;
++	iChannels = 0;
+ }
+ 
+ JackAudioOutput::~JackAudioOutput() {
+-        bRunning = false;
+-        iChannels = 0;
+-        qmMutex.lock();
+-        qwcWait.wakeAll();
+-        qmMutex.unlock();
+-        wait();
++	bRunning = false;
++	iChannels = 0;
++	qmMutex.lock();
++	qwcWait.wakeAll();
++	qmMutex.unlock();
++	wait();
+ }
+ 
+ void JackAudioOutput::run() {
+-        if (jasys && jasys->bJackIsGood) {
+-            unsigned int chanmasks[32];
+-
+-            chanmasks[0] = SPEAKER_FRONT_LEFT;
+-            chanmasks[1] = SPEAKER_FRONT_RIGHT;
+-
+-            eSampleFormat = SampleFloat;
+-            iMixerFreq = jasys->iSampleRate;
+-            iChannels = 1;
+-            initializeMixer(chanmasks);
+-        }
+-
+-        qmMutex.lock();
+-        while (bRunning)
+-                qwcWait.wait(&qmMutex);
+-        qmMutex.unlock();
++	if (jasys && jasys->bJackIsGood) {
++		unsigned int chanmasks[32];
++
++		chanmasks[0] = SPEAKER_FRONT_LEFT;
++		chanmasks[1] = SPEAKER_FRONT_RIGHT;
++
++		eSampleFormat = SampleFloat;
++		iMixerFreq = jasys->iSampleRate;
++		iChannels = 1;
++		initializeMixer(chanmasks);
++	}
++
++	qmMutex.lock();
++	while (bRunning)
++		qwcWait.wait(&qmMutex);
++	qmMutex.unlock();
+ }
+diff --git a/src/mumble/JackAudio.h b/src/mumble/JackAudio.h
+index 4afed9094..b66fa7cd8 100644
+--- a/src/mumble/JackAudio.h
++++ b/src/mumble/JackAudio.h
+@@ -29,69 +29,70 @@
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+ 
+-#ifndef _JACKAUDIO_H
+-#define _JACKAUDIO_H
++#ifndef MUMBLE_MUMBLE_JACKAUDIO_H_
++#define MUMBLE_MUMBLE_JACKAUDIO_H_
+ 
+ #include "AudioInput.h"
+ #include "AudioOutput.h"
++
+ #include <jack/jack.h>
+ 
+ class JackAudioOutput;
+ class JackAudioInput;
+ 
+ class JackAudioSystem : public QObject {
+-        private:
+-                Q_OBJECT
+-                Q_DISABLE_COPY(JackAudioSystem)
+-        protected:
+-                jack_client_t* client;
+-                jack_port_t* in_port;
+-                jack_port_t* out_port;
++	private:
++		Q_OBJECT
++		Q_DISABLE_COPY(JackAudioSystem)
++	protected:
++		jack_client_t* client;
++		jack_port_t* in_port;
++		jack_port_t* out_port;
+ 
+-                static int process_callback(jack_nframes_t nframes, void *arg);
+-                static int srate_callback(jack_nframes_t frames, void *arg);
+-                static void shutdown_callback(void *arg);
+-        public:
+-                QHash<QString, QString> qhInput;
+-                QHash<QString, QString> qhOutput;
+-                bool bJackIsGood;
+-                int iSampleRate;
+-                QMutex qmWait;
+-                QWaitCondition qwcWait;
++		static int process_callback(jack_nframes_t nframes, void *arg);
++		static int srate_callback(jack_nframes_t frames, void *arg);
++		static void shutdown_callback(void *arg);
++	public:
++		QHash<QString, QString> qhInput;
++		QHash<QString, QString> qhOutput;
++		bool bJackIsGood;
++		int iSampleRate;
++		QMutex qmWait;
++		QWaitCondition qwcWait;
+ 
+-                void init_jack();
+-                void close_jack();
++		void init_jack();
++		void close_jack();
+ 
+-                JackAudioSystem();
+-                ~JackAudioSystem();
++		JackAudioSystem();
++		~JackAudioSystem();
+ };
+ 
+ class JackAudioInput : public AudioInput {
+-                friend class JackAudioSystem;
+-        private:
+-                Q_OBJECT
+-                Q_DISABLE_COPY(JackAudioInput)
+-        protected:
+-                QMutex qmMutex;
+-                QWaitCondition qwcWait;
+-        public:
+-                JackAudioInput();
+-                ~JackAudioInput();
+-                void run();
++	friend class JackAudioSystem;
++	private:
++		Q_OBJECT
++		Q_DISABLE_COPY(JackAudioInput)
++	protected:
++		QMutex qmMutex;
++		QWaitCondition qwcWait;
++	public:
++		JackAudioInput();
++		~JackAudioInput();
++		void run();
+ };
+ 
+ class JackAudioOutput : public AudioOutput {
+-                friend class JackAudioSystem;
+-        private:
+-                Q_OBJECT
+-                Q_DISABLE_COPY(JackAudioOutput)
+-        protected:
+-                QMutex qmMutex;
+-                QWaitCondition qwcWait;
+-        public:
+-                JackAudioOutput();
+-                ~JackAudioOutput();
+-                void run();
++	friend class JackAudioSystem;
++	private:
++		Q_OBJECT
++		Q_DISABLE_COPY(JackAudioOutput)
++	protected:
++		QMutex qmMutex;
++		QWaitCondition qwcWait;
++	public:
++		JackAudioOutput();
++		~JackAudioOutput();
++		void run();
+ };
+ 
+ #endif
+
+From 6d170c3786f0e971a6e26cd90469a4d6cd066d0a Mon Sep 17 00:00:00 2001
+From: Bernd Buschinski <b.buschinski@googlemail.com>
+Date: Thu, 12 Apr 2018 16:44:51 +0200
+Subject: [PATCH 03/13] Jack: add stereo support
+
+---
+ src/mumble/JackAudio.cpp | 127 ++++++++++++++++++++++++++++++++++-------------
+ src/mumble/JackAudio.h   |   9 +++-
+ src/mumble/mumble.pro    |   8 +--
+ 3 files changed, 104 insertions(+), 40 deletions(-)
+
+diff --git a/src/mumble/JackAudio.cpp b/src/mumble/JackAudio.cpp
+index 9e8a535f0..c089f4f7b 100644
+--- a/src/mumble/JackAudio.cpp
++++ b/src/mumble/JackAudio.cpp
+@@ -1,5 +1,6 @@
+ /* Copyright (C) 2011, Benjamin Jemlich <pcgod@users.sourceforge.net>
+    Copyright (C) 2011, Filipe Coelho <falktx@gmail.com>
++   Copyright (C) 2018, Bernd Buschinski <b.buschinski@gmail.com>
+ 
+    All rights reserved.
+ 
+@@ -67,24 +68,24 @@ class JackAudioInit : public DeferInit {
+ 			jasys->qwcWait.wait(&jasys->qmWait, 1000);
+ 			jasys->qmWait.unlock();
+ 			if (jasys->bJackIsGood) {
+-					airJackAudio = new JackAudioInputRegistrar();
+-					aorJackAudio = new JackAudioOutputRegistrar();
++				airJackAudio = new JackAudioInputRegistrar();
++				aorJackAudio = new JackAudioOutputRegistrar();
+ 			} else {
+-					airJackAudio = NULL;
+-					aorJackAudio = NULL;
+-					delete jasys;
+-					jasys = NULL;
++				airJackAudio = NULL;
++				aorJackAudio = NULL;
++				delete jasys;
++				jasys = NULL;
+ 			}
+ 		};
+ 		void destroy() {
+ 			if (airJackAudio)
+-					delete airJackAudio;
++				delete airJackAudio;
+ 			if (aorJackAudio)
+-					delete aorJackAudio;
++				delete aorJackAudio;
+ 			if (jasys) {
+-					jasys->close_jack();
+-					delete jasys;
+-					jasys = NULL;
++				jasys->close_jack();
++				delete jasys;
++				jasys = NULL;
+ 			}
+ 		};
+ };
+@@ -94,31 +95,48 @@ static JackAudioInit jackinit; //unused
+ JackAudioSystem::JackAudioSystem() {
+ 	bJackIsGood = false;
+ 	iSampleRate = 0;
++	output_buffer = NULL;
+ }
+ 
+ JackAudioSystem::~JackAudioSystem() {
+ }
+ 
+-void JackAudioSystem::init_jack()
+-{
+-	client = jack_client_open("mumble", JackNullOption, 0);
++void JackAudioSystem::init_jack() {
++
++	output_buffer = NULL;
++
++	/* TODO make option */
++	jack_options_t jack_option = false ? JackNullOption : JackNoStartServer;
++	client = jack_client_open("mumble", jack_option, 0);
+ 
+ 	if (client) {
+ 		in_port = jack_port_register(client, "input", JACK_DEFAULT_AUDIO_TYPE, JackPortIsInput, 0);
+-		out_port = jack_port_register(client, "output", JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
++		out_ports[0] = jack_port_register(client, "output_1", JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
++		out_ports[1] = jack_port_register(client, "output_2", JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
++
++		bJackIsGood = true;
++		allocate_output_buffer(jack_get_buffer_size(client));
++		if (bJackIsGood == false) {
++			close_jack();
++			return;
++		}
++
+ 		jack_set_process_callback(client, process_callback, this);
+ 		jack_set_sample_rate_callback(client, srate_callback, this);
++		jack_set_buffer_size_callback(client, buffer_size_callback, this);
+ 		jack_on_shutdown(client, shutdown_callback, this);
+ 
+ 		iSampleRate = jack_get_sample_rate(client);
+ 
+-		if (jack_activate(client) || in_port == NULL || out_port == NULL) {
+-			client = NULL;
++		if (jack_activate(client) || in_port == NULL || out_ports[0] == NULL || out_ports[1] == NULL) {
++			close_jack();
+ 			return;
+ 		}
+ 
++		/* TODO make option for auto connect */
+ 		int port_flags;
+-		unsigned i = -1;
++		unsigned int i = -1;
++		unsigned int output_index = 0;
+ 		const char** ports = jack_get_ports(client, 0, 0, JackPortIsPhysical);
+ 
+ 		if (ports) {
+@@ -130,8 +148,8 @@ void JackAudioSystem::init_jack()
+ 				if (port_flags & (JackPortIsPhysical|JackPortIsOutput) && strstr(jack_port_type(port), "audio")) {
+ 					jack_connect(client, ports[i], jack_port_name(in_port));
+ 				}
+-				if (port_flags & (JackPortIsPhysical|JackPortIsInput) && strstr(jack_port_type(port), "audio")) {
+-					jack_connect(client, jack_port_name(out_port), ports[i]);
++				if (output_index < 2 && port_flags & (JackPortIsPhysical|JackPortIsInput) && strstr(jack_port_type(port), "audio")) {
++					jack_connect(client, jack_port_name(out_ports[output_index++]), ports[i]);
+ 				}
+ 			}
+ 		}
+@@ -149,17 +167,22 @@ void JackAudioSystem::init_jack()
+ 	}
+ }
+ 
+-void JackAudioSystem::close_jack()
+-{
++void JackAudioSystem::close_jack() {
++
+ 	if (client) {
+ 		jack_deactivate(client);
+ 		jack_client_close(client);
++
++		delete [] output_buffer;
++		output_buffer = NULL;
++
+ 		client = NULL;
+ 	}
++	bJackIsGood = false;
+ }
+ 
+-int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg)
+-{
++int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
++
+ 	JackAudioSystem *jas = (JackAudioSystem*)arg;
+ 
+ 	if (jas && jas->bJackIsGood) {
+@@ -169,30 +192,64 @@ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg)
+ 		JackAudioOutput *jao = (JackAudioOutput*)(ao.get());
+ 
+ 		if (jai && jai->bRunning && jai->iMicChannels > 0 && !jai->isFinished()) {
++
+ 			void* input = jack_port_get_buffer(jas->in_port, nframes);
+-			if ((float*)input != 0)
+-				jai->addMic(input, nframes);
++			jai->addMic(input, nframes);
+ 		}
+ 
+-		if (jao && jao->bRunning && jao->iChannels > 0 && !jao->isFinished()) {
+-			jack_default_audio_sample_t* output = (jack_default_audio_sample_t*)jack_port_get_buffer(jas->out_port, nframes);
+-			memset(output, 0, sizeof(jack_default_audio_sample_t)*nframes); //TEST
+-			jao->mix(output, nframes);
++		if (jao && jao->isRunning() && jao->iChannels > 0 && !jao->isFinished()) {
++
++			jack_default_audio_sample_t* port_buffers[JACK_OUTPUT_CHANNELS];
++			for (unsigned int i = 0; i < jao->iChannels; ++i) {
++
++				port_buffers[i] = (jack_default_audio_sample_t*)jack_port_get_buffer(jas->out_ports[i], nframes);
++			}
++
++			jack_default_audio_sample_t * const buffer = jas->output_buffer;
++
++			jao->mix(buffer, nframes);
++
++			for (unsigned int i = 0; i < nframes * jao->iChannels; i += JACK_OUTPUT_CHANNELS) {
++
++				const unsigned int buffer_pos = i / JACK_OUTPUT_CHANNELS;
++				port_buffers[0][buffer_pos] = buffer[i];
++				port_buffers[1][buffer_pos] = buffer[i+1];
++			}
+ 		}
+ 	}
+ 
+ 	return 0;
+ }
+ 
+-int JackAudioSystem::srate_callback(jack_nframes_t frames, void *arg)
+-{
++int JackAudioSystem::srate_callback(jack_nframes_t frames, void *arg) {
++
+ 	JackAudioSystem *jas = (JackAudioSystem*)arg;
+ 	jas->iSampleRate = frames;
+ 	return 0;
+ }
+ 
+-void JackAudioSystem::shutdown_callback(void *arg)
+-{
++void JackAudioSystem::allocate_output_buffer(jack_nframes_t frames) {
++
++	if (output_buffer) {
++		delete [] output_buffer;
++	}
++	output_buffer = new jack_default_audio_sample_t[frames * JACK_OUTPUT_CHANNELS];
++	if (output_buffer) {
++		memset(output_buffer, 0, sizeof(jack_default_audio_sample_t) * frames * JACK_OUTPUT_CHANNELS);
++	} else {
++		bJackIsGood = false;
++	}
++}
++
++int JackAudioSystem::buffer_size_callback(jack_nframes_t frames, void *arg) {
++
++	JackAudioSystem *jas = (JackAudioSystem*)arg;
++	jas->allocate_output_buffer(frames);
++	return 0;
++}
++
++void JackAudioSystem::shutdown_callback(void *arg) {
++
+ 	JackAudioSystem *jas = (JackAudioSystem*)arg;
+ 	jas->bJackIsGood = false;
+ }
+@@ -302,8 +359,8 @@ void JackAudioOutput::run() {
+ 		chanmasks[1] = SPEAKER_FRONT_RIGHT;
+ 
+ 		eSampleFormat = SampleFloat;
++		iChannels = JACK_OUTPUT_CHANNELS;
+ 		iMixerFreq = jasys->iSampleRate;
+-		iChannels = 1;
+ 		initializeMixer(chanmasks);
+ 	}
+ 
+diff --git a/src/mumble/JackAudio.h b/src/mumble/JackAudio.h
+index b66fa7cd8..9fb40eddd 100644
+--- a/src/mumble/JackAudio.h
++++ b/src/mumble/JackAudio.h
+@@ -1,5 +1,6 @@
+ /* Copyright (C) 2011, Benjamin Jemlich <pcgod@users.sourceforge.net>
+    Copyright (C) 2011, Filipe Coelho <falktx@gmail.com>
++   Copyright (C) 2018, Bernd Buschinski <b.buschinski@gmail.com>
+ 
+    All rights reserved.
+ 
+@@ -37,6 +38,8 @@
+ 
+ #include <jack/jack.h>
+ 
++#define JACK_OUTPUT_CHANNELS 2
++
+ class JackAudioOutput;
+ class JackAudioInput;
+ 
+@@ -47,10 +50,12 @@ class JackAudioSystem : public QObject {
+ 	protected:
+ 		jack_client_t* client;
+ 		jack_port_t* in_port;
+-		jack_port_t* out_port;
++		jack_port_t* out_ports[JACK_OUTPUT_CHANNELS];
++		jack_default_audio_sample_t* output_buffer;
+ 
+ 		static int process_callback(jack_nframes_t nframes, void *arg);
+ 		static int srate_callback(jack_nframes_t frames, void *arg);
++		static int buffer_size_callback(jack_nframes_t frames, void *arg);
+ 		static void shutdown_callback(void *arg);
+ 	public:
+ 		QHash<QString, QString> qhInput;
+@@ -63,6 +68,8 @@ class JackAudioSystem : public QObject {
+ 		void init_jack();
+ 		void close_jack();
+ 
++		void allocate_output_buffer(jack_nframes_t frames);
++
+ 		JackAudioSystem();
+ 		~JackAudioSystem();
+ };
+diff --git a/src/mumble/mumble.pro b/src/mumble/mumble.pro
+index e6a0b516a..cf5e6e3a2 100644
+--- a/src/mumble/mumble.pro
++++ b/src/mumble/mumble.pro
+@@ -554,10 +554,10 @@ pulseaudio {
+ }
+ 
+ jackaudio {
+-       DEFINES *= USE_JACKAUDIO
+-       PKGCONFIG *= jack
+-       HEADERS *= JackAudio.h
+-       SOURCES *= JackAudio.cpp
++  DEFINES *= USE_JACKAUDIO
++  PKGCONFIG *= jack
++  HEADERS *= JackAudio.h
++  SOURCES *= JackAudio.cpp
+ }
+ 
+ portaudio {
+
+From 0017d8b5c132a98c27c88d8dcf5a64def3fc8dc8 Mon Sep 17 00:00:00 2001
+From: Bernd Buschinski <b.buschinski@googlemail.com>
+Date: Fri, 13 Apr 2018 15:18:01 +0200
+Subject: [PATCH 04/13] Jack: fix it always being active
+
+---
+ src/mumble/JackAudio.cpp | 66 ++++++++++++++++++++++++++++--------------------
+ src/mumble/JackAudio.h   | 11 +++++---
+ 2 files changed, 45 insertions(+), 32 deletions(-)
+
+diff --git a/src/mumble/JackAudio.cpp b/src/mumble/JackAudio.cpp
+index c089f4f7b..973001630 100644
+--- a/src/mumble/JackAudio.cpp
++++ b/src/mumble/JackAudio.cpp
+@@ -96,6 +96,7 @@ JackAudioSystem::JackAudioSystem() {
+ 	bJackIsGood = false;
+ 	iSampleRate = 0;
+ 	output_buffer = NULL;
++	active = false;
+ }
+ 
+ JackAudioSystem::~JackAudioSystem() {
+@@ -128,34 +129,11 @@ void JackAudioSystem::init_jack() {
+ 
+ 		iSampleRate = jack_get_sample_rate(client);
+ 
+-		if (jack_activate(client) || in_port == NULL || out_ports[0] == NULL || out_ports[1] == NULL) {
++		if (in_port == NULL || out_ports[0] == NULL || out_ports[1] == NULL) {
+ 			close_jack();
+ 			return;
+ 		}
+ 
+-		/* TODO make option for auto connect */
+-		int port_flags;
+-		unsigned int i = -1;
+-		unsigned int output_index = 0;
+-		const char** ports = jack_get_ports(client, 0, 0, JackPortIsPhysical);
+-
+-		if (ports) {
+-			while (ports[++i])
+-			{
+-				jack_port_t* port = jack_port_by_name(client, ports[i]);
+-				port_flags = jack_port_flags(port);
+-
+-				if (port_flags & (JackPortIsPhysical|JackPortIsOutput) && strstr(jack_port_type(port), "audio")) {
+-					jack_connect(client, ports[i], jack_port_name(in_port));
+-				}
+-				if (output_index < 2 && port_flags & (JackPortIsPhysical|JackPortIsInput) && strstr(jack_port_type(port), "audio")) {
+-					jack_connect(client, jack_port_name(out_ports[output_index++]), ports[i]);
+-				}
+-			}
+-		}
+-
+-		jack_free(ports);
+-
+ 		// If we made it this far, then everything is okay
+ 		qhInput.insert(QString(), tr("Hardware Ports"));
+ 		qhOutput.insert(QString(), tr("Hardware Ports"));
+@@ -181,6 +159,19 @@ void JackAudioSystem::close_jack() {
+ 	bJackIsGood = false;
+ }
+ 
++void JackAudioSystem::activate()
++{
++	if (active) {
++		return;
++	}
++
++	if (jack_activate(client)) {
++		close_jack();
++		return;
++	}
++	active = true;
++}
++
+ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 
+ 	JackAudioSystem *jas = (JackAudioSystem*)arg;
+@@ -188,16 +179,20 @@ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 	if (jas && jas->bJackIsGood) {
+ 		AudioInputPtr ai = g.ai;
+ 		AudioOutputPtr ao = g.ao;
+-		JackAudioInput *jai = (JackAudioInput*)(ai.get());
+-		JackAudioOutput *jao = (JackAudioOutput*)(ao.get());
+-
+-		if (jai && jai->bRunning && jai->iMicChannels > 0 && !jai->isFinished()) {
++		AudioInput *raw_ai = ai.get();
++		AudioOutput *raw_ao = ao.get();
++		JackAudioInput *jai = dynamic_cast<JackAudioInput *>(raw_ai);
++		JackAudioOutput *jao = dynamic_cast<JackAudioOutput *>(raw_ao);
+ 
++		if (jai && jai->isRunning() && jai->iMicChannels > 0 && !jai->isFinished()) {
++			jai->qmMutex.lock();
+ 			void* input = jack_port_get_buffer(jas->in_port, nframes);
+ 			jai->addMic(input, nframes);
++			jai->qmMutex.unlock();
+ 		}
+ 
+ 		if (jao && jao->isRunning() && jao->iChannels > 0 && !jao->isFinished()) {
++			jao->qmMutex.lock();
+ 
+ 			jack_default_audio_sample_t* port_buffers[JACK_OUTPUT_CHANNELS];
+ 			for (unsigned int i = 0; i < jao->iChannels; ++i) {
+@@ -206,6 +201,7 @@ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 			}
+ 
+ 			jack_default_audio_sample_t * const buffer = jas->output_buffer;
++			memset(buffer, 0, sizeof(jack_default_audio_sample_t) * nframes * JACK_OUTPUT_CHANNELS);
+ 
+ 			jao->mix(buffer, nframes);
+ 
+@@ -215,6 +211,7 @@ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 				port_buffers[0][buffer_pos] = buffer[i];
+ 				port_buffers[1][buffer_pos] = buffer[i+1];
+ 			}
++			jao->qmMutex.unlock();
+ 		}
+ 	}
+ 
+@@ -230,8 +227,15 @@ int JackAudioSystem::srate_callback(jack_nframes_t frames, void *arg) {
+ 
+ void JackAudioSystem::allocate_output_buffer(jack_nframes_t frames) {
+ 
++	AudioOutputPtr ao = g.ao;
++	JackAudioOutput * const jao = dynamic_cast<JackAudioOutput *>(ao.get());
++
++	if (jao) {
++		jao->qmMutex.lock();
++	}
+ 	if (output_buffer) {
+ 		delete [] output_buffer;
++		output_buffer = NULL;
+ 	}
+ 	output_buffer = new jack_default_audio_sample_t[frames * JACK_OUTPUT_CHANNELS];
+ 	if (output_buffer) {
+@@ -239,6 +243,10 @@ void JackAudioSystem::allocate_output_buffer(jack_nframes_t frames) {
+ 	} else {
+ 		bJackIsGood = false;
+ 	}
++
++	if (jao) {
++		jao->qmMutex.unlock();
++	}
+ }
+ 
+ int JackAudioSystem::buffer_size_callback(jack_nframes_t frames, void *arg) {
+@@ -329,6 +337,7 @@ void JackAudioInput::run() {
+ 		iMicChannels = 1;
+ 		eMicFormat = SampleFloat;
+ 		initializeMixer();
++		jasys->activate();
+ 	}
+ 
+ 	qmMutex.lock();
+@@ -362,6 +371,7 @@ void JackAudioOutput::run() {
+ 		iChannels = JACK_OUTPUT_CHANNELS;
+ 		iMixerFreq = jasys->iSampleRate;
+ 		initializeMixer(chanmasks);
++		jasys->activate();
+ 	}
+ 
+ 	qmMutex.lock();
+diff --git a/src/mumble/JackAudio.h b/src/mumble/JackAudio.h
+index 9fb40eddd..a3ffc389f 100644
+--- a/src/mumble/JackAudio.h
++++ b/src/mumble/JackAudio.h
+@@ -48,6 +48,7 @@ class JackAudioSystem : public QObject {
+ 		Q_OBJECT
+ 		Q_DISABLE_COPY(JackAudioSystem)
+ 	protected:
++		bool active;
+ 		jack_client_t* client;
+ 		jack_port_t* in_port;
+ 		jack_port_t* out_ports[JACK_OUTPUT_CHANNELS];
+@@ -68,6 +69,8 @@ class JackAudioSystem : public QObject {
+ 		void init_jack();
+ 		void close_jack();
+ 
++		void activate();
++
+ 		void allocate_output_buffer(jack_nframes_t frames);
+ 
+ 		JackAudioSystem();
+@@ -84,8 +87,8 @@ class JackAudioInput : public AudioInput {
+ 		QWaitCondition qwcWait;
+ 	public:
+ 		JackAudioInput();
+-		~JackAudioInput();
+-		void run();
++		~JackAudioInput() Q_DECL_OVERRIDE;
++		void run() Q_DECL_OVERRIDE;
+ };
+ 
+ class JackAudioOutput : public AudioOutput {
+@@ -98,8 +101,8 @@ class JackAudioOutput : public AudioOutput {
+ 		QWaitCondition qwcWait;
+ 	public:
+ 		JackAudioOutput();
+-		~JackAudioOutput();
+-		void run();
++		~JackAudioOutput() Q_DECL_OVERRIDE;
++		void run() Q_DECL_OVERRIDE;
+ };
+ 
+ #endif
+
+From c8489361d3f0fd3a08b1821299e2dbc5ce271bc8 Mon Sep 17 00:00:00 2001
+From: Bernd Buschinski <b.buschinski@googlemail.com>
+Date: Fri, 13 Apr 2018 18:14:01 +0200
+Subject: [PATCH 05/13] Jack: make number of output channels configurable
+ (mono/stereo)
+
+---
+ src/mumble/JackAudio.cpp | 147 +++++++++++++++++++++++++++++++++++------------
+ src/mumble/JackAudio.h   |  13 +++--
+ src/mumble/Settings.cpp  |   4 ++
+ src/mumble/Settings.h    |   1 +
+ 4 files changed, 123 insertions(+), 42 deletions(-)
+
+diff --git a/src/mumble/JackAudio.cpp b/src/mumble/JackAudio.cpp
+index 973001630..6fb51de75 100644
+--- a/src/mumble/JackAudio.cpp
++++ b/src/mumble/JackAudio.cpp
+@@ -31,12 +31,9 @@
+ */
+ 
+ #include "JackAudio.h"
+-#include "User.h"
++
+ #include "Global.h"
+-#include "MainWindow.h"
+-#include "Timer.h"
+ 
+-#include <cstring>
+ 
+ static JackAudioSystem *jasys = NULL;
+ 
+@@ -96,7 +93,13 @@ JackAudioSystem::JackAudioSystem() {
+ 	bJackIsGood = false;
+ 	iSampleRate = 0;
+ 	output_buffer = NULL;
+-	active = false;
++	bActive = false;
++	if (g.s.qsJackAudioOutput.isEmpty()) {
++		iOutPorts = 1;
++	} else {
++		iOutPorts = g.s.qsJackAudioOutput.toInt();
++	}
++	memset((void*)&out_ports, 0, sizeof(out_ports));
+ }
+ 
+ JackAudioSystem::~JackAudioSystem() {
+@@ -112,11 +115,13 @@ void JackAudioSystem::init_jack() {
+ 
+ 	if (client) {
+ 		in_port = jack_port_register(client, "input", JACK_DEFAULT_AUDIO_TYPE, JackPortIsInput, 0);
+-		out_ports[0] = jack_port_register(client, "output_1", JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
+-		out_ports[1] = jack_port_register(client, "output_2", JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
+ 
+ 		bJackIsGood = true;
+-		allocate_output_buffer(jack_get_buffer_size(client));
++		iBufferSize = jack_get_buffer_size(client);
++		iSampleRate = jack_get_sample_rate(client);
++
++		setNumberOfOutPorts(iOutPorts);
++
+ 		if (bJackIsGood == false) {
+ 			close_jack();
+ 			return;
+@@ -127,16 +132,15 @@ void JackAudioSystem::init_jack() {
+ 		jack_set_buffer_size_callback(client, buffer_size_callback, this);
+ 		jack_on_shutdown(client, shutdown_callback, this);
+ 
+-		iSampleRate = jack_get_sample_rate(client);
+-
+-		if (in_port == NULL || out_ports[0] == NULL || out_ports[1] == NULL) {
++		if (in_port == NULL) {
+ 			close_jack();
+ 			return;
+ 		}
+ 
+ 		// If we made it this far, then everything is okay
+ 		qhInput.insert(QString(), tr("Hardware Ports"));
+-		qhOutput.insert(QString(), tr("Hardware Ports"));
++		qhOutput.insert(QString::number(1), tr("Mono"));
++		qhOutput.insert(QString::number(2), tr("Stereo"));
+ 		bJackIsGood = true;
+ 
+ 	} else {
+@@ -149,6 +153,17 @@ void JackAudioSystem::close_jack() {
+ 
+ 	if (client) {
+ 		jack_deactivate(client);
++
++		if (in_port != NULL) {
++			jack_port_unregister(client, in_port);
++		}
++
++		for (unsigned i = 0; i < iOutPorts; ++i) {
++			if (out_ports[i] != NULL) {
++				jack_port_unregister(client, out_ports[0]);
++			}
++		}
++
+ 		jack_client_close(client);
+ 
+ 		delete [] output_buffer;
+@@ -161,28 +176,26 @@ void JackAudioSystem::close_jack() {
+ 
+ void JackAudioSystem::activate()
+ {
+-	if (active) {
++	if (bActive) {
+ 		return;
+ 	}
+ 
+-	if (jack_activate(client)) {
++	if (jack_activate(client) != 0) {
+ 		close_jack();
+ 		return;
+ 	}
+-	active = true;
++	bActive = true;
+ }
+ 
+ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 
+-	JackAudioSystem *jas = (JackAudioSystem*)arg;
++	JackAudioSystem * const jas = (JackAudioSystem*)arg;
+ 
+ 	if (jas && jas->bJackIsGood) {
+ 		AudioInputPtr ai = g.ai;
+ 		AudioOutputPtr ao = g.ao;
+-		AudioInput *raw_ai = ai.get();
+-		AudioOutput *raw_ao = ao.get();
+-		JackAudioInput *jai = dynamic_cast<JackAudioInput *>(raw_ai);
+-		JackAudioOutput *jao = dynamic_cast<JackAudioOutput *>(raw_ao);
++		JackAudioInput * const jai = dynamic_cast<JackAudioInput *>(ai.get());
++		JackAudioOutput * const jao = dynamic_cast<JackAudioOutput *>(ao.get());
+ 
+ 		if (jai && jai->isRunning() && jai->iMicChannels > 0 && !jai->isFinished()) {
+ 			jai->qmMutex.lock();
+@@ -194,22 +207,26 @@ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 		if (jao && jao->isRunning() && jao->iChannels > 0 && !jao->isFinished()) {
+ 			jao->qmMutex.lock();
+ 
+-			jack_default_audio_sample_t* port_buffers[JACK_OUTPUT_CHANNELS];
++			jack_default_audio_sample_t* port_buffers[JACK_MAX_OUTPUT_PORTS];
+ 			for (unsigned int i = 0; i < jao->iChannels; ++i) {
+ 
+ 				port_buffers[i] = (jack_default_audio_sample_t*)jack_port_get_buffer(jas->out_ports[i], nframes);
+ 			}
+ 
+ 			jack_default_audio_sample_t * const buffer = jas->output_buffer;
+-			memset(buffer, 0, sizeof(jack_default_audio_sample_t) * nframes * JACK_OUTPUT_CHANNELS);
++			memset(buffer, 0, sizeof(jack_default_audio_sample_t) * nframes * jao->iChannels);
+ 
+ 			jao->mix(buffer, nframes);
+ 
+-			for (unsigned int i = 0; i < nframes * jao->iChannels; i += JACK_OUTPUT_CHANNELS) {
++			if (jao->iChannels == 1) {
++
++				memcpy(port_buffers[0], buffer, sizeof(jack_default_audio_sample_t) * nframes);
++			} else {
+ 
+-				const unsigned int buffer_pos = i / JACK_OUTPUT_CHANNELS;
+-				port_buffers[0][buffer_pos] = buffer[i];
+-				port_buffers[1][buffer_pos] = buffer[i+1];
++				// de-interleave channels
++				for (unsigned int i = 0; i < nframes * jao->iChannels; ++i) {
++					port_buffers[i % jao->iChannels][i/jao->iChannels] = buffer[i];
++				}
+ 			}
+ 			jao->qmMutex.unlock();
+ 		}
+@@ -220,13 +237,14 @@ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 
+ int JackAudioSystem::srate_callback(jack_nframes_t frames, void *arg) {
+ 
+-	JackAudioSystem *jas = (JackAudioSystem*)arg;
++	JackAudioSystem * const jas = (JackAudioSystem*)arg;
+ 	jas->iSampleRate = frames;
+ 	return 0;
+ }
+ 
+-void JackAudioSystem::allocate_output_buffer(jack_nframes_t frames) {
++void JackAudioSystem::allocOutputBuffer(jack_nframes_t frames) {
+ 
++	iBufferSize = frames;
+ 	AudioOutputPtr ao = g.ao;
+ 	JackAudioOutput * const jao = dynamic_cast<JackAudioOutput *>(ao.get());
+ 
+@@ -237,10 +255,8 @@ void JackAudioSystem::allocate_output_buffer(jack_nframes_t frames) {
+ 		delete [] output_buffer;
+ 		output_buffer = NULL;
+ 	}
+-	output_buffer = new jack_default_audio_sample_t[frames * JACK_OUTPUT_CHANNELS];
+-	if (output_buffer) {
+-		memset(output_buffer, 0, sizeof(jack_default_audio_sample_t) * frames * JACK_OUTPUT_CHANNELS);
+-	} else {
++	output_buffer = new jack_default_audio_sample_t[frames * numberOfOutPorts()];
++	if (output_buffer == NULL) {
+ 		bJackIsGood = false;
+ 	}
+ 
+@@ -249,16 +265,65 @@ void JackAudioSystem::allocate_output_buffer(jack_nframes_t frames) {
+ 	}
+ }
+ 
++void JackAudioSystem::setNumberOfOutPorts(unsigned int ports) {
++
++	AudioOutputPtr ao = g.ao;
++	JackAudioOutput * const jao = dynamic_cast<JackAudioOutput *>(ao.get());
++	unsigned int oldSize = iOutPorts;
++
++	iOutPorts = qBound<unsigned>(1, ports, JACK_MAX_OUTPUT_PORTS);
++
++	allocOutputBuffer(iBufferSize);
++
++	if (jao) {
++		jao->qmMutex.lock();
++	}
++
++	if (bActive)
++		jack_deactivate(client);
++
++	for (unsigned int i = 0; i < oldSize; ++i) {
++		if (out_ports[i] != NULL) {
++			jack_port_unregister(client, out_ports[i]);
++			out_ports[i] = NULL;
++		}
++	}
++
++	for (unsigned int i = 0; i < iOutPorts; ++i) {
++
++		char name[10];
++		snprintf(name, 10, "output_%d", i + 1);
++
++		out_ports[i] = jack_port_register(client, name, JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
++		if (out_ports[i] == NULL) {
++			bJackIsGood = false;
++			break;
++		}
++	}
++
++	if (bActive)
++		jack_activate(client);
++
++	if (jao) {
++		jao->qmMutex.unlock();
++	}
++}
++
++unsigned int JackAudioSystem::numberOfOutPorts() const {
++
++	return iOutPorts;
++}
++
+ int JackAudioSystem::buffer_size_callback(jack_nframes_t frames, void *arg) {
+ 
+-	JackAudioSystem *jas = (JackAudioSystem*)arg;
+-	jas->allocate_output_buffer(frames);
++	JackAudioSystem * const jas = (JackAudioSystem*)arg;
++	jas->allocOutputBuffer(frames);
+ 	return 0;
+ }
+ 
+ void JackAudioSystem::shutdown_callback(void *arg) {
+ 
+-	JackAudioSystem *jas = (JackAudioSystem*)arg;
++	JackAudioSystem * const jas = (JackAudioSystem*)arg;
+ 	jas->bJackIsGood = false;
+ }
+ 
+@@ -305,6 +370,11 @@ const QList<audioDevice> JackAudioOutputRegistrar::getDeviceChoices() {
+ 	QStringList qlOutputDevs = jasys->qhOutput.keys();
+ 	qSort(qlOutputDevs);
+ 
++	if (qlOutputDevs.contains(g.s.qsJackAudioOutput)) {
++		qlOutputDevs.removeAll(g.s.qsJackAudioOutput);
++		qlOutputDevs.prepend(g.s.qsJackAudioOutput);
++	}
++
+ 	foreach(const QString &dev, qlOutputDevs) {
+ 		qlReturn << audioDevice(jasys->qhOutput.value(dev), dev);
+ 	}
+@@ -313,8 +383,9 @@ const QList<audioDevice> JackAudioOutputRegistrar::getDeviceChoices() {
+ }
+ 
+ void JackAudioOutputRegistrar::setDeviceChoice(const QVariant &choice, Settings &s) {
+-	Q_UNUSED(choice);
+-	Q_UNUSED(s);
++
++	s.qsJackAudioOutput = choice.toString();
++	jasys->setNumberOfOutPorts(choice.toInt());
+ }
+ 
+ JackAudioInput::JackAudioInput() {
+@@ -368,7 +439,7 @@ void JackAudioOutput::run() {
+ 		chanmasks[1] = SPEAKER_FRONT_RIGHT;
+ 
+ 		eSampleFormat = SampleFloat;
+-		iChannels = JACK_OUTPUT_CHANNELS;
++		iChannels = jasys->numberOfOutPorts();
+ 		iMixerFreq = jasys->iSampleRate;
+ 		initializeMixer(chanmasks);
+ 		jasys->activate();
+diff --git a/src/mumble/JackAudio.h b/src/mumble/JackAudio.h
+index a3ffc389f..0e2def4b4 100644
+--- a/src/mumble/JackAudio.h
++++ b/src/mumble/JackAudio.h
+@@ -38,7 +38,7 @@
+ 
+ #include <jack/jack.h>
+ 
+-#define JACK_OUTPUT_CHANNELS 2
++#define JACK_MAX_OUTPUT_PORTS 2
+ 
+ class JackAudioOutput;
+ class JackAudioInput;
+@@ -48,11 +48,13 @@ class JackAudioSystem : public QObject {
+ 		Q_OBJECT
+ 		Q_DISABLE_COPY(JackAudioSystem)
+ 	protected:
+-		bool active;
++		bool bActive;
+ 		jack_client_t* client;
+ 		jack_port_t* in_port;
+-		jack_port_t* out_ports[JACK_OUTPUT_CHANNELS];
++		jack_port_t* out_ports[JACK_MAX_OUTPUT_PORTS];
+ 		jack_default_audio_sample_t* output_buffer;
++		unsigned int iOutPorts;
++		jack_nframes_t iBufferSize;
+ 
+ 		static int process_callback(jack_nframes_t nframes, void *arg);
+ 		static int srate_callback(jack_nframes_t frames, void *arg);
+@@ -71,7 +73,10 @@ class JackAudioSystem : public QObject {
+ 
+ 		void activate();
+ 
+-		void allocate_output_buffer(jack_nframes_t frames);
++		void allocOutputBuffer(jack_nframes_t frames);
++
++		void setNumberOfOutPorts(unsigned int ports);
++		unsigned int numberOfOutPorts() const;
+ 
+ 		JackAudioSystem();
+ 		~JackAudioSystem();
+diff --git a/src/mumble/Settings.cpp b/src/mumble/Settings.cpp
+index 7c19d66de..60860de74 100644
+--- a/src/mumble/Settings.cpp
++++ b/src/mumble/Settings.cpp
+@@ -654,6 +654,8 @@ void Settings::load(QSettings* settings_ptr) {
+ 	SAVELOAD(qsPulseAudioInput, "pulseaudio/input");
+ 	SAVELOAD(qsPulseAudioOutput, "pulseaudio/output");
+ 
++	SAVELOAD(qsJackAudioOutput, "jack/output");
++
+ 	SAVELOAD(qsOSSInput, "oss/input");
+ 	SAVELOAD(qsOSSOutput, "oss/output");
+ 
+@@ -990,6 +992,8 @@ void Settings::save() {
+ 	SAVELOAD(qsPulseAudioInput, "pulseaudio/input");
+ 	SAVELOAD(qsPulseAudioOutput, "pulseaudio/output");
+ 
++	SAVELOAD(qsJackAudioOutput, "jack/output");
++
+ 	SAVELOAD(qsOSSInput, "oss/input");
+ 	SAVELOAD(qsOSSOutput, "oss/output");
+ 
+diff --git a/src/mumble/Settings.h b/src/mumble/Settings.h
+index 0c9705ca1..a097b6d65 100644
+--- a/src/mumble/Settings.h
++++ b/src/mumble/Settings.h
+@@ -206,6 +206,7 @@ struct Settings {
+ 
+ 	QString qsALSAInput, qsALSAOutput;
+ 	QString qsPulseAudioInput, qsPulseAudioOutput;
++	QString qsJackAudioOutput;
+ 	QString qsOSSInput, qsOSSOutput;
+ 	int iPortAudioInput, iPortAudioOutput;
+ 
+
+From db3f041a4087d4c128ebc53fd27c6a2fd188b7a5 Mon Sep 17 00:00:00 2001
+From: Bernd Buschinski <b.buschinski@googlemail.com>
+Date: Fri, 13 Apr 2018 19:25:34 +0200
+Subject: [PATCH 06/13] Jack: fix possible crash on Mumble shutdown
+
+---
+ src/mumble/JackAudio.cpp | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/src/mumble/JackAudio.cpp b/src/mumble/JackAudio.cpp
+index 6fb51de75..98dd6a6ca 100644
+--- a/src/mumble/JackAudio.cpp
++++ b/src/mumble/JackAudio.cpp
+@@ -151,8 +151,10 @@ void JackAudioSystem::init_jack() {
+ 
+ void JackAudioSystem::close_jack() {
+ 
++	QMutexLocker lock(&qmWait);
+ 	if (client) {
+ 		jack_deactivate(client);
++		bActive = false;
+ 
+ 		if (in_port != NULL) {
+ 			jack_port_unregister(client, in_port);
+@@ -176,15 +178,18 @@ void JackAudioSystem::close_jack() {
+ 
+ void JackAudioSystem::activate()
+ {
+-	if (bActive) {
+-		return;
+-	}
++	QMutexLocker lock(&qmWait);
++	if (client) {
++		if (bActive) {
++			return;
++		}
+ 
+-	if (jack_activate(client) != 0) {
+-		close_jack();
+-		return;
++		if (jack_activate(client) != 0) {
++			close_jack();
++			return;
++		}
++		bActive = true;
+ 	}
+-	bActive = true;
+ }
+ 
+ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+
+From bbaed838143c01b3ec64dc1b3704f67375815322 Mon Sep 17 00:00:00 2001
+From: Bernd Buschinski <b.buschinski@googlemail.com>
+Date: Sat, 28 Apr 2018 00:27:58 +0200
+Subject: [PATCH 07/13] Jack: improve error checking
+
+---
+ src/mumble/JackAudio.cpp | 167 ++++++++++++++++++++++++++++++++++++++---------
+ src/mumble/JackAudio.h   |   1 +
+ src/mumble/Settings.cpp  |   2 +
+ 3 files changed, 140 insertions(+), 30 deletions(-)
+
+diff --git a/src/mumble/JackAudio.cpp b/src/mumble/JackAudio.cpp
+index 98dd6a6ca..58762a00b 100644
+--- a/src/mumble/JackAudio.cpp
++++ b/src/mumble/JackAudio.cpp
+@@ -1,5 +1,6 @@
+ /* Copyright (C) 2011, Benjamin Jemlich <pcgod@users.sourceforge.net>
+    Copyright (C) 2011, Filipe Coelho <falktx@gmail.com>
++   Copyright (C) 2015, Mikkel Krautz <mikkel@krautz.dk>
+    Copyright (C) 2018, Bernd Buschinski <b.buschinski@gmail.com>
+ 
+    All rights reserved.
+@@ -35,7 +36,55 @@
+ #include "Global.h"
+ 
+ 
+-static JackAudioSystem *jasys = NULL;
++static JackAudioSystem * jasys = NULL;
++
++// jackStatusToStringList converts a jack_status_t (a flag type
++// that can contain multiple Jack statuses) to a QStringList.
++QStringList jackStatusToStringList(jack_status_t status) {
++	QStringList statusList;
++
++	if ((status & JackFailure) != 0) {
++		statusList << QLatin1String("JackFailure - overall operation failed");
++	}
++	if ((status & JackInvalidOption) != 0) {
++		statusList << QLatin1String("JackInvalidOption - the operation contained an invalid or unsupported option");
++	}
++	if ((status & JackNameNotUnique) != 0)  {
++		statusList << QLatin1String("JackNameNotUnique - the desired client name is not unique");
++	}
++	if ((status & JackServerStarted) != 0) {
++		statusList << QLatin1String("JackServerStarted - the server was started as a result of this operation");
++	}
++	if ((status & JackServerFailed) != 0) {
++		statusList << QLatin1String("JackServerFailed - unable to connect to the JACK server");
++	}
++	if ((status & JackServerError) != 0) {
++		statusList << QLatin1String("JackServerError - communication error with the JACK server");
++	}
++	if ((status & JackNoSuchClient) != 0) {
++		statusList << QLatin1String("JackNoSuchClient - requested client does not exist");
++	}
++	if ((status & JackLoadFailure) != 0) {
++		statusList << QLatin1String("JackLoadFailure - unable to load initial client");
++	}
++	if ((status & JackInitFailure) != 0) {
++		statusList << QLatin1String("JackInitFailure - unable to initialize client");
++	}
++	if ((status & JackShmFailure) != 0)  {
++		statusList << QLatin1String("JackShmFailure - unable to access shared memory");
++	}
++	if ((status & JackVersionError) != 0) {
++		statusList << QLatin1String("JackVersionError - client's protocol version does not match");
++	}
++	if ((status & JackBackendError) != 0) {
++		statusList << QLatin1String("JackBackendError - a backend error occurred");
++	}
++	if ((status & JackClientZombie) != 0) {
++		statusList << QLatin1String("JackClientZombie - client zombified");
++	}
++
++	return statusList;
++}
+ 
+ class JackAudioInputRegistrar : public AudioInputRegistrar {
+ 	public:
+@@ -108,13 +157,20 @@ JackAudioSystem::~JackAudioSystem() {
+ void JackAudioSystem::init_jack() {
+ 
+ 	output_buffer = NULL;
++	jack_status_t status = static_cast<jack_status_t>(0);
++	int err = 0;
+ 
+ 	/* TODO make option */
+ 	jack_options_t jack_option = false ? JackNullOption : JackNoStartServer;
+-	client = jack_client_open("mumble", jack_option, 0);
++	client = jack_client_open("mumble", jack_option, &status);
+ 
+ 	if (client) {
+ 		in_port = jack_port_register(client, "input", JACK_DEFAULT_AUDIO_TYPE, JackPortIsInput, 0);
++		if (in_port == NULL) {
++			qWarning("JackAudioSystem: unable to register 'input' port");
++			close_jack();
++			return;
++		}
+ 
+ 		bJackIsGood = true;
+ 		iBufferSize = jack_get_buffer_size(client);
+@@ -127,16 +183,29 @@ void JackAudioSystem::init_jack() {
+ 			return;
+ 		}
+ 
+-		jack_set_process_callback(client, process_callback, this);
+-		jack_set_sample_rate_callback(client, srate_callback, this);
+-		jack_set_buffer_size_callback(client, buffer_size_callback, this);
+-		jack_on_shutdown(client, shutdown_callback, this);
++		err = jack_set_process_callback(client, process_callback, this);
++		if (err != 0) {
++			qWarning("JackAudioSystem: unable to set process callback - jack_set_process_callback() returned %i", err);
++			close_jack();
++			return;
++		}
+ 
+-		if (in_port == NULL) {
++		err = jack_set_sample_rate_callback(client, srate_callback, this);
++		if (err != 0) {
++			qWarning("JackAudioSystem: unable to set sample rate callback - jack_set_sample_rate_callback() returned %i", err);
++			close_jack();
++			return;
++		}
++
++		err = jack_set_buffer_size_callback(client, buffer_size_callback, this);
++		if (err != 0) {
++			qWarning("JackAudioSystem: unable to set buffer size callback - jack_set_buffer_size_callback() returned %i", err);
+ 			close_jack();
+ 			return;
+ 		}
+ 
++		jack_on_shutdown(client, shutdown_callback, this);
++
+ 		// If we made it this far, then everything is okay
+ 		qhInput.insert(QString(), tr("Hardware Ports"));
+ 		qhOutput.insert(QString::number(1), tr("Mono"));
+@@ -144,6 +213,11 @@ void JackAudioSystem::init_jack() {
+ 		bJackIsGood = true;
+ 
+ 	} else {
++		QStringList errors = jackStatusToStringList(status);
++		qWarning("JackAudioSystem: unable to open jack client due to %i errors:", errors.count());
++		for (int i = 0; i < errors.count(); i++) {
++			qWarning("JackAudioSystem:  %s", qPrintable(errors.at(i)));
++		}
+ 		bJackIsGood = false;
+ 		client = NULL;
+ 	}
+@@ -153,20 +227,34 @@ void JackAudioSystem::close_jack() {
+ 
+ 	QMutexLocker lock(&qmWait);
+ 	if (client) {
+-		jack_deactivate(client);
++		int err = 0;
++		err = jack_deactivate(client);
++		if (err != 0)  {
++			qWarning("JackAudioSystem: unable to remove client from the process graph - jack_deactivate() returned %i", err);
++		}
++
+ 		bActive = false;
+ 
+ 		if (in_port != NULL) {
+-			jack_port_unregister(client, in_port);
++			err = jack_port_unregister(client, in_port);
++			if (err != 0)  {
++				qWarning("JackAudioSystem: unable to unregister in port - jack_port_unregister() returned %i", err);
++			}
+ 		}
+ 
+ 		for (unsigned i = 0; i < iOutPorts; ++i) {
+ 			if (out_ports[i] != NULL) {
+-				jack_port_unregister(client, out_ports[0]);
++				err = jack_port_unregister(client, out_ports[0]);
++				if (err != 0)  {
++					qWarning("JackAudioSystem: unable to unregister out port - jack_port_unregister() returned %i", err);
++				}
+ 			}
+ 		}
+ 
+-		jack_client_close(client);
++		err = jack_client_close(client);
++		if (err != 0) {
++			qWarning("JackAudioSystem: unable to to disconnect from the JACK server - jack_client_close() returned %i", err);
++		}
+ 
+ 		delete [] output_buffer;
+ 		output_buffer = NULL;
+@@ -184,8 +272,10 @@ void JackAudioSystem::activate()
+ 			return;
+ 		}
+ 
+-		if (jack_activate(client) != 0) {
+-			close_jack();
++		int err = jack_activate(client);
++		if (err != 0) {
++			qWarning("JackAudioSystem: unable to activate client - jack_activate() returned %i", err);
++			bJackIsGood = false;
+ 			return;
+ 		}
+ 		bActive = true;
+@@ -194,7 +284,7 @@ void JackAudioSystem::activate()
+ 
+ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 
+-	JackAudioSystem * const jas = (JackAudioSystem*)arg;
++	JackAudioSystem * const jas = static_cast<JackAudioSystem*>(arg);
+ 
+ 	if (jas && jas->bJackIsGood) {
+ 		AudioInputPtr ai = g.ai;
+@@ -203,19 +293,23 @@ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 		JackAudioOutput * const jao = dynamic_cast<JackAudioOutput *>(ao.get());
+ 
+ 		if (jai && jai->isRunning() && jai->iMicChannels > 0 && !jai->isFinished()) {
+-			jai->qmMutex.lock();
+-			void* input = jack_port_get_buffer(jas->in_port, nframes);
+-			jai->addMic(input, nframes);
+-			jai->qmMutex.unlock();
++			QMutexLocker(&jai->qmMutex);
++			void * input = jack_port_get_buffer(jas->in_port, nframes);
++			if (input != NULL) {
++				jai->addMic(input, nframes);
++			}
+ 		}
+ 
+ 		if (jao && jao->isRunning() && jao->iChannels > 0 && !jao->isFinished()) {
+-			jao->qmMutex.lock();
++			QMutexLocker(&jao->qmMutex);
+ 
+ 			jack_default_audio_sample_t* port_buffers[JACK_MAX_OUTPUT_PORTS];
+ 			for (unsigned int i = 0; i < jao->iChannels; ++i) {
+ 
+ 				port_buffers[i] = (jack_default_audio_sample_t*)jack_port_get_buffer(jas->out_ports[i], nframes);
++				if (port_buffers[i] == NULL) {
++					return 1;
++				}
+ 			}
+ 
+ 			jack_default_audio_sample_t * const buffer = jas->output_buffer;
+@@ -230,10 +324,9 @@ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 
+ 				// de-interleave channels
+ 				for (unsigned int i = 0; i < nframes * jao->iChannels; ++i) {
+-					port_buffers[i % jao->iChannels][i/jao->iChannels] = buffer[i];
++					port_buffers[i % jao->iChannels][i / jao->iChannels] = buffer[i];
+ 				}
+ 			}
+-			jao->qmMutex.unlock();
+ 		}
+ 	}
+ 
+@@ -242,7 +335,7 @@ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 
+ int JackAudioSystem::srate_callback(jack_nframes_t frames, void *arg) {
+ 
+-	JackAudioSystem * const jas = (JackAudioSystem*)arg;
++	JackAudioSystem * const jas = static_cast<JackAudioSystem*>(arg);
+ 	jas->iSampleRate = frames;
+ 	return 0;
+ }
+@@ -274,7 +367,8 @@ void JackAudioSystem::setNumberOfOutPorts(unsigned int ports) {
+ 
+ 	AudioOutputPtr ao = g.ao;
+ 	JackAudioOutput * const jao = dynamic_cast<JackAudioOutput *>(ao.get());
+-	unsigned int oldSize = iOutPorts;
++	unsigned int const oldSize = iOutPorts;
++	int err = 0;
+ 
+ 	iOutPorts = qBound<unsigned>(1, ports, JACK_MAX_OUTPUT_PORTS);
+ 
+@@ -284,12 +378,19 @@ void JackAudioSystem::setNumberOfOutPorts(unsigned int ports) {
+ 		jao->qmMutex.lock();
+ 	}
+ 
+-	if (bActive)
+-		jack_deactivate(client);
++	if (bActive) {
++		err = jack_deactivate(client);
++		if (err != 0) {
++			qWarning("JackAudioSystem: unable to remove client from the process graph - jack_deactivate() returned %i", err);
++		}
++	}
+ 
+ 	for (unsigned int i = 0; i < oldSize; ++i) {
+ 		if (out_ports[i] != NULL) {
+-			jack_port_unregister(client, out_ports[i]);
++			err = jack_port_unregister(client, out_ports[i]);
++			if (err != 0)  {
++				qWarning("JackAudioSystem: unable to unregister out port - jack_port_unregister() returned %i", err);
++			}
+ 			out_ports[i] = NULL;
+ 		}
+ 	}
+@@ -301,13 +402,19 @@ void JackAudioSystem::setNumberOfOutPorts(unsigned int ports) {
+ 
+ 		out_ports[i] = jack_port_register(client, name, JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
+ 		if (out_ports[i] == NULL) {
++			qWarning("JackAudioSystem: unable to register 'output' port");
+ 			bJackIsGood = false;
+ 			break;
+ 		}
+ 	}
+ 
+-	if (bActive)
+-		jack_activate(client);
++	if (bActive) {
++		err = jack_activate(client);
++		if (err != 0) {
++			qWarning("JackAudioSystem: unable to activate client - jack_activate() returned %i", err);
++			bJackIsGood = false;
++		}
++	}
+ 
+ 	if (jao) {
+ 		jao->qmMutex.unlock();
+@@ -321,14 +428,14 @@ unsigned int JackAudioSystem::numberOfOutPorts() const {
+ 
+ int JackAudioSystem::buffer_size_callback(jack_nframes_t frames, void *arg) {
+ 
+-	JackAudioSystem * const jas = (JackAudioSystem*)arg;
++	JackAudioSystem * const jas = static_cast<JackAudioSystem*>(arg);
+ 	jas->allocOutputBuffer(frames);
+ 	return 0;
+ }
+ 
+ void JackAudioSystem::shutdown_callback(void *arg) {
+ 
+-	JackAudioSystem * const jas = (JackAudioSystem*)arg;
++	JackAudioSystem * const jas = static_cast<JackAudioSystem*>(arg);
+ 	jas->bJackIsGood = false;
+ }
+ 
+diff --git a/src/mumble/JackAudio.h b/src/mumble/JackAudio.h
+index 0e2def4b4..26d0e0bcc 100644
+--- a/src/mumble/JackAudio.h
++++ b/src/mumble/JackAudio.h
+@@ -1,5 +1,6 @@
+ /* Copyright (C) 2011, Benjamin Jemlich <pcgod@users.sourceforge.net>
+    Copyright (C) 2011, Filipe Coelho <falktx@gmail.com>
++   Copyright (C) 2015, Mikkel Krautz <mikkel@krautz.dk>
+    Copyright (C) 2018, Bernd Buschinski <b.buschinski@gmail.com>
+ 
+    All rights reserved.
+diff --git a/src/mumble/Settings.cpp b/src/mumble/Settings.cpp
+index 60860de74..458ecdee9 100644
+--- a/src/mumble/Settings.cpp
++++ b/src/mumble/Settings.cpp
+@@ -315,6 +315,8 @@ Settings::Settings() {
+ 	qsALSAInput=QLatin1String("default");
+ 	qsALSAOutput=QLatin1String("default");
+ 
++	qsJackAudioOutput = QLatin1String("1");
++
+ 	bEcho = false;
+ 	bEchoMulti = true;
+ 
+
+From 00805e9c9d4cf81de7d3e2e93576a1277d39d3db Mon Sep 17 00:00:00 2001
+From: Bernd Buschinski <b.buschinski@googlemail.com>
+Date: Sat, 28 Apr 2018 13:05:10 +0200
+Subject: [PATCH 08/13] Jack: add option to autostart jackserver (default on)
+ and another one to autoconnect Jack ports (default off)
+
+---
+ src/mumble/JackAudio.cpp | 76 +++++++++++++++++++++++++++++++++++++++++-------
+ src/mumble/JackAudio.h   |  2 ++
+ src/mumble/Settings.cpp  |  6 ++++
+ src/mumble/Settings.h    |  1 +
+ 4 files changed, 74 insertions(+), 11 deletions(-)
+
+diff --git a/src/mumble/JackAudio.cpp b/src/mumble/JackAudio.cpp
+index 58762a00b..469255d60 100644
+--- a/src/mumble/JackAudio.cpp
++++ b/src/mumble/JackAudio.cpp
+@@ -122,7 +122,8 @@ class JackAudioInit : public DeferInit {
+ 				delete jasys;
+ 				jasys = NULL;
+ 			}
+-		};
++		}
++
+ 		void destroy() {
+ 			if (airJackAudio)
+ 				delete airJackAudio;
+@@ -133,16 +134,20 @@ class JackAudioInit : public DeferInit {
+ 				delete jasys;
+ 				jasys = NULL;
+ 			}
+-		};
++		}
+ };
+ 
+ static JackAudioInit jackinit; //unused
+ 
+-JackAudioSystem::JackAudioSystem() {
+-	bJackIsGood = false;
+-	iSampleRate = 0;
+-	output_buffer = NULL;
+-	bActive = false;
++JackAudioSystem::JackAudioSystem()
++	: bActive(false)
++	, client(NULL)
++	, in_port(NULL)
++	, output_buffer(NULL)
++	, iBufferSize(0)
++	, bJackIsGood(false)
++	, iSampleRate(0)
++{
+ 	if (g.s.qsJackAudioOutput.isEmpty()) {
+ 		iOutPorts = 1;
+ 	} else {
+@@ -160,8 +165,7 @@ void JackAudioSystem::init_jack() {
+ 	jack_status_t status = static_cast<jack_status_t>(0);
+ 	int err = 0;
+ 
+-	/* TODO make option */
+-	jack_options_t jack_option = false ? JackNullOption : JackNoStartServer;
++	jack_options_t jack_option = g.s.bJackStartServer ? JackNullOption : JackNoStartServer;
+ 	client = jack_client_open("mumble", jack_option, &status);
+ 
+ 	if (client) {
+@@ -215,7 +219,7 @@ void JackAudioSystem::init_jack() {
+ 	} else {
+ 		QStringList errors = jackStatusToStringList(status);
+ 		qWarning("JackAudioSystem: unable to open jack client due to %i errors:", errors.count());
+-		for (int i = 0; i < errors.count(); i++) {
++		for (int i = 0; i < errors.count(); ++i) {
+ 			qWarning("JackAudioSystem:  %s", qPrintable(errors.at(i)));
+ 		}
+ 		bJackIsGood = false;
+@@ -264,6 +268,54 @@ void JackAudioSystem::close_jack() {
+ 	bJackIsGood = false;
+ }
+ 
++
++void JackAudioSystem::auto_connect_ports()
++{
++	if (g.s.bJackAutoConnect == false) {
++		return;
++	}
++
++	const char **ports = NULL;
++	int const wanted_out_flags = JackPortIsPhysical | JackPortIsOutput;
++	int const wanted_in_flags = JackPortIsPhysical | JackPortIsInput;
++	int err;
++	unsigned int connected_out_ports = 0;
++	unsigned int connected_in_ports = 0;
++
++	ports = jack_get_ports(client, 0, "audio", JackPortIsPhysical);
++	if (ports != NULL) {
++		int i = 0;
++		while (ports[i] != NULL) {
++			jack_port_t * const port = jack_port_by_name(client, ports[i]);
++			if (port == NULL)  {
++				qWarning("JackAudioSystem: jack_port_by_name() returned an invalid port - skipping it");
++				continue;
++			}
++
++			int const port_flags = jack_port_flags(port);
++
++			if ((port_flags & wanted_out_flags) == wanted_out_flags && connected_in_ports < 1) {
++				err = jack_connect(client, ports[i], jack_port_name(in_port));
++				if (err != 0) {
++					qWarning("JackAudioSystem: unable to connect port '%s' to '%s' - jack_connect() returned %i", ports[i], jack_port_name(in_port), err);
++				} else {
++					connected_in_ports++;
++				}
++			}
++			else if ((port_flags & wanted_in_flags) == wanted_in_flags && connected_out_ports < iOutPorts) {
++				err = jack_connect(client, jack_port_name(out_ports[connected_out_ports]), ports[i]);
++				if (err != 0) {
++					qWarning("JackAudioSystem: unable to connect port '%s' to '%s' - jack_connect() returned %i", jack_port_name(out_ports[connected_out_ports]), ports[i], err);
++				} else {
++					connected_out_ports++;
++				}
++			}
++
++			++i;
++		}
++	}
++}
++
+ void JackAudioSystem::activate()
+ {
+ 	QMutexLocker lock(&qmWait);
+@@ -279,6 +331,8 @@ void JackAudioSystem::activate()
+ 			return;
+ 		}
+ 		bActive = true;
++
++		auto_connect_ports();
+ 	}
+ }
+ 
+@@ -503,7 +557,7 @@ void JackAudioOutputRegistrar::setDeviceChoice(const QVariant &choice, Settings
+ JackAudioInput::JackAudioInput() {
+ 	bRunning = true;
+ 	iMicChannels = 0;
+-};
++}
+ 
+ JackAudioInput::~JackAudioInput() {
+ 	bRunning = false;
+diff --git a/src/mumble/JackAudio.h b/src/mumble/JackAudio.h
+index 26d0e0bcc..7133e7d30 100644
+--- a/src/mumble/JackAudio.h
++++ b/src/mumble/JackAudio.h
+@@ -72,6 +72,8 @@ class JackAudioSystem : public QObject {
+ 		void init_jack();
+ 		void close_jack();
+ 
++		void auto_connect_ports();
++
+ 		void activate();
+ 
+ 		void allocOutputBuffer(jack_nframes_t frames);
+diff --git a/src/mumble/Settings.cpp b/src/mumble/Settings.cpp
+index 458ecdee9..c335101ee 100644
+--- a/src/mumble/Settings.cpp
++++ b/src/mumble/Settings.cpp
+@@ -316,6 +316,8 @@ Settings::Settings() {
+ 	qsALSAOutput=QLatin1String("default");
+ 
+ 	qsJackAudioOutput = QLatin1String("1");
++	bJackStartServer = true;
++	bJackAutoConnect = false;
+ 
+ 	bEcho = false;
+ 	bEchoMulti = true;
+@@ -657,6 +659,8 @@ void Settings::load(QSettings* settings_ptr) {
+ 	SAVELOAD(qsPulseAudioOutput, "pulseaudio/output");
+ 
+ 	SAVELOAD(qsJackAudioOutput, "jack/output");
++	SAVELOAD(bJackStartServer, "jack/startserver");
++	SAVELOAD(bJackAutoConnect, "jack/autoconnect");
+ 
+ 	SAVELOAD(qsOSSInput, "oss/input");
+ 	SAVELOAD(qsOSSOutput, "oss/output");
+@@ -995,6 +999,8 @@ void Settings::save() {
+ 	SAVELOAD(qsPulseAudioOutput, "pulseaudio/output");
+ 
+ 	SAVELOAD(qsJackAudioOutput, "jack/output");
++	SAVELOAD(bJackStartServer, "jack/startserver");
++	SAVELOAD(bJackAutoConnect, "jack/autoconnect");
+ 
+ 	SAVELOAD(qsOSSInput, "oss/input");
+ 	SAVELOAD(qsOSSOutput, "oss/output");
+diff --git a/src/mumble/Settings.h b/src/mumble/Settings.h
+index a097b6d65..9ac24e061 100644
+--- a/src/mumble/Settings.h
++++ b/src/mumble/Settings.h
+@@ -207,6 +207,7 @@ struct Settings {
+ 	QString qsALSAInput, qsALSAOutput;
+ 	QString qsPulseAudioInput, qsPulseAudioOutput;
+ 	QString qsJackAudioOutput;
++	bool bJackStartServer, bJackAutoConnect;
+ 	QString qsOSSInput, qsOSSOutput;
+ 	int iPortAudioInput, iPortAudioOutput;
+ 
+
+From 7e9a767477b68db4020a1ae7427aa3fbf1ed9d7e Mon Sep 17 00:00:00 2001
+From: Bernd Buschinski <b.buschinski@googlemail.com>
+Date: Sat, 28 Apr 2018 14:01:58 +0200
+Subject: [PATCH 09/13] Jack: fix possible crash on close
+
+---
+ src/mumble/JackAudio.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/mumble/JackAudio.cpp b/src/mumble/JackAudio.cpp
+index 469255d60..c36414305 100644
+--- a/src/mumble/JackAudio.cpp
++++ b/src/mumble/JackAudio.cpp
+@@ -248,7 +248,7 @@ void JackAudioSystem::close_jack() {
+ 
+ 		for (unsigned i = 0; i < iOutPorts; ++i) {
+ 			if (out_ports[i] != NULL) {
+-				err = jack_port_unregister(client, out_ports[0]);
++				err = jack_port_unregister(client, out_ports[i]);
+ 				if (err != 0)  {
+ 					qWarning("JackAudioSystem: unable to unregister out port - jack_port_unregister() returned %i", err);
+ 				}
+
+From dc64e338d835252a2bf252b27dfa7056f1f60856 Mon Sep 17 00:00:00 2001
+From: Bernd Buschinski <b.buschinski@googlemail.com>
+Date: Sun, 1 Jul 2018 21:13:19 +0200
+Subject: [PATCH 10/13] Jack: adapt codestyle
+
+- move asterisk near variable name
+- change order of const
+- remove extra empty lines
+- move opening brackets to the same line as the function signature
+---
+ src/mumble/JackAudio.cpp | 30 +++++++++---------------------
+ src/mumble/JackAudio.h   |  8 ++++----
+ 2 files changed, 13 insertions(+), 25 deletions(-)
+
+diff --git a/src/mumble/JackAudio.cpp b/src/mumble/JackAudio.cpp
+index c36414305..ffd9b1067 100644
+--- a/src/mumble/JackAudio.cpp
++++ b/src/mumble/JackAudio.cpp
+@@ -36,7 +36,7 @@
+ #include "Global.h"
+ 
+ 
+-static JackAudioSystem * jasys = NULL;
++static JackAudioSystem *jasys = NULL;
+ 
+ // jackStatusToStringList converts a jack_status_t (a flag type
+ // that can contain multiple Jack statuses) to a QStringList.
+@@ -160,7 +160,6 @@ JackAudioSystem::~JackAudioSystem() {
+ }
+ 
+ void JackAudioSystem::init_jack() {
+-
+ 	output_buffer = NULL;
+ 	jack_status_t status = static_cast<jack_status_t>(0);
+ 	int err = 0;
+@@ -228,7 +227,6 @@ void JackAudioSystem::init_jack() {
+ }
+ 
+ void JackAudioSystem::close_jack() {
+-
+ 	QMutexLocker lock(&qmWait);
+ 	if (client) {
+ 		int err = 0;
+@@ -269,15 +267,14 @@ void JackAudioSystem::close_jack() {
+ }
+ 
+ 
+-void JackAudioSystem::auto_connect_ports()
+-{
++void JackAudioSystem::auto_connect_ports() {
+ 	if (g.s.bJackAutoConnect == false) {
+ 		return;
+ 	}
+ 
+ 	const char **ports = NULL;
+-	int const wanted_out_flags = JackPortIsPhysical | JackPortIsOutput;
+-	int const wanted_in_flags = JackPortIsPhysical | JackPortIsInput;
++	const int wanted_out_flags = JackPortIsPhysical | JackPortIsOutput;
++	const int wanted_in_flags = JackPortIsPhysical | JackPortIsInput;
+ 	int err;
+ 	unsigned int connected_out_ports = 0;
+ 	unsigned int connected_in_ports = 0;
+@@ -292,7 +289,7 @@ void JackAudioSystem::auto_connect_ports()
+ 				continue;
+ 			}
+ 
+-			int const port_flags = jack_port_flags(port);
++			const int port_flags = jack_port_flags(port);
+ 
+ 			if ((port_flags & wanted_out_flags) == wanted_out_flags && connected_in_ports < 1) {
+ 				err = jack_connect(client, ports[i], jack_port_name(in_port));
+@@ -316,8 +313,7 @@ void JackAudioSystem::auto_connect_ports()
+ 	}
+ }
+ 
+-void JackAudioSystem::activate()
+-{
++void JackAudioSystem::activate() {
+ 	QMutexLocker lock(&qmWait);
+ 	if (client) {
+ 		if (bActive) {
+@@ -337,7 +333,6 @@ void JackAudioSystem::activate()
+ }
+ 
+ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+-
+ 	JackAudioSystem * const jas = static_cast<JackAudioSystem*>(arg);
+ 
+ 	if (jas && jas->bJackIsGood) {
+@@ -348,7 +343,7 @@ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 
+ 		if (jai && jai->isRunning() && jai->iMicChannels > 0 && !jai->isFinished()) {
+ 			QMutexLocker(&jai->qmMutex);
+-			void * input = jack_port_get_buffer(jas->in_port, nframes);
++			void *input = jack_port_get_buffer(jas->in_port, nframes);
+ 			if (input != NULL) {
+ 				jai->addMic(input, nframes);
+ 			}
+@@ -357,7 +352,7 @@ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ 		if (jao && jao->isRunning() && jao->iChannels > 0 && !jao->isFinished()) {
+ 			QMutexLocker(&jao->qmMutex);
+ 
+-			jack_default_audio_sample_t* port_buffers[JACK_MAX_OUTPUT_PORTS];
++			jack_default_audio_sample_t *port_buffers[JACK_MAX_OUTPUT_PORTS];
+ 			for (unsigned int i = 0; i < jao->iChannels; ++i) {
+ 
+ 				port_buffers[i] = (jack_default_audio_sample_t*)jack_port_get_buffer(jas->out_ports[i], nframes);
+@@ -388,14 +383,12 @@ int JackAudioSystem::process_callback(jack_nframes_t nframes, void *arg) {
+ }
+ 
+ int JackAudioSystem::srate_callback(jack_nframes_t frames, void *arg) {
+-
+ 	JackAudioSystem * const jas = static_cast<JackAudioSystem*>(arg);
+ 	jas->iSampleRate = frames;
+ 	return 0;
+ }
+ 
+ void JackAudioSystem::allocOutputBuffer(jack_nframes_t frames) {
+-
+ 	iBufferSize = frames;
+ 	AudioOutputPtr ao = g.ao;
+ 	JackAudioOutput * const jao = dynamic_cast<JackAudioOutput *>(ao.get());
+@@ -418,10 +411,9 @@ void JackAudioSystem::allocOutputBuffer(jack_nframes_t frames) {
+ }
+ 
+ void JackAudioSystem::setNumberOfOutPorts(unsigned int ports) {
+-
+ 	AudioOutputPtr ao = g.ao;
+ 	JackAudioOutput * const jao = dynamic_cast<JackAudioOutput *>(ao.get());
+-	unsigned int const oldSize = iOutPorts;
++	const unsigned int oldSize = iOutPorts;
+ 	int err = 0;
+ 
+ 	iOutPorts = qBound<unsigned>(1, ports, JACK_MAX_OUTPUT_PORTS);
+@@ -476,19 +468,16 @@ void JackAudioSystem::setNumberOfOutPorts(unsigned int ports) {
+ }
+ 
+ unsigned int JackAudioSystem::numberOfOutPorts() const {
+-
+ 	return iOutPorts;
+ }
+ 
+ int JackAudioSystem::buffer_size_callback(jack_nframes_t frames, void *arg) {
+-
+ 	JackAudioSystem * const jas = static_cast<JackAudioSystem*>(arg);
+ 	jas->allocOutputBuffer(frames);
+ 	return 0;
+ }
+ 
+ void JackAudioSystem::shutdown_callback(void *arg) {
+-
+ 	JackAudioSystem * const jas = static_cast<JackAudioSystem*>(arg);
+ 	jas->bJackIsGood = false;
+ }
+@@ -549,7 +538,6 @@ const QList<audioDevice> JackAudioOutputRegistrar::getDeviceChoices() {
+ }
+ 
+ void JackAudioOutputRegistrar::setDeviceChoice(const QVariant &choice, Settings &s) {
+-
+ 	s.qsJackAudioOutput = choice.toString();
+ 	jasys->setNumberOfOutPorts(choice.toInt());
+ }
+diff --git a/src/mumble/JackAudio.h b/src/mumble/JackAudio.h
+index 7133e7d30..08d238d0f 100644
+--- a/src/mumble/JackAudio.h
++++ b/src/mumble/JackAudio.h
+@@ -50,10 +50,10 @@ class JackAudioSystem : public QObject {
+ 		Q_DISABLE_COPY(JackAudioSystem)
+ 	protected:
+ 		bool bActive;
+-		jack_client_t* client;
+-		jack_port_t* in_port;
+-		jack_port_t* out_ports[JACK_MAX_OUTPUT_PORTS];
+-		jack_default_audio_sample_t* output_buffer;
++		jack_client_t *client;
++		jack_port_t *in_port;
++		jack_port_t *out_ports[JACK_MAX_OUTPUT_PORTS];
++		jack_default_audio_sample_t *output_buffer;
+ 		unsigned int iOutPorts;
+ 		jack_nframes_t iBufferSize;
+ 
+
+From 9e715f1ac3a02a54518f07a261ae74e0b77176c5 Mon Sep 17 00:00:00 2001
+From: Davide Beatrici <davidebeatrici@gmail.com>
+Date: Mon, 2 Jul 2018 01:34:13 +0200
+Subject: [PATCH 11/13] Jack: update license header
+
+---
+ src/mumble/JackAudio.cpp | 36 ++++--------------------------------
+ src/mumble/JackAudio.h   | 36 ++++--------------------------------
+ 2 files changed, 8 insertions(+), 64 deletions(-)
+
+diff --git a/src/mumble/JackAudio.cpp b/src/mumble/JackAudio.cpp
+index ffd9b1067..fdda5acba 100644
+--- a/src/mumble/JackAudio.cpp
++++ b/src/mumble/JackAudio.cpp
+@@ -1,35 +1,7 @@
+-/* Copyright (C) 2011, Benjamin Jemlich <pcgod@users.sourceforge.net>
+-   Copyright (C) 2011, Filipe Coelho <falktx@gmail.com>
+-   Copyright (C) 2015, Mikkel Krautz <mikkel@krautz.dk>
+-   Copyright (C) 2018, Bernd Buschinski <b.buschinski@gmail.com>
+-
+-   All rights reserved.
+-
+-   Redistribution and use in source and binary forms, with or without
+-   modification, are permitted provided that the following conditions
+-   are met:
+-
+-   - Redistributions of source code must retain the above copyright notice,
+-     this list of conditions and the following disclaimer.
+-   - Redistributions in binary form must reproduce the above copyright notice,
+-     this list of conditions and the following disclaimer in the documentation
+-     and/or other materials provided with the distribution.
+-   - Neither the name of the Mumble Developers nor the names of its
+-     contributors may be used to endorse or promote products derived from this
+-     software without specific prior written permission.
+-
+-   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+-   ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+-   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+-   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
+-   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+-   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+-   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+-   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+-   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+-   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+-   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-*/
++// Copyright 2005-2018 The Mumble Developers. All rights reserved.
++// Use of this source code is governed by a BSD-style license
++// that can be found in the LICENSE file at the root of the
++// Mumble source tree or at <https://www.mumble.info/LICENSE>.
+ 
+ #include "JackAudio.h"
+ 
+diff --git a/src/mumble/JackAudio.h b/src/mumble/JackAudio.h
+index 08d238d0f..71ea5ad8a 100644
+--- a/src/mumble/JackAudio.h
++++ b/src/mumble/JackAudio.h
+@@ -1,35 +1,7 @@
+-/* Copyright (C) 2011, Benjamin Jemlich <pcgod@users.sourceforge.net>
+-   Copyright (C) 2011, Filipe Coelho <falktx@gmail.com>
+-   Copyright (C) 2015, Mikkel Krautz <mikkel@krautz.dk>
+-   Copyright (C) 2018, Bernd Buschinski <b.buschinski@gmail.com>
+-
+-   All rights reserved.
+-
+-   Redistribution and use in source and binary forms, with or without
+-   modification, are permitted provided that the following conditions
+-   are met:
+-
+-   - Redistributions of source code must retain the above copyright notice,
+-     this list of conditions and the following disclaimer.
+-   - Redistributions in binary form must reproduce the above copyright notice,
+-     this list of conditions and the following disclaimer in the documentation
+-     and/or other materials provided with the distribution.
+-   - Neither the name of the Mumble Developers nor the names of its
+-     contributors may be used to endorse or promote products derived from this
+-     software without specific prior written permission.
+-
+-   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+-   ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+-   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+-   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
+-   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+-   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+-   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+-   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+-   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+-   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+-   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-*/
++// Copyright 2005-2018 The Mumble Developers. All rights reserved.
++// Use of this source code is governed by a BSD-style license
++// that can be found in the LICENSE file at the root of the
++// Mumble source tree or at <https://www.mumble.info/LICENSE>.
+ 
+ #ifndef MUMBLE_MUMBLE_JACKAUDIO_H_
+ #define MUMBLE_MUMBLE_JACKAUDIO_H_
+
+From 7dce59a9c07089a2988c7f09a5a555cf775ad1ca Mon Sep 17 00:00:00 2001
+From: Davide Beatrici <davidebeatrici@gmail.com>
+Date: Mon, 2 Jul 2018 02:33:32 +0200
+Subject: [PATCH 12/13] Travis CI: install "libjack-jackd2-dev" for Linux
+ builds
+
+---
+ scripts/travis-ci/before_install.bash | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/scripts/travis-ci/before_install.bash b/scripts/travis-ci/before_install.bash
+index e22e3f5db..4f88e3db7 100755
+--- a/scripts/travis-ci/before_install.bash
++++ b/scripts/travis-ci/before_install.bash
+@@ -18,10 +18,12 @@ if [ "${TRAVIS_OS_NAME}" == "linux" ]; then
+ 	if [ "${MUMBLE_QT}" == "qt4" ] && [ "${MUMBLE_HOST}" == "x86_64-linux-gnu" ]; then
+ 		sudo apt-get -qq update
+ 		sudo apt-get build-dep -qq mumble
++		sudo apt-get install libjack-jackd2-dev
+ 	elif [ "${MUMBLE_QT}" == "qt5" ] && [ "${MUMBLE_HOST}" == "x86_64-linux-gnu" ]; then
+ 		sudo apt-get -qq update
+ 		sudo apt-get build-dep -qq mumble
+ 		sudo apt-get install qt5-default qttools5-dev qttools5-dev-tools qtbase5-dev qtbase5-dev-tools qttranslations5-l10n libqt5svg5-dev
++		sudo apt-get install libjack-jackd2-dev
+ 	elif [ "${MUMBLE_QT}" == "qt5" ] && [ "${MUMBLE_HOST}" == "i686-w64-mingw32" ]; then
+ 		sudo dpkg --add-architecture i386
+ 		sudo apt-get -qq update
+
+From 702c8a4f3eff31673a1f0c64bd9b6067f4588c7f Mon Sep 17 00:00:00 2001
+From: Davide Beatrici <davidebeatrici@gmail.com>
+Date: Mon, 2 Jul 2018 02:42:23 +0200
+Subject: [PATCH 13/13] Jack: add missing <QtCore/QWaitCondition> include
+
+---
+ src/mumble/JackAudio.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/mumble/JackAudio.h b/src/mumble/JackAudio.h
+index 71ea5ad8a..e7c094d9d 100644
+--- a/src/mumble/JackAudio.h
++++ b/src/mumble/JackAudio.h
+@@ -9,6 +9,8 @@
+ #include "AudioInput.h"
+ #include "AudioOutput.h"
+ 
++#include <QtCore/QWaitCondition>
++
+ #include <jack/jack.h>
+ 
+ #define JACK_MAX_OUTPUT_PORTS 2
