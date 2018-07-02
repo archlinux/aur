@@ -1,0 +1,19 @@
+pkgbase = gcsf-git
+	pkgdesc = a FUSE file system based on Google Drive (Written by Rust)
+	pkgver = r139.ac09234
+	pkgrel = 1
+	url = https://github.com/harababurel/gcsf
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = fuse2
+	depends = gcc-libs
+	optdepends = ranger: A simple, vim-like file manager
+	provides = gcsf
+	conflicts = gcsf
+	source = gcsf-git::git+https://github.com/harababurel/gcsf.git
+	sha256sums = SKIP
+
+pkgname = gcsf-git
+
