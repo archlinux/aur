@@ -1,7 +1,7 @@
 # Maintainer: Neil Shepperd <nshepperd at gmail dot com>
 pkgname=cabal-static
 pkgver=2.2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The command-line interface for Cabal and Hackage. Statically linked."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://hackage.haskell.org/package/cabal-install"
@@ -24,14 +24,10 @@ makeconflicts=(haskell-async
 			   haskell-hackage-security
 			   haskell-hashable
 			   haskell-http
-			   haskell-mtl
 			   haskell-network
 			   haskell-network-uri
-			   haskell-parsec
 			   haskell-random
-			   haskell-stm
 			   haskell-tar
-			   haskell-text
 			   haskell-zlib)
 
 build() {
@@ -40,7 +36,7 @@ build() {
   # Detect conflicting globally installed haskell packages.
   conflicts_present=()
   for conflict in ${makeconflicts[*]}; do
-	if pacman -Q ${conflict} 2>/dev/null >/dev/null ; then
+	if (pacman -Q ${conflict} | grep ${conflict}) 2>/dev/null >/dev/null ; then
 		conflicts_present+=(${conflict})
 	fi
   done
