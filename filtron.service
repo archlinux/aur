@@ -1,0 +1,19 @@
+[Unit]
+Description=Filtron instance
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+PrivateTmp=true
+PrivateDevices=true
+# Prevent access to /home, /root, and /run/user
+ProtectHome=true
+# Prevent writes to /usr, /boot, and /etc
+ProtectSystem=full
+ExecStart=/usr/bin/filtron -listen 127.0.0.1:4004 -rules /etc/filtron/rules.json -target 127.0.0.1:8888
+Restart=on-failure
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target
