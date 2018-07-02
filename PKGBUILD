@@ -30,8 +30,8 @@ source=("https://github.com/f4exb/sdrangel/archive/v$pkgver.tar.gz")
 sha256sums=('f23cb0c4e497adca66c3c060d314db0c1f27284e364b6f2ff44cdc3f164fd7aa')
 
 build() {
-  mkdir -p $srcdir/$pkgname-$pkgver/build
-  cd $srcdir/$pkgname-$pkgver/build
+  mkdir -p "$srcdir"/$pkgname-$pkgver/build
+  cd "$srcdir"/$pkgname-$pkgver/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver/build
+  cd "$srcdir"/$pkgname-$pkgver/build
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
