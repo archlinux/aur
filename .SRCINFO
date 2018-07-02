@@ -1,0 +1,15 @@
+pkgbase = python-julia
+	pkgdesc = A Python package for offline access to Vega datasets
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/JuliaPy/pyjulia
+	arch = any
+	license = MIT
+	makedepends = python-pypandoc
+	makedepends = pandoc
+	depends = python
+	source = https://files.pythonhosted.org/packages/cf/d3/81e970293b11415cebe3d4a1930311980249861d5d5f545fdfdbe86a71ae/julia-0.1.5.tar.gz
+	sha256sums = 6f38e17f831580723a5e01bb751518b6eb9d0789dc7b5e6e12a8cc1701a2c0f0
+
+pkgname = python-julia
+
