@@ -1,36 +1,36 @@
 # Maintainer: Tyler Langlois <ty |at| tjll |dot| net>
+# Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# shellcheck disable=2034
+# shellcheck disable=2148
 
 pkgname=ganglia-web
-pkgver=3.7.2
+pkgver=3.7.4
 pkgrel=1
 pkgdesc="Web front-end to Ganglia (see ganglia package)"
 arch=('any')
-url="http://ganglia.sourceforge.net/"
+url="https://github.com/ganglia/ganglia-web"
 license=('BSD')
 depends=('ganglia')
 options=('!libtool' '!strip')
+backup=(usr/share/webapps/ganglia/conf_default.php)
 install='ganglia-web.install'
 source=("http://downloads.sourceforge.net/ganglia/$pkgname-$pkgver.tar.gz"
-        'ganglia-web.install'
-        'configuration.patch')
-sha256sums=('98820187c98d24d3645b92d31060623de696dad331a361a19874898339523628'
-            'b2d01098ffc3998143cbd4cc996f3ce572604b6c29f5c97e917f6de8986131da'
-            '99991e9a17975b97c1049e7f8d6c92afb8dab75f987b2a13cb8cdf1faf1b1918')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  for patch in $srcdir/*.patch; do
-    msg2 "Applying patch $(basename $patch)"
-    patch -Np1 -i $patch
-  done
-}
+        'ganglia-web.install')
+sha256sums=('18cac5fd232dbd18cce91a8b107cf0ec254f710797ff56017e0c8f9f7ea26825'
+            'b2d01098ffc3998143cbd4cc996f3ce572604b6c29f5c97e917f6de8986131da')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  # shellcheck disable=2154
+  cd "$srcdir"/$pkgname-$pkgver || exit 1
 
-  mkdir -p "$pkgdir/usr/share/webapps"
-  cp -a . "$pkgdir/usr/share/webapps/ganglia"
+  # shellcheck disable=2154
+  make \
+    DESTDIR="$pkgdir" \
+    APACHE_USER=http \
+    GDESTDIR=/usr/share/webapps/ganglia \
+    GMETAD_ROOTDIR=/var/lib/ganglia \
+    GWEB_STATEDIR=/var/lib/ganglia \
+    install
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
