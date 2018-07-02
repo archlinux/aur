@@ -1,6 +1,5 @@
 # Maintainer: Filipe Laíns <filiipe.lains@gmail.com>
 # Contributor: Lev Lybin <aur@devtrue.net>
-
 pkgname=synology-cloud-station-drive
 _iver=4415
 _rver=4.2.7
@@ -18,14 +17,14 @@ source_i686=(https://global.download.synology.com/download/Tools/CloudStationDri
 sha256sums_i686=('9a7b088d26edc3f53928818dd48a244cc75c0afd552231c67046692781e7e786')
 
 prepare() {
-    cd "${srcdir}"
-    tar -zxf "${srcdir}/data.tar.gz"
+    cd "$srcdir"
+    tar -zxf "$srcdir"/data.tar.gz
 }
 
 package() {
-    cp -rp opt "${pkgdir}/opt"
+    cp -rp opt "$pkgdir"/opt
 
-    install -Dm755 usr/lib/nautilus/extensions-3.0/libnautilus-cloud-extension.so "${pkgdir}/usr/lib/nautilus/extensions-3.0/libnautilus-cloud-extension.so"
-    install -Dm755 usr/bin/synology-cloud-station-drive "${pkgdir}/usr/bin/synology-cloud-station-drive"
-    install -Dm644 usr/share/applications/synology-cloud-station-drive.desktop "${pkgdir}/usr/share/applications/synology-cloud-station-drive.desktop"
+    install -Dm755 usr/lib/nautilus/extensions-3.0/libnautilus-cloud-extension.so "$pkgdir"/usr/lib/nautilus/extensions-3.0/libnautilus-cloud-extension.so
+    install -Dm755 usr/bin/synology-cloud-station-drive "$pkgdir"/usr/bin/synology-cloud-station-drive
+    install -Dm644 usr/share/applications/synology-cloud-station-drive.desktop "$pkgdir"/usr/share/applications/synology-cloud-station-drive.desktop
 }
