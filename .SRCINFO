@@ -1,0 +1,14 @@
+pkgbase = libjssc-java
+	pkgdesc = Library for working with serial ports from Java
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://github.com/scream3r/java-simple-serial-connector
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	provides = libjssc-java
+	source = http://ftp.debian.org/debian/pool/main/j/jssc/libjssc-java_2.8.0-1_amd64.deb
+	md5sums = c6b88df9c071e88787acace8a9284f72
+
+pkgname = libjssc-java
+
