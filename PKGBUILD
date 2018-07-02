@@ -1,13 +1,12 @@
-# Maintainer: FFY00 <filipe.lains@gmail.com>
-
+# Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 pkgname=soapysdr
 pkgver=0.6.1
-_gver=soapy-sdr-$pkgver
+_gitver=soapy-sdr-$pkgver
 pkgrel=1
 pkgdesc="Vendor and platform neutral SDR support library"
 arch=(any)
 url="https://github.com/pothosware/SoapySDR"
-license=('custom:Boost Software License Version 1.0')
+license=('custom:Boost')
 makedepends=('cmake')
 optdependes=(
   'swig: bindings'
@@ -25,17 +24,16 @@ sha256sums=(
   '93a2a6d031fb50156ed7de00658fe082ef802ad7900e5336f37b897588fe869c'
 )
 
-_sdir=SoapySDR-$_gver
-_bdir=$_sdir/build
+_srcdir=SoapySDR-$_gitver
 
 prepare() {
-  sed -i "s/SOURCE_FOLDER/$_sdir/g" git_revision.patch
+  sed -i "s/SOURCE_FOLDER/$_srcdir/g" git_revision.patch
   patch -p0 < git_revision.patch
 }
 
 build() {
-  mkdir -p $srcdir/$_bdir
-  cd $srcdir/$_bdir
+  mkdir -p "$srcdir"/$_srcdir/build
+  cd "$srcdir"/$_srcdir/build
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -45,10 +43,10 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_bdir
+  cd "$srcdir"/$_srcdir/build
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 
-  install -dm 644 $pkgdir/usr/share/licenses/$pkgname
-  install -Dm 644 $srcdir/$_sdir/LICENSE_1_0.txt $pkgdir/usr/share/licenses/$pkgname/
+  install -dm 644 "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm 644 "$srcdir"/$_srcdir/LICENSE_1_0.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
