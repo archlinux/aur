@@ -14,7 +14,7 @@ depends=('ganglia')
 options=('!libtool' '!strip')
 backup=(usr/share/webapps/ganglia/conf_default.php)
 install='ganglia-web.install'
-source=("http://downloads.sourceforge.net/ganglia/$pkgname-$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ganglia/ganglia-web/archive/$pkgver.tar.gz"
         'ganglia-web.install')
 sha256sums=('18cac5fd232dbd18cce91a8b107cf0ec254f710797ff56017e0c8f9f7ea26825'
             'b2d01098ffc3998143cbd4cc996f3ce572604b6c29f5c97e917f6de8986131da')
