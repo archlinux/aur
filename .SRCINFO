@@ -1,20 +1,41 @@
 pkgbase = qtikz-git
 	pkgdesc = Small application helping you to create TikZ diagrams
-	pkgver = r317.37ae35f
+	pkgver = r318.207af3e
 	pkgrel = 1
 	url = https://github.com/fhackenberger/ktikz
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt5-base
 	makedepends = qt5-tools
 	makedepends = texlive-core
-	depends = poppler-qt5
-	provides = qtikz
-	conflicts = qtikz
-	options = !makeflags
+	makedepends = kdoctools
+	makedepends = kxmlgui
+	makedepends = ktexteditor
+	makedepends = kparts
+	makedepends = kiconthemes
+	makedepends = poppler
+	makedepends = poppler-qt5
+	makedepends = kdelibs4support
 	source = qtikz::git+https://github.com/fhackenberger/ktikz
 	md5sums = SKIP
 
 pkgname = qtikz-git
+	pkgdesc = Small application helping you to create TikZ diagrams – Qt version
+	depends = poppler-qt5
+	depends = hicolor-icon-theme
+	provides = qtikz
+	conflicts = qtikz
+
+pkgname = ktikz-git
+	pkgdesc = Small application helping you to create TikZ diagrams – KDE version
+	depends = 
+	depends = kparts
+	depends = poppler-qt5
+	depends = hicolor-icon-theme
+	provides = ktikz
+	conflicts = ktikz
 
