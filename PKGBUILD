@@ -1,5 +1,6 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 pkgname=lms7002m-driver-git
+_gitname="LMS7002M-driver"
 pkgver=r241.90cd852
 pkgrel=1
 pkgdesc="A portable driver for the LMS7002M dual transceiver"
@@ -12,16 +13,14 @@ conflicts=('lms7002m-driver')
 source=("git+$url")
 md5sums=('SKIP')
 
-_rname="LMS7002M-driver"
-
 pkgver() {
-  cd $srcdir/$_rname
+  cd "$srcdir"/$_gitname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  mkdir -p $srcdir/$_rname/build
-  cd $srcdir/$_rname/build
+  mkdir -p "$srcdir"/$_gitname/build
+  cd "$srcdir"/$_gitname/build
 
   cmake .. \
     -DBUILD_SHARED_LIBS=ON \
@@ -32,7 +31,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_rname/build
+  cd "$srcdir"/$_gitname/build
 
   make DESTDIR="$pkgdir" install
 }
