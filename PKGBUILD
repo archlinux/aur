@@ -18,14 +18,14 @@ sha256sums=(
 )
 
 package() {
-  install -dm 755 $pkgdir/opt/vr180-creator
-  cp -dr --no-preserve=ownership $srcdir/vr180_creator/* $pkgdir/opt/vr180-creator
-  #find $srcdir/vr180_creator -type f | xargs -i echo "'{}' 'TARGET:{}'" | sed "s|TARGET.*vr180_creator|$pkgdir/opt/vr180-creator|g" | xargs -d '\n' -i bash -c "install -Dm 644 {}"
+  install -dm 755 "$pkgdir"/opt/vr180-creator
+  cp -dr --no-preserve=ownership "$srcdir"/vr180_creator/* "$pkgdir"/opt/vr180-creator
+  #find "$srcdir"/vr180_creator -type f | xargs -i echo "'{}' 'TARGET:{}'" | sed "s|TARGET.*vr180_creator|"$pkgdir"/opt/vr180-creator|g" | xargs -d '\n' -i bash -c "install -Dm 644 {}"
 
-  install -dm 755 $pkgdir/usr/bin
-  ln -s $pkgdir/opt/vr180-creator/'VR180 Creator' $pkgdir/usr/bin/vr180-creator
+  install -dm 755 "$pkgdir"/usr/bin
+  ln -s "$pkgdir"/opt/vr180-creator/'VR180 Creator' "$pkgdir"/usr/bin/vr180-creator
 
-  install -dm 755 $pkgdir/usr/share/icons
-  ln -s $pkgdir/opt/vr180-creator/images/vr180.png $pkgdir/usr/share/icons/vr180.png
-  install -Dm 755 $srcdir/vr180-creator.desktop $pkgdir/usr/share/applications/vr180-creator.desktop
+  install -dm 755 "$pkgdir"/usr/share/icons
+  ln -s "$pkgdir"/opt/vr180-creator/images/vr180.png "$pkgdir"/usr/share/icons/vr180.png
+  install -Dm 755 "$srcdir"/vr180-creator.desktop "$pkgdir"/usr/share/applications/vr180-creator.desktop
 }
