@@ -1,0 +1,11 @@
+pkgbase = otf-monacob-git
+	pkgdesc = Monaco font with a bold variant
+	pkgver = r9.b77db4b
+	pkgrel = 1
+	url = https://github.com/vjpr/monaco-bold
+	arch = any
+	source = otf-monacob-git::git+https://github.com/vjpr/monaco-bold
+	sha512sums = SKIP
+
+pkgname = otf-monacob-git
+
