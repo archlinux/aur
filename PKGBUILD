@@ -1,7 +1,7 @@
 # Maintainer: hexchain <i at hexchain.org>
 
 pkgname="tpm2-abrmd"
-pkgver="1.3.1"
+pkgver="2.0.0"
 pkgrel=1
 pkgdesc="TPM2 Access Broker & Resource Manager"
 license=('BSD')
@@ -11,7 +11,7 @@ makedepends=('autoconf-archive' 'automake' 'cmocka' 'python')
 url="https://github.com/intel/tpm2-abrmd"
 source=("https://github.com/tpm2-software/tpm2-abrmd/releases/download/$pkgver/tpm2-abrmd-$pkgver.tar.gz"
         "tss.sysusers")
-sha256sums=('859d777a0d2c5d78309c4a2f06879a1e914b41324ea8258920a778a1ad7e38ea'
+sha256sums=('adbb0a5410016e0ffa76dc968223720bfaa45266ef9cac65a76df5bd668e129f'
             '67d89be143dc129a95b0c1a42b3e92367a151289fb6c0655c054fccd62cd9a0e')
 
 build() {
