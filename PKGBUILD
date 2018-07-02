@@ -21,23 +21,23 @@ md5sums=(
 )
 
 build() {
-  patchelf --replace-needed libjasper.so.1 libjasper.so "$srcdir/ME-25-Edit/ME-25-Edit"
-  patchelf --replace-needed libwebp.so.5 libwebp.so "$srcdir/ME-25-Edit/ME-25-Edit"
+  patchelf --replace-needed libjasper.so.1 libjasper.so "$srcdir"/ME-25-Edit/ME-25-Edit
+  patchelf --replace-needed libwebp.so.5 libwebp.so "$srcdir"/ME-25-Edit/ME-25-Edit
 }
 
 package() {
-  install -dm 755 "$pkgdir/usr/share/me-edit/init_patches/"
+  install -dm 755 "$pkgdir"/usr/share/me-edit/init_patches/
   find "$srcdir/ME-25-Edit/init_patches/" -type f -exec install -m 744 "{}" "$pkgdir/usr/share/me-edit/init_patches/" \;
 
-  install -dm 755 "$pkgdir/usr/share/me-edit/saved_patches/"
+  install -dm 755 "$pkgdir"/usr/share/me-edit/saved_patches/
   find "$srcdir/ME-25-Edit/saved_patches/" -type f -exec install -m 744 "{}" "$pkgdir/usr/share/me-edit/saved_patches/" \;
 
-  install -Dm 444 "$srcdir/ME-25-Edit/license.txt" "$pkgdir/usr/share/me-edit/license.txt"
-  install -Dm 444 "$srcdir/ME-25-Edit/readme.txt" "$pkgdir/usr/share/me-edit/readme.txt"
-  install -Dm 644 "$srcdir/ME-25-Edit/ME-25EditorManual_E.doc" "$pkgdir/usr/share/me-edit/ME-25EditorManual_E.doc"
-  install -Dm 644 "$srcdir/ME-25-Edit/ME-25EditorManual_E.pdf" "$pkgdir/usr/share/me-edit/ME-25EditorManual_E.pdf"
+  install -Dm 444 "$srcdir"/ME-25-Edit/license.txt "$pkgdir"/usr/share/me-edit/license.txt
+  install -Dm 444 "$srcdir"/ME-25-Edit/readme.txt "$pkgdir"/usr/share/me-edit/readme.txt
+  install -Dm 644 "$srcdir"/ME-25-Edit/ME-25EditorManual_E.doc "$pkgdir"/usr/share/me-edit/ME-25EditorManual_E.doc
+  install -Dm 644 "$srcdir"/ME-25-Edit/ME-25EditorManual_E.pdf "$pkgdir"/usr/share/me-edit/ME-25EditorManual_E.pdf
 
-  install -Dm 755 "$srcdir/ME-25-Edit/ME-25-Edit" "$pkgdir/usr/share/me-edit/ME-25-Edit"
+  install -Dm 755 "$srcdir"/ME-25-Edit/ME-25-Edit "$pkgdir"/usr/share/me-edit/ME-25-Edit
 
-  install -Dm 755 "$srcdir/me-edit" "$pkgdir/usr/bin/me-edit"
+  install -Dm 755 "$srcdir"/me-edit "$pkgdir"/usr/bin/me-edit
 }
