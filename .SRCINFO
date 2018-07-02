@@ -9,7 +9,7 @@ pkgbase = python2-keyrings-alt
 	depends = python2-six
 	provides = python2-keyrings-alt
 	conflicts = python2-keyrings-alt
-	source = https://files.pythonhosted.org/packages/f7/db/202fe99c9f6d75c7810cb3af7d791479df0dd942f2bac2425646c0ad3db8/keyrings.alt-3.1-py2.py3-none-any.whl
+	source = https://pypi.io/packages/source/k/keyrings-alt/keyrings-alt-3.1.tar.gz
 	sha256sums = 6a00fa799baf1385cf9620bd01bcc815aa56e6970342a567bcfea0c4d21abe5f
 
 pkgname = python2-keyrings-alt
