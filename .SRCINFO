@@ -1,7 +1,7 @@
 pkgbase = openfoam-esi-1712
 	pkgdesc = The open source CFD toolbox (ESI-OpenCFD version)
 	pkgver = v1712
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openfoam.com/
 	arch = i686
 	arch = x86_64

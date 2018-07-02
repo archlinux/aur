@@ -8,7 +8,7 @@ pkgname=openfoam-esi-1712
 pkgver=v1712
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="The open source CFD toolbox (ESI-OpenCFD version)"
 arch=('i686' 'x86_64')
 url="http://www.openfoam.com/"
@@ -77,6 +77,14 @@ prepare() {
 }
 
 build() {
+  if [ $WM_PROJECT_DIR ]
+  then
+    echo " "
+    echo -e "\e[1m\e[5m\e[31mPlease make sure that no OpenFOAM version is sourced in bashrc.\e[0m"
+    echo " "
+    return 1
+  fi
+
   export FOAM_INST_DIR=${srcdir}
   foamDotFile=${srcdir}/${_dist}/etc/bashrc
   [ -f ${foamDotFile} ] && . ${foamDotFile}
