@@ -54,10 +54,6 @@ build() {
     [[ $_pcre = yes ]] && _configure+=" --with-pcre"
     [[ $_pcre = no ]]  && _configure+=" --without-pcre"
 
-
-    [[ $_pcre = yes ]] && _configure+=" --with-pcre"
-    [[ $_pcre = no ]]  && _configure+=" --without-pcre"
-
     eval $_configure
     make
 }
