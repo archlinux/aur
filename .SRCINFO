@@ -1,12 +1,13 @@
 pkgbase = astroequploader
 	pkgdesc = DIY Electronics System for connecting a non-Goto telescope to EQMOD - config utility
 	pkgver = 3.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TCWORLD/AstroEQ
 	arch = x86_64
 	license = MIT
 	depends = java-runtime=8
 	depends = avrdude
+	depends = libjssc-java
 	provides = astroequploader
 	source = https://github.com/TCWORLD/AstroEQ/raw/master/AstroEQ-ConfigUtility/astroequploader-3.9.0.deb
 	md5sums = 95f346ba22b0d31b9e9615c70018338a
