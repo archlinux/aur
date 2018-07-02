@@ -28,7 +28,6 @@ PKGEXT='.pkg.tar'
 build () {
   find . -iname fixpaths.py -o -iname checkglade -o -iname update_ini|xargs perl -p -i -e "s/python/python2/"
   cd $srcdir/$_gitname/src
-  pwd
 #  patch -p0 <../../image-to-gcode.patch
 #  patch -p1 <../../boost.patch
 #  #This Makefile line fixes a seg fault due to changed CFLAGS
