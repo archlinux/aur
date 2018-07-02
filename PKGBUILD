@@ -8,7 +8,7 @@ pkgname=openfoam-esi
 pkgver=v1806
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="The open source CFD toolbox (ESI-OpenCFD version)"
 arch=('i686' 'x86_64')
 url="http://www.openfoam.com/"
@@ -16,14 +16,22 @@ license=('GPL')
 depends=('gcc' 'cgal' 'cmake' 'fftw' 'boost' 'openmpi' 'paraview')
 
 source=("https://newcontinuum.dl.sourceforge.net/project/openfoamplus/${pkgver}/${_dist}.tgz"
-        "https://sourceforge.net/projects/openfoamplus/files/${pkgver}/ThirdParty-${pkgver}.tgz/download"
+        "https://sourceforge.net/projects/openfoamplus/files/${pkgver}/ThirdParty-${pkgver}.tgz"
         "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz")
 
 md5sums=('bb244a3bde7048a03edfccffc46c763f'
-         'af4ed8cf924825d608d7d622c660b0a7'
+         '3c06cb20d08ab564b70f9df5186ec936'
          '5465e67079419a69e0116de24fce58fe')
 
 prepare() {
+  if [ $WM_PROJECT_DIR ]
+  then
+    echo " "
+    echo -e "\e[1m\e[5m\e[31mPlease make sure that no OpenFOAM version is sourced in bashrc.\e[0m"
+    echo " "
+    return 1
+  fi
+
   cd "$srcdir/$_dist"
 
   # Generate and install the system preferences file
@@ -70,16 +78,26 @@ prepare() {
 }
 
 build() {
+
+  if [ $WM_PROJECT_DIR ]
+  then 
+    echo " "
+    echo -e "\e[1m\e[5m\e[31mPlease make sure that no OpenFOAM version is sourced in bashrc.\e[0m"
+    echo " "
+    return 1
+  fi
+
   export FOAM_INST_DIR=${srcdir}
   foamDotFile=${srcdir}/${_dist}/etc/bashrc
   [ -f ${foamDotFile} ] || return 1
   # without && echo " ", makepkg fails
   source ${foamDotFile} && echo " "
 
-  echo " "
-  echo "Give write access to cmake directory using chmod."
-  echo "This is needed to compile paraFoam."
-  echo " "
+  echo -e "\e[92mCompilation will take several hours."
+  echo -e " "
+  echo -e "Give write access to cmake directory using chmod."
+  echo -e "This is needed to compile paraFoam."
+  echo -e "\e[0m "
   sudo chmod 757 /usr/lib/cmake/paraview*/Modules
 
   cd "$srcdir/$_dist"
