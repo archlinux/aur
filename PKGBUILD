@@ -39,9 +39,9 @@ source=("http://www.redmine.org/releases/$pkgname-$pkgver.tar.gz")
 sha256sums=('53612ab3fa4eb1e4da6343e3dcb72c3f4f1b2cb55ed51dd8a6b89d9675714a6d')
 
 package() {
-	_instdir=$pkgdir/usr/share/webapps/redmine
+	_instdir="$pkgdir"/usr/share/webapps/redmine
 
-	cd $srcdir/redmine-$pkgver
+	cd "$srcdir"/redmine-$pkgver
 
 	# install in /usr/share/webapps
 	install -dm 644 $_instdir
