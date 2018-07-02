@@ -1,6 +1,6 @@
---- script/advman.orig	2017-07-04 06:04:33.672805513 -0400
-+++ script/advman	2017-07-04 06:04:33.822792971 -0400
-@@ -1,144 +1,35 @@
+--- script/advman.orig	2018-07-01 23:09:35.220397779 -0400
++++ script/advman	2018-07-01 23:10:19.464063029 -0400
+@@ -1,146 +1,35 @@
  #!/bin/bash
  
  set -u
@@ -97,7 +97,9 @@
 -	fi
 -	echo "invoking local deamon..."
 -	install -m 700 -oroot -groot -d /tmp/advmon
--	`$DEAMONFILE`
+-	#`$DEAMONFILE`
+-	$DEAMONFILE
+-
 -}
 -
 -stopDeamon()
@@ -147,7 +149,7 @@
  }
  
  while getopts 'ho:' OPTION
-@@ -153,52 +44,42 @@ do
+@@ -155,61 +44,42 @@ do
               ;;
           ?)
  	     usage
@@ -173,11 +175,20 @@
  		exit 0
  	;;
  	restart)
--		stopService
--		killall $DEAMON
+-		hasdriver
+-		if [ $RETURN -eq 1 ]
+-		then
+-			echo "starting service...."
+-			startDeamon
+-		else
+-			echo "can not start service..."
+-			insdriver
+-			startDeamon
+-		fi
 +		systemctl reload 'advtty-vcom.service'
  		# systemd-notify --ready
  		exit 0
+-
  	;;
  	stop)
 -		echo stop

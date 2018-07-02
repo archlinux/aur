@@ -6,7 +6,7 @@ post_upgrade() {
   systemctl daemon-reload
   # Handle the module update if DKMS doesn't
   if [ ! -d /usr/src/advtty-vcom-*/ ]; then
-    depmod -a
+    # depmod -a # now done by a pacman hook
     if systemctl -q is-enabled 'advtty-vcom.service'; then
       systemctl start 'advtty-vcom.service'
     fi

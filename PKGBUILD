@@ -18,8 +18,11 @@ _opt_MAXINSTPORTS=16  # Maximum install ports.
 # Todo: The port opens without error when the unit cannot be connected to, possibly due to wrong configuration.
 # Todo: vcom does not announce itself in dmesg
 # Todo: advadd does not check for duplicate adds
+# Todo: /dev/ttyADV should be created as needed, not all at once
+# Todo: implement automatically assigned major number
 
 # Enable at boot
+#   systemctl enable --now 'advtty-vcom.service'
 #   systemctl status 'advtty-vcom.service'
 
 # Add a 1 port Adam-4571L-CE
@@ -39,7 +42,7 @@ _opt_MAXINSTPORTS=16  # Maximum install ports.
 #   lsmod | grep 'advvcom'
 
 # Show the running driver
-#  ps -ef | grep advttyd
+#  ps -ef | grep vcomd
 
 # remove port
 #   advrm -a '192.168.50.222'
@@ -54,8 +57,9 @@ set -u
 # Earlier versions of Advantech TTY were called ICOM
 # http://advdownload.advantech.com/productfile/Downloadfile1/1-NZ17GY/ICOM_LINUX_PSEUDO_TTY_DRIVER_V1.4.1.ZIP
 pkgname='advtty-vcom'
-pkgver='2.1.0'
-pkgrel='2'
+#pkgver='2.1.0'; _dl='1-15OSOW4'
+pkgver='2.2.0'; _dl='1-1LPJPGD'
+pkgrel='1'
 pkgdesc='tty driver for Advantech Adam EKI serial console terminal servers'
 _pkgdescshort="Advantech ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -65,13 +69,12 @@ depends=('glibc' 'gawk' 'psmisc' 'sed' 'grep')
 backup=('etc/advttyd.conf')
 install="${pkgname}-install.sh"
 _srcdir="VCOM_LINUX_${pkgver}.TAR.BZ2"
-source=("${_srcdir,,}::http://advdownload.advantech.com/productfile/Downloadfile1/1-15OSOW4/${_srcdir}")
 _srcdir="${_srcdir,,}"
+source=("${_srcdir,,}::http://downloadt.advantech.com/download/downloadsr.aspx?File_Id=${_dl}")
 _srcdir="${_srcdir%\.tar*}"
-source+=('advman.systemd.patch' 'advtty-vm.patch')
-sha256sums=('15156f815bb8c3ef151c76bf09a0c352f0847fc8b03c6c9f7e285a7d6122e918'
-            '2a4ca93a8957d8e69273e2222b3a9139ba8d5cc81c222ed1124d247fdf7c7831'
-            'cf29e356e53d51127213a306d2e611c9c3fddd983eae768656e44da3d501b324')
+source+=('advman.systemd.patch')
+sha256sums=('e06520654165888f1ef1f9409074482830e839d7fd55c09aba6a9a8a9ea9a9c8'
+            '02f504a23fbef07f666aaa595faba0513d9ffec5e99ebca7b7fe2299a0179e32')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -83,13 +86,11 @@ prepare() {
   set -u
   cd "${_srcdir}"
 
-  # diff -pNau5 driver/adv_mmap.c{.orig,} > '../advtty-vm.patch'
-  patch -Nbup0 < '../advtty-vm.patch'
-
   # Cosmetic correction of CRLF for Linux
   sed -e 's:\r$::g' -i 'readme.txt'
 
   # Fix umbrella Makefile
+  #cp -p Makefile{,.Arch}
   sed -e '# Cosmetic correction of spaces' \
       -e 's:\s\+$::g' \
       -e '# Make package compatible' \
@@ -101,6 +102,7 @@ prepare() {
       -e '# Move config to /etc' \
       -e '/advttyd.conf/ s:\$(INSTALL_PATH):etc/:g' \
     -i 'Makefile'
+  test ! -s 'Makefile.Arch' || echo "${}"
 
   # Fix driver Makefile
   sed -e '# Cosmetic correction of spaces' \
@@ -191,6 +193,7 @@ fi
   sed -e 's@^\(\s*\)echo@\1: # echo@g' 'script/advman' > 'script/advman.quiet'
 
   # Change original advman to systemd
+  #cp -p script/advman{,.orig}; false
   #diff -pNau10 script/advman{.orig,} > '../advman.systemd.patch'
   patch -Nbup0 < "${srcdir}/advman.systemd.patch"
 
@@ -219,7 +222,7 @@ package() {
     _kernelversionsmall="${_kernelversionsmall%%-*}"
     _kernelversionsmall="${_kernelversionsmall%\.0}" # trim 4.0.0 -> 4.0, 4.1.0 -> 4.1
     # prevent the mksrcinfo bash emulator from getting these vars!
-    eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
+    #eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
     eval 'dep''ends+=("linux=${_kernelversionsmall}")'
   fi
 
@@ -262,7 +265,7 @@ EOF
   ) "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
   if [ "${_opt_DKMS}" -ne 0 ]; then
-    rm -rf "${pkgdir}/usr/lib/modules/"
+    rm -r "${pkgdir}/usr/lib/modules/"
     local _dkms="${pkgdir}/usr/src/${pkgname}-${pkgver}"
     # It's easier to make my own config than fix theirs
     install -Dm644 <(cat << EOF
