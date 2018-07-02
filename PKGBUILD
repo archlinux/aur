@@ -1,8 +1,7 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
-
 pkgname=soapyuhd
 pkgver=0.3.4
-_gver=soapy-uhd-$pkgver
+_gitver=soapy-uhd-$pkgver
 pkgrel=1
 pkgdesc="Soapy SDR plugin for UHD supported SDR devices"
 arch=(any)
@@ -16,8 +15,8 @@ source=("https://github.com/pothosware/SoapyUHD/archive/$_gver.tar.gz")
 sha256sums=('7b7f2bc9a565f42b6e9b0831db942a5231fd048c79976fb2d1f1710efef83dd0')
 
 build() {
-  mkdir -p $srcdir/SoapyUHD-$_gver/build
-  cd $srcdir/SoapyUHD-$_gver/build
+  mkdir -p "$srcdir"/SoapyUHD-$_gitver/build
+  cd "$srcdir"/SoapyUHD-$_gitver/build
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -27,7 +26,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/SoapyUHD-$_gver/build
+  cd "$srcdir"/SoapyUHD-$_gitver/build
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
