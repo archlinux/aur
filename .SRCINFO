@@ -1,0 +1,12 @@
+pkgbase = ttf-gidole
+	pkgdesc = Open Source Modern DIN typeface
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://gidole.github.io/
+	arch = any
+	license = custom:OFL
+	source = https://github.com/larsenwork/Gidole/raw/v.0.7/Resources/Gidole.zip
+	sha512sums = 6465679c42a9b54fd707f4d17f15e6c3e8ec9d0baa5cb50d2d6d398834b822ca0530894af3e4e3405547073f9063197452b570ad90c37c9abc9bb87707bd53b6
+
+pkgname = ttf-gidole
+
