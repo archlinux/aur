@@ -1,9 +1,9 @@
 # Maintainer: William Gathoye <william + aur at gathoye dot be>
-# Maintainer: Caleb Maclennan <caleb at alerque dot com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
 
 pkgname=mattermost
-pkgver=4.10.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -25,18 +25,14 @@ source=(
     ${pkgname}-server-${pkgver}.tar.gz::"https://github.com/${pkgname}/${pkgname}-server/archive/v${pkgver}.tar.gz"
     ${pkgname}-webapp-${pkgver}.tar.gz::"https://github.com/${pkgname}/${pkgname}-webapp/archive/v${pkgver}.tar.gz"
     "${pkgname}.service"
-    "${pkgname}.sh"
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
 )
-sha512sums=(
-    'a4da2063a7ccda749f2bb3b90e6af285603c021196085e87ee95bd055ff450b1b4e63a1938fd373fe0d99bf1ed3969179328ebf980b75f241ced9b820ea5d1bf'
-    '98d0faddbdd86e5e93b3b0acea040ac44a042a75ca92a8be66bf82aef3e41240e8e4fe0e9b22b33a1e9d87806a6820d4a7cc78bdb0762dd40eb4e0da09f490dc'
-    '3e3d46dc7778be256da9a366ec96cde684fcb07732d0adfd40ea00d6ec61a161a9d7e784f7773d34e4f058e6919b13053ac228255a05f175e7ce20538f07ec93'
-    '5fe6c343e9739b12f8ea9390dafd729fa9f980978bbc0fa7eb6a2eb2d437929078d3efede23c28a6b399c407b8b5e92755169a468462088de0eb148b360acc4b'
-    'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
-    'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9'
-)
+sha512sums=('3a865d20f0fa2f3972ed3b4514c7fc368c40b273b0d168ea6680e5d0c5945f03d68e402217a7290190f674811e5b46361170047ba04ebb061a79e8a773019332'
+            'a5b3752af7a6d70c8b9da32082a145bc9007723a29bacc546c9a12695db802a4420d95e97ef46eead84b1f30d252d9e4dda15fc54eaf27594fee4a4ee481de50'
+            '893bab002d343ee5cc9a07d6221cc4f00d4d6c9d0adccc9b1bf35619306384fcb1261058c2dd63662f33ae41a62b1d735fa2e3cf50b479709edf272ea58324d1'
+            'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
+            'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9')
 
 prepare() {
     # cp cannot copy from a symbolic link to the destination link itself
@@ -158,8 +154,7 @@ package() {
     mv NOTICE.txt README.md "${pkgdir}"/usr/share/doc/${pkgname}
 
     cd "${srcdir}"
-    install -Dm755 bin/platform -t "${pkgdir}"/usr/share/webapps/${pkgname}/bin/
-    install -Dm755 ${pkgname}.sh "${pkgdir}"/usr/bin/${pkgname}
+    install -Dm755 bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
     install -Dm644 ${pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
     install -Dm644 ${pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
     install -Dm644 ${pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
