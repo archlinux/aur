@@ -3,7 +3,7 @@ pkgbase = bide
 	pkgver = 4.3
 	pkgrel = 2
 	url = https://www.planet-casio.com/Fr/logiciels/voir_un_logiciel_casio.php?showid=118
-	arch = all
+	arch = any
 	license = GPL
 	depends = jre8-openjdk
 	source = https://www.planet-casio.com/Fr/logiciels/dl_logiciel.php?id=118&file=1
