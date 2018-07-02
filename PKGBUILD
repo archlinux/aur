@@ -1,5 +1,4 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
-
 pkgname=osmo-fl2k
 pkgver=0.1.1
 pkgrel=1
@@ -15,8 +14,8 @@ source=("https://github.com/FFY00/osmo-fl2k/archive/v$pkgver.tar.gz")
 sha256sums=('0124da419714350d98f9075f016c31ac5643b1b2956be35520acba85dc2ed7a4')
 
 build() {
-  mkdir -p "$srcdir/$pkgname-$pkgver/build"
-  cd "$srcdir/$pkgname-$pkgver/build"
+  mkdir -p "$srcdir"/$pkgname-$pkgver/build
+  cd "$srcdir"/$pkgname-$pkgver/build
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -26,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/build"
+  cd "$srcdir"/$pkgname-$pkgver/build
 
   make DESTDIR="$pkgdir" install
 }
