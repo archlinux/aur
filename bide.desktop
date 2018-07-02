@@ -3,11 +3,11 @@ Encoding=UTF-8
 Version=1.0
 Type=Application
 NoDisplay=false
-Exec=java -jar /opt/bide/BIDE.jar
+Exec=java -jar /opt/bide/bide.jar
 Name=BIDE
 Comment=BIDE, Basic IDE.
 Terminal=false
 StartupNotify=true
-Icon=/opt/bide/BIDEicon.png
+Icon=/opt/bide/bide_icon.png
 GenericName=BIDE
 
