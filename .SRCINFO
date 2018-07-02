@@ -1,6 +1,6 @@
 pkgbase = blis
 	pkgdesc = BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/flame/blis
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = blis
 	depends = glibc
 	options = !makeflags
 	options = !emptydirs
-	source = blis-0.3.0.tar.gz::https://github.com/flame/blis/archive/0.3.0.tar.gz
+	source = blis-0.3.2.tar.gz::https://github.com/flame/blis/archive/0.3.2.tar.gz
 	source = fpic.patch
-	sha512sums = cc78694bca8f2738b6d7c7b79c792486274157ee22c01c16d40efb9e4cd91a67abcca138cb6a0be9e1c9310cb7f645b9a00bb843fa9ce4e227e6d8e583c35daf
+	sha512sums = f7a0d495260e42d70520ffb71a28d4aaad3dd365cd5305964e9d8631b537aae84eb3f838ccc0d0f566c81d3ffbbd24c2b56ed653e5c42809e4b4a8e7c352c630
 	sha512sums = e9b7558a8c703570089ba1923d03444ec0a63c9d10cc8931dc9a19a0faa5553eecbae5af9ca4923f425259173fc7958e852c6ef9c9375f83b5d21c4634e088b5
 
 pkgname = blis
