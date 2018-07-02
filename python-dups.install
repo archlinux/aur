@@ -1,0 +1,22 @@
+post_install() {
+    echo "---"
+    echo "Reload user units with:"
+    echo "  systemctl --user daemon-reload"
+    echo ""
+    echo "Start dups with:"
+    echo "  systemctl --user start dups"
+    echo ""
+    echo "To automatically start dups after login:"
+    echo "  systemctl --user enable dups"
+    echo "---"
+}
+
+post_upgrade() {
+    echo "---"
+    echo ""
+    echo "Restart dups with:"
+    echo "  systemctl --user daemon-reload"
+    echo "  systemctl --user restart dups"
+    echo ""
+    echo "---"
+}

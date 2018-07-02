@@ -1,0 +1,23 @@
+pkgbase = python-dups-git
+	pkgdesc = It deduplicates things - Backup as simple as possible.
+	pkgver = r75.c3d4205
+	pkgrel = 1
+	url = https://github.com/linuxwhatelse/dups
+	install = python-dups.install
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = rsync
+	depends = dbus
+	depends = libnotify
+	depends = python-gobject
+	depends = python-dbus
+	depends = python-paramiko
+	depends = python-ruamel-yaml
+	provides = python-dups
+	source = python-dups::git+https://github.com/linuxwhatelse/dups.git
+	md5sums = SKIP
+
+pkgname = python-dups-git
+
