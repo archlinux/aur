@@ -15,8 +15,8 @@ source=("https://github.com/f4exb/serialDV/archive/v$pkgver.tar.gz")
 sha256sums=('9f5964605476fe400f559e7d1700fee96ce16f1ee2e0eefdc61d3c6e70bef0bd')
 
 build() {
-  mkdir -p $srcdir/serialDV-$pkgver/build
-  cd $srcdir/serialDV-$pkgver/build
+  mkdir -p "$srcdir"/serialDV-$pkgver/build
+  cd "$srcdir"/serialDV-$pkgver/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/serialDV-$pkgver/build
+  cd "$srcdir"/serialDV-$pkgver/build
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
