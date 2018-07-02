@@ -1,0 +1,22 @@
+pkgbase = cwtch-git
+	pkgdesc = Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications
+	pkgver = r143.e5bce02
+	pkgrel = 1
+	url = https://cwtch.im/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = tor
+	provides = cwtch
+	conflicts = cwtch
+	source = cwtch-server.service
+	source = cwtch.sysusers
+	source = cwtch.tmpfiles
+	sha256sums = b1c4ad9738f517317e1b5a373590469575dcc10044ece1ce551e483498d66caa
+	sha256sums = beab74c0441b6532c1f4b7365038f595372f7e7a3a4b3587d36a3cb9dc8605fb
+	sha256sums = 399bacb458e108df49dda328258ba0653506393cef465dd794efa3b371fba902
+
+pkgname = cwtch-git
+
