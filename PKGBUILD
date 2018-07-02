@@ -2,7 +2,7 @@
 _pkgname=gns3-server
 pkgname=${_pkgname}-git
 pkgver=2.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc='GNS3 network simulator. Server package.'
 arch=('any')
 url="https://github.com/GNS3/${_pkgname}"
@@ -12,7 +12,7 @@ replaces=('gns3-server')
 provides=('gns3-server')
 conflicts=('gns3-server')
 makedepends=('python-setuptools')
-depends=('python-jsonschema>=2.4.0' 'python-jinja>=2.7.3' 'python-raven>=5.23.0' 'python-psutil>=3.0.0' 'python-zipstream-gns3' 'python-typing' 'python-yarl-gns3' 'python-aiohttp-gns3' 'python-aiohttp-cors-gns3' 'python-prompt_toolkit-gns3' 'python-async-timeout-gns3')
+depends=('python-jsonschema>=2.4.0' 'python-jinja>=2.7.3' 'python-raven>=5.23.0' 'python-psutil>=3.0.0' 'python-zipstream-gns3' 'python-yarl-gns3' 'python-aiohttp-gns3' 'python-aiohttp-cors-gns3' 'python-prompt_toolkit-gns3' 'python-async-timeout-gns3')
 optdepends=('dynamips: Cisco router emulator.'
             'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.'
             'vpcs: Simple PC emulation for basic network operations.'
@@ -25,9 +25,14 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${_pkgname}/archi
 sha256sums=('8bccf2ba16832743e0743f11fe19f506172af07c68d2eae156ea1b946415b1a0'
             'd145c7a4b7163aecd91b71a0769130d62beb5f4381fe5437774f6b4477a3fa48')
 
+prepare() {
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    sed -i '/^typing/d' requirements.txt
+}
+
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  python3 setup.py install --root=${pkgdir} --optimize=1
-  install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
-  install -Dm644 ${srcdir}/${_pkgname}@.service ${pkgdir}/usr/lib/systemd/system/${_pkgname}@.service
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    python3 setup.py install --root=${pkgdir} --optimize=1
+    install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
+    install -Dm644 ${srcdir}/${_pkgname}@.service ${pkgdir}/usr/lib/systemd/system/${_pkgname}@.service
 }
