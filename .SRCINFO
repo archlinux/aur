@@ -2,13 +2,13 @@ pkgbase = i3ass
 	pkgdesc = A bash-script collection to assist the use of i3-wm.
 	pkgver = 0.1.6
 	pkgrel = 1
-	url = https://github.com/budRich/i3ass
+	url = https://github.com/budlabs/i3ass
 	arch = any
 	license = MIT
 	depends = bash>=4.0.0
 	optdepends = xdotool: floating window placement
 	optdepends = i3-wm: duh
-	source = https://github.com/budRich/i3ass/archive/v.0.1.6.tar.gz
+	source = https://github.com/budlabs/i3ass/archive/v.0.1.6.tar.gz
 	sha256sums = a4312f91ee0bb027feb1650a586197697b3a849969150488bfce3ba358515b4d
 
 pkgname = i3ass

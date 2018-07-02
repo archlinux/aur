@@ -6,7 +6,7 @@ pkgver=0.1.6
 pkgrel=1
 pkgdesc='A bash-script collection to assist the use of i3-wm.'
 arch=('any')
-url='https://github.com/budRich/i3ass'
+url='https://github.com/budlabs/i3ass'
 license=('MIT')
 groups=()
 depends=('bash>=4.0.0')
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/budRich/$pkgname/archive/v.$pkgver.tar.gz")
+source=("https://github.com/budlabs/$pkgname/archive/v.$pkgver.tar.gz")
 noextract=()
 sha256sums=('a4312f91ee0bb027feb1650a586197697b3a849969150488bfce3ba358515b4d')
 
