@@ -1,7 +1,7 @@
 # Maintainer: Eragon <sam.vzh@gmail.com>
 pkgname=bide
 pkgver=4.3
-pkgrel=5
+pkgrel=6
 pkgdesc="BIDE, Basic IDE by Zezombye"
 arch=("any")
 url="https://www.planet-casio.com/Fr/logiciels/voir_un_logiciel_casio.php?showid=118"
@@ -20,5 +20,6 @@ package() {
     mkdir -p $pkgdir/opt/bide
     cp BIDE.jar $pkgdir/opt/bide/bide.jar
     cp images/BIDEicon.png $pkgdir/opt/bide/bide_icon.png
+    cp bide.desktop $pkgdir/usr/share/applications/bide.desktop
 }
 
