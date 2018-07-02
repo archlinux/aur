@@ -1,5 +1,5 @@
 pkgbase = writefull
-	pkgdesc = Writefull is an app that gives feedback on your writing by checking your text against databases of correct language.
+	pkgdesc = App that gives feedback on your writing.
 	pkgver = 3.0.0_beta19
 	pkgrel = 1
 	url = http://writefullapp.com/

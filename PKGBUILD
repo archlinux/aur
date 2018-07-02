@@ -5,7 +5,7 @@ _rver=3.0.0
 _bver=19
 pkgver=${_rver}_beta$_bver
 pkgrel=1
-pkgdesc="Writefull is an app that gives feedback on your writing by checking your text against databases of correct language."
+pkgdesc="App that gives feedback on your writing."
 arch=('i686' 'x86_64')
 url="http://writefullapp.com/"
 license=('MIT')
@@ -25,22 +25,22 @@ elif [ "$(uname -m)" = "i686" ]; then
 fi
 
 package() {
-	install -dm 755 $pkgdir/usr/share/$pkgname
-	cp -dr --no-preserve=ownership $srcdir/Writefull-linux-$_arch_dir/* $pkgdir/usr/share/$pkgname
+	install -dm 755 "$pkgdir"/usr/share/$pkgname
+	cp -dr --no-preserve=ownership "$srcdir"/Writefull-linux-$_arch_dir/* "$pkgdir"/usr/share/$pkgname
 
-	convert $pkgdir/usr/share/$pkgname/Writefull.ico $pkgdir/usr/share/$pkgname/Writefull.png
-	install -Dm 644 $pkgdir/usr/share/$pkgname/Writefull-0.png $pkgdir/usr/share/pixmaps/writefull.png
+	convert "$pkgdir"/usr/share/$pkgname/Writefull.ico "$pkgdir"/usr/share/$pkgname/Writefull.png
+	install -Dm 644 "$pkgdir"/usr/share/$pkgname/Writefull-0.png "$pkgdir"/usr/share/pixmaps/writefull.png
 
-	sed -i 's|Icon=.*$|Icon=/usr/share/pixmaps/writefull.png|g' $pkgdir/usr/share/$pkgname/writefull.desktop
-	sed -i 's|Exec=.*$|Exec=writefull|g' $pkgdir/usr/share/$pkgname/writefull.desktop
-	install -Dm 644 $pkgdir/usr/share/$pkgname/writefull.desktop $pkgdir/usr/share/applications/writefull.desktop
+	sed -i 's|Icon=.*$|Icon=/usr/share/pixmaps/writefull.png|g' "$pkgdir"/usr/share/$pkgname/writefull.desktop
+	sed -i 's|Exec=.*$|Exec=writefull|g' "$pkgdir"/usr/share/$pkgname/writefull.desktop
+	install -Dm 644 "$pkgdir"/usr/share/$pkgname/writefull.desktop "$pkgdir"/usr/share/applications/writefull.desktop
 
-	rm $pkgdir/usr/share/$pkgname/Writefull.ico
-	rm $pkgdir/usr/share/$pkgname/Writefull-*.png
-	rm $pkgdir/usr/share/$pkgname/writefull.desktop
-	rm $pkgdir/usr/share/$pkgname/LICENSE
-	rm $pkgdir/usr/share/$pkgname/LICENSES.chromium.html
+	rm "$pkgdir"/usr/share/$pkgname/Writefull.ico
+	rm "$pkgdir"/usr/share/$pkgname/Writefull-*.png
+	rm "$pkgdir"/usr/share/$pkgname/writefull.desktop
+	rm "$pkgdir"/usr/share/$pkgname/LICENSE
+	rm "$pkgdir"/usr/share/$pkgname/LICENSES.chromium.html
 
-	install -dm 755 $pkgdir/usr/bin
-	ln -s /usr/share/$pkgname/Writefull $pkgdir/usr/bin/writefull
+	install -dm 755 "$pkgdir"/usr/bin
+	ln -s /usr/share/$pkgname/Writefull "$pkgdir"/usr/bin/writefull
 }
