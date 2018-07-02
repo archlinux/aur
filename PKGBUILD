@@ -33,22 +33,23 @@ _gitroot=GITURL
 _gitname=gegl
 
 build() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir"/$_gitname
 
 	./autogen.sh
 	./configure --prefix=/usr --with-sdl --with-openexr --with-librsvg \
 		--with-libavformat --with-jasper --disable-docs \
 		--enable-workshop \
 		--enable-introspection=yes
-  make
+	
+	make
 }
 
 package() {
-	cd "$srcdir/$_gitname"
-	make DESTDIR="$pkgdir/" install
+	cd "$srcdir"/$_gitname
+	make DESTDIR="$pkgdir" install
 }
 
 pkgver() {
-	cd $_gitname
+	cd "$srcdir"/$_gitname
 	git describe --always | sed -e 's/GEGL_//' -e 's/-g.*$//' -e 's/[_-]/./g'
 }
