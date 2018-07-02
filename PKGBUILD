@@ -3,7 +3,7 @@
 #
 # Get the Ubuntu tarball from https://www.codeplay.com/products/computesuite/computecpp/download
 pkgname=computecpp
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Accelerates Complex C++ Applications on Heterogeneous Compute 
 Systems using Open Standards"
@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://www.codeplay.com/products/computesuite/computecpp"
 license=('EULA')
 source=("local://ComputeCpp-CE-${pkgver}-Ubuntu.16.04-64bit.tar.gz")
-sha256sums=('81bff6a03ecd3611130d7498d3f3228cc016ad68d2d1f097e83295cc5047505c')
+sha256sums=('d1b0b45f66f75f99acedebd3cba88b910b3c4d68e0dd2b73ef0940a747725a6f')
 depends=(ncurses5-compat-libs)
 options=(!strip)
 
@@ -22,7 +22,6 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$pkgdir/etc/ld.so.conf.d"
 
-    mv ${_pkgbasename}/lib/ComputeCppTargts ${_pkgbasename}/lib/ComputeCppTargets
     mv ${_pkgbasename} "$pkgdir/opt"
 
     ln -s /opt/${_pkgbasename}/bin/compute++ "$pkgdir/usr/bin"
