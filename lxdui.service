@@ -1,0 +1,16 @@
+[Unit]
+Description=Web UI for the native Linux container technology LXD/LXC
+After=network.target lxd.service
+Requires=lxd.service
+
+[Service]
+Type=simple
+User=lxdui
+Group=lxdui
+PIDFile=/run/lxdui/lxdui.pid
+ExecStart=/usr/lib/lxdui/bin/lxdui start
+ExecStop=/usr/lib/lxdui/bin/lxdui stop
+
+[Install]
+WantedBy=multi-user.target
+
