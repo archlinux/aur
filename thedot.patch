@@ -1,38 +1,30 @@
-diff -aur DOT_0.3.original/dark/cursor.theme DOT_0.3.modified/dark/cursor.theme
---- DOT_0.3.original/dark/cursor.theme	2015-10-16 05:37:05.000000000 +0300
-+++ DOT_0.3.modified/dark/cursor.theme	2016-01-15 12:39:20.884053000 +0200
-@@ -1,3 +1,3 @@
+diff -ura sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Dark/cursor.theme sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Dark/cursor.theme
+--- sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Dark/cursor.theme	2018-06-30 15:17:18.000000000 +0300
++++ sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Dark/cursor.theme	2018-07-02 17:35:11.923503565 +0300
+@@ -1,2 +1,2 @@
  [Icon Theme]
 -Inherits=TheDOT 0.3 dark
-+Inherits=TheDOT-0.3-light
- 
-diff -aur DOT_0.3.original/dark/index.theme DOT_0.3.modified/dark/index.theme
---- DOT_0.3.original/dark/index.theme	2015-10-16 05:37:22.000000000 +0300
-+++ DOT_0.3.modified/dark/index.theme	2016-01-15 12:38:56.004052000 +0200
-@@ -1,5 +1,5 @@
++Inherits=TheDOT-0.3-dark
+diff -ura sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Dark/index.theme sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Dark/index.theme
+--- sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Dark/index.theme	2018-06-30 15:17:18.000000000 +0300
++++ sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Dark/index.theme	2018-07-02 17:50:51.850192036 +0300
+@@ -1,3 +1,3 @@
  [Icon Theme]
 -Name=TheDOT 0.3 dark
-+Name=TheDOT-0.3-dark
- Example=arrow
--Inherits=TheDOT 0.3 dark
++Name=TheDOT-dark
+ Comment=Good white modern-looking theme with a piece of nostalgia
+diff -ura sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Light/cursor.theme sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Light/cursor.theme
+--- sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Light/cursor.theme	2018-06-30 15:17:18.000000000 +0300
++++ sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Light/cursor.theme	2018-07-02 17:36:59.846839409 +0300
+@@ -1,2 +1,2 @@
+ [Icon Theme]
+-Inherits=TheDOT 0.3 light
 +Inherits=TheDOT-0.3-light
- 
-diff -aur DOT_0.3.original/light/cursor.theme DOT_0.3.modified/light/cursor.theme
---- DOT_0.3.original/light/cursor.theme	2015-10-16 05:36:44.000000000 +0300
-+++ DOT_0.3.modified/light/cursor.theme	2016-01-15 12:38:36.730718000 +0200
+diff -ura sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Light/index.theme sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Light/index.theme
+--- sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Light/index.theme	2018-06-30 15:17:18.000000000 +0300
++++ sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Light/index.theme	2018-07-02 17:51:02.210192277 +0300
 @@ -1,3 +1,3 @@
  [Icon Theme]
--Inherits=TheDOT 0.3 light
-+Inherits=TheDOT-0.3-dark
- 
-diff -aur DOT_0.3.original/light/index.theme DOT_0.3.modified/light/index.theme
---- DOT_0.3.original/light/index.theme	2015-10-16 05:36:35.000000000 +0300
-+++ DOT_0.3.modified/light/index.theme	2016-01-15 12:38:26.980718000 +0200
-@@ -1,5 +1,5 @@
- [Icon Theme]
 -Name=TheDOT 0.3 light
-+Name=TheDOT-0.3-light
- Example=arrow
--Inherits=TheDOT 0.3 light
-+Inherits=TheDOT-0.3-dark
- 
++Name=TheDOT-light
+ Comment=Good white modern-looking theme with a piece of nostalgia
