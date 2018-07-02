@@ -20,11 +20,11 @@ md5sums=(
 )
 
 build () {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   patch -p0 < ../$pkgname-$pkgver-fix-setup.patch
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   python2 setup.py install --root="$pkgdir"
 }
