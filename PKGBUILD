@@ -1,20 +1,20 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=coax
-pkgver=0.1.0+123+gfbb9144
+pkgver=0+123+gfbb9144
 pkgrel=1
 pkgdesc='Barely-working Rust/GTK+ Wire client (insecure)'
 arch=(any)
 url=https://github.com/wireapp/coax
 license=(GPL3)
-depends=(cargo)
+depends=(cargo libsodium gtk3 openssl sqlite)
 makedepends=(git librsvg)
 source=(git+https://github.com/wireapp/coax#branch=develop)
 sha512sums=(SKIP)
 
 pkgver() {
-  cd coax/coax-gtk
-  echo "$(grep '^version' Cargo.toml | head -n1 | cut -d\" -f2)+$(git rev-list --count HEAD)+g$(git describe --always)"
+  cd coax
+  echo 0+$(git rev-list --count HEAD)+g$(git describe --always)
 }
 
 build() {
@@ -25,7 +25,7 @@ build() {
 
 package() {
   cd coax
-  install -Dm 755 target/release/coax-gtk $pkgdir/usr/bin/coax
+  install -D target/release/coax-gtk $pkgdir/usr/bin/coax
   install -Dm 644 LICENSE $pkgdir/usr/share/licenses/coax/LICENSE
   cd coax-gtk/src/gtk
   install -Dm 644 coax.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/coax.svg
