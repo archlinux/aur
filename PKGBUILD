@@ -4,7 +4,7 @@ _pkgname=cwtch
 _gourl=cwtch.im/$_pkgname
 pkgname=$_pkgname-git
 pkgver=r143.e5bce02
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications"
 arch=('x86_64' 'i686')
 url="https://cwtch.im/"
@@ -28,16 +28,14 @@ prepare() {
     go get -u -v -d "$_gourl" || true
 
     project="$GOPATH/src/$_gourl"
-    #mkdir -p "`dirname \"$project\"`"
-    #ln -sf "$srcdir/$_pkgname" "$project"
 
     cd "$project/app/cli"
     go fix
-    go get -u -v
+    go get -fix -u -v
 
     cd "$project/server/app"
     go fix
-    go get -u -v
+    go get -fix -u -v
 }
 
 pkgver() {
@@ -55,10 +53,18 @@ build() {
     project="$GOPATH/src/$_gourl"
 
     cd "$project/app/cli"
-    go build -v
+    go build -v -ldflags "-s -w"
 
     cd "$project/server/app"
-    go build -v
+    go build -v -ldflags "-s -w"
+}
+
+check() {
+    export GOPATH="$srcdir/go"
+    project="$GOPATH/src/$_gourl"
+
+    cd "$project"
+    bash "testing/tests.sh"
 }
 
 package() {
