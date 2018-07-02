@@ -1,0 +1,17 @@
+pkgbase = opendocman
+	pkgdesc = Free PHP Document Management System DMS
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = http://www.opendocman.com
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = php
+	depends = apache
+	source = https://sourceforge.net/projects/opendocman/files/opendocman/1.3.5/opendocman-1.3.5.tar.gz/download
+	source = opendocman-apache.conf
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = opendocman
+
