@@ -14,13 +14,13 @@ source=('git+https://github.com/pothosware/SoapyUHD')
 md5sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/SoapyUHD
+  cd "$srcdir"/SoapyUHD
   git describe --long --tags | sed 's/soapy-uhd-//g;s/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 build() {
-  mkdir -p $srcdir/SoapyUHD/build
-  cd $srcdir/SoapyUHD/build
+  mkdir -p "$srcdir"/SoapyUHD/build
+  cd "$srcdir"/SoapyUHD/build
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/SoapyUHD/build
+  cd "$srcdir"/SoapyUHD/build
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
