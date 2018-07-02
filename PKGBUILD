@@ -1,5 +1,4 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
-
 pkgname=pulseaudio-equalizer-ladspa
 pkgver=2.7.1
 pkgrel=2
@@ -21,11 +20,11 @@ sha256sums=(
 )
 
 package() {
-  install -Dm644 "$srcdir/pulseaudio-equalizer-ladspa-$pkgver/equalizerrc" "$pkgdir/usr/equalizerrc"
+  install -Dm644 "$srcdir"/pulseaudio-equalizer-ladspa-$pkgver/equalizerrc "$pkgdir"/usr/equalizerrc
 
-  cp -dr --no-preserve=ownership "$srcdir/pulseaudio-equalizer-ladspa-$pkgver/share" "$pkgdir/usr/"
-  cp -dr --no-preserve=ownership "$srcdir/pulseaudio-equalizer-ladspa-$pkgver/bin" "$pkgdir/usr/"
+  cp -dr --no-preserve=ownership "$srcdir"/pulseaudio-equalizer-ladspa-$pkgver/share "$pkgdir"/usr/
+  cp -dr --no-preserve=ownership "$srcdir"/pulseaudio-equalizer-ladspa-$pkgver/bin "$pkgdir"/usr/
 
-  mkdir -p $pkgdir/etc/profile.d
-  cp $srcdir/ladspa_lib_path.sh $pkgdir/etc/profile.d/ladspa_lib_path.sh
+  mkdir -p "$pkgdir"/etc/profile.d
+  cp "$srcdir"/ladspa_lib_path.sh "$pkgdir"/etc/profile.d/ladspa_lib_path.sh
 }
