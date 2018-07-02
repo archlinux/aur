@@ -17,6 +17,8 @@ enum AlertKind {
     ALERT_REQUEST,
     ALERT_GONE,
     ALERT_PERMS,
+    ALERT_DOWN,
+    ALERT_DNS,
     ALERT_MAX
 };
 
@@ -67,6 +69,9 @@ enum ColorKind {
 
 } // namespace
 
-extern void add_capability(const char* name); // defined in command_pyroscope.cc
+// defined in command_pyroscope.cc (exported here so we only have to patch in one .h)
+extern void add_capability(const char* name);
+extern size_t u8_length(const std::string& text);
+extern std::string u8_chop(const std::string& text, size_t glyphs);
 
 #endif

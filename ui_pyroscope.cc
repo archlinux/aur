@@ -1,6 +1,8 @@
 /*
  ⋅ ⋅⋅ ” ’ ♯ ☢ ☍ ⌘ ✰ ⣿ ⚡ ☯ ⚑ ↺ ⤴ ⤵ ∆ ⌚ ≀∇ ✇ ⚠ ◔ ⚡ ↯ ¿ ⨂ ✖ ⇣ ⇡  ⠁ ⠉ ⠋ ⠛ ⠟ ⠿ ⡿ ⣿ ☹ ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ ▹ ╍ ▪ ⚯ ⚒ ◌ ⇅ ↡ ↟ ⊛ ♺
 
+⎆  ㋛ ㋡
+
  ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳
 
 
@@ -139,21 +141,6 @@ static uint32_t* network_history_up = 0;
 static uint32_t* network_history_down = 0;
 static std::string network_history_up_str;
 static std::string network_history_down_str;
-
-
-// Chop off an UTF-8 string
-std::string u8_chop(const std::string& text, size_t glyphs) {
-    std::mbstate_t mbs = std::mbstate_t();
-    size_t bytes = 0, skip;
-    const char* pos = text.c_str();
-
-    while (*pos && glyphs-- > 0 && (skip = std::mbrlen(pos, text.length() - bytes, &mbs)) > 0) {
-        pos += skip;
-        bytes += skip;
-    }
-
-    return bytes < text.length() ? text.substr(0, bytes) : text;
-}
 
 
 // get custom field contaioning a long (time_t)
@@ -416,7 +403,7 @@ int64_t cmd_d_message_alert(core::Download* d) {
             alert = ps::ALERT_REQUEST;
         else if (d->message().find("not registered") != std::string::npos
                     || d->message().find("torrent cannot be found") != std::string::npos
-                    || d->message().find("unregistered") != std::string::npos)
+                    || d->message().find("nregistered") != std::string::npos)
             alert = ps::ALERT_GONE;
         else if (d->message().find("not authorized") != std::string::npos
                     || d->message().find("blocked from") != std::string::npos
@@ -424,9 +411,29 @@ int64_t cmd_d_message_alert(core::Download* d) {
                     || d->message().find("limit exceeded") != std::string::npos
                     || d->message().find("active torrents are enough") != std::string::npos)
             alert = ps::ALERT_PERMS;
+        else if (d->message().find("tracker is down") != std::string::npos)
+            alert = ps::ALERT_DOWN;
+        else if (d->message().find("n't resolve host name") != std::string::npos)
+            alert = ps::ALERT_DNS;
     }
 
     return alert;
+}
+
+
+std::string get_active_tracker_alias(torrent::Download* item) {
+    std::string url = get_active_tracker_domain(item);
+    if (!url.empty()) {
+        std::string alias = tracker_aliases[url];
+        if (!alias.empty()) url = alias;
+    }
+
+    return url;
+}
+
+
+torrent::Object cmd_d_tracker_alias(core::Download* download) {
+    return get_active_tracker_alias(download->download());
 }
 
 
@@ -451,10 +458,8 @@ static void decorate_download_title(Window* window, display::Canvas* canvas, cor
 
     // show label for active tracker (a/k/a in focus tracker)
     if (int(canvas->width()) <= x_title + NAME_RESERVED_WIDTH + 3) return;
-    std::string url = get_active_tracker_domain((*range.first)->download());
+    std::string url = get_active_tracker_alias((*range.first)->download());
     if (url.empty()) return;
-    std::string alias = tracker_aliases[url];
-    if (!alias.empty()) url = alias;
 
     // shorten label if too long
     int max_len = std::min(TRACKER_LABEL_WIDTH,
@@ -575,6 +580,27 @@ void ui_pyroscope_download_list_redraw_item(Window* window, display::Canvas* can
 }
 
 
+torrent::Object ui_column_spec(rpc::target_type target, const torrent::Object::list_type& args) {
+    if (args.size() != 1) {
+        throw torrent::input_error("ui.column.spec takes exactly one argument!");
+    }
+    int64_t colidx_wanted = parse_value_arg(*args.begin());
+    std::string spec;
+
+    const torrent::Object::map_type& column_defs = control->object_storage()->get_str("ui.column.render").as_map();
+    torrent::Object::map_const_iterator cols_itr, last_col = column_defs.end();
+
+    for (cols_itr = column_defs.begin(); cols_itr != last_col; ++cols_itr) {
+        char* header_pos = 0;
+        int64_t colidx = strtol(cols_itr->first.c_str(), &header_pos, 10);
+        if (header_pos[0] == ':' && colidx == colidx_wanted)
+            spec = cols_itr->first;
+    }
+
+    return spec;
+}
+
+
 torrent::Object ui_column_hide(rpc::target_type target, const torrent::Object::list_type& args) {
     for(torrent::Object::list_const_iterator itr = args.begin(), last = args.end(); itr != last; ++itr) {
         int64_t colidx = parse_value_arg(*itr);
@@ -611,6 +637,24 @@ torrent::Object ui_column_hidden_list() {
 
     for (std::set<int>::const_iterator itr = column_hidden.begin(); itr != column_hidden.end(); itr++) {
        resultList.push_back(*itr);
+    }
+
+    return result;
+}
+
+
+torrent::Object ui_column_sacrificial_list() {
+    torrent::Object result = torrent::Object::create_list();
+    torrent::Object::list_type& resultList = result.as_list();
+
+    const torrent::Object::map_type& column_defs = control->object_storage()->get_str("ui.column.render").as_map();
+    torrent::Object::map_const_iterator cols_itr, last_col = column_defs.end();
+
+    for (cols_itr = column_defs.begin(); cols_itr != last_col; ++cols_itr) {
+        char* header_pos = 0;
+        int64_t colidx = strtol(cols_itr->first.c_str(), &header_pos, 10);
+        if (header_pos[0] == ':' && header_pos[1] == '?')
+            resultList.push_back(colidx);
     }
 
     return result;
@@ -1032,16 +1076,20 @@ void initialize_command_ui_pyroscope() {
 
     CMD2_ANY_LIST("trackers.alias.set_key", &cmd_trackers_alias_set_key);
     CMD2_ANY("trackers.alias.items", _cxxstd_::bind(&cmd_trackers_alias_items, _cxxstd_::placeholders::_1));
+    CMD2_DL("d.tracker_alias", _cxxstd_::bind(&display::cmd_d_tracker_alias, _cxxstd_::placeholders::_1));
 
     CMD2_DL("d.message.alert", _cxxstd_::bind(&display::cmd_d_message_alert, _cxxstd_::placeholders::_1));
 
     CMD2_ANY        ("ui.canvas_color",         _cxxstd_::bind(&display::ui_canvas_color_get));
     CMD2_ANY_STRING ("ui.canvas_color.set",     _cxxstd_::bind(&display::ui_canvas_color_set, _cxxstd_::placeholders::_2));
 
+    CMD2_ANY_LIST("ui.column.spec", &display::ui_column_spec);
     CMD2_ANY_LIST("ui.column.hide", &display::ui_column_hide);
     CMD2_ANY_LIST("ui.column.show", &display::ui_column_show);
     CMD2_ANY_LIST("ui.column.is_hidden", &display::ui_column_is_hidden);
     CMD2_ANY("ui.column.hidden.list", _cxxstd_::bind(&display::ui_column_hidden_list));
+    CMD2_ANY("ui.column.sacrificial.list", _cxxstd_::bind(&display::ui_column_sacrificial_list));
+    CMD2_VAR_VALUE("ui.column.sacrificed", 0);
 
     PS_VARIABLE_COLOR("ui.color.progress0",     "red");
     PS_VARIABLE_COLOR("ui.color.progress20",    "bold bright red");
@@ -1101,8 +1149,18 @@ void initialize_command_ui_pyroscope() {
         // Multi-method to store column definitions
         "method.insert = ui.column.render, multi|rlookup|static\n"
 
+        // Toggle sacrificial columns manually (bound to '/' key)
+        "method.insert = ui.column.sacrificed.toggle, simple, \""
+            "branch = (ui.column.sacrificed), ((ui.column.sacrificed.set, 0)), ((ui.column.sacrificed.set, 1)) ; "
+            "branch = (ui.column.sacrificed),"
+            "   \\\"ui.column.show = (ui.column.sacrificial.list)\\\","
+            "   \\\"ui.column.hide = (ui.column.sacrificial.list)\\\" ; "
+            "ui.current_view.set = (ui.current_view)\"\n"
+        "schedule2 = column_sacrificed_toggle, 0, 0, ((ui.bind_key,download_list,/,ui.column.sacrificed.toggle=))\n"
+
         // Bind '*' to toggle between collapsed and expanded display
-        "schedule2 = collapsed_view_toggle, 0, 0, ((ui.bind_key,download_list,*,view.collapsed.toggle=))\n"
+        "schedule2 = collapsed_view_toggle, 0, 0, ((ui.bind_key, download_list, *, \""
+            "view.collapsed.toggle= ; ui.current_view.set = (ui.current_view)\"))\n"
 
         // Collapse built-in views
         "view.collapsed.toggle = main\n"
@@ -1155,7 +1213,8 @@ void initialize_command_ui_pyroscope() {
 
         // Status flags (❢ ☢ ☍ ⌘)
         "method.set_key = ui.column.render, \"100:3C95/2:❢  \","
-        "    ((array.at, {\"  \", \"♺ \", \"⚠ \", \"◔ \", \"⚡ \", \"↯ \", \"¿?\", \"⨂ \"}, ((d.message.alert)) ))\n"
+        "    ((array.at, {\"  \", \"♺ \", \"⚠ \", \"◔ \", \"⚡ \", \"↯ \", \"¿?\","
+                        " \"⨂ \", \"⋫ \", \"☡ \"}, ((d.message.alert)) ))\n"
         "method.set_key = ui.column.render, \"110:2C92/2:☢ \","
         "    ((string.map, ((cat, ((d.is_open)), ((d.is_active)))), {00, \"▪ \"}, {01, \"▪ \"}, {10, \"╍ \"}, {11, \"▹ \"}))\n"
         "method.set_key = ui.column.render, \"120:?2:☍ \","
@@ -1169,7 +1228,7 @@ void initialize_command_ui_pyroscope() {
         "method.set_key = ui.column.render, \"420:?3C14/3: ⤵ \", ((convert.magnitude, ((d.tracker_scrape.incomplete)) ))\n"
 
         // Traffic indicator (⚡)
-        "method.set_key = ui.column.render, \"500:?2:⚡ \","
+        "method.set_key = ui.column.render, \"500:?2:↕ \","
         "    ((string.map, ((cat, ((not, ((d.up.rate)) )), ((not, ((d.down.rate)) )) )),"
         "                  {00, \"⇅ \"}, {01, \"↟ \"}, {10, \"↡ \"}, {11, \"  \"} ))\n"
 
@@ -1179,13 +1238,13 @@ void initialize_command_ui_pyroscope() {
         // Up|Leech Time / Down|Completion or Loaded Time
         // TODO: Could use "d.timestamp.started" and "d.timestamp.finished" here, but need to check
         //       when they were introduced, and if they're always set (e.g. what about fast-resumed items?)
-        "method.set_key = ui.column.render, \"520:6C96/6:∆⋮ ⌛  \","
+        "method.set_key = ui.column.render, \"520:6C96/6:∆⋮ ⟲  \","
         "    ((if, ((d.up.rate)),"
         "        ((convert.human_size, ((d.up.rate)), ((value, 10)) )),"
         "        ((convert.time_delta, ((value, ((d.custom, tm_completed)) )),"
         "                              ((value, ((d.custom.if_z, tm_started, ((d.custom, tm_loaded)) )) )) ))"
         "    ))\n"
-        "method.set_key = ui.column.render, \"530:6C90/6:∇⋮ ⌚  \","
+        "method.set_key = ui.column.render, \"530:6C90/6:∇⋮ ◷  \","
         "    ((if, ((d.down.rate)),"
         "        ((convert.human_size, ((d.down.rate)), ((value, 10)) )),"
         "        ((convert.time_delta, ((value, ((d.custom.if_z, tm_completed, ((d.custom, tm_loaded)) )) )) ))"
@@ -1204,10 +1263,10 @@ void initialize_command_ui_pyroscope() {
         //⠀"  ▁ ▂ ▃ ▄ ▅ ▆ ▇ █ "
         "method.set_key = ui.column.render, \"920:3C93/3:☯  \","
         "    ((string.substr, \"☹ ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ \", ((math.mul, 2, ((math.div, ((d.ratio)), 1000)) )), 2, \"⊛ \"))\n"
-        // "☹ ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ "
+        // "☹ ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ " "😇 "
         // "☹ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ "
         // "☹ ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒ ➓ "
-        "method.set_key = ui.column.render, \"930:5C15/3C21/2: ✇   \","
+        "method.set_key = ui.column.render, \"930:5C15/3C21/2: ⛁   \","
         "    ((convert.human_size, ((d.size_bytes)) ))\n"
 
         // Explicitly managed status (✰ = prio; ⚑ = tagged)

@@ -180,16 +180,19 @@ torrent::Object apply_random(rpc::target_type target, const torrent::Object::lis
 torrent::Tracker* get_active_tracker(torrent::Download* item) {
     torrent::TrackerList* tl = item->tracker_list();
     torrent::Tracker* tracker = 0;
+    torrent::Tracker* fallback = 0;
 
     for (size_t trkidx = 0; trkidx < tl->size(); trkidx++) {
         tracker = tl->at(trkidx);
-        if (tracker->is_usable() && tracker->type() == torrent::Tracker::TRACKER_HTTP
-                && tracker->scrape_complete() + tracker->scrape_incomplete() > 0) {
-            break;
+        if (tracker->is_usable() && tracker->type() == torrent::Tracker::TRACKER_HTTP) {
+            if (!fallback) fallback = tracker;
+            if (tracker->scrape_complete() || tracker->scrape_incomplete()) {
+                break;
+            }
         }
         tracker = 0;
     }
-    if (!tracker && tl->size()) tracker = tl->at(0);
+    if (!tracker && tl->size()) tracker = fallback ? fallback : tl->at(0);
 
     return tracker;
 }
@@ -497,6 +500,11 @@ torrent::Object cmd_import_return(rpc::target_type target, const torrent::Object
 }
 
 
+torrent::Object cmd_do(rpc::target_type target, const torrent::Object& args) {
+    return rpc::call_object(args, target);
+}
+
+
 torrent::Object retrieve_d_custom_if_z(core::Download* download, const torrent::Object::list_type& args) {
     torrent::Object::list_const_iterator itr = args.begin();
     if (itr == args.end())
@@ -508,10 +516,50 @@ torrent::Object retrieve_d_custom_if_z(core::Download* download, const torrent::
         throw torrent::bencode_error("d.custom.if_z: Missing default argument.");
 
     try {
-        return download->bencode()->get_key("rtorrent").get_key("custom").get_key_string(key);
+        const std::string& val = download->bencode()->get_key("rtorrent").get_key("custom").get_key_string(key);
+        return val.empty() ? itr->as_string() : val;
     } catch (torrent::bencode_error& e) {
         return itr->as_string();
     }
+}
+
+
+torrent::Object cmd_d_custom_set_if_z(core::Download* download, const torrent::Object::list_type& args) {
+    torrent::Object::list_const_iterator itr = args.begin();
+    if (itr == args.end())
+        throw torrent::bencode_error("d.custom.set_if_z: Missing key argument.");
+    const std::string& key = (itr++)->as_string();
+    if (key.empty())
+        throw torrent::bencode_error("d.custom.set_if_z: Empty key argument.");
+    if (itr == args.end())
+        throw torrent::bencode_error("d.custom.set_if_z: Missing value argument.");
+
+    bool set_it = false;
+    try {
+        const std::string& val = download->bencode()->get_key("rtorrent").get_key("custom").get_key_string(key);
+        set_it = val.empty();
+    } catch (torrent::bencode_error& e) {
+        set_it = true;
+    }
+    if (set_it)
+        download->bencode()->get_key("rtorrent").
+            insert_preserve_copy("custom", torrent::Object::create_map()).first->second.
+            insert_key(key, itr->as_string());
+
+    return torrent::Object();
+}
+
+
+torrent::Object cmd_d_custom_erase(core::Download* download, const torrent::Object::list_type& args) {
+    for (torrent::Object::list_type::const_iterator itr = args.begin(), last = args.end(); itr != last; itr++) {
+        const std::string& key = itr->as_string();
+        if (key.empty())
+            throw torrent::bencode_error("d.custom.erase: Empty key argument.");
+
+        download->bencode()->get_key("rtorrent").get_key("custom").erase_key(key);
+    }
+
+    return torrent::Object();
 }
 
 
@@ -531,6 +579,44 @@ torrent::Object retrieve_d_custom_map(core::Download* download, bool keys_only, 
 }
 
 
+torrent::Object cmd_d_custom_toggle(core::Download* download, const std::string& key) {
+    bool result = true;
+    try {
+        const std::string& strval = download->bencode()->get_key("rtorrent").get_key("custom").get_key_string(key);
+        if (!strval.empty()) {
+            char* junk = 0;
+            long number = strtol(strval.c_str(), &junk, 10);
+            while (std::isspace(*junk)) ++junk;
+            result = !*junk && number == 0;
+        }
+    } catch (torrent::bencode_error& e) {
+        // true
+    }
+
+    download->bencode()->get_key("rtorrent").
+        insert_preserve_copy("custom", torrent::Object::create_map()).first->second.
+        insert_key(key, result ? "1" : "0");
+    return (int64_t) (result ? 1 : 0);
+}
+
+
+torrent::Object retrieve_d_custom_as_value(core::Download* download, const std::string& key) {
+    try {
+        const std::string& strval = download->bencode()->get_key("rtorrent").get_key("custom").get_key_string(key);
+        if (strval.empty())
+            return (int64_t) 0;
+
+        char* junk = 0;
+        long result = strtol(strval.c_str(), &junk, 10);
+        if (*junk)
+            throw torrent::input_error("d.custom.as_value(" + key + "): junk at end of '" + strval + "'!");
+        return (int64_t) result;
+    } catch (torrent::bencode_error& e) {
+        return (int64_t) 0;
+    }
+}
+
+
 torrent::Object
 d_multicall_filtered(const torrent::Object::list_type& args) {
   if (args.size() < 2)
@@ -539,12 +625,7 @@ d_multicall_filtered(const torrent::Object::list_type& args) {
 
   // Find the given view
   core::ViewManager* viewManager = control->view_manager();
-  core::ViewManager::iterator viewItr;
-
-  if (!arg->as_string().empty())
-    viewItr = viewManager->find(arg->as_string());
-  else
-    viewItr = viewManager->find("default");
+  core::ViewManager::iterator viewItr = viewManager->find(arg->as_string().empty() ? "default" : arg->as_string());
 
   if (viewItr == viewManager->end())
     throw torrent::input_error("Could not find view '" + arg->as_string() + "'.");
@@ -594,15 +675,39 @@ torrent::Object cmd_throttle_names() {
 }
 
 
-static const std::string& string_get_first_arg(const char* name, const torrent::Object::list_type& args) {
-    if (args.size() < 1) {
-        throw torrent::input_error("string." + std::string(name) + " needs a string argument!");
+// Get length of an UTF8-encoded std::string
+size_t u8_length(const std::string& text) {
+    // Take total length and subtract number of non-leading multi-bytes
+    return text.length() - count_if(text.begin(), text.end(),
+                                    [](char c)->bool { return (c & 0xC0) == 0x80; });
+}
+
+
+// Chop off an UTF-8 string
+std::string u8_chop(const std::string& text, size_t glyphs) {
+    std::mbstate_t mbs = std::mbstate_t();
+    size_t bytes = 0, skip;
+    const char* pos = text.c_str();
+
+    while (*pos && glyphs-- > 0 && (skip = std::mbrlen(pos, text.length() - bytes, &mbs)) > 0) {
+        pos += skip;
+        bytes += skip;
     }
+
+    return bytes < text.length() ? text.substr(0, bytes) : text;
+}
+
+
+static const std::string& string_get_first_arg(const char* name, const torrent::Object::list_type& args) {
     torrent::Object::list_const_iterator itr = args.begin();
+    if (args.size() < 1 || !itr->is_string()) {
+        throw torrent::input_error("string." + std::string(name) + " needs a string argument.0!");
+    }
     return itr->as_string();
 }
 
 
+// get a numeric arg from a string or value, advancing the passed iterator
 static int64_t string_get_value_arg(const char* name, torrent::Object::list_const_iterator& itr) {
     int64_t result = 0;
     if (itr->is_string()) {
@@ -634,6 +739,147 @@ torrent::Object cmd_string_len(rpc::target_type target, const torrent::Object::l
     }
 
     return (int64_t) glyphs;
+}
+
+
+torrent::Object cmd_string_join(rpc::target_type target, const torrent::Object::list_type& args) {
+    std::string delim = string_get_first_arg("join", args);
+    std::string result;
+    torrent::Object::list_const_iterator first = args.begin() + 1, last = args.end();
+
+    for (torrent::Object::list_const_iterator itr = first; itr != last; ++itr) {
+        if (itr != first) result += delim;
+        rpc::print_object_std(&result, &*itr, 0);
+    }
+
+    return result;
+}
+
+
+torrent::Object cmd_string_strip(int where, const torrent::Object::list_type& args) {
+    std::string text = string_get_first_arg("[lr]strip", args);
+    torrent::Object::list_const_iterator first = args.begin() + 1, last = args.end();
+
+    if (args.size() == 1) {
+        // Strip whitespace
+        if (where <= 0) {
+            text.erase(text.begin(),
+                       std::find_if(text.begin(), text.end(),
+                                    std::not1(std::ptr_fun<int, int>(std::isspace))));
+        }
+        if (where >= 0) {
+            text.erase(std::find_if(text.rbegin(), text.rend(),
+                                    std::not1(std::ptr_fun<int, int>(std::isspace))).base(),
+                       text.end());
+        }
+    } else {
+        size_t lpos = 0, rpos = text.length();
+        bool changed;
+        do {
+            changed = false;
+            for (torrent::Object::list_const_iterator itr = first; itr != last; ++itr) {
+                const std::string& strippable = itr->as_string();
+                if (strippable.empty()) continue;
+
+                bool found;
+                do {
+                    found = false;
+
+                    if (where <= 0) {
+                        if (0 == strncmp(text.c_str() + lpos, strippable.c_str(), strippable.length())) {
+                            lpos += strippable.length();
+                            changed = found = true;
+                        }
+                    }
+                    if (where >= 0 && lpos <= rpos - strippable.length()) {
+                        if (0 == strncmp(text.c_str() + rpos - strippable.length(), strippable.c_str(), strippable.length())) {
+                            rpos -= strippable.length();
+                            changed = found = true;
+                        }
+                    }
+                } while (found && lpos < rpos);
+            }
+        } while (changed && lpos < rpos);
+        text = lpos < rpos ? text.substr(lpos, rpos - lpos) : "";
+    }
+
+    return text;
+}
+
+
+torrent::Object cmd_string_pad(bool at_end, const torrent::Object::list_type& args) {
+    std::string text;
+    if (args.size() > 0 && args.begin()->is_value()) {
+        char buf[65];
+        snprintf(buf, sizeof(buf), "%ld", (long)args.begin()->as_value());
+        text = buf;
+    } else {
+        text = string_get_first_arg("[lr]pad", args);
+    }
+
+    torrent::Object::list_const_iterator itr = args.begin() + 1;
+    int64_t pad_len = 0;
+    std::string filler;
+    if (itr != args.end()) pad_len = string_get_value_arg("[lr]pad(pad_len)", itr);
+    if (itr != args.end()) filler = (itr++)->as_string();
+    if (pad_len < 0)
+       throw torrent::input_error("string.[lr]pad: Invalid negative padding length!");
+    if (filler.empty()) filler = " ";
+    size_t text_len = u8_length(text), filler_len = u8_length(filler);
+
+    if (size_t(pad_len) > text_len) {
+        std::string pad;
+        size_t count = size_t(pad_len) - text_len;
+
+        if (filler.length() == 1) { // optimize the common case
+            pad.insert(0, count, filler.at(0));
+        } else while (count > 0) {
+            if (count >= filler_len) {
+                pad += filler;
+                count -= filler_len;
+            } else {
+                pad += u8_chop(filler, count);
+                count = 0;
+            }
+        }
+
+        return at_end ? text + pad : pad + text;
+    }
+
+    return text;
+}
+
+
+torrent::Object cmd_string_split(rpc::target_type target, const torrent::Object::list_type& args) {
+    const std::string text = string_get_first_arg("split", args);
+    if (args.size() != 2 || !args.rbegin()->is_string()) {
+        throw torrent::input_error("string.split needs a string argument.1!");
+    }
+    const std::string delim = args.rbegin()->as_string();
+    torrent::Object result = torrent::Object::create_list();
+    torrent::Object::list_type& resultList = result.as_list();
+
+    if (delim.length()) {
+        size_t pos = 0, next = 0;
+
+        while ((next = text.find(delim, pos)) != std::string::npos) {
+            resultList.push_back(text.substr(pos, next - pos));
+            pos = next + delim.length();
+        }
+        resultList.push_back(text.substr(pos));
+    } else {
+        std::mbstate_t mbs = std::mbstate_t();
+        const char* cpos = text.c_str();
+        int bytes = 0, skip;
+
+        while (*cpos && (skip = std::mbrlen(cpos, text.length() - bytes, &mbs)) > 0) {
+            resultList.push_back(std::string(cpos, skip));
+            cpos += skip;
+            bytes += skip;
+        }
+    }
+
+    return result;
 }
 
 
@@ -756,6 +1002,36 @@ torrent::Object cmd_string_replace(rpc::target_type target, const torrent::Objec
 }
 
 
+torrent::Object cmd_string_compare(int mode, const torrent::Object::list_type& args) {
+    const char* opnames[] = {"equals", "startswith", "endswith"};
+    if (args.size() < 2) {
+        throw torrent::input_error("string." + std::string(opnames[mode]) + " takes at least two arguments!");
+    }
+
+    std::string value = string_get_first_arg(opnames[mode], args);
+    torrent::Object::list_const_iterator first = args.begin() + 1, last = args.end();
+
+    for (torrent::Object::list_const_iterator itr = first; itr != last; ++itr) {
+        const std::string& cmp = itr->as_string();
+        switch (mode) {
+        case 0:
+            if (value == cmp) return (int64_t) 1;
+            break;
+        case 1:
+            if (value.substr(0, cmp.length()) == cmp) return (int64_t) 1;
+            break;
+        case 2:
+            if (value.length() >= cmp.length() && value.substr(value.length() - cmp.length()) == cmp) return (int64_t) 1;
+            break;
+        default:
+            throw torrent::input_error("string comparison: internal error (unknown mode)");
+        }
+    }
+
+    return (int64_t) 0;
+}
+
+
 torrent::Object cmd_array_at(rpc::target_type target, const torrent::Object::list_type& args) {
     if (args.size() != 2) {
         throw torrent::input_error("array.at takes at exactly two arguments!");
@@ -816,6 +1092,20 @@ torrent::Object cmd_system_has_methods(bool filter_public) {
         }
     }
 
+    return result;
+}
+
+
+torrent::Object cmd_system_client_version_as_value() {
+    int64_t result = 0;
+    const char* pos = PACKAGE_VERSION;
+
+    while (*pos) {
+        result = 100 * result + strtol(pos, (char**)&pos, 10);
+        if (*pos && *pos != '.')
+            throw torrent::input_error("INTERNAL ERROR: Bad version " PACKAGE_VERSION);
+        if (*pos) ++pos;
+    }
     return result;
 }
 
@@ -1005,20 +1295,34 @@ void initialize_command_pyroscope() {
     */
 
 #if RT_HEX_VERSION <= 0x000906
-    // these are merged into 0.9.7+ mainline! (well, maybe, PRs are ignored)
+    // these are merged into 0.9.7+ mainline!
     CMD2_ANY_STRING("system.env", _cxxstd_::bind(&cmd_system_env, _cxxstd_::placeholders::_2));
     CMD2_ANY("ui.current_view", _cxxstd_::bind(&cmd_ui_current_view));
+#endif
+
+#if RT_HEX_VERSION <= 0x000907
+    // these are merged into 0.9.8+ mainline! (well, maybe, PRs are mostly ignored)
     CMD2_ANY_LIST("system.random", &apply_random);
     CMD2_ANY_LIST("d.multicall.filtered", _cxxstd_::bind(&d_multicall_filtered, _cxxstd_::placeholders::_2));
 #endif
 
     // string.* group
     CMD2_ANY_LIST("string.len", &cmd_string_len);
+    CMD2_ANY_LIST("string.join", &cmd_string_join);
+    CMD2_ANY_LIST("string.split", &cmd_string_split);
     CMD2_ANY_LIST("string.substr", &cmd_string_substr);
     CMD2_ANY_LIST("string.contains", &cmd_string_contains);
     CMD2_ANY_LIST("string.contains_i", &cmd_string_contains_i);
     CMD2_ANY_LIST("string.map", &cmd_string_map);
     CMD2_ANY_LIST("string.replace", &cmd_string_replace);
+    CMD2_ANY_LIST("string.equals",      std::bind(&cmd_string_compare, 0, std::placeholders::_2));
+    CMD2_ANY_LIST("string.startswith",  std::bind(&cmd_string_compare, 1, std::placeholders::_2));
+    CMD2_ANY_LIST("string.endswith",    std::bind(&cmd_string_compare, 2, std::placeholders::_2));
+    CMD2_ANY_LIST("string.strip",       std::bind(&cmd_string_strip,  0, std::placeholders::_2));
+    CMD2_ANY_LIST("string.lstrip",      std::bind(&cmd_string_strip, -1, std::placeholders::_2));
+    CMD2_ANY_LIST("string.rstrip",      std::bind(&cmd_string_strip,  1, std::placeholders::_2));
+    CMD2_ANY_LIST("string.lpad",        std::bind(&cmd_string_pad, false, std::placeholders::_2));
+    CMD2_ANY_LIST("string.rpad",        std::bind(&cmd_string_pad, true,  std::placeholders::_2));
 
     // array.* group
     CMD2_ANY_LIST("array.at", &cmd_array_at);
@@ -1047,14 +1351,23 @@ void initialize_command_pyroscope() {
     CMD2_ANY("system.has.list", _cxxstd_::bind(&cmd_system_has_list));
     CMD2_ANY("system.has.private_methods", _cxxstd_::bind(&cmd_system_has_methods, false));
     CMD2_ANY("system.has.public_methods", _cxxstd_::bind(&cmd_system_has_methods, true));
+    CMD2_ANY("system.client_version.as_value", _cxxstd_::bind(&cmd_system_client_version_as_value));
 
     // d.custom.* extensions
     CMD2_DL_LIST("d.custom.if_z", _cxxstd_::bind(&retrieve_d_custom_if_z,
                                                  _cxxstd_::placeholders::_1, _cxxstd_::placeholders::_2));
+    CMD2_DL_LIST("d.custom.set_if_z", _cxxstd_::bind(&cmd_d_custom_set_if_z,
+                                                     _cxxstd_::placeholders::_1, _cxxstd_::placeholders::_2));
+    CMD2_DL_LIST("d.custom.erase", _cxxstd_::bind(&cmd_d_custom_erase,
+                                                  _cxxstd_::placeholders::_1, _cxxstd_::placeholders::_2));
     CMD2_DL_LIST("d.custom.keys", _cxxstd_::bind(&retrieve_d_custom_map,
                                                  _cxxstd_::placeholders::_1, true, _cxxstd_::placeholders::_2));
     CMD2_DL_LIST("d.custom.items", _cxxstd_::bind(&retrieve_d_custom_map,
                                                  _cxxstd_::placeholders::_1, false, _cxxstd_::placeholders::_2));
+    CMD2_DL_STRING("d.custom.toggle",  _cxxstd_::bind(&cmd_d_custom_toggle,
+                                                      _cxxstd_::placeholders::_1, _cxxstd_::placeholders::_2));
+    CMD2_DL_STRING("d.custom.as_value",  _cxxstd_::bind(&retrieve_d_custom_as_value,
+                                                        _cxxstd_::placeholders::_1, _cxxstd_::placeholders::_2));
 
     // Misc commands
     CMD2_ANY_LIST("value", &cmd_value);
@@ -1069,6 +1382,7 @@ void initialize_command_pyroscope() {
 
     CMD2_ANY_STRING("log.messages", _cxxstd_::bind(&cmd_log_messages, _cxxstd_::placeholders::_2));
     CMD2_ANY_P("import.return", &cmd_import_return);
+    CMD2_ANY("do", _cxxstd_::bind(&cmd_do, _cxxstd_::placeholders::_1, _cxxstd_::placeholders::_2));
     CMD2_DL("d.is_meta", _cxxstd_::bind(&torrent::DownloadInfo::is_meta_download,
                                         _cxxstd_::bind(&core::Download::info, _cxxstd_::placeholders::_1)));
 
@@ -1078,4 +1392,5 @@ void initialize_command_pyroscope() {
     add_capability("colors");             // not monochrome
     add_capability("canvas_v2");          // new PS 1.1 canvas with fully dynamic columns
     add_capability("collapsed-views");    // pre-collapsed views
+    add_capability("fixed-log-xmlrpc-close");
 }
