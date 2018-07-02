@@ -20,6 +20,7 @@ package() {
     mkdir -p $pkgdir/opt/bide
     cp BIDE.jar $pkgdir/opt/bide/bide.jar
     cp images/BIDEicon.png $pkgdir/opt/bide/bide_icon.png
+    mkdir -p $pkgdir/usr/share/applications/
     cp bide.desktop $pkgdir/usr/share/applications/bide.desktop
 }
 
