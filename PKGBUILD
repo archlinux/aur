@@ -1,19 +1,17 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-class-accessor-grouped'
-pkgver='0.10012'
-pkgrel='4'
+pkgver='0.10014'
+pkgrel='1'
 pkgdesc="Lets you build groups of accessors"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-module-runtime>=0.012')
 makedepends=('perl-test-exception>=0.31')
-url='http://search.cpan.org/dist/Class-Accessor-Grouped'
-source=("http://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/Class-Accessor-Grouped-${pkgver}.tar.gz"
-        "Class-Accessor-Grouped.diff")
-sha512sums=('195c4b1f9897b50753231ab6c893987a3e49e6283713175d612843651428c8cb2eb791a5385e25607a1db189861811efade33f94ef33c36cd41624e793ca20d1'
-            'cd4977dbc6993804f7246402b93ea3c6f89eeb9a8b1f6bca26785972529f5542020290fd0cb4b9864133780743c17cd4a20f6a6a21ad37274f9a4d86eb5d595b')
+url='https://metacpan.org/release/Class-Accessor-Grouped'
+source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/Class-Accessor-Grouped-${pkgver}.tar.gz")
+sha512sums=('d69fe27c3a12845bb4d0abe6c73d1a82eaf550821184f0945c3802e3932c7742e04c6f655e550386923c2a005e7f893f44ed950c56e6e80785b5a23e7b3c80b3')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -27,7 +25,6 @@ prepare_environment() {
 
 build() {
   prepare_environment
-  patch -p0 < "${srcdir}/${source[1]}"
   /usr/bin/perl Makefile.PL
   make
 }

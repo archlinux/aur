@@ -1,9 +1,0 @@
---- Makefile.PL.orig	2017-03-31 23:03:58.727749208 -0400
-+++ Makefile.PL	2017-03-31 23:04:06.883193264 -0400
-@@ -1,5 +1,6 @@
- use strict;
- use warnings;
-+use lib '.';
- use inc::Module::Install 1.06;
- 
- name 'Class-Accessor-Grouped';
