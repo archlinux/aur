@@ -1,7 +1,7 @@
 pkgbase = bide
 	pkgdesc = BIDE, Basic IDE by Zezombye
 	pkgver = 4.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.planet-casio.com/Fr/logiciels/voir_un_logiciel_casio.php?showid=118
 	arch = any
 	license = GPL
