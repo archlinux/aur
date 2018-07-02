@@ -39,16 +39,16 @@ build() {
 
 package() {
   cd qtquick1/build
-  make INSTALL_ROOT=$pkgdir install
-  make INSTALL_ROOT=$pkgdir install_docs
+  make INSTALL_ROOT="$pkgdir" install
+  make INSTALL_ROOT="$pkgdir" install_docs
 
   _prlfix
 
   # create some symlinks in /usr/bin, postfixed with -qt5
-  install -d $pkgdir/usr/bin
-  for i in $(ls $pkgdir/usr/bin); do
-      ln -s /usr/bin/$i $pkgdir/usr/bin/$i-qt5
+  install -d "$pkgdir"/usr/bin
+  for i in $(ls "$pkgdir"/usr/bin); do
+      ln -s /usr/bin/$i "$pkgdir"/usr/bin/$i-qt5
   done
 
-  install -D -m644 ../LGPL_EXCEPTION.txt $pkgdir/usr/share/licenses/$pkgname/LGPL_EXCEPTION.txt
+  install -D -m644 ../LGPL_EXCEPTION.txt "$pkgdir"/usr/share/licenses/$pkgname/LGPL_EXCEPTION.txt
 }
