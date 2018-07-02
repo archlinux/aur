@@ -2,13 +2,12 @@
 # Contributor: Sergey Malkin  <adresatt@gmail.com>
 
 pkgname=nemu-git
-pkgver=1.4.0.5.g923ee5b
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="ncurses interface for QEMU"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/PascalRD/nemu"
 license=('custom:BSD')
-groups=()
 depends=('qemu' 'glibc' 'ncurses' 'sqlite' 'udev' 'libusb' 'libarchive')
 makedepends=('git')
 provides=('nemu')
