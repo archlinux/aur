@@ -23,10 +23,10 @@ md5sums=(
 )
 
 package() {
-  install -dm 755 "$pkgdir/usr/bin/"
-  install -dm 755 "$pkgdir/usr/share/$pkgname"
+  install -dm 755 "$pkgdir"/usr/bin/
+  install -dm 755 "$pkgdir"/usr/share/$pkgname
 
-  find "$srcdir/$pkgname-$pkgver" -type f -exec install -m 644 "{}" "$pkgdir/usr/share/$pkgname" \;
+  find "$srcdir"/$pkgname-$pkgver -type f -exec install -m 644 "{}" "$pkgdir"/usr/share/$pkgname \;
 
-  install -Dm 755 "$srcdir/sparta_launcher" "$pkgdir/usr/bin/sparta"
+  install -Dm 755 "$srcdir"/sparta_launcher "$pkgdir"/usr/bin/sparta
 }
