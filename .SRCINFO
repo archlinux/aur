@@ -1,9 +1,8 @@
 pkgbase = sodalite
 	pkgdesc = Keyboard-driven terminal file navigator and launcher
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = www.github.com/hnicke/sodalite
-	install = sodalite.install
 	arch = any
 	license = GPL
 	makedepends = git
