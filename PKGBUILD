@@ -3,10 +3,10 @@
 pkgbase=python-salsa20
 pkgname=("python-salsa20" "python2-salsa20")
 pkgver=0.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Bindings for the NaCL implementation of Salsa20 and XSalsa20 by D. J. Bernstein'
 arch=('x86_64')
-url="http://github.com/keybase/python-salsa20"
+url="https://github.com/keybase/python-salsa20"
 license=('BSD')
 makedepends=('python' 'python2')
 source=("https://pypi.python.org/packages/source/s/salsa20/salsa20-$pkgver.tar.gz")
@@ -26,7 +26,7 @@ build() {
 
 check() {
   cd salsa20-$pkgver
-  PYTHONPATH="$(pwd)/build/lib.linux-$CARCH-3.6:$PYTHONPATH" python -m doctest -v README.rst
+  PYTHONPATH="$(pwd)/build/lib.linux-$CARCH-3.7:$PYTHONPATH" python -m doctest -v README.rst
 
   cd ../salsa20-$pkgver-py2
   PYTHONPATH="$(pwd)/build/lib.linux-$CARCH-2.7:$PYTHONPATH" python2 -m doctest -v README.rst
