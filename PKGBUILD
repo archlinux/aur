@@ -20,7 +20,7 @@ optdepends=('mplayer: play media with MPlayer'
 provides=('smtube')
 conflicts=('smtube')
 source=("https://sourceforge.net/projects/smtube/files/SMTube/$pkgver/smtube-$pkgver.tar.bz2")
-md5sum=('f20646f91eb91dd8c5e388a48c1a7b99')
+md5sum=('81652002de0006da52361faebe7bd9f2')
 
 build() {
   cd smtube-$pkgver
