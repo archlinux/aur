@@ -3,7 +3,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=vbam-git
-pkgver=2.0.2.r81.g9222894c
+pkgver=2.1.0.r2.g459a1fbe
 pkgrel=1
 epoch=1
 pkgdesc='Nintendo Game Boy Advance emulator'
@@ -16,10 +16,8 @@ makedepends_i686=('nasm')
 conflicts=('vbam-gtk' 'vbam-wx')
 provides=('vbam-wx')
 options=('!emptydirs')
-source=('vbam::git+https://github.com/visualboyadvance-m/visualboyadvance-m.git'
-        'gtk3.patch')
-sha256sums=('SKIP'
-            'c7847c7be27f4251bc7ba06ca6ecb1fe0caffd39a683bc5a471932591d871dcf')
+source=('vbam::git+https://github.com/visualboyadvance-m/visualboyadvance-m.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd vbam
@@ -31,8 +29,6 @@ prepare() {
 
   rm -rf build
   mkdir build
-
-  git apply -3 ../gtk3.patch
 }
 
 build() {
