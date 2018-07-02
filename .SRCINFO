@@ -1,0 +1,11 @@
+pkgbase = adapta-nokto-dropbox-icons
+	pkgdesc = Dropbox PNG icons generated from Papirus Adapta Nokto SVG files
+	pkgver = 20180702
+	pkgrel = 1
+	arch = any
+	license = LGPL3
+	makedepends = papirus-icon-theme
+	makedepends = imagemagick
+
+pkgname = adapta-nokto-dropbox-icons
+
