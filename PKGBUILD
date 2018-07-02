@@ -1,8 +1,9 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 pkgname=python2-entrypoints
+_pkgname=${pkgname#python2-}
 pkgver=0.2.3
 pkgrel=1
-pkgdesc="The Python keyring lib provides an easy way to access the system keyring service from python. It can be used in any application that needs safe password storage."
+pkgdesc="Discover and load entry points from installed packages."
 arch=('any')
 url="https://github.com/takluyver/entrypoints"
 license=('MIT')
@@ -19,18 +20,16 @@ sha256sums=(
   '1cf89147d8c8592cb4631c45442c27339f7a071f9a1c5d063edc646a69d10f6a'
 )
 
-_rname=${pkgname#python2-}
-
 prepare() {
-  cp $srcdir/setup.py $srcdir/$_rname-$pkgver/setup.py
+  cp "$srcdir"/setup.py "$srcdir"/$_pkgname-$pkgver/setup.py
 }
 
 build() {
-  cd $srcdir/$_rname-$pkgver
+  cd "$srcdir"/$_pkgname-$pkgver
   python2 setup.py build
 }
 
 package() {
-  cd $srcdir/$_rname-$pkgver
-  python2 setup.py install --root=$pkgdir --optimize=1 --skip-build
+  cd "$srcdir"/$_pkgname-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

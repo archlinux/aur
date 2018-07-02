@@ -1,5 +1,5 @@
 pkgbase = python2-entrypoints
-	pkgdesc = The Python keyring lib provides an easy way to access the system keyring service from python. It can be used in any application that needs safe password storage.
+	pkgdesc = Discover and load entry points from installed packages.
 	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/takluyver/entrypoints
