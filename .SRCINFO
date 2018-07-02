@@ -9,7 +9,8 @@ pkgbase = riot-desktop-git
 	makedepends = npm
 	depends = electron
 	provides = riot-desktop
-	conflicts = riot-desktop riot-web
+	conflicts = riot-desktop
+	conflicts = riot-web
 	backup = etc/riot/config.json
 	source = riot-desktop-git::git://github.com/vector-im/riot-web.git#branch=develop
 	source = riot-desktop.desktop

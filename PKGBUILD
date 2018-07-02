@@ -9,7 +9,7 @@ url="https://riot.im"
 license=('Apache')
 depends=('electron')
 makedepends=('git' 'npm')
-conflicts=('riot-desktop riot-web')
+conflicts=('riot-desktop' 'riot-web')
 provides=('riot-desktop')
 backup=("etc/riot/config.json")
 source=('riot-desktop-git::git://github.com/vector-im/riot-web.git#branch=develop'
