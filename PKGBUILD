@@ -27,13 +27,13 @@ source=(ftp://gcc.gnu.org/pub/gcc/snapshots/${_gccver}-${_gccsnapshot}/gcc-${_gc
 
 pkgver()
 {
-  cd ${srcdir}/${_gitname}
+  cd "${srcdir}"/${_gitname}
   echo ${_gccver}.${_gccsnapshot}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare()
 {
-  cd ${srcdir}/gcc-${_gccver}-${_gccsnapshot}
+  cd "${srcdir}"/gcc-${_gccver}-${_gccsnapshot}
 
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
@@ -44,18 +44,18 @@ prepare()
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-  cd ${srcdir}/${_gitname}
-  git apply $srcdir/folders.diff # fix gdc_include_path
+  cd "${srcdir}"/${_gitname}
+  git apply "$srcdir"/folders.diff # fix gdc_include_path
   ./setup-gcc.sh ../gcc-${_gccver}-${_gccsnapshot}
 
-  mkdir ${srcdir}/gcc-build
+  mkdir "${srcdir}"/gcc-build
 }
 
 build()
 {
-  cd ${srcdir}/gcc-build
+  cd "${srcdir}"/gcc-build
 
-  ${srcdir}/gcc-${_gccver}-${_gccsnapshot}/configure --prefix=/usr \
+  "${srcdir}"/gcc-${_gccver}-${_gccsnapshot}/configure --prefix=/usr \
         --libdir=/usr/lib --libexecdir=/usr/lib \
         --mandir=/usr/share/man --infodir=/usr/share/info \
         --with-bugurl=https://bugs.archlinux.org/ \
@@ -78,7 +78,7 @@ build()
 
 package()
 {
-  #cd ${srcdir}/gcc-build
+  #cd "${srcdir}"/gcc-build
 
   # Easier to just do a full install and remove the excess later
   #make DESTDIR=${pkgdir} install
@@ -98,20 +98,20 @@ package()
   #chmod 755 ${pkgdir}/usr/lib/gcc
 
   # gdc
-  install -D -m755 ${srcdir}/gcc-build/gcc/gdc ${pkgdir}/usr/bin/gdc
-  install -D -m755 ${srcdir}/gcc-build/gcc/cc1d ${pkgdir}/usr/lib/gcc/${CHOST}/${_gccver}/cc1d
+  install -D -m755 "${srcdir}"/gcc-build/gcc/gdc "${pkgdir}"/usr/bin/gdc
+  install -D -m755 "${srcdir}"/gcc-build/gcc/cc1d "${pkgdir}"/usr/lib/gcc/${CHOST}/${_gccver}/cc1d
 
   # druntime
-  install -D ${srcdir}/gdc/libphobos/libdruntime/object.di ${pkgdir}/usr/include/dlang/gdc/${pkgver}/object.di
-  cp -r ${srcdir}/gdc/libphobos/libdruntime/core ${pkgdir}/usr/include/dlang/gdc/${pkgver}/core
-  cp -r ${srcdir}/gdc/libphobos/libdruntime/gcc ${pkgdir}/usr/include/dlang/gdc/${pkgver}/gcc
+  install -D "${srcdir}"/gdc/libphobos/libdruntime/object.di "${pkgdir}"/usr/include/dlang/gdc/${pkgver}/object.di
+  cp -r "${srcdir}"/gdc/libphobos/libdruntime/core "${pkgdir}"/usr/include/dlang/gdc/${pkgver}/core
+  cp -r "${srcdir}"/gdc/libphobos/libdruntime/gcc "${pkgdir}"/usr/include/dlang/gdc/${pkgver}/gcc
 
   # phobos
-  cp ${srcdir}/gdc/libphobos/src/crc32.d ${pkgdir}/usr/include/dlang/gdc/${pkgver}/crc32.d
-  cp -r ${srcdir}/gdc/libphobos/src/std ${pkgdir}/usr/include/dlang/gdc/${pkgver}/std
-  cp -r ${srcdir}/gdc/libphobos/src/etc ${pkgdir}/usr/include/dlang/gdc/${pkgver}/etc
+  cp "${srcdir}"/gdc/libphobos/src/crc32.d "${pkgdir}"/usr/include/dlang/gdc/${pkgver}/crc32.d
+  cp -r "${srcdir}"/gdc/libphobos/src/std "${pkgdir}"/usr/include/dlang/gdc/${pkgver}/std
+  cp -r "${srcdir}"/gdc/libphobos/src/etc "${pkgdir}"/usr/include/dlang/gdc/${pkgver}/etc
 
-  install -D -m644 ${srcdir}/gcc-build/${CHOST}/libphobos/src/libgphobos2.a ${pkgdir}/usr/lib/libgphobos2.a
+  install -D -m644 "${srcdir}"/gcc-build/${CHOST}/libphobos/src/libgphobos2.a "${pkgdir}"/usr/lib/libgphobos2.a
 }
 sha256sums=('a1bac4e9fe8d8eca0c70fe22374e34abecd138dfc49130b01d73133f68b03b48'
             'SKIP'
