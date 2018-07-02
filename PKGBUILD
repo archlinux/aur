@@ -1,8 +1,8 @@
 # Maintainer: gspu <bssbk2455[at]gmail[dot]com>
-# Contributor: Previous maintainer's ValHue <vhuelamo at gmail dot com>
+# Contributor: Previous maintainer ValHue <vhuelamo at gmail dot com>
 
 pkgname="thunar-megasync"
-pkgver="3.6.5.0"
+pkgver="3.6.6.0"
 pkgrel="1"
 pkgdesc="Upload your files to your Mega account from Thunar."
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('MEGA LIMITED CODE REVIEW LICENCE')
 depends=('megasync' 'thunar')
 provides=("${pkgname}")
 
-source=("https://github.com/meganz/MEGAsync/archive/v${pkgver}_Linux.zip")
-sha256sums=('4ead2b5e9a9a7eae96fd9e1a072a5f1bca4552c21e601ea485d5546d882613db')
+source=("https://github.com/meganz/MEGAsync/archive/v${pkgver}_Linux.tar.gz")
+sha256sums=('377a0b77b2506ebe0052d6366c3b5b74c3012cb4938e4df5e4b003677073f5fa')
 
 build() {
 	cd "MEGAsync-${pkgver}_Linux/src/MEGAShellExtThunar"
