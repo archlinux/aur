@@ -2,7 +2,7 @@
 
 pkgname=lxdui
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI for the native Linux container technology LXD/LXC"
 arch=(x86_64)
 url="https://github.com/AdaptiveScale/lxdui"
@@ -39,9 +39,9 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/AdaptiveScale/$pkgname/archi
 sha256sums=('d537f589d8433931f251071dff0cd15cb24cf3b6a6ce6932430991043bf4e8e4'
             'e419e1ecb8bec84fd676e7a729d91b48065a3a7616956bc5356e64e6d8286eac'
             'b149cf164d32659b95802d0e4e455e98736de0d0ece519c48eae2eb846c35f3c'
-            'ba3e1a27e38e63e283ea595480be375a70d5f24879ba4c2c4f3fe4dc28fbdee4'
+            '0f1eca29cbdfc2aeceeb37ece9d6cdfce19503307bd2de3803cf8de2b8139a2c'
             '7487a9b77522a23b1be4c02961f46917d48b9c617d669843bbf26c4fd285d75d'
-            'bf8ecd2b10b70d90b8b7b9dd2d5b35a69cb2ed6fa6d7a7c310cc0648fa19e723')
+            '929c933ed0085d74972fd20c14f07b01ad4aaaff93c84897527868424447ef1f')
 
 prepare()
 {
@@ -68,11 +68,16 @@ package() {
 	find $pkgdir/usr/lib/$pkgname/bin -type f -exec grep -q $pkgdir {} \; -exec sed -i "s:$pkgdir::g" {} \;
 	find $pkgdir/usr/lib/$pkgname/lib -type d \( -name testsuite -o -name tests \) -exec rm -rf {} \; 2>/dev/null || true
 
+	install -dm755 $pkgdir/usr/bin
+
+	ln -s ../lib/$pkgname/bin/lxdui $pkgdir/usr/bin/lxdui
+
 	install -Dm644 $pkgname.conf $pkgdir/etc/$pkgname/$pkgname.conf
 	install -Dm644 $pkgname.sysusers $pkgdir/usr/lib/sysusers.d/$pkgname.conf
 	install -Dm644 $pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
 	install -Dm644 $pkgname.tmpfiles $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
 
 	mv $pkgdir/usr/lib/$pkgname/lib/python3.6/site-packages/LXDUI-$pkgver-py3.6.egg/conf/* $pkgdir/etc/$pkgname
+	chmod 600 $pkgdir/etc/$pkgname/auth.conf
 }
 

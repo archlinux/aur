@@ -1,7 +1,7 @@
 pkgbase = lxdui
 	pkgdesc = Web UI for the native Linux container technology LXD/LXC
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaptiveScale/lxdui
 	install = lxdui.install
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = lxdui
 	sha256sums = d537f589d8433931f251071dff0cd15cb24cf3b6a6ce6932430991043bf4e8e4
 	sha256sums = e419e1ecb8bec84fd676e7a729d91b48065a3a7616956bc5356e64e6d8286eac
 	sha256sums = b149cf164d32659b95802d0e4e455e98736de0d0ece519c48eae2eb846c35f3c
-	sha256sums = ba3e1a27e38e63e283ea595480be375a70d5f24879ba4c2c4f3fe4dc28fbdee4
+	sha256sums = 0f1eca29cbdfc2aeceeb37ece9d6cdfce19503307bd2de3803cf8de2b8139a2c
 	sha256sums = 7487a9b77522a23b1be4c02961f46917d48b9c617d669843bbf26c4fd285d75d
-	sha256sums = bf8ecd2b10b70d90b8b7b9dd2d5b35a69cb2ed6fa6d7a7c310cc0648fa19e723
+	sha256sums = 929c933ed0085d74972fd20c14f07b01ad4aaaff93c84897527868424447ef1f
 
 pkgname = lxdui
 
