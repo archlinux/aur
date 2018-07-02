@@ -5,7 +5,7 @@
 pkgname=qspectrumanalyzer
 pkgver=2.2.0
 pkgrel=1
-pkgdesc="Spectrum analyzer for multiple SDR platforms (PyQtGraph based GUI for soapy_power, rx_power, rtl_power, hackrf_sweep and other backends)"
+pkgdesc="Spectrum analyzer for multiple SDR platforms."
 arch=('any')
 url="https://github.com/xmikos/qspectrumanalyzer"
 license=('GPL3')
@@ -20,15 +20,15 @@ optdepends=(
 )
 provides=('qspectrumanalyzer')
 conflicts=('qspectrumanalyzer')
-source=("https://github.com/xmikos/qspectrumanalyzer/archive/v$pkgver.tar.gz")
+source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('d50e13fa4951a67ed4f56362fb74daff9faeda88d7fc3f9d98cffb8d63c6311d')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-$pkgver
   python setup.py build
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  python setup.py install --root=$pkgdir
+  cd "$srcdir"/$pkgname-$pkgver
+  python setup.py install --root="$pkgdir"
 }
