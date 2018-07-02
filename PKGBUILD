@@ -2,12 +2,12 @@
 # Contributor: SoVerySour <gmaiadremailfeis22 at gmail dot com>
 
 pkgname=infra-arcana-git
-pkgver=v19.2.r57.g6ba3bcf9
+pkgver=v19.2.r98.g78078e6a
 pkgrel=1
 
 pkgdesc="Roguelike game inspired by the writings of H.P. Lovecraft - git version"
 arch=('i686' 'x86_64')
-url="https://github.com/martin-tornqvist/ia"
+url="https://gitlab.com/martin-tornqvist/ia"
 license=('custom: Infra Arcana License' 'Apache')
 
 depends=('sdl2_image' 'sdl2_mixer')
@@ -15,7 +15,7 @@ makedepends=('git' 'cmake')
 conflicts=('infra-arcana')
 md5sums=('SKIP')
 
-source=("git+https://github.com/martin-tornqvist/ia.git#branch=develop")
+source=("git+https://gitlab.com/martin-tornqvist/ia.git")
 
 pkgver() {
   cd $srcdir/ia
