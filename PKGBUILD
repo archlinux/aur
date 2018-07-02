@@ -19,13 +19,13 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/gr-limesdr"
+  cd "$srcdir"/gr-limesdr
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  mkdir -p "$srcdir/gr-limesdr/build"
-  cd "$srcdir/gr-limesdr/build"
+  mkdir -p "$srcdir"/gr-limesdr/build
+  cd "$srcdir"/gr-limesdr/build
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/gr-limesdr/build"
+  cd "$srcdir"/gr-limesdr/build
 
   make DESTDIR="$pkgdir" install
 }
