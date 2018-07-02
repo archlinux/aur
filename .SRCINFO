@@ -11,7 +11,7 @@ pkgbase = python2-secretstorage
 	provides = python2-secretstorage
 	conflicts = python2-secretstorage
 	source = https://github.com/mitya57/secretstorage/archive/2.3.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = b69b85110fecb014f2a8f2dd76568a5bb0a80245368eada8babbb8a2a97d4a33
 
 pkgname = python2-secretstorage
 
