@@ -1,8 +1,8 @@
 pkgbase = koto
 	pkgdesc = Decentralized and open source cryptocurrency
-	pkgver = 1.0.15
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://koto.cash
+	url = https://ko-to.org
 	install = koto.install
 	arch = x86_64
 	license = MIT
@@ -25,18 +25,16 @@ pkgbase = koto
 	provides = koto-cli
 	provides = koto-tx
 	provides = koto-fetch-params
-	source = koto-1.0.15.tar.gz::https://github.com/koto-dev/koto/archive/dev-1.0.15.tar.gz
+	source = koto-1.1.0.tar.gz::https://github.com/KotoDevelopers/koto/archive/v1.1.0.tar.gz
 	source = 0001-fetch-param-directory-env.patch
-	source = 0002-boost-no-mt-suffix.patch
-	source = 0003-libsnark-no-gtest.patch
-	source = 0004-use-system-rust.patch
+	source = 0002-libsnark-no-gtest.patch
+	source = 0003-use-system-rust.patch
 	source = koto.install
-	sha1sums = 1cff15114e759b7246ccb5142857c3c6925d62da
-	sha1sums = e27ee657c0652137537c1bb9b48ce1730cba3423
-	sha1sums = 9110b57e8eb569ad35992efd83b9cd70d6d2244a
-	sha1sums = a9a7250c1a3c9a620dd21f9b5406027c05e7ddad
-	sha1sums = a89b0e4b137881e27a89bd0c78f9caff087b501e
-	sha1sums = e1e1155f7618c4da3c51517ba6530178f33cee28
+	sha256sums = d223a78abb90cf0cc915ef45007c6c28a478ba42aca93964b0d0f0a8a373cdd6
+	sha256sums = 3c45dfa284108753ad2610a74b6f62b37b891c19792360cd0db92f305d5e449d
+	sha256sums = 6a94d1d5a2dbafeb987444fac42a9992f6561b62b84f2a832ba286c3095744a8
+	sha256sums = 6d36dca0f576712ced711a56b214412c23f0b156bd5c00e1ee4f9fec1c666d0d
+	sha256sums = d14f12274330dd30ac8430a086eef08b657c3b1dc4024c82aa59eab50e5fc366
 
 pkgname = koto
 

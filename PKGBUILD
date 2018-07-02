@@ -1,59 +1,64 @@
 # Maintainer: Koutarou Tanaka <from.kyushu.island@gmail.com>
 
 pkgname=koto
-pkgver=1.0.15
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Decentralized and open source cryptocurrency"
 arch=('x86_64')
-url="https://koto.cash"
+url="https://ko-to.org"
 license=(MIT)
 depends=('bash' 'boost-libs' 'libevent' 'qpid-proton' 'zeromq')
 makedepends=('boost' 'cargo' 'cmake' 'git' 'gmock' 'python' 'wget')
 checkdepends=('python' 'python2' 'python2-pyzmq')
 provides=('kotod' 'koto-cli' 'koto-tx' 'koto-fetch-params')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/koto-dev/koto/archive/dev-${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KotoDevelopers/koto/archive/v1.1.0.tar.gz"
         "0001-fetch-param-directory-env.patch"
-        "0002-boost-no-mt-suffix.patch"
-        "0003-libsnark-no-gtest.patch"
-        "0004-use-system-rust.patch"
+        "0002-libsnark-no-gtest.patch"
+        "0003-use-system-rust.patch"
         "koto.install")
-sha1sums=('1cff15114e759b7246ccb5142857c3c6925d62da'
-          'e27ee657c0652137537c1bb9b48ce1730cba3423'
-          '9110b57e8eb569ad35992efd83b9cd70d6d2244a'
-          'a9a7250c1a3c9a620dd21f9b5406027c05e7ddad'
-          'a89b0e4b137881e27a89bd0c78f9caff087b501e'
-          'e1e1155f7618c4da3c51517ba6530178f33cee28')
+sha256sums=('d223a78abb90cf0cc915ef45007c6c28a478ba42aca93964b0d0f0a8a373cdd6'
+            '3c45dfa284108753ad2610a74b6f62b37b891c19792360cd0db92f305d5e449d'
+            '6a94d1d5a2dbafeb987444fac42a9992f6561b62b84f2a832ba286c3095744a8'
+            '6d36dca0f576712ced711a56b214412c23f0b156bd5c00e1ee4f9fec1c666d0d'
+            'd14f12274330dd30ac8430a086eef08b657c3b1dc4024c82aa59eab50e5fc366')
 install=koto.install
 
 prepare() {
-  cd "${srcdir}/${pkgname}-dev-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   patch -p1 -i "${srcdir}/0001-fetch-param-directory-env.patch"
-  patch -p1 -i "${srcdir}/0002-boost-no-mt-suffix.patch"
-  patch -p1 -i "${srcdir}/0003-libsnark-no-gtest.patch"
-  patch -p1 -i "${srcdir}/0004-use-system-rust.patch"
+  patch -p1 -i "${srcdir}/0002-libsnark-no-gtest.patch"
+  patch -p1 -i "${srcdir}/0003-use-system-rust.patch"
+
+  # Runs forever
+  sed -e '/prioritisetransaction.py/d' -i qa/pull-tester/rpc-tests.sh
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-dev-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   cd depends
   make install \
       native_packages='' \
-      packages='bdb librustzcash libgmp libsodium'
+      packages='bdb crate_libc librustzcash'
   cd ..
 
   BUILD="$(./depends/config.guess)"
+  HOST="$BUILD"
   CPPFLAGS="${CPPFLAGS} -I${PWD}/depends/${BUILD}/include"
   LDFLAGS="${LDFLAGS} -L${PWD}/depends/${BUILD}/lib"
 
   ./autogen.sh
-  depends_prefix="${PWD}/depends/${BUILD}" ./configure --prefix=/usr
+  depends_prefix="${PWD}/depends/${BUILD}" ./configure --prefix=/usr \
+                                                       --build=$BUILD \
+                                                       --enable-hardening \
+                                                       --enable-proton=no \
+                                                       --enable-werror
   make
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-dev-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 }
 
 package() {
@@ -63,21 +68,21 @@ package() {
   mkdir -p "${pkgdir}/usr/share/man/man1"
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
 
-  install -Dm755 "${srcdir}/${pkgname}-dev-${pkgver}/src/koto-cli" "${pkgdir}/usr/bin/koto-cli"
-  install -Dm755 "${srcdir}/${pkgname}-dev-${pkgver}/src/kotod" "${pkgdir}/usr/bin/kotod"
-  install -Dm755 "${srcdir}/${pkgname}-dev-${pkgver}/src/koto-tx" "${pkgdir}/usr/bin/koto-tx"
-  install -Dm755 "${srcdir}/${pkgname}-dev-${pkgver}/zcutil/fetch-params.sh" "${pkgdir}/usr/bin/koto-fetch-params"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src/koto-cli" "${pkgdir}/usr/bin/koto-cli"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src/kotod" "${pkgdir}/usr/bin/kotod"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src/koto-tx" "${pkgdir}/usr/bin/koto-tx"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/zcutil/fetch-params.sh" "${pkgdir}/usr/bin/koto-fetch-params"
 
-  install -Dm644 "${srcdir}/${pkgname}-dev-${pkgver}/doc/release-notes/release-notes-1.0.14.md" "${pkgdir}/usr/share/doc/${pkgname}/changelog"
-  install -Dm644 "${srcdir}/${pkgname}-dev-${pkgver}/contrib/debian/copyright" "${pkgdir}/usr/share/doc/${pkgname}/copyright"
-  install -Dm755 "${srcdir}/${pkgname}-dev-${pkgver}/contrib/debian/examples/koto.conf" "${pkgdir}/usr/share/doc/${pkgname}/examples/koto.conf"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/doc/release-notes/release-notes-1.0.14.md" "${pkgdir}/usr/share/doc/${pkgname}/changelog"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/contrib/debian/copyright" "${pkgdir}/usr/share/doc/${pkgname}/copyright"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/contrib/debian/examples/koto.conf" "${pkgdir}/usr/share/doc/${pkgname}/examples/koto.conf"
 
-  install -Dm644 "${srcdir}/${pkgname}-dev-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
-  install -Dm644 "${srcdir}/${pkgname}-dev-${pkgver}/doc/man/kotod.1" "${pkgdir}/usr/share/man/man1/kotod.1"
-  install -Dm644 "${srcdir}/${pkgname}-dev-${pkgver}/doc/man/koto-cli.1" "${pkgdir}/usr/share/man/man1/koto-cli.1"
-  install -Dm644 "${srcdir}/${pkgname}-dev-${pkgver}/doc/man/koto-fetch-params.1" "${pkgdir}/usr/share/man/man1/koto-fetch-params.1"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/doc/man/kotod.1" "${pkgdir}/usr/share/man/man1/kotod.1"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/doc/man/koto-cli.1" "${pkgdir}/usr/share/man/man1/koto-cli.1"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/doc/man/koto-fetch-params.1" "${pkgdir}/usr/share/man/man1/koto-fetch-params.1"
 
-  install -Dm644 "${srcdir}/${pkgname}-dev-${pkgver}/contrib/kotod.bash-completion" "${pkgdir}/usr/share/bash-completion/completions/kotod"
-  install -Dm644 "${srcdir}/${pkgname}-dev-${pkgver}/contrib/koto-cli.bash-completion" "${pkgdir}/usr/share/bash-completion/completions/koto-cli"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/contrib/kotod.bash-completion" "${pkgdir}/usr/share/bash-completion/completions/kotod"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/contrib/koto-cli.bash-completion" "${pkgdir}/usr/share/bash-completion/completions/koto-cli"
 }
