@@ -1,7 +1,7 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=tpm2-tss
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="TPM (Trusted Platform Module) 2.0 Software Stack (TSS)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 makedepends=('cmocka' 'autoconf-archive')
 depends=('gcc-libs')
 source=("https://github.com/tpm2-software/tpm2-tss/releases/download/$pkgver/tpm2-tss-$pkgver.tar.gz")
-sha256sums=('cf8784cc536be16e6fba47f77033e093a6aeaed8420877ac9f42f77fb7b09031')
+sha256sums=('7dfd05f7d2c4d5339d1c9ecbdba25f4ea6df70e96b09928e15e0560cce02d525')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
