@@ -1,5 +1,4 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
-
 pkgname=qt5-quick1-git
 pkgver=5.8.0.fa02271a
 pkgrel=1
@@ -16,12 +15,12 @@ sha1sums=('SKIP')
 
 _prlfix() {
   # Fix wrong path in prl files
-  find "${pkgdir}/usr/lib" -type f -name '*.prl' \
+  find "$pkgdir"/usr/lib -type f -name '*.prl' \
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/' {} \;
 }
 
 pkgver() {
-  cd "${srcdir}/qtquick1"
+  cd "$srcdir"/qtquick1
   printf "%s.%s" "$(cat .qmake.conf | grep 'MODULE_VERSION = ' | sed 's/MODULE_VERSION = //')" "$(git rev-parse --short HEAD)"
 }
 
@@ -47,16 +46,16 @@ build() {
 
 package() {
   cd qtquick1/build
-  make INSTALL_ROOT=$pkgdir install
-  make INSTALL_ROOT=$pkgdir install_docs
+  make INSTALL_ROOT="$pkgdir" install
+  make INSTALL_ROOT="$pkgdir" install_docs
 
   _prlfix
 
   # create some symlinks in /usr/bin, postfixed with -qt5
-  install -d $pkgdir/usr/bin
-  for i in $(ls $pkgdir/usr/bin); do
-      ln -s /usr/bin/$i $pkgdir/usr/bin/$i-qt5
+  install -d "$pkgdir"/usr/bin
+  for i in $(ls "$pkgdir"/usr/bin); do
+      ln -s /usr/bin/$i "$pkgdir"/usr/bin/$i-qt5
   done
 
-  install -D -m644 ../LGPL_EXCEPTION.txt $pkgdir/usr/share/licenses/$pkgname/LGPL_EXCEPTION.txt
+  install -D -m644 ../LGPL_EXCEPTION.txt "$pkgdir"/usr/share/licenses/$pkgname/LGPL_EXCEPTION.txt
 }
