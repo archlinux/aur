@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=xash3d-git
-pkgver=v0.19.1.r65.ge16e910c
+pkgver=v0.19.1.r117.g257b72a0
 pkgrel=1
 pkgdesc="A custom Gold Source engine rewritten from scratch"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
