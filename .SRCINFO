@@ -28,4 +28,3 @@ pkgname = python2-plotly
 	depends = python2-pytz
 	depends = python2-six
 	depends = python2-numpy
-
