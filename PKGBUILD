@@ -13,8 +13,8 @@ source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('2a9f0fc5d8534fffeb368632cf6942fe652e5b8d65a9a0d7628fefb085313acb')
 
 build() {
-  mkdir -p $srcdir/$pkgname-$pkgver/build
-  cd $srcdir/$pkgname-$pkgver/build
+  mkdir -p "$srcdir"/$pkgname-$pkgver/build
+  cd "$srcdir"/$pkgname-$pkgver/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
@@ -24,6 +24,6 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver/build
-  make DESTDIR=$pkgdir install
+  cd "$srcdir"/$pkgname-$pkgver/build
+  make DESTDIR="$pkgdir" install
 }
