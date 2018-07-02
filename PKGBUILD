@@ -1,6 +1,6 @@
 # Maintainer: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp      
-pkgver=18.6.28
+pkgver=18.7.2
 pkgrel=1
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="http://www.picolisp.com"
