@@ -2,7 +2,7 @@
 # Based on python and python35 PKGBUILD files
 
 pkgname=python37
-pkgver=3.7.0rc1
+pkgver=3.7.0
 pkgrel=1
 _pybasever=3.7
 pkgdesc="Next generation of the python high-level scripting language"
@@ -13,9 +13,9 @@ depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib' 'libnsl')
 makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'llvm' 'gdb' 'xorg-server-xvfb')
 optdepends=('tk: for tkinter' 'sqlite' 'mpdecimal: for decimal' 'xz: for lzma')
 options=('!makeflags')
-source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"
+source=("https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
         dont-make-libpython-readonly.patch)
-sha512sums=('cc4c29dfce7e2fca6328f802bd435e1ffc4acecd70d83d602a894bf076bdb95fb4635c891043ba1c3b6438d23ba7f76545cfe323ec0b57029b5c0f639fc6d2c5'
+sha512sums=('8bb11233fb67ee9ab8ed1b72f8fdc62f66e26a6beaaeb92448bce681cf065269833b1658d3ed2459127f25ba43adb0eab73cf27c59834a2a803fb529b4216739'
             '500ea7f603f96f721d04ca64390f4bd9ddbab2c16b837b67f8a51ed9167a1d57c5b435be1ebe98b0c74eff728714033b3dcbb5ee978b9bf98086571399717f17')
 
 prepare() {
