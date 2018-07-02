@@ -1,17 +1,17 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=sound-theme-elementary-git
-pkgver=r217.bc242d1
+pkgver=r23.5519eaf
 pkgrel=1
 pkgdesc='A bespoke sound for your theme'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/elementary/sound-theme'
 license=('GPL3')
 groups=('pantheon-unstable')
 makedepends=('git' 'meson')
 provides=('sound-theme-elementary')
 conflicts=('sound-theme-elementary')
-source=('git+https://github.com/elementary/sound-theme.git')
+source=('sound-theme-elementary::git+https://github.com/elementary/sound-theme.git')
 sha256sums=('SKIP')
 
 pkgver() {
