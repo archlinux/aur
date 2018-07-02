@@ -1,7 +1,8 @@
 # Maintainer: Denis Yantarev <denis.yantarev@gmail.com>
 # Contributor: Marek Kubica <marek@xivilization.net>
+# Contributor: mrhanky <mrhanky@unterschicht.tv>
 pkgname=homeshick-git
-pkgver=1.0.0.r74.g680252e
+pkgver=1.1.0.r0.490013f
 pkgrel=1
 pkgdesc="bash stand-in for homesick by technicalpickles"
 arch=(any)
@@ -13,10 +14,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags  | sed 's/^v//; s/\([^-]*-\)g/r\1/; s/-/./g'
 }
 
 build() {
@@ -40,10 +38,15 @@ package() {
   install -D "$srcdir"/$pkgname/homeshick.sh "$pkgdir"/usr/lib/homeshick/homeshick.sh
   install -D "$srcdir"/$pkgname/homeshick.fish "$pkgdir"/usr/lib/homeshick/homeshick.fish
   cp -r "$srcdir"/$pkgname/lib "$pkgdir"/usr/lib/homeshick/
-	# copy bash-completion files
+  # copy bash-completion files
   mkdir -p "$pkgdir"/usr/share/bash-completion/completions/
-	install -m644 "$srcdir"/$pkgname/completions/_homeshick "$pkgdir"/usr/share/bash-completion/completions/_homeshick
-	install -m644 "$srcdir"/$pkgname/completions/homeshick-completion.bash "$pkgdir"/usr/share/bash-completion/completions/homeshick
+  install -m644 "$srcdir"/$pkgname/completions/homeshick-completion.bash "$pkgdir"/usr/share/bash-completion/completions/homeshick
+  # copy fish-completion files
+  mkdir -p "$pkgdir"/usr/share/fish/vendor_completions.d
+  install -m644 "$srcdir"/$pkgname/completions/homeshick.fish "$pkgdir"/usr/share/fish/vendor_completions.d/homeshick.fish
+  # copy zsh-completion files
+  mkdir -p "$pkgdir"/usr/share/zsh/site-functions
+  install -m644 "$srcdir"/$pkgname/completions/_homeshick "$pkgdir"/usr/share/zsh/site-functions/_homeshick
   # copy the licenses
   mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/
   install -m=644 -t "$pkgdir"/usr/share/licenses/$pkgname/ "$srcdir"/$pkgname/LICENSE*
