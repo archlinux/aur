@@ -32,7 +32,7 @@ pkgname=(
     "${pkgbase}-xsl"
 )
 pkgver=7.0.30
-pkgrel=2
+pkgrel=3
 pkgdesc='A general-purpose scripting language that is especially suited to web development (old stable 7.0 series)'
 arch=('i686' 'x86_64')
 url='http://www.php.net'
@@ -56,17 +56,19 @@ source=(
     'php-icu-1101-Simplify-namespace-access.patch'
     'freetype2.patch'
 )
-sha512sums=('1f0914ebda79247aa65ace63f6c8c4fcd850b21a82704f7b6482760259239cc5fee4cfd5aa2ed590b56822b4d69330ac472f46537e7f25d59e73ba63a48827c5'
-            'SKIP'
-            'f5e5431993c2e0c1806c4edf392030d0b605f4b3c4cebec036e810ff771b2327983f347221735673506e2c91ce2e18ad37ab7600261b684fe29491206171b4f3'
-            '30cdc281c6e288cf8a0bf58a0ad74ad5b4e8205d2b0b6ab465fad97d810f7bfae4581ad836712998e834d2e90d38cacd22f19bb01e77fc4c9d200d95613fc669'
-            '2d5f3aa71ce7d8da43f0f683f81b06258e3a0d95df4807a8acac91ff89fbe60484ef97856a908bce625b1610d0004767a6a8c622246086afe2f2d464977088b5'
-            'e567dbe8b348364c0efb2d96492d4747e96f835adc2b3cb0c1563049fe6cabe9b1fde8ba24b690fb5d64339673e3088b2336f8cb5aa2c85e2f9fa50efd665865'
-            'fde017c6382d687b80d660253cbe5d581ca886fee0d762bf519b245c6e39677194be542ec26c71c81d104422b444a0fdadd92ac1a17e9ea1e6ec34bfb204ca7d'
-            'a98bba8d648853d653946c7a379ef62760282d8856fc1f79f84d66ac3c2082ef62c2fc0ed6a6762b50560ac60168fcdf946536a99131d397e89e906ee855419c'
-            '70c859feff58650ff4a291b1725bce8f290ac6d92cacc4420d3ead5cbbdbcf567cd0ed4d79fdd8b0435cf6833f7b50fff798b2fae274c5fb1bb37a0984a45f9d'
-            '33d40f3ae500cf583519ecfa271e36d727c38ff4ea9547d3d2c4d51c9fadd317ed614a048077ebdb116e3c84c11db95e6455cdfc80d092d217d070c98af56525'
-            'a4bc399c805f662ac68e142d0981196d130e6fb63764ed81f5452d930d62bd22b5320e56fc60de28a888bbc8bf166c6cb4b5eea7a5c3213e17999df4560b1032')
+sha512sums=(
+    '1f0914ebda79247aa65ace63f6c8c4fcd850b21a82704f7b6482760259239cc5fee4cfd5aa2ed590b56822b4d69330ac472f46537e7f25d59e73ba63a48827c5'
+    '7a3fc590924cf8ab3acc79a313e533cf8fed24439c90ec3621523fc432248d309474960ee9b5a449d70150b05da2beefa6fe58f919de238e4762ccb614acf126'
+    'f5e5431993c2e0c1806c4edf392030d0b605f4b3c4cebec036e810ff771b2327983f347221735673506e2c91ce2e18ad37ab7600261b684fe29491206171b4f3'
+    '30cdc281c6e288cf8a0bf58a0ad74ad5b4e8205d2b0b6ab465fad97d810f7bfae4581ad836712998e834d2e90d38cacd22f19bb01e77fc4c9d200d95613fc669'
+    '2d5f3aa71ce7d8da43f0f683f81b06258e3a0d95df4807a8acac91ff89fbe60484ef97856a908bce625b1610d0004767a6a8c622246086afe2f2d464977088b5'
+    'e567dbe8b348364c0efb2d96492d4747e96f835adc2b3cb0c1563049fe6cabe9b1fde8ba24b690fb5d64339673e3088b2336f8cb5aa2c85e2f9fa50efd665865'
+    'fde017c6382d687b80d660253cbe5d581ca886fee0d762bf519b245c6e39677194be542ec26c71c81d104422b444a0fdadd92ac1a17e9ea1e6ec34bfb204ca7d'
+    'a98bba8d648853d653946c7a379ef62760282d8856fc1f79f84d66ac3c2082ef62c2fc0ed6a6762b50560ac60168fcdf946536a99131d397e89e906ee855419c'
+    '70c859feff58650ff4a291b1725bce8f290ac6d92cacc4420d3ead5cbbdbcf567cd0ed4d79fdd8b0435cf6833f7b50fff798b2fae274c5fb1bb37a0984a45f9d'
+    '33d40f3ae500cf583519ecfa271e36d727c38ff4ea9547d3d2c4d51c9fadd317ed614a048077ebdb116e3c84c11db95e6455cdfc80d092d217d070c98af56525'
+    '24e0a8edf6161c5812ab38ae0919b3d0273e07e1bdea01b6b1df205f4043ad49973c7421a4c336814ae0ced8758518445bd66c6a6d82a729a727442730bc0a97'
+)
 
 validpgpkeys=(
     # PGP keys from PHP maintainer (upstream)
@@ -89,31 +91,20 @@ validpgpkeys=(
 )
 
 prepare() {
-    cd ${srcdir}/${_pkgbase}-${pkgver}
+    cd ${_pkgbase}-${pkgver}
 
-    patch -p0 -i ${srcdir}/apache.patch
-    patch -p0 -i ${srcdir}/php-fpm.patch
-    patch -p0 -i ${srcdir}/php.ini.patch
-    patch -p0 -i ${srcdir}/enchant-2.patch
-    patch -p1 -i ${srcdir}/php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch
-    patch -p1 -i ${srcdir}/php-icu-1101-Simplify-namespace-access.patch
-    patch -p1 -i ${srcdir}/freetype2.patch
-
-
-    # Build against specific libs in order to avoid clashes with official Arch Linux php package.
-    #sed -i configure -e "s/SAPI_SHARED=libs\/libphp7.so/SAPI_SHARED=libs\/lib${pkgbase}.so/g"
-    #sed -i configure -e 's/SAPI_SHARED=libs\/libphp$PHP_MAJOR_VERSION.$SHLIB_DL_SUFFIX_NAME/SAPI_SHARED=libs\/libphp$PHP_MAJOR_VERSION$PHP_MINOR_VERSION.$SHLIB_DL_SUFFIX_NAME/g'
-    #sed -i configure -e 's/OVERALL_TARGET=libphp$PHP_MAJOR_VERSION.la/OVERALL_TARGET=libphp$PHP_MAJOR_VERSION$PHP_MINOR_VERSION.la/g'
-    #sed -i configure -e 's/OVERALL_TARGET=libs\/libphp$PHP_MAJOR_VERSION.bundle/OVERALL_TARGET=libs\/libphp$PHP_MAJOR_VERSION$PHP_MINOR_VERSION.bundle/g'
-    #sed -i acinclude.m4 -e 's/OVERALL_TARGET=libphp\[\]$PHP_MAJOR_VERSION\[.la\]/OVERALL_TARGET=libphp\[\]$PHP_MAJOR_VERSION$PHP_MINOR_VERSION\[.la\]/g'
-    #sed -i aclocal.m4 -e 's/OVERALL_TARGET=libphp\[\]$PHP_MAJOR_VERSION\[.la\]/OVERALL_TARGET=libphp\[\]$PHP_MAJOR_VERSION$PHP_MINOR_VERSION\[.la\]/g'
-    #sed -i aclocal.m4 -e 's/OVERALL_TARGET=libs\/libphp\[\]$PHP_MAJOR_VERSION\[.bundle\]/OVERALL_TARGET=libs\/libphp\[\]$PHP_MAJOR_VERSION$PHP_MINOR_VERSION\[.bundle\]/g'
-
+    patch -p0 -i ../apache.patch
+    patch -p0 -i ../php-fpm.patch
+    patch -p0 -i ../php.ini.patch
+    patch -p0 -i ../enchant-2.patch
+    patch -p1 -i ../php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch
+    patch -p1 -i ../php-icu-1101-Simplify-namespace-access.patch
+    patch -p1 -i ../freetype2.patch
 }
 
-
 build() {
-    local _phpconfig="--srcdir=../${_pkgbase}-${pkgver} \
+    local phpConfig="\
+        --srcdir=../${_pkgbase}-${pkgver} \
         --config-cache \
         --prefix=/usr \
         --sbindir=/usr/bin \
@@ -130,7 +121,7 @@ build() {
         --without-pear \
         "
 
-    local _phpextensions="\
+    local phpExtensions="\
         --enable-bcmath=shared \
         --enable-calendar=shared \
         --enable-dba=shared \
@@ -189,12 +180,10 @@ build() {
     EXTENSION_DIR=/usr/lib/${pkgbase}/modules
     export EXTENSION_DIR
 
-    local _build="${srcdir}/build"
-    mkdir ${_build}
-    cd ${_build}
+    mkdir build
+    cd build
     ln -s ../${_pkgbase}-${pkgver}/configure
-
-    ./configure ${_phpconfig} \
+    ./configure ${phpConfig} \
         --enable-cgi \
         --enable-fpm \
         --with-fpm-systemd \
@@ -202,72 +191,69 @@ build() {
         --with-fpm-user=http \
         --with-fpm-group=http \
         --enable-embed=shared \
-        ${_phpextensions}
+        ${phpExtensions}
     make
-    cd ../../
+    cd ../
+
     # apache
-    # reuse the previous run; this will save us a lot of time
-    cp -a ${_build} ${srcdir}/build-apache
-    cd ${srcdir}/build-apache
-
-    ./configure ${_phpconfig} \
+    # Reuse the previous configure step in order to save time
+    cp -a build build-apache
+    cd build-apache
+    ./configure ${phpConfig} \
         --with-apxs2 \
-        ${_phpextensions}
+        ${phpExtensions}
     make
-    cd ../../
+    cd ../
+
     # phpdbg
-    cp -a ${_build} ${srcdir}/build-phpdbg
-    cd ${srcdir}/build-phpdbg
-
-    ./configure ${_phpconfig} \
+    cp -a build build-phpdbg
+    cd build-phpdbg
+    ./configure ${phpConfig} \
         --enable-phpdbg \
-        ${_phpextensions}
+        ${phpExtensions}
     make
-    cd ../../
-
+    cd ../
 }
 
-# Its a good idea to have extensions specified by extension.ini files in the conf.d directory,
-# so they are unaffected by upgrades.
 package_php70() {
     pkgdesc='A general-purpose scripting language that is especially suited to web development'
     depends=('libxml2' 'curl' 'libzip' 'pcre')
     provides=("${_pkgbase}=$pkgver")
     backup=("etc/${pkgbase}/php.ini")
 
-    cd ${srcdir}/build
+    cd build
     make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
-    install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/${pkgbase}/php.ini
+    install -D -m644 ../${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/${pkgbase}/php.ini
     install -d -m755 ${pkgdir}/etc/${pkgbase}/conf.d/
 
-    # remove static modules
+    # Remove static modules
     rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/*.a
 
-    # remove modules provided by sub packages
+    # Remove modules provided by sub packages
     rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/{enchant,gd,imap,intl,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
 
-    # remove empty directory
+    # Remove empty directory
     rmdir ${pkgdir}/usr/include/php/include
 
-    # move include directory
+    # Move include directory
     mv ${pkgdir}/usr/include/php ${pkgdir}/usr/include/${pkgbase}
 
-    # fix phar symlink
+    # Fix phar symlink
     rm ${pkgdir}/usr/bin/phar
     ln -sf phar.${pkgbase/php/phar} ${pkgdir}/usr/bin/${pkgbase/php/phar}
 
-    # rename executables
+    # Rename executables
     mv ${pkgdir}/usr/bin/phar.{phar,${pkgbase/php/phar}}
 
-    # rename man pages
+    # Rename man pages
     mv ${pkgdir}/usr/share/man/man1/{phar,${pkgbase/php/phar}}.1
     mv ${pkgdir}/usr/share/man/man1/phar.{phar,${pkgbase/php/phar}}.1
 
-    # fix paths in executables
+    # Fix paths in executables
     sed -i "/^includedir=/c \includedir=/usr/include/${pkgbase}" ${pkgdir}/usr/bin/${pkgbase/php/phpize}
     sed -i "/^include_dir=/c \include_dir=/usr/include/${pkgbase}" ${pkgdir}/usr/bin/${pkgbase/php/php-config}
 
-    # make phpize use php-config70
+    # Make phpize use php-config70
     sed -i "/^\[  --with-php-config=/c \[  --with-php-config=PATH  Path to php-config [${pkgbase/php/php-config}]], ${pkgbase/php/php-config}, no)" ${pkgdir}/usr/lib/${pkgbase}/build/phpize.m4
 }
 
@@ -276,8 +262,8 @@ package_php70-cgi() {
     depends=("${pkgbase}")
     provides=("${_pkgbase}-cgi=$pkgver")
 
-    cd ${srcdir}/build
-    make -j1 INSTALL_ROOT=${pkgdir} install-cgi
+    cd build
+    make INSTALL_ROOT=${pkgdir} install-cgi
 }
 
 package_php70-apache() {
@@ -285,8 +271,8 @@ package_php70-apache() {
     depends=("${pkgbase}" 'apache')
     backup=("etc/httpd/conf/extra/${pkgbase}_module.conf")
 
-    install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/lib${pkgbase}.so
-    install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/${pkgbase}_module.conf
+    install -D -m755 build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/lib${pkgbase}.so
+    install -D -m644 apache.conf ${pkgdir}/etc/httpd/conf/extra/${pkgbase}_module.conf
 }
 
 package_php70-fpm() {
@@ -295,10 +281,11 @@ package_php70-fpm() {
     backup=("etc/${pkgbase}/php-fpm.conf" "etc/${pkgbase}/php-fpm.d/php-fpm.conf")
     options=('!emptydirs')
 
-    cd ${srcdir}/build
-    make -j1 INSTALL_ROOT=${pkgdir} install-fpm
-    install -D -m644 sapi/fpm/php-fpm.service ${pkgdir}/usr/lib/systemd/system/${pkgbase}-fpm.service
-    install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}-fpm.conf
+    cd build
+    make INSTALL_ROOT=${pkgdir} install-fpm
+    cd ..
+    install -D -m644 build/sapi/fpm/php-fpm.service ${pkgdir}/usr/lib/systemd/system/${pkgbase}-fpm.service
+    install -D -m644 php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}-fpm.conf
 }
 
 package_php70-embed() {
@@ -307,8 +294,8 @@ package_php70-embed() {
     provides=("${pkgbase}-embed=$pkgver")
     options=('!emptydirs')
 
-    cd ${srcdir}/build
-    make -j1 INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
+    cd build
+    make INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
     mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-70.so
 }
 
@@ -318,8 +305,8 @@ package_php70-phpdbg() {
     provides=("${pkgbase}-phpdbg=$pkgver")
     options=('!emptydirs')
 
-    cd ${srcdir}/build-phpdbg
-    make -j1 INSTALL_ROOT=${pkgdir} install-phpdbg
+    cd build-phpdbg
+    make INSTALL_ROOT=${pkgdir} install-phpdbg
 }
 
 package_php70-dblib() {
@@ -327,7 +314,7 @@ package_php70-dblib() {
     depends=("${pkgbase}")
     provides=("${pkgbase}-dblib=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/pdo_dblib.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_dblib.so
+    install -D -m755 build/modules/pdo_dblib.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_dblib.so
 }
 
 package_php70-enchant() {
@@ -335,7 +322,7 @@ package_php70-enchant() {
     depends=("${pkgbase}" 'enchant')
     provides=("${pkgbase}-enchant=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/enchant.so ${pkgdir}/usr/lib/${pkgbase}/modules/enchant.so
+    install -D -m755 build/modules/enchant.so ${pkgdir}/usr/lib/${pkgbase}/modules/enchant.so
 }
 
 package_php70-gd() {
@@ -343,7 +330,7 @@ package_php70-gd() {
     depends=("${pkgbase}" 'gd')
     provides=("${pkgbase}-gd=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/gd.so ${pkgdir}/usr/lib/${pkgbase}/modules/gd.so
+    install -D -m755 build/modules/gd.so ${pkgdir}/usr/lib/${pkgbase}/modules/gd.so
 }
 
 package_php70-imap() {
@@ -351,7 +338,7 @@ package_php70-imap() {
     depends=("${pkgbase}" 'c-client')
     provides=("${pkgbase}-imap=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/imap.so ${pkgdir}/usr/lib/${pkgbase}/modules/imap.so
+    install -D -m755 build/modules/imap.so ${pkgdir}/usr/lib/${pkgbase}/modules/imap.so
 }
 
 package_php70-intl() {
@@ -359,7 +346,7 @@ package_php70-intl() {
     depends=("${pkgbase}" 'icu')
     provides=("${pkgbase}-intl=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}/usr/lib/${pkgbase}/modules/intl.so
+    install -D -m755 build/modules/intl.so ${pkgdir}/usr/lib/${pkgbase}/modules/intl.so
 }
 
 package_php70-mcrypt() {
@@ -367,7 +354,7 @@ package_php70-mcrypt() {
     depends=("${pkgbase}" 'libmcrypt' 'libltdl')
     provides=("${pkgbase}-mcrypt=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/mcrypt.so ${pkgdir}/usr/lib/${pkgbase}/modules/mcrypt.so
+    install -D -m755 build/modules/mcrypt.so ${pkgdir}/usr/lib/${pkgbase}/modules/mcrypt.so
 }
 
 package_php70-odbc() {
@@ -375,8 +362,8 @@ package_php70-odbc() {
     depends=("${pkgbase}" 'unixodbc')
     provides=("${pkgbase}-odbc=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/odbc.so ${pkgdir}/usr/lib/${pkgbase}/modules/odbc.so
-    install -D -m755 ${srcdir}/build/modules/pdo_odbc.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_odbc.so
+    install -D -m755 build/modules/odbc.so ${pkgdir}/usr/lib/${pkgbase}/modules/odbc.so
+    install -D -m755 build/modules/pdo_odbc.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_odbc.so
 }
 
 package_php70-pgsql() {
@@ -384,8 +371,8 @@ package_php70-pgsql() {
     depends=("${pkgbase}" 'postgresql-libs')
     provides=("${pkgbase}-pgsql=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/pgsql.so ${pkgdir}/usr/lib/${pkgbase}/modules/pgsql.so
-    install -D -m755 ${srcdir}/build/modules/pdo_pgsql.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_pgsql.so
+    install -D -m755 build/modules/pgsql.so ${pkgdir}/usr/lib/${pkgbase}/modules/pgsql.so
+    install -D -m755 build/modules/pdo_pgsql.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_pgsql.so
 }
 
 package_php70-pspell() {
@@ -393,7 +380,7 @@ package_php70-pspell() {
     depends=("${pkgbase}" 'aspell')
     provides=("${pkgbase}-pspell=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/pspell.so ${pkgdir}/usr/lib/${pkgbase}/modules/pspell.so
+    install -D -m755 build/modules/pspell.so ${pkgdir}/usr/lib/${pkgbase}/modules/pspell.so
 }
 
 package_php70-snmp() {
@@ -401,7 +388,7 @@ package_php70-snmp() {
     depends=("${pkgbase}" 'net-snmp')
     provides=("${pkgbase}-snmp=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/snmp.so ${pkgdir}/usr/lib/${pkgbase}/modules/snmp.so
+    install -D -m755 build/modules/snmp.so ${pkgdir}/usr/lib/${pkgbase}/modules/snmp.so
 }
 
 package_php70-sqlite() {
@@ -409,8 +396,8 @@ package_php70-sqlite() {
     depends=("${pkgbase}" 'sqlite')
     provides=("${pkgbase}-sqlite=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/sqlite3.so ${pkgdir}/usr/lib/${pkgbase}/modules/sqlite3.so
-    install -D -m755 ${srcdir}/build/modules/pdo_sqlite.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_sqlite.so
+    install -D -m755 build/modules/sqlite3.so ${pkgdir}/usr/lib/${pkgbase}/modules/sqlite3.so
+    install -D -m755 build/modules/pdo_sqlite.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_sqlite.so
 }
 
 package_php70-tidy() {
@@ -418,7 +405,7 @@ package_php70-tidy() {
     depends=("${pkgbase}" 'tidyhtml')
     provides=("${pkgbase}-tidy=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/tidy.so ${pkgdir}/usr/lib/${pkgbase}/modules/tidy.so
+    install -D -m755 build/modules/tidy.so ${pkgdir}/usr/lib/${pkgbase}/modules/tidy.so
 }
 
 package_php70-xsl() {
@@ -426,5 +413,5 @@ package_php70-xsl() {
     depends=("${pkgbase}" 'libxslt')
     provides=("${pkgbase}-xsl=$pkgver")
 
-    install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}/usr/lib/${pkgbase}/modules/xsl.so
+    install -D -m755 build/modules/xsl.so ${pkgdir}/usr/lib/${pkgbase}/modules/xsl.so
 }

@@ -1,7 +1,7 @@
 pkgbase = php70
 	pkgdesc = A general-purpose scripting language that is especially suited to web development (old stable 7.0 series)
 	pkgver = 7.0.30
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.php.net
 	arch = i686
 	arch = x86_64
@@ -37,6 +37,7 @@ pkgbase = php70
 	source = php.ini.patch
 	source = php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch
 	source = php-icu-1101-Simplify-namespace-access.patch
+	source = freetype2.patch
 	validpgpkeys = 1A4E8B7277C42E53DBA9C7B9BCAA30EA9C0D5763
 	validpgpkeys = 6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3
 	sha512sums = 1f0914ebda79247aa65ace63f6c8c4fcd850b21a82704f7b6482760259239cc5fee4cfd5aa2ed590b56822b4d69330ac472f46537e7f25d59e73ba63a48827c5
@@ -49,6 +50,7 @@ pkgbase = php70
 	sha512sums = a98bba8d648853d653946c7a379ef62760282d8856fc1f79f84d66ac3c2082ef62c2fc0ed6a6762b50560ac60168fcdf946536a99131d397e89e906ee855419c
 	sha512sums = 70c859feff58650ff4a291b1725bce8f290ac6d92cacc4420d3ead5cbbdbcf567cd0ed4d79fdd8b0435cf6833f7b50fff798b2fae274c5fb1bb37a0984a45f9d
 	sha512sums = 33d40f3ae500cf583519ecfa271e36d727c38ff4ea9547d3d2c4d51c9fadd317ed614a048077ebdb116e3c84c11db95e6455cdfc80d092d217d070c98af56525
+	sha512sums = 24e0a8edf6161c5812ab38ae0919b3d0273e07e1bdea01b6b1df205f4043ad49973c7421a4c336814ae0ced8758518445bd66c6a6d82a729a727442730bc0a97
 
 pkgname = php70
 	pkgdesc = A general-purpose scripting language that is especially suited to web development

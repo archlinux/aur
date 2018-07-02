@@ -1,4 +1,4 @@
---- a/configure.orig
+--- a/configure
 +++ b/configure
 @@ -34202,23 +34202,36 @@ $as_echo "If configure fails try --with-xpm-dir=<DIR>" >&6; }
      done
@@ -48,7 +48,7 @@
  
      ep_dir=`echo $ac_ii|$SED 's%/*[^/][^/]*/*$%%'`
  
---- a/configure.orig
+--- a/configure
 +++ b/configure
 @@ -35890,23 +35890,34 @@ $as_echo "If configure fails try --with-xpm-dir=<DIR>" >&6; }
      done
