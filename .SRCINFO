@@ -1,7 +1,7 @@
 pkgbase = python-click-completion
 	pkgdesc = Fish, Bash, Zsh, and PowerShell completion for Click.
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/click-contrib/click-completion
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = python-click-completion
 	depends = python
 	depends = python-click
 	depends = python-jinja
-	source = https://github.com/click-contrib/click-completion/archive/0.2.1.tar.gz
-	sha512sums = a1de4da903ea6dac74404f54823f9b3cd0aefa66b596e85329239774ac6775ae8f09bbd80877e7b34747d804c7d9d1591338de30a1d570ef75e6beba3fa86fb8
+	source = https://github.com/click-contrib/click-completion/archive/0.3.1.tar.gz
+	sha512sums = b0cb90fd98cb6a374f619a1c7cc72c5655f2557a78980fd15b6813d888bb656b28a75384bb094cbc570c727c5477713b7cb689de5d523bb8c56ea79dd939f75a
 
 pkgname = python-click-completion
 
