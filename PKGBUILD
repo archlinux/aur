@@ -1,13 +1,13 @@
 # Maintainer: Eragon <sam.vzh@gmail.com>
 pkgname=bide
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="BIDE, Basic IDE by Zezombye"
-arch=("all")
+arch=("any")
 url="https://www.planet-casio.com/Fr/logiciels/voir_un_logiciel_casio.php?showid=118"
 license=('GPL')
 depends=("jre8-openjdk")
-provides=()
+provides=("bide")
 source=("https://www.planet-casio.com/Fr/logiciels/dl_logiciel.php?id=118&file=1")
 md5sums=("735d5cc2265c137047617418dadc09ca") #generate with 'makepkg -g'
 
@@ -17,8 +17,8 @@ build() {
 }
 
 package() {
-    mkdir -p /opt/bide
-    cp BIDE.jar /opt/bide/BIDE.jar
+    mkdir -p opt/bide
+    cp BIDE.jar opt/bide/BIDE.jar
     cp BIDEicon.png
 }
 
