@@ -1,15 +1,15 @@
 pkgbase = python-azure-storage
 	pkgdesc = Microsoft Azure Storage Library for Python
-	pkgver = 1.1.0
+	pkgver = 1.3.0
 	pkgrel = 2
 	url = https://github.com/Azure/azure-storage-python
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	source = https://github.com/Azure/azure-storage-python/archive/v1.1.0-common.tar.gz
+	source = https://github.com/Azure/azure-storage-python/archive/v1.3.0-common.tar.gz
 	source = setup.patch
-	md5sums = 4e7833d17443e6552a2e0b2d9f1e5657
-	md5sums = 3529e82ae379ecaa14a938fda53275a1
+	sha256sums = 3f9dad2509ccf794e7ee4cd62378f290af79cfeac4fda301ad79e7165efb23e0
+	sha256sums = c2e32536788108b22416f61a852515a0f0016087371f09c16b4c3fc635db497a
 
 pkgname = python-azure-storage
 

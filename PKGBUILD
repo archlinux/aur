@@ -2,7 +2,7 @@
 
 _name=azure-storage
 pkgname=python-$_name
-pkgver=1.1.0
+pkgver=1.3.0
 pkgrel=2
 pkgdesc="Microsoft Azure Storage Library for Python"
 arch=('any')
@@ -11,8 +11,8 @@ license=('Apache')
 makedepends=('python-setuptools')
 source=("https://github.com/Azure/azure-storage-python/archive/v${pkgver}-common.tar.gz"
         "setup.patch")
-md5sums=('4e7833d17443e6552a2e0b2d9f1e5657'
-         '3529e82ae379ecaa14a938fda53275a1')
+sha256sums=('3f9dad2509ccf794e7ee4cd62378f290af79cfeac4fda301ad79e7165efb23e0'
+      		  'c2e32536788108b22416f61a852515a0f0016087371f09c16b4c3fc635db497a')
 
 _packages=('azure-storage-common' 'azure-storage-blob'
            'azure-storage-file' 'azure-storage-queue')
