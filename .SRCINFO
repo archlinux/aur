@@ -1,6 +1,6 @@
 pkgbase = sequencer64-next-git
 	pkgdesc = A live-looping MIDI sequencer. Development branch (unstable)
-	pkgver = 0.94.5.r24.g6f0269b5
+	pkgver = 0.95.0.r29.gbdfb7baf
 	pkgrel = 1
 	url = https://github.com/ahlstromcj/sequencer64.git
 	arch = i686

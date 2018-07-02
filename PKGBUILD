@@ -4,7 +4,7 @@
 # Contributor: Gimmeapill <gimmeapill at gmail dot com>
 _pkgbasename=sequencer64
 pkgname=${_pkgbasename}-next-git
-pkgver=0.94.5.r24.g6f0269b5
+pkgver=0.95.0.r29.gbdfb7baf
 pkgrel=1
 pkgdesc="A live-looping MIDI sequencer. Development branch (unstable)"
 arch=('i686' 'x86_64')
@@ -27,8 +27,8 @@ build() {
     cd "${srcdir}/${_pkgbasename}"
 
     ./bootstrap --full-clean
-    ./bootstrap
-    ./configure --enable-silent-rules --enable-rtmidi --prefix=/usr --enable-debug=yes --enable-mainscroll
+    ./bootstrap -er -qt
+    ./configure --enable-silent-rules --enable-qtmidi --prefix=/usr --enable-debug=yes --enable-mainscroll
     make
 }
 
