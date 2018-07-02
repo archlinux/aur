@@ -12,7 +12,7 @@ optdepends=('diffuse: editor, compare merge files'
         'kompare: editor, compare merge files'
         'meld: editor, compare merge files')
 source=("https://www.manjaro.fr/forum/datas/pacnew-chaser-qt-${pkgver}.tar.gz")
-sha512sums=('5556ac9b7070e781ae1d3b89e5309873b49727f63f353c47fdc0acbfd20f7d8e3b273c2cc210f593f27d8e702805b16ae9cddcbd0ecbe9dfef156bf1caa9e5e9')
+sha512sums=('5f28c89cb6e6b9d920e03b93c46075c4295deed86a442381f66c940e28c295cc95ad4a716f22dafaeb589a4340e411c6c3204217574e168ea8266a3be9846eea')
 
 package() {
   cd "$srcdir"
