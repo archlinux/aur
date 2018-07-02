@@ -8,7 +8,7 @@ pkgname=openfoam-esi-1712
 pkgver=v1712
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
-pkgrel=2
+pkgrel=3
 pkgdesc="The open source CFD toolbox (ESI-OpenCFD version)"
 arch=('i686' 'x86_64')
 url="http://www.openfoam.com/"
@@ -24,6 +24,14 @@ md5sums=('6ad92df051f4d52c7d0ec34f4b8eb3bc'
          '5465e67079419a69e0116de24fce58fe')
 
 prepare() {
+  if [ $WM_PROJECT_DIR ]
+  then
+    echo " "
+    echo -e "\e[1m\e[5m\e[31mPlease make sure that no OpenFOAM version is sourced in bashrc.\e[0m"
+    echo " "
+    return 1
+  fi
+
   cd "$srcdir/$_dist"
 
   # gcc8 does currently not work, so use gcc7
