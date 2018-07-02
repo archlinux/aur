@@ -35,7 +35,8 @@ build() {
   cd vbam/build
 
   _cmakeargs=(-DCMAKE_INSTALL_PREFIX='/usr'
-              -DCMAKE_SKIP_RPATH='TRUE')
+              -DCMAKE_SKIP_RPATH='TRUE'
+              -DENABLE_FFMPEG='TRUE')
 
   if [[ "$CARCH" == i686 ]]; then
     _cmakeargs+=(-DENABLE_ASM_CORE='TRUE'
