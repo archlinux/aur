@@ -1,7 +1,7 @@
 # Maintainer: Hexchain Tong <i@hexchain.org>
 
 pkgname=coursera-dl
-pkgver=0.10.0
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="Script for downloading Coursera.org videos and naming them"
 arch=('any')
