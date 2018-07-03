@@ -3,13 +3,13 @@
 
 pkgname=neo4j-git
 pkgver=3.5.0.alpha02.r224.25bd3fa979e
-pkgrel=1
+pkgrel=2
 pkgdesc='A fully transactional graph database implemented in Java'
 arch=('any')
 url="http://neo4j.org/"
 license=("custom")
-makedepends=('git' 'patch' 'maven' 'tar')
-depends=('java-runtime-headless>=8')
+makedepends=('git' 'maven' 'tar')
+depends=('java-runtime-headless=8')
 conflicts=('neo4j-enterprise' 'neo4j-community')
 backup=('etc/neo4j/neo4j.conf')
 options=(!strip)
@@ -36,7 +36,7 @@ sha256sums=('SKIP'
 pkgver() 
 {
 	cd "$srcdir/${pkgname}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
