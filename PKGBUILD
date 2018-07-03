@@ -1,9 +1,9 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=mdl
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 epoch=1
-pkgdesc='MarkDown Less is a Markdown displayer'
+pkgdesc="MarkDown Less is a Markdown displayer"
 arch=('x86' 'x86_64')
 url='https://github.com/dopsi/mdl'
 license=('MIT')
@@ -12,7 +12,7 @@ conflicts=('MDL')
 depends=('boost-libs')
 makedepends=('cmake' 'boost')
 source=("http://github.com/dopsi/${pkgname}/archive/v${pkgver}.tar.gz")
-sha1sums=('SKIP')
+sha1sums=('247456ed4a8a55ea879a81b87b17e72bc0549f01')
 
 build() {
     cd "${srcdir}/mdl-${pkgver}"
