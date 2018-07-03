@@ -2,12 +2,12 @@
 
 pkgname=crow-translate
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight translator that allows to translate and say selected text using the Google Translate API and much more"
 arch=('x86_64')
 url="https://github.com/Shatur95/crow-translate"
 license=('GPL3')
-depends=('qt5-base' 'qt5-multimedia' 'gst-plugins-good' 'openssl')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-x11extras' 'gst-plugins-good' 'openssl')
 makedepends=('qt5-tools')
 source=($pkgname.tar.gz::"https://github.com/Shatur95/crow-translate/archive/$pkgver.tar.gz"
         QOnlineTranslator-submodule.tar.gz::"https://github.com/Shatur95/QOnlineTranslator/archive/0.9.0.tar.gz"
