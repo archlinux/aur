@@ -6,7 +6,7 @@
 
 pkgname=saga-gis
 _pkgname=saga
-pkgver=6.3.0
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis."
 url="http://www.saga-gis.org"
@@ -23,8 +23,8 @@ optdepends=('opencv'
             'vigra'
             'liblas'
             'libharu')
-source=("http://sourceforge.net/projects/saga-gis/files/SAGA - 6/SAGA - ${pkgver}/saga-${pkgver}.tar.gz")
-md5sums=('86fe833870f1ab49b497686bc9601363')
+source=("https://sourceforge.net/projects/saga-gis/files/SAGA - 6/SAGA - ${pkgver}/saga-${pkgver}.tar.gz")
+md5sums=('8c4da533c439c0a09a6417b1a64c14f3')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -39,7 +39,7 @@ build() {
               LIBS="`wx-config --version=3.0 --libs`"
 
   msg "Start compiling ..."
-  make -j2
+  make -j3
 }
 
 package () {
