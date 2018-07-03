@@ -1,4 +1,4 @@
-# Maintainer: MASAKI Haruka <yek@reasonset.net>
+# Maintainer: MASAKI Haruka <yek at reasonset dot net>
 # Contributor: UTUMI Hirosi <utuhiro78 att yahoo dott co dott jp>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
@@ -7,7 +7,7 @@
 _bldtype=Release
 
 _mozcver=2.23.2815.102
-_dicver=20180301
+_dicver=20180531
 _revision=1
 
 _pkgbase=mozc
@@ -20,14 +20,20 @@ url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
 makedepends=('clang' 'ninja' 'pkg-config' 'python2' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
 
-source=('mozc-neologd-ut-2.23.2815.102.20180301.1.tar.xz::https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F16%2F16721%2Fmozc-neologd-ut-2.23.2815.102.20180301.1.tar.xz'
+source=('https://osdn.net/frs/chamber_redir.php?m=iij&f=%2Fusers%2F21%2F21733%2Fmozc-neologd-ut-2.23.2815.102.20180531.1.tar.xz'
+        # https://github.com/google/mozc/issues/441#issue-321728877
+        fix-for-gcc81.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
 sha1sums=('SKIP'
+          '2bad0705a0a09d8d5a79c874b59c485052da2b38'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d')
 
 prepare() {
   cd mozc-neologd-ut-${pkgver}/src
+
+  # fix for gcc-8.1
+  patch -Np2 -i "${srcdir}/fix-for-gcc81.patch"
 
   # Adjust to use python2
   find . -name  \*.py        -type f -exec sed -i -e "1s|python.*$|python2|"  {} +
