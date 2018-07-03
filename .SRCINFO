@@ -1,11 +1,11 @@
 pkgbase = contemporary-icons
 	pkgdesc = Contemporary Icons
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 0
 	url = http://vicr123.github.io/contemporary
 	arch = any
 	license = cc-by-sa-4.0
-	source = contemporary-icons-1.6::git+https://github.com/vicr123/contemporary-icons.git
+	source = contemporary-icons-1.7::git+https://github.com/vicr123/contemporary-icons.git
 	sha256sums = SKIP
 
 pkgname = contemporary-icons

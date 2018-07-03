@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=contemporary-icons
-pkgver=1.6
+pkgver=1.7
 pkgrel=0
 pkgdesc="Contemporary Icons"
 arch=("any")
