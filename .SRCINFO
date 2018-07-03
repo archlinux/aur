@@ -1,6 +1,6 @@
 pkgbase = ddnet-git
 	pkgdesc = DDraceNetwork, a mod of Teeworlds
-	pkgver = 11.2.r6.g7c4a7e4c6
+	pkgver = 11.2.1.r0.gaf2d86765
 	pkgrel = 1
 	url = https://ddnet.tw
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = ddnet-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = python
-	depends = alsa-lib
 	depends = sdl2
 	depends = freetype2
 	depends = opusfile
