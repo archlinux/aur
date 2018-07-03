@@ -1,7 +1,7 @@
 # Maintainer: Genki Sky <sky at genki dot is>
 
 pkgname=human-git
-pkgver=20160501.50c80e6
+pkgver=1
 pkgrel=1
 pkgdesc='Output a number in human-readable format'
 arch=('i686' 'x86_64')
