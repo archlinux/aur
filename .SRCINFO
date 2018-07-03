@@ -1,6 +1,6 @@
 pkgbase = python-pandas_market_calendars
 	pkgdesc = Market and exchange trading calendars for pandas
-	pkgver = 0.18
+	pkgver = 0.19
 	pkgrel = 1
 	url = https://github.com/rsheftel/pandas_market_calendars
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-pandas_market_calendars
 	depends = python-six
 	depends = python-pytz
 	depends = python-pandas
-	source = https://files.pythonhosted.org/packages/source/p/pandas_market_calendars/pandas_market_calendars-0.18.tar.gz
-	sha256sums = 6cadb6cacf6e72b08cb173a48146e09ca051cd5f056dae3870154eec249b942f
+	source = https://files.pythonhosted.org/packages/source/p/pandas_market_calendars/pandas_market_calendars-0.19.tar.gz
+	sha256sums = ebb101f4d5c81b2709a67ab50cc8ee895b7585141e807339e65f1cf729907f81
 
 pkgname = python-pandas_market_calendars
 
