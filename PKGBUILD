@@ -1,7 +1,7 @@
 # Maintainer: Genki Sky <sky at genki dot is>
 
 pkgname=dlm-git
-pkgver=20170228.d2ef4558
+pkgver=1
 pkgrel=1
 pkgdesc='Userspace management for linux/fs/dlm'
 arch=('i686' 'x86_64')

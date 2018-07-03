@@ -1,6 +1,6 @@
 pkgbase = dlm-git
 	pkgdesc = Userspace management for linux/fs/dlm
-	pkgver = 20170228.d2ef4558
+	pkgver = 1
 	pkgrel = 1
 	url = https://pagure.io/dlm
 	arch = i686
