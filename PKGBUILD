@@ -33,8 +33,6 @@ sha256sums=('SKIP'
 
 
 prepare() {
-	msg "Import Amos key..."
-	gpg --keyserver keys.gnupg.net --recv-keys CD6DBF8EF3B17D3E
 	cd "$srcdir/squid-$pkgver"
 	msg "Preparing Squid..."
 	msg2 "Getting the client_side_request patch..."
