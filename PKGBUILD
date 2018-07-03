@@ -20,12 +20,6 @@ pkgver()
   git shortlog | head -n 1 | tr -Cd "[:digit:]"
 }
  
-# Temp fix for espeak-ng compatability.
-prepare() {
-  cd "$_pkgname"
-  sed -i 's/\(.*$(SONAME).*\)/\1 $(FFTLIB)/' Makefile
-}
-
 build()
 {
 cd "$_pkgname"
