@@ -1,0 +1,20 @@
+diff --git data/surface.tablet data/surface.tablet
+new file mode 100644
+index 0000000..401fd62
+--- /dev/null
++++ data/surface.tablet
+@@ -0,0 +1,14 @@
++# Microsoft Surface Pro/Surface Book
++
++[Device]
++Name=Microsoft Surface Pro/Book
++DeviceMatch=mei:1b96:006a;mei:1b96:001F;mei:1b96:005e;mei:1b96:0020
++Class=ISDV4
++Width=10
++Height=6
++IntegratedIn=Display;System
++
++[Features]
++Stylus=true
++Touch=true
++Buttons=0
