@@ -1,20 +1,30 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=oxy
-pkgver=2.0.1
-pkgrel=2
-pkgdesc='A secure remote access tool'
-arch=(i686 x86_64)
-url=https://oxy-secure.app
-license=(BSD)
-makedepends=(cargo)
+pkgver=3.0.0~dev1+74+gf3e3905
+pkgrel=1
+pkgdesc='In-development SSH-alike that uses the Noise protocol'
+arch=(any)
+url=https://github.com/oxy-secure/oxy
+license=(BSD-2-Clause)
+makedepends=(git)
+depends=(cargo)
 conflicts=(oxy-git)
-source=(https://github.com/oxy-secure/oxy/archive/v$pkgver.tar.gz)
-sha512sums=(6220c8c09a313d0d38786ed0507732b9d16e469329d6f88830da3ba7ac2a547224f4742b2dbb72c7982472bda071d13eb746cb9860366aedc6d401ba863ff7f5)
+source=(git+https://github.com/oxy-secure/oxy)
+sha512sums=(SKIP)
+
+pkgver() {
+  cd $srcdir/oxy
+  echo "$(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2 | sed s/-/~/)+$(git rev-list --count HEAD)+g$(git describe --always)"
+}
+
+build() {
+  cd oxy
+  cargo build --release --locked
+}
 
 package() {
-  cd oxy-$pkgver
-  cargo build --release
+  cd oxy
   install -Dm 755 target/release/oxy $pkgdir/usr/bin/oxy
   install -Dm 644 LICENSE $pkgdir/usr/share/licenses/oxy/LICENSE
 }
