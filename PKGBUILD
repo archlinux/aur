@@ -2,7 +2,7 @@
 pkgname=('shotcut-git')
 _srcname='shotcut'
 pkgdesc='Video editor'
-pkgver='r2604'
+pkgver='r2679'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://github.com/mltframework/shotcut'
@@ -34,10 +34,8 @@ source=(
     "${_srcname}::git+${url}.git"
     'shotcut.desktop'
     'melt.patch'
-    'qt-5.11.patch'
 )
 sha512sums=(
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -56,7 +54,6 @@ prepare() {
     cd "${srcdir}/${_srcname}"
 
     git apply "${srcdir}/melt.patch"
-    git apply "${srcdir}/qt-5.11.patch"
 }
 
 build() {
