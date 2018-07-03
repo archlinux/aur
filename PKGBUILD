@@ -68,7 +68,7 @@ build() {
     --enable-storeio="aufs,ufs,diskd" \
     --enable-delay-pools \
     --enable-arp-acl \
-    --with-openssl \
+    --with-openssl=/usr/include/openssl-1.0/openssl \
     --enable-snmp \
     --enable-linux-netfilter \
     --enable-ident-lookups \
