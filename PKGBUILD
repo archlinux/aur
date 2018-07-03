@@ -1,7 +1,7 @@
 # Maintainer: Genki Sky <sky at genki dot is>
 
 pkgname=notmuch-extract-patch-git
-pkgver=20170126.f6b282d
+pkgver=1
 pkgrel=1
 pkgdesc='Extract git patchset from notmuch emails'
 arch=('i686' 'x86_64')
