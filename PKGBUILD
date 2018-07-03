@@ -2,7 +2,7 @@
 
 pkgname=ndi-sdk
 pkgver=3.20180615.r90497
-pkgrel=1
+pkgrel=2
 pkgdesc='NewTek NDI SDK'
 arch=('i686' 'x86_64')
 url='https://www.newtek.com/ndi/sdk/'
@@ -15,7 +15,7 @@ options=('!strip')
 _srcfile="InstallNDISDK_v${pkgver}_Linux.sh"
 source=("$_srcfile"::"http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v${pkgver%%.*}_Linux.sh")
 noextract=("$_srcfile")
-sha256sums=('0213b0bd167229ddb621e5efde0a06d006943e05f9a1ae1234f502455065c229')
+sha256sums=('b8cb2caa7e9a04ccde1432fd38fd0f8923920e76e4f03b7c92b4930759254fde')
 
 prepare() {
     ! [ -d "${pkgname}-${pkgver}" ] && mkdir -p "${pkgname}-${pkgver}"
