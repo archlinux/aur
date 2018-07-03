@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Tsanev <tsachev@gmail.com>
 pkgname=jcov
 _version=3.0
-_build=b04
+_build=b05
 pkgver=${_version}_${_build}
 pkgrel=1
 pkgdesc="The JCov open source project is used to gather quality metrics associated with the production of test suites."
@@ -18,15 +18,15 @@ conflicts=()
 install=
 _tag=${pkgname}${_version}-${_build}
 source=("http://hg.openjdk.java.net/code-tools/jcov/archive/${_tag}.tar.gz")
-sha256sums=('1e299a8e6789b772ae0ba3b76b66a04b3239f41fa9d8fff20e7f28fb8cd64107')
+sha256sums=('d3bb6673e48bb4a41ed5bedae552e1e0906333974a613f3417a7ebf72f1db4eb')
 
 _jcovdir=${pkgname}-${_tag}
 
 prepare() {
   cd ${srcdir}/${_jcovdir}
-  ln -sf /usr/share/java/asm/asm.jar build/asm-6.0.jar
-  ln -sf /usr/share/java/asm/asm-tree.jar build/asm-tree-6.0.jar
-  ln -sf /usr/share/java/asm/asm-util.jar build/asm-util-6.0.jar
+  ln -sf /usr/share/java/asm/asm.jar build/asm-6.2.jar
+  ln -sf /usr/share/java/asm/asm-tree.jar build/asm-tree-6.2.jar
+  ln -sf /usr/share/java/asm/asm-util.jar build/asm-util-6.2.jar
   ln -sf /usr/share/java/jtharness/javatest.jar build/javatest.jar
   JAVA_HOME=/usr/lib/jvm/java-7-openjdk ant -f build/build.xml clean
   JAVA_HOME=/usr/lib/jvm/java-7-openjdk ant -f plugins/coberturaXML/build/build.xml clean

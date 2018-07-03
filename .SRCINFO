@@ -1,6 +1,6 @@
 pkgbase = jcov
 	pkgdesc = The JCov open source project is used to gather quality metrics associated with the production of test suites.
-	pkgver = 3.0_b04
+	pkgver = 3.0_b05
 	pkgrel = 1
 	url = https://wiki.openjdk.java.net/display/CodeTools/jcov
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = jcov
 	makedepends = jtharness
 	depends = java-runtime>=7
 	optdepends = jtharness
-	source = http://hg.openjdk.java.net/code-tools/jcov/archive/jcov3.0-b04.tar.gz
-	sha256sums = 1e299a8e6789b772ae0ba3b76b66a04b3239f41fa9d8fff20e7f28fb8cd64107
+	source = http://hg.openjdk.java.net/code-tools/jcov/archive/jcov3.0-b05.tar.gz
+	sha256sums = d3bb6673e48bb4a41ed5bedae552e1e0906333974a613f3417a7ebf72f1db4eb
 
 pkgname = jcov
 
