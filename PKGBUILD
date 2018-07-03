@@ -2,8 +2,8 @@
 # You can find the PGP signing key (573ACDA6) here: https://keybase.io/threema
 pkgname=threema-web
 pkgver=1.8.2
-pkgrel=2
-pkgdesc="The Threema Web client, packaged to run locally."
+pkgrel=3
+pkgdesc="The Threema Web client, packaged to run locally on port 4242."
 arch=('x86_64' 'i686')
 url="https://github.com/threema-ch/threema-web"
 license=('AGPL3')
