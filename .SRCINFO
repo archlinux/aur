@@ -1,14 +1,14 @@
 pkgbase = vtop
 	pkgdesc = Wow such top. So stats
-	pkgver = 0.5.7
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = http://parall.ax/vtop
 	arch = any
 	makedepends = npm
 	depends = nodejs
-	noextract = vtop-0.5.7.tgz
-	source = http://registry.npmjs.org/vtop/-/vtop-0.5.7.tgz
-	sha1sums = fff91000fac3a97a165f6f52dc253bce3d4d091e
+	noextract = vtop-0.6.0.tgz
+	source = http://registry.npmjs.org/vtop/-/vtop-0.6.0.tgz
+	sha1sums = 43da9914b4854d6b37664808c35826c136f3bc44
 
 pkgname = vtop
 
