@@ -13,7 +13,7 @@ source=("https://github.com/sourceryinstitute/${pkgname}/releases/download/${pkg
 sha256sums=('c8e4ce7ddb851fd3eb981836c9e2e1a5de53afe3da1401971cfaf4114edb3af7')
 
 build() {
-  export PATH=/opt/mpich/bin:$PATH
+  export PATH="/opt/mpich/bin:$PATH"
   cd "${srcdir}/OpenCoarrays-${pkgver}"
   mkdir -p build
   cd build
@@ -27,7 +27,7 @@ build() {
 }
 
 check() {
-  export PATH=/opt/mpich/bin:$PATH
+  export PATH="/opt/mpich/bin:$PATH"
   cd "${srcdir}/OpenCoarrays-${pkgver}/build"
   ctest
 }
