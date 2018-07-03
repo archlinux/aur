@@ -5,8 +5,8 @@
 # Contributor: "blueowl" <blueowl@centrum.cz>
 
 pkgname=xmltv
-pkgver=0.5.69
-pkgrel=2
+pkgver=0.5.70
+pkgrel=1
 pkgdesc="Set of utilities to download tv listings and format them in xml"
 arch=('any')
 url="http://xmltv.org/wiki/"
@@ -22,7 +22,7 @@ depends=('perl-archive-zip' 'perl-datetime' 'perl-date-manip'
   'perl-xml-twig' 'perl-xml-writer' 'perl-parse-recdescent' 'perl-cgi'
   'perl-xml-treepp' 'perl-datetime-format-iso8601' 'perl-json')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('1b0128f97755e7769177d7930e03ad74')
+md5sums=('aa6c9f9e046199157b2e0e8e77919d10')
 
 build() {
   cd "$pkgname-$pkgver"
