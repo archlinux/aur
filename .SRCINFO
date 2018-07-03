@@ -1,6 +1,6 @@
 pkgbase = urw
 	pkgdesc = UnReal World is a unique low-fantasy roguelike game set in the far north during the late Iron-Age
-	pkgver = 3.50
+	pkgver = 3.51
 	pkgrel = 1
 	url = http://unrealworld.fi
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = urw
 	depends = sdl2_mixer
 	depends = sdl2
 	depends = curl
-	source = http://www.unrealworld.fi/dl/3.50/linux/pkg-arch/urw-3.50-1-x86_64.pkg.tar.xz
-	sha256sums = 5598bc979c9b0e28809b1db633192f5bd4470f54cfaa979a331865f81e6c947f
+	source = http://www.unrealworld.fi/dl/3.51/linux/pkg-arch/urw-3.51-1-x86_64.pkg.tar.xz
+	sha256sums = 52e222f69af47b0913d69d7580fc6f0bba9938a9a4ff1bcb401391cc1e341962
 
 pkgname = urw
 
