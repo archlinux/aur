@@ -2,13 +2,13 @@
 _application=slinger
 pkgname=gnome-shell-extension-${_application}-git
 pkgrel=1
-pkgver=r45.c552386
+pkgver=r46.67259dd
 license=('unknown')
 pkgdesc="gnome-shell extension for throwing windows around efficiently."
 url="https://github.com/timbertson/slinger"
 arch=('any')
 depends=('gnome-shell')
-makedepends=('git' 'typescript')
+makedepends=('git' 'typescript' 'python')
 source=(
   "git+https://github.com/timbertson/${_application}"
 )
