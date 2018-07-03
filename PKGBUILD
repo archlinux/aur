@@ -89,8 +89,7 @@ build() {
     --disable-arch-native \
     --disable-strict-error-checking \
     --enable-wccpv2 \
-    --enable-ssl-crtd \
-    --with-openssl
+    --enable-ssl-crtd 
   make -j$(nproc)
 }
 
