@@ -27,5 +27,6 @@ package()
 	install -Dm644 zs.1 $pkgdir/usr/share/man/man1/zs.1
 	install -Dm644 zs-copy.1 $pkgdir/usr/share/man/man1/zs-copy.1
 	install -Dm644 zs-analyze.1 $pkgdir/usr/share/man/man1/zs-analyze.1
+	install -Dm644 zs-config.5 $pkgdir/usr/share/man/man5/zs-config.5
 	install -Dm600 default.conf $pkgdir/etc/zs/default.conf
 }
