@@ -1,8 +1,8 @@
 # Maintainer: Eugene Cherny <iam@oscii.ru>
 # Maintainer: Zoë Sparks <zoe@milky.flowers>
 pkgname=cabbage-git
-pkgrel=2
-pkgver=2.0.0r1236
+pkgrel=1
+pkgver=2.0.0r1240
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
