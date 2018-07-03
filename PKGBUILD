@@ -48,15 +48,3 @@ package() {
   find ${pkgdir} -name perllocal.pod -delete
   find ${pkgdir} -name .packlist -delete
 }
-
-prepare() {
-  # To build corectly with Perl 5.26
-  # see https://sourceforge.net/p/xmltv/mailman/message/36001436/
-  # and https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=865045
-  sed "s/use POSIX 'tmpnam';//" -i "$pkgname-$pkgver"/filter/tv_to_latex
-  sed "s/use POSIX 'tmpnam';//" -i "$pkgname-$pkgver"/filter/tv_to_text
-  sed "s/\(lib\/set_share_dir.pl';\)/.\/\1/" -i "$pkgname-$pkgver"/grab/it/tv_grab_it.PL
-  sed "s/\(filter\/Grep.pm';\)/.\/\1/" -i "$pkgname-$pkgver"/filter/tv_grep.PL
-  sed "s/\(lib\/XMLTV.pm.in';\)/.\/\1/" -i "$pkgname-$pkgver"/lib/XMLTV.pm.PL
-  sed "s/\(lib\/Ask\/Term.pm';\)/.\/\1/" -i "$pkgname-$pkgver"/Makefile.PL
-}
