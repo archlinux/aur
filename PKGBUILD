@@ -2,8 +2,8 @@
 
 _pkgbase=monero
 pkgname=monero-gui-bin
-pkgver=0.12.0.0
-pkgrel=2
+pkgver=0.12.2.0
+pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (Helium Hydra, Point Release 1. Includes daemon, wallet and miner)"
 arch=("x86_64")
 conflicts=("${_pkgbase}")
@@ -22,12 +22,13 @@ provides=("monerod=${pkgver}"
           "monero-wallet-rpc=${pkgver}"
 )
 
-source=("${pkgname}-${pkgver}.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v${pkgver}/monero-gui-linux-x64-v${pkgver}.tar.bz2"
+
+source=("${pkgname}-${pkgver}.tar.bz2::https://downloads.getmonero.org/gui/monero-gui-linux-x64-v${pkgver}.tar.bz2"
     "monero-wallet-gui"
     "monero-wallet-gui.desktop"
 )
 
-sha256sums=("fb0f43387b31202f381c918660d9bc32a3d28a4733d391b1625a0e15737c5388"
+sha256sums=("9fb90501d9a86b74d7bb88936dfddba0de9eabb8e0a7fe61f3e45fddfb02798a"
     "8b69aac7caae305676ccebc6dbfa803c9aadf8b82d2ca1ecf2d8302a0d79cfc9"
     "1a88e0dd59687fc19f4ca84b43311c506e04c1723cb9972faf427942723c73d2"
 )
