@@ -3,6 +3,9 @@
 	* 4.015-1 :
 	update release:
 	               - Styles with SC included for vollkorn-typeface.com
+	               - Fixed vert Metrics
+	               - Fixed Semibold Italic’s usWeightClass
+	               - Added SC Instances
 
 2017-03-02 Lucas Werkmeister <mail@lucaswerkmeister.de>
 
