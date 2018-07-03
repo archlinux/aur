@@ -1,6 +1,6 @@
 pkgbase = cpp-ethereum-solidity-tester
 	pkgdesc = Ethereum C++ client - version used to test solidity
-	pkgver = 20180405
+	pkgver = 20180620
 	pkgrel = 1
 	url = https://github.com/ethereum/cpp-ethereum/
 	arch = x86
@@ -11,10 +11,8 @@ pkgbase = cpp-ethereum-solidity-tester
 	depends = leveldb
 	provides = cpp-ethereum
 	conflicts = cpp-ethereum
-	source = git://github.com/ethereum/cpp-ethereum/#commit=5ac09111bd0b6518365fe956e1bdb97a2db82af1
-	source = catch-by-value-patch.diff
+	source = git://github.com/ethereum/cpp-ethereum/#commit=d661ac4fec0aeffbedcdc195f67f5ded0c798278
 	sha512sums = SKIP
-	sha512sums = e2b87dcb7edd521e9aaca30a53f17374752a05808fc2ddd4cd7412367fd577c07edf9d09e005c43a8a85362bc3aa06712db339fbdb3d2f0193cf6c4b1d98425c
 
 pkgname = cpp-ethereum-solidity-tester
 
