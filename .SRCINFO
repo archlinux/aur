@@ -1,14 +1,17 @@
 pkgbase = blackbox-explorer
 	pkgdesc = Cleanflight and Betaflight Blackbox Explorer (NW.js build)
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
-	url = https://github.com/cleanflight/blackbox-log-viewer
+	url = https://github.com/betaflight/blackbox-log-viewer
 	arch = x86_64
 	license = GPL3
 	makedepends = yarn
+	makedepends = git
 	options = !strip
-	source = https://github.com/cleanflight/blackbox-log-viewer/archive/master.zip
-	md5sums = SKIP
+	source = git+https://github.com/betaflight/blackbox-log-viewer.git#commit=84f8abd7463e65773921635b57c7ac8fd4104ce9
+	source = blackbox-explorer.desktop
+	sha256sums = SKIP
+	sha256sums = 749c3e9ffe22f6248774e4fd40c3b94d1d05b3935e74a555ff4ca3ca67e6e937
 
 pkgname = blackbox-explorer
 
