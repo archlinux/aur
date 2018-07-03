@@ -2,14 +2,14 @@
 # Contributor: Sharif Olorin <sio@tesser.org>
 
 pkgname=orthanc
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Open-source, lightweight DICOM server."
 arch=("x86_64" "i686")
 url="http://orthanc-server.com/"
 license=("custom:GPL3WithOpenSSLException")
 source=("https://www.orthanc-server.com/downloads/get.php?path=/orthanc/Orthanc-${pkgver}.tar.gz")
-sha256sums=('a68b3c3fda8ea5cd065d356b314737634d8088d6ab2380c9ccfa433cc8fe61de')
+sha256sums=('2357210fb6d7d8d99d5b67c3136abd7e7ec23a92f0946eeb2661aad7e6dcaaf3')
 depends=("boost" "curl" "dcmtk" "jsoncpp" "libjpeg-turbo" "libpng" "openssl" "pugixml" "sqlite" "util-linux")
 makedepends=("cmake" "doxygen" "gtest" "make" "python")
 
