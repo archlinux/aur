@@ -1,8 +1,8 @@
 # Maintainer: gosella <gosella@gmail.com>
 
 pkgname=('python-sysv-ipc' 'python2-sysv-ipc')
-pkgver=0.7.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='System V IPC primitives (semaphores, shared memory and message queues) for Python'
 arch=('any')
 url='http://semanchuk.com/philip/sysv_ipc/'
@@ -11,7 +11,7 @@ groups=()
 makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("http://semanchuk.com/philip/sysv_ipc/sysv_ipc-$pkgver.tar.gz")
-sha1sums=('b4bab5a7f0687f0ec471249f3fe3395d2a68d3c8')
+sha1sums=('80c1fb36753c73c7517f914d1615ac2f5b1adbb8')
 
 prepare() {
   cd "$srcdir/"
