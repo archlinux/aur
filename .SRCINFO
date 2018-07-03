@@ -1,11 +1,12 @@
 pkgbase = pscircle-git
 	pkgdesc = pscircle visualizes Linux processes in a form of radial tree
-	pkgver = 1.0.0.7.g6adff32
+	pkgver = 1.0.0.8.gdd7431a
 	pkgrel = 1
 	url = https://gitlab.com/mildlyparallel/pscircle
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = meson
 	makedepends = cairo
 	makedepends = libpng
