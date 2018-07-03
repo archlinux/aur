@@ -2,7 +2,7 @@
 
 pkgname=blackmagic-decklink-sdk
 pkgver=10.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Blackmagic DeckLink SDK'
 arch=('any')
 url='https://www.blackmagicdesign.com/support/family/capture-and-playback'
@@ -16,7 +16,7 @@ _srcfile="Blackmagic_DeckLink_SDK_${pkgver}.zip"
 _downloadid='a9e081e6b3df4cf1834027c7e3b8f0df'
 _referid='e3d7c1c415de41d882ac814c49e44772'
 _srcurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
-_expected_sha256sum='060e69714197127d30e02861f919357fce5568ef8a985e07284620f8dad8310a'
+_expected_sha256sum='fe0ec9b95a09417434f6e9109656639ca5aab390d63eee267b5845958d5fa15d'
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
