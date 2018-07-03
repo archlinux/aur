@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-doctools-git
-pkgver=160308.r126.g22d7486.r413.22d7486
+pkgver=160308.r143.g896c2ba.r430.896c2ba
 pkgrel=1
 epoch=
 pkgdesc="The Heirloom Documentation Tools provide troff, nroff, and related utilities." 
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/n-t-roff/heirloom-doctools"
 license=('CDDL')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
