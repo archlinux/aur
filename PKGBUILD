@@ -3,7 +3,7 @@
 
 pkgbase=dolphin-emu-git
 pkgname=('dolphin-emu-git' 'dolphin-emu-nogui-git')
-pkgver=5.0.r8299.87c5d00e20
+pkgver=5.0.r8316.47c5a2f7ed
 pkgrel=1
 pkgdesc='A GameCube / Wii / Triforce emulator'
 arch=('x86_64')
@@ -11,10 +11,10 @@ url='http://www.dolphin-emu.org/'
 license=('GPL')
 depends=(
   'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpng'
-  'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'qt5-base' 'sfml'
-  'zlib'
+  'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt5-base'
+  'sfml' 'zlib'
   'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
-  'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
+  'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so' 'libxxhash.so'
 )
 makedepends=('cmake' 'git' 'libglvnd' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
@@ -43,6 +43,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
     -DENABLE_QT2='TRUE' \
     -DUSE_SHARED_ENET='TRUE' \
+    -DXXHASH_FOUND='TRUE'\
     -DDISTRIBUTOR='aur.archlinux.org'
   make
 }
@@ -53,6 +54,7 @@ package_dolphin-emu-git() {
 
   make DESTDIR="${pkgdir}" -C build install
   rm "${pkgdir}"/usr/bin/dolphin-emu-nogui
+  rm -rf "${pkgdir}"/usr/{include,lib/libdiscord-rpc.a}
 
   install -Dm 644 dolphin-emu/Data/51-usb-device.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 }
