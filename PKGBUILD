@@ -1,11 +1,11 @@
 # Maintainer: Jacob Mason <jacob@jacobmason.net>
 pkgname=jx
-pkgver=1.3.48
+pkgver=1.3.56
 pkgrel=1
 epoch=
 pkgdesc="Command line tool for working with Jenkins X: automated CI/CD for Kubernetes"
 arch=(x86_64)
-url="https://github.com/jenkins-x"
+url="https://github.com/jenkins-x/jx"
 license=('Apache')
 groups=()
 depends=('git>=2.0.0' 'go>=1.9')
