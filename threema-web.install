@@ -1,0 +1,19 @@
+post_install() {
+post_upgrade
+}
+
+post_upgrade() {
+cat << EOF
+
+To start Threema Web:
+
+  \$ sudo systemctl start threema-web
+
+To start it automatically on boot:
+
+  \$ sudo systemctl enable threema-web
+
+You can access Threema Web through your browser on http://localhost:4242/.
+
+EOF
+}

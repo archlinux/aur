@@ -2,7 +2,7 @@
 # You can find the PGP signing key (573ACDA6) here: https://keybase.io/threema
 pkgname=threema-web
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Threema Web client, packaged to run locally."
 arch=('x86_64' 'i686')
 url="https://github.com/threema-ch/threema-web"
@@ -22,6 +22,7 @@ sha256sums=(
     'SKIP'  # PGP signature
     '6cb24b36278ef9d5b57d056d5b8428f82b94cb92f7ffc0ef4bc3eb5278488514'
 )
+install=threema-web.install
 
 build() {
   cd ${srcdir}/threema-web-${pkgver}-gh/
