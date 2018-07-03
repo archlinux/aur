@@ -1,0 +1,79 @@
+#!/usr/bin/python
+
+import time
+import signal
+import sys
+import os
+import re
+
+from Xlib import display, X, Xatom
+
+
+def parse(env):
+    for pattern in os.environ.get(env, '').split(','):
+        pattern = pattern.strip()
+        if pattern:
+            yield re.compile('.*%s.*' % pattern)
+
+
+def match(win):
+    target = '%s::%s' % ('::'.join(win.get_wm_class()), win.get_wm_name())
+    return ((not whitelist or any(p.match(target) for p in whitelist)) and
+            (not blacklist or all(not p.match(target) for p in blacklist)))
+
+
+def exit(*args):
+    for win_id, value in handled.items():
+        try:
+            win = dpy.create_resource_object('window', win_id)
+            if value is None:
+                win.delete_property(hide_atom)
+            else:
+                win.change_property(hide_atom, Xatom.CARDINAL, 32, value)
+        except Exception:
+            pass
+    dpy.flush()
+    sys.exit()
+
+
+def hide(win):
+    try:
+        type = win.get_full_property(type_atom, X.AnyPropertyType)
+        if type and type.value[0] == normal_atom and match(win):
+            hide = win.get_full_property(hide_atom, X.AnyPropertyType)
+            handled[win.id] = hide and hide.value
+            time.sleep(0.3)
+            win.change_property(hide_atom, Xatom.CARDINAL, 32, [1])
+    except Exception:
+        return
+
+
+def rlist(parent=None):
+    try:
+        for win in (parent or root).query_tree().children:
+            yield win
+            yield from rlist(win)
+    except Exception:
+        pass
+
+
+def loop():
+    for win in rlist():
+        hide(win)
+    root.change_attributes(event_mask=X.SubstructureNotifyMask)
+    while True:
+        event = dpy.next_event()
+        if event.type == X.CreateNotify:
+            hide(event.window)
+
+
+handled = {}
+dpy = display.Display()
+root = dpy.screen().root
+hide_atom = dpy.intern_atom('_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED')
+type_atom = dpy.intern_atom('_NET_WM_WINDOW_TYPE')
+normal_atom = dpy.intern_atom('_NET_WM_WINDOW_TYPE_NORMAL')
+whitelist = list(parse('MAXIMAL_WHITELIST'))
+blacklist = list(parse('MAXIMAL_BLACKLIST'))
+signal.signal(signal.SIGTERM, exit)
+loop()
