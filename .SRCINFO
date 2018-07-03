@@ -1,6 +1,6 @@
 pkgbase = tabula
 	pkgdesc = tool for liberating data tables trapped inside PDF files
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 0
 	url = http://tabula.technology/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = tabula
 	depends = java-runtime
 	source = https://github.com/tabulapdf/tabula/releases/download/v1.2.0/tabula-jar-1.2.0.zip
 	source = run.sh
-	md5sums = 2a425d3036d8ee0f056228d09239ccff
+	md5sums = c5c1502d72c9691e13b00ee6fe166b1c
 	md5sums = 57939db56d85e62f4212e6bad1030fb6
 
 pkgname = tabula
