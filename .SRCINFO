@@ -1,0 +1,16 @@
+pkgbase = fping-git
+	pkgdesc = A utility to ping multiple hosts at once - development version
+	pkgver = r469.b2d3517
+	pkgrel = 1
+	url = http://www.fping.org/
+	arch = x86_64
+	license = Custom
+	makedepends = git
+	depends = glibc
+	provides = fping
+	conflicts = fping
+	source = fping-git::git://github.com/schweikert/fping.git#branch=develop
+	md5sums = SKIP
+
+pkgname = fping-git
+
