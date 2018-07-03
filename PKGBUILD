@@ -1,30 +1,45 @@
-# Maintainer: David Scholl <djscholl at gmail dot com>
+# Maintainer : George Eleftheriou <eleftg>
+# Contributor: David Scholl <djscholl at gmail dot com>
+
 pkgname=hdf4
-pkgver=2.13
+pkgver=4.2.14
 pkgrel=1
-pkgdesc="General purpose library and file format for storing scientific data."
-arch=('i686' 'x86_64')
-url="http://www.hdfgroup.org/hdf4.html"
+pkgdesc="General purpose library and file format for storing scientific data"
+arch=('x86_64')
+url="https://portal.hdfgroup.org/display/support/HDF+4.2.14"
 license=('custom')
-depends=('zlib' 'libjpeg-turbo')
-makedepends=('gcc-libs' 'gcc-fortran' 'flex' 'bison')
-conflicts=('netcdf')
-source=(http://www.hdfgroup.org/ftp/HDF/HDF_Current/src/hdf-4.2.13.tar.gz)
-sha256sums=('be9813c1dc3712c2df977d4960e1f13f20f447dfa8c3ce53331d610c1f470483')
+depends=('zlib' 'libjpeg-turbo' 'libtirpc')
+makedepends=('gcc-fortran')
+conflicts=('hdf4-java')
+source=("https://support.hdfgroup.org/ftp/HDF/releases/HDF${pkgver}/src/hdf-${pkgver}.tar.bz2"
+        "config.patch")
+md5sums=('3f3bd5da84015e9221d26fb5a80094b4'
+         'e17d14ac1d27012c1ea9ac03f783d355')
+
+prepare() {
+    cd "${srcdir}/hdf-${pkgver}"
+    patch < "${srcdir}/config.patch"
+    autoreconf -i
+}
 
 build() {
-  cd $srcdir/hdf-4.2.13
-  export CFLAGS=$CFLAGS" -fPIC"
-  export LDFLAGS=" -l:libjpeg.so.8 "$LDFLAGS
-  ./configure --prefix=/usr F77=gfortran 
+    cd "${srcdir}/hdf-${pkgver}"
+
+    ./configure \
+        CFLAGS="${CFLAGS} -fPIC" \
+        LDFLAGS="-l:libjpeg.so.8 ${LDFLAGS}" \
+        F77=gfortran \
+        --enable-fortran \
+        --enable-production \
+        --with-zlib \
+        --prefix=/opt/hdf4
+
   make
 }
+
 package() {
-  cd $srcdir/hdf-4.2.13
-  make prefix=$pkgdir/usr install
-  mv $pkgdir/usr/share $pkgdir/usr/$pkgname
-  mkdir -p $pkgdir/usr/share/doc/$pkgname
-  mv $pkgdir/usr/$pkgname $pkgdir/usr/share/doc
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  cp $srcdir/hdf-4.2.13/COPYING $pkgdir/usr/share/licenses/$pkgname
+    cd "${srcdir}/hdf-${pkgver}"
+    make -j1 DESTDIR="${pkgdir}" install
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp "${srcdir}/hdf-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
