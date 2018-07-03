@@ -5,6 +5,7 @@ pkgbase = pg_partman
 	url = https://github.com/keithf4/pg_partman
 	arch = x86_64
 	license = custom:PostgreSQL
+	depends = python
 	depends = postgresql
 	source = https://github.com/keithf4/pg_partman/archive/v3.1.3.tar.gz
 	sha256sums = 64e236c9a4d45369a61b33ed4c976be0bb85c4ddd3d97a8778768ad7dad7c2ae
