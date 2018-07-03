@@ -1,16 +1,16 @@
 pkgbase = lib32-libnftnl
 	pkgdesc = Netfilter library providing interface to the nf_tables subsystem
-	pkgver = 1.0.9
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://netfilter.org/projects/libnftnl/
 	arch = x86_64
 	license = GPL2
 	depends = lib32-libmnl
 	depends = libnftnl
-	source = http://netfilter.org/projects/libnftnl/files/libnftnl-1.0.9.tar.bz2
-	source = http://netfilter.org/projects/libnftnl/files/libnftnl-1.0.9.tar.bz2.sig
+	source = http://netfilter.org/projects/libnftnl/files/libnftnl-1.1.1.tar.bz2
+	source = http://netfilter.org/projects/libnftnl/files/libnftnl-1.1.1.tar.bz2.sig
 	validpgpkeys = C09DB2063F1D7034BA6152ADAB4655A126D292E4
-	sha1sums = 90b70f52a26f88ab1106671e797faac21265fa6a
+	sha1sums = d2be642a54e0f105cb5564471ae4aaaed8b97ca6
 	sha1sums = SKIP
 
 pkgname = lib32-libnftnl
