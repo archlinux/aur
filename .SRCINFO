@@ -1,0 +1,14 @@
+pkgbase = wapkg
+	pkgdesc = Worms Armageddon package manager & download utility
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/MEDVEDx64/wapkg
+	arch = any
+	license = Apache
+	depends = python
+	optdepends = wine: required by launcher functionality to work
+	source = https://github.com/MEDVEDx64/wapkg/archive/0.4.1.tar.gz
+	sha256sums = c3bbe58950ea4d27a0de415feb057d3b08afae60bbecff0b143de6fda95a299d
+
+pkgname = wapkg
+
