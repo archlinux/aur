@@ -1,7 +1,7 @@
 pkgbase = ddnet
 	pkgdesc = DDraceNetwork, a mod of Teeworlds
 	pkgver = 11.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ddnet.tw
 	arch = x86_64
 	license = custom:BSD
@@ -9,7 +9,6 @@ pkgbase = ddnet
 	checkdepends = gtest
 	makedepends = cmake
 	makedepends = python
-	depends = alsa-lib
 	depends = sdl2
 	depends = freetype2
 	depends = opusfile
