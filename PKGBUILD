@@ -3,8 +3,8 @@
 # Contributor: Christian Wygoda <accounts@wygoda.net>
 
 pkgname=ossim
-_pkgname=FortMyers
-pkgver=2.2.1
+_pkgname=Hollywood
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data."
 url="http://www.ossim.org"
@@ -17,7 +17,7 @@ optdepends=( 'java-environment-common' 'openmpi' 'gpstk-bin' )
 source=(https://github.com/ossimlabs/ossim/archive/${_pkgname}-${pkgver}.tar.gz
         ossim.sh )
 install=ossim.install
-md5sums=('d52aca3cdd3df68d389311ce928006fa'
+md5sums=('9b51d851e7e4f198b09058351caf10d2'
          'cb85c216a099b10f057cddeeae4a57fb')
 
 build() {
@@ -45,16 +45,14 @@ build() {
   -DBUILD_OMS=ON \
   -DBUILD_OSSIM_APPS=ON \
   -DBUILD_OSSIM_CURL_APPS=OFF \
-  -DBUILD_OSSIM_FRAMEWORK=ON \
   -DBUILD_OSSIM_FREETYPE_SUPPORT=ON \
   -DBUILD_OSSIM_GUI=ON \
   -DBUILD_OSSIM_PLANET=ON \
   -DBUILD_OSSIM_VIDEO=ON \
-  -DBUILD_OSSIM_HDF5_SUPPORT=ON \
+  -DBUILD_OSSIM_HDF5_SUPPORT=OFF \
   -DBUILD_KAKADU_PLUGIN=OFF \
   -DBUILD_OSSIM_ID_SUPPORT=ON \
   -DBUILD_OSSIM_MPI_SUPPORT=OFF \
-  -DBUILD_OSSIM_TEST=ON \
   -DBUILD_OSSIM_WMS=ON \
   -DBUILD_SHARED_LIBS=ON \
   -DBUILD_PDAL_PLUGIN=ON \
