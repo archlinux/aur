@@ -1,15 +1,14 @@
 [Unit]
-Description=Neo4j
+Description=Neo4j Graph Database
+After=network-online.target
+Wants=network-online.target
 
 [Service]
+ExecStart=/bin/neo4j console
 User=neo4j
-Type=forking
-Environment=NEO4J_CONF=/etc/neo4j
-Environment=NEO4J_HOME=/usr/share/neo4j
-ExecStart=/usr/bin/neo4j start
-ExecStop=/usr/bin/neo4j stop
-PIDFile=/run/neo4j/neo4j.pid
-LimitNOFILE=40000
+Group=neo4j
+LimitNOFILE=60000
+TimeoutSec=120
 
 [Install]
 WantedBy=multi-user.target
