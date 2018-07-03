@@ -1,8 +1,8 @@
 pkgbase = brscan4
 	pkgdesc = SANE drivers from Brother for brscan4 compatible models
-	pkgver = 0.4.4_4
-	pkgrel = 2
-	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_scn.html
+	pkgver = 0.4.5_1
+	pkgrel = 1
+	url = http://support.brother.com
 	install = brscan4.install
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = brscan4
 	license = custom:Brother
 	depends = sane
 	depends = libusb-compat
-	source = http://download.brother.com/welcome/dlf006648/brscan4-0.4.4-4.x86_64.rpm
+	source = http://download.brother.com/welcome/dlf006648/brscan4-0.4.5-1.x86_64.rpm
 	source = http://www.brother.com/agreement/English_sane/agree.html
 	source = mk-udev-rules
-	md5sums = 9319e08317382f76f5e8ad294de8c569
+	md5sums = 05ed2f7a58592770ddc9e2e24a2706f8
 	md5sums = ccffb9a6f6d436b21be25b0241068981
 	md5sums = 9a23d2af36609fbf2b0aa75269553701
 
