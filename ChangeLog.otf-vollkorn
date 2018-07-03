@@ -1,3 +1,24 @@
+2018-07-13 Lucas Werkmeister <mail@lucaswerkmeister.de>
+
+	* 4.105-1 :
+	update release:
+	               - fixed feature code for figures
+	               - added Dcedilla
+	               - generated OTF, TTF, WOFF, WOFF2, EOT
+	               - fixed ascender of λ
+	               - added several top anchors to Xx and greek letters
+	               - added missing uni0258 ereversed
+	               - fixed SemiBold font name
+	               - fixed some kerning issues
+	               - added some brackets and musical bars
+	               - added some anchors to Greek lowercase
+	               - added intermediate weights “Medium” and “Extrabold” (and adjusted “SemiBold” and “Bold”)
+	               - optimised Vietnamese
+	               - added ca. 40 glyphs to support more languages
+	               - some new Greek and Latin glyphs
+	               - fixed Eng
+	               - added half brackets
+
 2017-08-15 Lucas Werkmeister <mail@lucaswerkmeister.de>
 
 	* 4.015-1 :
