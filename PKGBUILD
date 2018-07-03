@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 package() {
     install -dm755 $pkgdir/boot/grub/themes/
-    cd grub2-themes/grub-themes-stylishdark
+    cd grub2-themes/grub-theme-stylishdark
     cp StylishDark $pkgdir/boot/grub/themes/ -r
     
     echo '======='
