@@ -1,0 +1,15 @@
+[Unit]
+Description=Serve Threema Web on localhost port 4242.
+
+[Service]
+Type=simple
+User=http
+Group=http
+ExecStart=/usr/bin/env python3 -m http.server -b 127.0.0.1 4242
+WorkingDirectory=/opt/threema-web
+Restart=on-failure
+RestartSec=3
+ProtectSystem=strict
+
+[Install]
+WantedBy=graphical.target

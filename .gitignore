@@ -1,0 +1,6 @@
+*.tar.xz
+src/
+pkg/
+*.swp
+threema-web*.gz
+threema-web*.gz.asc
