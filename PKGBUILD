@@ -1,23 +1,21 @@
 # Maintainer: Sven Hesse <drmccoy@drmccoy.de>
 
 pkgname=xoreos-tools
-pkgver=0.0.4.r0.ga3c1a2a
+pkgver=0.0.5.r0.gaed64a2
 pkgrel=1
 pkgdesc="Tools to help with xoreos development"
 arch=('i686' 'x86_64')
 url="https://xoreos.org/"
 license=('GPL3')
-depends=('zlib'
-         'libxml2')
+depends=('zlib' 'libxml2' 'boost' 'boost-libs')
 makedepends=()
-source=('git://github.com/xoreos/xoreos-tools.git#tag=v0.0.4')
+source=('git://github.com/xoreos/xoreos-tools.git#tag=v0.0.5')
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
 
-	git describe --long --match desc/\* | cut -d '/' -f 2- | \
-		sed -e 's/\(.*\)-\([^-]*\)-\([^-]*\)/\1.r\2.\3/'
+	git describe --long --match desc/\* | cut -d '/' -f 2- | sed -e 's/\(.*\)-\([^-]*\)-\([^-]*\)/\1.r\2.\3/'
 }
 
 build() {
