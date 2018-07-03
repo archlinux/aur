@@ -1,20 +1,32 @@
-# Maintainer: Jan Tojnar <jtojnar@gmail.com>
+# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Contributor: Jan Tojnar <jtojnar@gmail.com>
+
 _pkgname='hamster-gtk'
-pkgname='python-hamster-gtk'
-pkgver='0.11.0'
-pkgrel=2
+pkgname="python-${_pkgname}-git"
+_branch='develop'
+pkgver=0.11.0.r105.g6b5d106
+pkgrel=1
 pkgdesc="[In heavy development] A GTK interface to the hamster time tracker."
 url="https://github.com/projecthamster/hamster-gtk"
-depends=('gtk3' 'python' 'python-gobject' 'python-hamster-lib<0.13')
-makedepends=('python-setuptools')
+depends=('gtk3' 'python' 'python-gobject' 'python-hamster-lib-git' 'python-orderedset')
+makedepends=('git' 'python-setuptools')
+options=(!emptydirs)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 license=('GPL3')
 arch=('any')
-source=("https://github.com/projecthamster/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('57697da24e8f43cd440b16f8e111c7319e567c8ea9c8cca235d09b3e4f3bc862')
+source=("git://github.com/projecthamster/${_pkgname}.git#branch=${_branch}")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${_pkgname}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	find hamster_gtk -type f -exec sed -i 's/backports\.//g' {} +
-	sed "s/find_packages()/find_packages(exclude=['tests'])/" -i setup.py
-	python setup.py install --root="${pkgdir}" --optimize=1
+	cd "${_pkgname}"
+    find hamster_gtk -type f -exec sed -i 's/backports\.//g' {} +
+    sed -i -e "s/find_packages()/find_packages(exclude=['tests'])/" setup.py
+    sed -i -e 's!setup.py install!setup.py install --root="$(DESTDIR)"!g' Makefile
+    make install DESTDIR="${pkgdir}/"
 }
