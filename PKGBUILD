@@ -6,23 +6,19 @@
 
 pkgname=chrome-remote-desktop
 pkgver=68.0.3440.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Access other computers or allow another user to access your computer securely over the Internet"
 arch=("x86_64")
 url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
 license=("BSD")
 depends=("gtk3" "libxss" "nss" "python2" "python2-psutil" "xorg-server-xvfb" "xorg-setxkbmap" "xorg-xauth" "xorg-xdpyinfo")
 install="${pkgname}.install"
-source=("${pkgname}.deb::http://dl.google.com/linux/direct/${pkgname}_current_amd64.deb"
+source=("${pkgname}-${pkgver}.deb::http://dl.google.com/linux/direct/${pkgname}_current_amd64.deb"
         "${pkgname}.service" 
         "crd")
-sha256sums=('5a66299b30f1aeba7af61038c694fe1227532b250f0a2b89db7ee30b249123ac'
-            'e5da5ae89b5bc599f72f415d1523341b25357931b0de46159fce50ab83615a4b'
-            '27dee2d383e6bd993fe0557d5c222fa80ab6d16d43775dedff6218713c7a1c06')
-
-pkgver() {
-  bsdtar -xf control.tar.gz -O control | grep "^Version: " | cut -f2 -d' '
-}
+sha256sums=("5a66299b30f1aeba7af61038c694fe1227532b250f0a2b89db7ee30b249123ac"
+            "e5da5ae89b5bc599f72f415d1523341b25357931b0de46159fce50ab83615a4b"
+            "27dee2d383e6bd993fe0557d5c222fa80ab6d16d43775dedff6218713c7a1c06")
 
 build() {
   cd "${srcdir}"

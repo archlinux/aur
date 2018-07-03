@@ -1,7 +1,7 @@
 pkgbase = chrome-remote-desktop
 	pkgdesc = Access other computers or allow another user to access your computer securely over the Internet
 	pkgver = 68.0.3440.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp
 	install = chrome-remote-desktop.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = chrome-remote-desktop
 	depends = xorg-setxkbmap
 	depends = xorg-xauth
 	depends = xorg-xdpyinfo
-	source = chrome-remote-desktop.deb::http://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
+	source = chrome-remote-desktop-68.0.3440.11.deb::http://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 	source = chrome-remote-desktop.service
 	source = crd
 	sha256sums = 5a66299b30f1aeba7af61038c694fe1227532b250f0a2b89db7ee30b249123ac
