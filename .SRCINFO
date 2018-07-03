@@ -11,7 +11,7 @@ pkgbase = virtualbox-ck-modules
 
 pkgname = virtualbox-ck-host-modules
 	pkgdesc = Host kernel modules for VirtualBox running under Linux-ck.
-	depends = linux-ck>=4.16
-	depends = linux-ck<4.17
+	depends = linux-ck>=4.17
+	depends = linux-ck<4.18
 	provides = VIRTUALBOX-HOST-MODULES
 

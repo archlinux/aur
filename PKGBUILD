@@ -11,7 +11,7 @@ url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-ck-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.16-ck
+_extramodules=extramodules-4.17-ck
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -28,7 +28,7 @@ package_virtualbox-ck-host-modules() {
 	#pkgdesc="${_Hpkgdesc}"
 	pkgdesc='Host kernel modules for VirtualBox running under Linux-ck.'
 	provides=("VIRTUALBOX-HOST-MODULES")
-	depends=('linux-ck>=4.16' 'linux-ck<4.17')
+	depends=('linux-ck>=4.17' 'linux-ck<4.18')
 	#replaces=('virtualbox-ck-host-modules-corex')
 	#groups=('ck-generic')
 
