@@ -9,7 +9,7 @@ url='https://01.org/gsso'
 license=('LGPL2.1')
 depends=('glib2' 'glibc' 'gsasl'
          'libgsignond-common.so')
-makedepends=('check' 'git' 'gobject-introspection' 'gsignond-git' 'gtk-doc' 'meson')
+makedepends=('check' 'git' 'gobject-introspection' 'gsignond' 'gtk-doc' 'meson')
 provides=('gsignond-plugin-sasl')
 conflicts=('gsignond-plugin-sasl')
 source=('git+https://gitlab.com/accounts-sso/gsignond-plugin-sasl.git')
