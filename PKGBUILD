@@ -6,7 +6,7 @@
 
 pkgbase=iup
 pkgname=('iup' 'lua-iup' 'lua51-iup' 'lua52-iup')
-pkgver=3.24
+pkgver=3.25
 pkgrel=1
 pkgdesc="C cross platform GUI toolkit"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ source=(
   "http://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Docs.pdf"
 )
 
-md5sums=('085d133ab88e1d83f8a1b8a21245c5f7'
-         '9c5ace22bbba8ff33a28c0c5ddd73727')
+md5sums=('cecb337e3135519492466034c9d8d78b'
+         'a814d6e7d88cdb6aca31dfc4771c3bd1')
 
 prepare() {
   # Link iupview statically
