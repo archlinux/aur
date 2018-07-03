@@ -40,7 +40,6 @@ depends=(
   'netctl'
   'pacman'
   'pciutils'
-  'pcmciautils'
   'perl'
   'procps-ng'
   'psmisc'
