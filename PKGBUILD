@@ -1,6 +1,6 @@
 # Contributor: Aris Synodinos <arissynod-gmail-com>
 pkgname=gazebo-hg
-pkgver=6.0.0.19165
+pkgver=10.0.1.37153
 pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments. Mercurial version."
 arch=('i686' 'x86_64')
@@ -9,18 +9,19 @@ license=('Apache')
 # See: http://www.gazebosim.org/user_guide/installation__requirements.html
 depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
          'intel-tbb>=3.0' 'libccd>=1.4' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
-         'ogre' 'protobuf>=2.3.0' 'qt4' 'sdformat>=2.0.1'
-         'tinyxml>=2.6.2')
-optdepends=('bullet>=2.82: Bullet support'
-            'cegui-0.7>=0.7.5: Design custom graphical interfaces'
-            'ffmpeg>=0.8.3: Playback movies on textured surfaces'
+         'ogre' 'protobuf>=2.3.0' 'sdformat>=6.0.0' 'ignition-math>=4' 'ignition-transport>=4'
+         'ignition-common' 'ignition-fuel_tools' 'ignition-msgs' 'tinyxml2' 'qwt')
+optdepends=('bullet: Bullet support'
+            'cegui: Design custom graphical interfaces'
+            'ffmpeg: Playback movies on textured surfaces'
             'gdal: Digital elevation terrains support'
-            'libdart>=3.0: DART support'
+            'libdart: DART support'
+            'libspnav: space navigator joystick support'
             'libusb: USB peripherals support'
             'ruby-ronn: Generate manpages'
-            'simbody>=3.3: Simbody support'
+            'simbody: Simbody support'
             'urdfdom: Load URDF files')
-makedepends=('cmake' 'doxygen' 'mercurial'  'pkg-config>=0.26')
+makedepends=('cmake' 'doxygen' 'mercurial' 'pkgconf>=0.26')
 install="gazebo.install"
 provides=('gazebo')
 conflicts=('gazebo')
@@ -51,8 +52,7 @@ build() {
   # Note: we skip unit tests (else set to TRUE)
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
-           -DCMAKE_INSTALL_LIBDIR="lib" \
-           -DENABLE_TESTS_COMPILATION:BOOL=False
+           -DCMAKE_INSTALL_LIBDIR="lib"
 
   # Compile Gazebo
   make
