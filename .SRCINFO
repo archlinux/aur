@@ -1,13 +1,12 @@
 pkgbase = launch4j
 	pkgdesc = Cross-platform Java executable wrapper
 	pkgver = 3.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://launch4j.sf.net
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = java-runtime
-	depends = lib32-glibc
+	depends = glibc
 	options = !strip
 	options = staticlibs
 	source = http://downloads.sourceforge.net/launch4j/launch4j-3.12-linux-x64.tgz
