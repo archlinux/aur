@@ -1,4 +1,4 @@
-pkgname=gogglesmm
+pkgname=gogglesmm-git
 pkgver=1.2.0
 pkgrel=1
 pkgdesc="Music Manager and Player"
