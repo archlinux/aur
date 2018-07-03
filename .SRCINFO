@@ -1,21 +1,20 @@
 pkgbase = ice-ssb
 	pkgdesc = a simple Site Specific Browser for Firefox, Chromium and Google Chrome from "Peppermint OS" Project
-	pkgver = 5.3.1
+	pkgver = 5.3.4
 	pkgrel = 1
 	url = https://github.com/peppermintos/ice
 	arch = any
 	license = GPL2
 	depends = python-requests
 	depends = python-beautifulsoup4
-	depends = python
 	depends = python-gobject
 	depends = python-lxml
 	optdepends = firefox: Browser to use
 	optdepends = chromium: Browser to use
 	optdepends = google-chrome: Browser to use
 	optdepends = vivaldi: Browser to use
-	source = ice-5.3.1.tar.gz::https://github.com/peppermintos/ice/archive/5.3.1.tar.gz
-	sha256sums = 1bbc7c6a21f7e9924387e52d3c33b6859ba016df412411866df06fff4a0da853
+	source = ice-5.3.4.tar.gz::https://github.com/peppermintos/ice/archive/v5.3.4.tar.gz
+	sha256sums = c8b1aad85d97b87024f383279d489cc991f32a8b6428a6559dd8aa41fb51b73d
 
 pkgname = ice-ssb
 

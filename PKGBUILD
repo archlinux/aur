@@ -4,16 +4,16 @@
 
 _pkgname=ice
 pkgname=ice-ssb
-pkgver=5.3.1
+pkgver=5.3.4
 pkgrel=1
 pkgdesc='a simple Site Specific Browser for Firefox, Chromium and Google Chrome from "Peppermint OS" Project'
 url='https://github.com/peppermintos/ice'
 arch=(any)
 license=(GPL2)
-depends=("python-requests" "python-beautifulsoup4" "python" "python-gobject" "python-lxml")
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/peppermintos/$_pkgname/archive/$pkgver.tar.gz")
+depends=("python-requests" "python-beautifulsoup4" "python-gobject" "python-lxml")
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('c8b1aad85d97b87024f383279d489cc991f32a8b6428a6559dd8aa41fb51b73d')
 optdepends=("firefox: Browser to use" "chromium: Browser to use" "google-chrome: Browser to use" "vivaldi: Browser to use")
-sha256sums=('1bbc7c6a21f7e9924387e52d3c33b6859ba016df412411866df06fff4a0da853')
 
 package() {
 	cp -r -f "${srcdir}/$_pkgname-$pkgver/usr" "${pkgdir}/usr"
