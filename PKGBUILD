@@ -5,7 +5,7 @@
 # speps, and Bernardo Barros.
 
 pkgname='csound-git'
-pkgver='6.11.0.r29478.g94f0ca6a9'
+pkgver='6.11.0.r29499.g42e8567e8'
 pkgrel=1
 pkgdesc="A programming language for sound rendering and signal processing."
 arch=('x86_64')
@@ -23,7 +23,6 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  git checkout 94f0ca6
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -35,7 +34,6 @@ prepare() {
 
 build() {
   cd "${pkgname}/bld"
-  git checkout e4ca0b12a96c4a
   cmake .. -DCMAKE_BUILD_TYPE=Release \
            -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_CXX_FLAGS="-Wno-error -Wno-missing-field-initializers" \
