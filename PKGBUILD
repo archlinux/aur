@@ -1,7 +1,7 @@
 # Maintainer: François Freitag <mail@franek.fr>
 pkgname=php-igbinary
 _pkgname=igbinary
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="Igbinary is a drop in replacement for the standard php serializer."
 arch=('any')
@@ -11,7 +11,7 @@ depends=(php)
 conflicts=(php-igbinary-git)
 backup=("etc/php/conf.d/igbinary.ini")
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c96ae44baa4290431f1977316f2e78aca44698c07258777584260db19aa6dac2')
+sha256sums=('568d96d6908a24a3ee9a121dba2e785986bcd766bb149343d38d76d3f7209653')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
