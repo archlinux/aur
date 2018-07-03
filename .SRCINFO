@@ -1,6 +1,6 @@
 pkgbase = theshell
 	pkgdesc = Desktop Shell that gets out of your way
-	pkgver = 7.1.1
+	pkgver = 8.0
 	pkgrel = 0
 	url = https://github.com/vicr123/theshell
 	arch = x86_64
@@ -20,13 +20,14 @@ pkgbase = theshell
 	depends = qt5-charts
 	depends = qt5-location
 	depends = kscreen
-	depends = ts-polkitagent
 	depends = ts-bt
 	depends = ts-bugreport
 	optdepends = alsa-utils: for volume controls
 	conflicts = ts-startsession
+	conflicts = ts-polkitagent
 	replaces = ts-startsession
-	source = theshell-7.1.1::git+https://github.com/vicr123/theshell#branch=master
+	replaces = ts-polkitagent
+	source = theshell-8.0::git+https://github.com/vicr123/theshell#branch=master
 	md5sums = SKIP
 
 pkgname = theshell
