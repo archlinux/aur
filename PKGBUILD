@@ -2,8 +2,8 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r358.5a038ca
-pkgrel=2
+pkgver=r361.f8341c8
+pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
@@ -27,13 +27,15 @@ source=('git+https://github.com/elementary/wingpanel.git'
         'minus-galaplugin.patch'
         'minus-gala.patch'
         'y-is-broken-cogl.patch'
-        'autohide.patch')
+        'autohide.patch'
+        'reverse-105c1d0.patch')
 sha256sums=('SKIP'
             'dc9870a9e58ba1c438c4b631c95ce7e5a5f76b9e53355959e67ce1ba0263b651'
             '7f972d79b4d72f7b274a96e1a5150cba0e3869ad85215ae01ad2bc19802cdbb9'
             '21e95aec3fbb920f3b8ef34b00bf4fc99f431e1837f84f020d5d00c4e3aaca0b'
             'b1902c1d44ac546df63cd0224a7d2ef2cb6394ca556512c30c370d387db7bbab'
-            'cd7a7bf3c3cec2812f0bb4a355588fe95530c6220e0c92abcae49713ab66f924')
+            'cd7a7bf3c3cec2812f0bb4a355588fe95530c6220e0c92abcae49713ab66f924'
+            '53bfa2220d14065ca848c36217abe812685c7d6e0d42251423d0faa2a0ac5394')
 
 pkgver() {
   cd wingpanel
@@ -43,6 +45,10 @@ pkgver() {
 
 prepare() {
   cd wingpanel
+
+  #Reverse 105c1d0
+  msg2 "Autohide"
+  patch -Np1 < ../reverse-105c1d0.patch
 
   #Autohide
   msg2 "Autohide"
