@@ -1,6 +1,6 @@
 pkgbase = knot-resolver
 	pkgdesc = full caching DNS resolver implementation
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://www.knot-resolver.cz/
 	install = install
@@ -8,7 +8,7 @@ pkgbase = knot-resolver
 	license = GPL3
 	depends = cmocka
 	depends = gnutls
-	depends = knot>=2.6.4
+	depends = knot>=2.6.7
 	depends = libedit
 	depends = libsystemd
 	depends = libuv
@@ -16,10 +16,13 @@ pkgbase = knot-resolver
 	depends = lua51-sec
 	depends = lua51-socket
 	depends = luajit
-	source = https://secure.nic.cz/files/knot-resolver/knot-resolver-2.3.0.tar.xz
+	options = debug
+	options = strip
+	backup = etc/knot-resolver/kresd.conf
+	source = https://secure.nic.cz/files/knot-resolver/knot-resolver-2.4.0.tar.xz
 	source = kresd.conf
 	source = root.keys
-	sha256sums = 2d19c5daf8440bd3d2acd1886b9ede65f04f7753c6fd4618a92a1a4ba3b27a9b
+	sha256sums = 8c88c73dd50dad6f371bfc170f49cd374022e59f8005ac1fa6cd99764f72b4d1
 	sha256sums = 929658c7432252d5123ff11ee07759c595c8f5a3f4320a62d451a5f69cd2254a
 	sha256sums = 06c74ef5ef53344c78c9af2b29dc458a2abe93f1bff429705955c033e7a0686f
 
