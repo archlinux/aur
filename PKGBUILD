@@ -3,7 +3,7 @@ pkgname=cm256cc
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Fast GF(256) Cauchy MDS Block Erasure Codec in C++"
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://github.com/f4exb/cm256cc"
 license=('BSD')
 makedepends=('cmake')
@@ -26,4 +26,7 @@ build() {
 package() {
   cd "$srcdir"/$pkgname-$pkgver/build
   make DESTDIR="$pkgdir" install
+
+  mv $pkg/lib $pkg/lib32 || true
+  mv $pkg/lib64 $pkg/lib || true
 }
