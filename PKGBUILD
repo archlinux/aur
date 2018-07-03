@@ -3,7 +3,7 @@
 # Contributor: A. Weiss <adam [at] archlinux.us>
 
 pkgname=osgearth
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc="A terrain rendering toolkit for OpenSceneGraph"
 arch=('i686' 'x86_64')
@@ -12,16 +12,8 @@ license=('LGPL')
 depends=('openscenegraph' 'gdal' 'minizip' 'qt5-base')
 makedepends=('cmake')
 provides=('osgearth')
-conflicts=('osgearth-qt5')
-source=("https://github.com/gwaldron/osgearth/archive/${pkgname}-${pkgver}.tar.gz" "fix-suppor_geos36.patch")
-md5sums=('b3dbb1e386db52587af17c3d9999d3e6'
-         '3d975f10662544231cf36371f8549c6a')
-
-prepare() {
-  cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
-
-  patch -Np1 -i ${srcdir}/fix-suppor_geos36.patch
-}
+source=("https://github.com/gwaldron/osgearth/archive/${pkgname}-${pkgver}.tar.gz")
+md5sums=('87d0ce80a9bb5c8b8ce4ae7b5b257c52')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
@@ -37,7 +29,6 @@ build() {
   cmake \
   -DLIB_POSTFIX= \
   -DCMAKE_INSTALL_PREFIX=/usr \
-  -DOSGEARTH_USE_QT=/usr \
   ..
 
   make -j3

@@ -1,6 +1,6 @@
 pkgbase = osgearth
 	pkgdesc = A terrain rendering toolkit for OpenSceneGraph
-	pkgver = 2.8
+	pkgver = 2.9
 	pkgrel = 1
 	url = http://www.osgearth.org
 	arch = i686
@@ -12,11 +12,8 @@ pkgbase = osgearth
 	depends = minizip
 	depends = qt5-base
 	provides = osgearth
-	conflicts = osgearth-qt5
-	source = https://github.com/gwaldron/osgearth/archive/osgearth-2.8.tar.gz
-	source = fix-suppor_geos36.patch
-	md5sums = b3dbb1e386db52587af17c3d9999d3e6
-	md5sums = 3d975f10662544231cf36371f8549c6a
+	source = https://github.com/gwaldron/osgearth/archive/osgearth-2.9.tar.gz
+	md5sums = 87d0ce80a9bb5c8b8ce4ae7b5b257c52
 
 pkgname = osgearth
 
