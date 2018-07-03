@@ -2,14 +2,14 @@
 
 pkgname=raspberrypi-overlays
 pkgdesc="Overlays files for Raspberry Pi"
-pkgver=1.20180417
+pkgver=1.20180619
 pkgrel=1
 arch=('any')
 url="https://github.com/raspberrypi/firmware"
 license=('custom')
 options=(!strip)
 source=("https://github.com/raspberrypi/firmware/archive/${pkgver}.zip")
-sha1sums=('a21ec4d34ee34025161a99a9b93a9b925f01a9b7')
+sha1sums=('1be26af4605d66355f07fb48ff69c412285b328d')
 
 package() {
   mkdir -p "${pkgdir}/boot"
