@@ -1,34 +1,69 @@
-# Maintainer: Sander Jansen <s.jansen@gmail.com>
-pkgname=gogglesmm-git
-pkgver=592
+pkgname=gogglesmm
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Goggles Music Manager"
-arch=('i686' 'x86_64' 'arm')
-url="http://gogglesmm.github.io"
+pkgdesc="Music Manager and Player"
+url="https://gogglesmm.github.io"
 license=('GPL3')
-conflicts=('gogglesmm' 'gogglesmm-hg')
-depends=('fox-devel>=1.7.46' 'libogg' 'libvorbis' 'flac' 'libmad' 'faad2' 'expat' 'opus' 'dbus-core' 'taglib>=1.9.0' 'sqlite3' 'libgcrypt' 'glew' 'glu')
-makedepends=('git' 'pkgconfig' 'libpulse' 'alsa-lib' 'glproto' 'dri2proto' )
-optdepends=('libpulse: PulseAudio Output' 'alsa-lib: Alsa Output')
+arch=('x86_64')
+depends=('libepoxy'
+         'glu'
+         'libsm'
+         'libxcursor'
+         'libxrandr'
+         'libxi'
+         'libxft'
+         'libvorbis'
+         'libwebp'
+         'libjpeg-turbo'
+         'openssl'
+         'libmad'
+         'flac'
+         'faad2'
+         'opus'
+         'taglib>=1.9.0'
+         'sqlite'
+         'dbus'
+         'hicolor-icon-theme')
+
+# Dependencies:
+# expat => dbus
+# libogg => libvorbis
+# libxfixes => libxcursor
+# libtiff => libwebp
+#
+# dbus => libpulse
+# flac => libsndfile => libpulse
+# openssl => libpulse
+
+
+optdepends=('python2: import utilities'
+            'libpulse: PulseAudio Output'
+            'alsa-lib: ALSA Output')
+
+makedepends=('cmake'
+             'pkgconfig'
+             'alsa-lib'
+             'libpulse')
+
+conflicts=('musicmanager')
+replaces=('musicmanager')
+
 md5sums=('SKIP')
-source=("$pkgname"::'git://github.com/gogglesmm/gogglesmm.git')
+source=("$pkgname"::'git+https://github.com/gogglesmm/gogglesmm.git')
 
 pkgver() {
   cd "$pkgname"
-  git rev-list --count HEAD
-}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  }
 
 build() {
   cd "$pkgname"
-  export RESWRAP=/usr/bin/reswrap-1.7
-  ./configure
+  cmake .
   make
-}
+  }
 
 package() {
   cd "$pkgname"
   make DESTDIR="$pkgdir" install
-}
+  }
 
-
-# vim:set ts=2 sw=2 et:
