@@ -1,0 +1,2 @@
+#!/bin/sh
+LD_LIBRARY_PATH=/usr/share/duDat/BooktabZ:$LD_LIBRARY_PATH booktab
