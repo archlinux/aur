@@ -1,13 +1,13 @@
 pkgbase = geoserver-bin
 	pkgdesc = Server written in Java that allows users to share and edit geospatial data
-	pkgver = 2.12.2
+	pkgver = 2.13.1
 	pkgrel = 1
 	url = http://geoserver.org
 	arch = any
 	license = GPL2+
 	depends = java-runtime
-	source = http://downloads.sourceforge.net/project/geoserver/GeoServer/2.12.2/geoserver-2.12.2-bin.zip
-	sha256sums = c66d57acfbb2ea171c54cd9706a27cfceff4bc80756c5fcd95b0bc1fc44a6e3e
+	source = http://downloads.sourceforge.net/project/geoserver/GeoServer/2.13.1/geoserver-2.13.1-bin.zip
+	sha256sums = a7f619c76e964157da5fd082a9b1db2130050101f5b9eccd6888afa1d675cae0
 
 pkgname = geoserver-bin
 

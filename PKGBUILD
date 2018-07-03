@@ -3,7 +3,7 @@
 # Contributor: Thomas Dziedzic
 
 pkgname=geoserver-bin
-pkgver=2.12.2
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="Server written in Java that allows users to share and edit geospatial data"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL2+')
 depends=('java-runtime')
 
 source=(http://downloads.sourceforge.net/project/geoserver/GeoServer/$pkgver/geoserver-$pkgver-bin.zip)
-sha256sums=('c66d57acfbb2ea171c54cd9706a27cfceff4bc80756c5fcd95b0bc1fc44a6e3e')
+sha256sums=('a7f619c76e964157da5fd082a9b1db2130050101f5b9eccd6888afa1d675cae0')
 
 ####################################################
 # WARNING: GEOSERVER USES A VERY WEIRD CONFIGURATION
