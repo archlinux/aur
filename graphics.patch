@@ -1,0 +1,11 @@
+--- src/system76/src/graphics.rs	2018-07-02 00:24:56.431499529 -0700
++++ src/system76/src/graphics.rs.new	2018-07-02 00:25:55.448165538 -0700
+@@ -136,7 +136,7 @@
+             }
+
+             eprintln!("Updating initramfs");
+-            let status = process::Command::new("update-initramfs").arg("-u").status()?;
++            let status = process::Command::new("mkinitcpio").arg("-p").arg("linux").status()?;
+             if ! status.success() {
+                 return Err(io::Error::new(
+                     io::ErrorKind::Other,

@@ -1,0 +1,21 @@
+pkgbase = system76-power
+	pkgdesc = System76 Power Management
+	pkgver = 72
+	pkgrel = 1
+	url = https://github.com/pop-os/system76-power
+	install = system76-power.install
+	arch = any
+	license = GPL
+	makedepends = rust
+	depends = dbus
+	depends = systemd
+	depends = system76-dkms-git
+	source = system76::git+https://github.com/pop-os/system76-power.git#commit=038f0991aa4f351dcab55e06fc979fd929a833cc
+	source = graphics.patch
+	source = nvidia-fallback.service
+	sha1sums = SKIP
+	sha1sums = f87a11659913711009dad5fed9aacc3ed5548853
+	sha1sums = 5a81fb98c76cab0cd6e958d6776fca852c5ee4e2
+
+pkgname = system76-power
+
