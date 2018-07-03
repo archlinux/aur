@@ -3,5 +3,6 @@
 !.SRCINFO
 !PKGBUILD
 !*.desktop
+!*.patch
 !*.png
 !*.sh

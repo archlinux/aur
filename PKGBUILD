@@ -2,13 +2,13 @@
 
 pkgname=screentranslator
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Screen capture, OCR and translation tool.'
 url='https://gres.biz/screen-translator'
 license=('MIT')
 arch=('x86_64')
 depends=('qt5-webkit' 'qt5-x11extras' 'tesseract')
-makedepends=('git')
+makedepends=('git' 'qt5-tools')
 source=(
   "${pkgname}::git+https://github.com/OneMoreGres/ScreenTranslator.git#tag=${pkgver}"
   "${pkgname}.desktop"
