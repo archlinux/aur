@@ -1,6 +1,6 @@
 pkgbase = redis-git
 	pkgdesc = Advanced key-value store (git unstable branch)
-	pkgver = r6019.790310d
+	pkgver = r7054.93238575f
 	pkgrel = 1
 	url = http://redis.io/
 	install = redis.install
@@ -23,7 +23,7 @@ pkgbase = redis-git
 	md5sums = afa0f4a9000c26c3323e83fe34883e23
 	md5sums = 9e2d75b7a9dc421122d673fe520ef17f
 	md5sums = 0edaae8f1ada3add150fa02f601184d7
-	md5sums = 91d1ba6d1e5437c78e6a8ac28dee82bc
+	md5sums = 396f5543b68f3fe96c90dd9d50202ac0
 
 pkgname = redis-git
 
