@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=meta-group-base-devel
-pkgver=201612120042
+pkgver=201807031133
 pkgrel=1
 pkgdesc='Metapackage for all the base-devel group.'
 arch=('any')
@@ -26,9 +26,10 @@ depends=(
   'make'
   'pacman'
   'patch'
-  'pkg-config'
+  'pkgconf'
   'sed'
   'sudo'
+  'systemd'
   'texinfo'
   'util-linux'
   'which'
