@@ -3,14 +3,14 @@ pkgname=jtharness
 _version=6.0
 _build=b01
 pkgver=${_version}_${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="general purpose, fully-featured, flexible, and configurable test harness very well suited for most types of unit testing"
 arch=('any')
 url="https://wiki.openjdk.java.net/display/CodeTools/JT+Harness"
 license=('GPL2')
 groups=()
 depends=('java-runtime>=7')
-makedepends=('mercurial' 'apache-ant' 'java-environment-openjdk=7' 'junit' 'java-asm')
+makedepends=('apache-ant' 'java-environment-openjdk=7' 'junit' 'java-asm')
 optdepends=('junit')
 checkdepends=()
 provides=()

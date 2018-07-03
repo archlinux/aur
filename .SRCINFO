@@ -1,11 +1,10 @@
 pkgbase = jtharness
 	pkgdesc = general purpose, fully-featured, flexible, and configurable test harness very well suited for most types of unit testing
 	pkgver = 6.0_b01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.openjdk.java.net/display/CodeTools/JT+Harness
 	arch = any
 	license = GPL2
-	makedepends = mercurial
 	makedepends = apache-ant
 	makedepends = java-environment-openjdk=7
 	makedepends = junit
