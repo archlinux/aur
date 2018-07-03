@@ -1,7 +1,7 @@
 # Maintainer: Genki Sky <sky at genki dot is>
 
 pkgname=mxt-app-git
-pkgver=20161102.6d84bb0
+pkgver=1
 pkgrel=1
 pkgdesc='Command line utility for Atmel maXTouch devices'
 arch=('i686' 'x86_64')

@@ -1,6 +1,6 @@
 pkgbase = mxt-app-git
 	pkgdesc = Command line utility for Atmel maXTouch devices
-	pkgver = 20161102.6d84bb0
+	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/atmel-maxtouch/mxt-app
 	arch = i686
