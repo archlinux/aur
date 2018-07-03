@@ -5,11 +5,11 @@
 
 pkgname=joplin
 pkgver=1.0.104
-pkgrel=1
+pkgrel=2
 pkgdesc="Joplin - a note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS."
 arch=("x86_64" "i686")
-makedepends=("git" "nodejs-lts-carbon" "rsync" "npm" "gconf")
-depends=("nodejs-lts-carbon")
+makedepends=("git" "nodejs" "rsync" "npm" "gconf")
+depends=("nodejs")
 provides=("joplin" "joplin-cli")
 url="https://joplin.cozic.net"
 license=("MIT")
@@ -19,8 +19,6 @@ sha256sums=("9ee4a831a0853ddbdc7279629d8f9238d3737b570898be16176ba0968b53d43d"
             "5a3ace64906080adde5a5ea10ec9221fb2d94de770e6ee35b454aa30608b4097"
             "5e3424162814db56718b01740af1ef7c9b30e00f563040456eeb8b7eaca81427"
             "73ced62b14ab5453dc500d3522b017cb14f04d9722a1455385b875feb371b669")
-
-
 
 build() {
 
