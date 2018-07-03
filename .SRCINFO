@@ -1,0 +1,24 @@
+pkgbase = phaethon
+	pkgdesc = A resource explorer for BioWare's Aurora engine games
+	pkgver = 0.0.5.r0.g5020409
+	pkgrel = 1
+	url = https://xoreos.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = xz
+	depends = boost
+	depends = boost-libs
+	depends = openal
+	depends = libmad
+	depends = libogg
+	depends = libvorbis
+	depends = faad2
+	depends = xvidcore
+	depends = qt5-base
+	source = git://github.com/xoreos/phaethon.git#tag=v0.0.5
+	md5sums = SKIP
+
+pkgname = phaethon
+
