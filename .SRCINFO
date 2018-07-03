@@ -3,6 +3,7 @@ pkgbase = rtpproxy
 	pkgver = 2.0.0
 	pkgrel = 2
 	url = http://www.rtpproxy.org/
+	install = rtpproxy.install
 	arch = x86_64
 	arch = i686
 	license = BSD
@@ -11,9 +12,17 @@ pkgbase = rtpproxy
 	optdepends = systemd: systemd support
 	backup = etc/default/rtpproxy
 	source = https://github.com/sippy/rtpproxy/archive/v2.0.0.tar.gz
+	source = rtpproxy.service
+	source = rtpproxy.sysconfig
+	source = rtpproxy.sysuser.conf
+	source = rtpproxy.tmpfiles.conf
 	source = unix_socket.patch
-	sha256sums = b52bf2a302a8f08c269217e5d507f3c3ba38f4b627bb7029c8dac8ec268b23c6
-	sha256sums = 4fa74dbab3b2e813a679384aaa85b1c965861e085d0f9616851e28e64f0aada9
+	md5sums = 8d36fcc1dd93994ac5376d145f19ac73
+	md5sums = eb1a8cfa80bb0ab75a90d6ff245c1d19
+	md5sums = 34acec87cf20930cc8c22a38088bd15e
+	md5sums = 47595ec359cb897e7e3a8ea029cf3527
+	md5sums = 03ac8168937f52c3b5e58928550f2e53
+	md5sums = c8dcae45531a377951e9f1d8bafe6361
 
 pkgname = rtpproxy
 

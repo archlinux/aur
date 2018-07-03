@@ -11,10 +11,13 @@ arch=('x86_64' 'i686')
 depends=('libsndfile' 'libsystemd')
 optdepends=('systemd: systemd support')
 source=(https://github.com/sippy/rtpproxy/archive/v2.0.0.tar.gz
+	$pkgname.service
+	$pkgname.sysconfig
+	$pkgname.sysuser.conf
+	$pkgname.tmpfiles.conf
 	unix_socket.patch)
-sha256sums=('b52bf2a302a8f08c269217e5d507f3c3ba38f4b627bb7029c8dac8ec268b23c6'
-	'4fa74dbab3b2e813a679384aaa85b1c965861e085d0f9616851e28e64f0aada9')
 backup=('etc/default/rtpproxy')
+install=$pkgname.install
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -23,8 +26,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-		--enable-systemd
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-systemd
 	make
 }
 
@@ -33,19 +35,23 @@ package() {
 	make DESTDIR="${pkgdir}" install
 	install -D -m 0644 LICENSE \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m 0644 "rpm/${pkgname}.sysconfig" \
+	install -D -m 0644 "../${pkgname}.sysconfig" \
 		"${pkgdir}/etc/default/${pkgname}"
-	install -D -m 0644 "rpm/${pkgname}.service" \
+	install -D -m 0644 "../${pkgname}.service" \
 		"${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 	install -D -m 0644 "rpm/${pkgname}.socket" \
 		"${pkgdir}/usr/lib/systemd/system/${pkgname}.socket"
+
+	install -Dm755 $srcdir/$pkgname.sysuser.conf \
+		$pkgdir/usr/lib/sysusers.d/$pkgname.conf
+
+	install -D -m 0644 "../${pkgname}.tmpfiles.conf" \
+		$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
 }
 
-pre_install() {
-	useradd -r -U "${pkgname}" -m "/var/run/${pkgname}"
-}
-
-post_remove() {
-	userdel -r "${pkgname}"
-	groupdel "${pkgname}"
-}
+md5sums=('8d36fcc1dd93994ac5376d145f19ac73'
+         'eb1a8cfa80bb0ab75a90d6ff245c1d19'
+         '34acec87cf20930cc8c22a38088bd15e'
+         '47595ec359cb897e7e3a8ea029cf3527'
+         '03ac8168937f52c3b5e58928550f2e53'
+         'c8dcae45531a377951e9f1d8bafe6361')
