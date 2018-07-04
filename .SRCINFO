@@ -1,6 +1,6 @@
 pkgbase = ccminer
 	pkgdesc = Coin miner using CUDA for nVidia GPUs.
-	pkgver = 2.2.6
+	pkgver = 2.3
 	pkgrel = 1
 	url = http://ccminer.org/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = ccminer
 	depends = openssl-1.0
 	depends = nvidia-utils
 	options = !emptydirs
-	source = ccminer-2.2.6.tar.xz::https://github.com/tpruvot/ccminer/archive/2.2.6-tpruvot.tar.gz
-	sha256sums = c48b027b3d511cdd8280d4e4ee2038c22e98967d2a97facea6678e712b44c8f5
+	source = ccminer-2.3.tar.xz::https://github.com/tpruvot/ccminer/archive/2.3-tpruvot.tar.gz
+	sha256sums = 7014267fd0a46763278662a66e3a6b60264751d1893d6d5c9a4715c1f6e1a660
 
 pkgname = ccminer
 
