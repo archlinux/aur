@@ -1,16 +1,21 @@
-# Maintainer: bartus <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=meshlab-git
 pkgver=d596d7c.r0.gd596d7c0
-pkgrel=2
+pkgrel=3
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
 url="http://www.meshlab.net"
 conflicts=('meshlab')
 provides=('meshlab')
 license=('GPL2')
-depends=('bzip2' 'muparser' 'levmar' 'lib3ds' 'IDTFConverter' 'desktop-file-utils' 'glu' 'mpir' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script')
+depends=('bzip2' 'desktop-file-utils' 'glu' 'openssl-1.0' 'qt5-base' 'qt5-declarative' 'qt5-script')
+makedepends=('git' 'muparser' 'levmar' 'lib3ds' 'mpir')
+optdepends=('u3d: for U3D and IDTF file support'
+            'lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
+            'levmar: for isoparametrization and mutualcorrs plugins'
+            'muparser: for filer_func plugins'
+            'mpir: for Constructive Solid Geometry operation filters')
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
-makedepends=('git')
 install="${pkgname}.install"
 source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "git+https://github.com/cnr-isti-vclab/vcglib.git#branch=devel"
