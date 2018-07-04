@@ -84,7 +84,7 @@ pkgrel=1
 pkgdesc='real tty driver for Moxa NPort serial console terminal server'
 _pkgdescshort="Moxa NPort ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
-url='http://www.moxa.com/support/sarch_result.aspx?type=soft&prod_id=237&type_id=9' # Moxa NPort 5110
+url='https://www.moxa.com/support/sarch_result.aspx?type=soft&prod_id=237&type_id=9' # Moxa NPort 5110
 #url="https://github.com/rchovan/${pkgname}"
 license=('GPL' 'custom')
 depends=('glibc' 'gawk' 'perl' 'psmisc' 'openssl')
@@ -116,7 +116,8 @@ fi
 prepare() {
   set -u
   cd "${_srcdir}"
-  local _ver="$(sed -n -e 's:^#define\tNPREAL_VERSION\t"Ver\([^"]\+\).*$:\1:p' 'np_ver.h')"
+  local _ver
+  _ver="$(sed -n -e 's:^#define\tNPREAL_VERSION\t"Ver\([^"]\+\).*$:\1:p' 'np_ver.h')"
   if [ "${pkgver}" != "${_ver}" ]; then
     echo "Version mismatch ${pkgver} != ${_ver}"
     set +u
