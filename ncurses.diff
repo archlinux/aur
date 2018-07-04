@@ -1,0 +1,21 @@
+--- GNUmakef.def
++++ GNUmakef.def
+@@ -116,7 +116,7 @@
+ ifeq ($(WIDE_NCURSES),1)
+ LIBCURSES=-L/opt/csw/lib -lncursesw
+ else
+-LIBCURSES=-L/opt/csw/lib -lncurses
++LIBCURSES=-L/opt/ncurses-nonwide/lib -lncurses
+ endif
+ else
+ ifeq ($(PLATFORM),osx) # Mac OSX
+@@ -154,7 +154,8 @@
+ CFLAGS+=-I/usr/include/ncursesw/
+ LIBCURSES=-lncursesw
+ else
+-LIBCURSES=-lncurses
++CFLAGS+=-D_GNU_SOURCE -D_DEFAULT_SOURCE -I/opt/ncurses-nonwide/include
++LIBCURSES=-L/opt/ncurses-nonwide/lib -lncurses
+ endif
+ endif
+ endif

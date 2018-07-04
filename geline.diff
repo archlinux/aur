@@ -1,0 +1,13 @@
+--- golded3/geline.cpp
++++ golded3/geline.cpp
+@@ -1890,8 +1890,8 @@
+       chardo:
+         #ifdef HAS_ICONV
+         if( iconv_cd!=(iconv_t)(-1) ){
+-          unsigned srcleft=1;
+-          unsigned dstleft=3;
++          size_t srcleft=1;
++          size_t dstleft=3;
+           char* tsptr = &dochar;
+ 
+           iconvrc=iconv( iconv_cd, &tsptr, &srcleft, &dptr, &dstleft );

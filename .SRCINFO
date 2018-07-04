@@ -1,7 +1,7 @@
 pkgbase = golded-plus-git
 	pkgdesc = golded-plus Fidonet Mail Reader/Editor
-	pkgver = r1529.1c03dbf
-	pkgrel = 3
+	pkgver = r1530.0f6314e
+	pkgrel = 2
 	url = http://bbconf.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,16 @@ pkgbase = golded-plus-git
 	depends = ncurses
 	depends = screen
 	depends = xorg-luit
+	depends = ncurses-nonwide
 	provides = golded-plus
 	source = golded-plus-git::git+https://github.com/golded-plus/golded-plus.git
+	source = ncurses.diff
+	source = geline.diff
+	source = gedlnx
 	md5sums = SKIP
+	md5sums = d2936c6d185c1309b4741bfb9d57fe4b
+	md5sums = 808200388757918784f7ed1a64f9d89d
+	md5sums = 970bedc97a73656bf80da18e03af991d
 
 pkgname = golded-plus-git
 
