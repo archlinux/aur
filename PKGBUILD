@@ -9,12 +9,12 @@ pkgver='0.12'
 pkgrel='1'
 pkgdesc='check ROM sets for MAME'
 arch=('i686' 'x86_64')
-url='http://www.nih.at/ckmame/'
+url='https://www.nih.at/ckmame/'
 license=('custom')
 depends=('zlib' 'libxml2' 'libzip' 'sqlite3')
 #_verwatch=("${url}" '.*Current version: \([0-9\.]\+\).*' 'f')
 _verwatch=("${url}" "${pkgname}-\([0-9\.]\+\)\.tar\.xz" 'l')
-source=("http://nih.at/ckmame/${pkgname}-${pkgver}.tar.xz")
+source=("https://nih.at/ckmame/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('b9d7b131b20c5bc745f358be610c9aacf456e59767b05f88ddbe453f23b5a512')
 
 prepare() {
@@ -27,7 +27,8 @@ prepare() {
 build() {
   set -u
   cd "${pkgname}-${pkgver}"
-  make -j "$(nproc)"
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  nice make -s -j "${_nproc}"
   set +u
 }
 
