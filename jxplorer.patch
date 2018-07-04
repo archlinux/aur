@@ -1,0 +1,70 @@
+diff -rupN jxplorer-3.3.1.2/build.xml jxplorer-3.3.1.2b/build.xml
+--- jxplorer-3.3.1.2/build.xml	2016-06-06 01:27:20.000000000 -0400
++++ jxplorer-3.3.1.2b/build.xml	2018-07-04 14:19:14.472640282 -0400
+@@ -275,9 +275,6 @@ sftp> ls
+         <copy todir="${dist}/jxplorer/src" overwrite="true">
+             <fileset dir="src" excludes="com/pegacat/jxworkbench/**/*.java"/>
+         </copy>
+-        <copy todir="${dist}/jxplorer/JXplorer LDAP Browser.app" overwrite="true">
+-            <fileset dir="JXplorer LDAP Browser.app"/>
+-        </copy>
+ 
+         <fixcrlf srcdir="${dist}"
+             eol="unix"
+@@ -294,10 +291,6 @@ sftp> ls
+         <chmod dir="${dist}" perm="755" 
+                includes="**/*.sh"/>
+ 
+-        <chmod file="${dist}/jxplorer/JXplorer LDAP Browser.app/Contents/PkgInfo" perm="755"/>
+-
+-        <chmod file="${dist}/jxplorer/JXplorer LDAP Browser.app/Contents/MacOS/JXplorer LDAP Browser" perm="755"/>
+-
+     </target>
+ 
+     <target name="dist_jxworkbench"
+@@ -391,45 +384,9 @@ sftp> ls
+         <exec executable="${builder}">
+             <arg value="build"/>
+             <arg value="${installer_project_file}"/>
+-            <arg value="windows"/>
+-        </exec>
+-
+-        <exec executable="${builder}">
+-            <arg value="build"/>
+-            <arg value="${installer_project_file}"/>
+             <arg value="linux"/>
+         </exec>
+ 		
+-        <exec executable="${builder}">
+-            <arg value="build"/>
+-            <arg value="${installer_project_file}"/>
+-            <arg value="freebsd"/>
+-        </exec>
+-
+-        <exec executable="${builder}">
+-            <arg value="build"/>
+-            <arg value="${installer_project_file}"/>
+-            <arg value="solaris-intel"/>
+-        </exec>
+-
+-        <exec executable="${builder}">
+-            <arg value="build"/>
+-            <arg value="${installer_project_file}"/>
+-            <arg value="solaris-sparc"/>
+-        </exec>
+-
+-        <exec executable="${builder}">
+-            <arg value="build"/>
+-            <arg value="${installer_project_file}"/>
+-            <arg value="aix"/>
+-        </exec>
+-
+-        <exec executable="${builder}">
+-            <arg value="build"/>
+-            <arg value="${installer_project_file}"/>
+-            <arg value="hpux"/>
+-        </exec>
+-
+         <!--exec executable="${builder}">
+             <arg value="build"/>
+             <arg value="${installer_project_file}"/>

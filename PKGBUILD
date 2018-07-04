@@ -1,54 +1,54 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Tom Wizetek <tom@wizetek.com>
 
 pkgname=jxplorer
 pkgver=3.3.1.2
-pkgrel=2
-pkgdesc='Java LDAP client'
+pkgrel=3
+pkgdesc='Java LDAP browser and editor'
 url='http://jxplorer.org/'
 license=('custom')
 arch=('any')
 depends=('java-runtime')
-makedepends=('setconf')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/version%20${pkgver}/$pkgname-$pkgver-linux-installer.run")
-sha256sums=('7ff5ff0a124d8e16d7688ae093cfcd859f4be3104f3455cc59d4b15d55a61ffa')
+makedepends=('apache-ant' 'java-environment=8' 'gendesk')
+source=("https://github.com/pegacat/jxplorer/archive/v${pkgver}.tar.gz"
+        "${pkgname}.patch")
+sha256sums=('a70cd8675de1be82282f975459066b2ac93429a206d7c7c801f1aa861d66684f'
+            '52bf7ce677d0e1cc9fc82f99ed1bb9934eb6141783e11e4265cfea256ed52b64')
 
 prepare() {
-  cat > "$pkgname.run" << EOF
+  cd "${pkgname}-${pkgver}"
+
+  cat > "${pkgname}" << EOF
 #!/bin/sh
-cd "/opt/$pkgname"
+cd "/opt/${pkgname}"
 sh jxplorer.sh "\$@"
 EOF
 
-  chmod +x *.run
-  ./"$pkgname-$pkgver-linux-installer.run" \
-    --mode unattended \
-    --prefix "$srcdir/$pkgname"
+  chmod +x ${pkgname}
+  gendesk --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --exec "/usr/bin/jxplorer" -n
 
-  cd "$pkgname"
-  setconf JXplorer.desktop Version "$pkgver"
-  setconf JXplorer.desktop Comment "$pkgdesc"
-  setconf JXplorer.desktop Icon "/opt/jxplorer/images/logo_32_trans.gif"
-  setconf JXplorer.desktop Exec "/opt/jxplorer/jsxplorer.sh"
+  patch -p1 -i ../${pkgname}.patch
+
+  install -d plugins
+  install -d jasper/{lib,lib_extras}
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk ant dist
 }
 
 package() {
-  install -d "$pkgdir/opt"
+  install -d "${pkgdir}/opt"
 
-  cp -r "$pkgname" "$pkgdir/opt"
-  chmod +x "$pkgdir/opt/$pkgname/jxplorer.sh"
-  touch "$pkgdir/opt/$pkgname/"{gssapi.conf,jxconfig.txt}
+  cd "${pkgname}-${pkgver}"
 
-  # No user settings, only global. Bah.
-  chmod 666 "$pkgdir/opt/$pkgname/"{gssapi.conf,jxconfig.txt}
-  chmod 777 "$pkgdir/opt/$pkgname/plugins/"
+  cp -r "dist/${pkgname}" "${pkgdir}/opt"
 
-  install -Dm755 "$pkgname.run" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$pkgname/JXplorer.desktop" \
-    "$pkgdir/usr/share/applications/JXplorer.desktop"
-
-  # Cleanup
-  rm -f "$pkgdir/opt/$pkgname/"{uninstall,*.desktop,*.bat}
+  install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/JXplorer.desktop"
+  install -Dm644 images/JX128.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 licence.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
