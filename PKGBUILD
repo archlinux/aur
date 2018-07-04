@@ -7,7 +7,6 @@ arch=(any)
 url="https://github.com/FFY00/pulseaudio-equalizer-ladspa"
 license=('GPL3')
 depends=('pygtk' 'swh-plugins' 'gnome-icon-theme' 'pulseaudio' 'bc' 'python2-gobject')
-makedepends=('git')
 provides=('pulseaudio-equalizer-ladspa')
 conflicts=('pulseaudio-equalizer-ladspa')
 source=(

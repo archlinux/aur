@@ -5,7 +5,6 @@ pkgbase = pulseaudio-equalizer-ladspa
 	url = https://github.com/FFY00/pulseaudio-equalizer-ladspa
 	arch = any
 	license = GPL3
-	makedepends = git
 	depends = pygtk
 	depends = swh-plugins
 	depends = gnome-icon-theme
