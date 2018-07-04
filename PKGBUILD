@@ -1,7 +1,7 @@
 # Maintainer: James Zhu <james.zhu.engineer@gmail.com>
 
 pkgname=otf-fira-code-git
-pkgver=1.201.r0.g92df0e8
+pkgver=1.205.r6.gade27f5
 pkgrel=1
 pkgdesc="Fira Code: monospaced font with programming ligatures."
 arch=('any')
