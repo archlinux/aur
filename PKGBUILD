@@ -1,7 +1,7 @@
 # Maintainer: Stephen Bell <theredbaron1834 @ yahoo.com>
 pkgname=playbox
 pkgrel=1
-pkgver=$(curl https://sourceforge.net/projects/playbox/files/6/ | grep "latest/download?" | sed s'/ /\n/g' | grep title | sed -e 's/title="//g' -e 's/://g' -e 's/\/6\/playbox-//g' -e 's/.linux/\n/g' | head -n 1)
+pkgver=1.6.3
 pkgdesc="A growing collection of board games."
 arch=('x86_64')
 url="http://sourceforge.net/projects/playbox/"
@@ -12,9 +12,7 @@ makedepends=('unzip')
 build() {
 
   msg "Grabbing files...."
-  pkg=$(curl https://sourceforge.net/projects/playbox/files/6/ | grep "latest/download?" | sed s'/ /\n/g' | grep title | sed -e 's/title="//g' -e 's/://g')
-  pkg=$(echo http://sourceforge.net/projects/playbox/files$pkg/download -L -o playbox.zip)
-  curl $pkg
+  curl https://excellmedia.dl.sourceforge.net/project/playbox/6/playbox-1.6.3.linux.gtk.x86_64.zip -L -o playbox.zip
   unzip playbox.zip
 
 }
