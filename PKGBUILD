@@ -1,12 +1,12 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-#
+# Maintainer: artafinde <artafinde at gmail dot com>
 # Contributor: aericson <de.ericson at gmail dot com>
 # Contributor: Rorschach <r0rschach at lavabit dot com>
 # Contributor: Andrew Kravchuk <awkravchuk at gmail dot com>
 #
 pkgname="aarchup"
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
 url="https://github.com/aericson/aarchup"
 arch=('i686' 'x86_64')
