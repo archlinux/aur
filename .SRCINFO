@@ -1,7 +1,7 @@
 pkgbase = rocketchat-server-docker
 	pkgdesc = An open source web chat platform, docker-compose package for minimal setup.
 	pkgver = 0.66.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rocket.chat/
 	install = rocketchat-server.install
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = rocketchat-server-docker
 	sha512sums = 897d36d5b0d7a2b8e432db779977c97970b116ab4c3092dd8c6da9d03ecef653e9a1867a8e20618143afd164c3d2632805510962d098b442670210e1d07bb0ee
 	sha512sums = 5f93f8c593438c3c815e9197996120bc52c45d7b8db94591217925ed4b3a654df241e54363d256a4a94f04f4eee24c8c0069a592626a15487ce9bba6db0a0799
 	sha512sums = b7e4e516679c367669d45c93f106455e40e06c17c3766d4a43cb2d5c32ab8f83045c1c19d3041642a2bef5360f51b763fe4e291040515f2505d4c341d1502886
-	sha512sums = 707845286d0d3a17c1656ac9733f7efc0b3a3d84f773bbd6b59f192984999af495bebb51e7831eb69a39146567f6daed7e7e340aa53b9dbf3307111c4afde483
+	sha512sums = 597f1378a5af5d3e9d16aa1cb7b94063eeadd3004a3a0bf6782946e7090e2b9149632858d69992f22f2ab296ed6f99cdc68840a8c1051a022e00cd551522a208
 
 pkgname = rocketchat-server-docker
 
