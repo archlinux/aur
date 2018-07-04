@@ -3,7 +3,7 @@
 pkgname=rocketchat-server-docker
 _pkgname=rocketchat-server
 pkgver=0.66.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source web chat platform, docker-compose package for minimal setup."
 arch=("any")
 conflicts=("rocketchat-server")
@@ -36,7 +36,7 @@ sha512sums=(
 	"897d36d5b0d7a2b8e432db779977c97970b116ab4c3092dd8c6da9d03ecef653e9a1867a8e20618143afd164c3d2632805510962d098b442670210e1d07bb0ee"
 	"5f93f8c593438c3c815e9197996120bc52c45d7b8db94591217925ed4b3a654df241e54363d256a4a94f04f4eee24c8c0069a592626a15487ce9bba6db0a0799"
 	"b7e4e516679c367669d45c93f106455e40e06c17c3766d4a43cb2d5c32ab8f83045c1c19d3041642a2bef5360f51b763fe4e291040515f2505d4c341d1502886"
-	"bde960c869333bc910e403ef34d58036174fe5af4a2dc4160102fe1d0a5b55f03836c2d214f6c2978affc26fed90cba17e579d247c37356e31622b8e5b20db28"
+	"707845286d0d3a17c1656ac9733f7efc0b3a3d84f773bbd6b59f192984999af495bebb51e7831eb69a39146567f6daed7e7e340aa53b9dbf3307111c4afde483"
 )
 install="${_pkgname}.install"
 package() {
@@ -44,7 +44,7 @@ package() {
 	install -Dm744 createEnvFile.sh ${pkgdir}/usr/share/${_pkgname}/createEnvFile.sh
 	install -Dm644 ${_pkgname}-${pkgver}.tar.xz ${pkgdir}/usr/share/${_pkgname}/${_pkgname}-${pkgver}.tar.xz
 	install -Dm644 ${_pkgname}.env ${pkgdir}/usr/share/${_pkgname}/config.env
-	install -Dm644 ${_pkgname}.yml ${pkgdir}/usr/share/${_pkgname}/${_pkgname}.yml
+	install -Dm644 ${_pkgname}.yml ${pkgdir}/usr/share/${_pkgname}/docker-compose.yml
 	install -Dm644 rocketchat.service ${pkgdir}/usr/lib/systemd/system/rocketchat.service
 	install -Dm644 config.env ${pkgdir}/etc/${_pkgname}/config.example.env
 	install -Dm644 docker.env ${pkgdir}/etc/${_pkgname}/docker.example.env
