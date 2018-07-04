@@ -2,7 +2,7 @@
 # Contributor: James Clark <s1127853@sms.ed.ac.uk>
 pkgname=opencoarrays
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A transport layer for coarray Fortran compilers."
 url="http://www.opencoarrays.org/"
 arch=('x86_64' 'i686')
@@ -20,8 +20,8 @@ build() {
   CC=gcc FC=gfortran cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DMPI_C_COMPILER=mpicc \
-    -DMPI_Fortran_COMPILER=mpifort
+    -DMPI_C_COMPILER=/opt/mpich/bin/mpicc \
+    -DMPI_Fortran_COMPILER=/opt/mpich/bin/mpifort
 
   make
 }
