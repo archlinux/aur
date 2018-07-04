@@ -3,7 +3,7 @@
 
 _pkgname=darling-dmg
 pkgname=$_pkgname-git
-pkgver=1.0.4.r22.geca0aea
+pkgver=1.0.4.r26.g524bfa6
 pkgrel=1
 epoch=1
 pkgdesc="FUSE module for .dmg files (containing an HFS+ filesystem)"
@@ -14,9 +14,9 @@ depends=('bzip2' 'fuse' 'icu' 'libxml2' 'openssl' 'zlib')
 # boost is used only in check() but the build step requires it to build a test executable
 makedepends=('cmake' 'git' 'boost')
 source=("git+https://github.com/darlinghq/darling-dmg"
-        issue51.patch)
+        enoattr.patch)
 sha256sums=('SKIP'
-            'ef77322fc0e4792f0ba5ff3f1aa67ca2078a02e502777c2483816f55fc255277')
+            'c0d15ceffbf957d823dc69b8c5adbfc4ef8c9ddd500fe8e118bac51f4d8ad0f7')
 conflicts=('darling-git' "$_pkgname")
 provides=("$_pkgname=$pkgver")
 
@@ -30,8 +30,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
-
-    patch -Np1 -i ../issue51.patch
+    patch -Np1 -i ../enoattr.patch
 }
 
 build() {

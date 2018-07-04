@@ -1,6 +1,6 @@
 pkgbase = darling-dmg-git
 	pkgdesc = FUSE module for .dmg files (containing an HFS+ filesystem)
-	pkgver = 1.0.4.r22.geca0aea
+	pkgver = 1.0.4.r26.g524bfa6
 	pkgrel = 1
 	epoch = 1
 	url = https://www.darlinghq.org
@@ -16,13 +16,13 @@ pkgbase = darling-dmg-git
 	depends = libxml2
 	depends = openssl
 	depends = zlib
-	provides = darling-dmg=1.0.4.r22.geca0aea
+	provides = darling-dmg=1.0.4.r26.g524bfa6
 	conflicts = darling-git
 	conflicts = darling-dmg
 	source = git+https://github.com/darlinghq/darling-dmg
-	source = issue51.patch
+	source = enoattr.patch
 	sha256sums = SKIP
-	sha256sums = ef77322fc0e4792f0ba5ff3f1aa67ca2078a02e502777c2483816f55fc255277
+	sha256sums = c0d15ceffbf957d823dc69b8c5adbfc4ef8c9ddd500fe8e118bac51f4d8ad0f7
 
 pkgname = darling-dmg-git
 
