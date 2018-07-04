@@ -3,7 +3,7 @@
 
 pkgname=python-bjoern
 _name=bjoern
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A screamingly fast, ultra-lightweight WSGI server for Python, written in C."
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 #source=("https://github.com/jonashaag/bjoern/archive/$pkgver.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 
-md5sums=('309c2837b01e59afc05c6da34a95709f')
+md5sums=('14de240c6bba8404e486b856dafb0fd1')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
