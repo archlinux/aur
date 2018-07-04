@@ -5,7 +5,7 @@
 
 pkgname=silo
 pkgver=4.10.2
-pkgrel=8
+pkgrel=9
 pkgdesc="A Mesh and Field I/O Library and Scientific Database"
 url="https://wci.llnl.gov/simulation/computer-codes/silo"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("https://wci.llnl.gov/content/assets/docs/simulation/computer-codes/${pk
         "${pkgname}-${pkgver}-remove-mpiposix.patch")
 sha256sums=('3af87e5f0608a69849c00eb7c73b11f8422fa36903dd14610584506e7f68e638'
             'd66a7a47c4dbb3be20fe3d35275a38de7e23c7b6d7927627255f7a5d49aefb47'
-            '414b39df3d60bd897ea7f19c28314e8c9fae56106a0962d9116fc65aef9aba2f'
+            '79adc1fb12209240f55bf3e689e179547d071b5f93e89dd02ca1d586173bcdd4'
             '64a3c49eb6032dbd2bd0bbbe8110dea77d1d8a99379d96eca15c6b7c0a6f658e')
 
 prepare(){
