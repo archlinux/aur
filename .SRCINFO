@@ -1,0 +1,10 @@
+pkgbase = usacloud-bin
+	pkgdesc = CLI client for the Sakura Cloud
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/sacloud/usacloud
+	arch = any
+	license = Apache
+
+pkgname = usacloud-bin
+
