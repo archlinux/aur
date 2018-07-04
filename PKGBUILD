@@ -8,7 +8,7 @@ url="https://github.com/sipwise/rtpengine"
 license=('BSD')
 arch=('x86_64' 'i686')
 depends=('hiredis' 'openssl' 'pcre' 'xmlrpc-c' 'zlib')
-optdepends=('libiptc' 'ffmpeg' 'bcg729')
+optdepends=('libiptcdata' 'ffmpeg' 'bcg729')
 makedepends=('glib2' 'pkgconf')
 source=("https://github.com/sipwise/rtpengine/archive/mr$pkgver.tar.gz")
 
