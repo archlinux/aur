@@ -2,8 +2,8 @@
 # Contributor: Benjamin Klettbach <b.klettbach@gmail.com>
 
 pkgname=obs-studio
-pkgver=21.1.1
-pkgrel=2
+pkgver=21.1.2
+pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -17,7 +17,13 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'python: scripting support'
             'vlc: VLC Media Source support')
 source=($pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz)
-md5sums=('cb266b33bde445e6ec5f4706a278c748')
+md5sums=('fc36a9e8d8c8018955c64197f18f839a')
+
+prepare() {
+  cd $pkgname-$pkgver
+
+  sed -i '15i #include <QAction>' UI/frontend-plugins/frontend-tools/scripts.cpp
+}
 
 build() {
   cd $pkgname-$pkgver
