@@ -1,20 +1,23 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _pkgbase='gtimelog'
-pkgname=gtimelog-collabora-nokeyring-git
-pkgver=r328.1f136e9
+pkgname=gtimelog-collabora-git
+pkgver=r335.4527014
 pkgrel=1
-pkgdesc="A time tracking application: Collabora repository. Patched to remove gnomekeyring"
+pkgdesc="A time tracking application: Collabora repository."
 provides=('gtimelog')
 arch=('i686' 'x86_64')
 url="https://git.collabora.co.uk/cgit/gtimelog.git"
 license=('GPL2')
-depends=('libsoup' 'python2' 'python2-gobject' 'python2-setuptools')
+depends=(
+  'libsoup'
+  'python2'
+  'python2-gobject'
+  'python2-setuptools'
+  'python2-gnomekeyring')
 makedepends=('git' 'python2' 'python2-setuptools')
-source=("$_pkgbase::git+https://gitlab.collabora.com/collabora/gtimelog.git"
-        'nokeyring.patch')
-sha256sums=('SKIP'
-            '7550c70300659a387a900ed0ee80dd3afafc8f655284b02e9cf46dced9a99227')
+source=("$_pkgbase::git+https://gitlab.collabora.com/collabora/gtimelog.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgbase"
@@ -23,7 +26,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgbase"
-  patch -p1 < $srcdir/nokeyring.patch
 }
 
 build() {

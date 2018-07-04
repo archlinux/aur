@@ -1,6 +1,6 @@
-pkgbase = gtimelog-collabora-nokeyring-git
-	pkgdesc = A time tracking application: Collabora repository. Patched to remove gnomekeyring
-	pkgver = r328.1f136e9
+pkgbase = gtimelog-collabora-git
+	pkgdesc = A time tracking application: Collabora repository.
+	pkgver = r335.4527014
 	pkgrel = 1
 	url = https://git.collabora.co.uk/cgit/gtimelog.git
 	arch = i686
@@ -13,11 +13,10 @@ pkgbase = gtimelog-collabora-nokeyring-git
 	depends = python2
 	depends = python2-gobject
 	depends = python2-setuptools
+	depends = python2-gnomekeyring
 	provides = gtimelog
 	source = gtimelog::git+https://gitlab.collabora.com/collabora/gtimelog.git
-	source = nokeyring.patch
 	sha256sums = SKIP
-	sha256sums = 7550c70300659a387a900ed0ee80dd3afafc8f655284b02e9cf46dced9a99227
 
-pkgname = gtimelog-collabora-nokeyring-git
+pkgname = gtimelog-collabora-git
 
