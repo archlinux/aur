@@ -4,16 +4,16 @@
 pkgbase=mariadb-mainline-noconflict
 _pkgbase=mariadb
 pkgname=('mariadb-mainline-noconflict' 'libmariadbclient-mainline-noconflict' 'mariadb-clients-mainline-noconflict' 'mytop-mainline-noconflict')
-pkgver=10.3.7
+pkgver=10.3.8
 pkgrel=1
 pkgdesk="MariaDB mainline version with libmysqlclient.so.18 (mariadb 10.1 compatible)"
 arch=('x86_64')
 license=('GPL')
 url='http://mariadb.org/'
-makedepends=('cmake' 'zlib' 'libaio' 'libxml2' 'openssl' 'jemalloc' 'lz4' 'boost' 'libevent' 'systemd')
+makedepends=('cmake' 'zlib' 'libaio' 'libxml2' 'openssl' 'jemalloc' 'lz4' 'boost' 'libevent' 'systemd' 'coreutils')
 validpgpkeys=('199369E5404BD5FC7D2FE43BCBCB082A1BB943DB') # MariaDB Package Signing Key <package-signing-key@mariadb.org>
 source=("https://ftp.heanet.ie/mirrors/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc})
-sha256sums=('e990afee6ae7cf9ac40154d0e150be359385dd6ef408ad80ea30df34e2c164cf'
+sha256sums=('30bec17514d12d811a05757be46bd41724df28002cdec550d5c757b0b3f31ab8'
             'SKIP')
 
 prepare() {
@@ -26,6 +26,7 @@ prepare() {
     -e '/^PrivateTmp/c PrivateTmp=true' \
     support-files/mariadb{,@}.service.in
 
+    
   # let's create the datadir from tmpfiles
   echo 'd @MYSQL_DATADIR@ 0700 @MYSQLD_USER@ @MYSQLD_USER@ -' >> support-files/tmpfiles.conf.in
 }
@@ -77,10 +78,10 @@ build() {
     -DWITHOUT_PBXT_STORAGE_ENGINE=1 \
     -DCMAKE_EXE_LINKER_FLAGS='-ljemalloc' \
     -DCMAKE_C_FLAGS="-fPIC $CFLAGS -fno-strict-aliasing -DBIG_JOINS=1 -fomit-frame-pointer -fno-delete-null-pointer-checks" \
-    -DCMAKE_CXX_FLAGS="-fPIC $CXXFLAGS -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti -fno-delete-null-pointer-checks" \
+    -DCMAKE_CXX_FLAGS="-fPIC $CXXFLAGS -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti -fno-delete-null-pointer-checks -std=c++0x" \
     -DWITH_MYSQLD_LDFLAGS="-pie ${LDFLAGS},-z,now"
 
-  make
+  make -j$(nproc)
 }
 
 package_libmariadbclient-mainline-noconflict() {
