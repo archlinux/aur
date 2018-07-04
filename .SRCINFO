@@ -1,5 +1,5 @@
 pkgbase = vmpk-jack-git
-	pkgdesc = Virtual MIDI Piano Keyboard. Version 0.5.1 with JACK MIDI.
+	pkgdesc = Virtual MIDI Piano Keyboard. Version 0.5.1 with JACK-MIDI.
 	pkgver = r362.094328b
 	pkgrel = 1
 	url = http://vmpk.sourceforge.net
