@@ -93,7 +93,7 @@ fi
 
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64')
-url='http://www.teamviewer.com'
+url='https://www.teamviewer.com'
 license=('custom')
 depends=('bash')
 depends_i686=('alsa-lib' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'libice' 'libsm' 'libxdamage' 'libxrandr' 'libxtst' 'pcre' 'zlib' 'libxinerama' 'libpng12' 'qt4')
@@ -104,7 +104,7 @@ provides=("teamviewer=${_pkgver_major}")
 conflicts=('teamviewer')
 options=('!strip')
 install="${pkgname%%[0-9]*}.install"
-_verwatch=('https://www.teamviewer.com/en/download/linux/' '.*v\([0-9\.]\+\) (tar\.xz).*' 'f')
+#_verwatch=('https://www.teamviewer.com/en/download/linux/' '.*v\([0-9\.]\+\) (tar\.xz).*' 'f')
 
 if [ "${_pkgver_major}" -ge 10 ]; then
   source=("http://download.teamviewer.com/download/version_${_pkgver_major}x/teamviewer_${pkgver}.i686.rpm")
