@@ -1,6 +1,6 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma-runners-translator
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Translates words and sentences into any language"
 arch=('i686' 'x86_64')
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=()
 changelog=()
-source=('https://github.com/naraesk/krunner-translator/archive/v1.1.0.tar.gz')
+source=('https://github.com/naraesk/krunner-translator/archive/v1.1.1.tar.gz')
 noextract=()
-md5sums=('dfb08f448bb88df081a896aa400eee8e')
+md5sums=('311ad58120cb8c6f2c4bb7cfa2316e31')
 
 prepare() {
   cd krunner-translator-${pkgver}
