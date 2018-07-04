@@ -1,7 +1,7 @@
 pkgbase = nginx-mod-fancyindex
 	pkgdesc = Fancy indexes module for the Nginx web server
-	pkgver = 0.4.2
-	pkgrel = 3
+	pkgver = 0.4.3
+	pkgrel = 1
 	url = https://github.com/aperezdc/ngx-fancyindex
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = nginx-mod-fancyindex
 	depends = nginx
 	source = https://nginx.org/download/nginx-1.14.0.tar.gz
 	source = https://nginx.org/download/nginx-1.14.0.tar.gz.asc
-	source = https://github.com/aperezdc/ngx-fancyindex/archive/v0.4.2.tar.gz
+	source = https://github.com/aperezdc/ngx-fancyindex/archive/v0.4.3.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	md5sums = 2d856aca3dfe1d32e3c9f8c4cac0cc95
 	md5sums = SKIP
-	md5sums = fc2154f36eeabae4d4855cfcc25a060f
+	md5sums = a0052f0377700b18dd53d96d29f47db8
 
 pkgname = nginx-mod-fancyindex
 

@@ -2,8 +2,8 @@
 # Contributor: hdhoang <arch@hdhoang.space>
 
 pkgname=nginx-mod-fancyindex
-pkgver=0.4.2
-pkgrel=3
+pkgver=0.4.3
+pkgrel=1
 
 _modname="${pkgname#nginx-mod-}"
 _nginxver=1.14.0
@@ -20,7 +20,7 @@ source=(https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
 md5sums=('2d856aca3dfe1d32e3c9f8c4cac0cc95'
          'SKIP'
-         'fc2154f36eeabae4d4855cfcc25a060f')
+         'a0052f0377700b18dd53d96d29f47db8')
 
 build() {
   cd "$srcdir"/nginx-$_nginxver
