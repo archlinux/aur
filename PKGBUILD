@@ -7,7 +7,7 @@ url="http://bbconf.sourceforge.net/"
 license=('GPL2')
 source=("${pkgname}::git+https://github.com/golded-plus/golded-plus.git"  "ncurses.diff" "geline.diff" "gedlnx")
 makedepends=('git' 'gcc' 'make' 'glibc' 'groff')
-depends=('ncurses' 'screen' 'xorg-luit' 'ncurses-nonwide')
+depends=('screen' 'xorg-luit' 'ncurses-nonwide')
 provides=('golded-plus')
 
 build() {

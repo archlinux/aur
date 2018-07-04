@@ -11,7 +11,6 @@ pkgbase = golded-plus-git
 	makedepends = make
 	makedepends = glibc
 	makedepends = groff
-	depends = ncurses
 	depends = screen
 	depends = xorg-luit
 	depends = ncurses-nonwide
