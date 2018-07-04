@@ -2,7 +2,7 @@
 
 pkgname=waves-client
 pkgver=1.0.0_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="The official client application for the Waves platform"
 arch=('x86_64')
 url="https://wavesplatform.com/"
