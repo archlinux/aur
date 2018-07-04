@@ -9,7 +9,7 @@ url="https://github.com/neundorf/CuteCom"
 license=('GPL3')
 depends=('qt5-serialport')
 makedepends=('cmake')
-source=($url/archive/v${pkgver}.tar.gz)
+source=(${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 
 build() {
   cd ${srcdir}/CuteCom-${pkgver}

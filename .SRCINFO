@@ -7,7 +7,7 @@ pkgbase = cutecom
 	license = GPL3
 	makedepends = cmake
 	depends = qt5-serialport
-	source = https://github.com/neundorf/CuteCom/archive/v0.45.0.tar.gz
+	source = cutecom-v0.45.0.tar.gz::https://github.com/neundorf/CuteCom/archive/v0.45.0.tar.gz
 	md5sums = 65dd00e671bfbaad6d14d08c51fcfe47
 
 pkgname = cutecom
