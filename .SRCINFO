@@ -1,0 +1,15 @@
+pkgbase = click
+	pkgdesc = Click CLI for Kubernetes
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/databricks/click
+	arch = i686
+	arch = x86_64
+	arch = arm64
+	license = apache2
+	makedepends = rust
+	source = https://github.com/databricks/click/archive/v0.3.2.tar.gz
+	sha256sums = eed648409bf78a05658a9d097e5099ca17bf19df70122e2067859ae94c5575d5
+
+pkgname = click
+
