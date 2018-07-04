@@ -6,7 +6,7 @@ After=docker.service
 [Service]
 Restart=always
 WorkingDirectory=/usr/share/rocketchat-server/
-PreStart=/usr/share/rocketchat-server/createEnvFile.sh
+ExecStartPre=/usr/share/rocketchat-server/createEnvFile.sh
 ExecStart=/usr/bin/docker-compose up rocketchat-server.yml
 ExecStop=/usr/bin/docker-compose down -v
 
