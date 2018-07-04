@@ -6,10 +6,10 @@ pkgrel=1
 pkgdesc="The official client application for the Waves platform"
 arch=('x86_64')
 url="https://wavesplatform.com/"
-license=('custom')
+license=('Apache')
 depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'alsa-lib')
 source=("https://wavesplatform.com/files/WavesClient-${pkgver/_/-}.X-linux.deb")
-sha256sums=('625dec99daa10b5455c2ff25451bcb83a60cef00f8e5af7f36b422e15117d04c')
+sha256sums=('c3f8f7bcd4926097701a90ae40096feebdf7668baef93e3f3bf0300d2c774303')
 
 package() {
     bsdtar -O -xf "WavesClient-${pkgver/_/-}"*.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
