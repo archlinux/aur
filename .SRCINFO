@@ -1,14 +1,14 @@
 pkgbase = wakatime
 	pkgdesc = Command line interface used by all WakaTime text editor plugins
-	pkgver = 10.1.0
+	pkgver = 10.2.1
 	pkgrel = 1
 	url = https://github.com/wakatime/wakatime
 	arch = any
 	license = BSD-3-Clause
 	depends = python
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/w/wakatime/wakatime-10.1.0.tar.gz
-	md5sums = e26017168caaf12eafceb129690d97f7
+	source = https://files.pythonhosted.org/packages/source/w/wakatime/wakatime-10.2.1.tar.gz
+	md5sums = cffbd48ceee97841a395b2c325c00ddf
 
 pkgname = wakatime
 
