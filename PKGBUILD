@@ -1,6 +1,6 @@
 # Maintainer: Stephen Bell <theredbaron1834 @ yahoo.com>
 pkgname=destinationsol
-pkgrel=1
+pkgrel=2
 pkgver=1.5.0
 pkgdesc="2D Space Arcade/RPG with Planets"
 arch=('i686' 'x86_64')
