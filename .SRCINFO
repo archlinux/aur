@@ -1,0 +1,27 @@
+pkgbase = rtpengine
+	pkgdesc = The Sipwise media proxy for Kamailio
+	pkgver = 6.3.1.1
+	pkgrel = 1
+	url = https://github.com/sipwise/rtpengine
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = glib2
+	makedepends = pkgconf
+	depends = hiredis
+	depends = openssl
+	depends = pcre
+	depends = xmlrpc-c
+	depends = zlib
+	optdepends = libiptc
+	optdepends = ffmpeg
+	optdepends = bcg729
+	source = https://github.com/sipwise/rtpengine/archive/mr6.3.1.1.tar.gz
+	md5sums = 2d7daf290a5fb32ec672e3168166342d
+
+pkgname = rtpengine
+
+pkgname = rtpengine-dkms
+	depends = linux-headers
+	depends = dkms
+
