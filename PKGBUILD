@@ -1,7 +1,7 @@
 # Maintainer: Stephen Bell <theredbaron1834 @ yahoo.com>
 pkgname=destinationsol
 pkgrel=1
-pkgver=1.3.1
+pkgver=1.5.0
 pkgdesc="2D Space Arcade/RPG with Planets"
 arch=('i686' 'x86_64')
 url="https://github.com/MovingBlocks/DestinationSol"
@@ -13,7 +13,7 @@ build() {
   mkdir "$srcdir/DestinationSol"
   cd "$srcdir"/DestinationSol
   msg "Grabbing files...."
-  curl https://github.com/MovingBlocks/DestinationSol/releases/download/v1.3.1/DestinationSol.zip -L -o DestinationSol.zip
+  curl https://github.com/MovingBlocks/DestinationSol/releases/download/v1.5.0/DestinationSol1.5.0.zip -L -o DestinationSol.zip
   unzip DestinationSol.zip
 }
 
