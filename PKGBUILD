@@ -7,7 +7,7 @@
 _srcname=crawl
 pkgname=crawl-tiles
 pkgver=0.21.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Dungeon Crawl Stone Soup with graphical tiles and sound support"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=(
 	'sqlite'
 	'glu'
 )
-makedepends=()
+makedepends=('gendesk')
 checkdepends=()
 optdepends=()
 provides=('crawl')
@@ -32,6 +32,8 @@ source=("https://github.com/crawl/$_srcname/archive/$pkgver.tar.gz")
 md5sums=('634808232f0811c7f16594a8c35d8b72')
 
 prepare() {
+	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Crawl tiles" --categories "Application;Game" --exec "crawl"
+
 	cd "$_srcname-$pkgver/crawl-ref/source"
 	
 	echo $_makeflags
@@ -65,6 +67,8 @@ build() {
 #}
 
 package() {
+	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
 	cd "$_srcname-$pkgver/crawl-ref/source"
 
 	make install \
@@ -75,4 +79,6 @@ package() {
 		LUA_PACKAGE=lua51 \
 		TILES=y \
 		SOUND=y
+
+	install -Dm644 "dat/tiles/stone_soup_icon-32x32.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
