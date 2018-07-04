@@ -1,0 +1,13 @@
+pkgbase = ncurses-nonwide
+	pkgdesc = ncurses without widechar support and ABI 5 version. required by golded-plus-git
+	pkgver = 6.1
+	pkgrel = 3
+	url = http://invisible-island.net/ncurses/ncurses.html
+	arch = x86_64
+	depends = glibc
+	depends = gcc-libs
+	source = https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.1.tar.gz
+	md5sums = 98c889aaf8d23910d2b92d65be2e737a
+
+pkgname = ncurses-nonwide
+

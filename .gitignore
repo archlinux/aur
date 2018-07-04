@@ -1,0 +1,6 @@
+src/
+pkg/
+*.tar.?z
+*.tar.bz2
+*.t?z
+ncurses-*
