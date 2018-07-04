@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 pkgname='sidef'
-pkgver='3.17'
+pkgver='3.18'
 pkgrel='1'
 pkgdesc="A modern object-oriented programming language."
 arch=('any')
@@ -17,8 +17,8 @@ depends=(
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 
-md5sums=('d0757e7427aa9b8fdbf19c8cabbc4083')
-sha512sums=('6ea6225a9fa4be4bc25776e081f70ba89b18212378fe6d50bbd2f22c88085f2e6f63ebd532ec52f8a4fd2667168e221dccf90d9830e9f544f7cea878107189e0')
+md5sums=('8a99eae52d7990ce35671678cf04ab56')
+sha512sums=('2d8ffd8fc8b4ca50405269e44e2ca488e1a33ea97b1bff981a0a54543d389ac32be2f7c09d987b832b0232cc7989cad51e84858ce36f17c7ef6040e9b7be33ab')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                                          \
