@@ -13,8 +13,8 @@ conflicts=(pdfsizeopt-svn)
 replaces=(pdfsizeopt-svn)
 makedepends=('git')
 optdepends=("multivalent-pdf-tools: to optimise cross reference table and object serialisation [use --use-multivalent=true]"
-            "pngout: to optimise the size of PNG parts [use --use-jbig2=true]"
-            "jbig2enc: to manage JBIG2 parts [use --use-pngout=true]")
+            "pngout: to optimise the size of PNG parts [use --use-pngout=true]"
+            "jbig2enc: to manage JBIG2 parts [use --use-jbig2=true]")
 source=("git+https://github.com/pts/pdfsizeopt")
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
