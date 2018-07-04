@@ -1,6 +1,6 @@
 # Maintainer: Jacob Mason <jacob@jacobmason.net>
 pkgname=jx
-pkgver=1.3.56
+pkgver=1.3.60
 pkgrel=1
 epoch=
 pkgdesc="Command line tool for working with Jenkins X: automated CI/CD for Kubernetes"
