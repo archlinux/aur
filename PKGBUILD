@@ -1,8 +1,8 @@
 # Maintainer: Philipp Joram < mail [at] phijor [dot] me>
 
 pkgname=mopidy-soundcloud
-pkgver=2.0.2
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Mopidy extension for playing music from SoundCloud"
 arch=('any')
 url="https://github.com/mopidy/mopidy-soundcloud"
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('python2-setuptools')
 source=("https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('ee694a66f9ed701b224011c8cb25e0882000b3ea12137fed6bf83a4a82885cfb50759c18e2ff4de7109b1ec32320aeb9603dc5c77979468d7259a067fe55c827')
+sha512sums=('4e65b54469d92a754edebc9e5b9d3933ca9f28db0c4f97e6c80269de796b1c97cface99b01d5bb956c4295016757accdad437baba040a452260ac7be3db3e870')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
