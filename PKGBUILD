@@ -34,6 +34,6 @@ package_python2-dill() {
     python2 setup.py install --root="$pkgdir/" --optimize=1
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    mv "$pkgdir/usr/bin/get_objgraph.py" "$pkgdir/usr/bin/get_objgraph2.py"
-    mv "$pkgdir/usr/bin/dill_unpickle.py" "$pkgdir/usr/bin/dill_unpickle2.py"
+    mv "$pkgdir/usr/bin/get_objgraph" "$pkgdir/usr/bin/get_objgraph2"
+    mv "$pkgdir/usr/bin/undill" "$pkgdir/usr/bin/undill2"
 }
