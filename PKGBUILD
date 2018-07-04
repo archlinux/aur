@@ -1,11 +1,12 @@
 pkgname=pipewire-git
-pkgver=0.1.9.25.g07f12c97
+pkgver=0.1.9.33.g4574adcd
 pkgrel=1
 pkgdesc="Multimedia processing graphs. (GIT version)"
 arch=('x86_64')
 url='https://pipewire.org'
 license=('LGPL')
 depends=('ffmpeg'
+         'v4l-utils'
          'sbc'
          )
 makedepends=('graphviz'
@@ -13,6 +14,7 @@ makedepends=('graphviz'
              'xmltoman'
              'git'
              'meson'
+             'valgrind'
              )
 conflicts=('pipewire')
 provides=('pipewire')
@@ -26,18 +28,24 @@ pkgver() {
 }
 
 prepare() {
-  cd pipewire
+  mkdir -p build
 
-  ./autogen.sh \
-    --prefix "/usr" \
-    --sysconfdir "/etc"
+  # Reduce docs size
+  printf '%s\n' >> pipewire/doc/Doxyfile.in \
+    HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
+
+  cd build
+
+  arch-meson ../pipewire \
+    -D enable_docs=true \
+    -D enable_man=true
 
 }
 
 build() {
-  make -C pipewire
+  ninja -C build
 }
 
 package() {
-  make -C pipewire DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
