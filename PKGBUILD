@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=faf-ice-adapter-bin
-pkgver=6.2.2
+pkgver=6.3.0
 pkgrel=1
 epoch=0
 pkgdesc="A P2P connection proxy for Supreme Commander: Forged Alliance using ICE"
