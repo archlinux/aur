@@ -6,21 +6,20 @@
 pkgname=ffmpeg-decklink
 _srcname=ffmpeg
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
-depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
-         'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug'
-         'libomxil-bellagio' 'libpulse' 'libraw1394' 'libsoxr' 'libssh'
-         'libtheora' 'libvdpau' 'libwebp' 'libx11' 'libxcb' 'libxext' 'libxml2'
-         'libxv' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2' 'speex' 'v4l-utils'
-         'xz' 'zlib'
+depends=('alsa-lib' 'aom' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
+         'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug' 'libomxil-bellagio'
+         'libpulse' 'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libvdpau' 'libwebp'
+         'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv' 'opencore-amr' 'openjpeg2'
+         'opus' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
          'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
-         'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so'
-         'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so')
+         'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
+         'libx264.so' 'libx265.so' 'libxvidcore.so')
 makedepends=(
     # official repositories:
        'nasm' 'ffnvcodec-headers' 'ladspa'
@@ -30,7 +29,7 @@ makedepends=(
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so' 'ffmpeg')
+          'libswscale.so' 'ffmpeg' 'qt-faststart')
 conflicts=('ffmpeg' 'ffmpeg-git')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'LICENSE')
@@ -53,6 +52,7 @@ build() {
         --enable-gnutls \
         --enable-gpl \
         --enable-ladspa \
+        --enable-libaom \
         --enable-libass \
         --enable-libbluray \
         --enable-libdrm \
