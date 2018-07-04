@@ -3,7 +3,7 @@
 
 _execname_=standard-notes
 pkgname=sn-bin
-pkgver=2.2.0
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="A simple and private notes app."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_execname_}-${pkgver}-x86_
                "${_execname_}.desktop"
                "${url}/raw/master/app/icon/Icon-512x512.png")
 
-sha256sums_x86_64=('bc094706d1632ab2ecbc879fa91922a1a1407e2474a703e8d47cc1f12d41e2f6'
+sha256sums_x86_64=('72a75b19778b1ec5b0ee0c5b7a75521efe53029e7cd538e0517d599acecf8250'
                    '223db296b73d1bbb1ed9f468f368cfa1a5a6fea5b0e7ded6ddbfc2bbc638fbbe'
                    'e61d2ea951779692dfaa515bd13fefe7faa1be2a23ffde147c29aad24cf4f070')
 
