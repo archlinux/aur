@@ -2,7 +2,7 @@
 
 pkgname=cutecom
 pkgver=0.45.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical serial terminal"
 arch=('x86_64')
 url="https://github.com/neundorf/CuteCom"
