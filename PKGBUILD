@@ -7,8 +7,8 @@ pkgdesc="The Sipwise media proxy for Kamailio"
 url="https://github.com/sipwise/rtpengine"
 license=('GPL3')
 arch=('x86_64' 'i686')
-depends=('hiredis' 'openssl' 'pcre' 'xmlrpc-c' 'zlib')
-optdepends=('libiptcdata' 'ffmpeg' 'bcg729')
+depends=('ffmpeg' 'hiredis' 'openssl' 'pcre' 'xmlrpc-c' 'zlib')
+optdepends=('libiptcdata' 'bcg729')
 makedepends=('glib2' 'pkgconf')
 source=("https://github.com/sipwise/rtpengine/archive/mr$pkgver.tar.gz")
 
