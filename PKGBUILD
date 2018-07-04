@@ -7,9 +7,10 @@ pkgver='8.2.1'
 pkgrel='1'
 pkgdesc='An application that allows multiple users to watch a serial console at the same time.'
 arch=('i686' 'x86_64')
-url='http://www.conserver.com'
+url='https://www.conserver.com'
 license=('BSD')
 depends=('sh')
+_verwatch=("${url}/CHANGES" 'version \([^ ]\+\) .*' 'f')
 source=("http://www.conserver.com/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('251ae01997e8f3ee75106a5b84ec6f2a8eb5ff2f8092438eba34384a615153d0')
 
@@ -23,21 +24,22 @@ prepare() {
 build() {
   set -u
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make -s -j $(nproc)
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  nice make -s -j "${_nproc}"
   set +u
 }
 
 check() {
   set -u
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make test
+  make -j1 test
   set +u
 }
 
 package() {
   set -u
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make bindir="${pkgdir}/usr/bin" \
+  make -j1 bindir="${pkgdir}/usr/bin" \
     mandir="${pkgdir}/usr/share/man" \
     sbindir="${pkgdir}/usr/bin/" \
     libdir="${pkgdir}/usr/lib" \
