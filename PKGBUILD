@@ -1,22 +1,25 @@
 # Contributor: Decrypted Epsilon <decrypted.epsilon@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer:  Piotr Balwierz <parseByHuman(surname at email_service_of_google)>
 
 pkgname=igv
 pkgver=2.4.11
 _pkgver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance visualization tool for interactive exploration of large, integrated genomic datasets."
 arch=('any')
 url="http://www.broadinstitute.org/software/igv/home"
 license=('LGPL')
-depends=('java-environment>=8' 'sh')
-source=("igv-$pkgver.tar.gz::https://github.com/igvteam/igv/archive/v$pkgver.tar.gz" \
-	"http://www.broadinstitute.org/software/igv/sites/cancerinformatics.org.igv/files/images/tools.png" \
-  "$pkgname.sh" "$pkgname.desktop")
-sha512sums=('a93a2b6abddad23910bef3d21d59404b166ea9699a7b8b7f67b590ff5908da9368c4101d8102c14fe5ac1c704ea76922523fcb73ea4120e597e0ce66529466cf'
+depends=('java-environment=8' 'archlinux-java-run' 'sh')
+#"igv-$pkgver.tar.gz::https://github.com/igvteam/igv/archive/v$pkgver.tar.gz"
+source=("http://data.broadinstitute.org/igv/projects/downloads/2.4/IGV_$pkgver.zip"
+	"http://www.broadinstitute.org/software/igv/sites/cancerinformatics.org.igv/files/images/tools.png"
+	"$pkgname.sh"
+	"$pkgname.desktop")
+sha512sums=('d3f7c0e3a4b090fe3ae1d21375be0285c026dcf284fdefdaa02bd0247bd27515e9c2dc14798ebad2f0273bd70bbdad2aaff3dc91ecfd9cc74993246ae0b10a98'
             'e71a0dc70c717b3db00268632500b5723b8cddb1ecfbd8ce48b77ffad59bf93a8d275cc5ebd18b9eb1025200438ac55ec348def343b1b5f72a2c982b5dc4cc90'
-            'bfda39fac975ce8112a0060b28e7e5bfd5bb4db9481f091c0da487dd3b974803de000bea3b6d4d6378cee04f7cd45955b648c6fb62779044703fb18ba0eced30'
-            '32249be8c636570a9f2a9700cbd8a43613c3837e81df4bd9baa2b6ec9cf70b45bd28c0f597e5fc899a6fad22a66b0e8f8baf01952efae2e84ca986e1232163d0')
+            '1f0cdbb8467de2a4b287da3fc366f8b5b967f744dab28ffb613a88257caa326b7a1332c8b656ec8fd69ef00114a8d658db6a73fde89b55e7918be094cc6f56ff'
+            '5ba8666c9c0568f11baf79242c4853964a4061269c0b84529b71a02a106e142bc559ccb97a6a51801dbccacf5f2061cead315b5ece60fc4564c3c38b02d733e7')
 
 package() {    
   install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
