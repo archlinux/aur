@@ -1,4 +1,4 @@
-# Maintainer: Brendan MacDonell <macdonellba at gmail dot com>
+# Maintainer: Lalit Maganti <laitmaganti@gmail.com>
 
 pkgname=s3ql
 pkgver=2.28
