@@ -4,14 +4,14 @@
 # shellcheck disable=2148
 
 pkgname=dfhack
-pkgver=0.44.10
-_pkgver=$pkgver-r1
-pkgrel=3
+pkgver=0.44.11
+_pkgver=$pkgver-alpha1
+pkgrel=1
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="https://dfhack.readthedocs.io/en/stable/"
 license=('custom')
-depends=("dwarffortress=$pkgver" lua protobuf libpng12 libxrandr libjpeg6 freetype2 libglvnd libxcursor libxinerama)
+depends=("dwarffortress=$pkgver.1" lua protobuf libpng12 libxrandr libjpeg6 freetype2 libglvnd libxcursor libxinerama)
 makedepends=('cmake' 'git' 'python-sphinx' 'perl-xml-libxml' 'perl-xml-libxslt')
 conflicts=('dfhack-bin' 'dfhack-git')
 
