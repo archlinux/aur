@@ -34,6 +34,8 @@ pkgver() {
 prepare() {
   cd "${srcdir}/pango"
 
+  # disable help2man when cross building
+  sed -i "s/^if help2man.found()/if help2man.found() and not meson.is_cross_build()/g" pango-view/meson.build
 }
 
 build() {
