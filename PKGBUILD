@@ -5,8 +5,8 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-pkgver=181.4952.297
-_dlver=2018.1.2
+pkgver=182.3458.147
+_dlver="2018.2-EAP1-182.3458.147.Checked"
 pkgrel=1
 epoch=1
 pkgdesc="A cross-platform C# IDE by JetBrains."
@@ -21,7 +21,7 @@ groups=("development" "IDE" "editor" "jetbrains")
 
 source=("https://download.jetbrains.com/rider/JetBrains.Rider-${_dlver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('8c154d731807014b956c2758e1551e0f902abe9a3a75fee488cc9d5dc90352cb'
+sha256sums=('0ee405581924f3a18c8db8be198104b025cc0cef290d2eb45f3f553bf1cccc3f'
             'cbb7c9b847c92c95403be237ab01183eb0516b4a9b46c8ba27c87243fed8cbb8')
 
 package() {
@@ -31,7 +31,7 @@ package() {
         "${pkgdir}/usr/bin/" \
         "${pkgdir}/usr/share/applications/"
 
-    cp -R --no-preserve=ownership "${srcdir}/JetBrains Rider-${_dlver}/"* "${pkgdir}/opt/${pkgname}"
+    cp -R --no-preserve=ownership "${srcdir}/JetBrains Rider-${pkgver}/"* "${pkgdir}/opt/${pkgname}"
 
     install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     ln -s "/opt/${pkgname}/bin/rider.sh" "${pkgdir}/usr/bin/rider-eap"
