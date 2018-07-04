@@ -3,16 +3,19 @@
 
 set -u
 pkgname='conserver'
-pkgver='8.2.1'
+pkgver='8.2.2'
 pkgrel='1'
 pkgdesc='An application that allows multiple users to watch a serial console at the same time.'
 arch=('i686' 'x86_64')
 url='https://www.conserver.com'
 license=('BSD')
 depends=('sh')
-_verwatch=("${url}/CHANGES" 'version \([^ ]\+\) .*' 'f')
-source=("http://www.conserver.com/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('251ae01997e8f3ee75106a5b84ec6f2a8eb5ff2f8092438eba34384a615153d0')
+#_verwatch=("${url}/CHANGES" 'version \([^ ]\+\) .*' 'f')
+_giturl='https://github.com/conserver/conserver'
+_verwatch=("${_giturl}/releases.atom" '\s\+<link rel="alternate" type="text/html" href=".*/'"${_giturl##*/}"'/releases/tag/v\?\([^"]\+\)"/>.*' 'f') # RSS
+_srcdir="${_giturl##*/}-${pkgver}"
+source=("${_srcdir}.tar.gz::${_giturl}/archive/v${pkgver}.tar.gz")
+sha256sums=('c5cc773634f0a4730f6d8d749ea1b9174f21bdefecac9dc1ae987e8de03f704f')
 
 prepare() {
   set -u
@@ -45,11 +48,6 @@ package() {
     libdir="${pkgdir}/usr/lib" \
     datadir="${pkgdir}/usr/share/${pkgname}" install
   install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Ensure there are no forbidden paths (git-aurcheck)
-  #! grep -alqr "/sbin" "${pkgdir}" || echo "${}" # one config file has sbin paths for something other than Linux
-  ! grep -alqr "/usr/tmp" "${pkgdir}" || echo "${}"
-  ! test -d "${pkgdir}/usr/sbin" || echo "${}"
   set +u
 }
 set +u
