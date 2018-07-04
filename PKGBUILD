@@ -2,7 +2,7 @@
 _author=GFLEWIS
 _perlmod=ServiceNow-SOAP
 pkgname=perl-servicenow-soap
-pkgver=0.12
+pkgver=0.16
 pkgrel=1
 pkgdesc="A better Perl API for ServiceNow "
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   )
 options=(!emptydirs)
 source=(http://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
-md5sums=('d93ac2a191c25b50f7eae4105ea582c0')
+md5sums=('61f2562d63bc6b9fa9033df607121491')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
