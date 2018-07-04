@@ -31,9 +31,9 @@ package() {
 	install -Dm644 "syntax/gdscript3.vim" "$pkgdir/$vim_share/syntax/gdscript3.vim"
 
 	# Recreate all the directories under the python subdirectory in our filesystem:
-	find python -type d -print -exec install -dm755 "$pkgdir/$vim_share/"{} \;
+	find python -type d -exec install -dm755 "$pkgdir/$vim_share/"{} \;
 
 	# Now copy all the files with the right permissions:
-	find python -type f -print -exec install -Dm644 {} "$pkgdir/$vim_share/"{} \;
+	find python -type f -exec install -Dm644 {} "$pkgdir/$vim_share/"{} \;
 }
 
