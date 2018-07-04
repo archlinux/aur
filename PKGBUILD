@@ -12,19 +12,12 @@ license=('LGPL3')
 depends=('libmagick6' 'ffmpeg' 'libx264' 'libopenshot-audio' 'python' 'jsoncpp' 'qt5-multimedia' 'zeromq')
 makedepends=('cmake' 'doxygen' 'swig' 'unittestpp')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/libopenshot/archive/v$pkgver.tar.gz"
-https://github.com/OpenShot/libopenshot/commit/774eb365b3f663b1f53dd24c1650fafb3c445ea6.patch
-ffmpeg-32-writer.patch ffmpeg-4.0.patch)
+ffmpeg-4.0.patch)
 sha256sums=('f6f79c18023253720698c3049a0cd4b5783354cfbc6345e736e15268be6e297d'
-            'e0f56d40d4df0e4278d3cdb81923652b467c1a30e408bcff7a6b15327fb03548'
-            '7dca1cfcdbc8c8cd039b6267623c822230e0d37968be2372520b36e22c782dd8'
             'bfc6aa2752a053774b0c46d0339b41df68f8e63765f1185f0df596ecbd3633a8')
 
 prepare() {
 	cd ${pkgname}-${pkgver}
-
-	# patches for ffmpeg 3.2
-	#patch -p1 -i "$srcdir/774eb365b3f663b1f53dd24c1650fafb3c445ea6.patch"
-	#patch -p1 -i "$srcdir/ffmpeg-32-writer.patch"
 
 	# patches for ffmpeg 4.0
 	# TODO https://github.com/OpenShot/libopenshot/issues/87
