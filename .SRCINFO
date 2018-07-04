@@ -1,15 +1,13 @@
 pkgbase = cli11
 	pkgdesc = Command line parser for C++11
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/CLIUtils/CLI11
 	arch = any
 	license = CUSTOM
 	makedepends = cmake
 	source = https://github.com/CLIUtils/CLI11/archive/v1.6.0.zip
-	source = https://raw.githubusercontent.com/CLIUtils/CLI11/v1.6.0/LICENSE
 	sha256sums = f6b74aab81da1dc0bf719d920320b14a194a347379b805bd28e7e5e1ff55cfa8
-	sha256sums = 8dc15a2096fcd14a09fa59b070f0a2824f5698d0786f8a416c08958eeef19f18
 
 pkgname = cli11
 
