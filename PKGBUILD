@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-fribidi
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)"
 arch=('any')
 license=('LGPL')
@@ -37,6 +37,9 @@ package() {
   for _arch in ${_architectures}; do
     cd ${srcdir}/fribidi/build-${_arch}
     DESTDIR="${pkgdir}" ninja install
+
+    #FIXME: Ranlib (isn't meson supposed to do this?)
+    ${_arch}-ranlib ${pkgdir}/usr/${_arch}/lib/*.a
 
     ${_arch}-strip -s ${pkgdir}/usr/${_arch}/bin/*.exe
     ${_arch}-strip -x -g ${pkgdir}/usr/${_arch}/bin/*.dll
