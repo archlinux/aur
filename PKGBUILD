@@ -2,16 +2,16 @@
 
 pkgname=otf-exo
 pkgver=2.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A geometric sans serif font with a technological feel'
 arch=('any')
-url='http://ndiscovered.com/exo-2/'
+url='http://ndiscovered.com/'
 license=('OFL')
 depends=('fontconfig' 'xorg-mkfontdir')
 source=('http://ndiscovered.com/archives/exo-2.zip')
-md5sums=('e67adb2d16c6f9083d454001184cb619')
-sha256sums=('afcc096f507585e571d3d2aa91fc2cdc19a11eefdaa79dd0d5ac747d5522db9a')
+md5sums=('64462f43a098c80e6f84f5ef21c431b2')
+sha256sums=('6e5902c7eb57ad05a816464d43a404049d2e37c8add9c8d5eac121ddadcd7669')
 
 package() {
-  install -Dm644 -t "${pkgdir}/usr/share/fonts/OTF" "${srcdir}/Exo 2"/*.otf
+  install -Dm644 -t "${pkgdir}/usr/share/fonts/OTF" "${srcdir}"/Exo2-*.otf
 }
