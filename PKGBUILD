@@ -2,9 +2,9 @@
 
 _pkgname=sidef
 pkgname=sidef-git
-pkgver=3.17
+pkgver=3.18
 pkgrel=1
-pkgdesc="A modern object-oriented programming language. (-git version)"
+pkgdesc="A modern object-oriented programming language (-git version)."
 arch=('any')
 url="https://github.com/trizen/sidef"
 license=('Artistic2.0')
