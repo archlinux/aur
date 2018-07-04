@@ -3,19 +3,18 @@
 
 pkgname=python2-freetype-py
 _name=freetype-py
-pkgver=2.0
+pkgver=2.0.0.post6
 pkgrel=1
 pkgdesc="FreeType Python bindings"
 arch=('any')
 url="https://github.com/rougier/freetype-py/"
 license=('BSD')
-groups=()
 depends=('python2')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
-install=
-source=("https://github.com/rougier/${_name}/archive/${pkgver}.tar.gz")
-sha1sums=('b3518e5de5765da1c975e66d9e78e1754baaa275')
+source=("https://pypi.python.org/packages/source/f/freetype-py/freetype-py-${pkgver}.tar.gz")
+sha1sums=('a97bef7816cb155beb63c7fad4f1ddd137f72f89')
+
 package() {
   cd "$srcdir/freetype-py-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
