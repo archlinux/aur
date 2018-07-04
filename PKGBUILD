@@ -2,7 +2,7 @@
 
 pkgname=crow-translate
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight translator that allows to translate and say selected text using the Google Translate API and much more"
 arch=('x86_64')
 url="https://github.com/Shatur95/crow-translate"
@@ -14,7 +14,7 @@ source=($pkgname.tar.gz::"https://github.com/Shatur95/crow-translate/archive/$pk
         QGitRelease-submodule.tar.gz::"https://github.com/Shatur95/QGitRelease/archive/1.0.0.tar.gz"
         QHotkey-submodule.tar.gz::"https://github.com/Skycoder42/QHotkey/archive/1.2.2.tar.gz"
         SingleApplication-submodule.tar.gz::"https://github.com/itay-grudev/SingleApplication/archive/v3.0.10.tar.gz")
-sha256sums=('87c6cbb104b73d0c0397849d1a00b58d50a0e909f78ffb0d40ebb762409393b5'
+sha256sums=('7753d855453823da6cb5d7122e8fcd3ef0097343036ffbf8f1f734982f848b32'
             '8fbdb91ac1d8f3e103de44ab41f65b687d735aa21519082be7f48e3ce7ba4ebc'
             'cf45aed712bccc94f13f065cf0ce77a48b3b50bdc95671ddcfd7c1d714a069e8'
             '1a5a6eb81738a8f232df2dd5c908839871077e10ca3b9a6437daf5fda53d86ad'
