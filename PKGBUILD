@@ -1,42 +1,25 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=xcursor-thedot
-pkgver=0.4
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="A mouse theme with circles (fork of the unmaintained original)"
 arch=('any')
 url="https://www.gnome-look.org/p/1244392/"
 license=('GPL')
 depends=()
-
-source=("https://bitbucket.org/sergiy_ilchuk/thedot/get/0362c13478d3.zip"
+source=("https://bitbucket.org/sergiy_ilchuk/thedot/get/${pkgver}.tar.bz2"
 	"thedot.patch")
-md5sums=('7261bce54d3a96ff23346dfd6f16f33f'
+md5sums=('854eb43fb3e4d835639d35ab3a91ec16'
          'b0b7d259448ac0ee8ce2d18c8d49eec9')
 
 prepare() {
-cd ${srcdir}/sergiy_ilchuk-thedot-0362c13478d3/
+cd ${srcdir}/sergiy_ilchuk-thedot-ff9eeee74e32/
 patch -Np1 -i ../thedot.patch
-
-# Add symbolic links so that Gnome Shell won't crash
-cd Dot-Light/cursors
-ln -s ./question_arrow ./dnd-ask
-ln -s ./plus ./dnd-copy
-ln -s ./link ./dnd-link
-ln -s ./move ./dnd-move
-ln -s ./circle ./dnd-none
-
-cd ../../Dot-Dark/cursors
-ln -s ./question_arrow ./dnd-ask
-ln -s ./plus ./dnd-copy
-ln -s ./link ./dnd-link
-ln -s ./move ./dnd-move
-ln -s ./circle ./dnd-none
-
 }
 
 package() {
-cd ${srcdir}/sergiy_ilchuk-thedot-0362c13478d3/
+cd ${srcdir}/sergiy_ilchuk-thedot-ff9eeee74e32/
 
 # Install
 install -dm755 ${pkgdir}/usr/share/icons/
