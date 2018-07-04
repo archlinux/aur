@@ -11,6 +11,7 @@ pkgbase = esniper
 	license = BSD
 	depends = curl
 	depends = openssl
+	conflicts = esniper-git
 	source = http://downloads.sourceforge.net/esniper/esniper-2-35-0.tgz
 	sha512sums = d35c869442d7ceeb116c3f68d928eb4ff99ba3ac12f60e74dc79bfb7981b1897537f19e38dc095f8ea4b00149fe056f227f099c36127252400dc8a7a9cce17ce
 

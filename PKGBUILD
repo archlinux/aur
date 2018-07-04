@@ -10,6 +10,7 @@ url="http://esniper.sourceforge.net/"
 license=('BSD')
 depends=('curl' 'openssl')
 source=(http://downloads.sourceforge.net/esniper/${pkgname}-${pkgver_stripped}.tgz)
+conflicts=('esniper-git')
 
 sha512sums=('d35c869442d7ceeb116c3f68d928eb4ff99ba3ac12f60e74dc79bfb7981b1897537f19e38dc095f8ea4b00149fe056f227f099c36127252400dc8a7a9cce17ce')
 
