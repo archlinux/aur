@@ -1,6 +1,6 @@
 pkgbase = blinky
 	pkgdesc = AUR-helper with minimal hassle
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/cherti/blinky
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = blinky
 	depends = python-requests
 	depends = python-termcolor
 	options = !emptydirs
-	source = https://github.com/cherti/blinky/archive/v0.3.tar.gz
-	sha256sums = 196d2732367542c46d04d54be140f06f6e51ab3bc33dca5f7cc9dbb5949500c2
+	source = https://github.com/cherti/blinky/archive/v0.4.tar.gz
+	sha256sums = 8d82447894d1b632e2c91988e3308540d9a6a18da99b99b6edeb3bd595a6a1bc
 
 pkgname = blinky
 
