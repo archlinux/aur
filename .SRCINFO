@@ -10,10 +10,12 @@ pkgbase = ciel-git
 	makedepends = make
 	makedepends = go
 	makedepends = curl
+	depends = bash
+	optdepends = dos2unix: Format ciel shell output.
 	source = ciel-git::git+https://github.com/AOSC-Dev/ciel.git
-	source = LICENSE
-	md5sums = SKIP
-	md5sums = bbe02e54233da79f80cd59560bce11d5
+	source = https://raw.githubusercontent.com/AOSC-Dev/ciel/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = 4295cbb316868e77c32b3ce2fc2487ce8a1f0e26b8ba677d44d0b3e16412c5fd
 
 pkgname = ciel-git
 
