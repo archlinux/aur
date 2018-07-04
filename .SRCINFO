@@ -12,6 +12,7 @@ pkgbase = rtpengine
 	depends = hiredis
 	depends = json-glib
 	depends = libevent
+	depends = libmariadbclient
 	depends = openssl
 	depends = pcre
 	depends = xmlrpc-c
