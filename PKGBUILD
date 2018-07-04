@@ -1,7 +1,7 @@
 # Maintainer: Ariel AxionL <axionl@aosc.io>
 pkgname=gcsf-git
-pkgver=r139.ac09234
-pkgrel=1
+pkgver=r161.cc3f079
+pkgrel=3
 pkgdesc="a FUSE file system based on Google Drive (Written by Rust)"
 arch=('x86_64')
 depends=('fuse2' 'gcc-libs')
@@ -11,10 +11,13 @@ conflicts=("gcsf")
 provides=("gcsf")
 url="https://github.com/harababurel/gcsf"
 license=('MIT')
+install="gcsf-git.install"
 
-source=("$pkgname::git+$url.git")
+source=("$pkgname::git+$url.git"
+		"gcsf-git.install")
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '3cd6b36903ea832e855f07b7ec76612a10f03fccfc893fb58b23e4a12b104ab9')
 
 pkgver() {
     cd "$srcdir/$pkgname"
