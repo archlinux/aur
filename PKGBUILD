@@ -78,7 +78,7 @@ build() {
     -DWITHOUT_PBXT_STORAGE_ENGINE=1 \
     -DCMAKE_EXE_LINKER_FLAGS='-ljemalloc' \
     -DCMAKE_C_FLAGS="-fPIC $CFLAGS -fno-strict-aliasing -DBIG_JOINS=1 -fomit-frame-pointer -fno-delete-null-pointer-checks" \
-    -DCMAKE_CXX_FLAGS="-fPIC $CXXFLAGS -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti -fno-delete-null-pointer-checks -std=c++0x" \
+    -DCMAKE_CXX_FLAGS="-fPIC $CXXFLAGS -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti -fno-delete-null-pointer-checks" \
     -DWITH_MYSQLD_LDFLAGS="-pie ${LDFLAGS},-z,now"
 
   make -j$(nproc)
