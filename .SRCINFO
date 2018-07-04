@@ -1,6 +1,6 @@
 pkgbase = linux-usermode
 	pkgdesc = User mode Linux kernel and modules
-	pkgver = 4.16.13
+	pkgver = 4.17.3
 	pkgrel = 1
 	url = http://user-mode-linux.sourceforge.net/
 	arch = x86_64
@@ -9,18 +9,18 @@ pkgbase = linux-usermode
 	makedepends = inetutils
 	makedepends = gcc7
 	depends = coreutils
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.xz
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.13.xz
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.13.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.xz
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.3.xz
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.3.sign
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9
+	sha256sums = 9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13
 	sha256sums = SKIP
-	sha256sums = 9efa0a74eb61240da53bd01a3a23759e0065811de53d22de7d679eabf847f323
+	sha256sums = 01d5cc024dcfed615f84fd83be9c248261d8fc2c062520d38397cead6857b596
 	sha256sums = SKIP
-	sha256sums = fda28f5ccc809a7b76f0f80eb0c302713282b56b8693575cc766566993e2be41
+	sha256sums = a3ae8758ea7e1bec8f0dcaf4802f2985d96b6ab3178bc041faf6e00fd9d95ceb
 
 pkgname = linux-usermode
 

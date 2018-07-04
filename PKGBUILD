@@ -5,8 +5,8 @@ pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.16
-pkgver=4.16.13
+_srcname=linux-4.17
+pkgver=4.17.3
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
@@ -19,11 +19,11 @@ source=(
   http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
   config)
 
-sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
+sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '9efa0a74eb61240da53bd01a3a23759e0065811de53d22de7d679eabf847f323'
+            '01d5cc024dcfed615f84fd83be9c248261d8fc2c062520d38397cead6857b596'
             'SKIP'
-            'fda28f5ccc809a7b76f0f80eb0c302713282b56b8693575cc766566993e2be41')
+            'a3ae8758ea7e1bec8f0dcaf4802f2985d96b6ab3178bc041faf6e00fd9d95ceb')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
