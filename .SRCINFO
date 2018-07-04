@@ -1,7 +1,7 @@
 pkgbase = marktext
 	pkgdesc = Next generation markdown editor
 	pkgver = 0.12.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://marktext.github.io/website/
 	arch = x86
 	arch = x86_64

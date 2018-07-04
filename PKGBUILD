@@ -2,7 +2,7 @@
 # Contributor: dpeukert
 pkgname=marktext
 pkgver=0.12.25
-pkgrel=1
+pkgrel=2
 pkgdesc='Next generation markdown editor'
 arch=('x86' 'x86_64')
 url='https://marktext.github.io/website/'
@@ -46,7 +46,6 @@ package() {
     install -D build/linux-unpacked/LICENSES.chromium.html "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 
     # Install desktop file and icon
-    install -D "build/linux-unpacked/blink_image_resources_200_percent.pak" "$pkgdir/usr/lib/$pkgname/blink_image_resources_200_percent.pak"
     install -D "resources/linux/marktext.desktop" "$pkgdir/usr/share/applications/marktext.desktop"
     install -D "build/.icon-set/icon_512x512.png" "$pkgdir/usr/share/pixmaps/marktext.png"
 }
