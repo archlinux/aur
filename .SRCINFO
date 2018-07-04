@@ -1,0 +1,15 @@
+pkgbase = swamp
+	pkgdesc = Teh AWS profile manager
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/felixb/swamp
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/felixb/swamp/archive/v0.8.tar.gz
+	sha256sums = 199650fc5c0a25907b608d2a0a17086f83b5031bbaea39a729f649d2df422f16
+
+pkgname = swamp
+
