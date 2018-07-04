@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname=anja
 pkgname=${_pkgname}-git
-pkgver=2.0.1.r0.1eb4aa3
+pkgver=2.0.1.r1.256d30b
 pkgrel=1
 pkgdesc="A sample player/recorder for Jack"
 arch=(x86_64)
@@ -26,7 +26,6 @@ prepare() {
 	cd "$srcdir/${_pkgname%-git}"
   # https://wiki.archlinux.org/index.php/TeX_Live#Fonts ??
   git submodule init && git submodule update
-  sed -i 's/C.UTF-8/`echo $LANG`/g' doc/index.sh
 }
 
 

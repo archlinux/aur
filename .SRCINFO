@@ -1,6 +1,6 @@
 pkgbase = anja-git
 	pkgdesc = A sample player/recorder for Jack
-	pkgver = 2.0.1.r0.1eb4aa3
+	pkgver = 2.0.1.r1.256d30b
 	pkgrel = 1
 	url = https://github.com/milasudril/anja
 	arch = x86_64
