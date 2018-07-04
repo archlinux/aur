@@ -1,0 +1,16 @@
+pkgbase = awstail
+	pkgdesc = A simple way to see your Amazon CloudWatch logs
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://gitlab.com/godzsa/aws-logs
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = jdk8-openjdk
+	depends = jdk8-openjdk
+	source = git+https://gitlab.com/godzsa/aws-logs.git
+	sha256sums = SKIP
+
+pkgname = awstail
+
