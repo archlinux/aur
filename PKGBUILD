@@ -15,7 +15,7 @@ depends=(
   'mopidy>=1.0'
 )
 makedepends=('python2-setuptools')
-source=("https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('4e65b54469d92a754edebc9e5b9d3933ca9f28db0c4f97e6c80269de796b1c97cface99b01d5bb956c4295016757accdad437baba040a452260ac7be3db3e870')
 
 package() {
