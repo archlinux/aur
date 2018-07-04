@@ -11,7 +11,7 @@ pkgver='2.6.19'
 pkgrel='2'
 pkgdesc="a Perl mail-to-HTML converter"
 arch=('any')
-url='http://www.mhonarc.org/'
+url='https://www.mhonarc.org/'
 license=('GPL')
 depends=('perl>=5.6.1')
 optdepends=(
@@ -20,8 +20,9 @@ optdepends=(
   'perl-mime-base64: efficient base64 decoding'
   'perl-posix-strftime-compiler: improved time string formatting'
 )
-_verwatch=("${url}release/${_pkgnameu}/tar/" "${_pkgnameu}-\([^-]*\)\.tar\.bz2" 'l')
-source=("${_verwatch[0]}${_pkgnameu}-${pkgver}.tar.bz2"
+#_verwatch=("${url}release/${_pkgnameu}/tar/" "${_pkgnameu}-\([^-]*\)\.tar\.bz2" 'l')
+_verwatch=("${url}" "${_pkgnameu}-\([0-9\.]\+\)\.tar\.bz2" 't')
+source=("${url}release/${_pkgnameu}/tar/${_pkgnameu}-${pkgver}.tar.bz2"
   'Debian_816638.diff::https://bugs.debian.org/cgi-bin/bugreport.cgi?filename=816638.diff;att=1;msg=17;bug=816638') # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=816638#17
 
 sha256sums=('08912eae8323997b940b94817c83149d2ee3ed11d44f29b3ef4ed2a39de7f480'
