@@ -3,7 +3,7 @@
 pkgbase = luakit
 	pkgdesc = Browser framework based on Webkit and Lua
 	pkgver = 2017.08.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://luakit.github.io/
 	arch = x86_64
 	license = GPL3
