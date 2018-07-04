@@ -3,7 +3,7 @@
 
 pkgname="mingw-w64-kdsoap"
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt-based client-side and server-side SOAP component (mingw-w64)"
 arch=('any')
 license=('GPL3' 'LGPL' 'custom')
@@ -27,9 +27,7 @@ build() {
   cd "$srcdir/kdsoap-$pkgver/"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake \
-      -DCMAKE_BUILD_TYPE=Release \
-      ..
+    ${_arch}-cmake ..
     make
     popd
   done
