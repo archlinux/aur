@@ -1,30 +1,24 @@
 # Maintainer: Michel Wohlert <michel.wohlert@gmail.com>
 
 pkgname=games_nebula
-pkgver=20180222
-pkgrel=2
+pkgver=20180605
+pkgrel=1
 pkgdesc='Unofficial Linux client for GOG'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/yancharkin/games_nebula'
-depends=('python2-gobject' 'python2-beautifulsoup4' 'python2-lxml' 'python2-pillow' 'python2-dateutil' 'innoextract' 'htmlcxx' 'lgogdownloader' 'xorg-xrandr')
+install="${pkgname}.install"
+depends=('python2-gobject' 'python2-beautifulsoup4' 'python2-lxml' 'python2-pillow' 'python2-dateutil' 'python2-gobject' 'python2-pytz' 'webkit2gtk' 'innoextract' 'htmlcxx' 'lgogdownloader' 'xorg-xrandr' 'curl' 'p7zip')
 makedepends=()
-optdepends=('gksu' 'xterm' 'curl' 'tar' 'p7zip' 'cabextract' 'unshield' 'ffmpeg' 'wine' 'winetricks' 'dosbox' 'scummvm' 'megatools')
+optdepends=('gksu' 'xterm' 'tar' 'cabextract' 'unshield' 'ffmpeg' 'wine' 'winetricks' 'dosbox' 'scummvm' 'megatools')
 provides=('games_nebula')
 conflicts=('games_nebula')
-source=(${pkgname}_${pkgver}.tar.gz::"https://github.com/yancharkin/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('060d34f3bb58910fe26c7737a741832d17057a88bea40acfeb2b2935cfec9efa')
-
-build() {
-	cd "${srcdir}"
-	mkdir -p games_nebula
-	tar -xzf "${pkgname}_${pkgver}.tar.gz" -C ./games_nebula/
-
-}
+source=(${pkgname}_${pkgver}.tar.gz::"https://github.com/yancharkin/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('4803b3e19e2ed7725dc16feeb69a7a96d14a53d521f8c90c154b1dd21ce3902c')
 
 package() {
 	mkdir -p "$pkgdir/opt/${pkgname}/"
-	cp -dr --no-preserve=ownership "$srcdir/${pkgname}/." "$pkgdir/opt/${pkgname}/"
+	cp -dr --no-preserve=ownership "$srcdir/${pkgname}-${pkgver}/." "$pkgdir/opt/${pkgname}/"
         
         install -dm755 "${pkgdir}/usr/bin"
 	echo '#!/bin/bash
