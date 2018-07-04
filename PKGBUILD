@@ -1,12 +1,12 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
 # Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
 
-_commit=3654d9be6b017e66307fe0ffe635266938b14702  # tags/1.8.1^0
+_commit=343e8c694b03eea625523229a9468fbb456e3aea # tags/1.8.2^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgbase=mingw-w64-harfbuzz
 pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
@@ -42,35 +42,35 @@ prepare() {
 build() {
   cd harfbuzz
   for _arch in ${_architectures}; do
-  # Build static and shared libs separately due to necessity of defining DGRAPHITE2_STATIC
-  # manually when building static version
+    # Build static and shared libs separately due to necessity of defining DGRAPHITE2_STATIC
+    # manually when building static version
 
-  # static build
-  mkdir -p build-${_arch}-static && pushd build-${_arch}-static
-  CFLAGS=-DGRAPHITE2_STATIC CXXFLAGS=-DGRAPHITE2_STATIC ${_arch}-configure \
-    --with-glib \
-    --with-freetype \
-    --with-cairo \
-    --with-icu \
-    --with-gobject \
-    --with-graphite2 \
-    --enable-static=yes \
-    --enable-shared=no
-  make
-  popd
-  # shared build
-  mkdir -p build-${_arch}-shared && pushd build-${_arch}-shared
-  ${_arch}-configure \
-    --with-glib \
-    --with-freetype \
-    --with-cairo \
-    --with-icu \
-    --with-gobject \
-    --with-graphite2 \
-    --enable-static=no \
-    --enable-shared=yes
-  make
-  popd
+    # static build
+    mkdir -p build-${_arch}-static && pushd build-${_arch}-static
+    CFLAGS=-DGRAPHITE2_STATIC CXXFLAGS=-DGRAPHITE2_STATIC ${_arch}-configure \
+      --with-glib \
+      --with-freetype \
+      --with-cairo \
+        --with-icu \
+      --with-gobject \
+      --with-graphite2 \
+      --enable-static=yes \
+      --enable-shared=no
+    make
+    popd
+    # shared build
+    mkdir -p build-${_arch}-shared && pushd build-${_arch}-shared
+    ${_arch}-configure \
+      --with-glib \
+      --with-freetype \
+      --with-cairo \
+      --with-icu \
+      --with-gobject \
+      --with-graphite2 \
+      --enable-static=no \
+      --enable-shared=yes
+    make
+    popd
   done
 }
 
