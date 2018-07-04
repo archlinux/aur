@@ -6,6 +6,7 @@ pkgbase = xcrawl-tiles
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = gendesk
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = freetype2

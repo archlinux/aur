@@ -21,7 +21,7 @@ depends=(
 	'sqlite'
 	'glu'
 )
-makedepends=()
+makedepends=('gendesk')
 checkdepends=()
 optdepends=()
 provides=()
@@ -32,6 +32,8 @@ source=("https://github.com/Vajrapani/X-Crawl/archive/$pkgver.tar.gz")
 md5sums=('2e596dac25382f3af60241d5435f27b5')
 
 prepare() {
+	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "X-Crawl tiles" --categories "Application;Game" --exec "xcrawl"
+
 	cd "$_srcname-$pkgver/crawl-ref/source"
 	
 	sed -i 's/GAME = crawl/GAME = xcrawl/' Makefile
@@ -67,6 +69,8 @@ build() {
 #}
 
 package() {
+	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
 	cd "$_srcname-$pkgver/crawl-ref/source"
 
 	make install \
@@ -78,4 +82,6 @@ package() {
 		LUA_PACKAGE=lua51 \
 		TILES=y \
 		SOUND=y
+
+	install -Dm644 "dat/tiles/stone_soup_icon-32x32.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
