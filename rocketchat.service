@@ -1,15 +1,16 @@
 [Unit]
 Description=Rocket.chat docker-compose service
-Wants=network-online.target
-After=network-online.target
 Requires=docker.service
+After=docker.service
 
 [Service]
 Restart=always
 WorkingDirectory=/usr/share/rocketchat-server/
-ExecStart=/usr/bin/docker-compose up
-ExecStop=/usr/bin/docker-compose down
+PreStart=printf "# BUILD ON RUNTIME\!\n#/usr/share/rocketchat-server/docker.env:\n" > .env
+PreStart=/usr/bin/sh createEnvFile.sh
+ExecStart=/usr/bin/docker-compose up -f rocketchat-server.yml
+ExecStop=/usr/bin/docker-compose down -v
 
 [Install]
-WantedBy=local.target
+WantedBy=multi-user.target
 

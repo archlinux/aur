@@ -7,14 +7,14 @@ services:
       - "./data/dump:/dump"
     command: ["mongod", "--smallfiles"]
   rocketchat:
-    image: "rocketchat/rocket.chat:${x_TAG}"
+    image: "rocket.chat:${x_TAG}"
     env_file:
-      - "./rocketchat-server.env"
+      - "./config.env"
       - "/etc/rocketchat-server/config.env"
     depends_on:
       - "db"
     links:
       - "db:db"
     ports:
-      - "22020:3000"
+      - "${x_PORT}:3000"
 

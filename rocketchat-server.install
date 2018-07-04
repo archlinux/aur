@@ -1,8 +1,30 @@
 #!/usr/bin/env sh
 
 post_install() {
-	# If config doesn't exist, copy the example over it.
-	cp /etc/rocketchat-server/example.env /etc/rocketchat-server/config.env
-	echo "Server will use port 22020."
+	version_new=$(echo "$1" | /usr/bin/cut -d- -f1)
+
+	printf "\e[1m\e[32m==>\e[39m Loading the image into Docker...\e[0m\n"
+	/usr/bin/docker load -i "/usr/share/rocketchat-server/rocketchat-server-${version_new}.tar.xz"
+}
+
+pre_upgrade() {
+	version_old=$(echo "$2" | /usr/bin/cut -d- -f1)
+
+	printf "\e[1m\e[32m==>\e[39m Removing the old image from Docker...\e[0m\n"
+	/usr/bin/docker image rm "rocket.chat:${version_old}"
+}
+
+post_upgrade() {
+	version_new=$(echo "$1" | /usr/bin/cut -d- -f1)
+
+	printf "\e[1m\e[32m==>\e[39m Loading the new image into Docker...\e[0m\n"
+	/usr/bin/docker load -i "/usr/share/rocketchat-server/rocketchat-server-${version_new}.tar.xz"
+}
+
+post_remove() {
+	version_old=$(echo "$1" | /usr/bin/cut -d- -f1)
+
+	printf "\e[1m\e[32m==>\e[39m Removing the image from Docker...\e[0m\n"
+	/usr/bin/docker image rm "rocket.chat:${version_old}"
 }
 
