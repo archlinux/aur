@@ -1,22 +1,24 @@
 pkgbase = aarchup
 	pkgdesc = Fork of archup a small and lightweight update-notifier for archlinux.
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aericson/aarchup
 	install = aarchup.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = libnotify
 	makedepends = autoconf
 	makedepends = gzip
-	depends = pacman
 	depends = libnotify
 	depends = gtk2
-	optdepends = cower: AUR support(--aur)
+	optdepends = auracle: AUR support(--aur)
+	provides = aarchup
 	backup = etc/systemd/system/aarchup.timer
-	source = https://github.com/aericson/aarchup/archive/1.8.1.zip
-	md5sums = b68cb385795dddc7d748842084336ab7
+	source = aarchup-1.8.1.zip::https://github.com/aericson/aarchup/archive/1.8.1.zip
+	source = 0001-aarchup.c-switch-to-auracle-sync.patch
+	sha256sums = 9d96df312502ac61379678a7297dd1c40b045709054c66691e3680fa389096fe
+	sha256sums = e1d0e0cacabd2f13be23a570320fbad37619d6f752e524f94e791871c7ca28b6
 
 pkgname = aarchup
 
