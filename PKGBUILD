@@ -101,14 +101,13 @@ pkgrel='1'
 pkgdesc='tty driver for Perle IOLan+ DS TS SDS STS SCS JetStream LanStream LinkStream and 3rd party serial console terminal device servers'
 _pkgdescshort='Perle TruePort driver for Ethernet serial servers'
 arch=('i686' 'x86_64')
-url='http://www.perle.com/'
+url='https://www.perle.com/'
 license=('GPL' 'custom')
 depends=('glibc' 'systemd')
 if [ "${_opt_SSL}" -ne 0 ]; then
   depends+=('openssl')
 fi
 makedepends=('awk' 'sed' 'diffutils' 'patch')
-#conflicts=('dgrp') # running together with dgrp eventually jams up trueport
 backup=(etc/trueport/{config.tp,pktfwdcfg.tp,sslcfg.tp})
 options=('!docs' '!emptydirs' '!strip')
 install="${pkgname}-install.sh"
@@ -255,6 +254,7 @@ ExecStart=/etc/trueport/trueport start
 ExecStop=/etc/trueport/trueport stop
 ExecReload=/etc/trueport/trueport restart
 RemainAfterExit=yes
+TimeoutStopSec=15
 
 [Install]
 WantedBy=multi-user.target
