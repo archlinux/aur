@@ -1,7 +1,7 @@
 # Maintainer: Leonard de Ruijter <dev@systeemdenker.nl>
 
 pkgname=icecast-kh
-pkgver=2.4.0_kh9
+pkgver=2.4.0_kh10
 pkgrel=1
 pkgdesc='The KH branche extends the official release of Icecast with features that may be (if found to be working out well) merged into the next official release.'
 arch=('i686' 'x86_64')
