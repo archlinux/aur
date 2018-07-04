@@ -1,16 +1,16 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare-git
 pkgver=v4.1.r196.gc38161b
-pkgrel=1
+pkgrel=2
 pkgdesc="The free and open source and cross platform screen sharing software."
 arch=('i686' 'x86_64')
-url="https://github.com/ArsenArsen/KShare"
+url="https://gitlab.com/ArsenArsen/KShare"
 license=('MIT')
 provides=(kshare)
 conflicts=(kshare)
 depends=(qt5-base qt5-x11extras qt5-svg xcb-util-cursor ffmpeg libxfixes)
 makedepends=(git pkg-config)
-source=(git+https://github.com/ArsenArsen/KShare.git#branch=dev)
+source=(git+https://gitlab.com/ArsenArsen/KShare.git#branch=dev)
 sha1sums=('SKIP')
 
 pkgver() {
