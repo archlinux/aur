@@ -15,11 +15,11 @@ pkgrel='1'
 pkgdesc='Pure-Python RSA implementation. Old version for aws & botocore.'
 arch=('any')
 #url="https://pypi.python.org/pypi/${_pybase}/"
-url='http://stuvel.eu/rsa'
+url='https://stuvel.eu/rsa'
 license=('BSD')
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
-_verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
+#_verwatch=("https://pypi.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
 sha256sums=('66eb8752a1de9b92d7679ea0e1556cf2e4a155161d0024e97e06999041e35f58')
 
