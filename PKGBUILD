@@ -1,36 +1,31 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-# Maintainer: artafinde <artafinde at gmail dot com>
+# Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 # Contributor: aericson <de.ericson at gmail dot com>
 # Contributor: Rorschach <r0rschach at lavabit dot com>
 # Contributor: Andrew Kravchuk <awkravchuk at gmail dot com>
 #
 pkgname="aarchup"
-pkgver=1.8.1
-pkgrel=3
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
-url="https://github.com/aericson/aarchup"
+url="https://github.com/inglor/aarchup"
 arch=('i686' 'x86_64')
 license=('GPL3')
 provides=("${pkgname}")
 depends=('libnotify' 'gtk2')
 makedepends=('libnotify' 'autoconf' 'gzip')
-backup=('etc/systemd/system/aarchup.timer')
 optdepends=('auracle: AUR support(--aur)')
 install='aarchup.install'
-source=("${pkgname}-${pkgver}.zip::${url}/archive/${pkgver}.zip"
-        '0001-aarchup.c-switch-to-auracle-sync.patch'
-)
-sha256sums=('9d96df312502ac61379678a7297dd1c40b045709054c66691e3680fa389096fe'
-            'e1d0e0cacabd2f13be23a570320fbad37619d6f752e524f94e791871c7ca28b6')
+source=("${pkgname}-${pkgver}.zip::${url}/archive/${pkgver}.zip")
+sha256sums=('0ff8834846c1162cfbfd66e24dc02cbf0a05b0f767db2345504a516025a438d4')
 
 prepare() {
-    mv -v "${pkgname}-${pkgver}"/src/* "${pkgname}-${pkgver}"
+    mv "${pkgname}-${pkgver}"/src/* "${pkgname}-${pkgver}"
     rmdir "${pkgname}-${pkgver}"/src
 }
 
 build() {
     cd "${pkgname}-${pkgver}"
-    patch -p1 < ../0001-aarchup.c-switch-to-auracle-sync.patch
     autoconf
     ./configure --prefix=/usr
     make
