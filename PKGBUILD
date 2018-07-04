@@ -5,38 +5,32 @@
 set -u
 pkgname='jwasm'
 #_pkgname='JWasm211as'
-pkgver='212s_140105'
+pkgver='2.13'
 pkgrel='1'
 pkgdesc='a free MASM-compatible assembler'
 arch=('i686' 'x86_64')
-url='http://www.japheth.de/JWasm.html'
+#url='http://www.japheth.de/JWasm.html'
+#url='https://sourceforge.net/projects/jwasm/files/JWasm%20Source%20Code/'
+url='https://github.com/JWasm/JWasm'
 license=('custom')
 depends=('glibc')
-makedepends=('unzip') # much more reasonable than hd2u or dos2unix
-_verwatch=('http://sourceforge.net/projects/jwasm/files/JWasm%20Source%20Code/' '\s\+JWasm\(.*\)\.zip.*' 'f')
-source=("http://sourceforge.net/projects/jwasm/files/JWasm%20Source%20Code/JWasm${pkgver}.zip")
-noextract=("${source[@]##*/}")
-sha256sums=('2bef67d89c3d40d228ac2e24e3e41a60cd954cf0f1b7389680f7f03658b78f1c')
-
-prepare() {
-  set -u
-  unzip -oaq -d "${pkgname}" "${noextract[0]}"
-  cd "${pkgname}"
-  sed -i -e 's:^c_flags =.*$:& -Wno-implicit-function-declaration:g' 'GccUnix.mak'
-  test -r 'README.TXT' && mv 'README.TXT' 'Readme.txt'
-  set +u
-}
+#_verwatch=('https://sourceforge.net/projects/jwasm/files/JWasm%20Source%20Code/' '\s\+JWasm\(.*\)\.zip.*' 'f')
+_verwatch=("${url}/releases.atom" '\s\+<link rel="alternate" type="text/html" href=".*/'"${url##*/}"'/releases/tag/v*\([^"]\+\)"/>.*' 'f') # RSS
+_srcdir="${url##*/}-${pkgver}"
+source=("${_srcdir}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('82bc14860ec1d0552daeffbd202f83f9bba6a2756056b5e21ef81fabdb8e83a4')
 
 build() {
   set -u
-  cd "${pkgname}"
-  make -f 'GccUnix.mak' -s -j "$(nproc)"
+  cd "${_srcdir}"
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  nice make -f 'GccUnix.mak' -s -j "${_nproc}"
   set +u
 }
 
 package() {
   set -u
-  cd "${pkgname}"
+  cd "${_srcdir}"
   install -Dpm755 'GccUnixR/jwasm' -t "${pkgdir}/usr/bin/"
   install -Dpm644 'History.txt' 'Readme.txt' 'Doc/enh.txt' 'Doc/fixes.txt' 'Doc/gencode.txt' 'Doc/overview.txt' -t "${pkgdir}/usr/share/doc/jwasm/"
   install -Dpm644 'License.txt' -t "${pkgdir}/usr/share/licenses/jwasm/"
