@@ -4,7 +4,7 @@
 
 pkgname=barry
 pkgver=0.18.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Barry is an Open Source application that provides a Desktop GUI, synchronization, backup, restore and program management for BlackBerry ™ devices."
 url=https://github.com/NetDirect/barry
 license=('GPL')
@@ -14,13 +14,15 @@ optdepends=('fuse2: for mounting the BB database with bfuse'
             'ppp: for tethering with pppob')
 options=('!libtool')
 source=("https://github.com/NetDirect/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}.desktop"
+        "barrydesktop.desktop"
+        "barrybackup.desktop"
         "fix-sizeof-use.patch"
         "wx3.0-compat.patch"
         "c++11.patch"
         "iterator-buildfix.patch")
 sha256sums=('cfe5224c34b25575543bbdeebf979074f76ccc7d37116f15aef20509e6c06c91'
             'aa97e456e0bb1f39cf0d95b1f35080d328947a3bcf40b2b97a0ab11ad34ccc21'
+            '1c6ecd68977da4a3184c3e6d4bea36e4c40949d6bf7bb4ad8717aa6c19fed4fa'
             'd1eb3ff669d5d8490112ceb4138fe9eb107bdbbc8621c98ead5ff47b9a7faf4e'
             'd89dec40916c99355426a9430130a34b9c9f8deccf2e0bd2be75c6eea46249f3'
             'bd211b7323a36f255af7cad13b886d8bb45d74f1d2bcecef00733bb5a9080f2c'
@@ -51,7 +53,7 @@ build() {
 
   ./configure --prefix=/usr --libexec=/usr/lib --sbindir=/usr/bin \
     --enable-gui \
-    --enable-desktop \
+    --disable-desktop \
     --without-guisu
 
   make
@@ -72,5 +74,8 @@ package() {
   cp ./desktop/images/barry_logo_icon.xpm ${pkgdir}/usr/share/pixmaps
   
   mkdir -p ${pkgdir}/usr/share/applications
-  cp ../barry.desktop ${pkgdir}/usr/share/applications
+  # We are no longer compiling barrydesktop so there's no need to install the
+  # desktop entry file
+  # cp ../barrydesktop.desktop ${pkgdir}/usr/share/applications
+  cp ../barrybackup.desktop ${pkgdir}/usr/share/applications
 }

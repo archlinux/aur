@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Barry Backup
+Comment=Graphical backup and restore utility for BlackBerry ™ devices.
+Type=Application
+Exec=barrybackup
+Icon=barry_logo_icon
+Categories=Application;Utility;
