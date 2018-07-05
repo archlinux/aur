@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 
 pkgname=system76-driver
-pkgver=17.10.32
+pkgver=18.04.25
 pkgrel=1
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
@@ -33,7 +33,7 @@ source=(
 	'galu1.patch'
 	'gtk.patch'
 	'cli.patch')
-sha1sums=('d884fe547922182e312954a664b4aa99db46adda'
+sha1sums=('f017b987b0a55b1a21a1b45b167c8366f2134aa8'
           'ea8d53a80a26eb05b367f27996c8ce715aafba1e'
           'bf0c37a6226858c768e8ce2c9c3c3801aef14c0e'
           '92f0de2acea6ac69c36378c7139fb84a7eaf7842')
@@ -54,27 +54,20 @@ package() {
 	install -m755 -D system76-backlight-daemon ${pkgdir}/usr/lib/${pkgname}/system76-backlight-daemon
 	install -m755 -D system76-firmware-dialog ${pkgdir}/usr/lib/${pkgname}/system76-firmware-dialog
 	install -m755 -D system76-driver-pkexec ${pkgdir}/usr/bin/system76-driver-pkexec
-	install -m755 -D system76-firmware-pkexec ${pkgdir}/usr/bin/system76-firmware-pkexec
 	install -m755 -D system76-firmware ${pkgdir}/usr/bin/system76-firmware
 
 	# Install systemd unit files
 	# Note: system76-driver* service files shortened to system76*
 	install -m644 -D debian/system76-driver.service ${pkgdir}/usr/lib/systemd/system/system76.service
-	install -m644 -D debian/system76-firmware.service ${pkgdir}/usr/lib/systemd/system/system76-firmware.service
 	install -m644 -D debian/system76-driver-backlight.service ${pkgdir}/usr/lib/systemd/user/system76-backlight.service
 
 	# Install scripts and configuration
 	install -m755 -D system76-nm-restart ${pkgdir}/usr/lib/${pkgname}/system76-nm-restart
 	install -m644 -D com.system76.pkexec.system76-driver.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-driver.policy
-	install -m644 -D com.system76.pkexec.system76-firmware.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-firmware.policy
 
 	# Install desktop shortcuts
 	install -m644 -D system76-driver-backlight.desktop ${pkgdir}/usr/share/applications/system76-backlight.desktop
 	install -m644 -D system76-firmware.desktop ${pkgdir}/usr/share/applications/system76-firmware.desktop
-
-	# Install certificates and keys
-	install -m644 -D pinned/ssl/certs/firmware.system76.com.cert ${pkgdir}/usr/share/system76-driver/ssl/certs/firmware.system76.com.cert
-	install -m644 -D pinned/keys/verify ${pkgdir}/usr/share/system76-driver/keys/verify
 
 	# Create /var/lib/system76-driver directory for brightness settings saving
 	install -m755 -d ${pkgdir}/var/lib/${pkgname}
