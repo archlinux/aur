@@ -6,8 +6,8 @@ _subarchs=(armv5 armv6h armv7h armv8)
 _pkgrel_upstream=1
 pkgbase='distccd-alarm'
 pkgname=("${_subarchs[@]/#/$pkgbase-}")
-_date=20180511
-pkgver=8.1.0
+_date=20180704
+pkgver=8.1.1
 pkgrel=1
 arch=('x86_64')
 license=('GPL' )
@@ -25,10 +25,10 @@ source=(
 'config.in' 'service.in' 'readme.in'
 )
 #PKGEXT='.pkg.tar'
-md5sums=('4a53a800a10241734ba1abdda981a35d'
-         'a6ae48eafce2894739277b3fa2be714d'
-         '397c46ec3f34512f553fa45e92459509'
-         '16e951eef3612244e8b1438e2fc9b69e'
+md5sums=('5eae6dcdc3b6f3742d3ecd33ab4dcf69'
+         '2f120a46e85fc434225d3b13007bba16'
+         'fb55dc6fbf522ab3aae3f9e3db31f95a'
+         '919a89e12010dfb81c0a0a1266d250d8'
          '6250a214faeda10c822899f39635e71e'
          '7e664f8ce386f467f1a7381c9ac3c06f'
          'da6ee5bb971d28b85e49d456a3889349')
