@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=faf-ice-adapter-bin
-pkgver=6.3.0
+pkgver=6.3.1
 pkgrel=1
 epoch=0
 pkgdesc="A P2P connection proxy for Supreme Commander: Forged Alliance using ICE"
@@ -19,7 +19,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/FAForever/ice-adapter/releases/download/v$pkgver/faf-ice-adapter")
-md5sums=('6a49c180bd60045b44322cc5cea813ed')
+sha256sums=('07ffa3df532b2d359d68c2d14fef6be32bc3f144880716b014092230d928c44f')
 noextract=()
 validpgpkeys=()
 
@@ -28,5 +28,5 @@ pkgver() {
 }
 
 package() {
-  install -D ./faf-ice-adapter "$pkgdir/usr/bin/faf-ice-adapter"
+  install -D $srcdir/faf-ice-adapter "$pkgdir/usr/bin/faf-ice-adapter"
 }
