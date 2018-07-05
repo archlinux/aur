@@ -2,7 +2,7 @@
 
 pkgname=rofi-pass-git
 _pkgname=rofi-pass
-pkgver=5.f4255a9
+pkgver=502.4fdd367
 pkgrel=1
 pkgdesc="bash script to handle pass storages in a convenient way"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('passed-git: change fieldnames in password files')
 
 install=rofi-pass.install
 makedepends=('git')
-source=('git+https://git.53280.de/rofi-pass')
+source=('git+https://github.com/carnager/rofi-pass')
 
 pkgver() {
 	cd ${_pkgname}
