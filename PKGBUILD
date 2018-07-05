@@ -53,7 +53,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/src/${_gourl}/${_pkgname}"
-  PATH="${srcdir}/bin:$PATH" GOPATH="${srcdir}" make DESTDIR="${pkgdir}/" TAGS="sqlite tidb pam" clean generate build
+  PATH="${srcdir}/bin:$PATH" GOPATH="${srcdir}" make DESTDIR="${pkgdir}/" TAGS="sqlite pam" clean generate build
 }
 
 package() {
