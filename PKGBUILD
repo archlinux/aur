@@ -2,7 +2,7 @@
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=python2-yle-dl
-pkgver=2.32
+pkgver=2.33
 pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('python2-setuptools')
 provides=("yle-dl=$pkgver")
 conflicts=('yle-dl')
 source=("yle-dl-$pkgver.tar.gz::https://github.com/aajanki/yle-dl/archive/${pkgver}.tar.gz")
-md5sums=('2b331469d6abadaa00984958fa5d8a02')
+md5sums=('6da30a1f61a7218a69681c6f8615d9f1')
 
 package() {
   cd "yle-dl-$pkgver"
