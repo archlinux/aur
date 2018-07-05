@@ -5,8 +5,8 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=nestopia
-pkgver=1.48
-pkgrel=3
+pkgver=1.49
+pkgrel=1
 pkgdesc='An NES emulator featuring cycle exact emulation, a ridiculous number of mappers, and lots of custom sound chips.'
 url='http://0ldsk00l.ca/nestopia/'
 license=('GPL')
