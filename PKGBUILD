@@ -4,12 +4,12 @@
 
 pkgname=openfx-io
 pkgver=2.3.13
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/NatronGitHub/openfx-io"
 license=("GPL")
-depends=("ffmpeg" "openimageio" "seexpr")
+depends=("ffmpeg" "libraw" "openimageio" "seexpr")
 makedepends=("git")
 optdepends=("natron-plugins")
 source=("$pkgname::git+https://github.com/NatronGitHub/openfx-io#tag=Natron-$pkgver"
