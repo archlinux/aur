@@ -3,20 +3,20 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 pkgname=acpilight
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="A backward-compatibile xbacklight replacement based on ACPI"
 arch=('any')
-url="https://github.com/wavexx/acpilight"
+url="https://gitlab.com/wavexx/acpilight"
 license=('GPL3')
 depends=('python')
 provides=('xorg-xbacklight')
 conflicts=('xorg-xbacklight')
 install="${pkgname}".install
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/wavexx/acpilight/archive/v${pkgver}.tar.gz)
-sha512sums=('c9b5805f919172d4806942ba1987d0c11fda420a807c45c404eda83cbcfc6011729b09d7ae3113106e006d2ed65ab26e4932869305e48d9493514b597c6e9713')
+source=(https://gitlab.com/wavexx/acpilight/-/archive/v${pkgver}/acpilight-v${pkgver}.tar.bz2)
+sha512sums=('9296e4969c8015752a6fc3b3356ff75ecd6ebe4c78d0fca6f8623e25864618d7c37eb4a99006d97b8d9519a7a72042d4c8a2e47875e351f29ce9e9fbd050155b')
 
-_srcname="${pkgname}-${pkgver}"
+_srcname="${pkgname}-v${pkgver}"
 
 package() {
     cd "${_srcname}"
