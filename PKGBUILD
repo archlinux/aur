@@ -1,8 +1,8 @@
-# Maintainer: Marco Kundt <mrckndt@gmail.com>
+# Maintainer: Michael J. Pento <mjpento@verizon.net>
 
 pkgname=cppcheck-nox
 _pkgname=cppcheck
-pkgver=1.76.1
+pkgver=1.84
 pkgrel=1
 pkgdesc="A tool for static C/C++ code analysis without the GUI"
 arch=('i686' 'x86_64')
@@ -11,13 +11,13 @@ license=('GPL')
 depends=('python-pygments' 'pcre')
 makedepends=('docbook-xsl')
 source=(https://github.com/danmar/cppcheck/archive/${pkgver}.tar.gz)
-md5sums=('890f6076d66d97d9f0829a7357db84d8')
+md5sums=('ec96a80a7ddaae991a02ce0e8d06d99e')
 
 build() {
   cd "${_pkgname}-${pkgver}"
 
   LANG='en_US.UTF-8' make SRCDIR=build CFGDIR=/usr/share/cppcheck/cfg HAVE_RULES=yes
-  make DB2MAN=/usr/share/xml/docbook/xsl-stylesheets-1.79.1/manpages/docbook.xsl CFGDIR=/usr/share/cppcheck/cfg man
+  make DB2MAN=/usr/share/xml/docbook/xsl-stylesheets-1.79.2/manpages/docbook.xsl CFGDIR=/usr/share/cppcheck/cfg man
 }
 
 package() {
