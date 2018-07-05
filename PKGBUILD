@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
     mkdir -p "$srcdir/${pkgname%-git}/build"
     cd "$srcdir/${pkgname%-git}/build"
-    cmake -G Ninja ..
+    cmake -G Ninja -DBUILD_SHARED_LIBS=ON ..
 }
 
 build() {
