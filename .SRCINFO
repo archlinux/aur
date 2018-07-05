@@ -1,0 +1,23 @@
+pkgbase = proaudio-meta
+	pkgdesc = Metapackage for useful pro audio software
+	pkgver = 2018.07.05
+	pkgrel = 1
+	url = https://github.com/Bleuzen/archlinux-packages
+	arch = x86_64
+	depends = jack2-dbus
+	depends = pulseaudio-jack
+	depends = cadence
+	depends = carla
+	depends = aj-snapshot
+	depends = jack_capture
+	depends = ardour
+	depends = helm
+	depends = avldrums.lv2
+	depends = swh-plugins
+	depends = x42-plugins
+	depends = calf
+	depends = tap-plugins
+	depends = zam-plugins
+
+pkgname = proaudio-meta
+
