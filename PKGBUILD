@@ -1,6 +1,6 @@
 pkgname=golded-plus-git
 pkgver=r1530.0f6314e
-pkgrel=2
+pkgrel=4
 pkgdesc="golded-plus Fidonet Mail Reader/Editor"
 arch=('i686' 'x86_64')
 url="http://bbconf.sourceforge.net/"
@@ -12,7 +12,7 @@ provides=('golded-plus')
 
 build() {
     cd "${pkgname}"
-    make USE_NCURSES=1 KOI8=1 USE_ICONV=1 ICONV=1 WIDE_NCURSES=0
+    make USE_NCURSES=1 KOI8=1 WIDE_NCURSES=0
     pushd docs
     make tokentpl.txt
     make tokencfg.txt
@@ -27,7 +27,21 @@ prepare() {
     patch -p0 -i "${srcdir}/ncurses.diff"
     patch -p0 -i "${srcdir}/geline.diff"
     iconv -c -f cp866 -t utf8 docs/rusfaq.txt |  sed 2s/cp866/utf-8/ >docs/rusfaq.utf8
-    iconv -c -f cp866 -t utf8 docs/notework.rus |  sed 2s/cp866/utf-8/ >docs/notework.utf8
+    iconv -c -f cp866 -t utf8 docs/notework.rus |  sed 2s/cp866/utf-8/ >docs/notework_rus.utf8
+    iconv -c -f cp866 -t koi8-r docs/rusfaq.txt |  sed 2s/cp866/koi8/ >docs/rusfaq.koi8
+    iconv -c -f cp866 -t koi8-r docs/notework.rus |  sed 2s/cp866/koi8/ >docs/notework_rus.koi8
+    pushd cfgs/config
+    for i in *.ru?; do
+      iconv -c -f cp866 -t koi8-r ${i} |  sed 2s/cp866/koi8/ > ${i}.koi8
+      iconv -c -f cp866 -t utf-8 ${i} |  sed 2s/cp866/utf-8/ > ${i}.utf8 
+    done
+    iconv -c -f cp866 -t koi8-r aliasru.cfg |  sed 2s/cp866/koi8/ > aliasru.koi8
+    iconv -c -f cp866 -t utf-8 aliasru.cfg |  sed 2s/cp866/utf-8/ > aliasru.utf8 
+    popd
+    pushd cfgs/template
+    iconv -c -f cp866 -t koi8-r rusCP866.tpl |  sed 2s/cp866/koi8/ > rusKOI8.tpl
+    iconv -c -f cp866 -t utf-8 rusCP866.tpl |  sed 2s/cp866/utf-8/ > rusUTF8.tpl
+    popd
 }
 
 pkgver() {
@@ -37,7 +51,7 @@ pkgver() {
 
 package() {
     cd "$pkgname"
-    mkdir -m 655 -p ${pkgdir}/usr/share/goldedplus/{docs/config/template,docs/etc/templates,charset,colorset}
+    mkdir -m 755 -p ${pkgdir}/usr/share/goldedplus/{docs,charset,colorset,config,template}
     install -d ${pkgdir}/usr/bin
     install bin/*lnx bin/golded ${pkgdir}/usr/bin/
     mv ${pkgdir}/usr/bin/gedlnx ${pkgdir}/usr/bin/gedlnx.bin
@@ -48,12 +62,13 @@ package() {
     install -m 644 ${pkgdir}/usr/man/man1/golded.1 ${pkgdir}/usr/man/man1/gedlnx.1
     install -m 644 ${pkgdir}/usr/man/man1/goldnode.1 ${pkgdir}/usr/man/man1/gnlnx.1
     install -m 644 ${pkgdir}/usr/man/man1/rddt.1 ${pkgdir}/usr/man/man1/rddtlnx.1
-    cp -r etc ${pkgdir}/usr/share/goldedplus/docs/
-    install -m 644 cfgs/config/* ${pkgdir}/usr/share/goldedplus/docs/config
-    install -m 644 cfgs/template/* ${pkgdir}/usr/share/goldedplus/docs/config/template
+    install -m 644 etc/gecolor.conf ${pkgdir}/usr/share/goldedplus/colorset/gedcolor.cfg
+    install -m 644 cfgs/config/* ${pkgdir}/usr/share/goldedplus/config
+    install -m 644 cfgs/template/* ${pkgdir}/usr/share/goldedplus/template
     install -m 644 cfgs/charset/* ${pkgdir}/usr/share/goldedplus/charset
     install -m 644 cfgs/colorset/* ${pkgdir}/usr/share/goldedplus/colorset
-    install -m 644 docs/{rusfaq,notework}.utf8 ${pkgdir}/usr/share/goldedplus/docs
+    install -m 644 docs/*.utf8 ${pkgdir}/usr/share/goldedplus/docs
+    install -m 644 docs/*.koi8 ${pkgdir}/usr/share/goldedplus/docs
     install -m 644 docs/{tips,linux,notework,tokencfg,tokentpl}.txt ${pkgdir}/usr/share/goldedplus/docs
 }
 
