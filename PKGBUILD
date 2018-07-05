@@ -1,6 +1,6 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
-_ver=2.5.2
+_ver=2.5.3
 pkgname=macports-base
 pkgver=${_ver/-/}
 pkgrel=1
@@ -20,7 +20,7 @@ optdepends=(
     'rsync: for syncing sources via rsync'
 )
 source=("https://github.com/macports/macports-base/releases/download/v$_ver/MacPorts-$_ver.tar.bz2"{,.asc})
-sha256sums=('c0fb9225cba0ccfd68194375dd8ea01d3b9634d3642693805fa23712f9bd58a7'
+sha256sums=('5e2b31674f7e0108b63865aeeee4414d793645ee8faef7c9aa23c0ae72ce51d1'
             'SKIP')
 validpgpkeys=(
     'C403793657236DCF2E580C0201FF673FB4AAE6CD'
