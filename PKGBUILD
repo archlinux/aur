@@ -1,4 +1,4 @@
-## Package Maintainer: KarlK
+## Package Maintainer: Karl-K
 
 
 pkgname=virtualshield-openrc
