@@ -1,0 +1,20 @@
+pkgbase = rnp
+	pkgdesc = High performance C++ OpenPGP library derived from NetPGP
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/riboseinc/rnp
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = cmake
+	makedepends = cmocka
+	makedepends = pkgconf
+	depends = botan
+	depends = zlib
+	depends = bzip2
+	depends = json-c
+	source = https://github.com/riboseinc/rnp/archive/v0.9.0.tar.gz
+	sha512sums = 326d2775423b604ed3a189a1c9714746f9610b1c888a69edcc34cf6d58cd31d5491a8364730fdb787d994eda93f56ffe4b8001117cb29b774904b5a342458149
+
+pkgname = rnp
+
