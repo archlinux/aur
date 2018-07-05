@@ -1,0 +1,25 @@
+pkgbase = webwatcher-git
+	pkgdesc = Know when your websites are misbehaving!
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/kjlaw89/webwatcher
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = glib2
+	depends = sqlite
+	depends = libsoup
+	depends = json-glib
+	depends = libappindicator-gtk3
+	conflicts = webwatcher
+	source = git+https://github.com/kjlaw89/webwatcher.git
+	md5sums = SKIP
+
+pkgname = webwatcher-git
+
