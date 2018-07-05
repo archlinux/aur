@@ -1,14 +1,14 @@
 # Maintainer: Marcin Mielniczuk <marmistrz@inboxalias.com>
 
 pkgname=ivan
-pkgver=0.52
-_vertag=052
+pkgver=0.53
+_vertag=053
 pkgrel=1
 pkgdesc="Iter Vehemens ad Necem - a tile-graphics roguelike with limb dismembering"
 arch=('i686' 'x86_64')
 url="https://attnam.com"
 license=('GPL2')
-depends=('sdl')
+depends=('sdl' 'sdl2_mixer')
 makedepends=('git')
 source=("git+https://github.com/Attnam/ivan.git#tag=v${_vertag}")
 sha1sums=("SKIP")
