@@ -7,11 +7,11 @@
 set -u
 _pkgname='vde2'
 pkgname="${_pkgname}-svn"
-pkgver=2.3.2.r587
+pkgver=2.3.2.r588
 pkgrel=1
 pkgdesc='Virtual Distributed Ethernet for emulators like qemu'
 arch=('i686' 'x86_64')
-url='http://sourceforge.net/projects/vde/'
+url='https://sourceforge.net/projects/vde/'
 license=('GPL' 'LGPL' 'CUSTOM')
 depends=('bash' 'libpcap' 'openssl')
 makedepends=('python')
@@ -70,14 +70,14 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
-  make -s # -j "$(nproc)" # Not multi threaded make compatible
+  make -s -j1 # Not multi threaded make compatible
   set +u
 }
 
 package() {
   set -u
   cd "${_srcdir}"
-  make prefix="${pkgdir}/usr" sysconfdir="${pkgdir}/etc" sbindir="${pkgdir}/usr/bin" libexecdir="${pkgdir}/usr/lib/vde2" install
+  make -j1 prefix="${pkgdir}/usr" sysconfdir="${pkgdir}/etc" sbindir="${pkgdir}/usr/bin" libexecdir="${pkgdir}/usr/lib/vde2" install
   #install -Dpm755 "${srcdir}/vde.rc" "${pkgdir}/etc/rc.d/vde"
   #install -Dpm644 "${srcdir}/vde.conf" "${pkgdir}/etc/conf.d/vde"
   install -Dpm644 "${srcdir}/vde-config.sample" -t "${pkgdir}/etc/vde/"
