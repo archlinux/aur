@@ -27,6 +27,6 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 	cp licenses/* "${pkgdir}/usr/share/licenses/${pkgname}"
 
-	make DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
 
