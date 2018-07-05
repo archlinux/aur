@@ -2,9 +2,9 @@
 
 pkgname=gnucash-xbt
 _pkgname=gnucash
-pkgver=3.1
-pkgrel=2
-_sourcerel=-1
+pkgver=3.2
+pkgrel=1
+_sourcerel=
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
 arch=(x86_64)
 url="http://www.gnucash.org"
@@ -17,20 +17,17 @@ optdepends=(
 	'perl-finance-quote: for stock information lookups'
 	'perl-date-manip: for stock information lookups'
 )
-options=(!makeflags !emptydirs)
+options=(!emptydirs)
 conflicts=(gnucash gnucash-devel)
 provides=(gnucash)
 source=("https://github.com/Gnucash/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}${_sourcerel}.tar.bz2"
-		"xbt.patch"
-		"gcc8.patch")
-sha1sums=('8ba1e61db532571e9c5423caadfbc551f6fb1b82'
-		  '52cf6820bf1dd87b5807997e49ec9c861ff516af'
-		  '26704ecc0d611eff806b6bc7c3f1b632f1348980')
+        "xbt.patch")
+sha1sums=('4ab5baf0d7328e7b6f6a0cb0b4fea3864beb17dd'
+          '52cf6820bf1dd87b5807997e49ec9c861ff516af')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   patch -Np0 -i "${srcdir}/xbt.patch"
-  patch -Np0 -i "${srcdir}/gcc8.patch"
 
   cd "${srcdir}"
   mkdir build
