@@ -1,8 +1,8 @@
 pkgbase = vna_j
 	pkgdesc = HAMRADIO MiniVNA MAX6 network analyser software
 	pkgver = 3.2.7
-	pkgrel = 1
-	url = http://dl2sba.com/index.php?option=com_content&view=article&id=39&Itemid=29
+	pkgrel = 2
+	url = http://vnaj.dl2sba.com/
 	install = vna_j.install
 	arch = any
 	license = custom

@@ -4,11 +4,11 @@
 pkgname=vna_j
 _realname=vnaJ
 pkgver=3.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="HAMRADIO MiniVNA MAX6 network analyser software"
 arch=('any')
 license=('custom')
-url="http://dl2sba.com/index.php?option=com_content&view=article&id=39&Itemid=29"
+url="http://vnaj.dl2sba.com/"
 depends=('java-environment' 'hicolor-icon-theme' 'bash')
 optdepends=('xdg-utils: desktop & menu shortcut support')
 makedepends=('imagemagick')
