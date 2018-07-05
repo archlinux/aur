@@ -1,7 +1,7 @@
 pkgbase = gcsf-git
 	pkgdesc = a FUSE file system based on Google Drive (Written by Rust)
 	pkgver = r161.cc3f079
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/harababurel/gcsf
 	install = gcsf-git.install
 	arch = x86_64
