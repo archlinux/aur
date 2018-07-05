@@ -1,12 +1,12 @@
 pkgbase = ymph
 	pkgdesc = Youtube Music Playlist Helper - Daemonizes playlists (audio only)
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Organic-Code/ymph
 	arch = any
 	license = MIT
 	makedepends = coreutils
-	depends = bash
+	depends = bash>=4
 	depends = coreutils
 	depends = ffmpeg
 	depends = grep
@@ -18,8 +18,8 @@ pkgbase = ymph
 	depends = openbsd-netcat
 	depends = vlc
 	provides = ymph
-	source = https://github.com/Organic-Code/ymph/archive/1.0.tar.gz
-	md5sums = 469b01fb964b1514aa7ade10d76b3feb
+	source = https://github.com/Organic-Code/ymph/archive/1.0.1.tar.gz
+	md5sums = 1e8a3ca6f2585d8e34c9c1ad58c11708
 
 pkgname = ymph
 
