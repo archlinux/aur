@@ -7,9 +7,9 @@ pkgdesc='Hides the titlebar when a window is maximized in Gnome/Cinnamon'
 arch=('any')
 depends=('python-xlib')
 url='https://github.com/memeplex/maximal'
-source=('maximal')
-md5sums=('199e949eebe8265b5676bda6ed5a45a9')
+source=("git+$url.git")
+md5sums=('SKIP')
 
 package() {
-    install -D maximal $pkgdir/usr/bin/maximal
+    install -D $srcdir/maximal/maximal $pkgdir/usr/bin/maximal
 }

@@ -5,8 +5,7 @@ pkgbase = maximal
 	url = https://github.com/memeplex/maximal
 	arch = any
 	depends = python-xlib
-	source = maximal
-	md5sums = 199e949eebe8265b5676bda6ed5a45a9
+	source = git+https://github.com/memeplex/${pkgname}.git
 
 pkgname = maximal
 
