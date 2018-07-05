@@ -6,7 +6,7 @@
 
 _pkgname=OpenSC
 pkgname=opensc-git
-pkgver=0.17.0+227+g54097c0f
+pkgver=0.18.0+130+g88de66bb
 pkgrel=1
 pkgdesc='Tools and libraries for smart cards'
 arch=('x86_64')
@@ -18,20 +18,12 @@ depends=('pcsclite' 'libltdl' 'glib2')
 options=('!emptydirs')
 conflicts=('opensc')
 provides=('opensc')
-source=("git+https://github.com/OpenSC/OpenSC.git#branch=master"
-        'bash-completion-path.patch')
-sha256sums=('SKIP'
-            'bd0991dc8d68b21704104aba4d3470f4f4f50bf36547569ed032b48fd3aed811')
+source=("git+https://github.com/OpenSC/OpenSC.git#branch=master")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
     git describe --tags | sed 's/^opensc-//;s/-/+/g'
-}
-
-
-prepare() {
-    cd "$srcdir/$_pkgname"
-    patch -Np0 -i "$srcdir/bash-completion-path.patch"
 }
 
 build() {

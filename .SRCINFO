@@ -1,6 +1,6 @@
 pkgbase = opensc-git
 	pkgdesc = Tools and libraries for smart cards
-	pkgver = 0.17.0+227+g54097c0f
+	pkgver = 0.18.0+130+g88de66bb
 	pkgrel = 1
 	url = https://github.com/OpenSC/OpenSC/wiki
 	arch = x86_64
@@ -15,9 +15,7 @@ pkgbase = opensc-git
 	options = !emptydirs
 	backup = etc/opensc.conf
 	source = git+https://github.com/OpenSC/OpenSC.git#branch=master
-	source = bash-completion-path.patch
 	sha256sums = SKIP
-	sha256sums = bd0991dc8d68b21704104aba4d3470f4f4f50bf36547569ed032b48fd3aed811
 
 pkgname = opensc-git
 
