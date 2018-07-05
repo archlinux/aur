@@ -1,6 +1,6 @@
 pkgbase = otbluh
 	pkgdesc = Simple one time pad implementation with key generating support called onetimebluh due to its features
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://git.eigenlab.org/seppia/onetimebluh
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = otbluh
 	depends = openssl
 	provides = otbluh
 	conflicts = otbluh-git
-	source = https://git.seppia.net/onetimebluh.git/snapshot/onetimebluh-0.1.tar.gz
-	sha256sums = efde76c8832d8f9bdd514cd4906424f86cf40f9d183e2b047c64a05a3ee88728
+	source = https://git.seppia.net/onetimebluh.git/snapshot/onetimebluh-0.2.tar.gz
+	sha256sums = 479bbeb9f860d50aabe6db561965b231fec496478baa81a1f08128d7743783ad
 
 pkgname = otbluh
 
