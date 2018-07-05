@@ -1,0 +1,14 @@
+--- build.sh.orig	2018-07-06 00:43:04.030029578 +0300
++++ build.sh	2018-07-06 00:43:29.203926254 +0300
+@@ -23,11 +23,6 @@
+ rm -rf out/ obj/ tmp/
+ 
+ mkdir -p out
+-if [ "$1" != "debian" ]; then
+-	echo Creating source archive...
+-	$tar --transform "s,^,quicktun-`cat version`/," -czf "out/quicktun-`cat version`.tgz" build.sh clean.sh debian src version --exclude "debian/data"
+-fi
+-
+ mkdir -p obj tmp tmp/include tmp/lib
+ 
+ export LIBRARY_PATH="/usr/local/lib/:${LIBRARY_PATH}"
