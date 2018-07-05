@@ -1,0 +1,20 @@
+pkgbase = python-wfdb
+	pkgdesc = A library of tools for reading, writing, and processing WFDB signals and annotations
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/MIT-LCP/wfdb-python
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-nose
+	depends = python-pandas
+	depends = python-requests
+	depends = python-scikit-learn
+	source = https://github.com/MIT-LCP/wfdb-python/archive/2.2.0.tar.gz
+	sha256sums = d93fdad3950edfb6edd3724c5e5019ca351f81fa599f98f54a43051f41888cc8
+
+pkgname = python-wfdb
+
