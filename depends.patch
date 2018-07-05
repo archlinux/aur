@@ -1,16 +1,22 @@
---- setup.py.orig	2018-06-28 20:07:40.290566100 -0300
-+++ setup.py	2018-06-28 20:07:50.203657200 -0300
-@@ -102,12 +102,9 @@
-     packages=['stlib'],
+--- setup.py.orig	2018-07-05 08:49:54.644958748 -0300
++++ setup.py	2018-07-05 09:01:03.838268161 -0300
+@@ -135,7 +135,7 @@
+ 
+ setup(
+     name='stlib',
+-    version='0.4.1.rc1',
++    version='0.5.0.rc1',
+     description="Async library that provides features related to Steam client and compatible stuffs",
+     author='Lara Maia',
+     author_email='dev@lara.click',
+@@ -147,8 +147,8 @@
      package_dir={'stlib': 'src'},
      ext_modules=[steam_api],
--    requires=['aiodns',
--              'aiohttp',
-+    requires=['aiohttp',
-               'asyncio',
+     data_files=[EXTRA_PREBUILT],
+-    requires=['aiohttp',
+-              'asyncio',
++#    requires=['aiohttp',
++     requires=['asyncio',
                'beautifulsoup4',
--              'cchardet',
--              'ujson',
                'rsa',
                ],
-     python_requires='>=3.6',
