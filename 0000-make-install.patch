@@ -1,0 +1,68 @@
+--- Makefile.orig	2015-11-18 15:12:06.000000000 -0500
++++ Makefile	2018-07-04 17:18:54.680325305 -0400
+@@ -143,64 +143,22 @@ p2cc: p2cc.perl
+ COPY = cp
+ 
+ newhome:
+ 	rm -f trans.o     # force trans.c to be recompiled (if HOMEDIR changes)
+ 
+-install: proto \
+-	makedirs \
+-	$(BINDIR)/p2c         \
+-	$(BINDIR)/p2cc        \
+-	$(LIBDIR)/libp2c.a    \
+-	$(MANDIR)/p2c.1	      \
+-	$(INCDIR)/p2c.h	      \
+-	$(HOMEDIR)/p2crc      \
+-	$(HOMEDIR)/loc.p2crc  \
+-	$(HOMEDIR)/system.imp \
+-	$(HOMEDIR)/system.m2  \
+-	$(HOMEDIR)/turbo.imp  \
+-	$(HOMEDIR)/string.pas
+-
+-SHELL=/bin/sh
+-makedirs:
+-	if [ ! -d $(HOMEDIR) ]; then mkdir $(HOMEDIR); else true; fi
+-	if [ ! -d $(BINDIR) ]; then mkdir $(BINDIR); else true; fi
+-	if [ ! -d $(LIBDIR) ]; then mkdir $(LIBDIR); else true; fi
+-	if [ ! -d $(MANDIR) ]; then mkdir $(MANDIR); else true; fi
+-	if [ ! -d $(INCDIR) ]; then mkdir $(INCDIR); else true; fi
+-
+-$(BINDIR)/p2c: p2c
++install:
+ 	$(COPY)  p2c          $(BINDIR)/p2c
+-
+-$(BINDIR)/p2cc: p2cc
+ 	$(COPY)  p2cc         $(BINDIR)/p2cc
+-
+-$(LIBDIR)/libp2c.a: libp2c.a
+ 	$(COPY)  libp2c.a     $(LIBDIR)/libp2c.a
+ 	if [ -f /usr/bin/ranlib -o -f /bin/ranlib ]; then ranlib $(LIBDIR)/libp2c.a; fi
+-
+-$(MANDIR)/p2c.1: $(MANFILE)
+ 	$(COPY)  $(MANFILE)   $(MANDIR)/p2c.1
+-
+-$(INCDIR)/p2c.h: p2c.h
+ 	$(COPY)  p2c.h        $(INCDIR)/p2c.h
+-
+-$(HOMEDIR)/p2crc: sys.p2crc
+ 	$(COPY)  sys.p2crc    $(HOMEDIR)/p2crc
+-
+-$(HOMEDIR)/loc.p2crc: loc.p2crc
+ 	$(COPY)  loc.p2crc    $(HOMEDIR)/loc.p2crc
+-
+-$(HOMEDIR)/system.imp: system.imp
+ 	$(COPY)  system.imp   $(HOMEDIR)/system.imp
+-
+-$(HOMEDIR)/system.m2: system.m2
+ 	$(COPY)  system.m2    $(HOMEDIR)/system.m2
+-
+-$(HOMEDIR)/turbo.imp: turbo.imp
+ 	$(COPY)  turbo.imp    $(HOMEDIR)/turbo.imp
+-
+-$(HOMEDIR)/string.pas: string.pas
+ 	$(COPY)  string.pas   $(HOMEDIR)/string.pas
+ 
+ 
+ 
+ # Miscellaneous
