@@ -1,0 +1,7 @@
+--- CMakeLists.txt	2018-07-06 01:14:01.114978618 +0800
++++ CMakeLists.txt	2018-07-06 01:14:25.542122689 +0800
+@@ -5,3 +5,3 @@
+ option(ENABLE_TESTS "Set to ON to enable building of tests" OFF)
+-option(BUILD_SHARED_LIBS "Build tgbot-cpp shared/static library." OFF)
++option(BUILD_SHARED_LIBS "Build tgbot-cpp shared/static library." ON)
+
