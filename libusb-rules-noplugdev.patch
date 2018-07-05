@@ -1,0 +1,22 @@
+diff -Nur original/udev/99-blackberry-perms.rules modified/udev/99-blackberry-perms.rules
+--- original/udev/99-blackberry-perms.rules	2013-11-17 23:56:58.000000000 +0000
++++ modified/udev/99-blackberry-perms.rules	2018-07-05 14:54:40.502657538 +0100
+@@ -3,12 +3,10 @@
+ # broad ruleset.  It runs no external commands, so this broad ruleset
+ # should not impact performance at all.
+ #
+-# Note: for opensuse-11.1, use the group 'dialout'
+-#
+-ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0001", GROUP="plugdev", MODE="0664"
+-ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0004", GROUP="plugdev", MODE="0664"
+-ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0006", GROUP="plugdev", MODE="0664"
+-ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8001", GROUP="plugdev", MODE="0664"
+-ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8004", GROUP="plugdev", MODE="0664"
+-ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8007", GROUP="plugdev", MODE="0664"
++ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0001", MODE="0666"
++ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0004", MODE="0666"
++ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0006", MODE="0666"
++ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8001", MODE="0666"
++ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8004", MODE="0666"
++ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8007", MODE="0666"
+ 

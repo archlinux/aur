@@ -1,7 +1,7 @@
 pkgbase = barry
 	pkgdesc = Barry is an Open Source application that provides a Desktop GUI, synchronization, backup, restore and program management for BlackBerry ™ devices.
 	pkgver = 0.18.5
-	pkgrel = 6
+	pkgrel = 8
 	url = https://github.com/NetDirect/barry
 	arch = i686
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = barry
 	source = wx3.0-compat.patch
 	source = c++11.patch
 	source = iterator-buildfix.patch
+	source = libusb-rules-noplugdev.patch
 	sha256sums = cfe5224c34b25575543bbdeebf979074f76ccc7d37116f15aef20509e6c06c91
 	sha256sums = aa97e456e0bb1f39cf0d95b1f35080d328947a3bcf40b2b97a0ab11ad34ccc21
 	sha256sums = 1c6ecd68977da4a3184c3e6d4bea36e4c40949d6bf7bb4ad8717aa6c19fed4fa
@@ -31,6 +32,7 @@ pkgbase = barry
 	sha256sums = d89dec40916c99355426a9430130a34b9c9f8deccf2e0bd2be75c6eea46249f3
 	sha256sums = bd211b7323a36f255af7cad13b886d8bb45d74f1d2bcecef00733bb5a9080f2c
 	sha256sums = 690d6d9cdd5f84ac120e5e2a0c974916217a059c25ad08dd1b45b33d858993ad
+	sha256sums = 2da11475bb3d5c9c94f7625b33e3ae29442413b25f320e9f70d4777180d5bd4a
 
 pkgname = barry
 
