@@ -2,7 +2,6 @@
 # Contributor: Iru Cai <mytbk920423@gmail.com>
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
-
 pkgname=gimp-git
 epoch=1
 pkgver=2.10.2.647.g8e6a5298c1
@@ -16,7 +15,7 @@ depends=(
   'libgexiv2' 'librsvg>=2.16.1' 'desktop-file-utils'
   'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'dbus-glib' 'gtk-doc'
   'poppler-glib' 'poppler-data' 'openexr>=1.6.1' 'mypaint-brushes>=1.3.0'
-  'babl>=0.1.46' 'gegl-git>0.4.0' 'icu' 'enchant'
+  'babl>=0.1.46' 'gegl-git>0.4.0' 'icu' 'enchant' 'appstream-glib>=0.7.7'
 )
 makedepends=(
   'git' 'gutenprint>=5.0.0' 'intltool>=0.40.1'

@@ -33,6 +33,7 @@ pkgbase = gimp-git
 	depends = gegl-git>0.4.0
 	depends = icu
 	depends = enchant
+	depends = appstream-glib>=0.7.7
 	optdepends = gutenprint: for sophisticated printing only as gimp has built-in cups print support
 	optdepends = alsa-lib: for MIDI event controller module
 	optdepends = curl: for URI support
