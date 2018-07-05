@@ -1,6 +1,6 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 pkgname=usacloud-bin
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="CLI client for the Sakura Cloud"
 arch=('any')
@@ -8,8 +8,8 @@ url="https://github.com/sacloud/usacloud"
 license=('Apache')
 source_x86_64=("${url}/releases/download/v${pkgver}/usacloud_linux-amd64.zip")
 source_i686=("${url}/releases/download/v${pkgver}/usacloud_linux-386.zip")
-sha256sums_x86_64=('a3957445583b4afc3a263f9b8a216625226c523a47a7db078446404ba5e73037')
-sha256sums_i686=('503f5f64e172eab1367e86bd5d94e120c17ee94ac244460741555827c842f1d7')
+sha256sums_x86_64=('e17e6624472d305900d8faf421e8417b24769be4ab4e046807e28b9f7ae7a3e9')
+sha256sums_i686=('7d35b9a662cf5720334b86c97ee2c300c9e33bd4033005330107bcf34e114580')
 
 
 package() {
