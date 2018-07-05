@@ -20,7 +20,7 @@ pkgbase = gegl-git
 	makedepends = libtiff
 	makedepends = suitesparse
 	makedepends = gobject-introspection
-	depends = babl>=0.1.26
+	depends = babl>=0.1.52
 	depends = libspiro
 	depends = json-glib
 	optdepends = openexr: for using the openexr plugin
