@@ -8,7 +8,7 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
 pkgver=2.33.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -17,9 +17,9 @@ conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
 source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
-        '0001-dirs-improve-identification-of-Arch-Linux-like-syste.patch')
+        '0001-dirs-improve-distro-detection-for-Antegros.patch')
 sha256sums=('ac36fc0093c3eb3eaf2158db3ad3a26114903724d6cb98b7068fe45d6b440d94'
-           '8f3d31705c1d32f5b199c0794f03acf40e2eb8e0c54fb5cb49831fdbfe5aaf80')
+           'a86152415ff57cd9d4e6bf306fb9a81dc26a762fdbb0785f815eec243a50a377')
 
 _gourl=github.com/snapcore/snapd
 
@@ -35,7 +35,7 @@ prepare() {
   mkdir -p "$(dirname "$GOPATH/src/${_gourl}")"
   ln --no-target-directory -fs "$srcdir/$pkgname-$pkgver" "$GOPATH/src/${_gourl}"
 
-  patch -Np1 -i "$srcdir/0001-dirs-improve-identification-of-Arch-Linux-like-syste.patch"
+  patch -Np1 -i "$srcdir/0001-dirs-improve-distro-detection-for-Antegros.patch"
 }
 
 build() {

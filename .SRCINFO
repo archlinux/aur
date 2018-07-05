@@ -1,7 +1,7 @@
 pkgbase = snapd
 	pkgdesc = Service and tools for management of snap packages.
 	pkgver = 2.33.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = snapd
 	options = !strip
 	options = emptydirs
 	source = snapd-2.33.1.tar.xz::https://github.com/snapcore/snapd/releases/download/2.33.1/snapd_2.33.1.vendor.tar.xz
-	source = 0001-dirs-improve-identification-of-Arch-Linux-like-syste.patch
+	source = 0001-dirs-improve-distro-detection-for-Antegros.patch
 	sha256sums = ac36fc0093c3eb3eaf2158db3ad3a26114903724d6cb98b7068fe45d6b440d94
-	sha256sums = 8f3d31705c1d32f5b199c0794f03acf40e2eb8e0c54fb5cb49831fdbfe5aaf80
+	sha256sums = a86152415ff57cd9d4e6bf306fb9a81dc26a762fdbb0785f815eec243a50a377
 
 pkgname = snapd
 
