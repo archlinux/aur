@@ -7,6 +7,7 @@ pkgbase = opensc-git
 	license = LGPL
 	makedepends = docbook-xsl
 	makedepends = git
+	makedepends = bash-completion
 	depends = pcsclite
 	depends = libltdl
 	depends = glib2
