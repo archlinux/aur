@@ -1,0 +1,17 @@
+pkgbase = ngsxfem-git
+	pkgdesc = XFEM for NGSolve
+	pkgver = NGS.User.Meeting.2018
+	pkgrel = 1
+	url = https://github.com/ngsxfem/ngsxfem.git
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = cmake
+	depends = ngsolve-git
+	options = !buildflags
+	source = ngsxfem::git+https://github.com/ngsxfem/ngsxfem.git
+	md5sums = SKIP
+
+pkgname = ngsxfem-git
+
