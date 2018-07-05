@@ -1,6 +1,6 @@
 # Maintainer: Vincent Bernardoff <vb AT luminar.eu.org>
 pkgname=nng-git
-pkgver=v1.0.0.rc.1
+pkgver=v1.0.0.18.g68d117e
 pkgrel=1
 pkgdesc="Rewrite of the SP protocol library known as libnanomsg"
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
@@ -21,6 +21,7 @@ pkgver() {
 }
 
 prepare() {
+    mkdir -p "$srcdir/${pkgname%-git}/build"
     cd "$srcdir/${pkgname%-git}/build"
     cmake -G Ninja ..
 }
