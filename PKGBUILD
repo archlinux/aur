@@ -6,7 +6,7 @@
 
 pkgname=freedink
 pkgver=108.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Humorous top-down adventure and role-playing game.'
 arch=('i686' 'x86_64' 'mips64el')
 url='https://www.gnu.org/software/freedink/'
@@ -63,5 +63,5 @@ check () {
 
 package () {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}/usr" install
+	make DESTDIR="${pkgdir}" install
 }

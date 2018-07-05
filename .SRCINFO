@@ -1,7 +1,7 @@
 pkgbase = freedink
 	pkgdesc = Humorous top-down adventure and role-playing game.
 	pkgver = 108.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/freedink/
 	arch = i686
 	arch = x86_64
