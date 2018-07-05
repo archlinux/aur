@@ -49,4 +49,4 @@ Additionally you can add a shortcut like `bash -c 'killall maximal || maximal'` 
 * [X] Allow pip installation.
 * [X] Check if it works fine with multiple monitors.
 * [X] Make arch PKGBUILD.
-* [ ] Remove `time.sleep` or understand why it's needed.
+* [X] Remove `time.sleep` or understand why it's needed.

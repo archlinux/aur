@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-import time
 import signal
 import sys
 import os
@@ -17,35 +16,39 @@ def parse(env):
 
 
 def match(win):
-    target = '%s::%s' % ('::'.join(win.get_wm_class()), win.get_wm_name())
-    return ((not whitelist or any(p.match(target) for p in whitelist)) and
+    try:
+        type = win.get_full_property(type_atom, X.AnyPropertyType)
+        normal = type and type.value[0] == normal_atom
+        target = '%s::%s' % ('::'.join(win.get_wm_class()), win.get_wm_name())
+    except Exception:
+        return False
+    return (normal and
+            (not whitelist or any(p.match(target) for p in whitelist)) and
             (not blacklist or all(not p.match(target) for p in blacklist)))
 
 
-def exit(*args):
-    for win_id, value in handled.items():
-        try:
-            win = dpy.create_resource_object('window', win_id)
-            if value is None:
-                win.delete_property(hide_atom)
-            else:
-                win.change_property(hide_atom, Xatom.CARDINAL, 32, value)
-        except Exception:
-            pass
-    dpy.flush()
-    sys.exit()
-
-
 def hide(win):
-    try:
-        type = win.get_full_property(type_atom, X.AnyPropertyType)
-        if type and type.value[0] == normal_atom and match(win):
-            hide = win.get_full_property(hide_atom, X.AnyPropertyType)
-            handled[win.id] = hide and hide.value
-            time.sleep(0.3)
-            win.change_property(hide_atom, Xatom.CARDINAL, 32, [1])
-    except Exception:
-        return
+    hide = win.get_full_property(hide_atom, X.AnyPropertyType)
+    win.change_property(hide_atom, Xatom.CARDINAL, 32, [1])
+    return hide and hide.value
+
+
+def unhide(win_id, prev_value):
+    win = dpy.create_resource_object('window', win_id)
+    if prev_value is None:
+        win.delete_property(hide_atom)
+    else:
+        win.change_property(hide_atom, Xatom.CARDINAL, 32, prev_value)
+
+
+def handle(event):
+    win = event.window
+    if event.type == X.CreateNotify and match(win):
+        win.change_attributes(event_mask=X.StructureNotifyMask)
+    elif event.type == X.DestroyNotify and win.id in handled:
+        del handled[win.id]
+    elif event.type == X.MapNotify and win.id not in handled:
+        handled[win.id] = hide(win)
 
 
 def rlist(parent=None):
@@ -57,14 +60,20 @@ def rlist(parent=None):
         pass
 
 
+def exit(*args):
+    for win_id, value in handled.items():
+        unhide(win_id, value)
+    dpy.flush()
+    sys.exit()
+
+
 def loop():
     for win in rlist():
-        hide(win)
+        if match(win):
+            hide(win)
     root.change_attributes(event_mask=X.SubstructureNotifyMask)
     while True:
-        event = dpy.next_event()
-        if event.type == X.CreateNotify:
-            hide(event.window)
+        handle(dpy.next_event())
 
 
 handled = {}
