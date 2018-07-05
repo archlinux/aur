@@ -6,7 +6,7 @@
 
 pkgname=freedink-data
 pkgver=1.08.20170409
-pkgrel=3
+pkgrel=4
 pkgdesc='Humorous top-down adventure and role-playing game assets.'
 arch=('any')
 url='https://www.gnu.org/software/freedink/'
