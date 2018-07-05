@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 60201 2011-12-07 14:41:34Z arodseth $
-# Maintainer  : Lucjan SQ5FGB <lucck at boff dot pl>
+# Submitter: Lucjan SQ5FGB <lucck at boff dot pl>
+# Maintainer: Alexander Fasching OE5TKM <fasching.a91@gmail.com>
 
 pkgname=vna_j
 _realname=vnaJ
-pkgver=2.8.6f
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="HAMRADIO MiniVNA MAX6 network analyser software"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('imagemagick')
 install=vna_j.install
 source=(http://download.dl2sba.com/vnaj/$pkgver/${_realname}.${pkgver}.jar
         vnaJ.sh vnaJ.desktop http://download.dl2sba.com/vnaj/$pkgver/logo.ico)
-md5sums=('9f126a96eedfe17788e097f12c9c40e4'
+md5sums=('f33f138a7d4557e491d9f68f584d2b14'
          '305963e8e79cbab0741a535207020e2c'
          'e1f40625326a65e5df479f4eae742041'
          '9f3eed2cc9491779155f111d9e3d6bfd')
