@@ -1,6 +1,6 @@
 pkgbase = pulseeffects
 	pkgdesc = Audio Effects for Pulseaudio Applications
-	pkgver = 4.1.2
+	pkgver = 4.1.3
 	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = pulseeffects
 	optdepends = rubberband: pitch shifting
 	optdepends = mda.lv2: loudness
 	options = !emptydirs
-	source = pulseeffects-4.1.2.tar.gz::https://github.com/wwmm/pulseeffects/archive/v4.1.2.tar.gz
-	sha256sums = 0a7f9f64c444e4b3ba598923f79cf42645d20f705560f1d95c4c8b38d9930c39
+	source = pulseeffects-4.1.3.tar.gz::https://github.com/wwmm/pulseeffects/archive/v4.1.3.tar.gz
+	sha256sums = bd4dddc7f96626cbdec0f5fd45c4b235a9f082009d6f9ebccff8309faeb2ab9d
 
 pkgname = pulseeffects
 
