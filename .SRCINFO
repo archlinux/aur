@@ -1,0 +1,15 @@
+pkgbase = python-x256
+	pkgdesc = Find the nearest xterm 256 color index for an RGB
+	pkgver = r20.d4bc9f7
+	pkgrel = 1
+	url = https://github.com/magarcia/python-x256
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/magarcia/python-x256
+	sha256sums = SKIP
+
+pkgname = python-x256
+
