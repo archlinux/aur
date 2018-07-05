@@ -1,0 +1,15 @@
+pkgbase = brother-hll2370dn
+	pkgdesc = Brother ${_model} CUPS driver
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	depends = perl
+	source = http://download.brother.com/welcome/dlf103580/hll2370dnpdrv-4.0.0-1.i386.rpm
+	sha256sums = 7123c153a59d447d6ccd0ba4f73ef480f4f497a38d4340822ab4c04437bec8e7
+
+pkgname = brother-hll2370dn
+
