@@ -8,6 +8,7 @@ url="https://github.com/jonian/acestream-launcher"
 license=("GPL")
 depends=("python" "curl" "acestream-engine")
 optdepends=("mpv" "libnotify")
+makedepends=("desktop-file-utils")
 provides=("acestream-launcher")
 source=("$pkgname-$pkgver::https://github.com/jonian/acestream-launcher/archive/v$pkgver.tar.gz")
 md5sums=("de43dea785f3f753cbd453a2d6f52440")
