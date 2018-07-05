@@ -9,7 +9,7 @@ _pkgname='gitea'
 _gourl='code.gitea.io'
 pkgname=gitea-git
 pkgrel=1
-pkgver=r6429.85414d8b7
+pkgver=r6495.cfb76cd99
 pkgdesc='A painless self-hosted Git service.'
 url='https://gitea.io/'
 license=('MIT')
@@ -66,5 +66,6 @@ package() {
   install -Dm0755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm0644 "custom/conf/app.ini.sample" "${pkgdir}/etc/${_pkgname}/app.ini"
   install -Dm0644 "contrib/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm0644 "${srcdir}/${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
   install -Dm0644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
