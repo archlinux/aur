@@ -45,3 +45,30 @@ index 16a3a7a4f32c5e830254d160f395520505d6dd62..c37733ff250ab049aa18f60a54dd768d
 -- 
 2.18.0
 
+From 24ff45db682acb8265a98cd6b2c87453f8b6a99e Mon Sep 17 00:00:00 2001
+Message-Id: <24ff45db682acb8265a98cd6b2c87453f8b6a99e.1530787202.git.maciej.zenon.borzecki@canonical.com>
+From: Maciej Borzecki <maciej.zenon.borzecki@canonical.com>
+Date: Thu, 5 Jul 2018 11:04:05 +0200
+Subject: [PATCH] dirs: fix antergos typo
+
+Signed-off-by: Maciej Borzecki <maciej.zenon.borzecki@canonical.com>
+---
+ dirs/dirs.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dirs/dirs.go b/dirs/dirs.go
+index c37733ff250ab049aa18f60a54dd768dbe2b04d7..2087fdf2baef19ee8f2553cced964b4010001a09 100644
+--- a/dirs/dirs.go
++++ b/dirs/dirs.go
+@@ -179,7 +179,7 @@ func SetRootDir(rootdir string) {
+ 	}
+ 	GlobalRootDir = rootdir
+ 
+-	if release.DistroLike("fedora", "arch", "manjaro", "antegros") {
++	if release.DistroLike("fedora", "arch", "manjaro", "antergos") {
+ 		SnapMountDir = filepath.Join(rootdir, "/var/lib/snapd/snap")
+ 	} else {
+ 		SnapMountDir = filepath.Join(rootdir, defaultSnapMountDir)
+-- 
+2.18.0
+

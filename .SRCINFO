@@ -22,9 +22,9 @@ pkgbase = snapd
 	options = !strip
 	options = emptydirs
 	source = snapd-2.33.1.tar.xz::https://github.com/snapcore/snapd/releases/download/2.33.1/snapd_2.33.1.vendor.tar.xz
-	source = 0001-dirs-improve-distro-detection-for-Antegros.patch
+	source = antergos-detection.patch
 	sha256sums = ac36fc0093c3eb3eaf2158db3ad3a26114903724d6cb98b7068fe45d6b440d94
-	sha256sums = a86152415ff57cd9d4e6bf306fb9a81dc26a762fdbb0785f815eec243a50a377
+	sha256sums = 0c801960629d42b3704c20d9bd4464aa5b7f1a67378c4baf8339154e601489d7
 
 pkgname = snapd
 
