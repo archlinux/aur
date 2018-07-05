@@ -5,6 +5,7 @@ pkgbase = sopcast-launcher
 	url = https://github.com/jonian/sopcast-launcher
 	arch = any
 	license = GPL
+	makedepends = desktop-file-utils
 	depends = python-psutil
 	depends = python-notify2
 	depends = sopcast

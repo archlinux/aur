@@ -8,6 +8,7 @@ url="https://github.com/jonian/sopcast-launcher"
 license=("GPL")
 depends=("python-psutil" "python-notify2" "sopcast")
 optdepends=("vlc")
+makedepends=("desktop-file-utils")
 provides=("sopcast-launcher")
 source=("$pkgname-$pkgver::https://github.com/jonian/sopcast-launcher/archive/v$pkgver.tar.gz")
 md5sums=("0eb32ee8d45d67bdd40e21c388733a86")
