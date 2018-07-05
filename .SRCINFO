@@ -1,7 +1,7 @@
 pkgbase = freedink-data
 	pkgdesc = Humorous top-down adventure and role-playing game assets.
 	pkgver = 1.08.20170409
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/freedink/
 	arch = any
 	license = GPL3
