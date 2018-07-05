@@ -6,6 +6,7 @@ pkgbase = kickoff-player-git
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = desktop-file-utils
 	depends = gtk3
 	depends = gstreamer
 	depends = gst-plugins-bad
