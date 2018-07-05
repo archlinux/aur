@@ -2,7 +2,7 @@
 
 _pkgname=sickrage2
 pkgname=$_pkgname-git
-pkgver=2018.02.17.1.r0.g5066fab23
+pkgver=2018.06.15.1.r1.g807c5ae37
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/SickRage/SickRage"
 license=('GPL3')
 #'python2-vcr' 'unrar'
 makedepends=('git')
-depends=('python2-babel' 'python2-cheetah' 'python2-mako')
+depends=('nodejs' 'python2-babel' 'python2-cheetah' 'python2-mako')
 #         'deluge: supported torrent client'
 #         'qbittorrent: supported torrent client'
 #         'rtorrent: supported torrent client'

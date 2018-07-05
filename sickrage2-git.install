@@ -2,6 +2,7 @@ post_install() {
   systemd-sysusers sickrage.conf
   systemd-tmpfiles --create sickrage.conf
   chown -R sickrage:sickrage /opt/sickrage
+
   echo "==> Start and enable sickrage.service. Then visit http://localhost:8081/"
 }
 
