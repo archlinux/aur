@@ -1,0 +1,16 @@
+pkgbase = gpd-pocket-support-bcm4356-git
+	pkgdesc = Provides an additionally needed firmware file brcmfmac4356-pcie.txt for the Broadcom BCM4356 WiFi in the GPD Pocket. (If you have 'gpd-pocket-support' installed you already have this.)
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/joshskidmore/gpd-pocket-arch-packages/tree/master/gpd-pocket-support
+	arch = any
+	license = MIT
+	provides = gpd-pocket-support-bcm4356=0.2.5
+	conflicts = gpd-pocket-support
+	conflicts = gpd-pocket-support-bcm4356
+	replaces = gpd-pocket-support-bcm4356<0.2.5
+	source = gpd-pocket-arch-packages::git+git://github.com/joshskidmore/gpd-pocket-arch-packages
+	sha256sums = SKIP
+
+pkgname = gpd-pocket-support-bcm4356-git
+
