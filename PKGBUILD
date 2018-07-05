@@ -5,7 +5,7 @@
 
 pkgname=natron
 pkgver=2.3.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
 url="https://github.com/NatronGitHub/Natron"
@@ -83,5 +83,8 @@ build() {
 package() {
   cd "$srcdir/$pkgname/build"
   make INSTALL_ROOT="$pkgdir" install
+  install -d "$pkgdir/usr/share/Natron/Plugins/"
+  cp -r "$srcdir/$pkgname/Gui/Resources/PyPlugs" \
+        "$pkgdir/usr/share/Natron/Plugins/"
 }
 
