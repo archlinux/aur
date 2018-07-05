@@ -8,7 +8,7 @@
 
 pkgname=thunderbird-gtk2
 _pkgname=thunderbird
-pkgver=52.8.0
+pkgver=52.9.0
 pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org"
 arch=(i686 x86_64)
@@ -26,7 +26,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
         no-crmf.diff rust-i686.patch fix-wifi-scanner.diff
         $_pkgname.desktop thunderbird-install-dir.patch)
-sha256sums=('35b9a687997d92f36107090c1217941e5d637760b0efa7d13819cde36894eb59'
+sha256sums=('7301d61b6ab373f6c37a76c3f562596f4ce1ed10ef12c96dd5a60b37e0c1b8dd'
             '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
             'a7317caba56e89932bd9e3b9352d94701dd9a419685057f238b1ded8dc0adcd7'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
