@@ -1,7 +1,7 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=whatwg-html
 pkgver=2017_08
-pkgrel=1
+pkgrel=2
 pkgdesc="Clone the WHATWG HTML specification with local resources"
 arch=('any')
 url="https://www.github.com/whatwg/html-build"
@@ -36,7 +36,7 @@ build() {
     msg "The local files are updated."
   else
     msg "Cloning..."
-    git clone --depth 1 "$_htmlroot" "$_html"
+    git clone --depth 5 "$_htmlroot" "$_html"
     cd "$_html"
     msg "Clone completed."
   fi

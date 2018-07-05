@@ -1,7 +1,7 @@
 pkgbase = whatwg-html
 	pkgdesc = Clone the WHATWG HTML specification with local resources
 	pkgver = 2017_08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/whatwg/html-build
 	arch = any
 	license = GPL
