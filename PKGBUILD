@@ -1,7 +1,7 @@
 # Maintainer: svexican (svexican@fastmail.com)
 
 pkgname=bubbleswm-git
-pkgver=r241.1bc31b8
+pkgver=gitrev
 pkgrel=1
 pkgdesc="bubbles is opinionated, tiny, bloat-less (=> fast) floating window manager for X."
 arch=('i686' 'x86_64')
