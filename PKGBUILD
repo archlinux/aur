@@ -4,7 +4,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=182.3458.8
+_buildver=182.3569.5
 _pkgver=2018.2
 _eap=true
 pkgver="${_pkgver}.${_buildver}"
@@ -42,7 +42,7 @@ else
 	"${pkgname}.desktop")
 fi
 	
-sha256sums=("0a973f31b71f554a834e53005cd20c282fe8eb891c5f01628ef09ae9fa9d1ac8"
+sha256sums=("6dd07a2d38f69572245eba9250a0813329559f6e9a611c8af3c02b93495736e8"
 	    "aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
 
 prepare() {
