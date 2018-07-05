@@ -1,6 +1,6 @@
 #Maintainer : Papajoke <papajoke [at] manjaro [dot] fr>
 pkgname=pacnew-chaser
-pkgver=0.9.21
+pkgver=0.9.21.1
 pkgrel=1
 url="https://www.manjaro.fr/forum/viewtopic.php?f=28&t=10284"
 pkgdesc="manage .pacnew files, compare and merge (qt gui) - dev version"
@@ -12,10 +12,10 @@ optdepends=('diffuse: editor, compare merge files'
         'kompare: editor, compare merge files'
         'meld: editor, compare merge files')
 source=("https://www.manjaro.fr/forum/datas/pacnew-chaser-qt-${pkgver}.tar.gz")
-sha512sums=('6d34f757ec5e000b4fed740430349f1d665e3f358aac26121521b9d40f33a31819ef1cba817956ea432d6512db6665eeeeaef975dd10420b7ea3ac6d1902ee59')
+sha512sums=('ffa44e2090c19af182bbd21628df9bc2be5e0888f3ddcf373b4e19590f33f4531d80b6ad88c9ec14571e78253f05b3a8b167567c0411076cb02cfe2e84e555ba')
 
 package() {
-  cd "$srcdir"
+  #cd "$srcdir"
   install -d ${pkgdir}{/usr/{bin,share/{applications,pixmaps,polkit-1/actions,locale/fr/LC_MESSAGES},lib/$pkgname},/etc}
   install -m755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -m644 lib/man.css "${pkgdir}/usr/lib/${pkgname}/man.css"

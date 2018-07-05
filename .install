@@ -8,9 +8,8 @@ post_upgrade() {
 }
 
 post_remove() {
-  [ -f /etc/pacman.d/hooks/pacnew-chaser.hook ] && rm /etc/pacman.d/hooks/pacnew-chaser.hook
-  # rm -rf $HOME/.local/share/pacnew-chaser
+  [ -h /etc/pacman.d/hooks/pacnew-chaser.hook ] && unlink /etc/pacman.d/hooks/pacnew-chaser.hook
   echo "For a clean home, you can"
-  echo "remove $HOME/.local/share/pacnew-chaser/"
-  echo "remove $HOME/.config/pacnew-chaser.ini"
+  echo 'remove $HOME/.local/share/pacnew-chaser/'
+  echo 'remove $HOME/.config/pacnew-chaser.ini'
 }
