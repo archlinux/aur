@@ -1,4 +1,5 @@
-#Maintainer : Frederic Bezies <fredbezies at gmail dot com>
+#Maintainer: David A. Redick <david.a.redick@gmail.com>
+#Contributor: Frederic Bezies <fredbezies at gmail dot com>
 #Contributor: Simone Sclavi 'Ito' <darkhado@gmail.com>
 
 pkgname=tecnoballz
@@ -19,7 +20,6 @@ md5sums=('7beeacb06fa841382f0ecbe73f64723a'
          'eec9a3f78b51647b41c3e4c6d1d19ce9')
 
 build() {
-                                        
     cd $pkgname-$pkgver
     autoreconf -fvi
     ./configure --prefix=/usr
@@ -27,6 +27,7 @@ build() {
     sed -i 's/CXXFLAGS=" -O3 -Wall"/CXXFLAGS=" -O2 -Wall"/' configure
     make 
 }
+
 package(){
     mkdir -p $pkgdir/usr/share/{applications,pixmaps} 
     install -m644 tecnoballz.xpm $pkgdir/usr/share/pixmaps 
@@ -40,5 +41,3 @@ package(){
     chmod 755 $pkgdir/usr/games/$pkgname
     chown root:root $pkgdir/usr/games/$pkgname
 }
-
-
