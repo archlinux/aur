@@ -1,0 +1,14 @@
+pkgbase = python-musthe
+	pkgdesc = Music theory implemented in Python. Notes, intervals, scales and chords.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gciruelos/musthe
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/m/musthe/musthe-1.0.0.tar.gz
+	sha256sums = 46825a7fcbf638e2617277c2ddfceac658e09fab9746e2bff17c9a548278f6ee
+
+pkgname = python-musthe
+
