@@ -1,0 +1,25 @@
+pkgbase = emacs-pdumper-git
+	pkgdesc = GNU Emacs. pdumper branch, which can allow very fast startup times.
+	pkgver = 27.0.50.132398
+	pkgrel = 1
+	url = http://www.gnu.org/software/emacs/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = alsa-lib
+	depends = gnutls
+	depends = libxml2
+	depends = jansson
+	depends = gtk3
+	depends = libotf
+	depends = libjpeg-turbo
+	depends = giflib
+	provides = emacs
+	conflicts = emacs
+	source = emacs-git::git+https://github.com/emacs-mirror/emacs.git#branch=pdumper
+	source = pdump-patch.diff
+	md5sums = SKIP
+	md5sums = 8769fcfd87b5ec0a0ba8d8108d09b34f
+
+pkgname = emacs-pdumper-git
+
