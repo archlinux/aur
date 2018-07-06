@@ -5,9 +5,10 @@ pkgbase=jrommanager
 pkgname=jrommanager
 pkgver=1.5b18
 pkgrel=1
-pkgdesc='Java Rom Manager'
+pkgdesc='A Rom Manager entirely written in Java and released under GPL v3'
 arch=('any')
 license=('GPL3')
+url="https://github.com/optyfr/JRomManager"
 depends=('java-runtime>=8')
 source=("https://github.com/optyfr/${_gitname}/releases/download/${pkgver}/${_gitname}-${pkgver}.zip")
 
