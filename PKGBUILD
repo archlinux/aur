@@ -1,6 +1,6 @@
 pkgname=("python-symfit" "python2-symfit")
 pkgbase=python-symfit
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Symbolic fitting for python - fitting as it should be'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/tBuLi/symfit'
 makedepends=('python-setuptools' 'python2-setuptools')
 license=('GPL2')
 source=("https://github.com/tBuLi/symfit/archive/$pkgver.tar.gz")
-md5sums=('14c0ac04977c7dc0ad17dd597703e12a')
+md5sums=('6d0e67ffec4de12b51f92c0e960481b3')
 
 
 package_python-symfit() {

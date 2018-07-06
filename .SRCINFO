@@ -1,14 +1,14 @@
 pkgbase = python-symfit
 	pkgdesc = Symbolic fitting for python - fitting as it should be
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/tBuLi/symfit
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/tBuLi/symfit/archive/0.4.1.tar.gz
-	md5sums = 14c0ac04977c7dc0ad17dd597703e12a
+	source = https://github.com/tBuLi/symfit/archive/0.4.2.tar.gz
+	md5sums = 6d0e67ffec4de12b51f92c0e960481b3
 
 pkgname = python-symfit
 	depends = python
