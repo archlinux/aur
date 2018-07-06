@@ -1,7 +1,7 @@
 # Maintainer: Stefan Seemayer <mail@semicolonsoftware.de>
 pkgname=jalview
-pkgver=2.10.3
-pkgrel=4
+pkgver=2.10.4
+pkgrel=1
 pkgdesc="Bioinformatics Multiple Alignment Editor"
 arch=(any)
 url="http://www.jalview.org/"
@@ -16,6 +16,7 @@ source=(
   'http://www.jalview.org/webstart/JGoogleAnalytics_0.3.jar'
   'http://www.jalview.org/webstart/Jmol-14.6.4_2016.10.26.jar'
   'http://www.jalview.org/webstart/VARNAv3-93.jar'
+  'http://www.jalview.org/webstart/VAqua4.jar'
   'http://www.jalview.org/webstart/activation.jar'
   'http://www.jalview.org/webstart/apache-mime4j-0.6.jar'
   'http://www.jalview.org/webstart/axis.jar'
@@ -72,6 +73,7 @@ noextract=(
   'JGoogleAnalytics_0.3.jar'
   'Jmol-14.6.4_2016.10.26.jar'
   'VARNAv3-93.jar'
+  'VAqua4.jar'
   'activation.jar'
   'apache-mime4j-0.6.jar'
   'axis.jar'
@@ -121,10 +123,11 @@ noextract=(
 )
 
 sha256sums=(
-  '6aa9bc7aaae0e48e6923009155165f4df0c7315a2878a12cf9308df183409498'
+  'f0824ec5e2f0937ea40cb5e8714abd90ce02a1f57373565165d5a5b927cae2bc'
   '4287fa68882bc43cdbb537cf7fee9d068b954e2cc3bc7baa81c99aa78a02603d'
   'e87ac185ecde5707e3b4e4446c682d486204c266e8f7824f8d4b854b6007419e'
   'f654be5d31e69b552cf6c672f18548f72600f10d5a5ed0dfb77877b2cb21ab1d'
+  '090fd11c5b6f9495d47d59c18ade76243c21d69c091721504832d475417a121f'
   '93e7791e2b22b5fe61507ac946b112de8869bf8ea99e91d93a7bd1e38f0f457b'
   '6332dbdb6fe313727a845fdb16d19caef7f96656013df7694afb66aab91860a0'
   '8fd0ffa3b96bce974a6fd25ea28d7a166cbff89e19b61faba12532a34cc6fc10'
@@ -140,7 +143,7 @@ sha256sums=(
   '25334cec7b0d3fbb073babac0a9f51918d89ce8e19115a34de1244bb10c9778a'
   '575be85c5112526d5c3509bbfae9bac3a2788987209c022a2bd5c4cbf4e45533'
   '9c16917da18f10d94de68a76cc0fce4e32c3c86596be5cb8ce5a5ff04b547d02'
-  'b33cb10bf4bc52fc7f8da6082e9fd1f9dc65acc844343b2dd27387b5faa18c5e'
+  'e90a9116a24f0ca122ab59b86d21d24dcf863d61342e23761d3894c229519e36'
   'ec9dcdc84cd5c836efe53a41e0a242e93981bb95af9b2efbf585cc0d629abe01'
   'a0bcbe5fde176a41940b6b5f28bbedccc301ff611a449699abcdfb003b70bdf4'
   'ce82ed5627f286c214b6028da7a6cb2535d8cbcb000460588634fb23cb976e30'
