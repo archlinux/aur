@@ -4,7 +4,7 @@ _pkgname=system76
 _pkgbase=system76-power
 pkgname=system76-power
 pkgver=72
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
@@ -13,7 +13,7 @@ install="${pkgname}.install"
 depends=(
   'dbus'
   'systemd'
-  'system76-dkms-git'
+  'system76-dkms'
 )
 makedepends=('rust')
 source=(

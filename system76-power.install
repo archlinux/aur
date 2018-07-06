@@ -1,12 +1,20 @@
 _services="system76-power.service nvidia-fallback.service"
 
 _stop_services() {
-  /usr/bin/systemctl stop $_services >/dev/null 2>&1
+  for service in $_services; do
+    if /usr/bin/systemctl -q is-active $service >/dev/null 2>&1; then
+      /usr/bin/systemctl stop $service >/dev/null 2>&1
+    fi
+  done
 }
 
 _disable_services() {
-  /usr/bin/systemctl disable $_services >/dev/null 2>&1
-  /usr/bin/systemctl reset-failed $_services >/dev/null 2>&1
+  for service in $_services; do
+    if /usr/bin/systemctl -q is-enabled $service >/dev/null 2>&1; then
+      /usr/bin/systemctl disable $service >/dev/null 2>&1
+      /usr/bin/systemctl reset-failed $service >/dev/null 2>&1
+    fi
+  done
 }
 
 _restore_services() {
