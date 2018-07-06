@@ -1,6 +1,6 @@
 pkgbase = python2-rsgislib
 	pkgdesc = Remote Sensing and GIS collection of tools for processing datasets including its bindings compiled for Python 2.7
-	pkgver = 3.4.9
+	pkgver = 3.5.7
 	pkgrel = 1
 	url = http://www.rsgislib.org
 	arch = i686
@@ -32,8 +32,8 @@ pkgbase = python2-rsgislib
 	depends = kealib
 	depends = python2-numpy
 	options = !emptydirs
-	source = https://bitbucket.org/petebunting/rsgislib/get/3.4.9.tar.bz2
-	sha256sums = 41b73ef38c08392ef2a2b70dd72acb4afb67aaa957ab3366507ba2eaa1b5d32e
+	source = https://bitbucket.org/petebunting/rsgislib/get/3.5.7.tar.bz2
+	sha256sums = ee41fcad9956350a66b3cb230670d369c598a9b157e316af4efe8186435960cf
 
 pkgname = python2-rsgislib
 

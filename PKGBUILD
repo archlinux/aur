@@ -1,6 +1,6 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('python2-rsgislib')
-pkgver=3.4.9
+pkgver=3.5.7
 pkgrel=1
 _rsgislib="Remote Sensing and GIS collection of tools for processing datasets"
 pkgdesc="$_rsgislib including its bindings compiled for Python 2.7"
@@ -13,8 +13,8 @@ makedepends=('cmake' 'boost' "${_common_deps[@]}")
 depends=('boost-libs' "${_common_deps[@]}")
 options=(!emptydirs)
 source=("https://bitbucket.org/petebunting/rsgislib/get/$pkgver.tar.bz2")
-sha256sums=('41b73ef38c08392ef2a2b70dd72acb4afb67aaa957ab3366507ba2eaa1b5d32e')
-_srcpath=petebunting-rsgislib-0bee5315e6a5
+sha256sums=('ee41fcad9956350a66b3cb230670d369c598a9b157e316af4efe8186435960cf')
+_srcpath=petebunting-rsgislib-4d0245e68eba
 
 prepare() {
   cd "$srcdir/$_srcpath"
