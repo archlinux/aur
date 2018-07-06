@@ -1,0 +1,11 @@
+--- system76-firmware.desktop  2018-06-27 16:13:07.000000000 -0700
++++ system76-firmware.desktop.new  2018-07-03 12:35:44.613934967 -0700
+@@ -4,7 +4,7 @@
+ Name=System76 Firmware Updater
+ GenericName=System76 Firmware Updater
+ Comment=Updates Firmware on System76 Systems
+-Exec=system76-firmware --reinstall
++Exec=system76-firmware-pkexec --reinstall
+ Terminal=false
+ Type=Application
+ Icon=system76-driver

@@ -1,4 +1,4 @@
-_services="system76.service system76-firmware.service"
+_services="system76.service"
 
 _stop_services() {
   /usr/bin/systemctl stop $_services >/dev/null 2>&1
@@ -29,7 +29,6 @@ cat << EOF
     The System76 Driver package provides the following system services:
 
         system76.service             System76 airplane-mode hotkey and LED support
-        system76-firmware.service    System76 Firmware Updater
 
     And the following user services:
 
@@ -39,11 +38,7 @@ cat << EOF
 
         ln -s /usr/share/applications/system76-driver-backlight.desktop /etc/xdg/autostart/system76-driver-backlight.desktop
 
-    GUI applications are provided to install drivers, patches, and firmware updates. If the applications
-    fail to start, try the following commands as root:
-
-        system76-driver
-        system76-firmware
+    GUI applications are provided to install drivers, patches, and firmware updates.
 
     (!) Under Wayland try using xhost prior to running the GUI applications:
 
@@ -51,7 +46,7 @@ cat << EOF
 
     (!) To use system76.service, you must add "ec_sys.write_support=1" to your kernel command line
 
-    (!) If you do not use Grub bootloader, please check output for possible manual actions required for
+    (!) If you do not use the Grub bootloader, please check output for possible manual actions required for
     your model related to bootloader modifications.
 
     (!) For Clevo W740SU BIOS/Firmware users on Galago UltraPro: your will need to create /etc/system76-daemon.json

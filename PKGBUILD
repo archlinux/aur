@@ -3,7 +3,7 @@
 
 pkgname=system76-driver
 pkgver=18.04.25
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -16,12 +16,14 @@ depends=(
 	'python-evdev'
 	'python-gobject'
 	'python-pynacl'
+	'python-systemd'
 	'python-xlib'
-	'dmidecode')
+	'dmidecode'
+	'system76-dkms'
+	'system76-firmware-daemon')
 makepdepends=(
 	'python-pyflakes')
 optdepends=(
-	'hidpi-daemon: Manage HiDPI and LoDPI monitors on X'
 	'pm-utils: For power management features'
 	'gtk3: To launch System76 driver and firmware GUI'
 	'grub: To apply kernel boot time parameters'
@@ -30,21 +32,31 @@ optdepends=(
 	'xorg-xbacklight: To use the backlight service')
 source=(
 	"https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
+	'system76-firmware-pkexec'
+	'com.system76.pkexec.system76-firmware.policy'
 	'galu1.patch'
 	'gtk.patch'
-	'cli.patch')
-sha1sums=('f017b987b0a55b1a21a1b45b167c8366f2134aa8'
-          'ea8d53a80a26eb05b367f27996c8ce715aafba1e'
-          'bf0c37a6226858c768e8ce2c9c3c3801aef14c0e'
-          '92f0de2acea6ac69c36378c7139fb84a7eaf7842')
+	'cli.patch'
+	'system76-firmware.desktop.patch')
+sha1sums=(
+  'f017b987b0a55b1a21a1b45b167c8366f2134aa8'
+  'a9dc6ba42eda0de7214b9c86e3914667354c142f'
+  '8e6a69a2610fdd3a21c06210e2ad183abe83430b'
+  'ea8d53a80a26eb05b367f27996c8ce715aafba1e'
+  'bf0c37a6226858c768e8ce2c9c3c3801aef14c0e'
+  '92f0de2acea6ac69c36378c7139fb84a7eaf7842'
+  'ae28859f3f3ea58eff6ee3e0728bc0e70246af31')
 
+
+build() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+
+  # Desktop shortcut for firmware tool should use pkexec wrapper
+  patch -p0 < ${srcdir}/system76-firmware.desktop.patch
+}
 
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}
-
-	###########
-	# Install #
-	###########
 
 	# Build and install base package
 	python setup.py install --prefix=/usr --root=${pkgdir} --optimize=1
@@ -55,6 +67,7 @@ package() {
 	install -m755 -D system76-firmware-dialog ${pkgdir}/usr/lib/${pkgname}/system76-firmware-dialog
 	install -m755 -D system76-driver-pkexec ${pkgdir}/usr/bin/system76-driver-pkexec
 	install -m755 -D system76-firmware ${pkgdir}/usr/bin/system76-firmware
+	install -m755 -D ${srcdir}/system76-firmware-pkexec ${pkgdir}/usr/bin/system76-firmware-pkexec
 
 	# Install systemd unit files
 	# Note: system76-driver* service files shortened to system76*
@@ -64,6 +77,7 @@ package() {
 	# Install scripts and configuration
 	install -m755 -D system76-nm-restart ${pkgdir}/usr/lib/${pkgname}/system76-nm-restart
 	install -m644 -D com.system76.pkexec.system76-driver.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-driver.policy
+	install -m644 -D ${srcdir}/com.system76.pkexec.system76-firmware.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-firmware.policy
 
 	# Install desktop shortcuts
 	install -m644 -D system76-driver-backlight.desktop ${pkgdir}/usr/share/applications/system76-backlight.desktop
@@ -75,10 +89,7 @@ package() {
 	# Clean up
 	rm -rf ${pkgdir}/usr/lib/python*/site-packages/system76driver/{__pycache__,tests}
 
-	#################
-	# Apply patches #
-	#################
-
+	# Patch in package in place
 	cd ${pkgdir}
 
 	# patch for cli version - enable override vendor/model via /etc/system76-daemon.json
