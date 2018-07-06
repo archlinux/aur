@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Betaflight Configurator
+Comment=Crossplatform configuration tool for the Betaflight flight control system
+Exec=betaflight-configurator
+Icon=betaflight-configurator
+Terminal=false
+Type=Application
+Categories=Utility
