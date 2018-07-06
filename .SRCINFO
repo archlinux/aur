@@ -1,7 +1,7 @@
 pkgbase = aria-ng-deploy
 	pkgdesc = AriaNg, A Better Web Frontend for aria2 (out of box version)
-	pkgver = 20180618
-	pkgrel = 2
+	pkgver = 20180701
+	pkgrel = 1
 	url = https://github.com/mayswind/AriaNg-DailyBuild
 	install = aria-ng-deploy.install
 	arch = any
