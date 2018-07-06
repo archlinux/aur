@@ -94,3 +94,10 @@ void pointer_alloc_check(void* alloced) {
     if (alloced == NULL)
         EXIT_MSG("alloc failed!")
 }
+
+int is_string_json_array(const String* pString) {
+    Json* jobj = json_tokener_parse(pString->data);
+    int formatted = jobj != NULL && json_object_is_type(jobj, json_type_array);
+    json_object_put(jobj);
+    return formatted;
+}

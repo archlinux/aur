@@ -35,6 +35,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <json-c/json_tokener.h>
 #include <sys/stat.h>
 
 typedef struct string {
@@ -102,5 +103,12 @@ void string_destroy(String** phString);
  * @param alloced recently alloced pointer
  */
 void pointer_alloc_check(void* alloced);
+
+/**
+ * Returns 1 if the given String is JSON formatted.
+ * @param pString the String to check
+ * @return 1 if JSON formatted, 0 otherwise
+ */
+int is_string_json_array(const String* pString);
 
 #endif
