@@ -35,7 +35,7 @@ build() {
   mkdir -p build
   cd build
   cmake ../code/cpp -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-  make -j8
+  make
 }
 
 check() {
