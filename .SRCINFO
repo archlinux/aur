@@ -1,0 +1,15 @@
+pkgbase = python-offlinemsmtp
+	pkgdesc = msmtp wrapper allowing for offline use
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://gitlab.com/sumner/offlinemsmtp
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/o/offlinemsmtp/offlinemsmtp-0.2.3.tar.gz
+	md5sums = 270b596c49109160c20e6e32f9a956d8
+
+pkgname = python-offlinemsmtp
+	depends = python
+
