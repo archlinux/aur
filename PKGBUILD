@@ -3,17 +3,18 @@
 
 _name="asyncpg"
 pkgname="python-$_name"
-pkgver="0.15.0"
+pkgver="0.16.0"
 pkgrel="1"
 pkgdesc="An asyncio PosgtreSQL driver"
 arch=("x86_64")
 url="https://github.com/MagicStack/$_name"
 license=("Apache")
 makedepends=("python-setuptools" "cython")
-checkdepends=("python-pytest")
+checkdepends=("python-pytest"
+    'postgresql')
 source=("$url/archive/v$pkgver/$_name-$pkgver.tar.gz"
         remove-package-data.patch)
-sha256sums=('b8a23279080e9f56e30b9fc1b89d8ce0782a515e82862508c8d86b86fb9b1241'
+sha256sums=('eba1b116bd5bc48440422faf8581b03382cb3456117a18efdca6cf4907c789a2'
             'fbd60ee542f87222d26b69095d3c5bd70863f8a066eb56035902d1ded836659d')
 
 prepare() {
