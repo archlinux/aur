@@ -1,6 +1,6 @@
 # Maintainer: desbma
 pkgname=sacad
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=2
 pkgdesc="Smart Automatic Cover Art Downloader"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MPL2')
 depends=('python' 'python-setuptools' 'python-aiohttp' 'python-appdirs' 'python-cssselect' 'python-lxml' 'python-mutagen' 'python-pillow' 'python-tqdm')
 makedepends=('python-pip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('a97ae7f020cd9819804fc9b1b108f87e0017bc6ba416d5abf7a60b71cfa8265159c0365ee6fbe33196a7e7f5ba2ceaa84115d2094432797d29dea9d5494f2368')
+sha512sums=('68a8614bdc1c8b32bcd074bbc6b963441bf537fd105cb849152275b9d22d19a9bd152abd8016b48c37b1bbdc826966be44523d84f8513bdc26d39635c5ed4e87')
 
 package() {
     cd "${pkgname}-${pkgver}"
