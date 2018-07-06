@@ -1,12 +1,13 @@
 pkgbase = libtgbot-cpp-git
 	pkgdesc = C++ library for Telegram bot API.
 	pkgver = r218.7f38839
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/reo7sp/tgbot-cpp
 	arch = x86_64
 	license = MIT
 	makedepends = boost
+	makedepends = cmake
 	depends = openssl
 	depends = boost-libs
 	replaces = libtgbot-cpp
