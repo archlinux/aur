@@ -1,7 +1,7 @@
 # Maintainer: Dennis Twardowsky <aur@devpty.de>
 _pkgname=noson-app
 pkgname="${_pkgname}-git"
-pkgver=3.6.0.r5.g70fcd71
+pkgver=3.6.3.r0.g862b6cb
 pkgrel=1
 pkgdesc="SONOS controller for Linux platforms"
 arch=('x86_64')
@@ -26,7 +26,7 @@ build() {
   cmake "$srcdir/${pkgname%-git}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/lib
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib
   make
 }
 
