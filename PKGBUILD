@@ -21,7 +21,7 @@ source=(
 	"build_python.sh"
 )
 sha256sums=('878352408424dffaa695ffedf2f9f92844e116686923ed9aa8626fc30d32cfd1'
-	'809239456a1b8d86c948cf21eb17c32d3dea46958bd5b6cfce82744c984d3459')
+	'4970774d5c0b43c48634b01c1eabf7604dc3c98177fb5fed5585dc5be71183b4')
 
 build() {
 	# glibc 2.18 compatibility issue
