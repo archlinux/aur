@@ -1,5 +1,5 @@
 pre_install() {
-  useradd -d /home/gitea -m -r -U -s /usr/bin/git-shell gitea
+  useradd -d /home/gitea -m -r -U -s /bin/bash gitea
 }
 
 post_install() {

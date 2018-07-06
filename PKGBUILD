@@ -8,8 +8,8 @@
 _pkgname='gitea'
 _gourl='code.gitea.io'
 pkgname=gitea-git
-pkgrel=3
-pkgver=r6495.cfb76cd99
+pkgrel=1
+pkgver=r6500.1675fc430
 pkgdesc='A painless self-hosted Git service.'
 url='https://gitea.io/'
 license=('MIT')
