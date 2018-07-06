@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 _pkgname=asyncio_extras
 pkgname='python-asyncio_extras'
-pkgver='1.3.0'
+pkgver='1.3.2'
 pkgrel='1'
 pkgdesc='Asynchronous generators and context managers for asyncio'
 arch=('any')
@@ -9,10 +9,10 @@ url='https://pypi.python.org/pypi/asyncio_extras'
 license=('MIT')
 depends=('python' 'python-async_generator')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest' 'python-pytest-asyncio')
+checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-asyncio')
 
-source=("https://pypi.python.org/packages/f8/8f/5e8cd289b5df6c7000208c3dcbb3fd3454569cb7123646f754dfcf05525b/asyncio_extras-$pkgver.tar.gz")
-sha256sums=('8f2bf0edc37530e0dafcb2c0a8d8303a4ab965febff36bf056baffb6ac939ce9')
+source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('084b62bebc19c6ba106d438a274bbb5566941c469128cd4af1a85f00a2c81f8d')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -27,6 +27,6 @@ package() {
 
 check() {
   cd "${_pkgname}-${pkgver}"
-  pytest
+  PYTHONPATH=. pytest
 }
 # vim:set ts=2 sw=2 et:

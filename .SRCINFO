@@ -1,17 +1,18 @@
 pkgbase = python-asyncio_extras
 	pkgdesc = Asynchronous generators and context managers for asyncio
-	pkgver = 1.3.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/asyncio_extras
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-asyncio
 	makedepends = python-setuptools
 	depends = python
 	depends = python-async_generator
-	source = https://pypi.python.org/packages/f8/8f/5e8cd289b5df6c7000208c3dcbb3fd3454569cb7123646f754dfcf05525b/asyncio_extras-1.3.0.tar.gz
-	sha256sums = 8f2bf0edc37530e0dafcb2c0a8d8303a4ab965febff36bf056baffb6ac939ce9
+	source = https://pypi.org/packages/source/a/asyncio_extras/asyncio_extras-1.3.2.tar.gz
+	sha256sums = 084b62bebc19c6ba106d438a274bbb5566941c469128cd4af1a85f00a2c81f8d
 
 pkgname = python-asyncio_extras
 
