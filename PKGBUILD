@@ -10,7 +10,8 @@ _cracklib=default
 _ldap=default
 
 pkgname=atheme
-pkgver=7.2.10
+pkgver=7.2.10_r2
+_pkgver="7.2.10-r2"
 pkgrel=1
 pkgdesc="IRC services"
 arch=("i686" "x86_64")
@@ -31,11 +32,16 @@ backup=(
     'etc/atheme/atheme.motd'
 )
 install=atheme.install
-source=("https://github.com/atheme/atheme/releases/download/v${pkgver}/atheme-${pkgver}.tar.xz"
+source=("https://github.com/atheme/atheme/releases/download/v${_pkgver}/atheme-v${_pkgver}.tar.xz"
         "atheme.service"
 )
-sha256sums=('e938ee42cac245bbe2818c34e87876f9d6d711df6b15638fe2fb5ad0e442f9bb'
+sha256sums=('cceceb285283509c9f6dcb20eeb9b816db373a81b55fe49bc11a774b501d687d'
             'ee9ad7658434451184872c21c7fd38196d22d1dfb6b1f37bcfaf8c363d50296f')
+
+pkgver() {
+    echo "$_pkgver" >&2
+    echo "$_pkgver" | tr - _
+}
 
 build() {
     _configure="./configure --prefix=/usr --enable-fhs-paths"
