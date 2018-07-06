@@ -3,7 +3,7 @@
 # (Co-)Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=libreswan
-pkgver=3.23
+pkgver=3.25
 pkgrel=1
 pkgdesc="IPsec implementation with IKEv1 and IKEv2 keying protocols"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('freeswan' 'openswan' 'strongswan' 'ipsec-tools')
 backup=('etc/ipsec.conf' 'etc/ipsec.secrets' 'etc/pam.d/pluto')
 source=(https://download.libreswan.org/${pkgname}-${pkgver}.tar.gz
         tmpfiles.conf)
-md5sums=('ad6e6715cd01c143a4501f933c044a88'
+md5sums=('a182a0881eec9a298aaf45cce618ef97'
          '77399a739ee99f8bc54837684d7c39d5')
 
 build() {
