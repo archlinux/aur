@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=3.2.6.r14.gdeff17a8e
+pkgver=3.2.9.r6.g6b7ff81ad
 pkgrel=1
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
@@ -15,11 +15,12 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 			 'python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
 			 'gtest' 'gmock' 'lldpd' 'lld' 'zstd' 'rapidjson' 'apt' 'dpkg'
 			 'rpm-org' 'python2-jinja' 'librdkafka-git' 'augeas>=1.9.0'
-			 'boost>=1.65.1' 'boost-libs>=1.65.1' 'libc++' 'cppcheck')
+			 'boost>=1.65.1' 'boost-libs>=1.65.1' 'libc++' 'cppcheck'
+			 'ssdeep')
 conflicts=()
 backup=('etc/osquery/osquery.conf')
-options=(!strip)
-_gitcommit='deff17a8e7d0ad136d1532815ce5d5f0eeb014ad'
+options=(!strip !ccache)
+_gitcommit='6b7ff81ad8041abf90d974f4025b71a24945d36a'
 #source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
@@ -28,7 +29,7 @@ source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit
 sha256sums=('SKIP'
             'ee15a171f114f47a326d236a7d03a07cc3e711016e9a5039638e6137f63e87ec'
             '82611f3296d1d5b68d2cb32200c95a9ae3469dc5a9696643b69e89a5b9798a72'
-            'c2d4b7e5e85cef135af82ca627f0c05e40ef5e2ffb9e128f01caacd8665c6c15')
+            'ab8fb189578bc819d8f28bff4308613355a7641eabd7055757fcfcfd351b6043')
 
 #pkgver() {
 #	cd ${pkgname}
@@ -62,7 +63,9 @@ build() {
 	#SQLITE_DEBUG=True # Enable SQLite query debugging (very verbose!)
 	#export SKIP_TESTS=True SKIP_BENCHMARKS=True
 
-	export CC=/usr/bin/gcc CXX=/usr/bin/g++
+	export CC="/usr/bin/gcc"
+	export CXX="/usr/bin/g++"
+	export SKIP_TESTS=True SKIP_BENCHMARKS=True
 
 	[[ -z $DEBUG ]] || unset DEBUG
 	cmake -Wno-dev \

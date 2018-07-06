@@ -37,19 +37,6 @@ index 47ff957d..ab679b5f 100644
  	"--commit" "master" "-f" "--style=file"
  
  ANALYSIS := ${SOURCE_DIR}/tools/analysis
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 4444a9a2..b9c2640d 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -393,6 +393,8 @@ endif()
-
- if(APPLE)
-   LOG_PLATFORM("OS X")
-+elseif(OSQUERY_BUILD_PLATFORM STREQUAL "arch")
-+  LOG_PLATFORM("Arch Linux")
- elseif(OSQUERY_BUILD_PLATFORM STREQUAL "debian")
-   LOG_PLATFORM("Debian")
- elseif(OSQUERY_BUILD_PLATFORM STREQUAL "ubuntu")
 diff --git a/osquery/tables/CMakeLists.txt b/osquery/tables/CMakeLists.txt
 index 8efb6202..7f9d64aa 100644
 --- a/osquery/tables/CMakeLists.txt
@@ -66,3 +53,36 @@ index 8efb6202..7f9d64aa 100644
    ADD_OSQUERY_LINK_ADDITIONAL("gcrypt gpg-error")
    ADD_OSQUERY_LINK_ADDITIONAL("blkid")
    ADD_OSQUERY_LINK_ADDITIONAL("ip4tc")
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1c067c938..70f98f4b7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -327,7 +327,6 @@ if (POSIX)
+   # To be safe, only include them when building 'release' outputs.
+   add_compile_options(
+     "$<$<CONFIG:RELEASE>:-g>"
+-    "$<$<CONFIG:RELEASE>:-fno-limit-debug-info>"
+     "$<$<CONFIG:RELEASE>:-fPIE>"
+     "$<$<CONFIG:RELEASE>:-fpie>"
+     "$<$<CONFIG:RELEASE>:-fPIC>"
+@@ -546,6 +545,8 @@ endif()
+ 
+ if(APPLE)
+   LOG_PLATFORM("OS X")
++elseif(OSQUERY_BUILD_PLATFORM STREQUAL "arch")
++  LOG_PLATFORM("Arch Linux")
+ elseif(OSQUERY_BUILD_PLATFORM STREQUAL "debian")
+   LOG_PLATFORM("Debian")
+ elseif(OSQUERY_BUILD_PLATFORM STREQUAL "ubuntu")
+diff --git a/osquery/CMakeLists.txt b/osquery/CMakeLists.txt
+index c5f644c45..7510a6e38 100644
+--- a/osquery/CMakeLists.txt
++++ b/osquery/CMakeLists.txt
+@@ -36,7 +36,6 @@ set(OSQUERY_TABLES_TESTS "")
+ # Add all and extra for osquery code.
+ if(CLANG AND POSIX)
+   add_compile_options(
+-    -Wall
+     -Wextra
+     -pedantic
+     -Wuseless-cast
