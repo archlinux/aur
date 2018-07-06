@@ -1,0 +1,18 @@
+pkgbase = vim-ripgrep-git
+	pkgdesc = Use RipGrep in Vim and display results in a quickfix list.
+	pkgver = r19.88ce369
+	pkgrel = 1
+	url = https://github.com/jremmen/vim-ripgrep
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = ripgrep
+	depends = vim
+	source = vim-ripgrep-git::git+https://github.com/jremmen/vim-ripgrep.git
+	source = https://raw.githubusercontent.com/jremmen/vim-ripgrep/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = 19a409f836b4ae64da5570915a841ff77a6092aa2cd3a06ec3ef8e49ee4eca0d
+
+pkgname = vim-ripgrep-git
+
