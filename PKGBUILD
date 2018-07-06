@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=pqr
 _pkgname=pqR
-_pkgver="2017-06-09"
+_pkgver=2018-07-05
 pkgver=${_pkgver//-/}
 pkgrel=1
 pkgdesc="A pretty quick version of R. Can be installed side-by-side with vanilla R."
@@ -9,13 +9,13 @@ arch=('i686' 'x86_64')
 url="http://www.pqr-project.org/"
 license=('GPL')
 depends=('blas' 'lapack' 'bzip2'  'libtiff' 'pcre' 'libxmu')
-makedepends=('gcc-fortran')
+makedepends=('gcc-fortran' 'desktop-file-utils')
 optdepends=('tk: tcl/tk interface' 'texlive-bin: latex sty files')
 options=('!makeflags' '!emptydirs')
 install=$pkgname.install
 source=("${_pkgname}-${_pkgver}.tar.gz::http://www.pqr-project.org/${_pkgname}-${_pkgver}.tar.gz"
 	'pqr.desktop')
-sha256sums=('226018c87fb07ddc76a0d2af4ea49b809222eb5d0c4f4ba110e5af7a1142d461'
+sha256sums=('2ce78d2b1ecc51862526376c9287672582e15eb1a648ff43b84cbb858b88fe55'
             'f6fb587f2ca78d896de86ae279d5513bdf4d7c82507c541bc96c27fb79370a9f')
 
 build() {
