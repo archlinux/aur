@@ -1,0 +1,28 @@
+pre_install(){
+    getent group trezord >/dev/null || groupadd -r trezord
+    getent group plugdev >/dev/null || groupadd -r plugdev
+    getent group trezord >/dev/null && useradd -r -g trezord -M -s /sbin/nologin -c "TREZOR Bridge" trezord
+    getent passwd trezord >/dev/null && usermod -a -G plugdev trezord
+}
+
+post_install() {
+    systemctl enable trezord.service
+    systemctl start trezord.service
+}
+
+pre_upgrade() {
+    systemctl stop trezord.service
+}
+
+post_upgrade() {
+    systemctl start trezord.service
+}
+
+pre_remove() {
+    systemctl stop trezord.service
+}
+
+post_remove() {
+    getent passwd trezord >/dev/null && userdel trezord
+    getent group trezord >/dev/null && groupdel trezord
+}
