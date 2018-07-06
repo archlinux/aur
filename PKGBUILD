@@ -5,27 +5,33 @@
 # Contributor: Bodor Dávid Gábor <david.gabor.bodor@gmail.com>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
+pkgbase='python-scipy-mkl'
 pkgname=('python-scipy-mkl' 'python2-scipy-mkl')
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=('i686' 'x86_64')
 url="http://www.scipy.org/"
 license=('BSD')
-makedepends=('gcc-fortran' 'python-numpy' 'python2-numpy' 'python-setuptools' 'python2-setuptools')
+depends=('intel-compiler-base' 'intel-fortran-compiler' 'intel-mkl')
+makedepends=('gcc-fortran' 'python-numpy' 'python2-numpy' 'python-setuptools' 'python2-setuptools' 'intel-compiler-base' 'intel-fortran-compiler' 'intel-mkl')
 checkdepends=('python-nose' 'python2-nose')
 source=(
-	"https://github.com/scipy/scipy/releases/download/v${pkgver}/scipy-${pkgver}.tar.xz"
-	"build_python2.sh"
-	"build_python3.sh"
+	"https://github.com/scipy/scipy/releases/download/v${pkgver}/scipy-${pkgver}.tar.gz"
+	"build_python.sh"
 )
-sha256sums=(
-	'06b23f2a5db5418957facc86ead86b7752147c0461f3156f88a3da87f3dc6739'
-	'a9f18f9af8a2c9505cc3c03662200ceef2174dbf0c5f81849f596a0d7220575f'
-	'fa8599db2992a6ed9c8b71e41b043b1e41a84efac7aeeae3ac74b838c7d18c46'
-)
+sha256sums=('878352408424dffaa695ffedf2f9f92844e116686923ed9aa8626fc30d32cfd1'
+	'809239456a1b8d86c948cf21eb17c32d3dea46958bd5b6cfce82744c984d3459')
 
 build() {
+	# glibc 2.18 compatibility issue
+	cp /opt/intel/compilers_and_libraries_*/linux/compiler/include/math.h .
+	sed \
+		-e '173s/.*/#    include "\/usr\/include\/math.h"/' \
+		-e '1218s/!//' \
+		-i math.h
+	export __INTEL_PRE_CFLAGS="-I$srcdir "
+
 	export LDFLAGS="-Wall -shared"
 
 	# set by hand this flag if you want to compile with gcc
@@ -45,11 +51,11 @@ build() {
 	fi
 
 	# copy python3 build files
-	cp ../build_python3.sh scipy-${pkgver}
+	cp build_python.sh scipy-${pkgver}
 
 	# copy python2 build files
 	cp -r scipy-${pkgver} scipy-${pkgver}-py2
-	cp ../build_python2.sh scipy-${pkgver}-py2
+	cp build_python.sh scipy-${pkgver}-py2
 
 	# build for python3
 	cd scipy-${pkgver}
@@ -58,8 +64,8 @@ build() {
 	fi
 
 	if [ "$use_intel_cc" = true ]; then
-		python3 setup.py config --compiler=intelem --fcompiler=intelem build_clib --compiler=intelem --fcompiler=intelem build_ext --compiler=intelem --fcompiler=intelem
-		# sh build_python3.sh
+		#python3 setup.py config --compiler=intelem --fcompiler=intelem build_clib --compiler=intelem --fcompiler=intelem build_ext --compiler=intelem --fcompiler=intelem
+		sh build_python.sh python
 	fi
 
 	# build for python2
@@ -75,35 +81,35 @@ build() {
 	fi
 
 	if [ "$use_intel_cc" = true ]; then
-		python2 setup.py config --compiler=intelem --fcompiler=intelem build_clib --compiler=intelem --fcompiler=intelem build_ext --compiler=intelem --fcompiler=intelem
-		# sh build_python2.sh
+		#python2 setup.py config --compiler=intelem --fcompiler=intelem build_clib --compiler=intelem --fcompiler=intelem build_ext --compiler=intelem --fcompiler=intelem
+		sh build_python.sh python2
 	fi
 
 }
 
-check() {
-	# we need to do a temp install so we can import scipy
-	# also, the tests must not be run from the scipy source directory
-	export LDFLAGS="-Wall -shared"
-
-	#   cd ${srcdir}/scipy-${pkgver}
-	#   python3 setup.py config_fc --fcompiler=gnu95 install \
-	#     --prefix=/usr --root=${srcdir}/test --optimize=1
-	#   export PYTHONPATH=${srcdir}/test/usr/lib/python3.6/site-packages
-	#   cd ${srcdir}
-	#   python -c "from scipy import test; test('full')"
-	#
-	#   cd ${srcdir}/scipy-${pkgver}-py2
-	#   python2 setup.py config_fc --fcompiler=gnu95 install \
-	#     --prefix=/usr --root=${srcdir}/test --optimize=1
-	#   export PYTHONPATH=${srcdir}/test/usr/lib/python2.7/site-packages
-	#   cd ${srcdir}
-	#   python2 -c "from scipy import test; test('full')"
-}
+#check() {
+#	# we need to do a temp install so we can import scipy
+#	# also, the tests must not be run from the scipy source directory
+#	export LDFLAGS="-Wall -shared"
+#
+#	cd ${srcdir}/scipy-${pkgver}
+#	python3 setup.py config_fc --fcompiler=gnu95 install \
+#	  --prefix=/usr --root=${srcdir}/test --optimize=1
+#	export PYTHONPATH=${srcdir}/test/usr/lib/python3.6/site-packages
+#	cd ${srcdir}
+#	python -c "from scipy import test; test('full')"
+#
+#	cd ${srcdir}/scipy-${pkgver}-py2
+#	python2 setup.py config_fc --fcompiler=gnu95 install \
+#	  --prefix=/usr --root=${srcdir}/test --optimize=1
+#	export PYTHONPATH=${srcdir}/test/usr/lib/python2.7/site-packages
+#	cd ${srcdir}
+#	python2 -c "from scipy import test; test('full')"
+#}
 
 package_python-scipy-mkl() {
 
-	depends=('python-numpy-mkl' 'qhull' 'python-nose')
+	depends+=('python-numpy' 'qhull' 'python-nose')
 	provides=('python3-scipy=${pkgver}' 'python-scipy=${pkgver}' 'scipy=${pkgver}')
 	replaces=('python-scipy')
 	conflicts=('python-scipy')
@@ -126,7 +132,7 @@ package_python-scipy-mkl() {
 
 package_python2-scipy-mkl() {
 
-	depends=('python2-numpy-mkl' 'qhull' 'python2-nose')
+	depends+=('python2-numpy' 'qhull' 'python2-nose')
 	provides=('python2-scipy=${pkgver}' 'python2-scipy=${pkgver}' 'scipy=${pkgver}')
 	replaces=('python2-scipy')
 	conflicts=('python2-scipy')
