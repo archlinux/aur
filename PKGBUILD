@@ -3,9 +3,9 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.10.0
-_strver=0-10-0
-pkgrel=2
+pkgver=0.11.0
+_strver=0-11-0
+pkgrel=1
 pkgdesc="Ethereum wallet and Dapp browser."
 arch=('x86_64')
 depends=(
@@ -29,7 +29,7 @@ optdepends=(
 )
 url="https://github.com/ethereum/mist"
 license=('GPL')
-sha256sums=('f127e5cf6aa87d26c66c3e4d338a50d37670158fba496b44731dbae68e3c6106'
+sha256sums=('756cf6a834570879a39438f75a892b3bded7bd935a81a49b36b24263596fa9dc'
             '02dd222eae64cc6ceb2d954f34e1ff49654b55951f49875408ffe2bf1cf13423'
             '0b3bebf887730b51c82ad37d58550908563000ad134b22738f4cb91375c96790')
 source=(

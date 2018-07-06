@@ -1,7 +1,7 @@
 pkgbase = mist
 	pkgdesc = Ethereum wallet and Dapp browser.
-	pkgver = 0.10.0
-	pkgrel = 2
+	pkgver = 0.11.0
+	pkgrel = 1
 	url = https://github.com/ethereum/mist
 	arch = x86_64
 	license = GPL
@@ -16,10 +16,10 @@ pkgbase = mist
 	optdepends = parity: The fast, light, robust Ethereum client.
 	provides = mist
 	conflicts = mist-git
-	source = mist-0-10-0-64.zip::https://github.com/ethereum/mist/releases/download/v0.10.0/Mist-linux64-0-10-0.zip
+	source = mist-0-11-0-64.zip::https://github.com/ethereum/mist/releases/download/v0.11.0/Mist-linux64-0-11-0.zip
 	source = mist.desktop
 	source = mist.png
-	sha256sums = f127e5cf6aa87d26c66c3e4d338a50d37670158fba496b44731dbae68e3c6106
+	sha256sums = 756cf6a834570879a39438f75a892b3bded7bd935a81a49b36b24263596fa9dc
 	sha256sums = 02dd222eae64cc6ceb2d954f34e1ff49654b55951f49875408ffe2bf1cf13423
 	sha256sums = 0b3bebf887730b51c82ad37d58550908563000ad134b22738f4cb91375c96790
 
