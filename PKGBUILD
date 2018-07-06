@@ -7,7 +7,6 @@ pkgver=1.5b18
 pkgrel=1
 pkgdesc='Java Rom Manager'
 arch=('any')
-url='http://masterpasswordapp.com/'
 license=('GPL3')
 depends=('java-runtime>=8')
 source=("https://github.com/optyfr/${_gitname}/releases/download/${pkgver}/${_gitname}-${pkgver}.zip")

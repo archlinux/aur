@@ -2,7 +2,6 @@ pkgbase = jrommanager
 	pkgdesc = Java Rom Manager
 	pkgver = 1.5b18
 	pkgrel = 1
-	url = http://masterpasswordapp.com/
 	arch = any
 	license = GPL3
 	depends = java-runtime>=8
