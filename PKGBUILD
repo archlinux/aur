@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.2.6.r1140.gd0f826592
+pkgver=3.3.0.r1339.gde337a27f
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -39,29 +39,30 @@ package_spyder-git() {
   pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 2 version)"
   # Note: 'ipython2-notebook' nor 'jupyter'/'jupyter-nbconvert' contain a Python 2 version of Nbconvert
   # 'icu'
-  depends=('python2-pyqt5'
-           'python2-qtconsole'
-           'python2-rope'
-           'python2-jedi'
+  depends=('python2-jedi'
+           'python2-pickleshare'
+           'python2-psutil'
+           'python2-pycodestyle'
            'python2-pyflakes'
-           'python2-sphinx'
            'python2-pygments'
            'python2-pylint'
-           'python2-pycodestyle'
-           'python2-psutil'
-           'python2-qtawesome'
-           'python2-pickleshare'
+           'python2-pyqt5'
            'python2-pyzmq'
-           'python2-cloudpickle'
+           'python2-qtawesome'
+           'python2-qtconsole'
+           'python2-rope'
+           'python2-sphinx'
+           'python2-spyder-kernels'
+
            'desktop-file-utils'
            'gtk-update-icon-cache')
-  optdepends=('python2-pyqt4: Qt-Python bindings'
-              'python2-pyside: Qt-Python bindings'
-              'python2-matplotlib: 2D/3D plotting'
-              'python2-pandas: DataFrame and Series support'
+  optdepends=('python2-matplotlib: 2D/3D plotting'
               'python2-numpy: N-dimensional arrays'
-              'python2-sympy: symbolic mathematics'
+              'python2-pandas: DataFrame and Series support'
+              'python2-pyqt4: Qt-Python bindings'
+              'python2-pyside: Qt-Python bindings'
               'python2-scipy: signal/image processing'
+              'python2-sympy: symbolic mathematics'
 
               'python2-h5py: HDF5 support')
   provides=($_pkgname2)
@@ -78,30 +79,31 @@ package_spyder-git() {
 package_spyder3-git() {
   pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 3 version)"
   # 'icu'
-  depends=('python-pyqt5'
-           'python-qtconsole'
-           'python-rope'
+  depends=('jupyter-nbconvert'
            'python-jedi'
+           'python-pickleshare'
+           'python-psutil'
+           'python-pycodestyle'
            'python-pyflakes'
-           'python-sphinx'
            'python-pygments'
            'python-pylint'
-           'python-pycodestyle'
-           'python-psutil'
-           'jupyter-nbconvert'
-           'python-qtawesome'
-           'python-pickleshare'
+           'python-pyqt5'
            'python-pyzmq'
-           'python-cloudpickle'
+           'python-qtawesome'
+           'python-qtconsole'
+           'python-rope'
+           'python-sphinx'
+           'python2-spyder-kernels'
+
            'desktop-file-utils'
            'gtk-update-icon-cache')
-  optdepends=('python-pyqt4: Qt-Python bindings'
-              'python-pyside: Qt-Python bindings'
-              'python-matplotlib: 2D/3D plotting'
-              'python-pandas: DataFrame and Series support'
+  optdepends=('python-matplotlib: 2D/3D plotting'
               'python-numpy: N-dimensional arrays'
-              'python-sympy: symbolic mathematics'
+              'python-pandas: DataFrame and Series support'
+              'python-pyqt4: Qt-Python bindings'
+              'python-pyside: Qt-Python bindings'
               'python-scipy: signal/image processing'
+              'python-sympy: symbolic mathematics'
 
               'python-h5py: HDF5 support')
   provides=($_pkgname3)
