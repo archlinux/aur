@@ -2,7 +2,7 @@
 
 pkgname=lookbook-git
 _gitname=lookbook
-pkgver=r320.3dca829
+pkgver=latest
 pkgrel=1
 pkgdesc="Browse and find system icons."
 arch=('i686' 'x86_64')
