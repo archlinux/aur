@@ -7,19 +7,13 @@ pkgdesc="DeepMind pycolab"
 arch=('any')
 url="https://github.com/deepmind/pycolab"
 license=('Apache 2.0')
-groups=()
 depends=('python-setuptools' 'python-numpy' 'python-scipy')
 makedepends=('git')
-provides=('python-colab')
-conflicts=('python-colab')
-backup=()
-options=()
 source=('git+https://github.com/deepmind/pycolab.git')
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/$pkgname"
 
 # Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
