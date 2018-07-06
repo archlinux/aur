@@ -1,6 +1,6 @@
 pkgbase = menuconfig-git
 	pkgdesc = Standalone version of the mconf tool from the linux kernel
-	pkgver = r797.5b4af5a
+	pkgver = r801.54a3824
 	pkgrel = 1
 	url = https://github.com/anatol/menuconfig
 	arch = i686
