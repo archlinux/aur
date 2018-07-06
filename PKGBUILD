@@ -2,11 +2,10 @@
 
 pkgname=inav-configurator
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('x86_64')
 url="https://github.com/iNavFlight/inav-configurator"
-makedepends=('yarn')
 source=(https://github.com/iNavFlight/inav-configurator/archive/1.9.3.zip
         inav-configurator.desktop)
 md5sums=('be04aa017fbeefbf0db08d42686e2dbf'
@@ -15,6 +14,7 @@ provides=('inav-configurator')
 conflicts=('inav-configurator')
 options=(!strip)
 license=('GPL3')
+makedepends=('yarn')
 
 build() {
 	cd $pkgname-$pkgver
