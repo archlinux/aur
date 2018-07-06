@@ -1,4 +1,4 @@
-pkgbase = bubbleswm-git
+pkgbase = bubbles-git
 	pkgdesc = bubbles is opinionated, tiny, bloat-less (=> fast) floating window manager for X.
 	pkgver = gitrev
 	pkgrel = 1
@@ -9,9 +9,8 @@ pkgbase = bubbleswm-git
 	depends = libx11
 	depends = libxft
 	optdepends = libxinerama
-	provides = bubbleswm
+	provides = bubbles
 	source = git+https://gitlab.com/fabbe/bubbles.git
 	md5sums = SKIP
 
-pkgname = bubbleswm-git
-
+pkgname = bubbles-git
