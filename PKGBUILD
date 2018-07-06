@@ -3,13 +3,13 @@ pkgname=openshift-source-to-image
 _release=v1.1.11
 _commit=78a76d97
 pkgver=1.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for building artifacts from source and injecting into docker images"
 arch=('i686' 'x86_64')
 url="https://github.com/openshift/source-to-image"
 license=('Apache')
 source=("https://github.com/openshift/source-to-image/releases/download/${_release}/source-to-image-${_release}-${_commit}-linux-amd64.tar.gz")
-md5sums=('e23e47bdef21a82e091512cc83080d4e')
+md5sums=('5ada6a338d660c339bac075e580858d9')
 
 build() {
     echo "Installing source-to-image"
