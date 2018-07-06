@@ -1,11 +1,12 @@
-pkgbase = inav-configurator
+pkgbase = inav-configurator-bin
 	pkgdesc = Crossplatform configuration tool for the INAV flight control system
 	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://github.com/iNavFlight/inav-configurator
 	arch = x86_64
-	license = custom
+	license = GPL3
 	provides = inav-configurator
+	conflicts = inav-configurator
 	options = !strip
 	source = https://github.com/iNavFlight/inav-configurator/releases/download/1.9.3/INAV-Configurator_linux64_1.9.3.zip
 	source = inav-configurator.desktop
@@ -14,5 +15,5 @@ pkgbase = inav-configurator
 	md5sums = a84590640d45f59f9710480a9ac78a84
 	md5sums = 1c292498ddc3fa880c937a758a036857
 
-pkgname = inav-configurator
+pkgname = inav-configurator-bin
 
