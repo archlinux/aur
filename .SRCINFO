@@ -20,7 +20,6 @@ pkgbase = firefox56
 	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
 	makedepends = rust
-	makedepends = mercurial
 	makedepends = clang
 	makedepends = llvm
 	makedepends = jack
@@ -46,7 +45,7 @@ pkgbase = firefox56
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_56_0_2_RELEASE
+	source = https://ftp.mozilla.org/pub/firefox/releases/56.0.2/source/firefox-56.0.2.source.tar.xz
 	source = wifi-disentangle.patch
 	source = wifi-fix-interface.patch
 	source = 0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
@@ -57,6 +56,7 @@ pkgbase = firefox56
 	source = firefox-symbolic.svg
 	source = firefox-install-dir.patch
 	source = remove-shield.patch
+	source = rtc-gcc8.patch
 	sha256sums = SKIP
 	sha256sums = f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed
 	sha256sums = e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1
@@ -68,6 +68,7 @@ pkgbase = firefox56
 	sha256sums = a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
 	sha256sums = 1d833f76286f38360ebe142ac1a81e71ac45586ed6991701227f207cf1c80ac1
+	sha256sums = 77ae9e042c2fcb23bf6ff7fe654cd618fbedcff31d73812a653d0d1f9d5c8648
 
 pkgname = firefox56
 

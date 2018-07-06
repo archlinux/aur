@@ -17,18 +17,18 @@ url="https://www.mozilla.org/firefox/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell 'sqlite>=3.20' ttf-font libpulse)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
-             autoconf2.13 rust mercurial clang llvm jack)
+             autoconf2.13 rust clang llvm jack)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
-source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
+source=(https://ftp.mozilla.org/pub/firefox/releases/56.0.2/source/firefox-56.0.2.source.tar.xz
         wifi-disentangle.patch wifi-fix-interface.patch
         0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
         no-plt.diff plugin-crash.diff glibc-2.26-fix.diff
-        $basepkg.desktop firefox-symbolic.svg firefox-install-dir.patch remove-shield.patch)
+        $basepkg.desktop firefox-symbolic.svg firefox-install-dir.patch remove-shield.patch rtc-gcc8.patch)
 sha256sums=('SKIP'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
@@ -39,7 +39,8 @@ sha256sums=('SKIP'
             'ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            '1d833f76286f38360ebe142ac1a81e71ac45586ed6991701227f207cf1c80ac1')
+            '1d833f76286f38360ebe142ac1a81e71ac45586ed6991701227f207cf1c80ac1'
+            '77ae9e042c2fcb23bf6ff7fe654cd618fbedcff31d73812a653d0d1f9d5c8648')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -54,10 +55,10 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
-  mkdir path
-  ln -s /usr/bin/python2 path/python
+  mkdir -p path
+  ln -sf /usr/bin/python2 path/python
 
-  cd mozilla-unified
+  cd firefox-$pkgver
   patch -Np1 -i ../firefox-install-dir.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
@@ -80,6 +81,9 @@ prepare() {
   # Disable mozilla shield (annoying telemetry that displays your browser is out of date)
   patch -Np1 -i ../remove-shield.patch
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1435695
+  patch -Np1 -i ../rtc-gcc8.patch
+
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
@@ -100,6 +104,7 @@ export MOZILLA_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=0
 export MOZ_ADDON_SIGNING=1
 export MOZ_REQUIRE_SIGNING=1
+export MOZ_SOURCE_CHANGESET=0
 
 # Keys
 ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
@@ -123,7 +128,7 @@ END
 }
 
 build() {
-  cd mozilla-unified
+  cd firefox-$pkgver
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -139,7 +144,7 @@ build() {
 }
 
 package() {
-  cd mozilla-unified
+  cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 

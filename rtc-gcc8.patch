@@ -1,0 +1,28 @@
+diff -up gecko-dev-0517a94d022c055b2cd0b519233fa8ef8b996d04/media/webrtc/trunk/webrtc/common_audio/vad/vad_core.c.attributes_before_declarator gecko-dev-0517a94d022c055b2cd0b519233fa8ef8b996d04/media/webrtc/trunk/webrtc/common_audio/vad/vad_core.c
+--- gecko-dev-0517a94d022c055b2cd0b519233fa8ef8b996d04/media/webrtc/trunk/webrtc/common_audio/vad/vad_core.c.attributes_before_declarator	2018-02-04 11:15:21.000000000 +0100
++++ gecko-dev-0517a94d022c055b2cd0b519233fa8ef8b996d04/media/webrtc/trunk/webrtc/common_audio/vad/vad_core.c	2018-02-04 22:20:44.290360116 +0100
+@@ -115,8 +115,8 @@ static int32_t WeightedAverage(int16_t*
+ // undefined behavior, so not a good idea; this just makes UBSan ignore the
+ // violation, so that our old code can continue to do what it's always been
+ // doing.)
+-static inline int32_t OverflowingMulS16ByS32ToS32(int16_t a, int32_t b)
+-    RTC_NO_SANITIZE("signed-integer-overflow") {
++static inline int32_t RTC_NO_SANITIZE("signed-integer-overflow")
++    OverflowingMulS16ByS32ToS32(int16_t a, int32_t b) {
+   return a * b;
+ }
+ 
+diff -up gecko-dev-0517a94d022c055b2cd0b519233fa8ef8b996d04/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c.attributes_before_declarator gecko-dev-0517a94d022c055b2cd0b519233fa8ef8b996d04/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c
+--- gecko-dev-0517a94d022c055b2cd0b519233fa8ef8b996d04/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c.attributes_before_declarator	2018-02-04 11:15:21.000000000 +0100
++++ gecko-dev-0517a94d022c055b2cd0b519233fa8ef8b996d04/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c	2018-02-04 23:03:46.818099286 +0100
+@@ -209,8 +209,8 @@ void WebRtcIsacfix_NormLatticeFilterMa(s
+ // Left shift of an int32_t that's allowed to overflow. (It's still undefined
+ // behavior, so not a good idea; this just makes UBSan ignore the violation, so
+ // that our old code can continue to do what it's always been doing.)
+-static inline int32_t OverflowingLShiftS32(int32_t x, int shift)
+-    RTC_NO_SANITIZE("shift") {
++static inline int32_t RTC_NO_SANITIZE("shift")
++    OverflowingLShiftS32(int32_t x, int shift) {
+   return x << shift;
+ }
+ 
