@@ -1,13 +1,12 @@
 pkgbase = skim-git
 	pkgdesc = Fuzzy Finder in rust!
 	pkgver = r376.589eda7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lotabout/skim
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = rust
-	makedepends = cargo
 	depends = bash
 	optdepends = vim: Vi Improved, a highly configurable, improved version of the vi text editor.
 	optdepends = zsh: A very advanced and programmable command interpreter (shell) for UNIX
