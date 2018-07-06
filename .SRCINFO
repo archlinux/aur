@@ -1,0 +1,18 @@
+pkgbase = caja-pushbullet
+	pkgdesc = An extension for Caja to send files with pushbullet.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://launchpad.net/~atareao/+archive/ubuntu/caja-extensions
+	arch = i686
+	arch = x86_64
+	groups = caja-extensions
+	license = GPL3
+	depends = python2-caja
+	depends = caja-extensions-common
+	depends = pushbullet-commons
+	provides = caja-pushbullet
+	source = caja-pushbullet-0.5.0.tar.xz::https://launchpad.net/~atareao/+archive/ubuntu/caja-extensions/+sourcefiles/caja-pushbullet/0.5.0-0extras16.04.5/caja-pushbullet_0.5.0-0extras16.04.5.tar.xz
+	sha256sums = be26f3d657ac2a21cffc21b3e417fba6108d4c9c7e177177df7d03abc906d7e5
+
+pkgname = caja-pushbullet
+
