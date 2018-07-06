@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=matrix-synapse-git
-pkgver=0.30.0.r82.gc2c3092cc
+pkgver=0.32.1.r1.g20ff89d6e
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -18,7 +18,7 @@ depends=('python2-jsonschema' 'python2-twisted' 'python2-service-identity'
          'python2-signedjson' 'python2-pymacaroons-pynacl'
          'python2-service-identity' 'python2-msgpack'
          'python2-phonenumbers' 'python2-affinity' 'python2-sortedcontainers'
-         'python2-jinja' 'python2-prometheus_client'
+         'python2-jinja' 'python2-prometheus_client' 'python2-netaddr'
          'systemd')
 makedepends=('python2-mock' 'git')
 optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)'
