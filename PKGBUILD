@@ -1,4 +1,5 @@
-# Maintainer: NanoArch <nanoarch77@gmail.com>
+# Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Contributor: NanoArch <nanoarch77@gmail.com>
 
 pkgname=gdm3setup
 pkgver=20150813
