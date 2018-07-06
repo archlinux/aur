@@ -1,7 +1,5 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 
-# The VM patch is not expected to work but it's working so far.
-
 _opt_DKMS=1           # This can be toggled between installs
 _opt_MAXINSTPORTS=16  # Maximum install ports.
                       # Default=256 which is plenty for normal size installations.
@@ -264,7 +262,7 @@ RemainAfterExit=yes
 [Install]
 WantedBy=multi-user.target
 EOF
-  ) "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  ) "${pkgdir}/usr/lib/systemd/system/advtty-vcom.service"
 
   if [ "${_opt_DKMS}" -ne 0 ]; then
     rm -r "${pkgdir}/usr/lib/modules/"
