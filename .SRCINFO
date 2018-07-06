@@ -11,7 +11,7 @@ pkgbase = bossa-git
 	provides = bossa
 	conflicts = bossa
 	source = git://github.com/shumatech/BOSSA
-	source = arduino-reset.patch::https://github.com/shumatech/BOSSA/commit/c704f9f2442bc49aa05c9f268637734d2c6712f0.patch
+	source = arduino-reset.patch::https://github.com/shumatech/BOSSA/pull/78.patch
 	sha256sums = SKIP
 	sha256sums = da2571b32da6dd7212654efb96aa7f17a80790e695118f8a13847ffca62de294
 

@@ -11,8 +11,7 @@ depends=('readline' 'wxgtk')
 provides=('bossa')
 conflicts=('bossa')
 source=("git://github.com/shumatech/BOSSA"
-        # https://github.com/shumatech/BOSSA/pull/78
-        "arduino-reset.patch::https://github.com/shumatech/BOSSA/commit/c704f9f2442bc49aa05c9f268637734d2c6712f0.patch")
+        "arduino-reset.patch::https://github.com/shumatech/BOSSA/pull/78.patch")
 sha256sums=('SKIP'
             'da2571b32da6dd7212654efb96aa7f17a80790e695118f8a13847ffca62de294')
 
