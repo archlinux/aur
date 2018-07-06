@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=pingo
-pkgver=0.97.1
+pkgver=0.97.2
 pkgrel=1
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)'
 arch=('i686' 'x86_64')
@@ -11,11 +11,11 @@ depends=('wine')
 options=('!strip')
 source=('git+https://github.com/dbermond/shellutils.git')
 sha256sums=('SKIP')
-_expected_sha256sum='634c0199adb62fdeec8c3becd4ff0e93e6818249482a30f705a6b39dfae4afed'
+_expected_sha256sum='2cf9c877292a82f900e094288a73c6b9706b712e8be0c1d61c7fcc6b2e32d97d'
 #_upstream_version="$(printf '%s' "$pkgver" | sed 's|\.||2')"
 _upstream_version="$pkgver"
 _srcfile="pingo32-${_upstream_version}.zip"
-_srcurl="https://css-ig.net/downloads/${pkgname}32.zip"
+_srcurl="https://css-ig.net/downloads/zip/pingo32.zip"
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
                         Chrome/67.0.3396.87 \
@@ -41,7 +41,7 @@ prepare() {
             -H "$_useragent" \
             -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' \
             -H 'Referer: https://css-ig.net/pingo.php' \
-            -H 'Cookie: HttpOnly; startBAK=R3415750288; HttpOnly; start=R118741669' \
+            -H 'Cookie: HttpOnly; HttpOnly; HttpOnly; startBAK=R3415750288; start=R3918464565' \
             -H 'Connection: keep-alive' \
             --compressed \
             "$_srcurl" || _exit_makepkg 'download'
