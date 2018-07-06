@@ -1,13 +1,13 @@
 # Maintainer: vagnum08 <vagnum08@gmail.com>
 
 pkgname=cpupower-gui-git
-pkgver=0.6.0.r0.ga294ea4
+pkgver=0.6.1.r5.g4c39dc7
 pkgrel=1
 pkgdesc="A GUI utility to set CPU frequency limits"
 arch=(any)
 url="https://gitlab.com/vagnum08/cpupower-gui"
 license=('GPL')
-depends=('python' 'gtk3' 'hicolor-icon-theme' 'polkit' 'python-dbus' )
+depends=('python' 'gtk3' 'hicolor-icon-theme' 'polkit' 'python-dbus' 'python-gobject')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
                       'lxsession: needed for authentification in Xfce, LXDE etc.')
 makedepends=('git' 'autoconf-archive')
