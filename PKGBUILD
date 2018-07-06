@@ -1,7 +1,7 @@
 # Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-tunein
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="tunein integration for Nuvola Player."
 arch=("any")
@@ -10,7 +10,7 @@ license=('custom:BSD')
 depends=('nuvolaruntime' 'imagemagick')
 makedepends=('nuvolasdk' 'scour')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('3442a633e539bf569c5197bbee817bd4b4d847919c4e3a0ec33cb2cf40764bb1')
+sha256sums=('3b08f358be822caef89d29b4d83da94a953ef86f3b7bf88bd2e908e3198eaa95')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
