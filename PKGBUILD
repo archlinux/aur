@@ -5,12 +5,12 @@ pkgver=gitrev
 pkgrel=1
 pkgdesc="bubbles is opinionated, tiny, bloat-less (=> fast) floating window manager for X."
 arch=('i686' 'x86_64')
-url="https://git.svexican.me/bubbleswm/tree/README.md"
+url="https://gitlab.com/fabbe/bubbles/blob/master/README.md"
 license=('GPL')
 depends=('libx11' 'libxft')
 optdepends=('libxinerama')
 provides=("${pkgname%-*}")
-source=('git+https://git.svexican.me/bubbleswm')
+source=('git+https://gitlab.com/fabbe/bubbles.git')
 md5sums=('SKIP')
 
 pkgver() {
