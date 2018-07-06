@@ -9,8 +9,6 @@ pkgbase = python-pycolab-git
 	depends = python-setuptools
 	depends = python-numpy
 	depends = python-scipy
-	provides = python-colab
-	conflicts = python-colab
 	source = git+https://github.com/deepmind/pycolab.git
 	md5sums = SKIP
 
