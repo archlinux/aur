@@ -1,0 +1,24 @@
+pkgbase = gitea-bin
+	pkgdesc = Git with a cup of tea, binary installation
+	pkgver = 1.5.0
+	pkgrel = 1
+	install = gitea-bin.install
+	arch = x86_64
+	license = MIT
+	optdepends = sqlite: SQLite support
+	optdepends = mariadb: MariaDB support
+	optdepends = postgresql: PostgreSQL support
+	optdepends = pam: Authentication via PAM support
+	optdepends = redis: Redis support
+	optdepends = memcached: MemCached support
+	optdepends = openssh: GIT over SSH support
+	conflicts = gitea
+	conflicts = gitea-git
+	backup = etc/gitea/app.ini
+	source = gitea-1.5-linux-amd64.xz::https://dl.gitea.io/gitea/1.5/gitea-1.5-linux-amd64.xz
+	source = gitea.service
+	md5sums = f86fa20a509440ac6c3331a902717171
+	md5sums = 3d743a44b87004307370ca0c2aa8b02f
+
+pkgname = gitea-bin
+

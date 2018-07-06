@@ -1,0 +1,19 @@
+pre_install() {
+  # create the required user account
+  useradd --system -m --shell /bin/bash -c "Account for gitea" --home /home/git git || echo "Git user already exists"
+  install -d "/home/git"
+}
+
+post_install() {
+  chown git:git /var/lib/gitea/{data,indexers,log}
+  chmod 750 /var/lib/gitea/{data,indexers,log}
+  chown root:git /etc/gitea
+  chmod 770 /etc/gitea
+  chown git:git /home/git
+  chmod 700 /home/git
+  systemctl daemon-reload
+}
+
+post_upgrade() {
+  post_install $1
+}
