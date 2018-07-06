@@ -1,6 +1,6 @@
 pkgbase = metasploit-git
 	pkgdesc = Advanced open-source platform for developing, testing, and using exploit code
-	pkgver = 4.16.49.45885.81c78a51c2
+	pkgver = 4.17.0.47129.88dc4714f0
 	pkgrel = 1
 	epoch = 1
 	url = https://www.metasploit.com/
@@ -12,6 +12,7 @@ pkgbase = metasploit-git
 	depends = ruby-bundler
 	depends = sqlite
 	depends = libxslt
+	depends = libxml2
 	depends = git
 	optdepends = ruby-pg: database support
 	provides = metasploit
