@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cilium-git
-pkgver=1.0.90.5391.a7bbd8e8b
+pkgver=1.1.90.5728.e57ef0f58
 pkgrel=1
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
@@ -15,24 +15,11 @@ source=("${pkgname}::git+https://github.com/cilium/cilium" "cilium.sysusers")
 sha256sums=('SKIP'
             'f47ee5b436304aa55ffad29fd68e31be4b1261d3f81ba2a7a370e522705833e8')
 
-# create a fake go path directory and pushd into it
-# $1 real directory
-# $2 gopath directory
-_fake_gopath_pushd() {
-	mkdir -p "$GOPATH/src/${2%/*}"
-	rm -f "$GOPATH/src/$2"
-	ln -rsT "$1" "$GOPATH/src/$2"
-	pushd  "$GOPATH/src/$2" >/dev/null
-}
-
-_fake_gopath_popd() {
-	popd >/dev/null
-}
-
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
 	VERSION=$(<VERSION)
+
 	echo "${VERSION}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
@@ -40,30 +27,33 @@ prepare() {
 	cd "${srcdir}/${pkgname}"
 
 	git reset HEAD --hard
+	git clean -dfq
+
 	git submodule update --init
 }
 
 build() {
-	cd "${srcdir}"
+	cd "${srcdir}/${pkgname}"
 
-	export GOPATH="${srcdir}"
-	_fake_gopath_pushd cilium-git github.com/cilium/cilium
+	mkdir -p src/github.com/cilium
+	ln -s ../../../ src/github.com/cilium/cilium
 
-	mkdir -p "${srcdir}/vendor/src"
+	mkdir -p vendor/src
 	for v in vendor/*; do
-		if test ${v} = vendor/src; then continue; fi
-		if test -d ${v}; then
-			mv -fv ${v} "${srcdir}/vendor/src/"
+		test -z "$v" -o "$v" = "vendor/src" && continue
+		if test -d "$v"; then
+			mv -fv "$v" vendor/src/
 		fi
 	done
-	export GOPATH="${GOPATH}:${srcdir}/vendor"
+	export GOPATH="$(pwd):$(pwd)/vendor"
 
-	export CCACHE_DISABLE=1
 	export PKG_BUILD=1
+	export CCACHE_DISABLE=1
 
-	make clean
+	echo "${pkgver}" > VERSION
+
 	make -C daemon apply-bindata
-	make V=1 plugins bpf cilium daemon monitor cilium-health bugtool
+	make plugins bpf cilium daemon monitor cilium-health bugtool
 
 	export CC="/usr/bin/gcc"
 	export CXX="/usr/bin/g++"
@@ -71,8 +61,6 @@ build() {
 	cd envoy
 	bazel clean
 	bazel build //:envoy --action_env=PATH="$PATH"
-
-	_fake_gopath_popd
 }
 
 package() {
