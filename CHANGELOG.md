@@ -1,5 +1,31 @@
 # Change Log
 
+## [Unreleased](https://github.com/langurmonkey/gaiasky/tree/HEAD)
+
+[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/2.0.2...HEAD)
+
+**Implemented enhancements:**
+
+- Add controls to manage datasets [\#290](https://github.com/langurmonkey/gaiasky/issues/290)
+
+## [2.0.2](https://github.com/langurmonkey/gaiasky/tree/2.0.2) (2018-07-05)
+[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/2.0.1...2.0.2)
+
+**Implemented enhancements:**
+
+- Separate base texture from clouds texture [\#289](https://github.com/langurmonkey/gaiasky/issues/289)
+- Add gamma correction [\#288](https://github.com/langurmonkey/gaiasky/issues/288)
+- Add label size control [\#287](https://github.com/langurmonkey/gaiasky/issues/287)
+- Rearrange graphical settings into preferences dialog [\#286](https://github.com/langurmonkey/gaiasky/issues/286)
+
+**Fixed bugs:**
+
+- Fix objects pane minimize button disappearing [\#285](https://github.com/langurmonkey/gaiasky/issues/285)
+
+**Merged pull requests:**
+
+- Fix broken link to DR2 default catalog [\#280](https://github.com/langurmonkey/gaiasky/pull/280) ([vga101](https://github.com/vga101))
+
 ## [2.0.1](https://github.com/langurmonkey/gaiasky/tree/2.0.1) (2018-06-14)
 [Full Changelog](https://github.com/langurmonkey/gaiasky/compare/2.0.0-vr...2.0.1)
 

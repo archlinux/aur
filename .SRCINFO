@@ -1,6 +1,6 @@
 pkgbase = gaiasky
 	pkgdesc = Interactive 3D Universe software focused on ESA's Gaia mission
-	pkgver = 2.0.1.12226a08
+	pkgver = 2.0.2.7c078d86
 	pkgrel = 1
 	url = https://zah.uni-heidelberg.de/gaia/outreach/gaiasky
 	install = gaiasky.install
@@ -8,8 +8,8 @@ pkgbase = gaiasky
 	arch = x86_64
 	license = MPL
 	depends = jre8-openjdk
-	source = http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/2.0.1.12226a08/gaiasky-2.0.1.12226a08.tar.gz
-	md5sums = 1b202e73d36a653455ca04d9d57b22ff
+	source = http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/2.0.2.7c078d86/gaiasky-2.0.2.7c078d86.tar.gz
+	md5sums = b7104f2c54d5c98ded5bdd40f5520fc5
 
 pkgname = gaiasky
 
