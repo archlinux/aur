@@ -1,7 +1,7 @@
 pkgname='enpass-bin'
 _pkgname='enpass'
 pkgver=5.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A multiplatform password manager'
 arch=('x86_64')
 url='http://enpass.io/'
@@ -21,10 +21,7 @@ package() {
     tar xfz "${srcdir}/data.tar.gz" -C "${pkgdir}"
 
     # Remove unnecessary files which are included in the .deb
-    find "${pkgdir}" -name '.DS_Store' -delete
-    find "${pkgdir}" -name '._.DS_Store' -delete
-    find "${pkgdir}" -name '._enpass.png' -delete
-    find "${pkgdir}" -name '*.swp' -delete
+    find "${pkgdir}" -name '*~' -delete
 
     # Update permissions to match the default system ones
     chmod 755 "${pkgdir}/opt/"
@@ -34,3 +31,6 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     ln -s '/opt/Enpass/bin/runenpass.sh' "${pkgdir}/usr/bin/enpass"
 }
+
+
+# vim: set syntax=sh:
