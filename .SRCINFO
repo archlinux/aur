@@ -9,13 +9,16 @@ pkgbase = tecnoballz
 	depends = sdl_image
 	depends = sdl_mixer
 	depends = tinyxml
-	backup = var/games/tecnoballz/tecnoballz.hi
+	depends = libmikmod
+	backup = var/lib/tecnoballz/tecnoballz.hi
 	source = http://linux.tlk.fr/games/TecnoballZ/download/tecnoballz-0.93.1.tgz
 	source = tecnoballz.xpm
 	source = tecnoballz.desktop
+	source = games.dir.patch
 	md5sums = 7beeacb06fa841382f0ecbe73f64723a
 	md5sums = 5b8d94612523353b6d2eb32f840b58d8
 	md5sums = eec9a3f78b51647b41c3e4c6d1d19ce9
+	md5sums = 92793da20387db8c32646052a85e56d7
 
 pkgname = tecnoballz
 

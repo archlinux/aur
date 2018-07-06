@@ -1,0 +1,13 @@
+diff -Naur tecnoballz-0.93.1.orig/src/Makefile.am tecnoballz-0.93.1/src/Makefile.am
+--- tecnoballz-0.93.1.orig/src/Makefile.am	2018-07-05 23:35:20.849605105 +0000
++++ tecnoballz-0.93.1/src/Makefile.am	2018-07-05 23:35:48.349456126 +0000
+@@ -1,7 +1,7 @@
+ 
+ NULL =
+-gamesdir = $(prefix)/games
+-scoredir = /var/games/tecnoballz
++gamesdir = $(prefix)/bin
++scoredir = /var/lib/tecnoballz
+ score = tecnoballz.hi
+ 
+ SUBDIRS = TecnoballZ
