@@ -1,7 +1,7 @@
 pkgbase = autokey-py3
 	pkgdesc = Python 3 port of AutoKey, a desktop automation utility for Linux and X11 with new features.
 	pkgver = 0.95.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/guoci/autokey-py3
 	arch = any
 	license = GPL3
@@ -24,13 +24,15 @@ pkgbase = autokey-py3
 	depends = gtk-update-icon-cache
 	optdepends = python-atspi
 	optdepends = qt-at-spi: to work with KDE/Qt applications
+	optdepends = python-pyqt5: for Qt interface
+	optdepends = python-qscintilla-qt5: for Qt interface
 	conflicts = autokey
 	conflicts = autokey-gtk
 	conflicts = autokey-data
 	source = autokey-py3-0.95.1.tar.gz::https://github.com/autokey-py3/autokey/archive/v0.95.1.tar.gz
 	source = requires.patch
 	sha256sums = a35d15e2582e89d9689b12eded7e1430ea8692e707e1bcb2c071ebfb008115cb
-	sha256sums = a76bba7790299d9cfca1838450d0577223ec2837c8a4f65c2f8c076a83984855
+	sha256sums = 4e33374c4eff96573ce92fda5e8263c8a610c9ba9fdce98046a0a3a05ac9a478
 
 pkgname = autokey-py3
 
