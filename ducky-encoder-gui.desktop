@@ -8,5 +8,5 @@ Exec=java -jar /opt/USB-Rubber-Ducky/Ducky_Encoder_GUI.jar
 Icon=ducky-encoder-gui
 Terminal=false
 Type=Application
-Categories=Utility;
-Keywords=ducky;encoder;gui;
+Categories=Utility
+Keywords=ducky;encoder;gui
