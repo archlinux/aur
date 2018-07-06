@@ -1,0 +1,17 @@
+pkgbase = sprite-sheet-packer-git
+	pkgdesc = Sprite sheet packer not unlike TexturePacker
+	pkgver = 1.0.9.r19.g6fc0ee6
+	pkgrel = 1
+	url = https://github.com/amakaseev/sprite-sheet-packer/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gendesk
+	depends = qt5-declarative
+	provides = sprite-sheet-packer
+	conflicts = sprite-sheet-packer
+	source = git+https://github.com/amakaseev/sprite-sheet-packer.git
+	md5sums = SKIP
+
+pkgname = sprite-sheet-packer-git
+
