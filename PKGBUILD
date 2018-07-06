@@ -1,7 +1,7 @@
 # Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-jango
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="jango integration for Nuvola Player."
 arch=("any")
@@ -10,7 +10,7 @@ license=('custom:BSD')
 depends=('nuvolaruntime' 'imagemagick')
 makedepends=('nuvolasdk' 'scour')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('e8c6acd7461956f16dde284e111d97a95759c0f2b69d07fe753cf0bb965e64cd')
+sha256sums=('8f0f8455819e5086f5bbb3bf67d81ed5c90105dd6c5674d57108f786248ae5d2')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
