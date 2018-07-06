@@ -1,13 +1,14 @@
 pkgbase = flyway
 	pkgdesc = Flyway Community Edition - Database Migrations Made Easy.
-	pkgver = 5.1.1
+	pkgver = 5.1.4
 	pkgrel = 1
 	url = https://flywaydb.org/
 	arch = any
 	license = Apache
 	depends = java-environment>=8
-	source = https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.1.1/flyway-commandline-5.1.1.tar.gz
+	source = https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.1.4/flyway-commandline-5.1.4.tar.gz
 	sha256sums = ee2ca6771473d790cf1bbc370de1747d205671d443279b450333529e4b3db14d
+	sha256sums = f8388184f8a37b950d892d5ddc8919259ff3bb64d49bfb90ea6697328b085fe5
 
 pkgname = flyway
 
