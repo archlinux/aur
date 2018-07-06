@@ -1,0 +1,13 @@
+pkgbase = jrommanager
+	pkgdesc = Java Rom Manager
+	pkgver = 1.5b18
+	pkgrel = 1
+	url = http://masterpasswordapp.com/
+	arch = any
+	license = GPL3
+	depends = java-runtime>=8
+	source = https://github.com/optyfr/JRomManager/releases/download/1.5b18/JRomManager-1.5b18.zip
+	md5sums = df8ef44e5edd830371b15b9dcea87987
+
+pkgname = jrommanager
+
