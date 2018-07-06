@@ -1,0 +1,22 @@
+pkgbase = virtualshield
+	pkgdesc = You have the right to remain private! VirtualShield VPN
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://virtualshield.com/
+	arch = any
+	license = https://virtualshield.com/legal/eula/
+	depends = openvpn
+	depends = mono
+	depends = mono-tools
+	depends = mono-addins
+	optdepends = filemanager-actions
+	optdepends = openvpn-runit
+	optdepends = openvpn-openrc
+	optdepends = virtualshield-runit
+	optdepends = virtualshield-openrc
+	optdepends = virtualshield-systemd
+	source = virtualshield-1.0.tar.gz::https://github.com/karl-k/virtualshield/archive/1.0.tar.gz
+	sha512sums = 66c2816f445fec824de555f50209696f314589a6edf883b15578792133532bdcf9e560014eef4c4ec7c1ccae454535657bea15a9c755a7b3b68d9de7c11d6586
+
+pkgname = virtualshield
+
