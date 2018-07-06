@@ -1,5 +1,5 @@
 pkgname=libmpd-git
-pkgver=release.0.20.0.r23.g2c8b595
+pkgver=r419.2c8b595
 pkgrel=1
 pkgdesc="Signal based wrapper around libmpdclient"
 arch=('i686' 'x86_64')
@@ -8,13 +8,13 @@ license=('GPL')
 depends=('glib2')
 conflicts=('libmpd')
 
-source=($pkgname::git://git.musicpd.org/master/libmpd.git)
+source=($pkgname::git://github.com/DaveDavenport/libmpd.git)
 
 md5sums=(SKIP)
 
 pkgver() {
     cd "$pkgname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
