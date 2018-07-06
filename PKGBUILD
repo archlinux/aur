@@ -1,7 +1,7 @@
 
 #Maintainer: Toni Sagrista Selles <tsagrista@ari.uni-heidelberg.de>
 pkgname=gaiasky
-pkgver=2.0.2.7c078d86
+pkgver=2.0.2.e6dcfb14
 pkgrel=1
 epoch=
 pkgdesc="Interactive 3D Universe software focused on ESA's Gaia mission"
@@ -22,7 +22,7 @@ install=gaiasky.install
 changelog=CHANGELOG.md
 source=("http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=("b7104f2c54d5c98ded5bdd40f5520fc5")
+md5sums=("9109c464844ccdd92ed585024fdce7eb")
 validpgpkeys=()
 
 prepare() {
