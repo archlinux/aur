@@ -3,7 +3,7 @@
 pkgname=system76-dkms
 _pkgname=system76
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="This DKMS driver provides airplane mode, keyboard backlight, and fan support for System76 laptops"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-dkms"
@@ -19,9 +19,6 @@ package() {
   # Installation directory
   local install_dir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 
-  # Load the module at boot
-  install -Dm644 system76.conf ${pkgdir}/etc/modules-load.d/system76.conf
-
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Install source files
@@ -32,4 +29,7 @@ package() {
 
   # Edit and install dkms configuration
   sed "s/#MODULE_VERSION#/${pkgver}/" "debian/system76-dkms.dkms" > "${install_dir}/dkms.conf"
+
+  # Load the module at boot
+  install -Dm644 ${srcdir}/system76.conf ${pkgdir}/etc/modules-load.d/system76.conf
 } 
