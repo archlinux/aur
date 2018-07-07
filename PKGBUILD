@@ -5,8 +5,6 @@ pkgrel=1
 pkgdesc="A no-frills local HTTP proxy server powered by a proxy auto-config (PAC) file"
 arch=('i686' 'x86_64')
 license=('Apache')
-depends=(
-)
 makedepends=(
 	'go'
 	'git'
@@ -14,6 +12,10 @@ makedepends=(
 
 source=(
 	"pacproxy::git://github.com/williambailey/pacproxy.git#branch=${BRANCH:-master}"
+)
+
+md5sums=(
+	'SKIP'
 )
 
 build() {
