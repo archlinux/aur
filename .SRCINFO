@@ -1,0 +1,13 @@
+pkgbase = pacproxy
+	pkgdesc = A no-frills local HTTP proxy server powered by a proxy auto-config (PAC) file
+	pkgver = 2.0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	source = pacproxy::git://github.com/williambailey/pacproxy.git#branch=master
+
+pkgname = pacproxy
+
