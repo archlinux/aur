@@ -2,14 +2,14 @@
 
 _pkgname=('kulanday')
 pkgname=('kulanday-git')
-pkgver=102
+pkgver=173
 pkgrel=1
 pkgdesc='A software for collecting and managing datasets for learning languages (or anything else)'
 arch=('any')
 licence=('gpl')
 url='https://tambi-soft.github.io'
 makedepends=('git')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-svg')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'ffmpeg')
 source=(${_pkgname}::git+https://github.com/tambi-soft/kulanday.git)
 sha256sums=('SKIP')
 
