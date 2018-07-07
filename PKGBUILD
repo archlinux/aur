@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nash-git
-pkgver=r959.09e8c98
+pkgver=r1054.ab4033e
 pkgrel=1
 epoch=
 pkgdesc="A system shell that attempts to be more safe and give more power to user."
@@ -9,7 +9,7 @@ url="https://github.com/NeowayLabs/nash"
 license=('apache')
 categories=()
 groups=()
-depends=('')
+depends=()
 makedepends=('git' 'go')
 optdepends=()
 checkdepends=()
@@ -41,8 +41,10 @@ package() {
   cd "$srcdir"
   install -Dm755 bin/nash "$pkgdir/usr/bin/nash"
   install -Dm644 src/${_gourl%/*/*}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-  install -Dm644 src/${_gourl%/*/*}/examples/init $pkgdir/usr/share/doc/${pkgname%-*}/examples/init
-  install -Dm644 src/${_gourl%/*/*}/LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
-
+  cd src/${_gourl%/*/*}/examples
+  for i in *; do
+    install -Dm644 $i $pkgdir/usr/share/doc/${pkgname%-*}/examples/$i
+  done
+  install -Dm644 ../LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
 
