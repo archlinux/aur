@@ -2,7 +2,7 @@
 pkgname=lucky
 pkgver=0.11.0
 pkgrel=1
-pkgdesc='A web framework written in Crystal that helps you build apps quickly, catches bugs for you, and runs incredibly fast'
+pkgdesc='A Crystal web framework that catches bugs for you, runs incredibly fast, and helps you write code that lasts.'
 arch=('x86_64')
 url='https://luckyframework.org/'
 license=('MIT')

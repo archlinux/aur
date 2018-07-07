@@ -1,5 +1,5 @@
 pkgbase = lucky
-	pkgdesc = A web framework written in Crystal that helps you build apps quickly, catches bugs for you, and runs incredibly fast
+	pkgdesc = A Crystal web framework that catches bugs for you, runs incredibly fast, and helps you write code that lasts.
 	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://luckyframework.org/
