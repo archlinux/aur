@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=dpic-git
-pkgver=r19.275538d
+pkgver=r20.3073b72
 pkgrel=1
 epoch=
 pkgdesc="An implementation of the pic \"little language,\" with support for LaTeX, PDF, SVG, Postscript, and xfig 3.2 output."
@@ -10,7 +10,7 @@ url="https://ece.uwaterloo.ca/~aplevich/dpic/"
 license=('BSD')
 categories=()
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
