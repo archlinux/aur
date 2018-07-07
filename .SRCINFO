@@ -1,7 +1,7 @@
 pkgbase = simple-rt
 	pkgdesc = SimpleRT - Reverse Tethering utility for Android
 	pkgver = 20170510.132_c270fc9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vvviperrr/SimpleRT
 	arch = x86
 	arch = x86_64
