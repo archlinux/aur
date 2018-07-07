@@ -20,13 +20,13 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  make PREFIX=/usr
+  make
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
   install -dm755 ${pkgdir}/usr/bin
-  for i in hexinject hex2raw prettypacket; do
+  for i in hexinject hex2raw prettypacket packets.tcl; do
     install -m755 ${i} ${pkgdir}/usr/bin/${i}
   done
 }
