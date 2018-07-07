@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #Error handling
-depends="sh curl jq sed grep find"
+depends="sh curl jq sed grep find xargs"
 for c in $depends; do if ! command "$c" --help >/dev/null 2>&1; then echo "Error: dependency ${c} is missing. Aborting."; exit 1; fi; done
 if [ $# -gt 2 ]; then echo "Error: too many options. Aborting."; exit 1; fi
 if [ $# = 1 ] && [ ! "$1" = "-h" ] && [ ! "$1" = "--help" ]; then echo "Error: missing option. Aborting."; exit 1; fi
@@ -69,35 +69,35 @@ if [ -e "$config" ]; then
 elif [ ! "$1" = "-h" ] && [ ! $# = 0 ]; then echo "Warning: no config file found, using default parameters."; fi
 
 clean () {
-	sub="$1"
-	if [ -z "${sub}" ] || [ ! -d "${sub}" ]; then echo "Error: dump ${sub} does not exist. Aborting."; exit; fi
-	echo "Tidying dump of /r/${sub} to remove failed downloads or duplicates/reposts."
-	rm -f "${sub}/temp" "${sub}/found"
+	dir="$1"
+	if [ -z "${dir}" ] || [ ! -d "${dir}" ]; then echo "Error: dump ${dir} does not exist. Aborting."; exit; fi
+	echo "Tidying dump in ${dir} to remove failed downloads or duplicates/reposts."
+	rm -f "${dir}/temp" "${dir}/found"
 
 	printf "Removing empty files... "
-	c=$(find "${sub}" -type f | wc -l)
-	du -a "$sub" | grep '^0' | cut -f2 | xargs rm -f
-	d=$(find "${sub}" -type f | wc -l)
+	c=$(find "${dir}" -type f | wc -l)
+	du -a "$dir" | grep '^0' | cut -f2 | xargs rm -f
+	d=$(find "${dir}" -type f | wc -l)
 	echo "done, $(( c-d )) files removed"
 
 	printf "Removing corrupt/invalid files... "
 	if [ "$post" = 0 ] && [ "$nonimage" = 0 ] || [ "$gif" = 0 ]; then
-		data=$(file -i "$sub"/*)
+		data=$(file -i "$dir"/*)
 		if [ "$post" = 0 ] && [ "$nonimage" = 0 ]; then echo "$data" | grep 'text/' | cut -d':' -f1 | xargs rm -f; fi
 		if [ "$gif" = 0 ]; then echo "$data" | grep '/gif' | cut -d':' -f1 | xargs rm -f; fi
 	fi
-	if [ "$album" = 0 ]; then find "$sub" -name '*-*' -exec rm -f {} + ; fi
-	c=$(find "${sub}" -type f | wc -l)
+	if [ "$album" = 0 ]; then find "$dir" -name '*-*' -exec rm -f {} + ; fi
+	c=$(find "${dir}" -type f | wc -l)
 	echo "done, $(( d-c )) files removed"
 
 	printf "Removing duplicates... "
 	old=""
-	b2sum "$sub"/* | sort | uniq -Dw 128 | while IFS= read -r line; do
+	b2sum "$dir"/* | sort | uniq -Dw 128 | while IFS= read -r line; do
 		new=${line% *}
 		if [ "$new" = "$old" ]; then rm -f "${line#*  }"; fi
 		old="$new"
 	done
-	d=$(find "${sub}" -type f | wc -l)
+	d=$(find "${dir}" -type f | wc -l)
 	echo "done, $(( c-d )) files removed"
 
 	echo
@@ -377,7 +377,7 @@ case $1 in
 	-t|--tumblr) gettumblr "$url" ;;
 	-h|--help|'')
 	echo "
-Usage: ${progname} [-s subreddit] [-u username] [-c subreddit/username] [-a URL] [-i URL] [-p URL] [-t URL] [-h]
+Usage: ${progname} [-s subreddit] [-u username] [-c directory] [-a URL] [-i URL] [-p URL] [-t URL] [-h]
 
 Download posts (eg. images) fitting certain criteria from reddit, and commonly linked sites
 
@@ -385,7 +385,7 @@ Arguments:
 	-h, --help	Display this message and exit
 	-s, --sub	Scrape posts from the given subreddit
 	-u, --user	Scrape posts by the given user
-	-c, --clean	Tidy reposts/failures from a subreddit/user dump
+	-c, --clean	Tidy reposts/failures in a given directory
 	-a, --album	Download all images in an Imgur album at URL
 	-i, --instagram	Download images/videos from an Instagram account/post at URL
 	-p, --pinterest	Download images from a pinterest board/pin at URL
