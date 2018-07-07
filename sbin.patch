@@ -1,8 +1,8 @@
 --- rinse_orig/Makefile	2014-06-17 21:16:29.000000000 +0700
-+++ rinse/Makefile	2015-10-19 11:45:52.398805700 +0600
++++ rinse-3.3/Makefile	2015-10-19 11:45:52.398805700 +0600
 @@ -52,15 +52,15 @@
  install: fixupperms
- 	mkdir -p ${PREFIX}/etc/bash_completion.d
+ 	mkdir -p ${PREFIX}/usr/share/bash-completion/completions
  	mkdir -p ${PREFIX}/etc/rinse
 -	mkdir -p ${PREFIX}/usr/sbin
 +	mkdir -p ${PREFIX}/usr/bin
