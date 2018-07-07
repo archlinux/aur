@@ -24,7 +24,7 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'coin-or-cbc: COIN backend for numerical computations' 'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
   'ffmpeg: to export animations to video' 'imagemagick: to show animations'
-  'coxeter: Coxeter groups implementation' 'cryptominisat5: SAT solver' 'gap-data: for computing Galois groups'
+  'coxeter: Coxeter groups implementation' 'cryptominisat5: SAT solver' 'gap-4.8-data: for computing Galois groups'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
@@ -37,7 +37,7 @@ makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhom
 source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-env.patch package.patch latte-count.patch sagemath-python3-notebook.patch test-optional.patch
         r-no-readline.patch fes02.patch sagemath-threejs.patch sagemath-ignore-warnings.patch sagemath-cremona.patch
-        sagemath-scipy-1.0.patch sagemath-singular-4.1.1.patch sagemath-lcalc-c++11.patch
+        sagemath-scipy-1.0.patch sagemath-singular-4.1.1.patch sagemath-lcalc-c++11.patch sagemath-gap-4.8.patch
         pari-ratpoints.patch::"https://github.com/sagemath/sage/commit/83458400.patch")
 sha256sums=('SKIP'
             '50992e8421595aee3fe84663cbc7417d8d010cbcc824851032f24930653c2950'
@@ -53,6 +53,7 @@ sha256sums=('SKIP'
             '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
             '11a68f156647ba9f38cb01b2a5e4f9a6a78f6297f2a5a65fbfdfe32d4be69d0c'
             '5114c912f821900e5bfae1e2cfeb7984de946d0b23e1182b0bf15be1d803dfd0'
+            '6917cb74e50ae965ea8d7c39577e5f0a5068e4b6a67b53fc6f219149a7d06584'
             'e24ad879f6b2eb970778fc5e867bcbe0a6d393feca8f11f5cb8d07da1f024be9')
 
 pkgver() {
@@ -88,6 +89,8 @@ prepare(){
   patch -Rp1 -i ../pari-ratpoints.patch
 # don't force c++98 for lcalc (fixes build with NTL 11)
   patch -p1 -i ../sagemath-lcalc-c++11.patch
+# Adjust paths for gap-4.8
+  patch -p1 -i ../sagemath-gap-4.8.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
