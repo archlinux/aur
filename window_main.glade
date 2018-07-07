@@ -64,6 +64,7 @@ https://github.com/aokellermann/
   </object>
   <object class="GtkApplicationWindow" id="check_window">
     <property name="can_focus">False</property>
+    <property name="show_menubar">False</property>
     <signal name="destroy" handler="on_check_window_destroy" swapped="no"/>
     <child>
       <placeholder/>
@@ -115,6 +116,7 @@ https://github.com/aokellermann/
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_modify_button_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -128,6 +130,7 @@ https://github.com/aokellermann/
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_modify_button_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -141,6 +144,7 @@ https://github.com/aokellermann/
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_modify_button_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -459,6 +463,37 @@ https://github.com/aokellermann/
       </object>
     </child>
   </object>
+  <object class="GtkMessageDialog" id="generic_check_window_error_dialog">
+    <property name="can_focus">False</property>
+    <property name="type_hint">dialog</property>
+    <property name="transient_for">check_window</property>
+    <property name="message_type">error</property>
+    <property name="buttons">ok</property>
+    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <signal name="response" handler="gtk_widget_hide" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkMessageDialog" id="get_password_dialog">
     <property name="can_focus">False</property>
     <property name="modal">True</property>
@@ -467,7 +502,7 @@ https://github.com/aokellermann/
     <property name="skip_taskbar_hint">True</property>
     <property name="urgency_hint">True</property>
     <property name="transient_for">check_window</property>
-    <property name="message_type">other</property>
+    <property name="message_type">question</property>
     <property name="buttons">ok-cancel</property>
     <property name="text" translatable="yes">Enter your password:</property>
     <signal name="close" handler="gtk_widget_hide" swapped="no"/>
@@ -512,19 +547,22 @@ https://github.com/aokellermann/
       </object>
     </child>
   </object>
-  <object class="GtkMessageDialog" id="portfolio_file_get_string_error_dialog">
+  <object class="GtkMessageDialog" id="portfolio_modify_dialog">
     <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
     <property name="transient_for">check_window</property>
-    <property name="message_type">error</property>
-    <property name="buttons">ok</property>
-    <property name="text" translatable="yes">There was an error opening your portfolio file. This may be due to the file not existing or invalid permissions on the file.</property>
-    <signal name="response" handler="gtk_widget_hide" swapped="no"/>
+    <property name="message_type">question</property>
+    <property name="buttons">ok-cancel</property>
+    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
+    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <signal name="response" handler="on_portfolio_modify_dialog_response" swapped="no"/>
     <child>
       <placeholder/>
     </child>
     <child internal-child="vbox">
-      <object class="GtkBox">
+      <object class="GtkBox" id="portfolio_modify_vbox">
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
@@ -540,42 +578,50 @@ https://github.com/aokellermann/
             <property name="position">0</property>
           </packing>
         </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkMessageDialog" id="wrong_password_dialog">
-    <property name="can_focus">False</property>
-    <property name="modal">True</property>
-    <property name="window_position">center-on-parent</property>
-    <property name="destroy_with_parent">True</property>
-    <property name="type_hint">dialog</property>
-    <property name="skip_taskbar_hint">True</property>
-    <property name="urgency_hint">True</property>
-    <property name="transient_for">check_window</property>
-    <property name="message_type">error</property>
-    <property name="buttons">ok</property>
-    <property name="text" translatable="yes">Wrong password!</property>
-    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
-    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
-    <signal name="response" handler="gtk_widget_hide" swapped="no"/>
-    <child>
-      <placeholder/>
-    </child>
-    <child internal-child="vbox">
-      <object class="GtkBox">
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox">
-            <property name="can_focus">False</property>
-            <property name="homogeneous">True</property>
-            <property name="layout_style">end</property>
+        <child>
+          <object class="GtkEntry" id="modify_symbol_entry">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="max_width_chars">16</property>
+            <property name="caps_lock_warning">False</property>
+            <property name="placeholder_text" translatable="yes">Symbol</property>
+            <property name="input_purpose">alpha</property>
+            <signal name="activate" handler="on_modify_entry_activate" object="portfolio_modify_dialog" swapped="no"/>
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">0</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="modify_amount_entry">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="max_width_chars">16</property>
+            <property name="placeholder_text" translatable="yes">Quantity</property>
+            <property name="input_purpose">digits</property>
+            <signal name="activate" handler="on_modify_entry_activate" object="portfolio_modify_dialog" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="modify_spent_entry">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="max_width_chars">16</property>
+            <property name="placeholder_text" translatable="yes">Price per share</property>
+            <property name="input_purpose">digits</property>
+            <signal name="activate" handler="on_modify_entry_activate" object="portfolio_modify_dialog" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">4</property>
           </packing>
         </child>
       </object>

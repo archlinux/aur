@@ -7,50 +7,59 @@ char column_names[16][NUM_COLS];
 void window_main(void) {
     gtk_init(NULL, NULL);
 
-    // Read glade XML config file
+    // Set defaults
     app.portfolio_data = NULL;
+    app.portfolio_string = NULL;
     app.builder = gtk_builder_new();
-    gtk_builder_add_from_file(app.builder, "/usr/share/tick/window_main.glade", NULL);
+    app.password[0] = '\0';
 
+    // Read glade XML config file
+    gtk_builder_add_from_file(app.builder, "window_main.glade", NULL);
+
+    // Copy names of columns into array
     GtkTreeView* tree_view = GTK_TREE_VIEW(gtk_builder_get_object(app.builder, "check_tree_view"));
-    for (gint i = 0; i < NUM_COLS; i++) // Copy names of columns into array
+    for (gint i = 0; i < NUM_COLS; i++)
         strcpy(column_names[i], gtk_tree_view_column_get_title(gtk_tree_view_get_column(
                 tree_view, i)));
 
     gtk_builder_connect_signals(app.builder, NULL); // Connect signals
+
+    // Show check window as default opening window
     gtk_widget_show(GTK_WIDGET(gtk_builder_get_object(app.builder, "check_window")));
     gtk_main(); // Main loop
 }
 
-void create_check_list(void) {
-    if (app.portfolio_data != NULL)
-        return;
-
+void check_list_create_from_string(void) {
     app.portfolio_data = portfolio_info_array_init_from_portfolio_string(app.portfolio_string);
     format_cells(app.portfolio_data);
-    GtkTreeIter iters[app.portfolio_data->length + 1];
     GtkListStore* pListStore = GTK_LIST_STORE(gtk_builder_get_object(app.builder, "check_list"));
     Info* idx; // Append pListStore store with portfolio data
     for (size_t i = 0; i < app.portfolio_data->length + 1; i++) {
-        gtk_list_store_append(pListStore, &iters[i]);
+        GtkTreeIter iter;
+        gtk_list_store_append(pListStore, &iter);
         if (i == app.portfolio_data->length) {
             idx = app.portfolio_data->totals;
         } else {
             idx = app.portfolio_data->array[i];
-            gtk_list_store_set(pListStore, &iters[i], AMOUNT, idx->famount, -1);
+            gtk_list_store_set(pListStore, &iter, AMOUNT, idx->famount, -1);
         }
-        gtk_list_store_set(pListStore, &iters[i], SYMBOL, idx->symbol, SPENT, idx->ftotal_spent,
-                           VALUE, "Loading...", -1);
+        gtk_list_store_set(pListStore, &iter, SYMBOL, idx->symbol, SPENT, idx->ftotal_spent, -1);
     }
+}
 
-    api_info_array_store_check_data(app.portfolio_data);
+void check_list_add_api_data(void) {
+    GtkListStore* pListStore = GTK_LIST_STORE(gtk_builder_get_object(app.builder, "check_list"));
     format_cells(app.portfolio_data);
-
+    Info* idx;
+    GtkTreeIter iter;
     for (size_t i = 0; i < app.portfolio_data->length + 1; i++) {
         if (i == app.portfolio_data->length)
             idx = app.portfolio_data->totals;
         else idx = app.portfolio_data->array[i];
-        gtk_list_store_set(pListStore, &iters[i], VALUE, idx->fcurrent_value, PROFIT,
+        if (i == 0)
+            gtk_tree_model_get_iter_first(GTK_TREE_MODEL(pListStore), &iter);
+        else gtk_tree_model_iter_next(GTK_TREE_MODEL(pListStore), &iter);
+        gtk_list_store_set(pListStore, &iter, VALUE, idx->fcurrent_value, PROFIT,
                            idx->fprofit_total, PROFIT_PERCENT, idx->fprofit_total_percent,
                            PROFIT_24H, idx->fprofit_last_close, PROFIT_24H_PERCENT,
                            idx->fprofit_last_close_percent, PROFIT_7D, idx->fprofit_7d,
@@ -60,24 +69,120 @@ void create_check_list(void) {
 }
 
 void on_load_button_clicked(GtkButton* button) {
-    if (app.portfolio_string == NULL)
-        app.portfolio_string = file_get_string(portfolio_file_path);
+    // Already loaded
+    if (app.portfolio_string != NULL && is_string_json_array(app.portfolio_string)
+        && app.portfolio_data != NULL)
+        return;
 
-    // Error reading file
-    if (app.portfolio_string == NULL) {
-        gtk_widget_show(GTK_WIDGET(gtk_builder_get_object(
-                app.builder, "portfolio_file_get_string_error_dialog")));
+    if (app.portfolio_string == NULL) { // Portfolio not loaded
+        FILE* fp = fopen(portfolio_file_path, "a"); // Touch file to get a valid String if empty
+        if (fp)
+            fclose(fp);
+
+        // Will be String with length 0 on new portfolio
+        app.portfolio_string = file_get_string(portfolio_file_path);
+    }
+
+    if (app.portfolio_string == NULL) { // Error reading file
+        GValue gtext = G_VALUE_INIT;
+        g_value_init(&gtext, G_TYPE_STRING);
+        g_value_set_string(&gtext, "There was an error opening your portfolio file. This may be due"
+                                   " to the file not existing or invalid permissions on the file.");
+        GtkWidget* dialog = GTK_WIDGET(gtk_builder_get_object(
+                app.builder, "generic_check_window_error_dialog"));
+        g_object_set_property((GObject*) dialog, "text", &gtext);
+        gtk_widget_show(dialog);
         return;
     }
 
-    Json* jobj = json_tokener_parse(app.portfolio_string->data);
-    if (jobj == NULL || !json_object_is_type(jobj, json_type_array)) { // Encrypted String
-        GtkWidget* dialog = (GtkWidget*) GTK_MESSAGE_DIALOG(gtk_builder_get_object(
-                app.builder, "get_password_dialog"));
+    if (app.portfolio_string->len == 0) { // On new portfolio, create empty JSON array
+        Json* jobj = json_object_new_array();
+        const char* str = json_object_get_string(jobj);
+        app.portfolio_string->len = strlen(str);
+        app.portfolio_string->data = realloc(app.portfolio_string->data, app
+                .portfolio_string->len + 1);
+        strcpy(app.portfolio_string->data, str);
+        json_object_put(jobj);
+        return;
+    }
+
+    // If encrypted file
+    if (!is_string_json_array(app.portfolio_string)) {
+        GtkWidget* dialog = (GtkWidget*) GTK_MESSAGE_DIALOG(gtk_builder_get_object(app.builder,
+                "get_password_dialog"));
         gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "password_entry")), "");
+        gtk_widget_show(dialog); // Decode
+        return;
+    }
+
+    app.portfolio_data = portfolio_info_array_init_from_portfolio_string(app.portfolio_string);
+    if (app.portfolio_data != NULL) {
+        check_list_create_from_string();
+        api_info_array_store_check_data(app.portfolio_data);
+        check_list_add_api_data();
+    }
+}
+
+void on_modify_button_clicked(GtkButton* button) {
+    if (app.portfolio_string == NULL) {
+        GValue gtext = G_VALUE_INIT;
+        g_value_init(&gtext, G_TYPE_STRING);
+        g_value_set_string(&gtext, "Your portfolio hasn't been loaded yet. Click the button Load "
+                                   "Portfolio to the left.");
+        GtkWidget* dialog = GTK_WIDGET(gtk_builder_get_object(
+                app.builder, "generic_check_window_error_dialog"));
+        g_object_set_property((GObject*) dialog, "text", &gtext);
         gtk_widget_show(dialog);
-    } else create_check_list(); // Unencrypted String
-    json_object_put(jobj);
+        return;
+    }
+
+    GtkMessageDialog* dialog = GTK_MESSAGE_DIALOG(gtk_builder_get_object(
+            app.builder, "portfolio_modify_dialog"));
+
+    const gchar* label = gtk_button_get_label(button);
+    GValue gtext = G_VALUE_INIT;
+    g_value_init(&gtext, G_TYPE_STRING);
+    g_value_set_string(&gtext, label);
+
+    g_object_set_property((GObject*) dialog, "text", &gtext);
+    gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_symbol_entry")), "");
+    gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_amount_entry")), "");
+    gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_spent_entry")), "");
+    gtk_widget_show((GtkWidget*) dialog);
+}
+
+void on_modify_entry_activate(GtkEntry* entry, gpointer dialog) {
+    gtk_widget_hide((GtkWidget*) dialog);
+    GtkEntry* symbol_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_symbol_entry"));
+    GtkEntry* amount_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_amount_entry"));
+    GtkEntry* spent_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_spent_entry"));
+    const gchar* gsymbol = gtk_entry_get_text(symbol_entry);
+    char symbol[strlen(gsymbol) + 1];
+    strcpy(symbol, gsymbol);
+    strtoupper(symbol);
+    double amount = strtod(gtk_entry_get_text(amount_entry), NULL);
+    double spent = strtod(gtk_entry_get_text(spent_entry), NULL);
+
+    GValue gtext = G_VALUE_INIT;
+    g_value_init(&gtext, G_TYPE_STRING);
+    g_object_get_property(G_OBJECT(gtk_builder_get_object(app.builder, "portfolio_modify_dialog")),
+                          "text", &gtext);
+    const gchar* text = g_value_get_string(&gtext);
+    int modop;
+    if (strcmp(text, "Add") == 0)
+        modop = ADD;
+    else if (strcmp(text, "Remove") == 0)
+        modop = REMOVE;
+    else modop = SET;
+
+    if (!portfolio_modify_string(app.portfolio_string, symbol, amount, spent, modop)) // Success
+        list_store_update();
+}
+
+void on_portfolio_modify_dialog_response(GtkDialog* dialog, gint response_id) {
+    if (response_id == GTK_RESPONSE_CANCEL)
+        gtk_widget_hide((GtkWidget*) dialog);
+    else on_modify_entry_activate(NULL, NULL);
 }
 
 void on_password_entry_activate(GtkEntry* entry, gpointer dialog) {
@@ -89,29 +194,43 @@ void on_password_entry_activate(GtkEntry* entry, gpointer dialog) {
     char modified_pw[PASS_MAX];
     sprintf(modified_pw, "%s\n", password); // See portfolio_write_encrypt_decrypt (rc4.c)
     rc4_encode_string(app.portfolio_string, modified_pw);
-    Json* jobj = json_tokener_parse(app.portfolio_string->data);
-    if (jobj == NULL || !json_object_is_type(jobj, json_type_array)) { // Wrong password
+
+    if (!is_string_json_array(app.portfolio_string)) { // Wrong password
         // Reverse the failed decryption to its original state
         rc4_encode_string(app.portfolio_string, modified_pw);
-        gtk_widget_show((GtkWidget*) GTK_MESSAGE_DIALOG(gtk_builder_get_object(
-                app.builder, "wrong_password_dialog")));
-    } else create_check_list();
-    json_object_put(jobj);
+
+        // Error dialog
+        GValue gtext = G_VALUE_INIT;
+        g_value_init(&gtext, G_TYPE_STRING);
+        g_value_set_string(&gtext, "Wrong password!");
+        GtkWidget* err_dialog = GTK_WIDGET(gtk_builder_get_object(
+                app.builder, "generic_check_window_error_dialog"));
+        g_object_set_property((GObject*) err_dialog, "text", &gtext);
+        gtk_widget_show(err_dialog);
+    } else  { // Correct password
+        // Copy password to app
+        strcpy(app.password, modified_pw);
+
+        // Load portfolio
+        on_load_button_clicked(NULL);
+    }
 }
 
 void on_get_password_dialog_response(GtkDialog* dialog, gint response_id, gpointer entry) {
-    if (response_id == GTK_RESPONSE_CANCEL) {
+    if (response_id == GTK_RESPONSE_CANCEL)
         gtk_widget_hide((GtkWidget*) dialog);
-        return;
-    }
-    on_password_entry_activate(entry, dialog);
+    else on_password_entry_activate(entry, dialog);
 }
-
 
 void on_check_window_destroy(void) {
     g_object_unref(app.builder);
-    if (app.portfolio_data != NULL)
-        api_info_array_destroy(&app.portfolio_data);
+    if (app.portfolio_string != NULL) {
+        if (app.password[0] != '\0')
+            rc4_encode_string(app.portfolio_string, app.password);
+        string_write_file(app.portfolio_string, portfolio_file_path);
+    }
+    string_destroy(&app.portfolio_string);
+    api_info_array_destroy(&app.portfolio_data);
     gtk_main_quit();
 }
 
@@ -193,4 +312,12 @@ void list_store_sort(GtkListStore* list_store, Col_Index idx) {
         } while (gtk_tree_model_iter_next(model, &iter1) &&
                  gtk_tree_model_iter_next(model, &iter2));
     }
+}
+
+void list_store_update(void) {
+    api_info_array_destroy(&app.portfolio_data);
+    gtk_list_store_clear(GTK_LIST_STORE(gtk_builder_get_object(app.builder, "check_list")));
+    check_list_create_from_string();
+    api_info_array_store_check_data(app.portfolio_data);
+    check_list_add_api_data();
 }

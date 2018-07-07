@@ -13,6 +13,7 @@ typedef struct app_data {
     Info_Array* portfolio_data;
     String* portfolio_string;
     GtkBuilder* builder;
+    char password[PASS_MAX];
 } App_Data;
 
 /**
@@ -20,11 +21,19 @@ typedef struct app_data {
  */
 void window_main(void);
 
-void create_check_list(void);
+void check_list_create_from_string(void);
+
+void check_list_add_api_data(void);
 
 /** SIGNALS **/
 
 void on_load_button_clicked(GtkButton* button);
+
+void on_modify_button_clicked(GtkButton* button);
+
+void on_modify_entry_activate(GtkEntry* entry, gpointer dialog);
+
+void on_portfolio_modify_dialog_response(GtkDialog* dialog, gint response_id);
 
 void on_password_entry_activate(GtkEntry* entry, gpointer dialog);
 
@@ -57,5 +66,7 @@ void format_cells(Info_Array* portfolio_data);
  * @param idx column number
  */
 void list_store_sort(GtkListStore* list_store, Col_Index idx);
+
+void list_store_update(void);
 
 #endif
