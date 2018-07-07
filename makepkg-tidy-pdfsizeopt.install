@@ -1,0 +1,11 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  echo "----------"
+  echo "To use makepkg-tidy-pdfsizeopt, you must add new OPTIONS to your"
+  echo "/etc/makepkg.conf, or your PKGBUILDs. See the README for more:"
+  echo "https://github.com/wilbowma/makepkg-tidy-pdfsizeopt/blob/master/README.md"
+  echo "----------"
+}

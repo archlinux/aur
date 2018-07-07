@@ -1,0 +1,17 @@
+pkgbase = makepkg-tidy-pdfsizeopt
+	pkgdesc = A libmakepkg tidy script for loselessly optimizing PDFs using pdfsizeopt
+	pkgver = r1.8171579
+	pkgrel = 1
+	url = http://github.com/wilbowma/makepkg-tidy-ect
+	install = makepkg-tidy-pdfsizeopt.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ect
+	depends = pdfsizeopt
+	depends = jbig2enc
+	source = git+https://github.com/wilbowma/makepkg-tidy-pdfsizeopt
+	sha256sums = SKIP
+
+pkgname = makepkg-tidy-pdfsizeopt
+
