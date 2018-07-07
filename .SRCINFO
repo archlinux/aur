@@ -1,0 +1,20 @@
+pkgbase = fonts-laila
+	pkgdesc = Open-source unicode font for Devanagari.
+	pkgver = 2.000
+	pkgrel = 1
+	url = http://github.com/itfoundry/laila
+	arch = any
+	license = custom:OFL
+	source = http://raw.githubusercontent.com/itfoundry/laila/master/build/Laila-Regular.otf
+	source = http://raw.githubusercontent.com/itfoundry/laila/master/build/Laila-Light.otf
+	source = http://raw.githubusercontent.com/itfoundry/laila/master/build/Laila-Medium.otf
+	source = http://raw.githubusercontent.com/itfoundry/laila/master/build/Laila-SemiBold.otf
+	source = http://raw.githubusercontent.com/itfoundry/laila/master/build/Laila-Bold.otf
+	md5sums = c01ec64c362a42922c38895078bfc8b7
+	md5sums = aee14fd65f36fb825b0037e26f574868
+	md5sums = 9b2acf4575d13b371ee140d17aa1ae69
+	md5sums = b71fd611e6ac450622515fcd9ebd5a87
+	md5sums = aefb6e3990c7ab781632a4b44eb12e50
+
+pkgname = fonts-laila
+
