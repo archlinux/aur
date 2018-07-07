@@ -20,10 +20,11 @@ pkgver() {
 }
 
 build() {
-    pwd
+    cd pycolab
     python setup.py build
 }
 
 package() {
+    cd pycolab
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
