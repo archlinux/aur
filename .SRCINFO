@@ -1,0 +1,20 @@
+pkgbase = fonts-hind-kochi
+	pkgdesc = Open-source unicode font for Malayalam
+	pkgver = 1.000
+	pkgrel = 1
+	url = http://github.com/itfondry/hind-kochi
+	arch = any
+	license = custom:OFL
+	source = http://raw.githubusercontent.com/itfoundry/hind-kochi/master/build/HindKochi-Regular.otf
+	source = http://raw.githubusercontent.com/itfoundry/hind-kochi/master/build/HindKochi-Light.otf
+	source = http://raw.githubusercontent.com/itfoundry/hind-kochi/master/build/HindKochi-Medium.otf
+	source = http://raw.githubusercontent.com/itfoundry/hind-kochi/master/build/HindKochi-SemiBold.otf
+	source = http://raw.githubusercontent.com/itfoundry/hind-kochi/master/build/HindKochi-Bold.otf
+	md5sums = 694cadea30b06fdc764a4d69cf143220
+	md5sums = 75920b20dfcdbbf7346aab1d34d0835c
+	md5sums = 62b4dd6c1e17ee6c2d693883a08dc7de
+	md5sums = c2071b5a627c229899e52cb54a2f5d11
+	md5sums = e2280182b8b6c238356e4c172e4b00e5
+
+pkgname = fonts-hind-kochi
+
