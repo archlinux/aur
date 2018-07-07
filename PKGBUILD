@@ -1,6 +1,6 @@
 
 pkgname=('mingw-w64-llvm')
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
@@ -10,7 +10,8 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'llvm')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz")
-sha256sums=('1ff53c915b4e761ef400b803f07261ade637b0c269d99569f18040f3dcee4408')
+sha256sums=('b6d6c324f9c71494c0ccaf3dac1f16236d970002b42bb24a6c9e1634f7d0f4e2')
+
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
