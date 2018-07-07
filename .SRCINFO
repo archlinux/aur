@@ -1,0 +1,14 @@
+pkgbase = fonts-amita
+	pkgdesc = Unicode fancy font for Devanagari.
+	pkgver = 1.000
+	pkgrel = 1
+	url = http://github.com/etunni/Amita
+	arch = any
+	license = custom:OFL
+	source = https://raw.githubusercontent.com/etunni/Amita/master/TTF/Amita-Regular.ttf
+	source = https://raw.githubusercontent.com/etunni/Amita/master/TTF/Amita-Bold.ttf
+	md5sums = 06b2567e94cf17248181c6d120b61726
+	md5sums = ae07ba68dbb0793c9209137538d06668
+
+pkgname = fonts-amita
+
