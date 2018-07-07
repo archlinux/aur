@@ -1,6 +1,6 @@
 # Maintainer: desbma
 pkgname=sacad
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Smart Automatic Cover Art Downloader"
 arch=('any')
