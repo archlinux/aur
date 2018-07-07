@@ -1,0 +1,18 @@
+pkgbase = anontwi
+	pkgdesc = A free software python client designed to navigate anonymously on social networks. It supports Identi.ca and Twitter.com.
+	pkgver = 1.1b
+	pkgrel = 1
+	url = https://anontwi.03c8.net/
+	arch = any
+	license = BSD
+	depends = python2
+	depends = python2-crypto
+	depends = python2-httplib2
+	depends = python2-pycurl
+	depends = gtk2
+	depends = pygtk
+	source = anontwi-1.1b.tar.gz::https://anontwi.03c8.net/anontwi/anontwi_1.1b.tar.gz
+	sha256sums = ab406e981859523a56cfc3b121585a551dfdd3265ba2a830beecfa2f97ccea1f
+
+pkgname = anontwi
+
