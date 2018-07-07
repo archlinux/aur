@@ -49,11 +49,6 @@ package() {
   install -Dm644 palemoon/browser/icons/mozicon128.png \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/palemoon.png"
 
-  # use system-provided dictionaries
-  rm -rf "$pkgdir"/usr/lib/palemoon/{dictionaries,hyphenation}
-  ln -s /usr/share/hunspell "$pkgdir/usr/lib/palemoon/dictionaries"
-  ln -s /usr/share/hyphen "$pkgdir/usr/lib/palemoon/hyphenation"
-
   # avoid duplicate binaries
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -sf palemoon "$pkgdir/usr/lib/palemoon/palemoon-bin"
