@@ -6,37 +6,31 @@
 
 _pkgname=firefox
 pkgname=firefox-appmenu
-pkgver=60.0.2
+pkgver=61.0.1
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
-url="https://www.mozilla.org/firefox/"
+url="https://aur.archlinux.org/packages/firefox-appmenu/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
-         nss hunspell sqlite ttf-font libpulse libvpx icu)
+         nss hunspell-en_US sqlite ttf-font libpulse libvpx icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
-             autoconf2.13 rust mercurial clang llvm jack gtk2)
+             autoconf2.13 rust mercurial clang llvm jack gtk2 python)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 provides=("firefox=$pkgver")          
-conflicts=("firefox")                     
+conflicts=("firefox")
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
-        unity-menubar.patch.tar.xz 
-        complete-csd-window-offset-mozilla-1457691.patch.xz
-        0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch.xz
         $_pkgname.desktop firefox-symbolic.svg
-        no-crmf.diff)
+        unity-menubar.patch)
 sha256sums=('SKIP'
-            '3fd0f41b3ec5fe524a2b24089e1493a9a41167702a6208d1571c1cf28d23df72'
-            'a3fb3c3b6fb775c99afdbad507848b77c5e4bbaac2e8ceeb1bfb47699c4b6268'
-            '8422030440032535d918844263fbd92d39bff207acb5fff55ed0afee38bcf582'
             '2adca824b52ab5bc6e7e4fa486c1ecb47d283832bd4b75d10494b033f1cab911'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            '02000d185e647aa20ca336e595b4004bb29cdae9d8f317f90078bdcc7a36e873')
+            '4465aa66734452597d4d797847de0c34c15bc08f21e9e8b6bf9f6ff270908f6f')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -51,22 +45,10 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
-  mkdir path
-  ln -s /usr/bin/python2 path/python
-
   cd mozilla-unified
-
+  
   # actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1283299#c158
-  patch -Np1 -i ../complete-csd-window-offset-mozilla-1457691.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1435212
-  patch -Np1 -i ../0001-Bug-1435212-Add-support-for-FFmpeg-4.0.-r-bryce.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
-  patch -Np1 -i ../no-crmf.diff
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -76,9 +58,9 @@ ac_add_options --enable-application=browser
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
-ac_add_options --enable-gold
-ac_add_options --enable-pie
-ac_add_options --enable-optimize="-O2"
+ac_add_options --enable-linker=gold
+ac_add_options --enable-hardening
+ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 
 # Branding
@@ -102,7 +84,6 @@ ac_add_options --with-system-jpeg
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
 
@@ -118,15 +99,8 @@ END
 build() {
   cd mozilla-unified
 
-  # _FORTIFY_SOURCE causes configure failures
-  CPPFLAGS+=" -O2"
-
-  export PATH="$srcdir/path:$PATH"
   export MOZ_SOURCE_REPO="$_repo"
 
-  # Do PGO
-  #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
-  #  MOZ_PGO=1 ./mach build
   ./mach build
   ./mach buildsymbols
 }
@@ -141,15 +115,15 @@ package() {
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
+// Use system-provided dictionaries
+pref("spellchecker.dictionary_path", "/usr/share/hunspell");
+
 // Disable default browser checking.
 pref("browser.shell.checkDefaultBrowser", false);
 
 // Don't disable our bundled extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
-
-// Opt all of us into e10s, instead of just 50%
-pref("browser.tabs.remote.autostart", true);
 END
 
   _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
@@ -178,11 +152,6 @@ END
 
   install -Dm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
-
-  # Use system-provided dictionaries
-  rm -r "$pkgdir/usr/lib/$_pkgname/dictionaries"
-  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/$_pkgname/dictionaries"
-  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/$_pkgname/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
