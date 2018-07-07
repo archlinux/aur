@@ -1,7 +1,7 @@
 pkgbase = virtualshield
 	pkgdesc = You have the right to remain private! VirtualShield VPN
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://virtualshield.com/
 	arch = any
 	license = https://virtualshield.com/legal/eula/

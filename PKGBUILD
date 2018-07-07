@@ -2,7 +2,7 @@
 
 pkgname=virtualshield
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="You have the right to remain private! VirtualShield VPN"
 arch=('any')
 license=('https://virtualshield.com/legal/eula/')
@@ -25,5 +25,6 @@ package() {
 	install -D -m666 "VirtualShieldSetup.exe" "${pkgdir}/usr/share/virtualshield/VirtualShieldSetup.exe"
 	install -D -m666 "virtualshield.deb" "${pkgdir}/usr/local/share/virtualshield/virtualshield.deb"
 	install -D -m666 "c5c988bb-fa14-487d-b7bf-2ccb8c2eec4d.desktop" "${pkgdir}/usr/share/virtualshield/c5c988bb-fa14-487d-b7bf-2ccb8c2eec4d.desktop"
+	install -D -m755 "VirtualShield-bin" "${pkgdir}/usr/bin/VirtualShield"
 
 }
