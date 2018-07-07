@@ -37,3 +37,40 @@ pkgbase = jabberd2
 
 pkgname = jabberd2
 
+pkgbase = jabberd2-git
+	pkgdesc = Scalable, architecturally sound, and extensible XMPP server
+	pkgver = r1169.bc2d7ae
+	pkgrel = 1
+	url = http://jabberd2.org/
+	install = install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL
+	makedepends = sqlite3
+	makedepends = postgresql-libs
+	makedepends = autoconf-archive
+	depends = udns
+	depends = expat
+	depends = gsasl
+	depends = libidn
+	depends = openssl
+	optdepends = sqlite3
+	optdepends = postgresql-libs
+	options = !libtool
+	backup = etc/jabberd/c2s.xml
+	backup = etc/jabberd/jabberd.cfg
+	backup = etc/jabberd/router-filter.xml
+	backup = etc/jabberd/router-users.xml
+	backup = etc/jabberd/router.xml
+	backup = etc/jabberd/s2s.xml
+	backup = etc/jabberd/sm.xml
+	backup = etc/jabberd/templates/roster.xml
+	backup = etc/pam.d/jabberd
+	source = git+https://github.com/jabberd2/jabberd2.git
+	source = pam_jabberd
+	sha512sums = SKIP
+	sha512sums = e6507a2a7e226398253623bb46db7ae853b01649b7ac00f3eee0a9b57c2ef0e8ac1f90c4934269f5fe2b7667e56572bed233b847d0b66a3fd37a88b7ed8adc31
+
+pkgname = jabberd2-git
+
