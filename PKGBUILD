@@ -6,16 +6,16 @@
 
 pkgname=xkeyboard-config-chromebook
 _pkgname=xkeyboard-config
-pkgver=2.20
+pkgver=2.24
 pkgrel=1
 pkgdesc="X keyboard configuration files"
 arch=(any)
 license=('custom')
 url="https://www.freedesktop.org/wiki/Software/XKeyboardConfig"
 makedepends=('intltool' 'xorg-xkbcomp' 'libxslt')
-provides=('xkbdata', 'xkeyboard-config')
+provides=('xkbdata' 'xkeyboard-config')
 replaces=('xkbdata')
-conflicts=('xkbdata', 'xkeyboard-config')
+conflicts=('xkbdata' 'xkeyboard-config')
 source=(https://xorg.freedesktop.org/archive/individual/data/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2{,.sig}
         xkeyboard-config-chromebook.install 
         0001-chromebook-add-function-keys.patch
@@ -32,7 +32,7 @@ validpgpkeys=('FFB4CCD275AAA422F5F9808E0661D98FC933A145'
               'SKIP'
               'SKIP')
 
-sha256sums=('d1bfc72553c4e3ef1cd6f13eec0488cf940498b612ab8a0b362e7090c94bc134'
+sha256sums=('91b18580f46b4e4ea913707f6c8d68ab5286879c3a6591462f3b9e760d3ac4d7'
             'SKIP'
             '9a61685fb34a3845d02e6f1bd609a962bbcf528c5302acc209da94d8eb19dabc'
             '6bc40e442626080cf84e1d76b79bdd2d66940dc8e856193d56e45d5151a042ab'
