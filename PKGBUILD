@@ -1,8 +1,8 @@
 pkgname=imagescan-plugin-gt-s650
 pkgver=1.0.0
-_pkgver=1.3.26
-pkgrel=1
-_fedrel=27
+_pkgver=1.3.32
+pkgrel=2
+_fedrel=28
 pkgdesc="Plugin for using Epson GT-S650 and Perfection V39 with Image Scan v3"
 arch=("i686" "x86_64")
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -12,9 +12,9 @@ install=imagescan-plugin-gt-s650.install
 source=("imagescan-plugin-gt-s650.install")
 source_i686=("https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/x86/imagescan-bundle-fedora-${_fedrel}-${_pkgver}.x86.rpm.tar.gz")
 source_x86_64=("https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/x64/imagescan-bundle-fedora-${_fedrel}-${_pkgver}.x64.rpm.tar.gz")
-md5sums=('42eed403d883c2865850b55527fd9a22')
-md5sums_i686=('ed7b6efe95c017c4209966f82706b3b3')
-md5sums_x86_64=('e2be52d9e5fbc5f88601dd785d5ebc4b')
+md5sums=('f608c4458ec47603ce868e443d42ccd0')
+md5sums_i686=('72666226f02db5fa80530849c1bb3e8d')
+md5sums_x86_64=('9ce4c83ffb8f8d4a7e88b9cf661e2138')
 if [[ ${CARCH} = "x86_64" ]]; then
   _pkgarch="x64"
 else
