@@ -1,6 +1,6 @@
 pkgbase = boolector-git
 	pkgdesc = A Satisfiability Modulo Theories (SMT) solver for the theories of fixed-size bit-vectors, arrays and uninterpreted functions
-	pkgver = r9578.47f94b39
+	pkgver = r9676.21402e39
 	pkgrel = 1
 	url = https://github.com/Boolector/boolector
 	arch = any
