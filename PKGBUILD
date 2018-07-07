@@ -20,6 +20,7 @@ pkgver() {
 }
 
 build() {
+    pwd
     python setup.py build
 }
 
