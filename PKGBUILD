@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mblaze-git
-pkgver=r420.2cb9398
+pkgver=r856.817a111
 pkgrel=1
 epoch=
 pkgdesc="Unix utilities to deal with Maildir"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/chneukirchen/mblaze"
 license=('publicdomain')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
