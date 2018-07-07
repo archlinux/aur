@@ -13,7 +13,7 @@ source=('git+https://github.com/deepmind/pycolab.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/pycolab"
 
 # Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
