@@ -37,6 +37,9 @@ optdepends=(
 	"screengrab-git: Screenshot capture"
 	"qps-git: Task Monitoring"
 	"nm-tray-git: Qt front-end to NetworkManager"
+    "compton-conf-git: Qt-based configuration tool for compton"
+    "pavucontrol-qt-git: PulseAudio mixer. Qt port of pavucontroli"
+    "lxqt-connman-applet-git: Qt front-end to ConnMan"
 )
 makedepends=("git")
 provides=("$_pkgname")
