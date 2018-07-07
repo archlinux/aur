@@ -17,8 +17,8 @@ package() {
 	cd "$pkgname"
 	install -m755 snooscraper "${pkgdir}/usr/bin/snooscraper"
 	install -dm755 "${pkgdir}/usr/share/snooscraper"
-	install -m755 config "${pkgdir}/usr/share/snooscraper"
-	install -m655 README.md "${pkgdir}/usr/share/snooscraper"
+	install -m644 config "${pkgdir}/usr/share/snooscraper"
+	install -m644 README.md "${pkgdir}/usr/share/snooscraper"
 }
 
 pkgver() {
