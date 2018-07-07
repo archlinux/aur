@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=JRomManager
+Comment=A Rom Manager entirely written in Java and released under GPL v3
+Exec=/usr/share/java/jrommanager/JRomManager.sh
+Icon=JRomManager
+Path=/usr/share/java/jrommanager
+Terminal=false
+StartupNotify=false
+Categories=Utility;
