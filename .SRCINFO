@@ -1,24 +1,25 @@
 pkgbase = xf86-video-sis
 	pkgdesc = X.org SiS video driver
-	pkgver = 0.10.8
-	pkgrel = 3
+	pkgver = 0.10.9.r7.ga50b2b3
+	pkgrel = 1
 	url = https://xorg.freedesktop.org/
-	arch = i686
 	arch = x86_64
 	groups = xorg-drivers
 	license = custom
 	makedepends = xorg-server-devel
-	makedepends = X-ABI-VIDEODRV_VERSION=23
+	makedepends = X-ABI-VIDEODRV_VERSION=24.0
 	makedepends = xf86dgaproto
+	makedepends = git
+	makedepends = pixman
 	depends = glibc
 	optdepends = sis-dri: DRI1 support from community repo
-	conflicts = xorg-server<1.19
-	conflicts = X-ABI-VIDEODRV_VERSION<23
-	conflicts = X-ABI-VIDEODRV_VERSION>=24
-	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-sis-0.10.8.tar.bz2
-	source = git-fixes.patch
-	sha256sums = c8f3f2577f69334dfcc4bf96477dce45161170555f3abdfa105599e61bc7d3fe
-	sha256sums = b3cbb937a94c5e0ea21e05005238b247ee146ba8640eda7bfbe8b382b25dde7b
+	conflicts = xorg-server<1.20
+	conflicts = X-ABI-VIDEODRV_VERSION<24
+	conflicts = X-ABI-VIDEODRV_VERSION>=25
+	source = git+https://anongit.freedesktop.org/git/xorg/driver/xf86-video-sis.git#commit=a50b2b3412dd8e7f3916acb142c942e85ffcb3e5
+	source = fix_defines.patch::https://ptpb.pw/2MVt
+	sha256sums = SKIP
+	sha256sums = 8338641b519c25d9a8387608ea562970b4313e7602f890ff0331a0742c3f7f8b
 
 pkgname = xf86-video-sis
 
