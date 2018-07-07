@@ -140,10 +140,6 @@ package_sagemath-git() {
   mkdir -p "$pkgdir"/usr/share/sage
   cp -r ext "$pkgdir"/usr/share/sage
   
-# Create SAGE_SRC, needed for the notebook and help
-  mkdir "$pkgdir"/usr/share/sage/source
-  ln -s /usr/share/doc/sage "$pkgdir"/usr/share/sage/source/doc
-
 # Remove sage_setup
   rm -r "$pkgdir"/usr/lib/python2.7/site-packages/sage_setup
 
