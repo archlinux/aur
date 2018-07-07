@@ -1,0 +1,22 @@
+pkgbase = arqiver-git
+	pkgdesc = Simple Qt archive manager based on libarchive…
+	pkgver = r38.9a4702c
+	pkgrel = 1
+	url = https://github.com/tsujan/Arqiver
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = libarchive
+	depends = gzip
+	depends = p7zip
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = qt5-svg
+	provides = arqiver=r38.9a4702c
+	conflicts = arqiver
+	source = git+https://github.com/tsujan/arqiver.git
+	sha256sums = SKIP
+
+pkgname = arqiver-git
+
