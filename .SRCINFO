@@ -1,0 +1,18 @@
+pkgbase = autovpn-git
+	pkgdesc = Easily connect to a VPN in a country of your choice.
+	pkgver = 17.4e19a80
+	pkgrel = 1
+	url = https://github.com/adtac/autovpn
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go-pie
+	depends = go
+	depends = openvpn
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/adtac/autovpn.git
+	sha256sums = SKIP
+
+pkgname = autovpn-git
+
