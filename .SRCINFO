@@ -1,0 +1,20 @@
+pkgbase = fonts-karma
+	pkgdesc = Open-source unicode font for Devanagari.
+	pkgver = 2.000
+	pkgrel = 1
+	url = http://github.com/itfoundry/karma
+	arch = any
+	license = custom:OFL
+	source = http://raw.githubusercontent.com/itfoundry/karma/master/build/Karma-Regular.otf
+	source = http://raw.githubusercontent.com/itfoundry/karma/master/build/Karma-Light.otf
+	source = http://raw.githubusercontent.com/itfoundry/karma/master/build/Karma-Medium.otf
+	source = http://raw.githubusercontent.com/itfoundry/karma/master/build/Karma-SemiBold.otf
+	source = http://raw.githubusercontent.com/itfoundry/karma/master/build/Karma-Bold.otf
+	md5sums = 54adea2b00c1b75a9671faf33f3e17af
+	md5sums = 0a24b6726d2327e55ec45b44c3cc7c13
+	md5sums = 73292a57b18eff2121e019104ec4cd10
+	md5sums = ed1da8ef9b45c71229c21fb37c9b256e
+	md5sums = 75c142eb16a011a2c59f5a3fd2c47059
+
+pkgname = fonts-karma
+
