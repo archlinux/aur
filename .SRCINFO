@@ -1,0 +1,15 @@
+pkgbase = makepkg-tidy-ect
+	pkgdesc = A libmakepkg tidy script for loselessly compressing files using ect
+	pkgver = r2.fd74ea3
+	pkgrel = 1
+	url = http://github.com/wilbowma/makepkg-tidy-ect
+	install = makepkg-tidy-ect.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ect
+	source = git+https://github.com/wilbowma/makepkg-tidy-ect
+	sha256sums = SKIP
+
+pkgname = makepkg-tidy-ect
+
