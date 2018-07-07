@@ -3,7 +3,7 @@
 _pkgbase=monero
 pkgname=monero-gui-bin
 pkgver=0.12.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Monero: the secure, private, untraceable currency - release version (Helium Hydra, Point Release 1. Includes daemon, wallet and miner)"
 arch=("x86_64")
 conflicts=("${_pkgbase}")
@@ -55,7 +55,7 @@ package() {
     done
 
     # Install desktop file
-    desktop-file-install -m 644 --dir="${pkgdir}/usr/share/applications/" "${srcdir}/../monero-wallet-gui.desktop"
+    desktop-file-install -m 644 --dir="${pkgdir}/usr/share/applications/" "monero-wallet-gui.desktop"
 
     # Binary symlinks
     ln -sf /usr/share/monero-gui/monerod "${pkgdir}/usr/bin/monerod"
