@@ -1,0 +1,26 @@
+pkgbase = fonts-khand
+	pkgdesc = Open-source unicode font for Devanagari.
+	pkgver = 2.000
+	pkgrel = 1
+	url = http://github.com/itfoundry/khand
+	arch = any
+	license = custom:OFL
+	source = http://raw.githubusercontent.com/itfoundry/khand/master/build/Khand-Regular.otf
+	source = http://raw.githubusercontent.com/itfoundry/khand/master/build/Khand-Black.otf
+	source = http://raw.githubusercontent.com/itfoundry/khand/master/build/Khand-Light.otf
+	source = http://raw.githubusercontent.com/itfoundry/khand/master/build/Khand-ExtraLight.otf
+	source = http://raw.githubusercontent.com/itfoundry/khand/master/build/Khand-SemiLight.otf
+	source = http://raw.githubusercontent.com/itfoundry/khand/master/build/Khand-SemiBold.otf
+	source = http://raw.githubusercontent.com/itfoundry/khand/master/build/Khand-Bold.otf
+	source = http://raw.githubusercontent.com/itfoundry/khand/master/build/Khand-ExtraBold.otf
+	md5sums = ce7b1cd8df7e4057532b9f9024e7a6fe
+	md5sums = 29abea2330e220fd46d867dfca14569b
+	md5sums = 30e29f708d7fa7bbc52242668471ccb3
+	md5sums = 17b4a99e7d4c96320b27f4f570d1614d
+	md5sums = 89aed336f64a9b045645ef7befac0cb3
+	md5sums = 489d9f932780c061a02337f41f814539
+	md5sums = 4b7453bbf2711d384d528d63125b294a
+	md5sums = 6ed400dac32b9ad5cf79bac00bc18dba
+
+pkgname = fonts-khand
+
