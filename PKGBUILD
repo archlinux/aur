@@ -3,8 +3,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=the_platinum_searcher
-pkgver=2.1.5
-pkgrel=5
+pkgver=2.1.6
+pkgrel=1
 pkgdesc='A code search tool similar to ack, the_silver_searcher (ag) and ripgrep (rg).'
 arch=('x86_64')
 makedepends=('git' 'go')
@@ -21,9 +21,7 @@ build() {
 	mkdir -p "$_repodir"
 	mv "$srcdir/$pkgname" "$_repodir"
 	cd "$_repodir/$pkgname"
-	#git checkout -q v"$pkgver"
-	# v2.1.5 + fix to build issue
-	git checkout -q c7d8eec66dca50773e6b4ee7dfdad2174860b9b1
+	git checkout -q v"$pkgver"
 	unset GOBIN  # prevent bin to end up elsewhere
 	GOPATH="$srcdir" go get -v ...
 }
