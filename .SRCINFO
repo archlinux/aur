@@ -6,6 +6,7 @@ pkgbase = blackbox-explorer
 	arch = x86_64
 	license = GPL3
 	makedepends = yarn
+	makedepends = npm
 	makedepends = git
 	depends = nwjs-bin>=0.31.0
 	depends = nwjs-ffmpeg-codecs-bin

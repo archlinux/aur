@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://github.com/betaflight/${_reponame}"
 license=('GPL3')
 depends=('nwjs-bin>=0.31.0' 'nwjs-ffmpeg-codecs-bin')
-makedepends=('yarn' 'git')
+makedepends=('yarn' 'npm' 'git')
 source=("git+https://github.com/betaflight/${_reponame}.git#commit=84f8abd7463e65773921635b57c7ac8fd4104ce9"
         "$pkgname.sh"
         "$pkgname.desktop")
