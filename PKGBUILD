@@ -2,7 +2,7 @@
 
 pkgname=snooscraper-git
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A small program to scrape subreddits, reddit accounts and other sites, downloading content matching your criteria"
 arch=('all')
 url="https://notabug.org/odg/snooscraper"
@@ -18,6 +18,7 @@ package() {
 	install -m755 snooscraper "${pkgdir}/usr/bin/snooscraper"
 	install -dm755 "${pkgdir}/usr/share/snooscraper"
 	install -m755 config "${pkgdir}/usr/share/snooscraper"
+	install -m655 README.md "${pkgdir}/usr/share/snooscraper"
 }
 
 pkgver() {

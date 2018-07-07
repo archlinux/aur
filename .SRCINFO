@@ -1,7 +1,7 @@
 pkgbase = snooscraper
 	pkgdesc = A small program to scrape subreddits, reddit accounts and other sites, downloading content matching your criteria
 	pkgver = 0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://notabug.org/odg/snooscraper
 	arch = all
 	license = GPL
