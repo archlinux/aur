@@ -1,7 +1,7 @@
 # SnooScraper
 
-A small program to scrape content from a subreddit, a reddit user, and from various popular image sites, 
-downloading files matching your criteria.
+A small program to scrape content from a subreddit, a reddit user, and from various popular image 
+sites, downloading files matching your criteria.
 
 You can scrape a subreddit or a username, downloading posts and content from their posts, depending 
 on the options you pick. I have tested it by downloading large amounts of data and it works well. 
@@ -25,13 +25,13 @@ Foundation, either version 3 of the License, or (at your option) any later versi
 
 **Supported External Sites:** imgur, instagram, pinterest, tumblr
 
-## How To Use
+## Getting SnooScraper
 
 **If you use Arch Linux or an Arch-based GNU/Linux distribution, you can 
 [get SnooScraper from the AUR](https://aur.archlinux.org/packages/snooscraper-git/).**
 
-Other than a shell, and standard tools curl, sed and grep, the only dependency is 
-[jq](https://stedolan.github.io/jq/). jq is available in most GNU/Linux distributions, 
+Other than a shell, and standard tools **curl, sed and grep**, the only dependency is 
+**[jq](https://stedolan.github.io/jq/)**. jq is available in most GNU/Linux distributions, 
 [on Homebrew](https://formulae.brew.sh/formula/jq) for macOS, 
 [in Cygwin](https://cygwin.com/cgi-bin2/package-cat.cgi?file=x86_64%2Fjq%2Fjq-1.5-3) on Windows, or 
 can be downloaded from [github](https://github.com/stedolan/jq/releases).
@@ -46,6 +46,8 @@ cd SnooScraper
 chmod +x snooscraper
 ./snooscraper -h
 ```
+
+## Using SnooScraper
 
 The help text (-h) should explain the command line options. Review the parameters in the 
 [config](https://notabug.org/odg/SnooScraper/src/master/config) file and customise them as you 
