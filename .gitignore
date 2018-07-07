@@ -1,0 +1,4 @@
+/helmfile_amd64*
+/*.tar.gz
+/pkg/
+/src/
