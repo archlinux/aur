@@ -1,0 +1,16 @@
+pkgbase = fonts-kalam
+	pkgdesc = Open-source unicode font for Devanagari.
+	pkgver = 2.001
+	pkgrel = 1
+	url = http://github.com/itfoundry/laila
+	arch = any
+	license = custom:OFL
+	source = http://raw.githubusercontent.com/itfoundry/kalam/master/build/Kalam-Regular.otf
+	source = http://raw.githubusercontent.com/itfoundry/kalam/master/build/Kalam-Light.otf
+	source = http://raw.githubusercontent.com/itfoundry/kalam/master/build/Kalam-Bold.otf
+	md5sums = c2f304836f720849726b1322780a8585
+	md5sums = 5dfc0b5e8ba6787711ad8fdbd2561aeb
+	md5sums = bb3aa5bc4a17ea6001b655b268888712
+
+pkgname = fonts-kalam
+
