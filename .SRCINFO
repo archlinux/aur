@@ -1,7 +1,7 @@
 pkgbase = pdfstudio
 	pkgdesc = Review, annotate, and edit PDF Documents
 	pkgver = 18.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.qoppa.com/pdfstudio/
 	install = pdfstudio.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = pdfstudio
 	license = custom
 	makedepends = pacman>=4.2.0
 	depends = java-runtime>=6
-	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
 	provides = pdfstudio
 	conflicts = pdfstudio12
 	conflicts = pdfstudio11
