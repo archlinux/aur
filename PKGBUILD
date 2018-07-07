@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/betaflight/betaflight-configurator"
 license=('GPL3')
 depends=('nwjs-bin')
-makedepends=('yarn')
+makedepends=('yarn' 'npm')
 source=("https://github.com/betaflight/betaflight-configurator/archive/$pkgver.zip"
         "$pkgname.sh"
         "$pkgname.desktop")

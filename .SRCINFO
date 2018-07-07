@@ -7,6 +7,7 @@ pkgbase = betaflight-configurator
 	arch = x86_64
 	license = GPL3
 	makedepends = yarn
+	makedepends = npm
 	depends = nwjs-bin
 	options = !strip
 	source = https://github.com/betaflight/betaflight-configurator/archive/10.3.1.zip
