@@ -81,7 +81,7 @@ void portfolio_modify_write(const char* symbol, double quantity_shares, double u
  * @param usd_spent the amount of USD to modify the portfolio by
  * @param mod_option SET, REMOVE, or ADD
  */
-void portfolio_modify_string(String* pString, const char* symbol, double quantity_shares,
+int portfolio_modify_string(String* pString, const char* symbol, double quantity_shares,
                              double usd_spent, int mod_option);
 
 /**

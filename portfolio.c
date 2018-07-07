@@ -53,26 +53,33 @@ void portfolio_modify_write(const char* symbol, double quantity_shares, double u
     string_destroy(&pString);
 }
 
-void portfolio_modify_string(String* pString, const char* symbol, double quantity_shares,
+int portfolio_modify_string(String* pString, const char* symbol, double quantity_shares,
                              double usd_spent, int mod_option) {
+    if (symbol != NULL && symbol[0] == '\0')
+        return 1;
+
+    int status = 0;
     Json* jobj;
     if (pString->len == 0) // Create new array if empty file
         jobj = json_object_new_array();
     else jobj = json_tokener_parse(pString->data); // Otherwise parse
 
     if (jobj == NULL)
-        RET_MSG("Portfolio corrupted! Check JSON formatting.");
+        RET_FALSE_MSG("Portfolio corrupted! Check JSON formatting.");
 
     int index = portfolio_symbol_index(symbol, jobj);
     if (index == -1) { // If security is not already contained in portfolio
-        if (mod_option == REMOVE) // If trying to remove a security they don't own
+        if (mod_option == REMOVE) {// If trying to remove a security they don't own
+            status = 1;
             GOTO_CLEAN_MSG("You don't have any of this security to remove")
+        }
 
         if (strcmp("USD$", symbol) != 0) { // Check that the symbol is valid, except if it's USD
             Info* data = api_info_init();
             strcpy(data->symbol, symbol);
             if (api_store_check_info(data) == NULL) {// If NULL response from APIs, it's invalid
                 api_info_destroy(&data);
+                status = 1;
                 GOTO_CLEAN_MSG("Invalid symbol.")
             }
             api_info_destroy(&data);
@@ -103,8 +110,10 @@ void portfolio_modify_string(String* pString, const char* symbol, double quantit
         } else { // REMOVE
             current_shares -= quantity_shares;
             current_spent -= usd_spent;
-            if (current_shares < 0 || current_spent < 0) // If you try to remove more than you have
+            if (current_shares < 0 || current_spent < 0) {// If you try to remove more than you have
+                status = 1;
                 GOTO_CLEAN_MSG("You don't have enough of this security to remove.")
+            }
 
             printf("Removed %lf %s bought for %lf to portfolio.\n", quantity_shares, symbol, usd_spent);
         }
@@ -122,6 +131,7 @@ void portfolio_modify_string(String* pString, const char* symbol, double quantit
     strcpy(pString->data, new_portfolio_str);
     cleanup: // CLEANUP
     json_object_put(jobj);
+    return status;
 }
 
 Info_Array* portfolio_info_array_init_from_portfolio_string(String* pString) {
