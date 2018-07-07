@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=avcut-git
-pkgver=0.2.r2.gcd34e34
+pkgver=0.3.r15.g8be229a
 pkgrel=1
 epoch=
 pkgdesc="Frame-accurate video cutting with only small quality loss"
@@ -9,7 +9,7 @@ url="https://github.com/anyc/avcut"
 license=('GPL')
 categories=()
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
