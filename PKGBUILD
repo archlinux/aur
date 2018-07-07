@@ -77,7 +77,7 @@ else
 fi
 pkgver=27.0.50.132398
 pkgrel=1
-pkgdesc="GNU Emacs. pdumper branch, which can allow very fast startup times."
+pkgdesc="GNU Emacs. pdumper branch."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')

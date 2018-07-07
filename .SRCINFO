@@ -1,5 +1,5 @@
 pkgbase = emacs-pdumper-git
-	pkgdesc = GNU Emacs. pdumper branch, which can allow very fast startup times.
+	pkgdesc = GNU Emacs. pdumper branch.
 	pkgver = 27.0.50.132398
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
