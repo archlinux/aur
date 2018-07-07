@@ -2,7 +2,7 @@
 
 _appname=freecad-python3
 pkgname=freecad-python3-git
-pkgver=0.17.r474.g8f1c6f77c
+pkgver=0.17.r548.g5f63a7764
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('netcdf' 'boost-libs' 'med' 'oce' 'vtk' 'python-numpy' 'glew'
          'xerces-c' 'qt5-svg' 'qt5-webkit' 'jsoncpp' 'hicolor-icon-theme'
          'python-pyside2' 'python-pivy-git')
-makedepends=('git' 'cmake' 'boost' 'eigen' 'desktop-file-utils' 'qt5-tools')
+makedepends=('boost' 'cmake' 'desktop-file-utils' 'eigen' 'git' 'pyside2-tools' 'qt5-tools' 'shiboken2')
 source=("${_appname}::git+https://github.com/FreeCAD/FreeCAD.git"
         "FreeCAD-Python3"
         "FreeCADCmd-Python3"
