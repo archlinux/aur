@@ -5,21 +5,21 @@
 # Contributor : Cassfalg <ch(dot)assfalg(at)gmx(dot)de>
 
 pkgname=teamdrive
-pkgver=4.6.1.2027
+pkgver=4.6.2.2109
 pkgrel=1
 pkgdesc="Keeps data synchronised between various computers automatically."
 arch=('x86_64')
 url="http://www.teamdrive.com/"
 license=('CUSTOM')
-depends=('')
+#depends=('')
 
 source=(teamdrive.desktop)
 dir=$(echo $pkgver|cut -d. -f1,2,4)
 
 source_x86_64=("https://s3-eu-west-1.amazonaws.com/s3download.teamdrive.net/${dir}/TMDR/linux-x86_64/teamdrive-${pkgver%.*}_amd64.deb")
 
-sha256sums=('f3b06b1d5f285e6a7c5db19fc441da3f82062a1c529b17137d19e5450b6b314f')
-sha256sums_x86_64=('88acb875071611e43b477ac78087bcd43097504f53ede40c31a1b21d46b39629')
+sha256sums=('3988dcde33c5d59ed3db63269c13af814455688a230d7274d9062f8b01df69bc')
+sha256sums_x86_64=('0d446bb9920a4c1e7d524a811d59c0c2d8412fe2201d54f0ed43810b2f77ff5f')
 
 options=(!strip)
 
@@ -32,6 +32,7 @@ build() {
 package() {
     cp -a "${srcdir}"/data/* "${pkgdir}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	mv "${pkgdir}/opt/${pkgname}/lib/libfreetype.so.6" "${pkgdir}/opt/${pkgname}/lib/libfreetype.so.6.conflict"
     rm -f "${pkgdir}/opt/${pkgname}/Uninstall TeamDrive.desktop"
     rm -f "${pkgdir}/opt/${pkgname}/uninstall"
 }
