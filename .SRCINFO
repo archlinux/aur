@@ -8,6 +8,7 @@ pkgbase = kalibrate-bladerf-git
 	license = GPL
 	makedepends = git
 	depends = bladerf
+	depends = fftw
 	provides = kalibrate-rtl
 	source = kalibrate-bladerf-git::git+https://github.com/Nuand/kalibrate-bladeRF
 	md5sums = SKIP
