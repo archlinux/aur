@@ -1,0 +1,20 @@
+pkgbase = fonts-teko
+	pkgdesc = Open-source unicode font for Devanagari.
+	pkgver = 2.000
+	pkgrel = 1
+	url = http://github.com/itfoundry/teko
+	arch = any
+	license = custom:OFL
+	source = http://raw.githubusercontent.com/itfoundry/teko/master/build/Teko-Regular.otf
+	source = http://raw.githubusercontent.com/itfoundry/teko/master/build/Teko-Light.otf
+	source = http://raw.githubusercontent.com/itfoundry/teko/master/build/Teko-Medium.otf
+	source = http://raw.githubusercontent.com/itfoundry/teko/master/build/Teko-SemiBold.otf
+	source = http://raw.githubusercontent.com/itfoundry/teko/master/build/Teko-Bold.otf
+	md5sums = 86b5398537e9b0f3b2435b126aa8caf2
+	md5sums = d950f515ce14b945b19646882ef81591
+	md5sums = 2d33c831153625885b0106405c38d541
+	md5sums = c31653472e98a30ecaef08d233e2d45e
+	md5sums = 45d2a0611f6302deefdf00327dc99bf3
+
+pkgname = fonts-teko
+
