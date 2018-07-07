@@ -1,0 +1,20 @@
+pkgbase = fonts-rajdhani
+	pkgdesc = Open-source unicode font for Devanagari.
+	pkgver = 2.000
+	pkgrel = 1
+	url = http://github.com/itfoundry/rajdhani
+	arch = any
+	license = custom:OFL
+	source = http://raw.githubusercontent.com/itfoundry/rajdhani/master/build/Rajdhani-Regular.otf
+	source = http://raw.githubusercontent.com/itfoundry/rajdhani/master/build/Rajdhani-Light.otf
+	source = http://raw.githubusercontent.com/itfoundry/rajdhani/master/build/Rajdhani-Medium.otf
+	source = http://raw.githubusercontent.com/itfoundry/rajdhani/master/build/Rajdhani-SemiBold.otf
+	source = http://raw.githubusercontent.com/itfoundry/rajdhani/master/build/Rajdhani-Bold.otf
+	md5sums = b42c5e669a332c51fef0f4a79f0723f0
+	md5sums = 26d4ea561a65d4bff13e00c6a0083646
+	md5sums = 11ef3a82ba755cb2b95f564d0e48c6d1
+	md5sums = 03f28c7e0be4d33c1d91505f4180468c
+	md5sums = 1b2f9c3988ef955ffd0bd97461a29e24
+
+pkgname = fonts-rajdhani
+
