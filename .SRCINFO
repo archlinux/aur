@@ -8,6 +8,7 @@ pkgbase = pacproxy
 	makedepends = go
 	makedepends = git
 	source = pacproxy::git://github.com/williambailey/pacproxy.git#branch=master
+	md5sums = SKIP
 
 pkgname = pacproxy
 

@@ -31,6 +31,7 @@ build() {
 	mkdir -p "$srcdir/.go/src"
 
 	export GOPATH="$srcdir/.go"
+	export GOBIN="$srcdir/.go/bin"
 
 	mv "$srcdir/$pkgname" "$srcdir/.go/src/"
 
