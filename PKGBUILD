@@ -2,7 +2,7 @@
 
 pkgname=('cutelyst-tutorial-git')
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Wiki tutorial from Github as a local copy"
 arch=('any')
 url="http://cutelyst.org"
@@ -16,7 +16,7 @@ build() {
   test ! -d html && mkdir html
   for md in ${_git_name}/Tut*.md; do
     echo -n "$md..."
-    python2 ../proc_tut.py $md html/$(basename $md .md).html
+    python ../proc_tut.py $md html/$(basename $md .md).html
     echo " done"
   done
 }
