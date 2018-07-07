@@ -1,0 +1,17 @@
+pkgbase = clang-format-all-git
+	pkgdesc = clang format that recursively formats c/c++ files
+	pkgver = r8.4d6ee56
+	pkgrel = 1
+	url = https://github.com/eklitzke/clang-format-all
+	arch = any
+	license = GPL3
+	makedepends = pacman
+	makedepends = git
+	depends = clang
+	conflicts = clang-format-all
+	conflicts = clang-format-all-git
+	source = git+https://github.com/eklitzke/clang-format-all.git
+	md5sums = SKIP
+
+pkgname = clang-format-all-git
+
