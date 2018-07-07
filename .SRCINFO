@@ -1,0 +1,18 @@
+pkgbase = buku-dmenu
+	pkgdesc = Access buku bookmarks from dmenu.
+	pkgver = v0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/benoliver999/buku-dmenu
+	arch = any
+	license = GPL3
+	depends = buku
+	depends = dmenu
+	depends = bash
+	depends = coreutils
+	depends = sed
+	depends = findutils
+	source = https://gitlab.com/benoliver999/buku-dmenu/-/archive/v0.1.0/buku-dmenu-v0.1.0.tar.gz
+	md5sums = 0f06fa0a2e6a7bfd7fb76e72a1304bd1
+
+pkgname = buku-dmenu
+
