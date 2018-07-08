@@ -1,19 +1,26 @@
-## Package Maintainer: Karl-K
+# Contributor: graysky
 
 pkgname=checkip
-pkgver=1.0
-pkgrel=1
-pkgdesc="A simple curl one-liner"
+pkgver=3.08
+pkgrel=2
+pkgdesc='Simple script that checks to see if your external IP address changed and if so sends an email with the new IP address.'
 arch=('any')
-license=('MIT/X')
-url="https://github.com/karl-k/checkip"
-depends=('curl')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/karl-k/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('204765d3cd08dcf19b46ba42c849c255514847b7a4d62608f337adbb49a29e445545421c80f25721fde0519725426723634242fb2340e700ee0e1cd450f60273')
+url='https://github.com/graysky2/checkip'
+license=('MIT')
+depends=('curl' 'dnsutils' 'inetutils')
+optdepends=('mailsend: simple program to send mail via SMTP protocol'
+'s-nail: mail processing system with a command syntax reminiscent of ed'
+'heirloom-mailx: commandline utility for sending and receiving email')
+source=("http://repo-ck.com/source/$pkgname/$pkgname-$pkgver.tar.xz")
+sha256sums=('c358fccc6391567bdbe134e5e37fcaba5012bdf056b149a36127db72c31f67e4')
+
+build () {
+	cd "$pkgname-$pkgver"
+	make
+}
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
-mkdir -p "${pkgdir}/usr/bin/"
-install -D -m755 "checkip" "${pkgdir}/usr/bin/"
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
