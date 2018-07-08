@@ -10,7 +10,11 @@ pkgver='0.3.1'
 pkgrel=1
 pkgdesc="msmtp wrapper allowing for offline use"
 url="https://gitlab.com/sumner/offlinemsmtp"
-depends=('python')
+depends=(
+    'python'
+    'python-watchgog'
+    'python-gobject'
+)
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
