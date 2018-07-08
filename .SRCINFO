@@ -1,0 +1,36 @@
+pkgbase = zbar-comp
+	pkgdesc = Application and library for reading bar codes from various sources
+	pkgver = 0.20
+	pkgrel = 3
+	url = https://github.com/procxx/zbar
+	arch = x86_64
+	license = LGPL
+	makedepends = libmagick6
+	makedepends = libxv
+	makedepends = v4l-utils
+	makedepends = qt5-x11extras
+	makedepends = pygtk
+	makedepends = python
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	source = zbar-comp-0.20.tar.gz::https://github.com/procxx/zbar/archive/0.20.tar.gz
+	sha512sums = b013dc5f72f910e8e0dc73de1705684f76e5cb5b2026d48d3e149d3e8b46afdf273d06f32738c588c272218e95b5cd39d3c0b8be4eb9be17553504a13b11c144
+
+pkgname = zbar-comp
+	depends = libmagick6
+	depends = libsm
+	depends = libxv
+	depends = v4l-utils
+
+pkgname = zbar-gtk-comp
+	depends = zbar-comp
+	depends = gtk2
+
+pkgname = zbar-qt-comp
+	depends = zbar-comp
+	depends = qt5-x11extras
+
+pkgname = python2-zbar-comp
+	depends = zbar-gtk-comp
+	depends = pygtk
+
