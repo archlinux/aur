@@ -1,7 +1,7 @@
 pkgbase = elastix
 	pkgdesc = Toolbox for rigid and nonrigid registration of images
 	pkgver = 4.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://elastix.isi.uu.nl/
 	arch = x86_64
 	license = apache
