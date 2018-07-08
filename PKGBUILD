@@ -1,6 +1,6 @@
 #Maintainer : Papajoke <papajoke [at] manjaro [dot] fr>
 pkgname=pacnew-chaser
-pkgver=0.9.21.2
+pkgver=0.9.22
 pkgrel=1
 url="https://www.manjaro.fr/forum/viewtopic.php?f=28&t=10284"
 pkgdesc="manage .pacnew files, compare and merge (qt gui) - dev version"
@@ -12,15 +12,16 @@ optdepends=('diffuse: editor, compare merge files'
         'kompare: editor, compare merge files'
         'meld: editor, compare merge files')
 source=("https://www.manjaro.fr/forum/datas/pacnew-chaser-qt-${pkgver}.tar.gz")
-sha512sums=('a6d0a448a19e425e537584803bcbfef4308ccc92887d6330f84d578073e691dd0235eb91b961b6422a670e5a2b2f80bfa66da2985f4818ec72fef838f959a3b5')
+sha512sums=('bedc05b8e98b243aaf68a88a45d20d1a6215f19360e54828f65d82eef5919218239da1f420c97afbe64e39e784992f075a769e3e983eb0e46a34937a082af82d')
 
 package() {
   #cd "$srcdir"
-  install -d ${pkgdir}{/usr/{bin,share/{applications,pixmaps,polkit-1/actions,locale/fr/LC_MESSAGES},lib/$pkgname},/etc}
+  install -d ${pkgdir}{/usr/{bin,share/{applications,pixmaps,polkit-1/actions,locale/fr/LC_MESSAGES,mime/packages},lib/$pkgname},/etc}
   install -m755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -m644 lib/man.css "${pkgdir}/usr/lib/${pkgname}/man.css"
   install -m755 lib/pacnews "${pkgdir}/usr/lib/${pkgname}/pacnews"
   install -m644 "lib/${pkgname}.hook" "${pkgdir}/usr/lib/${pkgname}/${pkgname}.hook"
+  install -m644 "lib/${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
   install -m644 "lib/${pkgname}.ini" "${pkgdir}/etc/${pkgname}.ini"
   install -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -m644 "images/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
