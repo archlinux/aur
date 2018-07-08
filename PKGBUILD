@@ -129,7 +129,7 @@ package_sagemath-git() {
 
   mkdir -p "$pkgdir"/usr/bin
   cp bin/sage "$pkgdir"/usr/bin
-  for _i in cachegrind callgrind cleaner coverage coverageall cython env eval grep grepdoc inline-fortran \
+  for _i in cachegrind callgrind cleaner coverage coverageall cython env eval grep grepdoc inline-fortran ipynb2rst \
     ipython massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2sws rst2txt run \
     run-cython runtests startuptime.py sws2rst valgrind version.sh
   do
