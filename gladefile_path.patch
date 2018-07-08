@@ -1,13 +1,12 @@
 diff --git a/main.c b/main.c
-index f434e02..65f6f1e 100644
+index 1b43032..42d94f4 100644
 --- a/main.c
 +++ b/main.c
-@@ -1217,7 +1217,7 @@ int main(int argc, char *argv[])
- 	gtk_init_check(&argc, &argv);
- 
- 	builder = gtk_builder_new();
--	if (gtk_builder_add_from_file(builder, "dwarview.glade", &error) == 0) {
-+	if (gtk_builder_add_from_file(builder, "/usr/share/dwarview/dwarview.glade", &error) == 0) {
- 		g_error("%s", error->message);
- 		return 1;
- 	}
+@@ -1215,6 +1215,7 @@ static int try_add_builder(GtkBuilder *builder)
+ 	const char * sysdir_list[] = {
+ 		"/usr/local/share",
+ 		"/usr/share",
++		"/usr/share/dwarview",
+ 	};
+ 	const char filename[] = "dwarview.glade";
+ 	size_t sz = sizeof(buf);
