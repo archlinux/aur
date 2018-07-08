@@ -1,11 +1,15 @@
 # $Id$
 # Maintainer: Iraklis Karagkiozoglou <iraklisk@outlook.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Marti Raudsepp <marti@juffo.org>
+# Contributor: Radu Andries <admiral0@tuxfamily.org>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgbase=zbar-comp
 pkgname=(zbar-comp zbar-gtk-comp zbar-qt-comp python2-zbar-comp)
 pkgver=0.20
 pkgrel=3
-pkgdesc="Application and library for reading bar codes from various sources"
+pkgdesc="Application and library for reading bar codes from various sources (imagemagick 6)"
 arch=('x86_64')
 url="https://github.com/procxx/zbar"
 license=('LGPL')
