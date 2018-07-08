@@ -27,9 +27,9 @@ makedepends=('dvdauthor' 'dvd+rw-tools' 'ffmpeg' 'libexif' 'mesa-libgl' "mythtv=
 source=("mythtv-$pkgver.tar.gz::https://github.com/MythTV/mythtv/archive/v$pkgver.tar.gz"
         "mythweb-$pkgver.tar.gz::https://github.com/MythTV/mythweb/archive/v$pkgver.tar.gz"
         'cdparanoia.patch')
-sha512sums=('66fda29bd645b4c9a90600414193f46b99b9b8d60d033828f0eeb44e1c3820a7781d93c7010fc1e0affa83be93896231ba91409ccb7dba38190a5809752beedd'
-            'bab3f6facb0715c83f21a070f4e4f2299c93ce75e5294b7daac43cd6e10276e37c9853809012627fad0ab10683c25afaf35f0099adb8a8e8a98c383b8804d3ab'
-            '6a8c5e3f7500a657cef56d30b7141ab10bd14c65bf3c2d14a768ed180f38deaee6367224e6b0b2d09c26fae78908df08747f8c805250d71c42faaa2931ac577b')
+sha256sums=('e40ec8111d39fd059a9ec741b10016683bcc66ee3b33c4cdaab93d60851f5d3e'
+            '30583d7c077dbc732053d0ee7b13a46ab3ceaeb0aaa7c8e9744ef6ac959989e8'
+            '004f1e4734830709d2ab5ebb804560514f2bf525abc2f11142501a81eba0754c')
 
 prepare() {
   cd "$srcdir/mythtv-$pkgver/$pkgbase"
@@ -123,7 +123,6 @@ package_mythplugins-mythweb() {
   depends=('mythtv' 'perl-cgi')
   optdepends=('lighttpd'
               'php-apache')
-  install='mythplugins-mythweb.install'
 
   mkdir -p "$pkgdir/var/lib/mythtv/mythweb"/{image_cache,php_sessions}
   cp -R "$srcdir/mythweb-$pkgver"/* "$pkgdir/var/lib/mythtv/mythweb"
@@ -133,8 +132,7 @@ package_mythplugins-mythweb() {
 
 package_mythplugins-mythzoneminder() {
   pkgdesc="View CCTV footage from zoneminder in MythTV"
-  depends=('mythtv' 'libmariadbclient')
-  install='mythplugins-mythzoneminder.install'
+  depends=('mythtv' 'libmariadbclient' 'zoneminder')
 
   cd "$srcdir/mythtv-$pkgver/$pkgbase/mythzoneminder"
   make INSTALL_ROOT="$pkgdir" install

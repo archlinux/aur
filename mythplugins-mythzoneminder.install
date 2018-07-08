@@ -1,3 +1,0 @@
-post_install() {
-  echo "If you want to use this plugin, install zoneminder from AUR."
-}
