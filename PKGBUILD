@@ -1,7 +1,7 @@
 #Maintainer : Papajoke <papajoke [at] manjaro [dot] fr>
 pkgname=pacnew-chaser
 pkgver=0.9.22
-pkgrel=1
+pkgrel=2
 url="https://www.manjaro.fr/forum/viewtopic.php?f=28&t=10284"
 pkgdesc="manage .pacnew files, compare and merge (qt gui) - dev version"
 arch=('x86_64')
