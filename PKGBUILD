@@ -4,7 +4,7 @@
 pkgbase=python-ethtool
 pkgname=('python-ethtool' 'python2-ethtool')
 pkgver=0.13
-pkgrel=7
+pkgrel=8
 pkgdesc='Python bindings for the ethtool kernel interface.'
 arch=('x86_64')
 url="https://github.com/fedora-python/python-ethtool"
