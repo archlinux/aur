@@ -1,13 +1,14 @@
 pkgbase = kmflcomp
 	pkgdesc = Keyman input method: compiler library
-	pkgver = 10.99.0.2
+	pkgver = 10.99.0.5
 	pkgrel = 1
 	url = https://keyman.com/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = kmflcomp-10.99.0.2.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-alpha-10.99.0.2.tar.gz
-	md5sums = cd4b8bbe0b528d68c28da4fa6dd90c43
+	depends = libx11
+	source = kmflcomp-10.99.0.5.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-alpha-10.99.0.5.tar.gz
+	md5sums = e2ed7716b3d4c2f95c8f82f5505a1e11
 
 pkgname = kmflcomp
 

@@ -1,25 +1,20 @@
 # Maintainer 2016-2018: Yadav Gowda <yadav . gowda __at__ gmail . com>
-# Maintainer 2018-now : Vitrum <wqdxosty1yhj at bk dot ru>
+# Maintainer 2018-now : Vitrum <wqdxosty1yhj@bk.ru>
 
 pkgname=kmflcomp
-pkgver=10.99.0.2
+pkgver=10.99.0.5
 pkgrel=1
 pkgdesc="Keyman input method: compiler library"
 arch=('i686' 'x86_64')
 url="https://keyman.com/"
 license=('MIT')
+depends=('libx11')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-alpha-$pkgver.tar.gz")
-md5sums=('cd4b8bbe0b528d68c28da4fa6dd90c43')
-
-prepare() {
-    basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
-    cd "$basedir/$pkgname"
-    sed -i 's/${prefix}\/doc\/kmflcomp/${docdir}/g' Makefile.am
-}
+md5sums=('e2ed7716b3d4c2f95c8f82f5505a1e11')
 
 build() {
-    basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
-    cd "$basedir/$pkgname"
+    _basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
+    cd "$_basedir/$pkgname"
     autoreconf
     ./configure \
         CPPFLAGS="-I/usr/include" LDFLAGS="-L/usr/lib" \
@@ -28,7 +23,8 @@ build() {
 }
 
 package() {
-    basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
-    cd "$basedir/$pkgname"
+    _basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
+    cd "$_basedir/$pkgname"
     make install
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
