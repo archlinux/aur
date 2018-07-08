@@ -1,0 +1,17 @@
+pkgbase = doom-launcher-git
+	pkgdesc = doom-launcher: A doom mod manager and launcher
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.com/tim241/doom-launcher
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = dialog
+	depends = gzdoom
+	provides = doom-launcher
+	conflicts = doom-launcher
+	source = git+https://gitlab.com/tim241/doom-launcher.git
+	sha256sums = SKIP
+
+pkgname = doom-launcher-git
+
