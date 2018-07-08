@@ -2,7 +2,7 @@
 
 _pkgname=python-xeddsa
 pkgname=${_pkgname}-git
-pkgver=r17.8334136
+pkgver=r19.4872d92
 pkgrel=1
 pkgdesc="A python implementation of the XEdDSA signature scheme"
 url='https://github.com/Syndace/python-xeddsa'
@@ -34,5 +34,6 @@ package() {
     cd ${_pkgname}
 
     python3 setup.py install --root="${pkgdir}" --optimize=1
-    install -Dm 644 ref10/bin/libref10.so "${pkgdir}/usr/lib"
+    install -Dm 644 ref10/bin/crypto_scalarmult.so ref10/bin/crypto_sign.so \
+      "${pkgdir}/usr/lib"
 }
