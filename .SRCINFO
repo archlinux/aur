@@ -1,0 +1,20 @@
+pkgbase = fonts-tillana
+	pkgdesc = Open-source unicode font for Devanagari.
+	pkgver = 1.000
+	pkgrel = 1
+	url = http://github.com/itfoundry/tillana
+	arch = any
+	license = custom:OFL
+	source = http://raw.githubusercontent.com/itfoundry/tillana/master/build/Tillana-Regular.otf
+	source = http://raw.githubusercontent.com/itfoundry/tillana/master/build/Tillana-ExtraBold.otf
+	source = http://raw.githubusercontent.com/itfoundry/tillana/master/build/Tillana-Medium.otf
+	source = http://raw.githubusercontent.com/itfoundry/tillana/master/build/Tillana-SemiBold.otf
+	source = http://raw.githubusercontent.com/itfoundry/tillana/master/build/Tillana-Bold.otf
+	md5sums = d7fcf11e85301b74007cab2af547a470
+	md5sums = 0fadd4f309213429de1dad96772d27d5
+	md5sums = c5b73b83cdafea408aecdb8e997a5de0
+	md5sums = 53697a163c5425365f8fc97c1b3ef474
+	md5sums = d895002842cc93cb47317bb5266e5983
+
+pkgname = fonts-tillana
+
