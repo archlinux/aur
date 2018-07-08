@@ -6,7 +6,7 @@ pkgdesc="An XMPP library written for Python 3.4 (SleekXMPP asyncio fork)"
 arch=(any)
 url="https://dev.louiz.org/projects/slixmpp"
 license=('MIT')
-depends=('python>=3.4' 'python-aiodns' 'libidn' 'python-pyasn1' 'python-pyasn1-modules')
+depends=('python>=3.5' 'python-aiodns' 'libidn' 'python-pyasn1' 'python-pyasn1-modules')
 provides=('python-slixmpp')
 conflicts=('python-slixmpp')
 makedepends=('git' 'cython')
