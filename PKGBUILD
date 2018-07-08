@@ -1,7 +1,7 @@
 # Contributor: Max Devaine <maxdevaine@gmail.com>
 
 pkgname=flexibee
-pkgver=2018.2.2
+pkgver=2018.2.3
 pkgbasever=2018.2
 pkgrel=1
 pkgdesc="Accounting economic system for person and business. Server and client in one package."
@@ -13,8 +13,7 @@ install=flexibee.install
 source=("http://download.flexibee.eu/download/$pkgbasever/$pkgver/flexibee-$pkgver.tar.gz"
         "flexibee")
 
-
-sha256sums=('05035d78fccd85979836062d768e9e58bbe3cf5af1cb92958d219ab1163ed5f5'
+sha256sums=('b6666eee391ae068eae59ef1ec2617e7bb486b3ce1e6f7196642bc538369e50a'
             '0aaf79ac30bfc5af5e9aba6d1b1189a76019551d3183621bcb9f2bdbe7ea39e3')
 prepare() {
     cd ${srcdir}/flexibee-$pkgver
