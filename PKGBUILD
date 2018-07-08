@@ -1,6 +1,6 @@
 _pkgname=python-dups
 pkgname=python-dups-git
-pkgver=r75.c3d4205
+pkgver=r91.ab2854d
 pkgrel=1
 pkgdesc="It deduplicates things - Backup as simple as possible."
 arch=("x86_64")
@@ -27,11 +27,10 @@ build() {
 }
 
 package() {
+    export INCLUDE_DATA_FILES='systemd,dbus'
+
     cd "${srcdir}/${_pkgname}"
     python setup.py install --root="${pkgdir}" --force --quiet
-
-    install -d "${pkgdir}/usr/lib/systemd/user"
-    install -m 644 "data/systemd/dups.service" "${pkgdir}/usr/lib/systemd/user"
 }
 
 
