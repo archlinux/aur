@@ -1,0 +1,14 @@
+pkgbase = remark-validate-links
+	pkgdesc = Validate links to headings and files in markdown
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/wooorm/remark-validate-links#readme
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = remark-validate-links-7.0.0.tgz
+	source = http://registry.npmjs.org/remark-validate-links/-/remark-validate-links-7.0.0.tgz
+	sha1sums = 31de803ac4682ea923b68a82560810981853d110
+
+pkgname = remark-validate-links
+
