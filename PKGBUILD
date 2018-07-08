@@ -3,7 +3,7 @@
 
 
 pkgname="kvmd"
-pkgver="0.10"
+pkgver="0.11"
 pkgrel="1"
 pkgdesc="The main Pi-KVM daemon"
 arch=("any")
@@ -39,4 +39,7 @@ package() {
 	cd $srcdir/$pkgname-build
 	python setup.py install --root=$pkgdir
 	install -Dm644 kvmd.service "$pkgdir"/usr/lib/systemd/system/kvmd.service
+	mkdir -p "$pkgdir"/usr/share/kvmd
+	cp -r web "$pkgdir"/usr/share/kvmd
+	cp -r configs "$pkgdir"/usr/share/kvmd
 }
