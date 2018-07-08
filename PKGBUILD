@@ -1,7 +1,7 @@
 # Maintainer: Dominic Meiser dosm dot mail at gmail
 
 pkgname=slic3r-dev
-_pkgver=1.3.0_dev
+_pkgver=1.3.1_dev
 pkgver=$_pkgver
 pkgrel=1
 pkgdesc="Development build of Slic3r, a 3D Printer Toolpath Generator"
