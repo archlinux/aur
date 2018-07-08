@@ -1,52 +1,23 @@
 # Maintainer: Egor Gushcha <egorts04@gmail.com> 
 pkgname=pacproxy
-pkgver=2.0.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A no-frills local HTTP proxy server powered by a proxy auto-config (PAC) file"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('Apache')
-makedepends=(
-	'go'
-	'git'
-)
-
 source=(
-	"pacproxy::git://github.com/williambailey/pacproxy.git#branch=${BRANCH:-master}"
+	"https://github.com/williambailey/$pkgname/releases/download/v$pkgver/pacproxy"_"$pkgver"_"linux_amd64.tar.gz"
 )
 
-md5sums=(
-	'SKIP'
+sha256sums=(
+	'93e8d59952d6221172dd493e386cfdc88a5464c5475d87a1b4e1a5e87590d667'
 )
 
 build() {
-	cd "$srcdir/$pkgname"
-
-	if [ -L "$srcdir/$pkgname" ]; then
-		rm "$srcdir/$pkgname" -rf
-		mv "$srcdir/.go/src/$pkgname/" "$srcdir/$pkgname"
-	fi
-
-	rm -rf "$srcdir/.go/src"
-
-	mkdir -p "$srcdir/.go/src"
-
-	export GOPATH="$srcdir/.go"
-	export GOBIN="$srcdir/.go/bin"
-
-	mv "$srcdir/$pkgname" "$srcdir/.go/src/"
-
-	cd "$srcdir/.go/src/$pkgname/"
-	ln -sf "$srcdir/.go/src/$pkgname/" "$srcdir/$pkgname"
-
-	git submodule update --init
-
-	go get -v \
-		-gcflags "-trimpath $GOPATH/src" \
-		-ldflags="-X main.2.0.1=$pkgver-$pkgrel"
+	tar xf $pkgname"_"$pkgver"_"linux_amd64.tar.gz
 }
 
 package() {
-	find "$srcdir/.go/bin/" -type f -executable | while read filename; do
-		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
-	done
+	cd "$pkgname"_"$pkgver"_"linux_amd64"
+	install -D $pkgname "$pkgdir/usr/bin/pacproxy"
 }
