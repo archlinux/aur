@@ -1,31 +1,33 @@
-# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+# Maintainer: Marcin Mikołajczak <me at m4sk dot in>
+# Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Esclapion <esclapion at gmail dot com>
 
 _iconset=Plataro
 pkgname=${_iconset,,}-icons
-pkgver=20161031
+pkgver=r82.8476674
 pkgrel=1
 pkgdesc='An icon theme with emphasis on clarity, colorfulness and flatness'
 arch=('any')
-url='https://store.kde.org/content/show.php?content=171350'
+url="https://github.com/tsujan/Plataro"
 license=('CCPL:cc-by-nc-sa-4.0')
-
 provides=("${pkgname}=${pkgver}")
+source=("git+https://github.com/tsujan/Plataro")
+sha512sums=('SKIP')
 
-source=(
-	"https://dl.opendesktop.org/api/files/download/id/1477932347/${_iconset}-${pkgver}.tar.xz"
-)
-sha512sums=(
-	'40d5f15571b440bb829063bbe893d42cd2810c1ac8123338afcb7e860c3b882291731794496da5e8107be840210220e77812c1dcb22432615fdffbe8b9916211'
-)
+pkgver() {
+    cd $_iconset
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-	# Install package
-	mkdir -p "${pkgdir}"/usr/share/icons/
-	cp -a "${srcdir}"/Plataro "${pkgdir}"/usr/share/icons
-	rm -f "${pkgdir}"/usr/share/icons/${_iconset}/{AUTHORS,COPYING,INSTALL}
-
+	# Install icons
+    install -d ${pkgdir}/usr/share/icons
+    cp -r ${srcdir}/${_iconset}* ${pkgdir}/usr/share/icons/
+    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
+    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+    find ${pkgdir}/usr -type f -name '.directory' -delete
+    rm -rf "$pkgdir"/usr/share/icons/${_iconset}/{COPYING, INSTALL, README.md, .git, .github, .gitattributes, .gitignore, screenshot.jpg}
 	# Install license
 	mkdir -p "${pkgdir}"/usr/share/licenses/${pkgname}
-	cp -a "${srcdir}"/Plataro/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+	cp -a "${srcdir}"/${_iconset}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }

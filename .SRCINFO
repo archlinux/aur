@@ -1,13 +1,13 @@
 pkgbase = plataro-icons
 	pkgdesc = An icon theme with emphasis on clarity, colorfulness and flatness
-	pkgver = 20161031
+	pkgver = r82.8476674
 	pkgrel = 1
-	url = https://store.kde.org/content/show.php?content=171350
+	url = https://github.com/tsujan/Plataro
 	arch = any
 	license = CCPL:cc-by-nc-sa-4.0
-	provides = plataro-icons=20161031
-	source = https://dl.opendesktop.org/api/files/download/id/1477932347/Plataro-20161031.tar.xz
-	sha512sums = 40d5f15571b440bb829063bbe893d42cd2810c1ac8123338afcb7e860c3b882291731794496da5e8107be840210220e77812c1dcb22432615fdffbe8b9916211
+	provides = plataro-icons=r82.8476674
+	source = git+https://github.com/tsujan/Plataro
+	sha512sums = SKIP
 
 pkgname = plataro-icons
 
