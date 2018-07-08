@@ -1,0 +1,14 @@
+pkgbase = happiness
+	pkgdesc = JavaScript Happiness Style
+	pkgver = 10.0.2
+	pkgrel = 1
+	url = https://github.com/JedWatson/happiness
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = happiness-10.0.2.tgz
+	source = http://registry.npmjs.org/happiness/-/happiness-10.0.2.tgz
+	sha1sums = 49d92442feba32874cabcbcf35e2390d412d997e
+
+pkgname = happiness
+
