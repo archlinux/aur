@@ -11,7 +11,7 @@ depends=('openvpn' 'mono' 'mono-tools' 'mono-addins')
 optdepends=('filemanager-actions' 'openvpn-runit' 'openvpn-openrc' 'virtualshield-runit'
 'virtualshield-openrc' 'virtualshield-systemd')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/karl-k/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('4ff1262221ff16ef046e2a0170cb0d278a26e60c0c9e0b6536730c2bef916afa10ce734bf1c2deb1c87ba553817c65cbd45277d0a0a6ee548b224a47616483b4')
+sha512sums=('3853f9fe550f6f41d9856f1e83435c9c27e0f1c39d7e45b05397b89cf83b4452f8e16c59403cabf6b496e65356e62703a70358c7ed5cb3757b7f81807d2a0975')
 
 
 package() {
