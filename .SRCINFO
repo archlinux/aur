@@ -1,0 +1,12 @@
+pkgbase = python-apertium-lint
+	pkgdesc = Linters for Apertium Rule Based Machine Translation Platform
+	pkgver = 0.29
+	pkgrel = 1
+	url = https://svn.code.sf.net/p/apertium/svn/trunk/apertium-tools/apertium-lint/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-apertium-lint
+
