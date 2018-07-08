@@ -1,3 +1,7 @@
+# Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
+# If you find any problems with this package, submit an issue on the project's
+# GitLab: https://gitlab.com/sumner/tracktime.
+
 pkgbase=('tracktime')
 pkgname=('tracktime')
 _module='tracktime'
