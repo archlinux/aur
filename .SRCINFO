@@ -1,7 +1,7 @@
 pkgbase = speech-denoiser-git
 	pkgdesc = A speech denoise lv2 plugin based on RNNoise library.
 	pkgver = r66.76852d1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lucianodato/speech-denoiser
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = speech-denoiser-git
 	depends = glibc
 	provides = speech-denoiser
 	conflicts = speech-denoiser
-	source = speech-denoiser::git://github.com/CrocoDuckoDucks/speech-denoiser.git
-	source = git://github.com/xiph/rnnoise
+	source = speech-denoiser::git://github.com/lucianodato/speech-denoiser.git
+	source = git://github.com/xiph/rnnoise.git
 	md5sums = SKIP
 	md5sums = SKIP
 
