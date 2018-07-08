@@ -3,7 +3,7 @@
 pkgname=psychonauts
 pkgver=20130506
 _srcpkgver=05062013
-pkgrel=1
+pkgrel=2
 pkgdesc='A mind-bending platforming adventure (game sold separately)'
 arch=('i686' 'x86_64')
 url='http://www.psychonauts.com/'
@@ -11,10 +11,8 @@ license=('custom')
 makedepends=('unzip')
 if [ "$CARCH" = "x86_64" ]; then
     depends=('lib32-sdl' 'lib32-openal' 'bash' 'lib32-gcc-libs')
-    optdepends=('lib32-libtxc_dxtn: texture decoding for open source ATI and Intel drivers')
 else
     depends=('sdl' 'openal' 'bash' 'gcc-libs')
-    optdepends=('libtxc_dxtn: texture decoding for open source ATI and Intel drivers')
 fi
 options=('!strip')
 _gamepkg="${pkgname}-linux-${_srcpkgver}-bin"
@@ -22,7 +20,7 @@ source=("${pkgname}.desktop"
         "psychonauts.sh"
         "hib://${_gamepkg}")
 md5sums=('91be805610718903bea5c3a3d1d127cf'
-         'fa33971376bd3824a1202e37220f72a5'
+         '095f3a6abf78d8a69538601972dfcce9'
          'cd207acda0613cf06bc153b4b85dceb3')
 # You can download the Humble Indie Bundle file manually, or you can configure
 # DLAGENTS in makepkg.conf to auto-download.
@@ -37,7 +35,7 @@ md5sums=('91be805610718903bea5c3a3d1d127cf'
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Download manually to \"$(pwd)\" or setup hib:// DLAGENT in /etc/makepkg.conf."; echo "Read this PKGBUILD for more info."; exit 1')
 PKGEXT='.pkg.tar'
 
-build(){
+prepare(){
     cd "${srcdir}"
     unzip -o "${_gamepkg}" -d "${pkgname}-${pkgver}" || true
 }

@@ -1,2 +1,2 @@
 #!/bin/sh
-cd /opt/psychonauts && ./Psychonauts
+cd /opt/psychonauts && exec ./Psychonauts
