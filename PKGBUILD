@@ -3,7 +3,7 @@
 
 pkgname=shadowgrounds-survivor
 pkgver=beta11_update1
-pkgrel=2
+pkgrel=3
 pkgdesc='A 3D sci-fi alien shooter - sequel to Shadowgrounds (game sold separately)'
 arch=('i686' 'x86_64')
 url='http://shadowgroundsgame.com/survivor/'
@@ -11,21 +11,15 @@ license=('unknown')
 if [ "$CARCH" = "x86_64" ]; then
   depends=('lib32-libglade' 'lib32-mesa' 'lib32-openal' 'lib32-libvorbis'
            'lib32-sdl_ttf' 'lib32-libxmu' 'lib32-sdl_sound' 'lib32-sdl_image')
-  optdepends=('lib32-libtxc_dxtn: texture decoding for open source ATI and Intel drivers')
 else
   depends=('libglade' 'mesa' 'openal' 'libvorbis' 'sdl_ttf' 'libxmu' 'sdl_sound'
            'sdl_image')
-  optdepends=('libtxc_dxtn: texture decoding for open source ATI and Intel drivers')
 fi
 options=('!strip')
-makedepends=('unzip')
-if [ "$CARCH" = "x86_64" ]; then
-  install="${pkgname}.install"
-fi
 _gamepkg="survivorUpdate1.run"
 source=("${pkgname}-launcher.sh" "${pkgname}.desktop" "hib://${_gamepkg}")
 noextract=("${_gamepkg}")
-md5sums=('06b1b542f3b61b9967b3567d1b2f1c62'
+md5sums=('baf8963e63e880dd0bf23c5751ec3c53'
          '68597f3dd51bac4db6ff63b2dcec2284'
          '6c38a1f3fe555b4d3f3e0a9a81a7d743')
 # You can download the Humble Indie Bundle file manually, or you can configure
@@ -41,9 +35,11 @@ md5sums=('06b1b542f3b61b9967b3567d1b2f1c62'
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Download the file manually to \"$(pwd)\" or setup hib:// DLAGENT in /etc/makepkg.conf"; echo "Read this PKGBUILD for more info."; exit 1')
 PKGEXT='.pkg.tar'
 
-build() {
+prepare() {
   cd "${srcdir}"
-  unzip -o "${_gamepkg}" -d "${pkgname}-${pkgver}" || true
+
+  mkdir "${pkgname}-${pkgver}"
+  bsdtar -x -C "${pkgname}-${pkgver}" -f "${_gamepkg}"
 }
 
 package(){

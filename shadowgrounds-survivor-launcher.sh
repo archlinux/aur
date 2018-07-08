@@ -1,2 +1,2 @@
 #!/bin/sh
-cd /opt/shadowgrounds-survivor && ./survivor-launcher $@
+cd /opt/shadowgrounds-survivor && exec ./survivor-launcher $@
