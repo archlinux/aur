@@ -10,6 +10,7 @@ pkgdesc='An icon theme with emphasis on clarity, colorfulness and flatness'
 arch=('any')
 url="https://github.com/tsujan/Plataro"
 license=('CCPL:cc-by-nc-sa-4.0')
+depends=('hicolor-icon-theme')
 provides=("${pkgname}=${pkgver}")
 source=("git+https://github.com/tsujan/Plataro")
 sha512sums=('SKIP')
@@ -20,14 +21,14 @@ pkgver() {
 }
 
 package() {
-	# Install icons
+    # Install icons
     install -d ${pkgdir}/usr/share/icons
     cp -r ${srcdir}/${_iconset}* ${pkgdir}/usr/share/icons/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
     find ${pkgdir}/usr -type f -name '.directory' -delete
     rm -rf "$pkgdir"/usr/share/icons/${_iconset}/{COPYING, INSTALL, README.md, .git, .github, .gitattributes, .gitignore, screenshot.jpg}
-	# Install license
-	mkdir -p "${pkgdir}"/usr/share/licenses/${pkgname}
-	cp -a "${srcdir}"/${_iconset}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    # Install license
+    mkdir -p "${pkgdir}"/usr/share/licenses/${pkgname}
+    cp -a "${srcdir}"/${_iconset}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
