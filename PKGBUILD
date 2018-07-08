@@ -1,5 +1,6 @@
-pkgbase=('python-offlinemsmtp')
-pkgname=('python-offlinemsmtp')
+pkgbase=('offlinemsmtp')
+pkgname=('offlinemsmtp')
+replaces=('python-offlinemsmtp')
 _module='offlinemsmtp'
 pkgver='0.2.3'
 pkgrel=1
