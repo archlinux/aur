@@ -6,10 +6,16 @@ pkgbase=('tracktime')
 pkgname=('tracktime')
 _module='tracktime'
 pkgver='0.1.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="Time tracking library with command line interface."
 url="https://gitlab.com/sumner/tracktime"
-depends=('python' 'python-pdfkit')
+depends=(
+    'python'
+    'python-pdfkit'
+    'python-tabulate'
+    'python-docutils'
+    'python-requests'
+)
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
