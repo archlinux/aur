@@ -2,13 +2,13 @@
 
 pkgname=tpm2-tools
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TPM (Trusted Platform Module) 2.0 tools based on TPM2.0-TSS"
 arch=('x86_64')
 url="https://github.com/tpm2-software/tpm2-tools"
 license=('BSD')
 makedepends=('git' 'autoconf-archive')
-depends=('tpm2-tss' 'curl')
+depends=('tpm2-tss>=2.0' 'curl')
 source=("git+$url.git#tag=$pkgver")
 md5sums=('SKIP')
 
