@@ -61,7 +61,7 @@ _pkgbase=xfce4-sntray-plugin
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
 pkgver=0.4.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for xfce4-panel and vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 url="https://gitlab.com/vala-panel-project/xfce4-sntray-plugin"
 arch=('i686' 'x86_64')
@@ -105,6 +105,7 @@ package_xfce4-panel-sntray-git(){
 	make -C "data" DESTDIR="${pkgdir}" install
 	rm -rf "${pkgdir}/usr/lib/vala-panel"
 	rm -rf "${pkgdir}/usr/share/mate-panel"
+	rm -rf "${pkgdir}/usr/share/vala-panel"
 	rm -rf "${pkgdir}/usr/lib/mate-panel"
 	rm -rf "${pkgdir}/usr/lib/budgie-desktop"
 	rm -rf "${pkgdir}/usr/share/glib-2.0"
@@ -127,6 +128,7 @@ package_mate-panel-sntray-git(){
 	rm -rf "${pkgdir}/usr/lib/vala-panel"
 	rm -rf "${pkgdir}/usr/lib/xfce4"
 	rm -rf "${pkgdir}/usr/share/xfce4"
+	rm -rf "${pkgdir}/usr/share/vala-panel"
 	rm -rf "${pkgdir}/usr/lib/budgie-desktop"
 	rm -rf "${pkgdir}/usr/share/glib-2.0"
 }
@@ -169,6 +171,7 @@ package_budgie-sntray-git(){
 	rm -rf "${pkgdir}/usr/lib/xfce4"
 	rm -rf "${pkgdir}/usr/share/xfce4"
 	rm -rf "${pkgdir}/usr/share/mate-panel"
+	rm -rf "${pkgdir}/usr/share/vala-panel"
 	rm -rf "${pkgdir}/usr/lib/mate-panel"
 	rm -rf "${pkgdir}/usr/lib/vala-panel"
 	rm -rf "${pkgdir}/usr/share/glib-2.0"
