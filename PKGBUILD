@@ -3,19 +3,19 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2018.629.0
+pkgver=2018.705.0_37_g27311ce1f
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64')
 url='https://osu.ppy.sh'
 license=('MIT')
-makedepends=('dotnet-sdk'
+makedepends=('mono'
              'msbuild-stable'
              'git')
-depends=('ffmpeg'
+depends=('dotnet-sdk'
+         'ffmpeg'
          'libbass'
-         'libgl'
-         'mono')
+         'libgl')
 optdepends=()
 options=()
 provides=('osu-lazer')
@@ -91,17 +91,12 @@ package() {
 	mkdir -p "$pkgdir/usr/share/pixmaps"
 	install -m644 "${pkgname%-git}.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 
-	# Compiled binaries
-	cd "$srcdir/osu/osu.Desktop/bin/Release/net471"
+	# Copy binaries
+	cd "$srcdir/osu/osu.Desktop/bin/Release/netcoreapp2.1"
 	mkdir -p "$pkgdir/usr/lib/${pkgname%-git}"
-	for binary in *.exe *.dll; do
-		install -m755 "$binary" "$pkgdir/usr/lib/${pkgname%-git}/$binary"
+	for file in *.dll *.json *.pdb *.so; do
+		install -m755 "$file" "$pkgdir/usr/lib/${pkgname%-git}/$file"
 	done
-
-	# Native libraries
-	install -m755 "libbass.so" "$pkgdir/usr/lib/${pkgname%-git}/libbass.so"
-	install -m755 "libbass_fx.so" "$pkgdir/usr/lib/${pkgname%-git}/libbass_fx.so"
-	install -m755 "libe_sqlite3.so" "$pkgdir/usr/lib/${pkgname%-git}/libe_sqlite3.so"
 }
 
 # vim: set sw=4 ts=4 noet:
