@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r2665.g960d1e36
-pkgrel=3
+pkgver=1.0.0.r2672.g1c47eb18
+pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
 url='http://www.ipxe.org/'
@@ -15,7 +15,6 @@ source=('git://github.com/ipxe/ipxe.git'
 	'ipxe-0001-git-version.patch::https://github.com/eworm-de/ipxe/commit/112774bdead6000de74b0b7a18f8e9c4fb4c9278.patch'
 	'ipxe-0002-banner.patch::https://github.com/eworm-de/ipxe/commit/4c2b79d62492ca09cbeff4f3ca59401374643e88.patch'
 	'ipxe-0003-efi-iso.patch::https://github.com/eworm-de/ipxe/commit/3003d1d64e90ccda1e0b90af09d75f35cf9fe5fa.patch'
-	'ipxe-0004-gcc-8.patch::https://github.com/eworm-de/ipxe/commit/ddfb60813c74e988ba7c16dbbe1b163593c9da4e.patch'
 	'grub'
 	'chain-default.ipxe'
 	'chain-default-3928.ipxe')
@@ -23,7 +22,6 @@ sha256sums=('SKIP'
             '6066e8b746dc11ab16866679aca5d5af5a16e6e6c4f82dfe003e429011943b81'
             '6e55f81c2371f8feeef6cadc37c7c86e40aad203c0a0fece39d68730d6958b4e'
             '7a2c97b65dcd303f4826e1b1a838eea210fc123cb8c691ad2e80069c85b3b6e5'
-            '455d7b46dce64859471c15dade8c78e403cb3327b52c13accfefa0d98fd8b869'
             'ead8e9b386206bc0e95838a6e074c218e038cd3fa1ca5cff2b73e34b40d5552f'
             'f7ec78e26671f4df90d89440d8b2a69473c15cb6b25dda32c773023378fec42a'
             'e26a54b4e99816b34baebcb7a15d99d57c9395c9689ffbae2329cc675248f9b9')
@@ -54,9 +52,6 @@ prepare() {
 
 	# ISO image with EFI support
 	patch -Np2 < "${srcdir}/ipxe-0003-efi-iso.patch"
-
-	# fix build with GCC 8.x
-	patch -Np2 < "${srcdir}/ipxe-0004-gcc-8.patch"
 
 	# read and set keymap
 	[ -s /etc/vconsole.conf ] && source /etc/vconsole.conf
