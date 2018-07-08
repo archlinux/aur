@@ -63,7 +63,7 @@ _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
 pkgver=0.6.94
-pkgrel=3
+pkgrel=5
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
@@ -107,6 +107,7 @@ package_vala-panel-appmenu-xfce-git() {
   make -C "data" DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/lib/vala-panel"
   rm -rf "${pkgdir}/usr/lib/mate-panel"
+  rm -rf "${pkgdir}/usr/share/vala-panel"
   rm -rf "${pkgdir}/usr/share/mate-panel"
   rm -rf "${pkgdir}/usr/share/dbus-1"
   rm -rf "${pkgdir}/usr/lib/budgie-desktop"
@@ -126,7 +127,8 @@ package_vala-panel-appmenu-valapanel-git() {
   make -C "lib" DESTDIR="${pkgdir}" install
   make -C "data" DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/lib/xfce4"
-  rm -rf "${pkgdir}/usr/share"
+  rm -rf "${pkgdir}/usr/share/mate-panel"
+  rm -rf "${pkgdir}/usr/share/xfce4"
   rm -rf "${pkgdir}/usr/lib/mate-panel"
   rm -rf "${pkgdir}/usr/lib/budgie-desktop"
 }
@@ -146,6 +148,7 @@ package_vala-panel-appmenu-mate-git() {
   rm -rf "${pkgdir}/usr/lib/vala-panel"
   rm -rf "${pkgdir}/usr/lib/xfce4"
   rm -rf "${pkgdir}/usr/share/xfce4"
+  rm -rf "${pkgdir}/usr/share/vala-panel"
   rm -rf "${pkgdir}/usr/lib/budgie-desktop"
   rm -rf "${pkgdir}/usr/share/glib-2.0"
 }
