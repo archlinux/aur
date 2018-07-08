@@ -1,0 +1,14 @@
+pkgbase = ramllint
+	pkgdesc = RAML Lint
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://github.com/QuickenLoans/ramllint#readme
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = ramllint-1.2.6.tgz
+	source = http://registry.npmjs.org/ramllint/-/ramllint-1.2.6.tgz
+	sha1sums = f392b5b2e0f7ad64cbe0d7a75f0061de7089bb57
+
+pkgname = ramllint
+
