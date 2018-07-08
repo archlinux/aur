@@ -1,0 +1,32 @@
+pkgbase = email-securely-app-bin
+	pkgdesc = Unofficial desktop app for several E2E encrypted email providers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vladimiry/email-securely-app
+	install = email-securely-app-bin.install
+	arch = x86_64
+	license = MIT
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libappindicator-gtk3
+	depends = gconf
+	depends = gnome-keyring
+	source = https://github.com/vladimiry/email-securely-app/releases/download/v1.0.0/email-securely-app-1.0.0-linux.pacman
+	source = LICENSE
+	md5sums = 9c831d596f4aef6ea1e5473343342823
+	md5sums = fc680045f40b19ce3c3e771aeb08bbd3
+
+pkgname = email-securely-app-bin
+
