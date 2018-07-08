@@ -1,0 +1,14 @@
+pkgbase = dockerfile_lint
+	pkgdesc = Utility for linting a docker file against accepted good practices
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/projectatomic/dockerfile_lint#readme
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = dockerfile_lint-0.3.2.tgz
+	source = http://registry.npmjs.org/dockerfile_lint/-/dockerfile_lint-0.3.2.tgz
+	sha1sums = 8f702d4b8cf2643b567204f3e80d6febed677009
+
+pkgname = dockerfile_lint
+
