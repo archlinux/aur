@@ -1,0 +1,15 @@
+pkgbase = php5-pear
+	pkgdesc = PHP Extension and Application Repository
+	pkgver = 1.10.5
+	pkgrel = 1
+	epoch = 1
+	url = http://pear.php.net/
+	arch = any
+	license = PHP
+	depends = php
+	backup = etc/php/pear.conf
+	source = https://pear.php.net/install-pear-nozlib.phar
+	md5sums = 746dc5b681063e792152730770b36d21
+
+pkgname = php5-pear
+
