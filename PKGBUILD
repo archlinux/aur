@@ -5,7 +5,7 @@
 
 pkgname=st-anyway-git
 _pkgname=st
-pkgver=0.8.1.6.gdc3b5ba
+pkgver=0.8.1.7.g29f341d
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X - solarized patch, inconsolata font, tmux compat'
 url='http://st.suckless.org/'
@@ -45,7 +45,7 @@ prepare() {
 
     sed \
         -e '/static char \*font/s/= .*/= "InconsolataGo Nerd Font Mono:size=11";/' \
-        -e '/char worddelimiters/s/= .*/= " '"'"'`\\\"()[]{}<>|│";/' \
+        -e '/char \*worddelimiters/s/= .*/= " '"'"'`\\\"()[]{}<>|│";/' \
         -e 's/TERMMOD,              XK_Y,/ShiftMask,            XK_Insert,/' \
         -i config.def.h
     sed \
