@@ -14,7 +14,6 @@ makedepends=('mono'
              'git')
 depends=('dotnet-sdk'
          'ffmpeg'
-         'libbass'
          'libgl')
 optdepends=()
 options=()
@@ -31,7 +30,7 @@ source=('git+https://github.com/ppy/osu.git'
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'c499dbff1d9a8f382e7b3cf4a95b58b9f02fb98e66e50cddb5d7d6c8a5223d2d'
+            '09c1cd74f65806aa3064d9eabee440e2d205d8b50cf12bafc41cb338681ba3e9'
             '11d29c2654896607f37bc5c8e558ea245d8e3b1b412dcba03033bf1db6580ebe'
             '3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
             'd22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b')
