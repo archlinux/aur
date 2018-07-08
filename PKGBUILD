@@ -6,7 +6,7 @@ pkgver=0.4.0
 pkgrel=1
 pkgdesc='A graphical configuration tool for Compton X composite manager'
 arch=('i686' 'x86_64')
-url='https://github.com/lxde/compton-conf'
+url='https://github.com/lxqt/compton-conf'
 license=('LGPL2.1')
 
 groups=('lxqt')
@@ -16,7 +16,7 @@ provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 
 source=(
-	#"https://github.com/lxde/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
+	#"https://github.com/lxqt/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
 	"https://downloads.lxqt.org/downloads/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
 )
 validpgpkeys=(
