@@ -32,7 +32,9 @@ build() {
     cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF
     cmake --build .deps
 
-    cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release
+    cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release \
+        -DLMDBXX_INCLUDE_DIR=.deps/usr/include \
+        -DTWEENY_INCLUDE_DIR=.deps/usr/include
     cmake --build build
 }
 
