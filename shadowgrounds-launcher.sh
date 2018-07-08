@@ -1,2 +1,2 @@
 #!/bin/sh
-cd /opt/shadowgrounds && ./shadowgrounds-launcher $@
+cd /opt/shadowgrounds && exec ./shadowgrounds-launcher $@

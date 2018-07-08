@@ -3,7 +3,7 @@
 
 pkgname=shadowgrounds
 pkgver=beta12_update1
-pkgrel=3
+pkgrel=4
 pkgdesc='A 3D sci-fi alien shooter (game sold separately)'
 arch=('i686' 'x86_64')
 url='http://shadowgroundsgame.com/'
@@ -11,21 +11,15 @@ license=('unknown')
 if [ "$CARCH" = "x86_64" ]; then
   depends=('lib32-libglade' 'lib32-mesa' 'lib32-openal' 'lib32-libvorbis'
            'lib32-sdl_ttf' 'lib32-libxmu' 'lib32-sdl_sound' 'lib32-sdl_image')
-  optdepends=('lib32-libtxc_dxtn: texture decoding for open source ATI and Intel drivers')
 else
   depends=('libglade' 'mesa' 'openal' 'libvorbis' 'sdl_ttf' 'libxmu' 'sdl_sound'
            'sdl_image')
-  optdepends=('libtxc_dxtn: texture decoding for open source ATI and Intel drivers')
 fi
 options=('!strip')
-makedepends=('unzip')
-if [ "$CARCH" = "x86_64" ]; then
-  install="${pkgname}.install"
-fi
 _gamepkg="shadowgroundsUpdate1.run"
 source=("${pkgname}-launcher.sh" "${pkgname}.desktop" "hib://${_gamepkg}")
 noextract=("${_gamepkg}")
-md5sums=('c83e117078496deac700c271694533ea'
+md5sums=('2ed2add4600b899cc4a41bf3d1d51c4d'
          '5bf18b1fff2e96b4a1d70b563c4f2ce7'
          '7c9913f754168742973edfeb66ba8f1c')
 # You can download the Humble Indie Bundle file manually, or you can configure
@@ -41,9 +35,11 @@ md5sums=('c83e117078496deac700c271694533ea'
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Download the file manually to \"$(pwd)\" or setup hib:// DLAGENT in /etc/makepkg.conf"; echo "Read this PKGBUILD for more info."; exit 1')
 PKGEXT='.pkg.tar'
 
-build() {
+prepare() {
   cd "${srcdir}"
-  unzip -o "${_gamepkg}" -d "${pkgname}-${pkgver}" || true
+
+  mkdir "${pkgname}-${pkgver}"
+  bsdtar -x -C "${pkgname}-${pkgver}" -f "${_gamepkg}"
 }
 
 package(){
