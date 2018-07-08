@@ -1,0 +1,2 @@
+all:
+	makepkg --printsrcinfo > .SRCINFO
