@@ -1,0 +1,14 @@
+pkgbase = sass-lint
+	pkgdesc = All Node Sass linter!
+	pkgver = 1.12.1
+	pkgrel = 1
+	url = https://github.com/sasstools/sass-lint
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = sass-lint-1.12.1.tgz
+	source = http://registry.npmjs.org/sass-lint/-/sass-lint-1.12.1.tgz
+	sha1sums = 630f69c216aa206b8232fb2aa907bdf3336b6d83
+
+pkgname = sass-lint
+
