@@ -3,7 +3,7 @@
 # Contributor: Kars Wang <jaklsy g-mail>
 
 pkgname=lantern-bin
-pkgver=4.5.9
+pkgver=4.7.6
 pkgrel=1
 pkgdesc='Free desktop application that delivers fast, reliable and secure access to the open Internet. (Stable Channel, binary)'
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ source=('lantern.service')
 source_i686=("${pkgname}-${pkgver}-i686.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-32-bit.deb")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb")
 sha256sums=('fdece37945be10c00210bbde7b4058c356ef1df0554bd963fcddd12990ff930b')
-sha256sums_i686=('4a276c443744a16c4c6b4f0e5d220405c60c64162ec7b292a3d86cdc5247ed0f')
-sha256sums_x86_64=('088e3099868e8fd71758eefef7a8bedd1fcfac9ae2eb913c4425ab664909f0d6')
+sha256sums_i686=('c4950c6da1671346d8e867acde39a9aa676b6a241c8b529ae83c51ab67d66379')
+sha256sums_x86_64=('a1816cfa8596a7f1a9eec2457ea686891ba060da3f015733a737eadaacebc21f')
 
 package() {
     msg2 'Extracting the data.tar.xz...'
