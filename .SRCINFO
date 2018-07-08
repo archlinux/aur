@@ -1,0 +1,20 @@
+pkgbase = fonts-libre-devanagari-meta
+	pkgdesc = Set of OpenType and TrueType Unicode fonts for Devanagari.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = custom:OFL
+	depends = fonts-shobhika
+	depends = fonts-cambay
+	depends = fonts-martel
+	depends = fonts-karma
+	depends = fonts-laila
+	depends = fonts-kalam
+	depends = fonts-khand
+	depends = fonts-rajdhani
+	depends = fonts-teko
+	depends = fonts-tillana
+	depends = fonts-amita
+
+pkgname = fonts-libre-devanagari-meta
+
