@@ -1,26 +1,26 @@
 # Maintainer 2016-2018: Yadav Gowda <yadav . gowda __at__ gmail . com>
-# Maintainer 2018-now : Vitrum <wqdxosty1yhj at bk dot ru>
+# Maintainer 2018-now : Vitrum <wqdxosty1yhj@bk.ru>
 
 pkgname=ibus-kmfl
-pkgver=10.99.0.2
-pkgrel=3
+pkgver=10.99.0.5
+pkgrel=1
 pkgdesc="Keyman input method: ibus engine"
 arch=('i686' 'x86_64')
 url="https://keyman.com/"
-license=('MIT')
-depends=('ibus' 'kmflcomp' 'libkmfl')
+license=('GPL')
+depends=('ibus' 'libkmfl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-alpha-$pkgver.tar.gz")
-md5sums=('cd4b8bbe0b528d68c28da4fa6dd90c43')
+md5sums=('e2ed7716b3d4c2f95c8f82f5505a1e11')
 
 prepare() {
-    basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
-    cd "$basedir/$pkgname"
+    _basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
+    cd "$_basedir/$pkgname"
     sed -i 's/${libexecdir}/\/usr\/lib\/ibus/g' src/kmfl.xml.in.in
 }
 
 build() {
-    basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
-    cd "$basedir/$pkgname"
+    _basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
+    cd "$_basedir/$pkgname"
     autoreconf
     ./configure \
         CPPFLAGS="-I/usr/include" LDFLAGS="-L/usr/lib" \
@@ -31,7 +31,11 @@ build() {
 }
 
 package() {
-    basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
-    cd "$basedir/$pkgname"
+    _basedir="$srcdir/keyman-linux-release-alpha-$pkgver/linux"
+    cd "$_basedir/$pkgname"
     make install
+}
+
+post_install() {
+    ibus restart
 }
