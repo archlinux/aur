@@ -2,7 +2,7 @@
 
 _pkgname=cleanupdate
 pkgname=cleanupdate-git
-pkgver=r157.998200d
+pkgver=r159.0eef643
 pkgrel=0
 pkgdesc="A simple script to speed up updating and cleaning your system"
 arch=('any')
@@ -11,7 +11,8 @@ license=('GPL3')
 depends=('bash'
         'bc'
         'ncurses'
-        'sudo')
+        'sudo'
+        'pacman-contrib')
 makedepends=('git')
 optdepends=(
     'aurman: needed for AUR support (preferred to other AUR helpers)'
