@@ -2,8 +2,8 @@
 
 pkgname=the_platinum_searcher-bin
 pkgdesc='A code search tool similar to ack, the_silver_searcher (ag) and ripgrep (rg).'
-pkgver=2.1.5
-pkgrel=2
+pkgver=2.1.6
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/monochromegane/the_platinum_searcher'
 license=('MIT')
@@ -15,8 +15,8 @@ source_x86_64=(
 	LICENSE
 )
 sha512sums_x86_64=(
-	'1084d9b9054cfe66151d4751efb292e66d9369e330d67baa87b81aeb31e2eda29821b363933eaa10b2cd52c15fa2f5b8ed97c655db2c1f3ac76983e9d2844f2c'
-	'58a1456e4267dc43f7e68071b6077c91516f576060d9a2fb645e47015adfc2dbffcae43e2ca81148bd1e0f0cae2cbe7ef2e147646579ed98bfaa44aa86c95680'
+	'8bf310ca2508dafb761156e6b27dd7d71619df459012821bae42c4752dc58407809491e68db433ae48c252a81a00007f2634f2e752b993d8b86953ee45569bad'
+        '58a1456e4267dc43f7e68071b6077c91516f576060d9a2fb645e47015adfc2dbffcae43e2ca81148bd1e0f0cae2cbe7ef2e147646579ed98bfaa44aa86c95680'
 )
 
 package() {
