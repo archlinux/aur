@@ -252,7 +252,7 @@ check() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   # Check if sendmail was configured correctly (FS#47600)
-  "${srcdir}"/build-php/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
+  "${srcdir}"/build-php/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q 'sendmail'
 
   export REPORT_EXIT_STATUS=1
   export NO_INTERACTION=1
