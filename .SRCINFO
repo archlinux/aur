@@ -1,0 +1,14 @@
+pkgbase = remark-cli
+	pkgdesc = CLI to process markdown with remark using plugins
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = http://remark.js.org
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = remark-cli-5.0.0.tgz
+	source = http://registry.npmjs.org/remark-cli/-/remark-cli-5.0.0.tgz
+	sha1sums = 9feefd06474f3d0ff132df21b5334c546df12ab6
+
+pkgname = remark-cli
+
