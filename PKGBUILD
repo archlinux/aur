@@ -2,7 +2,7 @@
 
 pkgname=pext-git
 _pkgname=Pext
-pkgver=0.15.r1.8e571e0
+pkgver=0.17
 pkgrel=1
 pkgdesc='Python-based extendable tool'
 url='https://pext.hackerchick.me/'
@@ -24,7 +24,6 @@ pkgver() {
 }
 
 prepare() {
-  sed "s/'pyqt5'//g" -i ${srcdir}/${_pkgname}/setup.py
   sed "s/USE_INTERNAL_UPDATER = .*/USE_INTERNAL_UPDATER = False/" -i ${srcdir}/${_pkgname}/pext/constants.py
 }
 
