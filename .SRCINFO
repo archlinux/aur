@@ -1,0 +1,14 @@
+pkgbase = remark-lint
+	pkgdesc = Lint markdown with remark
+	pkgver = 6.0.2
+	pkgrel = 1
+	url = https://github.com/remarkjs/remark-lint/tree/master/packages/remark-lint
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = remark-lint-6.0.2.tgz
+	source = http://registry.npmjs.org/remark-lint/-/remark-lint-6.0.2.tgz
+	sha1sums = f4ac45536e4fbf3c9a523dfa1cca874c598554de
+
+pkgname = remark-lint
+
