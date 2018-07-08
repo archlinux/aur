@@ -23,7 +23,7 @@ build() {
   cmake "$srcdir/${pkgname%-git}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/lib
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib
   make
 }
 
