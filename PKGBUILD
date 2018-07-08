@@ -16,9 +16,9 @@ source=("phpcs-${pkgver}.phar::https://github.com/squizlabs/${_pkgname}/releases
         "phpcbf-${pkgver}.phar.asc::https://github.com/squizlabs/${_pkgname}/releases/download/${pkgver}/phpcbf.phar.asc"
         "licence-${pkgver}.txt::https://raw.githubusercontent.com/squizlabs/${_pkgname}/${pkgver}/licence.txt")
 validpgpkeys=('A972B9ABB95D0B760B51442231C7E470E2138192')
-sha256sums=('41ef9d09fca6be1dce5ee6b946a59461f4955245c3038c0ac17e0669caef6aa4'
+sha256sums=('90442ce92ffccfad906f411919d26be54005064463707ea4beba3684d92e83fe'
             'SKIP'
-            '34a94620615b674ef4ed44ab1648a9f1c874b35b4d48239e81a177a803a0e002'
+            '9a9e93310a4e9de509aa06648e69fc91b8141661abb818aeb421e4fa5f3100aa'
             'SKIP'
             '821c1697ab88bb71a5d1637743024e455d87074b8a5d0732f85205bd40cba6c9')
 
