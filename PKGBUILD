@@ -11,9 +11,9 @@
 # - http://www.scootersoftware.com/vbulletin/showpost.php?s=3c1f289bc76655230b49f440dbe17b53&p=26449&postcount=7
 
 pkgbase=bcompare
-pkgname=('bcompare' 'bcompare-kde' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
+pkgname=('bcompare' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
 pkgver=4.2.5.23088
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.scootersoftware.com'
 license=('custom')
@@ -34,7 +34,11 @@ options=('!strip') # Do not strip binaries because it breaks them down
   mkdir -p "${_install_dir}/usr/share/mime/packages"
   mkdir -p "${_install_dir}/usr/share/pixmaps"
 
-  # Set up KDE service menus
+  # Set up KDE5 service menus
+  mkdir -p "${_install_dir}/usr/lib/x86_64-linux-gnu/qt5/plugins/"
+  mkdir -p "${_install_dir}/usr/share/kservices5/"
+
+  # Set up KDE4 service menus
   mkdir -p "${_install_dir}/usr/lib/kde4"
   mkdir -p "${_install_dir}/usr/share/kde4/services"
 
@@ -76,14 +80,16 @@ package_bcompare() {
   cd "${pkgdir}"
   if [ -d usr/lib ]; then
     mv usr/lib/* lib
-  fi 
+  fi
   mv bin lib usr/
 
   # Fix wrong paths
   sed -i "s|"${_install_dir}"|/usr|g" usr/bin/bcompare
 
   # Remove KDE, Gnome and Xfce files
+  rm -rf "${pkgdir}/usr/share/kservices5"
   rm -rf "${pkgdir}/usr/share/kde4"
+  rm -rf "${pkgdir}/usr/lib/x86_64-linux-gnu"
   rm -rf "${pkgdir}/usr/lib/kde4"
   rm -rf "${pkgdir}/usr/lib/nautilus"
   rm -rf "${pkgdir}/usr/lib/thunarx-2"
@@ -107,11 +113,29 @@ package_bcompare() {
   popd > /dev/null
 }
 
-package_bcompare-kde() {
-  pkgdesc="KDE service menus for Beyond Compare 4"
+package_bcompare-kde5() {
+  pkgdesc="KDE5 service menus for Beyond Compare 4"
   depends=('bcompare')
 
-   msg2 "Packaging KDE service menus..."
+   msg2 "Packaging KDE5 service menus..."
+  _install_dir="${srcdir}/install"
+  # Set up service menus
+  mkdir -p "${pkgdir}/usr/lib"
+  mv "${_install_dir}/usr/lib/x86_64-linux-gnu" "${pkgdir}/usr/lib/"
+
+  find "${_install_dir}/usr/share/kservices5" -type f -exec chmod -x '{}' ';'
+  mkdir -p "${pkgdir}/usr/share"
+  mv "${_install_dir}/usr/share/kservices5" "${pkgdir}/usr/share"
+  msg2 "Done!"
+}
+
+package_bcompare-kde4() {
+  pkgdesc="KDE4 service menus for Beyond Compare 4"
+  depends=('bcompare')
+  replaces=('bcompare-kde')
+  conflicts=('bcompare-kde')
+
+   msg2 "Packaging KDE4 service menus..."
   _install_dir="${srcdir}/install"
   # Set up service menus
   mkdir -p "${pkgdir}/usr/lib"
