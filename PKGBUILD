@@ -9,7 +9,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=3.25.0.r2.g011f8fc228
+pkgver=3.27.1.r3.g10d61771fb
 pkgrel=1
 _mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
 pkgdesc="Ebook management application, from git"
@@ -22,7 +22,7 @@ depends=('chmlib' 'icu' 'libmtp' 'libusbx' 'libwmf' 'mtdev' 'optipng' 'podofo'
          'python2-dukpy' 'python2-html5-parser' 'python2-mechanize' 'python2-msgpack'
          'python2-netifaces' 'python2-unrardll' 'python2-pillow' 'python2-psutil'
          'python2-pygments' 'python2-pyqt5' 'python2-regex' 'qt5-svg' 'qt5-webkit')
-makedepends=('git' 'qt5-x11extras' 'xdg-utils' 'rapydscript-ng' 'python2-sphinx')
+makedepends=('git' 'qt5-x11extras' 'sip' 'xdg-utils' 'rapydscript-ng' 'python2-sphinx')
 optdepends=('ipython2: to use calibre-debug')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
