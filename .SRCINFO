@@ -1,0 +1,14 @@
+pkgbase = complexity-report
+	pkgdesc = Software complexity analysis for JavaScript projects
+	pkgver = 2.0.0_alpha
+	pkgrel = 1
+	url = https://github.com/jared-stilwell/complexity-report
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = complexity-report-2.0.0-alpha.tgz
+	source = http://registry.npmjs.org/complexity-report/-/complexity-report-2.0.0-alpha.tgz
+	sha1sums = 9f3b01e470b0ba11cca4726b42eb7f21aa043b1c
+
+pkgname = complexity-report
+
