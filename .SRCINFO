@@ -1,0 +1,13 @@
+pkgbase = extip
+	pkgdesc = A simple curl one-liner to get your external IP address
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/karl-k/extip
+	arch = any
+	license = MIT/X
+	depends = curl
+	source = extip-1.0.tar.gz::https://github.com/karl-k/extip/archive/1.0.tar.gz
+	sha512sums = 8423d636805156af6077cdf30f75d234dce0a7904b1555ee41f247c4c706da6658678101eec1c44b079480044b665aadbca8eac809e647e8cdeada587bbaaf45
+
+pkgname = extip
+
