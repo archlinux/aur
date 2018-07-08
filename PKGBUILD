@@ -1,6 +1,6 @@
 # Maintainer: Nick Webster <nick@nick.geek.nz>
 pkgname=micropad
-pkgver=3.5.9
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A powerful notepad app that respects your freedoms and runs on everything."
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('c-ares'
          're2'
          'snappy')
 source=("https://github.com/MicroPad/Electron/releases/download/v${pkgver}/${pkgname}-${pkgver}.pacman")
-md5sums=('7de061e3d41038ec1a08387446338cdb')
+md5sums=('5c74d91f31f9ac612a820a2b7e08be55')
 install="micropad.install"
 
 package() {
