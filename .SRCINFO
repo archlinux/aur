@@ -1,0 +1,14 @@
+pkgbase = stylint
+	pkgdesc = A linter for stylus
+	pkgver = 1.5.9
+	pkgrel = 1
+	url = https://github.com/SimenB/stylint#readme
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = stylint-1.5.9.tgz
+	source = http://registry.npmjs.org/stylint/-/stylint-1.5.9.tgz
+	sha1sums = 29f4dc129fa1ca22150cd867223cee2bed5ff6a2
+
+pkgname = stylint
+
