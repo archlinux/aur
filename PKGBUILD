@@ -59,12 +59,12 @@ pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=4.16
 _srcname=linux-${_major}
-_minor=15
-_rtver=7
+_minor=18
+_rtver=9
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _rtpatchver=rt${_rtver}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -103,7 +103,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch'
         '0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch')
         
 _kernelname=${pkgbase#linux}
@@ -123,10 +122,6 @@ prepare() {
     ### Disable USER_NS for non-root users by default
         msg "Disable USER_NS for non-root users by default"
         patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-    
-    ### Fix https://bugs.archlinux.org/task/56780
-        msg "Fix #56780"
-        patch -Np1 -i ../0002-ACPI-watchdog-Prefer-iTCO_wdt-on-Lenovo-Z50-70.patch
     
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
@@ -416,9 +411,9 @@ done
 
 sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2d06317dc1683c51a472a9a631573a9b1e7258d6281a2ee189897827f14662'
             'SKIP'
-            '496a8a85758b4bae9b3082c45d7e9c8a87bd10a8a2ffbb086f96b83e0ed2e3449ebe8bdd50d138219a55c96a93dd87c9d4802dc0962112e8e78115de77d3c363'
+            '9e1cf90b874c757393680026cb74500ca9fa22c0047ac820f4e5f43062125f8cf469f1e8e93a084b9ecc28a177e55c8b733c2fe620e46694a338f1b2ff4180f8'
             'SKIP'
-            '72e3418d30a1818921647543c150c634a492395aee86f581606be6ae91e9bb2e712c5fc1154f584b40639a0e84c8c40c0113db1bfedb664e308153caa89305cb'
+            'ba4a38055bd86e1284efbb2cd08645a8b687bf96fa0e64fc42345e2f98c5f58ddf62683f7943dd525ece39b1026a8751930eb02e75cc98314c6a8e91536ef822'
             'SKIP'
             '77ebd687dec4025357fc8b192f26a8457bd42e124e9a84e3316f4a39dc5d02657a1a7f518ae652a9b826bc8043cf8dc3182f8c1afc8294cb1cb57b313f238bf5'
             '9737f30e748e043a1b6ab56bd0df6dc9607b4a2749243e599f5563b157aaf339ad43020a526a11a6fc809cc1abe50ac1cb12188bf5b367f6458fa0dbc2c1824d'
@@ -431,7 +426,6 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '26619b938a47c841f0c480a113cfbb1ee6f1121c21dfecbe246c1f7af7697f86cfb8253f09966eab2e386734ce4ad156159babdba4365c2f199c369c3d7e8ee8'
-            'f6aed92697c35e7919a0d784185e7af15b6be2762e3dd235267ca9744a826ac693d0ffcb07b9d1cc8571f57d518c1ce1c276cf7677e8375188f05f71d4added0'
             'cc8852b089aa24f588ad1af726503ecd1012ad7e1cbc47ea77f03a5f7aecd25306d40f2e16b8a1afeafe7e2e97b6b6840c9f462ed7be358090117e2e024df1bd')
             
 validpgpkeys=(
