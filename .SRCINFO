@@ -1,6 +1,6 @@
 pkgbase = refind-efi-git
 	pkgdesc = rEFInd Boot Manager - git version - Built with GNU-EFI libs
-	pkgver = 0.10.8.1.r558.85e61fb
+	pkgver = 0.11.2.2.r610.0a573cd
 	pkgrel = 1
 	url = http://www.rodsbooks.com/refind/
 	install = refind-efi.install
@@ -19,7 +19,7 @@ pkgbase = refind-efi-git
 	optdepends = sbsigntools: For EFI binary signing (Secure Boot support)
 	optdepends = preloader-signed: pre-signed shim loader (Secure Boot support)
 	optdepends = shim-signed: pre-signed shim loader (Secure Boot support)
-	provides = refind-efi=0.10.8.1.r558.85e61fb
+	provides = refind-efi=0.11.2.2.r610.0a573cd
 	conflicts = refind-efi
 	options = !strip
 	options = !buildflags

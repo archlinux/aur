@@ -12,7 +12,7 @@ _PXE='0'
 
 _pkgname='refind'
 pkgname="${_pkgname}-efi-git"
-pkgver=0.10.8.1.r558.85e61fb
+pkgver=0.11.2.2.r610.0a573cd
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='http://www.rodsbooks.com/refind/'
@@ -50,15 +50,15 @@ if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 else
 
 	pkgdesc="${pkgdesc} - Built with Tianocore UDK libs"
-	makedepends+=('python2')
+	makedepends+=('python2' 'nasm')
 
-	_UDK_VERSION='UDK2014'
+	_UDK_VERSION='UDK2018'
 	_TIANO_DIR_="edk2-${_UDK_VERSION}"
 
 	_TIANOCORE_PKG='Mde'
 	_TIANOCORE_TARGET='RELEASE'
 	_UDK_TARGET="${_TIANOCORE_PKG}Pkg/${_TIANOCORE_PKG}Pkg.dsc"
-	_COMPILER='GCC48'
+	_COMPILER='GCC5'
 
 	source+=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=${_UDK_VERSION}")
 	sha512sums+=('SKIP')
@@ -69,7 +69,7 @@ pkgver() {
 
 	cd "${srcdir}/${_pkgname}/"
 
-	printf "%s.r%s.%s" "$(grep -oP 'REFIND_VERSION L"\K[^"]+' "${srcdir}/${_pkgname}/include/version.h")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(grep -Po 'REFIND_VERSION L"\K[\d.]+' "${srcdir}/${_pkgname}/include/version.h")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
@@ -207,14 +207,14 @@ build() {
 	if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 		make gnuefi
 	else
-		make tiano
+		make edk2
 	fi
 
 	# Compile UEFI FS drivers
 	if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 		make fs_gnuefi
 	else
-		make fs_tiano
+		make fs_edk2
 	fi
 
 	if [[ "${_PXE}" == '1' ]]; then
