@@ -6,7 +6,7 @@
 
 _pkgbase=milkytracker
 pkgname=milkytracker-git
-pkgver=v0.90.86.r103.g5801528
+pkgver=v1.0.0.r109.g119b9d7
 pkgrel=1
 pkgdesc='Fast Tracker II inspired music tracker'
 arch=('x86_64' 'i686')
@@ -14,18 +14,14 @@ url="http://www.milkytracker.org/"
 license=('GPL3')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-depends=('sdl2' 'alsa-lib' 'zlib' 'gcc-libs')
-makedepends=('jack-audio-connection-kit' 'gendesk')
+depends=('sdl2' 'alsa-lib' 'zlib' 'gcc-libs' 'lhasa' 'zziplib' 'rtaudio' 'rtmidi')
+makedepends=('jack-audio-connection-kit' 'gendesk' 'cmake')
 optdepends=('jack-audio-connection-kit: JACK audio support')
 options=('docs' '!strip')
 install="${_pkgbase}.install"
 source=("${_pkgbase}::git+https://github.com/Deltafire/MilkyTracker.git"
-        "rtaudio::git+https://github.com/thestk/rtaudio.git"
-        "rtmidi::git+https://github.com/thestk/rtmidi.git"
         "${_pkgbase}.install")
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'de270bb640a7ca57b4c70d270c55fc45228d823232b2fd9d00682465c635d1fb')
 
 pkgver() {
@@ -37,27 +33,32 @@ prepare() {
   gendesk -f -n --pkgname "$_pkgbase" --pkgdesc "$pkgdesc" --name 'MilkyTracker' \
     --categories 'AudioVideo;Audio;AudioVideoEditing;'
 
-  cd "$srcdir/${_pkgbase}"
-  git submodule init
-  git config "submodule.src/milkyplay/drivers/generic/rtaudio.url" "$srcdir/rtaudio"
-  git config "submodule.src/midi/rtmidi.url" "$srcdir/rtmidi"
-  git submodule update
+  mkdir -p "$srcdir/build"
 }
 
 build() {
-  cd "$srcdir/${_pkgbase}"
+  cd "$srcdir/build"
 
-  autoreconf -fiv
-  ./configure --prefix=/usr --with-alsa --with-jack
-  make CXXFLAGS="$CXXFLAGS -lasound"
+  cmake \
+    -DCMAKE_INSTALL_PREFIX:FILEPATH="/usr" \
+    -DCMAKE_BUILD_TYPE:STRING="Release" \
+    -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
+    -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
+    -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
+    -DCMAKE_SHARED_LINKER_FLAGS:STRING="${LDFLAGS}" \
+    "../${_pkgbase}"
+
+  make
 }
 
 package() {
-  cd "$srcdir/${_pkgbase}"
-
+  cd "$srcdir/build"
   make DESTDIR="$pkgdir" install
+
   mkdir -p "$pkgdir/usr/share/applications" \
     "$pkgdir/usr/share/doc/milkytracker"
+
+  cd "$srcdir/${_pkgbase}"
   install -Dm644 resources/pictures/carton.png \
     "$pkgdir/usr/share/pixmaps/milkytracker.png"
   install -m644 "$srcdir/milkytracker.desktop" \
