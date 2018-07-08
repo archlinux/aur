@@ -1,6 +1,6 @@
 pkgbase = aurman-git
 	pkgdesc = AUR helper with almost pacman syntax
-	pkgver = 2.16.1.r0.g2323e21
+	pkgver = 2.16.2.r0.ge6dec08
 	pkgrel = 1
 	url = https://github.com/polygamma/aurman
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = aurman-git
 	depends = python-requests
 	depends = git
 	depends = python-regex
+	depends = python-dateutil
 	depends = pyalpm
 	provides = aurman
 	conflicts = aurman
