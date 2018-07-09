@@ -1,0 +1,57 @@
+diff -aur menumaker-0.99.10/MenuMaker/__init__.py menumaker-0.99.10.patched/MenuMaker/__init__.py
+--- menumaker-0.99.10/MenuMaker/__init__.py	2017-01-09 03:25:03.000000000 -0800
++++ menumaker-0.99.10.patched/MenuMaker/__init__.py	2018-07-09 15:32:15.523602021 -0700
+@@ -37,12 +39,15 @@
+     (T.xterm, KwS("Xterm")),
+     (T._xfterm, KwS("Xfterm")),
+     (T.xvt, KwS("Xvt")),
+-    (T.rxvt, KwS("Rxvt")),
++    (T.rxvt, KwS("Rxvt", "Urxvt")),
+     (T.aterm, KwS("Aterm")),
+     (T.wterm, KwS("Wterm")),
+     (T.Eterm, KwS("Eterm")),
+     (T._gterm, KwS("GNOME-terminal", "Gterm")),
+-    (T._konsole, KwS("Konsole"))
++    (T._konsole, KwS("Konsole")),
++    (T.roxterm, KwS("ROXterm")),
++    (T.lilyterm, KwS("Lilyterm")),
++    (T.terminator, KwS("Terminator")),
+ ]
+ 
+ 
+diff -aur menumaker-0.99.10/Prophet/Legacy/Shell.py menumaker-0.99.10.patched/Prophet/Legacy/Shell.py
+--- menumaker-0.99.10/Prophet/Legacy/Shell.py	2017-01-09 03:25:03.000000000 -0800
++++ menumaker-0.99.10.patched/Prophet/Legacy/Shell.py	2018-07-09 15:36:54.770279196 -0700
+@@ -81,6 +81,10 @@
+     comment = "Japanese X terminal emulator"
+     keywords = KwS(TerminalEmulator)
+ 
++class lilyterm(_Terminal) :
++    name = "Lilyterm"
++    comment = "A light and easy to use libvte based X terminal emulator"
++    keywords = KwS(TerminalEmulator)
+ 
+ class mc(_App, _ConsoleApp):
+     name = "MC"
+@@ -100,12 +104,21 @@
+     comment = "RISCOS-like file manager"
+     keywords = KwS(FileManager, Shell)
+ 
++class roxterm(_Terminal) :
++    name = "ROXterm"
++    comment = "X terminal emulator for ROX"
++    keywords = KwS(TerminalEmulator)
+ 
+ class rxvt(_Terminal):
+     name = "Rxvt"
++    exes = ["rxvt", "urxvt"]
+     comment = "Our X terminal emulator"
+     keywords = KwS(TerminalEmulator)
+ 
++class terminator(_Terminal):
++    name = "Terminator"
++    comment = "An application that provides lots of terminals in a single window"
++    keywords = KwS(TerminalEmulator)
+ 
+ class tuxcmd(_App, _X11App):
+     name = "TuxCommander"

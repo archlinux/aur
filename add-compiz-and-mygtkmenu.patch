@@ -1,0 +1,14 @@
+diff -aur menumaker-0.99.10/MenuMaker/__init__.py menumaker-0.99.10.patched/MenuMaker/__init__.py
+--- menumaker-0.99.10/MenuMaker/__init__.py	2017-01-09 03:25:03.000000000 -0800
++++ menumaker-0.99.10.patched/MenuMaker/__init__.py	2018-07-09 15:25:00.846919021 -0700
+@@ -28,7 +28,9 @@
+     Kw("Deskmenu"): KwS("Deskmenu"),
+     Kw("Xfce4"): KwS("Xfce", "Xfce4"),
+     Kw("OpenBox3"): KwS("OpenBox", "OpenBox3"),
+-    Kw("WindowMaker"): KwS("WindowMaker", "WMaker")
++    Kw("WindowMaker"): KwS("WindowMaker", "WMaker"),
++    Kw("Compiz"): KwS("Compiz", "Compiz-Deskmenu", "Compiz-Boxmenu"),
++    Kw("MyGTKMenu"): KwS("MyGTKMenu"),
+ }
+ 
+ # FIXME : the order should be frontend-specific

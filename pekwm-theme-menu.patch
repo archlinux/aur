@@ -1,0 +1,12 @@
+diff -aur menumaker-0.99.10/MenuMaker/PekWM.py menumaker-0.99.10.patched/MenuMaker/PekWM.py
+--- menumaker-0.99.10/MenuMaker/PekWM.py	2017-01-09 03:25:03.000000000 -0800
++++ menumaker-0.99.10.patched/MenuMaker/PekWM.py	2018-07-09 15:39:45.036952269 -0700
+@@ -91,7 +91,7 @@
+         try:
+             prefix = pekwm().prefix
+             themeset = os.path.join(
+-                prefix, "share/pekwm/scripts/pekwm_themeset.pl")
++                prefix, "share/pekwm/scripts/pekwm_themeset.sh")
+             if Prophet.isExe(themeset):
+                 for dir in (
+                         os.path.join(
