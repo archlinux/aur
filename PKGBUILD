@@ -1,7 +1,7 @@
 # Maintainer: Emanuel Duss <emanuel.duss@gmail.com>
 # Contributor: Nicolas Martyanoff <khaelin@gmail.com>
 pkgname=dumpasn1
-pkgver=20170309
+pkgver=20180709
 pkgrel=1
 pkgdesc="ASN.1 analyze tool"
 url="http://www.cs.auckland.ac.nz/~pgut001"
@@ -9,8 +9,8 @@ license=('custom')
 source=('http://www.cs.auckland.ac.nz/~pgut001/dumpasn1.c'
         'http://www.cs.auckland.ac.nz/~pgut001/dumpasn1.cfg'
         'LICENSE')
-sha256sums=('4b7c7d92c9593ee58c81019b2c3b7a7ee7450b733d38f196ce7560ee0e34d6b1'
-            '8b0c25bb3a4608b4678d25c56965e26e7780c73715032e447a506514a0815201'
+sha256sums=('d42b7fb8457b9282ee341429baaaaf0ef7b2310cb28fcf2fc41914e07e8b1370'
+            '824d64cef7340de0f92cd4937217ba5da6ab44294b9b8593185b32b12f2e0736'
             'f58dfb06633792773b4e539666f0fac52eb44acf29619175d073b146e22785e4')
 
 arch=('i686' 'x86_64')
