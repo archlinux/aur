@@ -8,10 +8,10 @@ pkgdesc="A library full of GTK+ widgets for mobile phones"
 url="https://code.puri.sm/Librem5/libhandy"
 license=('LGPL2.1')
 makedepends=('git' 'pkg-config' 'meson')
-pkgver=r129.bd86a1f
+pkgver=r192.56cd9bd
 pkgrel=1
 arch=('x86_64')
-source=("git+https://code.puri.sm/Librem5/libhandy.git")
+source=("git+https://source.puri.sm/Librem5/libhandy.git")
 sha256sums=('SKIP')
 
 pkgver() {
