@@ -4,7 +4,7 @@ pkgname=texlive-csltex
 _pkgname=csltex
 pkgver=2008.1116
 _revnr=${pkgver#2008.}
-pkgrel=2
+pkgrel=3
 pkgdesc="TeX Live - Package for typing of Church Slavonic texts in the standard HIP (HIP-9)"
 arch=('any')
 url="https://sites.google.com/site/csltex"
@@ -22,7 +22,7 @@ source=("${url}/${_pkgname}-public.zip"
 
 package() {
     cd "$srcdir"
-    install -dm755 "$pkgdir/usr/local/share/texmf/tex/latex"
+    install -dm755 "$pkgdir/usr/share/texmf/tex/latex"
     install -dm755 "$pkgdir/var/lib/texmf/arch/installedpkgs"
     install -m644 "$pkgname.maps" "$pkgdir/var/lib/texmf/arch/installedpkgs/"
     echo "${_pkgname}" "${_revnr}" > "$pkgdir/var/lib/texmf/arch/installedpkgs/${pkgname}_${_revnr}.pkgs"
@@ -32,13 +32,13 @@ package() {
     install -Dm644 "$srcdir/primer.pdf" "$pkgdir/usr/share/doc/$pkgname/primer.pdf"
     install -Dm644 "$srcdir/sample2.pdf" "$pkgdir/usr/share/doc/$pkgname/advertising.pdf"
     install -Dm644 "$srcdir/cslinstall.html" "$pkgdir/usr/share/doc/$pkgname/cslinstall.html"
-    install -Dm644 "$srcdir/language-local.dat" "$pkgdir/usr/local/share/texmf/tex/generic/config/language-local.dat"
-    install -Dm644 "$srcdir/language-local.def" "$pkgdir/usr/local/share/texmf/tex/generic/config/language-local.def"
-    cp -rf "$srcdir/tex/latex/csltex" "$pkgdir/usr/local/share/texmf/tex/latex/"
+    install -Dm644 "$srcdir/language-local.dat" "$pkgdir/usr/share/texmf/tex/generic/config/language-local.dat"
+    install -Dm644 "$srcdir/language-local.def" "$pkgdir/usr/share/texmf/tex/generic/config/language-local.def"
+    cp -rf "$srcdir/tex/latex/csltex" "$pkgdir/usr/share/texmf/tex/latex/"
     # Fix permission
     chmod 644 "$srcdir/fonts/type1/csltex/AkathCUcs8.pfb"
     chmod 644 "$srcdir/fonts/type1/csltex/AkathUcs8.pfb"
-    cp -rf "$srcdir/fonts" "$pkgdir/usr/local/share/texmf/"
+    cp -rf "$srcdir/fonts" "$pkgdir/usr/share/texmf/"
 }
 
 md5sums=('717d9f4e4915646ab120556b6ffd6252'
