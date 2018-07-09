@@ -1,0 +1,14 @@
+pkgbase = dunstmerge
+	pkgdesc = Dunst layout manager
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/budlabs/dunstmerge
+	arch = any
+	license = GPL3
+	depends = dunst
+	depends = bash>=4.0.0
+	source = https://github.com/budlabs/dunstmerge/archive/v.0.0.4.tar.gz
+	sha256sums = 314ba94bf4e96045e7ebc4dc53dcbbdd06e26adfd413b84301422ca14313a47d
+
+pkgname = dunstmerge
+
