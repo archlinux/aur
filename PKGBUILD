@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=marker
-pkgver=2018.04.27
+pkgver=2018.07.03
 pkgrel=1
 pkgdesc='Markdown editor for linux made with Gtk+-3.0'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('meson')
 optdepends=('pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX')
 options=(!buildflags)
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/${pkgname}.zip")
-sha256sums=('238bae135712f8f844d71e19d429916c299e484718d8896bbb975446f0ab09f9')
+sha256sums=('9038a2f8b976e6bfb199d14dbf60e7281b66e5ee94a6333ca48e89e63e6096ef')
 
 prepare() {
     #fix "Cant get charter to work #187"
