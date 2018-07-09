@@ -19,7 +19,7 @@ pkgname="${_pyver}-${_pybase}"
 _pyverother='' #python-'
 fi
 _pybase="${_pybase//-/}"
-pkgver='3.13.0'
+pkgver='3.14.2'
 pkgrel='1'
 pkgdesc='The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli'
 arch=('any')
@@ -32,7 +32,7 @@ _srcdir="${_pybase}-${pkgver}"
 # https://bitbucket.org/pypa/pypi/issues/438/backwards-compatible-un-hashed-package
 # https://bitbucket.org/pypa/pypi/issues/447/direct-links-of-packages-gone
 source=("https://files.pythonhosted.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('5a74d44ea18e9b5cba2d2e22af9b100f2fa2c8e882eabdbf676a72e8a4eafc4a')
+sha256sums=('4880fdffed20b199bb71b1784cf3aefe81859b173ef0291a4c1a6ef08b96bb0c')
 
 # Convert python requires to PKGBUILD depends
 # $1: prefix python- or python2-
@@ -46,21 +46,17 @@ local _requires="
 requires = [
     'botocore>=1.0.1',
     'cement==2.8.2',
-    'colorama==0.3.7',
+    'colorama>=0.3.9,<0.4.0',  # use the same range that 'docker-compose' uses
     'pathspec==0.5.5',
-    'pyyaml>=3.11',
+    'python-dateutil>=2.1,<3.0.0',  # use the same range that 'botocore' uses
+    'PyYAML>=3.10,<=3.12',  # use the same range that 'aws-cli' uses. This is also compatible with 'docker-compose'
     'setuptools >= 20.0',
-    ## For docker-compose
-    'docker >= 2.6.1, < 2.7.0',
-    'dockerpty >= 0.3.2, <= 0.4.1',
-    'docopt >= 0.6.1, < 0.7',
-    'requests >= 2.6.1, <= 2.9.1',
     'semantic_version == 2.5.0',
     'six == 1.11.0',
     'tabulate == 0.7.5',
     'termcolor == 1.1.0',
-    'websocket-client >= 0.11.0, < 1.0',
     #found further down in setup.py
+    'docker-compose >= 1.21.2, < 1.22.0',
     'blessed>=1.9.5',
 ]
 "
@@ -71,10 +67,12 @@ requires = [
   _requires=("${_requires[@]// /}")    # embedded spaces
   _requires=("${_requires[@]%,}")      # trailing commas
   _requires=("${_requires[@]//==/$3}") # translate ==
+  _requires=("${_requires[@]#python-}") # remove leading python-
   local _pynoless=" $2 "               # we can search for ' foo '
   _pydepends=()
   local _pyst1
   for _pyst1 in "${_requires[@]}"; do # foo>=0.0,<=0.0
+    _pyst1="${_pyst1,,}"
     local _pyname="${_pyst1%%[<=>]*}" # foo
     _pyst1="${_pyst1#${_pyname}}"     # >=0.0,<=0.0
     local IFS=','
@@ -94,6 +92,8 @@ _fn_pydepends "${_pyver}-" '' '='
 #_pydepends=("${_pydepends[@]//-cement=2.4/-cement=2.4.0}")
 #Arch drops the py prefix on pyyaml
 _pydepends=("${_pydepends[@]//-pyyaml/-yaml}")
+_pydepends=("${_pydepends[@]//python-docker-compose/docker-compose}")
+_pydepends+=('docker>=3.3.0' "${_pyver}-requests>=2.14.2")
 unset -f _fn_pydepends
 
 build() {
