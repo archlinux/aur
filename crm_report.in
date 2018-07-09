@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# Copyright (C) 2007 Dejan Muhamedagic <dmuhamedagic@suse.com>
+# Copyright (C) 2015 Kristoffer Gronlund <kgronlund@suse.com>
+# Copyright (C) 2015 Gao,Yan <ygao@suse.com>
+#
+# Replaced with crm report
+PARENT_COMMAND="$(ps -o comm= $PPID)"
+PROG="$(basename "$0")"
+
+die() {
+	echo "$PROG: $*"
+	exit 1
+}
+[ "$(basename "$PARENT_COMMAND")" = "crm" ] && die "called itself in a loop, aborting"
+if which crm > /dev/null 2>&1; then
+	crm report "$@"
+elif [ -x /usr/sbin/crm ]; then
+	/usr/sbin/crm report "$@"
+else
+	#die "crm_report has been deprecated: Please install crmsh, which replaces it"
+	/usr/sbin/crm_report.pacemaker "$@"
+fi
+

@@ -1,0 +1,40 @@
+pkgbase = pacemaker1.1
+	pkgdesc = advanced, scalable high-availability cluster resource manager (1.1 series)
+	pkgver = 1.1.18
+	pkgrel = 1
+	url = https://github.com/ClusterLabs/pacemaker/
+	install = pacemaker.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = inkscape
+	makedepends = help2man
+	makedepends = asciidoc
+	depends = gnutls
+	depends = glib2
+	depends = pam
+	depends = libtool
+	depends = python-lxml
+	depends = python-yaml
+	depends = libesmtp
+	depends = corosync
+	depends = libqb
+	depends = resource-agents
+	depends = fence-agents
+	depends = ha-glue
+	depends = net-snmp
+	optdepends = pssh: for use with some tools
+	optdepends = pdsh: for use with some tools
+	optdepends = crmsh: for use with crm_report
+	optdepends = booth: for geo-clustering
+	provides = pacemaker=1.1.18
+	conflicts = pacemaker
+	source = https://github.com/ClusterLabs/pacemaker/archive/Pacemaker-1.1.18.tar.gz
+	source = crm_report.in
+	source = makefile-chown.patch
+	sha512sums = 63c287888e5f0bd5f1a2f56450cb3d4da580df2d750ffa90b2212a4efcfa146e05e258a9d87fdcaacde5f8985b9730dae11c5d5ad22e811fd114e1640365c9aa
+	sha512sums = 09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64
+	sha512sums = bbd4f0415bbc07dedc447cdedea8470ee5308631721c04d7a495e5d0dcad639754f26d7db5c2bdad13e9669346e83d9674607dc7349e1b59cb7e9a35b31b2d22
+
+pkgname = pacemaker1.1
+
