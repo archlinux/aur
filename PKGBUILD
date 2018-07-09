@@ -1,7 +1,7 @@
 # Maintainer: Tim Savannah <kata198@gmail.com>
 
 pkgname='python2-ichororm'
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="ichorORM - A python library for postgresql focused on performance and supporting ORM and query-building functionality"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python2-setuptools' 'python2')
 depends=('python2-setuptools' 'python2' 'python2-psycopg2')
 
 source=("https://github.com/kata198/ichorORM/archive/${pkgver}.tar.gz")
-sha512sums=("2e850fc3e9e0ff327f7e2526d9308a57bac9a9ca771cc0341d1b54daebe1a27460020ff7196ff70edd3c20e602fccbeac5eb52427214e72c1557c06d1eae539c")
+sha512sums=("fe2520d63bb4aece522adbeb32fde377b8d106aeea9229db534e9f71f401529ca2c3d5633a9600928a3c0ed76d4417a1c4f622ae496901c48369f8a3fc33a1d0")
 
 build() {
   cd "$srcdir"/ichorORM-$pkgver

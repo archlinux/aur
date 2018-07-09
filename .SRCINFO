@@ -1,6 +1,6 @@
 pkgbase = python2-ichororm
 	pkgdesc = ichorORM - A python library for postgresql focused on performance and supporting ORM and query-building functionality
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = http://github.com/kata198/ichorORM
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python2-ichororm
 	depends = python2-setuptools
 	depends = python2
 	depends = python2-psycopg2
-	source = https://github.com/kata198/ichorORM/archive/2.0.1.tar.gz
-	sha512sums = 2e850fc3e9e0ff327f7e2526d9308a57bac9a9ca771cc0341d1b54daebe1a27460020ff7196ff70edd3c20e602fccbeac5eb52427214e72c1557c06d1eae539c
+	source = https://github.com/kata198/ichorORM/archive/2.0.2.tar.gz
+	sha512sums = fe2520d63bb4aece522adbeb32fde377b8d106aeea9229db534e9f71f401529ca2c3d5633a9600928a3c0ed76d4417a1c4f622ae496901c48369f8a3fc33a1d0
 
 pkgname = python2-ichororm
 
