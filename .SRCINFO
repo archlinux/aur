@@ -1,0 +1,13 @@
+pkgbase = textlint-plugin-rst
+	pkgdesc = reStructuredText support for textlint
+	pkgver = 0.1.1
+	pkgrel = 1
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-plugin-rst-0.1.1.tgz
+	source = http://registry.npmjs.org/textlint-plugin-rst/-/textlint-plugin-rst-0.1.1.tgz
+	sha1sums = ee5f8c947a947d6b07c1c46515869632d56e06b5
+
+pkgname = textlint-plugin-rst
+
