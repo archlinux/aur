@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-period-in-list-item
+	pkgdesc = textlint rule that check with or without period in list item.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/azu/textlint-rule-period-in-list-item
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-period-in-list-item-0.2.0.tgz
+	source = http://registry.npmjs.org/textlint-rule-period-in-list-item/-/textlint-rule-period-in-list-item-0.2.0.tgz
+	sha1sums = e09da271c5c4e57301f98f2da607c51afbd15ed3
+
+pkgname = textlint-rule-period-in-list-item
+
