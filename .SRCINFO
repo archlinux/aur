@@ -5,6 +5,7 @@ pkgbase = nodejs-nan
 	url = http://github.com/rvagg/nan
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
 
 pkgname = nodejs-nan

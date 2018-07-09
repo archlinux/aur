@@ -8,9 +8,7 @@ arch=(any)
 url="http://github.com/rvagg/nan"
 license=( "MIT" )
 depends=('nodejs')
-#source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-#noextract=($_npmname-$pkgverver.tgz)
-#sha1sums=('fb3c59d45fe4effe215f0b890f8adf6eb32d2232')
+makedepends=('npm')
 
 package() {
   cd "$srcdir"
