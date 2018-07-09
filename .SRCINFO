@@ -1,0 +1,13 @@
+pkgbase = python-rx
+	pkgdesc = The Reactive Extensions for Python (RxPY)
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = http://reactivex.io
+	arch = any
+	license = apache
+	makedepends = python-setuptools
+	source = rx::git+https://github.com/ReactiveX/RxPY.git#tag=1.6.1
+	md5sums = SKIP
+
+pkgname = python-rx
+
