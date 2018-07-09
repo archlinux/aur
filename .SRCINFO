@@ -11,6 +11,7 @@ pkgbase = redis-graph-git
 	license = AGPL-3.0
 	makedepends = git
 	depends = redis
+	depends = cmake
 	source = git+https://github.com/RedisLabsModules/redis-graph
 	sha256sums = SKIP
 
