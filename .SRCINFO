@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-common-misspellings
+	pkgdesc = textlint rule to check common misspellings
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/io-monad/textlint-rule-common-misspellings
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-common-misspellings-1.0.1.tgz
+	source = http://registry.npmjs.org/textlint-rule-common-misspellings/-/textlint-rule-common-misspellings-1.0.1.tgz
+	sha1sums = 8c4133cf3bb59aa159199d2c9bced12413365774
+
+pkgname = textlint-rule-common-misspellings
+
