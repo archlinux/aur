@@ -1,0 +1,19 @@
+pkgbase = avrm-git
+	pkgdesc = Bare metal AVR library and Makefile
+	pkgver = 0.0.5.r39.g1f47881
+	pkgrel = 1
+	url = https://github.com/nixpulvis/avrm
+	arch = any
+	makedepends = git
+	depends = avr-gcc
+	depends = avr-binutils
+	depends = avr-libc
+	optdepends = avrdude: for flashing code to devices
+	provides = avrm
+	conflicts = avrm
+	options = !strip
+	source = git+https://github.com/nixpulvis/avrm
+	md5sums = SKIP
+
+pkgname = avrm-git
+
