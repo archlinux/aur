@@ -1,26 +1,22 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=tinytex
-_cranver=0.5
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=0.6
 pkgname=r-tinytex
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents"
+pkgdesc='Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents'
 arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=tinytex'
 license=('MIT')
-depends=('r' )
-
+depends=('r' 'r-xfun>=0.3')
 optdepends=('r-testit')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('1d6e3909afe3363649bfbc4d30128514')
+source=("https://cran.r-project.org/src/contrib/tinytex_"$_cranver".tar.gz")
+md5sums=('a707265572929b4d67d549730529edd4')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL tinytex_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -d "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership tinytex "$pkgdir"/usr/lib/R/library
 }
 
