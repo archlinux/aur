@@ -9,7 +9,7 @@ pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
 pkgver=396.24.02
 _extramodules=extramodules-4.17-ARCH
-pkgrel=3
+pkgrel=4
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -75,7 +75,7 @@ build() {
 package_nvidia-vulkan() {
     pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
     depends=('linux>=4.17' 'linux<4.18' "nvidia-vulkan-utils=${pkgver}" 'libglvnd')
-    provides=("nvidia-vulkan=$pkgver")
+    provides=("nvidia=$pkgver")
     conflicts+=('nvidia')
 
     install -Dt "${pkgdir}/usr/lib/modules/${_extramodules}" -m644 \
@@ -94,7 +94,7 @@ package_nvidia-vulkan-dkms() {
     depends=('dkms' "nvidia-vulkan-utils=${pkgver}" 'libglvnd')
     optdepends=('linux-headers: Build the module for Arch kernel'
                 'linux-lts-headers: Build the module for LTS Arch kernel')
-    provides=("nvidia-vulkan=$pkgver")
+    provides=("nvidia=$pkgver")
     conflicts+=('nvidia')
 
     cd ${_pkg}
