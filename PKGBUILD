@@ -2,7 +2,7 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=0.31.2
+pkgver=0.32.0
 pkgrel=3
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
@@ -18,7 +18,7 @@ optdepends=('qterminal: required for miral demos'
             'qt5-wayland: required for miral demos')
 source=("https://github.com/MirServer/mir/releases/download/v${pkgver}/mir-${pkgver}.tar.xz"
         'https://raw.githubusercontent.com/capnproto/capnproto/04fd66e2992a3ed38d686642a3c479a7f3e131c9/c%2B%2B/cmake/FindCapnProto.cmake')
-sha256sums=('a4be0c36c9cd0c91f966c4d70ac21e916758adcbf2523ded71a672938a65bad3'
+sha256sums=('7fc79361f00f11795ee6a8092af6008aa9b56f3c7693343a4b6fe5c167e332a9'
             '83153402ea0220a9ed3f9d2c2c157eb49fedf340f368cd8173f0966b3fbf2647')
 
 BUILD_DIR=build
