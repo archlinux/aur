@@ -4,7 +4,7 @@
 
 _pkgname=FanFicFare
 pkgname=fanficfare
-pkgver=2.26.0
+pkgver=2.27.0
 pkgrel=1
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
@@ -14,7 +14,7 @@ changelog=changelog.txt
 depends=('python2' 'python2-beautifulsoup4' 'python2-chardet' 'python2-html5lib'
          'python2-html2text')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('39135ae9319c560c9da047a55e9d0cadf7db3fbc0444bf3360b6cfdf412f5abd')
+sha256sums=('c0def066372026a7ec8aa4114f2daaec965e4e4ebfa3e1d70cac6f884676a10a')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
