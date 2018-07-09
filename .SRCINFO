@@ -1,0 +1,14 @@
+pkgbase = myhtml
+	pkgdesc = Fast HTML parser using threads implemented as a pure C99 library with no outside dependencies
+	pkgver = 4.0.4
+	pkgrel = 1
+	url = https://github.com/lexborisov/myhtml
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	source = https://github.com/lexborisov/myhtml/archive/v4.0.4.tar.gz
+	sha256sums = f254ac87863e59bd64e856275af2618b968389728317f76e0278ebb938a644d2
+
+pkgname = myhtml
+
