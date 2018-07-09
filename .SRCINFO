@@ -1,12 +1,12 @@
 pkgbase = python-logstash
 	pkgdesc = Python logging handler for Logstash
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/vklochan/python-logstash
 	arch = any
 	license = MIT
-	source = https://pypi.python.org/packages/source/p/python-logstash/python-logstash-0.4.5.tar.gz
-	md5sums = 401462a61563f992894bd65c976e556b
+	source = https://pypi.python.org/packages/source/p/python-logstash/python-logstash-0.4.6.tar.gz
+	md5sums = 26fafa0ea306025fb7644d70cb38982a
 
 pkgname = python-logstash
 

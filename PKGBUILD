@@ -4,14 +4,14 @@ pkgname=(
   python-${_base}
   python2-${_base}
 )
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Python logging handler for Logstash"
 arch=('any')
 url="https://github.com/vklochan/python-logstash"
 license=('MIT')
 source=("https://pypi.python.org/packages/source/p/python-${_base}/python-${_base}-${pkgver}.tar.gz")
-md5sums=('401462a61563f992894bd65c976e556b')
+md5sums=('26fafa0ea306025fb7644d70cb38982a')
 
 _inst() {
   depends=("${1}" "${1}-setuptools")
