@@ -10,7 +10,7 @@ license=('GPL3')
 
 provides=('doom-launcher')
 conflicts=('doom-launcher')
-depends=('bash' 'dialog' 'gzdoom')
+depends=('bash' 'dialog' 'gzdoom' 'sed')
 
 source=("git+https://gitlab.com/tim241/${_pkgname}.git")
 

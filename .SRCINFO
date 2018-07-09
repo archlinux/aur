@@ -8,6 +8,7 @@ pkgbase = doom-launcher-git
 	depends = bash
 	depends = dialog
 	depends = gzdoom
+	depends = sed
 	provides = doom-launcher
 	conflicts = doom-launcher
 	source = git+https://gitlab.com/tim241/doom-launcher.git
