@@ -1,0 +1,41 @@
+pkgbase = pacemaker1.1-git
+	pkgdesc = advanced, scalable high-availability cluster resource manager (1.1 series)
+	pkgver = 1.1.19.rc1.r12.g15ea58519
+	pkgrel = 1
+	url = https://github.com/ClusterLabs/pacemaker/
+	install = pacemaker.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = inkscape
+	makedepends = help2man
+	makedepends = asciidoc
+	depends = gnutls
+	depends = glib2
+	depends = pam
+	depends = libtool
+	depends = python-lxml
+	depends = python-yaml
+	depends = libesmtp
+	depends = corosync
+	depends = libqb
+	depends = resource-agents
+	depends = fence-agents
+	depends = ha-glue
+	depends = net-snmp
+	optdepends = pssh: for use with some tools
+	optdepends = pdsh: for use with some tools
+	optdepends = crmsh: for use with crm_report
+	optdepends = booth: for geo-clustering
+	provides = pacemaker
+	conflicts = pacemaker
+	source = pacemaker1.1-git::git+https://github.com/ClusterLabs/pacemaker.git#branch=1.1
+	source = crm_report.in
+	source = makefile-chown.patch
+	md5sums = SKIP
+	md5sums = 07f26ba3fff0749cc5bc5b4da154611d
+	md5sums = e621d388eb0521a7ef74205a5707508a
+
+pkgname = pacemaker1.1-git
+
