@@ -1,0 +1,14 @@
+pkgbase = textlint-plugin-asciidoc-loose
+	pkgdesc = textlint plugin for asciidoc/asciidoctor
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/azu/textlint-plugin-asciidoc-loose
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-plugin-asciidoc-loose-1.0.1.tgz
+	source = http://registry.npmjs.org/textlint-plugin-asciidoc-loose/-/textlint-plugin-asciidoc-loose-1.0.1.tgz
+	sha1sums = b1a47150b307b04826c562563f3624aa8c7b48f3
+
+pkgname = textlint-plugin-asciidoc-loose
+
