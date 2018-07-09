@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: TDY <tdy@gmx.com>
 # Contributor: shamrok <szamrok :: gmail.com>
@@ -7,10 +7,10 @@
 
 pkgname=lfm
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful file manager for the UNIX console. Based on curses and written in Python."
 arch=('any')
-url="https://bitbucket.org/inigoserna/lfm3"
+url="https://inigo.katxi.org/devel/lfm/"
 license=('GPL3')
 depends=('ncurses' 'python')
 source=("https://bitbucket.org/inigoserna/lfm3/downloads/lfm-$pkgver.tar.gz")
