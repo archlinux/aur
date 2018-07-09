@@ -2,8 +2,8 @@
 
 _pkgname=lenovo-throttling-fix
 pkgname=$_pkgname-git
-pkgver=0.36.1f40f7d
-pkgrel=2
+pkgver=0.47.56a4c54
+pkgrel=1
 pkgdesc="Workaround for Intel throttling issues on Thinkpads in Linux."
 arch=('any')
 url="https://github.com/erpalma/lenovo-throttling-fix"
@@ -15,7 +15,8 @@ source=("git+https://github.com/erpalma/${_pkgname}.git")
 md5sums=('SKIP')
 
 prepare() {
-  sed -i 's|ExecStart=.*|ExecStart=/usr/lib/lenovo_fix.py|' $_pkgname/systemd/lenovo_fix.service
+  sed -i 's|ExecStart=.*|ExecStart=/usr/lib/lenovo-throttling-fix/lenovo_fix.py|' $_pkgname/systemd/lenovo_fix.service
+  sed -i 's|from mmio import|from periphery.mmio import|' $_pkgname/lenovo_fix.py
 }
 
 build() {
@@ -32,8 +33,8 @@ package() {
   cd $_pkgname
   install -Dm644 etc/lenovo_fix.conf "$pkgdir"/etc/lenovo_fix.conf
   install -Dm644 systemd/lenovo_fix.service "$pkgdir"/usr/lib/systemd/system/lenovo_fix.service
-  install -Dm755 lenovo_fix.py "$pkgdir"/usr/lib/lenovo_fix.py
-  cp -a __pycache__ "$pkgdir"/usr/lib/
+  install -Dm755 lenovo_fix.py "$pkgdir"/usr/lib/lenovo-throttling-fix/lenovo_fix.py
+  cp -a __pycache__ "$pkgdir"/usr/lib/lenovo-throttling-fix/
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
