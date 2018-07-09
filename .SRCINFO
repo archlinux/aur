@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-date-weekday-mismatch
+	pkgdesc = textlint rule that found mismatch between date and weekday.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/azu/textlint-rule-date-weekday-mismatch
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-date-weekday-mismatch-1.0.5.tgz
+	source = http://registry.npmjs.org/textlint-rule-date-weekday-mismatch/-/textlint-rule-date-weekday-mismatch-1.0.5.tgz
+	sha1sums = 2ac2568be5149d65d4a9a507e9aa887f7d50c60b
+
+pkgname = textlint-rule-date-weekday-mismatch
+
