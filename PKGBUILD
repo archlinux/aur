@@ -10,7 +10,7 @@ license=('https://virtualshield.com/legal/eula/')
 url="https://virtualshield.com/"
 depends=('virtualshield')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/karl-k/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('6a5bb36f14c1cef5c2cef363548d9e531409067274895fed6309b8e63010af1e515730ebc60c0053aa1330464d07b848675a769d3015a87e9d1c7ad5a399e2cf')
+sha512sums=('7d47be177ff5e0165370239491fa10bf166187899341a3e32baf537344936d6874b3fc6568b9ec7f55a7edd2082b978586b9b49cd9544ade04ae14c474817c51')
 
 ## SysV
 
