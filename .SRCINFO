@@ -1,0 +1,23 @@
+pkgbase = jtradfri-git
+	pkgdesc = General purpose Client for the IKEA Tradfri System
+	pkgver = r11.b803d55
+	pkgrel = 1
+	url = https://github.com/peterkappelt/JTradfri
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = java-environment
+	makedepends = gradle
+	depends = java-environment
+	backup = opt/jtradfri/jtradfri.conf
+	source = jtradfri::git://github.com/peterkappelt/JTradfri.git
+	source = jtradfri.service
+	source = sysusers.conf
+	source = jtradfri.conf
+	md5sums = SKIP
+	md5sums = 5bfbd6a39fd4f2e69bdbcff5d9f08c91
+	md5sums = 92bc09a07c69fac1452464540dbb90f1
+	md5sums = dd83b6fe85428ebffcb52c2c790f86a0
+
+pkgname = jtradfri-git
+

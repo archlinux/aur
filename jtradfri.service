@@ -1,0 +1,14 @@
+[Unit]
+Description=JTradfri - FHEM-Tradfri Gateway Software
+Wants=network.target
+After=network.target
+
+[Service]
+User=jtradfri
+Group=jtradfri
+Type=simple
+WorkingDirectory=/opt/jtradfri
+ExecStart=/usr/bin/java -jar /opt/jtradfri/jtradfri.jar -n -c /opt/jtradfri/jtradfri.conf
+
+[Install]
+WantedBy=multi-user.target
