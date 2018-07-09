@@ -1,10 +1,28 @@
+diff -Nur original/udev/70-blackberry-perms.rules modified/udev/70-blackberry-perms.rules
+--- original/udev/70-blackberry-perms.rules	1970-01-01 01:00:00.000000000 +0100
++++ modified/udev/70-blackberry-perms.rules	2018-07-09 09:14:54.540911750 +0100
+@@ -0,0 +1,12 @@
++#
++# This file sets the permissions of Blackberry devices, using a very
++# broad ruleset.  It runs no external commands, so this broad ruleset
++# should not impact performance at all.
++#
++ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0001", TAG+="uaccess"
++ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0004", TAG+="uaccess"
++ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0006", TAG+="uaccess"
++ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8001", TAG+="uaccess"
++ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8004", TAG+="uaccess"
++ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8007", TAG+="uaccess"
++
 diff -Nur original/udev/99-blackberry-perms.rules modified/udev/99-blackberry-perms.rules
 --- original/udev/99-blackberry-perms.rules	2013-11-17 23:56:58.000000000 +0000
-+++ modified/udev/99-blackberry-perms.rules	2018-07-05 14:54:40.502657538 +0100
-@@ -3,12 +3,10 @@
- # broad ruleset.  It runs no external commands, so this broad ruleset
- # should not impact performance at all.
- #
++++ modified/udev/99-blackberry-perms.rules	1970-01-01 01:00:00.000000000 +0100
+@@ -1,14 +0,0 @@
+-#
+-# This file sets the permissions of Blackberry devices, using a very
+-# broad ruleset.  It runs no external commands, so this broad ruleset
+-# should not impact performance at all.
+-#
 -# Note: for opensuse-11.1, use the group 'dialout'
 -#
 -ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0001", GROUP="plugdev", MODE="0664"
@@ -13,10 +31,4 @@ diff -Nur original/udev/99-blackberry-perms.rules modified/udev/99-blackberry-pe
 -ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8001", GROUP="plugdev", MODE="0664"
 -ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8004", GROUP="plugdev", MODE="0664"
 -ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8007", GROUP="plugdev", MODE="0664"
-+ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0001", MODE="0666"
-+ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0004", MODE="0666"
-+ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="0006", MODE="0666"
-+ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8001", MODE="0666"
-+ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8004", MODE="0666"
-+ATTRS{idVendor}=="0fca", ATTRS{idProduct}=="8007", MODE="0666"
- 
+-

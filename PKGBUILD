@@ -4,7 +4,7 @@
 
 pkgname=barry
 pkgver=0.18.5
-pkgrel=9
+pkgrel=10
 pkgdesc="Barry is an Open Source application that provides a Desktop GUI, synchronization, backup, restore and program management for BlackBerry ™ devices."
 url=https://github.com/NetDirect/barry
 license=('GPL')
@@ -22,7 +22,7 @@ sha256sums=('cfe5224c34b25575543bbdeebf979074f76ccc7d37116f15aef20509e6c06c91'
             '1c6ecd68977da4a3184c3e6d4bea36e4c40949d6bf7bb4ad8717aa6c19fed4fa'
             'd1eb3ff669d5d8490112ceb4138fe9eb107bdbbc8621c98ead5ff47b9a7faf4e'
             'bd211b7323a36f255af7cad13b886d8bb45d74f1d2bcecef00733bb5a9080f2c'
-            '2da11475bb3d5c9c94f7625b33e3ae29442413b25f320e9f70d4777180d5bd4a')
+            'a68c9a86fd2a034ff25ee85be609f0ff98e371d0f79fb7902e0289b8cb37b547')
 
 prepare() {
   mv ${srcdir}/${pkgname}-${pkgname}-${pkgver} ${srcdir}/${pkgname}-${pkgver}
@@ -35,7 +35,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/c++11.patch"
 
   # Don't set device group ownership to plugdev in the udev rules file as Arch
-  # doesn't have plugdev. Just apply read-write globally
+  # doesn't have plugdev. Use uaccess instead
   patch -Np1 -i "${srcdir}/libusb-rules-noplugdev.patch"
 
   autoreconf -fi
@@ -71,5 +71,5 @@ package() {
 
   # Install udev rules to allow barrybackup to access devices without root
   mkdir -p ${pkgdir}/usr/lib/udev/rules.d
-  cp udev/99-blackberry-perms.rules ${pkgdir}/usr/lib/udev/rules.d
+  cp udev/70-blackberry-perms.rules ${pkgdir}/usr/lib/udev/rules.d
 }
