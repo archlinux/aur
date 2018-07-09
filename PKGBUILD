@@ -1,4 +1,4 @@
-# Maintainer: Chocobo1
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iwlwifi-next
 pkgver=2018.05.30.r0.g50624782
@@ -8,19 +8,20 @@ arch=('i686' 'x86_64')
 url="https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi"
 license=('GPL')
 makedepends=('git' 'linux-headers' 'xz')
-#source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/iwlwifi-fixes.git#commit=70f46c1438bf8342578d2b34e465ab352ccae357')
+#source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/iwlwifi/iwlwifi-next.git')
 #sha256sums=('SKIP')
 #validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
 #              '647F28654894E3BD457199BE38DBBDC86092693E') # Greg Kroah-Hartman
 
 
-_gittag="iwlwifi-next-for-kalle-2018-05-30"
+_gitsource="https://kernel.googlesource.com/pub/scm/linux/kernel/git/iwlwifi/iwlwifi-next.git"
+_gittag=$(git ls-remote --refs --sort -v:refname "$_gitsource" "iwlwifi-next*" | grep -m 1 -o "iwlwifi.*")
 _moduleSrc="iwlwifi-next/drivers/net/wireless/intel/iwlwifi"
 
 prepare() {
   cd "$srcdir"
   if [ ! -d "iwlwifi-next" ]; then
-    git clone "https://kernel.googlesource.com/pub/scm/linux/kernel/git/iwlwifi/iwlwifi-next.git" --branch "$_gittag" --depth 1
+    git clone --branch "$_gittag" "$_gitsource" --depth 1
   fi
 
   cd "$srcdir/iwlwifi-next"
