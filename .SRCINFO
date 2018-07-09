@@ -1,0 +1,33 @@
+pkgbase = warsaw-bin
+	pkgdesc = Banking security tool developed by GAS Tecnologia
+	pkgver = 1.12.9.5
+	pkgrel = 1
+	url = http://www.dieboldnixdorf.com.br/warsaw
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = chrpath
+	depends = procps-ng
+	depends = python2
+	depends = python2-mini-amf
+	depends = python2-unicodecsv
+	depends = python-gpgme
+	depends = python-pyopenssl
+	depends = openssl
+	depends = nss
+	depends = zenity
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = glib2
+	depends = libx11
+	depends = libstdc++296
+	provides = warsaw
+	conflicts = warsaw
+	options = !strip
+	source_i686 = https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw-setup-ubuntu_32.deb
+	sha256sums_i686 = 139cd45b1cb967d0e500455e44145fc97012af0e91496345202ea92c930b0cb0
+	source_x86_64 = https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw-setup-ubuntu_64.deb
+	sha256sums_x86_64 = 13da4f7b72b67efb94f10bf1e366ba0875deadbda6bd3b49c6a9cbc34ca87938
+
+pkgname = warsaw-bin
+
