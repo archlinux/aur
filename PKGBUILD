@@ -23,7 +23,7 @@ package() {
 	install -D -m666 "nautilus-actions.conf" "${pkgdir}/usr/share/virtualshield/nautilus-actions.conf"
 	install -D -m666 "AppIcon.png"	"${pkgdir}/usr/share/virtualshield/AppIcon.png"
 	install -D -m666 "VirtualShieldSetup.exe" "${pkgdir}/usr/share/virtualshield/VirtualShieldSetup.exe"
-	install -D -m666 "virtualshield.deb" "${pkgdir}/usr/local/share/virtualshield/virtualshield.deb"
+	install -D -m666 "virtualshield.deb" "${pkgdir}/usr/share/virtualshield/virtualshield.deb"
 	install -D -m666 "c5c988bb-fa14-487d-b7bf-2ccb8c2eec4d.desktop" "${pkgdir}/usr/share/virtualshield/c5c988bb-fa14-487d-b7bf-2ccb8c2eec4d.desktop"
 	install -D -m755 "VirtualShield-bin" "${pkgdir}/usr/bin/VirtualShield"
 
