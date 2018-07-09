@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-no-empty-section
+	pkgdesc = textlint rule not allow to create empty section.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/azu/textlint-rule-no-empty-section
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-no-empty-section-1.1.0.tgz
+	source = http://registry.npmjs.org/textlint-rule-no-empty-section/-/textlint-rule-no-empty-section-1.1.0.tgz
+	sha1sums = 137ae6b8dfcaab759fd6068bfcc1a6c941bb4607
+
+pkgname = textlint-rule-no-empty-section
+
