@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-unexpanded-acronym
+	pkgdesc = textlint rule that check unexpanded acronym word.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/azu/textlint-rule-unexpanded-acronym
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-unexpanded-acronym-1.2.1.tgz
+	source = http://registry.npmjs.org/textlint-rule-unexpanded-acronym/-/textlint-rule-unexpanded-acronym-1.2.1.tgz
+	sha1sums = 4e5c649898fea702c23683b60d46fe97fd903117
+
+pkgname = textlint-rule-unexpanded-acronym
+
