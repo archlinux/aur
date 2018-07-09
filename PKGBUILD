@@ -2,8 +2,8 @@
 # Contributor: Noel Kuntze <noel@familie-kuntze.de>
 
 pkgname=pcs
-pkgver=0.9.164
-pkgrel=3
+pkgver=0.9.165
+pkgrel=1
 pkgdesc='pacemaker corosync shell utility for cluster configuration'
 arch=('any')
 url='http://clusterlabs.org/'
@@ -31,7 +31,7 @@ depends=('pacemaker'
          'ttf-liberation')
 makedepends=('wget' 'python-setuptools' 'ruby-bundler' 'fontconfig')
 source=("https://github.com/ClusterLabs/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('f5c26e470ace01e961f50ec6883d78e3556a572c274b7093005d496baed4fc33d38409169b06b67722b2fed32d5fd42cf8eb2b6832fe8e55027bf12a37dd5dc4')
+sha512sums=('dd39ce52842ea156cc989218b4d5dfd5a4bd39ef904678d42ad7dffa82cbea1a5887a0087dbe6f2ccb51580bf73cfa05b758f870be983876684c47d60124961b')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -56,7 +56,7 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  make BUILD_GEMS=false DESTDIR="${pkgdir}" install install_pcsd
+  make BUILD_GEMS=false SYSTEMCTL_OVERRIDE=true DESTDIR="${pkgdir}" install install_pcsd
 # make DESTDIR="${pkgdir}" install install_pcsd
   rm -fr "${pkgdir}/usr/bin"
   mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
