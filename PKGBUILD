@@ -1,22 +1,25 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ttf-new-athena-unicode
 _pkgname=NAU
-pkgver=4.05
+pkgver=5.005
 pkgrel=1
 pkgdesc="A freeware multilingual font distributed by the American Philological Association."
 arch=(any)
 license=('OFL')
-url="http://ist-socrates.berkeley.edu/%7Epinax/greekkeys/NAUdownload.html"
+url="https://apagreekkeys.org/NAUdownload.html"
 depends=('fontconfig' 'xorg-font-utils')
-source=("http://ist-socrates.berkeley.edu/%7Epinax/greekkeys/fonts/${_pkgname}${pkgver//./}.zip")
+source=("https://apagreekkeys.org/fonts/${_pkgname}${pkgver/\./_}.zip")
 install=ttf.install
-md5sums=('fd7d0b23c7b1ec8b6fa0d37ca13b6a15')
-sha1sums=('1caf660220980dd4d9f91fc5f0b97b75888d262a')
-sha256sums=('0af642543c3869a26d2a43744c570594481d14fd6b5deffb11140d5f03bb633e')
+md5sums=('d78053572a5ae101e1c4d3b99b49d276')
+sha1sums=('97da1449b868ffcd0b53019f27389af1a51ffc95')
+sha256sums=('5c8f7bfdceca6296e2fe9d7499a4736bf6c494466c1941968a60e75b01a1f695')
 
 package() {
-  cd $srcdir/${_pkgname}${pkgver//./}
-  install -Dm644 newathu405.ttf $pkgdir/usr/share/fonts/TTF/newathu405.ttf
-  install -Dm644 AboutNAUfont_v4_05.rtf $pkgdir/usr/share/doc/$pkgname/AboutNAUfont_v4_05.rtf
+  cd $srcdir/${_pkgname}${pkgver/\./_}
+  for i in *.ttf; do
+    install -Dm644 $i $pkgdir/usr/share/fonts/TTF/$i
+  done
+  install -Dm644 AboutNAUfont_v5_005.rtf $pkgdir/usr/share/doc/$pkgname/AboutNAUfont_v5_005.rtf
+  install -Dm644 NAU5_OpenFontLicense.pdf $pkgdir/usr/share/licenses/$pkgname/NAU5_OpenFontLicense.pdf
 }
 
