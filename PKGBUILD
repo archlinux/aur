@@ -64,7 +64,7 @@ _rtver=9
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _rtpatchver=rt${_rtver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -103,7 +103,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch')
+        '0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch')
         
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-rt-bfq}
@@ -125,7 +125,7 @@ prepare() {
     
     ### Fix https://bugs.archlinux.org/task/56711
         msg "Fix #56711"
-        patch -Np1 -i ../0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+        patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
     
     ### Fix gcc8 bogus warnings
         msg "Fix gcc8 bogus warnings"
@@ -420,13 +420,13 @@ sha512sums=('ab47849314b177d0eec9dbf261f33972b0d89fb92fb0650130ffa7abc2f36c0fab2
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
             'a0f37a9b8dbd11f8ef4450b06afee0a6e5519cb5a5cd78f84896812b007ef645bcb9c733ae9817c24d1f4a4c2114258015abceb5a94c7e08d2bb00531a6f04c7'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            'c72e34f37375d400edf4d6a0e2adb30ead20dcc25cfb032f389c834f844638d8cd8e0ee87224e5a0f1aa2c4162508f2ab466a0635cff0da239d5eb78d93c06d2'
+            'acf9d3aa9f6d75d2acb5ac8a8789f9471ee71bcd707206f33adbe3d15953ed981944cb528a23c205287e9dfdc437cf91c1aa212cf1fcb38f46d120e6421d22c5'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '26619b938a47c841f0c480a113cfbb1ee6f1121c21dfecbe246c1f7af7697f86cfb8253f09966eab2e386734ce4ad156159babdba4365c2f199c369c3d7e8ee8'
-            'cc8852b089aa24f588ad1af726503ecd1012ad7e1cbc47ea77f03a5f7aecd25306d40f2e16b8a1afeafe7e2e97b6b6840c9f462ed7be358090117e2e024df1bd')
+            'eb0dc1de79bc440453d3f8e9307724cb9f3119a0e3aebbc23162b784c98c84c2d50d6918ed84047985513898ad652df565e83c375e4c7ee3d2bd8d7220ee7e9d'
+            '2a970362f43eed1268358288bfce4a01676c2639e6cd986b75e4803b5cea9412dded12d875c7bb67118f10fc0c773af7515da9f1d43e81edc22f2601520a5a9c')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
