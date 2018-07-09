@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-no-todo
+	pkgdesc = textlint rule: warn TODO text.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/azu/textlint-rule-no-todo
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-no-todo-2.0.0.tgz
+	source = http://registry.npmjs.org/textlint-rule-no-todo/-/textlint-rule-no-todo-2.0.0.tgz
+	sha1sums = 877b8e60c34cf84df3957d694e5d0f5c2158b72f
+
+pkgname = textlint-rule-no-todo
+
