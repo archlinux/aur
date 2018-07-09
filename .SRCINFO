@@ -1,6 +1,6 @@
 pkgbase = pacemaker-git
 	pkgdesc = advanced, scalable high-availability cluster resource manager
-	pkgver = 2.0.0.rc4.r10.g922564d4a
+	pkgver = 2.0.0.r0.g8cf3fe749
 	pkgrel = 1
 	url = https://github.com/ClusterLabs/pacemaker/
 	install = pacemaker.install
@@ -30,7 +30,7 @@ pkgbase = pacemaker-git
 	optdepends = booth-git: for geo-clustering
 	provides = pacemaker
 	conflicts = pacemaker
-	source = pacemaker-git::git+https://github.com/ClusterLabs/pacemaker.git
+	source = pacemaker-git::git+https://github.com/ClusterLabs/pacemaker.git#branch=2.0
 	source = crm_report.in
 	md5sums = SKIP
 	md5sums = 07f26ba3fff0749cc5bc5b4da154611d

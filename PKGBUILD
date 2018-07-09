@@ -5,7 +5,7 @@
 
 pkgname=pacemaker-git
 _pkgname=pacemaker
-pkgver=2.0.0.rc4.r10.g922564d4a
+pkgver=2.0.0.r0.g8cf3fe749
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ optdepends=('pssh: for use with some tools'
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 install=${_pkgname}.install
-source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git"
+source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git#branch=2.0"
         'crm_report.in')
 md5sums=('SKIP'
          '07f26ba3fff0749cc5bc5b4da154611d')
@@ -52,14 +52,8 @@ build() {
     --with-version=$pkgver-$pkgrel \
     --enable-systemd \
     --disable-upstart \
-    --with-ais \
     --with-corosync \
-    --without-heartbeat \
-    --without-cman \
-    --with-cs-quorum \
     --with-nagios \
-    --with-snmp \
-    --with-esmtp \
     --with-acl \
     --with-cibsecrets \
     --without-profiling \
@@ -83,16 +77,9 @@ package() {
 		d /var/lib/pacemaker/cores    0770 hacluster haclient
 		d /var/lib/pacemaker/pengine  0770 hacluster haclient
 	EOF
-# install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
-# cat>"$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"<<-EOF
-#		u hacluster 189 "Cluster User"
-#		g haclient 189 -
-#		m hacluster haclient
-#	EOF
   rm -fr "$pkgdir/var"
   chmod a+x "$pkgdir/usr/share/pacemaker/tests/cts/CTSlab.py"
   find "$pkgdir" -name '*.xml' -type f -print0 | xargs -0 chmod a-x
-  find "$pkgdir" -type f -name '*.la' -delete -print
   rm -fr "$pkgdir/etc/init.d"
   rm -f "$pkgdir/usr/bin/fence_pcmk"
   mv "$pkgdir/usr/bin/crm_report" "$pkgdir/usr/bin/crm_report.pacemaker"
