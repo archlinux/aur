@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-alex
+	pkgdesc = textlint rule for alex
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/textlint-rule/textlint-rule-alex
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-alex-1.3.1.tgz
+	source = http://registry.npmjs.org/textlint-rule-alex/-/textlint-rule-alex-1.3.1.tgz
+	sha1sums = eb38609eba445f2431bb1927db7227993da943fe
+
+pkgname = textlint-rule-alex
+
