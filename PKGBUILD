@@ -17,7 +17,7 @@ build() {
   cd "${srcdir}/SDL2_ttf-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
+    LIBS="-lfreetype" CFLAGS="-I/usr/${_arch}/include/freetype2" ${_arch}-configure \
       --disable-sdltest \
       --with-freetype-prefix=/usr/${_arch}
     make
