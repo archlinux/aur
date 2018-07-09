@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-no-dead-link
+	pkgdesc = A textlint rule to check if all links are alive
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://github.com/textlint-rule/textlint-rule-no-dead-link
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-no-dead-link-4.3.0.tgz
+	source = http://registry.npmjs.org/textlint-rule-no-dead-link/-/textlint-rule-no-dead-link-4.3.0.tgz
+	sha1sums = c6898709e484a6eabc82f0b3a02bc7cd2c64c490
+
+pkgname = textlint-rule-no-dead-link
+
