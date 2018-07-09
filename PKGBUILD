@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-redis2
 pkgver=0.14
-pkgrel=10
+pkgrel=11
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.15.0
+_nginxver=1.15.1
 
 pkgdesc='Redis 2.0 protocol module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
 )
 
-sha256sums=('b0b58c9a3fd73aa8b89edf5cfadc6641a352e0e6d3071db1eb3215d72b7fb516'
+sha256sums=('c7206858d7f832b8ef73a45c9b8f8e436bcb1ee88db2bc85b8e438ecec9d5460'
             'd830e072fcb4acee8490ba3e38eee6034fd884a954d17ad4efeb397032c58a71')
 
 build() {
