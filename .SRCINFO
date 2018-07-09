@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-ng-word
+	pkgdesc = textlint rule that check NG words
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/KeitaMoromizato/textlint-rule-ng-word#readme
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-ng-word-1.0.0.tgz
+	source = http://registry.npmjs.org/textlint-rule-ng-word/-/textlint-rule-ng-word-1.0.0.tgz
+	sha1sums = b389a239ea4b4992f455e2af36bb062fc6e42d39
+
+pkgname = textlint-rule-ng-word
+
