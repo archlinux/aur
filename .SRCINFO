@@ -1,7 +1,7 @@
 pkgbase = pacemaker
 	pkgdesc = advanced, scalable high-availability cluster resource manager
-	pkgver = 1.1.18
-	pkgrel = 8
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/ClusterLabs/pacemaker/
 	install = pacemaker.install
 	arch = i686
@@ -27,12 +27,10 @@ pkgbase = pacemaker
 	optdepends = pdsh: for use with some tools
 	optdepends = crmsh: for use with crm_report
 	optdepends = booth: for geo-clustering
-	source = https://github.com/ClusterLabs/pacemaker/archive/Pacemaker-1.1.18.tar.gz
+	source = https://github.com/ClusterLabs/pacemaker/archive/Pacemaker-2.0.0.tar.gz
 	source = crm_report.in
-	source = makefile-chown.patch
-	sha512sums = 63c287888e5f0bd5f1a2f56450cb3d4da580df2d750ffa90b2212a4efcfa146e05e258a9d87fdcaacde5f8985b9730dae11c5d5ad22e811fd114e1640365c9aa
+	sha512sums = 45e6880b06998a0f196e7ce5322bd288bda3801ee3009136b49d463cd85e6b9f4dfa4c83f823a355b92f2d02ff0b1f507f8f6b5f42da86ef0fe7421fbfd0027e
 	sha512sums = 09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64
-	sha512sums = bbd4f0415bbc07dedc447cdedea8470ee5308631721c04d7a495e5d0dcad639754f26d7db5c2bdad13e9669346e83d9674607dc7349e1b59cb7e9a35b31b2d22
 
 pkgname = pacemaker
 

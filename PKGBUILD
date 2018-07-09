@@ -4,8 +4,8 @@
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=pacemaker
-pkgver=1.1.18
-pkgrel=8
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${pkgname}/"
@@ -20,15 +20,12 @@ optdepends=('pssh: for use with some tools'
             'booth: for geo-clustering')
 install=${pkgname}.install
 source=("https://github.com/ClusterLabs/$pkgname/archive/Pacemaker-$pkgver.tar.gz"
-        'crm_report.in'
-        'makefile-chown.patch')
+        'crm_report.in')
 sha512sums=('63c287888e5f0bd5f1a2f56450cb3d4da580df2d750ffa90b2212a4efcfa146e05e258a9d87fdcaacde5f8985b9730dae11c5d5ad22e811fd114e1640365c9aa'
-            '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64'
-            'bbd4f0415bbc07dedc447cdedea8470ee5308631721c04d7a495e5d0dcad639754f26d7db5c2bdad13e9669346e83d9674607dc7349e1b59cb7e9a35b31b2d22')
+            '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64')
 
 prepare() {
   cd ${pkgname}-Pacemaker-${pkgver}
-  patch -Np2 -b -z .orig <../makefile-chown.patch
   autoreconf -fiv
 #  ./autogen.sh
 }
@@ -47,14 +44,8 @@ build() {
     --with-version=$pkgver-$pkgrel \
     --enable-systemd \
     --disable-upstart \
-    --with-ais \
     --with-corosync \
-    --without-heartbeat \
-    --without-cman \
-    --with-cs-quorum \
     --with-nagios \
-    --with-snmp \
-    --with-esmtp \
     --with-acl \
     --with-cibsecrets \
     --without-profiling \
@@ -71,22 +62,16 @@ package() {
   cd "$srcdir"
   install -Dm644 /dev/null "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
   cat>"$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"<<-EOF
-		d /var/lib/pacemaker          0750 hacluster haclient
-		d /var/lib/pacemaker/blackbox 0750 hacluster haclient
-		d /var/lib/pacemaker/cib      0750 hacluster haclient
-		d /var/lib/pacemaker/cores    0750 hacluster haclient
-		d /var/lib/pacemaker/pengine  0750 hacluster haclient
+		d /var/log/pacemaker          0755 hacluster haclient
+		d /var/lib/pacemaker          0770 hacluster haclient
+		d /var/lib/pacemaker/blackbox 0770 hacluster haclient
+		d /var/lib/pacemaker/cib      0770 hacluster haclient
+		d /var/lib/pacemaker/cores    0770 hacluster haclient
+		d /var/lib/pacemaker/pengine  0770 hacluster haclient
 	EOF
-# install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-# cat>"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"<<-EOF
-#		u hacluster 189 "Cluster User"
-#		g haclient 189 -
-#		m hacluster haclient
-#	EOF
   rm -fr "$pkgdir/var"
   chmod a+x "$pkgdir/usr/share/pacemaker/tests/cts/CTSlab.py"
   find "$pkgdir" -name '*.xml' -type f -print0 | xargs -0 chmod a-x
-  find "$pkgdir" -type f -name '*.la' -delete -print
   rm -fr "$pkgdir/etc/init.d"
   rm -f "$pkgdir/usr/bin/fence_pcmk"
   mv "$pkgdir/usr/bin/crm_report" "$pkgdir/usr/bin/crm_report.pacemaker"
@@ -94,3 +79,5 @@ package() {
 }
 
 # vim: set sw=2 et ts=2:
+sha512sums=('45e6880b06998a0f196e7ce5322bd288bda3801ee3009136b49d463cd85e6b9f4dfa4c83f823a355b92f2d02ff0b1f507f8f6b5f42da86ef0fe7421fbfd0027e'
+            '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64')
