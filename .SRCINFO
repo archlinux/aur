@@ -1,12 +1,12 @@
 pkgbase = ascii-patrol
 	pkgdesc = Terminal Moon Control clone.
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = http://ascii-patrol.com/
 	arch = x86_64
 	license = GPL
 	source = http://ascii-patrol.com/area51/ascii-patrol-debian-x64.tgz
-	md5sums = cb46bbdc71715091d9e87ebd65564f7d
+	md5sums = f3ecfcff60862e5c23131876876e4db6
 
 pkgname = ascii-patrol
 
