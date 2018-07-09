@@ -96,13 +96,42 @@ diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sa
 index 809ca72c76..9610ce125d 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
 +++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+@@ -4066,6 +4066,9 @@ cdef class MPolynomial_libsingular(MPolynomial):
+             if r.cf.type == n_Znm or r.cf.type == n_Zn or r.cf.type == n_Z2m :
+                 raise NotImplementedError("Division of multivariate polynomials over non fields by non-monomials not implemented.")
+ 
++        if is_IntegerRing(self._parent._base):
++            return self.change_ring(RationalField()) // right.change_ring(RationalField())
++        
+         cdef int count = singular_polynomial_length_bounded(_self._poly,15)
+         if count >= 15:  # note that _right._poly must be of shorter length than self._poly for us to care about this call
+             sig_on()
+@@ -4744,6 +4747,9 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         else:
+             _right = <MPolynomial_libsingular>right
+ 
++        if is_IntegerRing(self._parent._base):
++            return self.change_ring(RationalField()).gcd(right.change_ring(RationalField()), algorithm, **kwds)
++
+         cdef int count = singular_polynomial_length_bounded(self._poly,20) \
+             + singular_polynomial_length_bounded(_right._poly,20)
+         if count >= 20:
+@@ -4814,6 +4822,9 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         if self._parent._base.is_finite() and self._parent._base.characteristic() > 1<<29:
+             raise NotImplementedError("LCM of multivariate polynomials over prime fields with characteristic > 2^29 is not implemented.")
+ 
++        if is_IntegerRing(self._parent._base):
++            return self.change_ring(RationalField()).lcm(g.change_ring(RationalField()))
++
+         cdef int count = singular_polynomial_length_bounded(self._poly,20) \
+             + singular_polynomial_length_bounded(_g._poly,20)
+         if count >= 20:
 @@ -4888,7 +4888,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
          if right.is_zero():
              raise ZeroDivisionError
- 
+
 -        if not self._parent._base.is_field() and not is_IntegerRing(self._parent._base):
 +        if not self._parent._base.is_field():
              py_quo = self//right
              py_rem = self - right*py_quo
              return py_quo, py_rem
-

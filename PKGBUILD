@@ -51,7 +51,7 @@ sha256sums=('SKIP'
             'a4a6c87b46ff23b89608aca66d00427334502e8bfb5dfe68b94497d19be1c7ae'
             '71cc42d168545d460bc7f67a30486ff1534093e2b4deeb83deda8ff5bd081e7b'
             '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
-            '11a68f156647ba9f38cb01b2a5e4f9a6a78f6297f2a5a65fbfdfe32d4be69d0c'
+            'af22e1834997cb2740818cd4ef8ede0367b0aa237305e89b178614f35bdfcef8'
             '5114c912f821900e5bfae1e2cfeb7984de946d0b23e1182b0bf15be1d803dfd0'
             '6917cb74e50ae965ea8d7c39577e5f0a5068e4b6a67b53fc6f219149a7d06584'
             'e24ad879f6b2eb970778fc5e867bcbe0a6d393feca8f11f5cb8d07da1f024be9')
@@ -108,6 +108,7 @@ prepare(){
 build() {
   cd sage/src
 
+  export CC=gcc
   export SAGE_ROOT="$PWD"
   export SAGE_SRC="$PWD"
 
