@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-ginger
+	pkgdesc = textlint rule to check your English grammar with Ginger Proofreading
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/textlint-rule/textlint-rule-ginger
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-ginger-2.1.2.tgz
+	source = http://registry.npmjs.org/textlint-rule-ginger/-/textlint-rule-ginger-2.1.2.tgz
+	sha1sums = 6374a0b15ee19cdc087d1aedb341b9c960aff2b1
+
+pkgname = textlint-rule-ginger
+
