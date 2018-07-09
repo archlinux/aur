@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-max-comma
+	pkgdesc = textlint rule that limit maxinum comma(,) count of sentence.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/azu/textlint-rule-max-comma#readme
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-max-comma-1.0.4.tgz
+	source = http://registry.npmjs.org/textlint-rule-max-comma/-/textlint-rule-max-comma-1.0.4.tgz
+	sha1sums = f555c97e0d3039ca7da06cfd1afad0e5f5899a37
+
+pkgname = textlint-rule-max-comma
+
