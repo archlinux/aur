@@ -2,7 +2,7 @@
 
 pkgname=mintstick
 pkgver=1.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to write .img or .iso files to a USB Key. It can also format them"
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
@@ -19,6 +19,8 @@ depends=('coreutils'
     'procps-ng'
     'python'
     'python2'
+    'python-gobject'
+    'python2-gobject'
     'udisks2'
     'util-linux'
     'xapps')
