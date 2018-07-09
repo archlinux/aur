@@ -1,0 +1,11 @@
+--- rainbow.py	2016-12-11 08:28:58.000000000 -0500
++++ rainbow.py.new	2018-07-09 17:25:37.131073347 -0400
+@@ -239,7 +239,7 @@
+     ctrl_c_handler = lambda signum, frame: quit()
+     signal.signal(signal.SIGINT, ctrl_c_handler)
+     # Upgrade notify
+-    upgrade_center()
++    # upgrade_center()
+     # Get name
+     t = Twitter(auth=authen())
+     credential = t.account.verify_credentials()
