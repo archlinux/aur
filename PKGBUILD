@@ -2,8 +2,8 @@
 
 pkgname=fmlib
 pkgver=1.3
-pkgrel=2
-pkgdec="A fortran multiple-precision arithmetic library"
+pkgrel=3
+pkgdesc="A fortran multiple-precision arithmetic library"
 arch=('x86_64')
 url="https://dmsmith.lmu.build/"
 license=('MIT')
