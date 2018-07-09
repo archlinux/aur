@@ -1,4 +1,5 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
+# Contributor: Troels Jacobsen <tkjacobsen@gmail.com>
 pkgname=evernote-sdk-python
 pkgver=1.28
 pkgrel=4
