@@ -2,7 +2,7 @@
 
 pkgname=igb
 pkgver=5.3.5.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for Intel ethernet network connection"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/e1000/files/igb%20stable/"
@@ -28,9 +28,8 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver/src"
 
-  _kernver=$(pacman -Q linux | grep -Po '(?<= )\d+\.\d+')
-  _extramodules="/usr/lib/modules/extramodules-$_kernver-ARCH"
+  _updates="/usr/lib/modules/$(uname -r)/updates"
 
   find './' -name '*.ko' -exec gzip --force --fast {} \;
-  install -Dm644 'igb.ko.gz' "$pkgdir/$_extramodules/igb.ko.gz"
+  install -Dm644 'igb.ko.gz' "$pkgdir/$_updates/igb.ko.gz"
 }
