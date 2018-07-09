@@ -1,7 +1,7 @@
 # Maintainer: ShadowKyogre <shadowkyogre.public@gmail. com>
 
 pkgname=zsh-directory-history-git
-pkgver=1.1.0.r1.g9443bcb
+pkgver=1.1.0.r7.g4029b87
 pkgrel=1
 pkgdesc="Per directory history plugin for zsh"
 arch=('any')
@@ -27,7 +27,6 @@ package() {
   install -d -m755 "$pkgdir/usr/share/zsh/plugins/$name"
   install -d -m755 "$pkgdir/usr/bin"
   install -m755 dirhist "$pkgdir/usr/bin"
-  install -m755 dirlog "$pkgdir/usr/bin"
   install -Tm644 "${name#zsh-}.plugin.zsh" "$pkgdir/usr/share/zsh/plugins/$name/$name.zsh"
   install -m644 README.md "$pkgdir/usr/share/zsh/plugins/$name"
 }
