@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-max-number-of-lines
+	pkgdesc = textlint rule for linting number of lines.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/azu/textlint-rule-max-number-of-lines
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-max-number-of-lines-1.0.3.tgz
+	source = http://registry.npmjs.org/textlint-rule-max-number-of-lines/-/textlint-rule-max-number-of-lines-1.0.3.tgz
+	sha1sums = fce661d5042388449396164e830778d024f2e59b
+
+pkgname = textlint-rule-max-number-of-lines
+
