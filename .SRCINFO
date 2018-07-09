@@ -1,0 +1,14 @@
+pkgbase = textlint-plugin-html
+	pkgdesc = textlint HTML processsor plugin.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/textlint/textlint-plugin-html
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-plugin-html-0.1.7.tgz
+	source = http://registry.npmjs.org/textlint-plugin-html/-/textlint-plugin-html-0.1.7.tgz
+	sha1sums = acb90a9b8edcc013cf48b491b2a90d60321a23cf
+
+pkgname = textlint-plugin-html
+
