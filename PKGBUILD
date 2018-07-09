@@ -2,7 +2,7 @@
 
 _gitname=deen
 pkgname="${_gitname}-git"
-pkgver=1.3.0.58ad791
+pkgver=1.4.1.1cf0ee6
 pkgrel=1
 pkgdesc='Generic data encoding/decoding application built with PyQt5'
 url='https://github.com/takeshixx/deen'
