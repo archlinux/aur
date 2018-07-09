@@ -1,15 +1,16 @@
 pkgbase = blrm-git
 	pkgdesc = A wrapper of rm command with user-defined blacklist.
-	pkgver = 20161210
+	pkgver = r25.37ba33c
 	pkgrel = 1
-	url = http://projects.cykerway.com/blrm
-	arch = i686
-	arch = x86_64
+	url = https://repo.cykerway.com/blrm
+	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python
 	provides = blrm
 	conflicts = blrm
+	source = git+https://github.com/cykerway/blrm.git
+	md5sums = SKIP
 
 pkgname = blrm-git
 
