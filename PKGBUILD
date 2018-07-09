@@ -2,21 +2,29 @@
 
 pkgname=vpn-unlimited
 pkgver=4.22
-pkgrel=1
-pkgdesc='VPN Unlimited client application'
-arch=('x86_64' 'i686')
-url='https://www.vpnunlimitedapp.com'
+pkgrel=2
+pkgdesc="VPN Unlimited client application"
+arch=("x86_64")
+url="https://www.vpnunlimitedapp.com"
 license=('custom:"Copyright (c) 2017 KeepSolid Inc."')
 
-source_x86_64=("vpn-unlimited" "vpn-unlimited-daemon.service"
-  "http://apt.keepsolid.com/debian/pool/main/v/vpn-unlimited/vpn-unlimited_${pkgver}_amd64.deb")
-md5sums_x86_64=('8623605b1bef9eda0f451a9b4447629f'
-                'eec970693be55274ff2e85e596407f20'
-                '5facf5171cabac5efde9d0f7bddd36de')
+source_x86_64=(
+  "vpn-unlimited"
+  "vpn-unlimited-daemon.service"
+  "http://apt.keepsolid.com/debian/pool/main/v/vpn-unlimited/vpn-unlimited_${pkgver}_amd64.deb"
+)
 
-depends=("glibc>=2.9" "qt5-base>=5.2.1" "qt5-script>=5.2.1" "qt5-webkit>=5.1.1"
-         "gcc-libs>=4.4.15" "zlib>=1.2.0" "openvpn" "openresolv" "lzo>=2.0"
-         "libcurl-openssl-1.0" "iproute" "net-tools" "c-ares>=1.10.0")
+sha256sums_x86_64=(
+  "b34f3093c4036e571117fd48791f52f8ece946ede7273758ef60bff294cba98f"
+  "11042869fa2381bfe9132735146027d41a95038e2c0c4de8f48b9ef57f6b3288"
+  "c572ef22f4a1db19751b2ca85fee3907b9f4eb16d3b10e419b2c04b3228f5875"
+)
+
+depends=(
+  "glibc>=2.9" "qt5-base>=5.2.1" "qt5-script>=5.2.1" "qt5-webkit>=5.1.1"
+  "gcc-libs>=4.4.15" "zlib>=1.2.0" "openvpn" "openresolv" "lzo>=2.0"
+  "libcurl-openssl-1.0" "iproute" "net-tools" "c-ares>=1.10.0" "lsb-release"
+)
 
 package() {
   cd "${srcdir}"
