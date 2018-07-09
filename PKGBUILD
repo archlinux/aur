@@ -9,13 +9,13 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-git
-pkgver=4.0.0.r3110.gcea6af86d9
+pkgver=4.0.0.r3917.g5547f0277d
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 url='https://www.videolan.org/vlc/'
-arch=('x86_64')
+arch=('i686' 'x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'libtiger' 'lua'
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
@@ -130,6 +130,7 @@ build() {
   export LUAC=/usr/bin/luac
   export LUA_LIBS="$(pkg-config --libs lua)"
   export RCC=/usr/bin/rcc-qt5
+  export LIBS="-lxkbcommon"
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
