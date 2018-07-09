@@ -1,0 +1,16 @@
+pkgbase = python-pycomedi-git
+	pkgdesc = An object-oriented interface for the Comedi drivers. This packages provides the most up-to-date branch on GitHub, which is currently in ian-abbott\'s fork.
+	pkgver = 0.9.r4.g4217db0
+	pkgrel = 1
+	url = https://github.com/ian-abbott/pycomedi/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = cython
+	depends = python-numpy
+	depends = comedilib
+	source = pycomedi::git+https://github.com/ian-abbott/pycomedi.git#branch=ija-comedilib-0-11-compat
+	md5sums = SKIP
+
+pkgname = python-pycomedi-git
+
