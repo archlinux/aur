@@ -5,7 +5,7 @@ pkgver=0.9
 pkgrel=1
 pkgdesc="Utilities for working with PO and POT files to ease development and improve localization quality"
 arch=(any)
-url="http://github.com/willkg/dennis"
+url="https://github.com/willkg/dennis"
 license=(Simplified BSD License)
 makedepends=("python" "python-pip")
 build() {
