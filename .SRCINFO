@@ -1,15 +1,16 @@
 pkgbase = python-jsondiff
 	pkgdesc = Diff JSON and JSON-like structures in Python
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
-	url = https://github.com/Zoomer-Analytics/jsondiff
+	url = https://github.com/ZoomerAnalytics/jsondiff
 	arch = any
 	license = MIT
+	checkdepends = python-nose
 	checkdepends = python-nose-random
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/ZoomerAnalytics/jsondiff/archive/v1.1.1.tar.gz
-	sha256sums = 681eaaefc926738342281e7b92e202ea642cac9d6045b530fc23e936f61057a5
+	source = https://github.com/ZoomerAnalytics/jsondiff/archive/1.1.2.tar.gz
+	sha256sums = 8e5edaa604c4a96d9ffe7fea6f39ec91bdddaee78fae7c6ff91cbb8e105b70c1
 
 pkgname = python-jsondiff
 
