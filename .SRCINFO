@@ -12,6 +12,7 @@ pkgbase = franz
 	makedepends = python2
 	depends = nodejs
 	depends = libx11
+	depends = libxkbfile
 	depends = libxext
 	depends = libxss
 	depends = gconf
