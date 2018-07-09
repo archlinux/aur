@@ -14,7 +14,7 @@ pre_upgrade() {
   if [ ! -d "/usr/src/${_pkgname}"-*/ ]; then
     local _modulename
     for _modulename in "${_modulenamesr[@]}"; do
-      rmmod "${_modulename}"
+      modprobe -r "${_modulename}"
     done
   fi
   set +u
@@ -23,8 +23,8 @@ pre_upgrade() {
 post_upgrade() {
   set -u
   if [ ! -d "/usr/src/${_pkgname}"-*/ ]; then
-    depmod -a
-    rmmod "${_origmodname}" 2> /dev/null # blacklisted on boot
+    # depmod -a # now done by pacman hook
+    modprobe -r "${_origmodname}" 2> /dev/null # blacklisted on boot
     local _modulename
     for _modulename in "${_modulenames[@]}"; do
       if ! lsmod | cut -d' ' -f1 | grep -q "^${_modulename}"'$'; then
@@ -35,7 +35,7 @@ post_upgrade() {
     done
   else
     echo 'Once installed the new driver can be loaded with'
-    echo "  sudo rmmod ${_origmodname}$(printf '; sudo modprobe %s' "${_modulenames[@]}")"
+    echo "  sudo modprobe -r ${_origmodname}$(printf '; sudo modprobe %s' "${_modulenames[@]}")"
   fi
   systemctl daemon-reload
   systemctl enable "${_servicename}.service"
@@ -55,14 +55,14 @@ pre_remove() {
   if [ ! -d "/usr/src/${_pkgname}"-*/ ]; then
     local _modulename
     for _modulename in "${_modulenamesr[@]}"; do
-      rmmod "${_modulename}"
+      modprobe -r "${_modulename}"
     done
   fi
   systemctl disable "${_servicename}.service"
   if [ -d "/usr/src/${_pkgname}"-*/ ]; then
     # dkms remove runs before this so we could run these automatically but that might interrupt services
     echo 'Once removed the old driver can be loaded with'
-    echo "  $(printf 'sudo rmmod %s; ' "${_modulenamesr[@]}")sudo modprobe ${_origmodname}"
+    echo "  $(printf 'sudo modprobe -r %s; ' "${_modulenamesr[@]}")sudo modprobe ${_origmodname}"
   fi
   set +u
 }
@@ -71,7 +71,7 @@ post_remove() {
   set -u
   systemctl daemon-reload
   if [ ! -d "/usr/src/${_pkgname}"-*/ ]; then
-    depmod -a
+    # depmod -a
     modprobe "${_origmodname}"
   fi
   set +u

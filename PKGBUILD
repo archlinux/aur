@@ -41,8 +41,9 @@ _origmodname=('mxuport')
 set -u
 pkgname='moxa-uport16x0'
 _servicename="${pkgname}-settings"
-pkgver='1.2.9'; _build='14103017'
 #pkgver='1.2'; _build='12071314'
+#pkgver='1.2.9'; _build='14103017'
+pkgver='1.2.13'; _build='18030617'
 pkgrel='1'
 pkgdesc='kernel module driver for Moxa multi port USB serial 1250 1410 1450 1610 1650 RS-232 422 485'
 _servicedesc='Moxa UPort persistent settings'
@@ -52,7 +53,8 @@ url='https://www.moxa.com/product/UPort_1610-8_1650-8.htm'
 #url='https://pkgs.org/download/moxa-kmp-default'
 #url='https://www.moxa.ru/forum/index.php?/topic/25005-drajver-dlia-moxa-uport-1250-dlia-linux-iadro-316/'
 license=('GPL')
-depends=('setserial')
+depends=('glibc')
+optdepends=('setserial: set RS-422 485 modes')
 makedepends=('gzip' 'findutils' 'sed' 'diffutils' 'patch')
 backup=("etc/${_servicename}.sh")
 options=('!strip')
@@ -60,11 +62,10 @@ install="${pkgname}-install.sh"
 _srcdir='mxuport'
 source=(
   #"https://www.moxa.com/drivers/UPort/U12_14_1600/Linux2.6/V1.2/driv_linux_uport_v${pkgver}_build_${_build}.tgz"
-  "http://ftp.gwdg.de/pub/opensuse/repositories/hardware/openSUSE_Tumbleweed/src/moxa-${pkgver}_${_build}-1.299.src.rpm"
-  '0001-kernel-4.9-no-dma-on-stack-transfer-buffer-not-dma-capable.patch'
+  #"http://ftp.gwdg.de/pub/opensuse/repositories/hardware/openSUSE_Tumbleweed/src/moxa-${pkgver}_${_build}-1.299.src.rpm"
+  "https://download.opensuse.org/repositories/hardware/openSUSE_Leap_42.3/src/moxa-${pkgver}_${_build}-1.1.src.rpm"
 )
-sha256sums=('280ec934e6683b962e037faaa92b890608bc20701c4836954f5586c40d96f796'
-            '1243f168ed4876a5d821386b62104ae77ffddf66833cd76f21180f398d8b0608')
+sha256sums=('aed6f9a1bb6e88a22b520dc6cbbb6624accea080dcaca727c0fab031868228b6')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -73,11 +74,13 @@ else
 fi
 
 # Moxa https doesn't work with curl
-for _dlagentk in "${!DLAGENTS[@]}"; do
-  case "${DLAGENTS[${_dlagentk}]}" in
-  'https::/'*) DLAGENTS[${_dlagentk}]="${DLAGENTS[${_dlagentk}]//\/curl -/\/curl -k}";;
-  esac
-done
+if [ "${source[*]//moxa.com/}" != "${source[*]}" ]; then
+  for _dlagentk in "${!DLAGENTS[@]}"; do
+    case "${DLAGENTS[${_dlagentk}]}" in
+    'https::/'*) DLAGENTS[${_dlagentk}]="${DLAGENTS[${_dlagentk}]//\/curl -/\/curl -k}";;
+    esac
+  done
+fi
 
 # We can't modify .install but we can stop and force the user to fix it.
 _install_check() {
@@ -99,18 +102,24 @@ _install_check() {
   done
 }
 
-# All the firmwares were changed which makes the patch too large to be useful
+# From 1.2 to 1.2.9 all the firmwares were changed which makes the patch too large to be useful
 _make_patch() {
   cd "${startdir}"
   rm -rf 'makepatch'
   mkdir 'makepatch'
   cd 'makepatch'
-  bsdtar -xf '../driv_linux_uport_v1.2_build_12071314.tgz'
-  mv 'mxuport'{,-1.2}
-  bsdtar -xf '../driv_linux_uport_v1.2.9_build_14103017.tgz'
-  mv 'mxuport'{,-1.2.9}
+  bsdtar -xf "../$1"
+  if [ ! -d 'mxuport' ]; then
+    bsdtar -xf "driv_linux_uport_v$2"_build_*.tgz
+  fi
+  mv 'mxuport'{,"-$2"}
+  bsdtar -xf "../$3"
+  if [ ! -d 'mxuport' ]; then
+    bsdtar -xf "driv_linux_uport_v$4"_build_*.tgz
+  fi
+  mv 'mxuport'{,"-$4"}
   sed -e 's:\r$::g' -i $(grep -rlFe $'\r')
-  diff -pNaru5 mxuport-{1.2,1.2.9} > '../0000-mxuport-1.2-1.2.9.patch' || :
+  diff -w -pNaru5 mxuport-{"$2","$4"} > "../0000-mxuport-$2-$4.patch" || :
   cd ..
   rm -r 'makepatch'
   #patch -Nbup2 < '../0000-mxuport-1.2-1.2.9.patch'
@@ -120,56 +129,75 @@ _make_patch() {
 
 prepare() {
   set -u
-  #_make_patch
+  #_make_patch 'driv_linux_uport_v1.2_build_12071314.tgz' '1.2' 'moxa-1.2.9_14103017-1.5.src.rpm' '1.2.9'
+  #_make_patch 'moxa-1.2.9_14103017-1.5.src.rpm' '1.2.9' 'moxa-1.2.13_18030617-1.1.src.rpm' '1.2.13'
   _install_check
 
-  bsdtar -xf "driv_linux_uport_v${pkgver}_build_${_build}.tgz"
+  if [ ! -d "${_srcdir}" ]; then
+    bsdtar -xf "driv_linux_uport_v${pkgver}_build_${_build}.tgz"
+  fi
 
   cd "${_srcdir}"
-
+  # This doesn't do anything we need
   rm 'driver/mxconf'
 
+  # A few files have MS-DOS line endings
   sed -e 's:\s*\r$::g' -i $(grep -rlFe $'\r')
 
-  # diff -pNau5 driver/mxuport/mx-uport.c{.orig,} > '0001-kernel-4.9-no-dma-on-stack-transfer-buffer-not-dma-capable.patch'
-  patch -Nbup0 < '../0001-kernel-4.9-no-dma-on-stack-transfer-buffer-not-dma-capable.patch'
-
-  # Make package compatible
-  # cp -p driver/Makefile{,.Arch}
+  # Fix umbrella Makefile
+  sed -e '# Disable silent' \
+      -e '/make / s:\s\+-s::g' \
+      -e '# Improve chdir technique' \
+      -e 's:^\t@cd .*$:#&-:g' \
+      -e 's:^\tmake :&-C driver :g' \
+    -i 'Makefile'
+  #cp -p driver/Makefile{,.Arch}
   sed -e '# Remove pesky blank line. n messes up the positioning so we do it separately' \
       -e '/^modules:/ {n; d}' \
     -i 'driver/Makefile'
+  # Make package compatible
   sed -e '# Fix path' \
       -e 's:/lib/:/usr/lib/:g' \
-      -e '# Get rid of useless var' \
+      -e '# Get rid of useless vars' \
       -e 's:^REL_DATE:# &:g' \
-      -e '# Get rid of useless var' \
       -e 's:^KDISVER:# &:g' \
+      -e 's:^TARGET:# &:g' \
       -e '# Disable Fedora hack' \
-      -e '/Fedora/,/^endif/ s:^:#:g' \
+      -e '/Fedora/,/^$/ s:^.:#&:g' \
       -e '# Remove leading @ to prevent silent execution' \
       -e 's:^\t@:\t:g' \
-      -e '# Disable envchk' \
-      -e '/^module/ s:envchk::g' \
+      -e '# Ungroup envchk from make module' \
+      -e '/^modules:/ s:\s\+envchk::g' \
       -e '# Remove build log helper that hides output' \
       -e '/^\t\$(MAKE)/ s:\s\+2>>.\+$::g' \
       -e '# Disable all make lines' \
       -e '/^modules:/,/^$/ s:^\t:#\t:g' \
-      -e '# Reenable module targets' \
-      -e '/^#modules:/ s:^#::g' \
-      -e '# Reenable make line' \
-      -e '/^#\t\$(MAKE/ s:^#\t:\t:g' \
+      -e '# Enable make lines' \
+      -e '/^modules:/,/^$/ s:^#\(\t\$(MAKE)\):\1:g' \
       -e '# Fix install lines' \
       -e '# Dont remake modules on install' \
-      -e '/^install/ s:modules::g' \
+      -e '/^install:/ s:\s\+modules::g' \
+      -e '# Disable all install lines' \
+      -e '/^install:/,/^$/ s:^\t:#&:g' \
+      -e '# Enable make lines' \
+      -e '/^install:/,/^$/ s:^#\tmake:\tmake:g' \
       -e '# Make package compatible' \
-      -e '/^install/,/^$/ s:/usr/:"$(DESTDIR)"&:g' \
-      -e '# Disable depmod' \
-      -e 's:^\tdepmod:\ttrue depmod:g' \
+      -e '/^install:/,/^$/ s:/usr/:"$(DESTDIR)"&:g' \
+      -e '# Disable clean_lib' \
+      -e '/^clean:/ s:\s\+clean_lib::g' \
+      -e '# Disable all clean_local lines' \
+      -e '/^clean_local:/,/^$/ s:^\t:#&:g' \
+      -e '# Enable make lines' \
+      -e '/^clean_local:/,/^$/ s:^#\tmake:\tmake:g' \
+      -e '# Disable silent' \
+      -e 's:make -s:make:g' \
+      -e '# Add kernel clean' \
+      -e 's/^clean_local:.*$/&\n\t$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) clean/g' \
     -i 'driver/Makefile'
+  test ! -s 'driver/Makefile.Arch'
   sed -e '# Fix path' \
       -e 's:/lib/:/usr/lib/:g' \
-      -e '# Get rid of KDIS' \
+      -e '# Get rid of useless vars' \
       -e 's:^KDISVER:# &:g' \
       -e '# Disable Fedora hack' \
       -e '/Fedora/,/^endif/ s:^:#:g' \
@@ -179,13 +207,14 @@ prepare() {
       -e '# Dont remake modules on install' \
       -e 's@^\(install:\).*$@\1@g' \
       -e '# Make package compatible' \
-      -e '/^install/,/^$/ s:/usr/:"$(DESTDIR)"&:g' \
+      -e '/^install:/,/^$/ s:/usr/:"$(DESTDIR)"&:g' \
       -e '# Disable depmod' \
-      -e 's:^\tdepmod:\ttrue depmod:g' \
+      -e 's:^\tdepmod:#&:g' \
+      -e '# Change to kernel clean' \
+      -e 's/^clean:/cleanorig:/g' \
+      -e 's/^cleanorig:/clean:\n\t$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) clean\n\n&/g' \
     -i driver/{mxusbserial,mxuport}/Makefile
-  sed -e '# Forgot to clean something' \
-      -e 's/^clean:$/&\n\trm -f .mx*.o.d/g' \
-      -e '# This make modules is never used so it contains a bug' \
+  sed -e '# This make modules is never used so it contains a bug' \
       -e '/^\t\$(MAKE)/ {s: -EXTRA: EXTRA:g; s: C : -C :g}'\
     -i 'driver/mxusbserial/Makefile'
 
@@ -207,6 +236,16 @@ build() {
 package() {
   set -u
   cd "${_srcdir}"
+
+  if [ "${_opt_DKMS}" -eq 0 ]; then
+    # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
+    local _kernelversionsmall="$(uname -r)"
+    _kernelversionsmall="${_kernelversionsmall%%-*}"
+    _kernelversionsmall="${_kernelversionsmall%\.0}" # trim 4.0.0 -> 4.0, 4.1.0 -> 4.1
+    # prevent the mksrcinfo bash emulator from getting these vars!
+    #eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
+    eval 'dep''ends+=("linux=${_kernelversionsmall}")'
+  fi
 
   make -C 'driver' -s -j1 install DESTDIR="${pkgdir}"
 
@@ -308,13 +347,14 @@ DEST_MODULE_LOCATION[1]="${_driverfd}"
 EOF
     ) "${_dkms}/dkms.conf"
     cp -pr 'driver/' "${_dkms}/"
-    sed -e 's:shell uname -r:KERNELRELEASE:g' \
+    sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
+        -e 's:shell uname -r:KERNELRELEASE:g' \
         -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
         -e '# Fix by changing the detection var.' \
         -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
         -e 's:^ifneq (\$(KERNELRELEASE),):ifneq (\$(SUBDIRS),):g' \
       -i "${_dkms}/driver/Makefile"
-    make -s -C "${_dkms}/driver/" clean_local KERNELRELEASE="$(uname -r)"
+    make -s -C "${_dkms}/driver/" clean KERNELRELEASE="$(uname -r)"
   fi
   set +u
 }
