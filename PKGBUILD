@@ -1,7 +1,7 @@
 # Maintainer: ngld <ngld@tproxy.de>
 _name=knossos
 pkgname=fs2-knossos
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A simple mod manager for FreeSpace 2 Open"
 arch=('any')
@@ -18,7 +18,7 @@ source=(
     "https://github.com/ngld/knossos/archive/v${pkgver}.tar.gz"
     knossos
     knossos.desktop)
-md5sums=('2175061556e245f00864f2f9099b8d94'
+md5sums=('d0f9cefe1a4bd11cbcd2095443d0fe2c'
          '541dfc75f3aecbe08b843eeec252e4b4'
          'afd34e2bf9b8f74c1fc5785662e1f04a')
 
