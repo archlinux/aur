@@ -6,8 +6,8 @@ _pkgbase='engauge-digitizer'
 
 pkgname=('engauge' 'engauge-samples')
 pkgbase='engauge'
-pkgver=10.7
-pkgrel=2
+pkgver=10.8
+pkgrel=1
 url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -15,7 +15,7 @@ makedepends=('qt5-tools' 'fftw' 'log4cpp' 'libjpeg-turbo' 'libpng' 'openjpeg2' '
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/markummitchell/$_pkgbase/archive/v$pkgver.tar.gz"
         "$pkgbase.sh"
         "$pkgbase.desktop")
-sha256sums=('8e149573348e2702dc73d29f6aea65ad52cf3c4d7790a97ebf7fad4a59fe1a57'
+sha256sums=('573648f525adbef91168dcbdaa04eb0be72dae7557f88ebcc6eff999cdcc842d'
             '6192374e8620c7c77d66c4313907bad305c6b03a80bb9244fd49753f8997aa31'
             '1b3f2675058693d5653b5aee50fbec1530791de5fcdfbb2f86056a5d748695a4')
 install=engauge.install
@@ -27,8 +27,6 @@ build() {
   qmake-qt5 engauge.pro "CONFIG+=jpeg2000 pdf"
   make -j2
   lrelease engauge.pro
-  cd help/
-  ./build
 }
 
 package_engauge() {
@@ -41,11 +39,6 @@ package_engauge() {
   # translations
   install -dm755 "$pkgdir"/usr/lib/$_pkgbase/translations/
   install -Dm64 translations/*.qm -t "$pkgdir"/usr/lib/$_pkgbase/translations/
-  # help
-  install -Dm644 bin/documentation/engauge.qhc \
-    "$pkgdir"/usr/share/$_pkgbase/documentation/engauge.qhc
-  install -Dm644 bin/documentation/engauge.qch \
-    "$pkgdir"/usr/share/$_pkgbase/documentation/engauge.qch
   # icon
   install -Dm644 src/img/$_pkgbase.svg \
     "$pkgdir"/usr/share/icons/$_pkgbase.svg
