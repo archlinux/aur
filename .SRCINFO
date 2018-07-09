@@ -1,7 +1,7 @@
 pkgbase = terminus-terminal
 	pkgdesc = A terminal for a more modern age
-	pkgver = v1.0.0.alpha.47.r0.g1d69082
-	pkgrel = 2
+	pkgver = v1.0.0.alpha.48.0.g7c03b62
+	pkgrel = 1
 	url = https://eugeny.github.io/terminus/
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = terminus-terminal
 	makedepends = python2
 	depends = nodejs
 	depends = fontconfig
-	source = git+https://github.com/Eugeny/terminus#tag=v1.0.0-alpha.47
+	source = git+https://github.com/Eugeny/terminus.git#tag=v1.0.0-alpha.48
 	sha256sums = SKIP
 
 pkgname = terminus-terminal
