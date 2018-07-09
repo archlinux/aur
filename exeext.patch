@@ -1,6 +1,8 @@
---- a/Makefile.am	2016-12-16 16:45:27.000000000 +0100
-+++ b/Makefile.am	2018-07-09 00:06:50.971520405 +0200
-@@ -336,7 +336,7 @@
+diff --git a/Makefile.am b/Makefile.am
+index 0569c68..fed8e16 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -336,7 +336,7 @@ install-data-hook:
  EXTRA_DIST += bootstrap.c
  
  fac_table.h: gen-fac$(EXEEXT_FOR_BUILD)
@@ -9,7 +11,7 @@
  BUILT_SOURCES += fac_table.h
  
  gen-fac$(EXEEXT_FOR_BUILD): gen-fac$(U_FOR_BUILD).c bootstrap.c
-@@ -346,11 +346,11 @@
+@@ -346,11 +346,11 @@ EXTRA_DIST += gen-fac.c
  
  
  fib_table.h: gen-fib$(EXEEXT_FOR_BUILD)
@@ -23,7 +25,7 @@
  BUILT_SOURCES += mpn/fib_table.c
  
  gen-fib$(EXEEXT_FOR_BUILD): gen-fib$(U_FOR_BUILD).c bootstrap.c
-@@ -360,11 +360,11 @@
+@@ -360,11 +360,11 @@ EXTRA_DIST += gen-fib.c
  
  
  mp_bases.h: gen-bases$(EXEEXT_FOR_BUILD)
@@ -37,7 +39,7 @@
  BUILT_SOURCES += mpn/mp_bases.c
  
  gen-bases$(EXEEXT_FOR_BUILD): gen-bases$(U_FOR_BUILD).c bootstrap.c
-@@ -374,7 +374,7 @@
+@@ -374,7 +374,7 @@ EXTRA_DIST += gen-bases.c
  
  
  trialdivtab.h: gen-trialdivtab$(EXEEXT_FOR_BUILD)
@@ -46,7 +48,7 @@
  BUILT_SOURCES += trialdivtab.h
  
  gen-trialdivtab$(EXEEXT_FOR_BUILD): gen-trialdivtab$(U_FOR_BUILD).c bootstrap.c
-@@ -384,7 +384,7 @@
+@@ -384,7 +384,7 @@ EXTRA_DIST += gen-trialdivtab.c
  
  
  mpn/jacobitab.h: gen-jacobitab$(EXEEXT_FOR_BUILD)
@@ -55,7 +57,7 @@
  BUILT_SOURCES += mpn/jacobitab.h
  
  gen-jacobitab$(EXEEXT_FOR_BUILD): gen-jacobitab$(U_FOR_BUILD).c
-@@ -394,7 +394,7 @@
+@@ -394,7 +394,7 @@ EXTRA_DIST += gen-jacobitab.c
  
  
  mpn/perfsqr.h: gen-psqr$(EXEEXT_FOR_BUILD)
@@ -64,3 +66,16 @@
  BUILT_SOURCES += mpn/perfsqr.h
  
  gen-psqr$(EXEEXT_FOR_BUILD): gen-psqr$(U_FOR_BUILD).c bootstrap.c
+diff --git a/acinclude.m4 b/acinclude.m4
+index 3c3ecf5..31be9c8 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -3933,7 +3933,7 @@ EOF
+ for i in .exe ,ff8 ""; do
+   gmp_compile="$CC_FOR_BUILD conftest.c -o conftest$i"
+   if AC_TRY_EVAL(gmp_compile); then
+-    if (./conftest) 2>&AC_FD_CC; then
++    if (./conftest$i) 2>&AC_FD_CC; then
+       gmp_cv_prog_exeext_for_build=$i
+       break
+     fi

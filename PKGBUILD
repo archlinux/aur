@@ -16,7 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare () {
   cd "${srcdir}/gmp-${pkgver}"
 
-  # run code generation executables with the right suffix
+  # detect correct exe extension, use it for code generation
   patch -p1 -i "${srcdir}"/exeext.patch
   autoreconf -vfi
 }
@@ -27,7 +27,7 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
       --enable-cxx \
-      --disable-static mp_cv_prog_exeext_for_build=.exe
+      --disable-static
     make
     popd
   done
