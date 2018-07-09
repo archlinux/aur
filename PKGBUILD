@@ -1,6 +1,6 @@
 # Maintainer: Kenny MacDermid <kenny.macdermid@gmail.com>
 pkgname=sshoot
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Manage multiple sshuttle VPN sessions."
 arch=('any')
