@@ -1,7 +1,7 @@
 # Maintainer: Shadowsith <philip.mayer@shadowsith.de>
 
-pkgname=qpicospeaker-git
-pkgver=git
+pkgname=qpicospeaker
+pkgver=r10.ec83c9a
 pkgrel=1
 pkgdesc='Qt GUI for the svox-pico text-to-speech engine'
 arch=('i686' 'x86_64')
@@ -18,18 +18,15 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd build
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    make
+    pwd
+    make -C ./qpicospeaker/build
 }
 
 package() {
-    make install
+    make install -C ./qpicospeaker/build
 }
 
