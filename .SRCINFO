@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-show-desktop-button
+	pkgdesc = Add Show Desktop Button to Gnome Panel.
+	pkgver = r4.8cf4f41
+	pkgrel = 1
+	url = https://github.com/amivaleo/Show-Desktop-Button
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell>=3.24
+	provides = gnome-shell-extension-show-desktop-button
+	conflicts = gnome-shell-extension-show-desktop-button
+	replaces = gnome-shell-extension-show-desktop-button
+	source = gnome-shell-extension-show-desktop-button::git+https://github.com/amivaleo/Show-Desktop-Button
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-show-desktop-button
+
