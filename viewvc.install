@@ -16,8 +16,3 @@ EOF
 pre_upgrade() {
   post_install $1
 }
-
-# WTF is this? Are we trying to mangle makepkg?
-#op=$1
-#shift
-#$op $*
