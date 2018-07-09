@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-rousseau
+	pkgdesc = textlint rule check english sentence using rousseau
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://github.com/azu/textlint-rule-rousseau
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-rousseau-1.4.5.tgz
+	source = http://registry.npmjs.org/textlint-rule-rousseau/-/textlint-rule-rousseau-1.4.5.tgz
+	sha1sums = 5cc8b2fe1124413bd82b3d0b21778892db42a3ac
+
+pkgname = textlint-rule-rousseau
+
