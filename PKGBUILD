@@ -1,6 +1,6 @@
 # Maintainer: Ben Oliver <ben@benoliver999.com>
 pkgname=ttf-pf-agora-sans-pro-git
-pkgrel=2
+pkgrel=3
 pkgver=r4.1613ca7
 pkgdesc="A free font from profont.net"
 arch=('any')
@@ -10,7 +10,7 @@ depends=(fontconfig xorg-font-utils )
 makedepends=('git')
 conflicts=()
 install=$pkgname.install
-source=('https://gitlab.com/benoliver999/pf-agora-sans-pro.git')
+source=('git+https://gitlab.com/benoliver999/pf-agora-sans-pro.git')
 md5sums=('SKIP')
 
 pkgver() {
