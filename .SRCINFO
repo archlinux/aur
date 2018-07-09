@@ -1,0 +1,15 @@
+pkgbase = qpicospeaker-git
+	pkgdesc = Qt GUI for the svox-pico text-to-speech engine
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/Shadowsith/qpicospeaker
+	arch = i686
+	arch = x86_64
+	makedepends = qt5-base
+	depends = sox
+	depends = svox-pico-bin
+	source = git+https://github.com/Shadowsith/qpicospeaker
+	sha256sums = SKIP
+
+pkgname = qpicospeaker-git
+
