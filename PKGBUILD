@@ -1,43 +1,45 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
+# Contributor: Jonathon Fernyhough <jonathon_at manjaro_dotorg>
 
 pkgname=mkl-dnn
 pkgver=0.14
-pkgrel=0
-
-epoch=
+pkgrel=1
+_mklmlver=2018.0.3.20180406
 pkgdesc="Intel® Math Kernel Library for Deep Neural Networks"
-arch=( 'x86_64' )
-url="https://github.com/01org/mkl-dnn"
+arch=(x86_64)
+url=https://github.com/intel/mkl-dnn
 license=('APACHE')
-groups=()
-depends=()
-makedepends=( 'wget' 'git' 'cmake>=2.8' 'doxygen>=1.8.5' )
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+https://github.com/01org/mkl-dnn.git")
-sha1sums=('SKIP')
+makedepends=('cmake>=2.8' 'doxygen>=1.8.5' 'graphviz')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/intel/$pkgname/archive/v$pkgver.tar.gz"
+        "https://github.com/intel/$pkgname/releases/download/v$pkgver/mklml_lnx_$_mklmlver.tgz")
+sha256sums=('efebc53882856afec86457a2da644693f5d59c68772d41d640d6b60a8efc4eb0'
+            'd2305244fdc9b87db7426ed4496e87a4b3977ad3374d73b8000e8b7a5b7aa725')
 
-build() {
-  cd "${srcdir}/mkl-dnn"
-  git checkout "v$pkgver"
-  ([[ ! -d external ]] && (cd scripts && ./prepare_mkl.sh && cd -)) || true
-  mkdir -p build && cd build && cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr .. && make doc && make -j2 mkldnn
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  mkdir -p build external
+
+  # "Take advantage of optimized matrix-matrix multiplication (GEMM) function
+  #  from Intel MKL"
+  ln -s "$srcdir"/mklml_lnx_$_mklmlver external/
+
+  # Allow compilation to succeed despite warnings
+  sed -i '58s| -Werror||' cmake/platform.cmake
 }
 
-#check() {}
+build() {
+  cd "$srcdir/$pkgname-$pkgver/build"
+  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr ..
+  make -j
+  make doc
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver/build"
+  make test
+}
 
 package() {
-  cd "${srcdir}/mkl-dnn/build"
+  cd "$srcdir/$pkgname-$pkgver/build"
   make install
-  mkdir -p ${pkgdir}/usr/include/mkldnn/include/
-  cp -r ../external/mkl*/include/* ${pkgdir}/usr/include/mkldnn/include/
-  mkdir -p ${pkgdir}/usr/lib/mkldnn/lib/
-  cp -r ../external/mkl*/lib/* ${pkgdir}/usr/lib/mkldnn/lib/
 }
