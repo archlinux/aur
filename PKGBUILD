@@ -2,7 +2,7 @@
 pkgname=wire-desktop-beta
 _pkgname=${pkgname%-beta}
 pkgver=3.2.2860
-pkgrel=2
+pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
