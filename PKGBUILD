@@ -2,11 +2,11 @@
 
 pkgname=avocode
 pkgrel=1
-pkgver=3.0.0
+pkgver=3.1.1
 pkgdesc="Export code, specs and images from PSD & Sketch designs"
 url="http://avocode.com/"
 provides=('avocode')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom')
 depends=(libxtst libnotify alsa-lib gtk2 gconf)
 optdepends=('imagemagick: Preview generation')
@@ -14,12 +14,10 @@ makedepends=()
 backup=()
 install=avocode.install
 source=("Avocode.desktop" "avocode-app-icon.png")
-source_i686=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode-${pkgver}-ia32-linux.zip")
 source_x86_64=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode-${pkgver}-linux.zip")
 md5sums=('f1a87052b2356b2d4eede22cfc1eb2af'
          '96c2dd65a4a3ac5bcdba7426ade1960e')
-md5sums_i686=('8a4795dc0cf25e2fb4ee9deda68b1bf7')
-md5sums_x86_64=('feccd5d8057d0b41de00e80da89baa7f')
+md5sums_x86_64=('47f924a3a27fd422710b45f19057bbb7')
 package() {
 	install -d "$pkgdir"/opt
 	
