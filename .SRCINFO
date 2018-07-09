@@ -1,7 +1,7 @@
 pkgbase = iwlwifi-next
 	pkgdesc = Intel wireless chips driver (next kernel release cycle)
 	pkgver = 2018.05.30.r0.g50624782
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = iwlwifi-next
 	makedepends = git
 	makedepends = linux-headers
 	makedepends = xz
+	provides = iwlwifi
+	conflicts = iwlwifi
 
 pkgname = iwlwifi-next
 

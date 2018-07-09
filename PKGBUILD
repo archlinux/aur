@@ -2,12 +2,14 @@
 
 pkgname=iwlwifi-next
 pkgver=2018.05.30.r0.g50624782
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel wireless chips driver (next kernel release cycle)"
 arch=('i686' 'x86_64')
 url="https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi"
 license=('GPL')
 makedepends=('git' 'linux-headers' 'xz')
+provides=('iwlwifi')
+conflicts=('iwlwifi')
 #source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/iwlwifi/iwlwifi-next.git')
 #sha256sums=('SKIP')
 #validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
