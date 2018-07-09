@@ -2,8 +2,8 @@
 
 _pkgname=giada
 pkgname="${_pkgname}-vst"
-pkgver=0.15.0
-pkgrel=2
+pkgver=0.15.1
+pkgrel=1
 pkgdesc="A looper, drum machine, sequencer, live sampler and plugin host (VST enabled)"
 arch=('i686' 'x86_64')
 url="http://www.giadamusic.com/"
@@ -14,7 +14,7 @@ makedepends=('gendesk' 'icoutils' 'steinberg-vst36')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("http://www.giadamusic.com/data/${_pkgname}-${pkgver}-src.tar.gz")
-md5sums=('46a8c7cd50d5005513c705d2e5e48fbc')
+md5sums=('ba6aa45b23fb63d9442bffe5e6c42c12')
 changelog='ChangeLog'
 
 
