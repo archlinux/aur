@@ -1,0 +1,15 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	update-desktop-database -q
+	sed -i 's/Utility/Network/g; s/Chatstack/& (Beta)/g' /usr/share/applications/chatstack.desktop
+
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	update-desktop-database -q
+}

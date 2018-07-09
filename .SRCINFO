@@ -1,0 +1,32 @@
+pkgbase = chatstack
+	pkgdesc = Live chat application for chatting with your web site visitors. This package requires a web server that is already running the Chatstack server software.
+	pkgver = 2.2.5000
+	pkgrel = 1
+	url = https://www.chatstack.com/
+	install = chatstack.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = glib2
+	depends = gtk2
+	depends = gvfs
+	depends = libcap
+	depends = libgcrypt
+	depends = libnotify
+	depends = libudev0
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	optdepends = gir1.2-gnomekeyring-1.0
+	optdepends = libgnome-keyring
+	optdepends = lsb-release
+	options = !strip
+	options = !emptydirs
+	source_i686 = chatstack-beta-i386.deb::https://uploads.stardevelop.com/linux/chatstack-2.2.5000-i386.deb
+	sha256sums_i686 = 67417645309af2236166c2403976f91e87a96a6f6e6ee87850a2842f399b10de
+	source_x86_64 = chatstack-beta-amd64.deb::https://uploads.stardevelop.com/linux/chatstack-2.2.5000-amd64.deb
+	sha256sums_x86_64 = 58cc9c4128172f7c6e2ef14e8402fd62232bbc96a44dd039865bb7879d6131dc
+
+pkgname = chatstack
+
