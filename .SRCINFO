@@ -1,0 +1,17 @@
+pkgbase = browsh-bin
+	pkgdesc = A fully-modern text-based browser, rendering to TTY and browsers
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://www.brow.sh
+	arch = x86_64
+	license = GPL-3.0
+	depends = firefox>=57
+	provides = browsh
+	conflicts = browsh
+	conflicts = browsh-git
+	options = !strip
+	source = https://github.com/browsh-org/browsh/releases/download/v1.2.2/browsh_1.2.2_linux_amd64
+	sha512sums = c6d03edab2fa78c2c1adb733e2a63b58570994901469fb72a8a35e15fded039a1cc56cbe365104df0f16977cbe196bc4fd55162647443ebe8bd1917a59e8890f
+
+pkgname = browsh-bin
+
