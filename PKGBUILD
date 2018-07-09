@@ -2,7 +2,7 @@
 
 pkgname=(python-dbusmock python2-dbusmock)
 _pkgname=python-dbusmock
-pkgver=0.17.2
+pkgver=0.18
 pkgrel=1
 pkgdesc='Mock D-Bus objects for tests'
 arch=(any)
@@ -10,15 +10,17 @@ url='https://github.com/martinpitt/python-dbusmock'
 license=(LGPL3)
 depends=()
 makedepends=()
-#checkdepends=(python-nose python2-nose)
-source=("https://github.com/martinpitt/python-dbusmock/releases/download/0.17.2/python-dbusmock-${pkgver}.tar.gz")
-sha256sums=('56860530d647410375c85e69d44a97b563ae2b45cf77656f726030dc20b47e03')
+checkdepends=(python-nose python2-nose)
+source=("https://github.com/martinpitt/python-dbusmock/releases/download/${pkgver}/python-dbusmock-${pkgver}.tar.gz")
+sha256sums=('7721e2db4f99a1901389431f02dd4f6bde03a8e541fa5a39bcbf805bb15eb82a')
 
-#check() {
-#  cd "${srcdir}/${_pkgname}-${pkgver}"
-#  python setup.py test
-#  python2 setup.py test
-#}
+BUILDENV+=('!check')
+
+check() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py test
+  python2 setup.py test
+}
 
 package_python-dbusmock() {
   depends=(python)
