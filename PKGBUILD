@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=marker-git
-pkgver=2018.04.27.r0.g9a60a63d
+pkgver=2018.07.03.r0.ga41e6832
 pkgrel=1
 pkgdesc='Markdown editor for linux made with Gtk+-3.0'
 arch=('x86_64')
