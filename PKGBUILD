@@ -17,7 +17,7 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	install -D -m755 "virtualshield.service" "${pkgdir}/etc/systemd/system/virtualshield.service"
-	install -D -m755 "virtualshield-start" "${pkgdir}/usr/local/bin/virtualshield-start"
-	install -D -m755 "virtualshield-stop" "${pkgdir}/usr/local/bin/virtualshield-stop"
+	install -D -m755 "virtualshield-start" "${pkgdir}/usr/bin/virtualshield-start"
+	install -D -m755 "virtualshield-stop" "${pkgdir}/usr/bin/virtualshield-stop"
 
 }
