@@ -1,9 +1,9 @@
 # Maintainer: kittyhacker101 <kittyhacker101@protonmail.com>
 pkgname=katweb
-pkgver=1.9.8
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A lightweight static web server and reverse proxy designed for the modern web."
-arch=("any")
+arch=("x86_64")
 url="https://github.com/kittyhacker101/KatWeb"
 license=('custom:Unlicense')
 makedepends=('git' 'go' 'glibc')
@@ -17,6 +17,7 @@ prepare() {
 	cd "$srcdir/KatWeb-$pkgver"
 	go get "golang.org/x/crypto/acme/autocert" "github.com/yhat/wsutil" "github.com/klauspost/compress/gzip"
 	patch < aur.patch
+	rm -r
 }
 
 build() {
