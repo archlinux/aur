@@ -1,7 +1,7 @@
 # Maintainer: Kisuke <kisuke at kisuke dot cz>
 
 pkgname=jubler
-pkgver=5.1
+pkgver=6.0
 pkgrel=1
 pkgdesc='Subtitle editor running on Java'
 arch=('any')
@@ -12,10 +12,10 @@ depends=('java-runtime>=8')
 optdepends=('mplayer: live video preview for subtitles')
 makedepends=('libicns'
 						'p7zip')
-source=("https://downloads.sourceforge.net/project/jubler/Jubler%20Binary%20Releases/${pkgver}/Jubler-${pkgver}.dmg"
+source=("https://github.com/teras/Jubler/releases/download/${pkgver}/Jubler-${pkgver}.dmg"
 				'jubler.desktop'
 				'jubler-subtitles.desktop')
-sha256sums=('db061825d731abc2eb96bfbed49df78f712d4b4c58c007d91f608ae670f19438'
+sha256sums=('ed330203ce9a16ee5fa8708fa89b66907e62475f089f463adc6fb51db2f6a4a0'
 						'cb6da5ec3ac11f1a6c4d8becf9105ff88b4966fea9d6796b4dded6019392edfc'
 						'62d2a8d048b65bc0a0afe28b14ba006dc82ba91100bfee14185d76c88e18cbc5')
 noextract=("Jubler-${pkgver}.dmg")
