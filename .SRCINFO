@@ -1,7 +1,7 @@
 pkgbase = noweb
 	pkgdesc = A Simple, Extensible Tool for Literate Programming build against ICON libs and texlive
 	pkgver = 2.11b
-	pkgrel = 17
+	pkgrel = 18
 	url = http://www.cs.tufts.edu/~nr/noweb/
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = noweb
 	depends = texlive-core
 	depends = nawk
 	depends = icon
-	source = http://ftp.de.debian.org/debian/pool/main/n/noweb/noweb_2.11b.orig.tar.gz
-	md5sums = 1df580723497b2f2efde07646abf764c
+	source = noweb-2.11b.tar.gz::https://github.com/nrnrnr/noweb/archive/v2_11b.tar.gz
+	md5sums = 4f37181cbda9829cde3b84cf3bb7c3ed
 
 pkgname = noweb
 

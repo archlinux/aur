@@ -4,18 +4,18 @@
 
 pkgname=noweb
 pkgver=2.11b
-pkgrel=17
+pkgrel=18
 pkgdesc="A Simple, Extensible Tool for Literate Programming build \
 against ICON libs and texlive"
 url="http://www.cs.tufts.edu/~nr/noweb/"
 depends=('bash' 'texlive-core' 'nawk' 'icon')
-source=(http://ftp.de.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz)
-md5sums=('1df580723497b2f2efde07646abf764c')
+source=($pkgname-$pkgver.tar.gz::https://github.com/nrnrnr/noweb/archive/v2_11b.tar.gz)
+md5sums=('4f37181cbda9829cde3b84cf3bb7c3ed')
 arch=('i686' 'x86_64')
 license=('custom')
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   sed -i -e 's+BIN=/usr/local/noweb+BIN=\$\(MyDestdir\)/usr/bin+' \
     -e 's+LIB=/usr/local/noweb/lib+LIB=\$\(MyDestdir\)/usr/lib/noweb+' \
     -e 's+MAN=/usr/local/noweb/man+MAN=\$\(MyDestdir\)/usr/share/man+' \
@@ -32,12 +32,12 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver/src
+  cd $pkgname-$pkgver/src
   make MyDestdir=$pkgdir LIBSRC=icon ICONC=icont
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver/src
+  cd $pkgname-$pkgver/src
   install -Dm644 COPYRIGHT \
     $pkgdir/usr/share/licenses/noweb/COPYRIGHT
   install -d $pkgdir/usr/share/texmf/tex/generic
