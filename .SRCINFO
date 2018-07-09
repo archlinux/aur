@@ -1,9 +1,8 @@
 pkgbase = lightdm-settings
 	pkgdesc = A configuration tool for the LightDM display manager
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/lightdm-settings
-	install = add-autologin-group.install
 	arch = any
 	license = GPL3
 	makedepends = desktop-file-utils
@@ -15,11 +14,7 @@ pkgbase = lightdm-settings
 	depends = python-setproctitle
 	depends = python-xapp
 	source = lightdm-settings-1.2.2.tar.gz::https://github.com/linuxmint/lightdm-settings/archive/1.2.2.tar.gz
-	source = add-autologin-group.script
-	source = add-autologin-group.service
 	sha256sums = ca558b6733baeb55e614e16c3995edaa8d3a0e9afa08794a0c09830a44495d21
-	sha256sums = 475bb4805a419aca106f9f42bcb837c7dc53eeb84b5c50d8ee8d892b55d6c2b4
-	sha256sums = a356ee9dc1e876d73c49ab30fdc6417edb7a817639122fff7fe0ebff72e33190
 
 pkgname = lightdm-settings
 
