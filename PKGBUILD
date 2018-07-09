@@ -1,19 +1,23 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
-
+# Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
+# Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 pkgname=franz
-pkgver=5.0.0_beta.17
+pkgver=5.0.0_beta.18
 pkgrel=1
 pkgdesc="Free messaging app for services like WhatsApp, Slack, Messenger and many more."
 arch=('i686' 'x86_64')
 url="https://meetfranz.com/"
 license=('Apache')
-depends=('nodejs' 'libx11' 'libxext' 'libxss' 'libxkbfile' 'gconf')
+depends=('nodejs' 'libx11' 'libxext' 'libxss''gconf' 'gtk2' 'alsa-lib' 'nss' 'libxtst')
 makedepends=('yarn' 'npm' 'git' 'python2')
 conflicts=('franz-bin')
-source=("https://github.com/meetfranz/$pkgname/archive/v${pkgver//_/-}.tar.gz"
-        "franz.desktop")
-sha256sums=('380874f4189a54994a46c99380bbda441ff563fe70e95062e12500dc5f8432be'
-            '79813a0f7db258fc7c4969cc20b412771530865bec36c0a4b9e18a2e435d97b8')
+source=(
+  "https://github.com/meetfranz/$pkgname/archive/v${pkgver//_/-}.tar.gz"
+  'franz.desktop'
+)
+sha256sums=(
+  '24768724ea51cc27ccb16997151f0f012c5dd4198ecf32b29826165ef294f2a2'
+  '79813a0f7db258fc7c4969cc20b412771530865bec36c0a4b9e18a2e435d97b8'
+)
 
 prepare() {
   cd "$pkgname-${pkgver//_/-}"
