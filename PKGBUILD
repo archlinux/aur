@@ -4,8 +4,8 @@
 # PRs welcome at: https://github.com/ActivityWatch/aur-activitywatch-bin
 
 pkgname=activitywatch-bin
-pkgver='0.8.0b3'
-pkgrel=3
+pkgver='0.8.0b5'
+pkgrel=1
 epoch=
 pkgdesc="Log what you do on your computer. Simple, extensible, no third parties."
 arch=('x86_64')
