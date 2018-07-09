@@ -2,8 +2,8 @@
 
 _pkgname=ttl2c
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.r3.d832ab8
-pkgrel=3
+pkgver=1.0.1.r5.b64e425
+pkgrel=1
 epoch=1
 pkgdesc="Turtle to header conversion utility for LV2 Plugin developers "
 arch=('i686' 'x86_64')
@@ -13,21 +13,17 @@ depends=('boost-libs')
 makedepends=('python')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/lvtk/ttl2c.git"
-        'wscript-disable-check.diff')
-md5sums=('SKIP'
-         '1203e5270aafad77868aa740b74f7481')
+source=("${_pkgname}::git+https://github.com/lvtk/ttl2c.git")
+md5sums=('SKIP')
 
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  echo $(git describe --tags).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  patch -p0 -i "$srcdir/wscript-disable-check.diff"
+  local ver=$(grep ^VERSION wscript | cut -f 2 -d "'")
+  local rev=$(git rev-list --count HEAD)
+  local githash=$(git rev-parse --short HEAD)
+  echo ${ver}.r${rev}.${githash}
 }
 
 build() {
