@@ -3,7 +3,7 @@
 
 pkgname=warsaw-bin
 pkgver=1.12.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(i686 x86_64)
 url="http://www.dieboldnixdorf.com.br/warsaw"
@@ -31,28 +31,17 @@ package() {
 	# dump lib files to /lib
 	cp -r lib "$pkgdir/usr/"
     
-    # Enable executable permission for binaries
-  chmod +x "$pkgdir/usr/local/bin/warsaw/core"
-  chmod +x "$pkgdir/usr/local/bin/warsaw/migratecache"
-  chmod +x "$pkgdir/usr/local/bin/warsaw/wsatspi"
-    
-    # Set paths in comply with Arch Packaging Standards
-    # i.e. Use /usr/bin, /etc, and /tmp
-  sed -i 's|/usr/local/bin|/usr/bin|' \
-    "$pkgdir/etc/xdg/autostart/warsaw.desktop"
+	# Enable executable permission for binaries
+	chmod +x "$pkgdir/usr/local/bin/warsaw/core"
+	chmod +x "$pkgdir/usr/local/bin/warsaw/migratecache"
+	chmod +x "$pkgdir/usr/local/bin/warsaw/wsatspi"
+
+	# Set paths in comply with Arch Packaging Standards
+	# i.e. Use /usr/bin, /etc, and /tmp
+	sed -i 's|/usr/local/bin|/usr/bin|' \
+	  "$pkgdir/etc/xdg/autostart/warsaw.desktop"
   
-    # Fix insecure RPATH to /usr/local/ directories
-  chrpath -d "$pkgdir/usr/local/bin/warsaw/migratecache"
-  chrpath -d "$pkgdir/usr/local/lib/warsaw/wsftuan.so"
-  chrpath -d "$pkgdir/usr/local/lib/warsaw/wslbmid.so"
-  chrpath -d "$pkgdir/usr/local/lib/warsaw/wsftup.so"
-  chrpath -d "$pkgdir/usr/local/lib/warsaw/wsftbmo.so"
-  chrpath -d "$pkgdir/usr/local/lib/warsaw/wsftbco.so"
-  chrpath -d "$pkgdir/usr/local/lib/warsaw/wsftbid.so"
-  chrpath -d "$pkgdir/usr/local/lib/warsaw/wsftdl.so"
-  chrpath -d "$pkgdir/usr/local/lib/warsaw/wsbrmu.so"
-  
-    # Install copyright and license in proper directory
-  install -Dm644 "$pkgdir"/usr/share/{doc,licenses}/warsaw/copyright
-  rm -rf "$pkgdir/usr/share/doc"
+	# Install copyright and license in proper directory
+	install -Dm644 "$pkgdir"/usr/share/{doc,licenses}/warsaw/copyright
+	rm -rf "$pkgdir/usr/share/doc"
 }
