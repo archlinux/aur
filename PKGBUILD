@@ -1,8 +1,8 @@
 # Maintainer: asermax <asermax@gmail.com>
-_branch='cd2a0921aa74d1f85f0fc65dc6cef1b6e4dd0438'
+_branch='dddae1ea3911f7ecbda99ad21dbead0397a2d289'
 
 pkgname=kaggle-api
-pkgver=1.3.10
+pkgver=3.12
 pkgrel=1
 pkgdesc='Kaggle API CLI'
 
@@ -27,7 +27,7 @@ source=(
   "https://github.com/Kaggle/kaggle-api/archive/${_branch}.tar.gz"
 )
 
-md5sums=('8cb1fe36fc023c56c09091f143774694')
+md5sums=('80a2b9bb912f445b8319ab17b7146dcc')
 
 prepare() {
   cd "$srcdir"/kaggle-api-$_branch
