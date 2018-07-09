@@ -1,7 +1,7 @@
 pkgbase = perfops-cli
 	pkgdesc = A simple command line tool to interact with hundreds of servers around the world. Run benchmarks and debug your infrastructure without leaving your console.
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://perfops.net
 	arch = x86_64
 	license = APACHE

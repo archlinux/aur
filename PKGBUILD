@@ -1,7 +1,7 @@
 # Maintainer: Per Osbeck <per@osbeck.com>
 pkgname=perfops-cli
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple command line tool to interact with hundreds of servers around the world. Run benchmarks and debug your infrastructure without leaving your console."
 arch=(x86_64)
 url="https://perfops.net"
@@ -12,12 +12,13 @@ md5sums=(SKIP)
 
 build() {
 	cd "$pkgname"
-	PERFOPS_BUILD_PLATFORMS=linux bash hack/build-all.sh
+	GOPATH="$srcdir" PERFOPS_BUILD_PLATFORMS=linux bash hack/build-all.sh
 }
 
-# check() {
-# 	#
-# }
+prepare() { 
+	mkdir -p "src/github.com/ProspectOne"
+	ln -sf "$srcdir/$pkgname" "src/github.com/ProspectOne/$pkgname"
+}
 
 package() {
 	cd "$pkgname"
