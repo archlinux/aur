@@ -7,7 +7,7 @@ pkgdesc="Free messaging app for services like WhatsApp, Slack, Messenger and man
 arch=('i686' 'x86_64')
 url="https://meetfranz.com/"
 license=('Apache')
-depends=('nodejs' 'libx11' 'libxkbfile' 'libxext' 'libxss' 'gconf' 'gtk2' 'alsa-lib' 'nss' 'libxtst')
+depends=('nodejs' 'libx11' 'libxkbfile' 'libxext' 'libxss' 'gconf' 'gtk2' 'alsa-lib' 'nss' 'libxtst' 'nodejs-nan>=2.8.0')
 makedepends=('yarn' 'npm' 'git' 'python2')
 conflicts=('franz-bin')
 source=(

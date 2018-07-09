@@ -20,6 +20,7 @@ pkgbase = franz
 	depends = alsa-lib
 	depends = nss
 	depends = libxtst
+	depends = nodejs-nan>=2.8.0
 	conflicts = franz-bin
 	source = https://github.com/meetfranz/franz/archive/v5.0.0-beta.18.tar.gz
 	source = franz.desktop
