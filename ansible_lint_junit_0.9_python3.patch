@@ -1,0 +1,19 @@
+diff --git a/bootstrap/bootstrap.py b/bootstrap/bootstrap.py
+index bba1c24..27f57ac 100755
+--- a/bootstrap/bootstrap.py
++++ b/bootstrap/bootstrap.py
+@@ -49,7 +49,7 @@ def main():
+         parsed_lines = []
+         for line in ansible_lint_output:
+             if 0 < len(line):
+-                # print line
++                # print(line)
+ 
+                 line_match = line_regex.match(line)
+ 
+@@ -78,4 +78,4 @@ def main():
+     parsed_lines_xml = ET.tostring(testsuites, encoding='utf8', method='xml')
+ 
+     if options.verbose:
+-        print parsed_lines_xml
++        print(parsed_lines_xml)
