@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-no-start-duplicated-conjunction
+	pkgdesc = textlint rule that check no start with duplicated conjunction.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/textlint-rule/textlint-rule-no-start-duplicated-conjunction
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-no-start-duplicated-conjunction-2.0.2.tgz
+	source = http://registry.npmjs.org/textlint-rule-no-start-duplicated-conjunction/-/textlint-rule-no-start-duplicated-conjunction-2.0.2.tgz
+	sha1sums = 49612a49dca18bbe5468019836b5c9be24c09e79
+
+pkgname = textlint-rule-no-start-duplicated-conjunction
+
