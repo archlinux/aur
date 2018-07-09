@@ -1,6 +1,7 @@
 # Maintainer: Faerbit <faerbit at gmail dot com>
 
 pkgname=lxqt_wallet
+_pkgname=lxqt-wallet
 pkgver=3.1.0
 pkgrel=1
 pkgdesc="Secure storage of information for lxqt"
@@ -11,8 +12,8 @@ depends=("libgcrypt")
 optdepends=("kwallet: store passwords in kwallet"
             "libsecret: store passwords in GNOME's secret service")
 makedepends=("cmake" "qt5-base" "kwallet" "libsecret" "qt5-tools")
-source=("https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"
-        "https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz.asc")
+source=("https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
+        "https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc")
 sha256sums=("SKIP" "SKIP")
 validpgpkeys=("3AD67A14194FE8E7AEFCA19C3E1F380427A5D3CA")
 
@@ -25,12 +26,12 @@ build() {
         -DNOSECRETSUPPORT=false \
         -DNOKDESUPPORT=false \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        "$srcdir/$pkgname-$pkgver"
+        "$srcdir/$_pkgname-$pkgver"
     make
 }
 
 package() {
     cd build
     make DESTDIR="$pkgdir" install
-    install -D "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D "$srcdir/$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
