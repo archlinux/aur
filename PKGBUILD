@@ -1,7 +1,7 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=sdrangel
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Qt5/OpenGL SDR and signal analyzer frontend."
 arch=('any')
@@ -20,14 +20,14 @@ optdependds=(
   'libmirisdr4: SDRPlay support'
   'rtl-sdr: RTLSDR support'
   'libad9361-iio: PlutoSDR support'
-  'limesuite: LiimeSDR support'
+  'limesuite: LimeSDR support'
   'bladerf: BladeRF support'
   'airspy: AirSPY support'
 )
 provides=("sdrangel")
 conflicts=("sdrangel")
 source=("https://github.com/f4exb/sdrangel/archive/v$pkgver.tar.gz")
-sha256sums=('9ce3f0156cb5d5b8a014ad8f81f6474edcef2ab11423132a10b1da5eda13a60e')
+sha256sums=('ffc4cfada34e9471df04ab52d773b617fb636b59d359b9d2b3c0ae66fe8273ef')
 
 build() {
   mkdir -p "$srcdir"/$pkgname-$pkgver/build

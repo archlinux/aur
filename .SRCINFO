@@ -1,6 +1,6 @@
 pkgbase = sdrangel
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = sdrangel
 	depends = pulseaudio
 	provides = sdrangel
 	conflicts = sdrangel
-	source = https://github.com/f4exb/sdrangel/archive/v4.0.2.tar.gz
-	sha256sums = 9ce3f0156cb5d5b8a014ad8f81f6474edcef2ab11423132a10b1da5eda13a60e
+	source = https://github.com/f4exb/sdrangel/archive/v4.0.3.tar.gz
+	sha256sums = ffc4cfada34e9471df04ab52d773b617fb636b59d359b9d2b3c0ae66fe8273ef
 
 pkgname = sdrangel
 
