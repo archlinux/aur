@@ -1,6 +1,6 @@
 pkgbase = opencv-git
 	pkgdesc = Open Source Computer Vision Library
-	pkgver = 3.4.1.r410.g84b3b5b4a4
+	pkgver = 3.4.2.r22.ga29d11240e
 	pkgrel = 1
 	url = https://opencv.org/
 	arch = i686
@@ -8,31 +8,31 @@ pkgbase = opencv-git
 	license = BSD
 	makedepends = git
 	makedepends = cmake
-	makedepends = python2-numpy
 	makedepends = python-numpy
+	makedepends = python2-numpy
 	makedepends = mesa
 	makedepends = eigen
 	makedepends = hdf5
 	makedepends = lapacke
-	makedepends = gtkglext
+	makedepends = gtk3
 	depends = intel-tbb
 	depends = openexr
-	depends = xine-lib
+	depends = gst-plugins-base
 	depends = libdc1394
 	depends = cblas
 	depends = lapack
-	depends = jasper
 	depends = libgphoto2
-	optdepends = opencv-samples
-	optdepends = gtkglext: for the HighGUI module
+	depends = jasper
+	optdepends = opencv-samples: samples
+	optdepends = gtk3: for the HighGUI module
 	optdepends = hdf5: Support for HDF5 format
 	optdepends = opencl-icd-loader: For coding with OpenCL
 	optdepends = python-numpy: Python 3 interface
 	optdepends = python2-numpy: Python 2 interface
-	provides = opencv=3.4.1.r410.g84b3b5b4a4
+	provides = opencv=3.4.2.r22.ga29d11240e
 	conflicts = opencv
-	source = git+https://github.com/opencv/opencv.git
-	source = git+https://github.com/opencv/opencv_contrib.git
+	source = git+https://github.com/opencv/opencv.git#branch=3.4
+	source = git+https://github.com/opencv/opencv_contrib.git#branch=3.4
 	sha512sums = SKIP
 	sha512sums = SKIP
 
