@@ -22,12 +22,12 @@ _urw_font_dir='/usr/share/fonts/gsfonts'
 _windows_font_dir='/usr/share/fonts/WindowsFonts'
 _1st_apple_font_dir='/usr/share/fonts/TTF'
 _2nd_apple_font_dir='/usr/share/fonts/Type1'
-_commit='bba545bbbb6860f71e2ff5545197660b23af9d75'
+_commit='db940ccd2e391824d484e8f86746ea2aeb4772f6'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.0.8.5
+pkgver=7.0.8.6
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
@@ -39,9 +39,9 @@ depends=(
         'ghostscript' 'gsfonts' 'ttf-dejavu' 'libraw' 'librsvg' 'libwebp' 'libwmf'
         'ocl-icd' 'openexr' 'openjpeg2' 'pango'
         'jemalloc' 'bzip2' 'libx11' 'libsm' 'libice' 'libxt' 'zlib' 'fftw' 'djvulibre'
-        'freetype2' 'graphviz' 'jbigkit' 'libjpeg-turbo' 'xz' 'libtiff'
+        'freetype2' 'libheif' 'graphviz' 'jbigkit' 'libjpeg-turbo' 'xz' 'libtiff'
     # AUR:
-        'libumem-git' 'autotrace-nomagick' 'flif' 'libfpx' 'libheif'
+        'libumem-git' 'autotrace-nomagick' 'flif' 'libfpx'
 )
 makedepends=('git' 'perl' 'opencl-headers' 'chrpath' 'glu' 'ghostpcl' 'ghostxps')
 source=("${pkgbase}-git"::"git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
