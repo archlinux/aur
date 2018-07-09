@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/f4exb/sdrangel"
 license=('GPL3')
 depends=(
-  'pkg-config' 'boost' 'log4cpp'
+  'pkg-config' 'boost' 'log4cpp' 'opencv'
   'qt5-base>=5.9' 'qt5-tools' 'qt5-multimedia' # QT5
   'fftw' 'lz4' 'nanomsg' 'ffmpeg>=3.1'
   'cm256cc' 'dsdcc>=1.8.3'
@@ -19,6 +19,7 @@ optdependds=(
   'ffmpeg: DATV demodulator'
   'libmirisdr4: SDRPlay support'
   'rtl-sdr: RTLSDR support'
+  'hackrf: HackRF support'
   'libad9361-iio: PlutoSDR support'
   'limesuite: LimeSDR support'
   'bladerf: BladeRF support'
