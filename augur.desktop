@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=augur
+Comment=Augur Desktop Application
+Exec="/usr/bin/augur" %U
+Terminal=false
+Type=Application
+Icon=augur
+Categories=Office;
