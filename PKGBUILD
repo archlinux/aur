@@ -3,7 +3,7 @@
 
 _pkgname=nwjs-sdk
 pkgname=$_pkgname-bin
-pkgver=0.31.4
+pkgver=0.31.5
 pkgrel=1
 pkgdesc="An app runtime based on Chromium and node.js (SDK version)."
 arch=("x86_64")
@@ -14,10 +14,11 @@ optdepends=(
     "nodejs: npm package support"
     "nw-gyp: native add-on build tool for node-webkit"
 )
+options=(!strip)
 provides=("node-webkit" "nwjs")
 conflicts=("node-webkit" "nwjs")
 source=("http://dl.nwjs.io/v$pkgver/$_pkgname-v$pkgver-linux-x64.tar.gz")
-sha512sums=('d920dd997d9123ad9551a96b35a47cf5d15419d1a707d4c8ae2ba51b5a5123fc78792e37bb4bcf8396eef34d08cc12f63c76dbca0ffeed7fe9fa38800d0f5266')
+sha512sums=('100b3563c7f9c70f5eba558c7e4511e056b81140621285dd73879c4a422f7c23276589422c66f2167c5e9e6572e5467aa8a35885527bc962751c2fa56cc00918')
 
 package() {
   cd "$srcdir/$_pkgname-v$pkgver-linux-x64"
