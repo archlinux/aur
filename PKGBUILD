@@ -1,21 +1,32 @@
-# Maintainer: Dennis Fink <metalgamer@c3l.lu>
-# Maintainer: Tobias Frilling <tobias@frilling-online.de>
+# Maintainer: Ward Segers <w@rdsegers.be>
+# Contributer: Dennis Fink <metalgamer@c3l.lu>
+# Contributer: Tobias Frilling <tobias@frilling-online.de>
 
-pkgname=ttf-monaco
-pkgver=6.1
-pkgrel=3
-pkgdesc="A monospaced sans-serif typeface by Apple Inc."
+pkgname=ttf-breeze-sans
+pkgver=20150728
+pkgrel=1
+pkgdesc="A sans-serif typeface by Samsung, designed for Tizen."
 arch=('any')
-license=('unknown')
-url="http://www.apple.com/"
+license=('Apache License 2.0')
+url="https://developer.tizen.org/design/platform/styles/typography"
 depends=('fontconfig')
-replaces=('monaco_linux' 'monaco-linux-font')
-conflicts=('monaco_linux' 'monaco-linux-font')
-install=ttf-monaco.install
-source=("Monaco_Linux.ttf::https://github.com/todylu/monaco.ttf/blob/master/monaco.ttf?raw=true")
-sha1sums=('da768f1a6aac6b10aa5c92f2415a5e6b215ee9ff')
+replaces=('')
+conflicts=('')
+source=("https://developer.tizen.org/sites/default/files/documentation/breeze_sans.zip")
+install=ttf-breeze-sans.install
+sha512sums=('71b71968a2d7fb97acd3337d296b155f78bd5b1248714bdb7b34f51f1be0bc709c4c1e863ed047b9395c1fc43f97b11d9b687e38b8ea257ab0ad587c0b370f3e')
+
 
 package() {
   install -d "$pkgdir/usr/share/fonts/TTF/"
-  install -m644 Monaco_Linux.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 BreezeSans-Bold_${pkgver}.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 BreezeSans-BoldCondensed_${pkgver}.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 BreezeSans-Light_${pkgver}.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 BreezeSans-LightCondensed_${pkgver}.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 BreezeSans-Medium_${pkgver}.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 BreezeSans-MediumCondensed_${pkgver}.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 BreezeSans-Regular_${pkgver}.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 BreezeSans-RegularCondensed_${pkgver}.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 BreezeSans-Thin_${pkgver}.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 BreezeSans-ThinCondensed_${pkgver}.ttf "$pkgdir/usr/share/fonts/TTF/"
 }
