@@ -1,7 +1,7 @@
 # Maintainer: FFY00 <filipe.lains@gmail.cm>
 pkgname=budgie-brightness-applet-git
 _gitname=budgie-brightness-control-applet
-pkgver=0.2.r0.0cad740
+pkgver=0.2.1.r0.2372b25
 pkgrel=1
 pkgdesc="Screen brightness applet for Budgie Desktop"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-  mkdir -p "$srcdir"/$_gitname/buid
+  mkdir -p "$srcdir"/$_gitname/build
   cd "$srcdir"/$_gitname/build
 
   meson .. \
