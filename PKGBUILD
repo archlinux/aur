@@ -9,8 +9,6 @@ url="https://github.com/pothosware/SoapyRemote"
 license=('custom:Boost')
 depends=('soapysdr')
 makedepends=('cmake')
-provides=('soapyremote')
-conflicts=('soapyremote')
 source=("$pkgname-$pkgver::$url/archive/$_gver.tar.gz"
 	'git_revision.patch')
 sha256sums=('94146fa0b2f8d658c1e712e0215c7f89163637690fd6f58e75db1f47839f4f2b'
