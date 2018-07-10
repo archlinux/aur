@@ -9,9 +9,7 @@ url="https://github.com/pothosware/SoapyUHD"
 license=('GPL3')
 depends=('boost' 'libuhd' 'soapysdr')
 makedepends=('cmake')
-provides=('soapyuhd')
-conflicts=('soapyuhd')
-source=("https://github.com/pothosware/SoapyUHD/archive/$_gver.tar.gz")
+source=("$pkgname-$pkgver::$url/archive/$_gver.tar.gz")
 sha256sums=('7b7f2bc9a565f42b6e9b0831db942a5231fd048c79976fb2d1f1710efef83dd0')
 
 build() {
