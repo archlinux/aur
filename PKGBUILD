@@ -27,7 +27,7 @@ optdependds=(
 )
 provides=("sdrangel")
 conflicts=("sdrangel")
-source=("https://github.com/f4exb/sdrangel/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
 sha256sums=('ffc4cfada34e9471df04ab52d773b617fb636b59d359b9d2b3c0ae66fe8273ef')
 
 build() {
