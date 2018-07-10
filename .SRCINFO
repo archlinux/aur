@@ -1,7 +1,7 @@
 pkgbase = deepin-network-utils
 	pkgdesc = Deepin network utils
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxdeepin/dde-network-utils
 	arch = x86_64
 	groups = deepin

@@ -3,7 +3,7 @@
 
 pkgname=deepin-network-utils
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin network utils"
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dde-network-utils"
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 build() {
   cd ${pkgname}
-  git checkout 1e4bcc0
+  git checkout 59572797c2733ddc275c8dc3280f8ac3cdbb2048
   qmake
   make -j4
 }
