@@ -9,14 +9,10 @@ license=('GPL3')
 depends=('pygtk' 'swh-plugins' 'gnome-icon-theme' 'pulseaudio' 'bc' 'python2-gobject')
 provides=('pulseaudio-equalizer-ladspa')
 conflicts=('pulseaudio-equalizer-ladspa')
-source=(
-  "$url/archive/v$pkgver.tar.gz"
-  'ladspa_lib_path.sh'
-)
-sha256sums=(
-  '136cc75fdda5b099f5b5b55564cd0c1a42e5c29f70def668c9d95eb8ee83a8ff'
-  'cadad5c6257fdd3a91fa2d5caf88d23aa7e59e4cc19f25a39c3bc888994ed950'
-)
+source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz"
+	'ladspa_lib_path.sh')
+sha256sums=('136cc75fdda5b099f5b5b55564cd0c1a42e5c29f70def668c9d95eb8ee83a8ff'
+	    'cadad5c6257fdd3a91fa2d5caf88d23aa7e59e4cc19f25a39c3bc888994ed950')
 
 package() {
   install -Dm644 "$srcdir"/pulseaudio-equalizer-ladspa-$pkgver/equalizerrc "$pkgdir"/usr/equalizerrc
