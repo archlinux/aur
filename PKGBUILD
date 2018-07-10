@@ -11,7 +11,7 @@ depends=('mbelib' 'serialdv')
 makedepends=('cmake')
 provides=('dsdcc')
 conflicts=('dsdcc')
-source=("$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
 sha256sums=('0c865969948c5c9dd80900cb0656605d603a2ab688f98d6641bb3a6d97b592ed')
 
 prepare() {

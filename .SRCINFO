@@ -10,7 +10,7 @@ pkgbase = dsdcc
 	depends = serialdv
 	provides = dsdcc
 	conflicts = dsdcc
-	source = https://github.com/f4exb/dsdcc/archive/v1.8.3.tar.gz
+	source = dsdcc-1.8.3::https://github.com/f4exb/dsdcc/archive/v1.8.3.tar.gz
 	sha256sums = 0c865969948c5c9dd80900cb0656605d603a2ab688f98d6641bb3a6d97b592ed
 
 pkgname = dsdcc
