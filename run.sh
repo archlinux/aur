@@ -105,7 +105,7 @@ _restart() {
 
 _stop() {
     if [[ "$pid" ]]; then
-        echo -n "Stopping Freenet"
+        echo "Stopping Freenet, this will take a few minutes"
         kill -TERM $(get_wrapper_pid)
         [[ $? != 0 ]] && fail "Unable to stop Freenet: kill -TERM $pid"
         i=0

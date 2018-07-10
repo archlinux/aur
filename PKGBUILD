@@ -1,107 +1,51 @@
-# Maintainer: skydrome <skydrome at@at i2pmail do.t org>
-# Contributors:
+# Maintainer: skydrome <skydrome at@at proton mail dot com>
+# Contributors: Thynix
 
-_fred=#tag=build01478
-_contrib=#tag=v50
+_fred=#tag=build01481
 
-_wot=#tag=build0019
-#_wot=#branch=next
-
+_wot=#branch=next
 _keyutils=#tag=v5026
 _upnp=#tag=10007
 
-pkgname=freenet
-pkgver=0.7.5.1478
-pkgrel=1
 _pkgver=0.7.5
+_plugins=('WebOfTrust' 'UPnP' 'KeyUtils')
+
+# comment out to run unit tests
+BUILDENV+=('!check')
+
+pkgname=freenet
+pkgver=0.7.5.1481
+pkgrel=1
 pkgdesc="An encrypted network without censorship"
 url="https://freenetproject.org"
 license=('GPL2')
 arch=('i686' 'x86_64')
 install='freenet.install'
-
-depends=('java-runtime>=7' 'gmp' 'java-service-wrapper')
-makedepends=('java-environment>=7' 'apache-ant' 'git')
+depends=('java-runtime>=8' 'gmp' 'java-service-wrapper')
+makedepends=('java-environment>=8' 'apache-ant' 'gradle' 'git' 'java-hamcrest')
 checkdepends=('junit')
-# comment out to run unit tests
-BUILDENV+=('!check')
-
 backup=('opt/freenet/wrapper.config'
         'opt/freenet/conf/freenet.ini')
 
-_plugins=('WebOfTrust' 'UPnP' 'KeyUtils')
-
-# these are packages we need to download to prevent ant from
-# downloading them itself we are also going to build as much
-# as we can from source, including this array
-_deps=("http://downloads.sourceforge.net/project/sevenzip/LZMA%20SDK/4.65/lzma465.tar.bz2"
-       "league-lzmajio-0.95-0-gd38bf5c.tar.gz::https://codeload.github.com/league/lzmajio/legacy.tar.gz/0.95"
-       "http://downloads.sourceforge.net/project/bitcollider/jBitcollider%20%28Java%29/0.8/jBitcollider-0.8.zip"
-       "https://www.spaceroots.org/software/mantissa/mantissa-7.2-src.zip"
-       #"https://downloads.freenetproject.org/contrib/db4o-7.4-java.zip"
-       "https://github.com/skydrome/db4o-7.4-java/raw/master/db4o-7.4-java.zip")
-
-# ant will extract these
-noextract=('lzma465.tar.bz2'
-           'league-lzmajio-0.95-0-gd38bf5c.tar.gz'
-           'jBitcollider-0.8.zip'
-           'mantissa-7.2-src.zip'
-           'db4o-7.4-java.zip'
-           'commons-compress.jar'
-           'bcprov-jdk15on-156.jar')
-
-# here we have only java-commons-compress coming prebuilt by
-# the freenetproject, the rest we build ourselves
 source=("git+https://github.com/freenet/fred.git${_fred}"
-        "git+https://github.com/freenet/contrib.git${_contrib}"
         "git+https://github.com/freenet/plugin-UPnP.git${_upnp}"
         "git+https://github.com/freenet/plugin-KeyUtils.git${_keyutils}"
         "git+https://github.com/freenet/plugin-WebOfTrust.git${_wot}"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
-        #"https://downloads.freenetproject.org/alpha/opennet/seednodes.fref"
-        "https://github.com/skydrome/db4o-7.4-java/raw/master/seednodes.fref"
-        #"https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar"
-        "commons-compress.jar::http://central.maven.org/maven2/org/apache/commons/commons-compress/1.4.1/commons-compress-1.4.1.jar"
-        "https://www.bouncycastle.org/download/bcprov-jdk15on-158.jar"
-        "http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.bz2"
-        "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c"
-        "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/include/jcpuid.h"
-        'fred.properties' 'contrib.properties' 'gradle.properties' 'run.sh'
-        'freenet.service' 'freenet.ini' 'wrapper.config'
-        "${_deps[@]}")
+        "https://github.com/freenet/seedrefs/files/1609768/seednodes.zip"
+        'gradle.properties' 'run.sh' 'freenet.service' 'freenet.ini' 'wrapper.config')
 
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '7b375cbd2c715fd3d239985ae2a97021cfef8483c88ff57f6364016451e65c21'
-            '28a00d80716f073d644b9da76e94b5e8ff94de8e9323f06f558fba653fcf5f86'
-            'eb61ab61065ed96f9f2d5cde94d326233c09fdec9333c1185f2fa65ee88a4236'
-            '96effcca2581c1ab42a4828c770b48d54852edf9e71cefc9ed2ffd6590571ad1'
-            '1966a96a0733cb19b8172f03b3582141fea8f82abcc4b79800ba0a92a5c1122d'
-            '9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2'
-            '236adfd42be0a7a74f2dec1356e517442b2ddcbb5d44cb0dab3671b6fddfca79'
-            '865c1f259d9c544861cc12b4ea64ad35ec6388c1392b3e5247eaed0f316e42b7'
+            '0d91d2462f36d35235cc86cbdee11890cadec91a0a01b89d96010924f6c2be99'
             '305d00533d3efcf31dfbb9944c703a9b01227ba38495add70b9bc4849c29498d'
-            '9912dcfc8f30143b68e6f9c51505ae921100eb6b24690a8680582bb23559d95a'
+            'a6581d33448c2989ef9f7e888e7e47a8784b0159e76bf8f6bc97eec1d7d55769'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
             'c0ce093a098d91dee6be294f8a2fc929aabad95612f994933194d0da5c4cdd25'
-            'f7bceda39b36d1d79e70c8ba8e0e68d4cfe060b16e67d8341078af5fda13b405'
-            'c935fd04dd8e0e8c688a3078f3675d699679a90be81c12686837e0880aa0fa1e'
-            '265f7ed2dd4fecb058884d3f8974674b06e0be46131c3b2bc6a310373937d2ef'
-            'b36482ee9e919c669bb1797ff7e50f57edf505af67664e280fe1dff361861044'
-            'e438135d69139ed4fa44400f416ea73935d16afe50dfe490b7bba0602ee89476'
-            '73f307a8cbd114fdc0af8daa067994a2cdc364c4053e6734d16b8dd1d5a0469f')
-
-if [[ "$CARCH" = 'i686' ]]; then
-     _arch=x86
-    __arch=i386
-else
-     _arch=x86_64
-    __arch=amd64
-fi
+            '609705bafc02048f366711f470bebaf2d4e8c5fa1285b1611719826aef755107')
 
 pkgver() {
     cd "$srcdir/fred"
@@ -111,153 +55,34 @@ pkgver() {
 prepare() {
     cd "$srcdir/fred"
 
-    rm -rf contrib
-    ln -sf ../contrib contrib
-    mkdir -p contrib/freenet-ext/{dist,lib}
-
     ln -sf "$srcdir/gradle.properties" .
-    ln -sf "$srcdir/gradle.properties" ./contrib/freenet-ext
-
-    # no need to fetch this file every time freenet starts as its only updated
-    # monthly, if it even changes at all
-    sed -i src/freenet/node/updater/NodeUpdateManager.java \
-        -e "s:updateIPToCountry =.*:updateIPToCountry = false;:"
-
-    # had a hard time building these sources, we'll use the prebuilt jars
-    cp "$srcdir/commons-compress.jar" contrib/freenet-ext/dist
-
-    # this is done to satisfy ant
-    ln -sf /usr/share/java/wrapper.jar contrib/freenet-ext/dist/
-    ln -sf /usr/share/java/{hamcrest-core,junit}.jar lib/
-    ln -sf "$srcdir"/ant-contrib/{ant-contrib-1.0b3,ant-contrib}.jar
-    cp "$srcdir"/bcprov-jdk15on-158.jar lib/bcprov.jar
-    cp "$srcdir"/{lzma465.tar.bz2,league-lzmajio-0.95-0-gd38bf5c.tar.gz,jBitcollider-0.8.zip,mantissa-7.2-src.zip,db4o-7.4-java.zip} contrib/freenet-ext/lib
-
-    # we're going to compile our own C libraries
-    cd "$srcdir/contrib"
-    rm -rf NativeBigInteger/lib/net/i2p/util/*
-    rm -rf NativeThread/lib/freenet/support/io/*.so
-    rm -rf onion-fec/bin/lib/{freebsd,linux,win32}-*
-
-    # these are from the I2P project
-    cd "$srcdir/contrib/jcpuid"
-    rm -rf lib/freenet/support/CPUInformation/* include/jcpuid.h
-    ln -sf "$srcdir"/jcpuid.h include/
-    ln -sf "$srcdir"/jcpuid.c src/
+    sed -i "$srcdir/plugin-UPnP/build.xml" \
+        -e 's:value="1.5":value="1.8":'
 }
 
 build() {
-    source /etc/profile.d/apache-ant.sh
-    source /etc/profile.d/jre.sh
+    cd "$srcdir/fred"
+
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
-
-    build_jbigi
-    build_nativethread
-    build_jcpuid
-    build_fec
-
-    msg "Building Contrib Modules..."
-    cd "$srcdir/fred/contrib/freenet-ext"
-    ant -propertyfile "$srcdir/contrib.properties" \
-        -Djava.class.dirs.user="$srcdir/ant-contrib"
-
-    # ant doesnt seem to put all the required folders into the
-    # freenet-ext.jar correctly, make sure to do it here
-    cd dist
-    for dep in bitcollider-core commons-compress db4o lzmajio mantissa wrapper
-    do
-        jar xf "${dep}.jar"
-    done
-    jar uf freenet-ext.jar com net org SevenZip
+    export GRADLE_USER_HOME="$srcdir"
 
     msg "Building Freenet..."
-    cd "$srcdir/fred"
-    ant package-only -propertyfile "$srcdir/fred.properties" \
-        -f build-clean.xml -Ddoc.skip=true
+    gradle copyRuntimeLibs
 
     build_plugins
 }
 
-build_jbigi() {
-    msg "Building NativeBigInt..."
-    cd "$srcdir/contrib/NativeBigInteger"
-
-    _objdir='lib/net/i2p/util'
-    CFLAGS+=" -fPIC -Wall"
-    INCLUDES="-I./jbigi/include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
-    LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjbigi.so -lgmp"
-    rm -f *.o *.so
-
-    set -x
-    gcc -c $CFLAGS $INCLUDES jbigi/src/jbigi.c
-    gcc $LDFLAGS jbigi.o -o "$_objdir"/libjbigi-linux-none.so
-    set +x
-}
-
-build_nativethread() {
-    msg "Building NativeThread..."
-    cd "$srcdir/contrib/NativeThread"
-
-    _objdir='lib/freenet/support/io'
-    INCLUDES="-I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
-    LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,llibnative.so -lc"
-    rm -f *.o *.so NativeThread.h
-
-    set -x
-    javah -o NativeThread.h -classpath ../../fred/src freenet.support.io.NativeThread
-    gcc -c $CFLAGS $INCLUDES NativeThread.c
-    gcc $LDFLAGS NativeThread.o -o "$_objdir"/libNativeThread-${__arch}.so
-    set +x
-}
-
-build_jcpuid() {
-    msg "Building NativeCPUID..."
-    cd "$srcdir/contrib/jcpuid"
-
-    _objdir='lib/freenet/support/CPUInformation'
-    INCLUDES="-I./include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
-    LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjcpuid-x86-linux.so"
-    rm -f *.o *.so
-
-    set -x
-    gcc -c $CFLAGS $INCLUDES src/jcpuid.c
-    gcc $LDFLAGS jcpuid.o -o "$_objdir"/libjcpuid-${_arch}-linux.so
-    set +x
-}
-
-build_fec() {
-    msg "Building onion-fec..."
-    cd "$srcdir/contrib/onion-fec/src/csrc"
-
-    _objdir='../../bin/lib/linux-${_arch}'
-    LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro"
-    INCLUDES="-I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
-    _CLASSPATH="-classpath ../ com.onionnetworks.fec"
-
-    mkdir -p "$_objdir"
-    rm -f *.o *.so *.S com_*.h
-
-    set -x
-    javah -o com_onionnetworks_fec_Native8Code.h  ${_CLASSPATH}.Native8Code
-    javah -o com_onionnetworks_fec_Native16Code.h ${_CLASSPATH}.Native16Code
-    gcc -S $CFLAGS fec.c -DGF_BITS=8  -o fec8.S
-    gcc -S $CFLAGS fec.c -DGF_BITS=16 -o fec16.S
-    gcc -c $CFLAGS $INCLUDES fec-jinterf.c -DGF_BITS=8  -o fec8-jinterf.o
-    gcc -c $CFLAGS $INCLUDES fec-jinterf.c -DGF_BITS=16 -o fec16-jinterf.o
-    gcc -c $CFLAGS fec8.S  -DGF_BITS=8  -o fec8.o
-    gcc -c $CFLAGS fec16.S -DGF_BITS=16 -o fec16.o
-    gcc $LDFLAGS fec8.o fec8-jinterf.o   -o "$_objdir"/libfec8.so
-    gcc $LDFLAGS fec16.o fec16-jinterf.o -o "$_objdir"/libfec16.so
-    set +x
-}
-
 build_plugins() {
+    source /etc/profile.d/apache-ant.sh
+
     for plugin in ${_plugins[@]}; do
         msg "Building Plugin ${plugin}..."
         cd "$srcdir/plugin-${plugin}"
         ant dist \
-            -Dfreenet-cvs-snapshot.location=../fred/dist/freenet.jar \
-            -Dfreenet-ext.location=../contrib/freenet-ext/dist/freenet-ext.jar \
+            -Dfreenet-cvs-snapshot.location=../fred/build/output/freenet.jar \
+            -Dfreenet-ext.location=../fred/build/output/freenet-ext-29.jar \
+            -Dbcprov.location=../fred/build/output/bcprov-jdk15on-1.59.jar \
+            -Djna.location=../fred/build/output/jna-4.2.2.jar \
             -Djunit.location=/usr/share/java/junit.jar \
             -Dtest.skip=true
     done
@@ -268,32 +93,30 @@ check() {
 
     # these tests use alot of memory and can cause OOM's
     rm -f test/freenet/client/async/{*Storage,ClientRequestSelector}Test.java
-
-    ant unit -propertyfile "$srcdir/fred.properties" \
-        -f build-clean.xml
+    gradle test
 }
 
 package() {
     cd "$srcdir/fred"
 
+    # Dont use bundled wrapper
+    7z d -tzip build/output/freenet-ext-29.jar org/tanukisoftware
+
     # freenet
     install -dm755 "$pkgdir"/usr/bin
     install -dm700 "$pkgdir"/run/freenet
-    install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf,noderef,persistent-temp,tmp,plugins/data,user/{data,certs}}
+    install -dm700 "$pkgdir"/opt/freenet/tmp
+    install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf,noderef,persistent-temp,plugins/data,user/{data,certs}}
 
-    install -m640 "$srcdir"/{wrapper.config,run.sh,IpToCountry.dat} \
-                                                                "$pkgdir"/opt/freenet
-    install -m640 "$srcdir"/freenet.ini                         "$pkgdir"/opt/freenet/conf
-    install -m640 contrib/freenet-ext/dist/freenet-ext.jar \
-                  dist/freenet.jar                         \
-                  lib/bcprov.jar                                "$pkgdir"/opt/freenet/lib
-    install -m640 "$srcdir"/seednodes.fref                      "$pkgdir"/opt/freenet/noderef
+    install -m640  "$srcdir"/{wrapper.config,run.sh,IpToCountry.dat} "$pkgdir"/opt/freenet
+    install -m640  "$srcdir"/freenet.ini                             "$pkgdir"/opt/freenet/conf
+    install -m640  "$srcdir"/seednodes/seednodes.fref                "$pkgdir"/opt/freenet/noderef
+    install -m640  "$srcdir"/fred/build/output/*.jar                 "$pkgdir"/opt/freenet/lib
 
     # plugins
     for plugin in ${_plugins[@]}; do
     install -m640 "$srcdir"/plugin-${plugin}/dist/${plugin}.jar "$pkgdir"/opt/freenet/plugins
     done
-
     echo "pluginmanager.loadplugin=$(echo ${_plugins[@]}|sed 's| |;|g')" \
         >>"$pkgdir"/opt/freenet/conf/freenet.ini
 
