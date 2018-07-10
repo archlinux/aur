@@ -10,9 +10,7 @@ url="https://github.com/pothosware/SoapyRTLSDR"
 license=('MIT')
 depends=('soapysdr' 'rtl-sdr')
 makedepends=('cmake')
-provides=('soapyrtlsdr')
-conflicts=('soapyrtlsdr')
-source=("$url/archive/$_gitver.tar.gz")
+source=("$pkgname-$pkgver::$url/archive/$_gitver.tar.gz")
 sha256sums=('381a2b5f02444fb1e688b49d742fb54bd5f624b96e710b470203fc4643148c15')
 
 _srcdir=SoapyRTLSDR-$_gitver

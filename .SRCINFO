@@ -8,9 +8,7 @@ pkgbase = soapyrtlsdr
 	makedepends = cmake
 	depends = soapysdr
 	depends = rtl-sdr
-	provides = soapyrtlsdr
-	conflicts = soapyrtlsdr
-	source = https://github.com/pothosware/SoapyRTLSDR/archive/soapy-rtlsdr-0.2.5.tar.gz
+	source = soapyrtlsdr-0.2.5::https://github.com/pothosware/SoapyRTLSDR/archive/soapy-rtlsdr-0.2.5.tar.gz
 	sha256sums = 381a2b5f02444fb1e688b49d742fb54bd5f624b96e710b470203fc4643148c15
 
 pkgname = soapyrtlsdr
