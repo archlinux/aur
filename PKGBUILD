@@ -1,17 +1,17 @@
-# Maintainer: ianux <ianux@free.fr>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Contributor: ianux <ianux@free.fr>
 
 pkgname=gnome-video-arcade
-pkgver=0.8.6
+pkgver=0.8.8
 pkgrel=1
-pkgdesc="Simple GTK3 MAME front-end wich supports both XMAME and SDLMAME."
+pkgdesc="Simple GTK3 MAME front-end"
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/action/show/Apps/GnomeVideoArcade"
 license=('GPL')
-depends=('dconf' 'dbus' 'gtk3' 'libsoup' 'libwnck3' 'hicolor-icon-theme' 'sdlmame' 'sqlite3')
-makedepends=('intltool' 'itstool' 'pkgconfig' 'gnome-doc-utils')
+depends=('dconf' 'dbus' 'gtk3' 'libsoup' 'libwnck3' 'hicolor-icon-theme' 'mame' 'sqlite3')
+makedepends=('intltool' 'itstool' 'gnome-doc-utils')
 source=(http://download.gnome.org/sources/${pkgname}/$(echo ${pkgver} | cut -d. -f1,2)/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('2de77ecc9566ee7d76df5deefb191c1cc01452ab7d3b22e92d6dc3f971ddc98e')
-install=${pkgname}.install
+sha256sums=('91287b62c2cf2bf982d132b5b1a3f3d34f117254faff134af73b0c8e2b56d026')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
