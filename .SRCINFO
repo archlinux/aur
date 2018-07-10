@@ -1,6 +1,6 @@
 pkgbase = qpicospeaker-git
 	pkgdesc = Qt GUI for the svox-pico text-to-speech engine
-	pkgver = r10.ec83c9a
+	pkgver = r12.276c10f
 	pkgrel = 1
 	url = https://github.com/Shadowsith/qpicospeaker
 	arch = i686
