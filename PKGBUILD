@@ -25,6 +25,6 @@ package() {
   cd "$srcdir"/$pkgname-$pkgver/build
   make DESTDIR="$pkgdir" install
 
-  mv $pkg/usr/lib $pkg/usr/lib32 || true
-  mv $pkg/usr/lib64 $pkg/usr/lib || true
+  mv "$pkgdir"/usr/lib "$pkgdir"/usr/lib32 || true
+  mv "$pkgdir"/usr/lib64 "$pkgdir"/usr/lib || true
 }
