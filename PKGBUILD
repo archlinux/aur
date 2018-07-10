@@ -4,10 +4,10 @@
 
 pkgname=ttf-breeze-sans
 pkgver=20150728
-pkgrel=1
+pkgrel=2
 pkgdesc="A sans-serif typeface by Samsung, designed for Tizen."
 arch=('any')
-license=('Apache License 2.0')
+license=('APACHE')
 url="https://developer.tizen.org/design/platform/styles/typography"
 depends=('fontconfig')
 replaces=('')
