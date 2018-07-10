@@ -10,9 +10,8 @@ pkgbase = qspectrumanalyzer
 	depends = python-pyqt5
 	depends = python-pyqtgraph
 	depends = soapy_power>=1.5.0
-	depends = swig
-	optdepends = rtl_power_fftw-git: Alternative RTL-SDR backend using FFTW library. Much faster than rtl_power.
-	optdepends = rtl-sdr-keenerd-git: Better version of rtl_power backend.
+	optdepends = rtl_power_fftw: Alternative RTL-SDR backend using FFTW library. Much faster than rtl_power.
+	optdepends = rtl-sdr-keenerd: Better version of rtl_power backend.
 	optdepends = rtl-sdr: original rtl_power backend. Slightly broken, use rtl-sdr-keenerd-git instead.
 	optdepends = rx_tools: rx_power backend. Universal SoapySDR based backend, but seems slow and buggy.
 	optdepends = hackrf: hackrf_sweep backend. Wideband spectrum monitoring with sweep rate of 8 GHz/s.
