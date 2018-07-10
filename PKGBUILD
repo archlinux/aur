@@ -1,16 +1,16 @@
 # Maintainer: dustball
 
 pkgname=gnaural
-pkgver=1.0.20110606
-pkgrel=3
+pkgver=20110606
+pkgrel=1
 pkgdesc="An opensource binaural-beat generator"
 arch=(i686 x86_64)
 url="http://gnaural.sourceforge.net/"
 license=('GPL')
 depends=('libglade' 'portaudio')
 install="$pkgname.install"
-source=("http://downloads.sourceforge.net/project/$pkgname/Gnaural/$pkgname-$pkgver.tar.gz")
-md5sums=('8eea03a78ba02ee5d13c55fc6c0c9a00')
+source=("http://downloads.sourceforge.net/project/Gnaural/$pkgname-$pkgver.tar.xz")
+md5sums=('55dd6c32ae08c637e40774c22d6c09ba')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
