@@ -9,6 +9,7 @@ license=('BSD')
 depends=('blas')
 makedepends=('cmake')
 provides=($pkgname=$pkgver)
+conflicts=(libcint-cint3)
 source=("https://github.com/sunqm/libcint/archive/v$pkgver.tar.gz")
 md5sums=('c29262391f4eccf7b86d18964038eff5')
 
