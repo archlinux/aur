@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Search request",
+        "filters": ["Param:q", "Path=^(/|/search)$"],
+        "interval": 5,
+        "limit": 1,
+        "subrules": [
+            {
+                "name": "Robo-agent limit",
+                "interval": 5,
+                "limit": 1,
+                "filters": ["Header:User-Agent=(curl|cURL|Wget|python-requests|Scrapy|FeedFetcher|Go-http-client)"],
+                "actions": [
+                    { "name": "block",
+                     "params": { "message": "Rate limit exceeded" } }
+                ]
+            },
+            {
+                "name": "Bot limit",
+                "limit": 0,
+                "stop": true,
+                "filters": ["Header:User-Agent=(Googlebot|bingbot|Baiduspider|yacybot|YandexMobileBot|YandexBot|Yahoo! Slurp|MJ11bot|AhrefsBot|archive.org_bot|msnbot|MJ11bot|SeznamBot|linkdexbot|Netvibes|SMTBot|zgrab|James BOT)"],
+                "actions": [
+                    { "name": "block",
+                     "params": { "message": "Rate limit exceeded" } }
+                ]
+            },
+            {
+                "name": "IP limit",
+                "interval": 5,
+                "limit": 1,
+                "stop": true,
+                "aggregations": ["Header:X-Forwarded-For"],
+                "actions": [
+                    { "name": "block",
+                     "params": { "message": "Rate limit exceeded" } }
+                ]
+            },
+            {
+                "name": "RSS/JSON limit",
+                "interval": 5,
+                "limit": 1,
+                "stop": true,
+                "filters": ["Param:format=(csv|json|rss)"],
+                "actions": [
+                    { "name": "block",
+                     "params": { "message": "Rate limit exceeded" } }
+                ]
+            },
+            {
+                "name": "User-agent limit",
+                "interval": 5,
+                "limit": 1,
+                "aggregations": ["Header:User-Agent"],
+                "actions": [
+                    { "name": "block",
+                     "params": { "message": "Rate limit exceeded" } }
+                ]
+            }
+        ]
+    }
+]
