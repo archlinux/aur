@@ -2,7 +2,7 @@
 
 pkgname=fmlib
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A fortran multiple-precision arithmetic library"
 arch=('x86_64')
 url="https://dmsmith.lmu.build/"
@@ -30,8 +30,11 @@ check() {
     ./sample.out
 }
 
+_gcc_ver="$(gcc --version | awk 'NR==1 {print$3}')"
+
 package() {
     install -Dm755 -t "$pkgdir/usr/lib" "$srcdir/FM_files/build/libs/"*.so 
-    install -Dm755 -t "$pkgdir/usr/include/" "$srcdir/FM_files/build/mods/"*.mod
+    install -Dm644 -t "$pkgdir/usr/lib/gcc/x86_64-pc-linux-gnu/${_gcc_ver}/finclude" "$srcdir/FM_files/build/mods/"*.mod
     install -Dm644 "$srcdir/FM_files/LICENSE.txt" "$pkgdir/usr/share/licenses/fmlib/LICENSE.txt"
 }
+
