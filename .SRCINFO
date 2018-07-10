@@ -1,4 +1,4 @@
-pkgbase = qpicospeaker
+pkgbase = qpicospeaker-git
 	pkgdesc = Qt GUI for the svox-pico text-to-speech engine
 	pkgver = r10.ec83c9a
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = qpicospeaker
 	source = git+https://github.com/Shadowsith/qpicospeaker
 	sha256sums = SKIP
 
-pkgname = qpicospeaker
+pkgname = qpicospeaker-git
 

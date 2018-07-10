@@ -1,6 +1,7 @@
 # Maintainer: Shadowsith <philip.mayer@shadowsith.de>
 
-pkgname=qpicospeaker
+pkgname=qpicospeaker-git
+pkgsrc=qpicospeaker
 pkgver=r10.ec83c9a
 pkgrel=1
 pkgdesc='Qt GUI for the svox-pico text-to-speech engine'
@@ -17,7 +18,7 @@ source=("git+https://github.com/Shadowsith/qpicospeaker")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$pkgsrc"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
