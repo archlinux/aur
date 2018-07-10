@@ -3,35 +3,27 @@
 
 pkgname=ssb-patchwork
 _upstream=patchwork
-pkgver=3.9.0
-pkgrel=3
+pkgver=3.10.0
+pkgrel=1
 pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)"
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchwork"
 license=('AGPL3')
 depends=('libxtst' 'libxext' 'libxkbfile' 'gconf' 'libsodium' 'libxss' 'gtk2' 'alsa-lib' 'nss')
-makedepends=('nodejs-lts-carbon' 'npm')
+makedepends=('nodejs' 'npm')
 options=(!strip)
 source=(
 "https://github.com/ssbc/${_upstream}/archive/v${pkgver}.tar.gz"
 'run.sh'
 "${pkgname}.desktop"
 )
-md5sums=('2036001984b4d904cac87ac452ebfa66'
+md5sums=('2e506b1d70acc8f61cfaed66e8bbeb9f'
          'bb315f14e6d7ef57976c8934ddad4fd9'
          '3c73b5245f2da7dd2e31729e2b57ad37')
 
-prepare() {
-    cd "${srcdir}/${_upstream}-${pkgver}"
-    sed -i'' -e '/postinstall/d' package.json
-    sed -i'' -e '/"cross-script"/d' package.json
-}
-
 build() {
     cd "${srcdir}/${_upstream}-${pkgver}"
-    npm install
-    npm install electron-rebuild
-    ./node_modules/.bin/electron-rebuild
+    npm ci
 }
 
 package() {
