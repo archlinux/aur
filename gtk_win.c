@@ -30,6 +30,7 @@ void window_main(void) {
 }
 
 void check_list_create_from_string(void) {
+    api_info_array_destroy(&app.portfolio_data);
     app.portfolio_data = portfolio_info_array_init_from_portfolio_string(app.portfolio_string);
     if (app.portfolio_data == NULL) // Empty JSON array
         return;
@@ -118,6 +119,7 @@ void on_load_button_clicked(GtkButton* button) {
         return;
     }
 
+    api_info_array_destroy(&app.portfolio_data);
     app.portfolio_data = portfolio_info_array_init_from_portfolio_string(app.portfolio_string);
     if (app.portfolio_data != NULL) {
         check_list_create_from_string();
