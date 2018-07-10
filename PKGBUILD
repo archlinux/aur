@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://pypi.python.org/pypi/zfec'
 license=('GPL')
 depends=('python2' 'pyutil' 'python2-argparse')
-source=("https://files.pythonhosted.org/packages/8f/99/aba4602ff6ed25a5ff2a9e0f9a3762d84d7e1b941b75d620a53a0ccecd9f/zfec-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/z/zfec/zfec-${pkgver}.tar.gz")
 sha256sums=('b41bd4b0af9c6b3a78bd6734e1e4511475944164375e6241b53df518a366922b')
 
 build(){
@@ -23,5 +23,5 @@ check() {
 
 package(){
     cd "$srcdir/zfec-$pkgver"
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
