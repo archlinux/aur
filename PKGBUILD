@@ -3,12 +3,12 @@
 
 pkgname="chatstack"
 pkgver=2.2.5000
-pkgrel=1
+pkgrel=2
 pkgdesc="Live chat application for chatting with your web site visitors.  
          This package requires a web server that is already running the 
 	 Chatstack server software."
 arch=('i686' 'x86_64')
-license=('MIT')
+license=('MIT' 'unknown')
 
 url="https://www.chatstack.com/"
 
