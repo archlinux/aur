@@ -2,14 +2,14 @@
 
 pkgname=rtags
 pkgver=2.18
-pkgrel=1
+pkgrel=2
 pkgdesc='RTags is a client/server application that indexes C/C++ code'
 arch=('i686' 'x86_64')
 url='https://github.com/Andersbakken/rtags'
 license=('GPL3')
 depends=('bash' 'clang')
 makedepends=('cmake' 'git' 'llvm' 'zlib')
-optdepends=('bash-completion: for bash completion' 'zlib' 'lua>=5.3: Lua bindings')
+optdepends=('bash-completion: for bash completion' 'zlib' 'lua: Lua bindings')
 provides=('rtags')
 conflicts=('rtags-git')
 install="${pkgname}.install"
