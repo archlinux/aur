@@ -17,6 +17,7 @@ source=(
     install.sh
     )
 md5sums=(SKIP SKIP SKIP SKIP SKIP)
+install=flood.install
 
 pkgver() {
     cd flood
