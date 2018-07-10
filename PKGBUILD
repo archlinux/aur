@@ -1,7 +1,7 @@
 # Maintainer: Mikuro Kagamine <mikurok@forgecrushing.com>
 
 pkgname=browsh-bin
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 #epoch=
 pkgdesc='A fully-modern text-based browser, rendering to TTY and browsers'
@@ -20,9 +20,9 @@ conflicts=('browsh' 'browsh-git')
 options=('!strip')
 #install=
 #changelog=
-source=("https://github.com/browsh-org/browsh/releases/download/v1.2.2/browsh_1.2.2_linux_amd64")
+source=("https://github.com/browsh-org/browsh/releases/download/v${pkgver}/browsh_${pkgver}_linux_amd64")
 #noextract=()
-sha512sums=('c6d03edab2fa78c2c1adb733e2a63b58570994901469fb72a8a35e15fded039a1cc56cbe365104df0f16977cbe196bc4fd55162647443ebe8bd1917a59e8890f')
+sha512sums=('285c3e9c3c1192f6af12f1ff60798defd5ff51e6f10552798c03af65702bd1d44bc3902c0582281435a1d3100907e82fbc6a68848a5939d46f4b2b60ac5b4318')
 #validpgpkeys=()
 
 #prepare() {
@@ -42,5 +42,5 @@ sha512sums=('c6d03edab2fa78c2c1adb733e2a63b58570994901469fb72a8a35e15fded039a1cc
 #}
 
 package() {
-	install -Dm755 browsh_1.2.2_linux_amd64 $pkgdir/usr/bin/browsh
+	install -Dm755 browsh_${pkgver}_linux_amd64 $pkgdir/usr/bin/browsh
 }
