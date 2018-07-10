@@ -2,7 +2,7 @@ pkgbase = tribler
 	pkgdesc = Privacy enhanced BitTorrent client with P2P content discovery
 	pkgver = 7.1.0
 	pkgrel = 1
-	url = http://www.tribler.org/
+	url = https://www.tribler.org/
 	arch = any
 	license = LGPL3
 	makedepends = python2-setuptools
@@ -37,6 +37,14 @@ pkgbase = tribler
 	conflicts = tribler
 	conflicts = python2-pyipv8
 	source = git+https://github.com/Tribler/tribler.git#tag=v7.1.0-exp3
+	source = git+https://github.com/Tribler/dispersy.git
+	source = git+https://github.com/devos50/pymdht.git
+	source = git+https://github.com/spesmilo/electrum
+	source = git+https://github.com/Tribler/py-ipv8.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = tribler
