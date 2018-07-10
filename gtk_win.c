@@ -31,6 +31,9 @@ void window_main(void) {
 
 void check_list_create_from_string(void) {
     app.portfolio_data = portfolio_info_array_init_from_portfolio_string(app.portfolio_string);
+    if (app.portfolio_data == NULL) // Empty JSON array
+        return;
+
     format_cells(app.portfolio_data);
     GtkListStore* pListStore = GTK_LIST_STORE(gtk_builder_get_object(app.builder, "check_list"));
     Info* idx; // Append pListStore store with portfolio data
@@ -404,6 +407,8 @@ void list_store_update(void) {
     api_info_array_destroy(&app.portfolio_data);
     gtk_list_store_clear(GTK_LIST_STORE(gtk_builder_get_object(app.builder, "check_list")));
     check_list_create_from_string();
-    api_info_array_store_check_data(app.portfolio_data);
-    check_list_add_api_data();
+    if (app.portfolio_data != NULL) {
+        api_info_array_store_check_data(app.portfolio_data);
+        check_list_add_api_data();
+    }
 }
