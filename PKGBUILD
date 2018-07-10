@@ -9,7 +9,7 @@ pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
 pkgver=396.24.02
 _extramodules=extramodules-4.17-ARCH
-pkgrel=5
+pkgrel=6
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -112,7 +112,8 @@ package_opencl-nvidia-vulkan() {
     pkgdesc="OpenCL implemention for NVIDIA"
     depends=('zlib')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
-    provides=('opencl-driver')
+    provides=('opencl-driver' "opencl-nvidia=${pkgver}")
+    conflicts=('opencl-nvidia')
     cd "${_pkg}"
 
     # OpenCL
@@ -133,8 +134,8 @@ package_nvidia-vulkan-utils() {
                 'gtk3: nvidia-settings (GTK+ v3)'
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia-vulkan: OpenCL support')
-    conflicts=('nvidia-libgl' 'nvidia-settings')
-    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-settings')
+    conflicts=('nvidia-utils' 'nvidia-libgl' 'nvidia-settings')
+    provides=("nvidia-utils=${pkgver}" 'vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-settings')
     replaces=('nvidia-libgl')
     install="nvidia-vulkan-utils.install"
 
@@ -257,7 +258,8 @@ package_lib32-opencl-nvidia-vulkan() {
     pkgdesc="OpenCL implemention for NVIDIA (32-bit)"
     depends=('lib32-zlib' 'lib32-gcc-libs')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
-    provides=('lib32-opencl-driver')
+    provides=('lib32-opencl-driver' "lib32-opencl-nvidia=${pkgver}")
+    conflicts=('lib32-opencl-nvidia')
 
     cd "${_pkg}"/32
 
@@ -275,8 +277,8 @@ package_lib32-nvidia-vulkan-utils() {
     pkgdesc="NVIDIA drivers utilities (32-bit)"
     depends=('lib32-zlib' 'lib32-gcc-libs' 'lib32-libglvnd' 'nvidia-vulkan-utils')
     optdepends=('lib32-opencl-nvidia-vulkan')
-    conflicts=('lib32-nvidia-libgl')
-    provides=('lib32-vulkan-driver' 'lib32-opengl-driver' 'lib32-nvidia-libgl')
+    conflicts=('lib32-nvidia-utils' 'lib32-nvidia-libgl')
+    provides=("lib32-nvidia-utils=${pkgver}" 'lib32-vulkan-driver' 'lib32-opengl-driver' 'lib32-nvidia-libgl')
     replaces=('lib32-nvidia-libgl')
 
     cd "${_pkg}"/32
