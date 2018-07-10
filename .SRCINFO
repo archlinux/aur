@@ -9,7 +9,7 @@ pkgbase = osmo-fl2k
 	depends = libusb>=1.0
 	provides = osmo-fl2k
 	conflicts = osmo-fl2k
-	source = https://github.com/FFY00/osmo-fl2k/archive/v0.1.1.tar.gz
+	source = osmo-fl2k-0.1.1::https://github.com/FFY00/osmo-fl2k/archive/v0.1.1.tar.gz
 	sha256sums = 0124da419714350d98f9075f016c31ac5643b1b2956be35520acba85dc2ed7a4
 
 pkgname = osmo-fl2k
