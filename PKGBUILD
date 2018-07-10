@@ -10,14 +10,10 @@ depends=('sqlite3' 'wxgtk3' 'opengl-driver' 'libusb>=1.0' 'soapysdr' 'wget')
 makedepends=('cmake')
 provides=('limesuite' 'limesdr' 'soapylms7')
 conflicts=('limesuite' 'limesdr' 'soapylms7')
-source=(
-  "https://github.com/myriadrf/LimeSuite/archive/v$pkgver.tar.gz"
-  'limesuitegui.desktop'
-)
-sha256sums=(
-  '8d214b5bdffdadba9499b058d41ff8a705f73054497408fe10ff9451a5a92396'
-  'b00c833a1dcd0b7e23a735aa4dd0a4060032f915de85ef7396f938b1bcedfecf'
-)
+source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz"
+	'limesuitegui.desktop')
+sha256sums=('8d214b5bdffdadba9499b058d41ff8a705f73054497408fe10ff9451a5a92396'
+	    'b00c833a1dcd0b7e23a735aa4dd0a4060032f915de85ef7396f938b1bcedfecf')
 
 build() {
   mkdir -p "$srcdir"/LimeSuite-$pkgver/build
