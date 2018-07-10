@@ -14,7 +14,7 @@ optdepends=(
 )
 depends=('boost' 'gnuradio' 'limesuite')
 makedepends=('cmake')
-source=("$pkgname-$pkgver::$url/archive/v$_gitver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_gitver.tar.gz")
 sha256sums=('a6be1bfd2cbfeef33aa8e91fa35720bfad9d4b7dc4a29afb08dfcee451f6c32e')
 
 build() {
