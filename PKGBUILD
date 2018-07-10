@@ -10,13 +10,11 @@ url="https://github.com/xmikos/qspectrumanalyzer"
 license=('GPL3')
 depends=('python-pyqt5' 'python-pyqtgraph' 'soapy_power' 'python-qt.py')
 makedepends=('git' 'python-setuptools')
-optdepends=(
-  'rtl_power_fftw-git: alternative RTL-SDR backend using FFTW library (much faster than rtl_power)'
-  'rtl-sdr-keenerd-git: better version of rtl_power backend'
-  'rtl-sdr: original rtl_power backend (slightly broken, use rtl-sdr-keenerd-git instead)'
-  'rx_tools: rx_power backend (universal SoapySDR based backend, but seems slow and buggy)'
-  'hackrf: hackrf_sweep backend (wideband spectrum monitoring with sweep rate of 8 GHz/s)'
-)
+optdepends=('rtl_power_fftw: alternative RTL-SDR backend using FFTW library. Much faster than rtl_power.'
+	    'rtl-sdr-keenerd: better version of rtl_power backend'
+	    'rtl-sdr: original rtl_power backend. Slightly broken, use rtl-sdr-keenerd-git instead.'
+	    'rx_tools: rx_power backend. Wniversal SoapySDR based backend, but seems slow and buggy.'
+	    'hackrf: hackrf_sweep backend. Wideband spectrum monitoring with sweep rate of 8 GHz/s.')
 conflicts=('qspectrumanalyzer')
 provides=('qspectrumanalyzer')
 source=('git+https://github.com/xmikos/qspectrumanalyzer.git')
