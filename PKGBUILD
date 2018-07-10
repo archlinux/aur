@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('cmake')
 provides=('serialdv')
 conflicts=('serialdv')
-source=("https://github.com/f4exb/serialDV/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
 sha256sums=('9f5964605476fe400f559e7d1700fee96ce16f1ee2e0eefdc61d3c6e70bef0bd')
 
 build() {
