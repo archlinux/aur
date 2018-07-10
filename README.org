@@ -24,16 +24,18 @@
 
 #+options: toc:nil
 
+
 * casm-lang.pkg.aur
 
 This repository contains the Arch linux AUR package configuration, 
 which is directly uses the pre-build binaries for the current CASM release.
-Furthermore this repository gets mirrored to https://aur.archlinux.org.
+Furthermore this repository is mirrored at https://aur.archlinux.org.
+
 
 ** Installation
 
 You can download the repository either 
-at https://github.com/casm-lang/casm-lang.pkg.aur or 
+at https://github.com/casm-lang/casm-lang.pkg.aur.git or 
 at https://aur.archlinux.org/casm.git.
 
 #+begin_src
@@ -42,12 +44,14 @@ $ cd casm
 $ makepkg -si
 #+end_src
 
+
 ** Copyright and License
 
 The copyright holder of 
 =casm-lang.pkg.aur= is the [[https://casm-lang.org][CASM organization]] ([[https://github.com/casm-lang][@casm-lang]]) 
 and the used license of 
 =casm-lang.pkg.aur= is the [[https://www.gnu.org/licenses/gpl-3.0.html][GNU GPLv3]].
+
 
 *** Notice
 
