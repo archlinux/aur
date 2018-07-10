@@ -23,7 +23,6 @@ pkgver() {
 }
 
 build() {
-    pwd
     make -C ./qpicospeaker/build
 }
 
