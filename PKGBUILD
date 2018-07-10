@@ -57,7 +57,7 @@ generate_man() {
 package() {
     cd "$srcdir/${pkgname%-git}"
     install -d "$pkgdir/usr/lib"
-    cp build/libnng* "$pkgdir/usr/lib"
+    cp -a build/libnng* "$pkgdir/usr/lib"
     for i in `find src -name "*.h"` ; do
         install -Dm644 $i "$pkgdir/usr/include/${pkgname%-git}/${i#*/}"
     done
