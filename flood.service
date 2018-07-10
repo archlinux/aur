@@ -3,8 +3,8 @@ Description=Flood rTorrent Web UI
 After=network.target
 
 [Service]
-WorkingDirectory=/srv/flood
-ExecStart=/usr/bin/npm start --production /srv/flood
+WorkingDirectory=/var/lib/flood
+ExecStart=/usr/bin/npm start /var/lib/flood
 User=flood
 
 [Install]

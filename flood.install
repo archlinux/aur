@@ -1,15 +1,17 @@
+msg(){
+    cat << EOF
+Run the following command to complete the update:
+
+sudo -u flood flood_install
+
+You may need to restart flood.service.
+EOF
+}
+
 post_install(){
-        groupadd --system -g 500 flood
-        useradd --system -u 500 -g flood -d /srv/flood -s /bin/false flood
+    msg
 }
+
 post_upgrade(){
-        systemctl daemon-reload
-        if systemctl is-enabled flood &>/dev/null || \
-                systemctl is-active flood &>/dev/null ; then
-                systemctl restart flood
-        fi
-}
-post_remove(){
-        systemctl stop flood
-        systemctl daemon-reload
+    msg
 }
