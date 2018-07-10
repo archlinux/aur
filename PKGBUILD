@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="Fast GF(256) Cauchy MDS Block Erasure Codec in C++"
 arch=('x86_64' 'i686')
 url="https://github.com/f4exb/cm256cc"
+depends=('boost')
 license=('BSD')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
