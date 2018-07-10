@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=gravit-designer-bin
-pkgver=3.3.3
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="A cross-platform, free design tool for the 21st century empowering everyone to design"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.zip::https://designer.gravit.io/_downloads/linux/G
         "gravit-designer.png"
         "LICENSE")
 #changelog=https://discuss.gravit.io/t/changelog-for-gravit-designer/71
-md5sums=('fbf8cd3a7f2efbc1d12c420a94cde688'
+md5sums=('06230d11771a3a578b4eb8cb2158498e'
          '689ceb636418b52236edd98207fb9387'
          'a9c256cb9eb6bc9a280c5dccee2ad9af'
          '021ccafc0993d3c34265ae59048d4bf2')
@@ -23,7 +23,7 @@ package() {
   chmod +x GravitDesigner.AppImage
   ./GravitDesigner.AppImage --appimage-extract
   install -d ${pkgdir}/opt/${pkgname}
-  cp -r --no-preserve=all ${srcdir}/squashfs-root/app/* ${pkgdir}/opt/${pkgname}/
+  cp -r --no-preserve=all ${srcdir}/squashfs-root/* ${pkgdir}/opt/${pkgname}/
   chmod +x ${pkgdir}/opt/${pkgname}/gravit-designer
   install -d ${pkgdir}/usr/bin
   ln -s /opt/${pkgname}/gravit-designer ${pkgdir}/usr/bin/gravit-designer
