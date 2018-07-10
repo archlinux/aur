@@ -1,26 +1,22 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=git2r
-_cranver=0.21.0
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=0.22.1
 pkgname=r-git2r
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Provides Access to Git Repositories"
+pkgdesc='Provides Access to Git Repositories'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=git2r'
 license=('GPL2')
 depends=('r' )
-
 optdepends=('r-getpass')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('4aceb139a7e60565c91cf0abf492ccf7')
+source=("https://cran.r-project.org/src/contrib/git2r_"$_cranver".tar.gz")
+md5sums=('42a63a63f2d1edbc89ab57625f6d6218')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL git2r_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -d "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership git2r "$pkgdir"/usr/lib/R/library
 }
 
