@@ -2,8 +2,8 @@
 
 _pkgname=python-hashpumpy
 pkgname=$_pkgname-git
-pkgver=v1.2.0.r4.g2d01d3b
-pkgrel=1
+pkgver=v1.2.0.r8.g314268e
+pkgrel=2
 pkgdesc=" A tool to exploit the hash length extension attack in various hashing algorithms"
 arch=("i686" "x86_64")
 url="https://github.com/bwall/HashPump"
@@ -22,6 +22,14 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
     python setup.py build
+}
+
+check() {
+    cd "${srcdir}/${_pkgname}"
+
+    pyver=$(python -c 'import sysconfig; print(sysconfig.get_config_var("VERSION"))')
+    export PYTHONPATH="$(pwd)/build/lib.linux-$CARCH-$pyver:$PYTHONPATH"
+    python test.py
 }
 
 package() {
