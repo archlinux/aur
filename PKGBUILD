@@ -12,7 +12,7 @@ depends=("${pkgname#lib32-}" 'lib32-qt4' 'lib32-systemd' 'lib32-gst-plugins-base
 makedepends=('gperf' 'python2' 'ruby' 'git' 'lib32-mesa')
 _qtver=4.8.7
 source=("https://sources.archlinux.org/other/packages/${pkgname#lib32-}/${pkgname#lib32-}-${pkgver}.tar.xz"
-        "http://download.qt-project.org/official_releases/qt/4.8/${_qtver}/qt-everywhere-opensource-src-${_qtver}.tar.gz"
+        "https://download.qt.io/archive/qt/4.8/${_qtver}/qt-everywhere-opensource-src-${_qtver}.tar.gz"
         'use-python2.patch'
         'qtwebkit-gcc5.patch'
         'fix-execinfo.patch'
