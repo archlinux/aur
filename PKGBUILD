@@ -9,8 +9,6 @@ url="https://github.com/evernote/$pkgname"
 license=('Custom')
 depends=('python2-oauth2')
 makedepends=('python2-setuptools')
-provides=("$pkgname")
-conflicts=("$pkgname")
 source=("$pkgname-$pkgver::$url/archive/$pkgver.tar.gz"
 	'evernote-sdk-python-1.28-fix-setup.patch')
 sha256sums=('1fc44ba6430b37515c3d72b1091944e31abd106ea5dff522efbd58cf56c662d5'
