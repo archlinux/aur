@@ -1,24 +1,25 @@
 # Maintainer: Dan Maftei <dan.maftei@chem.uaic.ro>
 pkgname='python-pyscf'
-pkgver=1.4.2
+_name=${pkgname#python-}
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Python module for quantum chemistry"
 provides=('python-pyscf')
 arch=('x86_64')
 url="https://github.com/sunqm/pyscf"
 source=("https://github.com/sunqm/pyscf/archive/v${pkgver}.tar.gz")
-md5sums=('1e75068dd0d050dcfae4a7316b0851e3')
+md5sums=('c19087b98f4ff6492a62988dba1d036b')
 license=('BSD')
-depends=('python' 'python-numpy' 'python-scipy' 'python-h5py')
+depends=('python' 'python-numpy' 'python-scipy' 'python-h5py' 'xcfun-pyscf' 'libcint-cint3' 'libxc')
 makedepends=('cmake')
+conflicts=(${pkgname}-git)
 
 build() {
-    cd ${srcdir}/pyscf-${pkgver}/pyscf/lib
-    mkdir build && cd build && cmake .. && make
+    cd "${_name}-${pkgver}"
+    PYSCF_INC_DIR=/usr python setup.py build
 }
 
 package() {
-    cd ${srcdir}/pyscf-${pkgver}
-    python setup.py install --root="$pkgdir" --optimize=1   
+    cd "${_name}-${pkgver}"
+    PYSCF_INC_DIR=/usr python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
-

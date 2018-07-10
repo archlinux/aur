@@ -1,6 +1,6 @@
 pkgbase = python-pyscf
 	pkgdesc = Python module for quantum chemistry
-	pkgver = 1.4.2
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/sunqm/pyscf
 	arch = x86_64
@@ -10,9 +10,13 @@ pkgbase = python-pyscf
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-h5py
+	depends = xcfun-pyscf
+	depends = libcint-cint3
+	depends = libxc
 	provides = python-pyscf
-	source = https://github.com/sunqm/pyscf/archive/v1.4.2.tar.gz
-	md5sums = 1e75068dd0d050dcfae4a7316b0851e3
+	conflicts = python-pyscf-git
+	source = https://github.com/sunqm/pyscf/archive/v1.5.1.tar.gz
+	md5sums = c19087b98f4ff6492a62988dba1d036b
 
 pkgname = python-pyscf
 
