@@ -1,13 +1,13 @@
 # Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=python2-pyscf-git
 _pkgname=python2-pyscf
-pkgver=1.4.5.r10.g57c8912d
+pkgver=1.5.1.r20.ge0259cc4
 pkgrel=1
 pkgdesc="Python-based Simulations of Chemistry Framework"
 arch=(i686 x86_64)
 url="http://sunqm.github.io/pyscf"
 license=('BSD')
-depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-h5py' 'xcfun' 'libcint' 'libxc')
+depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-h5py' 'xcfun-pyscf' 'libcint-cint3' 'libxc')
 makedepends=('cmake')
 provides=($_pkgname=$pkgver)
 conflicts=('python2-pyscf')
@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
     cd "$pkgname"
-    PYSCF_INC_DIR=/usr/lib python2 setup.py install --root="$pkgdir/" --optimize=1
+    PYSCF_INC_DIR=/usr python2 setup.py install --root="$pkgdir/" --optimize=1
 }
