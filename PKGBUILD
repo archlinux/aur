@@ -3,7 +3,7 @@
 pkgname=rdkit-python2
 _pkgname=RDKit
 pkgver=2018_03_2
-pkgrel=3
+pkgrel=4
 pkgdesc="RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python."
 arch=("i686" "x86_64" "armv7h")
 url="http://rdkit.org/"
@@ -28,6 +28,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/build
+  cd ${srcdir}/${pkgname}-Release_${pkgver}
   make DESTDIR=${pkgdir} install
 }
