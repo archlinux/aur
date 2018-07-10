@@ -2,7 +2,7 @@
 
 pkgname=tiny-irc-client
 pkgver=0.4.2+491+gef56843
-pkgrel=1
+pkgrel=2
 pkgdesc='Console IRC client'
 arch=(any)
 url=https://github.com/osa1/tiny
@@ -12,6 +12,11 @@ makedepends=(git rust-nightly)
 conflicts=(tiny-irc-client-git)
 source=(git+$url#commit=ef568435a18a00e5e239d989c81211a84d8d566b)
 sha512sums=(SKIP)
+
+pkgver() {
+  cd tiny
+  echo "$(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2)+$(git rev-list --count HEAD)+g$(git describe --always)"
+}
 
 build() {
   cd tiny
