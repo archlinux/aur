@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=67.0.3396.87
+pkgver=67.0.3396.102
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   'chromium-last-commit-position-r1.patch'
   'chromium-FORTIFY_SOURCE-r2.patch'
 )
-sha512sums=('6f9c108b70b63cd45e8238c1962ec11d4f2d01e4f2a6b6483bfafc7986ed6001d5f09f9b0b893c864a08bade9d93346395bb2d045dcafb2ef94b0f4e00f2fe0d'
+sha512sums=('57844d5f59536d55a88f26a5652e51de14d50c36035b9cc1a53d3f1e68d6fb78ce18b7067b34a40fb9c84b75db8f9fc24d00eb3e4573c29eb710831851d6152f'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
             '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c')
 
