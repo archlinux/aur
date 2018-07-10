@@ -1,8 +1,8 @@
 pkgbase = reprotest
 	pkgdesc = Run a process twice and check the output for reproducibility
-	pkgver = 0.7.7
-	pkgrel = 2
-	url = https://anonscm.debian.org/cgit/reproducible/reprotest.git/
+	pkgver = 0.7.8
+	pkgrel = 1
+	url = https://salsa.debian.org/reproducible-builds/reprotest
 	arch = any
 	license = GPL2
 	license = GPL3
@@ -11,12 +11,13 @@ pkgbase = reprotest
 	depends = diffoscope
 	depends = fakeroot
 	depends = python-distro
-	optdepends = disorderfs>=0.5.2
-	optdepends = python-progressbar>=3.34.3-1
-	source = http://reproducible.alioth.debian.org/releases/reprotest/reprotest_0.7.7.tar.xz
-	source = http://reproducible.alioth.debian.org/releases/reprotest/reprotest_0.7.7.tar.xz.asc
+	optdepends = disorderfs
+	optdepends = python-progressbar
+	source = https://salsa.debian.org/reproducible-builds/reproducible-lfs/raw/master/releases/reprotest/reprotest_0.7.8.tar.xz
+	source = https://salsa.debian.org/reproducible-builds/reproducible-lfs/raw/master/releases/reprotest/reprotest_0.7.8.tar.xz.asc
 	validpgpkeys = A405E58AB3725B396ED1B85C1318EFAC5FBBDBCE
-	sha512sums = b802d3614adacfd07f0c6cddab126af5fb621b9e2563e68d31634cb04ff402b4a5e688df27db95a8f1a70ea1e9f2c0f2fe22e5747cae3ece97846bc4c5c3a0a4
+	validpgpkeys = 66AE2B4AFCCF3F52DA184D184B043FCDB9444540
+	sha512sums = 2f3f6c609c18f184b5c1eacd820f439e10432b2bc31f275838b297ce4b90e2657d1d900486412847b5b7fb7ec1c85eb67c3b8f68518d2da9bfb78a53b08bfccc
 	sha512sums = SKIP
 
 pkgname = reprotest
