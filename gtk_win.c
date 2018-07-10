@@ -107,10 +107,9 @@ void on_load_button_clicked(GtkButton* button) {
 
     // If encrypted file
     if (!is_string_json_array(app.portfolio_string)) {
-        GtkWidget* dialog = (GtkWidget*) GTK_MESSAGE_DIALOG(gtk_builder_get_object(app.builder,
-                "get_password_dialog"));
         gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "password_entry")), "");
-        gtk_widget_show(dialog); // Decode
+        gtk_widget_show(GTK_WIDGET(gtk_builder_get_object(app.builder,
+                                                                  "get_password_dialog")));// Decode
         return;
     }
 
@@ -196,24 +195,20 @@ void on_modify_button_clicked(GtkButton* button) {
         return;
     }
 
-    GtkMessageDialog* dialog = GTK_MESSAGE_DIALOG(gtk_builder_get_object(
-            app.builder, "portfolio_modify_dialog"));
-
-    const gchar* label = gtk_button_get_label(button);
-    GValue gtext = G_VALUE_INIT;
-    g_value_init(&gtext, G_TYPE_STRING);
-    g_value_set_string(&gtext, label);
-
-    g_object_set_property((GObject*) dialog, "text", &gtext);
     gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_symbol_entry")), "");
     gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_amount_entry")), "");
     gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_spent_entry")), "");
+    GValue gtext = G_VALUE_INIT;
+    g_value_init(&gtext, G_TYPE_STRING);
+    g_value_set_string(&gtext, gtk_button_get_label(button));
+    GtkWidget* dialog = GTK_WIDGET(gtk_builder_get_object(app.builder, "portfolio_modify_dialog"));
+    g_object_set_property(G_OBJECT(dialog), "text", &gtext);
+    gtk_widget_show(dialog);
     gtk_widget_grab_focus(GTK_WIDGET(gtk_builder_get_object(app.builder, "modify_symbol_entry")));
-    gtk_widget_show((GtkWidget*) dialog);
 }
 
 void on_modify_entry_activate(GtkEntry* entry, gpointer dialog) {
-    gtk_widget_hide((GtkWidget*) dialog);
+    gtk_widget_hide(GTK_WIDGET(dialog));
     GtkEntry* symbol_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_symbol_entry"));
     GtkEntry* amount_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_amount_entry"));
     GtkEntry* spent_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_spent_entry"));
@@ -242,12 +237,12 @@ void on_modify_entry_activate(GtkEntry* entry, gpointer dialog) {
 
 void on_portfolio_modify_dialog_response(GtkDialog* dialog, gint response_id) {
     if (response_id == GTK_RESPONSE_CANCEL)
-        gtk_widget_hide((GtkWidget*) dialog);
+        gtk_widget_hide(GTK_WIDGET(dialog));
     else on_modify_entry_activate(NULL, NULL);
 }
 
 void on_password_entry_activate(GtkEntry* entry, gpointer dialog) {
-    gtk_widget_hide((GtkWidget*) dialog);
+    gtk_widget_hide(GTK_WIDGET(dialog));
     const gchar* password = gtk_entry_get_text(entry);
     if (password == NULL || strcmp(password, "") == 0)
         return;
@@ -271,7 +266,7 @@ void on_password_entry_activate(GtkEntry* entry, gpointer dialog) {
 
 void on_get_password_dialog_response(GtkDialog* dialog, gint response_id, gpointer entry) {
     if (response_id == GTK_RESPONSE_CANCEL)
-        gtk_widget_hide((GtkWidget*) dialog);
+        gtk_widget_hide(GTK_WIDGET(dialog));
     else on_password_entry_activate(entry, dialog);
 }
 
@@ -328,7 +323,7 @@ void format_cells(Info_Array* portfolio_data) {
 }
 
 void list_store_sort(GtkListStore* list_store, Col_Index idx) {
-    GtkTreeModel* model = (GtkTreeModel*) list_store;
+    GtkTreeModel* model = GTK_TREE_MODEL(list_store);
     GtkTreeIter iter;
     if (!gtk_tree_model_get_iter_first(model, &iter)) // Empty list_store
         return;
