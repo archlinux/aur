@@ -2,14 +2,14 @@
 
 pkgname=waves-client
 pkgver=1.0.0_beta
-pkgrel=2
+pkgrel=3
 pkgdesc="The official client application for the Waves platform"
 arch=('x86_64')
 url="https://wavesplatform.com/"
 license=('Apache')
 depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'alsa-lib')
 source=("https://wavesplatform.com/files/WavesClient-${pkgver/_/-}.X-linux.deb")
-sha256sums=('c3f8f7bcd4926097701a90ae40096feebdf7668baef93e3f3bf0300d2c774303')
+sha256sums=('ebb00a922055af98849358536a36298dce74eb4cd98b240bb3e500b7008b23e2')
 
 package() {
     bsdtar -O -xf "WavesClient-${pkgver/_/-}"*.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
