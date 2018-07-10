@@ -7,8 +7,6 @@ arch=(any)
 url="https://github.com/FFY00/pulseaudio-equalizer-ladspa"
 license=('GPL3')
 depends=('pygtk' 'swh-plugins' 'gnome-icon-theme' 'pulseaudio' 'bc' 'python2-gobject')
-provides=('pulseaudio-equalizer-ladspa')
-conflicts=('pulseaudio-equalizer-ladspa')
 source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz"
 	'ladspa_lib_path.sh')
 sha256sums=('136cc75fdda5b099f5b5b55564cd0c1a42e5c29f70def668c9d95eb8ee83a8ff'
