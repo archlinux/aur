@@ -141,6 +141,8 @@ void on_lock_button_clicked(GtkButton* button) {
         gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry2")),
                            "");
         gtk_widget_show(GTK_WIDGET(gtk_builder_get_object(app.builder, "set_password_dialog")));
+        gtk_widget_grab_focus(GTK_WIDGET(gtk_builder_get_object(app.builder,
+                                                                "set_password_entry1")));
     } else {
         gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "decrypt_password_entry")),
                            "");
@@ -239,6 +241,7 @@ void on_modify_button_clicked(GtkButton* button) {
     gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_symbol_entry")), "");
     gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_amount_entry")), "");
     gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_spent_entry")), "");
+    gtk_widget_grab_focus(GTK_WIDGET(gtk_builder_get_object(app.builder, "modify_symbol_entry")));
     gtk_widget_show((GtkWidget*) dialog);
 }
 
