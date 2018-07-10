@@ -1,7 +1,7 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
 pkgver=0.8.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
 url="http://lmb.bioch.ox.ac.uk/coot/"
@@ -21,6 +21,7 @@ source=(http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/source/releases/
         coot-python.patch
         coot-lidia.patch
         coot-pyrogen.patch
+        coot-dynarama.patch
         coot.in
         )
 
@@ -36,9 +37,10 @@ sha256sums=('51b6faef11177a8ab682fbe28448f935ae1252ad53b4efa31339ff658a63ff94'
             'f4747e1fc7a3387f42b6c40358f999404761a0282ee6be3c621091d9d5d88099'
             'dd2eb7c66ff2fa6f68a9d1e834e1911d2a1669a76ed29b5dbd6863619edcba18'
             'b07517bdf9fcee43cf13533902ef333adcdaa45e60905628dfefc98ff55e95b5'
+            '485f305444fbe8ec3df3add5df68c5f2f7524507211f94bdecf2fa110c28c014'
             '5ba4e0d9bdc4db0bab403b8f9aadb1320af60e91f9ed87e81dc680425375590b')
 
-build() {
+prepare() {
 
   cd "$srcdir/$pkgname-$pkgver"
 
@@ -51,13 +53,18 @@ build() {
   patch -Np0 -i "$srcdir/coot-python.patch"
   patch -Np0 -i "$srcdir/coot-lidia.patch"
   patch -Np0 -i "$srcdir/coot-pyrogen.patch"
-
+  patch -NRtp0 -i "$srcdir/coot-dynarama.patch"
 
   iconv -f iso8859-1 -t utf-8 README > README.conv && mv -f README.conv README
 
   cp $srcdir/coot.in src/
-
   rm macros/libtool.m4
+  
+}
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
   aclocal -I macros
   libtoolize --automake --copy
   autoconf
