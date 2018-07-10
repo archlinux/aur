@@ -1,9 +1,9 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 _version=2018.2.0
-_build=b7
-_buildtag=20180608
-_randomstring=6c38f70ea123
+_build=f1
+_buildtag=20180709
+_randomstring=db9a69dc5569
 _prefix=/opt/UnityBeta
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
@@ -38,12 +38,12 @@ optdepends=('unity-editor-beta-doc'
             'unity-editor-beta-webgl'
             'unity-editor-beta-windows'
             'unity-editor-beta-facebook')
-makedepends=('gtk3' 'libsoup' 'libarchive')
+makedepends=('gtk2' 'libsoup' 'libarchive')
 source=("${_unitydownloads}/UnitySetup-${_version}${_build}"
         'unity-editor-beta'
         'unity-editor-beta.desktop'
         'unity-editor-beta-icon.png')
-sha1sums=('85b25538f696626df1f04f7f22fe1275172ace2e'
+sha1sums=('25f558636adc41bc8263dc4976fd9df86d1f9f6d'
           'd61175685d0836a79b2d4582c09ea23ed5ee18e9'
           'c348f141232ec06c6558fd42b5cbf86a75e2d02d'
           'fddf4861974f88f0565de7f54f7418204e729894')
