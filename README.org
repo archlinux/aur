@@ -28,8 +28,8 @@
 * casm-lang.pkg.aur
 
 This repository contains the Arch linux AUR package configuration, 
-which is directly uses the pre-build binaries for the current CASM release.
-Furthermore this repository is mirrored at https://aur.archlinux.org.
+which directly uses the pre-build binaries of the current CASM release.
+Furthermore this repository is mirrored to https://aur.archlinux.org.
 
 
 ** Installation
