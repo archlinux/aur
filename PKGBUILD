@@ -16,8 +16,6 @@ optdepends=('rtl_power_fftw: Alternative RTL-SDR backend using FFTW library. Muc
 	    'rtl-sdr: original rtl_power backend. Slightly broken, use rtl-sdr-keenerd-git instead.'
 	    'rx_tools: rx_power backend. Universal SoapySDR based backend, but seems slow and buggy.'
 	    'hackrf: hackrf_sweep backend. Wideband spectrum monitoring with sweep rate of 8 GHz/s.')
-provides=('qspectrumanalyzer')
-conflicts=('qspectrumanalyzer')
 source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
 sha256sums=('d50e13fa4951a67ed4f56362fb74daff9faeda88d7fc3f9d98cffb8d63c6311d')
 

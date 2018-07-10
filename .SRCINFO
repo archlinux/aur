@@ -15,8 +15,6 @@ pkgbase = qspectrumanalyzer
 	optdepends = rtl-sdr: original rtl_power backend. Slightly broken, use rtl-sdr-keenerd-git instead.
 	optdepends = rx_tools: rx_power backend. Universal SoapySDR based backend, but seems slow and buggy.
 	optdepends = hackrf: hackrf_sweep backend. Wideband spectrum monitoring with sweep rate of 8 GHz/s.
-	provides = qspectrumanalyzer
-	conflicts = qspectrumanalyzer
 	source = qspectrumanalyzer-2.2.0::https://github.com/xmikos/qspectrumanalyzer/archive/v2.2.0.tar.gz
 	sha256sums = d50e13fa4951a67ed4f56362fb74daff9faeda88d7fc3f9d98cffb8d63c6311d
 
