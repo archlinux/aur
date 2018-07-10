@@ -2,14 +2,14 @@
 
 pkgname=coax
 pkgver=0+123+gfbb9144
-pkgrel=1
-pkgdesc='Barely-working Rust/GTK+ Wire client (insecure)'
+pkgrel=2
+pkgdesc='Rust/GTK+ Wire client (insecure)'
 arch=(any)
 url=https://github.com/wireapp/coax
 license=(GPL3)
-depends=(cargo libsodium gtk3 openssl sqlite)
-makedepends=(git librsvg)
-source=(git+https://github.com/wireapp/coax#branch=develop)
+depends=(libsodium gtk3 openssl sqlite)
+makedepends=(git rust-nightly librsvg)
+source=(git+$url#commit=fbb9144311b3a5bea626c611dd623086c53fdaf3)
 sha512sums=(SKIP)
 
 pkgver() {
