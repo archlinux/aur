@@ -14,8 +14,6 @@ optdepends=(
 )
 depends=('boost' 'gnuradio' 'limesuite')
 makedepends=('cmake')
-provides=('gr-limesdr')
-conflicts=('gr-limesdr')
 source=("$pkgname-$pkgver::$url/archive/v$_gitver.tar.gz")
 sha256sums=('a6be1bfd2cbfeef33aa8e91fa35720bfad9d4b7dc4a29afb08dfcee451f6c32e')
 
