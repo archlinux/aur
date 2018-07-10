@@ -8,14 +8,10 @@ url="https://vr.google.com/vr180/apps/"
 license=('MIT')
 provides=('vr180-creator')
 conflicts=('vr180-creator')
-source=(
-  "https://storage.googleapis.com/vr180-creator/download/VR180_Creator_linux_$pkgver.tar.gz"
-  'vr180-creator.desktop'
-)
-sha256sums=(
-  '68a980cfe478c7138d3e18c6f1bd65fe1ca21581df3ed2f55a836b0440df6d4b'
-  '361370df8302be08e341041960888b16497f74592bd64ed7c5163554f8d19f48'
-)
+source=("$pkgname-$pkgver::https://storage.googleapis.com/vr180-creator/download/VR180_Creator_linux_$pkgver.tar.gz"
+	'vr180-creator.desktop')
+sha256sums=('68a980cfe478c7138d3e18c6f1bd65fe1ca21581df3ed2f55a836b0440df6d4b'
+	    '361370df8302be08e341041960888b16497f74592bd64ed7c5163554f8d19f48')
 
 package() {
   install -dm 755 "$pkgdir"/opt/vr180-creator
