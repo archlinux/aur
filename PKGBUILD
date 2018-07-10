@@ -2,7 +2,7 @@
 
 pkgname=python-neovim-git
 _pkgname=python-neovim-git
-pkgver=0.1.2.r4.g956f030
+pkgver=0.2.6.r5.g3777747
 pkgrel=1
 pkgdesc="Python client to neovim, git version. Use this to keep up with neovim-git"
 arch=('any')
