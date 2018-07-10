@@ -15,7 +15,7 @@ depends=('python2' 'crypto++')
 
 #key 242BE85F: public key "Zooko Wilcox-O'Hearn (Hacker) <zooko@zooko.com>"
 validpgpkeys=('A60B7EE17164D0C5F13738685F22F428242BE85F')
-source=("https://files.pythonhosted.org/packages/7c/e2/7e035d306c7516c471802d7cd7b6c1e403e582489bc5c14706854a187a24/$pkgname-$pkgver.$_pkgtag.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.$_pkgtag.tar.gz"
         'api_change.patch')
 sha256sums=('08ad57a1a39b7ed23c173692281da0b8d49d98ad3dcc09f8cca6d901e142699f'
             '9d9cfa52ad93b8662cb8ecfd3c7f82129394735dab41142fe1ad7f66267df3e2')
@@ -38,5 +38,5 @@ check() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver.$_pkgtag"
-    python2 setup.py install --root="$pkgdir"
+    python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
