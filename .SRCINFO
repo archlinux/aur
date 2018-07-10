@@ -1,7 +1,7 @@
 pkgbase = osu-lazer
-	pkgdesc = Freeware rhythm video game - lazer version 2018.616.0
+	pkgdesc = Freeware rhythm video game - lazer version 2018.616.0, which is the last version with mono support
 	pkgver = 2018.616.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://osu.ppy.sh/
 	arch = x86_64
 	license = MIT
