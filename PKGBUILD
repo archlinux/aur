@@ -3,7 +3,7 @@
 
 pkgname="chatstack"
 pkgver=2.2.5000
-pkgrel=2
+pkgrel=3
 pkgdesc="Live chat application for chatting with your web site visitors.  
          This package requires a web server that is already running the 
 	 Chatstack server software."
@@ -13,8 +13,7 @@ license=('MIT' 'unknown')
 url="https://www.chatstack.com/"
 
 depends=('gconf' 'glib2' 'gtk2' 'gvfs' 'libcap' 'libgcrypt' 'libnotify' 'libudev0' 'libxtst' 'nss' 'xdg-utils')
-optdepends=('gir1.2-gnomekeyring-1.0' 
-            'libgnome-keyring' 
+optdepends=('libgnome-keyring' 
 	    'lsb-release')
 options=('!strip' '!emptydirs')
 
