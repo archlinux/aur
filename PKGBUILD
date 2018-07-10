@@ -9,7 +9,7 @@ pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
 pkgver=396.24.02
 _extramodules=extramodules-4.17-ARCH
-pkgrel=4
+pkgrel=5
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -129,11 +129,12 @@ package_opencl-nvidia-vulkan() {
 package_nvidia-vulkan-utils() {
     pkgdesc="NVIDIA drivers utilities"
     depends=('xorg-server' 'libglvnd' 'egl-wayland')
-    optdepends=('nvidia-settings: configuration tool'
+    optdepends=('gtk2: nvidia-settings (GTK+ v2)'
+                'gtk3: nvidia-settings (GTK+ v3)'
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia-vulkan: OpenCL support')
-    conflicts=('nvidia-libgl')
-    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl')
+    conflicts=('nvidia-libgl' 'nvidia-settings')
+    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-settings')
     replaces=('nvidia-libgl')
     install="nvidia-vulkan-utils.install"
 
@@ -200,6 +201,19 @@ package_nvidia-vulkan-utils() {
 
     # nvidia-bug-report
     install -D -m755 nvidia-bug-report.sh "${pkgdir}/usr/bin/nvidia-bug-report.sh"
+
+    # GTK+ for nvidia-settings
+    install -Dm755 libnvidia-gtk2.so.$pkgver "$pkgdir"/usr/lib/libnvidia-gtk2.so.$pkgver
+    install -Dm755 libnvidia-gtk3.so.$pkgver "$pkgdir"/usr/lib/libnvidia-gtk3.so.$pkgver
+
+     # nvidia-settings
+    install -Dm755 nvidia-settings "$pkgdir"/usr/bin/nvidia-settings
+    install -Dm644 nvidia-settings.1.gz "$pkgdir"/usr/share/man/man1/nvidia-settings.1.gz
+    install -Dm644 nvidia-settings.png "$pkgdir"/usr/share/pixmaps/nvidia-settings.png
+    install -Dm644 nvidia-settings.desktop "$pkgdir"/usr/share/applications/nvidia-settings.desktop
+    sed -e 's:__UTILS_PATH__:/usr/bin:' \
+        -e 's:__PIXMAP_PATH__:/usr/share/pixmaps:' \
+        -i "$pkgdir"/usr/share/applications/nvidia-settings.desktop
 
     # nvidia-smi
     install -D -m755 nvidia-smi "${pkgdir}/usr/bin/nvidia-smi"

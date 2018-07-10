@@ -1,7 +1,7 @@
 pkgbase = nvidia-vulkan
 	pkgdesc = NVIDIA drivers for linux (vulkan developer branch)
 	pkgver = 396.24.02
-	pkgrel = 4
+	pkgrel = 5
 	url = https://developer.nvidia.com/vulkan-driver
 	arch = x86_64
 	license = custom
@@ -46,13 +46,16 @@ pkgname = nvidia-vulkan-utils
 	depends = xorg-server
 	depends = libglvnd
 	depends = egl-wayland
-	optdepends = nvidia-settings: configuration tool
+	optdepends = gtk2: nvidia-settings (GTK+ v2)
+	optdepends = gtk3: nvidia-settings (GTK+ v3)
 	optdepends = xorg-server-devel: nvidia-xconfig
 	optdepends = opencl-nvidia-vulkan: OpenCL support
 	provides = vulkan-driver
 	provides = opengl-driver
 	provides = nvidia-libgl
+	provides = nvidia-settings
 	conflicts = nvidia-libgl
+	conflicts = nvidia-settings
 	replaces = nvidia-libgl
 
 pkgname = opencl-nvidia-vulkan
