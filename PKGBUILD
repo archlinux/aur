@@ -28,11 +28,12 @@ done
 
 package() {
     
-    # NOTE
-	# The official Python wheel does not wrap all image types.
-	# To have them, ITK must be built from source using the
-	# package insight-toolkit, enabling Python wrapping and
-	# additional components to be wrapped in the CMake config.
+	# NOTE
+	# Not all image types are wrapped in the official Python wheel.
+	# If you need any type that is not included, you should build
+	# ITK from sources using the insight-toolkit package, editing
+	# the PKGBUILD to enable Python wrapping and adding to the CMake
+	# confing any additional component you want to include.
     
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
 	python -O -m compileall "${pkgdir}/usr/lib/python3.6/site-packages/itk"
