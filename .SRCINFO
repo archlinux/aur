@@ -6,6 +6,7 @@ pkgbase = mingw-w64-gmp
 	arch = any
 	license = LGPL3
 	makedepends = mingw-w64-configure
+	makedepends = wine
 	depends = mingw-w64-crt
 	options = staticlibs
 	options = !strip
