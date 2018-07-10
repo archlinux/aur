@@ -1,7 +1,7 @@
 # Maintainer: Ashymad <czilukim@o2.pl>
 pkgname="otf-code-new-roman"
 pkgver="2.0"
-pkgrel=1
+pkgrel=2
 pkgdesc='Monospaced font aimed for use in programming environments'
 arch=('any')
 url='http://fb.com/Code.New.Roman'
@@ -12,10 +12,10 @@ source=('CodeNewRoman-Bold.otf::https://github.com/chrissimpkins/codeface/blob/m
 	'CodeNewRoman-Regular.otf::https://github.com/chrissimpkins/codeface/blob/master/fonts/code-new-roman/Code%20New%20Roman-Regular.otf'
 	'https://github.com/chrissimpkins/codeface/blob/master/fonts/code-new-roman/license.txt')
 
-sha256sums=('176c33739b1bfd0122ae8094faf33ea532dcf30d0bb5188beee19c471c75c6b6'
-            '002cbc9024de3d0e746e8d950a1611ab97c969aed1b57e0a0c017a5b25cffa59'
-            'b4fd9bb47b80ffb0f8e1344a8aa65b646900b26288d24e90878383f53799c509'
-            '03f80ed929ba7dd258fe98703bca8f2ca7b7b8e229f30d7b8bc68c646886777e')
+sha256sums=('0c15637fda6e2e72ae7fbe6b15b42519ca0046659eaf817fff9c3b05b5093e64'
+            '4fcc5f409da410091f936ccc28383336abea4e55732e61b0b5ba57b406499a2e'
+            '1d32e0203636a67eca7f0e5c3814d15634aee2ef6b0eff308f4f397b2315ca15'
+            'a35a9f7fdc482e07ec535c14229966d3adcfa76e9cad89f6e4a7a8ac9a5843a4')
 
 package() {
 	cd "$srcdir"
