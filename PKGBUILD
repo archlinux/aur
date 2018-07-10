@@ -8,6 +8,7 @@ url="http://dftlibs.org/xcfun/"
 license=('GPL3')
 makedepends=(git cmake)
 provides=(${pkgname}=$pkgver)
+conflicts=(xcfun-pyscf)
 source=($pkgname::git+https://github.com/dftlibs/xcfun.git#branch=stable-1.x)
 md5sums=('SKIP')
 

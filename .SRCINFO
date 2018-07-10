@@ -9,6 +9,7 @@ pkgbase = xcfun
 	makedepends = git
 	makedepends = cmake
 	provides = xcfun=1.x
+	conflicts = xcfun-pyscf
 	source = xcfun::git+https://github.com/dftlibs/xcfun.git#branch=stable-1.x
 	md5sums = SKIP
 
