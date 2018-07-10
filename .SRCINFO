@@ -1,0 +1,26 @@
+pkgbase = porto
+	pkgdesc = Yet another Linux container management system
+	pkgver = 4.13.10
+	pkgrel = 1
+	url = https://github.com/yandex/porto
+	install = porto.install
+	arch = i686
+	arch = x86_64
+	license = Custom
+	makedepends = cmake
+	makedepends = pandoc
+	depends = protobuf
+	depends = ncurses
+	depends = libnl
+	depends = python
+	source = git+https://github.com/yandex/porto#tag=v4.13.10
+	source = porto.install
+	source = porto.patch
+	source = porto.sysusers
+	md5sums = SKIP
+	md5sums = 988b5b4ef62873befdd1b9335faed81f
+	md5sums = 83756072bf833537d0116099cdd27c22
+	md5sums = e394a893cf3b0ae5c718c069b65bffed
+
+pkgname = porto
+

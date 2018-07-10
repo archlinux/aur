@@ -1,0 +1,6 @@
+pkg/
+porto/
+src/
+
+*.gz
+*.xz

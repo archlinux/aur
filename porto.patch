@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1df9aa41..24bc26b7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -82,7 +82,7 @@ else()
+ 	SET(LIBNL_ROUTE ${INSTALL_DIR}/lib/libnl-route-3.a)
+ endif()
+ 
+-find_library(PB NAMES libprotobuf.a)
++find_library(PB NAMES libprotobuf.so)
+ find_package(Protobuf REQUIRED)
+ # FindProtobuf requires only the libraries to be present
+ if(NOT PROTOBUF_PROTOC_EXECUTABLE)
