@@ -9,7 +9,7 @@ license=('BSD')
 makedepends=('cmake')
 provides=('cm256cc')
 conflicts=('cm256cc')
-source=("$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
 sha256sums=('2a9f0fc5d8534fffeb368632cf6942fe652e5b8d65a9a0d7628fefb085313acb')
 
 build() {
