@@ -12,8 +12,8 @@ provides=("antlr=${pkgver}")
 source=("https://www.antlr3.org/download/${_shortname}-${pkgver}-complete.jar"
         'antlr3')
 noextract=("${_shortname}-${pkgver}-complete.jar")
-sha256sums=('acfa69f928a0f1653555bda73091efca'
-            'a0fab9317be2f6965bd40c4424368d59')
+sha256sums=('26ca659f47d77384f518cf2b6463892fcd4f0b0d4d8c0de2addf697e63e7326b'
+            '3053499ceaa2c155a0c5e0ee456e5745e1d9f534d0f12ae76e3af0190a094dcf')
 
 package() {
   cd "${srcdir}"
