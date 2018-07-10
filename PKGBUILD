@@ -185,24 +185,26 @@ _servicefile='basis_lmgrd.service'
 _logfolder='/var/log/basis'
 
 pkgname='basis-pro5'
-pkgver='16.00'
-pkgrel='2'
+pkgver='18.00'; _dsver='18.00'
+pkgrel='1'
 pkgdesc='BASIS BBx Progression Pro/5 Business BASIC eXtended for BBj'
 url='http://www.basis.com/'
 license=('custom')
-depends=('glibc' 'java-environment-jdk>=7' 'java-environment-jdk<=8' 'wget' 'gzip') # The Windows install recommends jdk over jre so we do too. OpenJDK does not work.
+depends=('glibc' 'wget' 'gzip')
+#depends+=('java-environment-jdk'{'>=7','<9'}) # The Windows install recommends jdk over jre so we do too. OpenJDK does not work.
 optdepends=('ncompress: Original compress for logs instead of gzip')
 #backup=("${_basedir##/}/blmgr/Register.properties")
 options=('!docs' 'emptydirs' '!strip') # strip is so poorly implemented that it changes the content and date on executables, even when there's nothing to strip! What were they thinking?
 install="${pkgname}-install.sh"
 #_verwatch=("${url}availability" '<td class="revision".*">\([0-9\.]\+\).*' 'f') # Almost works
-#_blmjar='BLM1600_03-11-2016_1203.jar'
-#_blmjar='BLM1600_04-11-2016_1107.jar'
-_blmjar='BLM1600_09-29-2016_1212.jar'
-_blmjarwebstart='BLM1600_08-10-2016_1012.jar' # 
+#_blmjar='BLM1600_03-11-2016_1203.jar'; _blmjarwebstart=''; _mj='7'
+#_blmjar='BLM1600_04-11-2016_1107.jar'; _blmjarwebstart=''; _mj='7'
+#_blmjar='BLM1600_09-29-2016_1212.jar'; _blmjarwebstart='BLM1600_08-10-2016_1012.jar'; _mj='7' # BBjWebstartBootstrap.jar is left out of BLM1600_09-29-2016_1212.jar, upgraders from previous versions didn't notice.
+_blmjar='BLM1800_03-24-2018_1847.jar'; _blmjarwebstart=''; _mj='8'
+depends+=('java-runtime-jre'{">=${_mj}",'<9'})
 source=("http://public.basis.com/blm/jar/${_blmjar}")
-noextract=("${_blmjar}") # BBjWebstartBootstrap.jar is left out of BLM1600_09-29-2016_1212.jar
-if :; then
+noextract=("${_blmjar}")
+if [ ! -z "${_blmjarwebstart}" ]; then
   source+=("http://public.basis.com/blm/jar/${_blmjarwebstart}")
   noextract+=("${_blmjarwebstart}")
 fi
@@ -210,18 +212,17 @@ _file='@::file://@' # convince the git submission that these files aren't on the
 # 32-bit Rev 15.00 Linux Kernel 2.6.17-1.2142_FC4+ AND glibc v2.3+
 # 10455yyyy.Z          = Pro/5            Port 1045
 # 12455yyyy.Z          = Pro/5 DataServer Port 1245
-for _src in '104551600.Z' '124551500.Z'; do
+for _src in "10455${pkgver//./}.Z" "12455${_dsver//./}.Z"; do
   source_i686+=("${_file//@/${_src}}")
 done
 
-sha256sums=('2471303c9ae4370e3f845461994b1e472df9f42a2e30e3aff3bf22065af1eef3'
-            '9eec614a94cd2a1fefc321847bd0216c6a18d3386554c5c4cbf9dbb2689db8ee')
-sha256sums_i686=('c2ff3b6949df2243bcec36fa6f82270563d66a6bfaa25338fdd8f0d6327c7d71'
-                 '55052c4bcb1628017f051b18880de686c544144adf002dc2fdd1adc30b1e2e24')
-sha256sums_x86_64=('cd45ce77bdf8c0929765b1cf29aa1e51679c30a5c0d01dae4aed6084675893eb'
-                   'fe1114e619755bed70255e08bad2f9830887cf336bb5f013cc271314dc631604')
+sha256sums=('3e2b1c7b9f2d1407bd8ba4dbc70b7397806fe19393221c30e6a560e150ca4192')
+sha256sums_i686=('5096ed35aabb556b097a28d28c5f7925e61defe26f6eefd2b8642c46f11ed56c'
+                 '97576e330ef46c47bbdaf6a06108f8d3200f264b1043db43a59b0ac6b151b76f')
+sha256sums_x86_64=('5243e3c6c882386a50ca5aeba3f22144964e0d073949235b31c87345d1605508'
+                   '62f49d454ea8289e661b37ff538a8762a2f537ee89cc1a583f2d373d7d4e3d0a')
 
-for _src in '604551600.Z' '624551500.Z'; do
+for _src in "60455${pkgver//./}.Z" "62455${_dsver//./}.Z"; do
   source_x86_64+=("${_file//@/${_src}}")
 done
 # 64-bit Rev 15.00 Linux Kernel v2.6+ and glibc v2.3+
@@ -255,9 +256,9 @@ _install_check() {
   for _ckvar in _opt_blmgr_user _opt_blmgr_group _basedir _basefolder _logfolder _servicefile; do
     _ckline="${_ckvar}='${!_ckvar}'"
     if ! grep -q "^${_ckline}"'$' "${startdir}/${install}"; then
-      set +u
       msg "${install} must be fixed"
       echo "${_ckline}"
+      set +u
       false
     fi
   done
@@ -283,11 +284,11 @@ prepare() {
   mkdir 'blmgr.tmp'
   mkdir 'blmgr'
   cd 'blmgr.tmp'
-  bsdtar -x -f "${srcdir}/${_blmjar}"
+  bsdtar -xf "${srcdir}/${_blmjar}"
   if [ ! -s 'BBjWebstartBootstrap.jar' ]; then
     mkdir 'webstart.tmp'
     cd 'webstart.tmp'
-    bsdtar -x -f "${srcdir}/${_blmjarwebstart}"
+    bsdtar -xf "${srcdir}/${_blmjarwebstart}"
     mv 'BBjWebstartBootstrap.jar' ..
     cd ..
     rm -r 'webstart.tmp'
@@ -295,7 +296,7 @@ prepare() {
   rm -r 'com' 'org' 'META-INF' 'blminstall.xml'
   mkdir 'Archtemp'
   cd 'Archtemp'
-  bsdtar -x -f '../package_blm.jar'
+  bsdtar -xf '../package_blm.jar'
   declare -A _arch=([any]='32' [i686]='32' [x86_64]='64')
   mv 'unix'/* "2145/blm/${_arch[${CARCH}]}"/* "${srcdir}/blmgr"
   mv "${srcdir}/blmgr/bin/basisrunlm" "${srcdir}/blmgr"
@@ -306,7 +307,7 @@ prepare() {
   rm -r 'Archtemp'
   mkdir 'Archtemp'
   cd 'Archtemp'
-  bsdtar -x -f '../package_install.jar' 'lib/' 'unix'
+  bsdtar -xf '../package_install.jar' 'lib/' 'unix'
   rm 'unix/images'/*.png 'unix/images/BasisB.xpm' 'unix'/*.directory 'unix'/*.menu 'unix/bin/.envsetup'
   local _df
   for _df in 'unix'/*/; do
@@ -319,7 +320,7 @@ prepare() {
   cd ..
   mv 'BBjWebstartBootstrap.jar' "${srcdir}/blmgr/lib"
   cd "${srcdir}/blmgr"
-  bsdtar -x -f '../blmgr.tmp/package_native_2145.jar'
+  bsdtar -xf '../blmgr.tmp/package_native_2145.jar'
   rm -r 'META-INF'
   mkdir -p 'cfg' 'log' 'uninstall/com/basis/install/'
   cd "${srcdir}"
@@ -451,18 +452,25 @@ list1=(*.lic*)
 # Can't use openjdk even if present. Use the highest version of jdk
 pushd '/usr/lib/jvm' > /dev/null
 wantjdk=''
-for jdk in java-*-jdk/; do
+wantjdkbin=''
+for jdk in java-[78]-j[dr][ke]/; do
   jdk="\${jdk%/}"
-  if [ -x "\${jdk}/bin/java" ]; then
-    if [ -z "\${wantjdk}" ] || [ "\$(vercmp "\${jdk}" "\${wantjdk}")" -gt 0 ]; then
+  case "\${jdk}" in
+  *-jre) jdkbin="\${jdk}/jre/bin/java";;
+  *-jdk) jdkbin="\${jdk}/bin/java";;
+  esac
+  if [ -x "\${jdkbin}" ]; then
+    if [ -z "\${wantjdk}" ] || [ "\$(vercmp "\${jdk%-j*}" "\${wantjdk%-j*}")" -gt 0 ]; then
+      wantjdkbin="\${jdkbin}"
       wantjdk="\${jdk}"
     fi
   fi
 done
 popd > /dev/null
-unset jdk
+unset jdk jdkbin wantjdk
 
-echo "Using jdk \${wantjdk}"
+echo "Using java \${wantjdkbin}"
+echo
 echo 'Exit when you see: Configure BLM Startup'
 
 # findHome only works when basis_lmgrd is already running.
@@ -473,7 +481,7 @@ echo '2 1 ./basis_lmgrd -c /usr/local/basis/blmgr'
 EOR
 chmod 755 'ps'
 PATH="${_basedir}/blmgr/:\${PATH}" \
-/usr/lib/jvm/\${wantjdk}/bin/java -jar '${_blmjar}' # -p '/usr/local/basis/blmgr/BLM/Install.properties'
+/usr/lib/jvm/\${wantjdkbin} -jar '${_blmjar}' # -p '/usr/local/basis/blmgr/BLM/Install.properties'
 rm 'ps'
 chown -R '${_opt_blmgr_user}:${_opt_blmgr_group}' *
 list2=(*.lic*)
