@@ -1,0 +1,16 @@
+pkgbase = burritun
+	pkgdesc = Wrap a tun device in a tap device
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/kpcyrd/burritun
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	source = https://github.com/kpcyrd/burritun/archive/v0.1.1/burritun-0.1.1.tar.gz
+	sha512sums = 2a43bb16fb1a6f80b85f2ecbfa2f6e3bcea3a7650bfa1b3249e67f6b5688622a7f4fbaad93fd7177945628f1f692bf11c1a5374e8cdd033bed3565885ce63c6e
+
+pkgname = burritun
+
