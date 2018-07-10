@@ -11,7 +11,7 @@ depends=('python2-dbus' 'python2-cryptography')
 makedepends=('python2-setuptools')
 provides=('python2-secretstorage')
 conflicts=('python2-secretstorage')
-source=("$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::$url/archive/$pkgver.tar.gz")
 sha256sums=('b69b85110fecb014f2a8f2dd76568a5bb0a80245368eada8babbb8a2a97d4a33')
 
 build() {
