@@ -9,9 +9,7 @@ url="https://github.com/pothosware/SoapyOsmo"
 license=('GPLv3')
 depends=('soapysdr' 'gnuradio-osmosdr' 'libmirisdr')
 makedepends=('cmake')
-provides=('soapyosmo')
-conflicts=('soapyosmo')
-source=("https://github.com/pothosware/SoapyOsmo/archive/$_gver.tar.gz")
+source=("$pkgname-$pkgver::$url/archive/$_gver.tar.gz")
 sha256sums=('95a81dbe296e95d928e31e5d7c55aea9acb90740a170caa9d9754f116c94e4d1')
 
 _srcdir=SoapyOsmo-$_gitver
