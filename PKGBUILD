@@ -11,8 +11,8 @@ license=('GPL2')
 depends=('python2' 'python2-simplejson' 'zbase32')
 makedepends=('python2-setuptools')
 checkdepends=('python2-twisted' 'python2-mock')
-source=("https://pypi.python.org/packages/54/16/11f89043cf7732fcc9493df558d2286c729a71efdd620dd744fdf659b4da/pyutil-${pkgver}.tar.gz")
-md5sums=('a9ad3a8c87cadc56f2880a10e0e8219d')
+source=("https://files.pythonhosted.org/packages/source/p/pyutil/pyutil-${pkgver}.tar.gz")
+sha256sums=('8e254aa0a3b59e90515f7bca7ebc467b20a8d3fd2e26b63d196655c075da8d38')
 
 build(){
     cd "$srcdir/pyutil-$pkgver"
@@ -27,6 +27,6 @@ check() {
 
 package(){
     cd "$srcdir/pyutil-$pkgver"
-    python2 setup.py install --root="$pkgdir" --prefix='/usr' --optimize=1
+    python2 setup.py install --root="$pkgdir" --prefix='/usr' --optimize=1 --skip-build
     rm -r "$pkgdir/usr/pyutil"
 }
