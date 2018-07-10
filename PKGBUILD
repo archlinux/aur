@@ -11,14 +11,10 @@ depends=('soapysdr')
 makedepends=('cmake')
 provides=('soapyremote')
 conflicts=('soapyremote')
-source=(
-  "https://github.com/pothosware/SoapyRemote/archive/$_gver.tar.gz"
-  'git_revision.patch'
-)
-sha256sums=(
-  '94146fa0b2f8d658c1e712e0215c7f89163637690fd6f58e75db1f47839f4f2b'
-  '93a2a6d031fb50156ed7de00658fe082ef802ad7900e5336f37b897588fe869c'
-)
+source=("$pkgname-$pkgver::$url/archive/$_gver.tar.gz"
+	'git_revision.patch')
+sha256sums=('94146fa0b2f8d658c1e712e0215c7f89163637690fd6f58e75db1f47839f4f2b'
+	    '93a2a6d031fb50156ed7de00658fe082ef802ad7900e5336f37b897588fe869c')
 
 _srcdir=SoapyRemote-$_gitver
 
