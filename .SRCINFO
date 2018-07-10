@@ -1,6 +1,6 @@
 pkgbase = grv-git
 	pkgdesc = terminal interface for viewing git repositories
-	pkgver = r229.121ee06
+	pkgver = v0.2.0.r11.g7ed2346
 	pkgrel = 1
 	url = https://github.com/rgburke/grv
 	arch = i686

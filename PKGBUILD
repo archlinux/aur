@@ -2,7 +2,7 @@
 
 _pkgname=grv
 pkgname=$_pkgname-git
-pkgver=r229.121ee06
+pkgver=v0.2.0.r11.g7ed2346
 pkgrel=1
 pkgdesc="terminal interface for viewing git repositories"
 arch=('i686' 'x86_64')
@@ -25,15 +25,18 @@ pkgver() {
 }
 
 build() {
-    export GOROOT=/usr/lib/go
     export GOPATH="$srcdir"
-    go get -d github.com/rgburke/grv/cmd/$_pkgname
+    mkdir -p $GOPATH/src/github.com/rgburke
+    rm -rf $GOPATH/src/github.com/rgburke/$_pkgname
+    mv $srcdir/$_pkgname $GOPATH/src/github.com/rgburke
+
     cd $GOPATH/src/github.com/rgburke/$_pkgname
     make
 }
 
 package() {
-    export GOROOT="$GOPATH"
+    # Make instal doesn't work :'(
+    #make install
     install -Dm755 "$srcdir/src/github.com/rgburke/grv/grv" "$pkgdir/usr/bin/$_pkgname"
 }
 
