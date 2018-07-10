@@ -11,14 +11,10 @@ depends=('python2-oauth2')
 makedepends=('python2-setuptools')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=(
-  "$url/archive/$pkgver.tar.gz"
-  'evernote-sdk-python-1.28-fix-setup.patch'
-)
-md5sums=(
-  'b71aaeb73fcb89626401bf5e3755ae87'
-  '088af5b39f219ada3847ba03e24614ab'
-)
+source=("$pkgname-$pkgver::$url/archive/$pkgver.tar.gz"
+	'evernote-sdk-python-1.28-fix-setup.patch')
+sha256sums=('1fc44ba6430b37515c3d72b1091944e31abd106ea5dff522efbd58cf56c662d5'
+	    'ffea8b7e98eedf2372e857e8464cdd1177a686f4b9e774e8a71f3f685d0e42ef')
 
 build () {
   cd $pkgname-$pkgver
