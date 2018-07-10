@@ -7,26 +7,14 @@ pkgdesc="terminal interface for viewing git repositories"
 arch=('i686' 'x86_64')
 url="https://github.com/rgburke/$pkgname"
 license=('GPL-3.0')
-depends=(ncurses readline curl)
+depends=(ncurses readline curl go)
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("https://github.com/rgburke/grv/releases/download/v$pkgver/grv-$pkgver-src.tar.gz")
+source=("https://github.com/rgburke/grv/releases/download/v$pkgver/${pkgname}_v${pkgver}_linux64")
 noextract=()
-sha512sums=('dd363bf2ed776716d55db8b2745f84f611ad6ecc007ba995b5bbaef277b153021e400f61041f3e8706e9613438188e3200b351fab1da217633f61ec6521ec204')
-
-build() {
-    export GOPATH="$srcdir"
-    mkdir -p $GOPATH/src/github.com/rgburke
-    rm -rf $GOPATH/src/github.com/rgburke/$pkgname
-    mv $srcdir/$pkgname $GOPATH/src/github.com/rgburke
-
-    cd $GOPATH/src/github.com/rgburke/$pkgname
-    make build-libgit2
-
-}
+sha512sums=('42a2d4c9f183fae1251100cdf3c0aa1b8b98453b3e9dc1d2278d7f6e91e58983d80f5fc51ae3f2821adb7a8b1d7be804ee013daaef98d248bc6b905a00bb1ffd')
 
 package() {
-    cd $GOPATH/src/github.com/rgburke/$pkgname
-    make install
+    install -Dm755 "$srcdir/${pkgname}_v${pkgver}_linux64" "$pkgdir/usr/bin/$pkgname"
 }
 
