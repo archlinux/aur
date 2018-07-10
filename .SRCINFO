@@ -7,7 +7,7 @@ pkgbase = cm256cc
 	arch = i686
 	license = BSD
 	makedepends = cmake
-	source = cm256cc-1.0.0::https://github.com/f4exb/cm256cc/archive/v1.0.0.tar.gz
+	source = cm256cc-1.0.0.tar.gz::https://github.com/f4exb/cm256cc/archive/v1.0.0.tar.gz
 	sha256sums = 2a9f0fc5d8534fffeb368632cf6942fe652e5b8d65a9a0d7628fefb085313acb
 
 pkgname = cm256cc
