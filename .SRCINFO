@@ -1,6 +1,6 @@
 pkgbase = blockbar-git
 	pkgdesc = Blocks based status bar for X window managers
-	pkgver = 20180618174439
+	pkgver = 20180710190014
 	pkgrel = 1
 	url = https://gitlab.com/sambazley/blockbar
 	arch = i686
