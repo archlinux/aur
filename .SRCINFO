@@ -31,6 +31,7 @@ pkgbase = quartus-free
 	depends = lib32-libxrender
 	depends = lib32-libxt
 	depends = lib32-libxtst
+	depends = libpng12
 	options = !strip
 	options = !debug
 	source = http://download.altera.com/akdlm/software/acdsinst/18.0std/614/ib_tar/Quartus-lite-18.0.0.614-linux.tar

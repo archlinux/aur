@@ -24,7 +24,7 @@ depends=('lib32-expat' 'lib32-fontconfig' 'lib32-freetype2' 'lib32-glibc'
          'lib32-gtk2' 'lib32-libcanberra' 'lib32-libpng' 'lib32-libice' 'lib32-libsm'
          'lib32-util-linux' 'lib32-ncurses' 'lib32-ncurses5-compat-libs' 'lib32-zlib'
          'lib32-libx11' 'lib32-libxau' 'lib32-libxdmcp' 'lib32-libxext' 'lib32-libxft'
-         'lib32-libxrender' 'lib32-libxt' 'lib32-libxtst')
+         'lib32-libxrender' 'lib32-libxt' 'lib32-libxtst' 'libpng12')
 
 makedepends=('unzip' 'metakit' 'tcl-cookfs' 'tdom' 'patchelf')
 
@@ -72,7 +72,7 @@ package() {
     echo "Finished extracting binaries and scripts."
 
     # Remove useless unzip binaries
-    find "${pkgdir}${_alteradir}" -name "unzip" -or -name "unzip32" -delete
+    find "${pkgdir}${_alteradir}" \( -name "unzip" -or -name "unzip32" \) -delete
     # Remove not installed folder
     rmdir "${pkgdir}${_alteradir}/modelsim_ae"
 
@@ -86,6 +86,9 @@ package() {
     for prog in ip/altera/mentor_vip_ae/common/linux{,_x86_64}/mgls/bin/lmgrd modelsim_ase/linuxaloem/{mgls/bin/,}{lmutil,lmgrd}; do
         patchelf --set-interpreter /lib/ld-linux.so.2 "${pkgdir}${_alteradir}/${prog}"
     done
+
+    # Fix world writable permissions
+    find "${pkgdir}${_alteradir}/nios2eds/documents" -perm -o+w -exec chmod go-w {} \+
 
     # Create Lite "license" files
     touch "${pkgdir}${_alteradir}/quartus/linux64/qvweid.fil"
