@@ -1,13 +1,23 @@
---- src/libkcapi-1.0.3/Makefile.am	2018-01-12 22:41:55.000000000 +0100
-+++ Makefile.am	2018-01-25 15:34:35.649902674 +0100
-@@ -131,8 +131,8 @@
+--- libkcapi-1.1.1/Makefile.am	2018-07-11 01:22:56.943190820 +0200
++++ libkcapi-1.1.1/Makefile.am.patch	2018-07-11 01:25:57.253183003 +0200
+@@ -153,19 +153,8 @@
  
  install-exec-hook:
  	(cd $(DESTDIR)$(bindir) && \
--	($(foreach link, $(kcapi_hasher_links), ln -f kcapi-hasher $(link);)) && \
--	($(foreach link, $(kcapi_hasher_links), openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $(link) > .$(link).hmac;)))
-+	($(foreach link, $(kcapi_hasher_links), ln -f kcapi-hasher $(link)-kcapi;)) && \
-+	($(foreach link, $(kcapi_hasher_links), openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $(link)-kcapi > .$(link)-kcapi.hmac;)))
+-	($(foreach link, $(hasher_links), $(LN) -f kcapi-hasher $(link);)))
++	($(foreach link, $(hasher_links), $(LN) -f kcapi-hasher $(link)-kcapi;)))
+ 	-rm -f $(DESTDIR)$(bindir)/kcapi-hasher
+-if HAVE_OPENSSL
+-	$(MKDIR_P) $(DESTDIR)$(CHECK_DIR_BIN_FC)
+-	$(MKDIR_P) $(DESTDIR)$(CHECK_DIR_BIN_HC)
+-	(cd $(DESTDIR)$(bindir) && \
+-	($(foreach link, $(hasher_links_fc), \
+-		$(CHECKSUM_CMD_FC) $(link) > $(DESTDIR)$(CHECK_DIR_BIN_FC)/$(CHECK_PREFIX)$(link).$(CHECK_SUFFIX);) \
+-	$(foreach link, $(hasher_links_hc), \
+-		$(CHECKSUM_CMD_HC) $(link) > $(DESTDIR)$(CHECK_DIR_BIN_HC)/$(CHECK_PREFIX)$(link).$(CHECK_SUFFIX);):))
+-	($(foreach lib, $(wildcard $(DESTDIR)$(libdir)/libkcapi.so*), \
+-		$(CHECKSUM_CMD_FC) $(lib)  > $(DESTDIR)$(CHECK_DIR_LIB)/$(CHECK_PREFIX)$(notdir $(lib)).$(CHECK_SUFFIX);):)
+-endif
  endif
  
  if ENABLE_KCAPI_RNGAPP
