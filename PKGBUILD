@@ -15,8 +15,6 @@ depends=('cairo' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc' 'gmime' 'gtk3'
          'libsecret' 'libxml2' 'pango' 'sqlite' 'webkitgtk')
 makedepends=('cmake' 'git' 'gnome-doc-utils' 'gobject-introspection'
              'granite' 'intltool' 'vala')
-provides=('pantheon-mail')
-conflicts=('pantheon-mail')
 replaces=('pantheon-mail-bzr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('ba2750c0297ee4b2e2cee7ba648a6378e6e097cd6906dd94a561b2cda60b8eaa')
