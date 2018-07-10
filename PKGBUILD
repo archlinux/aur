@@ -18,7 +18,7 @@ optdepends=('rtl_power_fftw: Alternative RTL-SDR backend using FFTW library. Muc
 	    'hackrf: hackrf_sweep backend. Wideband spectrum monitoring with sweep rate of 8 GHz/s.')
 provides=('qspectrumanalyzer')
 conflicts=('qspectrumanalyzer')
-source=("$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
 sha256sums=('d50e13fa4951a67ed4f56362fb74daff9faeda88d7fc3f9d98cffb8d63c6311d')
 
 build() {
