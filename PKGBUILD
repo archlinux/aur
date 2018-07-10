@@ -23,11 +23,6 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd flood
-    cp config.template.js config.js
-}
-
 package() {
     install -dm755 $pkgdir/var/lib
     cp -r flood $pkgdir/var/lib
