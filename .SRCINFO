@@ -1,0 +1,15 @@
+pkgbase = python-pyflatten
+	pkgdesc = A utility for flattening nested data structures into an array
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ericmjl/pyflatten
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	optdepends = python-autograd
+	source = https://files.pythonhosted.org/packages/source/p/pyflatten/pyflatten-1.0.1.tar.gz
+	sha256sums = 7af9f278c4a97b4702588ed90d823844c9858ec16212b2202c5ed77fa5d730bd
+
+pkgname = python-pyflatten
+
