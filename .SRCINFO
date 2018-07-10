@@ -8,8 +8,6 @@ pkgbase = python2-keyring
 	makedepends = python2-setuptools-scm
 	depends = python2-entrypoints
 	depends = python2-secretstorage
-	provides = python2-keyring
-	conflicts = python2-keyring
 	source = python2-keyring-13.2.1.tar.gz::https://pypi.io/packages/source/k/keyring/keyring-13.2.1.tar.gz
 	sha256sums = 6364bb8c233f28538df4928576f4e051229e0451651073ab20b315488da16a58
 

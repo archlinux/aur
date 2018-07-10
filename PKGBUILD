@@ -9,8 +9,6 @@ url="https://github.com/jaraco/keyring"
 license=('MIT')
 depends=('python2-entrypoints' 'python2-secretstorage')
 makedepends=('python2-setuptools-scm')
-provides=('python2-keyring')
-conflicts=('python2-keyring')
 source=("$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('6364bb8c233f28538df4928576f4e051229e0451651073ab20b315488da16a58')
 
