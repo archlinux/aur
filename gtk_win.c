@@ -121,6 +121,92 @@ void on_load_button_clicked(GtkButton* button) {
         api_info_array_store_check_data(app.portfolio_data);
         check_list_add_api_data();
     }
+
+    GtkButton* lock_button = GTK_BUTTON(gtk_builder_get_object(app.builder, "lock_button"));
+    gtk_widget_set_sensitive(GTK_WIDGET(lock_button), TRUE);
+    if (app.password[0] == '\0') // Plaintext
+        gtk_button_set_label(lock_button, "Encrypt");
+    else gtk_button_set_label(lock_button, "Decrypt");
+}
+
+void on_lock_button_clicked(GtkButton* button) {
+    if (strcmp(gtk_button_get_label(button), "Encrypt") == 0) {
+        gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry1")),
+                           "");
+        gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry2")),
+                           "");
+        gtk_widget_show(GTK_WIDGET(gtk_builder_get_object(app.builder, "set_password_dialog")));
+    } else {
+        gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "decrypt_password_entry")),
+                           "");
+        gtk_widget_show(GTK_WIDGET(gtk_builder_get_object(app.builder, "decrypt_dialog")));
+    }
+}
+
+void on_set_password_dialog_response(GtkDialog* dialog, gint response_id) {
+    if (response_id == GTK_RESPONSE_CANCEL)
+        gtk_widget_hide(GTK_WIDGET(dialog));
+    else on_set_password_entry_activate(NULL);
+}
+
+void on_set_password_entry_activate(GtkEntry* entry) {
+    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "set_password_dialog")));
+    GtkEntry* pass = GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry1"));
+    GtkEntry* pass_check = GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry2"));
+    const gchar* pass_str = gtk_entry_get_text(pass);
+    GValue gtext = G_VALUE_INIT;
+    g_value_init(&gtext, G_TYPE_STRING);
+    GtkWidget* dialog = GTK_WIDGET(gtk_builder_get_object(
+            app.builder, "generic_check_window_error_dialog"));
+    if (strlen(pass_str) < 6 || strlen(pass_str) > 30)
+        g_value_set_string(&gtext, "Your password must be between 6 and 30 characters.");
+    else if (strcmp(pass_str, gtk_entry_get_text(pass_check)) != 0)
+        g_value_set_string(&gtext, "Your passwords did not match.");
+    else { // If passwords match
+        sprintf(app.password, "%s\n", pass_str);
+        g_value_set_string(&gtext, "Success! Your portfolio will be encrypted when you close the "
+                                   "program.");
+        dialog = GTK_WIDGET(gtk_builder_get_object(
+                app.builder, "generic_check_window_success_dialog"));
+
+        gtk_button_set_label(GTK_BUTTON(gtk_builder_get_object(app.builder, "lock_button")),
+                             "Decrypt");
+    }
+
+    g_object_set_property(G_OBJECT(dialog), "text", &gtext);
+    gtk_widget_show(dialog);
+}
+
+void on_decrypt_dialog_response(GtkDialog* dialog, gint response_id) {
+    if (response_id == GTK_RESPONSE_CANCEL)
+        gtk_widget_hide(GTK_WIDGET(dialog));
+    else on_decrypt_password_entry_activate(NULL);
+}
+
+void on_decrypt_password_entry_activate(GtkEntry* entry) {
+    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "decrypt_dialog")));
+    GValue gtext = G_VALUE_INIT;
+    g_value_init(&gtext, G_TYPE_STRING);
+    GtkDialog* dialog;
+    const gchar* pass = gtk_entry_get_text(GTK_ENTRY(
+            gtk_builder_get_object(app.builder, "decrypt_password_entry")));
+    gchar mod_pass[strlen(pass) + 1];
+    sprintf(mod_pass, "%s\n", pass);
+    if (strcmp(app.password, mod_pass) == 0) { // Success
+        memset(app.password, '\0', PASS_MAX);
+        g_value_set_string(&gtext, "Successfully decrypted.");
+        dialog = GTK_DIALOG(gtk_builder_get_object(app.builder,
+                "generic_check_window_success_dialog"));
+
+        gtk_button_set_label(GTK_BUTTON(gtk_builder_get_object(app.builder, "lock_button")),
+                             "Encrypt");
+    } else {
+        g_value_set_string(&gtext, "Wrong password!.");
+        dialog = GTK_DIALOG(gtk_builder_get_object(app.builder,
+                                                   "generic_check_window_error_dialog"));
+    }
+    g_object_set_property(G_OBJECT(dialog), "text", &gtext);
+    gtk_widget_show(GTK_WIDGET(dialog));
 }
 
 void on_modify_button_clicked(GtkButton* button) {

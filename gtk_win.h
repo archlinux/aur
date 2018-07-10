@@ -29,6 +29,16 @@ void check_list_add_api_data(void);
 
 void on_load_button_clicked(GtkButton* button);
 
+void on_lock_button_clicked(GtkButton* button);
+
+void on_set_password_dialog_response(GtkDialog* dialog, gint response_id);
+
+void on_set_password_entry_activate(GtkEntry* entry);
+
+void on_decrypt_dialog_response(GtkDialog* dialog, gint response_id);
+
+void on_decrypt_password_entry_activate(GtkEntry* entry);
+
 void on_modify_button_clicked(GtkButton* button);
 
 void on_modify_entry_activate(GtkEntry* entry, gpointer dialog);

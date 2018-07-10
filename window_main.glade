@@ -98,11 +98,13 @@ https://github.com/aokellermann/
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLockButton" id="lock_button">
+                  <object class="GtkButton" id="lock_button">
+                    <property name="label" translatable="yes">Encrypt/Decrypt</property>
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
-                    <property name="text_lock" translatable="yes">Lock Portfolio</property>
-                    <property name="text_unlock" translatable="yes">Unlock Portfolio</property>
+                    <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_lock_button_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -157,24 +159,6 @@ https://github.com/aokellermann/
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSearchEntry" id="search_entry">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="halign">end</property>
-                <property name="hexpand">True</property>
-                <property name="caps_lock_warning">False</property>
-                <property name="primary_icon_name">edit-find-symbolic</property>
-                <property name="primary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">False</property>
-                <property name="input_purpose">alpha</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
               </packing>
             </child>
           </object>
@@ -494,6 +478,35 @@ https://github.com/aokellermann/
       </object>
     </child>
   </object>
+  <object class="GtkMessageDialog" id="generic_check_window_success_dialog">
+    <property name="can_focus">False</property>
+    <property name="type_hint">dialog</property>
+    <property name="transient_for">check_window</property>
+    <property name="buttons">ok</property>
+    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <signal name="response" handler="gtk_widget_hide" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkMessageDialog" id="get_password_dialog">
     <property name="can_focus">False</property>
     <property name="modal">True</property>
@@ -622,6 +635,127 @@ https://github.com/aokellermann/
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">4</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="set_password_dialog">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="type_hint">dialog</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="urgency_hint">True</property>
+    <property name="transient_for">check_window</property>
+    <property name="message_type">question</property>
+    <property name="buttons">ok-cancel</property>
+    <property name="text" translatable="yes">Choose a password:</property>
+    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
+    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <signal name="response" handler="on_set_password_dialog_response" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="set_password_entry1">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="visibility">False</property>
+            <property name="invisible_char">●</property>
+            <property name="max_width_chars">31</property>
+            <property name="placeholder_text" translatable="yes">password</property>
+            <property name="input_purpose">password</property>
+            <signal name="activate" handler="on_set_password_entry_activate" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="set_password_entry2">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="visibility">False</property>
+            <property name="invisible_char">●</property>
+            <property name="max_width_chars">31</property>
+            <property name="placeholder_text" translatable="yes">enter the password again</property>
+            <signal name="activate" handler="on_set_password_entry_activate" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="decrypt_dialog">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="type_hint">dialog</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="urgency_hint">True</property>
+    <property name="transient_for">check_window</property>
+    <property name="message_type">question</property>
+    <property name="buttons">ok-cancel</property>
+    <property name="text" translatable="yes">Enter your password:</property>
+    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
+    <signal name="destroy-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <signal name="response" handler="on_decrypt_dialog_response" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="decrypt_password_entry">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="visibility">False</property>
+            <property name="invisible_char">●</property>
+            <property name="max_width_chars">31</property>
+            <property name="input_purpose">password</property>
+            <signal name="activate" handler="on_decrypt_password_entry_activate" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>
