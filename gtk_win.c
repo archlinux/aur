@@ -88,14 +88,9 @@ void on_load_button_clicked(GtkButton* button) {
     }
 
     if (app.portfolio_string == NULL) { // Error reading file
-        GValue gtext = G_VALUE_INIT;
-        g_value_init(&gtext, G_TYPE_STRING);
-        g_value_set_string(&gtext, "There was an error opening your portfolio file. This may be due"
-                                   " to the file not existing or invalid permissions on the file.");
-        GtkWidget* dialog = GTK_WIDGET(gtk_builder_get_object(
-                app.builder, "generic_check_window_error_dialog"));
-        g_object_set_property((GObject*) dialog, "text", &gtext);
-        gtk_widget_show(dialog);
+        show_generic_message_dialog(
+                "There was an error opening your portfolio file. This may be due"
+                " to the file not existing or invalid permissions on the file.", FALSE);
         return;
     }
 
@@ -161,27 +156,17 @@ void on_set_password_entry_activate(GtkEntry* entry) {
     GtkEntry* pass = GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry1"));
     GtkEntry* pass_check = GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry2"));
     const gchar* pass_str = gtk_entry_get_text(pass);
-    GValue gtext = G_VALUE_INIT;
-    g_value_init(&gtext, G_TYPE_STRING);
-    GtkWidget* dialog = GTK_WIDGET(gtk_builder_get_object(
-            app.builder, "generic_check_window_error_dialog"));
     if (strlen(pass_str) < 6 || strlen(pass_str) > 30)
-        g_value_set_string(&gtext, "Your password must be between 6 and 30 characters.");
+        show_generic_message_dialog("Your password must be between 6 and 30 characters.", FALSE);
     else if (strcmp(pass_str, gtk_entry_get_text(pass_check)) != 0)
-        g_value_set_string(&gtext, "Your passwords did not match.");
+        show_generic_message_dialog("Your passwords did not match.", FALSE);
     else { // If passwords match
         sprintf(app.password, "%s\n", pass_str);
-        g_value_set_string(&gtext, "Success! Your portfolio will be encrypted when you close the "
-                                   "program.");
-        dialog = GTK_WIDGET(gtk_builder_get_object(
-                app.builder, "generic_check_window_success_dialog"));
-
         gtk_button_set_label(GTK_BUTTON(gtk_builder_get_object(app.builder, "lock_button")),
                              "Decrypt");
+        show_generic_message_dialog("Success! Your portfolio will be encrypted when you close the "
+                                    "program.", TRUE);
     }
-
-    g_object_set_property(G_OBJECT(dialog), "text", &gtext);
-    gtk_widget_show(dialog);
 }
 
 void on_decrypt_dialog_response(GtkDialog* dialog, gint response_id) {
@@ -192,40 +177,22 @@ void on_decrypt_dialog_response(GtkDialog* dialog, gint response_id) {
 
 void on_decrypt_password_entry_activate(GtkEntry* entry) {
     gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "decrypt_dialog")));
-    GValue gtext = G_VALUE_INIT;
-    g_value_init(&gtext, G_TYPE_STRING);
-    GtkDialog* dialog;
     const gchar* pass = gtk_entry_get_text(GTK_ENTRY(
             gtk_builder_get_object(app.builder, "decrypt_password_entry")));
     gchar mod_pass[strlen(pass) + 1];
     sprintf(mod_pass, "%s\n", pass);
     if (strcmp(app.password, mod_pass) == 0) { // Success
         memset(app.password, '\0', PASS_MAX);
-        g_value_set_string(&gtext, "Successfully decrypted.");
-        dialog = GTK_DIALOG(gtk_builder_get_object(app.builder,
-                "generic_check_window_success_dialog"));
-
         gtk_button_set_label(GTK_BUTTON(gtk_builder_get_object(app.builder, "lock_button")),
                              "Encrypt");
-    } else {
-        g_value_set_string(&gtext, "Wrong password!.");
-        dialog = GTK_DIALOG(gtk_builder_get_object(app.builder,
-                                                   "generic_check_window_error_dialog"));
-    }
-    g_object_set_property(G_OBJECT(dialog), "text", &gtext);
-    gtk_widget_show(GTK_WIDGET(dialog));
+        show_generic_message_dialog("Successfully decrypted.", TRUE);
+    } else show_generic_message_dialog("Wrong password!", FALSE);
 }
 
 void on_modify_button_clicked(GtkButton* button) {
     if (app.portfolio_string == NULL) {
-        GValue gtext = G_VALUE_INIT;
-        g_value_init(&gtext, G_TYPE_STRING);
-        g_value_set_string(&gtext, "Your portfolio hasn't been loaded yet. Click the button Load "
-                                   "Portfolio to the left.");
-        GtkWidget* dialog = GTK_WIDGET(gtk_builder_get_object(
-                app.builder, "generic_check_window_error_dialog"));
-        g_object_set_property((GObject*) dialog, "text", &gtext);
-        gtk_widget_show(dialog);
+        show_generic_message_dialog("Your portfolio hasn't been loaded yet. Click the button Load "
+                                    "Portfolio to the left.", FALSE);
         return;
     }
 
@@ -290,17 +257,9 @@ void on_password_entry_activate(GtkEntry* entry, gpointer dialog) {
     rc4_encode_string(app.portfolio_string, modified_pw);
 
     if (!is_string_json_array(app.portfolio_string)) { // Wrong password
-        // Reverse the failed decryption to its original state
+        // Reverse the failed decryption to its original state and show error dialog
         rc4_encode_string(app.portfolio_string, modified_pw);
-
-        // Error dialog
-        GValue gtext = G_VALUE_INIT;
-        g_value_init(&gtext, G_TYPE_STRING);
-        g_value_set_string(&gtext, "Wrong password!");
-        GtkWidget* err_dialog = GTK_WIDGET(gtk_builder_get_object(
-                app.builder, "generic_check_window_error_dialog"));
-        g_object_set_property((GObject*) err_dialog, "text", &gtext);
-        gtk_widget_show(err_dialog);
+        show_generic_message_dialog("Wrong password!", FALSE);
     } else  { // Correct password
         // Copy password to app
         strcpy(app.password, modified_pw);
@@ -416,4 +375,17 @@ void list_store_update(void) {
         api_info_array_store_check_data(app.portfolio_data);
         check_list_add_api_data();
     }
+}
+
+void show_generic_message_dialog(const char* message, gboolean success) {
+    GValue gtext = G_VALUE_INIT;
+    g_value_init(&gtext, G_TYPE_STRING);
+    g_value_set_string(&gtext, message);
+    char widget_name[64];
+    if (success)
+        strcpy(widget_name, "generic_check_window_success_dialog");
+    else strcpy(widget_name, "generic_check_window_error_dialog");
+    GtkWidget* err_dialog = GTK_WIDGET(gtk_builder_get_object(app.builder, widget_name));
+    g_object_set_property(G_OBJECT(err_dialog), "text", &gtext);
+    gtk_widget_show(err_dialog);
 }

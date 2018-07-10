@@ -79,4 +79,6 @@ void list_store_sort(GtkListStore* list_store, Col_Index idx);
 
 void list_store_update(void);
 
+void show_generic_message_dialog(const char* message, gboolean success);
+
 #endif
