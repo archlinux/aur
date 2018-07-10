@@ -1,7 +1,7 @@
 # Maintainer: neodarz <neodarz@neodarz.net>
 
 pkgname=grv
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="terminal interface for viewing git repositories"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/rgburke/grv/releases/download/v$pkgver/grv-$pkgver-src.tar.gz")
 noextract=()
-sha512sums=('5b579a8ddbe3e261301e22b7f1e9384ed2dbb2fa1c3355619da00bde2e81520822bf796828b5c56711074b9579aacd1178d661df787ef9636404c8fbada1f5aa')
+sha512sums=('dd363bf2ed776716d55db8b2745f84f611ad6ecc007ba995b5bbaef277b153021e400f61041f3e8706e9613438188e3200b351fab1da217633f61ec6521ec204')
 
 build() {
     export GOPATH="$srcdir"
