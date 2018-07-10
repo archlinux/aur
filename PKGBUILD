@@ -8,21 +8,14 @@ arch=(any)
 url="https://github.com/pothosware/SoapySDR"
 license=('custom:Boost')
 makedepends=('cmake')
-optdependes=(
-  'swig: bindings'
-  'python: python bindings'
-  'doxygen: documentation'
-)
-provides=('soapysdr')
-conflicts=('soapysdr')
-source=(
-  "https://github.com/pothosware/SoapySDR/archive/$_gver.tar.gz"
-  'git_revision.patch'
-)
+optdependes=('swig: bindings'
+	    'python: python bindings'
+	    'doxygen: documentation')
+source=("$pkgname-$pkgver::$url/archive/$_gver.tar.gz"
+	'git_revision.patch')
 sha256sums=(
   '2ecf8e43518dfb24bd172923adf6ce25a6d3e39de3a8aadf26c890f60dd1e9f7'
-  '93a2a6d031fb50156ed7de00658fe082ef802ad7900e5336f37b897588fe869c'
-)
+  '93a2a6d031fb50156ed7de00658fe082ef802ad7900e5336f37b897588fe869c')
 
 _srcdir=SoapySDR-$_gitver
 
