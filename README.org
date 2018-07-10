@@ -1,0 +1,77 @@
+# 
+#   Copyright (C) 2018 CASM Organization <https://casm-lang.org>
+#   All rights reserved.
+# 
+#   Developed by: Philipp Paulweber
+#                 <https://github.com/casm-lang/casm-lang.pkg.aur>
+# 
+#   This file is part of casm-lang.pkg.aur.
+# 
+#   casm-lang.pkg.aur is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+# 
+#   casm-lang.pkg.aur is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#   GNU General Public License for more details.
+# 
+#   You should have received a copy of the GNU General Public License
+#   along with casm-lang.pkg.aur. If not, see <http://www.gnu.org/licenses/>.
+# 
+[[https://github.com/casm-lang/casm-lang.logo/raw/master/etc/headline.png]]
+
+#+options: toc:nil
+
+* casm-lang.pkg.aur
+
+This repository contains the Arch linux AUR package configuration, 
+which is directly uses the pre-build binaries for the current CASM release.
+Furthermore this repository gets mirrored to https://aur.archlinux.org.
+
+** Installation
+
+You can download the repository either 
+at https://github.com/casm-lang/casm-lang.pkg.aur or 
+at https://aur.archlinux.org/casm.git.
+
+#+begin_src
+$ git clone https://aur.archlinux.org/casm.git
+$ cd casm
+$ makepkg -si
+#+end_src
+
+** Copyright and License
+
+The copyright holder of 
+=casm-lang.pkg.aur= is the [[https://casm-lang.org][CASM organization]] ([[https://github.com/casm-lang][@casm-lang]]) 
+and the used license of 
+=casm-lang.pkg.aur= is the [[https://www.gnu.org/licenses/gpl-3.0.html][GNU GPLv3]].
+
+*** Notice
+
+#+begin_src
+
+Copyright (C) 2018 CASM Organization <https://casm-lang.org>
+All rights reserved.
+
+Developed by: Philipp Paulweber
+              <https://github.com/casm-lang/casm-lang.pkg.aur>
+
+This file is part of casm-lang.pkg.aur.
+
+casm-lang.pkg.aur is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+casm-lang.pkg.aur is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with casm-lang.pkg.aur. If not, see <http://www.gnu.org/licenses/>.
+
+#+end_src
