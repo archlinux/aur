@@ -1,6 +1,6 @@
 pkgbase = google-cloud-sdk
 	pkgdesc = Tools and libraries SDK for managing resources on the Google Cloud Platform (gcloud), plus Python/PHP appengine SDK components
-	pkgver = 207.0.0
+	pkgver = 208.0.0
 	pkgrel = 1
 	url = https://cloud.google.com/sdk/
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = google-cloud-sdk
 	replaces = google-appengine-php
 	options = !strip
 	options = staticlibs
-	source = https://dl.google.com/dl/cloudsdk/release/downloads/google-cloud-sdk-207.0.0-linux-x86_64.tar.gz
+	source = https://dl.google.com/dl/cloudsdk/release/downloads/google-cloud-sdk-208.0.0-linux-x86_64.tar.gz
 	source = profile.sh
-	sha256sums = 8f218e6b2fedfe2d0df5dee752b5fb674fb1e4c47f1f3033f4d0955e8d425619
+	sha256sums = 99d157f33953c6626ad15e252127d706be1ed04eaeb74458cb1a7594db592f9f
 	sha256sums = 36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692
 
 pkgname = google-cloud-sdk
