@@ -9,8 +9,6 @@ url="https://github.com/f4exb/dsdcc"
 license=('GPL3')
 depends=('mbelib' 'serialdv')
 makedepends=('cmake')
-provides=('dsdcc')
-conflicts=('dsdcc')
 source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
 sha256sums=('0c865969948c5c9dd80900cb0656605d603a2ab688f98d6641bb3a6d97b592ed')
 
