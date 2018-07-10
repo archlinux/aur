@@ -18,7 +18,7 @@ makedepends=('cmake' 'git' 'gnome-doc-utils' 'gobject-introspection'
 provides=('pantheon-mail')
 conflicts=('pantheon-mail')
 replaces=('pantheon-mail-bzr')
-source=("$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('ba2750c0297ee4b2e2cee7ba648a6378e6e097cd6906dd94a561b2cda60b8eaa')
 
 build() {

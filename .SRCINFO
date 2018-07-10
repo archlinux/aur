@@ -32,7 +32,7 @@ pkgbase = pantheon-mail
 	provides = pantheon-mail
 	conflicts = pantheon-mail
 	replaces = pantheon-mail-bzr
-	source = https://github.com/elementary/mail/archive/1.0.7.tar.gz
+	source = pantheon-mail-1.0.7.tar.gz::https://github.com/elementary/mail/archive/1.0.7.tar.gz
 	sha256sums = ba2750c0297ee4b2e2cee7ba648a6378e6e097cd6906dd94a561b2cda60b8eaa
 
 pkgname = pantheon-mail
