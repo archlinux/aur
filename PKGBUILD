@@ -22,5 +22,5 @@ build() {
 
 package() {
   cd ${pkgname}
-  make install
+  make INSTALL_ROOT="${pkgdir}" install
 }
