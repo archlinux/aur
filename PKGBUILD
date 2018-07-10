@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=routersploit
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="An open-source exploitation framework dedicated to embedded devices."
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSD')
 url="https://github.com/threat9/routersploit"
 depends=('python-future' 'python-requests' 'python-paramiko' 'python-pysnmp' 'python-crypto')
 source=("${pkgname}_v${pkgver}.tar.gz"::"https://github.com/threat9/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('210c02823a1d4dcf80ac8657d8400b2102cb73c3dbf882346cb9426baaf35277cff926e7f7bc992d0a34ccedcf691128998095637d04c46ba9717a26cd7a2ff6')
+sha512sums=('fc43c9df65a543f6fff95a2e6b3c65f1c96e06bcfbe7c6d6b6fc319a2c57f57a999ca9f320e3cbba335f470ac4d8d4cacc7712b44c25888d80ac85355bc0136e')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
