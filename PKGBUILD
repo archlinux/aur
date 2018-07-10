@@ -1,5 +1,4 @@
-# Maintainer: David Vogt <dave at winged dot ch>
-# This PKGBUILD is maintained at https://github.com/winged/aur-packages
+# Maintainer: Ignas Anikevicius <anikevicius at gm@il dot c0m>
 
 pkgname=python-neovim-git
 _pkgname=python-neovim-git
@@ -21,7 +20,7 @@ conflicts=(
 )
 provides=('python-neovim')
 makedepends=('git')
-source=("$pkgname::git://github.com/neovim/python-client.git"
+source=("$pkgname::git+https://github.com/neovim/python-client.git"
         "LICENSE::https://raw.githubusercontent.com/neovim/python-client/master/LICENSE")
 sha256sums=('SKIP' '297a62ff61eb84f532ff5a8181860d925b710d4458f204e56c90b1da997c8711')
 
