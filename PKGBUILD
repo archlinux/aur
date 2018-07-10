@@ -25,7 +25,7 @@ options=('staticlibs') # libQtUiTools builds as static only FS#36606
 conflicts=('lib32-qt')
 replaces=('lib32-qt<=4.8.4')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
-source=("http://download.qt.io/official_releases/qt/4.8/${pkgver}/${_pkgfqn}.tar.gz"
+source=("https://download.qt.io/archive/qt/4.8/${pkgver}/${_pkgfqn}.tar.gz"
         'improve-cups-support.patch'
         'moc-boost-workaround.patch'
         'kubuntu_14_systemtrayicon.diff'
