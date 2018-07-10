@@ -2,7 +2,7 @@
 
 pkgname=crmsh-git
 _pkgname=crmsh
-pkgver=3.0.3.r0.g41845ca5
+pkgver=3.0.0.r430.gad74b5dd
 pkgrel=1
 pkgdesc="Command-line interface for high-availability cluster management on GNU/Linux systems"
 arch=('any')
@@ -22,7 +22,7 @@ depends=('pacemaker'
          'gawk')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git#branch=crmsh-3.0")
+source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {

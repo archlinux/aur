@@ -1,6 +1,6 @@
 pkgbase = crmsh-git
 	pkgdesc = Command-line interface for high-availability cluster management on GNU/Linux systems
-	pkgver = 3.0.3.r0.g41845ca5
+	pkgver = 3.0.0.r430.gad74b5dd
 	pkgrel = 1
 	url = https://github.com/ClusterLabs/crmsh/
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = crmsh-git
 	depends = gawk
 	provides = crmsh
 	conflicts = crmsh
-	source = crmsh-git::git+https://github.com/ClusterLabs/crmsh.git#branch=crmsh-3.0
+	source = crmsh-git::git+https://github.com/ClusterLabs/crmsh.git
 	md5sums = SKIP
 
 pkgname = crmsh-git
