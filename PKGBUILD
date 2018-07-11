@@ -22,10 +22,13 @@ package() {
     warning "Installation without JDK will cause prompts for Root password during build!"
   fi
 
-  rm -rf $pkgname
+  if [[ -d $pkgname ]]; then
+    msg2 "Cleaning build environment..."
+    rm -r $pkgname
+  fi
   
   msg2 "Extracting GitHub_BiglyBT_Installer_$pkgver.sh..."
-  export app_java_home=/usr/lib/jvm/default
+  export app_java_home="/usr/lib/jvm/default"
   sh GitHub_BiglyBT_Installer_$pkgver.sh -q -dir "$srcdir"/$pkgname
 
   cd "$srcdir"/$pkgname
