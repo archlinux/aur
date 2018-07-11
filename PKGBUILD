@@ -1,9 +1,11 @@
-# maintained by: bartus szczepaniak <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 name=cubesurfer
 version=1.0
 #fragment="#commit=7e49329 "
 files=(__init__.py mciso*.so mciso*.html)
+_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+
 pkgname=blender-plugin-${name}
 pkgver=1.0_r22.1d6d9a6
 pkgrel=1
@@ -12,7 +14,8 @@ arch=(i686 x86_64)
 url="http://pyroevil.com/category/scripts-addons/cubesurfece/"
 license=('GPL')
 depends=(blender)
-makedepends=(git cython)
+makedepends=(expac git cython)
+#options=(debug !strip)
 source=("${name}::git+https://github.com/Pyroevil/CubeSurfer.git${fragment}")
 md5sums=('SKIP')
 
@@ -33,7 +36,7 @@ build() {
 
 package() {
   cd ${name}
-  addons="$pkgdir/usr/share/blender/$(blender -v | head -n1 | cut -f2 -d ' ')/scripts/addons"
+  addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${name}
   for file in  ${files[@]} ; do install -m644 ${file} ${addons}/${name}; done
 }
