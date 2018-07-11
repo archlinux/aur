@@ -1,4 +1,4 @@
-# Maintainer: bartus  <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=cxxopts
 #for fragment you can use one of: #commit=, #tag=, #branch=
 #fragment=
