@@ -1,18 +1,19 @@
 # Maintainer:  Chris Severance aur.severach AatT spamgourmet.com
-# Contributor: nl6720 <nl6720@gmail.com>
+# Maintainer:  nl6720 <nl6720@gmail.com>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Hokum <hokum_at_mail_dot_ru>
 
 pkgname='gptfdisk-git'
-pkgver=1.0.4.r177.4cd84de
+pkgver=1.0.4.r177.g4cd84de
 pkgrel=1
 pkgdesc='A text-mode partitioning tool that works on GUID Partition Table (GPT) disks - GIT Version'
 arch=('x86_64')
 url='https://www.rodsbooks.com/gdisk/'
 license=('GPL2')
 makedepends=('git')
+checkdepends=('bash')
 depends=('gcc-libs' 'popt' 'libuuid.so' 'libncursesw.so')
 conflicts=("${pkgname%-git}" 'gdisk')
 provides=("${pkgname%-git}=${pkgver}" "gdisk=${pkgver}")
@@ -21,13 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  printf '%s.r%s.%s' "$(grep -Po 'GPTFDISK_VERSION "\K[\d.]+' "${srcdir}/${pkgname%-git}/support.h")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname%-git}"
-  git clean -x -d -f
-  git reset --hard
+  printf '%s.r%s.g%s' "$(grep -Po 'GPTFDISK_VERSION "\K[\d.]+' "${srcdir}/${pkgname%-git}/support.h")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

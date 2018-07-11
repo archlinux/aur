@@ -1,17 +1,18 @@
 pkgbase = gptfdisk-git
 	pkgdesc = A text-mode partitioning tool that works on GUID Partition Table (GPT) disks - GIT Version
-	pkgver = 1.0.4.r177.4cd84de
+	pkgver = 1.0.4.r177.g4cd84de
 	pkgrel = 1
 	url = https://www.rodsbooks.com/gdisk/
 	arch = x86_64
 	license = GPL2
+	checkdepends = bash
 	makedepends = git
 	depends = gcc-libs
 	depends = popt
 	depends = libuuid.so
 	depends = libncursesw.so
-	provides = gptfdisk=1.0.4.r177.4cd84de
-	provides = gdisk=1.0.4.r177.4cd84de
+	provides = gptfdisk=1.0.4.r177.g4cd84de
+	provides = gdisk=1.0.4.r177.g4cd84de
 	conflicts = gptfdisk
 	conflicts = gdisk
 	source = gptfdisk::git+https://git.code.sf.net/p/gptfdisk/code#branch=master
