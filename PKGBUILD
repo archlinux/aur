@@ -1,4 +1,4 @@
-## Package Maintainer: Karl-K
+## Package Maintainer: wchurch58
 
 pkgname=virtualshield
 pkgver=1.0
@@ -10,7 +10,7 @@ url="https://virtualshield.com/"
 depends=('openvpn' 'mono' 'mono-tools' 'mono-addins')
 optdepends=('filemanager-actions' 'openvpn-runit' 'openvpn-openrc' 'virtualshield-runit'
 'virtualshield-openrc' 'virtualshield-systemd')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/karl-k/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/wchurch58/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('695a073b4621f88ef56c790c1c96cf14326191157cf333c996bc3bc04d7571b02dd0955162ea73c4a31ec7c5eec5b1585296c08c591aba6491526d56d3796b8f')
 
 
