@@ -1,13 +1,13 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
 url="http://buchen.github.io/portfolio/"
 license=('EPL')
 #depends=('java-runtime>=8' 'webkitgtk2')
-depends=('java-runtime=8' 'webkitgtk2')
+depends=('java-runtime=8' 'webkit2gtk')
 makedepends=('maven')
 
 _DEST="/usr/share/portfolio"
@@ -16,7 +16,7 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=("54adae01b1f7a3ad0ddf7d518d8817c7e901c846")
+sha1sums=("143b82e9c6c43784faab021cbb3ef8f96fc18216")
 
 #JRE_VERSION=$(archlinux-java status | grep default | awk '{print $1}')
 
