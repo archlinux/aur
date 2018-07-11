@@ -1,17 +1,11 @@
 pkgbase = debugedit
 	pkgdesc = Tool to mangle source locations in .debug files
-	pkgver = 4.13.0rc1
+	pkgver = 4.13.0.1
 	pkgrel = 1
 	url = http://www.rpm.org/
 	arch = x86_64
 	license = GPL
-	depends = glibc
-	depends = libelf
-	depends = nss
-	depends = popt
-	depends = zlib
-	source = http://rpm.org/releases/testing/rpm-4.13.0-rc1.tar.bz2
-	sha1sums = 536fff19797e9fe49fd7f35ec0109356061bf033
+	depends = rpm-org
 
 pkgname = debugedit
 
