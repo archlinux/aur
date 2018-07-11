@@ -41,5 +41,5 @@ build() {
 
 package() {
     install -Dm755 ./build/qpicospeaker "$pkgdir/usr/bin/qpicospeaker"
-    install -Dm755 ./qpicospeaker/icons/qpicospeaker.png "$pkgdir$HOME/.local/share/icons/hicolor/32x32/apps/qpicospeaker.png"
+    install -Dm666 ./qpicospeaker/icons/qpicospeaker.png "$pkgdir$HOME/.local/share/icons/hicolor/32x32/apps/qpicospeaker.png"
 }
