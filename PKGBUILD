@@ -1,9 +1,10 @@
+# Maintainer: Aaron Paden
 # Mantainer: Franco Tortoriello
 
 pkgname=munt-git
 _pkgname=munt
 pkgdesc="Software synthesiser emulating pre-GM MIDI devices, such as the Roland MT-32"
-pkgver=1861.a48e5be
+pkgver=1977.aa2a2f2
 pkgrel=1
 arch=(i686 x86_64)
 url="http://munt.sourceforge.net"
@@ -32,7 +33,7 @@ build() {
           --exec="/usr/bin/mt32emu-qt" \
           --startupnotify=true
   
-  convert "${srcdir}/${_pkgname}/mt32emu_qt/src/images/note.gif" "${srcdir}/munt.png"
+  convert "${srcdir}/${_pkgname}/mt32emu_qt/src/images/Icon.gif" "${srcdir}/munt.png"
 
   cd "${srcdir}/${_pkgname}"
   cmake -DWITH_INTERNAL_PORTAUDIO='FALSE' -DCMAKE_INSTALL_PREFIX='/usr'
