@@ -9,6 +9,7 @@ url='https://github.com/bartkessels/simpleconvert'
 arch=('x86_64')
 license=('GPL3')
 depends=('ffmpeg' 'hicolor-icon-theme' 'qt5-base')
+makedepends=('qt5-tools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('1b39acabdb26810e8fc4550247b5fe92bb6b25871e1b9993bb1352384abcae96')
 

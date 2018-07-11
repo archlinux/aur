@@ -5,6 +5,7 @@ pkgbase = simpleconvert
 	url = https://github.com/bartkessels/simpleconvert
 	arch = x86_64
 	license = GPL3
+	makedepends = qt5-tools
 	depends = ffmpeg
 	depends = hicolor-icon-theme
 	depends = qt5-base
