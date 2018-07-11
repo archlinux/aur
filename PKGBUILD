@@ -9,10 +9,10 @@ pkgdesc="An application which sync files between your computers and Synology NAS
 arch=('i686' 'x86_64')
 url="https://www.synology.com/en-global/releaseNote/CloudStationDrive"
 license=('Custom')
-optdepends=('nautilus: For nautilus integration')
-source_x86_64=(https://global.download.synology.com/download/Tools/CloudStationDrive/${_rver}-${_iver}/Ubuntu/Installer/x86_64/synology-cloud-station-drive-${_iver}.x86_64.deb)
+optdepends=('nautilus: Nautilus integration')
+source_x86_64=("https://global.download.synology.com/download/Tools/CloudStationDrive/${_rver}-${_iver}/Ubuntu/Installer/x86_64/synology-cloud-station-drive-${_iver}.x86_64.deb")
 sha256sums_x86_64=('9caeff7d7a5331150531a2dda492a74672082550d57463c8d122452dcb7bc5d7')
-source_i686=(https://global.download.synology.com/download/Tools/CloudStationDrive/${_rver}-${_iver}/Ubuntu/Installer/i686/synology-cloud-station-drive-${_iver}.i686.deb)
+source_i686=("https://global.download.synology.com/download/Tools/CloudStationDrive/${_rver}-${_iver}/Ubuntu/Installer/i686/synology-cloud-station-drive-${_iver}.i686.deb")
 sha256sums_i686=('9a7b088d26edc3f53928818dd48a244cc75c0afd552231c67046692781e7e786')
 
 prepare() {
