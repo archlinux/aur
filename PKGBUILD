@@ -2,7 +2,7 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-_USE_GNU_EFI='1'
+_USE_GNU_EFI='0'
 _PXE='0'
 
 #######
@@ -12,7 +12,7 @@ _PXE='0'
 
 _pkgname='refind'
 pkgname="${_pkgname}-efi-git"
-pkgver=0.11.2.2.r610.0a573cd
+pkgver=0.11.2.2.r617.7e9e438
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='http://www.rodsbooks.com/refind/'
@@ -49,7 +49,7 @@ if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 
 else
 
-	pkgdesc="${pkgdesc} - Built with Tianocore UDK libs"
+	pkgdesc="${pkgdesc} - Built with TianoCore EDK2"
 	makedepends+=('python2' 'nasm')
 
 	_UDK_VERSION='UDK2018'
@@ -69,7 +69,7 @@ pkgver() {
 
 	cd "${srcdir}/${_pkgname}/"
 
-	printf "%s.r%s.%s" "$(grep -Po 'REFIND_VERSION L"\K[\d.]+' "${srcdir}/${_pkgname}/include/version.h")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf '%s.r%s.%s' "$(grep -Po 'REFIND_VERSION L"\K[\d.]+' "${srcdir}/${_pkgname}/include/version.h")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
@@ -97,6 +97,9 @@ _prepare_tianocore_sources() {
 	mkdir -p "${_UDK_DIR}/Conf/"
 	mkdir -p "${_UDK_DIR}/Build/"
 
+	# Disable build ID generation
+	sed 's|,--gc-sections|,--gc-sections,--build-id=none|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template"
+
 	# Use python2 for UDK BaseTools
 	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/BinWrappers/PosixLike"/* || true
 	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/Tests/GNUmakefile"
@@ -108,30 +111,15 @@ _prepare_tianocore_sources() {
 	# Fix GenFw: ERROR 3000: Invalid, bad symbol definition http://www.mail-archive.com/edk2-devel@lists.sourceforge.net/msg03625.html
 	sed -e 's|_OBJCOPY_FLAGS      =|_OBJCOPY_FLAGS      = -R .eh_frame|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 
-	# Fix GCC >=4.7 error - gcc: error: unrecognized command line option '-melf_x86_64'
-	sed 's| -m64 --64 -melf_x86_64| -m64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	sed 's|--64 | |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	sed 's| -m64 -melf_x86_64| -m64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-
 	# Remove GCC -g debug option and add -O0 -mabi=ms -maccumulate-outgoing-args
 	sed 's|DEFINE GCC_ALL_CC_FLAGS            = -g |DEFINE GCC_ALL_CC_FLAGS            = -O0 -mabi=ms -maccumulate-outgoing-args |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	sed 's|DEFINE GCC44_ALL_CC_FLAGS            = -g |DEFINE GCC44_ALL_CC_FLAGS            = -O0 -mabi=ms -maccumulate-outgoing-args |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 
-	# Fix GenFw: ERROR 3000: Invalid, Unsupported section alignment
-	sed 's|,--gc-sections|,--gc-sections, --build-id=none|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template"
-	# sed 's|Error (NULL, 0, 3000, "Invalid", "Unsupported section alignment.");|continue;|g' -i "${EDK_TOOLS_PATH}/Source/C/GenFw/Elf64Convert.c"
-	# sed 's|Error (NULL, 0, 3000, "Invalid", "Unsupported section alignment.");|continue;|g' -i "${EDK_TOOLS_PATH}/Source/C/GenFw/Elf32Convert.c"
-	# sed 's|_GCC48_IA32_OBJCOPY_FLAGS        =|_GCC48_IA32_OBJCOPY_FLAGS        = --section-alignment=0x20 |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	# sed 's|_GCC48_X64_OBJCOPY_FLAGS        =|_GCC48_X64_OBJCOPY_FLAGS        = --section-alignment=0x20 |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-
 	# Fix UDK Target Platform
 	sed "s|ACTIVE_PLATFORM       = Nt32Pkg/Nt32Pkg.dsc|ACTIVE_PLATFORM       = ${_UDK_TARGET}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	sed "s|TARGET                = DEBUG|TARGET                = ${_TIANOCORE_TARGET}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
+	sed "s|TARGET_ARCH           = IA32|TARGET_ARCH           = ${_TIANO_ARCH}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	sed "s|TOOL_CHAIN_TAG        = MYTOOLS|TOOL_CHAIN_TAG        = ${_COMPILER}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
-
-	# Fix UDK Target ARCH for rEFInd
-	sed "s|X64|${_TIANO_ARCH}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
-	sed "s|IA32|${_TIANO_ARCH}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 
 	chmod 0755 "${_UDK_DIR}/BaseTools/BuildEnv"
 
@@ -156,10 +144,8 @@ _prepare_refind_sources() {
 		# Fix UDK Path in rEFInd Makefiles
 		sed "s|^export EDK2BASE=.*$|export EDK2BASE=${_UDK_DIR}|g" -i "${srcdir}/${_pkgname}_build/Makefile" || true
 
-		# Fix GenFw: ERROR 3000: Invalid section alignment
+		# Disable build ID generation
 		sed 's|--gc-sections|--gc-sections --build-id=none|g' -i "${srcdir}/${_pkgname}_build/Make.common" || true
-		# sed -e 's|--gc-sections|--gc-sections -z max-page-size=0x20|g' -i "${srcdir}/${_pkgname}_build/Make.common" || true
-		# sed -e 's|--strip-unneeded|--section-alignment=0x20 --strip-unneeded|g' -i "${srcdir}/${_pkgname}_build/Make.common" || true
 	fi
 
 }
@@ -289,8 +275,7 @@ package() {
 	install -D -m0644 "${srcdir}/${_pkgname}_build/keys"/* "${pkgdir}/usr/share/refind/keys/"
 
 	# Install the rEFIt license file, since rEFInd is a fork of rEFIt
-	install -d "${pkgdir}/usr/share/licenses/refind/"
-	install -D -m0644 "${srcdir}/${_pkgname}_build/LICENSE.txt" "${pkgdir}/usr/share/licenses/refind/LICENSE"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	# Use '#!/usr/bin/env bash' in all scripts
 	sed 's|#!/bin/bash|#!/usr/bin/env bash|g' -i "${pkgdir}/usr/bin"/* || true
