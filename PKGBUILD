@@ -6,7 +6,7 @@
 #see the last line and an example were I removed Liberation fonts since they are contained in other packages.
 
 pkgname=opensiddur-hebrew-fonts
-pkgver=1.18.2
+pkgver=1.18.4
 pkgrel=1
 pkgdesc="The Open Siddur Project's open-source Unicode Hebrew font pack. 
 Open-source licensed Unicode fonts in: Hebrew, Latin, Greek, Cyrillic, Arabic, and Amharic."
