@@ -1,4 +1,4 @@
-# Maintainer: bartus <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=luxcorerender
 pkgver=2.1
 pkgrel=1
