@@ -1,4 +1,4 @@
-# Maintainer: bartus <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 # you can change color of rendered object here
 # format: RGB
