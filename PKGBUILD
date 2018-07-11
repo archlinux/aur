@@ -1,16 +1,18 @@
-# maintained by: bartus szczepaniak <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 name=gaffer
 git_user_name=gregzaal
+_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+
 pkgname=blender-plugin-${name}-git
-pkgver=3.0.3.r1.gdef0717
+pkgver=3.0.4.r1.gf74e188
 pkgrel=1
 pkgdesc="Blender addon for light and hdri managament."
 arch=('any')
 url="https://blendermarket.com/products/gaffer-light-manager/"
 license=('GPL')
 depends=('blender')
-makedepends=('git')
+makedepends=('expac' 'git')
 install="${pkgname}.install"
 source=("${name}::git+https://github.com/${git_user_name}/${name}.git"
         "remove.updater.patch")
@@ -30,7 +32,7 @@ pkgver() {
 
 package() {
   cd ${srcdir}
-  addons="$pkgdir/usr/share/blender/$(blender -v | head -n1 | cut -f2 -d ' ')/scripts/addons"
+  addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${name}
   cp -a -t ${addons}/${name} ${name}/*
 }
