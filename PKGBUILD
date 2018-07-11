@@ -1,4 +1,4 @@
-# maintained by: bartus szczepaniak <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 name=cork
 github_link="https://github.com/dfelinto/cork-on-blender.git"
