@@ -3,8 +3,8 @@
 _pkgname=rust
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.26.2
-pkgrel=2
+pkgver=1.27.0
+pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)"
 arch=('x86_64')
 url="https://www.rust-lang.org"
@@ -22,11 +22,11 @@ options=('!strip' 'staticlibs' '!buildflags')
 source=("https://static.rust-lang.org/dist/rust-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('15a5ab639d794e33a54c488b4064b055663b4f297311c487d7ce8dd46c366d1b'
+sha256sums=('d1a4150b1001ec75a6d8eaa5117af1ae36c481131dd3aaa240dc590c916b3719'
             'SKIP'
-            'c871795510c3db63f134c97fe72758fd3d3abeee703b788b53ac568a85684850'
+            'ccddedd55d5a04d4078d546655432c565fe0c5dd529ff6e47f3266580585b095'
             'SKIP'
-            '629580c301558fa0b379f3d56bd4c25fb6ad41f2068e7deb5a5ba7fee9ec137b'
+            '7d5638515f3bbe92cfd8cd5721218245d6772ca2b213ebdf708b302c28d8b195'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
@@ -61,6 +61,9 @@ package() {
   # remove unused files
   rm -r "${pkgdir}/opt/${_pkgname}/"{etc,share}
   rm "${pkgdir}/opt/${_pkgname}/lib/rustlib/"{manifest-*,install.log,uninstall.sh,components,rust-installer-version}
+  rm "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/codegen-backends/librustc_trans-emscripten.so"
+  rm "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib/"{arena,fmt_macros,graphviz,proc_macro,rustc,serialize,syntax}*.dll
+  rm "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-pc-windows-gnu/lib/"{arena,fmt_macros,graphviz,proc_macro,rustc,serialize,syntax}*.dll
 
   # link shared libraries
   pushd "${pkgdir}/opt/${_pkgname}/lib"
