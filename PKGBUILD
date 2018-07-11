@@ -2,7 +2,7 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=1.1.54385
+pkgver=1.1.54390
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
@@ -12,21 +12,21 @@ depends=('ncurses' 'readline' 'unixodbc' 'termcap' 'double-conversion' 'capnprot
 makedepends=('cmake')
 source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/google/cctz/archive/4f9776a.tar.gz
-        https://github.com/edenhill/librdkafka/archive/c3d50eb.tar.gz
+        https://github.com/edenhill/librdkafka/archive/7478b5e.tar.gz
         https://github.com/lz4/lz4/archive/c10863b.tar.gz
         https://github.com/facebook/zstd/archive/2555975.tar.gz
         https://github.com/Dead2/zlib-ng/archive/e07a52d.tar.gz
-        https://github.com/ClickHouse-Extras/poco/archive/2d5a158.tar.gz
-        https://github.com/ClickHouse-Extras/boost/archive/5121cc9.tar.gz
+        https://github.com/ClickHouse-Extras/poco/archive/3a2d0a8.tar.gz
+        https://github.com/ClickHouse-Extras/boost/archive/2d5cb2c.tar.gz
         libunwind.patch)
-md5sums=('b56a39cb25f7176354403b07299d5089'
+md5sums=('db31651b515d515882a085b08c4de14f'
          '5323f7ba2565a84a80a93edde95eb4fe'
-         'ea7f52489fead0712f7d20c450a4b7a0'
+         '7d9c187a8afedde260fadf2f1d5f46a2'
          '7b92f0554687e6a8949adc5c10aeff78'
          'aaa86ec9f379ef587cc53f7b96bcc0e7'
          '87676f8d7fcdea908476029f92b8103f'
-         '1c4e42d89a984f77a2c1bf66c8f0d64d'
-         '0eedc70c486ae679da354fb7599f2851'
+         'ae82a083462519d498cfacd1950d0509'
+         '123c1e981fe28c1240d066af493d83b9'
          'f3f60b75abf8d6f21de74db6e88e1e7b')
 backup=('etc/clickhouse-client/config.xml' 'etc/clickhouse-server/config.xml' 'etc/clickhouse-server/users.xml')
 install=$pkgname.install
@@ -38,12 +38,12 @@ prepare() {
   mkdir -p contrib/cctz contrib/librdkafka contrib/lz4 contrib/zstd
   rm -rf contrib/{cctz,librdkafka,lz4,zstd,zlib-ng,poco,boost}/*
   mv ../cctz-4f9776a*/* contrib/cctz/
-  mv ../librdkafka-c3d50eb*/* contrib/librdkafka/
+  mv ../librdkafka-7478b5e*/* contrib/librdkafka/
   mv ../lz4-c10863b*/* contrib/lz4/
   mv ../zstd-2555975*/* contrib/zstd/
   mv ../zlib-ng-e07a52d*/* contrib/zlib-ng/
-  mv ../poco-2d5a158*/* contrib/poco/
-  mv ../boost-5121cc9*/* contrib/boost/
+  mv ../poco-3a2d0a8*/* contrib/poco/
+  mv ../boost-2d5cb2c*/* contrib/boost/
   for dir in contrib/*/; do
     rmdir $dir &> /dev/null || true
   done
@@ -61,9 +61,9 @@ package() {
   mkdir -p $pkgdir/usr/bin/
   mkdir -p $pkgdir/usr/lib/systemd/system
   ln -s clickhouse-client $pkgdir/usr/bin/clickhouse-server
-  cp dbms/src/Server/config.xml dbms/src/Server/users.xml $pkgdir/etc/clickhouse-server/
-  cp dbms/src/Server/clickhouse $pkgdir/usr/bin/clickhouse-client
-  cp dbms/src/Server/clickhouse-client.xml $pkgdir/etc/clickhouse-client/config.xml
+  cp dbms/programs/server/config.xml dbms/programs/server/users.xml $pkgdir/etc/clickhouse-server/
+  cp dbms/programs/clickhouse $pkgdir/usr/bin/clickhouse-client
+  cp dbms/programs/client/clickhouse-client.xml $pkgdir/etc/clickhouse-client/config.xml
   cp dbms/libclickhouse.so.1 $pkgdir/usr/lib/libclickhouse.so.$pkgver
   cp contrib/librdkafka/src/librdkafka.so $pkgdir/usr/lib/librdkafka.so
   sed -e 's:/opt/clickhouse:/var/lib/clickhouse:g' -i $pkgdir/etc/clickhouse-server/config.xml
