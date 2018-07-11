@@ -9,8 +9,8 @@ url="https://github.com/milostatarevic/xiphos"
 license=('GPL3')
 makedepends=('git')
 optdepends=('xboard' 'scid_vs_pc')
-provides=('xiphos')
-conflicts=('xiphos')
+provides=('xiphos-chess')
+conflicts=('xiphos-chess')
 source=("${_pkgname}::git+https://github.com/milostatarevic/xiphos")
 md5sums=('SKIP')
 
