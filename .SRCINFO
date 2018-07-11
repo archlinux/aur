@@ -1,7 +1,7 @@
 pkgbase = vidir
 	pkgdesc = Command-line utility to allow for editing directory contents with an editor
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	depends = perl
