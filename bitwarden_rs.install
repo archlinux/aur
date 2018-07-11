@@ -1,0 +1,44 @@
+post_install() {
+	# Create users and data directory
+	
+	echo "Adding user bitwarden_rs and creating data directory /var/lib/bitwarden_rs ..."
+	useradd -Ur -s /usr/bin/nologin bitwarden_rs
+	mkdir -p /var/lib/bitwarden_rs -m 0750
+	chown bitwarden_rs:bitwarden_rs /var/lib/bitwarden_rs
+	# Add service file
+	systemctl --quiet daemon-reload
+	
+
+	echo "##########"
+	echo "# "
+	echo "#   Remember to configure the server via its environment-variables under /etc/bitwarden_rs.env"
+	echo "#   After that, start/enable the server via 'systemctl enable bitwarden_rs.service --now'"
+	echo "#"
+	echo "##########"
+
+#	systemctl --quiet preset bitwarden_rs.service
+}
+
+post_upgrade() {
+	systemctl --quiet daemon-reload
+	echo "##########"
+	echo "# "
+	echo "#   Remember to restart the bitwarden via 'systemctl restart bitwarden_rs.service', if neccessary."
+	echo "#"
+	echo "##########"
+
+}
+
+pre_remove() {
+	systemctl --quiet --no-reload disable --now bitwarden_rs.service
+}
+
+post_remove() {
+	systemctl --quiet daemon-reload
+	echo "##########"
+	echo "# "
+	echo "#   Remember to remove the user/group bitwarden_rs, if neccessary."
+	echo "#   All server data in /var/lib/bitwarden_rs was NOT deleted!"
+	echo "#"
+	echo "##########"
+}
