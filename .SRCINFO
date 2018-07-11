@@ -1,6 +1,6 @@
 pkgbase = r-distr
 	pkgdesc = Object Oriented Implementation of Distributions
-	pkgver = 2.6.2
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=distr
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = r-distr
 	depends = r
 	depends = r-startupmsg
 	depends = r-sfsmisc
-	depends = r-sweavelistingutils
 	optdepends = r-distrex
 	optdepends = r-svunit
+	optdepends = r-knitr
 	replaces = r-cran-distr
-	source = https://cran.r-project.org/src/contrib/distr_2.6.2.tar.gz
-	md5sums = 3fe0ece8ba4599f8ba867e2aac9485ca
+	source = https://cran.r-project.org/src/contrib/distr_2.7.0.tar.gz
+	md5sums = cabac9e19e8369ce7a99d028cc332d1d
 
 pkgname = r-distr
 

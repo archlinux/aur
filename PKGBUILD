@@ -1,27 +1,23 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=distr
-_cranver=2.6.2
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=2.7.0
 pkgname=r-distr
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Object Oriented Implementation of Distributions"
+pkgdesc='Object Oriented Implementation of Distributions'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=distr'
 license=('LGPL3')
-depends=('r' 'r-startupmsg' 'r-sfsmisc' 'r-sweavelistingutils')
-
-optdepends=('r-distrex' 'r-svunit')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('3fe0ece8ba4599f8ba867e2aac9485ca')
+depends=('r' 'r-startupmsg' 'r-sfsmisc')
+optdepends=('r-distrex' 'r-svunit' 'r-knitr')
 replaces=('r-cran-distr')
+source=("https://cran.r-project.org/src/contrib/distr_"$_cranver".tar.gz")
+md5sums=('cabac9e19e8369ce7a99d028cc332d1d')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL distr_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -d "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership distr "$pkgdir"/usr/lib/R/library
 }
 
