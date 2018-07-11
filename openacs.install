@@ -37,11 +37,11 @@ echo "
 Congratulations, you have installed OpenACS with NaviServer on your machine.
 You might start the server manually with
 
-    sudo /usr/bin/nsd -t /etc/naviserver/config-oacs-5.9.0.tcl -u ${oacs_user} -g ${oacs_group}"
+    sudo /usr/bin/nsd -t /etc/naviserver/config-oacs-5.9.1.tcl -u ${oacs_user} -g ${oacs_group}"
 
 echo "
 To use OpenACS, point your browser to http://localhost:8000/
-The configuration file is /etc/naviserver/config-oacs-5.9.0.tcl
+The configuration file is /etc/naviserver/config-oacs-5.9.1.tcl
 and might be tailored to your needs. The access.log and error.log of
 this instance are in ${oacs_dir}/log
 

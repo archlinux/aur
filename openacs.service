@@ -10,7 +10,7 @@ Environment="LANG=en_US.UTF-8"
 ExecStartPre=/bin/rm -f /usr/lib/openacs/log/nsd.pid
 
 # standard startup (non-privileged port, like 8000)
-ExecStart=/usr/bin/nsd -u nsadmin -g nsadmin -t /etc/naviserver/config-oacs-5.9.0.tcl
+ExecStart=/usr/bin/nsd -u nsadmin -g nsadmin -t /etc/naviserver/config-oacs-5.9.1.tcl
 
 Restart=on-abnormal
 KillMode=process
