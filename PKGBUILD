@@ -10,7 +10,7 @@ _neovim="y"
 
 _name='deoplete-jedi'
 pkgname="${_name}-git"
-pkgver=r242.45f1ac2
+pkgver=r275.5540e76
 pkgrel=1
 pkgdesc="jedi add-on for deoplete completion plugin for neovim"
 arch=('any')
