@@ -5,4 +5,5 @@ post_install() {
 
 pre_remove() {
     systemctl disable warsaw
+    rm -rf /usr/local/etc/warsaw
 }

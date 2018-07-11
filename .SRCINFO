@@ -1,7 +1,7 @@
 pkgbase = warsaw-bin
 	pkgdesc = Banking security tool developed by GAS Tecnologia
-	pkgver = 1.12.9.5
-	pkgrel = 3
+	pkgver = 1.12.10.8
+	pkgrel = 4
 	url = http://www.dieboldnixdorf.com.br/warsaw
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = warsaw-bin
 	depends = python2
 	depends = python2-mini-amf
 	depends = python2-unicodecsv
-	depends = python2-gpgme
-	depends = python2-pyopenssl
+	depends = python-gpgme
+	depends = python-pyopenssl
 	depends = openssl
 	depends = nss
 	depends = zenity
@@ -24,10 +24,10 @@ pkgbase = warsaw-bin
 	provides = warsaw
 	conflicts = warsaw
 	options = !strip
-	source_i686 = https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw-setup-ubuntu_32.deb
-	sha256sums_i686 = 139cd45b1cb967d0e500455e44145fc97012af0e91496345202ea92c930b0cb0
-	source_x86_64 = https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw-setup-ubuntu_64.deb
-	sha256sums_x86_64 = 13da4f7b72b67efb94f10bf1e366ba0875deadbda6bd3b49c6a9cbc34ca87938
+	source_i686 = https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_32.deb
+	sha256sums_i686 = 79a4323531e1508def5ea8435c756aa75e7c14a1762dbcf403e5769fac6392d0
+	source_x86_64 = https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_64.deb
+	sha256sums_x86_64 = b3c2449e9850c539c778f370a2ce91836e1f3871e5391ac5ccf87d31b0d57eaf
 
 pkgname = warsaw-bin
 

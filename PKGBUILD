@@ -2,21 +2,21 @@
 # Contributor: Rafael Fontenlle <rafaelff@gnome.org>
 
 pkgname=warsaw-bin
-pkgver=1.12.9.5
-pkgrel=3
+pkgver=1.12.10.8
+pkgrel=4
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(i686 x86_64)
 url="http://www.dieboldnixdorf.com.br/warsaw"
 license=('custom')
-depends=('procps-ng' 'python2' 'python2-mini-amf' 'python2-unicodecsv' 'python2-gpgme' 'python2-pyopenssl' 'openssl' 'nss' 'zenity' 'gdk-pixbuf2' 'pango' 'glib2' 'libx11' 'libstdc++296')
+depends=('procps-ng' 'python2' 'python2-mini-amf' 'python2-unicodecsv' 'python-gpgme' 'python-pyopenssl' 'openssl' 'nss' 'zenity' 'gdk-pixbuf2' 'pango' 'glib2' 'libx11' 'libstdc++296')
 makedepends=('chrpath')
 conflicts=('warsaw')
 provides=('warsaw')
 options=(!strip)
-source_i686=(https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw-setup-ubuntu_32.deb)
-source_x86_64=(https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw-setup-ubuntu_64.deb)
-sha256sums_i686=('139cd45b1cb967d0e500455e44145fc97012af0e91496345202ea92c930b0cb0')
-sha256sums_x86_64=('13da4f7b72b67efb94f10bf1e366ba0875deadbda6bd3b49c6a9cbc34ca87938')
+source_i686=(https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_32.deb)
+source_x86_64=(https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_64.deb)
+sha256sums_i686=('79a4323531e1508def5ea8435c756aa75e7c14a1762dbcf403e5769fac6392d0')
+sha256sums_x86_64=('b3c2449e9850c539c778f370a2ce91836e1f3871e5391ac5ccf87d31b0d57eaf')
 
 prepare() {
 	tar -xJf data.tar.xz
