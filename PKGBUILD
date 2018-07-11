@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-uvloop
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 _libname=${pkgname/python-/}
 pkgdesc="A fast, drop-in replacement of the built-in asyncio event loop."
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 depends=('python' 'libuv')
 makedepends=('cython' 'python-setuptools')
 source=("$url/archive/v$pkgver/$_libname-$pkgver.tar.gz")
-sha256sums=('10dfb0f02237bae0dbfff4ddafb55bf3067d1910b2a7bcf209fe7c5417be0633')
+sha256sums=('a8e2db5f9517aa6a2476616d6f3bf9793d5aa84241b44eab608e9c76f05c1f49')
 
 prepare() {
 	cd "$srcdir"/$_libname-$pkgver
