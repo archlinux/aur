@@ -1,7 +1,7 @@
 # Maintainer: Stephen Smith <stephen304@gmail.com>
 pkgname=lemonbar-xft-git
 _pkgname=bar
-pkgver=245.38f69d8
+pkgver=269.00a3fe6
 pkgrel=1
 pkgdesc="A lightweight xcb based bar with ported xft support."
 arch=('i686' 'x86_64')
