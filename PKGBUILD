@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://curl.haxx.se"
 license=('MIT')
 depends=('ca-certificates' 'krb5' 'libssh2' 'openssl' 'zlib' 'libpsl' 'libnghttp2')
-provides=('libcurl.so' 'curl=${pkgver}')
+provides=('libcurl.so' "curl=${pkgver}")
 conflicts=('curl')
 options=('strip' 'debug')
 source=("https://curl.haxx.se/download/$_pkgname-$pkgver.tar.bz2"{,.asc})
