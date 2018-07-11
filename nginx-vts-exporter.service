@@ -1,0 +1,11 @@
+[Unit]
+Description=Prometheus exporter for nginx vts
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/nginx-vts-exporter
+User=nobody
+Group=nobody
+
+[Install]
+WantedBy=multi-user.target
