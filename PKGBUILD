@@ -23,6 +23,7 @@ md5sums=('9c359fd6b4876e293946490b57452835'
 
 build() {
   cd "$_pkgname-$pkgver"
+  patch -p1 < ../native-browser-support.patch
   mkdir -p build
   cd build
   QTDIR=/usr/lib/qt cmake -DQST_BUILD_NATIVEBROWSER=1 ..
