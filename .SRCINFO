@@ -1,0 +1,18 @@
+pkgbase = rpmrebuild
+	pkgdesc = a tool to build an RPM file from a package that has already been installed. It can be used to easily build modified packages, and works on any Linux distribution that uses RPM.
+	pkgver = 2.11.3
+	pkgrel = 1
+	url = https://sourceforge.net/projects/rpmrebuild
+	arch = x86_64
+	license = GPL
+	makedepends = tar
+	depends = rpm-org
+	noextract = rpmrebuild-2.11.tar.gz
+	source = https://sourceforge.net/projects/rpmrebuild/files/rpmrebuild/2.11-3/rpmrebuild-2.11.tar.gz
+	source = https://sourceforge.net/projects/rpmrebuild/files/rpmrebuild/2.11-3/rpmrebuild-2.11.tar.gz.sig
+	validpgpkeys = 9BBDC9B929A31EE71E1EDD71F52C885AD6F7A56A
+	md5sums = 28b865e8829cf7ab75b81d1c34c8c612
+	md5sums = SKIP
+
+pkgname = rpmrebuild
+
