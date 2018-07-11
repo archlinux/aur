@@ -6,11 +6,11 @@
 
 _pkgname="gptfdisk"
 pkgname="${_pkgname}-git"
-pkgver=1.0.4.177.4cd84de
+pkgver=1.0.4.r177.g4cd84de
 pkgrel=1
-pkgdesc="A text-mode partitioning tool that works on Globally Unique Identifier (GUID) Partition Table (GPT) disks - GIT Version"
+pkgdesc='A text-mode partitioning tool that works on Globally Unique Identifier (GUID) Partition Table (GPT) disks - GIT Version'
 arch=('i686' 'x86_64')
-url="http://www.rodsbooks.com/gdisk/"
+url='http://www.rodsbooks.com/gdisk/'
 license=('GPL2')
 depends=('gcc-libs' 'util-linux' 'popt' 'ncurses')
 makedepends=('git')
@@ -26,7 +26,7 @@ pkgver() {
 
   local _ACTUAL_VER
   _ACTUAL_VER="$(grep -e '#define GPTFDISK_VERSION' "${srcdir}/${_pkgname}/support.h" | awk '{print $3}' | sed -e 's|"||g')"
-  echo "${_ACTUAL_VER}.$(git rev-list --count HEAD).$(git describe --always)" | sed -e 's|-|.|g'
+  echo "${_ACTUAL_VER}.r$(git rev-list --count HEAD).g$(git describe --always)" | sed -e 's|-|.|g'
 }
 
 prepare() {
