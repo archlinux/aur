@@ -1,6 +1,6 @@
 pkgbase = blender-plugin-blenderseed-git
 	pkgdesc = appleseed Blender integrator
-	pkgver = v0.3.6.r100.g658a3f7
+	pkgver = 0.8.1.beta.r6.gdc2c536
 	pkgrel = 1
 	url = https://github.com/appleseedhq/blenderseed
 	arch = any
