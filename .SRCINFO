@@ -1,6 +1,6 @@
 pkgbase = libiio-git
 	pkgdesc = Library for interfacing with IIO devices
-	pkgver = v0.14.r15.g8ac1893
+	pkgver = v0.15.r0.g6ecff5d
 	pkgrel = 1
 	url = https://github.com/analogdevicesinc/libiio
 	arch = i686

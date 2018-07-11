@@ -3,7 +3,7 @@
 
 _pkgname=libiio
 pkgname="$_pkgname-git"
-pkgver=v0.14.r15.g8ac1893
+pkgver=v0.15.r0.g6ecff5d
 pkgrel=1
 pkgdesc="Library for interfacing with IIO devices"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -33,6 +33,7 @@ build() {
         -DCMAKE_INSTALL_SBINDIR=bin \
         -DUDEV_RULES_INSTALL_DIR=/usr/lib/udev/rules.d \
         -DCSHARP_BINDINGS=OFF \
+        -DMATLAB_BINDINGS=OFF \
         -DWITH_SYSTEMD=YES \
         -DSYSTEMD_UNIT_INSTALL_DIR=/usr/lib/systemd/system
     make
