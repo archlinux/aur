@@ -2,7 +2,7 @@
 
 pkgname=qpicospeaker-git
 pkgsrc=qpicospeaker
-pkgver=r15.5331623
+pkgver=r19.f92a59b
 pkgrel=1
 pkgdesc='Qt GUI for the svox-pico text-to-speech engine'
 arch=('i686' 'x86_64')
@@ -35,11 +35,13 @@ pkgver() {
 
 build() {
     cd build
-    qmake ../qpicospeaker/qpicospeaker/qpicospeaker.pro
+    qmake ../qpicospeaker/qpicospeaker.pro
     make
 }
 
 package() {
     install -Dm755 ./build/qpicospeaker "$pkgdir/usr/bin/qpicospeaker"
-    install -Dm666 ./qpicospeaker/icons/qpicospeaker.png "$pkgdir$HOME/.local/share/icons/hicolor/32x32/apps/qpicospeaker.png"
+    install -Dm666 ./qpicospeaker/data/icons/32x32/qpicospeaker.png "$pkgdir/usr/share/icons/hicolor/32x32/qpicospeaker.png"
+    install -d -Dm666 ./qpicospeaker "$pkgdir/usr/share/qpicospeaker"
+    install -Dm666 ./qpicospeaker/data/desktop/qpicospeaker.desktop "$pkgdir/usr/share/applications/qpicospeaker.desktop"
 }
