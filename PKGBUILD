@@ -4,8 +4,8 @@
 # unicodecsv. Once this is resolved, I will migrate it to Python 3.
 
 pkgname=csvtotable
-pkgver=1.1.1
-pkgrel=0
+pkgver=2.1.1
+pkgrel=1
 pkgdesc='Simple command-line utility to convert CSV files to searchable and sortable HTML table'
 url='https://github.com/vividvilla/csvtotable'
 license=('MIT')
@@ -15,7 +15,7 @@ depends=('python2' 'python2-click' 'python2-jinja'
 makedepends=('python2-setuptools')
 conflicts=('csvtotable-git')
 source=("https://github.com/vividvilla/csvtotable/archive/${pkgver}.tar.gz")
-sha256sums=('e1c04abe24d03302f92952ea7d8deb4636c1b28eb471ce808b256ebde247a258')
+sha256sums=('ba58055a22c657e1e2db987d93e915567b26daa0e6a9a061a827233c445c6cfc')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
