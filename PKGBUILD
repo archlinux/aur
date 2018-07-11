@@ -1,4 +1,4 @@
-# Maintainer: bartus <aur \at bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Maintainer: Alex Dahl <adahl1@umbc.edu>
 pkgname=partio-git
 pkgver=1.1.0.r93.g8b6ea0d
