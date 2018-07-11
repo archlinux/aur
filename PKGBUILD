@@ -1,6 +1,6 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname="perl-audio-scan"
-pkgver="1.00"
+pkgver="1.01"
 pkgrel="1"
 pkgdesc="Fast C metadata and tag reader for all common audio file formats"
 arch=("i686" "x86_64" "arm")
@@ -10,7 +10,7 @@ depends=("zlib")
 makedepends=("perl-test-warn")
 url="http://search.cpan.org/dist/Audio-Scan"
 source=("https://cpan.metacpan.org/authors/id/A/AG/AGRUNDMA/Audio-Scan-${pkgver}.tar.gz")
-sha512sums=('de05aa38f49f085db3f7b4c0278dc7e08282fbd3a9441343416dcdbe5b1999d4d79c617fbc70edfa579cb80f4131705aa3e9203e61f7f6ea1b4dac8f8d5ac8f2')
+sha512sums=('07e97bd1bb2c469d07c27e20bf2f3067967e21658493de012fcc4c083a0a0c42e36d6d8d5ae8d6f80d8b447d11fdea1c024ee7f4c3f857e565335328238e2853')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
