@@ -1,4 +1,4 @@
-# Maintainer: bartus {aur@bartus.33mail.com}
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 _branch="fracture_modifier"
 _sufix=${_branch}
