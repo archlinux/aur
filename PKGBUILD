@@ -20,7 +20,7 @@ package() {
 
   rm -rf $pkgname
   
-  msg2 "Extrcting GitHub_BiglyBT_Installer_$pkgver.sh..."
+  msg2 "Extracting GitHub_BiglyBT_Installer_$pkgver.sh..."
   export app_java_home=/usr/lib/jvm/default
   sh GitHub_BiglyBT_Installer_$pkgver.sh -q -dir "$srcdir"/$pkgname
 
