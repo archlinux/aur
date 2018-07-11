@@ -1,4 +1,4 @@
-# Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 name=hpmvs
 pkgname=${name}-git
 pkgver=r18.f003e54
