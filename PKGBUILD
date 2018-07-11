@@ -7,7 +7,7 @@ pkgdesc="A collection of useful tools for use with the LimeSDR family of boards"
 arch=(any)
 url="https://github.com/myriadrf/lime-tools"
 license=('Apache')
-depends=('sqlite3' 'wxgtk3' 'opengl-driver' 'libusb>=1.0' 'soapysdr' 'wget')
+depends=('limesuite' 'gnuplot' 'fftw>=3')
 makedepends=('cmake')
 provides=('lime-tools')
 conflicts=('lime-tools')

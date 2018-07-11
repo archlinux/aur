@@ -6,12 +6,9 @@ pkgbase = lime-tools-git
 	arch = any
 	license = Apache
 	makedepends = cmake
-	depends = sqlite3
-	depends = wxgtk3
-	depends = opengl-driver
-	depends = libusb>=1.0
-	depends = soapysdr
-	depends = wget
+	depends = limesuite
+	depends = gnuplot
+	depends = fftw>=3
 	provides = lime-tools
 	conflicts = lime-tools
 	source = git+https://github.com/myriadrf/lime-tools
