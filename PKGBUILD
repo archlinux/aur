@@ -21,8 +21,12 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	#make clean
-	[ ! -e README ]      && ln -s README.md  README
-	[ ! -e VERSIONS.md ] && ln -s HISTORY.md VERSIONS.md
+	if [ ! -e README ]; then
+	   ln -s README.md  README
+	fi
+	if [ ! -e VERSIONS.md ]; then
+	  ln -s HISTORY.md VERSIONS.md
+       fi
 }
 
 build() {
