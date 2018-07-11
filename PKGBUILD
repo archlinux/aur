@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Supolik <jarda@supolik.cz>
 pkgname=fbzx-git
 pkgver=3.9.1.r2.52b99b0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sinclair Spectrum emulator, designed to work at full screen using the FrameBuffer or under X-Windows."
 arch=(x86_64)
 url="http://www.rastersoft.com/programas/fbzx.html"
