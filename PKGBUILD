@@ -49,7 +49,7 @@ if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 
 else
 
-	pkgdesc="${pkgdesc} - Built with TianoCore EDK2"
+	pkgdesc="${pkgdesc} - Built with TianoCore EDK2 libs"
 	makedepends+=('python2' 'nasm')
 
 	_UDK_VERSION='UDK2018'

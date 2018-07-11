@@ -1,5 +1,5 @@
 pkgbase = refind-efi-git
-	pkgdesc = rEFInd Boot Manager - git version - Built with TianoCore EDK2
+	pkgdesc = rEFInd Boot Manager - git version - Built with TianoCore EDK2 libs
 	pkgver = 0.11.2.2.r617.7e9e438
 	pkgrel = 1
 	url = http://www.rodsbooks.com/refind/
