@@ -1,6 +1,6 @@
 pkgbase = grub-git
 	pkgdesc = GNU GRand Unified Bootloader (2)
-	pkgver = 2.02.r147.gba474d531
+	pkgver = 2.02.r152.gec2de93f8
 	pkgrel = 1
 	url = https://www.gnu.org/software/grub/
 	install = grub-git.install
@@ -51,8 +51,6 @@ pkgbase = grub-git
 	source = https://ftp.gnu.org/gnu/unifont/unifont-10.0.06/unifont-10.0.06.bdf.gz.sig
 	source = 10_linux-detect-archlinux-initramfs.patch
 	source = add-GRUB_COLOR_variables.patch
-	source = freetype-capitalise-variables.patch
-	source = freetype-pkg-config.patch
 	source = grub.default
 	source = grub.cfg
 	validpgpkeys = E53D497F3FA42AD8C9B4D1E835A93B74E82E4209
@@ -63,8 +61,6 @@ pkgbase = grub-git
 	sha256sums = SKIP
 	sha256sums = b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3
 	sha256sums = a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29
-	sha256sums = 4153565a0e1428bdacf09a0c646d2106c75182f1753e2a044896d23752295569
-	sha256sums = 3da2764ecc0c2f3cf9a3f94660ed3ebfc1192c6b3df0ee27d78622bf9718228d
 	sha256sums = 74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82
 	sha256sums = c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad
 
