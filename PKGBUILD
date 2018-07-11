@@ -1,4 +1,4 @@
-# Maintainer: bartus <szczepaniak.bartek+aur@gmail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # original maintainer : Fabien Devaux <fdev31@gmail.com>
 
 _blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
