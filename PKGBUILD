@@ -1,4 +1,4 @@
-# Maintainer: bartus <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=poissonrecon-git
 pkgver=8.0.r25.g154731e
 pkgrel=1
