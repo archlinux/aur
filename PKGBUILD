@@ -17,7 +17,7 @@ if $build_kernel_modules; then
 fi
 pkgver=2.3.1
 #_commit=6ae1f7d55bf10cc6b5cb62a5ce99ff22c43e0701
-pkgrel=1
+pkgrel=2
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux."
 arch=('any')
 url="https://github.com/openrazer/openrazer"
@@ -31,7 +31,7 @@ if [ -z $_commit ]; then
 else
   source=("https://github.com/openrazer/openrazer/archive/$_commit.tar.gz")
 fi
-sha256sums=('c4cd12b51e02aaba5f585bc9d217b5b68f6416802f279ac6b5ae9556c961507d')
+sha256sums=('0c12c872c8e5883047c9175eb7c00a1dbc815e25fb86eaef82a642a4e431d4e1')
 
 package_python-openrazer() {
   pkgdesc="Python library for accessing the Razer daemon from Python."
