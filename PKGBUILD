@@ -1,4 +1,4 @@
-# Maintainer: bartus <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=openmvs-git
 pkgver=0.7.r47.g063e5cd
 pkgrel=1
