@@ -3,7 +3,7 @@
 
 _distname=PPIx-QuoteLike
 pkgname=perl-ppix-quotelike
-pkgver=0.005
+pkgver=0.006
 pkgrel=1
 pkgdesc="Parse Perl string literals and string-literal-like things."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl-ppi>=0' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/PPIx-QuoteLike'
 source=("https://cpan.metacpan.org/authors/id/W/WY/WYANT/$_distname-$pkgver.tar.gz")
-sha512sums=('70cf66dfbe40d6587fe278010bddaa6d96f2d076aadd7854708c80e3dff68c37d35447bb0594e05e1237e3ac719522f89d3c5ff70336700ffd10aad94b404104')
+sha512sums=('6ec80ac4df9a80bfd9310b7a5a1fe514dcfaf340de9d88fcece5ecdda9e5a2183408bc4631f546a76f538c7dbb6c4d3827788671fc57cf73d956e18589d09f9f')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
