@@ -1,4 +1,4 @@
-# Maintainer: bartus <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 _pkgname="mitsuba"
 _py3ver=`python3 --version | grep -oP '(?<= )\d\.\d'`
