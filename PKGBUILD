@@ -68,7 +68,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcname=linux-4.17
 pkgver=4.17.6
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=('x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -89,6 +89,7 @@ source=(
   "http://ck.kolivas.org/patches/4.0/4.17/4.17-ck${_ckpatchversion}/${_ckpatchname}.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+  0003-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -98,14 +99,15 @@ sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
             '7699b2246e4ed1e284f2947d5e0b66653c27574995caf6a02a3280bd055cfedf'
             'SKIP'
-            '427e5b0a0dd0b6b048bd3e6bd284074d7b30b513abaf436464815955f5dbc747'
+            '9aa851fe7fae17b38ed039b792b1d9024516d4003b32c8a81b8ced3762dbd944'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '6a0e9cce53da8c55161d01920cc02a09a3b70a60f1050ec91fafd9bb59cb6bb4'
-            'c5b2a7c60450e9fa414f7364d0ae307bd9e2c3e0ae55eb5bf431f8915876fc77'
-            '39c018fa51b62253290b01f11c6c5b348437ffe86a4af59d0be3211e2844d291')
+            'e3c08f9b91611186e5ec579187ecea2a0143e5c2dc7ffc30ac6ea6e2b6d130fd'
+            '5403dead9161344b2c01027526146a250147680f4a2d32a54d40c55fc1becc8a'
+            'ae4e5e7584674a51a8e20bde2292aa5b45347faafc76f3aa1d367dac95699874')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -125,9 +127,8 @@ prepare() {
   # https://bugs.archlinux.org/task/56711
   patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 
-  # https://bugs.archlinux.org/task/56780
-  # this patch causes ck1 to freeze on booting for some users so do not include
-  # patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
+  # Fix iwd provoking a BUG
+  patch -Np1 -i ../0003-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatchname}"
