@@ -1,6 +1,6 @@
 pkgbase = blender-plugin-bullet-constraints-builder
 	pkgdesc = This Blender Add-on connect rigid bodies via constraints in a physical plausible way
-	pkgver = 1.0_r214.e8bcf27
+	pkgver = 1.0_r259.a800d20
 	pkgrel = 1
 	url = https://github.com/KaiKostack/bullet-constraints-builder
 	arch = any
