@@ -1,5 +1,5 @@
 # Maintainer: jason ryan <jasonwryan@gmail.com>
-# Submaintainer: bartus <aur@bartus.33mail.com>
+# Submaintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=v86d
 pkgver=0.1.10
