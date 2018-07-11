@@ -1,4 +1,4 @@
-# Maintainer: bartus <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=appleseed-git
 #_fragment="#tag=1.7.1-beta"
 pkgver=1.9.0.beta.r110.gffd4efbde
