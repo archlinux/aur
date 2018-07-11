@@ -5,6 +5,7 @@ pkgbase = blender-plugin-yavne
 	url = https://github.com/fedackb/yavne
 	arch = any
 	license = GPL
+	makedepends = expac
 	makedepends = git
 	depends = blender
 	source = yavne::git+https://github.com/fedackb/yavne.git
