@@ -1,5 +1,5 @@
 # Maintainer: Dylan Ferris <dylan@psilly.com>
-# Submaintainer: bartus <aur@bartus.33mail.com>
+# Submaintainer : bartus <arch-user-repoᘓbartus.33mail.com>
  
 pkgname=('visual-sfm')
 pkgver=0.5.26
@@ -24,6 +24,7 @@ md5sums=(
   'c063c0236d8649b2281b334ecde73784'
   '672f5cd6c1b4c08517409809b819c547'
 )
+options=(debug !strip !makeflags)
 build() {
  
   msg "building Multicore Bundle Adjustment"
@@ -40,6 +41,7 @@ build() {
   sed -i 's:$(LIB_DIR)/blas.a:-lblas:' makefile
   sed -i 's:$(LIB_DIR)/libf2c.a:-lf2c:' makefile
   sed -i 's:g++:g++-5:' makefile
+#  sed -i 's:$(LIB_DIR)/libjpeg.a:-ljpeg:' makefile
   make
 }
  
