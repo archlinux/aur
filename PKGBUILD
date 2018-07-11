@@ -9,7 +9,7 @@ license=('https://virtualshield.com/legal/eula/')
 url="https://virtualshield.com/"
 depends=('virtualshield')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/wchurch58/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('f324e165739ecea72e5b9bc017e8c7334b9c4fbe1d0fc6417be3f5cea2171a4f131719aee71ce8d881e601a79f37471f2697b2767e8939c45a7c89bf2ccce7ef')
+sha512sums=('d662500221a0436f3e142c97e3e5c58e75e640c4fe596f19cc28d9ce9d1edda50f3fd6beba09fa39094d37375a28500c532af3fd0a430ea3681839137c562469')
 
 
 ## Runit
