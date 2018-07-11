@@ -21,6 +21,14 @@ pkgbase = sdrangel-git
 	depends = cm256cc
 	depends = dsdcc>=1.8.3
 	depends = pulseaudio
+	optdepends = ffmpeg: DATV demodulator
+	optdepends = libmirisdr4: SDRPlay support
+	optdepends = rtl-sdr: RTLSDR support
+	optdepends = hackrf: HackRF support
+	optdepends = libad9361-iio: PlutoSDR support
+	optdepends = limesuite: LimeSDR support
+	optdepends = bladerf: BladeRF support
+	optdepends = airspy: AirSPY support
 	provides = sdrangel
 	conflicts = sdrangel
 	source = git+https://github.com/f4exb/sdrangel
