@@ -27,14 +27,15 @@
 
 * casm-lang.pkg.aur
 
-This repository contains the Arch linux AUR package configuration, 
+This repository contains the Arch Linux AUR package configuration, 
 which directly uses the pre-build binaries of the current CASM release.
 Furthermore this repository is mirrored to https://aur.archlinux.org.
 
+
 ** Installation via =packer=
 
-If you already have installed the =packman= AUR wrapper called [[https://aur.archlinux.org/packages/packer][packer]] 
-you can directly install =casm= via the command:
+If you already have installed the =pacman= AUR wrapper command line utility called [[https://aur.archlinux.org/packages/packer][packer]] 
+you can directly install the =casm= package via the command:
 
 #+begin_src
 $ packer -S casm
@@ -43,8 +44,9 @@ $ packer -S casm
 ** Installation via =makepkg=
 
 You can download the package from the main repository 
-at https://github.com/casm-lang/casm-lang.pkg.aur.git or the
-mirrored at https://aur.archlinux.org/casm.git.
+at https://github.com/casm-lang/casm-lang.pkg.aur.git 
+or the mirrored repository 
+at https://aur.archlinux.org/casm.git.
 
 #+begin_src
 $ git clone https://aur.archlinux.org/casm.git
