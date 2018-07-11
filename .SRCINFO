@@ -1,6 +1,6 @@
 pkgbase = libb2-git
 	pkgdesc = C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp hash functions
-	pkgver = 0.98+3+ge5f2bb5
+	pkgver = 0.98+7+g7feb2bb
 	pkgrel = 1
 	url = https://blake2.net/
 	arch = x86_64
