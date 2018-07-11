@@ -2,13 +2,13 @@
 # Maintainer: Milo Gilad <myl0gcontact@gmail.com>
 pkgname=bitwarden
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
 url="https://bitwarden.com"
 license=('GPL')
 groups=('')
-depends=('alsa-lib' 'atk' 'cairo' 'dbus' 'electron' 'expat' 'fontconfig' 'freetype2' 'gconf' 'gdk-pixbuf2' 'glib2' 'gtk2' 'libcups' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nspr' 'nss' 'pango')
+depends=('alsa-lib' 'gconf' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://github.com/bitwarden/desktop/releases/download/v${pkgver}/Bitwarden-${pkgver}-amd64.deb")
 sha512sums_x86_64=('75d43a8f2ef8d28cc7db14ea187e120fcab940ba2f654febce91d7926162ac52f108ab0e4b99bf4dcd1326b7196d65f3ccbae193ba770e4468e0075f2fa55da7')
