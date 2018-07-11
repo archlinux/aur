@@ -14,7 +14,7 @@ void window_main(void) {
     app.password[0] = '\0';
 
     // Read glade XML config file
-    gtk_builder_add_from_file(app.builder, "tick_gtk_main.glade", NULL);
+    gtk_builder_add_from_file(app.builder, "/usr/share/tick/window_main.glade", NULL);
 
     // Copy names of columns into array
     GtkTreeView* tree_view = GTK_TREE_VIEW(gtk_builder_get_object(app.builder, "check_tree_view"));
