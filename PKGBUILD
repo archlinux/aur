@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-footprints
-_pkgver="5.0.0-rc2"
+_pkgver="5.0.0-rc3"
 pkgver=${_pkgver//-}
 pkgrel=1
 pkgdesc="Official KiCad footprint libraries -- stable release"
@@ -12,7 +12,7 @@ makedepends=('cmake')
 conflicts=('kicad-footprints-git')
 provides=($pkgname)
 source=("https://github.com/KiCad/kicad-footprints/archive/${_pkgver}.tar.gz")
-md5sums=('177a9270cd8abbb96134fa2ee3f7a9a0')
+md5sums=('58f9532f9869086284a38f36f4e9d5ee')
 
 build() {
   cd "$srcdir"
