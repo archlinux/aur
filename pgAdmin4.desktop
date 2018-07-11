@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=pgAdmin 4
+Exec=/usr/lib/pgadmin4/runtime/pgAdmin4
+Icon=pgAdmin4
+Type=Application
+Categories=Application;Development;
+MimeType=text/html
+DocPath=/usr/lib/pgadmin4/docs/en_US/_build/html/index.html
+Comment=PostgreSQL Tools
+Keywords=database;db;sql;query;administration;development;

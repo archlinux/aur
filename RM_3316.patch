@@ -1,0 +1,735 @@
+diff --git a/runtime/FloatingWindow.cpp b/runtime/FloatingWindow.cpp
+new file mode 100644
+index 00000000..818d205d
+--- /dev/null
++++ b/runtime/FloatingWindow.cpp
+@@ -0,0 +1,113 @@
++////////////////////////////////////////////////////////////////////////////
++//
++// pgAdmin 4 - PostgreSQL Tools
++//
++// Copyright (C) 2013 - 2018, The pgAdmin Development Team
++// This software is released under the PostgreSQL Licence
++//
++// FloatingWindow.cpp - For GNOME 3.26 and above floating window will be used.
++//
++////////////////////////////////////////////////////////////////////////////
++
++#include "FloatingWindow.h"
++
++FloatingWindow::FloatingWindow()
++{
++    m_newAction = NULL;
++    m_configAction = NULL;
++    m_logAction = NULL;
++    m_quitAction = NULL;
++    m_menuActions = NULL;
++    m_floatingWindowMenu = NULL;
++}
++
++FloatingWindow::~FloatingWindow()
++{
++}
++
++bool FloatingWindow::Init()
++{
++    QWidget *centralWidget = new QWidget(this);
++    QGridLayout *gridLayout = new QGridLayout(centralWidget);
++    QVBoxLayout *verticalLayout = new QVBoxLayout();
++
++    QLabel *labelIcon = new QLabel(centralWidget);
++    labelIcon->setStyleSheet("border-image:url(\":pgAdmin4.ico\") 0 0 0 0 stretch stretch; border-width: 0px;" );
++    verticalLayout->addWidget(labelIcon);
++
++    QLabel *note = new QLabel(centralWidget);
++    note->setText(tr("Note: Installing a system tray plugin can be used to hide the window."));
++    note->setWordWrap(true);
++    verticalLayout->addWidget(note);
++    gridLayout->addLayout(verticalLayout, 0, 0, 1, 1);
++
++    // Creating Menu
++    createMenu();
++
++    // Setup the icon itself. For convenience, we'll also use it for the dialogue.
++#ifdef Q_OS_MAC
++    QIcon icon(":pgAdmin4-mac.png");
++#else
++    QIcon icon(":pgAdmin4.png");
++#endif
++
++    setWindowIcon(icon);
++    setWindowTitle(tr("pgAdmin4"));
++    setFixedSize(145, 250);
++    setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint);
++
++    this->setCentralWidget(centralWidget);
++    return true;
++}
++
++// Create the menu
++void FloatingWindow::createMenu()
++{
++    createActions();
++
++    m_floatingWindowMenu = menuBar()->addMenu(tr("&pgAdmin4"));
++    m_floatingWindowMenu->addAction(m_newAction);
++    m_floatingWindowMenu->addSeparator();
++    m_floatingWindowMenu->addAction(m_configAction);
++    m_floatingWindowMenu->addAction(m_logAction);
++    m_floatingWindowMenu->addSeparator();
++    m_floatingWindowMenu->addAction(m_quitAction);
++}
++
++// Create the menu actions
++void FloatingWindow::createActions()
++{
++    m_newAction = new QAction(QString(tr("&New %1 window...")).arg(PGA_APP_NAME), this);
++    connect(m_newAction, SIGNAL(triggered()), m_menuActions, SLOT(onNew()));
++
++    m_configAction = new QAction(tr("&Configure..."), this);
++    connect(m_configAction, SIGNAL(triggered()), m_menuActions, SLOT(onConfig()));
++
++    m_logAction = new QAction(tr("&View log..."), this);
++    connect(m_logAction, SIGNAL(triggered()), m_menuActions, SLOT(onLog()));
++
++    m_quitAction = new QAction(tr("&Shut down server"), this);
++    m_quitAction->setEnabled(false);
++    connect(m_quitAction, SIGNAL(triggered()), m_menuActions, SLOT(onQuit()));
++}
++
++void FloatingWindow::enableShutdownMenu()
++{
++    if (m_quitAction != NULL)
++    {
++        m_quitAction->setEnabled(true);
++    }
++}
++
++void FloatingWindow::setMenuActions(MenuActions * menuActions)
++{
++    m_menuActions = menuActions;
++}
++
++void FloatingWindow::closeEvent(QCloseEvent * event)
++{
++    // Emit the signal to shut down the python server.
++    emit shutdownSignal(m_menuActions->getAppServerUrl());
++    event->accept();
++    exit(0);
++}
+diff --git a/runtime/FloatingWindow.h b/runtime/FloatingWindow.h
+new file mode 100644
+index 00000000..54c6bf2f
+--- /dev/null
++++ b/runtime/FloatingWindow.h
+@@ -0,0 +1,47 @@
++////////////////////////////////////////////////////////////////////////////
++//
++// pgAdmin 4 - PostgreSQL Tools
++//
++// Copyright (C) 2013 - 2018, The pgAdmin Development Team
++// This software is released under the PostgreSQL Licence
++//
++// FloatingWindow.h - For GNOME 3.26 and above floating window will be used.
++//
++////////////////////////////////////////////////////////////////////////////
++
++#ifndef FLOATINGWINDOW_H
++#define FLOATINGWINDOW_H
++
++#include "pgAdmin4.h"
++#include "MenuActions.h"
++
++class FloatingWindow: public QMainWindow
++{
++    Q_OBJECT
++
++public:
++    FloatingWindow();
++    ~FloatingWindow();
++
++    bool Init();
++    void enableShutdownMenu();
++    void setMenuActions(MenuActions * menuActions);
++
++private:
++    void createMenu();
++    void createActions();
++    void closeEvent(QCloseEvent * event);
++
++    QAction *m_newAction;
++    QAction *m_configAction;
++    QAction *m_logAction;
++    QAction *m_quitAction;
++
++    QMenu *m_floatingWindowMenu;
++    MenuActions *m_menuActions;
++
++signals:
++    void shutdownSignal(QUrl);
++};
++
++#endif // FLOATINGWINDOW_H
+diff --git a/runtime/MenuActions.cpp b/runtime/MenuActions.cpp
+new file mode 100644
+index 00000000..1091404d
+--- /dev/null
++++ b/runtime/MenuActions.cpp
+@@ -0,0 +1,129 @@
++//////////////////////////////////////////////////////////////////////////
++//
++// pgAdmin 4 - PostgreSQL Tools
++//
++// Copyright (C) 2013 - 2018, The pgAdmin Development Team
++// This software is released under the PostgreSQL Licence
++//
++// MenuActions.cpp - Common file for menu actions.
++//
++//////////////////////////////////////////////////////////////////////////
++
++#include "MenuActions.h"
++
++// QT headers
++#include <QMessageBox>
++
++MenuActions::MenuActions()
++{
++    m_logWindow = NULL;
++    m_logFile = "";
++    m_appServerUrl = "";
++}
++
++MenuActions::~MenuActions()
++{
++}
++
++void MenuActions::setAppServerUrl(QString appServerUrl)
++{
++    m_appServerUrl = appServerUrl;
++}
++
++void MenuActions::setLogFile(QString logFile)
++{
++    m_logFile = logFile;
++}
++
++// Create a new application browser window on user request
++void MenuActions::onNew()
++{
++    QSettings settings;
++    QString cmd = settings.value("BrowserCommand").toString();
++
++    if (!cmd.isEmpty())
++    {
++        cmd.replace("%URL%", m_appServerUrl);
++        QProcess::startDetached(cmd);
++    }
++    else
++    {
++        if (!QDesktopServices::openUrl(m_appServerUrl))
++        {
++            QString error(QWidget::tr("Failed to open the system default web browser. Is one installed?."));
++            QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
++
++            exit(1);
++        }
++    }
++}
++
++// Show the config dialogue
++void MenuActions::onConfig()
++{
++    QSettings settings;
++    bool ok;
++
++    ConfigWindow *dlg = new ConfigWindow();
++    dlg->setWindowTitle(QString(tr("%1 Configuration")).arg(PGA_APP_NAME));
++    dlg->setBrowserCommand(settings.value("BrowserCommand").toString());
++    dlg->setPythonPath(settings.value("PythonPath").toString());
++    dlg->setApplicationPath(settings.value("ApplicationPath").toString());
++    dlg->setModal(true);
++    ok = dlg->exec();
++
++    QString browsercommand = dlg->getBrowserCommand();
++    QString pythonpath = dlg->getPythonPath();
++    QString applicationpath = dlg->getApplicationPath();
++
++    if (ok)
++    {
++        bool needRestart = (settings.value("PythonPath").toString() != pythonpath ||
++                            settings.value("ApplicationPath").toString() != applicationpath);
++
++        settings.setValue("BrowserCommand", browsercommand);
++        settings.setValue("PythonPath", pythonpath);
++        settings.setValue("ApplicationPath", applicationpath);
++
++        if (needRestart)
++        {
++            if (QMessageBox::Yes == QMessageBox::question(NULL, tr("Shut down server?"), QString(tr("The %1 server must be restarted for changes to take effect. Do you want to shut down the server now?")).arg(PGA_APP_NAME), QMessageBox::Yes | QMessageBox::No))
++            {
++                exit(0);
++            }
++        }
++    }
++}
++
++
++// Show the log window
++void MenuActions::onLog()
++{
++    QSettings settings;
++
++    if (!m_logWindow)
++    {
++        m_logWindow = new LogWindow(NULL, m_logFile);
++        m_logWindow->setWindowTitle(QString(tr("%1 Log")).arg(PGA_APP_NAME));
++    }
++
++    m_logWindow->show();
++    m_logWindow->raise();
++    m_logWindow->activateWindow();
++
++    QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
++
++    m_logWindow->ReadLog();
++}
++
++
++// Exit
++void MenuActions::onQuit()
++{
++    if (QMessageBox::Yes == QMessageBox::question(NULL, tr("Shut down server?"), QString(tr("Are you sure you want to shut down the %1 server?")).arg(PGA_APP_NAME), QMessageBox::Yes | QMessageBox::No))
++    {
++        // Emit the signal to shut down the python server.
++        emit shutdownSignal(m_appServerUrl);
++        exit(0);
++    }
++}
+diff --git a/runtime/MenuActions.h b/runtime/MenuActions.h
+new file mode 100644
+index 00000000..8ca46bc9
+--- /dev/null
++++ b/runtime/MenuActions.h
+@@ -0,0 +1,46 @@
++//////////////////////////////////////////////////////////////////////////
++//
++// pgAdmin 4 - PostgreSQL Tools
++//
++// Copyright (C) 2013 - 2018, The pgAdmin Development Team
++// This software is released under the PostgreSQL Licence
++//
++// MenuActions.h - Common file for menu actions.
++//
++//////////////////////////////////////////////////////////////////////////
++
++#ifndef MENUACTIONS_H
++#define MENUACTIONS_H
++
++#include "pgAdmin4.h"
++
++// App headers
++#include "LogWindow.h"
++#include "ConfigWindow.h"
++
++class MenuActions: public QObject
++{
++    Q_OBJECT
++public:
++    MenuActions();
++    ~MenuActions();
++
++    void setAppServerUrl(QString appServerUrl);
++    void setLogFile(QString logFile);
++    QString getAppServerUrl() { return m_appServerUrl; }
++
++private:
++    QString m_appServerUrl, m_logFile;
++    LogWindow *m_logWindow;
++
++protected slots:
++    void onNew();
++    void onConfig();
++    void onLog();
++    void onQuit();
++
++signals:
++    void shutdownSignal(QUrl);
++};
++
++#endif // MENUACTIONS_H
+diff --git a/runtime/TrayIcon.cpp b/runtime/TrayIcon.cpp
+index 31eed5d2..0bad8b93 100644
+--- a/runtime/TrayIcon.cpp
++++ b/runtime/TrayIcon.cpp
+@@ -9,22 +9,11 @@
+ //
+ //////////////////////////////////////////////////////////////////////////
+ 
+-#include "pgAdmin4.h"
+-
+-// QT headers
+-#include <QMessageBox>
+-
+ // App headers
+-#include "ConfigWindow.h"
+-#include "LogWindow.h"
+ #include "TrayIcon.h"
+ 
+-
+-TrayIcon::TrayIcon(QString logFile) :
+-    m_logFile(logFile)
++TrayIcon::TrayIcon()
+ {
+-    m_logWindow = NULL;
+-
+     m_trayIcon = NULL;
+     m_trayIconMenu = NULL;
+ 
+@@ -32,15 +21,13 @@ TrayIcon::TrayIcon(QString logFile) :
+     m_configAction = NULL;
+     m_logAction = NULL;
+     m_quitAction = NULL;
++    m_menuActions = NULL;
+ }
+ 
+-
+ TrayIcon::~TrayIcon()
+ {
+-
+ }
+ 
+-
+ bool TrayIcon::Init()
+ {
+     if (! isSystemTrayAvailable())
+@@ -54,16 +41,10 @@ bool TrayIcon::Init()
+     return true;
+ }
+ 
+-
+-void TrayIcon::setAppServerUrl(QString appServerUrl)
+-{
+-    m_appServerUrl = appServerUrl;
+-}
+-
+ // Check whether system tray exists
+ bool TrayIcon::isSystemTrayAvailable()
+ {
+-    int timeout = 10; // 30 sec * 10 = 5 minutes, thus we timeout after 5 minutes
++    int timeout = 10; // 3 sec * 10 = 30 seconds, thus we timeout after 30 seconds
+     int iteration = 0;
+     bool trayFound = false;
+ 
+@@ -72,7 +53,7 @@ bool TrayIcon::isSystemTrayAvailable()
+         // Check we can find the system tray.
+         if (!QSystemTrayIcon::isSystemTrayAvailable())
+         {
+-            // Wait for 30 seconds.
++            // Wait for 3 seconds.
+             wait(3000);
+             trayFound = false;
+         }
+@@ -88,7 +69,6 @@ bool TrayIcon::isSystemTrayAvailable()
+ 
+ }
+ 
+-
+ // Make application wait for msec milliseconds
+ void TrayIcon::wait(int msec)
+ {
+@@ -99,7 +79,6 @@ void TrayIcon::wait(int msec)
+    mutex.unlock();
+ }
+ 
+-
+ // Create the tray icon
+ void TrayIcon::createTrayIcon()
+ {
+@@ -135,116 +114,21 @@ void TrayIcon::createTrayIcon()
+     setWindowIcon(icon);
+ }
+ 
+-
+ // Create the menu actions
+ void TrayIcon::createActions()
+ {
+     m_newAction = new QAction(QString(tr("&New %1 window...")).arg(PGA_APP_NAME), this);
+-    connect(m_newAction, SIGNAL(triggered()), this, SLOT(onNew()));
++    connect(m_newAction, SIGNAL(triggered()), m_menuActions, SLOT(onNew()));
+ 
+     m_configAction = new QAction(tr("&Configure..."), this);
+-    connect(m_configAction, SIGNAL(triggered()), this, SLOT(onConfig()));
++    connect(m_configAction, SIGNAL(triggered()), m_menuActions, SLOT(onConfig()));
+ 
+     m_logAction = new QAction(tr("&View log..."), this);
+-    connect(m_logAction, SIGNAL(triggered()), this, SLOT(onLog()));
++    connect(m_logAction, SIGNAL(triggered()), m_menuActions, SLOT(onLog()));
+ 
+     m_quitAction = new QAction(tr("&Shut down server"), this);
+     m_quitAction->setEnabled(false);
+-    connect(m_quitAction, SIGNAL(triggered()), this, SLOT(onQuit()));
+-}
+-
+-
+-// Create a new application browser window on user request
+-void TrayIcon::onNew()
+-{
+-    QSettings settings;
+-    QString cmd = settings.value("BrowserCommand").toString();
+-
+-    if (!cmd.isEmpty())
+-    {
+-        cmd.replace("%URL%", m_appServerUrl);
+-        QProcess::startDetached(cmd);
+-    }
+-    else
+-    {
+-        if (!QDesktopServices::openUrl(m_appServerUrl))
+-        {
+-            QString error(QWidget::tr("Failed to open the system default web browser. Is one installed?."));
+-            QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
+-
+-            exit(1);
+-        }
+-    }
+-}
+-
+-// Show the config dialogue
+-void TrayIcon::onConfig()
+-{
+-    QSettings settings;
+-    bool ok;
+-
+-    ConfigWindow *dlg = new ConfigWindow();
+-    dlg->setWindowTitle(QString(tr("%1 Configuration")).arg(PGA_APP_NAME));
+-    dlg->setBrowserCommand(settings.value("BrowserCommand").toString());
+-    dlg->setPythonPath(settings.value("PythonPath").toString());
+-    dlg->setApplicationPath(settings.value("ApplicationPath").toString());
+-    dlg->setModal(true);
+-    ok = dlg->exec();
+-
+-    QString browsercommand = dlg->getBrowserCommand();
+-    QString pythonpath = dlg->getPythonPath();
+-    QString applicationpath = dlg->getApplicationPath();
+-
+-    if (ok)
+-    {
+-        bool needRestart = (settings.value("PythonPath").toString() != pythonpath ||
+-                            settings.value("ApplicationPath").toString() != applicationpath);
+-
+-        settings.setValue("BrowserCommand", browsercommand);
+-        settings.setValue("PythonPath", pythonpath);
+-        settings.setValue("ApplicationPath", applicationpath);
+-
+-        if (needRestart)
+-        {
+-            if (QMessageBox::Yes == QMessageBox::question(this, tr("Shut down server?"), QString(tr("The %1 server must be restarted for changes to take effect. Do you want to shut down the server now?")).arg(PGA_APP_NAME), QMessageBox::Yes | QMessageBox::No))
+-            {
+-                exit(0);
+-            }
+-        }
+-    }
+-}
+-
+-
+-// Show the log window
+-void TrayIcon::onLog()
+-{
+-    QSettings settings;
+-
+-    if (!m_logWindow)
+-    {
+-        m_logWindow = new LogWindow(NULL, m_logFile);
+-        m_logWindow->setWindowTitle(QString(tr("%1 Log")).arg(PGA_APP_NAME));
+-    }
+-
+-    m_logWindow->show();
+-    m_logWindow->raise();
+-    m_logWindow->activateWindow();
+-
+-    QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
+-
+-    m_logWindow->ReadLog();
+-}
+-
+-
+-// Exit
+-void TrayIcon::onQuit()
+-{
+-    if (QMessageBox::Yes == QMessageBox::question(this, tr("Shut down server?"), QString(tr("Are you sure you want to shut down the %1 server?")).arg(PGA_APP_NAME), QMessageBox::Yes | QMessageBox::No))
+-    {
+-        // Emit the signal to shut down the python server.
+-        emit shutdownSignal(m_appServerUrl);
+-        exit(0);
+-    }
++    connect(m_quitAction, SIGNAL(triggered()), m_menuActions, SLOT(onQuit()));
+ }
+ 
+ void TrayIcon::enableShutdownMenu()
+@@ -254,3 +138,8 @@ void TrayIcon::enableShutdownMenu()
+         m_quitAction->setEnabled(true);
+     }
+ }
++
++void TrayIcon::setMenuActions(MenuActions * menuActions)
++{
++    m_menuActions = menuActions;
++}
+diff --git a/runtime/TrayIcon.h b/runtime/TrayIcon.h
+index 48c4462d..18c63715 100644
+--- a/runtime/TrayIcon.h
++++ b/runtime/TrayIcon.h
+@@ -16,22 +16,19 @@
+ 
+ // QT headers
+ #include <QWidget>
+-#include <QMessageBox>
+-
+-// App headers
+-#include "LogWindow.h"
++#include "MenuActions.h"
+ 
+ class TrayIcon : public QWidget
+ {
+     Q_OBJECT
+ 
+ public:
+-    TrayIcon(QString logFile);
++    TrayIcon();
+     ~TrayIcon();
+ 
+     bool Init();
+-    void setAppServerUrl(QString appServerUrl);
+     void enableShutdownMenu();
++    void setMenuActions(MenuActions * menuActions);
+ 
+ private:
+     void createTrayIcon();
+@@ -48,18 +45,7 @@ private:
+     QSystemTrayIcon *m_trayIcon;
+     QMenu *m_trayIconMenu;
+ 
+-    QString m_appServerUrl, m_logFile;
+-
+-    LogWindow *m_logWindow;
+-
+-private slots:
+-    void onNew();
+-    void onConfig();
+-    void onLog();
+-    void onQuit();
+-
+-signals:
+-    void shutdownSignal(QUrl);
++    MenuActions *m_menuActions;
+ };
+ 
+ #endif // TRAYICON_H
+diff --git a/runtime/pgAdmin4.cpp b/runtime/pgAdmin4.cpp
+index 7bdcdfae..ea285e86 100644
+--- a/runtime/pgAdmin4.cpp
++++ b/runtime/pgAdmin4.cpp
+@@ -34,6 +34,8 @@
+ #include "ConfigWindow.h"
+ #include "Server.h"
+ #include "TrayIcon.h"
++#include "MenuActions.h"
++#include "FloatingWindow.h"
+ 
+ #include <QTime>
+ 
+@@ -205,15 +207,37 @@ int main(int argc, char * argv[])
+     // Generate the filename for the log
+     logFileName = homeDir + (QString("/.%1.%2.log").arg(PGA_APP_NAME).arg(exeHash)).remove(" ");
+ 
++    //Create Menu Actions
++    MenuActions *menuActions = new MenuActions();
++    if(menuActions != NULL)
++        menuActions->setLogFile(logFileName);
++
++    FloatingWindow *floatingWindow = NULL;
+     // Start the tray service
+-    TrayIcon *trayicon = new TrayIcon(logFileName);
++    TrayIcon *trayicon = new TrayIcon();
++    // Set the MenuActions object to connect to slot
++    if (trayicon != NULL)
++        trayicon->setMenuActions(menuActions);
+ 
+     if (!trayicon->Init())
+     {
+-        QString error = QString(QWidget::tr("An error occurred initialising the tray icon"));
+-        QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
++        // Delete Tray Icon object
++        delete trayicon;
++        trayicon = NULL;
+ 
+-        exit(1);
++        //Unable to find tray icon, so creating floting window
++        floatingWindow = new FloatingWindow();
++        if (floatingWindow == NULL)
++        {
++            QString error = QString(QWidget::tr("An error occurred initialising the tray icon as well as floating window."));
++            QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
++
++            exit(1);
++        }
++
++        // Set the MenuActions object to connect to slot
++        floatingWindow->setMenuActions(menuActions);
++        floatingWindow->Init();
+     }
+ 
+     // Fire up the webserver
+@@ -335,9 +359,12 @@ int main(int argc, char * argv[])
+     }
+ 
+     // Go!
+-    trayicon->setAppServerUrl(appServerUrl);
++    menuActions->setAppServerUrl(appServerUrl);
+     // Enable the shutdown server menu as server started successfully.
+-    trayicon->enableShutdownMenu();
++    if (trayicon != NULL)
++        trayicon->enableShutdownMenu();
++    if (floatingWindow != NULL)
++        floatingWindow->enableShutdownMenu();
+ 
+     QString cmd = settings.value("BrowserCommand").toString();
+ 
+@@ -357,10 +384,12 @@ int main(int argc, char * argv[])
+         }
+     }
+ 
+-    QObject::connect(trayicon, SIGNAL(shutdownSignal(QUrl)), server, SLOT(shutdown(QUrl)));
+-
++    QObject::connect(menuActions, SIGNAL(shutdownSignal(QUrl)), server, SLOT(shutdown(QUrl)));
+     splash->finish(NULL);
+ 
++    if (floatingWindow != NULL)
++        floatingWindow->show();
++
+     return app.exec();
+ }
+ 
+diff --git a/runtime/pgAdmin4.pro b/runtime/pgAdmin4.pro
+index 72f9dddb..a72ff36e 100644
+--- a/runtime/pgAdmin4.pro
++++ b/runtime/pgAdmin4.pro
+@@ -92,12 +92,16 @@ HEADERS     =   \
+                 pgAdmin4.h \
+                 ConfigWindow.h \
+                 TrayIcon.h \
+-                LogWindow.h
++                LogWindow.h \
++                MenuActions.h \
++                FloatingWindow.h
+ SOURCES     =   pgAdmin4.cpp \
+                 Server.cpp \
+                 ConfigWindow.cpp \
+                 TrayIcon.cpp \
+-                LogWindow.cpp
++                LogWindow.cpp \
++                MenuActions.cpp \
++                FloatingWindow.cpp
+ FORMS       =   ConfigWindow.ui \
+                 LogWindow.ui
+ ICON        =   pgAdmin4.icns
