@@ -5,9 +5,7 @@
 # Author: Wintershade <Wintershade AT google mail DOT com>
 
 pkgname=rpm-org
-pkgver=4.13.0.1
-_pkgver=$pkgver
-#_pkgver=4.12.0-rc1
+pkgver=4.14.1
 pkgrel=1
 pkgdesc="RPM Package Manager - RPM.org fork, used in major RPM distros"
 arch=('i686' 'x86_64')
@@ -19,10 +17,14 @@ optdepends=('libdbus: systemd inhibit plugin')
 conflicts=('rpm' 'rpmextract')
 options=('!libtool')
 provides=("rpm=${pkgver}" 'rpmextract=1.0-4')
+
+_base_pkgver=${pkgver%.*}.x
+_pkgver=$pkgver
+
 #source=(https://github.com/rpm-software-management/rpm/releases/download/rpm-${pkgver}-release/rpm-${pkgver}.tar.bz2
-source=(http://ftp.rpm.org/releases/rpm-4.13.x/rpm-$pkgver.tar.bz2
+source=(http://ftp.rpm.org/releases/rpm-$_base_pkgver/rpm-$pkgver.tar.bz2
 	rpmextract.sh rpmlib-filesystem-check.patch bfdfix.patch)
-sha1sums=('9566f95f38fcb214e439c552f378c2f64ba0aff9'
+sha1sums=('3501b13d2a51a7e66163b36f63a6c5b0f7b7f7ae'
           '74849919207885ae024f1ab8ed68a76474d67ad7'
           '0c5fa516dde1f10211af896c729e4b00c313e12b'
           '456d4a2c9f71c2e3bfa5011800855a73a55aa5bc')
@@ -30,9 +32,8 @@ sha1sums=('9566f95f38fcb214e439c552f378c2f64ba0aff9'
 prepare() {
 	cd ${srcdir}/rpm-${_pkgver}
 	patch -p1 < ../rpmlib-filesystem-check.patch
-	patch -p1 < ../bfdfix.patch
-	}
-
+	#patch -p1 < ../bfdfix.patch
+}
 
 build() {
 	cd ${srcdir}/rpm-${_pkgver}
@@ -59,12 +60,10 @@ package() {
 	install -m755 ${srcdir}/rpmextract.sh ${pkgdir}/usr/bin/
 
 	# move rpm from /bin to /usr/bin
-	mv ${pkgdir}/bin/rpm ${pkgdir}/usr/bin/
 	rm ${pkgdir}/usr/bin/rpm{query,verify}
 	cd ${pkgdir}/usr/bin
 	ln -s rpm rpmquery
 	ln -s rpm rpmverify
-	rm -r ${pkgdir}/bin/
 
 	# also install python 3 files
 	# building with python 3 files as default doesn't seem to work
