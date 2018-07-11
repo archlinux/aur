@@ -1,17 +1,19 @@
 pkgbase = jrommanager
 	pkgdesc = A Rom Manager entirely written in Java and released under GPL v3
-	pkgver = 1.5b18
-	pkgrel = 1
+	pkgver = 1.6b20
+	pkgrel = 2
 	url = https://github.com/optyfr/JRomManager
 	arch = any
 	license = GPL3
 	depends = java-runtime>=8
-	source = https://github.com/optyfr/JRomManager/releases/download/1.5b18/JRomManager-1.5b18.zip
+	source = https://github.com/optyfr/JRomManager/releases/download/1.6b20/JRomManager-1.6b20.zip
 	source = JRomManager.desktop
 	source = JRomManager.png
-	md5sums = df8ef44e5edd830371b15b9dcea87987
-	md5sums = ca35b69a3ce8cad15944577cb2b17b13
+	source = JRomManager.sh
+	md5sums = 7bbf941aa5e044a871d3955da5192cf5
+	md5sums = feb8697e8eea362a9b6ba5947975dc4c
 	md5sums = aa359e0e6eedc95e172355b83b2c6235
+	md5sums = 33c717e50d5db9ca115bf063313bf1df
 
 pkgname = jrommanager
 
