@@ -1,0 +1,18 @@
+pkgbase = xiphos-git
+	pkgdesc = Fairly strong UCI engine.
+	pkgver = 46
+	pkgrel = 1
+	url = https://github.com/milostatarevic/xiphos
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	optdepends = xboard
+	optdepends = scid_vs_pc
+	provides = xiphos
+	conflicts = xiphos
+	source = xiphos::git+https://github.com/milostatarevic/xiphos
+	md5sums = SKIP
+
+pkgname = xiphos-git
+
