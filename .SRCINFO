@@ -1,0 +1,14 @@
+pkgbase = dcadec
+	pkgdesc = DTS Coherent Acoustics decoder with support for HD extensions
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/foo86/dcadec.git
+	arch = x86_64
+	license = LGPL2.1
+	depends = glibc
+	provides = libdcadec.so
+	source = dcadec-0.2.0.tar.gz::https://github.com/foo86/dcadec/archive/v0.2.0.tar.gz
+	sha256sums = ed9d207fde3e8d576f3af8b0d1235b3371e315175757173689104efcaebf0d44
+
+pkgname = dcadec
+
