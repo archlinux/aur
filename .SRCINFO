@@ -1,0 +1,15 @@
+pkgbase = xlockless
+	pkgdesc = A simple screen locker
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://web.archive.org/web/20100714025105/http://vault24.org/projects/xlockless/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = libx11
+	depends = pam
+	source = http://web.archive.org/web/20100714031911/http://vault24.org/projects/xlockless/xlockless-1.0.tar.gz
+	md5sums = ab065822a7a7a2a4410b8ea817a8d323
+
+pkgname = xlockless
+
