@@ -19,7 +19,6 @@ pkgbase = hyde-git
 	depends = python2-fswrap-git
 	depends = python2-jinja
 	depends = python2-typogrify
-	depends = python2-commando
 	depends = python2-smartypants
 	conflicts = hyde
 	source = hyde::git://github.com/hyde/hyde.git
