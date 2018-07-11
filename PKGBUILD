@@ -1,4 +1,4 @@
-# Maintainer: Your Name <Alchemy-aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=alchemy
 pkgver=0.0.8
 pkgrel=1
