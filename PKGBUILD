@@ -1,6 +1,6 @@
-# Contributer: N30N <archlinux@alunamation.com>
-# Contributer: Wenzel Jakob <wenzel@mitsuba-renderer.org>
-# Contributer: bartus <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor : N30N <archlinux@alunamation.com>
+# Contributor : Wenzel Jakob <wenzel@mitsuba-renderer.org>
 
 _pkgname="collada-dom"
 pkgname="${_pkgname}-mitsuba"
