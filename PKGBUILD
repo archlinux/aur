@@ -2,12 +2,12 @@
 
 pkgname=usbguard-git
 _pkgname=usbguard
-pkgver=0.7.2.r0.gd457b12
+pkgver=0.7.3.r4.g81fe7bf
 pkgrel=1
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
 makedepends=("git" "libxslt" "asciidoctor" "bash-completion")
-depends=("libqb-git" "libsodium" "libcap-ng" "protobuf" "polkit" "qt5-base" "qt5-svg" "qt5-tools" "hicolor-icon-theme" "dbus-glib")
+depends=("libqb" "libsodium" "libcap-ng" "protobuf" "polkit" "qt5-base" "qt5-svg" "qt5-tools" "hicolor-icon-theme" "dbus-glib")
 arch=("i686" "x86_64")
 url='https://github.com/dkopecek/usbguard'
 source=(
