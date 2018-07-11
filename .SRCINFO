@@ -1,14 +1,14 @@
 pkgbase = r-startupmsg
 	pkgdesc = Utilities for Start-Up Messages
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=startupmsg
 	arch = any
 	license = LGPL3
 	depends = r
 	replaces = r-cran-startupmsg
-	source = https://cran.r-project.org/src/contrib/startupmsg_0.9.4.tar.gz
-	md5sums = ca677e252cce1584071394f0b26befa4
+	source = https://cran.r-project.org/src/contrib/startupmsg_0.9.5.tar.gz
+	md5sums = 4386dd50612aea6ccaca1a4de95c5383
 
 pkgname = r-startupmsg
 
