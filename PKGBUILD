@@ -6,15 +6,15 @@
 
 pkgname=asymptote-git
 epoch=1
-pkgver=2.45r1.6096
+pkgver=2.45r332.6427
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
 url="http://asymptote.sourceforge.net/"
 license=('GPL3')
-depends=('gc'  'freeglut' 'glu' 'gsl' 'fftw' 'libsigsegv')
+depends=('gc' 'librsvg' 'freeglut' 'glu' 'gsl' 'fftw' 'libsigsegv')
 makedepends=('git' 'flex' 'ghostscript' 'imagemagick6' 'texlive-plainextra')
-optdepends=('python2:           for the xasy GUI'
+optdepends=('python-pyqt5:      for the xasy GUI'
             'python-imaging:    for the xasy GUI'
             'tix:               for the xasy GUI')
 conflicts=('asymptote')
@@ -28,6 +28,11 @@ pkgver() {
   printf %s%s $(git describe --tags|sed s+git.+r+|sed s+-+.+g|cut -dg -f1) $(git rev-list --count HEAD)
 }
 
+prepare() {
+  cd ${pkgname%-git}/GUI
+  sed -i '1s+python3+python+' xasyOptions.py xasyFile.py UndoRedoStack.py
+}
+  
 build() {
   cd ${pkgname%-git}
   ./autogen.sh
