@@ -1,4 +1,4 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: Det <nimetonmaili g-mail> 
 # Check the latest version with:
 # $ curl -sL https://dl.google.com/linux/earth/deb/dists/stable/main/binary-amd64/Packages | grep -Pom1 "Version: \K[^-]*"
 
