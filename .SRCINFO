@@ -1,14 +1,14 @@
 pkgbase = naviserver-tclthread
 	pkgdesc = Provides tcl thread library for naviserver. You can use this extension to gain script-level access to Tcl threading capabilities.
-	pkgver = 2.7.3
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = http://tcl.sourceforge.net
 	arch = x86_64
 	license = custom
 	depends = tcl
 	depends = naviserver
-	source = http://downloads.sourceforge.net/project/tcl/Thread%20Extension/2.7.3/thread2.7.3.tar.gz
-	md5sums = a7f744148b2cc1cd5a0d9a704778a971
+	source = http://downloads.sourceforge.net/project/tcl/Thread%20Extension/2.8.2/thread2.8.2.tar.gz
+	md5sums = 38d301865285738d3d7f43fff0403805
 
 pkgname = naviserver-tclthread
 
