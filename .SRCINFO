@@ -1,0 +1,19 @@
+pkgbase = fbzx-git
+	pkgdesc = Sinclair Spectrum emulator, designed to work at full screen using the FrameBuffer or under X-Windows.
+	pkgver = 3.9.1.r2.52b99b0
+	pkgrel = 1
+	url = http://www.rastersoft.com/programas/fbzx.html
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = sdl
+	depends = alsa-lib
+	depends = libpulse
+	provides = fbzx
+	conflicts = fbzx
+	source = git+https://gitlab.com/rastersoft/fbzx
+	md5sums = SKIP
+
+pkgname = fbzx-git
+
