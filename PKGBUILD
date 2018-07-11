@@ -1,8 +1,8 @@
-# Maintainer: bartus {aur@bartus.33mail.com}
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 
 pkgname=blender-2.8-git
-pkgver=2.8_r76530.0492e56fece
+pkgver=2.8_r76755.b11a1d5da26
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
