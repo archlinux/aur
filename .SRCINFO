@@ -1,14 +1,14 @@
 pkgbase = python-wurlitzer
 	pkgdesc = Capture C-level stdout/stderr in Python
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/minrk/wurlitzer
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/minrk/wurlitzer/archive/1.0.1.tar.gz
-	sha512sums = 782c30c2f5b9279d0b7a5f2076f89c8630f3171646df6b5f467dbb91bb64b0068d936e2544d252074df454f527b84788cac06430f6482aa97fcd42a28629bf7e
+	source = https://files.pythonhosted.org/packages/source/w/wurlitzer/wurlitzer-1.0.2.tar.gz
+	sha256sums = 23e85af0850b98add77bef0a1eb47b243baab29160131d349234c9dfc9e57add
 
 pkgname = python-wurlitzer
 
