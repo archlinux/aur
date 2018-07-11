@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-aiomysql
-pkgver=0.0.16
+pkgver=0.0.18
 pkgrel=1
 pkgdesc="MySQL driver for asyncio"
 arch=(any)
