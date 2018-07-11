@@ -1,7 +1,7 @@
 ## Maintainer: N. Izumi aka izmntuk
 pkgname=fbterm-git
 pkgver=20150509
-pkgrel=3
+pkgrel=4
 pkgdesc='A fast framebuffer-based terminal emulator for Linux'
 arch=(x86_64 i686)
 url='https://github.com/izmntuk/fbterm'
@@ -37,8 +37,7 @@ build() {
 
 package() {
 	cd "${srcdir}/fbterm"
-	install -Dm644 terminfo/fbterm "${pkgdir}/usr/share/terminfo/f/fbterm"
-	make DESTDIR="${pkgdir}" TERMINFO="${pkgdir}/usr/share/terminfo" install
+	make DESTDIR="${pkgdir}" install
 }
 sha1sums=('SKIP'
           '11b95e4a90519156bc02dc0fa3b086f37820431b'
