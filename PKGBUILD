@@ -1,5 +1,6 @@
-# Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
-# Comaintainer : bartus <aur@bartus.33mail.com>
+# Maintainer : Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Submaintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+
 pkgname=luxrender-hg
 pkgver=4918+.f56582df55f4+
 pkgrel=5
