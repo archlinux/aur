@@ -1,0 +1,23 @@
+diff -aur tora-3.2/src/editor/tosqltext.h tora-3.2.patched/src/editor/tosqltext.h
+--- tora-3.2/src/editor/tosqltext.h	2017-07-04 14:35:39.000000000 -0700
++++ tora-3.2.patched/src/editor/tosqltext.h	2018-07-10 14:56:35.580009002 -0700
+@@ -45,6 +45,8 @@
+ #include <QtCore/QStringList>
+ #include <QtGui/QKeyEvent>
+ #include <QWidget>
++#include <QAction>
++#include <QMenu>
+ 
+ #include <tuple>
+ 
+diff -aur tora-3.2/src/widgets/tohelp.cpp tora-3.2.patched/src/widgets/tohelp.cpp
+--- tora-3.2/src/widgets/tohelp.cpp	2017-07-04 14:35:39.000000000 -0700
++++ tora-3.2.patched/src/widgets/tohelp.cpp	2018-07-10 14:54:00.790003162 -0700
+@@ -43,6 +43,7 @@
+ #include "core/toconfiguration.h"
+ #include "ts_log/ts_log_utils.h"
+ 
++#include <QAction>
+ #include <QMessageBox>
+ #include <QtCore/QSettings>
+ 

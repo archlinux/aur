@@ -1,19 +1,24 @@
 pkgbase = tora
 	pkgdesc = Toolkit for databases with support for MySQL and PostgreSQL
-	pkgver = 2.1.3
-	pkgrel = 4
-	url = http://tora.sourceforge.net
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/tora-tool/tora
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	depends = qscintilla
+	makedepends = boost
+	depends = qscintilla-qt5
+	depends = boost-libs
+	depends = loki-lib
 	options = !libtool
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/tora/tora-2.1.3.tar.gz
-	source = include_unistd.patch
-	md5sums = ea4a75a9daeaf58492413e3f7fe40293
-	md5sums = b621c5aa5ef7106571001a95bc11b07d
+	source = tora-3.2.tar.gz::https://github.com/tora-tool/tora/archive/v3.2.tar.gz
+	source = missing-qbuttongroup.patch
+	source = fix-missing-includes.patch
+	sha1sums = 2619166f023cec248044fc92ea3123031554f159
+	sha1sums = eba1639b5782ce474f43890084f4bba34e72d5dd
+	sha1sums = 1249680803431d36a63dd2fb53d83a47c1bd03db
 
 pkgname = tora
 
