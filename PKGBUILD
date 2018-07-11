@@ -3,13 +3,12 @@
 
 pkgname=warsaw-bin
 pkgver=1.12.10.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(i686 x86_64)
 url="http://www.dieboldnixdorf.com.br/warsaw"
 license=('custom')
-depends=('procps-ng' 'python2' 'python2-mini-amf' 'python2-unicodecsv' 'python-gpgme' 'python-pyopenssl' 'openssl' 'nss' 'zenity' 'gdk-pixbuf2' 'pango' 'glib2' 'libx11' 'libstdc++296')
-makedepends=('chrpath')
+depends=('procps-ng' 'python2' 'python2-mini-amf' 'python2-unicodecsv' 'python-gpgme' 'python2-pyopenssl' 'openssl' 'nss' 'zenity' 'gdk-pixbuf2' 'pango' 'glib2' 'libx11' 'libstdc++296')
 conflicts=('warsaw')
 provides=('warsaw')
 options=(!strip)
