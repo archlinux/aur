@@ -18,5 +18,5 @@ package() {
 	mv usr "${pkgdir}"
 	chmod -R g-w opt
 	mv opt "${pkgdir}"
-        install -Dm644 "shadow-beta.desktop" "${pkgdir}/usr/share/applications/shadow-beta.desktop"
+
 }
