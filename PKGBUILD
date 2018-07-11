@@ -21,6 +21,7 @@ sha512sums=('cbbb00eb99cfeb4aff623ee1a5ba075e7b5a76fc00c5f9f539ff28c108598f5708a
             'SKIP'
             'bbb4c7b412e295cb735f637df48a83093eef45ed5444f7766790b4b047f75fd5fd634d8f3a8ac33a5c1407bd16fd450ba113f60a9bcc1d0a911fe0c54e9c81f2'
             'SKIP')
+# see https://releases.llvm.org/download.html
 validpgpkeys=(# Tom Stellard <tstellar@redhat.com> (.1 releases)
               # https://pgp.mit.edu/pks/lookup?op=get&search=0xA2C794A986419D8A
               474E22316ABF4785A88C6E8EA2C794A986419D8A
