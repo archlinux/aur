@@ -1,4 +1,4 @@
-# Maintainer: bartus <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=('seexpr' 'seexpr-doc')
 _fragment="#tag=v2.11"
 pkgver=2.11
