@@ -1,4 +1,5 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Maintainer: Tim Schumacher <timschumi@gmx.de>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: ceri
 
 _pkgbase='citra'
