@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/net-speeder/net-speeder eth0 ip
+ExecStart=/usr/bin/net-speeder eth0 ip
 KillSignal=SIGINT
 Restart=on-failure
 RestartSec=5
