@@ -1,16 +1,18 @@
 # Submitter: Fabien Devaux <fdev31@gmail.com>
-# Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 name=retopoflow
+_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+
 pkgname=blender-plugin-${name}-git
-pkgver=1.3.1.r0.g9fc2227
+pkgver=1.3.2.r0.gd9b542f
 pkgrel=1
 pkgdesc="A suite of retopology tools for Blender"
 arch=('any')
 url="https://cgcookiemarkets.com/all-products/retopoflow/"
 license=('GPL')
 depends=('blender')
-makedepends=('git')
+makedepends=('expac' 'git')
 conflicts=('blender-plugin-retopoflow')
 source=("git+https://github.com/CGCookie/retopoflow.git")
 md5sums=('SKIP')
@@ -23,7 +25,7 @@ pkgver() {
 
 package() {
   cd ${srcdir}
-  addons="$pkgdir/usr/share/blender/$(blender -v | head -n1 | cut -f2 -d ' ')/scripts/addons"
+  addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${name}
   cp -r ${name}/* ${addons}/${name}
 }
