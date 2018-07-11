@@ -1,16 +1,16 @@
 # Maintainer: Sebastian Morr <sebastian@morr.cc>
 
 pkgname=timelens-git
-pkgver=.r0.2665477
+pkgver=.r0.53e84f4
 pkgrel=1
-pkgdesc="Creates visual timelines from video files. Inspired by the moviebarcode tumblr."
+pkgdesc="Creates visual timelines from video files, to visualize color development. Inspired by the moviebarcode tumblr."
 arch=('i686' 'x86_64')
 url="https://github.com/timelens/timelens"
 license=('GPL')
 provides=('timelens')
 conflicts=('timelens')
-depends=('gstreamer' 'gst-plugins-base-libs')
-makedepends=('git' 'cargo')
+depends=('gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav')
+makedepends=('git' 'rust')
 source=("$pkgname::git+https://github.com/timelens/timelens")
 sha1sums=('SKIP')
 
