@@ -1,0 +1,15 @@
+pkgbase = plymouth-theme-simple-image
+	pkgdesc = A Plymouth theme which simply displays an image
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/barskern/plymouth-theme-simple-image/
+	install = plymouth-theme-simple-image.install
+	arch = any
+	license = custom:BSD3-Clause
+	makedepends = git
+	depends = plymouth
+	source = plymouth-theme-simple-image::git+https://github.com/barskern/plymouth-theme-simple-image.git
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-simple-image-git
+

@@ -1,0 +1,8 @@
+post_install() {
+	echo "###############################################"
+	echo ""
+	echo -e "\tTo install the theme run:"
+	echo -e "\tsudo plymouth-set-default-theme -R simple-image"
+	echo ""
+	echo "###############################################"
+}
