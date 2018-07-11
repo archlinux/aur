@@ -15,7 +15,7 @@ depends=(
   'pulseaudio'
 )
 makedepends=('git' 'cmake')
-optdependds=(
+optdepends=(
   'ffmpeg: DATV demodulator'
   'libmirisdr4: SDRPlay support'
   'rtl-sdr: RTLSDR support'
