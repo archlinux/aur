@@ -1,4 +1,4 @@
-# Maintainer: bartus <aur at bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=stlsplit
 pkgver=1.2
 pkgrel=1
