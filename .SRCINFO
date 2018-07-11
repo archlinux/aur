@@ -1,7 +1,7 @@
 pkgbase = bomi
 	pkgdesc = Powerful and easy-to-use GUI multimedia player based on mpv
 	pkgver = 0.9.11
-	pkgrel = 5
+	pkgrel = 6
 	url = http://bomi-player.github.io
 	install = bomi.install
 	arch = i686
@@ -46,7 +46,7 @@ pkgbase = bomi
 	source = ffmpeg2.8.patch
 	source = qml_internal_types.patch
 	md5sums = 543c592f588c68d6f0c3cf254c288f58
-	md5sums = 7bb39aea99bb5c0f6607cda44edc11ae
+	md5sums = cf0ea80c4a355f935199968cb59df408
 	md5sums = 965ead6202472215d8cb2d875584dfb7
 
 pkgname = bomi

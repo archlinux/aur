@@ -6,7 +6,7 @@
 
 pkgname=bomi
 pkgver=0.9.11
-pkgrel=5
+pkgrel=6
 pkgdesc="Powerful and easy-to-use GUI multimedia player based on mpv"
 arch=('i686' 'x86_64')
 url="http://$pkgname-player.github.io"
@@ -26,7 +26,7 @@ optdepends=('libva-intel-driver: hardware acceleration support for Intel GPU'
             'libbdplus: BD+ decryption for Blu-ray support')
 source=($pkgname-$pkgver.tar.gz::https://github.com/xylosper/bomi/archive/v$pkgver.tar.gz ffmpeg2.8.patch qml_internal_types.patch)
 md5sums=('543c592f588c68d6f0c3cf254c288f58'
-         '7bb39aea99bb5c0f6607cda44edc11ae'
+         'cf0ea80c4a355f935199968cb59df408'
 	 '965ead6202472215d8cb2d875584dfb7')
 #options=(debug !strip)
 

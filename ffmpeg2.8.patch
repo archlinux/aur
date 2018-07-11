@@ -4,8 +4,9 @@ diff -urN src.ori/bomi/bomi.pro src/bomi/bomi.pro
 @@ -9,7 +9,7 @@
  DESTDIR = $${PWD}/../../build
  LIB_DIR = $${DESTDIR}/lib
- INCLUDEPATH += ../mpv ../mpv/build kiss_fft
+-INCLUDEPATH += ../mpv ../mpv/build kiss_fft
 -LIBS += -L$${LIB_DIR} -lbz2 -lz
++INCLUDEPATH += ../mpv ../mpv/build kiss_fft /usr/include/ffmpeg2.8
 +LIBS += -L$${LIB_DIR} -L/usr/lib/ffmpeg2.8 -lbz2 -lz
  
  include(configure.pro)
