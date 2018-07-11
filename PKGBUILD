@@ -1,5 +1,6 @@
 # Maintainer: Kyle Brooks <brookskd@gmail.com>
-# update: bartus <aur\at/bartus.33mail.com>
+# Submaintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+
 pkgname=openmvg-git
 _gitname='openMVG'
 _fragment="#branch=develop"
