@@ -1,4 +1,4 @@
-# Maintainer: bartus <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=u3d
 pkgver=1.4.5
 pkgrel=1
