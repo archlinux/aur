@@ -1,122 +1,30 @@
 diff --git a/src/sage/databases/cremona.py b/src/sage/databases/cremona.py
-index 6e99f6c..b501a55 100644
+index 3f8dd62..ed5726a 100644
 --- a/src/sage/databases/cremona.py
 +++ b/src/sage/databases/cremona.py
-@@ -53,7 +53,6 @@ from sage.misc.prandom import randint
+@@ -53,7 +53,7 @@ from sage.misc.prandom import randint
  
  import sage.schemes.elliptic_curves.constructor as elliptic
  from .sql_db import SQLDatabase, verify_column
 -from sage.misc.package import is_package_installed
++from sage.features.databases import DatabaseCremona
  from sage.env import SAGE_SHARE
  from sage.misc.all import walltime
  
-@@ -606,24 +605,25 @@ class MiniCremonaDatabase(SQLDatabase):
-             sage: c.name
-             'cremona mini'
-         """
-+        if name is None:
-+            raise ValueError("name must not be None.")
-+        if build and read_only:
-+            raise ValueError("only one of build and read_only can be set at once.")
-+
-         self.name = name
--        name = name.replace(' ','_')
--        db_path = os.path.join(SAGE_SHARE, 'cremona', name+'.db')
-+
-         if build:
--            if name is None:
--                raise RuntimeError('The database must have a name.')
--            if read_only:
--                raise RuntimeError('The database must not be read_only.')
-+            db_path = os.path.join(SAGE_SHARE, 'cremona', name.replace(' ','_')+'.db')
-             SQLDatabase.__init__(self, db_path, read_only=read_only, \
-                     skeleton=_miniCremonaSkeleton)
--            return
--        if not os.path.isfile(db_path):
--            raise ValueError("Desired database (='%s') does not "%self.name \
--                    + "exist")
--        SQLDatabase.__init__(self, db_path, read_only=read_only)
--        if self.get_skeleton() != _miniCremonaSkeleton:
--            raise RuntimeError('Database at %s does '%(self.__dblocation__) \
--              + 'not appear to be a valid SQL Cremona database.')
-+        else:
-+            from sage.misc.feature_test import DatabaseCremona
-+            database = DatabaseCremona(name)
-+            database.require()
-+            SQLDatabase.__init__(self, database.absolute_path(), read_only=read_only)
-+            if self.get_skeleton() != _miniCremonaSkeleton:
-+                raise RuntimeError('Database at %s does '%(self.__dblocation__) \
-+                  + 'not appear to be a valid SQL Cremona database.')
- 
-     def __iter__(self):
-         """
-@@ -824,14 +824,15 @@ class MiniCremonaDatabase(SQLDatabase):
+@@ -825,7 +825,7 @@ class MiniCremonaDatabase(SQLDatabase):
              if N < self.largest_conductor():
                  message = "There is no elliptic curve with label " + label \
                      + " in the database"
 -            elif is_package_installed('database_cremona_ellcurve'):
-+            from sage.misc.feature_test import DatabaseCremona
-+            cremona_database_presence = DatabaseCremona().is_present()
-+            if cremona_database_presence:
++            elif DatabaseCremona().is_present():
                  message = "There is no elliptic curve with label " + label \
                      + " in the currently available databases"
              else:
-                 message = "There is no elliptic curve with label " \
--                    + label + " in the default database; try installing " \
--                    + "the optional package database_cremona_ellcurve which " \
--                    + "contains the complete Cremona database"
-+                    + label + " in the default database. " \
-+                    + cremona_database_presence.resolution
-             raise ValueError(message)
-         ainvs = eval(c[0])
-         data = {'cremona_label': label,
-@@ -1417,24 +1418,25 @@ class LargeCremonaDatabase(MiniCremonaDatabase):
-             sage: c.name                            # optional - database_cremona_ellcurve
-             'cremona'
-         """
-+        if name is None:
-+            raise ValueError("name must not be None.")
-+        if build and read_only:
-+            raise ValueError("only one of build and read_only can be set at once.")
-+
-         self.name = name
--        name = name.replace(' ','_')
--        db_path = os.path.join(SAGE_SHARE, 'cremona', name+'.db')
-+
-         if build:
--            if name is None:
--                raise RuntimeError('The database must have a name.')
--            if read_only:
--                raise RuntimeError('The database must not be read_only.')
-+            db_path = os.path.join(SAGE_SHARE, 'cremona', name.replace(' ','_')+'.db')
-             SQLDatabase.__init__(self, db_path, read_only=read_only, \
--                    skeleton=_cremonaSkeleton)
--            return
--        if not os.path.isfile(db_path):
--            raise ValueError("Desired database (='%s') does not "%self.name \
--                    + "exist")
--        SQLDatabase.__init__(self, db_path, read_only=read_only)
--        if self.get_skeleton() != _cremonaSkeleton:
--            raise RuntimeError('Database at %s does '%(self.__dblocation__) \
--              + 'not appear to be a valid SQL Cremona database.')
-+                    skeleton=_miniCremonaSkeleton)
-+        else:
-+            from sage.misc.feature_test import DatabaseCremona
-+            database = DatabaseCremona(name)
-+            database.require()
-+            SQLDatabase.__init__(self, database.absolute_path(), read_only=read_only)
-+            if self.get_skeleton() != _cremonaSkeleton:
-+                raise RuntimeError('Database at %s does '%(self.__dblocation__) \
-+                  + 'not appear to be a valid SQL Cremona database.')
- 
-     def allbsd(self, N):
-         r"""
-@@ -1672,7 +1674,8 @@ def CremonaDatabase(name=None,mini=None,set_global=None):
+@@ -1673,7 +1673,7 @@ def CremonaDatabase(name=None,mini=None,set_global=None):
      if name is None and not set_global:
          return _db
      if set_global and name is None:
 -        if is_package_installed('database_cremona_ellcurve'):
-+        from sage.misc.feature_test import DatabaseCremona
 +        if DatabaseCremona().is_present():
              name = 'cremona'
          else:

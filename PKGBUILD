@@ -49,7 +49,7 @@ sha256sums=('SKIP'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             '93b4cbdf7f36287ad643853b99e77011fcf5bdcd17514f3bf6d2bd74a1c82fd2'
             'a4a6c87b46ff23b89608aca66d00427334502e8bfb5dfe68b94497d19be1c7ae'
-            '71cc42d168545d460bc7f67a30486ff1534093e2b4deeb83deda8ff5bd081e7b'
+            'f801be68d043f317cc2a85a5ca059010b68eaeafa3bbf5c9148f2c154e2a707d'
             '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
             'af22e1834997cb2740818cd4ef8ede0367b0aa237305e89b178614f35bdfcef8'
             '5114c912f821900e5bfae1e2cfeb7984de946d0b23e1182b0bf15be1d803dfd0'
@@ -95,7 +95,7 @@ prepare(){
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
   patch -p1 -i ../fes02.patch
-# use Features to detect Cremona databases https://trac.sagemath.org/ticket/24718
+# use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825
   patch -p1 -i ../sagemath-cremona.patch
 
 # use python2
