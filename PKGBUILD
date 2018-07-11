@@ -1,6 +1,8 @@
-# maintained by: bartus szczepaniak <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 name=uvsquares
+_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+
 pkgname=blender-plugin-${name}-git
 pkgver=r63.db80da3
 pkgrel=3
@@ -21,7 +23,7 @@ pkgver() {
 
 package() {
   cd ${srcdir}
-  addons="$pkgdir/usr/share/blender/$(blender -v | head -n1 | cut -f2 -d ' ')/scripts/addons"
+  addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${name}
   cp -a ${name}/* ${addons}/${name}
 }
