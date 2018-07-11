@@ -1,13 +1,14 @@
 pkgbase = v86d
 	pkgdesc = userspace helper for uvesafb that runs x86 code in an emulated environment
 	pkgver = 0.1.10
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/mjanusz/v86d
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = glibc
+	depends = uvesafb-dkms
 	options = !makeflags
 	source = git://github.com/mjanusz/v86d.git#tag=v86d-0.1.10
 	source = v86d_install
