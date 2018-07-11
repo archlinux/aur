@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-    export INCLUDE_DATA_FILES='systemd,dbus'
+    export INCLUDE_DATA_FILES="systemd dbus"
 
     cd "${srcdir}/${_pkgname}"
     python setup.py install --root="${pkgdir}" --force --quiet
