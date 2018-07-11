@@ -1,0 +1,4 @@
+pkg/
+src/
+shadowbeta.deb
+*.pkg.tar
