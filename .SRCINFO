@@ -7,7 +7,7 @@ pkgbase = virtualshield-systemd
 	license = https://virtualshield.com/legal/eula/
 	depends = virtualshield
 	source = virtualshield-systemd-1.0.tar.gz::https://github.com/wchurch58/virtualshield-systemd}/archive/1.0.tar.gz
-	sha512sums = 806f5ba2387ef58d22aad8137abc641b87a7d3adeaea2fa3579432043d8d47c05c8b324ea05c77cff69aaf79c20683cd1df492bdde89e4b7ad30bd8023aa38f2
+	sha512sums = 6e553d5ce3a86094f725ab3389fccc90ae6f1feaedaa587202c06a4535fbeec9d4d52a27e3055008d1af1895babd1e0f3ec2715f8edb5ffef42117838ae8cf33
 
 pkgname = virtualshield-systemd
 
