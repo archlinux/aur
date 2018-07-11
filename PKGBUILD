@@ -7,8 +7,8 @@
 _pkgname=rust
 
 pkgname=mingw-w64-rust
-pkgver=1.26.2
-pkgrel=2
+pkgver=1.27.0
+pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
 url="https://www.rust-lang.org"
@@ -29,9 +29,9 @@ makedepends=('rust'
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
         "mingw-config.toml")
-sha256sums=('a1202800bd5621f5cac027177904da0b964eb43b93606d3e4c7b342a9f7473b4'
+sha256sums=('866b7409a67ff8324a73d9c5cecac2458e234d125cc3f22686412e35b3d750b4'
             'SKIP'
-            '65445abc7b1f7c14896e05e5f147e56974e8ca0fde5aeed95e15adbd51951ae7')
+            'c9916570220bd27c201d37ab9ac6470adeec6bacaca877fc68d3c0d6242189a0')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/${_pkgname}/cargo/config")
