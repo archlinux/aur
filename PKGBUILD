@@ -10,7 +10,7 @@
 # Contributor: Chris Cromer <chris@cromer.cl>
 
 pkgname=networkmanager-consolekit
-pkgver=1.10.10
+pkgver=1.12.0
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
@@ -19,24 +19,25 @@ license=('GPL' 'LGPL2.1')
 url="https://wiki.gnome.org/Projects/NetworkManager"
 depends=("libnm-glib>=$pkgver" 'iproute2' 'polkit-consolekit' 'consolekit'
          'wpa_supplicant' 'libmm-glib' 'libnewt' 'libndp' 'libteam'
-         'bluez-libs' 'curl')
+         'bluez-libs' 'curl' 'libpsl')
 makedepends=('intltool' 'dhclient' 'iptables' 'gobject-introspection' 'gtk-doc'
              "ppp=$_pppver" 'modemmanager' 'vala' 'perl-yaml' 'python-gobject'
-             'git' 'jansson' 'glib2-docs' 'dhcpcd')
+             'git' 'jansson' 'glib2-docs' 'dhcpcd' 'iwd' 'dnsmasq')
 optdepends=('modemmanager: for modem management service'
             'dhclient: External DHCP client'
             'dhcpcd: alternative DHCP client'
             'dnsmasq: connection sharing'
             'bluez: bluetooth support'
             'openresolv: resolvconf support'
-            'ppp: dialup connection support')
+            'ppp: dialup connection support'
+            'iwd: wpa_supplicant alternative')
 provides=("networkmanager=$pkgver")
 replaces=('networkmanager')
 conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 groups=('gnome')
 install=networkmanager.install
-_commit=25c3239d04e26a3bcf2f75582f4f3edddf827580  # tags/1.10.10^0
+_commit=8964dbe8bc9cbe7300a48bffe86faee6b149fbf2  # tags/1.12.0^0
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=$_commit"
         NetworkManager.conf
@@ -51,7 +52,6 @@ sha256sums=('SKIP'
 prepare() {
   cd NetworkManager
 
-  git cherry-pick -n 4d1f090aedf05c0e2955d431638e311d1e18a52f
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -66,12 +66,11 @@ build() {
     --sbindir=/usr/bin \
     --libexecdir=/usr/lib \
     --disable-ifcfg-rh \
-    --disable-ifcfg-suse \
-    --disable-ifnet \
     --disable-ifupdown \
     --disable-lto \
     --disable-more-logging \
     --disable-more-warnings \
+    --disable-qt \
     --disable-static \
     --enable-bluez5-dun \
     --enable-concheck \
@@ -95,12 +94,15 @@ build() {
     --with-dhclient=/usr/bin/dhclient \
     --with-dhcpcd-supports-ipv6 \
     --with-dhcpcd=/usr/bin/dhcpcd \
+    --with-dist-version="$pkgver-$pkgrel" \
     --with-dnsmasq=/usr/bin/dnsmasq \
     --with-dnssec-trigger=/usr/lib/dnssec-trigger/dnssec-trigger-script \
     --with-hostname-persist=default \
     --with-iptables=/usr/bin/iptables \
+    --with-iwd \
     --with-kernel-firmware-dir=/usr/lib/firmware \
     --with-libnm-glib \
+    --with-libpsl \
     --with-modem-manager-1 \
     --with-nmcli \
     --with-nmtui \
@@ -113,6 +115,7 @@ build() {
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --with-udev-dir=/usr/lib/udev \
     --with-wext \
+    --without-dhcpcanon \
     --without-libaudit \
     --without-more-asserts \
     --without-netconfig \
