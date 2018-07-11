@@ -1,0 +1,16 @@
+pkgbase = cutehmi-external-meta
+	pkgdesc = External (neither Qt nor CuteHMI) libraries necessary to build and run CuteHMI
+	pkgver = alpha
+	pkgrel = 1
+	url = https://github.com/michpolicht/cutehmi
+	arch = any
+	groups = cutehmi
+	license = MPL
+	depends = libmodbus-dev=3.1.4
+	depends = libssh
+	depends = postgresql-libs
+	optdepends = postgresql
+	optdepends = openssh
+
+pkgname = cutehmi-external-meta
+
