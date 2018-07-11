@@ -4,13 +4,13 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r5442.e784434a
+pkgver=r6392.edcea9094
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
 license=('GPL2')
-makedepends=('git' 'cmake' 'sdl2' 'qt5-base' 'shared-mime-info' 'desktop-file-utils')
+makedepends=('git' 'cmake' 'sdl2' 'qt5-base' 'shared-mime-info' 'desktop-file-utils' 'qt5-multimedia')
 source=("$_pkgbase::git+https://github.com/citra-emu/citra"
         'git+https://github.com/citra-emu/ext-boost'
         'git+https://github.com/neobrain/nihstro'
@@ -57,12 +57,12 @@ prepare() {
 	git config submodule.enet.url "$srcdir/enet"
 	git config submodule.cpr.url "$srcdir/cpr"
 	git config submodule.inih.url "$srcdir/inih"
-	git submodule update
+	git submodule update --init --recursive
 
 	cd externals/dynarmic
 	git config submodule.externals/fmt.url "$srcdir/fmt"
 	git config submodule.externals/xbyak.url "$srcdir/xbyak"
-	git submodule update
+	git submodule update --init --recursive
 }
 
 build() {
