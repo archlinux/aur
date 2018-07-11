@@ -2,7 +2,7 @@
 # Contributor: Brian Douglass <https://github.com/bhdouglass/, http://bhdouglass.com/>
 
 pkgname=clickable
-pkgver=188.c568239
+pkgver=261.25fb4ca
 pkgrel=1
 _gitname=clickable
 pkgdesc='Compile, build, and deploy Ubuntu Touch click packages all from the command line.'
@@ -26,7 +26,8 @@ pkgver() {
 package() {
 
 mkdir -p $pkgdir/usr/bin
-install -m755 -t $pkgdir/usr/bin/ $srcdir/$pkgname/clickable.py
+install -m755 -t $pkgdir/usr/bin/ $srcdir/$pkgname/clickable-dev
+#mv $pkgdir/usr/bin/clickable-dev $pkgdir/usr/bin/clickable
 }
 
 # vim: ts=2 sw=2 et:

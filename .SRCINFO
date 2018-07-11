@@ -1,6 +1,6 @@
 pkgbase = clickable
 	pkgdesc = Compile, build, and deploy Ubuntu Touch click packages all from the command line.
-	pkgver = 188.c568239
+	pkgver = 261.25fb4ca
 	pkgrel = 1
 	url = https://github.com/bhdouglass/clickable
 	install = clickable.install
