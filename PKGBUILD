@@ -2,13 +2,13 @@
 # Contributor: c-mauderer
 
 pkgname=hyde-git
-pkgver=601.9e807ed
+pkgver=601.685b288
 pkgrel=1
 pkgdesc="Hyde is a static website generator powered by Python & Django."
 url="https://hyde.github.io/"
 arch=(any)
 license=('MIT')
-depends=('python2' 'python2-distribute' 'python2-markdown' 'python2-django' 'python2-yaml' 'python2-pyrss2gen' 'python2-cherrypy' 'python2-pygments' 'python2-fswrap' 'python2-typogrify' 'python2-commando' 'python2-smartypants')
+depends=('python2' 'python2-commando-git' 'python2-distribute' 'python2-markdown' 'python2-django' 'python2-yaml' 'python2-pyrss2gen' 'python2-cherrypy' 'python2-pygments' 'python2-fswrap-git' 'python2-jinja' 'python2-typogrify' 'python2-commando' 'python2-smartypants')
 makedepends=('python2' 'git')
 conflicts=(hyde)
 source=('hyde::git://github.com/hyde/hyde.git'
