@@ -1,0 +1,14 @@
+pkgbase = nodejs-localtunnel
+	pkgdesc = Expose localhost to the world
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://localtunnel.me
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.org/localtunnel/-/localtunnel-1.9.0.tgz
+	md5sums = f105a10bdb317663ce5f7527344f24a6
+
+pkgname = nodejs-localtunnel
+
