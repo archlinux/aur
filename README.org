@@ -3,29 +3,29 @@
 #   All rights reserved.
 # 
 #   Developed by: Philipp Paulweber
-#                 <https://github.com/casm-lang/casm-lang.pkg.aur>
+#                 <https://github.com/casm-lang/casm-lang.pkg.archlinux>
 # 
-#   This file is part of casm-lang.pkg.aur.
+#   This file is part of casm-lang.pkg.archlinux.
 # 
-#   casm-lang.pkg.aur is free software: you can redistribute it and/or modify
+#   casm-lang.pkg.archlinux is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
 #   the Free Software Foundation, either version 3 of the License, or
 #   (at your option) any later version.
 # 
-#   casm-lang.pkg.aur is distributed in the hope that it will be useful,
+#   casm-lang.pkg.archlinux is distributed in the hope that it will be useful,
 #   but WITHOUT ANY WARRANTY; without even the implied warranty of
 #   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 #   GNU General Public License for more details.
 # 
 #   You should have received a copy of the GNU General Public License
-#   along with casm-lang.pkg.aur. If not, see <http://www.gnu.org/licenses/>.
+#   along with casm-lang.pkg.archlinux. If not, see <http://www.gnu.org/licenses/>.
 # 
 [[https://github.com/casm-lang/casm-lang.logo/raw/master/etc/headline.png]]
 
 #+options: toc:nil
 
 
-* casm-lang.pkg.aur
+* casm-lang.pkg.archlinux
 
 This repository contains the Arch Linux AUR package configuration, 
 which directly uses the pre-build binaries of the current CASM release.
@@ -34,17 +34,19 @@ Furthermore this repository is mirrored to https://aur.archlinux.org.
 
 ** Installation via =packer=
 
-If you already have installed the =pacman= AUR wrapper command line utility called [[https://aur.archlinux.org/packages/packer][packer]] 
+If you already have installed the =pacman= AUR wrapper command line utility 
+called [[https://aur.archlinux.org/packages/packer][packer]] 
 you can directly install the =casm= package via the command:
 
 #+begin_src
 $ packer -S casm
 #+end_src
 
+
 ** Installation via =makepkg=
 
 You can download the package from the main repository 
-at https://github.com/casm-lang/casm-lang.pkg.aur.git 
+at https://github.com/casm-lang/casm-lang.pkg.archlinux.git 
 or the mirrored repository 
 at https://aur.archlinux.org/casm.git.
 
@@ -58,9 +60,9 @@ $ makepkg -si
 ** Copyright and License
 
 The copyright holder of 
-=casm-lang.pkg.aur= is the [[https://casm-lang.org][CASM organization]] ([[https://github.com/casm-lang][@casm-lang]]) 
+=casm-lang.pkg.archlinux= is the [[https://casm-lang.org][CASM organization]] ([[https://github.com/casm-lang][@casm-lang]]) 
 and the used license of 
-=casm-lang.pkg.aur= is the [[https://www.gnu.org/licenses/gpl-3.0.html][GNU GPLv3]].
+=casm-lang.pkg.archlinux= is the [[https://www.gnu.org/licenses/gpl-3.0.html][GNU GPLv3]].
 
 
 *** Notice
@@ -71,21 +73,21 @@ Copyright (C) 2018 CASM Organization <https://casm-lang.org>
 All rights reserved.
 
 Developed by: Philipp Paulweber
-              <https://github.com/casm-lang/casm-lang.pkg.aur>
+              <https://github.com/casm-lang/casm-lang.pkg.archlinux>
 
-This file is part of casm-lang.pkg.aur.
+This file is part of casm-lang.pkg.archlinux.
 
-casm-lang.pkg.aur is free software: you can redistribute it and/or modify
+casm-lang.pkg.archlinux is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-casm-lang.pkg.aur is distributed in the hope that it will be useful,
+casm-lang.pkg.archlinux is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with casm-lang.pkg.aur. If not, see <http://www.gnu.org/licenses/>.
+along with casm-lang.pkg.archlinux. If not, see <http://www.gnu.org/licenses/>.
 
 #+end_src
