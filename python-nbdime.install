@@ -1,3 +1,0 @@
-post_install(){
-    nbdime config-git --enable --global
-}
