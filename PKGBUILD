@@ -1,4 +1,4 @@
-# Maintainer: bartus <aur \at bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Old maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: perpetrator
