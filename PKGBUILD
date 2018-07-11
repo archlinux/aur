@@ -1,6 +1,7 @@
-# Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Maintainer : Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Alex Combas <alex.combas@gmail.com>
-# Comaintainer: bartus <aur@bartus.33mail.com>
+# Submaintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+
 pkgname=luxrays-hg
 pkgver=3755+.ceb10f796325+
 pkgrel=3
