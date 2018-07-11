@@ -1,4 +1,4 @@
-## Package Maintainer: Karl-K
+## Package Maintainer: wchurch58
 
 pkgname=virtualshield-runit
 pkgver=1.0
@@ -8,7 +8,7 @@ arch=('any')
 license=('https://virtualshield.com/legal/eula/')
 url="https://virtualshield.com/"
 depends=('virtualshield')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/karl-k/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/wchurch58/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('f324e165739ecea72e5b9bc017e8c7334b9c4fbe1d0fc6417be3f5cea2171a4f131719aee71ce8d881e601a79f37471f2697b2767e8939c45a7c89bf2ccce7ef')
 
 
