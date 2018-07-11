@@ -1,4 +1,4 @@
-# Maintainer: bartus <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=appleseed
 pkgrel=3
 pkgver=1.9.0
