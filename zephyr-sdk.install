@@ -1,0 +1,4 @@
+post_install() {
+    echo ">>> Create a config file:"
+    echo ">>>     cp /etc/zephyrrc ~/.zephyrrc"
+}
