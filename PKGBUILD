@@ -14,7 +14,7 @@ url='http://www.rodsbooks.com/gdisk/'
 license=('GPL2')
 depends=('gcc-libs' 'util-linux' 'popt' 'ncurses')
 makedepends=('git')
-provides=("${_pkgname}=${pkgver}")
+provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 options=('strip' '!emptydirs' 'zipman' '!libtool' 'docs')
 _srcdir="${_pkgname}"
