@@ -1,4 +1,4 @@
-## Package Maintainer: Karl-K
+## Package Maintainer: wchurch58
 
 pkgname=virtualshield-systemd
 pkgver=1.0
@@ -8,7 +8,7 @@ arch=('any')
 license=('https://virtualshield.com/legal/eula/')
 url="https://virtualshield.com/"
 depends=('virtualshield')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/karl-k/$pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/wchurch58/$pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('806f5ba2387ef58d22aad8137abc641b87a7d3adeaea2fa3579432043d8d47c05c8b324ea05c77cff69aaf79c20683cd1df492bdde89e4b7ad30bd8023aa38f2')
 
 ## SystemD
