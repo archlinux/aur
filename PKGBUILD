@@ -8,7 +8,7 @@
 
 pkgname=('python-dlib-cuda' 'python2-dlib-cuda')
 _pkgname='dlib'
-pkgver=19.13
+pkgver=19.14
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('cblas: for BLAS support'
             'neon: for neon support'
             'sqlite: for sqlite support')
 source=("http://dlib.net/files/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('69d806dea72789f1c0f43843f4007776')
+md5sums=('2c2ff1a0dd116a6267f4a76aaa5bd36b')
 
 # Detecting whether certain cpu optimisations can be made
 _avx_available=()
@@ -59,6 +59,8 @@ build() {
 
 package_python-dlib-cuda() {
   depends=('python' 'cuda' 'cudnn' 'libx11')
+  provides=('python-dlib')
+  conflicts=('python-dlib')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --skip-build --prefix=/usr --root="${pkgdir}" --optimize=1
@@ -66,6 +68,8 @@ package_python-dlib-cuda() {
 
 package_python2-dlib-cuda() {
   depends=('python2' 'cuda' 'cudnn' 'libx11')
+  provides=('python2-dlib')
+  conflicts=('python2-dlib')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py install --skip-build --prefix=/usr --root="${pkgdir}" --optimize=1
