@@ -1,6 +1,6 @@
 pkgbase = blender-plugin-gcode-reader
 	pkgdesc = Import Reprap Gcode files into blender.
-	pkgver = 0.1_r25.451d6b9
+	pkgver = 0.1_r29.74a9fbf
 	pkgrel = 1
 	url = https://github.com/zignig/blender-gcode-reader.git
 	arch = any
