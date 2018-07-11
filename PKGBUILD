@@ -1,8 +1,8 @@
 # Maintainer: Stephen Smith <stephen304@gmail.com>
 
 pkgname=caffeine-bzr
-pkgver=r665
-pkgrel=2
+pkgver=r666
+pkgrel=1
 pkgdesc="A easy way to control powersaving on your desktop."
 arch=(any)
 url="https://launchpad.net/caffeine"
