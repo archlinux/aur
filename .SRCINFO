@@ -1,7 +1,7 @@
 pkgbase = ansible-review
 	pkgdesc = Reviews Ansible playbooks, roles and inventory and suggests improvements.
 	pkgver = 0.13.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/willthames/ansible-review
 	arch = any
 	license = MIT
