@@ -1,6 +1,6 @@
 pkgbase = udmabuf-dkms
 	pkgdesc = Userspace DMA Buffers
-	pkgver = 0.9.0
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/ikwzm/udmabuf
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = udmabuf-dkms
 	license = GPL2
 	depends = dkms
 	conflicts = udmabuf
-	source = https://github.com/ikwzm/udmabuf/archive/v0.9.0.tar.gz
+	source = https://github.com/ikwzm/udmabuf/archive/v1.2.3.tar.gz
 	source = dkms.conf
-	md5sums = c73aca7abc1c5c71a7bf8fc6a79d3edf
+	md5sums = 7af60ce3f9a5c01095ff58d1b64909ae
 	md5sums = 4c6290fe3ff6260cf66b1463158896df
 
 pkgname = udmabuf-dkms

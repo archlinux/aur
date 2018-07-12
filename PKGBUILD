@@ -1,8 +1,8 @@
-# Maintainer <kaendfinger@gmail.com>
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 _pkgbase=udmabuf
 pkgname=udmabuf-dkms
-pkgver=0.9.0
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Userspace DMA Buffers"
 arch=('i686' 'x86_64' 'armhf')
@@ -15,7 +15,7 @@ source=(
     "dkms.conf"
 )
 
-md5sums=('c73aca7abc1c5c71a7bf8fc6a79d3edf'
+md5sums=('7af60ce3f9a5c01095ff58d1b64909ae'
          '4c6290fe3ff6260cf66b1463158896df')
 
 prepare() {
