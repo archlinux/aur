@@ -9,6 +9,7 @@ pkgbase = augur-git
 	makedepends = npm
 	makedepends = nvm
 	depends = gconf
+	depends = electron
 	provides = augur
 	conflicts = augur
 	source = augur-app::git+https://github.com/AugurProject/augur-app.git
