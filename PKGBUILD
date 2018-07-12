@@ -4,7 +4,7 @@ _pkgname=${pkgname%-git}
 pkgver=r11.1ff87a6
 pkgrel=1
 pkgdesc="A collection of useful tools for use with the LimeSDR family of boards"
-arch=(any)
+arch=('any')
 url="https://github.com/myriadrf/lime-tools"
 license=('Apache')
 depends=('limesuite' 'gnuplot' 'fftw>=3')
