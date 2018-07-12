@@ -34,7 +34,7 @@ cmake .. \
 	-DXDG_STD=TRUE \
 	-DOpenGL_GL_PREFERENCE=GLVND
 
-make -j19
+make -j1
 }
 
 package () {
