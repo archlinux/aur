@@ -12,8 +12,8 @@ _build_stubdom=${build_stubdom:-false}
 
 pkgbase="xen"
 pkgname=("xen" "xen-docs")
-pkgver="4.10.1"
-pkgrel="3"
+pkgver="4.11.0"
+pkgrel="1"
 arch=("x86_64") # TODO What about ARM?
 url="http://www.xenproject.org/"
 license=("GPL2")
@@ -64,14 +64,6 @@ source=(
   "https://downloads.xenproject.org/release/xen/${pkgver}/${pkgbase}-${pkgver}.tar.gz.sig"
   "ipxe-git.tar.gz::http://xenbits.xen.org/xen-extfiles/ipxe-git-356f6c1b64d7a97746d1816cef8ca22bdd8d0b5d.tar.gz"
 
-  # XSA patches.
-  "https://xenbits.xen.org/xsa/xsa260-4.10/xsa260-1.patch"
-  "https://xenbits.xen.org/xsa/xsa260-4.10/xsa260-2.patch"
-  "https://xenbits.xen.org/xsa/xsa260-4.10/xsa260-3.patch"
-  "https://xenbits.xen.org/xsa/xsa260-4.10/xsa260-4.patch"
-  "https://xenbits.xen.org/xsa/xsa261.patch"
-  "https://xenbits.xen.org/xsa/xsa262-4.10.patch"
-
   # Helper and config files.
   "grub-mkconfig-helper"
   "efi-xen.cfg"
@@ -79,31 +71,15 @@ source=(
   "${pkgbase}.conf"
   "tmpfiles.conf"
 
+  # XSA patches.
+
   # Compile fixes.
-  "ocaml-unsafe-string.patch"
-  "qemu-xen-memfd.patch::https://github.com/qemu/qemu/commit/75e5b70e6b5dcc4f2219992d7cffa462aa406af0.patch"
-  "xen-gcc-8-libxc-fix-strncpy-size.patch::https://xenbits.xen.org/gitweb/?p=xen.git;a=patch;h=fa7789ef18bd2e716997937af71b2e4b5b00a159"
-  "xen-gcc-8-misc-fix-hypothetical-buffer-overflow-in-xen-lowmemd.patch::https://xenbits.xen.org/gitweb/?p=xen.git;a=patch;h=27751d89248c8c5eef6d8b56eb8f7d2084145080"
-  "xen-gcc-8-fix-possible-null-truncation.patch::https://xenbits.xen.org/gitweb/?p=xen.git;a=patch;h=938c8f53b1f80175c6f7a1399efdb984abb0cb8b"
-  "xen-gcc-8-gdbsx-fix-wstringop-truncation-warning.patch::https://xenbits.xen.org/gitweb/?p=xen.git;a=patch;h=7f601f7c341c80d554615556d60e3b8ed1e5ad4f"
-  "xen-gcc-8-blktap2-fix-possible-null-truncation.patch::https://xenbits.xen.org/gitweb/?p=xen.git;a=patch;h=850e89b3ef1a7be6b71fa7ae22333c884e08431a"
-  "xen-gcc-8-blktap2-fix-hypothetical-buffer-overflow.patch::https://xenbits.xen.org/gitweb/?p=xen.git;a=patch;h=3a633c261426f06627d88bf7feca6ff87f692f16"
-  "xen-gcc-8-kdd-mute-spurious-gcc-warning.patch::https://xenbits.xen.org/gitweb/?p=xen.git;a=patch;h=437e00fea04becc91c1b6bc1c0baa636b067a5cc"
-  "xen-gcc-8-tools-fix-format-truncation-warnings.patch"
   "ipxe-git-use-no-pie-on-newer-versions-of-gcc.patch::https://git.ipxe.org/ipxe.git/patch/7c395b0e21806b946fe944a27fc273407f357ea1"
 )
 sha256sums=(
-  "570d654f357d4085accdf752989c1cbc33e2075feac8fcc505d68bdb81b1a0cf"
+  "826e3a9f6d0eac94a825d272cc2c1294e22640ae75af906eb13920f9ad667643"
   "SKIP"
   "251e5516d7de470c434ae5c393aacca2b61fb24d93770592a4a20add60b785c4"
-
-  # XSA patches.
-  "ffac7ab75bf65f8286b37d21cb4a4401d898670a4e52af88d8202ce4fe66edef"
-  "fe85832a9b5b1076b3a9bdbd28a2f3be57cd019d66a725ce64698b1bd74145a8"
-  "1955aed73828e23da871ef10e5ec49670ce59bdd06af2772e978f8e817e0319f"
-  "8f504f8fcf100f8a00bece9c4df8b8933dceeaf29b50492317f9cbf74aaf4aa4"
-  "175501977204db84d08a6fd81d9fd4b69f97f70cbf6f65e6ce0abfeab03eae95"
-  "91d3b329131b6d434b268c0c55fd4900033fce8b2582bd9278ae967efc980fb0"
 
   # Helper and config files.
   "23c3b0eab4cb06260bd07324d2060356560c9bc52270aaaf6130e1c130fc6e5e"
@@ -112,17 +88,9 @@ sha256sums=(
   "50a9b7fd19e8beb1dea09755f07318f36be0b7ec53d3c9e74f3266a63e682c0c"
   "40e0760810a49f925f2ae9f986940b40eba477dc6d3e83a78baaae096513b3cf"
 
+  # XSA patches.
+
   # Compile fixes.
-  "7c76b116ce09a53708306682f04e1460a788fe66f832091b7003a5d8e1fee312"
-  "29004b3b9f79bb2cdb0553c5a77c8d748a92e628405b7d9f9ae46693515757bb"
-  "fc1a4ce85795a9a00161d5188b61db5054c462db9a65a8073a5b55b49b089e4d"
-  "3fefa746363a0b05e4b90b18f4a510cd1eb10cd4ea2b845fa6099a5622490724"
-  "4e5a7c72ed9b40c9f1f47d2dce3d4501d293bec208cd170ff5702cf9a1fc3a01"
-  "332874f3e83da80c8a53b49e95db2fdd36b94da3ac053089276ae1e34880e585"
-  "591dcf7b3fd48c5532c69ea12d7d1d1c39afa1cc81c8025dcced86b72c35dbf7"
-  "1fc533158855b38d0b44e52865417d883ab7a165d1b22090c351ad683d43a06f"
-  "06d9d454f888eeb18189c22398b67395e410d43a14e91752fa36f367e7e9d81f"
-  "ac929c45e2319c80d6e6bbab6a5a2e4190741892dd32d25bcdd5aa00cfa2f251"
   "51ff22b2d0f7e9d7a13666adb2c32321e725e9c0bf0f434b3cc7c760d88620c6"
 )
 noextract=(
@@ -175,12 +143,6 @@ prepare() {
 
   # XSA patches.
   msg2 'Applying XSA patches...'
-  patch -Np1 -i "${srcdir}/xsa260-1.patch"
-  patch -Np1 -i "${srcdir}/xsa260-2.patch"
-  patch -Np1 -i "${srcdir}/xsa260-3.patch"
-  patch -Np1 -i "${srcdir}/xsa260-4.patch"
-  patch -Np1 -i "${srcdir}/xsa261.patch"
-  patch -Np1 -i "${srcdir}/xsa262-4.10.patch"
 
   # Security patches and compile fixes (qemu-xen-traditional).
   msg2 'Applying tools patches (qemu-xen-traditional)...'
@@ -190,20 +152,10 @@ prepare() {
   # Security patches and compile fixes (qemu-xen).
   msg2 'Applying tools patches (qemu-xen)...'
   cd tools/qemu-xen
-  patch -Np1 -i "${srcdir}/qemu-xen-memfd.patch"
   cd ../..
 
   # Misc compile fixes (removed in future versions if not needed anymore).
   msg2 'Applying misc compile fixes...'
-  patch -Np1 -i "${srcdir}/ocaml-unsafe-string.patch"
-  patch -Np1 -i "${srcdir}/xen-gcc-8-libxc-fix-strncpy-size.patch"
-  patch -Np1 -i "${srcdir}/xen-gcc-8-misc-fix-hypothetical-buffer-overflow-in-xen-lowmemd.patch"
-  patch -Np1 -i "${srcdir}/xen-gcc-8-fix-possible-null-truncation.patch"
-  patch -Np1 -i "${srcdir}/xen-gcc-8-gdbsx-fix-wstringop-truncation-warning.patch"
-  patch -Np1 -i "${srcdir}/xen-gcc-8-blktap2-fix-possible-null-truncation.patch"
-  patch -Np1 -i "${srcdir}/xen-gcc-8-blktap2-fix-hypothetical-buffer-overflow.patch"
-  patch -Np1 -i "${srcdir}/xen-gcc-8-kdd-mute-spurious-gcc-warning.patch"
-  patch -Np1 -i "${srcdir}/xen-gcc-8-tools-fix-format-truncation-warnings.patch"
 
   # Compile fix for ipxe package with gcc-8.
   cp "${srcdir}/ipxe-git-use-no-pie-on-newer-versions-of-gcc.patch" "${srcdir}/${pkgbase}-${pkgver}/tools/firmware/etherboot/patches"
