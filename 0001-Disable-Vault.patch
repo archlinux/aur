@@ -1,0 +1,11 @@
+--- .env	2018-07-12 12:10:14.679534090 +0200
++++ .env	2018-07-12 12:19:46.984580164 +0200
+@@ -12,7 +12,7 @@
+ 
+ ## Web vault settings
+ # WEB_VAULT_FOLDER=web-vault/
+-# WEB_VAULT_ENABLED=true
++WEB_VAULT_ENABLED=false
+ 
+ ## Controls if new users can register
+ # SIGNUPS_ALLOWED=true
