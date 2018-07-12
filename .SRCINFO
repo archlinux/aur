@@ -2,7 +2,7 @@ pkgbase = unrealtournament-chaosut
 	pkgdesc = The chaotic Unreal Tournament mod.
 	pkgver = 1.1
 	pkgrel = 1
-	url = http://chaotic.beyondunreal.com/
+	url = https://chaoticdreams.org/chaosut/
 	install = install.sh
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = unrealtournament-chaosut
 	license = custom
 	makedepends = umodunpack
 	depends = unrealtournament
-	source = unrealtournament-chaosut-1.1.zip::http://www.ut-files.com/index.php?dir=GameTypes/ChaosUT/&file=chaosut_v1-1_full.zip
+	source = unrealtournament-chaosut-1.1.zip::http://files.chaoticdreams.org/Chaos/ChaosUT/chaosut_v1-1_full.zip
 	source = install.sh
 	md5sums = d94a31c812cbff5be586e9d11a150a84
 	md5sums = e850b42c2f28649e4fe37a8b25ab78d3
