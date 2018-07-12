@@ -2,10 +2,10 @@
 pkgname=peertube
 pkgver=1.0.0_beta.9
 _pkgver=1.0.0-beta.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Federated (ActivityPub) video streaming platform using P2P (BitTorrent) directly in the web browser with WebTorrent and Angular."
 arch=("x86_64")
-depends=("nodejs-lts-carbon" "ffmpeg" "postgresql" "openssl" "redis")
+depends=("nodejs-lts-carbon" "ffmpeg" "postgresql" "openssl" "redis" "npm")
 makedepends=("yarn" "npm" "python2" "git")
 url="https://joinpeertube.org/"
 license=("AGPL")
@@ -13,8 +13,8 @@ backup=('etc/peertube/production.yaml')
 install=$pkgname.install
 source=("https://github.com/Chocobozzz/PeerTube/releases/download/v$_pkgver/$pkgname-v$_pkgver.zip"
         "$pkgname.install")
-sha256sums=("c140fd5cc1ea1a6b142afd81b741a0dbe20d4720d3473701ac11fa5024ef4108"
-"d4c5c6d5de78af18bc4d9c090950b0ad71ae056ed85992baee66dcd21600a51a")
+sha256sums=("bc9b1fcae47dc37fd00dbe91518d7723a0d0e4fb929371df7ee1108f48a9c816"
+            "68801235fa38c9fa62fbd9314240a58e735a2bdd480fced473813d38a78b5faf")
 
 build() {
         cd "$pkgname-v$_pkgver"
@@ -42,5 +42,3 @@ package() {
 	rm -rf "$pkgname-v$_pkgver"/{config,*.md,LICENSE}
 	cp -a "$pkgname-v$_pkgver" "$pkgdir/usr/share/webapps/$pkgname"
 }
-sha256sums=('bc9b1fcae47dc37fd00dbe91518d7723a0d0e4fb929371df7ee1108f48a9c816'
-            'd4c5c6d5de78af18bc4d9c090950b0ad71ae056ed85992baee66dcd21600a51a')

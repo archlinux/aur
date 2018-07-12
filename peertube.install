@@ -4,7 +4,7 @@ post_install() {
     getent passwd peertube &>/dev/null || \
         useradd --system --gid peertube -d /var/lib/peertube -m -s /usr/bin/nologin peertube &>/dev/null
     chown -R peertube:peertube var/lib/peertube &>/dev/null
-
+    chown -R peertube:peertube etc/peertube &> /dev/null
 }
 
 post_upgrade() {
