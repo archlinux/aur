@@ -1,4 +1,4 @@
-# Maintainer: lxmnk <lxmnk@tuta.io>
+# Maintainer: Alexander Samoylenko <lxmnk@tuta.io>
 pkgname=xidlehook
 pkgver=0.4.9
 pkgrel=1
