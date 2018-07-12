@@ -1,0 +1,17 @@
+pkgbase = mitie-git
+	pkgdesc = MITIE: library and tools for information extraction
+	pkgver = r5148.15bed499
+	pkgrel = 1
+	url = https://github.com/mit-nlp/MITIE
+	arch = i686
+	arch = x86_64
+	license = Boost Software License
+	depends = openblas
+	provides = mitie
+	conflicts = mitie
+	replaces = mitie
+	source = git+https://github.com/mit-nlp/MITIE
+	sha256sums = SKIP
+
+pkgname = mitie-git
+
