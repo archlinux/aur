@@ -29,7 +29,7 @@ pkgbase = sdrangel
 	optdepends = limesuite: LimeSDR support
 	optdepends = bladerf: BladeRF support
 	optdepends = airspy: AirSPY support
-	source = sdrangel-4.0.3::https://github.com/f4exb/sdrangel/archive/v4.0.3.tar.gz
+	source = sdrangel-4.0.3.tar.gz::https://github.com/f4exb/sdrangel/archive/v4.0.3.tar.gz
 	sha256sums = ffc4cfada34e9471df04ab52d773b617fb636b59d359b9d2b3c0ae66fe8273ef
 
 pkgname = sdrangel

@@ -25,7 +25,7 @@ optdepends=(
   'bladerf: BladeRF support'
   'airspy: AirSPY support'
 )
-source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('ffc4cfada34e9471df04ab52d773b617fb636b59d359b9d2b3c0ae66fe8273ef')
 
 build() {
