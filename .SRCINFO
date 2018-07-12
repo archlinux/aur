@@ -1,0 +1,23 @@
+pkgbase = vita3k-emu-fresh
+	pkgdesc = PlayStation Vita emulator
+	pkgver = r11
+	pkgrel = 1
+	url = http://www.github.com/vita3k/vita3k
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = yaml-cpp
+	makedepends = capstone
+	makedepends = gmock
+	makedepends = gtest
+	makedepends = glbinding
+	makedepends = libnids
+	depends = unicorn
+	depends = sdl2
+	source = vita3k::git+https://github.com/vita3k/vita3k.git
+	sha256sums = SKIP
+
+pkgname = vita3k-emu-fresh
+
