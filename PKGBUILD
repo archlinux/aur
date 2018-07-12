@@ -1,17 +1,17 @@
 # Maintainer: Michel Wohlert <michel.wohlert@gmail.com>
 
 pkgname=networkmanager-fortisslvpn-git
-pkgver=1.2.7.dev.r10.g868f8b2
+pkgver=1.2.9.dev.r5.g8bffb04
 pkgrel=1
 pkgdesc='NetworkManager VPN plugin for fortisslvpn - git checkout'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://git.gnome.org/browse/network-manager-fortisslvpn'
 depends=('networkmanager' 'nm-connection-editor' 'openfortivpn' 'libsecret')
-makedepends=('git' 'intltool' 'python')
+makedepends=('git' 'intltool' 'python' 'xorgproto')
 provides=('networkmanager-fortisslvpn')
 conflicts=('networkmanager-fortisslvpn')
-source=('git://git.gnome.org/network-manager-fortisslvpn')
+source=('git://github.com/GNOME/network-manager-fortisslvpn')
 sha256sums=('SKIP')
 
 pkgver() {
