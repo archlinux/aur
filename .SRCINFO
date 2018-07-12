@@ -1,0 +1,22 @@
+pkgbase = lms8suite-git
+	pkgdesc = Utilities for use with hardware based upon LMS8001 RFICs from Lime Microsystems.
+	pkgver = 18.06.0
+	pkgrel = 1
+	url = https://github.com/myriadrf/LMS8Suite
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	depends = wxgtk3
+	depends = opengl-driver
+	depends = libusb>=1.0
+	depends = soapysdr
+	provides = lms8suite
+	conflicts = lms8suite
+	source = git+https://github.com/myriadrf/LMS8Suite
+	source = lms8suite.desktop
+	sha256sums = SKIP
+	sha256sums = ee741f0659c55f11e266cea102549d6c154692d970886684cd8207450aaed6ca
+
+pkgname = lms8suite-git
+
