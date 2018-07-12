@@ -4,8 +4,8 @@
 
 pkgbase=('monero')
 pkgname=('monero' 'libmonero-wallet')
-pkgver=0.12.2.0
-pkgrel=3
+pkgver=0.12.3.0
+pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -15,14 +15,10 @@ makedepends=('git' 'cmake' 'boost' 'gtest' 'qt5-tools')
 provides=('monero' 'libmonero-wallet')
 conflicts=('bitmonero-git' 'libmonero-wallet-git')
 
-source=("${pkgname}"::'git+https://github.com/monero-project/monero#tag=v0.12.2.0'
-        "0001-account-fix-build-with-GCC-8.1.0.patch"
-        "0001-add-.load-to-make-Boost-1.67-happy-with-its-new-is_i.patch"
+source=("${pkgname}"::"git+https://github.com/monero-project/monero#tag=v${pkgver}"
         "0001-cmake-do-not-install-into-the-system.patch")
 
 sha256sums+=('SKIP'
-             '3802e9a6eb21309c6d08d7da4a1979c369fc6a0d74789f34beaaf60a89e82af2'
-             '44f10ce6a462dd901070333a0dba960cb73fe2053e07650a9ce01b16d7f31037'
              '653853f9c0fed231a2cec476703f09198e6a87af12bb0a3bfe98b32e48e7a1c5')
 
 _monero="${pkgbase}"
@@ -33,8 +29,6 @@ prepare()
   git -C "${pkgname}" submodule update --init --recursive --force
 
   cd "${srcdir}/${_monero}"
-  patch -Np1 -i "${srcdir}/0001-account-fix-build-with-GCC-8.1.0.patch"
-  patch -Np1 -i "${srcdir}/0001-add-.load-to-make-Boost-1.67-happy-with-its-new-is_i.patch"
   patch -Np1 -i "${srcdir}/0001-cmake-do-not-install-into-the-system.patch" -d "${srcdir}/monero/external/miniupnp"
 }
 
