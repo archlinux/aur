@@ -22,13 +22,16 @@ provides=('sonarr')
 conflicts=('sonarr')
 source=("https://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.${pkgver}.mono.tar.gz"
         "sonarr.service"
+        "sonarr.install"
         "sonarr.sysusers"
-        "sonarr.install")
+        "sonarr.tmpfiles")
+
 noextract=()
 sha256sums=('15206c3ba421c7db282de82562084a473666e09447d2ccd7fa28557e03860548'
             'ffcd28b3779aae0edf093956dfbd3239bea0b32561da75ab1d198de92db197c5'
+            'bd00676bddce255e42ebbed60e4af6d0910b0efcd0602f2307dedb510dd22033'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
-            'ce45de775371d7b05f8f1313679b8a94e093fb2fae8ea2cb7558428c1d51d9af')
+            'a436a979ca3a9e78bdc410bd0027d97956bfa8d2d4f2b7bdf3f7d2ed199dd6a8')
 
 package() {
   cd "$srcdir"
@@ -40,4 +43,5 @@ package() {
 
   install -D -m 644 "${srcdir}/sonarr.sysusers" "${pkgdir}/usr/lib/sysusers.d/sonarr.conf"
   install -D -m 644 "${srcdir}/sonarr.service" "${pkgdir}/usr/lib/systemd/system/sonarr.service"
+  install -D -m 644 "${srcdir}/sonarr.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/sonarr.conf"
 }
