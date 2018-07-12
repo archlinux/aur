@@ -32,4 +32,6 @@ package() {
   cd "$srcdir"/$pkgname-$_gitver/build
 
   make DESTDIR="$pkgdir" install
+
+  install -Dm 644 "$srcdir"/$pkgname-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
