@@ -2,29 +2,28 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='aeon'
-pkgver='0.12.3.0'
+pkgver='0.12.5.0'
 pkgrel='1'
 pkgdesc='A lightweight CryptoNote digital currency.'
-arch=('x86_64')
 url="https://github.com/${pkgname}ix/${pkgname}"
 depends=('boost-libs' 'openssl' 'zeromq' 'pcsclite' 'icu')
 makedepends=('git' 'cmake' 'boost' 'doxygen' 'rapidjson')
 license=('custom:Cryptonote')
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 source=("${pkgname}d.service"
 	"${pkgname}.sysusers"
 	"${pkgname}.tmpfiles"
 	"${pkgname}d.conf"
-	"${url}/archive/v${pkgver}.tar.gz")
+	"${url}/archive/v${pkgver}-${pkgname}.tar.gz")
 sha256sums=('5212dff199bb3880191292976cd8278dcdbae64f9c0ab39a9c2a91a4733186c3'
             'a0cdf75b86073829f4033e367f36e9418dc20556e7adfa6ffac8653c67cd6337'
             '1da20b66d52db4f1c5b3106cf27ee54033650a0e36c5c775b25c9e86e6027be0'
             '3ef15e3c9e2d146c415f2e483dd10e4ec36f653e4684c254d9f69a5fb699036b'
-            '87fe61e25a7f0c31fb6ff2e1ed6de9cecb470956ec2a412d53cb76119e3d7cfe')
+            '1687119ae6eb62fd163e5f9fdb3c06faeaa0da66be989bf04a6fc92e1aee1a0d')
 backup=("etc/${pkgname}d.conf")
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}-${pkgname}"
   git clone git://github.com/monero-project/miniupnp.git external/miniupnp
   git clone git://github.com/monero-project/unbound.git external/unbound
   git -C external/miniupnp checkout monero
@@ -32,12 +31,12 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}-${pkgname}"
   make release
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}-${pkgname}"
   install -Dm0644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm0644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm0644 "${srcdir}/${pkgname}d.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}d.service"
