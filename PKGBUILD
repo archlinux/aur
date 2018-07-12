@@ -2,12 +2,12 @@
 
 pkgname=flamegraph
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Flame Graphs visualize profiled code"
 arch=('i686' 'x86_64')
 url="http://www.brendangregg.com/flamegraphs.html"
 license=('CDDL')
-depends=('perl')
+depends=('awk' 'perl')
 conflicts=('flamegraph' 'flamegraph-git')
 
 source=("https://github.com/brendangregg/FlameGraph/archive/v${pkgver}.tar.gz")
@@ -17,7 +17,12 @@ package() {
   _srcname=FlameGraph
   cd "${srcdir}/${_srcname}-${pkgver}"
 
-  install -Dm755 flamegraph.pl "${pkgdir}/usr/bin/flamegraph.pl"
+  for execfile in ./*.{pl,awk}; do
+    install -Dm755 "${execfile}" "${pkgdir}/usr/bin/${execfile}"
+  done
+
+  install -Dm755 jmaps "${pkgdir}/usr/bin/jmaps"
+
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 docs/cddl1.txt "${pkgdir}/usr/share/licenses/${pkgname}/cddl1.txt"
 }

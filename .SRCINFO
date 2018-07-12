@@ -1,11 +1,12 @@
 pkgbase = flamegraph
 	pkgdesc = Flame Graphs visualize profiled code
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.brendangregg.com/flamegraphs.html
 	arch = i686
 	arch = x86_64
 	license = CDDL
+	depends = awk
 	depends = perl
 	conflicts = flamegraph
 	conflicts = flamegraph-git
