@@ -2,7 +2,7 @@
 
 pkgname=android-emulator
 pkgver=27.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Android Emulator'
 arch=('x86_64')
 url='https://developer.android.com/studio/releases/emulator.html'
