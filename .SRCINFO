@@ -1,0 +1,30 @@
+pkgbase = pcsx2-emu-fresh
+	pkgdesc = A Sony PlayStation 2 emulator
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://www.pcsx2.net
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	license = LGPL2.1
+	license = LGPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = png++
+	depends = lib32-glew
+	depends = lib32-libaio
+	depends = lib32-libcanberra
+	depends = lib32-libjpeg-turbo
+	depends = lib32-libpulse
+	depends = lib32-nvidia-cg-toolkit
+	depends = lib32-portaudio
+	depends = lib32-sdl2
+	depends = lib32-soundtouch
+	depends = lib32-wxgtk2
+	provides = pcsx2
+	conflicts = pcsx2
+	source = git+https://github.com/PCSX2/pcsx2.git
+	sha256sums = SKIP
+
+pkgname = pcsx2-emu-fresh
+
