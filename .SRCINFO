@@ -1,7 +1,7 @@
 pkgbase = seafile-server
 	pkgdesc = Seafile server core
-	pkgver = 6.3.1
-	pkgrel = 2
+	pkgver = 6.3.2
+	pkgrel = 1
 	url = https://github.com/haiwen/seafile-server
 	changelog = ChangeLog
 	arch = i686
@@ -11,17 +11,17 @@ pkgbase = seafile-server
 	arch = aarch64
 	license = AGPL3
 	makedepends = vala
-	depends = ccnet-server>=6.3.1
+	depends = ccnet-server>=6.3.2
 	depends = fuse2
 	depends = libevhtp-seafile
 	depends = libarchive
 	conflicts = seafile
-	source = https://github.com/haiwen/seafile-server/archive/v6.3.1-server.tar.gz
+	source = https://github.com/haiwen/seafile-server/archive/v6.3.2-server.tar.gz
 	source = fix_pids-folder-out-of-seafile-data.diff
 	source = fix_seafile-admin.diff
 	source = fix_mysql_support.diff
 	source = seafile-server@.service
-	sha256sums = 3e21836e374e4c321f87594c7a5f5db516890c9b40f61e102750c84d638dbf37
+	sha256sums = c8bcfd5812c7908e6acba1c6a7f03042c1241531783802976b6381678b4160e7
 	sha256sums = d725bda36aedd424d426d7ce62e19c7036ccfc6a5759df12f139656ba15e425c
 	sha256sums = 51a7f13b8c3dfcb3f510c68c9791bf6ace1a0b332ba26fdf55c850409bf387fa
 	sha256sums = d625d1ac5fc666386a53059b1d31bce0e63c79b69c11bfb769f6390afb629611
