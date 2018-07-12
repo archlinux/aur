@@ -12,7 +12,7 @@ provides=('me-edit')
 conflicts=('me-edit')
 options=('!strip')
 source=(
-  "ME-Edit-$pkgver::https://netix.dl.sourceforge.net/project/me-edit/ME-25-Edit/ME-25-Edit_linux-64.tar.gz"
+  "ME-Edit-$pkgver.tar.gz::https://netix.dl.sourceforge.net/project/me-edit/ME-25-Edit/ME-25-Edit_linux-64.tar.gz"
   'me-edit'
 )
 md5sums=(
