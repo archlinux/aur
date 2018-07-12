@@ -5,7 +5,7 @@ pkgver=3.5.2
 pkgrel=1
 pkgdesc='Parser generator for reading, processing, executing, or translating structured text or binary files.'
 arch=('any')
-url='http://www.antlr3.org/index.html'
+url='https://www.antlr3.org/index.html'
 license=('BSD')
 depends=('java-environment>=6')
 provides=("antlr=${pkgver}")
