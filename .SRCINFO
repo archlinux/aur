@@ -1,6 +1,6 @@
 pkgbase = refind-efi-git
 	pkgdesc = rEFInd Boot Manager - git version - Built with TianoCore EDK2 libs
-	pkgver = 0.11.2.2.r617.7e9e438
+	pkgver = 0.11.2.2.r617.g7e9e438
 	pkgrel = 1
 	url = http://www.rodsbooks.com/refind/
 	install = refind-efi.install
@@ -20,7 +20,7 @@ pkgbase = refind-efi-git
 	optdepends = sbsigntools: For EFI binary signing (Secure Boot support)
 	optdepends = preloader-signed: pre-signed shim loader (Secure Boot support)
 	optdepends = shim-signed: pre-signed shim loader (Secure Boot support)
-	provides = refind-efi=0.11.2.2.r617.7e9e438
+	provides = refind-efi=0.11.2.2.r617.g7e9e438
 	conflicts = refind-efi
 	options = !strip
 	options = !buildflags
