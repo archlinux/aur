@@ -1,7 +1,7 @@
 pkgbase = sacad
 	pkgdesc = Smart Automatic Cover Art Downloader
 	pkgver = 2.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/desbma/sacad
 	arch = any
 	license = MPL2
