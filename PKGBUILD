@@ -12,7 +12,7 @@ _upstream="compiz-core"
 
 pkgbase=compiz-core-git
 pkgname=(compiz-core-git compiz-gtk-git)
-pkgver=0.8.14.r36.g493a3807
+pkgver=0.8.14.r43.g09b96469
 pkgrel=1
 pkgdesc="This is the latest git release of Compiz without DE deps"
 url="https://gitlab.com/compiz/${_upstream}"
@@ -23,6 +23,10 @@ makedepends=('intltool' 'libice')
 options=(!libtool !emptydirs)
 source=(
 	"git+https://gitlab.com/compiz/${_upstream}.git"
+	compiz-gtk-update-icon-cache.hook
+	compiz-gtk-update-icon-cache.script
+	compiz-gtk-remove-icon-cache.hook
+	compiz-gtk-remove-icon-cache.script
 )
 
 sha1sums=('SKIP')
@@ -105,6 +109,11 @@ package_compiz-core-git() {
       rm "$fname"
     fi
   done
+
+  install -Dm644 "${srcdir}/compiz-gtk-update-icon-cache.hook" "${pkgdir}/usr/share/libalpm/hooks/compiz-gtk-update-icon-cache.hook"
+  install -Dm755 "${srcdir}/compiz-gtk-update-icon-cache.script" "${pkgdir}/usr/share/libalpm/scripts/compiz-gtk-update-icon-cache"
+  install -Dm644 "${srcdir}/compiz-gtk-remove-icon-cache.hook" "${pkgdir}/usr/share/libalpm/hooks/compiz-gtk-remove-icon-cache.hook"
+  install -Dm755 "${srcdir}/compiz-gtk-remove-icon-cache.script" "${pkgdir}/usr/share/libalpm/scripts/compiz-gtk-remove-icon-cache"
 }
 
 package_compiz-gtk-git()
@@ -146,3 +155,9 @@ package_compiz-gtk-git()
     fi
   done
 }
+
+sha1sums=('SKIP'
+          '157cc6fd3930d715a076a66a61969b99951871e5'
+          'a40694c0fbcc5179a42fb6ced0842ef7dda9570e'
+          'c40f1b1135695f4db834810d1307defe36ea1eab'
+          'a572626cef5c368f54f08f99b51757ef6790a81c')

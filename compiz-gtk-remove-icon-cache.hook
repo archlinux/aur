@@ -1,0 +1,11 @@
+[Trigger]
+Type = File
+Operation = Remove
+Target = usr/share/compiz/icons/*/
+Target = !usr/share/compiz/icons/*/?*
+
+[Action]
+Description = Removing Compiz plugin icon caches...
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/compiz-gtk-remove-icon-cache
+NeedsTargets
