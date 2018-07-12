@@ -3,7 +3,7 @@ pkgname=osmo-fl2k
 pkgver=0.1.1
 pkgrel=1
 pkgdesc="Library to use cheap (FL2000 based) USB3.0 to VGA converters as SDR"
-arch=(any)
+arch=('any')
 url="https://osmocom.org/projects/osmo-fl2k/wiki"
 license=('GPL')
 depends=('libusb>=1.0')
