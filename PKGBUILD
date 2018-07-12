@@ -11,7 +11,7 @@ license=('OFL')
 depends=('fontconfig' 'xorg-font-utils')
 provides=('ttf-font' 'ttf-d2coding')
 conflicts=('ttf-d2coding')
-source=("$pkgname-$pkgver::https://github.com/naver/d2codingfont/releases/download/VER$pkgver/D2Coding-$_pkgver.zip")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/naver/d2codingfont/releases/download/VER$pkgver/D2Coding-$_pkgver.zip")
 sha256sums=('06f3fdb7a5a02e695af47ae95bd246713745e191628fd9a1bea670a67528b82c')
 
 package() {

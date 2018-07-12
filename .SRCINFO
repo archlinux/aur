@@ -10,7 +10,7 @@ pkgbase = ttf-d2coding
 	provides = ttf-font
 	provides = ttf-d2coding
 	conflicts = ttf-d2coding
-	source = ttf-d2coding-1.3.1::https://github.com/naver/d2codingfont/releases/download/VER1.3.1/D2Coding-Ver1.3.1-20180115.zip
+	source = ttf-d2coding-1.3.1.tar.gz::https://github.com/naver/d2codingfont/releases/download/VER1.3.1/D2Coding-Ver1.3.1-20180115.zip
 	sha256sums = 06f3fdb7a5a02e695af47ae95bd246713745e191628fd9a1bea670a67528b82c
 
 pkgname = ttf-d2coding
