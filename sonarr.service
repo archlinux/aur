@@ -6,8 +6,11 @@ After=network.target
 User=sonarr
 Group=sonarr
 ExecStart=/usr/bin/mono /usr/lib/sonarr/NzbDrone.exe -nobrowser -data=/var/lib/sonarr
-Restart=always
 Type=simple
+
+# Lets built in updater work well.
+Restart=on-failure
+KillMode=process
 
 [Install]
 WantedBy=multi-user.target
