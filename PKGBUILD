@@ -4,18 +4,15 @@
 
 _pkgname=android-emulator
 pkgname="${_pkgname}-dummy"
-pkgver=26.0.3
+pkgver=27.3.8
 pkgrel=1
 _pkgdesc='Google Android Emulator'
 pkgdesc="${_pkgdesc}, dummy package"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://developer.android.com/studio/releases/emulator.html'
 license=('custom')
-depends_i686=('gcc-libs' 'libpulse' 'libx11' 'libxcb' 'libxdamage'
-              'libxext' 'libxfixes' 'ncurses5-compat-libs' 'zlib')
-depends_x86_64=('lib32-gcc-libs' 'lib32-glibc' 'libpulse' 'libx11'
-                'libxcb' 'libxdamage' 'libxext' 'libxfixes'
-                'ncurses5-compat-libs' 'zlib')
+depends=('libpulse' 'libx11' 'libxcb' 'libxdamage' 'libxext' 'libxfixes'
+         'ncurses5-compat-libs' 'zlib')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${pkgname}.install"
