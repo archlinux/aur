@@ -1,9 +1,9 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
 pkgname=gr-limesdr-git
-pkgver=r18.3efeadc
+pkgver=r19.3234d26
 pkgrel=1
 pkgdesc="gr-limesdr Plugin for GNURadio"
-arch=(any)
+arch=('any')
 url="https://github.com/myriadrf/gr-limesdr"
 license=('MIT')
 optdepends=(

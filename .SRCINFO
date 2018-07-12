@@ -1,6 +1,6 @@
 pkgbase = gr-limesdr-git
 	pkgdesc = gr-limesdr Plugin for GNURadio
-	pkgver = r18.3efeadc
+	pkgver = r19.3234d26
 	pkgrel = 1
 	url = https://github.com/myriadrf/gr-limesdr
 	arch = any
