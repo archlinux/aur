@@ -1,0 +1,20 @@
+pkgbase = citra-emu-fresh
+	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
+	pkgver = 401
+	pkgrel = 1
+	url = http://www.github.com/citra-emu/citra/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = sdl2
+	makedepends = qt5-base
+	makedepends = shared-mime-info
+	makedepends = desktop-file-utils
+	makedepends = boost
+	source = citra::git+https://github.com/citra-emu/citra.git
+	sha256sums = SKIP
+
+pkgname = citra-emu-fresh
+
