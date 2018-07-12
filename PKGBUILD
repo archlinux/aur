@@ -39,7 +39,7 @@ cmake .. \
 	-DENABLE_QT2=TRUE \
 	-DCMAKE_BUILD_TYPE=Release
 
-make -j19
+make -j1
 }
 
 package() {
