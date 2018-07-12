@@ -21,7 +21,9 @@ optdepends=('sabnzbd: usenet downloader'
 
 install='sonarr.install'
 provides=('sonarr')
-conflicts=('sonarr')
+conflicts=('nzbdrone' 'nzbdrone-torrents' 'sonarr')
+replaces=('nzbdrone' 'nzbdrone-torrents')
+
 source=("https://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.${pkgver}.mono.tar.gz"
         "sonarr.service"
         "sonarr.install"
