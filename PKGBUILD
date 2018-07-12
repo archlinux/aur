@@ -4,9 +4,9 @@
 _name=adminapi
 pkgbase="python-${_name}-git"
 pkgname=("python-${_name}-git" "python2-${_name}-git")
-pkgver=1.2.r1771.6e3e9a0
+pkgver=1.2.r1849.381b8b4
 pkgrel=1
-pkgdesc='The adminapi provides a python module which can talk to the InnoGames serveradmin via an API'
+pkgdesc='Adminapi is a python module which can be used to talk to the open source serveradmin project by Innogames'
 arch=('any')
 url="https://github.com/InnoGames/serveradmin"
 makedepends=('python-setuptools' 'python2-setuptools')

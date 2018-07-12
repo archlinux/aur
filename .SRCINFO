@@ -1,6 +1,6 @@
 pkgbase = python-adminapi-git
-	pkgdesc = The adminapi provides a python module which can talk to the InnoGames serveradmin via an API
-	pkgver = 1.2.r1771.6e3e9a0
+	pkgdesc = Adminapi is a python module which can be used to talk to the open source serveradmin project by Innogames
+	pkgver = 1.2.r1849.381b8b4
 	pkgrel = 1
 	url = https://github.com/InnoGames/serveradmin
 	arch = any
