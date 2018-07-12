@@ -2,9 +2,8 @@
 Name=Clone Hero
 GenericName=Clone Hero
 Comment=A clone of Guitar Hero and Rockband-like games
-Encoding=UTF-8
-Type=Application
+Exec=clonehero
+Icon=/usr/share/pixmaps/clonehero.png
 Terminal=false
-Exec=/usr/bin/clonehero
-Icon=/usr/share/clonehero/icon.png
+Type=Application
 Categories=Game;

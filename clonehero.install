@@ -1,0 +1,14 @@
+pkgname=clonehero
+
+post_upgrade() {
+    echo "Song files should be placed in ~/.$pkgname/Songs/"
+}
+
+post_install() {
+    post_upgrade
+}
+
+post_remove() {
+    echo "You may wish to delete the ~/.$pkgname folder"
+    echo "If you do, you may want to back up the Songs/ folder"
+}
