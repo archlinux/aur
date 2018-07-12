@@ -1,0 +1,12 @@
+diff -ura llvm-6.0.1.src/utils/lit/lit/__init__.py new/utils/lit/lit/__init__.py
+--- llvm-6.0.1.src/utils/lit/lit/__init__.py	2016-10-11 00:22:11.000000000 +0100
++++ new/utils/lit/lit/__init__.py	2018-07-12 17:51:32.828661837 +0100
+@@ -3,7 +3,7 @@
+ __author__ = 'Daniel Dunbar'
+ __email__ = 'daniel@minormatter.com'
+ __versioninfo__ = (0, 6, 0)
+-__version__ = '.'.join(str(v) for v in __versioninfo__) + 'dev'
++__version__ = '.'.join(str(v) for v in __versioninfo__)
+ 
+ __all__ = []
+ 
