@@ -1,7 +1,7 @@
 # Maintainer: desbma
 pkgname=sacad
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart Automatic Cover Art Downloader"
 arch=('any')
 url="https://github.com/desbma/${pkgname}"
@@ -13,6 +13,6 @@ sha512sums=('ec989b9b93f1234909b21abd82bfc508db81f735c61d3b38abb61a10497f5e239fc
 
 package() {
     cd "${pkgname}-${pkgver}"
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps web_cache
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps web_cache bitarray
     python setup.py install --root="${pkgdir}"
 }
