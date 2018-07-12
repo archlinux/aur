@@ -1,6 +1,6 @@
 pkgname=bitmask
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="easy and secure encrypted communication"
 arch=('x86_64')
 url="https://bitmask.net/"
@@ -16,5 +16,5 @@ package() {
 	mv bitmask.desktop "${pkgdir}/usr/share/applications/"
 	tar -zxf Bitmask-linux64-latest.tar.gz -C "${pkgdir}/opt/"
 	mv "${pkgdir}/opt/bitmask-0.10.2" "${pkgdir}/opt/bitmask"
-	wget -O /opt/bitmask/icon.png https://bitmask.readthedocs.io/en/latest/_static/bitmask-sidebar.png
+	wget -O "${pkgdir}/opt/bitmask/icon.png" https://bitmask.readthedocs.io/en/latest/_static/bitmask-sidebar.png
 }
