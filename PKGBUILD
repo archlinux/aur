@@ -3,7 +3,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2018.705.0_37_g27311ce1f
+pkgver=2018.710.0_10_g882a6afec
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64')
@@ -31,7 +31,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '09c1cd74f65806aa3064d9eabee440e2d205d8b50cf12bafc41cb338681ba3e9'
-            '11d29c2654896607f37bc5c8e558ea245d8e3b1b412dcba03033bf1db6580ebe'
+            '2665c47e522ec7762a2a8ff3dcf32f254fd9e5eceac33a162c638f06b0fcb44e'
             '3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
             'd22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b')
 
