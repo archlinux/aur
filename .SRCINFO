@@ -23,4 +23,3 @@ pkgbase = sprycloud-client-git
 	md5sums = SKIP
 
 pkgname = sprycloud-client-git
-
