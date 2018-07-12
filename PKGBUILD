@@ -5,7 +5,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=gegl-git
-pkgver=0.4.2.9
+pkgver=0.4.4.177
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
@@ -32,15 +32,19 @@ md5sums=('SKIP')
 _gitroot=GITURL
 _gitname=gegl
 
-build() {
+prepare() {
 	cd "$srcdir"/$_gitname
 
-	./autogen.sh
+	autoreconf -if
 	./configure --prefix=/usr --with-sdl --with-openexr --with-librsvg \
 		--with-libavformat --with-jasper --disable-docs \
 		--enable-workshop \
 		--enable-introspection=yes
-	
+}
+
+build() {
+	cd "$srcdir"/$_gitname
+
 	make
 }
 
