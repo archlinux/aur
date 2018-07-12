@@ -5,7 +5,7 @@ pkgver=r1796.1384b08
 pkgrel=1
 pkgdesc="LLVM nightly test infrastructure"
 arch=('x86_64')
-depends=(python2)
+depends=(python2 python2-pip python2-llvm-lit)
 source=('git+https://github.com/llvm-mirror/lnt.git')
 md5sums=('SKIP')
 
