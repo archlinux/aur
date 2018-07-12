@@ -34,7 +34,7 @@ sha256sums_x86_64=('3c3bb2f3b15da6d4c6d6312688edb6e460ced9043e285c74eb8e4255e703
 package() {
   install -d "$pkgdir"/usr/{bin,lib}
   cp -r palemoon/ "$pkgdir/usr/lib/palemoon"
-#  ln -s ../lib/palemoon/palemoon "$pkgdir/usr/bin/palemoon"
+  ln -s ../lib/palemoon/palemoon "$pkgdir/usr/bin/palemoon"
   install -Dm644 palemoon.desktop "$pkgdir/usr/share/applications/palemoon.desktop"
 
   # icons
