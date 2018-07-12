@@ -1,6 +1,6 @@
 # Maintainer: Ulrik Boll Djurtoft <ullebe1@gmail.com>
 pkgname=appeditor-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r43.bdf596f
+pkgver=r48.ea4a7bd
 pkgrel=1
 pkgdesc="AppEditor allows you to edit application entries in the application menu."
 arch=('i686' 'x86_64')
@@ -33,5 +33,5 @@ package() {
 	cd "$srcdir/${pkgname%-git}/build"
 	DESTDIR="${pkgdir}/" ninja install
 	cd ..
-	install -D -m644 "data/com.github.donadigo.appeditor.desktop" "${pkgdir}/usr/share/applications/com.github.donadigo.appeditor.desktop"
+	install -D -m644 "data/com.github.donadigo.appeditor.desktop.in" "${pkgdir}/usr/share/applications/com.github.donadigo.appeditor.desktop.in"
 }
