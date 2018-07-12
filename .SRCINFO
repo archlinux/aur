@@ -1,0 +1,15 @@
+pkgbase = pylms7002soapy-git
+	pkgdesc = Python bindings for LMS7002M with SoapySDR backend
+	pkgver = r2.ea230dc
+	pkgrel = 1
+	url = https://github.com/myriadrf/pyLMS7002Soapy
+	arch = any
+	license = Apache
+	makedepends = git
+	provides = pylms7002soapy
+	conflicts = pylms7002soapy
+	source = git+https://github.com/myriadrf/pyLMS7002Soapy
+	md5sums = SKIP
+
+pkgname = pylms7002soapy-git
+
