@@ -18,7 +18,7 @@ optdepends=('kde-cli-tools'
             'lsb-release'
             'pulseaudio')
 source=("https://packages.atlassian.com/stride-apt-client/pool/stride_${pkgver}_amd64.deb")
-sha256sums=('82cde945eb16412b030c595bae22b738d5e8fbd50c93a7d1f626427be1f676ea')
+sha256sums=('ae336753cd845e1981942f148a13e51974b564e88d313e484406b983202f2070')
 
 package(){
     # Extract package data
