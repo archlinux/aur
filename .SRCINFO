@@ -9,7 +9,7 @@ pkgbase = soapyuhd
 	depends = boost
 	depends = libuhd
 	depends = soapysdr
-	source = soapyuhd-0.3.4::https://github.com/pothosware/SoapyUHD/archive/.tar.gz
+	source = soapyuhd-0.3.4.tar.gz::https://github.com/pothosware/SoapyUHD/archive/soapy-uhd-0.3.4.tar.gz
 	sha256sums = 7b7f2bc9a565f42b6e9b0831db942a5231fd048c79976fb2d1f1710efef83dd0
 
 pkgname = soapyuhd
