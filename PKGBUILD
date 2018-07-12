@@ -22,7 +22,9 @@ sha256sums_arm=('c7a712a25e0c67319c7f6181b4da4feee0028af6cd2100c1cf6a00f75fac6d7
 sha256sums_armv6h=("${sha256sums_arm}")
 
 check() {
-  gpg --verify-files ${srcdir}/op.sig
+  if (( ! SKIPPGPCHECK )); then
+    gpg --verify-files ${srcdir}/op.sig
+  fi
 }
 
 package() {
