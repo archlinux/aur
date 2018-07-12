@@ -21,12 +21,7 @@ pkgbase = barrier-fresh
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	source = barrier::git+https://github.com/debauchee/barrier
-	md5sums = SKIP
-	md5sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
 
 pkgname = barrier-fresh
 

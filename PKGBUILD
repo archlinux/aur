@@ -14,9 +14,7 @@ makedepends=('cmake')
 source=('barrier::git+https://github.com/debauchee/barrier')
 #0001-Handle-removal-of-cmake-macro-qt5_use_modules.patch
 
-sha256sums=('SKIP' 'SKIP')
-sha512sums=('SKIP' 'SKIP')
-md5sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 #prepare() {
 # cd barrier
