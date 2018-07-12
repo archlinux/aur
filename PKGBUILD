@@ -4,8 +4,8 @@
 # Contributor: Adrian Hühn <adrian.huehn@web.de>
 
 pkgname='ccnet-server'
-pkgver='6.3.1'
-pkgrel=2
+pkgver='6.3.2'
+pkgrel=1
 pkgdesc="Internal communication framework and user/group management for seafile server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/$pkgname"
@@ -14,7 +14,7 @@ depends=('libevent' 'libsearpc' 'libldap' 'libmariadbclient' 'postgresql-libs')
 makedepends=('vala')
 conflicts=('ccnet')
 source=("$pkgname-v$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz")
-sha256sums=('167dcd531125035f324927199395bec024d8d993e1b0c04a5ffc6f8634252f12')
+sha256sums=('ea33cc13f08c8fd9162e7c0e0f9bd37716f637bfad60f43b7037748c794d421d')
 
 prepare () {
     cd "$srcdir/$pkgname-$pkgver-server"
@@ -28,7 +28,8 @@ build () {
         --enable-ldap \
         --enable-python \
         --enable-console \
-        --prefix=/usr PYTHON='/usr/bin/python2'
+        --prefix=/usr \
+        PYTHON='/usr/bin/python2'
     make
 }
 
