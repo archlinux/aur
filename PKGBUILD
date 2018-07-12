@@ -12,6 +12,7 @@ optdepends=('libva: for cl_intel_va_api_media_sharing'
             'libdrm: for cl_intel_va_api_media_sharing')
 depends=('ocl-icd')
 conflicts=('compute-runtime-git')
+provides=('opencl-driver')
 
 source=("neo::git+https://github.com/intel/compute-runtime#tag=$pkgver"
         "clang_source::git+https://github.com/llvm-mirror/clang#branch=release_40"
