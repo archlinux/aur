@@ -5,7 +5,7 @@ pkgver=2.21.4
 pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=('i686' 'x86_64')
-url="http://webkitgtk.org/"
+url="https://webkitgtk.org/"
 license=('custom')
 depends=(libxt libxslt enchant geoclue2 gst-plugins-base-libs
 	 libsecret libwebp harfbuzz-icu gtk3 libnotify hyphen woff2)
