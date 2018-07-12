@@ -1,0 +1,17 @@
+pkgbase = python-send-cli
+	pkgdesc = Unofficial command line for Firefox Send
+	pkgver = 2018.04.08
+	pkgrel = 1
+	url = https://github.com/ehuggett/send-cli
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-pycryptodomex
+	depends = python-requests-toolbelt
+	depends = python-tqdm
+	source = https://github.com/ehuggett/send-cli/archive/7f9458299f42e3c558f00e77cf9d3aa9dd857457.tar.gz
+	sha256sums = d6dd7102adba2e8ce5301c636768eb699859b7b70b7187ec0aa48e2868ad38ec
+
+pkgname = python-send-cli
+
