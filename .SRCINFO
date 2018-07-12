@@ -1,0 +1,16 @@
+pkgbase = sddm-theme-clairvoyance
+	pkgdesc = An SDDM theme by Ellis Kesterton
+	pkgver = 1.0+1+fb02103
+	pkgrel = 1
+	url = https://github.com/Eayu/sddm-theme-clairvoyance
+	arch = any
+	license = CC-BY-SA
+	makedepends = git
+	makedepends = tar
+	depends = sddm
+	depends = ttf-fira-mono
+	source = git+https://github.com/Eayu/sddm-theme-clairvoyance.git#commit=fb0210303f67325162a5f132b6a3f709dcd8e181
+	sha256sums = SKIP
+
+pkgname = sddm-theme-clairvoyance
+
