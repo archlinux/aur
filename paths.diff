@@ -1,8 +1,8 @@
 diff --git a/gcc/d/d-incpath.cc b/gcc/d/d-incpath.cc
-index e71cb64f..c57d0749 100644
+index e6cc314c..2618f571 100644
 --- a/gcc/d/d-incpath.cc
 +++ b/gcc/d/d-incpath.cc
-@@ -175,7 +175,7 @@ add_import_paths (const char *iprefix, const char *imultilib, bool stdinc)
+@@ -140,7 +140,7 @@ add_import_paths (const char *iprefix, const char *imultilib, bool stdinc)
  	    path = xstrdup (p->fname);
  
  	  /* Add D-specific suffix.  */
@@ -12,28 +12,28 @@ index e71cb64f..c57d0749 100644
  	  /* Ignore duplicate entries.  */
  	  bool found = false;
 diff --git a/libphobos/configure b/libphobos/configure
-index a3f0d5ca..1a7a9bf8 100755
+index 3fdd8dfd..ac6d77a5 100755
 --- a/libphobos/configure
 +++ b/libphobos/configure
-@@ -14671,7 +14671,7 @@ fi
+@@ -14547,7 +14547,7 @@ fi
  
  
    # Default case for install directory for D sources files.
--  gdc_include_dir='${libdir}/gcc/${target_alias}'/${d_gcc_ver}/include/d
+-  gdc_include_dir='$(libdir)/gcc/${target_alias}/${gcc_version}/include/d'
 +  gdc_include_dir='/usr/include/dlang/gdc/'
  
  
  
 diff --git a/libphobos/m4/druntime.m4 b/libphobos/m4/druntime.m4
-index fac44aac..4d95b74d 100644
+index 93f01efc..6049eaf9 100644
 --- a/libphobos/m4/druntime.m4
 +++ b/libphobos/m4/druntime.m4
-@@ -78,7 +78,7 @@ AC_DEFUN([DRUNTIME_INSTALL_DIRECTORIES],
+@@ -97,7 +97,7 @@ AC_DEFUN([DRUNTIME_INSTALL_DIRECTORIES],
    AC_SUBST(toolexeclibdir)
  
    # Default case for install directory for D sources files.
--  gdc_include_dir='${libdir}/gcc/${target_alias}'/${d_gcc_ver}/include/d
-+  gdc_include_dir='/usr/include/dlang/gdc'
+-  gdc_include_dir='$(libdir)/gcc/${target_alias}/${gcc_version}/include/d'
++  gdc_include_dir='/usr/include/dlang/gdc/'
    AC_SUBST(gdc_include_dir)
  ])
  

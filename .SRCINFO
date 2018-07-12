@@ -1,5 +1,5 @@
 pkgbase = gdc
-	pkgver = 8.1.0
+	pkgver = 8.1.1+20180531
 	pkgrel = 1
 	url = https://github.com/D-Programming-GDC/GDC
 	arch = i686
@@ -7,33 +7,30 @@ pkgbase = gdc
 	license = GPL
 	makedepends = binutils>=2.26
 	makedepends = git
-	source = https://ftp.gnu.org/gnu/gcc/gcc-8.1.0/gcc-8.1.0.tar.xz
-	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
+	source = https://sources.archlinux.org/other/gcc/gcc-8.1.1-20180531.tar.xz
+	source = http://isl.gforge.inria.fr/isl-0.19.tar.bz2
 	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git
 	source = git+https://github.com/D-Programming-GDC/GDMD.git
 	source = paths.diff
-	sha256sums = 1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153
-	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
+	sha256sums = a92eb923a4368548666acfc619074c76c4f6cdc34c9348f7e7aa56656aaee0d5
+	sha256sums = d59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = fefe9298f8d5859758ca63bab084984baa8adbbd85b3b3b8798283731321df7b
+	sha256sums = bb4219be52f61de48fc02f522220f013f12859a03c678417b03a1c8ee783d9dd
 
 pkgname = gdc
 	pkgdesc = Compiler for D programming language which uses gcc backend
 	depends = gcc
 	depends = perl
 	depends = binutils
-	depends = libgphobos-devel
+	depends = libgphobos
 	provides = d-compiler=2.076.1
 
-pkgname = libgphobos-devel
+pkgname = libgphobos
 	pkgdesc = Standard library for D programming language, GDC port
 	provides = d-runtime
 	provides = d-stdlib
+	conflicts = libgphobos-devel
+	replaces = libgphobos-devel
 	options = staticlibs
-
-pkgname = libgphobos
-	pkgdesc = Shared standard library for D programming language, GDC port
-	provides = d-runtime
-	provides = d-stdlib
 

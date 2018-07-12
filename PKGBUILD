@@ -7,28 +7,29 @@
 # Contributor: Elijah Stone <elronnd@elronnd.net>
 # Contributor: Daniel Kozak <kozzi11@gmail.com>
 
-pkgname=('gdc' 'libgphobos-devel' 'libgphobos')
-pkgver=8.1.0
+pkgname=('gdc' 'libgphobos')
+pkgver=8.1.1+20180531
+_majorver=${pkgver:0:1}
 pkgrel=1
-_islver=0.18
+_islver=0.19
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/D-Programming-GDC/GDC"
 makedepends=('binutils>=2.26' 'git')
 
 source=(
-	https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
+	https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz
 	http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
 	gdc::git+https://github.com/D-Programming-GDC/GDC.git
 	git+https://github.com/D-Programming-GDC/GDMD.git
 	paths.diff
 )
 sha256sums=(
-	'1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153'
-	'6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
+	'a92eb923a4368548666acfc619074c76c4f6cdc34c9348f7e7aa56656aaee0d5'
+	'd59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8'
 	'SKIP'
 	'SKIP'
-	'fefe9298f8d5859758ca63bab084984baa8adbbd85b3b3b8798283731321df7b'
+	'bb4219be52f61de48fc02f522220f013f12859a03c678417b03a1c8ee783d9dd'
 )
 
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
@@ -51,7 +52,7 @@ prepare() {
 
 	# GDC setup
 	cd $srcdir/gdc
-	git checkout gdc-8
+	git checkout gdc-8-stable
 	git apply $srcdir/paths.diff
 	./setup-gcc.sh ../gcc
 
@@ -102,8 +103,8 @@ build() {
 }
 
 package_gdc() {
-	depends=('gcc' 'perl' 'binutils' 'libgphobos-devel')
-	provides=("d-compiler=2.076.1")
+	depends=('gcc' 'perl' 'binutils' 'libgphobos')
+	provides=('d-compiler=2.076.1')
 	pkgdesc="Compiler for D programming language which uses gcc backend"
 
 	# compiler
@@ -116,23 +117,13 @@ package_gdc() {
 }
 
 
-package_libgphobos-devel() {
+package_libgphobos() {
 	pkgdesc="Standard library for D programming language, GDC port"
-	provides=("d-runtime" "d-stdlib")
-	options=("staticlibs")
+	provides=('d-runtime' 'd-stdlib')
+	options=('staticlibs')
+    conflicts=('libgphobos-devel')
+    replaces=('libgphobos-devel')
 
 	cd $srcdir/gcc-build
 	make -C $CHOST/libphobos DESTDIR=$pkgdir install
-
-	# remove shared library bits, they go into own package
-	rm $pkgdir/usr/lib/lib*so*
-}
-
-package_libgphobos() {
-	pkgdesc="Shared standard library for D programming language, GDC port"
-	provides=("d-runtime" "d-stdlib")
-
-	cd $srcdir/gcc-build
-	install -D -m644 $CHOST/libphobos/src/.libs/libgphobos.so $pkgdir/usr/lib/libgphobos.so
-	install -D -m644 $CHOST/libphobos/libdruntime/.libs/libgdruntime.so $pkgdir/usr/lib/libgdruntime.so
 }
