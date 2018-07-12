@@ -100,11 +100,11 @@ target = ["x86_64-unknown-linux-gnu", "i686-pc-windows-gnu", "x86_64-pc-windows-
 
 # Instead of downloading the src/stage0.txt version of Cargo specified, use
 # this Cargo binary instead to build all Rust code
-cargo = "/usr/bin/cargo"
+#cargo = "/usr/bin/cargo"
 
 # Instead of downloading the src/stage0.txt version of the compiler
 # specified, use this rustc binary instead as the stage0 snapshot compiler.
-rustc = "/usr/bin/rustc"
+#rustc = "/usr/bin/rustc"
 
 # Flag to specify whether any documentation is built. If false, rustdoc and
 # friends will still be compiled but they will not be used to generate any
@@ -252,10 +252,10 @@ codegen-units = 1
 debug-assertions = false
 
 # Whether or not debuginfo is emitted
-debuginfo = false
+debuginfo = true
 
 # Whether or not line number debug information is emitted
-debuginfo-lines = false
+debuginfo-lines = true
 
 # Whether or not to only build debuginfo for the standard library if enabled.
 # If enabled, this will not compile the compiler with debuginfo, just the
@@ -292,7 +292,7 @@ channel = "stable"
 # platforms to ensure that the compiler is usable by default from the build
 # directory (as it links to a number of dynamic libraries). This may not be
 # desired in distributions, for example.
-rpath = true
+rpath = false
 
 # Suppresses extraneous output from tests to ensure the output of the test
 # harness is relatively clean.
@@ -344,7 +344,7 @@ wasm-syscall = false
 lld = true
 
 # Whether to deny warnings in crates
-deny-warnings = true
+deny-warnings = false
 
 # Print backtrace on internal compiler errors during bootstrap
 backtrace-on-ice = false

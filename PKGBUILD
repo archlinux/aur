@@ -5,9 +5,12 @@
 # Contributor: userwithuid <userwithuid@gmail.com>
 
 _pkgname=rust
+_date=2018-05-10
+_rustc=1.26.0
+_cargo=0.27.0
 
 pkgname=mingw-w64-rust
-pkgver=1.27.0
+pkgver=1.27.1
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -18,8 +21,7 @@ depends=('gcc-libs'
          'libgit2'
          'mingw-w64-gcc')
 optdepends=('mingw-w64-wine: for cargo test support')
-makedepends=('rust'
-             'gdb'
+makedepends=('gdb'
              'ninja'
              'libffi'
              'perl'
@@ -28,10 +30,22 @@ makedepends=('rust'
              'cmake')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
+        "https://static.rust-lang.org/dist/${_date}/rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
+        "https://static.rust-lang.org/dist/${_date}/rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
+        "https://static.rust-lang.org/dist/${_date}/cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
         "mingw-config.toml")
-sha256sums=('866b7409a67ff8324a73d9c5cecac2458e234d125cc3f22686412e35b3d750b4'
+noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.gz"
+           "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.gz"
+           "cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums=('948e2645057960ee1c03d9f0e8f78133a5f73d9ca9a24bc56126e395a212d25c'
             'SKIP'
-            'c9916570220bd27c201d37ab9ac6470adeec6bacaca877fc68d3c0d6242189a0')
+            'e27cb5c21541a500c8df919e15c8d3b002456ebbe573122e7b058cf5b4c3c13a'
+            'SKIP'
+            '7ca9a30010602aaf2244c376a3cc5baa89429d54da17b8ba1cb0cdfdc846cc61'
+            'SKIP'
+            'f50b64a7610401f4c1afe21de238663f33c621b7fc42c51401090ebd48e69fec'
+            'SKIP'
+            '920b003929dd495d0887dd2db683a67cf8ff49bfde94d97c4d8c63ce69a0e801')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/${_pkgname}/cargo/config")
@@ -42,6 +56,12 @@ prepare() {
 
   cp "${srcdir}"/mingw-config.toml config.toml
   sed -i "s|\@PREFIX\@|/opt/${_pkgname}|" config.toml
+
+  cd "${srcdir}"
+  mkdir -p "${srcdir}/rustc-${pkgver}-src/build/cache/${_date}"
+  cp rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.gz "${srcdir}/rustc-${pkgver}-src/build/cache/${_date}"
+  cp rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.gz "${srcdir}/rustc-${pkgver}-src/build/cache/${_date}"
+  cp cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.gz "${srcdir}/rustc-${pkgver}-src/build/cache/${_date}"
 }
 
 build() {
