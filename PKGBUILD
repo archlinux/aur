@@ -1,5 +1,4 @@
-# Maintainer: <adolfhitler@archlinux.org>
-# Contributor: adolf <adolfhitler@gmail.com>
+# Maintainer: wchurch58
 
 pkgname=barrier-fresh
 pkgver=2.1.1
