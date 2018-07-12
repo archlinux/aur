@@ -1,7 +1,7 @@
 pkgbase = qspectrumanalyzer
 	pkgdesc = Spectrum analyzer for multiple SDR platforms.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xmikos/qspectrumanalyzer
 	arch = any
 	license = GPL3
@@ -11,12 +11,13 @@ pkgbase = qspectrumanalyzer
 	depends = python-pyqtgraph
 	depends = soapy_power>=1.5.0
 	optdepends = rtl_power_fftw: Alternative RTL-SDR backend using FFTW library. Much faster than rtl_power.
-	optdepends = rtl-sdr-keenerd: Better version of rtl_power backend.
 	optdepends = rtl-sdr: original rtl_power backend. Slightly broken, use rtl-sdr-keenerd-git instead.
 	optdepends = rx_tools: rx_power backend. Universal SoapySDR based backend, but seems slow and buggy.
 	optdepends = hackrf: hackrf_sweep backend. Wideband spectrum monitoring with sweep rate of 8 GHz/s.
 	source = qspectrumanalyzer-2.2.0::https://github.com/xmikos/qspectrumanalyzer/archive/v2.2.0.tar.gz
+	source = setenv.patch
 	sha256sums = d50e13fa4951a67ed4f56362fb74daff9faeda88d7fc3f9d98cffb8d63c6311d
+	sha256sums = 9205115603abf8c555d4325246f4b57207002cc7037f96a6e9a3a2cfa9d18037
 
 pkgname = qspectrumanalyzer
 
