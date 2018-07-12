@@ -1,17 +1,29 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
-pkgname=('python-pynput')
-pkgver=1.3.10
-pkgrel=2
+pkgname=('python-pynput' 'python2-pynput')
+pkgver=1.4
+pkgrel=1
+_name=pynput
 pkgdesc="Python library to monitor and control user input devices"
 arch=('any')
 url="https://github.com/moses-palmer/pynput"
 license=('LGPL3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moses-palmer/pynput/archive/v${pkgver}.tar.gz")
-sha512sums=('5f5050013db5a8bf728748c09c43acd6fdf792ba48d9bacb8fa0198712289085213d1c930637e773f7ed25974a5ad8995e7e26e3638a4eda380e554f3922282f')
+sha512sums=('53706aefec1353df16ca9f9b213bb367fe0b695f26406d58a9171bcb47ddb92228914012c1915fc58d2e639de9100d452b38aafc95539ea16e6362a1831cc605')
+makedepends=('python-setuptools' 'python-sphinx' 'python2-setuptools' 'python2-sphinx')
+
+build() {
+    cd "$srcdir/${_name}-${pkgver}"
+    python setup.py build
+}
 
 package_python-pynput() {
-    makedepends=('python-setuptools' 'python-sphinx')
     depends=('python-xlib' 'python-six')
-    cd "$srcdir/pynput-${pkgver}"
-    python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1;
+    cd "$srcdir/${_name}-${pkgver}"
+    python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build;
+}
+
+package_python2-pynput() {
+    depends=('python2-xlib' 'python2-six' 'python2-enum34')
+    cd "$srcdir/${_name}-${pkgver}"
+    python2 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build;
 }
