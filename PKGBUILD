@@ -1,7 +1,7 @@
 # Maintainer: Thorben Guenther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=mycroft-core
-pkgver=18.2.9
+pkgver=18.2.10
 pkgrel=1
 pkgdesc="Mycroft Core, the Mycroft Artificial Intelligence platform."
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ source=("https://github.com/MycroftAI/mycroft-core/archive/release/v${pkgver}.ta
         "venv_init"
         "mycroft.service"
         "notify.patch")
-sha512sums=('111201b67ea80863460352313922c119dad174e1aa417cdf76397af06a7378222ab74e96af45ee5e172d5f845134fd77d38a06c9d7a840baed5151b92eaf0c3c'
+sha512sums=('42690cf262f3ca62317222e3e045c6471e4a97501dfe512d58e5f45e4adb3c217f82cd655c8116b45696e1e8988775d93b6b6648479ec0caf73ffcc57f3f45f7'
             'f4649e20c2c9f220ac15d8abcade267a3e40e61e2c82175802fc2e5da726dd051c281c21a96641f41f671bef51d44c5f034a87968f8d747909bc979270ce9baa'
             '6773fd4dbf852d4129a97041677311cff0c25e8b9cf1e822a8b63df6fcb16c4af1d1afc128c375488b479f1892e6173d37accf57c28a0f9ceb6e643dd906ecc6'
             '67c228fb4a25d1ce529d1689e81703284015ab2721cecdac8264a94e1a41e629e6b6cb82566d41744ebce0d84b7e5c54156cc62c447f7b10b41e012682d0e146'
