@@ -11,7 +11,7 @@ pkgbase = rivalcfg
 	depends = python
 	depends = hidapi
 	depends = python-hidapi
-	source = rivalcfg-3.0.0.beta1::https://github.com/flozz/rivalcfg/archive/v3.0.0-beta1.tar.gz
+	source = rivalcfg-3.0.0.beta1.tar.gz::https://github.com/flozz/rivalcfg/archive/v3.0.0-beta1.tar.gz
 	sha256sums = a9b1a8e3e4368bbe7dc0db5251451e1f3a9997e1874300174408f47f1cbc25ef
 
 pkgname = rivalcfg
