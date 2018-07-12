@@ -5,7 +5,7 @@
 pkgbase=python-boto
 pkgname=(python-boto python2-boto)
 pkgver=2.48.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
 arch=('any')
 url='https://github.com/boto/boto'
@@ -27,8 +27,7 @@ prepare() {
 
 check() {
   cd "$srcdir"/boto-$pkgver
-  # Known failure on test_correct_low_level_api_calls: https://bugs.python.org/issue25195
-  python tests/test.py default || warning 'Tests failed'
+  python tests/test.py default
 
   cd "$srcdir"/boto-$pkgver-py2
   python2 tests/test.py default
