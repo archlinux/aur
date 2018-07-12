@@ -1,7 +1,7 @@
 # Maintainer: Mikuro Kagamine <mikurok@forgecrushing.com>
 
 pkgname=browsh-bin
-pkgver=1.2.3
+pkgver=1.3.3
 pkgrel=1
 #epoch=
 pkgdesc='A fully-modern text-based browser, rendering to TTY and browsers'
@@ -22,7 +22,7 @@ options=('!strip')
 #changelog=
 source=("https://github.com/browsh-org/browsh/releases/download/v${pkgver}/browsh_${pkgver}_linux_amd64")
 #noextract=()
-sha512sums=('285c3e9c3c1192f6af12f1ff60798defd5ff51e6f10552798c03af65702bd1d44bc3902c0582281435a1d3100907e82fbc6a68848a5939d46f4b2b60ac5b4318')
+sha512sums=('3bc10de8ab252214892c0cf22545dab9a6c613a32ec59f531eaff2ea32e53447b2404d14a7af361968edec27314e69a8aeb7b65f312cf503992b62420c4e4339')
 #validpgpkeys=()
 
 #prepare() {
