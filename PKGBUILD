@@ -1,5 +1,4 @@
-# Maintainer: adolfhitler@archlinux.org>
-# Contributor: adolf <adolfhitler@gmail.com>
+# Maintainer: wchurch58 
 
 pkgname=dolphin-emu-fresh
 pkgver=5.0
