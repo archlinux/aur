@@ -14,16 +14,12 @@ makedepends=('git')
 provides=('dump1090' 'dump1090-fa' 'dump1090-fa-git' 'fatsv-data-source' 'faup1090')
 backup=(etc/$_pkgbase)
 install=$_pkgbase.install
-source=(
-  $pkgname.tar.gz::git://github.com/mutability/dump1090
-  $_pkgbase
-  $_pkgbase.service
-)
-sha256sums=(
-  'SKIP'
-  '0e95c55fba7e3daf0a2e6f2c3f8bc60581ab52d547ec048b72eb67cc26d961a5'
-  '948dac40bf03d8b4338fc7985dc674208ff18cca37049fad22e222822ac100b4'
-)
+source=("$pkgname::git+$url"
+	"$_pkgbase"
+	"$_pkgbase.service")
+sha256sums=('SKIP'
+	    '0e95c55fba7e3daf0a2e6f2c3f8bc60581ab52d547ec048b72eb67cc26d961a5'
+	    '948dac40bf03d8b4338fc7985dc674208ff18cca37049fad22e222822ac100b4')
 optdepends=(
   'lighttpd: web display support'
   'mlat-client: multilateration client'
