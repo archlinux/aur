@@ -17,11 +17,6 @@ build() {
   cargo build --release
 }
 
-#check() {
-#  cd $pkgname-$pkgver
-#  cargo test --release
-#}
-
 package() {
   cd $pkgname-$pkgver
   install -Dm755 target/release/named "$pkgdir"/usr/bin/named
