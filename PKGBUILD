@@ -1,5 +1,5 @@
 # Maintainer: Felix Seidel <felix@seidel.me>
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <aur@cpellegrino.de>
 # Contributor: Liu Yuxuan <betsu@yahoo.com>
 
 pkgname=1password-cli
