@@ -3,7 +3,7 @@
 pkgname="radarr"
 pkgver="0.2.0.1120"
 pkgrel=1
-pkgdesc="Movie downloader for usenet and torrents."
+pkgdesc="Movie download automation for usenet and torrents."
 arch=(any)
 url="https://github.com/Radarr/Radarr"
 license=('GPL3')
