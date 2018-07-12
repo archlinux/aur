@@ -4,8 +4,8 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname='seahub'
-pkgver='6.3.1'
-pkgrel=2
+pkgver='6.3.2'
+pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/haiwen/seahub'
@@ -44,7 +44,7 @@ optdepends=(
 )
 changelog="ChangeLog"
 source=("$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz")
-sha256sums=('609b0348ed72bfef880e3de0e9aa379dc0495c0b0c76673c07ba32185ceeb155')
+sha256sums=('2a003b41e7bd3c2e35e4d5b49a82e8c848a77d58fb9932dab76ec28bdf5c6ae9')
 options=('!strip')
 
 prepare() {
@@ -56,7 +56,7 @@ prepare() {
         "$(find . -name \*.pyc)"
 
     shebang='#!/usr/bin/env python'
-    grep -s -l -r "$shebang" | xargs sed -i -E "1 s|$shebang|${shebang}2|"
+    grep -s -l -r "$shebang" | xargs sed -i "1 s|$shebang|${shebang}2|"
 }
 
 build() {
