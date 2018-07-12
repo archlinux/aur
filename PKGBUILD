@@ -15,7 +15,7 @@ provides=('dump1090' 'dump1090-fa' 'dump1090-fa-git' 'fatsv-data-source' 'faup10
 backup=(etc/$_pkgbase)
 install=$_pkgbase.install
 source=(
-  $pkgname::git://github.com/mutability/dump1090
+  $pkgname.tar.gz::git://github.com/mutability/dump1090
   $_pkgbase
   $_pkgbase.service
 )
