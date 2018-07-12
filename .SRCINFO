@@ -1,6 +1,6 @@
 pkgbase = sonarr-develop
 	pkgdesc = PVR for newsgroup users. Formerly known as NZBDrone, with added torrent support.
-	pkgver = 2.0.0.4163
+	pkgver = 2.0.0.5239
 	pkgrel = 1
 	url = http://www.sonarr.tv
 	install = sonarr.install
@@ -13,22 +13,16 @@ pkgbase = sonarr-develop
 	optdepends = nzbget: an NZB downloader
 	optdepends = transmission: a torrent downloader
 	optdepends = deluge: a torrent downloader
-	provides = nzbdrone
-	provides = nzbdrone-torrents
 	provides = sonarr
-	conflicts = nzbdrone
-	conflicts = nzbdrone-torrents
 	conflicts = sonarr
-	replaces = nzbdrone
-	replaces = nzbdrone-torrents
-	source = http://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.tar.gz
+	source = https://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.2.0.0.5239.mono.tar.gz
 	source = sonarr.service
 	source = sonarr.sysusers
 	source = sonarr.install
-	md5sums = SKIP
-	md5sums = 4489e2fd01d8958acbb994ce21063fb6
-	md5sums = 9a334e656488c989309297fbb40c2520
-	md5sums = 99387b40dd89f726319b67e1d1e480b5
+	sha256sums = 15206c3ba421c7db282de82562084a473666e09447d2ccd7fa28557e03860548
+	sha256sums = ffcd28b3779aae0edf093956dfbd3239bea0b32561da75ab1d198de92db197c5
+	sha256sums = cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e
+	sha256sums = ce45de775371d7b05f8f1313679b8a94e093fb2fae8ea2cb7558428c1d51d9af
 
 pkgname = sonarr-develop
 
