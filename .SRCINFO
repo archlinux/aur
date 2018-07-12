@@ -1,33 +1,32 @@
 pkgbase = openfx-arena
 	pkgdesc = Extra OpenFX plugins for Natron
-	pkgver = 2.3.10
+	pkgver = 2.3.13
 	pkgrel = 1
-	url = https://github.com/olear/openfx-arena
+	url = https://github.com/NatronGitHub/openfx-arena
 	arch = x86_64
-	license = GPL2
+	license = GPL
 	makedepends = git
-	depends = imagemagick
 	depends = libcdr
+	depends = libgl
+	depends = libmagick
 	depends = librsvg
-	depends = libtool
+	depends = libxt
 	depends = libzip
+	depends = ocl-icd
 	depends = opencolorio
 	depends = poppler-glib
-	optdepends = natron-plugins
-	optdepends = openfx-gmic-bin
-	source = ::git+https://github.com/NatronGitHub/openfx-arena.git#commit=7da90f3f855d880572a9214445ba861a884a9132
-	source = git+https://github.com/devernay/openfx.git
-	source = git+https://github.com/devernay/openfx-supportext.git
-	source = git+https://github.com/MrKepzie/openfx-io.git
-	source = git+https://github.com/MrKepzie/SequenceParsing
-	source = git+https://github.com/MrKepzie/tinydir
+	source = openfx-arena::git+https://github.com/NatronGitHub/openfx-arena#tag=Natron-2.3.13
+	source = git+https://github.com/NatronGitHub/openfx
+	source = git+https://github.com/NatronGitHub/openfx-supportext
+	source = git+https://github.com/NatronGitHub/openfx-io
+	source = git+https://github.com/NatronGitHub/SequenceParsing
+	source = git+https://github.com/NatronGitHub/tinydir
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	depends_x86_64 = gcc-libs-multilib
 
 pkgname = openfx-arena
 

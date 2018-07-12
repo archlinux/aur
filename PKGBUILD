@@ -1,24 +1,22 @@
-# Maintainer: Hugo Courtial <hugo [at] courtial [not colon] me>
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
+# Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
+# Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-arena
-pkgver=2.3.10
+pkgver=2.3.13
 pkgrel=1
 arch=("x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
-url="https://github.com/olear/openfx-arena"
-license=("GPL2")
+url="https://github.com/NatronGitHub/openfx-arena"
+license=("GPL")
 makedepends=("git")
-depends=("imagemagick" "libcdr" "librsvg" "libtool" "libzip" "opencolorio" "poppler-glib")
-optdepends=("natron-plugins" "openfx-gmic-bin")
-depends_x86_64=("gcc-libs-multilib")
-com=7da90f3f855d880572a9214445ba861a884a9132
-source=("$name::git+https://github.com/NatronGitHub/openfx-arena.git#commit=$com"
-        "git+https://github.com/devernay/openfx.git"
-        "git+https://github.com/devernay/openfx-supportext.git"
-        "git+https://github.com/MrKepzie/openfx-io.git"
-        "git+https://github.com/MrKepzie/SequenceParsing"
-        "git+https://github.com/MrKepzie/tinydir")
+depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' 'ocl-icd' 'opencolorio' 'poppler-glib')
+source=("$pkgname::git+https://github.com/NatronGitHub/openfx-arena#tag=Natron-$pkgver"
+        "git+https://github.com/NatronGitHub/openfx"
+        "git+https://github.com/NatronGitHub/openfx-supportext"
+        "git+https://github.com/NatronGitHub/openfx-io"
+        "git+https://github.com/NatronGitHub/SequenceParsing"
+        "git+https://github.com/NatronGitHub/tinydir")
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
@@ -29,14 +27,14 @@ md5sums=('SKIP'
 prepare() {
   cd "$srcdir/$pkgname"
   git config submodule.OpenFX.url $srcdir/openfx
-  git config submodule.SupportExt.url $srcdir/openfx-supportext
   git config submodule.OpenFX-IO.url $srcdir/openfx-io
+  git config submodule.SupportExt.url $srcdir/openfx-supportext
   git submodule update
 
   cd OpenFX-IO
-  git config submodule.IOSupport/SequenceParsing.url $srcdir/SequenceParsing
-  git config submodule.SupportExt.url $srcdir/openfx-supportext
   git config submodule.openfx.url $srcdir/openfx
+  git config submodule.SupportExt.url $srcdir/openfx-supportext
+  git config submodule.IOSupport/SequenceParsing.url $srcdir/SequenceParsing
   git submodule update
 
   cd IOSupport/SequenceParsing
@@ -46,11 +44,15 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make CONFIG=release
+  make CONFIG=release \
+       IM=7
 }
 
 package() {
   cd "$srcdir/$pkgname"
   mkdir -p "$pkgdir/usr/OFX/Plugins"
-  make install PLUGINPATH=$pkgdir/usr/OFX/Plugins CONFIG=release
+  make install PLUGINPATH=$pkgdir/usr/OFX/Plugins \
+               CONFIG=release \
+               IM=7
 }
+
