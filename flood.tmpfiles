@@ -1,2 +1,1 @@
-d   /var/lib/flood  0750    flood   flood   -
-Z   /var/lib/flood  -       flood   flood   -
+d   /var/lib/flood/server/db    0750    flood   flood   -

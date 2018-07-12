@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 WorkingDirectory=/var/lib/flood
-ExecStart=/usr/bin/npm start /var/lib/flood
+ExecStart=/usr/bin/npm start
 User=flood
 
 [Install]

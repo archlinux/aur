@@ -1,7 +1,7 @@
 pkgbase = flood-git
 	pkgdesc = Flood: a modern web UI for rTorrent with a Node.js backend and React frontend.
 	pkgver = r1291.1493f8f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jfurrow/flood
 	arch = any
 	makedepends = git
@@ -9,12 +9,10 @@ pkgbase = flood-git
 	optdepends = mediainfo
 	options = !strip
 	backup = var/lib/flood/config.js
-	source = git+https://github.com/jfurrow/flood
+	source = git+https://github.com/jfurrow/flood#commit=1493f8f9cbf6d6c94f1083a53aaba82d95d508af
 	source = flood.service
 	source = flood.sysusers
 	source = flood.tmpfiles
-	source = install.sh
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
