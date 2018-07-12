@@ -5,7 +5,7 @@
 
 pkgname=palemoon-bin
 pkgver=27.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://linux.palemoon.org/"
@@ -17,9 +17,7 @@ depends=('alsa-lib'
     'libxt'
     'mime-types'
     'nss')
-optdepends=('hunspell: spell checker and morphological analyzer'
-            'hyphen: library for hyphenation and justification'
-            'ffmpeg: record, convert, and stream audio and video')
+optdepends=('ffmpeg: record, convert, and stream audio and video')
 provides=("palemoon=$pkgver")
 conflicts=('palemoon')
 options=('!strip')
@@ -36,7 +34,7 @@ sha256sums_x86_64=('3c3bb2f3b15da6d4c6d6312688edb6e460ced9043e285c74eb8e4255e703
 package() {
   install -d "$pkgdir"/usr/{bin,lib}
   cp -r palemoon/ "$pkgdir/usr/lib/palemoon"
-  ln -s ../lib/palemoon/palemoon "$pkgdir/usr/bin/palemoon"
+#  ln -s ../lib/palemoon/palemoon "$pkgdir/usr/bin/palemoon"
   install -Dm644 palemoon.desktop "$pkgdir/usr/share/applications/palemoon.desktop"
 
   # icons
@@ -48,8 +46,4 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/48x48/apps/palemoon.png"
   install -Dm644 palemoon/browser/icons/mozicon128.png \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/palemoon.png"
-
-  # avoid duplicate binaries
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -sf palemoon "$pkgdir/usr/lib/palemoon/palemoon-bin"
 }
