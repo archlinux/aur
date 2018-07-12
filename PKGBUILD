@@ -22,7 +22,7 @@ _gitname=babl
 prepare() {
 	cd "$srcdir"/$_gitname
 	autoreconf -fi
-	./configure
+	./configure --prefix=/usr
 }
 
 build() {
