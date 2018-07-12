@@ -1,7 +1,7 @@
 pkgbase = python-scielo-xylose
 	pkgdesc = SciELO's library to abstract a JSON from ISIS2JSON type 3 results
 	pkgver = 1.33.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scieloorg/xylose
 	arch = any
 	license = BSD

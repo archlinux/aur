@@ -2,7 +2,7 @@
 _name=xylose
 pkgname=('python-scielo-xylose')
 pkgver=1.33.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SciELO's library to abstract a JSON from ISIS2JSON type 3 results"
 arch=('any')
 url='https://github.com/scieloorg/xylose'
@@ -17,6 +17,10 @@ _path='d8/05/0a3e2d7057c44bd0bf1133f3a3a2d8520a94e9bf7387fa31c56ef38d046f'
 _chash=0519212931883bd0dcc6d5dd476a710ff841dfee
 source=("$_pypi/$_path/$_name-$pkgver.tar.gz"
   "https://raw.githubusercontent.com/scieloorg/xylose/$_chash/LICENSE")
+
+prepare() {
+  rm -rf "$srcdir/$_name-$pkgver/tests" # Avoid installing a "tests" package
+}
 
 package() {
   cd "$srcdir/$_name-$pkgver"
