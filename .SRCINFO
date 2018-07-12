@@ -1,0 +1,33 @@
+pkgbase = wine-qq-music
+	pkgdesc = Tencent QQ music on wine For Archlinux
+	pkgver = 15.9.5
+	pkgrel = 0
+	url = http://y.qq.com/
+	install = wine-qq-music.install
+	arch = x86_64
+	license = custom
+	depends = p7zip
+	depends = wine
+	depends = wine-mono
+	depends = wine_gecko
+	depends = xorg-xwininfo
+	depends = xdotool
+	depends = wqy-microhei
+	depends = adobe-source-han-sans-cn-fonts
+	depends = lib32-alsa-lib
+	depends = lib32-alsa-plugins
+	depends = lib32-libpulse
+	depends = lib32-openal
+	source = https://dldir1.qq.com/music/clntupate/QQMusicSetup.exe
+	source = https://github.com/countstarlight/wine-qq-music-arch/raw/master/data.7z
+	source = run.sh
+	source = reg_files.tar.bz2
+	source = update.policy
+	md5sums = d43ebec09d182c9e561c596fe8b47452
+	md5sums = b4c3f538c12a39c660ef345b9aeff6ad
+	md5sums = 9cf044bc9bf692a04ba34ee2c869c36c
+	md5sums = ebde755e3bd213550f5ccc69d3192060
+	md5sums = a66646b473a3fbad243ac1afd64da07a
+
+pkgname = wine-qq-music
+

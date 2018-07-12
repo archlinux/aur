@@ -1,0 +1,7 @@
+post_upgrade() {
+    find /home -maxdepth 2 -name ".customwine" -exec rm -f \{\}/QQ-Music/reinstalled \;
+}
+pre_remove() {
+    echo "deleting the TIM bottle..."
+    find /home -maxdepth 2 -name ".customwine" -exec rm -rf \{\}/QQ-Music/ \;
+}
