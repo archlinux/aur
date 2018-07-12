@@ -1,8 +1,8 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=dxvk-git
-pkgver=20180611.f8650c1
-pkgrel=2
+pkgver=0.61_33_g9de3a61
+pkgrel=1
 epoch=
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine."
 arch=('x86_64')
@@ -27,7 +27,7 @@ validpgpkeys=()
 
 pkgver() {
         cd "$pkgname"
-        git log -1 --format=%cd.%h --date=short|tr -d -
+        git describe | sed s/"-"/"_"/g | sed 's/^v\(.*\)/\1/'
 }
 
 
