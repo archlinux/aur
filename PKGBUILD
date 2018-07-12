@@ -45,7 +45,7 @@ sha256sums=('948e2645057960ee1c03d9f0e8f78133a5f73d9ca9a24bc56126e395a212d25c'
             'SKIP'
             'f50b64a7610401f4c1afe21de238663f33c621b7fc42c51401090ebd48e69fec'
             'SKIP'
-            '920b003929dd495d0887dd2db683a67cf8ff49bfde94d97c4d8c63ce69a0e801')
+            '36962a9dd01b6d3d480fe17c8ba3c4620d5dd6b8cc6efc600991006e08917269')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/${_pkgname}/cargo/config")

@@ -44,7 +44,7 @@ pkgbase = mingw-w64-rust
 	sha256sums = SKIP
 	sha256sums = f50b64a7610401f4c1afe21de238663f33c621b7fc42c51401090ebd48e69fec
 	sha256sums = SKIP
-	sha256sums = 920b003929dd495d0887dd2db683a67cf8ff49bfde94d97c4d8c63ce69a0e801
+	sha256sums = 36962a9dd01b6d3d480fe17c8ba3c4620d5dd6b8cc6efc600991006e08917269
 
 pkgname = mingw-w64-rust
 

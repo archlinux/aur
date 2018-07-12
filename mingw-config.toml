@@ -292,7 +292,7 @@ channel = "stable"
 # platforms to ensure that the compiler is usable by default from the build
 # directory (as it links to a number of dynamic libraries). This may not be
 # desired in distributions, for example.
-rpath = false
+rpath = true
 
 # Suppresses extraneous output from tests to ensure the output of the test
 # harness is relatively clean.
