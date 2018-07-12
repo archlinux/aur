@@ -7,6 +7,7 @@ pkgbase = python-pep8-naming
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	provides = flake-pep8-naming
 	source = python-pep8-naming-0.7.0.tar.gz::https://github.com/PyCQA/pep8-naming/archive/0.7.0.tar.gz
 	md5sums = 3f995030cf95cb3a548334d6b9b55033
 

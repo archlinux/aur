@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/PyCQA/pep8-naming"
 license=('MIT')
 depends=('python')
+provides=('flake-pep8-naming')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz")
 md5sums=('3f995030cf95cb3a548334d6b9b55033')
