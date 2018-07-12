@@ -2,7 +2,7 @@
 # Maintainer: elmo-space
 # Contributor: elmo-space
 pkgname=stride-desktop
-pkgver=1.21.99
+pkgver=1.22.76
 pkgrel=1
 pkgdesc="Stride is a cloud-based team business communication and collaboration tool - Desktop client"
 arch=('x86_64')
