@@ -3,11 +3,11 @@
 
 # Uncomment, if you want tha last release
 #_version=spry_v2.5.0
-_spryrel=2.5.0.spry.r6
+_spryrel=2.5.0.spry.r7
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.5.0.spry.r6.r0.g4414bdce4
-pkgrel=2
+pkgver=2.5.0.spry.r7.r0.g3a06e5626
+pkgrel=1
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
 url="https://www.spryservers.net/"
@@ -15,7 +15,7 @@ license=('GPL2')
 depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils')
 optdepends=()
 makedepends=('cmake' 'qt5-tools')
-provides=('mirall' 'mirall-git' 'sprycloud-client')
+provides=('sprycloud-client')
 conflicts=('sprycloud-client')
 install=${_name}.install
 options=(!strip)
