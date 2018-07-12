@@ -9,7 +9,7 @@ pkgbase = soapyosmo
 	depends = soapysdr
 	depends = gnuradio-osmosdr
 	depends = libmirisdr
-	source = soapyosmo-0.2.5::https://github.com/pothosware/SoapyOsmo/archive/.tar.gz
+	source = soapyosmo-0.2.5.tar.gz::https://github.com/pothosware/SoapyOsmo/archive/soapy-osmo-0.2.5.tar.gz
 	sha256sums = 95a81dbe296e95d928e31e5d7c55aea9acb90740a170caa9d9754f116c94e4d1
 
 pkgname = soapyosmo
