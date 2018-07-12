@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+exec mono /usr/share/lessmsi/lessmsi-gui.exe

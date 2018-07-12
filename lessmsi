@@ -1,12 +1,2 @@
 #!/usr/bin/env sh
-
-export WINEARCH=win32 WINEPREFIX=$HOME/.wine32
-
-winetricks -q dotnet45
-
-if [ $(uname -m) = 'x86_64' ]; then
-  LD_PRELOAD=/usr/lib32/libjpeg.so.62 wine /usr/share/lessmsi/lessmsi.exe $@
-else
-  wine /usr/share/lessmsi/lessmsi.exe $@
-fi
-
+exec mono /usr/share/lessmsi/lessmsi.exe
