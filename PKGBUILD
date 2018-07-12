@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 _pkgname=pep8-naming
 pkgname=python-pep8-naming
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="This module provides a name plugin for flake8, the Python code checker"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz")
-md5sums=('01e30e9ea6d410210850cc725bfed5e6')
+md5sums=('3f995030cf95cb3a548334d6b9b55033')
 
 build() {
   cd "${_pkgname}-${pkgver}"
