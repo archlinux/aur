@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
 depends=(openimageio boost blosc embree glfw-x11 gtk3 opencl-icd-loader)
-optdepends=("opencl-dirver: for gpu acceleration"
+optdepends=("opencl-driver: for gpu acceleration"
             "python-pyside: for pyluxcoretools gui")
 makedepends=(git doxygen cmake python-pyside-tools opencl-headers)
 conflicts=(luxrays-hg)
