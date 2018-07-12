@@ -4,16 +4,15 @@
 pkgname=perl-latexml
 _realname=LaTeXML
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="LaTeX to XML converter"
 arch=('any')
 license=('custom')
 url="http://dlmf.nist.gov/LaTeXML/"
 depends=('perl' 'perl-parse-recdescent' 'perl-text-unidecode'
-    'imagemagick6' 'perl-xml-libxml' 
-    'perl-xml-libxslt' 'db' 'texlive-core'
-    'perl-image-size' 'perl-file-which'
-    'perl-libwww' 'perl-io-string' 'perl-archive-zip')
+	 'imagemagick6' 'perl-xml-libxml' 'perl-json-xs' 'perl-xml-libxslt'
+	 'db' 'texlive-core' 'perl-image-size' 'perl-file-which'
+	 'perl-libwww' 'perl-io-string' 'perl-archive-zip')
 options=('!emptydirs')
 source=("http://dlmf.nist.gov/$_realname/releases/$_realname-$pkgver.tar.gz")
 sha512sums=('521134f7b3820c2cbf8fbf60778f03f40b8bb6900311d82da986e8dd3ee1a0d518ef9bb4b852bd95a5bac758bb65b159218602f4adf454c77dfbf6280a4bd1a4')

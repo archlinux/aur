@@ -1,7 +1,7 @@
 pkgbase = perl-latexml
 	pkgdesc = LaTeX to XML converter
 	pkgver = 0.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dlmf.nist.gov/LaTeXML/
 	arch = any
 	license = custom
@@ -10,6 +10,7 @@ pkgbase = perl-latexml
 	depends = perl-text-unidecode
 	depends = imagemagick6
 	depends = perl-xml-libxml
+	depends = perl-json-xs
 	depends = perl-xml-libxslt
 	depends = db
 	depends = texlive-core
