@@ -10,7 +10,6 @@ pkgbase = babl-git
 	depends = glibc
 	provides = babl=0.1.52.23.ga0dba44
 	conflicts = babl
-	options = !libtool
 	source = git+https://gitlab.gnome.org/GNOME/babl
 	md5sums = SKIP
 

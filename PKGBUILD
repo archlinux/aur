@@ -13,28 +13,25 @@ depends=('glibc')
 makedepends=('git') # meson
 provides=("babl=${pkgver}")
 conflicts=('babl')
-options=(!libtool)
 source=(git+https://gitlab.gnome.org/GNOME/babl)
 md5sums=('SKIP')
 
 _gitroot=GITURL
 _gitname=babl
 
-# Don't port to meson until babl's runtime cpu detection works there
+prepare() {
+	cd "$srcdir"/$_gitname
+	autoreconf -fi
+	./configure
+}
 
 build() {
 	cd "$srcdir"/$_gitname
-
-	#meson builddir --prefix=/usr/ -Denable-tests=false
-	#meson builddir --prefix=/usr/ -Denable-tests=false
-	./autogen.sh --prefix=/usr --disable-docs
 	make
 }
 
 package() {
 	cd "$srcdir"/$_gitname
-
-	#DESTDIR="${pkgdir}" ninja -C builddir install
 	make DESTDIR="$pkgdir" install
 }
 
