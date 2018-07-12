@@ -16,6 +16,7 @@ pkgbase = bitwarden_rs-git
 	conflicts = bitwarden_rs
 	conflicts = bitwarden_rs-vault-git
 	conflicts = bitwarden_rs-vault
+	backup = etc/bitwarden_rs.env
 	source = git+https://github.com/dani-garcia/bitwarden_rs.git
 	source = bitwarden_rs.install
 	source = bitwarden_rs.service
