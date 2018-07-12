@@ -7,6 +7,7 @@ User=sonarr
 Group=sonarr
 ExecStart=/usr/bin/mono /usr/lib/sonarr/NzbDrone.exe -nobrowser -data=/var/lib/sonarr
 Type=simple
+TimeoutStopSec=20
 
 # Lets built in updater work well.
 Restart=on-failure

@@ -30,7 +30,7 @@ source=("https://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.${pkgver}.m
 
 noextract=()
 sha256sums=('15206c3ba421c7db282de82562084a473666e09447d2ccd7fa28557e03860548'
-            '738193114a554ef74b26ba163b28eb9835816bf106934f08c616b1adbcfd4bd6'
+            'c177024bdf5c8c0e42a866cb0509e6130e2bb79a14c7e91556e42f8b18e37bd5'
             'bd00676bddce255e42ebbed60e4af6d0910b0efcd0602f2307dedb510dd22033'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             'a436a979ca3a9e78bdc410bd0027d97956bfa8d2d4f2b7bdf3f7d2ed199dd6a8')
