@@ -2,7 +2,7 @@
 
 pkgname=qpicospeaker-git
 pkgsrc=qpicospeaker
-pkgver=r19.f92a59b
+pkgver=r20.0dd74a4
 pkgrel=1
 pkgdesc='Qt GUI for the svox-pico text-to-speech engine'
 arch=('i686' 'x86_64')
@@ -41,8 +41,7 @@ build() {
 
 package() {
     install -Dm755 ./build/qpicospeaker "$pkgdir/usr/bin/qpicospeaker"
-    install -Dm666 ./qpicospeaker/data/icons/32x32/qpicospeaker.png "$pkgdir/usr/share/icons/hicolor/32x32/qpicospeaker.png"
-    install -d -Dm666 "$pkgdir/usr/share/qpicospeaker/data/icons"
-    install -Dm666 ./qpicospeaker/data/icons/qpicospeaker.svg "$pkgdir/usr/share/qpicospeaker/data/icons/qpicospeaker.svg"
+    install -Dm666 ./qpicospeaker/data/icons/32x32/qpicospeaker.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/qpicospeaker.png"
+    install -Dm666 ./qpicospeaker/data/icons/64x64/qpicospeaker.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/qpicospeaker.png"
     install -Dm666 ./qpicospeaker/data/desktop/qpicospeaker.desktop "$pkgdir/usr/share/applications/qpicospeaker.desktop"
 }
