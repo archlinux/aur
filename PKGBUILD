@@ -4,8 +4,8 @@
 # Contributor: Thomas Baechler <thomas at archlinux dot org>
 
 pkgbase=linux-covolunablu-gaming
-_srcname=linux-4.16
-pkgver=4.16.9
+_srcname=linux-4.17
+pkgver=4.17.6
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -27,33 +27,32 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-  0003-Partially-revert-swiotlb-remove-various-exports.patch
-  0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
+  0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+  0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
+  0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
   bfq-default.patch
-  bfq-lock-division-zero.patch
-  https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/c4948d923637a956853df0e85a6d530e483bdffa/drivers/input/joystick/xpad.c
+  'https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/bbc8608755da42e7494c00dce24a636007972def/drivers/input/joystick/xpad.c'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
+sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '299b45a4f16f763ecf654e6642c020b6e9e461601d056ef44ecb21b54d736cbf'
+            '7699b2246e4ed1e284f2947d5e0b66653c27574995caf6a02a3280bd055cfedf'
             'SKIP'
-            'd465b87010abaa644d782efb7ba6baa5594d975336bd02444719eeeb0cebe354'
+            '965cfc6e2c87b5645e4d03f24b8866cada85641187961d1408e12347a0421d2f'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            # -- patches
-            '69241df4bd7897eb04db90e4d0a82c6e0b99b806019ba96bb885278ca8da89df'
-            '10728f672a83a515af540cafafde62346e9ccc2d14bf74e417fd2693865b1293'
-            'a81b612369e78d142ff80ec3adda36b3f94503e5a68d54282c508a112cc8dae0'
-            '052a39582f84c52b027c261fcec90325493f4d46f15647c274a58e39145deced'
+            # -- archlinux patches --
+            '92f848d0e21fbb2400e50d1c1021514893423641e5450896d7b1d88aa880b2b9'
+            'fc3c50ae6bd905608e0533a883ab569fcf54038fb9d6569b391107d9fd00abbc'
+            'bc50c605bd0e1fa7437c21ddef728b83b6de3322b988e14713032993dfa1fc69'
+            '66284102261c4ed53db050e9045c8672ba0e5171884b46e58f6cd417774d8578'
+            # -- covolunablu-gaming patches --
             'a20f72660076bc5f73404800da9bc52ceb592bdfbdab19438d66da8c01edc4f4'
-            '2a40a1906c5bef180035c8af21c38c1f364a81f38507b684058803b3fa9fcfd6'
-            '851b79826c1695acf93faffb17bcb420c11d12cfa96ac6b5082e4306c2d8fb55'
+            '24cd09c5eea6b7de311f9ae273a784f5a2c04d47f864825da4f8c6f8cf89620e'
 )
 
 _kernelname=${pkgbase#linux}
@@ -72,20 +71,16 @@ prepare() {
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
   # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 
-  # NVIDIA driver compat
-  patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
+  # https://bugs.archlinux.org/task/56780
+  patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
 
-  # https://bugs.archlinux.org/task/58237
-  patch -Np1 -i ../0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
+  # Fix iwd provoking a BUG
+  patch -Np1 -i ../0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
 
   # use bfq as default scheduler
   patch -p1 -i ../bfq-default.patch
-
-  # fix for bfq blocking requests for slow devices
-  # https://www.spinics.net/lists/kernel/msg2739205.html
-  patch -p1 -i ../bfq-lock-division-zero.patch
 
   # use steamos version of xpad
   cp "${srcdir}/xpad.c" ./drivers/input/joystick/xpad.c
