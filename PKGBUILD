@@ -3,7 +3,7 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=amdvlk-git
-pkgver=r23.baf3c1c
+pkgver=r38.d88feee
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -12,15 +12,17 @@ license=('MIT')
 depends=('vulkan-icd-loader')
 provides=('vulkan-amdvlk' 'vulkan-driver')
 conflicts=('vulkan-amdvlk')
-makedepends=('dri2proto' 'xorg-server-devel' 'cmake' 'python' 'libxml2' 'wayland' 'git')
+makedepends=('dri2proto' 'xorg-server-devel' 'cmake' 'python' 'libxml2' 'wayland' 'libdrm' 'git')
 source=('llvm::git+https://github.com/GPUOpen-Drivers/llvm.git#branch=amd-vulkan-dev'
 	'git+https://github.com/GPUOpen-Drivers/xgl.git#branch=dev'
 	'git+https://github.com/GPUOpen-Drivers/pal.git#branch=dev'
 	'git+https://github.com/GPUOpen-Drivers/wsa.git#branch=master'
 	'git+https://github.com/GPUOpen-Drivers/AMDVLK.git#branch=dev'
+	'git+https://github.com/GPUOpen-Drivers/llpc.git#branch=dev'
 	'amdPalSettings.cfg'
 	)
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -34,7 +36,8 @@ pkgver() {
 }
 
 prepare() {
-  cd xgl
+  # fix building with commit f609020
+  sed -i "s/<drm/<libdrm/g" pal/src/core/os/lnx/display/displayWindowSystem.h
 }
 
 build() {
