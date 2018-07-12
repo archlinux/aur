@@ -1,0 +1,19 @@
+pkgbase = python-scielo-articlemeta
+	pkgdesc = SciELO's ArticleMeta API Client
+	pkgver = 1.26.2
+	pkgrel = 1
+	url = https://github.com/scieloorg/articlemetaapi
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	depends = python-thriftpy
+	depends = python-requests
+	depends = python-scielo-xylose
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/32/28/83b688a641d18081473299a4efbb40cb7d2837c6d7a7a959cfad8adedef1/articlemetaapi-1.26.2-py2.py3-none-any.whl
+	source = https://raw.githubusercontent.com/scieloorg/articlemetaapi/dd457354261a7d716e34a36cc2eee000a21d4aad/LICENSE
+	sha256sums = 41d98f7a8952cd177e2d0964cd3f01d34856a9406c22564323f7e917c17e4144
+	sha256sums = ef8dfe393d6b68b332d3425d4a9301e0c24fd0c250f88a6a527fa800ccb7fd6e
+
+pkgname = python-scielo-articlemeta
+
