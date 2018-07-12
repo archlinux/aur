@@ -32,9 +32,7 @@ pkgbase = tribler
 	depends = python2-keyring
 	depends = python2-keyrings-alt
 	optdepends = vlc: for internal video player
-	provides = tribler
 	provides = python2-pyipv8
-	conflicts = tribler
 	conflicts = python2-pyipv8
 	source = git+https://github.com/Tribler/tribler.git#tag=v7.1.0-exp3
 	source = git+https://github.com/Tribler/dispersy.git

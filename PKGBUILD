@@ -14,8 +14,8 @@ depends=('python2-cryptography' 'python2-feedparser' 'python2-apsw' 'python2-che
 	 'python2-matplotlib' 'python2-service_identity' 'python2-keyring' 'python2-keyrings-alt')
 optdepends=('vlc: for internal video player')
 makedepends=('python2-setuptools')
-provides=('tribler' 'python2-pyipv8')
-conflicts=('tribler' 'python2-pyipv8')
+provides=('python2-pyipv8')
+conflicts=('python2-pyipv8')
 source=("git+https://github.com/Tribler/tribler.git#tag=v$_gitver"
 	'git+https://github.com/Tribler/dispersy.git'
 	'git+https://github.com/devos50/pymdht.git'
