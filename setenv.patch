@@ -1,0 +1,13 @@
+diff -ru a/usr/bin/qspectrumanalyzer b/usr/bin/qspectrumanalyzer
+--- a/usr/bin/qspectrumanalyzer	2018-07-12 21:32:07.933877786 +0200
++++ b/usr/bin/qspectrumanalyzer	2018-07-12 21:31:58.713698962 +0200
+@@ -4,6 +4,9 @@
+ import re
+ import sys
+ from pkg_resources import load_entry_point
++import os
++
++os.environ['QT_PREFERRED_BINDING'] = 'PyQt5'
+ 
+ if __name__ == '__main__':
+     sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
