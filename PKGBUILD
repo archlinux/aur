@@ -4,7 +4,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.42.5
+pkgver=2.43.1
 pkgrel=1
 pkgdesc="A SVG viewing library (mingw-w64)"
 arch=('any')
@@ -22,20 +22,11 @@ makedepends=('mingw-w64-configure'
              'setconf')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://download.gnome.org/sources/librsvg/${pkgver%.*}/librsvg-${pkgver}.tar.xz"
-        "configure-fix.patch"
         "makefile-fix.patch")
-sha256sums=('d4dd51a492a2022c07dec385e22947190fe70410928c471934ff3399f20935ec'
-            'e84509bf26fec56552deca3a8d42f72689f725eb98d05b5c5ee4cd454a9d37ca'
-            'b7d11e11d3966d0e6dac4e1a5190c751ca33f3f9f3142c138e0dadbdce94d035')
+sha256sums=('1d631f21c9150bf408819ed94d29829b509392bc2884f9be3c02ec2ed2d77d87'
+            '7bb1884edf7372892bc9a7f365d7f6ca35af8d166c853c59518f51311d06770b')
 
 prepare() {
-  cd ${srcdir}
-  # fix wrong target in rust
-  patch -Np0 -i configure-fix.patch
-
-  cd "${srcdir}/librsvg-${pkgver}"
-  autoreconf
-
   cd ${srcdir}
   # fix the name of rust static libaray
   # fix the way to link rust static libaray
@@ -54,12 +45,21 @@ build() {
 
   cd "${srcdir}/librsvg-${pkgver}"
   for _arch in ${_architectures}; do
+    # configure can read RUST_TARGET now
+    if [[ ${_arch} = i686-w64-mingw32 ]] ; then
+      export RUST_TARGET=i686-pc-windows-gnu
+    fi
+    if [[ ${_arch} = x86_64-w64-mingw32 ]] ; then
+      export RUST_TARGET=x86_64-pc-windows-gnu
+    fi
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
       --disable-introspection \
       --disable-tools
     # pass static rust package to linker
     sed -i "s/^deplibs_check_method=.*/deplibs_check_method=\"pass_all\"/g" libtool
+    # add missing crt libs (ws2_32 and userenv) to LIBRSVG_LIBS
+    sed -i "s/^LIBRSVG_LIBS = .*/& -lws2_32 -luserenv/g" Makefile
     make
     popd
   done
