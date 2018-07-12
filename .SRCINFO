@@ -1,7 +1,7 @@
 pkgbase = dlib
 	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques
-	pkgver = 19.13
-	pkgrel = 2
+	pkgver = 19.14
+	pkgrel = 1
 	url = http://www.dlib.net
 	arch = x86_64
 	license = custom
@@ -15,8 +15,8 @@ pkgbase = dlib
 	optdepends = libpng: for PNG support
 	optdepends = neon: for neon support
 	optdepends = sqlite: for sqlite support
-	source = https://downloads.sourceforge.net/project/dclib/dlib/v19.13/dlib-19.13.tar.bz2
-	sha256sums = fe90b94677f837c8f0bcb0bb450b313a422a9171ac682583a75052c58f80ba54
+	source = https://downloads.sourceforge.net/project/dclib/dlib/v19.14/dlib-19.14.tar.bz2
+	sha256sums = b552e2f1c3a4fc3fc5e9a127e3cc3c6c1b0d7bd6eb7d886a5cca1db192def034
 
 pkgname = dlib
 
