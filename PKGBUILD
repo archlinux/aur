@@ -4,7 +4,7 @@ _pkgname=LMS8Suite
 pkgver=18.06.0
 pkgrel=1
 pkgdesc="Utilities for use with hardware based upon LMS8001 RFICs from Lime Microsystems."
-arch=(any)
+arch=('any')
 url="https://github.com/myriadrf/LMS8Suite"
 license=('Apache')
 depends=('wxgtk3' 'opengl-driver' 'libusb>=1.0' 'soapysdr')
