@@ -1,10 +1,10 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
 pkgname=osmo-fl2k-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.1.r9.b745896
+pkgver=0.1.1.r11.0fb8849
 pkgrel=1
 pkgdesc="Library to use cheap (FL2000 based) USB3.0 to VGA converters as SDR"
-arch=(any)
+arch=('any')
 url="https://osmocom.org/projects/osmo-fl2k/wiki"
 license=('GPL')
 depends=('libusb>=1.0')
