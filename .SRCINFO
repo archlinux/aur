@@ -1,8 +1,8 @@
 pkgbase = redasm-git
-	pkgdesc = https://github.com/REDasmOrg/REDasm
+	pkgdesc = Portable Reverse Engineering Framework
 	pkgver = r474.e08b300
 	pkgrel = 1
-	url = Portable Reverse Engineering Framework
+	url = https://github.com/REDasmOrg/REDasm
 	arch = i686
 	arch = x86_64
 	license = GPL3

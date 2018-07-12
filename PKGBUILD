@@ -3,9 +3,9 @@
 pkgname=redasm-git
 pkgver=r474.e08b300
 pkgrel=1
-pkgdesc='https://github.com/REDasmOrg/REDasm'
+url='https://github.com/REDasmOrg/REDasm'
 arch=('i686' 'x86_64')
-url='Portable Reverse Engineering Framework'
+pkgdesc='Portable Reverse Engineering Framework'
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('git')
