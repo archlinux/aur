@@ -18,6 +18,7 @@ pkgbase = bitwarden_rs-vault-git
 	conflicts = bitwarden_rs
 	conflicts = bitwarden_rs-git
 	conflicts = bitwarden_rs-vault
+	backup = etc/bitwarden_rs.env
 	source = git+https://github.com/dani-garcia/bitwarden_rs.git
 	source = https://github.com/bitwarden/web/archive/v1.27.0.tar.gz
 	source = 0001-Change-Vault-Settings.patch
