@@ -22,13 +22,11 @@ pkgbase = sonarr-develop
 	replaces = nzbdrone
 	replaces = nzbdrone-torrents
 	source = http://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.tar.gz
-	source = sonarr.sh
 	source = sonarr.service
 	source = sonarr.sysusers
 	source = sonarr.install
 	md5sums = SKIP
-	md5sums = a7490c3f8d6c3a314b59f87f71086f1f
-	md5sums = 41d8663e989a8db1fc4c6b81187a4d48
+	md5sums = 4489e2fd01d8958acbb994ce21063fb6
 	md5sums = 9a334e656488c989309297fbb40c2520
 	md5sums = 99387b40dd89f726319b67e1d1e480b5
 

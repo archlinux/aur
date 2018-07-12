@@ -18,14 +18,12 @@ conflicts=('nzbdrone' 'nzbdrone-torrents' 'sonarr')
 replaces=('nzbdrone' 'nzbdrone-torrents')
 changelog=
 source=("http://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.tar.gz"
-        "sonarr.sh"
         "sonarr.service"
         "sonarr.sysusers"
         "sonarr.install")
 noextract=()
 md5sums=('SKIP'
-         'a7490c3f8d6c3a314b59f87f71086f1f'
-         '41d8663e989a8db1fc4c6b81187a4d48'
+         '4489e2fd01d8958acbb994ce21063fb6'
          '9a334e656488c989309297fbb40c2520'
          '99387b40dd89f726319b67e1d1e480b5')
 

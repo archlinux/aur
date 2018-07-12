@@ -1,11 +1,5 @@
-*
-!PKGBUILD
-!.SRCINFO
-!*.patch
-!*.desktop
-!*.install
-!*.service
-!*.sh
-!*.conf
-!.gitignore
-!*.sysusers
+*.xz
+*.gz
+*.log
+/src/
+/pkg/
