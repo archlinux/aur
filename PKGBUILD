@@ -8,9 +8,9 @@ makedepends=('cmake')
 arch=('i686' 'x86_64')
 license=('GPL2')
 pkgrel=1
-pkgver=0.60.88
+pkgver=0.70.90
 source=("https://github.com/F1ash/qt-virt-manager/archive/${pkgver}.tar.gz")
-sha256sums=('6fefdcdf7902688c5c0c41e568d1198a24b9d9f84ddf5dea5c8c3d02fd044f3c')
+sha256sums=('585840d3a6ba20b03efd378f0ce1671b4fe4beb91b3d818a97d3b49280e6cc2e')
 depends+=('qt5-base' 'qt5-svg' 'qtermwidget' 'spice-protocol' 'spice-glib' 'libvirt' 'scrub' 'qt5-multimedia' 'hicolor-icon-theme' 'x11-ssh-askpass' 'libvncserver')
 pkgdesc="Qt5 Virtual Machine Manager provides a graphical tool for administering virtual machines for QEMU/KVM, Xen, and LXC and other Virtual Entities.
 Uses libvirt as the backend management API."
