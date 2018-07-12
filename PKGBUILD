@@ -22,7 +22,7 @@ groups=('dlang' 'dlang-gdc')
 conflicts=('gdc1-bin' 'gdc1-hg' 'gdc')
 options=('!libtool' '!emptydirs' '!buildflags')
 source=(ftp://gcc.gnu.org/pub/gcc/snapshots/${_gccver}-${_gccsnapshot}/gcc-${_gccver}-${_gccsnapshot}.tar.bz2
-        ${_gitname}::git://github.com/D-Programming-GDC/GDC.git
+        ${_gitname}.tar.gz::git://github.com/D-Programming-GDC/GDC.git
         folders.diff)
 
 pkgver()
