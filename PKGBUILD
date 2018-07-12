@@ -21,6 +21,7 @@ license=('custom')
 makedepends=('jdk7-openjdk' 'ccache' 'cpio' 'unzip' 'zip' 'gcc7'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=http://hg.openjdk.java.net/shenandoah/jdk8u
+_last_update=20180712
 declare -g -A _repo_versions=(
     [jdk8u]=90b7e0f4f9a4
     [corba]=53cca1228345
@@ -31,7 +32,7 @@ declare -g -A _repo_versions=(
     [langtools]=237e527ccd62
     [nashorn]=66f1a77ea0a1
 )
-pkgver=${_java_ver}.u${_jdk_update}_hotspot${_repo_versions[hotspot]}
+pkgver=${_java_ver}.u${_jdk_update}_${_last_update}_hotspot${_repo_versions[hotspot]}
 source=("jdk8u-${_repo_versions[jdk8u]}.tar.gz::${_url_src}/archive/${_repo_versions[jdk8u]}.tar.gz"
         "corba-${_repo_versions[corba]}.tar.gz::${_url_src}/corba/archive/${_repo_versions[corba]}.tar.gz"
         "hotspot-${_repo_versions[hotspot]}.tar.gz::${_url_src}/hotspot/archive/${_repo_versions[hotspot]}.tar.gz"
