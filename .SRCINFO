@@ -1,14 +1,14 @@
 pkgbase = python2-pysmb
 	pkgdesc = An experimental SMB/CIFS library written in Python to support file sharing between Windows and Linux machines.
-	pkgver = 1.1.22
+	pkgver = 1.1.23
 	pkgrel = 1
 	url = https://miketeo.net/wp/index.php/projects/pysmb
 	arch = any
 	license = GPL
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://pypi.python.org/packages/be/83/0356cbb096e2934cd01f8049212f16cde114bbe19c7839f795255c741969/pysmb-1.1.22.zip
-	sha1sums = e64c247bf69925b2eaf08472e08fc990d3cfe00d
+	source = https://files.pythonhosted.org/packages/67/b9/7becc03fbc39a51451a9c4497e8df2268ccccb5ee25472a1303f2e31605a/pysmb-1.1.23.zip
+	sha1sums = b7eb338b584758b255f9263d14b2e01cf764d628
 
 pkgname = python2-pysmb
 
