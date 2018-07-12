@@ -2,7 +2,7 @@
 pkgname=atcore-git
 conflicts=('atcore')
 provides=('atcore')
-pkgver=eef3b5d
+pkgver=1.0.70.r695.cac820e
 pkgrel=1
 pkgdesc="KDE 3D Printing libary"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,8 +14,9 @@ source=('git://anongit.kde.org/atcore.git')
 md5sums=(SKIP)
 
 pkgver() {
-  cd "atcore"
-  git log --pretty=format:'%h' -n 1
+   cd "atcore"
+   version="1.0.70"
+   printf "%s.r%s.%s" "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -26,4 +27,4 @@ build() {
 package(){
   cd "atcore"
   make DESTDIR="$pkgdir/" install 
-}  
+}
