@@ -1,5 +1,7 @@
-# Maintainer: Justin Dray <justin@dray.be>
-# Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Contributor:: Justin Dray <justin@dray.be>
+# Contributor:: Daniel Egeberg <daniel.egeberg@gmail.com>
+
 pkgname="sonarr-develop"
 pkgver=2.0.0.5239
 pkgrel=1
