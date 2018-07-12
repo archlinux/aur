@@ -2,7 +2,7 @@ pkgbase = qtpad-git
 	pkgdesc = Modern and customizable sticky note application
 	pkgver = 0
 	pkgrel = 1
-	url = https://github.com/willbelr/qtpad
+	url = https://gitlab.com/william.belanger/qtpad
 	arch = any
 	license = GPL3
 	depends = python>=3
@@ -11,7 +11,7 @@ pkgbase = qtpad-git
 	depends = python-requests
 	provides = qtpad
 	conflicts = qtpad
-	source = git+https://github.com/willbelr/qtpad.git
+	source = git+https://gitlab.com/william.belanger/qtpad.git
 	md5sums = SKIP
 
 pkgname = qtpad-git
