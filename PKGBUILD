@@ -1,15 +1,15 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 # Maintainer: Alexandre Macabies <web+oss@zopieux.com>
 #
-pkgname='gn-git'
+pkgname=gn-git
 pkgdesc='Meta-build system which generates Ninja build files'
 pkgver=r1438.8ce4e49a
-pkgrel=1
+pkgrel=2
 license=('BSD')
 arch=('x86_64' 'i686')
 conflicts=('gn-bin')
 provides=('gn')
-depends=('glibc' 'gcc-libs')
+depends=('gcc-libs')
 makedepends=('python2' 'ninja' 'clang')
 url='https://gn.googlesource.com/gn'
 source=("gn::git+${url}")

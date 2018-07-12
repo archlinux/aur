@@ -1,7 +1,7 @@
 pkgbase = gn-git
 	pkgdesc = Meta-build system which generates Ninja build files
 	pkgver = r1438.8ce4e49a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gn.googlesource.com/gn
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = gn-git
 	makedepends = python2
 	makedepends = ninja
 	makedepends = clang
-	depends = glibc
 	depends = gcc-libs
 	provides = gn
 	conflicts = gn-bin
