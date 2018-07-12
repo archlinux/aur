@@ -8,7 +8,7 @@ url="https://osmocom.org/projects/osmo-fl2k/wiki"
 license=('GPL')
 depends=('libusb>=1.0')
 makedepends=('cmake')
-source=("$pkgname-$pkgver::https://github.com/FFY00/osmo-fl2k/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/FFY00/osmo-fl2k/archive/v$pkgver.tar.gz")
 sha256sums=('0124da419714350d98f9075f016c31ac5643b1b2956be35520acba85dc2ed7a4')
 
 build() {
