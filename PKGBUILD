@@ -1,3 +1,5 @@
+## Maintainer: wchurch58
+
 pkgname=pcsx2-emu-fresh
 pkgver=1.5.0
 pkgrel=1
