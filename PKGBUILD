@@ -9,7 +9,7 @@ url="https://github.com/jaraco/keyring"
 license=('MIT')
 depends=('python2-six')
 makedepends=('python2-pip')
-source=("$pkgname-$pkgver::https://pypi.io/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('b59c86b67b9027a86e841a49efc41025bcc3b1b0308629617b66b7011e52db5a')
 
 build() {
