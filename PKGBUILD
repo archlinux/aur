@@ -2,9 +2,8 @@
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-
 pkgname=babl-git
-pkgver=0.1.50.3.g24d7ba9
+pkgver=0.1.52.23.ga0dba44
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format translation library."
 arch=('i686' 'x86_64')
