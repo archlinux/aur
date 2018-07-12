@@ -43,5 +43,6 @@ package() {
     install -Dm755 ./build/qpicospeaker "$pkgdir/usr/bin/qpicospeaker"
     install -Dm666 ./qpicospeaker/data/icons/32x32/qpicospeaker.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/qpicospeaker.png"
     install -Dm666 ./qpicospeaker/data/icons/64x64/qpicospeaker.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/qpicospeaker.png"
+    install -Dm666 ./qpicospeaker/data/icons/128x128/qpicospeaker.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/qpicospeaker.png"
     install -Dm666 ./qpicospeaker/data/desktop/qpicospeaker.desktop "$pkgdir/usr/share/applications/qpicospeaker.desktop"
 }
