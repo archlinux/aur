@@ -1,0 +1,21 @@
+#   porto.service
+
+[Unit]
+Description=Yet another Linux container management system.
+After=network-online.target
+Requires=network-online.target
+ConditionVirtualization=!container
+Documentation=https://github.com/yandex/porto
+
+[Service]
+ExecStart=/usr/bin/portod
+ExecReload=/usr/bin/portod reload
+ExecStop=/usr/bin/portod stop
+PIDFile=/run/portoloop.pid
+Restart=on-failure
+KillSignal=SIGINT
+KillMode=process
+TimeoutStopSec=120
+
+[Install]
+WantedBy=multi-user.target
