@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Fontana <lo@linux.com>
 pkgname=coredns
 gopkgname='github.com/coredns/coredns'
-pkgver=v1.1.4
+pkgver=v1.2.0
 pkgrel=1
 pkgdesc="CoreDNS is a DNS server that chains plugins"
 makedepends=('go' 'make')
@@ -15,7 +15,7 @@ https://raw.githubusercontent.com/coredns/deployment/39c9f7ed7640f86fa0fb6ba06a8
 https://raw.githubusercontent.com/coredns/deployment/39c9f7ed7640f86fa0fb6ba06a88e9afa830b306/systemd/coredns-sysusers.conf)
 
 
-sha256sums=('db467a3f202921dba79e8a37a2725b7416961b1dd3da32916d28efc88c08f585'
+sha256sums=('ef7f8536b63dd23cff297667da750f8d4c0c9dc80087b6256dc7333c4359665e'
 '947b4838af48212ecd8e565155c97ca61ff7d408d0b8622499925b6e232656c4'
 '178c632fd855a5a35ae69e13ab554d5abad696cf75d23c6b6b37f0ace3b4b0f2')
 
