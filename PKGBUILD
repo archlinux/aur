@@ -2,7 +2,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=lib32-amdvlk-git
-pkgver=r20.d62dbcc
+pkgver=r38.d88feee
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver (32-bit)"
 arch=(x86_64)
@@ -11,13 +11,15 @@ license=('MIT')
 depends=('lib32-vulkan-icd-loader')
 provides=('lib32-vulkan-amdvlk' 'lib32-vulkan-driver')
 conflicts=('lib32-vulkan-amdvlk')
-makedepends=('dri2proto' 'xorg-server-devel' 'cmake' 'python' 'lib32-libxml2' 'git')
+makedepends=('dri2proto' 'xorg-server-devel' 'cmake' 'python' 'lib32-libxml2' 'lib32-libdrm' 'git')
 source=('llvm::git+https://github.com/GPUOpen-Drivers/llvm.git#branch=amd-vulkan-dev'
 	'git+https://github.com/GPUOpen-Drivers/xgl.git#branch=dev'
 	'git+https://github.com/GPUOpen-Drivers/pal.git#branch=dev'
 	'git+https://github.com/GPUOpen-Drivers/AMDVLK.git#branch=dev'
+	'git+https://github.com/GPUOpen-Drivers/llpc.git#branch=dev'
 	)
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -29,7 +31,8 @@ pkgver() {
 }
 
 prepare() {
-  cd xgl
+  # fix building with commit f609020
+  sed -i "s/<drm/<libdrm/g" pal/src/core/os/lnx/display/displayWindowSystem.h
 }
 
 build() {
