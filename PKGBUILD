@@ -38,4 +38,6 @@ package() {
   cd "$srcdir"/gr-limesdr/build
 
   make DESTDIR="$pkgdir" install
+
+  install -Dm 644 "$srcdir"/gr-limesdr/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
