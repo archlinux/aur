@@ -2,7 +2,7 @@
 
 pkgname=qpicospeaker-git
 pkgsrc=qpicospeaker
-pkgver=r20.0dd74a4
+pkgver=r21.69214be
 pkgrel=1
 pkgdesc='Qt GUI for the svox-pico text-to-speech engine'
 arch=('i686' 'x86_64')
