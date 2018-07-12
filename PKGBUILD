@@ -65,7 +65,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.17.6
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -105,7 +105,8 @@ source=(# mainline kernel patches
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch'
-        '0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch')
+        '0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch'
+        '0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch')
 
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
@@ -114,14 +115,15 @@ sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '7fa085ae8c7839fe22257bdebfcd1dfb1e60c40e61157972c349634c122ed086'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '1477ecead9433ff610c56016e13369f42ccab3249745b4d689af48e29257f381'
+            '39cbe2decde7c5939647388102a1811938df8276056e7f6c3594d8bf5ac1a9a5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'e3c08f9b91611186e5ec579187ecea2a0143e5c2dc7ffc30ac6ea6e2b6d130fd'
-            '5403dead9161344b2c01027526146a250147680f4a2d32a54d40c55fc1becc8a'
-            'd55e7de60b12bca26ded4c1bb8eb5860a9092374914a201a0f6a0ed2849d099f')
+            '92f848d0e21fbb2400e50d1c1021514893423641e5450896d7b1d88aa880b2b9'
+            'fc3c50ae6bd905608e0533a883ab569fcf54038fb9d6569b391107d9fd00abbc'
+            'bc50c605bd0e1fa7437c21ddef728b83b6de3322b988e14713032993dfa1fc69'
+            '66284102261c4ed53db050e9045c8672ba0e5171884b46e58f6cd417774d8578')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -149,6 +151,10 @@ prepare() {
         msg "Fix #56780"
         patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
    
+    ### Fix iwd provoking a BUG
+        msg "Fix iwd provoking a BUG"
+        patch -Np1 -i ../0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
+    
     ### Patch source with BFQ-SQ-MQ
         msg "Patching source with BFQ-SQ-MQ patches"
         patch -Np1 -i ../${_bfq_sq_mq_patch}
