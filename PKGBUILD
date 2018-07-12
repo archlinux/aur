@@ -1,6 +1,6 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=qdriverstation-git
-pkgver=r1183.cc77711
+pkgver=r1186.9271a70
 pkgrel=1
 pkgdesc="Open source clone of the FRC Driver Station"
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
+	git submodule update --init
 }
 
 build() {
