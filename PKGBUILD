@@ -6,22 +6,21 @@
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
 # Additional patching: Nikita Tarasov <nikatar@disroot.org>
 
-
 _pkgname=thunderbird
 pkgname=thunderbird-appmenu
-pkgver=52.8.0
+pkgver=52.9.1
 pkgrel=1
 pkgdesc="Thunderbird from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
-url="https://www.mozilla.org/thunderbird/"
-depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
-         nss hunspell sqlite ttf-font icu libvpx)
+url="https://aur.archlinux.org/packages/thunderbird-appmenu/"
+depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
+         nss hunspell sqlite ttf-font libvpx icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm)
 optdepends=('libcanberra: sound support')
 provides=("thunderbird=$pkgver")          
-conflicts=("thunderbird")        
+conflicts=("thunderbird")     
 options=(!emptydirs !makeflags)
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
         $_pkgname.desktop
@@ -29,7 +28,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         rust-i686.patch fix-wifi-scanner.diff
         thunderbird-install-dir.patch no-crmf.diff
         unity-menubar.patch)
-sha256sums=('35b9a687997d92f36107090c1217941e5d637760b0efa7d13819cde36894eb59'
+sha256sums=('286fa71504e7184f3a41bcbdebf591bebe8e04dccbad1c93a47c6e72a7125c4d'
             '3534ea85d8e0e35dba5f40a7a07844df19f3a480e1358fc50c2502f122dab789'
             '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
@@ -68,10 +67,10 @@ prepare() {
 
   # https://bugs.archlinux.org/task/53890
   patch -d mozilla -Np1 < ../0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
-   
-  # appmenu patching
-  patch -Np1 -i ../unity-menubar.patch 
-   
+  
+  # actual appmenu patch from ubuntu repos
+  patch -Np1 -i ../unity-menubar.patch
+
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
