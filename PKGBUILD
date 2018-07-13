@@ -30,6 +30,10 @@ depends=(
     python2-yaml
     python2-requests
     python2-llvm-lit
+
+    sqlite
+    sqlite-tcl
+    tk
 )
 source=(
   'git+https://github.com/llvm-mirror/lnt.git'
