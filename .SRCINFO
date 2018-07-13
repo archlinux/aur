@@ -1,6 +1,6 @@
 pkgbase = nautilus-open-terminal-git
 	pkgdesc = Nautilus plugin for opening terminals in arbitrary local paths and on SSH servers
-	pkgver = 0.20.2.g28f5d6d
+	pkgver = 0.20.15.g07fe03e
 	pkgrel = 1
 	url = http://git.gnome.org/browse/nautilus-open-terminal/
 	arch = i686
@@ -11,12 +11,15 @@ pkgbase = nautilus-open-terminal-git
 	depends = nautilus
 	depends = intltool
 	depends = gettext
+	depends = gconf
 	provides = nautilus-open-terminal
 	conflicts = nautilus-open-terminal
 	source = git://git.gnome.org/nautilus-open-terminal
 	source = automake.diff
+	source = nautilus-open-terminal.patch
 	sha256sums = SKIP
 	sha256sums = 6573ba31b144526f36b1755a1f9b80539def1e89579c1fa868d5a995f2f17ff2
+	sha256sums = 3a3dd0c13dd41e7212c0dd16861e1e9313f2d8e23df754002e711ce2650ec5f1
 
 pkgname = nautilus-open-terminal-git
 

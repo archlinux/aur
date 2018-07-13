@@ -1,0 +1,19 @@
+commit 7b203ff5189a0832041e720cef08fda44d0c756a
+Author: Xiretza <xiretza@gmail.com>
+Date:   Mon Jun 4 16:25:10 2018 +0200
+
+    Fix libnautilus-extension API compatibility
+
+diff --git a/src/nautilus-open-terminal.c b/src/nautilus-open-terminal.c
+index af4b75b..0afcf66 100644
+--- a/src/nautilus-open-terminal.c
++++ b/src/nautilus-open-terminal.c
+@@ -27,7 +27,7 @@
+ 
+ #include "nautilus-open-terminal.h"
+ 
+-#include <libnautilus-extension/nautilus-menu-provider.h>
++#include <nautilus-extension.h>
+ 
+ #include <glib.h>
+ #include <glib/gi18n-lib.h>
