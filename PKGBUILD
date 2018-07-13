@@ -1,10 +1,10 @@
 # $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer:
+# Maintainer: Li Ruibo <lymanrb@gmail.com>
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux-br.org>
 # Contributor: Rick Rein <jeebusroxors@gmail.com>
 
 pkgname=psqlodbc
-pkgver=09.06.0410
+pkgver=10.03.0000
 pkgrel=1
 pkgdesc="PostgreSQL ODBC driver"
 arch=('x86_64')
@@ -12,8 +12,9 @@ license=('GPL')
 url="http://www.postgresql.org"
 depends=('unixodbc' 'postgresql-libs')
 makedepends=('postgresql')
+install=psqlodbc.install
 source=(https://ftp.postgresql.org/pub/odbc/versions/src/psqlodbc-$pkgver.tar.gz)
-sha256sums=('965b74587a2fd09368acff340ed3bdf2e831cee4e78d1caa79d0cc621364a88c')
+sha256sums=('0d2ff2d10d9347ef6ce83c7ca24f4cb20b4044eeef9638c8ae3bc8107e9e92f8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

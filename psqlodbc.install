@@ -1,0 +1,10 @@
+post_install() {
+  cat <<EOF
+You need to add following section to /etc/odbcinst.ini for the first time of installation:
+
+[PostgreSQL Unicode]
+Description=PostgreSQL Unicode
+Driver=/usr/lib/psqlodbca.so
+UsageCount=1
+EOF
+}
