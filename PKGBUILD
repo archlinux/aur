@@ -2,7 +2,7 @@
 
 pkgname='compute-runtime-git'
 pkgdesc="Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond. Git version."
-pkgver=18.27.11048.r19.g7735fb5
+pkgver=18.27.11048.r34.g7bc1bc3
 pkgrel=1
 arch=('x86_64')
 url='https://01.org/compute-runtime'
@@ -44,6 +44,8 @@ build() {
   cd "${srcdir}/build"
   cmake -DBUILD_TYPE=Release \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         ../neo
   make "$MAKEFLAGS"
 }
