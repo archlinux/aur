@@ -11,7 +11,6 @@ arch=('any')
 url='https://github.com/flozz/rivalcfg'
 license=('custom:WTFPL')
 depends=('python' 'hidapi' 'python-hidapi' 'python-setuptools')
-makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_gver.tar.gz")
 sha256sums=('a9b1a8e3e4368bbe7dc0db5251451e1f3a9997e1874300174408f47f1cbc25ef')
 

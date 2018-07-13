@@ -5,7 +5,6 @@ pkgbase = rivalcfg
 	url = https://github.com/flozz/rivalcfg
 	arch = any
 	license = custom:WTFPL
-	makedepends = git
 	depends = python
 	depends = hidapi
 	depends = python-hidapi
