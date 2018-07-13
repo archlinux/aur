@@ -3,7 +3,7 @@
 pkgname=black
 pkgver=18.6b4
 pkgrel=1
-pkgdesc='Uncompromising code formatter'
+pkgdesc='Uncompromising Python code formatter'
 arch=('any')
 url=https://github.com/ambv/black
 license=('MIT')
