@@ -1,3 +1,6 @@
+bracelet-generator-1.4.1-2
+  * Applied PKGBUILD guideline for python packages
+
 bracelet-generator-1.4.1-1
   * New upstream release
     - New feature

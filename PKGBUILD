@@ -14,8 +14,13 @@ source=("$pkgname-$pkgver-src.tar.xz::https://sourceforge.net/projects/braceletg
 sha512sums=('fb338e1326faf7b8bcf1e3456b00604d2cc8c7b29d1443d6720e7357fdb13e499de64f70dba2164b56ffa34d6f2454b2ad3466d8597d090dfd4202511a77e879')
 changelog=changelog
 
+build() {
+	cd "$srcdir/$pkgname-$pkgver"
+    python3 setup.py build
+}
+
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    python3 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1;
+    python3 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build
     install -D -m644 bracelet-generator.sharedmimeinfo  "${pkgdir}/usr/share/mime/packages/bracelet-generator.xml"
 }
