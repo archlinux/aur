@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=QxEntityEditor
+Icon=/usr/share/icons/QxEntityEditor.png
+Exec=/usr/bin/MyQxEntityEditorLauncher.sh
+Comment=A graphic editor for QxOrm library
+Categories=Development;IDE;
+Terminal=false

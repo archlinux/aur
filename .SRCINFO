@@ -1,0 +1,24 @@
+pkgbase = qx-entity-editor
+	pkgdesc = A graphic editor for QxOrm library.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://www.qxorm.com/qxorm_en/home.html
+	arch = x86_64
+	arch = i686
+	license = GPL-3.0
+	source_x86_64 = https://www.qxorm.com/version/QxEntityEditor/1.2.2/QxEntityEditor_1.2.2_linux_64b.tar.gz
+	source_x86_64 = Qx.png
+	source_x86_64 = QxEntityEditor.desktop
+	source_x86_64 = MyQxEntityEditorLauncher.sh
+	sha256sums_x86_64 = cfcbb7ce47b7d599f8372cfb4a5e6cdd676fdb1b42f604d8a6ed3c80ca0e0896
+	sha256sums_x86_64 = 869286123d353ac0f7c21d2d387a08dd58075cad1d27c7088dae7ab3967c3a04
+	sha256sums_x86_64 = 33afd0cc0bd9196191df3708095f224de83c67060666c7e937fd2dd985825466
+	sha256sums_x86_64 = 6565e7dc0c4a49e661ae9cae387c3387ff5a20ce79f2f4f1e64ef158c3d638e3
+	source_i686 = https://www.qxorm.com/version/QxEntityEditor/1.2.2/QxEntityEditor_1.2.2_linux_32b.tar.gz
+	source_i686 = Qx.png
+	source_i686 = QxEntityEditor.desktop
+	source_i686 = MyQxEntityEditorLauncher.sh
+	sha256sums_i686 = SKIP
+
+pkgname = qx-entity-editor
+
