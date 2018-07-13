@@ -1,7 +1,7 @@
 pkgbase = python-dbg
 	pkgdesc = Python 3 debug symbols.
 	pkgver = 3.6.6
-	pkgrel = 1
+	pkgrel = 3
 	epoch = 0
 	url = http://www.python.org/
 	arch = i686

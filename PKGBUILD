@@ -2,7 +2,7 @@
 
 pkgname=python-dbg
 pkgver=3.6.6
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="Python 3 debug symbols."
 arch=('i686' 'x86_64')
@@ -34,9 +34,9 @@ prepare() {
 
     # Ensure that we are using the system copy of various libraries (expat, libffi, and libmpdec),
     # rather than copies shipped in the tarball
-    rm -rf Modules/expat
-    rm -rf Modules/_ctypes/{darwin,libffi}*
-    rm -rf Modules/_decimal/libmpdec
+#    rm -rf Modules/expat
+#    rm -rf Modules/_ctypes/{darwin,libffi}*
+#    rm -rf Modules/_decimal/libmpdec
 }
 
 build() {
