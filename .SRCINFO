@@ -1,13 +1,13 @@
 pkgbase = intel-undervolt
 	pkgdesc = Intel CPU undervolting tool
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/kitsunyan/intel-undervolt
 	arch = any
 	license = GPL3
 	backup = etc/intel-undervolt.conf
-	source = intel-undervolt-1.3.tar.gz::https://github.com/kitsunyan/intel-undervolt/archive/1.3.tar.gz
-	sha256sums = ff6a638f12aa1299eaa857a11d7711f0b51207e4d42174d096aed74808f92535
+	source = intel-undervolt-1.4.tar.gz::https://github.com/kitsunyan/intel-undervolt/archive/1.4.tar.gz
+	sha256sums = 89c555d03ee7ab3073c5ae0a2879a83b12a7a1325f33c43aea562b656953d410
 
 pkgname = intel-undervolt
 
