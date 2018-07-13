@@ -1,0 +1,25 @@
+pkgbase = dtkcore-git
+	pkgdesc = DTK core modules
+	pkgver = 2.0.8.1.r1.57ec78b
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dtkcore
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = deepin-qt-dbus-factory
+	depends = dtkcore
+	depends = librsvg
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = startup-notification
+	provides = dtkcore
+	conflicts = deepin-tool-kit<0.3.4
+	conflicts = dtkcore
+	replaces = deepin-tool-kit
+	options = debug
+	source = git+https://github.com/linuxdeepin/dtkcore.git
+	sha512sums = SKIP
+
+pkgname = dtkcore-git
+
