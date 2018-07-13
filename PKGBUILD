@@ -1,6 +1,6 @@
-# Maintainer: Ben Oliver <ben@benoliver999.com>
+# Maintainer: Ben Oliver <ben@bfoliver.com>
 pkgname=ttf-pf-agora-sans-pro-git
-pkgrel=3
+pkgrel=4
 pkgver=r4.1613ca7
 pkgdesc="A free font from profont.net"
 arch=('any')
