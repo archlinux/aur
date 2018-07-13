@@ -27,7 +27,7 @@ build() {
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
-  python setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   # Patch start script to enforce usage of PyQt5
   cd "$pkgdir"
