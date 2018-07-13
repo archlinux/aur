@@ -2,13 +2,7 @@ post_install() {
     systemd-sysusers sonarr.conf
 
     mkdir -p /var/lib/sonarr
-    if [[ ! -f /var/lib/sonarr/config.xml ]]
-    then
-        if [[ -f /var/lib/nzbdrone/config.xml ]]
-        then
-            echo "A previous installation of nzbdrone has been detected. Copying previous configuration to Sonarr"
-            cp -r /var/lib/nzbdrone/* /var/lib/sonarr
-        fi
+    if [[ ! -f /var/lib/sonarr/config.xml ]]; then
         chown -R sonarr: /var/lib/sonarr
     fi
 }
