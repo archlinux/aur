@@ -2,7 +2,7 @@
 pkgname=jameica
 pkgver=2.8.1
 _pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="free runtime environment for java applications"
 arch=('i686' 'x86_64')
 url="https://www.willuhn.de/products/jameica/"
@@ -16,8 +16,8 @@ source_i686=("${pkgname}-${pkgver}.zip::https://www.willuhn.de/projects/jameica/
 sha1sums=('57c7077ddbcf1bc9c970eb0c00da56a46c246e20'
           '0664650342635fa5b0a9413dc8c22a65053ef234'
           '39c008050c7f90f3fde05b849cba80559207bdb5')
-sha1sums_i686=('7b757dcd421b6a60813dfdda25b0fd6aa944fd53')
-sha1sums_x86_64=('913a71f490cf10816cc85b4980b7d709f9e17cac')
+sha1sums_i686=('e8d9f1e9d11ee1097ae1870769439026f8fc641a')
+sha1sums_x86_64=('ff4ed6ccb96679e8cb930151f34d1e75d2a06e32')
 source_x86_64=("${pkgname}_64-${pkgver}.zip::https://www.willuhn.de/projects/jameica/releases/$_pkgver/jameica/$pkgname-linux64.zip")
 source=("jameica-start-script.patch"
         "jameicaserver-start-script.patch"
