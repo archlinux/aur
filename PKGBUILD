@@ -1,17 +1,17 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer: Amish <contact at via dot aur>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 
 pkgname=mrtg
-pkgver=2.17.4
-pkgrel=2
+pkgver=2.17.7
+pkgrel=1
 pkgdesc="Multi Router Traffic Grapher."
 arch=('x86_64')
 url="http://oss.oetiker.ch/mrtg/"
 license=('GPL')
 depends=('gd' 'perl')
 source=("http://oss.oetiker.ch/mrtg/pub/${pkgname}-${pkgver}.tar.gz")
-md5sums=('197565e97f97212eef7b414463c8d40c')
+md5sums=('eada3870c0419e425299401486600d95')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
