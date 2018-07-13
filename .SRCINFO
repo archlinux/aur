@@ -1,6 +1,6 @@
 pkgbase = tilda-git
 	pkgdesc = Linux terminal based on classic terminals from first person shooter games
-	pkgver = 1.3.2.r106.gb53ad42
+	pkgver = 1.3.2.r107.ga8ad2b3
 	pkgrel = 1
 	url = https://github.com/lanoxx/tilda
 	arch = i686
