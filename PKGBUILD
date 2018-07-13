@@ -58,6 +58,8 @@ prepare() {
     ln -sf "$srcdir/gradle.properties" .
     sed -i "$srcdir/plugin-UPnP/build.xml" \
         -e 's:value="1.5":value="1.8":'
+    sed -i "$srcdir/plugin-KeyUtils/build.xml" \
+        -e 's:value="1.6":value="1.8":'
 }
 
 build() {
