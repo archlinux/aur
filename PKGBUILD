@@ -46,7 +46,7 @@ package() {
   # ln -s /opt/${pkgname}/MyQxEntityEditorLauncher.sh "${pkgdir}"/usr/bin/MyQxEntityEditorLauncher.sh
   install -Dm755 ${srcdir}/MyQxEntityEditorLauncher.sh ${pkgdir}/usr/bin/MyQxEntityEditorLauncher.sh
   install -Dm755 ${srcdir}/Qx.png ${pkgdir}/usr/share/icons/${pkgname}.png
-  install -Dm644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  install -Dm644 ${srcdir}/QxEntityEditor.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
   chmod +x ${pkgdir}/usr/bin/MyQxEntityEditorLauncher.sh
 }
