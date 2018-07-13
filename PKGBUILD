@@ -5,7 +5,7 @@ _pkgname=${pkgname%-bin}
 _rver=3.0.0
 _bver=19
 pkgver=${_rver}_beta$_bver
-pkgrel=1
+pkgrel=2
 pkgdesc="App that gives feedback on your writing."
 arch=('i686' 'x86_64')
 url="http://writefullapp.com/"
@@ -36,7 +36,7 @@ package() {
 
 	sed -i 's|Icon=.*$|Icon=/opt/pixmaps/writefull.png|g' "$pkgdir"/opt/$_pkgname/writefull.desktop
 	sed -i 's|Exec=.*$|Exec=writefull|g' "$pkgdir"/opt/$_pkgname/writefull.desktop
-	install -Dm 644 "$pkgdir"/opt/$_pkgname/writefull.desktop "$pkgdir"/opt/applications/writefull.desktop
+	install -Dm 755 "$pkgdir"/opt/$_pkgname/writefull.desktop "$pkgdir"/usr/share/applications/Writefull.desktop
 
 	rm "$pkgdir"/opt/$_pkgname/Writefull.ico
 	rm "$pkgdir"/opt/$_pkgname/Writefull-*.png
@@ -47,5 +47,5 @@ package() {
 	ln -s "$pkgdir"/opt/$_pkgname/LICENSES.chromium.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSES.chromium.html
 
 	install -dm 755 "$pkgdir"/usr/bin
-	ln -s /usr/share/$_pkgname/Writefull "$pkgdir"/usr/bin/writefull
+	ln -s /opt/$_pkgname/Writefull "$pkgdir"/usr/bin/writefull
 }
