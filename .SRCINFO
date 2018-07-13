@@ -1,6 +1,6 @@
 pkgbase = wwsd-git
 	pkgdesc = Sets wallpaper depending on user-set rules
-	pkgver = r56.d6b094f
+	pkgver = r57.5991f83
 	pkgrel = 1
 	url = https://github.com/cbosoft/wwsd
 	arch = any
