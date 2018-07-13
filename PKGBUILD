@@ -5,7 +5,7 @@ pkgver='0.1.0'
 pkgrel=1
 pkgdesc="Minimal command line script for NordVPN"
 arch=('any')
-url="https://github.com/editicalu/archnord"
+url="https://gitlab.com/editicalu/archnord"
 license=('MIT')
 
 # Technically, jq and curl are optional dependencies. But, as the provided functionality is the main reason of existance of this package, I made them normal dependencies. If you wouldn't use the automatic server selection tool, you may use these dependencies instead:
