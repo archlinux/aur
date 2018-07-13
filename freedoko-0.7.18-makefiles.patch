@@ -1,6 +1,32 @@
-diff -ru FreeDoko_0.7.17-orig/Makefile FreeDoko_0.7.17/Makefile
---- FreeDoko_0.7.17-orig/Makefile	2018-01-04 07:11:48.000000000 +0100
-+++ FreeDoko_0.7.17/Makefile	2018-01-05 08:19:03.098875884 +0100
+diff -ru FreeDoko_0.7.18-orig/data/Makefile FreeDoko_0.7.18/data/Makefile
+--- FreeDoko_0.7.18-orig/data/Makefile	2018-07-13 06:50:34.000000000 +0200
++++ FreeDoko_0.7.18/data/Makefile	2018-07-13 16:49:23.433019798 +0200
+@@ -32,8 +32,7 @@
+ 	for d in cardsets iconsets backgrounds sounds; do \
+ 	  $(MAKE) -C $$d install; \
+ 	done
+-	-chgrp games $(DESTDIR)$(DATA_DIRECTORY) && chgrp -R games $(DESTDIR)$(DATA_DIRECTORY)
+-	chmod -R o-rwx,g+rX,g-w $(DESTDIR)$(DATA_DIRECTORY)
++	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(DATA_DIRECTORY)
+ endif
+ 
+ ifeq ($(SHELLTYPE), sh)
+diff -ru FreeDoko_0.7.18-orig/doc/Makefile FreeDoko_0.7.18/doc/Makefile
+--- FreeDoko_0.7.18-orig/doc/Makefile	2018-07-13 06:50:34.000000000 +0200
++++ FreeDoko_0.7.18/doc/Makefile	2018-07-13 16:49:23.433019798 +0200
+@@ -34,8 +34,7 @@
+ 	fi
+ 	cp -a Bugs GPL Roadmap hpux.required_libs-ia64.txt $(DESTDIR)$(HELP_DIRECTORY)/
+ 	for d in de en; do $(MAKE) -C $$d install; done
+-	-chgrp games $(DESTDIR)$(HELP_DIRECTORY) && chgrp -R games $(DESTDIR)$(HELP_DIRECTORY)
+-	chmod -R o-rwx,g+rX,g-w $(DESTDIR)$(HELP_DIRECTORY)
++	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(HELP_DIRECTORY)
+ 	cd $(DESTDIR)$(DATA_DIRECTORY) && ln -sf $(HELP_DIRECTORY)/ doc
+ endif
+ 
+diff -ru FreeDoko_0.7.18-orig/Makefile FreeDoko_0.7.18/Makefile
+--- FreeDoko_0.7.18-orig/Makefile	2018-07-13 06:50:34.000000000 +0200
++++ FreeDoko_0.7.18/Makefile	2018-07-13 16:49:23.433019798 +0200
 @@ -316,8 +316,7 @@
  	echo "Kopiere das Programm"
  	mkdir -p $(DESTDIR)$(BIN_DIRECTORY)
@@ -29,9 +55,9 @@ diff -ru FreeDoko_0.7.17-orig/Makefile FreeDoko_0.7.17/Makefile
  #	copy the desktop file
  	echo "Kopiere den Desktop-Starter"
  	mkdir -p "$(DESTDIR)$(DESKTOP_FILE_DIRECTORY)"
-diff -ru FreeDoko_0.7.17-orig/Makefile.install.directories FreeDoko_0.7.17/Makefile.install.directories
---- FreeDoko_0.7.17-orig/Makefile.install.directories	2018-01-04 07:11:48.000000000 +0100
-+++ FreeDoko_0.7.17/Makefile.install.directories	2018-01-05 08:17:09.214044462 +0100
+diff -ru FreeDoko_0.7.18-orig/Makefile.install.directories FreeDoko_0.7.18/Makefile.install.directories
+--- FreeDoko_0.7.18-orig/Makefile.install.directories	2018-07-13 06:50:34.000000000 +0200
++++ FreeDoko_0.7.18/Makefile.install.directories	2018-07-13 16:49:23.433019798 +0200
 @@ -4,14 +4,14 @@
  # the different directories for the files
  
@@ -76,38 +102,12 @@ diff -ru FreeDoko_0.7.17-orig/Makefile.install.directories FreeDoko_0.7.17/Makef
 +LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
 +DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
  
- 
- # release
-diff -ru FreeDoko_0.7.17-orig/data/Makefile FreeDoko_0.7.17/data/Makefile
---- FreeDoko_0.7.17-orig/data/Makefile	2018-01-04 07:11:48.000000000 +0100
-+++ FreeDoko_0.7.17/data/Makefile	2018-01-05 08:17:33.197078135 +0100
-@@ -32,8 +32,7 @@
- 	for d in cardsets iconsets backgrounds sounds; do \
- 	  $(MAKE) -C $$d install; \
- 	done
--	-chgrp games $(DESTDIR)$(DATA_DIRECTORY) && chgrp -R games $(DESTDIR)$(DATA_DIRECTORY)
--	chmod -R o-rwx,g+rX,g-w $(DESTDIR)$(DATA_DIRECTORY)
-+	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(DATA_DIRECTORY)
- endif
- 
- ifeq ($(SHELLTYPE), sh)
-diff -ru FreeDoko_0.7.17-orig/doc/Makefile FreeDoko_0.7.17/doc/Makefile
---- FreeDoko_0.7.17-orig/doc/Makefile	2018-01-04 07:11:48.000000000 +0100
-+++ FreeDoko_0.7.17/doc/Makefile	2018-01-05 08:17:51.063521630 +0100
-@@ -34,8 +34,7 @@
- 	fi
- 	cp -a Bugs GPL Roadmap hpux.required_libs-ia64.txt $(DESTDIR)$(HELP_DIRECTORY)/
- 	for d in de en; do $(MAKE) -C $$d install; done
--	-chgrp games $(DESTDIR)$(HELP_DIRECTORY) && chgrp -R games $(DESTDIR)$(HELP_DIRECTORY)
--	chmod -R o-rwx,g+rX,g-w $(DESTDIR)$(HELP_DIRECTORY)
-+	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(HELP_DIRECTORY)
- 	cd $(DESTDIR)$(DATA_DIRECTORY) && ln -sf $(HELP_DIRECTORY)/ doc
- endif
- 
-diff -ru FreeDoko_0.7.17-orig/src/Makefile FreeDoko_0.7.17/src/Makefile
---- FreeDoko_0.7.17-orig/src/Makefile	2018-01-04 07:11:48.000000000 +0100
-+++ FreeDoko_0.7.17/src/Makefile	2018-01-05 08:18:17.253194584 +0100
-@@ -282,7 +282,6 @@
+ # Void Linux
+ #MAIN_DIRECTORY         = /usr
+diff -ru FreeDoko_0.7.18-orig/src/Makefile FreeDoko_0.7.18/src/Makefile
+--- FreeDoko_0.7.18-orig/src/Makefile	2018-07-13 06:50:34.000000000 +0200
++++ FreeDoko_0.7.18/src/Makefile	2018-07-13 16:49:23.433019798 +0200
+@@ -264,7 +264,6 @@
  		-DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' \
  		-DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
  	  $(PROGRAM)

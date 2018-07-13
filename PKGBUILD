@@ -1,26 +1,23 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer: Michael Straube <michael.straube@posteo.de>
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko
-pkgver=0.7.17
-pkgrel=2
+pkgver=0.7.18
+pkgrel=1
 pkgdesc="Free implementation of the card game Doppelkopf"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://free-doko.sourceforge.net/en/FreeDoko.html"
 license=('GPL')
 depends=('gtkmm3' 'freealut')
 makedepends=('asciidoc' 'texlive-latexextra' 'w3m' 'dos2unix' 'rsync')
 source=("https://downloads.sourceforge.net/free-doko/FreeDoko_$pkgver.src.zip"
-        "freedoko-0.7.17-makefiles.patch"
-        "freedoko-0.7.17-i686.patch")
-sha256sums=('db686536e479d3a3349dc7db1754f369d14cee02a60c9afddd004e017cf022e6'
-            '7ff4bd0a374e744b619ad1c1175756c6cc35eb38df14ceb66ba8b2ff5c5acb3d'
-            '93d2d91d4eab999e3889022cfd657858f80dbb254e45bc11fd19fddd04fe5b5e')
+        "freedoko-0.7.18-makefiles.patch")
+sha256sums=('5b9ca3ad915f36dba17a4bd22b3d7d68ac2526cf125d045a819aa8d4a2cceb4c'
+            '57685adf89e51c0d8103f1395fea7811093ff2030be725cf0cfc72b3f0b98efc')
 
 prepare() {
   cd FreeDoko_$pkgver
-  patch -p1 -i ../freedoko-0.7.17-makefiles.patch
-  patch -p1 -i ../freedoko-0.7.17-i686.patch
+  patch -p1 -i ../freedoko-0.7.18-makefiles.patch
 }
 
 build() {
