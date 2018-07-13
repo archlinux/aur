@@ -1,7 +1,7 @@
 pkgbase = buku-dmenu
 	pkgdesc = Access buku bookmarks from dmenu.
 	pkgver = v0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/benoliver999/buku-dmenu
 	arch = any
 	license = GPL3
