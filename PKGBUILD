@@ -5,8 +5,8 @@
 _pkgname="Snap4Arduino_desktop-gnu"
 _tname="Snap4Arduino"
 pkgname="snap4arduino"
-pkgver="1.2.5"
-pkgrel="2"
+pkgver="1.2.6"
+pkgrel="1"
 pkgdesc="A modification of the Snap! visual programming language that lets you seamlessly interact with almost all versions of the Arduino board."
 arch=('i686' 'x86_64')
 url="http://snap4arduino.rocks/"
@@ -15,11 +15,11 @@ depends=('nss' 'libxtst' 'alsa-lib' 'libxss' 'gtk3' 'gconf' 'freetype2')
 provides=("${pkgname}")
 options=('!strip')
 
-source_i686=("https://github.com/bromagosa/${pkgname}/releases/download/${pkgver}/${_pkgname}-32_${pkgver}.tar.gz")
-source_x86_64=("https://github.com/bromagosa/${pkgname}/releases/download/${pkgver}/${_pkgname}-64_${pkgver}.tar.gz")
+source_i686=("https://github.com/bromagosa/${_tname}/releases/download/${pkgver}/${_pkgname}-32_${pkgver}.tar.gz")
+source_x86_64=("https://github.com/bromagosa/${_tname}/releases/download/${pkgver}/${_pkgname}-64_${pkgver}.tar.gz")
 
-sha256sums_i686=('0b2d5d17297528314d3ae7ac98930b57693b40d195c27ec33675b718215eb8a5')
-sha256sums_x86_64=('97bccc6cce186063691c72ab39eb65e0aa1c64f5445b1e4dce341bb2eeb1c8b4')
+sha256sums_i686=('2043a5c90f22913dc1300b66d62bcb0210185ebc5e8fda529435e4d20624b132')
+sha256sums_x86_64=('a19cac4834c9a20d9f082753ec8cec149b9f4e88b673682a7f79086e4cd6168b')
 
 if [[ $CARCH == i686 ]]; then
     _dir="32";
@@ -49,11 +49,11 @@ package() {
     chmod +x ${pkgdir}/opt/${_tname}/pnacl/*_nexe
 
     # Desktop file
-    install -Dm 644 ${_tname}.desktop "${pkgdir}/usr/share/applications/${_tname}.desktop"
+    install -D -m 644 ${_tname}.desktop "${pkgdir}/usr/share/applications/${_tname}.desktop"
     rm ${_tname}.desktop
 
     # License
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     rm LICENSE
 
     # Rest of data
@@ -63,4 +63,4 @@ package() {
     chmod +x ${pkgdir}/opt/${_tname}/{chromedriver,launcher*,minidump_stackwalk,nacl_*,nwjc,payload,run}
 }
 
-# vim:set ts=4 sw=2 ft=sh et syn=sh ft=sh:
+# vim:set ts=4 sw=4 ft=sh et syn=sh ft=sh:
