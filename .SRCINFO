@@ -1,7 +1,7 @@
 pkgbase = slrn
 	pkgdesc = An open source text-based news client
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.slrn.org/
 	arch = x86_64
 	license = GPL
