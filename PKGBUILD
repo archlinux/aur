@@ -3,7 +3,7 @@
 # Contributor: Atnanasis <ys2000pro@gmail.com>
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 pkgname=micro-nightly-bin
-pkgver=1.4.1.60
+pkgver=1.4.1.75
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
@@ -34,6 +34,6 @@ build() {
 	mv -f "$srcdir/micro-$_realver" "$srcdir/micro"
 }
 package() {
-	install -Dsm755 "$srcdir/micro/micro" "$pkgdir/usr/bin/micro"
+	install -Dm755 "$srcdir/micro/micro" "$pkgdir/usr/bin/micro"
 	install -Dm644 "$srcdir/micro/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
