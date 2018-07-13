@@ -2,13 +2,15 @@ post_install() {
 	# Create users and data directory
 	
 	echo "Adding user bitwarden_rs and creating data directory /var/lib/bitwarden_rs ..."
-	useradd -Ur -s /usr/bin/nologin bitwarden_rs
-	mkdir -p /var/lib/bitwarden_rs -m 0750
+	mkdir -p /var/lib/bitwarden_rs
+	getent group bitwarden_rs &>/dev/null || groupadd -r bitwarden_rs >/dev/null
+	getent passwd bitwarden_rs &>/dev/null || useradd -r -g bitwarden_rs -d /var/lib/bitwarden_rs -s /usr/bin/nologin bitwarden_rs >/dev/null
 	chown bitwarden_rs:bitwarden_rs /var/lib/bitwarden_rs
-	# Add service file
+	chmod 0750 /var/lib/bitwarden_rs
+	
+	# Load service file
 	systemctl --quiet daemon-reload
 	
-
 	echo "##########"
 	echo "# "
 	echo "#   Remember to configure the server via its environment-variables under /etc/bitwarden_rs.env"
@@ -16,10 +18,10 @@ post_install() {
 	echo "#"
 	echo "##########"
 
-#	systemctl --quiet preset bitwarden_rs.service
 }
 
 post_upgrade() {
+	#reload service file
 	systemctl --quiet daemon-reload
 	echo "##########"
 	echo "# "
@@ -30,10 +32,12 @@ post_upgrade() {
 }
 
 pre_remove() {
+	#stop service
 	systemctl --quiet --no-reload disable --now bitwarden_rs.service
 }
 
 post_remove() {
+	#unload service
 	systemctl --quiet daemon-reload
 	echo "##########"
 	echo "# "
