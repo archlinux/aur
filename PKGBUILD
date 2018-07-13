@@ -2,8 +2,8 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname='pop-gtk-theme-bin'
-pkgver='3.1.1'
-pkgrel=6
+pkgver='3.1.2'
+pkgrel=1
 pkgdesc='System76 Pop GTK+ Theme'
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
@@ -17,19 +17,19 @@ depends=(
 	"gtk-engine-murrine>=0.98.1"
 )
 optdepends=(
-	"gnome-shell>=3.18.3"
-	"gnome-flashback>=3.18.2"
-	"budgie-desktop>=10.2.7"
-	"xfce4-session>=4.12.2"
-	"mate-desktop>=1.14.0"
-	"lxde-common>=0.99.1"
+	"gnome-shell"
+	"gnome-flashback"
+	"budgie-desktop"
+	"xfce4-session"
+	"mate-desktop"
+	"lxde-common"
 	"pop-icon-theme: Recommended icon theme"
 	"ttf-fira-sans: Recommended font for window titles and interface"
 	"ttf-fira-mono: Recommended monospace font"
 	"ttf-roboto-slab: Recommended font for documents"
 )
-source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~1526399168~18.04~4ffc89a_all.deb")
-sha256sums=('c5995881cdbc6bd2efa295bfaf2f23e63ad1e5390a554227c139a47722e27824')
+source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~1530124175~18.04~d485d9a_all.deb")
+sha256sums=('b619d9de151025763b4ae408b723bde62a3c99dbd0187938a4b540544bcc0554')
 
 package() {
   cd "${srcdir}"
