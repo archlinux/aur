@@ -1,0 +1,12 @@
+pkgbase = ignite-cli
+	pkgdesc = ignite cli tool for react native
+	pkgver = 2.1.0
+	pkgrel = 3
+	url = https://github.com/infinitered/ignite
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs react-native-cli
+
+pkgname = ignite-cli
+
