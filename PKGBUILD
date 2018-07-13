@@ -25,6 +25,5 @@ package() {
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
     find ${pkgdir}/usr -type f -name '.directory' -delete
-    gsettings set org.gnome.desktop.interface icon-theme "${_gitname}"
 }
 
