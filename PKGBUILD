@@ -5,12 +5,12 @@
 
 pkgname=kraft
 pkgver=0.81
-pkgrel=1
+pkgrel=2
 pkgdesc="A program suitable for all trades or crafts"
 arch=('i686' 'x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
-depends=('akonadi-contacts' 'ctemplate' 'python-reportlab')
+depends=('akonadi-contacts' 'ctemplate' 'python2-reportlab' 'python2-pypdf2')
 makedepends=('cmake' 'extra-cmake-modules')
 source=("https://github.com/dragotin/kraft/archive/v${pkgver}.tar.gz"
         'allow-duplicate-cmake-targets.patch')
