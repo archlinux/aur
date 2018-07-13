@@ -1,11 +1,11 @@
-# Maintainer: Adria Arrufat <adria DOT arrufat+aur AT protonmail DOT ch>
+# Maintainer: Adria Arrufat
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.29.1
+pkgver=3.29.3+41+g364591a15
 pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
-url="http://www.gnome.org/projects/epiphany/"
+url="http://www.gnome.org/projects/$_pkgname/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=(webkit2gtk gcr libdazzle)
@@ -15,22 +15,12 @@ groups=(gnome)
 replaces=(epiphany)
 provides=(epiphany)
 conflicts=(epiphany)
-source=("git://git.gnome.org/epiphany"
-	"git://git.gnome.org/gvdb"
-)
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://gitlab.gnome.org/GNOME/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   git describe --always | sed 's/-/+/g'
-}
-
-prepare() {
-  cd $_pkgname
-  git submodule init
-  git config --local gvdb.url "${srcdir}/gvdb/gvdb"
-  git submodule update
 }
 
 build() {

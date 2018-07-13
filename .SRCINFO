@@ -1,6 +1,6 @@
 pkgbase = epiphany-git
 	pkgdesc = A GNOME web browser based on the WebKit rendering engine.
-	pkgver = 3.29.1
+	pkgver = 3.29.3+41+g364591a15
 	pkgrel = 1
 	url = http://www.gnome.org/projects/epiphany/
 	arch = i686
@@ -22,9 +22,7 @@ pkgbase = epiphany-git
 	provides = epiphany
 	conflicts = epiphany
 	replaces = epiphany
-	source = git://git.gnome.org/epiphany
-	source = git://git.gnome.org/gvdb
-	sha256sums = SKIP
+	source = git+https://gitlab.gnome.org/GNOME/epiphany.git
 	sha256sums = SKIP
 
 pkgname = epiphany-git
