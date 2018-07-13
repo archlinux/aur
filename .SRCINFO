@@ -1,6 +1,6 @@
 pkgbase = esptool-ck
 	pkgdesc = The ESP8266/ESP32 build helper tool by Christian Klippel
-	pkgver = 0.4.9
+	pkgver = 0.4.13
 	pkgrel = 1
 	url = https://github.com/igrr/esptool-ck
 	arch = i686
@@ -8,8 +8,9 @@ pkgbase = esptool-ck
 	license = GPL
 	makedepends = make
 	makedepends = glibc
-	source = esptool-ck-0.4.9.tar.gz::https://github.com/igrr/esptool-ck/archive/0.4.9.tar.gz
-	sha256sums = e04590ed1ac4725a0b9ee9b822a39699c851ad275e2cb6713ed5f08f14a4d6b3
+	provides = esptool
+	source = esptool-ck-0.4.13.tar.gz::https://github.com/igrr/esptool-ck/archive/0.4.13.tar.gz
+	sha512sums = 8f303ac48f990c170cd2b9aed903d456e0c715448811595d51d5501464e61f71870fc2166ec3dd935af6e81203dcdab0eed8f55452e50d69ee6a2a6f60ef099c
 
 pkgname = esptool-ck
 
