@@ -19,7 +19,7 @@ makedepends=('gettext' 'itstool' 'vala>=0.36.6' 'meson' 'ninja' 'git')
 backup=('etc/pamac.conf')
 conflicts=('pamac')
 provides=('pamac')
-options=(!emptydirs strip)
+options=(!emptydirs)
 install=pamac.install
 
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$_pkgver/pamac-v$_pkgver.tar.gz")
