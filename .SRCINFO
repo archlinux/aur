@@ -7,6 +7,9 @@ pkgbase = nodejs-nan
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	noextract = nodejs-nan-2.10.0.tar.gz
+	source = nodejs-nan-2.10.0.tar.gz::http://github.com/rvagg/nan/archive/v2.10.0.tar.gz
+	sha256sums = 3859b4cc9bfba3a6d16227ca7d66132691f42b24850f971f56b7a5225143cd2b
 
 pkgname = nodejs-nan
 
