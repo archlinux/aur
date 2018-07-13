@@ -1,0 +1,34 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,2 +1,2 @@
+ all:
+-	gcc -shared -fPIC `pkg-config gtk+-x11-2.0 --cflags --libs` -o libwinmenu.so libwinmenu.c
++	gcc -shared -fPIC `pkg-config gtk+-x11-3.0 --cflags --libs` -o libwinmenu.so libwinmenu.c
+--- a/libwinmenu.c
++++ b/libwinmenu.c
+@@ -16,7 +16,7 @@ static void toggle_menu_bar (GtkWidget *widget, gpointer user_data)
+ {
+    GtkWidget * wdg = GTK_WIDGET(user_data);
+    GTK_WIDGET_GET_CLASS(wdg)->show = old_widget_show;
+-   if (GTK_WIDGET_VISIBLE(wdg))
++   if (gtk_widget_get_visible(wdg))
+       gtk_widget_hide(wdg);
+    else
+       gtk_widget_show(wdg);
+@@ -25,7 +25,7 @@ static void toggle_menu_bar (GtkWidget *widget, gpointer user_data)
+ static void anchor_event (GtkWidget *widget, GtkWidget *previous_toplevel, gpointer   user_data)
+ {
+    GtkWidget *toplevel = gtk_widget_get_toplevel (widget);
+-   if (GTK_WIDGET_TOPLEVEL (toplevel)) {
++   if (gtk_widget_is_toplevel (toplevel)) {
+       if (previous_toplevel) 
+           g_signal_handlers_disconnect_by_func(previous_toplevel, G_CALLBACK(toggle_menu_bar), widget);
+       g_signal_connect (toplevel, "toggle-menu-bar", G_CALLBACK(toggle_menu_bar), widget);
+@@ -77,6 +77,6 @@ gtk_module_init (gint * argc, gchar *** argv)
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    klass = GTK_WINDOW_GET_CLASS(fc);
+ 
+-   gtk_binding_entry_add_signal (gtk_binding_set_by_class (klass), GDK_Alt_L, 0,
++   gtk_binding_entry_add_signal (gtk_binding_set_by_class (klass), GDK_KEY_Alt_L, 0,
+                                 "toggle-menu-bar", 0);
+ }
