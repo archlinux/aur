@@ -1,0 +1,28 @@
+pkgbase = python-dbg
+	pkgdesc = Python 3 debug symbols.
+	pkgver = 3.6.6
+	pkgrel = 1
+	epoch = 0
+	url = http://www.python.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	makedepends = make
+	makedepends = m4
+	makedepends = autoconf
+	depends = expat
+	depends = bzip2
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = zlib
+	options = !debug
+	options = !strip
+	source = https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tar.xz
+	source = dont-make-libpython-readonly.patch
+	md5sums = c3f30a0aff425dda77d19e02f420d6ba
+	md5sums = 60c9f7d02384f22834df06de5eb9c46a
+
+pkgname = python-dbg
+
