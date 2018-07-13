@@ -5,11 +5,11 @@ pkgbase = qspectrumanalyzer
 	url = https://github.com/xmikos/qspectrumanalyzer
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
 	depends = python-qt.py
 	depends = python-pyqt5
 	depends = python-pyqtgraph
 	depends = soapy_power>=1.5.0
+	depends = python-setuptools
 	optdepends = rtl_power_fftw: Alternative RTL-SDR backend using FFTW library. Much faster than rtl_power.
 	optdepends = rtl-sdr: original rtl_power backend. Slightly broken, use rtl-sdr-keenerd-git instead.
 	optdepends = rx_tools: rx_power backend. Universal SoapySDR based backend, but seems slow and buggy.
