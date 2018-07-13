@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur
-pkgver=0.15
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="AUR helper with minimal dependencies inspired by pacaur, yaourt and yay. Review PKGBUILDs all in once, next build them all without user interaction."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 source=(
 	"$pkgname-$pkgver.tar.gz"::https://github.com/actionless/pikaur/archive/"$pkgver".tar.gz
 )
-md5sums=('d07d51d32a5e6b1f8169ff310b2c586b')
+md5sums=('0dde489da70e25a8cd1cc3eeb6662c3c')
 depends=(
 	'pacman>=5.1'
 	'pyalpm'
