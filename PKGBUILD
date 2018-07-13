@@ -1,7 +1,7 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 _name=snuggs
 pkgname=('python2-snuggs')
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Provide s-expressions for Numpy, for Python 2.7"
 arch=('any')
@@ -10,12 +10,12 @@ license=('MIT')
 makedepends=('python2-setuptools')
 depends=('python2-click' 'python2-numpy' 'python2-pyparsing')
 options=(!emptydirs)
-md5sums=('e05db13b4c45cb4fac8595adc0c99f15'
-         '3cfb9a21d4ee8a39856d4773a933c177')
-_pypi='https://pypi.python.org/packages'
-_path='5d/a7/2628b376d794628655d13004091801f7f867366f0b08a52a741fc5bcb5fc'
-source=("$_pypi/$_path/$_name-$pkgver.tar.gz#md5=$md5sums"
-        "https://raw.githubusercontent.com/mapbox/snuggs/$pkgver/LICENSE")
+sha256sums=('8d56182fc83e1a1893284f69abd35751ce30e8f0a33794c2802e7e5d6547e1f1'
+            '29460627842ca33c406297d8b9b2805d8faeb22de7a145358509533b4eca4599')
+_pypi='https://files.pythonhosted.org/packages'
+_path='07/d9/284b51b951fe2d56266be31f2d5c788b5e8251fdafe5121721d9d36940e1'
+source=("$_pypi/$_path/$_name-$pkgver.tar.gz"
+  "https://raw.githubusercontent.com/mapbox/$_name/$pkgver/LICENSE")
 
 package() {
   cd "$srcdir/$_name-$pkgver"
