@@ -1,0 +1,19 @@
+pkgbase = archnord
+	pkgdesc = Minimal command line script for NordVPN
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/editicalu/archnord
+	arch = any
+	license = MIT
+	depends = nordvpn
+	depends = networkmanager-vpnc
+	depends = openvpn
+	depends = jq
+	depends = curl
+	provides = archnord
+	source = https://gitlab.com/editicalu/archnord/-/archive/0.1.0/archnord-0.1.0.tar.gz
+	validpgpkeys = CC0B7CE9604A8A91F0D70B778489DB248465FDD7
+	sha512sums = 42b46f304f2dda887ccf9e47df45f8e4b7b82160b21eb3d48c87b006e02acbde708ff51262ae6fffc9bdfd354b7caebe8fb4b88b252ded34e1b94249e33204bb
+
+pkgname = archnord
+
