@@ -7,14 +7,15 @@ pkgname=perl-app-cope
 _appname=cope
 _dist=App-Cope
 pkgver=1.00
-pkgrel=2
+pkgrel=3
 pkgdesc="A wrapper around programs that output to a terminal, to give them colour for utility and aesthetics while still keeping them the same at the text level."
 url=http://stuff.cytzol.org/cope/
 arch=(any)
 license=('GPL' 'PerlArtistic')
 depends=("perl>=5.10" 'perl-class-inspector' 'perl-env-path' 'perl-file-sharedir'
          'perl-io-stty' 'perl-io-tty' 'perl-list-moreutils' 'perl-params-util'
-         'perl-regexp-common' 'perl-regexp-ipv6' 'perl-number-format' 'perl-module-install')
+         'perl-regexp-common' 'perl-regexp-ipv6' 'perl-number-format'
+'perl-module-install' 'perl-file-sharedir-install')
 makedepends=('git')
 conflicts=($_appname)
 provides=($_appname)
