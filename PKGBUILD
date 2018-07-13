@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=hyperrogue
-pkgver=10.0g
-_pkgver=100g
+pkgver=10.4j
+_pkgver=104j
 pkgrel=1
 pkgdesc="You are a lone outsider in a strange, non-Euclidean hyperbolic world.  Optional music."
 arch=('i686' 'x86_64')
@@ -14,15 +14,15 @@ makedepends=('glu')
 _music=""
 
 source=("http://www.roguetemple.com/z/hyper/hyperrogue${_pkgver}-src.tgz")
-md5sums=('9ce82a9f3749de2702b52bcfd45349be')
+md5sums=('9d0ab3ea82f4ee336efa743b64e63157')
 #echo http://www.roguetemple.com/z/hyper/hyperrogue${_pkgver}-{lq,win}.zip
 if [[ "$_music" == "low" ]]; then
     source+=("http://www.roguetemple.com/z/hyper/hyperrogue${_pkgver}-lq.zip")
-    md5sums+=('eba636fbb51e16af09fa8101580afd58')
+    md5sums+=('01fa28837bd7e18cbb9939eee6910e01')
 fi
 if [[ "$_music"  == "full" ]]; then
     source+=("http://www.roguetemple.com/z/hyper/hyperrogue${_pkgver}-win.zip")
-    md5sums+=('568c4bfdd88a244def3c66d075b93b34')
+    md5sums+=('0b8c73976c9b5cc3de0b31e3ba496516')
 fi
 
 prepare() {
@@ -30,6 +30,7 @@ prepare() {
     sed -i 's|TTF_OpenFont.*;|TTF_OpenFont("/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", siz);|' basegraph.cpp
     #sed -i 's|<SDL.h>|"SDL.h"|' /usr/include/SDL/SDL_gfxPrimitives.h  # todo: confirm bug and open
     sed -i 's|g++ hyper.cpp .*$|& -I/usr/include/SDL/|' Makefile  # remove when above bug is fixed
+    sed -i 's|savepng.c|savepng.cpp|' Makefile
 }
 
 build() {
@@ -47,5 +48,4 @@ package() {
     cd "$srcdir/$pkgname${_pkgver}"
     cp *.ogg "$pkgdir/usr/share/hyperrogue/"
 }
-
 
