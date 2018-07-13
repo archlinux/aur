@@ -8,7 +8,7 @@ pkgbase = python2-babelfish
 	makedepends = python2-setuptools
 	depends = python2
 	options = !emptydirs
-	source = http://pypi.python.org/packages/source/b/babelfish/babelfish-0.5.5.tar.gz
+	source = https://pypi.python.org/packages/source/b/babelfish/babelfish-0.5.5.tar.gz
 	md5sums = 5f930555649692997bcf80bb5f42d9db
 
 pkgname = python2-babelfish
