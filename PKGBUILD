@@ -1,6 +1,6 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python2-spherical_geometry
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('cython2' 'python2-astropy-helpers')
 checkdepends=('python2-pytest')
 optdepends=('python-spherical_geometry-doc: Documentation for Spherical Geometry Toolkit')
 source=("https://files.pythonhosted.org/packages/source/s/spherical_geometry/spherical_geometry-${pkgver}.tar.gz")
-md5sums=('cbc8d64916f3c9dcfd5c7a5ca9df8640')
+md5sums=('bf33af71561a69231c9d5e1238e557c5')
 
 prepare() {
     cd ${srcdir}/spherical_geometry-${pkgver}
