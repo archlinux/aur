@@ -27,4 +27,7 @@ pkgver() {
 package() {
   cd "$srcdir"/$_pkgname
   python setup.py install --root="$pkgdir"
+
+  install -dm 644 "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm 644 "$srcdir"/$_pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
