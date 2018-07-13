@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Jubler
-NoDisplay=true
-Icon=jubler-subtitles
-Exec=/usr/bin/java -jar /usr/share/java/jubler/Jubler.jar %F
-Terminal=false
-MimeType=application/x-subrip;

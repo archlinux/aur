@@ -2,6 +2,8 @@
 Type=Application
 Name=Jubler
 Icon=jubler
-Exec=/usr/bin/java -jar /usr/share/java/jubler/Jubler.jar
+Exec=/usr/bin/java -jar /usr/share/java/jubler/Jubler.jar %F
 Terminal=false
-Categories=AudioVideo;
+Categories=AudioVideo;Java;TextTools;AudioVideoEditing;
+Comment=Jubler is a tool to edit text-based subtitles
+MimeType=application/x-subrip;
