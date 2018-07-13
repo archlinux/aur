@@ -2,7 +2,7 @@
 Type=Application
 Name=QxEntityEditor
 Icon=/usr/share/icons/QxEntityEditor.png
-Exec=/usr/bin/MyQxEntityEditorLauncher.sh
+Exec=/usr/bin/QEELauncher.sh
 Comment=A graphic editor for QxOrm library
 Categories=Development;IDE;
 Terminal=false
