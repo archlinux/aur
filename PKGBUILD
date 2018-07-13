@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Convert your VR180 footage into a standardized format so you can edit it with leading editing tools like Adobe Premiere and then re-inject the appropriate metadata for publishing."
 arch=('x86_64')
 url="https://vr.google.com/vr180/apps/"
-license=('MIT')
+license=('MIT' 'custom:Chromium')
 provides=('vr180-creator')
 conflicts=('vr180-creator')
 source=("$pkgname-$pkgver.tar.gz::https://storage.googleapis.com/vr180-creator/download/VR180_Creator_linux_$pkgver.tar.gz"
@@ -24,4 +24,8 @@ package() {
   install -dm 755 "$pkgdir"/usr/share/icons
   ln -s "$pkgdir"/opt/vr180-creator/images/vr180.png "$pkgdir"/usr/share/icons/vr180.png
   install -Dm 755 "$srcdir"/vr180-creator.desktop "$pkgdir"/usr/share/applications/vr180-creator.desktop
+
+  install -dm 644 "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s "$pkgdir"/opt/vr180-creator/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  ln -s "$pkgdir"/opt/vr180-creator/LICENSES.chromium.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSES.chromium.html
 }

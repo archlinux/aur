@@ -5,6 +5,7 @@ pkgbase = vr180-creator
 	url = https://vr.google.com/vr180/apps/
 	arch = x86_64
 	license = MIT
+	license = custom:Chromium
 	provides = vr180-creator
 	conflicts = vr180-creator
 	source = vr180-creator-1.0.0.tar.gz::https://storage.googleapis.com/vr180-creator/download/VR180_Creator_linux_1.0.0.tar.gz
