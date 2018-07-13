@@ -8,8 +8,8 @@ pkgdesc="Spectrum analyzer for multiple SDR platforms."
 arch=('any')
 url="https://github.com/xmikos/qspectrumanalyzer"
 license=('GPL3')
-depends=('python-pyqt5' 'python-pyqtgraph' 'soapy_power' 'python-qt.py')
-makedepends=('git' 'python-setuptools')
+depends=('python-pyqt5' 'python-pyqtgraph' 'soapy_power' 'python-qt.py' 'python-setuptools')
+makedepends=('git')
 optdepends=('rtl_power_fftw: alternative RTL-SDR backend using FFTW library. Much faster than rtl_power.'
 	    'rtl-sdr-keenerd: better version of rtl_power backend'
 	    'rtl-sdr: original rtl_power backend. Slightly broken, use rtl-sdr-keenerd-git instead.'
