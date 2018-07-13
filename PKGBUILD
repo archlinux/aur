@@ -5,7 +5,7 @@ pkgver=3.1
 pkgrel=1
 pkgdesc="Alternate keyring backend implementations for use with the keyring package."
 arch=('any')
-url="https://github.com/jaraco/keyring"
+url="https://github.com/jaraco/keyrings.alt"
 license=('MIT')
 depends=('python2-six')
 makedepends=('python2-pip')
@@ -19,6 +19,6 @@ build() {
 
 package() {
   cd $_pkgname-$pkgver
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
