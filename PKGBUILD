@@ -4,12 +4,12 @@
 # Contributor: raingloom <raingloom42@gmail.com>
 pkgname=wakfu-transition
 pkgver=1.38
-pkgrel=8
+pkgrel=9
 pkgdesc="A turn-based tactical Massively Multiplayer Online Role-playing Game (MMORPG) written in Java/OpenGL."
 arch=('i686' 'x86_64')
 url="http://www.wakfu.com/"
 license=( "custom" )
-depends=('libgl' 'libpng12' 'openal' 'java-environment' 'ankama-transition')
+depends=('libgl' 'libpng12' 'openal' 'openssl-1.0' 'java-environment' 'ankama-transition')
 provides=('wakfu')
 conflicts=('wakfu')
 replaces=('wakfu')
