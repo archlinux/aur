@@ -1,0 +1,16 @@
+pkgbase = python-activipy-git
+	pkgdesc = ActivityStreams 2.0 python implementation and validation lib
+	pkgver = v0.1.r16.g270bab2
+	pkgrel = 1
+	url = http://activipy.readthedocs.io/en/latest/index.html
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-pyld
+	provides = python-activipy
+	conflicts = python-activipy
+	source = git://github.com/w3c-social/activipy.git
+	md5sums = SKIP
+
+pkgname = python-activipy-git
+
