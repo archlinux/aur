@@ -1,5 +1,5 @@
 pkgname=mcg
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A covergrid for the Music Player Daemon."
 url="https://www.suruatoel.xyz/codes/mcg"
@@ -10,17 +10,17 @@ optdepends=('python-keyring' 'avahi')
 makedepends=('python-setuptools' 'git')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("${pkgname}.tar.gz::https://github.com/coderkun/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e7387f344ee0e1a346aff9c7023a5715c8e5425ca08bbc64e03a3807fc2f2b05')
+source=("https://gitlab.com/coderkun/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+sha256sums=('3738b25d8953ffe8322a1c3cad1599a7163a17731338c65c770cbc5811b0d95d')
 
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}"
+    cd "$srcdir/${pkgname}-v${pkgver}"
     python setup.py --no-compile-schemas build
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
+    cd "$srcdir/${pkgname}-v${pkgver}"
     python setup.py --no-compile-schemas \
         install --root="$pkgdir/" --prefix=/usr --optimize=1
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
