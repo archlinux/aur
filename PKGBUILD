@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-git
-pkgver=20180601
+pkgver=20180713
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method from git'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://www.freefem.org/ff++/index.htm"
 license=('LGPL')
 depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-openmpi' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
 makedepends=('git' 'flex' 'texlive-core' 'gcc54')
-provides=("freefem++=3.60")
+provides=("freefem++=3.61")
 conflicts=('freefem++')
 backup=('etc/freefem++.pref')
 source=('FreeFem::git+https://github.com/FreeFem/FreeFem-sources.git#branch=develop')
@@ -41,7 +41,7 @@ check() {
 package() {
   cd FreeFem
   make -d DESTDIR="$pkgdir" install||true
-  install -Dm644 examples++/freefem++.pref $pkgdir/etc/freefem++.pref
+  install -Dm644 examples++/freefem++.pref "$pkgdir"/etc/freefem++.pref
   find "$pkgdir"/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;
   # remove unneeded files
   rm -f "$pkgdir"/usr/share/freefem++/${_pkgver}/INSTALL*
