@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 depends=('python2')
 options=(!emptydirs)
 
-source=("http://pypi.python.org/packages/source/b/$name/$name-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/source/b/$name/$name-$pkgver.tar.gz")
 md5sums=('5f930555649692997bcf80bb5f42d9db')
 
 package() {
