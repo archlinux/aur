@@ -6,7 +6,6 @@ pkgbase = inspectrum
 	arch = any
 	license = GPL
 	makedepends = cmake
-	makedepends = pkg-config
 	depends = qt5-base
 	depends = fftw
 	depends = liquid-dsp

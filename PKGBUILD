@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc="SDR signal analyzer"
 arch=('any')
 url="https://github.com/miek/inspectrum"
-license=(GPL)
+license=('GPL')
 depends=('qt5-base' 'fftw' 'liquid-dsp')
-makedepends=('cmake' 'pkg-config')
+makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('9e513101a59822c86b84cb7717f395c59bb27a6c192fe021cf4ffb7cf1d09c78')
 
