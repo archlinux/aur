@@ -8,13 +8,12 @@ pkgdesc='SteelSeries Rival gaming mouse configuration utility'
 arch=('any')
 url='https://github.com/flozz/rivalcfg'
 license=('custom:WTFPL')
-depends=('python' 'hidapi' 'python-hidapi')
-makedepends=('git' 'python-setuptools')
+depends=('python' 'hidapi' 'python-hidapi' 'python-setuptools')
+makedepends=('git')
 conflicts=('rivalcfg')
 provides=('rivalcfg')
 source=('git+https://github.com/flozz/rivalcfg')
-install=${pkgname}.install
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/$_pkgname

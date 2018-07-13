@@ -3,18 +3,17 @@ pkgbase = rivalcfg-git
 	pkgver = 3.0.0.beta1.r1.2968f64
 	pkgrel = 1
 	url = https://github.com/flozz/rivalcfg
-	install = rivalcfg-git.install
 	arch = any
 	license = custom:WTFPL
 	makedepends = git
-	makedepends = python-setuptools
 	depends = python
 	depends = hidapi
 	depends = python-hidapi
+	depends = python-setuptools
 	provides = rivalcfg
 	conflicts = rivalcfg
 	source = git+https://github.com/flozz/rivalcfg
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = rivalcfg-git
 
