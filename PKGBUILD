@@ -1,9 +1,9 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2018.1.6
-_build=f1
-_buildtag=20180702
-_randomstring=a68afd074ea7
+_version=2018.2.0
+_build=f2
+_buildtag=20180711
+_randomstring=10189b18f56e
 _prefix=/opt/Unity
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
@@ -27,7 +27,9 @@ depends=('desktop-file-utils'
          'libpng12'
          'libxtst'
          'libpqxx'
-         'npm')
+         'npm'
+         'intel-tbb'
+         'gtk3')
 optdepends=('unity-editor-doc'
             'unity-editor-standardassets'
             'unity-editor-example'
@@ -42,7 +44,7 @@ source=("${_unitydownloads}/UnitySetup-${_version}${_build}"
         'unity-editor'
         'unity-editor.desktop'
         'unity-editor-icon.png')
-sha1sums=('c2f93a1e33c591b742ec20006e1c622ef6d9b67b'
+sha1sums=('a8d71b86c8a8f3bbccdf813c3bc67b3dd92c728d'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '6ba1a3051bc0d5ed08e2fa4551d0f6c679109176'
           'fddf4861974f88f0565de7f54f7418204e729894')
