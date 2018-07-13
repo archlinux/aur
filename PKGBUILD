@@ -16,7 +16,7 @@ sha1sums=(4303c0684a19222bb26d1ada4631fe001eb06235)
 
 prepare()
 {
-	cd $srcdir/QMPlay2-src-$pkgver
+	mkdir -p $srcdir/QMPlay2-build
 }
 
 build()
@@ -27,10 +27,8 @@ build()
 	# Uncomment below line if you want to use 'jemalloc' and add it to 'depends' list
 	#USE_JEMALLOC='-DUSE_JEMALLOC=ON'
 
-	cd $srcdir
-	mkdir -p QMPlay2-build
-	cd QMPlay2-build
-	cmake ../QMPlay2-src-$pkgver -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_QT5=ON -DUSE_LINK_TIME_OPTIMIZATION=ON $USE_JEMALLOC $USE_SIDPLAYFP
+	cd $srcdir/QMPlay2-build
+	cmake ../QMPlay2-src-$pkgver -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_LINK_TIME_OPTIMIZATION=ON $USE_JEMALLOC $USE_SIDPLAYFP
 	time make
 }
 
