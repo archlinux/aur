@@ -1,6 +1,7 @@
 # Maintainer: Filipe Laíns (FFY00) <fiilipe.lains@gmail.com>
 # Contributor: Shameempk <mailtoshameempk@gmail.com>
 pkgname=writefull-bin
+_pkgname=${pkgname%-bin}
 _rver=3.0.0
 _bver=19
 pkgver=${_rver}_beta$_bver
@@ -25,24 +26,24 @@ elif [ "$(uname -m)" = "i686" ]; then
 fi
 
 package() {
-	install -dm 755 "$pkgdir"/opt/$pkgname
-	cp -dr --no-preserve=ownership "$srcdir"/Writefull-linux-$_arch_dir/* "$pkgdir"/opt/$pkgname
+	install -dm 755 "$pkgdir"/opt/$_pkgname
+	cp -dr --no-preserve=ownership "$srcdir"/Writefull-linux-$_arch_dir/* "$pkgdir"/opt/$_pkgname
 
-	convert "$pkgdir"/opt/$pkgname/Writefull.ico "$pkgdir"/opt/$pkgname/Writefull.png
-	install -Dm 644 "$pkgdir"/opt/$pkgname/Writefull-0.png "$pkgdir"/opt/pixmaps/writefull.png
+	convert "$pkgdir"/opt/$_pkgname/Writefull.ico "$pkgdir"/opt/$_pkgname/Writefull.png
+	install -Dm 644 "$pkgdir"/opt/$_pkgname/Writefull-0.png "$pkgdir"/opt/pixmaps/writefull.png
 
-	sed -i 's|Icon=.*$|Icon=/usr/share/pixmaps/writefull.png|g' "$pkgdir"/opt/$pkgname/writefull.desktop
-	sed -i 's|Exec=.*$|Exec=writefull|g' "$pkgdir"/opt/$pkgname/writefull.desktop
-	install -Dm 644 "$pkgdir"/opt/$pkgname/writefull.desktop "$pkgdir"/opt/applications/writefull.desktop
+	sed -i 's|Icon=.*$|Icon=/opt/pixmaps/writefull.png|g' "$pkgdir"/opt/$_pkgname/writefull.desktop
+	sed -i 's|Exec=.*$|Exec=writefull|g' "$pkgdir"/opt/$_pkgname/writefull.desktop
+	install -Dm 644 "$pkgdir"/opt/$_pkgname/writefull.desktop "$pkgdir"/opt/applications/writefull.desktop
 
-	rm "$pkgdir"/opt/$pkgname/Writefull.ico
-	rm "$pkgdir"/opt/$pkgname/Writefull-*.png
-	rm "$pkgdir"/opt/$pkgname/writefull.desktop
+	rm "$pkgdir"/opt/$_pkgname/Writefull.ico
+	rm "$pkgdir"/opt/$_pkgname/Writefull-*.png
+	rm "$pkgdir"/opt/$_pkgname/writefull.desktop
 
 	install -dm 644 "$pkgdir"/usr/share/licenses/$pkgname
-	ln -s "$pkgdir"/opt/$pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	ln -s "$pkgdir"/opt/$pkgname/LICENSES.chromium.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSES.chromium.html
+	ln -s "$pkgdir"/opt/$_pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	ln -s "$pkgdir"/opt/$_pkgname/LICENSES.chromium.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSES.chromium.html
 
 	install -dm 755 "$pkgdir"/usr/bin
-	ln -s /usr/share/$pkgname/Writefull "$pkgdir"/usr/bin/writefull
+	ln -s /usr/share/$_pkgname/Writefull "$pkgdir"/usr/bin/writefull
 }
