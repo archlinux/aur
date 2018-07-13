@@ -3,7 +3,7 @@
 
 pkgname=purple-discord-git
 _pkgname=purple-discord
-pkgver=v0.0.r451.4c1eb5c
+pkgver=v0.0.r452.84fe764
 _pkgver=v0.0.
 pkgrel=1
 pkgdesc="A libpurple/Pidgin plugin for Discord."
