@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-easyscreencast-origin-git
 	pkgdesc = This extension simplifies the use of the video recording function integrated in gnome shell, allows quickly to change the various settings of the desktop recording.
-	pkgver = 0.10.r83.g7fae04a
+	pkgver = 1.0.0.r0.g314eda4
 	pkgrel = 0
 	url = https://github.com/EasyScreenCast/EasyScreenCast
 	install = gnome-shell-extension-easyscreencast.install
