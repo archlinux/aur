@@ -1,0 +1,17 @@
+pkgbase = python-asynctest
+	pkgdesc = Enhance the standard unittest package with features for testing asyncio libraries.
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://github.com/Martiusweb/asynctest
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python-pyserial
+	depends = python-pyusb
+	provides = pylms7002m
+	conflicts = pylms7002m
+	source = python-asynctest-0.12.2.tar.gz::https://github.com/Martiusweb/asynctest/archive/v0.12.2.tar.gz
+	sha256sums = 5506e9462d627dc533a407168fe82183623993a4e0336e5805caba75920eb579
+
+pkgname = python-asynctest
+
