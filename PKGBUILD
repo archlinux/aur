@@ -2,8 +2,8 @@
 # Contributer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=electrumx
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
 depends=('leveldb'
@@ -12,7 +12,7 @@ depends=('leveldb'
          'python-plyvel'
          'python-pylru'
          'python-aiorpcx>=0.5.5')
-makedepends=('openssl' 'python-setuptools')
+makedepends=('python-setuptools')
 optdepends=('bitcoin-daemon: Bitcoin core headless P2P node'
             'electrum: Bitcoin thin client')
 url="https://github.com/kyuupichan/electrumx"
@@ -21,7 +21,7 @@ options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/kyuupichan/$pkgname/tar.gz/$pkgver
         'electrumx.conf'
         'electrumx.service')
-sha256sums=('d32a818f568fc22a7f817f4c8f7e4b1a8c9b74b5bf0afaf85306fd5fc745fb3b'
+sha256sums=('0ef1c26c1fabf7b9c9e6ac34dc0a82a350cf10f2411affa896b02dc0c7d33f23'
             'f13119ac93e6e05203f9d5dae5e737ec718ca5c829b0b6b73b0761587ae651b7'
             'b4e1a9d4341edf1f2022f8c8591d28ef6bd6db38c6f332445ac294b5fc6dae93')
 backup=('etc/electrumx/electrumx.conf'
@@ -43,8 +43,7 @@ package() {
 
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
-  cp -dpr --no-preserve=ownership README.rst contrib docs/* \
-    "$pkgdir/usr/share/doc/$pkgname"
+  cp -dpr --no-preserve=ownership README.rst contrib docs/* "$pkgdir/usr/share/doc/$pkgname"
 
   msg2 'Making essential directories...'
   install -dm 700 "$pkgdir/etc/electrumx"
@@ -54,13 +53,12 @@ package() {
   install -Dm 600 "$srcdir/electrumx.conf" -t "$pkgdir/etc/electrumx"
 
   msg2 'Installing electrumx.service...'
-  install -Dm 644 "$srcdir/electrumx.service" \
-          -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm 644 "$srcdir/electrumx.service" -t "$pkgdir/usr/lib/systemd/system"
 
   msg2 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   msg2 'Renaming executables...'
-  mv "$pkgdir/usr/bin/electrumx_server.py" "$pkgdir/usr/bin/electrumx-server"
-  mv "$pkgdir/usr/bin/electrumx_rpc.py" "$pkgdir/usr/bin/electrumx-rpc"
+  mv "$pkgdir/usr/bin/electrumx_server" "$pkgdir/usr/bin/electrumx-server"
+  mv "$pkgdir/usr/bin/electrumx_rpc" "$pkgdir/usr/bin/electrumx-rpc"
 }

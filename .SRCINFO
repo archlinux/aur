@@ -1,12 +1,11 @@
 pkgbase = electrumx
 	pkgdesc = Server implementation for the Electrum wallet
-	pkgver = 1.4.3
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/kyuupichan/electrumx
 	install = electrumx.install
 	arch = any
 	license = MIT
-	makedepends = openssl
 	makedepends = python-setuptools
 	depends = leveldb
 	depends = python>=3.6
@@ -19,10 +18,10 @@ pkgbase = electrumx
 	options = !emptydirs
 	backup = etc/electrumx/electrumx.conf
 	backup = usr/lib/systemd/system/electrumx.service
-	source = electrumx-1.4.3.tar.gz::https://codeload.github.com/kyuupichan/electrumx/tar.gz/1.4.3
+	source = electrumx-1.5.1.tar.gz::https://codeload.github.com/kyuupichan/electrumx/tar.gz/1.5.1
 	source = electrumx.conf
 	source = electrumx.service
-	sha256sums = d32a818f568fc22a7f817f4c8f7e4b1a8c9b74b5bf0afaf85306fd5fc745fb3b
+	sha256sums = 0ef1c26c1fabf7b9c9e6ac34dc0a82a350cf10f2411affa896b02dc0c7d33f23
 	sha256sums = f13119ac93e6e05203f9d5dae5e737ec718ca5c829b0b6b73b0761587ae651b7
 	sha256sums = b4e1a9d4341edf1f2022f8c8591d28ef6bd6db38c6f332445ac294b5fc6dae93
 
