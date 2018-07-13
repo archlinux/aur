@@ -1,0 +1,23 @@
+pkgbase = dtkwidget-git
+	pkgdesc = Deepin graphical user interface library
+	pkgver = 2.0.8.1.r1.870cf29
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dtkwidget
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = deepin-qt-dbus-factory
+	depends = dtkcore
+	depends = librsvg
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = startup-notification
+	conflicts = deepin-tool-kit<0.3.4
+	replaces = deepin-tool-kit
+	options = debug
+	source = git+https://github.com/linuxdeepin/dtkwidget.git
+	sha512sums = SKIP
+
+pkgname = dtkwidget-git
+
