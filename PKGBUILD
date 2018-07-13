@@ -1,7 +1,5 @@
 # $Id$
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
-# Contributor: Xu Fasheng <fasheng.xu[AT]gmail.com>
+# Maintainer: Haruyuki lxz <lxz@ilxz.me>
 
 pkgname=dtkwidget-git
 pkgver=2.0.8.1.r1.870cf29
