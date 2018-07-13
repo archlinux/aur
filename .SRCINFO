@@ -1,0 +1,13 @@
+pkgbase = filecryptify
+	pkgdesc = Simple symmetric file encrypting utility based on libsodium.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/zozs/filecryptify
+	arch = x86_64
+	license = ISC
+	depends = libsodium
+	source = https://github.com/zozs/filecryptify/archive/1.0.2.tar.gz
+	sha256sums = 943459784221932208f60aadadb57eff265b456439bce05c894ec97c4d459228
+
+pkgname = filecryptify
+
