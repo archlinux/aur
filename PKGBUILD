@@ -22,4 +22,7 @@ build() {
 package() {
   cd "$srcdir"/$_pkgname-$pkgver
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -dm 644 "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
