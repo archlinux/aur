@@ -1,16 +1,15 @@
 # Maintainer: Samuel Damashek <samuel dot damashek at gmail dot com>
 # Maintainer: Alex Xu <alex_y_xu dot yahoo at ca>
 pkgname=huggle
-pkgver=3.3.5
+pkgver=3.4.4
 pkgrel=1
 pkgdesc="diff browser intended for dealing with vandalism and other unconstructive edits on Wikimedia projects"
 arch=('i686' 'x86_64')
 url="https://en.wikipedia.org/wiki/Wikipedia:Huggle"
 license=('GPL')
 depends=('qt5-multimedia' 'qt5-webengine')
-makedepends=('cmake' 'ninja' 'unzip')
-groups=('base-devel')
-source=("git+https://github.com/huggle/huggle3-qt-lx.git#tag=3.3.5")
+makedepends=('cmake' 'ninja')
+source=("git+https://github.com/huggle/huggle3-qt-lx.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
@@ -18,25 +17,31 @@ prepare() {
 
     # sigh
     git submodule update --init
+
+    # sigh
+    (cd src/huggle_core; ./update.sh)
 }
 
 build() {
-    cd "$srcdir/huggle3-qt-lx/huggle"
+    cd "$srcdir/huggle3-qt-lx/src"
 
-    cmakeargs=(
+    local cmakeargs=(
+        -GNinja
+        -DCMAKE_BUILD_TYPE=Release
         -DCMAKE_INSTALL_PREFIX=/usr
-        -DQT5_BUILD=true
-        -DWEB_ENGINE=true
-        -DBUILD_SHARED_LIBS=false .
+        -DQT5_BUILD=ON
+        -DWEB_ENGINE=ON
+        -DBUILD_SHARED_LIBS=OFF
+        "$srcdir/huggle3-qt-lx/src"
     )
 
-    cmake -GNinja "${cmakeargs[@]}"
+    cmake "${cmakeargs[@]}"
 
     ninja
 }
 
 package() {
-    cd "$srcdir/huggle3-qt-lx/huggle"
+    cd "$srcdir/huggle3-qt-lx/src"
     DESTDIR=$pkgdir ninja install
-    find $pkgdir -name '*yaml-cpp*' -exec rm -rf {} +
+    find "$pkgdir" -name '*yaml-cpp*' -exec rm -rf {} +
 }
