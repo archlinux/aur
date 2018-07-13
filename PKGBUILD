@@ -1,7 +1,7 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 pkgname=ros-arch-deps
 pkgver=1.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Dependencies for building ROS on Arch"
 url="http://www.ros.org"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ depends=('assimp' 'boost' 'cmake' 'collada-dom' 'console-bridge' 'eigen'
   'python-netifaces' 'python-nose' 'python-opengl' 'python-paramiko'
   'python-psutil' 'python-pydot' 'python-pyqt5' 'python-rosdep'
   'python-rosinstall' 'python-rosinstall_generator' 'python-sip' 'python-wstool'
-  'python-yaml' 'qt5-base' 'tango-icon-theme' 'urdfdom' 'yaml-cpp')
+  'python-yaml' 'qt5-base' 'sip' 'tango-icon-theme' 'urdfdom' 'yaml-cpp')
 
 optdepends=(
   'python-matplotlib: rqt_plot backend'
