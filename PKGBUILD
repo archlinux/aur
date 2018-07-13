@@ -7,10 +7,6 @@ pkgdesc="Enhance the standard unittest package with features for testing asyncio
 arch=('any')
 url="https://github.com/Martiusweb/asynctest"
 license=('Apache')
-depends=('python-pyserial' 'python-pyusb')
-makedepends=('git')
-provides=('pylms7002m')
-conflicts=('pylms7002m')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('5506e9462d627dc533a407168fe82183623993a4e0336e5805caba75920eb579')
 
