@@ -17,6 +17,7 @@ pkgbase = python-dbg
 	depends = openssl
 	depends = libffi
 	depends = zlib
+	provides = python
 	options = !debug
 	options = !strip
 	source = https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tar.xz
