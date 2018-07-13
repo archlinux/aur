@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=VR180 Creator
+GenericName=VR180 Creator
+Comment=180º video editor
+Exec=vr180-creator
+Icon=vr180.png
+StartupNotify=true
+Type=Application
+Categories=Utility;Video;Graphics;3DGraphics;GTK;
