@@ -1,7 +1,7 @@
 pkgbase = feedagregator
 	pkgdesc = RSS and Atom feed agregator in desktop widgets + notifications
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/j4321/FeedAgregator
 	arch = any
 	license = GPL3
@@ -16,6 +16,8 @@ pkgbase = feedagregator
 	depends = python-feedparser
 	depends = python-pillow
 	depends = tkhtml3-git
+	depends = python-dateutil
+	depends = python-ewmh
 	optdepends = tktray: GUI toolkit for the system tray icon (at least one must be installed),
 	optdepends = pygtk: GUI toolkit for the system tray icon (at least one must be installed),
 	optdepends = python-pyqt5: GUI toolkit for the system tray icon (at least one must be installed),
