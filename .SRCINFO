@@ -31,6 +31,7 @@ pkgbase = tribler
 	depends = python2-service_identity
 	depends = python2-keyring
 	depends = python2-keyrings-alt
+	depends = python2-libnacl
 	optdepends = vlc: for internal video player
 	provides = python2-pyipv8
 	conflicts = python2-pyipv8

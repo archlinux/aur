@@ -11,7 +11,8 @@ depends=('python2-cryptography' 'python2-feedparser' 'python2-apsw' 'python2-che
 	 'python2-pillow' 'python2-pyqt5' 'qt5-svg' 'phonon-qt5-vlc' 'python2-feedparser' 'python2-chardet'
 	 'python2-psutil' 'python2-meliae' 'python2-decorator' 'python2-netifaces' 'python2-requests'
 	 'python2-twisted' 'libsodium' 'libtorrent-rasterbar' 'python2-m2crypto' 'python2-configobj'
-	 'python2-matplotlib' 'python2-service_identity' 'python2-keyring' 'python2-keyrings-alt')
+	 'python2-matplotlib' 'python2-service_identity' 'python2-keyring' 'python2-keyrings-alt'
+	 'python2-libnacl')
 optdepends=('vlc: for internal video player')
 makedepends=('python2-setuptools')
 provides=('python2-pyipv8')
