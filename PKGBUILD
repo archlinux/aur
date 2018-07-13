@@ -28,6 +28,6 @@ build() {
 }
 
 package() {
-  cd dtkwidget-$pkgver
+  cd dtkwidget
   make INSTALL_ROOT="$pkgdir" install
 }
