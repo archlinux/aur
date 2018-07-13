@@ -1,0 +1,16 @@
+pkgbase = shfmt-bin
+	pkgdesc = Format shell programs (pre-compiled static binary)
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/mvdan/sh
+	arch = x86_64
+	license = BSD
+	provides = shfmt
+	conflicts = shfmt
+	source_x86_64 = https://github.com/mvdan/sh/releases/download/v2.5.0/shfmt_v2.5.0_linux_amd64
+	source_x86_64 = https://raw.githubusercontent.com/mvdan/sh/v2.5.0/LICENSE
+	sha256sums_x86_64 = fce24cfa408362e6802f1cec9b2b9f92fb865eb8ae1233ee2874b5d0c66b2f91
+	sha256sums_x86_64 = SKIP
+
+pkgname = shfmt-bin
+
