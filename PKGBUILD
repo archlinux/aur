@@ -10,7 +10,7 @@ _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 
 pkgname=unity-editor-beta
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=1
+pkgrel=2
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 url='https://unity3d.com/'
