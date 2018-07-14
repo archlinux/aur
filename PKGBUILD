@@ -71,7 +71,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=('GPL2')
@@ -105,7 +105,7 @@ prepare() {
   # end
 
   # end linux-ARCH patches
-
+  
   # fix ci  invalid PC card inserted issue hopefully
   #patch -Rp1 -i "${srcdir}/cx23885_move_CI_AC_registration_to_a_separate_function.patch" || true
 
