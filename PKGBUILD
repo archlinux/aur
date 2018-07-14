@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 _at_ gmail _dot_ com>
 
 pkgname=milena
-pkgver=0.2.88
+pkgver=0.2.90
 pkgrel=1
 pkgdesc="Milena is a Polish speech synthesizer for Linux"
 arch=('i686' 'x86_64')
@@ -15,11 +15,11 @@ optdepends=('milena-basewords: for milena_book'
             'faac: for milena_book'
             'amrwb: for milena_nokia'
             'ImageMagick: for milena_nokia')
-source=(http://tts.polip.com/files/$pkgname-dist-$pkgver.tar.gz
+source=(http://www.polip.com/files/$pkgname-dist-$pkgver.tar.gz
         10-makefile-fix.patch
         20-build_without_data_archive.patch
         40-archlinux_package.patch)
-sha512sums=('435eda5e0558de2bea1802cf58fc570de0a1e7f77793b6854158d574a673e76ed5eee18f336ccb73a33c56d97ec58d0d36923cd9df445a6f1a36cdb509f934b6'
+sha512sums=('fddf65198907e497c3040f99710414c87dbc364463b9f5d0c32290ac22e2e5fb63b30421c1a0c7266f86b4f1c728f0b626a614172fd9405fbc3ab674742581cb'
             '8166da0000e3e8f7c2503f04049ed1c527d67cf1715474a84dfcafce8d727b104d38d19aa76f7ce467a0645823edd36c7e482e58bd309059a5543d3b5c30c1f1'
             '9b38b09353e1bee86af9956c983d9a43f5827dac74ca1f91c74ae8587e93a2b2fae7800de100d8f27b7b36a21f7148ad07291ae5995fdeffc768a1a2802ccb32'
             '43cd6e0760f63319336df8c5915509324672d30a2ca70d2d9653dc60871839892dcca087d2b641474330a114a0c9773ab9304832c86ca5027499a777c8613eeb')
