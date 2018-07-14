@@ -3,7 +3,6 @@ pkgbase = chipmachine
 	pkgver = 1.4b3
 	pkgrel = 4
 	url = https://github.com/sasq64/chipmachine
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake

@@ -1,11 +1,11 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer: Michael Straube <michael.straube@posteo.de>
 # Contributor: Sebastian Wolf <fatmike303 at googlemail dot com>
 
 pkgname=chipmachine
 pkgver=1.4b3
 pkgrel=4
 pkgdesc='Demoscene/Retro Music Player'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/sasq64/chipmachine'
 license=('MIT')
 depends=('mpg123' 'glew' 'glfw' 'curl' 'fftw')
