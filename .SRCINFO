@@ -1,0 +1,13 @@
+pkgbase = deepin-nvidia-prime-git
+	pkgdesc = nvidia prime for deepin
+	pkgver = 0.0.0.r1.0e1e70e
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/nvidia-prime
+	arch = x86_64
+	license = GPL3
+	options = debug
+	source = git+https://github.com/linuxdeepin/nvidia-prime.git
+	sha512sums = SKIP
+
+pkgname = deepin-nvidia-prime-git
+
