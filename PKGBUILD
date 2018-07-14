@@ -2,19 +2,17 @@
 
 pkgname=booktab
 pkgver=4.0
-pkgrel=6
+pkgrel=8
 pkgdesc="MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva."
 arch=('x86_64')
 url="https://booktab.it/"
 license=('unknown')
-depends=("fontconfig" "libxrandr" "libxdamage" "libcups" "nss" "libpng12" "icu55" "libxcursor" "libxinerama" "gstreamer0.10-base" "libpulse" "qt5-svg" "qt5-webkit")
+depends=("fontconfig" "libxrandr" "libxdamage" "libcups" "nss" "libpng12" "icu55" "libxcursor" "libxinerama" "gstreamer0.10-base" "libpulse" "qt5-svg" "qt5-webkit" "qt5-multimedia" "qt5-webengine")
 
-_debname=BooktabZSetup.deb
+_debname=BooktabZSetup-4.0.deb
 
-source=(https://booktab.it/setup-z/${_debname} booktab.desktop booktab_launcher)
-md5sums=('1672cd7af08028fea1dfc1e57ee1854f'
-         '9d8fcee082b5011aeb0234fca6d02fda'
-         'aacc6b709717c15a8437fced7a351c8d')
+source=(https://booktab.it/setup-z/${_debname})
+md5sums=('1672cd7af08028fea1dfc1e57ee1854f')
 
 noextract=(${_debname})
 
@@ -29,12 +27,9 @@ package() {
   cd "$srcdir"
   install -dm755 "$pkgdir"/usr/share/applications
   install -dm755 "$pkgdir"/usr/bin
-  # install -m644 usr/share/applications/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -m644 usr/share/applications/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
   # install -m644 usr/share/applications/"$pkgname"z.desktop "$pkgdir"/usr/share/applications/"$pkgname"z.desktop
   install -m755 usr/bin/booktab "$pkgdir"/usr/bin/booktab
-
-  install -m644 booktab.desktop "$pkgdir"/usr/share/applications/booktab.desktop
-  install -m755 booktab_launcher "$pkgdir"/usr/bin/booktab_launcher
 
   install -dm755 "$pkgdir"/usr/lib
   install -m644 usr/lib/libPDFNetC.so.6.5.3 "$pkgdir"/usr/lib/libPDFNetC.so.6.5.3
