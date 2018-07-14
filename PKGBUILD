@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
 
 pkgname=vlc-pause-click-plugin
 pkgver=1.0.0
