@@ -3,7 +3,7 @@
 
 pkgname=hugo-git
 _pkgname=hugo
-pkgver=v0.44.DEV.G2F2BC7FF
+pkgver=v0.44.r3.g2f2bc7ff
 pkgrel=1
 pkgdesc="Fast and Flexible Static Site Generator in Go"
 arch=('x86_64')
