@@ -2,16 +2,18 @@
 _name=kaptan
 pkgbase=python-kaptan
 pkgname=('python-kaptan' 'python2-kaptan')
-pkgver=0.5.9
-pkgrel=4
+pkgver=0.5.10
+pkgrel=1
 pkgdesc="Configuration manager in your pocket."
 arch=('any')
 url="https://emre.github.io/kaptan/"
 license=('BSD')
 makedepends=('python-setuptools' 'python-yaml' 'python2-setuptools' 'python2-yaml')
 checkdepends=('python-pytest' 'python2-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/emre/${_name}/archive/v${pkgver}.tar.gz")
-sha512sums=('7638c917cfe18ca623f4b9508b35989588b2bfb43468ffb7b16159fe6e0e0b6fd70d7c480db90c84ddd9379ca2be1d25b501b7dbc17a3f7bca27591f5d65d6a9')
+# pypi sdist doesn't have the tests (yet): https://github.com/emre/kaptan/issues/93
+#source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+source=("${_name}-${pkgver}.tar.gz::https://github.com/emre/${_name}/archive/v${pkgver}.tar.gz")
+sha512sums=('a9be1ecc1f91af8550ff8648de91dab9bb601fcf643c7dd87e6a2707097c7f37ed67e3916909491f1eb76116fe7f47d782fe1ce5f127835685008f60d473e43c')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "${pkgname[0]}-${pkgver}"
@@ -27,42 +29,42 @@ build() {
 
 check() {
   cd "${pkgname[0]}-${pkgver}"
-  export PYTHONPATH=build:${PYTHONPATH}
-  py.test
+#  export PYTHONPATH=build:${PYTHONPATH}
+#  py.test
+  python setup.py test
 
   cd ../"${pkgname[1]}-${pkgver}"
-  export PYTHONPATH=build:${PYTHONPATH}
-  py.test2
+#  export PYTHONPATH=build:${PYTHONPATH}
+#  py.test2
+  python2 setup.py test
 }
 
 package_python-kaptan() {
   depends=('python-yaml')
-  cd "${pkgname[0]}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   python setup.py install --skip-build \
     --optimize=1 \
     --prefix=/usr \
     --root="${pkgdir}"
   # license
-  install -vDm644 LICENSE \
-    "${pkgdir}/usr/share/licenses/${pkgname[0]}/LICENSE"
+  install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   # docs
-  install -t "${pkgdir}/usr/share/doc/${pkgname[0]}" \
+  install -t "${pkgdir}/usr/share/doc/${pkgname}" \
     -vDm644 {AUTHORS,CHANGES,README.rst,TODO}
 }
 
 package_python2-kaptan() {
   depends=('python2-yaml')
-  cd "${pkgname[1]}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   python2 setup.py install --skip-build \
     --optimize=1 \
     --prefix=/usr \
     --root="${pkgdir}"
   # license
-  install -vDm644 LICENSE \
-    "${pkgdir}/usr/share/licenses/${pkgname[1]}/LICENSE"
+  install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   # docs
-  install -t "${pkgdir}/usr/share/doc/${pkgname[1]}" \
-    -vDm644 {AUTHORS,CHANGES,README.rst,TODO}
+  install -t "${pkgdir}/usr/share/doc/${pkgname}" \
+    -vDm 644 {AUTHORS,CHANGES,README.rst,TODO}
   # moving duplicate file
   mv -v "${pkgdir}/usr/bin/${_name}" "${pkgdir}/usr/bin/${_name}2"
 }
