@@ -1,7 +1,7 @@
 # Maintainer: Michiel Brentjens <m.a.brentjens@gmail.com>
 pkgname=python-pyxb
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Generates Python code for classes that correspond to data structures defined by XMLSchema"
 arch=(any)
 url="http://pyxb.sourceforge.net/"

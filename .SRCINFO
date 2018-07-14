@@ -1,7 +1,7 @@
 pkgbase = python-pyxb
 	pkgdesc = Generates Python code for classes that correspond to data structures defined by XMLSchema
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pyxb.sourceforge.net/
 	arch = any
 	license = Apache
