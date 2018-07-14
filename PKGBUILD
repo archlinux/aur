@@ -7,7 +7,7 @@
 pkgname=alacarte-xfce
 _pkgname=${pkgname%-xfce}
 pkgver=3.11.91.r18.g40c8c60
-pkgrel=2
+pkgrel=3
 pkgdesc="Menu editor for Xfce"
 arch=('any')
 license=('LGPL')
@@ -18,7 +18,7 @@ makedepends=('intltool' 'libxslt' 'docbook-xsl' 'git' 'gnome-common')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git" "$_pkgname-xfce-devel")
 install="$_pkgname.install"
-source=("$_pkgname"::"git+https://git.gnome.org/browse/$_pkgname"
+source=("$_pkgname"::"git+https://gitlab.gnome.org/GNOME/$_pkgname.git"
         'unicode.patch')
 md5sums=('SKIP'
          '171d6819609a8e16d7950314dc78b352')
@@ -42,7 +42,7 @@ build() {
   cd $_pkgname
 
   NOCONFIGURE=1 ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var PYTHON=/usr/bin/python2
+  ./configure --prefix=/usr PYTHON=/usr/bin/python2
   make
 }
 
