@@ -1,15 +1,15 @@
 # Maintainer: 3ED <krzysztof1987 _at_ gmail _dot_ com>
 
 pkgname=milena-abc
-pkgver=0.3.66
+pkgver=0.3.68
 pkgrel=1
 pkgdesc="Gtk3 gui for audiobook creator from Milena speech synthesizer"
 arch=('i686' 'x86_64')
 url="http://milena.polip.com/"
 license=('GPL')
-depends=(milena libwebkit3 gtksourceview3 faac mpg123 libsamplerate curl)
-source=(http://tts.polip.com/files/${pkgname//-/_}-${pkgver}.tar.gz)
-sha256sums=('570cde01799fdcbbc9ecfb912234ff439be217f56cbad5a0867d6c070354a5aa')
+depends=(milena gtksourceview3 faac mpg123 libsamplerate curl)
+source=(http://www.polip.com/files/${pkgname//-/_}-${pkgver}.tar.gz)
+sha256sums=('b1f400f0b950e0d33cc05ee52dcf88b5f2d0bdc5c405eda3b7863229aa4c83c5')
 
 build() {
   cd "$srcdir/${pkgname//-/_}-${pkgver}"
