@@ -9,28 +9,31 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3' 'custom:libfdk-aac')
-depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
-         'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug'
-         'libomxil-bellagio' 'libpulse' 'libraw1394' 'libsoxr' 'libssh'
-         'libtheora' 'libvdpau' 'libwebp' 'libx11' 'libxcb' 'libxext' 'libxml2'
-         'libxv' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2' 'speex' 'v4l-utils'
-         'xz' 'zlib'
-         'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
-         'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so'
-         'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so'
-         'libfdk-aac')
+depends=('alsa-lib' 'aom' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
+  'alsa-lib' 'aom' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
+  'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug' 'libomxil-bellagio'
+  'libpulse' 'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libvdpau' 'libwebp'
+  'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv' 'opencore-amr' 'openjpeg2'
+  'opus' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
+  'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
+  'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
+  'libx264.so' 'libx265.so' 'libxvidcore.so'
+  'libfdk-aac'
+)
 makedepends=('ffnvcodec-headers' 'ladspa' 'yasm')
 optdepends=('ladspa: LADSPA filters')
-provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+provides=(
+  'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so'
-          "ffmpeg=$pkgver")
+          "ffmpeg=$pkgver"
+)
 conflicts=("$_name")
 source=("https://ffmpeg.org/releases/$_name-$pkgver.tar.xz"{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
@@ -51,6 +54,7 @@ build() {
     --enable-gnutls \
     --enable-gpl \
     --enable-ladspa \
+    --enable-libaom \
     --enable-libass \
     --enable-libbluray \
     --enable-libdrm \
