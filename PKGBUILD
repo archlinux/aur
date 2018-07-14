@@ -1,8 +1,8 @@
 # Maintainer: Jakob Dübel <jkbd@posteo.de>
 _pkgname=jack-midi-clock
 pkgname=${_pkgname}-git
-pkgver=v0.1.0.r73.554baec
-pkgrel=1
+pkgver=0.4.3.r2.g554baec
+pkgrel=2
 pkgdesc="A utility to send MIDI Beat Clock pulses that follow the JACK Transport"
 arch=('x86_64')
 url="https://github.com/x42/jack_midi_clock"
@@ -23,9 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-
-# Git, tags available
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

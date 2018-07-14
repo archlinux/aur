@@ -1,7 +1,7 @@
 pkgbase = jack-midi-clock-git
 	pkgdesc = A utility to send MIDI Beat Clock pulses that follow the JACK Transport
-	pkgver = v0.1.0.r73.554baec
-	pkgrel = 1
+	pkgver = 0.4.3.r2.g554baec
+	pkgrel = 2
 	url = https://github.com/x42/jack_midi_clock
 	arch = x86_64
 	license = GPL2
