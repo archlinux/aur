@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer: Michael Straube <michael.straube@posteo.de>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Stephen D. Cofer <stephen.d.cofer@outlook.com>
 
@@ -7,7 +7,7 @@ pkgver=1.05
 pkgrel=2
 _commit=3e3cc1a4798a8732935b23697b7037a431819726
 pkgdesc="A frontend for Doom engines"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://gitlab.com/sdcofer70/enyo-doom"
 license=('GPL')
 depends=('qt5-base')

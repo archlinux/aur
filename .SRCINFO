@@ -3,7 +3,6 @@ pkgbase = enyo-doom
 	pkgver = 1.05
 	pkgrel = 2
 	url = https://gitlab.com/sdcofer70/enyo-doom
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
