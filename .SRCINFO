@@ -1,0 +1,29 @@
+pkgbase = shadowsocksr
+	pkgdesc = Python port of ShadowsocksR
+	pkgver = 3.2.2
+	pkgrel = 2
+	url = https://github.com/shadowsocksrr/shadowsocksr
+	install = shadowsocksr.install
+	arch = any
+	license = Apache
+	checkdepends = python-coverage
+	checkdepends = python-pyflakes
+	checkdepends = libsodium
+	checkdepends = python-nose
+	checkdepends = dante
+	checkdepends = procps-ng
+	checkdepends = util-linux
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	optdepends = libsodium: For salsa20 and chacha20 support
+	conflicts = shadowsocks
+	source = git+https://github.com/shadowsocksrr/shadowsocksr.git#tag=3.2.2
+	source = shadowsocksr@.service
+	source = shadowsocksr-server@.service
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = shadowsocksr
+
