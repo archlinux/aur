@@ -1,15 +1,16 @@
 pkgbase = squeue
 	pkgdesc = Simple queue implementation based on Screen command
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/dzieciolowski/squeue
 	arch = any
 	license = MIT
 	depends = screen
 	depends = coreutils
 	depends = bash
-	source = squeue-1.0.0.zip::https://github.com/dzieciolowski/squeue/archive/v1.0.0.zip
-	sha256sums = dbb1bd081d6cdd6c8c530704e69bf67045d2fe9f9d76470e23a0c503a8a9cf3a
+	depends = sed
+	source = squeue-1.0.1.zip::https://github.com/dzieciolowski/squeue/archive/v1.0.1.zip
+	sha256sums = bf17b9eb4e982f5f6934d1eb0a45f7d1cfc6eeeb55fce8c85311bcf548415509
 
 pkgname = squeue
 
