@@ -59,11 +59,12 @@ options=('!strip') # Do not strip binaries because it breaks them down
 
 package_bcompare() {
   pkgdesc="Beyond Compare 4: Compare, sync, and merge files and folders"
-  optdepends=('bcompare-kde: KDE service menus for Beyond Compare 4'
-                         'bcompare-nautilus: Nautilus service menus for Beyond Compare 4'
-                         'bcompare-thunar: Thunar service menus for Beyond Compare 4'
-                         'bcompare-cinnamon: Cinnamon service menus for Beyond Compare 4'
-                         'bcompare-mate: MATE service menus for Beyond Compare 4'  )
+  optdepends=('bcompare-kde4: KDE4 service menus for Beyond Compare 4'
+              'bcompare-kde5: KDE Plasma 5 service menus for Beyond Compare 4'
+              'bcompare-nautilus: Nautilus service menus for Beyond Compare 4'
+              'bcompare-thunar: Thunar service menus for Beyond Compare 4'
+              'bcompare-cinnamon: Cinnamon service menus for Beyond Compare 4'
+              'bcompare-mate: MATE service menus for Beyond Compare 4'  )
   install=${pkgbase}.install
 
   # Excecute install script - needs to be run here
