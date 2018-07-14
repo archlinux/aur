@@ -6,34 +6,29 @@
 # https://developer.nvidia.com/nvidia-video-codec-sdk/
 
 pkgname=nvidia-sdk
-pkgver=8.1.24
-pkgrel=2
+pkgver=8.2.15
+pkgrel=1
 pkgdesc='NVIDIA Video Codec SDK (NVDECODE and NVENCODE APIs) (needs registration at upstream URL and manual download)'
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://developer.nvidia.com/nvidia-video-codec-sdk/'
 license=('custom')
 makedepends=('poppler')
-options=('!strip' 'staticlibs')
 source=("file://Video_Codec_SDK_${pkgver}.zip")
-sha256sums=('578d038d9c151e80c03909791485d0cbc1f2deedab4b14d765e203c87a2f626e')
+sha256sums=('053cac688be75926e03b81f71e0427f6f466b265b3132eafabac368c2588fe87')
 
 package() {
-    # directories creation
-    mkdir -p "${pkgdir}/usr/include/${pkgname}/GL"
-    mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+    # encoder header
+    cd "Video_Codec_SDK_${pkgver}/Samples/NvCodec/NvEncoder"
+    install -D -m644 nvEncodeAPI.h -t "${pkgdir}/usr/include/${pkgname}"
     
-    # includes
-    cd "Video_Codec_SDK_${pkgver}/LegacySamples/common/inc"
-    install -m644 *.h    "${pkgdir}/usr/include/${pkgname}"
-    install -m644 GL/*.h "${pkgdir}/usr/include/${pkgname}/GL"
-    
-    # lib
-    cd "${srcdir}/Video_Codec_SDK_${pkgver}/LegacySamples/common/lib/linux/${CARCH}"
-    install -D -m644 libGLEW.a "${pkgdir}/usr/lib/${pkgname}/libGLEW.a"
+    # decoder headers
+    cd "${srcdir}/Video_Codec_SDK_${pkgver}/Samples/NvCodec/NvDecoder"
+    install -D -m644 cuviddec.h -t "${pkgdir}/usr/include/${pkgname}"
+    install -D -m644 nvcuvid.h  -t "${pkgdir}/usr/include/${pkgname}"
     
     # documentation
     cd "${srcdir}/Video_Codec_SDK_${pkgver}/doc"
-    install -m644 * "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 * -t "${pkgdir}/usr/share/doc/${pkgname}"
     
     # license
     cd "${srcdir}/Video_Codec_SDK_${pkgver}"
