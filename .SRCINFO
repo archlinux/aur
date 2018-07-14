@@ -1,0 +1,14 @@
+pkgbase = dendrix
+	pkgdesc = Algorithm for discovery of mutated driver pathways in cancer using only mutation data
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://compbio.cs.brown.edu/projects/dendrix/
+	arch = any
+	license = MIT
+	depends = python2
+	provides = dendrix
+	source = dendrix-0.3.zip::http://compbio-research.cs.brown.edu/software/Dendrix/Dendrix_v0.3.zip
+	sha512sums = 39fd7983b34c25b5e69ed230d9f4da2795fb64057c9891afa136953855391cd8d019ac5cdfc28b69a931852b8dca381ebd01bf93c3cd7c53ab7b36f967479f7b
+
+pkgname = dendrix
+
