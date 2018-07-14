@@ -1,7 +1,7 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=extempore-git
-pkgver=0.7.0.r388.g951540a0
+pkgver=0.7.0.r390.g853a442a
 pkgrel=1
 pkgdesc="A cyber-physical programming environment for live coding"
 arch=('i686' 'x86_64')
@@ -12,8 +12,9 @@ makedepends=('git' 'cmake' 'gcc' 'perl')
 optdepends=('jack')
 provides=('extempore')
 conflicts=('extempore')
-source=("git+https://github.com/digego/extempore.git")
-md5sums=('SKIP')
+source=("git+https://github.com/digego/extempore.git"
+        "fix-llvm-build.patch")
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   git --git-dir="${srcdir}/extempore/.git" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -21,10 +22,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/extempore"
-
-  # Do not hook up aot_extended on ALL. Otherwise it is run at make install,
-  # since it does not track build products.
-  sed -i 's/aot_extended ALL/aot_extended/g' CMakeLists.txt
+  patch -p1 -i "${srcdir}/fix-llvm-build.patch"
 }
 
 build() {
@@ -49,7 +47,7 @@ package() {
   # emacs and vim files
   install -D "${srcdir}/extempore/extras/extempore.el" "${pkgdir}/usr/share/emacs/site-lisp/extempore/extempore.el"
 
-  # NOTE: The vim file interferes with vim, overriding global bindins.
+  # NOTE: The vim file interferes with vim, overriding global bindings.
   # install -D "${srcdir}/extempore/extras/extempore.vim" "${pkgdir}/usr/share/vim/vimfiles/plugin/extempore.vim"
 
   install -d "${pkgdir}/usr/bin"

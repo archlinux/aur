@@ -1,6 +1,6 @@
 pkgbase = extempore-git
 	pkgdesc = A cyber-physical programming environment for live coding
-	pkgver = 0.7.0.r388.g951540a0
+	pkgver = 0.7.0.r390.g853a442a
 	pkgrel = 1
 	url = http://extempore.moso.com.au
 	arch = i686
@@ -17,7 +17,9 @@ pkgbase = extempore-git
 	provides = extempore
 	conflicts = extempore
 	source = git+https://github.com/digego/extempore.git
-	md5sums = SKIP
+	source = fix-llvm-build.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = extempore-git
 
