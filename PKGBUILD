@@ -1,8 +1,15 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
+# To enable the Instrumentation and Tracing Technology API (ittnotify):
+#   - install the package intel-seapi
+#   - in build(), change '-DENABLE_ITT:BOOL=' from 'OFF' to 'ON'
+#   - and then build intel-media-sdk
+# It will be autodetected by the build system, serving as a makedepend.
+# Currently it will not be a mandatory makedepend.
+
 _srcname=MediaSDK
 pkgname=intel-media-sdk-git
-pkgver=2018.Q2.1.r135.g9033e41
+pkgver=2018.Q2.1.r194.g7b093e8
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
