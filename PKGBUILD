@@ -10,6 +10,7 @@ license=('custom:AMD')
 makedepends=('wget')
 depends=('libdrm' 'ocl-icd')
 conflicts=('amdgpocl')
+provides=('opencl-driver')
 
 DLAGENTS='https::/usr/bin/wget --referer https://support.amd.com/en-us/kb-articles/Pages/AMDGPU-PRO-Driver-for-Linux-Release-Notes.aspx -N %u'
 
