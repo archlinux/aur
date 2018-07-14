@@ -1,7 +1,7 @@
 pkgbase = oni-bin
 	pkgdesc = Oni: Modern Modal Editing - powered by Neovim.
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/onivim/oni
 	arch = x86_64
 	license = MIT
