@@ -1,6 +1,6 @@
 # Maintainer: Michiel Brentjens <m.a.brentjens@gmail.com>
 pkgname=python-pyxb
-pkgver=1.2.4
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Generates Python code for classes that correspond to data structures defined by XMLSchema"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('python')
 makedepends=('python' 'python-setuptools')
 
 source=("https://pypi.python.org/packages/source/P/PyXB/PyXB-$pkgver.tar.gz")
-sha256sums=('024f9d4740fde187cde469dbe8e3c277fe522a3420458c4ba428085c090afa69')
+sha256sums=('2a00f38dd1d87b88f92d79bc5a09718d730419b88e814545f472bbd5a3bf27b4')
 
 build() {
     cd "$srcdir/PyXB-$pkgver"
