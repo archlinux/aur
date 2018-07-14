@@ -5,7 +5,7 @@
 # Pending work: man & changelog files generated automatically. 
 
 pkgname=eddie-ui-git
-pkgver=2.15.2
+pkgver=2.16.1
 pkgrel=1
 pkgdesc='Eddie - OpenVPN UI - beta version'
 arch=('i686' 'x86_64')
