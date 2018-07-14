@@ -8,7 +8,7 @@ pkgbase=arc-gtk-theme-git
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme-git' 'arc-solid-gtk-theme-git')
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell"
-pkgver=20180114.r18.6b07b5a
+pkgver=20180114.r23.7ea2861
 pkgrel=1
 arch=('any')
 # Upstream url: https://github.com/horst3180/arc-theme
@@ -18,7 +18,7 @@ license=('GPL3')
 optdepends=('arc-icon-theme: recommended icon theme'
             'gtk-engine-murrine: for gtk2 themes'
             'gnome-themes-standard: for gtk2 themes')
-makedepends=('gtk3' 'sassc' 'git')
+makedepends=('gtk3' 'sassc' 'git' 'optipng' 'inkscape')
 
 source=("${_pkgname}::git+https://github.com/nicohood/${_pkgname}.git")
 sha512sums=('SKIP')
