@@ -1,6 +1,6 @@
 pkgbase = ring-kde-git
 	pkgdesc = The KDE client for the Ring communication framework (www.ring.cx)
-	pkgver = 2.0.0.r651.g82a6286b
+	pkgver = 3.0.0.r0.gdcc542a2
 	pkgrel = 1
 	url = https://ring.cx/
 	changelog = ChangeLog
@@ -10,6 +10,7 @@ pkgbase = ring-kde-git
 	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
+	makedepends = qt5-tools
 	depends = libringqt
 	depends = knotifyconfig
 	depends = kdeclarative

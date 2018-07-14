@@ -4,7 +4,7 @@
 # Contributor: Pierre Choffet <peuc@wanadoo.fr>
 _pkgname=ring-kde
 pkgname=$_pkgname-git
-pkgver=2.0.0.r651.g82a6286b
+pkgver=3.0.0.r0.gdcc542a2
 pkgrel=1
 pkgdesc="The KDE client for the Ring communication framework (www.ring.cx)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://ring.cx/"
 license=('GPL')
 groups=('ring')
 depends=('libringqt' 'knotifyconfig' 'kdeclarative' 'kirigami2')
-makedepends=('git' 'extra-cmake-modules' 'kdoctools')
+makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 changelog="ChangeLog"
