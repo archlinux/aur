@@ -221,8 +221,8 @@ void on_modify_button_clicked(GtkButton* button) {
     gtk_widget_grab_focus(GTK_WIDGET(gtk_builder_get_object(app.builder, "modify_symbol_entry")));
 }
 
-void on_modify_entry_activate(GtkEntry* entry, gpointer dialog) {
-    gtk_widget_hide(GTK_WIDGET(dialog));
+void on_modify_entry_activate(GtkEntry* entry) {
+    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "portfolio_modify_dialog")));
     GtkEntry* symbol_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_symbol_entry"));
     GtkEntry* amount_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_amount_entry"));
     GtkEntry* spent_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_spent_entry"));
@@ -255,12 +255,13 @@ void on_modify_entry_activate(GtkEntry* entry, gpointer dialog) {
 void on_portfolio_modify_dialog_response(GtkDialog* dialog, gint response_id) {
     if (response_id == GTK_RESPONSE_CANCEL)
         gtk_widget_hide(GTK_WIDGET(dialog));
-    else on_modify_entry_activate(NULL, NULL); // GTK_RESPONSE_OK
+    else on_modify_entry_activate(NULL); // GTK_RESPONSE_OK
 }
 
-void on_password_entry_activate(GtkEntry* entry, gpointer dialog) {
-    gtk_widget_hide(GTK_WIDGET(dialog));
-    const gchar* password = gtk_entry_get_text(entry);
+void on_password_entry_activate(GtkEntry* entry) {
+    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "get_password_dialog")));
+    const gchar* password = gtk_entry_get_text(GTK_ENTRY(gtk_builder_get_object(app.builder,
+            "password_entry")));
     if (password == NULL || strcmp(password, "") == 0) // Return if NULL or empty entry text
         return;
 
@@ -276,15 +277,15 @@ void on_password_entry_activate(GtkEntry* entry, gpointer dialog) {
         // Copy password to app
         strcpy(app.password, modified_pw);
 
-        // Load portfolio
+        // Reload portfolio
         on_load_button_clicked(NULL);
     }
 }
 
-void on_get_password_dialog_response(GtkDialog* dialog, gint response_id, gpointer entry) {
+void on_get_password_dialog_response(GtkDialog* dialog, gint response_id) {
     if (response_id == GTK_RESPONSE_CANCEL)
         gtk_widget_hide(GTK_WIDGET(dialog));
-    else on_password_entry_activate(entry, dialog); // GTK_REPONSE_OK
+    else on_password_entry_activate(NULL); // GTK_REPONSE_OK
 }
 
 void on_check_window_destroy(void) {
