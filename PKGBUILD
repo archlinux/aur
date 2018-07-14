@@ -4,8 +4,8 @@
 
 pkgbase=python-boto
 pkgname=(python-boto python2-boto)
-pkgver=2.48.0
-pkgrel=2
+pkgver=2.49.0
+pkgrel=1
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
 arch=('any')
 url='https://github.com/boto/boto'
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-nose' 'python2-nose' 'python-mock' 'python2-mock' 'python-requests'
               'python2-requests' 'python-httpretty' 'python2-httpretty')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/boto/boto/archive/$pkgver.tar.gz")
-sha512sums=('aabef7622927884549fbc1cb3b39d307aadcab0ac5bff65778f87c881a8df76ee819aab20c34d5aceb62fe1365629f9186b8e10f3216b62d9a339a93e9b5f12a')
+sha512sums=('43c2679f33ecec9b78d9969329d361cff4fd569b431e8451d849a42882ba4913598bfc7e11561fc54799e6e36e6e75a0299da955232435fb3e56745b2fcb57bc')
 
 prepare() {
   cp -a boto-$pkgver{,-py2}
