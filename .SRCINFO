@@ -1,0 +1,14 @@
+pkgbase = gcal-notifier-kotlin-gtk
+	pkgdesc = Simple Google Calendar notifier for Linux written on Kotlin using GTK lib
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/nikitabobko/gcal-notifier-kotlin-gtk
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = java-gnome
+	source = https://github.com/nikitabobko/gcal-notifier-kotlin-gtk/releases/download/v1.0/gcal-notifier-kotlin-gtk.tar
+	sha256sums = cdcbb4c3f7221345b3f76a92ab4050a5013ca371cab5e9fb05f03fc54852eba9
+
+pkgname = gcal-notifier-kotlin-gtk
+
