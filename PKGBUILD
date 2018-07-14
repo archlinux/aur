@@ -3,8 +3,8 @@
 # Contributor: 2GMon <t_2gmon@yahoo.co.jp>
 
 pkgname=mikutter
-pkgver=3.7.2
-pkgrel=2
+pkgver=3.7.3
+pkgrel=1
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
@@ -56,7 +56,7 @@ EOF
   chmod +x $pkgdir/usr/share/applications/mikutter.desktop
 }
 
-md5sums=('d5be1432d609c6e3cdb7b9361996d5cd'
+md5sums=('bcbfbc621a3d5645a7ead1663064d45c'
          '3bc1c65e13b6182a9c989835eefc8810'
          '54df9d2f1f19d3c27034cc1a97d1bc67'
          '949d3f1d444732f7c0a62354b64491ea')
