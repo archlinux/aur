@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-_gmmlib_commit='a5015343bc932e39747c57ea5dec0cbf28685465'
+_gmmlib_commit='5ff84b923ec2ba1572c464dc8def73348571b440'
 
 pkgname=intel-media-driver
-pkgver=2018.Q2.1
+pkgver=2018.2.0
 pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI'
 arch=('x86_64')
@@ -15,37 +15,30 @@ conflicts=('intel-media-driver-git')
 backup=('etc/profile.d/intel-media.sh')
 options=('!emptydirs')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/intel/media-driver/archive/driver-for-Intel-Media-SDK-${pkgver/.Q/Q}.tar.gz"
-        'gmmlib-git'::"git+https://github.com/intel/gmmlib.git#commit=${_gmmlib_commit}"
-        'intel-media-driver-support-libva-2.1.0.patch')
-sha256sums=('f50a23af8a2e52a0895ddc24b10aff64b1077d2e783b33e743ec663371d3dd43'
-            'SKIP'
-            '187e1eeadc223022195b3675f84e65014935976523ab5a37cc21658233273d55')
-prepare() {
-    cd "media-driver-driver-for-Intel-Media-SDK-${pkgver/.Q/Q}"
-    
-    patch -Np1 -i "${srcdir}/intel-media-driver-support-libva-2.1.0.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/intel/media-driver/archive/intel-media-${pkgver/2018/18}.tar.gz"
+        'gmmlib-git'::"git+https://github.com/intel/gmmlib.git#commit=${_gmmlib_commit}")
+sha256sums=('3dde23c791a3e7781970c902a74b4d569a898ae5d34a094fe0b4e94ad41e830e'
+            'SKIP')
+
 build() {
-    rm -rf build
     mkdir -p build
     cd build
     
     cmake \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+        -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL='OFF' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR:PATH='etc' \
         -DINSTALL_DRIVER_SYSCONF:BOOL='ON' \
         -DMEDIA_BUILD_FATAL_WARNINGS:BOOL='OFF' \
         -DMEDIA_VERSION='2.0.0' \
-        -DBUILD_ALONG_WITH_CMRTLIB='1' \
         -DBS_DIR_GMMLIB="$(pwd)/../gmmlib-git/Source/GmmLib/" \
         -DBS_DIR_COMMON="$(pwd)/../gmmlib-git/Source/Common/" \
         -DBS_DIR_INC="$(pwd)/../gmmlib-git/Source/inc/" \
-        -DBS_DIR_MEDIA="$(pwd)/../media-driver-driver-for-Intel-Media-SDK-${pkgver/.Q/Q}" \
+        -DBS_DIR_MEDIA="$(pwd)/../media-driver-intel-media-${pkgver/2018/18}" \
         -Wno-dev \
-        ../"media-driver-driver-for-Intel-Media-SDK-${pkgver/.Q/Q}"
+        ../"media-driver-intel-media-${pkgver/2018/18}"
     
     make
 }
@@ -61,6 +54,6 @@ package() {
     sed -i '/^export[[:space:]]LIBVA_DRIVER_NAME/s/^/#/' "${pkgdir}/etc/profile.d/intel-media.sh"
     
     # license
-    cd "${srcdir}/media-driver-driver-for-Intel-Media-SDK-${pkgver/.Q/Q}"
+    cd "${srcdir}/media-driver-intel-media-${pkgver/2018/18}"
     install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
