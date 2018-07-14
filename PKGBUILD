@@ -2,7 +2,7 @@
 # Contributor: Rocka <i at Rocka dot me>
 
 pkgname=electron-netease-cloud-music
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="UNOFFICAL clinet for music.163.com. Powered by Electron and Vue"
 arch=('x86_64')
@@ -11,16 +11,15 @@ license=('GPL-3.0')
 depends=('electron')
 makedepends=('asar' 'imagemagick')
 
-#source_x86_64=('http://ncm.qn.rocka.cn/electron-ncm-linux-x64-38b3f7f.tar.gz'
-source_x86_64=("https://github.com/Rocket1184/electron-netease-cloud-music/releases/download/v${pkgver}/app.asar"
+source_x86_64=("https://github.com/Rocket1184/electron-netease-cloud-music/releases/download/v${pkgver}/${pkgname}_v${pkgver}.asar"
   'electron-netease-cloud-music.desktop'
   'electron-netease-cloud-music.sh'
   'electron-netease-cloud-music.png'
 )
 
-md5sums_x86_64=('d6d075d2f3d861495fc0b58791a81172'
+md5sums_x86_64=('64c1243c8717dc13a22fb377ad3c452a'
                 '7f35c2dbfc5cd0fd63cd0be16cf35f3c'
-                '77f597cf81b39d6d6bfee05d4009d026'
+                '7ecfe9b9b1c98b43cd9d4c1762a9b96d'
                 '3d4d42071b1a86d8e3bf04e0839c3dc4')
 package() {
     cd "$srcdir"
@@ -36,20 +35,9 @@ package() {
         convert ${pkgname}.png -resize ${size}x${size} "$target/$pkgname.png"
     done
 
-
-    #cd "$srcdir/${pkgname}-linux-x64"
-
-    #install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    #mkdir -p "$pkgdir/usr/lib/$pkgname/"
-    #cp -r --no-preserve='ownership' -- * "$pkgdir/usr/lib/$pkgname/"
-    #mkdir -p "$pkgdir/usr/bin/"
-    #ln -s '../lib/electron-netease-cloud-music/electron-netease-cloud-music' "$pkgdir/usr/bin/electron-netease-cloud-music"
-
-
-    asar e "$srcdir/app.asar" app
+    asar e "$srcdir/${pkgname}_v${pkgver}.asar" app
     install -Dm644 "$srcdir/app/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm644 "$srcdir/app.asar" -t "$pkgdir/usr/lib/$pkgname/"
+    install -Dm644 "$srcdir/${pkgname}_v${pkgver}.asar" -T "$pkgdir/usr/lib/$pkgname/$pkgname.asar"
 }
 
