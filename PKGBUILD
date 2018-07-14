@@ -11,7 +11,7 @@ license=('ISC')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("wego-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha512sums=('f7c0d2da770ff311c62c4ab9e539edbd785ac21dbf7578d281876e621bb933c5ed168597d209c5140e686e3f27df5a3d89a87a49cc42298dd5af2c29fe03d09a')
+sha512sums=('7a08d724f30f2d2d76e817ff384f5e0e159d037ee231550a57449f9d926bdd95bbfeb9963b34befcacb1e4c98e66eba41e6a8b41678fd14f696fe2f659661cdb')
 
 prepare() {
   mkdir -p src/github.com/schachmat
