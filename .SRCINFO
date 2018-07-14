@@ -1,14 +1,14 @@
 pkgbase = clover-efi
 	pkgdesc = An EFI-based bootloader for BIOS-based computers to replace EDK2/Duet bootloader and enable OS X booting on non-Apple hardware.
-	pkgver = 4411
+	pkgver = 4586
 	pkgrel = 1
 	url = http://cloverefiboot.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	options = docs
-	source = http://downloads.sourceforge.net/project/cloverefiboot/Bootable_ISO/CloverISO-4411.tar.lzma
-	md5sums = 8618502f870fb70a65e78074b987c503
+	source = http://downloads.sourceforge.net/project/cloverefiboot/Bootable_ISO/CloverISO-4586.tar.lzma
+	md5sums = 8e65c6ab31d25448222717a7a4730042
 
 pkgname = clover-efi
 

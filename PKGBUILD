@@ -1,7 +1,7 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=clover-efi
-pkgver=4411
+pkgver=4586
 pkgrel=1
 pkgdesc="An EFI-based bootloader for BIOS-based computers to replace EDK2/Duet bootloader and enable OS X booting on non-Apple hardware."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=()
 options=('docs')
 install=
 source=("http://downloads.sourceforge.net/project/cloverefiboot/Bootable_ISO/CloverISO-$pkgver.tar.lzma")
-md5sums=('8618502f870fb70a65e78074b987c503')
+md5sums=('8e65c6ab31d25448222717a7a4730042')
 
 prepare() {
   if [ "$CARCH" == "x86_64" ]; then
