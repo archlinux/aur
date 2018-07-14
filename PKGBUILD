@@ -1,19 +1,22 @@
 # Original: Abhishek Dasgupta <abhidg@gmail.com>
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 pkgname=mrbayes
+_up_pkgname=MrBayes
 pkgver=3.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for the Bayesian estimation of phylogeny"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://mrbayes.csit.fsu.edu"
+url="http://nbisweden.github.io/MrBayes/"
 depends=('readline')
 optdepends=('beagle-lib: for using GPU calculations among other enhancements - rebuild package after installing this dep')
-source=(http://downloads.sourceforge.net/mrbayes/${pkgname}-${pkgver}.tar.gz)
-md5sums=('95f9822f24be47b976bf87540b55d1fe')
+source=(https://github.com/NBISweden/MrBayes/archive/v${pkgver}.tar.gz)
+sha256sums=('38d06dac7d0bdd948a638849397cc32d433a607946c9c86dae5d8ca16ba93f9b')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}/src
+  cd ${srcdir}/${_up_pkgname}-${pkgver}
+  tar xvfz ${pkgname}-${pkgver}.tar.gz
+  cd ${pkgname}-${pkgver}/src
   autoconf
   #Build with beagle-lib support if available:
   if [ -f /usr/lib/libhmsbeagle.so ]
@@ -27,6 +30,6 @@ build() {
   make
 }
 package() {
-  install -D -m755 ${srcdir}/${pkgname}-${pkgver}/src/mb ${pkgdir}/usr/bin/mb
-  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/documentation/commref_mb3.2.txt "$pkgdir/usr/share/doc/$pkgname/commref.txt"
+  install -D -m755 ${srcdir}/${_up_pkgname}-${pkgver}/${pkgname}-${pkgver}/src/mb ${pkgdir}/usr/bin/mb
+  install -D -m644 ${srcdir}/${_up_pkgname}-${pkgver}/${pkgname}-${pkgver}/documentation/commref_mb3.2.txt "$pkgdir/usr/share/doc/$pkgname/commref.txt"
 }
