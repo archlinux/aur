@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=67.0.3396.87
+pkgver=67.0.3396.99
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
@@ -34,14 +34,16 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         remove-dependency-on-ffmpeg-internals-for-start-time.patch
         x11-fix-mixup-between-DIP-pixel-coordinates.patch
+        blink-disable-XML-catalogs-at-runtime.patch
         chromium-ffmpeg-r1.patch
         chromium-widevine-r2.patch
         chromium-skia-harmony.patch
         chromium-vaapi-r18.patch)
-sha256sums=('5d27a72f0cb8247343034f63fdd9747ff388c05b9fceb541668dd04fb372db1d'
+sha256sums=('452d6b9d8df6c88600aaeff3fad4c065574fd6dbee804e628b70e73a39c0a02a'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '2cc80f5ed8a9b42495a0f3ab3c1bae026b9081972269a1b6d407331d33f7d257'
             'e2c2754536243a60fa70541bbd4121715eccd83caa8f1fb1873bd994cd81f871'
+            '98a5c41cf9687c52ee380d2b683c95387334c76254479c347bdb733646dab815'
             'aa885330bc4180b78d915f9dfdfc3210038a0acab7b16735ea9828ab6a633bde'
             '02c69bb3954087db599def7f5b6d65cf8f7cf2ed81dfbdaa4bb7b51863b4df15'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
@@ -61,7 +63,7 @@ declare -gA _system_libs=(
   #[libpng]=libpng            # https://crbug.com/752403#c10
   #[libvpx]=libvpx            # needs unreleased libvpx
   [libwebp]=libwebp
-  #[libxml]=libxml2           # https://crbug.com/736026
+  [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
   [re2]=re2
@@ -94,6 +96,9 @@ prepare() {
 
   # https://crbug.com/707721
   patch -Np1 -i ../x11-fix-mixup-between-DIP-pixel-coordinates.patch
+
+  # https://crbug.com/736026
+  patch -Np1 -i ../blink-disable-XML-catalogs-at-runtime.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
