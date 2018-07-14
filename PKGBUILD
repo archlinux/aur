@@ -10,7 +10,7 @@ pkgname=('virtualbox51'
          'virtualbox51-guest-utils'
          'virtualbox51-guest-utils-nox'
          'virtualbox51-ext-vnc')
-pkgver=5.1.36
+pkgver=5.1.38
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
@@ -69,9 +69,10 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         '006-rdesktop-vrdp-keymap-path.patch'
         '007-python2-path.patch'
         '008-no-vboxvideo.patch'
-        'linux-4.14-host.patch'
+        '010-qt-5.11.patch'
+        '011-fix-building-with-recent-acpica.patch'
         )
-sha256sums=('ddabd85602b47f2e0ec2df98c7f3679757c38975a6867caccb3530795a6c3e1c'
+sha256sums=('96cab2296fb014ce0a16b7b9603b52208b9403c10c1524b44201d3c274e8a821'
             'deb03efa7ad0376aa55a087f2e882afe00935f10b0e7aa853ba9147090d341ec'
             '113f9b92141b85df01f1e74d22f01d1f1aa81650eb79b89ceefc3cae20afe2e2'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
@@ -89,7 +90,8 @@ sha256sums=('ddabd85602b47f2e0ec2df98c7f3679757c38975a6867caccb3530795a6c3e1c'
             '5d5af2de5b1f1c61ec793503350f2440661cf8fd640f11b8a86f10bce499c0dc'
             '6bdb017459532537199c399eefd3d84d8dc7f1786e79997caebd3b6eb5c75d9f'
             '8b7f241107863f82a5b0ae336aead0b3366a40103ff72dbebf33f54b512a0cbc'
-            '80c4173c0bd6fffae7225267ceebe09d26f504dd9544939c3b723b9e6aca345b'
+            'c6ef35e6893d557c7c2269ff79bc299fe9058cfb2c933a7efdc7a8a7b6d9c5da'
+            '07ca23463147ef2c7680f3d3a92d69f35c111fa6185520f71a0139295ebafb0e'
             )
 
 prepare() {
