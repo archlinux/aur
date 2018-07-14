@@ -59,7 +59,7 @@ options=('!strip') # Do not strip binaries because it breaks them down
 
 package_bcompare() {
   pkgdesc="Beyond Compare 4: Compare, sync, and merge files and folders"
-  optdepends=('bcompare-kde4: KDE4 service menus for Beyond Compare 4'
+  optdepends=('bcompare-kde4: KDE 4 service menus for Beyond Compare 4'
               'bcompare-kde5: KDE Plasma 5 service menus for Beyond Compare 4'
               'bcompare-nautilus: Nautilus service menus for Beyond Compare 4'
               'bcompare-thunar: Thunar service menus for Beyond Compare 4'
@@ -115,7 +115,7 @@ package_bcompare() {
 }
 
 package_bcompare-kde5() {
-  pkgdesc="KDE5 service menus for Beyond Compare 4"
+  pkgdesc="KDE Plasma 5 service menus for Beyond Compare 4"
   depends=('bcompare')
 
    msg2 "Packaging KDE5 service menus..."
@@ -131,7 +131,7 @@ package_bcompare-kde5() {
 }
 
 package_bcompare-kde4() {
-  pkgdesc="KDE4 service menus for Beyond Compare 4"
+  pkgdesc="KDE 4 service menus for Beyond Compare 4"
   depends=('bcompare')
   replaces=('bcompare-kde')
   conflicts=('bcompare-kde')
