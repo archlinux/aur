@@ -1,13 +1,14 @@
 pkgbase = lives
 	pkgdesc = A Video Editing System
 	pkgver = 2.8.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lives-video.com
 	changelog = lives.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = pkg-config
+	depends = libtirpc
 	depends = mplayer
 	depends = imagemagick
 	depends = gtk3
