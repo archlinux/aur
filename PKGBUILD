@@ -2,7 +2,7 @@
 
 pkgname=bash-utils-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.r42.g5d89003
+pkgver=0.1.r43.g75d877b
 pkgrel=1
 pkgdesc="Miscellaneous small utils, mainly for the Bash shell."
 arch=('any')
