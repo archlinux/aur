@@ -1,6 +1,6 @@
 pkgbase = libringqt-git
 	pkgdesc = A library for GNU Ring, a secure communication platform
-	pkgver = r1806.6d55044
+	pkgver = ring.kde.3.0.0.r0.g2c1399b
 	pkgrel = 1
 	url = https://github.com/Elv13/libringqt
 	arch = x86_64

@@ -3,7 +3,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libringqt
 pkgname=$_pkgname-git
-pkgver=r1806.6d55044
+pkgver=ring.kde.3.0.0.r0.g2c1399b
 pkgrel=1
 pkgdesc="A library for GNU Ring, a secure communication platform"
 arch=('x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
