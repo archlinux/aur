@@ -21,6 +21,7 @@ arch=('any')
 source=('https://files.pythonhosted.org/packages/source/t/tracktime/tracktime-0.9.3.tar.gz')
 sha256sums=('0d7abbe3b6c86c7c511d3cb57a3915596c245598cdda496c716932c6d027c6e1')
 
+
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py build
