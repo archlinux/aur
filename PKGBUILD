@@ -7,7 +7,7 @@
 _pkgname=slic3r-prusa3d
 pkgname=${_pkgname}
 pkgver=1.40.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://www.prusa3d.com/"
@@ -68,6 +68,7 @@ package () {
   mkdir -p "$pkgdir/usr/share/${_pkgname}"
   cp -R resources/icons "$pkgdir/usr/share/${_pkgname}/"
   cp -R resources/profiles "$pkgdir/usr/share/${_pkgname}/"
+  cp -R resources/shaders "$pkgdir/usr/share/${_pkgname}/"
 
   # Desktop file
   install -d "$pkgdir/usr/share/applications"
