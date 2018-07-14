@@ -1,4 +1,5 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer:
+# Contributor: Michael Straube <michael.straube@posteo.de>
 # Contributor: Seth Schroeder <theking@kingdomofseth.com>
 # Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
 
