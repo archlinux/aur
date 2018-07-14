@@ -5,8 +5,8 @@
 pkgbase=('tracktime')
 pkgname=('tracktime')
 _module='tracktime'
-pkgver='0.1.1'
-pkgrel=3
+pkgver='0.9.1'
+pkgrel=1
 pkgdesc="Time tracking library with command line interface."
 url="https://gitlab.com/sumner/tracktime"
 depends=(
@@ -15,12 +15,13 @@ depends=(
     'python-tabulate'
     'python-docutils'
     'python-requests'
+    'python-yaml'
 )
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/t/tracktime/tracktime-${pkgver}.tar.gz")
-sha256sums=('fc7544ab2a8a3e59727e85350074210d1e736b34bd5c0474f84bfb93cc314855')
+sha256sums=('f3c4f2ccfe5936bf1da014278569e4dad524de8416eb09b74783079a5102c94e')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
