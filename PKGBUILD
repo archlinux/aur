@@ -21,11 +21,6 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP')
 
-check() {
-  cd shadowsocksr
-  tests/jenkins.sh || warning "Tests failed"
-}
-
 package() {
   cd shadowsocksr
 
