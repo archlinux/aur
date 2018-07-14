@@ -1,13 +1,13 @@
 pkgbase = auto-xflux
 	pkgdesc = Inputless xflux daemon that geocodes based on your external IP address.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/jamesan/auto-xflux
 	arch = any
 	license = GPL
 	depends = xflux
-	source = https://github.com/jamesan/auto-xflux/archive/0.3.0.tar.gz
-	md5sums = e5cb174913ad2c41070eaed821755a92
+	source = https://github.com/jamesan/auto-xflux/archive/0.4.0.tar.gz
+	md5sums = 7b97a211d908b721e59c9e8f5211cbd2
 
 pkgname = auto-xflux
 
