@@ -3,7 +3,7 @@ _ipn=pcap
 _bpn=haskell-${_ipn}
 pkgname=${_bpn}
 pkgver=0.4.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A system-independent interface for user-level packet capture"
 arch=(x86_64)
 url="https://github.com/bos/pcap"
@@ -33,14 +33,18 @@ build() {
   sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 
-_ghcver_set() {
-  local _i
-  _ghcver=`pacman -Q ghc | cut -f2 -d\  | cut -f1 -d-`
-  depends[0]="ghc=$_ghcver"
+_update_deps() {
+    _ver=`pacman -Q $1 | cut -f2 -d\  | cut -f1 -d-`
+    for i in `seq 0 $(expr ${#depends[@]} - 1)`; do
+        if [ ${depends[$i]} == $1 ]; then
+            depends[$i]="$1=${_ver}"
+        fi
+    done
 }
 
 package() {
-  _ghcver_set
+  _update_deps ghc
+  _update_deps haskell-network
   cd "$srcdir/${_ipn}-${pkgver}"
 
   install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
