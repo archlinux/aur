@@ -640,7 +640,7 @@ pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 # makepkg -g >>PKGBUILD
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
-            '36190e1af132b6c2d717c49354b8e615f78acf15645c396092a085d74baf420e'
+            'a8771b2bd12801039327ed94de322876a2cd12be4dae07f8c70101bb0eaf7741'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '2f637d47777332eb8ed0dbd42b67be7b9ac9ead8c7448ab3e3af5bed07719b8b'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
