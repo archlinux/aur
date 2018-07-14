@@ -32,7 +32,7 @@ function doinstall {
 
     echo "Creating wineprefix..."
     echo "Do NOT install Mono (press cancel)!"
-    wine hh || exit 1
+    WINEDLLOVERRIDES='mscoree=' wine hh || exit 1
     echo "Wineprefix created successfully!"
     echo "Installing .NET 4.5"
     if [ -z "$(which winetricks)" ]
@@ -115,4 +115,4 @@ then
     exit 0
 fi
 
-vblank_mode=0 wine "$WINEPREFIX/drive_c/users/$USER/Local Settings/Application Data/osu!/osu!.exe" $@
+vblank_mode=0 __GL_SYNC_TO_VBLANK=0 exec wine "$WINEPREFIX/drive_c/users/$USER/Local Settings/Application Data/osu!/osu!.exe" $@
