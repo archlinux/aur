@@ -2,7 +2,7 @@
 _pkgname=wootility
 pkgname=${_pkgname}-appimage
 pkgver=2.3.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
 arch=('x86_64')
 url='https://www.wooting.nl/wootility'
@@ -30,7 +30,7 @@ package() {
 	install -Dpm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
 	install -d "${pkgdir}/usr/bin"
 	ln -s "../../opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dp 'wootility.desktop' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -Dpm644 'wootility.desktop' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	install -d "${pkgdir}/usr/share/icons"
 	cp -a usr/share/icons/default "${pkgdir}/usr/share/icons/hicolor"
 	install -Dpm644 '70-wooting.rules' "${pkgdir}/usr/lib/udev/rules.d/70-wooting.rules"
