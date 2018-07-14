@@ -12,7 +12,7 @@ depends=('openssl' 'libnl')
 makedepends=('git')
 provides=("${_pkgname}")
 options=(emptydirs)
-source=(http://w1.fi/releases/"${_pkgname}-${pkgver}".tar.gz
+source=(https://w1.fi/releases/"${_pkgname}-${pkgver}".tar.gz
         git+https://github.com/pritambaral/hostapd-rtl871xdrv.git
         config
         hostapd.service
