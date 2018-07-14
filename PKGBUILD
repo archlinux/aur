@@ -38,5 +38,6 @@ package() {
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/lib/babl-*/*.dll
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
+    ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/babl-*/*.a
   done
 }
