@@ -2,9 +2,9 @@
 
 _pkgname=sccache
 pkgname=$_pkgname-bin
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
-pkgdesc="It is a ccache-like tool with experimental rust support"
+pkgdesc="ccache-like tool with experimental rust support"
 arch=("x86_64")
 url="https://github.com/mozilla/sccache"
 license=("Apache")
@@ -17,4 +17,4 @@ package() {
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${_pkgname}"
   install -Dm 755 sccache "${pkgdir}/usr/bin/sccache"
 }
-md5sums=('68cb0198388cc5a8649a567760be74c8')
+md5sums=('0905581c62dd73e955bf9497da3a5734')
