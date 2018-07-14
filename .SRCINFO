@@ -1,6 +1,6 @@
 pkgbase = gmmlib-git
 	pkgdesc = Intel Graphics Memory Management Library (git version)
-	pkgver = r59.b20e484
+	pkgver = r62.1a4cf50
 	pkgrel = 1
 	url = https://github.com/intel/gmmlib/
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = gmmlib-git
 	makedepends = cmake
 	provides = gmmlib
 	conflicts = gmmlib
-	conflicts = intel-media-driver
 	conflicts = intel-media-driver-git
 	source = gmmlib-git::git+https://github.com/intel/gmmlib.git
 	sha256sums = SKIP

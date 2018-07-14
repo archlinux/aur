@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=gmmlib-git
-pkgver=r59.b20e484
+pkgver=r62.1a4cf50
 pkgrel=1
 pkgdesc='Intel Graphics Memory Management Library (git version)'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/intel/gmmlib/'
 license=('MIT')
 makedepends=('git' 'cmake')
 provides=('gmmlib')
-conflicts=('gmmlib' 'intel-media-driver' 'intel-media-driver-git')
+conflicts=('gmmlib' 'intel-media-driver-git')
 source=("$pkgname"::'git+https://github.com/intel/gmmlib.git')
 sha256sums=('SKIP')
 
@@ -26,7 +26,7 @@ build() {
     mkdir -p build
     cd build
     
-    if [ "$CARCH" = 'x64_64' ] 
+    if [ "$CARCH" = 'x86_64' ] 
     then
         _arch='64'
         
