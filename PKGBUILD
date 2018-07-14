@@ -1,8 +1,8 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+pkgdesc='General-purpose library specifically developed for the WPE-flavored port of WebKit.'
 pkgname=wpebackend
 pkgver=0.2.0
-pkgrel=1
-pkgdesc=
+pkgrel=2
 url=https://github.com/WebPlatformForEmbedded/WPEBackend
 arch=(x86_64 i686)
 makedepends=(cmake opengl-driver)
