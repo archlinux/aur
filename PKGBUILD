@@ -17,6 +17,10 @@ sha512sums=('SKIP')
 package() {
   cd nvidia-prime
   git checkout 0e1e70e
-  cp -r sbin $pkgdir/
-  cp -r usr $pkgdir/
+  mkdir -p "$pkgdir/usr/bin/"
+  mkdir -p "$pkgdir/usr/share/lightdm/lightdm.conf.d/"
+  mkdir -p "$pkgdir/usr/share/X11/xorg.conf.d/"
+  install -m 755 sbin/prime-offload "$pkgdir/usr/bin/"
+  install -m 755 usr/share/lightdm/lightdm.conf.d/90-nvidia.conf "$pkgdir/usr/share/lightdm/lightdm.conf.d/"
+  install -m 755 usr/share/X11/xorg.conf.d/11-nvidia-prime.conf "$pkgdir/usr/share/X11/xorg.conf.d/"
 }
