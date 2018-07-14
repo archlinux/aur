@@ -158,7 +158,8 @@ void on_lock_button_clicked(GtkButton* button) {
 void on_set_password_dialog_response(GtkDialog* dialog, gint response_id) {
     if (response_id == GTK_RESPONSE_CANCEL)
         gtk_widget_hide(GTK_WIDGET(dialog));
-    else on_set_password_entry_activate(NULL); // GTK_RESPONSE_OK
+    if (response_id == GTK_RESPONSE_OK)
+        on_set_password_entry_activate(NULL);
 }
 
 void on_set_password_entry_activate(GtkEntry* entry) {
@@ -180,9 +181,9 @@ void on_set_password_entry_activate(GtkEntry* entry) {
 }
 
 void on_decrypt_dialog_response(GtkDialog* dialog, gint response_id) {
-    if (response_id == GTK_RESPONSE_CANCEL)
-        gtk_widget_hide(GTK_WIDGET(dialog));
-    else on_decrypt_password_entry_activate(NULL); // GTK_RESPONSE_OK
+    if (response_id == GTK_RESPONSE_OK)
+        on_decrypt_password_entry_activate(NULL);
+    else gtk_widget_hide(GTK_WIDGET(dialog));
 }
 
 void on_decrypt_password_entry_activate(GtkEntry* entry) {
@@ -253,9 +254,9 @@ void on_modify_entry_activate(GtkEntry* entry) {
 }
 
 void on_portfolio_modify_dialog_response(GtkDialog* dialog, gint response_id) {
-    if (response_id == GTK_RESPONSE_CANCEL)
-        gtk_widget_hide(GTK_WIDGET(dialog));
-    else on_modify_entry_activate(NULL); // GTK_RESPONSE_OK
+    if (response_id == GTK_RESPONSE_OK)
+        on_modify_entry_activate(NULL);
+    else gtk_widget_hide(GTK_WIDGET(dialog));
 }
 
 void on_password_entry_activate(GtkEntry* entry) {
@@ -283,9 +284,9 @@ void on_password_entry_activate(GtkEntry* entry) {
 }
 
 void on_get_password_dialog_response(GtkDialog* dialog, gint response_id) {
-    if (response_id == GTK_RESPONSE_CANCEL)
-        gtk_widget_hide(GTK_WIDGET(dialog));
-    else on_password_entry_activate(NULL); // GTK_REPONSE_OK
+    if (response_id == GTK_RESPONSE_OK)
+        on_password_entry_activate(NULL);
+    else gtk_widget_hide(GTK_WIDGET(dialog));
 }
 
 void on_check_window_destroy(void) {
