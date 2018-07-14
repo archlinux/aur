@@ -8,6 +8,7 @@ pkgbase = opencl-amd
 	makedepends = wget
 	depends = libdrm
 	depends = ocl-icd
+	provides = opencl-driver
 	conflicts = amdgpocl
 	source = https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-18.20-606296.tar.xz
 	sha256sums = 6a5058e84c378844d7d661906f10907de321e9f59a43b1804ff1244d13c6b765
