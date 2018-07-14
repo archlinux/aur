@@ -41,6 +41,11 @@ prepare() {
 }
 
 build() {
+  # /usr/lib/amdvlk64.so: undefined symbol: _ZN3Pal5Linux19DisplayWindowSystem30DeterminePresentationSupportedEPNS0_6DeviceEPvl
+  export CFLAGS=${CFLAGS/-fno-plt}
+  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  export LDFLAGS=${LDFLAGS/,-z,now}
+
   msg "building xgl..."
   cd xgl
   cmake -H. -Bbuilds/Release64 \
