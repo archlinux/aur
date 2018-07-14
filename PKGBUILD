@@ -1,48 +1,65 @@
-# Maintainer: Arpan Kapoor <k dot arpan26 at gmail dot com>
+# Maintainer: Arpan Kapoor <a at arpankapoor dot com>
 
-pkgname=hostapd-rtl871xdrv
-_pkgname=${pkgname%-*}
+_pkgname=hostapd
+pkgname="${_pkgname}-rtl871xdrv"
 pkgver=2.6
-pkgrel=1
-pkgdesc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url="http://w1.fi/hostapd/"
-license=('custom')
+pkgrel=2
+pkgdesc='IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator'
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url='http://w1.fi/hostapd/'
+license=('GPL')
 depends=('openssl' 'libnl')
 makedepends=('git')
-provides=('hostapd')
-conflicts=('hostapd')
-install=${_pkgname}.install
+provides=("${_pkgname}")
 options=(emptydirs)
-source=(http://w1.fi/releases/${_pkgname}-${pkgver}.tar.gz
-	git://github.com/pritambaral/hostapd-rtl871xdrv.git
-	config
-	hostapd.service
-	hostapd-2.3-noscan.patch
-	openvswitch.patch)
-md5sums=('eaa56dce9bd8f1d195eb62596eab34c7'
-         'SKIP'
-         '43c0ec1d8b4d4e46f468bc161bb05c4b'
-         '380042b9cf4950e34ed34b3093ab9e7f'
-         'f40f2652f2cd22d4bf1cfd76e02b9225'
-         'a0802a604ed957078da0e14863df74f0')
+source=(http://w1.fi/releases/"${_pkgname}-${pkgver}".tar.gz
+        git+https://github.com/pritambaral/hostapd-rtl871xdrv.git
+        config
+        hostapd.service
+        hostapd-2.3-noscan.patch
+        openvswitch.patch
+        0001-hostapd-Avoid-key-reinstallation-in-FT-handshake.patch
+        0002-Prevent-reinstallation-of-an-already-in-use-group-ke.patch
+        0003-Extend-protection-of-GTK-IGTK-reinstallation-of-WNM-.patch
+        0004-Prevent-installation-of-an-all-zero-TK.patch
+        0005-Fix-PTK-rekeying-to-generate-a-new-ANonce.patch
+        0006-TDLS-Reject-TPK-TK-reconfiguration.patch
+        0008-FT-Do-not-allow-multiple-Reassociation-Response-fram.patch)
+sha256sums=('01526b90c1d23bec4b0f052039cc4456c2fd19347b4d830d1d58a0a6aea7117d'
+            'SKIP'
+            'a39e011bf0c3f2d21db8816a7e608a99b9d598c7b559d58d026f10e4359d428d'
+            '989bc6855f44c0b360e3d4cd4a146c35b7c12f8a0ced627b4b033f58edcade8e'
+            'c15b4310f21b41254e4d4485bc04e36926572f213e7c4d3a17038fdff19529b5'
+            'eeb07b5a3b971b3108ce8c5c947f4600d98ec9b338b8b88a96a7774cef269e49'
+            '529113cc81256c6178f3c1cf25dd8d3f33e6d770e4a180bd31c6ab7e4917f40b'
+            'd86d47ab74170f3648b45b91bce780949ca92b09ab43df065178850ec0c335d7'
+            'd4535e36739a0cc7f3585e6bcba3c0bb8fc67cb3e729844e448c5dc751f47e81'
+            '793a54748161b5af430dd9de4a1988d19cb8e85ab29bc2340f886b0297cee20b'
+            '147c8abe07606905d16404fb2d2c8849796ca7c85ed8673c09bb50038bcdeb9e'
+            '596d4d3b63ea859ed7ea9791b3a21cb11b6173b04c0a14a2afa47edf1666afa6'
+            'c8840d857b9432f3b488113c85c1ff5d4a4b8d81078b7033388dae1e990843b1')
 
 prepare() {
-  cd ${_pkgname}-$pkgver
-  patch -p1 -i $srcdir/hostapd-2.3-noscan.patch
-  patch -p1 -i $srcdir/openvswitch.patch
+  cd "${_pkgname}-${pkgver}"
+  local i; for i in "${source[@]}"; do
+    case $i in
+      *.patch)
+        msg2 "Applying patch ${i}"
+        patch -p1 -i "${srcdir}/${i}"
+        ;;
+    esac
+  done
 
   # Realtek patch
-  patch -Np1 -i $srcdir/hostapd-rtl871xdrv/rtlxdrv.patch
+  patch -Np1 -i "${srcdir}/hostapd-rtl871xdrv/rtlxdrv.patch"
+
+  # Enable the driver
+  echo 'CONFIG_DRIVER_RTW=y' >> "${srcdir}/config"
 }
 
 build() {
-  cd ${_pkgname}-$pkgver/hostapd
+  cd "${_pkgname}-${pkgver}/hostapd"
   cp ../../config .config
-
-  # Enable the driver
-  echo "CONFIG_DRIVER_RTW=y" >> .config
-
   sed -i 's#/etc/hostapd#/etc/hostapd/hostapd#' hostapd.conf
   export CFLAGS="$CFLAGS $(pkg-config --cflags libnl-3.0)"
   make
@@ -50,27 +67,27 @@ build() {
 
 package() {
   # Systemd unit
-  install -Dm644 hostapd.service "$pkgdir/usr/lib/systemd/system/hostapd.service"
+  install -Dm644 hostapd.service "${pkgdir}/usr/lib/systemd/system/hostapd.service"
 
-  cd ${_pkgname}-$pkgver
+  cd "${_pkgname}-${pkgver}"
 
   # License
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/${_pkgname}/COPYING"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 
   cd hostapd
 
   # Binaries
-  install -d "$pkgdir/usr/bin"
-  install -t "$pkgdir/usr/bin" hostapd hostapd_cli
+  install -d "${pkgdir}/usr/bin"
+  install -t "${pkgdir}/usr/bin" hostapd hostapd_cli
 
   # Configuration
-  install -d "$pkgdir/etc/hostapd"
-  install -d "$pkgdir/usr/share/doc/hostapd"
-  install -m644 -t "$pkgdir/usr/share/doc/hostapd" \
+  install -d "${pkgdir}/etc/hostapd"
+  install -d "${pkgdir}/usr/share/doc/hostapd"
+  install -m644 -t "${pkgdir}/usr/share/doc/hostapd" \
     hostapd.{accept,conf,deny,eap_user,radius_clients,sim_db,vlan,wpa_psk} \
     wired.conf hlr_auc_gw.milenage_db
 
   # Man pages
-  install -Dm644 hostapd.8 "$pkgdir/usr/share/man/man8/hostapd.8"
-  install -Dm644 hostapd_cli.1 "$pkgdir/usr/share/man/man1/hostapd_cli.1"
+  install -Dm644 hostapd.8 "${pkgdir}/usr/share/man/man8/hostapd.8"
+  install -Dm644 hostapd_cli.1 "${pkgdir}/usr/share/man/man1/hostapd_cli.1"
 }
