@@ -3,7 +3,7 @@
 _pyname=conda-build
 pkgname=python-conda-build
 pkgver=3.10.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Commands and tools for building conda packages"
 arch=('any')
 url="http://conda.pydata.org/docs/building/build.html"
@@ -15,6 +15,7 @@ depends=(
   'python-conda'
   'python-conda-verify'
   'python-filelock'
+  'python-future'
   'python-glob2-git'
   'python-jinja'
   'python-pkginfo'
