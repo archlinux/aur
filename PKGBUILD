@@ -1,6 +1,6 @@
 _pkgname=python-dups
 pkgname=python-dups-git
-pkgver=r91.ab2854d
+pkgver=r97.313855b
 pkgrel=1
 pkgdesc="It deduplicates things - Backup as simple as possible."
 arch=("x86_64")
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-    export INCLUDE_DATA_FILES="systemd dbus"
+    export INCLUDE_DATA_FILES="systemd dbus desktop"
 
     cd "${srcdir}/${_pkgname}"
     python setup.py install --root="${pkgdir}" --force --quiet
