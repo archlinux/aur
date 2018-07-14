@@ -1,6 +1,9 @@
+# Maintainer: Kurobac <kurobac(at)foxmail(dot)com>
+# Contributor: angelsl
+
 _pkgbase=alx-wol
 pkgname=${_pkgbase}-dkms
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="The alx kernel module with a patch enabling WoL applied"
 license=("GPL")
@@ -24,5 +27,5 @@ sha256sums=('b4f78f21c3485680f1533002771a268ce869863f8684c0fc67e8a938a6276ae9'
 package() {
     local dest="$pkgdir/usr/src/${_pkgbase}-$pkgver"
     mkdir -p $dest
-    cp -a Kbuild dkms.conf alx.h ethtool.c hw.c hw.h main.c reg.h $dest
+    cp --preserve=all Kbuild dkms.conf alx.h ethtool.c hw.c hw.h main.c reg.h $dest
 }
