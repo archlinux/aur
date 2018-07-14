@@ -1,7 +1,7 @@
 pkgbase = gogs
 	pkgdesc = Self Hosted Git Service written in Go
 	pkgver = 0.11.53
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gogs.io
 	arch = i686
@@ -11,8 +11,6 @@ pkgbase = gogs
 	arch = aarch64
 	license = MIT
 	makedepends = go>=1.3
-	makedepends = patch
-	makedepends = gcc
 	depends = git>=1.7.1
 	depends = pam
 	optdepends = sqlite: SQLite support
