@@ -1,0 +1,28 @@
+pkgbase = python-gpy
+	pkgdesc = Gaussian processes framework in python
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = https://github.com/SheffieldML/GPy
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-numpy
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-six
+	depends = python-paramz
+	depends = python-matplotlib
+	optdepends = python-plotly
+	optdepends = ipython
+	optdepends = python-sphinx
+	optdepends = python-ipykernel
+	optdepends = python-ipywidgets
+	optdepends = python-jupyter_client
+	optdepends = jupyter-notebook
+	optdepends = python-mpi4py
+	source = https://github.com/SheffieldML/GPy/archive/v1.9.2.tar.gz
+	sha512sums = 50dc3627a05b9fc2fbc61204cf492e89d5c067da7aca3e738c52cc3c06652aa825e27e66b0a14a2e67e074cd19a75ab564449a762f1de1ba27a02fc986432403
+
+pkgname = python-gpy
+
