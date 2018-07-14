@@ -2,16 +2,14 @@
 # http://packages.gentoo.org/package/sci-visualization/gwyddion
 
 pkgname=gwyddion
-pkgver=2.50
+pkgver=2.51
 pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
-#A modular program for SPM (scanning probe microscopy) and other 2D (height field) data visualization and analysis"
 url="http://gwyddion.net/"
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=(gtkglext pygtk openexr fftw libunique minizip)
-#depends=('freeglut' 'gtksourceview')
-makedepends=('pkgconfig' 'gconf')
+depends=(gtkglext pygtk fftw libunique minizip)
+makedepends=('pkgconf' 'gconf')
 optdepends=('libxml2: import of SPML and APE DAX data files'
             'zlib: import of SPML data files and import of gzip-compressed data from other file formats (Createc, NRRD, RHK SM4 PRM metadata)'
             'perl: development of plug-in'
@@ -22,9 +20,10 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'libpng: export of height fields to 16bit greyscale PNG images and import from 16bit PNG images'
             'libwebp: WebP format support for the image export'
             'libzip: import of APE DAX, NanoObserver, NanoScanTech, OpenGPS and Sensofar PLUX data files'
-            'cfitsio: import of Flexible Image Transport System (FITS) files')
+            'cfitsio: import of Flexible Image Transport System (FITS) files'
+            'openexr: import and export of OpenEXR HDR images')
 source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz)
-sha256sums=('a511b528bfc0fbd53d0d867ece37ce4bf84c0989f75e535631ce60cff77b48ad')
+sha256sums=('8cef2e8fc1c6f61ac084e43abf9d24697530aa299b0dfb9a81cb4016f4ad83da')
 
 prepare() {
   cd $pkgname-$pkgver
