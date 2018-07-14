@@ -61,4 +61,4 @@ package() {
 make
 
 # Test
-makepkg
+makepkg -f
