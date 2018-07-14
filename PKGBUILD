@@ -1,6 +1,6 @@
 #Maintainer Mike Harris <mike.a.harris@outlook.com>
 pkgname=plasma5-applets-kde-arch-update-notifier-git
-pkgver=5.3.3.r0.g9f41152
+pkgver=6.0.r0.gf527c0f
 pkgrel=1
 pkgdesc="A KDE plasmoid for your system tray notifying you of available updates with AUR Support"
 url="https://github.com/I-Dream-in-Code/kde-arch-update-plasmoid"
