@@ -9,7 +9,6 @@ pkgbase = ay-gaste
 	makedepends = git
 	makedepends = qt5-base
 	depends = qt5-base
-	depends = xviewer
 	depends = exempi
 	source = ay-gaste::git+https://notabug.org/oltulu/Ay-Gaste.git
 	md5sums = SKIP

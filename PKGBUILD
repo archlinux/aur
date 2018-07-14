@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Online gazete okuma programı"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('qt5-base' 'xviewer' 'exempi')
+depends=('qt5-base' 'exempi')
 makedepends=('git' 'qt5-base')
 
 url='https://notabug.org/oltulu/Ay-Gaste'
