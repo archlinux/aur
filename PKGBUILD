@@ -12,17 +12,11 @@ makedepends=('git' 'cmake' 'gcc' 'perl')
 optdepends=('jack')
 provides=('extempore')
 conflicts=('extempore')
-source=("git+https://github.com/digego/extempore.git"
-        "fix-llvm-build.patch")
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://github.com/digego/extempore.git")
+sha256sums=('SKIP')
 
 pkgver() {
   git --git-dir="${srcdir}/extempore/.git" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${srcdir}/extempore"
-  patch -p1 -i "${srcdir}/fix-llvm-build.patch"
 }
 
 build() {

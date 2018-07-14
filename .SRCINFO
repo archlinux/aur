@@ -17,8 +17,6 @@ pkgbase = extempore-git
 	provides = extempore
 	conflicts = extempore
 	source = git+https://github.com/digego/extempore.git
-	source = fix-llvm-build.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = extempore-git
