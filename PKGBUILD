@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=ghost-desktop
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Ghost Desktop is a beautiful desktop application that allows you to easily manage multiple Ghost blogs and work without distractions."
 arch=('x86_64' 'i686') 
@@ -9,21 +9,21 @@ license=('MIT')
 depends=('gtk2' 'libgnome-keyring' 'gnome-keyring' 'desktop-file-utils' 'python2' 'gconf' 'nodejs' 'libnotify' 'libxtst' 'nss' 'alsa-lib' 'libxss')
 source=(https://github.com/TryGhost/Ghost-Desktop/releases/download/v${pkgver}/${pkgname}-${pkgver}-debian.deb)
 install=${pkgname}.install
-md5sums=('90ad4039510cc42734ee31436639b000')
+sha256sums=('5c4f6b8c316085c7cfb6a34599951057108279a4630cef2760c54fc73578af28')
 package() {
-    msg2 "Extracting data.tar.xz..."
+    msg2 "Extracting data.tar.xz…"
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
 
-    msg2 "Fixing file permissions..."
+    msg2 "Fixing file permissions…"
     find "${pkgdir}"/usr -type f -exec chmod 644 {} \;
     find "${pkgdir}"/usr/bin -type f -exec chmod 755 {} \;
     find "${pkgdir}"/usr -type d -exec chmod 755 {} \;
     
-    msg2 "Cleaning up package..."
+    msg2 "Cleaning up package…"
     rm -rf "${pkgdir}/usr/bin/Ghost"
     rm -rf "${pkgdir}/usr/share/lintian"
     
-    msg2 "Changing paths and names to match package name..."
+    msg2 "Changing paths and names to match package name…"
     mv "${pkgdir}/usr/share/applications/Ghost.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     sed -i "s/Exec=Ghost/Exec=${pkgname}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     sed -i "s/Icon=Ghost/Icon=${pkgname}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -32,7 +32,7 @@ package() {
     mv "${pkgdir}/usr/lib/Ghost" "${pkgdir}/usr/lib/${pkgname}"
     mv "${pkgdir}/usr/lib/${pkgname}/Ghost" "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
     
-    msg2 "Fixing exectuable..."
+    msg2 "Fixing exectuable…"
     chmod +x "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
     ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
