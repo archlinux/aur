@@ -2,7 +2,7 @@
 # Contributor: Konstantinos Sideris <siderisk at auth dot gr>
 
 pkgname=nheko
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
@@ -14,11 +14,20 @@ depends=("qt5-base" "lmdb" "qt5-multimedia" "qt5-svg")
 makedepends=("cmake" "gcc" "fontconfig" "qt5-tools")
 
 source=(https://github.com/mujx/nheko/archive/v$pkgver.tar.gz)
-sha512sums=('b9ad4131b75af7ee3b79cb89d63313e94f76a6a6672c5c02b264ebec75a2a2525de266d6e4d07482736b714188a5a1eba721802ff951ee4d77f8cbf571758777')
+sha512sums=('93c81f8a713d6350dd3b8a8135128de593be3e69ade9370c2316e09428dd20a8323dbea52c2e765eaa92b2fd0fe8acfb72a0f5e991e03bb8da39eed861875243')
+
+prepare() {
+    rm -f "$pkgname-$pkgver"/cmake/FindOlm.cmake
+}
 
 build() {
     cd "$pkgname-$pkgver"
-    cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release
+    cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF
+    cmake --build .deps
+
+    cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release \
+        -DLMDBXX_INCLUDE_DIR=.deps/usr/include \
+        -DTWEENY_INCLUDE_DIR=.deps/usr/include
     cmake --build build
 }
 
