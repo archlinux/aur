@@ -1,7 +1,7 @@
 # Maintainer: Preisschild <florian dot stroeger at gmail dot com>
 pkgname=emerald-wallet-bin
-pkgver=0.10.0
-lastcommit=62853d3
+pkgver=1.0.0
+lastcommit=62c64d5
 pkgrel=1
 pkgdesc="Ethereum Classic Wallet"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 	emeraldwallet.png
 	emeraldwallet.desktop
 )
-md5sums=('b51aa59daf6e3c5326f581556af5d090'     #emeraldwallet
+md5sums=('cabf6000e8595c7dff97535ee6030b83'     #emeraldwallet
 	     '14df95dcbac7415ccca9fa3a2f4e1497'		#icon
 	     '8664d6f53ef7fdfaa907cd8546184b57'		#.desktop
 )
