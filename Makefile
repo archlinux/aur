@@ -6,7 +6,7 @@ CFLAGS = -g -Wall --std=c99 -D_FORTIFY_SOURCE=2 -O2 \
 -Wbad-function-cast -Wstrict-prototypes -Winline \
 -Wundef -Wnested-externs -Wcast-qual -Wunreachable-code \
 -ggdb3 -fno-omit-frame-pointer -ffloat-store -fno-common -fstrict-aliasing \
-`pkg-config --cflags gtk+-3.0 cairo` -Wl,--export-dynamic
+-Wno-unused-parameter `pkg-config --cflags gtk+-3.0 cairo` -Wl,--export-dynamic
 OBJECTS = main.o api.o portfolio.o rc4.o string-tick.o info.o gtk_win.o
 LIBS = -lcurl -ljson-c -lm -lncurses -lpthread -lcairo \
 `pkg-config --libs gtk+-3.0 gmodule-export-2.0 cairo`
