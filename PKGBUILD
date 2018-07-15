@@ -1,11 +1,12 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wpewebkit
 pkgver=2.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Web content engine library optimized for embedded devices'
 arch=(x86_64 i686)
 url='https://wpewebkit.org'
 license=(custom)
+groups=(wpe)
 depends=(cairo libxslt gst-plugins-base-libs libepoxy libsoup libwebp
          harfbuzz-icu woff2 wpebackend)
 makedepends=(gperf ruby cmake python2)
