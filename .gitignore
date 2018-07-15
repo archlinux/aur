@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/wpebackend-fdo-git/
+/*.tar
+/*.tar.*
