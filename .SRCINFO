@@ -1,7 +1,7 @@
 pkgbase = chatty
 	pkgdesc = Twitch Chat Client for Desktop
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chatty.github.io/
 	arch = any
 	license = GPL3

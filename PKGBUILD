@@ -2,7 +2,7 @@
 # Contributor: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=chatty
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Twitch Chat Client for Desktop'
 arch=('any')
 url='https://chatty.github.io/'
@@ -40,7 +40,7 @@ package(){
 
   cd "${srcdir}"
   install -Dm755 "${pkgname}_script" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm755 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm644 "./src/chatty/gui/app_main_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname}.png"
