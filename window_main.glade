@@ -116,6 +116,7 @@ https://github.com/aokellermann/
                   <object class="GtkButton" id="add_button">
                     <property name="label" translatable="yes">Add</property>
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <signal name="clicked" handler="on_modify_button_clicked" swapped="no"/>
@@ -130,6 +131,7 @@ https://github.com/aokellermann/
                   <object class="GtkButton" id="remove_button">
                     <property name="label" translatable="yes">Remove</property>
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <signal name="clicked" handler="on_modify_button_clicked" swapped="no"/>
@@ -144,6 +146,7 @@ https://github.com/aokellermann/
                   <object class="GtkButton" id="set_button">
                     <property name="label" translatable="yes">Set</property>
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <signal name="clicked" handler="on_modify_button_clicked" swapped="no"/>

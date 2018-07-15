@@ -100,6 +100,11 @@ void on_load_button_clicked(GtkButton* button) {
         }
     }
 
+    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(app.builder, "add_button")), TRUE);
+    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(app.builder, "remove_button")),
+                             TRUE);
+    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(app.builder, "set_button")), TRUE);
+
     // On new portfolio, create empty JSON array and return
     if (app.portfolio_string->len == 0) {
         Json* jobj = json_object_new_array();
