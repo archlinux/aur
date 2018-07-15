@@ -14,16 +14,19 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir"
+    cd grpc
 
 # Git, tags available
     printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
+    cd grpc
     git submodule update --init
     make
 }
 
 package() {
+    cd grpc
     make install
 }
