@@ -6,7 +6,7 @@ _STANDALONE_VIRTUALENV="false"
 #_STANDALONE_VIRTUALENV="true"
 
 pkgname=pacman-utils
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Some utils and helper scripts for archlinux packages "
 # arch package url is https://github.com/kata198/pacman-utils-pkg
@@ -24,7 +24,7 @@ else
 fi
 optdepends=('pacman-utils-data:  Data for whatprovides_upstream')
 source=("https://github.com/kata198/pacman-utils/archive/${pkgver}.tar.gz")
-sha512sums=("41cd59683329357063d55570186bc3b259a4a7e8fa84fd66c8f59a1e29c9511b7c418385dcc4c03358ec481fc3565ec7c9ab0837a79cfc12070b5cd64ce3f6a5")
+sha512sums=("36c202bdfe7a86ce004ca9f731c8bb8458257ab6652b173b0324faf15e45877943b4617946ba4893af8f8bcf657d0e1cf29b5133ffdbd9b14af6df1ce7dc9c96")
 
 build() {
   cd "${pkgname}-${pkgver}"
