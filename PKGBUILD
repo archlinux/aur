@@ -3,7 +3,7 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=56.2.1
+pkgver=56.2.2
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -24,12 +24,11 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=04c6debaf8d1391ea48b3872019a3aa38a1f211e
+_commit=f874dbfaac9344f25e2f363dd3064fbac25d1bbf
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
-        waterfox-install-dir.patch 
-        no-crmf.diff
-        wifi-fix-interface.patch
+        waterfox-install-dir.patch
+        wifi-disentangle_fix-interface.patch
         waterfoxproject-kde-56.2.0.patch
         "firefox-kde-$_patchrev.patch::$_patchurl/firefox-kde.patch"
         fix_waterfox_browser-kde_xul.patch
@@ -39,15 +38,13 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1"
         jack-system-ports.patch
         "fix_crash_e10s_upload_cancel.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/fix_crash_e10s_upload_cancel.patch"
-        wifi-disentangle.patch
         no-plt.diff
         "unity-menubar-$pkgver.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox.xenial/download/1222/unitymenubar.patch-20130215095938-1n6mqqau8tdfqwhg-1/unity-menubar.patch"
         .gitignore)
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
-            'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
+            '23a0abc2bb28d03cf4e85be2a2ca0ce2c78677e07fd0428c5aa52650784482d7'
             '911e07ecb0095337c580c94f16b5414c243b26b1080cf0bfd2fac7f76c9a6a43'
             'f672e60e22869381e9c4cdd90353a053a0171778eca40d4664bc733822fd535f'
             '33a8e89e504067914665b7858061f34dc81057961f365024c891aa386afc28ce'
@@ -57,7 +54,6 @@ sha256sums=('SKIP'
             '3c45f43bc9517f149ffdcf4dd3d8bf2a88835b74003cc46d8f4f606dc0ecea12'
             'be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c'
             '73e13bf689838e4b27cdb08f040fbafb308aaf2990f5e1bf193a69a9dd736794'
-            'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
             '5903f99dce010279e2a2f0e56d98e756c5abf9a57e27df5e2239076038868d3d'
             'e7ae75f0d1305066a5ba7b60a513d812c769beadaf890a13d1433c9f93242166')
@@ -65,27 +61,23 @@ sha256sums=('SKIP'
 prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
-  
+
   # Fix openSUSE's patches for Waterfox
   #sed -i 's/Firefox/Waterfox/g' $srcdir/mozilla-kde-$_patchrev.patch
   #sed -i 's/KMOZILLAHELPER/KWATERFOXHELPER/g' $srcdir/mozilla-kde-$_patchrev.patch
   #sed -i 's|/usr/lib/mozilla/kmozillahelper|/opt/waterfox/kwaterfoxhelper|g' $srcdir/mozilla-kde-$_patchrev.patch
   #sed -i 's/kmozillahelper/kwaterfoxhelper/g' $srcdir/mozilla-kde-$_patchrev.patch
   sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde-$_patchrev.patch
-  
+
   cd Waterfox
   patch -Np1 -i ../waterfox-install-dir.patch
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
-  patch -Np1 -i ../no-crmf.diff
-  
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
-  patch -Np1 -i ../wifi-disentangle.patch
-  patch -Np1 -i ../wifi-fix-interface.patch
-  
+  patch -Np1 -i ../wifi-disentangle_fix-interface.patch
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
   patch -Np1 -i ../no-plt.diff
-  
+
   cat >.mozconfig <<END
 export CC=clang
 export CXX=clang++
@@ -150,7 +142,7 @@ ac_add_options --disable-accessibility
 ac_add_options --disable-webspeech
 
 # If you want to have geolocation support, comment this line:
-ac_add_options --disable-necko-wifi 
+ac_add_options --disable-necko-wifi
 
 # If you have some problems with Skype Web or other web chat, comment this line:
 ac_add_options --disable-webrtc
@@ -177,22 +169,22 @@ END
   patch -Np1 -i "../firefox-kde-$_patchrev.patch"
   patch -Np1 -i "../fix_waterfox_browser-kde_xul.patch"
   patch -Np1 -i "../fix_crash_e10s_upload_cancel.patch"
-  
+
   # Global Menu support
   patch -Np1 -i "../unity-menubar-$pkgver.patch"
 
   msg "Add missing file in Makefile for pgo builds"
   patch -Np1 -i "../pgo_fix_missing_kdejs.patch"
-  
+
   # https://bugs.archlinux.org/task/52183
   msg "Patching for Jack"
   patch -Np1 -i ../jack-system-ports.patch
-  
+
 }
 
 build() {
   cd Waterfox
-  
+
   export PATH="$srcdir/path:$PATH"
   ./mach build
 }
@@ -242,10 +234,10 @@ END
 
   install -Dm644 $srcdir/waterfox.desktop \
     "$pkgdir/usr/share/applications/waterfox.desktop"
-    
+
   install -Dm644 $srcdir/waterfox.1 \
     "$pkgdir/usr/share/man/man1/waterfox.1"
-    
+
   install -Dm644 $srcdir/distribution.ini \
     "$pkgdir/opt/waterfox/distribution/distribution.ini"
 
