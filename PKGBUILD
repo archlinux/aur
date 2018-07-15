@@ -1,7 +1,7 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 
-pkgname=lookbook-git
 gitname=lookbook
+pkgname=("${gitname}-git")
 pkgver=latest
 pkgrel=1
 pkgdesc="Browse and find system icons designed for elementary OS"
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('gtk3' 'vala' 'granite' 'gtksourceview3')
 optdepends=()
 makedepends=('git' 'meson' 'ninja')
-provides=("$gitname")
-conflicts=("$gitname")
+provides=("${gitname}")
+conflicts=("${gitname}")
 source=("git+${url}.git")
 md5sums=('SKIP')
 
