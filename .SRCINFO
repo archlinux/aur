@@ -1,0 +1,15 @@
+pkgbase = inotify-cpp-git
+	pkgdesc = C++ binding for the linux inotify library
+	pkgver = v0.1.r0.g1505377
+	pkgrel = 1
+	url = https://github.com/erikzenker/inotify-cpp}
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = boost
+	source = inotify-cpp-git::git+https://github.com/erikzenker/inotify-cpp.git
+	sha256sums = SKIP
+
+pkgname = inotify-cpp-git
+
