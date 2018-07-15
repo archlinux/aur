@@ -1,6 +1,6 @@
 pkgbase = lookbook-git
-	pkgdesc = Browse and find system icons.
-	pkgver = r320.3dca829
+	pkgdesc = Browse and find system icons designed for elementary OS
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/danrabbit/lookbook
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = lookbook-git
 	depends = vala
 	depends = granite
 	depends = gtksourceview3
+	provides = lookbook
 	conflicts = lookbook
 	source = git+https://github.com/danrabbit/lookbook.git
 	md5sums = SKIP
