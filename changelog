@@ -1,3 +1,16 @@
+2018-07-15 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.2.0.5-1:
+    [!] Implemented temporary workaround for linux-arm users regarding CoreCLR #18486 segfault. Until it's fixed, linux-arm variant will target .NET Core 2.0.
+    ASF commands now support a regex for <Bots> argument (ref: #841).
+    Added loot@ command (ref: #826).
+    Added two new farming orders: MarketableAscending and MarketableDescending (ref: #832).
+    addlicense command will now prefer activating subID over appID in case of a number conflict.
+    Improved unpack command in terms Steam networking issues.
+    Fixed a race condition in ASF code that could result in BGR process being called several times for the same batch of keys.
+    [Deprecation] DismissInventoryNotifications bot config property is now a part of BotBehaviour and not a standalone setting. ASF remains compatible with old behaviour during first stage of deprecation.
+    [Deprecation] Removed FarmingOrder bot config property in favour of new FarmingOrders property that supports multiple arguments and fixed order. ASF remains compatible with old behaviour during first stage of deprecation.
+    [Deprecation] Features deprecated in previous release have entered stage 2 and got removed.
+    Usual amount of other code improvements, optimizations and bugfixes.
 2018-06-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.2.0.2-1:
     [!] Upgraded .NET Core runtime from 2.0 to 2.1 (ref: #799, #804).
