@@ -1,0 +1,19 @@
+pkgbase = cog-git
+	pkgdesc = WPE launcher and webapp container
+	pkgver = r134.f421c0a
+	pkgrel = 1
+	url = https://github.com/Igalia/cog
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cmake
+	depends = libxkbcommon
+	depends = wpebackend-fdo-git
+	depends = wpewebkit
+	provides = cog
+	conflicts = cog
+	source = cog-git::git+https://github.com/Igalia/cog
+	sha512sums = SKIP
+
+pkgname = cog-git
+
