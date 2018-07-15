@@ -1,5 +1,5 @@
 pkgbase = newaita-icons-git
-	pkgdesc = Newaita icon theme is a Linux icon theme combining old style and color of material design. If you urgently needed any icon, please write in the comments on the page https://store.kde.org/p/1243493/
+	pkgdesc = Newaita icon theme is a Linux icon theme combining old style and color of material design. If you urgently needed any icon, please write in the comments on the page https://store.kde.org/p/1243493/ If you want support me Paypal: ghostdmn2@gmail.com
 	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/cbrnix/Newaita
