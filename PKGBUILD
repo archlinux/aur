@@ -28,7 +28,7 @@ package_lua-psl() {
 
 	cd lua-psl-"$pkgver"
 	install -D psl.so "$pkgdir"/usr/lib/lua/5.3/psl.so
-	install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_lua51-psl() {
@@ -36,7 +36,7 @@ package_lua51-psl() {
 
 	cd lua-psl-"$pkgver"
 	install -D psl-5.1.so "$pkgdir"/usr/lib/lua/5.1/psl.so
-	install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_lua52-psl() {
@@ -44,5 +44,5 @@ package_lua52-psl() {
 
 	cd lua-psl-"$pkgver"
 	install -D psl-5.2.so "$pkgdir"/usr/lib/lua/5.2/psl.so
-	install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
