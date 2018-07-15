@@ -1,0 +1,10 @@
+--- src/gtk-sharp/gtk/gui-thread-check/profiler/gui-thread-check.c	2018-07-15 14:08:33.440561978 +0300
++++ gui-thread-check.c	2018-07-15 14:08:18.943704346 +0300
+@@ -93,6 +93,6 @@
+ 	
+ 	mono_profiler_install (NULL, NULL);
+ 	mono_profiler_install_enter_leave (simple_method_enter, NULL);
+-	mono_profiler_set_events (MONO_PROFILE_ENTER_LEAVE);
++	// mono_profiler_set_events (MONO_PROFILE_ENTER_LEAVE);
+ }
+ 
