@@ -4,10 +4,10 @@
 pkgbase=python-kombu
 pkgname=('python-kombu' 'python2-kombu')
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A messaging library for Python'
 arch=('any')
-url="http://kombu.readthedocs.org/"
+url="https://kombu.readthedocs.org/"
 license=('BSD')
 options=('!emptydirs')
 makedepends=('python-amqp' 'python2-amqp' 'python-setuptools' 'python2-setuptools')
