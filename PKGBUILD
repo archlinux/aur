@@ -1,7 +1,7 @@
 # Maintainer: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=chatty
 pkgver=0.8.7
-pkgrel=7
+pkgrel=8
 pkgdesc='Twitch Chat Client for Desktop'
 arch=('any')
 url='https://chatty.github.io/'
@@ -46,7 +46,7 @@ package(){
   install -Dm755 "${srcdir}/${pkgname}_script" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/chatty-${pkgver}/src/chatty/gui/app_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname}.png"
   install -Dm644 "${srcdir}/chatty-${pkgver}/src/chatty/gui/app_64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
-  install -Dm755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   install -Dm644 "${srcdir}/chatty-${pkgver}/APACHE_LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/APACHE_LICENSE"
   install -Dm644 "${srcdir}/chatty-${pkgver}/LGPL" "${pkgdir}/usr/share/licenses/${pkgname}/LGPL"
