@@ -1,0 +1,15 @@
+pkgbase = bamrescue
+	pkgdesc = Utility to check Binary Sequence Alignment / Map (BAM) files for corruption and repair them
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://bamrescue.arkanosis.net/
+	arch = x86_64
+	license = custom:ISC
+	checkdepends = cargo
+	makedepends = cargo
+	source = git+https://github.com/arkanosis/bamrescue?signed#tag=v0.2.0
+	validpgpkeys = FA490B15D054C7E83F70B0408C145ABAC11FA702
+	md5sums = SKIP
+
+pkgname = bamrescue
+
