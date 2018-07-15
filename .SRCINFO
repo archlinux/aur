@@ -1,0 +1,13 @@
+pkgbase = emacs-zenburn-theme
+	pkgdesc = The Zenburn colour theme ported to Emacs
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://github.com/bbatsov/zenburn-emacs
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = emacs-zenburn-theme-2.5.tar.gz::https://github.com/bbatsov/zenburn-emacs/archive/v2.5.tar.gz
+	sha256sums = f6811eada38ad53e233f53872a0ab9b5264978c7c6cfffef8e88aeb5de876e0e
+
+pkgname = emacs-zenburn-theme
+
