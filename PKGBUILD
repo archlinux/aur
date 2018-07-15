@@ -2,9 +2,10 @@
 pkgdesc='General-purpose library specifically developed for the WPE-flavored port of WebKit.'
 pkgname=wpebackend
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 url=https://github.com/WebPlatformForEmbedded/WPEBackend
 arch=(x86_64 i686)
+groups=(wpe)
 makedepends=(cmake opengl-driver)
 depends=(gcc-libs)
 license=(custom:BSD)
