@@ -1,15 +1,15 @@
 # Maintainer: Daurnimator <quae@daurnimator.com>
 
 pkgname=(lua-psl lua51-psl lua52-psl)
-pkgver=0.2
-pkgrel=1
+pkgver=0.3
+pkgrel=0
 arch=('i686' 'x86_64')
 url='https://github.com/daurnimator/lua-psl'
 license=('MIT')
 makedepends=('lua' 'lua51' 'lua52')
 depends=('libpsl')
-source=('https://github.com/daurnimator/lua-psl/archive/v0.2.tar.gz')
-md5sums=('f99781d19e18902d97fb4892150552bd')
+source=("https://github.com/daurnimator/lua-psl/archive/v${pkgver}.tar.gz")
+md5sums=('9171823dbd4d347a5aa1150710cc991d')
 
 build() {
 	cd lua-psl-"$pkgver"
