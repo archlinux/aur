@@ -1,5 +1,5 @@
 [Unit]
-Description=Let the user set the wakeup triggers of system suspension
+Description=Wakeup Triggers
 
 [Service]
 Type=oneshot
