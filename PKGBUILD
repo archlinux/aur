@@ -3,21 +3,15 @@
 
 pkgname='mtree'
 _pkgname='mtree-port'
-pkgver=1.0.3
-pkgrel=2
-pkgdesc='Map a directory hierarchy'
+pkgver=1.0.4
+pkgrel=1
+pkgdesc='Utility for creating and verifying file hierarchies'
 arch=('i686' 'x86_64')
 url="https://github.com/archiecobbs/mtree-port"
 license=('BSD')
-depends=('openssl-1.0')
+depends=('openssl')
 source=("https://github.com/archiecobbs/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('c8a1ec08d65187f2a18c50cc09260add')
-
-prepare() {
-  for file in compare.c configure.ac create.c misc.c; do
-    sed -i -re 's@(openssl/)@openssl-1.0/@g' ${srcdir}/${_pkgname}-${pkgver}/${file}
-  done
-}
+md5sums=('c57088a0b7ea54a2706175a49c3b89d5')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
