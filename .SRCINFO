@@ -1,10 +1,11 @@
 pkgbase = wpebackend-git
 	pkgdesc = General-purpose library specifically developed for the WPE-flavored port of WebKit.
 	pkgver = 0.2.0.r0.g411decf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WebPlatformForEmbedded/WPEBackend
 	arch = x86_64
 	arch = i686
+	groups = wpe
 	license = custom:BSD
 	makedepends = cmake
 	makedepends = opengl-driver
