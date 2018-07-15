@@ -17,12 +17,11 @@ sha256sums=('a9d0682e641ed04db2c099592c53504239e0c14b610f1eb799199bd01356e834'
 			'3c011e0820f85d5f25eefd7db5257fb11cd7effcc1a9eaea6a6dc12db9c5ad1a')
 
 package() {
-	mkdir -p "$pkgdir/opt/eqonomize"
-	cp "Eqonomize-$pkgver.AppImage" "$pkgdir/opt/eqonomize/Eqonomize.AppImage"
-	chmod +x "$pkgdir/opt/eqonomize/Eqonomize.AppImage"
 	mkdir -p "$pkgdir/bin"
-	ln -s "$pkgdir/opt/eqonomize/Eqonomize.AppImage" "$pkgdir/bin/eqonomize"
+	cp "Eqonomize-$pkgver.AppImage" "$pkgdir/bin/eqonomize"
+	chmod +x "$pkgdir/bin/eqonomize"
 
 	mkdir -p "$pkgdir/usr/share/applications"
 	cp "eqonomize.desktop" "$pkgdir/usr/share/applications"
+	chmod +x "$pkgdir/usr/share/applications/eqonomize.desktop"
 }
