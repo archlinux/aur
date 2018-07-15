@@ -3,7 +3,7 @@
 # shellcheck disable=2148
 
 pkgname=scala-cli-tools
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="collection of command-line tools written in Scala"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('hl-git' 'highlight-wookietreiber')
 provides=('highlight-wookietreiber')
 replaces=('highlight-wookietreiber')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wookietreiber/scala-cli-tools/archive/v$pkgver.tar.gz")
-md5sums=('1d58efe82c98758083a5799f24112867')
+md5sums=('6abef2ceca3079e573f60c949ffd7a68')
 
 package() {
   # shellcheck disable=2154
@@ -23,7 +23,7 @@ package() {
 
   # shellcheck disable=2154
   PREFIX=$pkgdir/usr NATIVE_MODE=release \
-    sbt \
+    sbt -mem 2048 \
       -ivy /tmp/makepkg/.ivy2 \
       -sbt-dir /tmp/makepkg/.sbt \
       install
