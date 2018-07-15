@@ -7,7 +7,7 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc='IP address anonymizer for nginx log files'
 
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 depends=(
   "nginx=$_nginxver"
   'libbsd'
