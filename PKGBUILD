@@ -17,6 +17,7 @@ build() {
 
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_PREFIX=/usr
 
   make
@@ -24,8 +25,6 @@ build() {
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver/build
-  make DESTDIR="$pkgdir" install
 
-  mv "$pkgdir"/usr/lib "$pkgdir"/usr/lib32 || true
-  mv "$pkgdir"/usr/lib64 "$pkgdir"/usr/lib || true
+  make DESTDIR="$pkgdir" install
 }
