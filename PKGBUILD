@@ -27,7 +27,7 @@ sha512sums=('de772c4403f82cd66283eb340bce2cb62d5a7fd946cdfc46fbab9e3ec0858c3b8e0
             '3beb726fecfd7855be4fac50d4926bbcc8a44d0d1f43402443223cc90a743ba81968844a530fa37f38115fdf526bf05a60a331be862a3f452e909a2f5cb26ae7')
 
 prepare() {
-  cd "chatty-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   patch -p1 -i "${srcdir}/build.patch"
   patch -p1 -i "${srcdir}/config_dir.patch"
   patch -p1 -i "${srcdir}/disable_version_check.patch"
@@ -40,16 +40,16 @@ build() {
 }
 
 package(){
-  install -Dm644 "${srcdir}/chatty-${pkgver}/dist/${pkgname}.jar" "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
-  cp -a "${srcdir}/chatty-${pkgver}/assets" "${pkgdir}/usr/share/${pkgname}/"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/${pkgname}.jar" "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
+  cp -a "${srcdir}/${pkgname}-${pkgver}/assets" "${pkgdir}/usr/share/${pkgname}/"
 
   install -Dm755 "${srcdir}/${pkgname}_script" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${srcdir}/chatty-${pkgver}/src/chatty/gui/app_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname}.png"
-  install -Dm644 "${srcdir}/chatty-${pkgver}/src/chatty/gui/app_64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/chatty/gui/app_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname}.png"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/chatty/gui/app_64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-  install -Dm644 "${srcdir}/chatty-${pkgver}/APACHE_LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/APACHE_LICENSE"
-  install -Dm644 "${srcdir}/chatty-${pkgver}/LGPL" "${pkgdir}/usr/share/licenses/${pkgname}/LGPL"
-  install -Dm644 "${srcdir}/chatty-${pkgver}/README.md" "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/APACHE_LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/APACHE_LICENSE"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LGPL" "${pkgdir}/usr/share/licenses/${pkgname}/LGPL"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
 }
 
