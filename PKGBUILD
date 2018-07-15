@@ -1,8 +1,8 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 
 pkgname=guile-bytestructures
-_pkgname=scheme-bytestructures
-pkgver=0.0+250+g7ed31b1
+_pkgname=bytestructures
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Structured access library to bytevector contents for Guile'
 arch=('x86_64' 'i686')
@@ -10,25 +10,19 @@ url="https://github.com/TaylanUB/scheme-bytestructures"
 license=('GPL3')
 depends=('guile')
 makedepends=('git')
-_commit=7ed31b1e93a4bf8960f1d4aedbea84f4f594af6d
-source=("git+https://github.com/TaylanUB/${_pkgname}#commit=${_commit}")
-sha256sums=('SKIP')
-
-pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	printf "0.0+%s+g%s" \
-		"$(git rev-list HEAD | wc -l)" \
-		"$(git rev-list --max-count=1 HEAD | cut -c 1-7)"
-}
+source=("https://github.com/TaylanUB/scheme-${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('28e4a0b36d745b34f5531af6efb9fa0a992c4c3cde64252692a698d11ed2c675')
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	autoreconf -fi
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
+	rm -r "${pkgdir}/usr/share/guile/site/2.2/bytestructures/body"
+	rm -r "${pkgdir}/usr/share/guile/site/2.2/bytestructures/r7"
+	rm "${pkgdir}/usr/share/guile/site/2.2/"run-tests.*.scm
 }
