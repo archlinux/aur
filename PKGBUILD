@@ -1,13 +1,13 @@
-# Maintainer: Patrik Karlsson <pata.karlsson@gmail.com>
+# Maintainer: Patrik Karlström <pata.karlstrom@gmail.com>
 
 pkgname=filebydate
-pkgver=1.1.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="date based file organizer"
 arch=('any')
 url="https://trixon.se/projects/filebydate/"
 license=('Apache')
-depends=('java-runtime>=8')
+depends=('java-openjfx>=8')
 makedepends=('desktop-file-utils')
 source=(
 	"https://trixon.se/files/$pkgname-$pkgver-bin.zip"
@@ -15,7 +15,7 @@ source=(
 	'filebydate.desktop'
 )
 sha256sums=(
-	'94a42fd6000a0650f174f85be44e72c8e03055208fe8fea60e455080a22be40a'
+	'08a3171cd1fb688f812d3b0908a364cbf531dd90b1a0891f97e6a3bb65c475b5'
 	'c2597c42471798834798ddee7f9dcef7a0811b181b2f335699f131f2ccafeca0'
 	'3fc348ada388e3dcb265a83837d3f264ff1ff1cc07973c42384d8cf928c2f2fd'
 )
