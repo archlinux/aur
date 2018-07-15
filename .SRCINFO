@@ -1,0 +1,16 @@
+pkgbase = cloudfail-git
+	pkgdesc = Tactical reconnaissance tool which aims to gather enough information about a target protected by Cloudflare
+	pkgver = 0.9.3.r102.ge8ad02c
+	pkgrel = 2
+	url = https://github.com/m0rtem/CloudFail
+	arch = any
+	license = GPL
+	makedepends = python-pip
+	depends = python
+	provides = cloudfail
+	options = !strip
+	source = cloudfail-git::git+https://github.com/m0rtem/CloudFail.git
+	sha512sums = SKIP
+
+pkgname = cloudfail-git
+
