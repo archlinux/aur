@@ -13,7 +13,7 @@ url="http://docs.xfce.org/xfce/xfce4-panel/start"
 license=('GPL2')
 groups=('xfce4-git')
 conflicts=("${_pkgname}")
-provides=("${_pkgname}=${pkgver%%.r*}")
+provides=("${_pkgname}=${pkgver%%+*}")
 depends=('exo>=0.11.2' 'garcon' 'libxfce4ui>=4.13.0' 'libwnck3' 'hicolor-icon-theme'
          'desktop-file-utils' 'xfconf>=4.13.2' 'libxfce4util>=4.13.0')
 makedepends=('intltool' 'gtk-doc' 'git' 'xfce4-dev-tools' 'gobject-introspection' 'vala')
