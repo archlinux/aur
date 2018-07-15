@@ -1,4 +1,5 @@
-# Maintainer: Christoph Korn <christoph.korn at posteo dot de>
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Contributor: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=chatty
 pkgver=0.8.7
 pkgrel=8
