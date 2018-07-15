@@ -24,6 +24,7 @@ package() {
     cp -r ${srcdir}/${_gitname}* ${pkgdir}/usr/share/icons/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
-    find ${pkgdir}/usr -type f -name '.directory' -delete
+    rm -rf "$pkgdir/usr/share/icons/la-capitaine-icon-theme/.gitignore"
+    rm -rf "$pkgdir/usr/share/icons/la-capitaine-icon-theme/.git"
 }
 
