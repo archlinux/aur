@@ -1,9 +1,9 @@
 pkgbase = gimp-git
 	pkgdesc = GNU Image Manipulation Program
-	pkgver = 2.10.2.647.g8e6a5298c1
+	pkgver = 2.10.2.1075.gb4c244b839
 	pkgrel = 1
 	epoch = 1
-	url = http://www.gimp.org
+	url = https://www.gimp.org
 	arch = i686
 	arch = x86_64
 	license = GPL
