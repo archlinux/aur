@@ -1,13 +1,13 @@
-pkgbase = emacs-gitolite-theme
+pkgbase = emacs-gitolite-mode
 	pkgdesc = Emacs major mode for gitolite
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/llloret/gitolite-emacs
 	arch = any
 	license = MIT
 	depends = emacs
-	source = emacs-gitolite-theme-0.3.1.tar.gz::https://github.com/llloret/gitolite-emacs/archive/9136a9b737e0a5b6471a91571d104c487c43f35b.tar.gz
+	source = emacs-gitolite-mode-0.3.1.tar.gz::https://github.com/llloret/gitolite-emacs/archive/9136a9b737e0a5b6471a91571d104c487c43f35b.tar.gz
 	sha256sums = 0e95624a8952288cab561af1334ea68c26d01be0b5546c4e1145a03a568a2385
 
-pkgname = emacs-gitolite-theme
+pkgname = emacs-gitolite-mode
 

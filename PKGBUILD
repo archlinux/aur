@@ -2,9 +2,9 @@
 
 _commit_id=9136a9b737e0a5b6471a91571d104c487c43f35b
 _upstream_pkgname=gitolite-emacs
-pkgname=emacs-gitolite-theme
+pkgname=emacs-gitolite-mode
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Emacs major mode for gitolite'
 arch=('any')
 url='https://github.com/llloret/gitolite-emacs'
