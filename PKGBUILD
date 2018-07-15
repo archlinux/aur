@@ -2,7 +2,7 @@
 pkgdesc='General-purpose library specifically developed for the WPE-flavored port of WebKit.'
 pkgname=wpebackend
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 url=https://github.com/WebPlatformForEmbedded/WPEBackend
 arch=(x86_64 i686)
 makedepends=(cmake opengl-driver)
@@ -13,20 +13,22 @@ md5sums=('d04e44a32709dbb763ce1fcfc28bc6d8')
 sha1sums=('4089cac12877ee1e09372953a281a46b8c8951e9')
 sha256sums=('ce33ff29b04175cb6fe6e6597a4b5e8ec9da0b8b5ae0745848902ac935d65823')
 
+prepare () {
+	mkdir -p _build
+}
+
 build () {
-	cd "${pkgname}-${pkgver}"
-	rm -rf _build
-	mkdir _build
 	cd _build
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo ..
-	make
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		"../${pkgname}-${pkgver}"
+	cmake --build .
 }
 
 package () {
-	cd "${pkgname}-${pkgver}"
-	DESTDIR="${pkgdir}" make -C _build install
-	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+	DESTDIR="${pkgdir}" cmake --build _build --target install
+	install -Dm644 "${pkgname}-${pkgver}/COPYING" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
