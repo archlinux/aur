@@ -1,12 +1,12 @@
 # Maintainer: Erik Zenker <erikzenker at posteo dot de>
 pkgname=benchmark-git
-pkgver=v1.1.0.r102.gcb8a0cc
+pkgver=v1.4.1.r19.g1f35fa4
 pkgrel=1
 pkgdesc="A microbenchmark support library, by Google"
 arch=('i686' 'x86_64')
 url="https://github.com/google/benchmark}"
 license=('Apache')
-depends=(gcc-libs)
+depends=(gcc-libs gtest gmock)
 makedepends=('cmake')
 
 source=("${pkgname}::git+https://github.com/google/benchmark.git")
