@@ -6,14 +6,14 @@
 #       may fail if make uses more than one job.
 
 pkgname=calculix
-pkgver=2.13
-pkgrel=2
+pkgver=2.14
+pkgrel=1
 pkgdesc="CalculiX: 3D finite element solver and post-processor (executables)"
 arch=('i686' 'x86_64')
 options=(!makeflags !buildflags)
 url="http://www.calculix.de/"
 license=('GPL2')
-depends=('arpack' 'spooles' 'libsnl-svn' 'blas' 'freeglut' 'mesa' 'glu' 'libxmu' )
+depends=('arpack' 'spooles' 'libsnl-svn' 'blas' 'mesa' 'glu' 'libxmu' )
 optdepends=('calculix-doc: documentation and examples')
 makedepends=('gcc-fortran')
 
@@ -26,9 +26,9 @@ source=("http://www.dhondt.de/ccx_${_ccxver}.src.tar.bz2"
       	"http://www.dhondt.de/cgx_${_cgxver}.all.tar.bz2"
         "calculix_${_mainver}_archlinux.patch")
 
-sha256sums=('7685f4ddd0dc698fa1ad0f82594a6fe52ffa8f604c1e74befa048d3d46f49ce2'
-            'dfbe696315347981bc740e55638e3ef0161afde2597b1f63c732021f852289b7'
-            '1153c834e9239018cd4fd1adf666ae37a01de9bf05dc75c62f11da6d22a703a9')
+sha256sums=('59de9965d8f69141a34519101f7dd932c7d8d2be15480b31062b92512545fec4'
+            '07658fcf2c00489cad16b58c6065ca8402c974f2c7e9d3e9dbca87cfd7275d12'
+            'f5e0d484339c4ca2f0a48b11fa1ce35bf3d38fae98303870cf893c76248af2fa')
 
 prepare()
 {
@@ -48,7 +48,7 @@ build()
     make
     
     msg2 "Building gui..."
-    cd "${srcdir}/CalculiX/cgx_${_cgxver}/src"
+    cd "${srcdir}/CalculiX/cgx_${_cgxver}.1/src"
     make
 
     msg2 "Build complete"
@@ -62,7 +62,7 @@ package()
     install -d  ${pkgdir}/usr/bin
 
     install -Dm755 ${srcdir}/CalculiX/ccx_${_ccxver}/src/ccx_${_ccxver} ${pkgdir}/usr/bin/ccx
-    install -Dm755 ${srcdir}/CalculiX/cgx_${_cgxver}/src/cgx ${pkgdir}/usr/bin/cgx
+    install -Dm755 ${srcdir}/CalculiX/cgx_${_cgxver}.1/src/cgx ${pkgdir}/usr/bin/cgx
 
     msg2 "Done"  
 }
