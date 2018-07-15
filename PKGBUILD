@@ -6,12 +6,12 @@ pkgrel=1
 epoch=1
 pkgdesc="Info script for minimal *nix systems."
 arch=('any')
-url="https://github.com/jschx/${_pkgname}"
+url="https://gitlab.com/jschx/${_pkgname}"
 license=('ISC')
 provides=($_pkgname)
 conflicts=($_pkgname)
 makedepends=('git')
-source=("git+https://github.com/jschx/ufetch.git")
+source=("git+https://gitlab.com/jschx/ufetch.git")
 md5sums=('SKIP')
 
 pkgver() {

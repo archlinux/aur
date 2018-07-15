@@ -3,13 +3,13 @@ pkgbase = ufetch-git
 	pkgver = r72.8dfc9a9
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/jschx/ufetch
+	url = https://gitlab.com/jschx/ufetch
 	arch = any
 	license = ISC
 	makedepends = git
 	provides = ufetch
 	conflicts = ufetch
-	source = git+https://github.com/jschx/ufetch.git
+	source = git+https://gitlab.com/jschx/ufetch.git
 	md5sums = SKIP
 
 pkgname = ufetch-git
