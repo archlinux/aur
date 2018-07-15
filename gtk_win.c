@@ -109,6 +109,11 @@ void on_load_button_clicked(GtkButton* button) {
                 .portfolio_string->len + 1);
         strcpy(app.portfolio_string->data, str);
         json_object_put(jobj);
+
+        // Enable encrypt button
+        GtkButton* lock_button = GTK_BUTTON(gtk_builder_get_object(app.builder, "lock_button"));
+        gtk_widget_set_sensitive(GTK_WIDGET(lock_button), TRUE); // Make button clickable
+        gtk_button_set_label(lock_button, "Encrypt");
         return;
     }
 
@@ -127,7 +132,7 @@ void on_load_button_clicked(GtkButton* button) {
         check_list_create_from_string();
         api_info_array_store_check_data(app.portfolio_data);
         check_list_add_api_data();
-    } else return; // Return if length 0 JSON array
+    }
 
     GtkButton* lock_button = GTK_BUTTON(gtk_builder_get_object(app.builder, "lock_button"));
     gtk_widget_set_sensitive(GTK_WIDGET(lock_button), TRUE); // Make button clickable
