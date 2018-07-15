@@ -1,57 +1,49 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=chatty
-pkgver=0.8.7
-pkgrel=8
+pkgver=0.9.1
+pkgrel=1
 pkgdesc='Twitch Chat Client for Desktop'
 arch=('any')
 url='https://chatty.github.io/'
-license=('MIT')
+license=('GPL3')
 depends=('java-environment' 'sh')
 optdepends=('streamlink: for watching streams in a custom video player.'
             'livestreamer: for watching streams in a custom video player.')
-makedepends=('apache-ant' 'java-environment>=8')
-
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chatty/chatty/archive/v${pkgver}.tar.gz"
+makedepends=('gradle')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chatty/chatty/archive/v${pkgver}-emotefix.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}_script"
-        'config_dir.patch'
-        'manifest.patch'
-        'disable_version_check.patch'
-        'build.patch')
-sha512sums=('de772c4403f82cd66283eb340bce2cb62d5a7fd946cdfc46fbab9e3ec0858c3b8e08b5ec8db93efcb57a46f5b4422358a257069a260373228fa23b99d7dce5f1'
+        'disable_version_check.patch')
+sha512sums=('435041d7ad9893058d7d2a32fe669f746a679b3239c5e0e930f29766db4bfede19b84180dfef336ef200bfc84b36b93fd9d2a3ad99054cbeafba9154af4d6b51'
             '6b18009b4e34a2255cec42fd1e136e437aa528c80c40d9f1ab7379ab9e4a637fbd64860fb51e7e57aa0c74165b42f8d4c1ed6a1ffd061d07a02af1ec5167145e'
-            'a2e3e61195c3bd9bb56ee7772a505e355d324cf86edfd41b0d92f261b77097eecf616e071c5cfed8bee7b4f779a5f1e126f9c8c2082a866e7a2e4bc4e4c0469c'
-            '5d56ac61a14342e5ea98e6d793d0455fbdf1f5ca5ac503ace5672b6a4182416051d39cfeea719152e907bbd16cb886b8edf2960914bd88f5f818094ec5388ebc'
-            '41aeb54f5705d5d612f779365a51b4df156b9ad8a6a282c271bf4d03f280ea7fe0470f2169896b6ef430d04f0f6bb5bcf16b2d6a0edaf2fc86847270e7179b91'
-            '69d8e2deec3feef312a04e5e4a6080d7aaad63cbd93d43eda8f1958ebbe65e79d38c6a65e3143669a37fb4af50a5960dfe7793ee9dce6b726096608f301a2fdf'
-            '3beb726fecfd7855be4fac50d4926bbcc8a44d0d1f43402443223cc90a743ba81968844a530fa37f38115fdf526bf05a60a331be862a3f452e909a2f5cb26ae7')
+            'b5ea9a3e77cf5ed006537348371619577aabf86bdb4e90b249c2e3a236b1f1d51920c6af2d2779920a0853cb4f5456fc0a10ad2a788c7c1e5b2649f7f2b756d0'
+            '8df69baaf9a0bad68d7c1aac96877b65637c4688d59f9b36f4915b77e2ec9bfa99c67adfe69bca95baee88a585f6f01f5f26eb076079f95bfca9f0ac19180199')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch -p1 -i '../build.patch'
-  patch -p1 -i '../config_dir.patch'
   patch -p1 -i '../disable_version_check.patch'
-  patch -p1 -i '../manifest.patch'
 }
 
 build() {
   cd "chatty-${pkgver}"
-  JAVA_HOME=/usr/lib/jvm/java-8-openjdk ant
+  gradle build
+  gradle release
 }
 
 package(){
-  cd "${pkgname}-${pkgver}"
-  install -Dm644 "./dist/${pkgname}.jar" "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
-  cp -a './assets' "${pkgdir}/usr/share/${pkgname}/"
+  mkdir "${srcdir}/Chatty_${pkgver}" && cd "${srcdir}/Chatty_${pkgver}"
+  bsdcpio -i -m --make-directories < "../${pkgname}-${pkgver}/build/releases/Chatty_${pkgver}.zip"
+  install -Dm644 'Chatty.jar' "${pkgdir}/usr/share/${pkgname}/Chatty.jar"
+  cp -a 'img' 'sounds' "${pkgdir}/usr/share/${pkgname}/"
+  install -Dm644 'readme.txt' "${pkgdir}/usr/share/doc/${pkgname}/readme.txt"
 
-  install -Dm755 "../${pkgname}_script" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 './src/chatty/gui/app_16.png' "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname}.png"
-  install -Dm644 './src/chatty/gui/app_64.png' "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
-  install -Dm644 "../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  cd "${srcdir}"
+  install -Dm755 "${pkgname}_script" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-  install -Dm644 './APACHE_LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/APACHE_LICENSE"
-  install -Dm644 './LGPL' "${pkgdir}/usr/share/licenses/${pkgname}/LGPL"
-  install -Dm644 './README.md' "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm644 "./src/chatty/gui/app_main_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname}.png"
+  install -Dm644 "./src/chatty/gui/app_main_64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
+  install -Dm644 "./src/chatty/gui/app_main_128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
 }
-

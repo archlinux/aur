@@ -1,6 +1,0 @@
-diff -Nur chatty-0.8.4.orig/manifest.mf chatty-0.8.4/manifest.mf
---- chatty-0.8.4.orig/manifest.mf	1970-01-01 01:00:00.000000000 +0100
-+++ chatty-0.8.4/manifest.mf	2016-10-24 22:20:19.004420770 +0200
-@@ -0,0 +1,2 @@
-+Manifest-Version: 1.0
-+Main-Class: chatty.Chatty
