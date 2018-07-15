@@ -1,7 +1,7 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 pkgname=aesop-git
-_gitname=aesop
+gitname=aesop
 pkgver=latest
 pkgrel=1
 pkgdesc="The simplest PDF viewer around designed for elementary OS"
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('gtk3' 'vala' 'granite' 'libsoup' 'json-glib')
 optdepends=('lib32-json-glib')
 makedepends=('git' 'meson' 'ninja')
-provides=("$_pkgname")
-conflicts=("$_gitname")
+provides=("$pkgname")
+conflicts=("$gitname")
 source=("git+https://github.com/lainsce/aesop.git")
 md5sums=('SKIP')
 
@@ -25,13 +25,13 @@ pkgver() {
 }
 
 build() {
-    cd "${_gitname}/"
+    cd "${gitname}/"
     meson . _build --prefix=/usr
     ninja -C _build
 }
 
 package() {
-    cd "${_gitname}/"
+    cd "${gitname}/"
     DESTDIR="${pkgdir}" ninja -C _build install
 }
 
