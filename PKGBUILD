@@ -11,7 +11,7 @@
 pkgname=uwsgi-plugin-php53
 pkgdesc="Plugin for PHP 5.3 support"
 pkgver=2.0.17.1
-pkgrel=1
+pkgrel=1.1
 arch=(i686 x86_64)
 url="http://projects.unbit.it/uwsgi"
 license=(GPL2)
