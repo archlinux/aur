@@ -15,7 +15,8 @@ provides=(gtk-sharp-3 gtk-sharp-3-git)
 conflicts=(gtk-sharp-3 gtk-sharp-3-git)
 source=(git+https://github.com/mono/gtk-sharp.git
 compile.patch)
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+'69f79aedc7ec02988b65c1672fc734aad6d37f2efdc920dd7376e37f0e3453b2')
 
 pkgver() {
   cd "$_pkgname"
