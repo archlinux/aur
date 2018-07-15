@@ -55,7 +55,7 @@ void portfolio_modify_write(const char* symbol, double quantity_shares, double u
 
 int portfolio_modify_string(String* pString, const char* symbol, double quantity_shares,
                              double usd_spent, int mod_option) {
-    if (symbol != NULL && symbol[0] == '\0')
+    if ((symbol != NULL && symbol[0] == '\0') || quantity_shares < 0 || usd_spent < 0)
         return 1;
 
     int status = 0;
