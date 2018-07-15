@@ -7,8 +7,8 @@ pkgdesc="GRPC-C++"
 arch=('any')
 url="https://github.com/grpc/grpc"
 license=('Apache 2.0')
-depends=('autoconf' 'libtool' 'pkg-config' 'clang')
-makedepends=('git' 'base-devel')
+depends=('autoconf' 'libtool' 'pkg-config' 'clang' 'gcc')
+makedepends=('git')
 source=('git+https://github.com/grpc/grpc.git')
 md5sums=('SKIP')
 

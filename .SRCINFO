@@ -6,11 +6,11 @@ pkgbase = grpc-cpp-git
 	arch = any
 	license = Apache 2.0
 	makedepends = git
-	makedepends = base-devel
 	depends = autoconf
 	depends = libtool
 	depends = pkg-config
 	depends = clang
+	depends = gcc
 	source = git+https://github.com/grpc/grpc.git
 	md5sums = SKIP
 
