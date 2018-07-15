@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=libadalang-git
-pkgver=r2849.99e95476
+pkgver=r2869.6db10e4f
 pkgrel=1
 
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language'
@@ -9,7 +9,7 @@ url='https://github.com/AdaCore/libadalang/'
 arch=('any')
 license=('GPL')
 
-depends=('gcc-ada' 'gprbuild' 'gnatcoll-core' 'gnatcoll-iconv')
+depends=('gcc-ada' 'gprbuild' 'gnatcoll-core' 'gnatcoll-iconv' 'gnatcoll-gmp')
 makedepends=('git' 'langkit')
 
 provides=('libadalang')

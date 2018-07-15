@@ -1,6 +1,6 @@
 pkgbase = libadalang-git
 	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
-	pkgver = r2849.99e95476
+	pkgver = r2869.6db10e4f
 	pkgrel = 1
 	url = https://github.com/AdaCore/libadalang/
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = libadalang-git
 	depends = gprbuild
 	depends = gnatcoll-core
 	depends = gnatcoll-iconv
+	depends = gnatcoll-gmp
 	provides = libadalang
 	conflicts = libadalang
 	source = git+https://github.com/AdaCore/libadalang.git
