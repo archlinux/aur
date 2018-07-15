@@ -1,34 +1,37 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 
-pkgname=webwatcher-git
-_gitname=webwatcher
+gitname=webwatcher
+pkgname=("${gitname}-git")
 pkgver=latest
 pkgrel=1
-pkgdesc="Know when your websites are misbehaving!"
+pkgdesc="Know when your websites are misbehaving! An app designed for elementary OS"
 arch=('i686' 'x86_64')
-url="https://github.com/kjlaw89/webwatcher"
+url="https://github.com/kjlaw89/${gitname}"
 license=('GPL3')
-depends=('gtk3' 'vala' 'granite' 'glib2' 'sqlite' 'libsoup' 'json-glib' 'libappindicator-gtk3')
+depends=('gtk3' 'vala' 'granite'
+         'glib2' 'json-glib' 'libsoup' 'libappindicator-gtk3' 'sqlite')
 optdepends=()
 makedepends=('git' 'meson' 'ninja')
 provides=("$_pkgname")
-conflicts=("$_gitname")
-source=("git+https://github.com/kjlaw89/webwatcher.git")
+conflicts=("$gitname")
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_gitname}/"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${gitname}"
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
-    cd "${srcdir}/${_gitname}/"
+    cd "${gitname}/"
     meson . _build --prefix=/usr
     ninja -C _build
 }
 
 package() {
-    cd "${srcdir}/${_gitname}/"
+    cd "${gitname}/"
     DESTDIR="${pkgdir}" ninja -C _build install
 }
-
