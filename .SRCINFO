@@ -6,9 +6,11 @@ pkgbase = grpc-cpp-git
 	arch = any
 	license = Apache 2.0
 	makedepends = git
-	depends = python-setuptools
-	depends = python-numpy
-	depends = python-scipy
+	makedepends = base-devel
+	depends = autoconf
+	depends = libtool
+	depends = pkg-config
+	depends = clang
 	source = git+https://github.com/grpc/grpc.git
 	md5sums = SKIP
 
