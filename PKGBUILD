@@ -15,8 +15,8 @@ source=(
     "dkms.conf"
 )
 
-md5sums=('7af60ce3f9a5c01095ff58d1b64909ae'
-         '4c6290fe3ff6260cf66b1463158896df')
+sha512sums=('70030eda85285fba56427162feb769a64d46a92acf8e6c77279786264359dfdf7cd9ceeecf6a8e8d24151855c50c3293c42f6b3a4c05fa0d36d7cf1acba79dfc'
+            'cdb79d66b0b9aa32457d6d2c6f1979412348d91bec6def055694595ee3528023b05142c89396b92e3a2e1ece5d69d18c13cece0588067ec401cfb666b03ae739')
 
 prepare() {
     mkdir -p "${srcdir}/udmabuf"
