@@ -1,22 +1,16 @@
 post_install() {
-    echo
-    echo
-    echo -e "\t                        GAME NOTES"
-    echo -e "\t                   ´*~##############~*\`"
-    echo -e "\t##########################################################"
-    echo -e "\t#                                                        #"
-    echo -e "\t# You need to create an account at                       #"
-    echo -e "\t# https://www.pokemon-revolution-online.net/Register.php #"
-    echo -e "\t#                                                        #"
-    echo -e "\t##########################################################"
-    echo
-    echo
+    printf "\n\n\n\t                        GAME NOTES\n"
+    printf "\t                   ´*~##############~*\`\n"
+    printf "\t##########################################################\n"
+    printf "\t#                                                        #\n"
+    printf "\t# You need to create an account at                       #\n"
+    printf "\t# https://www.pokemon-revolution-online.net/Register.php #\n"
+    printf "\t#                                                        #\n"
+    printf "\t##########################################################\n\n\n"
 }
 
 post_upgrade() {
-    echo
-    echo "Thanks for using my pkg :)"
-    echo
+    printf  "\nThanks for using my pkg :)\n\n"
 }
 
 
