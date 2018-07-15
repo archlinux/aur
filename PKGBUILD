@@ -1,6 +1,6 @@
 # Maintainer: t-onoz <t [dot] onozuka [dot] 1990 [at] (g-mail)>>
 pkgname=nagome-electron
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="NicoNama comment viewer"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=("https://github.com/diginatu/$pkgname/releases/download/v$pkgver/$pkgnam
 "https://raw.githubusercontent.com/diginatu/$pkgname/master/images/icon.png"
 "https://raw.githubusercontent.com/diginatu/nagome-electron/master/LICENSE"
 "$pkgname.desktop")
-md5sums=('6868eb158d107d7be05c13f120057ea8'
+md5sums=('8e7241017b10fd240187b63ed98b7a4c'
          'dcf67353e015d7489f5b771e0c9e8ffe'
          '726fff92b313b3d527d0075756e34892'
          '1db0c25395efc437035a1c087d308268')
