@@ -1,19 +1,20 @@
 # Maintainer: Troy Engel <troyengel+arch@gmail.com>
 
 pkgbase=holland
-pkgname=('holland' 'holland-common' 'holland-mysqldump' 'holland-mysqllvm'
-         'holland-pgdump' 'holland-xtrabackup')
-pkgver=1.0.14
+pkgname=('holland' 'holland-common' 'holland-lvm' 'holland-mysql' 
+         'holland-mysqldump' 'holland-mysqllvm' 'holland-pgdump'
+         'holland-xtrabackup' 'holland-mariabackup' 'holland-mongodump')
+pkgver=1.1.0
 pkgrel=1
 arch=('any')
 url="http://hollandbackup.org"
 license=('BSD' 'GPL2')
 options=('emptydirs')
-makedepends=('python2-setuptools')
-source=("http://hollandbackup.org/releases/stable/1.0/${pkgbase}-${pkgver}.tar.gz"
+makedepends=('python-setuptools')
+source=("http://hollandbackup.org/releases/stable/1.1/${pkgbase}-${pkgver}.tar.gz"
         "holland.logrotate")
-md5sums=('15a410e1b0f858f240e67daf7f531a43'
-         '5b2d292dc7e1139fde8ab9439b0464ee')
+sha256sums=('15ae509ec339c5a0b96cf9e520edfb8aabf2b1d8e7daebc8ff5fbfb857d31a63'
+            '6b0240375e5cafe24a4e0c6fd078e42eaff4f5b2030f7fba4202d052d9a54995')
 
 prepare() {
   cd "${srcdir}"
@@ -22,35 +23,44 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
-  python2 setup.py build
+  python setup.py build
+
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.common"
-  python2 setup.py build
-  cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.mysql"
-  python2 setup.py build
+  python setup.py build
+
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.lvm"
-  python2 setup.py build
+  python setup.py build
+
+  cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.mysql"
+  python setup.py build
 
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.backup.mysqldump"
-  python2 setup.py build
+  python setup.py build
 
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.backup.mysql_lvm"
-  python2 setup.py build
+  python setup.py build
 
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.backup.pgdump"
-  python2 setup.py build
+  python setup.py build
 
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.backup.xtrabackup"
-  python2 setup.py build
+  python setup.py build
+
+  cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.backup.mariabackup"
+  python setup.py build
+
+  cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.backup.mongodump"
+  python setup.py build
 }
 
 package_holland() {
   pkgdesc="Pluggable backup framework focusing on databases"
   license=('BSD')
-  depends=('python2' 'python2-setuptools')
+  depends=('python' 'python-setuptools' 'python-six' 'python-future')
   backup=('etc/holland/holland.conf'
           'etc/holland/backupsets/default.conf')
-  
-  local _py2sp=$(python2 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
+
+  local _py2sp=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 
   install -dm0755 "${pkgdir}/etc/holland/backupsets"
   install -dm0755 "${pkgdir}/etc/holland/providers"
@@ -63,7 +73,7 @@ package_holland() {
   install -dm0755 "${pkgdir}${_py2sp}/holland/restore"
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
-  python2 setup.py install -O1 --skip-build --root "${pkgdir}" \
+  python setup.py install -O1 --skip-build --root "${pkgdir}" \
     --install-scripts /usr/bin
 
   install -Dm0644 config/holland.conf "${pkgdir}/etc/holland/holland.conf"
@@ -79,32 +89,53 @@ package_holland() {
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/holland/LICENSE"
   cp -a config/backupsets/examples "${pkgdir}/usr/share/doc/holland/examples"
 
-  install -Dm0644 "${srcdir}/holland.logrotate" "${pkgdir}/etc/logrotate.d/holland"
+  install -Dm0644 "${srcdir}/holland.logrotate" \
+    "${pkgdir}/etc/logrotate.d/holland"
 }
 
 package_holland-common() {
   pkgdesc="Common library functionality for Holland Plugins"
   license=('GPL2')
-  depends=("holland=${pkgver}" 'mysql-python')
+  depends=("holland=${pkgver}")
 
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.common"
-  python2 setup.py install -O1 --skip-build --root "${pkgdir}"
-  cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.mysql"
-  python2 setup.py install -O1 --skip-build --root "${pkgdir}"
+  python setup.py install -O1 --skip-build --root "${pkgdir}"
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   install -Dm0644 plugins/holland.lib.common/README \
     "${pkgdir}/usr/share/doc/holland/README.common"
 }
 
-package_holland-mysqldump() {
-  pkgdesc="Logical mysqldump backup plugin for Holland"
+package_holland-lvm() {
+  pkgdesc="LVM library functionality for Holland Plugins"
   license=('GPL2')
-  depends=("holland-common=${pkgver}" 'mariadb-clients' 'mysql-python')
+  depends=("holland-common=${pkgver}" 'lvm2')
+
+  cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.lvm"
+  python setup.py install -O1 --skip-build --root "${pkgdir}"
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  install -Dm0644 plugins/holland.lib.lvm/README \
+    "${pkgdir}/usr/share/doc/holland/README.lvm"
+}
+
+package_holland-mysql() {
+  pkgdesc="MySQL library functionality for Holland Plugins"
+  license=('GPL2')
+  depends=("holland-common=${pkgver}" 'python-mysqlclient')
+
+  cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.mysql"
+  python setup.py install -O1 --skip-build --root "${pkgdir}"
+}
+
+package_holland-mysqldump() {
+  pkgdesc="Holland Backup Provider for MySQL mysqldump"
+  license=('GPL2')
+  depends=("holland-mysql=${pkgver}" 'mariadb-clients')
   backup=('etc/holland/providers/mysqldump.conf')
 
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.backup.mysqldump"
-  python2 setup.py install -O1 --skip-build --root "${pkgdir}"
+  python setup.py install -O1 --skip-build --root "${pkgdir}"
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   install -Dm0644 config/providers/mysqldump.conf \
@@ -114,16 +145,14 @@ package_holland-mysqldump() {
 }
 
 package_holland-mysqllvm() {
-  pkgdesc="Holland LVM snapshot backup plugin for MySQL"
+  pkgdesc="Holland Backup Provider for MySQL LVM snapshots"
   license=('GPL2')
-  depends=("holland-common=${pkgver}" 'lvm2' 'tar' 'mysql-python')
+  depends=("holland-mysql=${pkgver}" "holland-lvm=${pkgver}" 'tar')
   backup=('etc/holland/providers/mysql-lvm.conf'
           'etc/holland/providers/mysqldump-lvm.conf')
 
-  cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.lvm"
-  python2 setup.py install -O1 --skip-build --root "${pkgdir}"
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.backup.mysql_lvm"
-  python2 setup.py install -O1 --skip-build --root "${pkgdir}"
+  python setup.py install -O1 --skip-build --root "${pkgdir}"
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   install -Dm0644 config/providers/mysql-lvm.conf \
@@ -135,13 +164,13 @@ package_holland-mysqllvm() {
 }
 
 package_holland-pgdump() {
-  pkgdesc="Holland Backup Provider for PostgreSQL"
+  pkgdesc="Holland Backup Provider for PostgreSQL pg_dump"
   license=('GPL2')
-  depends=("holland-common=${pkgver}" 'python2-psycopg2')
+  depends=("holland-common=${pkgver}" 'python-psycopg2' 'postgresql-libs')
   backup=('etc/holland/providers/pgdump.conf')
 
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.backup.pgdump"
-  python2 setup.py install -O1 --skip-build --root "${pkgdir}"
+  python setup.py install -O1 --skip-build --root "${pkgdir}"
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   install -Dm0644 config/providers/pgdump.conf \
@@ -151,18 +180,50 @@ package_holland-pgdump() {
 }
 
 package_holland-xtrabackup() {
-  pkgdesc="Xtrabackup plugin for Holland"
+  pkgdesc="Holland Backup Provider for MySQL Xtrabackup"
   license=('GPL2')
-  depends=("holland-common=${pkgver}" 'xtrabackup')
+  depends=("holland-mysql=${pkgver}" 'xtrabackup')
   backup=('etc/holland/providers/xtrabackup.conf')
 
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.backup.xtrabackup"
-  python2 setup.py install -O1 --skip-build --root "${pkgdir}"
+  python setup.py install -O1 --skip-build --root "${pkgdir}"
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   install -Dm0644 config/providers/xtrabackup.conf \
     "${pkgdir}/etc/holland/providers/xtrabackup.conf"
   install -Dm0644 plugins/holland.backup.xtrabackup/README \
     "${pkgdir}/usr/share/doc/holland/README.xtrabackup"
+}
+
+package_holland-mariabackup() {
+  pkgdesc="Holland Backup Provider for MariaDB mariabackup"
+  license=('GPL2')
+  depends=("holland-mysql=${pkgver}" 'mariadb')
+  backup=('etc/holland/providers/mariabackup.conf')
+
+  cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.backup.mariabackup"
+  python setup.py install -O1 --skip-build --root "${pkgdir}"
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  install -Dm0644 config/providers/mariabackup.conf \
+    "${pkgdir}/etc/holland/providers/mariabackup.conf"
+  install -Dm0644 plugins/holland.backup.mariabackup/README \
+    "${pkgdir}/usr/share/doc/holland/README.mariabackup"
+}
+
+package_holland-mongodump() {
+  pkgdesc="Holland Backup Provider for MongoDB mongodump"
+  license=('GPL2')
+  depends=("holland-common=${pkgver}" 'python-pymongo' 'mongodb-tools')
+  backup=('etc/holland/providers/mongodump.conf')
+
+  cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.backup.mongodump"
+  python setup.py install -O1 --skip-build --root "${pkgdir}"
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  install -Dm0644 config/providers/mongodump.conf \
+    "${pkgdir}/etc/holland/providers/mongodump.conf"
+  install -Dm0644 plugins/holland.backup.mongodump/README \
+    "${pkgdir}/usr/share/doc/holland/README.mongodump"
 }
 
