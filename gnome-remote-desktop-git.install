@@ -1,0 +1,3 @@
+post_upgrade() {
+  echo "WARNING: This package now depends on pipewire-git which breaks gnome-session from extra."
+}

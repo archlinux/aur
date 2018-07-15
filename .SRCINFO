@@ -1,8 +1,9 @@
 pkgbase = gnome-remote-desktop-git
 	pkgdesc = Remote desktop daemon for GNOME using pipewire
 	pkgver = 0.1.4.18.g9440db0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
+	install = gnome-remote-desktop-git.install
 	arch = i686
 	arch = x86_64
 	arch = armv6h

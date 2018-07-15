@@ -3,11 +3,12 @@
 _pkgname=gnome-remote-desktop
 pkgname=$_pkgname-git
 pkgver=0.1.4.18.g9440db0
-pkgrel=1
+pkgrel=2
 pkgdesc='Remote desktop daemon for GNOME using pipewire'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://wiki.gnome.org/Projects/Mutter/RemoteDesktop"
 license=('GPL2')
+install=$pkgname.install
 depends=('libvncserver' 'dconf' 'pipewire-git' 'libnotify' 'libsecret')
 makedepends=('git' 'meson')
 provides=("$_pkgname")
