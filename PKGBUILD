@@ -4,7 +4,7 @@
 pkgname=openmvg-git
 _gitname='openMVG'
 _fragment="#branch=develop"
-pkgver=1.3.r91.g4c7367cd
+pkgver=1.3.r115.g903b2f44
 pkgrel=1
 pkgdesc='open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.'
 arch=('i686' 'x86_64')
@@ -16,17 +16,15 @@ source=("git+https://github.com/${_gitname}/${_gitname}.git${_fragment}"
         'git+https://github.com/elmindreda/glfw.git'
         'git+https://github.com/openMVG-thirdparty/osi_clp.git'
         'git+https://github.com/openMVG-thirdparty/cereal.git'
-        'lemon.patch'
         'findflann-v0.1.patch'
-        'evalquality.patch'
+        'stlplus.patch'
        )
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         '11aa728e50e52b10d79dd83dfaa6c1c6'
          'f421cb25208a4f95784035d9823abe04'
-         'e3ffb7463245b92fdee08045715640ab')
+         '45325ddb7a710f79e619ba2085697833')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -40,9 +38,10 @@ prepare() {
   git config 'submodule.src/dependencies/osi_clp.url' "${srcdir}/osi_clp"
   git config 'submodule.src/dependencies/cereal.url' "${srcdir}/cereal"
   git submodule update
-  git apply ${srcdir}/lemon.patch
+  msg "flann patch"
   git apply ${srcdir}/findflann-v0.1.patch
-  git apply ${srcdir}/evalquality.patch
+  msg "fix link target missing stlplus library"
+  git apply ${srcdir}/stlplus.patch
 }
 
 build() {
