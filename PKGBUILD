@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git' 'kodi-tools-texturepacker-git' 'kodi-dev-git')
 _gitname='xbmc'
-pkgver=18.0a1.r199.g03d453ae65
+pkgver=18.0a2.r297.gb845d173607
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -94,7 +94,7 @@ package_kodi-git() {
 
   # Licenses
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  for licensef in LICENSE.GPL copying.txt; do
+  for licensef in LICENSE.md copying.txt; do
     mv "$pkgdir/usr/share/doc/kodi/$licensef" \
       "$pkgdir/usr/share/licenses/$pkgname"
   done
