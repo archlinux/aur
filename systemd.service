@@ -21,6 +21,13 @@ ExecStop=/bin/bash -c 'echo q > /run/nextcloud/master-fifo'
 #ExecReload=/usr/bin/php /usr/share/webapps/nextcloud/occ files:scan --all
 ExecReload=/bin/bash -c 'echo w > /run/nextcloud/master-fifo'
 
+NoNewPrivileges=yes
+ProtectHome=yes
+PrivateDevices=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+
 [Install]
 WantedBy=multi-user.target
 Also=nextcloud.socket
