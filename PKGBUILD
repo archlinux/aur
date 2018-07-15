@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=oxy
-pkgver=3.0.0+dev1+85+g46013cc
+pkgver=3.0.0+dev1+88+g8bafe66
 pkgrel=1
 pkgdesc='In-development SSH-alike that uses the Noise protocol'
 arch=(any)
@@ -9,8 +9,13 @@ url=https://github.com/oxy-secure/oxy
 license=(BSD-2-Clause)
 makedepends=(git rust-nightly)
 conflicts=(oxy-git)
-source=(git+$url#commit=46013ccc0eb92929b6fbb9a70ee67fa58be70be1)
+source=(git+$url#commit=8bafe669127fe71785bccc1dcf078062aaca2508)
 sha512sums=(SKIP)
+
+pkgver() {
+  cd $srcdir/oxy
+  echo "$(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2 | sed s/-/+/)+$(git rev-list --count HEAD)+g$(git describe --always)"
+}
 
 build() {
   cd oxy
