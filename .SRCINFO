@@ -1,5 +1,5 @@
 pkgbase = aesop-git
-	pkgdesc = The simplest PDF viewer around
+	pkgdesc = The simplest PDF viewer around designed for elementary OS
 	pkgver = r17.295305d
 	pkgrel = 1
 	url = https://github.com/lainsce/aesop

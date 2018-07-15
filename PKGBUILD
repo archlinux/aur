@@ -17,18 +17,21 @@ source=("git+https://github.com/lainsce/aesop.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_gitname}/"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${gitname}"
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
-    cd "${srcdir}/${_gitname}/"
+    cd "${_gitname}/"
     meson . _build --prefix=/usr
     ninja -C _build
 }
 
 package() {
-    cd "${srcdir}/${_gitname}/"
+    cd "${_gitname}/"
     DESTDIR="${pkgdir}" ninja -C _build install
 }
 
