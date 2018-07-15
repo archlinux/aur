@@ -1,0 +1,26 @@
+[Unit]
+Description=nextcloud uwsgi service
+After=network.target redis.service
+Before=nginx.service
+Requires=nextcloud.socket
+
+[Service]
+Type=notify
+DynamicUser=yes
+User=nextcloud
+Group=nextcloud
+RuntimeDirectory=nextcloud
+StateDirectory=nextcloud
+
+Environment=NEXTCLOUD_CONFIG_DIR=/var/lib/nextcloud
+ExecStart=/usr/bin/uwsgi --ini /etc/uwsgi/nextcloud.ini:service --master-fifo /run/nextcloud/master-fifo
+ExecStop=/bin/bash -c 'echo q > /run/nextcloud/master-fifo'
+## uncoment any of these if you want to misuse the `systemctl reload` mechanism
+## to do a files rescan or an upgrade in the proper environment
+#ExecReload=/usr/bin/php /usr/share/webapps/nextcloud/occ upgrade
+#ExecReload=/usr/bin/php /usr/share/webapps/nextcloud/occ files:scan --all
+ExecReload=/bin/bash -c 'echo w > /run/nextcloud/master-fifo'
+
+[Install]
+WantedBy=multi-user.target
+Also=nextcloud.socket

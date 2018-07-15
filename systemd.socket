@@ -1,0 +1,10 @@
+[Unit]
+Description=nextcloud socket
+
+[Socket]
+ListenStream=/run/nextcloud.sock
+SocketMode=0660
+SocketGroup=http
+
+[Install]
+WantedBy=sockets.target
