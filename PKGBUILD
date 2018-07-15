@@ -5,7 +5,7 @@
 
 pkgname=openblas-lapack-ilp64
 _pkgname=OpenBLAS
-pkgver=0.2.15
+pkgver=0.2.20
 pkgrel=1
 pkgdesc="Optimized BLAS library based on GotoBLAS2 (dynamic arch)"
 arch=('x86_64')
