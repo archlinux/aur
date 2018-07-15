@@ -1,6 +1,6 @@
 pkgbase = quilter-git
-	pkgdesc = Markdown reader with preview option. Donations: Would you like to support the development of this app to new heights? Then: https://www.patreon.com/lainsce
-	pkgver = r320.3dca829
+	pkgdesc = Markdown reader with preview option designed for elementary OS. Donations: Would you like to support the development of this app to new heights? Then: https://www.patreon.com/lainsce
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/lainsce/quilter
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = quilter-git
 	depends = gtksourceview3
 	depends = webkit2gtk
 	depends = discount
+	provides = quilter
 	conflicts = quilter
 	source = git+https://github.com/lainsce/quilter.git
 	md5sums = SKIP
