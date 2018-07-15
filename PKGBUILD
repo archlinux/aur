@@ -1,7 +1,7 @@
 # Maintainer: Maurizio D'Addona <mauritiusdadd@gmail.com>
 
 pkgname=calculix-doc
-pkgver=2.13
+pkgver=2.14
 pkgrel=1
 pkgdesc="CalculiX: 3D finite element solver and post-processor (documentation and examples)"
 arch=('any')
@@ -14,9 +14,9 @@ source=("http://www.dhondt.de/ccx_${pkgver}.htm.tar.bz2"
         "http://www.dhondt.de/cgx_${pkgver}.htm.tar.bz2"
         "http://www.dhondt.de/cgx_${pkgver}.exa.tar.bz2")
 
-sha256sums=('34061658590d9c584c52037cfe3cb6d4305287092cce693a3776423459851b8b'
-            '39911f2b75730a844050faab48b729d8ebba5bbd6a467e561df76da091e31c69'
-            'f77fbbe41e5feecd9671c4d72b2a53d19f7641dce59a5e7dc219d32b46cf451a')
+sha256sums=('4e697b40e68c12a7b9e67516b59ec18ee4779ab1719c7582fc67d38a81ae8988'
+            '280b5f76d3a6c61772fa50eeabca043b53d4083fcf186d1c80bfe5669398e6ea'
+            '78dbd438b64e68af48cec0c34fd76ab79d11aa0c7fcceb7357cf107fb203c2da')
 
 prepare()
 {
@@ -32,9 +32,9 @@ package()
     install -Dm755 -d ${pkgdir}/usr/share/doc/ccx
     install -Dm755 -d ${pkgdir}/usr/share/doc/cgx/examples
     
-    cp -dr --no-preserve=ownership ${srcdir}/CalculiX/cgx_${pkgver}/examples/* ${pkgdir}/usr/share/doc/cgx/examples
+    cp -dr --no-preserve=ownership ${srcdir}/CalculiX/cgx_${pkgver}.1/examples/* ${pkgdir}/usr/share/doc/cgx/examples
     cp -dr --no-preserve=ownership ${srcdir}/CalculiX/ccx_${pkgver}/doc/ccx/* ${pkgdir}/usr/share/doc/ccx
-    cp -dr --no-preserve=ownership ${srcdir}/CalculiX/cgx_${pkgver}/doc/cgx/* ${pkgdir}/usr/share/doc/cgx
+    cp -dr --no-preserve=ownership ${srcdir}/CalculiX/cgx_${pkgver}.1/doc/cgx/* ${pkgdir}/usr/share/doc/cgx
 
     msg2 "Done"  
 }
