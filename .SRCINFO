@@ -1,5 +1,5 @@
 pkgbase = urutau-icons-git
-	pkgdesc = The most complete package of icons for third-party applications with elementary OS design
+	pkgdesc = The most complete package of icons for third-party applications with elementary OS design. Make a small donation to maintain this project. Donation link: http://bit.do/urutau-icons-donate
 	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/btd1337/urutau-icons
@@ -7,6 +7,7 @@ pkgbase = urutau-icons-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	provides = urutau-icons
 	conflicts = urutau-icons
 	options = !strip
 	source = git+https://github.com/btd1337/urutau-icons.git
