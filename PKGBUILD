@@ -40,7 +40,6 @@ build() {
 
 package(){
   install -Dm644 "${srcdir}/chatty-${pkgver}/dist/${pkgname}.jar" "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
-  mkdir -p "${pkgdir}/usr/share/${pkgname}"
   cp -a "${srcdir}/chatty-${pkgver}/assets" "${pkgdir}/usr/share/${pkgname}/"
 
   install -Dm755 "${srcdir}/${pkgname}_script" "${pkgdir}/usr/bin/${pkgname}"
