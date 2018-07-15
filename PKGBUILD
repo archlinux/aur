@@ -2,11 +2,12 @@
 pkgdesc='WPE launcher and webapp container'
 pkgname=cog-git
 pkgver=r134.f421c0a
-pkgrel=1
+pkgrel=2
 license=(MIT)
 url=https://github.com/Igalia/cog
 arch=(x86_64 i686)
 depends=(libxkbcommon wpebackend-fdo-git wpewebkit)
+groups=(wpe)
 provides=(cog)
 conflicts=(cog)
 makedepends=(cmake)
