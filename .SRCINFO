@@ -1,0 +1,18 @@
+pkgbase = eqonomize-appimage
+	pkgdesc = Eqonomize! is a cross-platform personal accounting software, with focus on efficiency and ease of use for the small household economy.
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://eqonomize.github.io/
+	arch = any
+	depends = qt5-base
+	optdepends = qt5-charts: charts in the statistics
+	provides = eqonomize
+	conflicts = eqonomize
+	noextract = Eqonomize-1.3.AppImage
+	noextract = eqonomize.desktop
+	source = https://github.com/Eqonomize/Eqonomize/releases/download/v1.3.0/Eqonomize-1.3.AppImage
+	source = https://raw.githubusercontent.com/Eqonomize/Eqonomize/v1.3.0/data/eqonomize.desktop
+	sha256sums = a9d0682e641ed04db2c099592c53504239e0c14b610f1eb799199bd01356e834
+
+pkgname = eqonomize-appimage
+
