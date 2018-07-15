@@ -1,6 +1,6 @@
 pkgbase = openblas-lapack-ilp64
 	pkgdesc = Optimized BLAS library based on GotoBLAS2 (dynamic arch)
-	pkgver = 0.2.15
+	pkgver = 0.2.20
 	pkgrel = 1
 	url = http://xianyi.github.com/OpenBLAS/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = openblas-lapack-ilp64
 	makedepends = gcc-fortran
 	depends = gcc-libs
 	options = staticlibs
-	source = OpenBLAS-v0.2.15.tar.gz::https://github.com/xianyi/OpenBLAS/archive/v0.2.15.tar.gz
-	sha256sums = 73c40ace5978282224e5e122a41c8388c5a19e65a6f2329c2b7c0b61bacc9044
+	source = OpenBLAS-v0.2.20.tar.gz::https://github.com/xianyi/OpenBLAS/archive/v0.2.20.tar.gz
+	sha256sums = 5ef38b15d9c652985774869efd548b8e3e972e1e99475c673b25537ed7bcf394
 
 pkgname = openblas-lapack-ilp64
 
