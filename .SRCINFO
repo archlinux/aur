@@ -11,6 +11,7 @@ pkgbase = codequery-nogui
 	optdepends = ctags: creation of CodeQuery databases
 	optdepends = python-pycscope: creation of CodeQuery databases for Python source code
 	optdepends = ruby-starscope: creation of CodeQuery databases for Ruby and Go source code
+	provides = codequery
 	source = https://github.com/ruben2020/codequery/archive/v0.21.0.tar.gz
 	source = nogui.patch::https://github.com/ruben2020/codequery/commit/b910df7eba370db1aaa623880d44da1dcb0e4c6a.patch
 	md5sums = 44f7a0f5ebead95064c90143987f3eed

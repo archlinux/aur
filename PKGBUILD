@@ -9,6 +9,7 @@ arch=(i686  x86_64)
 url=http://ruben2020.github.io/codequery/
 license=(GPL3)
 depends=()
+provides=(codequery)
 makedepends=(cmake)
 optdepends=('cscope: creation of CodeQuery databases'
             'ctags: creation of CodeQuery databases'
