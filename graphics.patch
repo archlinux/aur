@@ -1,8 +1,23 @@
---- src/system76/src/graphics.rs	2018-07-02 00:24:56.431499529 -0700
-+++ src/system76/src/graphics.rs.new	2018-07-02 00:25:55.448165538 -0700
+--- src/system76/src/graphics.rs	2018-07-14 17:12:09.993043915 -0700
++++ src/system76/src/graphics.rs.new	2018-07-14 17:12:06.843043959 -0700
+@@ -12,10 +12,10 @@
+ blacklist nvidia
+ blacklist nvidia-drm
+ blacklist nvidia-modeset
+-alias nouveau off
+-alias nvidia off
+-alias nvidia-drm off
+-alias nvidia-modeset off
++#alias nouveau off
++#alias nvidia off
++#alias nvidia-drm off
++#alias nvidia-modeset off
+ "#;
+ 
+ pub struct Graphics {
 @@ -136,7 +136,7 @@
              }
-
+ 
              eprintln!("Updating initramfs");
 -            let status = process::Command::new("update-initramfs").arg("-u").status()?;
 +            let status = process::Command::new("mkinitcpio").arg("-p").arg("linux").status()?;
