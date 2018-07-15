@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.3.rc0.r0.g4ea72a1062
+pkgver=8.3.rc1.r0.g521899ba9a
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -35,10 +35,24 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
   mcqd coxeter bliss-graphs tdlib python2-pkgconfig shared_meataxe libfes primecount git)
 source=(git://git.sagemath.org/sage.git#branch=develop
-        sagemath-env.patch package.patch latte-count.patch sagemath-python3-notebook.patch test-optional.patch
-        r-no-readline.patch fes02.patch sagemath-threejs.patch sagemath-ignore-warnings.patch sagemath-cremona.patch
-        sagemath-scipy-1.0.patch sagemath-singular-4.1.1.patch sagemath-lcalc-c++11.patch sagemath-gap-4.8.patch
-        pari-ratpoints.patch::"https://github.com/sagemath/sage/commit/83458400.patch")
+        sagemath-env.patch
+        package.patch
+        latte-count.patch
+        sagemath-python3-notebook.patch
+        test-optional.patch
+        r-no-readline.patch
+        fes02.patch
+        sagemath-threejs.patch
+        sagemath-ignore-warnings.patch
+        sagemath-cremona.patch
+        sagemath-scipy-1.0.patch
+        sagemath-singular-4.1.1.patch
+        sagemath-lcalc-c++11.patch
+        sagemath-gap-4.8.patch
+        pari-ratpoints.patch::"https://github.com/sagemath/sage/commit/83458400.patch"
+        sagemath-cypari2.patch::"https://git.sagemath.org/sage.git/patch?id=da380b32"
+        sagemath-cddlib-0.94j.patch::"https://git.sagemath.org/sage.git/patch?id=af0e6066"
+        sagemath-eclib-20180710.patch)
 sha256sums=('SKIP'
             '51da03781554b20e5ccdc64923911b610b834ff0ce71c5321d7ef85edb8ee01a'
             '9e3c998e0ca8dcbf7ad9f5a8d591f2bc4cb792be14708e064594046081e9b60d'
@@ -54,7 +68,10 @@ sha256sums=('SKIP'
             'af22e1834997cb2740818cd4ef8ede0367b0aa237305e89b178614f35bdfcef8'
             '5114c912f821900e5bfae1e2cfeb7984de946d0b23e1182b0bf15be1d803dfd0'
             '6917cb74e50ae965ea8d7c39577e5f0a5068e4b6a67b53fc6f219149a7d06584'
-            'e24ad879f6b2eb970778fc5e867bcbe0a6d393feca8f11f5cb8d07da1f024be9')
+            'e24ad879f6b2eb970778fc5e867bcbe0a6d393feca8f11f5cb8d07da1f024be9'
+            '94847fc033fd36bc59217c8484d4cf48d0640ff35bb5ca5ffba88a8158c6dd44'
+            '9a690bda83c280c0801f6d04353e8a909da80ccfee92e06d200ae6eb9be9a5a8'
+            '182b0765d58494978bf27628bada8b42c95ef7eb2671b91ddf9c67608560c662')
 
 pkgver() {
   cd sage
@@ -91,12 +108,18 @@ prepare(){
   patch -p1 -i ../sagemath-lcalc-c++11.patch
 # Adjust paths for gap-4.8
   patch -p1 -i ../sagemath-gap-4.8.patch
+# Fix build with eclib 20180710
+  patch -p1 -i ../sagemath-eclib-20180710.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
   patch -p1 -i ../fes02.patch
 # use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825
   patch -p1 -i ../sagemath-cremona.patch
+# update to cypari2 https://trac.sagemath.org/ticket/25813
+  patch -p1 -i ../sagemath-cypari2.patch
+# port to cddlib 0.94j https://trac.sagemath.org/ticket/25344
+  patch -p1 -i ../sagemath-cddlib-0.94j.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env sage-python23|#!/usr/bin/env python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
