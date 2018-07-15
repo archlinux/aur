@@ -2,7 +2,7 @@
 
 _npmname='@google/clasp'
 pkgname="nodejs-google-clasp"
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Develop Apps Script Projects locally'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('npm')
 optdepends=('typescript: autocompletion and linting')
 source=("https://registry.npmjs.org/$_npmname/-/${_npmname##*/}-$pkgver.tgz")
 noextract=("${_npmname##*/}-$pkgver.tgz")
-sha256sums=('7bfa08d0470009d3f56bafcc74bc205ed48e35262c78d69bf417ec5a262e0702')
+sha256sums=('ca7a9c776d39af96f06e222ca5bcc159e3caaa9c9cfb604800a06cbcc700989c')
 
 package() {
     cd $srcdir
