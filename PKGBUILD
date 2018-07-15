@@ -1,8 +1,8 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde-bin
-pkgver=56.2.1
-pkgrel=4
+pkgver=56.2.2
+pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"
@@ -18,8 +18,8 @@ provides=("waterfox=$pkgver")
 conflicts=('waterfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
-source=("waterfox-kde_${pkgver}.2-${pkgrel}_amd64.deb::https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-kde_${pkgver}.2-${pkgrel}_amd64.deb")
-sha256sums=('b571e99a269326c32ebf4f7d8907716234f7b93ddf0b057bff46d8814228afeb')
+source=("waterfox-kde_${pkgver}-${pkgrel}_amd64.deb::https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-kde_${pkgver}-${pkgrel}_amd64.deb")
+sha256sums=('58391055a2aa0cd6aeafdec84aaca03f9fb839d01cb8251dfc0ea6270c89875b')
 
 package() {
 # Extract Waterfox from .deb package
@@ -63,27 +63,27 @@ echo "Do you wish to download and install language pack (if you want to have en-
                     Yes )
 _download_language=yes
 echo -e "Available languages:
-  (ach) Acholi; (af) Afrikaans; (an) Aragonese; (ar) Arabic; (as) Assamese; 
-  (ast) Asturian; (az) Azerbaijani; (bg) Bulgarian; (bn) Bengali; (br) Breton; 
-  (bs) Bosnian; (ca) Catalan; (cak) Maya Kaqchikel; (cs) Czech; (cy) Welsh; 
-  (da) Danish; (de) German; (dsb) Lower Sorbian; (el) Greek; (en) English; 
-  (eo) Esperanto; (es) Spanish; (et) Estonian; (eu) Basque; (fa) Persian; 
-  (ff) Fulah; (fi) Finnish; (fr) French; (fy) Western Frisian; (ga) Irish - Ireland; 
-  (gd) Gaelic - Scotland; (gl) Galician; (gn) Guarani; (gu) Gujarati - India; 
-  (he) Hebrew; (hi) Hindi - India; (hr) Croatian; (hsb) Upper Sorbian; (hu) Hungarian; 
-  (hy) Armenian - Armenia; (id) Indonesian; (is) Icelandic; (it) Italian; 
+  (ach) Acholi; (af) Afrikaans; (an) Aragonese; (ar) Arabic; (as) Assamese;
+  (ast) Asturian; (az) Azerbaijani; (bg) Bulgarian; (bn) Bengali; (br) Breton;
+  (bs) Bosnian; (ca) Catalan; (cak) Maya Kaqchikel; (cs) Czech; (cy) Welsh;
+  (da) Danish; (de) German; (dsb) Lower Sorbian; (el) Greek; (en) English;
+  (eo) Esperanto; (es) Spanish; (et) Estonian; (eu) Basque; (fa) Persian;
+  (ff) Fulah; (fi) Finnish; (fr) French; (fy) Western Frisian; (ga) Irish - Ireland;
+  (gd) Gaelic - Scotland; (gl) Galician; (gn) Guarani; (gu) Gujarati - India;
+  (he) Hebrew; (hi) Hindi - India; (hr) Croatian; (hsb) Upper Sorbian; (hu) Hungarian;
+  (hy) Armenian - Armenia; (id) Indonesian; (is) Icelandic; (it) Italian;
   (ja) Japanese; (kk) Kazakh; (km) Khmer; (kn) Kannada; (ko) Korean;
-  (lij) Ligurian; (lt) Lithuanian; (lv) Latvian; (mai) Maithili; 
-  (mk) Macedonian; (ml) Malayalam; (mr) Marathi; (ms) Malay; (nb) Norwegian - Bokmål; 
-  (nl) Dutch; (nn) Norwegian - Nynorsk; (or) Oriya; (pa) Punjabi - India; 
-  (pl) Polish; (pt) Portuguese; (rm) Romansh; (ro) Romanian; (ru) Russian; 
-  (si) Sinhala; (sk) Slovak; (sl) Slovenian; (son) Songhai; (sq) Albanian; 
-  (sr) Serbian; (sv) Swedish; (ta) Tamil; (te) Telugu; (th) Thai; 
-  (tr) Turkish; (uk) Ukrainian; (uz) Uzbek; (vi) Vietnamese; 
+  (lij) Ligurian; (lt) Lithuanian; (lv) Latvian; (mai) Maithili;
+  (mk) Macedonian; (ml) Malayalam; (mr) Marathi; (ms) Malay; (nb) Norwegian - Bokmål;
+  (nl) Dutch; (nn) Norwegian - Nynorsk; (or) Oriya; (pa) Punjabi - India;
+  (pl) Polish; (pt) Portuguese; (rm) Romansh; (ro) Romanian; (ru) Russian;
+  (si) Sinhala; (sk) Slovak; (sl) Slovenian; (son) Songhai; (sq) Albanian;
+  (sr) Serbian; (sv) Swedish; (ta) Tamil; (te) Telugu; (th) Thai;
+  (tr) Turkish; (uk) Ukrainian; (uz) Uzbek; (vi) Vietnamese;
   (xh) Xhosa; (zh-hans) Simplified Chinese; (zh-hant) Traditional Chinese
 "
-printf "Type language code of language you wish to download and install 
-(language code is acronym that is inside the parentheses () before your language, 
+printf "Type language code of language you wish to download and install
+(language code is acronym that is inside the parentheses () before your language,
 for example - for Polish, type pl): "
 read _chosen_language
 
@@ -92,7 +92,7 @@ read _chosen_language
     bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
                     break;;
-                    No ) 
+                    No )
                     _download_language=no
                     _chosen_language=en-US
                     break;;
