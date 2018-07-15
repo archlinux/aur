@@ -13,6 +13,7 @@ pkgbase = eqonomize-appimage
 	source = https://github.com/Eqonomize/Eqonomize/releases/download/v1.3.0/Eqonomize-1.3.AppImage
 	source = https://raw.githubusercontent.com/Eqonomize/Eqonomize/v1.3.0/data/eqonomize.desktop
 	sha256sums = a9d0682e641ed04db2c099592c53504239e0c14b610f1eb799199bd01356e834
+	sha256sums = 3c011e0820f85d5f25eefd7db5257fb11cd7effcc1a9eaea6a6dc12db9c5ad1a
 
 pkgname = eqonomize-appimage
 

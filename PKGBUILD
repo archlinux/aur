@@ -13,7 +13,8 @@ conflicts=('eqonomize')
 source=("https://github.com/Eqonomize/Eqonomize/releases/download/v1.3.0/Eqonomize-1.3.AppImage"
 		"https://raw.githubusercontent.com/Eqonomize/Eqonomize/v1.3.0/data/eqonomize.desktop")
 noextract=("${source[@]##*/}")
-sha256sums=('a9d0682e641ed04db2c099592c53504239e0c14b610f1eb799199bd01356e834')
+sha256sums=('a9d0682e641ed04db2c099592c53504239e0c14b610f1eb799199bd01356e834'
+			'3c011e0820f85d5f25eefd7db5257fb11cd7effcc1a9eaea6a6dc12db9c5ad1a')
 
 package() {
 	mkdir -p "$pkgdir/opt/eqonomize"
