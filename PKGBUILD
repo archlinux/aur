@@ -13,7 +13,7 @@ optdepends=('lib32-json-glib')
 makedepends=('git' 'meson' 'ninja')
 provides=("$gitname")
 conflicts=("$gitname")
-source=("git+https://github.com/lainsce/aesop.git")
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
