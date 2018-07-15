@@ -1,7 +1,7 @@
-# Maintainer: lithm <lithm at posteo dot de>
+# Maintainer: qtlis <qtlis plus aur at posteo dot de>
 pkgname=xwrited
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=1
 pkgdesc="Display write and wall messages as desktop notifications."
 arch=('i686' 'x86_64')
 url="https://code.guido-berhoerster.org/projects/xwrited/"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('notification-daemon' 'libutempter' 'dbus-glib')
 makedepends=('intltool')
 source=("https://code.guido-berhoerster.org/projects/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('2090bf858ea7337673cd5eaac579df841a15dedf5bb14e718e6a09d4350bb48dc5c5ecc0c58948dc04de0efe473f92f5c3c872b591de45e00f9397e86aa9284f')
+sha512sums=('743e04f8ea57ed3b769db80a49d927d56a01f12f14df61c9159f9fc8d8454e5f2510c718faba3cec01aea4d1a585c06f0a5398244891bc48105f55a31aeb84a4')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
