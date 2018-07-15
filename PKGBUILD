@@ -1,7 +1,7 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 
-pkgname=aesop-git
 gitname=aesop
+pkgname=("${gitname}-git")
 pkgver=latest
 pkgrel=1
 pkgdesc="The simplest PDF viewer around designed for elementary OS"
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('gtk3' 'vala' 'granite' 'libsoup' 'json-glib')
 optdepends=('lib32-json-glib')
 makedepends=('git' 'meson' 'ninja')
-provides=("$gitname")
-conflicts=("$gitname")
+provides=("${gitname}")
+conflicts=("${gitname}")
 source=("git+${url}.git")
 md5sums=('SKIP')
 
