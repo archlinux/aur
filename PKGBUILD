@@ -2,7 +2,7 @@
 
 pkgname=aesop-git
 _gitname=aesop
-pkgver=r17.295305d
+pkgver=latest
 pkgrel=1
 pkgdesc="The simplest PDF viewer around designed for elementary OS"
 arch=('i686' 'x86_64')
