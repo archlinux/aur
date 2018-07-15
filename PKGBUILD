@@ -3,9 +3,9 @@
 # Contributor: Splex
 
 pkgname=kokua-secondlife
-pkgver=5.1.5.43464
-_pkgver=5_1_5_43464
-_pkgprever=5.1.5
+pkgver=5.1.6.43614
+_pkgver=5_1_6_43614
+_pkgprever=5.1.6
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
 url="http://www.kokuaviewer.org"
@@ -22,7 +22,7 @@ source=("https://netcologne.dl.sourceforge.net/project/kokua.team-purple.p/Kokua
 		"https://www.dropbox.com/s/5p6io8zqc33idwh/kokua_icon.png"
 		'kokua-secondlife.desktop'
 		'kokua-secondlife.launcher')
-sha512sums=('455ea9cc37894be655aa5fbcc13d74dab23ddbdb16068b6d737aa3654e2ce591aae5a411cdc35cc8b9b168d3b91ed8fc0fea259331e6d24090ba8810c231f229'
+sha512sums=('6f6e38370ff213f68caa78ac00f93fe2bbeed9e0ef845b08f93c2996fac8a007c95e75de99b3b0d0af4dd2b1b4faac4c8c74f8edfa7dd0f6bc113314c82f3461'
             '6de979a05e2a88dec411d74ecb693bead629365f64948c0731cbc78c5c5dd32c74e61fdc7bf50575323d7a4fe5c438aad26635bda177a410fe1e2438124c06a3'
             'ece0b25cca729d1dc61439df9abfe724aea02e28c0bf2631de8b3db055db0385f1c26bab02a7aa8d765600cb8f853d7161e4c2632cf5f3875ca753795c9ee847'
             '91e9c2e22c14a1129113407a48ea1323ee358d7d33eb6af9968a09389511812a9ddc2f18f9851dbc055007b17f5af9384946dab0c5c1253c450e82f8fc3ce9a9')
@@ -31,7 +31,7 @@ package() {
 cd $srcdir
   
 # Rename Data Directory
-mv Kokua_Project_RLV_${_pkgver}_$CARCH kokua-secondlife
+mv "Kokua_\_Project\_RLV_${_pkgver}_$CARCH" kokua-secondlife
 
 # Install Desktop File
 install -D -m644 $srcdir/kokua-secondlife.desktop \
