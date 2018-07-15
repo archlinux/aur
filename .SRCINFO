@@ -1,6 +1,6 @@
 pkgbase = cleanupdate-git
 	pkgdesc = A simple script to speed up updating and cleaning your system
-	pkgver = r159.0eef643
+	pkgver = r160.20dc1dc
 	pkgrel = 0
 	url = https://github.com/cubanpit/cleanupdate
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = cleanupdate-git
 	depends = ncurses
 	depends = sudo
 	depends = pacman-contrib
-	optdepends = aurman: needed for AUR support (preferred to other AUR helpers)
-	optdepends = trizen: needed for AUR support (preferred to yaourt or pacaur)
-	optdepends = yaourt: needed for AUR support (preferred to pacaur)
-	optdepends = pacaur: needed for AUR support (alternative to aurman)
+	optdepends = aurman: needed for AUR support (first in priority)
+	optdepends = trizen: needed for AUR support (second in priority)
+	optdepends = yaourt: needed for AUR support (third in priority)
+	optdepends = pacaur: needed for AUR support (fourth in priority)
 	source = git://github.com/cubanpit/cleanupdate
 	md5sums = SKIP
 
