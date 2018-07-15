@@ -1,0 +1,4 @@
+libadalang
+pkg
+src
+*.pkg.tar.xz
