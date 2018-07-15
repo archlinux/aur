@@ -26,3 +26,9 @@ sudo systemctl enable wakeup-triggers.service
 ```
 
 The script should now run on next boot
+
+It is also available in the Arch Linux User Repository (AUR) under https://aur.archlinux.org/packages/wakeup-triggers
+
+You can install it with [yay](https://github.com/Jguer/yay): `yay -S wakeup-triggers`
+
+or with any other [AUR helper](https://wiki.archlinux.org/index.php/AUR_Helpers) of your choice.
