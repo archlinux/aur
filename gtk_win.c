@@ -232,8 +232,15 @@ void on_modify_entry_activate(GtkEntry* entry) {
     char symbol[strlen(gsymbol) + 1];
     strcpy(symbol, gsymbol);
     strtoupper(symbol);
-    double amount = strtod(gtk_entry_get_text(amount_entry), NULL);
-    double spent = strtod(gtk_entry_get_text(spent_entry), NULL);
+    const gchar* amount_str = gtk_entry_get_text(amount_entry);
+    const gchar* spent_str = gtk_entry_get_text(spent_entry);
+    if (symbol[0] == '\0' || amount_str[0] == '\0' || spent_str[0] == '\0') {
+        show_generic_message_dialog("Modification fields may not be empty.", FALSE);
+        return;
+    }
+
+    double amount = strtod(amount_str, NULL);
+    double spent = strtod(spent_str, NULL);
 
     GValue gtext = G_VALUE_INIT;
     g_value_init(&gtext, G_TYPE_STRING);
