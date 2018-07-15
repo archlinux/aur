@@ -1,7 +1,7 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 
-pkgname=configurator-git
 gitname=configurator
+pkgname=("${gitname}-git")
 pkgver=latest
 pkgrel=1
 pkgdesc="Stylish dconf editor designed for elementary OS"
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('gtk3' 'vala' 'granite' 'glib2')
 optdepends=('lib32-glib2')
 makedepends=('cmake' 'vala' 'git')
-provides=("$gitname")
-conflicts=("$gitname")
+provides=("${gitname}")
+conflicts=("${gitname}")
 source=("git+${url}.git")
 md5sums=('SKIP')
 
