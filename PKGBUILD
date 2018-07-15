@@ -1,13 +1,13 @@
 # Maintainer: Daurnimator <quae@daurnimator.com>
 
 pkgname=(lua-lpeg-patterns lua51-lpeg-patterns lua52-lpeg-patterns)
-pkgver=0.4
+pkgver=0.5
 pkgrel=0
 arch=('any')
 url='https://github.com/daurnimator/lpeg_patterns'
 license=('MIT')
 source=("https://github.com/daurnimator/lpeg_patterns/archive/v$pkgver.tar.gz")
-md5sums=('d28a92b86891ffc2f3a044ac01628491')
+md5sums=('c46992342f42ea5dadf26ad28899dfa3')
 
 package_lua-lpeg-patterns() {
 	pkgdesc='A collection of LPEG patterns for Lua 5.3'
