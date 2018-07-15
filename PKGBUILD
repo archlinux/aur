@@ -19,7 +19,7 @@ url="https://gitlab.com/compiz/${_upstream}"
 license=('GPL' 'LGPL' 'MIT')
 arch=('i686' 'x86_64')
 depends=('startup-notification' 'librsvg' 'dbus' 'glu' 'libxslt' 'libxrandr' 'libsm' 'libxcomposite' 'libxinerama')
-makedepends=('intltool' 'libice')
+makedepends=('intltool' 'libice' 'libxi' 'libxcursor')
 options=(!libtool !emptydirs)
 source=(
 	"git+https://gitlab.com/compiz/${_upstream}.git"
