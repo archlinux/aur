@@ -25,7 +25,7 @@ package() {
         "${pkgdir}/usr/bin/alertmanager"
 
     # Install Config File
-    install -D -m0755 simple.yml \
+    install -D -m0755 alertmanager.yml \
         "${pkgdir}/etc/alertmanager/alertmanager.yml"
 
     # Create Notifications Template Directory
