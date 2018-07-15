@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=termdown
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Countdown timer and stopwatch in your terminal'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-click' 'python-dateutil' 'python-pyfiglet')
 makedepends=('python-setuptools')
 optdepends=('espeak: for spoken countdown')
 source=("https://files.pythonhosted.org/packages/source/t/termdown/termdown-$pkgver.tar.gz")
-sha512sums=('96bb6c88be21cc83077162211f274e9214d9df17b9436f1781b5c872651cdb18e9893e1b822188177b04e88e7ec2de58e49f03a7312155aec5814f4c8f565b43')
+sha512sums=('4b5f1548ab39c6f21e80e7cb51ebb2964f3823b74d41bcc2f7cd62baa7e619997924278484383070a44b71c39c565790968727b1b7abd95cb62f1409e13013ad')
 
 build() {
   cd termdown-$pkgver
