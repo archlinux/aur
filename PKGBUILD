@@ -1,6 +1,7 @@
 #Maintainer: John Jenkins twodopeshaggy@gmail.com
+#Maintainer: Sean Anderson seanga2@gmail.com
 
-pkgname=python3-kitchen
+pkgname=python-kitchen
 pkgver=1.2.5
 pkgrel=2
 pkgdesc="Useful snippets of python code"
