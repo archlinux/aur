@@ -1,12 +1,12 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 pkgname=newaita-icons-git
-_gitname=newaita
+_gitname=Newaita
 pkgver=latest
 pkgrel=1
 pkgdesc="Newaita icon theme is a Linux icon theme combining old style and color of material design. If you urgently needed any icon, please write in the comments on the page https://store.kde.org/p/1243493/"
 arch=('i686' 'x86_64')
-url="https://github.com/cbrnix/Newaita"
+url="https://github.com/cbrnix/${_gitname}"
 license=('CC BY-NC-SA 3.0')
 makedepends=('git')
 options=('!strip')
