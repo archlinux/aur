@@ -1,0 +1,24 @@
+pkgbase = configurator-git
+	pkgdesc = Stylish dconf editor designed for elementary OS
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/cassidyjames/configurator
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	makedepends = cmake-modules-elementary-git
+	makedepends = git
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = glib2
+	optdepends = lib32-glib2
+	provides = configurator-git
+	conflicts = configurator
+	source = git+https://github.com/cassidyjames/configurator.git
+	md5sums = SKIP
+
+pkgname = configurator-git
+
