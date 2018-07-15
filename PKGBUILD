@@ -5,7 +5,7 @@
 # Contributor: Kevin Kyzer <kev@k3v.in>
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
-pkgver=3.10.1
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ depends=('yajl' 'qt5-base' 'qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51' \
 makedepends=('boost' 'qt5-tools')
 conflicts=('mudlet-dev' 'mudlet-git' 'mudlet-deb')
 source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
-sha256sums=('169d5db3ca4d74cbbf78156a01cabb4354cd28037b81540b1bd6a62bd3416875')
+sha256sums=('4f4167a4c1834f8c593c98702ef58be633718678fe3d69c9d44cd72ab7ea115e')
 
 prepare() {
     cd "$srcdir/src"
