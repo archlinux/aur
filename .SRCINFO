@@ -4,6 +4,7 @@ pkgbase = eqonomize-appimage
 	pkgrel = 1
 	url = http://eqonomize.github.io/
 	arch = any
+	license = GPL3
 	depends = qt5-base
 	optdepends = qt5-charts: charts in the statistics
 	provides = eqonomize
