@@ -5,6 +5,7 @@ pkgbase = arch-diff
 	url = https://github.com/aneas/arch-diff
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	depends = pacman
 	depends = zlib

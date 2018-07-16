@@ -1,9 +1,10 @@
 # Maintainer: Alexander Breckel
+# Maintainer: Jente Hidskes <hjdskes@gmail.com>
 pkgname=arch-diff
 pkgver=0.2
 pkgrel=1
 pkgdesc="Perform a full diff between all pacman packages and the file system"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/aneas/arch-diff"
 license=('MIT')
 depends=('pacman' 'zlib')
