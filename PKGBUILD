@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=guile-git
-pkgver=3.0.0.459.g1234bb185
+pkgver=3.0.0.470.g8e5755e77
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('gc' 'libtool' 'libffi' 'libunistring' 'gmp' 'readline')
 provides=('guile')
 conflicts=('guile4emacs')
 options=('!strip' '!makeflags' 'libtool')
-source=("git://git.sv.gnu.org/${pkgname%-git}.git" version.patch rename_scm.h.patch)
+source=("git://git.sv.gnu.org/${pkgname%-git}.git#commit=8e5755e7719b2bab69c509e4bf0ab2e8bcdc8a10" version.patch rename_scm.h.patch)
 url="http://www.gnu.org/software/guile/"
 sha256sums=('SKIP'
             '7f902891a717cd6606a6a768e6e59b40c96757cbfa9a2262722567bea31b3774'
@@ -26,7 +26,6 @@ pkgver() {
 prepare() {
   cd ${pkgname%-git}
   patch -Np1 < "$srcdir"/version.patch || true
-  patch -Np1 < "$srcdir"/rename_scm.h.patch || true
 }
 
 build() {
