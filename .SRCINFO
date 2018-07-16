@@ -1,6 +1,6 @@
 pkgbase = nheko-git
 	pkgdesc = Desktop client for the Matrix protocol
-	pkgver = 0.4.3.r678.87042659
+	pkgver = 0.5.0.r732.96a2c614
 	pkgrel = 1
 	url = https://github.com/mujx/nheko
 	arch = i686

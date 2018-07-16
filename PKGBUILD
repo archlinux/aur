@@ -1,7 +1,7 @@
 # Maintainer: Konstantinos Sideris <siderisk at auth dot gr>
 
 pkgname=nheko-git
-pkgver=0.4.3.r678.87042659
+pkgver=0.5.0.r732.96a2c614
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
@@ -24,11 +24,14 @@ prepare() {
 
 pkgver() {
     cd "$pkgname"
-    printf "0.4.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "$pkgname"
+
+    rm -f cmake/FindOlm.cmake
+
     cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF
     cmake --build .deps
 
