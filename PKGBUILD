@@ -7,7 +7,7 @@
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
 pkgver=1.7.5
-pkgrel=2
+pkgrel=3
 
 arch=('any')
 url='http://sphinx.pocoo.org/'
@@ -51,14 +51,19 @@ checkdepends=(
   'imagemagick' 'librsvg'
 )
 
-source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"{,.asc})
+source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"{,.asc}
+        "0001-Fix-5016-crashed-when-recommonmark.AutoStrictify-is-.patch")
 
 validpgpkeys=('8A11B79A5D0D749A66F0A030102C2C17498D6B9E'
               'E9BEABB07E7B9CC3F56E62C91425F8CE5EBA0E07')
 md5sums=('478a4d94506febd4786f47cc8ae297bb'
-         'SKIP')
+         'SKIP'
+         '546b6aeddcc76cb4eb6bf8ff9802bf36')
 
 prepare() {
+  # https://github.com/sphinx-doc/sphinx/issues/5016
+  # https://github.com/rtfd/recommonmark/issues/109
+  patch -p1 -d Sphinx-$pkgver < 0001-Fix-5016-crashed-when-recommonmark.AutoStrictify-is-.patch
   # souce duplication is required because makefile modify source code
   # setyp.py --build tricks don't works well
   cp -a Sphinx-$pkgver Sphinx-${pkgver}2
