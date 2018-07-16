@@ -1,0 +1,45 @@
+# Maintainer: Stefan Göbel < snot ʇɐ subtype ˙ de >
+
+pkgname='snot'
+pkgver='0.1'
+pkgrel='1'
+pkgdesc='Basic Btrfs snapshot tool.'
+arch=('x86_64' 'i686')
+url='http://gitlab.com/goeb/snot'
+license=('GPL3')
+depends=('btrfs-progs')
+makedepends=('go' 'python-docutils')
+source=("$pkgname::git+https://gitlab.com/goeb/$pkgname.git#tag=$pkgver")
+sha256sums=('SKIP')
+backup=(
+   'etc/pacman.d/hooks/snot.hook'
+   'etc/snot/create.conf'
+   'etc/snot/create.init'
+   'etc/snot/delete.conf'
+   'etc/snot/delete.init'
+   'etc/snot/list.conf'
+   'etc/snot/list.init'
+   'etc/snot/restore.conf'
+   'etc/snot/restore.init'
+)
+
+build() {
+
+   cd "$pkgname"
+
+   make
+   make docs
+
+}
+
+package() {
+
+   cd "$pkgname"
+
+   make DESTDIR="$pkgdir/" PREFIX="/usr" install
+   make DESTDIR="$pkgdir/" PREFIX="/usr" docs-install
+   make DESTDIR="$pkgdir/" PREFIX="/usr" arch-install
+
+}
+
+# :indentSize=3:tabSize=3:noTabs=true:mode=shellscript:maxLineLen=78: ########

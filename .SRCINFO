@@ -1,0 +1,25 @@
+pkgbase = snot
+	pkgdesc = Basic Btrfs snapshot tool.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://gitlab.com/goeb/snot
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = go
+	makedepends = python-docutils
+	depends = btrfs-progs
+	backup = etc/pacman.d/hooks/snot.hook
+	backup = etc/snot/create.conf
+	backup = etc/snot/create.init
+	backup = etc/snot/delete.conf
+	backup = etc/snot/delete.init
+	backup = etc/snot/list.conf
+	backup = etc/snot/list.init
+	backup = etc/snot/restore.conf
+	backup = etc/snot/restore.init
+	source = snot::git+https://gitlab.com/goeb/snot.git#tag=0.1
+	sha256sums = SKIP
+
+pkgname = snot
+
