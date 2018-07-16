@@ -4,7 +4,7 @@
 
 pkgname='minisatip-git'
 pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (experimental)"
-pkgver=0.7.6_g7c936ae
+pkgver=0.7.15_gfdbf44f
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://minisatip.org"
@@ -37,10 +37,11 @@ build() {
 	make EXTRA_CFLAGS="${CFLAGS}"
 }
 
-check() {
-	cd ${srcdir}/minisatip/tests
-	make EXTRA_CFLAGS="${CFLAGS}"
-}
+#check() {
+#	cd ${srcdir}/minisatip
+#	sed -e 's/test_ddci.c //' -e '/DDCI_TEST/d' -i tests/Makefile
+#	make -C ${srcdir}/minisatip/tests EXTRA_CFLAGS="${CFLAGS}"
+#}
 
 package() {
 	cd ${srcdir}/minisatip
