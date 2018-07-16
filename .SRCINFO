@@ -2,7 +2,7 @@ pkgbase = nimf-git
 	pkgdesc = Nimf is an input method framework.
 	pkgver = master
 	pkgrel = 1
-	url = https://gitlab.com/hodong/nimf
+	url = https://gitlab.com/nimf-i18n/nimf
 	arch = any
 	license = LGPL3
 	makedepends = binutils
@@ -42,7 +42,7 @@ pkgbase = nimf-git
 	optdepends = brise: Rime schema repository
 	optdepends = noto-fonts-cjk: Google Noto CJK fonts
 	optdepends = xorg-setxkbmap: Set the keyboard using the X Keyboard Extension
-	source = https://gitlab.com/hodong/nimf/-/archive/master/nimf-master.tar.bz2
+	source = https://gitlab.com/nimf-i18n/nimf/-/archive/master/nimf-master.tar.bz2
 	md5sums = SKIP
 
 pkgname = nimf-git
