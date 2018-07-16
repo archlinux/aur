@@ -1,0 +1,18 @@
+pkgbase = etc-update-nogithub
+	pkgdesc = CLI to interactively merge .pacnew in /etc. I don't trust gentoo's github.
+	pkgver = 20180717
+	pkgrel = 1
+	url = https://wiki.gentoo.org/wiki/Handbook:X86/Portage/Tools#etc-update
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	provides = etc-update
+	conflicts = etc-update
+	source = etc-update
+	source = etc-update.conf
+	md5sums = 1de63bd8e07fa78779eecf864b6021e4
+	md5sums = ca8d58262382a7ead33b69469f661f5e
+
+pkgname = etc-update-nogithub
+
