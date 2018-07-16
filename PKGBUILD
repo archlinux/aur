@@ -3,7 +3,7 @@
 pkgbase=python-recommonmark
 pkgname=('python-recommonmark' 'python2-recommonmark')
 pkgver=0.4.0.133.c410abb
-pkgrel=3
+pkgrel=4
 _gitcommit=c410abb565a3c4ad4de0ce204ab2fa2db8031cf1
 pkgdesc='Markdown parser for docutils'
 url='https://github.com/rtfd/recommonmark'
