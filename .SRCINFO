@@ -11,6 +11,7 @@ pkgbase = ffmpeg-headless
 	arch = aarch64
 	license = GPL3
 	makedepends = yasm
+	depends = aom
 	depends = bzip2
 	depends = fribidi
 	depends = glibc

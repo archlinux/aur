@@ -14,7 +14,7 @@ pkgdesc='Complete solution to record, convert and stream audio and video; optimi
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='http://ffmpeg.org/'
 license=('GPL3')
-depends=('bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
+depends=('aom' 'bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'lame' 'libdrm' 'libmodplug'
          'libtheora' 'libwebp' 'libxml2'
          'opencore-amr' 'openjpeg2' 'opus' 'speex' 'v4l-utils'
@@ -50,6 +50,7 @@ build() {
     --enable-gnutls \
     --enable-gpl \
     --disable-ladspa \
+    --enable-libaom \
     --disable-libass \
     --enable-libbluray \
     --enable-libdrm \
