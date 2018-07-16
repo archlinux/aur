@@ -1,22 +1,22 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-svn
-pkgver=r19483
+pkgver=r19935
 pkgrel=1
 pkgdesc="multi-platform screen and application forwarding system screen for X11"
 arch=('x86_64')
 url='https://www.xpra.org'
-license=('GPL')
+license=('GPL2')
 depends=('python2' 'pygtk' 'libxtst' 'python2-pillow' 'python2-lz4'
          'ffmpeg' 'libvpx' 'xf86-video-dummy' 'libxkbfile'
-         'python2-numpy' 'python2-rencode' 'python2-opengl'
+         'python2-netifaces' 'python2-numpy' 'python2-rencode' 'python2-opengl'
          'python2-gtkglext' 'python-lz4' 'python-opengl')
 optdepends=('x264: Codec' 'python2-dbus: dbus features'
-            'python2-pycups: Printing support' 'python2-netifaces: mdns'
+            'python2-pycups: Printing support'
             'python2-cryptography: Cryptography'
             'python-cryptography: Cryptography'
             'gst-python2: Sound Forwarding'
-            'pam-selinux: Proxy Server Support')
+            'opencv: Webcam Capture')
 conflicts=('xpra')
 provides=('xpra')
 makedepends=('subversion' 'python2-setuptools' 'cython2' 'uglify-js')
@@ -34,7 +34,8 @@ backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
         'etc/xpra/conf.d/50_server_network.conf'
         'etc/xpra/conf.d/55_server_x11.conf'
         'etc/xpra/conf.d/60_server.conf'
-        'etc/xpra/conf.d/65_proxy.conf')
+        'etc/xpra/conf.d/65_proxy.conf'
+        'etc/pam.d/xpra')
 source=("xpra::svn+https://www.xpra.org/svn/Xpra/trunk/src")
 md5sums=('SKIP')
 
@@ -45,15 +46,15 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/${pkgname%-svn}"
+  cd "${srcdir}/${pkgname%-svn}"
 
   export pkgdir
   python2 setup.py build --without-enc_x265
 }
 
 package() {
-  cd "$srcdir/${pkgname%-svn}"
-  python2 setup.py install --root="${pkgdir}" --without-enc_x265
+  cd "${srcdir}/${pkgname%-svn}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build --without-enc_x265
   mv "${pkgdir}"/lib/* "${pkgdir}"/usr/lib/
   rmdir "${pkgdir}/lib"
 }
