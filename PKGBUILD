@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=weather-go
-pkgver=0.15.3
+pkgver=0.15.5
 pkgrel=1
 pkgdesc='Weather via the command line'
 url=https://github.com/genuinetools/weather
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go-pie')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('5f1f8803f7ffbc982282daa2dff3a6c6a343e1459256d13049bfab6c1b90d87ecab2eae74f95969b68bee43b2d3f4a6bd8c896179b016e18d11fc0dabf3510c5')
+sha512sums=('22166649e5c8b24b387c750fb603f06de065998c859f402769917eb0546d46a0b3fb2666cf0146345ce1e3f44f46b4fb582666e637a4b682bbc318eb1f0218e8')
 
 prepare() {
   mkdir -p src/github.com/genuinetools
