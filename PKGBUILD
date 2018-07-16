@@ -23,12 +23,13 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
-makedepends=('afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'git' 'ffmpeg' 'glew'
-             'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'libaacs' 'libass' 'libbluray'
-             'libcdio' 'libcec' 'fmt' 'libgl' 'libmariadbclient' 'libmicrohttpd' 'libmodplug'
-             'libmpeg2' 'libnfs' 'libplist' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'nasm' 'nss-mdns'
-             'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'rapidjson' 'rtmpdump'
-             'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'upower')
+makedepends=('afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen'
+             'git' 'ffmpeg' 'fmt' 'glew' 'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime'
+             'libaacs' 'libass' 'libbluray' 'libcdio' 'libcec' 'libgl' 'libmariadbclient'
+             'libmicrohttpd' 'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libxrandr'
+             'libxslt' 'lirc' 'lzo' 'mesa' 'nasm' 'nss-mdns' 'python2-pillow'
+             'python2-pybluez' 'python2-simplejson' 'rapidjson' 'rtmpdump' 'shairplay'
+             'smbclient' 'swig' 'taglib' 'tinyxml' 'upower')
 source=("$_gitname::git+https://github.com/xbmc/xbmc.git#branch=master")
 sha256sums=('SKIP')
 
@@ -61,16 +62,16 @@ build() {
 
 package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
-  depends=('bluez-libs' 'desktop-file-utils' 'ffmpeg' 'glew' 'hicolor-icon-theme' 'libcdio'
-           'libmariadbclient' 'libmicrohttpd' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'python2-pillow'
-           'python2-simplejson' 'smbclient' 'taglib' 'tinyxml' 'xorg-xdpyinfo')
+  depends=('bluez-libs' 'desktop-file-utils' 'ffmpeg' 'glew'
+           'hicolor-icon-theme' 'libcdio' 'libcec' 'libmariadbclient' 'libmicrohttpd'
+           'libxrandr' 'libxslt' 'lzo' 'mesa' 'python2-pillow' 'python2-simplejson'
+           'smbclient' 'taglib' 'tinyxml' 'xorg-xdpyinfo')
   optdepends=('gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED'
               'afpfs-ng: Apple shares support'
               'bluez: Blutooth support'
               'python2-pybluez: Bluetooth support'
               'libnfs: NFS shares support'
               'libplist: AirPlay support'
-              'libcec: Pulse-Eight USB-CEC adapter support'
               'lirc: Remote controller support'
               'lsb-release: log distro information in crashlog'
               'pulseaudio: PulseAudio support'
