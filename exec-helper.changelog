@@ -2,6 +2,15 @@ Changelog
 =========
 
 
+0.2.0_28_g1a6817c
+------------
+
+New
+~~~
+- Usr: Switched to using the libmsgsl-dev package on Debian systems.
+  [Bart Verhagen]
+
+
 0.2.0 (2018-02-26)
 ------------------
 
