@@ -5,7 +5,7 @@ pkgver=1.11.1
 pkgrel=1
 pkgdesc="CLI tool for Kubelet Container Runtime Interface (CRI)"
 arch=(x86_64)
-url="https://github.com/eulerto/wal2json"
+url="https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md"
 license=('Apache')
 source=("https://github.com/kubernetes-incubator/cri-tools/releases/download/v${pkgver}/crictl-v${pkgver}-linux-amd64.tar.gz"
         "crictl.yaml")
