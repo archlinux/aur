@@ -1,6 +1,6 @@
 pkgbase = r-xml
 	pkgdesc = Tools for Parsing and Generating XML Within R and S-Plus
-	pkgver = 3.98.1.11
+	pkgver = 3.98.1.12
 	pkgrel = 1
 	url = https://cran.r-project.org/package=XML
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = r-xml
 	optdepends = r-bitops
 	optdepends = r-rcurl
 	replaces = r-cran-xml
-	source = https://cran.r-project.org/src/contrib/XML_3.98-1.11.tar.gz
-	md5sums = 6c67f5730ada3456372520773a920b8e
+	source = https://cran.r-project.org/src/contrib/XML_3.98-1.12.tar.gz
+	md5sums = a0b043a383b9815d52ebdfaedc08a68e
 
 pkgname = r-xml
 
