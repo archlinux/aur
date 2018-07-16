@@ -12,10 +12,10 @@ pkgver=0.3.10
 pkgrel=7
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
-url="http://popcorntime.sh/"
+url="https://popcorntime.sh/"
 license=('GPL3')
-makedepends=('npm' 'bower' 'gulp' 'git')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libnotify' 'libxss' 'libxtst' 'nss' 'ttf-font')
+makedepends=('npm' 'bower' 'gulp' 'git')
 optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 #install="popcorntime.install"
@@ -47,7 +47,7 @@ prepare() {
     #npm config set cache "$srcdir/npm_cache"
     # Thanks to Eschwartz for the tip!
     export npm_config_cache="$srcdir/npm_cache"
-    msg2 "Cache changed from $_cache to `npm config get cache`"
+    msg2 "Cache changed to `npm config get cache`"
 
     msg2 "Install missing dependencies, if any"
     # Build is almost always broken with newer NPMs. Install a good one and use it
