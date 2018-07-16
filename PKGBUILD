@@ -102,19 +102,6 @@ build() {
   make -C ${CHOST}/libstdc++-v3/doc doc-man-doxygen
 }
 
-check() {
-  cd gcc-build
-
-  # increase stack size to prevent test failures
-  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
-  ulimit -s 32768
-
-  # do not abort on error as some are "expected"
-  make -k check || true
-  ${srcdir}/gcc/contrib/test_summary
-}
-
-
 package_gcc6-libs() {
   pkgdesc="Runtime libraries shipped by GCC"
   depends=('glibc>=2.25')
