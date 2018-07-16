@@ -2,7 +2,7 @@
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 
 pkgname=xnec2c
-pkgver=3.5
+pkgver=3.9
 pkgrel=1
 pkgdesc="GTK+ Antenna EM Modeling Client"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('gnuplot: to use plotted output/data files')
 source=("http://www.qsl.net/5b4az/pkg/nec2/xnec2c/xnec2c-$pkgver.tar.bz2"
         "$pkgname.desktop"
         "http://bjensen.fedorapeople.org/pkgs/hams/icon/Ham_Icon-1-48.png")
-md5sums=('f4644506447e49e422ce06028d9c4c25'
+md5sums=('baadec6e4823b40da5519d4823619e5b'
          '02105f9a231b715c41279d5be6d40a7c'
          '38378f273628bd9a28d3e5f9ff39fa18')
 
