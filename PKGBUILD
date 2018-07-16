@@ -1,4 +1,5 @@
 # Maintainer:
+# Contributor: Michael Straube <michael.straube@posteo.de>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Valsu [arch(at)hylia.de]
 
