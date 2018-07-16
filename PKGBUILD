@@ -1,6 +1,6 @@
 # Maintainer: Jake Barnes <me+aur@jakebarn.es>
 pkgname=vivi
-pkgver=2.12.0
+pkgver=2.12.2
 pkgrel=1
 pkgdesc="Client for Vivi, a wireless screen sharing solution"
 arch=('x86_64')
