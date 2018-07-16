@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 1.3.7
+	pkgver = 1.3.10
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -22,25 +22,25 @@ pkgbase = telegram-desktop-dev
 	optdepends = libnotify: desktop notifications
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.3.7
-	source = GSL::git+https://github.com/Microsoft/GSL.git
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.3.10
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
 	source = variant::git+https://github.com/mapbox/variant.git
-	source = Catch::git+https://github.com/philsquared/Catch
+	source = GSL::git+https://github.com/Microsoft/GSL.git
+	source = Catch::git+https://github.com/philsquared/Catch.git
+	source = crl::git+https://github.com/telegramdesktop/crl.git
 	source = CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop
 	source = tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop
 	source = libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop
-	source = libtgvoip-2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip-2.patch?h=packages/telegram-desktop
 	source = no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82
-	sha256sums = aea18527d47228dcdb42b8c1d74398fcf0fdcd7b3c2246e87198f8d9b2dfe0bc
+	sha256sums = SKIP
+	sha256sums = 28a25d482ae099077ff501d882408afe0aaf6fb45346bc3423c6de7c2ed4c437
+	sha256sums = e92e8bc6c84d783e2a5f8337628cfb345c06aa4e18778a84e29d4d6f8d83246e
 	sha256sums = 4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d
-	sha256sums = 07ca232b91e9ad0fb9c1501b8b83275cc62b00477c7e5edde5e4cfd2852f1f26
 	sha256sums = 8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6
 
 pkgname = telegram-desktop-dev

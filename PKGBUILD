@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.3.7
+pkgver=1.3.10
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -18,19 +18,18 @@ optdepends=('libnotify: desktop notifications')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
 source=(
+    # Git repositories; might be adjusted when a build issue arise.
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
-    # Fetch not-broken sources
-    #"tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=cc2c13d0182c62dd5a89784a49ec375306449797"
-    "GSL::git+https://github.com/Microsoft/GSL.git"
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
     "variant::git+https://github.com/mapbox/variant.git"
-    "Catch::git+https://github.com/philsquared/Catch"
+    "GSL::git+https://github.com/Microsoft/GSL.git"
+    "Catch::git+https://github.com/philsquared/Catch.git"
+    "crl::git+https://github.com/telegramdesktop/crl.git"
     # These files might require modifications to be up-to-date. If that is the
     # case, they will be updated in place and untracked temporarily.
     "CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop"
     "tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
     "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
-    "libtgvoip-2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip-2.patch?h=packages/telegram-desktop"
     "no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop"
 )
 sha256sums=('SKIP'
@@ -38,10 +37,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82'
-            'aea18527d47228dcdb42b8c1d74398fcf0fdcd7b3c2246e87198f8d9b2dfe0bc'
+            'SKIP'
+            '28a25d482ae099077ff501d882408afe0aaf6fb45346bc3423c6de7c2ed4c437'
+            'e92e8bc6c84d783e2a5f8337628cfb345c06aa4e18778a84e29d4d6f8d83246e'
             '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
-            '07ca232b91e9ad0fb9c1501b8b83275cc62b00477c7e5edde5e4cfd2852f1f26'
             '8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6')
 
 prepare() {
@@ -51,6 +50,7 @@ prepare() {
     git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
     git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
+    git config submodule.Telegram/ThirdParty/crl.url "$srcdir/crl"
     git submodule update
 
     # Cheating! Linking fixed patches to their usual place
@@ -64,8 +64,6 @@ prepare() {
 
     cd "Telegram/ThirdParty/libtgvoip"
     patch -Np1 -i "$srcdir/libtgvoip.patch"
-    # Merged upstream
-    #patch -Np1 -i "$srcdir/libtgvoip-2.patch"
 }
 
 build() {
