@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=TecnoBallZ
 Comment=A Brick Busting game
-Exec=/usr/games/tecnoballz
+Exec=/usr/bin/tecnoballz
 Terminal=false
 Type=Application
 Icon=tecnoballz

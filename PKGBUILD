@@ -4,7 +4,7 @@
 
 pkgname=tecnoballz
 pkgver=0.93.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc='An exciting brick breaker game'
 url='http://linux.tlk.fr/games/TecnoballZ/'
@@ -16,13 +16,17 @@ source=(
 	"${pkgname}.xpm"
 	"${pkgname}.desktop"
 	games.dir.patch
+	'tecnoballz.48.png'
+	'tecnoballz.64.png'
 )
 
 md5sums=(
 	'7beeacb06fa841382f0ecbe73f64723a'
 	'5b8d94612523353b6d2eb32f840b58d8'
-	'eec9a3f78b51647b41c3e4c6d1d19ce9'
+	'e6a50c9c6ec7fd3ecf21fd9738c8d6be'
 	'92793da20387db8c32646052a85e56d7'
+	'de4554b57efe05c35ce7adeef597f798'
+	'f4e4f0ff03728180f84cfa99970a117b'
 )
 
 prepare () {
@@ -48,9 +52,14 @@ build () {
 
 package () {
 	mkdir -p "${pkgdir}/usr/share/applications"
-	mkdir -p "${pkgdir}/usr/share/pixmaps"
-	install -m644 tecnoballz.desktop "${pkgdir}/usr/share/applications"
-	install -m644 tecnoballz.xpm "${pkgdir}/usr/share/pixmaps"
+#	mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+	mkdir -p "${pkgdir}/usr/share/icons/hicolor/64x64/apps"
+	mkdir -p "${pkgdir}/usr/share/icons/hicolor/48x48/apps"
+
+	install -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+#	install -m644 "${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+	install -m644 "${pkgname}.64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
+	install -m644 "${pkgname}.48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="$pkgdir" install
