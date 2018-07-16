@@ -268,6 +268,7 @@ void on_modify_entry_activate(GtkEntry* entry) {
     // On successful modification, update portfolio
     if (!portfolio_modify_string(app.portfolio_string, symbol, amount, spent, modop))
         list_store_update();
+    else show_generic_message_dialog("Invalid symbol or arguments.", FALSE);
 }
 
 void on_portfolio_modify_dialog_response(GtkDialog* dialog, gint response_id) {
