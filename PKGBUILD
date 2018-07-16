@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libgpg-error
-pkgver=1.31
+pkgver=1.32
 pkgrel=1
 pkgdesc="Support library for libgcrypt (mingw-w64)"
 arch=(any)
