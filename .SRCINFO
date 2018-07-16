@@ -1,0 +1,25 @@
+pkgbase = mongodb34-bin
+	pkgdesc = Scalable and flexible document database
+	pkgver = 3.4.16
+	pkgrel = 1
+	url = https://www.mongodb.com/
+	arch = x86_64
+	license = AGPLv3
+	provides = mongodb=3.4.16
+	provides = mongodb-tools=3.4.16
+	conflicts = mongodb
+	conflicts = mongodb-tools
+	backup = etc/mongodb.conf
+	source = https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.16.tgz
+	source = mongodb.service
+	source = mongodb.conf
+	source = mongodb.sysusers
+	source = mongodb.tmpfiles
+	md5sums = 16c7a42623b5f5d798708dd44915dd1f
+	md5sums = 96ab4517b48974ce0e566d9746a75a4f
+	md5sums = 4839fe1d638187ca3226e8267b947318
+	md5sums = ff773b723f7bf217c2a8176e3b143498
+	md5sums = c599936e8858aeba31dc06cc3ff88612
+
+pkgname = mongodb34-bin
+
