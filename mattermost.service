@@ -7,7 +7,7 @@ After=postgresql.service
 Type=simple
 User=mattermost
 Group=mattermost
-ExecStart=/usr/share/webapps/mattermost/bin/platform
+ExecStart=/usr/bin/mattermost
 WorkingDirectory=/usr/share/webapps/mattermost
 
 Restart=on-failure
