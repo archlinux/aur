@@ -3,7 +3,7 @@
 _name=rogerrouter
 pkgname=roger-router
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
@@ -22,8 +22,8 @@ optdepends=(
 	# 'libappindicator-gtk3: App indicator support'
 )
 
-conflicts=("${_name} roger")
-provides=("${_name}=${pkgver} roger=${pkgver}")
+conflicts=("${_name}" "roger")
+provides=("${_name}=${pkgver}" "roger=${pkgver}")
 options=('!emptydirs')
 # install=roger-router.install
 source=("git+https://git.krueger-it.net/tabos.org/${_name}.git#tag=v${pkgver}")
