@@ -1,3 +1,5 @@
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+
 pkgname=mingw-w64-libgpg-error
 pkgver=1.32
 pkgrel=1
@@ -5,26 +7,26 @@ pkgdesc="Support library for libgcrypt (mingw-w64)"
 arch=(any)
 url="http://www.gnupg.org"
 license=("LGPL")
-makedepends=(mingw-w64-configure)
-depends=(mingw-w64-gettext)
+makedepends=('mingw-w64-configure')
+depends=('mingw-w64-gettext')
 options=(staticlibs !strip !buildflags)
 source=("ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"{,.sig}
-"01-mingw32-fix-potomo.mingw.patch"
-"02-fix-symbollist-on.mingw.patch"
-"05-w32-gen.all.patch"
-"07-windows-build.patch")
-sha1sums=('2bafad316d4e3e12bae4822b14ed9020090e6acf'
-          'SKIP'
-          'b32a305f593835132a610272aeb219165dc354c4'
-          'a7bbc4637aba322cd43aa7c5a6d99faa8f801133'
-          '07f1c34b3861bc2658d1cad4fafe895f654815df'
-          '86977605a345a0684c8066824f935042990b085f')
+        "01-mingw32-fix-potomo.mingw.patch"
+        "02-fix-symbollist-on.mingw.patch"
+        "05-w32-gen.all.patch"
+        "07-windows-build.patch")
+sha256sums=('c345c5e73cc2332f8d50db84a2280abfb1d8f6d4f1858b9daa30404db44540ca'
+            'SKIP'
+            '252349e58d418adfec5621af1e09753db52b1bf39983aa3bc398d636afb9b495'
+            '364da17febff3f6eeffee5a5f1e3ed1b644adeb5ca48a972c5c4675c10238a91'
+            '9ccdc567810d58526888fd11c5f7d01101627011840b7b75a91e96aa9e71f49d'
+            'ff73e4bde792f5c84c99810b83467d20247856076a92e5940f9fd64a8815187d')
 validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'  # Werner Koch
               '031EC2536E580D8EA286A9F22071B08A33BD3F06') # NIIBE Yutaka (GnuPG Release Key) <gniibe@fsij.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-	cd libgpg-error-$pkgver
+	cd "${srcdir}/libgpg-error-${pkgver}"
 	patch -p1 -i ${srcdir}/01-mingw32-fix-potomo.mingw.patch
 	patch -p1 -i ${srcdir}/02-fix-symbollist-on.mingw.patch
 	patch -p1 -i ${srcdir}/05-w32-gen.all.patch
@@ -33,7 +35,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/libgpg-error-$pkgver"
+  cd "${srcdir}/libgpg-error-${pkgver}"
   for _arch in ${_architectures}; do
     unset LDFLAGS
     mkdir -p build-${_arch} && pushd build-${_arch}
@@ -46,10 +48,10 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/libgpg-error-${pkgver}/build-${_arch}"
-    make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm "$pkgdir/usr/${_arch}/share/info/dir"
+    make DESTDIR="${pkgdir}" install
+    find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
+    find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+    find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    rm "${pkgdir}/usr/${_arch}/share/info/dir"
   done
 }
