@@ -1,6 +1,6 @@
 pkgbase = zoom
 	pkgdesc = Video Conferencing and Web Conferencing Service
-	pkgver = 2.2.128200.0702
+	pkgver = 2.3.128305.0716
 	pkgrel = 1
 	url = https://zoom.us/
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = zoom
 	depends = qt5-webengine
 	depends = qt5-quickcontrols2
 	options = !strip
-	source = zoom-2.2.128200.0702_orig_x86_64.pkg.tar.xz::https://zoom.us/client/2.2.128200.0702/zoom_x86_64.pkg.tar.xz
-	sha512sums = 22fdb05ffd8ded8e009b7730cd3e0eb06ef6eaed9d99acdc5740febdb06c21751b6d8bebb122cefdba5a0392744f5610e039c9881ff451645c9b07e8c8f24877
+	source = zoom-2.3.128305.0716_orig_x86_64.pkg.tar.xz::https://zoom.us/client/2.3.128305.0716/zoom_x86_64.pkg.tar.xz
+	sha512sums = b95f438115a6c036f8e8ddf1ef576182bc848eb16083eab05575b749450d3ccc8fba51674e9e298319f667a8479aa1fe40c15594f20074e99b18b13aae3fff7c
 
 pkgname = zoom
