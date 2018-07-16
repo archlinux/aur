@@ -13,10 +13,17 @@ url="http://www.mumudvb.net/"
 license=('GPL2')
 depends=('glibc')
 source=("https://github.com/braice/${_gitname}/archive/${pkgver}.zip"
-        "mumudvb.conf")
+        "mumudvb.conf"
+        "0001-Fix-compiling-with-kernels-4.14.patch")
 install="mumudvb.install"
 sha256sums=('43706f0d899cebc934dc7a2076497d221b44464b4d986dc263dd2a6c91ae9088'
-            'abe3c74a528f59b990e18f91858cb9bb9dd61c715c8904eb561aa7ee4cb79281')
+            'abe3c74a528f59b990e18f91858cb9bb9dd61c715c8904eb561aa7ee4cb79281'
+            'f9cc41c30a204ddf71522de6f5f0fa0432c7f02a62dbd521b95d3258003dc5dd')
+
+prepare() {
+  cd "${srcdir}/${_gitname}-${pkgver}"
+  patch -p1 < "${srcdir}"/0001-Fix-compiling-with-kernels-4.14.patch
+}
 
 build() {
   cd "${srcdir}/${_gitname}-${pkgver}"

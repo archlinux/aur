@@ -1,0 +1,36 @@
+From e948d2c21cee69c46d91cc178d4a316dcf99a680 Mon Sep 17 00:00:00 2001
+From: Brice Dubost <mumudvb@braice.net>
+Date: Sat, 25 Nov 2017 20:21:10 -0500
+Subject: [PATCH] Fix compiling with kernels > 4.14
+
+(cherry picked from commit 596f7dbebd2590f7e77cf755af46952f340ddb97)
+---
+ src/scam_common.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/src/scam_common.h b/src/scam_common.h
+index 9f83b13..54cfd78 100644
+--- a/src/scam_common.h
++++ b/src/scam_common.h
+@@ -59,6 +59,18 @@
+ #define DECSA_DEFAULT_DELAY 500000
+ #define SEND_DEFAULT_DELAY 1500000
+ 
++//Quick hack around the removal of ca_pid_t and CA_GET_PID in recent kernels
++//https://github.com/torvalds/linux/commit/833ff5e7feda1a042b83e82208cef3d212ca0ef1
++#ifndef CA_SET_PID
++typedef struct ca_pid {
++	unsigned int pid;
++	int index;      /* -1 == disable*/
++	} ca_pid_t;
++//We should not be able to get it so a number that is unlikely to happen
++#define CA_SET_PID 42424242
++#endif
++
++
+ /** @brief the parameters for the scam
+  * This structure contain the parameters needed for the SCAM
+  */
+-- 
+2.18.0
+
