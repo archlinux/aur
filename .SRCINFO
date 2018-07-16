@@ -1,0 +1,22 @@
+pkgbase = disappeer-git
+	pkgdesc = A pure Python GUI app for GPG key management and peer-to-peer encrypted messaging over Tor
+	pkgver = r20.8152243
+	pkgrel = 1
+	url = https://github.com/disappeerlabs/disappeer
+	arch = any
+	license = GPL
+	makedepends = python
+	makedepends = python-distribute
+	depends = gnupg
+	depends = python
+	depends = python-gnupg
+	depends = python-stem
+	depends = python-pysocks
+	depends = tk
+	source = git+https://github.com/disappeerlabs/disappeer
+	source = 10-images_dir_path.patch
+	md5sums = SKIP
+	md5sums = 40567ee80b6b1c4b237ff31d9cac2d28
+
+pkgname = disappeer-git
+

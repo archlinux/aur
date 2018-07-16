@@ -1,0 +1,14 @@
+diff --git a/disappeer/utilities/helpers.py b/disappeer/utilities/helpers.py
+index 8b1de36..a73a6a6 100644
+--- a/disappeer/utilities/helpers.py
++++ b/disappeer/utilities/helpers.py
+@@ -30,8 +30,7 @@ def get_local_ipaddress():
+ 
+ 
+ def get_images_dir_path():
+-    from disappeer import images
+-    return os.path.dirname(images.__file__) + '/'
++    return '/usr/share/disappeer/images/'
+ 
+ 
+ def get_user_home_dir():
