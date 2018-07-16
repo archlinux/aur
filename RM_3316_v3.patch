@@ -1,9 +1,35 @@
+diff --git a/runtime/.gitignore b/runtime/.gitignore
+index c38e4aaf..d0b8c29d 100644
+--- a/runtime/.gitignore
++++ b/runtime/.gitignore
+@@ -1,18 +1,11 @@
+ .qmake.cache
+ .qmake.stash
+ Makefile
+-moc_predefs.h
+-moc_BrowserWindow.cpp
+-moc_ConfigWindow.cpp
+-moc_LogWindow.cpp
+-moc_Server.cpp
+-moc_TabWindow.cpp
+-moc_WebViewWindow.cpp
++moc_*.cpp
++moc_*.h
+ pgAdmin4
+ pgAdmin4.app/
+ pgAdmin4.pro.user*
+ qrc_pgAdmin4.cpp
+-ui_BrowserWindow.h
+-ui_ConfigWindow.h
+-ui_LogWindow.h
++ui_*.h
+ object_script.*
 diff --git a/runtime/FloatingWindow.cpp b/runtime/FloatingWindow.cpp
 new file mode 100644
-index 00000000..818d205d
+index 00000000..51c83d1a
 --- /dev/null
 +++ b/runtime/FloatingWindow.cpp
-@@ -0,0 +1,113 @@
+@@ -0,0 +1,103 @@
 +////////////////////////////////////////////////////////////////////////////
 +//
 +// pgAdmin 4 - PostgreSQL Tools
@@ -16,8 +42,11 @@ index 00000000..818d205d
 +////////////////////////////////////////////////////////////////////////////
 +
 +#include "FloatingWindow.h"
++#include "ui_FloatingWindow.h"
 +
-+FloatingWindow::FloatingWindow()
++FloatingWindow::FloatingWindow(QWidget *parent) :
++    QMainWindow(parent),
++    ui(new Ui::FloatingWindow)
 +{
 +    m_newAction = NULL;
 +    m_configAction = NULL;
@@ -25,28 +54,17 @@ index 00000000..818d205d
 +    m_quitAction = NULL;
 +    m_menuActions = NULL;
 +    m_floatingWindowMenu = NULL;
++
++    ui->setupUi(this);
 +}
 +
 +FloatingWindow::~FloatingWindow()
 +{
++    delete ui;
 +}
 +
 +bool FloatingWindow::Init()
 +{
-+    QWidget *centralWidget = new QWidget(this);
-+    QGridLayout *gridLayout = new QGridLayout(centralWidget);
-+    QVBoxLayout *verticalLayout = new QVBoxLayout();
-+
-+    QLabel *labelIcon = new QLabel(centralWidget);
-+    labelIcon->setStyleSheet("border-image:url(\":pgAdmin4.ico\") 0 0 0 0 stretch stretch; border-width: 0px;" );
-+    verticalLayout->addWidget(labelIcon);
-+
-+    QLabel *note = new QLabel(centralWidget);
-+    note->setText(tr("Note: Installing a system tray plugin can be used to hide the window."));
-+    note->setWordWrap(true);
-+    verticalLayout->addWidget(note);
-+    gridLayout->addLayout(verticalLayout, 0, 0, 1, 1);
-+
 +    // Creating Menu
 +    createMenu();
 +
@@ -58,11 +76,9 @@ index 00000000..818d205d
 +#endif
 +
 +    setWindowIcon(icon);
-+    setWindowTitle(tr("pgAdmin4"));
-+    setFixedSize(145, 250);
++    setWindowTitle(tr("pgAdmin"));
++    setFixedSize(300, 230);
 +    setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint);
-+
-+    this->setCentralWidget(centralWidget);
 +    return true;
 +}
 +
@@ -71,7 +87,7 @@ index 00000000..818d205d
 +{
 +    createActions();
 +
-+    m_floatingWindowMenu = menuBar()->addMenu(tr("&pgAdmin4"));
++    m_floatingWindowMenu = menuBar()->addMenu(QString(tr("%1")).arg(PGA_APP_NAME));
 +    m_floatingWindowMenu->addAction(m_newAction);
 +    m_floatingWindowMenu->addSeparator();
 +    m_floatingWindowMenu->addAction(m_configAction);
@@ -119,10 +135,10 @@ index 00000000..818d205d
 +}
 diff --git a/runtime/FloatingWindow.h b/runtime/FloatingWindow.h
 new file mode 100644
-index 00000000..54c6bf2f
+index 00000000..a86b6d57
 --- /dev/null
 +++ b/runtime/FloatingWindow.h
-@@ -0,0 +1,47 @@
+@@ -0,0 +1,56 @@
 +////////////////////////////////////////////////////////////////////////////
 +//
 +// pgAdmin 4 - PostgreSQL Tools
@@ -134,18 +150,25 @@ index 00000000..54c6bf2f
 +//
 +////////////////////////////////////////////////////////////////////////////
 +
++
 +#ifndef FLOATINGWINDOW_H
 +#define FLOATINGWINDOW_H
 +
 +#include "pgAdmin4.h"
 +#include "MenuActions.h"
 +
-+class FloatingWindow: public QMainWindow
++#include <QMainWindow>
++
++namespace Ui {
++class FloatingWindow;
++}
++
++class FloatingWindow : public QMainWindow
 +{
 +    Q_OBJECT
 +
 +public:
-+    FloatingWindow();
++    explicit FloatingWindow(QWidget *parent = 0);
 +    ~FloatingWindow();
 +
 +    bool Init();
@@ -153,6 +176,8 @@ index 00000000..54c6bf2f
 +    void setMenuActions(MenuActions * menuActions);
 +
 +private:
++    Ui::FloatingWindow *ui;
++
 +    void createMenu();
 +    void createActions();
 +    void closeEvent(QCloseEvent * event);
@@ -170,6 +195,167 @@ index 00000000..54c6bf2f
 +};
 +
 +#endif // FLOATINGWINDOW_H
+diff --git a/runtime/FloatingWindow.ui b/runtime/FloatingWindow.ui
+new file mode 100644
+index 00000000..cd60556d
+--- /dev/null
++++ b/runtime/FloatingWindow.ui
+@@ -0,0 +1,155 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<ui version="4.0">
++ <class>FloatingWindow</class>
++ <widget class="QMainWindow" name="FloatingWindow">
++  <property name="geometry">
++   <rect>
++    <x>0</x>
++    <y>0</y>
++    <width>300</width>
++    <height>230</height>
++   </rect>
++  </property>
++  <property name="sizePolicy">
++   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
++    <horstretch>0</horstretch>
++    <verstretch>0</verstretch>
++   </sizepolicy>
++  </property>
++  <property name="windowTitle">
++   <string>MainWindow</string>
++  </property>
++  <widget class="QWidget" name="centralwidget">
++   <widget class="QWidget" name="verticalLayoutWidget">
++    <property name="geometry">
++     <rect>
++      <x>10</x>
++      <y>10</y>
++      <width>281</width>
++      <height>201</height>
++     </rect>
++    </property>
++    <layout class="QVBoxLayout" name="verticalLayout">
++     <item>
++      <layout class="QHBoxLayout" name="horizontalLayout_2">
++       <item>
++        <spacer name="horizontalSpacer_2">
++         <property name="orientation">
++          <enum>Qt::Horizontal</enum>
++         </property>
++         <property name="sizeHint" stdset="0">
++          <size>
++           <width>40</width>
++           <height>20</height>
++          </size>
++         </property>
++        </spacer>
++       </item>
++       <item>
++        <widget class="QLabel" name="label">
++         <property name="minimumSize">
++          <size>
++           <width>100</width>
++           <height>100</height>
++          </size>
++         </property>
++         <property name="maximumSize">
++          <size>
++           <width>100</width>
++           <height>100</height>
++          </size>
++         </property>
++         <property name="styleSheet">
++          <string notr="true">border-image:url(&quot;:pgAdmin4.png&quot;);</string>
++         </property>
++         <property name="text">
++          <string/>
++         </property>
++         <property name="scaledContents">
++          <bool>true</bool>
++         </property>
++        </widget>
++       </item>
++       <item>
++        <spacer name="horizontalSpacer">
++         <property name="orientation">
++          <enum>Qt::Horizontal</enum>
++         </property>
++         <property name="sizeHint" stdset="0">
++          <size>
++           <width>40</width>
++           <height>20</height>
++          </size>
++         </property>
++        </spacer>
++       </item>
++      </layout>
++     </item>
++     <item>
++      <layout class="QHBoxLayout" name="horizontalLayout">
++       <item>
++        <spacer name="horizontalSpacer_4">
++         <property name="orientation">
++          <enum>Qt::Horizontal</enum>
++         </property>
++         <property name="sizeHint" stdset="0">
++          <size>
++           <width>40</width>
++           <height>20</height>
++          </size>
++         </property>
++        </spacer>
++       </item>
++       <item>
++        <widget class="QLabel" name="label_2">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
++           <horstretch>0</horstretch>
++           <verstretch>0</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="maximumSize">
++          <size>
++           <width>16777215</width>
++           <height>16777215</height>
++          </size>
++         </property>
++         <property name="layoutDirection">
++          <enum>Qt::LeftToRight</enum>
++         </property>
++         <property name="text">
++          <string>Note: Installing a system tray plugin will prevent this window being shown.</string>
++         </property>
++         <property name="textFormat">
++          <enum>Qt::AutoText</enum>
++         </property>
++         <property name="alignment">
++          <set>Qt::AlignCenter</set>
++         </property>
++         <property name="wordWrap">
++          <bool>true</bool>
++         </property>
++        </widget>
++       </item>
++       <item>
++        <spacer name="horizontalSpacer_3">
++         <property name="orientation">
++          <enum>Qt::Horizontal</enum>
++         </property>
++         <property name="sizeHint" stdset="0">
++          <size>
++           <width>40</width>
++           <height>20</height>
++          </size>
++         </property>
++        </spacer>
++       </item>
++      </layout>
++     </item>
++    </layout>
++   </widget>
++  </widget>
++ </widget>
++ <resources/>
++ <connections/>
++</ui>
 diff --git a/runtime/MenuActions.cpp b/runtime/MenuActions.cpp
 new file mode 100644
 index 00000000..1091404d
@@ -358,7 +544,7 @@ index 00000000..8ca46bc9
 +
 +#endif // MENUACTIONS_H
 diff --git a/runtime/TrayIcon.cpp b/runtime/TrayIcon.cpp
-index 31eed5d2..0bad8b93 100644
+index 31eed5d2..75cb43a3 100644
 --- a/runtime/TrayIcon.cpp
 +++ b/runtime/TrayIcon.cpp
 @@ -9,22 +9,11 @@
@@ -385,7 +571,7 @@ index 31eed5d2..0bad8b93 100644
      m_trayIcon = NULL;
      m_trayIconMenu = NULL;
  
-@@ -32,15 +21,13 @@ TrayIcon::TrayIcon(QString logFile) :
+@@ -32,74 +21,22 @@ TrayIcon::TrayIcon(QString logFile) :
      m_configAction = NULL;
      m_logAction = NULL;
      m_quitAction = NULL;
@@ -395,15 +581,22 @@ index 31eed5d2..0bad8b93 100644
 -
  TrayIcon::~TrayIcon()
  {
--
+ 
  }
  
 -
- bool TrayIcon::Init()
+-bool TrayIcon::Init()
++void TrayIcon::Init()
  {
-     if (! isSystemTrayAvailable())
-@@ -54,16 +41,10 @@ bool TrayIcon::Init()
-     return true;
+-    if (! isSystemTrayAvailable())
+-        return false;
+-
+     createTrayIcon();
+ 
+     if (m_trayIcon)
+         m_trayIcon->show();
+-
+-    return true;
  }
  
 -
@@ -412,40 +605,50 @@ index 31eed5d2..0bad8b93 100644
 -    m_appServerUrl = appServerUrl;
 -}
 -
- // Check whether system tray exists
- bool TrayIcon::isSystemTrayAvailable()
- {
+-// Check whether system tray exists
+-bool TrayIcon::isSystemTrayAvailable()
+-{
 -    int timeout = 10; // 30 sec * 10 = 5 minutes, thus we timeout after 5 minutes
-+    int timeout = 10; // 3 sec * 10 = 30 seconds, thus we timeout after 30 seconds
-     int iteration = 0;
-     bool trayFound = false;
- 
-@@ -72,7 +53,7 @@ bool TrayIcon::isSystemTrayAvailable()
-         // Check we can find the system tray.
-         if (!QSystemTrayIcon::isSystemTrayAvailable())
-         {
--            // Wait for 30 seconds.
-+            // Wait for 3 seconds.
-             wait(3000);
-             trayFound = false;
-         }
-@@ -88,7 +69,6 @@ bool TrayIcon::isSystemTrayAvailable()
- 
- }
- 
+-    int iteration = 0;
+-    bool trayFound = false;
 -
- // Make application wait for msec milliseconds
- void TrayIcon::wait(int msec)
- {
-@@ -99,7 +79,6 @@ void TrayIcon::wait(int msec)
-    mutex.unlock();
- }
- 
+-    while (iteration < timeout)
+-    {
+-        // Check we can find the system tray.
+-        if (!QSystemTrayIcon::isSystemTrayAvailable())
+-        {
+-            // Wait for 30 seconds.
+-            wait(3000);
+-            trayFound = false;
+-        }
+-        else
+-        {
+-            trayFound = true;
+-            break;
+-        }
+-        iteration++;
+-    }
+-
+-    return trayFound;
+-
+-}
+-
+-
+-// Make application wait for msec milliseconds
+-void TrayIcon::wait(int msec)
+-{
+-   QMutex mutex;
+-   QWaitCondition wc;
+-   mutex.lock();
+-   wc.wait(&mutex, msec);
+-   mutex.unlock();
+-}
+-
 -
  // Create the tray icon
  void TrayIcon::createTrayIcon()
  {
-@@ -135,116 +114,21 @@ void TrayIcon::createTrayIcon()
+@@ -135,116 +72,21 @@ void TrayIcon::createTrayIcon()
      setWindowIcon(icon);
  }
  
@@ -566,7 +769,7 @@ index 31eed5d2..0bad8b93 100644
  }
  
  void TrayIcon::enableShutdownMenu()
-@@ -254,3 +138,8 @@ void TrayIcon::enableShutdownMenu()
+@@ -254,3 +96,8 @@ void TrayIcon::enableShutdownMenu()
          m_quitAction->setEnabled(true);
      }
  }
@@ -576,10 +779,10 @@ index 31eed5d2..0bad8b93 100644
 +    m_menuActions = menuActions;
 +}
 diff --git a/runtime/TrayIcon.h b/runtime/TrayIcon.h
-index 48c4462d..18c63715 100644
+index 48c4462d..d569b716 100644
 --- a/runtime/TrayIcon.h
 +++ b/runtime/TrayIcon.h
-@@ -16,22 +16,19 @@
+@@ -16,30 +16,24 @@
  
  // QT headers
  #include <QWidget>
@@ -598,14 +801,23 @@ index 48c4462d..18c63715 100644
 +    TrayIcon();
      ~TrayIcon();
  
-     bool Init();
+-    bool Init();
 -    void setAppServerUrl(QString appServerUrl);
++    void Init();
      void enableShutdownMenu();
 +    void setMenuActions(MenuActions * menuActions);
  
  private:
      void createTrayIcon();
-@@ -48,18 +45,7 @@ private:
+-    bool isSystemTrayAvailable();
+     void createActions();
+ 
+-    void wait(int msec);
+-
+     QAction *m_newAction;
+     QAction *m_configAction;
+     QAction *m_logAction;
+@@ -48,18 +42,7 @@ private:
      QSystemTrayIcon *m_trayIcon;
      QMenu *m_trayIconMenu;
  
@@ -626,7 +838,7 @@ index 48c4462d..18c63715 100644
  
  #endif // TRAYICON_H
 diff --git a/runtime/pgAdmin4.cpp b/runtime/pgAdmin4.cpp
-index 7bdcdfae..ea285e86 100644
+index 7bdcdfae..72cafded 100644
 --- a/runtime/pgAdmin4.cpp
 +++ b/runtime/pgAdmin4.cpp
 @@ -34,6 +34,8 @@
@@ -638,37 +850,54 @@ index 7bdcdfae..ea285e86 100644
  
  #include <QTime>
  
-@@ -205,15 +207,37 @@ int main(int argc, char * argv[])
+@@ -172,6 +174,7 @@ int main(int argc, char * argv[])
+     // Display the spash screen
+     QSplashScreen *splash = new QSplashScreen();
+     splash->setPixmap(QPixmap(":/splash.png"));
++    splash->setWindowFlags(splash->windowFlags() | Qt::WindowStaysOnTopHint);
+     splash->show();
+     app.processEvents(QEventLoop::AllEvents);
+ 
+@@ -205,15 +208,44 @@ int main(int argc, char * argv[])
      // Generate the filename for the log
      logFileName = homeDir + (QString("/.%1.%2.log").arg(PGA_APP_NAME).arg(exeHash)).remove(" ");
  
-+    //Create Menu Actions
+-    // Start the tray service
+-    TrayIcon *trayicon = new TrayIcon(logFileName);
++    // Create Menu Actions
 +    MenuActions *menuActions = new MenuActions();
 +    if(menuActions != NULL)
 +        menuActions->setLogFile(logFileName);
-+
-+    FloatingWindow *floatingWindow = NULL;
-     // Start the tray service
--    TrayIcon *trayicon = new TrayIcon(logFileName);
-+    TrayIcon *trayicon = new TrayIcon();
-+    // Set the MenuActions object to connect to slot
-+    if (trayicon != NULL)
-+        trayicon->setMenuActions(menuActions);
  
-     if (!trayicon->Init())
+-    if (!trayicon->Init())
++    splash->setStyleSheet("font-weight: bold;");
++    splash->showMessage(QString(QWidget::tr("Checking for system tray...")), Qt::AlignBottom | Qt::AlignCenter);
++
++    // Check system tray is available or not. If not then create one floating window.
++    FloatingWindow *floatingWindow = NULL;
++    TrayIcon *trayicon = NULL;
++    if (QSystemTrayIcon::isSystemTrayAvailable())
      {
 -        QString error = QString(QWidget::tr("An error occurred initialising the tray icon"));
 -        QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
-+        // Delete Tray Icon object
-+        delete trayicon;
-+        trayicon = NULL;
++        // Start the tray service
++        trayicon = new TrayIcon();
  
 -        exit(1);
-+        //Unable to find tray icon, so creating floting window
++        // Set the MenuActions object to connect to slot
++        if (trayicon != NULL)
++            trayicon->setMenuActions(menuActions);
++
++        trayicon->Init();
++    }
++    else
++    {
++        splash->showMessage(QString(QWidget::tr("System tray not found, creating floating window...")), Qt::AlignBottom | Qt::AlignCenter);
++        // Unable to find tray icon, so creating floting window
 +        floatingWindow = new FloatingWindow();
 +        if (floatingWindow == NULL)
 +        {
-+            QString error = QString(QWidget::tr("An error occurred initialising the tray icon as well as floating window."));
++            QString error = QString(QWidget::tr("Unable to initialize either a tray icon or control window."));
 +            QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
 +
 +            exit(1);
@@ -680,12 +909,21 @@ index 7bdcdfae..ea285e86 100644
      }
  
      // Fire up the webserver
-@@ -335,9 +359,12 @@ int main(int argc, char * argv[])
+@@ -221,6 +253,7 @@ int main(int argc, char * argv[])
+ 
+     bool done = false;
+ 
++    splash->showMessage(QString(QWidget::tr("Starting pgAdmin4 server...")), Qt::AlignBottom | Qt::AlignCenter);
+     while (done != true)
+     {
+         server = new Server(port, key, logFileName);
+@@ -335,9 +368,13 @@ int main(int argc, char * argv[])
      }
  
      // Go!
 -    trayicon->setAppServerUrl(appServerUrl);
 +    menuActions->setAppServerUrl(appServerUrl);
++
      // Enable the shutdown server menu as server started successfully.
 -    trayicon->enableShutdownMenu();
 +    if (trayicon != NULL)
@@ -695,7 +933,7 @@ index 7bdcdfae..ea285e86 100644
  
      QString cmd = settings.value("BrowserCommand").toString();
  
-@@ -357,10 +384,12 @@ int main(int argc, char * argv[])
+@@ -357,10 +394,12 @@ int main(int argc, char * argv[])
          }
      }
  
@@ -711,10 +949,16 @@ index 7bdcdfae..ea285e86 100644
  }
  
 diff --git a/runtime/pgAdmin4.pro b/runtime/pgAdmin4.pro
-index 72f9dddb..a72ff36e 100644
+index 72f9dddb..d1289285 100644
 --- a/runtime/pgAdmin4.pro
 +++ b/runtime/pgAdmin4.pro
-@@ -92,12 +92,16 @@ HEADERS     =   \
+@@ -87,19 +87,23 @@ else {
+ }
+ 
+ # Source code
+-HEADERS     =   \
+-                Server.h \
++HEADERS     =   Server.h \
                  pgAdmin4.h \
                  ConfigWindow.h \
                  TrayIcon.h \
@@ -731,5 +975,9 @@ index 72f9dddb..a72ff36e 100644
 +                MenuActions.cpp \
 +                FloatingWindow.cpp
  FORMS       =   ConfigWindow.ui \
-                 LogWindow.ui
+-                LogWindow.ui
++                LogWindow.ui \
++                FloatingWindow.ui
  ICON        =   pgAdmin4.icns
+ QMAKE_INFO_PLIST = Info.plist
+ 

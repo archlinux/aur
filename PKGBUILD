@@ -5,7 +5,7 @@
 pkgname=pgadmin4-systray-fix
 _pkgname=pgadmin4
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Comprehensive design and management interface for PostgreSQL including patch fixing RM #3316.'
 url='https://www.pgadmin.org/'
 arch=('x86_64')
@@ -18,17 +18,17 @@ source=(https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${pkgver}/source/${_pkg
         pgAdmin4.desktop
         config_distro.py
         config_local.py
-        RM_3316.patch)
+        RM_3316_v3.patch)
 validpgpkeys=('E0C4CEEB826B1FDA4FB468E024ADFAAF698F1519')
 sha512sums=('e26801676969f3bc12cd4bdcb5b481b984b3500206393ae06e427894d354833287bf6b0e9b475ffa5fa73bafe6c7b266c453eef41c55396796c2b6036d8a7f5d'
             '25e6ae6658dd25aa9ebaccaef89ab15c19d513da3641fecaf9100d1139b0cc32c027f60a688f5fdff3b26e7be7897e33e9a7b4dddbf68599e583bd5b2e7946e9'
             '16d00dc2095904a6b12da7039458f632873829ad98d4d7653eac5804032ba92097ccae4488d56467d0ea9bd64e2654a3dead73eb7924c947ff1737ff6e3b4745'
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
-            'f04aaacefe745d13a038e13dbb74c1e2f43bb05b654252409e08be3dd2062e57ab3828b1101b6e64db6dfdd1732b385523d92119cb71bfb10b1eba279414c75e')
+            'cc51158d423ea50823a184aa493c29d6d2142f351804a2a3c414057ba7104cd48114c990b5a4457e1904e877149286401901da0e98113dfb36f575c27527a714')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  patch -Np1 -i ../RM_3316.patch
+  patch -Np1 -i ../RM_3316_v3.patch
   local PYTHONVERSION="$(python -c 'import sys; print("{}.{}".format(sys.version_info.major, sys.version_info.minor))')"
   sed 's|value("PythonPath")|value("PythonPath", "/usr/lib/pgadmin4/venv/lib/python'${PYTHONVERSION}'/site-packages:/usr/lib/python'${PYTHONVERSION}'/site-packages:/usr/lib/python'${PYTHONVERSION}'")|g' -i runtime/{pgAdmin4.cpp,Server.cpp,TrayIcon.cpp}
   sed -r 's|(venv/lib/python)|\1'${PYTHONVERSION}'|g' runtime/Server.cpp
