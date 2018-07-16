@@ -6,25 +6,26 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=lib32-pam
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc='Pluggable Authentication Modules'
 arch=('x86_64')
 url='http://linux-pam.org'
 license=('GPL2')
 depends=('lib32-cracklib' 'lib32-libnsl' 'lib32-libtirpc' 'pam')
-makedepends=('gcc-multilib' 'lib32-flex')
-source=("http://linux-pam.org/library/Linux-PAM-${pkgver}.tar.bz2")
-sha256sums=('241aed1ef522f66ed672719ecf2205ec513fd0075ed80cda8e086a5b1a01d1bb')
+makedepends=('docbook-xml' 'docbook-xsl' 'git' 'lib32-flex' 'w3m')
+source=("git+https://github.com/linux-pam/linux-pam.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 options=('!emptydirs')
 
 build() {
-  cd Linux-PAM-${pkgver}
+  cd linux-pam
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
+  ./autogen.sh
   ./configure \
     --prefix='/usr' \
     --libdir='/usr/lib32' \
@@ -34,7 +35,7 @@ build() {
 }
 
 package() {
-  cd Linux-PAM-${pkgver}
+  cd linux-pam
 
   make DESTDIR="${pkgdir}" SCONFIGDIR='/etc/security' install
   rm -rf "${pkgdir}"/{etc,usr/{include,share,bin}}
