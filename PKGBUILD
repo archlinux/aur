@@ -2,7 +2,7 @@
 # Maintainer: Eduard Toloza <edu4rdshl@securityhacklabs.net>
 
 pkgname='webhackshl'
-pkgver=8.6ee163f
+pkgver=9.ef1f3fb
 pkgrel=1
 pkgdesc='Herramienta para hacking ético y auditorías en sitios web y servidores.'
 arch=('any')
