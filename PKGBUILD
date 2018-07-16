@@ -3,15 +3,15 @@
 
 pkgname=nheko
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
 
 url="https://github.com/mujx/nheko"
 license=("GPL3")
 
-depends=("qt5-base" "lmdb" "qt5-multimedia" "qt5-svg")
-makedepends=("cmake" "gcc" "fontconfig" "qt5-tools")
+depends=("lmdb" "qt5-multimedia" "libsodium" "boost-libs" "hicolor-icon-theme")
+makedepends=("cmake" "fontconfig" "qt5-tools" "git" "boost")
 
 source=(https://github.com/mujx/nheko/archive/v$pkgver.tar.gz)
 sha512sums=('93c81f8a713d6350dd3b8a8135128de593be3e69ade9370c2316e09428dd20a8323dbea52c2e765eaa92b2fd0fe8acfb72a0f5e991e03bb8da39eed861875243')
