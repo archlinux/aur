@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=delft-icon-theme
-pkgver=1.2
+pkgver=1.4
 pkgrel=1
 pkgdesc="Continuation of Faenza icon theme with up to date app icons"
 arch=('any')
@@ -11,7 +11,7 @@ provides=('delft-icon-theme')
 conflicts=('delft-icon-theme')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/madmaxms/iconpack-delft/releases/download/v${pkgver}/delft-iconpack.tar.xz")
-md5sums=('224713e20780c6c0187b91d10900ab3e')
+md5sums=('3d8cc456a24c012bb0a29c575ab6dbfb')
 
 package() {
   install -d ${pkgdir}/usr/share/icons
