@@ -1,7 +1,7 @@
 pkgbase = python-sphinx
 	pkgver = 1.7.5
-	pkgrel = 3
-	url = http://sphinx.pocoo.org/
+	pkgrel = 4
+	url = http://www.sphinx-doc.org/
 	arch = any
 	license = BSD
 	checkdepends = texlive-latexextra

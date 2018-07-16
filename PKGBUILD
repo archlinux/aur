@@ -7,10 +7,10 @@
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
 pkgver=1.7.5
-pkgrel=3
+pkgrel=4
 
 arch=('any')
-url='http://sphinx.pocoo.org/'
+url='http://www.sphinx-doc.org/'
 license=('BSD')
 
 makedepends=(
