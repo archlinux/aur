@@ -3,11 +3,11 @@
 
 _pkgname=wpscan
 pkgname=wpscan-git
-pkgver=2.9.1.2047.8e9d29e
+pkgver=2.9.4.2282.fd660632
 pkgrel=1
 pkgdesc='Black box WordPress vulnerability scanner'
 url='http://wpscan.org'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom:WPScan')
 depends=('ruby-bundler' 'libxslt' 'libyaml' 'curl')
 makedepends=('git' 'unzip')
@@ -54,7 +54,8 @@ EOF
   chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 CHANGELOG.md DISCLAIMER.txt README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 CHANGELOG.md DISCLAIMER.md README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  find "${pkgdir}" -name gem_make.out -delete
 }
 
 # vim: ts=2 sw=2 et:
