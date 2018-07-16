@@ -1,4 +1,4 @@
-# Maintainer:  Matt Parnell/ilikenwf <parwok@gmail.com>
+# Maintainer:  Yan Doroshenko <yandoroshenko@protonmail.com>
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: ptk042 <ptk042@gmail.com>
@@ -9,8 +9,8 @@
 # what the heck
 
 pkgname=oracle-sqldeveloper
-pkgver=18.1.0.095.1630
-pkgrel=3
+pkgver=18.2.0.183.1748
+pkgrel=1
 pkgdesc="A graphical tool for database development"
 arch=('any')
 url="http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html"
@@ -23,7 +23,7 @@ source=(manual://sqldeveloper-$pkgver-no-jre.zip
         LICENSE
         java_home.patch)
 DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually, since it requires a login and is not redistributable.;/usr/bin/echo Please visit http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html.; exit 1;')
-md5sums=('39b4e0ea8d3c6894e40089567e0ca367'
+md5sums=('ad45f9db2e81f866c778e357f6129e36'
          '1d17d18e10ab85dead0770e8840273b3'
          '26c1dc933a9ab58a4245f4f351717645'
          '71a4092467209c160d0f34abbc08e049'
