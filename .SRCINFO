@@ -1,6 +1,6 @@
 pkgbase = python-sphinx
 	pkgver = 1.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sphinx-doc.org/
 	arch = any
 	license = BSD
