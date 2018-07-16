@@ -1,8 +1,8 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.20.2
-pkgrel=2
+pkgver=1.21.0
+pkgrel=1
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-se
              autoconf2.13 rust clang llvm libnotify gtk2 gtk3 wget pulseaudio)
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
-sha256sums=('ba0f1a09441cd00e36a384f0039c03cc868921470734779b31998ce59fc07c66')
+sha256sums=('6eff7bd64cd09cbb5df540b7076a1cbcb11cd8faa1f6d52abf0782a8ef9f5601')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
@@ -142,6 +142,7 @@ pref("intl.locale.requested", "");
 // Don't disable our bundled extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
+pref("extensions.shield-recipe-client.enabled", false);
 END
 
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
