@@ -1,4 +1,5 @@
 /epfl-scripts/
+/epfl-scripts-git/
 /src/
 /pkg/
 /*.pkg.tar.xz
