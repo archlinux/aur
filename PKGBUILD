@@ -3,7 +3,7 @@
 # Packager: Chris Knepper <chris82thekid@gmail.com>
 pkgname=android-messages-desktop
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
 url="https://github.com/chrisknepper/android-messages-desktop"
