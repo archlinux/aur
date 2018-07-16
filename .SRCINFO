@@ -1,7 +1,7 @@
 pkgbase = arch-diff
 	pkgdesc = Perform a full diff between all pacman packages and the file system
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aneas/arch-diff
 	arch = i686
 	arch = x86_64
