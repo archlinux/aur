@@ -1,7 +1,7 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
 pkgname=lc0-cudnn-git
 _pkgname=lc0-cudnn
-pkgver=505
+pkgver=657
 pkgrel=1
 pkgdesc="CudNN version of Leela Chess Zero."
 arch=('i686' 'x86_64')
@@ -15,6 +15,11 @@ md5sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     git rev-list --count HEAD
+}
+
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+    git submodule update --init --recursive
 }
 
 build() {
