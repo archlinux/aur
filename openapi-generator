@@ -1,0 +1,5 @@
+#!/bin/sh
+
+JAVA_OPTS="${JAVA_OPTS} -Xmx1024M -DloggerPath=conf/log4j.properties"
+
+exec /usr/bin/java $JAVA_OPTS -jar /usr/share/java/openapi-generator-cli-3.1.0.jar $@
