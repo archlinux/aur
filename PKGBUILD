@@ -1,14 +1,14 @@
 # Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 
 pkgname=zulip-electron-bin
-pkgver=1.9.0
-pkgrel=2
+pkgver=2.3.3
+pkgrel=1
 pkgdesc="Desktop client for Zulip. Available for Mac, Linux and Windows."
 arch=('x86_64')
 url="https://github.com/zulip/zulip-electron"
 license=('Apache')
-source=("https://github.com/zulip/zulip-electron/releases/download/v${pkgver}/zulip-${pkgver}-linux.zip")
-sha512sums=('329dae5abdacebdc483e55654008b4408e494fabe8d338b03e281540681cdf8ea414c9b203b948805b4a06b348580586fce2b41ec85e845ea807a21218450362')
+source=("https://github.com/zulip/zulip-electron/releases/download/v${pkgver}/Zulip-${pkgver}-linux-x64.zip")
+sha512sums=('6fe23e0253b5096f1509df5beb95de592bc23c42fd629f67f323f3f7561d0cccba051a23f0df6211cfb448663e2132677d4e47d903fa84dba2fc71b9a6ea648c')
 
 conflicts=('zulip-desktop')
 
@@ -17,7 +17,7 @@ package() {
     cp -R "$srcdir" "$pkgdir"/opt/zulip-electron
 
     install -d "$pkgdir"/usr/bin
-    ln -sf "$pkgdir"/opt/zulip-electron/zulip "$pkgdir"/usr/bin/zulip
+    ln -sf /opt/zulip-electron/zulip "$pkgdir"/usr/bin/zulip
 
     # no man pages, docs or web assets in release tarball
 }
