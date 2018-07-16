@@ -1,6 +1,6 @@
 pkgbase = python-dlib
 	pkgdesc = Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques.
-	pkgver = 19.13
+	pkgver = 19.15
 	pkgrel = 1
 	url = http://www.dlib.net/
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = python-dlib
 	optdepends = libjpeg-turbo
 	optdepends = libpng
 	optdepends = sqlite
-	source = http://www.dlib.net//files/dlib-19.13.tar.bz2
-	md5sums = 69d806dea72789f1c0f43843f4007776
+	source = http://www.dlib.net//files/dlib-19.15.tar.bz2
+	md5sums = 7f168578b024689be707d6dde5cfa0e9
 
 pkgname = python-dlib
 	depends = libx11
