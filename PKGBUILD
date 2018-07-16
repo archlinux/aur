@@ -6,16 +6,19 @@
 
 pkgbase=buildbot-www-git
 pkgname=('python-buildbot-www-git' 'python-buildbot-waterfall-view-git'
-         'python-buildbot-console-view-git' 'python-buildbot-grid-view-git' 'python-buildbot-wsgi-dashboards-git'
+         'python-buildbot-console-view-git' 'python-buildbot-grid-view-git'
+         'python-buildbot-wsgi-dashboards-git' 'python-buildbot-badges-git'
          )
-pkgver=1.2.0.r40.g16dff07ce
+pkgver=1.3.0.r2.g95fc42ba3
 pkgrel=1
 arch=('any')
 url="https://buildbot.net"
 license=("GPL")
 makedepends=('git' "buildbot-git=$pkgver" "buildbot-pkg-git=$pkgver" 'python-mock' 'npm' 'yarn')
-source=(git+https://github.com/buildbot/buildbot.git)
-sha256sums=('SKIP')
+source=(git+https://github.com/buildbot/buildbot.git
+        cairosvg2.patch)
+sha256sums=('SKIP'
+            'efb460cb040cfd2438d63df51cc7ffd93444dd9d6e1b172f870f4ffce5bafda8')
 
 pkgver() {
   cd buildbot
@@ -25,6 +28,11 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd buildbot
+
+  patch -Np1 -i ../cairosvg2.patch
+}
 
 package_python-buildbot-www-git() {
   depends=("buildbot-git=$pkgver")
@@ -63,5 +71,13 @@ package_python-buildbot-wsgi-dashboards-git() {
   pkgdesc="Buildbot plugin to integrate flask or bottle dashboards to buildbot UI"
 
   cd buildbot/www/wsgi_dashboards
+  python setup.py install --root="$pkgdir" --optimize=1
+}
+
+package_python-buildbot-badges-git() {
+  depends=("buildbot-git=$pkgver" 'python-klein' 'python-cairosvg' 'python-cairocffi' 'python-jinja')
+  pkgdesc="Buildbot badges"
+
+  cd buildbot/www/badges
   python setup.py install --root="$pkgdir" --optimize=1
 }

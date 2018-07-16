@@ -1,0 +1,13 @@
+diff --git a/www/badges/setup.py b/www/badges/setup.py
+index dd5261299..739316a01 100644
+--- a/www/badges/setup.py
++++ b/www/badges/setup.py
+@@ -36,7 +36,7 @@ setup_www_plugin(
+     packages=['buildbot_badges'],
+     install_requires=[
+         'klein',
+-        'CairoSVG==1.0.22',  # cairoSVG 2+ is not py2 compatible
++        'CairoSVG',
+         'cairocffi', 'Jinja2'
+     ],
+     package_data={
