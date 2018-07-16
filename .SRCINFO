@@ -1,6 +1,6 @@
 pkgbase = atlassian-jira
 	pkgdesc = Bug tracking, issue tracking and project management software
-	pkgver = 7.8.0
+	pkgver = 7.10.0
 	pkgrel = 1
 	url = https://www.atlassian.com/software/jira
 	install = jira.install
@@ -10,10 +10,10 @@ pkgbase = atlassian-jira
 	optdepends = mysql-connector-java: connect to MySQL
 	backup = etc/conf.d/jira
 	backup = etc/webapps/atlassian-jira/server.xml
-	source = https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-core-7.8.0.tar.gz
+	source = https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-core-7.10.0.tar.gz
 	source = jira.conf.d
 	source = jira.service
-	sha256sums = a8004190710ce31412b7e1f85e7ece8c3089f84c645008129e0636a4228c3769
+	sha256sums = eb7715426ffb90035528f4a4d14fa85a0dd5882efa1dfa31689892c5571dc3b0
 	sha256sums = a6304ba13a8ab1e27761bd3be71d05d2c2e3d61ea308316f4a04723ea4b30fc1
 	sha256sums = d61181154183301a551b1ae85a7d42c7d60ae2c36e545d2ab8ef5cc969def717
 
