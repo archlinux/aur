@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.17
-_stable=4.17.5
-_patchver=4.17.6
+_stable=4.17.6
+_patchver=4.17.7
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -29,6 +29,7 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
   0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
+  0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -36,17 +37,18 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '5041d4009352c42543acb125e7fa5acf086c901101194fbff5e97931bd4ac06b'
+            '8a120a679afbe9165758d7fcb25f0be827bd52bde2e5f204736ea2bc1d6df263'
             'SKIP'
-            'cc18fcf14df25f0bab047aa180b9362bd4f3ce96f1b05e1f7764cfcc0e271bbd'
+            '7699b2246e4ed1e284f2947d5e0b66653c27574995caf6a02a3280bd055cfedf'
             'SKIP'
-            '0269d9a56f0d0306c9bd5c179a7e32214b0a1c082d3bca581661203b27305f17'
+            'f8e890eac9779a89009c1e2339f757e9781864df09805211fad005146fe2578b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'e3c08f9b91611186e5ec579187ecea2a0143e5c2dc7ffc30ac6ea6e2b6d130fd'
-            '5403dead9161344b2c01027526146a250147680f4a2d32a54d40c55fc1becc8a'
-            'd55e7de60b12bca26ded4c1bb8eb5860a9092374914a201a0f6a0ed2849d099f')
+            '92f848d0e21fbb2400e50d1c1021514893423641e5450896d7b1d88aa880b2b9'
+            'fc3c50ae6bd905608e0533a883ab569fcf54038fb9d6569b391107d9fd00abbc'
+            'bc50c605bd0e1fa7437c21ddef728b83b6de3322b988e14713032993dfa1fc69'
+            '66284102261c4ed53db050e9045c8672ba0e5171884b46e58f6cd417774d8578')
 
 _kernelname=${pkgbase#linux}
 
@@ -71,6 +73,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56780
   patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
+
+  # Fix iwd provoking a BUG
+  patch -Np1 -i ../0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
