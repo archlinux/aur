@@ -11,22 +11,21 @@
 pkgname=ffmpeg-qsv
 _srcname=ffmpeg
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (including qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
 license=('GPL3' 'custom: nonfree and unredistributable')
 depends=(
-'glibc' 'alsa-lib' 'jack' 'libpng'
-'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass'
-'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
-'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm'
-'libiec61883' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio'
-'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt'
-'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
-'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
-'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'ocl-icd' 'mesa' 'sndio'
-'sdl2' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio'
+'glibc' 'alsa-lib' 'jack' 'libpng' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp'
+'gnutls' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
+'libcdio-paranoia' 'libdc1394' 'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2'
+'fribidi' 'libgme' 'gsm' 'libiec61883' 'libmodplug' 'lame' 'opencore-amr'
+'openjpeg2' 'opus' 'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump' 'smbclient'
+'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'tesseract' 'libtheora' 'twolame'
+'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so'
+'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'ocl-icd'
+'mesa' 'sndio' 'sdl2' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio'
 'libva' 'libdrm' 'libvdpau'
 'libfdk-aac' 'intel-media-sdk')
 makedepends=('ffnvcodec-headers' 'nasm' 'opencl-headers')
@@ -74,6 +73,7 @@ build() {
     --enable-libfribidi \
     --enable-libgsm \
     --enable-libiec61883 \
+    --enable-libjack \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
