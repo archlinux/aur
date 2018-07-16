@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r3011.g9e56bfa3
+pkgver=0.2.r3046.geaa0340e
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -34,9 +34,7 @@ prepare() {
 
   mkdir -p "$srcdir/osvr-core-build/"
 
-git pull origin pull/493/head --no-edit # positional tracking unifiedvideoinertialtracker
-
-#git cherry-pick 3b5e3a6f3132afbdaf251161ba3b3d03c790f45f #disable ignored-attributes warning on gcc
+git cherry-pick 3b5e3a6f3132afbdaf251161ba3b3d03c790f45f #disable ignored-attributes warning on gcc
 }
 
 build() {
