@@ -1,0 +1,12 @@
+pkgbase = cni-plugins-bin
+	pkgdesc = Some CNI network plugins, maintained by the containernetworking team
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/containernetworking/plugins
+	arch = x86_64
+	license = Apache
+	source = https://github.com/containernetworking/plugins/releases/download/v0.7.1/cni-plugins-amd64-v0.7.1.tgz
+	sha256sums = 6ecc5c7dbb8e4296b0d0d017e5440618e19605b9aa3b146a2c29af492f299dc7
+
+pkgname = cni-plugins-bin
+
