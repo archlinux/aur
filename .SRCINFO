@@ -1,0 +1,18 @@
+pkgbase = numix-themes-archblue
+	pkgdesc = A flat and light theme with a modern look and softer accents (GNOME, Openbox, Unity, Xfce) using the ArchLinux blue (#1793d1) and dark grey (#333333) colors
+	pkgver = 2.6.6.r50.5869b68
+	pkgrel = 1
+	url = https://github.com/shimmerproject/Numix.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = ruby-bundler
+	makedepends = inkscape
+	depends = gtk-engine-murrine
+	source = git+https://github.com/shimmerproject/Numix.git
+	source = Gemfile
+	sha256sums = SKIP
+	sha256sums = b1061ba7ce09c9eb3e41f59362aa8c21d27073b0658f13fb5eabdaea654afe2c
+
+pkgname = numix-themes-archblue
+
