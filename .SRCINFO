@@ -1,6 +1,6 @@
 pkgbase = gtkwrite
 	pkgdesc = GTKwrite Text Editor with Syntax Highlight written in C, GTK+2 & GtkSourceView2
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/drankinatty/gtkwrite
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = gtkwrite
 	depends = gtksourceview2
 	provides = gtkwrite
 	options = !emptydirs
-	source = https://github.com/drankinatty/gtkwrite/archive/v0.1.9.tar.gz
-	sha1sums = e60f14a60ea53aa2e3fa6256b928be32be6eebf0
+	source = https://github.com/drankinatty/gtkwrite/archive/v0.2.0.tar.gz
+	sha1sums = 9d3116becef45527bcacddc02f192902706b503d
 
 pkgname = gtkwrite
 
