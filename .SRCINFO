@@ -1,5 +1,5 @@
 pkgbase = spyder-git
-	pkgver = 3.3.0.r1339.gde337a27f
+	pkgver = 3.3.0.r1370.gc41693301
 	pkgrel = 1
 	url = https://github.com/spyder-ide/spyder
 	arch = any
@@ -57,7 +57,7 @@ pkgname = spyder3-git
 	depends = python-qtconsole
 	depends = python-rope
 	depends = python-sphinx
-	depends = python2-spyder-kernels
+	depends = python-spyder-kernels
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	optdepends = python-matplotlib: 2D/3D plotting

@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.3.0.r1339.gde337a27f
+pkgver=3.3.0.r1370.gc41693301
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -93,7 +93,7 @@ package_spyder3-git() {
            'python-qtconsole'
            'python-rope'
            'python-sphinx'
-           'python2-spyder-kernels'
+           'python-spyder-kernels'
 
            'desktop-file-utils'
            'gtk-update-icon-cache')
