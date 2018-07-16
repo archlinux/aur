@@ -2,7 +2,6 @@ post_install() {
   if ! getent passwd acestream &> /dev/null; then
     useradd -u 4035 -g video -m -s /usr/bin/nologin acestream
   fi
-  ln -sf /opt/acestream/start-engine /usr/bin/acestreamengine
 }
 
 post_upgrade() {
@@ -13,5 +12,4 @@ post_remove() {
   if getent passwd acestream &>/dev/null; then
     userdel acestream
   fi
-  rm -f /usr/bin/acestreamengine
 }

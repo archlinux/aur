@@ -1,7 +1,7 @@
 pkgbase = acestream-engine
 	pkgdesc = ACE Stream engine
 	pkgver = 3.1.16
-	pkgrel = 7
+	pkgrel = 8
 	url = http://acestream.org/
 	install = acestream-engine.install
 	arch = x86_64

@@ -9,7 +9,7 @@
 
 pkgname=acestream-engine
 pkgver=3.1.16
-pkgrel=7
+pkgrel=8
 _ubuntuver=16.04
 pkgdesc="ACE Stream engine"
 arch=('x86_64')
@@ -39,4 +39,6 @@ package() {
   cp -a $srcdir/usr/lib/python2.7/site-packages/M2Crypto* "$pkgdir/opt/acestream/lib"
   install -Dm644 "$srcdir/acestream-engine.service" "$pkgdir/usr/lib/systemd/system/acestream-engine.service"
   rm "$pkgdir/opt/acestream/lib/lxml-3.7.2-py2.7-linux-x86_64.egg"
+  mkdir -p "$pkgdir/usr/bin"
+  ln -sf "/opt/acestream/start-engine" "$pkgdir/usr/bin/acestreamengine"
 }
