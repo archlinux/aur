@@ -1,6 +1,6 @@
 pkgbase = webhackshl
 	pkgdesc = Herramienta para hacking ético y auditorías en sitios web y servidores.
-	pkgver = 8.6ee163f
+	pkgver = 9.ef1f3fb
 	pkgrel = 1
 	url = https://gitlab.com/sechacklabs/webhackshl
 	install = webhackshl.install
