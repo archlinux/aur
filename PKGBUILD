@@ -27,21 +27,21 @@ pkgver() {
     )
 }
 
-prepare() {
-  cd "${gitname}"
-  install -d build
+pkgver() {
+    cd "${gitname}"
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
-  cd "${gitname}/build"
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+    cd "${gitname}/"
+    meson . _build --prefix=/usr
+    ninja -C _build
 }
 
 package() {
-  cd "${gitname}/build"
-  make DESTDIR="${pkgdir}" install
+    cd "${gitname}/"
+    DESTDIR="${pkgdir}" ninja -C _build install
 }
-
