@@ -1,5 +1,5 @@
 # Maintainer: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
-# Contributor: M. Jarvis
+# Contributor: Erin Sheldon
 _pkgname=python-ngmix
 pkgbase=python-ngmix-git
 pkgname=("python-ngmix-git" "python2-ngmix-git")
