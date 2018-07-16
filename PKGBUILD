@@ -1,5 +1,5 @@
 # Maintainer: Mark Wagie <yochanan.marqos@gmail.com>
-# Co-Maintaine: jswenson
+# Co-Maintainer: jswenson
 # Packager: Chris Knepper <chris82thekid@gmail.com>
 pkgname=android-messages-desktop
 pkgver=0.4.0
@@ -24,5 +24,5 @@ package() {
                       "${pkgdir}${icons_dir}/${pkgname}.png"
     done
     mkdir ${pkgdir}/usr/bin
-    ln -sf "${pkgdir}/opt/Android Messages/android-messages-desktop" "${pkgdir}/usr/bin/android-messages-desktop"
+    ln -sf "${pkgdir}/opt/Android Messages/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
