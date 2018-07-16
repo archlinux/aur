@@ -1,26 +1,22 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=iterators
-_cranver=1.0.9
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=1.0.10
 pkgname=r-iterators
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Provides Iterator Construct for R"
+pkgdesc='Provides Iterator Construct for R'
 arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=iterators'
 license=('Apache')
 depends=('r' )
-
-optdepends=('r-runit')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('93db840dc132b34dae8f7b79821a4b0f')
+optdepends=('r-runit' 'r-foreach')
+source=("https://cran.r-project.org/src/contrib/iterators_"$_cranver".tar.gz")
+md5sums=('8935d3e59e998ae3e1f81cea5ad23789')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL iterators_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -d "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership iterators "$pkgdir"/usr/lib/R/library
 }
 
