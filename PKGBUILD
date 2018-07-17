@@ -2,7 +2,7 @@
 
 pkgname=pigeon-qt
 pkgver=0.15.99
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://pigeoncoin.org/"
 license=('MIT')
@@ -11,7 +11,7 @@ depends=(boost-libs qt5-base db4.8 zeromq miniupnpc qrencode protobuf libevent)
 makedepends=(boost qt5-tools)
 conflicts=(pigeon)
 install=pigeon-qt.install
-source=("${pkgname%-git}::git+http://github.com/Pigeoncoin/pigeoncoin.git"
+source=("${pkgname%-git}::git+http://github.com/Pigeoncoin/pigeoncoin.git#tag=v0.15.99.3"
         "$pkgname.desktop")
 sha256sums=('SKIP'
             '331bd8fb38aae6d94a0e7494ff183f8d918eeb6d143ffcfa8ca61546338f265d')
