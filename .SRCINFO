@@ -1,13 +1,13 @@
 pkgbase = madkitas-plasma5-themes
 	pkgdesc = 4 nice looking plasma5 themes by Madkita
-	pkgver = r44.0398eb7
+	pkgver = r46.23a2f7e
 	pkgrel = 1
 	url = https://github.com/Blacksuan19/Plasma-Themes
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = plasma-desktop
-	source = git+https://github.com/Blacksuan19/Plasma-Themes
+	source = git+https://github.com/Blacksuan19/Plasma-Themes.git
 	sha256sums = SKIP
 
 pkgname = plasma5-theme-aex-nomad-git
