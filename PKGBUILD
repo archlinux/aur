@@ -1,4 +1,4 @@
-# Maintainer: Ivan Semkin <ivan at semkin dot org>
+# Maintainer: Ivan Semkin <ivan at semkin dot ru>
 
 pkgname=cuteshapes-git
 _pkgname=cuteshapes
