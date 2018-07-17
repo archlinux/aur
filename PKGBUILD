@@ -1,6 +1,6 @@
 # Maintainer: Thibaud Kehler <thibaud.kehler at gmx dot net>
 pkgname='timelineproject-hg'
-pkgver=1.15.0.r5425+
+pkgver=1.17.0.r5763+
 pkgrel=1
 pkgdesc="Aims to create a free, cross-platform application for displaying and navigating events on a timeline."
 arch=('any')
