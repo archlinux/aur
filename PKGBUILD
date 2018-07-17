@@ -1,7 +1,7 @@
 pkgname=mingw-w64-python-bin
 pkgver=3.7.0
 _pybasever=37
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)"
 arch=('any')
 license=('PSF')
