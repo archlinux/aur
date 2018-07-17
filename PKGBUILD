@@ -1,23 +1,26 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 
-pkgname=cmake-modules-elementary-git
-pkgver=r34.90ad19e
+gitname=cmake-modules-elementary
+pkgname=("${gitname}-git")
+pkgver=latest
 pkgrel=1
 pkgdesc='elementary CMake Modules'
-arch=('any')
-url='https://github.com/elementary/cmake-modules'
+arch=('i686' 'x86_64')
+url='https://github.com/elementary/junk/tree/cmake-modules'
 license=('GPL3')
 depends=('cmake')
 makedepends=('git')
-provides=('cmake-modules-elementary')
-conflicts=('cmake-modules-elementary')
-source=('cmake-modules-elementary::git+https://github.com/elementary/cmake-modules.git')
+provides=("${gitname}")
+conflicts=("${gitname}")
+source=('cmake-modules-elementary::git+https://github.com/elementary/junk.git#branch=cmake-modules')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd cmake-modules-elementary
-
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    cd "${gitname}"
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare() {
@@ -30,18 +33,14 @@ prepare() {
 }
 
 build() {
-  cd cmake-modules-elementary/build
-
+  cd "${gitname}/build"
   cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd cmake-modules-elementary/build
-
+  cd "${gitname}/build"
   make DESTDIR="${pkgdir}" install
 }
-
-# vim: ts=2 sw=2 et:
