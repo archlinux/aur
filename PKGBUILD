@@ -3,7 +3,7 @@
 gitname=ValaCompiler
 auxname=valacompiler
 pkgname=("${auxname}-git")
-pkgver=r81.ae626b8
+pkgver=latest
 pkgrel=1
 pkgdesc="A simple GUI for the command line valac designed for elementary OS"
 arch=('i686' 'x86_64')
