@@ -1,18 +1,18 @@
 #Maintainer:xgdgsc<xgdgsc@gmail.com>
 
 pkgname=electronic-wechat-bin
-pkgver=2.0
+pkgver=2.1.5
 pkgrel=1
-pkgdesc="A better WeChat on macOS and Linux. Built with Electron by Zhongyi Tong."
-url=https://github.com/geeeeeeeeek/electronic-wechat
-arch=(i686 x86_64)
+pkgdesc="A better WeChat on macOS and Linux. Built with Electron. Maintained by kooritea"
+url=https://github.com/kooritea/electronic-wechat
+arch=(x86_64)
 replaces=('electronic-wechat' 'electronic-wechat-git')
 conflicts=('electronic-wechat' 'electronic-wechat-git')
 depends=('gconf')
 license=(MIT)
 
 
-md5sums=('3e2ebd0c2d5ba52923168fab54b05c14'
+md5sums=('6fc70080a6c0e25e48fe8ab700f8e837'
          '5067d2ecdfa58d16affc950102cd36bd'
          'ffc9bdbcce89519b59f78d4bb50ea315')
 
@@ -22,8 +22,8 @@ if [[ $CARCH = i686 ]];then
 else
   _arch=x64
 fi
-source=("https://github.com/geeeeeeeeek/electronic-wechat/releases/download/V$pkgver/linux-$_arch.tar.gz"
-"https://github.com/geeeeeeeeek/electronic-wechat/raw/master/assets/icon.png"
+source=("https://github.com/kooritea/electronic-wechat/releases/download/v$pkgver/electronic-wechat-linux-$_arch-$pkgver.zip"
+"https://github.com/kooritea/electronic-wechat/raw/master/assets/icon.png"
 "electronic-wechat.desktop")
 
 
