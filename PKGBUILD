@@ -4,7 +4,7 @@
 _gemname=vmail
 pkgname=$_gemname
 pkgver=2.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Vim interface to Gmail"
 arch=('any')
 url="http://danielchoi.com/software/vmail.html"
@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-mail' 'ruby-highline' 'ruby-sequel' 'ruby-versionomy' 'rub
 makedepends=('rubygems')
 source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-md5sums=('f772c8bf9d3f91bbe5fa776d3a8853de')
+md5sums=('2953ed35d5feb7c36ee02a05b5f17bba')
 
 package() {
   cd "$srcdir"
