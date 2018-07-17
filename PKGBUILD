@@ -1,17 +1,17 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=mod_authnz_pam
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Apache module to run PAM authorization on result of other module's authentication; also full Basic Auth PAM provider."
 arch=('i686' 'x86_64')
 license=('apache-2.0')
 url="https://www.adelton.com/apache/mod_authnz_pam/"
 depends=('apache'
-		'pam')
+         'pam')
 makedepends=('pkgconfig')
-source=(https://fedorapeople.org/cgit/adelton/public_git/mod_authnz_pam.git/snapshot/${pkgname}-${pkgver}.tar.xz)
-sha1sums=('644c25da063ae560cea8e6a7abf61a62a516e9a5')
+source=("https://github.com/adelton/mod_authnz_pam/archive/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('2d0056aefc394607bcdaaa53638c09c100ebd10faaab7cfef29553bfd60b8892')
 
 build() {
 	cd "${pkgname}-${pkgver}"

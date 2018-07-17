@@ -1,7 +1,7 @@
 pkgbase = mod_authnz_pam
 	pkgdesc = Apache module to run PAM authorization on result of other module's authentication; also full Basic Auth PAM provider.
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://www.adelton.com/apache/mod_authnz_pam/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = mod_authnz_pam
 	makedepends = pkgconfig
 	depends = apache
 	depends = pam
-	source = https://fedorapeople.org/cgit/adelton/public_git/mod_authnz_pam.git/snapshot/mod_authnz_pam-1.1.0.tar.xz
-	sha1sums = 644c25da063ae560cea8e6a7abf61a62a516e9a5
+	source = https://github.com/adelton/mod_authnz_pam/archive/mod_authnz_pam-1.2.0.tar.gz
+	sha256sums = 2d0056aefc394607bcdaaa53638c09c100ebd10faaab7cfef29553bfd60b8892
 
 pkgname = mod_authnz_pam
 
