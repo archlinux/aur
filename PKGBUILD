@@ -2,7 +2,7 @@
 
 pkgname=bittorrent2player
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 url=http://www.beroal.in.ua/prg/bittorrent2player/
 pkgdesc="Transfers data from the BitTorrent network to another protocol (currently HTTP) which is more suitable for media players."
 arch=("any")
@@ -24,5 +24,5 @@ package() {
 }
 
 sha512sums=( \
-	"421dbb6e2557b390de42ae96c4214bff555221e535f91ae8d88109d22a35e1d616d4736513f3c12daf33ad5e4d0d22fd82e9bf7ca3928ce75367b090f6d30376"
+	"21dae5ae20afab98913ca40a1c60ad2eabb119be11e4f7f2e23605e9ed3a104065ed14acb7818330ef3c1468f614d9cbb6477fbf5d44b688d89b75fae4f96200"
 	)
