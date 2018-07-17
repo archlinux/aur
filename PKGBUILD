@@ -1,26 +1,22 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=xts
-_cranver=0.10-2
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=0.11-0
 pkgname=r-xts
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="eXtensible Time Series"
+pkgdesc='eXtensible Time Series'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=xts'
 license=('GPL')
 depends=('r' 'r-zoo>=1.7.12')
-
 optdepends=('r-timeseries' 'r-timedate' 'r-tseries' 'r-chron' 'r-fts' 'r-tis' 'r-runit')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('c83c320e1699d060862214b70df92419')
+source=("https://cran.r-project.org/src/contrib/xts_"$_cranver".tar.gz")
+md5sums=('68599f6c9ccbf4e5595237bea7f0298a')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL xts_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -d "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership xts "$pkgdir"/usr/lib/R/library
 }
 
