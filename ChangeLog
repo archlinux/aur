@@ -1,3 +1,10 @@
+2018-07-17 Christopher Arndt <aur -at- chrisarndt -dot- de>
+	* 0.9.0.r1897.abdedd52-1
+	Removed absolete 'prepare' function from PKGBUILD.
+	Removed obsolete dependency on 'steinberg-vst36'.
+	Removed obsolete extra CXXFLAGS.
+	Added depencies 'curl' 'hicolor-icon-theme' and 'libxinerama'.
+
 2017-07-11 Christopher Arndt <aur -at- chrisarndt -dot- de>
 	* 0.9.0.r1876.927d2ed2-1
 	Added -Wno-error to CXXFLAGS as a workaround for code in JUCE sources
