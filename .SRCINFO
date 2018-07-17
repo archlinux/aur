@@ -1,6 +1,6 @@
 pkgbase = archvyrt
 	pkgdesc = libvirt provisioner for archlinux libvirt hosts
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/andrekeller/archvyrt
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = archvyrt
 	depends = gptfdisk
 	depends = arch-install-scripts
 	depends = debootstrap
-	source = https://files.pythonhosted.org/packages/source/a/archvyrt/archvyrt-0.5.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/archvyrt/archvyrt-0.6.0.tar.gz
 	md5sums = a19f80a2df28c330fa44a170d2039e09
 
 pkgname = archvyrt
