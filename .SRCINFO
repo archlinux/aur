@@ -1,0 +1,12 @@
+pkgbase = hello_wolrd_cpp_pkgbuild
+	pkgdesc = Hello World C++ PKGBUILD
+	pkgver = r2.ba4f8df
+	pkgrel = 1
+	url = https://gitlab.com/LinArcX/hello_wolrd_cpp_pkgbuild
+	arch = any
+	license = GPL-3.0
+	source = hello_wolrd_cpp_pkgbuild::git+https://gitlab.com/LinArcX/hello_wolrd_cpp_pkgbuild.git
+	sha256sums = SKIP
+
+pkgname = hello_wolrd_cpp_pkgbuild
+
