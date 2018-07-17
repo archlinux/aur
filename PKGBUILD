@@ -4,7 +4,7 @@
 
 _pkgname=nss
 pkgname=nss-hg
-pkgver=r13546.fff2c933097d
+pkgver=3.39.0r14421.1f58a4995451
 pkgrel=1
 pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
@@ -20,8 +20,13 @@ conflicts=('nss')
 provides=('nss')
 
 pkgver() {
+  local vmajor vminor vpatch
   cd "$_pkgname"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+
+  { read vmajor; read vminor; read vpatch; } \
+    < <(awk '/#define.*NSS_V(MAJOR|MINOR|PATCH)/ {print $3}' lib/nss/nss.h)
+
+  printf "%s.%s.%sr%s.%s" "$vmajor" "$vminor" "$vpatch" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 build() {
