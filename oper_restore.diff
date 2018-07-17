@@ -1,0 +1,5 @@
+27,28c27
+< #include <sys/xattr.h>
+< #include <errno.h>
+---
+> #include <attr/xattr.h>

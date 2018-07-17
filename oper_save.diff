@@ -1,0 +1,10 @@
+32,33c32
+< #include <sys/xattr.h>
+< #include <errno.h>
+---
+> #include <attr/xattr.h>
+63,66d61
+< 
+< #ifndef ENOATTR
+< #define ENOATTR ENODATA
+< #endif
