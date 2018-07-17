@@ -1,7 +1,7 @@
 # Maintainer: Chris Down <chris@chrisdown.name>
 
 pkgname=perl-build
-pkgver=1.13
+pkgver=1.23
 pkgrel=1
 pkgdesc="Compile and install perl"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/tokuhirom/Perl-Build"
 license=('GPL')
 depends=('plenv')
 source=("https://github.com/tokuhirom/Perl-Build/archive/$pkgver.zip")
-md5sums=('02cb9bc4f62f39ad075a2776a7e2026f')
+md5sums=('ae3f8b6e9c7f6dcee9576ed4f5fdda07')
 
 package() {
     mkdir -p "${pkgdir?}"{/opt/plenv/plugins/perl-build/bin,/usr/bin}
