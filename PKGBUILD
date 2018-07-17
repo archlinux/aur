@@ -1,7 +1,7 @@
-# Maintainer: Asyrique Thevendran <asyrique+AUR@gmail.com>
+# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Contributor: Asyrique Thevendran <asyrique+AUR@gmail.com>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: kaptoxic dragos240
-# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=rescuetime
 pkgver=2.10.1.1355
