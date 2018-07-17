@@ -4,15 +4,15 @@
 # Contributor: ask
 
 pkgname=rust-bindgen-git
-pkgver=0.36.0.af54e58
+pkgver=0.37.4.d61ab759
 pkgrel=1
 pkgdesc="Binding generator for rust language"
 arch=('i686' 'x86_64')
-url="https://github.com/servo/rust-bindgen"
+url="https://github.com/rust-lang-nursery/rust-bindgen"
 license=('BSD')
 makedepends=('rust')
 depends=('clang>=4.0.0')
-source=('git://github.com/servo/rust-bindgen.git')
+source=('git://github.com/rust-lang-nursery/rust-bindgen.git')
 sha512sums=('SKIP')
 
 pkgver() {
