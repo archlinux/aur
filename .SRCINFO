@@ -1,0 +1,13 @@
+pkgbase = faur
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = custom:ISC
+	depends = git
+	source = faur.1
+	source = faur.sh
+	md5sums = a01b73f1e9abd471e53b11440f94f492
+	md5sums = 72c778c3c8a782673e4971bfcaa28819
+
+pkgname = faur
+
