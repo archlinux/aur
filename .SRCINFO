@@ -1,0 +1,13 @@
+pkgbase = redox-relibc
+	pkgdesc = Relibc libc for Redox cross compilation on x86_64.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://redox-os.org/
+	arch = x86_64
+	options = !strip
+	options = !emptydirs
+	source = https://static.redox-os.org/toolchain/apt/x86-64-unknown-redox-relibc_0.0.1build1101_amd64.deb
+	sha512sums = 20d768cf1a262bcd917c351e9d41235dbaa1f518c553838802377e5f93165ef534530df83aa235227769807ef5e828e3c35437bc18202b96f35345767db3cb45
+
+pkgname = redox-relibc
+
