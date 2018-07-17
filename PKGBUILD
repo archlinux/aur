@@ -34,7 +34,7 @@ pkgbase=linux-gc
 _srcname=linux-4.17
 pkgver=4.17.6
 pkgrel=1
-_pdsversion=098s
+_pdsversion=098t
 arch=('x86_64')
 url="http://cchalpha.blogspot.co.uk/"
 license=('GPL2')
@@ -69,7 +69,7 @@ sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '0c7e6e4f8a2dbff5ea340ac63f8a274213f04436214aba72d7c0bd07cbdf2f90'
+            '77a9b3d9ea1fb1d771d0b4534b5332ec84e1583a12628299f7a3504b813fd2cb'
             '92f848d0e21fbb2400e50d1c1021514893423641e5450896d7b1d88aa880b2b9'
             'fc3c50ae6bd905608e0533a883ab569fcf54038fb9d6569b391107d9fd00abbc'
             'bc50c605bd0e1fa7437c21ddef728b83b6de3322b988e14713032993dfa1fc69'
