@@ -1,6 +1,6 @@
 pkgbase = ffmpeg2.8
 	pkgdesc = Complete solution to record, convert and stream audio and video
-	pkgver = 2.8.14
+	pkgver = 2.8.15
 	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
@@ -59,10 +59,10 @@ pkgbase = ffmpeg2.8
 	provides = libpostproc.so
 	provides = libswresample.so
 	provides = libswscale.so
-	source = https://ffmpeg.org/releases/ffmpeg-2.8.14.tar.xz
-	source = https://ffmpeg.org/releases/ffmpeg-2.8.14.tar.xz.asc
+	source = https://ffmpeg.org/releases/ffmpeg-2.8.15.tar.xz
+	source = https://ffmpeg.org/releases/ffmpeg-2.8.15.tar.xz.asc
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
-	sha256sums = ef061d9a6cdde8628d00613d17b467fb5ad75e7404ef523dc842e192c511a116
+	sha256sums = 7b5c0e60fb889fd52ce17a4ab653a2916ad13cbe5b31125876cbf5eaec5ebd18
 	sha256sums = SKIP
 
 pkgname = ffmpeg2.8
