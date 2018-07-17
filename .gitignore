@@ -1,1 +1,5 @@
 .*~
+*.tar.xz
+/pkg/
+/src/
+/sibt/

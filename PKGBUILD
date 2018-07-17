@@ -15,14 +15,14 @@ source=(git+https://github.com/pid0/sibt.git)
 sha256sums=('SKIP')
 
 check() {
-  cd "$srcdir"/"$pkgname"-"$pkgver"
+  cd "$srcdir"/sibt
 
   #TODO paver does not return non-zero if tests fail
   paver acceptance_test
 }
 
 package() {
-  cd "$srcdir"/"$pkgname"-"$pkgver"
+  cd "$srcdir"/sibt
 
   paver install --root="$pkgdir" --prefix=/usr -O1
   #python setup.py install --root="$pkgdir" --prefix=/usr -O1
