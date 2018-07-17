@@ -2,15 +2,15 @@
 # Contributor: Alexander Baldeck <lex@tentriplenine.com>
 
 pkgname=charles
-pkgver=4.2.5
-pkgrel=2
+pkgver=4.2.6
+pkgrel=1
 pkgdesc="Web debugging proxy application"
 arch=(any)
 url="http://www.charlesproxy.com"
 license=('custom' 'custom:bounce' 'APACHE')
 depends=('java-runtime>=8' 'hicolor-icon-theme')
 source=(http://www.charlesproxy.com/assets/release/${pkgver}/charles-proxy-${pkgver}.tar.gz)
-md5sums=('59d0bd2159616fdc11d4f05c8e2a1351')
+md5sums=('83a1763e3e47817c0d8376add6699e2a')
 
 build() {
   cd "$srcdir/$pkgname"
