@@ -1,15 +1,22 @@
 pkgbase = python-ngmix
-	pkgdesc = Python interface to gbdes pixel map (astrometry) solutions
-	pkgver = r1087.3a0e7ce
+	pkgdesc = Gaussian mixture models and other code for working with for 2d images, implemented in python
+	pkgver = v0.9.4.r0.28e501c
 	pkgrel = 1
 	url = https://github.com/esheldon/ngmix
 	arch = x86_64
 	license = GPL
+	checkdepends = make
 	makedepends = git
-	depends = python
-	depends = python-numpy
-	source = python-ngmix-r1087.3a0e7ce::git+https://github.com/esheldon/ngmix
+	makedepends = python
+	makedepends = python-numpy
+	makedepends = python2
+	makedepends = python2-numpy
+	source = python-ngmix::git+https://github.com/esheldon/ngmix#tag=v0.9.4
 	md5sums = SKIP
 
 pkgname = python-ngmix
+	depends = python
+
+pkgname = python2-ngmix
+	depends = python2
 
