@@ -4,7 +4,7 @@
 
 pkgname=butt
 pkgver=0.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="butt (broadcast using this tool) is an easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64')
 license=('GPL2')
