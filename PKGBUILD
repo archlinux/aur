@@ -4,7 +4,7 @@
 pkgname=openmvg-git
 _gitname='openMVG'
 _fragment="#branch=develop"
-pkgver=1.3.r115.g903b2f44
+pkgver=1.3.r118.gd1de7887
 pkgrel=1
 pkgdesc='open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.'
 arch=('i686' 'x86_64')
@@ -17,14 +17,13 @@ source=("git+https://github.com/${_gitname}/${_gitname}.git${_fragment}"
         'git+https://github.com/openMVG-thirdparty/osi_clp.git'
         'git+https://github.com/openMVG-thirdparty/cereal.git'
         'findflann-v0.1.patch'
-        'stlplus.patch'
        )
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          'f421cb25208a4f95784035d9823abe04'
-         '45325ddb7a710f79e619ba2085697833')
+         )
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -40,8 +39,6 @@ prepare() {
   git submodule update
   msg "flann patch"
   git apply ${srcdir}/findflann-v0.1.patch
-  msg "fix link target missing stlplus library"
-  git apply ${srcdir}/stlplus.patch
 }
 
 build() {
