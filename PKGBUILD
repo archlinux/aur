@@ -3,7 +3,7 @@
 
 _gemname=vmail
 pkgname=$_gemname
-pkgver=2.9.9
+pkgver=2.9.4
 pkgrel=1
 pkgdesc="A Vim interface to Gmail"
 arch=('any')
