@@ -1,4 +1,4 @@
-pkgbase = redox-binutils-bin
+pkgbase = redox-binutils
 	pkgdesc = Binutils for Redox cross compilation on x86_64.
 	pkgver = 0.0.2
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = redox-binutils-bin
 	source = https://static.redox-os.org/toolchain/apt/x86-64-unknown-redox-binutils_0.0.2build1101_amd64.deb
 	sha512sums = d2c7ee878c2f96ad6d2fb8e8201b0c42afca2b761c23ecd37ccca180208981b541dd6af97ec42ba8143b4ca19598aabfe88af8a6376418c4dc1a35b229804858
 
-pkgname = redox-binutils-bin
+pkgname = redox-binutils
 
