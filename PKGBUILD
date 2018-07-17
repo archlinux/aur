@@ -1,6 +1,6 @@
 _pkgname=pakku-gui
 pkgname=$_pkgname-git
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="GTK frontend for pakku"
 arch=("any") # If pakku and python can be installed, this too
