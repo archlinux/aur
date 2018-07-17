@@ -1,0 +1,19 @@
+pkgbase = pakku-gui-git
+	pkgdesc = GTK frontend for pakku
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://gitlab.com/mrvik/pakku-gui
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = pakku
+	provides = pakku-gui
+	conflicts = pakku-gui
+	source = git+https://gitlab.com/mrvik/pakku-gui.git
+	sha256sums = SKIP
+
+pkgname = pakku-gui-git
+
