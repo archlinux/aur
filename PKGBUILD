@@ -34,7 +34,7 @@ prepare() {
 
   mkdir -p "$srcdir/osvr-core-build/"
 
-git cherry-pick 3b5e3a6f3132afbdaf251161ba3b3d03c790f45f #disable ignored-attributes warning on gcc
+  #git cherry-pick 3b5e3a6f3132afbdaf251161ba3b3d03c790f45f #disable ignored-attributes warning on gcc
 }
 
 build() {
