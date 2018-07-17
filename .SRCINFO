@@ -1,0 +1,27 @@
+pkgbase = sibt
+	pkgdesc = A configurable command line interface to existing backup tools
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://pid0.github.io/sibt-doc/index.html
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	checkdepends = python-paramiko
+	checkdepends = python2-fuse
+	checkdepends = phodav
+	depends = python
+	depends = bash
+	depends = openssh
+	depends = util-linux
+	depends = rsync
+	depends = rdiff-backup
+	depends = tar
+	depends = lzop
+	depends = duplicity
+	optdepends = sshfs: For auto-mounting via sftp
+	optdepends = cronie: For using anacron as a scheduler
+	source = git+https://github.com/pid0/sibt.git
+	sha256sums = SKIP
+
+pkgname = sibt
+
