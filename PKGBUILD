@@ -13,7 +13,7 @@ source=("https://codeload.github.com/phobal/ivideo/tar.gz/${pkgver}"
         "https://raw.githubusercontent.com/phobal/ivideo/master/LICENSE")
 
 sha512sums=('4aa0d5e94d5c7b48c2956863bc5374ba825fcc05cba5e2409323a02bf0f68caeeeab9bc0dcd98dc047f454d594c98b5857d8d20357e28f58d9e828b9e92580a6'
-            'bc3a9a02b48c36cd3118296401934fe209589e2bad1fd18213c044344d968dee73e316d616b0d967220cb54a99e5eee65dc8c3ec08ab1d5493d7e97ec67532c3')
+            '5372a49a3dfc0219798af0e7f2f5a3507b915ddb6db99ce54f2f7c43a2a538d21c08314b6b13ea2ebfcf304da04a28cf4d7fc031c72b07b3dbaea284f33377a5')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
