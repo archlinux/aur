@@ -2,7 +2,7 @@
 
 pkgname=mattermost-git
 _pkgname="${pkgname%-git}"
-pkgver=5.1.0.r32.g10f571784
+pkgver=5.1.0.r37.gf2c180390
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -38,7 +38,7 @@ source=(
 sha512sums=(
     'SKIP'
     'SKIP'
-    '893bab002d343ee5cc9a07d6221cc4f00d4d6c9d0adccc9b1bf35619306384fcb1261058c2dd63662f33ae41a62b1d735fa2e3cf50b479709edf272ea58324d1'
+    'cd02b3da86869117554c3c53a657a4b46989ea533b7b47c24fb642ffbd182ce6ecfb16a8ddde3af4d5e8cff0ab41a932753129662e126994e1ad5912545e6eb4'
     'b95bf2c0d840d0e85baebc1051c872056fa4990d263334fecc7b11d96085cb65a69dd866f18889e209336028f17c02152c13a92d2be1c21848939f22203439f0'
     'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9')
 
@@ -141,6 +141,7 @@ package() {
     cd "${srcdir}"/src/github.com/${_pkgname}/${_pkgname}-server
 
     install -dm755 \
+        "${pkgdir}"/usr/bin \
         "${pkgdir}"/usr/share/webapps \
         "${pkgdir}"/var/log/${_pkgname} \
         "${pkgdir}"/etc/webapps \
@@ -165,7 +166,8 @@ package() {
     mv NOTICE.txt README.md "${pkgdir}"/usr/share/doc/${_pkgname}
 
     cd "${srcdir}"
-    install -Dm755 bin/${_pkgname} "${pkgdir}"/usr/share/webapps/${_pkgname}/bin/${_pkgname}
+    install -Dm755 "bin/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/bin/${_pkgname}"
+    ln -s "/usr/share/webapps/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 ${_pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
     install -Dm644 ${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
     install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
