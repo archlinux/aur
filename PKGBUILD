@@ -21,9 +21,10 @@ package(){
     _libdir=$pkgdir/usr/lib/$_pkgname
     _applications=$pkgdir/usr/share/applications
     cd "$srcdir/$_pkgname"
-    mkdir -p "$_libdir" "$_applications" "$pkgdir/usr/bin"
+    mkdir -p "$_libdir" "$_applications" "$pkgdir/usr/bin" "$pkgdir/etc"
     cp *.py "$_libdir"
     cp "$_pkgname.desktop" "$_applications"
+    cp "$_pkgname.conf" "$pkgdir/etc"
     chmod +x "$_libdir/main.py"
     ln -s "/usr/lib/$_pkgname/main.py" "$pkgdir/usr/bin/$_pkgname"
 }
