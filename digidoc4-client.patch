@@ -1,7 +1,6 @@
-diff --git a/client/dialogs/PinUnblock.cpp b/client/dialogs/PinUnblock.cpp
-index d5016b2..0459f83 100644
---- a/client/dialogs/PinUnblock.cpp
-+++ b/client/dialogs/PinUnblock.cpp
+diff -ura qdigidoc4_4.0.0.orig/client/dialogs/PinUnblock.cpp qdigidoc4_4.0.0.new/client/dialogs/PinUnblock.cpp
+--- qdigidoc4_4.0.0.orig/client/dialogs/PinUnblock.cpp	2018-07-17 16:53:37.108279016 +0100
++++ qdigidoc4_4.0.0.new/client/dialogs/PinUnblock.cpp	2018-07-17 16:54:20.769255458 +0100
 @@ -25,6 +25,7 @@
  
  #include <QLabel>
@@ -10,10 +9,9 @@ index d5016b2..0459f83 100644
  
  
  struct InfoLine
-diff --git a/client/dialogs/Updater.cpp b/client/dialogs/Updater.cpp
-index 83c27b0..294217b 100644
---- a/client/dialogs/Updater.cpp
-+++ b/client/dialogs/Updater.cpp
+diff -ura qdigidoc4_4.0.0.orig/client/dialogs/Updater.cpp qdigidoc4_4.0.0.new/client/dialogs/Updater.cpp
+--- qdigidoc4_4.0.0.orig/client/dialogs/Updater.cpp	2018-07-17 16:53:37.108279016 +0100
++++ qdigidoc4_4.0.0.new/client/dialogs/Updater.cpp	2018-07-17 16:54:20.769255458 +0100
 @@ -41,6 +41,7 @@
  #include <QtNetwork/QNetworkReply>
  #include <QtNetwork/QSslKey>
@@ -22,10 +20,9 @@ index 83c27b0..294217b 100644
  #include <QtWidgets/QPushButton>
  
  #include <openssl/evp.h>
-diff --git a/client/widgets/OtherData.cpp b/client/widgets/OtherData.cpp
-index abb05bd..bb24bfe 100644
---- a/client/widgets/OtherData.cpp
-+++ b/client/widgets/OtherData.cpp
+diff -ura qdigidoc4_4.0.0.orig/client/widgets/OtherData.cpp qdigidoc4_4.0.0.new/client/widgets/OtherData.cpp
+--- qdigidoc4_4.0.0.orig/client/widgets/OtherData.cpp	2018-07-17 16:52:59.297433337 +0100
++++ qdigidoc4_4.0.0.new/client/widgets/OtherData.cpp	2018-07-17 16:54:20.769255458 +0100
 @@ -21,6 +21,8 @@
  #include "ui_OtherData.h"
  #include "Styles.h"
@@ -35,3 +32,13 @@ index abb05bd..bb24bfe 100644
  OtherData::OtherData(QWidget *parent)
  : QWidget(parent)
  , ui(new Ui::OtherData)
+diff -ura qdigidoc4_4.0.0.orig/common/qtsingleapplication/CMakeLists.txt qdigidoc4_4.0.0.new/common/qtsingleapplication/CMakeLists.txt
+--- qdigidoc4_4.0.0.orig/common/qtsingleapplication/CMakeLists.txt	2018-07-17 16:53:39.498332469 +0100
++++ qdigidoc4_4.0.0.new/common/qtsingleapplication/CMakeLists.txt	2018-07-17 16:54:30.429490042 +0100
+@@ -5,5 +5,5 @@
+ set_target_properties( qtsingleapplication PROPERTIES AUTOMOC TRUE )
+ 
+ if( Qt5Widgets_FOUND )
+-	qt5_use_modules( qtsingleapplication Widgets Network )
++	target_link_libraries( qtsingleapplication Qt5::Widgets Qt5::Network )
+ endif()
