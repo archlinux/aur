@@ -7,6 +7,7 @@ pkgbase = mingw-w64-python36-bin
 	license = PSF
 	makedepends = mingw-w64-tools
 	makedepends = mingw-w64-binutils
+	makedepends = python2-numpy
 	depends = mingw-w64-crt
 	optdepends = mingw-w64-wine: runtime support
 	noextract = python-3.6.5-embed-win32.zip

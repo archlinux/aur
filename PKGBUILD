@@ -8,7 +8,7 @@ license=('PSF')
 url="http://www.python.org/"
 depends=('mingw-w64-crt')
 optdepends=('mingw-w64-wine: runtime support')
-makedepends=('mingw-w64-tools' 'mingw-w64-binutils')
+makedepends=('mingw-w64-tools' 'mingw-w64-binutils' 'python2-numpy')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win32.zip"
         "https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-amd64.zip"
