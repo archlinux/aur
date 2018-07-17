@@ -1,4 +1,4 @@
-pkgname=sibt
+pkgname=sibt-git
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="A configurable command line interface to existing backup tools"

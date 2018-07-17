@@ -1,4 +1,4 @@
-pkgbase = sibt
+pkgbase = sibt-git
 	pkgdesc = A configurable command line interface to existing backup tools
 	pkgver = 0.2.1
 	pkgrel = 1
@@ -23,5 +23,5 @@ pkgbase = sibt
 	source = git+https://github.com/pid0/sibt.git
 	sha256sums = SKIP
 
-pkgname = sibt
+pkgname = sibt-git
 
