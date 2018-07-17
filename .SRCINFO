@@ -1,0 +1,16 @@
+pkgbase = bpm-git
+	pkgdesc = Blue Pink Metronome for Qt5. Easy to use metronome controlled by the keyboard.
+	pkgver = 4fc659c
+	pkgrel = 1
+	url = https://github.com/cfillion/bpm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = tup
+	depends = qt5-base
+	depends = qt5-multimedia
+	source = git://github.com/cfillion/bpm
+	md5sums = SKIP
+
+pkgname = bpm-git
+
