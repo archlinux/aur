@@ -1,7 +1,7 @@
 pkgbase = butt
 	pkgdesc = butt (broadcast using this tool) is an easy to use, multi OS streaming tool
 	pkgver = 0.1.16
-	pkgrel = 2
+	pkgrel = 3
 	url = http://butt.sourceforge.net/
 	arch = i686
 	arch = x86_64
