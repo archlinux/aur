@@ -1,0 +1,21 @@
+pkgbase = compiler-git
+	pkgdesc = A simple GUI for the command line valac designed for elementary OS
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/basjam/ValaCompiler
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	makedepends = git
+	depends = gtk3
+	depends = vala
+	depends = granite
+	provides = vala-compiler
+	conflicts = vala-compiler
+	source = git+https://github.com/basjam/ValaCompiler.git
+	md5sums = SKIP
+
+pkgname = compiler-git
+
