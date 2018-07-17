@@ -1,5 +1,5 @@
 # Maintainer: Thibaud Kehler <thibaud.kehler at gmx dot net>
-pkgname='timelineproject-hg'
+pkgname=timelineproject-hg
 pkgver=1.17.0.r5763+
 pkgrel=1
 pkgdesc="Aims to create a free, cross-platform application for displaying and navigating events on a timeline."
@@ -8,6 +8,8 @@ url="http://thetimelineproj.sourceforge.net/"
 license=('GPL3')
 depends=('python2-humblewx' 'wxpython')
 makedepends=('mercurial' 'rsync')
+provides=("${pkgname%-hg}")
+conflicts=("${pkgname%-hg}")
 source=("${pkgname%-hg}::hg+http://hg.code.sf.net/p/thetimelineproj/main"
         "timelineproject.desktop")
 md5sums=('SKIP'
