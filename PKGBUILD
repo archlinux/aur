@@ -65,11 +65,11 @@ _rev_override="n"
 
 pkgbase=linux-clear
 __basekernel=4.17
-_minor=6
+_minor=7
 pkgver=${__basekernel}.${_minor}
 #_clearver=${__basekernel}.6-591
 _clearver=b97935c254430d481eef40f140536311a817c1c6
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -95,7 +95,7 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '7699b2246e4ed1e284f2947d5e0b66653c27574995caf6a02a3280bd055cfedf'
+            '7f96003274d45fabda457951919c68a5856c7b40e4ee230baa0492dd8caf2e97'
             'SKIP'
             'SKIP'
             'f0d2492f4561e2559f6c9471b231cb8262d45762c0e7cccf787be5c189b4e2d6'
