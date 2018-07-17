@@ -9,7 +9,7 @@ pkgdesc="butt (broadcast using this tool) is an easy to use, multi OS streaming 
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://butt.sourceforge.net/"
-depends=('fltk' 'libpng12' 'portaudio' 'libfdk-aac')
+depends=('fltk' 'libpng12' 'portaudio' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate')
 optdepends=('icecast')
 source=("http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
         "butt-gcc6.patch")
