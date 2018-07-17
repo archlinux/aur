@@ -1,6 +1,6 @@
 pkgbase = pacui
-	pkgdesc = Bash script providing advanced Pacman and Trizen/Yay/Pikaur/Yaourt/Pacaur functionality in a simple UI
-	pkgver = 1.10.3
+	pkgdesc = Bash script providing advanced Pacman and Yay/Pikaur/Aurman/Pakku/Trizen/Pacaur functionality in a simple UI
+	pkgver = 1.11
 	pkgrel = 1
 	url = https://github.com/excalibur1234/pacui
 	arch = any
@@ -10,17 +10,19 @@ pkgbase = pacui
 	depends = wget
 	depends = sudo
 	depends = fzf
-	optdepends = pacaur: Needed for AUR support.
-	optdepends = yaourt: Needed for AUR support.
-	optdepends = yay: Needed for AUR support.
-	optdepends = pikaur: Needed for AUR support.
-	optdepends = trizen: Needed for AUR support.
+	optdepends = yay: One AUR helper is needed for AUR support.
+	optdepends = pikaur: One AUR helper is needed for AUR support.
+	optdepends = aurman: One AUR helper is needed for AUR support.
+	optdepends = pakku: One AUR helper is needed for AUR support.
+	optdepends = trizen: One AUR helper is needed for AUR support.
+	optdepends = pacaur: One AUR helper is needed for AUR support.
+	optdepends = pacman-mirrors: Needed for Manjaro mirror support
 	optdepends = pacman-mirrors: Needed for Manjaro mirror support
 	optdepends = reflector: Needed for Arch Linux mirror support
 	optdepends = downgrade: Needed for hidden "downgrade" option.
 	conflicts = pacui-git
-	source = https://github.com/excalibur1234/pacui/archive/1.10.3.tar.gz
-	md5sums = 8fcc4c5f85be56de69f6660ac91544e9
+	source = https://github.com/excalibur1234/pacui/archive/1.11.tar.gz
+	md5sums = 13d43a8312e954a5bf3e3aa331be18af
 
 pkgname = pacui
 
