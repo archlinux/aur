@@ -1,0 +1,13 @@
+pkgbase = redox-newlib
+	pkgdesc = Newlib libc for Redox cross compilation on x86_64.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://rdox-os.org/
+	arch = x86_64
+	options = !strip
+	options = !emptydirs
+	source = https://static.redox-os.org/toolchain/apt/x86-64-unknown-redox-newlib_0.0.3build1101_amd64.deb
+	sha512sums = debee1bb91e87aed9f02ffeca9425acf756aa555b7f2c86601bf711b6041c5205871c20bc056999c44d53203e2a0321ff1ef274fa21ce98ae8a96fd830bceb50
+
+pkgname = redox-newlib
+
