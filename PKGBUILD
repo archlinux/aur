@@ -3,7 +3,7 @@
 
 _npmname=express
 pkgname=nodejs-$_npmname
-pkgver=4.16.2
+pkgver=4.16.3
 pkgrel=1
 pkgdesc="Fast, unopinionated, minimalist web framework."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('30b8dd924dd2452ecd85ad400f104b5ad723f32296e7bd183550ffbb8539d662')
+sha256sums=('7e6e24c704d81f81b24f19e6faf1613b3eca752363b755e61debe02ef77a0ca8')
 
 package() {
   npm install \
@@ -21,7 +21,6 @@ package() {
     --prefix "$pkgdir/usr" \
     "$srcdir"/$_npmname-$pkgver.tgz
 
-  rm -r "$pkgdir"/usr/etc
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 
   install -Dm0644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" \
