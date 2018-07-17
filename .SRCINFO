@@ -1,0 +1,14 @@
+pkgbase = ss7calc-git
+	pkgdesc = SS7 Signaling Point Code calculator
+	pkgver = r37.24b0ece
+	pkgrel = 1
+	url = https://github.com/philpraxis/ss7calc
+	arch = any
+	license = eGPL
+	makedepends = git
+	depends = python
+	source = ss7calc::git+https://github.com/philpraxis/ss7calc#branch=master
+	md5sums = SKIP
+
+pkgname = ss7calc-git
+
