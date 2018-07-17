@@ -33,7 +33,7 @@ package() {
 	make DESTDIR="$pkgdir/" install
 
 	# Desktop file
-	# Category "Sound" is invalid, reaplce it with "AudioVideo;Audio"
+	# Category "Sound" is invalid, replace it with "AudioVideo;Audio"
 	desktop-file-install --remove-category="Sound" --add-category="AudioVideo;Audio" --dir="$pkgdir/usr/share/applications" "icons/$pkgname.desktop"
 
 	# Icons
