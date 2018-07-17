@@ -1,11 +1,12 @@
 pkgbase = ruby-benchmark_suite
 	pkgdesc = A set of enhancements to the standard library benchmark.rb.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/evanphx/benchmark_suite
 	arch = any
 	license = MIT
 	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-benchmark-ips
 	noextract = benchmark_suite-1.0.0.gem
