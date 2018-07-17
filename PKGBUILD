@@ -1,7 +1,7 @@
 # Maintainer: Nils Kvist <robstenklippa@gmail.com>
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
-pkgname=mondo-gener
+pkgname=mondo-generator
 pkgver=0.1.1
 pkgrel=1
 pkgdesc='a theme template manager and generator'
