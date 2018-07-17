@@ -1,0 +1,11 @@
+pkgbase = nogsfonts
+	pkgdesc = Dummy package that replaces gsfonts. Probably breaks something, use at your own risk.
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	provides = gsfonts
+	conflicts = gsfonts
+	replaces = gsfonts
+
+pkgname = nogsfonts
+
