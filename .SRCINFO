@@ -1,0 +1,15 @@
+pkgbase = systemd-bootchart
+	pkgdesc = Boot performance graphing tool
+	pkgver = 233
+	pkgrel = 1
+	url = https://github.com/systemd/systemd-bootchart
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = docbook-xsl
+	depends = libsystemd
+	source = https://github.com/systemd/systemd-bootchart/releases/download/v233/systemd-bootchart-233.tar.xz
+	md5sums = fbe3fa306d4d0066301b9deadafbd157
+
+pkgname = systemd-bootchart
+
