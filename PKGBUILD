@@ -1,9 +1,9 @@
 pkgname=whatsie
 pkgver=2.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
 arch=('x86_64')
-url="https://github.com/gsantner/$pkgname"
+url="https://github.com/oberon-manjaro/$pkgname"
 license=('MIT')
 depends=('desktop-file-utils'
          'gconf'
