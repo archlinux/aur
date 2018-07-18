@@ -1,6 +1,6 @@
 pkgbase = subedit
 	pkgdesc = Subtitle editor written in bash
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/helixarch/subedit
 	install = subedit.install
@@ -9,9 +9,9 @@ pkgbase = subedit
 	depends = bash
 	depends = dos2unix
 	depends = uchardet
-	source = subedit-1.1.tar.gz::https://github.com/helixarch/subedit/archive/1.1.tar.gz
+	source = subedit-1.2.tar.gz::https://github.com/helixarch/subedit/archive/1.2.tar.gz
 	source = subedit.install
-	sha512sums = f36d91d0ba5aaf13a3bf3b5c38f7525f09de6dc4f6e30a81c8bfc8b4e93d49a50d0896ecf0ee04497f0bee2f279dbe99bbf7876ada5fd40078657bbe943e2377
+	sha512sums = 55d95af769e56b35cabcd0a0581b3fac7c4e6dfcf83320afc12a6a13ab0bbc21800f884789b898d8bd89353cc6fdc53856859411c175fe67c6d91091d1a5641c
 	sha512sums = baee56c87a9ed1974c6c5793472290d3302e0236a7bdcc585a841c5455463fba43ec2a6c10fa5945b39f60917eb88c0b6c1b2187ddbdcea6da758783df702d14
 
 pkgname = subedit
