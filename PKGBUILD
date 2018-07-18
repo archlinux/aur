@@ -1,8 +1,9 @@
-# Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
+# Maintainer: Zion Nimchuk (hcorion) <zionnimchuk@gmail.com>
+# Contributor: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=dxvk-legacy-git
 _name=dxvk
-pkgver=20180622.a1f57d9
+pkgver=20180628.5d10170
 pkgrel=1
 epoch=
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine. Legacy branch for crap nvidia drivers."
