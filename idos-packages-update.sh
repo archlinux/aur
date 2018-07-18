@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=20180718.6
+VERSION=20180718.7
 
 ##
 #
@@ -286,7 +286,7 @@ echo ""
     
     cat <<< "${_info} |;${_pkg};| ${_old_ver};${_ver_diff} ${_aur_ver}"
   done
-} | column -o ' ' -s ';' -t -R 1,2 -N 'Upgr.?,package,local ver.,AUR ver.'
+} | column -o ' ' -s ';' -t -R 1,2 -N 'Upgr.?,package,| local ver.,| AUR ver.'
 msg ''
 
 
@@ -325,4 +325,4 @@ echo ""
     
     cat <<< "${_pkg};| ${_old_ver};${_ver_diff} ${_new_ver}"
   done
-} | column -o ' ' -s ';' -t -R 1 -N 'package,old ver.,new ver.'
+} | column -o ' ' -s ';' -t -R 1 -N 'package,| old ver.,| new ver.'

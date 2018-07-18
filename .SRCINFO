@@ -1,6 +1,6 @@
 pkgbase = idos-package-updater-script
 	pkgdesc = Bash script which automates the process of updating installed IDOS timetable browser related packages by reinstalling and thus fetching the newest version.
-	pkgver = 20180718.6
+	pkgver = 20180718.7
 	pkgrel = 1
 	epoch = 0
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = idos-package-updater-script
 	depends = yaourt
 	source = idos-packages-update.sh
 	source = copying.txt
-	sha256sums = 66843bc0c490e11dbd50c662d126f526bc7e798e18c11fe4f05b4fea4f732607
+	sha256sums = a88cf20bebb31e8bc6e51213d1312ee6f70f400710f542449bcc80af637c412d
 	sha256sums = c3cbff25307e905545788f5c74cc137d79706c60549092f2a37919b93cf55ee3
 
 pkgname = idos-package-updater-script
