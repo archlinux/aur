@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=20180718.4
+VERSION=20180718.5
 
 ##
 #
@@ -281,7 +281,7 @@ echo ""
     if [ -n "${_aur_ver}" ]; then
       _ver_diff="$(compare_versions "${_old_ver}" "${_aur_ver}")"
     else
-      _ver_diff="|"
+      _ver_diff=" "
     fi
     
     cat <<< "${_info} |;${_pkg};| ${_old_ver};${_ver_diff} ${_aur_ver}"
@@ -323,6 +323,6 @@ echo ""
     _new_ver="$(sed -En 's|^.*nv=([^ ]*).*$|\1|gp' <<< "${_flags}")"
     _ver_diff="$(compare_versions "${_old_ver}" "${_new_ver}")"
     
-    cat <<< "${_pkg};| ${_old_ver};| ${_ver_diff} ${_new_ver}"
+    cat <<< "${_pkg};| ${_old_ver};${_ver_diff} ${_new_ver}"
   done
 } | column -o ' ' -s ';' -t -R 1,2 -N 'package,old ver.,new ver.'
