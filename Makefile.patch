@@ -1,0 +1,8 @@
+413,415c413,415
+< 	mkdir -pv $(DESTDIR)$(SYSDOCPATH)/shtools
+< 	cp index.html $(DESTDIR)$(SYSDOCPATH)/shtools/index.html
+< 	cp -R www $(DESTDIR)$(SYSDOCPATH)/shtools/
+---
+> 	#mkdir -pv $(DESTDIR)$(SYSDOCPATH)/shtools
+> 	#cp index.html $(DESTDIR)$(SYSDOCPATH)/shtools/index.html
+> 	#cp -R www $(DESTDIR)$(SYSDOCPATH)/shtools/
