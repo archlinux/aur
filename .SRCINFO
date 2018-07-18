@@ -1,0 +1,15 @@
+pkgbase = python2-libvslvm
+	pkgdesc = library to access the Linux Logical Volume Manager (LVM)
+	pkgver = 20160110
+	pkgrel = 1
+	url = https://github.com/libyal/libvslvm
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://github.com/libyal/libvslvm/releases/download/20160110/libvslvm-experimental-20160110.tar.gz
+	md5sums = 03c3e53b5817e9e9ec2e0bc107ebc733
+
+pkgname = python2-libvslvm
+
