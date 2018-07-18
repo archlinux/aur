@@ -42,7 +42,8 @@ prepare() {
 check() {
   cd "$srcdir"/$_pkgname
   # https://github.com/mitmproxy/mitmproxy/issues/2892
-  python setup.py pytest
+#  python setup.py pytest
+  tox
 }
 
 package() {
