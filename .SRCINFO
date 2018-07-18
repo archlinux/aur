@@ -1,0 +1,15 @@
+pkgbase = potd
+	pkgdesc = A hgih scalable SSH/TCP honeypot.
+	pkgver = 13d2559fcf6240754cbf4c5cc30079a1d4a4bdf7
+	pkgrel = 1
+	url = https://github.com/lnslbrty/potd
+	arch = i686
+	arch = x86_64
+	license = BSD-3
+	depends = libssh
+	depends = libseccomp
+	source = https://github.com/lnslbrty/potd/archive/13d2559fcf6240754cbf4c5cc30079a1d4a4bdf7.zip
+	md5sums = 214bdf40201fd23cc981d081eefc0263
+
+pkgname = potd
+
