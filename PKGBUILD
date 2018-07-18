@@ -2,10 +2,10 @@
 
 pkgname=bisq-bin
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('x86_64')
-url="https://bitsquare.io/"
+url="https://bisq.network"
 license=('AGPL3')
 depends=('java-openjfx' 'gtk2')
 source_x86_64=("https://github.com/bitsquare/bitsquare/releases/download/v${pkgver}/Bisq-64bit-${pkgver}.deb")
