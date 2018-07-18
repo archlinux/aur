@@ -1,12 +1,12 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc4
 pkgver=4.0.0.23
-pkgrel=1
+pkgrel=2
 pkgdesc="DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc."
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
 license=('LGPL2.1')
-depends=('libdigidocpp>=3.13.6' 'opensc>=0.18.0' 'qt5-base' 'qt5-svg' 'shared-mime-info' 'ccid' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('libdigidocpp>=3.13.6' 'opensc>=0.18.0' 'qt5-svg' 'hicolor-icon-theme')
 makedepends=('cmake' 'qt5-tools' 'qt5-translations')
 conflicts=('qdigidoc' 'qesteidutil')
 provides=('qdigidoc' 'qesteidutil')
