@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Jakub Rup <tomasz.rup@gmail.com>
 pkgname=openapi-generator-cli
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="OpenAPI Generator"
 arch=('any')
@@ -10,8 +10,8 @@ depends=('java-runtime')
 source=("http://central.maven.org/maven2/org/openapitools/$pkgname/$pkgver/$pkgname-$pkgver.jar"
 "openapi-generator")
 noextract=("$pkgname-$pkgver.jar")
-md5sums=('4de086f94ad3400e0e9057d503f44c21'
-'687767c7a7a4a20cc1606d4bf956e6da')
+md5sums=('e59142159b45e5f8c5619b20e3408b6c'
+'9795786695496120e7c8becb2f6a5e99')
 
 package() {
 	install -Dm755 openapi-generator "$pkgdir/usr/bin/openapi-generator"
