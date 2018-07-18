@@ -3,7 +3,7 @@
 # Contributor: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.8.2
+pkgver=5.8.4
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -45,7 +45,7 @@ source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch"
 )
-sha256sums=('8bb78d6cf4f33b5cd93940c4190c4363827c7976a0e8f4592d6cdc6fa2672323'
+sha256sums=('2b1b9944898e95a1c2bd1b3211d312fa8bbb8fa1ef7a20b16906ebabb0d6e2ac'
             '3436c478637fd1c8f7ff4089c30ba7f2048a71de8243756893df35cdb25be893'
             '6ea834fbf695187c244bbb1dacc1d462ded807ee4997761fdaa60d5373b386cd'
             '4155b427be299ba74c1d9278bcf2b72f720f55c814e01ca38f6f0afbda282890'
@@ -75,6 +75,11 @@ prepare() {
     # JUCE expects the SDK in the users home directory
     msg2 "Using VST SDK from steinberg-vst36 package"
     patch -Nsp1 < "${srcdir}/use-system-vstsdk.patch"
+
+    # s7 scheme tarball seems to not unpack for some users during make,
+    # extracting it here is a workaround until someone with that issue can debug it
+    msg2 "Extracting s7.tar.gz"
+    tar xvzf bin/packages/s7.tar.gz -C bin/packages
 }
 
 build() {
