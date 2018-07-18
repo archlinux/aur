@@ -8,6 +8,7 @@ pkgbase = mitmproxy-git
 	checkdepends = python-beautifulsoup4
 	checkdepends = python-flask
 	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-asyncio
 	depends = python-blinker
 	depends = python-brotlipy
 	depends = python-click

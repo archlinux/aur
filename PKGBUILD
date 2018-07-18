@@ -7,14 +7,12 @@ pkgdesc="An interactive TLS-capable intercepting HTTP proxy."
 arch=('any')
 url="https://mitmproxy.org/"
 license=('MIT')
-depends=(
-  'python-blinker' 'python-brotlipy' 'python-click' 'python-cryptography' 'python-h11'
-  'python-h2' 'python-hyperframe' 'python-kaitaistruct' 'python-ldap3' 'python-passlib'
-  'python-pyasn1' 'python-pyopenssl' 'python-pyparsing' 'python-pyperclip' 'python-requests'
-  'python-ruamel-yaml' 'python-setuptools' 'python-sortedcontainers' 'python-tornado'
-  'python-urwid' 'python-wsproto' 'python-asynctest' 'python-parver'
-)
-checkdepends=('python-beautifulsoup4' 'python-flask' 'python-pytest-runner')
+depends=('python-blinker' 'python-brotlipy' 'python-click' 'python-cryptography' 'python-h11'
+	'python-h2' 'python-hyperframe' 'python-kaitaistruct' 'python-ldap3' 'python-passlib'
+	'python-pyasn1' 'python-pyopenssl' 'python-pyparsing' 'python-pyperclip' 'python-requests'
+	'python-ruamel-yaml' 'python-setuptools' 'python-sortedcontainers' 'python-tornado'
+	'python-urwid' 'python-wsproto' 'python-asynctest' 'python-parver')
+checkdepends=('python-beautifulsoup4' 'python-flask' 'python-pytest-runner' 'python-pytest-asyncio')
 conflicts=('mitmproxy')
 provides=('mitmproxy')
 source=("git+https://github.com/mitmproxy/mitmproxy.git")
@@ -42,8 +40,7 @@ prepare() {
 check() {
   cd "$srcdir"/$_pkgname
   # https://github.com/mitmproxy/mitmproxy/issues/2892
-#  python setup.py pytest
-  tox
+  python setup.py pytest
 }
 
 package() {
