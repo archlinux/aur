@@ -3,7 +3,7 @@
 # Maintainer: Stewart Webb <stew@rtwebb.com>
 
 pkgname=mediaconch-gui
-pkgver=17.06
+pkgver=18.03.2
 pkgrel=1
 pkgdesc="Implementation checker and policy checker for video and audio files (GUI)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('libxml2' 'libxslt' 'sqlite' 'jansson' 'libevent' 'qt5-base' 'qt5-webkit' 'libzen>=0.4.35')
 makedepends=('desktop-file-utils' 'libxml2' 'libxslt' 'sqlite' 'qt5-base' 'qt5-webkit' 'libzen>=0.4.35' 'libmediainfo>=0.7.97')
 source=(https://mediaarea.net/download/source/mediaconch/$pkgver/mediaconch_$pkgver.tar.bz2)
-sha256sums=('911ddf541e8ce540ef3e2346c3381ed207927b60ff9d15982fdb00af1b54ea69')
+sha256sums=('ba64630ff582f55c104834cefc15066027ffb51f743130fb0ac7f669536b1c5c')
 
 prepare() {
   cd "${srcdir}"/MediaConch/Project/Qt
@@ -37,14 +37,10 @@ package() {
   
   install -D -m 0644 Project/GNU/GUI/mediaconch-gui.kde3.desktop "${pkgdir}"/usr/share/apps/konqueror/servicemenus/mediaconch-gui.desktop
   install -D -m 0644 Project/GNU/GUI/mediaconch-gui.kde4.desktop "${pkgdir}"/usr/share/kde4/services/ServiceMenus/mediaconch-gui.desktop
-  install -D -m 0644 Project/GNU/GUI/mediaconch-gui.appdata.xml "${pkgdir}"/usr/share/appdata/mediaconch-gui.appdata.xml
+  install -D -m 0644 Project/GNU/GUI/mediaconch-gui.metainfo.xml "${pkgdir}"/usr/share/appdata/mediaconch-gui.metainfo.xml
   
   install -D -m 0644 License.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.html
-  install -D -m 0644 License.MPLv2.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.MPLv2.html
-  install -D -m 0644 License.GPLv3.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.GPLv3.html
-  
   install -D -m 0644 History_GUI.txt "${pkgdir}"/usr/share/docs/${pkgname}/History.txt
   
-  install -D -m 0644 Release/ReadMe_GUI_Linux.txt "${pkgdir}"/usr/share/docs/${pkgname}/ReadMe.txt
 }
 
