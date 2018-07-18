@@ -4,36 +4,34 @@
 
 pkgname=sparkleshare
 _pkgname=SparkleShare
-pkgver=2.0.1
+pkgver=3.28
 pkgrel=1
 pkgdesc="Collaboration and sharing tool based on git written in C Sharp"
 arch=('any')
 url="https://www.sparkleshare.org/"
 license=('GPL3')
 depends=('webkit2-sharp' 'notify-sharp-3' 'curl' 'git' 'openssh' 'gvfs')
-makedepends=(git)
-_commit=ab6e95415e09483649b9362b26e204676a20a2a8  # tags/2.0.1
+makedepends=(git meson)
+_commit=3176efc8c38f5effba780aa9bbc0b1d5a313129a  # tags/3.28
 source=("git+https://github.com/hbons/SparkleShare.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd SparkleShare
+  cd $_pkgname
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd SparkleShare
+  cd $_pkgname
   # Fix build
-  sed -i 's/"org.sparkleshare.SparkleShare", new string \[0\]/0, null/' SparkleShare/Linux/UserInterface.cs
+  sed -i '/post-install.sh/d' meson.build
 }
 
 build() {
-  cd SparkleShare
-  ./autogen.sh --prefix=/usr
-  make
+  arch-meson $_pkgname build
+  ninja -C build
 }
 
 package() {
-  cd SparkleShare
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
