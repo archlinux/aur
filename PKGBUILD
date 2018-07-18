@@ -2,7 +2,7 @@
 
 pkgname=kubernetes-helm
 pkgver=2.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool to manage Kubernetes charts"
 arch=('i686' 'x86_64')
 url="https://github.com/kubernetes/helm"
@@ -25,9 +25,9 @@ sha512sums_x86_64=('f9c2e3f0c1055a1645e3a811b67e3929f9f54bae0e5005b83efd9fdeef5d
 package() {
   cd "$srcdir"
   install -Dm 755 linux-*/helm "$pkgdir/usr/bin/helm"
-  install -d "$pkgdir/usr/share/bash-completion/completions"
+  install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
   "$pkgdir/usr/bin/helm" completion bash > "$pkgdir/usr/share/bash-completion/completions/helm"
-  install -d "$pkgdir/usr/share/zsh/site-functions"
+  install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
   "$pkgdir/usr/bin/helm" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_helm"
   patch "$pkgdir/usr/share/zsh/site-functions/_helm" "$srcdir/add_compdef_zsh_completion.patch"
 }
