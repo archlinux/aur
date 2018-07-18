@@ -1,26 +1,22 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=evaluate
-_cranver=0.10.1
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=0.11
 pkgname=r-evaluate
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Parsing and Evaluation Tools that Provide More Details than the Default"
+pkgdesc='Parsing and Evaluation Tools that Provide More Details than the Default'
 arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=evaluate'
 license=('MIT')
 depends=('r' 'r-stringr>=0.6.2')
-
 optdepends=('r-testthat' 'r-ggplot2')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('1dde5a35e2b9d57f1b1bb16791b35ff5')
+source=("https://cran.r-project.org/src/contrib/evaluate_"$_cranver".tar.gz")
+md5sums=('62f4299235a3e2d8643fdfd6aee31809')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL evaluate_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership evaluate "$pkgdir"/usr/lib/R/library
 }
 
