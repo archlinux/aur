@@ -13,6 +13,7 @@ pkgbase = qdigidoc4
 	depends = opensc>=0.18.0
 	depends = qt5-svg
 	depends = hicolor-icon-theme
+	optdepends = ccid: smart card support
 	provides = qdigidoc
 	provides = qesteidutil
 	conflicts = qdigidoc

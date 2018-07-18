@@ -8,6 +8,7 @@ url="http://www.id.ee/"
 license=('LGPL2.1')
 depends=('libdigidocpp>=3.13.6' 'opensc>=0.18.0' 'qt5-svg' 'hicolor-icon-theme')
 makedepends=('cmake' 'qt5-tools' 'qt5-translations')
+optdepends=('ccid: smart card support')
 conflicts=('qdigidoc' 'qesteidutil')
 provides=('qdigidoc' 'qesteidutil')
 source=("https://installer.id.ee/media/ubuntu/pool/main/q/$pkgname/${pkgname}_$pkgver.orig.tar.xz"
