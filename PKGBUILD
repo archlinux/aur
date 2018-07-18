@@ -14,7 +14,7 @@ depends=(
   'python-ruamel-yaml' 'python-setuptools' 'python-sortedcontainers' 'python-tornado'
   'python-urwid' 'python-wsproto' 'python-asynctest' 'python-parver'
 )
-checkdepends=('python-beautifulsoup4' 'python-flask' 'python-pytest-runner' 'python-tox')
+checkdepends=('python-beautifulsoup4' 'python-flask' 'python-pytest-runner')
 conflicts=('mitmproxy')
 provides=('mitmproxy')
 source=("git+https://github.com/mitmproxy/mitmproxy.git")
