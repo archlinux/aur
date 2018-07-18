@@ -1,7 +1,7 @@
 pkgbase = partio-git
 	pkgdesc = Particle IO and manipulation library (git version)
-	pkgver = 1.1.0.r93.g8b6ea0d
-	pkgrel = 5
+	pkgver = 1.1.0.r117.g2661682
+	pkgrel = 1
 	url = http://www.disneyanimation.com/technology/partio.html
 	arch = i686
 	arch = x86_64
@@ -17,11 +17,7 @@ pkgbase = partio-git
 	provides = partio
 	conflicts = partio
 	source = git+https://github.com/wdas/partio.git
-	source = CMakeLists.txt.patch
-	source = py_CMakeLists.txt.patch
 	md5sums = SKIP
-	md5sums = 74e654e43cf9e9aacd9ac57c0e0e671c
-	md5sums = 306cacec7af0af3adb7876c288881062
 
 pkgname = partio-git
 

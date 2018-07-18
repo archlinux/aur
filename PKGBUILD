@@ -1,8 +1,8 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Maintainer: Alex Dahl <adahl1@umbc.edu>
 pkgname=partio-git
-pkgver=1.1.0.r93.g8b6ea0d
-pkgrel=5
+pkgver=1.1.0.r117.g2661682
+pkgrel=1
 pkgdesc="Particle IO and manipulation library (git version)"
 arch=(i686 x86_64)
 url="http://www.disneyanimation.com/technology/partio.html"
@@ -14,12 +14,8 @@ makedepends=('cmake>=2.4.6' 'swig' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/wdas/partio.git'
-	'CMakeLists.txt.patch'
-	'py_CMakeLists.txt.patch'
 	)
 md5sums=('SKIP'
-	'74e654e43cf9e9aacd9ac57c0e0e671c'
-	'306cacec7af0af3adb7876c288881062'
 	)
 
 pkgver() {
@@ -28,13 +24,10 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir"
-  # Fix SeExpr dependency and remove tests
-  patch -p1 -i "$srcdir/CMakeLists.txt.patch"
-  # Change Python version to 2 to work with SeExpr
-  patch -p1 -i "$srcdir/py_CMakeLists.txt.patch"
-}
+#prepare() {
+#  cd "$srcdir/${pkgname%-git}"
+#  git apply ../
+#}
 
 build() {
   cd "$srcdir/${pkgname%-git}"
