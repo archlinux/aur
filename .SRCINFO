@@ -1,5 +1,5 @@
 pkgbase = openapi-generator-cli
-	pkgdesc = OpenAPI Generator
+	pkgdesc = OpenAPI Generator CLI
 	pkgver = 3.1.1
 	pkgrel = 2
 	url = https://openapi-generator.tech/

@@ -2,7 +2,7 @@
 pkgname=openapi-generator-cli
 pkgver=3.1.1
 pkgrel=2
-pkgdesc="OpenAPI Generator"
+pkgdesc="OpenAPI Generator CLI"
 arch=('any')
 url="https://openapi-generator.tech/"
 license=('MIT')
