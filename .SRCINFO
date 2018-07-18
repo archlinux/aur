@@ -1,6 +1,6 @@
 pkgbase = nodejs-google-clasp
 	pkgdesc = Develop Apps Script Projects locally
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/google/clasp
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = nodejs-google-clasp
 	makedepends = npm
 	depends = nodejs
 	optdepends = typescript: autocompletion and linting
-	noextract = clasp-1.4.1.tgz
-	source = https://registry.npmjs.org/@google/clasp/-/clasp-1.4.1.tgz
-	sha256sums = ca7a9c776d39af96f06e222ca5bcc159e3caaa9c9cfb604800a06cbcc700989c
+	noextract = clasp-1.5.0.tgz
+	source = https://registry.npmjs.org/@google/clasp/-/clasp-1.5.0.tgz
+	sha256sums = 3c2ab1a1c496c55a4d017b1de6ffd78951fe0bd45297b981ca48c5217edbdea9
 
 pkgname = nodejs-google-clasp
 
