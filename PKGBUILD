@@ -1,7 +1,7 @@
 # Maintainer: Stelios Tsampas <loathingkernel @at gmail .dot com>
 
 pkgname=arenatracker
-pkgver=6.33
+pkgver=6.7
 pkgrel=1
 pkgdesc="Arena Tracker is a deck tracker that gives you a lot of extra info while playing Hearthstone"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-base' 'python-pyautogui' 'libzip' 'opencv2')
 makedepends=('imagemagick')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/supertriodo/Arena-Tracker/archive/v${pkgver}.tar.gz"
         'ArenaTracker.desktop')
-md5sums=('5df112f28e2a6e95573b884a449e671d'
+md5sums=('ff8a91d21b6742ebd8b3648311842d32'
          '016d2e7016df6c2f07228ad49c5fb96c')
 
 
