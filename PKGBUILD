@@ -1,9 +1,5 @@
-# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
-
 pkgname=ring-kde
-_commit=b1992bb2e0254f6dab69333d31a52f8b9842d619
-_commitlrc=7eaaed91db929644674f8a12b28c4e8122a69b16
-pkgver=2.3.0.r424.g${_commit:0:7}
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="KDE client for Ring (ring.cx)"
 arch=('i686' 'x86_64')
@@ -12,29 +8,39 @@ license=('GPL3')
 groups=('ring')
 depends=('ring-daemon' 'knotifyconfig' 'kdeclarative' 'qt5-quickcontrols2')
 makedepends=('extra-cmake-modules' 'python' 'glu' 'kinit' 'qt5-tools')
-source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/KDE/${pkgname}/archive/${_commit}.tar.gz"
-        lrc-${_commitlrc}.tar.gz::"https://github.com/elv13/ring-lrc/archive/${_commitlrc}.tar.gz")
-sha256sums=('0b320c692f4bab0163da3209501fb24e46484cdc1747f096a2cba2e92dd7054b'
-            'b855a27698d248e1557517b9fdc32bb71bda1c100889df7b5300ddf651b24f75')
+source=("ring-kde-$pkgver.tar.gz"::"https://github.com/KDE/ring-kde/archive/$pkgver.tar.gz"
+        "libringqt-kde-$pkgver.tar.gz"::"https://github.com/Elv13/libringqt/archive/ring-kde-$pkgver.tar.gz"
+        https://github.com/KDE/ring-kde/commit/9256bdd24f03d232ee0a92d02636dd78b08786ad.patch
+        https://github.com/KDE/ring-kde/commit/7e5a94377a004139608458e677656fa8333e59d8.patch
+        https://github.com/KDE/ring-kde/commit/3a81b0589299bfe32b209b19c2f71a60720efbc1.patch)
+sha256sums=('abbe1947b66c4910fa5033661dcea2f0cb43e2d6a68dd4d6a175ec7f9b40acc5'
+            'b4c30d6452d289c12f05915a63aebea556cac3d221f1c1e1fb18b1af8fa94ff5'
+            '677fa64d61bfb8bf2862637b7788ebffcb673796ce03e22df7f964f8fa90b08a'
+            '755796286f94164ea98e0c445c384555a9a770f6dd29eac47271f0480d7ee30e'
+            'eb08e9c409e0b94004a57861fcd628c41029441e26f4807fde7506b7ade836ce')
 
 prepare() {
     mkdir -p build
-    mv ring-lrc-${_commitlrc} ${pkgname}-${_commit}/ring-lrc
+    mv "libringqt-ring-kde-${pkgver}" "${pkgname}-${pkgver}/libringqt"
+    cd $pkgname-$pkgver
+    patch -Np1 -i ../9256bdd24f03d232ee0a92d02636dd78b08786ad.patch
+    patch -Np1 -i ../7e5a94377a004139608458e677656fa8333e59d8.patch
+    patch -Np1 -i ../3a81b0589299bfe32b209b19c2f71a60720efbc1.patch
 }
 
 build() {
     cd build
-    cmake ../${pkgname}-${_commit} \
+
+    cmake ../${pkgname}-${pkgver} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DKDE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DBUILD_TESTING=OFF
     make
 }
 
 package() {
     cd build
+
     make DESTDIR="${pkgdir}" install
-    # Remove embedded
-    rm -rf "${pkgdir}"/usr/{include,lib64}
 }
