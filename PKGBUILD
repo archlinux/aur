@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: mockroot <mockroot@zoho.com>
 
 pkgname=vlc-pause-click-plugin
 pkgver=1.0.0
