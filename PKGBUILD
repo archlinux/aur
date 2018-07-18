@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  ./configure --prefix=/usr --libexecdir=/usr/lib
+  ./configure --prefix=/usr --libexecdir=/usr/lib --enable-pipewire
   make 
 }
 
