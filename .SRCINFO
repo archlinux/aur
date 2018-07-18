@@ -1,0 +1,18 @@
+pkgbase = mastodon-backup-git
+	pkgdesc = Archive your statuses, favorites and media using the Mastodon API (Git version)
+	pkgver = r146.afc28dd
+	pkgrel = 1
+	url = https://github.com/ponylang/mkdocs-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-html2text
+	depends = python-mastodon
+	depends = python-progress
+	source = git+https://github.com/kensanata/mastodon-backup
+	sha256sums = SKIP
+
+pkgname = mastodon-backup-git
+
