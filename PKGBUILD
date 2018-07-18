@@ -3,8 +3,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sddm
-pkgver=0.17.0
-pkgrel=5
+pkgver=0.18.0
+pkgrel=1
 pkgdesc='QML based X11 and Wayland display manager'
 arch=('x86_64')
 url='http://github.com/sddm/sddm'
@@ -16,7 +16,7 @@ backup=('usr/share/sddm/scripts/Xsetup'
 provides=('display-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         sddm.sysusers sddm.tmpfiles)
-sha256sums=('c6da2862688d21a091f1568b78a5f5900cd2e02a83dd42c016f0c5867e69a92d'
+sha256sums=('9c50b6194f1b4dbf6e1a1b21f23c2c5e384871172985e192b91585986d38eec4'
             '9fce66f325d170c61caed57816f4bc72e9591df083e89da114a3bb16b0a0e60f'
             'db625f2a3649d6d203e1e1b187a054d5c6263cadf7edd824774d8ace52219677')
 
@@ -28,7 +28,6 @@ build() {
   cd build
   cmake ../${pkgname}-${pkgver} \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
         -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
         -DBUILD_MAN_PAGES=ON
@@ -42,12 +41,10 @@ package() {
   install -Dm644 "$srcdir"/sddm.sysusers "$pkgdir"/usr/lib/sysusers.d/sddm.conf
   install -Dm644 "$srcdir"/sddm.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/sddm.conf
 
-# Move sddm.conf to /usr/lib https://bugs.archlinux.org/task/56609
-  mkdir "$pkgdir"/usr/lib/sddm/sddm.conf.d
-  mv "$pkgdir"/{etc/sddm.conf,usr/lib/sddm/sddm.conf.d}
-
+  install -d "$pkgdir"/usr/lib/sddm/sddm.conf.d
+  "$pkgdir"/usr/bin/sddm --example-config > "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf
 # Don't set PATH in sddm.conf
-  sed -r 's|DefaultPath=.*|DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin|g' -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/sddm.conf
+  sed -r 's|DefaultPath=.*|DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin|g' -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf
 # Unset InputMethod https://github.com/sddm/sddm/issues/952
-  sed -e "/^InputMethod/s/qtvirtualkeyboard//" -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/sddm.conf
+  sed -e "/^InputMethod/s/qtvirtualkeyboard//" -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf
 }
