@@ -1,0 +1,15 @@
+pkgbase = rpcalc
+	pkgdesc = RPN calculator with qt5 GUI
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = http://rpcalc.bellz.org/
+	arch = any
+	license = unknown
+	depends = python
+	depends = python-pyqt5
+	depends = qt5-base
+	source = https://github.com/doug-101/rpCalc/releases/download/v0.8.2/rpcalc-0.8.2.tar.gz
+	md5sums = c26f183f1ade58f504282b676f2ecbc7
+
+pkgname = rpcalc
+
