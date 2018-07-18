@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-mediaplayer-git
 	pkgdesc = A mediaplayer indicator for the Gnome Shell
-	pkgver = 3.4
+	pkgver = 3.5
 	pkgrel = 1
 	url = https://github.com/JasonLG1979/gnome-shell-extensions-mediaplayer
 	install = gschemas.install
@@ -11,7 +11,7 @@ pkgbase = gnome-shell-extension-mediaplayer-git
 	makedepends = git
 	depends = gnome-shell
 	optdepends = mpdris2: MPD support
-	provides = gnome-shell-extension-mediaplayer=3.4
+	provides = gnome-shell-extension-mediaplayer=3.5
 	conflicts = gnome-shell-extension-mediaplayer
 	source = gnome-shell-extension-mediaplayer::git+https://github.com/JasonLG1979/gnome-shell-extensions-mediaplayer
 	md5sums = SKIP
