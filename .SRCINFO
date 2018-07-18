@@ -1,0 +1,20 @@
+pkgbase = gatk-bin
+	pkgdesc = Variant discovery in high-throughput bioinformatics sequencing data
+	pkgver = 4.0.6.0
+	pkgrel = 1
+	url = https://software.broadinstitute.org/gatk-bin
+	arch = any
+	license = BSD
+	depends = java-environment=8
+	depends = python
+	optdepends = r: plot generation for some tools
+	conflicts = gatk
+	source = gatk-bin-4.0.6.0.zip::https://github.com/broadinstitute/gatk/releases/download/4.0.6.0/gatk-4.0.6.0.zip
+	source = gatk.sh
+	source = gatk-bin-license.txt::https://raw.githubusercontent.com/broadinstitute/gatk/d6a7fcd895677424b491df8c4ee6227e34b52251/LICENSE.TXT
+	sha512sums = 6d2247ed5f06e61b561347c8d09cc789b38ad0ea7ab254036b0d9638a9c839ba128427cfed146c525f981fae407eb0448b2e10d0a68e679c297872cb19d25a0f
+	sha512sums = a9984153bc489bf5814adc8f8bffd92782e7dd031f2b9a0798d2dc005438445f5eefed6ce3b64b776197c49fb8579e4c968e7cdc4398c5df0145e5105cc20271
+	sha512sums = 9753eef4b1f3aa96b790eaeacbe92ecb9d8fee6de9b918244a519a53b5285d57d2128e62f6a86c5d931d217a72f08e806ff81e95ad8d271c1df737384c81e30e
+
+pkgname = gatk-bin
+
