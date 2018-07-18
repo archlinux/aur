@@ -1,0 +1,22 @@
+pkgbase = obs-gnome-screencast-git
+	pkgdesc = GNOME Screen Cast OBS Studio plugin
+	pkgver = v0.0.9.r1.0e7ab88
+	pkgrel = 1
+	url = git+https://github.com/fzwoch/obs-gnome-screencast
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = obs-studio
+	depends = glib2
+	depends = gstreamer
+	depends = gtk3
+	depends = gnome-shell
+	provides = obs-gnome-screencast
+	conflicts = obs-gnome-screencast
+	source = git+https://github.com/fzwoch/obs-gnome-screencast
+	md5sums = SKIP
+
+pkgname = obs-gnome-screencast-git
+
