@@ -1,0 +1,12 @@
+[Unit]
+Description=Apache Zeppelin Daemon
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=apache-zeppelin
+Group=apache-zeppelin
+ExecStart=/opt/apache-zeppelin/bin/zeppelin-daemon.sh start
+ExecReload=/opt/apache-zeppelin/bin/zeppelin-daemon.sh reload
+ExecStop=/opt/apache-zeppelin/bin/zeppelin-daemon.sh stop
+PIDFile="/opt/apache-zeppelin/run/zeppelin-apache-zeppelin-%H.pid"

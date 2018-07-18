@@ -1,0 +1,13 @@
+post_install() {
+    groupadd -r -f apache-zeppelin
+    useradd -r -g apache-zeppelin -s /usr/bin/nologin \
+        -d /opt/apache-zeppelin apache-zeppelin || true
+
+    chown apache-zeppelin -R /opt/apache-zeppelin
+    chgrp apache-zeppelin -R /opt/apache-zeppelin
+}
+
+post_remove() {
+    userdel apache-zeppelin
+    groupdel apache-zeppelin
+}
