@@ -1,0 +1,15 @@
+pkgbase = python2-libfwnt
+	pkgdesc = a library for Windows NT data types
+	pkgver = 20180117
+	pkgrel = 1
+	url = https://github.com/libyal/libfwnt
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://github.com/libyal/libfwnt/releases/download/20180117/libfwnt-alpha-20180117.tar.gz
+	md5sums = a9c3229454afba55f0a05bc37131778a
+
+pkgname = python2-libfwnt
+
