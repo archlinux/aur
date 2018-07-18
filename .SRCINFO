@@ -8,10 +8,12 @@ pkgbase = statcode
 	makedepends = python-setuptools
 	depends = python
 	depends = python-urwid
+	depends = python-yaml
 	source = https://files.pythonhosted.org/packages/source/s/statcode/statcode-1.0.0.tar.gz
 	sha256sums = 973bcf53ef9beedbb6d334dea5536af28b4fd02b5a2ed4b91cf2a256860dabe3
 
 pkgname = statcode
 	depends = python
 	depends = python-urwid
+	depends = python-yaml
 
