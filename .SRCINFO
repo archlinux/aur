@@ -1,0 +1,16 @@
+pkgbase = weechat-matrix-git
+	pkgdesc = weechat script for matrix
+	pkgver = r348.ace3fef
+	pkgrel = 1
+	url = https://github.com/torhve/weechat-matrix-protocol-script
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = weechat
+	depends = lua
+	depends = lua-cjson
+	source = weechat-matrix-git::git+https://github.com/torhve/weechat-matrix-protocol-script
+	md5sums = SKIP
+
+pkgname = weechat-matrix-git
+
