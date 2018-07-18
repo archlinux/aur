@@ -1,0 +1,15 @@
+pkgbase = python2-dtfabric
+	pkgdesc = a project to manage data types and structures
+	pkgver = 20180707
+	pkgrel = 1
+	url = https://github.com/libyal/dtfabric
+	arch = any
+	license = APACHE
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://github.com/libyal/dtfabric/releases/download/20180707/dtfabric-20180707.tar.gz
+	md5sums = 08b4b4ec3fed2a64895a7f420a3e15e9
+
+pkgname = python2-dtfabric
+
