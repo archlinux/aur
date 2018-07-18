@@ -52,7 +52,7 @@ pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=4.17
 _srcname=linux-${_major}
-_minor=7
+_minor=8
 pkgver=${_major}.${_minor}
 pkgrel=1
 arch=('x86_64')
@@ -379,7 +379,7 @@ done
 
 sha512sums=('4d9de340a26155a89ea8773131c76220cc2057f2b5d031b467b60e8b14c1842518e2d60a863d8c695f0f7640f3f18d43826201984a238dade857b6cef79837db'
             'SKIP'
-            '955342b78da2977dbd08ff0acb7e681c646b1dfceef71246a08bdd102e0b2ad41f3eb7c353755ed1da2e1a5d9138476adc7bf11fd732a3033b6f8aac457dac75'
+            '54fee6f5e85de8acb59246a4eac4479a3db03e28af23eafdebe55664e49d4c65907b52ec30274ef9055192fefc036a3f9313f1aad4e30f4b42aefb6916d31a43'
             'SKIP'
             'a0f37a9b8dbd11f8ef4450b06afee0a6e5519cb5a5cd78f84896812b007ef645bcb9c733ae9817c24d1f4a4c2114258015abceb5a94c7e08d2bb00531a6f04c7'
             '30fc872a19686bd75b0cfa0614980a41d74f4cd40c9fd2c98f82ab4554ad39ccd7ddace9068f354572c1bdf14eed55c8e6d3390127c1a83ec093cf1487a31a0d'
