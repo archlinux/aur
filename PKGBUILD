@@ -1,7 +1,7 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
 pkgname=mitmproxy-git
 _pkgname=${pkgname%-git}
-pkgver=4.0.0.r90.9829fe150
+pkgver=5.0.0.dev.7f464b8
 pkgrel=1
 pkgdesc="An interactive TLS-capable intercepting HTTP proxy."
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   'python-ruamel-yaml' 'python-setuptools' 'python-sortedcontainers' 'python-tornado'
   'python-urwid' 'python-wsproto' 'python-asynctest' 'python-parver'
 )
-checkdepends=('python-beautifulsoup4' 'python-flask' 'python-pytest-runner')
+checkdepends=('python-beautifulsoup4' 'python-flask' 'python-pytest-runner' 'python-tox')
 conflicts=('mitmproxy')
 provides=('mitmproxy')
 source=("git+https://github.com/mitmproxy/mitmproxy.git")
@@ -22,7 +22,9 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/$_pkgname
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
+  #git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
+  python -c "from mitmproxy import version ; print(version.get_dev_version())" | \
+  	sed -e 's| .*commit |.|g' -e 's|)||g'
 }
 
 

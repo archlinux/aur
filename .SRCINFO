@@ -1,6 +1,6 @@
 pkgbase = mitmproxy-git
 	pkgdesc = An interactive TLS-capable intercepting HTTP proxy.
-	pkgver = 4.0.0.r90.9829fe150
+	pkgver = 5.0.0.dev.7f464b8
 	pkgrel = 1
 	url = https://mitmproxy.org/
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = mitmproxy-git
 	checkdepends = python-beautifulsoup4
 	checkdepends = python-flask
 	checkdepends = python-pytest-runner
+	checkdepends = python-tox
 	depends = python-blinker
 	depends = python-brotlipy
 	depends = python-click
