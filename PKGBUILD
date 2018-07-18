@@ -12,5 +12,5 @@ md5sums=('c26f183f1ade58f504282b676f2ecbc7')
 
 package() {
 	cd "$srcdir/rpCalc"
-        python install.py -p "$pkgdir/usr"
+        python install.py -b "$pkgdir"
 }
