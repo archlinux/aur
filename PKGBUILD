@@ -15,7 +15,7 @@ depends=(
 )
 source=("http://madgraph.physics.illinois.edu/Downloads/MG5aMC_PY8_interface/MG5aMC_PY8_interface_V${pkgver}.tar.gz"
         "python2.patch")
-sha256sums=('e4a9925a0cfa399fb993a8c28df522c15c78afeeedaf23ce56a44d54cd2c5639'
+sha256sums=('14bc081745f481fc571a68b1ff651c746d2f49fb4479a19cae07cc54568928dd'
             '632adc73e951df4341709adeafd3a7c72da1752f8af61037eae2b87a08ca9a64')
 
 prepare() {
