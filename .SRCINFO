@@ -1,0 +1,14 @@
+pkgbase = nodejs-vmd
+	pkgdesc = Preview markdown files in a separate window. Markdown is formatted exactly the same as on GitHub.
+	pkgver = 1.33.1
+	pkgrel = 1
+	url = https://github.com/yoshuawuyts/vmd
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.org/vmd/-/vmd-1.33.1.tgz
+	sha256sums = b555da4be04305c290e317ef81f84ab0fad04a132c5d9d38bafda2ef9145d1be
+
+pkgname = nodejs-vmd
+
