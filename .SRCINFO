@@ -1,7 +1,7 @@
 pkgbase = chatty
 	pkgdesc = Twitch Chat Client for Desktop
 	pkgver = 0.9.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://chatty.github.io/
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = chatty
 	depends = sh
 	optdepends = streamlink: for watching streams in a custom video player.
 	optdepends = livestreamer: for watching streams in a custom video player.
-	source = chatty-0.9.1.tar.gz::https://github.com/chatty/chatty/archive/v0.9.1-emotefix.tar.gz
+	source = chatty-0.9.1-emotefix.tar.gz::https://github.com/chatty/chatty/archive/v0.9.1-emotefix.tar.gz
 	source = chatty.desktop
 	source = chatty_script
 	source = disable_version_check.patch

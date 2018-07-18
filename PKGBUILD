@@ -2,7 +2,7 @@
 # Contributor: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=chatty
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Twitch Chat Client for Desktop'
 arch=('any')
 url='https://chatty.github.io/'
@@ -11,7 +11,7 @@ depends=('java-environment' 'sh')
 optdepends=('streamlink: for watching streams in a custom video player.'
             'livestreamer: for watching streams in a custom video player.')
 makedepends=('gradle')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chatty/chatty/archive/v${pkgver}-emotefix.tar.gz"
+source=("${pkgname}-${pkgver}-emotefix.tar.gz::https://github.com/chatty/chatty/archive/v${pkgver}-emotefix.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}_script"
         'disable_version_check.patch')
@@ -21,19 +21,19 @@ sha512sums=('a7943f5b0b9eb3e3e0e0809c84e80e04226afae4c4fb4038772502d7500f8033e29
             '8df69baaf9a0bad68d7c1aac96877b65637c4688d59f9b36f4915b77e2ec9bfa99c67adfe69bca95baee88a585f6f01f5f26eb076079f95bfca9f0ac19180199')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}-emotefix"
   patch -p1 -i '../disable_version_check.patch'
 }
 
 build() {
-  cd "chatty-${pkgver}"
+  cd "chatty-${pkgver}-emotefix"
   gradle build
   gradle release
 }
 
 package(){
   mkdir "${srcdir}/Chatty_${pkgver}" && cd "${srcdir}/Chatty_${pkgver}"
-  bsdcpio -i -m --make-directories < "../${pkgname}-${pkgver}/build/releases/Chatty_${pkgver}.zip"
+  bsdcpio -i -m --make-directories < "../${pkgname}-${pkgver}-emotefix/build/releases/Chatty_${pkgver}-emotefix.zip"
   install -Dm644 'Chatty.jar' "${pkgdir}/usr/share/${pkgname}/Chatty.jar"
   cp -a 'img' 'sounds' "${pkgdir}/usr/share/${pkgname}/"
   install -Dm644 'readme.txt' "${pkgdir}/usr/share/doc/${pkgname}/readme.txt"
@@ -42,7 +42,7 @@ package(){
   install -Dm755 "${pkgname}_script" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}-emotefix"
   install -Dm644 "./src/chatty/gui/app_main_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname}.png"
   install -Dm644 "./src/chatty/gui/app_main_64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
   install -Dm644 "./src/chatty/gui/app_main_128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
