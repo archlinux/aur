@@ -44,9 +44,10 @@ source=("git+https://github.com/scylladb/scylla.git#tag=scylla-${pkgver}"
     'git+https://github.com/scylladb/fmt.git'
     'git+https://github.com/scylladb/dpdk.git'
     'git+https://github.com/scylladb/c-ares.git'
+    'git+https://github.com/scylladb/xxHash.git'
 )
 
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     cd "$srcdir/${pkgname}"
