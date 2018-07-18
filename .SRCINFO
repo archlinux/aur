@@ -1,0 +1,15 @@
+pkgbase = python2-biplist
+	pkgdesc = binary plist parser/generator for Python
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/wooster/biplist
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://github.com/wooster/biplist/archive/v1.0.2.tar.gz
+	md5sums = 055ceaa84f4871a361fc9377912d7e2a
+
+pkgname = python2-biplist
+
