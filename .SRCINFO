@@ -1,6 +1,6 @@
 pkgbase = jre
 	pkgdesc = Oracle Java Runtime Environment
-	pkgver = 10.0.1
+	pkgver = 10.0.2
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jre.install
@@ -30,9 +30,9 @@ pkgbase = jre
 	backup = etc/java-jre10/logging.properties
 	backup = etc/java-jre10/net.properties
 	backup = etc/java-jre10/sound.properties
-	source = http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jre-10.0.1_linux-x64_bin.tar.gz
+	source = http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jre-10.0.2_linux-x64_bin.tar.gz
 	source = policytool.desktop
-	sha256sums = 385e67769312577b3d2e8ba08798cb354039c223a89671ba328caafa3943eb86
+	sha256sums = 7d2909a597574f1821903790bb0f31aaa57ab7348e3ae53639c850371450845d
 	sha256sums = 175bf53f43aa42bcf719b9d08d6cbc926fb6e3fbdf2eea7a8090c1750a285a7f
 
 pkgname = jre
