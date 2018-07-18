@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=20180718.3
+VERSION=20180718.4
 
 ##
 #
@@ -278,10 +278,15 @@ echo ""
     _info="$(sed -En 's|^.*v=([^ ]*).*$|\1|gp' <<< "${_flags}")"
     _old_ver="$(sed -En 's|^.*ov=([^ ]*).*$|\1|gp' <<< "${_flags}")"
     _aur_ver="$(sed -En 's|^.*av=([^ ]*).*$|\1|gp' <<< "${_flags}")"
+    if [ -n "${_aur_ver}" ]; then
+      _ver_diff="$(compare_versions "${_old_ver}" "${_aur_ver}")"
+    else
+      _ver_diff="|"
+    fi
     
-    cat <<< "${_info}|${_pkg}|${_old_ver}|${_aur_ver}"
+    cat <<< "${_info} |;${_pkg};| ${_old_ver};${_ver_diff} ${_aur_ver}"
   done
-} | column -o ' | ' -s '|' -t -R 1,2 -N 'Upgr.?,package,local ver.,AUR ver.'
+} | column -o ' ' -s ';' -t -R 1,2 -N 'Upgr.?,package,local ver.,AUR ver.'
 msg ''
 
 
@@ -316,17 +321,8 @@ echo ""
     _flags="${pkgs["${_pkg}"]}"
     _old_ver="$(sed -En 's|^.*ov=([^ ]*).*$|\1|gp' <<< "${_flags}")"
     _new_ver="$(sed -En 's|^.*nv=([^ ]*).*$|\1|gp' <<< "${_flags}")"
+    _ver_diff="$(compare_versions "${_old_ver}" "${_new_ver}")"
     
-    if [ -n "${_aur_ver}" ]; then
-      if [ "$(compare_versions "${_new_ver}" "${_old_ver}")" == ">" ]; then
-        _been_updated_info='(y)'
-      else
-        _been_updated_info='(n)'
-      fi
-    else
-      _been_updated_info='(-)'
-    fi
-    
-    cat <<< "${_been_updated_info}|${_pkg}|${_old_ver}|${_new_ver}"
+    cat <<< "${_pkg};| ${_old_ver};| ${_ver_diff} ${_new_ver}"
   done
-} | column -o ' | ' -s '|' -t -R 1,2 -N 'Newer ver.?,package,old ver.,new ver.'
+} | column -o ' ' -s ';' -t -R 1,2 -N 'package,old ver.,new ver.'
