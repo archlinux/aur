@@ -3,7 +3,7 @@
 pkgbase=python-mamba
 pkgname=('python-mamba' 'python2-mamba')
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The definitive testing tool for Python. Born under the banner of Behavior Driven Development."
 arch=('any')
 license=('MIT')
@@ -33,7 +33,7 @@ check() {
   cd "$srcdir"/mamba-$pkgver
   python setup.py install --root="$PWD/tmp_install" --optimize=1
   (
-    export PATH="$PWD/tmp_install/usr/bin:$PATH" PYTHONPATH="$PWD/tmp_install/usr/lib/python3.6/site-packages:$PYTHONPATH"
+    export PATH="$PWD/tmp_install/usr/bin:$PATH" PYTHONPATH="$PWD/tmp_install/usr/lib/python3.7/site-packages:$PYTHONPATH"
     mamba --enable-coverage
   )
 
