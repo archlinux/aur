@@ -1,10 +1,6 @@
 #!/bin/bash
 
-##
-#
-# Version: 2018-07-18
-#
-##
+VERSION=20180718.2
 
 ##
 #
@@ -47,7 +43,7 @@ idos_pkgs_strings=(
 msg()
 {
   if [ $# -ge 1 ]; then
-    echo "$@"
+    cat <<< "$@"
   else
     cat
   fi
@@ -97,15 +93,16 @@ printusage() {
   echo "  $0 [arguments ...]"
   echo ""
   echo "Arguments (all optional):"
-  echo "  -h | --help     Print this message and exit."
+  echo "  -h | --help      Print this message and exit."
   echo "  -s | --sloppy | --needed"
-  echo "                  Just install if the version info in the AUR is newer than"
-  echo "                  the locally installed version."
-  echo "                  Default is to re-installed every locally installed idos-"
-  echo "                  packages since version numbers in the AUR may be outdated."
-  echo "  -d | --debug    Print some detailed information as we go on."
-  echo "                  (Does _not_ imply -v.)"
-  echo "  -v | --verbose  Print verbose summary."
+  echo "                   Just install if the version info in the AUR is newer than"
+  echo "                   the locally installed version."
+  echo "                   Default is to re-installed every locally installed idos-"
+  echo "                   packages since version numbers in the AUR may be outdated."
+  echo "  -d | --debug     Print some detailed information as we go on."
+  echo "                   (Does _not_ imply -v.)"
+  echo "  -v | --verbose   Print verbose summary."
+  echo "  -V | --version   Print version."
 }
 
 
@@ -124,15 +121,23 @@ while [ $# -ge 1 ]; do
     ;;
     "-s"|"--sloppy"|"--needed")
       _sloppy=true
+      export _sloppy
       shift
     ;;
     "-d"|"--debug")
       _debug=true
+      export _debug
       shift
     ;;
     "-v"|"--verbose")
       _verbose=true
+      export _verbose
       shift
+    ;;
+    "-V"|"--version")
+      shift
+      msg "${VERSION}"
+      exit 0
     ;;
     *)
       _unknownarg="$1"
@@ -149,43 +154,13 @@ done
 debug "This is a debug message, testing the debug logic."
 
 
-get_installed_pkgs_version() {
-  # From all the packages given as arguments, returns their version number, line by line. If a package is not installed, return empty string, and:
-  #   * If it is the only package given at the command line, finish with an exitcode >0.
-  #   * If it is amongst other packages, silently ignore.
-  
-  if [ $# -eq 1 ]; then
-    debug "Querying version for installed package '$1' ..."
-    _raw="$(yaourt -Q "$1")"
-    exitcode_query="$?"
-    if [ "${exitcode_query}" -eq 0 ]; then
-      echo "${_raw}" | awk '{print $2}'
-    else
-      echo ''
-    fi
-  else
-    while [ $# -ge 1 ]; do
-      debug "Querying version for installed package '$1' ..."
-      _raw="$(yaourt -Q "$1" 2>/dev/null)"
-      _exitcode="$?"
-      if [ "${_exitcode}" -eq 0 ]; then
-        echo "${_raw}" | awk '{print $2}'
-      else
-        echo ''
-      fi
-      shift
-    done
-    exitcode_query=0
-  fi
-  
-  return "${exitcode_query}"
-}
-
 get_aur_pkgs_version() {
   # From all the packages given as arguments, returns their version number, line by line, as in the AUR. If a package is not available in the repositories, return empty string, and:
   #   * If it is the only package given at the command line, finish with an exitcode >0.
   #   * If it is amongst other packages, silently ignore.
-
+  #
+  # NOTE: For some reasons debug messages herein do not get printed the way we are called ...
+  
   if [ $# -eq 1 ]; then
     debug "Querying version for package 'aur/$1' ..."
     _raw="$(yaourt -Si "aur/$1")"
@@ -214,102 +189,139 @@ get_aur_pkgs_version() {
   return "${exitcode_query}"
 }
 
-### Those variables will hold, line by line, the packages available for installation and the ones installed:
-avail=''
-installed=''
+compare_versions() {
+  # Compares "$1" against "$2" as if they were version numbers. Uses 'sort -V' to do the actual work.
+  # Output:
+  #   ">" if "$1" >  "$2",
+  #   "=" if "$1" == "$2",
+  #   "<" if "$1" <  "$2".
+
+  if [ "$1x" == "$2x" ]; then
+    echo "="
+  else
+
+    _smalleritem="$({
+      echo "$1"
+      echo "$2"
+    } | sort -V | head -n 1)"
+    
+    if [ "${_smalleritem}x" == "$2x" ]; then
+      echo ">"
+    else
+      echo "<"
+    fi
+  fi
+}
+
+### Those variable will hold package information.
+# Syntax:
+# * The key is the package name.
+# * The content of the entry contains the data/ flags, separated by space:
+#   - 'i=[true|false]' means the package is locally installed (if not present, not installed is assumed),
+#   - 'ov=<version>' is the version number of the installed package prior to upgrade,
+#   - 'nv=<version>' is the version number of the installed package after upgrade,
+#   - 'av=<version>' is the version number of the package in the repositories/ AUR.
+#     Presence of this entry also means the package is available in the repositories/ AUR at all.
+#   - 'u=[true|false]' specifies if the package should be included in upgrade (if not specified, no upgrade will be done),
+#   - 'v=<string>' is an informational string to present to the user in the pretty-printed output
+#     to tell about the status (available in the repositories/ AUR, will be upgraded, ...).
+
+unset pkgs
+declare -A pkgs
+unset upgrades
+declare -a upgrades
 
 for pkg_string in "${idos_pkgs_strings[@]}"; do
-  ### Get packages available for installation. The "echo ''" is there to get a newline added if new content is following.
-  debug "Searching for installable packages matching the search string '${pkg_string}' ..."
-  avail+="$(echo ''; yaourt -S -q -s "${pkg_string}")"
-  ### Get packages which are installed. The "echo ''" is there to get a newline added if new content is following.
+  ### Get packages which are installed.
   debug "Searching for installed packages matching the search string '${pkg_string}' ..."
-  installed+="$(echo ''; yaourt -Q -q -s "${pkg_string}"; echo '')"
+  for _pkg_ver_group in $(pacman -Q -s "${pkg_string}" | sed -n 's|^local/||p' | tr ' \t' ';;'); do
+    _pkg="$(awk -F';' '{print $1}' <<< "${_pkg_ver_group}")"
+    _old_ver="$(awk -F';' '{print $2}' <<< "${_pkg_ver_group}")"
+    _aur_ver="$(get_aur_pkgs_version "${_pkg}" 2>/dev/null || echo '')"
+    pkgs["${_pkg}"]="i=true ov=${_old_ver}"
+    if [ -n "${_aur_ver}" ]; then
+      if "${_sloppy}"; then
+        if [ "$(compare_versions "${_aur_ver}" "${_old_ver}")" == '>' ]; then
+          _upgrade='true'
+          _info='(y)'
+        else
+          _upgrade='false'
+          _info='(n)'
+        fi
+      else
+        _upgrade='true'
+        _info='(y)'
+      fi
+      pkgs["${_pkg}"]+=" av=${_aur_ver} u=${_upgrade} v=${_info}"
+    else
+      _upgrade='false'
+      _info='(-)'
+      pkgs["${_pkg}"]+=" u=${_upgrade} v=${_info}"
+    fi
+    if "${_upgrade}"; then
+      upgrades+=("${_pkg}")
+    fi
+    debug "* ${_pkg}: ${pkgs["${_pkg}"]}"
+  done
 done
 
-### Set union of available and installed packages:
-installed_or_available="${avail}
-${installed}"
-
-### Sort and unify and remove blank lines:
-avail="$(echo "${avail}" | sort | uniq | grep -E .)"
-installed="$(echo "${installed}" | sort | uniq | grep -E .)"
-installed_or_available="$(echo "${installed_or_available}" | sort | uniq | grep -E .)"
-
-### Get version numbers of installed packages before upgrade:
-old_vers="$(echo "${installed}" | while read pkg; do get_installed_pkgs_version "${pkg}"; done)"
-# old_vers="$(get_installed_pkgs_version ${installed})"
-
-### Get AUR version numbers of installed packages:
-aur_vers="$(echo "${installed}" | while read pkg; do get_aur_pkgs_version "${pkg}" 2>/dev/null || echo ''; done)"
-# aur_vers="$(get_aur_pkgs_version ${installed})"
-
-### Get packages which are installed and available for installation at the same time:
-#installed_and_available="$(comm -1 -2 <(echo "${installed}" | sort) <(echo "${avail}" | sort))" # comm would do the job, on sorted files. grep also works on unsorted files.
-installed_and_available="$(echo "${avail}" | grep -F -x "${installed}" | sort | uniq)"
 
 
-### Reformat to python-lists:
-py_old_vers="$(echo '['; echo "${old_vers}" | while read line; do echo "'${line}',"; done; echo ']')"
-py_aur_vers="$(echo '['; echo "${aur_vers}" | while read line; do echo "'${line}',"; done; echo ']')"
-py_installed="$(echo '['; echo "${installed}" | while read line; do echo "'${line}',"; done; echo ']')"
-
-### Print some information:
-echo "Installed IDOS-related packages, with version information."
+### Print some information.
+echo "IDOS-related packages, before upgrade:"
 echo ""
 
-cat << EOPY | python3
-import texttable
-
-inst=${py_old_vers}
-aur=${py_aur_vers}
-pkg=${py_installed}
-
-tbl=texttable.Texttable(0)
-tbl.header(['AUR ver.','Installed ver.','Package'])
-tbl.add_rows([list(x) for x in zip(*[aur,inst,pkg])],header=False)
-
-print(tbl.draw())
-EOPY
-
-
-# echo "  Installed version  AUR version  package  "
-# _pkgnr=0
-# echo "${installed}" | while read pkg; do
-#   _pkgnr="$(( ${_pkgnr} + 1 ))"
-#   if echo "${avail}" | grep -q -F -x "${pkg}"; then echo -n "   (x)  "; else echo -n "        "; fi
-#   echo -n "${pkg}   "; echo "${old_vers}" | sed -n "${_pkgnr}"p
-# done
-# echo ""
-
-exit 11
-
-### Reinstall installed and available packages:
-yaourt -S --noconfirm ${installed_and_available}
+{
+  cat <<< '|||'
+  for _pkg in $(tr ' ' '\n' <<< "${!pkgs[@]}" | sort -n); do
+    _flags="${pkgs["${_pkg}"]}"
+    _info="$(sed -En 's|^.*v=([^ ]*).*$|\1|gp' <<< "${_flags}")"
+    _old_ver="$(sed -En 's|^.*ov=([^ ]*).*$|\1|gp' <<< "${_flags}")"
+    _aur_ver="$(sed -En 's|^.*av=([^ ]*).*$|\1|gp' <<< "${_flags}")"
+    
+    cat <<< "${_info}|${_pkg}|${_old_ver}|${_aur_ver}"
+  done
+} | column -o ' | ' -s '|' -t -R 1,2 -N 'Upgr.?,package,local ver.,AUR ver.'
+msg ''
 
 
-### Get version numbers of installed packages after upgrade:
-new_vers="$(echo "${installed}" | while read pkg; do get_installed_pkgs_version "${pkg}"; done)"
+### Reinstall the packages to be upgraded:
+verbose "Installing packages ${upgrades[@]} ..."
+yaourt -S --noconfirm "${upgrades[@]}"
+
+
+### Get version numbers of installed packages after upgrade. Do it at once, since each call pacman -Q call does cost a considerable amount of time:
+for _pkg_ver in $(pacman -Q "${!pkgs[@]}"  | tr ' ' ';'); do
+  debug "Getting versions of packages after installation ..."
+  _pkg="$(awk -F';' '{print $1}' <<< "${_pkg_ver}")"
+  _new_ver="$(awk -F';' '{print $2}' <<< "${_pkg_ver}")"
+  pkgs["${_pkg}"]+=" nv=${_new_ver}"
+  debug "* ${_pkg}: ${pkgs["${_pkg}"]}"
+done
+
 
 ### Print information about changes that were carried out:
-echo "Upgrade results ('(y)': Upgraded, '(n)': Not upgraded, no marker: Not"
-echo "available in repositories) with version information:"
 echo ""
-_pkgnr=0
-echo "${installed}" | while read pkg; do
-  _pkgnr="$(( ${_pkgnr} + 1 ))"
-  _old_ver="$(echo "${old_vers}" | sed -n "${_pkgnr}"p)"
-  _new_ver="$(echo "${new_vers}" | sed -n "${_pkgnr}"p)"
-  if [[ "${_old_ver}" == "${_new_ver}" ]]; then
-    if echo "${avail}" | grep -q -F -x "${pkg}"; then echo -n "   (n)  "; else echo -n "        "; fi
-  else
-    echo -n "   (y)  "
-  fi
-  echo -n "${pkg}   "
-  echo -n "${_old_ver} "
-  if [[ "${_old_ver}" == "${_new_ver}" ]]; then
-    echo "(not upgraded.)"
-  else
-    echo "-> ${_new_ver}"
-  fi
-done
+echo "IDOS-related packages, after upgrade:"
+echo ""
+
+{
+  cat <<< '|||'
+  for _pkg in $(tr ' ' '\n' <<< "${!pkgs[@]}" | sort -n); do
+    _flags="${pkgs["${_pkg}"]}"
+    _old_ver="$(sed -En 's|^.*ov=([^ ]*).*$|\1|gp' <<< "${_flags}")"
+    _new_ver="$(sed -En 's|^.*nv=([^ ]*).*$|\1|gp' <<< "${_flags}")"
+    
+    if [ -n "${_aur_ver}" ]; then
+      if [ "$(compare_versions "${_new_ver}" "${_old_ver}")" == ">" ]; then
+        _been_updated_info='(y)'
+      else
+        _been_updated_info='(n)'
+      fi
+    else
+      _been_updated_info='(-)'
+    fi
+    
+    cat <<< "${_been_updated_info}|${_pkg}|${_old_ver}|${_new_ver}"
+  done
+} | column -o ' | ' -s '|' -t -R 1,2 -N 'Newer ver.?,package,old ver.,new ver.'
