@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=20180718.2
+VERSION=20180718.3
 
 ##
 #
@@ -286,8 +286,13 @@ msg ''
 
 
 ### Reinstall the packages to be upgraded:
-verbose "Installing packages ${upgrades[@]} ..."
-yaourt -S --noconfirm "${upgrades[@]}"
+if [ ${#upgrades[@]} -ge 1 ]; then
+  verbose "Installing packages ${upgrades[@]} ..."
+  yaourt -S --noconfirm "${upgrades[@]}"
+else
+  msg "Nothing to be updated. Exiting."
+  exit 0
+fi
 
 
 ### Get version numbers of installed packages after upgrade. Do it at once, since each call pacman -Q call does cost a considerable amount of time:
