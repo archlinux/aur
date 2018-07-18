@@ -1,7 +1,7 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=hypopg-git
 _gitname=hypopg
-pkgver=0de9755
+pkgver=1.1.2.r0.gd7ef06f
 pkgrel=1
 pkgdesc="Hypothetical indexes for PostgreSQL... ask the optimizer if this hypothetical index would help"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -17,9 +17,7 @@ install='hypopg-git.install'
 
 pkgver() {
   cd $_gitname
-  tag=`git tag | grep REL | tail -1`
-  commit=`git log --format="%h" -n 1`
-  echo "$tag_$commit"
+  git describe --long --tags | sed 's/REL//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
