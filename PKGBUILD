@@ -1,7 +1,7 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=pg_stat_kcache-git
 _gitname=pg_stat_kcache
-pkgver=7740021
+pkgver=2.1.0.r1.g6bedab2
 pkgrel=1
 pkgdesc="Get kernel statistics for sessions in PostgreSQL. Be able to measure the real hit ratio !"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -16,10 +16,8 @@ md5sums=('SKIP')
 install='pg_stat_kcache-git.install'
 
 pkgver() {
-  cd $_gitname
-  tag=`git tag | grep REL | tail -1`
-  commit=`git log --format="%h" -n 1`
-  echo "$tag_$commit"
+   cd $_gitname
+   git describe --long --tags | sed 's/REL//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
