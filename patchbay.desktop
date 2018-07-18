@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Patchbay
+Comment=An alternative Secure Scuttlebutt client interface that is fully compatible with Patchwork
+Exec=patchbay
+Icon=patchbay
+Terminal=false
+StartupNotify=false
+Categories=Network;Application;
+
