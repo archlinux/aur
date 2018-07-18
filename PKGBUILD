@@ -2,7 +2,7 @@
 _appname_=etc-update
 pkgname=${_appname_}-nogithub
 pkgdesc="CLI to interactively merge .pacnew in /etc. I don't trust gentoo's github."
-pkgver=20180717
+pkgver=2.3.43
 pkgrel=1
 arch=('any')
 url="https://wiki.gentoo.org/wiki/Handbook:X86/Portage/Tools#etc-update"
@@ -11,13 +11,11 @@ depends=('bash')
 makedepends=('git')
 provides=("${_appname_}")
 conflicts=("${_appname_}")
-source=("etc-update"
-	"etc-update.conf")
-md5sums=('1de63bd8e07fa78779eecf864b6021e4'
-         'ca8d58262382a7ead33b69469f661f5e')
+source=("https://gitweb.gentoo.org/proj/portage.git/snapshot/portage-${pkgver}.tar.gz")
+md5sums=('50a0bc25bfa45f61ed41d65a54fbfbb9')
 
 package() {
-  install -Dm 0755 "${_appname_}" "$pkgdir/usr/bin/${pkgname}"
-  install -Dm 0644 "${_appname_}.conf" "$pkgdir/etc/${pkgname}.conf"
+  install -Dm 0755 "portage-${pkgver}/bin/${_appname_}" "$pkgdir/usr/bin/${_appname_}"
+  install -Dm 0644 "portage-${pkgver}/cnf/${_appname_}.conf" "$pkgdir/etc/${_appname_}.conf"
 }
 
