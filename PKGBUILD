@@ -5,7 +5,7 @@
 
 # Maintainer: Matěj Týč <matej.tyc@gmail.com>
 pkgname=argbash
-pkgver=2.6.1
+pkgver=2.7.0
 pkgrel=1
 epoch=
 pkgdesc="Bash argument parsing code generator"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://github.com/matejak/$pkgname/archive/$pkgver.tar.gz" LICENSE)
 noextract=()
-sha256sums=('1d7cc0233cff75d7f22029dbbed6eaf13eaa8d6063fce34e9e5633fd32552c4a' '2dd898f51dae8239523717e0c9e5a35fcc47da5db8a1d5170cd74d4ca24a52ef')
+sha256sums=('f3387f8ab3491b4017459d703d0a117c31b1da0ed577e6026dc5fe2e146277e6' '2dd898f51dae8239523717e0c9e5a35fcc47da5db8a1d5170cd74d4ca24a52ef')
 validpgpkeys=()
 
 build() {
@@ -44,5 +44,5 @@ package() {
 	cp LICENSE "$LICENSES"
 
 	cd "$pkgname-$pkgver/resources"
-	make ROOT="$pkgdir" PREFIX="/usr" install
+	make ROOT="$pkgdir" PREFIX="/usr" BASH_COMPLETION_DIRECTORY=/usr/share/bash-completion/completions/ INSTALL_COMPLETION=yes install
 }
