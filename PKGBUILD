@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=anydesk-test
-pkgver=2.9.6
+pkgver=2.9.7
 pkgrel=1
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support - Playground-Version"
 arch=('i686' 'x86_64')
@@ -14,14 +14,15 @@ conflicts=('anydesk')
 source_i686=("http://download.anydesk.com/linux/anydesk_${pkgver}-1_i386.deb" "https://download.anydesk.com/linux/anydesk-${pkgver}-i686.tar.gz")
 source_x86_64=("http://download.anydesk.com/linux/anydesk_${pkgver}-1_amd64.deb" "https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
 
-sha256sums_i686=('7a023315b63ef5ca99011eb7ce718ebd79c42852db5ee67a8f257f617799ff41' '05b9b97f728033e54569b9b9693121e6c36425f6ac187b632b0cd346de27a440')
-sha256sums_x86_64=('0ced2e3d26f86a4d9586d38d56f4818bde05c79c317291c1db1503e878c1dc44' '2c89d7a13734a9125d154a40f3809c407649878a17e98f30996845082bf6e6c9')
+sha256sums_i686=('a2d0e3d781fd5392c158181513f46dc51ad88394d8ab93c475f85bffa2d399fa' 'f4c7b2bcc4932594cfd8b656a2e3f7a63dab1423bab54b16b06903f2910618f6')
+sha256sums_x86_64=('edc4fc763ae14a0e103bfa6df89e999aaa246c908b80fe12ecbbe9f9bfe0c890' '8eeed35500b168fa5d0e0a04523466f9874c47bdb491fdededb651783fe7afa8')
 
 package() {
     cd "${pkgdir}"
     tar xf "${srcdir}/data.tar.gz"
     install -m755 "${srcdir}/anydesk-${pkgver}/anydesk" "${pkgdir}/usr/bin/anydesk"
     #
-    msg2 "\e[1;32mIf you want to enable the autostart mode, edit PKGBUILD and comment line #25 \e[0m"
-    rm -rf etc/
+    msg2 "\e[1;32mAnyDesk now has a systemd file for unattendant access: anydesk.service \e[0m"
+    install -D -m 644 "${pkgdir}/usr/share/anydesk/files/systemd/anydesk.service" "${pkgdir}/usr/lib/systemd/system/anydesk.service"
+    sed -i "s/PIDFile=\/tm\/ad.pid/PIDFile=\/run\/anydesk.pid/" "${pkgdir}/usr/lib/systemd/system/anydesk.service"
 }
