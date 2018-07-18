@@ -1,11 +1,11 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bisq
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
-url="https://bitsquare.io/"
+url="https://bisq.network"
 license=('AGPL3')
 depends=('java-openjfx')
 makedepends=('maven' 'jdk8-openjdk' 'protobuf')
