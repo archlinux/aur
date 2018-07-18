@@ -3,19 +3,20 @@
 # Contributor: Eragon
 pkgname=redox-gcc
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GCC for Redox cross compilation on x86_64."
 arch=('x86_64')
 url="https://redox-os.org/"
 license=('')
 groups=('')
-depends=('redox-binutils' 'redox-newlib' 'redox-relibc')
+depends=('redox-binutils' 'redox-relibc')
 provides=('redox-gcc' 'x86-64-unknown-redox-gcc-freestanding')
 options=('!strip' '!emptydirs')
 source=("https://static.redox-os.org/toolchain/apt/x86-64-unknown-redox-gcc_0.0.2build1101_amd64.deb")
 sha512sums=('df029bfc4c363a59a27ced75acd8167325a16ba9d85141f947b288184544af85003768592325a036d5f0b3e6777b4290a74599c139294d0a42d17fd229a3ef4c')
 
 package(){
+    rm -r "$pkgdir"/usr/share/man/man7
     # Extract package data
     tar xf data.tar.xz -C "${pkgdir}"
 }
