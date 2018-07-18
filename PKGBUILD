@@ -11,7 +11,7 @@
 pkgname=uwsgi-plugin-php53
 pkgdesc="Plugin for PHP 5.3 support"
 pkgver=2.0.17.1
-pkgrel=1.1
+pkgrel=2
 arch=(i686 x86_64)
 url="http://projects.unbit.it/uwsgi"
 license=(GPL2)
@@ -34,6 +34,9 @@ prepare(){
     for patch in uwsgi_trick_chroot.patch; do
         patch -Np1 -i $srcdir/$patch
     done
+
+    # Link with libphp53 explicitly
+    sed -i 's/^php_version = .*/php_version = "53"/' plugins/php/uwsgiplugin.py
 }
 
 build() {
