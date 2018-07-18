@@ -1,7 +1,7 @@
 pkgbase = statcode
 	pkgdesc = Like man pages, but for HTTP status codes
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shobrook/statcode
 	arch = any
 	license = MIT
