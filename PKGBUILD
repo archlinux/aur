@@ -1,7 +1,7 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=powa-archivist-git
 _gitname=powa-archivist
-pkgver=5182d7b
+pkgver=.3.1.2.r2.g27cdad3
 pkgrel=1
 pkgdesc="postgresql background worker to capture data"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -20,9 +20,7 @@ install='powa-archivist-git.install'
 
 pkgver() {
   cd $_gitname
-  tag=`git tag | grep REL | tail -1`
-  commit=`git log --format="%h" -n 1`
-  echo "$tag_$commit"
+  git describe --long --tags | sed 's/REL//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
