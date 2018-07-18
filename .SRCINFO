@@ -1,18 +1,18 @@
 pkgbase = jdk8-docs
 	pkgdesc = Documentation for Oracle Java 8 Development Kit
-	pkgver = 8u172
+	pkgver = 8u181
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	arch = any
 	license = custom:Oracle
 	depends = java-environment>=8
 	options = !strip
-	source = http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-docs-all.zip
-	source = http://download.oracle.com/otn-pub/java/javafx/8.0.172-b11/a58eab1ec242421181065cdc37240b08/javafx-8u172-apidocs.zip
+	source = http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-docs-all.zip
+	source = http://download.oracle.com/otn-pub/java/javafx/8.0.181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/javafx-8u181-apidocs.zip
 	source = LICENSE-Documentation.txt
 	source = LICENSE-Oracle-Legal-Notices.txt
-	md5sums = c96e3ead11b81d489bfaf6a6d6622bc6
-	md5sums = 94dfcffa4d561f47622046d52dda775f
+	md5sums = 522a2ccbca2e39d2dc36002df04a80a5
+	md5sums = 53c7f001e13660423443622aa40716af
 	md5sums = 4d54057ca75b691366977dab2277e869
 	md5sums = 3137397f4dba13f4a79157819af583a3
 
