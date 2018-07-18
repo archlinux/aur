@@ -1,10 +1,10 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=jdk-docs
-pkgver=10.0.1
+pkgver=10.0.2
 _major=${pkgver/.*}
-_build=10
-_hash=fb4372174a714e6b8c52526dc134031e
+_build=13
+_hash=19aef61b38124481863b1413dce1855f
 pkgrel=1
 pkgdesc="Documentation for Oracle Java Development Kit"
 arch=('any')
