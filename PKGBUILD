@@ -1,18 +1,20 @@
 # Contributor: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
 # Maintainer: Benjamin Auder <benjamin * redua net>
 # Maintainer: Beej <beej@beej.us>
+# Maintainer: Adrian Petrescu <apetresc@gmail.com>
 
 pkgname=gogui
-pkgver=1.4.9
+pkgver=1.4.10
 pkgrel=1
 pkgdesc="SGF editor, also allow to play against engines"
 arch=('any')
 url="http://gogui.sourceforge.net"
-license=("GPL")
+license=('GPL')
 depends=('java-runtime')
-source=(http://downloads.sourceforge.net/gogui/gogui-$pkgver.zip)
+makedepends=('apache-ant' 'java-environment' 'docbook-xsl')
+source=(https://github.com/lemonsqueeze/gogui/releases/download/v$pkgver/gogui-$pkgver.zip)
 install=gogui.install
-md5sums=('fad893003182af318d07287e3fd9c091')
+md5sums=('09ec6c8a66359c9ab255ff7d934056fd')
 
 package() {
 	cd $srcdir/gogui-$pkgver

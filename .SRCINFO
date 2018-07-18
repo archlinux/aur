@@ -1,14 +1,17 @@
 pkgbase = gogui
 	pkgdesc = SGF editor, also allow to play against engines
-	pkgver = 1.4.9
+	pkgver = 1.4.10
 	pkgrel = 1
 	url = http://gogui.sourceforge.net
 	install = gogui.install
 	arch = any
 	license = GPL
+	makedepends = apache-ant
+	makedepends = java-environment
+	makedepends = docbook-xsl
 	depends = java-runtime
-	source = http://downloads.sourceforge.net/gogui/gogui-1.4.9.zip
-	md5sums = fad893003182af318d07287e3fd9c091
+	source = https://github.com/lemonsqueeze/gogui/releases/download/v1.4.10/gogui-1.4.10.zip
+	md5sums = 09ec6c8a66359c9ab255ff7d934056fd
 
 pkgname = gogui
 
