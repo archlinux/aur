@@ -13,6 +13,7 @@ pkgbase = nheko
 	makedepends = boost
 	depends = lmdb
 	depends = qt5-multimedia
+	depends = qt5-svg
 	depends = libsodium
 	depends = boost-libs
 	depends = hicolor-icon-theme

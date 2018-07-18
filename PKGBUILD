@@ -10,7 +10,7 @@ arch=("i686" "x86_64")
 url="https://github.com/mujx/nheko"
 license=("GPL3")
 
-depends=("lmdb" "qt5-multimedia" "libsodium" "boost-libs" "hicolor-icon-theme")
+depends=("lmdb" "qt5-multimedia" "qt5-svg" "libsodium" "boost-libs" "hicolor-icon-theme")
 makedepends=("cmake" "fontconfig" "qt5-tools" "git" "boost")
 
 source=(https://github.com/mujx/nheko/archive/v$pkgver.tar.gz)
