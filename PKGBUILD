@@ -10,7 +10,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20180612
+pkgver=20180718
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -20,14 +20,15 @@ depends=('hicolor-icon-theme'
          'python-dnspython'
          'python-ecdsa'
          'python-jsonrpclib-pelix'
-         'python-pbkdf2'
          'python-protobuf'
          'python-pyaes'
          'python-pyqt5'
          'python-pysocks'
+         'python-qdarkstyle'
          'python-qrcode'
          'python-requests'
          'python-six'
+         'python-websocket-client'
          'qt5-base')
 checkdepends=('python-tox')
 makedepends=('gettext'
@@ -64,10 +65,13 @@ build() {
   cd ${pkgname%-git}
 
   msg2 'Compiling icons...'
-  pyrcc5 icons.qrc -o gui/qt/icons_rc.py
+  pyrcc5 icons.qrc -o electrum/gui/qt/icons_rc.py
 
   msg2 'Compiling protobuf description file...'
-  protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
+  protoc \
+    --proto_path=electrum \
+    --python_out=electrum \
+    electrum/paymentrequest.proto
 
   msg2 'Creating translations...'
   python contrib/make_locale
