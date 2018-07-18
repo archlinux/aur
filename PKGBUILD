@@ -1,6 +1,6 @@
 # Maintainer: Stewart Webb <stew@rtwebb.com>
 pkgname=mediaconch-server
-pkgver=17.06
+pkgver=18.03.2
 pkgrel=1
 pkgdesc="Implementation checker and policy checker for video and audio files (Server)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('custom:MPL2' 'GPL3')
 depends=('jansson' 'libxml2' 'libxslt' 'sqlite' 'libevent' 'libzen>=0.4.35' 'libmediainfo>=0.7.97')
 makedepends=('libxml2' 'libxslt' 'sqlite' 'libevent' 'libzen>=0.4.35' 'libmediainfo>=0.7.97')
 source=(https://mediaarea.net/download/source/mediaconch/$pkgver/mediaconch_$pkgver.tar.bz2)
-sha256sums=('911ddf541e8ce540ef3e2346c3381ed207927b60ff9d15982fdb00af1b54ea69')
+sha256sums=('ba64630ff582f55c104834cefc15066027ffb51f743130fb0ac7f669536b1c5c')
 backup=('etc/mediaconch/MediaConch.rc')
 
 prepare() {
@@ -32,8 +32,6 @@ package() {
 
   cd "${srcdir}"/MediaConch
   install -D -m 0644 License.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.html
-  install -D -m 0644 License.MPLv2.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.MPLv2.html
-  install -D -m 0644 License.GPLv3.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.GPLv3.html
 
   install -D -m 0644 Documentation/Daemon.md "${pkgdir}"/usr/share/docs/${pkgname}/Daemon.md
   install -D -m 0644 Documentation/Config.md "${pkgdir}"/usr/share/docs/${pkgname}/Config.md
