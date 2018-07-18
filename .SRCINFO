@@ -1,7 +1,7 @@
 pkgbase = redox-gcc
 	pkgdesc = GCC for Redox cross compilation on x86_64.
 	pkgver = 0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://redox-os.org/
 	arch = x86_64
 	depends = redox-binutils
