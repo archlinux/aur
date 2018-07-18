@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/acidrain42/$_pkgname"
 license=('GPL')
 depends=('evolution>=2.30' 'gconf' 'libnotify')
-makedepends=('git' 'autoconf>=2.53' 'automake>=1.8''libtool>=1.4.3' 'glib2>=2.2.0' 'pkgconfig>=0.14.0' 'intltool>=0.25' 'gnome-common>=2.3.0')
+makedepends=('git' 'autoconf>=2.53' 'automake>=1.8''libtool>=1.4.3' 'glib2>=2.2.0' 'pkgconf>=1.5.1' 'intltool>=0.25' 'gnome-common>=2.3.0')
 provides=("$_pkgname")
 conflicts=("$_pkgname" 'evolution-tray' 'evolution-tray-arch')
 replaces=('evolution-tray' 'evolution-tray-arch')
