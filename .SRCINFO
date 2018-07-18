@@ -1,0 +1,14 @@
+pkgbase = sddm-theme-kde-plasma-chili
+	pkgdesc = Chili login theme for KDE Plasma
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/MarianArlt/kde-plasma-chili
+	arch = any
+	license = GPL3
+	depends = sddm
+	depends = plasma-desktop
+	source = https://github.com/MarianArlt/kde-plasma-chili/archive/v0.5.0.tar.gz
+	md5sums = ea9f55983ae6be665f9a018ab801aaa0
+
+pkgname = sddm-theme-kde-plasma-chili
+
