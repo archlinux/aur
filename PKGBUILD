@@ -1,7 +1,7 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=pg_qualstats-git
 _gitname=pg_qualstats
-pkgver=dd6fbf4
+pkgver=1.0.4.r3.g7b8f418
 pkgrel=1
 pkgdesc="Capture qualifiers the same way as pg_stat_statement does for statements"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -17,9 +17,7 @@ install='pg_qualstats-git.install'
 
 pkgver() {
   cd $_gitname
-  tag=`git tag | grep REL | tail -1`
-  commit=`git log --format="%h" -n 1`
-  echo "$tag_$commit"
+  git describe --long --tags | sed 's/REL//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
