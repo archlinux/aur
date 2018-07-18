@@ -2,7 +2,7 @@
 # Maintainer: David C. Rankin <drankinatty @ gmail.com>
 
 pkgname=gtkwrite
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="GTKwrite Text Editor with Syntax Highlight written in C, GTK+2 & GtkSourceView2"
 url="https://github.com/drankinatty/${pkgname}"
@@ -13,7 +13,7 @@ options=('!emptydirs')
 depends=('gtksourceview2')
 makedepends=('glib2' 'gtk2' 'gtksourceview2')
 source=("https://github.com/drankinatty/${pkgname}/archive/v${pkgver}.tar.gz")
-sha1sums=('9d3116becef45527bcacddc02f192902706b503d')
+sha1sums=('bbe423817e7702827458aaf80b87884344303161')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
