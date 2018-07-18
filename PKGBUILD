@@ -11,7 +11,7 @@ depends=('java-environment' 'sh')
 optdepends=('streamlink: for watching streams in a custom video player.'
             'livestreamer: for watching streams in a custom video player.')
 makedepends=('gradle')
-source=("${pkgname}-${pkgver}-emotefix.tar.gz::https://github.com/chatty/chatty/archive/v${pkgver}-emotefix.tar.gz"
+source=("${pkgname}-${pkgver}-emotefix.tar.gz::https://github.com/chatty/${pkgname}/archive/v${pkgver}-emotefix.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}_script"
         'disable_version_check.patch')
@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-  cd "chatty-${pkgver}-emotefix"
+  cd "${pkgname}-${pkgver}-emotefix"
   gradle build
   gradle release
 }
