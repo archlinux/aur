@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=20180718.5
+VERSION=20180718.6
 
 ##
 #
@@ -272,7 +272,7 @@ echo "IDOS-related packages, before upgrade:"
 echo ""
 
 {
-  cat <<< '|||'
+  cat <<< ';;;'
   for _pkg in $(tr ' ' '\n' <<< "${!pkgs[@]}" | sort -n); do
     _flags="${pkgs["${_pkg}"]}"
     _info="$(sed -En 's|^.*v=([^ ]*).*$|\1|gp' <<< "${_flags}")"
@@ -316,7 +316,7 @@ echo "IDOS-related packages, after upgrade:"
 echo ""
 
 {
-  cat <<< '|||'
+  cat <<< ';;'
   for _pkg in $(tr ' ' '\n' <<< "${!pkgs[@]}" | sort -n); do
     _flags="${pkgs["${_pkg}"]}"
     _old_ver="$(sed -En 's|^.*ov=([^ ]*).*$|\1|gp' <<< "${_flags}")"
@@ -325,4 +325,4 @@ echo ""
     
     cat <<< "${_pkg};| ${_old_ver};${_ver_diff} ${_new_ver}"
   done
-} | column -o ' ' -s ';' -t -R 1,2 -N 'package,old ver.,new ver.'
+} | column -o ' ' -s ';' -t -R 1 -N 'package,old ver.,new ver.'
