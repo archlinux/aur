@@ -1,3 +1,4 @@
+# Maintainer: bar0metr <admin@os-admin.ru>
 pkgname=squid-ecap-gzip
 pkgver=1.5.3.0
 pkgrel=1
@@ -20,5 +21,9 @@ build() {
 package() {
   cd "$srcdir"
   make -C "squid-ecap-gzip" DESTDIR="$pkgdir" install-strip
+  msg "INFO:"
+  msg2 "Go to page https://github.com/yvoinov/squid-ecap-gzip for documentation and support."
+  msg2 "Copyright (c) 2016-2018, Joe Lawand <chip_pop@hotmail.com>,"
+  msg2 "Yuri Voinov <yvoinov@gmail.com>" 
 }
 
