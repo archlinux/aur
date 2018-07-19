@@ -173,13 +173,18 @@ void on_set_password_dialog_response(GtkDialog* dialog, gint response_id) {
 }
 
 void on_set_password_entry_activate(GtkEntry* entry) {
-    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "set_password_dialog")));
     GtkEntry* pass = GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry1"));
     GtkEntry* pass_check = GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry2"));
     const gchar* pass_str = gtk_entry_get_text(pass);
+    const gchar* pass_check_str = gtk_entry_get_text(pass_check);
+
+    // Return on empty entry
+    if (pass_str[0] == '\0' || pass_check_str[0] == '\0')
+        return;
+
     if (strlen(pass_str) < 6 || strlen(pass_str) > 30) // Too short or too long password
         show_generic_message_dialog("Your password must be between 6 and 30 characters.", FALSE);
-    else if (strcmp(pass_str, gtk_entry_get_text(pass_check)) != 0) // Passwords not matching
+    else if (strcmp(pass_str, pass_check_str) != 0) // Passwords not matching
         show_generic_message_dialog("Your passwords did not match.", FALSE);
     else { // If passwords match
         sprintf(app.password, "%s\n", pass_str);
@@ -188,6 +193,7 @@ void on_set_password_entry_activate(GtkEntry* entry) {
         show_generic_message_dialog("Success! Your portfolio will be encrypted when you close the "
                                     "program.", TRUE);
     }
+    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "set_password_dialog")));
 }
 
 void on_decrypt_dialog_response(GtkDialog* dialog, gint response_id) {
@@ -197,9 +203,13 @@ void on_decrypt_dialog_response(GtkDialog* dialog, gint response_id) {
 }
 
 void on_decrypt_password_entry_activate(GtkEntry* entry) {
-    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "decrypt_dialog")));
     const gchar* pass = gtk_entry_get_text(GTK_ENTRY(
             gtk_builder_get_object(app.builder, "decrypt_password_entry")));
+
+    // Return on empty entry
+    if (pass[0] == '\0')
+        return;
+
     gchar mod_pass[strlen(pass) + 2];
     sprintf(mod_pass, "%s\n", pass);
     if (strcmp(app.password, mod_pass) == 0) { // Success
@@ -208,6 +218,7 @@ void on_decrypt_password_entry_activate(GtkEntry* entry) {
                              "Encrypt"); // Change button label to Encrypt
         show_generic_message_dialog("Successfully decrypted.", TRUE);
     } else show_generic_message_dialog("Wrong password!", FALSE);
+    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "decrypt_dialog")));
 }
 
 void on_modify_button_clicked(GtkButton* button) {
@@ -233,7 +244,6 @@ void on_modify_button_clicked(GtkButton* button) {
 }
 
 void on_modify_entry_activate(GtkEntry* entry) {
-    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "portfolio_modify_dialog")));
     GtkEntry* symbol_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_symbol_entry"));
     GtkEntry* amount_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_amount_entry"));
     GtkEntry* spent_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_spent_entry"));
@@ -244,10 +254,10 @@ void on_modify_entry_activate(GtkEntry* entry) {
     strtoupper(symbol);
     const gchar* amount_str = gtk_entry_get_text(amount_entry);
     const gchar* spent_str = gtk_entry_get_text(spent_entry);
-    if (symbol[0] == '\0' || amount_str[0] == '\0' || spent_str[0] == '\0') {
-        show_generic_message_dialog("Modification fields may not be empty.", FALSE);
+
+    // Return on empty entry
+    if (symbol[0] == '\0' || amount_str[0] == '\0' || spent_str[0] == '\0')
         return;
-    }
 
     double amount = strtod(amount_str, NULL);
     double spent = strtod(spent_str, NULL);
@@ -269,6 +279,7 @@ void on_modify_entry_activate(GtkEntry* entry) {
     if (!portfolio_modify_string(app.portfolio_string, symbol, amount, spent * amount, modop))
         list_store_update();
     else show_generic_message_dialog("Invalid symbol or arguments.", FALSE);
+    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "portfolio_modify_dialog")));
 }
 
 void on_portfolio_modify_dialog_response(GtkDialog* dialog, gint response_id) {
@@ -278,12 +289,12 @@ void on_portfolio_modify_dialog_response(GtkDialog* dialog, gint response_id) {
 }
 
 void on_password_entry_activate(GtkEntry* entry) {
-    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "get_password_dialog")));
     const gchar* password = gtk_entry_get_text(GTK_ENTRY(gtk_builder_get_object(app.builder,
             "password_entry")));
-    if (password == NULL || strcmp(password, "") == 0) // Return if NULL or empty entry text
+    if (strcmp(password, "") == 0) // Return if NULL or empty entry text
         return;
 
+    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "get_password_dialog")));
     char modified_pw[strlen(password) + 2];
     sprintf(modified_pw, "%s\n", password);
     rc4_encode_string(app.portfolio_string, modified_pw); // Encode String
