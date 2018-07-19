@@ -59,6 +59,7 @@ build() {
     --localstatedir=/var \
     --with-logdir=/var/log/squid \
     --with-pidfile=/run/squid.pid \
+    --enable-ecap \
     --enable-auth \
     --enable-auth-basic \
     --enable-auth-ntlm \
