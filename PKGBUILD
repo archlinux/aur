@@ -1,9 +1,9 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 pkgname=picard-plugins-git
-pkgver=1.4.r244.7f14c15
-_pkgver=1.4
-_gitbranch=1.0
+pkgver=2.0.r354.62cd688
+_pkgver=2.0
+_gitbranch=2.0
 pkgrel=1
 pkgdesc="plugins from picard-plugins repository"
 arch=('any')
@@ -22,14 +22,15 @@ pkgver() {
 
 build() {
   cd "$srcdir/picard-plugins"
-  python2 generate.py
+  python generate.py "${_gitbranch}"
 }
 
 package() {
-  plugindir="${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins"
+  pythonver=$(python --version | sed -E 's/Python (3\.[0-9]+)\..*/\1/')
+  plugindir="${pkgdir}/usr/lib/python${pythonver}/site-packages/picard/plugins"
   install -d "$plugindir"
   # copy all plugins
-  cp "$srcdir/picard-plugins/plugins/"*.zip "$plugindir"
+  cp "$srcdir/picard-plugins/build/$_gitbranch/"*.zip "$plugindir"
 }
 
 # vim:set ts=2 sw=2 et:
