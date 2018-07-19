@@ -3,8 +3,8 @@
 
 _pkgbase="sddm"
 pkgname="$_pkgbase-git"
-pkgver=0.17.0.0.ga15888b
-pkgrel=4
+pkgver=0.18.0.0.gc8867e0
+pkgrel=1
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
 url="https://github.com/sddm/sddm"
@@ -26,7 +26,7 @@ pkgver() {
 	cd "$srcdir/$_pkgbase"
 	#_ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
         #echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-	git describe --long | sed 's/^v//;s/-/./g'
+	git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
 prepare() {
@@ -37,11 +37,10 @@ build() {
         cd build
 	cmake "$srcdir/$_pkgbase" \
             -DCMAKE_INSTALL_PREFIX=/usr \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
-            -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
-            -DBUILD_MAN_PAGES=ON
-        make
+        -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
+        -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
+        -DBUILD_MAN_PAGES=ON
+  make
 }
 
 package() {
@@ -51,12 +50,10 @@ package() {
   install -Dm644 "$srcdir"/sddm.sysusers "$pkgdir"/usr/lib/sysusers.d/sddm.conf
   install -Dm644 "$srcdir"/sddm.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/sddm.conf
 
-  # Move sddm.conf to /usr/lib https://bugs.archlinux.org/task/56609
-  mkdir "$pkgdir"/usr/lib/sddm/sddm.conf.d
-  mv "$pkgdir"/{etc/sddm.conf,usr/lib/sddm/sddm.conf.d}
-
+  install -d "$pkgdir"/usr/lib/sddm/sddm.conf.d
+  "$pkgdir"/usr/bin/sddm --example-config > "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf
   # Don't set PATH in sddm.conf
-  sed -r 's|DefaultPath=.*|DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin|g' -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/sddm.conf
+  sed -r 's|DefaultPath=.*|DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin|g' -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf 
   # Unset InputMethod https://github.com/sddm/sddm/issues/952
-  sed -e "/^InputMethod/s/qtvirtualkeyboard//" -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/sddm.conf
+  sed -e "/^InputMethod/s/qtvirtualkeyboard//" -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf
 }
