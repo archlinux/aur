@@ -101,3 +101,15 @@ int is_string_json_array(const String* pString) {
     json_object_put(jobj);
     return formatted;
 }
+
+int is_str_number(const char* string) {
+    size_t len = strlen(string);
+    if (len == 0)
+        return 0;
+
+    for (size_t i = 0; i < len; i++)
+        if (!isdigit(string[i]))
+            return 0;
+
+    return 1;
+}

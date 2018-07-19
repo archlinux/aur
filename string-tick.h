@@ -111,4 +111,11 @@ void pointer_alloc_check(void* alloced);
  */
 int is_string_json_array(const String* pString);
 
+/**
+ * Returns 1 if the string contains only digits or 0 otherwise
+ * @param string char*
+ * @return 1 is number, 0 if not
+ */
+int is_str_number(const char* string);
+
 #endif
