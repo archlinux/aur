@@ -1,0 +1,15 @@
+pkgbase = quiterss2-git
+	pkgdesc = An open-source cross-platform news feed reader written in Qt/C++/QML
+	pkgver = 0.0.1+1+1e13b14
+	pkgrel = 1
+	url = https://github.com/QuiteRSS/quiterss2
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	depends = qt5-webengine
+	conflicts = quiterss
+	source = git+https://github.com/QuiteRSS/quiterss2.git#commit=1e13b1493efeb35ac8308a68e2635c6d985bf22f
+	sha256sums = SKIP
+
+pkgname = quiterss2-git
+
