@@ -1,0 +1,15 @@
+pkgbase = ptunnel-ng
+	pkgdesc = A TCP forwarder and proxy used for ICMP/UDP tunneling without creating tun devices. (Ping Tunnel, ICMP Echo Tunnel, UDP Tunnel)
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://www.github.com/lnslbrty/ptunnel-ng
+	arch = i686
+	arch = x86_64
+	license = BSD-3
+	makedepends = git
+	provides = ptunnel-ng=1.2
+	source = https://github.com/lnslbrty/ptunnel-ng/archive/v1.2.tar.gz
+	md5sums = 55ea297a34ae35ddc8d5586b15040a15
+
+pkgname = ptunnel-ng
+
