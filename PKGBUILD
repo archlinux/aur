@@ -1,27 +1,15 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-ss11
-pkgver=1.14.3
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='A slender monospace typeface. Shape: X Windows Fixed.'
+pkgdesc='A slender monospace typeface. Shape: X Windows Fixed'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-conflicts=('ttf-iosevka-pack'
-           'ttf-iosevka-term'
-           'ttf-iosevka-term-ss01'
-           'ttf-iosevka-term-ss02'
-           'ttf-iosevka-term-ss03'
-           'ttf-iosevka-term-ss04'
-           'ttf-iosevka-term-ss05'
-           'ttf-iosevka-term-ss06'
-           'ttf-iosevka-term-ss07'
-           'ttf-iosevka-term-ss08'
-           'ttf-iosevka-term-ss09'
-           'ttf-iosevka-term-ss10')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-term-ss11-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('f41b95159cc2cba7098d019e4a0f1f882f914ecf9b165d7e18863b57023ed0cd'
+sha256sums=('45ce5fc22e21233da8e24e4d8d81d9a30d425aa8626e1706f62b4e64c8135256'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
