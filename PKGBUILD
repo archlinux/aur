@@ -2,7 +2,7 @@
 _pkgname=wootility
 pkgname=${_pkgname}-appimage
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
 arch=('x86_64')
 url='https://www.wooting.nl/wootility'
@@ -15,7 +15,7 @@ source=("https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-linux-beta/
         '70-wooting.rules')
 noextract=("${_appimage}")
 sha512sums=('d751a6c9172be6b1c838ac867ac3c64d41f8fab9cdaaf911c156c1939d262db1c479cd2bc59f8febcb7a519544996a15ac80a5ed1503b67d43a6205510dc7429'
-            'f8b9eb4334e776d6b30b2ac896fb94497e8d200c9b8de4e00698d6e766aec30a55d6c225b1c91cb1eda5c98161ad26c635da5a555bbf5b349d69c4bc64fba912')
+            '3eddcccc40a6ddc924777ced27e757f966889bf789b312ec87c7ba76e69362f14231a5559b86259eb641e5cf1d14333c23fb344a3d278870ba6843fc5dff6579')
 
 prepare() {
 	bsdcpio --extract --make-directories --insecure 'wootility.desktop' '.DirIcon' 'usr/share/icons' < "${_appimage}"
