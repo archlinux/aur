@@ -2,15 +2,15 @@
 
 _realname=precis_i18n
 pkgname=python-precis-i18n
-pkgver=0.6.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Internationalized Usernames and Passwords"
 arch=('any')
 url="https://github.com/byllyfish/precis_i18n"
 license=('MIT')
 depends=('python')
-source=("https://pypi.python.org/packages/a8/eb/553a6147af21a691428398324ac7ae44306f525a15dcc453893eaeb8bcda/$_realname-$pkgver.tar.gz")
-md5sums=('5ec2e9266ccad13be29a98220f7446a5')
+source=("https://files.pythonhosted.org/packages/1f/05/799c3c2c22b9c80f67a8cd4bd772804c6242ab4319974aff2b8d689755f8/$_realname-$pkgver.tar.gz")
+sha256sums=('227ac196b8a31b1209030bfbe90616dd375be946e0a9403349dd45851adf503e')
 
 build() {
   cd $_realname-$pkgver
