@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Retro Graphics Toolkit
+Comment=Retro Graphics Editor for Video Game Consoles
+Exec=RetroGraphicsToolkit
+Icon=retro-graphics-toolkit
+Terminal=false
+StartupNotify=false
+Categories=Application;Multimedia;

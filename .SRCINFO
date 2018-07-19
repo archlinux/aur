@@ -1,0 +1,24 @@
+pkgbase = retro-graphics-toolkit
+	pkgdesc = Retro Graphics Editor for Video Game Consoles
+	pkgver = 1.1RC
+	pkgrel = 1
+	url = https://github.com/ComputerNerd/Retro-Graphics-Toolkit
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPLv3
+	depends = fltk
+	source = https://github.com/ComputerNerd/Retro-Graphics-Toolkit/archive/c5e91e165aeb97a6cb7d6b15189538046cd301f0.zip
+	source = https://www.lua.org/ftp/lua-5.3.5.tar.gz
+	source = lua-Makefile.patch
+	source = retro-graphics-toolkit.desktop
+	source = retro-graphics-toolkit.png
+	md5sums = a71b4960dabbdafb1bd5f7baacc21317
+	md5sums = 4f4b4f323fd3514a68e0ab3da8ce3455
+	md5sums = 2cb035965ad4c8b82ffc4235ef98855b
+	md5sums = 40d2bcd7d7ad3de6f67b29b28935ec57
+	md5sums = 272d6ba5c03ec6e688bb7312abb88568
+
+pkgname = retro-graphics-toolkit
+
