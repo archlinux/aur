@@ -1,27 +1,15 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-ss03
-pkgver=1.14.3
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='A slender monospace typeface. Shape: Consolas.'
+pkgdesc='A slender monospace typeface. Shape: Consolas'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-conflicts=('ttf-iosevka'
-           'ttf-iosevka-pack'
-           'ttf-iosevka-ss01'
-           'ttf-iosevka-ss02'
-           'ttf-iosevka-ss04'
-           'ttf-iosevka-ss05'
-           'ttf-iosevka-ss06'
-           'ttf-iosevka-ss07'
-           'ttf-iosevka-ss08'
-           'ttf-iosevka-ss09'
-           'ttf-iosevka-ss10'
-           'ttf-iosevka-ss11')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-ss03-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('b372ce7624d9d56691355cc412c2209abea3af906099ad62b2a4f57f623efe66'
+sha256sums=('5c17ec290085ee4ee2ce54e5623f6d5373a94011b281127269ce66929fb561e3'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
