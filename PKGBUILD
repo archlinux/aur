@@ -3,12 +3,13 @@
 _pkgname=aria2
 pkgname=libaria2
 pkgver=1.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink. Build with --enable-libaria2'
 arch=('x86_64')
 url='http://aria2.sourceforge.net/'
 license=('GPL')
 conflicts=('aria2')
+provides=('aria2')
 depends=('gnutls' 'libxml2' 'sqlite' 'c-ares' 'ca-certificates' 'libssh2')
 checkdepends=('cppunit')
 source=("https://github.com/tatsuhiro-t/aria2/releases/download/release-$pkgver/aria2-$pkgver.tar.xz")
