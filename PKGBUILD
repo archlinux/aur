@@ -8,7 +8,7 @@
 
 pkgname=mutter-781835-workaround
 _pkgname=mutter
-pkgver=3.28.2+5
+pkgver=3.28.3
 pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users."
 url="https://git.gnome.org/browse/mutter"
@@ -16,12 +16,12 @@ arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
-         gnome-settings-daemon libgudev libinput pipewire 'gnome-shell>=3.28' 'gnome-shell<3.29')
+         gnome-settings-daemon libgudev libinput pipewire 'gnome-shell=3.28.3')
 makedepends=(intltool gobject-introspection git)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=41303bc01be873e684f11a3407aa556af2922426 # tags/3.28.2^0
+_commit=34f5bdeea3be10e200c52bac56763a267eb4d415 # tags/3.28.3^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         startup-notification.patch
         revert.patch)
@@ -47,6 +47,9 @@ prepare() {
 
   # Revert offending commit
   patch -Np1 -i ../revert.patch
+
+  # Port to pipewire 0.2
+  git cherry-pick -n 0407a8b33d8c3503fba63ad260984bb08bd6e0dc
 
   # https://bugs.archlinux.org/task/51940
   # As of 2018-05-08: Still needed, according to fmuellner
