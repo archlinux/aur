@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=arcticfox-config-bin
-pkgver=1.11.9
+pkgver=1.11.10
 pkgrel=1
 pkgdesc="Configuration Tool for Vape Battery Mods with Arcticfox Firmware. Works on MacOS and Linux."
 arch=('any')
