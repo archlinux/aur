@@ -19,7 +19,7 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver/build"
     echo $pkgdir
-    DESTDIR=$pkgdir cmake -DCMAKE_BUILD_TYPE=Release .. -DCMAKE_INSTALL_PREFIX=/usr/local -DBSONCXX_POLY_USE_MNMLSTC=No
+    DESTDIR=$pkgdir cmake -DCMAKE_BUILD_TYPE=Release .. -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_CXX_STANDARD=17 
     DESTDIR=$pkgdir make -j$(grep -c proc /proc/cpuinfo)
 }
 
