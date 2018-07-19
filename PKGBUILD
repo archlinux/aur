@@ -2,10 +2,10 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
-pkgver=2016.4
-_gromacsver=2016.4
-_plumedver=2.4.1
-pkgrel=3
+pkgver=2018.1
+_gromacsver=2018.1
+_plumedver=2.4.2
+pkgrel=1
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -17,7 +17,7 @@ optdepends=('cuda: Nvidia GPU support'
 makedepends=('cmake' 'libxml2' 'hwloc' 'gcc6')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha1sums=('b142c9c77e793fa8def24aeacebaf8b8f1dd55fc')
+sha1sums=('099996bb49a8c5467f4628c8bf64e96bbb540490')
 
 # In order to use CUDA 9 we need to use gcc6
 # for machines requiring cuda 8 use gcc5 instead
