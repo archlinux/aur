@@ -1,4 +1,5 @@
 # Maintainer: mockroot <mockroot@zoho.com>
+# Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=vlc-pause-click-plugin
 pkgver=1.0.0
