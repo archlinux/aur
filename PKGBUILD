@@ -69,7 +69,7 @@ _minor=8
 pkgver=${__basekernel}.${_minor}
 #_clearver=${__basekernel}.6-592
 _clearver=6a33010f47191778ac7c09b3fd0f4a1d2d011f28
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -82,8 +82,9 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#commit=${_clearver}"
-  'https://downloadmirror.intel.com/27776/eng/microcode-20180425.tgz'
+  'https://downloadmirror.intel.com/27945/eng/microcode-20180703.tgz'
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
+  "rtc_nvmem_dont_return_an_error_when_not_enabled.patch::https://git.kernel.org/pub/scm/linux/kernel/git/abelloni/linux.git/patch/?id=c59b3715ac16544f8f68ab7af03f108e339b36aa"
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
   '99-linux.hook'  # pacman hook for remove initramfs
@@ -98,8 +99,9 @@ sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             '146f68fa5ded4c33f3bafba23224ed8fae2a27f701257c899c6a4a7fa61eb6d0'
             'SKIP'
             'SKIP'
-            'f0d2492f4561e2559f6c9471b231cb8262d45762c0e7cccf787be5c189b4e2d6'
+            '4a1a346fdf48e1626d4c9d0d47bbbc6a4052f56e359c85a3dd2d10fd555e5938'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
+            '05b7c1ac15786c14a9cbacfec16ba7c654d45b75bcaaf724269a52991ad09625'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
@@ -118,6 +120,10 @@ prepare() {
     msg "Applying ${i}"
     patch -p1 -i "$srcdir/clearlinux/${i}"
   done
+
+  # Avoid reporting an error when RTC_NVMEM is not selected.
+  # https://git.kernel.org/pub/scm/linux/kernel/git/abelloni/linux.git/commit/?h=rtc-next&id=c59b3715ac16544f8f68ab7af03f108e339b36aa
+  patch -p1 -i ../rtc_nvmem_dont_return_an_error_when_not_enabled.patch
 
   # Clean tree and copy CLEAR config over
   make mrproper
