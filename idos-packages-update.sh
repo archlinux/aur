@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=20180718.8
+VERSION=20180719.1
 
 ##
 #
@@ -53,7 +53,7 @@ stdout_prefix()
 {
   prefix="$1"
   while read line; do
-    echo "${prefix}${line}"
+    cat <<< "${prefix}${line}"
   done
 }
 
@@ -89,25 +89,28 @@ exiterror() {
 }
 
 printusage() {
-  echo "Usage:"
-  echo "  $0 [arguments ...]"
-  echo ""
-  echo "Arguments (all optional):"
-  echo "  -h | --help      Print this message and exit."
-  echo "  -s | --sloppy | --needed"
-  echo "                   Just install if the version info in the AUR is newer than"
-  echo "                   the locally installed version."
-  echo "                   Default is to re-installed every locally installed idos-"
-  echo "                   packages since version numbers in the AUR may be outdated."
-  echo "  -d | --debug     Print some detailed information as we go on."
-  echo "                   (Does _not_ imply -v.)"
-  echo "  -v | --verbose   Print verbose summary."
-  echo "  -V | --version   Print version."
+  msg "Usage:"
+  msg "  $0 [arguments ...]"
+  msg ""
+  msg "Arguments (all optional):"
+  msg "  -h | --help      Print this message and exit."
+  msg "  -s | --sloppy | --needed"
+  msg "                   Just install if the version info in the AUR is newer than"
+  msg "                   the locally installed version."
+  msg "                   Default is to re-installed every locally installed idos-"
+  msg "                   packages since version numbers in the AUR may be outdated."
+  msg "  -l | --list      Only list version numbers of installed packages and their"
+  msg "                   AUR equivalents, and what would be done. Do not upgrade."
+  msg "  -d | --debug     Print some detailed information as we go on."
+  msg "                   (Does _not_ imply -v.)"
+  msg "  -v | --verbose   Print verbose summary."
+  msg "  -V | --version   Print version."
 }
 
 
 ### Variables that can be changed by command line options:
 _sloppy=false
+_listonly=false
 _debug=false
 _verbose=false
 
@@ -122,6 +125,11 @@ while [ $# -ge 1 ]; do
     "-s"|"--sloppy"|"--needed")
       _sloppy=true
       export _sloppy
+      shift
+    ;;
+    "-l"|"--listonly")
+      _listonly=true
+      export _listonly
       shift
     ;;
     "-d"|"--debug")
@@ -166,9 +174,9 @@ get_aur_pkgs_version() {
     _raw="$(yaourt -Si "aur/$1")"
     exitcode_query="$?"
     if [ "${exitcode_query}" -eq 0 ]; then
-      echo "${_raw}" | sed -n -r 's|^Version[[:space:]]*\:[[:space:]]*||p'
+      cat <<< "${_raw}" | sed -n -r 's|^Version[[:space:]]*\:[[:space:]]*||p'
     else
-      echo ''
+      cat <<< ''
     fi
   shift
   else
@@ -177,9 +185,9 @@ get_aur_pkgs_version() {
       _raw="$(yaourt -Si "aur/$1" 2>/dev/null)"
       _exitcode="$?"
       if [ "${_exitcode}" -eq 0 ]; then
-        echo "${_raw}" | sed -n -r 's|^Version[[:space:]]*\:[[:space:]]*||p'
+        cat <<< "${_raw}" | sed -n -r 's|^Version[[:space:]]*\:[[:space:]]*||p'
       else
-        echo ''
+        cat <<< ''
       fi
       shift
     done
@@ -197,18 +205,18 @@ compare_versions() {
   #   "<" if "$1" <  "$2".
 
   if [ "$1x" == "$2x" ]; then
-    echo "="
+    cat <<< "="
   else
 
     _smalleritem="$({
-      echo "$1"
-      echo "$2"
+      cat <<< "$1"
+      cat <<< "$2"
     } | sort -V | head -n 1)"
     
     if [ "${_smalleritem}x" == "$2x" ]; then
-      echo ">"
+      cat <<< ">"
     else
-      echo "<"
+      cat <<< "<"
     fi
   fi
 }
@@ -237,7 +245,7 @@ for pkg_string in "${idos_pkgs_strings[@]}"; do
   for _pkg_ver_group in $(pacman -Q -s "${pkg_string}" | sed -n 's|^local/||p' | tr ' \t' ';;'); do
     _pkg="$(awk -F';' '{print $1}' <<< "${_pkg_ver_group}")"
     _old_ver="$(awk -F';' '{print $2}' <<< "${_pkg_ver_group}")"
-    _aur_ver="$(get_aur_pkgs_version "${_pkg}" 2>/dev/null || echo '')"
+    _aur_ver="$(get_aur_pkgs_version "${_pkg}" 2>/dev/null || cat <<< '')"
     pkgs["${_pkg}"]="i=true ov=${_old_ver}"
     if [ -n "${_aur_ver}" ]; then
       if "${_sloppy}"; then
@@ -268,8 +276,8 @@ done
 
 
 ### Print some information.
-echo "IDOS-related packages, before upgrade:"
-echo ""
+msg "IDOS-related packages, before upgrade:"
+msg ""
 
 {
   cat <<< ';;;'
@@ -289,6 +297,12 @@ echo ""
 } | column -o ' ' -s ';' -t -R 1,2 -N 'upgr.?,package,| local ver.,| AUR ver.'
 msg ''
 
+
+
+if "${_listonly}"; then
+  verbose "-l | --listonly option specified, will not actually upgrade."
+  exit 0
+fi
 
 ### Reinstall the packages to be upgraded:
 if [ ${#upgrades[@]} -ge 1 ]; then
@@ -311,9 +325,9 @@ done
 
 
 ### Print information about changes that were carried out:
-echo ""
-echo "IDOS-related packages, after upgrade:"
-echo ""
+msg ""
+msg "IDOS-related packages, after upgrade:"
+msg ""
 
 {
   cat <<< ';;'
