@@ -1,15 +1,12 @@
 pkgbase = sequoia-git
-	pkgdesc = A modular OpenPGP library
-	pkgver = 675
+	pkgver = r675.023f52c
 	pkgrel = 1
-	url = https://sequoia-pgp.org/
 	arch = x86_64
 	arch = i686
-	groups = devel
 	license = GPL3
 	makedepends = rust
 	makedepends = cargo
-	makedepends = git>=1
+	makedepends = git
 	depends = nettle>=3
 	depends = sqlite>=3
 	depends = openssl>=1.1
