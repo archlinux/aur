@@ -1,4 +1,5 @@
-# Maintainer: Joshua Schüler <joshua.schueler at gmail dotcom>
+# Maintainer: Darcy Hu <hot123tea123@gmail.com>
+# Contributor: Joshua Schüler <joshua.schueler at gmail dotcom>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
@@ -39,8 +40,8 @@ _FORCE_AVX2=OFF
 
 pkgbase=opencv2-opt
 pkgname=('opencv2-opt' 'opencv2-opt-samples')
-pkgver=2.4.13.3
-pkgrel=2
+pkgver=2.4.13.6
+pkgrel=1
 _pkgbase=opencv2
 _pkgname=opencv
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
@@ -55,11 +56,8 @@ optdepends=('opencv2-opt-samples'
             'python2-numpy: Python 2.x interface')
 
 source=("$_pkgname-$pkgver.zip::https://github.com/Itseez/opencv/archive/$pkgver.zip"
-cmake.diff
-#         "opencv_a0fdc91a14f07de25d858037940fcd3ba859b4e2.patch"
         )
-sha512sums=('00e27853c93bfaa6a0f8334d38aff52bf02fb2c2ce26b36670ceac35284fe6ef1624ccf2b4eeeab075b57ed441e686c28b98cb446da6d7c400a576b4203b64fb'
-            '3b9ec5a5445b605a392b7bf81912fe561c853ebe80feb7e5b5eb8333e783d8f4242d2028ce28f414fc00a18a59300bc4cc4faa101d459d8b4b5673de26e6b165')
+sha512sums=('942a523192ac790bc8184dff3b7652efd92dfe786091402a7686a468ae567e1c09b9205e6c56424602a887057a57c31a0b0e4f4f9ca29c1b1856024b8d9ad990')
 
 _cmakeopts=('-D WITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc don't play along yet
             '-D WITH_OPENCL=ON'
@@ -94,11 +92,12 @@ _cmakeopts=('-D WITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc
 
 prepare() {
   cd $_pkgname-$pkgver
-# Patch for gcc 6
-# See https://github.com/Itseez/opencv/issues/6517
-#   patch -p1 -i ../opencv_a0fdc91a14f07de25d858037940fcd3ba859b4e2.patch
-  patch -p1 -i $srcdir/cmake.diff
+# https://stackoverflow.com/questions/46884682/error-in-building-opencv-with-ffmpeg
+  sed "1i\#define AVFMT_RAWPICTURE 0x0020" -i modules/highgui/src/cap_ffmpeg_impl.hpp
+  sed "1i\#define CODEC_FLAG_GLOBAL_HEADER AV_CODEC_FLAG_GLOBAL_HEADER" -i modules/highgui/src/cap_ffmpeg_impl.hpp
+  sed "1i\#define AV_CODEC_FLAG_GLOBAL_HEADER (1 << 22)" -i modules/highgui/src/cap_ffmpeg_impl.hpp
 }
+
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   mkdir -p build
