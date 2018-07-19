@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Matuzok <sherilynhope@gmail.com>
 pkgname=mongo-cxx-driver
 pkgver=r3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The official MongoDB C++ driver library"
 arch=('i686' 'x86_64')
 url="http://docs.mongodb.org/ecosystem/drivers/cpp/"
