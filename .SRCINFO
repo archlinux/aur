@@ -1,6 +1,6 @@
 pkgbase = archive-sum
 	pkgdesc = verify archive file integrity
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/idiv-biodiversity/archive-sum
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = archive-sum
 	license = MIT
 	makedepends = meson
 	depends = libarchive
-	source = archive-sum-1.1.0.tar.gz::https://github.com/idiv-biodiversity/archive-sum/archive/v1.1.0.tar.gz
-	md5sums = f50c63c504e6217937c2152cdba78bfe
+	source = archive-sum-1.1.1.tar.gz::https://github.com/idiv-biodiversity/archive-sum/archive/v1.1.1.tar.gz
+	md5sums = 5015014afd62de250b2d3513fce42705
 
 pkgname = archive-sum
 

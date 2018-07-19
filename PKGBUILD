@@ -3,7 +3,7 @@
 # shellcheck disable=2148
 
 pkgname=archive-sum
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="verify archive file integrity"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('libarchive')
 makedepends=('meson')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/idiv-biodiversity/archive-sum/archive/v$pkgver.tar.gz")
-md5sums=('f50c63c504e6217937c2152cdba78bfe')
+md5sums=('5015014afd62de250b2d3513fce42705')
 
 build() {
   arch-meson $pkgname-$pkgver build
