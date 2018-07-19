@@ -1,27 +1,15 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-ss09
-pkgver=1.14.3
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='A slender monospace typeface. Shape: Source Code Pro.'
+pkgdesc='A slender monospace typeface. Shape: Source Code Pro'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-conflicts=('ttf-iosevka'
-           'ttf-iosevka-pack'
-           'ttf-iosevka-ss01'
-           'ttf-iosevka-ss02'
-           'ttf-iosevka-ss03'
-           'ttf-iosevka-ss04'
-           'ttf-iosevka-ss05'
-           'ttf-iosevka-ss06'
-           'ttf-iosevka-ss07'
-           'ttf-iosevka-ss08'
-           'ttf-iosevka-ss10'
-           'ttf-iosevka-ss11')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-ss09-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('13ae35ca14eeaf9fb52221c5752a43b6817fe943ed90e589fd66b15f107ccb2a'
+sha256sums=('d5248a7e481a1a7de1b4bff839e8fb5bd29006b472bd4f40dbc663652070cd60'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
