@@ -1,6 +1,6 @@
 pkgbase = go-nebulas-git
 	pkgdesc = Official Go implementation of the Nebulas protocol
-	pkgver = r2215.7470724e
+	pkgver = r2222.4751ee13
 	pkgrel = 1
 	url = https://github.com/nebulasio/go-nebulas
 	install = go-nebulas-git.install

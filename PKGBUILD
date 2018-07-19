@@ -2,7 +2,7 @@
 # Contributor: Ariel AxionL <axionl@aosc.io>
 
 pkgname=go-nebulas-git
-pkgver=r2215.7470724e
+pkgver=r2222.4751ee13
 pkgrel=1
 pkgdesc="Official Go implementation of the Nebulas protocol"
 arch=("x86_64")
