@@ -1,16 +1,18 @@
 pkgbase = minergate
-        pkgdesc = Cryptocurrency GUI miner and Mining Pool
-        pkgver = 8.1
-        pkgrel = 1
-        url = http://www.minergate.com/
+	pkgdesc = Cryptocurrency GUI miner and Mining Pool
+	pkgver = 8.3
+	pkgrel = 1
+	url = http://www.minergate.com/
 	install = minergate.install
-        arch = x86_64
-        license = custom
-        depends = ocl-icd
-        optdepends = bfgminer
-        optdepends = cuda: if you have an nvidia GPU
-        provides = minergate
-        source = minergate-8.1.deb::https://minergate.com/download/ubuntu
-        sha256sums = 1dbbbb8e0735cde239fca9e82c096dcc882f6cecda20bba7c14720a614c16e13
+	arch = x86_64
+	license = custom
+	depends = ocl-icd
+	optdepends = bfgminer
+	optdepends = cuda: If you have an Nvidia GPU
+	provides = minergate
+	options = !strip
+	source = minergate-8.3.deb::https://minergate.com/download/ubuntu
+	sha256sums = 91e6e9b24b1cae00ea9dadd6e9917613cb6f7884b8d587f43f0e8563ee7c0fef
 
 pkgname = minergate
+
