@@ -6,15 +6,14 @@ name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 fragment="#branch=dev"
 pkgname=${name}-git
-pkgver=3.5.dev.1.r12.g6a04a6a
+pkgver=3.5.dev.2.r0.g9f70659
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
 url="https://colmap.github.io/"
 license=('GPL')
 groups=()
-_freeimage_deps=('openexr' 'openjpeg2' 'libtiff' 'libpng' 'libwebp' 'libraw' 'jxrlib')
-depends=('gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' ${_freeimage_deps[@]} 'libjpeg' 'boost-libs' 'qt5-base')
+depends=('gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base')
 makedepends=('ceres-solver' 'boost' 'git' 'cmake' 'eigen' )
 if [ "$_BUILD_CUDA" == "on" ] ; then 
   makedepends+=('cuda-sdk')
@@ -23,7 +22,6 @@ fi
 install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
         "nvm-export.patch"
-        "freeimage.patch"
         "${pkgname}.install"
         "vocabulary-tree-64K.bin::https://demuc.de/colmap/vocab_tree-65536.bin"
         "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree-262144.bin"
@@ -31,7 +29,6 @@ source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
         )
 md5sums=('SKIP'
          '3c0027625739e972f8af8bea6f557b35'
-         'b57f6eecef6589688665b9c01e68cae9'
          'ebb1dc43e014a1e720a06422c6248a40'
          '3521ff3c601596473c6ce5256772f606'
          'e423daecc45d56b749d25eeace9de1c8'
@@ -45,7 +42,6 @@ pkgver() {
 prepare() {
   cd ${srcdir}/${pkgname}
   git apply ${srcdir}/nvm-export.patch
-  git apply ${srcdir}/freeimage.patch
 }
 
 
