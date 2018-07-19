@@ -1,0 +1,16 @@
+pkgbase = emacs-use-package-git
+	pkgdesc = A use-package declaration for simplifying your .emacs
+	pkgver = r801.3fb8f39
+	pkgrel = 1
+	url = https://github.com/jwiegley/use-package
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-use-package
+	conflicts = emacs-use-package
+	source = git+https://github.com/jwiegley/use-package.git
+	md5sums = SKIP
+
+pkgname = emacs-use-package-git
+
