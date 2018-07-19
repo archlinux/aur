@@ -1,8 +1,8 @@
 pkgbase = mingw-w64-pdcurses
-	pkgdesc = Curses library for MinGW-w64
-	pkgver = 3.4
-	pkgrel = 4
-	url = http://pdcurses.sourceforge.net
+	pkgdesc = Public Domain Curses wincon port (mingw-w64)
+	pkgver = 3.6
+	pkgrel = 1
+	url = https://github.com/wmcbrine/PDCurses
 	arch = any
 	license = public domain
 	makedepends = mingw-w64-gcc
@@ -10,10 +10,10 @@ pkgbase = mingw-w64-pdcurses
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = http://downloads.sourceforge.net/pdcurses/PDCurses-3.4.tar.gz
-	source = mingw-pdcurses-3.4-build.patch
-	md5sums = 4e04e4412d1b1392a7f9a489b95b331a
-	md5sums = d1a36327155f51a1073b930e3647e4aa
+	source = https://github.com/wmcbrine/PDCurses/archive/3.6.tar.gz
+	source = 001-mingw-pdcurses-3.6-build.patch
+	sha256sums = 1760cbf3c3f254798e3614efa40206f95fe5bb2ca68eb2be434265d995f078eb
+	sha256sums = 98867a357e172cf18f9bd59fc8208f44ebba6e887f6b87522e32cda333cf416d
 
 pkgname = mingw-w64-pdcurses
 
