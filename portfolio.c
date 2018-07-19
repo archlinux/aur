@@ -55,7 +55,12 @@ void portfolio_modify_write(const char* symbol, double quantity_shares, double u
 
 int portfolio_modify_string(String* pString, const char* symbol, double quantity_shares,
                              double usd_spent, int mod_option) {
+    // Null string or negative numbers
     if ((symbol != NULL && symbol[0] == '\0') || quantity_shares < 0 || usd_spent < 0)
+        return 1;
+
+    // Can't add or remove both values of 0
+    if (mod_option != SET && quantity_shares == 0 && usd_spent == 0)
         return 1;
 
     int status = 0;
