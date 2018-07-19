@@ -1,10 +1,9 @@
 [Desktop Entry]
 Type=Application
 Name=Popcorn Time
-Comment=Stream movies and TV shows from torrents
 Icon=popcorntime
-TryExec=popcorntime
 Exec=popcorntime %U
+Comment=Stream movies and TV shows from torrents
 MimeType=application/x-bittorrent;x-scheme-handler/magnet;
 Categories=AudioVideo;Video;Player;Network;FileTransfer;P2P;
-
+Terminal=false
