@@ -34,7 +34,8 @@ pkgver()
 {
   cd "$srcdir/$_gitname"
   local ver="$(git describe --tags)"
-  echo "${ver//-/.}"
+  echo "${ver//-/.r}"
+  echo "${ver//release/}"
 }
 
 package()
