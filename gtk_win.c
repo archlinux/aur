@@ -256,7 +256,7 @@ void on_modify_entry_activate(GtkEntry* entry) {
     const gchar* spent_str = gtk_entry_get_text(spent_entry);
 
     // Return on empty entry
-    if (symbol[0] == '\0' || amount_str[0] == '\0' || spent_str[0] == '\0')
+    if (symbol[0] == '\0' || !is_str_number(amount_str) || !is_str_number(spent_str))
         return;
 
     double amount = strtod(amount_str, NULL);
