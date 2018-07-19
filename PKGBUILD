@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url="https://equi4.com/metakit/"
 license=('MIT')
 optdepends=('tcl: Tcl bindings')
-makedepends=('tcl')
+makedepends=('cmake' 'tcl')
 source=("$pkgname-$pkgver.tar.gz::https://git.jeelabs.org/jcw/metakit/archive/$pkgver.tar.gz")
 sha256sums=('a496db77628766766600585ff3f8f98eabd770e003bf1f32a60644e8e835d621')
 
