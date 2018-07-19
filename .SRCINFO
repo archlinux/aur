@@ -1,0 +1,12 @@
+pkgbase = numix-cursor-theme
+	pkgdesc = Numix cursor theme for Linux
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://numixproject.org/
+	arch = any
+	license = GPL3
+	source = https://github.com/numixproject/numix-cursor-theme/releases/download/v1.1/numix-cursor-1.1.tar
+	sha256sums = SKIP
+
+pkgname = numix-cursor-theme
+
