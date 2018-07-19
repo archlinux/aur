@@ -8,7 +8,7 @@ pkgbase = jdk8-docs
 	depends = java-environment>=8
 	options = !strip
 	source = http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-docs-all.zip
-	source = http://download.oracle.com/otn-pub/java/javafx/8.0.181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/javafx-8u181-apidocs.zip
+	source = http://download.oracle.com/otn-pub/java/javafx/8.0.181-b12/96a7b8442fe848ef90c96a2fad6ed6d1/javafx-8u181-apidocs.zip
 	source = LICENSE-Documentation.txt
 	source = LICENSE-Oracle-Legal-Notices.txt
 	md5sums = 522a2ccbca2e39d2dc36002df04a80a5

@@ -16,7 +16,7 @@ license=('custom:Oracle')
 depends=("java-environment>=$_major")
 options=('!strip')
 source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/jdk-${pkgver}-docs-all.zip"
-        "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor}-${_build}/${_hash}/javafx-${pkgver}-apidocs.zip"
+        "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor}-b12/${_hash}/javafx-${pkgver}-apidocs.zip"
         'LICENSE-Documentation.txt'
         'LICENSE-Oracle-Legal-Notices.txt')
 md5sums=('522a2ccbca2e39d2dc36002df04a80a5'
