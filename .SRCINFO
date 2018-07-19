@@ -1,0 +1,35 @@
+pkgbase = firefox-bin
+	pkgdesc = Standalone web browser from mozilla.org - Release
+	pkgver = 61.0.1
+	pkgrel = 1
+	url = https://www.mozilla.org/
+	install = firefox-bin.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = dbus-glib
+	depends = gtk3
+	depends = libxt
+	depends = nss
+	optdepends = ffmpeg: H264/AAC/MP3 decoding
+	optdepends = hunspell: Spell checking
+	optdepends = hyphen: Hyphenation
+	optdepends = libnotify: Notification integration
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = pulseaudio: Sound
+	optdepends = upower: Battery API
+	provides = firefox=61.0.1
+	conflicts = firefox
+	source = firefox.sh
+	source = firefox-bin.desktop
+	sha256sums = fb7ffa69b4a7b133caec527d2ff5059280be8f4e6c6554a29cab1803761467df
+	sha256sums = 6ff746b8e6d642accc64cb31f173d75b5d069167c0511aa1ff5010540a6e1310
+	source_i686 = https://ftp.mozilla.org/pub/firefox/releases/61.0.1/linux-i686/en-US/firefox-61.0.1.tar.bz2
+	sha256sums_i686 = 3fcd3faf06280dc54bc4544a13d10d40f81d6ef5235624116e846c65000aad13
+	source_x86_64 = https://ftp.mozilla.org/pub/firefox/releases/61.0.1/linux-i686/en-US/firefox-61.0.1.tar.bz2
+	sha256sums_x86_64 = 3fcd3faf06280dc54bc4544a13d10d40f81d6ef5235624116e846c65000aad13
+
+pkgname = firefox-bin
+
