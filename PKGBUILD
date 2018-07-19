@@ -2,7 +2,7 @@
 
 pkgname=pyspy
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 _distname="PySpy-${pkgver}"
 pkgdesc="A simple EVE Online character intel tool"
 arch=('any')
@@ -25,7 +25,6 @@ prepare() {
 package() {
   install -dm755 "${pkgdir}"/usr/share/pyspy
   install -dm755 "${pkgdir}"/usr/share/licenses/pyspy
-  install -dm755 "${pkgdir}"/var/lib/pyspy
 
   install -Dm644 "${srcdir}"/"${_distname}"/README.md "${pkgdir}"/usr/share/pyspy
   install -Dm644 "${srcdir}"/"${_distname}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/pyspy
