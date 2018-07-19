@@ -9,7 +9,7 @@ makedepends=('git')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname::git+$url.git")
-depends=('libecap' 'squid4')
+depends=('libecap' 'squid4' 'zlib')
 license=('BSD 3-Clause License')
 
 sha256sums=('SKIP')
