@@ -2,7 +2,7 @@
 # Contributor: marlock
 
 pkgname=android-udev-git
-pkgver=20180715.r0.g4a01f79
+pkgver=20180715.r2.gd19fdc3
 pkgrel=1
 pkgdesc='Udev rules to connect Android devices to your linux box'
 arch=('any')
@@ -23,7 +23,6 @@ package() {
   mkdir -p $pkgdir/usr/share/android/
 
   # Installing rules and confs
-  cp adb_usb.ini $pkgdir/usr/share/android/
   cp 51-android.rules $pkgdir/usr/lib/udev/rules.d/51-android.rules
   cp android-udev.conf $pkgdir/usr/lib/sysusers.d
 
