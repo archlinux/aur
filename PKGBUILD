@@ -1,27 +1,15 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-ss04
-pkgver=1.14.3
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='A slender monospace typeface. Shape: Menlo.'
+pkgdesc='A slender monospace typeface. Shape: Menlo'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-conflicts=('ttf-iosevka'
-           'ttf-iosevka-pack'
-           'ttf-iosevka-ss01'
-           'ttf-iosevka-ss02'
-           'ttf-iosevka-ss03'
-           'ttf-iosevka-ss05'
-           'ttf-iosevka-ss06'
-           'ttf-iosevka-ss07'
-           'ttf-iosevka-ss08'
-           'ttf-iosevka-ss09'
-           'ttf-iosevka-ss10'
-           'ttf-iosevka-ss11')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-ss04-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('cce41b2b7d2b8cc0a5e654055db6852093bc2186bb70bbd4cf502edb4d4162d6'
+sha256sums=('bc2a7fc828a9487d6ce029dd0b3d56ef4e737d8bd8dfa04844b48670c82132a6'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
