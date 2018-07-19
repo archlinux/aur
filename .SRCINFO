@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-gloox
+	pkgdesc = C++ libraries for development of Jabber client/component/server (mingw-w64)
+	pkgver = 1.0.21
+	pkgrel = 1
+	url = http://camaya.net/gloox
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-libidn
+	depends = mingw-w64-gnutls
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://camaya.net/download/gloox-1.0.21.tar.bz2
+	source = gloox-1.0.21-fix-undefined-reference.patch
+	sha256sums = 3c13155c10e3182a1a57779134cc524efb3657545849534b2831fae0e2c3a7cc
+	sha256sums = 4b293353b21b757df5e41237108075a9e2906af2189ff625460e05f132ff4510
+
+pkgname = mingw-w64-gloox
+

@@ -1,0 +1,12 @@
+diff -Naur gloox-1.0.21.orig/src/Makefile.am gloox-1.0.21/src/Makefile.am
+--- gloox-1.0.21.orig/src/Makefile.am	2018-07-19 16:36:40.754362606 -0400
++++ gloox-1.0.21/src/Makefile.am	2018-07-19 16:46:26.388640420 -0400
+@@ -47,7 +47,7 @@
+                         iodata.cpp
+ 
+ libgloox_la_LDFLAGS = -version-info 17:0:0 -no-undefined -no-allow-shlib-undefined
+-libgloox_la_LIBADD =
++libgloox_la_LIBADD = -lsecur32 -lcrypt32
+ libgloox_la_CFLAGS = $(CPPFLAGS)
+ 
+ libglooxincludedir = $(includedir)/gloox
