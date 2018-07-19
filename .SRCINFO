@@ -16,6 +16,7 @@ pkgbase = pgcli-git
 	depends = python-pgspecial>=1.9.0
 	depends = python-setproctitle
 	depends = python-cli_helpers
+	depends = python-keyring
 	provides = pgcli
 	conflicts = pgcli
 	source = git://github.com/amjith/pgcli.git
