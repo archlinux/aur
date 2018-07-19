@@ -1,7 +1,7 @@
 # Maintainer: linuxSEAT <--put_my_name_here--@gmail.com>
 pkgname=plaso
 pkgver=20180630
-pkgrel=1
+pkgrel=2
 pkgdesc="super timeline tool"
 arch=('any')
 url="https://github.com/log2timeline/plaso"
@@ -34,7 +34,7 @@ depends=( 'python2'
           'python2-libesedb'
           'python2-libevt'
           'python2-libevtx'
-          'python2-libewf-git'
+          'python2-libewf'
           'python2-libfsntfs'
           'python2-libfwnt'
           'python2-libfwsi'

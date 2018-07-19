@@ -1,7 +1,7 @@
 pkgbase = plaso
 	pkgdesc = super timeline tool
 	pkgver = 20180630
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/log2timeline/plaso
 	arch = any
 	license = GPL
@@ -33,7 +33,7 @@ pkgbase = plaso
 	depends = python2-libesedb
 	depends = python2-libevt
 	depends = python2-libevtx
-	depends = python2-libewf-git
+	depends = python2-libewf
 	depends = python2-libfsntfs
 	depends = python2-libfwnt
 	depends = python2-libfwsi
