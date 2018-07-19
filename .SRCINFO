@@ -8,7 +8,9 @@ pkgbase = squid-ecap-gzip
 	makedepends = git
 	depends = libecap
 	depends = squid4
-	source = ::git+https://github.com/yvoinov/squid-ecap-gzip.git
+	provides = squid-ecap-gzip
+	conflicts = squid-ecap-gzip
+	source = squid-ecap-gzip::git+https://github.com/yvoinov/squid-ecap-gzip.git
 	sha256sums = SKIP
 
 pkgname = squid-ecap-gzip

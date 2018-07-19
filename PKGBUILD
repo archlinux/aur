@@ -6,9 +6,9 @@ pkgdesc='This Software is an eCAP adapter for HTTP compression with GZIP and DEF
 arch=('x86_64')
 url='https://github.com/yvoinov/squid-ecap-gzip'
 makedepends=('git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+$url.git")
+provides=("$pkgname")
+conflicts=("$pkgname")
+source=("$pkgname::git+$url.git")
 depends=('libecap' 'squid4')
 license=('BSD 3-Clause License')
 
