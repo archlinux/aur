@@ -3,12 +3,12 @@
 
 pkgname=pari-git
 _pkgname=pari
-pkgver=20170701.9d32786ce
+pkgver=20180710.1ba17f7f0
 pkgrel=1
 pkgdesc='Computer algebra system designed for fast computations in number theory'
-url='http://pari.math.u-bordeaux.fr/'
+url='https://pari.math.u-bordeaux.fr/'
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('gmp' 'readline' 'libx11')
 makedepends=('perl' 'texlive-core' 'git')
 optdepends=('perl: gphelp, tex2mail')
