@@ -1,21 +1,38 @@
-# Maintainer: Jeremy Asuncion <jeremyasuncion808@gmail.com>
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer:   Simon Legner <Simon.Legner@gmail.com>
+# Maintainer:   Caleb Maclennan <caleb@alerque.com>
+# Contributor:  Jeremy Asuncion <jeremyasuncion808@gmail.com>
 
 pkgname=lab
 pkgver=0.12.0
-pkgrel=1
-pkgdesc="A hub-like tool for GitLab."
+pkgrel=2
+pkgdesc="A hub-like tool for GitLab (tagged release)"
 arch=('x86_64')
 url="https://github.com/zaquestion/lab"
 license=('custom:Unlicense')
 depends=('git')
 optdepends=('hub')
-source=("https://github.com/zaquestion/lab/releases/download/v${pkgver}/lab_${pkgver}_linux_amd64.tar.gz")
+makedepends=('go' 'dep')
+conflicts=("${pkgname}-git" "${pkgname}-bin")
+source=("https://github.com/zaquestion/lab/archive/v${pkgver}.tar.gz")
+sha512sums=('e47a3255d3d98640a005e4da2f790db44816e8353861987af327a1a24d0801477a4889814b565f1870afb0508e607775caee7ad6b5d98e448d4d58d64c8d6d37')
+_gourl="github.com/zaquestion/${pkgname}"
 
-package() {
-  cd $srcdir
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -Dm755 lab $pkgdir/usr/bin/lab
+prepare() {
+    export GOPATH="${srcdir}/go"
+    mkdir -p "$GOPATH"
+    mkdir -p "$(dirname "$GOPATH/src/${_gourl}")"
+    ln --no-target-directory -fs "${srcdir}/${pkgname}-${pkgver}" "$GOPATH/src/${_gourl}"
 }
 
-sha512sums=('b96911c4653d213f5a1dfb6e70a106ac219d44506be3fcdb6661bcfa7cc30d471b9b768222855647c282c165f1ee8688523ab12406edaff692fa4c316a9ee575')
+build () {
+    export GOPATH="${srcdir}/go"
+    cd "$GOPATH/src/${_gourl}"
+    dep ensure
+    go build -ldflags "-X \"main.version=${pkgver}\"" ${_gourl}
+}
+
+package() {
+	cd "${pkgname%-bin}-${pkgver}"
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -Dm755 lab $pkgdir/usr/bin/lab
+}
