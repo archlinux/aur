@@ -7,6 +7,7 @@ pkgbase = python2-libewf-git
 	license = LGPL
 	makedepends = python2-setuptools
 	depends = python2
+	provides = python2-libewf
 	conflicts = python2-libewf
 	options = !emptydirs
 	source = git+https://github.com/libyal/libewf.git
