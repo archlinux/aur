@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur-git
-pkgver=0.15.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="AUR helper with minimal dependencies inspired by pacaur, yaourt and yay. Review PKGBUILDs all in once, next build them all without user interaction."
 arch=('any')
@@ -15,9 +15,12 @@ md5sums=(
 	"SKIP"
 )
 depends=(
-	'pacman>=5.1'
+	'pacman'
 	'pyalpm'
 	'git'
+)
+makedepends=(
+	'ruby-ronn'
 )
 conflicts=('pikaur')
 
@@ -41,5 +44,6 @@ package() {
 		install -Dm644 "locale/${langmo}" "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/pikaur.mo"
 	done
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 pikaur.1 "$pkgdir/usr/share/man/man1/pikaur.1"
 	cp -r ./packaging/* "${pkgdir}"
 }
