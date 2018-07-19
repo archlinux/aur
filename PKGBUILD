@@ -6,7 +6,7 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
@@ -15,6 +15,7 @@ url="http://ffmpeg.org/"
 license=('GPL3')
 depends=("$_pkgbasename"
       'lib32-alsa-lib'
+#      'lib32-aom'
       'lib32-bzip2'
       'lib32-fontconfig'
       'lib32-fribidi'
@@ -72,7 +73,7 @@ source=(
 )
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=(
-      '605f5c01c60db35d3b617a79cabb2c7032412be243554602eeed1b628125c0ee'
+      'a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97'
       'SKIP'
 )
 
@@ -107,6 +108,7 @@ build() {
     --enable-libfribidi \
     --enable-libgsm \
     --enable-libiec61883 \
+    --enable-libjack \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
@@ -129,10 +131,11 @@ build() {
     --enable-shared \
     --enable-version3
 
-#    --enable-libdrm \ ## We would like to use it, but it seems to be broken for now.
+#    --enable-libdrm \ ## We would like to use it, but it seems to be broken for now. There is a problem with a va function.
 
 
 #    --enable-libsoxr \
+#    --enable-libaom \ ## Not available under 32bit
 #    --enable-libssh \  ## not available under 32bit
 #    --enable-libvidstab \ ## not available under 32bit
 #    --enable-libx265 \ ## libx265 is not properly detected under 32bit arch
