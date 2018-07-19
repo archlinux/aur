@@ -3,7 +3,7 @@
 pkgname=python2-libewf-git
 _pkgname=libewf
 pkgver=20171104
-pkgrel=1
+pkgrel=2
 pkgdesc="library to access the Expert Witness Compression Format (EWF)"
 arch=('any')
 url="https://github.com/libyal/libewf/"
