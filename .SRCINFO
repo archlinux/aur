@@ -7,6 +7,7 @@ pkgbase = squid4
 	license = GPL
 	makedepends = krb5
 	depends = openssl-1.0
+	depends = libecap
 	depends = pam
 	depends = perl
 	depends = libltdl
