@@ -5,9 +5,10 @@ pkgbase = squid-ecap-gzip
 	url = https://github.com/yvoinov/squid-ecap-gzip
 	arch = x86_64
 	license = BSD 3-Clause License
+	makedepends = git
 	depends = libecap
 	depends = squid4
-	source = git+https://github.com/yvoinov/squid-ecap-gzip.git
+	source = ::git+https://github.com/yvoinov/squid-ecap-gzip.git
 	sha256sums = SKIP
 
 pkgname = squid-ecap-gzip
