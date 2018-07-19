@@ -17,7 +17,7 @@ depends=('hwloc' 'systemd' 'collectd' 'python-yaml' 'python2-yaml' 'python-urwid
 optdepends=('scylla-jmx: JMX interface for compatibility with tooling such as nodetool'
             'scylla-tools: Tools to be used with ScyllaDB, such as cqlsh, nodetool and others')
 
-makedepends=('git' 'antlr3-cpp-headers-git' 'libyaml' 'yaml-cpp'
+makedepends=('git' 'gcc7' 'gcc7-libs' 'antlr3-cpp-headers-git' 'libyaml' 'yaml-cpp'
                 'lz4' 'zlib' 'snappy' 'jsoncpp' 'gnutls' 'ninja'
                 'ragel' 'libaio' 'crypto++' 'xfsprogs' 'jre8-openjdk-headless'
                 'numactl' 'libpciaccess' 'libxml2' 'thrift-0.10.0' 'lksctp-tools'
@@ -58,7 +58,7 @@ build() {
     cd "$srcdir/${pkgname}"
     sed -i -e 's@sizeof(byte)@sizeof(CryptoPP::byte)@g' md5_hasher.hh repair/repair.cc
     sed -i -e 's@reinterpret_cast<const byte@reinterpret_cast<const CryptoPP::byte@g' md5_hasher.hh repair/repair.cc
-    ./configure.py --mode=release
+    ./configure.py --mode=release --c-compiler=gcc-7 --compiler=g++-7
     JOBS=`nproc --all`
     # It turns out that on maximum jobs compiler often runs out of memory and crashes
     # Let's be conservative and assign only half of the available CPU threads
