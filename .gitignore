@@ -1,0 +1,4 @@
+pkg/
+src/
+windows2usb/
+*.pkg.tar*
