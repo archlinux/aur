@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL2')
 source=("https://www.willuhn.de/products/syntax/releases/2.8/syntax-${pkgver}.zip"
 "https://www.willuhn.de/products/syntax/releases/2.8/syntax-${pkgver}.zip.asc")
-validpgps=("7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70") # Olaf Willuhn <info@willuhn.de>
+validpgpkeys=("7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70") # Olaf Willuhn <info@willuhn.de>
 md5sums=('c0c7c72ca796c26a17f5ff20dae6eee8'
          'SKIP')
  
