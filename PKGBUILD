@@ -1,14 +1,14 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com> 
 pkgname=svp
 pkgver=4.2.0.137
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
 url="https://www.svp-team.com/wiki/SVP:Linux"
 license=('custom')
 groups=()
-depends=(libmediainfo qt5-svg qt5-script vapoursynth libusb xdg-utils lsof)
+depends=(libmediainfo qt5-svg qt5-script qt5-declarative vapoursynth libusb xdg-utils lsof)
 makedepends=(p7zip)
 checkdepends=()
 optdepends=(
@@ -19,7 +19,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!strip)
 install=${pkgname}.install
 changelog=
 source=("https://gist.githubusercontent.com/phiresky/1e2cbd30bed4e5978771af232d11afd1/raw/svp4-$pkgver.tbz2")
@@ -56,6 +56,7 @@ package() {
 		mv "$srcdir/extracted/licenses" "$pkgdir/usr/share/licenses/$pkgname"
 	fi
 	mv "$srcdir/extracted/"* "$pkgdir/opt/$pkgname"
+	rm "$pkgdir/opt/$pkgname/extensions/libsvpcode.so"
 	ln -s "/opt/$pkgname/SVPManager" "$pkgdir/usr/bin/SVPManager"
 	chmod -R +rX "$pkgdir/opt/svp" "$pkgdir/usr/share"
 }
