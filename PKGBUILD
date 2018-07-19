@@ -1,4 +1,5 @@
-# Maintainer: Guillaume ALAUX <guillaume at alaux dot net>
+# Maintainer: Cody Ramaker <cramaker@linux.com>
+# Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 # Contributor: James Bulmer <nekinie@gmail.com>
 pkgname=kafka
 # You can change this for one of the Scala version upstream has already built
@@ -6,7 +7,7 @@ pkgname=kafka
 # but do not remove the Scala jar as the Kafka tarball is compiled against it
 # and __not__ against the one from the Scala package
 _scalaver=2.11
-_appver=1.0.1
+_appver=1.1.1
 pkgver=${_scalaver}_${_appver}
 _pkgver=${pkgver/_/-}
 pkgrel=1
@@ -38,7 +39,7 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_kafka.conf
         systemd_tmpfiles.d_kafka.conf)
 
-sha256sums=('f380b7961ec189e8d86e905f0981ae81b75948c36367c8b931a8e35b58e82da1'
+sha256sums=('93b6f926b10b3ba826266272e3bd9d0fe8b33046da9a2688c58d403eb0a43430'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
             'e1a5ad12c4f0873740f4c34817bd6733a9b1541c68f2bb3aab3ac1be591f1fde'
             'dc1f3f94662339bcfb5cd4d058c06431f0e3d37e59f8c66a870e8fb02d9b5079'
