@@ -1,5 +1,5 @@
 pkgbase = brother-hll2370dn
-	pkgdesc = Brother ${_model} CUPS driver
+	pkgdesc = Brother HLL2370DN CUPS driver
 	pkgver = 4.0.0
 	pkgrel = 1
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
