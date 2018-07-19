@@ -1,0 +1,14 @@
+pkgbase = squid-ecap-gzip
+	pkgdesc = This Software is an eCAP adapter for HTTP compression with GZIP and DEFLATE. This is fully re-worked on C++11,improved and bugfixed production version, based on Constantin Rack`s https://github.com/c-rack/squid-ecap-gzip adapter
+	pkgver = 1.5.3.0
+	pkgrel = 1
+	url = https://github.com/yvoinov/squid-ecap-gzip
+	arch = x86_64
+	license = BSD 3-Clause License
+	depends = libecap
+	depends = squid4
+	source = git+https://github.com/yvoinov/squid-ecap-gzip.git
+	sha256sums = SKIP
+
+pkgname = squid-ecap-gzip
+
