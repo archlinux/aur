@@ -46,7 +46,7 @@ package() {
  #remove Liberation to prevent conflict
   find "${pkgdir}" -type f -name "Liberation*" -exec rm "{}" ";"
 
- #remove other font families but running:
+ #remove other font families buy running:
  # find "${pkgdir}" -type f -name "<font-family>*" -exec rm "{}" ";"
 }
     
