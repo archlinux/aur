@@ -1,27 +1,15 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-ss06
-pkgver=1.14.3
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='A slender monospace typeface. Shape: Liberation Mono.'
+pkgdesc='A slender monospace typeface. Shape: Liberation Mono'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-conflicts=('ttf-iosevka-pack'
-           'ttf-iosevka-term'
-           'ttf-iosevka-term-ss01'
-           'ttf-iosevka-term-ss02'
-           'ttf-iosevka-term-ss03'
-           'ttf-iosevka-term-ss04'
-           'ttf-iosevka-term-ss05'
-           'ttf-iosevka-term-ss07'
-           'ttf-iosevka-term-ss08'
-           'ttf-iosevka-term-ss09'
-           'ttf-iosevka-term-ss10'
-           'ttf-iosevka-term-ss11')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-term-ss06-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('b24659df297a84b5e4872d7afee0c390ecc356fac1443e0781966ade18dc23f0'
+sha256sums=('8faf69a52ddd86e7fe1241b698adb3582cc883a66b1942490508c3880d3e9e7c'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
