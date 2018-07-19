@@ -3,7 +3,7 @@
 
 pkgname=varuna-git
 pkgver=0.1.1r393.b0d2ad8
-pkgrel=2
+pkgrel=3
 pkgdesc="Compiler for the varuna language"
 arch=('i686' 'x86_64')
 url="https://varuna-lang.github.io"
@@ -18,8 +18,9 @@ source=("git+https://github.com/varuna-lang/${pkgname%-git}.git"
     "git+https://github.com/graeme-hill/crossguid.git"
     "git+https://github.com/vit-vit/CTPL.git"
     "git+https://github.com/varuna-lang/vastd.git"
-    "git+https://github.com/varuna-lang/vart.git")
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+    "git+https://github.com/varuna-lang/vart.git"
+    "git+https://github.com/varuna-lang/llvm-binutils.git")
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd ${pkgname%-git}
