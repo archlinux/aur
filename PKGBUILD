@@ -9,7 +9,7 @@
 pkgname=mutter-781835-workaround
 _pkgname=mutter
 pkgver=3.28.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users."
 url="https://git.gnome.org/browse/mutter"
 arch=(x86_64)
@@ -40,13 +40,14 @@ prepare() {
   ## Unmerged performance bits, enable with own risk and merge conflicts yourself
   # git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   # git fetch vanvugt
-  # git cherry-pick c432f134 || bash
-  # git cherry-pick 62c67be4 || bash
-  # git cherry-pick f46344b9 || bash
-  # git cherry-pick be98a2fc || bash
 
+  ## vanvugt/mutter/tree/super-smooth
+  # git cherry-pick fc872e6c || bash
+  # git cherry-pick 408630b7 || bash
+  # git cherry-pick f6170696 || bash
+ 
   # Revert offending commit
-  patch -Np1 -i ../revert.patch
+  # patch -Np1 -i ../revert.patch
 
   # Port to pipewire 0.2
   git cherry-pick -n 0407a8b33d8c3503fba63ad260984bb08bd6e0dc
