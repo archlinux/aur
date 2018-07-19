@@ -1,14 +1,17 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=syntax
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="Jameica Plugin for financial accounting according to SKR03/04"
 depends=("jameica")
 url="http://willuhn.de/products/syntax/"
 arch=('any')
 license=('GPL2')
-source=("$pkgname-$pkgver.zip::http://willuhn.de/products/syntax/releases/current/syntax.zip")
-md5sums=('77e2ceb79dd058a83581fc76c7fbd3b0')
+source=("https://www.willuhn.de/products/syntax/releases/2.8/syntax-${pkgver}.zip"
+"https://www.willuhn.de/products/syntax/releases/2.8/syntax-${pkgver}.zip.asc")
+validpgps=("7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70") # Olaf Willuhn <info@willuhn.de>
+md5sums=('c0c7c72ca796c26a17f5ff20dae6eee8'
+         'SKIP')
  
 package() {
     mkdir -p "$pkgdir/opt/jameica/plugins"
