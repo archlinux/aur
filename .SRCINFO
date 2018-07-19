@@ -12,6 +12,6 @@ pkgbase = php-alpm
 	md5sums = 64708bef3727f94ecdfc88c524fa4ae3
 
 pkgname = php-alpm
-	depends = php>=
+	depends = php
 	depends = pacman>=5.0
 

@@ -22,8 +22,7 @@ build() {
 }
 
 package_php-alpm() {
-  php_ver="$(php --version | head -n 1 | awk -F\  '{ print $2 }' | awk -F\. '{ print $1 "." $2 }')"
-  depends=("php>=${php_ver}" "pacman>=5.0")
+  depends=("php" "pacman>=5.0")
   cd "${pkgname}-${pkgver}"
   make INSTALL_ROOT="${pkgdir}" install
   echo "extension=${_extname}.so" > "${_extname}.ini"
