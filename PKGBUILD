@@ -1,7 +1,7 @@
 # Maintainer: Kai Michaelis <seu@panopticon.re>
 pkgname=sequoia-git
 pkgver=r675.023f52c
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular OpenPGP library"
 arch=('x86_64' 'i686')
 url="https://sequoia-pgp.org/"

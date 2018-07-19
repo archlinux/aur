@@ -1,4 +1,5 @@
 pkgbase = sequoia-git
+	pkgdesc = A modular OpenPGP library
 	pkgver = r675.023f52c
 	pkgrel = 1
 	arch = x86_64
