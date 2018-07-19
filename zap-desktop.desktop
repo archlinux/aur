@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Zap Desktop
+GenericName=Lightning network desktop wallet
+Exec=zap-desktop %u
+Icon=zap-desktop
+Categories=Utility;Finance;
+Keywords=internet;
