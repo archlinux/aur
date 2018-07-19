@@ -1,0 +1,20 @@
+pkgbase = ticloudagent
+	pkgdesc = The TI Cloud Agent is a small application that facilitates flashing and debugging hardware devices from the Texas Instruments Cloud Tools.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://processors.wiki.ti.com/index.php/TI_Cloud_Agent
+	arch = i686
+	arch = x86_64
+	license = custom:TECHNOLOGY SOFTWARE PUBLICLY AVAILABLE by Texas Instruments Incorporated
+	depends = libudev0-shim
+	noextract = ticloudagent_0.5.run
+	options = !strip
+	source = ticloudagent_0.5.run::https://dev.ti.com/ticloudagent/getInstaller?os=linux
+	source = ticloudagent.desktop
+	source = 61-msp430uif.rules
+	sha256sums = 1d1814dbd69af9fa98a379efc340435b94db40caad6b6d989cb78cdd99864524
+	sha256sums = 3764e8a5680bd825e7b95da2a93e43caafb982b4788112e57e5ab1d0f308fc26
+	sha256sums = e6fc064be173031f3a845f937b2dd7bd6742125e2bcb18f943968dde27b10cfb
+
+pkgname = ticloudagent
+
