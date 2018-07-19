@@ -43,13 +43,11 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         r-no-readline.patch
         fes02.patch
         sagemath-threejs.patch
-        sagemath-ignore-warnings.patch
         sagemath-cremona.patch
         sagemath-scipy-1.0.patch
         sagemath-singular-4.1.1.patch
         sagemath-lcalc-c++11.patch
         sagemath-gap-4.8.patch
-        pari-ratpoints.patch::"https://github.com/sagemath/sage/commit/83458400.patch"
         sagemath-cypari2.patch::"https://git.sagemath.org/sage.git/patch?id=da380b32"
         sagemath-cddlib-0.94j.patch::"https://git.sagemath.org/sage.git/patch?id=af0e6066"
         sagemath-eclib-20180710.patch)
@@ -62,13 +60,11 @@ sha256sums=('SKIP'
             'afd0952b9bb8f52fd428eae36cf719a58ff85a894baae88cbb2124e043768cc7'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             '93b4cbdf7f36287ad643853b99e77011fcf5bdcd17514f3bf6d2bd74a1c82fd2'
-            'a4a6c87b46ff23b89608aca66d00427334502e8bfb5dfe68b94497d19be1c7ae'
             'f801be68d043f317cc2a85a5ca059010b68eaeafa3bbf5c9148f2c154e2a707d'
             '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
             'af22e1834997cb2740818cd4ef8ede0367b0aa237305e89b178614f35bdfcef8'
             '5114c912f821900e5bfae1e2cfeb7984de946d0b23e1182b0bf15be1d803dfd0'
             '6917cb74e50ae965ea8d7c39577e5f0a5068e4b6a67b53fc6f219149a7d06584'
-            'e24ad879f6b2eb970778fc5e867bcbe0a6d393feca8f11f5cb8d07da1f024be9'
             '94847fc033fd36bc59217c8484d4cf48d0640ff35bb5ca5ffba88a8158c6dd44'
             '9a690bda83c280c0801f6d04353e8a909da80ccfee92e06d200ae6eb9be9a5a8'
             '182b0765d58494978bf27628bada8b42c95ef7eb2671b91ddf9c67608560c662')
@@ -96,14 +92,10 @@ prepare(){
   patch -p1 -i ../sagemath-python3-notebook.patch
 # fix three.js plotting backend
   patch -p1 -i ../sagemath-threejs.patch
-# don't show PARI stack size increase or GLPK warnings during doctesting (Debian)
-  patch -p1 -i ../sagemath-ignore-warnings.patch
 # remove deprecated scipy parameters
   patch -p1 -i ../sagemath-scipy-1.0.patch
 # fix build with Singular 4.1.1
   patch -p1 -i ../sagemath-singular-4.1.1.patch
-# revert usage of development PARI features
-  patch -Rp1 -i ../pari-ratpoints.patch
 # don't force c++98 for lcalc (fixes build with NTL 11)
   patch -p1 -i ../sagemath-lcalc-c++11.patch
 # Adjust paths for gap-4.8
