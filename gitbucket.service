@@ -1,10 +1,15 @@
 [Unit]
-Description=Github clone
+Description=gitbucket.service
 After=network.target
 
 [Service]
-Environment=GITBUCKET_HOME=/var/lib/gitbucket
-ExecStart=/usr/bin/java -jar /usr/share/java/gitbucket.war
+User=gitbucket
+Group=gitbucket
+ExecStart=/usr/lib/gitbucket/gitbucket
+StandardOutput=file:/var/log/gitbucket/console.log
+StandardError=inherit
+Restart=on-abort
 
 [Install]
 WantedBy=multi-user.target
+

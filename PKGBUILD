@@ -1,20 +1,39 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
 pkgname=gitbucket
-pkgver=4.3
+pkgver=4.26.0
 pkgrel=1
-pkgdesc="The easily installable Github clone written with Scala"
-url="https://github.com/gitbucket/gitbucket"
-arch=( 'any' )
-license=( "Apache" )
-depends=( "java-runtime"  )
-makedepends=( )
-source=( "$pkgname-$pkgver.war::https://github.com/gitbucket/gitbucket/releases/download/$pkgver/gitbucket.war"
-         "$pkgname.service" )
-sha1sums=('fa3c02d9ad199a1af419ce5df18a5dcf9da6853e'
-          'c93c600608d7922f67f4a3036a944fefc48bf9e0')
+pkgdesc="A Git platform powered by Scala with easy installation, high extensibility & GitHub API compatibility"
+arch=(any)
+url=https://gitbucket.github.io
+license=(AGPL3)
+depends=(jre8-openjdk-headless)
+provides=($pkgname)
+install=$pkgname.install
+backup=(etc/$pkgname/$pkgname.opts)
+source=($pkgname-$pkgver.war::https://github.com/gitbucket/gitbucket/releases/download/$pkgver/$pkgname.war
+
+		$pkgname.sh
+		$pkgname.opts
+		$pkgname.sysusers
+		$pkgname.tmpfiles
+		$pkgname.service
+		)
+noextract=($pkgname-$pkgver.war)
+sha256sums=('c08bbe7ae7020b87e008ae9fda8b77d2a98f6b558661b03de49dbfd9acc5be42'
+            '9e676104c506cfcf1c8e7db79fe0331b55726a0530f8ad6ccc33013190535982'
+            '860d2afa0dae857f8ddd3c8de2911a60032e51aa3981b4282d525ec8cbe73638'
+            '7839b30fafa179d3712ec4246450fbf56a70130de198da2265d872b76ac0ee0e'
+            'c940b928564af0062b2d0acdec13f58313435eef8f0fa927d9531f73ed601648'
+            '7ca63d855fedfe91078844f3a7d518631b17a9916ba1fbc585c3a4d345aed7ea')
 
 package() {
-  install -Dm644 "$srcdir"/$pkgname-$pkgver.war "$pkgdir"/usr/share/java/$pkgname.war
-  install -Dm644 "$srcdir"/$pkgname.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+
+	install -Dm755 $pkgname.sh $pkgdir/usr/lib/$pkgname/$pkgname
+	install -Dm644 $pkgname-$pkgver.war $pkgdir/usr/lib/$pkgname/$pkgname.war
+	install -Dm644 $pkgname.opts $pkgdir/etc/$pkgname/$pkgname.opts
+	install -Dm644 $pkgname.sysusers $pkgdir/usr/lib/sysusers.d/$pkgname.conf
+	install -Dm644 $pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
+	install -Dm644 $pkgname.tmpfiles $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
 }
+
