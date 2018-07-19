@@ -4,7 +4,7 @@
 pkgname=pyside2
 _qtver=5.11.0
 pkgver=${_qtver/-/}
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url='http://qt-project.org/'
 license=(LGPL)
