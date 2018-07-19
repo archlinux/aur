@@ -2,7 +2,7 @@
 # Maintainer: Liqueur Librazy <im@librazy.org>
 # Contributor: Jian Zeng <anonymousknight96@gmail.com>
 pkgbase=tidb-bin
-_basever=2.0.4
+_basever=2.0.5
 #_relver=-prega
 #pkgver=$_basever.$_relver
 pkgver=$_basever
@@ -19,7 +19,7 @@ source=("https://download.pingcap.org/tidb-v$_basever$_relver-linux-amd64.tar.gz
         "tidb.sysusers"
 	"tidb.tmpfiles"
 	)
-sha256sums=('6df13d5ad56fe3015e19225f0e88abe71cff9fbce583797345dc6568d3362be3'
+sha256sums=('e6d5ff166bd1c0d31c473de529ab97d3c6b888c2d4f183b9c4e240bba08f0441'
             '6fb6ae67a53c6cd054643542e76da6f16e000b029a98b34172972fcb505fc299'
             '15f285782938b3ebbb8be60cc962a2cbf5ca349527c39d3a1138be1bf976feb9')
 
