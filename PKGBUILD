@@ -3,7 +3,7 @@
 
 pkgname=pikaur
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AUR helper with minimal dependencies inspired by pacaur, yaourt and yay. Review PKGBUILDs all in once, next build them all without user interaction."
 arch=('any')
 url="https://github.com/actionless/pikaur"
@@ -11,7 +11,7 @@ license=('GPL3')
 source=(
 	"$pkgname-$pkgver.tar.gz"::https://github.com/actionless/pikaur/archive/"$pkgver".tar.gz
 )
-md5sums=('4b75fd3193e2b71822d058500d42229c')
+md5sums=('fb2aa7e75c48653937ec0bc39e23b5f2')
 depends=(
 	'pacman'
 	'pyalpm'
