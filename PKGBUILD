@@ -1,32 +1,28 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=sdrangel
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="Qt5/OpenGL SDR and signal analyzer frontend."
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/f4exb/sdrangel"
 license=('GPL3')
-depends=(
-  'pkg-config' 'boost' 'log4cpp' 'opencv'
-  'qt5-base>=5.9' 'qt5-tools' 'qt5-multimedia' # QT5
-  'fftw' 'lz4' 'nanomsg' 'ffmpeg>=3.1'
-  'cm256cc' 'dsdcc>=1.8.3'
-  'pulseaudio'
-)
+depends=('pkg-config' 'boost' 'log4cpp' 'opencv'
+	'qt5-base>=5.9' 'qt5-tools' 'qt5-multimedia' # QT5
+	'fftw' 'lz4' 'nanomsg' 'ffmpeg>=3.1'
+	'cm256cc' 'dsdcc>=1.8.3'
+	'pulseaudio')
 makedepends=('git' 'cmake')
-optdepends=(
-  'ffmpeg: DATV demodulator'
-  'libmirisdr4: SDRPlay support'
-  'rtl-sdr: RTLSDR support'
-  'hackrf: HackRF support'
-  'libad9361-iio: PlutoSDR support'
-  'limesuite: LimeSDR support'
-  'bladerf: BladeRF support'
-  'airspy: AirSPY support'
-)
+optdepends=('ffmpeg: DATV demodulator'
+	    'libmirisdr4: SDRPlay support'
+	    'rtl-sdr: RTLSDR support'
+	    'hackrf: HackRF support'
+	    'libad9361-iio: PlutoSDR support'
+	    'limesuite: LimeSDR support'
+	    'bladerf: BladeRF support'
+	    'airspy: AirSPY support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ffc4cfada34e9471df04ab52d773b617fb636b59d359b9d2b3c0ae66fe8273ef')
+sha256sums=('be025174203e0f4b49cb45b526da5975264d5d10308df501fbffce42b41a7bc7')
 
 build() {
   mkdir -p "$srcdir"/$pkgname-$pkgver/build

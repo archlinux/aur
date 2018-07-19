@@ -1,6 +1,6 @@
 pkgbase = sdrangel
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
@@ -34,8 +34,8 @@ pkgbase = sdrangel
 	optdepends = limesuite: LimeSDR support
 	optdepends = bladerf: BladeRF support
 	optdepends = airspy: AirSPY support
-	source = sdrangel-4.0.3.tar.gz::https://github.com/f4exb/sdrangel/archive/v4.0.3.tar.gz
-	sha256sums = ffc4cfada34e9471df04ab52d773b617fb636b59d359b9d2b3c0ae66fe8273ef
+	source = sdrangel-4.0.4.tar.gz::https://github.com/f4exb/sdrangel/archive/v4.0.4.tar.gz
+	sha256sums = be025174203e0f4b49cb45b526da5975264d5d10308df501fbffce42b41a7bc7
 
 pkgname = sdrangel
 
