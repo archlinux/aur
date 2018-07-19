@@ -1,0 +1,11 @@
+--- config.py.old	2018-07-18 20:35:02.000000000 +1000
++++ config.py   2018-07-19 12:58:28.279806572 +1000
+@@ -52,7 +52,7 @@
+ elif __file__:
+     ABOUT_ICON = resource_path("assets/pyspy_mid.png")
+     application_path = os.path.dirname(__file__)
+-    PREF_PATH = os.path.join(application_path, "tmp")
++    PREF_PATH = os.path.expanduser("~/.config/pyspy")
+     if not os.path.exists(PREF_PATH):
+         os.makedirs(PREF_PATH)
+     LOG_PATH = PREF_PATH

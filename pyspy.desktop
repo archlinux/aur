@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.2
+Encoding=UTF-8
+Name=PySpy
+Comment=PySpy
+Exec=/usr/bin/pyspy
+Terminal=false
+Icon=pyspy
+Type=Application
+Categories=Application;Game;
