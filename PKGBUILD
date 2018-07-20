@@ -1,7 +1,7 @@
 # Maintainer: Alexis "Horgix" Chotard <alexis.horgix.chotard@gmail.com>
 
 pkgname=terminal-parrot-git
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 conflicts=('terminal-parrot')
 pkgdesc="Party parrot (http://cultofthepartyparrot.com) for your terminal"
