@@ -1,7 +1,7 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=connectagram
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc='A word unscrambling game'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
 source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('d7b0fcba3f8dee3706af009761c248a234a5c998a45b969c938cb96ef14ab48a')
+sha256sums=('ba5d459a83e13347d72c7ac95d9b2fb1a880886740ceb4b6b5402a3a988942be')
 
 build() {
   cd "$pkgname-$pkgver"
