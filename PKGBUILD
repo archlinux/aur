@@ -2,7 +2,7 @@
 
 pkgname=thunderbird-sogo-connector-bin
 pkgver=31.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Thunderbird frontend for SOGo"
 arch=('any')
 groups=('office')
