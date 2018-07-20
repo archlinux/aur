@@ -1,0 +1,9 @@
+[Desktop Entry]
+
+Type=Application
+Name=qt-online-installer
+Icon=/usr/share/icons/qt-online-installer.svg
+Exec=/usr/bin/qt-unified-linux-x64-online.run
+Comment=Qt Online Installer for the optimal Qt installation experience
+Categories=Development;IDE;
+Terminal=false
