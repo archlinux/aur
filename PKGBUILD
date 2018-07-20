@@ -2,11 +2,11 @@
 
 pkgname=browsh-bin
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A fully-modern text-based browser, rendering to TTY and browsers'
 arch=('x86_64')
 url='https://www.brow.sh'
-license=('GPL3')
+license=('LGPL2.1')
 depends=('firefox>=57')
 provides=('browsh')
 conflicts=('browsh' 'browsh-git')
