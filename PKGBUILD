@@ -1,7 +1,7 @@
 # Maintainer: Alexis "Horgix" Chotard <alexis.horgix.chotard@gmail.com>
 
 pkgname=terminal-parrot
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 conflicts=('terminal-parrot-git')
 pkgdesc="Party parrot (http://cultofthepartyparrot.com) for your terminal"
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 options=('!strip' '!emptydirs')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/jmhobbs/terminal-parrot/archive/$pkgver.tar.gz")
-sha256sums=('11377c31e14d21f40a6d307dd14356642e88113a2a540c7d1160baca9dd07f56')
+sha256sums=('beba7a1fb643b72e3d2f23f5371936828653e60c1bb1339cf732026e15b8370d')
 
 prepare() {
     mkdir -p go
