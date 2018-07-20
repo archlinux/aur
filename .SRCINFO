@@ -1,0 +1,15 @@
+pkgbase = zrep
+	pkgdesc = ZREP ZFS based replication and failover script from bolthole.com
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://github.com/bolthole/zrep
+	arch = any
+	license = custom
+	depends = ksh
+	source = https://raw.githubusercontent.com/bolthole/zrep/v1.7.3/zrep
+	source = https://raw.githubusercontent.com/bolthole/zrep/master/LICENSE.txt
+	md5sums = c1d9b42965af9f502f973dafbc8073d2
+	md5sums = c8bab7291304d748f1133dbd43c992df
+
+pkgname = zrep
+
