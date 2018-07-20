@@ -9,8 +9,9 @@ license=('GPLv3')
 groups=()
 depends=('fltk')
 _gitcommit="c5e91e165aeb97a6cb7d6b15189538046cd301f0"
+_luaver=5.3.5
 source=(https://github.com/ComputerNerd/Retro-Graphics-Toolkit/archive/$_gitcommit.zip
-        https://www.lua.org/ftp/lua-5.3.5.tar.gz
+        https://www.lua.org/ftp/lua-$_luaver.tar.gz
         lua-Makefile.patch
         retro-graphics-toolkit.desktop
         retro-graphics-toolkit.png
@@ -24,11 +25,11 @@ md5sums=('a71b4960dabbdafb1bd5f7baacc21317'
          '0b1b08ffcbddd6400a07ce3a3fbc0172')
 
 build() {
-    patch $srcdir/lua-5.3.5/src/Makefile < lua-Makefile.patch
-    cd $srcdir/lua-5.3.5/src
+    patch $srcdir/lua-$_luaver/src/Makefile < lua-Makefile.patch
+    cd $srcdir/lua-$_luaver/src
     make linux
     
-    mv $srcdir/lua-5.3.5/ $srcdir/Retro-Graphics-Toolkit-$_gitcommit/lua
+    mv $srcdir/lua-$_luaver/ $srcdir/Retro-Graphics-Toolkit-$_gitcommit/lua
 	cd $srcdir/Retro-Graphics-Toolkit-$_gitcommit
 	make
 }
@@ -36,10 +37,9 @@ build() {
 package() {
     install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -d "$pkgdir/opt/retro-graphics-toolkit"
-	cd $srcdir/Retro-Graphics-Toolkit-$_gitcommit
-	install "RetroGraphicsToolkit" "$pkgdir/opt/retro-graphics-toolkit/RetroGraphicsToolkit"
-	install -D *.lua "$pkgdir/opt/retro-graphics-toolkit/"
+    install -d "$pkgdir/opt/$pkgname"
+	install "$srcdir/Retro-Graphics-Toolkit-$_gitcommit/RetroGraphicsToolkit" "$pkgdir/opt/$pkgname/RetroGraphicsToolkit"
+	install -D $srcdir/Retro-Graphics-Toolkit-$_gitcommit/*.lua "$pkgdir/opt/$pkgname/"
 	install -d "$pkgdir/usr/bin"
 	install "$srcdir/RetroGraphicsToolkit.sh" $pkgdir/usr/bin/RetroGraphicsToolkit
 	
