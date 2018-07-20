@@ -6,7 +6,7 @@
 # Maintainer: Matěj Týč <matej.tyc@gmail.com>
 pkgname=argbash
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Bash argument parsing code generator"
 arch=(any)
@@ -14,7 +14,7 @@ url="https://argbash.io"
 license=('BSD')
 groups=()
 depends=('autoconf')
-makedepends=('make')
+makedepends=('make' 'dash')
 checkdepends=()
 optdepends=()
 provides=()

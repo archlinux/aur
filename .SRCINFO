@@ -1,11 +1,12 @@
 pkgbase = argbash
 	pkgdesc = Bash argument parsing code generator
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://argbash.io
 	arch = any
 	license = BSD
 	makedepends = make
+	makedepends = dash
 	depends = autoconf
 	source = https://github.com/matejak/argbash/archive/2.7.0.tar.gz
 	source = LICENSE
