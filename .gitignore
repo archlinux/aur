@@ -1,0 +1,5 @@
+linux-amd-git
+src
+pkg
+*.pkg.*
+*.pkg

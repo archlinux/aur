@@ -1,0 +1,43 @@
+pkgbase = linux-amd-git
+	pkgdesc = Linux kernel with AMDGPU DC patches
+	pkgver = 4.19.768035.5c675bf2c67c
+	pkgrel = 1
+	url = https://cgit.freedesktop.org/~agd5f/linux/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	options = !strip
+	source = linux-amd-git::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-4.19
+	source = config.x86_64
+	source = linux.install
+	source = linux-amd-git.preset
+	sha256sums = SKIP
+	sha256sums = 18729fd0c8bbbcb50d2145ca830fd8033e9b7a407f2bed80a3390563f84cfcd4
+	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+
+pkgname = linux-amd-git
+	pkgdesc = The Linux kernel and modules with AMDGPU DC patches
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-amd-git.preset
+
+pkgname = linux-amd-git-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel with AMDGPU DC patches
+	provides = linux-headers
+
+pkgname = linux-amd-git-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel with AMDGPU DC patches
+	provides = linux-docs
+
