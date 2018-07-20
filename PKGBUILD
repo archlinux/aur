@@ -14,7 +14,7 @@ license=('GPL')
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   chmod +x ./configure
   ./configure
   make -j$(nproc)
@@ -22,6 +22,6 @@ build() {
 
 package() {
   cd "$srcdir"
-  make -C "$pkgname" DESTDIR="$pkgdir" install
+  make -C "$pkgname-$pkgver" DESTDIR="$pkgdir" install
 }
 
