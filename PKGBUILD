@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Raffin <theelectronwill@gmail.com>
 pkgname=bloop
-pkgver=1.0.0m11
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Scala build server and command-line tool for faster developer workflows"
 arch=(any)
@@ -8,9 +8,9 @@ url="https://scalacenter.github.io/bloop/"
 license=('Apache')
 depends=('scala' 'python')
 
-_bloop_ver="1.0.0-M11"
+_bloop_ver="1.0.0"
 _coursier_ver="1.1.0-M3"
-_nailgun_commit="60c2d130"
+_nailgun_commit="0c8b937b"
 
 source=("$pkgname-coursier::https://github.com/alexarchambault/coursier/raw/v$_coursier_ver/coursier"
         "$pkgname-nailgun::https://raw.githubusercontent.com/scalacenter/nailgun/$_nailgun_commit/pynailgun/ng.py"
@@ -21,7 +21,7 @@ source=("$pkgname-coursier::https://github.com/alexarchambault/coursier/raw/v$_c
         "https://raw.githubusercontent.com/scalacenter/bloop/v$_bloop_ver/etc/xdg/bloop.png")
 
 md5sums=('8028c8a28e2aae9e43d22dcfd9d186c9'
-         '615ece785030fbe4ea5807ae364da732'
+         'b4052f86e77f27e6bc073b80ab8d3fe5'
          'f882aec92adcb905881f2c472c95f7e9'
          'b35d784c7c37dba285ac7162db8a7119'
          '272426035e8579c9d45feb13c7e6c86b'
