@@ -1,6 +1,6 @@
 # Maintainer: Jimmy Stelzer <jimmy dot stelzer at gmail dot com>
 pkgname=uniflash
-pkgver=4.2.2.1692
+pkgver=4.4.0.1922
 pkgrel=1
 pkgdesc="Universal Flash Programmer for Texas Instruments devices. Provides a single interface for programming Flash memory and executing Flash based operations on supported targets."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ depends=('libudev0-shim')
 source=(${pkgname}_sl.$pkgver.run::http://software-dl.ti.com/ccs/esd/uniflash/${pkgname}_sl.$pkgver.run )
 noextract=("${pkgname}_sl.$pkgver.run" )
 options=(!strip)
-md5sums=('2097a3343fcc6f706f56f70b7b5d0f9b')
-sha256sums=('ea358769b9f1eb4dfacc226e16f27b054db83a8cf2c1dafcaf838d6f5487856f')
+md5sums=('48cce7181c06d37c5015b9f2dd0521d2')
+sha256sums=('8539b38be78e08bdeff7dccd0aa2a448a676e1ac1da0b4215817b92f0bc8b052')
 DLAGENTS=('http::/usr/bin/curl -fLC - --cookie nada -o %o %u')
 prepare() {
 	cd "$srcdir"
