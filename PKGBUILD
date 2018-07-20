@@ -2,7 +2,7 @@
 _pkgname=screens
 pkgname="${_pkgname}-git"
 pkgver=200718
-pkgrel=2
+pkgrel=3
 pkgdesc="A utility for taking and managing screenshots."
 arch=('any')
 url="https://www.gitlab.com/DavidBittner/screens"
@@ -32,7 +32,7 @@ package() {
     mkdir -p "${pkgdir}/usr/bin/"
     cd "${_pkgname}"
 
-    make DESTDIR="${pkgdir}/usr/" install
+    make DESTDIR="${pkgdir}" install
 
     install assets/screens.desktop "${pkgdir}/usr/share/applications"
 }
