@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-requests>=2.17.3' 'python-crypto>=2.6.1' 'python-mutagen>=1.38.0' 'python-pillow>=4.3.0')
 makedepends=('git' 'python-setuptools')
 options=(!emptydirs)
-source=("git+https://github.com/codezjx/netease-cloud-music-dl")
+source=("git+https://github.com/codezjx/netease-cloud-music-dl.git")
 md5sums=('SKIP')
 _gitname=netease-cloud-music-dl
 

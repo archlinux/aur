@@ -13,7 +13,7 @@ pkgbase = netease-cloud-music-dl-git
 	depends = python-mutagen>=1.38.0
 	depends = python-pillow>=4.3.0
 	options = !emptydirs
-	source = git+https://github.com/codezjx/netease-cloud-music-dl
+	source = git+https://github.com/codezjx/netease-cloud-music-dl.git
 	md5sums = SKIP
 
 pkgname = netease-cloud-music-dl-git
