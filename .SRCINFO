@@ -1,0 +1,13 @@
+pkgbase = bytemark-client
+	pkgdesc = A command line client for managing Bytemark accounts, and cloud servers.
+	pkgver = 3.4
+	pkgrel = 1
+	url = https://docs.bytemark.co.uk/subject/the-bytemark-command-line-client/
+	arch = x86_64
+	license = MIT
+	license = custom
+	source = https://repo.bytemark.co.uk/bytemark-client/linux/bytemark-3.4.tar.gz
+	sha512sums = c9efbe6d856223d7b8a21686ad2fd4e7d90334e1e20f4a55f7d9567705884ec8c128a4b3c63eb541d9e93a13ab5ba7edf6403c2a08f3c8f1413f9de848b06c83
+
+pkgname = bytemark-client
+
