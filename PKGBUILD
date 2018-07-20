@@ -8,9 +8,9 @@
 # Contributor: wertarbyte (original author of auto-disper and autorandr)
 
 pkgname=autorandr
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
-pkgdesc="Auto-detect the connected display hardware and load the appropiate X11 setup using xrandr."
+pkgdesc="Auto-detect connected display hardware and load appropiate X11 setup using xrandr"
 arch=('any')
 url="https://github.com/phillipberndt/autorandr"
 license=('GPL3')
@@ -23,7 +23,7 @@ conflicts=(
   "autorandr-phillipberndt-git"
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/phillipberndt/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('d3feaac1857ba1d280879681b5bae8b5885a0bd31339d42392df29b198373d349251bb24e7bd6f371d89ae61aa1c5374a020e133bdb4c98291484b0c5ac4c6cc')
+sha512sums=('688a7215532e7e6a5090813ca672cbab24276172a149255869479ae3977e0b8aa4bece4978e4a3847a6de02c7aaf3b2a698a9edd465c5cec2add25a0717ff085')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -37,5 +37,5 @@ package() {
     --prefix=/usr \
     --root="${pkgdir}/"
   make DESTDIR="${pkgdir}" PREFIX=/usr install
-  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }

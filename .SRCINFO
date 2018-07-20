@@ -1,6 +1,6 @@
 pkgbase = autorandr
-	pkgdesc = Auto-detect the connected display hardware and load the appropiate X11 setup using xrandr.
-	pkgver = 1.5
+	pkgdesc = Auto-detect connected display hardware and load appropiate X11 setup using xrandr
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/phillipberndt/autorandr
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = autorandr
 	conflicts = auto-disper-git
 	conflicts = autorandr-asch-git
 	conflicts = autorandr-phillipberndt-git
-	source = autorandr-1.5.tar.gz::https://github.com/phillipberndt/autorandr/archive/1.5.tar.gz
-	sha512sums = d3feaac1857ba1d280879681b5bae8b5885a0bd31339d42392df29b198373d349251bb24e7bd6f371d89ae61aa1c5374a020e133bdb4c98291484b0c5ac4c6cc
+	source = autorandr-1.6.tar.gz::https://github.com/phillipberndt/autorandr/archive/1.6.tar.gz
+	sha512sums = 688a7215532e7e6a5090813ca672cbab24276172a149255869479ae3977e0b8aa4bece4978e4a3847a6de02c7aaf3b2a698a9edd465c5cec2add25a0717ff085
 
 pkgname = autorandr
 
