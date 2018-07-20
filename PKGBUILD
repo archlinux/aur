@@ -3,7 +3,7 @@
 pkgbase=iortcw-git
 pkgname=('iortcw-git' 'iortcw-rend2-git')
 pkgname=iortcw-git
-pkgver=1.51b.r31.g55a54772
+pkgver=1.51b.r111.gae0e2dbe
 pkgrel=1
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
 arch=('i686' 'x86_64')
