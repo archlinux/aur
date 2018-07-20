@@ -2,7 +2,7 @@
 
 pkgname=clightd-git
 _gitname=Clightd
-pkgver=r5.8fb5392
+pkgver=r115.fd9a7a4
 pkgrel=1
 pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
 arch=('i686' 'x86_64')
