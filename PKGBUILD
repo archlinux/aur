@@ -4,8 +4,7 @@
 _pkgname=evolution-data-server
 pkgname=$_pkgname-git
 pkgver=3.29.4.r008.gff1af187f
-pkgrel=1
-_realver=3.17.3
+pkgrel=2
 pkgdesc="Centralized access to appointments and contacts"
 arch=(i686 x86_64)
 depends=(libgdata
@@ -24,7 +23,7 @@ makedepends=(gnome-common
 install=$_pkgname.install
 url="https://wiki.gnome.org/Apps/Evolution"
 license=(GPL)
-provides=("${_pkgname}=${_realver}")
+provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replace=("${_pkgname}")
 source=('git://git.gnome.org/evolution-data-server')
