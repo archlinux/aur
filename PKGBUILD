@@ -9,7 +9,10 @@ pkgdesc="Qt Online Installer for the optimal Qt installation experience."
 arch=('x86_64')
 url="https://www.qt.io/download"
 license=('GPL-3.0')
-source=("http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run") #"/mnt/D/Document/WorkSpace/Packages/AUR/qt-online-installer/sources.tar.gz"  #"http://ftp.jaist.ac.jp/pub/qtproject/archive/online_installers/${pkgver}/qt-unified-linux-x64-$_pkgverminor-online.run")
+source=("http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run"
+        "qt-online-installer.desktop"
+        "qt-online-installer.svg") 
+#"/mnt/D/Document/WorkSpace/Packages/AUR/qt-online-installer/sources.tar.gz"  #"http://ftp.jaist.ac.jp/pub/qtproject/archive/online_installers/${pkgver}/qt-unified-linux-x64-$_pkgverminor-online.run")
 # source_i686=("http://ftp.jaist.ac.jp/pub/qtproject/archive/online_installers/${pkgver}/qt-unified-linux-x32-$_pkgverminor-online.run")
 sha256sums=('SKIP')
 # sha256sums_i686=('SKIP')
