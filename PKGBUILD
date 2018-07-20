@@ -2,7 +2,7 @@
 
 pkgname=dup.py
 pkgver=1.0.r3.g2b6b18c
-pkgrel=4
+pkgrel=5
 pkgdesc='Duplicate File manager with multimedia geolocation metadata extensions'
 arch=('any')
 url='https://github.com/ewwaller/dup.py'
