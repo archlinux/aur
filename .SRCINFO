@@ -1,6 +1,6 @@
 pkgbase = r-robustbase
 	pkgdesc = Basic Robust Statistics
-	pkgver = 0.93.1
+	pkgver = 0.93.1.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=robustbase
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = r-robustbase
 	optdepends = r-doparallel
 	optdepends = r-foreach
 	optdepends = r-skewt
-	source = https://cran.r-project.org/src/contrib/robustbase_0.93-1.tar.gz
-	md5sums = 9311aaa97e4ec23b1b6b3b43ce7be072
+	source = https://cran.r-project.org/src/contrib/robustbase_0.93-1.1.tar.gz
+	md5sums = 2074fd2d7397ba06991a066e1fceec56
 
 pkgname = r-robustbase
 
