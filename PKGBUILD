@@ -2,7 +2,7 @@
 
 pkgname='qt-online-installer'
 _pkgname='qt-online-installer'
-pkgver=3.0
+pkgver=r2.a1f624d
 _pkgverminor=3.0.5
 pkgrel=1
 pkgdesc="Qt Online Installer for the optimal Qt installation experience."
@@ -14,8 +14,18 @@ source=("http://download.qt.io/official_releases/online_installers/qt-unified-li
         "qt-online-installer.svg") 
 #"/mnt/D/Document/WorkSpace/Packages/AUR/qt-online-installer/sources.tar.gz"  #"http://ftp.jaist.ac.jp/pub/qtproject/archive/online_installers/${pkgver}/qt-unified-linux-x64-$_pkgverminor-online.run")
 # source_i686=("http://ftp.jaist.ac.jp/pub/qtproject/archive/online_installers/${pkgver}/qt-unified-linux-x32-$_pkgverminor-online.run")
-sha256sums=('SKIP')
+sha256sums=('3926eff634f7a798bd8f7f8a3625d8e9db8179e7efaf4c59eeff9f1eae7e95f5'
+            'b033313135bb37fc14d26c8e5df2b48082e1bdd5b98893edd004706bd60d037c'
+            '77bfaf98cf7734451e794f5bffd152e8b51d21d0d4114c64328ad7cf27aec4dc')
 # sha256sums_i686=('SKIP')
+
+pkgver() {
+  cd "$srcdir"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 package() {
   cd $srcdir
