@@ -20,6 +20,6 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
-  install -Dm644 dup.1.gz ${pkgdir}/usr/share/man/man1/${pkgname}.1.gz
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 dup.1.gz "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }
