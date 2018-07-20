@@ -3,7 +3,7 @@
 # Based on [extra]'s nvidia: https://www.archlinux.org/packages/extra/x86_64/nvidia/
 
 pkgname=nvidia-beta
-pkgver=396.24
+pkgver=396.45
 pkgrel=1
 pkgdesc="NVIDIA driver for Arch's official 'linux' package (beta version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 install=$pkgname.install
 _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
-md5sums=('a441ff0a17b1db0d27855c6505de379d')
+md5sums=('165b1f4ccc2db4678f0e7223f3dfc1bc')
 
 # Patch
 #source+=('linux-4.11.patch')
