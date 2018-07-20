@@ -1,49 +1,81 @@
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: saxonbeta <saxonbeta at gmail>
 # Contributor: Pierre Gueth <pierre.gueth at gmail>
-#              Daniel YC Lin <dlin.tw at gmail>
-#              Tim Huetz <tim at huetz biz>
-# Maintainer: saxonbeta <saxonbeta at gmail>
-# vim:set ts=2 sw=2 et:
+# Contributor: Daniel YC Lin <dlin.tw at gmail>
+# Contributor: Tim Huetz <tim at huetz biz>
+
 pkgname=libsvm
 pkgver=3.22
-_pkgver=322
-_pyver=3.6
-pkgrel=1
-pkgdesc="A library for Support Vector Machines classification, include binaries and python bindings."
-arch=(x86_64 i686)
-url="http://www.csie.ntu.edu.tw/~cjlin/libsvm/"
+_srcver="${pkgver/./}"
+pkgrel=2
+pkgdesc='A library for Support Vector Machines classification (includes binaries and bindings for python and java)'
+arch=('i686' 'x86_64')
+url='http://www.csie.ntu.edu.tw/~cjlin/libsvm/'
 license=('BSD')
-depends=()
-optdepends=('python: bindings for latest python version'
-'python2: bindings for python 2'
-'java-environment: bindings for java' )
-source=("https://github.com/cjlin1/libsvm/archive/v$_pkgver.tar.gz")
+depends=('gcc-libs')
+makedepends=('gtk2' 'qt4' 'python')
+optdepends=('gtk2: for GTK2 interface with svm-toy-gtk'
+            'qt4: for Qt4 interface with svm-toy-qt'
+            'python: for python modules and tools'
+            'java-environment: for java bindings')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cjlin1/libsvm/archive/v${_srcver}.tar.gz")
 sha256sums=('a3469436f795bb3f8b1e65ea761e14e5599ec7ee941c001d771c07b7da318ac6')
 
 build() {
-  cd "$srcdir/$pkgname-$_pkgver"
-  make lib all
-}
-package() {
-  cd "$srcdir/$pkgname-$_pkgver"
-  install -D -m755 svm-train $pkgdir/usr/bin/svm-train
-  install -D -m755 svm-predict $pkgdir/usr/bin/svm-predict
-  install -D -m755 svm-scale $pkgdir/usr/bin/svm-scale
-  install -D -m644 java/libsvm.jar $pkgdir/usr/share/java/libsvm.jar
-  install -D -m644 libsvm.so.2 $pkgdir/usr/lib/libsvm.so.2
-  install -D -m644 svm.h $pkgdir/usr/include/svm.h
-  ln -s libsvm.so.2 $pkgdir/usr/lib/libsvm.so
-  mkdir -p $pkgdir/usr/share/licenses/libsvm
-  install -D -m644 COPYRIGHT $pkgdir/usr/share/licenses/libsvm/LICENSE
-  
-  cd "python"
-  sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' svm.py
-  sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' svmutil.py
-  install -D -m644 svm.py $pkgdir/usr/lib/python2.7/svm.py
-  install -D -m644 svmutil.py $pkgdir/usr/lib/python2.7/svmutil.py
-  sed -i 's_#!/usr/bin/env python2_#!/usr/bin/env python3_' svm.py
-  sed -i 's_#!/usr/bin/env python2_#!/usr/bin/env python3_' svmutil.py
-  install -D -m644 svm.py $pkgdir/usr/lib/python$_pyver/svm.py
-  install -D -m644 svmutil.py $pkgdir/usr/lib/python$_pyver/svmutil.py
-  
+    msg2 'Building library and CLI binaries...'
+    cd "${pkgname}-${_srcver}"
+    make lib
+    make all
+    
+    msg2 'Building GTK2 interface...'
+    cd svm-toy/gtk
+    make
+    
+    msg2 'Building Qt4 interface...'
+    cd ../qt
+    make
 }
 
+package() {
+    cd "${pkgname}-${_srcver}"
+    
+    local _pyver="$(python --version | sed 's/^Python[[:space:]]//' | grep -o '^[0-9]*\.[0-9]*')"
+    
+    local _sover="$(find . -maxdepth 1 -type f -name 'libsvm.so.*' | awk -F'.' '{ print $4 }')"
+    
+    # binaries
+    install -D -m755 svm-predict -t "${pkgdir}/usr/bin"
+    install -D -m755 svm-scale   -t "${pkgdir}/usr/bin"
+    install -D -m755 svm-train   -t "${pkgdir}/usr/bin"
+    install -D -m755 svm-toy/gtk/svm-toy "${pkgdir}/usr/bin/svm-toy-gtk"
+    install -D -m755 svm-toy/qt/svm-toy  "${pkgdir}/usr/bin/svm-toy-qt"
+    
+    # library
+    install -D -m755 "libsvm.so.${_sover}" -t "${pkgdir}/usr/lib"
+    cd "${pkgdir}/usr/lib"
+    ln -sf "libsvm.so.${_sover}" libsvm.so
+    
+    # include
+    cd "${srcdir}/${pkgname}-${_srcver}"
+    install -D -m644 svm.h -t "${pkgdir}/usr/include"
+    
+    # python modules
+    cd "${srcdir}/${pkgname}-${_srcver}/python"
+    install -D -m644 svm.py     -t "${pkgdir}/usr/lib/python${_pyver}"
+    install -D -m644 svmutil.py -t "${pkgdir}/usr/lib/python${_pyver}"
+    
+    # python tools
+    cd "${srcdir}/${pkgname}-${_srcver}/tools"
+    install -D -m755 checkdata.py -t "${pkgdir}/usr/bin"
+    install -D -m755 easy.py      -t "${pkgdir}/usr/bin"
+    install -D -m755 grid.py      -t "${pkgdir}/usr/bin"
+    install -D -m755 subset.py    -t "${pkgdir}/usr/bin"
+    
+    # java
+    cd "${srcdir}/${pkgname}-${_srcver}/java"
+    install -D -m644 libsvm.jar -t "${pkgdir}/usr/share/java"
+    
+    # license
+    cd "${srcdir}/${pkgname}-${_srcver}"
+    install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
