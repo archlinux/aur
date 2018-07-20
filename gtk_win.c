@@ -31,14 +31,14 @@ void window_main(void) {
 }
 
 void check_list_create_from_string(void) {
+    GtkListStore* pListStore = GTK_LIST_STORE(gtk_builder_get_object(app.builder, "check_list"));
+    gtk_list_store_clear(pListStore); // Clear in case reloading
     api_info_array_destroy(&app.portfolio_data); // Destroy in case reloading
     app.portfolio_data = portfolio_info_array_init_from_portfolio_string(app.portfolio_string);
     if (app.portfolio_data == NULL) // Empty JSON array
         return;
 
     format_cells(app.portfolio_data);
-    GtkListStore* pListStore = GTK_LIST_STORE(gtk_builder_get_object(app.builder, "check_list"));
-    gtk_list_store_clear(pListStore); // Clear in case reloading
     Info* idx; // Append pListStore store with portfolio data
     GtkTreeIter iter;
     for (size_t i = 0; i < app.portfolio_data->length + 1; i++) { // + 1 for totals
@@ -422,8 +422,7 @@ void list_store_sort(GtkListStore* list_store, Col_Index idx) {
 
 void list_store_update(void) {
     // Recreate Info_Array
-    api_info_array_destroy(&app.portfolio_data);
-    check_list_create_from_string();
+    check_list_create_from_string(); // Will set app.portfolio_data if success
     if (app.portfolio_data != NULL) {
         api_info_array_store_check_data(app.portfolio_data);
         check_list_add_api_data();
