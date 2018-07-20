@@ -2,11 +2,12 @@
 
 pkgname=intel-media-stack-bin
 pkgver=2018.Q2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libdrm.'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
+depends=('gcc-libs' 'libpciaccess' 'libdrm' 'libx11' 'libxext' 'libxfixes')
 provides=('intel-media-sdk' 'libmfx' 'intel-media-driver')
 conflicts=('intel-media-sdk' 'intel-media-sdk-git' 'intel-media-server-studio')
 backup=('etc/profile.d/intel-mediasdk-devel.sh'
