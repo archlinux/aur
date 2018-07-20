@@ -1,8 +1,8 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 
 pkgname=c-lolcat
-pkgver=r34.8e95919
-pkgrel=5
+pkgver=r36.e298c10
+pkgrel=1
 pkgdesc="High-performance implementation of lolcat"
 arch=('i686' 'x86_64')
 url="https://github.com/jaseg/lolcat"
