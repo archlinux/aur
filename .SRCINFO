@@ -1,0 +1,19 @@
+pkgbase = kcm-colorful-git
+	pkgdesc = Make your KDE plasma colorful
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/IsoaSFlus/kcm-colorful
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = qt5-base
+	makedepends = frameworkintegration
+	makedepends = kcmutils
+	depends = kconfigwidgets
+	source = kcm-colorful::git+https://github.com/IsoaSFlus/kcm-colorful
+	sha256sums = SKIP
+
+pkgname = kcm-colorful-git
+
