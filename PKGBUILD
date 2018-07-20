@@ -8,12 +8,12 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 # Contributor: Ben Widawsky <ben@bwidawsk.net>
 
-pkgname=ffmpeg-qsv
 _srcname=ffmpeg
-pkgver=4.0.1
-pkgrel=2
-pkgdesc='Record, convert and stream audio and video (including qsv and libfdk-aac)'
-arch=('i686' 'x86_64')
+pkgname=ffmpeg-qsv
+pkgver=4.0.2
+pkgrel=1
+pkgdesc='Complete solution to record, convert and stream audio and video (including qsv and libfdk-aac)'
+arch=('x86_64')
 url='http://www.ffmpeg.org/'
 license=('GPL3' 'custom: nonfree and unredistributable')
 depends=(
@@ -26,9 +26,8 @@ depends=(
 'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so'
 'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'ocl-icd'
 'mesa' 'sndio' 'sdl2' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio'
-'libva' 'libdrm' 'libvdpau'
-'libfdk-aac' 'intel-media-sdk')
-makedepends=('ffnvcodec-headers' 'nasm' 'opencl-headers')
+'libva' 'libdrm' 'libvdpau' 'libfdk-aac' 'intel-media-sdk')
+makedepends=('ffnvcodec-headers' 'git' 'ladspa' 'yasm' 'opencl-headers')
 optdepends=('compute-runtime: Intel(R) Graphics Compute Runtime for OpenCL(TM).'
 'beignet: OpenCL implementation for Intel IvyBridge+ iGPUs'
 'opencl-mesa: OpenCL support for AMD/ATI Radeon mesa drivers'
@@ -42,16 +41,12 @@ provides=('ffmpeg' 'ffmpeg-libfdk_aac' 'qt-faststart'
 conflicts=(
 'ffmpeg' 'ffmpeg-full-nvenc' 'ffmpeg-nvenc' 'ffmpeg-libfdk_aac' 'ffmpeg-decklink'
 'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-semifull-git' 'ffmpeg-qsv-git')
-source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz" 'LICENSE')
-sha256sums=('605f5c01c60db35d3b617a79cabb2c7032412be243554602eeed1b628125c0ee'
+source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}" 'LICENSE')
+sha256sums=('SKIP'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
-prepare() {
-    cd "${_srcname}-${pkgver}"
-}
-
 build() {
-    cd "${_srcname}-${pkgver}"
+    cd ffmpeg
 
     export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/mediasdk/lib64/pkgconfig"
 
@@ -124,9 +119,7 @@ build() {
 }
 
 package() {
-    cd "${_srcname}-${pkgver}"
-
-    make DESTDIR="${pkgdir}" install install-man
-    install -Dm 755 tools/qt-faststart "${pkgdir}"/usr/bin/
-    install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    make DESTDIR="${pkgdir}" -C ffmpeg install install-man
+    install -Dm 755 ffmpeg/tools/qt-faststart "${pkgdir}"/usr/bin/
+    install -Dm 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
