@@ -1,0 +1,15 @@
+pkgbase = searchfile-git
+	pkgdesc = The easiest way to find a file within seconds, with regex.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/lumi-sch/searchfile
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	depends = go
+	options = !strip
+	options = !emptydirs
+
+pkgname = searchfile-git
+
