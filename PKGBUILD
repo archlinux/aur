@@ -5,21 +5,26 @@
 # Contributor: Tim Huetz <tim at huetz biz>
 
 pkgname=libsvm
-pkgver=3.22
+pkgver=3.23
 _srcver="${pkgver/./}"
-pkgrel=2
+pkgrel=1
 pkgdesc='A library for Support Vector Machines classification (includes binaries and bindings for python and java)'
 arch=('i686' 'x86_64')
 url='http://www.csie.ntu.edu.tw/~cjlin/libsvm/'
 license=('BSD')
 depends=('gcc-libs')
-makedepends=('gtk2' 'qt4' 'python')
-optdepends=('gtk2: for GTK2 interface with svm-toy-gtk'
-            'qt4: for Qt4 interface with svm-toy-qt'
+makedepends=('qt5-base' 'python')
+optdepends=('qt5-base: for Qt5 interface with svm-toy'
             'python: for python modules and tools'
             'java-environment: for java bindings')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cjlin1/libsvm/archive/v${_srcver}.tar.gz")
-sha256sums=('a3469436f795bb3f8b1e65ea761e14e5599ec7ee941c001d771c07b7da318ac6')
+sha256sums=('7a466f90f327a98f8ed1cb217570547bcb00077933d1619f3cb9e73518f38196')
+
+prepare() {
+    cd "${pkgname}-${_srcver}/svm-toy/qt"
+    
+    sed -i '/^INCLUDE/s|/usr.*|/usr/include/qt|' Makefile
+}
 
 build() {
     msg2 'Building library and CLI binaries...'
@@ -27,12 +32,8 @@ build() {
     make lib
     make all
     
-    msg2 'Building GTK2 interface...'
-    cd svm-toy/gtk
-    make
-    
-    msg2 'Building Qt4 interface...'
-    cd ../qt
+    msg2 'Building Qt5 interface...'
+    cd svm-toy/qt
     make
 }
 
@@ -44,11 +45,10 @@ package() {
     local _sover="$(find . -maxdepth 1 -type f -name 'libsvm.so.*' | awk -F'.' '{ print $4 }')"
     
     # binaries
-    install -D -m755 svm-predict -t "${pkgdir}/usr/bin"
-    install -D -m755 svm-scale   -t "${pkgdir}/usr/bin"
-    install -D -m755 svm-train   -t "${pkgdir}/usr/bin"
-    install -D -m755 svm-toy/gtk/svm-toy "${pkgdir}/usr/bin/svm-toy-gtk"
-    install -D -m755 svm-toy/qt/svm-toy  "${pkgdir}/usr/bin/svm-toy-qt"
+    install -D -m755 svm-predict        -t "${pkgdir}/usr/bin"
+    install -D -m755 svm-scale          -t "${pkgdir}/usr/bin"
+    install -D -m755 svm-train          -t "${pkgdir}/usr/bin"
+    install -D -m755 svm-toy/qt/svm-toy -t "${pkgdir}/usr/bin"
     
     # library
     install -D -m755 "libsvm.so.${_sover}" -t "${pkgdir}/usr/lib"

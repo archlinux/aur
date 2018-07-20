@@ -1,21 +1,19 @@
 pkgbase = libsvm
 	pkgdesc = A library for Support Vector Machines classification (includes binaries and bindings for python and java)
-	pkgver = 3.22
-	pkgrel = 2
+	pkgver = 3.23
+	pkgrel = 1
 	url = http://www.csie.ntu.edu.tw/~cjlin/libsvm/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = gtk2
-	makedepends = qt4
+	makedepends = qt5-base
 	makedepends = python
 	depends = gcc-libs
-	optdepends = gtk2: for GTK2 interface with svm-toy-gtk
-	optdepends = qt4: for Qt4 interface with svm-toy-qt
+	optdepends = qt5-base: for Qt5 interface with svm-toy
 	optdepends = python: for python modules and tools
 	optdepends = java-environment: for java bindings
-	source = libsvm-3.22.tar.gz::https://github.com/cjlin1/libsvm/archive/v322.tar.gz
-	sha256sums = a3469436f795bb3f8b1e65ea761e14e5599ec7ee941c001d771c07b7da318ac6
+	source = libsvm-3.23.tar.gz::https://github.com/cjlin1/libsvm/archive/v323.tar.gz
+	sha256sums = 7a466f90f327a98f8ed1cb217570547bcb00077933d1619f3cb9e73518f38196
 
 pkgname = libsvm
 
