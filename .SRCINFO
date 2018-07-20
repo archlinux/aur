@@ -1,0 +1,13 @@
+pkgbase = vet-bin
+	pkgdesc = Gerrit client using pull request workflow
+	pkgver = 3.17
+	pkgrel = 1
+	url = https://github.com/Cosium/vet
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = https://github.com/Cosium/vet/releases/download/3.17/vet-linux_x64.deb.zip
+	sha256sums = 026997af47b2fcb23cf7153d6c752f83d931e2356420a59271585765ac172a50
+
+pkgname = vet-bin
+
