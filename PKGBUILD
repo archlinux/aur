@@ -12,7 +12,8 @@
 
 set -u
 pkgname='turboprint'
-pkgver='2.45'; _pkgrev='1'
+_pkgver='2.46-1'
+pkgver="${_pkgver//-/.}"
 pkgrel='1'
 pkgdesc='High-quality printer driver system for Linux'
 arch=('i686' 'x86_64')
@@ -33,7 +34,7 @@ _verwatch=('http://www.turboprint.info/history.html' '[0-9][0-9]-[a-z][a-z][a-z]
 source=('turboprint.desktop'
         'turboprint-monitor.desktop'
         'tprintdaemon.service')
-_srcdir="${pkgname}-${pkgver}-${_pkgrev}"
+_srcdir="${pkgname}-${_pkgver}"
 # ftp://ftp.zedonet.com/tp2/turboprint-2.44-1.x86_64.tgz
 # ftp://ftp.zedonet.com/tp2/turboprint-2.44-1.i586.tgz
 # http://www.turboprint.info/tp2/arm/turboprint-2.44-1.ARMhf.tgz
@@ -43,13 +44,13 @@ source_x86_64=("http://www.turboprint.info/tp2/${_srcdir}.x86_64.tgz")
 md5sums=('e3c504b2c1b7deb01d03fde710b117d7'
          '60a1754b2abd30e75e51acd9576cda43'
          '2640e1d95c3579d6cef590d18b4476df')
-md5sums_i686=('73faf86c6ff4fd6d28e8d491ffa91349')
-md5sums_x86_64=('cd3c9c123de1e8ccd9ea8c7a7f5841d2')
+md5sums_i686=('d5407fdcd44a4158f9935ad16b52bf8a')
+md5sums_x86_64=('14aa10836df781531dafe83ef8d4ea03')
 sha256sums=('c90e4f71a234dc0638d15305184daeed212ebf1f7efc2f5a2a09895ca09bea6d'
             'de0c92b665150ceaf33c3cfd94b0afb422609194db9416aff59add5123bb8a2f'
             'a6ba2b4bab8d2512e542427dd3473d1764a777ef0493031046dc7282dc05fdad')
-sha256sums_i686=('957a9ff7ae2bf4dc0f7f4d2d6cf39091831e7b10fa10f27616e4b4b8127a2c82')
-sha256sums_x86_64=('c31ab20119cb7a3e32fb3eea06dd6c4f88dbd5ed54d792a869286903be4bf733')
+sha256sums_i686=('af5c4ea9bb9f3db80a06074c05289a12014a7aa85660967be8052f33dcf65180')
+sha256sums_x86_64=('ecbfcffd1718deb2812b64a4e7d7e92ec0e40e5d4992378a98c1085581a832d1')
 
 prepare() {
   set -u
