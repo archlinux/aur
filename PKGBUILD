@@ -1,6 +1,6 @@
 # Maintainer: Philipp Jonczyk <p dot jonczyk at posteo dot de>
 pkgname=python-daily-dozen
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="CLI tool to store your daily dozen of plant based essentials."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python'
 source=("daily-dozen.py")
 provides=("python-daily-dozen=$pkgver-$pkgrel")
 source=("https://github.com/randomn4me/${pkgname#python-}-cli/archive/${pkgver}.tar.gz")
-md5sums=('ad7f759ff9b65be6df3017a221d7d899')
+md5sums=('cc5b4c3ae958c06514e089367bb8a2f9')
 
 package() {
     cd "${pkgname#python-}-cli-${pkgver}"
