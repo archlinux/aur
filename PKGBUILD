@@ -2,7 +2,7 @@
 
 pkgname=gamehub
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Games manager/downloader/library written in Vala for Elementary OS that supports GOG and Steam"
 arch=('any')
 url="https://github.com/tkashkin/GameHub"
@@ -11,11 +11,11 @@ depends=('granite' 'gtk3' 'glibc' 'webkit2gtk' 'json-glib' 'libgee' 'libsoup' 's
 makedepends=('meson' 'ninja' 'vala')
 conflicts=('gamehub-git')
 source=("GameHub-$pkgver.tar.gz"::https://github.com/tkashkin/GameHub/archive/0.5.5.tar.gz)
-md5sums=('0020379a2a52a39118a7932cb127b7b5') 
+md5sums=('8dbc4437ccdb2e73da6d4e11c900325a') 
 
 build() {
 	cd "GameHub-$pkgver"
-	meson build --prefix=/usr -Ddistro=arch
+	meson build --prefix=$pkgdir/usr -Ddistro=arch
 	cd build
 	ninja
 }
