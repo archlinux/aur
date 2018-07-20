@@ -6,7 +6,7 @@ pkgver=v1.0.r3.g3827fdf
 pkgrel=1
 pkgdesc='A backward-compatibile xbacklight replacement'
 arch=('any')
-url="https://github.com/wavexx/${_pkgname}"
+url="https://gitlab.com/wavexx/${_pkgname}"
 license=('GPL')
 
 depends=('python')
