@@ -1,14 +1,14 @@
 pkgbase = automounter
 	pkgdesc = This is a link to gvfs-archive that will allow automounting of ISOs and other files, UBUNTU/FEDORA style
 	pkgver = 0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bbs.archlinux.org/viewtopic.php?pid=606881
 	arch = any
 	license = GPL
 	depends = gvfs
 	depends = desktop-file-utils
 	source = mount-archive.desktop
-	md5sums = 73890777b05aaa4e97c50e26c49cd7dc
+	md5sums = a73c57514b3d055d4fec90ee20aa8efc
 
 pkgname = automounter
 
