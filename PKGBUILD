@@ -2,8 +2,7 @@
 
 pkgname=mendeleydesktop-dev
 pkgshortname=mendeleydesktop
-pkgver=1.18.0_dev3
-_pkgver=1.18-dev3
+pkgver=1.19.2_dev2
 pkgrel=1
 pkgdesc="Academic software for managing and sharing research papers (desktop client)"
 url=https://www.mendeley.com/release-notes/development/
@@ -16,22 +15,21 @@ sha256sums=('' '4603511767b23ba44820b1742e82043a667822146bcd3ebc8e9bdcfdb87ed050
 
 if [[ $CARCH = i686 ]];then
   _arch=i486
-  sha256sums[0]='b3ebbee2ef2a79d6d1aedda9be9262a713889c180908f6ba9f7b14e8920363a2'
+  sha256sums[0]='db3218c379a08b19d4333e688e8e573c64401ff8d1a8141df5084bc0d6ba9e7f'
 
 else
   _arch=$CARCH
-  sha256sums[0]='dd5bff6ca8d5dfa734aa92cc4b4eae83bfac8622733096e135f382b4a40bab5a'
+  sha256sums[0]='5a290a90c5b51c7df47f916b22768bca18b4b11e188c0ea5525ee78582324df2'
 fi
 
 if which gconftool-2 &>/dev/null;then
   depends=(${depends[@]} gconf)
 fi
-
-source=("http://desktop-download.mendeley.com/download/linux/$pkgshortname-$_pkgver-linux-$_arch.tar.bz2"
+source=("http://desktop-download.mendeley.com/download/linux/$pkgshortname-${pkgver//_/-}-linux-${_arch}.tar.bz2"
         'mendeleydesktop.install')
 
 package() {
-    cd "$pkgshortname-$_pkgver-linux-$_arch"
+    cd "$pkgshortname-${pkgver//_/-}-linux-$_arch"
 
     rm -f share/doc/mendeleydesktop/*.txt
 
@@ -44,7 +42,7 @@ package() {
     install -dm755 "$pkgdir"/usr/bin
     ln -s /opt/"$pkgshortname"/bin/mendeleydesktop "$pkgdir/usr/bin/mendeleydesktop"
 
-    cd "$srcdir/$pkgshortname-$_pkgver-linux-$_arch"
+    cd "$srcdir/$pkgshortname-${pkgver//_/-}-linux-$_arch"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgshortname/LICENSE"
 
     install -dm755 "$pkgdir"/usr/share/applications
@@ -54,10 +52,8 @@ package() {
     cat << __EOF__
 			Removing bundled Qt library.
 			If you have troubles with mendeleydesktop (e.g. HiDPI) please comment the following line in the PKGBUILD:
-			rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
+	#		rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
 __EOF__
-		
-    #rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
 
     #Remove unneeded lines if gconf is not installed.
     if ! which gconftool-2 &>/dev/null;then
