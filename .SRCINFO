@@ -12,7 +12,7 @@ pkgbase = cepl-git
 	provides = cepl
 	conflicts = cepl
 	options = zipman
-	source = cepl::git+http://github.com/alyptik/cepl
+	source = cepl::git+https://github.com/alyptik/cepl.git
 	sha256sums = SKIP
 
 pkgname = cepl-git
