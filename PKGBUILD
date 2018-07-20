@@ -1,9 +1,9 @@
 # Maintainer: Marcel Huber <marcelhuberfoo@gmail.com>
 
 pkgname=cevelop
-pkgver=1.9.1
-_srctimestamp=201802220948
-pkgrel=2
+pkgver=1.10.0
+_srctimestamp=201807191318
+pkgrel=1
 pkgdesc="The C++ IDE for professional developers"
 license=('custom')
 arch=('i686' 'x86_64')
@@ -19,15 +19,15 @@ source=(cevelop.sh
         https://github.com/Cevelop/cevelop.github.io/raw/master/img/logo-square.svg)
 source_i686=(https://www.cevelop.com/cevelop/downloads/cevelop-${pkgver}-${_srctimestamp}-linux.gtk.x86.tar.gz)
 source_x86_64=(https://www.cevelop.com/cevelop/downloads/cevelop-${pkgver}-${_srctimestamp}-linux.gtk.x86_64.tar.gz)
-sha256sums=('a811c104796573d5652ff8314bf00f3e1bc75c142658b5f6767a5e7c91a3540e'
+sha256sums=('65b469797c38ca09bc16bcb940138091def2d30079fa09028b8756c1040c5c85'
             '578aea66235898a6f6d25420f5251b4df0e2a08be4302d9ab2a9e7e54359cb1b'
             'e88728544af4f6924784cb2885f3d86d4bd5cceb918f8fc552126b3f93288830'
             '7c31396b3facdf0a5ff57e2ee8a5ea0ff741955048e34116d4296ffa35e74218'
             '98ab055ecde507b6603743ab40db3dfdb6d6b3b24cb5fff244982ae641d865a0'
             'd99f2f3b58aef682fcab7d1cedf20fc4fc44152c6b964af49212a9e7f4d35def'
             'ebd2b54d0487de845093cabda98d5e0977f436fc10d40f15d2cb1598084222e4')
-sha256sums_i686=('8d4ea033ee02ca894e4d8d6073cbb22f84e29e0edd058fac8fd358b21d4c57e4')
-sha256sums_x86_64=('b7915482571a5b64d2b0fe7ee7ee20df71579ac9418e2e090f956341cb4ad387')
+sha256sums_i686=('b4787296fbd359c30de59473b61d0437b59c5e187409328cdce5f6195c756afc')
+sha256sums_x86_64=('d1b8df65f843ef019bdb072950fa941b69e5ae19ec62ae96af5fc9e900bd8fad')
 
 prepare() {
   gendesk -n --pkgname "$pkgname" \
@@ -41,14 +41,12 @@ package() {
   bsdtar cf - --cd $pkgname-$pkgver \
     --exclude ./icon.xpm \
     --exclude ./cevelop.desktop \
-    --exclude ./cevelop.ini \
     --exclude ./cevelop.sh . | bsdtar xf - --cd $pkgdir/usr/lib/$pkgname/
   install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "$pkgname-$pkgver/icon.xpm" "$pkgdir/usr/share/pixmaps/$pkgname.xpm"
   # OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=512m; support was removed in 8.0
-  sed -i '/MaxPermSize/ d' "$pkgname-$pkgver/cevelop.ini"
-  install -Dm644 "$pkgname-$pkgver/cevelop.ini" "$pkgdir/usr/lib/$pkgname/runner.ini"
+  sed -i '/MaxPermSize/ d' "$pkgdir/usr/lib/$pkgname/cevelop.ini"
   for _i in 16 32 48 256; do
     install -Dm644 $srcdir/logo-square-${_i}.png \
       "$pkgdir/usr/share/icons/hicolor/${_i}x${_i}/apps/${pkgname}.png"

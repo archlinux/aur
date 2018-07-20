@@ -7,4 +7,4 @@ export CEVELOP_INTRO=false
 # export SWT_GTK3=0
 
 export ECLIPSE_HOME=/usr/lib/cevelop
-exec "$ECLIPSE_HOME/runner" "$@"
+exec "$ECLIPSE_HOME/cevelop" "$@"
