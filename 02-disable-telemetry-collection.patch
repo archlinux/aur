@@ -1,0 +1,266 @@
+diff --git a/collection.go b/collection.go
+index 07cf0dc..f05672f 100644
+--- a/collection.go
++++ b/collection.go
+@@ -15,11 +15,6 @@
+ package telemetry
+ 
+ import (
+-	"fmt"
+-	"hash/fnv"
+-	"log"
+-	"strings"
+-
+ 	"github.com/google/uuid"
+ )
+ 
+@@ -36,20 +31,6 @@ import (
+ // argument will be permanently disabled for the
+ // lifetime of the process.
+ func Init(instanceID uuid.UUID, disabledMetricsKeys []string) {
+-	if enabled {
+-		panic("already initialized")
+-	}
+-	if str := instanceID.String(); str == "" ||
+-		str == "00000000-0000-0000-0000-000000000000" {
+-		panic("empty UUID")
+-	}
+-	instanceUUID = instanceID
+-	disabledMetricsMu.Lock()
+-	for _, key := range disabledMetricsKeys {
+-		disabledMetrics[strings.TrimSpace(key)] = false
+-	}
+-	disabledMetricsMu.Unlock()
+-	enabled = true
+ }
+ 
+ // StartEmitting sends the current payload and begins the
+@@ -62,22 +43,6 @@ func Init(instanceID uuid.UUID, disabledMetricsKeys []string) {
+ // This function panics if it was called more than once.
+ // It is a no-op if this package was not initialized.
+ func StartEmitting() {
+-	if !enabled {
+-		return
+-	}
+-	updateTimerMu.Lock()
+-	if updateTimer != nil {
+-		updateTimerMu.Unlock()
+-		panic("updates already started")
+-	}
+-	updateTimerMu.Unlock()
+-	updateMu.Lock()
+-	if updating {
+-		updateMu.Unlock()
+-		panic("update already in progress")
+-	}
+-	updateMu.Unlock()
+-	go logEmit(false)
+ }
+ 
+ // StopEmitting sends the current payload and terminates
+@@ -90,21 +55,10 @@ func StartEmitting() {
+ // you want to guarantee no blocking at critical times
+ // like exiting the program.
+ func StopEmitting() {
+-	if !enabled {
+-		return
+-	}
+-	updateTimerMu.Lock()
+-	if updateTimer == nil {
+-		updateTimerMu.Unlock()
+-		return
+-	}
+-	updateTimerMu.Unlock()
+-	logEmit(true) // likely too early; may take minutes to return
+ }
+ 
+ // Reset empties the current payload buffer.
+ func Reset() {
+-	resetBuffer()
+ }
+ 
+ // Set puts a value in the buffer to be included
+@@ -116,19 +70,6 @@ func Reset() {
+ // go keyword after the call to SendHello so it
+ // doesn't block crucial code.
+ func Set(key string, val interface{}) {
+-	if !enabled || isDisabled(key) {
+-		return
+-	}
+-	bufferMu.Lock()
+-	if _, ok := buffer[key]; !ok {
+-		if bufferItemCount >= maxBufferItems {
+-			bufferMu.Unlock()
+-			return
+-		}
+-		bufferItemCount++
+-	}
+-	buffer[key] = val
+-	bufferMu.Unlock()
+ }
+ 
+ // SetNested puts a value in the buffer to be included
+@@ -140,36 +81,6 @@ func Set(key string, val interface{}) {
+ // go keyword after the call to SendHello so it
+ // doesn't block crucial code.
+ func SetNested(key, subkey string, val interface{}) {
+-	if !enabled || isDisabled(key) {
+-		return
+-	}
+-	bufferMu.Lock()
+-	if topLevel, ok1 := buffer[key]; ok1 {
+-		topLevelMap, ok2 := topLevel.(map[string]interface{})
+-		if !ok2 {
+-			bufferMu.Unlock()
+-			log.Printf("[PANIC] Telemetry: key %s is already used for non-nested-map value", key)
+-			return
+-		}
+-		if _, ok3 := topLevelMap[subkey]; !ok3 {
+-			// don't exceed max buffer size
+-			if bufferItemCount >= maxBufferItems {
+-				bufferMu.Unlock()
+-				return
+-			}
+-			bufferItemCount++
+-		}
+-		topLevelMap[subkey] = val
+-	} else {
+-		// don't exceed max buffer size
+-		if bufferItemCount >= maxBufferItems {
+-			bufferMu.Unlock()
+-			return
+-		}
+-		bufferItemCount++
+-		buffer[key] = map[string]interface{}{subkey: val}
+-	}
+-	bufferMu.Unlock()
+ }
+ 
+ // Append appends value to a list named key.
+@@ -177,29 +88,6 @@ func SetNested(key, subkey string, val interface{}) {
+ // If key maps to a type that is not a list,
+ // a panic is logged, and this is a no-op.
+ func Append(key string, value interface{}) {
+-	if !enabled || isDisabled(key) {
+-		return
+-	}
+-	bufferMu.Lock()
+-	if bufferItemCount >= maxBufferItems {
+-		bufferMu.Unlock()
+-		return
+-	}
+-	// TODO: Test this...
+-	bufVal, inBuffer := buffer[key]
+-	sliceVal, sliceOk := bufVal.([]interface{})
+-	if inBuffer && !sliceOk {
+-		bufferMu.Unlock()
+-		log.Printf("[PANIC] Telemetry: key %s already used for non-slice value", key)
+-		return
+-	}
+-	if sliceVal == nil {
+-		buffer[key] = []interface{}{value}
+-	} else if sliceOk {
+-		buffer[key] = append(sliceVal, value)
+-	}
+-	bufferItemCount++
+-	bufferMu.Unlock()
+ }
+ 
+ // AppendUnique adds value to a set named key.
+@@ -213,30 +101,6 @@ func Append(key string, value interface{}) {
+ // that is not a counting set, a panic is logged,
+ // and this is a no-op.
+ func AppendUnique(key string, value interface{}) {
+-	if !enabled || isDisabled(key) {
+-		return
+-	}
+-	bufferMu.Lock()
+-	bufVal, inBuffer := buffer[key]
+-	setVal, setOk := bufVal.(countingSet)
+-	if inBuffer && !setOk {
+-		bufferMu.Unlock()
+-		log.Printf("[PANIC] Telemetry: key %s already used for non-counting-set value", key)
+-		return
+-	}
+-	if setVal == nil {
+-		// ensure the buffer is not too full, then add new unique value
+-		if bufferItemCount >= maxBufferItems {
+-			bufferMu.Unlock()
+-			return
+-		}
+-		buffer[key] = countingSet{value: 1}
+-		bufferItemCount++
+-	} else if setOk {
+-		// unique value already exists, so just increment counter
+-		setVal[value]++
+-	}
+-	bufferMu.Unlock()
+ }
+ 
+ // Add adds amount to a value named key.
+@@ -245,46 +109,22 @@ func AppendUnique(key string, value interface{}) {
+ // is not an integer, a panic is logged,
+ // and this is a no-op.
+ func Add(key string, amount int) {
+-	atomicAdd(key, amount)
+ }
+ 
+ // Increment is a shortcut for Add(key, 1)
+ func Increment(key string) {
+-	atomicAdd(key, 1)
+ }
+ 
+ // atomicAdd adds amount (negative to subtract)
+ // to key.
+ func atomicAdd(key string, amount int) {
+-	if !enabled || isDisabled(key) {
+-		return
+-	}
+-	bufferMu.Lock()
+-	bufVal, inBuffer := buffer[key]
+-	intVal, intOk := bufVal.(int)
+-	if inBuffer && !intOk {
+-		bufferMu.Unlock()
+-		log.Printf("[PANIC] Telemetry: key %s already used for non-integer value", key)
+-		return
+-	}
+-	if !inBuffer {
+-		if bufferItemCount >= maxBufferItems {
+-			bufferMu.Unlock()
+-			return
+-		}
+-		bufferItemCount++
+-	}
+-	buffer[key] = intVal + amount
+-	bufferMu.Unlock()
+ }
+ 
+ // FastHash hashes input using a 32-bit hashing algorithm
+ // that is fast, and returns the hash as a hex-encoded string.
+ // Do not use this for cryptographic purposes.
+ func FastHash(input []byte) string {
+-	h := fnv.New32a()
+-	h.Write(input)
+-	return fmt.Sprintf("%x", h.Sum32())
++	return ""
+ }
+ 
+ // isDisabled returns whether key is
+@@ -292,16 +132,5 @@ func FastHash(input []byte) string {
+ // functions should call this and not
+ // save the value if this returns true.
+ func isDisabled(key string) bool {
+-	// for keys that are augmented with data, such as
+-	// "tls_client_hello_ua:<hash>", just
+-	// check the prefix "tls_client_hello_ua"
+-	checkKey := key
+-	if idx := strings.Index(key, ":"); idx > -1 {
+-		checkKey = key[:idx]
+-	}
+-
+-	disabledMetricsMu.RLock()
+-	_, ok := disabledMetrics[checkKey]
+-	disabledMetricsMu.RUnlock()
+-	return ok
++	return true
+ }

@@ -1,0 +1,291 @@
+diff --git a/telemetry/telemetry.go b/telemetry/telemetry.go
+index 59ab75b..dad7216 100644
+--- a/telemetry/telemetry.go
++++ b/telemetry/telemetry.go
+@@ -33,16 +33,7 @@
+ package telemetry
+ 
+ import (
+-	"bytes"
+-	"encoding/json"
+-	"fmt"
+-	"io/ioutil"
+-	"log"
+-	"math/rand"
+ 	"net/http"
+-	"runtime"
+-	"strconv"
+-	"strings"
+ 	"sync"
+ 	"time"
+ 
+@@ -52,10 +43,6 @@ import (
+ // logEmit calls emit and then logs the error, if any.
+ // See docs for emit.
+ func logEmit(final bool) {
+-	err := emit(final)
+-	if err != nil {
+-		log.Printf("[ERROR] Sending telemetry: %v", err)
+-	}
+ }
+ 
+ // emit sends an update to the telemetry server.
+@@ -63,184 +50,15 @@ func logEmit(final bool) {
+ // If final is true, no future updates will be scheduled.
+ // Otherwise, the next update will be scheduled.
+ func emit(final bool) error {
+-	if !enabled {
+-		return fmt.Errorf("telemetry not enabled")
+-	}
+-
+-	// some metrics are updated/set at time of emission
+-	setEmitTimeMetrics()
+-
+-	// ensure only one update happens at a time;
+-	// skip update if previous one still in progress
+-	updateMu.Lock()
+-	if updating {
+-		updateMu.Unlock()
+-		log.Println("[NOTICE] Skipping this telemetry update because previous one is still working")
+-		return nil
+-	}
+-	updating = true
+-	updateMu.Unlock()
+-	defer func() {
+-		updateMu.Lock()
+-		updating = false
+-		updateMu.Unlock()
+-	}()
+-
+-	// terminate any pending update if this is the last one
+-	if final {
+-		stopUpdateTimer()
+-	}
+-
+-	payloadBytes, err := makePayloadAndResetBuffer()
+-	if err != nil {
+-		return err
+-	}
+-
+-	// this will hold the server's reply
+-	var reply Response
+-
+-	// transmit the payload - use a loop to retry in case of failure
+-	for i := 0; i < 4; i++ {
+-		if i > 0 && err != nil {
+-			// don't hammer the server; first failure might have been
+-			// a fluke, but back off more after that
+-			log.Printf("[WARNING] Sending telemetry (attempt %d): %v - backing off and retrying", i, err)
+-			time.Sleep(time.Duration((i+1)*(i+1)*(i+1)) * time.Second)
+-		}
+-
+-		// send it
+-		var resp *http.Response
+-		resp, err = httpClient.Post(endpoint+instanceUUID.String(), "application/json", bytes.NewReader(payloadBytes))
+-		if err != nil {
+-			continue
+-		}
+-
+-		// check for any special-case response codes
+-		if resp.StatusCode == http.StatusGone {
+-			// the endpoint has been deprecated and is no longer servicing clients
+-			err = fmt.Errorf("telemetry server replied with HTTP %d; upgrade required", resp.StatusCode)
+-			if clen := resp.Header.Get("Content-Length"); clen != "0" && clen != "" {
+-				bodyBytes, readErr := ioutil.ReadAll(resp.Body)
+-				if readErr != nil {
+-					log.Printf("[ERROR] Reading response body from server: %v", readErr)
+-				}
+-				err = fmt.Errorf("%v - %s", err, bodyBytes)
+-			}
+-			resp.Body.Close()
+-			reply.Stop = true
+-			break
+-		}
+-		if resp.StatusCode == http.StatusUnavailableForLegalReasons {
+-			// the endpoint is unavailable, at least to this client, for legal reasons (!)
+-			err = fmt.Errorf("telemetry server replied with HTTP %d %s: please consult the project website and developers for guidance", resp.StatusCode, resp.Status)
+-			if clen := resp.Header.Get("Content-Length"); clen != "0" && clen != "" {
+-				bodyBytes, readErr := ioutil.ReadAll(resp.Body)
+-				if readErr != nil {
+-					log.Printf("[ERROR] Reading response body from server: %v", readErr)
+-				}
+-				err = fmt.Errorf("%v - %s", err, bodyBytes)
+-			}
+-			resp.Body.Close()
+-			reply.Stop = true
+-			break
+-		}
+-
+-		// okay, ensure we can interpret the response
+-		if ct := resp.Header.Get("Content-Type"); (resp.StatusCode < 300 || resp.StatusCode >= 400) &&
+-			!strings.Contains(ct, "json") {
+-			err = fmt.Errorf("telemetry server replied with unknown content-type: '%s' and HTTP %s", ct, resp.Status)
+-			resp.Body.Close()
+-			continue
+-		}
+-
+-		// read the response body
+-		err = json.NewDecoder(resp.Body).Decode(&reply)
+-		resp.Body.Close() // close response body as soon as we're done with it
+-		if err != nil {
+-			continue
+-		}
+-
+-		// update the list of enabled/disabled keys, if any
+-		for _, key := range reply.EnableKeys {
+-			disabledMetricsMu.Lock()
+-			// only re-enable this metric if it is temporarily disabled
+-			if temp, ok := disabledMetrics[key]; ok && temp {
+-				delete(disabledMetrics, key)
+-			}
+-			disabledMetricsMu.Unlock()
+-		}
+-		for _, key := range reply.DisableKeys {
+-			disabledMetricsMu.Lock()
+-			disabledMetrics[key] = true // all remotely-disabled keys are "temporarily" disabled
+-			disabledMetricsMu.Unlock()
+-		}
+-
+-		// make sure we didn't send the update too soon; if so,
+-		// just wait and try again -- this is a special case of
+-		// error that we handle differently, as you can see
+-		if resp.StatusCode == http.StatusTooManyRequests {
+-			if reply.NextUpdate <= 0 {
+-				raStr := resp.Header.Get("Retry-After")
+-				if ra, err := strconv.Atoi(raStr); err == nil {
+-					reply.NextUpdate = time.Duration(ra) * time.Second
+-				}
+-			}
+-			if !final {
+-				log.Printf("[NOTICE] Sending telemetry: we were too early; waiting %s before trying again", reply.NextUpdate)
+-				time.Sleep(reply.NextUpdate)
+-				continue
+-			}
+-		} else if resp.StatusCode >= 400 {
+-			err = fmt.Errorf("telemetry server returned status code %d", resp.StatusCode)
+-			continue
+-		}
+-
+-		break
+-	}
+-	if err == nil && !final {
+-		// (remember, if there was an error, we return it
+-		// below, so it WILL get logged if it's supposed to)
+-		log.Println("[INFO] Sending telemetry: success")
+-	}
+-
+-	// even if there was an error after all retries, we should
+-	// schedule the next update using our default update
+-	// interval because the server might be healthy later
+-
+-	// ensure we won't slam the telemetry server; add a little variance
+-	if reply.NextUpdate < 1*time.Second {
+-		reply.NextUpdate = defaultUpdateInterval + time.Duration(rand.Int63n(int64(1*time.Minute)))
+-	}
+-
+-	// schedule the next update (if this wasn't the last one and
+-	// if the remote server didn't tell us to stop sending)
+-	if !final && !reply.Stop {
+-		updateTimerMu.Lock()
+-		updateTimer = time.AfterFunc(reply.NextUpdate, func() {
+-			logEmit(false)
+-		})
+-		updateTimerMu.Unlock()
+-	}
+-
+-	return err
++	return nil
+ }
+ 
+ func stopUpdateTimer() {
+-	updateTimerMu.Lock()
+-	updateTimer.Stop()
+-	updateTimer = nil
+-	updateTimerMu.Unlock()
+ }
+ 
+ // setEmitTimeMetrics sets some metrics that should
+ // be recorded just before emitting.
+ func setEmitTimeMetrics() {
+-	Set("goroutines", runtime.NumGoroutine())
+-
+-	var mem runtime.MemStats
+-	runtime.ReadMemStats(&mem)
+-	SetNested("memory", "heap_alloc", mem.HeapAlloc)
+-	SetNested("memory", "sys", mem.Sys)
+ }
+ 
+ // makePayloadAndResetBuffer prepares a payload
+@@ -250,15 +68,7 @@ func setEmitTimeMetrics() {
+ // resulting byte slice is lost, the payload is
+ // gone with it.
+ func makePayloadAndResetBuffer() ([]byte, error) {
+-	bufCopy := resetBuffer()
+-
+-	// encode payload in preparation for transmission
+-	payload := Payload{
+-		InstanceID: instanceUUID.String(),
+-		Timestamp:  time.Now().UTC(),
+-		Data:       bufCopy,
+-	}
+-	return json.Marshal(payload)
++	return []byte{}, nil
+ }
+ 
+ // resetBuffer makes a local pointer to the buffer,
+@@ -268,12 +78,7 @@ func makePayloadAndResetBuffer() ([]byte, error) {
+ // the original map so the old buffer value can be
+ // used locally.
+ func resetBuffer() map[string]interface{} {
+-	bufferMu.Lock()
+-	bufCopy := buffer
+-	buffer = make(map[string]interface{})
+-	bufferItemCount = 0
+-	bufferMu.Unlock()
+-	return bufCopy
++	return map[string]interface{}{}
+ }
+ 
+ // Response contains the body of a response from the
+@@ -324,13 +129,6 @@ type Payload struct {
+ // Int returns the value of the data keyed by key
+ // if it is an integer; otherwise it returns 0.
+ func (p Payload) Int(key string) int {
+-	val, _ := p.Data[key]
+-	switch p.Data[key].(type) {
+-	case int:
+-		return val.(int)
+-	case float64: // after JSON-decoding, int becomes float64...
+-		return int(val.(float64))
+-	}
+ 	return 0
+ }
+ 
+@@ -345,17 +143,7 @@ type countingSet map[interface{}]int
+ // are JSON object values instead of keys, since keys
+ // are difficult to query in databases.
+ func (s countingSet) MarshalJSON() ([]byte, error) {
+-	type Item struct {
+-		Value interface{} `json:"value"`
+-		Count int         `json:"count"`
+-	}
+-	var list []Item
+-
+-	for k, v := range s {
+-		list = append(list, Item{Value: k, Count: v})
+-	}
+-
+-	return json.Marshal(list)
++	return []byte{}, nil
+ }
+ 
+ var (
+@@ -415,7 +203,7 @@ var (
+ const (
+ 	// endpoint is the base URL to remote telemetry server;
+ 	// the instance ID will be appended to it.
+-	endpoint = "https://telemetry.caddyserver.com/v1/update/"
++	endpoint = ""
+ 
+ 	// defaultUpdateInterval is how long to wait before emitting
+ 	// more telemetry data if all retires fail. This value is
