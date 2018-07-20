@@ -3,7 +3,7 @@
 
 pkgname=paperwork
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to make papers searchable - scan & forget'
 arch=('any')
 url='https://github.com/openpaperwork/paperwork'
@@ -19,7 +19,7 @@ depends=('pygobject2-devel' 'pygtk' 'python-pycountry'
 makedepends=('python' 'python-setuptools' 'git')
 optdeps=('cuneiform: alternativer OCR')
 source=("paperwork.desktop"
-        "git+https://github.com/openpaperwork/paperwork#tag=${pkgver}")
+        "git+https://gitlab.gnome.org/World/OpenPaperwork/paperwork.git#tag=${pkgver}")
 md5sums=('4496dc70b2f159c7ea28160d2ebb60fe'
          'SKIP')
 install=paperwork.install
