@@ -1,13 +1,13 @@
 pkgbase = php-transip-api
 	pkgdesc = Official PHP library for access to TransIP's services through their API
-	pkgver = 5.6
+	pkgver = 5.8
 	pkgrel = 1
 	url = https://www.transip.nl/transip/api/
 	arch = any
 	license = unknown
 	depends = php
-	source = https://api.transip.nl/downloads/transapi_transip.nl_v5_6.tar.gz
-	sha512sums = 5f965c9263f4d6c1b908848fceb7b7819c161690f444c9fa4d60a8d57e023bc141ae54a64f52d75c6ec4aeeffe9dd4414e39738d5567f0e856fe83180672ac40
+	source = https://api.transip.nl/downloads/transapi_transip.nl_v5_8.tar.gz
+	sha512sums = 1a50caa6b77e1bb18fc0cec6d38af5c9bc92f2c9b16ea37abbb3b814102f169d5c180447afd42e51ed8609de523f3c9e6da3903f7589e1d0fd304643d9d8aac1
 
 pkgname = php-transip-api
 
