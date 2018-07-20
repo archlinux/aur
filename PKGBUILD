@@ -1,50 +1,60 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Contributor: Vladimir Panteleev <arch-pkg at thecybershadow dot net>
 
 pkgname=rtags
 pkgver=2.18
-pkgrel=2
+pkgrel=3
 pkgdesc='RTags is a client/server application that indexes C/C++ code'
 arch=('i686' 'x86_64')
-url='https://github.com/Andersbakken/rtags'
+_url='https://github.com/Andersbakken'
+url="${_url}/rtags"
 license=('GPL3')
 depends=('bash' 'clang')
+conflicts=("${pkgname}-git")
 makedepends=('cmake' 'git' 'llvm' 'zlib')
 optdepends=('bash-completion: for bash completion' 'zlib' 'lua: Lua bindings')
-provides=('rtags')
-conflicts=('rtags-git')
-install="${pkgname}.install"
-source=(rdm.service
-        rdm.socket)
-sha256sums=('c2235b4360442d309f14a38cbd7a7cbb2091061cb1d12a827ef173c1aa0bf556'
+source=("git+${_url}/rtags.git#tag=v${pkgver}"
+        "git+${_url}/rct.git"
+        'git+https://github.com/jeremyong/Selene.git'
+        'git+https://github.com/LuaDist/lua.git'
+        rdm.service
+        rdm.socket
+)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'c2235b4360442d309f14a38cbd7a7cbb2091061cb1d12a827ef173c1aa0bf556'
             '56bf4f3e8208ea142c61ed6f80b4907f15e2bab8d690763cff8fb15f893ad16d')
 
 prepare() {
-  git clone --no-checkout --no-tags --single-branch --branch v${pkgver} \
-    ${url}.git ${pkgname}
-  cd ${pkgname}
-  git checkout -b v${pkgver} v${pkgver}
+  cd "${pkgname}"
   git submodule init
+  git config submodule.src/rct.url "${srcdir}"/rct
+  git config submodule.src/selene.url "${srcdir}"/Selene
+  git config submodule.src/lua.url "${srcdir}"/lua
   git submodule update
 }
 
 build() {
-  cd ${pkgname}
-  msg "Starting to build ${pkgname} v${pkgver}..."
+  cd "${pkgname}"
   cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd ${pkgname}
+  cd "${pkgname}"
   make DESTDIR="${pkgdir}/" install
-  install -D --mode=644 ${srcdir}/rdm.service \
-    ${pkgdir}/usr/lib/systemd/user/rdm.service
-  install -D --mode=644 ${srcdir}/rdm.socket \
-    ${pkgdir}/usr/lib/systemd/user/rdm.socket
+  install -D --mode=644 "${srcdir}"/rdm.service \
+    "${pkgdir}"/usr/lib/systemd/user/rdm.service
+  install -D --mode=644 "${srcdir}"/rdm.socket \
+    "${pkgdir}"/usr/lib/systemd/user/rdm.socket
 
-  cd ${srcdir}/${pkgname}
+  # Remove after https://github.com/Andersbakken/rtags/pull/1213 is
+  # merged and appears in a tagged release
+  cd "${srcdir}/${pkgname}"
   install -D --mode=644 LICENSE.txt \
-    ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
 
 # vim:set ft=sh ts=2 sw=2 et:

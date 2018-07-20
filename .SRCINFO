@@ -1,9 +1,8 @@
 pkgbase = rtags
 	pkgdesc = RTags is a client/server application that indexes C/C++ code
 	pkgver = 2.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Andersbakken/rtags
-	install = rtags.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -16,10 +15,17 @@ pkgbase = rtags
 	optdepends = bash-completion: for bash completion
 	optdepends = zlib
 	optdepends = lua: Lua bindings
-	provides = rtags
 	conflicts = rtags-git
+	source = git+https://github.com/Andersbakken/rtags.git#tag=v2.18
+	source = git+https://github.com/Andersbakken/rct.git
+	source = git+https://github.com/jeremyong/Selene.git
+	source = git+https://github.com/LuaDist/lua.git
 	source = rdm.service
 	source = rdm.socket
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = c2235b4360442d309f14a38cbd7a7cbb2091061cb1d12a827ef173c1aa0bf556
 	sha256sums = 56bf4f3e8208ea142c61ed6f80b4907f15e2bab8d690763cff8fb15f893ad16d
 
