@@ -8,8 +8,8 @@ pkgdesc="Moto is a library to mock out the boto library."
 arch=('any')
 url="https://github.com/spulec/moto"
 license=('Apache')
-depends=('python' 'python-aws-xray-sdk' 'python-boto3' 'python-cookies' 'python-cryptography' 'python-dateutil' 'python-docker' 'python-mock' 'python-pyaml' 'python-requests' 'python-xmltodict' 'python-werkzeug')
-checkdepends=('python-freezegun' 'python-jsondiff' 'python-nose' 'python-responses' 'python-sure' 'python-boto')
+depends=('python' 'python-aws-xray-sdk' 'python-boto' 'python-boto3' 'python-cookies' 'python-cryptography' 'python-dateutil' 'python-docker' 'python-jinja' 'python-jsondiff' 'python-jose' 'python-mock' 'python-pyaml' 'python-requests' 'python-responses' 'python-xmltodict' 'python-werkzeug')
+checkdepends=('python-flask' 'python-freezegun' 'python-nose' 'python-sure' 'tk')
 optdepends=('python-boto')
 makedepends=('python-setuptools')
 source=("https://github.com/spulec/moto/archive/$pkgver.tar.gz")
@@ -22,6 +22,6 @@ package(){
 
 check(){
   cd "$srcdir/$_pkgname-$pkgver"
-  nosetests -sv ./tests/ --exclude='test_iot.*'
+  nosetests -sv ./tests/ --exclude='test_iot.*' --exclude='test_lambda.*'
 }
 # vim:ts=2:sw=2:et:
