@@ -34,7 +34,7 @@ pkgver()
 {
   cd "$srcdir/$_gitname"
   local ver="$(git describe --tags)"
-  ver="${ver%*-}r"
+  ver="${ver#*-}r"
   echo "${ver//-/.}"
 }
 
