@@ -1,17 +1,17 @@
 # Maintainer: David Bittner <bittneradave@gmail.com>
 pkgname='screens'
 pkgver=200818
-pkgrel=2
+pkgrel=3
 pkgdesc="A utility for taking and managing screenshots."
 arch=('x86_64')
 url="https://www.gitlab.com/DavidBittner/screens"
 license=('GPL3')
 depends=('gtk3' 'gtkmm3' 'libpng' 'libx11' 'curl' 'gstreamermm' 'glibmm')
 makedepends=('unzip')
-sha512sums=('06025cdc54b4ed364ef700657370fbf940b7de3c8e5f1852d38d5ed1e89646c2234a53a81cc244ac5335e7ee595bba1bf89a303ea1071d9a4675c9ea8db1b171')
+sha512sums=('0e808b4420894d7d852ad11441d59111968ac9c0822ba6d38c8e8a34c88f5d12f40a037a2f6167618c48d96d8db3a4038163fbdd52d820b54e61d452bd214dad')
 provides=('screens')
 conflicts=('screens')
-source=('https://gitlab.com/davidbittner/Screens/-/jobs/83118491/artifacts/download.zip')
+source=('https://gitlab.com/davidbittner/Screens/-/jobs/83263641/artifacts/download.zip')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
