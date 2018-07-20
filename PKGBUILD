@@ -2,9 +2,9 @@
 
 pkgname=bingopher-git
 pkgver() {
-	git rev-parse HEAD
+	git rev-list HEAD --count
 }
-pkgver=5d4a784dd6886a84173b9ed3eaf5db86b0cb1514
+pkgver=2
 pkgrel=1
 pkgdesc="Converts binary files to Go variables"
 arch=('x86_64' 'i686')

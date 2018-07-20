@@ -1,6 +1,6 @@
 pkgbase = bingopher-git
 	pkgdesc = Converts binary files to Go variables
-	pkgver = 5d4a784dd6886a84173b9ed3eaf5db86b0cb1514
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/lumi-sch/bingopher
 	arch = x86_64
