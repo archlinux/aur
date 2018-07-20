@@ -14,7 +14,7 @@ pkgname=('mythplugins-mytharchive'
          'mythplugins-mythweb'
          'mythplugins-mythzoneminder')
 pkgver=29.1
-pkgrel=3
+pkgrel=4
 epoch=1
 arch=('x86_64')
 url="http://www.mythtv.org"
@@ -26,10 +26,12 @@ makedepends=('dvdauthor' 'dvd+rw-tools' 'ffmpeg' 'libexif' 'mesa-libgl' "mythtv=
              'python2-lxml' 'mysql-python' 'urlgrabber' 'python2-future')
 source=("mythtv-$pkgver.tar.gz::https://github.com/MythTV/mythtv/archive/v$pkgver.tar.gz"
         "mythweb-$pkgver.tar.gz::https://github.com/MythTV/mythweb/archive/v$pkgver.tar.gz"
-        'cdparanoia.patch')
+        'cdparanoia.patch'
+        'mythweb-php_7.2.patch')    # can be removed for v29.2+
 sha256sums=('e40ec8111d39fd059a9ec741b10016683bcc66ee3b33c4cdaab93d60851f5d3e'
             '30583d7c077dbc732053d0ee7b13a46ab3ceaeb0aaa7c8e9744ef6ac959989e8'
-            '004f1e4734830709d2ab5ebb804560514f2bf525abc2f11142501a81eba0754c')
+            '004f1e4734830709d2ab5ebb804560514f2bf525abc2f11142501a81eba0754c'
+            '4246fb007e8fe8a99d5d333498a4b14c70e275afb0e89e665ada6a55d0c3211c')
 
 prepare() {
   cd "$srcdir/mythtv-$pkgver/$pkgbase"
@@ -38,6 +40,7 @@ prepare() {
   patch -Np1 -i "$srcdir/cdparanoia.patch"
 
   cd "$srcdir/mythweb-$pkgver"
+  patch -Np1 -i "$srcdir/mythweb-php_7.2.patch"
 
   sed -re 's@/usr/local.*/usr/share@/usr/share@' -i 'mythweb.php'
 }
