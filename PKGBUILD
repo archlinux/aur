@@ -8,7 +8,7 @@ license=('unknown')
 depends=('ncurses')
 conflicts=('sl')
 source=(http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/sl/sl.tar
-        ftp://ftp.vim.org/vol/4/gentoo/distfiles/sl5-1.patch)
+        https://raw.githubusercontent.com/euank/docker-sl/master/sl5-1.patch)
 md5sums=('cc06b159f78f86bfd2d4e0e16330fbae'
          '97a346188edb4d048021a1e1699fee77')
 
