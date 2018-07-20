@@ -1,13 +1,13 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildstream
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework for modelling build pipelines in a declarative YAML format"
 arch=('any')
 url="https://wiki.gnome.org/Projects/BuildStream/"
 license=('LGPL')
-depends=('bubblewrap' 'ostree' 'python-blessings' 'python-click'
-         'python-jinja' 'python-gobject' 'python-pluginbase'
+depends=('bubblewrap' 'ostree' 'python-blessings' 'python-click' 'python-jinja'
+         'python-gobject' 'python-grpcio' 'python-pluginbase' 'python-protobuf'
          'python-psutil' 'python-ruamel-yaml'
          # specific host site dependencies
          'bzr' 'git' 'lzip' 'python-arpy')
