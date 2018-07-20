@@ -1,12 +1,12 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
 # Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
 
-_commit=5d46e21df66a11233186ddf27ca8c70149307871  # after a bug fix
+_commit=a03d16a850253eae321be4bd2d134a9c6a1ed6ce  # tags/1.42.2^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-pango
-pkgver=1.42.1+4+g5d46e21d
-pkgrel=3
+pkgver=1.42.2
+pkgrel=1
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=('any')
 url="http://www.pango.org"
@@ -35,7 +35,7 @@ prepare() {
   cd "${srcdir}/pango"
 
   # disable help2man when cross building
-  sed -i "s/^if help2man.found()/if help2man.found() and not meson.is_cross_build()/g" pango-view/meson.build
+  sed -i "s/^if help2man.found()/if help2man.found() and not meson.is_cross_build()/g" utils/meson.build
 }
 
 build() {
