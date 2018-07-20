@@ -6,11 +6,11 @@
 # Original PKGBUILD taken wholesale from stylemistake's bitwig-studio package
 # JF added a prepare() to allow side-by-side installation with release version
 
-pkgname='bitwig-studio-beta'
-_pkgname='bitwig-studio'
-pkgver='2.3beta5'
-_pkgver='2.3'
-pkgrel='1'
+pkgname=bitwig-studio-beta
+_pkgname=bitwig-studio
+pkgver=2.4beta1
+_pkgver=2.4
+pkgrel=1
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
 url='https://www.bitwig.com/'
@@ -23,7 +23,7 @@ optdepends=('alsa-lib' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
 options=(!strip)
 source=("https://downloads.bitwig.com/beta/${_pkgver}/bitwig-studio-${pkgver}.deb")
-sha256sums=('254c5b0068c8986bdb219f9014bec0a9696d5e348bf94e440c1af1c97a899343')
+sha256sums=('dfd76888c21daa733e372d100f70e1a7eded6198f29d97b04298319d0808e6f2')
 
 prepare() {
 	msg2 "Unpacking archive contents..."
