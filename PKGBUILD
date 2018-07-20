@@ -1,8 +1,8 @@
 # Maintainer: Enihcam <gmail n a n e r i c w a n g>
 
 pkgname=compute-runtime-bin
-pkgver=18.27.11048
-pkgrel=2
+pkgver=18.28.11080
+pkgrel=1
 pkgdesc='Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond (binary version)'
 arch=(x86_64)
 url='https://github.com/intel/compute-runtime'
@@ -13,7 +13,7 @@ optdepends=(libdrm libva ocl-icd)
 provides=(opencl-driver compute-runtime)
 conflicts=(beignet compute-runtime)
 source=(${url}/releases/download/${pkgver}/intel-opencl_${pkgver}_amd64.deb)
-sha256sums=('5b246684993432c6a2ae26e181b21b2bfcf1887d9ba0c517e3e8e67731c88d5d')
+sha256sums=('c72961416ced4fa7c5fb36e3797e51ca4f1faa89b7f8d8992fce33196a88687d')
 
 package() {
     tar -xJC "${pkgdir}" -f data.tar.xz
