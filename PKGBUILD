@@ -1,14 +1,14 @@
 ##########################################################################
 # Maintainer:   Harsha Kuchampudi <harshakuchampudi AT gmail DOT com>
 # Github:       https://github.com/hkuchampudi/Windscribe
-# Updated:      2018-04-04
+# Updated:      2018-07-19
 ##########################################################################
 
 pkgname=windscribe-cli
-pkgver=1.1
-pkgrel=1
+pkgver=1.2
+pkgrel=9
 pkgdesc="Port of Windscribe's command line interface"
-arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+arch=('x86_64' 'armv6h')
 url="https://windscribe.com/"
 license=('GPL-2+')
 depends=('openvpn')
@@ -16,13 +16,9 @@ optdepends=('stunnel')
 replaces=('windscribe-cli')
 install="windscribe-cli.install"
 source_armv6h=("${pkgname}_${pkgver}_${pkgrel}.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_${pkgver}-${pkgrel}_armhf.deb")
-source_armv7h=("${pkgname}_${pkgver}_${pkgrel}.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_${pkgver}-${pkgrel}_armhf.deb")
-source_i686=("${pkgname}_${pkgver}_${pkgrel}.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_${pkgver}_x86.deb")
-source_x86_64=("${pkgname}_${pkgver}_${pkgrel}.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_${pkgver}_x64.deb")
-sha256sums_armv6h=('2fcf951dab5c70877660c49beb2ce35c7f1b1df47c33caa471ea0cd96f58284c')
-sha256sums_armv7h=('2fcf951dab5c70877660c49beb2ce35c7f1b1df47c33caa471ea0cd96f58284c')
-sha256sums_i686=('049d8cf2231a50e43ed9c68f866219eb9d7604936ac1b9f4fdaeed3dedef4108')
-sha256sums_x86_64=('3639313f36bc16a200ce31e2c2d5c3e4f555189d9ab2d8d6acd376ed33dea180')
+source_x86_64=("${pkgname}_${pkgver}_${pkgrel}.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_${pkgver}-${pkgrel}_amd64.deb")
+sha256sums_armv6h=('b1297791abe067410780aca8dcca821fa8a2ea64925c679e3fc50f46eaec2b1c')
+sha256sums_x86_64=('d59233c25ab5718f85baab15f65b5d25c8455d7f8ed6596cf2d26845e9925289')
 
 package() {
   # Extract the debian package
