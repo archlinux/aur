@@ -6,8 +6,8 @@
 
 pkgname=palemoon-uxp-bin
 pkgver=28.0.0b4
-pkgrel=1
-pkgdesc="Open source web browser based on Firefox focusing on efficiency. Unstable UXP preview"
+pkgrel=2
+pkgdesc="Open source web browser based on Firefox focusing on efficiency. Unstable UXP beta"
 arch=('x86_64')
 url="https://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
