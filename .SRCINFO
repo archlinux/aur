@@ -1,10 +1,10 @@
 pkgbase = browsh-bin
 	pkgdesc = A fully-modern text-based browser, rendering to TTY and browsers
 	pkgver = 1.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brow.sh
 	arch = x86_64
-	license = GPL3
+	license = LGPL2.1
 	depends = firefox>=57
 	provides = browsh
 	conflicts = browsh
