@@ -4,7 +4,7 @@ pkgname=bingopher-git
 pkgver() {
 	date +%Y%m%d%H%M
 	}
-pkgver=201807201702
+pkgver=201807201733
 pkgrel=1
 pkgdesc="Converts binary files to Go variables"
 arch=('x86_64' 'i686')
@@ -27,8 +27,6 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
 
-  mkdir -p "$pkgdir/$GOPATH"
-  cp -Rv --preserve=timestamps "$srcdir/"{src,bin} "$pkgdir/$GOPATH"
 
   # Package license (if available)
   for f in LICENSE COPYING LICENSE.* COPYING.*; do
@@ -39,4 +37,3 @@ package() {
   done
 }
 
-# vim:set ts=2 sw=2 et:
