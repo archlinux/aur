@@ -1,7 +1,7 @@
 # Maintainer: Félix "passcod" Saparelli <felix @ passcod . name>
 # Contributor: Alex "grevus" Lobtsov <alex@lobtsov.com>
 pkgname=php-gearman
-pkgver=2.0.3
+pkgver=2.0.5
 pkgrel=4
 pkgdesc="PHP wrapper to libgearman"
 url="https://github.com/wcgallego/pecl-gearman"
@@ -11,7 +11,7 @@ depends=('php' 'gearman')
 backup=('etc/php/conf.d/gearman.ini')
 
 source=("https://github.com/wcgallego/pecl-gearman/archive/gearman-${pkgver}.tar.gz")
-sha512sums=('d9a390d34c54f6a922a6b21a6b8a0412cbc4986f27012d52b0e6dc55d6db502e7c097472a81c0219c0b7f8075af5baa742b4dae6971bbf3cedc9e5fc5eb93cfd')
+sha512sums=('f8b8f8291423a37263a0d3bf7a702d0bb9c8f3d18922388af71ac710db7dcd1755c9d143364c1427b584a3852dfccba254468c9df9cadbc1249c9c7e52510353')
 
 build() {
   cd "${srcdir}/pecl-gearman-gearman-${pkgver}"
