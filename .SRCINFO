@@ -1,7 +1,7 @@
 pkgbase = methuselah-qt
 	pkgdesc = Cryptocurrency wallet(QT)
-	pkgver = 1.0.1
-	pkgrel = 1
+	pkgver = 1.1.0
+	pkgrel = 2
 	url = https://methuselahcoin.io/
 	install = methuselah-qt.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = methuselah-qt
 	depends = protobuf
 	depends = libevent
 	conflicts = methuselah
-	source = methuselah-qt::git+http://github.com/methuselah-coin/methuselah.git
+	source = methuselah-qt::git+http://github.com/methuselah-coin/methuselah.git#tag=v1.1.0.2
 	source = methuselah-qt.desktop
 	sha256sums = SKIP
 	sha256sums = 506ed6d06a242611f79055413136a4a684da7ad788c3555b482e37f013590ee5
