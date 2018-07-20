@@ -2,7 +2,7 @@
 
 pkgname='webvirtmgr-git'
 pkgdesc='Web front-end for KVM virtual machines'
-pkgver=v4.8.9.r23.g0935747
+pkgver=v4.8.9.r25.g86bb20f
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://www.webvirtmgr.net/'
