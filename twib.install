@@ -1,0 +1,11 @@
+post_install() {
+    echo "enabling twibd.socket unit..."
+    systemctl enable --now twibd.socket
+}
+
+
+pre_remove() {
+    echo "disabling twibd units"
+    systemctl disable --now twibd.socket
+    systemctl disable --now twibd.service
+}

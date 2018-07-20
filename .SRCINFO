@@ -1,0 +1,20 @@
+pkgbase = twib-git
+	pkgdesc = Twili debug monitor bridge client and daemon
+	pkgver = r75.ea97589
+	pkgrel = 1
+	url = https://github.com/misson20000/twili
+	install = twib.install
+	arch = any
+	license = ISC
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	depends = libusb
+	depends = systemd
+	provides = twib
+	source = git+https://github.com/misson20000/twili.git
+	md5sums = SKIP
+
+pkgname = twib-git
+
