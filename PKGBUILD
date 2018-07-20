@@ -1,4 +1,5 @@
-# Maintainer: <tmoore01 (at) gmail (dot) com>
+# Maintainer: Silvio Fricke <silvio.fricke@gmail.com>
+# Contributor: <tmoore01 (at) gmail (dot) com>
 
 _pkgname=evolution
 pkgname=$_pkgname-git
