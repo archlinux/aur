@@ -8,7 +8,8 @@ arch=('x86_64')
 url='https://github.com/elementary/wingpanel-indicator-network'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libnm-glib' 'nm-connection-editor'
+depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libnm-glib' 'networkmanager'
+         'nm-connection-editor'
          'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('cmake' 'git' 'granite-git' 'vala' 'wingpanel-git')
 provides=('wingpanel-indicator-network')
