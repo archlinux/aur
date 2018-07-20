@@ -1,0 +1,16 @@
+pkgbase = ecap_clamav-adapter
+	pkgdesc = The eCAP ClamAV adapter allows the host application to check messages for viruses and other malicious content using a well-known ClamAV(R) antivirus engine. Unlike sample eCAP adapters, the ClamAV adapter is meant for production use
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = http://www.e-cap.org/archive/ecap_clamav_adapter-2.0.0.tar.gz
+	arch = x86_64
+	license = GPL
+	depends = libecap
+	depends = clamav
+	provides = ecap_clamav-adapter
+	conflicts = ecap_clamav-adapter
+	source = ecap_clamav-adapter::http://www.e-cap.org/archive/ecap_clamav_adapter-2.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ecap_clamav-adapter
+
