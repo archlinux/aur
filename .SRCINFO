@@ -1,6 +1,6 @@
 pkgbase = autosuspend
-	pkgdesc = A daemon to suspend your server in case of inactivity
-	pkgver = 1.1.0
+	pkgdesc = A daemon to suspend and wake up a system based on configurable checks
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/languitar/autosuspend
 	install = autosuspend.install
@@ -10,17 +10,24 @@ pkgbase = autosuspend
 	makedepends = python-pytest-runner
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-issues
 	depends = python
 	depends = python-psutil
 	optdepends = python-dbus: logind session discovery
 	optdepends = python-mpd2: MPD playing status check
-	optdepends = python-requests: Kodi playing status and XPath check
+	optdepends = python-requests: network-based checks
 	optdepends = python-lxml: XPath check
+	optdepends = python-dbus: logind-based checks
+	optdepends = python-icalendar: iCalendar checks
+	optdepends = python-dateutil: iCalendar checks
+	optdepends = python-tzlocal: iCalendar checks
+	optdepends = python-requests-file: file:// URL support
+	optdepends = iputils: ping check
 	optdepends = xprintidle: X server idle time check
 	backup = etc/autosuspend.conf
 	backup = etc/autosuspend-logging.conf
-	source = https://github.com/languitar/autosuspend/archive/v1.1.0.tar.gz
-	sha256sums = 2d6dc969e020e69eb372df99ad24d4c15dda72b5d5717c368727f5cc3cab211b
+	source = https://github.com/languitar/autosuspend/archive/v2.0.1.tar.gz
+	sha256sums = 5ca2a7b9ad06b8d6c714127239c2f1dc46c1b50d3977a89e4d55c42d4e03ee23
 
 pkgname = autosuspend
 
