@@ -1,11 +1,11 @@
-diff -rupN oci-cli-2.4.27/setup.py oci-cli-2.4.27b/setup.py
---- oci-cli-2.4.27/setup.py	2018-06-29 03:00:53.000000000 -0400
-+++ oci-cli-2.4.27b/setup.py	2018-07-01 13:48:45.279560058 -0400
+diff -rupN oci-cli-2.4.28/setup.py oci-cli-2.4.28b/setup.py
+--- oci-cli-2.4.28/setup.py	2018-07-12 14:27:35.000000000 -0400
++++ oci-cli-2.4.28b/setup.py	2018-07-19 20:15:46.429407584 -0400
 @@ -30,22 +30,21 @@ with open_relative("README.rst") as f:
  
  
  requires = [
--    'oci==1.4.4',
+-    'oci==1.4.5',
 -    'arrow==0.10.0',
 +    'oci',
 +    'arrow',
