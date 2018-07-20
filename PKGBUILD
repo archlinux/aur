@@ -1,14 +1,26 @@
-# Maintainer: Yosef Or Boczko <yoseforb@gnome.org>
+# Maintainer: Silvio Fricke <silvio.fricke@gmail.com>
+# Contributor: Yosef Or Boczko <yoseforb@gnome.org>
 
 _pkgname=evolution-data-server
 pkgname=$_pkgname-git
-pkgver=3.17.2.r17.g3a99564
+pkgver=3.29.4.r008.gff1af187f
 pkgrel=1
 _realver=3.17.3
 pkgdesc="Centralized access to appointments and contacts"
 arch=(i686 x86_64)
-depends=(gnome-online-accounts nss krb5 libgweather libical db libgdata)
-makedepends=(intltool gperf gobject-introspection vala gtk-doc gnome-common)
+depends=(libgdata
+         libgweather
+         libical
+         libphonenumber
+         libsignon-glib
+         )
+makedepends=(gnome-common
+             gobject-introspection
+             gperf
+             gtk-doc
+             intltool
+             vala
+             )
 install=$_pkgname.install
 url="https://wiki.gnome.org/Apps/Evolution"
 license=(GPL)
@@ -19,24 +31,30 @@ source=('git://git.gnome.org/evolution-data-server')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --always | sed -E 's/^EVOLUTION_DATA_SERVER_//;s/_/./g;s/([^-]*-g)/r\1/;s|-|.|g'
+        cd "$srcdir/$_pkgname"
+        git describe --long | awk -F '-' '/-/{ printf "%s.r%3.3d.%s\n", $1, $2, $3 }'
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --with-openldap=yes \
-      --libexecdir=/usr/lib/evolution-data-server \
-      --with-krb5=/usr --with-libdb=/usr \
-      --enable-vala-bindings --disable-uoa \
-      --enable-gtk-doc
+        cd "$srcdir/$_pkgname"
 
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
-  make
+        [ ! -d build ] && mkdir build
+        cd build
+
+        cmake .. -G Ninja \
+                -DCMAKE_INSTALL_PREFIX=/usr \
+                -DLIBEXEC_INSTALL_DIR=/usr/lib \
+                -DSYSCONF_INSTALL_DIR=/etc \
+                -DENABLE_GTK_DOC=ON \
+                -DENABLE_INTROSPECTION=ON \
+                -DENABLE_UOA=OFF \
+                -DENABLE_VALA_BINDINGS=ON \
+                -DWITH_PHONENUMBER=ON \
+
+        ninja
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir" install
+        cd "$srcdir/$_pkgname/build"
+        DESTDIR="$pkgdir" ninja install
 }
