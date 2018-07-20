@@ -1,14 +1,15 @@
 pkgbase = fann
 	pkgdesc = Fast artificial neural network library
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://leenissen.dk/fann/
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = cmake
-	source = http://downloads.sourceforge.net/sourceforge/fann/FANN-2.2.0-Source.zip
-	md5sums = 292d914684c9eab1d84eb1f59b0fbf69
+	conflicts = fann-git
+	source = fann-2.2.0.tar.gz::https://github.com/libfann/fann/archive/2.2.0.tar.gz
+	sha256sums = f31c92c1589996f97d855939b37293478ac03d24b4e1c08ff21e0bd093449c3c
 
 pkgname = fann
 
