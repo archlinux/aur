@@ -1,0 +1,16 @@
+pkgbase = xamarin-android
+	pkgdesc = Xamarin android build from jenkins.mono-project
+	pkgver = 8.3.99.189
+	pkgrel = 3
+	url = https://github.com/xamarin/xamarin-android
+	arch = x86_64
+	license = MIT
+	depends = mono>=5.0.0,libzip
+	provides = xamarin-android
+	conflicts = xamarin-android
+	options = !strip
+	source = xamarin.android-oss_8.3.99.189.deb::https://jenkins.mono-project.com/view/Xamarin.Android/job/xamarin-android-linux/lastSuccessfulBuild/Azure/processDownloadRequest/xamarin-android/xamarin.android-oss_8.3.99.189_amd64.deb
+	sha256sums = 5f829f497741ceccca069449d5c53aed2b6c283260aaa6a725c691eb7c7c5e02
+
+pkgname = xamarin-android
+
