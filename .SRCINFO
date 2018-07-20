@@ -1,0 +1,16 @@
+pkgbase = buildbot-worker-git
+	pkgdesc = Buildbot Worker Daemon
+	pkgver = 1.2.0.r45.gc9d5f87a3
+	pkgrel = 1
+	url = https://buildbot.net
+	arch = any
+	license = GPL
+	checkdepends = python-mock
+	makedepends = git
+	depends = python-twisted
+	depends = python-future
+	source = git+https://github.com/buildbot/buildbot.git
+	sha256sums = SKIP
+
+pkgname = buildbot-worker-git
+
