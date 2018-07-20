@@ -2,14 +2,14 @@
 
 pkgname='qt-online-installer'
 _pkgname='qt-online-installer'
-pkgver=r2.a1f624d
+pkgver=r3.a30eeec
 _pkgverminor=3.0.5
 pkgrel=1
 pkgdesc="Qt Online Installer for the optimal Qt installation experience."
 arch=('x86_64')
 url="https://www.qt.io/download"
 license=('GPL-3.0')
-source=("http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run"
+source=("qt-unified-linux-x64-online.run"#"http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run"
         "qt-online-installer.desktop"
         "qt-online-installer.svg") 
 #"/mnt/D/Document/WorkSpace/Packages/AUR/qt-online-installer/sources.tar.gz"  #"http://ftp.jaist.ac.jp/pub/qtproject/archive/online_installers/${pkgver}/qt-unified-linux-x64-$_pkgverminor-online.run")
@@ -35,9 +35,9 @@ package() {
     _pkg=linux-x32
   fi
 
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/share/icons" 
+#   install -d "${pkgdir}/usr/bin"
+#   install -d "${pkgdir}/usr/share/applications"
+#   install -d "${pkgdir}/usr/share/icons" 
 
 #   cp -r "${srcdir}/${_pkg}/"* "${pkgdir}/opt/${_pkgname}" -R
 #   cp $srcdir/QEELauncher.sh ${pkgdir}/opt/${_pkgname}
@@ -46,8 +46,8 @@ package() {
 
   # ln -s /opt/${pkgname}/MyQxEntityEditorLauncher.sh "${pkgdir}"/usr/bin/MyQxEntityEditorLauncher.sh
   install -Dm644 ${srcdir}/qt-unified-linux-x64-online.run ${pkgdir}/usr/bin/qt-unified-linux-x64-online.run
-  install -Dm755 ${srcdir}/${pkgname}.svg ${pkgdir}/usr/share/icons/${pkgname}.svg
-  install -Dm755 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  install -Dm644 ${srcdir}/${pkgname}.svg ${pkgdir}/usr/share/icons/${pkgname}.svg
+  install -Dm644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
   chmod +x ${pkgdir}/usr/bin/qt-unified-linux-x64-online.run
 }

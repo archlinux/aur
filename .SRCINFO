@@ -1,11 +1,11 @@
 pkgbase = qt-online-installer
 	pkgdesc = Qt Online Installer for the optimal Qt installation experience.
-	pkgver = r2.a1f624d
+	pkgver = r3.a30eeec
 	pkgrel = 1
 	url = https://www.qt.io/download
 	arch = x86_64
 	license = GPL-3.0
-	source = http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run
+	source = qt-unified-linux-x64-online.run#http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run
 	source = qt-online-installer.desktop
 	source = qt-online-installer.svg
 	sha256sums = 3926eff634f7a798bd8f7f8a3625d8e9db8179e7efaf4c59eeff9f1eae7e95f5
