@@ -2,7 +2,7 @@
 
 pkgname=('acpilight-git')
 _pkgname='acpilight'
-pkgver=v1.0.r3.g3827fdf
+pkgver=v1.1.r9.gf54865e
 pkgrel=1
 pkgdesc='A backward-compatibile xbacklight replacement'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python')
 makedepends=('git')
 provides=("${pkgname[0]}")
-conflicts=("${_pkgname}", 'xorg-xbacklight')
+conflicts=("${_pkgname}" 'xorg-xbacklight')
 install="${pkgname}.install"
 
 source=("${_pkgname}::git+${url}.git")
