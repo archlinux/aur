@@ -5,7 +5,7 @@
 # Contributor: sumt <sumt at sci dot fi>
 
 pkgname=palemoon-uxp-bin
-pkgver=28.0.0b3
+pkgver=28.0.0b4
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency. Unstable UXP preview"
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('palemoon')
 options=('!strip')
 source=("https://linux.palemoon.org/datastore/release/palemoon-unstable-latest.linux-x86_64.tar.bz2"
         palemoon.desktop)
-sha256sums=('1ed531dc3850cb0550f782d58872cfb3e4565e286f418b2d0ed1d72cd317729a'
+sha256sums=('cbdfdf6639d895b6de0c07800ecdc0cc1679b09791eab3ee2f6a7afe427843c7'
             'c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e')
 
 package() {
