@@ -2,7 +2,7 @@
 
 _pkgname=indy-plenum
 pkgname=hyperledger-${_pkgname}
-pkgver=1.4.443
+pkgver=1.5.467
 pkgrel=1
 pkgdesc="The heart of the distributed ledger technology inside Hyperledger Indy"
 arch=(i686 x86_64)
@@ -20,4 +20,4 @@ package() {
 	python setup.py install -O1 --root="$pkgdir"
 }
 
-md5sums=('860aea08419029746fba6f251241f4ce')
+md5sums=('e47da7aa78e4be634dcfb4837db78c25')
