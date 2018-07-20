@@ -1,6 +1,6 @@
-# Maintainer: Ariel AxionL <axionl@aosc.io>
+# Maintainer: axionl <axionl@aosc.io>
 pkgname=baidupcs-go-git
-pkgver=r298.1724aa2
+pkgver=r306.c38fa87
 pkgrel=1
 pkgdesc="The terminal utility for Baidu Network Disk (Golang Version)."
 arch=('x86_64')
