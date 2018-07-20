@@ -9,6 +9,7 @@ arch=('any')
 url="http://sequel.jeremyevans.net"
 license=('MIT')
 depends=('ruby')
+makedepends=('ruby-rdoc')
 optdepends=('ruby-sqlite3: SQLite support')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
 noextract=("${pkgname#*-}-${pkgver}.gem")
