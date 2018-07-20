@@ -14,11 +14,13 @@ pkgbase = retro-graphics-toolkit
 	source = lua-Makefile.patch
 	source = retro-graphics-toolkit.desktop
 	source = retro-graphics-toolkit.png
+	source = RetroGraphicsToolkit.sh
 	md5sums = a71b4960dabbdafb1bd5f7baacc21317
 	md5sums = 4f4b4f323fd3514a68e0ab3da8ce3455
 	md5sums = 2cb035965ad4c8b82ffc4235ef98855b
 	md5sums = 40d2bcd7d7ad3de6f67b29b28935ec57
 	md5sums = 272d6ba5c03ec6e688bb7312abb88568
+	md5sums = 0b1b08ffcbddd6400a07ce3a3fbc0172
 
 pkgname = retro-graphics-toolkit
 
