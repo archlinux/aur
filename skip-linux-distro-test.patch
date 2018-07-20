@@ -1,0 +1,9 @@
+diff --git a/master/buildbot/test/unit/test_buildbot_net_usage_data.py b/master/buildbot/test/unit/test_buildbot_net_usage_data.py
+index 709c804a9..7885d1bcd 100644
+--- a/master/buildbot/test/unit/test_buildbot_net_usage_data.py
++++ b/master/buildbot/test/unit/test_buildbot_net_usage_data.py
+@@ -153,4 +153,3 @@ class Tests(unittest.TestCase):
+         distro = linux_distribution()
+         self.assertEqual(len(distro), 2)
+         self.assertNotIn("unknown", distro[0])
+-        self.assertNotIn("unknown", distro[1])

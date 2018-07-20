@@ -1,24 +1,22 @@
 pkgbase = buildbot-git
-	pkgver = 1.2.0.r40.g16dff07ce
-	pkgrel = 1
+	pkgdesc = The Continuous Integration Framework
+	pkgver = 1.2.0.r43.g55fc75395
+	pkgrel = 3
 	url = https://buildbot.net
 	arch = any
 	license = GPL
+	checkdepends = python-treq
+	checkdepends = python-boto3
+	checkdepends = python-mock
+	checkdepends = python-moto
+	checkdepends = python-lz4
+	checkdepends = python-isort
+	checkdepends = python-pylint
+	checkdepends = python-pyenchant
+	checkdepends = flake8
+	checkdepends = buildbot-pkg-git=1.2.0.r43.g55fc75395
+	checkdepends = buildbot-worker-git=1.2.0.r43.g55fc75395
 	makedepends = git
-	makedepends = python-twisted
-	makedepends = python-jinja
-	makedepends = python-zope-interface
-	makedepends = python-future
-	makedepends = python-sqlalchemy-migrate
-	makedepends = python-dateutil
-	makedepends = python-txaio
-	makedepends = python-autobahn
-	makedepends = python-pyjwt
-	source = git+https://github.com/buildbot/buildbot.git
-	sha256sums = SKIP
-
-pkgname = buildbot-git
-	pkgdesc = The Continuous Integration Framework
 	depends = python-twisted
 	depends = python-jinja
 	depends = python-zope-interface
@@ -28,9 +26,12 @@ pkgname = buildbot-git
 	depends = python-txaio
 	depends = python-autobahn
 	depends = python-pyjwt
+	source = git+https://github.com/buildbot/buildbot.git
+	source = ignore-invalid-escape-sequence.patch
+	source = skip-linux-distro-test.patch
+	sha256sums = SKIP
+	sha256sums = eb85942f5d9f43ed46c8832f318314084dcde2e53f698bf104af28c3a449ef1f
+	sha256sums = 42fc2a771034c4134006ed18b52916e668aba3e2046b2fe188c7abcb3cffc0a5
 
-pkgname = buildbot-worker-git
-	pkgdesc = Buildbot Worker Daemon
-	depends = python-twisted
-	depends = python-future
+pkgname = buildbot-git
 
