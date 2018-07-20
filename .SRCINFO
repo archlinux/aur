@@ -15,15 +15,15 @@ pkgbase = linux-amd-staging-drm-next-git
 	options = !strip
 	source = linux-amd-staging-drm-next-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-staging-drm-next
 	source = config.x86_64
-	source = 90-linux.hook
+	source = linux.install
 	source = linux-amd-staging-drm-next-git.preset
 	sha256sums = SKIP
 	sha256sums = 103da034999058c505479d129ad2446821c748a5cef7f065d5770c89a81f0e98
-	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
+	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-amd-staging-drm-next-git
-	pkgdesc = The Linux kernel and modules (git version) with patches from AMD
+	pkgdesc = The Linux kernel and modules with AMDGPU DC patches
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
@@ -34,10 +34,10 @@ pkgname = linux-amd-staging-drm-next-git
 	backup = etc/mkinitcpio.d/linux-amd-staging-drm-next-git.preset
 
 pkgname = linux-amd-staging-drm-next-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux kernel (git version) with patches from AMD
+	pkgdesc = Header files and scripts for building modules for Linux kernel with AMDGPU DC patches
 	provides = linux-headers
 
 pkgname = linux-amd-staging-drm-next-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version) with patches from AMD
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel with AMDGPU DC patches
 	provides = linux-docs
 

@@ -1,11 +1,16 @@
 # Maintainer: Yurii Kolesnykov <yurikoles@gmail.com>
-# Contributor: Brad McCormack <bradmccormack100@gmail.com>
+# Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
+# Contributor: Jonathan Chan <jyc@fastmail.fm>
+# Contributor: misc <tastky@gmail.com>
+# Contributor: NextHendrix <cjones12 at sheffield.ac.uk>
+# Contributor: Shun Terabayashi <shunonymous at gmail.com>
+# Contributor: Brad McCormack <bradmccormack100 at gmail.com>
 
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
-_srcname=${pkgbase}
+_srcname=$pkgbase
 _kernel_rel=4.19
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
@@ -17,20 +22,19 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
-        # The main kernel config files
+        # the main kernel config files
         'config.x86_64'
-        # Pacman hook for initramfs regeneration
-        '90-linux.hook'
-        # Standard config files for mkinitcpio ramdisk
+        # standard config files for mkinitcpio ramdisk
+        'linux.install'
         "${pkgbase}.preset")
+
 sha256sums=('SKIP'
             '103da034999058c505479d129ad2446821c748a5cef7f065d5770c89a81f0e98'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
-  cd "${_srcname}" || exit
+  cd "${_srcname}"
 
-  # git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
   echo ${_kernel_rel}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
@@ -47,8 +51,6 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   # get kernel version
-  sed -i 's|snprintf(buf, buflen, "INTERNAL ERROR: strerror_r(%d, %p, %zd)=%d", errnum, buf, buflen, err)|snprintf(buf, buflen, "INTERNAL ERROR: strerror_r(%d, [buf], %zd)=%d", errnum, buflen, err)|g' tools/lib/str_error_r.c
-
   make prepare
 
   # load configuration
@@ -68,7 +70,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules (git version) with patches from AMD"
+  pkgdesc="The Linux kernel and modules with AMDGPU DC patches"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('linux')
@@ -123,14 +125,14 @@ _package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 
   # add System.map
   install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Linux kernel (git version) with patches from AMD"
+  pkgdesc="Header files and scripts for building modules for Linux kernel with AMDGPU DC patches"
   provides=('linux-headers')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
@@ -242,7 +244,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version) with patches from AMD"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel with AMDGPU DC patches"
   provides=('linux-docs')
 
   cd "${_srcname}"
