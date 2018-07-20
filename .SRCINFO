@@ -1,6 +1,6 @@
 pkgbase = aurto
 	pkgdesc = A simple aur tool for managing a local 'aurto' repository
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/alexheretic/aurto
 	install = aurto.install
@@ -16,8 +16,8 @@ pkgbase = aurto
 	depends = sudo
 	backup = usr/lib/systemd/system/check-aurto-git-trigger.timer
 	backup = usr/lib/systemd/system/update-aurto.timer
-	source = https://github.com/alexheretic/aurto/archive/v0.7.3.tar.gz
-	sha256sums = 7334576e841f1ead46a619e44a71788a1d1f5f41c1449aa493913ea05a7211f7
+	source = https://github.com/alexheretic/aurto/archive/v0.7.4.tar.gz
+	sha256sums = 115fcdf6bf6d6a522dc32ba999481e6ed21ce15b5f02fba1410b2ba35fd93506
 
 pkgname = aurto
 
