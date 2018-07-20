@@ -1,7 +1,7 @@
 pkgbase = intel-media-stack-bin
 	pkgdesc = Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libdrm.
 	pkgver = 2018.Q2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Intel-Media-SDK/MediaSDK/
 	install = intel-media-stack-bin.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = intel-media-stack-bin
 	depends = libx11
 	depends = libxext
 	depends = libxfixes
+	depends = ocl-icd
 	provides = intel-media-sdk
 	provides = libmfx
 	provides = intel-media-driver
