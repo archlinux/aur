@@ -31,9 +31,9 @@ prepare(){
 package(){
 	_pianoteq_type="Pianoteq 6 STAGE"
 	# Define architecture specific file directory:
- 	 if [[ "$CARCH" == i686 ]]; then
+	if [[ "$CARCH" == i686 ]]; then
 		archdir=i386
- 	else
+	else
 		archdir=amd64
 	fi
 	# Install program files:
@@ -42,19 +42,19 @@ package(){
 	cd "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.lv2"
 	for i in *; do
 		install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 6.lv2/$i"
-  	done
-  	cd $srcdir
+	done
+	cd $srcdir
 	# Install desktop launcher:
-  	install -Dm 644 "$srcdir/pianoteq_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  	install -Dm 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
+	install -Dm 644 "$srcdir/pianoteq_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
 	# Install the license:
-  	install -d "$pkgdir/usr/share/licenses/$pkgname"
+	install -d "$pkgdir/usr/share/licenses/$pkgname"
 	ls -a
 	install -m 644 "$_pianoteq_type"/*Licence* "$pkgdir/usr/share/licenses/$pkgname/"
-  	# Install the Documentation:
-  	install -D "$_pianoteq_type/README_LINUX.txt" "$pkgdir/usr/share/doc/${pkgname%-*}/README_LINUX.txt"
-  	cd "$srcdir/$_pianoteq_type/Documentation"
-  	for i in *; do
-    		install -D "$i" "$pkgdir/usr/share/doc/${pkgname%-*}/$i"
-  	done
+	# Install the Documentation:
+	install -D "$_pianoteq_type/README_LINUX.txt" "$pkgdir/usr/share/doc/${pkgname%-*}/README_LINUX.txt"
+	cd "$srcdir/$_pianoteq_type/Documentation"
+	for i in *; do
+		install -D "$i" "$pkgdir/usr/share/doc/${pkgname%-*}/$i"
+	done
 }
