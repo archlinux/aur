@@ -19,7 +19,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -172,7 +172,7 @@ build() {
     --enable-libtwolame \
     --enable-libv4l2 \
     --enable-libvidstab \
-    --enable-libvmaf \
+    --disable-libvmaf \
     --enable-libvo-amrwbenc \
     --enable-libvorbis \
     --enable-libvpx \
