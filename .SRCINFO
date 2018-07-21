@@ -1,0 +1,17 @@
+pkgbase = squidclamav
+	pkgdesc = SquidClamav is the most efficient Squid Redirector and ICAP service antivirus tool for HTTP traffic available for free
+	pkgver = 6.16
+	pkgrel = 6
+	url = https://github.com/darold/squidclamav.git
+	arch = x86_64
+	license = GPL
+	depends = c-icap
+	depends = clamav
+	depends = squid4
+	provides = squidclamav
+	conflicts = squidclamav
+	source = squidclamav::git+https://github.com/darold/squidclamav.git
+	sha256sums = SKIP
+
+pkgname = squidclamav
+
