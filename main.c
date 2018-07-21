@@ -1,5 +1,5 @@
 #include "portfolio.h"
-#include "info.h"
+#include "curses_win.h"
 #include "gtk_win.h"
 
 int main(int argc, char* argv[]) {

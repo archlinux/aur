@@ -22,7 +22,7 @@
 #include <curl/curl.h>
 #include <json-c/json_tokener.h>
 #include <pthread.h>
-#include "string-tick.h"
+#include "utils.h"
 
 typedef struct news_article {
     char headline[INFO_TEXT_MAX];

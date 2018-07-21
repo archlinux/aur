@@ -10,7 +10,8 @@
 #include <ncurses.h>
 #include <json-c/json_tokener.h>
 #include <unistd.h>
-#include "string-tick.h"
+#include "utils.h"
+#include "portfolio.h"
 
 /**
  * Returns a password string taken from user input with a maximum of 32 characters. The user's input

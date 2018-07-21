@@ -1,4 +1,4 @@
-#include "string-tick.h"
+#include "utils.h"
 
 String* string_init(void) {
     String* pString = (String*) malloc(sizeof(String));

@@ -1,4 +1,4 @@
-#include "info.h"
+#include "curses_win.h"
 
 int zoom_months[] = {60, 48, 36, 24, 12, 9, 6, 3, 1}, zoom_change_x_months[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
 

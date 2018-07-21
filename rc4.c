@@ -1,5 +1,4 @@
 #include "rc4.h"
-#include "portfolio.h"
 
 char* rc4_ncurses_get_password(void) {
     unsigned char* pass = malloc(PASS_MAX + 1);
