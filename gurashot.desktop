@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Gura Shot
+Comment=ID photo creation tool
+Exec=gurashot
+Icon=gurashot
+Terminal=false
+Categories=Graphics
