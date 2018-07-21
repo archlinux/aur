@@ -1,7 +1,8 @@
+# Maintainer: Bert Peters <bert@bertptrs.nl>
 # Maintainer: wedjat <wedjat@protonmail.com>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=python-pydicom
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Pure python package for working with DICOM files"
 arch=("x86_64")
@@ -12,9 +13,8 @@ makedepends=('python-setuptools')
 optdepends=()
 options=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pydicom/pydicom/archive/v$pkgver.tar.gz" "file://license.txt")
-md5sums=('f6381a6a82b8bd8ac6558db2042c8ebb'
+md5sums=('759799fbe1d01d1daadeca649717122b'
          'dee3b5d8029934bd8195cd244b966055')
-
 prepare() 
 {
 	cd "$srcdir/pydicom-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = python-pydicom
 	pkgdesc = Pure python package for working with DICOM files
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://pydicom.github.io/pydicom/stable/index.html
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = python-pydicom
 	makedepends = python-setuptools
 	depends = python
 	depends = python-numpy
-	source = python-pydicom-1.0.2.tar.gz::https://github.com/pydicom/pydicom/archive/v1.0.2.tar.gz
+	source = python-pydicom-1.1.0.tar.gz::https://github.com/pydicom/pydicom/archive/v1.1.0.tar.gz
 	source = file://license.txt
-	md5sums = f6381a6a82b8bd8ac6558db2042c8ebb
+	md5sums = 759799fbe1d01d1daadeca649717122b
 	md5sums = dee3b5d8029934bd8195cd244b966055
 
 pkgname = python-pydicom
