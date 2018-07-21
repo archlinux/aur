@@ -5,7 +5,7 @@ pkgver=${_pkgver//[+-]/_}
 pkgrel=3
 pkgdesc="Xamarin android build from jenkins.mono-project"
 arch=('x86_64')
-depends=('mono>=5.0.0','libzip')
+depends=('mono>=5.0.0''libzip')
 options=(!strip)
 provides=('xamarin-android')
 conflicts=('xamarin-android')
@@ -19,4 +19,5 @@ package() {
     bsdtar xf data.tar.xz
     chmod -R g-w usr
     mv usr "${pkgdir}"
+    
 }
