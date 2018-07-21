@@ -1,6 +1,6 @@
-pkgbase = nautilus-legacy
+pkgbase = nautilus
 	pkgdesc = Default file manager for GNOME: legacy version (3.26 series)
-	pkgver = 3.26.3.1
+	pkgver = 3.26.4
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Nautilus
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = nautilus-legacy
 	depends = nautilus-sendto
 	depends = gnome-autoar
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/nautilus.git#tag=3.26.3.1
+	source = git+https://gitlab.gnome.org/GNOME/nautilus.git#tag=3.26.4
 	source = git+https://git.gnome.org/browse/libgd
 	source = 0001-rename-file-popover-controller-Don-t-destroy-the-pop.patch
 	sha256sums = SKIP

@@ -1,8 +1,8 @@
 # Maintainer: Stefano Capitani <stefano@manjaro.org>
 
-_pkgbase=nautilus
-pkgname=(nautilus-legacy) #libnautilus-extension-legacy not used now but we can re use in the future
-pkgver=3.26.3.1
+pkgbase=nautilus
+pkgname=(nautilus-legacy) #libnautilus-extension-legacy pushed out we see if needed
+pkgver=3.26.4
 pkgrel=1
 pkgdesc="Default file manager for GNOME: legacy version (3.26 series)"
 url="https://wiki.gnome.org/Apps/Nautilus"
@@ -12,7 +12,7 @@ depends=(libexif gnome-desktop exempi gvfs dconf tracker nautilus-sendto gnome-a
 makedepends=(gobject-introspection packagekit git gtk-doc meson)
 options=(!emptydirs)
 #_commit=51637bc0960002b811e1c0c7be8671cf9a1cc5be  # tags/3.26.2^0
-source=("git+https://gitlab.gnome.org/GNOME/nautilus.git#tag=3.26.3.1"
+source=("git+https://gitlab.gnome.org/GNOME/nautilus.git#tag=3.26.4"
         "git+https://git.gnome.org/browse/libgd"
         0001-rename-file-popover-controller-Don-t-destroy-the-pop.patch)
 sha256sums=('SKIP'
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 prepare() {
   mkdir -p build libne/usr/{lib,share}
-  cd $_pkgbase
+  cd $pkgbase
 
   # https://gitlab.gnome.org/GNOME/nautilus/issues/25
   git cherry-pick -n d74e1a3d 9238456b
@@ -35,13 +35,13 @@ prepare() {
 }
 
 pkgver() {
-  cd $_pkgbase
+  cd $pkgbase
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
   cd build
-  arch-meson ../$_pkgbase  \
+  arch-meson ../$pkgbase  \
     -Denable-exif=true \
     -Denable-xmp=true \
     -Denable-gtk-doc=true \
@@ -64,6 +64,8 @@ package_nautilus-legacy() {
   mv "$pkgdir"/usr/lib/{girepository-1.0,libnautilus-extension*,pkgconfig} usr/lib
   mv "$pkgdir"/usr/share/{gir-1.0,gtk-doc} usr/share
 }
+
+#Moved out we will see 
 
 #package_libnautilus-extension-legacy() {
 #  pkgdesc="Library for extending the $pkgdesc"
