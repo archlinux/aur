@@ -1,0 +1,34 @@
+diff --git a/src/build-modules.gura b/src/build-modules.gura
+index 510c0bfc5..c1f4fea74 100755
+--- a/src/build-modules.gura
++++ b/src/build-modules.gura
+@@ -37,8 +37,8 @@ moduleInfos = @(ModuleInfo) {
+ 	['markdown',		`build,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]
+ 	['math',			`skip,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]	// integrated
+ 	['midi',			`build,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]
+-	['ml_linear',		`build,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]
+-	['ml_svm',			`build,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]
++	['ml_linear',		`skip,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]
++	['ml_svm',			`skip,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]
+ 	['model_obj',		`build,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]
+ 	['model_stl',		`build,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]
+ 	['msico',			`build,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]
+@@ -56,7 +56,7 @@ moduleInfos = @(ModuleInfo) {
+ 	['sqlite3',			`build,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]
+ 	['sys',				`skip,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]	// integrated
+ 	['tar',				`build,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]
+-	['tcl',				`build,	[`mswin,				`ubuntu,	`fedora,	`centos,	`redhat	]]
++	['tcl',				`skip,	[`mswin,				`ubuntu,	`fedora,	`centos,	`redhat	]]
+ 	['tester',			`skip,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]	// just for test
+ 	['tiff',			`build,	[`mswin,	`darwin,	`ubuntu,	`fedora,	`centos,	`redhat	]]
+ 	['uuid',			`build,	[`mswin,	`darwin,												]]
+@@ -81,6 +81,9 @@ options:
+ 
+ if (sys.platform == `linux) {
+ 	platform = nil
++	if (path.exists('/etc/arch-release')) {
++		platform = `ubuntu
++	}
+ 	!platform && path.exists(fileName = '/etc/lsb-release') && \
+ 										readlines(fileName):chop {|line|
+ 		fields = line.split('='):list
