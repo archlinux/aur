@@ -16,8 +16,16 @@ url="http://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
 depends=("linux-pf>=$_godver" "linux-pf<$_badver")
 makedepends=("linux-pf-headers")
-source=(git+https://github.com/Bumblebee-Project/bbswitch.git#branch=pm-rework)
-md5sums=('SKIP')
+source=(git+https://github.com/Bumblebee-Project/bbswitch.git#branch=pm-rework
+       'linux_4.17_vgaswitch.patch')
+md5sums=('SKIP'
+         'b0a672ecba5dadf7922a363a7a9960ba')
+
+prepare()
+{
+  cd ${srcdir}/${_pkgname}
+  patch -p1 -i "$srcdir"/linux_4.17_vgaswitch.patch
+}
 
 build() {
   cd ${srcdir}/${_pkgname}
