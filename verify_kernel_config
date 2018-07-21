@@ -31,9 +31,9 @@ for var in $(cat "$check_file") ;do
                 kconfig)
                     if ! grep $verbose "$var" "$kernel_config" ; then
                         if grep $verbose  $(echo "$var"|sed 's/y/m/g') "$kernel_config" ; then
-                            [ $picky ] && echo "$var"
+                            [ $picky ] && echo "CONFIG_$var"
                         else
-                            echo "$var"
+                            echo "CONFIG_$var"
                         fi
                     fi
                     ;;
