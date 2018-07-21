@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libglade' 'portaudio')
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/project/Gnaural/$pkgname-$pkgver.tar.xz")
-md5sums=('55dd6c32ae08c637e40774c22d6c09ba')
+md5sums=('e25e5688db10f3b32ba1af6c33ee566f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
