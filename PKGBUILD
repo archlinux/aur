@@ -1,8 +1,8 @@
 # Maintainer: Noa-Emil Nissinen <aur dot satella at spamgourmet dot org>
 
 pkgname=mingw-w64-binutils-bin
-pkgver=2.30
-pkgrel=2
+pkgver=2.31
+pkgrel=1
 pkgdesc="Cross binutils for the MinGW-w64 cross-compiler (pre-compiled)"
 arch=('x86_64')
 url="http://www.gnu.org/software/binutils"
@@ -12,8 +12,8 @@ depends=('zlib')
 provides=("mingw-w64-binutils=${pkgver}")
 conflicts=('mingw-w64-binutils')
 options=('!libtool' '!emptydirs')
-source=("https://github.com/4shadoww/mingw-w64-builds/releases/download/binary/mingw-w64-binutils-$pkgver.tar.xz")
-md5sums=('617474998f1ff23816f9555ebdaeb88e')
+source=("https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-binutils/mingw-w64-binutils-$pkgver.tar.xz")
+md5sums=('1771e0986114f27794e6819b9cf9f6f3')
 
 package() {
   cd "mingw-w64-binutils/"
