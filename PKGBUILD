@@ -28,7 +28,7 @@ options=()
 install=
 changelog=
 source=(
-    "ftp://ftp.cmbi.ru.nl/pub/molgraph/molden/$pkgname$pkgver.tar.gz"
+    "ftp://ftp.cmbi.umcn.nl/pub/molgraph/molden/$pkgname$pkgver.tar.gz"
 )
 noextract=()
 md5sums=('4d4deb20dda0627d19980d2c6cff5b34')
