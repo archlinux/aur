@@ -1,28 +1,33 @@
-# Maintainer: A.T.W.A. <arch.atwa@gmail.com>
+# Maintainer: Paul Bell <linux at dpb dot org dot uk>
+# Contributor: A.T.W.A. <arch.atwa@gmail.com>
 
 pkgname=gtrayicon
 pkgver=1.1
-pkgrel=3
-pkgdesc="A generic tray icon"
+pkgrel=4
+pkgdesc="A user configurable GTK2 status icon and menu for the system tray (notification area)"
 arch=('i686' 'x86_64')
-url="http://gtrayicon.sourceforge.net"
+url="http://gtrayicon.sourceforge.net/"
 license=('GPL3')
 depends=('libglade')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('7d30a5b8558e8c600cf1ea4916c8adfc')
+makedepends=('libglade')
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('f29f702b97ee8a1e2d29c4a1c8f7b484b5ca588e3c25ff8242bcc920d7b98911')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    sed -i -e 's|mkdir|mkdir -p|' \
-    -e 's|-m 755 $(TARGET) $(INSTALL_PREFIX)/bin/|-Dm 755 $(TARGET) $(INSTALL_PREFIX)/bin/$(TARGET)|' Makefile
+  sed -i 's#INSTALL_PREFIX = /usr#INSTALL_PREFIX = $(DESTDIR)/usr#' "${srcdir}/${pkgname}-${pkgver}/Makefile"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make
+  cd "${pkgname}-${pkgver}"
+  make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make INSTALL_PREFIX="${pkgdir}/usr" install
+  cd "${pkgname}-${pkgver}"
+  install -dm755 "${pkgdir}"/usr/{bin,share/doc,share/man/man1}
+  make DESTDIR="${pkgdir}/" install
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 {README,ChangeLog} -t "${pkgdir}"/usr/share/doc/"${pkgname}"
+  rm "${pkgdir}/usr/share/${pkgname}"/{README,ChangeLog,LICENSE}
+  install -Dm644 Debian/"${pkgname}".1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 }
