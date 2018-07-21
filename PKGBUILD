@@ -5,19 +5,20 @@
 
 pkgname=spectrum2
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 #epoch=
 pkgdesc="Create C++ transports easily"
 arch=('any')
 url="http://spectrum.im"
 license=('GPL')
 groups=()
-depends=(curl log4cxx popt sqlite)
+# TODO remove logc4cxx version pin on next spectrum release
+depends=(curl 'log4cxx=0.10.0' popt sqlite)
 makedepends=('protobuf' 'swiften>=3' 'libpqxx' 'libpurple' 'avahi' 'boost'
-'cmake' 'cppunit' 'expat' 'libcommuni' 'libidn' 'sqlite' 'log4cxx' 'libevent'
+'cmake' 'cppunit' 'expat' 'libcommuni' 'libidn' 'sqlite' 'log4cxx=0.10.0' 'libevent'
 'libmariadbclient' 'popt' 'libev' 'dbus-glib' 'curl' 'qt4' 'gconf')
 checkdepends=()
-optdepends=('swiften>=3: XMPP backend support'
+optdepends=('swiften: XMPP backend support'
             'libpqxx: PostgreSQL support'
             'libmariadbclient: MariaDB support'
             'libcommuni: IRC backend support'
