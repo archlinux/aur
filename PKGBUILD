@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=python2-vmaf-git
-pkgver=1.3.4.r0.gf1225dc
+pkgver=1.3.7.r3.gad8ac94
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (python2 implementation, git version)'
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
         'python2' 'python2-numpy' 'python2-scipy' 'python2-matplotlib'
         'python2-pandas' 'python2-scikit-learn' 'python2-h5py'
     # AUR:
-        'libsvm'
+        'python2-scikit-image'
 )
 makedepends=('git' 'python2' 'python2-setuptools')
 provides=('python2-vmaf')
@@ -53,19 +53,19 @@ package() {
     
     # vmaf python2 executables
     cd script
-    executables=($(find . -type f -executable))
-    for _script in ${executables[@]}
+    local _executables=($(find . -type f -executable))
+    for _script in ${_executables[@]}
     do
-        install -D -m755 "$_script" "${pkgdir}/usr/bin/${_script}"
+        install -D -m755 "$_script" -t "${pkgdir}/usr/bin"
     done
     
     # sureal python2 executable
     cd "${srcdir}/vmaf-git/sureal/python/script"
-    install -D -m755 run_subj.py "${pkgdir}/usr/bin/run_subj.py"
+    install -D -m755 run_subj.py -t "${pkgdir}/usr/bin"
     
     # sureal python2 modules
     cd "${srcdir}/vmaf-git/sureal/python/src"
-    cp -a sureal "${pkgdir}/usr/lib/python2.7/site-packages"
+    cp -af sureal "${pkgdir}/usr/lib/python2.7/site-packages"
     
     # fix shebang on python2 scripts
     for _script in "$pkgdir"/usr/bin/*
