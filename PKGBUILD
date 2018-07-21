@@ -5,7 +5,7 @@
 
 _pkgname=gcstar
 pkgname="${_pkgname}-gitlab"
-pkgver=1.7.1.2
+pkgver=1.7.2.1
 pkgrel=1
 pkgdesc="A collection management application"
 arch=('any')
@@ -18,6 +18,7 @@ depends=('gtk2-perl' 'perl-libwww' 'perl-xml-simple'
          'perl-gd' 'perl-date-calc'
          'perl-lwp-protocol-https'
          'perl-archive-zip' 'perl-datetime-format-strptime'
+	 'perl-image-exiftool'
          'perl-gdgraph' 'perl-mp3-info')
 # 'perl-ogg-vorbis-header-pureperl' 'perl-mp3-tag'
 makedepends=('git')
