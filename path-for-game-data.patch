@@ -1,0 +1,290 @@
+diff -ura a/common.h b/common.h
+--- a/common.h	2018-07-20 23:14:21.000000000 +0200
++++ b/common.h	2018-07-21 20:33:44.000000000 +0200
+@@ -1,7 +1,7 @@
+ #ifndef COMMON_H
+ #define COMMON_H
+ 
+-#define STRBUF  32
++#define STRBUF  128
+ 
+ /* DEFAULT WINDOW DIMENSIONS */
+ #define DEFAULT_WINDOW_W    800
+diff -ura a/sound.c b/sound.c
+--- a/sound.c	2018-07-20 23:14:21.000000000 +0200
++++ b/sound.c	2018-07-21 20:33:44.000000000 +0200
+@@ -52,7 +52,7 @@
+ int loadSound(Mix_Chunk *sound, char *soundstr, int index)
+ {
+     char *soundpath = malloc(STRBUF);
+-    snprintf(soundpath, STRBUF, "data/sound/%s.ogg", soundstr);
++    snprintf(soundpath, STRBUF, "/usr/share/games/zatackax/data/sound/%s.ogg", soundstr);
+     if ((sound = Mix_LoadWAV(soundpath)) == NULL) {
+         fileNotFound(soundpath);
+         free(soundpath);
+@@ -77,8 +77,8 @@
+         return -1;
+     }
+ 
+-    if ((bgm = Mix_LoadMUS("data/sound/theme1.ogg")) == NULL) {
+-        fileNotFound("data/sound/theme1.ogg");
++    if ((bgm = Mix_LoadMUS("/usr/share/games/zatackax/data/sound/theme1.ogg")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/sound/theme1.ogg");
+         return -1;
+     }
+ 
+diff -ura a/zatackax.c b/zatackax.c
+--- a/zatackax.c	2018-07-20 23:14:21.000000000 +0200
++++ b/zatackax.c	2018-07-21 21:03:21.856949526 +0200
+@@ -2274,7 +2274,7 @@
+ 
+     SDL_ShowCursor(SDL_DISABLE);
+     SDL_WM_SetCaption("Zatacka X", "Zatacka X");
+-    SDL_WM_SetIcon(SDL_LoadBMP("data/gfx/icon.bmp"), NULL);
++    SDL_WM_SetIcon(SDL_LoadBMP("/usr/share/games/zatackax/data/gfx/icon.bmp"), NULL);
+ 
+     return 1;
+ }
+@@ -2291,128 +2291,128 @@
+     SDL_Surface **p;
+ 
+     /* Load images and fonts */
+-    if ((arrows = loadImage("data/gfx/arrowsheet.png")) == NULL) {
+-        fileNotFound("data/gfx/arrowsheet.png");
++    if ((arrows = loadImage("/usr/share/games/zatackax/data/gfx/arrowsheet.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/arrowsheet.png");
+         return 0;
+     }
+-    if ((ball = loadImage("data/gfx/ball.png")) == NULL) {
+-        fileNotFound("data/gfx/ball.png");
++    if ((ball = loadImage("/usr/share/games/zatackax/data/gfx/ball.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/ball.png");
+         return 0;
+     }
+-    if ((logo = loadImage("data/gfx/logo.png")) == NULL) {
+-        fileNotFound("data/gfx/logo.png");
++    if ((logo = loadImage("/usr/share/games/zatackax/data/gfx/logo.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/logo.png");
+         return 0;
+     }
+-    if ((wiBg = loadImage("data/gfx/wi_bg.png")) == NULL) {
+-        fileNotFound("data/gfx/wi_bg.png");
++    if ((wiBg = loadImage("/usr/share/games/zatackax/data/gfx/wi_bg.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wi_bg.png");
+         return 0;
+     }
+-    if ((wiSpeed = loadImage("data/gfx/wi_lightningspeed.png")) == NULL) {
+-        fileNotFound("data/gfx/wi_lightningspeed.png");
++    if ((wiSpeed = loadImage("/usr/share/games/zatackax/data/gfx/wi_lightningspeed.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wi_lightningspeed.png");
+         return 0;
+     }
+-    if ((wisSpeed = loadImage("data/gfx/wis_lightningspeed.png")) == NULL) {
+-        fileNotFound("data/gfx/wis_lightningspeed.png");
++    if ((wisSpeed = loadImage("/usr/share/games/zatackax/data/gfx/wis_lightningspeed.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wis_lightningspeed.png");
+         return 0;
+     }
+-    if ((wiFrost = loadImage("data/gfx/wi_frostwave.png")) == NULL) {
+-        fileNotFound("data/gfx/wi_frostwave.png");
++    if ((wiFrost = loadImage("/usr/share/games/zatackax/data/gfx/wi_frostwave.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wi_frostwave.png");
+         return 0;
+     }
+-    if ((wisFrost = loadImage("data/gfx/wis_frostwave.png")) == NULL) {
+-        fileNotFound("data/gfx/wis_frostwave.png");
++    if ((wisFrost = loadImage("/usr/share/games/zatackax/data/gfx/wis_frostwave.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wis_frostwave.png");
+         return 0;
+     }
+-    if ((wiConf = loadImage("data/gfx/wi_confusion.png")) == NULL) {
+-        fileNotFound("data/gfx/wi_confusion.png");
++    if ((wiConf = loadImage("/usr/share/games/zatackax/data/gfx/wi_confusion.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wi_confusion.png");
+         return 0;
+     }
+-    if ((wisConf = loadImage("data/gfx/wis_confusion.png")) == NULL) {
+-        fileNotFound("data/gfx/wis_confusion.png");
++    if ((wisConf = loadImage("/usr/share/games/zatackax/data/gfx/wis_confusion.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wis_confusion.png");
+         return 0;
+     }
+-    if ((wiTurn = loadImage("data/gfx/wi_sharpturn.png")) == NULL) {
+-        fileNotFound("data/gfx/wi_sharpturn.png");
++    if ((wiTurn = loadImage("/usr/share/games/zatackax/data/gfx/wi_sharpturn.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wi_sharpturn.png");
+         return 0;
+     }
+-    if ((wisTurn = loadImage("data/gfx/wis_sharpturn.png")) == NULL) {
+-        fileNotFound("data/gfx/wis_sharpturn.png");
++    if ((wisTurn = loadImage("/usr/share/games/zatackax/data/gfx/wis_sharpturn.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wis_sharpturn.png");
+         return 0;
+     }
+-    if ((wiStep = loadImage("data/gfx/wi_timestep.png")) == NULL) {
+-        fileNotFound("data/gfx/wi_timestep.png");
++    if ((wiStep = loadImage("/usr/share/games/zatackax/data/gfx/wi_timestep.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wi_timestep.png");
+         return 0;
+     }
+-    if ((wisStep = loadImage("data/gfx/wis_timestep.png")) == NULL) {
+-        fileNotFound("data/gfx/wis_timestep.png");
++    if ((wisStep = loadImage("/usr/share/games/zatackax/data/gfx/wis_timestep.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wis_timestep.png");
+         return 0;
+     }
+-    if ((wiMole = loadImage("data/gfx/wi_mole.png")) == NULL) {
+-        fileNotFound("data/gfx/wi_mole.png");
++    if ((wiMole = loadImage("/usr/share/games/zatackax/data/gfx/wi_mole.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wi_mole.png");
+         return 0;
+     }
+-    if ((wisMole = loadImage("data/gfx/wis_mole.png")) == NULL) {
+-        fileNotFound("data/gfx/wis_mole.png");
++    if ((wisMole = loadImage("/usr/share/games/zatackax/data/gfx/wis_mole.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wis_mole.png");
+         return 0;
+     }
+-    if ((wiWarp = loadImage("data/gfx/wi_warp.png")) == NULL) {
+-        fileNotFound("data/gfx/wi_warp.png");
++    if ((wiWarp = loadImage("/usr/share/games/zatackax/data/gfx/wi_warp.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wi_warp.png");
+         return 0;
+     }
+-    if ((wisWarp = loadImage("data/gfx/wis_warp.png")) == NULL) {
+-        fileNotFound("data/gfx/wis_warp.png");
++    if ((wisWarp = loadImage("/usr/share/games/zatackax/data/gfx/wis_warp.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wis_warp.png");
+         return 0;
+     }
+-    if ((wiGhost = loadImage("data/gfx/wi_ghost.png")) == NULL) {
+-        fileNotFound("data/gfx/wi_ghost.png");
++    if ((wiGhost = loadImage("/usr/share/games/zatackax/data/gfx/wi_ghost.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wi_ghost.png");
+         return 0;
+     }
+-    if ((wisGhost = loadImage("data/gfx/wis_ghost.png")) == NULL) {
+-        fileNotFound("data/gfx/wis_ghost.png");
++    if ((wisGhost = loadImage("/usr/share/games/zatackax/data/gfx/wis_ghost.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wis_ghost.png");
+         return 0;
+     }
+-    if ((wiTron = loadImage("data/gfx/wi_tron.png")) == NULL) {
+-        fileNotFound("data/gfx/wi_tron.png");
++    if ((wiTron = loadImage("/usr/share/games/zatackax/data/gfx/wi_tron.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wi_tron.png");
+         return 0;
+     }
+-    if ((wisTron = loadImage("data/gfx/wis_tron.png")) == NULL) {
+-        fileNotFound("data/gfx/wis_tron.png");
++    if ((wisTron = loadImage("/usr/share/games/zatackax/data/gfx/wis_tron.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wis_tron.png");
+         return 0;
+     }
+-    if ((wiChilirun = loadImage("data/gfx/wi_chilirun.png")) == NULL) {
+-        fileNotFound("data/gfx/wi_chilirun.png");
++    if ((wiChilirun = loadImage("/usr/share/games/zatackax/data/gfx/wi_chilirun.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wi_chilirun.png");
+         return 0;
+     }
+-    if ((wisChilirun = loadImage("data/gfx/wis_chilirun.png")) == NULL) {
+-        fileNotFound("data/gfx/wis_chilirun.png");
++    if ((wisChilirun = loadImage("/usr/share/games/zatackax/data/gfx/wis_chilirun.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wis_chilirun.png");
+         return 0;
+     }
+-    if ((wiSwitch = loadImage("data/gfx/wi_switch.png")) == NULL) {
+-        fileNotFound("data/gfx/wi_switch.png");
++    if ((wiSwitch = loadImage("/usr/share/games/zatackax/data/gfx/wi_switch.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wi_switch.png");
+         return 0;
+     }
+-    if ((wisSwitch = loadImage("data/gfx/wis_switch.png")) == NULL) {
+-        fileNotFound("data/gfx/wis_switch.png");
++    if ((wisSwitch = loadImage("/usr/share/games/zatackax/data/gfx/wis_switch.png")) == NULL) {
++        fileNotFound("/usr/share/games/zatackax/data/gfx/wis_switch.png");
+         return 0;
+     }
+-    if ((font_menu = TTF_OpenFont("data/fonts/jura/JuraLight.ttf",
++    if ((font_menu = TTF_OpenFont("/usr/share/games/zatackax/data/fonts/jura/JuraLight.ttf",
+                                   MENU_FONT_SIZE)) == NULL) {
+-        fileNotFound("data/fonts/jura/JuraLight.ttf");
++        fileNotFound("/usr/share/games/zatackax/data/fonts/jura/JuraLight.ttf");
+         return 0;
+     }
+-    if ((font_menub = TTF_OpenFont("data/fonts/jura/JuraMedium.ttf",
++    if ((font_menub = TTF_OpenFont("/usr/share/games/zatackax/data/fonts/jura/JuraMedium.ttf",
+                                    MENU_FONT_SIZE)) == NULL) {
+-        fileNotFound("data/fonts/jura/JuraMedium.ttf");
++        fileNotFound("/usr/share/games/zatackax/data/fonts/jura/JuraMedium.ttf");
+         return 0;
+     }
+-    if ((font_broadc = TTF_OpenFont("data/fonts/ankacoder/AnkaCoder-r.ttf",
++    if ((font_broadc = TTF_OpenFont("/usr/share/games/zatackax/data/fonts/ankacoder/AnkaCoder-r.ttf",
+                                     BROADC_FONT_SIZE)) == NULL) {
+-        fileNotFound("data/fonts/ankacoder/AnkaCoder-r.ttf");
++        fileNotFound("/usr/share/games/zatackax/data/fonts/ankacoder/AnkaCoder-r.ttf");
+         return 0;
+     }
+-    if ((font_broadcb = TTF_OpenFont("data/fonts/ankacoder/AnkaCoder-b.ttf"
++    if ((font_broadcb = TTF_OpenFont("/usr/share/games/zatackax/data/fonts/ankacoder/AnkaCoder-b.ttf"
+                                      , BROADC_FONT_SIZE)) == NULL) {
+-        fileNotFound("data/fonts/ankacoder/AnkaCoder-b.ttf");
++        fileNotFound("/usr/share/games/zatackax/data/fonts/ankacoder/AnkaCoder-b.ttf");
+         return 0;
+     }
+     font_score = font_menub;
+@@ -2647,6 +2647,8 @@
+  */
+ void exitGame(int status)
+ {
++    char settingPath[STRBUF];
++
+     free(hitmap);
+     free(parrows);
+     free(pballs);
+@@ -2654,7 +2656,15 @@
+     screen = SDL_SetVideoMode(WINDOW_W, WINDOW_H, SCREEN_BPP,
+                               SDL_SWSURFACE);
+ 
+-    saveSettings(".zatackax");
++    snprintf(settingPath, STRBUF, "%s/.config", getenv("HOME"));
++    mkdir(settingPath, S_IRWXU | S_IRWXG | S_IRWXO);
++
++    snprintf(settingPath, STRBUF, "%s/.config/zatackax", getenv("HOME"));
++    mkdir(settingPath, S_IRWXU | S_IRWXG | S_IRWXO);
++
++    snprintf(settingPath, STRBUF, "%s/.config/zatackax/settings.cfg", getenv("HOME"));
++
++    saveSettings(settingPath);
+ 
+     exit(status);
+ }
+@@ -2662,12 +2672,15 @@
+ int main(void)
+ {
+     static Uint32 prevtime = 0;
++    static char settingPath[STRBUF];
+ 
+     WINDOW_W = DEFAULT_WINDOW_W;
+     WINDOW_H = DEFAULT_WINDOW_H;
+ 
+     initPlayers1();
+-    restoreSettings(".zatackax");
++
++    snprintf(settingPath, STRBUF, "%s/.config/zatackax/settings.cfg", getenv("HOME"));
++    restoreSettings(settingPath);
+ 
+     if (!init())
+         return 1;
+diff -ura a/zatackax.h b/zatackax.h
+--- a/zatackax.h	2018-07-20 23:14:21.000000000 +0200
++++ b/zatackax.h	2018-07-21 20:33:44.000000000 +0200
+@@ -7,6 +7,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdbool.h>
++#include <sys/stat.h>
+ #include <SDL/SDL.h>
+ #include <SDL/SDL_image.h>
+ #include <SDL/SDL_ttf.h>

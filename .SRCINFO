@@ -1,0 +1,24 @@
+pkgbase = zatackax-git
+	pkgdesc = A modern, free remake of the classic Achtung, die Kurve!
+	pkgver = 0.3.1.r1.g350fdb4
+	pkgrel = 1
+	url = https://github.com/simenheg/zatackax
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = sdl>=1.2
+	depends = sdl_image>=1.2
+	depends = sdl_ttf>=2.0
+	depends = sdl_mixer>=1.2
+	source = zatackax::git+https://github.com/simenheg/zatackax.git
+	source = path-for-game-data.patch
+	source = zatackax.png
+	source = zatackax.desktop
+	sha256sums = SKIP
+	sha256sums = 74f286abf0acaada6069dfa801f7b99ca90aca4c7943cec3131145b27340f244
+	sha256sums = b6feb8f64b918f637cb0a5e4989d1bd242ee3aee1a9d05d952b77812bdb41545
+	sha256sums = 424c0e5e693efc269fdeddcf46351724b8e95dedff57390fda96d3f79f623e1b
+
+pkgname = zatackax-git
+
