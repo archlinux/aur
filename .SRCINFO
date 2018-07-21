@@ -6,12 +6,18 @@ pkgbase = python-xeddsa-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	makedepends = libsodium
-	depends = python-pynacl
-	provides = python-xeddsa
-	conflicts = python-xeddsa
 	source = python-xeddsa::git+https://github.com/Syndace/python-xeddsa.git
 	sha256sums = SKIP
 
 pkgname = python-xeddsa-git
+	depends = python-pynacl
+	provides = python-xeddsa
+	conflicts = python-xeddsa
+
+pkgname = python2-xeddsa-git
+	depends = python2-pynacl
+	provides = python2-xeddsa
+	conflicts = python2-xeddsa
 

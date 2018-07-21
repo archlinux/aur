@@ -1,17 +1,16 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _pkgname=python-xeddsa
-pkgname=${_pkgname}-git
+_pkgname2=python2-xeddsa
+pkgbase=${_pkgname}-git
+pkgname=("${_pkgname}-git" "${_pkgname2}-git")
 pkgver=r19.4872d92
 pkgrel=1
 pkgdesc="A python implementation of the XEdDSA signature scheme"
 url='https://github.com/Syndace/python-xeddsa'
 license=('MIT')
 arch=('any')
-depends=('python-pynacl')
-makedepends=('python-setuptools' 'libsodium')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+makedepends=('python-setuptools' 'python2-setuptools' 'libsodium')
 source=("${_pkgname}::git+https://github.com/Syndace/python-xeddsa.git")
 sha256sums=('SKIP')
 
@@ -30,10 +29,26 @@ build() {
     make
 }
 
-package() {
+package_python-xeddsa-git() {
+    depends=('python-pynacl')
+    provides=("${_pkgname}")
+    conflicts=("${_pkgname}")
+
     cd ${_pkgname}
 
     python3 setup.py install --root="${pkgdir}" --optimize=1
+    install -Dm 644 ref10/bin/crypto_scalarmult.so ref10/bin/crypto_sign.so \
+      "${pkgdir}/usr/lib"
+}
+
+package_python2-xeddsa-git() {
+    depends=('python2-pynacl')
+    provides=("${_pkgname2}")
+    conflicts=("${_pkgname2}")
+
+    cd ${_pkgname}
+
+    python2 setup.py install --root="${pkgdir}" --optimize=1
     install -Dm 644 ref10/bin/crypto_scalarmult.so ref10/bin/crypto_sign.so \
       "${pkgdir}/usr/lib"
 }
