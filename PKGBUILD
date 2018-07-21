@@ -6,7 +6,7 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=3.3.r2.ga5f1e534
+pkgver=3.3.1.r0.g564cd76d
 pkgrel=1
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
@@ -25,7 +25,6 @@ depends=(
   'python-dnspython'
   'python-ecdsa'
   'python-jsonrpclib-pelix'
-  'python-pbkdf2'
   'python-protobuf'
   'python-pyaes'
   'python-pyqt5'
