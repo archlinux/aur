@@ -19,5 +19,5 @@ package() {
     bsdtar xf data.tar.xz
     chmod -R g-w usr
     mv usr "${pkgdir}"
-    
+    ln -s /usr/lib/libzip.so /usr/lib/libzip.so.4
 }
