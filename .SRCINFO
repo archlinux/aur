@@ -1,5 +1,5 @@
 pkgbase = caddy-no-telemetry
-	pkgdesc = HTTP/2 Web Server with Automatic HTTPS
+	pkgdesc = HTTP/2 Web Server with Automatic HTTPS. Telemetry disabled in source
 	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://caddyserver.com
