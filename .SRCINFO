@@ -1,6 +1,6 @@
 pkgbase = smartsvn
 	pkgdesc = A Subversion (SVN) GUI client written in Java
-	pkgver = 9.3.0
+	pkgver = 9.3.1
 	pkgrel = 2
 	url = https://www.syntevo.com/smartsvn/
 	arch = any
@@ -9,10 +9,11 @@ pkgbase = smartsvn
 	depends = desktop-file-utils
 	depends = sh
 	depends = hunspell-en_US
-	provides = smartsvn=9.3.0
-	source = https://www.smartsvn.com/downloads/smartsvn/smartsvn-linux-9_3_0.tar.gz
+	depends = hicolor-icon-theme
+	provides = smartsvn=9.3.1
+	source = https://www.smartsvn.com/downloads/smartsvn/smartsvn-linux-9_3_1.tar.gz
 	source = smartsvn.desktop
-	sha256sums = ca2b90ec9999b52696f524405a00aec0f31ca894bd67d8ab09a0d99db546d9e1
+	sha256sums = 4fd6d77502e81dc4d4edc6c8ff409b6b7b5c561030f3a7c0d520ae7cfd5b3a95
 	sha256sums = ab0ef714cdb1ba8f188b04f4accaf661501503234b4cedd335e200498b6e3b35
 
 pkgname = smartsvn
