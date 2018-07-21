@@ -1,0 +1,43 @@
+pkgbase = linux-drm-next-git
+	pkgdesc = Linux kernel with DRM patches
+	pkgver = 4.19.768424.500775074f88
+	pkgrel = 1
+	url = https://cgit.freedesktop.org/~agd5f/linux/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	options = !strip
+	source = linux-drm-next-git::git://anongit.freedesktop.org/drm/drm#branch=drm-next
+	source = config.x86_64
+	source = linux.install
+	source = linux-drm-next-git.preset
+	sha256sums = SKIP
+	sha256sums = 2ae729f7f0beb2f3401addbd3fb4dd1a179355ccc76622dea96f7395c89c2e0f
+	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+
+pkgname = linux-drm-next-git
+	pkgdesc = The Linux kernel and modules with DRM patches
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-drm-next-git.preset
+
+pkgname = linux-drm-next-git-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel with DRM patches
+	provides = linux-headers
+
+pkgname = linux-drm-next-git-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel with DRM patches
+	provides = linux-docs
+
