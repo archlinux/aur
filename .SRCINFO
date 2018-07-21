@@ -1,19 +1,20 @@
 pkgbase = gn-git
 	pkgdesc = Meta-build system which generates Ninja build files
-	pkgver = r1438.8ce4e49a
-	pkgrel = 2
+	pkgver = r1446.5d9a4e9a
+	pkgrel = 1
 	url = https://gn.googlesource.com/gn
 	arch = x86_64
 	arch = i686
 	license = BSD
 	makedepends = python2
 	makedepends = ninja
-	makedepends = clang
 	depends = gcc-libs
 	provides = gn
 	conflicts = gn-bin
 	source = gn::git+https://gn.googlesource.com/gn
+	source = gcc-support.patch
 	sha512sums = SKIP
+	sha512sums = 14f5a6236c09d1e11f6ce8984cbe1e635dc582a38ba801b719404bdaaf0b9f708262fdf13b5d6496e8af7fd50d411ab90747af1d816fa78a6a8b808ae88cb4f8
 
 pkgname = gn-git
 
