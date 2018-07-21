@@ -1,7 +1,7 @@
 pkgbase = camouflage
-	pkgdesc = camouflage
+	pkgdesc = a mux+websocket+TLS proxy
 	pkgver = 20180702.64_3d51e47
-	pkgrel = 2
+	pkgrel = 3
 	arch = i686
 	arch = x86_64
 	license = MPL

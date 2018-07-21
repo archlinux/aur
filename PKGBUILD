@@ -1,8 +1,8 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 pkgname=camouflage
 pkgver=20180702.64_3d51e47
-pkgrel=2
-pkgdesc="camouflage"
+pkgrel=3
+pkgdesc="a mux+websocket+TLS proxy"
 arch=('i686' 'x86_64')
 license=('MPL')
 depends=(
@@ -16,9 +16,7 @@ source=(
 	"camouflage::git://github.com/Sherlock-Holo/camouflage#branch=${BRANCH:-master}"
 )
 
-md5sums=(
-	'SKIP'
-)
+md5sums=('SKIP')
 
 backup=(
 )
