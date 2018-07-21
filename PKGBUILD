@@ -15,19 +15,45 @@ pkgdesc="Cinelerra maintained by Good Guy (git version)"
 arch=('x86_64')
 url="https://cinelerra-cv.org"
 license=('GPL')
-depends=('xorg-server'
-         'libpng'
-         'libxv'
-         'libva'
-         'libdv'
-         'libxft'
-         'freetype2'
-         'alsa-lib'
-         'inkscape'
+depends=('alsa-lib'
          'dvdauthor'
-         'libvorbis'
+         'fftw'
+         'flac'
+         'fribidi'
+         'gdk-pixbuf2'
+         'glib2'
+         'glu'
+         'gtk2'
+         'harfbuzz'
+         'inkscape'
+         'libavc1394'
+         'libdatrie'
+         'libdv'
          'libfdk-aac'
-         'openexr')
+         'libffi'
+         'libglvnd'
+         'libiec61883'
+         'libjpeg-turbo'
+         'libogg'
+         'libpng'
+         'libraw1394'
+         'libsndfile'
+         'libthai'
+         'libtheora'
+         'libtiff'
+         'libva'
+         'libvdpau'
+         'libvorbis'
+         'libvpx'
+         'libx11'
+         'libxv'
+         'numactl'
+         'openexr'
+         'opus'
+         'ttf-dejavu'
+         'udftools'
+         'xorg-server'
+         'xorg-fonts-misc')
 makedepends=('yasm'
              'nasm'
              'cmake'
@@ -41,7 +67,7 @@ sha256sums=('SKIP'
             '9d4a2a8c21f0c3632317d9b3f6f88d96d544dc08a487cd8efadbcf3dfc18269e')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}/cinelerra-${_pkgver}"
+  cd "${srcdir}/${_pkgname}/cinelerra-${_pkgver}/blds"
   echo "${_pkgver}.`grep 'pkgrel=' PKGBUILD | grep -o [0-9]*`"
 }
 
