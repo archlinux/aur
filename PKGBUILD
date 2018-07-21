@@ -1,8 +1,8 @@
-# Maintainer: fzerorubigd <fzero@rubi.gd>
+# Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=pgcli
-pkgver=1.8.2
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="a command line interface for Postgres with auto-completion and syntax highlighting"
 url="http://pgcli.com/"
@@ -15,7 +15,9 @@ provides=('pgcli')
 conflicts=('pgcli-git')
 
 package() {
-    cd $srcdir/pgcli-${pkgver}
-    python setup.py install --root=$pkgdir/ --optimize=1
+    cd "$srcdir/pgcli-${pkgver}"
+    python setup.py install --root="$pkgdir/" --optimize=1
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+    cp LICENSE.txt "$_/LICENSE"
 }
-md5sums=('9b5fab13b81ac4b3c9a17754631ccb5b')
+md5sums=('75c8883aa456f6c58adeed82d6c53131')
