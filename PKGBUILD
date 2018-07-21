@@ -10,7 +10,6 @@ url="https://pypi.python.org/pypi/$pkgname"
 depends=('certbot' 'python-boto3' 'python-zope-component' 'python-zope-interface')
 source=("https://pypi.io/packages/source/c/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('d3fe8c152cf4c9f1dcd17c4edd8008e3')
-validpgpkeys=('F07D85CAA18ACF46A346FD017C7FC6EA8633B4EA')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
