@@ -2,7 +2,7 @@
 
 pkgname=prometheus-bin
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source service monitoring system and time series database (binary, not built from source)"
 arch=('x86_64')
 url="http://prometheus.io"
@@ -33,7 +33,7 @@ package() {
         "${pkgdir}/etc/prometheus/prometheus.yml"
 
     # Install SystemD Service File
-    install -D -m0755 "${srcdir}/prometheus.service" \
+    install -D -m0644 "${srcdir}/prometheus.service" \
         "${pkgdir}/usr/lib/systemd/system/prometheus.service"
 
     # Install Console files
