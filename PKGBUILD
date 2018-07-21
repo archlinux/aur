@@ -8,6 +8,7 @@ pkgdesc="The most complete package of icons for third-party applications with el
 arch=('i686' 'x86_64')
 url="https://github.com/btd1337/${gitname}"
 license=('GPL3')
+depends=('elementary-icon-theme')
 makedepends=('git')
 options=('!strip')
 provides=("${gitname}")

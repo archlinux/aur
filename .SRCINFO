@@ -7,6 +7,7 @@ pkgbase = urutau-icons-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	depends = elementary-icon-theme
 	provides = urutau-icons
 	conflicts = urutau-icons
 	options = !strip
