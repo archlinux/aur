@@ -1,5 +1,5 @@
 pkgbase = mate-search-tool
-	pkgdesc = Utility to search for files, from MATE utils.
+	pkgdesc = Utility to search for files. Fork of gnome-search-tool, separated from MATE utils.
 	pkgver = 1.20.1
 	pkgrel = 1
 	url = http://mate-desktop.org
