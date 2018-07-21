@@ -5,7 +5,8 @@ pkgbase = xamarin-android
 	url = https://github.com/xamarin/xamarin-android
 	arch = x86_64
 	license = MIT
-	depends = mono>=5.0.0,libzip
+	depends = mono>=5.0.0
+	depends = libzip
 	provides = xamarin-android
 	conflicts = xamarin-android
 	options = !strip
