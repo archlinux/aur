@@ -1,4 +1,4 @@
-pkgbase = nautilus
+pkgbase = nautilus-legacy
 	pkgdesc = Default file manager for GNOME: legacy version (3.26 series)
 	pkgver = 3.26.4
 	pkgrel = 1
