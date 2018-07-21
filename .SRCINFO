@@ -6,7 +6,7 @@ pkgbase = xamarin-android
 	arch = x86_64
 	license = MIT
 	depends = mono>=5.0.0
-	depends = libzip
+	depends = libzip.so.4
 	provides = xamarin-android
 	conflicts = xamarin-android
 	options = !strip
