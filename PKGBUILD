@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd $srcdir/capitaine-cursors
-	git describe --tags | sed 's/^r//;s/-/.r/;s/-/./g'
+	git describe --long --tags | sed 's/^r//;s/-/.r/;s/-/./g'
 }
 
 package() {
