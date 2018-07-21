@@ -3,7 +3,7 @@
 pkgbase=python-aspy-yaml
 pkgname=(python-aspy-yaml python2-aspy-yaml)
 pypi_name=aspy.yaml
-pkgver=0.3.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A few extensions to pyyaml"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 url="https://github.com/asottile/aspy.yaml"
 depends=('python')
 source=("https://pypi.io/packages/source/a/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
-md5sums=('74513f668e0a4ede972ff79dd7a8f2a4')
+md5sums=('072676133eecee495ba7c323ea00e853')
 
 prepare() {
   cp -a ${pypi_name}-${pkgver}{,-python2}
