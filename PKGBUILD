@@ -1,7 +1,8 @@
 pkgname=squid4
 pkgver=4.1
 pkgrel=4
-pkgdesc='Full-featured Web proxy cache server with the support SSL. Include patches for normal work with long url`s and CDN.'
+pkgdesc='Full-featured Web proxy cache server with the support SSL, eCAP, iCAP-client. Include patches for normal work with long url`s 
+and CDN.'
 arch=('x86_64')
 url='http://www.squid-cache.org'
 depends=('openssl-1.0' 'libecap' 'pam' 'perl' 'libltdl' 'libcap' 'nettle' 'gnutls' 'libnsl')
