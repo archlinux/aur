@@ -1,6 +1,6 @@
 pkgbase = doctrina
 	pkgdesc = The library of Software Peronista
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://git.softwareperonista.com.ar/cdp/doctrina
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = doctrina
 	makedepends = vala
 	depends = glib2
 	depends = sqlite3
-	source = https://git.softwareperonista.com.ar/cdp/doctrina/archive/0.1.5.tar.gz
-	sha256sums = 9c78a8f9904feb1ff552d2e0373edd6a43ed8a389c3a6096a417aad86f976da7
+	source = https://git.softwareperonista.com.ar/cdp/doctrina/archive/0.1.6.tar.gz
+	sha256sums = 11c180ff683e183ba6779fde3e287711f47b5fa942080f3e34460a6721138151
 
 pkgname = doctrina
 
