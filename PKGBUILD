@@ -6,7 +6,8 @@ pkgname=("${auxname}-git")
 pkgver=latest
 pkgrel=1
 pkgdesc="Manage processes and monitor system resources. 
-        Designed for elementary OS"
+        Designed for elementary OS. 
+        Make a donate for coffee: https://paypal.me/stsdc/10"
 arch=('i686' 'x86_64')
 url="https://github.com/stsdc/${gitname}"
 license=('GPL3')
@@ -18,14 +19,6 @@ provides=("${auxname}")
 conflicts=("${auxname}")
 source=("git+${url}.git")
 md5sums=('SKIP')
-
-pkgver() {
-    cd "${gitname}"
-    ( set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
-}
 
 pkgver() {
     cd "${gitname}"
