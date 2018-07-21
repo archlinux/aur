@@ -1,0 +1,19 @@
+--- gsearchtool/src/gsearchtool.c	Sat Jul 21 12:03:59 2018
++++ gsearchtool/src/gsearchtool.c	Sat Jul 21 12:04:13 2018
+@@ -512,7 +512,7 @@
+ 		gtk_window_set_title (GTK_WINDOW (gsearch->window), title);
+
+ 		gtk_label_set_text (GTK_LABEL (gsearch->files_found_label), "");
+-		if (g_settings_get_boolean (gsearch->mate_desktop_interface_settings, "enable-animations")) {
++		if (TRUE) {
+ 			gtk_spinner_start (GTK_SPINNER (gsearch->progress_spinner));
+ 			gtk_widget_show (gsearch->progress_spinner);
+ 		}
+@@ -2741,7 +2741,6 @@
+
+ 	gsearch->mate_search_tool_settings = g_settings_new ("org.mate.search-tool");
+ 	gsearch->mate_search_tool_select_settings = g_settings_new ("org.mate.search-tool.select");
+-	gsearch->mate_desktop_interface_settings = g_settings_new ("org.mate.interface");
+
+ 	/* Check if caja schema is installed before trying to read caja settings */
+ 	gsearch->caja_schema_exists = FALSE;

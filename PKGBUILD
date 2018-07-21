@@ -11,18 +11,20 @@ pkgdesc="Utility to search for files, from MATE utils."
 url="http://mate-desktop.org"
 arch=('x86_64')
 license=('GPL')
-depends=('libsm')
-makedepends=('intltool' 'itstool')
+depends=('gtk3' 'libsm')
+makedepends=('intltool' 'itstool' 'libgtop')
 conflicts=('mate-utils' 'gnome-search-tool')
 provides=('gnome-search-tool')
 source=(
 	"https://pub.mate-desktop.org/releases/${pkgver%.*}/${__pkgname}-${pkgver}.tar.xz"
 	"build-only-gsearchtool.patch"
+	"dont-read-mate-setting.diff"
 	"i-dont-need-help.patch"
 )
 sha256sums=(
 	"6a1e0bba9c117f8ce81bb271d2182006524250fe9e31f2fc904f6403453020cf"
 	"4cb1c2b986659859fbc5cfa6659026025d6785d4189a6b9964c965eba3987670"
+	"94fd8ebd909886214f02688b04140d62c47f383bb8746b57bd8e92da1176b005"
 	"af54d55508428deec00989966c36d5e00d8e7db61cf6e31febd3b636957bc755"
 )
 
@@ -31,6 +33,7 @@ prepare()
 	cd ${__pkgname}-${pkgver}
 
 	patch -p0 -i "$srcdir/build-only-gsearchtool.patch"
+	patch -p0 -i "$srcdir/dont-read-mate-setting.diff"
 	patch -p0 -i "$srcdir/i-dont-need-help.patch"
 }
 
