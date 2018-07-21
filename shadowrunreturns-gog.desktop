@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/shadowrunreturns-gog.png
+Exec=/usr/bin/shadowrunreturns-gog
+Terminal=false
+StartupNotify=false
+
+Name=Shadowrun Returns
+Comment=Harebrained Schemes' first Shadowrun cRPG
+
+Categories=Game;
