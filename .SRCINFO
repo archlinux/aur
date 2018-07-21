@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-full-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)
-	pkgver = 4.1.r91378.g3f953379e1
+	pkgver = 4.1.r91500.g3870ed7ab3
 	pkgrel = 1
 	url = http://www.ffmpeg.org/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = ffmpeg-full-git
 	makedepends = git
 	makedepends = nasm
 	makedepends = opencl-headers
-	makedepends = blackmagic-decklink-sdk
 	makedepends = ffnvcodec-headers
+	makedepends = blackmagic-decklink-sdk
 	depends = glibc
 	depends = alsa-lib
 	depends = jack
@@ -133,7 +133,6 @@ pkgbase = ffmpeg-full-git
 	sha256sums = 04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36
 	depends_x86_64 = cuda
 	depends_x86_64 = intel-media-sdk
-	makedepends_x86_64 = vmaf
 
 pkgname = ffmpeg-full-git
 

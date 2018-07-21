@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=4.1.r91378.g3f953379e1
+pkgver=4.1.r91500.g3870ed7ab3
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -33,14 +33,14 @@ depends_x86_64=(
 )
 makedepends=(
     # official repositories:
-        'git' 'nasm' 'opencl-headers'
+        'git' 'nasm' 'opencl-headers' 'ffnvcodec-headers'
     # AUR:
-        'blackmagic-decklink-sdk' 'ffnvcodec-headers'
+        'blackmagic-decklink-sdk'
 )
-makedepends_x86_64=(
-    # AUR:
-        'vmaf'
-)
+#makedepends_x86_64=(
+#    # AUR:
+#        'vmaf'
+#)
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
     'ffmpeg-qsv-git' 'ffmpeg-full' 'ffmpeg-full-nvenc' 'ffmpeg-semifull-git' 'libavutil.so'
@@ -80,7 +80,7 @@ build() {
     # set x86_64 specific options
     if [ "$CARCH" = 'x86_64' ] 
     then
-        local _libvmaf='--enable-libvmaf'
+        local _libvmaf='--disable-libvmaf'
         local _cudasdk='--enable-cuda-sdk'
         local _libmfx='--enable-libmfx'
         local _libnpp='--enable-libnpp'
