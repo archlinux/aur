@@ -1,8 +1,8 @@
 pkgbase = emacs-color-theme
 	pkgdesc = Emacs color themes
 	pkgver = 6.6.0
-	pkgrel = 8
-	url = https://gna.org/projects/color-theme
+	pkgrel = 9
+	url = http://www.nongnu.org/color-theme/
 	install = emacs-color-theme.install
 	arch = any
 	license = GPL2
