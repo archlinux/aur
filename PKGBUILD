@@ -1,9 +1,10 @@
 # Maintainer: Mirh <mirh@protonmail.ch>
 # Contributor: Olaf Leidinger <oleid@mescharet.de>
+# Contributor: Enihcam <gmail n a n e r i c w a n g>
 #
 # Get the Ubuntu tarball from https://www.codeplay.com/products/computesuite/computecpp/download
 pkgname=computecpp
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Accelerates Complex C++ Applications on Heterogeneous Compute 
 Systems using Open Standards"
@@ -11,7 +12,7 @@ arch=('x86_64')
 url="https://www.codeplay.com/products/computesuite/computecpp"
 license=('EULA')
 source=("local://ComputeCpp-CE-${pkgver}-Ubuntu.16.04-64bit.tar.gz")
-sha256sums=('d1b0b45f66f75f99acedebd3cba88b910b3c4d68e0dd2b73ef0940a747725a6f')
+sha256sums=('50ae123e4e6707164b3fb90f13c571a1e52f6052ed0ba039775caa562898d630')
 depends=(ncurses5-compat-libs)
 options=(!strip)
 
