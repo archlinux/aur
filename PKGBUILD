@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=libpdfium-nojs
-pkgver=3396.r4.7b8cd8daf
+pkgver=3396.r4.7b8cd8dafb
 pkgrel=2
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('freetype2' 'lcms2' 'libjpeg')
 conflicts=('libpdfium-bin')
 provides=('libpdfium')
-makedepends=('git' 'python2' 'gn-bin>=r533513' 'ninja')
+makedepends=('git' 'python2' 'gn' 'ninja')
 
 source=("git+https://pdfium.googlesource.com/pdfium"
 	"git+https://chromium.googlesource.com/chromium/src/build.git"
@@ -104,8 +104,8 @@ build() {
   gn gen out/Release --script-executable=/usr/bin/python2 --args="${_flags[*]}"
   ninja -C out/Release pdfium
 
-	# set pdfium version in pc file
-	sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/libpdfium.pc"
+  # set pdfium version in pc file
+  sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/libpdfium.pc"
 
 }
 
