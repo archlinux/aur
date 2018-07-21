@@ -1,4 +1,4 @@
-# Maintainer: Daniel Lima <danielm@nanohub.tk>
+# Maintainer: Daniel Lima <danielmariodelima@gmail.com>
 
 pkgname=xcursor-capitaine-git
 conflicts=('xcursor-capitaine'
