@@ -14,7 +14,7 @@ pkgdesc="A powerful file manager for the UNIX console. This package downloads th
 arch=('any')
 url="https://bitbucket.org/inigoserna/lfm"
 license=('GPL3')
-conflicts='lfm'
+conflicts=('lfm')
 depends=('ncurses>=5.0' 'python2>=2.6')
 makedepends=('mercurial')
 source=(hg+https://bitbucket.org/inigoserna/lfm)
