@@ -1,0 +1,5 @@
+linux-amd-wip-git
+src
+pkg
+*.pkg.*
+*.pkg
