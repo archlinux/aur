@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=vmaf-git
-pkgver=1.3.1.r64.g7426b6f
+pkgver=1.3.7.r3.gad8ac94
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (git version)'
 arch=('x86_64')
@@ -33,7 +33,7 @@ package() {
     make DESTDIR="$pkgdir" INSTALL_PREFIX='/usr' install
     
     # binary executable
-    install -D -m755 wrapper/vmafossexec "${pkgdir}/usr/bin/vmafossexec"
+    install -D -m755 wrapper/vmafossexec -t "${pkgdir}/usr/bin"
     
     # fix prefixes on pkgconfig file
     sed -i 's|/usr/local|/usr|g' "${pkgdir}/usr/lib/pkgconfig/libvmaf.pc"
