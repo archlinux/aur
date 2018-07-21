@@ -101,19 +101,6 @@ Info_Array* portfolio_info_array_init_from_portfolio_string(String* pString);
 void portfolio_sort(Info_Array* portfolio_data, int sort_option);
 
 /**
- * Prints to stdout information about every security contained in the portfolio: symbol, number of shares, USD spent,
- * current value, profit, and 24h profit. Additionally, print a grand total with info from all securities.
- */
-void portfolio_print_all(Info_Array* portfolio_data);
-
-/**
- * Prints to stdout information about a specific security contained in the portfolio: symbol, number of shares, USD spent,
- * current value, profit, and 24h profit.
- * @param symbol the security to print
- */
-void portfolio_print_stock(const char* symbol);
-
-/**
  * Goes through the given JSON array until the JSON object at the given index's key "Symbol" contains
  * the string ticker_name_string, then returns that index number.
  * @param symbol the security to return the index of

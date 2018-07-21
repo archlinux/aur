@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
                         pString);
                 if (portfolio_data != NULL) {
                     api_info_array_store_check_data(portfolio_data);
-                    portfolio_print_all(portfolio_data);
+                    info_array_portfolio_printw(portfolio_data);
                     api_info_array_destroy(&portfolio_data);
                 }
                 string_destroy(&pString);

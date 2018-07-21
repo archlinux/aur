@@ -46,8 +46,22 @@
 #include <stdlib.h>
 #include <ncurses.h>
 #include "api.h"
+#include "portfolio.h"
 
 extern int zoom_months[9], zoom_change_x_months[9];
+
+/**
+ * Prints to stdout information about every security contained in the portfolio: symbol, number of shares, USD spent,
+ * current value, profit, and 24h profit. Additionally, print a grand total with info from all securities.
+ */
+void info_array_portfolio_printw(Info_Array* portfolio_data);
+
+/**
+ * Prints to stdout information about a specific security contained in the portfolio: symbol, number of shares, USD spent,
+ * current value, profit, and 24h profit.
+ * @param symbol the security to print
+ */
+void portfolio_print_stock(const char* symbol);
 
 /**
  * Main function to print information about a security. Stocks/etfs/mutf/otc securities will print in an ncurses window,
