@@ -1,7 +1,7 @@
 # Maintainer: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=ghostwriter-git
-pkgver=v1.4.2.r1.g812199f
+pkgver=v1.7.0.r0.g4d11fc6
 pkgrel=1
 pkgdesc="ghostwriter is a cross-platform, aesthetic, distraction-free Markdown editor."
 arch=(i686 x86_64)
