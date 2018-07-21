@@ -1,16 +1,16 @@
 # Submitter: David Rosenstrauch <darose@darose.net>
 
 pkgname=roundcubemail-plugin-mobile
-pkgver=0.4.5
+pkgver=0.4.8
 pkgrel=1
 pkgdesc='Mobile Plugin and Skin for Roundcube'
 arch=('any')
 url='https://plugins.roundcube.net/packages/melanie2/mobile'
 license=('GPL3')
 depends=('roundcubemail' 'roundcubemail-plugin-jquery-mobile')
-source=("plugin-0.4.5.tar.gz::https://github.com/messagerie-melanie2/Roundcube-Plugin-Mobile/archive/v0.4.5.tar.gz"
-        "skin-0.4.5.tar.gz::https://github.com/messagerie-melanie2/Roundcube-Skin-Melanie2-Larry-Mobile/archive/v0.4.5.tar.gz")
-md5sums=('5f0f097beb7a8a14bb6bb0768120284c' '15829ca4359956b8a676d5c27f5e10ac')
+source=("plugin-0.4.8.tar.gz::https://github.com/messagerie-melanie2/Roundcube-Plugin-Mobile/archive/v0.4.8.tar.gz"
+        "skin-0.4.8.tar.gz::https://github.com/messagerie-melanie2/Roundcube-Skin-Melanie2-Larry-Mobile/archive/v0.4.8.tar.gz")
+md5sums=('85f43de883293f10eaf423a240076590' 'e53fa02fd6324d4ca50e6bc55a430954')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/webapps/roundcubemail/plugins"
