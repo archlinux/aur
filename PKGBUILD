@@ -10,7 +10,7 @@ _minor=17
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=3
+_pfrel=4
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -71,7 +71,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=('GPL2')
@@ -142,6 +142,8 @@ prepare() {
 
   # If the following is set, stop right there. We only need the headers for
   # dependent drivers' compiling (nvidia, virtualbox etc)
+
+  #./scripts/kconfig/merge_config.sh .config "$srcdir"/gpdpocket.kconfig
 
   # get kernel version
   #make prepare
@@ -420,8 +422,6 @@ package_linux-pf() {
   # If optimized build, conflict with generic and other optimized ones
 
   if [[ "$pkgname" != "$pkgbase" ]]; then
-	pkgnameopt="${pkgname}"		# this MUST be inside this if-fi
-	pkgname="${pkgbase}"
 	echo pkgname $pkgname
 	cpuopt=$(sed -e "s/linux-pf-//" <<<$pkgnameopt)		# get suffix
 	cpuoptdesc=$(sed -e "s/${_pkgdesc}//" <<<$pkgdesc)	# get description
@@ -481,10 +481,6 @@ package_linux-pf() {
   install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
   
 # end c/p
-
-  ###
-  # Trick the AUR parser to accept split PKGBUILD
-  true && pkgname="${pkgnameopt}"
 }
 
 ### package_linux-pf-headers
@@ -634,15 +630,16 @@ package_linux-pf-preset-default()
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 }
+
 # Work around the AUR parser
 pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 
 # makepkg -g >>PKGBUILD
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
-            'a8771b2bd12801039327ed94de322876a2cd12be4dae07f8c70101bb0eaf7741'
+            '622c9966585723a3a88ccabf83ecb7b64851c6acf9b0dd9862df5885b0d02907'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '2f637d47777332eb8ed0dbd42b67be7b9ac9ead8c7448ab3e3af5bed07719b8b'
+            'f67f6b7f29e2f5e94f8e50db78f48e3f686d9e34ad6a8cb3447d3b3f3ebd5011'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 
