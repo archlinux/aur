@@ -2,16 +2,15 @@
 # Please submit comments/issues here: https://github.com/JoshuaRLi/PKGBUILDs
 
 pkgname=yn
-pkgver=1.1.3
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="an interactive y/n prompt"
+pkgdesc="interactive y/n prompt"
 arch=('x86_64')
 url="https://github.com/JoshuaRLi/yn"
 license=('MIT')
-conflicts=('yn-bin')
 
-source_x86_64=("${url}/releases/download/${pkgver}/yn-${pkgver}.tar.gz")
-sha512sums_x86_64=('ba6fb9fd7323521bdd825dcd60485e7c8595dc1608827e7d5a6f43e8e0544ac00ee9e33186d74a01d50de96e56e461578b130bbf00e0c9319ae57dae0c976238')
+source=("${url}/releases/download/${pkgver}/yn-${pkgver}.tar.gz")
+sha512sums=('89106aa5d2b596f93e951196b1db7717e7040aba7b060c509f47b2014f288fad2c7a5a6cadce923be3e1b9fbe5496336d9bf777f9154e49cd2cc0e8303e19978')
 
 package () {
   cd "${srcdir}/yn-${pkgver}"
