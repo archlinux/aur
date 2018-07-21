@@ -3,8 +3,8 @@
 pkgbase=python-pre-commit
 pkgname=(python-pre-commit python2-pre-commit)
 pypi_name=pre_commit
-pkgver=1.10.2
-pkgrel=2
+pkgver=1.10.3
+pkgrel=1
 pkgdesc="A framework for managing and maintaining multi-language pre-commit hooks."
 arch=('any')
 license=('MIT')
@@ -14,7 +14,7 @@ makedepends=(
   'python2' 'python2-aspy-yaml' 'python2-virtualenv' 'python2-cached-property' 'python2-identify'
 )
 source=("https://pypi.io/packages/source/p/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
-md5sums=('88cf83e173a8a1cebaaaba7c77c3da2b')
+md5sums=('174a8b95a0b4d528dc975ae2e44ecae6')
 
 prepare() {
   cp -a ${pypi_name}-${pkgver}{,-python2}
