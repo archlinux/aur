@@ -1,6 +1,6 @@
 pkgbase = qomui
 	pkgdesc = OpenVPN Gui with advanced features and support for multiple providers
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/corrad1nho/qomui
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = qomui
 	depends = python-dbus
 	depends = openvpn
 	depends = stunnel
-	depends = dnsutils
+	depends = bind-tools
 	depends = dnsmasq
 	depends = geoip
 	depends = geoip-database
@@ -22,8 +22,9 @@ pkgbase = qomui
 	depends = python-pycountry
 	depends = python-pexpect
 	depends = libcgroup
-	source = https://github.com/corrad1nho/qomui/archive/v0.5.1.tar.gz
-	sha256sums = 94a97623dfa77006e9c1bc73587fab40180d175de529936aa60d8a1cfd832734
+	depends = wireguard-tools
+	source = https://github.com/corrad1nho/qomui/archive/v0.6.0.tar.gz
+	sha256sums = 09bbcbe24d732be57d84635ac48873e9816fa4b2a7c0bc9b79894f329acfe87e
 
 pkgname = qomui
 
