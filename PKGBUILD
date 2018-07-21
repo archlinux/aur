@@ -22,7 +22,7 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 install='freenet.install'
 depends=('java-runtime>=8' 'gmp' 'java-service-wrapper')
-makedepends=('java-environment>=8' 'apache-ant' 'gradle' 'git' 'java-hamcrest')
+makedepends=('java-environment>=8' 'apache-ant' 'gradle' 'git' 'java-hamcrest' 'zip')
 checkdepends=('junit')
 backup=('opt/freenet/wrapper.config'
         'opt/freenet/conf/freenet.ini')
@@ -101,8 +101,8 @@ check() {
 package() {
     cd "$srcdir/fred"
 
-    # Dont use bundled wrapper
-    7z d -tzip build/output/freenet-ext-29.jar org/tanukisoftware
+    # delete bundled wrapper
+    zip -qd build/output/freenet-ext-29.jar "org/tanukisoftware/*"
 
     # freenet
     install -dm755 "$pkgdir"/usr/bin
