@@ -2,7 +2,7 @@
 
 pkgname=alertmanager-bin
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Alertmanager handles alerts sent by client applications such as the Prometheus server. It takes care of deduplicating, grouping, and routing them to the correct receiver integration (binary, not built from source)"
 arch=('x86_64')
 url="https://github.com/prometheus/alertmanager"
@@ -32,6 +32,6 @@ package() {
     install -d -m0755 "${pkgdir}/etc/alertmanager/template/"
 
     # Install SystemD Service File
-    install -D -m0755 "${srcdir}/alertmanager.service" \
+    install -D -m0644 "${srcdir}/alertmanager.service" \
         "${pkgdir}/usr/lib/systemd/system/alertmanager.service"
 }
