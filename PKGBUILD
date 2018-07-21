@@ -1,26 +1,21 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=stringi
-_cranver=1.2.3
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=1.2.4
 pkgname=r-stringi
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Character String Processing Facilities"
+pkgdesc='Character String Processing Facilities'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=stringi'
 license=('custom')
 depends=('r' )
-
-
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('20ea105bdfb3577ac25b316c2274e1c7')
+source=("https://cran.r-project.org/src/contrib/stringi_"$_cranver".tar.gz")
+md5sums=('aeb53ac931b033bdde5792cf8fd2e3cc')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL stringi_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership stringi "$pkgdir"/usr/lib/R/library
 }
 
