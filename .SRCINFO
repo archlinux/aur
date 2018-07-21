@@ -2,14 +2,14 @@ pkgbase = geteltorito
 	pkgdesc = A El Torito boot image extractor
 	pkgver = 0.6
 	pkgrel = 1
-	url = http://userpages.uni-koblenz.de/~krienke/ftp/noarch/geteltorito
+	url = https://userpages.uni-koblenz.de/~krienke/ftp/noarch/geteltorito/geteltorito/geteltorito.pl
 	install = geteltorito.install
 	arch = any
 	license = GPL2
 	depends = perl
 	noextract = geteltorito.pl
-	source = http://userpages.uni-koblenz.de/~krienke/ftp/noarch/geteltorito/geteltorito.pl
-	sha256sums = 378a6305edb9397978e60b7908a85dd8c2546f2808cb845552d5e4a8ba9baab3
+	source = http://userpages.uni-koblenz.de/~krienke/ftp/noarch/geteltorito/geteltorito-0.6.tar.gz
+	sha256sums = bb4fab8d4bedee1250762940b9f5d20fc7ac29fb2b5e9767c6af0a0955aa6bbe
 
 pkgname = geteltorito
 
