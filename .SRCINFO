@@ -1,0 +1,13 @@
+pkgbase = gitree
+	pkgdesc = Prints a directory files tree that shows Git status ignoring files from .gitignore
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/jpwilliams/gitree
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	options = !emptydirs
+
+pkgname = gitree
+
