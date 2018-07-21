@@ -2,7 +2,7 @@
 
 pkgname=jdk-devel-docs
 _major=11
-_build=22
+_build=23
 pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Documentation for Oracle Java $_major Development Kit Snapshot"
@@ -13,7 +13,7 @@ depends=("java-environment>=$_major")
 options=('!strip')
 source=("https://download.java.net/java/early_access/jdk${_major}/${_build}/BCL/jdk-${_major}-ea+${_build}_doc-all.zip"
         'LICENSE-Early-Adopter-Development-Agreement.txt')
-sha256sums=('b24c9b827935b5329d3dd16a7e0a565c2b2f15d0e82a7039aa3b510601552790'
+sha256sums=('aad2314fed3ec73deb53297dcac578e5ba5c21af05b31afa84d2f155a1dadf15'
             '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
 
 package() {
