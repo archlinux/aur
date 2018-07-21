@@ -2,7 +2,7 @@
 # Co-Maintainer: jswenson
 # Packager: Chris Knepper <chris82thekid@gmail.com>
 pkgname=android-messages-desktop
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk2' 'libappindicator-gtk3' 'libappindicator-sharp')
 provides=(android-messages-desktop)
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.pacman")
-md5sums=('99e4d494e9f2d12fb5ea600f32c0cbbd')
+md5sums=('c2c6a9ba381abaf29d5b92b86f2db918')
 
 package() {
     install -d "${pkgdir}/opt"
