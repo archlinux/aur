@@ -8,14 +8,14 @@
 
 pkgname=('python-dlib-cuda' 'python2-dlib-cuda')
 _pkgname='dlib'
-pkgver=19.14
+pkgver=19.15
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
 url="http://www.dlib.net/"
 license=('Boost')
 depends=('cuda' 'cudnn' 'libx11')
-makedepends=('cmake' 'cuda' 'cudnn' 'gcc6' 'libx11' 'python' 'python2')
+makedepends=('cmake' 'cuda' 'cudnn' 'libx11' 'python' 'python2')
 optdepends=('cblas: for BLAS support'
             'giflib: for GIF support'
             'lapack: for LAPACK support'
@@ -24,7 +24,7 @@ optdepends=('cblas: for BLAS support'
             'neon: for neon support'
             'sqlite: for sqlite support')
 source=("http://dlib.net/files/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('2c2ff1a0dd116a6267f4a76aaa5bd36b')
+sha256sums=('5340eeaaea7dd6d93d55e7a7d2fdb1f854a77b75f66049354db53671a202c11d')
 
 # Detecting whether certain cpu optimisations can be made
 _avx_available=()
@@ -45,16 +45,28 @@ fi
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  # Exporting compiler environment variables
-  # This is necessary to get cuda support
-  export CC=$(command -v gcc-6)
-  export CXX=$(command -v g++-6)
+  # Preparing array of variables setting the compiler for CUDA and optionally
+  # ccache support.
+  # Code based on the dlib package found in the AUR.
+  # To enable ccache support you need to install the following package:
+  # https://github.com/pingplug/PKGBUILDs/tree/master/others/ccache-ext
+  _compiler_vars=( '--set' 'CUDA_HOST_COMPILER=/opt/cuda/bin/gcc' )
+  if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]]; then
+    _compiler_vars+=( '--set' 'CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache' )
+    _compiler_vars+=( '--set' 'CUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc-7' )
+  fi
 
   # Compiling for Python 3
-  python setup.py build "${_avx_available[@]}" "${_sse2_available[@]}" "${_sse4_available[@]}"
+  python setup.py build "${_avx_available[@]}" \
+                        "${_sse2_available[@]}" \
+                        "${_sse4_available[@]}" \
+                        "${_compiler_vars[@]}"
 
   # Compiling for Python 2
-  python2 setup.py build "${_avx_available[@]}" "${_sse2_available[@]}" "${_sse4_available[@]}"
+  python2 setup.py build "${_avx_available[@]}" \
+                         "${_sse2_available[@]}" \
+                         "${_sse4_available[@]}" \
+                         "${_compiler_vars[@]}"
 }
 
 package_python-dlib-cuda() {
