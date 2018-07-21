@@ -1,15 +1,14 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=stf
-pkgver=3.3.0
-pkgrel=6
+pkgver=3.3.1
+pkgrel=1
 pkgdesc='Web application for debugging Android devices'
-arch=(any)
-url='https://openstf.io'
+arch=(i686 x86_64)
+url=https://openstf.io
 license=(Apache)
-depends=('nodejs>=6.9'
-         'nodejs<=9.11.1'
-         'rethinkdb>=2.2'
+depends=(nodejs-lts-carbon
+         rethinkdb
          graphicsmagick
          zeromq
          protobuf
@@ -17,11 +16,18 @@ depends=('nodejs>=6.9'
          pkg-config)
 makedepends=(npm)
 options=(!emptydirs !strip)
-source=(http://registry.npmjs.org/stf/-/stf-$pkgver.tgz)
-noextract=(stf-$pkgver.tgz)
-sha512sums=(0e8bf442190a0b713c424ebcd41bd0f2b930c2e51704f9d83bb8bfc1f18bd497cbc9d8853d072d2697835b7231af48148bf91c6e5a4afde2a5ef3538f185f327)
+source=(https://github.com/openstf/stf/archive/v$pkgver.tar.gz)
+sha512sums=(f5be802444f5a76a8404858690874998168faea672af0fa89e6af2055c27ee33e35c24ad333bee606fbda653b831bbea2433076ba328c49d69518e44af19edfe)
+
+build() {
+  cd stf-$pkgver
+  npm install
+}
 
 package() {
-  npm install -g --prefix $pkgdir/usr $srcdir/stf-$pkgver.tgz
-  find $pkgdir/usr -type d -exec chmod 755 {} +
+  install -d $pkgdir/usr/{share/stf,share/licenses/stf,bin}
+  cd stf-$pkgver
+  cp -a . $pkgdir/usr/share/stf
+  ln -s /usr/share/stf/bin/stf $pkgdir/usr/bin/stf
+  cp LICENSE $pkgdir/usr/share/licenses/stf/LICENSE
 }
