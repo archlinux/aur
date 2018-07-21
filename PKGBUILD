@@ -17,7 +17,8 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir/$_pkgname"
   chmod +x ./configure
-  ./configure
+  ./configure \
+	--mandir=/usr/share/man
   make -j$(nproc)
 }
 
