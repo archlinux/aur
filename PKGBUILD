@@ -1,10 +1,10 @@
-# Maintainer: Alexandre Jesus <adbjesus@gmail.com>
+# Maintainer: Robert Stoffers <rstoffers@gmail.com>
 
 _pkgname=lcurse
 pkgname=${_pkgname}-git
-pkgver=20170402_r91.e0de42c
-pkgrel=1
-pkgdesc="Python script to have a curse compatible client for linux"
+pkgver=1
+pkgrel=2
+pkgdesc="Curse-compatible addon update client for World of Warcraft. Use https://www.curseforge.com/wow/addons to obtain URLs for addons."
 arch=('any')
 url="https://github.com/ephraim/lcurse"
 license=('Unlicense')
@@ -14,18 +14,15 @@ provides=("${_pkgname}")
 source=('git+https://github.com/ephraim/lcurse.git')
 md5sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/${_pkgname}"
-
-  # Get the version number.
-  printf "%s_r%s.%s" "$(date +%Y%m%d)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+build() {
+    cd "$srcdir/${_pkgname}"  
+	python setup.py build
 }
 
 package() {
-  cd "$srcdir/${_pkgname}"
+    cd "$srcdir/${_pkgname}"
 
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  python setup.py install --root="$pkgdir/" --optimize=1
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 

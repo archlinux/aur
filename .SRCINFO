@@ -1,7 +1,7 @@
 pkgbase = lcurse-git
-	pkgdesc = Python script to have a curse compatible client for linux
-	pkgver = 20170402_r91.e0de42c
-	pkgrel = 1
+	pkgdesc = Curse-compatible addon update client for World of Warcraft. Use https://www.curseforge.com/wow/addons to obtain URLs for addons.
+	pkgver = 1
+	pkgrel = 2
 	url = https://github.com/ephraim/lcurse
 	arch = any
 	license = Unlicense
