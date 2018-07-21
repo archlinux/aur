@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/shadowrundragonfall-gog.png
+Exec=/usr/bin/shadowrundragonfall-gog
+Terminal=false
+StartupNotify=false
+
+Name=Shadowrun: Dragonfall
+Comment=Harebrained Schemes' second Shadowrun cRPG
+
+Categories=Game;
