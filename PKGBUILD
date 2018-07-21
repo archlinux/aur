@@ -5,13 +5,13 @@
 
 _srcname=vlc
 pkgname=vlc-decklink
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (with decklink support)'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'libtiger' 'lua'
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
@@ -100,10 +100,16 @@ replaces=('vlc-plugin')
 options=('!emptydirs')
 source=("https://download.videolan.org/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.xz"
         'update-vlc-plugin-cache.hook'
-        'lua53_compat.patch')
-sha256sums=('efe8c889b69bffba9662140bdcf434d9d36edc5dbb0e300fcce4553c354ea198'
+        'lua53_compat.patch'
+        'vlc-qt5.11.patch'
+        'aom-remove-unsupported-pixel-formats.patch'
+        'vlc-3.0.3-fix-build-with-libx264-git.patch')
+sha256sums=('9ba8b04bdb13f7860a2041768ac83b47b397a36549c71c530b94028a3cfd5b51'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
-            'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa')
+            'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
+            '17c9e9b95e67cce347057ec84b090ac1e416b453f629f81533077d05e12a067a'
+            '9e271bf7ec8ba0aa956bdd54e54cb0feb4ff078404bb0762aa61dc65a74b2af8'
+            '410064c7f18e08025d365962fd5e17f0f99f74c7334b9a283a90bc89b1d72158')
 
 prepare() {
     cd "${_srcname}-${pkgver}"
@@ -111,10 +117,13 @@ prepare() {
     sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
     sed -e 's|-Werror-implicit-function-declaration||g' -i configure
     
-    patch -Np1 -i "${srcdir}/lua53_compat.patch"
-    
     sed 's|whoami|echo builduser|g' -i configure
     sed 's|hostname -f|echo arch|g' -i configure
+    
+    patch -Np1 -i "${srcdir}/lua53_compat.patch"
+    patch -Np1 -i "${srcdir}/vlc-qt5.11.patch"
+    patch -Np1 -i "${srcdir}/aom-remove-unsupported-pixel-formats.patch"
+    patch -Np1 -i "${srcdir}/vlc-3.0.3-fix-build-with-libx264-git.patch"
 }
 
 build() {
