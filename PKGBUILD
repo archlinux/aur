@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=webmacs-docs-git
-pkgver=r489.587abbb
+pkgver=r521.9a529ea
 pkgrel=1
 _pythonver=3.6
 pkgdesc="browser for keyboard-based web navigation"
@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/parkouss/webmacs"
 license=('GPL3')
 makedepends=('webmacs-git' 'python-sphinx' 'git')
-source=("git+https://github.com/parkouss/webmacs#commit=587abbb0cc5e6e1d37b69e727b6177467fbab41f")
+source=("git+https://github.com/parkouss/webmacs")
 md5sums=('SKIP')
 
 pkgver() {
