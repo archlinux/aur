@@ -1,0 +1,15 @@
+pkgbase = kwin-effect-grayscale-git
+	pkgdesc = KWin effect to turn the screen or window in grayscale color
+	pkgver = 20180721.867c8ff
+	pkgrel = 1
+	url = https://github.com/ugjka/kwin-effect-grayscale
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kwin
+	source = kwin-effect-grayscale::git+http://github.com/ugjka/kwin-effect-grayscale.git
+	md5sums = SKIP
+
+pkgname = kwin-effect-grayscale-git
+
