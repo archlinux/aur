@@ -5,6 +5,7 @@ pkgbase = squidclamav
 	url = https://github.com/darold/squidclamav.git
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = c-icap
 	depends = clamav
 	provides = squidclamav
