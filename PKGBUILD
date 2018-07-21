@@ -9,7 +9,7 @@ url='https://github.com/darold/squidclamav.git'
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname::git+$url")
-depends=('c-icap' 'clamav' 'squid4')
+depends=('c-icap' 'clamav')
 license=('GPL')
 
 sha256sums=('SKIP')
