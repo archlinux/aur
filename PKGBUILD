@@ -1,8 +1,8 @@
-# Maintainer: Malte Rabenseifner <mail@malte-rabenseifner.de>
 # Maintainer: Julian Brost <julian@0x4a42.net>
+# Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname=icingaweb2
-pkgver=2.5.3
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
@@ -12,26 +12,9 @@ optdepends=('php-gd: export data to PDF'
             'php-intl: support for internationalization'
             'php-pgsql: for PostgreSQL backend')
 url="http://www.icinga.org"
-source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz"
-        '3315-dont-call-session_start-after-ini_set.patch'
-        'HTMLPurifier-autoload-deprecation-warning.diff')
+source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz")
 install='icingaweb2.install'
-sha256sums=('da9953045895ed26d002ce3d6115af9a5b8012cce9a2667a389c8b9d80cd6592'
-            'c40f0608e110fefa2b85b452c416019ff9453722964278fee2128290e467f165'
-            '69aa5ebf5ab234c2caad879199dfbaef85d867d701280ef05b50083cc0efffde')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  # Support for PHP 7.2 in Icinga Web 2
-  # https://github.com/Icinga/icingaweb2/issues/3185
-  # https://github.com/Icinga/icingaweb2/pull/3315
-  patch -Np1 -i "${srcdir}/3315-dont-call-session_start-after-ini_set.patch"
-
-  # Fix deprecation warning in HTMLPurifier
-  # https://github.com/ezyang/htmlpurifier/commit/bb7ad665265a29303ec59918f0c1832528bdc509
-  patch -Np1 -i "${srcdir}/HTMLPurifier-autoload-deprecation-warning.diff"
-}
+sha256sums=('4aedd894e98fe2c58450813c07fe3cff003dd62a9845cc1a97e4a9bc3e8a0fd4')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
