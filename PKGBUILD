@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=vmaf
-pkgver=1.3.5
+pkgver=1.3.7
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('libvmaf')
 conflicts=('vmaf-git' 'libvmaf' 'libvmaf-git')
 replaces=('libvmaf')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Netflix/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('28ff05935889147a6dedb2089be918f0ce903e4a386091274be5ad3118b2950d')
+sha256sums=('124e7ec03de83f4051f9d6210824f5ca083c7dac9fcf6ed12d196f98849c5d0d')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -25,7 +25,7 @@ package() {
     make DESTDIR="$pkgdir" INSTALL_PREFIX='/usr' install
     
     # binary executable
-    install -D -m755 wrapper/vmafossexec "${pkgdir}/usr/bin/vmafossexec"
+    install -D -m755 wrapper/vmafossexec -t "${pkgdir}/usr/bin"
     
     # fix prefixes on pkgconfig file
     sed -i 's|/usr/local|/usr|g' "${pkgdir}/usr/lib/pkgconfig/libvmaf.pc"
