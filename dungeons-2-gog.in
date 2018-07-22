@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd @PKGDEST@
+./Dungeons2.x86_64 "$@"

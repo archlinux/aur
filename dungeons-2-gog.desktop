@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/dungeons-2-gog.png
+Exec=/usr/bin/dungeons-2-gog
+Terminal=false
+StartupNotify=false
+
+Name=Dungeons 2
+Comment=The Dungeon Lord is back – and this time he’s serious!
+
+Categories=Game;
