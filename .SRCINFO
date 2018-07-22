@@ -1,0 +1,21 @@
+pkgbase = self-service-password
+	pkgdesc = A small webinterface for changing/resetting ldap passwords
+	pkgver = 1.3
+	pkgrel = 9
+	url = https://ltb-project.org/documentation/self-service-password
+	arch = any
+	license = GPL3
+	depends = php>=5
+	depends = php-ldap
+	optdepends = php-mbstring: For resetting passwords by mail
+	optdepends = php-mcrypt: For token resets
+	backup = etc/webapps/self-service-password/config.php
+	source = https://ltb-project.org/archives/ltb-project-self-service-password-1.3.tar.gz
+	source = config.php
+	source = apache.example.conf
+	sha512sums = 71aec5a3673ee710d4ba4a17862c695e0775ad944d85c8e05e826774010b8e905af5ab9e75886bc8c2efb9d9372ffe00d8856024e9656e1c71a57017b0eeac6d
+	sha512sums = 8b672a77c9b269e4885a345bb1daeaa090f334f6391f691290e4e39157b30164f9248181c93865cdeabbf5e0537907168dae672abbbe28b65dd188e7fdb29000
+	sha512sums = b4a527a2a66fa80d66f071c6dc7aeed333462581a119f9b2e79b4f102b6d5ffe28ce4e30792da53b0f6926268fe23db59cbeea3cfe702642d73919baca65c0be
+
+pkgname = self-service-password
+
