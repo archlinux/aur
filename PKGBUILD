@@ -42,7 +42,7 @@
 
 pkgbase=ttf-ms-win10
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
-pkgver=10.0.17134.81
+pkgver=10.0.17134.167
 pkgrel=1
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
@@ -283,10 +283,10 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             '67461fabd8329d0d8ad62689cac642b34fac81c754ff9077ad211160ec62282d'
             '9bcd6064e3b52fa30a347edd6e82506e2ec8b1602930b423c629a82c10468a5b'
             '029766fa6d75ffba352daa361627c2d9597ba273b160aec1164640fde3418bc9'
-            'ae39c67f69ca081efb50871ecd017a9f8c77fa6981f1f1a04c949202452641f6'
-            '6a4a570fd17ca2c36172d963135a032d48fb17bc07f1566822dd5dc9cc9623cf'
-            'b52a0af4853608bcf276fca0a0c52f153e3a1d5434fded84b010133cc1e3b44a'
-            '1a3f6ca412ba70acc7829f1fac8e2b542e771b06204aaf5ea5dfbac14a67373c'
+            'b779a8f2896a591c9463239c195776f82af71838dcd3c2c1c2a6bb3372a53376'
+            '4942d17e2931eb9a7f958a706e31179e556003ec09fac9d0e32aa977f3a9cd57'
+            'e2463b758dcaef1d4a9653eb14b13f0b2ecea9e97259bd757568d9020bde3219'
+            '619e0a81944afea625d38651008d181e0bb919e9b10db42b65d7629dc89d1eb6'
             '0086c19e81d293a542e7d75564c645fb58070cc850aefebf8fa1c397858e510c'
             'a541834fb9cdde9bd6d2c3ff1565cb0bb5ccf7a15e4e9daf2cb58d9b1cf282aa'
             'a7217a2e590c86141bddadc74a2bcdff2efe210db48469a77a749e0446d91ea9'
