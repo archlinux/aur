@@ -8,6 +8,9 @@ post_install() {
     mkdir -p /var/log/zeronet
     chown zeronet:zeronet /var/log/zeronet
 
+    # This is not usual practice but to editting from web interface
+    chown zeronet:zeronet /etc/zeronet.conf
+
     post_upgrade
 
     # Don't run thesre operations automatically, because they are security-sensitive
@@ -48,5 +51,12 @@ post_upgrade() {
         echo ">>>   DataDirectoryGroupReadable 1"
         echo ">>>   CookieAuthFile /var/lib/tor/control_auth_cookie"
         echo ">>> Run: sudo rm -r /var/lib/tor-auth && sudo systemctl restart tor"
+    fi
+
+    if [ "$(version "$(echo $2 | sed s/\.r.*//)")" -lt "$(version 0.6.3)" ]
+    then
+	# In 0.6.3+, we do this on install, but for already installed versions:
+        # This is not usual practice but to editting from web interface
+        chown zeronet:zeronet /etc/zeronet.conf
     fi
 }
