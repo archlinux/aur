@@ -1,0 +1,43 @@
+Description: Fix various spelling errors found by lintian
+Author: Johann Felix Soden <johfel@debian.org>
+--- a/src/window_main_burst.cc
++++ b/src/window_main_burst.cc
+@@ -85,7 +85,7 @@
+ 	mLabel_Pattern.set_tooltip_text(     _("Prepare the pattern for the output PDF file names") );
+ 	mLabel_Extended.set_tooltip_text(    _("Extended options to format the pattern") );
+ 	mLabel_SourceFile.set_tooltip_text(  _("The source PDF file. "
+-		"Every single page of this document will be saved in a seperate PDF file") );
++		"Every single page of this document will be saved in a separate PDF file") );
+ 	mLabel_Prefix.set_tooltip_text(	     _("Prefix part of the file name pattern") );
+ 	mLabel_Base.set_tooltip_text(        _("Numbering base for the file counter part") );
+ 	mLabel_Digits.set_tooltip_text(      _("Number of digits for the file counter part") );  
+--- a/src/window_main_permission.cc
++++ b/src/window_main_permission.cc
+@@ -54,7 +54,7 @@
+ 		_("Protects the restrictions "
+ 			"\nMax. 32 signs (Latin-1)") );
+ 	mLabel_Encryption.set_tooltip_text(
+-		_("If an encryption strength is given but no passwords are suplied, then the "
++		_("If an encryption strength is given but no passwords are supplied, then the "
+ 			"owner and user passwords remain empty, which  means that the resulting "
+ 			"PDF may be opened and its security parameters altered by anybody.") );
+ 	mLabel_Allow.set_tooltip_text(
+@@ -64,12 +64,12 @@
+ 
+ 	mCButton_Printing.set_tooltip_text(          _("Top quality printing") );
+ 	mCButton_DegradedPrinting.set_tooltip_text(  _("Lower quality printing") );
+-	mCButton_CopyContents.set_tooltip_text(      _("Allows to copy contents\n(also allows screenreaders)") );
+-	mCButton_Screenreaders.set_tooltip_text(     _("Allows to read contents with screenreaders") );
+-	mCButton_ModifyContents.set_tooltip_text(    _("Allows to modify contents\n(also allows assembly)") );
+-	mCButton_Assembly.set_tooltip_text(          _("Allows to assemble contents") );
+-	mCButton_ModifyAnnotations.set_tooltip_text( _("Allows to modify annotations\n(also allows to fill in)") );
+-	mCButton_FillIn.set_tooltip_text(            _("Allows to fill in annotations") );
++	mCButton_CopyContents.set_tooltip_text(      _("Allows one to copy contents\n(also allows screenreaders)") );
++	mCButton_Screenreaders.set_tooltip_text(     _("Allows one to read contents with screenreaders") );
++	mCButton_ModifyContents.set_tooltip_text(    _("Allows one to modify contents\n(also allows assembly)") );
++	mCButton_Assembly.set_tooltip_text(          _("Allows one to assemble contents") );
++	mCButton_ModifyAnnotations.set_tooltip_text( _("Allows one to modify annotations\n(also allows one to fill in)") );
++	mCButton_FillIn.set_tooltip_text(            _("Allows one to fill in annotations") );
+ 
+ 	mRButton_EncryptNone.set_tooltip_text(   _("Don't encrypt output document") );
+ 	mRButton_Encrypt40Bit.set_tooltip_text(  _("Encrypt output document with RC4 40-bit cypher (PDF 1.1 - 1.3)") );

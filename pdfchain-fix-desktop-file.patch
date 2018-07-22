@@ -1,0 +1,18 @@
+Description: Change the desktop file to current standards.
+Author: Johann Felix Soden <johfel@debian.org>
+--- a/application/pdfchain.desktop
++++ b/application/pdfchain.desktop
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=PDF Chain
+ GenericName=pdfchain
+ Comment=A graphical user interface for the PDF Toolkit (PDFtk)
+@@ -10,6 +9,7 @@
+ Categories=Office;
+ MimeType=application/pdf;
+ Terminal=false
++Keywords=pdf,splitting,concatenating,form,converting,user-interface
+ Comment[de]=Eine grafische Benutzerschnittstelle für das PDF Toolkit (PDFtk)
+ #Comment[en]=
+ Comment[es]=Interfaz del usuario grafica para el PDF Toolkit (PDFtk)

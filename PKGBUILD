@@ -1,4 +1,5 @@
-# Maintainer : Marcos Heredia <chelqo@gmail.com>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Marcos Heredia <chelqo@gmail.com>
 # Contributor: yury <polek_yury@ukr.net>
 # Contributor: Carlos Maddela <e7appew@gmail.com> (Ubuntu)
 # Contributor: Carlo Bertelli <carlo.bertelli@gmail.com>
@@ -6,44 +7,48 @@
 
 pkgname=pdfchain
 pkgver=0.4.4.2
-pkgrel=2
-pkgdesc="PDF Chain is a Graphical User Interface for the PDF Tool Kit"
-url="http://pdfchain.sourceforge.net/"
-screenshot="http://pdfchain.sourceforge.net/images/screenshots/${pkgver}/pdfchain_-_title.png"
-license=("GPL")
-install=pdfchain.install
+pkgrel=3
+pkgdesc='A graphical user interface for the PDF toolkit'
 arch=('i686' 'x86_64')
-depends=('pdftk' 'gtkmm3' 'fontconfig' 'libpng')
-makedepends=('intltool' 'atkmm' 'glibmm')
-source=("http://sourceforge.net/projects/pdfchain/files/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "POTFILES.skip"
-	"fix_crash_on_startup.patch")
-md5sums=('8b20a3d46ea4caa174dbe12ca6bc39be'
-         'b16ca527af3a13ec163c86927555f125'
-         'fc4b04d450b89c06e60e03c573857098')
+url='http://pdfchain.sourceforge.net/'
+license=('GPL3')
+depends=(
+    # official repositories:
+        'gcc-libs' 'gtkmm3'
+    # AUR:
+        'pdftk'
+)
+options=('!emptydirs')
+source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        'pdfchain-fix-crash-on-startup.patch'
+        'pdfchain-fix-desktop-file.patch'
+        'pdfchain-fix-spelling.patch')
+sha256sums=('1eee0f93dbe8c9cef9f9fe4ec0a10e0a45ca8cde67cd6ceffa2ce6c843752f3d'
+            'fa46f0fefc1bd0b9b224d07c45c620fab5266805309dcd634daa778e75de1b80'
+            'c51cc32abd3c26602818445bb266bea50c44e7792ee07569412713ecd82e0b9d'
+            '7629af76a6f15b7a5c558699edd3379a936d4b9317411c9841604e83cfac85f6')
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver
-  patch -p1 < ../fix_crash_on_startup.patch
+    cd "${pkgname}-${pkgver}"
+    
+    patch -Np1 -i "${srcdir}/pdfchain-fix-crash-on-startup.patch"
+    patch -Np1 -i "${srcdir}/pdfchain-fix-desktop-file.patch"
+    patch -Np1 -i "${srcdir}/pdfchain-fix-spelling.patch"
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  cp $startdir/POTFILES.skip po/
-  ./configure --prefix=/usr
-  make || return 1
+    cd "${pkgname}-${pkgver}"
+    
+    ./configure --prefix='/usr'
+    
+    make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make prefix=$pkgdir/usr install
-
-  install -dpm755 "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dpm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/"
-
-  install -dpm755 "$pkgdir/usr/share/doc/$pkgname/"
-  install -Dpm644 AUTHORS ChangeLog INSTALL README "$pkgdir/usr/share/doc/$pkgname/"
-  cd $pkgdir/usr/share/doc/$pkgname/ ; rm COPYING NEWS
-
-  echo "Comment[es]=Interface grafica para el PDF Toolkit (pdftk)" >>$pkgdir/usr/share/applications/pdfchain.desktop
+    cd "${pkgname}-${pkgver}"
+    
+    make DESTDIR="$pkgdir" install
+    
+    # remove undesired doc files
+    rm "${pkgdir}/usr/share/doc/${pkgname}/"{AUTHORS,ChangeLog,COPYING,INSTALL,NEWS,README}
 }
