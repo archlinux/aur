@@ -2,7 +2,7 @@
 
 pkgname='xd-torrent-git'
 _gitname='XD'
-pkgver=0.2.2
+pkgver=0.3.1
 pkgrel=1
 arch=('any')
 url="https://github.com/majestrate/XD"
