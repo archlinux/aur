@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-lzop
+	pkgdesc = File compressor using lzo lib (mingw-w64)
+	pkgver = 1.04
+	pkgrel = 1
+	url = http://www.lzop.org/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-lzo
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://www.lzop.org/download/lzop-1.04.tar.gz
+	md5sums = 271eb10fde77a0a96b9cbf745e719ddf
+
+pkgname = mingw-w64-lzop
+
