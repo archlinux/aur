@@ -17,8 +17,8 @@ license=('GPL2')
 groups=('unifont')
 makedepends=('perl')
 source=(
-	"http://unifoundry.com/pub/unifont-$pkgver/unifont-$pkgver.tar.gz"
-	"http://unifoundry.com/pub/unifont-$pkgver/unifont-$pkgver.tar.gz.sig"
+	"http://unifoundry.com/pub/unifont/unifont-$pkgver/unifont-$pkgver.tar.gz"
+	"http://unifoundry.com/pub/unifont/unifont-$pkgver/unifont-$pkgver.tar.gz.sig"
 	fontconfig-noaa.conf
 	fontconfig-upper.conf
 	ttf.install
