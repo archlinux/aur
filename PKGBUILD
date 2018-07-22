@@ -1,7 +1,7 @@
 # Maintainer: Márton Szabó < echo "bm90cmFtb0B2aXBtYWlsLmh1Cg=="|base64 -d >
 
 pkgname=neph-git
-pkgver=v0.2.2.r0.99a0cf7
+pkgver=v0.2.3.r0.12637dd
 pkgrel=1
 pkgdesc="A modern command line job processor"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/neph"
-        crystal build --release src/bin/neph_bin.cr
+        crystal build --release src/neph.cr
 	go-md2man -in neph.1.md -out neph.1
 }
 
