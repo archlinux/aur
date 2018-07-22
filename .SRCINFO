@@ -1,21 +1,17 @@
 pkgbase = vodovod
 	pkgdesc = A free cross-platform pipe connecting game
-	pkgver = 1.10
-	pkgrel = 3
-	url = http://home.gna.org/vodovod/
+	pkgver = 1.10.1
+	pkgrel = 4
+	url = https://github.com/david-redick/vodovod/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = sdl_mixer
 	depends = sdl_image
-	source = http://download.gna.org/vodovod/vodovod-1.10-src.tar.gz
-	source = fix-FTBFS-with-gcc-4.3.patch
-	source = user_files.patch
+	source = vodovod-1.10.1.tar.gz::https://github.com/david-redick/vodovod/archive/1.10.1.tar.gz
 	source = vodovod.desktop
 	source = vodovod.xpm
-	md5sums = fc9baa1704b006761bec5e4e64b7ee9d
-	md5sums = 36fb64ffaaf24f45d0678eccbbe0b180
-	md5sums = 1d29988a13474cdb5ae4822818573825
+	md5sums = 1719a21b673663c22b60057d28653c6d
 	md5sums = db28845dc4a8031fc45ca05e38d462f8
 	md5sums = 94fed2d1ab825bdf9811c59d305398d4
 
