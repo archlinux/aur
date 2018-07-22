@@ -1,3 +1,9 @@
+2.9.0-1
+  - New upstream version 2.9.0
+  - Icinga Studio was removed from upstream
+  - The package is no longer a split package as most of the libs are now linked
+    into the icinga2 binary
+
 2.8.2-1
   - New upstream version 2.8.2, including security fixes for:
     - CVE-2017-16933: chmod on user-writable symlinks, allowing privilege

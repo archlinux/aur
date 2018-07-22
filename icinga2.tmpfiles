@@ -1,0 +1,2 @@
+d /run/icinga2 0750 icinga icingacmd -
+d /run/icinga2/cmd 2750 icinga icingacmd -

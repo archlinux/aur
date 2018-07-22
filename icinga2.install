@@ -1,7 +1,5 @@
 post_install() {
-  /usr/bin/getent group icinga &> /dev/null || /usr/bin/groupadd -r icinga &> /dev/null
-  /usr/bin/getent group icingacmd &> /dev/null || /usr/bin/groupadd -r icingacmd &> /dev/null
-  /usr/bin/getent passwd icinga &> /dev/null || /usr/bin/useradd -r -c "icinga" -M -d /var/spool/icinga2 -g icinga -G icingacmd -s /usr/bin/nologin icinga &> /dev/null
+  /usr/bin/systemd-sysusers icinga2.conf
 
   /usr/bin/chown -R icinga:icinga \
     /etc/icinga2 \
@@ -12,8 +10,6 @@ post_install() {
     /var/cache/icinga2 \
     /var/log/icinga2
 
-  /usr/bin/systemd-tmpfiles --create icinga2.conf
-
   /usr/bin/icinga2 feature enable checker &> /dev/null
   /usr/bin/icinga2 feature enable mainlog &> /dev/null
   /usr/bin/icinga2 feature enable notification &> /dev/null
@@ -23,12 +19,6 @@ pre_remove() {
   [ -f "/etc/icinga2/features-enabled/checker.conf" ] && /usr/bin/icinga2 feature disable checker &> /dev/null
   [ -f "/etc/icinga2/features-enabled/mainlog.conf" ] && /usr/bin/icinga2 feature disable mainlog &> /dev/null
   [ -f "/etc/icinga2/features-enabled/notification.conf" ] && /usr/bin/icinga2 feature disable notification &> /dev/null
-}
-
-post_remove() {
-  /usr/bin/getent passwd icinga &> /dev/null && /usr/bin/userdel icinga &> /dev/null
-  /usr/bin/getent group icinga &> /dev/null && /usr/bin/groupdel icinga &> /dev/null
-  /usr/bin/getent group icingacmd &> /dev/null && /usr/bin/groupdel icingacmd &> /dev/null
 }
 
 post_upgrade() {

@@ -1,0 +1,3 @@
+u icinga - "Icinga Monitoring User" /var/spool/icinga2
+g icingacmd - -
+m icinga icingacmd
