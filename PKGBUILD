@@ -1,9 +1,11 @@
-# Maintainer: enihcam <nanericwang at the google email domain which is .com>
+ 
+# Maintainer: matmoul <matmoul at the google email domain which is .com>
+# Contributor: enihcam <nanericwang at the google email domain which is .com>
 # Contributor: Arun <cute.tec at the google email domain which is .com>
 
 pkgname=walinuxagent
 _pkgname=WALinuxAgent
-pkgver=2.2.27
+pkgver=2.2.29
 pkgrel=1
 pkgdesc="Microsoft Azure Linux Guest Agent"
 arch=('any')
@@ -13,15 +15,15 @@ depends=('python' 'openssh' 'openssl' 'parted' 'net-tools')
 makedepends=('python-setuptools')
 checkdepends=()
 optdepends=()
+install=${pkgname}.install
 provides=("walinuxagent")
 backup=("etc/waagent.conf")
 options=()
-install=
 changelog=
 source=(
   "https://github.com/Azure/WALinuxAgent/archive/v${pkgver}.zip")
 sha256sums=(
-  'cce1ba25047412bbbef0ae3cf442d7ef2ac7ddcabc75efc7eb86b3343dddac0f')
+  '3672093e54e3c97456092640bc22f822806c7462a4169c25ec283725bdc997d3')
 
 package() {
   cd "$_pkgname-$pkgver"

@@ -1,0 +1,14 @@
+post_install() {
+  systemctl daemon-reload
+	echo "You can enable systemd unit waagent with the next command :"
+	echo "systemctl enable waagent"
+	echo "And you can enable systemd unit waagent with the next command :"
+	echo "systemctl start waagent"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  systemctl daemon-reload
+	systemctl restart waagent
+}
