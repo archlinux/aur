@@ -1,5 +1,3 @@
-#!/bin/bash
-
 update_databases() {
   # Update mime database
   type -P update-mime-database &>/dev/null &&
