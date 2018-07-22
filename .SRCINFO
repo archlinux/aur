@@ -1,6 +1,6 @@
 pkgbase = pikaur
 	pkgdesc = AUR helper with minimal dependencies inspired by pacaur, yaourt and yay. Review PKGBUILDs all in once, next build them all without user interaction.
-	pkgver = 1.1.3
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/actionless/pikaur
 	arch = any
@@ -8,9 +8,10 @@ pkgbase = pikaur
 	depends = pacman
 	depends = pyalpm
 	depends = git
+	optdepends = asp: for ABS support in -G/--getpkgbuild operation
 	conflicts = pikaur-git
-	source = pikaur-1.1.3.tar.gz::https://github.com/actionless/pikaur/archive/1.1.3.tar.gz
-	md5sums = a1d5113566b4e49c9157856fa1153240
+	source = pikaur-1.2.0.tar.gz::https://github.com/actionless/pikaur/archive/1.2.0.tar.gz
+	md5sums = 1e9662aa929cd314a4ee3c1136f2b3cd
 
 pkgname = pikaur
 
