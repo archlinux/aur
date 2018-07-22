@@ -1,7 +1,7 @@
 pkgbase = megatools
 	pkgdesc = Command line client application for Mega.nz
-	pkgver = 1.9.98
-	pkgrel = 2
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = http://megatools.megous.com
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = megatools
 	makedepends = asciidoc
 	depends = curl
 	depends = glib2
+	depends = openssl
 	options = !libtool
-	source = http://megatools.megous.com/builds/megatools-1.9.98.tar.gz
-	sha256sums = 9b0521a4d27dbc417fc8e12610ac1e1da729bf6d6eb5bef927ef3670b372a16f
+	source = http://megatools.megous.com/builds/megatools-1.10.0.tar.gz
+	sha256sums = 788a51d0977db95c371c97917aee3d39e145044b6bb70d671bc76c2ea6c4171b
 
 pkgname = megatools
 
