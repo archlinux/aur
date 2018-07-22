@@ -7,7 +7,7 @@ pkgname=popcorntime-git
 _pkgname=popcorntime
 _gitname=popcorn-desktop
 pkgver=0.3.10+6288+be800aa9
-pkgrel=2
+pkgrel=3
 pkgdesc='Stream movies and TV shows from torrents'
 arch=(i686 x86_64)
 url=https://popcorntime.sh
@@ -27,13 +27,16 @@ pkgver() {
   echo $(git tag)+$(git rev-list --count HEAD)+$(git rev-parse --short HEAD)
 }
 
+[ "$CARCH" = i686 ] && _arch=x86 _platform=linux32 _nwjsffmpegarch=ia32
+[ "$CARCH" = x86_64 ] && _arch=x64 _platform=linux64 _nwjsffmpegarch=x64
+_nwjsver=0.18.6 _nwjsffmpeg=$_nwjsver-linux-$_nwjsffmpegarch
+
 prepare() {
   msg2 'Using upstream NW.js instead of downstream...'
   sed -i s#get.popcorntime.sh/repo/nw#dl.nwjs.io# $_gitname/gulpfile.js
+  msg2 'Using custom open-source NW.js FFmpeg version...'
+  [ -f $_nwjsffmpeg.zip ] || wget https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/$_nwjsver/$_nwjsffmpeg.zip
 }
-
-[ "$CARCH" = i686 ] && _arch=x86 _platform=linux32
-[ "$CARCH" = x86_64 ] && _arch=x64 _platform=linux64
 
 build() {
   msg2 'Using temporary Node.js toolchain...'
@@ -41,8 +44,8 @@ build() {
   _node=node-v$_nodever-linux-$_arch
   [ -f $_node.tar.xz ] || wget https://nodejs.org/dist/v$_nodever/$_node.tar.xz
   tar xfp $_node.tar.xz
-  export PATH=$PWD/$_node/bin:$PWD/$_gitname/node_modules/.bin:$PATH
-  export npm_config_cache=$PWD/npm_cache
+  PATH=$PWD/$_node/bin:$PWD/$_gitname/node_modules/.bin:$PATH
+  npm_config_cache=$PWD/npm_cache
   cd $_gitname
   npm install
   gulp build
@@ -53,9 +56,10 @@ package() {
   cd $_gitname/build/Popcorn-Time/$_platform
   install -Dm 644 src/app/images/icon.png $pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png
   install -d $pkgdir/usr/{share/$_pkgname,bin}
+  unzip -o $srcdir/$_nwjsffmpeg.zip -d lib
   cp -a . $pkgdir/usr/share/$_pkgname
   cd $pkgdir/usr/share/$_pkgname
-  find . -type f -exec chmod -R +r,-x {} +
+  find . -type f -exec chmod 644 {} +
   chmod +x Popcorn-Time
   ln -s /usr/share/$_pkgname/Popcorn-Time $pkgdir/usr/bin/$_pkgname
 }
