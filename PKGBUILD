@@ -1,35 +1,39 @@
+# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
+
 pkgname=yubikey-touch-detector
 pkgver=1.1.0
 pkgrel=1
-pkgdesc='A tool that can detect when your YubiKey is waiting for a touch'
-arch=('i686' 'x86_64')
-url='https://github.com/maximbaz/yubikey-touch-detector'
-license=('MIT')
-makedepends=('go')
-optdepends=('gnupg: for GPG'
-            'openssh: for SSH'
-            'pam_u2f-git: for U2F (use patched version!)')
-install=yubikey-touch-detector.install
+pkgdesc="A tool that can detect when your YubiKey is waiting for a touch"
+arch=("i686" "x86_64")
+url="https://github.com/maximbaz/yubikey-touch-detector"
+license=("MIT")
+makedepends=("go")
+optdepends=("gnupg: for GPG"
+            "openssh: for SSH"
+            "pam_u2f: for U2F")
+install="yubikey-touch-detector.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/maximbaz/yubikey-touch-detector/releases/download/$pkgver/$pkgname-src.tar.gz"
         "$pkgname-$pkgver.tar.gz.sig::https://github.com/maximbaz/yubikey-touch-detector/releases/download/$pkgver/$pkgname-src.tar.gz.sig")
 sha256sums=('31f47ebc1ae1428d746fc6ca3489ce9424fca8e4bf8a05d36f5496d30225ef7c'
             'SKIP')
-validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
+validpgpkeys=("EB4F9E5A60D32232BB52150C12C87A28FEAC6B20")
 
 build() {
-  export GOPATH="$(pwd)/.go"
+    export GOPATH="$(pwd)/.go"
 
-  go_pkgname="github.com/maximbaz/yubikey-touch-detector"
-  go_pkgpath="$GOPATH/src/$go_pkgname"
-  mkdir -p "$(dirname $go_pkgpath)"
-  ln -sf "$srcdir/$pkgname" "$go_pkgpath"
+    go_pkgname="github.com/maximbaz/yubikey-touch-detector"
+    go_pkgpath="$GOPATH/src/$go_pkgname"
+    mkdir -p "$(dirname $go_pkgpath)"
+    ln -sf "$srcdir/$pkgname" "$go_pkgpath"
 
-  cd "$go_pkgpath"
-  go build
+    cd "$go_pkgpath"
+    go build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -D yubikey-touch-detector "$pkgdir/usr/bin/yubikey-touch-detector"
-  install -D yubikey-touch-detector.service "$pkgdir/usr/lib/systemd/user/yubikey-touch-detector.service"
+    cd "$srcdir/$pkgname"
+    install -D yubikey-touch-detector "$pkgdir/usr/bin/yubikey-touch-detector"
+    install -D yubikey-touch-detector.service "$pkgdir/usr/lib/systemd/user/yubikey-touch-detector.service"
 }
+
+# vim:set ts=4 sw=4 et:
