@@ -2,14 +2,14 @@
 
 pkgname=hashit
 pkgver=0.1.11
-pkgrel=1
-pkgdesc="Checksum tool for Pantheon"
+pkgrel=2
+pkgdesc="Checksum tool for Pantheon, developed by Artem Anufrij"
 arch=('x86_64')
 url='https://artemanufrij.github.io/'
 license=('GPL3')
 depends=('libgranite.so' 'gtk3')
 makedepends=('vala' 'cmake' 'cmake-modules-elementary-git')
-source=("https://github.com/artemanufrij/hashit/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/artemanufrij/hashit/archive/${pkgver}.tar.gz")
 sha256sums=('f4d550f1e14a283a9078a9358fbd9175a38a5521a567dbe5535f5198adfe2cc4')
 
 prepare() {
