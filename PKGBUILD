@@ -4,15 +4,12 @@
 pkgname='zeronet-git'
 _gitname='ZeroNet'
 _gitroot='https://github.com/HelloZeroNet/ZeroNet.git'
-pkgver=0.6.2
+pkgver=0.6.3.r3542.gf33350a
 pkgrel=1
 arch=('any')
 url="https://zeronet.io/"
-depends=('python2>=2.7.10'
-                'python2-gevent'
-                'python2-msgpack'
-                )
-optdepends=('tor>=0.3.0.0: anonymity')
+depends=('python2' 'python2-gevent' 'python2-msgpack')
+optdepends=('tor: anonymity')
 makedepends=('git')
 license=('GPL2')
 pkgdesc="Decentralized websites using Bitcoin crypto and the BitTorrent network."
