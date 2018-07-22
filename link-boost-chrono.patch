@@ -1,0 +1,53 @@
+diff --git a/gostcoin-qt.pro b/gostcoin-qt.pro
+index feacfd3..70e6fe0 100644
+--- a/gostcoin-qt.pro
++++ b/gostcoin-qt.pro
+@@ -452,11 +452,15 @@ macx:QMAKE_INFO_PLIST = share/qt/Info.plist
+ INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
+ LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
+ LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -lz
+ # -lgdi32 has to happen after -lcrypto (see  #681)
+ win32:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
+-LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX
++LIBS += -lboost_system$$BOOST_LIB_SUFFIX \
++	-lboost_filesystem$$BOOST_LIB_SUFFIX \
++	-lboost_program_options$$BOOST_LIB_SUFFIX \
++	-lboost_thread$$BOOST_THREAD_LIB_SUFFIX \
++	-lboost_chrono$$BOOST_THREAD_LIB_SUFFIX
+ 
+ win32|macx {
+     LIBS += -lboost_chrono$$BOOST_LIB_SUFFIX
+ }
+ 
+diff --git a/src/makefile.bsd b/src/makefile.bsd
+index 028de1d..15861ed 100644
+--- a/src/makefile.bsd
++++ b/src/makefile.bsd
+@@ -36,10 +36,11 @@ LIBS += \
+    -Wl,-B$(LMODE) \
+    -l boost_system$(BOOST_LIB_SUFFIX) \
+    -l boost_filesystem$(BOOST_LIB_SUFFIX) \
+    -l boost_program_options$(BOOST_LIB_SUFFIX) \
+    -l boost_thread$(BOOST_LIB_SUFFIX) \
++   -l boost_chrono$(BOOST_LIB_SUFFIX) \
+    -l db_cxx$(BDB_LIB_SUFFIX) \
+    -l ssl \
+    -l crypto
+ 
+ TESTLIBS += \
+diff --git a/src/makefile.unix b/src/makefile.unix
+index 5d5edac..482cdf5 100644
+--- a/src/makefile.unix
++++ b/src/makefile.unix
+@@ -32,10 +32,11 @@ LIBS += \
+ 	-Wl,-B$(LMODE) \
+ 	-lboost_system$(BOOST_LIB_SUFFIX) \
+ 	-lboost_filesystem$(BOOST_LIB_SUFFIX) \
+ 	-lboost_program_options$(BOOST_LIB_SUFFIX) \
+ 	-lboost_thread$(BOOST_LIB_SUFFIX) \
++	-lboost_chrono$(BOOST_LIB_SUFFIX) \
+ 	-ldb_cxx$(BDB_LIB_SUFFIX) \
+ 	-lssl \
+ 	-lcrypto
+ 
+ TESTLIBS += \

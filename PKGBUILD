@@ -9,7 +9,7 @@ then
 pkgname+=('gostcoin-qt-git')
 fi
 
-pkgver=0.8.5.11
+pkgver=0.8.5.12
 pkgrel=1
 pkgdesc="Coin based on GOST R 34.10 and GOST R 34.11-2012 with I2P support"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -26,12 +26,18 @@ optdepends=('i2pd: I2P network transport')
 
 source=("${pkgbase%%-git}::git+https://github.com/GOSTSec/gostcoin"
         "gostcoind.service"
-        "gostcoind.conf")
+        "gostcoind.conf"
+        "link-boost-chrono.patch")
 
 
 pkgver() {
   cd ${pkgbase%%-git}
   echo $(git describe --tags --long | sed 's/^v//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+}
+
+prepare() {
+  cd $srcdir/${pkgbase%%-git}
+  patch -p1 < ../link-boost-chrono.patch
 }
 
 build() {
@@ -72,4 +78,5 @@ package_gostcoin-qt-git(){
 
 md5sums=('SKIP'
          '5fd2ff66d55bdfcba99755bb7c88b7f0'
-         'a2811c45f7bdbb9dc66775f6f897631e')
+         'a2811c45f7bdbb9dc66775f6f897631e'
+         '96720e3e4fd7dcee27462df0f6e97c8b')
