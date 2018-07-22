@@ -1,5 +1,5 @@
-# Maintainer: jose <jose1711 [at] gmail (dot) com>
-# Contributor: nblock <nblock [/at\] archlinux DOT us>
+# Maintainer: nblock <nblock [/at\] archlinux DOT us>
+# Contributor: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=mytourbook_bin
 pkgver=18.6.0
