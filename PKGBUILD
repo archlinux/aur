@@ -40,7 +40,9 @@ build() {
     if [ ${_arch} = "x86_64-w64-mingw32" ]; then
       CFLAGS+=" -DHAVE_DOSISH_SYSTEM=1"
     fi
-    ${_arch}-configure ..
+    ${_arch}-configure \
+      --with-libgpg-error-prefix=/usr/${_arch} \
+      ..
     make
     popd
   done
