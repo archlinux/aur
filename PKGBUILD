@@ -1,10 +1,11 @@
 # $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: blu256 <mfilippos@yandex.ru>
+# Contributer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: eric <eric@archlinux.org>
 # Contributor: dorphell <dorphell@gmx.net>
 
 pkgname=ude
-pkgver=0.2.11_a
+pkgver=0.2.11a
 pkgrel=1
 pkgdesc="The ultimate window manager for UDE"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = ude
 	pkgdesc = The ultimate window manager for UDE
-	pkgver = 0.2.11_a
+	pkgver = 0.2.11a
 	pkgrel = 1
 	url = http://udeproject.sourceforge.net/index.shtml
 	arch = x86_64
