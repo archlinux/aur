@@ -1,0 +1,18 @@
+pkgbase = pp-git
+	pkgdesc = PP is a text preprocessor designed for Pandoc (and more generally Markdown and reStructuredText).
+	pkgver = r174.7e2866f
+	pkgrel = 1
+	url = http://cdsoft.fr/pp
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = stack
+	depends = gmp
+	provides = pp
+	conflicts = pp
+	conflicts = pp
+	source = pp::git+https://github.com/CDSoft/pp.git
+	md5sums = SKIP
+
+pkgname = pp-git
+
