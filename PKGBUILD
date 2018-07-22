@@ -4,25 +4,14 @@
 pkgbase=('monero-git')
 pkgname=('monero-git' 'libmonero-wallet-git')
 _gitname='monero'
-pkgver=0.12.0.0
+pkgver=0.12.3.0
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
 
-depends=('boost-libs>=1.45'  'miniupnpc>=1.6' 'libunwind'
-         'readline' 'zeromq'
-
-	 # For OpenSSL v1.1
-	 'unbound>=1.4.16'  # depends on OpenSSL v1.1
-	 'openssl'
-
-	 # For OpenSSL v1.0
-	 # use unbound vendored inside upstream source repo
-	 #'openssl-1.0'
-	 )
+depends=('boost-libs>=1.45'  'openssl' 'libunwind' 'readline' 'zeromq' 'pcsclite')
 makedepends=('git' 'cmake' 'boost' 'gtest' 'qt5-tools')
-
 
 pkgdesc="Peer-to-peer anonymous digital currency (daemon, CLI wallet, and wallet API library)"
 _upstream=https://github.com/monero-project/monero.git
@@ -52,10 +41,6 @@ prepare() {
        # To apply PRs
        #git remote add up $_upstream
        #git pull --no-edit up refs/pull/xxxx/head
-
-       cd external/miniupnp
-       git fetch origin refs/pull/3/head # cmake: do not install into system
-       git merge FETCH_HEAD
 }
 
 build() {
@@ -95,6 +80,7 @@ check() {
 	EXCLUDED_UNIT_TESTS+='DNSResolver.IPv4Failure'
 	EXCLUDED_UNIT_TESTS+=':DNSResolver.DNSSECSuccess'
 	EXCLUDED_UNIT_TESTS+=':AddressFromURL.Failure'
+	EXCLUDED_UNIT_TESTS+=':ringdb.not_found' # PR #4165
 	tests/unit_tests/unit_tests --gtest_filter="-$EXCLUDED_UNIT_TESTS" \
             --data-dir ../tests/data
 
@@ -120,9 +106,16 @@ package_monero-git() {
         # options=(!strip debug)
 
 	install -D -m755 "$srcdir/$_gitname/build/bin/monerod" "$pkgdir/usr/bin/monerod"
+
 	install -D -m755 "$srcdir/$_gitname/build/bin/monero-wallet-cli" "$pkgdir/usr/bin/monero-wallet-cli"
+	install -D -m755 "$srcdir/$_gitname/build/bin/monero-wallet-rpc" "$pkgdir/usr/bin/monero-wallet-rpc"
+
+	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-blackball" "$pkgdir/usr/bin/monero-blockchain-blackball"
 	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-import" "$pkgdir/usr/bin/monero-blockchain-import"
 	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-export" "$pkgdir/usr/bin/monero-blockchain-export"
+	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-usage" "$pkgdir/usr/bin/monero-blockchain-usage"
+
+	install -D -m755 "$srcdir/$_gitname/build/bin/monero-gen-trusted-multisig" "$pkgdir/usr/bin/monero-gen-trusted-multisig"
 
 	install -Dm644 $srcdir/$_gitname/utils/systemd/monerod.service "${pkgdir}/usr/lib/systemd/system/monerod.service"
 	install -Dm644 "$srcdir/$_gitname/utils/conf/monerod.conf" "$pkgdir/etc/monerod.conf"
