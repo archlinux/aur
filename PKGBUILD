@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=playmymusic
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Melody is a music player for Pantheon, developed by Artem Anufrij"
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=('gst-plugins-base: "Base" plugin libraries'
             'gst-plugins-good: "Good" plugin libraries'
             'gst-plugins-bad: "Bad" plugin libraries'
             'gst-plugins-ugly: "Ugly" plugin libraries')
-source=("https://github.com/artemanufrij/playmymusic/archive/${pkgver}.tar.gz")
-sha256sums=('1e7e1dd9df44d46e6148c75636cb76e3944b38d0f8b868a2dee83c832e677355')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/artemanufrij/playmymusic/archive/${pkgver}.tar.gz")
+sha256sums=('f7237b3b3ed3014a2ea683e0b4d6f21253740f10704c9e6c8b7b569fd19b4bbf')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
