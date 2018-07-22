@@ -1,0 +1,15 @@
+pkgbase = joycon-git
+	pkgdesc = Joy-Con input driver
+	pkgver = r99.144b22d
+	pkgrel = 1
+	url = https://github.com/riking/joycon
+	arch = x86_64
+	license = unknown
+	makedepends = go
+	makedepends = git
+	depends = libudev.so
+	provides = joycon
+	conflicts = joycon
+
+pkgname = joycon-git
+
