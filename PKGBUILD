@@ -3,7 +3,7 @@
 
 pkgname=prometheus-snmp-exporter-bin
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SNMP Exporter for Prometheus (binary, not built from source)"
 arch=("x86_64" "armv5h" "armv6h" "armv7h")
 url="https://github.com/prometheus/snmp_exporter"
@@ -39,7 +39,7 @@ package() {
     install -D -m0755 snmp_exporter "${pkgdir}/usr/bin/prometheus_snmp_exporter"
 
     # Install SystemD Service File
-    install -D -m0755 "${srcdir}/prometheus-snmp-exporter.service" "${pkgdir}/usr/lib/systemd/system/prometheus-snmp-exporter.service"
+    install -D -m0644 "${srcdir}/prometheus-snmp-exporter.service" "${pkgdir}/usr/lib/systemd/system/prometheus-snmp-exporter.service"
 
     # Install snmp.yml
     install -D -m644 snmp.yml "${pkgdir}/etc/prometheus/snmp.yml"
