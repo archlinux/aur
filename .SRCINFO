@@ -1,0 +1,19 @@
+pkgbase = alpaca
+	pkgver = 0.2.8
+	pkgrel = 1
+	arch = any
+	license = Apache2
+	makedepends = rebar3
+	depends = erlang-nox
+	provides = alpaca
+	options = !strip
+	options = !docs
+	options = !libtool
+	options = !staticlibs
+	source = https://github.com/alpaca-lang/alpaca/archive/v0.2.8.tar.gz
+	source = rebar.config.patch
+	md5sums = a456366aa77498b80ab6b8dc2adcca1f
+	md5sums = 312ad70a3e6b0cf03e7d4d71daa5456f
+
+pkgname = alpaca
+

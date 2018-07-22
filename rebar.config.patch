@@ -1,0 +1,8 @@
+--- rebar.config	2018-01-02 07:11:35.000000000 +0100
++++ rebar.config	2018-07-22 17:55:39.244807393 +0200
+@@ -1,4 +1,4 @@
+-{erl_opts, [debug_info, warnings_as_errors, {gettext, alpaca_compiled_po}]}.
++{erl_opts, [debug_info, {gettext, alpaca_compiled_po}]}.
+ {xrl_opts, [{report, true}, {verbose, true}]}.
+ {deps, [ {epo_runtime, {git, "git://github.com/brigadier/epo_runtime.git",
+                         {tag, "0.3"}}},
