@@ -9,6 +9,7 @@ pkgbase = python-scan-build
 	makedepends = python-setuptools
 	depends = python>=2.7
 	depends = clang
+	depends = python-typing
 	source = https://files.pythonhosted.org/packages/source/s/scan-build/scan-build-2.0.13.tar.gz
 	md5sums = 93bd40082d20116a558d3206d63db68c
 

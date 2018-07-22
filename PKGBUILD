@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/rizsotto/scan-build"
 license=('GPL3')
 makedepends=('python' 'python-setuptools')
-depends=('python>=2.7' 'clang')
+depends=('python>=2.7' 'clang' 'python-typing')
 conflicts=()
 provides=()
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
