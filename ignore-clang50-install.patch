@@ -1,0 +1,11 @@
+--- Setup.sh	2018-07-20 11:21:40.054921036 -0500
++++ Setup_new.sh	2018-07-20 11:25:08.190071301 -0500
+@@ -126,7 +126,7 @@
+ fi
+ 
+ # Install our bundled toolchain unless we are running a Perforce build
+-if [ ! -f Build/PerforceBuild.txt ]; then
++if [ ! -f Build/PerforceBuild.txt ] && [[ "$ID" != "arch" ]]; then
+   echo "Installing a bundled clang toolchain"
+   pushd Build/BatchFiles/Linux > /dev/null
+   ./SetupToolchain.sh

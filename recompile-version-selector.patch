@@ -1,0 +1,11 @@
+--- Setup.sh	2018-07-20 11:07:26.136221539 -0500
++++ Setup_new.sh	2018-07-20 11:10:00.662078181 -0500
+@@ -41,6 +41,8 @@
+ 
+ 	echo Register the engine installation...
+ 	if [ -f Engine/Binaries/Linux/UnrealVersionSelector-Linux-Shipping ]; then
++		make
++
+ 		pushd Engine/Binaries/Linux > /dev/null
+ 		./UnrealVersionSelector-Linux-Shipping -register
+ 		popd > /dev/null

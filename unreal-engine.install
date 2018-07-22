@@ -1,8 +1,9 @@
 
 
 install_unreal() {
-	/opt/unreal-engine/GenerateProjectFiles.sh
-	sed -ri 's|(^,*)-makefile.*|\1-projectfiles "$@"|' /opt/unreal-engine/Engine/Build/BatchFiles/Linux/GenerateProjectFiles.sh
+	sed -ri 's|(..*)-makefile.*|\1-projectfiles "$@"|' /opt/unreal-engine/Engine/Build/BatchFiles/Linux/GenerateProjectFiles.sh
+	sed -ri '/(..*)make.*/,+1d' /opt/unreal-engine/Setup.sh
+	#/opt/unreal-engine/GenerateProjectFiles.sh
 }
 
 post_install() {

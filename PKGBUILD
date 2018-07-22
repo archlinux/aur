@@ -10,7 +10,7 @@
 
 pkgname='unreal-engine'
 install="$pkgname.install"
-pkgver=4.19.2
+pkgver=4.20.0
 # shellcheck disable=SC2034
 {
   pkgrel=1
@@ -25,22 +25,28 @@ pkgver=4.19.2
     "git+ssh://git@github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
     'UE4Editor.desktop'
     'ignore-return-value-error.patch'
-    'disable-pie.patch'
     'only-generate-makefile.patch'
     'html5-build.patch'
-    'clang60-support.patch'
+    'UnrealVersionSelector-register.patch'
+    'recompile-version-selector.patch'
+    'Makefile'
+    'ignore-clang50-install.patch'
+    'use-arch-mono.patch'
   )
 
 sha256sums=('SKIP'
             '46871ed662a3c97698be609d27da280d9000ec97183f1fa6592986f9910a2118'
             '918dff809a7e815343a8d233f704f52a910b8f01a9cb3d29de541a0334fecc7c'
-            'a8bb46ad630c077dd302cd8397f2c8d79d6bb13dbff1cbfbbdad447033ad3c6e'
-            'dba4b1910dd6424d50a8d95a461c5cf3a96f3e7df0b015624d9bf1c97dc317d3'
+            'ab3e7981da6da4473717aef0bce9d550aacad02f9260f98d5b7a0bb3374a959a'
             '9fd6d16d56fbe0489a2580b86359df84b83a6987b5760a9e57ae0898f51943ac'
-            '5583481dc7e08ebce1d0865b36bd50124b8be0d2347fec20aad3c37a346b3eb4')
+            '23f55f7dffc98f5a8ef84520c7ef82bc9cca447433ad0405e3f9a319a29301ef'
+            '1dd876fa48c6fb4fcd4ccbdb8ed4ceccfa294685911e91be58bbc5e95726c279'
+            'f07f66c6784c82b3629bfad5a2c01515e012d5feec08f63dcf15c2c06cc8b62e'
+            'c1bb149410d6871a1858513d6253694452925a892d672f5705b2a7f96e5a1f36'
+            '006bfc6dc6c4258b55768cac34a3c42f033a2777332272d8c47c340282bf400f')
 
   # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
-  options=(!strip)
+  options=(!strip staticlibs)
 }
 
 prepare() {
@@ -48,10 +54,14 @@ prepare() {
   # shellcheck disable=SC2154
 
   ue4src="$srcdir/UnrealEngine/Engine/Source"
+  patch "$ue4src/Programs/UnrealVersionSelector/Private/UnrealVersionSelector.cpp" UnrealVersionSelector-register.patch
+  patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" ignore-clang50-install.patch
+  patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/SetupMono.sh" use-arch-mono.patch
+  patch "$srcdir/UnrealEngine/Setup.sh" recompile-version-selector.patch
   linuxToolChain="$ue4src/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs"
-  patch "$linuxToolChain" clang60-support.patch
   patch "$linuxToolChain" ignore-return-value-error.patch
-  patch "$linuxToolChain" disable-pie.patch
+
+  cp "$srcdir/Makefile" "$srcdir/UnrealEngine/Makefile"
 
   patch -p0 -i only-generate-makefile.patch
   # Source Code Accessors
@@ -75,9 +85,8 @@ prepare() {
 
   ./Setup.sh
 
-  dos2unix "$ue4src/ThirdParty/Linux/LibCxx/include/c++/v1/__locale"
-  #patch "$ue4src/ThirdParty/Linux/LibCxx/include/c++/v1/__locale" "$srcdir/xlocale-crash.patch"
   patch "$ue4src/Programs/UnrealBuildTool/Platform/HTML5/HTML5SDKInfo.cs" "$srcdir/html5-build.patch"
+  echo "generating project files"
   ./GenerateProjectFiles.sh
 }
 
