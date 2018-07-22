@@ -8,6 +8,7 @@ pkgbase = pp-git
 	makedepends = git
 	makedepends = stack
 	depends = gmp
+	optdepends = asymptote: For vector graphics support
 	provides = pp
 	conflicts = pp
 	conflicts = pp

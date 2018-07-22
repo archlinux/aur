@@ -10,6 +10,7 @@ license=('GPL')
 groups=()
 depends=('gmp')
 makedepends=('git' 'stack') # 'bzr', 'git', 'mercurial' or 'subversion'
+optdepends=('asymptote: For vector graphics support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "pp")
 replaces=()
@@ -18,9 +19,6 @@ options=()
 source=("${_pkgname}::git+https://github.com/CDSoft/pp.git")
 noextract=()
 md5sums=('SKIP')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
@@ -37,5 +35,5 @@ build() {
 package() {
 	cd "$srcdir/${_pkgname}"
 	stack install --local-bin-path ./bin
-    install -Dm755 ./bin/pp "$pkgdir/usr/bin/pandoc-pp"
+    install -Dm755 ./bin/pp "$pkgdir/usr/bin/pp"
 }
