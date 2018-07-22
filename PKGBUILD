@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 	    
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags |sed 's+-+.+g'|sed 's+^v++'|sed 's+2.2.2+3.0.0+'
+  git describe --tags | tr - .
 }
 
 package() {
