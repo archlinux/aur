@@ -12,7 +12,7 @@ license=('custom:NVIDIA')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-$pkgver"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
-md5sums=('d8f540e3c342b32c8cfe52dc8f2a8f97')
+md5sums=('eefdcd6a242039401d7b8a7ffdab7cc6')
 
 _create_links() {
   # create missing soname links
