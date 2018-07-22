@@ -1,7 +1,7 @@
 pkgbase = gamehub
-	pkgdesc = Games manager/downloader/library written in Vala for Elementary OS that supports GOG and Steam
-	pkgver = 0.5.5
-	pkgrel = 2
+	pkgdesc = Games manager/downloader/library written in Vala that supports GOG, Steam and Humble Bundle
+	pkgver = 0.5.7
+	pkgrel = 1
 	url = https://github.com/tkashkin/GameHub
 	arch = any
 	license = unknown
@@ -19,8 +19,8 @@ pkgbase = gamehub
 	depends = gdk-pixbuf2
 	depends = cairo
 	conflicts = gamehub-git
-	source = GameHub-0.5.5.tar.gz::https://github.com/tkashkin/GameHub/archive/0.5.5.tar.gz
-	md5sums = 8dbc4437ccdb2e73da6d4e11c900325a
+	source = GameHub-0.5.7.tar.gz::https://github.com/tkashkin/GameHub/archive/0.5.7.tar.gz
+	md5sums = ea8ab308917b91a25c72a39d17b4c860
 
 pkgname = gamehub
 

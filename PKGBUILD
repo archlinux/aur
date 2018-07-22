@@ -1,17 +1,17 @@
 # Maintainer: Robert Stoffers <rstoffers@gmail.com>
 
 pkgname=gamehub
-pkgver=0.5.5
-pkgrel=2
-pkgdesc="Games manager/downloader/library written in Vala for Elementary OS that supports GOG and Steam"
+pkgver=0.5.7
+pkgrel=1
+pkgdesc="Games manager/downloader/library written in Vala that supports GOG, Steam and Humble Bundle"
 arch=('any')
 url="https://github.com/tkashkin/GameHub"
 license=('unknown')
 depends=('granite' 'gtk3' 'glibc' 'webkit2gtk' 'json-glib' 'libgee' 'libsoup' 'sqlite' 'gdk-pixbuf2' 'cairo')
 makedepends=('meson' 'ninja' 'vala')
 conflicts=('gamehub-git')
-source=("GameHub-$pkgver.tar.gz"::https://github.com/tkashkin/GameHub/archive/0.5.5.tar.gz)
-md5sums=('8dbc4437ccdb2e73da6d4e11c900325a') 
+source=("GameHub-$pkgver.tar.gz"::https://github.com/tkashkin/GameHub/archive/0.5.7.tar.gz)
+md5sums=('ea8ab308917b91a25c72a39d17b4c860') 
 
 build() {
 	cd "GameHub-$pkgver"
@@ -22,5 +22,5 @@ build() {
 
 package() {
 	cd "GameHub-$pkgver"/build
-	sudo ninja install
+	ninja install
 }
