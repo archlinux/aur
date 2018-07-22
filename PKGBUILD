@@ -2,32 +2,25 @@
 
 pkgbase=tensorflow-computecpp
 pkgname=(tensorflow-computecpp python-tensorflow-computecpp)
-pkgver=ComputeCpp+0.6.0+31+g0367804e7e
+pkgver=1.8
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)"
 url="https://github.com/lukeiwanski/tensorflow"
+epoch=1
 license=('APACHE')
 arch=('x86_64')
 depends=(opencl-icd-loader computecpp)
 makedepends=(git opencl-icd-loader computecpp bazel python-numpy python-pip python-wheel python-setuptools)
 options=(!ccache)
-source=("git+${url}#branch=dev/amd_gpu"
-        17508.patch)
-sha512sums=('SKIP'
-            'cb2880767532275f55f91ab66b29687fceadcadb8e23608d1e59b35a2899239882367ac38465a5e635f17378286093da0ede115668e23d651776d962ddc35ea9')
-
-pkgver() {
-  cd ${srcdir}/tensorflow
-  git describe --tags | sed 's/-/+/g;s/v//;'
-}
+source=("git+${url}#branch=integration/${pkgver}")
+sha512sums=('SKIP')
 
 prepare() {
-  patch -Np1 -i ${srcdir}/17508.patch -d tensorflow
-
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
   export USE_DEFAULT_PYTHON_LIB_PATH=1
-  export CC_OPT_FLAGS="${CXXFLAGS} -no-serial-memop"
+  export CC_OPT_FLAGS="-march=native -mfpmath=sse -O2 -pipe"
+  export TF_DOWNLOAD_CLANG=0
   export TF_CUDA_CLANG=0
   export TF_NEED_CUDA=0
   export TF_NEED_JEMALLOC=0
