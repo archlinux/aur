@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=69.0.3493.3
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libappindicator-gtk2')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'atk' 'at-spi2-atk' 'ncurses5-compat-libs')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git' 'atk' 'at-spi2-atk' 'ncurses5-compat-libs' 'gn-chromium')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -452,8 +452,7 @@ build() {
 
   sed 's|is_win \|\| (is_linux && use_x11 && !is_chromeos)|false|g' -i third_party/angle/gni/angle.gni
 
- python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
-  out/Release/gn gen out/Release --args="${_flags[*]}" \
+  gn gen out/Release --args="${_flags[*]}" \
     --script-executable=/usr/bin/python2
 
 python2 build/util/lastchange.py -m GPU_LISTS_VERSION \
