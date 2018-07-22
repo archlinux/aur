@@ -1,7 +1,7 @@
 # Maintainer: Sandro Rüegge <sandro.rueegge@gmail.com>
 pkgname=self-service-password
 pkgver=1.3
-pkgrel=9
+pkgrel=10
 pkgdesc="A small webinterface for changing/resetting ldap passwords"
 arch=('any')
 url="https://ltb-project.org/documentation/self-service-password"
