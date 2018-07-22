@@ -32,8 +32,6 @@ _package_dxvk() {
 	if [ ! -f "$pkgdir"/$destdir/x$1/d3d11.dll ] ||\
 	 [ ! -f "$pkgdir"/$destdir/x$1/dxgi.dll ]; then
 		echo "Missing files, build was unsuccessful"
-		echo "$pkgdir"/$destdir/x$1/d3d11.dll
-		echo "$pkgdir"/$destdir/x$1/d3d11.dll
 		return 1
 	fi
         mkdir -p "$pkgdir/usr/bin"
