@@ -2,7 +2,7 @@
 
 pkgname=cc-tool-git
 _pkgver=0.26
-pkgver=0.26.r13.d5bb566
+pkgver=0.26.r15.07e3698
 pkgrel=1
 pkgdesc="Support for Texas Instruments CC Debugger"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('boost>=1.39')
 provides=('cc-tool')
 conflicts=('cc-tool')
-source=( "${pkgname}::git+https://github.com/dashesy/cc-tool.git#branch=master" )
+source=( "${pkgname}::git+https://github.com/AlexMekkering/cc-tool.git#branch=master" )
 md5sums=('SKIP')
 
 pkgver() {
