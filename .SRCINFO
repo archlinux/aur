@@ -4,6 +4,7 @@ pkgbase = dxvk-git
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
+	arch = i686
 	license = zlib/libpng
 	makedepends = ninja
 	makedepends = meson>=0.43
@@ -13,13 +14,22 @@ pkgbase = dxvk-git
 	makedepends = wine
 	depends = vulkan-icd-loader
 	depends = wine>=3.10
-	provides = dxvk
-	conflicts = dxvk-bin
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	source = dxvk-git::git+https://github.com/doitsujin/dxvk.git
 	md5sums = SKIP
 
-pkgname = dxvk-git
+pkgname = dxvk-win64-git
+	arch = x86_64
+	provides = dxvk
+	conflicts = dxvk-git
+	replaces = dxvk-git
+
+pkgname = dxvk-win32-git
+	arch = i686
+	arch = x86_64
+	provides = dxvk
+	conflicts = dxvk-git
+	replaces = dxvk-git
 

@@ -1,53 +1,58 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
-pkgname=dxvk-git
+pkgbase=dxvk-git
+pkgname=('dxvk-win64-git' 'dxvk-win32-git')
 pkgver=0.61_33_g9de3a61
 pkgrel=1
-epoch=
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine."
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://github.com/doitsujin/dxvk"
 license=('zlib/libpng')
-groups=()
 depends=('vulkan-icd-loader' 'wine>=3.10')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'mingw-w64-gcc' 'git' 'wine')
-checkdepends=()
-provides=("dxvk")
-conflicts=("dxvk-bin")
-replaces=()
-backup=()
 options=(!strip !buildflags staticlibs)
-install=
-changelog=
-source=($pkgname::"git+https://github.com/doitsujin/dxvk.git")
-noextract=()
+source=($pkgbase::"git+https://github.com/doitsujin/dxvk.git")
 md5sums=("SKIP")
-validpgpkeys=()
 
 
 pkgver() {
-        cd "$pkgname"
+        cd "$pkgbase"
         git describe | sed s/"-"/"_"/g | sed 's/^v\(.*\)/\1/'
 }
 
 
 build() {
-	"$pkgname"/package-release.sh $pkgver $PWD --no-package
+	"$pkgbase"/package-release.sh $pkgver $PWD --no-package
 }
 
-
-
-package() {
-	mkdir -p "$pkgdir/usr/share/dxvk"
-	cp -rv dxvk-$pkgver/* "$pkgdir/usr/share/dxvk"
-	if [ ! -f "$pkgdir"/usr/share/dxvk/x64/d3d11.dll ] ||\
-	 [ ! -f "$pkgdir"/usr/share/dxvk/x64/dxgi.dll ] ||\
-	 [ ! -f "$pkgdir"/usr/share/dxvk/x32/d3d11.dll ] ||\
-	 [ ! -f "$pkgdir"/usr/share/dxvk/x32/dxgi.dll ]; then
+_package_dxvk() {
+        destdir="/usr/share/dxvk/"
+	mkdir -p "$pkgdir/$destdir"
+	cp -rv dxvk-$pkgver/x$1 "$pkgdir/$destdir"
+	if [ ! -f "$pkgdir"/$destdir/x$1/d3d11.dll ] ||\
+	 [ ! -f "$pkgdir"/$destdir/x$1/dxgi.dll ]; then
 		echo "Missing files, build was unsuccessful"
+		echo "$pkgdir"/$destdir/x$1/d3d11.dll
+		echo "$pkgdir"/$destdir/x$1/d3d11.dll
 		return 1
 	fi
         mkdir -p "$pkgdir/usr/bin"
-        ln -s "/usr/share/dxvk/x32/setup_dxvk.sh" "$pkgdir/usr/bin/setup_dxvk32"
-        ln -s "/usr/share/dxvk/x64/setup_dxvk.sh" "$pkgdir/usr/bin/setup_dxvk64"
+        ln -s "$destdir/setup_dxvk.sh" "$pkgdir/usr/bin/setup_dxvk$1"
+}
+
+package_dxvk-win64-git() {
+        arch=('x86_64')
+        conflicts=("dxvk-win64-bin")
+        provides=("dxvk")
+        conflicts=("dxvk-git")
+        replaces=("dxvk-git")
+        _package_dxvk 64
+}
+package_dxvk-win32-git() {
+        arch=('i686' 'x86_64')
+        conflicts=("dxvk-win32-bin")
+        provides=("dxvk")
+        conflicts=("dxvk-git")
+        replaces=("dxvk-git")
+        _package_dxvk 32
 }
