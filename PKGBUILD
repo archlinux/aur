@@ -3,13 +3,13 @@
 pkgname=mpd-rich-presence-discord-git
 _pkgname=mpd-rich-presence-discord
 pkgver=r29
-pkgrel=6
+pkgrel=7
 pkgdesc=" Broadcast your MPD state using discord rich presence!"
 arch=('x86_64')
 url='https://github.com/SSStormy'
 license=('MIT')
-depends=('libmpdclient' 'gcc-libs' 'discord-rpc-api')
-makedepends=('git' 'cmake' 'discord-rpc-api')
+depends=('libmpdclient' 'gcc-libs' 'discord-rpc-api-git')
+makedepends=('git' 'cmake' 'discord-rpc-api-git')
 source=("git+https://github.com/SSStormy/$_pkgname.git")
 md5sums=('SKIP')
 
