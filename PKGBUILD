@@ -30,7 +30,7 @@ package() {
 
 	# install the configuration
 	install -d ${pkgdir}/etc/webapps/${pkgname}
-	install -m 640 -o root -g root ${srcdir}/config.php ${pkgdir}/etc/webapps/${pkgname}
+	install -m 640 -o http -g http ${srcdir}/config.php ${pkgdir}/etc/webapps/${pkgname}
 	install -m 644 -o root -g root ${srcdir}/apache.example.conf ${pkgdir}/etc/webapps/${pkgname}
 	ln -sf /etc/webapps/${pkgname}/config.php ${pkgdir}/usr/share/webapps/${pkgname}/conf/config.inc.local.php
 }
