@@ -3,10 +3,10 @@
 pkgname=pylnker-git
 _pkgname=pylnker
 pkgver=r9.3ee2854
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to parse Windows .lnk files."
 url="https://github.com/HarmJ0y/pylnker"
-depends=('python')
+depends=('python2')
 makedepends=('git')
 conflicts=(pylnker)
 license=('GPL')
@@ -22,6 +22,7 @@ pkgver() {
 
 package() {
   cd ${srcdir}/${pkgname}
+  sed -i '1s/python/python2/' pylnker.py
   install -Dm755 "pylnker.py" "$pkgdir/usr/bin/pylnker"
 }
 
