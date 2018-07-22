@@ -1,13 +1,13 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 
 pkgname=c-lolcat
-pkgver=r36.e298c10
+pkgver=r40.ceb4d66
 pkgrel=1
 pkgdesc="High-performance implementation of lolcat"
 arch=('i686' 'x86_64')
 url="https://github.com/jaseg/lolcat"
 license=('WTFPL')
-depends=('musl')
+depends=()
 makedepends=()
 conflicts=('lolcat' 'pyhton-lolcat')
 source=("${pkgname}"::'git+https://github.com/jaseg/lolcat.git')
@@ -20,10 +20,10 @@ pkgver() {
 
 #prepare() {
 #    cd "${srcdir}/${pkgname}"
-#    #git submodule update --init musl
-#    #git submodule update --init memorymapping
-#    git submodule init
-#    git submodule update
+    #git submodule update --init musl
+    #git submodule update --init memorymapping
+    #git submodule init
+    #git submodule update
 #}
 
 build() {
@@ -33,6 +33,7 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  mkdir -p "${pkgdir}/usr/bin"
-  make DESTDIR="${pkgdir}/usr/bin" install
+  #mkdir -p "${pkgdir}/usr/bin"
+  #make DESTDIR="${pkgdir}/usr/bin" install
+  install --mode=755 -D -- lolcat ${pkgdir}/usr/bin/lolcat
 }

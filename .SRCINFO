@@ -1,12 +1,11 @@
 pkgbase = c-lolcat
 	pkgdesc = High-performance implementation of lolcat
-	pkgver = r34.8e95919
-	pkgrel = 5
+	pkgver = r37.32c34ab
+	pkgrel = 1
 	url = https://github.com/jaseg/lolcat
 	arch = i686
 	arch = x86_64
 	license = WTFPL
-	depends = musl
 	conflicts = lolcat
 	conflicts = pyhton-lolcat
 	source = c-lolcat::git+https://github.com/jaseg/lolcat.git
