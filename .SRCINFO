@@ -1,0 +1,17 @@
+pkgbase = pam_beacon-git
+	pkgdesc = PAM module for multi-factor authentication with Bluetooth Devices & Beacons
+	pkgver = r19.0d4021f
+	pkgrel = 1
+	url = https://github.com/muesli/pam-beacon
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = pam
+	depends = pam
+	provides = pam_beacon
+	source = git+https://github.com/muesli/pam-beacon.git
+	sha256sums = SKIP
+
+pkgname = pam_beacon-git
+
