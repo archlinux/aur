@@ -1,0 +1,19 @@
+diff --git a/module/clevo-xsm-wmi.c b/module/clevo-xsm-wmi.c
+index e045d7e..0c7e3e8 100644
+--- a/module/clevo-xsm-wmi.c
++++ b/module/clevo-xsm-wmi.c
+@@ -1638,6 +1638,14 @@ static struct dmi_system_id clevo_xsm_dmi_table[] __initdata = {
+         .callback = clevo_xsm_dmi_matched,
+         .driver_data = &kb_full_color_ops,
+     },
++	{
++		.ident = "Clevo P950ER",
++		.matches = {
++			DMI_MATCH(DMI_PRODUCT_NAME, "P95xER"),
++		},
++		.callback = clevo_xsm_dmi_matched,
++		.driver_data = &kb_full_color_ops,
++	},
+ 	{
+ 		/* terminating NULL entry */
+ 	},
