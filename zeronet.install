@@ -14,6 +14,7 @@ post_install() {
     echo ">>> Default mode is clearnet+Tor. Give zeronet permissions to configure hidden service:"
     echo ">>>   sudo usermod -a -G tor zeronet"
     echo ">>> Add/edit the following options in /etc/tor/torrc:"
+    echo ">>>   ControlPort 9051"
     echo ">>>   DataDirectoryGroupReadable 1"
     echo ">>>   CookieAuthentication 1"
     echo ">>>   CookieAuthFileGroupReadable 1"
