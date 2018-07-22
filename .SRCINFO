@@ -1,0 +1,21 @@
+pkgbase = kristforge-git
+	pkgdesc = kristforge is an OpenCL-accelerated krist miner, capable of very high speeds, with vector type support
+	pkgver = r27.af563f6
+	pkgrel = 1
+	url = https://github.com/apemanzilla/kristforge
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = tclap
+	makedepends = cmake
+	makedepends = vim
+	depends = openssl
+	depends = ocl-icd
+	depends = jsoncpp
+	depends = curl
+	depends = uwebsockets
+	source = kristforge::git+https://github.com/apemanzilla/kristforge.git#branch=master
+	md5sums = SKIP
+
+pkgname = kristforge-git
+
