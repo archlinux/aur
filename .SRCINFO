@@ -1,0 +1,13 @@
+pkgbase = deepin-dock-plugin-cmdu-english-git
+	pkgdesc = Deep Linux system speed taskbar plug-in, mouse hover display boot time, CPU usage, memory usage, download bytes, upload bytes.
+	pkgver = r18.18299e8
+	pkgrel = 1
+	url = https://github.com/insaneshadowzaman/CMDU_DDE_DOCK
+	arch = x86_64
+	makedepends = git
+	depends = deepin-dock
+	source = git+https://github.com/insaneshadowzaman/CMDU_DDE_DOCK.git
+	md5sums = SKIP
+
+pkgname = deepin-dock-plugin-cmdu-english-git
+
