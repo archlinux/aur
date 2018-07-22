@@ -2,7 +2,7 @@
 
 pkgname='zeronet'
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://zeronet.io/"
 depends=('python2'
@@ -14,9 +14,9 @@ pkgdesc="Decentralized websites using Bitcoin crypto and the BitTorrent network.
 source=("https://github.com/HelloZeroNet/ZeroNet/archive/v$pkgver.tar.gz"
         "zeronet.conf"
         "zeronet.service")
-md5sums=('5b6112a5b14f5314aadb7634e60ed04a'
-         'c5216860cfc435a4861c55fd3933391c'
-         '5404c37540131f41f10e9be873d11fcc')
+sha256sums=('d07aa18ca81ca30be9a118dfb845bbaeca6551b13672e6d87851f3544f9d7f2f'
+            'ea735e82dbb10a2c1fda7abfeb2f38c2429044d8254f9e2396c50cecb6f778f8'
+            '46fcbaddf5346ba384539efd6873c26bef4e767e328c6543f9fd511022aea9e7')
 install="zeronet.install"
 backup=("etc/zeronet.conf")
 options=(!strip) # ignore test binaries in the depsendency libs that fail strip
