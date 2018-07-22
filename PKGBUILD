@@ -2,7 +2,7 @@
 pkgname=kristforge-git
 pkgver=r27.af563f6
 pkgrel=1
-pkgdesc="kristforge is an OpenCL-accelerated krist miner, capable of very high speeds, with vector type support"
+pkgdesc="An unofficial package for kristforge. Kristforge is an OpenCL-accelerated krist miner, capable of very high speeds, with vector type support"
 arch=('x86_64')
 url="https://github.com/apemanzilla/kristforge"
 license=('MIT')
