@@ -1,6 +1,6 @@
 pkgbase = asymptote-git
 	pkgdesc = A vector graphics language (like metapost)
-	pkgver = 2.45r332.6427
+	pkgver = 2.46.r0.6483
 	pkgrel = 1
 	epoch = 1
 	url = http://asymptote.sourceforge.net/
