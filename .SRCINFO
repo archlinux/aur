@@ -1,6 +1,6 @@
 pkgbase = bitwarden_rs
 	pkgdesc = An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface.
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/dani-garcia/bitwarden_rs
 	install = bitwarden_rs.install
@@ -16,12 +16,12 @@ pkgbase = bitwarden_rs
 	conflicts = bitwarden_rs-git
 	conflicts = bitwarden_rs-vault-git
 	backup = etc/bitwarden_rs.env
-	source = https://github.com/dani-garcia/bitwarden_rs/archive/0.10.0.tar.gz
+	source = https://github.com/dani-garcia/bitwarden_rs/archive/0.11.0.tar.gz
 	source = bitwarden_rs.install
 	source = bitwarden_rs.service
 	source = 0001-Disable-Vault.patch
-	sha512sums = 3e3d4dfc84534be089e19fe063eafeacdd4a337cdbabff2f78b2f69fc3b5eae662486af2de5fd10d476cd1ed88b0a075a0c53993e77938c8b5ee7bdde365e577
-	sha512sums = ad8fba5e283ee8f61d1597725afcb12339f495e9b352a4232d1aa50a4b7976fb23a48f15ee48384c0a1bd66c186c3a984c7cce2811da15cf40b338699eadab72
+	sha512sums = 2c70be572a8accc819d3d045c6b6afcc7aab8db4cb8adb85d3246f5280c10d4a838e41b83b40824ef5fa244358b5ca16e9a013c928791a72be1871979f87b281
+	sha512sums = f2987e720ec008372862b18479c48cd3be8c66ebe4eb2d8595b5bc238e6c18ccc7f82fd499e5ab0d701aaae60447d8e98fb8514eebe3ceac1fc4dd831974099c
 	sha512sums = 773dc0830b4eaf3a1d4134a52a6157e6a94265c6212ae8cc24b9584f9c444b9a0f822325f487ce9c23c363f743f1f64f269352f030e98e336816aee0a68048f6
 	sha512sums = 704057f0bf6d71ab9888378c3d66ee97c5019e8b18d0f22f93615fef60bef7df80a11ad7ebf5cca1cc49c90ba3f9d84515a160555e395790f325510f8a81f5cd
 
