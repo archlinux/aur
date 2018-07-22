@@ -11,23 +11,27 @@ post_install() {
 	# Load service file
 	systemctl --quiet daemon-reload
 	
+	echo ""
 	echo "##########"
 	echo "#"
 	echo "#   Remember to configure the server via its environment-variables under /etc/bitwarden_rs.env"
 	echo "#   After that, start/enable the server via 'systemctl enable bitwarden_rs.service --now'"
 	echo "#"
 	echo "##########"
+	echo ""
 
 }
 
 post_upgrade() {
 	# Reload service file
 	systemctl --quiet daemon-reload
+	echo ""
 	echo "##########"
 	echo "#"
 	echo "#   Remember to restart the bitwarden via 'systemctl restart bitwarden_rs.service', if neccessary."
 	echo "#"
 	echo "##########"
+	echo ""
 
 }
 
@@ -39,10 +43,12 @@ pre_remove() {
 post_remove() {
 	# Unload service
 	systemctl --quiet daemon-reload
+	echo ""
 	echo "##########"
 	echo "#"
 	echo "#   Remember to remove the user/group bitwarden_rs, if neccessary."
 	echo "#   All server data in /var/lib/bitwarden_rs was NOT deleted!"
 	echo "#"
 	echo "##########"
+	echo ""
 }

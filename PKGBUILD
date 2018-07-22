@@ -2,7 +2,7 @@
 
 pkgname=bitwarden_rs-git
 _pkgbase=bitwarden_rs
-pkgver=0.10.0.r0.g03172a6
+pkgver=0.11.0.r0.g48e69ce
 pkgrel=1
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ groups=()
 makedepends=('rust-nightly' 'cargo-nightly')
 depends=('openssl')
 provides=("$_pkgbase") 
-conflicts=("$_pkgbase" "${_pkgbase}-vault-git" "${_pkgbase}-vault") 
+conflicts=("$_pkgbase") 
 replaces=()
 backup=('etc/bitwarden_rs.env')
 options=()
@@ -23,7 +23,7 @@ source=('git+https://github.com/dani-garcia/bitwarden_rs.git'
 	"0001-Disable-Vault.patch")
 noextract=()
 sha512sums=('SKIP'
-            'ad8fba5e283ee8f61d1597725afcb12339f495e9b352a4232d1aa50a4b7976fb23a48f15ee48384c0a1bd66c186c3a984c7cce2811da15cf40b338699eadab72'
+            'f2987e720ec008372862b18479c48cd3be8c66ebe4eb2d8595b5bc238e6c18ccc7f82fd499e5ab0d701aaae60447d8e98fb8514eebe3ceac1fc4dd831974099c'
             '773dc0830b4eaf3a1d4134a52a6157e6a94265c6212ae8cc24b9584f9c444b9a0f822325f487ce9c23c363f743f1f64f269352f030e98e336816aee0a68048f6'
             '704057f0bf6d71ab9888378c3d66ee97c5019e8b18d0f22f93615fef60bef7df80a11ad7ebf5cca1cc49c90ba3f9d84515a160555e395790f325510f8a81f5cd')
 
