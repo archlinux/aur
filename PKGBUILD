@@ -7,9 +7,9 @@
 pkgname=virtualbox-bin
 pkgver=5.2.14
 _build=123301
-pkgrel=3
+pkgrel=4
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url='https://www.virtualbox.org/'
 license=('GPL2')
 depends=('dkms' 'fontconfig' 'gcc' 'libgl' 'libidl2' 'libxcursor' 'libxinerama'
@@ -22,28 +22,33 @@ replaces=('virtualbox_bin' 'virtualbox-sun')
 backup=('etc/vbox/vbox.cfg' 'etc/conf.d/vboxweb')
 install="${pkgname}.install"
 options=('!strip')
-source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_amd64.run"
-        'VBoxFixUSB'
+source=('VBoxFixUSB'
         '10-vboxdrv.rules'
         'vboxweb.rc'
         'vboxweb.conf'
         'do_dkms'
         'dkms.conf'
         '009-include-path.patch')
-sha256sums=('2ea513dadaab9b32df6c18827ebfe98524e297d2b44678ce1518a3486d8b3e73'
-            '0aebe22abab402ea6b6573af637a99d8056a904920a52d84fb97729219219c23'
+source_i686=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_x86.run")
+source_x86_64=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_amd64.run")
+sha256sums=('0aebe22abab402ea6b6573af637a99d8056a904920a52d84fb97729219219c23'
             '69417a9e8855cab8e4878886abe138f559fd17ae487d4cd19c8a24974a8bbec2'
             '656905de981ffa24f6f921c920538854a235225053f44baedacc07b46ca0cf56'
             '12dbba3b59991f2b68cddeeeda20236aeff63e11b7e2d1b08d9d6a82225f6651'
             'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
             'e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801'
             '5112f0e1ba3bd0bd92ef2edb2d21024e265abb02841aa29aa05410526adc273f')
+sha256sums_i686=('19dac9ef4b19b74b67196f0c87bc17ca9459ca6c1bb5731ac9de4374586e260a')
+sha256sums_x86_64=('2ea513dadaab9b32df6c18827ebfe98524e297d2b44678ce1518a3486d8b3e73')
 
 prepare() {
+    [ "$CARCH" = 'i686'   ] && local _arch='x86'
+    [ "$CARCH" = 'x86_64' ] && local _arch='amd64'
+    
     mkdir -p "${pkgname}-${pkgver}"
     
     # extract the source file
-    yes | sh "VirtualBox-${pkgver}-${_build}-Linux_amd64.run" \
+    yes | sh "VirtualBox-${pkgver}-${_build}-Linux_${_arch}.run" \
               --target "${srcdir}/${pkgname}-${pkgver}" \
               --nox11 \
               --noexec \
