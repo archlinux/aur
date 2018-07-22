@@ -15,7 +15,7 @@ license=('GPL2')
 pkgdesc="Decentralized websites using Bitcoin crypto and the BitTorrent network."
 provides=(zeronet)
 conflicts=(zeronet)
-source=("git://github.com/HelloZeroNet/ZeroNet.git"
+source=("git+https://github.com/HelloZeroNet/ZeroNet.git"
         "zeronet.conf"
         "zeronet.service")
 md5sums=('SKIP'
