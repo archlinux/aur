@@ -1,0 +1,9 @@
+.*.swp
+.*.swo
+
+pkg/
+src/
+
+monero-gui/
+
+*.tar.xz
