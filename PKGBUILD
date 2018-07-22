@@ -1,9 +1,9 @@
 # Maintainer: Einhard Leichtfuß <alguien@respiranto.de>
 _lang=deu-fra
 pkgname=dict-freedict-${_lang}
-pkgver=2017_11_24
+pkgver=2018_06_06
 _pkgver=${pkgver//_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc="German -> French dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
@@ -12,7 +12,7 @@ optdepends=('dictd: dict client and server')
 makedepends=('dictd' 'freedict-tools')
 install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${_pkgver}/freedict-${_lang}-${_pkgver}.src.tar.xz")
-sha512sums=('7cef2d5c243e82e18b2aa40aacfd7e02eb25fc926667d6f16123735f01ded5dfbd7d7a215b58fee8158350a23420b91653ef7af2d4fabfa90790271ca013b317')
+sha512sums=('dd1465b5146a65f9b48bd27d2be72dd07376102882103db6fe36bad670d1b4c81658ab6ff8e05dd7eacc80a4cf254bdc05f85f1490902f6c3528e77b50a36553')
 
 prepare()
 {
