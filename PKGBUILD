@@ -5,9 +5,9 @@
 # Contributor: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=5.2.14
-_build=123301
-pkgrel=4
+pkgver=5.2.16
+_build=123759
+pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
 url='https://www.virtualbox.org/'
@@ -38,8 +38,8 @@ sha256sums=('0aebe22abab402ea6b6573af637a99d8056a904920a52d84fb97729219219c23'
             'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
             'e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801'
             '5112f0e1ba3bd0bd92ef2edb2d21024e265abb02841aa29aa05410526adc273f')
-sha256sums_i686=('19dac9ef4b19b74b67196f0c87bc17ca9459ca6c1bb5731ac9de4374586e260a')
-sha256sums_x86_64=('2ea513dadaab9b32df6c18827ebfe98524e297d2b44678ce1518a3486d8b3e73')
+sha256sums_i686=('c745d917e3282fec262d94401fab8af403eeeb9659032958d488668ce68e71a2')
+sha256sums_x86_64=('1a0708d7242c4d0590c9a7ba1d7b497065f8429d27cb4622c0260cc7cf667da4')
 
 prepare() {
     [ "$CARCH" = 'i686'   ] && local _arch='x86'
