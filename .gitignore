@@ -1,0 +1,9 @@
+.*.swp
+.*.swo
+
+src/
+pkg/
+
+ZeroNet/
+
+*.tar.xz
