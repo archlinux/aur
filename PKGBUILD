@@ -1,10 +1,11 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgbase=marble-git
 pkgname=('marble-git'
          'libastro-git'
          'marble-data-git')
-pkgver=2.0.20.r12058.5c1022d
+pkgver=2.2.20.r12977.d810cfdad
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
