@@ -1,0 +1,8 @@
+#!/bin/bash
+git remote rm origin || true
+git remote rm upstream || true
+git remote add origin ssh://aur@aur.archlinux.org/acpilight-git.git
+git remote add upstream git@github.com:azmodude/arch-acpilight-git.git
+git fetch && \
+    git branch --set-upstream-to=origin/master master
+
