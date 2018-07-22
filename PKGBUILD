@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/gabmus/ardhue
 
 pkgname=ardhue-git
-pkgver=f09bd9a
+pkgver=c7f02bb
 pkgrel=1
 pkgdesc='Interface to control ArdHue Arduino based digital RGB system'
 arch=('any')
