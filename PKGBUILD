@@ -5,9 +5,9 @@
 
 pkgname=firefox-beta
 name=firefox-beta
-pkgver=61.11
+pkgver=62.9
 pkgrel=1
-meme=FIREFOX_62_0b3_RELEASE
+meme=FIREFOX_62_0b9_RELEASE
 meme2=DEVEDITION_63_0b1_RELEASE
 meme3=FIREFOX_BETA_63_BASE
 pkgdesc="Standalone web browser from mozilla.org, with telemetry and signing disabled"
@@ -34,7 +34,7 @@ https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix.patch
 https://raw.githubusercontent.com/bn0785ac/firefox-beta/master/fix2.patch
 )
 
-sha256sums=('dea625f25bc9f75bba7a587c8056e456fe972b4161c0245b5418d31127a53a83'
+sha256sums=('3e7205bae7ec50800369418f3dad924769e1a9e3a04ee1d6b97767f4b0b86c07'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'bdad68eafe110b9f94a0e025635e32a6ab53e2f9adcd594c8dd2e3225f6453ab'
@@ -43,6 +43,7 @@ sha256sums=('dea625f25bc9f75bba7a587c8056e456fe972b4161c0245b5418d31127a53a83'
             '7e44bd2eb4ce243ef47451e64e793203c8d637f900c86889106eb7f8adf79296'
             '7e44dc0dc836a31c6f8e3e3461aeb636de210fb5a238e58a0eb10787ca4ad958'
             '32d04bf9c5c76ec3803aa7e1f82ca11dc5ea3d32b86d054168f4cc1e1ef9960c')
+
 
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
