@@ -1,6 +1,6 @@
 pkgbase = sway-wlroots-git
 	pkgdesc = i3 compatible window manager for Wayland
-	pkgver = 1.0.alpha.2.r158.g3482eeba
+	pkgver = 1.0.alpha.4.r43.g27f65b94
 	pkgrel = 1
 	url = http://swaywm.org
 	install = sway-wlroots-git.install
@@ -24,6 +24,7 @@ pkgbase = sway-wlroots-git
 	depends = libinput
 	depends = pam
 	depends = xorg-server-xwayland
+	optdepends = libelogind: systemd logind support
 	provides = sway
 	conflicts = sway
 	conflicts = sway-git
@@ -32,7 +33,7 @@ pkgbase = sway-wlroots-git
 	source = git+https://github.com/swaywm/sway.git
 	source = swaybar-fix.patch
 	sha1sums = SKIP
-	sha1sums = 0641e1030cc36e2768dee03f27f0c5016a29768c
+	sha1sums = 11fbebb5c3dc9cbb7278033d023fd3557d2bbbba
 
 pkgname = sway-wlroots-git
 
