@@ -2,7 +2,7 @@
 
 pkgname=bitwarden_rs-vault
 pkgver=1.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrates the Vault Web-Interface into bitwarden_rs."
 arch=('any')
 url="https://github.com/bitwarden/web"
@@ -10,7 +10,6 @@ license=('AGPL3')
 makedepends=('npm')
 depends=('bitwarden_rs')
 conflicts=("bitwarden_rs-vault-git") 
-backup=('etc/bitwarden_rs.env')
 install=bitwarden_rs-vault.install
 source=("https://github.com/bitwarden/web/archive/v$pkgver.tar.gz"
 	"0001-Change-Vault-Settings.patch"
@@ -32,7 +31,8 @@ prepare() {
 build() {
 	#build vault webinterface
 	cd "$srcdir/web-$pkgver"
-	npm install
+	npm install --cache "${srcdir}/npm-cache" 
+
 	npx gulp dist:selfHosted
 }
 

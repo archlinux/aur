@@ -1,7 +1,7 @@
 pkgbase = bitwarden_rs-vault
 	pkgdesc = Integrates the Vault Web-Interface into bitwarden_rs.
 	pkgver = 1.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitwarden/web
 	install = bitwarden_rs-vault.install
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = bitwarden_rs-vault
 	makedepends = npm
 	depends = bitwarden_rs
 	conflicts = bitwarden_rs-vault-git
-	backup = etc/bitwarden_rs.env
 	source = https://github.com/bitwarden/web/archive/v1.27.0.tar.gz
 	source = 0001-Change-Vault-Settings.patch
 	source = bitwarden_rs-vault.install
