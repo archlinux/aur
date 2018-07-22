@@ -2,10 +2,10 @@
 
 pkgname=alpaca
 pkgver="0.2.8"
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Functional programming inspired by ML for the Erlang VM"
 arch=('any')
-url=""
+url="http://alpaca-lang.org/"
 license=('Apache2')
 depends=('erlang-nox')
 makedepends=('rebar3')
