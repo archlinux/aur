@@ -25,10 +25,10 @@ prepare() {
 build() {
   cd "${srcdir}/libksba-${pkgver}/"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
+    mkdir -p ${srcdir}/build-${_arch} && pushd ${srcdir}/build-${_arch}
     ${_arch}-configure \
       --with-libgpg-error-prefix=/usr/${_arch} \
-      ..
+      ${srcdir}/libksba-${pkgver}
     make
     popd
   done
@@ -36,8 +36,12 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/libksba-${pkgver}/build-${_arch}"
+    cd "${srcdir}/build-${_arch}"
+    # missing ${pkgdir}/usr/${_arch}/lib dir causes installing def file to fail
+    mkdir -p ${pkgdir}/usr/${_arch}/lib
+    
     make DESTDIR="${pkgdir}" install
+    rm -rf "${pkgdir}"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
