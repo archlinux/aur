@@ -9,7 +9,6 @@ license=('GPL3')
 depends=('php>=5'
          'php-ldap')
 optdepends=(
-	'php-mbstring: For resetting passwords by mail'
 	'php-mcrypt: For token resets'
 )
 backup=("etc/webapps/$pkgname/config.php")
