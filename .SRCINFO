@@ -1,7 +1,7 @@
 pkgbase = virtualbox-bin
 	pkgdesc = Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)
 	pkgver = 5.2.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.virtualbox.org/
 	install = virtualbox-bin.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = virtualbox-bin
 	depends = libxcursor
 	depends = libxinerama
 	depends = libxmu
-	depends = python2
+	depends = python
 	depends = sdl
 	optdepends = virtualbox-ext-oracle: for Oracle extensions
 	provides = virtualbox=5.2.14

@@ -7,13 +7,13 @@
 pkgname=virtualbox-bin
 pkgver=5.2.14
 _build=123301
-pkgrel=2
+pkgrel=3
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
 license=('GPL2')
 depends=('dkms' 'fontconfig' 'gcc' 'libgl' 'libidl2' 'libxcursor' 'libxinerama'
-         'libxmu' 'python2' 'sdl')
+         'libxmu' 'python' 'sdl')
 makedepends=('linux-headers')
 optdepends=('virtualbox-ext-oracle: for Oracle extensions')
 provides=("virtualbox=${pkgver}")
@@ -77,7 +77,7 @@ package() {
     # install SDK
     msg2 "Installing SDK..."
     pushd 'sdk/installer' >/dev/null
-    VBOX_INSTALL_PATH="$_installdir" python2 vboxapisetup.py install --root "$pkgdir"
+    VBOX_INSTALL_PATH="$_installdir" python vboxapisetup.py install --root "$pkgdir"
     rm -rf build
     popd >/dev/null
     
@@ -93,9 +93,6 @@ package() {
     
     # install VBoxFixUSB script
     install -D -m0755 "${srcdir}/VBoxFixUSB" VBoxFixUSB
-    
-    # Patch "vboxshell.py" to use Python 2.x instead of Python 3
-    sed -i 's#/usr/bin/python#\02#' vboxshell.py
     
     # install vboxweb initscript
     install -D -m0755 "${srcdir}/vboxweb.rc"   "${pkgdir}/etc/rc.d/vboxweb"
