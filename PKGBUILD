@@ -4,7 +4,7 @@
 pkgname=gn-chromium
 pkgdesc='Meta-build system which generates Ninja build files'
 pkgver=r1446.5d9a4e9a
-cl=335091
+cl=337439
 cl2=1
 pkgrel=1
 license=('BSD')
@@ -17,8 +17,8 @@ url='https://gn.googlesource.com/gn'
 source=("gn::git+${url}" https://raw.githubusercontent.com/gentoo/gentoo/master/dev-util/gn/files/gn-gen-r0.patch  https://commondatastorage.googleapis.com/chromium-browser-clang/Linux_x64/clang-$cl-$cl2.tgz)
 sha512sums=('SKIP'
             '0e281be477d235a15ffc483fa6af03db560bc421392d7c82322c7735c0498ca3e6ea69843ed46bfe7bc562539488c5b6d945e508e66b530d97584e08e154d6d7'
-            'd86dac70af6476c3b47957080a3467a45e99235bb389eed6b7f9c6e82cc12f5405d1ec9d23ff3f58f7ff4893fd3149a35c41a61136c0a8490a2f6a341102af1f')
-noextract=('clang-335091-1.tgz')
+            '43c4d937b260a2da61e559d158fef9f8e1c3e556ed220d24c4901a8bdd00a50c230027043f434f83167d25e24f31acd443d2c545ec1f060b29d5227b8570325c')
+noextract=('clang-337439-1.tgz')
 pkgver () {
 	export GIT_DIR="${startdir}/gn"
 	printf "r%s.%s" "$(git --bare rev-list --count HEAD)" "$(git --bare rev-parse --short HEAD)"
@@ -26,9 +26,9 @@ pkgver () {
 
 prepare () {
 mkdir c7
-cp clang-335091-1.tgz c7/
+cp clang-337439-1.tgz c7/
 cd c7
-tar -xvzf clang-335091-1.tgz
+tar -xvzf clang-337439-1.tgz
 cd ../gn
 	patch -p1 -i ../gn-gen-r0.patch
 }

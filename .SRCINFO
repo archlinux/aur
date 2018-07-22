@@ -13,13 +13,13 @@ pkgbase = gn-chromium
 	depends = p7zip
 	provides = gn
 	conflicts = gn-bin
-	noextract = clang-335091-1.tgz
+	noextract = clang-337439-1.tgz
 	source = gn::git+https://gn.googlesource.com/gn
 	source = https://raw.githubusercontent.com/gentoo/gentoo/master/dev-util/gn/files/gn-gen-r0.patch
-	source = https://commondatastorage.googleapis.com/chromium-browser-clang/Linux_x64/clang-335091-1.tgz
+	source = https://commondatastorage.googleapis.com/chromium-browser-clang/Linux_x64/clang-337439-1.tgz
 	sha512sums = SKIP
 	sha512sums = 0e281be477d235a15ffc483fa6af03db560bc421392d7c82322c7735c0498ca3e6ea69843ed46bfe7bc562539488c5b6d945e508e66b530d97584e08e154d6d7
-	sha512sums = d86dac70af6476c3b47957080a3467a45e99235bb389eed6b7f9c6e82cc12f5405d1ec9d23ff3f58f7ff4893fd3149a35c41a61136c0a8490a2f6a341102af1f
+	sha512sums = 43c4d937b260a2da61e559d158fef9f8e1c3e556ed220d24c4901a8bdd00a50c230027043f434f83167d25e24f31acd443d2c545ec1f060b29d5227b8570325c
 
 pkgname = gn-chromium
 
