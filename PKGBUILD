@@ -6,7 +6,7 @@ pkgver=1.2.4
 pkgrel=2
 pkgdesc='A tool to make papers searchable - scan & forget'
 arch=('any')
-url='https://github.com/openpaperwork/paperwork'
+url='https://gitlab.gnome.org/World/OpenPaperwork/paperwork'
 license=('GPL3')
 depends=('pygobject2-devel' 'pygtk' 'python-pycountry'
          'python-poppler-qt5' 'python-pyinsane2' 'python-pyocr'
