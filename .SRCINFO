@@ -1,0 +1,20 @@
+pkgbase = easyssh-git
+	pkgdesc = SSH connection manager for Pantheon
+	pkgver = 1.2.7.r8.g1c2fdeb
+	pkgrel = 1
+	url = https://github.com/muriloventuroso/easyssh
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = libgranite.so
+	depends = gtk3
+	provides = easyssh
+	conflicts = easyssh
+	source = easyssh-git::git+https://github.com/muriloventuroso/easyssh.git
+	sha256sums = SKIP
+
+pkgname = easyssh-git
+
