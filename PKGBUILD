@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=pam_beacon-git
-pkgver=r19.0d4021f
+pkgver=r20.4a0bd5a
 pkgrel=1
 pkgdesc="PAM module for multi-factor authentication with Bluetooth Devices & Beacons"
 arch=('x86_64')
@@ -33,6 +33,8 @@ package() {
 
     # Install binary
     install -Dm755 "pam_beacon.so" "$pkgdir/usr/lib/security/pam_beacon.so"
+    # Install PAM config
+    install -Dm644 config/pam.d/system-auth-beacon "$pkgdir/etc/pam.d/system-auth-beacon"
     # Copy License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,6 +1,6 @@
 pkgbase = pam_beacon-git
 	pkgdesc = PAM module for multi-factor authentication with Bluetooth Devices & Beacons
-	pkgver = r19.0d4021f
+	pkgver = r20.4a0bd5a
 	pkgrel = 1
 	url = https://github.com/muesli/pam-beacon
 	arch = x86_64
