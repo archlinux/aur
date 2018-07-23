@@ -1,0 +1,21 @@
+pkgbase = yay-gcc-git
+	pkgdesc = Yet another yogurt. Pacman wrapper and AUR helper written in go. (gccgo version, proxychains support)
+	pkgver = 8.922.r34.ga3564ec
+	pkgrel = 1
+	url = https://github.com/Jguer/yay
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-go
+	makedepends = git
+	depends = pacman>=5.1
+	provides = yay
+	conflicts = yay-bin
+	conflicts = yay
+	conflicts = yay-git
+	options = !strip
+	options = !emptydirs
+	source = yay::git+https://github.com/Jguer/yay.git#branch=master
+	md5sums = SKIP
+
+pkgname = yay-gcc-git
+
