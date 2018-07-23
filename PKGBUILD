@@ -3,8 +3,6 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Eivind Uggedal <eivind@uggedal.com>
 # Contributor: Frédéric Mangano <fmang+aur@mg0.fr>
-#  - disable VAAPI because of an incompatibility with EGL on the Rasperry Pi
-#    https://github.com/mpv-player/mpv/issues/5599
 
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
 #  - armv7/aarch64 needs to be built with fPIC
@@ -13,8 +11,8 @@
 pkgname=mpv-rpi
 _pkgname=mpv
 epoch=1
-pkgver=0.28.2
-pkgrel=2
+pkgver=0.29.0
+pkgrel=1
 _waf_version=1.9.8
 pkgdesc='mpv with Raspberry Pi support'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -33,7 +31,7 @@ optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz"
   "https://waf.io/waf-${_waf_version}")
-sha256sums=('aada14e025317b5b3e8e58ffaf7902e8b6e4ec347a93d25a7c10d3579426d795'
+sha256sums=('772af878cee5495dcd342788a6d120b90c5b1e677e225c7198f1e76506427319'
   '167dc42bab6d5bd823b798af195420319cb5c9b571e00db7d83df2a0fe1f4dbf')
 provides=('mpv')
 conflicts=('mpv')
@@ -54,14 +52,12 @@ build() {
     --enable-cdda \
     --enable-dvb \
     --enable-dvdnav \
-    --enable-encoding \
     --enable-libsmbclient \
     --enable-tv \
     --enable-libarchive \
     --enable-libmpv-shared \
     --enable-zsh-comp \
     --enable-egl-x11 \
-    --disable-vaapi \
     --enable-rpi
 
   ./waf build
