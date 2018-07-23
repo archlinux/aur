@@ -1,0 +1,16 @@
+--- a/pom.xml	2018-07-23 09:54:45.667127177 +0300
++++ b/pom.xml	2018-07-23 09:54:41.547181643 +0300
+@@ -123,10 +123,13 @@
+               <artifactSet>
+                 <includes>
+                   <include>*</include>
+                 </includes>
+               </artifactSet>
++              <transformers>
++                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
++              </transformers>
+             </configuration>
+           </execution>
+         </executions>
+       </plugin>
+     </plugins>
