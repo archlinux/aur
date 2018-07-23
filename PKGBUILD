@@ -1,8 +1,8 @@
-# Maintainer: K. Hampf <k.hampf@gmail.com>
+# Maintainer: Jiří Klimeš <blueowl@centrum.cz>
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: K. Hampf <k.hampf@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
-# Contributor: "blueowl" <blueowl@centrum.cz>
 
 pkgname=xmltv
 pkgver=0.5.70
