@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-citra-git
-pkgver=r6073.7e78ed15
+pkgver=r6417.8dc34315
 pkgrel=1
 pkgdesc='Nintendo 3DS core'
 arch=('x86_64')
@@ -16,15 +16,19 @@ source=('libretro-citra::git+https://github.com/libretro/citra.git'
         'citra-boost::git+https://github.com/citra-emu/ext-boost.git'
         'git+https://github.com/philsquared/Catch.git'
         'git+https://github.com/weidai11/cryptopp.git'
+        'git+https://github.com/kinetiknz/cubeb.git'
         'git+https://github.com/MerryMage/dynarmic.git'
         'git+https://github.com/lsalzman/enet.git'
         'git+https://github.com/fmtlib/fmt.git'
         'git+https://github.com/svn2github/inih.git'
         'citra-libressl::git+https://github.com/citra-emu/ext-libressl-portable.git'
         'git+https://github.com/neobrain/nihstro.git'
+        'git+https://github.com/arsenm/sanitizers-cmake.git'
         'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
         'git+https://github.com/herumi/xbyak.git')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -51,7 +55,7 @@ prepare() {
   fi
   mkdir build
 
-  for submodule in externals/{catch,cryptopp/cryptopp,dynarmic,enet,fmt,inih/inih,libressl,nihstro,xbyak}; do
+  for submodule in externals/{catch,cryptopp/cryptopp,cubeb,dynarmic,enet,fmt,inih/inih,libressl,nihstro,xbyak}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule##*/}
     git submodule update
@@ -59,6 +63,14 @@ prepare() {
   for submodule in externals/{boost,soundtouch}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../citra-${submodule##*/}
+    git submodule update
+  done
+
+  cd externals/cubeb
+
+  for submodule in cmake/sanitizers-cmake; do
+    git submodule init ${submodule}
+    git config submodule.${submodule}.url ../../../${submodule##*/}
     git submodule update
   done
 }
