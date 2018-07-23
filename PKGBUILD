@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-babl
-pkgver=0.1.52
+pkgver=0.1.54
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format conversion library (mingw-w64)"
 arch=('any')
