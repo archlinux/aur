@@ -1,6 +1,6 @@
 pkgbase = mako
 	pkgdesc = Lightweight notification daemon for Wayland
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 4
 	url = http://mako-project.org
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = mako
 	depends = cairo
 	depends = wayland
 	depends = wayland-protocols
-	source = mako-1.0.tar.gz::https://github.com/emersion/mako/archive/v1.0.tar.gz
-	md5sums = 524114054b46f2b276577f168a0fe170
+	source = mako-1.1.tar.gz::https://github.com/emersion/mako/archive/v1.1.tar.gz
+	md5sums = 0ee1d576a0445112aa50fb4873e1d7b1
 
 pkgname = mako
 
