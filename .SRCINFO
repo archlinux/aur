@@ -1,0 +1,15 @@
+pkgbase = nmtrust-git
+	pkgdesc = A simple framework for determining network trust with NetworkMananger
+	pkgver = r24.1dc724e
+	pkgrel = 1
+	url = https://github.com/pigmonkey/nmtrust
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = systemd
+	depends = networkmanager
+	source = git://github.com/pigmonkey/nmtrust.git
+	sha512sums = SKIP
+
+pkgname = nmtrust-git
+
