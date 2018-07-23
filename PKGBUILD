@@ -28,7 +28,7 @@ build() {
 package() {
   install -Dm644 mktcoin-qt.desktop "$pkgdir"/usr/share/applications/mktcoin.desktop
   cd "$srcdir/$pkgname"
-  install -Dm755 src/qt/mktcoin-qt "$pkgdir"/usr/bin/raven-qt
+  install -Dm755 src/qt/mktcoin-qt "$pkgdir"/usr/bin/mktcoin-qt
   install -Dm644 share/pixmaps/mktcoin.png "$pkgdir"/usr/share/pixmaps/mktcoin128.png
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }

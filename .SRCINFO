@@ -18,7 +18,7 @@ pkgbase = mktcoin-qt
 	depends = protobuf
 	depends = libevent
 	conflicts = mktcoin
-	source = mktcoin-qt::git+https://github.com/Mktcoin-official/Mktcoin.git#commit=13cf416
+	source = mktcoin-qt::git+https://github.com/Mktcoin-official/Mktcoin.git
 	source = mktcoin-qt.desktop
 	sha256sums = SKIP
 	sha256sums = bef7078e3c7428b8b6c56d832b0742a00801ba5d7b7f39c430142444c5143654
