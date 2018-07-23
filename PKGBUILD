@@ -1,8 +1,8 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.9
-pkgrel=3
+pkgver=1.10.1
+pkgrel=1
 pkgdesc='Single executable web server with Lua, Markdown, QUIC and Pongo2 support'
 arch=('x86_64' 'i686')
 url='https://algernon.roboticoverlords.org/'
@@ -63,6 +63,7 @@ package() {
   install -Dm644 system/logrotate "$pkgdir/etc/logrotate.d/algernon"
   install -Dm644 system/serverconf.lua "$pkgdir/etc/algernon/serverconf.lua"
   install -Dm644 desktop/algernon.desktop "$pkgdir/usr/share/applications/algernon.desktop"
+  install -Dm644 desktop/algernon_md.desktop "$pkgdir/usr/share/applications/algernon_md.desktop"
   install -Dm644 desktop/markdown.png "$pkgdir/usr/share/pixmaps/markdown.png"
   install -d "$pkgdir/usr/share/doc/$pkgname/"
   cp -r samples "$pkgdir/usr/share/doc/algernon/samples"
