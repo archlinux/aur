@@ -2,7 +2,7 @@
 
 _pkgname=kwin-effect-grayscale
 pkgname="$_pkgname-git"
-pkgver=20180721.bdd6a89
+pkgver=20180723.4c88b8e
 pkgrel=1
 pkgdesc='KWin effect to turn the screen or window in grayscale color'
 arch=('x86_64')
