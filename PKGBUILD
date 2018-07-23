@@ -1,8 +1,12 @@
-# Maintainer : Sauyon Lee <sauyonl@sauyon.com>
+# Maintainer: Austin Haedicke (austin.haedicke@gmail.com)
+# all PKGBUILDs maintained by me are available on 
+# GitHub at https://github.com/savagezen/pkgbuild
+
+# Previous Maintainer : Sauyon Lee <sauyonl@sauyon.com>
 # Contributor : Martin Wimpress <code@flexion.org>
 
 pkgname=syncthing-git
-pkgver=0.14.23.r14.gfb6d453c
+pkgver=v0.14.49.rc.4.r9.gd8366e4a8
 pkgrel=1
 pkgdesc="Open Source Continuous Replication / Cluster Synchronization Thing"
 url="http://syncthing.net/"
@@ -22,7 +26,7 @@ prepare() {
 
 pkgver() {
 	cd "${pkgname}-${pkgver}"
-	git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
