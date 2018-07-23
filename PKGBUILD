@@ -3,6 +3,7 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Eivind Uggedal <eivind@uggedal.com>
 # Contributor: Frédéric Mangano <fmang+aur@mg0.fr>
+#  - disable broken vaapi on rpi
 
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
 #  - armv7/aarch64 needs to be built with fPIC
@@ -58,6 +59,7 @@ build() {
     --enable-libmpv-shared \
     --enable-zsh-comp \
     --enable-egl-x11 \
+    --disable-vaapi \
     --enable-rpi
 
   ./waf build
