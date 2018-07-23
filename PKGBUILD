@@ -5,7 +5,7 @@
 
 pkgname=translate-toolkit
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit to convert between various different translation formats, help process and validate localisations"
 arch=('any')
 url="http://toolkit.translatehouse.org/"
@@ -22,5 +22,5 @@ package() {
   cd "${srcdir}"/$pkgname-$pkgver
 
   python -s setup.py install --root="${pkgdir}" --optimize=1
-  python -m compileall "${pkgdir}"/usr/lib/python3.6/site-packages/translate
+  python -m compileall "${pkgdir}"/usr/lib/python3.7/site-packages/translate
 }
