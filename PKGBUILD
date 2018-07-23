@@ -3,7 +3,7 @@
 _gemname=domain_name
 pkgname=ruby-$_gemname
 epoch=1
-pkgver=0.5.20170404
+pkgver=0.5.20180417
 pkgrel=1
 pkgdesc='This is a Domain Name manipulation library for Ruby. It can also be used for cookie domain validation based on the Public Suffix List.'
 arch=('any')
@@ -14,7 +14,7 @@ noextract=($_gemname-$pkgver.gem)
 depends=('ruby' 'ruby-unf')
 makedepends=('ruby-rdoc')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-sha256sums=('6e8e5cf80b9fdfae3ef730e73a30bce5da0a1e4a70f6e0a0b8672a28a3471a8a')
+sha256sums=('7b74d1fe58937c6021d210d123a8e880787a047dbc411cabd6475b6216a76d29')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
