@@ -2,10 +2,10 @@
 
 pkgname=elemental
 pkgver=0.87.7
-pkgrel=1
+pkgrel=2
 url="https://github.com/elemental/Elemental"
 pkgdesc="distributed-memory dense linear algebra"
-makedepends=('cmake')
+makedepends=('cmake' 'gcc7' 'gcc-fortran')
 depends=('openblas-lapack' 'parmetis' 'libmpc' 'python2')
 arch=('i686' 'x86_64')
 license=("custom:BSD")
@@ -17,7 +17,7 @@ options=('!makeflags')
 build() {
   cd Elemental-$pkgver
   mkdir -p build && pushd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+  CXX=g++-7 cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_EL_DISABLE_PARMETIS=ON \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_LIBDIR=/usr/lib
@@ -28,13 +28,13 @@ package() {
   cd Elemental-$pkgver/build
   make install DESTDIR="$pkgdir"
   install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  find $pkgdir/usr/python/El/ -type f -exec sed '1s+python+python2+' {} \;
-  install -d $pkgdir/usr/lib/python2.7/site-packages
-  cp -r $pkgdir/usr/python/El/ $pkgdir/usr/lib/python2.7/site-packages
-  rm -rf $pkgdir/usr/python
-  install -d $pkgdir/usr/lib/cmake/modules
-  cp -r $pkgdir/usr/CMake/elemental/ $pkgdir/usr/lib/cmake/modules
-  rm -rf $pkgdir/usr/CMake
-  cp -r $pkgdir/usr/conf $pkgdir/etc
-  rm -rf $pkgdir/usr/conf 
+  find "$pkgdir"/usr/python/El/ -type f -exec sed '1s+python+python2+' {} \;
+  install -d "$pkgdir"/usr/lib/python2.7/site-packages
+  cp -r "$pkgdir"/usr/python/El/ "$pkgdir"/usr/lib/python2.7/site-packages
+  rm -rf "$pkgdir"/usr/python
+  install -d "$pkgdir"/usr/lib/cmake/modules
+  cp -r "$pkgdir"/usr/CMake/elemental/ "$pkgdir"/usr/lib/cmake/modules
+  rm -rf "$pkgdir"/usr/CMake
+  cp -r "$pkgdir"/usr/conf "$pkgdir"/etc
+  rm -rf "$pkgdir"/usr/conf 
 }
