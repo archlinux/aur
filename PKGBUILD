@@ -9,7 +9,13 @@ url="http://cdsoft.fr/pp"
 license=('GPL')
 groups=()
 depends=('gmp')
-makedepends=('git' 'stack') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git'
+             'stack'
+             'haskell-yaml'
+             'haskell-tls'
+             'haskell-socks'
+             'haskell-http-client-tls'
+             'haskell-connection') 
 optdepends=('asymptote: For vector graphics support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "pp")
@@ -30,6 +36,8 @@ pkgver() {
 build() {
 	cd "$srcdir/${_pkgname}"
 	make
+    make
+    make
 }
 
 package() {
