@@ -7,7 +7,7 @@
 # Contributor: Alexander <iam.asm89@gmail.com>
 
 pkgname=hipchat
-pkgver=4.30.5.1676
+pkgver=4.30.5.1678
 pkgrel=1
 pkgdesc='Persistent group chat using XMPP'
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('fontconfig' 'libgl' 'libltdl' 'libxslt' 'hicolor-icon-theme'
 source=(https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client/pool/HipChat4-${pkgver}-Linux.deb
         license.html
         fix-seccomp-sandbox-bug.patch)
-sha512sums=('f9f1667369fd3f0fea3bd4e6637f26e49abbfd43da3630251ca4bfd11a4c9b343d834ff37228f538ea73cfe27997ae94639c250638e1ee87b27f60224f9acc11'
+sha512sums=('873f10e533139cdd4aaeeab131369d574c28a81fb847d156585d594d1914d166d5f70ce587b4787cdcc60d10773eaf4fd33bc8e57a0040ea32e56a75f40866e9'
             '7e7d712a01edcb91fcd3759d77620ae53c5f24e6fc0ec311bec7eebf5736d643945c2600c9198261e47d0349ef358a6d673a446e15c7599c31b548c93f464f7d'
             '6f7affb6cf85a16452bd934c8ebb996d5f98bc82100d1a4b7c308438ff4dd90c36552ec533de803264201fdfbf7e127cb8ecbfce92f24f205fcf762576a8b51f')
 
