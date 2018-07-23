@@ -1,0 +1,17 @@
+# /etc/systemd/system/traktarr.service
+
+[Unit]
+Description=traktarr
+After=network-online.target
+
+[Service]
+User=traktarr
+Group=traktarr
+Type=simple
+WorkingDirectory=/usr/lib/traktarr
+ExecStart=/usr/bin/python /usr/lib/traktarr/traktarr.py run
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,3 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+Z /usr/lib/traktarr - traktarr traktarr
+L /usr/bin/traktarr - - - - /usr/lib/traktarr/traktarr.py

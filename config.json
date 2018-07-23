@@ -1,0 +1,64 @@
+{
+  "automatic": {
+    "movies": {
+      "anticipated": 3,
+      "boxoffice": 10,
+      "interval": 20,
+      "popular": 3,
+      "trending": 3
+    },
+    "shows": {
+      "anticipated": 10,
+      "interval": 48,
+      "popular": 1,
+      "trending": 1
+    }
+  },
+  "core": {
+    "debug": false
+  },
+  "filters": {
+    "movies": {
+      "allowed_countries": [],
+      "allowed_languages": [],
+      "blacklist_title_keywords": [],
+      "blacklisted_genres": [],
+      "blacklisted_max_year": 2019,
+      "blacklisted_min_runtime": 60,
+      "blacklisted_min_year": 2000,
+      "blacklisted_tmdb_ids": [],
+      "disabled_for": []
+    },
+    "shows": {
+      "allowed_countries": [],
+      "allowed_languages": [],
+      "blacklisted_genres": [],
+      "blacklisted_max_year": 2019,
+      "blacklisted_min_runtime": 15,
+      "blacklisted_min_year": 2000,
+      "blacklisted_networks": [],
+      "blacklisted_tvdb_ids": [],
+      "disabled_for": []
+    }
+  },
+  "notifications": {
+    "verbose": true
+  },
+  "radarr": {
+    "api_key": "",
+    "profile": "HD-1080p",
+    "root_folder": "/movies/",
+    "url": "http://localhost:7878/"
+  },
+  "sonarr": {
+    "api_key": "",
+    "profile": "HD-1080p",
+    "root_folder": "/tv/",
+    "tags": {},
+    "url": "http://localhost:8989/"
+  },
+  "trakt": {
+    "client_id": "",
+    "client_secret": ""
+  }
+}
