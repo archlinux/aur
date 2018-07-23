@@ -1,7 +1,7 @@
 pkgbase = polybar
 	pkgdesc = A fast and easy-to-use status bar
-	pkgver = 3.1.0
-	pkgrel = 4
+	pkgver = 3.2.0
+	pkgrel = 1
 	url = https://github.com/jaagr/polybar
 	install = polybar.install
 	arch = i686
@@ -18,15 +18,17 @@ pkgbase = polybar
 	depends = xcb-util-xrm
 	depends = xcb-util-cursor
 	optdepends = alsa-lib: alsa module support
+	optdepends = pulseaudio: pulseaudio module support
 	optdepends = libmpdclient: mpd module support
-	optdepends = wireless_tools: network module support
+	optdepends = libnl: network module support
+	optdepends = wireless_tools: network module support (legacy)
 	optdepends = jsoncpp: i3 module support
 	optdepends = i3-wm: i3 module support
 	optdepends = ttf-unifont: Font used in example config
 	optdepends = siji-git: Font used in example config
 	optdepends = curl: github module support
 	conflicts = polybar-git
-	source = polybar::git+https://github.com/jaagr/polybar.git#tag=3.1.0
+	source = polybar::git+https://github.com/jaagr/polybar.git#tag=3.2.0
 	md5sums = SKIP
 
 pkgname = polybar
