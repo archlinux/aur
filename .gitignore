@@ -1,0 +1,5 @@
+*.zip
+*.xz
+mozilla-unified
+pkg
+src
