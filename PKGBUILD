@@ -8,13 +8,13 @@
 _target="powerpc-linux-gnu"
 pkgname=${_target}-glibc
 pkgver=2.23
-pkgrel=5
+pkgrel=6
 _commit=1915d6d1
 pkgdesc="GNU C Library (${_target})"
 arch=('any')
 url="http://www.gnu.org/software/libc/"
 license=('GPL' 'LGPL')
-depends=("${_target}-linux-api-headers-x>=4.5.5")
+depends=("${_target}-linux-api-headers>=4.5.5")
 makedepends=("${_target}-gcc-stage2>=6.1.1" 'gperf')
 provides=("${_target}-glibc-headers=${pkgver}" "${_target}-eglibc")
 conflicts=("${_target}-glibc-headers" "${_target}-eglibc")

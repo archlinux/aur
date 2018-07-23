@@ -1,14 +1,14 @@
 pkgbase = powerpc-linux-gnu-glibc
 	pkgdesc = GNU C Library (powerpc-linux-gnu)
 	pkgver = 2.23
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
 	license = LGPL
 	makedepends = powerpc-linux-gnu-gcc-stage2>=6.1.1
 	makedepends = gperf
-	depends = powerpc-linux-gnu-linux-api-headers-x>=4.5.5
+	depends = powerpc-linux-gnu-linux-api-headers>=4.5.5
 	provides = powerpc-linux-gnu-glibc-headers=2.23
 	provides = powerpc-linux-gnu-eglibc
 	conflicts = powerpc-linux-gnu-glibc-headers
