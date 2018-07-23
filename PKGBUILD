@@ -4,31 +4,39 @@
 
 pkgname=cryptocat
 pkgver=3.2.08
-pkgrel=2
-pkgdesc="Free software with a simple mission: everyone should be able to chat with their friends in privacy"
-arch=('x86_64')
-url="https://crypto.cat"
-license=('GPL3')
-depends=('glib2' 'fuse2' 'gconf')
-makedepends=('gendesk' 'gnupg')
-options=('!strip')
-source=("https://download.crypto.cat/client/Cryptocat-linux-x64.zip")
-sha256sums=('3761847a2a4a96c8a706d67705af3d0fab230478dbea4ed652da84a773dfe880')
+pkgrel=1
+pkgdesc='Encrypted chat client based on Electron'
+arch=(x86_64)
+url=https://crypto.cat
+license=(GPL3)
+depends=(glib2 fuse2 gconf)
+makedepends=(npm)
+conflicts=(cryptocat-bin)
+options=(!strip)
+source=(git+https://github.com/cryptocat/cryptocat#commit=f528529631af43a2e8a4401efe1b10558aa26a92
+        cryptocat.desktop)
+sha512sums=(SKIP
+            8d26d0c292b48a61f4ee6c131160eb99c30b0c62ea4021bbf8bb0fbf849f79f1042f3cc3a2a7c8d312addc3cef1460dbfcd0cf6ac9c2946cd4479d529eeb2db8)
 
-# In order to make the GPG verification work, import the following PGP key
-# FA21CD536312FADF9B5DD804AB266CB76091B1F8  Nadim Kobeissi <nadim@nadim.computer>
+#pkgver() {
+#  cd cryptocat
+#  echo 0+$(git rev-list --count HEAD)+g$(git describe --always)
+#}
 
-prepare() {
-  gpg --verify Cryptocat.AppImage.asc Cryptocat.AppImage
-  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
-  bsdtar --to-stdout -xf Cryptocat.AppImage \
-    usr/share/icons/default/64x64/apps/cryptocat.png > cryptocat.png
+build() {
+  cd cryptocat
+  npm install
+  npm install electron-builder
+  npm run linux
 }
 
 package() {
-  install -d "$pkgdir"/usr/{bin,lib/cryptocat}
-  install -Dm755 Cryptocat.AppImage "$pkgdir/usr/lib/cryptocat/Cryptocat.AppImage"
-  install -Dm644 cryptocat.desktop "$pkgdir/usr/share/applications/cryptocat.desktop"
-  install -Dm644 cryptocat.png "$pkgdir/usr/share/pixmaps/cryptocat.png"
-  ln -s /usr/lib/cryptocat/Cryptocat.AppImage "$pkgdir/usr/bin/cryptocat"
+  install -d $pkgdir/usr/{share,bin}
+  cp -a cryptocat/dist/linux-unpacked $pkgdir/usr/share/cryptocat
+  find $pkgdir/usr/share/cryptocat -type f -exec chmod 644 {} +
+  chmod +x $pkgdir/usr/share/cryptocat/cryptocat
+  ln -s /usr/share/cryptocat/cryptocat $pkgdir/usr/bin/cryptocat
+  install -Dm 644 cryptocat.desktop $pkgdir/usr/share/applications/cryptocat.desktop
+  install -Dm 644 cryptocat/website/img/logo.png $pkgdir/usr/share/pixmaps/cryptocat.png
+  install -Dm 644 cryptocat/LICENSE.md $pkgdir/usr/share/licenses/cryptocat/LICENSE
 }

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Cryptocat
+Comment=Encrypted chat client based on Electron
+Exec=cryptocat
+Icon=cryptocat
+Terminal=false
+StartupNotify=false
+Categories=Network;InstantMessaging;Chat;
