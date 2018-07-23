@@ -1,0 +1,16 @@
+pkgbase = python-attrdict
+	pkgdesc = Push Notifications that work with just about every platform
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/bcj/attrdict
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/bcj/attrdict/archive/v2.0.0.tar.gz
+	sha256sums = e779bdb2824498311fd82068ff62c1ac01c2049a5766230f7ead2a80f4d81ed7
+
+pkgname = python-attrdict
+
+pkgname = python2-attrdict
+
