@@ -11,7 +11,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://ftp.gtk.org/pub/babl/${pkgver%.*}/babl-${pkgver}.tar.bz2")
-sha256sums=('40f714a0fc043e16ac05c670f39e4db0d0d923480d21952fb0569686479ef76c')
+sha256sums=('4d2bf1345d7214b08762e6d1e23d0038508b806dbf7c4c44386faee434682a07')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
