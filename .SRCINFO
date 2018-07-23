@@ -5,6 +5,7 @@ pkgbase = windscribe-cli
 	url = https://windscribe.com/
 	install = windscribe-cli.install
 	arch = x86_64
+	arch = i686
 	arch = armv6h
 	license = GPL-2+
 	depends = openvpn
@@ -12,6 +13,8 @@ pkgbase = windscribe-cli
 	replaces = windscribe-cli
 	source_x86_64 = windscribe-cli_1.2_9.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.2-9_amd64.deb
 	sha256sums_x86_64 = d59233c25ab5718f85baab15f65b5d25c8455d7f8ed6596cf2d26845e9925289
+	source_i686 = windscribe-cli_1.2_9.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.2-9_i386.deb
+	sha256sums_i686 = dacbf7669dee5198e3e20780dec3cad015b70f4c5df120eef88f6d343c42464c
 	source_armv6h = windscribe-cli_1.2_9.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.2-9_armhf.deb
 	sha256sums_armv6h = b1297791abe067410780aca8dcca821fa8a2ea64925c679e3fc50f46eaec2b1c
 
