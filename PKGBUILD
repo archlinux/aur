@@ -3,7 +3,7 @@
 pkgname=cryptocat-bin
 pkgver=3.2.08
 pkgrel=1
-pkgdesc='Secure chat client based on Electron'
+pkgdesc='Secure chat client based on Electron (bin)'
 arch=(x86_64)
 url=https://crypto.cat
 license=(GPL3)
