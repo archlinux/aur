@@ -1,0 +1,27 @@
+pkgbase = mktcoin-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 0.14.3
+	pkgrel = 1
+	url = http://mktcoin.org/
+	install = mktcoin-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = mktcoin
+	source = mktcoin-qt::git+https://github.com/Mktcoin-official/Mktcoin.git#commit=13cf416
+	source = mktcoin-qt.desktop
+	sha256sums = SKIP
+	sha256sums = bef7078e3c7428b8b6c56d832b0742a00801ba5d7b7f39c430142444c5143654
+
+pkgname = mktcoin-qt
+

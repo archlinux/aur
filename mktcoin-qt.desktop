@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=MktCoin
+Comment=MktCoin P2P Cryptocurrency
+Exec=/usr/bin/mktcoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/mktcoin128.png
+MimeType=x-scheme-handler/mktcoin;
+Categories=Office;
+Name[en_US]=mktcoin-qt.desktop
