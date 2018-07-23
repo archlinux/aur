@@ -10,11 +10,11 @@ pkgver=a
 pkgrel=1
 pkgdesc="example gl app using kms/gbm"
 arch=('i686' 'x86_64')
-url="https://github.com/robclark/kmscube"
+url="https://cgit.freedesktop.org/mesa/kmscube/"
 license=('custom')
 depends=('mesa')
 makedepends=('git')
-source=("git://github.com/robclark/kmscube.git")
+source=("git://anongit.freedesktop.org/mesa/kmscube")
 md5sums=('SKIP')
 
 pkgver() {
