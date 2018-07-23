@@ -4,7 +4,7 @@
 # or submit a pull request @ https://gtbjj.com/savagezen/pkgbuild 
 
 pkgname=phoronix-test-suite-git
-pkgver=8.0.0.r0.g81f7c7bed
+pkgver=8.0.1.r56.g24ecd03a9
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=('any')
@@ -38,7 +38,16 @@ package() {
     ./install-sh $pkgdir/usr
 
     rm -r "${pkgdir}"/usr/share/phoronix-test-suite/deploy
+    rm -rf "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/{dependency-handlers,scripts,xml}/{*.php,*.sh,*.xml}
 
-    sed -i "s#--noconfirm#--noconfirm --asdeps#" ${pkgdir}/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/scripts/install-arch-packages.sh
+    install -D "${srcdir}/${pkgname}"/pts-core/external-test-dependencies/dependency-handlers/arch_dependency_handler.php \
+               "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/dependency-handlers/arch_dependency_handler.php
+
+    install -D "${srcdir}/${pkgname}"/pts-core/external-test-dependencies/scripts/install-arch-packages.sh \
+               "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/scripts/install-arch-packages.sh
+
+    install -D "${srcdir}/${pkgname}"/pts-core/external-test-dependencies/xml/arch-packages.xml \
+               "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/xml/arch-packages.xml
+
     sed -e "s/^export PTS_DIR=.*/export PTS_DIR=\/usr\/share\/phoronix-test-suite/g" -i ${pkgdir}/usr/bin/phoronix-test-suite
 }
