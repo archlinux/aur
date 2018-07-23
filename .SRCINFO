@@ -1,7 +1,7 @@
 pkgbase = powerpc-linux-gnu-gcc-stage1
 	pkgdesc = The GNU Compiler Collection. Stage 1 for toolchain building (powerpc-linux-gnu)
-	pkgver = 6.1.1
-	pkgrel = 4
+	pkgver = 8.1.0
+	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -9,16 +9,18 @@ pkgbase = powerpc-linux-gnu-gcc-stage1
 	license = LGPL
 	license = FDL
 	license = custom
-	depends = powerpc-linux-gnu-binutils>=2.26.1-1
+	depends = powerpc-linux-gnu-binutils>=2.30-4
 	depends = libmpc
 	depends = zlib
 	options = !emptydirs
 	options = !distcc
 	options = !strip
-	source = https://github.com/gcc-mirror/gcc/archive/1bbd3999.tar.gz
-	source = http://isl.gforge.inria.fr/isl-0.16.1.tar.bz2
-	md5sums = ff2d7ad9a3144299decbdad85dfcb920
-	md5sums = ac1f25a0677912952718a51f5bc20f32
+	source = https://ftp.gnu.org/gnu/gcc/gcc-8.1.0/gcc-8.1.0.tar.xz
+	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
+	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
+	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
+	sha256sums = 1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153
+	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
 
 pkgname = powerpc-linux-gnu-gcc-stage1
 

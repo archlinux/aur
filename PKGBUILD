@@ -2,33 +2,35 @@
 # Contributor: toha257 <toha257@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
-# Maintainer: Tavian Barnes <tavianator@tavianator.com>
+# Contributor: Tavian Barnes <tavianator@tavianator.com>
 # Maintainer: Stefan Schmidt <thrimbor.github@gmail.com>
 
 _target="powerpc-linux-gnu"
 pkgname=${_target}-gcc-stage1
-pkgver=6.1.1
-_pkgver=6
-_islver=0.16.1
-pkgrel=4
-_commit=1bbd3999
+pkgver=8.1.0
+_majorver=${pkgver:0:1}
+_islver=0.18
+pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
-arch=('i686' 'x86_64')
-license=('GPL' 'LGPL' 'FDL' 'custom')
-url="http://gcc.gnu.org"
-depends=("${_target}-binutils>=2.26.1-1" 'libmpc' 'zlib')
-options=('!emptydirs' '!distcc' '!strip')
-source=(https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz
+arch=(i686 x86_64)
+license=(GPL LGPL FDL custom)
+url='http://gcc.gnu.org'
+depends=("${_target}-binutils>=2.30-4" libmpc zlib)
+options=(!emptydirs !distcc !strip)
+#source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
+source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
-md5sums=('ff2d7ad9a3144299decbdad85dfcb920'
-         'ac1f25a0677912952718a51f5bc20f32')
+sha256sums=('1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153'
+            '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b')
+validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # richard.guenther@gmail.com
+
+_svnrev=259195
+_svnurl=svn://gcc.gnu.org/svn/gcc/branches/gcc-${_majorver}-branch
+_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 
 prepare() {
-  mv gcc-${_commit}* gcc
-  cd ${srcdir}
-
-  patch -Np0 < "../fix-compilation.patch"
-
+  [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
   cd gcc
 
   # link isl for in-tree build
@@ -40,50 +42,66 @@ prepare() {
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-  mkdir ${srcdir}/gcc-build
+  mkdir -p "$srcdir/gcc-build"
 }
 
 build() {
-  cd ${srcdir}/gcc-build
+  cd gcc-build
 
   # using -pipe causes spurious test-suite failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
-  ${srcdir}/gcc/configure --prefix=/usr \
+  "$srcdir/gcc/configure" --prefix=/usr \
       --program-prefix=${_target}- \
       --with-local-prefix=/usr/${_target} \
       --with-sysroot=/usr/${_target} \
       --with-build-sysroot=/usr/${_target} \
       --with-as=/usr/bin/${_target}-as \
       --with-ld=/usr/bin/${_target}-ld \
-      --libdir=/usr/lib --libexecdir=/usr/lib \
-      --target=${_target} --host=${CHOST} --build=${CHOST} \
-      --disable-nls --with-newlib \
+      --libdir=/usr/lib \
+      --libexecdir=/usr/lib \
+      --disable-nls \
+      --with-newlib \
       --enable-languages=c,c++ \
-      --disable-shared --disable-threads \
-      --with-system-zlib --with-isl --enable-__cxa_atexit \
-      --disable-libunwind-exceptions --enable-clocale=gnu \
-      --disable-libstdcxx-pch --disable-libssp \
-      --enable-gnu-unique-object --enable-linker-build-id \
-      --disable-lto --disable-plugin --enable-install-libiberty \
-      --with-linker-hash-style=gnu --enable-gnu-indirect-function \
-      --disable-multilib --disable-werror \
-      --enable-checking=release
+      --disable-shared \
+      --disable-threads \
+      --with-system-zlib \
+      --with-isl \
+      --enable-__cxa_atexit \
+      --disable-libunwind-exceptions \
+      --enable-clocale=gnu \
+      --disable-libstdcxx-pch \
+      --disable-libssp \
+      --enable-gnu-unique-object \
+      --enable-linker-build-id \
+      --disable-lto \
+      --disable-plugin \
+      --enable-install-libiberty \
+      --with-linker-hash-style=gnu \
+      --enable-gnu-indirect-function \
+      --disable-multilib \
+      --disable-werror \
+      --enable-checking=release \
+      --enable-default-pie \
+      --enable-default-ssp \
+      --target=${_target} \
+      --host=${CHOST} \
+      --build=${CHOST}
 
   make all-gcc all-target-libgcc
 }
 
 package() {
-  cd ${srcdir}/gcc-build
+  cd gcc-build
 
-  make DESTDIR=${pkgdir} install-gcc install-target-libgcc
+  make DESTDIR="$pkgdir" install-gcc install-target-libgcc
 
-  rm -rf ${pkgdir}/usr/share
+  rm -rf "$pkgdir/usr/share"
 
   # strip it manually
-  strip ${pkgdir}/usr/bin/* 2>/dev/null || true
-  find ${pkgdir}/usr/lib -type f -exec /usr/bin/${_target}-strip \
+  strip "$pkgdir/usr/bin/"* 2>/dev/null || true
+  find "$pkgdir/usr/lib" -type f -exec /usr/bin/${_target}-strip \
     --strip-unneeded {} \; 2>/dev/null || true
 }
