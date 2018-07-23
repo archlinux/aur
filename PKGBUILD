@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=pqr
 _pkgname=pqR
-_pkgver=2018-07-05
+_pkgver=2018-07-19
 pkgver=${_pkgver//-/}
 pkgrel=1
 pkgdesc="A pretty quick version of R. Can be installed side-by-side with vanilla R."
@@ -15,7 +15,7 @@ options=('!makeflags' '!emptydirs')
 install=$pkgname.install
 source=("${_pkgname}-${_pkgver}.tar.gz::http://www.pqr-project.org/${_pkgname}-${_pkgver}.tar.gz"
 	'pqr.desktop')
-sha256sums=('2ce78d2b1ecc51862526376c9287672582e15eb1a648ff43b84cbb858b88fe55'
+sha256sums=('76f31ef44696750af1c29fe3d1c6659b4d3be777e29fac669bb90f31062a27a4'
             'f6fb587f2ca78d896de86ae279d5513bdf4d7c82507c541bc96c27fb79370a9f')
 
 build() {
