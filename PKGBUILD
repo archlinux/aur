@@ -1,12 +1,17 @@
-# Maintainer: camb <cyrilbur@gmail.com>
+# Maintainer: Stefan Schmidt <thrimbor.github@gmail.com>
+# Previous Maintainer: camb <cyrilbur@gmail.com>
+# Contributor: Alexander 'hatred' Drozdov <adrozdoff@gmail.com>
+# Contributor: toha257 <toha257@gmail.com>
+# Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: Tavian Barnes <tavianator@tavianator.com>
 # This PKGBUILD was heavily inspired from the
 # arm-linux-gnueabihf-linux-api-headers PKGBUILD
 
 _target_arch=powerpc
 _target=${_target_arch}-linux-gnu
 pkgname=${_target}-linux-api-headers
-_basever=4.4
-pkgver=${_basever}.1
+_basever=4.5
+pkgver=${_basever}.5
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace (${_target})"
 arch=('any')
@@ -16,9 +21,9 @@ source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.xz
         http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.sign
         http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
         http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign)
-md5sums=('9a78fa2eb6c68ca5a40ed5af08142599'
+md5sums=('a60d48eee08ec0536d5efb17ca819aef'
          'SKIP'
-         'd9e951895c8c249f0bf52d85f3e63bce'
+         'fe89010925304f6f07713741f0c8e811'
          'SKIP')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E')  # Greg Kroah-Hartman
@@ -38,6 +43,9 @@ build() {
 package() {
   cd ${srcdir}/linux-${_basever}
   make INSTALL_HDR_PATH=${pkgdir}/usr/${_target} ARCH=${_target_arch} headers_install
+
+  # use headers from libdrm
+  rm -rf ${pkgdir}/usr/${_target}/include/drm
 
   # clean-up unnecessary files generated during install
   find ${pkgdir} \( -name .install -o -name ..install.cmd \) -delete
