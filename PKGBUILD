@@ -2,8 +2,8 @@
 
 _srcname=mpv
 pkgname=mpv-full
-pkgver=0.28.2
-pkgrel=5
+pkgver=0.29.0
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -19,24 +19,24 @@ depends=(
     # AUR:
         'mujs' 'rsound' 'shaderc-git' 'crossc'
 )
+makedepends=('mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
+             'wayland-protocols' 'ffnvcodec-headers')
 optdepends=('youtube-dl: for video-sharing websites playback'
             'nvidia-utils: for hardware accelerated video decoding with CUDA')
-makedepends=('mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
-             'wayland-protocols')
 provides=('mpv')
 conflicts=('mpv' 'mpv-git' 'mpv-full-git')
 options=('!emptydirs')
 source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz"
-        'mpv-full-fix-build-with-ffmpeg-git.patch')
-sha256sums=('aada14e025317b5b3e8e58ffaf7902e8b6e4ec347a93d25a7c10d3579426d795'
-            '037a21d6528344e25ec9f3057bb11b0b4a3f0114b9068c23ca15333f4e57bb50')
+        'mpv-full-fix-manpage-mistaken-function-keys.patch')
+sha256sums=('772af878cee5495dcd342788a6d120b90c5b1e677e225c7198f1e76506427319'
+            '1497b7a66feaf059f97115af528229c7a8d201fe68f0d07861ac556b976c18c7')
 
 prepare() {
     cd "${_srcname}-${pkgver}"
     
-    # fix build when using ffmpeg git master
-    # https://github.com/mpv-player/mpv/issues/5813
-    patch -Np1 -i "${srcdir}/mpv-full-fix-build-with-ffmpeg-git.patch"
+    # manpage: fixup mistaken show playlist/track-list shortcuts
+    # https://github.com/mpv-player/mpv/commit/45beb7073a1cef89e87a2d562ce8c233fc140dae
+    patch -Np1 -i "${srcdir}/mpv-full-fix-manpage-mistaken-function-keys.patch"
 }
 
 build() {
@@ -51,6 +51,7 @@ build() {
         --progress \
         --confdir='/etc/mpv' \
         \
+        --disable-lgpl \
         --enable-libmpv-shared \
         --disable-libmpv-static \
         --disable-static-build \
@@ -75,7 +76,6 @@ build() {
         --enable-libass \
         --enable-libass-osd \
         --enable-zlib \
-        --enable-encoding \
         --enable-libbluray \
         --enable-dvdread \
         --enable-dvdnav \
@@ -90,7 +90,6 @@ build() {
         --lua='52arch' \
         \
         --enable-sdl2 \
-        --disable-sdl1 \
         --enable-oss-audio \
         --enable-rsound \
         --enable-sndio \
@@ -156,7 +155,8 @@ build() {
         --enable-dvbin \
         \
         --disable-apple-remote \
-        --disable-macos-touchbar
+        --disable-macos-touchbar \
+        --disable-macos-cocoa-cb
     
     ./waf build
 }
