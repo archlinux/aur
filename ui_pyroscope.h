@@ -11,6 +11,7 @@ namespace ps {
 enum AlertKind {
     ALERT_NORMAL,
     ALERT_NORMAL_CYCLING, // Tried all trackers
+    ALERT_NORMAL_GHOST, // no data
     ALERT_GENERIC,
     ALERT_TIMEOUT,
     ALERT_CONNECT,

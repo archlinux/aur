@@ -385,35 +385,38 @@ torrent::Object ui_canvas_color_set(const torrent::Object::string_type& arg) {
 
 int64_t cmd_d_message_alert(core::Download* d) {
     int64_t alert = ps::ALERT_NORMAL;
+    const std::string& msg = d->message();
 
-    if (!d->message().empty()) {
+    if (!msg.empty()) {
         alert = ps::ALERT_GENERIC;
 
-        if (d->message().find("Tried all trackers") != std::string::npos)
+        if (msg.find("Tried all trackers") != std::string::npos)
             alert = ps::ALERT_NORMAL_CYCLING;
-        else if (d->message().find("Timeout was reached") != std::string::npos
-                    || d->message().find("Timed out") != std::string::npos)
+        else if (msg.find("no data") != std::string::npos)
+            alert = ps::ALERT_NORMAL_GHOST;
+        else if (msg.find("Timeout was reached") != std::string::npos
+                    || msg.find("Timed out") != std::string::npos)
             alert = ps::ALERT_TIMEOUT;
-        else if (d->message().find("Connecting to") != std::string::npos)
+        else if (msg.find("Connecting to") != std::string::npos)
             alert = ps::ALERT_CONNECT;
-        else if (d->message().find("Could not parse bencoded data") != std::string::npos
-                    || d->message().find("Failed sending data") != std::string::npos
-                    || d->message().find("Server returned nothing") != std::string::npos
-                    || d->message().find("Couldn't connect to server") != std::string::npos)
+        else if (msg.find("Could not parse bencoded data") != std::string::npos
+                    || msg.find("Failed sending data") != std::string::npos
+                    || msg.find("Server returned nothing") != std::string::npos
+                    || msg.find("Couldn't connect to server") != std::string::npos)
             alert = ps::ALERT_REQUEST;
-        else if (d->message().find("not registered") != std::string::npos
-                    || d->message().find("torrent cannot be found") != std::string::npos
-                    || d->message().find("nregistered") != std::string::npos)
+        else if (msg.find("not registered") != std::string::npos
+                    || msg.find("torrent cannot be found") != std::string::npos
+                    || msg.find("nregistered") != std::string::npos)
             alert = ps::ALERT_GONE;
-        else if (d->message().find("not authorized") != std::string::npos
-                    || d->message().find("blocked from") != std::string::npos
-                    || d->message().find("denied") != std::string::npos
-                    || d->message().find("limit exceeded") != std::string::npos
-                    || d->message().find("active torrents are enough") != std::string::npos)
+        else if (msg.find("not authorized") != std::string::npos
+                    || msg.find("blocked from") != std::string::npos
+                    || msg.find("denied") != std::string::npos
+                    || msg.find("limit exceeded") != std::string::npos
+                    || msg.find("active torrents are enough") != std::string::npos)
             alert = ps::ALERT_PERMS;
-        else if (d->message().find("tracker is down") != std::string::npos)
+        else if (msg.find("tracker is down") != std::string::npos)
             alert = ps::ALERT_DOWN;
-        else if (d->message().find("n't resolve host name") != std::string::npos)
+        else if (msg.find("n't resolve host name") != std::string::npos)
             alert = ps::ALERT_DNS;
     }
 
@@ -438,7 +441,7 @@ torrent::Object cmd_d_tracker_alias(core::Download* download) {
 
 
 static void decorate_download_title(Window* window, display::Canvas* canvas, core::View* view,
-                                    int pos, Range& range, int x_title) {
+                                    int pos, Range& range, int x_title, size_t hilite, size_t hilen) {
     int offset = row_offset(view, range);
     core::Download* item = *range.first;
     bool active = item->is_open() && item->is_active();
@@ -455,6 +458,10 @@ static void decorate_download_title(Window* window, display::Canvas* canvas, cor
         title_col = (active ? D_INFO(item)->down_rate()->rate() ?
                      ps::COL_LEECHING : ps::COL_INCOMPLETE : ps::COL_QUEUED) + offset;
     canvas->set_attr(x_title, pos, -1, attr_map[title_col] | focus_attr, title_col);
+    if (hilen && hilite != std::string::npos && x_title + hilite < int(canvas->width())) {
+        canvas->set_attr(x_title + hilite, pos, std::min(hilen, int(canvas->width()) - x_title - hilite),
+                         (attr_map[title_col] | focus_attr | A_REVERSE) ^ A_BOLD, title_col);
+    }
 
     // show label for active tracker (a/k/a in focus tracker)
     if (int(canvas->width()) <= x_title + NAME_RESERVED_WIDTH + 3) return;
@@ -505,7 +512,7 @@ void ui_pyroscope_download_list_redraw_item(Window* window, display::Canvas* can
         }
     }
 
-    decorate_download_title(window, canvas, view, pos, range, 2);
+    decorate_download_title(window, canvas, view, pos, range, 2, -1, 0);
 
     // better handling for trail of line 2 (ratio etc.)
     int status_pos = 91;
@@ -763,7 +770,8 @@ int render_columns(bool headers, bool narrow, rpc::target_type target, core::Dow
                             case ps::COL_ALERT:  // COL_ALARM is the actual color, this is the dynamic one
                                 bool has_alert = !item->message().empty()
                                               && item->message().find("Tried all trackers") == std::string::npos;
-                                attr_idx = has_alert ? ps::COL_ALARM : ps::COL_INFO;
+                                bool no_data = item->message().find("no data") != std::string::npos;
+                                attr_idx = no_data ? ps::COL_PROGRESS0 : has_alert ? ps::COL_ALARM : ps::COL_INFO;
                                 break;
                         }
                     }
@@ -810,6 +818,8 @@ bool ui_pyroscope_download_list_redraw(Window* window, display::Canvas* canvas, 
     const torrent::Object::map_type& column_defs = control->object_storage()->get_str("ui.column.render").as_map();
     int pos = 1, x_base = 2, column = x_base;
     bool narrow = false;
+    std::string find_term = rpc::call_command_string("ui.find.term");
+    std::transform(find_term.begin(), find_term.end(), find_term.begin(), ::tolower);
 
     // Render header line
     canvas->print(0, pos, "⇳ ");
@@ -864,7 +874,13 @@ bool ui_pyroscope_download_list_redraw(Window* window, display::Canvas* canvas, 
             canvas->print(column, pos, " %s",
                 u8_chop(displayname.empty() ? d->info()->name() : displayname.c_str(),
                         canvas->width() - column - 1).c_str());
-            decorate_download_title(window, canvas, view, pos, range, column + 1);
+            size_t hilite = std::string::npos;
+            if (!find_term.empty()) {
+                if (displayname.empty()) displayname = d->info()->name();
+                std::transform(displayname.begin(), displayname.end(), displayname.begin(), ::tolower);
+                hilite = displayname.find(find_term);
+            }
+            decorate_download_title(window, canvas, view, pos, range, column + 1, hilite, find_term.length());
         }
 
         // Colorize focus marker
@@ -1054,6 +1070,46 @@ torrent::Object apply_magnitude(const torrent::Object::list_type& args) {
 }
 
 
+torrent::Object ui_find_next() {
+    std::string term = rpc::call_command_string("ui.find.term");
+    if (term.empty())
+        return torrent::Object();  // no current search term set
+    std::transform(term.begin(), term.end(), term.begin(), ::tolower);
+
+    ui::DownloadList* dl_list = control->ui()->download_list();
+    core::View* dl_view = dl_list->current_view();
+
+    if (dl_view->empty_visible()) {
+        control->core()->push_log("This view is empty, nothing to find!");
+    } else {
+        core::View::iterator itr = dl_view->focus() == dl_view->end_visible() ?
+            dl_view->begin_visible() : dl_view->focus();
+        bool found = false;
+
+        do {
+            if (++itr == dl_view->end_visible())
+                itr = dl_view->begin_visible();
+
+            // In C++11, this can be done more efficiently using std::search;
+            // we only use this interactively, so meh.
+            std::string name = get_custom_string(*itr, "displayname");
+            if (name.empty()) name = (*itr)->info()->name();
+            std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+            found = name.find(term) != std::string::npos;
+        } while (!found && itr != dl_view->focus());
+
+        if (!found) {
+            control->core()->push_log(("Cannot find anything matching '" + term + "'").c_str());
+        } else if (itr != dl_view->focus()) {
+            dl_view->set_focus(itr);
+            dl_view->set_last_changed();
+        }
+    }
+
+    return torrent::Object();
+}
+
+
 // register our commands
 void initialize_command_ui_pyroscope() {
     #define PS_VARIABLE_COLOR(key, value) \
@@ -1090,6 +1146,9 @@ void initialize_command_ui_pyroscope() {
     CMD2_ANY("ui.column.hidden.list", _cxxstd_::bind(&display::ui_column_hidden_list));
     CMD2_ANY("ui.column.sacrificial.list", _cxxstd_::bind(&display::ui_column_sacrificial_list));
     CMD2_VAR_VALUE("ui.column.sacrificed", 0);
+
+    CMD2_ANY       ("ui.find.next", _cxxstd_::bind(&ui_find_next));
+    CMD2_VAR_STRING("ui.find.term", "");
 
     PS_VARIABLE_COLOR("ui.color.progress0",     "red");
     PS_VARIABLE_COLOR("ui.color.progress20",    "bold bright red");
@@ -1162,6 +1221,10 @@ void initialize_command_ui_pyroscope() {
         "schedule2 = collapsed_view_toggle, 0, 0, ((ui.bind_key, download_list, *, \""
             "view.collapsed.toggle= ; ui.current_view.set = (ui.current_view)\"))\n"
 
+        // Bind 'F' / F3 to find the next item for 'ui.find.term'
+        "schedule2 = ui_find_next_f,  0, 0, ((ui.bind_key, download_list, F,    \"ui.find.next=\"))\n"
+        "schedule2 = ui_find_next_f3, 0, 0, ((ui.bind_key, download_list, 0413, \"ui.find.next=\"))\n"
+
         // Collapse built-in views
         "view.collapsed.toggle = main\n"
         "view.collapsed.toggle = name\n"
@@ -1213,7 +1276,7 @@ void initialize_command_ui_pyroscope() {
 
         // Status flags (❢ ☢ ☍ ⌘)
         "method.set_key = ui.column.render, \"100:3C95/2:❢  \","
-        "    ((array.at, {\"  \", \"♺ \", \"⚠ \", \"◔ \", \"⚡ \", \"↯ \", \"¿?\","
+        "    ((array.at, {\"  \", \"♺ \", \"ʘ \", \"⚠ \", \"◔ \", \"⚡ \", \"↯ \", \"¿?\","
                         " \"⨂ \", \"⋫ \", \"☡ \"}, ((d.message.alert)) ))\n"
         "method.set_key = ui.column.render, \"110:2C92/2:☢ \","
         "    ((string.map, ((cat, ((d.is_open)), ((d.is_active)))), {00, \"▪ \"}, {01, \"▪ \"}, {10, \"╍ \"}, {11, \"▹ \"}))\n"
