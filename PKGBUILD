@@ -4,16 +4,17 @@
 ## In order to build the package the user must supply a plain text file installation key as file `matlab.fik`, the license file as `matlab.lic`, the software tarball as `matlab.tar`.
 ## To perform a network install set $_networkinstall to true.
 
-_networkinstall=false
+_networkinstall=true
 
 # partial install
 _partialinstall=false
 
+_pkgname=matlab
 pkgname=matlab-r2017b
 # install dir
 _instdir="/opt/${pkgname}"
 pkgver=9.3.0.713579
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -55,43 +56,43 @@ prepare() {
 	gendesk -f -n --pkgname "${pkgname}" \
 		--pkgdesc "${pkgdesc}" \
 		--categories "Development;Education;Science;Mathematics;IDE" \
-	        --exec 'env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6 /opt/matlab/bin/matlab -desktop'
+	        --exec "env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6 /opt/${pkgname}/bin/matlab -desktop"
 
 	msg2 'Extracting file installation key'
-	_fik=$(grep -o [0-9-]* ${pkgname}.fik)
+	_fik=$(grep -o [0-9-]* ${_pkgname}.fik)
 
 	msg2 'Modifying the installer settings'
-	sed -i "s,^# destinationFolder=,destinationFolder=${pkgdir}/${_instdir}," "${srcdir}/${pkgname}/installer_input.txt"
-	sed -i "s,^# agreeToLicense=,agreeToLicense=yes," "${srcdir}/${pkgname}/installer_input.txt"
-	sed -i "s,^# mode=,mode=silent," "${srcdir}/${pkgname}/installer_input.txt"
-	sed -i "s,^# fileInstallationKey=,fileInstallationKey=${_fik}," "${srcdir}/${pkgname}/installer_input.txt"
+	sed -i "s,^# destinationFolder=,destinationFolder=${pkgdir}/${_instdir}," "${srcdir}/${_pkgname}/installer_input.txt"
+	sed -i "s,^# agreeToLicense=,agreeToLicense=yes," "${srcdir}/${_pkgname}/installer_input.txt"
+	sed -i "s,^# mode=,mode=silent," "${srcdir}/${_pkgname}/installer_input.txt"
+	sed -i "s,^# fileInstallationKey=,fileInstallationKey=${_fik}," "${srcdir}/${_pkgname}/installer_input.txt"
 
 	if ${_networkinstall}; then
-		sed -i "s,^# licensePath=,licensePath=${srcdir}/matlab.lic," "${srcdir}/${pkgname}/installer_input.txt"
+		sed -i "s,^# licensePath=,licensePath=${srcdir}/matlab.lic," "${srcdir}/${_pkgname}/installer_input.txt"
 	else
-		sed -i "s,^# activationPropertiesFile=,activationPropertiesFile=${srcdir}/${pkgname}/activate.ini," "${srcdir}/${pkgname}/installer_input.txt"
-		sed -i "s,^activateCommand=,activateCommand=activateOffline," "${srcdir}/${pkgname}/activate.ini"
-		sed -i "s,^licenseFile=,licenseFile=${srcdir}/matlab.lic," "${srcdir}/${pkgname}/activate.ini"
+		sed -i "s,^# activationPropertiesFile=,activationPropertiesFile=${srcdir}/${_pkgname}/activate.ini," "${srcdir}/${_pkgname}/installer_input.txt"
+		sed -i "s,^activateCommand=,activateCommand=activateOffline," "${srcdir}/${_pkgname}/activate.ini"
+		sed -i "s,^licenseFile=,licenseFile=${srcdir}/matlab.lic," "${srcdir}/${_pkgname}/activate.ini"
 	fi
 
 	if [ ! -z ${_products+isSet} ]; then
     	msg2 'Building a package with a subset of the licensed products.'
     	for _product in "${_products[@]}"; do
-      		sed -i "/^#product.${_product}$/ s/^#//" "${srcdir}/${pkgname}/installer_input.txt"
+      		sed -i "/^#product.${_product}$/ s/^#//" "${srcdir}/${_pkgname}/installer_input.txt"
     	done
   	fi
 }
 
 package() {
 	msg2 'Starting MATLAB installer'
-	"${srcdir}/${pkgname}/install" -inputFile "${srcdir}/${pkgname}/installer_input.txt"
+	"${srcdir}/${_pkgname}/install" -inputFile "${srcdir}/${_pkgname}/installer_input.txt"
 
 	msg2 'Installing license'
-	install -D -m644 "${srcdir}/${pkgname}/license_agreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${srcdir}/${_pkgname}/license_agreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	msg2 'Installing desktop files'
 	install -D -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -D -m644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -D -m644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
 
 if ${_partialinstall} && [ -z ${_products+isSet} ]; then
