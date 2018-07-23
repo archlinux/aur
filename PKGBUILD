@@ -2,7 +2,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=validatornu
-pkgver=18.3.0
+pkgver=18.7.23
 pkgrel=1
 pkgdesc="The Nu Html Checker, a command line tool for HTML5 markup validation"
 arch=('any')
@@ -23,7 +23,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('2bd7de0a9e3a11bf146fe395ed25380ff47b3d28396cbb9e008a48bb3b8056d7'
-            'aaa5b27cce1d10fb4a48099041396a18bd55f8f982c595e0ffcdff1f1d4aedb8')
-sha256sums=('2bd7de0a9e3a11bf146fe395ed25380ff47b3d28396cbb9e008a48bb3b8056d7'
-            '9f8bcdc94b5496b9fcb8c01e20fd22684a7dcbbae48804aeb027f17315fb3f8d')
+sha256sums=('96cd47b569b8c79a60f3bea22159444919b418ef20d8beb4b223a6389aabbf25'
+            '5668cb449cff64555ff0516f8e4db0c73da4790a47ef4af3f09655d6b0010134')
