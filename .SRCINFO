@@ -1,7 +1,7 @@
 pkgbase = dxvk-git
 	pkgdesc = A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine.
-	pkgver = 0.63
-	pkgrel = 2
+	pkgver = 0.63_3_gadadf36
+	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
 	arch = i686
@@ -24,7 +24,7 @@ pkgname = dxvk-win64-git
 	arch = x86_64
 	provides = dxvk
 	provides = dxvk64
-	conflicts = dxvk-git
+	conflicts = dxvk-git<0.63_3_gadadf36
 	replaces = dxvk-git
 
 pkgname = dxvk-win32-git
@@ -32,6 +32,11 @@ pkgname = dxvk-win32-git
 	arch = x86_64
 	provides = dxvk
 	provides = dxvk32
-	conflicts = dxvk-git
+	conflicts = dxvk-git<0.63_3_gadadf36
 	replaces = dxvk-git
+
+pkgname = dxvk-git
+	pkgdesc = Dummy package to smooth the transition to the split packages
+	depends = dxvk-win32-git
+	depends = dxvk-win64-git
 
