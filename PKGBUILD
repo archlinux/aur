@@ -7,7 +7,7 @@ _pkgbase='engauge-digitizer'
 pkgname=('engauge' 'engauge-samples')
 pkgbase='engauge'
 pkgver=10.8
-pkgrel=1
+pkgrel=2
 url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -16,7 +16,7 @@ source=("$pkgbase-$pkgver.tar.gz::https://github.com/markummitchell/$_pkgbase/ar
         "$pkgbase.sh"
         "$pkgbase.desktop")
 sha256sums=('573648f525adbef91168dcbdaa04eb0be72dae7557f88ebcc6eff999cdcc842d'
-            '6192374e8620c7c77d66c4313907bad305c6b03a80bb9244fd49753f8997aa31'
+            '4b36a8aa23c5a95a552d33ce1bd75aa1a0be5fdf9ef06f321a060c753298dd18'
             '1b3f2675058693d5653b5aee50fbec1530791de5fcdfbb2f86056a5d748695a4')
 install=engauge.install
 
