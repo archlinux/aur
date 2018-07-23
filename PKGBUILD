@@ -277,9 +277,6 @@ package() {
 	# Install the rEFIt license file, since rEFInd is a fork of rEFIt
 	install -D -m0644 "${srcdir}/${_pkgname}_build/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	# Use '#!/usr/bin/env bash' in all scripts
-	sed 's|#!/bin/bash|#!/usr/bin/env bash|g' -i "${pkgdir}/usr/bin"/* || true
-
 	# Point refind dir paths to /usr/share/refind/ in refind-install script
 	sed 's|RefindDir=\"\$ThisDir/refind\"|RefindDir="/usr/share/refind/"|g' -i "${pkgdir}/usr/bin/refind-install"
 
