@@ -1,7 +1,7 @@
 pkgbase = nikola
 	pkgdesc = A modular, fast, simple, static website generator.
 	pkgver = 7.8.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getnikola.com/
 	arch = any
 	license = MIT
@@ -25,13 +25,13 @@ pkgbase = nikola
 	depends = python-piexif
 	depends = python-markdown
 	optdepends = python-jinja: for Jinja2 themes
-	optdepends = python-pyphen>=0.9.1: for hyphenation
-	optdepends = python-pygal=1.7.0: for SVG graph plotting
-	optdepends = python-typogrify>=2.0.4: for typographical enhancements
+	optdepends = python-pyphen: for hyphenation
+	optdepends = python-pygal: for SVG graph plotting
+	optdepends = python-typogrify: for typographical enhancements
 	optdepends = python-webassets: for bundling assets
 	optdepends = ipython-notebook: for ipynb support
 	optdepends = ipython: for ipynb support
-	optdepends = python-ghp-import>=0.4.1: for uploading to GitHub Pages
+	optdepends = python-ghp-import: for uploading to GitHub Pages
 	optdepends = python-micawber: for embedding media in posts
 	optdepends = python-phpserialize: for WordPress imports
 	optdepends = python-ws4py: for nikola auto

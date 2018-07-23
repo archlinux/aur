@@ -3,7 +3,7 @@
 _pyname=Nikola
 pkgname=nikola
 pkgver=7.8.15
-pkgrel=1
+pkgrel=2
 pkgdesc='A modular, fast, simple, static website generator.'
 arch=('any')
 url='https://getnikola.com/'
@@ -15,13 +15,13 @@ depends=('python' 'python-doit' 'python-pygments' 'python-pillow'
          'python-blinker' 'python-natsort' 'python-setuptools'
          'python-requests' 'python-husl' 'python-piexif' 'python-markdown')
 optdepends=('python-jinja: for Jinja2 themes'
-            'python-pyphen>=0.9.1: for hyphenation'
-            'python-pygal=1.7.0: for SVG graph plotting'
-            'python-typogrify>=2.0.4: for typographical enhancements'
+            'python-pyphen: for hyphenation'
+            'python-pygal: for SVG graph plotting'
+            'python-typogrify: for typographical enhancements'
             'python-webassets: for bundling assets'
             'ipython-notebook: for ipynb support'
             'ipython: for ipynb support'
-            'python-ghp-import>=0.4.1: for uploading to GitHub Pages'
+            'python-ghp-import: for uploading to GitHub Pages'
             'python-micawber: for embedding media in posts'
             'python-phpserialize: for WordPress imports'
             'python-ws4py: for nikola auto'
