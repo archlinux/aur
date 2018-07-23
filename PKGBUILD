@@ -2,7 +2,7 @@
 # Maintainer: Shane Stone <shanewstone at gmail>
 
 pkgname=python-proselint
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 provides=('proselint')
 pkgdesc="A linter for prose"
@@ -12,10 +12,11 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python-click' 'python-future' 'python-six')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amperser/proselint/archive/$pkgver.tar.gz")
-sha256sums=('4b55bf2361eb036dfc87359038b83347391e92ab72bb487d75f6897f8a7b8353')
+sha256sums=('1064291cd3de1729f1005039a594f2a8d3a5bca1c64ec07d50afbed808ab922c')
 
 build() {
   cd proselint-$pkgver
+
   python setup.py build
 }
 
