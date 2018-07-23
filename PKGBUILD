@@ -4,8 +4,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-zfs
-pkgver=4.3.0
-pkgrel=0
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc) with ZFS support enabled"
 arch=('x86_64')
 url="http://libvirt.org/"
@@ -22,7 +22,7 @@ source=("https://libvirt.org/sources/${pkgname/-zfs/}-${pkgver}.tar.xz"{,.asc}
 	'libvirtd-guests.conf.d'
 	'libvirt.sysusers.d')
 #	"ae102b5d7bccd29bc6015a3e0acefeaa90d097ac.patch::https://libvirt.org/git/?p=libvirt.git;a=patch;h=ae102b5d7bccd29bc6015a3e0acefeaa90d097ac")
-sha512sums=('cc61497121931019a8cc3fa8234d7cf95b0f0e1d77ab6fcd089db92759617b099eb83c57aa91768ae6ccf92c345cf72e1d9b202acb5132a159476fb86f1a6999'
+sha512sums=('26710c7e5219f007524e9f93a642e55e4e8ea197afa6b2ca6a4b67b7028313f4b0d82924ee9a1e91ff688a4d2b53f89f3655fbeef0fa99a34f8418f37d787984'
             'SKIP'
             'fc0e16e045a2c84d168d42c97d9e14ca32ba0d86025135967f4367cf3fa663882eefb6923ebf04676ae763f4f459e5156d7221b36b47c835f9e531c6b6e0cd9d'
             'ef221bae994ad0a15ab5186b7469132896156d82bfdc3ef3456447d5cf1af347401ef33e8665d5b2f76451f5457aee7ea01064d7b9223d6691c90c4456763258'
@@ -31,10 +31,10 @@ sha512sums=('cc61497121931019a8cc3fa8234d7cf95b0f0e1d77ab6fcd089db92759617b099eb
 prepare() {
   cd "${srcdir}/${pkgname/-zfs/}-${pkgver}"
 
-  for file in $(find . -name '*.py' -print); do
-    sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' "${file}"
-    sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' "${file}"
-  done
+#  for file in $(find . -name '*.py' -print); do
+#    sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' "${file}"
+#    sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' "${file}"
+#  done
 
   sed -i 's|/sysconfig/|/conf.d/|g' \
     src/remote/libvirtd.service.in \
@@ -54,7 +54,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname/-zfs/}-${pkgver}"
 
-  export PYTHON=`which python2`
+  export PYTHON=`which python`
   export LDFLAGS=-lX11
   export RADVD=/usr/bin/radvd
   [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"${pkgname/-zfs/}" --sbindir=/usr/bin \
@@ -68,18 +68,20 @@ build() {
 }
 
 package_libvirt-zfs() {
-  depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
+  depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python'
      'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap' 'libcap-ng'
      'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
-     'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph-libs' 'libssh2'
-     'netcf' 'fuse2')
+     'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'libssh2'
+     'netcf' 'fuse2' 'glusterfs' 'ceph-libs')
   optdepends=('ebtables: required for default NAT networking'
         'dnsmasq: required for default NAT/DHCP for guests'
         'bridge-utils: for bridged networking'
         'netcat: for remote management over ssh'
         'radvd'
         'dmidecode'
-        'parted')
+        'parted'
+        'ceph: for ceph support'
+        'qemu-block-gluster: for qemu glusterfs support')
   backup=('etc/conf.d/libvirt-guests'
     'etc/conf.d/libvirtd'
     'etc/libvirt/libvirt.conf'
@@ -114,6 +116,9 @@ package_libvirt-zfs() {
     'etc/logrotate.d/libvirtd.uml'
     'etc/sasl2/libvirt.conf')
   install="libvirt.install"
+}
+
+package() {
   cd "${srcdir}/${pkgname/-zfs/}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
@@ -132,14 +137,5 @@ package_libvirt-zfs() {
 	"${pkgdir}"/etc/sysconfig
 
   rm -f "${pkgdir}"/etc/libvirt/qemu/networks/autostart/default.xml
-  #move glusterfs module
-  mv "$pkgdir"/usr/lib/libvirt/storage-backend/libvirt_storage_backend_gluster.so "$pkgdir"/../
-}
 
-package_libvirt-glusterfs() {
-  depends=("libvirt=$pkgver" 'glusterfs')
-  optdepends=('qemu-block-gluster: for QEMU gluster support')
-
-  mkdir -p "$pkgdir"/usr/lib/libvirt/storage-backend/
-  cp "$pkgdir"/../libvirt_storage_backend_gluster.so "$pkgdir"/usr/lib/libvirt/storage-backend/libvirt_storage_backend_gluster.so
 }
