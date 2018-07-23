@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('git' 'llvm' 'clang' 'python2' 'opencl-headers' 'cmake')
 optdepends=('libva: for cl_intel_va_api_media_sharing'
             'libdrm: for cl_intel_va_api_media_sharing')
-depends=('ocl-icd')
+depends=('ocl-icd' 'ncurses' 'zlib')
 conflicts=('compute-runtime-git')
 provides=('opencl-driver')
 
