@@ -35,7 +35,7 @@ package() {
     chmod +x "$pkgdir/opt/$pkgname/data/TowerFall.bin.x86_64"
 
     # And now, welcome stupid
-    # The game simply won't run if you don't allow +r on those
+    # The game simply won't run if you don't allow +w on those
     chmod -R a+w "$pkgdir/opt/$pkgname/data/Content/Atlas/"*.png
     chmod -R a+w "$pkgdir/opt/$pkgname/data/Content/SFX/"*.wav
 
