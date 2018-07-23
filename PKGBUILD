@@ -6,8 +6,8 @@
 
 pkgname=nextcloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.3.3.r15.gb095916
-pkgrel=2
+pkgver=2.3.3.r17.g3a48c7c
+pkgrel=1
 pkgdesc="Nextloud client for linux"
 arch=('i686' 'x86_64')
 url="https://nextcloud.com/"
@@ -61,13 +61,16 @@ build() {
   make
 }
 
+check() {
+  sed -Ei 's/Icon(\[.*\])?=nextcloud/Icon\1=Nextcloud/g' "${srcdir}/nextcloud-client/build-linux/src/gui/nextcloud.desktop"
+}
+
 package() {
   cd ${srcdir}/${_name}/build-linux
   make DESTDIR=${pkgdir} install
 
   # Fix some naming issues
   if [ -f ${pkgdir}/usr/share/applications/nextcloud.desktop ]; then
-    sed -Ei 's/Icon(\[.*\])?=nextcloud/Icon\1=Nextcloud/g' ${pkgdir}/usr/share/applications/nextcloud.desktop
     mv ${pkgdir}/usr/share/applications/nextcloud.desktop ${pkgdir}/usr/share/applications/Nextcloud.desktop
   fi
 }
