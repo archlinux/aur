@@ -7,7 +7,7 @@
 pkgname=dbeaver-ce
 pkgver=5.1.3
 pkgrel=2
-pkgdesc="A universal database tool for developers and database administrators. Community Edition"
+pkgdesc="An universal database tool for developers and database administrators. Community Edition"
 arch=('i686' 'x86_64')
 url="https://github.com/dbeaver/dbeaver"
 license=("GPL")
