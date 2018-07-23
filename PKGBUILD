@@ -10,12 +10,12 @@ pkgname=${_target}-gcc-stage1
 pkgver=8.1.0
 _majorver=${pkgver:0:1}
 _islver=0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
-depends=("${_target}-binutils>=2.30-4" libmpc zlib)
+depends=("${_target}-binutils>=2.30-1" libmpc zlib)
 options=(!emptydirs !distcc !strip)
 #source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz

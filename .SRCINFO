@@ -1,7 +1,7 @@
 pkgbase = powerpc-linux-gnu-gcc-stage1
 	pkgdesc = The GNU Compiler Collection. Stage 1 for toolchain building (powerpc-linux-gnu)
 	pkgver = 8.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = powerpc-linux-gnu-gcc-stage1
 	license = LGPL
 	license = FDL
 	license = custom
-	depends = powerpc-linux-gnu-binutils>=2.30-4
+	depends = powerpc-linux-gnu-binutils>=2.30-1
 	depends = libmpc
 	depends = zlib
 	options = !emptydirs
