@@ -3,12 +3,12 @@
 pkgname=mpv-tools
 _srcname=mpv
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper scripts from mpv/TOOLS"
 arch=('any')
 url="https://github.com/mpv-player/mpv"
 license=('GPL')
-optdepends=('mpv' 'bash')
+depends=('mpv' 'bash')
 source=("${_srcname}-${pkgver}.tar.gz::https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz")
 sha256sums=('772af878cee5495dcd342788a6d120b90c5b1e677e225c7198f1e76506427319')
 
