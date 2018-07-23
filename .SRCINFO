@@ -15,6 +15,8 @@ pkgbase = formiko-git
 	depends = python-gobject
 	depends = webkit2gtk
 	optdepends = python-recommonmark: for Common Mark support (MarkDown)
+	provides = formiko
+	conflicts = formiko
 	source = git+https://github.com/ondratu/formiko.git
 	sha256sums = SKIP
 

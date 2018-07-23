@@ -10,6 +10,8 @@ arch=('any')
 depends=('gobject-introspection-runtime' 'gtk3' 'gtksourceview3' 'hicolor-icon-theme' 'python' 'python-docutils' 'python-gobject' 'webkit2gtk')
 optdepends=('python-recommonmark: for Common Mark support (MarkDown)')
 makedepends=('git')
+provides=('formiko')
+conflicts=('formiko')
 source=("git+https://github.com/ondratu/formiko.git")
 sha256sums=('SKIP')
 	    
