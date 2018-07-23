@@ -2,7 +2,7 @@
 pkgname=augur-git
 _gitname=augur-app
 _pkgname=augur
-pkgver=v1.0.0.r1.g994712b
+pkgver=v1.0.5
 pkgrel=1
 pkgdesc="Augur Desktop Application"
 arch=('any')
@@ -21,7 +21,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
