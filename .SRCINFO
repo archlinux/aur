@@ -1,6 +1,6 @@
 pkgbase = debhelper-python
 	pkgdesc = debhelper scripts for Python 3: py3versions, python3.pm
-	pkgver = 3.6.4
+	pkgver = 3.6.6
 	pkgrel = 1
 	url = http://packages.debian.org/sid/python3
 	arch = any
@@ -11,11 +11,11 @@ pkgbase = debhelper-python
 	optdepends = sgmltools-lite
 	provides = debhelper-python
 	provides = dh-python
-	source = http://ftp.debian.org/debian/pool/main/p/python3-defaults/python3-defaults_3.6.4-1.tar.gz
-	source = http://ftp.debian.org/debian/pool/main/d/dh-python/dh-python_2.20170125.tar.xz
+	source = http://ftp.debian.org/debian/pool/main/p/python3-defaults/python3-defaults_3.6.6-1.tar.gz
+	source = http://ftp.debian.org/debian/pool/main/d/dh-python/dh-python_3.20180723.tar.xz
 	source = py3versions.patch
-	sha512sums = c8a866afd88fc96fa1cd80eecc773d23035c3d9733e94a6cd56d0b46f7481e1ffe8a86c0aba73ca4d42a8105300455ab433f642524a1d472edd93b7d80738056
-	sha512sums = e7b48d6678fbc36f0628ad5e077e756f5ea56889be936763a4346ce080cf631f74c932cd463d3cfce24cdc9e7b377642857563b8be5c01347a46827cf695f2cc
+	sha512sums = 93ffb0747b6eee882536a1fd03433e5d5ff4508542cfe88fd0cc80e4129e0f70930fe611ed49a7f6da8d266d9d231b057bef2a6a0e64b3666ea95ce1b591bddc
+	sha512sums = a8ea77aa88c104625ee98fd2ddae9e68f25d973dbbda7435bb81561769f106f89d17b25f090e6ab9c9428c03035016bc75411b6a1344f4dc20f8cc143ca6ccad
 	sha512sums = 772332cecd85331b6deda25c0d48eed2490e7e7f26d90c7936f46188c706f590771af6edcbb4740a23bff0434ed061bc2b49f8183561cbf4bbb845ed3bebc42a
 
 pkgname = debhelper-python
