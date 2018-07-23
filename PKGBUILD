@@ -2,15 +2,15 @@
 
 pkgname=craftbukkit-spigot
 pkgver=1.12.2
-pkgbuild=71
-pkgrel=2
+pkgbuild=75
+pkgrel=3
 pkgdesc="CraftBukkit & Spigot Minecraft servers"
 arch=(any)
 url="http://www.spigotmc.org/"
 license=("BSD")
 depends=(java-runtime-headless fontconfig git mcrcon)
 conflicts=(bukkit craftbukkit craftbukkit-stable)
-provides=(craftbukkit=1.10)
+provides=(craftbukkit=${pkgver} minecraft-server=${pkgver})
 install=craftbukkit-spigot.install
 noextract=('BuildTools.jar')
 source=("https://hub.spigotmc.org/jenkins/job/BuildTools/${pkgbuild}/artifact/target/BuildTools.jar"
@@ -22,7 +22,7 @@ source=("https://hub.spigotmc.org/jenkins/job/BuildTools/${pkgbuild}/artifact/ta
         "stop_server.sh"
         "backup.sh"
         "readme.md")
-md5sums=('59683171f76e92a06018b3271dd967d4'
+md5sums=('f9ad685c926b577869835a252d66410f'
          'ec1fa48d148fc3967e516772f6b7ca7b'
          'dd8955f7f9f19715ddfd6aefa697f845'
          'f9f56e25b7a31004a723ba1884e79c28'
