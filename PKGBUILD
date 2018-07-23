@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='Nexus 3 Repository OSS'
 arch=('any')
 url='http://nexus.sonatype.org'
-license=('custom:sonatype')
+license=("custom:$pkgname")
 depends=('jre8-openjdk-headless')
 replaces=('nexus3')
 provides=($pkgname)
@@ -53,7 +53,7 @@ package() {
 
 	install -Dm640 $srcdir/$pkgname.properties $pkgdir/var/lib/$pkgname/etc/nexus.properties
 
-	install -Dm644 $srcdir/nexus-$_version-$_patch/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 $srcdir/nexus-$_version-$_patch/OSS-LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	install -Dm755 $srcdir/$pkgname $pkgdir/usr/bin/$pkgname
 	install -Dm644 $srcdir/$pkgname.vmoptions $pkgdir/usr/lib/$pkgname/bin/nexus.vmoptions
 	install -Dm644 $pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
