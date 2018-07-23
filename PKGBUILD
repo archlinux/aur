@@ -2,9 +2,9 @@
 
 _pkgname=mpv
 pkgname=${_pkgname}-light
-pkgver=0.28.2
+pkgver=0.29.0
 pkgrel=1
-_waf_version=1.9.8
+_waf_version=2.0.9
 pkgdesc="Free, open source, and cross-platform media player – with selection of features."
 url="https://mpv.io"
 license=('GPL')
@@ -17,8 +17,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(${_pkgname}-${pkgver}.tar.gz::"https://github.com/mpv-player/${_pkgname}/archive/v${pkgver}.tar.gz"
         "https://waf.io/waf-${_waf_version}")
-sha256sums=('aada14e025317b5b3e8e58ffaf7902e8b6e4ec347a93d25a7c10d3579426d795'
-            '167dc42bab6d5bd823b798af195420319cb5c9b571e00db7d83df2a0fe1f4dbf')
+sha256sums=('772af878cee5495dcd342788a6d120b90c5b1e677e225c7198f1e76506427319'
+            '2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -35,7 +35,6 @@ build() {
     --enable-zsh-comp \
     --enable-libmpv-shared \
     --disable-libarchive \
-    --disable-encoding \
     --disable-libbluray \
     --disable-rubberband \
     --disable-vapoursynth \
