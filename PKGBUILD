@@ -39,7 +39,7 @@ build() {
   cd "$srcdir/${_pkgname}"
   # Hack to clear tests
     echo "I pass." > doc/pp.md
-	make
+	make && make
 }
 
 package() {
