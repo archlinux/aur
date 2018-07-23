@@ -1,31 +1,32 @@
-# Maintainer:  Israel Herraiz <isra@herraiz.org>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor:  Israel Herraiz <isra@herraiz.org>
 # Contributor: jorge_barroso <jorge.barroso.11@gmail.com>
 # Contributor: Ray Griffin <rorgoroth@googlemail.com>
 # Contributor: Jonathan Wiersma <arch aur at jonw dot org>
 
 pkgname=freeciv-sdl
 _pkgname=freeciv
-pkgver=2.5.11
+pkgver=2.6.0
 pkgrel=1
-pkgdesc="A multiuser clone of the famous Microprose game of Civilization - SDL Client"
+pkgdesc="A multiuser clone of the famous Microprose game of Civilization - SDL2 Client"
 arch=('i686' 'x86_64')
 url="http://freeciv.org"
 license=('GPL')
-depends=('hicolor-icon-theme' 'sdl_image' 'sdl_mixer' 'sdl_gfx' 'sdl_ttf')
+depends=('hicolor-icon-theme' 'sdl2_image' 'sdl2_mixer' 'sdl2_gfx' 'sdl2_ttf')
 conflicts=('freeciv')
 options=('!libtool')
 install=$_pkgname.install
 source=(http://files.freeciv.org/stable/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('4c9c526952fe977cb4b302b8ccf75798fd066c6dde670f72f677fe4964259aad')
+sha256sums=('7c20399198d6c7d846fed9a69b02e01134ae5340a3ae0f99d1e38063ade6c999')
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
 
-  ./configure --prefix=/usr --enable-client=sdl --enable-shared --without-ggz-client
+  ./configure --prefix=/usr --enable-client=sdl2 --enable-shared --without-ggz-client
 
   make
 
-  sed 's/gtk2/sdl/g' -i client/$_pkgname.desktop
+  sed 's/gtk2/sdl2/g' -i client/$_pkgname.desktop
 }
 
 package() {
