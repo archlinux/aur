@@ -16,7 +16,7 @@ noextract=()
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/g/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "${_pkgname}-${pkgver}.tar.gz.sig")
-sha512sums=('4263c027d123332967692df467f01cb3b84acb3721eab7ae421a8ad79850cf00d0abca306ad6ff16acc95f1599c9c219a6c137e934f07f91ef1a11ce66b04545`'
+sha512sums=('4263c027d123332967692df467f01cb3b84acb3721eab7ae421a8ad79850cf00d0abca306ad6ff16acc95f1599c9c219a6c137e934f07f91ef1a11ce66b04545'
             'SKIP')
 
 package_python-grpcio() {
