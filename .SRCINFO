@@ -1,11 +1,10 @@
 pkgbase = appgate-sdp
 	pkgdesc = Software Defined Perimeter - GUI client
-	pkgver = 4.1.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://www.cyxtera.com/secure-access/appgate-sdp
 	arch = x86_64
 	license = custom
-	makedepends = dpkg
 	depends = gconf
 	depends = libsecret
 	depends = gtk3
@@ -15,11 +14,9 @@ pkgbase = appgate-sdp
 	depends = nodejs
 	depends = dnsmasq
 	conflicts = appgate-sdp-headless
-	noextract = appgate-sdp_4.1.0_amd64.deb
-	noextract = appgatedriver.service
-	source = https://sdpdownloads.cyxtera.com/files/download/AppGate-SDP-4.1.0/clients/appgate-sdp_4.1.0_amd64.deb
+	source = https://sdpdownloads.cyxtera.com/files/download/AppGate-SDP-4.0.1/clients/appgate-sdp_4.0.1_amd64.deb
 	source = appgatedriver.service
-	md5sums = 424c3def083993c095e4bad0252cb848
+	md5sums = fcc77359e74bd728e2dd74acdaf4dc85
 	md5sums = 002644116e20b2d79fdb36b7677ab4cf
 
 pkgname = appgate-sdp
