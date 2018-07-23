@@ -1,7 +1,7 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=loadlibrary-git
-pkgver=r30.a0bc678
-pkgrel=1
+pkgver=r49.643a6a0
+pkgrel=2
 pkgdesc="Porting Windows Dynamic Link Libraries to Linux "
 url="https://github.com/taviso/loadlibrary"
 arch=('x86_64')
@@ -31,10 +31,12 @@ build(){
 }
  
 package() {
-    mkdir -p "$pkgdir/usr/lib/loadlibrary/engine"
+    mkdir -p "$pkgdir/usr/lib/loadlibrary/engine" "$pkgdir/usr/include"
     install -m755 "$srcdir/loadlibrary/mpclient" "$pkgdir/usr/lib/loadlibrary/mpclient"
     install -m644 "$srcdir/mpengine.dll" "$pkgdir/usr/lib/loadlibrary/engine/mpengine.dll"
     install -m644 "$srcdir"/*.vdm "$pkgdir/usr/lib/loadlibrary/engine/"
+    install -m644 "$srcdir/loadlibrary/peloader"/*.h "$pkgdir/usr/include/"
+    install -m644 "$srcdir/loadlibrary/peloader/libpeloader.a" "$pkgdir/usr/lib/"
 
     mkdir -p "$pkgdir/usr/bin"
     cat >> "$pkgdir/usr/bin/mpclient" << \EOF
