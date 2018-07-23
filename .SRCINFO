@@ -1,23 +1,21 @@
 pkgbase = powerpc-linux-gnu-glibc-headers
 	pkgdesc = GNU C Library headers (powerpc-linux-gnu)
-	pkgver = 2.23
-	pkgrel = 7
+	pkgver = 2.27
+	pkgrel = 1
 	url = http://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
 	license = LGPL
-	makedepends = powerpc-linux-gnu-gcc-stage1>=5.3.0
-	depends = powerpc-linux-gnu-linux-api-headers>=4.5.5
+	makedepends = powerpc-linux-gnu-gcc-stage1>=8.1.0-1
+	depends = powerpc-linux-gnu-linux-api-headers>=4.16.1-1
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = http://ftp.gnu.org/gnu/libc/glibc-2.23.tar.xz
-	source = http://ftp.gnu.org/gnu/libc/glibc-2.23.tar.xz.sig
-	source = glibc-1915d6d1.patch.xz
-	validpgpkeys = F37CDAB708E65EA183FD1AF625EF0A436C2A4AFF
-	md5sums = 456995968f3acadbed39f5eba31678df
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.27.tar.xz
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.27.tar.xz.sig
+	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
+	md5sums = 898cd5656519ffbc3a03fe811dd89e82
 	md5sums = SKIP
-	md5sums = 90fad90d55a4c70d91a79539ed3642e2
 
 pkgname = powerpc-linux-gnu-glibc-headers
 
