@@ -1,0 +1,18 @@
+pkgbase = rocketbirds-hib
+	pkgdesc = Annihilate an evil penguin regime in this cinematic platform adventure game offering full solo and co-op campaigns with anaglyph 3D support.
+	pkgver = 20130917
+	pkgrel = 1
+	url = http://www.rocketbirds.com
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = lib32-alsa-plugins
+	depends = lib32-sdl2
+	depends = lib32-nvidia-cg-toolkit
+	depends = lib32-libbass
+	noextract = Rocketbirds20130917.sh
+	source = hib://Rocketbirds20130917.sh
+	sha256sums = 52f2a8f6e028b21aa91471dca12fa691775107d53ffd16d5269f70deb02e457e
+
+pkgname = rocketbirds-hib
+
