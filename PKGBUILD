@@ -8,13 +8,13 @@
 _target="powerpc-linux-gnu"
 pkgname=${_target}-glibc-headers
 pkgver=2.23
-pkgrel=6
+pkgrel=7
 _commit=1915d6d1
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
 url="http://www.gnu.org/software/libc/"
 license=('GPL' 'LGPL')
-depends=("${_target}-linux-api-headers-x>=4.5.5")
+depends=("${_target}-linux-api-headers>=4.5.5")
 makedepends=("${_target}-gcc-stage1>=5.3.0")
 options=('!buildflags' '!strip' 'staticlibs')
 source=(http://ftp.gnu.org/gnu/libc/glibc-${pkgver}.tar.xz{,.sig}
