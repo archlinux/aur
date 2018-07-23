@@ -3,7 +3,7 @@
 
 pkgname=python-pywal
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate and change colorschemes on the fly"
 arch=('any')
 url="https://github.com/dylanaraps/pywal/"
