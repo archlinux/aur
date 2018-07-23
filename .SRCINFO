@@ -1,12 +1,12 @@
 pkgbase = simpleaur-git
 	pkgdesc = simpleaur, a AUR helper that does not require extra dependences.
-	pkgver = 40.c9618a5
+	pkgver = 42.03fe18e
 	pkgrel = 1
 	url = https://gitlab.com/edu4rdshl/simpleaur
 	arch = any
 	license = GPL3
 	depends = git
-	optdepends = cower: search for available updates (simplecheck) and package search (simpleaur) - recommended
+	optdepends = cower: search for available updates (simplecheck) and package search (simplesearch) - recommended
 	source = git+https://gitlab.com/edu4rdshl/simpleaur.git
 	sha256sums = SKIP
 

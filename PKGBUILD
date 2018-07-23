@@ -1,7 +1,7 @@
 # Maintainer edu4rdshl
 _pkgname=simpleaur
 pkgname=simpleaur-git
-pkgver=41.d235fe1
+pkgver=42.03fe18e
 pkgrel=1
 pkgdesc="simpleaur, a AUR helper that does not require extra dependences."
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
         )
 
 optdepends=(
-'cower: search for available updates (simplecheck) and package search (simpleaur) - recommended'
+'cower: search for available updates (simplecheck) and package search (simplesearch) - recommended'
             )
 
 source=("git+https://gitlab.com/edu4rdshl/${_pkgname}.git")
