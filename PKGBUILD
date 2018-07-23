@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=7
+pkgrel=8
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh/"
@@ -20,28 +20,39 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 #install="popcorntime.install"
 # Needed variables for sources downloads
-_commit_hash="commit=9e25e9f004bcab070cdecb201ba89da539b2f780"
+_commit_hash="commit=be800aa98cb9ef16f7e00737bbc51ba69204ed8f"
 #_commit_hash="branch=master"
-
 _pkgname="popcorn-desktop"
-source=(
-    "${_pkgname}::git+https://github.com/popcorn-official/popcorn-desktop/#${_commit_hash}"
-    "popcorntime.desktop"
-)
-sha256sums=('SKIP'
-            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
 # Useful variables for builds
+_nwjs="0.31.4"
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
 _srcdir="${_pkgname}"
 _bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
+# Dependencies to install
+# natives: solves some builds problems with gulp < 4
+# See: https://github.com/gulpjs/gulp/issues/2162#issuecomment-384380989, read all the thread
+_missing_deps="natives@1.1.3"
+
+# Get sources only here
+source=(
+    "${_pkgname}::git+https://github.com/popcorn-official/popcorn-desktop/#${_commit_hash}"
+    "gulp-fixes.patch"
+    "popcorntime.desktop"
+)
+source_i686=("https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/$_nwjs/$_nwjs-linux-ia32.zip")
+source_x86_64=("https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/$_nwjs/$_nwjs-linux-x64.zip")
+sha256sums=('SKIP'
+            '1918d1b78f694a9899de732a934a63972a4322d7a3cbfd3de5a902b0aea48192'
+            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
+sha256sums_i686=('78241eb9e051dff300ea310c7fb44093cd242be9f88e7659b0db991f378adbc3')
+sha256sums_x86_64=('c7f4620cd51f3df1a573c84f42e57a575d320788730693b157a52115b73f3edc')
 
 # Building the package
 prepare() {
     cd "${srcdir}/${_srcdir}"
 
-    msg2 "Installing npm, bower and missing dependencies..."
     # Using a different folder for the cache, makes the system cleaner
     #_cache=`npm config get cache`
     #npm config set cache "$srcdir/npm_cache"
@@ -49,10 +60,9 @@ prepare() {
     export npm_config_cache="$srcdir/npm_cache"
     msg2 "Cache changed to `npm config get cache`"
 
-    msg2 "Install missing dependencies, if any"
+    msg2 "Install missing dependencies, if any ..."
     # Build is almost always broken with newer NPMs. Install a good one and use it
-    missing_deps="npm@5.3"
-    for package in $missing_deps
+    for package in $_missing_deps
     do
         msg2 "Installing missing dependency $package"
         npm install "$package"
@@ -61,11 +71,11 @@ prepare() {
     msg2 "Set up the \$PATH to allow npm-installed executables..."
     export PATH="$PWD/node_modules/.bin:$PATH"
 
-    msg2 "Patching wrong packages versions..."
-    msg "Patching Vodo provider (butter-provider-vodo)..."
+    msg2 "Patching wrong packages versions, if any ..."
     # Obviously, when I try to update Node software, some dev makes big updates.
     # These are from less than a week ago; just fetch the old working version
-    sed -E 's|(.*vodo.*)",|\1#f61e70217711b4a29ff50618d28e8d4170d63fe5",|' -i package.json
+    #msg "Patching Vodo provider (butter-provider-vodo)..."
+    #sed -E 's|(.*vodo.*)",|\1#f61e70217711b4a29ff50618d28e8d4170d63fe5",|' -i package.json
 
     # Actually install the stuff
     msg2 "Installing normal dependencies"
@@ -73,6 +83,13 @@ prepare() {
 
     # Restore the cache directory
     #npm config set cache ${_cache}
+
+    # Use upstream nw.js, to avoid possible binary malware
+    sed -i "s|get.popcorntime.sh/repo/nw|dl.nwjs.io|" gulpfile.js
+    # And use latest version of nw.js
+    sed -i "s|\(const nwVersion = '\)[0-9.]\+|\1$_nwjs|"   gulpfile.js
+    # Fix problems with the dependecies list function with newer npm versions
+    patch -Np1 -i "$srcdir/gulp-fixes.patch"
 }
 
 build() {
@@ -89,7 +106,14 @@ package() {
 
     find . -type f -exec install -D {} ${pkgdir}/usr/share/${pkgname}/{} \;
     # Remove customly installed npm, if any
-    rm -rf "${pkgdir}/usr/share/${pkgname}/node_modules/npm"
+    for package in $_missing_deps
+    do
+        local package_path=`echo $package | sed 's|@.*||'`
+        rm -rf "${pkgdir}/usr/share/${pkgname}/node_modules/$package_path"
+    done
+
+    # Install the FFmpeg library with additional codecs
+    install -Dm644 "${srcdir}/libffmpeg.so" "${pkgdir}/usr/share/${pkgname}/lib/libffmpeg.so"
 
     install -Dm644 "${srcdir}/${_srcdir}/src/app/images/icon.png" "${pkgdir}/usr/share/pixmaps/popcorntime.png"
     chmod +x "${pkgdir}/usr/share/${pkgname}/Popcorn-Time"
