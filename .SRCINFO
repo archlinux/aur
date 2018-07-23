@@ -1,0 +1,17 @@
+pkgbase = aribb25
+	pkgdesc = Basic implementation of the ARIB STD-B25 public standard
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://code.videolan.org/videolan/aribb25
+	arch = x86_64
+	license = custom:ISC
+	makedepends = libtool
+	makedepends = autoconf
+	makedepends = pkg-config
+	makedepends = automake
+	depends = pcsclite
+	source = https://code.videolan.org/videolan/aribb25/-/archive/0.2.7/aribb25-0.2.7.tar.gz
+	sha256sums = 3d057fe0c5cd04c78364736c352c4f8c650d48e57a5e5effdb8e3fef9faab4e6
+
+pkgname = aribb25
+
