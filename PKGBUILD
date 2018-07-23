@@ -6,7 +6,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r407109+.a6a32fb286fa+
+pkgver=r427751.143984185dce
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -27,13 +27,12 @@ provides=('firefox')
 source=('mozilla-unified::hg+https://hg.mozilla.org/mozilla-central/'
         firefox.desktop firefox-symbolic.svg
         0001-Bug-1430274-Define-MOZ_ALSA-for-more-source-files.-r.patch
-        firefox-install-dir.patch no-crmf.diff)
+        firefox-install-dir.patch)
 sha256sums=('SKIP'
             '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
             'e8a695bd6a007525390c502739c0f00d5d753a1bde7053c21c712075f2c2994d'
-            'a94f80abe65608cd49054a30acc31e4d0885fe5b2a38cf08ded5e5b51b87c99d'
-            'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb')
+            'a94f80abe65608cd49054a30acc31e4d0885fe5b2a38cf08ded5e5b51b87c99d')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -61,9 +60,6 @@ prepare() {
 
   # https://bugs.archlinux.org/task/57285
   # patch -Np1 -i ../0001-Bug-1430274-Define-MOZ_ALSA-for-more-source-files.-r.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
-  patch -Np1 -i ../no-crmf.diff
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -97,9 +93,9 @@ ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-libvpx
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-ac_add_options --enable-system-hunspell
+#ac_add_options --with-system-nspr
+#ac_add_options --with-system-nss
+#ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
 
@@ -184,7 +180,7 @@ END
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Use system-provided dictionaries
-  rm -r "$pkgdir"/usr/lib/$_pkgname/dictionaries
+  rm -rf "$pkgdir"/usr/lib/$_pkgname/dictionaries
   ln -fTs /usr/share/hunspell "$pkgdir/usr/lib/$_pkgname/dictionaries"
   ln -fTs /usr/share/hyphen "$pkgdir/usr/lib/$_pkgname/hyphenation"
 
