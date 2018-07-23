@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-session-git
-pkgver=r116.b4b4141
+pkgver=r123.10f6581
 pkgrel=1
 pkgdesc='Session settings for Pantheon'
 arch=('any')
