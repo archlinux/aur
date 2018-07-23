@@ -1,0 +1,12 @@
+pkgbase = lerpc
+	pkgdesc = Does linear interpolation (lerp) between HTML color codes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Phosphenius/lerpc
+	arch = any
+	license = MIT
+	source = https://github.com/Phosphenius/lerpc/archive/v0.1.0.tar.gz
+	md5sums = ff9d3408f3be689285566ea2046ae4d5
+
+pkgname = lerpc
+
