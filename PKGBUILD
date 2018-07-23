@@ -2,7 +2,7 @@
 
 pkgname=libva-headless
 _pkgname=libva
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux headless systems'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,12 +13,12 @@ provides=('libva')
 depends=('libdrm')
 optdepends=('libva-vdpau-driver: backend for Nvidia and AMD cards'
             'libva-intel-driver: backend for Intel cards')
-source=(https://github.com/01org/libva/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('f3fa953a11d3210c3a4ee79031abdbe0863d5ce13d9b3f93f315f1eec60a4b0f')
+source=("https://github.com/intel/libva/releases/download/${pkgver}/libva-${pkgver}.tar.bz2")
+sha256sums=('6f6ca04c785544d30d315ef130a6aeb9435b75f934d7fbe0e4e9ba6084ce4ef2')
 
 build() {
   cd ${_pkgname}-$pkgver
-  ./configure --prefix=/usr --enable-drm --disable-x11 --disable-glx --disable-egl --disable-wayland
+  ./configure --prefix=/usr --enable-drm --disable-x11 --disable-glx --disable-wayland
   make
 }
 
