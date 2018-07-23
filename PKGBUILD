@@ -4,7 +4,7 @@
 
 _pkgname="micropython"
 pkgname="${_pkgname}-git"
-pkgver=1.9.3.161.g43141ddb5
+pkgver=1.9.4.405.g7067ac357
 pkgrel=1
 epoch=1
 pkgdesc="A Python 3 implementation for microcontrollers and constrained environments (Unix version)."
@@ -34,7 +34,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}/ports/unix"
-  make CWARN="-Wall -Werror -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=unused-const-variable" axtls
+  make CWARN="-Wall -Werror -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=unused-const-variable -Wno-error=array-bounds" axtls
   make
 }
 

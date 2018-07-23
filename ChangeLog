@@ -1,10 +1,14 @@
+2018-07-23 Christopher Arndt <aur -at- chrisarndt -dot- de>
+	* 1:1.9.4.405.g7067ac357-1:
+	Added -Wno-error=array-bounds compiler flag to make invocation for axtls.
+
 2017-12-13 Christopher Arndt <aur -at- chrisarndt -dot- de>
 	* 1:1.9.3.161.g43141ddb5
-	Install 'mpy-cross' binary
+	Install 'mpy-cross' binary.
 
 2017-01-27 Christopher Arndt <aur -at- chrisarndt -dot- de>
 	* 1:1.9.2.83.g6e06512e0-1
-	Adapted PKGBUILD to new source repository layout
+	Adapted PKGBUILD to new source repository layout.
 
 2017-01-27 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
