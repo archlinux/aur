@@ -8,14 +8,14 @@ _cmd="jirashell"
 
 pkgname=("python-$_module" "python2-$_module")
 pkgdesc="Python library for interacting with JIRA via REST APIs"
-pkgver="1.0.11"
+pkgver="2.0.0"
 pkgrel=1
 url="https://github.com/pycontribs/jira"
 license=('BSD')
 arch=('any')
 makedepends=("python-pbr>=1.9" "python2-pbr>=1.9")
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3c9e92779ad90daa09285f9f5172b5443042777a19f74146f10b99d1a7992c66')
+sha256sums=('e2a94adff98e45b29ded030adc76103eab34fa7d4d57303f211f572bedba0e93')
 
 build() {
     cd "$_name-$pkgver"

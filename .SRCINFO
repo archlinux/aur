@@ -1,14 +1,14 @@
 pkgbase = python-jira
 	pkgdesc = Python library for interacting with JIRA via REST APIs
-	pkgver = 1.0.11
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/pycontribs/jira
 	arch = any
 	license = BSD
 	makedepends = python-pbr>=1.9
 	makedepends = python2-pbr>=1.9
-	source = https://files.pythonhosted.org/packages/source/j/jira/jira-1.0.11.tar.gz
-	sha256sums = 3c9e92779ad90daa09285f9f5172b5443042777a19f74146f10b99d1a7992c66
+	source = https://files.pythonhosted.org/packages/source/j/jira/jira-2.0.0.tar.gz
+	sha256sums = e2a94adff98e45b29ded030adc76103eab34fa7d4d57303f211f572bedba0e93
 
 pkgname = python-jira
 	depends = python-pbr
