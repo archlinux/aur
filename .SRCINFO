@@ -1,7 +1,7 @@
 pkgbase = gamehub
 	pkgdesc = Games manager/downloader/library written in Vala that supports GOG, Steam and Humble Bundle
 	pkgver = 0.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tkashkin/GameHub
 	arch = any
 	license = unknown

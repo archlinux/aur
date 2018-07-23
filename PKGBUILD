@@ -2,7 +2,7 @@
 
 pkgname=gamehub
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Games manager/downloader/library written in Vala that supports GOG, Steam and Humble Bundle"
 arch=('any')
 url="https://github.com/tkashkin/GameHub"
@@ -18,6 +18,8 @@ build() {
 	meson build --prefix=$pkgdir/usr -Ddistro=arch
 	cd build
 	ninja
+	rm -f ../meson/post_install.py # don't do post install to avoid generating unnecessary files
+	touch ../meson/post_install.py # menson chucks a wobbly if it doesn't exist
 }
 
 package() {
