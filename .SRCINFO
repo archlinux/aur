@@ -1,0 +1,14 @@
+pkgbase = aurman-zsh-completion
+	pkgdesc = ZSH completion for aurman
+	pkgver = 2.16.10
+	pkgrel = 1
+	url = https://github.com/steven-omaha/aurman-zsh-completion
+	arch = any
+	license = MIT
+	depends = zsh
+	depends = aurman
+	source = aurman-zsh-completion-2.16.10.tar.gz::https://github.com/steven-omaha/aurman-zsh-completion/archive/v2.16.10.tar.gz
+	sha256sums = cf6ce90ca6b1cf5b552983ace5673201433ed5ce5374faedaab53569e414db59
+
+pkgname = aurman-zsh-completion
+
