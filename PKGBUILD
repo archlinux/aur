@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-driver-git
-pkgver=2018.2.pre2.r34.g22c0c67.gmmlib.r59.b20e484
+pkgver=2018.2.pre2.r106.gd5b0618.gmmlib.r62.1a4cf50
 pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI (git version)'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/intel/media-driver/'
 license=('MIT' 'BSD')
 depends=(
     # official repositories:
-        'gcc-libs'
+        'gcc-libs' 'libpciaccess'
     # AUR:
         'libva-git'
 )
