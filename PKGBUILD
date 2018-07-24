@@ -10,7 +10,7 @@ url='https://kiyuko.org/software/cattle'
 license=('GPL')
 depends=('glib2')
 options=('!libtool')
-source=("$pkgname-$pkgver.tgz::https://kiyuko.org/software/$pkgname/releases/$pkgver/source")
+source=("https://kiyuko.org/software/${pkgname}/releases/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('e8e9baba41c4b25a1fdac552c5b03ad62a4dbb782e9866df3c3463baf6411826')
 
 build() {
