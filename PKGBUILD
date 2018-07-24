@@ -4,8 +4,8 @@
 # Contributor: Arthur D'Andréa Alemar
 
 pkgname=prometheus
-pkgver=2.2.1
-pkgrel=4
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="An open-source service monitoring system and time series database."
 arch=('i686' 'x86_64')
 url="http://$pkgname.io"
@@ -15,7 +15,7 @@ makedepends=('go' 'git')
 backup=("etc/$pkgname/$pkgname.yml")
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
         "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('4f75427449bb72d1886f6cd46f752fe6300242da48b8bb870dbbd7ffc879ed92'
+sha256sums=('008282497e2e85de6fb17a698dfdae4a942026f623d8a9d45b911a765442cb58'
             'b6960a1eb44f13c059a61015a58426b3377c77d5ed763314d7f46253a0480598'
             '1ccc0cb5bcd94c5b6cafe795f7bdcc411c4bcc2ef8bd84a7683a604136c609e4'
             'c0367fb4748103352fba1321a30a70d8328169ab7eaf3bda7a6fb54d0cb08d0d')
