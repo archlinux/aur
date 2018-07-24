@@ -2,7 +2,7 @@
 pkgname='python-keras-vis'
 _name='keras-vis'
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Neural Network visualization toolkit for keras'
 url='https://github.com/raghakot/keras-vis'
 depends=('python' 'python-keras')
@@ -16,4 +16,7 @@ package() {
 	cd "${srcdir}"
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
 	python -O -m compileall "${pkgdir}/"
+	_pyver="$(python -c "import sys; print('%i.%i' % sys.version_info[:2])")"
+	cd "${pkgdir}/usr/lib/python${_pyver}/site-packages/docs/"
+	rm "__init__.py" __pycache__/__init__.*
 }
