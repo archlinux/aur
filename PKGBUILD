@@ -28,10 +28,10 @@ sha256sums=('2475a95aad2c1536eef3fdb72665c5c16590644b45bd110a0cde223c916625b8'
 
 prepare() {
   mkdir -p "$srcdir"/fritzing-app-${pkgver}/parts
-  mv "$srcdir"/fritzing-parts-${partsrev}/* "$srcdir"/fritzing-app-${pkgver}/parts
+  cp -r "$srcdir"/fritzing-parts-${partsrev}/* "$srcdir"/fritzing-app-${pkgver}/parts/
 
   cd "$srcdir"/fritzing-app-${pkgver}
-  patch -p1 < "$srcdir"/0001-Squashed-commit-of-the-following.patch
+  patch -N -p1 < "$srcdir"/0001-Squashed-commit-of-the-following.patch || true
   patch -p0 < "$srcdir"/fritzing.desktop.patch
 }
 
