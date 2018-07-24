@@ -1,6 +1,6 @@
 pkgbase = xen
 	pkgver = 4.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xenproject.org/
 	changelog = ChangeLog
 	arch = x86_64

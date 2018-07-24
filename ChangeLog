@@ -1,3 +1,7 @@
+2018-07-24 Maik Broemme
+	* 4.11.0-2
+	Updated version in 'xen.install' file
+
 2018-07-12 Maik Broemme
 	* 4.11.0-1
 	Xen 4.11.0
