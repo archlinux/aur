@@ -1,7 +1,7 @@
 pkgbase = starruler2-git
 	pkgdesc = 4X Space Strategy game Star Ruler 2's open source distribution.
 	pkgver = dad50e1
-	pkgrel = 0
+	pkgrel = 1
 	url = http://starruler2.com/
 	arch = x86_64
 	license = MIT

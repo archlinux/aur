@@ -2,7 +2,7 @@
 # git version for the opensourced starruler2 
 pkgname=starruler2-git
 pkgver=dad50e1
-pkgrel=0
+pkgrel=1
 pkgdesc="4X Space Strategy game Star Ruler 2's open source distribution."
 arch=('x86_64')
 url="http://starruler2.com/"
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
     cd StarRuler2-Source
-    make -f source/linux/Makefile
+    LDFLAGS=-std=c++11 make -k -f source/linux/Makefile compile -j`nproc`
     convert sr2.ico sr2.png
 }
 
