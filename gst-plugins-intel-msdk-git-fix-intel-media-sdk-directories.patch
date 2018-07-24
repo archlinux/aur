@@ -1,0 +1,14 @@
+diff -Naurp a/cmake/FindMediaSDK.cmake b/cmake/FindMediaSDK.cmake
+--- a/cmake/FindMediaSDK.cmake	2018-07-23 18:57:29.000000000 +0000
++++ b/cmake/FindMediaSDK.cmake	2018-07-23 19:00:23.049123164 +0000
+@@ -16,8 +16,8 @@ function(FindMediaSDK)
+     else()
+       message(FATAL_ERROR "No MediaSDK distribution is found.")
+     endif()
+-    set(MFX_INCLUDES "${MFX_HOME}/include")
+-    set(MFX_LIBRARY  "${MFX_HOME}/lib/lin_x64/libmfx.a")
++    set(MFX_INCLUDES "${MFX_HOME}/include/mfx")
++    set(MFX_LIBRARY  "${MFX_HOME}/lib64/libmfx.a")
+     message(STATUS "MediaSDK include directory: ${MFX_INCLUDES}")
+     message( STATUS "MediaSDK library directory: ${MFX_LIBRARY}")
+     include_directories(${MFX_INCLUDES})
