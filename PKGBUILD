@@ -8,7 +8,7 @@
 _srcname=MediaSDK
 pkgname=intel-media-sdk
 pkgver=2018.Q2.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
@@ -16,11 +16,11 @@ url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
 depends=(
     # official repositories:
-        'gcc-libs' 'libva' 'libdrm' 'wayland'
+        'gcc-libs' 'libdrm' 'libva' 'wayland'
     # AUR:
         'intel-media-driver'
 )
-makedepends=('cmake' 'libx11' 'libxcb')
+makedepends=('cmake' 'libpciaccess' 'libx11' 'libxcb')
 provides=('libmfx')
 conflicts=('intel-media-sdk-git' 'intel-media-server-studio')
 options=('!emptydirs')
@@ -82,5 +82,5 @@ package() {
     
     # license
     cd "${srcdir}/MediaSDK-MediaSDK-${pkgver/.Q/-Q}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
