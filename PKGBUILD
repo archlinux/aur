@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libsoup' 'liboauth' 'gcr' 'gnome-online-accounts')
 makedepends=('intltool' 'gobject-introspection' 'vala' 'uhttpmock' 'git' 'gtk-doc' 'autoconf-archive')
 _commit=60f2269178d7a6449e2ffdf7fdf82d96a5aff0d4  # tags/0.17.9^0
-source=("git+https://git.gnome.org/browse/libgdata#commit=$_commit")
+source=("git+https://gitlab.gnome.org/GNOME/libgdata.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
