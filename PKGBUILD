@@ -1,7 +1,7 @@
 # Maintainer: Markus Kaiser <markus dot kaiser at in dot tum dot de>
 _pkgname=holoviews
 pkgname=python-$_pkgname
-pkgver=1.10.1
+pkgver=1.10.7
 pkgrel=1
 pkgdesc="Stop plotting your data - annotate your data and let it visualize itself."
 arch=("any")
@@ -9,8 +9,8 @@ url="http://holoviews.org"
 license=('BSD')
 depends=('python-numpy' 'python-param')
 options=(!emptydirs)
-source=('https://files.pythonhosted.org/packages/70/93/064e06755a84d43c380588e845fabae40e53742aaa40fa0aa5d1f674f259/holoviews-1.10.1.tar.gz')
-sha256sums=('3fa11d143ba9a60802686af23942848067181771c7558a369b3e1476ad54ba9f')
+source=('https://files.pythonhosted.org/packages/a8/98/1bca6211f1e9a08aa61937b40061b83b61fb10f1bbf7452f779aa7ade3e0/holoviews-1.10.7.tar.gz')
+sha256sums=('4d1753ae27486e324e2ee5d6a239bf8cc4a9acafecc0e38cb60a476bd7b4abc9')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
