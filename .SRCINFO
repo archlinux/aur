@@ -1,0 +1,23 @@
+pkgbase = brother-mfc-5460cn
+	pkgdesc = LPR and CUPS driver for the Brother MFC-5460cn
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-5460cn.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = ghostscript
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlf006151/mfc5460cnlpr-1.0.1-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf006153/mfc5460cncupswrapper-1.0.1-1.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = f55b2f52a4c25a3bbed031da070cc10c
+	md5sums = cde50bd644d7b66a36db986e3bbb296d
+	md5sums = 310f8424517f3df127d39393ceaebb6f
+	md5sums = 5e87a3dc0f3e3438c088eda0f3565f0d
+
+pkgname = brother-mfc-5460cn
+
