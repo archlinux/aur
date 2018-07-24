@@ -1,0 +1,19 @@
+pkgbase = cri-containerd-bin
+	pkgdesc = An open and reliable container runtime
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://containerd.io/
+	arch = x86_64
+	license = APACHE
+	provides = runc
+	provides = containerd
+	provides = crictl
+	conflicts = runc
+	conflicts = containerd
+	conflicts = crictl
+	conflicts = crictl-bin
+	source = cri-containerd-1.1.2.tar.gz::https://storage.googleapis.com/cri-containerd-release/cri-containerd-1.1.2.linux-amd64.tar.gz
+	sha256sums = d4ed54891e90a5d1a45e3e96464e2e8a4770cd380c21285ef5c9895c40549218
+
+pkgname = cri-containerd-bin
+
