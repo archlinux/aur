@@ -5,6 +5,8 @@ pkgbase = python-pyfastogt
 	url = https://fastonosql.com
 	arch = any
 	license = MIT
+	depends = python-validate-email
+	depends = python-crypto
 	source = python-pyfastogt::git+https://github.com/fastogt/pyfastogt.git
 	sha256sums = SKIP
 
