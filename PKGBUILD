@@ -4,13 +4,13 @@
 #   - install the package intel-seapi
 #   - in build(), change '-DENABLE_ITT:BOOL=' from 'OFF' to 'ON'
 #   - and then build intel-media-sdk
-# It will be autodetected by the build system, serving as a makedepend.
+# intel-seapi will be autodetected by the build system, serving as a makedepend.
 # Currently it will not be a mandatory makedepend.
 
 _srcname=MediaSDK
 pkgname=intel-media-sdk-git
 pkgver=2018.Q2.1.r194.g7b093e8
-pkgrel=1
+pkgrel=2
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -21,7 +21,7 @@ depends=(
     # AUR:
         'libva-git' 'intel-media-driver'
 )
-makedepends=('git' 'git-lfs' 'cmake' 'libx11' 'libxcb')
+makedepends=('git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb')
 provides=('intel-media-sdk' 'libmfx')
 conflicts=('intel-media-sdk' 'intel-media-server-studio')
 options=('!emptydirs')
@@ -95,5 +95,5 @@ package() {
     
     # license
     cd "${srcdir}/${_srcname}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
