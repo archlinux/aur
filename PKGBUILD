@@ -14,7 +14,7 @@ depends=('gdbm' 'lib32-gcc-libs' 'lib32-glibc')
 makedepends=('gcc-multilib')
 source=("ftp://ftp.gnu.org/gnu/gdbm/gdbm-${pkgver}.tar.gz")
 options=('!makeflags')
-sha256sums=('cdceff00ffe014495bed3aed71c7910aa88bf29379f795abc0f46d4ee5f8bc5f')
+sha256sums=('c8a18bc6259da0c3eefefb018f8aa298fddc6f86c6fc0f0dec73270896ab512f')
 
 build() {
   cd gdbm-${pkgver}
