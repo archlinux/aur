@@ -6,7 +6,7 @@
 pkgbase=python-numpy
 pkgname=('python-numpy' 'python2-numpy')
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
 license=('custom')
@@ -72,4 +72,8 @@ package_python2-numpy() {
 
   install -m755 -d "${pkgdir}/usr/share/licenses/python2-numpy"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-numpy/"
+
+  for _exe in conv-template f2py from-template; do
+    mv "$pkgdir"/usr/bin/"$_exe"{,2}
+  done
 }
