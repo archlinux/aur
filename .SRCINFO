@@ -1,6 +1,6 @@
 pkgbase = git-spindle
 	pkgdesc = Git subcommands for integrating with central services like github, gitlab and bitbucket
-	pkgver = 3.3
+	pkgver = 3.4.4
 	pkgrel = 1
 	url = http://github.com/seveas/git-spindle
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = git-spindle
 	makedepends = python-sphinx
 	depends = git
 	depends = python
-	depends = python-github3
+	depends = python-github3.py
 	depends = python-whelk
 	depends = python-docopt
-	source = https://github.com/seveas/git-spindle/archive/3.3.tar.gz
-	sha256sums = 4bfad8e716e16e267c1297bb66b563a5eb4a3f90d618338442529a9c773bd4d1
+	source = https://github.com/seveas/git-spindle/archive/3.4.4.tar.gz
+	sha256sums = b4458268535cba2e7597335ffe1882fcb5b2a5132c18e84ed8452a712b678835
 
 pkgname = git-spindle
 
