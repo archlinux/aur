@@ -1,10 +1,11 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: sballert <sballert@posteo.de>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 _pkgsrcname=emacs-which-key
 _pkgmaintainer=justbur
 _pkgdestdirname=which-key
 _versionprefix=v
-pkgver=2.0.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Emacs package that displays available keybindings in popup"
 pkgname=emacs-${_pkgdestdirname}
@@ -13,7 +14,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('da687208d29e3905df3ece165615b6683cf3b007183cb3c7f7071aaf6c782038')
+sha256sums=('bc486494719d1090021dfee534ea32ea07cd0d71635b2e2514978510481852d3')
 install=${pkgname}.install
 
 build() {
