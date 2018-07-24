@@ -5,21 +5,19 @@
 # Contributor: Tom K <tomk@runbox.com>
 
 pkgname=hdf5_18
-_pkgname=hdf5
 pkgver=1.8.20
-pkgrel=3
+pkgrel=4
 arch=(i686 x86_64)
 pkgdesc='General purpose library and file format for storing scientific data'
-url='http://www.hdfgroup.org/HDF5/'
+url=https://support.hdfgroup.org/HDF5/
 license=(custom)
 depends=(zlib sh)
 makedepends=(time)
-source=(https://support.hdfgroup.org/ftp/HDF5/current18/src/$_pkgname-$pkgver.tar.bz2)
+source=(https://support.hdfgroup.org/ftp/HDF5/current18/src/hdf5-$pkgver.tar.bz2)
 sha512sums=(288e4772a946d406de9096843c92dd6874a0753ed6fbe859aaadf565aa0509fc612ebdb00c301b7955bc0dc63e45f3a224c6b2638f480fe6738ee0c96a993c6e)
 
 build() {
-  cd $srcdir/$_pkgname-$pkgver
-
+  cd hdf5-$pkgver
   ./configure \
     --prefix=/usr \
     --disable-static \
@@ -33,28 +31,17 @@ build() {
     --disable-sharedlib-rpath \
     --libdir=/usr/lib/hdf5_18 \
     --includedir=/usr/include/hdf5_18
-
-  make -j`nproc`
+  make
 }
 
 package() {
-  cd $srcdir/$_pkgname-$pkgver
-
-  make -j`nproc` DESTDIR=$pkgdir install
-
-  # don't install examples
-  rm -rf $pkgdir/usr/share/hdf5_examples
-
-  # rename executables to not conflict with hdf5 package
-  for file in $pkgdir/usr/bin/*; do
-    mv $file ${file}_18
-  done
-
-  # add hdf5 library path to dynamic linker configuration include directory
-  install -dm 755 $pkgdir/etc/ld.so.conf.d
-  echo /usr/lib/hdf5_18 >> $pkgdir/etc/ld.so.conf.d/hdf5_18.conf
-
-  # install license
-  install -Dm 644 $srcdir/$_pkgname-$pkgver/COPYING \
-                  $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  cd hdf5-$pkgver
+  make DESTDIR=$pkgdir install
+  # Rename executables so they don't conflict with the hdf5 package
+  for file in $pkgdir/usr/bin/*; do mv $file ${file}_18; done
+  install -d $pkgdir/{etc/ld.so.conf.d,usr/share/doc/hdf5_18}
+  # Add library path to dynamic linker config includes
+  echo /usr/lib/hdf5_18 > $pkgdir/etc/ld.so.conf.d/hdf5_18.conf
+  mv $pkgdir/usr/share/{hdf5_examples,doc/hdf5_18/examples}
+  install -Dm 644 COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
