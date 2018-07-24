@@ -4,12 +4,12 @@ _gmmlib_commit='5ff84b923ec2ba1572c464dc8def73348571b440'
 
 pkgname=intel-media-driver
 pkgver=2018.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Media Driver for VAAPI'
 arch=('x86_64')
 url='https://github.com/intel/media-driver/'
 license=('MIT' 'BSD')
-depends=('gcc-libs' 'libva')
+depends=('gcc-libs' 'libva' 'libpciaccess')
 makedepends=('git' 'cmake')
 conflicts=('intel-media-driver-git')
 backup=('etc/profile.d/intel-media.sh')
