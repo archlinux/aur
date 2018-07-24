@@ -1,7 +1,7 @@
 pkgbase = can-isotp-dkms-git
 	pkgdesc = Kernel modules for isotp
 	pkgver = r14.6003f99
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hartkopp/can-isotp
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = can-isotp-dkms-git
 	source = git+https://github.com/hartkopp/can-isotp.git
 	source = dkms.conf
 	sha256sums = SKIP
-	sha256sums = 8224438ae2136eb5e423daf475168b337707539440c9024b97a9493c6c3e793e
+	sha256sums = 4e69b728bacd8aba3281b55aef2da2e8737d6a380be2d8ed397e09f79651f317
 
 pkgname = can-isotp-dkms-git
 

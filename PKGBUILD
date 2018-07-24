@@ -3,7 +3,7 @@
 pkgname=can-isotp-dkms-git
 _pkgbase=can-isotp
 pkgver=r14.6003f99
-pkgrel=1
+pkgrel=2
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 pkgdesc="Kernel modules for isotp"
@@ -18,7 +18,7 @@ optdepends=('can-utils: utilities for sending and receiving ISOTP messges'
 source=("git+https://github.com/hartkopp/can-isotp.git"
         'dkms.conf')
 sha256sums=('SKIP'
-            '8224438ae2136eb5e423daf475168b337707539440c9024b97a9493c6c3e793e')
+            '4e69b728bacd8aba3281b55aef2da2e8737d6a380be2d8ed397e09f79651f317')
 
 pkgver() {
 	cd "$srcdir/${_pkgbase}"
@@ -34,6 +34,11 @@ package() {
 
   # Copy dkms.conf
   install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+
+  # Patch makefile to work with dkms, and use the specified kernel release
+  sed -e s/else// \
+      -e s/shell\ uname\ \-r/KERNELRELEASE/ \
+      -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/Makefile
 
   # Set name and version
   sed -e "s/@_PKGBASE@/${_pkgbase}/" \
