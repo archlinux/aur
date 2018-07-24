@@ -2,7 +2,7 @@
 # :mode=shellscript:
 pkgname=kcrap
 pkgver=0.2.3
-pkgrel=8
+pkgrel=9
 pkgdesc="Kerberos Challenge Response Authentication Protocol"
 license=('MIT')
 depends=('krb5')
@@ -14,6 +14,7 @@ source=("http://mirror.fuhry.com/kcrap/kcrap-${pkgver}.tar.bz2"
 		"kcrap-0.2.3-mit-krb5-1.9.patch"
 		"kcrap-0.2.3-cfg-file-location.patch"
 		"kcrap-0.2.3-ntlm-extra.patch"
+		"kcrap-0.2.3-openssl-1.1.0-compat.patch"
 		"kcrap.service"
 		)
 sha1sums=('e1e179865a604fe69548c116ad098bf0a3630160'
@@ -22,6 +23,7 @@ sha1sums=('e1e179865a604fe69548c116ad098bf0a3630160'
           'e35f78545124299b10b79e9d169f646832afe180'
           '6c48368b90eb7a2da3f299e65b7694b4a5d45673'
           '853077185e354182a51caa2b5fc722971ef822ae'
+	  'f1164a2d025935778f77e9c2d9af69befba2dedf'
 	  '837206aab4f6f872708cb122bf5df5bc6c797894')
 
 
@@ -36,6 +38,7 @@ build()
 	patch -Np1 -i "${srcdir}/kcrap-0.2.3-cfg-file-location.patch"
 	patch -Np1 -i "${srcdir}/kcrap-0.2.3-ntlm-extra.patch"
 	patch -Np1 -i "${srcdir}/kcrap-0.2.3-add-kcrapclient.patch"
+	patch -Np1 -i "${srcdir}/kcrap-0.2.3-openssl-1.1.0-compat.patch"
 	
 	rm -fv configure
 	autoconf
