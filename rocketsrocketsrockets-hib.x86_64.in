@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd @PKGDEST@
+./Rockets.x86_64 "$@"

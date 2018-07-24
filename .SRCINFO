@@ -1,0 +1,14 @@
+pkgbase = rocketsrocketsrockets-hib
+	pkgdesc = ROCKETS fire ROCKETS at ROCKETS in this action-arcade, arena-combat, gorgeous festival-of-fireworks!
+	pkgver = 20150915
+	pkgrel = 1
+	url = https://rocketsrocketsrockets.com/
+	arch = x86_64
+	license = custom:commercial
+	source_x86_64 = hib://Rockets.x86_64.zip
+	source_x86_64 = rocketsrocketsrockets-hib.x86_64.in
+	md5sums_x86_64 = af4c6b8e2b6d9fabc2b143c948010ffd
+	md5sums_x86_64 = 2bfd3eef1dc360418824b71246e2bc4e
+
+pkgname = rocketsrocketsrockets-hib
+
