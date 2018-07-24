@@ -4,3 +4,9 @@ post_install() {
   echo "=> you can download the data files of the demo:"
   echo "=> http://th.corsix.org/Demo.zip"
 }
+
+post_upgrade() {
+  if [[ $(vercmp "$2" "0.61") -ne 1 && $(vercmp "0.62" "$1") -ne 1 ]]; then
+    echo "Note: The executable name has been changed from 'CorsixTH' to 'corsix-th'."
+  fi
+}
