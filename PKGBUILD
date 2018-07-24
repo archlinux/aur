@@ -1,7 +1,8 @@
 # Maintainer: Andrew Rabert <ar at nullsum dot net>
 # Contributor: Andrew Rabert <ar at nullsum dot net>
 pkgname=python-undervolt
-pkgver=0.2.5
+pkgver=0.2.6
+pyname=undervolt
 pkgrel=1
 pkgdesc="Undervolt Intel CPUs under Linux"
 arch=(any)
@@ -10,10 +11,10 @@ license=(GPL2)
 depends=(python)
 makedepends=(python-setuptools)
 conflicts=(undervolt)
-source=("https://files.pythonhosted.org/packages/ce/b8/91d88d8bef9b07cd6555b6bdbf995d921a49504e894a1d739e22cc19f5d5/undervolt-0.2.5.tar.gz")
-sha256sums=('3a0a822c31fa4cec5b50a23b960625c30a4a006007f066a7ac655964a81f48b6')
+source=("https://files.pythonhosted.org/packages/source/${pyname:0:1}/${pyname}/${pyname}-${pkgver}.tar.gz")
+sha256sums=('b14d201d1cc4b1d4424ee8ece16656dd5d90fd40bf50dd1f225e9cc7c93c39a3')
 
 package() {
-  cd "${srcdir}/undervolt-${pkgver}"
+  cd "${srcdir}/${pyname}-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
