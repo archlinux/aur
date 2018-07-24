@@ -1,4 +1,5 @@
-#Maintainer: Schrottfresse <schrottfresse at gmx dot de>
+# Maintainer: gilbus <aur at tinkershell dot eu>
+# Contributor: Schrottfresse <schrottfresse at gmx dot de>
 
 pkgname=tlclient
 pkgver=4.9.0
