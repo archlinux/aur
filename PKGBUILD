@@ -7,15 +7,15 @@
 
 pkgname=mythtv
 pkgver=29.1
-pkgrel=8
+pkgrel=9
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
 depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva' 'libiec61883' 'perl-net-upnp' 'urlgrabber'
-         'qt5-webkit' 'x265' 'libx264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr')
-makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec' 'x264' 'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww' 'mysql-python'
+         'qt5-webkit' 'x265' 'libx264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr' 'mysql-python')
+makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec' 'x264' 'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww'
              'perl-dbd-mysql' 'python2-lxml')
 optdepends=('glew: for GPU commercial flagging'
             'libcec: for consumer electronics control capabilities'
