@@ -1,10 +1,11 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: sballert <sballert@posteo.de>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 _pkgsrcname=epl
 _pkgmaintainer=cask
 _pkgdestdirname=epl
 _versionprefix=
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="Emacs Package Library"
 pkgname=emacs-${_pkgdestdirname}
@@ -13,7 +14,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('2cabc9324cf7a88abf1bc00c3fe2f79105e3170a005ab28453fb1537d4b02194')
+sha256sums=('8c0bba890f0e97c84f4dc8fb338eea9ac34dffdc1731042a2d85411b44461f66')
 
 build() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}"
