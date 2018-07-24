@@ -18,7 +18,7 @@ source=(
     "https://github.com/ngld/knossos/archive/v${pkgver}.tar.gz"
     knossos
     knossos.desktop)
-md5sums=('6025b9469b6186d81dccf791a7090ce1'
+md5sums=('e30405c31a782d205ad8245793a6805f'
          '541dfc75f3aecbe08b843eeec252e4b4'
          'afd34e2bf9b8f74c1fc5785662e1f04a')
 
