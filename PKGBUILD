@@ -1,13 +1,13 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=git-spindle-git
-pkgver=3.3.r16.g6a6c920
+pkgver=3.4.4.r25.ge174b4a
 pkgrel=1
 pkgdesc="Git subcommands for integrating with central services like github, gitlab and bitbucket"
 arch=('any')
 url="http://github.com/seveas/git-spindle"
 license=('GPL3')
-depends=('git' 'python' 'python-github3' 'python-whelk' 'python-docopt')
+depends=('git' 'python' 'python-github3.py' 'python-whelk' 'python-docopt')
 makedepends=('make' 'python-sphinx')
 optdepends=()
 provides=('git-spindle')
