@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname=patroneo
 pkgname=${_pkgname}-git
-pkgver=r47.c17b1af
+pkgver=r64.8714769
 pkgrel=1
 pkgdesc="Easy Pattern Sequencer - Utilizing Jack Midi and the Non Session Manager"
 arch=(x86_64)
