@@ -41,14 +41,4 @@ package() {
     chmod +x StarRuler2.sh
     cp -a StarRuler2.sh ${dest}
     cp -a bin maps mods locales data scripts ${dest}
-#    install -Dt ${dest}/maps maps
-#    install -Dt ${dest}/mods mods
-#    install -Dt ${dest}/locales locales
-#    install -Dt ${dest}/data data
-#    install -m 644 sr2.ico ${dest}
-#  make DESTDIR=$pkgdir/ install
- # cd $pkgdir/usr/share/applications
- # sed -i -e 's/Categories=Application/Categories=Development;/' companion21.desktop
- # sed -i -e 's/Categories=Application/Categories=Development;/' simulator21.desktop
- # rm -Rf $pkgdir/lib
 }
