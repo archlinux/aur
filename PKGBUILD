@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=8
+pkgrel=9
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh/"
@@ -25,7 +25,7 @@ _commit_hash="commit=be800aa98cb9ef16f7e00737bbc51ba69204ed8f"
 _pkgname="popcorn-desktop"
 
 # Useful variables for builds
-_nwjs="0.31.4"
+_nwjs="0.31.5"
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
 _srcdir="${_pkgname}"
@@ -33,7 +33,7 @@ _bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
 # Dependencies to install
 # natives: solves some builds problems with gulp < 4
 # See: https://github.com/gulpjs/gulp/issues/2162#issuecomment-384380989, read all the thread
-_missing_deps="natives@1.1.3"
+_missing_deps="natives@1.1.4 bufferutil@3.0.5"
 
 # Get sources only here
 source=(
@@ -44,7 +44,7 @@ source=(
 source_i686=("https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/$_nwjs/$_nwjs-linux-ia32.zip")
 source_x86_64=("https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/$_nwjs/$_nwjs-linux-x64.zip")
 sha256sums=('SKIP'
-            '1918d1b78f694a9899de732a934a63972a4322d7a3cbfd3de5a902b0aea48192'
+            'fa2615680bcb591b9892e8d6394235436ffa65210be6e942b8ca91de982e8cd2'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 sha256sums_i686=('78241eb9e051dff300ea310c7fb44093cd242be9f88e7659b0db991f378adbc3')
 sha256sums_x86_64=('c7f4620cd51f3df1a573c84f42e57a575d320788730693b157a52115b73f3edc')
@@ -54,22 +54,12 @@ prepare() {
     cd "${srcdir}/${_srcdir}"
 
     # Using a different folder for the cache, makes the system cleaner
-    #_cache=`npm config get cache`
-    #npm config set cache "$srcdir/npm_cache"
     # Thanks to Eschwartz for the tip!
     export npm_config_cache="$srcdir/npm_cache"
-    msg2 "Cache changed to `npm config get cache`"
+    msg2 "npm cache changed to `npm config get cache`"
 
-    msg2 "Install missing dependencies, if any ..."
-    # Build is almost always broken with newer NPMs. Install a good one and use it
-    for package in $_missing_deps
-    do
-        msg2 "Installing missing dependency $package"
-        npm install "$package"
-    done
-
-    msg2 "Set up the \$PATH to allow npm-installed executables..."
-    export PATH="$PWD/node_modules/.bin:$PATH"
+    #msg2 "Set up the \$PATH to allow npm-installed executables..."
+    #export PATH="$PWD/node_modules/.bin:$PATH"
 
     msg2 "Patching wrong packages versions, if any ..."
     # Obviously, when I try to update Node software, some dev makes big updates.
@@ -81,8 +71,13 @@ prepare() {
     msg2 "Installing normal dependencies"
     npm install #-dd install
 
-    # Restore the cache directory
-    #npm config set cache ${_cache}
+    msg2 "Install missing dependencies, if any ..."
+    # Build is almost always broken with newer NPMs. Install a good one and use it
+    for package in $_missing_deps
+    do
+        msg2 "Installing missing dependency $package"
+        npm install "$package"
+    done
 
     # Use upstream nw.js, to avoid possible binary malware
     sed -i "s|get.popcorntime.sh/repo/nw|dl.nwjs.io|" gulpfile.js

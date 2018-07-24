@@ -1,6 +1,6 @@
-From e5ba3f7654db566e53a2cd45f4e3a29c76e7c39d Mon Sep 17 00:00:00 2001
+From b4877d9bed9cb1205e13e1c3432011fce9776e14 Mon Sep 17 00:00:00 2001
 From: Giovanni Santini <giovannisantini93@yahoo.it>
-Date: Mon, 23 Jul 2018 22:50:36 +0200
+Date: Tue, 24 Jul 2018 17:01:02 +0200
 Subject: [PATCH] Ignore issues showing missing dependencies There are issues
  showing dependencies using such function, due to npm updates; ignore them and
  live happily!
@@ -35,3 +35,4 @@ index f367fbe1..e1895e2b 100644
  };
 -- 
 2.18.0
+
