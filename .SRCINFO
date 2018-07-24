@@ -1,19 +1,19 @@
 pkgbase = tigervnc-viewer-java
 	pkgdesc = TigerVNC Viewer, Java version
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = http://tigervnc.org/
 	arch = any
 	license = GPL
 	depends = java-runtime>=7
-	noextract = VncViewer-1.8.0.jar
-	noextract = tigervnc-1.8.0.tar.gz
+	noextract = VncViewer-1.9.0.jar
+	noextract = tigervnc-1.9.0.tar.gz
 	noextract = tigervnc-viewer-java.desktop
-	source = VncViewer-1.8.0.jar::https://bintray.com/tigervnc/stable/download_file?file_path=VncViewer-1.8.0.jar
-	source = tigervnc-1.8.0.tar.gz::https://github.com/TigerVNC/tigervnc/archive/v1.8.0.tar.gz
+	source = VncViewer-1.9.0.jar::https://bintray.com/tigervnc/stable/download_file?file_path=VncViewer-1.9.0.jar
+	source = tigervnc-1.9.0.tar.gz::https://github.com/TigerVNC/tigervnc/archive/v1.9.0.tar.gz
 	source = tigervnc-viewer-java.desktop
-	sha256sums = f3cfe4ab2c1131f339a780ca0f881b2eea023643f382a7b58cc0f600715d1852
-	sha256sums = 9951dab0e10f8de03996ec94bec0d938da9f36d48dca8c954e8bbc95c16338f8
+	sha256sums = 6fdc56b88f06cc1e1ab0ecfe76b52e1b334873ed8c886dd8e846fd0e070cc044
+	sha256sums = f15ced8500ec56356c3bf271f52e58ed83729118361c7103eab64a618441f740
 	sha256sums = da791662d9ca369af5526c325b1514019ca8675f2de5dd3981ec2b983d6d9cd5
 
 pkgname = tigervnc-viewer-java

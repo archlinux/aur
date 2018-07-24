@@ -1,7 +1,7 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='tigervnc-viewer-java'
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="TigerVNC Viewer, Java version"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('java-runtime>=7')
 source=("VncViewer-${pkgver}.jar::https://bintray.com/tigervnc/stable/download_file?file_path=VncViewer-${pkgver}.jar"
         "tigervnc-${pkgver}.tar.gz::https://github.com/TigerVNC/tigervnc/archive/v${pkgver}.tar.gz"
         "tigervnc-viewer-java.desktop")
-sha256sums=('f3cfe4ab2c1131f339a780ca0f881b2eea023643f382a7b58cc0f600715d1852'
-            '9951dab0e10f8de03996ec94bec0d938da9f36d48dca8c954e8bbc95c16338f8'
+sha256sums=('6fdc56b88f06cc1e1ab0ecfe76b52e1b334873ed8c886dd8e846fd0e070cc044'
+            'f15ced8500ec56356c3bf271f52e58ed83729118361c7103eab64a618441f740'
             'da791662d9ca369af5526c325b1514019ca8675f2de5dd3981ec2b983d6d9cd5')
 noextract=("VncViewer-${pkgver}.jar"
            "tigervnc-${pkgver}.tar.gz"
