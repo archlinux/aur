@@ -9,8 +9,8 @@
 
 _srcname=MediaSDK
 pkgname=intel-media-sdk-git
-pkgver=2018.Q2.1.r194.g7b093e8
-pkgrel=2
+pkgver=2018.Q2.1.r215.g7885aa1
+pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -82,16 +82,6 @@ package() {
     cd "${_srcname}/build"
     
     make DESTDIR="$pkgdir" install
-    
-    # includes (add 'mfx' folder for ffmpeg compatibility)
-    mkdir -p "${pkgdir}/opt/intel/mediasdk/include/mfx"
-    cd "${pkgdir}/opt/intel/mediasdk/include"
-    for _header in *.h
-    do
-        cd mfx
-        ln -sf ../"$_header" "$_header"
-        cd ..
-    done
     
     # license
     cd "${srcdir}/${_srcname}"
