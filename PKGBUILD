@@ -1,7 +1,8 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: sballert <sballert@posteo.de>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 pkgname=emacs-swiper
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more. Oh, man!"
 url="https://github.com/abo-abo/swiper"
@@ -12,7 +13,7 @@ makedepends=('git')
 provides=('emacs-swiper')
 conflicts=('emacs-swiper')
 source=("https://github.com/abo-abo/swiper/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b507579202e438103f2bd1925b4a5ddb9dccb85efdca5faf786d07f58521816e')
 
 build() {
   cd "${srcdir}/swiper-${pkgver}"
