@@ -1,0 +1,54 @@
+# Maintainer: Ysblokje <ysblokje at gmail dot com>
+# git version for the opensourced starruler2 
+pkgname=starruler2-git
+pkgver=dad50e1
+pkgrel=0
+pkgdesc="4X Space Strategy game Star Ruler 2's open source distribution."
+arch=('x86_64')
+url="http://starruler2.com/"
+license=('MIT')
+depends=('libpng' 'zlib' 'glew' 'glu' 'freetype2' 'libvorbis' 'libogg' 'openal' 'bzip2' 'libxrandr' 'curl')
+optdepends=()
+makedepends=('cmake' 'imagemagick' 'gcc' 'make')
+provides=('starruler2')
+conflicts=()
+source=("git+https://github.com/BlindMindStudios/StarRuler2-Source.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd StarRuler2-Source
+    echo $(git rev-parse --short HEAD)
+}
+
+build() {
+    cd StarRuler2-Source
+    make -f source/linux/Makefile
+    convert sr2.ico sr2.png
+}
+
+prepare() {
+   echo "prepare"
+}
+
+package() {
+    echo "package"
+    dest=${pkgdir}/opt/starruler2/
+    mkdir -p ${pkgdir}/usr/share/{pixmaps,applications}
+    cp ${startdir}/starruler2.desktop ${pkgdir}/usr/share/applications/
+    cd ${srcdir}/StarRuler2-Source
+    cp sr2.png ${pkgdir}/usr/share/pixmaps/
+    mkdir -p ${dest}
+    chmod +x StarRuler2.sh
+    cp -a StarRuler2.sh ${dest}
+    cp -a bin maps mods locales data scripts ${dest}
+#    install -Dt ${dest}/maps maps
+#    install -Dt ${dest}/mods mods
+#    install -Dt ${dest}/locales locales
+#    install -Dt ${dest}/data data
+#    install -m 644 sr2.ico ${dest}
+#  make DESTDIR=$pkgdir/ install
+ # cd $pkgdir/usr/share/applications
+ # sed -i -e 's/Categories=Application/Categories=Development;/' companion21.desktop
+ # sed -i -e 's/Categories=Application/Categories=Development;/' simulator21.desktop
+ # rm -Rf $pkgdir/lib
+}

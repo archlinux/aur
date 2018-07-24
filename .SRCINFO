@@ -1,0 +1,28 @@
+pkgbase = starruler2-git
+	pkgdesc = 4X Space Strategy game Star Ruler 2's open source distribution.
+	pkgver = dad50e1
+	pkgrel = 0
+	url = http://starruler2.com/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = imagemagick
+	makedepends = gcc
+	makedepends = make
+	depends = libpng
+	depends = zlib
+	depends = glew
+	depends = glu
+	depends = freetype2
+	depends = libvorbis
+	depends = libogg
+	depends = openal
+	depends = bzip2
+	depends = libxrandr
+	depends = curl
+	provides = starruler2
+	source = git+https://github.com/BlindMindStudios/StarRuler2-Source.git
+	sha256sums = SKIP
+
+pkgname = starruler2-git
+

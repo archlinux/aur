@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=StarRuler 2
+Comment=Opensource version of the 4X game StarRuler 2
+Icon=sr2
+Exec=/opt/starruler2/StarRuler2.sh
+Terminal=false
+StartupNotify=false
+Categories=Game
+Path=/opt/starruler2
