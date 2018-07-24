@@ -1,13 +1,12 @@
 pkgbase = lib32-libclc
 	pkgdesc = Library requirements of the OpenCL C programming language
 	pkgver = 0.2.0+506+96d10f2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libclc.llvm.org/
 	arch = any
 	license = MIT
 	makedepends = clang
 	makedepends = llvm
-	makedepends = python2
 	makedepends = git
 	depends = lib32-clang
 	depends = lib32-llvm

@@ -2,12 +2,12 @@
 
 pkgname=lib32-libclc
 pkgver=0.2.0+506+96d10f2
-pkgrel=1
+pkgrel=2
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
 url="http://libclc.llvm.org/"
 license=('MIT')
-makedepends=('clang' 'llvm' 'python2' 'git')
+makedepends=('clang' 'llvm' 'git')
 depends=('lib32-clang' 'lib32-llvm' 'lib32-python2' 'libclc')
 options=('staticlibs')
 source=('git+http://llvm.org/git/libclc.git#commit=96d10f2')
