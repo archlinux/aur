@@ -1,7 +1,7 @@
 # Maintainer: Sandro Rüegge <sandro.rueegge@gmail.com>
 pkgname=self-service-password
 pkgver=1.3
-pkgrel=11
+pkgrel=12
 pkgdesc="A small webinterface for changing/resetting ldap passwords"
 arch=('any')
 url="https://ltb-project.org/documentation/self-service-password"
@@ -17,7 +17,7 @@ source=("https://ltb-project.org/archives/ltb-project-$pkgname-$pkgver.tar.gz"
 	'apache.example.conf')
 sha512sums=('71aec5a3673ee710d4ba4a17862c695e0775ad944d85c8e05e826774010b8e905af5ab9e75886bc8c2efb9d9372ffe00d8856024e9656e1c71a57017b0eeac6d'
             '8b672a77c9b269e4885a345bb1daeaa090f334f6391f691290e4e39157b30164f9248181c93865cdeabbf5e0537907168dae672abbbe28b65dd188e7fdb29000'
-            'b4a527a2a66fa80d66f071c6dc7aeed333462581a119f9b2e79b4f102b6d5ffe28ce4e30792da53b0f6926268fe23db59cbeea3cfe702642d73919baca65c0be')
+            '9717929d6e7197a5c64cc56a8c89d5e2b7663083135d037ac4e60499f1434317018cc57f50e149dc79911e8257e9b03f538b4c06d63e416011c777438594b65f')
 
 package() {
 	# install the project
