@@ -1,0 +1,20 @@
+diff -Naurp a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2018-04-10 02:38:08.000000000 +0000
++++ b/CMakeLists.txt	2018-07-23 20:12:11.893282064 +0000
+@@ -102,6 +102,7 @@ target_link_libraries(gstmfx
+     ${SINK_BACKEND}
+     ${PARSER}
+     stdc++
++    xcb-dri3
+     libmfx)
+ 
+ # Add uninstall target. Taken from the KDE4 scripts
+@@ -109,7 +110,7 @@ configure_file("${CMAKE_CURRENT_SOURCE_D
+ add_custom_target(uninstall "${CMAKE_COMMAND}" -P "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake")
+ 
+ install (TARGETS gstmfx
+-    LIBRARY DESTINATION gstreamer-1.0
++    LIBRARY DESTINATION lib/gstreamer-1.0
+     RUNTIME DESTINATION bin)
+ 
+ message("Build: " ${CMAKE_BUILD_TYPE})

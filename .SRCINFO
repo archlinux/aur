@@ -1,0 +1,34 @@
+pkgbase = gst-plugins-intel-msdk
+	pkgdesc = GStreamer plugins for Intel Media SDK (MSDK)
+	pkgver = 1.3.3.rc9
+	pkgrel = 1
+	url = https://github.com/intel/gstreamer-media-SDK/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	depends = gcc-libs
+	depends = libsystemd
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-bad
+	depends = glib2
+	depends = libdrm
+	depends = libva
+	depends = libgl
+	depends = wayland
+	depends = libxrandr
+	depends = libxcb
+	depends = libxkbcommon
+	depends = intel-media-sdk
+	conflicts = gst-plugins-intel-msdk-git
+	source = gst-plugins-intel-msdk-1.3.3.rc9.tar.gz::https://github.com/intel/gstreamer-media-SDK/archive/v1.3.3-rc9.tar.gz
+	source = gst-plugins-intel-msdk-fix-intel-media-sdk-directories.patch
+	source = gst-plugins-intel-msdk-fix-libdrm-include-directory.patch
+	source = gst-plugins-intel-msdk-fix-link-and-install.patch
+	sha256sums = a83351dbd62f3dd1621b2013a11b3e7e52d0d98dc0c1ac9a191ac92819071fe3
+	sha256sums = d7c521d9308d2dbed770caff81031c663b4af384deb237fde8cf4b2c36759da5
+	sha256sums = b55a8a8785ce2292c2792ffc814f004e8bd05b8d70e4e14a2fd93924901c020e
+	sha256sums = 01101e5c68e8b199004d23550b59f6481286d4f4660739098f4a389eaca8734b
+
+pkgname = gst-plugins-intel-msdk
+
