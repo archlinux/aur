@@ -14,10 +14,8 @@ provides=(peertube)
 conflicts=(peertube)
 backup=(etc/peertube/production.yaml)
 install=peertube.install
-source=(git+https://github.com/Chocobozzz/peertube
-        peertube.install)
-sha512sums=(SKIP
-            a2fc6e4d8821479bc641647ac50e4304cba9379c8398494138be8fcd328ad8aea513d033a7b572ed0e5e9c0a66b5b0eb3c31378dd2a512a71931417bc6af0bf9)
+source=(git+https://github.com/Chocobozzz/peertube)
+sha512sums=(SKIP)
 
 pkgver() {
   cd peertube
