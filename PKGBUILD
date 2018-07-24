@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=jsonnet
-pkgver=0.10.0
+pkgver=0.11.2
 pkgrel=1
 pkgdesc='The data templating language'
 arch=('x86_64')
@@ -34,4 +34,4 @@ package() {
 
 # vim: set ft=sh:
 
-sha512sums=('1154064e1f9238ab3eafdb1754e675bc0cdf5649f586b0cb667371e98d3cb61ca224e42be33dfcfb5030e254869bf9a3b29d72f2b22b4a50be8556ccbc424510')
+sha512sums=('f1bd76d47275b2b57dc85cdc82ac7126a7504faabbf404350a35c94939b9aed99e9313d2e8f6170caf06726806d765114a6b45e115178825ae157b3d0847f1c7')
