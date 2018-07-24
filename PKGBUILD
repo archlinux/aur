@@ -1,15 +1,16 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 # Contributor: Maribu <leonidas200@web.de>
 
 pkgname=lib32-gdbm
-pkgver=1.14.1
+pkgver=1.16
 pkgrel=1
 pkgdesc='GNU database library'
 arch=('x86_64')
 url='http://www.gnu.org/software/gdbm/gdbm.html'
 license=('GPL')
-depends=('gdbm' 'lib32-glibc')
+depends=('gdbm' 'lib32-gcc-libs' 'lib32-glibc')
 makedepends=('gcc-multilib')
 source=("ftp://ftp.gnu.org/gnu/gdbm/gdbm-${pkgver}.tar.gz")
 options=('!makeflags')
