@@ -2,7 +2,7 @@
 pkgname=cura2-lulzbot
 pkgver=3.2.23
 pkgrel=1
-pkgdesc='This is the development version of Cura 2 for LulzBot 3D Printers by Aleph Objects, Inc.'
+pkgdesc='[Deprecated in favor of cura-lulzbot]This is the development version of Cura 2 for LulzBot 3D Printers by Aleph Objects, Inc.'
 arch=('x86_64')
 url='https://code.alephobjects.com'
 license=('AGPLv3')
