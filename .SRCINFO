@@ -1,6 +1,6 @@
 pkgbase = dxvk-legacy-git
 	pkgdesc = A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine. Legacy branch for crap nvidia drivers.
-	pkgver = 20180622.a1f57d9
+	pkgver = 20180628.5d10170
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = dxvk-legacy-git
 	provides = dxvk
 	conflicts = dxvk-bin
 	conflicts = dxvk-git
+	conflicts = dxvk64
+	conflicts = dxvk32
 	options = !strip
 	options = !buildflags
 	options = staticlibs
