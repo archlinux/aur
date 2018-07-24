@@ -3,10 +3,10 @@
 # Contributor: Moritz Maxeiner <moritz@ucworks.org>
 
 pkgname=('dub-git')
-pkgver=1.4.0rc1.r46.46a74e2
+pkgver=1.11.0.alpha.1.r11.2cbab87
 pkgrel=1
 pkgdesc="Package manager for D packages, git version"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/D-Programming-Language/dub"
 license=('MIT')
 groups=('dlang')
@@ -39,7 +39,7 @@ package() {
 	install -Dm755 "$srcdir/dub/bin/dub" "$pkgdir/usr/bin/dub"
 
 	# license
-	install -Dm644 "$srcdir/dub/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/dub/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	# bash completion
 	install -Dm644 "$srcdir/dub/scripts/bash-completion/dub.bash" "$pkgdir/usr/share/bash-completion/completions/dub"
