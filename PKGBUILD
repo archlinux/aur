@@ -11,7 +11,7 @@ depends=('python'
 source=("daily-dozen.py")
 provides=("python-daily-dozen=$pkgver-$pkgrel")
 source=("https://github.com/randomn4me/${pkgname#python-}-cli/archive/${pkgver}.tar.gz")
-md5sums=('6283d44e4b646001de78dc2b543eddb7')
+md5sums=('df270a25638b40e0e88db3fd66595e72')
 
 package() {
     cd "${pkgname#python-}-cli-${pkgver}"
