@@ -1,4 +1,5 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: sballert <sballert@posteo.de>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 pkgname=emacs-diminish
 pkgver=0.45
@@ -11,7 +12,7 @@ depends=('emacs')
 makedepends=('git')
 provides=('emacs-diminish')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emacsmirror/diminish/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('aa66490c925040921eacc5122a4ce5b04c4460bfa1c39344212731ebbbb83151')
 
 build() {
   cd "${srcdir}/diminish-${pkgver}"
