@@ -1,7 +1,7 @@
 pkgbase = nanocurrency-node-git
 	pkgdesc = Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees. Command-line version without wallet GUI or Qt dependencies.
 	pkgver = 14.0.r99.g87a9d3dd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nano.org/
 	install = install
 	arch = i686

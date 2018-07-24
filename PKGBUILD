@@ -1,6 +1,6 @@
 pkgname=nanocurrency-node-git
 pkgver=14.0.r99.g87a9d3dd
-pkgrel=1
+pkgrel=2
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees. Command-line version without wallet GUI or Qt dependencies."
 arch=('i686' 'x86_64')
 url="https://nano.org/"
@@ -66,7 +66,7 @@ prepare() {
 build() {
   cd "$srcdir/raiblocks"
   make rai_node
-  make rai_lib
+  #make rai_lib #thisonly gets us a static lib now, which we don't want
 }
 
 package() {
@@ -74,8 +74,8 @@ package() {
 
   install -Dm755 rai_node "$pkgdir"/usr/bin/rai_node
   ln -s /usr/bin/rai_node "$pkgdir"/usr/bin/nano_node
-  install -Dm644 librai_lib.so "$pkgdir"/usr/lib/librai_lib.so
-  ln -s /usr/lib/librai_lib.so "$pkgdir"/usr/lib/libnano_lib.so
+  #install -Dm644 librai_lib.so "$pkgdir"/usr/lib/librai_lib.so
+  #ln -s /usr/lib/librai_lib.so "$pkgdir"/usr/lib/libnano_lib.so
 
   install -Dm644 "$srcdir"/nano-node.service "$pkgdir"/usr/lib/systemd/system/nano-node.service
   ln -s /usr/lib/systemd/system/nano-node.service "$pkgdir"/usr/lib/systemd/system/raiblocks-node.service
