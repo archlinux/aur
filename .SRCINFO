@@ -1,7 +1,7 @@
 pkgbase = makemkv
 	pkgdesc = DVD and Blu-ray to MKV converter and network streamer
-	pkgver = 1.12.2
-	pkgrel = 2
+	pkgver = 1.12.3
+	pkgrel = 1
 	url = http://www.makemkv.com
 	install = makemkv.install
 	arch = i686
@@ -15,18 +15,16 @@ pkgbase = makemkv
 	depends = icu
 	depends = ffmpeg
 	optdepends = lib32-glibc: dts support
-	source = http://www.makemkv.com/download/makemkv-bin-1.12.2.tar.gz
-	source = http://www.makemkv.com/download/makemkv-oss-1.12.2.tar.gz
+	source = http://www.makemkv.com/download/makemkv-bin-1.12.3.tar.gz
+	source = http://www.makemkv.com/download/makemkv-oss-1.12.3.tar.gz
 	source = makemkv.1
 	source = makemkvcon.1
 	source = mmdtsdec.1
-	source = makemkv-ffmpeg.patch
-	md5sums = 5d2832b02a939c52d02600d910f27a7f
-	md5sums = 2f9b765106aea740ddd51a69939d98a6
+	md5sums = 21c866b3b21f258d0a7a1046768f5e7c
+	md5sums = 018ce3aa31ebd87a1deb3001170540d2
 	md5sums = 1f9b3a91427a2015434e501542443f4c
 	md5sums = 7f4b112c5178860cc2eb25059ae1af2a
 	md5sums = 9476154228bf1b1f983178ba8565ac44
-	md5sums = edcbb4314e28cb35329ae6c7a13c82dd
 
 pkgname = makemkv
 
