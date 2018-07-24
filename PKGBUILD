@@ -16,18 +16,19 @@ depends=('fftw' 'libid3tag' 'libmad' 'libogg' 'libshout' 'libsndfile' 'portaudio
          'faad2' 'libmp4v2' 'rubberband' 'chromaprint' 'sqlite' 'opus' 'opusfile' 'upower')
 makedepends=('mesa' 'scons' 'libshout' 'glu')
 provides=('mixxx')
-source=("https://github.com/${pkgname}dj/${pkgname}/archive/release-${pkgver}.tar.gz")
+conflicts=('mixxx')
+source=("https://github.com/${pkgname%-*}dj/${pkgname%-*}/archive/release-${pkgver}.tar.gz")
 md5sums=('6336d6568bbf860c4e03295ae51ee286')
 
 build() {
-  cd "${srcdir}/${pkgname}-release-${pkgver}"
+  cd "${srcdir}/${pkgname%-*}-release-${pkgver}"
   export SCONSFLAGS="-j $(nproc)"
-  scons build=release optimize=portable virtualize=0 localecompare=1 qt_sqlite_plugin=0 opus=1 \
+  scons build=release optimize=native virtualize=0 localecompare=1 qt_sqlite_plugin=0 opus=1 \
     qt5=1 prefix=/usr faad=1
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-release-${pkgver}"
-  scons build=release optimize=portable virtualize=0 localecompare=1 qt_sqlite_plugin=0 opus=1 \
+  cd "${srcdir}/${pkgname%-*}-release-${pkgver}"
+  scons build=release optimize=native virtualize=0 localecompare=1 qt_sqlite_plugin=0 opus=1 \
     qt5=1 faad=1 prefix=/usr install_root="${pkgdir}/usr" install
 }
