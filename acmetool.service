@@ -1,8 +1,7 @@
 [Unit]
 Description=Reconcile Let's Encrypt certificates
 Documentation=man:acmetool(8)
-After=nss-lookup.target
-After=apache2.service nginx.service
+After=nss-lookup.target apache2.service nginx.service openresty.service
 
 [Service]
 Type=oneshot
@@ -13,7 +12,7 @@ NoNewPrivileges=yes
 PrivateTmp=yes
 PrivateDevices=yes
 ProtectSystem=strict
-ReadWritePaths=/var/lib/acme /var/run/acme
+ReadWritePaths=/var/lib/acme /run/acme
 ProtectHome=yes
 ProtectKernelTunables=yes
 ProtectControlGroups=yes
