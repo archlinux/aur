@@ -6,7 +6,7 @@
 # Maintainer: Pokemod97 cadenkline9@gmail.com
 # Maintainer: Qyriad qyriad@gmail.com
 pkgname=libtransistor-bin
-pkgver=v1.2.3
+pkgver=v2.0.0
 pkgrel=1
 epoch=
 pkgdesc="Nintendo Switch homebrew toolchain"
@@ -19,8 +19,6 @@ depends=('clang'
 'squashfs-tools'
 'python-pyelftools'
 'python-lz4')
-makedepends=('git'
-'cmake')
 provides=("libtransistor")
 conflicts=("libtransistor-git")
 replaces=()
@@ -28,7 +26,7 @@ backup=()
 options=(!'strip')
 install=libtransistor-bin.install
 source=("https://github.com/reswitched/libtransistor/releases/download/$pkgver/libtransistor_${pkgver}.tar.gz")
-md5sums=('9fd7c9a4f9d90d33692fbdd77dfe915f')
+md5sums=('ab388c988f26a30ecbf6233b0198683c')
 validpgpkeys=()
 
 package() {
