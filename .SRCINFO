@@ -1,0 +1,19 @@
+pkgbase = insomnio-git
+	pkgdesc = keeps computer from fallling asleep
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bitbucket.org/jjgalvez/insomnio
+	install = insomnio.install
+	arch = any
+	license = PSF
+	makedepends = git
+	depends = python
+	depends = python-pyqt5
+	depends = python-click
+	provides = insomnio
+	conflicts = insomnio
+	source = insomnio::git+https://jjgalvez@bitbucket.org/jjgalvez/insomnio.git#tag=1.0
+	md5sums = SKIP
+
+pkgname = insomnio-git
+

@@ -1,0 +1,14 @@
+post_install() {
+	ln -sf /usr/lib/insomnio/insomnio.py /usr/bin/insomnio
+	ln -sf /usr/lib/insomnio/insomnio_config.py /usr/bin/insomnio_config
+}
+
+post_remove() {
+	if [ -f /usr/bin/insomnio ]; then
+		rm /usr/bin/insomnio
+	fi
+
+	if [ if /usr/bin/insomnio_config ]; then
+		rm /usr/bin/insomnio_config
+	fi
+}
