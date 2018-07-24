@@ -1,0 +1,12 @@
+pkgbase = python-pyfastogt
+	pkgdesc = FastoGT python files
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://fastonosql.com
+	arch = any
+	license = MIT
+	source = python-pyfastogt::git+https://github.com/fastogt/pyfastogt.git
+	sha256sums = SKIP
+
+pkgname = python-pyfastogt
+
