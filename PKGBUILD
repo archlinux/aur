@@ -2,14 +2,14 @@
 
 pkgname=pulumi-bin
 _pkgname=pulumi
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="A multi-language, multi-cloud development platform"
 arch=('x86_64')
 license=('Apache-2.0')
 url="https://github.com/pulumi/pulumi"
 source=("https://get.pulumi.com/releases/sdk/${_pkgname}-v${pkgver}-linux-${CARCH/x86_64/x64}.tar.gz")
-sha256sums=('771ab331463cb528ab14f18d3d9a1efdc5ffd86b136dee7e5c06aa79ef391c23')
+sha256sums=('3bc82f681bd32291163df297b7892a63caefdef7363847c28c8b7b36048fa0a8')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
