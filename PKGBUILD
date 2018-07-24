@@ -4,8 +4,8 @@
 # Contributor: Travis Hegner <travis.hegner@gmail.com>
 
 pkgname=pjproject
-pkgver=2.7.1
-pkgrel=2
+pkgver=2.7.2
+pkgrel=1
 pkgdesc='Open source SIP stack and media stack'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://www.pjsip.org/'
@@ -14,10 +14,10 @@ depends=('openssl' 'portaudio' 'speex' 'alsa-lib' 'libsamplerate' 'util-linux' '
 makedepends=('e2fsprogs' 'python')
 optdepends=('alsa-lib' 'e2fsprogs' 'python')
 source=("http://www.pjsip.org/release/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('59fabc62a02b2b80857297cfb10e2c68c473f4a0acc6e848cfefe8421f2c3126')
+sha256sums=('9c2c828abab7626edf18e04b041ef274bfaa86f99adf2c25ff56f1509e813772')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   export CXXFLAGS="${CXXFLAGS} -fPIC -march=native"
   export CFLAGS="${CXXFLAGS} -DNDEBUG"
   ./configure --prefix=/usr --with-external-speex --with-external-srtp --with-external-pa --with-external-gsm --disable-oss --enable-shared --disable-opencore-amr --disable-v4l2 --disable-video --disable-sound
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   make -j1 DESTDIR=${pkgdir} install
   install -D -m755 pjsip-apps/bin/pjsua-*gnu ${pkgdir}/usr/bin/pjsua
 }
