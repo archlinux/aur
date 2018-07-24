@@ -11,9 +11,8 @@ pkgdesc="Demos and samples of common tasks and new functionality in Oracle Java 
 arch=('x86_64')
 url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
 license=('custom:Oracle')
-optdepends=("java-runtime>=$_major: Run examples"
-            "java-environment>=$_major: Compile and run examples"
-            "gradle: Compile examples")
+depends=("java-environment>=$_major")
+optdepends=('gradle: Compile examples')
 options=('!strip')
 source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/$_hash/jdk-$pkgver-linux-x64-demos.tar.gz")
 md5sums=('36e19378dd97c2fe34d5153d8005f151')
