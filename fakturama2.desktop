@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Fakturama2
+Name[de]=Fakturama2
+Comment=Invoicing Software - http://www.fakturama.info
+Comment[de]=Programm - http://www.fakturama.info
+Exec=/usr/share/fakturama2/Fakturama
+Icon=fakturama2.xpm
+Terminal=false
+Type=Application
+Categories=Office;
+StartupNotify=false
