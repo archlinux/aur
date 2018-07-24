@@ -1,8 +1,8 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgbase=yaru
-pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-sessions' 'yaru-gnome-shell-theme' 'yaru-icon-theme')
+pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-icon-theme')
 pkgver=b589893d
-pkgrel=2
+pkgrel=3
 _gitname=yaru
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -50,17 +50,6 @@ package_yaru-gtk-theme() {
   rm -r "$pkgdir/usr/share/gnome-shell"
   rm -r "$pkgdir/usr/share/icons"
   rm -r "$pkgdir/usr/share/sounds"
-}
-
-package_yaru-sessions() {
-  pkgdesc="Yaru default ubuntu session handler"  
-  depends=(dconf gsettings-desktop-schemas gtk3) 
-
-  DESTDIR="$pkgdir" meson install -C build
-  rm -r "$pkgdir/usr/share/gnome-shell"
-  rm -r "$pkgdir/usr/share/icons"
-  rm -r "$pkgdir/usr/share/sounds"
-  rm -r "$pkgdir/usr/share/themes"
 }
 
 package_yaru-gnome-shell-theme() {
