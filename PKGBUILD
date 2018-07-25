@@ -7,23 +7,23 @@ pkgdesc="GStreamer Multimedia Framework (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-makedepends=('mingw-w64-meson' 'git')
+makedepends=('mingw-w64-meson' 'git' 'python')
 depends=('mingw-w64-glib2' 'mingw-w64-libxml2')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gstreamer')
 
-source=("$_gitname::git://anongit.freedesktop.org/gstreamer/$_gitname")
+source=("${_gitname}::git://anongit.freedesktop.org/gstreamer/${_gitname}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/${_gitname}"
   printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd "${srcdir}/$_gitname"
+  cd "${srcdir}/${_gitname}"
   for _arch in $_architectures; do
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
@@ -39,10 +39,10 @@ build() {
 
 
 package() {
-  cd "${srcdir}/$_gitname"
+  cd "${srcdir}/${_gitname}"
 
   for _arch in ${_architectures}; do
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/gstreamer/build-${_arch}" install
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}/${_gitname}/build-${_arch}" install
   done
 }
 
