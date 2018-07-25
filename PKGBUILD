@@ -1,9 +1,9 @@
 # Maintainer: Rhys Kenwell <redrield+aur@gmail.com>
 
 pkgname=heroku-cli
-pkgver=7.0.98
+pkgver=7.7.6
 _builddir=cli-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="a tool for creating and managing Heroku apps from the command line"
 arch=('i686' 'x86_64')
 url="https://devcenter.heroku.com/articles/heroku-cli"

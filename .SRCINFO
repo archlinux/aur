@@ -1,7 +1,7 @@
 pkgbase = heroku-cli
 	pkgdesc = a tool for creating and managing Heroku apps from the command line
-	pkgver = 7.0.98
-	pkgrel = 2
+	pkgver = 7.7.6
+	pkgrel = 1
 	url = https://devcenter.heroku.com/articles/heroku-cli
 	arch = i686
 	arch = x86_64
