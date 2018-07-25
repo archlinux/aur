@@ -1,15 +1,15 @@
 pkgbase = phraseapp-client
 	pkgdesc = PhraseApp CLI tool
-	pkgver = 1.6.1
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://phraseapp.com/cli
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source_i686 = phraseapp_linux_386-1.6.1.tar.gz::https://github.com/phrase/phraseapp-client/releases/download/1.6.1/phraseapp_linux_386.tar.gz
-	sha256sums_i686 = 2ddab4b6b95be27a80b81f97e69351e3e98919ce2890b6e562c144d7e8acf32b
-	source_x86_64 = phraseapp_linux_amd64-1.6.1.tar.gz::https://github.com/phrase/phraseapp-client/releases/download/1.6.1/phraseapp_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2d80d3e2b7196b1ebac80adddee478c2c69241ae58f15ec4df7a2bcacfaed36f
+	source_i686 = phraseapp_linux_386-1.7.4.tar.gz::https://github.com/phrase/phraseapp-client/releases/download/1.7.4/phraseapp_linux_386.tar.gz
+	sha256sums_i686 = 60c33269d839c75728672c7f809dd5cc91559a6d967b236155cb89be981bd28e
+	source_x86_64 = phraseapp_linux_amd64-1.7.4.tar.gz::https://github.com/phrase/phraseapp-client/releases/download/1.7.4/phraseapp_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1cabfc4f23dc9f30f23d62d68c3cfdf57ad98eec04cf968900a0d0482a1120c3
 
 pkgname = phraseapp-client
 

@@ -1,5 +1,5 @@
 pkgname=phraseapp-client
-pkgver=1.6.1
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="PhraseApp CLI tool"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('MIT')
 source_i686=("phraseapp_linux_386-$pkgver.tar.gz::https://github.com/phrase/phraseapp-client/releases/download/$pkgver/phraseapp_linux_386.tar.gz")
 source_x86_64=("phraseapp_linux_amd64-$pkgver.tar.gz::https://github.com/phrase/phraseapp-client/releases/download/$pkgver/phraseapp_linux_amd64.tar.gz")
 
-sha256sums_i686=('2ddab4b6b95be27a80b81f97e69351e3e98919ce2890b6e562c144d7e8acf32b')
-sha256sums_x86_64=('2d80d3e2b7196b1ebac80adddee478c2c69241ae58f15ec4df7a2bcacfaed36f')
+sha256sums_i686=('60c33269d839c75728672c7f809dd5cc91559a6d967b236155cb89be981bd28e')
+sha256sums_x86_64=('1cabfc4f23dc9f30f23d62d68c3cfdf57ad98eec04cf968900a0d0482a1120c3')
 
 package() {
   if [ $CARCH == 'i686' ]; then
