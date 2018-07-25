@@ -1,7 +1,7 @@
 # Maintainer: ser nica <swhat at posteo dot eu>
 
 pkgname=veyon
-pkgver=4.0.7
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
@@ -45,6 +45,11 @@ build() {
 package_veyon() {
     cd build
     make DESTDIR="${pkgdir}" install
+
+    ### do this manually until upstream offers it in the build
+    mv ${pkgdir}/lib/systemd ${pkgdir}/usr/lib/systemd
+    rm -r ${pkgdir}/lib
+    ###
 
     cd ${pkgdir}/usr/lib/${pkgname}
     for lib in $(ls *.so)
