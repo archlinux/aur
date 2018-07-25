@@ -1,16 +1,17 @@
 pkgbase = kcli
 	pkgdesc = CLI wrapper around libvirt/aws/gcp/kubevirt/openstack/ovirt
 	pkgver = 12.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/karmab/kcli
 	arch = any
 	license = Apache
-	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	makedepends = ruby-ronn
 	depends = cdrtools
 	depends = nmap
 	depends = python
 	depends = libvirt-python>=2.0.0
+	depends = python-ovirt-engine-sdk
 	depends = python-docker>=2.0.0
 	depends = python-flask
 	depends = python-iptools

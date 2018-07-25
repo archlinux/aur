@@ -1,7 +1,7 @@
 # Maintainer: Sergi Jimenez <sjr@redhat.com>
 pkgname=kcli
 pkgver=12.6
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI wrapper around libvirt/aws/gcp/kubevirt/openstack/ovirt"
 arch=('any')
 url="https://github.com/karmab/kcli"
@@ -10,6 +10,7 @@ depends=('cdrtools'
          'nmap'
          'python'
          'libvirt-python>=2.0.0'
+         'python-ovirt-engine-sdk'
          'python-docker>=2.0.0'
          'python-flask'
          'python-iptools'
@@ -25,7 +26,7 @@ depends=('cdrtools'
          'python-keystoneclient'
          'python-novaclient')
 
-makedepends=('python2-setuptools'
+makedepends=('python-setuptools'
              'ruby-ronn')
 optdepends=('libvirt: locally managed VMs'
             'qemu: libvirt KVM driver'
