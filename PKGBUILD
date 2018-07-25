@@ -13,8 +13,7 @@ makedepends=('git'
              'libdazzle'
              'meson'
              'vala')
-provides=("$pkgname")
-conflicts=("$pkgname")
+conflicts=("$pkgname-git")
 source=("git+https://github.com/FragmentsApp/Fragments.git#tag=${pkgver}")
 md5sums=('SKIP')
 

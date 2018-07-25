@@ -14,8 +14,7 @@ pkgbase = fragments
 	makedepends = meson
 	makedepends = vala
 	depends = gtk3
-	provides = fragments
-	conflicts = fragments
+	conflicts = fragments-git
 	source = git+https://github.com/FragmentsApp/Fragments.git#tag=1.1
 	md5sums = SKIP
 
