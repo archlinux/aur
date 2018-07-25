@@ -226,12 +226,12 @@ void interface_print(const char* symbol) {
     api_info_destroy(&symbol_info);
 }
 
-void header_printw(WINDOW* window, Info* symbol_info) {
+void header_printw(WINDOW* window, const Info* symbol_info) {
     if (symbol_info->intraday_time != EMPTY) {
-        char time_str[32];
+        char time_str[DATE_MAX_LENGTH];
         time_t time = symbol_info->intraday_time; // divide into second instead of milliseconds
         struct tm* ts = localtime(&time);
-        strftime(time_str, 32, "%F %T", ts);
+        strftime(time_str, DATE_MAX_LENGTH, "%F %T", ts);
         mvwprintw(window, 0, 0, "%s", time_str);
     }
     mvwprintw(window, 0, (int) (15 + strlen(symbol_info->name) + strlen(symbol_info->symbol)), "24H      7D     ");
@@ -244,7 +244,7 @@ void header_printw(WINDOW* window, Info* symbol_info) {
         wprintw(window, "%6.2lf%%", 100 * (symbol_info->price / symbol_info->price_30d - 1));
 }
 
-void info_print(Info* symbol_info) {
+void info_print(const Info* symbol_info) {
     if (strcmp(symbol_info->name, "") != 0)
         printf("Name: %s\n", symbol_info->name);
     if (strcmp(symbol_info->symbol, "") != 0)
@@ -265,7 +265,7 @@ void info_print(Info* symbol_info) {
         printf("Volume 24h: $%ld\n", symbol_info->volume_1d);
 }
 
-void info_printw(WINDOW* window, Info* symbol_info) {
+void info_printw(WINDOW* window, const Info* symbol_info) {
     if (symbol_info->description[0] != '\0')
         mvwprintw(window, 0, 0, "%s\n\n", symbol_info->description);
     else mvwprintw(window, 0, 0, "Description unavailable.\n\n");
@@ -354,7 +354,7 @@ void news_print(const char* symbol, int num_articles) {
     api_info_destroy(&symbol_info);
 }
 
-void news_printw(WINDOW* window, Info* symbol_info) {
+void news_printw(WINDOW* window, const Info* symbol_info) {
     if (symbol_info->num_articles == EMPTY)
         wprintw(window, "News unavailable.");
     for (int i = 0; i < symbol_info->num_articles;  i++)
@@ -363,11 +363,13 @@ void news_printw(WINDOW* window, Info* symbol_info) {
                symbol_info->articles[i]->summary, symbol_info->articles[i]->url, symbol_info->articles[i]->related);
 }
 
-void peers_printw(WINDOW* window, Info* symbol_info) {
+void peers_printw(WINDOW* window, const Info* symbol_info) {
     if (symbol_info->peers == NULL) {
         wprintw(window, "Peers unavailable.");
         return;
-    } else wprintw(window, "Peers:\n\nSYMBOL    PRICE    24H%%     7D%%    30D%%");
+    }
+
+    wprintw(window, "Peers:\n\nSYMBOL    PRICE    24H%%     7D%%    30D%%");
     Info* idx;
     for (size_t i = 0; i < symbol_info->peers->length; i++) {
         idx = symbol_info->peers->array[i];

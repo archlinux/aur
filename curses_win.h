@@ -75,19 +75,19 @@ void interface_print(const char* symbol);
  * @param window
  * @param symbol_info Info*
  */
-void header_printw(WINDOW* window, Info* symbol_info);
+void header_printw(WINDOW* window, const Info* symbol_info);
 
 /**
  * Prints basic information about a security to stdout.
  * @param symbol_info Info*
  */
-void info_print(Info* symbol_info);
+void info_print(const Info* symbol_info);
 
 /**
  * Prints basic information about a security to an Ncurses window.
  * @param symbol_info Info*
  */
-void info_printw(WINDOW* window, Info* symbol_info);
+void info_printw(WINDOW* window, const Info* symbol_info);
 
 /**
  * Prints num_articles articles relating to the given symbol to stdout. Currently only works for stocks/etfs
@@ -101,14 +101,14 @@ void news_print(const char* symbol, int num_articles);
  * @param window
  * @param symbol_info Info*
  */
-void news_printw(WINDOW* window, Info* symbol_info);
+void news_printw(WINDOW* window, const Info* symbol_info);
 
 /**
  * Prints peers relating to the given symbol to an Ncurses window. Currently only works for stocks/etfs
  * @param window
  * @param symbol_info Info*
  */
-void peers_printw(WINDOW* window, Info* symbol_info);
+void peers_printw(WINDOW* window, const Info* symbol_info);
 
 /**
  * Graphs a security in stdscr. If symbol2 is not NULL, also graphs that security.

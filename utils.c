@@ -44,7 +44,7 @@ char* strip_tags(char* string) {
     return string;
 }
 
-String* file_get_string(char* file_name) {
+String* file_get_string(const char* file_name) {
     struct stat file_info;
     if (stat(file_name, &file_info)) // If called from portfolio_modify_string, file should exist (possibly size 0)
         RETNULL_MSG("File doesn't exist.");
@@ -71,7 +71,7 @@ String* file_get_string(char* file_name) {
     return pString;
 }
 
-void string_write_file(String* pString, char* file_name) {
+void string_write_file(const String* pString, const char* file_name) {
     FILE* fp = fopen(file_name, "w");
     if (fp == NULL)
         RET_MSG("Error opening file.")
@@ -90,7 +90,7 @@ void string_destroy(String** phString) {
     *phString = NULL;
 }
 
-void pointer_alloc_check(void* alloced) {
+void pointer_alloc_check(const void* alloced) {
     if (alloced == NULL)
         EXIT_MSG("alloc failed!")
 }

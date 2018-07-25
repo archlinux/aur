@@ -84,13 +84,13 @@ char* strip_tags(char* string);
  * @param file_name path to file
  * @return String* or NULL
  */
-String* file_get_string(char* file_name);
+String* file_get_string(const char* file_name);
 
 /**
  * Writes a String to a file. Will return on error opening file.
  * @param pString the String to overwrite with
  */
-void string_write_file(String* pString, char* file_name);
+void string_write_file(const String* pString, const char* file_name);
 
 /**
  * Destroys String object and frees memory. Points the String to NULL.
@@ -102,7 +102,7 @@ void string_destroy(String** phString);
  * If pointer is NULL, print error message and exit the program
  * @param alloced recently alloced pointer
  */
-void pointer_alloc_check(void* alloced);
+void pointer_alloc_check(const void* alloced);
 
 /**
  * Returns 1 if the given String is JSON formatted.
