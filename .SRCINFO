@@ -1,0 +1,14 @@
+pkgbase = emacs-memoize
+	pkgdesc = Elisp memoization functions
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/skeeto/emacs-memoize
+	arch = any
+	license = UNLICENSE
+	depends = emacs
+	provides = emacs-memoize
+	source = https://github.com/skeeto/emacs-memoize/archive/1.1.tar.gz
+	sha256sums = e4e50da02ef6a2ff3325c14a65e7f4ac2069cab05754797718bd574f227f3216
+
+pkgname = emacs-memoize
+
