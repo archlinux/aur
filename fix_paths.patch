@@ -1,0 +1,28 @@
+diff --git a/src/qtbrynhildr.pro b/src/qtbrynhildr.pro
+index ba0fc0c..2a57472 100644
+--- a/src/qtbrynhildr.pro
++++ b/src/qtbrynhildr.pro
+@@ -83,11 +83,9 @@ linux-g++-64 | linux-g++ | freebsd-g++ {
+ DEFINES += QTB_RECORDER=1 PLATFORM_LINUX
+ DESKTOP = ON
+ CELT_SUPPORT = ON
+-INCLUDEPATH += ../libs/vpx
+-LIBS += -L../libs/vpx -lvpx
+-#INCLUDEPATH += /usr/include/vpx
+-#LIBS += -lvpx
+-LIBS += -L../libs/celt -lcelt0
++INCLUDEPATH += /usr/include/vpx
++LIBS += -lvpx
++LIBS += -lcelt0
+ # SIMD (INTEL:gcc/clang)
+ HEADERS += yuv2rgb/yuv2rgb.h
+ SOURCES += yuv2rgb/yuv2rgb_v3.cpp
+@@ -188,7 +186,7 @@ DEFINES += QTB_SOFTWARE_KEYBOARD_AND_BUTTON=0
+ 
+ # for CELT
+ equals(CELT_SUPPORT, ON){
+-INCLUDEPATH += ../libs/celt
++INCLUDEPATH += /usr/include/celt
+ HEADERS += soundthread/converter.h soundthread/converter_celt.h
+ SOURCES += soundthread/converter.cpp soundthread/converter_celt.cpp
+ #INCLUDEPATH += ../libs/opus
