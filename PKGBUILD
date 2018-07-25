@@ -1,7 +1,7 @@
 # Maintainer: Ryan Marcus <ryan@ryanmarc.us>
 pkgname=gitea-bin
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Git with a cup of tea, binary installation"
 arch=('x86_64')
 url='https://gitea.io/'
@@ -25,7 +25,7 @@ install=gitea-bin.install
 source=(gitea-1.5-linux-amd64.xz::https://dl.gitea.io/gitea/1.5/gitea-1.5-linux-amd64.xz
         gitea.service)
 noextract=()
-md5sums=('dd7eee0a074a7954e1369110c7c9f0ee'
+md5sums=('a28b2ba035efdff2a6955f513e40ff53'
          '3d743a44b87004307370ca0c2aa8b02f')
 
 package() {
