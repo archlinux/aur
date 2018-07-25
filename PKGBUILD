@@ -1,8 +1,8 @@
 # Maintainer: gCurse <gcurse at web de>
 
 pkgname='otr-verwaltung2p-git'
-pkgver='0.9.7'
-pkgrel='1'
+pkgver='0.0.0'
+pkgrel='2'
 pkgdesc='Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.'
 arch=('any')
 url='https://www.otrforum.com/showthread.php?67612-OTR-Verwaltung-durch-Patches-erweiterte-OTR-Verwaltung-Betatest'
@@ -22,8 +22,8 @@ sha256sums=('SKIP')
 _gitname='otr-verwaltung'
 
 pkgver() {
-    cd ${_gitname}
-    cat data/VERSION
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
