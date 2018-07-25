@@ -1,7 +1,7 @@
 pkgbase = autopsy
 	pkgdesc = The Autopsy Forensic Browser is a GUI for The Sleuth Kit.
 	pkgver = 4.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sleuthkit.org/autopsy/
 	arch = x86_64
 	license = MIT/Apache-2.0
@@ -9,6 +9,7 @@ pkgbase = autopsy
 	depends = testdisk
 	depends = sleuthkit
 	depends = sleuthkit-java
+	depends = java-openjfx
 	provides = autopsy
 	source = https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.7.0/autopsy-4.7.0.zip
 	source = Autopsy.desktop
