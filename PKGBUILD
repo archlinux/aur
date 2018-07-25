@@ -18,7 +18,7 @@ sha256sums=('fb59747ca16d1b19e3cad1c147dcabea14a30a5e4177b90712e6bb837c107912')
 
 case "$CARCH" in
 	arm*) _pkgarch="arm"
-		sha256sums+=('730cf7bf65f2a4f79f61368e9eae51b9e269946d26b43f799cf653aeed255b42')
+		sha256sums+=('a1e5bdf7d731a807fbb96689e3bd1d6d98f1c133157350ebe1caef87dbf0329e')
 		;;
 	i686) _pkgarch="386"
 		sha256sums+=('6a10f708fb7d8b540a192bc0c55b407bfe9ae77a4dffd81a054912507122d9ee')
