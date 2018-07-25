@@ -2,15 +2,15 @@
 
 pkgname=neroaac
 pkgver=1.5.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Nero AAC audio codec (dec/enc/tag) all-in-one.'
-arch=(x86_64 i686)
-url='http://www.nero.com/enu/technologies-aac-codec.html'
+arch=(x86_64)
+url='https://wiki.hydrogenaud.io/index.php?title=Nero_AAC'
 license=(custom)
 depends_x86_64=(lib32-gcc-libs)
 depends_i686=(gcc-libs)
-source=('http://ftp6.nero.com/tools/NeroAACCodec-1.5.1.zip')
-md5sums=('150ead71fb7838c52a31098c85b91211')
+source=('https://www.freecodecs.net/fc/fecfb1069e2b67da4fe1e29396e26d27/NeroAACCodec-1.5.1.zip')
+sha256sums=('e0496ad856e2803001a59985368d21b22f4fbdd55589c7f313d6040cefff648b')
 conflicts=(neroaacdec neroaacenc neroaactag)
 provides=(neroaacdec neroaacenc neroaactag)
 
