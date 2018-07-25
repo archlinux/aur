@@ -1,44 +1,39 @@
-# Contributor: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
-# Maintainer: Benjamin Auder <benjamin * redua net>
-# Maintainer: Beej <beej@beej.us>
 # Maintainer: Adrian Petrescu <apetresc@gmail.com>
+# Contributor: Benjamin Auder <benjamin * redua net>
+# Contributor: Beej <beej@beej.us>
+# Contributor: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
 
 pkgname=gogui
 pkgver=1.4.10
-pkgrel=1
-pkgdesc="SGF editor, also allow to play against engines"
+pkgrel=2
+pkgdesc='SGF editor, can also be used for playing against engines'
 arch=('any')
-url="http://gogui.sourceforge.net"
+url='https://github.com/lemonsqueeze/gogui'
 license=('GPL')
 depends=('java-runtime')
-makedepends=('apache-ant' 'java-environment' 'docbook-xsl')
-source=(https://github.com/lemonsqueeze/gogui/releases/download/v$pkgver/gogui-$pkgver.zip)
-install=gogui.install
-md5sums=('09ec6c8a66359c9ab255ff7d934056fd')
+makedepends=('apache-ant' 'docbook-xsl' 'java-environment')
+source=("https://github.com/lemonsqueeze/gogui/releases/download/v$pkgver/gogui-$pkgver.zip")
+sha256sums=('4a152f4affb09598064b1a4d9da566d5c974ce40f636777979ee555cdf060eb9')
+
+prepare() {
+  cd "gogui-$pkgver"
+
+  sed -i '/^update-mime-database/d;/^update-desktop-database/d' install.sh
+}
 
 package() {
-	cd $srcdir/gogui-$pkgver
-	sed -i '/^update-mime-database/d' install.sh
-	sed -i '/^update-desktop-database/d' install.sh
+  cd "gogui-$pkgver"
 
-	# create directories expected by install.sh
-	mkdir -p $pkgdir/usr/share/icons/hicolor/48x48/apps
-	mkdir -p $pkgdir/usr/share/icons/hicolor/48x48/mimetypes
-	mkdir -p $pkgdir/usr/share/icons/hicolor/scalable/apps
-	mkdir -p $pkgdir/usr/share/applications
-	mkdir -p $pkgdir/usr/share/mime/applications
-	mkdir -p $pkgdir/usr/share/mime/packages
+  # Prepare directories that install.sh expects to find
+  install -d "$pkgdir/usr/share/icons/hicolor/"{48x48/{apps,mimetypes},scalable/apps}
+  install -d "$pkgdir/usr/share/"{applications,mime/{applications,packages}}
 
-	./install.sh -p $pkgdir/usr -s $pkgdir/etc
+  ./install.sh -p "$pkgdir/usr" -s "$pkgdir/etc"
 
-	# make it useable with openjdk6 too (NOT TESTED !)
-	sed -i 's|"$JAVA"|java|' $pkgdir/usr/bin/*
-
-	# fix the installation to remove any ref to $pkgdir in files
-	grep -l -r $pkgdir $pkgdir|while read i
-	do
-		sed -i 's|'$pkgdir'||' $i
-	done
-
-	#install -d $pkgdir/usr/share/mimelnk/application
+  # Remove any ref. to $pkgdir in packaged files
+  grep -l -r $pkgdir $pkgdir|while read i; do
+    sed -i 's|'$pkgdir'||' "$i"
+  done
 }
+
+# vim: ts=2 sw=2 et:
