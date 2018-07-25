@@ -2,7 +2,7 @@
 
 # Main package information
 pkgname=scylla-tools
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Tools to be used with ScyllaDB, such as cqlsh, nodetool and others"
 arch=('any')
