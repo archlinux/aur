@@ -1,10 +1,11 @@
-# Maintainer: Can Celasun <can [at] dcc [dot] im>
+# Maintainer: Sherlock Holo <sherlockya at gmail dot com>
+# Contributor: Can Celasun <can [at] dcc [dot] im>
 
 pkgbase=canta-theme-git
 _pkgname=canta-theme
 pkgname=('canta-gtk-theme-git' 'canta-icon-theme-git')
 pkgdesc="Flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell"
-pkgver=Canta.theme_2018_03_28.r0.223123c
+pkgver=2018_05_15.r4.153786a
 pkgrel=1
 arch=('any')
 url="https://github.com/vinceliuice/Canta-theme"
@@ -14,10 +15,8 @@ optdepends=('numix-circle-icon-theme-git: recommended base icon theme'
             'gnome-themes-standard: needed for gtk2 theme')
 makedepends=('gtk3' 'git')
 
-source=("${_pkgname}::git+https://github.com/vinceliuice/Canta-theme.git"
-        "installer.patch")
-md5sums=('SKIP'
-         '6e71e7637aaf124e4271366e15b596ec')
+source=("${_pkgname}::git+https://github.com/vinceliuice/Canta-theme.git")
+md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -28,7 +27,18 @@ build() {
     cd "${srcdir}/${_pkgname}"
     
     # Build GTK theme
-    patch -Np1 < "${srcdir}"/installer.patch
+    #patch -Np1 < "${srcdir}"/installer.patch
+    
+    sed \
+        -e "/ROOT_UID=0/d" \
+        -e "/DEST_DIR=/d" \
+        -e '/# Destination directory/d' \
+        -e "/if \[ \"\$UID\" -eq \"\$ROOT_UID\" \]; then/d" \
+        -e "/DEST_DIR=\"\/usr\/share\/themes\"/d" \
+        -e "/else/d" \
+        -e "/DEST_DIR=\"\$HOME\/.themes\"/d" \
+        -e "/fi/d" -i $srcdir/canta-theme/install.sh
+
     rm -rf build
     mkdir build
     DEST_DIR=build ./install.sh
