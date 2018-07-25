@@ -1,6 +1,6 @@
 pkgbase = r-dbplyr
 	pkgdesc = A dplyr Back End for Databases
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dbplyr
 	arch = any
@@ -26,8 +26,9 @@ pkgbase = r-dbplyr
 	optdepends = r-rpostgresql
 	optdepends = r-rsqlite
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/dbplyr_1.2.1.tar.gz
-	md5sums = 3132707768f771374209ae65fd9055de
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/dbplyr_1.2.2.tar.gz
+	md5sums = 235c957d5912cfc989d0bd44513c2c37
 
 pkgname = r-dbplyr
 
