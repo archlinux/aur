@@ -1,17 +1,18 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: sballert <sballert@posteo.de>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 pkgname=emacs-all-the-icons
-pkgver=2.5.0
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="A utility package to collect various Icon Fonts and propertize them within Emacs."
 url="https://github.com/domtronn/all-the-icons.el"
 arch=('any')
 license=('MIT')
-depends=('emacs' 'emacs-font-lock-plus' 'ttf-font-awesome' 'ttf-material-design-icons' 'ttf-weather-icons' 'ttf-octicons' 'ttf-atom-file-icons' 'ttf-all-the-icons')
+depends=('emacs' 'emacs-memoize' 'ttf-font-awesome' 'ttf-material-design-icons' 'ttf-weather-icons' 'ttf-octicons' 'ttf-atom-file-icons' 'ttf-all-the-icons')
 makedepends=('git')
 provides=('emacs-all-the-icons')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/domtronn/all-the-icons.el/archive/${pkgver}.tar.gz")
-sha256sums=('9d8c96b316a0e4ba04f474e6bf1a567a2b92ef696d3872192d26abce1aa187bc')
+sha256sums=('09fa8fff3ae65ea77089b17a270221d016d7df5c6093ef36357572235e36c7cb')
 install=${pkgname}.install
 
 build() {
