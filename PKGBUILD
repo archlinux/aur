@@ -2,12 +2,15 @@
 
 pkgname=efmb
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Endless Forms Most Beautiful is a crazy platformer with braincrashing mechanics"
 arch=('i686' 'x86_64')
-url=('http://www.locomalito.com/efmb.php')
+url='http://www.locomalito.com/efmb.php'
 license=('CCPL')
-depends=()
+depends=('zlib' 'openssl-1.0' 'openal' 'mesa')
+if [ "$CARCH" = "x86_64" ]; then
+	depends+=('lib32-zlib' 'lib32-openssl-1.0' 'lib32-openal' 'lib32-mesa')
+fi
 arch=('x86_64' 'i686')
 source=('http://www.locomalito.com/juegos/EFMB_linux.zip'
 	'efmb.png' 'efmb.desktop')
