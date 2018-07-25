@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=pgcli
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=2
 pkgdesc="a command line interface for Postgres with auto-completion and syntax highlighting"
 url="http://pgcli.com/"
@@ -20,4 +20,4 @@ package() {
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
     cp LICENSE.txt "$_/LICENSE"
 }
-md5sums=('75c8883aa456f6c58adeed82d6c53131')
+md5sums=('490e5e3091171d5e94605fa4509d873d')
