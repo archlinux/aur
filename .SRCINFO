@@ -1,14 +1,20 @@
 pkgbase = donkey-me
 	pkgdesc = A Donkey Kong game whit some grafics themes ispired on clasicals movies like Star Wars, Indiana Jones, Alien, etc
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.bruneras.com/games_donkeyme.php
 	arch = x86_64
 	arch = i686
 	license = FREE
-	depends = openssl
+	depends = zlib
+	depends = openssl-1.0
 	depends = openal
-	source = https://dl.dropboxusercontent.com/u/58286032/aur/donkeyme.zip
+	depends = mesa
+	depends = lib32-zlib
+	depends = lib32-openssl-1.0
+	depends = lib32-openal
+	depends = lib32-mesa
+	source = https://www.dropbox.com/s/i6kw9tf6gu6lctw/donkeyme.zip?dl=0
 	source = donkey-me.png
 	source = donkey-me.desktop
 	md5sums = 10a72ea8500088f956ddbafe54586024

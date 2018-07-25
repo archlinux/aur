@@ -2,17 +2,17 @@
 
 pkgname=donkey-me
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Donkey Kong game whit some grafics themes ispired on clasicals movies like Star Wars, Indiana Jones, Alien, etc"
 arch=('i686' 'x86_64')
-url=('http://www.bruneras.com/games_donkeyme.php')
+url='http://www.bruneras.com/games_donkeyme.php'
 license=('FREE')
-depends=('openssl' 'openal')
+depends=('zlib' 'openssl-1.0' 'openal' 'mesa')
 if [ "$CARCH" = "x86_64" ]; then
-	depends+=('lib32-openssl' 'lib32-openal' )
+	depends+=('lib32-zlib' 'lib32-openssl-1.0' 'lib32-openal' 'lib32-mesa')
 fi
 arch=('x86_64' 'i686')
-source=('https://dl.dropboxusercontent.com/u/58286032/aur/donkeyme.zip'
+source=('https://www.dropbox.com/s/i6kw9tf6gu6lctw/donkeyme.zip?dl=0'
 	${pkgname}.png ${pkgname}.desktop)
 md5sums=('10a72ea8500088f956ddbafe54586024'
          '23360dd4e532bb12ba66d9d42185d7b3'
