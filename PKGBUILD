@@ -5,7 +5,7 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.28.2
+pkgver=3.28.3
 pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://git.gnome.org/browse/mutter"
@@ -18,7 +18,7 @@ depends=('dconf'
   'startup-notification'
   'zenity'
   'libsm'
-  "gnome-desktop>=1:${pkgver:0:6}" # don’t build with outdated libraries
+  "gnome-desktop" # >=1:${pkgver:0:6}" # don’t build with outdated libraries
   'upower'
   'libxkbcommon-x11'
   'gnome-settings-daemon'
@@ -33,8 +33,7 @@ makedepends=('intltool'
 conflicts=('mutter' "gnome-shell>${pkgver:0:6}+999")
 provides=("mutter=${pkgver}")
 groups=('gnome')
-options=('!emptydirs')
-_commit=41303bc01be873e684f11a3407aa556af2922426 # tags/3.28.2^0
+_commit=34f5bdeea3be10e200c52bac56763a267eb4d415  # tags/3.28.3^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   "startup-notification.patch"
   "catalyst-workaround-v2.patch"
@@ -51,6 +50,9 @@ pkgver() {
 
 prepare() {
   cd "$_realname"
+
+  # Port to pipewire 0.2
+  git cherry-pick -n 0407a8b33d8c3503fba63ad260984bb08bd6e0dc
 
   # https://bugs.archlinux.org/task/51940
   # As of 2018-05-08: Still needed, according to fmuellner
