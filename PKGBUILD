@@ -2,14 +2,14 @@
 
 pkgname=maldita-castilla
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Maldita Castilla (Cursed/damn Castile) is an action arcade game like Ghost and Goblins full of myths from Spain and the rest of Europe"
 arch=('i686' 'x86_64')
 url='http://www.locomalito.com/maldita_castilla.php'
 license=('CCPL')
-depends=('zlib' 'openssl' 'openal' 'mesa')
+depends=('zlib' 'openssl-1.0' 'openal' 'mesa')
 if [ "$CARCH" = "x86_64" ]; then
-	depends+=('lib32-zlib' 'lib32-openssl' 'lib32-openal' 'lib32-mesa')
+	depends+=('lib32-zlib' 'lib32-openssl-1.0' 'lib32-openal' 'lib32-mesa')
 fi
 source=('http://www.locomalito.com/juegos/Maldita_Castilla_linux.tgz' ${pkgname}.desktop)
 md5sums=('e1790a1d1e5dddb222f9c89cff774bb2'
