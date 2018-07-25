@@ -1,10 +1,11 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: sballert <sballert@posteo.de>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 _pkgsrcname=atom
 _pkgmaintainer=file-icons
 _pkgdestdirname=atom-file-icons
 _versionprefix=v
-pkgver=2.1.4
+pkgver=2.1.22
 pkgrel=1
 pkgdesc="Atom file-specific icons for improved visual grepping."
 pkgname=ttf-${_pkgdestdirname}
@@ -14,7 +15,7 @@ license=('MIT')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('woff2-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('db788996ac2027e66573e6a6eed41ba971b2ca4ffa9a938603a642df6481103d')
 install=$pkgname.install
 
 build() {
