@@ -164,7 +164,7 @@ index 0000000..9ee9185
 +      // choose the color for the temperature
 +      int tempColor;
 +      if      (temperature < 60)                      tempColor = coolColor;
-+      else if (temperature >= 60 && temperature < 75) tempColor = mediumColor;
++      else if (temperature >= 60 && temperature < 70) tempColor = mediumColor;
 +      else                                            tempColor = hotColor;
 +
 +      // output the temperature
