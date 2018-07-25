@@ -21,11 +21,11 @@ license=('custom')
 makedepends=('jdk7-openjdk' 'ccache' 'cpio' 'unzip' 'zip' 'gcc7'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=http://hg.openjdk.java.net/shenandoah/jdk8u
-_last_update=20180712
+_last_update=20180725
 declare -g -A _repo_versions=(
     [jdk8u]=90b7e0f4f9a4
     [corba]=53cca1228345
-    [hotspot]=4a418de67168
+    [hotspot]=90ead13709c0
     [jdk]=e9cec57ebc22
     [jaxws]=9b184a26e260
     [jaxp]=d9feb209c2c2
@@ -44,7 +44,7 @@ source=("jdk8u-${_repo_versions[jdk8u]}.tar.gz::${_url_src}/archive/${_repo_vers
 
 sha256sums=('d2fb1fc814536dd77b4fee6730382656ce6fedf78d536306109e1e257a2c3799'
             '69265d60d74eace306140718a2b2bbad59ed0dcbec8bb3b129f20f50301453ac'
-            'c17ecc4b1445539418f0947069626dd5c264fa1e5be6bdc7f2bff0ca84e05f04'
+            '95f99ceea6edf543e7d7483bb81405561624632e27223f0fb9f4cae243f1087b'
             '1f394de0df11fc403dad489f2bfe626ab62fd8f0e4023441f93633d3183a7497'
             'ca2bee1afee5770bb932f65d1c47bb965b4f755771ed7dd90b2330d8a57c0296'
             'e72a301bad45899a4f62800f5af556272e54069ae2ecca8fd60f569dd8abbc76'
