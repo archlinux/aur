@@ -1,6 +1,6 @@
 pkgbase = spl-linux-lts
 	pkgver = 0.7.9.4.14.56.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL

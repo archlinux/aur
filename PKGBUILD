@@ -19,7 +19,7 @@ pkgbase="spl-linux-lts"
 pkgname=("spl-linux-lts" "spl-linux-lts-headers")
 
 pkgver=0.7.9.4.14.56.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-lts-headers=4.14.56-1")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
