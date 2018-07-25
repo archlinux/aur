@@ -1,8 +1,8 @@
 # Maintainer: rouhannb <rouhannb@gmail.com>
 _basename=joycon
 pkgname="$_basename-git"
-pkgver='r99.144b22d'
-pkgrel='2'
+pkgver=r99.144b22d
+pkgrel=3
 pkgdesc='Joy-Con input driver'
 arch=('x86_64')
 url="https://github.com/riking/$_basename"
@@ -12,11 +12,8 @@ makedepends=('go' 'git')
 provides=("$_basename")
 conflicts=("$_basename")
 _gourl="github.com/riking/$_basename/prog4/jcdriver"
-source=("src/github.com/riking/$_basename::git+https://github.com/riking/$_basename.git")
-md5sums=('SKIP')
 
 prepare() {
-    rm -rf "$srcdir/src/github.com/riking/$_basename"
 	GOPATH="$srcdir" go get -d -u $_gourl
 }
 
