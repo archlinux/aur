@@ -6,14 +6,14 @@ pkgname=('python-altair')
 depends=('python' 'python-entrypoints' 'python-jsonschema' 'python-numpy' 'python-pandas' 'python-six' 'python-toolz')
 makedepends=('python-setuptools')
 optdepends=('python-selenium: png and svg export support')
-pkgver=2.0.1
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc=" Declarative statistical visualization library for Python"
 arch=('any')
 url="https://altair-viz.github.io/"
 license=('MIT')
-source=("${_pyname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/19/1f/55b9d398b3217bb9feb8405188b38f13320ece65f383cf769e38ac4a81ba/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('a5ec9878cbfd7e934bc95becb6a50edbbabb93614e7c59ff199b66db856c676e')
+source=("${_pyname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/77/b2/c1134ac8eac76b76c9d398dbb9aae368faa1202353361f5760c2bb8252d3/${_pyname}-${pkgver}.tar.gz")
+sha256sums=('e8b222588dde98ec614e6808357fde7fa321118db44cc909df2bf30158d931c0')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
