@@ -1,6 +1,6 @@
 pkgbase = libinput-no-hysteresis
 	pkgdesc = Input device management and event handling library sans hysteresis
-	pkgver = 1.10.3
+	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/libinput/
 	arch = x86_64
@@ -16,15 +16,15 @@ pkgbase = libinput-no-hysteresis
 	optdepends = gtk3: libinput debug-gui
 	optdepends = python-pyudev: libinput measure
 	optdepends = python-evdev: libinput measure
-	provides = libinput=1.10.3
-	conflicts = libinput=1.10.3
-	source = https://freedesktop.org/software/libinput/libinput-1.10.3.tar.xz
-	source = https://freedesktop.org/software/libinput/libinput-1.10.3.tar.xz.sig
+	provides = libinput=1.11.2
+	conflicts = libinput=1.11.2
+	source = https://freedesktop.org/software/libinput/libinput-1.11.2.tar.xz
+	source = https://freedesktop.org/software/libinput/libinput-1.11.2.tar.xz.sig
 	source = disable-hysteresis.patch
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
-	sha512sums = 4c73673e138a7aff9d6f2d189b8afdfb51c868eca0487c8c487ffd3bb48849994a9095fbd4c5c725ee17fafc2a85298106e0cc7b59b4a8cd13ec28f65d15c01d
+	sha512sums = cb6ada877fc3c09f634f3db39d5507e66d4b86c3d632bb8f7498c7b01fdf8372b2053a79b641293900b7fcc0aa4e920f7c830d9c7b2d9ff3cd61c58eb7c20b65
 	sha512sums = SKIP
-	sha512sums = 67fa2e8efd982f2fa32ceec2dbf29e95288e7a68e7a229831d8d59829b09a0ab8eba500696d1b37d755a8138e054c429c7fadfa92ecdbac7925f331643443c41
+	sha512sums = 2217ec9b6b9a7843cec564eeae22e0f5f5ddacd946cc863735f43fe2a2b264e155b72aa1cf3d39f567a4c5007371d38c98c606751c3c32b7d6a132d5dfc2d52b
 
 pkgname = libinput-no-hysteresis
 

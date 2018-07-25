@@ -1,16 +1,15 @@
---- a/src/evdev-mt-touchpad.c	2018-04-08 19:11:22.549800840 +0100
-+++ b/src/evdev-mt-touchpad.c	2018-04-08 19:11:45.022773612 +0100
-@@ -3022,12 +3022,8 @@
- static inline void
- tp_init_hysteresis(struct tp_dispatch *tp)
- {
--	int res_x, res_y;
--
--	res_x = tp->device->abs.absinfo_x->resolution;
--	res_y = tp->device->abs.absinfo_y->resolution;
--	tp->hysteresis.margin.x = res_x/2;
--	tp->hysteresis.margin.y = res_y/2;
+--- a/src/evdev-mt-touchpad.c	2018-07-25 23:27:12.719986275 +0100
++++ b/src/evdev-mt-touchpad.c	2018-07-25 23:27:24.227122395 +0100
+@@ -3190,9 +3190,9 @@
+ 	else
+ 		ymargin = ay->resolution/4;
+ 
+-	tp->hysteresis.margin.x = xmargin;
+-	tp->hysteresis.margin.y = ymargin;
+-	tp->hysteresis.enabled = (ax->fuzz || ay->fuzz);
 +	tp->hysteresis.margin.x = 0;
 +	tp->hysteresis.margin.y = 0;
- 	tp->hysteresis.enabled = false;
- }
++	tp->hysteresis.enabled = false;
+ 	if (tp->hysteresis.enabled)
+ 		evdev_log_debug(tp->device,
+ 				"hysteresis enabled. "
