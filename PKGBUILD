@@ -5,8 +5,8 @@
 pkgbase=linux-zen           # Build stock -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.17
-_zenpatch=zen-4.17.9-c5cc25e04ed21f10f84ad4fd9419f7fd11ac9817.diff
-pkgver=4.17.9
+_zenpatch=zen-4.17.10-ed1ffbadb5803a54972937f4b2d5a97b7c0ed317.diff
+pkgver=4.17.10
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -29,9 +29,9 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '52131a497efaed724afaa7f7022249f8f8e6e555cbe407a6619908ed2ebcee89'
+            '41ad005296c7a1b5245a87881f666b3f4d7aa05a6b9409454b2e473d473c4cee'
             'SKIP'
-            '7abf14442efd71b1acce040d1797ea05b51008aef36987bcda09181c1c6b6f42'
+            '6acc4c2a17495cdf17a0c470e23e01688e390c6e9d8ba839d173b2e5c5fff435'
             'SKIP'
             '02684ffee3ee036bc7b5362e413dd04fe7dcaed307f9dbd36e3b1f8fc6f05d54'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
