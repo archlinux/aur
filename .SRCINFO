@@ -1,7 +1,7 @@
 pkgbase = tails-installer
 	pkgdesc = Installer for the Tails live operating system
-	pkgver = 5.0.7
-	pkgrel = 2
+	pkgver = 5.0.8
+	pkgrel = 1
 	url = https://tails.boum.org/
 	arch = any
 	license = GPL
@@ -21,7 +21,7 @@ pkgbase = tails-installer
 	depends = syslinux
 	depends = udisks2
 	depends = urlgrabber
-	source = git://git.tails.boum.org/liveusb-creator#tag=tails-installer_5.0.7
+	source = git://git.tails.boum.org/liveusb-creator#tag=tails-installer_5.0.8
 	sha256sums = SKIP
 
 pkgname = tails-installer

@@ -2,8 +2,8 @@
 # Contributor: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=tails-installer
-pkgver=5.0.7
-pkgrel=2
+pkgver=5.0.8
+pkgrel=1
 pkgdesc="Installer for the Tails live operating system"
 arch=('any')
 url="https://tails.boum.org/"
