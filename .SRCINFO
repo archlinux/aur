@@ -1,4 +1,4 @@
-pkgbase = github-desktop
+pkgbase = github-desktop-git
 	pkgdesc = GUI for managing Git and GitHub.
 	pkgver = 1.3.0_beta4
 	pkgrel = 1
@@ -22,4 +22,4 @@ pkgbase = github-desktop
 	sha256sums = SKIP
 	sha256sums = be057e4a392e64760f7a40203ac886b7cf5551de254ad55c706376dca8aa4341
 
-pkgname = github-desktop
+pkgname = github-desktop-git
