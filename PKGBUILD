@@ -4,29 +4,26 @@
 
 pkgname=acmetool
 pkgver=0.0.67
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy-to-use command line tool for automatically acquiring certificates from ACME servers (such as Let's Encrypt)"
 arch=(i686 x86_64 armv7h)
 url="https://github.com/hlandau/acme"
 license=('MIT')
 depends=(bash libcap)
 makedepends=(go)
-install=acmetool.install
 
 source=(acmetool-$pkgver.tar.gz::https://github.com/hlandau/acme/archive/v$pkgver.tar.gz
         LICENSE::https://raw.githubusercontent.com/hlandau/rilts/master/licences/COPYING.MIT
         acmetool.service
         acmetool.timer
         acmetool.conf
-        acmetool.install
         )
 
 sha256sums=('01f78340006539c62bb86250433d2f819ab529ccd9a0aa74e140ff0fee839073'
             'fd80a26fbb3f644af1fa994134446702932968519797227e07a1368dea80f0bc'
             'bf0052ea1a94919455fc364c6e9ff66f9268b7f80c42e9a73249919a6b369d9c'
             '82cd724853507a6d96f7a432aa44c457e76f4d6c0f1ad35142287b7c383d5c0b'
-            '91f8999341dd8dcc1170231f977ae8f93fc671cd4d2b87c56b9e44c4ec0a13a2'
-            'ef50df6362af250c648433477fff6b1bc40bea2dfd7aff34cf9ec4f33a76e9fc')
+            '91f8999341dd8dcc1170231f977ae8f93fc671cd4d2b87c56b9e44c4ec0a13a2')
 
 prepare() {
     export GOPATH="${srcdir}/build"
