@@ -2,7 +2,7 @@
 
 pkgname=shrinky
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Build small executables with C++17 (based on dnload)'
 arch=('any')
 url='https://github.com/xyproto/shrinky/'
