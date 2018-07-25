@@ -144,20 +144,15 @@ Info_Array* portfolio_info_array_init_from_portfolio_string(String* pString) {
         RETNULL_MSG("Your portfolio is empty.")
 
     Json* jobj = json_tokener_parse(pString->data);
-    if (json_object_array_length(jobj) == 0) { // If empty array
+    size_t length = json_object_array_length(jobj);
+    if (length == 0) { // If empty array
         json_object_put(jobj);
         RETNULL_MSG("Your portfolio is empty.");
     }
 
-    Info_Array* portfolio_data = api_info_array_init();
-    portfolio_data->length = json_object_array_length(jobj);
-    portfolio_data->array = malloc(sizeof(Info*) * portfolio_data->length);
-    pointer_alloc_check(portfolio_data->array);
-    portfolio_data->totals = api_info_init();
-    strcpy(portfolio_data->totals->symbol, "TOTALS");
+    Info_Array* portfolio_data = api_info_array_init_from_length(length);
     portfolio_data->totals->total_spent = 0;
     for (size_t i = 0; i < portfolio_data->length; i++) {
-        portfolio_data->array[i] = api_info_init();
         strcpy(portfolio_data->array[i]->symbol,
                json_object_get_string(json_object_object_get(json_object_array_get_idx(jobj, i),
                                                              "Symbol")));

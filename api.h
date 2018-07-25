@@ -149,6 +149,13 @@ Info* api_info_init(void);
 Info_Array* api_info_array_init(void);
 
 /**
+ * Allocates an Info_Array struct with allocated length.
+ * @param length number of Info pointers to allocate
+ * @return Info_Array*
+ */
+Info_Array* api_info_array_init_from_length(size_t length);
+
+/**
  * writefunction for cURL HTTP GET/POST
  * stolen from a nice man on stackoverflow
  */

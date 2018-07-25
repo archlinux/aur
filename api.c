@@ -40,6 +40,22 @@ Info_Array* api_info_array_init(void) {
     return pInfo_Array;
 }
 
+Info_Array* api_info_array_init_from_length(size_t length) {
+    if (length == 0)
+        return api_info_array_init();
+
+    Info_Array* pInfo_Array = api_info_array_init();
+    pInfo_Array->length = length;
+    pInfo_Array->array = malloc(sizeof(Info*) * length);
+    pointer_alloc_check(pInfo_Array->array);
+    for (size_t i = 0; i < length; i++)
+        pInfo_Array->array[i] = api_info_init();
+
+    pInfo_Array->totals = api_info_init();
+    strcpy(pInfo_Array->totals->symbol, "TOTALS");
+    return pInfo_Array;
+}
+
 size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pString) {
     size_t new_len = pString->len + size * nmemb;
     pString->data = realloc(pString->data, new_len + 1);
@@ -339,13 +355,9 @@ void* iex_store_peers(void* vpInfo) {
     if (len > MAX_PEERS)
         len = MAX_PEERS;
 
-    symbol_info->peers = api_info_array_init();
-    symbol_info->peers->length = len;
-    symbol_info->peers->array = malloc(sizeof(Info*) * len);
-    pointer_alloc_check(symbol_info->peers->array);
+    symbol_info->peers = api_info_array_init_from_length(len);
     pthread_t threads[len];
     for (size_t i = 0; i < len; i++) {
-        symbol_info->peers->array[i] = api_info_init();
         strcpy(symbol_info->peers->array[i]->symbol, json_object_get_string(
                 json_object_array_get_idx(jobj, (size_t) i)));
         if (pthread_create(&threads[i], NULL, api_store_check_info,
@@ -591,18 +603,13 @@ void info_array_store_totals(Info_Array* pInfo_Array) {
 }
 
 Info_Array* iex_get_valid_symbols(void) {
-    char* iex_api_string = "https://api.iextrading.com/1.0/ref-data/symbols";
-    String* pString = api_curl_data(iex_api_string);
+    String* pString = api_curl_data("https://api.iextrading.com/1.0/ref-data/symbols");
     if (pString == NULL)
         return NULL;
 
     Json* jobj = json_tokener_parse(pString->data), * idx;
-    Info_Array* list = api_info_array_init();
-    list->length = json_object_array_length(jobj);
-    list->array = malloc(sizeof(Info*) * list->length);
-    pointer_alloc_check(list->array);
+    Info_Array* list = api_info_array_init_from_length(json_object_array_length(jobj));
     for (size_t i = 0; i < list->length; i++) {
-        list->array[i] = api_info_init();
         idx = json_object_array_get_idx(jobj, i);
         strcpy(list->array[i]->symbol, json_object_get_string(json_object_object_get(idx, "symbol")));
         strcpy(list->array[i]->name, json_object_get_string(json_object_object_get(idx, "name")));
