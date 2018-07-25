@@ -1,9 +1,9 @@
 #Maintainer: Rellieberman <name AT gmail DOT com>
-#Contributor: Seantum <tsiegele AT gmx DOT at>
+#Co-Maintainer: Seantum <tsiegele AT gmx DOT at>
 
 pkgname=mint-backgrounds-tara
-pkgver=1.1
-pkgrel=1
+pkgver=1.2
+pkgrel=2
 pkgdesc="The backgrounds included in Linux Mint 19 Tara"
 license=('GPL3')
 arch=('any')
