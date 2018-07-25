@@ -1,6 +1,6 @@
 pkgbase = archlinux-backup-tool
 	pkgdesc = A simple shell script to backup and restore your AL installation.
-	pkgver = 1.1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://gitlab.com/Myl0g/archlinux-backup-tool
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = archlinux-backup-tool
 	depends = bash
 	depends = pacman
 	optdepends = yaourt: a common AUR helper
-	source = https://gitlab.com/Myl0g/archlinux-backup-tool/-/archive/1.1.1/archlinux-backup-tool-1.1.1.tar.gz
-	sha512sums = 5cdb0503fde40e2f5e1ad1ffe09ed402f96c5a7f96008a4590711a983b02781103c41592d0d090c209e53bb8f41eb11a6d6d685680153ca56c24641e4c2ed15b
+	source = https://gitlab.com/Myl0g/archlinux-backup-tool/-/archive/1.2/archlinux-backup-tool-1.2.tar.gz
+	sha512sums = 86cfcd6bbe7efe3e46ca6f87730079e3202b0fbc12e6ec889f9ddb084e4e23afb7b2ad01ec33041b6b150bdf110ae796aa9fd2523accb0bb886085e6b745afc1
 
 pkgname = archlinux-backup-tool
 

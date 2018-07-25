@@ -1,6 +1,6 @@
 # Maintainer: Milo Gilad <myl0gcontact@gmail.com>
 pkgname=archlinux-backup-tool
-pkgver=1.1.1
+pkgver=1.2
 pkgrel=1
 epoch=
 pkgdesc="A simple shell script to backup and restore your AL installation."
@@ -19,4 +19,4 @@ package() {
 	mv "${pkgname}-${pkgver}/${pkgname%-tool}.sh" "${pkgdir}/usr/bin/${pkgname%-tool}"
 	chmod 755 "${pkgdir}/usr/bin/${pkgname%-tool}"
 }
-sha512sums=('5cdb0503fde40e2f5e1ad1ffe09ed402f96c5a7f96008a4590711a983b02781103c41592d0d090c209e53bb8f41eb11a6d6d685680153ca56c24641e4c2ed15b')
+sha512sums=('86cfcd6bbe7efe3e46ca6f87730079e3202b0fbc12e6ec889f9ddb084e4e23afb7b2ad01ec33041b6b150bdf110ae796aa9fd2523accb0bb886085e6b745afc1')
