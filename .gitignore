@@ -3,4 +3,5 @@
 !.SRCINFO
 !*.install
 !.gitignore
+!burstcoin-wallet.desktop
 !burstcoin-wallet.service

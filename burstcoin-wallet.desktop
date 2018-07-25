@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=BurstCoin Wallet
+Comment=Free, open-source, client-side tool for easily & securely interacting with the Burstcoin network
+Icon=burstcoin-wallet
+Exec=xdg-open "http://127.0.0.1:8125/index.html"
+Categories=Network;

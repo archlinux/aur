@@ -1,0 +1,22 @@
+post_install() {
+  echo "+-------------------------------------------------------------------------------------+"
+  echo "| Config: /opt/burstcoin-wallet/conf/brs-default.properties                           |"
+  echo "| By default, burst wallet uses MySQL                                                 |"
+  echo "|                                                                                     |"
+  echo "| If you want to use MySQL: pacman -S mariadb                                         |"
+  echo "| and configure by instruction: https://github.com/PoC-Consortium/burstcoin           |"
+  echo "|                                                                                     |"
+  echo "| If you want to use H2 DB, you do not need to install additional,                    |"
+  echo "| change parameters in config, where DB.url is path to file where will storage DB:    |"
+  echo "| DB.Url=jdbc:h2:/home/USER/burst_db/burst;DB_CLOSE_ON_EXIT=FALSE                     |"
+  echo "| DB.Username=                                                                        |"
+  echo "| DB.Password=                                                                        |"
+  echo "|                                                                                     |"
+  echo "| Run wallet: sudo systemctl start burstcoin-wallet.service                           |"
+  echo "| URL: http://127.0.0.1:8125/index.html                                               |"
+  echo "+-------------------------------------------------------------------------------------+"
+}
+
+post_upgrade() {
+  post_install
+}
