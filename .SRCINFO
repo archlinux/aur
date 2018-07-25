@@ -1,0 +1,13 @@
+pkgbase = grokmirror
+	pkgdesc = Framework to smartly mirror git repositories
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/mricon/grokmirror
+	arch = any
+	license = GPL3
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/g/grokmirror/grokmirror-1.1.0.tar.gz
+	sha256sums = e687f5242e15402352d425b350f69508f577aa4466c0c236b0fa1c8bda8c27fe
+
+pkgname = grokmirror
+
