@@ -1,6 +1,6 @@
 pkgbase = caffe2-cpu-git
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (git version, cpu only)
-	pkgver = 0.8.2.r11333.g93f8d9802
+	pkgver = 0.8.2.r12358.g8825e323b
 	pkgrel = 1
 	epoch = 1
 	url = http://caffe2.ai/
@@ -60,7 +60,6 @@ pkgbase = caffe2-cpu-git
 	conflicts = caffe2-git
 	options = !emptydirs
 	source = pytorch-git::git+https://github.com/pytorch/pytorch.git
-	source = caffe2-submodule-tbb::git+https://github.com/01org/tbb#branch=tbb_2018
 	source = caffe2-submodule-catch::git+https://github.com/catchorg/Catch2.git
 	source = caffe2-submodule-nanopb::git+https://github.com/nanopb/nanopb.git
 	source = caffe2-submodule-pybind11::git+https://github.com/pybind/pybind11.git
@@ -88,7 +87,6 @@ pkgbase = caffe2-cpu-git
 	source = caffe2-submodule-onnx-tensorrt::git+https://github.com/onnx/onnx-tensorrt
 	source = caffe2-submodule-sleef::git+https://github.com/shibatch/sleef
 	source = caffe2-submodule-ideep::git+https://github.com/intel/ideep
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
