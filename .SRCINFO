@@ -1,0 +1,18 @@
+pkgbase = thiswarofmine-hib
+	pkgdesc = In War... Not everyone is a soldier
+	pkgver = 20161223
+	pkgrel = 1
+	url = http://www.thiswarofmine.com/
+	arch = x86_64
+	license = custom:commercial
+	depends = lib32-curl
+	depends = lib32-openal
+	noextract = thiswarofmine_deluxe_linux.zip
+	options = !strip
+	source = hib://thiswarofmine_deluxe_linux.zip
+	source = thiswarofmine-hib.in
+	md5sums = de29d2d7cb2c68b09983e19c864b475e
+	md5sums = 956e6fe2462d118d64fb0c01f6bc7fc1
+
+pkgname = thiswarofmine-hib
+
