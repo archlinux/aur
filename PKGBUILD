@@ -8,7 +8,7 @@
 pkgname="zfs-utils-common"
 
 pkgver=0.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=()
 makedepends=()
