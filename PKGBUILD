@@ -2,10 +2,10 @@
 
 pkgname=shrinky-intro
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux 4k intro skeleton (from dnload)'
 arch=('x86_64')
-url='https://github.org/xyproto/shrinky-intro/'
+url='https://github.com/xyproto/shrinky-intro/'
 license=('BSD')
 makedepends=('git' 'shrinky')
 depends=('libgl' 'sdl2')
