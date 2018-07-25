@@ -1,15 +1,16 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: sballert <sballert@posteo.de>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 pkgname=emacs-neotree
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Project Interaction Library for Emacs"
 arch=(any)
 url="https://github.com/jaypei/emacs-neotree"
 license=('GPL3')
-depends=('emacs' 'emacs-ag' 'emacs-helm')
-source=("https://github.com/jaypei/emacs-neotree/archive/${pkgver}.tar.gz")                                                              
-sha256sums=('SKIP')
+depends=('emacs')
+source=("https://github.com/jaypei/emacs-neotree/archive/${pkgver}.tar.gz")
+sha256sums=('22dc07fc170ebb2c69353fcd4680a06824fd42b9cc41f6e6715646cf216ba6fd')
 
 build() {
   cd "${srcdir}/emacs-neotree-${pkgver}"
