@@ -227,13 +227,12 @@ void portfolio_sort(Info_Array* portfolio_data, int sort_option) {
 }
 
 int portfolio_symbol_index(const char* symbol, const Json* jarray) {
-    char string[32];
-    for (int i = 0; i < (int) json_object_array_length(jarray); i++) {
-        strcpy(string, json_object_to_json_string(
-                json_object_object_get(json_object_array_get_idx(jarray, (size_t) i), "Symbol")));
-        strip_char(string, '\"');
+    for (size_t i = 0; i < json_object_array_length(jarray); i++) {
+        const char* string = json_object_get_string(
+                json_object_object_get(json_object_array_get_idx(jarray, (size_t) i), "Symbol"));
         if (strcmp(string, symbol) == 0)
-            return i;
+            return (int) i;
     }
+
     return -1;
 }
