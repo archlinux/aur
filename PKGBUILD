@@ -1,4 +1,5 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: sballert <sballert@posteo.de>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 pkgname=ttf-octicons
 pkgver=4.3.0
@@ -10,7 +11,7 @@ url="http://octicons.github.com/"
 makedepends=('git')
 depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/primer/octicons/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('e4469334f223132963eb676f4086c25ed1f0cfd7f2b39e4bb42ecb7378d9d164')
 install=$pkgname.install
 
 package() {
