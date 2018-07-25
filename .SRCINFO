@@ -1,14 +1,14 @@
 pkgbase = jupyterlab_launcher
 	pkgdesc = Launch an application built using JupyterLab
-	pkgver = 0.11.0
-	pkgrel = 1
+	pkgver = 0.11.2
+	pkgrel = 2
 	url = https://github.com/jupyterlab/jupyterlab_launcher
 	arch = any
 	license = custom
 	makedepends = python-setuptools
 	depends = jupyter-notebook
-	source = jupyterlab_launcher-0.11.0.tar.gz::https://github.com/jupyterlab/jupyterlab_launcher/archive/v0.11.0.tar.gz
-	sha256sums = b6b6431d9e9130df75505d7ce3062e842c1366db11d081534eb87ce901c7e3af
+	source = jupyterlab_launcher-0.11.2.tar.gz::https://github.com/jupyterlab/jupyterlab_launcher/archive/v0.11.2.tar.gz
+	sha256sums = 9b9cdc255fc5d181485e2bd06bab2fa97dad4d1ca0f34f305ee6344132c1d54a
 
 pkgname = jupyterlab_launcher
 
