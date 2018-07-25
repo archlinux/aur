@@ -1,7 +1,7 @@
 pkgbase = spl-utils-common
 	pkgdesc = Solaris Porting Layer kernel module support files.
 	pkgver = 0.7.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	groups = archzfs-linux
