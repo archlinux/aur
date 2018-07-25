@@ -2,7 +2,7 @@
 
 _gitname=dizzy
 pkgname="${_gitname}-git"
-pkgver=2.0rc3.4a14d37
+pkgver=2.0.c44b8ff
 pkgrel=1
 pkgdesc='Network and USB protocol fuzzing toolkit'
 url='https://github.com/ernw/dizzy'
