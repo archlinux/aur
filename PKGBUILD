@@ -3,7 +3,7 @@
 _pkgname=rust
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.27.1
+pkgver=1.27.2
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)"
 arch=('x86_64')
@@ -22,11 +22,11 @@ options=('!strip' 'staticlibs' '!buildflags')
 source=("https://static.rust-lang.org/dist/rust-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('bae52484fe3cd50b4670487709e77ee5c0412ea55432f6036225e5c5557d43ae'
+sha256sums=('090a3bfc536b7211ae84f6667c941c861eddfdcadb5e472a32e72d074f793dd4'
             'SKIP'
-            'ceb42d78427e7469bde30c4e86fd8c7929ed27379566c064b8c9d7d7eb7bd7b5'
+            '29cb54b97dde3f9d1382d341c6bdc526fc1bd19f5c7df6bd8a55c49feb29dfcf'
             'SKIP'
-            'd22bfcfa53c5015fd429c735e88ad1997b81f883ffe0e8a9839e4ebab1591430'
+            '562897ca637ce9bf3c1c5df156c23b6f05343daf1bfe4b2b1eeca65814b9617d'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
