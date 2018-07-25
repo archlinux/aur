@@ -1,0 +1,30 @@
+From 48ba5ea4618a88ce9b3a4dbb51a0d8311936d308 Mon Sep 17 00:00:00 2001
+From: Daniel Stenberg <daniel@haxx.se>
+Date: Thu, 12 Jul 2018 11:04:00 +0200
+Subject: [PATCH] header output: switch off all styles, not just unbold
+
+... the "unbold" sequence doesn't work on the mac Terminal.
+
+Reported-by: Zero King
+Fixes #2736
+Closes #2738
+---
+ src/tool_cb_hdr.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/tool_cb_hdr.c b/src/tool_cb_hdr.c
+index 88ce5e13b8..6419b72048 100644
+--- a/src/tool_cb_hdr.c
++++ b/src/tool_cb_hdr.c
+@@ -42,7 +42,10 @@ static char *parse_filename(const char *ptr, size_t len);
+ #define BOLDOFF
+ #else
+ #define BOLD "\x1b[1m"
+-#define BOLDOFF "\x1b[21m"
++/* Switch off bold by settting "all attributes off" since the explicit
++   bold-off code (21) isn't supported everywhere - like in the mac
++   Terminal. */
++#define BOLDOFF "\x1b[0m"
+ #endif
+ 
+ /*
