@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-rc
-_pkgver="5.0.0-rc3"
+_pkgver="5.0.0"
 pkgver=${_pkgver//-}
 pkgrel=1
 pkgdesc="Official KiCad release candidates and dev snapshots"
@@ -14,7 +14,7 @@ conflicts=('kicad' 'kicad-git' 'kicad-scripting-git' 'kicad-bzr')
 provides=('kicad')
 _github_project='kicad-source-mirror'
 source=("https://github.com/KiCad/${_github_project}/archive/${_pkgver}.tar.gz")
-md5sums=('b38154bec7b7873e11a48df0ce33878a')
+md5sums=('a0d5b122b82c05047744a011be7de0bd')
 install=kicad.install
 
 build() {
