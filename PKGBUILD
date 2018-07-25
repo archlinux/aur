@@ -19,7 +19,7 @@ source=("http://hisham.hm/$_pkgname/releases/$pkgver/$_pkgname-$pkgver.tar.gz"
         "htop-temperature-rpi.patch"
         "0001-fix-option-string.patch")
 sha256sums=('d9d6826f10ce3887950d709b53ee1d8c1849a70fa38e91d5896ad8cbc6ba3c57'
-            '933e8b41668282ccfc0e3e82ca9559022360e803c8c42a2ddee223ba31198338'
+            '626f85b975a58aef9c6878f59fc7381824702bc4fafe4d3bffccd80b1ceb5a6a'
             '343cfd8e01f2d47e54b38f725bb05a9825511b502acdb6803507e5fa4d52bed7')
 
 prepare() {
