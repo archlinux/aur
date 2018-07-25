@@ -9,7 +9,9 @@ url='https://github.com/takeshixx/deen'
 arch=('any')
 license=('Apache 2.0')
 depends=('python' 'python-setuptools' 'python-pyqt5')
-optdepends=('python-pyopenssl' 'python-jsbeautifier')
+optdepends=('python-pyopenssl' 'python-jsbeautifier' 'python-keystone'
+            'python-capstone' 'python-pyjwt' 'python-bcrypt'
+            'python-xmltodict')
 makedepends=('git')
 provides=('deen')
 conflicts=('deen')
