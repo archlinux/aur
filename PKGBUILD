@@ -2,7 +2,7 @@
 
 # Main package information
 pkgname=scylla-jmx
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Scylla JMX server implements the Apache Cassandra JMX interface for compatibility with tooling such as nodetool."
 arch=('any')
