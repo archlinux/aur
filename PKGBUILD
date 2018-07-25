@@ -1,24 +1,41 @@
 pkgname=fahclient
-pkgver=7.4.4
-_shortver=7.4
-_fullver=7.4.4-1
-pkgrel=2
+pkgver=7.5.1
+_shortver=7.5
+pkgrel=1
 pkgdesc='A command line client for Folding@Home'
-url="http://folding.stanford.edu/English/HomePage"
-arch=('i686' 'x86_64')
+url="https://foldingathome.org/"
+arch=('x86_64')
 license=('GPL3')
 depends=('zlib')
-source=('fahclient.service')
-source_i686=("https://folding.stanford.edu/releases/public/release/$pkgname/centos-5.5-32bit/v${_shortver}/$pkgname-${_fullver}.i686.rpm")
-source_x86_64=("https://folding.stanford.edu/releases/public/release/$pkgname/centos-5.3-64bit/v${_shortver}/$pkgname-${_fullver}.x86_64.rpm")
 
-sha256sums=('b5cd088c7385e9387aab3fd216abbec4095978d4c3f10e874db022fa21a47ec3')
-sha256sums_i686=('55d1b39d5e2f4acd9d81b327ebe6f0b28b55e99676796a4fac14aee661b9a20e')
-sha256sums_x86_64=('e189caecc0afea55c621c06fa0bcd43a5924d92e53b3b19126bbc1b24d29188e')
+source=("https://download.foldingathome.org/releases/public/release/$pkgname/debian-stable-64bit/v${_shortver}/${pkgname}_${pkgver}_amd64.deb"
+		'fahclient.service')
+sha256sums=('efe47061d328667259c1815b98bc6c37da339363fb8e9386673f6a96f4d37d26'
+            '6b3971fb2c8a346a455dc1c44c029cdd4ffc17b097e2bfa84fb8457baf1191f8')
+prepare() {
+	tar xf data.tar.xz
+}
+package() {
+	
+	mkdir -p "${pkgdir}/usr/bin"
+	for bin in "${srcdir}"/usr/bin/*; do 
+    	install -Dm0755 "${bin}" "${pkgdir}/usr/bin"; 
+	done
+ 	
+ 	mkdir -p "${pkgdir}/usr/share/doc/fahclient"
+ 	for doc in "${srcdir}"/usr/share/doc/fahclient/*; do 
+    	install -Dm0644 "${doc}" "${pkgdir}/usr/share/doc/fahclient"; 
+	done
 
-package() 
-{
-  install -Dm755 "$srcdir/usr/bin/FAHClient" "$pkgdir/usr/bin/FAHClient"
-  install -Dm755 "$srcdir/usr/bin/FAHCoreWrapper" "$pkgdir/usr/bin/FAHCoreWrapper"
-  install -Dm644 "$srcdir/fahclient.service" "$pkgdir/usr/lib/systemd/user/fahclient.service" 
+	mkdir -p "${pkgdir}/usr/share/pixmaps"
+	for pixmap in "${srcdir}"/usr/share/pixmaps/*; do 
+    	install -Dm0644 "${pixmap}" "${pkgdir}/usr/share/pixmaps"; 
+	done
+	
+	mkdir -p "${pkgdir}/usr/share/applications"
+	install -Dm0644 "${srcdir}/usr/share/applications/FAHWebControl.desktop" "${pkgdir}/usr/share/applications"
+
+	# install -Dm0644 "$srcdir"/usr/share/doc/fahclient/sample-config.xml "${pkgdir}/${HOME}/.config/fahclient.cfg"
+
+	install -Dm644 "$srcdir/fahclient.service" "$pkgdir/usr/lib/systemd/user/fahclient.service"
 }

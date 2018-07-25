@@ -1,18 +1,15 @@
 pkgbase = fahclient
 	pkgdesc = A command line client for Folding@Home
-	pkgver = 7.4.4
-	pkgrel = 2
-	url = http://folding.stanford.edu/English/HomePage
-	arch = i686
+	pkgver = 7.5.1
+	pkgrel = 1
+	url = https://foldingathome.org/
 	arch = x86_64
 	license = GPL3
 	depends = zlib
+	source = https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v7.5/fahclient_7.5.1_amd64.deb
 	source = fahclient.service
-	sha256sums = b5cd088c7385e9387aab3fd216abbec4095978d4c3f10e874db022fa21a47ec3
-	source_i686 = https://folding.stanford.edu/releases/public/release/fahclient/centos-5.5-32bit/v7.4/fahclient-7.4.4-1.i686.rpm
-	sha256sums_i686 = 55d1b39d5e2f4acd9d81b327ebe6f0b28b55e99676796a4fac14aee661b9a20e
-	source_x86_64 = https://folding.stanford.edu/releases/public/release/fahclient/centos-5.3-64bit/v7.4/fahclient-7.4.4-1.x86_64.rpm
-	sha256sums_x86_64 = e189caecc0afea55c621c06fa0bcd43a5924d92e53b3b19126bbc1b24d29188e
+	sha256sums = efe47061d328667259c1815b98bc6c37da339363fb8e9386673f6a96f4d37d26
+	sha256sums = 6b3971fb2c8a346a455dc1c44c029cdd4ffc17b097e2bfa84fb8457baf1191f8
 
 pkgname = fahclient
 
