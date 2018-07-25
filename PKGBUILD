@@ -1,4 +1,4 @@
-# Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 ####to disable cuda kernel comment out this line
 _BUILD_CUDA="on"
 
@@ -22,6 +22,7 @@ fi
 install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
         "nvm-export.patch"
+        "sse_sum.patch"
         "${pkgname}.install"
         "vocabulary-tree-64K.bin::https://demuc.de/colmap/vocab_tree-65536.bin"
         "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree-262144.bin"
@@ -29,6 +30,7 @@ source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
         )
 md5sums=('SKIP'
          '3c0027625739e972f8af8bea6f557b35'
+         '0102c94336f466f9d5a9716fe2310821'
          'ebb1dc43e014a1e720a06422c6248a40'
          '3521ff3c601596473c6ce5256772f606'
          'e423daecc45d56b749d25eeace9de1c8'
@@ -42,6 +44,7 @@ pkgver() {
 prepare() {
   cd ${srcdir}/${pkgname}
   git apply ${srcdir}/nvm-export.patch
+  git apply ${srcdir}/sse_sum.patch
 }
 
 
