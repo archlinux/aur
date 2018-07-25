@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=67.0.3396.99
+pkgver=68.0.3440.75
 pkgrel=1
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -23,18 +23,22 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        remove-dependency-on-ffmpeg-internals-for-start-time.patch
         x11-fix-mixup-between-DIP-pixel-coordinates.patch
         blink-disable-XML-catalogs-at-runtime.patch
+        chromium-cors-string-r0.patch
         chromium-ffmpeg-r1.patch
+        chromium-libjpeg-r0.patch
+        chromium-libwebp-shim-r0.patch
         chromium-widevine-r2.patch
         chromium-skia-harmony.patch)
-sha256sums=('452d6b9d8df6c88600aaeff3fad4c065574fd6dbee804e628b70e73a39c0a02a'
+sha256sums=('dc17783267853bdc0fb726363d2b8e30a0bf43b6cc2c768e1f37c92e8eb59541'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '2cc80f5ed8a9b42495a0f3ab3c1bae026b9081972269a1b6d407331d33f7d257'
             'e2c2754536243a60fa70541bbd4121715eccd83caa8f1fb1873bd994cd81f871'
             '98a5c41cf9687c52ee380d2b683c95387334c76254479c347bdb733646dab815'
+            'f4141e48a25a1403250e9040c18936a16250ab707064dd54103066f40c7db41c'
             'aa885330bc4180b78d915f9dfdfc3210038a0acab7b16735ea9828ab6a633bde'
+            '6b8fc570607631d3558e99a82e92c11eeae9c960ebb0a83c13d46344d4b6adca'
+            'b368f3827ee4c47c942085e3d2cfbea43f8899b101e01500dbf6a7b01b2b29e0'
             '02c69bb3954087db599def7f5b6d65cf8f7cf2ed81dfbdaa4bb7b51863b4df15'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3')
 
@@ -80,9 +84,6 @@ prepare() {
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
     tools/generate_shim_headers/generate_shim_headers.py
 
-  # https://crbug.com/731766
-  patch -Np1 -i ../remove-dependency-on-ffmpeg-internals-for-start-time.patch
-
   # https://crbug.com/707721
   patch -Np1 -i ../x11-fix-mixup-between-DIP-pixel-coordinates.patch
 
@@ -93,7 +94,10 @@ prepare() {
   patch -Np4 -i ../chromium-skia-harmony.patch
 
   # Fixes from Gentoo
+  patch -Np1 -i ../chromium-cors-string-r0.patch
   patch -Np1 -i ../chromium-ffmpeg-r1.patch
+  patch -Np1 -i ../chromium-libjpeg-r0.patch
+  patch -Np1 -i ../chromium-libwebp-shim-r0.patch
   patch -Np1 -i ../chromium-widevine-r2.patch
 
   # Remove compiler flags not supported by our system clang
@@ -144,6 +148,7 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
+    'use_cfi_icall=false' # https://crbug.com/866290
     'is_debug=false'
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
