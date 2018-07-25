@@ -1,9 +1,9 @@
 # Maintainer: Antony Kellermann <aokellermann@gmail.com>
 
 pkgname=tick
-pkgver=2.4.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Command line stock and cryptocurrency portfolio tracker."
+pkgdesc="Command line and GTK stock and cryptocurrency portfolio tracker."
 arch=('x86_64')
 url="https://github.com/aokellermann/${pkgname}"
 license=('MIT')

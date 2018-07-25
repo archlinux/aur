@@ -1,4 +1,4 @@
-## Command line stock and cryptocurrency portfolio tracker.
+## Command line and GTK stock and cryptocurrency portfolio tracker.
 #### How to install:
 Before installation, make sure all dependencies are installed:
 * curl
@@ -13,8 +13,13 @@ $ sudo make install
 ```
 If you are an Arch user, you can install from the AUR.
 ```bash
-$ yaourt -S tick
+$ aurman -S tick
 ```
+
+### Usage
+The GTK+ window can be opened by simply running the command "tick".
+Currently, it only supports portfolio operations. If you would like to
+use the CLI, additional arguments must be used.
 #### Portfolio
 To update your portfolio, use the options add, rm, or set. You may use the
 special string "USD$" to add US Dollars to your portfolio.
@@ -118,7 +123,6 @@ and portfolio distribution (tried to implement, but IEX API is unpredictable; wa
 * Zoom in more than one month for graph
 * Average graph points when skipping indices for greater accuracy
 * Android app?
-* GUI?
 * Index support (djia, sp500)
 * History stack
-* Exit if window is resized to too small
+* GUI info, graph, etc.
