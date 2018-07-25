@@ -1,8 +1,8 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=libpdfium-nojs
-pkgver=3396.r4.7b8cd8dafb
-pkgrel=2
+pkgver=3440.r7.a1c1c63d34
+pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
@@ -14,10 +14,12 @@ makedepends=('git' 'python2' 'gn' 'ninja')
 
 source=("git+https://pdfium.googlesource.com/pdfium"
 	"git+https://chromium.googlesource.com/chromium/src/build.git"
+	"git+https://chromium.googlesource.com/chromium/buildtools.git"
 	"libpdfium.pc"
 	)
 
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          '7fbbe2baf9a1fed80ad74278e901fa0e')
 
@@ -36,7 +38,8 @@ prepare() {
 
   cd "$srcdir/pdfium"
 
-  ln -sf $srcdir/build build
+  ln -s $srcdir/build build
+  ln -s $srcdir/buildtools buildtools
 
   # Pdfium is developed alongside Chromium and does not provide releases
   # Upstream recommends using Chromium's dev channels instead
@@ -51,14 +54,18 @@ prepare() {
   # Extract build repo revision needed from DEPS file and do a checkout
   cd "$srcdir/pdfium/build"
   git checkout $(awk '/build_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
+  
+  # Extract buildtools repo revision needed from DEPS file and do a checkout
+  cd "$srcdir/pdfium/buildtools"
+  git checkout $(awk '/buildtools_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
 
   # Use system provided icu library (unbundling)
   mkdir -p "$srcdir/pdfium/third_party/icu"
-  ln -sf "$srcdir/build/linux/unbundle/icu.gn" "$srcdir/pdfium/third_party/icu/BUILD.gn"
+  ln -s "$srcdir/build/linux/unbundle/icu.gn" "$srcdir/pdfium/third_party/icu/BUILD.gn"
 
   # Download and decode shim header script needed to unbundle icu (gittiles is weird)
   mkdir -p "$srcdir/pdfium/tools/generate_shim_headers/"
-  echo "Downloading generate_shim_headers script from buildtools."
+  echo "Downloading generate_shim_headers script from Chromium."
   curl https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT \
     | base64 --decode > "$srcdir/pdfium/tools/generate_shim_headers/generate_shim_headers.py"
   echo "Done."
