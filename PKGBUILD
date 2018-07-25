@@ -1,7 +1,7 @@
 # Contributor: m.reed art mykolab dart com
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=xbanish-git
-pkgver=1.5.r0.g53216fe
+pkgver=1.5.r6.g0f2157c
 pkgrel=1
 pkgdesc="Banish the mouse cursor when typing, show it again when the mouse moves."
 arch=('i686' 'x86_64')
@@ -28,6 +28,6 @@ package() {
   cd "$srcdir/$pkgname"
   install -Dm755 xbanish $pkgdir/usr/bin/xbanish
   install -Dm644 xbanish.1 $pkgdir/usr/share/man/man1/xbanish.1
-  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
+  install -Dm644 README.md $pkgdir/usr/share/doc/$pkgname/README.md
 }
 
