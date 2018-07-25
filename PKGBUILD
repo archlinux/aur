@@ -1,9 +1,8 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgbase=yaru
 pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-icon-theme')
-pkgver=b589893d
-pkgrel=4
-_gitname=yaru
+pkgver=18.10
+pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"
@@ -11,18 +10,19 @@ license=('GPL3')
 
 makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
-conflicts=('yaru')
+conflicts=('yaru-git')
+_commit=684f3d3f9cf9f7fd793f80e2fcf38dde7f970a43  # 18.10
 
-source=("$_gitname::git://github.com/ubuntu/$_gitname")
+source=("git+https://github.com/ubuntu/${pkgbase}#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${_gitname}"
-  printf "%s" "$(git describe --always --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd ${pkgbase}
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  arch-meson ${_gitname} build
+  arch-meson ${pkgbase} build
   ninja -C build
 }
 
