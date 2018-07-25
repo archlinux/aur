@@ -9,22 +9,20 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/FragmentsApp/Fragments"
 license=('GPL3')
 depends=('gtk3')
-makedepends=('dht'
-             'git'
+makedepends=('git'
              'gobject-introspection'
              'libdazzle'
-             'libb64'
-             'libevent'
-             'libnatpmp'
-             'libtransmission'
-             'libutp'
              'meson'
-             'miniupnpc'
              'vala')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/FragmentsApp/Fragments.git")
 md5sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/Fragments"
+    git submodule update --init --recursive
+}
 
 pkgver() {
     cd "$srcdir/Fragments"
