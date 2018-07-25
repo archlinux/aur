@@ -2,14 +2,14 @@
 pkgbase=yaru
 pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-icon-theme')
 pkgver=b589893d
-pkgrel=3
+pkgrel=4
 _gitname=yaru
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"
 license=('GPL3')
 
-makedepends=('meson' 'sassc')
+makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('yaru')
 
