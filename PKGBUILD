@@ -9,7 +9,7 @@
 #       -DNCCL_ROOT_DIR:PATH='/opt/cuda'
 
 pkgname=caffe2-git
-pkgver=0.8.2.r11491.gf8e83dc25
+pkgver=0.8.2.r12358.g8825e323b
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
@@ -45,7 +45,6 @@ source=(
     # main source:
         'pytorch-git'::'git+https://github.com/pytorch/pytorch.git'
     # git submodules:
-        'caffe2-submodule-tbb'::'git+https://github.com/01org/tbb#branch=tbb_2018'
         'caffe2-submodule-catch'::'git+https://github.com/catchorg/Catch2.git'
         'caffe2-submodule-nanopb'::'git+https://github.com/nanopb/nanopb.git'
         'caffe2-submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
@@ -101,14 +100,13 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
     cd pytorch-git
     
-    local _submodule_list="tbb catch nanopb pybind11 cub eigen googletest nervanagpu \
-                           benchmark protobuf ios-cmake NNPACK gloo NNPACK_deps/pthreadpool \
+    local _submodule_list="catch nanopb pybind11 cub eigen googletest nervanagpu benchmark \
+                           protobuf ios-cmake NNPACK gloo NNPACK_deps/pthreadpool \
                            NNPACK_deps/FXdiv NNPACK_deps/FP16 NNPACK_deps/psimd zstd \
                            python-enum python-peachpy python-six ComputeLibrary onnx cereal \
                            onnx-tensorrt sleef ideep"
@@ -230,6 +228,7 @@ build() {
         -DUSE_PROF:BOOL='OFF' \
         -DUSE_REDIS:BOOL='ON' \
         -DUSE_ROCKSDB:BOOL='OFF' \
+        -DUSE_ROCM:BOOL='OFF' \
         -DUSE_SNPE:BOOL='OFF' \
         -DUSE_SYSTEM_NCCL:BOOL='ON' \
         -DUSE_TENSORRT:BOOL='OFF' \
