@@ -4,7 +4,7 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}"
-pkgver=1.1.1
+pkgver=1.3.0_beta4
 gitname="release-${pkgver//_/-}"
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
@@ -13,7 +13,7 @@ url="https://desktop.github.com"
 license=('MIT')
 depends=('gnome-keyring' 'git' 'electron' 'nodejs' 'libcurl-compat' 'libcurl-gnutls')
 optdepends=('hub: CLI interface for GitHub.')
-makedepends=('libcurl-openssl-1.0' 'xorg-server-xvfb' 'yarn' 'python2')
+makedepends=('libcurl-openssl-1.0' 'xorg-server-xvfb' 'yarn' 'python2' 'nvm')
 DLAGENTS=("http::/usr/bin/git clone --branch ${gitname} --single-branch %u")
 source=(
   git+https://github.com/desktop/desktop.git#tag=${gitname}
@@ -25,10 +25,15 @@ sha256sums=(
 )
 build() {
   cd desktop
+  unset npm_config_prefix
+  source /usr/share/nvm/init-nvm.sh
+  nvm install --lts
+  nvm use --lts
   export DISPLAY=':99.0'
   Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
   yarn install
   yarn build:prod
+  nvm deactivate
 }
 package() {
   install -d "${pkgdir}/opt/${_pkgname}"
