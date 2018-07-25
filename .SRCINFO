@@ -1,7 +1,7 @@
 pkgbase = spectrum2
 	pkgdesc = Create C++ transports easily
 	pkgver = 2.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://spectrum.im
 	arch = any
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = spectrum2
 	makedepends = libcommuni
 	makedepends = libidn
 	makedepends = sqlite
-	makedepends = log4cxx=0.10.0
+	makedepends = log4cxx
 	makedepends = libevent
 	makedepends = libmariadbclient
 	makedepends = popt
@@ -27,7 +27,7 @@ pkgbase = spectrum2
 	makedepends = qt4
 	makedepends = gconf
 	depends = curl
-	depends = log4cxx=0.10.0
+	depends = log4cxx
 	depends = popt
 	depends = sqlite
 	optdepends = swiften: XMPP backend support
@@ -41,8 +41,10 @@ pkgbase = spectrum2
 	optdepends = libev: LibPurple backend support - libev eventloop
 	source = https://github.com/hanzz/spectrum2/archive/2.0.7.tar.gz
 	source = spectrum2.service
+	source = log4cxx-fix.patch
 	sha256sums = 7d2513a13d29fb2762dac2c87dac1483d1c65302bcf15614e4975b0b9d364872
 	sha256sums = 8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1
+	sha256sums = 1c1c867ef69a8d333197ffb2b2ddcf64527f34d92ee10597d85fd1d95c54e8f6
 
 pkgname = spectrum2
 
