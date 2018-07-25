@@ -1,5 +1,90 @@
+diff --git a/src/sage/interfaces/singular.py b/src/sage/interfaces/singular.py
+index 9d65c9f..a028bbe 100644
+--- a/src/sage/interfaces/singular.py
++++ b/src/sage/interfaces/singular.py
+@@ -654,7 +654,7 @@ class Singular(ExtraTabCompletion, Expect):
+ 
+         s = Expect.eval(self, x, **kwds)
+ 
+-        if s.find("error") != -1 or s.find("Segment fault") != -1:
++        if s.find("error occurred") != -1 or s.find("Segment fault") != -1:
+             raise SingularError('Singular error:\n%s'%s)
+ 
+         if get_verbose() > 0:
+@@ -1079,7 +1079,7 @@ class Singular(ExtraTabCompletion, Expect):
+             sage: S = singular.ring('real', '(a,b)', 'lp')
+             sage: singular.current_ring()
+             polynomial ring, over a field, global ordering
+-            //   coefficients: float
++            //   coefficients: Float()
+             //   number of vars : 2
+             //        block   1 : ordering lp
+             //                  : names    a b
+@@ -1157,7 +1157,7 @@ class Singular(ExtraTabCompletion, Expect):
+              sage: singular._tab_completion()
+              ['exteriorPower',
+               ...
+-              'flintZ']
++              'crossprod']
+          """
+         p = re.compile("// *([a-z0-9A-Z_]*).*") #compiles regular expression
+         proclist = self.eval("listvar(proc)").splitlines()
+@@ -1183,7 +1183,7 @@ class Singular(ExtraTabCompletion, Expect):
+         EXAMPLES::
+ 
+             sage: singular.version()
+-            "Singular ... version 4.1.0 ...
++            "Singular ... version 4...
+         """
+         return singular_version()
+ 
+@@ -1562,7 +1562,7 @@ class SingularElement(ExtraTabCompletion, ExpectElement):
+         elif charstr[0] in ['0', 'QQ']:
+             from sage.all import QQ
+             br = QQ
+-        elif charstr[0]=='real':
++        elif charstr[0].startswith('Float'):
+             from sage.all import RealField, ceil, log
+             prec = singular.eval('ringlist(basering)[1][2][1]')
+             br = RealField(ceil((ZZ(prec)+1)/log(2,10)))
+@@ -1750,7 +1750,7 @@ class SingularElement(ExtraTabCompletion, ExpectElement):
+ 
+         # Singular 4 puts parentheses around floats and sign outside them
+         charstr = self.parent().eval('charstr(basering)').split(',',1)
+-        if charstr[0] in ['real', 'complex']:
++        if charstr[0]=='complex' or charstr[0].startswith('Float'):
+               for i in range(coeff_start, 2 * coeff_start):
+                   singular_poly_list[i] = singular_poly_list[i].replace('(','').replace(')','')
+ 
+@@ -1992,7 +1992,7 @@ class SingularElement(ExtraTabCompletion, ExpectElement):
+             sage: S = singular.ring('real', '(a,b)', 'lp')
+             sage: singular.current_ring()
+             polynomial ring, over a field, global ordering
+-            //   coefficients: float
++            //   coefficients: Float()
+             //   number of vars : 2
+             //        block   1 : ordering lp
+             //                  : names    a b
+@@ -2072,7 +2072,7 @@ class SingularElement(ExtraTabCompletion, ExpectElement):
+             sage: R._tab_completion()
+             ['exteriorPower',
+              ...
+-             'flintZ']
++             'crossprod']
+         """
+         return self.parent()._tab_completion()
+ 
+@@ -2358,7 +2358,7 @@ def singular_version():
+     EXAMPLES::
+ 
+         sage: singular.version()
+-        "Singular ... version 4.1.0 ...
++        "Singular ... version 4...
+     """
+     return singular.eval('system("--version");')
+ 
 diff --git a/src/sage/libs/singular/decl.pxd b/src/sage/libs/singular/decl.pxd
-index 676544ab1e..5c8639d362 100644
+index 4b658c4..d863740 100644
 --- a/src/sage/libs/singular/decl.pxd
 +++ b/src/sage/libs/singular/decl.pxd
 @@ -170,7 +170,7 @@ cdef extern from "singular/Singular/libsingular.h":
@@ -11,8 +96,14 @@ index 676544ab1e..5c8639d362 100644
          poly *next
          number *coef
          unsigned long exp[1]
-@@ -632,7 +632,7 @@ cdef extern from "singular/Singular/libsingular.h":
+@@ -630,9 +630,13 @@ cdef extern from "singular/Singular/libsingular.h":
+     # return p*q, destroys p and q
+     poly *p_Mult_q(poly *p, poly *q, ring *r)
  
++    # polynomial division, ignoring the rest
++    # via singclap_pdivide resp. idLift, destroys p,q
++    poly *p_Divide(poly *p, poly *q, ring *r)
++
      # divide monomial p by monomial q, p,q const
  
 -    poly *pDivide(poly *p,poly *q)
@@ -21,7 +112,7 @@ index 676544ab1e..5c8639d362 100644
      # return the i-th power of p; p destroyed, requires global ring
  
 diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-index 089524d6b4..ce6d58fc6f 100644
+index 2a8d9ae..aeff53a 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
 +++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
 @@ -190,8 +190,8 @@ from sage.libs.singular.decl cimport (
@@ -30,12 +121,12 @@ index 089524d6b4..ce6d58fc6f 100644
      p_NSet, p_GetCoeff, p_Delete, p_GetExp, pNext, rRingVar, omAlloc0, omStrDup,
 -    omFree, pDivide, p_SetCoeff0, n_Init, p_DivisibleBy, pLcm, p_LmDivisibleBy,
 -    pDivide, p_IsConstant, p_ExpVectorEqual, p_String, p_LmInit, n_Copy,
-+    omFree, pMDivide, p_SetCoeff0, n_Init, p_DivisibleBy, pLcm, p_LmDivisibleBy,
++    omFree, pMDivide, p_Divide, p_SetCoeff0, n_Init, p_DivisibleBy, pLcm, p_LmDivisibleBy,
 +    pMDivide, p_IsConstant, p_ExpVectorEqual, p_String, p_LmInit, n_Copy,
      p_IsUnit, p_Series, p_Head, idInit, fast_map_common_subexp, id_Delete,
      p_IsHomogeneous, p_Homogen, p_Totaldegree,pLDeg1_Totaldegree, singclap_pdivide, singclap_factorize,
      idLift, IDELEMS, On, Off, SW_USE_CHINREM_GCD, SW_USE_EZGCD,
-@@ -1692,8 +1697,8 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+@@ -1693,8 +1693,8 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_base):
          if not g._poly:
              raise ZeroDivisionError
  
@@ -46,7 +137,7 @@ index 089524d6b4..ce6d58fc6f 100644
          if coeff:
              if r.cf.type == n_unknown or r.cf.cfDivBy(p_GetCoeff(f._poly, r), p_GetCoeff(g._poly, r), r.cf):
                  n = r.cf.cfDiv( p_GetCoeff(f._poly, r) , p_GetCoeff(g._poly, r), r.cf)
-@@ -1852,8 +1857,8 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+@@ -1853,8 +1853,8 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_base):
                     and (<MPolynomial_libsingular>g) \
                     and g.parent() is self \
                     and p_LmDivisibleBy((<MPolynomial_libsingular>g)._poly, m, r):
@@ -57,7 +148,32 @@ index 089524d6b4..ce6d58fc6f 100644
                  #p_SetCoeff(flt, n_Div( p_GetCoeff(f._poly, r) , p_GetCoeff((<MPolynomial_libsingular>g)._poly, r), r), r)
                  p_SetCoeff(flt, n_Init(1, r), r)
                  return new_MP(self,flt), g
-@@ -4049,10 +4054,10 @@ cdef class MPolynomial_libsingular(MPolynomial):
+@@ -4023,16 +4023,6 @@ cdef class MPolynomial_libsingular(MPolynomial):
+             Traceback (most recent call last):
+             ...
+             NotImplementedError: Division of multivariate polynomials over non fields by non-monomials not implemented.
+-
+-        TESTS::
+-
+-            sage: P.<x,y> = ZZ[]
+-            sage: p = 3*(-x^8*y^2 - x*y^9 + 6*x^8*y + 17*x^2*y^6 - x^3*y^2)
+-            sage: q = 7*(x^2 + x*y + y^2 + 1)
+-            sage: p*q//q == p
+-            True
+-            sage: p*q//p == q
+-            True
+         """
+         cdef MPolynomialRing_libsingular parent = self._parent
+         cdef ring *r = self._parent_ring
+@@ -4052,13 +4042,18 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         _right = <MPolynomial_libsingular>right
+ 
+         if r.cf.type != n_unknown:
++            if r.cf.type == n_Z:
++                P = parent.change_ring(RationalField())
++                f = P(self)//P(right)
++                CM = list(f)
++                return parent(sum([c.floor()*m for c,m in CM]))
              if _right.is_monomial():
                  p = _self._poly
                  quo = p_ISet(0,r)
@@ -70,11 +186,49 @@ index 089524d6b4..ce6d58fc6f 100644
                          p_SetCoeff0(temp, n_Copy(p_GetCoeff(p, r), r), r)
                          quo = p_Add_q(quo, temp, r)
                      p = pNext(p)
+@@ -4794,6 +4789,8 @@ cdef class MPolynomial_libsingular(MPolynomial):
+             sage: p = -x*y + x*z + 54*x - 2
+             sage: (5*p^2).lcm(3*p) == 15*p^2
+             True
++            sage: lcm(2*x,2*x*y)
++            2*x*y
+         """
+         cdef ring *_ring = self._parent_ring
+         cdef poly *ret
+@@ -4821,9 +4818,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         if _ring!=currRing: rChangeCurrRing(_ring)  # singclap_gcd
+         gcd = singclap_gcd(p_Copy(self._poly, _ring), p_Copy(_g._poly, _ring), _ring )
+         prod = pp_Mult_qq(self._poly, _g._poly, _ring)
+-        ret = singclap_pdivide(prod , gcd , _ring)
+-        p_Delete(&prod, _ring)
+-        p_Delete(&gcd, _ring)
++        ret = p_Divide(prod, gcd, _ring)
+         if count >= 20:
+             sig_off()
+         return new_MP(self._parent, ret)
+@@ -4866,7 +4861,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+             sage: f.quo_rem(y)
+             (2*x^2, x + 1)
+             sage: f.quo_rem(3*x)
+-            (2*x*y + 1, -4*x^2*y - 2*x + 1)
++            (0, 2*x^2*y + x + 1)
+ 
+         TESTS::
+ 
+@@ -4888,7 +4883,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         if right.is_zero():
+             raise ZeroDivisionError
+ 
+-        if not self._parent._base.is_field() and not is_IntegerRing(self._parent._base):
++        if not self._parent._base.is_field():
+             py_quo = self//right
+             py_rem = self - right*py_quo
+             return py_quo, py_rem
 diff --git a/src/sage/rings/polynomial/plural.pyx b/src/sage/rings/polynomial/plural.pyx
-index 3b45a38419..c0227fd364 100644
+index d5439f7f..ad20ebc 100644
 --- a/src/sage/rings/polynomial/plural.pyx
 +++ b/src/sage/rings/polynomial/plural.pyx
-@@ -999,7 +999,7 @@ cdef class NCPolynomialRing_plural(Ring):
+@@ -998,7 +998,7 @@ cdef class NCPolynomialRing_plural(Ring):
          if not g._poly:
              raise ZeroDivisionError
  
@@ -83,7 +237,7 @@ index 3b45a38419..c0227fd364 100644
          if coeff:
              if (r.cf.type == n_unknown) or r.cf.cfDivBy(p_GetCoeff(f._poly, r), p_GetCoeff(g._poly, r), r.cf):
                  n = r.cf.cfDiv( p_GetCoeff(f._poly, r) , p_GetCoeff(g._poly, r), r.cf)
-@@ -1194,7 +1194,7 @@ cdef class NCPolynomialRing_plural(Ring):
+@@ -1193,7 +1193,7 @@ cdef class NCPolynomialRing_plural(Ring):
              if isinstance(g, NCPolynomial_plural) \
                     and (<NCPolynomial_plural>g) \
                     and p_LmDivisibleBy((<NCPolynomial_plural>g)._poly, m, r):
@@ -92,46 +246,30 @@ index 3b45a38419..c0227fd364 100644
                  #p_SetCoeff(flt, n_Div( p_GetCoeff(f._poly, r) , p_GetCoeff((<NCPolynomial_plural>g)._poly, r), r), r)
                  p_SetCoeff(flt, n_Init(1, r), r)
                  return new_NCP(self,flt), g
-diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-index 809ca72c76..9610ce125d 100644
---- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-+++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-@@ -4066,6 +4066,9 @@ cdef class MPolynomial_libsingular(MPolynomial):
-             if r.cf.type == n_Znm or r.cf.type == n_Zn or r.cf.type == n_Z2m :
-                 raise NotImplementedError("Division of multivariate polynomials over non fields by non-monomials not implemented.")
- 
-+        if is_IntegerRing(self._parent._base):
-+            return self.change_ring(RationalField()) // right.change_ring(RationalField())
-+        
-         cdef int count = singular_polynomial_length_bounded(_self._poly,15)
-         if count >= 15:  # note that _right._poly must be of shorter length than self._poly for us to care about this call
-             sig_on()
-@@ -4744,6 +4747,9 @@ cdef class MPolynomial_libsingular(MPolynomial):
-         else:
-             _right = <MPolynomial_libsingular>right
- 
-+        if is_IntegerRing(self._parent._base):
-+            return self.change_ring(RationalField()).gcd(right.change_ring(RationalField()), algorithm, **kwds)
-+
-         cdef int count = singular_polynomial_length_bounded(self._poly,20) \
-             + singular_polynomial_length_bounded(_right._poly,20)
-         if count >= 20:
-@@ -4814,6 +4822,9 @@ cdef class MPolynomial_libsingular(MPolynomial):
-         if self._parent._base.is_finite() and self._parent._base.characteristic() > 1<<29:
-             raise NotImplementedError("LCM of multivariate polynomials over prime fields with characteristic > 2^29 is not implemented.")
- 
-+        if is_IntegerRing(self._parent._base):
-+            return self.change_ring(RationalField()).lcm(g.change_ring(RationalField()))
-+
-         cdef int count = singular_polynomial_length_bounded(self._poly,20) \
-             + singular_polynomial_length_bounded(_g._poly,20)
-         if count >= 20:
-@@ -4888,7 +4888,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
-         if right.is_zero():
-             raise ZeroDivisionError
+diff --git a/src/sage/rings/polynomial/polynomial_singular_interface.py b/src/sage/rings/polynomial/polynomial_singular_interface.py
+index 9331169..f753610 100644
+--- a/src/sage/rings/polynomial/polynomial_singular_interface.py
++++ b/src/sage/rings/polynomial/polynomial_singular_interface.py
+@@ -81,8 +81,8 @@ class PolynomialRing_singular_repr:
+             sage: R.<x,y> = PolynomialRing(CC)
+             sage: singular(R)
+             polynomial ring, over a field, global ordering
+-            //   coefficients: float[I](complex:15 digits, additional 0 digits)/(I^2+1)
+-            //   number of vars : 2
++            // coefficients: real[I](complex:15 digits, additional 0 digits)/(I^2+1)
++            // number of vars : 2
+             //        block   1 : ordering dp
+             //                  : names    x y
+             //        block   2 : ordering C
+@@ -90,8 +90,8 @@ class PolynomialRing_singular_repr:
+             sage: R.<x,y> = PolynomialRing(RealField(100))
+             sage: singular(R)
+             polynomial ring, over a field, global ordering
+-            //   coefficients: float
+-            //   number of vars : 2
++            // coefficients: Float()
++            // number of vars : 2
+             //        block   1 : ordering dp
+             //                  : names    x y
+             //        block   2 : ordering C
 
--        if not self._parent._base.is_field() and not is_IntegerRing(self._parent._base):
-+        if not self._parent._base.is_field():
-             py_quo = self//right
-             py_rem = self - right*py_quo
-             return py_quo, py_rem
