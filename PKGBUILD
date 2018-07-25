@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=elastix
 pkgver=4.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Toolbox for rigid and nonrigid registration of images'
 arch=('x86_64')
 url='http://elastix.isi.uu.nl/'
@@ -26,6 +26,9 @@ prepare() {
 		-DMAKE_CXX_FLAGS:STRING="--std=c++11" \
 		-DBUILD_TESTING:BOOL=OFF \
 		-DBUILD_SHARED_LIBS:BOOL=ON \
+		-DELASTIX_IMAGE_2D_PIXELTYPES:STRING="short;float" \
+		-DELASTIX_IMAGE_3D_PIXELTYPES:STRING="short;float" \
+		-DELASTIX_IMAGE_4D_PIXELTYPES:STRING="short;float" \
 		-DELASTIX_BUILD_EXECUTABLE:BOOL=ON \
 		-DELASTIX_USE_ALL_COMPONENTS:BOOL=OFF \
 		-DELASTIX_USE_OPENCL:BOOL=OFF \
