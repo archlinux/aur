@@ -1,4 +1,5 @@
 # Maintainer: Austin Haedicke <austin.haedicke@gmail.com>
+# Contributor: Fabio 'Lolix' Loli <lolix at disroot.org>
 
 # If you find errors or have suggestions feel free to file an issue
 # or submit a pull request @ https://gtbjj.com/savagezen/pkgbuild 
