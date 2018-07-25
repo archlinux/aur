@@ -1,26 +1,22 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=yaml
-_cranver=2.1.19
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=2.2.0
 pkgname=r-yaml
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Methods to Convert R Data to YAML and Back"
+pkgdesc='Methods to Convert R Data to YAML and Back'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=yaml'
 license=('BSD')
 depends=('r' )
-
-optdepends=('r-testthat')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('26beaf10e565c934e0e20d81832cce6b')
+optdepends=('r-runit')
+source=("https://cran.r-project.org/src/contrib/yaml_"$_cranver".tar.gz")
+md5sums=('245c28af4248974a445e8a79b7ea2f0f')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL yaml_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership yaml "$pkgdir"/usr/lib/R/library
 }
 
