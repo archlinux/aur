@@ -3,7 +3,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=sdl_sound-hg
-pkgver=1.0.3.r48.719dade41745
+pkgver=1.0.3.r50.0c4026dd3274
 pkgrel=1
 pkgdesc="A library to decode several popular sound file formats (development version)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('sdl' 'libmodplug' 'libvorbis' 'flac' 'speex')
 makedepends=('mercurial')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}")
-source=(${pkgname%-*}::"hg+http://hg.icculus.org/icculus/SDL_sound"
+source=(${pkgname%-*}::"hg+http://hg.icculus.org/icculus/SDL_sound#branch=stable-1.0"
         "${pkgname%-*}-renamed-physfs-export.patch")
 sha256sums=('SKIP'
             'd7bd96390d9bc877c0204922c7c4666cadfdccc5e6c0cfcf9477d113377f5d10')
@@ -21,16 +21,18 @@ sha256sums=('SKIP'
 pkgver() {
   cd ${pkgname%-*}
 
-  _lasttag=$(hg tags -q | sort -r | grep release- | head -n1)
-  _commits=$(hg log --template "{node}\n" -r $_lasttag:tip | wc -l)
-  printf "%s.r%s.%s" "${_lasttag/release-}" "$_commits" "$(hg identify -i)"
+  _version_major=$(grep SOUND_VER_MAJOR SDL_sound.h | tr -cd [:digit:])
+  _version_minor=$(grep SOUND_VER_MINOR SDL_sound.h | tr -cd [:digit:])
+  _version_patch=$(grep SOUND_VER_PATCH SDL_sound.h | tr -cd [:digit:])
+  _version="$_version_major.$_version_minor.$_version_patch"
+  _commits=$(hg log --template "{node}\n" -r release-$_version:stable-1.0 | wc -l)
+  _hash=$(hg identify -i | tr -cd [:alnum:])
+  printf "%s.r%s.%s" "${_version}" "$_commits" "$_hash"
 }
 
 prepare() {
-  cd ${pkgname%-*}
-
   # fix deprecated physfs declaration
-  patch -Np1 < ../${pkgname%-*}-renamed-physfs-export.patch
+  patch -d ${pkgname%-*} -Np1 < ${pkgname%-*}-renamed-physfs-export.patch
 }
 
 build() {
