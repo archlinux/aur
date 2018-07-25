@@ -23,10 +23,14 @@ pkgrel=1
 makedepends=("linux-vfio-headers=4.17.3-1" "spl-linux-vfio-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/zfs-0.7.9.tar.gz")
-sha256sums=("f50ca2441c6abde4fe6b9f54d5583a45813031d6bb72b0011b00fc2683cd9f7a")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/zfs-0.7.9.tar.gz" "upstream-ac09630-Fix-zpl_mount-deadlock.patch")
+sha256sums=("f50ca2441c6abde4fe6b9f54d5583a45813031d6bb72b0011b00fc2683cd9f7a" "1799f6f7b2a60a23b66106c9470414628398f6bfc10da3d0f41c548bba6130e8")
 license=("CDDL")
 depends=("kmod" 'spl-linux-vfio' "zfs-utils-common=0.7.9" "linux-vfio=4.17.3-1")
+prepare() {
+    cd "${srcdir}/zfs-0.7.9"
+    patch -Np1 -i ${srcdir}/upstream-ac09630-Fix-zpl_mount-deadlock.patch
+}
 
 build() {
     cd "${srcdir}/zfs-0.7.9"
