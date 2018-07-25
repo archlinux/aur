@@ -3,9 +3,9 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Karsten Pufahl <kontakt <AT> karstenpufahl.de>
+# Maintainer: Karsten Pufahl <contact <AT> karstenpufahl.de>
 pkgname=stm32cubemx
-pkgver=4.26.0
+pkgver=4.26.1
 pkgrel=3
 epoch=
 pkgdesc="graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code"
@@ -30,7 +30,7 @@ source=("http://www.st.com/resource/en/library2/stm32cube_mx_v${pkgver//./}.zip"
  	"stm32cubemx.desktop"
  	"stm32cubemx.sh")
 noextract=()
-sha512sums=('c80a2cc868aa3e2316a9d4eb67d16805f747b14d97ec92ce7e121439dae117991a500b50f23c73e30d5b7c69d17ff9cdb4467a492c594d4cc84c96b0e613714c'
+sha512sums=('cb538f1753805ae76ba3e5558d564e447422710abc0a83624ee9da5419ee422cd0643d44e40eb525613fef1498d06c016db1e454dddcb1b9098a74f54ac1e03e'
             'ad1897ea5234b712d726b5d3423f05f1c0c5a64e28354afe07dce7451563ae4492366cc252ca379b44793797be20011a66458431fd5453c18a7543ccb8df5397'
             '56bff32e35f8eb09ae4df94e4e885aaf9349c687ce9f4901ddd11c83b69a32b19d99ab8dbd90c6679e86e7213c4d41640e52ab0d80b8fc4640a1bc5df9a3af32'
             '9cc2dcb57e48e7039fb833c410e4638155fd14793c6daa7a00e1d1445162e7e26690c3303b6f052fff643123bc246be345da8624b18ee2805ddde75280512eec')
