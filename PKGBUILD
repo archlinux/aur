@@ -4,7 +4,7 @@ pkgname=ssb-patchwork-git
 _srcname=patchwork
 _aurname=ssb-patchwork
 pkgver=3.10.1.r2.gf6309ea8
-pkgrel=1
+pkgrel=2
 pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)"
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchwork"
@@ -37,6 +37,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${_srcname}"
     npm ci
+    npm run rebuild
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = ssb-patchwork-git
 	pkgdesc = A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)
 	pkgver = 3.10.1.r2.gf6309ea8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ssbc/patchwork
 	arch = i686
 	arch = x86_64
