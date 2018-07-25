@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-cd /usr/share/engauge-digitizer
+cd /usr/lib/engauge-digitizer
 ./engauge "$@"
