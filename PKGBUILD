@@ -2,12 +2,12 @@
 #Co-Maintainer: Seantum <tsiegele AT gmx DOT at>
 
 pkgname=mint-backgrounds-tara
-pkgver=1.3
-pkgrel=3
+pkgver=1.1
+pkgrel=4
 pkgdesc="The backgrounds included in Linux Mint 19 Tara"
 license=('GPL3')
 arch=('any')
-url="http://packages.linuxmint.com/pool/main/m/mint-backgrounds-tara_1.1.tar.gz"
+url="http://packages.linuxmint.com/pool/main/m/mint-backgrounds-tara/mint-backgrounds-tara_1.1.tar.gz"
 source=("$url/mint-backgrounds-tara_$pkgver.tar.gz")
 md5sums=("5162c33dd12a6f9b13c45bd7528f42a9")
 package() {
