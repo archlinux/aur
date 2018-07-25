@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=python-fiona
-pkgver=1.8a1
+pkgver=1.8a2
 pkgrel=1
 pkgdesc="Reads and writes spatial data files"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('cython')
 optdepends=('python-click-plugins: for fio command line tool.')
 options=(!emptydirs)
 source=("https://github.com/Toblerity/Fiona/archive/$pkgver.tar.gz")
-sha256sums=('1a229bb511b0b228357556251a2c66c9a96e4321b195e2c67b996b8f93c78283')
+sha256sums=('bb8b06183a5ccc64a8df98e3a9962523af5ed303b162266d7fefaa08e662c6de')
 
 #check() {
 #    cd "$srcdir/Fiona-$pkgver"
