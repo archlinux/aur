@@ -1,25 +1,21 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Paul Bell <linux at dpb dot org dot uk>
+# Maintainer: ShadowKyogre <shadowkyogre dot public at gmail dot com>
 
-# Maintainer: Your Name <youremail@domain.com>
+_pkgname="ClamAV-Scan"
+_tarball="${_pkgname}.spacefm-plugin.tar.gz"
 pkgname=spacefm-plugin-clamav
-pkgver=1
+pkgver=1.01
 pkgrel=1
-pkgdesc="Scan the selected files/folders with ClamAV using spacefm, the open source (GPL) antivirus engine."
+pkgdesc="Scan selected files/folders in SpaceFM using ClamAV, the open source (GPL) antivirus engine."
 arch=(any)
 url="https://github.com/IgnorantGuru/spacefm/wiki/plugins"
-license=('GPL')
+license=('GPL3')
 depends=('clamav' 'spacefm')
-source=(http://www.dpb.org.uk/spacefm-plugins/ClamAV-Scan.spacefm-plugin.tar.xz)
+source=("https://www.dpb.org.uk/spacefm-plugins/${_tarball}")
+sha256sums=("1ea4f158b35eb80e8a5c0e2e2d9b8517ebced6e0ec89fe0b49869d5b94910d1f")
 
 package() {
-  cd "$srcdir"
-  mkdir -p "${pkgdir}/usr/share/spacefm/plugins/ClamAV-Scan"
-  cd "${pkgdir}/usr/share/spacefm/plugins/ClamAV-Scan"
-  tar -xf "${srcdir}/ClamAV-Scan.spacefm-plugin.tar.xz"
+  local destdir="${pkgdir}/usr/share/spacefm/plugins/${_pkgname}"
+  install -dm755 "${destdir}"
+  tar -xf "${_tarball}" -C "${destdir}"
 }
-
-# vim:set ts=2 sw=2 et:
-md5sums=('7620b03caab31ec5dac936c58bffc020')

@@ -1,14 +1,14 @@
 pkgbase = spacefm-plugin-clamav
-	pkgdesc = Scan the selected files/folders with ClamAV using spacefm, the open source (GPL) antivirus engine.
-	pkgver = 1
+	pkgdesc = Scan selected files/folders in SpaceFM using ClamAV, the open source (GPL) antivirus engine.
+	pkgver = 1.01
 	pkgrel = 1
 	url = https://github.com/IgnorantGuru/spacefm/wiki/plugins
 	arch = any
-	license = GPL
+	license = GPL3
 	depends = clamav
 	depends = spacefm
-	source = http://www.dpb.org.uk/spacefm-plugins/ClamAV-Scan.spacefm-plugin.tar.xz
-	md5sums = 7620b03caab31ec5dac936c58bffc020
+	source = https://www.dpb.org.uk/spacefm-plugins/ClamAV-Scan.spacefm-plugin.tar.gz
+	sha256sums = 1ea4f158b35eb80e8a5c0e2e2d9b8517ebced6e0ec89fe0b49869d5b94910d1f
 
 pkgname = spacefm-plugin-clamav
 
