@@ -1,8 +1,8 @@
 # Maintainer: Jake <aur@ja-ke.tech>
 
 pkgname=octoprint-venv
-pkgver=1.3.8
-pkgrel=5
+pkgver=1.3.9
+pkgrel=1
 pkgdesc="The snappy snappy web interface for your 3D printer! (virtualenv installation type)"
 arch=('any')
 url="http://octoprint.org/"
@@ -17,7 +17,7 @@ source=("https://github.com/foosel/OctoPrint/archive/${pkgver}.tar.gz"
         'octoprint.service'
         'octoprint.sysusers'
         'octoprint.tmpfiles')
-sha256sums=('f447d2888004ff85971691a0e0f01d74dec6169b7ac599ec51bf44cfe42f2f92'
+sha256sums=('f3eaf15784e9eb6ae46266b06cbe09f7ff874fb1bf13b1dd2eaca070718e2a6e'
             'c6fb02d68cbfb1806c6c66134f1fa211caa1a8b7176befee53757cf546fdd4b3'
             '79d0f9fe053181eaa77f472b5235463ce217475d47fada9869f42d313b4651a9'
             '67f7844f39428058d59e2a7cb03b3d3077b5f4b0a136fc9dd123e6538a92e851')
