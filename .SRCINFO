@@ -1,7 +1,7 @@
 pkgbase = jupyter-metakernel
 	pkgdesc = A Jupyter/IPython kernel template.
-	pkgver = 0.20.4
-	pkgrel = 2
+	pkgver = 0.20.14
+	pkgrel = 1
 	url = https://github.com/Calysto/metakernel
 	arch = any
 	license = BSD
@@ -9,8 +9,8 @@ pkgbase = jupyter-metakernel
 	depends = jupyter
 	depends = ipython
 	depends = python-pexpect
-	source = https://github.com/Calysto/metakernel/archive/v0.20.4.tar.gz
-	md5sums = 6059e4407476ffbb06106ee7d54b9795
+	source = https://github.com/Calysto/metakernel/archive/v0.20.14.tar.gz
+	md5sums = dba54e9e28087d44b03365d11648c7db
 
 pkgname = jupyter-metakernel
 
