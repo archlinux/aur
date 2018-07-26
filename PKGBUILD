@@ -24,7 +24,7 @@ sha256sums=('445f54c02e3b83a5e5997eede34b3c969a67b3bd15f5f921b53e626f2777ebde'
 build() {
   cd $_pkgname-$pkgver
   sed -i "s/ROOT_DIR, 'package.json'/__dirname, 'package.json'/" src/app/webpack.config.js
-  sed -i 's|"wmail-spellchecker": "openWMail/wmail-spellchecker#1.0.5"|"nodehun": "2.0.11"|' src/app/package.json 
+  sed -i 's|"wmail-spellchecker": "openWMail/wmail-spellchecker#1.0.5"|"nodehun": "2.0.12"|' src/app/package.json 
   sed -i 's/wmail-spellchecker/nodehun/' src/scenes/platform/src/webviewInjection/Browser/Spellchecker.js
 
   cp ../credentials.js src/shared/credentials.js
