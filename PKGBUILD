@@ -14,5 +14,5 @@ source=(20-hw1.rules)
 sha256sums=('575bd46ff8756535643587a3d241f465d734942556eb290044bf4f2f0e67e8f9')
 
 package() {
-  install -Dm 644 71-hw1.rules "$pkgdir"/usr/lib/udev/rules.d/20-hw1.rules
+  install -Dm 644 20-hw1.rules "$pkgdir"/usr/lib/udev/rules.d/20-hw1.rules
 }
