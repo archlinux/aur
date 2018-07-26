@@ -3,7 +3,7 @@
 #
 pkgname=gn-git
 pkgdesc='Meta-build system which generates Ninja build files'
-pkgver=r1447.cad6b537
+pkgver=r1448.9a9ed6df
 pkgrel=1
 license=('BSD')
 arch=('x86_64' 'i686')
@@ -36,7 +36,7 @@ package () {
 
 	# Documentation
 	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
-		gn/tools/gn/docs/*.md
+		gn/docs/*.md gn/README.md
 
 	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}/example" \
 		gn/tools/gn/example/*.*
