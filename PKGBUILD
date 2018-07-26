@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=guidolib-git
-pkgver=2988.f80cb52a
+pkgver=3000.336e737b
 pkgrel=1
 pkgdesc="engine for the graphic rendering of music scores, based on the Guido Music Notation format (git version)"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ makedepends=('cmake')
 provides=('guidolib')
 conflicts=('guidolib')
 install="$pkgname.install"
-source=("$pkgname::git+git://git.code.sf.net/p/guidolib/code#branch=dev"
+source=("$pkgname::git+https://github.com/grame-cncm/guidolib.git#branch=dev"
 	"guidolib-stringh.patch")
 md5sums=('SKIP' '8ddf69ed89e4e5c05e2ecf5655ef3544')
 
