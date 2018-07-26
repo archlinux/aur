@@ -3,13 +3,13 @@
 pkgname=('kovri')
 # AUR's stupid pkgver convention prevents hypens
 pkgver=0.1.0_alpha_rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="Official package for Kovri: a free, decentralized, anonymity technology developed by Monero"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getkovri.org/"
 license=('custom:BSD-3')
 depends=('boost-libs')
-makedepends=('git' 'cmake' 'boost' 'openssl' 'clang')
+makedepends=('git' 'cmake' 'boost' 'openssl')
 provides=('kovri')
 conflicts=('kovri-git')
 source=("${pkgname}"::"git+https://github.com/monero-project/kovri#tag=v${pkgver//_/-}")
@@ -23,7 +23,7 @@ prepare()
 build()
 {
   cd "${srcdir}/${pkgname}"
-  make CC=clang CXX=clang++ release
+  make release
 }
 
 # TODO(anonimal): hack. We should supply env options to `make install`
