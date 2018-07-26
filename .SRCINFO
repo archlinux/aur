@@ -1,6 +1,6 @@
 pkgbase = camouflage
 	pkgdesc = a mux+websocket+TLS proxy
-	pkgver = 20180726.75_0b13505
+	pkgver = 20180726.76_ef65ddd
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -8,7 +8,9 @@ pkgbase = camouflage
 	makedepends = go
 	makedepends = git
 	source = camouflage::git://github.com/Sherlock-Holo/camouflage#branch=master
+	source = camouflage.install
 	md5sums = SKIP
+	md5sums = d506ec62e984c89ddea0cec157292d42
 
 pkgname = camouflage
 
