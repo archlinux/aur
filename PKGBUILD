@@ -1,7 +1,7 @@
 # Maintainer: Thiago França da Silva <tfsthiagobr98@outlook.com>
 
 pkgname=powershell-preview-bin
-_pkgver=6.1.0-preview.3
+_pkgver=6.1.0-preview.4
 _version=6-preview
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -12,7 +12,7 @@ depends=()
 provides=('powershell')
 options=(staticlibs !strip)
 install=powershell-preview.install
-sha256sums=('bfc2c34f5076a1a13375478f1e2d20118e86575d0084a42303d4f46208ef2f3a')
+sha256sums=('09bb203a94a0b966e87fd7de1eb4361c2c3dc65af0701b728c2b444540ff8976')
 source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${_pkgver}-1.ubuntu.18.04_amd64.deb")
 
 package() {
