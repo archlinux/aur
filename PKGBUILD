@@ -14,13 +14,13 @@ source=('https://github.com/WebAssembly/spec/archive/v1.0.zip')
 md5sums=('82d4cc7c67ae32a6785268a1cdddd973')
 
 build() {
-  cd "$srcdir/$_oname-$pkgver"
-  make -C src
+  cd "$srcdir/"*/
+  make
 }
 
 package() {
-  cd "$srcdir/$_oname-$pkgver"
+  cd "$srcdir/"*/
   export OCAMLFIND_DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
   install -dm 755 "$OCAMLFIND_DESTDIR"
-  make -C src install
+  make install
 }
