@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=inscore-git
-pkgver=4602.b1026e938
+pkgver=4660.e171c466
 pkgrel=1
 pkgdesc="Grame's INScore: interactive augmented music scores (git version)"
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ depends=('qt5-base' 'qt5-declarative' 'qt5-imageformats' 'qt5-multimedia'
 provides=('inscore')
 conflicts=('inscore')
 install="$pkgname.install"
-source=("$pkgname::git+git://git.code.sf.net/p/inscore/code#branch=dev")
+source=("$pkgname::git+https://github.com/grame-cncm/inscore.git#branch=dev")
 md5sums=('SKIP')
 
 pkgver() {
