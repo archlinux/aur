@@ -3,11 +3,11 @@
 pkgname=ddgtk
 pkgver=0.1.r3.g5b25b7c
 pkgrel=1
-pkgdesc='A fronted Gui to dd for making bootable usb disks'
+pkgdesc='A frontend Gui to dd for making bootable usb disks'
 arch=('any')
 license=('GPL3')
 url="https://github.com/gort818/${pkgname%-git}"
-depends=('python3' 'python-gobject' 'gtk3' 'vte')
+depends=('python3' 'python-gobject' 'gtk3')
 makedepends=('git' 'meson')
 source=('ddgtk::git+https://github.com/gort818/ddgtk#branch=master')
 sha1sums=('SKIP')

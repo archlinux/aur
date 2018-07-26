@@ -1,5 +1,5 @@
 pkgbase = ddgtk
-	pkgdesc = A fronted Gui to dd for making bootable usb disks
+	pkgdesc = A frontend Gui to dd for making bootable usb disks
 	pkgver = 0.1.r3.g5b25b7c
 	pkgrel = 1
 	url = https://github.com/gort818/ddgtk
@@ -10,7 +10,6 @@ pkgbase = ddgtk
 	depends = python3
 	depends = python-gobject
 	depends = gtk3
-	depends = vte
 	provides = ddgtk
 	conflicts = ddgtk
 	source = ddgtk::git+https://github.com/gort818/ddgtk#branch=master
