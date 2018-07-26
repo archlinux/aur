@@ -4,9 +4,14 @@ pkgbase = ocaml-wasm
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
+	license = Apache-2.0
+	makedepends = ocaml-findlib
+	makedepends = ocamlbuild
 	options = !strip
 	options = !makeflags
 	options = staticlibs
+	source = https://github.com/WebAssembly/spec/archive/v1.0.zip
+	md5sums = 82d4cc7c67ae32a6785268a1cdddd973
 
 pkgname = ocaml-wasm
 
