@@ -1,8 +1,8 @@
 # Contributor: Andrea Zucchelli <zukka77@gmail.com>
 
 pkgname=xca
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="graphical user interface to OpenSSL, RSA/DSA public keys, certificates, signing requests and revokation lists"
 arch=('i686' 'x86_64')
 url="http://xca.hohnstaedt.de"
@@ -11,7 +11,8 @@ depends=('qt5-base' 'libltdl' 'shared-mime-info' 'qt5-tools')
 #makedepends=('linuxdoc-tools')
 #source=("http://downloads.sourceforge.net/sourceforge/xca/$pkgname-$pkgver.tar.gz")
 source=("https://github.com/chris2511/xca/releases/download/RELEASE.$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4aefcb113bc464af9bf72cea7b760b3e996bc745746e18f9934030595866de89')
+sha256sums=('9d6adf3f6ae8a471a6f5fa3b76b98bf1c09baddb60847ceeae597aab400e36c9')
+
 build ()
 {
 cd $srcdir/$pkgname-$pkgver
