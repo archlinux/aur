@@ -1,13 +1,13 @@
 pkgbase = tsuru
 	pkgdesc = Tsuru client
-	pkgver = 1.4.0
-	pkgrel = 1
+	pkgver = 1.5.1
+	pkgrel = 2
 	url = https://github.com/tsuru/tsuru-client
 	arch = x86_64
 	license = Copyright (c) 2015, tsuru-client authors
-	source = https://github.com/tsuru/tsuru-client/releases/download/1.4.0/tsuru_1.4.0_linux_amd64.tar.gz
+	source = https://github.com/tsuru/tsuru-client/releases/download/1.5.1/tsuru_1.5.1_linux_amd64.tar.gz
 	source = LICENSE
-	sha256sums = ef6f852bc512776c27275a92c15c8a1e825094c98d54de9922cf7038875aa07f
+	sha256sums = fa3a330c23e4389df95e05b5fd8ed822640cde76560ae4cf3546793a2d9aa58c
 	sha256sums = 047e4f042a8441f2b58bc4181a1d167bc462870f511b3b82f71d9ef3104c1a3e
 
 pkgname = tsuru
