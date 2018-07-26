@@ -5,7 +5,7 @@
 # Contributor: Andrew Kravchuk <awkravchuk at gmail dot com>
 #
 pkgname="aarchup"
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
 url="https://github.com/inglor/aarchup"
@@ -17,7 +17,7 @@ makedepends=('libnotify' 'autoconf' 'gzip')
 optdepends=('auracle: AUR support(--aur)')
 install='aarchup.install'
 source=("${pkgname}-${pkgver}.zip::${url}/archive/${pkgver}.zip")
-sha256sums=('0ff8834846c1162cfbfd66e24dc02cbf0a05b0f767db2345504a516025a438d4')
+sha256sums=('1e5440ea6ce8ddded31f6d9ab9f62743c99ba9b56f65fd8f92a965d7970ead3e')
 
 prepare() {
     mv "${pkgname}-${pkgver}"/src/* "${pkgname}-${pkgver}"

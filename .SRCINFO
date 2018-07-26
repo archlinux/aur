@@ -1,6 +1,6 @@
 pkgbase = aarchup
 	pkgdesc = Fork of archup a small and lightweight update-notifier for archlinux.
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/inglor/aarchup
 	install = aarchup.install
@@ -14,8 +14,8 @@ pkgbase = aarchup
 	depends = gtk2
 	optdepends = auracle: AUR support(--aur)
 	provides = aarchup
-	source = aarchup-1.8.2.zip::https://github.com/inglor/aarchup/archive/1.8.2.zip
-	sha256sums = 0ff8834846c1162cfbfd66e24dc02cbf0a05b0f767db2345504a516025a438d4
+	source = aarchup-1.8.3.zip::https://github.com/inglor/aarchup/archive/1.8.3.zip
+	sha256sums = 1e5440ea6ce8ddded31f6d9ab9f62743c99ba9b56f65fd8f92a965d7970ead3e
 
 pkgname = aarchup
 
