@@ -1,10 +1,11 @@
 # Maintainer: Marcs <aur (at) mg.odd.red>
 # Contributor: OmeGa <omega [U+0040] mailoo [.] org>
 # Contributor: Vinycius Maia <suportevg@uol.com.br>
+# Contributor: GI_Jack <iamjacksemail@hackermail.com>
 
 pkgname=firefox-extension-greasemonkey
-_file=758417
-pkgver=4.0
+_file=965808
+pkgver=4.4
 pkgrel=1
 pkgdesc="Customize the way a web page displays or behaves, by using small bits of JavaScript."
 arch=('any')
@@ -13,7 +14,7 @@ license=('MPL')
 makedepends=('jq')
 depends=('firefox>=52.0')
 source=("https://addons.mozilla.org/firefox/downloads/file/$_file/greasemonkey-$pkgver-an+fx-linux.xpi")
-sha1sums=('7949d0fbedf6880e9f57a51ecbe4f10b2f297d44')
+sha256sums=('10c5e35e15e3737fb83d62bd7e2b85e64fa36d34eaf1607855a9261f61447917')
 
 package() {
   cd ${srcdir}
