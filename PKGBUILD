@@ -1,8 +1,8 @@
 pkgname=nlopt
-pkgver=2.4.2
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="nonlinear optimization library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/NLopt"
 license=('LGPL')
 depends=('gcc-libs')
@@ -10,25 +10,17 @@ makedepends=('python-numpy' 'octave' 'guile' 'swig')
 optdepends=('octave: to use with octave',
             'python: to use with python',
             'guile: to use with guile')
-options=()
-source=("http://ab-initio.mit.edu/nlopt/$pkgname-$pkgver.tar.gz"
-        '131148eb02b770da0e5c1049b4e82c78e4a50fa2.patch')
-md5sums=('d0b8f139a4acf29b76dbae69ade8ac54'
-         '91934669632c13c8dee40bc5a5dfcfb0')
+source=("https://github.com/stevengj/nlopt/archive/v${pkgver}.tar.gz")
+sha256sums=('c6dd7a5701fff8ad5ebb45a3dc8e757e61d52658de3918e38bab233e7fd3b4ae')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 -i "$srcdir"/131148eb02b770da0e5c1049b4e82c78e4a50fa2.patch
-  export CXXFLAGS="$CXXFLAGS -fpermissive"
-  export LDFLAGS="${LDFLAGS//,--as-needed}"
-  mkdir -p build_cxx
-  cd build_cxx
-  ../configure --prefix=/usr --enable-shared --with-cxx --enable-maintainer-mode --without-guile --without-matlab
+  mkdir -p build_cxx && pushd build_cxx
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DNLOPT_MATLAB=OFF -DNLOPT_CXX=ON ..
   make
-  cd ..
-  mkdir -p build
-  cd build
-  ../configure --prefix=/usr --enable-shared --without-python --without-guile --without-matlab
+  popd
+  mkdir -p build && pushd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DNLOPT_MATLAB=OFF -DNLOPT_LINK_PYTHON=OFF ..
   make
 }
 
