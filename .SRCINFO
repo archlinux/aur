@@ -1,0 +1,15 @@
+pkgbase = python-opencc
+	pkgdesc = An OpenCC converter for Python.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/lepture/opencc-python
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = opencc
+	options = !emptydirs
+	source = https://github.com/lepture/opencc-python/archive/v0.2.tar.gz
+	sha256sums = 6c581666853f8267a7d9f97ecf6ccc80d05e47c8a9f5ea8428c675166f3d76c1
+
+pkgname = python-opencc
+
