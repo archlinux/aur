@@ -1,10 +1,12 @@
 [Unit]
 Description=BurstCoin Wallet
+After=network.target
 
 [Service]
 Type=simple
 WorkingDirectory=/opt/burstcoin-wallet
 ExecStart=/opt/burstcoin-wallet/burst.sh
+Restart=on-abort
 
 [Install]
 WantedBy=default.target
