@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=midisharelight-git
-pkgver=1648.e13a6a7
+pkgver=1674.7f6d6d99
 pkgrel=1
 pkgdesc="light version of the MidiShare library (git version)"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ makedepends=('cmake')
 options=('strip' 'staticlibs')
 provides=('midisharelight')
 conflicts=('midisharelight')
-source=("$pkgname::git+git://git.code.sf.net/p/midishare/code#branch=dev")
+source=("$pkgname::git+https://github.com/grame-cncm/midishare.git#branch=dev")
 md5sums=('SKIP')
 
 pkgver() {
