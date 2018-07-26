@@ -1,0 +1,27 @@
+pkgbase = ocaml-fstar
+	pkgdesc = An ML-like language with a type system for program verification.
+	pkgver = 0.9.6.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	makedepends = ocaml-yojson
+	makedepends = ocaml-stdint
+	makedepends = ocamlbuild
+	makedepends = ocaml-batteries
+	makedepends = ocaml-zarith
+	makedepends = ocaml-ppx_deriving_yojson
+	makedepends = ocaml-pprint
+	makedepends = ocaml-fileutils
+	makedepends = ulex
+	makedepends = ocaml-ppx_deriving
+	depends = ocaml
+	options = !strip
+	options = !makeflags
+	options = staticlibs
+	source = https://github.com/FStarLang/FStar/archive/v0.9.6.0-alpha1-opam.zip
+	md5sums = 7855b84283e85de94db5a7a086f815bb
+
+pkgname = ocaml-fstar
+
