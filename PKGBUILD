@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=libmusicxml-git
-pkgver=61.9a74ed3
+pkgver=194.98a6c33e
 pkgrel=1
 pkgdesc="library and tools for the MusicXML format (git version)"
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ license=('LGPL')
 makedepends=('cmake')
 provides=('libmusicxml')
 conflicts=('libmusicxml')
-source=("$pkgname::git+https://github.com/dfober/libmusicxml#branch=dev")
+source=("$pkgname::git+https://github.com/grame-cncm/libmusicxml.git#branch=dev")
 md5sums=('SKIP')
 
 pkgver() {
