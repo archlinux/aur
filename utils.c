@@ -108,7 +108,7 @@ int is_str_number(const char* string) {
         return 0;
 
     for (size_t i = 0; i < len; i++)
-        if (!isdigit(string[i]))
+        if (!isdigit(string[i]) && string[i] != '.')
             return 0;
 
     return 1;
