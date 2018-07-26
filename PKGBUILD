@@ -1,16 +1,16 @@
 
 pkgname=mingw-w64-nlopt
-pkgver=2.4.2
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="nonlinear optimization library (mingw-w64)"
 arch=(any)
 url="http://ab-initio.mit.edu/wiki/index.php/NLopt"
 license=('LGPL')
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-configure')
+makedepends=('mingw-w64-cmake')
 options=('staticlibs' '!buildflags' '!strip')
-source=("http://ab-initio.mit.edu/nlopt/nlopt-$pkgver.tar.gz")
-md5sums=('d0b8f139a4acf29b76dbae69ade8ac54')
+source=("https://github.com/stevengj/nlopt/archive/v${pkgver}.tar.gz")
+sha256sums=('c6dd7a5701fff8ad5ebb45a3dc8e757e61d52658de3918e38bab233e7fd3b4ae')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -18,10 +18,7 @@ build() {
   cd "$srcdir/nlopt-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
-      --without-python \
-      --without-guile \
-      --without-octave
+    ${_arch}-cmake -DNLOPT_MATLAB=OFF -DNLOPT_SWIG=OFF ..
     make
     popd
   done
@@ -31,7 +28,6 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir"/nlopt-${pkgver}/build-${_arch}
     make install DESTDIR="$pkgdir"
-    rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
