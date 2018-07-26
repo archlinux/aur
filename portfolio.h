@@ -1,5 +1,5 @@
-#ifndef PORTFOLIO_H
-#define PORTFOLIO_H
+#ifndef TICK_PORTFOLIO_H
+#define TICK_PORTFOLIO_H
 
 #include <math.h>
 #include <sys/stat.h>

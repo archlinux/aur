@@ -1,5 +1,5 @@
-#ifndef STRING_TICK_H
-#define STRING_TICK_H
+#ifndef TICK_UTILS_H
+#define TICK_UTILS_H
 
 #define RET_MSG(msg) {\
     puts(msg);\

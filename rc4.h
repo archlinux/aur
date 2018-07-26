@@ -1,5 +1,5 @@
-#ifndef RC4_H
-#define RC4_H
+#ifndef TICK_RC4_H
+#define TICK_RC4_H
 
 #define PASS_MAX 32
 #define BACKSPACE 127

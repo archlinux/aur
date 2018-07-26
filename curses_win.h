@@ -1,5 +1,5 @@
-#ifndef GRAPH_H
-#define GRAPH_H
+#ifndef TICK_CURSES_WIN_H
+#define TICK_CURSES_WIN_H
 
 #define GRAPH_COLS_MIN 24
 #define GRAPH_ROWS_MIN 10
