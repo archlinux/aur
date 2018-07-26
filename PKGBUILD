@@ -16,6 +16,7 @@ sha256sums=('fb51c81ec95c28f3fe3b29e3b7f915e30161bd5f4b14bb53ae5c2233cc1e92e9')
 prepare() {
   printf 'v%s\n' "$pkgver" > $pkgname-$pkgver/version
   sed -i '/^onedrive:/ s/version //' $pkgname-$pkgver/Makefile
+  sed -i 's/std\.c\./core.stdc./g' $pkgname-$pkgver/src/sqlite.d
 }
 
 build() {
