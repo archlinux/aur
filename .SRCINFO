@@ -1,6 +1,6 @@
 pkgbase = ddgtk
 	pkgdesc = A frontend Gui to dd for making bootable usb disks
-	pkgver = 0.1.r3.g5b25b7c
+	pkgver = 0.1.r14.g2f619b5
 	pkgrel = 1
 	url = https://github.com/gort818/ddgtk
 	arch = any

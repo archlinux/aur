@@ -1,7 +1,7 @@
 # Maintainer: alessandro (gort818) <gort818@gmail.com>
 
 pkgname=ddgtk
-pkgver=0.1.r3.g5b25b7c
+pkgver=0.1.r14.g2f619b5
 pkgrel=1
 pkgdesc='A frontend Gui to dd for making bootable usb disks'
 arch=('any')
