@@ -1,6 +1,6 @@
 pkgbase = maltego-community
 	pkgdesc = Maltego Community Edition
-	pkgver = 4.1.6.11045
+	pkgver = 4.1.12.11480
 	pkgrel = 1
 	url = https://www.paterva.com
 	install = maltego.install
@@ -8,12 +8,12 @@ pkgbase = maltego-community
 	arch = x86_64
 	license = Commercial
 	depends = java-runtime=8
-	source_i686 = https://www.paterva.com/malv41/maltego_4.1.6.11045.deb
-	md5sums_i686 = 90af01333d812e002a2bcee1ce00026d
-	sha256sums_i686 = 45c67827ba0871b7ddf4d224b6e3b4ca23e455472b385ee00affc5045d3ea818
-	source_x86_64 = https://www.paterva.com/malv41/maltego_4.1.6.11045.deb
-	md5sums_x86_64 = 90af01333d812e002a2bcee1ce00026d
-	sha256sums_x86_64 = 45c67827ba0871b7ddf4d224b6e3b4ca23e455472b385ee00affc5045d3ea818
+	source_i686 = https://www.paterva.com/malv41/maltego_4.1.12.11480.deb
+	md5sums_i686 = 5a2b0626dee727359e7b83939dc7b27e
+	sha256sums_i686 = a9ed45b79648af6fbf2672ce46a0acd645987a65c34a9ad64ffd443b7d46899c
+	source_x86_64 = https://www.paterva.com/malv41/maltego_4.1.12.11480.deb
+	md5sums_x86_64 = 5a2b0626dee727359e7b83939dc7b27e
+	sha256sums_x86_64 = a9ed45b79648af6fbf2672ce46a0acd645987a65c34a9ad64ffd443b7d46899c
 
 pkgname = maltego-community
 
