@@ -1,0 +1,24 @@
+pkgbase = python-txrequests
+	pkgdesc = Asynchronous Python HTTP for Humans.
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://github.com/ross/txrequests
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-requests
+	makedepends = python-twisted
+	makedepends = python2-setuptools
+	makedepends = python2-requests
+	makedepends = python2-twisted
+	source = https://pypi.python.org/packages/source/t/txrequests/txrequests-0.9.6.tar.gz
+	sha256sums = b452a1cafa4d005678f6fa47922a330feb4907d5b4732d1841ca98e89f1362e1
+
+pkgname = python-txrequests
+	depends = python-requests
+	depends = python-twisted
+
+pkgname = python2-txrequests
+	depends = python2-requests
+	depends = python2-twisted
+
