@@ -1,8 +1,8 @@
 # Maintainer: Cassio Almeida <jcassiocosta@gmail.com>
 
 pkgname="tsuru"
-pkgver=1.4.0
-pkgrel=1
+pkgver=1.5.1
+pkgrel=2
 pkgdesc="Tsuru client"
 arch=('x86_64')
 license=('Copyright (c) 2015, tsuru-client authors')
@@ -31,5 +31,5 @@ package(){
 
 }
 
-sha256sums=('ef6f852bc512776c27275a92c15c8a1e825094c98d54de9922cf7038875aa07f'
+sha256sums=('fa3a330c23e4389df95e05b5fd8ed822640cde76560ae4cf3546793a2d9aa58c'
             '047e4f042a8441f2b58bc4181a1d167bc462870f511b3b82f71d9ef3104c1a3e')
