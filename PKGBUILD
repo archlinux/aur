@@ -14,12 +14,12 @@ source=('http://gallium.inria.fr/~fpottier/fix/fix-20130611.tar.gz')
 md5sums=('056dec3341ef008458fa722ebf2e3c57')
 
 build() {
-  cd "$srcdir/$_oname-$pkgver"
+  cd "$srcdir/"*
   make -C src
 }
 
 package() {
-  cd "$srcdir/$_oname-$pkgver"
+  cd "$srcdir/"*
   export OCAMLFIND_DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
   install -dm 755 "$OCAMLFIND_DESTDIR"
   make -C src install
