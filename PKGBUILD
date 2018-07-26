@@ -8,17 +8,17 @@
 pkgname=ntfs-3g-ar
 _pkgname=ntfs-3g_ntfsprogs
 _stablever=2017.3.23
-pkgver=2017.3.23AR.1
+pkgver=${_stablever}AR.2
 pkgrel=1
 pkgdesc='NTFS filesystem driver and utilities with experimental features'
 url='http://jp-andre.pagesperso-orange.fr/advanced-ntfs-3g.html'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL2')
 depends=('util-linux' 'fuse2')
 source=("https://tuxera.com/opensource/${_pkgname}-${_stablever}.tgz"
         "http://pagesperso-orange.fr/jp-andre/${_pkgname}-${pkgver}.tgz")
 sha256sums=('3e5a021d7b761261836dcb305370af299793eedbded731df3d6943802e1262d5'
-            'fe8cf2b0326000013f25dc2870305f9ae06b3c7df43ce460d450fa87764cde38')
+            '8bc859486ee27063db65d7a4ac14d8ecf06cd6b071a531c2559288c00d6239e6')
 
 conflicts=('ntfsprogs' 'ntfs-3g')
 provides=('ntfsprogs' "ntfs-3g=$_stablever-$pkgrel")
