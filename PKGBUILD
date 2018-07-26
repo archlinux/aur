@@ -1,20 +1,19 @@
-# Original Maintainer: Testuser_01 <arch@nico-siebler.de>
-# really shit PKGBUILD fixed by: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
 
-# I have no idea why there were so many explicit warnings about the dangers of
-# improperly using netsec tools in the original uncleaned PKGBUILD from AUR3.
-# needless to say they were removed.
+# Welp, it looks like THC as an organization is kaput. It was good enough of
+# VH to keep all their shit on github as the tools will continue to be in use
+# for quite some time. Still compiles...
 
 pkgname=thc-ssl-dos
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="THC-SSL-DOS is a tool to verify the performance of SSL by flooding connections"
-url="http://www.thc.org/${pkgname}/"
+url="https://github.com/vanhauser-thc/THC-Archive"
 arch=('i686' 'x86_64')
 install="${pkgname}.install"
 license=('custom: unknown')
 depends=('openssl' 'glibc' 'zlib')
-source=("http://www.thc.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/vanhauser-thc/THC-Archive/blob/master/Exploits/thc-ssl-dos-1.4.tar.gz")
 sha256sums=('3e8dcaedf39a11ebaeac6e4d75175fcc724c6255904ef4e27bf72c9788119a04')
 
 
