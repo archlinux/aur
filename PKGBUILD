@@ -1,39 +1,32 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2018.1.4
-_pkgver=2018.1.4
+pkgver=2018.2.0
+_pkgver=2018.2
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE. Professional edition."
 arch=('x86_64')
-options=('!strip')
-url="http://www.jetbrains.com/pycharm/"
+url='http://www.jetbrains.com/pycharm/'
 conflicts=('pycharm' 'pycharm-community')
 provides=('pycharm')
 license=('custom')
 install=${pkgname}.install
 backup=(opt/$pkgname/bin/pycharm.vmoptions opt/$pkgname/bin/pycharm64.vmoptions)
-if [[ $pycharm_professional_nojdk = "yes" ]]; then
-    depends=('java-runtime-common' 'java-runtime>=8' 'ttf-font' 'libxtst' 'libxslt')
-else
-    depends=('giflib' 'ttf-font' 'libxtst' 'libxslt')
-fi
+depends=('gcc-libs' 'giflib' 'glibc' 'sh' 'ttf-font' 'libxtst' 'libxslt')
+source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
+        'pycharm-professional.desktop'
+        'pycharm-professional.install'
+        'pycharm'
+        'charm.desktop'
+        'charm')
+# https://download.jetbrains.com/python/pycharm-professional-${_pkgver}.tar.gz.sha256
+sha256sums=('528d91f2628d92d08c623a3e68307043d497df5cd4c57c6202d32a7efbcaf22b'
+            '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
+            'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
+            '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
+            'e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb'
+            '7e9bc3873f6c8039b4d7c181806ce4363632ff5811e966142749396cd849d86f')
 makedepends=('python2-setuptools' 'python-setuptools')
-if [[ $pycharm_professional_nojdk = "yes" ]]; then
-    source=(https://download.jetbrains.com/python/$pkgname-$_pkgver-no-jdk.tar.gz
-            'pycharm-professional.desktop'
-            'pycharm-professional.install'
-            'pycharm'
-            'charm.desktop'
-            'charm')
-else
-    source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
-            'pycharm-professional.desktop'
-            'pycharm-professional.install'
-            'pycharm'
-            'charm.desktop'
-            'charm')
-fi
 optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'ipython: For enhanced interactive Python shell v3 inside Pycharm'
             'openssh: For deployment and remote connections'
@@ -51,23 +44,7 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python2-tox: Python environments for testing tool with Python 2'
             'python-tox: Python environments for testing tool with Python 3', 
             'jupyter: For support Jupyter Notebook')
-# https://download.jetbrains.com/python/pycharm-professional-${_pkgver}-no-jdk.tar.gz.sha256
-if [[ $pycharm_professional_nojdk = "yes" ]]; then
-sha256sums=('7eccf8a6523c7bfc28aa14b932b7621be3a33d12d90c59a69d441cb9a2f5ea64'
-            '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
-            'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
-            '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
-            'e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb'
-            '1767e0fb284da83a2ca9858275b2e6099d02a737924e9a0f7931e50f535a49a0')
-else
-sha256sums=('6cda9b2717b161387983a09ed88b39d76d88fea208601d125666c02b7c6961cf'
-            '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
-            'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
-            '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
-            'e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb'
-            '1767e0fb284da83a2ca9858275b2e6099d02a737924e9a0f7931e50f535a49a0')
-fi
-
+            
 build() {
   cd pycharm-$_pkgver
 
