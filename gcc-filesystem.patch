@@ -1,6 +1,6 @@
-From 7feaaa7bf712d62212efbb01c6eefb43af7be60c Mon Sep 17 00:00:00 2001
+From e719de0f337b242dda0575130d5b6c0e48609635 Mon Sep 17 00:00:00 2001
 From: Liu Hao <lh_mouse@126.com>
-Date: Sat, 23 Jun 2018 17:02:02 +0800
+Date: Fri, 27 Jul 2018 20:34:19 +0200
 Subject: [PATCH] Backport patches for std::filesystem
 
 The following commits were cherry-picked:
@@ -21,19 +21,19 @@ Signed-off-by: Liu Hao <lh_mouse@126.com>
  libstdc++-v3/configure                        |  35 +++
  libstdc++-v3/configure.ac                     |   2 +
  libstdc++-v3/crossconfig.m4                   |   1 +
- libstdc++-v3/include/bits/fs_path.h           | 201 +++++++-------
+ libstdc++-v3/include/bits/fs_path.h           | 199 +++++++-------
  libstdc++-v3/include/bits/fstream.tcc         |  36 +++
- .../include/experimental/bits/fs_path.h       |  64 ++---
+ .../include/experimental/bits/fs_path.h       |  62 ++---
  libstdc++-v3/include/std/fstream              | 119 ++++++++
  libstdc++-v3/src/filesystem/dir-common.h      |  56 +++-
  libstdc++-v3/src/filesystem/dir.cc            |   5 +-
  libstdc++-v3/src/filesystem/ops-common.h      | 105 ++++++-
- libstdc++-v3/src/filesystem/ops.cc            | 153 ++++++-----
+ libstdc++-v3/src/filesystem/ops.cc            | 154 ++++++-----
  libstdc++-v3/src/filesystem/path.cc           |  24 +-
  libstdc++-v3/src/filesystem/std-dir.cc        |   5 +-
- libstdc++-v3/src/filesystem/std-ops.cc        | 259 ++++++++++++------
+ libstdc++-v3/src/filesystem/std-ops.cc        | 260 ++++++++++++------
  libstdc++-v3/src/filesystem/std-path.cc       | 105 +++++--
- 18 files changed, 889 insertions(+), 331 deletions(-)
+ 18 files changed, 887 insertions(+), 331 deletions(-)
 
 diff --git a/libstdc++-v3/config.h.in b/libstdc++-v3/config.h.in
 index 5a0f0678439..1fc10b511fb 100644
@@ -140,7 +140,7 @@ index 58f24f670f6..3c857272c57 100644
        sys_open(__c_file* __file, ios_base::openmode);
  
 diff --git a/libstdc++-v3/configure b/libstdc++-v3/configure
-index ba094be6f15..83cd6a54b71 100755
+index fbc9daeb195..3dd63c9631d 100755
 --- a/libstdc++-v3/configure
 +++ b/libstdc++-v3/configure
 @@ -28127,6 +28127,17 @@ eval as_val=\$$as_ac_var
@@ -179,7 +179,7 @@ index ba094be6f15..83cd6a54b71 100755
  fi
  done
  
-@@ -80012,6 +80034,19 @@ _ACEOF
+@@ -80025,6 +80047,19 @@ _ACEOF
  
  fi
  
@@ -220,7 +220,7 @@ index 0ef96270c9c..dde1c4da944 100644
  GLIBCXX_CHECK_FILESYSTEM_DEPS
  
 diff --git a/libstdc++-v3/crossconfig.m4 b/libstdc++-v3/crossconfig.m4
-index fa56795b25e..f0a55c68404 100644
+index cb6e3afff3d..669d87f7602 100644
 --- a/libstdc++-v3/crossconfig.m4
 +++ b/libstdc++-v3/crossconfig.m4
 @@ -199,6 +199,7 @@ case "${host}" in
@@ -232,7 +232,7 @@ index fa56795b25e..f0a55c68404 100644
    *-netbsd*)
      SECTION_FLAGS='-ffunction-sections -fdata-sections'
 diff --git a/libstdc++-v3/include/bits/fs_path.h b/libstdc++-v3/include/bits/fs_path.h
-index 31c34d67c75..26862025d72 100644
+index 51af2891647..49cd95daa4c 100644
 --- a/libstdc++-v3/include/bits/fs_path.h
 +++ b/libstdc++-v3/include/bits/fs_path.h
 @@ -37,11 +37,11 @@
@@ -309,7 +309,7 @@ index 31c34d67c75..26862025d72 100644
  
      template <class _Source>
        _Path<_Source>&
-@@ -394,6 +366,20 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -391,6 +363,20 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
      iterator begin() const;
      iterator end() const;
  
@@ -330,28 +330,28 @@ index 31c34d67c75..26862025d72 100644
    private:
      enum class _Type : unsigned char {
  	_Multi, _Root_name, _Root_dir, _Filename
-@@ -406,19 +392,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -403,19 +389,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
  
      enum class _Split { _Stem, _Extension };
  
--    path& _M_append(string_type&& __str)
+-    path&
+-    _M_append(path __p)
 -    {
+-      if (__p.is_absolute())
+-	operator=(std::move(__p));
 -#ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
--      operator/=(path(std::move(__str)));
--#else
--      if (!_M_pathname.empty() && !_S_is_dir_sep(_M_pathname.back())
--	  && (__str.empty() || !_S_is_dir_sep(__str.front())))
--	_M_pathname += preferred_separator;
--      _M_pathname += __str;
--      _M_split_cmpts();
+-      else if (__p.has_root_name() && __p.root_name() != root_name())
+-	operator=(std::move(__p));
 -#endif
+-      else
+-	operator/=(const_cast<const path&>(__p));
 -      return *this;
 -    }
 +    path& _M_append(path __p);
  
      pair<const string_type*, size_t> _M_find_extension() const;
  
-@@ -446,11 +420,8 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -443,11 +417,8 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
        static string_type
        _S_convert(_InputIterator __src, __null_terminated)
        {
@@ -365,7 +365,7 @@ index 31c34d67c75..26862025d72 100644
        }
  
      static string_type
-@@ -470,10 +441,8 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -467,10 +438,8 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
        _S_convert_loc(_InputIterator __src, __null_terminated,
  		     const std::locale& __loc)
        {
@@ -378,7 +378,7 @@ index 31c34d67c75..26862025d72 100644
        }
  
      template<typename _CharT, typename _Traits, typename _Allocator>
-@@ -503,25 +472,6 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -500,25 +469,6 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
      _Type _M_type = _Type::_Multi;
    };
  
@@ -404,7 +404,7 @@ index 31c34d67c75..26862025d72 100644
    inline void swap(path& __lhs, path& __rhs) noexcept { __lhs.swap(__rhs); }
  
    size_t hash_value(const path& __p) noexcept;
-@@ -559,10 +509,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -560,10 +510,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
      basic_ostream<_CharT, _Traits>&
      operator<<(basic_ostream<_CharT, _Traits>& __os, const path& __p)
      {
@@ -416,7 +416,7 @@ index 31c34d67c75..26862025d72 100644
        return __os;
      }
  
-@@ -572,40 +519,55 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -573,40 +520,55 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
      operator>>(basic_istream<_CharT, _Traits>& __is, path& __p)
      {
        basic_string<_CharT, _Traits> __tmp;
@@ -490,7 +490,7 @@ index 31c34d67c75..26862025d72 100644
  #endif
      }
  
-@@ -914,11 +876,16 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -915,11 +877,16 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
      path::string(const _Allocator& __a) const
      {
        if constexpr (is_same_v<_CharT, value_type>)
@@ -509,16 +509,7 @@ index 31c34d67c75..26862025d72 100644
        else
  	return _S_str_convert<_CharT, _Traits>(_M_pathname, __a);
      }
-@@ -1074,7 +1041,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
-   path::is_absolute() const
-   {
- #ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
--    return has_root_name();
-+    return has_root_name() && has_root_directory();
- #else
-     return has_root_directory();
- #endif
-@@ -1096,6 +1063,38 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -1087,6 +1054,38 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
      return iterator(this, true);
    }
  
@@ -605,7 +596,7 @@ index f23ff7af4eb..d9eff00823a 100644
      typename basic_filebuf<_CharT, _Traits>::__filebuf_type*
      basic_filebuf<_CharT, _Traits>::
 diff --git a/libstdc++-v3/include/experimental/bits/fs_path.h b/libstdc++-v3/include/experimental/bits/fs_path.h
-index 456452bb317..d318e37ac4c 100644
+index ada7c1791aa..d8e37f64908 100644
 --- a/libstdc++-v3/include/experimental/bits/fs_path.h
 +++ b/libstdc++-v3/include/experimental/bits/fs_path.h
 @@ -79,8 +79,11 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
@@ -682,7 +673,7 @@ index 456452bb317..d318e37ac4c 100644
        }
  
      bool _S_is_dir_sep(value_type __ch)
-@@ -520,7 +533,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -524,7 +537,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
        auto __tmp = __p.string<_CharT, _Traits>();
        using __quoted_string
  	= std::__detail::_Quoted_string<decltype(__tmp)&, _CharT>;
@@ -691,7 +682,7 @@ index 456452bb317..d318e37ac4c 100644
        return __os;
      }
  
-@@ -532,7 +545,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -536,7 +549,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
        basic_string<_CharT, _Traits> __tmp;
        using __quoted_string
  	= std::__detail::_Quoted_string<decltype(__tmp)&, _CharT>;
@@ -700,7 +691,7 @@ index 456452bb317..d318e37ac4c 100644
  	__p = std::move(__tmp);
        return __is;
      }
-@@ -590,25 +603,6 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -594,25 +607,6 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
      std::string _M_what = _M_gen_what();
    };
  
@@ -726,15 +717,6 @@ index 456452bb317..d318e37ac4c 100644
    struct path::_Cmpt : path
    {
      _Cmpt(string_type __s, _Type __t, size_t __pos)
-@@ -999,7 +993,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
-   path::is_absolute() const
-   {
- #ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
--    return has_root_name();
-+    return has_root_name() && has_root_directory();
- #else
-     return has_root_directory();
- #endif
 diff --git a/libstdc++-v3/include/std/fstream b/libstdc++-v3/include/std/fstream
 index 3a5895d68b0..740d12d3bb6 100644
 --- a/libstdc++-v3/include/std/fstream
@@ -1213,7 +1195,7 @@ index bc186836bd4..c1b817189a9 100644
      else if (S_ISSOCK(st.st_mode))
        return file_type::socket;
 diff --git a/libstdc++-v3/src/filesystem/ops.cc b/libstdc++-v3/src/filesystem/ops.cc
-index 328332a8a82..40cadbf6270 100644
+index 4a9e265d1d6..40cadbf6270 100644
 --- a/libstdc++-v3/src/filesystem/ops.cc
 +++ b/libstdc++-v3/src/filesystem/ops.cc
 @@ -47,20 +47,17 @@
@@ -1512,7 +1494,7 @@ index 328332a8a82..40cadbf6270 100644
      ec.assign(errno, std::generic_category());
    else
      ec.clear();
-@@ -1126,22 +1150,14 @@ fs::space(const path& p, error_code& ec) noexcept
+@@ -1126,23 +1150,14 @@ fs::space(const path& p, error_code& ec) noexcept
      static_cast<uintmax_t>(-1),
      static_cast<uintmax_t>(-1)
    };
@@ -1522,10 +1504,11 @@ index 328332a8a82..40cadbf6270 100644
 -      ec.assign(errno, std::generic_category());
 -  else
 -    {
+-      uintmax_t fragment_size = f.f_frsize;
 -      info = space_info{
--	f.f_blocks * f.f_frsize,
--	f.f_bfree * f.f_frsize,
--	f.f_bavail * f.f_frsize
+-	f.f_blocks * fragment_size,
+-	f.f_bfree * fragment_size,
+-	f.f_bavail * fragment_size
 -      };
 -      ec.clear();
 -    }
@@ -1541,7 +1524,7 @@ index 328332a8a82..40cadbf6270 100644
    return info;
  }
  
-@@ -1151,7 +1167,7 @@ fs::status(const fs::path& p, error_code& ec) noexcept
+@@ -1152,7 +1167,7 @@ fs::status(const fs::path& p, error_code& ec) noexcept
  {
    file_status status;
    stat_type st;
@@ -1550,7 +1533,7 @@ index 328332a8a82..40cadbf6270 100644
      {
        int err = errno;
        ec.assign(err, std::generic_category());
-@@ -1175,7 +1191,7 @@ fs::symlink_status(const fs::path& p, std::error_code& ec) noexcept
+@@ -1176,7 +1191,7 @@ fs::symlink_status(const fs::path& p, std::error_code& ec) noexcept
  {
    file_status status;
    stat_type st;
@@ -1559,7 +1542,7 @@ index 328332a8a82..40cadbf6270 100644
      {
        int err = errno;
        ec.assign(err, std::generic_category());
-@@ -1250,27 +1266,38 @@ fs::path fs::temp_directory_path()
+@@ -1251,27 +1266,38 @@ fs::path fs::temp_directory_path()
  
  fs::path fs::temp_directory_path(error_code& ec)
  {
@@ -1611,7 +1594,7 @@ index 328332a8a82..40cadbf6270 100644
  }
  
 diff --git a/libstdc++-v3/src/filesystem/path.cc b/libstdc++-v3/src/filesystem/path.cc
-index 4d84168d742..87fb7fef61c 100644
+index 899d94e0067..fb70d30fdca 100644
 --- a/libstdc++-v3/src/filesystem/path.cc
 +++ b/libstdc++-v3/src/filesystem/path.cc
 @@ -61,6 +61,12 @@ path::replace_filename(const path& replacement)
@@ -1716,7 +1699,7 @@ index 98eb22ab920..4c9a287ad80 100644
        if (ecptr)
  	ecptr->clear();
 diff --git a/libstdc++-v3/src/filesystem/std-ops.cc b/libstdc++-v3/src/filesystem/std-ops.cc
-index 930b186e88c..e266fa6d3f8 100644
+index 74868cd48e6..e266fa6d3f8 100644
 --- a/libstdc++-v3/src/filesystem/std-ops.cc
 +++ b/libstdc++-v3/src/filesystem/std-ops.cc
 @@ -25,6 +25,7 @@
@@ -2137,7 +2120,7 @@ index 930b186e88c..e266fa6d3f8 100644
      ec.assign(errno, std::generic_category());
    else
      ec.clear();
-@@ -1364,30 +1414,67 @@ fs::space(const path& p)
+@@ -1364,31 +1414,67 @@ fs::space(const path& p)
    return s;
  }
  
@@ -2161,10 +2144,11 @@ index 930b186e88c..e266fa6d3f8 100644
        ec.assign(errno, std::generic_category());
    else
      {
+-      uintmax_t fragment_size = f.f_frsize;
 -      info = space_info{
--	f.f_blocks * f.f_frsize,
--	f.f_bfree * f.f_frsize,
--	f.f_bavail * f.f_frsize
+-	f.f_blocks * fragment_size,
+-	f.f_bfree * fragment_size,
+-	f.f_bavail * fragment_size
 -      };
 +      if (f.f_frsize != (unsigned long)-1)
 +	{
@@ -2218,7 +2202,7 @@ index 930b186e88c..e266fa6d3f8 100644
    return info;
  }
  
-@@ -1397,7 +1484,7 @@ fs::status(const fs::path& p, error_code& ec) noexcept
+@@ -1398,7 +1484,7 @@ fs::status(const fs::path& p, error_code& ec) noexcept
  {
    file_status status;
    stat_type st;
@@ -2227,7 +2211,7 @@ index 930b186e88c..e266fa6d3f8 100644
      {
        int err = errno;
        ec.assign(err, std::generic_category());
-@@ -1421,7 +1508,7 @@ fs::symlink_status(const fs::path& p, std::error_code& ec) noexcept
+@@ -1422,7 +1508,7 @@ fs::symlink_status(const fs::path& p, std::error_code& ec) noexcept
  {
    file_status status;
    stat_type st;
@@ -2236,7 +2220,7 @@ index 930b186e88c..e266fa6d3f8 100644
      {
        int err = errno;
        ec.assign(err, std::generic_category());
-@@ -1468,28 +1555,39 @@ fs::path fs::temp_directory_path()
+@@ -1469,28 +1555,39 @@ fs::path fs::temp_directory_path()
  
  fs::path fs::temp_directory_path(error_code& ec)
  {
@@ -2289,7 +2273,7 @@ index 930b186e88c..e266fa6d3f8 100644
  }
  
  fs::path
-@@ -1512,7 +1610,8 @@ fs::weakly_canonical(const path& p)
+@@ -1513,7 +1610,8 @@ fs::weakly_canonical(const path& p)
        ++iter;
      }
    // canonicalize:
@@ -2299,7 +2283,7 @@ index 930b186e88c..e266fa6d3f8 100644
    // append the non-existing elements:
    while (iter != end)
      result /= *iter++;
-@@ -1550,7 +1649,7 @@ fs::weakly_canonical(const path& p, error_code& ec)
+@@ -1551,7 +1649,7 @@ fs::weakly_canonical(const path& p, error_code& ec)
        ++iter;
      }
    // canonicalize:
