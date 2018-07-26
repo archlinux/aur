@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ue-eap
 	pkgdesc = Early access version of the upcoming version of Intellij Idea IDE (ultimate version)
-	pkgver = 2018.2.182.3684.2
+	pkgver = 2018.2.182.3911.6
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = intellij-idea-ue-eap
 	depends = giflib
 	depends = libxtst
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIU-182.3684.2.tar.gz
-	sha256sums = 186cfc35afb25c73cfa2daf3a2d8b0521a112fc25b18f1b0af436f2d081b0ec5
+	source = https://download.jetbrains.com/idea/ideaIU-182.3911.6.tar.gz
+	sha256sums = 212311496652a29e36a966fba174c1f2bd8648eb1fa81cc4aceb956965f86e6d
 
 pkgname = intellij-idea-ue-eap
 
