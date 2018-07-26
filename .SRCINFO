@@ -1,0 +1,19 @@
+pkgbase = launchar-git
+	pkgdesc = Minimal GTK application launcher
+	pkgver = r41.f6d2934
+	pkgrel = 1
+	url = https://gitlab.com/abiosoft/launchar
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = vala
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	provides = launchar
+	conflicts = launchar
+	source = launchar-git::git+https://gitlab.com/abiosoft/launchar.git
+	md5sums = SKIP
+
+pkgname = launchar-git
+
