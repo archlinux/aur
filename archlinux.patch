@@ -5,9 +5,9 @@ Index: vstax/src/usr/share/vstax2017/vstax2017.sh
 @@ -1,3 +1,3 @@
  #!/bin/sh
 -cd /usr/share/vstax2017
--./jre/bin/java -Xmx400m -Xms400m  -jar jfw-launcher-5.0.27-obf.jar "$1"
+-./jre/bin/java -Xmx400m -Xms400m  -jar jfw-launcher-5.0.29-obf.jar "$1"
 +cd /usr/share/java/vstax2017
-+"${JAVA_HOME}/bin/java" -Xmx400m -Xms400m  -jar jfw-launcher-5.0.27-obf.jar "$1"
++"${JAVA_HOME}/bin/java" -Xmx400m -Xms400m  -jar jfw-launcher-5.0.29-obf.jar "$1"
 Index: vstax/src/usr/share/applications/vstax2017.desktop
 ===================================================================
 --- vstax.orig/src/usr/share/applications/vstax2017.desktop
