@@ -3,8 +3,8 @@
 # Maintainer: Shoghi Cervantes <shoghi@mojang.com>
 # Maintainer: Thomas Guimbretiere <profmobius@mojang.com>
 pkgname=minecraft-launcher
-pkgver=2.1.1218
-pkgrel=2
+pkgver=2.1.1345
+pkgrel=1
 pkgdesc="Official Minecraft Launcher"
 arch=('x86_64')
 url="https://mojang.com/"
@@ -16,7 +16,7 @@ minecraft-launcher.desktop
 minecraft-launcher.svg
 )
 sha256sums=(
-'6dee16aaf79335bab85df0ab450026bee154d042d904b6d681565de9f308d85f'
+'223a7824aae4770dc60932175680e2413eefb67f26e9f66f0276c48e2869cf73'
 'e1029b0a36cef916c58262e6b41b75defd83327ec41e5b372f9861d663007857'
 '35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71'
 )
