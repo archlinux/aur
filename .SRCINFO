@@ -1,7 +1,7 @@
 pkgbase = launchar-git
-	pkgdesc = Minimal GTK application launcher
+	pkgdesc = Minimal application launcher written in Gtk
 	pkgver = r41.f6d2934
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/abiosoft/launchar
 	arch = x86_64
 	license = Apache

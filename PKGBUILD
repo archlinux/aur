@@ -2,8 +2,8 @@
 
 pkgname=launchar-git
 pkgver=r41.f6d2934
-pkgrel=1
-pkgdesc="Minimal GTK application launcher"
+pkgrel=2
+pkgdesc="Minimal application launcher written in Gtk"
 arch=('x86_64')
 url="https://gitlab.com/abiosoft/launchar"
 license=(Apache)
