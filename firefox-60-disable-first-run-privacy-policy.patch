@@ -1,0 +1,16 @@
+--- firefox-60.0.bak/toolkit/components/telemetry/datareporting-prefs.js	2018-05-16 09:31:04.390035410 +0200
++++ firefox-60.0/toolkit/components/telemetry/datareporting-prefs.js	2018-05-16 14:26:08.568343718 +0200
+@@ -4,11 +4,11 @@
+ 
+ /* global pref */
+ 
+-pref("datareporting.policy.dataSubmissionEnabled", true);
++pref("datareporting.policy.dataSubmissionEnabled", false);
+ pref("datareporting.policy.dataSubmissionPolicyNotifiedTime", "0");
+ pref("datareporting.policy.dataSubmissionPolicyAcceptedVersion", 0);
+ pref("datareporting.policy.dataSubmissionPolicyBypassNotification", false);
+ pref("datareporting.policy.currentPolicyVersion", 2);
+ pref("datareporting.policy.minimumPolicyVersion", 1);
+ pref("datareporting.policy.minimumPolicyVersion.channel-beta", 2);
+-pref("datareporting.policy.firstRunURL", "https://www.mozilla.org/privacy/firefox/");
++pref("datareporting.policy.firstRunURL", "");

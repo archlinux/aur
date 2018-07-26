@@ -1,0 +1,141 @@
+--- firefox-60.0.bak/browser/base/content/browser.js
++++ firefox-60.0/browser/base/content/browser.js
+@@ -46,7 +46,6 @@
+   ProcessHangMonitor: "resource:///modules/ProcessHangMonitor.jsm",
+   PromiseUtils: "resource://gre/modules/PromiseUtils.jsm",
+   ReaderMode: "resource://gre/modules/ReaderMode.jsm",
+-  ReaderParent: "resource:///modules/ReaderParent.jsm",
+   RecentWindow: "resource:///modules/RecentWindow.jsm",
+   SafeBrowsing: "resource://gre/modules/SafeBrowsing.jsm",
+   Sanitizer: "resource:///modules/Sanitizer.jsm",
+@@ -4852,7 +4848,6 @@
+       }
+     }
+     UpdateBackForwardCommands(gBrowser.webNavigation);
+-    ReaderParent.updateReaderButton(gBrowser.selectedBrowser);
+ 
+     if (!gMultiProcessBrowser) // Bug 1108553 - Cannot rotate images with e10s
+       gGestureSupport.restoreRotationState();
+--- firefox-60.0.bak/browser/base/content/browser-sets.inc
++++ firefox-60.0/browser/base/content/browser-sets.inc
+@@ -42,7 +42,6 @@
+     <command id="View:PageSource" oncommand="BrowserViewSource(window.gBrowser.selectedBrowser);" observes="canViewSource"/>
+     <command id="View:PageInfo" oncommand="BrowserPageInfo();"/>
+     <command id="View:FullScreen" oncommand="BrowserFullScreen();"/>
+-    <command id="View:ReaderView" oncommand="ReaderParent.toggleReaderMode(event);"/>
+     <command id="cmd_find"
+              oncommand="gFindBar.onFindCommand();"
+              observes="isImage"/>
+@@ -290,11 +289,6 @@
+     <key id="key_fullScreen_old" key="&fullScreenCmd.macCommandKey;" command="View:FullScreen" modifiers="accel,shift"/>
+     <key keycode="VK_F11" command="View:FullScreen"/>
+ #endif
+-#ifndef XP_WIN
+-    <key id="key_toggleReaderMode" key="&toggleReaderMode.key;" command="View:ReaderView" modifiers="accel,alt" disabled="true"/>
+-#else
+-    <key id="key_toggleReaderMode" keycode="&toggleReaderMode.win.keycode;" command="View:ReaderView" disabled="true"/>
+-#endif
+     <key key="&reloadCmd.commandkey;" command="Browser:Reload" modifiers="accel" id="key_reload"/>
+     <key key="&reloadCmd.commandkey;" command="Browser:ReloadSkipCache" modifiers="accel,shift"/>
+     <key id="key_viewSource" key="&pageSourceCmd.commandkey;" command="View:PageSource" modifiers="accel"/>
+--- firefox-60.0.bak/browser/base/content/browser.xul
++++ firefox-60.0/browser/base/content/browser.xul
+@@ -888,12 +888,6 @@
+                   <label id="userContext-label"/>
+                   <image id="userContext-indicator"/>
+                 </hbox>
+-                <image id="reader-mode-button"
+-                       class="urlbar-icon urlbar-page-action"
+-                       tooltip="dynamic-shortcut-tooltip"
+-                       role="button"
+-                       hidden="true"
+-                       onclick="ReaderParent.buttonClick(event);"/>
+                 <toolbarbutton id="urlbar-zoom-button"
+                        onclick="FullZoom.reset();"
+                        tooltip="dynamic-shortcut-tooltip"
+--- firefox-60.0.bak/browser/components/nsBrowserGlue.js
++++ firefox-60.0/browser/components/nsBrowserGlue.js
+@@ -123,7 +123,6 @@
+   PluralForm: "resource://gre/modules/PluralForm.jsm",
+   PrivateBrowsingUtils: "resource://gre/modules/PrivateBrowsingUtils.jsm",
+   ProcessHangMonitor: "resource:///modules/ProcessHangMonitor.jsm",
+-  ReaderParent: "resource:///modules/ReaderParent.jsm",
+   RecentWindow: "resource:///modules/RecentWindow.jsm",
+   RemotePrompt: "resource:///modules/RemotePrompt.jsm",
+   SafeBrowsing: "resource://gre/modules/SafeBrowsing.jsm",
+@@ -214,8 +213,6 @@
+     "FormValidation:ShowPopup": ["FormValidationHandler"],
+     "FormValidation:HidePopup": ["FormValidationHandler"],
+     "Prompt:Open": ["RemotePrompt"],
+-    "Reader:FaviconRequest": ["ReaderParent"],
+-    "Reader:UpdateReaderButton": ["ReaderParent"],
+     // PLEASE KEEP THIS LIST IN SYNC WITH THE MOBILE LISTENERS IN BrowserCLH.js
+     "RemoteLogins:findLogins": ["LoginManagerParent"],
+     "RemoteLogins:findRecipes": ["LoginManagerParent"],
+--- firefox-60.0.bak/browser/components/uitour/UITour.jsm
++++ firefox-60.0/browser/components/uitour/UITour.jsm
+@@ -28,8 +28,6 @@
+   "resource://gre/modules/PrivateBrowsingUtils.jsm");
+ ChromeUtils.defineModuleGetter(this, "ProfileAge",
+   "resource://gre/modules/ProfileAge.jsm");
+-ChromeUtils.defineModuleGetter(this, "ReaderParent",
+-  "resource:///modules/ReaderParent.jsm");
+ ChromeUtils.defineModuleGetter(this, "ResetProfile",
+   "resource://gre/modules/ResetProfile.jsm");
+ ChromeUtils.defineModuleGetter(this, "UITelemetry",
+@@ -42,7 +40,6 @@
+ const PREF_SEENPAGEIDS    = "browser.uitour.seenPageIDs";
+ 
+ const BACKGROUND_PAGE_ACTIONS_ALLOWED = new Set([
+-  "forceShowReaderIcon",
+   "getConfiguration",
+   "getTreatmentTag",
+   "hideHighlight",
+@@ -163,7 +160,6 @@
+     }],
+     ["privateWindow", {query: "#appMenu-private-window-button"}],
+     ["quit",        {query: "#appMenu-quit-button"}],
+-    ["readerMode-urlBar", {query: "#reader-mode-button"}],
+     ["search",      {
+       infoPanelOffsetX: 18,
+       infoPanelPosition: "after_start",
+@@ -661,19 +657,6 @@
+         break;
+       }
+ 
+-      case "forceShowReaderIcon": {
+-        ReaderParent.forceShowReaderIcon(browser);
+-        break;
+-      }
+-
+-      case "toggleReaderMode": {
+-        let targetPromise = this.getTarget(window, "readerMode-urlBar");
+-        targetPromise.then(target => {
+-          ReaderParent.toggleReaderMode({target: target.node});
+-        });
+-        break;
+-      }
+-
+       case "closeTab": {
+         // Find the <tabbrowser> element of the <browser> for which the event
+         // was generated originally. If the browser where the UI tour is loaded
+--- firefox-60.0.bak/browser/modules/moz.build
++++ firefox-60.0/browser/modules/moz.build
+@@ -76,9 +76,6 @@
+ with Files("ProcessHangMonitor.jsm"):
+     BUG_COMPONENT = ("Core", "DOM: Content Processes")
+ 
+-with Files("ReaderParent.jsm"):
+-    BUG_COMPONENT = ("Toolkit", "Reader Mode")
+-
+ with Files("Sanitizer.jsm"):
+     BUG_COMPONENT = ("Firefox", "Preferences")
+ 
+@@ -150,7 +147,6 @@
+     'PingCentre.jsm',
+     'PluginContent.jsm',
+     'ProcessHangMonitor.jsm',
+-    'ReaderParent.jsm',
+     'RecentWindow.jsm',
+     'RemotePrompt.jsm',
+     'Sanitizer.jsm',

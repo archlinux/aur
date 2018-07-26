@@ -1,0 +1,249 @@
+diff -Naur firefox-60.0.bak/browser/extensions/activity-stream/common/PrerenderData.jsm firefox-60.0/browser/extensions/activity-stream/common/PrerenderData.jsm
+--- firefox-60.0.bak/browser/extensions/activity-stream/common/PrerenderData.jsm
++++ firefox-60.0/browser/extensions/activity-stream/common/PrerenderData.jsm
+@@ -54,11 +54,9 @@
+     "topSitesRows": 1,
+     "collapseTopSites": false,
+     "section.highlights.collapsed": false,
+-    "section.topstories.collapsed": false,
+-    "feeds.section.topstories": true,
+     "feeds.section.highlights": true,
+     "enableWideLayout": true,
+-    "sectionOrder": "topsites,topstories,highlights"
++    "sectionOrder": "topsites,highlights"
+   },
+   // Prefs listed as invalidating will prevent the prerendered version
+   // of AS from being used if their value is something other than what is listed
+@@ -72,26 +70,14 @@
+     "topSitesRows",
+     "collapseTopSites",
+     "section.highlights.collapsed",
+-    "section.topstories.collapsed",
+-    "enableWideLayout",
+-    "sectionOrder",
+-    // This means if either of these are set to their default values,
+-    // prerendering can be used.
+-    {oneOf: ["feeds.section.topstories", "feeds.section.highlights"]}
++    "enableWideLayout"
+   ],
+   initialSections: [
+     {
+       enabled: true,
+-      icon: "pocket",
+-      id: "topstories",
+-      order: 1,
+-      title: {id: "header_recommended_by", values: {provider: "Pocket"}}
+-    },
+-    {
+-      enabled: true,
+       id: "highlights",
+       icon: "highlights",
+-      order: 2,
++      order: 1,
+       title: {id: "header_highlights"}
+     }
+   ]
+diff -Naur firefox-60.0.bak/browser/extensions/activity-stream/lib/SectionsManager.jsm firefox-60.0/browser/extensions/activity-stream/lib/SectionsManager.jsm
+--- firefox-60.0.bak/browser/extensions/activity-stream/lib/SectionsManager.jsm
++++ firefox-60.0/browser/extensions/activity-stream/lib/SectionsManager.jsm
+@@ -16,40 +16,6 @@
+  * `${feed_pref_name}.options`.
+  */
+ const BUILT_IN_SECTIONS = {
+-  "feeds.section.topstories": options => ({
+-    id: "topstories",
+-    pref: {
+-      titleString: {id: "header_recommended_by", values: {provider: options.provider_name}},
+-      descString: {id: options.provider_description || "pocket_description"},
+-      nestedPrefs: options.show_spocs ? [{
+-        name: "showSponsored",
+-        titleString: {id: "settings_pane_topstories_options_sponsored"},
+-        icon: "icon-info"
+-      }] : []
+-    },
+-    shouldHidePref: options.hidden,
+-    eventSource: "TOP_STORIES",
+-    icon: options.provider_icon,
+-    title: {id: "header_recommended_by", values: {provider: options.provider_name}},
+-    disclaimer: {
+-      text: {id: options.disclaimer_text || "section_disclaimer_topstories"},
+-      link: {
+-        // The href fallback is temporary so users in existing Shield studies get this configuration as well
+-        href: options.disclaimer_link || "https://getpocket.cdn.mozilla.net/firefox/new_tab_learn_more",
+-        id: options.disclaimer_linktext || "section_disclaimer_topstories_linktext"
+-      },
+-      button: {id: options.disclaimer_buttontext || "section_disclaimer_topstories_buttontext"}
+-    },
+-    privacyNoticeURL: options.privacy_notice_link || "https://www.mozilla.org/privacy/firefox/#suggest-relevant-content",
+-    maxRows: 1,
+-    availableLinkMenuOptions: ["CheckBookmarkOrArchive", "CheckSavedToPocket", "Separator", "OpenInNewWindow", "OpenInPrivateWindow", "Separator", "BlockUrl"],
+-    emptyState: {
+-      message: {id: "topstories_empty_state", values: {provider: options.provider_name}},
+-      icon: "check"
+-    },
+-    shouldSendImpressionStats: true,
+-    dedupeFrom: ["highlights"]
+-  }),
+   "feeds.section.highlights": options => ({
+     id: "highlights",
+     pref: {
+diff -Naur firefox-60.0.bak/browser/extensions/activity-stream/prerendered/static/activity-stream-initial-state.js firefox-60.0/browser/extensions/activity-stream/prerendered/static/activity-stream-initial-state.js
+--- firefox-60.0.bak/browser/extensions/activity-stream/prerendered/static/activity-stream-initial-state.js
++++ firefox-60.0/browser/extensions/activity-stream/prerendered/static/activity-stream-initial-state.js
+@@ -21,11 +21,9 @@
+       "topSitesRows": 1,
+       "collapseTopSites": false,
+       "section.highlights.collapsed": false,
+-      "section.topstories.collapsed": false,
+-      "feeds.section.topstories": true,
+       "feeds.section.highlights": true,
+       "enableWideLayout": true,
+-      "sectionOrder": "topsites,topstories,highlights"
++      "sectionOrder": "topsites,highlights"
+     }
+   },
+   "Dialog": {
+@@ -35,27 +33,13 @@
+   "Sections": [
+     {
+       "title": {
+-        "id": "header_recommended_by",
+-        "values": {
+-          "provider": "Pocket"
+-        }
+-      },
+-      "rows": [],
+-      "enabled": true,
+-      "icon": "pocket",
+-      "id": "topstories",
+-      "order": 1,
+-      "initialized": false
+-    },
+-    {
+-      "title": {
+         "id": "header_highlights"
+       },
+       "rows": [],
+       "enabled": true,
+       "id": "highlights",
+       "icon": "highlights",
+-      "order": 2,
++      "order": 1,
+       "initialized": false
+     }
+   ],
+--- firefox-60.0.bak/browser/extensions/activity-stream/lib/ActivityStream.jsm
++++ firefox-60.0/browser/extensions/activity-stream/lib/ActivityStream.jsm
+@@ -23,19 +23,12 @@
+ const {TelemetryFeed} = ChromeUtils.import("resource://activity-stream/lib/TelemetryFeed.jsm", {});
+ const {FaviconFeed} = ChromeUtils.import("resource://activity-stream/lib/FaviconFeed.jsm", {});
+ const {TopSitesFeed} = ChromeUtils.import("resource://activity-stream/lib/TopSitesFeed.jsm", {});
+-const {TopStoriesFeed} = ChromeUtils.import("resource://activity-stream/lib/TopStoriesFeed.jsm", {});
+ const {HighlightsFeed} = ChromeUtils.import("resource://activity-stream/lib/HighlightsFeed.jsm", {});
+ 
+ const DEFAULT_SITES = new Map([
+   // This first item is the global list fallback for any unexpected geos
+-  ["", "https://www.youtube.com/,https://www.facebook.com/,https://www.wikipedia.org/,https://www.reddit.com/,https://www.amazon.com/,https://twitter.com/"],
+-  ["US", "https://www.youtube.com/,https://www.facebook.com/,https://www.amazon.com/,https://www.reddit.com/,https://www.wikipedia.org/,https://twitter.com/"],
+-  ["CA", "https://www.youtube.com/,https://www.facebook.com/,https://www.reddit.com/,https://www.wikipedia.org/,https://www.amazon.ca/,https://twitter.com/"],
+-  ["DE", "https://www.youtube.com/,https://www.facebook.com/,https://www.amazon.de/,https://www.ebay.de/,https://www.wikipedia.org/,https://www.reddit.com/"],
+-  ["PL", "https://www.youtube.com/,https://www.facebook.com/,https://allegro.pl/,https://www.wikipedia.org/,https://www.olx.pl/,https://www.wykop.pl/"],
+-  ["RU", "https://vk.com/,https://www.youtube.com/,https://ok.ru/,https://www.avito.ru/,https://www.aliexpress.com/,https://www.wikipedia.org/"],
+-  ["GB", "https://www.youtube.com/,https://www.facebook.com/,https://www.reddit.com/,https://www.amazon.co.uk/,https://www.bbc.co.uk/,https://www.ebay.co.uk/"],
+-  ["FR", "https://www.youtube.com/,https://www.facebook.com/,https://www.wikipedia.org/,https://www.amazon.fr/,https://www.leboncoin.fr/,https://twitter.com/"]
++  ["", ""],
++  ["US", ""],
+ ]);
+ const GEO_PREF = "browser.search.region";
+ const REASON_ADDON_UNINSTALL = 6;
+@@ -53,30 +46,6 @@
+     title: "Comma-separated list of default top sites to fill in behind visited sites",
+     getValue: ({geo}) => DEFAULT_SITES.get(DEFAULT_SITES.has(geo) ? geo : "")
+   }],
+-  ["feeds.section.topstories.options", {
+-    title: "Configuration options for top stories feed",
+-    // This is a dynamic pref as it depends on the feed being shown or not
+-    getValue: args => JSON.stringify({
+-      api_key_pref: "extensions.pocket.oAuthConsumerKey",
+-      // Use the opposite value as what default value the feed would have used
+-      hidden: !PREFS_CONFIG.get("feeds.section.topstories").getValue(args),
+-      provider_description: "pocket_description",
+-      provider_icon: "pocket",
+-      provider_name: "Pocket",
+-      read_more_endpoint: "https://getpocket.com/explore/trending?src=fx_new_tab",
+-      stories_endpoint: `https://getpocket.cdn.mozilla.net/v3/firefox/global-recs?version=3&consumer_key=$apiKey&locale_lang=${args.locale}&feed_variant=${showSpocs(args) ? "default_spocs_on" : "default_spocs_off"}`,
+-      stories_referrer: "https://getpocket.com/recommendations",
+-      privacy_notice_link: "https://www.mozilla.org/privacy/firefox/#suggest-relevant-content",
+-      disclaimer_link: "https://getpocket.com/firefox/new_tab_learn_more",
+-      topics_endpoint: `https://getpocket.cdn.mozilla.net/v3/firefox/trending-topics?version=2&consumer_key=$apiKey&locale_lang=${args.locale}`,
+-      show_spocs: showSpocs(args),
+-      personalized: true
+-    })
+-  }],
+-  ["showSponsored", {
+-    title: "Show sponsored cards in spoc experiment (show_spocs in topstories.options has to be set to true as well)",
+-    value: true
+-  }],
+   ["filterAdult", {
+     title: "Remove adult pages from sites, highlights, etc.",
+     value: true
+@@ -135,18 +104,6 @@
+     title: "Collapse the Highlights section",
+     value: false
+   }],
+-  ["section.highlights.includePocket", {
+-    title: "Boolean flag that decides whether or not to show saved Pocket stories in highlights.",
+-    value: true
+-  }],
+-  ["section.topstories.collapsed", {
+-    title: "Collapse the Top Stories section",
+-    value: false
+-  }],
+-  ["section.topstories.showDisclaimer", {
+-    title: "Boolean flag that decides whether or not to show the topstories disclaimer.",
+-    value: true
+-  }],
+   ["tippyTop.service.endpoint", {
+     title: "Tippy Top service manifest url",
+     value: "https://activity-stream-icons.services.mozilla.com/v1/icons.json.br"
+@@ -157,7 +114,7 @@
+   }],
+   ["sectionOrder", {
+     title: "The rendering order for the sections",
+-    value: "topsites,topstories,highlights"
++    value: "topsites,highlights"
+   }]
+ ]);
+ 
+@@ -200,20 +157,6 @@
+     value: true
+   },
+   {
+-    name: "section.topstories",
+-    factory: () => new TopStoriesFeed(),
+-    title: "Fetches content recommendations from a configurable content provider",
+-    // Dynamically determine if Pocket should be shown for a geo / locale
+-    getValue: ({geo, locale}) => {
+-      const locales = ({
+-        "US": ["en-US", "en-GB", "en-ZA"],
+-        "CA": ["en-US", "en-GB", "en-ZA"],
+-        "DE": ["de", "de-DE", "de-AT", "de-CH"]
+-      })[geo];
+-      return !!locales && locales.includes(locale);
+-    }
+-  },
+-  {
+     name: "snippets",
+     factory: () => new SnippetsFeed(),
+     title: "Gets snippets data",
+--- firefox-60.0.bak/browser/app/profile/firefox.js
++++ firefox-60.0/browser/app/profile/firefox.js
+@@ -269,7 +269,7 @@
+ // This url, if changed, MUST continue to point to an https url. Pulling arbitrary content to inject into
+ // this page over http opens us up to a man-in-the-middle attack that we'd rather not face. If you are a downstream
+ // repackager of this code using an alternate snippet url, please keep your users safe
+-pref("browser.aboutHomeSnippets.updateUrl", "https://snippets.cdn.mozilla.net/%STARTPAGE_VERSION%/%NAME%/%VERSION%/%APPBUILDID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/");
++pref("browser.aboutHomeSnippets.updateUrl", "");
+ 
+ pref("browser.enable_automatic_image_resizing", true);
+ pref("browser.chrome.site_icons", true);

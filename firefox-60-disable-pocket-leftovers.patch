@@ -1,0 +1,68 @@
+diff -Naur firefox-60.0.bak/browser/app/profile/firefox.js firefox-60.0/browser/app/profile/firefox.js
+--- firefox-60.0.bak/browser/app/profile/firefox.js
++++ firefox-60.0/browser/app/profile/firefox.js
+@@ -198,7 +198,7 @@
+ pref("extensions.{972ce4c6-7e08-4474-a285-3208198ce6fd}.description", "chrome://browser/locale/browser.properties");
+ 
+ pref("extensions.webextensions.themes.enabled", true);
+-pref("extensions.webextensions.themes.icons.buttons", "back,forward,reload,stop,bookmark_star,bookmark_menu,downloads,home,app_menu,cut,copy,paste,new_window,new_private_window,save_page,print,history,full_screen,find,options,addons,developer,synced_tabs,open_file,sidebars,share_page,subscribe,text_encoding,email_link,forget,pocket");
++pref("extensions.webextensions.themes.icons.buttons", "back,forward,reload,stop,bookmark_star,bookmark_menu,downloads,home,app_menu,cut,copy,paste,new_window,new_private_window,save_page,print,history,full_screen,find,options,addons,developer,synced_tabs,open_file,sidebars,share_page,subscribe,text_encoding,email_link,forget");
+ 
+ pref("lightweightThemes.update.enabled", true);
+ pref("lightweightThemes.getMoreURL", "https://addons.mozilla.org/%LOCALE%/firefox/themes");
+@@ -1626,8 +1626,6 @@
+ // Enable browser frames for use on desktop.  Only exposed to chrome callers.
+ pref("dom.mozBrowserFramesEnabled", true);
+ 
+-pref("extensions.pocket.enabled", true);
+-
+ pref("signon.schemeUpgrades", true);
+ 
+ // Enable the "Simplify Page" feature in Print Preview. This feature
+diff -Naur firefox-60.0.bak/browser/components/uitour/UITour.jsm firefox-60.0/browser/components/uitour/UITour.jsm
+--- firefox-60.0.bak/browser/components/uitour/UITour.jsm
++++ firefox-60.0/browser/components/uitour/UITour.jsm
+@@ -149,18 +149,6 @@
+     ["help",        {query: "#appMenu-help-button"}],
+     ["home",        {query: "#home-button"}],
+     ["library",     {query: "#appMenu-library-button"}],
+-    ["pocket", {
+-      allowAdd: true,
+-      query: (aDocument) => {
+-        // The pocket's urlbar page action button is pre-defined in the DOM.
+-        // It would be hidden if toggled off from the urlbar.
+-        let node = aDocument.getElementById("pocket-button-box");
+-        if (node && !node.hidden) {
+-          return node;
+-        }
+-        return aDocument.getElementById("pageAction-panel-pocket");
+-      },
+-    }],
+     ["privateWindow", {query: "#appMenu-private-window-button"}],
+     ["quit",        {query: "#appMenu-quit-button"}],
+     ["readerMode-urlBar", {query: "#reader-mode-button"}],
+@@ -1444,13 +1432,6 @@
+         popup.addEventListener("popupshown", aOpenCallback, { once: true });
+       }
+       aWindow.document.getElementById("identity-box").click();
+-    } else if (aMenuName == "pocket") {
+-      let pageAction = PageActions.actionForID("pocket");
+-      if (!pageAction) {
+-        log.error("Can't open the pocket menu without a page action");
+-        return;
+-      }
+-      pageAction.doCommand(aWindow);
+     } else if (aMenuName == "urlbar") {
+       this.getTarget(aWindow, "urlbar").then(target => {
+         let urlbar = target.node;
+diff -Naur firefox-60.0.bak/browser/extensions/moz.build firefox-60.0/browser/extensions/moz.build
+--- firefox-60.0.bak/browser/extensions/moz.build
++++ firefox-60.0/browser/extensions/moz.build
+@@ -11,7 +11,6 @@
+     'formautofill',
+     'onboarding',
+     'pdfjs',
+-    'pocket',
+     'screenshots',
+     'webcompat',
+ ]

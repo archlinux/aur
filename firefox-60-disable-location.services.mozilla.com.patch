@@ -1,0 +1,44 @@
+--- firefox-60.0.bak/toolkit/components/search/nsSearchService.js	2018-05-16 09:31:04.377035410 +0200
++++ firefox-60.0/toolkit/components/search/nsSearchService.js	2018-05-16 15:42:56.194423958 +0200
+@@ -399,6 +399,12 @@
+     return;
+   }
+ 
++  // Prevent Firefox from contacting location.services.mozilla.com on a new profile
++  Services.prefs.setCharPref("browser.search.region", "US");
++  return;
++  /*
++  Comment from here to prevent console warning: JavaScript warning: jar:file:///usr/lib/firefox/omni.ja!/components/nsSearchService.js, line 411: unreachable code after return statement
++
+   // If we have 'isUS' but no 'countryCode' then we are almost certainly
+   // a profile from Fx 34/35 that set 'isUS' based purely on a timezone
+   // check. If this said they were US, we force region to be US.
+@@ -422,6 +428,7 @@
+   } catch (ex) {
+     // no countryCode pref, nothing to do.
+   }
++  */
+ }
+ 
+ // A method to determine if we are in the United States (US) for the search
+@@ -482,6 +489,12 @@
+   // If we have a country-code already stored in our prefs we trust it.
+   let countryCode = Services.prefs.getCharPref("browser.search.countryCode", "");
+ 
++  // No countryCode set, use US as default, don't contact location.services.mozilla.com
++  Services.prefs.setCharPref("browser.search.countryCode", "US");
++  return;
++  /*
++  Comment from here to prevent console warning: JavaScript warning: jar:file:///usr/lib/firefox/omni.ja!/components/nsSearchService.js, line 493: unreachable code after return statement
++
+   if (!countryCode) {
+     // We don't have it cached, so fetch it. fetchCountryCode() will call
+     // storeCountryCode if it gets a result (even if that happens after the
+@@ -528,6 +541,7 @@
+   // If gInitialized is true then the search service was forced to perform
+   // a sync initialization during our XHRs - capture this via telemetry.
+   Services.telemetry.getHistogramById("SEARCH_SERVICE_COUNTRY_FETCH_CAUSED_SYNC_INIT").add(gInitialized);
++  */
+ };
+ 
+ // Store the result of the geoip request as well as any other values and
