@@ -1,0 +1,19 @@
+pkgbase = python-flake8-formatter-abspath
+	pkgdesc = A flake8 formatter plugin that shows the absolute path of files with warnings.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/jarshwah/flake8_formatter_abspath
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = git
+	source = git+https://github.com/jarshwah/flake8_formatter_abspath.git#tag=v1.0.1
+	md5sums = SKIP
+
+pkgname = python-flake8-formatter-abspath
+	depends = python-setuptools
+
+pkgname = python2-flake8-formatter-abspath
+	depends = python2-setuptools
+
