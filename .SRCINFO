@@ -1,11 +1,13 @@
 pkgbase = ocaml-visitors
 	pkgdesc = An OCaml syntax extension for generating visitor classes.
 	pkgver = 20180513
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.inria.fr/fpottier/visitors
 	arch = i686
 	arch = x86_64
 	license = LGPL
+	depends = ocaml
+	depends = ocaml-ppx_deriving
 	options = !strip
 	options = !makeflags
 	options = staticlibs

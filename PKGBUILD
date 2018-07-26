@@ -2,7 +2,7 @@
 pkgname=ocaml-visitors
 _oname=visitors
 pkgver=20180513
-pkgrel=1
+pkgrel=2
 pkgdesc='An OCaml syntax extension for generating visitor classes.'
 arch=('i686' 'x86_64')
 url='https://gitlab.inria.fr/fpottier/visitors'
