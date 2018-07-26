@@ -2,16 +2,16 @@
 
 pkgname="python-pyocr"
 _pkgname="pyocr"
-pkgver="0.5.1"
+pkgver="0.5.2"
 pkgrel="1"
 pkgdesc="A Python wrapper for OCR engines (Tesseract, Cuneiform, etc)"
-url="https://github.com/jflesch/pyocr"
+url="https://gitlab.gnome.org/World/OpenPaperwork/pyocr"
 depends=('python')
 makedepends=('python' 'python-setuptools' 'git')
 license=('GPL3')
 arch=('any')
 changelog="ChangeLog"
-source=("git+https://github.com/jflesch/${_pkgname}#tag=${pkgver}")
+source=("git+https://gitlab.gnome.org/World/OpenPaperwork/${_pkgname}#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {
