@@ -1,6 +1,6 @@
 pkgbase = grub-git
 	pkgdesc = GNU GRand Unified Bootloader (2)
-	pkgver = 2.02.r152.gec2de93f8
+	pkgver = 2.02.r164.gc79ebcd18
 	pkgrel = 1
 	url = https://www.gnu.org/software/grub/
 	install = grub-git.install

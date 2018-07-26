@@ -18,7 +18,7 @@ _UNIFONT_VER="10.0.06"
 [[ "${CARCH}" == "i686" ]] && _EMU_ARCH="i386"
 
 pkgname="grub-git"
-pkgver=2.02.r152.gec2de93f8
+pkgver=2.02.r164.gc79ebcd18
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
@@ -177,15 +177,6 @@ _build_grub-efi() {
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
-
-	if [[ "${_EFI_ARCH}" == "i386" ]]; then
-		msg "Fix duplicate symbol"
-		# http://savannah.gnu.org/bugs/?func=detailitem&item_id=53517
-		sed '/i386 = lib\/i386\/reboot.c;/d' -i "grub-core/Makefile.core.def"
-		sed '/i386 = lib\/i386\/reboot_trampoline.S;/d' -i "grub-core/Makefile.core.def"
-		msg "Run autogen.sh for ${_EFI_ARCH} efi build"
-		./autogen.sh
-	fi
 
 	msg "Run ./configure for ${_EFI_ARCH} efi build"
 	./configure \
