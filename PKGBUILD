@@ -7,6 +7,7 @@ pkgdesc='An OCaml syntax extension for generating visitor classes.'
 arch=('i686' 'x86_64')
 url='https://gitlab.inria.fr/fpottier/visitors'
 license=('LGPL')
+depends=('ocaml' 'ocaml-ppx_deriving')
 options=('!strip' '!makeflags' 'staticlibs')
 source=('http://gallium.inria.fr/~fpottier/visitors/visitors-20180513.tar.gz')
 md5sums=('0f90d565d045c2df3769239ac1d39b76')
