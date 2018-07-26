@@ -12,14 +12,14 @@ php_version="7.1"
 php_ext="xdebug"
 pkgname="php${php_suffix}-${php_ext}"
 pkgver="2.6.0"
-pkgrel=2
+pkgrel=1
 
 
 pkgdesc="PHP extension module that aids debugging and profiling"
 arch=('i686' 'x86_64')
 url="http://www.xdebug.org"
 license=('GPL')
-depends=("php>=7.1.0,php<7.2.0")
+depends=('php>=7.1.0' 'php<7.2.0')
 
 pkg_src="${php_ext}-${pkgver}"
 
