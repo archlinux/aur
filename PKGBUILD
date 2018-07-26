@@ -1,12 +1,12 @@
 # Maintainer: Dictator Mei <dctxmei@gmail.com>
 pkgname=macchanger-systemd
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="systemd unit setting a random address while preserving the original NIC vendor bytes"
 arch=('any')
 depends=('macchanger')
 source=("macspoof.service")
-sha512sums=('e479f023cda5ed86a91f070719c4156eb38303c1ab9257607671e29e99ad7d1cf41b8e2e402518c4bc4296c8610f6e7d7ea13b94c215cddce279ba5f43e05bfc')
+sha512sums=('f9eac10101d963681ab5ba5a131b9d761ac8714ec140579fc744f2b8dda8e2827f46ef258444bdf590d42cb1a1c5ba36d216f239697dfe948f5d4985fb398f74')
 
 package() {
     install -Dm644 "$srcdir"/macspoof.service "$pkgdir"/usr/lib/systemd/system/macspoof@.service

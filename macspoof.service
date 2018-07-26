@@ -6,7 +6,7 @@ BindsTo=sys-subsystem-net-devices-%i.device
 After=sys-subsystem-net-devices-%i.device
 
 [Service]
-ExecStart=/usr/bin/macchanger -e %I
+ExecStart=/usr/bin/macchanger -r %I
 Type=oneshot
 
 [Install]
