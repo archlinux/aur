@@ -1,7 +1,7 @@
 # Maintainer: Stephen Argent <steve [at] tuxcon [dot] com>
 
-pkgname=maltego-community
-pkgdesc='Maltego Community Edition'
+pkgname=maltego
+pkgdesc='Maltego information gather software by Paterva'
 license=('Commercial')
 url='https://www.paterva.com'
 pkgver=4.1.12.11480

@@ -1,5 +1,5 @@
-pkgbase = maltego-community
-	pkgdesc = Maltego Community Edition
+pkgbase = maltego
+	pkgdesc = Maltego information gather software by Paterva
 	pkgver = 4.1.12.11480
 	pkgrel = 1
 	url = https://www.paterva.com
@@ -15,5 +15,5 @@ pkgbase = maltego-community
 	md5sums_x86_64 = 5a2b0626dee727359e7b83939dc7b27e
 	sha256sums_x86_64 = a9ed45b79648af6fbf2672ce46a0acd645987a65c34a9ad64ffd443b7d46899c
 
-pkgname = maltego-community
+pkgname = maltego
 
