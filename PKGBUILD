@@ -2,16 +2,16 @@
 
 pkgname="python-pyinsane2"
 _pkgname="pyinsane"
-pkgver="2.0.12"
+pkgver="2.0.13"
 pkgrel="1"
 pkgdesc="Python implementation of the Sane API (using ctypes) and abstration layer"
 arch=('any')
-url="https://github.com/jflesch/pyinsane"
+url="https://gitlab.gnome.org/World/OpenPaperwork/pyinsane"
 license=('GPL3')
 makedepends=('python' 'python-setuptools' 'git')
 depends=('python' 'python-pillow' 'sane')
 changelog="ChangeLog"
-source=("git+https://github.com/jflesch/${_pkgname}#tag=${pkgver}")
+source=("git+https://gitlab.gnome.org/World/OpenPaperwork/${_pkgname}#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {
