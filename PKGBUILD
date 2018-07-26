@@ -1,7 +1,9 @@
-# Maintainer: Carlo Cabanilla <carlo.cabanilla@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
+
 pkgname=(lua-luafilesystem lua52-luafilesystem lua51-luafilesystem)
-pkgver=1.6.3
-_tag=v_${pkgver//./_}
+pkgver=1.7.0
+_tag=${pkgver//./_}
 pkgrel=2
 pkgdesc="A lua library to access the underlying directory structure and file attributes"
 arch=(i686 x86_64)
@@ -11,8 +13,8 @@ depends=(lua)
 makedepends=(make gcc)
 install=
 changelog=
-source=("luafilesystem-${_tag}.tar.gz::https://github.com/keplerproject/luafilesystem/archive/${_tag}.tar.gz")
-md5sums=('d0552c7e5a082f5bb2865af63fb9dc95')
+source=("luafilesystem-${_tag}.tar.gz::https://github.com/keplerproject/luafilesystem/archive/v${_tag}.tar.gz")
+sha256sums=('854ef99b6a4eb48af00c304e26fc4429094a8612003a7a81ba22014f32e85db3')
 
 build() {
 	cd "luafilesystem-${_tag}"
