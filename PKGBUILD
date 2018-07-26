@@ -1,7 +1,7 @@
 # Maintainer: Robert Stoffers <rstoffers@gmail.com>
 
 pkgname=gamehub
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Games manager/downloader/library written in Vala that supports GOG, Steam and Humble Bundle"
 arch=('any')
@@ -11,18 +11,17 @@ depends=('granite' 'gtk3' 'glibc' 'webkit2gtk' 'json-glib' 'libgee' 'libsoup' 's
 makedepends=('meson' 'ninja' 'vala')
 conflicts=('gamehub-git')
 source=("GameHub-$pkgver.tar.gz"::https://github.com/tkashkin/GameHub/archive/$pkgver.tar.gz)
-md5sums=('98082a10b95208035c24fd1eb52fa3c8') 
+md5sums=('15f58636acd5946185fbca1c65a6a17c') 
 
 build() {
 	cd "GameHub-$pkgver"
-	meson build --prefix=$pkgdir/usr -Ddistro=arch
+	meson build --prefix=/usr -Ddistro=arch
 	cd build
 	ninja
-	rm -f ../meson/post_install.py # don't do post install to avoid generating unnecessary files
-	touch ../meson/post_install.py # menson chucks a wobbly if it doesn't exist
 }
 
 package() {
 	cd "GameHub-$pkgver"/build
-	ninja install
+	DESTDIR=$pkgdir ninja install
+	sudo ln -s /usr/bin/com.github.tkashkin.gamehub /usr/bin/gamehub
 }
