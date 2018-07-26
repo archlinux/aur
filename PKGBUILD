@@ -1,11 +1,12 @@
 # Contributor: Todd Musall 
 # Contributor: dront78 (Ivan)
 # Contributor: Victor Noel
-# Maintainer: Lari Tikkanen
+# Contributor: Lari Tikkanen
+# Maintainer:  Tim Schumacher
 
 pkgname=('heimdall-git')
 _gitname="heimdall"
-pkgver=1.4.1.r21.gd0526a3
+pkgver=1.4.2.r5.g5377b62
 pkgrel=1
 pkgdesc="A cross-platform open-source utility to flash firmware (aka ROMs) onto Samsung Galaxy S devices."
 arch=('i686' 'x86_64')
@@ -16,7 +17,7 @@ makedepends=('cmake' 'git')
 optdepends=('android-udev: Udev rules to connect Android devices to you linux box')
 conflicts=('heimdall')
 provides=('heimdall')
-source=("$_gitname::git://github.com/Benjamin-Dobell/Heimdall.git"
+source=("$_gitname::git+https://gitlab.com/BenjaminDobell/Heimdall.git"
         "heimdall.desktop"
         "BridgeManager.patch")
 md5sums=('SKIP'
