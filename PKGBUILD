@@ -4,7 +4,7 @@
 pkgname=ocaml-fix
 _oname=fix
 pkgver=20130611
-pkgrel=2
+pkgrel=1
 pkgdesc="a least fixed point computation library, using an efficient imperative algorithm"
 arch=('i686' 'x86_64')
 url=''
@@ -15,12 +15,12 @@ md5sums=('056dec3341ef008458fa722ebf2e3c57')
 
 build() {
   cd "$srcdir/"*/
-  make -C src
+  make
 }
 
 package() {
   cd "$srcdir/"*/
   export OCAMLFIND_DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
   install -dm 755 "$OCAMLFIND_DESTDIR"
-  make -C src install
+  make install
 }
