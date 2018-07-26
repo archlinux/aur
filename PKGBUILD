@@ -16,7 +16,7 @@ sha256sums=('c6dd7a5701fff8ad5ebb45a3dc8e757e61d52658de3918e38bab233e7fd3b4ae')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   mkdir -p build_cxx && pushd build_cxx
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DNLOPT_MATLAB=OFF -DNLOPT_CXX=ON ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DNLOPT_MATLAB=OFF -DNLOPT_CXX=ON -DNLOPT_SWIG=OFF ..
   make
   popd
   mkdir -p build && pushd build
