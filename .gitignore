@@ -1,1 +1,4 @@
-deploy.sh
+heroku-*.tgz
+src/
+pkg
+*.pkg.tar*
