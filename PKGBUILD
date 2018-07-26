@@ -1,15 +1,14 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
-
 # Contributor: Matjaž Mozetič (https://github.com/sysadminmatmoz)
-# Contributor: Vincent Demeester (vincent@sbr.pm)
+# Contributor: Vincent Demeester <vincent@sbr.pm>
 # Contributor: Nicolas Pouillard (http://nicolaspouillard.fr)
 # Contributor: Peter Simons <simons@cryp.to>
 # Contributor: Andreas Hilboll <andreas@hilboll.de>
-# Contributor: kljohann@gmail.com
+# Contributor: <kljohann@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=myrepos
-pkgver=1.20171231
+pkgver=1.20180726
 pkgrel=1
 pkgdesc="Multiple Repository management tool"
 arch=('any')
@@ -19,7 +18,6 @@ optdepends=('bzr: support for bzr repositories'
             'cvs: support for cvs repositories'
             'darcs: support for darcs repositories'
             'git-annex: support for git-annex clones'
-            'gitk: support for visualizing git repository history'
             'git: support for git repositories'
             'mercurial: support for mercurial repositories'
             'perl-html-parser: support for webcheckout'
@@ -32,7 +30,7 @@ optdepends=('bzr: support for bzr repositories'
 url='http://myrepos.branchable.com'
 license=('GPL2')
 source=("https://git.joeyh.name/index.cgi/myrepos.git/snapshot/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('81208a638c57e0c71cc32bf7464e781f1e451f140d6e9523dd721fc8dddd38f0')
+sha256sums=('bfb909037da678a1668f3f7f86efee7ee31f2bc66d90b83dd9e6b6a5f998c4e2')
 provides=('mr' 'myrepos' 'webcheckout')
 conflicts=('mr' 'webcheckout')
 
