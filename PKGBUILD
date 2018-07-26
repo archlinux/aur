@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="7.0.326.0"
+pkgver="7.0.326.1"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -8,12 +8,12 @@ arch=('x86_64')
 depends=('wine' 'hicolor-icon-theme')
 makedepends=('p7zip' 'icoutils' 'gendesk')
 url="http://www.tracker-software.com/product/pdf-xchange-editor"
-_downloadsource="http://www.tracker-software.com/downloads"
+_downloadsource="https://www.tracker-software.com/downloads"
 _x64file="EditorV7.x64.msi"
 _installdir="/usr/lib"
 
 source=($_downloadsource/$_x64file)
-sha256sums=('03418441e2fae48637a4d5e3af951f94af9d37cd17c603c040ac7c2693a9f1d6')
+sha256sums=('dfc85d6db9e82b46ac3b1f52c8545bc1ebaeba7c9c40ab742bf1262a7ac2997e')
 
 prepare()
 {
