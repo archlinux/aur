@@ -1,5 +1,5 @@
 pkgbase = linux-clear
-	pkgver = 4.17.9
+	pkgver = 4.17.10
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.9.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.9.sign
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#commit=600559fdf8341f3f0af75ad2960ba8c1499c1932
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.10.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.10.sign
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.17.10-597
 	source = https://downloadmirror.intel.com/27945/eng/microcode-20180703.tgz
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = rtc_nvmem_dont_return_an_error_when_not_enabled.patch::https://git.kernel.org/pub/scm/linux/kernel/git/abelloni/linux.git/patch/?id=c59b3715ac16544f8f68ab7af03f108e339b36aa
@@ -28,7 +28,7 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13
 	sha256sums = SKIP
-	sha256sums = 52131a497efaed724afaa7f7022249f8f8e6e555cbe407a6619908ed2ebcee89
+	sha256sums = 41ad005296c7a1b5245a87881f666b3f4d7aa05a6b9409454b2e473d473c4cee
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 4a1a346fdf48e1626d4c9d0d47bbbc6a4052f56e359c85a3dd2d10fd555e5938

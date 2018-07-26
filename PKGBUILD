@@ -65,10 +65,9 @@ _rev_override="n"
 
 pkgbase=linux-clear
 __basekernel=4.17
-_minor=9
+_minor=10
 pkgver=${__basekernel}.${_minor}
-#_clearver=${__basekernel}.9-596
-_clearver=600559fdf8341f3f0af75ad2960ba8c1499c1932
+_clearver=${pkgver}-597
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -81,7 +80,7 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.sign"
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#commit=${_clearver}"
+  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clearver}"
   'https://downloadmirror.intel.com/27945/eng/microcode-20180703.tgz'
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   "rtc_nvmem_dont_return_an_error_when_not_enabled.patch::https://git.kernel.org/pub/scm/linux/kernel/git/abelloni/linux.git/patch/?id=c59b3715ac16544f8f68ab7af03f108e339b36aa"
@@ -96,7 +95,7 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '52131a497efaed724afaa7f7022249f8f8e6e555cbe407a6619908ed2ebcee89'
+            '41ad005296c7a1b5245a87881f666b3f4d7aa05a6b9409454b2e473d473c4cee'
             'SKIP'
             'SKIP'
             '4a1a346fdf48e1626d4c9d0d47bbbc6a4052f56e359c85a3dd2d10fd555e5938'
