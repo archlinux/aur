@@ -1,13 +1,13 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
-# Contributor: scolobb <scolobb at colimite fr> #THX for the mirror
-# Contributor: EEva <eeva+aur at marvid fr>
+# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Contributor: scolobb <scolobb@colimite.fr>
+# Contributor: EEva <eeva+aur@marvid.fr>
 
 pkgname=ttf-montserrat
 pkgver=7.200
 pkgrel=3
 _fontname=Montserrat
 pkgdesc='Geometric font in many weights with Cyrillic and extended Latin support (Regular, Alternates), original concept by Julieta Ulanovsky'
-url='http://montserrat.zkysky.com.ar/en'
+url="https://github.com/JulietaUla/${_fontname}"
 arch=('any')
 license=('custom:OFL')
 source=("https://github.com/JulietaUla/${_fontname}/archive/v${pkgver}.tar.gz")
