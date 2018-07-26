@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=guidoar-git
-pkgver=366.caa3535
+pkgver=373.21a6fc4
 pkgrel=1
 pkgdesc="a library to browse, transform and manipulate Guido scores (git version)"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ depends=('midisharelight-git')
 makedepends=('cmake')
 provides=('guidoar')
 conflicts=('guidoar')
-source=("$pkgname::git+git://git.code.sf.net/p/guidolib/guidoar#branch=dev")
+source=("$pkgname::git+https://github.com/grame-cncm/guidoar.git#branch=dev")
 md5sums=('SKIP')
 
 pkgver() {
