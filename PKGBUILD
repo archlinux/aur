@@ -1,6 +1,6 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 pkgname=camouflage
-pkgver=20180726.76_ef65ddd
+pkgver=20180727.78_8135967
 pkgrel=1
 pkgdesc="a mux+websocket+TLS proxy"
 arch=('i686' 'x86_64')
