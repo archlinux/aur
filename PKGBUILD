@@ -4,7 +4,7 @@
 pkgname=ocaml-fix
 _oname=fix
 pkgver=20130611
-pkgrel=3
+pkgrel=1
 pkgdesc="a least fixed point computation library, using an efficient imperative algorithm"
 arch=('i686' 'x86_64')
 url=''
@@ -17,7 +17,7 @@ md5sums=('056dec3341ef008458fa722ebf2e3c57')
 
 build() {
   cd "$srcdir/"*/
-  m a k e
+  make
 }
 
 package() {
