@@ -1,6 +1,6 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
-# Contributor: jnbek1972 ___AT____ gmail__DOT__com
-# Contributor: Shanto (at hotmail.com)
+# Contributor: <jnbek1972@gmail.com>
+# Contributor: Shanto <shanto@hotmail.com>
 # Contributor: Erus <erus.iluvatar@gmail.com>
 
 pkgname=ttf-mac-fonts
@@ -8,13 +8,13 @@ pkgver=20100901.134
 pkgrel=1
 pkgdesc='Mac fonts including Lucida Grande, Apple Garamond and other fonts from Apple'
 arch=('any')
-url='http://www.apple.com/safari/'
+url='https://www.apple.com/safari/'
 license=('custom')
 depends=()
 makedepends=('subversion')
 conflicts=('macfonts')
 source=("${pkgname}::svn+https://svn.code.sf.net/p/macbuntu/code/Macbuntu/fonts/"
-    'http://images.apple.com/legal/sla/docs/SafariWindows.pdf')
+        'http://images.apple.com/legal/sla/docs/SafariWindows.pdf')
 sha256sums=('SKIP'
             'd1c9697ea430a3ddad6548c7b9c961c4b06f9da5a5ba1f1007fe998b3354df4a')
 
