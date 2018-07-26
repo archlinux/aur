@@ -13,6 +13,7 @@ pkgbase = heroku-cli
 	conflicts = heroku-toolbelt
 	conflicts = ruby-heroku
 	noextract = heroku-7.7.6.tgz
+	options = !strip
 	source = https://registry.npmjs.org/heroku/-/heroku-7.7.6.tgz
 	md5sums = 9ced7cd527fc3dd1448a99a5026fff7f
 

@@ -14,6 +14,7 @@ optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("https://registry.npmjs.org/heroku/-/heroku-$pkgver.tgz")
 noextract=("heroku-$pkgver.tgz")
+options=('!strip')
 
 package() {
   npm install -g --user root --prefix "$pkgdir/usr" heroku-$pkgver.tgz
