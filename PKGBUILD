@@ -3,14 +3,14 @@
 
 pkgname=burstcoin-wallet
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The world's first HDD-mined cryptocurrency using an energy efficient and fair Proof-of-Capacity (PoC) consensus algorithm."
 arch=('i686' 'x86_64')
 url="https://github.com/PoC-Consortium/burstcoin"
 license=('GPL3')
 options=('!strip')
 backup=(opt/burstcoin-wallet/conf/{logging-default.properties,brs-default.properties})
-depends=('java-runtime-common' 'java-runtime>=8' 'xdg-utils')
+depends=('java-environment' 'xdg-utils')
 optdepends=('mariadb: for storage')
 install=burstcoin-wallet.install
 source=(https://github.com/PoC-Consortium/burstcoin/releases/download/${pkgver}/burstcoin-${pkgver}.zip
@@ -26,7 +26,7 @@ package() {
 
     # Lib directory
     install -d $pkgdir/opt/$pkgname
-    cp -a burst_db conf html burst.jar genscoop.cl init-mysql.sql "$pkgdir/opt/$pkgname"
+    cp -a conf html burst.jar genscoop.cl init-mysql.sql "$pkgdir/opt/$pkgname"
     install -Dm755 burst.sh -t "$pkgdir/opt/$pkgname"
 
     # Daemon
