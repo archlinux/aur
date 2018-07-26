@@ -1,7 +1,7 @@
 # Maintainer: TC <crt@archlinux.email>
 pkgname=ossec-hids
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Host-based Intrusion Detection System"
 arch=('any')
 url="https://ossec.github.io/"
@@ -25,6 +25,7 @@ _preparevars() {
   export USER_NO_STOP=yes
   export USER_DIR=$_instdir
   export USER_BINARYINSTALL=x
+  export USE_GEOIP=yes
 }
 
 build() {
