@@ -3,7 +3,7 @@
 
 pkgname=code-git
 pkgdesc='Microsoft Code for Linux, Open Source version from git (vscode)'
-pkgver=1.16.0.r12116.g28d5806f24
+pkgver=1.16.0.r14403.gc7ab363b37
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
@@ -22,7 +22,7 @@ source=("git+https://github.com/Microsoft/vscode"
 sha256sums=('SKIP'
             'dd212d343a02466f04bd9def162428ac997b53c4c839cea220ab61382d01f538'
             '7447807230c09b80529e5cde4a1abfbb687937b16790b77a227ae39ba4c603ce'
-            '2a26fd93719970069da0a326b5ed77592234ffc6d05587b4d5bb8242c7f4c9b1'
+            '9b0629c7fbec7b7769b285694018cbbd8204a27cfaa576d3e7884377441e5743'
             '90b8915d8195546088e845f3205fb965e941561d309c8b462bb0b22a159e041c')
 
 case "$CARCH" in
