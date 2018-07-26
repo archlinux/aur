@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: liblivesplit-core
+Description: a library that provides a lot of functionality for creating a speedrun timer
+Version: 0.9.0
+Libs: -L${exec_prefix}/lib -llivesplit_core 
+Libs.private: -lpthread -lm -ldl -lrt -lgcc_s
+Cflags: -I${prefix}/include
