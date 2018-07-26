@@ -4,7 +4,7 @@
 pkgname=ocaml-fix
 _oname=fix
 pkgver=20130611
-pkgrel=1
+pkgrel=2
 pkgdesc="a least fixed point computation library, using an efficient imperative algorithm"
 arch=('i686' 'x86_64')
 url=''
