@@ -1,8 +1,8 @@
 pkgbase = synfig
 	pkgdesc = Professional vector animation program (CLI renderer only)
 	pkgver = 1.2.1
-	pkgrel = 3
-	url = http://synfig.org
+	pkgrel = 4
+	url = https://synfig.org
 	arch = x86_64
 	license = GPL2
 	makedepends = boost
@@ -29,7 +29,7 @@ pkgbase = synfig
 	source = https://downloads.sourceforge.net/project/synfig/releases/1.2.1/source/synfig-1.2.1.tar.gz
 	source = ffmpeg-3.0.patch
 	sha256sums = 4d8bada4e99f05ee16b4256fc3f5a551d00a745347944837bbd6fa158b57e457
-	sha256sums = a443f7c663ec0f9969f7044e5831a4f543df5c69dfca3cc56b15259f56c516d1
+	sha256sums = 424b3cc38809038c3b015ce2a6d3a006d73aefe0445d0090fae45e8eb69b2b55
 
 pkgname = synfig
 
