@@ -1,0 +1,15 @@
+pkgbase = ocaml-fix
+	pkgdesc = a least fixed point computation library, using an efficient imperative algorithm
+	pkgver = 20130611
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = unknown
+	options = !strip
+	options = !makeflags
+	options = staticlibs
+	source = http://gallium.inria.fr/~fpottier/fix/fix-20130611.tar.gz
+	md5sums = 056dec3341ef008458fa722ebf2e3c57
+
+pkgname = ocaml-fix
+
