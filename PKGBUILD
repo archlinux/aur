@@ -4,14 +4,14 @@
 pkgname=ocaml-fix
 _oname=fix
 pkgver=20130611
-pkgrel=4
+pkgrel=1
 pkgdesc="a least fixed point computation library, using an efficient imperative algorithm"
 arch=('i686' 'x86_64')
 url=''
 license=('unknown')
 options=('!strip' '!makeflags' 'staticlibs')
 source=('http://gallium.inria.fr/~fpottier/fix/fix-20130611.tar.gz')
-depends=()
+depends=(ocaml)
 makedepends=('ocaml-findlib' 'ocamlbuild')
 md5sums=('056dec3341ef008458fa722ebf2e3c57')
 
