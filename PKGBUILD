@@ -1,16 +1,16 @@
 # Contributor: sxe <sxxe@gmx.de>
 pkgname=qlipper
-pkgver=2.0.2
-pkgrel=3
+pkgver=5.1.1
+pkgrel=1
 pkgdesc="Lightweight & cross-platform clipboard history applet based on qt"
 arch=('i686' 'x86_64')
 url="https://github.com/pvanek/qlipper/"
 license=("GPL")
-depends=('qt4' 'libqxt')
-makedepends=('cmake')
+depends=('qt5-base' 'gtk-update-icon-cache')
+makedepends=('cmake' 'qt5-tools')
 source=("https://github.com/pvanek/qlipper/archive/$pkgver.tar.gz")
 
-md5sums=('29c8c7b4a4b08ce127b224d21b7a00d4')
+md5sums=('5730a4e8a1cd6b9081135fe317c5a3cd')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
