@@ -1,5 +1,5 @@
 pkgname=mingw-w64-fmilib
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="open-source implementation of the FMI open standard (mingw-w64)"
 arch=('any')
@@ -8,8 +8,10 @@ depends=('mingw-w64-crt' 'mingw-w64-expat' 'mingw-w64-minizip')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 license=('BSD')
-source=("http://www.jmodelica.org/downloads/FMIL/FMILibrary-${pkgver}-src.zip")
-sha1sums=('901de5765ebabb67a3b3b29eef20b6a26c80fc5c')
+#source=("http://www.jmodelica.org/downloads/FMIL/FMILibrary-${pkgver}-src.zip")
+#sha1sums=('901de5765ebabb67a3b3b29eef20b6a26c80fc5c')
+source=("FMILibrary-${pkgver}::svn+https://svn.jmodelica.org/FMILibrary/tags/${pkgver}/")
+sha256sums=(SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
