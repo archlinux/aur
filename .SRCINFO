@@ -12,8 +12,9 @@ pkgbase = heroku-cli
 	conflicts = heroku-client-standalone
 	conflicts = heroku-toolbelt
 	conflicts = ruby-heroku
-	source = https://github.com/heroku/cli/archive/v7.0.98.tar.gz
-	md5sums = fb109a5a7dfededc4ea765f8db8b6b3f
+	noextract = heroku-7.7.6.tgz
+	source = https://registry.npmjs.org/heroku/-/heroku-7.7.6.tgz
+	md5sums = 9ced7cd527fc3dd1448a99a5026fff7f
 
 pkgname = heroku-cli
 
