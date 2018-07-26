@@ -1,10 +1,12 @@
 pkgbase = ocaml-fix
 	pkgdesc = a least fixed point computation library, using an efficient imperative algorithm
 	pkgver = 20130611
-	pkgrel = 3
+	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	license = unknown
+	makedepends = ocaml-findlib
+	makedepends = ocamlbuild
 	options = !strip
 	options = !makeflags
 	options = staticlibs
