@@ -1,8 +1,8 @@
 # Maintainer: Mikuro Kagamine <mikurok@forgecrushing.com>
 
 pkgname=browsh
-pkgver=1.4.9
-pkgrel=3
+pkgver=1.4.10
+pkgrel=1
 pkgdesc='A fully-modern text-based browser, rendering to TTY and browsers'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.brow.sh'
@@ -12,11 +12,11 @@ makedepends=('go' 'go-bindata' 'dep' 'git')
 optdepends=('upx: compress binary')
 conflicts=('browsh-bin' 'browsh-git')
 options=('!strip')
-noextract=("${pkgname}.xpi")
+noextract=("${pkgname}-${pkgver}-an.fx.xpi")
 source=("https://github.com/${pkgname}-org/${pkgname}/archive/v${pkgver}.tar.gz"
-		"https://github.com/${pkgname}-org/${pkgname}/releases/download/v1.4.9/${pkgname}-${pkgver}-an.fx.xpi")
-sha512sums=('cda0af1e45d16405fc00804c3c95c16de830ab9e151dc93ae05f71f1c42b9d90baa02ceff9fb6d9e35d7c6dc294d0795e0be92be46f2b7be69296a28774f2340'
-			'3420427a7d5abd26962079a75cb1ddd1bfaa0f1ce03094802efcab7b0555ebe87c1b7f48a611e500547589e09e69b6eba9f7bad3225adb19155026470746570d')
+		"https://github.com/${pkgname}-org/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-an.fx.xpi")
+sha512sums=('699dfdb1f5089ad7db9829fb50eff42a3c63b451abcfd79ae3ad9fbac084cdec2d4b87eeea334bd2e77d9d9de92d5dc7b1af2260e8f9b606e20e1ca3088d95a1'
+			'a3024e4de222df2aa1ccf1ab74121d4787d27eaa4d7cd402b1a9e793b17b13465db6a3f7dba0239ef84a45b79619e0b5f85794b79ab4cf83ba1fe87c23efab9c')
 
 prepare() {
 	## Go is fussy.
@@ -30,7 +30,8 @@ prepare() {
 	xpipath="$(mktemp -d)"
 	cp "${srcdir}/${pkgname}-${pkgver}-an.fx.xpi" "${xpipath}/${pkgname}.xpi"
 	if [ $(which upx 2>/dev/null) ]; then
-		_compress="-nocompress"; else
+		_compress="-nocompress"
+	else
 		_compress=""; fi
 	go-bindata	$_compress\
 				-prefix "${xpipath}"\
@@ -44,8 +45,8 @@ prepare() {
 }
 
 build() {
-	echo Build ${pkgname}...
 	cd "$_interfacer"
+	echo Build ${pkgname}...
 	go build	-x\
 				-gcflags "all=-trimpath=${GOPATH}"\
 				-asmflags "all=-trimpath=${GOPATH}"\
