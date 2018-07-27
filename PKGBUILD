@@ -4,7 +4,7 @@
 pkgname=ocaml-wasm
 _oname=wasm
 pkgver=1.0
-pkgrel=9
+pkgrel=10
 pkgdesc="An OCaml library to read and write Web Assembly (wasm) files and manipulate their AST."
 arch=('i686' 'x86_64')
 url=''
@@ -17,7 +17,7 @@ md5sums=('82d4cc7c67ae32a6785268a1cdddd973')
 
 build() {
   cd "$srcdir/"*/
-  make -C interpreter opt unopt -j4
+  make -C interpreter opt unopt
 }
 
 package() {

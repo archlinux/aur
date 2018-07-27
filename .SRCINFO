@@ -1,7 +1,7 @@
 pkgbase = ocaml-wasm
 	pkgdesc = An OCaml library to read and write Web Assembly (wasm) files and manipulate their AST.
 	pkgver = 1.0
-	pkgrel = 9
+	pkgrel = 10
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
