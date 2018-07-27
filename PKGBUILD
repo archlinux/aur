@@ -12,17 +12,20 @@ depends=('fstar' 'z3' 'ocaml-fstar')
 
 build() {
   cd "$srcdir/"
+  rm -rf fstar
   cp -r /opt/fstar/ .
   export FSTAR_HOME="$(pwd)/fstar"
-  cd fstar/ulib
-  make clean
-  make -j4
-  cd ml
+  cd fstar
+  find -name '*.cmx' -delete
+  cd ulib/ml
   make -j4
 }
 
 package() {
   cd "$srcdir/"
   mkdir -p "$pkgdir/opt/fstar/ulib"
-  find fstar/ulib -type f -exec sh -c "pacman -Ql fstar | cut -f 2 -d ' ' | grep -q '{}$' || cp -r {} '$pkgdir/opt/fstar/ulib'" \;
+  find fstar/ulib -type f | while read f; do
+    mkdir -p "$(dirname "$pkgdir/opt/$f")"
+    pacman -Ql fstar | cut -f 2 -d ' ' | grep -qF "/opt/$f" || cp "$f" "$pkgdir/opt/$f"
+  done
 }
