@@ -17,7 +17,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd Akira
-  git describe --tags --always | sed 's/-/.r/; s/-g/./'
+  git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
