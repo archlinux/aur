@@ -1,9 +1,16 @@
 pkgbase = browsh-bin
 	pkgdesc = A fully-modern text-based browser, rendering to TTY and browsers
-	pkgver = 1.4.8
-	pkgrel = 2
+	pkgver = 1.4.10
+	pkgrel = 1
 	url = https://www.brow.sh
 	arch = x86_64
+	arch = i386
+	arch = i486
+	arch = i586
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = LGPL2.1
 	depends = firefox>=57
 	optdepends = upx: compress binary
@@ -11,8 +18,22 @@ pkgbase = browsh-bin
 	conflicts = browsh
 	conflicts = browsh-git
 	options = !strip
-	source = https://github.com/browsh-org/browsh/releases/download/v1.4.8/browsh_1.4.8_linux_amd64
-	sha512sums = ca58a9386c46f0a182d7170565c09a3f1bbba25d51aff8408bd73721f886247fe388d446909cefa8abf7c9f13dd0be63f7e925d6c7b68f8a950ff229ac5a67f3
+	source_x86_64 = https://github.com/browsh-org/browsh/releases/download/v1.4.10/browsh_1.4.10_linux_amd64
+	sha512sums_x86_64 = 406ba54914e35cda4c50d03cb6c01723963f374d83ee95b5ccdbf48fb2ff30edab209656ee639425acf9d81b649d0ae06d8c9c2f8db85f94c25b9f8f3f23ba69
+	source_i386 = https://github.com/browsh-org/browsh/releases/download/v1.4.10/browsh_1.4.10_linux_386
+	sha512sums_i386 = 190d0f4ef9f9a7858ea1c02d7b7dd45d63f115d707e137f05081b51beaf344032c4aeed8a82f7bea6dd16f1853a6b23b9ea6f19be43ff7556d0bd9f4705ebd46
+	source_i486 = https://github.com/browsh-org/browsh/releases/download/v1.4.10/browsh_1.4.10_linux_386
+	sha512sums_i486 = 190d0f4ef9f9a7858ea1c02d7b7dd45d63f115d707e137f05081b51beaf344032c4aeed8a82f7bea6dd16f1853a6b23b9ea6f19be43ff7556d0bd9f4705ebd46
+	source_i586 = https://github.com/browsh-org/browsh/releases/download/v1.4.10/browsh_1.4.10_linux_386
+	sha512sums_i586 = 190d0f4ef9f9a7858ea1c02d7b7dd45d63f115d707e137f05081b51beaf344032c4aeed8a82f7bea6dd16f1853a6b23b9ea6f19be43ff7556d0bd9f4705ebd46
+	source_i686 = https://github.com/browsh-org/browsh/releases/download/v1.4.10/browsh_1.4.10_linux_386
+	sha512sums_i686 = 190d0f4ef9f9a7858ea1c02d7b7dd45d63f115d707e137f05081b51beaf344032c4aeed8a82f7bea6dd16f1853a6b23b9ea6f19be43ff7556d0bd9f4705ebd46
+	source_armv6h = https://github.com/browsh-org/browsh/releases/download/v1.4.10/browsh_1.4.10_linux_armv6
+	sha512sums_armv6h = 0acae3bf0fe8fbebf3c00384dd63812da183f9ac19ac3a6aea64328f3a8bc3f2eb5adcd15ff57c58a5084daf469d2e3576abfcd575f743737d1088884c98ed80
+	source_armv7h = https://github.com/browsh-org/browsh/releases/download/v1.4.10/browsh_1.4.10_linux_armv7
+	sha512sums_armv7h = d7e1af15f5ef33abb67afb440b179bd47ff6980e6298b823272002f83f9f9644d3c4003ca3f0d2cbdbbd0c12c7e0bd6af85b308dc55fc5b0c6ad0964bbcc85f4
+	source_aarch64 = https://github.com/browsh-org/browsh/releases/download/v1.4.10/browsh_1.4.10_linux_arm64
+	sha512sums_aarch64 = b798c501b31edddf4dcbf8efa2202023ddf70f8439f2e314c4a4ec7b47d954bf662557bf727ae22c975c4ac1be799b64962f1f0ae8ed849e51ad700be7ea1f70
 
 pkgname = browsh-bin
 
