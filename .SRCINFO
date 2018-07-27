@@ -1,13 +1,14 @@
 pkgbase = fstar-ulib
 	pkgdesc = compiles the ulib component of F*
 	pkgver = 0.9.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.fstar-lang.org/
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
 	depends = fstar
 	depends = z3
+	depends = ocaml-fstar
 	options = !strip
 	options = !makeflags
 	options = staticlibs
