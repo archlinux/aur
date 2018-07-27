@@ -1,7 +1,7 @@
 # Maintainer: corrad1nho <corrado@posteo.net>
 
 pkgname=qomui
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="OpenVPN Gui with advanced features and support for multiple providers"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=(python python-pyqt5 python-dbus openvpn stunnel bind-tools dnsmasq geoi
 makedepends=(python-setuptools)
 install=
 source=("https://github.com/corrad1nho/qomui/archive/v$pkgver.tar.gz")
-sha256sums=("09bbcbe24d732be57d84635ac48873e9816fa4b2a7c0bc9b79894f329acfe87e")
+sha256sums=("7c45d5e2fdf46dd67f31fb809bb71c097cde5d7d7f06b5d55437bbb0a55a8b74")
 
 build() {
 	cd "$pkgname-$pkgver"
