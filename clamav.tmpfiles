@@ -1,0 +1,4 @@
+d /run/clamav 0755 clamav clamav
+d /var/log/clamav 0755 clamav clamav
+d /var/lib/clamav 0755 clamav clamav
+

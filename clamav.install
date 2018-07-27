@@ -1,0 +1,12 @@
+post_upgrade() {
+  if (( $(vercmp $2 0.99.3) <= 0 )); then
+    cat << EOF
+
+===> WARNING: ClamAV service files have been renamed:
+  -> clamav-daemon.service
+  -> clamav-freshclam.service
+
+EOF
+  fi
+}
+
