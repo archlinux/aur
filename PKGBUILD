@@ -26,7 +26,10 @@ sha512sums=('SKIP'
 validpgpkeys=('65ED513993F08DA06F9639A6F13F9E16BCA5BFAD') 
 
 prepare() {
+
   cd clamav-${pkgver}
+  wget https://raw.githubusercontent.com/bar0metr/clamav_patches/master/configure_patch
+  patch -p0 -i configure_patch
   sed -E 's|^(Example)$|#\1|' -i etc/{clamd,freshclam,clamav-milter}.conf.sample
   sed -E 's|#(User) .+|\1 clamav|' -i etc/{clamd,freshclam,clamav-milter}.conf.sample
   sed -E 's|#(LogFile) .+|\1 /var/log/clamav/clamd.log|' -i etc/clamd.conf.sample
@@ -53,7 +56,7 @@ build() {
     --sysconfdir=/etc/clamav \
     --with-dbdir=/var/lib/clamav \
     --with-user=clamav \
-    --with-openssl=/usr/lib/openssl-1.0 \
+    --with-openssl=/usr \
     --disable-ipv6 \
     --enable-bigstack \
     --with-group=clamav \
