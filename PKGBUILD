@@ -1,5 +1,10 @@
+# Maintainer: SilverMight <silver at silvermight dot com>
+# Contributor: Bastian Plettner <b.pletttner at archlinux dot info>
+# Contributor: thesqrtminus1  <thesqrtminus1 at gmail dot com>
+# Contributor: kstolp <kevinstolp at gmail dot com>
+# Contributor: kfgz <ffiasd at gmail dot com>
 pkgname=y-cruncher
-pkgver=0.7.3.9475
+pkgver=0.7.5.9481
 pkgrel=1
 pkgdesc="The first scalable multi-threaded Pi-benchmark for multi-core systems."
 arch=('x86_64')
@@ -8,8 +13,7 @@ license=('unknown')
 options=(!strip)
 depends=('gcc-libs')
 source=("http://www.numberworld.org/y-cruncher/y-cruncher%20v${pkgver}-static.tar.gz")
-sha256sums=('bfde645f8be434e6b71959e14e245d27b98461b5a0ebcdafca174c716bef8a4d')
-sha512sums=('d06d42298ac2ead24e4d67e55b65d951166c34b2715993e5c39d00d385c37e638dfd2469275f36da950652310b6e57681e442a746cf3dd7803b861b46a103684')
+sha512sums=('56e1cea980ca0d7bff2232414bc7daf1fbcf97e9033ec3ae6ff7f3efe59d1c541d81a9efdab876152e0f3bbdf5ae05be294fb4e74be20e6ebad848972e9c5b50')
 package() {
 install -D -m755 ${srcdir}/y-cruncher\ v${pkgver}-static/Binaries/"05-A64 ~ Kasumi" ${pkgdir}/usr/bin/y-cruncher
 }
