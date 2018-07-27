@@ -1,5 +1,5 @@
 pkgname=dnf
-pkgver=3.0.4
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
@@ -16,7 +16,7 @@ backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf")
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname-3.0.1-fallback-to-getuid-if-audit-is-disabled.patch")
-md5sums=('b73955b0a6d6eb6cf44306980e2736c6'
+md5sums=('09388161851c018569c2fa51bf7dd9f8'
          '51bbd2fd1ab2c11057c833adecb8b5fa')
 
 prepare() {
