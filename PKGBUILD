@@ -1,7 +1,6 @@
-# Maintainer: Lukas Böger <dev  AT  lboeger  DOT  de>
-
+# Maintainer: Lukas Böger <dev  AT  lboeger  DOT  de> 
 pkgname=tsym-git
-pkgver=g2374745
+pkgver=g1735b43
 pkgrel=1
 
 pkgdesc='A tiny C++ computer algebra library'
@@ -12,7 +11,7 @@ license=('GPL3')
 source=("git+${url}.git#branch=develop")
 md5sums=('SKIP')
 
-makedepends=('git' 'scons')
+makedepends=('git' 'cmake' 'boost')
 conflicts=(${pkgname%-git})
 
 pkgver() {
@@ -26,20 +25,26 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname%-git}"
 
-    scons lib
+    mkdir build && cd build
+
+    cmake -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_INSTALL_LIBDIR=lib \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D BUILD_TESTING=ON ..
+
+    make
 }
 
 check() {
-  cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}/build"
 
-  scons test
+    make tests
 
-  ./build/runtests
+    ctest --output-on-failure
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}/build"
 
-    scons PREFIX="${pkgdir}/usr" install
+    make install DESTDIR="${pkgdir}"
 }
-
