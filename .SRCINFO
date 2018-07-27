@@ -1,6 +1,6 @@
 pkgbase = python-luigi
 	pkgdesc = Workflow mgmgt + task scheduling + dependency resolution
-	pkgver = 2.7.2
+	pkgver = 2.7.6
 	pkgrel = 1
 	url = https://github.com/spotify/luigi
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = python-luigi
 	depends = python
 	depends = python-daemon
 	depends = python-tornado
-	source = https://github.com/spotify/luigi/archive/2.7.2.tar.gz
-	md5sums = 4b9dbc1ff98f59f066c562d76d3aeacc
-	sha256sums = ae97b9225f674957661b3b2a8c55c045bf948d705f805b88bbdee64ce39282ec
+	source = https://github.com/spotify/luigi/archive/2.7.6.tar.gz
+	md5sums = b42ad20d745441b740c52f5d362cee23
+	sha256sums = e0b04c0dd98e845d7bb8bb2148164ce5a3d20fbfb99c5cbbfaecb4bd3fbf7843
 
 pkgname = python-luigi
 
