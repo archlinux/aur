@@ -4,7 +4,7 @@ pkgname=simple2d
 pkgver=0.9.0
 pkgrel=2
 pkgdesc="Simple, open-source 2D graphics for everyone"
-arch=($CARCH)
+arch=('i686' 'x86_64')
 url="https://github.com/simple2d/simple2d"
 license=('MIT')
 depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
@@ -21,5 +21,5 @@ build() {
 package() {
   cd "$srcdir"/simple2d-${pkgver}
   make install PREFIX="$pkgdir"/usr
-  rm "$pkgdir"/usr/bin/simple2d
+  rm -rf "$pkgdir"/usr/bin
 }
