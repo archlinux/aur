@@ -18,7 +18,7 @@ source=("git+https://github.com/FragmentsApp/Fragments.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 prepare() {
-    cd "$srcdir/Fragments"
+    cd Fragments
     git submodule update --init --recursive
 }
 
