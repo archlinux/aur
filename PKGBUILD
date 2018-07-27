@@ -2,7 +2,7 @@
 
 _pkgname=fragments
 pkgname=$_pkgname-git
-pkgver=latest
+pkgver=1.1.r29.g3948d7a
 pkgrel=1
 pkgdesc="A GTK3 BitTorrent client following the GNOME Human Interface Guidelines"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -20,13 +20,12 @@ source=("git+https://github.com/FragmentsApp/Fragments.git")
 md5sums=('SKIP')
 
 prepare() {
-    cd "$srcdir/Fragments"
+    cd Fragments
     git submodule update --init --recursive
 }
-
 pkgver() {
-    cd "$srcdir/Fragments"
-    git describe --always | sed 's/^v//;s/-/./g;s/_/./g;'
+    cd Fragments
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
