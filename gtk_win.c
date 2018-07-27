@@ -231,12 +231,10 @@ void on_modify_button_clicked(GtkButton* button) {
     gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_symbol_entry")), "");
     gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_amount_entry")), "");
     gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_spent_entry")), "");
-    GValue gtext = G_VALUE_INIT;
-    g_value_init(&gtext, G_TYPE_STRING);
     // Change message of modify to Add, Remove, or Set depending on which button was clicked
-    g_value_set_string(&gtext, gtk_button_get_label(button));
-    GtkWidget* dialog = GTK_WIDGET(gtk_builder_get_object(app.builder, "portfolio_modify_dialog"));
-    g_object_set_property(G_OBJECT(dialog), "text", &gtext);
+    GtkWidget* dialog = GTK_WIDGET(gtk_builder_get_object(app.builder,
+        "portfolio_modify_dialog"));
+    g_object_set_text(G_OBJECT(dialog), gtk_button_get_label(button));
     gtk_widget_show(dialog);
     // Focus first entry
     gtk_widget_grab_focus(GTK_WIDGET(gtk_builder_get_object(app.builder, "modify_symbol_entry")));
@@ -429,14 +427,18 @@ void list_store_update(void) {
 }
 
 void show_generic_message_dialog(const char* message, gboolean success) {
-    GValue gtext = G_VALUE_INIT;
-    g_value_init(&gtext, G_TYPE_STRING);
-    g_value_set_string(&gtext, message);
     char widget_name[64];
     if (success)
         strcpy(widget_name, "generic_check_window_success_dialog");
     else strcpy(widget_name, "generic_check_window_error_dialog");
-    GtkWidget* err_dialog = GTK_WIDGET(gtk_builder_get_object(app.builder, widget_name));
-    g_object_set_property(G_OBJECT(err_dialog), "text", &gtext);
-    gtk_widget_show(err_dialog);
+    GtkWidget* dialog = GTK_WIDGET(gtk_builder_get_object(app.builder, widget_name));
+    g_object_set_text(G_OBJECT(dialog), message);
+    gtk_widget_show(dialog);
+}
+
+void g_object_set_text(GObject* object, const gchar* text) {
+    GValue gtext = G_VALUE_INIT;
+    g_value_init(&gtext, G_TYPE_STRING);
+    g_value_set_string(&gtext, text);
+    g_object_set_property(object, "text", &gtext);
 }

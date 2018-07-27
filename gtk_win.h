@@ -187,4 +187,11 @@ void list_store_update(void);
  */
 void show_generic_message_dialog(const char* message, gboolean success);
 
+/**
+ * Sets the text property of a GObject to a string
+ * @param object the GObject to change the text of
+ * @param text the text to write
+ */
+void g_object_set_text(GObject* object, const gchar* text);
+
 #endif
