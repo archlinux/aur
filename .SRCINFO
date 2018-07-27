@@ -1,0 +1,19 @@
+pkgbase = simple2d
+	pkgdesc = Simple, open-source 2D graphics for everyone
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/simple2d/simple2d
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	options = staticlibs
+	options = !emptydirs
+	source = simple2d-v0.9.0.tar.gz::https://github.com/simple2d/simple2d/archive/v0.9.0.tar.gz
+	sha256sums = c03497b47a74dd220be8ff3aeedfa42bce36babd23df582281bf0f0c8b48ef0f
+
+pkgname = simple2d
+
