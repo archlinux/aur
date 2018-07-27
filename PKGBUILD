@@ -3,7 +3,8 @@
 pkgname=clamav-latest
 pkgver=0.100.1
 pkgrel=2
-pkgdesc='Anti-virus toolkit for Unix. Fix for work with squidclamav'
+pkgdesc='Anti-virus toolkit for Unix. Compiling with Openssl 1.0 and many options for normal work with Squid4.1 and 
+ICAP module Squidclamav. '
 url='https://www.clamav.net/'
 license=('GPL')
 arch=('x86_64')

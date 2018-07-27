@@ -1,5 +1,5 @@
 pkgbase = clamav-latest
-	pkgdesc = Anti-virus toolkit for Unix. Fix for work with squidclamav
+	pkgdesc = Anti-virus toolkit for Unix. Compiling with Openssl 1.0 and many options for normal work with Squid4.1 and ICAP module Squidclamav.
 	pkgver = 0.100.1
 	pkgrel = 2
 	url = https://www.clamav.net/
