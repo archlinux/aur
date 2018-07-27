@@ -1,6 +1,6 @@
 pkgbase = aarch64-elf-newlib-linaro-bin
 	pkgdesc = A C standard library implementation intended for use on embedded systems ARM64 (bare metal)
-	pkgver = 2017.11
+	pkgver = 2018.05
 	pkgrel = 1
 	url = http://www.linaro.org/downloads/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = aarch64-elf-newlib-linaro-bin
 	license = BSD
 	options = !emptydirs
 	options = !strip
-	source = http://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/aarch64-elf/sysroot-newlib-linaro-2017.11-aarch64-elf.tar.xz
-	sha512sums = 9cafca6170639b261edb235bee148fc1da17225bd6f0910afef51049c6f24c54066cb3f5b007e398cc2b961a3f8b1775738d94775b89523480b0f0b1f5c4c72a
+	source = http://releases.linaro.org/components/toolchain/binaries/7.3-2018.05/aarch64-elf/sysroot-newlib-linaro-2018.05-aarch64-elf.tar.xz
+	sha512sums = eae58fecd20751d41dbb940d059a668834de8beadc37a8203ba62dd7e3184c529e1a6cb695c09a32f971409bca00ee88863b87a963beef876274d90fa01b80af
 
 pkgname = aarch64-elf-newlib-linaro-bin
 
