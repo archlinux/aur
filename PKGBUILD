@@ -4,7 +4,7 @@
 pkgname=ocaml-wasm
 _oname=wasm
 pkgver=1.0
-pkgrel=1
+pkgrel=8
 pkgdesc="An OCaml library to read and write Web Assembly (wasm) files and manipulate their AST."
 arch=('i686' 'x86_64')
 url=''
