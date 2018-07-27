@@ -9,7 +9,7 @@ license=('MIT')
 depends=('mkinitcpio-colors-git' 'setcolors-git')
 makedepends=('git' 'mkinitcpio-colors-git' 'setcolors-git') # 'bzr', 'git', 'mercurial' or 'subversion'
 optdepends=('tilix: installs robco theme to the terminal')
-source=('robco-terminal-git::git+https://github.com/emersont1/robco-terminal#branch=master')
+source=('robco-terminal-git::git+https://gitlab.com/Emersont1/robco-terminal.git#branch=master')
 md5sums=('SKIP')
 install=robco-terminal.install
 #backup=('etc/vconsole.conf' 'etc/profile' 'etc/mkinitcpio.conf')
