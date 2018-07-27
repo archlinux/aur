@@ -336,6 +336,15 @@ void info_array_store_totals(Info_Array* pInfo_Array);
 Ref_Data* iex_get_valid_symbols(void);
 
 /**
+ * Searches through an Info_Array and returns a ponter to the Info which has the same symbol as
+ * the function's argument. If not found, returns NULL.
+ * @param pInfo_Array the Info_Array to search
+ * @param symbol the symbol to match
+ * @return valid Info* or NULL if not found
+ */
+Info* info_array_get_info_from_symbol(const Info_Array* pInfo_Array, const char* symbol);
+
+/**
  * Destroys Ref_Data object and frees memory. Sets the pointer of the Ref_Data to NULL
  * @param phRef_Data the Ref_Data to destroy
  */

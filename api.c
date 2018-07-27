@@ -638,6 +638,14 @@ Ref_Data* iex_get_valid_symbols(void) {
     return pRef_Data;
 }
 
+Info* info_array_get_info_from_symbol(const Info_Array* pInfo_Array, const char* symbol) {
+    for (size_t i = 0; i < pInfo_Array->length; i++)
+        if (strcmp(symbol, pInfo_Array->array[i]->symbol) == 0)
+            return pInfo_Array->array[i];
+
+    return NULL;
+}
+
 void api_ref_data_destroy(Ref_Data** phRef_Data) {
     if (*phRef_Data == NULL)
         return;
