@@ -1,6 +1,6 @@
 # Maintainer: Paul Wilk <paul.wilk@null.net>
 pkgname=vision-client
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Desktop email client for the Exchange OWA. Useful for people 
 tired of using regular OWA and/or locked out of IMAP, POP3, 
@@ -10,7 +10,7 @@ url="https://github.com/vlku-admin/vision-client"
 license=('CC0 1.0')
 depends=('xdg-utils')
 source=("https://github.com/vlku-admin/vision-client/raw/master/dist/linux/vision.deb")
-sha256sums=('f1d2567671aca42b1182ebbef2e977c65daccac69989bff15d859fe97b4e9959')
+sha256sums=('4e6991806c4a085bb14b3e92ac32b1ca19d0de93ed03f3cbd00aacc9a021b929')
 
 package() {
   ar xv vision.deb
