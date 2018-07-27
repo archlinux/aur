@@ -2,7 +2,7 @@
 
 pkgname=fstar-ulib
 pkgver=0.9.6.0
-pkgrel=6
+pkgrel=7
 pkgdesc="compiles the ulib component of F*"
 arch=('i686' 'x86_64')
 url='https://www.fstar-lang.org/'
@@ -19,5 +19,5 @@ build() {
 }
 
 package() {
-  install -dm 755 "fstar/ulib"
+  install -dm 755 fstar/ulib /opt/fstar/ulib
 }
