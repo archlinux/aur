@@ -22,7 +22,7 @@ source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
 # https://download.jetbrains.com/python/pycharm-professional-${_pkgver}.tar.gz.sha256
 sha256sums=('528d91f2628d92d08c623a3e68307043d497df5cd4c57c6202d32a7efbcaf22b'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
-            'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
+            'fecb420a4644255cfbb486c1c82644e17e523bb61707108689f4fb702549d0eb'
             '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
             'e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb'
             '7e9bc3873f6c8039b4d7c181806ce4363632ff5811e966142749396cd849d86f')
