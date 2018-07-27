@@ -1,7 +1,7 @@
 # Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-yandex-music
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="yandex music integration for Nuvola Player."
 arch=("any")
