@@ -1,8 +1,8 @@
 pkgbase = synfigstudio
 	pkgdesc = Professional vector animation program (GUI)
 	pkgver = 1.2.1
-	pkgrel = 3
-	url = http://synfig.org
+	pkgrel = 4
+	url = https://synfig.org
 	arch = x86_64
 	license = GPL2
 	makedepends = openexr
@@ -12,13 +12,16 @@ pkgbase = synfigstudio
 	makedepends = xorg-fonts-misc
 	makedepends = xorg-fonts-type1
 	makedepends = intltool
-	makedepends = etl
 	makedepends = imagemagick
 	depends = gtkmm3
 	depends = synfig
 	depends = sdl_image
-	source = http://downloads.sourceforge.net/project/synfig/releases/1.2.1/source/synfigstudio-1.2.1.tar.gz
+	source = https://github.com/synfig/synfig/releases/download/v1.2.1/ETL-1.2.1.tar.gz
+	source = https://github.com/synfig/synfig/releases/download/v1.2.1/synfigstudio-1.2.1.tar.gz
+	source = ETL-1.2.1.patch
+	sha256sums = 754d88c5ddfdef54f27d1e17f62a902eb9f09fbe7ef9aebded34541b4c1700e6
 	sha256sums = 1a97875e0039895604085649bcd30cf0d6165f4c865299ca13d45d2dfbfab05d
+	sha256sums = 35e218317050430ebae667d26269903ad1c377407b9a75feb48a9138af131cb0
 
 pkgname = synfigstudio
 
