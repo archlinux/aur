@@ -3,11 +3,11 @@
 
 
 pkgname="kvmd"
-pkgver="0.38"
+pkgver="0.39"
 pkgrel="1"
 pkgdesc="The main Pi-KVM daemon"
 arch=("any")
-url="https://github.com/mdevaev/pi-kvm"
+url="https://github.com/pi-kvm/pi-kvm"
 license=("GPL")
 depends=(
 	"python"
