@@ -1,20 +1,19 @@
-# Maintainer: orumin <dev@orum.in>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: orumin <dev@orum.in>
 
 _basename=libevdev
 pkgname="lib32-$_basename"
-pkgver=1.5.6
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="Wrapper library for evdev devices (32-bit)"
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/libevdev/"
 license=(custom:X11)
-depends=('glibc' "$_basename")
-makedepends=('python2' 'lib32-check' 'valgrind' 'doxygen')
+depends=('lib32-glibc' "$_basename")
+makedepends=('python2' 'lib32-gcc-libs' 'lib32-check' 'valgrind' 'doxygen')
 #checkdepends=('kmod')
-source=(https://freedesktop.org/software/$_basename/$_basename-$pkgver.tar.xz{,.sig})
-sha256sums=('ecec7e9d66b1d3692f10b3b20aa97fb25e874a784c5552a7b1698091fef5a688'
-            'SKIP')
-validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
+source=(https://www.freedesktop.org/software/$_basename/$_basename-$pkgver.tar.xz)
+sha512sums=('4496ab4d9dc165f416a574c21a7fcee54ae104c21ef4785a4dd0311fff428020cdbb5da7bf3f835e78dae05effdb1a557d189347f6e62dd6be2d8bcdc845850c')
 
 build() {
   cd $_basename-$pkgver
@@ -25,10 +24,10 @@ build() {
 
   ./configure --prefix=/usr \
     --disable-static \
-    --build=i686-pc-linux-gnu \
     --libdir=/usr/lib32 
   make
 }
+
 check() {
   cd $_basename-$pkgver
   # test suite requires root access and needs to load uinput module
@@ -40,7 +39,5 @@ check() {
 package() {
   cd $_basename-$pkgver
   make DESTDIR="$pkgdir" install
-
-  cd "$pkgdir"/usr
-  rm -r bin include share
+  rm -rf ${pkgdir}/usr/{bin,share,include}
 }
