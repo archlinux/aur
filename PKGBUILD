@@ -4,12 +4,12 @@ pypi_name=pathlib2
 pkgbase="python-$pypi_name"
 pkgname=("python-$pypi_name" "python2-$pypi_name")
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Object-oriented filesystem paths for python"
 arch=('any')
 license=('MIT')
 url="https://pypi.org/project/pathlib2/"
-makedepends=('python' 'python2')
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 source=("https://pypi.io/packages/source/p/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
 md5sums=('fd76fb5d0baa798bfe12fb7965da97f8')
 
