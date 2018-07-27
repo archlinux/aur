@@ -4,13 +4,13 @@
 
 pkgname=mattermost
 pkgver=5.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
 license=('AGPL' 'Apache')
 
-makedepends=('git' 'go' 'libpng12' 'npm' 'python2')
+makedepends=('git' 'go' 'libpng' 'npm' 'python2')
 # Experiencing issues with gifsicle and mozjpeg on non x64 architectures.
 if [ "$CARCH" != 'x86_64' ]; then
     makedepends+=('gifsicle' 'mozjpeg')
