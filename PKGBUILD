@@ -9,7 +9,7 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-git
-pkgver=4.0.0.r3917.g5547f0277d
+pkgver=4.0.0.r4248.g0a2332aa8c
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 url='https://www.videolan.org/vlc/'
@@ -30,7 +30,7 @@ makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
              'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
              'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
-             'lirc' 'libgoom2' 'projectm' 'chromaprint' 'git')
+             'lirc' 'libgoom2' 'projectm' 'chromaprint' 'git' 'aribb24')
 optdepends=('avahi: service discovery using bonjour protocol'
             'gst-plugins-base-libs: for libgst plugins'
             'libdvdcss: decoding encrypted DVDs'
@@ -91,7 +91,8 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'projectm: ProjectM visualisation'
             'ncurses: ncurses interface'
             'libnotify: notification plugin'
-            'gtk3: notification plugin')
+            'gtk3: notification plugin'
+            'aribb24: ARIB Subtitles support')
 
 _name=vlc
 conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
@@ -222,7 +223,8 @@ build() {
               --disable-update-check \
               --enable-notify \
               --enable-libplacebo \
-              --enable-vlc
+              --enable-vlc \
+              --enable-aribsub
   make
 }
 
