@@ -2,7 +2,7 @@
 
 pkgname=fstar-ulib
 pkgver=0.9.6.0
-pkgrel=10
+pkgrel=11
 pkgdesc="compiles the ulib component of F*"
 arch=('i686' 'x86_64')
 url='https://www.fstar-lang.org/'
