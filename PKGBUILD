@@ -2,13 +2,13 @@
 
 _pkgname=lem
 pkgname=$_pkgname-git
-pkgver=2018.04.23.r0.g6885823
+pkgver=2018.07.13.r0.g5056134
 pkgrel=1
 pkgdesc="Lem semantic definition language"
 url='https://github.com/rems-project/lem'
 license=('MIT')
 arch=('any')
-depends=('ocaml' 'ocamlbuild' 'ocaml-findlib' 'zarith' 'ocaml-num')
+depends=('ocaml' 'ocamlbuild' 'ocaml-findlib' 'ocaml-zarith' 'ocaml-num')
 source=('git+https://github.com/rems-project/lem.git')
 sha512sums=('SKIP')
 
