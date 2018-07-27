@@ -2,7 +2,7 @@
 
 pkgname=urw
 pkgver=3.51
-pkgrel=1
+pkgrel=2
 _pkgver=${pkgver}-1
 pkgdesc="UnReal World is a unique low-fantasy roguelike game set in the far north during the late Iron-Age"
 url="http://unrealworld.fi"
@@ -18,7 +18,7 @@ sha256sums=('52e222f69af47b0913d69d7580fc6f0bba9938a9a4ff1bcb401391cc1e341962')
 
 package() {
     cd "${pkgdir}"
-    tar xf "${srcdir}/urw-${_pkgver}-${CARCH}.pkg.tar.xz"
+    tar --warning=no-unknown-keyword -xf "${srcdir}/urw-${_pkgver}-${CARCH}.pkg.tar.xz"
     rm .{MTREE,PKGINFO,BUILDINFO}
 }
 
