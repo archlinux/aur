@@ -1,0 +1,14 @@
+pkgbase = python-xmp-toolkit-git
+	pkgdesc = A library for working with XMP metadata
+	pkgver = r245.5692bdf
+	pkgrel = 1
+	url = http://python-xmp-toolkit.readthedocs.org/
+	arch = any
+	license = custom
+	depends = python
+	depends = exempi
+	source = git+https://github.com/python-xmp-toolkit/python-xmp-toolkit.git
+	md5sums = SKIP
+
+pkgname = python-xmp-toolkit-git
+
