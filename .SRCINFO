@@ -1,4 +1,4 @@
-pkgbase = clamav
+pkgbase = clamav-latest
 	pkgdesc = Anti-virus toolkit for Unix. Fix for work with squidclamav
 	pkgver = 0.100.1
 	pkgrel = 2
@@ -20,8 +20,8 @@ pkgbase = clamav
 	backup = etc/clamav/freshclam.conf
 	backup = etc/clamav/clamav-milter.conf
 	backup = etc/logrotate.d/clamav
-	source = https://www.clamav.net/downloads/production/clamav-0.100.1.tar.gz
-	source = https://www.clamav.net/downloads/production/clamav-0.100.1.tar.gz.sig
+	source = https://www.clamav.net/downloads/production/clamav-latest-0.100.1.tar.gz
+	source = https://www.clamav.net/downloads/production/clamav-latest-0.100.1.tar.gz.sig
 	source = clamav.logrotate
 	source = clamav.tmpfiles
 	source = clamav.sysusers
@@ -32,5 +32,5 @@ pkgbase = clamav
 	sha512sums = c5443634399bd87fe0d0192518538ffdb7296a8437b5b0160a0fbd58696b01285de3237e3feb552c0095c49e576832dec2e2b2107eef2be42424ed7edd13cd19
 	sha512sums = b984836f6c34d97b90d81fa5d17361a2e3f8c0cc709e3350a4d25cf088dc04f7bf2504359980c8be489c96b1b8798c60e6da533069d3378d49d4f50f929a2c90
 
-pkgname = clamav
+pkgname = clamav-latest
 

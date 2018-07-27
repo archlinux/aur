@@ -1,6 +1,6 @@
 # Maintainer: bar0metr <admin@os-admin.ru>
 
-pkgname=clamav
+pkgname=clamav-latest
 pkgver=0.100.1
 pkgrel=2
 pkgdesc='Anti-virus toolkit for Unix. Fix for work with squidclamav'
