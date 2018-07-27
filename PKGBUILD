@@ -1,6 +1,6 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 pkgname=camouflage
-pkgver=20180727.78_8135967
+pkgver=20180728.89_81d0fc9
 pkgrel=1
 pkgdesc="a mux+websocket+TLS proxy"
 arch=('i686' 'x86_64')
@@ -20,6 +20,7 @@ md5sums=('SKIP'
          'd506ec62e984c89ddea0cec157292d42')
 
 backup=(
+    'etc/camouflage/example.toml'
 )
 
 pkgver() {
@@ -59,6 +60,9 @@ package() {
 	find "$srcdir/.go/bin/" -type f -executable | while read filename; do
 		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
 	done
+
+    mkdir -p $pkgdir/etc/camouflage
+    install -Dm644 $srcdir/.go/src/github.com/Sherlock-Holo/camouflage/config/example.toml $pkgdir/etc/camouflage/
 
 	mkdir -p $pkgdir/usr/lib/systemd/system
     	install $srcdir/.go/src/github.com/Sherlock-Holo/camouflage/systemd/camouflage-{client,server}@.service \
