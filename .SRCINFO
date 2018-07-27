@@ -1,6 +1,6 @@
 pkgbase = djgpp-gcc
 	pkgdesc = GCC for the djgpp cross-compiler
-	pkgver = 8.1.0
+	pkgver = 8.2.0
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = djgpp-gcc
 	groups = djgpp
 	license = GPL3
 	license = LGPL3
-	makedepends = unzip,
-	makedepends = gcc-ada
+	makedepends = unzip
+	makedepends = gcc-ada>=8.1.0
 	depends = zlib
 	depends = libmpc
 	depends = djgpp-binutils>=2.30
@@ -18,14 +18,14 @@ pkgbase = djgpp-gcc
 	options = !strip
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gcc/gcc-8.1.0/gcc-8.1.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
 	source = lto.patch
 	source = gcc-djgpp.diff
-	sha256sums = 1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153
+	sha256sums = 196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080
 	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
 	sha256sums = c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0
-	sha256sums = 5f8c8ee1baa1afb5342a98109ed325013929aa749c17f679e969688a46032bd5
+	sha256sums = b7a0dece2451a4b9c0abf4b3828ebc06b580487eb9724a2bc298c0f3421a3dda
 
 pkgname = djgpp-gcc
 

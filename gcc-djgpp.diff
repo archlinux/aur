@@ -226,6 +226,44 @@ index 37c365a3560..bf1daed392e 100644
    search_line_fast = impl;
  }
  
+diff --git a/libcpp/macro.c b/libcpp/macro.c
+index 776af7bd00e..09217b472ae 100644
+--- a/libcpp/macro.c
++++ b/libcpp/macro.c
+@@ -516,17 +516,22 @@ _cpp_builtin_macro_text (cpp_reader *pfile, cpp_hashnode *node,
+ 	      && pfile->cb.get_source_date_epoch != NULL)
+ 	    pfile->source_date_epoch = pfile->cb.get_source_date_epoch (pfile);
+ 
+-	  if (pfile->source_date_epoch >= (time_t) 0)
+-	    tb = gmtime (&pfile->source_date_epoch);
+-	  else
+-	    {
+-	      /* (time_t) -1 is a legitimate value for "number of seconds
+-		 since the Epoch", so we have to do a little dance to
+-		 distinguish that from a genuine error.  */
+-	      errno = 0;
+-	      tt = time (NULL);
+-	      if (tt != (time_t)-1 || errno == 0)
+-		tb = localtime (&tt);
++          switch (pfile->source_date_epoch)
++            {
++               default:
++                   tb = gmtime (&pfile->source_date_epoch);
++                   break;
++
++               case (time_t) -1:
++               case (time_t) -2:
++	           /* (time_t) -1 is a legitimate value for "number of seconds
++		      since the Epoch", so we have to do a little dance to
++		      distinguish that from a genuine error.  */
++	           errno = 0;
++	           tt = time (NULL);
++	           if (tt != (time_t)-1 || errno == 0)
++		       tb = localtime (&tt);
++                   break;
+ 	    }
+ 
+ 	  if (tb)
 diff --git a/libffi/src/x86/sysv.S b/libffi/src/x86/sysv.S
 index 78f245bda07..1ae18b248a7 100644
 --- a/libffi/src/x86/sysv.S
@@ -381,10 +419,10 @@ index 89faed7f09e..dd93cda1f03 100644
        memoized_tmpdir = tmpdir;
  #else /* defined(_WIN32) && !defined(__CYGWIN__) */
 diff --git a/libiberty/simple-object-elf.c b/libiberty/simple-object-elf.c
-index 7468a1adc3d..8390e77bdd7 100644
+index 021ce488c16..601db43cdce 100644
 --- a/libiberty/simple-object-elf.c
 +++ b/libiberty/simple-object-elf.c
-@@ -1281,7 +1281,9 @@ simple_object_elf_copy_lto_debug_sections (simple_object_read *sobj,
+@@ -1285,7 +1285,9 @@ simple_object_elf_copy_lto_debug_sections (simple_object_read *sobj,
      }
    if (new_i - 1 >= SHN_LORESERVE)
      {
@@ -457,7 +495,7 @@ index 4e5590f9160..f78405afa03 100644
  
  #ifdef _GLIBCXX_HAVE_EOWNERDEAD
 diff --git a/libstdc++-v3/include/experimental/bits/fs_path.h b/libstdc++-v3/include/experimental/bits/fs_path.h
-index 456452bb317..921f23ed333 100644
+index ada7c1791aa..1ec60b2ffc9 100644
 --- a/libstdc++-v3/include/experimental/bits/fs_path.h
 +++ b/libstdc++-v3/include/experimental/bits/fs_path.h
 @@ -53,6 +53,11 @@
@@ -481,7 +519,7 @@ index 456452bb317..921f23ed333 100644
  #else
        return __ch == '/';
  #endif
-@@ -827,6 +834,9 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -831,6 +838,9 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
  #ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
      std::replace(_M_pathname.begin(), _M_pathname.end(), L'/',
  		 preferred_separator);
@@ -491,18 +529,8 @@ index 456452bb317..921f23ed333 100644
  #endif
      return *this;
    }
-@@ -998,7 +1008,8 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
-   inline bool
-   path::is_absolute() const
-   {
--#ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
-+#if defined(_GLIBCXX_FILESYSTEM_IS_WINDOWS) \
-+  || defined(_GLIBCXX_FILESYSTEM_IS_DJGPP)
-     return has_root_name();
- #else
-     return has_root_directory();
 diff --git a/libstdc++-v3/src/filesystem/path.cc b/libstdc++-v3/src/filesystem/path.cc
-index 4d84168d742..90c932d6901 100644
+index 899d94e0067..fdb0e9e071a 100644
 --- a/libstdc++-v3/src/filesystem/path.cc
 +++ b/libstdc++-v3/src/filesystem/path.cc
 @@ -371,8 +371,13 @@ path::_M_split_cmpts()
