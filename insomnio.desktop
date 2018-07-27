@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=insomnio
+Comment=small application that keeps the computer awake
+Icon=insomnio
+Exec=/usr/lib/insomnio/insomnio.py
+Path=/usr/lib/insomnio
+Actions=
+Categories=X-GNOME-Utilities;

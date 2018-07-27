@@ -1,6 +1,6 @@
 # Maintainer: Jose Galvez <jose@cybergalvez.com>
 pkgname=insomnio-git
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="keeps computer from fallling asleep"
 arch=('any')
@@ -19,9 +19,11 @@ replaces=()
 backup=()
 options=()
 install=${pkgname%-git}.install
-source=("${pkgname%-git}::git+https://jjgalvez@bitbucket.org/jjgalvez/insomnio.git#tag=$pkgver")
+source=("${pkgname%-git}::git+https://jjgalvez@bitbucket.org/jjgalvez/insomnio.git#tag=$pkgver"
+				"${pkgname%-git}.desktop")
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '64383f3a8db623185c940d4097b82ed2')
 
 package() {
 	cd ${pkgname%-git}
@@ -39,6 +41,6 @@ package() {
 
 	install -D -m644 ./resources/insomnio128.png $pkgdir/usr/share/pixmaps/${pkgname%-git}.png
 
-	install -D -m755 ./insomnio.desktop $pkgdir/usr/share/applications/insomnio.desktop
+	install -D -m755 $srcdir/insomnio.desktop $pkgdir/usr/share/applications/insomnio.desktop
 
 }
