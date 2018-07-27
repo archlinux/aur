@@ -15,7 +15,7 @@ md5sums=('f40fd772a8ecb0a12f67d77d34aa1fe8')
 package()
  {
   tar xf ${pkgver}.tar.gz -C "$srcdir"
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/${pkgname}-${pkgver#*v}"
   install -d "$pkgdir/usr/bin/"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   }
