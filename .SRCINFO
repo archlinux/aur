@@ -1,0 +1,13 @@
+pkgbase = python-minervaboto
+	pkgdesc = A renewal tool for Acervo Minerva
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/erickpires/minervaboto
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/m/minervaboto/minervaboto-1.0.1.tar.gz
+	md5sums = 1a19cc37201d03ffcb4701d57b04bbee
+
+pkgname = python-minervaboto
+
