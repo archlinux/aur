@@ -4,15 +4,16 @@
 
 pkgname=kvkbd
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A virtual keyboard for KDE"
 arch=(x86_64)
-url="http://kde-apps.org/content/show.php/Kvkbd?content=56019"
+url="https://www.linux-apps.com/p/1153489/"
 license=(GPL)
 depends=(kdebase-runtime)
 makedepends=(cmake automoc4 docbook-xsl)
-source=("http://kde-apps.org/CONTENT/content-files/56019-$pkgname-$pkgver.tar.gz")
-md5sums=('26b0ed5fe3dfed0e885fce19676bf827')
+git_commit=5a2c62ff3f880314ec0f25a0424a23b5e886633b
+source=("https://github.com/KDE/kvkbd/archive/$git_commit.zip")
+md5sums=('24ca1b311549131922cc73a6de8b9eda')
 
 prepare() {
   mkdir -p build
@@ -20,7 +21,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgname-$pkgver \
+  cmake ../$pkgname-$git_commit \
 	-DQT_QMAKE_EXECUTABLE=qmake-qt4 \
 	-DCMAKE_INSTALL_PREFIX=/usr
   make
