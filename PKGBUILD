@@ -2,7 +2,7 @@
 
 _pkgname=fragments
 pkgname=$_pkgname-git
-pkgver=1.1.r29.g3948d7a
+pkgver=latest
 pkgrel=1
 pkgdesc="A GTK3 BitTorrent client following the GNOME Human Interface Guidelines"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
