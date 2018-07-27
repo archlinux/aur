@@ -1,0 +1,22 @@
+pkgbase = r-pkgbuild
+	pkgdesc = Find Tools Needed to Build R Packages
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=pkgbuild
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-callr>=2.0.0
+	depends = r-crayon
+	depends = r-desc
+	depends = r-r6
+	depends = r-rprojroot
+	depends = r-withr>=2.1.2
+	optdepends = r-rcpp
+	optdepends = r-testthat
+	optdepends = r-covr
+	source = https://cran.r-project.org/src/contrib/pkgbuild_1.0.0.tar.gz
+	md5sums = 068b4f21f69a309a386bf6f1dacb3bf6
+
+pkgname = r-pkgbuild
+
