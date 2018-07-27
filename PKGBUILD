@@ -2,7 +2,7 @@
 # CO-Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=diorite
-pkgver=4.11.0
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="Diorite Library is a utility and widget library for Nuvola Player project based on GLib, GIO and GTK."
 arch=("any")
