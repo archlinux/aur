@@ -1,27 +1,29 @@
 pkgbase = r-roxygen2
 	pkgdesc = In-Line Documentation for R
-	pkgver = 6.0.1
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=roxygen2
 	arch = x86_64
 	license = GPL
 	depends = r
-	depends = r-stringr>=0.5
-	depends = r-stringi
 	depends = r-brew
-	depends = r-digest
-	depends = r-rcpp>=0.11.0
-	depends = r-r6
-	depends = r-desc
 	depends = r-commonmark
+	depends = r-desc
+	depends = r-digest
+	depends = r-pkgload
+	depends = r-purrr
+	depends = r-r6>=2.1.2
+	depends = r-rcpp>=0.11.0
+	depends = r-stringi
+	depends = r-stringr>=1.0.0
 	depends = r-xml2
-	optdepends = r-testthat
-	optdepends = r-knitr
-	optdepends = r-devtools
-	optdepends = r-rmarkdown
 	optdepends = r-covr
-	source = https://cran.r-project.org/src/contrib/roxygen2_6.0.1.tar.gz
-	md5sums = 53300ac3f27ff0998ebb5fbe3afc8b9f
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/roxygen2_6.1.0.tar.gz
+	md5sums = fa9c1673bd1c020ae6d3ade0975af7cd
 
 pkgname = r-roxygen2
 

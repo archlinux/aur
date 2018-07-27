@@ -1,26 +1,22 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=roxygen2
-_cranver=6.0.1
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=6.1.0
 pkgname=r-roxygen2
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="In-Line Documentation for R"
+pkgdesc='In-Line Documentation for R'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=roxygen2'
 license=('GPL')
-depends=('r' 'r-stringr>=0.5' 'r-stringi' 'r-brew' 'r-digest' 'r-rcpp>=0.11.0' 'r-r6' 'r-desc' 'r-commonmark' 'r-xml2')
-
-optdepends=('r-testthat' 'r-knitr' 'r-devtools' 'r-rmarkdown' 'r-covr')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('53300ac3f27ff0998ebb5fbe3afc8b9f')
+depends=('r' 'r-brew' 'r-commonmark' 'r-desc' 'r-digest' 'r-pkgload' 'r-purrr' 'r-r6>=2.1.2' 'r-rcpp>=0.11.0' 'r-stringi' 'r-stringr>=1.0.0' 'r-xml2')
+optdepends=('r-covr' 'r-devtools' 'r-knitr' 'r-rmarkdown' 'r-testthat')
+source=("https://cran.r-project.org/src/contrib/roxygen2_"$_cranver".tar.gz")
+md5sums=('fa9c1673bd1c020ae6d3ade0975af7cd')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL roxygen2_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership roxygen2 "$pkgdir"/usr/lib/R/library
 }
 
