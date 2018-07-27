@@ -1,6 +1,6 @@
 pkgbase = vision-client
 	pkgdesc = Desktop email client for the Exchange OWA. Useful for people tired of using regular OWA and/or locked out of IMAP, POP3, regular desktop email clients etc.
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/vlku-admin/vision-client
 	arch = i686

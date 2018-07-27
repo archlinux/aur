@@ -1,6 +1,6 @@
 # Maintainer: Paul Wilk <paul.wilk@null.net>
 pkgname=vision-client
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Desktop email client for the Exchange OWA. Useful for people 
 tired of using regular OWA and/or locked out of IMAP, POP3, 
