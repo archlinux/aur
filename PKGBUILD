@@ -2,13 +2,13 @@
 # Contributor: Timothée Ravier <tim@siosm.fr>
 
 pkgname=docker2aci
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="CLI tool to convert Docker images to ACI"
 arch=('x86_64' 'i686')
 url="https://github.com/appc/docker2aci"
 source=("https://github.com/appc/docker2aci/archive/v${pkgver}.tar.gz")
-sha1sums=('3c661ae92adf0ed27f8ac5d634b407c2b5d6697b')
+sha1sums=('a50b069cb4b4f67f7cc367377562f2b518230968')
 license=('Apache2')
 makedepends=('go' 'bash')
 conflicts=('docker2aci-git')
