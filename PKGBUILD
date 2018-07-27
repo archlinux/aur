@@ -6,14 +6,14 @@ BUILD_SELINUX=false
 
 pkgname=389-ds-base
 pkgver=1.4.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
 url="http://port389.org/"
 license=(GPL)
 depends=(cyrus-sasl cyrus-sasl-gssapi icu lm_sensors net-snmp libsystemd
-         openldap perl-netaddr-ip perl-socket libevent)
-makedepends=(doxygen)
+         openldap perl-netaddr-ip perl-socket libevent nss)
+makedepends=(doxygen rsync)
 conflicts=(svrcore)
 provides=(svrcore)
 optdepends=('python-lib389: Python managemnt scripts'
