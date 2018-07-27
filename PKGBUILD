@@ -32,11 +32,11 @@ _localmodcfg=
 
 pkgbase=linux-gc
 _srcname=linux-4.17
-pkgver=4.17.6
+pkgver=4.17.10
 pkgrel=1
 _pdsversion=098t
 arch=('x86_64')
-url="http://cchalpha.blogspot.co.uk/"
+url="https://cchalpha.blogspot.co.uk/"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
@@ -62,7 +62,7 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '7699b2246e4ed1e284f2947d5e0b66653c27574995caf6a02a3280bd055cfedf'
+            '41ad005296c7a1b5245a87881f666b3f4d7aa05a6b9409454b2e473d473c4cee'
             'SKIP'
             '7d25af8d402388f5b08b5351fb49d6e1b4108b121acd23f2bc5c2a59ff497f69'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -94,6 +94,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56780
   patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
+
+  # Fix iwd provoking a BUG
+  patch -Np1 -i ../0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
 
   # Patch source with PDS scheduler
   patch -Np1 -i "../${_psd_patch}"

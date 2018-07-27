@@ -1,7 +1,7 @@
 pkgbase = linux-gc
-	pkgver = 4.17.6
+	pkgver = 4.17.10
 	pkgrel = 1
-	url = http://cchalpha.blogspot.co.uk/
+	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -12,8 +12,8 @@ pkgbase = linux-gc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.6.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.6.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.10.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.10.sign
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -28,7 +28,7 @@ pkgbase = linux-gc
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13
 	sha256sums = SKIP
-	sha256sums = 7699b2246e4ed1e284f2947d5e0b66653c27574995caf6a02a3280bd055cfedf
+	sha256sums = 41ad005296c7a1b5245a87881f666b3f4d7aa05a6b9409454b2e473d473c4cee
 	sha256sums = SKIP
 	sha256sums = 7d25af8d402388f5b08b5351fb49d6e1b4108b121acd23f2bc5c2a59ff497f69
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
@@ -49,12 +49,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=4.17.6
+	provides = linux-gc=4.17.10
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel
 	depends = linux-gc
-	provides = linux-gc-headers=4.17.6
-	provides = linux-headers=4.17.6
+	provides = linux-gc-headers=4.17.10
+	provides = linux-headers=4.17.10
 
