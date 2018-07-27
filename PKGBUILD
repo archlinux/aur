@@ -1,11 +1,11 @@
 # Maintainer: zargbell <zargbell@yandex.ru>
 
 _target=aarch64-elf
-_pkgdate=2017.11
+_pkgdate=2018.05
 
 
 pkgname=${_target}-gcc-linaro-bin
-pkgver=7.2
+pkgver=7.3
 pkgrel=1
 epoch=
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM64 EABI (bare-metal) target."
@@ -25,7 +25,7 @@ options=(!emptydirs !strip staticlibs)
 install=
 changelog=
 source=(http://releases.linaro.org/components/toolchain/binaries/${pkgver}-${_pkgdate}/${_target}/gcc-linaro-${pkgver}.1-${_pkgdate}-x86_64_${_target}.tar.xz)
-sha512sums=('4ee6c4f8a0c20dd79a53727d912100e9186120807d81d1dbb8fc8bd38c02d872e3f9c984f9afde9c7a60d998ae0634f6453147295f320a47268553555f5976ac')
+sha512sums=('07f1fad77d5bb5c333d17c252d030fff20a8ffff52fc3d26a21bc73f602f50f3c7d9a619b8ba96a1bccd7d54e956f1485ca94b758bbf31f957bbfe07cb384bf0')
 
 
 package() {
