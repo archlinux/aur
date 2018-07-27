@@ -1,17 +1,20 @@
 # Contributor: Vojtech Horky <vojta . horky at-symbol seznam . cz>
+# Maintainer: Shengqi Chen <i at harrychen dot xyz>
+
 pkgname=cross-mipsel-linux-gnu-gcc
 _pkgname=gcc
 _target="mipsel-linux-gnu"
-pkgver=4.9.3
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the MIPS architecture"
-url="http://www.gnu.org/software/gcc/"
-arch=('i686' 'x86_64')
-license=('GPL')
-depends=('mpfr' 'gmp' 'libmpc' 'sh' "cross-${_target}-binutils")
+url="https://www.gnu.org/software/gcc/"
+arch=('x86_64')
+license=('GPL' 'LGPL' 'FDL')
+depends=('libmpc' 'sh' 'xz' "cross-${_target}-binutils")
+makedepends=('gcc' 'make' 'gmp' 'mpfr')
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
-source=("ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('6f831b4d251872736e8e9cc09746f327')
+source=("ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz")
+md5sums=('65f7c65818dc540b3437605026d329fc')
 _sysroot="/usr/lib/cross-${_target}"
 
 prepare() {
@@ -45,7 +48,7 @@ package() {
 	
 	make DESTDIR=${pkgdir} install-gcc
 	
-	msg "Removing duplicit files..."
+	msg "Removing duplicate files..."
 	# remove these files as they are already in the system
 	# (with native gcc)
 	rm -Rf ${pkgdir}${_sysroot}/{man,info}
