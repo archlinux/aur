@@ -4,7 +4,7 @@
 pkgname=ocaml-fstar
 _oname=fstar
 pkgver=0.9.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An ML-like language with a type system for program verification."
 arch=('i686' 'x86_64')
 url=''
@@ -17,7 +17,7 @@ sha384sums=('831cf86c861f69ebc536633874e924e37b851494778eb0e1e435c5d46272d59e761
 
 build() {
   cd "$srcdir/"*/
-  make PREFIX=%{prefix}% -C src/ocaml-output
+  make PREFIX=%{prefix}% -C src/ocaml-output -j4
   make PREFIX=%{prefix}% -C ulib install-fstarlib
   make PREFIX=%{prefix}% -C ulib install-fstar-tactics
 }

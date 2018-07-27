@@ -1,7 +1,7 @@
 pkgbase = ocaml-fstar
 	pkgdesc = An ML-like language with a type system for program verification.
 	pkgver = 0.9.6.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	license = Apache
