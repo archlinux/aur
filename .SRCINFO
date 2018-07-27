@@ -1,17 +1,18 @@
 pkgbase = redox-gcc
-	pkgdesc = GCC for Redox cross compilation on x86_64.
-	pkgver = 0.0.2
-	pkgrel = 3
-	url = https://redox-os.org/
-	arch = x86_64
+	pkgver = r152183.98e77b0b0d2
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = autoconf-2.64
 	depends = redox-binutils
-	depends = redox-relibc
-	provides = redox-gcc
-	provides = x86-64-unknown-redox-gcc-freestanding
-	options = !strip
-	options = !emptydirs
-	source = https://static.redox-os.org/toolchain/apt/x86-64-unknown-redox-gcc_0.0.2build1101_amd64.deb
-	sha512sums = df029bfc4c363a59a27ced75acd8167325a16ba9d85141f947b288184544af85003768592325a036d5f0b3e6777b4290a74599c139294d0a42d17fd229a3ef4c
+	depends = redox-newlib
+	depends = libmpc
+	depends = zlib
+	provides = redox-gcc-freestanding
+	conflicts = redox-gcc-freestanding
+	source = git+https://github.com/redox-os/gcc#branch=redox
+	md5sums = SKIP
 
 pkgname = redox-gcc
 
