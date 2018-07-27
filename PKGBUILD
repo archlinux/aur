@@ -1,18 +1,22 @@
-# Maintainer: orumin <dev@orum.in>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: orumin <dev@orum.in>
 
 _basename=libwacom
 pkgname="lib32-$_basename"
-pkgver=0.22
+pkgver=0.30
 pkgrel=1
 pkgdesc="Library to identify Wacom tablets and their features (32-bit)"
 arch=('x86_64')
-url="http://sourceforge.net/apps/mediawiki/linuxwacom/index.php?title=Libwacom"
+url="https://github.com/linuxwacom/libwacom/wiki"
 license=('MIT')
-depends=('glib2' 'lib32-systemd' 'lib32-libgudev' 'lib32-gtk2' "$_basename")
-source=(http://sourceforge.net/projects/linuxwacom/files/libwacom/$_basename-$pkgver.tar.bz2{,.sig})
-sha256sums=('97c19c216cbf4a2c54a5fc4f80d5a363bfa732500f0831a345bbc8ab385720c0'
+depends=('lib32-glib2' 'lib32-systemd' 'lib32-libgudev' "$_basename")
+makedepends=('lib32-libxml2')
+validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF')
+source=(https://github.com/linuxwacom/libwacom/releases/download/${_basename}-${pkgver}/${_basename}-${pkgver}.tar.bz2{,.sig})
+sha1sums=('f1f75093309a792343872835865573206a0f2ef0'
+          'SKIP')
+sha256sums=('523408680514c0f01052e478503d8e89f86d72ddc7129fdd63988c221c492259'
             'SKIP')
-validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net> 
 
 build() {
   cd $_basename-$pkgver
@@ -21,7 +25,7 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  ./configure --prefix=/usr --build=i686-pc-linux-gnu --libdir=/usr/lib32
+  ./configure --prefix=/usr --libdir=/usr/lib32
   make
 }
 
@@ -33,8 +37,5 @@ check() {
 package() {
   cd $_basename-$pkgver
   make DESTDIR="$pkgdir" install
-
-  cd "$pkgdir"/usr
-  rm -r bin include share
-  
+  rm -rf ${pkgdir}/usr/{bin,share,include}  
 }
