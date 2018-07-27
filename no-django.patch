@@ -1,0 +1,40 @@
+diff --git a/pyjade/testsuite/test_cases.py b/pyjade/testsuite/test_cases.py
+index bd2f864..5009f1f 100644
+--- a/pyjade/testsuite/test_cases.py
++++ b/pyjade/testsuite/test_cases.py
+@@ -117,8 +117,8 @@ try:
+         return t.render(ctx)
+ 
+     processors['Django'] = django_process
+-except ImportError:
+-    raise
++except (ImportError, AttributeError):
++    pass
+ 
+ try:
+     import pyjade.ext.mako
+diff --git a/pyjade/convert.py b/pyjade/convert.py
+index 5939f77..f06cdfc 100644
+--- a/pyjade/convert.py
++++ b/pyjade/convert.py
+@@ -7,7 +7,7 @@ from pyjade.utils import process
+ import os
+ 
+ def convert_file():
+-    support_compilers_list = ['django', 'jinja', 'underscore', 'mako', 'tornado', 'html']
++    support_compilers_list = ['jinja', 'underscore', 'mako', 'tornado', 'html']
+     available_compilers = {}
+     for i in support_compilers_list:
+         try:
+diff --git a/setup.py b/setup.py
+index a44bf63..7b6c2cf 100644
+--- a/setup.py
++++ b/setup.py
+@@ -18,7 +18,6 @@ setup(name='pyjade',
+       install_requires=['six'],
+       tests_require=[
+             'nose',
+-            'django',
+             'jinja2',
+             'tornado',
+             'pyramid >= 1.4, <= 1.4.99',

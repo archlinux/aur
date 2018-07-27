@@ -1,0 +1,31 @@
+pkgbase = python-pyjade
+	pkgdesc = Jade template system for Jinja2, Mako and Tornado
+	pkgver = 4.0.0
+	pkgrel = 5
+	url = https://github.com/syrusakbary/pyjade
+	arch = any
+	license = MIT
+	checkdepends = python-jinja
+	checkdepends = python-tornado
+	checkdepends = python-mako
+	checkdepends = python-nose
+	checkdepends = python2-jinja
+	checkdepends = python2-tornado
+	checkdepends = python2-mako
+	checkdepends = python2-nose
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-six
+	makedepends = python2-setuptools
+	makedepends = python2-six
+	source = git+https://github.com/syrusakbary/pyjade#commit=eb84811fcac898f678652f48b71479d95c3fbff8
+	source = no-django.patch
+	sha256sums = SKIP
+	sha256sums = 1f0ad5782b9055670e23b4f0514fcdf21701a827a0597134f79f2efc0f90c482
+
+pkgname = python-pyjade
+	depends = python-six
+
+pkgname = python2-pyjade
+	depends = python2-six
+
