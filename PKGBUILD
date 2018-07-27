@@ -3,12 +3,12 @@
 pkgbase=python-txrequests
 pkgname=(python-txrequests python2-txrequests)
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 _distname=txrequests-$pkgver
-pkgdesc='Asynchronous Python HTTP for Humans.'
+pkgdesc='Asynchronous Python HTTP Requests for Humans using twisted'
 license=('Apache')
 arch=('any')
-url='https://github.com/ross/txrequests'
+url='https://github.com/tardyp/txrequests'
 makedepends=('python-setuptools' 'python-requests' 'python-twisted'
              'python2-setuptools' 'python2-requests' 'python2-twisted')
 source=("https://pypi.python.org/packages/source/t/txrequests/txrequests-${pkgver}.tar.gz")
@@ -22,7 +22,7 @@ check() {
     cd "$srcdir"/$_distname
     python test_txrequests.py
 
-    cd "$srcdir"/$_distname
+    cd "$srcdir"/$_distname-py2
     python2 test_txrequests.py
 }
 
