@@ -1,45 +1,45 @@
-# Maintainer: orumin <dev@orum.in>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: orumin <dev@orum.in>
  
 _basename=graphene
 pkgname="lib32-$_basename"
-pkgver=1.4.0
-pkgrel=3
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="A thin layer of graphic data types (32-bit)"
 url="https://github.com/ebassi/graphene"
 arch=('x86_64')
 license=(MIT)
-depends=('lib32-glib2')
-makedepends=('git' 'gobject-introspection')
-source=("git+$url#tag=$pkgver")
-md5sums=('SKIP')
+depends=('lib32-glib2' 'graphene')
+makedepends=('git' 'lib32-gcc-libs' 'gobject-introspection' 'gtk-doc' 'meson')
+_commit=f98e3c378414eafae8b75792ded7496b09baaad9  # tags/1.8.2^0
+source=("git+https://github.com/ebassi/graphene#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_basename
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
   cd $_basename
-  sed -i '1s/python$/&2/' build/identfilter.py
-  NOCONFIGURE=1 ./autogen.sh
 }
  
 build() {
-  cd $_basename
-
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  ./configure --prefix=/usr --disable-gtk-doc \
-    --build=i686-pc-linux-gnu --libdir=/usr/lib32  --disable-tests
-  make
+  arch-meson $_basename build --libdir='/usr/lib32' -D gtk_doc=true
+  ninja -C build
 }
 
 check() {
-  cd $_basename
-  make check
+  cd build
+  meson test
 }
  
 package() {
-  cd $_basename
-  make DESTDIR="$pkgdir" install
-
-  cd "$pkgdir"/usr
-  rm -r include share
+  DESTDIR="$pkgdir" ninja -C build install
+  rm -r "$pkgdir"/usr/{lib,share}/installed-tests
+  rm -rf ${pkgdir}/usr/{bin,share,include}
 }
