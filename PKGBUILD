@@ -1,8 +1,8 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 
 pkgname='monero-wallet-qt-git'
-_monerover=0.12.0.0
-pkgver=0.12.0.0
+_monerover=0.12.3.0
+pkgver=0.12.3.0
 pkgrel=2
 arch=('x86_64' 'i686')
 url="https://getmonero.org/"
@@ -24,7 +24,7 @@ pkgdesc="Official QT GUI wallet for Monero, a private, secure, untraceable peer-
 _repourl=https://github.com/monero-project/monero-gui
 source=("git+$_repourl")
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 _srcdir=monero-gui
 
