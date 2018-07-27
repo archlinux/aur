@@ -2,15 +2,15 @@
 
 pkgname=duolingo-desktop-git
 _pkgname=duolingo-desktop
-pkgver=20171204
-pkgrel=1
+pkgver=20180727
+pkgrel=2
 pkgdesc="Desktop client for Duolingo, using Electron"
 arch=(x86_64)
-url="https://github.com/morganamilo/duolingo-desktop"
+url="https://github.com/hmlendea/duolingo-desktop"
 license=('GPL')
 depends=('gtk2' 'libxss' 'gconf' 'nss' 'nspr' 'libxtst' 'alsa-lib')
-makedepends=(npm)
-source=("git+https://github.com/morganamilo/duolingo-desktop" "duolingo-desktop.desktop")
+makedepends=('npm' 'python2' 'git')
+source=("git+https://github.com/hmlendea/duolingo-desktop" "duolingo-desktop.desktop")
 md5sums=("SKIP" "a28956619c5618f993feb417e9fa8dfc")
 
 build() {
