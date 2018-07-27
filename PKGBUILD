@@ -5,26 +5,26 @@
 # Contributor: cdhotfire <cdhotfire@gmail.com>
 
 pkgname=rawstudio
-pkgver=2.0_git20161101
-_commit=6643b14b373e8407a7803e5f5bf5f7892aa7460e
+pkgver=2.0.r589
+_commit=003dd4f33377dcfd15ae32904a7cbb0e92123607
 pkgrel=2
 pkgdesc='An open source raw-image converter written in GTK+'
 arch=('x86_64')
-license=('GPL')
-url='http://rawstudio.org/'
+url='http://rawstudio.org'
+license=('GPL2')
 depends=('osm-gps-map' 'desktop-file-utils' 'libgphoto2' 'fftw' 'gconf' 'lcms2' 'exiv2' 'lensfun')
-makedepends=('git')
-source=("git://github.com/rawstudio/rawstudio.git#commit=${_commit}")
-md5sums=('SKIP')
+conflicts=("${pkgname}-git")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${_commit}.tar.gz")
+sha256sums=('9e20399503a302e040319fbc877b614afce491891f5563fdb2725b1877eb3aab')
 
 build() {
-  cd "${pkgname}"
-  ./autogen.sh
-  ./configure --prefix=/usr --disable-static
-  make CXXFLAGS="-Wno-narrowing"
+    cd "${pkgname}"
+    ./autogen.sh
+    ./configure --prefix=/usr --disable-static
+    make CXXFLAGS="-Wno-narrowing"
 }
 
 package() {
-  cd "${pkgname}"
-  make prefix="${pkgdir}/usr" install
+    cd "${pkgname}"
+    make prefix="${pkgdir}/usr" install
 }
