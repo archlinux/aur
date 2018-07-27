@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-libtre-git
 pkgver=r128.6fb7206
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="The approximate regex matching library and agrep command line tool (mingw-w64)"
 depends=('mingw-w64-crt' 'mingw-w64-gettext')
@@ -52,6 +52,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/libtre/build-${_arch}"
     make DESTDIR="$pkgdir" install
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     install -Dm644 "${srcdir}/libtre/LICENSE" "${pkgdir}/usr/${_arch}/share/licenses/libtre/LICENSE"

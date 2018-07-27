@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libtre-git
 	pkgdesc = The approximate regex matching library and agrep command line tool (mingw-w64)
 	pkgver = r128.6fb7206
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/laurikari/tre
 	arch = any
 	license = BSD
