@@ -2,7 +2,7 @@
 
 pkgname=webman-git
 pkgver=latest
-pkgrel=3
+pkgrel=1
 pkgdesc="A web interface for the Arch Linux package manager (pacman)"
 arch=('any')
 url="https://github.com/flipflop97/WebMan"
@@ -23,6 +23,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
+
+pkgver() {
+    cd "${pkgname}"
+    git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
     cd "${pkgname}"
