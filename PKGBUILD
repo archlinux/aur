@@ -9,9 +9,9 @@
 # Contributor: N30N <archlinux [at] alunamation [dot] com>
 
 pkgname=lwks-beta
-lwksstage=145RC9  # beta/rc1/rc2/etc..
+lwksstage=145RC10  # beta/rc1/rc2/etc..
 lwksver=14.5.0.0
-lwksbuild=107814
+lwksbuild=107962
 pkgver=$lwksver.$lwksbuild
 pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
@@ -27,7 +27,7 @@ source=(
     )
 
 sha256sums=(
-    '2c165c00e17501eb748dcb117b6af9beb88495bd7e52694d84f81dbd0825ba33'
+    '3af39baafd9baf651ffac221cec6203179b13d26c692f244f6b9af15cc0d98fd'
     )
 
 package() {
