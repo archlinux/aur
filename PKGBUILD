@@ -1,8 +1,8 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=audenc
-pkgver=3.3.4
-pkgrel=3
+pkgver=3.3.5
+pkgrel=1
 pkgdesc='a batch shell script for encoding audio files in directories from one format to another.'
 arch=(any)
 url='https://audenc.sourceforge.io/'
@@ -24,7 +24,7 @@ optdepends=('lame: MP3 encoder'
             'aften: A/52 encoder'
             'dcaenc: DTS encoder')
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('33638422463f92e9ba3815d89b3b84cfb9425a2ca3f3e8896cd5ad63b4cfbdcd')
+sha256sums=('0cada50cedf5b3c84c2d5c85f6567e6780cd612504fb7eab38e0e638c0724535')
 
 prepare()
 {
