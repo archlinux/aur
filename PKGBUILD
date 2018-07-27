@@ -2,7 +2,7 @@
 
 pkgname=kremlin
 pkgver=0.9.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool for extracting low-level F* programs to readable C code"
 arch=('i686' 'x86_64')
 url='https://github.com/FStarLang/kremlin'
@@ -16,7 +16,7 @@ build() {
   cd "$srcdir/"*/
   export FSTAR_HOME=/opt/fstar
   export PATH="$PATH:$FSTAR_HOME/bin"
-  make
+  make -j4
 }
 
 package() {

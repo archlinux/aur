@@ -1,7 +1,7 @@
 pkgbase = kremlin
 	pkgdesc = a tool for extracting low-level F* programs to readable C code
 	pkgver = 0.9.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FStarLang/kremlin
 	arch = i686
 	arch = x86_64
