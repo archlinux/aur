@@ -3,17 +3,17 @@
 
 pkgname=ocaml-fstar
 _oname=fstar
-pkgver=0.9.6.1
+pkgver=0.9.6.0
 pkgrel=1
 pkgdesc="An ML-like language with a type system for program verification."
 arch=('i686' 'x86_64')
 url=''
 license=('Apache')
 options=('!strip' '!makeflags' 'staticlibs')
-source=('https://github.com/FStarLang/FStar/archive/v0.9.6.0-alpha1-opam.zip')
-depends=(ocaml)
+depends=('ocaml')
 makedepends=('ocaml-findlib' 'ocaml-yojson' 'ocaml-stdint' 'ocamlbuild' 'ocaml-batteries' 'ocaml-zarith' 'ocaml-ppx_deriving_yojson' 'ocaml-pprint' 'ocaml-fileutils' 'ulex' 'ocaml-ppx_deriving')
-md5sums=('7855b84283e85de94db5a7a086f815bb')
+source=('https://github.com/FStarLang/FStar/archive/v0.9.6.0.tar.gz')
+sha384sums=('831cf86c861f69ebc536633874e924e37b851494778eb0e1e435c5d46272d59e7611642cf14ba0289f7ca8c9a379a9f0')
 
 build() {
   cd "$srcdir/"*/

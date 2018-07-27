@@ -1,6 +1,6 @@
 pkgbase = ocaml-fstar
 	pkgdesc = An ML-like language with a type system for program verification.
-	pkgver = 0.9.6.1
+	pkgver = 0.9.6.0
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = ocaml-fstar
 	options = !strip
 	options = !makeflags
 	options = staticlibs
-	source = https://github.com/FStarLang/FStar/archive/v0.9.6.0-alpha1-opam.zip
-	md5sums = 7855b84283e85de94db5a7a086f815bb
+	source = https://github.com/FStarLang/FStar/archive/v0.9.6.0.tar.gz
+	sha384sums = 831cf86c861f69ebc536633874e924e37b851494778eb0e1e435c5d46272d59e7611642cf14ba0289f7ca8c9a379a9f0
 
 pkgname = ocaml-fstar
 
