@@ -20,16 +20,13 @@ source=(https://www.clamav.net/downloads/production/clamav-${pkgver}.tar.gz{,.si
         clamav.sysusers)
 sha512sums=('SKIP'
             'SKIP'
-            
-'9cb168c1c16bb43c99900d7ef34456e3f3b593d4d1943c875a0306bc86fd3872cb78e9e1413dcba93579e01b96d466c9eea1975e24190193663b7986c4525d48'
-            
-'c5443634399bd87fe0d0192518538ffdb7296a8437b5b0160a0fbd58696b01285de3237e3feb552c0095c49e576832dec2e2b2107eef2be42424ed7edd13cd19'
-            
-'b984836f6c34d97b90d81fa5d17361a2e3f8c0cc709e3350a4d25cf088dc04f7bf2504359980c8be489c96b1b8798c60e6da533069d3378d49d4f50f929a2c90')
-validpgpkeys=('65ED513993F08DA06F9639A6F13F9E16BCA5BFAD') # Talos (Talos, Cisco Systems Inc.) <research@sourcefire.com>
+            'SKIP'
+            'SKIP'
+            'SKIP')
+validpgpkeys=('65ED513993F08DA06F9639A6F13F9E16BCA5BFAD') 
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd clamav-${pkgver}
   sed -E 's|^(Example)$|#\1|' -i etc/{clamd,freshclam,clamav-milter}.conf.sample
   sed -E 's|#(User) .+|\1 clamav|' -i etc/{clamd,freshclam,clamav-milter}.conf.sample
   sed -E 's|#(LogFile) .+|\1 /var/log/clamav/clamd.log|' -i etc/clamd.conf.sample
@@ -47,7 +44,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd clamav-${pkgver}
   # --disable-zlib-vcheck because the configure script thinks that
   # zlib 1.2.11 is older than 1.2.2
   ./configure \
@@ -68,11 +65,11 @@ build() {
     --enable-clamdtop
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  make -j$(nproc)
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd clamav-${pkgver}
   make DESTDIR="${pkgdir}" install
 
   mv "${pkgdir}"/etc/clamav/freshclam.conf{.sample,}
