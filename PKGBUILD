@@ -1,7 +1,7 @@
 # Maintainer: Jose Galvez <jose@cybergalvez.com>
 pkgname=insomnio-git
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="keeps computer from fallling asleep"
 arch=('any')
 url="https://bitbucket.org/jjgalvez/insomnio"
@@ -32,6 +32,7 @@ package() {
 	install -D -m755 ./insomnio_config.py $pkgdir/usr/lib/${pkgname%-git}/insomnio_config.py
 
 	install -D -m644 ./utils.py $pkgdir/usr/lib/${pkgname%-git}/utils.py
+	install -D -m644 ./whichos.py $pkgdir/usr/lib/${pkgname%-git}/whichos.py
 	install -D -m644 ./config.py $pkgdir/usr/lib/${pkgname%-git}/config.py
 	install -D -m644 ./inhibitors.py $pkgdir/usr/lib/${pkgname%-git}/inhibitors.py
 

@@ -1,7 +1,7 @@
 pkgbase = insomnio-git
 	pkgdesc = keeps computer from fallling asleep
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/jjgalvez/insomnio
 	install = insomnio.install
 	arch = any
