@@ -2,7 +2,7 @@
 
 pkgname=fstar-ulib
 pkgver=0.9.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="compiles the ulib component of F*"
 arch=('i686' 'x86_64')
 url='https://www.fstar-lang.org/'
@@ -15,7 +15,7 @@ build() {
   cp -r /opt/fstar fstar
   export FSTAR_HOME="$(pwd)/fstar"
   cd fstar/ulib
-  make
+  make -j4
 }
 
 package() {
