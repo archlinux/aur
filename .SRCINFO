@@ -1,0 +1,23 @@
+pkgbase = r-pkgload
+	pkgdesc = Simulate Package Installation and Attach
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=pkgload
+	arch = x86_64
+	license = GPL3
+	depends = r
+	depends = r-desc
+	depends = r-pkgbuild
+	depends = r-rlang
+	depends = r-rprojroot
+	depends = r-rstudioapi
+	depends = r-withr
+	optdepends = r-bitops
+	optdepends = r-covr
+	optdepends = r-rcpp
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/pkgload_1.0.0.tar.gz
+	md5sums = a7681818fcd41b61ab7d00d98f586fdf
+
+pkgname = r-pkgload
+
