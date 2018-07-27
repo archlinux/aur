@@ -1,6 +1,6 @@
 pkgbase = electrumx
 	pkgdesc = Server implementation for the Electrum wallet
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/kyuupichan/electrumx
 	install = electrumx.install
@@ -9,7 +9,7 @@ pkgbase = electrumx
 	makedepends = python-setuptools
 	depends = leveldb
 	depends = python>=3.6
-	depends = python-aiohttp
+	depends = python-aiohttp>=2.0.0
 	depends = python-plyvel
 	depends = python-pylru
 	depends = python-aiorpcx>=0.5.5
@@ -18,10 +18,10 @@ pkgbase = electrumx
 	options = !emptydirs
 	backup = etc/electrumx/electrumx.conf
 	backup = usr/lib/systemd/system/electrumx.service
-	source = electrumx-1.6.tar.gz::https://codeload.github.com/kyuupichan/electrumx/tar.gz/1.6
+	source = electrumx-1.7.tar.gz::https://codeload.github.com/kyuupichan/electrumx/tar.gz/1.7
 	source = electrumx.conf
 	source = electrumx.service
-	sha256sums = bb0f59d931cae8532b9873ad091b18ff62819264cba8deed695c7628ca3d4283
+	sha256sums = af82d5e27324aea5825c4654742a5322a97fa5fc744744c99691481d74856af9
 	sha256sums = f13119ac93e6e05203f9d5dae5e737ec718ca5c829b0b6b73b0761587ae651b7
 	sha256sums = b4e1a9d4341edf1f2022f8c8591d28ef6bd6db38c6f332445ac294b5fc6dae93
 
