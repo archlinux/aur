@@ -53,7 +53,7 @@ build() {
     --sysconfdir=/etc/clamav \
     --with-dbdir=/var/lib/clamav \
     --with-user=clamav \
-    --with-openssl=/usr/include/openssl-1.0/openssl \
+    --with-openssl=/usr/lib/openssl-1.0 \
     --disable-ipv6 \
     --enable-bigstack \
     --with-group=clamav \
