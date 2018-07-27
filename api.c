@@ -1,5 +1,22 @@
 #include "api.h"
 
+Ref_Data* api_ref_data_init_from_length(size_t length) {
+    Ref_Data* pRef_Data = malloc(sizeof(Ref_Data));
+    pointer_alloc_check(pRef_Data);
+    pRef_Data->symbols = malloc(length * sizeof(char*));
+    pRef_Data->names = malloc(length * sizeof(char*));
+    pointer_alloc_check(pRef_Data->symbols);
+    pointer_alloc_check(pRef_Data->names);
+    for (size_t i = 0; i < length; i++) {
+        pRef_Data->symbols[i] = malloc(SYMBOL_MAX_LENGTH);
+        pRef_Data->names[i] = malloc(NAME_MAX_LENGTH);
+        pointer_alloc_check(pRef_Data->symbols[i]);
+        pointer_alloc_check(pRef_Data->names[i]);
+    }
+    pRef_Data->length = length;
+    return pRef_Data;
+}
+
 News* api_news_init(void) {
     News* pNews = malloc(sizeof(News));
     pointer_alloc_check(pNews);
@@ -602,22 +619,38 @@ void info_array_store_totals(Info_Array* pInfo_Array) {
                                               pInfo_Array->totals->total_spent;
 }
 
-Info_Array* iex_get_valid_symbols(void) {
+Ref_Data* iex_get_valid_symbols(void) {
     String* pString = api_curl_data("https://api.iextrading.com/1.0/ref-data/symbols");
     if (pString == NULL)
         return NULL;
 
     Json* jobj = json_tokener_parse(pString->data), * idx;
-    Info_Array* list = api_info_array_init_from_length(json_object_array_length(jobj));
-    for (size_t i = 0; i < list->length; i++) {
+    Ref_Data* pRef_Data = api_ref_data_init_from_length(json_object_array_length(jobj));
+    for (size_t i = 0; i < pRef_Data->length; i++) {
         idx = json_object_array_get_idx(jobj, i);
-        strcpy(list->array[i]->symbol, json_object_get_string(json_object_object_get(idx, "symbol")));
-        strcpy(list->array[i]->name, json_object_get_string(json_object_object_get(idx, "name")));
+        strcpy(pRef_Data->symbols[i], json_object_get_string(json_object_object_get(idx,
+                "symbol")));
+        strcpy(pRef_Data->names[i], json_object_get_string(json_object_object_get(idx, "name")));
     }
 
     json_object_put(jobj);
     string_destroy(&pString);
-    return list;
+    return pRef_Data;
+}
+
+void api_ref_data_destroy(Ref_Data** phRef_Data) {
+    if (*phRef_Data == NULL)
+        return;
+
+    Ref_Data* pRef_data = *phRef_Data;
+    for (size_t i = 0; i < pRef_data->length; i++) {
+        free(pRef_data->symbols[i]);
+        free(pRef_data->names[i]);
+    }
+    free(pRef_data->symbols);
+    free(pRef_data->names);
+    free(*phRef_Data);
+    *phRef_Data = NULL;
 }
 
 void api_news_destroy(News** phNews) {

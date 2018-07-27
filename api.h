@@ -12,6 +12,7 @@
 #define DATE_MAX_LENGTH 16
 #define CELL_MAX_LENGTH 16
 #define SYMBOL_MAX_LENGTH 32
+#define NAME_MAX_LENGTH 128
 #define URL_MAX_LENGTH 2048
 #define INFO_TEXT_MAX 2048
 #define EMPTY (-999)
@@ -23,6 +24,12 @@
 #include <json-c/json_tokener.h>
 #include <pthread.h>
 #include "utils.h"
+
+typedef struct ref_data {
+    char** symbols;
+    char** names;
+    size_t length;
+} Ref_Data;
 
 typedef struct news_article {
     char headline[INFO_TEXT_MAX];
@@ -128,6 +135,8 @@ struct info_array {
     size_t length;
     Info* totals;
 };
+
+Ref_Data* api_ref_data_init_from_length(size_t length);
 
 /**
  * Allocates a News struct and returns a pointer to it.
@@ -324,7 +333,13 @@ void info_array_store_totals(Info_Array* pInfo_Array);
  * Returns a pointer to an Info_Array containing a list of all iex listed securities.
  * @return Info_Array*
  */
-Info_Array* iex_get_valid_symbols(void);
+Ref_Data* iex_get_valid_symbols(void);
+
+/**
+ * Destroys Ref_Data object and frees memory. Sets the pointer of the Ref_Data to NULL
+ * @param phRef_Data the Ref_Data to destroy
+ */
+void api_ref_data_destroy(Ref_Data** phRef_Data);
 
 /**
  * Destroys News object and frees memory. Sets the pointer of the News to NULL
