@@ -1,7 +1,7 @@
 # Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
 
 pkgname=(gtk4-git)
-pkgver=3.93.0.r1572.g84364a7ef4
+pkgver=3.94.0.r206.gcb247276f5
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('gnome-icon-theme: Default icon theme'
             'gnome-themes-standard: Default widget theme'
             'hicolor-icon-theme: Freedesktop.org Hicolor icon theme'
             'gdk-pixbuf2: An image loading library')
-source=('git+https://git.gnome.org/browse/gtk+'
+source=('git+https://gitlab.gnome.org/GNOME/gtk.git'
         'gtk4.install'
         'gtk4-query-immodules.hook'
         'gtk4-update-icon-cache.hook'
@@ -30,7 +30,7 @@ sha512sums=('SKIP'
             '805cf12606c738d0442d8af415223d3faada93c933b563b7c4c1d5e0c16d2d21435406add1fcc69300fb2fe534f2d0ddbf50b2c0463fc7462109d0f7802ccef1'
             '1642d77622d61234e316e8fcbc803a6a5556c606e37e56aa5981ef2f2df85bfa959c31b5d1bff248b340760e1178281cb0d7abdf540c5f7d4b62cb383a67c685')
 pkgver() {
-  cd gtk+
+  cd gtk
 
   printf "%s.r%s.g%s" "$(grep -m1 'version' meson.build | sed -r 's/([^0-9]*([0-9.]+)).*/\2/')" \
                       "$(git describe --tags --long | cut -d '-' -f 2)" \
@@ -38,7 +38,7 @@ pkgver() {
 }
 
 build() {
-  cd gtk+
+  cd gtk
 
   meson --prefix=/usr \
     --sysconfdir=/etc \
@@ -56,7 +56,7 @@ build() {
 package() {
   install="gtk4.install"
 
-  cd gtk+/_build
+  cd gtk/_build
 
   DESTDIR="$pkgdir" ninja install
 

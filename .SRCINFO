@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.93.0.r1572.g84364a7ef4
+	pkgver = 3.94.0.r206.gcb247276f5
 	pkgrel = 1
 	url = https://www.gtk.org/
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = gtk4-git
 	optdepends = gnome-themes-standard: Default widget theme
 	optdepends = hicolor-icon-theme: Freedesktop.org Hicolor icon theme
 	optdepends = gdk-pixbuf2: An image loading library
-	source = git+https://git.gnome.org/browse/gtk+
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git
 	source = gtk4.install
 	source = gtk4-query-immodules.hook
 	source = gtk4-update-icon-cache.hook
