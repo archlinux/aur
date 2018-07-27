@@ -14,7 +14,7 @@ backup=('etc/clamav/clamd.conf'
         'etc/clamav/clamav-milter.conf'
         'etc/logrotate.d/clamav')
 install=clamav.install
-source=(https://www.clamav.net/downloads/production/${pkgname}-${pkgver}.tar.gz{,.sig}
+source=(https://www.clamav.net/downloads/production/clamav-${pkgver}.tar.gz{,.sig}
         clamav.logrotate
         clamav.tmpfiles
         clamav.sysusers)
