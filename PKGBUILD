@@ -1,7 +1,7 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 
 pkgname='monero-wallet-qt'
-_monerover=0.12.0.0
+_monerover=0.12.3.0
 pkgver=${_monerover}
 pkgrel=2
 arch=('x86_64' 'i686')
@@ -21,8 +21,6 @@ makedepends=('git' 'cmake' 'boost')
 pkgdesc="Official QT GUI wallet for Monero, a private, secure, untraceable peer-to-peer currency"
 
 source=("https://github.com/monero-project/monero-gui/archive/v${pkgver}.tar.gz")
-
-md5sums=('ac71691e1f114aafc8c02252a276c128')
 
 _srcdir=monero-gui-$_monerover
 
@@ -46,3 +44,5 @@ package() {
     install -D -m755 "$srcdir/$_srcdir/release/bin/monero-wallet-gui" "$pkgdir/usr/bin/monero-wallet-qt"
     install -D -m644 "$srcdir/$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+sha256sums=('ec2fc70babea7f838ab637e8932f55770f6992d92a10d8ddc2510a47a8de784d')
