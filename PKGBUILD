@@ -67,6 +67,7 @@ build() {
 
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
     export GRADLE_USER_HOME="$srcdir"
+    export GRADLE_OPTS="-Dfile.encoding=UTF-8"
 
     msg "Building Freenet..."
     gradle copyRuntimeLibs
@@ -76,6 +77,7 @@ build() {
 
 build_plugins() {
     source /etc/profile.d/apache-ant.sh
+    export ANT_OPTS="-Dfile.encoding=UTF-8"
 
     for plugin in ${_plugins[@]}; do
         msg "Building Plugin ${plugin}..."

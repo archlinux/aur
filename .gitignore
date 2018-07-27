@@ -3,6 +3,7 @@ fred/
 plugin-*/
 src/
 pkg/
+.gradle/
 
 *.jar
 *.zip
