@@ -2,7 +2,7 @@
 
 pkgname=fstar-ulib
 pkgver=0.9.6.0
-pkgrel=7
+pkgrel=8
 pkgdesc="compiles the ulib component of F*"
 arch=('i686' 'x86_64')
 url='https://www.fstar-lang.org/'
@@ -12,12 +12,14 @@ depends=('fstar' 'z3' 'ocaml-fstar')
 
 build() {
   cd "$srcdir/"
-  cp -r /opt/fstar fstar
+  cp -r /opt/fstar/ .
   export FSTAR_HOME="$(pwd)/fstar"
   cd fstar/ulib/ml
   make -j4
 }
 
 package() {
-  install -dm 755 fstar/ulib /opt/fstar/ulib
+  cd "$srcdir/"
+  mkdir -p "$pkgdir/opt/fstar/"
+  find fstar/ulib -type f -exec sh -c "find /opt/fstar/ulib | grep -q '{}$' || cp -r {} $pkgdir/opt/fstar" \;
 }
