@@ -2,7 +2,7 @@
 
 pkgname=nuvolaruntime-mse
 _pkgname=nuvolaruntime
-pkgver=4.11.0
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="Nuvola Apps Runtime - Tight integration of web apps with your desktop"
 arch=("any")
@@ -13,7 +13,7 @@ conflicts=('nuvolaplayer' 'nuvolaruntime')
 depends=('python' 'vala' 'diorite>=4.7.0' 'glib2' 'ruby-gio2' 'python-gobject2' 'gtk3' 'json-glib' 'libnotify' 'gstreamer' 'libdri2-git' 'libdrm' 'webkit2gtk-mse')
 makedepends=('scour' 'dri2proto')
 source=(https://github.com/tiliado/${_pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('aab1c839cb04ed19ca9676bd9e18ff12')
+md5sums=('a0f936e2dcc5e18c427c798237583e2e')
 
 optdepends=(
 'nuvola-app-8tracks:			8tracks integration for Nuvola Player.'
