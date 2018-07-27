@@ -1,0 +1,15 @@
+pkgbase = fstar-ulib
+	pkgdesc = compiles the ulib component of F*
+	pkgver = 0.9.6.0
+	pkgrel = 1
+	url = https://www.fstar-lang.org/
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	depends = fstar
+	options = !strip
+	options = !makeflags
+	options = staticlibs
+
+pkgname = fstar-ulib
+
