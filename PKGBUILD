@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/FStarLang/kremlin'
 license=('Apache-2.0')
 options=('!strip' '!makeflags' 'staticlibs')
-depends=('fstar' 'ocaml' 'fstar-ulib' 'ocaml-fstar' 'ocaml-batteries' 'ocaml-ppx_deriving_yojson' 'ocaml-zarith' 'ocaml-stdint' 'ocaml-pprint' 'ocaml-menhir' 'ulex-git' 'ocaml-process' 'ocaml-fix' 'ocaml-wasm' 'ocaml-visitors')
+depends=('fstar-git' 'ocaml' 'fstar-ulib' 'ocaml-fstar' 'ocaml-batteries' 'ocaml-ppx_deriving_yojson' 'ocaml-zarith' 'ocaml-stdint' 'ocaml-pprint' 'ocaml-menhir' 'ulex-git' 'ocaml-process' 'ocaml-fix' 'ocaml-wasm' 'ocaml-visitors')
 source=('https://github.com/FStarLang/kremlin/archive/v0.9.6.0.tar.gz')
 sha384sums=('12c9649424cc8c5ccc4ec21c87c6efd8bb8a60d5150401c482a9f8451c971417489ee84d09f5f7ac03a2c2740470a12f')
 
