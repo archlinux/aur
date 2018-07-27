@@ -6,14 +6,14 @@ pkgrel=4
 pkgdesc="Simple but very convenient wrapper around Git and latexdiff"
 arch=('any')
 url="https://gitlab.com/git-latexdiff/git-latexdiff"
-license=('GPL')
+license=('BSD')
 makedepends=('asciidoc')
 depends=('texlive-core' 'texlive-bin' 'git')
-source=("v${pkgver}.tar.gz"::"https://gitlab.com/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("https://gitlab.com/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 sha256sums=('8ec04cb8e2717ccf29053c29dd53c13ce79ef7f6eb4fecd5a5ff339f7f3aa856')
 
 build() {
-  cd "${srcdir}"/git-latexdiff-v"${pkgver}"
+  cd "${srcdir}"/${pkgname}-v"${pkgver}"
 
   # we need to initialize an empty git repository so git-latexdiff can print
   # its help message (as a step for making the manpage).
@@ -22,9 +22,10 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/git-latexdiff-v"${pkgver}"
+  cd "${srcdir}"/${pkgname}-v"${pkgver}"
 
-  install -m 755 -D git-latexdiff ${pkgdir}/usr/bin/git-latexdiff
-  install -m 644 -D git-latexdiff.1 ${pkgdir}/usr/share/man/man1/git-latexdiff.1
+  install -m0755 -D git-latexdiff "${pkgdir}"/usr/bin/git-latexdiff
+  install -m0644 -D git-latexdiff.1 "${pkgdir}"/usr/share/man/man1/git-latexdiff.1
+  install -m0644 -D COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 # vim:set ts=2 sw=2 et:
