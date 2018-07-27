@@ -10,6 +10,7 @@ package86=rest-server-${pkgver}-linux-386.gz
 package64=rest-server-${pkgver}-linux-amd64.gz
 packagearm=rest-server-${pkgver}-linux-arm64.gz
 arch=('i686' 'x86_64' 'armv7h')
+options=(!strip)
 source_i686=(
   "${url}/releases/download/v${pkgver}/rest-server-${pkgver}-linux-386.gz"
 )

@@ -7,6 +7,7 @@ pkgbase = rest-server-bin
 	arch = x86_64
 	arch = armv7h
 	license = BSD
+	options = !strip
 	source_i686 = https://github.com/restic/rest-server/releases/download/v0.9.7/rest-server-0.9.7-linux-386.gz
 	sha256sums_i686 = 3ff5cac246ef0e563c41181b930b808abcff8ffa98ea691497e2b74374afb5f5
 	source_x86_64 = https://github.com/restic/rest-server/releases/download/v0.9.7/rest-server-0.9.7-linux-amd64.gz
