@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=1.0.15.r2.g2e9a4de
+pkgver=1.0.15.r0.g60eb187
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam."
 arch=('x86_64')
@@ -13,9 +13,10 @@ makedepends=('git' 'cmake' 'qt5-base') #qt5 for the overlayexample
 provides=("openvr")
 options=('!strip' 'staticlibs')
 
-source=("git+https://github.com/ValveSoftware/openvr.git" "countof.patch")
+source=("git+https://github.com/ValveSoftware/openvr.git" 'https://github.com/ValveSoftware/openvr/commit/0fa21ba17748efcca1816536e27bdca70141b074.patch' 'https://github.com/ValveSoftware/openvr/commit/4f9149928e29e9f92e6d8dc39f984d1a557a42b3.patch')
 md5sums=('SKIP'
-         'f488b62d4a88e9295adc8762cd82f551')
+         '7350517830b1a0038d30c6ad33b4bb39'
+         'dfb4306bb93633e467862cd8990e6e79')
 
 pkgver() {
   cd "$srcdir/openvr"
@@ -26,7 +27,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/openvr"
-  git pull origin pull/594/head --no-edit
+  git apply ../0fa21ba17748efcca1816536e27bdca70141b074.patch #https://github.com/ValveSoftware/openvr/pull/594
+  git apply ../4f9149928e29e9f92e6d8dc39f984d1a557a42b3.patch #https://github.com/ValveSoftware/openvr/pull/805 
 }
 
 build() {
