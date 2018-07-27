@@ -5,9 +5,9 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=5.1.0.r0.gbe4c491c
+pkgver=5.1.1.r0.g7e081d2a
 pkgrel=1
-pkgdesc="A library-based package manager with dependency support. git version."
+pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
             '0c087d26e80333267391a6e9e34b95a2ffb103cb9391cb53cc5d97ad954af774'
             'c5a3ec55f9d1bc52e5e5b127f76b7b16b79738268691a3e1d842359033e460da'
             '2d17478fd607c75e396fe10ef2add8bc9fcc12054810fb6f4409dfb70e01989e'
-            '6066d67d818ee36760bf121c76d5019130f7875b3e5ed179b319b810a3a9685b')
+            '2d66473febac0e142eb5b5b2b2c6341687b1afaa89c76ca4e6803499b60636f1')
 
 pkgver() {
   cd pacman
