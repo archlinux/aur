@@ -1,0 +1,31 @@
+pkgbase = kremlin
+	pkgdesc = a tool for extracting low-level F* programs to readable C code
+	pkgver = 0.9.6.0
+	pkgrel = 1
+	url = https://github.com/FStarLang/kremlin
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	depends = fstar
+	depends = ocaml
+	depends = fstar-ulib
+	depends = ocaml-fstar
+	depends = ocaml-batteries
+	depends = ocaml-ppx_deriving_yojson
+	depends = ocaml-zarith
+	depends = ocaml-stdint
+	depends = ocaml-pprint
+	depends = ocaml-menhir
+	depends = ulex-git
+	depends = ocaml-process
+	depends = ocaml-fix
+	depends = ocaml-wasm
+	depends = ocaml-visitors
+	options = !strip
+	options = !makeflags
+	options = staticlibs
+	source = https://github.com/FStarLang/kremlin/archive/v0.9.6.0.tar.gz
+	sha384sums = 12c9649424cc8c5ccc4ec21c87c6efd8bb8a60d5150401c482a9f8451c971417489ee84d09f5f7ac03a2c2740470a12f
+
+pkgname = kremlin
+
