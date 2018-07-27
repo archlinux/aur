@@ -17,7 +17,7 @@ package()
   tar xf ${pkgver}.tar.gz -C "$srcdir"
   cd "$srcdir/${pkgname}-${pkgver#*v}"
   install -d "$pkgdir/usr/bin/"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "${pkgname}.sh" "$pkgdir/usr/bin/$pkgname"
   }
 
 # vim:set ts=2 sw=2 et:
