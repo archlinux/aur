@@ -1,10 +1,14 @@
 pkgbase = browsh
 	pkgdesc = A fully-modern text-based browser, rendering to TTY and browsers
 	pkgver = 1.4.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.brow.sh
 	arch = x86_64
 	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = LGPL2.1
 	makedepends = go
 	makedepends = go-bindata

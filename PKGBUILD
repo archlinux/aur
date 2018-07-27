@@ -2,9 +2,9 @@
 
 pkgname=browsh
 pkgver=1.4.9
-pkgrel=2
+pkgrel=3
 pkgdesc='A fully-modern text-based browser, rendering to TTY and browsers'
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.brow.sh'
 license=('LGPL2.1')
 depends=('firefox>=57')
