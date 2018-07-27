@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="A renewal tool for Acervo Minerva"
 arch=('any')
 makedepends=('python-setuptools')
+depends=( 'python-requests' 'python-beautifulsoup4' 'python-appdirs')
 url="https://github.com/erickpires/minervaboto"
 license=('MIT')
 source=(https://pypi.python.org/packages/source/m/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz)
