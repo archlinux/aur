@@ -1,0 +1,16 @@
+pkgbase = u2f-hidraw-policy
+	pkgdesc = Another UDEV rule for U2F devices.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/amluto/u2f-hidraw-policy
+	arch = x86_64
+	license = LGPL2.1
+	depends = libsystemd
+	conflicts = libu2f-host
+	conflicts = libu2f-host-git
+	conflicts = u2f-udev-rules-git
+	source = git+https://github.com/amluto/u2f-hidraw-policy.git
+	md5sums = SKIP
+
+pkgname = u2f-hidraw-policy
+
