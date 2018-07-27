@@ -2,11 +2,11 @@
 
 pkgname=sopel
 pkgver=6.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
 license=('custom:EFL')
-url='http://sopel.chat'
+url='https://sopel.chat'
 depends=('python-setuptools' 'sqlite' 'python-xmltodict' 'python-pytz' 'python-praw'
          'python-pyenchant' 'python-pygeoip')
 makedepends=('python-sphinx')
@@ -15,9 +15,7 @@ backup=('etc/sopel.cfg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sopel-irc/sopel/archive/v$pkgver.tar.gz")
 sha512sums=('6f8f3003c87f8092a7a05320197237033f8d650402155f1f71482078e2bb851aa5f1942d2ccf378d3446011326f174087f478754e212b40e2216e2ad46a82812')
 
-prepare() {
-  export LC_CTYPE=en_US.UTF-8
-}
+export LC_CTYPE=en_US.UTF-8
 
 build() {
   cd sopel-$pkgver
@@ -27,7 +25,7 @@ build() {
 
 check() {
   cd sopel-$pkgver
-  python setup.py pytest --addopts "--ignore build/" || warning "Tests failed"
+  python setup.py pytest --addopts "--ignore build/"
 }
 
 package() {
