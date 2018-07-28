@@ -1,7 +1,7 @@
 # Maintainer: xRemaLx <anton.komolov@gmail.com>
 
 pkgname='perl-protocol-socketio'
-pkgver=0.06
+pkgver=0.07
 pkgrel=1
 pkgdesc='Socket.IO protocol implementation'
 _dist='Protocol-SocketIO'
@@ -10,11 +10,11 @@ url="http://search.cpan.org/dist/Protocol-SocketIO/"
 license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-json')
 options=(!emptydirs purge)
-makedepends=('perl-module-build>=0.38')
+makedepends=('perl-module-build-tiny>=0.035')
 checkdepends=()
-provides=("Protocol::SocketIO=${pkgver}" "perl-protocol-socketio=${pkgver}")
+provides=("perl-protocol-socketio=${pkgver}")
 source=("http://search.cpan.org/CPAN/authors/id/V/VT/VTI/${_dist}-${pkgver}.tar.gz")
-sha512sums=('8e144981b7ed7f9afacb31a2311a20afaab06ad1e53a099d23e27e861751e1c9389f5e6fb84b0b9bcd653b28e937ea7dfb11c88fe055840836a8a34f3a688942')
+sha512sums=('4799d0252f41f6d48bcdb0640da400d16dab24b43b6c285c74933a8b8668efbb08003e6bbc36f8979c4bc357f462310bb6bc8b63dfb1981003dd05a81ad013ed')
 
 sanitize() {
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
