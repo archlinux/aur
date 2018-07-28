@@ -138,6 +138,7 @@ build() {
     --enable-libstdcxx-threads \
     --enable-lto --disable-libgomp \
     --enable-libstdcxx-filesystem-ts \
+    --enable-libstdcxx-time=yes \
     --disable-multilib --enable-checking=release
   make all-gcc
 
