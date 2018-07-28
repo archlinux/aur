@@ -5,7 +5,7 @@
 
 _pkgname=sonata
 pkgname=sonata-git
-pkgver=v1.7a2.r77.g4e34e07
+pkgver=v1.7a2.r92.g0a1d630
 pkgrel=1
 pkgdesc='Elegant GTK+3 music client for MPD (Git Version)'
 url='https://github.com/multani/sonata'
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 pkgver()
 {
 	cd "${srcdir}/${_pkgname}"
-	git describe | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package()
