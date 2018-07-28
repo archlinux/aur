@@ -2,7 +2,7 @@
 pkgbase=yaru
 pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-icon-theme')
 pkgver=18.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"
@@ -10,7 +10,6 @@ license=('GPL3')
 
 makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
-conflicts=('yaru-git')
 
 source=("git+https://github.com/ubuntu/${pkgbase}#tag=${pkgver}"
   "0001-gnome-shell-fix-install-dir.patch")
@@ -31,7 +30,7 @@ build() {
 package_yaru-sound-theme() {
   pkgdesc="Yaru default ubuntu sound theme"  
 
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" ninja -C build install
   rm -r "$pkgdir/usr/share/glib-2.0"
   rm -r "$pkgdir/usr/share/xsessions"
   rm -r "$pkgdir/usr/share/wayland-sessions"
@@ -41,10 +40,9 @@ package_yaru-sound-theme() {
 
 package_yaru-gtk-theme() {
   pkgdesc="Yaru default ubuntu gtk theme"  
-  depends=("gtk3")
-  optdepends=("gtk2")
+  depends=("gtk3" "gdk-pixbuf2" "gtk-engine-murrine" "gnome-themes-extra")
   
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" ninja -C build install
   rm -r "$pkgdir/usr/share/glib-2.0"
   rm -r "$pkgdir/usr/share/xsessions"
   rm -r "$pkgdir/usr/share/wayland-sessions"
@@ -57,7 +55,7 @@ package_yaru-gnome-shell-theme() {
   pkgdesc="Yaru default ubuntu gnome shell theme"  
   depends=("gnome-shell")
   
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" ninja -C build install
   rm -r "$pkgdir/usr/share/glib-2.0"
   rm -r "$pkgdir/usr/share/xsessions"
   rm -r "$pkgdir/usr/share/wayland-sessions"
@@ -72,7 +70,7 @@ package_yaru-icon-theme() {
   pkgdesc="Yaru default ubuntu icon theme"  
   depends=(hicolor-icon-theme gtk-update-icon-cache librsvg)
 
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" ninja -C build install
   rm -r "$pkgdir/usr/share/glib-2.0"
   rm -r "$pkgdir/usr/share/xsessions"
   rm -r "$pkgdir/usr/share/wayland-sessions"
