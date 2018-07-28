@@ -3,8 +3,8 @@
 _pkgnamefmt=LibreOffice
 _pkgname=libreoffice
 pkgname=${_pkgname}-dev-bin
-_LOver=6.1.0.1
-pkgver=6.1.0.1
+_LOver=6.1.0.2
+pkgver=6.1.0.2
 _basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 pkgrel=1
 arch=('i686' 'x86_64')
