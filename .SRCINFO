@@ -1,0 +1,18 @@
+pkgbase = tmblock-git
+	pkgdesc = Tools to cancel video wateramrk
+	pkgver = r31.79ead0c
+	pkgrel = 1
+	url = https://github.com/TMBlock/libtmblock
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	makedepends = git
+	makedepends = cmake
+	noextract = halide.tgz
+	source = git+https://github.com/TMBlock/libtmblock.git
+	source = halide.tgz::https://github.com/halide/Halide/releases/download/release_2017_10_30/halide-linux-64-gcc53-trunk-3af238615667312dcb46607752e3ae5d0ec5d713.tgz
+	sha256sums = SKIP
+	sha256sums = f87361d55685856a38447f1c763d35c87fb511ae71b718ccbd079681aedf081b
+
+pkgname = tmblock-git
+
