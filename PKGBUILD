@@ -51,9 +51,9 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=4.17
-_srcname=linux-${_major}
-_minor=10
+_minor=11
 pkgver=${_major}.${_minor}
+_srcname=linux-${pkgver}
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -71,8 +71,6 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patc
 
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         "${_uksm_path}/${_uksm_patch}"
          # the main kernel config files
@@ -95,10 +93,6 @@ _kernelname=${pkgbase#linux}
 
 prepare() {
     cd ${_srcname}
-
-    ### Add upstream patch
-        msg "Add upstream patch"
-        patch -p1 -i ../patch-${pkgver}
 
     ### Disable USER_NS for non-root users by default
         msg "Disable USER_NS for non-root users by default"
@@ -377,9 +371,7 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-sha512sums=('4d9de340a26155a89ea8773131c76220cc2057f2b5d031b467b60e8b14c1842518e2d60a863d8c695f0f7640f3f18d43826201984a238dade857b6cef79837db'
-            'SKIP'
-            '4ed5a6d47de7b4153805d937c44cb5eb03628a590d597c38be299afe67047611a6b37b1c13d0a8503de296779fc4ad6337dd4209f06b375c0111400b454b59c7'
+sha512sums=('7fcdb7029c79b2629c59422c6c150d71e465333d5d8893f4b0ecf926bc425d934b26e0d25de35e9cd077769c17cd1f3ff0c25c33af9e31c44230be24c2c6eef3'
             'SKIP'
             'a0f37a9b8dbd11f8ef4450b06afee0a6e5519cb5a5cd78f84896812b007ef645bcb9c733ae9817c24d1f4a4c2114258015abceb5a94c7e08d2bb00531a6f04c7'
             '30fc872a19686bd75b0cfa0614980a41d74f4cd40c9fd2c98f82ab4554ad39ccd7ddace9068f354572c1bdf14eed55c8e6d3390127c1a83ec093cf1487a31a0d'
@@ -394,6 +386,5 @@ sha512sums=('4d9de340a26155a89ea8773131c76220cc2057f2b5d031b467b60e8b14c1842518e
             'f82aecc333581c08b75014a39504c184724802203551b601354452b18ae80e69b5fc8d14f1eb86f75423e9907e13dbe7dbede8758be6477a42dd85238c229b05')
             
 validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
