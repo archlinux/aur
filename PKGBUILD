@@ -1,41 +1,45 @@
-# Maintainer: Masoud <mpoloton@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Contributor: Masoud <mpoloton@gmail.com>
 # Contributor: valvetime <valvetimepackages@gmail.com>
 # Contributor: Tom Swartz <tom@tswartz.net>
 
 pkgname=soapysdr-git
-pkgver=0.5.4.r32.ga412ad4
+_pkgname=SoapySDR
+pkgver=0.6.1.r83.gd79a09d
 pkgrel=1
 epoch=3
 pkgdesc="Vendor and platform neutral SDR support library"
-arch=('any')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/pothosware/SoapySDR"
-license=('custom:Boost Software License Version 1.0')
+license=('Boost')
 provides=('soapysdr')
 conflicts=('soapysdr')
 makedepends=('git' 'cmake')
 depends=()
-optdepends=('swig' 'python') 
-source=(${pkgname}::"git+https://github.com/pothosware/SoapySDR.git")
+optdependes=('swig: bindings'
+	     'python: python bindings'
+	     'doxygen: documentation')
+source=('git+https://github.com/pothosware/SoapySDR.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir"/$_pkgname
   git describe --long | sed 's/^soapy.sdr-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 build() {
-	cd "${srcdir}/${pkgname}"
-	mkdir -p build
-	cd build
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-	make 
+  mkdir -p "$srcdir"/$_pkgname/build
+  cd "$srcdir"/$_pkgname/build
+
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
+
+  make
 }
 
 package() {
-	make -C "${srcdir}/${pkgname}/build" DESTDIR="${pkgdir}" install
+  cd "$srcdir"/$_pkgname/build
 
-        #install the license
-	mkdir -p "$pkgdir/usr/share/licenses/soapysdr-git"
-	cp "$srcdir/soapysdr-git/LICENSE_1_0.txt" "$pkgdir/usr/share/licenses/soapysdr-git/"
+  make DESTDIR="$pkgdir" install
 }

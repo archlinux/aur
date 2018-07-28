@@ -1,18 +1,21 @@
 pkgbase = soapysdr-git
 	pkgdesc = Vendor and platform neutral SDR support library
-	pkgver = 0.5.4.r32.ga412ad4
+	pkgver = 0.6.1.r83.gd79a09d
 	pkgrel = 1
 	epoch = 3
 	url = https://github.com/pothosware/SoapySDR
-	arch = any
-	license = custom:Boost Software License Version 1.0
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Boost
 	makedepends = git
 	makedepends = cmake
-	optdepends = swig
-	optdepends = python
 	provides = soapysdr
 	conflicts = soapysdr
-	source = soapysdr-git::git+https://github.com/pothosware/SoapySDR.git
+	source = git+https://github.com/pothosware/SoapySDR.git
 	sha256sums = SKIP
 
 pkgname = soapysdr-git
