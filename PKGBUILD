@@ -2,15 +2,15 @@
 
 pkgbase=python-pytest-flake8
 pkgname=('python-pytest-flake8' 'python2-pytest-flake8')
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc='pytest plugin to check FLAKE8 requirements'
 arch=('any')
 license=('MIT')
 url='https://github.com/tholo/pytest-flake8'
 makedepends=('python-pytest' 'python2-pytest' 'flake8' 'python2-flake8')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/tholo/pytest-flake8/archive/$pkgver.tar.gz")
-sha512sums=('a46f47493094543ee88068527c211a4fef7bf17b5a7ff39c04b3daaa46493919710266ae3e02041f9ded0191ffa7a0687a939bf8b4d647ee4d543a3b210dc994')
+sha512sums=('fec31ba44a9915007b5629c82636d522cd9184739699e963c6cae27fbb9ddf55e1853c922abd2e2259e02074920ef2c67ae80d6a93bff8187082fa8584daea60')
 
 prepare() {
   sed -i 's/ignore = E128/ignore = E128 W605/' pytest-flake8-$pkgver/tox.ini
