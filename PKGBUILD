@@ -1,19 +1,20 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=oxy
-pkgver=3.0.0+dev1+88+g8bafe66
+pkgver=3.0.0+dev1+91+ga5704df
+_commit=a5704df93e652b7ca461b5ec33b442c23d929eaa
 pkgrel=1
-pkgdesc='In-development SSH-alike that uses the Noise protocol'
-arch=(any)
+pkgdesc='SSH-alike that uses the Noise protocol'
+arch=(i686 x86_64)
 url=https://github.com/oxy-secure/oxy
-license=(BSD-2-Clause)
+license=(BSD)
 makedepends=(git rust-nightly)
 conflicts=(oxy-git)
-source=(git+$url#commit=8bafe669127fe71785bccc1dcf078062aaca2508)
+source=(git+$url#commit=$_commit)
 sha512sums=(SKIP)
 
 pkgver() {
-  cd $srcdir/oxy
+  cd oxy
   echo "$(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2 | sed s/-/+/)+$(git rev-list --count HEAD)+g$(git describe --always)"
 }
 
@@ -22,8 +23,13 @@ build() {
   cargo +nightly build --release
 }
 
+check() {
+  cd oxy
+  cargo +nightly test --release || continue
+}
+
 package() {
   cd oxy
-  install -D target/release/oxy $pkgdir/usr/bin/oxy
-  install -Dm 644 LICENSE $pkgdir/usr/share/licenses/oxy/LICENSE
+  install -D target/release/oxy "$pkgdir"/usr/bin/oxy
+  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/oxy/LICENSE
 }
