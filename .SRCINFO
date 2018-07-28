@@ -1,0 +1,13 @@
+pkgbase = easyconnect
+	pkgdesc = Support access to ssl vpn. With easyconect，you can secure and speed up connection to cooperate network at ease!
+	pkgver = 7.6.3.0.86415
+	pkgrel = 1
+	url = http://www.sangfor.com.cn
+	install = easyconnect.install
+	arch = x86_64
+	license = custom
+	source = http://download.sangfor.com.cn/download/product/sslvpn/pkg/linux_01/EasyConnect_x64.deb
+	md5sums = 6ed6273f7754454f19835a456ee263e3
+
+pkgname = easyconnect
+
