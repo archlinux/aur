@@ -1,5 +1,5 @@
 pkgbase = maltego
-	pkgdesc = Maltego information gather software by Paterva
+	pkgdesc = Maltego information gathering software by Paterva
 	pkgver = 4.1.12.11480
 	pkgrel = 1
 	url = https://www.paterva.com
