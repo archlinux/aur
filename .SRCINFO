@@ -5,7 +5,7 @@ pkgbase = work-hours-counter
 	url = https://github.com/YanDoroshenko/work-hours-counter
 	arch = any
 	license = GPL
-	depends = ('java-environment')
+	depends = java-environment
 	source = https://github.com/YanDoroshenko/work-hours-counter/raw/master/target/work-hours-counter-1.3.jar
 	sha256sums = fb8334239f8ece3d0c9396139c806b19715c24718c7a54870f5754b4199cd9cf
 
