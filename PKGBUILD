@@ -3,19 +3,19 @@
 
 _target=riscv64-linux-gnu
 pkgname=$_target-gcc
-pkgver=8.1.0
+pkgver=8.2.0
 _islver=0.19
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for 32bit and 64bit RISC-V bare-metal'
 arch=('x86_64')
 url='http://gcc.gnu.org/'
 license=(GPL LGPL FDL)
-depends=("$_target-binutils" 'zlib' 'libmpc')
+depends=("$_target-binutils" "$_target-glibc" 'zlib' 'libmpc')
 options=(!emptydirs !strip)
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2")
-sha256sums=('1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153'
-            'd59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8')
+sha512sums=('64898a165f67e136d802a92e7633bf1b06c85266027e52127ea025bf5fc2291b5e858288aac0bdba246e6cdf7c6ec88bc8e0e7f3f6f1985f4297710cafde56ed'
+            '08f4db964d9e02ec8aa9779378ed76e0ddf1d56f81f87664dbf787555ce496cdc87e836f8a51ae137f45e648c604870cce07ee45919eafb549e404afb8f27083')
 
 if [[ -n "$_snapshot" ]]; then
   _basedir=gcc-$_snapshot
