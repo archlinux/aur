@@ -107,13 +107,6 @@ prepare() {
   cd ../gcc-build-${_target}/lib/gcc/$_target/$pkgver
   unzip -qoW "$srcdir/djcrx${_djver//./}.zip" 'include/**' 'lib/*.[oa]'
   mv lib/* .
-  # ???
-  ln -fs /bin/true stubify
-
-  # monkeypatch libc to prepare for building without an ldscript
-  # echo '.comm __environ,16' > environ.s
-  # i586-pc-msdosdjgpp-as environ.s -o environ.o
-  # i586-pc-msdosdjgpp-ar q libc.a environ.o
 }
 
 build() {
