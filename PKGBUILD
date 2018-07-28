@@ -62,9 +62,10 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.17.10
-_srcpatch="${pkgver##*\.*\.}"
-_srcname="linux-${pkgver%%\.${_srcpatch}}"
+_major=4.17
+pkgver=4.17.11
+_srcpatch="${pkgver}"
+_srcname="linux-${pkgver}"
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
@@ -81,13 +82,11 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patc
 _bfq_sq_mq_path="bfq-sq-mq"
 _bfq_sq_mq_ver='v8r12'
 _bfq_sq_mq_rel='2K180625'
-_bfq_sq_mq_patch="${pkgver%%\.${_srcpatch}}-bfq-sq-mq-${_bfq_sq_mq_ver}-${_bfq_sq_mq_rel}.patch"
+_bfq_sq_mq_patch="${_major}-bfq-sq-mq-${_bfq_sq_mq_ver}-${_bfq_sq_mq_rel}.patch"
 
 source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # gcc cpu optimizatons from graysky and ck
         "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
         # bfq-mq patch
@@ -108,9 +107,7 @@ source=(# mainline kernel patches
         '0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch'
         '0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch')
 
-sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
-            'SKIP'
-            '41ad005296c7a1b5245a87881f666b3f4d7aa05a6b9409454b2e473d473c4cee'
+sha256sums=('db1e84ed4f213b43d50f3373627b2ffcdb3b65f3430f746a38f801554ef3728c'
             'SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '7fa085ae8c7839fe22257bdebfcd1dfb1e60c40e61157972c349634c122ed086'
@@ -125,7 +122,6 @@ sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'bc50c605bd0e1fa7437c21ddef728b83b6de3322b988e14713032993dfa1fc69'
             '66284102261c4ed53db050e9045c8672ba0e5171884b46e58f6cd417774d8578')
 validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
 
@@ -134,10 +130,6 @@ _kernelname=${pkgbase#linux}
 
 prepare() {
   cd ${_srcname}
-
-  ### Add upstream patch
-      msg "Add upstream patch"
-      patch -p1 -i ../patch-${pkgver}
   
   ### Disable USER_NS for non-root users by default
         msg "Disable USER_NS for non-root users by default"
