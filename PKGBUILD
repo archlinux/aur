@@ -1,8 +1,8 @@
 _npmname=pnpm
-_npmver=2.12.0
+_npmver=2.12.2
 pkgname=nodejs-pnpm
-pkgver=2.12.0
-pkgrel=2
+pkgver=2.12.2
+pkgrel=1
 pkgdesc="Performant npm installations"
 arch=(any)
 url='https://github.com/rstacruz/pnpm'
@@ -11,7 +11,7 @@ depends=('nodejs' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('5a0657f6a2f0c465c27e8a6de005850ededea227233d218f22162fff5efea02b')
+sha256sums=('3fcf2d2670d30de4bb6815d9dafb24021d6cde7bcf79ec1d8c7580ec1de882ad')
 
 package() {
   cd $srcdir
