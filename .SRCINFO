@@ -1,6 +1,6 @@
 pkgbase = bootiso
 	pkgdesc = A bash script to securely create a bootable USB device from one ISO file.
-	pkgver = 3.1.1
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = https://github.com/jsamr/bootiso
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = bootiso
 	depends = syslinux
 	depends = mtools
 	depends = rsync
-	source = https://github.com/jsamr/bootiso/archive/v3.1.1.tar.gz
-	sha256sums = 817a24b4b2a90f8ac4cf8f39ed4ca392116fff91b4309805241937f430d7ade0
+	source = https://github.com/jsamr/bootiso/archive/v3.1.3.tar.gz
+	sha256sums = da00027f5ee0f87886ae7e5f74d20f8b5528b241548b4b7bd888a684abc97c1c
 
 pkgname = bootiso
 
