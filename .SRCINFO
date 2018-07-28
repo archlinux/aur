@@ -1,17 +1,17 @@
 pkgbase = postman
 	pkgdesc = Build, test, and document your APIs faster
-	pkgver = 6.1.4
+	pkgver = 6.2.2
 	pkgrel = 1
 	url = https://www.getpostman.com
 	arch = x86_64
 	license = custom
 	depends = electron
 	conflicts = postman-bin
-	source = postman-6.1.4.zip::https://dl.pstmn.io/download/version/6.1.4/linux64
+	source = postman-6.2.2.zip::https://dl.pstmn.io/download/version/6.2.2/linux64
 	source = remove-updater.patch
 	source = https://archive.archlinux.org/packages/e/electron/electron-1.8.4-2-x86_64.pkg.tar.xz
-	sha256sums = 2f93a860f87d842c0e0433b55cd7c46e04d1d20c0adcae8680332585dffd86eb
-	sha256sums = e6067c9a83c4bf13ac739debb23b67ae8b6d62beb47f65fc2748bf9a924aec02
+	sha256sums = 204860210f8ee4216db922e56286d6f4ec3920b9d761442cbc9e931d79c501f0
+	sha256sums = 62ed199cec79416667c8fc62286d1da9e7f9dbab84476bfcf0328d49a0c97a26
 	sha256sums = dd9c6756bd61abbaae58fdeade5570f771fe8d6f0de14f1e5a710e42f0bf35c2
 
 pkgname = postman
