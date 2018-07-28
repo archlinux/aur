@@ -1,5 +1,5 @@
 pkgname=libmodulemd
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="C Library for manipulating module metadata files"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('custom:MIT')
 depends=('glib2' 'libyaml')
 makedepends=('gobject-introspection' 'gtk-doc' 'meson')
 source=("$url/releases/download/$pkgname-$pkgver/${pkgname#lib}-$pkgver.tar.xz")
-md5sums=('52d3e8d054dd6edbfcd68b988c8e9b12')
+md5sums=('0b1fee4e76c251814f65c6a0d4b9a4ed')
 
 prepare() {
 	mv "${pkgname#lib}-$pkgver" "$pkgname-$pkgver"

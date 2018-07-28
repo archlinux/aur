@@ -1,6 +1,6 @@
 pkgbase = libmodulemd
 	pkgdesc = C Library for manipulating module metadata files
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/fedora-modularity/libmodulemd
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = libmodulemd
 	makedepends = meson
 	depends = glib2
 	depends = libyaml
-	source = https://github.com/fedora-modularity/libmodulemd/releases/download/libmodulemd-1.5.2/modulemd-1.5.2.tar.xz
-	md5sums = 52d3e8d054dd6edbfcd68b988c8e9b12
+	source = https://github.com/fedora-modularity/libmodulemd/releases/download/libmodulemd-1.6.0/modulemd-1.6.0.tar.xz
+	md5sums = 0b1fee4e76c251814f65c6a0d4b9a4ed
 
 pkgname = libmodulemd
 
