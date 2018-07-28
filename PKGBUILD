@@ -1,13 +1,13 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-git
-pkgver=2124.721f08f5
-pkgrel=4
+pkgver=5799.2382a6d5b
+pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features"
 arch=(i686 x86_64)
 url="http://dosbox.sourceforge.net"
 license=(GPL)
-depends=(fluidsynth sdl_net sdl_sound libpng mesa)
+depends=(fluidsynth libxkbfile sdl2 sdl2_net sdl2_mixer libpng mesa ffmpeg)
 makedepends=(git glu)
 optdepends=()
 source=(dosbox-x::git://github.com/joncampbell123/dosbox-x.git
@@ -21,9 +21,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/dosbox-x"
-  
+
+  cp CHANGELOG ChangeLog
   ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc/dosbox-x
+  ./configure --enable-sdl2 --prefix=/usr --sysconfdir=/etc/dosbox-x
   make
 }
 
