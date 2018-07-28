@@ -35,5 +35,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  rm -rf ${pkgdir}/usr/{bin,share,include}
+  rm -rf ${pkgdir}/usr/{bin,lib,share,include}
 }
