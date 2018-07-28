@@ -7,7 +7,7 @@ _gembuilder=("install"
 _ruby="/usr/bin/ruby"
 _gem="/usr/bin/gem"
 pkgname="ruby-twitter-text"
-pkgver="1.13.0"
+pkgver="2.1.0"
 pkgrel=1
 pkgdesc="Twitter text handling library"
 arch=("any")
@@ -21,13 +21,13 @@ depends=("ruby"
          "ruby-unf>=0.1.0")
 conflicts=()
 optdepends=("ruby-multi-json: A common interface to multiple JSON libraries. (Development dependency)"
-            "ruby-nokogiri: Nokogiri (é‹¸) is an HTML, XML, SAX, and Reader parser (Development dependency)"
+            "ruby-nokogiri: Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser (Development dependency)"
             "ruby-rake: Rake is a Make-like program implemented in Ruby (Development dependency)"
             "ruby-rdoc: RDoc produces HTML and command-line documentation for Ruby projects (Development dependency)"
             "ruby-rspec: rspec-2.14.1 (Development dependency)"
             "ruby-simplecov: Code coverage for Ruby 1.9+ with a powerful configuration library and automatic ... (Development dependency)")
 source=("https://rubygems.org/gems/$_gemname-$pkgver.gem")
-sha256sums=("11c44fabb6f3a3c298f614328ed6ae7f42e14c46d87c01191599b8e2d428205b")
+sha256sums=("fec0db6f459002c1cbc6168dff53534e273029c60ae690451083b230d700e99d")
 noextract=("$_gemname-$pkgver.gem")
 options=("!emptydirs")
 
