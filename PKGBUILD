@@ -10,7 +10,7 @@ _djver=2.05
 _pthver=3.14
 _zlver=1.2.11
 _wattver="2.2-dev.10"
-pkgrel=4
+pkgrel=5
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -124,8 +124,6 @@ build() {
     --disable-libquadmath \
     --disable-libquadmath-support \
     --disable-libgomp \
-    --disable-default-pie \
-    --disable-default-ssp \
     --disable-install-libiberty \
     --enable-__cxa_atexit \
     --enable-gold \
