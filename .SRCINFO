@@ -1,7 +1,7 @@
 pkgbase = hdf5_18-mpich
 	pkgdesc = The hdf5 legacy 1.8 series compiled with mpich support
 	pkgver = 1.8.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.hdfgroup.org/HDF5/
 	arch = x86_64
 	license = custom

@@ -5,7 +5,7 @@ _mpi=mpich
 pkgname=${_legacypkg}-${_mpi}
 _pkgname=${_legacypkg:0:4}
 pkgver=1.8.21
-pkgrel=1
+pkgrel=2
 pkgdesc="The hdf5 legacy 1.8 series compiled with ${_mpi} support"
 arch=('x86_64')
 url="https://support.hdfgroup.org/HDF5/"
@@ -28,6 +28,7 @@ prepare() {
 
 build() {
     cd "${_pkgname}-${pkgver}"
+
     ./configure \
         CXX="/opt/mpich/bin/mpicxx" \
         CC="/opt/mpich/bin/mpicc" \
@@ -51,7 +52,16 @@ build() {
     make
 }
 
+check() {
+    cd "${_pkgname}-${pkgver}"
+
+    # This is a parallel build, there will always be some MPI bugs,
+    # so skip failures and don't kill the entire packaging process
+    make check || warning "Some tests failed"
+}
+
 package() {
     cd "${_pkgname}-${pkgver}"
+
     make -j1 DESTDIR="${pkgdir}" install
 }
