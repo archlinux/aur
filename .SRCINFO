@@ -1,7 +1,7 @@
 pkgbase = shotcut
 	pkgdesc = Video editor
 	pkgver = 18.07
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.shotcut.org/
 	arch = i686
 	arch = x86_64
@@ -27,9 +27,7 @@ pkgbase = shotcut
 	provides = shotcut
 	conflicts = shotcut
 	source = shotcut::git+https://github.com/mltframework/shotcut.git#commit=2500d4a7ae707516fef7bcd35445e7db4dfc19a3
-	source = shotcut.desktop
 	source = melt.patch
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Shotcut
-GenericName=Video Editor
-Comment=Video editor
-Exec=shotcut
-Icon=applications-multimedia
-Terminal=false
-Categories=AudioVideo;Video;AudioVideoEditing;
