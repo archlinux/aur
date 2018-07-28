@@ -1,0 +1,14 @@
+pkgbase = easy-deauth
+	pkgdesc = Send deauth packages to your favourite devices on your private WiFi network.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://gitlab.com/BobyMCbobs/easy-deauth
+	arch = any
+	license = GPL
+	depends = net-tools
+	depends = aircrack-ng
+	source = https://gitlab.com/BobyMCbobs/easy-deauth/-/archive/1.1/easy-deauth-1.1.zip
+	md5sums = d7e78fa9cc15cc8c5d9f1d2eb955cc25
+
+pkgname = easy-deauth
+
