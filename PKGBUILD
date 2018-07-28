@@ -1,45 +1,39 @@
-# Maintainer: orumin <dev@orum.in>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: orumin <dev@orum.in>
 
 _basename=libinput
 pkgname="lib32-$_basename"
-pkgver=1.5.3
+pkgver=1.11.2
 pkgrel=1
-pkgdesc="library that handles input devices for display servers and other applications that need to directly deal with input devices. (32-bit)"
-arch=('x86_64')
-url="http://www.freedesktop.org/wiki/Software/libinput/"
+pkgdesc="Input device management and event handling library"
+url="https://www.freedesktop.org/wiki/Software/libinput/"
+arch=(x86_64)
 license=(custom:X11)
-depends=('lib32-mtdev' 'lib32-systemd' 'lib32-libevdev' 'lib32-libwacom' 'lib32-libunwind' "$_basename")
-checkdepends=('lib32-check')
-install=libinput.install
-options=('!libtool')
+depends=('lib32-mtdev' 'lib32-systemd' 'lib32-libevdev' 'lib32-libwacom' "$_basename")
+makedepends=('doxygen' 'graphviz' 'lib32-gtk3' 'meson')
 source=(https://freedesktop.org/software/$_basename/$_basename-$pkgver.tar.xz{,.sig})
-sha256sums=('91206c523b4e7aeecf296d0b94276c61bea90b9260d198c8ee3a91eced10a6e3'
+sha512sums=('cb6ada877fc3c09f634f3db39d5507e66d4b86c3d632bb8f7498c7b01fdf8372b2053a79b641293900b7fcc0aa4e920f7c830d9c7b2d9ff3cd61c58eb7c20b65'
             'SKIP')
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
-build() {
+prepare() {
   cd $_basename-$pkgver
+  # Reduce docs size
+  printf '%s\n' >>doc/libinput.doxygen.in \
+    HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
+}
 
+
+build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  ./configure --prefix=/usr --disable-static --disable-tests \
-    --build=i686-pc-linux-gnu --libdir=/usr/lib32 
-  make
-}
-
-check() {
-  cd $_basename-$pkgver
-# disabled for now:
-# https://github.com/libcheck/check/issues/18
-#  make check
+  arch-meson $_basename-$pkgver build --libdir=/usr/lib32 -Dtests=false
+  ninja -C build
 }
 
 package() {
-  cd $_basename-$pkgver
-  make DESTDIR="$pkgdir" install
-
-  cd "$pkgdir"/usr
-  rm -r bin include share
+  DESTDIR="$pkgdir" ninja -C build install
+  rm -rf ${pkgdir}/usr/{bin,share,include}
 }

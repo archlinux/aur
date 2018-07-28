@@ -1,24 +1,24 @@
 pkgbase = lib32-libinput
-	pkgdesc = library that handles input devices for display servers and other applications that need to directly deal with input devices. (32-bit)
-	pkgver = 1.5.3
+	pkgdesc = Input device management and event handling library
+	pkgver = 1.11.2
 	pkgrel = 1
-	url = http://www.freedesktop.org/wiki/Software/libinput/
-	install = libinput.install
+	url = https://www.freedesktop.org/wiki/Software/libinput/
 	arch = x86_64
 	license = custom:X11
-	checkdepends = lib32-check
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = lib32-gtk3
+	makedepends = meson
 	depends = lib32-mtdev
 	depends = lib32-systemd
 	depends = lib32-libevdev
 	depends = lib32-libwacom
-	depends = lib32-libunwind
 	depends = libinput
-	options = !libtool
-	source = https://freedesktop.org/software/libinput/libinput-1.5.3.tar.xz
-	source = https://freedesktop.org/software/libinput/libinput-1.5.3.tar.xz.sig
+	source = https://freedesktop.org/software/libinput/libinput-1.11.2.tar.xz
+	source = https://freedesktop.org/software/libinput/libinput-1.11.2.tar.xz.sig
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
-	sha256sums = 91206c523b4e7aeecf296d0b94276c61bea90b9260d198c8ee3a91eced10a6e3
-	sha256sums = SKIP
+	sha512sums = cb6ada877fc3c09f634f3db39d5507e66d4b86c3d632bb8f7498c7b01fdf8372b2053a79b641293900b7fcc0aa4e920f7c830d9c7b2d9ff3cd61c58eb7c20b65
+	sha512sums = SKIP
 
 pkgname = lib32-libinput
 
