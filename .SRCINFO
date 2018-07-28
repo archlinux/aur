@@ -1,0 +1,18 @@
+pkgbase = imagej2
+	pkgdesc = Image manipulation software for scientists
+	pkgver = 2.0.0rc68
+	pkgrel = 1
+	url = https://imagej.net
+	arch = any
+	license = Public Domain
+	makedepends = java-environment=8
+	depends = java-runtime>=8
+	source = https://github.com/imagej/imagej/archive/imagej-2.0.0-rc-68.tar.gz
+	source = imagej2.desktop
+	source = fix-launcher.patch::https://github.com/slokhorst/imagej/commit/93e9e768a0898e58649d1f4c1385432d38676da2.patch
+	md5sums = 8a1ebe7fbe111ad1de3ca8381fb4d259
+	md5sums = 8f5662769d7f1bcf0f697b5569bb04c2
+	md5sums = 7936077e9d108b000fb66e1b65ff19c0
+
+pkgname = imagej2
+
