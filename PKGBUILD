@@ -7,7 +7,7 @@ pkgver=8.2.0
 _target="i686-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
-pkgrel=1
+pkgrel=2
 pkgdesc="GCC for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -24,7 +24,7 @@ source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
 sha256sums=('196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0'
-            'b7a0dece2451a4b9c0abf4b3828ebc06b580487eb9724a2bc298c0f3421a3dda')
+            'a1c0cd9a7ed1803efee3b585e43596630ea3bfeca1b3e37321e6468bd3d30e96')
 
 prepare() {
   cd gcc-$pkgver

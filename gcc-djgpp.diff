@@ -97,6 +97,55 @@ index 1e2ffa354a3..40d3b689bbd 100644
     pragma Import (C, Current_Time, "__gnat_current_time");
     pragma Import (C, Current_Process_Id, "__gnat_current_process_id");
  
+diff --git a/gcc/config/i386/djgpp.c b/gcc/config/i386/djgpp.c
+index f168eed6f06..d187c3a7452 100644
+--- a/gcc/config/i386/djgpp.c
++++ b/gcc/config/i386/djgpp.c
+@@ -47,3 +47,20 @@ i386_djgpp_asm_named_section(const char *name, unsigned int flags,
+ 
+   fprintf (asm_out_file, "\t.section\t%s,\"%s\"\n", name, flagchars);
+ }
++
++/* Kludge because of missing COFF support for early LTO debug.  */
++
++static enum debug_info_levels saved_debug_info_level;
++
++void
++i386_djgpp_asm_lto_start (void)
++{
++  saved_debug_info_level = debug_info_level;
++  debug_info_level = DINFO_LEVEL_NONE;
++}
++
++void
++i386_djgpp_asm_lto_end (void)
++{
++  debug_info_level = saved_debug_info_level;
++}
+diff --git a/gcc/config/i386/djgpp.h b/gcc/config/i386/djgpp.h
+index 42130edf95c..e95bc09bf69 100644
+--- a/gcc/config/i386/djgpp.h
++++ b/gcc/config/i386/djgpp.h
+@@ -160,8 +160,19 @@ along with GCC; see the file COPYING3.  If not see
+ #undef MAKE_DECL_ONE_ONLY
+ #define MAKE_DECL_ONE_ONLY(DECL) (DECL_WEAK (DECL) = 1)
+ 
++#undef TARGET_COFF
++#define TARGET_COFF 1
++
++/* Kludge because of missing COFF support for early LTO debug.  */
++#undef  TARGET_ASM_LTO_START
++#define TARGET_ASM_LTO_START i386_djgpp_asm_lto_start
++#undef  TARGET_ASM_LTO_END
++#define TARGET_ASM_LTO_END i386_djgpp_asm_lto_end
++
+ /* Function protypes for gcc/i386/djgpp.c */
+ 
+ void
+ i386_djgpp_asm_named_section(const char *name, unsigned int flags,
+ 			     tree decl);
++void i386_djgpp_asm_lto_start (void);
++void i386_djgpp_asm_lto_end (void);
 diff --git a/gcc/config/i386/xm-djgpp.h b/gcc/config/i386/xm-djgpp.h
 index 02096925a88..066417f1d50 100644
 --- a/gcc/config/i386/xm-djgpp.h
@@ -122,6 +171,38 @@ index 02096925a88..066417f1d50 100644
  #undef MAX_OFILE_ALIGNMENT
  #define MAX_OFILE_ALIGNMENT 128
  
+diff --git a/gcc/defaults.h b/gcc/defaults.h
+index 78a08a33f12..9035b333be8 100644
+--- a/gcc/defaults.h
++++ b/gcc/defaults.h
+@@ -1282,6 +1282,10 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+ #define TARGET_PECOFF 0
+ #endif
+ 
++#ifndef TARGET_COFF
++#define TARGET_COFF 0
++#endif
++
+ #ifndef EH_RETURN_HANDLER_RTX
+ #define EH_RETURN_HANDLER_RTX NULL
+ #endif
+diff --git a/gcc/dwarf2out.c b/gcc/dwarf2out.c
+index d94cf7dc928..9f6855e6695 100644
+--- a/gcc/dwarf2out.c
++++ b/gcc/dwarf2out.c
+@@ -31832,10 +31832,10 @@ dwarf2out_early_finish (const char *filename)
+ 
+   /* Do not generate DWARF assembler now when not producing LTO bytecode.  */
+   if ((!flag_generate_lto && !flag_generate_offload)
+-      /* FIXME: Disable debug info generation for PE-COFF targets since the
++      /* FIXME: Disable debug info generation for (PE-)COFF targets since the
+ 	 copy_lto_debug_sections operation of the simple object support in
+ 	 libiberty is not implemented for them yet.  */
+-      || TARGET_PECOFF)
++      || TARGET_PECOFF || TARGET_COFF)
+     return;
+ 
+   /* Now as we are going to output for LTO initialize sections and labels
 diff --git a/gcc/gcov-tool.c b/gcc/gcov-tool.c
 index 15fd710b18c..91d4c87b31b 100644
 --- a/gcc/gcov-tool.c
