@@ -1,7 +1,7 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=opengv-git
-pkgver=r85.02697d3
+pkgver=r91.0b2017d
 pkgrel=1
 pkgdesc="An efficient C++ library for calibrated camera pose computation using geometric computer vision algorithms."
 arch=('i686' 'x86_64')
@@ -11,8 +11,10 @@ depends=('boost-libs' 'eigen>=3' 'python2')
 makedepends=('boost' 'cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/laurentkneip/opengv.git")
-md5sums=('SKIP')
+source=("${pkgname%-git}::git+https://github.com/laurentkneip/opengv.git"
+        "https://github.com/laurentkneip/opengv/pull/61.patch")
+sha256sums=('SKIP'
+            '75b2c4bffc77590a992c76079da32daa653096f144583a8296ed384dfda3006d')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -22,6 +24,8 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
+
+	patch -p1 < ../61.patch
 
 	[ ! -d build ] || rm -r build
 }
