@@ -3,7 +3,7 @@
 
 pkgname='perl-carp-assert'
 pkgver='0.21'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="executable comments"
 _dist='Carp-Assert'
 arch=('any')
@@ -13,7 +13,6 @@ depends=('perl')
 options=('!emptydirs' purge)
 makedepends=()
 checkdepends=()
-provides=("Carp::Assert=${pkgver}" "perl-carp-assert=${pkgver}")
 source=("http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/${_dist}-${pkgver}.tar.gz")
 sha512sums=('9fb96ebaf03a86edcd0262b5216b345839dc99e504738e52f883932e425cac33470fcb0e8e4653488c0d8e63e9904af311056213c63ae40bc3935eec4c0410a0')
 

@@ -1,14 +1,12 @@
 pkgbase = perl-carp-assert
 	pkgdesc = executable comments
 	pkgver = 0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Carp-Assert
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl
-	provides = Carp::Assert=0.21
-	provides = perl-carp-assert=0.21
 	options = !emptydirs
 	options = purge
 	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Carp-Assert-0.21.tar.gz
