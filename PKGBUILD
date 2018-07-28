@@ -2,12 +2,12 @@
 
 pkgname=tmblock-git
 pkgver=r31.79ead0c
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to cancel video wateramrk"
 arch=('x86_64')
 url="https://github.com/TMBlock/libtmblock"
 license=('MIT')
-dependencies=('gcc-libs')
+depends=('gcc-libs')
 makedepends=('tar' 'git' 'cmake')
 source=('git+https://github.com/TMBlock/libtmblock.git'
         'halide.tgz::https://github.com/halide/Halide/releases/download/release_2017_10_30/halide-linux-64-gcc53-trunk-3af238615667312dcb46607752e3ae5d0ec5d713.tgz')
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 prepare() {
-    tar -xzf "$srcdir/halide.tgz" -C "$srcdir/halide/"
+    tar -xzf "$srcdir/halide.tgz" -C "$srcdir/"
 }
 
 build() {
@@ -33,5 +33,5 @@ build() {
 package() {
     cd "$srcdir/libtmblock"
     make install
-    install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/tmblock/LICENSE.txt
+    install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/tmblock-git/LICENSE.txt
 }
