@@ -1,13 +1,14 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 pkgname=pulseeffects
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Effects for Pulseaudio Applications"
 arch=(any)
 url="https://github.com/wwmm/pulseeffects"
 license=('GPL3')
 depends=(gtk3 gtkmm3 glibmm libpulse gstreamer gst-plugins-good gst-plugins-bad
-        lilv boost-libs libsigc++ libsndfile libsamplerate zita-convolver)
+        lilv boost-libs libsigc++ libsndfile libsamplerate zita-convolver
+        libebur128)
 optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'zam-plugins: maximizer'
             'rubberband: pitch shifting'

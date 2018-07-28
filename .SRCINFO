@@ -1,7 +1,7 @@
 pkgbase = pulseeffects
 	pkgdesc = Audio Effects for Pulseaudio Applications
 	pkgver = 4.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wwmm/pulseeffects
 	arch = any
 	license = GPL3
@@ -21,6 +21,7 @@ pkgbase = pulseeffects
 	depends = libsndfile
 	depends = libsamplerate
 	depends = zita-convolver
+	depends = libebur128
 	optdepends = calf: limiter, compressor exciter, bass enhancer and others
 	optdepends = zam-plugins: maximizer
 	optdepends = rubberband: pitch shifting
