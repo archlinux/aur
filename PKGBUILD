@@ -1,7 +1,7 @@
 # Maintainer: xRemaLx <anton.komolov@gmail.com>
 
 pkgname='perl-devel-checkos'
-pkgver='1.76'
+pkgver='1.81'
 pkgrel='1'
 pkgdesc="check what OS we're running on"
 _dist='Devel-CheckOS'
@@ -13,7 +13,7 @@ options=('!emptydirs' purge)
 makedepends=('perl-extutils-makemaker')
 checkdepends=()
 source=("http://search.cpan.org/CPAN/authors/id/D/DC/DCANTRELL/${_dist}-${pkgver}.tar.gz")
-sha512sums=('e915281fdd57e6d804a7c2cd1c4fe5114ca02f61f7cc0ef0e9a9c8d23cb54f793d433804a301cc02d9a83fee34b71d9876795b133114c9697703ab7b1681353e')
+sha512sums=('359a48002d196bbc66006cf9a79d8995050b7fd2bae6dedbad4c182f23be9c7b1f8977f796833a22b42cff1ecaa6380895883952236c8c5bb4dee7cdf4072a39')
 
 sanitize() {
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT

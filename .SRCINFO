@@ -1,6 +1,6 @@
 pkgbase = perl-devel-checkos
 	pkgdesc = check what OS we're running on
-	pkgver = 1.76
+	pkgver = 1.81
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Devel-CheckOS
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = perl-devel-checkos
 	depends = perl-data-compare>=1.21
 	options = !emptydirs
 	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCANTRELL/Devel-CheckOS-1.76.tar.gz
-	sha512sums = e915281fdd57e6d804a7c2cd1c4fe5114ca02f61f7cc0ef0e9a9c8d23cb54f793d433804a301cc02d9a83fee34b71d9876795b133114c9697703ab7b1681353e
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCANTRELL/Devel-CheckOS-1.81.tar.gz
+	sha512sums = 359a48002d196bbc66006cf9a79d8995050b7fd2bae6dedbad4c182f23be9c7b1f8977f796833a22b42cff1ecaa6380895883952236c8c5bb4dee7cdf4072a39
 
 pkgname = perl-devel-checkos
 
