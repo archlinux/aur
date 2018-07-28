@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer : George Eleftheriou <eleftg>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <archange@archlinux.org>
@@ -12,7 +11,7 @@ _pkgname=hdf5
 _mpi=mpich
 pkgname=${_pkgname}-${_mpi}
 pkgver=1.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="General purpose library and file format for storing scientific data (${_mpi} version) (full version including its Java Native Interfaces)"
 arch=('x86_64')
 url="https://www.hdfgroup.org/HDF5/"
@@ -21,13 +20,13 @@ depends=('zlib' 'libaec' "${_mpi}")
 makedepends=('time' 'gcc-fortran' 'java-environment')
 provides=('hdf5' 'hdf5-openmpi' 'hdf5-openmpi-java')
 conflicts=('hdf5' 'hdf5-openmpi' 'hdf5-openmpi-java')
-source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:4}/${_pkgname}-${pkgver/_/-}/src/${_pkgname}-${pkgver/_/-}.tar.bz2"
+source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:4}/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver}.tar.bz2"
         'mpi.patch')
 md5sums=('41fb9347801b546fba323523a1c1af51'
          'dfa8dd50b8a7ebb3ad7249c627156cf9')
 
 prepare() {
-    cd ${_pkgname}-${pkgver/_/-}
+    cd ${_pkgname}-${pkgver}
 
     # Fix building with GCC 8.1
     sed 's/\(.*\)(void) HDF_NO_UBSAN/HDF_NO_UBSAN \1(void)/' -i src/H5detect.c
@@ -37,7 +36,8 @@ prepare() {
 }
 
 build() {
-    cd ${_pkgname}-${pkgver/_/-}
+    cd ${_pkgname}-${pkgver}
+
     ./configure \
         CXX="/opt/mpich/bin/mpicxx" \
         CC="/opt/mpich/bin/mpicc" \
@@ -62,22 +62,15 @@ build() {
 }
 
 check() {
-    cd ${_pkgname}-${pkgver/_/-}
-    # Without exporting LD_LIBRARY_PATH, tests fail being unable to
-    # locate the newly built (not installed yet) hdf5 runtime
-    export LD_LIBRARY_PATH="${srcdir}"/${pkgname}-${pkgver/_/-}/src/.libs/
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":"${srcdir}"/${pkgname}-${pkgver/_/-}/c++/src/.libs/
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":"${srcdir}"/${pkgname}-${pkgver/_/-}/fortran/src/.libs/
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":"${srcdir}"/${pkgname}-${pkgver/_/-}/hl/src/.libs/
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":"${srcdir}"/${pkgname}-${pkgver/_/-}/hl/c++/src/.libs/
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":"${srcdir}"/${pkgname}-${pkgver/_/-}/hl/fortran/src/.libs/
+    cd ${_pkgname}-${pkgver}
+
     # This is a parallel build, there will always be some MPI bugs,
     # so skip failures and don't kill the entire packaging process
     make check || warning "Some tests failed"
 }
 
 package() {
-    cd ${_pkgname}-${pkgver/_/-}
+    cd ${_pkgname}-${pkgver}
 
     make -j1 DESTDIR="${pkgdir}" install
 
