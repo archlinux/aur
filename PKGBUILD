@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-panel-profiles
 pkgname=${_pkgname}-git
-pkgver=1.0.7+60+g793a74d
+pkgver=1.0.8+0+gfc8e139
 pkgrel=1
 pkgdesc="Simple application to manage Xfce panel layouts"
 arch=('any')
@@ -18,10 +18,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed -r "s:^${_pkgname}-::;s/-/+/g"
-}
-
-prepare() {
-  find "${srcdir}/${_pkgname}/po/" -type f -name *po -exec sed -i 's:charset=CHARSET:charset=UTF-8:' '{}' \;
 }
 
 build() {
