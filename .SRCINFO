@@ -1,0 +1,18 @@
+pkgbase = nat46-dkms-git
+	pkgdesc = Linux kernel module implementing flexible NAT46
+	pkgver = r124.683fbd2
+	pkgrel = 1
+	url = https://github.com/ayourtch/nat46
+	arch = i686
+	arch = x86_64
+	license = custom:Unknown
+	depends = dkms
+	conflicts = nat46
+	conflicts = nat46-dkms
+	source = git+https://github.com/ayourtch/nat46
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 7d8f176097c9ecef2f0648069de30a6eb77a7b4294eaa68d86112a87b4f2a384
+
+pkgname = nat46-dkms-git
+
