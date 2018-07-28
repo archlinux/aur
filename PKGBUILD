@@ -2,31 +2,33 @@
 _basename=joycon
 pkgname="$_basename-git"
 pkgver=r99.144b22d
-pkgrel=3
+pkgrel=4
 pkgdesc='Joy-Con input driver'
 arch=('x86_64')
 url="https://github.com/riking/$_basename"
 license=('unknown')
-depends=('libudev.so')
+depends=('libsystemd')
 makedepends=('go' 'git')
 provides=("$_basename")
 conflicts=("$_basename")
-_gourl="github.com/riking/$_basename/prog4/jcdriver"
+source=("git+https://github.com/riking/$_basename.git")
+md5sums=('SKIP')
 
 prepare() {
-	GOPATH="$srcdir" go get -d -u $_gourl
+    cd "$srcdir/$_basename/prog4/jcdriver"
+    GOPATH="$(pwd)" go get -d 
 }
 
 pkgver() {
-    cd "$srcdir/src/$_gourl"
+    cd "$srcdir/$_basename"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir"
-	GOPATH="$srcdir" go build $_gourl
+    cd "$srcdir/$_basename/prog4/jcdriver"
+    GOPATH="$(pwd)" go build
 }
 
 package() {
-    install -Dm755 "$srcdir/jcdriver" "$pkgdir/usr/bin/jcdriver"
+    install -Dm755 "$srcdir/$_basename/prog4/jcdriver/jcdriver" "$pkgdir/usr/bin/jcdriver"
 }
