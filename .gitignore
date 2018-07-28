@@ -1,7 +1,7 @@
 *.swp
 *.swo
 *.xz
-mc/
+myrrdin-mc/
 src/
 pkg/
 *.tar.xz
