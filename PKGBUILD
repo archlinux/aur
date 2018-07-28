@@ -1,7 +1,7 @@
 # Maintainer: Samu Juvonen <samu.juvonen@gmail.com>
 
 pkgname=coquillo
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Utility for editing metadata i.e. "tags" contained in audio files.'
 arch=('i686' 'x86_64')
@@ -18,4 +18,3 @@ package() {
 	make
 	make install INSTALL_ROOT="${pkgdir}"
 }
-

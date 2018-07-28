@@ -1,6 +1,6 @@
 pkgbase = coquillo
 	pkgdesc = Edit metadata / tags of various audio formats like MP3, Ogg/Vorbis and FLAC.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://www.opendesktop.org/p/1130981/
 	arch = i686
@@ -10,8 +10,7 @@ pkgbase = coquillo
   depends = qt5-translations
 	depends = taglib
   depends = libmusicbrainz5
-	source = http://cs.uef.fi/~sjuvonen/coquillo/2.0.0/coquillo-2.0.0-src.tar.gz
+	source = http://cs.uef.fi/~sjuvonen/coquillo/2.0.1/coquillo-2.0.1-src.tar.gz
 	md5sums = 7e6ed965b23b71c8d69087b6d9d698ed
 
 pkgname = coquillo
-
