@@ -7,7 +7,7 @@ pkgname=('buildbot' 'python-buildbot-www' 'buildbot-worker' 'python-buildbot-wat
          'python-buildbot-console-view' 'python-buildbot-grid-view' 'python-buildbot-wsgi-dashboards'
          )
 _names=('buildbot' 'buildbot_www' 'buildbot_worker' 'buildbot_waterfall_view' 'buildbot_console_view' 'buildbot_grid_view' 'buildbot_wsgi_dashboards')
-pkgver=1.1.1
+pkgver=1.3.0
 pkgrel=1
 arch=('any')
 url="http://buildbot.net"
@@ -27,13 +27,13 @@ source=(
   "https://files.pythonhosted.org/packages/py2.py3/${_names[6]::1}/${_names[6]}/${_names[6]}-$pkgver-py2.py3-none-any.whl"
 )
 sha256sums=(
-  'b00a924934e8ec7e15ceda9ab699a336517b8ad61e1ac9b5bedf5027762eb209'
-  '6b7f77a7942b7f06e43a669263213f5df528ad726735f36be6cee0e423e26907'
-  '7722b0bb18d092abb5c4f17c0655d7cc7e53155ddcf762bd4922c8c382e84b1d'
-  '81d5b79bd353aa0df0ea1e972f904dfa0d511f7284a87dc5206a9e30a25c35b2'
-  '6112afddf63d5f524e54d6358045d731dc95a821059d519d277a7a7048dee045'
-  'ba316eeb27e4074928250529d1932a0473f6d98fbce742ea07404a7159325aab'
-  '3420b6fa8983afc21119848d73b3d197cfbd070804904ccf7f2b6d25b992c5eb'
+  'afd90c823463a5d3e318123c5b4af83d22b0ad2ba93043c3635100419ee1ceb9'
+  'eac3c1a618bcc5892ca1ed49c179f8fbbefd96d51f5066ee30ba0ac9a87c3c9c'
+  '2805f0560bebc44cacee4ef3c5ee4d63136820a119f0660e51ba6b3a25c42d1e'
+  '69fc72d498c7e4407534bbd88c2b7dce9d5fd5f66f68010454613271be374491'
+  '0032798de53edf2bbd3baf1cb25b2dc80ba039fa02588d5a1d6aecce623b2ace'
+  'bc7cc23c123bd5425b2211158b42b8234886ee72394015abf16c43412f5ebb6c'
+  'a42951149145821deb3532113cfd1f270d612a1c68bee05935e24c9a5b953d8f'
 )
 
 package_buildbot() {
