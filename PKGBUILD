@@ -1,43 +1,39 @@
-# Maintainer: Hexchain Tong <i at hexchain dot org>
+# Maintainer: Jonas Witschel <diabonas at gmx dot de>
+# Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=tpm2-tss-git
-pkgver=1.1.0.r495.g3a38292
-_pkgname=tpm2-tss
+pkgver=2.0.0.r38.91e7bd65
 pkgrel=1
-pkgdesc="TPM (Trusted Platform Module) 2.0 Software Stack (TSS)"
-arch=('i686' 'x86_64')
-provides=('tpm2-tss')
-conflicts=('tpm2-tss')
-url="https://github.com/tpm2-software/tpm2-tss"
-license=('custom')
-makedepends=('git' 'cmocka' 'autoconf-archive')
-depends=('libgcrypt' 'uriparser')
-source=("git+$url.git")
+pkgdesc='TPM (Trusted Platform Module) 2.0 Software Stack (TSS)'
+arch=('x86_64')
+url='https://github.com/tpm2-software/tpm2-tss'
+license=('BSD')
+depends=('libgcrypt')
+makedepends=('git' 'autoconf-archive' 'cmocka>=1.0.0')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    (
-        set -o pipefail
-        git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+	cd "$srcdir/${pkgname%-git}"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
-    ./bootstrap
-    ./configure --prefix=/usr --sbindir=/usr/bin --disable-static
-    make
+	cd "$srcdir/${pkgname%-git}"
+	./bootstrap
+	./configure --prefix=/usr --enable-unit --disable-static --with-pic
+	make
 }
 
 check() {
-    cd "$srcdir/$_pkgname"
-    make -k check
+	cd "$srcdir/${pkgname%-git}"
+	make -k check
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    make DESTDIR="$pkgdir/" install
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$srcdir/${pkgname%-git}"
+	make DESTDIR="$pkgdir/" install
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
