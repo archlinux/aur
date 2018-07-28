@@ -2,7 +2,7 @@
 pkgname=('shotcut-git')
 _srcname='shotcut'
 pkgdesc='Video editor'
-pkgver='r2679'
+pkgver='r2701'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://github.com/mltframework/shotcut'
@@ -32,11 +32,9 @@ conflicts=("${pkgname[0]%-git}")
 
 source=(
     "${_srcname}::git+${url}.git"
-    'shotcut.desktop'
     'melt.patch'
 )
 sha512sums=(
-    'SKIP'
     'SKIP'
     'SKIP'
 )
@@ -61,7 +59,8 @@ build() {
 
     qmake PREFIX='/usr' \
         QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
-        QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"
+        QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
+        SHOTCUT_VERSION="${pkgver}"
     make
 }
 
@@ -69,6 +68,4 @@ package() {
     cd "${srcdir}/${_srcname}"
 
     make INSTALL_ROOT="${pkgdir}" install
-
-    install -D --mode=644 "${srcdir}/shotcut.desktop" "${pkgdir}/usr/share/applications/shotcut.desktop"
 }
