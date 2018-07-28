@@ -19,7 +19,7 @@ license=('custom')
 options=('!strip')
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
 kernel-4.16.patch)
-sha256sums=('e51c5784520e73c179a57cf0dcd3a4c673d8142b28415a060066d83633637282'
+sha256sums=('6eb950dc4b59697d12d79a975b2c21a5e3cde49a12b61432d7e836110a06a6ea'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
