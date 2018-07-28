@@ -1,7 +1,7 @@
 # Contributor: David Vachulka <arch_dvx@users.sourceforge.net>
 
 pkgname=dxtime
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Program for time tracking"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('wxgtk2')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('4612c5e17c8864eacf55de2a89c1f952')
+md5sums=('e03297e5b874c9c1290b2c2ddd73bf0a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
