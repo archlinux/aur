@@ -10,7 +10,7 @@ _djver=2.05
 _pthver=3.14
 _zlver=1.2.11
 _wattver="2.2-dev.10"
-pkgrel=1
+pkgrel=2
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -27,8 +27,10 @@ source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-$pkgver.tar.xz"
         "http://www.watt-32.net/watt32s-${_wattver}.zip"
         "mkmake.bash"
         "watt32.pc"
+	"gcc-djgpp.diff"
         "lto.patch")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -97,6 +99,9 @@ prepare() {
   # build the lto plugin
   patch -Np0 < ../lto.patch
 
+  # Other DJGPP related changes
+  patch -Np1 < ../gcc-djgpp.diff
+
   # extract bootstrap djcrx
   mkdir -p ../gcc-build-$_target/lib/gcc/$_target/$pkgver
   cd ../gcc-build-${_target}/lib/gcc/$_target/$pkgver
@@ -106,9 +111,9 @@ prepare() {
   ln -fs /bin/true stubify
 
   # monkeypatch libc to prepare for building without an ldscript
-  echo '.comm __environ,16' > environ.s
-  i586-pc-msdosdjgpp-as environ.s -o environ.o
-  i586-pc-msdosdjgpp-ar q libc.a environ.o
+  # echo '.comm __environ,16' > environ.s
+  # i586-pc-msdosdjgpp-as environ.s -o environ.o
+  # i586-pc-msdosdjgpp-ar q libc.a environ.o
 }
 
 build() {
@@ -124,7 +129,7 @@ build() {
     --disable-nls \
     --enable-gold \
     --enable-decimal-float \
-    --enable-languages=c,c++,objc,obj-c++ \
+    --enable-languages=c,c++ \
     --enable-shared --enable-static \
     --with-system-zlib \
     --with-arch=i586 \
@@ -132,6 +137,7 @@ build() {
     --enable-threads \
     --enable-libstdcxx-threads \
     --enable-lto --disable-libgomp \
+    --enable-libstdcxx-filesystem-ts \
     --disable-multilib --enable-checking=release
   make all-gcc
 
