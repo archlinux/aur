@@ -319,3 +319,7 @@
     2018-07-28 d2d318b feat(config): add `ui.PrintCommands` to print each command which pikaur spawning
     2018-07-28 d862f96 refactor(main): use `sudo -v` instead of `sudo pacman -T` for a sudo loop
     2018-07-28 59e544a fix(args): don't use `-r` args since it's 'undeprecated' in pacman
+1.2.8           Bugfix release 1.2.8
+    
+    Notable changes:
+     2018-07-28 57bb4e0 actionless fix(args: help): remove '-r' from pikaur help since it's used again by pacman
