@@ -323,3 +323,7 @@
     
     Notable changes:
      2018-07-28 57bb4e0 actionless fix(args: help): remove '-r' from pikaur help since it's used again by pacman
+1.2.9           Bugfix release 1.2.9
+    
+    Notable changes:
+     2018-07-28 abaaea1 fix(exceptions: PackageNotFound): default value for `wanted_by`
