@@ -1,0 +1,18 @@
+pkgbase = blockbench
+	pkgdesc = A free, modern block model editor.
+	pkgver = 1.11.6
+	pkgrel = 1
+	url = https://blockbench.net/
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = libnotify
+	depends = libappindicator
+	depends = libxtst
+	depends = nss
+	depends = libxss
+	source = https://github.com/JannisX11/blockbench/releases/download/v1.11.6/Blockbench_1.11.6_amd64.deb
+	sha512sums = 67f1ded17053fa8424dd36adfa71920eca786270faa4541a394094830a8dee027e7d3a433c402600b5b727d334acb003b866b9dd664f04c8a0895b5403a19547
+
+pkgname = blockbench
+
