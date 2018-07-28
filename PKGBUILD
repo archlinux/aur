@@ -1,24 +1,22 @@
-# Maintainer: parchd <parchd@archlinux.info>
+# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
+# Contributor: parchd <parchd@archlinux.info>
+
+_pkg=opensmtpd-extras
 pkgname=opensmtpd-table-passwd
-pkgver=201607122008
+pkgver=201703132115
 pkgrel=1
 pkgdesc="table-passwd for using a passwd file with OpenSMTPd"
 arch=('i686' 'x86_64')
 url="https://opensmtpd.org"
-license=('custom:opensmtpd')
+license=('BSD')
 depends=('opensmtpd')
-conflicts=('opensmtpd-extras')
+conflicts=("${_pkg}")
 makedepends=('openssl')
-optdepends=()
-source=("https://www.opensmtpd.org/archives/opensmtpd-extras-$pkgver.tar.gz")
-sha256sums=('00a41fd9d468908f0863443acc4af99a894b44e9b6ca0cb6c93079447be2c5d0')
-
-prepare() {
-  cd "opensmtpd-extras-$pkgver"
-}
+source=("https://www.opensmtpd.org/archives/${_pkg}-${pkgver}.tar.gz")
+sha256sums=('4672afdd756ef279c0adcfcbf8151d6d8a370d5a628a705967373a1c83ee0ef5')
 
 build() {
-  cd "opensmtpd-extras-$pkgver"
+  cd ${_pkg}-${pkgver}
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc/smtpd \
@@ -28,11 +26,11 @@ build() {
 }
 
 check() {
-  cd "opensmtpd-extras-$pkgver"
+  cd ${_pkg}-${pkgver}
   make -k check
 }
 
 package() {
-  cd "opensmtpd-extras-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  cd ${_pkg}-${pkgver}
+  make DESTDIR="${pkgdir}" install
 }
