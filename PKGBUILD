@@ -3,14 +3,14 @@
 # Contributor: janezz55
 
 pkgname=dosbox-gcc
-pkgver=8.1.0
+pkgver=8.2.0
 _target="i586-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
 _pthver=3.14
 _zlver=1.2.11
 _wattver="2.2-dev.10"
-pkgrel=8
+pkgrel=1
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -123,14 +123,15 @@ build() {
     --disable-ld \
     --disable-nls \
     --enable-gold \
-    --enable-languages=c,c++ \
+    --enable-decimal-float \
+    --enable-languages=c,c++,objc,obj-c++ \
     --enable-shared --enable-static \
     --with-system-zlib \
     --with-arch=i586 \
     --with-cpu=i586 \
     --enable-threads \
     --enable-libstdcxx-threads \
-    --enable-lto --disable-dw2-exceptions --disable-libgomp \
+    --enable-lto --disable-libgomp \
     --disable-multilib --enable-checking=release
   make all-gcc
 
