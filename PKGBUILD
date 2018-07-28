@@ -1,49 +1,69 @@
-# Maintainer: orumin <dev at orum.in>
+# Maintainer : George Eleftheriou <eleftg>
+# Contributor: orumin <dev at orum.in>
 
-pkgname=lib32-hdf5
-_basename=hdf5
-pkgver=1.10.1
+_pkgname=hdf5
+pkgname=lib32-${_pkgname}
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="General purpose library and file format for storing scientific data (32-bit)"
 arch=('x86_64')
 url="https://www.hdfgroup.org/hdf5/"
 license=('custom')
-depends=('lib32-zlib' 'bash')
+depends=('lib32-zlib')
 makedepends=('time' 'gcc-fortran-multilib')
-source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_basename}-${pkgver:0:4}/${_basename}-${pkgver/_/-}/src/${_basename}-${pkgver/_/-}.tar.bz2")
-# https://support.hdfgroup.org/ftp/HDF5/releases/${_basename}-${pkgver:0:4}/${_basename}-${pkgver/_/-}/src/${_basename}-${pkgver/_/-}.md5
-md5sums=('d89893c05ee7ea8611b51bb39450d64e')
+source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:4}/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver}.tar.bz2")
+md5sums=('41fb9347801b546fba323523a1c1af51')
+
+prepare() {
+    cd ${_pkgname}-${pkgver}
+
+    # Fix building with GCC 8.1
+    sed 's/\(.*\)(void) HDF_NO_UBSAN/HDF_NO_UBSAN \1(void)/' -i src/H5detect.c
+}
 
 build() {
-    cd ${_basename}-${pkgver/_/-}
-
-    export CC="gcc -m32"
-    export CXX="g++ -m32"
-    export F9X="gfortran -m32"
-    export PKG_CONFIG_PAHT="/usr/lib32/pkgconfig"
+    cd ${_pkgname}-${pkgver}
 
     ./configure \
+        CFLAGS="-m32 ${CFLAGS}" \
+        CXXFLAGS="-m32 ${CXXFLAGS}" \
+        FCFLAGS="-m32 ${FCFLAGS}" \
+        FC="gfortran" \
+        F9X="gfortran" \
+        PKG_CONFIG_PATH="/usr/lib32/pkgconfig" \
         --prefix=/usr \
         --libdir=/usr/lib32 \
+        --docdir=/usr/share/doc/hdf5 \
         --disable-static \
-        --enable-hl \
-        --enable-build-mode=production \
-        --with-pic \
-        --docdir=/usr/share/doc/hdf5/ \
         --disable-sharedlib-rpath \
+        --enable-build-mode=production \
+        --enable-hl \
         --enable-cxx \
         --enable-fortran \
+        --with-pic \
         --with-zlib
     make
 }
 
+check() {
+    cd ${_pkgname}-${pkgver}
+
+    # Without exporting LD_LIBRARY_PATH, tests fail being unable to
+    # locate the newly built (not installed yet) hdf5 runtime
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/${_pkgname}-${pkgver}/src/.libs"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/${_pkgname}-${pkgver}/c++/src/.libs"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/${_pkgname}-${pkgver}/fortran/src/.libs"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/${_pkgname}-${pkgver}/hl/src/.libs"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/${_pkgname}-${pkgver}/hl/c++/src/.libs"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/${_pkgname}-${pkgver}/hl/fortran/src/.libs"
+
+    make check
+}
+
 package() {
-    cd ${_basename}-${pkgver/_/-}
+    cd ${_pkgname}-${pkgver}
 
     make -j1 DESTDIR="${pkgdir}" install
 
-    rm -rf "${pkgdir}"/usr/lib32/libdynlib*.so
-    rm -r "${pkgdir}"/usr/bin
-    rm -r "${pkgdir}"/usr/include
-    rm -r "${pkgdir}"/usr/share
+    rm -rf "${pkgdir}"/usr/{include,share,bin}
 }
