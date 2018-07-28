@@ -1,22 +1,22 @@
 pkgbase = android-ndk-beta
 	pkgdesc = Android C/C++ developer kit (beta)
-	pkgver = r17_beta2
-	pkgrel = 1
+	pkgver = r18_beta1
+	pkgrel = 2
 	url = https://developer.android.com/ndk/
 	install = android-ndk-beta.install
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	license = custom
-	depends = ncurses5-compat-libs
+	depends = glibc
 	optdepends = python: various helper scripts
 	options = !strip
 	options = staticlibs
 	backup = etc/profile.d/android-ndk-beta.sh
 	source = android-ndk-beta.sh
-	source = https://dl.google.com/android/repository/android-ndk-r17-beta2-linux-x86_64.zip
+	source = https://dl.google.com/android/repository/android-ndk-r18-beta1-linux-x86_64.zip
 	sha256sums = cadefdccf5da51dc56156fbc41945a2c27d913d12a043b32f47e15f253b0943d
-	sha256sums = a14b51d875c2accc19b46d90588a796765ff2defb878df781438fb0be0553762
+	sha256sums = c9fe5b5102a596d3f8ee65f26e34a5bc994b2ca8bfa5a884444205201324f4c2
 
 pkgname = android-ndk-beta
 
