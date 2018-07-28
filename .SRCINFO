@@ -11,6 +11,7 @@ pkgbase = burstcoin-wallet
 	depends = xdg-utils
 	optdepends = mariadb: for storage
 	options = !strip
+	options = !emptydirs
 	backup = opt/burstcoin-wallet/conf/logging-default.properties
 	backup = opt/burstcoin-wallet/conf/brs-default.properties
 	source = https://github.com/PoC-Consortium/burstcoin/releases/download/2.2.2/burstcoin-2.2.2.zip
