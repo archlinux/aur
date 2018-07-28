@@ -8,7 +8,9 @@ pkgbase = python-kitchen
 	makedepends = python
 	makedepends = python-setuptools
 	depends = python
+	conflicts = python3-kitchen
 	source = https://github.com/fedora-infra/kitchen/archive/v1.2.5.tar.gz
 	md5sums = 35490785ed23c91bad1c083c7adbc39e
 
 pkgname = python-kitchen
+

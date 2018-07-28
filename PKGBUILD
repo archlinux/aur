@@ -8,6 +8,7 @@ pkgdesc="Useful snippets of python code"
 url="https://github.com/fedora-infra/kitchen"
 depends=('python' )
 makedepends=('python' 'python-setuptools')
+conflicts=('python3-kitchen')
 license=('LGPLv2+')
 arch=('any')
 source=(https://github.com/fedora-infra/kitchen/archive/v$pkgver.tar.gz)
