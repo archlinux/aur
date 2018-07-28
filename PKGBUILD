@@ -1,27 +1,38 @@
-# Maintainer: orumin <dev@orum.in>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: orumin <dev@orum.in>
 
 _basename=clutter
 pkgname="lib32-$_basename"
-pkgver=1.26.0
+pkgver=1.26.2
 pkgrel=1
-pkgdesc="A GObject based library for creating fast, visually rich graphical user interfaces (32-bit)"
-arch=('x86_64')
-url="http://clutter-project.org/"
-license=('LGPL')
+pkgdesc="A toolkit for creating fast, portable, compelling dynamic UIs (32-bit)"
+url="https://blogs.gnome.org/clutter/"
+arch=(x86_64)
+license=(LGPL)
 depends=('lib32-gtk3' 'lib32-cogl' 'lib32-libinput' "$_basename")
-makedepends=('gobject-introspection')
-source=(https://download.gnome.org/sources/$_basename/${pkgver:0:4}/$_basename-$pkgver.tar.xz)
-sha256sums=('67514e7824b3feb4723164084b36d6ce1ae41cb3a9897e9f1a56c8334993ce06')
+makedepends=('gobject-introspection' 'gtk-doc' 'git')
+_commit=2faa83baf3ce9b9c94635311ad79944ab2a73c84  # tags/1.26.2^0
+source=("git+https://git.gnome.org/browse/clutter#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_basename
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $_basename
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
-  cd "$_basename-$pkgver"
-
+  cd "$_basename"
+  
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-
+  
   ./configure --prefix=/usr \
-    --build=i686-pc-linux-gnu \
     --libdir=/usr/lib32 \
     --enable-introspection \
     --enable-egl-backend \
@@ -30,7 +41,7 @@ build() {
     --enable-x11-backend \
     --enable-evdev-input \
     --enable-wayland-compositor \
-    --disable-gtk-doc
+    --enable-gtk-doc
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -39,9 +50,7 @@ build() {
 }
 
 package() {
-  cd "$_basename-$pkgver"
+  cd "$_basename"
   make DESTDIR="$pkgdir" install
-
-  cd "$pkgdir"/usr
-  rm -r include share
+  rm -rf ${pkgdir}/usr/{share,include}
 }
