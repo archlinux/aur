@@ -1,6 +1,6 @@
 ## arg 1:  the new package version
 pre_install() {
-    :
+    echo '>>> Please install mapserver package with CMake option -DWITH_PERL=ON.'
 }
 
 ## arg 1:  the new package version
@@ -9,11 +9,7 @@ post_install() {
     useradd -g tirex -d /dev/null -s /bin/false tirex
     chown -R tirex:tirex /var/lib/tirex
 
-    echo '>>> After installation, run "systemctl daemon-reload",'
-    echo '>>> then "systemctl start tirex.target" to start daemon.'
-    echo
-    echo '>>> If you have trouble starting tirex services,'
-    echo '>>> make sure mapserver installed is compiled with Cmake option -DWITH_PERL=ON.'
+    echo '>>> Run `systemctl start tirex.target` to start daemon.'
 }
 
 ## arg 1:  the new package version
