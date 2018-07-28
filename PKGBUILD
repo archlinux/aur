@@ -2,7 +2,7 @@
 
 pkgname=asciiquarium-lock
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple screen locker using ASCIIQuarium as a screensaver"
 arch=('any')
 url="https://github.com/YanDoroshenko/asciiquarium-lock"
