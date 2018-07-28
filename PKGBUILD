@@ -2,7 +2,7 @@
 # Contributer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=electrumx
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('leveldb'
          'python-aiohttp>=2.0.0'
          'python-plyvel'
          'python-pylru'
-         'python-aiorpcx>=0.5.8')
+         'python-aiorpcx>=0.5.9')
 makedepends=('python-setuptools')
 optdepends=('bitcoin-daemon: Bitcoin core headless P2P node'
             'electrum: Bitcoin thin client')
@@ -21,7 +21,7 @@ options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/kyuupichan/$pkgname/tar.gz/$pkgver
         'electrumx.conf'
         'electrumx.service')
-sha256sums=('347fd1b7cd3c56b6788b5526fe247d725beba46a8bb03f4559649512567bb05c'
+sha256sums=('acf4b38521a0f80d685879780209a1b6a3b9d48e645bd10c55bdf0ceb3d9204a'
             'f13119ac93e6e05203f9d5dae5e737ec718ca5c829b0b6b73b0761587ae651b7'
             'b4e1a9d4341edf1f2022f8c8591d28ef6bd6db38c6f332445ac294b5fc6dae93')
 backup=('etc/electrumx/electrumx.conf'
