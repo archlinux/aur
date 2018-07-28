@@ -5,7 +5,7 @@
 
 pkgname=supertux-git
 _pkgname=supertux
-pkgver=v0.5.1.r540.gf7aa0fcda
+pkgver=v0.5.1.r671.g03fa21478
 pkgrel=1
 epoch=1
 pkgdesc="A classic 2D jump'n run sidescroller game in a style similar to the original SuperMario game"
