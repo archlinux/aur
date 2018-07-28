@@ -1,6 +1,6 @@
 pkgbase = mkpasswd
 	pkgdesc = Tool for creating password hashes suitable for /etc/shadow
-	pkgver = 5.3.0
+	pkgver = 5.3.2
 	pkgrel = 1
 	url = https://github.com/rfc1036/whois
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = mkpasswd
 	license = GPL
 	makedepends = perl
 	depends = glibc
-	source = whois-5.3.0.tar.gz::https://github.com/rfc1036/whois/archive/v5.3.0.tar.gz
-	sha256sums = ba8013bd9316dec1c2c1b85fd092e71eaad741f12fd6d7dc833f98e6f1c35a1e
+	source = whois-5.3.2.tar.gz::https://github.com/rfc1036/whois/archive/v5.3.2.tar.gz
+	sha256sums = 27d606a6b751847b72b11edfe1cf8fc187438e8effe78d80c891fec1f7392420
 
 pkgname = mkpasswd
 
