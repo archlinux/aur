@@ -1,0 +1,17 @@
+pkgbase = luatex-git
+	pkgdesc = The LuaTeX engine, current git master, standalone binary
+	pkgver = 20180501
+	pkgrel = 1
+	url = http://www.luatex.org
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	conflicts = context-minimals-git
+	source = git+https://github.com/TeX-Live/luatex.git
+	md5sums = SKIP
+
+pkgname = luatex-git
+
