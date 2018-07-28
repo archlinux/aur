@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/java -Djava.library.path=/usr/lib/jvm/default/jre/bin -cp /usr/lib/jvm/default/lib/tools.jar:/usr/share/java/warmroast/warmroast.jar com.sk89q.warmroast.WarmRoast
+exec /usr/bin/java -Djava.library.path=/usr/lib/jvm/default/jre/bin -cp /usr/lib/jvm/default/lib/tools.jar:/usr/share/java/warmroast/warmroast.jar com.sk89q.warmroast.WarmRoast "$@"
