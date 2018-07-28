@@ -13,9 +13,8 @@ arch=('i686' 'x86_64')
 install="${pkgname}.install"
 license=('custom: unknown')
 depends=('openssl' 'glibc' 'zlib')
-source=("https://github.com/vanhauser-thc/THC-Archive/blob/master/Exploits/thc-ssl-dos-1.4.tar.gz")
+source=("https://github.com/vanhauser-thc/THC-Archive/raw/master/Exploits/thc-ssl-dos-1.4.tar.gz")
 sha256sums=('3e8dcaedf39a11ebaeac6e4d75175fcc724c6255904ef4e27bf72c9788119a04')
-
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}" || return 1
