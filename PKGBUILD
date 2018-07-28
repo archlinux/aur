@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=4.1.r91500.g3870ed7ab3
+pkgver=4.1.r91528.ged647ab79f
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -13,17 +13,17 @@ depends=(
         'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass' 'aom'
         'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
         'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm'
-        'libiec61883' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio'
-        'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt'
-        'libssh' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab'
-        'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore'
-        'libxml2' 'zimg' 'zeromq' 'zvbi' 'lilv' 'xz' 'openal' 'ocl-icd' 'libgl' 'sndio'
-        'sdl2' 'vapoursynth' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio'
-        'libva' 'libdrm' 'libvdpau'
+        'libiec61883' 'lensfun' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus'
+        'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr'
+        'speex' 'srt' 'libssh' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
+        'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so'
+        'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lilv' 'xz'
+        'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'libxv' 'libx11'
+        'libxext' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'codec2' 'flite1-patched' 'libilbc' 'kvazaar' 'openh264'
-        'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
-        'rockchip-mpp'
+        'chromaprint-fftw' 'codec2' 'libdavs2-git' 'flite1-patched' 'libilbc'
+        'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk'
+        'libmysofa' 'rockchip-mpp'
 )
 depends_x86_64=(
     # official repositories:
@@ -132,6 +132,7 @@ build() {
         --enable-libcelt \
         --enable-libcdio \
         --enable-libcodec2 \
+        --enable-libdavs2 \
         --enable-libdc1394 \
         --enable-libfdk-aac \
         --enable-libflite \
@@ -144,6 +145,7 @@ build() {
         --enable-libilbc \
         --enable-libjack \
         --enable-libkvazaar \
+        --enable-liblensfun \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore-amrnb \
