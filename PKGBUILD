@@ -13,7 +13,7 @@ depends=('qt5-base' 'hicolor-icon-theme')
 source=('https://download.opendesign.com/guestfiles/TeighaFileConverter/TeighaFileConverter_QT5_lnxX64_4.7dll.deb'
         'teigha-file-converter'
         'teigha-file-converter.desktop')
-sha256sums=('ca6ca1e5b4788fd0d880c57600dedc5cb05b2a7d0210958ca4d68c91c2f37c1d'
+sha256sums=('66d19d49c3e53ea4a481b559143266defcf4c52b34b678ef49508dc88c09e107'
             '27887dc7583b9468664672a102cc22342b4dfded2f4cb1c2691df0cf2ae73598'
             'a6032520571c3bb4b73d1e278c11923090163bad149bb656db0344b480ce8d9f')
 _ogname='TeighaFileConverter'
