@@ -1,13 +1,13 @@
 pkgbase = perl-moosex-daemonize
 	pkgdesc = Role for daemonizing your Moose based application
-	pkgver = 0.20
+	pkgver = 0.21
 	pkgrel = 1
 	url = http://search.cpan.org/dist/MooseX-Daemonize
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	checkdepends = perl-test-fatal
-	makedepends = perl-module-build-tiny>=0.007
+	makedepends = perl-module-build-tiny>=0.034
 	makedepends = perl-devel-checkos>=1.63
 	depends = perl>=5.008
 	depends = perl-moose>=0.33
@@ -15,8 +15,8 @@ pkgbase = perl-moosex-daemonize
 	depends = perl-moosex-types-path-class
 	options = !emptydirs
 	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Daemonize-0.20.tar.gz
-	sha512sums = 0152be535b4d01a789af27c34ebccf3a1d48428e935338ffeab0b8fe3e4b76b4e0584f605e3bc2c0445cd6a65496f8929568cbe1eaa36d638e65c428b685f503
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Daemonize-0.21.tar.gz
+	sha512sums = 2a4f2549edd4cf8f918b59c7df7f9d7e72f23c8d0c927929d15e20679f427eef11f601a1e72a71eb225ed67389e63a92a6579524f843c20c2dd524cec2fe8a7d
 
 pkgname = perl-moosex-daemonize
 
