@@ -25,9 +25,16 @@ sha256sums=('0585fd5752e2c15ad42602838d216b35a7c628969b3a7e9fca5c9e944302ee5a'
             'ba4e21c675ce7f49e6df27df1f29d1bb99c47679c4981657a2a4cf5d59930b4a')
 
 prepare() {
-  tail -n +224 gitahead-${pkgver}.bin > gitahead-${pkgver}.tar.gz # if you update, check if it is still line 224
+  gzip_offset=$(grep -baoU -m 1 "$(printf '\x1f\x8b')" gitahead-${pkgver}.bin | awk '{print $1}' FS=':')
+
+  if [ -z "${gzip_offset}" ]; then
+    echo "error: No GZip header found"
+    return 1
+  fi
+
+  dd if=gitahead-${pkgver}.bin of=gitahead-${pkgver}.tar.gz iflag=skip_bytes skip=${gzip_offset} 2> /dev/null
   mkdir -p gitahead-${pkgver}
-  bsdtar xvf gitahead-${pkgver}.tar.gz -C gitahead-${pkgver}
+  bsdtar xf gitahead-${pkgver}.tar.gz -C gitahead-${pkgver}
 }
 
 package() {
