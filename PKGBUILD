@@ -2,8 +2,8 @@
 
 pkgname='perl-carp-assert-more'
 _pkgname='Carp-Assert-More'
-pkgver='1.14'
-pkgrel='2'
+pkgver='1.16'
+pkgrel='1'
 pkgdesc="convenience wrappers around Carp::Assert"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,8 +12,7 @@ depends=('perl-carp-assert')
 makedepends=('perl-test-exception')
 url='http://search.cpan.org/dist/Carp-Assert-More'
 source=("http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('78d85249929273259e0a519925b80cd9')
-sha512sums=('0411908afd5cc45cedce83fb10e67f78f7513fa788421d9c4e0f0f0064bf6fdd7154c2414a449456ff4c600f31eba138fb4d3f94e68743af4b71f7368c30b398')
+sha512sums=('9f81604574eab5a0a5003ad747ffec3a3dd33bc63e67d12697e4e30de8cb234a73e225f82a4d0f31576e19382cc2d6a402962f5fe1e4c5289e080ca23b30c0fe')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
