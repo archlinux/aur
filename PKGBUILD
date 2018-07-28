@@ -14,7 +14,7 @@ source=("https://github.com/imagej/imagej/archive/imagej-$_ver.tar.gz"
 	    "imagej2.desktop"
         "fix-launcher.patch")
 md5sums=('8a1ebe7fbe111ad1de3ca8381fb4d259'
-         '8f5662769d7f1bcf0f697b5569bb04c2'
+         'db18ac6d6ed799e04bc23b635b35e673'
          '7936077e9d108b000fb66e1b65ff19c0')
 
 prepare() {
@@ -43,5 +43,5 @@ package() {
 
 	cd $srcdir
 	install -Dm644 imagej2.desktop $pkgdir/usr/share/applications/imagej2.desktop
-	install -Dm644 imagej-imagej-$_ver/logo/imagej.png $pkgdir/usr/share/icons/hicolor/512x512/imagej2.png
+	install -Dm644 imagej-imagej-$_ver/logo/imagej.png $pkgdir/usr/share/icons/hicolor/512x512/apps/imagej2.png
 }

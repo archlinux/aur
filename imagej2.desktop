@@ -35,6 +35,6 @@ Comment=Image processing and analysis
 Comment[fr]=Traitement et analyse de l'image
 Comment[it]=Trattamento ed analisi delle immagini
 Exec=imagej2 %f
-Icon=microscope
+Icon=imagej2
 Categories=Graphics;Science;Biology;
 MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/pjpeg;image/png;image/tiff;image/x-bmp;image/x-fits;image/x-png;image/x-psd;image/x-xbitmap;application/dicom;

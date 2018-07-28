@@ -9,9 +9,9 @@ pkgbase = imagej2
 	depends = java-runtime>=8
 	source = https://github.com/imagej/imagej/archive/imagej-2.0.0-rc-68.tar.gz
 	source = imagej2.desktop
-	source = fix-launcher.patch::https://github.com/slokhorst/imagej/commit/93e9e768a0898e58649d1f4c1385432d38676da2.patch
+	source = fix-launcher.patch
 	md5sums = 8a1ebe7fbe111ad1de3ca8381fb4d259
-	md5sums = 8f5662769d7f1bcf0f697b5569bb04c2
+	md5sums = db18ac6d6ed799e04bc23b635b35e673
 	md5sums = 7936077e9d108b000fb66e1b65ff19c0
 
 pkgname = imagej2
