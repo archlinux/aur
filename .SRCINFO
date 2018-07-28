@@ -1,6 +1,6 @@
 pkgbase = gposttl-git
 	pkgdesc = Brill's Parts-of-Speech Tagger, with built-in Tokenizer and Lemmatizer
-	pkgver = r33.b8d425d
+	pkgver = r34.4d19dda
 	pkgrel = 1
 	url = http://gposttl.sourceforge.net/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = gposttl-git
 	makedepends = git
 	makedepends = autoconf
 	depends = glibc
+	options = !strip
 	source = gposttl-git::git+https://github.com/tonylambiris/gposttl
 	sha256sums = SKIP
 

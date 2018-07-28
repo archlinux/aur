@@ -1,34 +1,35 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=gposttl-git
-pkgver=r33.b8d425d
+pkgver=r34.4d19dda
 pkgrel=1
 pkgdesc="Brill's Parts-of-Speech Tagger, with built-in Tokenizer and Lemmatizer"
 arch=(x86_64)
 url="http://gposttl.sourceforge.net/"
 license=(MIT)
 depends=(glibc)
+options=(!strip)
 makedepends=(git autoconf)
 source=("$pkgname::git+https://github.com/tonylambiris/gposttl")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "$pkgname"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $pkgname
+  cd "$pkgname"
 
-  autoreconf -ivf
+  ./autogen.sh
   ./configure --prefix=/usr
 
   make
 }
 
 package() {
-  cd $pkgname
+  cd "$pkgname"
 
   make DESTDIR="$pkgdir" install
 }
