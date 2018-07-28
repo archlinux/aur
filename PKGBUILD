@@ -2,7 +2,7 @@
 
 _pkgname=audacious
 pkgname=${_pkgname}-qt5
-pkgver=3.9
+pkgver=3.10+beta1
 pkgrel=1
 pkgdesc="Lightweight, advanced audio player (with qt5 interface)"
 arch=('i686' 'x86_64')
@@ -15,11 +15,11 @@ optdepends=('unzip: zipped skins support'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('audacious-player')
-source=(http://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('2d8044673ac786d71b08004f190bbca368258bf60e6602ffc0d9622835ccb05e')
+source=(https://distfiles.audacious-media-player.org/$_pkgname-${pkgver/+/-}.tar.bz2)
+sha256sums=('3a3ea429cbfcdd008bec3edd9747beba0afa9510ab2f6430a251f33d9b8c466f')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-${pkgver/+/-}"
 
   ./configure \
     --prefix=/usr \
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-${pkgver/+/-}"
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
