@@ -2,7 +2,7 @@
 
 _pkgname=audacious-plugins
 pkgname=${_pkgname}-qt5
-pkgver=3.9
+pkgver=3.10+beta1
 pkgrel=1
 pkgdesc="Plugins for Audacious (qt5 interface)"
 arch=('i686' 'x86_64')
@@ -42,11 +42,11 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
 
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=(http://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('8bf7f21089cb3406968cc9c71307774aee7100ec4607f28f63cf5690d5c927b8')
+source=(https://distfiles.audacious-media-player.org/$_pkgname-${pkgver/+/-}.tar.bz2)
+sha256sums=('1d4368ef2b464c9be054050351d99829b59be765a4fa98d1d1f95464c5fbbaaf')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-${pkgver/+/-}"
 
   ./configure \
     --prefix=/usr \
@@ -57,7 +57,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-${pkgver/+/-}"
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
