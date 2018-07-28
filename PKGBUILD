@@ -2,7 +2,7 @@
 
 pkgname=browsh
 pkgver=1.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A fully-modern text-based browser, rendering to TTY and browsers'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.brow.sh'
@@ -45,6 +45,8 @@ prepare() {
 }
 
 build() {
+	export GOPATH="${srcdir}/.gopath"
+	export _interfacer="${GOPATH}/src/${pkgname}/interfacer"
 	cd "$_interfacer"
 	echo Build ${pkgname}...
 	go build	-x\
