@@ -1,0 +1,13 @@
+pkgbase = starruler2-mod-risingstars
+	pkgdesc = mod for Star Ruler 2
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/DaloLorn/Rising-Stars
+	arch = x86_64
+	license = custom
+	depends = starruler2-git
+	source = https://github.com/DaloLorn/Rising-Stars/archive/WorkshopBuild.tar.gz
+	md5sums = 59a9092f7009bcb04391ebf2e4bfa179
+
+pkgname = starruler2-mod-risingstars
+
