@@ -15,7 +15,7 @@ sha256sums=('ba8013bd9316dec1c2c1b85fd092e71eaad741f12fd6d7dc833f98e6f1c35a1e')
 build() {
   cd "${srcdir}/whois-${pkgver}"
 
-  make prefix=/usr CFLAGS="$CFLAGS $CPPFLAGS"
+  make prefix=/usr CFLAGS="$CFLAGS $CPPFLAGS" mkpasswd
 }
 
 package() {
