@@ -120,6 +120,10 @@ build() {
     --target="$_target" \
     --disable-ld \
     --disable-nls \
+    --disable-libssp \
+    --disable-libquadmath \
+    --disable-libquadmath-support \
+    --disable-libgomp \
     --enable-gold \
     --enable-decimal-float \
     --enable-languages=c,c++ \
@@ -129,7 +133,7 @@ build() {
     --with-cpu=i586 \
     --enable-threads \
     --enable-libstdcxx-threads \
-    --enable-lto --disable-libgomp \
+    --enable-lto \
     --enable-libstdcxx-filesystem-ts \
     --enable-libstdcxx-time=yes \
     --disable-multilib --enable-checking=release
