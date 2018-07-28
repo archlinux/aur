@@ -5,7 +5,7 @@
 _name=Cadence
 pkgname=cadence
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="JACK toolbox for audio production."
 arch=('x86_64')
 url="https://kxstudio.linuxaudio.org/Applications:Cadence"
@@ -34,6 +34,6 @@ package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" PREFIX=/usr install
   # docs
-  install -t "${pkgdir}/usr/share/doc/${pgkname}/" -vDm 644 {README.md,TODO}
+  install -vDm 644 {README.md,TODO} -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 
