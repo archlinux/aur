@@ -11,7 +11,7 @@ depends=(python python-pyqt5 python-dbus openvpn stunnel bind-tools dnsmasq geoi
 makedepends=(python-setuptools)
 install=qomui.install
 source=("https://github.com/corrad1nho/qomui/archive/v$pkgver.tar.gz")
-sha256sums=("7c45d5e2fdf46dd67f31fb809bb71c097cde5d7d7f06b5d55437bbb0a55a8b74")
+sha256sums=("85f40248c80fedbcc057204952988f2ffc4d90d4e164d9828f27920b5bd43207")
 
 build() {
 	cd "$pkgname-$pkgver"
