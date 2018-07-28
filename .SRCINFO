@@ -1,0 +1,24 @@
+pkgbase = update-dotdee
+	pkgdesc = Generic modular configuration file manager
+	pkgver = 5.0
+	pkgrel = 1
+	url = https://github.com/xolox/python-update-dotdee
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-coloredlogs
+	depends = python-executor
+	depends = python-humanfriendly
+	depends = python-naturalsort
+	depends = python-property-manager
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/source/u/update-dotdee/update-dotdee-5.0.tar.gz
+	sha256sums = 7316afa9f63fb52cfcae17d10747a975df086fb82400bb310f1fe9f6a141e433
+
+pkgname = update-dotdee
+	depends = python-setuptools
+	depends = python-update-dotdee
+
+pkgname = python-update-dotdee
+
