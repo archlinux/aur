@@ -1,6 +1,6 @@
 pkgbase = vk4xmpp-git
 	pkgdesc = A jabber gateway to the VK social network
-	pkgver = 416
+	pkgver = r416.4636358
 	pkgrel = 1
 	url = https://github.com/mrDoctorWho/vk4xmpp
 	arch = any

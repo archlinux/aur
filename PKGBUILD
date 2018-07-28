@@ -3,7 +3,7 @@
 
 _gitname='vk4xmpp'
 pkgname="$_gitname-git"
-pkgver=416
+pkgver=r416.4636358
 pkgrel=1
 pkgdesc='A jabber gateway to the VK social network'
 arch=('any')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git rev-list HEAD --count
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
