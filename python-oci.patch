@@ -1,7 +1,7 @@
 diff -rupN oci-python-sdk-2.0.0/setup.py oci-python-sdk-2.0.0b/setup.py
 --- oci-python-sdk-2.0.0/setup.py	2018-07-26 18:04:41.000000000 -0400
-+++ oci-python-sdk-2.0.0b/setup.py	2018-07-27 21:49:08.261520223 -0400
-@@ -30,11 +30,11 @@ with open_relative("README.rst") as f:
++++ oci-python-sdk-2.0.0b/setup.py	2018-07-27 23:09:27.129796211 -0400
+@@ -30,11 +30,10 @@ with open_relative("README.rst") as f:
  
  requires = [
      "certifi",
@@ -10,7 +10,6 @@ diff -rupN oci-python-sdk-2.0.0/setup.py oci-python-sdk-2.0.0b/setup.py
 -    "pyOpenSSL<=17.4.0",
 -    "python-dateutil>=2.5.3,<=2.7.3",
 -    "pytz>=2016.10",
-+    "configparser",
 +    "cryptography",
 +    "pyOpenSSL",
 +    "python-dateutil",
