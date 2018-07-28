@@ -3,7 +3,7 @@
 
 pkgname='perl-cache-fastmmap'
 _pkgname='Cache-FastMmap'
-pkgver='1.44'
+pkgver='1.47'
 pkgrel='1'
 pkgdesc="Uses an mmap'ed file to act as a shared memory interprocess cache"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('perl')
 makedepends=('perl-extutils-makemaker')
 url="http://search.cpan.org/dist/Cache-FastMmap"
 source=("http://search.cpan.org/CPAN/authors/id/R/RO/ROBM/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('35ac9ef19fe8f7857d3d999274fcfb8fb3b62524e29db5dde846ab51e77a0166b48e063ece4e1621f4ad53a3264ac607879e3a0ae4decaf1d3a16c4284b4b6ce')
+sha512sums=('20d839ac10578387465a0d5e6d6d4018073eb644460b4e079bb7b774a6c7be453a7f2bd8d499be962d60bd51657bc49a651684e773efb02a5d5fcf6c341640b2')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
