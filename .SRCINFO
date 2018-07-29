@@ -11,7 +11,7 @@ pkgbase = i3ipc-python
 	provides = i3ipc-python
 	conflicts = i3ipc-python-git
 	source = i3ipc-python-1.5.1.tar.gz::https://github.com/acrisci/i3ipc-python/archive/v1.5.1.tar.gz
-	sha512sums = 5b638bedcc4c690e270390a815d1b680585935c82ce8295cac774d72bbcf444b3ba68f7259cfe02539f493694aefcb7894c8f84ff5aa88a464f477ee6d3b8692
+	sha256sums = aa26ca148a1e745bc0c356f8f04e06e8269a6744d9eb1d6135cfb1adf998bffa
 
 pkgname = i3ipc-python
 
