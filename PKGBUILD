@@ -34,7 +34,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 ###########################################################################################################
 
 pkgname=vim-youcompleteme-git
-pkgver=2307.6975efdd
+pkgver=2373.15362d9c
 pkgver() {
 	cd "YouCompleteMe" || exit
 	echo "$(git rev-list --count master).$(git rev-parse --short master)"
@@ -55,8 +55,8 @@ source=(
 'git+https://github.com/bottlepy/bottle.git'        #ycmd
 'git+https://github.com/slezica/python-frozendict.git'    #ycmd
 'git+https://github.com/PythonCharmers/python-future.git' #ycmd
-'git+https://github.com/vheon/JediHTTP.git'               #ycmd
-'git+https://github.com/davidhalter/jedi.git'             #jediHTTP
+'git+https://github.com/davidhalter/jedi.git'             #jedi
+'git+https://github.com/davidhalter/parso.git'            #jedi
 'git+https://github.com/Pylons/waitress.git'              #ycmd,jediHTTP
 'git+https://github.com/nsf/gocode.git'                   #ycmd
 'git+https://github.com/Manishearth/godef.git'            #ycmd
@@ -74,11 +74,11 @@ prepare() {
 	YouCompleteMe=("requests-futures" "ycmd")
 	gitprepare "YouCompleteMe" "third_party/" "${YouCompleteMe[@]}"
 
-	ycmd=("bottle" "python-frozendict" "python-future" "JediHTTP" "waitress" "gocode" "godef" "OmniSharpServer" "requests" "racerd")
+	ycmd=("bottle" "python-frozendict" "python-future" "waitress" "gocode" "godef" "OmniSharpServer" "requests" "racerd")
 	gitprepare "YouCompleteMe/third_party/ycmd" "third_party/" "${ycmd[@]}"
 
-	JediHTTP=("waitress" "jedi" "bottle")
-	gitprepare "YouCompleteMe/third_party/ycmd/third_party/JediHTTP" "vendor/" "${JediHTTP[@]}"
+	Jedi=("waitress" "jedi" "bottle" "parso")
+	gitprepare "YouCompleteMe/third_party/ycmd/third_party/jedi" "vendor/" "${Jedi[@]}"
 
 	OmniSharpServer=("NRefactory" "cecil")
 	gitprepare "YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer" "" "${OmniSharpServer[@]}"
@@ -168,7 +168,7 @@ package() {
 		"$pkgdir/$vimfiles_dir/third_party"
 	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,CORE_VERSION,cpp,clang_includes} \
 		"$pkgdir/$vimfiles_dir/third_party/ycmd"
-	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{bottle,frozendict,JediHTTP,python-future,requests,waitress} \
+	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{bottle,parso,frozendict,jedi,python-future,requests,waitress} \
 		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party"
 
 	if [ "$_omnisharp" = "y" ]; then
