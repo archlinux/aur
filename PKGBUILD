@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-deck
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Kanban-style project & personal management tool for Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud/deck/releases/download/v${pkgver}/deck.tar.gz")
-sha512sums=("2597d2d6be39ffded1c7b4f269d049b3e948e9f12ab036ee01a269b70a3d93b463e743d37e241319e6fd9be37999b1c036b4f719cf7941956ca53d6b19c6fdfb")
+sha512sums=("0de992ceeba89f3aa5e5ee833b7428c6045b7cf9519fa60b74440b2cfd14ac3751d9c1ff7c9f215ddecdb083a7502191d4e8fb2ea9c39ac4275651a23912da05")
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
