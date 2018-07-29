@@ -25,7 +25,7 @@ build() {
 
 check() {
   cd oxy
-  cargo +nightly test --locked --release || continue
+  cargo +nightly test --locked --release || true
 }
 
 package() {
