@@ -13,7 +13,7 @@ install=brscan4.install
 [ "$CARCH" = "x86_64" ] && pkg_md5sum="05ed2f7a58592770ddc9e2e24a2706f8" || pkg_md5sum="f7375fe4337d22716dae2e16e92ba6ea"
 
 source=("https://download.brother.com/welcome/$pkg"
-	"https://www.brother.com/agreement/English_sane/agree.html"
+	"http://www.brother.com/agreement/English_sane/agree.html"
 	mk-udev-rules)
 md5sums=($pkg_md5sum
 	 'ccffb9a6f6d436b21be25b0241068981'
