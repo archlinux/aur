@@ -2,8 +2,8 @@
 pkgbase=libayatana-appindicator
 pkgname=("${pkgbase}-gtk"{2,3} "${pkgbase}-sharp" "python2-${pkgbase}")
 pkgver=0.5.3
-pkgrel=1
-pkgdesc='A library to allow applications to export a menu into the an Application Indicators aware menu bar.'
+pkgrel=2
+pkgdesc='Ayatana Application Indicators Shared Library'
 url='https://ayatana-indicators.org'
 arch=('x86_64')
 license=('LGPL2.1' 'LGPL3')
@@ -90,3 +90,4 @@ package_python2-libayatana-appindicator() {
   cd ${pkgbase}-${pkgver}-py2
   make -C bindings/python DESTDIR="${pkgdir}" install
 }
+

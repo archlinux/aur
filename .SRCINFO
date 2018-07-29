@@ -1,14 +1,45 @@
 pkgbase = libayatana-appindicator
-	pkgdesc = A library to allow applications to export a menu into the an Application Indicators aware menu bar.
+	pkgdesc = Ayatana Application Indicators Shared Library
 	pkgver = 0.5.3
-	pkgrel = 1
-	url = https://github.com/AyatanaIndicators/libayatana-appindicator
+	pkgrel = 2
+	url = https://ayatana-indicators.org
 	arch = x86_64
-	license = LGPL.2.1
+	license = LGPL2.1
+	license = LGPL3
 	makedepends = mate-common
-	depends = libayatana-indicator
-	source = https://github.com/AyatanaIndicators/libayatana-appindicator/archive/0.5.3.zip
-	sha512sums = 20124d6e9e2f2e070b70dde19d4a9d89ea5de2756ef01ab2b23b97f288008394f2bfef8c2e8f59e810fa3a012a15a5c0fbeff4dd8e5791d2e01acd45c2c565c2
+	makedepends = gtk-doc
+	makedepends = dbus-glib
+	makedepends = gobject-introspection
+	makedepends = gtk-sharp-2
+	makedepends = libayatana-indicator-gtk2
+	makedepends = libayatana-indicator-gtk3
+	makedepends = mono
+	makedepends = pygtk
+	makedepends = vala
+	makedepends = python2
+	options = !emptydirs
+	source = http://releases.ayatana-indicators.org/source/libayatana-appindicator/libayatana-appindicator-0.5.3.tar.gz
+	sha512sums = 2061582cf16954de1ad4df888acc3972126e642357adcf017d71b742ad600b970089cca91e5fe2c0dac3c35660efb22bb07cd1b3a7559a8d6adc15eba062eec7
 
-pkgname = libayatana-appindicator
+pkgname = libayatana-appindicator-gtk2
+	pkgdesc = Ayatana Application Indicators Shared Library (GTK+ 2 library)
+	depends = libdbusmenu-gtk2
+	depends = libayatana-indicator-gtk2
+	provides = libayatana-appindicator
+	conflicts = libayatana-appindicator
+
+pkgname = libayatana-appindicator-gtk3
+	pkgdesc = Ayatana Application Indicators Shared Library (GTK+ 3 library)
+	depends = libdbusmenu-gtk3
+	depends = libayatana-indicator-gtk3
+	provides = libayatana-appindicator3
+	conflicts = libayatana-appindicator3
+
+pkgname = libayatana-appindicator-sharp
+	depends = libayatana-appindicator-gtk2
+	depends = gtk-sharp-2
+
+pkgname = python2-libayatana-appindicator
+	depends = libayatana-appindicator-gtk2
+	depends = python2
 
