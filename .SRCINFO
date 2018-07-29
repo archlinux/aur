@@ -1,0 +1,14 @@
+pkgbase = libayatana-appindicator
+	pkgdesc = A library to allow applications to export a menu into the an Application Indicators aware menu bar.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/AyatanaIndicators/libayatana-appindicator
+	arch = x86_64
+	license = LGPL.2.1
+	makedepends = mate-common
+	depends = libayatana-indicator
+	source = https://github.com/AyatanaIndicators/libayatana-appindicator/archive/0.5.3.zip
+	sha512sums = 20124d6e9e2f2e070b70dde19d4a9d89ea5de2756ef01ab2b23b97f288008394f2bfef8c2e8f59e810fa3a012a15a5c0fbeff4dd8e5791d2e01acd45c2c565c2
+
+pkgname = libayatana-appindicator
+
