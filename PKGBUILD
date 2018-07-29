@@ -3,7 +3,7 @@
 pkgname=oxy
 pkgver=3.0.0+dev1+91+ga5704df
 _commit=a5704df93e652b7ca461b5ec33b442c23d929eaa
-pkgrel=1
+pkgrel=2
 pkgdesc='SSH-alike that uses the Noise protocol'
 arch=(i686 x86_64)
 url=https://github.com/oxy-secure/oxy
@@ -20,12 +20,12 @@ pkgver() {
 
 build() {
   cd oxy
-  cargo +nightly build --release
+  cargo +nightly build --release --locked
 }
 
 check() {
   cd oxy
-  cargo +nightly test --release || continue
+  cargo +nightly test --release --locked || true
 }
 
 package() {
