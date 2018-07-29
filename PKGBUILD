@@ -2,7 +2,7 @@
 
 _target=mips64-elf
 pkgname=${_target}-newlib
-pkgver=2.5.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('any')
@@ -11,14 +11,14 @@ license=('BSD')
 makedepends=("${_target}-gcc-stage1")
 options=( '!strip' '!emptydirs')
 source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.tar.gz")
-sha256sums=('5b76a9b97c9464209772ed25ce55181a7bb144a66e5669aaec945aa64da3189b')
+sha256sums=('c8566335ee74e5fcaeb8595b4ebd0400c4b043d6acb3263ecb1314f8f5501332')
 
 build()
 {
   rm -rf build
   mkdir build && cd build
 
-  export CFLAGS_FOR_TARGET='-G0 -O2 -ffunction-sections -fdata-sections'
+  export CFLAGS_FOR_TARGET='-G0 -O2 -ffunction-sections -fdata-sections -fomit-frame-pointer'
 
   ../newlib-${pkgver}/configure \
     --prefix=/usr \
