@@ -1,0 +1,17 @@
+pkgbase = ayatana-ido
+	pkgdesc = Ayatana Indicator Display Objects
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://ayatana-indicators.org
+	arch = x86_64
+	license = LGPL2.1
+	license = LGPL3
+	makedepends = mate-common
+	makedepends = gtk-doc
+	depends = gtk3
+	depends = glib2
+	source = http://releases.ayatana-indicators.org/source/ayatana-ido/ayatana-ido-0.4.2.tar.gz
+	sha512sums = c64b1d272b778ec0f3de51afa0e3e73765ea2efebd3db9426ee6df0814deffd092a6d82c649a7ee530ae824d7af49bc7fec50b3d0b8725bdeed61c95f77295f9
+
+pkgname = ayatana-ido
+
