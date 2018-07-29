@@ -1,3 +1,7 @@
+3.1
+	* Chmod to 600 the cache history file
+	* Do not rely on atom given by thirdapp to avoid buggy app (thermite)
+
 3.0
   * Support for blacklisting applications
 	* Support for keeping images in history
