@@ -17,7 +17,7 @@ void window_main(void) {
     gtk_builder_add_from_file(app.builder, "/usr/share/tick/window_main.glade", NULL);
 
     // Copy names of columns into array
-    GtkTreeView* tree_view = GTK_TREE_VIEW(gtk_builder_get_object(app.builder, "check_tree_view"));
+    GtkTreeView* tree_view = GTK_TREE_VIEW(GET_OBJECT("check_tree_view"));
     for (gint i = 0; i < NUM_COLS; i++)
         strcpy(column_names[i], gtk_tree_view_column_get_title(gtk_tree_view_get_column(
                 tree_view, i)));
@@ -26,12 +26,12 @@ void window_main(void) {
     gtk_builder_connect_signals(app.builder, NULL);
 
     // Show check window as default opening window
-    gtk_widget_show(GTK_WIDGET(gtk_builder_get_object(app.builder, "check_window")));
+    gtk_widget_show(GTK_WIDGET(GET_OBJECT("check_window")));
     gtk_main(); // Main loop
 }
 
 void check_list_create_from_string(void) {
-    GtkListStore* pListStore = GTK_LIST_STORE(gtk_builder_get_object(app.builder, "check_list"));
+    GtkListStore* pListStore = GTK_LIST_STORE(GET_OBJECT("check_list"));
     gtk_list_store_clear(pListStore); // Clear in case reloading
     api_info_array_destroy(&app.portfolio_data); // Destroy in case reloading
     app.portfolio_data = portfolio_info_array_init_from_portfolio_string(app.portfolio_string);
@@ -55,7 +55,7 @@ void check_list_create_from_string(void) {
 }
 
 void check_list_add_api_data(void) {
-    GtkListStore* pListStore = GTK_LIST_STORE(gtk_builder_get_object(app.builder, "check_list"));
+    GtkListStore* pListStore = GTK_LIST_STORE(GET_OBJECT("check_list"));
     format_cells(app.portfolio_data);
     Info* idx;
     GtkTreeIter iter;
@@ -111,7 +111,7 @@ void on_load_button_clicked(GtkButton* button) {
         json_object_put(jobj);
 
         // Enable encrypt button
-        GtkButton* lock_button = GTK_BUTTON(gtk_builder_get_object(app.builder, "lock_button"));
+        GtkButton* lock_button = GTK_BUTTON(GET_OBJECT("lock_button"));
         gtk_widget_set_sensitive(GTK_WIDGET(lock_button), TRUE); // Make button clickable
         gtk_button_set_label(lock_button, "Encrypt");
         return;
@@ -119,9 +119,8 @@ void on_load_button_clicked(GtkButton* button) {
 
     // If file is not a JSON array (encrypted), show password dialog and return
     if (!is_string_json_array(app.portfolio_string)) {
-        gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "password_entry")), "");
-        gtk_widget_show(GTK_WIDGET(gtk_builder_get_object(app.builder,
-                                                                  "get_password_dialog")));// Decode
+        gtk_entry_set_text(GTK_ENTRY("password_entry"), "");
+        gtk_widget_show(GTK_WIDGET(GET_OBJECT("get_password_dialog")));// Decode
         return;
     }
 
@@ -134,12 +133,11 @@ void on_load_button_clicked(GtkButton* button) {
         check_list_add_api_data();
     }
 
-    GtkButton* lock_button = GTK_BUTTON(gtk_builder_get_object(app.builder, "lock_button"));
+    GtkButton* lock_button = GTK_BUTTON(GET_OBJECT("lock_button"));
     gtk_widget_set_sensitive(GTK_WIDGET(lock_button), TRUE); // Make button clickable
-    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(app.builder, "add_button")), TRUE);
-    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(app.builder, "remove_button")),
-                             TRUE);
-    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(app.builder, "set_button")), TRUE);
+    gtk_widget_set_sensitive(GTK_WIDGET(GET_OBJECT("add_button")), TRUE);
+    gtk_widget_set_sensitive(GTK_WIDGET(GET_OBJECT("remove_button")), TRUE);
+    gtk_widget_set_sensitive(GTK_WIDGET(GET_OBJECT("set_button")), TRUE);
     if (app.password[0] == '\0') // Plaintext
         gtk_button_set_label(lock_button, "Encrypt");
     else gtk_button_set_label(lock_button, "Decrypt");
@@ -148,19 +146,15 @@ void on_load_button_clicked(GtkButton* button) {
 void on_lock_button_clicked(GtkButton* button) {
     if (strcmp(gtk_button_get_label(button), "Encrypt") == 0) {
         // Reset entries
-        gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry1")),
-                           "");
-        gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry2")),
-                           "");
-        gtk_widget_show(GTK_WIDGET(gtk_builder_get_object(app.builder, "set_password_dialog")));
+        gtk_entry_set_text(GTK_ENTRY(GET_OBJECT("set_password_entry1")), "");
+        gtk_entry_set_text(GTK_ENTRY(GET_OBJECT("set_password_entry2")), "");
+        gtk_widget_show(GTK_WIDGET(GET_OBJECT("set_password_dialog")));
         // Focus first entry
-        gtk_widget_grab_focus(GTK_WIDGET(gtk_builder_get_object(app.builder,
-                                                                "set_password_entry1")));
+        gtk_widget_grab_focus(GTK_WIDGET(GET_OBJECT("set_password_entry1")));
     } else {
         // Reset entry
-        gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "decrypt_password_entry")),
-                           "");
-        gtk_widget_show(GTK_WIDGET(gtk_builder_get_object(app.builder, "decrypt_dialog")));
+        gtk_entry_set_text(GTK_ENTRY(GET_OBJECT("decrypt_password_entry")), "");
+        gtk_widget_show(GTK_WIDGET(GET_OBJECT("decrypt_dialog")));
     }
 }
 
@@ -172,8 +166,8 @@ void on_set_password_dialog_response(GtkDialog* dialog, gint response_id) {
 }
 
 void on_set_password_entry_activate(GtkEntry* entry) {
-    GtkEntry* pass = GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry1"));
-    GtkEntry* pass_check = GTK_ENTRY(gtk_builder_get_object(app.builder, "set_password_entry2"));
+    GtkEntry* pass = GTK_ENTRY(GET_OBJECT("set_password_entry1"));
+    GtkEntry* pass_check = GTK_ENTRY(GET_OBJECT("set_password_entry2"));
     const gchar* pass_str = gtk_entry_get_text(pass);
     const gchar* pass_check_str = gtk_entry_get_text(pass_check);
 
@@ -187,12 +181,11 @@ void on_set_password_entry_activate(GtkEntry* entry) {
         show_generic_message_dialog("Your passwords did not match.", FALSE);
     else { // If passwords match
         sprintf(app.password, "%s\n", pass_str);
-        gtk_button_set_label(GTK_BUTTON(gtk_builder_get_object(app.builder, "lock_button")),
-                             "Decrypt");
+        gtk_button_set_label(GTK_BUTTON(GET_OBJECT("lock_button")), "Decrypt");
         show_generic_message_dialog("Success! Your portfolio will be encrypted when you close the "
                                     "program.", TRUE);
     }
-    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "set_password_dialog")));
+    gtk_widget_hide(GTK_WIDGET(GET_OBJECT("set_password_dialog")));
 }
 
 void on_decrypt_dialog_response(GtkDialog* dialog, gint response_id) {
@@ -202,8 +195,7 @@ void on_decrypt_dialog_response(GtkDialog* dialog, gint response_id) {
 }
 
 void on_decrypt_password_entry_activate(GtkEntry* entry) {
-    const gchar* pass = gtk_entry_get_text(GTK_ENTRY(
-            gtk_builder_get_object(app.builder, "decrypt_password_entry")));
+    const gchar* pass = gtk_entry_get_text(GTK_ENTRY(GET_OBJECT("decrypt_password_entry")));
 
     // Return on empty entry
     if (pass[0] == '\0')
@@ -213,11 +205,11 @@ void on_decrypt_password_entry_activate(GtkEntry* entry) {
     sprintf(mod_pass, "%s\n", pass);
     if (strcmp(app.password, mod_pass) == 0) { // Success
         memset(app.password, '\0', PASS_MAX); // Overwrite password with null chars
-        gtk_button_set_label(GTK_BUTTON(gtk_builder_get_object(app.builder, "lock_button")),
-                             "Encrypt"); // Change button label to Encrypt
+        // Change button label to Encrypt
+        gtk_button_set_label(GTK_BUTTON(GET_OBJECT("lock_button")), "Encrypt");
         show_generic_message_dialog("Successfully decrypted.", TRUE);
     } else show_generic_message_dialog("Wrong password!", FALSE);
-    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "decrypt_dialog")));
+    gtk_widget_hide(GTK_WIDGET(GET_OBJECT("decrypt_dialog")));
 }
 
 void on_modify_button_clicked(GtkButton* button) {
@@ -228,22 +220,21 @@ void on_modify_button_clicked(GtkButton* button) {
     }
 
     // Clear entries
-    gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_symbol_entry")), "");
-    gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_amount_entry")), "");
-    gtk_entry_set_text(GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_spent_entry")), "");
+    gtk_entry_set_text(GTK_ENTRY(GET_OBJECT("modify_symbol_entry")), "");
+    gtk_entry_set_text(GTK_ENTRY(GET_OBJECT("modify_amount_entry")), "");
+    gtk_entry_set_text(GTK_ENTRY(GET_OBJECT("modify_spent_entry")), "");
     // Change message of modify to Add, Remove, or Set depending on which button was clicked
-    GtkWidget* dialog = GTK_WIDGET(gtk_builder_get_object(app.builder,
-        "portfolio_modify_dialog"));
+    GtkWidget* dialog = GTK_WIDGET(GET_OBJECT("portfolio_modify_dialog"));
     g_object_set_text(G_OBJECT(dialog), gtk_button_get_label(button));
     gtk_widget_show(dialog);
     // Focus first entry
-    gtk_widget_grab_focus(GTK_WIDGET(gtk_builder_get_object(app.builder, "modify_symbol_entry")));
+    gtk_widget_grab_focus(GTK_WIDGET(GET_OBJECT("modify_symbol_entry")));
 }
 
 void on_modify_entry_activate(GtkEntry* entry) {
-    GtkEntry* symbol_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_symbol_entry"));
-    GtkEntry* amount_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_amount_entry"));
-    GtkEntry* spent_entry = GTK_ENTRY(gtk_builder_get_object(app.builder, "modify_spent_entry"));
+    GtkEntry* symbol_entry = GTK_ENTRY(GET_OBJECT("modify_symbol_entry"));
+    GtkEntry* amount_entry = GTK_ENTRY(GET_OBJECT("modify_amount_entry"));
+    GtkEntry* spent_entry = GTK_ENTRY(GET_OBJECT("modify_spent_entry"));
     // Get three fields
     const gchar* gsymbol = gtk_entry_get_text(symbol_entry);
     char symbol[strlen(gsymbol) + 1];
@@ -261,8 +252,7 @@ void on_modify_entry_activate(GtkEntry* entry) {
 
     GValue gtext = G_VALUE_INIT;
     g_value_init(&gtext, G_TYPE_STRING);
-    g_object_get_property(G_OBJECT(gtk_builder_get_object(app.builder, "portfolio_modify_dialog")),
-                          "text", &gtext);
+    g_object_get_property(G_OBJECT(GET_OBJECT("portfolio_modify_dialog")), "text", &gtext);
     // Get text from dialog to determine whether adding, removing, or setting
     const gchar* text = g_value_get_string(&gtext);
     int modop;
@@ -276,7 +266,7 @@ void on_modify_entry_activate(GtkEntry* entry) {
     if (!portfolio_modify_string(app.portfolio_string, symbol, amount, spent * amount, modop))
         list_store_update();
     else show_generic_message_dialog("Invalid symbol or arguments.", FALSE);
-    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "portfolio_modify_dialog")));
+    gtk_widget_hide(GTK_WIDGET(GET_OBJECT("portfolio_modify_dialog")));
 }
 
 void on_portfolio_modify_dialog_response(GtkDialog* dialog, gint response_id) {
@@ -286,12 +276,11 @@ void on_portfolio_modify_dialog_response(GtkDialog* dialog, gint response_id) {
 }
 
 void on_password_entry_activate(GtkEntry* entry) {
-    const gchar* password = gtk_entry_get_text(GTK_ENTRY(gtk_builder_get_object(app.builder,
-            "password_entry")));
+    const gchar* password = gtk_entry_get_text(GTK_ENTRY(GET_OBJECT("password_entry")));
     if (strcmp(password, "") == 0) // Return if NULL or empty entry text
         return;
 
-    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(app.builder, "get_password_dialog")));
+    gtk_widget_hide(GTK_WIDGET(GET_OBJECT("get_password_dialog")));
     char modified_pw[strlen(password) + 2];
     sprintf(modified_pw, "%s\n", password);
     rc4_encode_string(app.portfolio_string, modified_pw); // Encode String
@@ -431,7 +420,7 @@ void show_generic_message_dialog(const char* message, gboolean success) {
     if (success)
         strcpy(widget_name, "generic_check_window_success_dialog");
     else strcpy(widget_name, "generic_check_window_error_dialog");
-    GtkWidget* dialog = GTK_WIDGET(gtk_builder_get_object(app.builder, widget_name));
+    GtkWidget* dialog = GTK_WIDGET(GET_OBJECT(widget_name));
     g_object_set_text(G_OBJECT(dialog), message);
     gtk_widget_show(dialog);
 }

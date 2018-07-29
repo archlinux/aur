@@ -4,6 +4,8 @@
 #include <gtk/gtk.h>
 #include "portfolio.h"
 
+#define GET_OBJECT(obj) gtk_builder_get_object(app.builder, obj)
+
 typedef enum column_index {
     AMOUNT, SYMBOL, VALUE, SPENT, PROFIT, PROFIT_PERCENT, PROFIT_24H, PROFIT_24H_PERCENT, PROFIT_7D,
     PROFIT_7D_PERCENT, PROFIT_30D, PROFIT_30D_PERCENT, NUM_COLS
