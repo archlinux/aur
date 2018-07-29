@@ -2,7 +2,7 @@
 # Contributor: mock
 pkgname=ttf-nishiki-teki
 pkgver=3.40
-pkgrel=1
+pkgrel=2
 pkgdesc='A Unicode-based font inspired by a free shell of Ukagaka called “Nishiki”.'
 arch=('any')
 url='http://hwm3.gyao.ne.jp/shiroi-niwatori/nishiki-teki.htm'
@@ -16,7 +16,7 @@ package() {
   cd "nishiki-teki_${pkgver//./_}"
 
   # install font
-  install -Dm644 nishiki-teki.ttf "$pkgdir/usr/share/fonts/TTF"
+  install -Dm644 nishiki-teki.ttf "$pkgdir/usr/share/fonts/TTF/nishiki-teki.ttf"
 
   # install docs
   install -Dm644 nishiki-teki.htm "$pkgdir/usr/share/doc/$pkgname/nishiki-teki.htm"
