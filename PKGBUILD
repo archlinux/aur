@@ -1,4 +1,4 @@
-# Maintainer: Maxime Gauduin <huiyiqun@gmail.com>
+# Maintainer: Hui Yiqun <huiyiqun@gmail.com>
 
 pkgname=ffmpeg-tmblock-git
 pkgver=r91177.970872f23a
