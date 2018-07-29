@@ -20,6 +20,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+	export NODE_ENV=dist
 	npm install
 	npm run build --api=prod
 }
