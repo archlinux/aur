@@ -1,12 +1,11 @@
 pkgbase = python-abjad
 	pkgdesc = Tool for formalized music score control.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Abjad/abjad
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	depends = lilypond
 	depends = python
 	depends = python-ply

@@ -2,7 +2,7 @@
 
 pkgname=python-abjad
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for formalized music score control.'
 arch=('any')
 url="https://github.com/Abjad/abjad"
@@ -14,7 +14,7 @@ depends=('lilypond'
         'python-uqbar'
         'python-roman'
         )
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools')
 optdepends=(
     'fluidsynth: to play generated MIDI files (instead of timidity++)'
     'timidity++: to play generated MIDI files (instead of fluidsynth)'
