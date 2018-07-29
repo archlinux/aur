@@ -1,6 +1,5 @@
-# Maintainer: BrainDamage
 pkgname="authsae-git"
-pkgrel=2
+pkgrel=3
 pkgver=20180729.3d4bd45
 pkgdesc="Authsae provides secure password-based authentication for 802.11s mesh networking."
 arch=('x86' 'x86_64')
