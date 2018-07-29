@@ -1,14 +1,13 @@
 # Maintainer: BrainDamage
 pkgname=python-readability-lxml
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.7
+pkgrel=1
 pkgdesc="This is a python port of a ruby port of arc90’s readability project"
 arch=(any)
-url="https://github.com/buriy/python-readability"
+url="https://pypi.org/project/readability-lxml/"
 license=("custom:Apache")
-depends=("python" "python-chardet" "python-cssselect" "python-lxml")
-optdepends=()
-md5sums=("ba7bd3b90f2689472df0b10cc87ad5f2" "180667c7abbe3fa664518bfc5da9a145")
+depends=("python2" "python2-chardet" "python2-cssselect" "python2-lxml")
+sha256sums=("b6b30684e302802cdab490dc5093555bfebba663eb569814225939c6b0dead3f" "1f2afa61a3e7d62e5cf62b471c60c40853effc3428289f5961c84e24cf60447a")
 source=("https://pypi.python.org/packages/source/r/readability-lxml/readability-lxml-$pkgver.tar.gz" "LICENSE")
 
 build() {
@@ -19,6 +18,6 @@ build() {
 package() {
 	install -m644 -D LICENSE "$pkgdir/usr/share/licenses/python-readability-lxml/LICENSE"
 	cd "$srcdir/readability-lxml-$pkgver"
-	python setup.py install --root="$pkgdir/" --prefix="/usr"
-	install -m644 -D README "$pkgdir/usr/share/doc/python-readability-lxml/README"
+	python setup.py install --optimize=1 --root="$pkgdir/" --prefix="/usr"
+	install -m644 -D README.rst "$pkgdir/usr/share/doc/python-readability-lxml/README.rst"
 }
