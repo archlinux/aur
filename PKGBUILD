@@ -10,8 +10,9 @@ pkgname=('virtualbox-svn'
          'virtualbox-guest-utils-svn'
          'virtualbox-guest-utils-nox-svn'
          'virtualbox-ext-vnc-svn')
-pkgver=70753
+pkgver=73366
 pkgrel=1
+_vboxsf_commit='6a782003ad95a383c8b19b570a532271f090ad35'
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL' 'custom')
@@ -21,9 +22,11 @@ makedepends=('alsa-lib'
              'curl'
              'dev86'
              'device-mapper'
+             'git'
              'glu'
              'gsoap'
              'iasl'
+             'opus'
              'jdk7-openjdk'
              'libidl2'
              'libpulse'
@@ -40,7 +43,7 @@ makedepends=('alsa-lib'
              'libxtst'
              'linux-headers'
              'mesa'
-             'python2'
+             'python'
              'qt5-base'
              'qt5-x11extras'
              'qt5-tools'
@@ -53,8 +56,12 @@ makedepends=('alsa-lib'
              'subversion')
 makedepends_x86_64=('gcc-multilib' 'lib32-glibc')
 source=("VirtualBox::svn+http://www.virtualbox.org/svn/vbox/trunk"
+        # We need to build a modified version of vboxsf for Linux 4.16
+        # https://bugzilla.redhat.com/show_bug.cgi?id=1481630#c65
+        "git+https://github.com/jwrdegoede/vboxsf#commit=$_vboxsf_commit"
         'virtualbox-host-dkms.conf'
         'virtualbox-guest-dkms.conf'
+        'virtualbox-vboxsf-dkms.conf'
         'virtualbox.sysusers'
         'virtualbox-guest-utils.sysusers'
         '60-vboxdrv.rules'
@@ -67,18 +74,23 @@ source=("VirtualBox::svn+http://www.virtualbox.org/svn/vbox/trunk"
         '002-dri-driver-path.patch'
         '005-gsoap-build.patch'
         '006-rdesktop-vrdp-keymap-path.patch'
-        '007-python2-path.patch'
         '008-no-vboxvideo.patch'
         '009-include-path.patch'
-        )
+        '010-qt-5.11.patch'
+        # The following patch and mount.vboxsf wrapper should be removed
+        # once support for mainline-style options string gets upstreamed
+        '012-vboxsf-automount.patch'
+        'mount.vboxsf')
 sha256sums=('SKIP'
+            'SKIP'
             'deb03efa7ad0376aa55a087f2e882afe00935f10b0e7aa853ba9147090d341ec'
-            '113f9b92141b85df01f1e74d22f01d1f1aa81650eb79b89ceefc3cae20afe2e2'
+            'c328376b05183d269f98319ec660f54c55e298f77d229977606862b064651a7c'
+            '43a97d07edd6f3f0e1181e84483759ad0a20c4e57ee93ca1a18530918979f9d8'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             'da4c49f6ca94e047e196cdbcba2c321199f4760056ea66e0fbc659353e128c9e'
             '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
             '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
-            '0105ce26b79dbe533085423decf042ac0f5e6aa28edb5e6a9bc713cca2ab04c5'
+            '918fe3ae7d60550181bcefedb55621f2c824087062c0df6ad03d148ed3f2ba01'
             '94a808f46909a51b2d0cf2c6e0a6c9dea792034943e6413bf9649a036c921b21'
             '01dbb921bd57a852919cc78be5b73580a564f28ebab2fe8d6c9b8301265cbfce'
             'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
@@ -86,11 +98,12 @@ sha256sums=('SKIP'
             'f67674931c30187f867233e3a4ae662f93c9110fbd0bfce50dd9f391f4533bc0'
             '7d2da8fe10a90f76bbfc80ad1f55df4414f118cd10e10abfb76070326abebd46'
             '5d5af2de5b1f1c61ec793503350f2440661cf8fd640f11b8a86f10bce499c0dc'
-            '6bdb017459532537199c399eefd3d84d8dc7f1786e79997caebd3b6eb5c75d9f'
             '8b7f241107863f82a5b0ae336aead0b3366a40103ff72dbebf33f54b512a0cbc'
             '1acc7014bcb3d9ca6da29eed813c3d6e91a688c43f9d93802fd4e3814f67ace4'
-            )
-
+            'c6ef35e6893d557c7c2269ff79bc299fe9058cfb2c933a7efdc7a8a7b6d9c5da'
+            'a784f3cc24652a16385cc63abac6c5178932ca5f3861be7650631b7dafa753a4'
+            'f3ed6741f8977f40900c8aa372fa082df1f8723d497d4fff445153c543bc8947')
+            
 pkgver() {
   cd "VirtualBox"
   local ver="$(svnversion)"
@@ -120,6 +133,9 @@ prepare() {
 
     msg2 'Remove gcc version censorship'
     sed -i 's/^check_gcc$/#check_gcc/' configure
+    
+    sed -i '2i# include <QStyle>' src/VBox/Frontends/VirtualBox/src/runtime/UIMachineLogic.cpp
+    sed -i '2i# include <QStyle>' src/VBox/Frontends/VirtualBox/src/selector/UISelectorWindow.cpp
 }
 
 build() {
@@ -147,7 +163,7 @@ build() {
 
 package_virtualbox-svn() {
     pkgdesc='Powerful x86 virtualization for enterprise as well as home use'
-    depends=('glibc' 'openssl' 'curl' 'gcc-libs' 'libpng' 'python2' 'sdl'
+    depends=('glibc' 'openssl' 'curl' 'gcc-libs' 'libpng' 'python' 'sdl'
              'libvpx' 'libxml2' 'procps-ng' 'shared-mime-info' 'zlib'
              'libxcursor' 'libxinerama' 'libx11' 'libxext' 'libxmu' 'libxt'
              'qt5-base' 'qt5-x11extras' 'VIRTUALBOX-HOST-MODULES-SVN')
@@ -179,7 +195,7 @@ package_virtualbox-svn() {
     install -m755 *.so "$pkgdir/usr/lib/virtualbox"
     install -m644 *.rc *.r0 VBoxEFI*.fd "$pkgdir/usr/lib/virtualbox"
     ## setuid root binaries
-    install -m4755 VBoxSDL VirtualBox VBoxHeadless VBoxNetDHCP VBoxNetAdpCtl VBoxNetNAT -t "$pkgdir/usr/lib/virtualbox"
+    install -m4755 VirtualBox VBoxSDL VBoxHeadless VBoxNetDHCP VBoxNetAdpCtl VBoxNetNAT -t "$pkgdir/usr/lib/virtualbox"
     ## other binaries
     install -m755 VBoxManage VBoxSVC VBoxExtPackHelperApp VBoxXPCOMIPCD VBoxTestOGL VBoxBalloonCtrl vboxwebsrv webtest -t "$pkgdir/usr/lib/virtualbox"
 
@@ -243,7 +259,7 @@ package_virtualbox-svn() {
 
 package_virtualbox-sdk-svn() {
     pkgdesc='VirtualBox Software Developer Kit (SDK)'
-    depends=('python2')
+    depends=('python')
     provides=('virtualbox-sdk')
     conflicts=('virtualbox-sdk')
 
@@ -255,17 +271,16 @@ package_virtualbox-sdk-svn() {
     install -Dm755 vboxshell.py "$pkgdir/usr/lib/virtualbox/vboxshell.py"
     # python sdk
     pushd sdk/installer
-    VBOX_INSTALL_PATH="/usr/lib/virtualbox" python2 vboxapisetup.py install --root "$pkgdir"
+    VBOX_INSTALL_PATH="/usr/lib/virtualbox" python vboxapisetup.py install --root "$pkgdir"
     popd
-    rm -rf sdk/installer
     cp -r sdk "$pkgdir/usr/lib/virtualbox"
+    rm -r "$pkgdir/usr/lib/virtualbox/sdk/installer"
     # licence
     install -Dm644 "$srcdir/VirtualBox/COPYING" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_virtualbox-host-dkms-svn() {
-    _pkgname=virtualbox-host-dkms
     pkgdesc='VirtualBox Host kernel modules sources'
     depends=('dkms' 'gcc' 'make')
     replaces=('virtualbox-source'
@@ -284,19 +299,18 @@ package_virtualbox-host-dkms-svn() {
     cp -r src "$pkgdir/usr/src/vboxhost-svn_OSE"
     # licence
     install -Dm644 "$srcdir/VirtualBox/COPYING" \
-        "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     # module loading
-    local _p="$pkgdir/usr/lib/modules-load.d/$_pkgname.conf"
+    local _p="$pkgdir/usr/lib/modules-load.d/virtualbox-host-dkms.conf"
     install -Dm644 /dev/null "$_p"
     printf "vboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt\n" > "$_p"
     # starting vbox 5.1, dkms.conf file was dropped
     local _p="$pkgdir/usr/src/vboxhost-svn_OSE/dkms.conf"
-    install -Dm644 "$srcdir/$_pkgname.conf" "$_p"
+    install -Dm644 "$srcdir/virtualbox-host-dkms.conf" "$_p"
     sed -i "s,@VERSION@,svn," "$_p"
 }
 
 package_virtualbox-guest-dkms-svn() {
-    _pkgname=virtualbox-guest-dkms
     pkgdesc='VirtualBox Guest kernel modules sources'
     depends=('dkms' 'gcc' 'make')
     replaces=('virtualbox-archlinux-source'
@@ -315,14 +329,23 @@ package_virtualbox-guest-dkms-svn() {
     cp -r src "$pkgdir/usr/src/vboxguest-svn_OSE"
     # licence
     install -Dm644 "$srcdir/VirtualBox/COPYING" \
-        "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     # module loading
-    local _p="$pkgdir/usr/lib/modules-load.d/$_pkgname.conf"
+    local _p="$pkgdir/usr/lib/modules-load.d/virtualbox-guest-dkms.conf"
     install -Dm644 /dev/null "$_p"
     printf "vboxguest\nvboxsf\nvboxvideo\n" > "$_p"
     # starting vbox 5.1, dkms.conf file was dropped
     local _p="$pkgdir/usr/src/vboxguest-svn_OSE/dkms.conf"
-    install -Dm644 "$srcdir/$_pkgname.conf" "$_p"
+    install -Dm644 "$srcdir/virtualbox-guest-dkms.conf" "$_p"
+    sed -i "s,@VERSION@,svn," "$_p"
+
+    # vboxsf module for Linux 4.16 and later
+    install -d "$pkgdir/usr/src/vboxsf-svn_OSE"
+    cp -rT "$srcdir/vboxsf" "$pkgdir/usr/src/vboxsf-svn_OSE/vboxsf"
+    rm -rf "$pkgdir/usr/src/vboxsf-svn_OSE/vboxsf/.git"
+    echo "obj-m = vboxsf/" >"$pkgdir/usr/src/vboxsf-svn_OSE/Makefile"
+    local _p="$pkgdir/usr/src/vboxsf-svn_OSE/dkms.conf"
+    install -Dm644 "$srcdir/virtualbox-vboxsf-dkms.conf" "$_p"
     sed -i "s,@VERSION@,svn," "$_p"
 }
 
@@ -332,12 +355,14 @@ package_virtualbox-guest-utils-svn() {
              'libxdamage' 'libxext' 'libxfixes' 'libxmu' 'libxt' 'xorg-xrandr'
              'VIRTUALBOX-GUEST-MODULES-SVN')
     replaces=('virtualbox-archlinux-additions' 'virtualbox-guest-additions')
+    provides=('virtualbox-guest-utils')
     conflicts=('virtualbox-archlinux-additions' 'virtualbox-guest-additions' 'virtualbox-guest-utils-nox' 'virtualbox-guest-utils')
 
     source "VirtualBox/env.sh"
     pushd "VirtualBox/out/linux.$BUILD_PLATFORM_ARCH/release/bin/additions"
     install -d "$pkgdir/usr/bin"
-    install -m755 VBoxClient VBoxControl VBoxService mount.vboxsf "$pkgdir/usr/bin"
+    install -m755 VBoxClient VBoxControl VBoxService "$srcdir/mount.vboxsf" "$pkgdir/usr/bin"
+    install -Dm755 mount.vboxsf "$pkgdir/usr/lib/virtualbox/mount.vboxsf"
     install -m755 -D "$srcdir"/VirtualBox/src/VBox/Additions/x11/Installer/98vboxadd-xclient \
         "$pkgdir"/usr/bin/VBoxClient-all
     install -m644 -D "$srcdir"/VirtualBox/src/VBox/Additions/x11/Installer/vboxclient.desktop \
@@ -358,12 +383,14 @@ package_virtualbox-guest-utils-svn() {
 package_virtualbox-guest-utils-nox-svn() {
     pkgdesc='VirtualBox Guest userspace utilities without X support'
     depends=('glibc' 'pam' 'VIRTUALBOX-GUEST-MODULES-SVN')
+    provides=('virtualbox-guest-utils-nox')
     conflicts=('virtualbox-guest-utils' 'virtualbox-guest-utils-nox')
 
     source "VirtualBox/env.sh"
     pushd "VirtualBox/out/linux.$BUILD_PLATFORM_ARCH/release/bin/additions"
     install -d "$pkgdir/usr/bin"
-    install -m755 VBoxControl VBoxService mount.vboxsf "$pkgdir/usr/bin"
+    install -m755 VBoxControl VBoxService "$srcdir/mount.vboxsf" "$pkgdir/usr/bin"
+    install -Dm755 mount.vboxsf "$pkgdir/usr/lib/virtualbox/mount.vboxsf"
     install -m755 -D pam_vbox.so "$pkgdir/usr/lib/security/pam_vbox.so"
     popd
     # systemd stuff
