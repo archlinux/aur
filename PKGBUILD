@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.2.r12358.g8825e323b
+pkgver=0.8.2.r12437.g3d6015db0
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
@@ -14,18 +14,20 @@ depends=(
             'google-glog' 'protobuf' 'lapack' 'python' 'python-numpy' 'python-protobuf'
         # not required but enabled in build:
             'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'numactl' 'openmpi' 'snappy'
-            'zeromq' 'hiredis' 'ocl-icd' 'opencv' 'gtkglext' 'ffmpeg'
+            'zeromq' 'hiredis' 'opencv' 'gtk3' 'ffmpeg'
         # python:
             'python-flask' 'python-future' 'graphviz' 'python-hypothesis'
             'python-jupyter_core' 'python-matplotlib' 'python-pydot' 'python-yaml'
             'python-requests' 'python-scipy' 'python-setuptools' 'python-six'
             'python-tornado' 'python-gflags' 'python-pyzmq'
     # AUR:
+        # not required but enabled in build:
+            'libibverbs'
         # python:
             'python-nvd3' 'python-scikit-image' 'python-glog' 'python-leveldb'
             'python-lmdb'
 )
-makedepends=('git' 'cmake' 'opencl-headers')
+makedepends=('git' 'cmake')
 provides=('caffe2-cpu')
 conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
            'caffe2' 'caffe2-cpu' 'caffe2-git')
@@ -161,13 +163,14 @@ build() {
         -DUSE_ATEN:BOOL='OFF' \
         -DUSE_CUDA:BOOL='OFF' \
         -DUSE_CUDNN:BOOL='OFF' \
-        -DUSE_DISTRIBUTED:BOOL='ON' \
-        -DUSE_DISTRIBUTED_MW:BOOL='ON' \
+        -DUSE_DISTRIBUTED:BOOL='OFF' \
+        -DUSE_DISTRIBUTED_MW:BOOL='OFF' \
         -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_GFLAGS:BOOL='ON' \
         -DUSE_GLOG:BOOL='ON' \
         -DUSE_GLOO:BOOL='ON' \
         -DUSE_GLOO_IBVERBS:BOOL='ON' \
+        -DUSE_IBVERBS:BOOL='ON' \
         -DUSE_IDEEP:BOOL='ON' \
         -DUSE_LEVELDB:BOOL='ON' \
         -DUSE_LITE_PROTO:BOOL='OFF' \
@@ -182,8 +185,9 @@ build() {
         -DUSE_NNAPI:BOOL='OFF' \
         -DUSE_NNPACK:BOOL='ON' \
         -DUSE_NUMA:BOOL='ON' \
+        -DUSE_NVRTC:BOOL='OFF' \
         -DUSE_OBSERVERS:BOOL='ON' \
-        -DUSE_OPENCL:BOOL='ON' \
+        -DUSE_OPENCL:BOOL='OFF' \
         -DUSE_OPENCV:BOOL='ON' \
         -DUSE_OPENMP:BOOL='ON' \
         -DUSE_PROF:BOOL='OFF' \
@@ -208,9 +212,9 @@ package() {
     make DESTDIR="$pkgdir" install
     
     # remove unneeded files
-    local exclude_dirs=($(find "$pkgdir" -mindepth 1 -maxdepth 1 -type d ! -name 'usr'))
-    local exclude_dirs+=($(find "${pkgdir}/usr/include" -mindepth 1 -maxdepth 1 -type d ! -name 'caffe*'))
-    local exclude_libs=($(find -L "${pkgdir}/usr/lib" -maxdepth 1 -type f ! -name 'libcaffe*'))
+    local _exclude_dirs=($(find "$pkgdir" -mindepth 1 -maxdepth 1 -type d ! -name 'usr'))
+    local _exclude_dirs+=($(find "${pkgdir}/usr/include" -mindepth 1 -maxdepth 1 -type d ! -name 'caffe*'))
+    local _exclude_libs=($(find -L "${pkgdir}/usr/lib" -maxdepth 1 -type f ! -name 'libcaffe*'))
     rm -f  "$pkgdir"/usr/bin/{protoc,unzstd,zstd{cat,mt,}}
     rm -f  "$pkgdir"/usr/include/{*.h,*.py}
     rm -rf "$pkgdir"/usr/lib/cmake/protobuf
@@ -218,13 +222,13 @@ package() {
     rm -rf "$pkgdir"/usr/share/pkgconfig
     rm -rf "$pkgdir"/usr/share/{ATen,cmake/ATen}
     rm -f  "$pkgdir"/usr/share/man/man1/{unzstd,zstd{cat,}}.1
-    for _entry in ${exclude_dirs[@]} ${exclude_libs[@]}
+    for _entry in ${_exclude_dirs[@]} ${_exclude_libs[@]}
     do
         rm -rf "$_entry"
     done
     
     # license
     cd "${srcdir}/pytorch-git"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
