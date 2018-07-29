@@ -2,7 +2,7 @@
 
 pkgname=fstar-ulib
 pkgver=0.9.6.0
-pkgrel=16
+pkgrel=17
 pkgdesc="compiles the ulib component of F*"
 arch=('i686' 'x86_64')
 url='https://www.fstar-lang.org/'
@@ -13,6 +13,7 @@ depends=('fstar' 'z3' 'ocaml-fstar')
 build() {
   cd "$srcdir/"
   rm -rf fstar
+  # Copy fstar's files to $srcdir
   pacman -Qlq fstar | while read f; do
     if [ -f "$f" ]; then
       mkdir -p "$(dirname ".$f")"
@@ -22,14 +23,16 @@ build() {
   export FSTAR_HOME="$(pwd)/opt/fstar"
   export PATH="$PATH:$FSTAR_HOME/bin"
   cd opt/fstar/ulib/ml
+  # Build ulib
   make -j4
 }
 
 package() {
   cd "$srcdir/"
   mkdir -p "$pkgdir/opt/fstar/ulib"
+  # Copy files that we created to $pkgdir
   find opt/fstar/ -type f | while read f; do
     mkdir -p "$(dirname "$pkgdir/$f")"
-    pacman -Qlq fstar | grep -qF "/$f" || cp "$f" "$pkgdir/opt/$f"
+    pacman -Qlq fstar | grep -qF "/$f" || cp "$f" "$pkgdir/$f"
   done
 }
