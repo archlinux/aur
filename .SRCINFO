@@ -1,7 +1,7 @@
 pkgbase = waves-client
 	pkgdesc = The official client application for the Waves platform
-	pkgver = 1.0.0_beta
-	pkgrel = 3
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://wavesplatform.com/
 	arch = x86_64
 	license = Apache
@@ -11,7 +11,7 @@ pkgbase = waves-client
 	depends = gconf
 	depends = nss
 	depends = alsa-lib
-	source = https://wavesplatform.com/files/WavesClient-1.0.0-beta.X-linux.deb
+	source = https://wavesplatform.com/files/WavesClient-1.0.0-linux.deb
 	sha256sums = ebb00a922055af98849358536a36298dce74eb4cd98b240bb3e500b7008b23e2
 
 pkgname = waves-client
