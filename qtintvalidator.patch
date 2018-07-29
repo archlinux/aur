@@ -1,0 +1,19 @@
+diff --git a/plugins/core/qCompass/ccCompass.cpp b/plugins/core/qCompass/ccCompass.cpp
+index d9633051..56fe5829 100644
+--- a/plugins/core/qCompass/ccCompass.cpp
++++ b/plugins/core/qCompass/ccCompass.cpp
+@@ -20,6 +20,7 @@
+ //Qt
+ #include <QFileDialog>
+ #include <QFileInfo>
++#include <QIntValidator>
+ #include <qcheckbox.h>
+ #include <ccPickingHub.h>
+ #include <ccProgressDialog.h>
+@@ -3054,4 +3055,4 @@ int ccCompass::writeObjectXML(ccHObject* object, QXmlStreamWriter* out)
+ 	out->writeEndElement();
+ 
+ 	return n;
+-}
+\ No newline at end of file
++}

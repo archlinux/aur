@@ -3,7 +3,7 @@
 
 name=cloudcompare
 pkgname=${name}-git
-pkgver=2.9.1.r348.g4808ba53
+pkgver=2.9.1.r360.gab33dab4
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
@@ -13,12 +13,15 @@ depends=('qt5-base' 'qt5-svg' 'glu' 'glew' 'mesa' 'vxl' 'ffmpeg' 'cgal' 'pdal')
 makedepends=('git' 'cmake' 'pcl' 'libharu' 'proj' 'doxygen' 'laz-perf')
 optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git"
+        "qtintvalidator.patch"
         )
-md5sums=('SKIP')
+md5sums=('SKIP'
+         'a1b173da5a6f2bee6e8a25d69f6aa51a')
 
 prepare() {
   cd ${srcdir}/${name}
   git submodule update --init --recursive
+  git apply ${srcdir}/qtintvalidator.patch
 }
 
 pkgver() {
