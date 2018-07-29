@@ -1,4 +1,4 @@
-pkgbase = gtkhash-nemo
+pkgbase = thanos-gtkhash-nemo
 	pkgdesc = A GTK+ utility for computing message digests or checksums
 	pkgver = 1.1.1
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = gtkhash-nemo
 	source = https://github.com/tristanheaven/gtkhash/releases/download/v1.1.1/gtkhash-1.1.1.tar.xz
 	sha256sums = a18c09a6af5b26c79bda81ab8a1835679fefbf2b87f1df4858c42ad45729f6bf
 
-pkgname = gtkhash-nemo
+pkgname = thanos-gtkhash-nemo
 

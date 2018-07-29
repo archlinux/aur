@@ -1,6 +1,6 @@
 # Maintainer: Thanos Apostolou <thanosapostolou@outlook.com>
 
-pkgname=gtkhash-nemo
+pkgname=thanos-gtkhash-nemo
 pkgver=1.1.1
 pkgrel=1
 pkgdesc="A GTK+ utility for computing message digests or checksums"
