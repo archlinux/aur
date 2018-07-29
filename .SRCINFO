@@ -1,0 +1,20 @@
+pkgbase = gtkhash-nemo
+	pkgdesc = A GTK+ utility for computing message digests or checksums
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://gtkhash.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	arch = mips64el
+	license = GPL
+	makedepends = intltool
+	makedepends = librsvg
+	makedepends = nemo
+	depends = dconf
+	depends = nettle
+	depends = gtk3
+	source = https://github.com/tristanheaven/gtkhash/releases/download/v1.1.1/gtkhash-1.1.1.tar.xz
+	sha256sums = a18c09a6af5b26c79bda81ab8a1835679fefbf2b87f1df4858c42ad45729f6bf
+
+pkgname = gtkhash-nemo
+
