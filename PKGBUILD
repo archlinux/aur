@@ -17,12 +17,10 @@ depends=(
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=("292a8f10f5f7dbc33eb94b242640582dee069b8c8a19fcf70a728a8945161f90")
 
-
 build() {
 	cd $srcdir/uqbar-$pkgver
     python setup.py build
 }
-
 
 package() {
 	cd $srcdir/uqbar-$pkgver
