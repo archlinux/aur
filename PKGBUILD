@@ -1,4 +1,4 @@
-# Maintainer: crave <crave@noreply.org>
+# Maintainer: crave <crave@infinity>
 
 pkgname=kremlin
 pkgver=0.9.6.0
