@@ -9,7 +9,7 @@
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.16
 _pkgver=4.16.18
-_rtpatchver=rt9
+_rtpatchver=rt11
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('x86_64')
@@ -44,7 +44,7 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'SKIP'
             '848fdff6385eddb5b3eac6e394d5d5427c8735dc93a123ee62da611d04eb1637'
             'SKIP'
-            '615250afb5695499f9c2e3a7bef10bebf31cd5dba42f9579fcc01073c1837294'
+            'b31a8da1da99a6d1833459a91c13b38d437197480cf9d534130647d98ec28244'
             'SKIP'
             '9268f134e740bb5d03ea795f504258d0687b90183670b4d48cd00a4a0e23968b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
