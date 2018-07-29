@@ -1,0 +1,21 @@
+pkgbase = brother-mfc-9465cdn
+	pkgdesc = LPR and CUPS driver for the Brother MFC-9465CDN
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-9465cdn.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = tcsh
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	depends = lib32-glibc
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc9465cdnlpr-1.1.1-5.i386.deb
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc9465cdncupswrapper-1.1.1-5.i386.deb
+	md5sums = d5bfd57216e53cfaf7c04de42055209e
+	md5sums = 31480002670c88352c3525a37d678bea
+
+pkgname = brother-mfc-9465cdn
+
