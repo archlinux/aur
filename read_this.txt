@@ -1,5 +1,0 @@
-This is a dummy package. If you want to track the maintenance branch for
-Emacs 26, you can do it using the PKGBUILD of emacs-git. It lightens my
-load and gives you a better maintained PKGBUILD.
-
-TL;DR: use emacs-git.
