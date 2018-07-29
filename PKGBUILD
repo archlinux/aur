@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname="authsae-git"
-pkgrel=1
-pkgver=20160420.a1ebd8c
+pkgrel=2
+pkgver=20180729.3d4bd45
 pkgdesc="Authsae provides secure password-based authentication for 802.11s mesh networking."
 arch=('x86' 'x86_64')
 url="https://github.com/cozybit/authsae"
@@ -10,7 +10,6 @@ depends=("openssl" "libconfig")
 makedepends=("git" "cmake")
 provides=("authsae")
 conflicts=("authsae")
-optdepends=()
 md5sums=("SKIP")
 source=("git+https://github.com/cozybit/authsae.git")
 
@@ -18,6 +17,12 @@ pkgver() {
 	cd "$srcdir/authsae"
 	#uuuugly code to use date + current git hash in lieu of absent release tag
 	echo "$(date +%Y%m%d).$(git describe --always)"
+}
+
+prepare() {
+  cd "$srcdir/authsae"
+  msg "Removing '-Werror' from 'CMakeLists.txt'"
+  sed -e 's|\-Werror||' -i CMakeLists.txt
 }
 
 build() {
