@@ -1,7 +1,7 @@
 pkgbase = ruby-jiffy
 	pkgdesc = A streaming-based JSON formatter in Ruby.
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badeball/jiffy
 	arch = any
 	license = MIT
