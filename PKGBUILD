@@ -2,7 +2,7 @@
 
 pkgname=vim-gdscript
 gitname=vim-gdscript3
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Vim syntax highliting for the Godot Game Engine scripting language GDScript"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/calviken/$gitname"
 source=("$url/archive/v$pkgver.tar.gz")
 provides=('vim-gdscript')
 conflicts=('vim-gdscript-git')
-sha256sums=('6b2f1880f2662bb7cb39ba0287c648d36b3e5384a1f4be1e513ea32194577f48')
+sha256sums=('e9b2576558a4bba7d942e033249ddf9f96c65566e9671c346b4851ef501b0a0e')
 
 package() {
 	local vim_file="gdscript3.vim"
