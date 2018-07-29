@@ -1,25 +1,19 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=('libdragon-git' 'libdragon-tools-git')
-pkgver=r110.b26fce6
+pkgver=r121.2889e4e
 pkgrel=1
 url="http://www.dragonminded.com/n64dev/libdragon"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom:UNLICENSE')
 makedepends=('git' 'mips64-elf-gcc-stage1')
 depends=('libpng' 'mips64-elf-newlib')
-source=("git://github.com/DragonMinded/libdragon.git" "noconvtool.diff")
-sha256sums=('SKIP'
-            'ec37b8d10ee3911979092916a6b9361e62b13a3a3cfb1736281d6baf304bfc95' )
+source=("git://github.com/DragonMinded/libdragon.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd libdragon
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare(){
-  cd libdragon
-  patch -p1 < "${srcdir}/noconvtool.diff"
 }
 
 build(){
