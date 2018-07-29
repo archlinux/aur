@@ -1,0 +1,18 @@
+pkgbase = tensorrt
+	pkgdesc = A high-performance deep learning inference optimizer and runtime for deep learning applications (needs registration at upstream URL and manual download)
+	pkgver = 4.0.1.6
+	pkgrel = 1
+	url = https://developer.nvidia.com/tensorrt/
+	arch = x86_64
+	license = custom
+	makedepends = poppler
+	makedepends = unzip
+	depends = cudnn
+	depends = python2
+	depends = python
+	options = !strip
+	source = file://TensorRT-4.0.1.6.Ubuntu-16.04.4.x86_64-gnu.cuda-9.2.cudnn7.1.tar.gz
+	sha256sums = fc5fd2ba86225ed62e60870cc24896107770a59829363fcb49229c82bb1f4fb5
+
+pkgname = tensorrt
+
