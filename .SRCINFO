@@ -1,6 +1,6 @@
 pkgbase = camouflage
 	pkgdesc = a mux+websocket+TLS proxy
-	pkgver = 20180728.89_81d0fc9
+	pkgver = 20180729.92_8f36289
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
