@@ -1,0 +1,20 @@
+pkgbase = aura-git
+	pkgdesc = A package manager for Arch Linux and its AUR
+	pkgver = 2.0.0.r1459.4f208e8
+	pkgrel = 1
+	url = https://github.com/aurapm/aura
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = stack
+	depends = gmp
+	depends = zlib
+	provides = aura
+	conflicts = aura
+	conflicts = aura-bin
+	options = strip
+	source = aura-git::git+https://github.com/aurapm/aura.git
+	md5sums = SKIP
+
+pkgname = aura-git
+
