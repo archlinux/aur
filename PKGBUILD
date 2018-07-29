@@ -10,7 +10,7 @@ _minor=17
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=4
+_pfrel=5
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -69,7 +69,7 @@ _BATCH_MODE=n
 # see, https://bugs.archlinux.org/task/31187
 
 pkgname=('linux-pf')
-true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
+pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -85,6 +85,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
         "60-linux.hook"
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
+
+
 
 prepare() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -154,18 +156,19 @@ build() {
 
   # enable $_BATCH_MODE if batch_opts is found in $srcdir
   if [[ -e $srcdir/batch_opts ]] ; then
-      source "$srcdir/batch_opts"
-      # enable cpu optimisations acording to $CPU and enable pkgopt
-      if [[ "$CPU" ]] ; then
-          sed -e "s|# CONFIG_M$CPU is not set|CONFIG_M$CPU=y|" \
-              -e '/CONFIG_GENERIC_CPU=y/d' \
-              -i "$srcdir/linux-${_basekernel}/.config"
-          export _PKGOPT=y
-      fi
-
-      _BATCH_MODE=y
+    source "$srcdir/batch_opts"
+    CPU=${CPU^^}
+    # enable cpu optimisations acording to $CPU and enable pkgopt
+    if [[ "$CPU" ]] ; then
+      sed -e "s|# CONFIG_M$CPU is not set|CONFIG_M$CPU=y|" \
+          -e '/CONFIG_GENERIC_CPU=y/d' \
+          -i "$srcdir/linux-${_basekernel}/.config"
+      export _PKGOPT=y
+    fi
+    
+    _BATCH_MODE=y
   fi
-  
+
   #----------------------------------------
   if [[ "$_BATCH_MODE" != "y" ]]; then		# for batch building
       echo
@@ -299,7 +302,7 @@ build() {
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
-package_linux-pf() {
+_package() {
  _pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
  pkgdesc=${_pkgdesc}
  groups=('base')
@@ -484,7 +487,7 @@ package_linux-pf() {
 }
 
 ### package_linux-pf-headers
-package_linux-pf-headers() {
+_package-headers() {
   pkgname=${pkgbase}-headers
   pkgdesc="Header files and scripts for building modules for linux-pf kernel."
   depends=('linux-pf') 
@@ -585,7 +588,7 @@ package_linux-pf-headers() {
   [[ -e version.h ]] || ln -s ../generated/uapi/linux/version.h
   
 }
-package_linux-pf-preset-default()
+_package-preset-default()
 {
   pkgname=linux-pf-preset-default
   provides=( "linux-pf-preset=$pkgver")
@@ -635,11 +638,35 @@ package_linux-pf-preset-default()
 pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 
 # makepkg -g >>PKGBUILD
-sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
-            '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
-            '622c9966585723a3a88ccabf83ecb7b64851c6acf9b0dd9862df5885b0d02907'
-            '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'f67f6b7f29e2f5e94f8e50db78f48e3f686d9e34ad6a8cb3447d3b3f3ebd5011'
-            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 
+
+
+for _p in linux-pf-headers linux-pf-preset-default ; do
+  eval "package_${_p}() {
+    $(declare -f "_package${_p#${pkgbase}}")
+    _package${_p#${pkgbase}}
+  }"
+done
+
+if in_array ${source[*]} batch_opts ; then #FIXME bugs updpkgsums
+  source batch_opts
+  package[0]=linux-pf${CPU+-}$CPU
+fi
+eval "package_linux-pf${CPU+-}$CPU() {
+     $(declare -f _package)
+     _package
+     }"
+source+=(batch_opts)
+pkgname=(linux-pf-broadwell)
+eval "package_linux-pf-broadwell() {
+     $(declare -f _package)
+     _package
+     }"
+md5sums=('5bb13a03274b66b56c85b26682e407d7'
+         'c126c5b7686b06fd3e96f3854167d58c'
+         'bd399198dcdae2f0e6c3f072414e646f'
+         '408a033f1332317f312617704edf9f75'
+         '58cc04349424710e18b206aa7b3d75a9'
+         'a85bfae59eb537b973c388ffadb281ff'
+         'ce6c81ad1ad1f8b333fd6077d47abdaf'
+         '4e9435cb6b127ed64fdc1230c2b96887')
