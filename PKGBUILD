@@ -1,30 +1,31 @@
 # Maintainer: Lennard Fleischer <lefl65@gmail.com>
+# Contributor: Will Price <will.price94@gmail.com>
 
 pkgname=nqc
 pkgver=3.1.r6
-pkgrel=1
+pkgrel=2
 pkgdesc="Not Quite C is a simple language with a C-like syntax that can be used to program Lego's RCX programmable brick (from the Mindstorms set)."
 arch=('i686' 'x86_64')
 url='http://bricxcc.sourceforge.net/nqc/'
 license=('custom:MPL')
 dependends=('gcc' 'glibc')
-source=('http://bricxcc.sourceforge.net/nqc/release/nqc-3.1.r6.tgz')
-md5sums=('2ed4b2728ab6f0d21723a466996ce91b')
+source=(
+    'http://bricxcc.sourceforge.net/nqc/release/nqc-3.1.r6.tgz'
+    'http://sourceforge.net/p/bricxcc/patches/_discuss/thread/00b427dc/b84b/attachment/nqc-01-Linux_usb_and_tcp.diff'
+)
+sha512sums=(
+    '7ec7015861b5f8e063e3a2567f5c6ff7e5c6a65b60fab9bef71411d59b13a588f284ee3a8d06b9325748c209e21f9480b9792bc605148e2a4af64b90f872e2aa'
+    '639e30642f030a1f9bb39eb497b4f2432f6e39684629b3729b1773a2f56b23b75635cd08638172707c9826059dc1a4a5f18dc53b1519cfe139f85386e4809af7'
+)
 
 build() {
-
-	rm -f compiler/parse.cpp compiler/parse.tab.h
-	rm -f compiler/lexer.cpp
-	rm -f bin/*
-	rm -f */*.o
-	rm -f compiler/rcx1_nqh.h compiler/rcx2_nqh.h
-	rm -f rcxlib/rcxnub.h
-	make
-
+    patch -p1 < nqc-01-Linux_usb_and_tcp.diff
+    make clean
+    make
 }
 
 package() {
-	mkdir -p ${pkgdir}/usr/bin/
-	cp -r bin/* ${pkgdir}/usr/bin/
+    mkdir -p ${pkgdir}/usr/bin/
+    cp -r bin/* ${pkgdir}/usr/bin/
 }
 
