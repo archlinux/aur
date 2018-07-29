@@ -2,8 +2,8 @@
 
 pkgname=intellij-idea-community-edition-no-jre
 _appname=jetbrains-idea-ce
-pkgver=2018.1.6
-_buildver=181.5540.7
+pkgver=2018.2
+_buildver=182.3684.101
 pkgrel=1
 pkgdesc="Intellij Idea Community Edition without bundled JRE"
 arch=('any')
@@ -14,7 +14,7 @@ provides=("$_appname")
 conflicts=("$_appname")
 source=("https://download.jetbrains.com/idea/ideaIC-$pkgver-no-jdk.tar.gz"
 	"$_appname.desktop")
-md5sums=('40ef8692db7780f2394412f3799892ee'
+md5sums=('63ab19e975caf8360e1506a94e98570b'
          '56d945e72cc22162d5be26af027999dd')
 
 package() {
