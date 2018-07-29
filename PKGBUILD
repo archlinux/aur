@@ -20,13 +20,15 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}/usr/lib/"
+  DESTDIR="${pkgdir}/usr/lib"
   LICENSEDIR="${pkgdir}/usr/share/licenses/reaper/"
   mkdir -p "${DESTDIR}"
-  cp -R "${srcdir}/reaper_linux_x86_64/REAPER/" "${DESTDIR}"
+  "${srcdir}/reaper_linux_x86_64/install-reaper.sh" --install "${DESTDIR}"
   cp "${srcdir}/WDL/WDL/swell/libSwell.so" "${DESTDIR}/REAPER"
+
   mkdir "${pkgdir}/usr/bin"
-  ln -s /usr/lib/REAPER/reaper5 "${pkgdir}/usr/bin/reaper5"
+  ln -s /usr/lib/REAPER/reaper "${pkgdir}/usr/bin/reaper"
+  ln -s /usr/lib/REAPER/reaper5 "${pkgdir}/usr/bin/reaper" #(legacy)
 
   install -D -m644 "${srcdir}/reaper_linux_x86_64/REAPER/license.txt" "${LICENSEDIR}/LICENSE"
 
@@ -42,5 +44,10 @@ package() {
   install -D -m644 reaper.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/reaper.png"
   install -D -m644 reamote.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/reamote.png"
   install -D -m644 application-x-reaper.xml "${pkgdir}/usr/share/mime/packages/application-x-reaper.xml"
+
 }
 
+
+pre_install() {
+	echo "PLEASE NOTE -- REAPER for Linux is an unsupported experimental version."
+}
