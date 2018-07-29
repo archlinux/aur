@@ -1,15 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
-# NOTE:
-# In order to build with NCCL support, follow these steps:
-#   1) uncomment the nccl line in 'depends'
-#   2) in 'build()', change '-DUSE_NCCL:BOOL=OFF' from 'OFF' to 'ON'
-#   3) add these options to cmake command line:
-#       -DNCCL_INCLUDE_DIR:PATH='/opt/cuda/include'
-#       -DNCCL_ROOT_DIR:PATH='/opt/cuda'
-
 pkgname=caffe2-git
-pkgver=0.8.2.r12358.g8825e323b
+pkgver=0.8.2.r12437.g3d6015db0
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
@@ -31,7 +23,7 @@ depends=(
             'python-tornado' 'python-gflags' 'python-pyzmq'
     # AUR:
         # not required and disabled in build:
-            #'nccl'
+            'libibverbs'
         # python:
             'python-nvd3' 'python-scikit-image' 'python-glog' 'python-leveldb'
             'python-lmdb'
@@ -200,13 +192,14 @@ build() {
         -DUSE_ATEN:BOOL='OFF' \
         -DUSE_CUDA:BOOL='ON' \
         -DUSE_CUDNN:BOOL='ON' \
-        -DUSE_DISTRIBUTED:BOOL='ON' \
-        -DUSE_DISTRIBUTED_MW:BOOL='ON' \
+        -DUSE_DISTRIBUTED:BOOL='OFF' \
+        -DUSE_DISTRIBUTED_MW:BOOL='OFF' \
         -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_GFLAGS:BOOL='ON' \
         -DUSE_GLOG:BOOL='ON' \
         -DUSE_GLOO:BOOL='ON' \
         -DUSE_GLOO_IBVERBS:BOOL='ON' \
+        -DUSE_IBVERBS:BOOL='ON' \
         -DUSE_IDEEP:BOOL='ON' \
         -DUSE_LEVELDB:BOOL='ON' \
         -DUSE_LITE_PROTO:BOOL='OFF' \
@@ -216,11 +209,12 @@ build() {
         -DUSE_MKLML:BOOL='OFF' \
         -DUSE_MOBILE_OPENGL:BOOL='OFF' \
         -DUSE_MPI:BOOL='ON' \
-        -DUSE_NCCL:BOOL='OFF' \
+        -DUSE_NCCL:BOOL='ON' \
         -DUSE_NERVANA_GPU:BOOL='OFF' \
         -DUSE_NNAPI:BOOL='OFF' \
         -DUSE_NNPACK:BOOL='ON' \
         -DUSE_NUMA:BOOL='ON' \
+        -DUSE_NVRTC:BOOL='ON' \
         -DUSE_OBSERVERS:BOOL='ON' \
         -DUSE_OPENCL:BOOL='OFF' \
         -DUSE_OPENCV:BOOL='OFF' \
@@ -230,7 +224,7 @@ build() {
         -DUSE_ROCKSDB:BOOL='OFF' \
         -DUSE_ROCM:BOOL='OFF' \
         -DUSE_SNPE:BOOL='OFF' \
-        -DUSE_SYSTEM_NCCL:BOOL='ON' \
+        -DUSE_SYSTEM_NCCL:BOOL='OFF' \
         -DUSE_TENSORRT:BOOL='OFF' \
         -DUSE_ZMQ:BOOL='ON' \
         -DUSE_ZSTD:BOOL='ON' \
@@ -253,9 +247,9 @@ package() {
     make DESTDIR="$pkgdir" install
     
     # remove unneeded files
-    local exclude_dirs=($(find "$pkgdir" -mindepth 1 -maxdepth 1 -type d ! -name 'usr'))
-    local exclude_dirs+=($(find "${pkgdir}/usr/include" -mindepth 1 -maxdepth 1 -type d ! -name 'caffe*'))
-    local exclude_libs=($(find -L "${pkgdir}/usr/lib" -maxdepth 1 -type f ! -name 'libcaffe*'))
+    local _exclude_dirs=($(find "$pkgdir" -mindepth 1 -maxdepth 1 -type d ! -name 'usr'))
+    local _exclude_dirs+=($(find "${pkgdir}/usr/include" -mindepth 1 -maxdepth 1 -type d ! -name 'caffe*'))
+    local _exclude_libs=($(find -L "${pkgdir}/usr/lib" -maxdepth 1 -type f ! -name 'libcaffe*'))
     rm -f  "$pkgdir"/usr/bin/{protoc,unzstd,zstd{cat,mt,}}
     rm -f  "$pkgdir"/usr/include/{*.h,*.py}
     rm -rf "$pkgdir"/usr/lib/cmake/protobuf
@@ -263,13 +257,13 @@ package() {
     rm -rf "$pkgdir"/usr/share/pkgconfig
     rm -rf "$pkgdir"/usr/share/{ATen,cmake/ATen}
     rm -f  "$pkgdir"/usr/share/man/man1/{unzstd,zstd{cat,}}.1
-    for _entry in ${exclude_dirs[@]} ${exclude_libs[@]}
+    for _entry in ${_exclude_dirs[@]} ${_exclude_libs[@]}
     do
         rm -rf "$_entry"
     done
     
     # license
     cd "${srcdir}/pytorch-git"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
