@@ -1,0 +1,11 @@
+pkgbase = systemd-acpi-nb
+	pkgdesc = systemd acpi for NB
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	depends = systemd
+	source = acpi-nb.conf
+	sha512sums = 7b2a3ccb8e2f463a2bcbbf8a14c13aed11a6419a2b5ef721594e01faa8f315580b098fcacd9376f7f7c2408e6f259381e43dd904c529ca4bff5eefda5a589f34
+
+pkgname = systemd-acpi-nb
+
