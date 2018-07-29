@@ -2,7 +2,7 @@
 
 pkgname=wireshark-gtk2
 _pkgbase=wireshark
-pkgver=2.4.3
+pkgver=2.6.2
 pkgrel=1
 pkgdesc='a free network protocol analyzer for Unix/Linux and Windows - GTK2 frontend'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=('wireshark-cli' 'wireshark-gtk')
 conflicts=('wireshark-cli' 'wireshark-common' 'wireshark-qt')
 install=wireshark-gtk2.install
 source=(http://www.wireshark.org/download/src/all-versions/${_pkgbase}-${pkgver}.tar.xz)
-sha256sums=('189495996b68940626cb53b31c8902fa1bb5a96b61217cea42734c13925ff12e')
+sha256sums=('49b2895ee3ba17ef9ef0aebfdc4d32a778e0f36ccadde184516557d5f3357094')
 
 build() {
 	cd ${_pkgbase}-${pkgver}
@@ -51,14 +51,14 @@ package() {
 	# Headers
 	install -dm755 "${pkgdir}"/usr/include/${_pkgbase}/{epan/{crypt,dfilter,dissectors,ftypes,wmem},wiretap,wsutil}
 
-	install -m644 config.h register.h ws_diag_control.h ws_symbol_export.h "${pkgdir}/usr/include/${_pkgbase}"
+	install -m644 config.h ws_diag_control.h ws_symbol_export.h "${pkgdir}/usr/include/${_pkgbase}"
 	for d in epan epan/crypt epan/dfilter epan/dissectors epan/ftypes epan/wmem wiretap wsutil; do
 		install -m644 ${d}/*.h "${pkgdir}"/usr/include/${_pkgbase}/${d}
 	done
 
 	# Icons
 	for d in 16 32 48; do
-		install -Dm644 image/hi${d}-app-wireshark.png \
+		install -Dm644 image/wsicon${d}.png \
 			"${pkgdir}/usr/share/icons/hicolor/${d}x${d}/apps/wireshark.png"
 	done
 
