@@ -9,7 +9,7 @@
 
 _name=gajimbo
 pkgname="$_name-git"
-pkgver=4a7111c3be
+pkgver=v1.0.3.1.gc7bdd1c71
 pkgrel=1
 pkgdesc="A fork of Gajim with various enhancements, written in Python with GTK+"
 arch=('any')
@@ -42,7 +42,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_name
-  git rev-parse HEAD | cut -c1-10
+  # git rev-parse HEAD | cut -c1-10
+  git describe --long --tags | tr - .
 }
 
 package() {
