@@ -1,6 +1,6 @@
 # 2018 - Erick Pires <rckkas@gmail.com>
 pkgname=python-minervaboto
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="A renewal tool for Acervo Minerva"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/erickpires/minervaboto"
 license=('MIT')
 # https://pypi.python.org/packages/source/m/minervaboto/minervaboto-1.0.x.tar.gz
 source=(https://pypi.python.org/packages/source/m/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz)
-md5sums=('49008529bd62c8993e90705d60fb8acd')
+md5sums=('b8e2f756236fb8d3b22266e581fd1601')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
