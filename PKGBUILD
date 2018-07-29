@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-packages3d
-_pkgver="5.0.0-rc3"
+_pkgver="5.0.0"
 pkgver=${_pkgver//-}
 pkgrel=1
 pkgdesc="Official KiCad 3D model libraries -- stable release"
@@ -12,7 +12,7 @@ makedepends=('cmake')
 conflicts=('kicad-packages3d-git')
 provides=($pkgname)
 source=("https://github.com/KiCad/${pkgname}/archive/${_pkgver}.tar.gz")
-md5sums=('c31de79a5a87669f13dc59907c85fb5f')
+md5sums=('aac66499bbbd9f21ad3e90af7ba854d2')
 
 build() {
   cd "$srcdir"
