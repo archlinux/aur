@@ -67,7 +67,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 _srcname=linux-4.17
-pkgver=4.17.10
+pkgver=4.17.11
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -80,7 +80,7 @@ _gcc_more_v='20180509'
 source=(
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
   https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign
-  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -97,8 +97,7 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '41ad005296c7a1b5245a87881f666b3f4d7aa05a6b9409454b2e473d473c4cee'
-            'SKIP'
+            '1345bf04742096c50eff4de6ba2a2c07ba8779e3c46373cd8076475c36f2e7b0'
             '9aa851fe7fae17b38ed039b792b1d9024516d4003b32c8a81b8ced3762dbd944'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
