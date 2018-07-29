@@ -3,7 +3,7 @@
 _gemname=jiffy
 pkgname=ruby-$_gemname
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A streaming-based JSON formatter in Ruby.'
 arch=(any)
 url='https://github.com/badeball/jiffy'
@@ -16,7 +16,7 @@ sha1sums=('db1977720742bdd09c6a0b6e2e1ec0e1156d4ea5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
