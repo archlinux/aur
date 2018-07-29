@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=gr-keyfob-git
-pkgver=r14.910064c
+pkgver=r15.d7e10aa
 pkgrel=1
 pkgdesc="Transceiver for Hella wireless car key fobs"
 arch=('i686' 'x86_64')
