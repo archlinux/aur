@@ -1,13 +1,12 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=cartaodecidadao-pki
-pkgver=20170923
+pkgver=20180729
 pkgrel=1
 pkgdesc="PKI Certificates for Cartao de Cidadao (Portugal eID)"
 arch=('any')
 license=('custom')
 url="https://pki.cartaodecidadao.pt/"
-depends=('')
 source=("https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao%20de%20Cidadao%20001.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao%20de%20Cidadao%20002.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao%20de%20Cidadao%20003.cer"
@@ -25,6 +24,7 @@ source=("https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200011.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200012.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200013.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200014.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200001.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200002.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200003.cer"
@@ -37,7 +37,8 @@ source=("https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200010.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200011.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200012.cer"
-		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200013.cer")
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200013.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200014.cer")
 sha512sums=('0f7f813723425b090cad4f9140c7f56b17b753fba9eb733c18c84b167bc214aa1dcc0df5fbecd5490b8cdbb546fd736e937abc3bbef5280ff4eb6dc852338ed1'
             '69f06ef7bc70dfce8fd11ca2335c51c3185f5b97d0778183142527d818f131939e27c002f9a52a06b7992a319e3ab04fd954caf7d6cde3dd08e1e782be9a19cd'
             '9569371e5a455923570ea77085e3b09a27d4c7353d4bfc8e0af0a3a30e9321c04c74bbb88c0f221b12efd2cbaa88c04c45e82f893844a5ce6a71ac4324f4eeb7'
@@ -55,6 +56,7 @@ sha512sums=('0f7f813723425b090cad4f9140c7f56b17b753fba9eb733c18c84b167bc214aa1dc
             '5c794a45d8d767bee2b8592f3e76ce17541c0543bfa1e5878e7894475df78f100e737d2aa3ecbf736f07f46dea06d2a718c63df8ab693c5518a9dbe910eed808'
             'dc0dfa763880a6a832e6f1ac42358a09b2126e7872c1bb929751dc2101f0a4c9dd38cb0a2cbc615858eb84c29243dfa3d562ed4a68d76a3a1754bc42c8cd992b'
             '507f2c98ca848f2c89c3a4910bfd78875b3799659314ecd7f376dfcb1af68c02785e45323dcf6f4751b840b4ddbebd7a87fd1397a727c8712b6696b83d2e49d3'
+            '723abc1042c6d057e2c0fa686b47f11215cdd533b3ce45167da0895898a59b9defae9d092bbfe8c3c8b5802afc5ef911f8b0af2d33b5b07f22b2c74b76e637fa'
             '07d19fc9041e639577dd1da30937ebf89aaadf6ba4a5a05f9262f9b5f3e12614ab1bb2ad76aea87c810faffa7c65ecd4205e5151b1b965f570765759b26701a1'
             '0f6fa5e33fabcd3f5d33a9984c90dcdac6baa646c8477716101eaa58ed11a6ad91d68c835f947920d4f5133c8139e0747646bb94d28b8051e095a36e51d766a4'
             '1f0a8e2282fbe846119b4a187c87df8ef4c9978f80bb4acc58ec1d5cc35dc9b720479d5061d84ef37af205868f0f322829e9532a559c16f545a1ed422b4bcb2f'
@@ -67,7 +69,8 @@ sha512sums=('0f7f813723425b090cad4f9140c7f56b17b753fba9eb733c18c84b167bc214aa1dc
             '48a0d90074e36c27db8b6091000baa5d51871adac5bce1ac7f696a906bfc493d602c91a7778e2f826753924da8437ac6715ba7986240c67e01563670ec6e2472'
             'a7887b0f2bd2073c94805af6898d5f5cdfe3f7349b24cfa489ca63149dc3f77898a85c3a3a9ecc1eb670b77ca7acc6e855d5929a3284e816c9f79dff0eb21756'
             'f6d9d010b973be50da01592dce6fe30f32819eb7f4d8e7538cf8f903e750994cd4e5f750c8c76ba0291a9ea78d5934f6d42459e4fe33382245cb985fdb1f709c'
-            '779a75facdd71bf014a3987df0c595244d3a9d173c5a28d68842261305bdc910177b4f8e3bbf27ee18b8b3c9744fb81e0c578f21fe390cf5dc959195f4ea7cd4')
+            '779a75facdd71bf014a3987df0c595244d3a9d173c5a28d68842261305bdc910177b4f8e3bbf27ee18b8b3c9744fb81e0c578f21fe390cf5dc959195f4ea7cd4'
+            'f1f99cbf0f34b59335ca10124b7ff1bda96c93781c522edd7066a8681d693f99dd2c90b0f20494b1280fc408b3ee7b174c6e455ba5431142e7f5d2b70963820b')
 
 package() {
 	mkdir -p ${pkgdir}/etc/ca-certificates/trust-source/anchors
