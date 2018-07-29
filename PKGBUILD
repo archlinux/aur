@@ -1,13 +1,14 @@
 # Contributor: kalio <okalio@gmx.com>
+# Contributor: tuxayo/Victor Grousset < victor (AT SIGN@) tuxayo DOT net >
 
 pkgname=kurso_esperanto
 pkgver=4.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A multimedia computer program for teaching yourself Esperanto"
 url="http://kurso.com.br"
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('qt4' 'phonon' 'phonon-qt4-gstreamer' 'libxext')
+depends=('qt4' 'phonon-qt4-gstreamer' 'libxext')
 optdepends=()
 source_i686=('http://kurso.com.br/kurso.i386.tar.gz')
 source_x86_64=('http://kurso.com.br/kurso.amd64.tar.gz')
