@@ -2,15 +2,15 @@
 
 pkgbase=python-chameleon
 pkgname=('python-chameleon' 'python2-chameleon')
-pkgver=3.3
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc="Fast HTML/XML Template Compiler"
 arch=('any')
 license=('custom:BSD' 'ZPL')
 url="http://www.pagetemplates.org/"
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/malthe/chameleon/archive/$pkgver.tar.gz")
-sha512sums=('72ea9138bb8118451102a4a7a23851bc4b389842e30b63d53e187a9f768f7e16782ee3fcf5ba86c3c166b90936c7c91d7c5b7b10c24a3383e10a2d70f656351f')
+sha512sums=('7a45298b5f72c7cd63df1a4d69156eb13d288304ff6d89babd3858eb56c605acedf955e787da23fa9580be0561ea7f6024b3619cc238eb10042ce36a436ba95b')
 
 prepare() {
   cp -a chameleon-$pkgver{,-py2}
