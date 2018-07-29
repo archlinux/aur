@@ -7,7 +7,7 @@
 pkgname=inox-hard
 pk=inox
 name=chromium
-pkgver=68.0.3440.68
+pkgver=68.0.3440.75
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/inox-hardened/master/desu.patch
 )
 
 
-sha256sums=('a7b42e60f512581c2ed95bc3ef0f33d956386fdea17735ffebf1f92c4dfa7aa4'
+sha256sums=('dc17783267853bdc0fb726363d2b8e30a0bf43b6cc2c768e1f37c92e8eb59541'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -161,7 +161,7 @@ sha256sums=('a7b42e60f512581c2ed95bc3ef0f33d956386fdea17735ffebf1f92c4dfa7aa4'
             'ee688801f9cbf3ebb5b63af8b641527d93fd2a70749ea064cc3a01aa34c65e33'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
             'b02ec93b8d74e2af85c83916dcb016694d8e5d1b24274f063d2c4162044132e4'
-            '79e958aca06510c1ac3e16b15c4a2e5b02f9670e233d383204fabf3fc773af7b'
+            '38f9191c0766de4e2694be21931a76a54cd65395ba3216f06eed3536227c1464'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
             '9d4953a3dc73cb01d9d65ea297ab4b09d47b4daaa5f2291ef35d0784a2f18a4e'
@@ -358,47 +358,33 @@ patch -Np1 -i ../gna.patch
   patch -Np1 -i ../gnb.patch
 patch -Np1 -i ../desu.patch
 
+  # Fix incorrect inclusion of <string_view> in modes other than >= C++17
+  
   # Fixes from Gentoo
 
-msg2 'clean'
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
 
-msg2 'bath'
   # There are still a lot of relative calls which need a workaround
   mkdir "$srcdir/python2-path"
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
-msg 2 'nad'
+
   mkdir -p third_party/node/linux/node-linux-x64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
 
-msg2 'purge1'
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
-  local _lib
-  for _lib in ${!_system_libs[@]} ${_system_libs[libjpeg]+libjpeg_turbo}; do
-    find -type f -path "*third_party/$_lib/*" \
-      \! -path "*third_party/$_lib/chromium/*" \
-      \! -path "*third_party/$_lib/google/*" \
-      \! -path "*base/third_party/icu/*" \
-      \! -regex '.*\.\(gn\|gni\|isolate\|py\)' \
-      -delete
-  done
 
-msg2 'purge2'
+
+
 
   python2 build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
-
-
 python2 tools/clang/scripts/update.py
-
 
   cd "$srcdir/chromium-launcher-$_launcher_ver"
 patch -Np1 -i ../20.patch
-
-
 }
 
 
@@ -412,6 +398,8 @@ build() {
   mkdir -p "$TMPDIR"
 
   local _flags=(
+    "custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
+    "host_toolchain=\"//build/toolchain/linux/unbundle:default\""
     'symbol_level=0'
     'is_debug=false'
     'fatal_linker_warnings=false'
@@ -428,7 +416,6 @@ build() {
     'use_vaapi=false'
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
-    'enable_webrtc=true'
     'enable_nacl=false'
     'enable_swiftshader=false'
     'enable_nacl_nonsfi=false'
