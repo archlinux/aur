@@ -2,7 +2,7 @@
 
 pkgname=fstar-ulib
 pkgver=0.9.6.0
-pkgrel=13
+pkgrel=14
 pkgdesc="compiles the ulib component of F*"
 arch=('i686' 'x86_64')
 url='https://www.fstar-lang.org/'
@@ -23,7 +23,7 @@ build() {
 package() {
   cd "$srcdir/"
   mkdir -p "$pkgdir/opt/fstar/ulib"
-  find fstar/-type f | while read f; do
+  find fstar/ -type f | while read f; do
     mkdir -p "$(dirname "$pkgdir/opt/$f")"
     pacman -Ql fstar | cut -f 2 -d ' ' | grep -qF "/opt/$f" || cp "$f" "$pkgdir/opt/$f"
   done
