@@ -1,4 +1,6 @@
 *.xz
 *.tgz
+*.zip
 pkg/
 src/
+

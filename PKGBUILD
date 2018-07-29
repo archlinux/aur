@@ -1,12 +1,16 @@
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 # Contributor: Sebastien Duquette <ekse.0x@gmail.com>
 # Contributor: Martin Kozák <martinkozak@martinkozak.net>
 
 pkgname=php-xhprof
-pkgver=0.9.4
-pkgrel=3
+
+pkgver=0.9.10
+pkgrel=1
+__commit="dab44f76da5c8a0d4f1339f7d2ea2bc42408e8e9"
+
 pkgdesc="A Hierarchical Profiler for PHP"
 arch=('i686' 'x86_64')
-url="http://pecl.php.net/package/xhprof"
+url="https://github.com/phacility/xhprof/tree/experimental"
 license=('Apache')
 depends=('php')
 makedepends=()
@@ -14,23 +18,23 @@ optdepends=('graphviz: to generate callgraphs in reports')
 backup=('etc/php/conf.d/xhprof.ini')
 options=()
 install=php-xhprof.install
-source=("http://pecl.php.net/get/xhprof-$pkgver.tgz")
-md5sums=('ab4062a7337e3bdaa2fd7065a7942b8d')
+source=("https://github.com/phacility/xhprof/archive/${__commit}.zip")
+sha512sums=('c8620e34d0a3816740e28efbbbbfd2c85e50dcbee907e54b86afdb1b2c49f6896203b8a84471def56cce105aef17937bf13544f35b70dab4a7f0ae1c071cb67f')
 
 prepare() {
-  cd "$srcdir/xhprof-$pkgver/extension/"
+  cd "$srcdir/xhprof-${__commit}/extension/"
 
-  phpize || return 1 
+  phpize || return 1
   ./configure --prefix=/usr --with-php-config=$(which php-config)
 }
 
 build() {
-  cd "$srcdir/xhprof-$pkgver/extension/"
+  cd "$srcdir/xhprof-${__commit}/extension/"
   make || return 1
 }
 
-package() { 
-  cd "$srcdir/xhprof-$pkgver/extension/"
+package() {
+  cd "$srcdir/xhprof-${__commit}/extension/"
   make INSTALL_ROOT="$pkgdir/" install
   echo ';extension=xhprof.so' > xhprof.ini
   install -D -m644 xhprof.ini "$pkgdir/etc/php/conf.d/xhprof.ini"
