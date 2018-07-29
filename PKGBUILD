@@ -1,11 +1,11 @@
-# Maintainer: Adam Isaac <aci747@engineer.com>
+# Maintainer: Adam I <aci747@engineer.com>
 pkgname=tldr-bash-git
-pkgver=r74.fa141b6
+pkgver=r93.f5c6abb
 pkgrel=1
 pkgdesc="Bash client for tldr: community driven man-by-example."
 arch=('any')
-url="https://github.com/pepa65/tldr-bash-client"
-source=("git+https://github.com/pepa65/tldr-bash-client.git")
+url="https://gitlab.com/pepa65/tldr-bash-client"
+source=("git+https://gitlab.com/pepa65/tldr-bash-client.git")
 license=('GPL')
 sha256sums=('SKIP')
 depends=('bash' 'unzip' 'curl')
