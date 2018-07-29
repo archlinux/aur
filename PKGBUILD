@@ -1,7 +1,7 @@
 #Maintainer: Mark Riedesel <mark@klowner.com>
 
 pkgname=easy_profiler
-pkgver=1.3.0
+pkgver=2.0.1
 pkgrel=0
 pkgdesc='Lightweight cross-platform profiler library for c++'
 arch=('x86_64' 'i686' 'arm')
@@ -26,4 +26,4 @@ package() {
 	mv ${pkgdir}/usr/bin/*.so ${pkgdir}/usr/lib/
 }
 
-md5sums=('07b0c1a666c905c2894dbd323ed6efe7')
+md5sums=('f5d17cd937ba39d3b2584b003a71e6a7')
