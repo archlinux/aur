@@ -1,0 +1,12 @@
+# Directories
+pkg/
+src/
+
+# Archives
+*.tar
+*.tar.*
+*.zip
+
+# Logs
+*.log
+*.log.*
