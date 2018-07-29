@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=vg-git
-pkgver=v0.8.0.r11.g4e64c0f
+pkgver=v0.8.0.r12.g1582cb4
 pkgrel=1
 pkgdesc='Easy and powerful workspace based development for go'
 arch=(x86_64)
