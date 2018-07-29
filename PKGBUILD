@@ -1,5 +1,5 @@
 #######################################################################
-#  This package is derived from emacs-git.  This original maintainer
+#  This package is derived from emacs-git.  The original maintainer
 #  is not willing to support AUR helpers such as yay in emacs-git.  This
 #  package eases the installation of emacs26-git
 #######################################################################
