@@ -3,7 +3,8 @@
 _pkgname=abjad-ext-tonality
 pkgname="python-$_pkgname"
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
+groups=('abjad')
 pkgdesc='Abjad tonal analysis extension'
 arch=('any')
 url="https://github.com/Abjad/abjad-ext-tonality"

@@ -1,9 +1,10 @@
 pkgbase = python-abjad-ext-tonality
 	pkgdesc = Abjad tonal analysis extension
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Abjad/abjad-ext-tonality
 	arch = any
+	groups = abjad
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-abjad
