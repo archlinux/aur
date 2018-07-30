@@ -3,7 +3,7 @@
 _pkgname=tootstream
 pkgname=tootstream-git
 pkgver=0.3.4.r3.gfef1e72
-pkgrel=1
+pkgrel=2
 pkgdesc='Text interface for the Mastodon social network'
 provides=('tootstream')
 conflicts=('tootstream')
@@ -16,6 +16,7 @@ depends=(
 	'python-click'
 	'python-colored'
 	'python-emoji'
+	'python-http-ece'
 )
 makedepends=('python-distribute' 'git')
 source=("git://github.com/magicalraccoon/${_pkgname}.git")
