@@ -2,7 +2,7 @@
 # Contributor: Bigrush <Tom.harpaz98@gmail.com>
 
 pkgname=nama
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="This tool uses nmcli to easily set static ip addresses"
 arch=('any')
