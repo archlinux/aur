@@ -1,18 +1,17 @@
 # Maintainer: Luke R. <g4jc@bulletmail.org> GPG:  c25519/D85D2F527B0
 
 pkgname=uftp
-pkgver=4.9.4
+pkgver=4.9.7
 pkgrel=1
 pkgdesc="UFTP is an encrypted multicast file transfer program, designed 
 to securely, reliably, and efficiently transfer files to multiple 
 receivers simultaneously."
-arch=(i686 x86_64)
+arch=(x86_64)
 url="https://uftp-multicast.sourceforge.net/"
 license=('GPL3')
 makedepends=('gcc' 'openssl')
 source=("https://downloads.sourceforge.net/project/$pkgname-multicast/source-tar/$pkgname-$pkgver.tar.gz")
-sha512sums=('f3c799265a55e0cb536f17be3a0ebfad5f81284255083ebe9a12fda4b5ce8407f05a710cb32a41f3dccbc0ac90367c44d4b67058bdbeaa4f2f8efe732463ebf0')
-whirlpoolsums=('ae69a1a7b3ff7039e5f70f24d486b84d1f3fa9d39ebade82fca388bbe97f06d7aad78f22c662065f48f23f43aba5efa7aa87516c2b60df98ce5794d25c99730b')
+sha512sums=('924fd858081308a0a4d603fd19401981592ec67b7f20a0ed5a38130065ed2a41bb71d9d3bf7c609722300e7cfea6a8f9a2704c63b1b1efa15105cce52c3ee9f6')
 
 -prepare() {
   cd "$srcdir/${pkgname}-${pkgver}/"
@@ -26,6 +25,4 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir/" install
-  mv $pkgdir/usr/sbin/* $pkgdir/usr/bin
-  rm -rf $pkgdir/usr/sbin
 }
