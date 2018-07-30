@@ -1,7 +1,8 @@
 post_install() {
 	echo "To play Quake 2, you need the following files from the disc:
 copy <cdromdir>/Install/Data/baseq2/pak*.pak to /usr/share/games/q2pro2/baseq2/
-copy <cdromdir>/Install/Data/baseq2/video/ to /usr/share/games/q2pro2/baseq2/"
+copy <cdromdir>/Install/Data/baseq2/video/ to /usr/share/games/q2pro2/baseq2/
+copy <cdromdir>/Install/Data/baseq2/players/ to /usr/share/games/q2pro2/baseq2/"
 
 ## not yet implemented
 #To play The Reckoning, you need the following files from the disc:
