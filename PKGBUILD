@@ -25,8 +25,7 @@ prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   patch tests/Makefile.in < "${srcdir}/${pkgname}-${pkgver}-rocket-test.patch"
-  # Disable szip test as extra/hdf5 is not linked to szip,
-  # also disable test 46 (write object from python module)
+  # Skip some failing tests
   patch tests/testsuite.at < "${srcdir}/${pkgname}-${pkgver}-skip-test.patch"
 
   # Patch to use extra/hdf5-openmpi, from
