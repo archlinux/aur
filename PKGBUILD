@@ -14,7 +14,7 @@ source=("$pkgname::git+https://github.com/chn555/nama.git")
 md5sums=('SKIP')
 
 package() {
-  cd "${pkgname}-${pkgver}/"
+  cd "${pkgname}/"
   make DESTDIR="$pkgdir" install
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
