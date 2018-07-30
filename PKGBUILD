@@ -2,7 +2,7 @@
 
 
 pkgname=blender-2.8-git
-pkgver=2.8_r76755.b11a1d5da26
+pkgver=2.8_r78999.c86b5fa820d
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -74,6 +74,7 @@ build() {
   cmake "$srcdir/blender" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_INSTALL_PORTABLE=OFF \
+        -DWITH_CXX11=ON \
         -DWITH_ALEMBIC=NO \
         -DWITH_OPENCOLORIO=ON \
         -DWITH_FFTW3=ON \
