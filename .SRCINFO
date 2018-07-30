@@ -1,0 +1,23 @@
+pkgbase = ukui-settings-daemon
+	pkgdesc = UKUI Ayar daemon
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://mate-desktop.org
+	arch = x86_64
+	groups = ukui
+	license = GPL
+	makedepends = intltool
+	makedepends = python
+	depends = dbus-glib
+	depends = libcanberra
+	depends = libmatekbd
+	depends = libmatemixer
+	depends = libnotify
+	depends = ukui-desktop
+	depends = nss
+	depends = polkit
+	source = git+https://github.com/ukui/ukui-settings-daemon.git
+	sha256sums = SKIP
+
+pkgname = ukui-settings-daemon
+
