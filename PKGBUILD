@@ -2,17 +2,20 @@
 
 _pkgname=lxqt-qtplugin
 pkgname=$_pkgname-git
-pkgver=0.12.0
-pkgrel=1
+pkgver=0.13.0.3.g73d20ab
+pkgrel=2
 pkgdesc="LXQt platform integration for Qt"
 arch=("i686" "x86_64")
-url="http://lxqt.org"
+url="https://lxqt.org"
 license=("GPL2")
-depends=("libdbusmenu-qt5" "libfm-qt-git" "libqtxdg-git")
+depends=("libdbusmenu-qt5" "libqtxdg-git")
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
+optdepends=(
+    "libfm-qt-git: for enhanced file dialog"
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/lxde/$_pkgname.git")
+source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
 
