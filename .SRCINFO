@@ -1,0 +1,21 @@
+pkgbase = ukui-panel
+	pkgdesc = UKUI için panel
+	pkgver = v1.1.4
+	pkgrel = 1
+	url = https://ukui-desktop.org
+	arch = x86_64
+	groups = ukui
+	license = GPL
+	makedepends = intltool
+	makedepends = mate-common
+	makedepends = yelp-tools
+	makedepends = ukui-desktop
+	makedepends = ukui-menus
+	makedepends = libmatekbd
+	makedepends = gobject-introspection
+	source = git+https://github.com/ukui/ukui-panel.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ukui-panel
+
