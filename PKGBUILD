@@ -10,7 +10,7 @@ pkgdesc="An app runtime based on Chromium and node.js."
 arch=("x86_64")
 url="https://nwjs.io/"
 license=("MIT")
-depends=("alsa-lib" "gtk3" "nss" "libxtst" "libxss")
+depends=("gtk3" "nss" "libxss")
 optdepends=(
   "nodejs: npm package support"
   "nw-gyp: native add-on build tool for node-webkit"
