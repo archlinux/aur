@@ -1,24 +1,25 @@
 pkgbase = mingw-w64-zziplib
 	pkgdesc = A lightweight library that offers the ability to easily extract data from files archived in a single zip file (mingw-w64)
-	pkgver = 0.13.62
-	pkgrel = 6
+	pkgver = 0.13.69
+	pkgrel = 1
 	url = http://zziplib.sourceforge.net
 	arch = any
 	license = LGPL, MPL
-	makedepends = mingw-w64-gcc
-	makedepends = mingw-w64-pkg-config
-	makedepends = python2
+	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-sdl
+	makedepends = python2
+	makedepends = xmlto
+	makedepends = zip
 	depends = mingw-w64-crt
 	depends = mingw-w64-zlib
 	optdepends = mingw-w64-sdl: SDL_rwops for ZZipLib
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://downloads.sourceforge.net/zziplib/zziplib-0.13.62.tar.bz2
+	source = zziplib-0.13.69.tar.gz::https://github.com/gdraheim/zziplib/archive/v0.13.69.tar.gz
 	source = configure.patch
-	md5sums = 5fe874946390f939ee8f4abe9624b96c
-	md5sums = 8c6e3c9526833140cea9390288756114
+	sha256sums = 846246d7cdeee405d8d21e2922c6e97f55f24ecbe3b6dcf5778073a88f120544
+	sha256sums = 892162a8535575891663607b8fb5e3be518e8293e9b0f22cf437b1d83a58b008
 
 pkgname = mingw-w64-zziplib
 

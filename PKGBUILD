@@ -1,48 +1,51 @@
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+
 pkgname=mingw-w64-zziplib
-pkgver=0.13.62
-pkgrel=6
+pkgver=0.13.69
+pkgrel=1
 pkgdesc="A lightweight library that offers the ability to easily extract data from files archived in a single zip file (mingw-w64)"
 arch=(any)
 url="http://zziplib.sourceforge.net"
 license=("LGPL, MPL")
-makedepends=(mingw-w64-gcc mingw-w64-pkg-config python2 mingw-w64-sdl)
-depends=(mingw-w64-crt mingw-w64-zlib)
+makedepends=('mingw-w64-configure' 'mingw-w64-sdl' 'python2' 'xmlto' 'zip')
+depends=('mingw-w64-crt' 'mingw-w64-zlib')
 optdepends=("mingw-w64-sdl: SDL_rwops for ZZipLib")
 options=(staticlibs !strip !buildflags)
-source=("http://downloads.sourceforge.net/zziplib/zziplib-${pkgver}.tar.bz2"
-"configure.patch")
-md5sums=('5fe874946390f939ee8f4abe9624b96c'
-         '8c6e3c9526833140cea9390288756114')
+source=("zziplib-${pkgver}.tar.gz"::"https://github.com/gdraheim/zziplib/archive/v${pkgver}.tar.gz"
+        "configure.patch")
+sha256sums=('846246d7cdeee405d8d21e2922c6e97f55f24ecbe3b6dcf5778073a88f120544'
+            '892162a8535575891663607b8fb5e3be518e8293e9b0f22cf437b1d83a58b008')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-	cd "$srcdir/zziplib-$pkgver"
-	patch -Np1 < ../configure.patch
+	cd "${srcdir}/zziplib-${pkgver}"
+	patch -Np1 -i ${srcdir}/configure.patch
+  autoreconf -fiv
 }
 
 build() {
+  cd "${srcdir}/zziplib-${pkgver}"
   for _arch in ${_architectures}; do
-    unset LDFLAGS
     export PYTHON=/usr/bin/python2
-    mkdir -p "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
-    cd "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
-    "${srcdir}"/${pkgname#mingw-w64-}-${pkgver}/configure \
-      --prefix=/usr/${_arch} \
-      --build=$CHOST \
-      --host=${_arch} \
-      --enable-sdl
+    export PERL=/usr/bin/perl
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-configure \
+      --with-zlib=/usr/${_arch} \
+      --enable-sdl \
+      ..
     make
+    popd
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
+    cd "${srcdir}/zziplib-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -o -name '*.bat' -o -name '*.def' -o -name '*.exp' | xargs -rtl1 rm
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/share"
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    rm -rf "$pkgdir/usr/${_arch}/share"
   done
 }
