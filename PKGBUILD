@@ -23,5 +23,5 @@ package() {
     cd "${pkgname_}vm-ce-${pkgver_}"
     mkdir -p "$pkgdir/usr/lib/jvm/java-8-graal/"
     cp -a -t "$pkgdir/usr/lib/jvm/java-8-graal/" *
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" LICENSE
+    install -DTm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
