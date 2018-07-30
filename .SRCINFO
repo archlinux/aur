@@ -1,16 +1,17 @@
 pkgbase = clrmamepro
 	pkgdesc = A ROM manager for MAME.
-	pkgver = 4.030.a
+	pkgver = 4.034
 	pkgrel = 1
-	url = http://mamedev.emulab.it/clrmamepro/
-	arch = any
+	url = https://mamedev.emulab.it/clrmamepro/
+	arch = x86_64
+	arch = i686
 	license = custom
 	makedepends = icoutils
 	depends = wine
-	source = http://mamedev.emulab.it/clrmamepro/binaries/cmp4030a_32.zip
+	source = https://mamedev.emulab.it/clrmamepro/binaries/cmp4034_32.zip
 	source = clrmamepro
 	source = clrmamepro.desktop
-	sha256sums = a226470036daa81fe2a58061daf44254960148cb48dad31f4b56ee4f986773a0
+	sha256sums = 0f83ccbdefae39d7526a389f9b52193520d915012cf398b3a908ef117ce2488d
 	sha256sums = 466f1cd863e85915f8355463a1062e394296228b17cbdfe101357b3266b988f5
 	sha256sums = 8d92a074639a43cb5d7ed69df999d059dd81fca9f3967a58873db0acafb0d95b
 
