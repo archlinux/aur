@@ -1,32 +1,43 @@
-# Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
+# Maintainer: Michael Yang <ohmyarchlinux@pm.me>
 
 pkgname=fmt-git
-pkgver=4.1.1.r2374.3193460
+pkgver=5.1.0.r36.g0c63d15
 pkgrel=1
 pkgdesc='An open-source formatting library for C++'
 url='http://fmtlib.net'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('BSD')
-makedepends=('git' 'cmake>=2.8.12')
+makedepends=('git' 'cmake>=3.1.0')
 conflicts=('fmt')
 provides=('fmt')
-source=('git://github.com/fmtlib/fmt.git')
+source=('git+https://github.com/fmtlib/fmt.git')
 sha512sums=('SKIP')
 
 pkgver() {
+  cd fmt
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
+
+prepare() {
   mkdir -p build
-  cd build
-  version=$(cmake ../fmt -DFMT_DOC=OFF -DFMT_TEST=OFF -DBUILD_SHARED_LIBS=TRUE -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_PREFIX=/usr | grep Version | cut -d ' ' -f3)
-  cd ../fmt
-  echo "${version}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd build
+  cmake ../fmt \
+    -DFMT_DOC=OFF \
+    -DBUILD_SHARED_LIBS=TRUE \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
   make
+}
+
+check() {
+  cd build
+  make test
 }
 
 package() {
   make -C build DESTDIR="${pkgdir}" install
-  install -Dm644 fmt/LICENSE.rst ${pkgdir}/usr/share/licenses/fmt-git/LICENSE.rst
+  install -Dm644 fmt/LICENSE.rst "${pkgdir}"/usr/share/licenses/fmt-git/LICENSE.rst
 }
