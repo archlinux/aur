@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 
 package() {
-  cd $pkgname
+  cd src/$pkgname
   make DESTDIR="$pkgdir" install
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/nama/LICENSE.md"
 }
