@@ -1,6 +1,6 @@
 pkgbase = python-pytesseract-git
 	pkgdesc = A Python wrapper for Google Tesseract
-	pkgver = 436f42b
+	pkgver = c68f978
 	pkgrel = 1
 	url = https://github.com/madmaze/pytesseract
 	arch = any
