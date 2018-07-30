@@ -1,0 +1,51 @@
+diff -ura nginx_auth_accessfabric-1.0.0.old/ngx_http_auth_accessfabric_module.c nginx_auth_accessfabric-1.0.0.new/ngx_http_auth_accessfabric_module.c
+--- nginx_auth_accessfabric-1.0.0.old/ngx_http_auth_accessfabric_module.c	2018-01-02 20:03:57.000000000 -0800
++++ nginx_auth_accessfabric-1.0.0.new/ngx_http_auth_accessfabric_module.c	2018-07-29 20:05:05.630134694 -0700
+@@ -753,47 +753,6 @@
+   return req;
+ }
+ 
+-#ifdef __linux__
+-static int getentropy(void *buf, size_t buflen) {
+-/**
+- * getrandom is not available on most Linux yet, and we don't have
+- * an easy autoconf for it.
+- **/
+-#if 0
+-  int ret;
+-
+-  if (buflen > 256) {
+-    goto failure;
+-  }
+-
+-  /* TODO(pquerna): old linux */
+-  ret = getrandom(buf, buflen, 0);
+-  if (ret < 0) {
+-    return ret;
+-  }
+-
+-  if (ret == buflen) {
+-    return 0;
+-  }
+-failure:
+-  errno = EIO;
+-  return -1;
+-#else
+-  size_t rlen;
+-  FILE *fp = fopen("/dev/urandom", "rb");
+-  if (fp == NULL) {
+-    return -1;
+-  }
+-  rlen = fread(buf, 1, buflen, fp);
+-  fclose(fp);
+-  if (rlen == buflen) {
+-    return 0;
+-  }
+-  return -1;
+-#endif
+-}
+-#endif
+-
+ static void af_jwk__refresh(af_jwk_refresher_t *jr) {
+   uint64_t random = 0;
+   uint64_t min = 1000;

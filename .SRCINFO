@@ -1,0 +1,23 @@
+pkgbase = nginx-mod-auth-accessfabric
+	pkgdesc = Nginx module for authenticating requests from the ScaleFT Access Fabric
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ScaleFt/nginx_auth_accessfabric
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = glibc>=2.25
+	depends = nginx
+	depends = xjwt
+	source = https://nginx.org/download/nginx-1.14.0.tar.gz
+	source = https://nginx.org/download/nginx-1.14.0.tar.gz.asc
+	source = https://github.com/ScaleFT/nginx_auth_accessfabric/archive/v1.0.0.tar.gz
+	source = remove_get_entropy.patch
+	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
+	md5sums = 2d856aca3dfe1d32e3c9f8c4cac0cc95
+	md5sums = SKIP
+	md5sums = 28eac06b4247ed32939ca8c70e347342
+	md5sums = b10c128e65a36c7cb22fc9c2ec20ce92
+
+pkgname = nginx-mod-auth-accessfabric
+
