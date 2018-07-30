@@ -54,5 +54,5 @@ package() {
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-8-graal/$name"
     done < META-INF/symlinks
 
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" jre/languages/R/LICENSE_FASTR
+    install -DTm644 jre/languages/R/LICENSE_FASTR "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
