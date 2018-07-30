@@ -1,7 +1,7 @@
 # Maintainer: Bryn Edwards <bryn@protonmail.ch>
 
 pkgname=antibody
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="A shell plugin manager."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://getantibody.github.io/"
 license=('MIT')
 makedepends=('go' 'dep')
 source=("https://github.com/getantibody/antibody/archive/v${pkgver}.tar.gz")
-sha256sums=('85527d67bb93dccf9c414b61e221ebf0710c7386e6f01a8bef979c515f612393')
+sha256sums=('5971c251c43375ea5de9334cdbb1e4a1da500e03ecd63372c1c11f68f0364fe2')
 _repodir=(".go/src")
 
 prepare() {
@@ -39,4 +39,3 @@ package() {
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
