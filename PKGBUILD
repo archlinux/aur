@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=blobby-volley-svn
-pkgver=r1678
+pkgver=r1681
 pkgrel=1
 pkgdesc="Official continuation of the famous Blobby Volley 1.x arcade game."
 arch=('x86_64' 'i686')
@@ -21,15 +21,15 @@ pkgver() {
 }
 
 prepare() {
-  cd $srcdir/blobby-code
+  cd blobby-code
   # Only patch if patch applies
-  if patch -p0 -N -i $srcdir/0001-fix-vector-include.patch --dry-run; then
-    patch -p0 -N -i $srcdir/0001-fix-vector-include.patch
+  if patch -p0 -N -i "$srcdir/0001-fix-vector-include.patch" --dry-run; then
+    patch -p0 -N -i "$srcdir/0001-fix-vector-include.patch"
   fi
 }
 
 build() {
-  cd $srcdir/blobby-code
+  cd blobby-code
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
