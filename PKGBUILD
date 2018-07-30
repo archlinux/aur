@@ -1,8 +1,8 @@
 # Maintainer: Milo Gilad <myl0gcontact@gmail.com>
 _pkgname=todoist
 pkgname=todoist-linux-bin
-pkgver=0.3
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 epoch=
 pkgdesc="Unofficial desktop client for Todoist"
 arch=(x86_64)
@@ -32,5 +32,5 @@ package() {
 	ln -s "/opt/${_pkgname}/Todoist" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
-md5sums=('c107b9c92f9eab3a33b42afa434e28f0'
-         '196a345c7e51d52a7f6fec90c476e305')
+sha512sums=('942d073844a955e5c70fdd57d61b849fb227f50b13529466fd26955fb2a3cab17d08941f57451e0298ee6025b23eebc391f082bafad83c7e3f2f0b53ab1a02f4'
+            '57ff03370058564bd185e9b561a33fe6cbd37ea9794aea48bbc39dd62639bb9028f3c1777daf0fc113a176fa75693fbf790295998cd9a213e09c7108a6ec3124')
