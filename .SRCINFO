@@ -1,0 +1,16 @@
+pkgbase = python-abjad-ext-book
+	pkgdesc = Abjad book extension
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Abjad/abjad-ext-book
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-abjad
+	depends = python-uqbar
+	depends = python-pypdf2
+	source = https://github.com/Abjad/abjad-ext-book/archive/v3.0.0.tar.gz
+	sha256sums = 0a4c89f538ba626258dd033ec53e74544b54bef614d91cceb73cea7203003c4f
+
+pkgname = python-abjad-ext-book
+
