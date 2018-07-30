@@ -3,7 +3,7 @@
 
 pkgname=openlp
 pkgver=2.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
@@ -20,30 +20,33 @@ optdepends=('libreoffice-fresh: Display impress presentations'
             'python-mysql-connector: Use a mysql/mariadb database'
             'python-psycopg2: Use a postgresql database')
 install=openlp.install
-source=(https://get.openlp.org/$pkgver/OpenLP-$pkgver.tar.gz openlp.sh)
+source=("https://get.openlp.org/${pkgver}/OpenLP-${pkgver}.tar.gz" "openlp.sh")
 sha256sums=('f63dcf5f1f8a8199bf55e806b44066ad920d26c9cf67ae432eb8cdd1e761fc30'
             '19c2f3c622585bf308efc259013fb5518feaf8cf14b51613e1e71778fcc2e8cf')
 
 package() {
-  cd "$srcdir/OpenLP-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  mv "$pkgdir/usr/bin/openlp"{.py,}
+  cd "${srcdir}/OpenLP-$pkgver"
+  python setup.py install --root="${pkgdir}/" --optimize=1
+  mv "${pkgdir}/usr/bin/openlp"{.py,}
 
-  echo "$pkgver" > "$pkgdir/usr/lib/python3.6/site-packages/openlp/.version"
+  #remove tests
+  rm -rf "${pkgdir}/usr/lib/python3.6/site-packages/tests"
 
-  install -Dm0755 "$srcdir/openlp.sh" "$pkgdir/etc/profile.d/openlp.sh"
-  install -Dm0644 "resources/openlp.desktop" "$pkgdir/usr/share/applications/openlp.desktop"
-  install -Dm0644 "resources/images/openlp-logo.svg" "$pkgdir/usr/share/pixmaps/openlp.svg"
-  install -Dm0644 "resources/images/openlp-logo-48x48.png" "$pkgdir/usr/share/pixmaps/openlp.png"
+  echo "${pkgver}" > "${pkgdir}/usr/lib/python3.6/site-packages/openlp/.version"
+
+  install -Dm0755 "${srcdir}/openlp.sh" "${pkgdir}/etc/profile.d/openlp.sh"
+  install -Dm0644 "resources/openlp.desktop" "${pkgdir}/usr/share/applications/openlp.desktop"
+  install -Dm0644 "resources/images/openlp-logo.svg" "${pkgdir}/usr/share/pixmaps/openlp.svg"
+  install -Dm0644 "resources/images/openlp-logo-48x48.png" "${pkgdir}/usr/share/pixmaps/openlp.png"
 
   #translations
-  tsrcdir="$srcdir/OpenLP-$pkgver/resources/i18n"
-  tdestdir="$pkgdir/usr/share/$pkgname/i18n"
-  mkdir -p "$tdestdir"
-  cd "$tsrcdir"
+  tsrcdir="${srcdir}/OpenLP-$pkgver/resources/i18n"
+  tdestdir="${pkgdir}/usr/share/$pkgname/i18n"
+  mkdir -p "${tdestdir}"
+  cd "${tsrcdir}"
   
   for file in *.ts; do
-    lconvert -i "$file" -o "$tdestdir/${file%%ts}qm"
+    lconvert -i "${file}" -o "${tdestdir}/${file%%ts}qm"
   done
 }
 
