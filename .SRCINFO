@@ -1,6 +1,6 @@
 pkgbase = komorebi
 	pkgdesc = Parallax backgrounds manager
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/iabem97/komorebi
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = komorebi
 	depends = clutter-gtk
 	depends = clutter-gst
 	provides = komorebi
-	source = https://github.com/iabem97/komorebi/archive/v2.0.tar.gz
-	md5sums = 0c72498a4c0c10b00c50fad1ef2f6195
+	source = https://github.com/iabem97/komorebi/archive/v2.1.tar.gz
+	md5sums = 2fd707711373f77c45ea4583a40e56aa
 
 pkgname = komorebi
 

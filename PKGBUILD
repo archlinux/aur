@@ -2,7 +2,7 @@
 # Contributer: Manuel <manuel.bua@gmail.com>
 
 pkgname=komorebi
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Parallax backgrounds manager"
 url="https://github.com/iabem97/komorebi"
@@ -11,7 +11,7 @@ makedepends=("git" "cmake" "vala" "gendesk")
 provides=("komorebi")
 license=("GPL")
 arch=("x86_64" "i686")
-md5sums=("0c72498a4c0c10b00c50fad1ef2f6195")
+md5sums=("2fd707711373f77c45ea4583a40e56aa")
 source=("https://github.com/iabem97/${pkgname}/archive/v${pkgver}.tar.gz")
 
 prepare() {
