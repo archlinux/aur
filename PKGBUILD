@@ -4,7 +4,7 @@
 
 pkgname=isl
 pkgver=0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for manipulating sets and relations of integer points bounded by linear constraints"
 arch=('i686' 'x86_64')
 url="http://isl.gforge.inria.fr/"
