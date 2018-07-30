@@ -54,7 +54,7 @@ package() {
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-8-graal/$name"
     done < META-INF/symlinks
 
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" jre/languages/python/LICENSE_GRAALPYTHON
+    install -DTm644 jre/languages/python/LICENSE_GRAALPYTHON "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     ln -s ../lib/jvm/java-8-graal/bin/${pkgname_} "$pkgdir/usr/bin/"
 }
