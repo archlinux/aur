@@ -1,0 +1,14 @@
+pkgbase = beanseye-git
+	pkgdesc = Proxy and monitor for beansdb in Go
+	pkgver = 0.0.0+1+91f8f68
+	pkgrel = 1
+	url = https://github.com/douban/beanseye
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/douban/beanseye.git#commit=91f8f688b5630cce266e3d99c0421956441b2d65
+	sha256sums = SKIP
+
+pkgname = beanseye-git
+
