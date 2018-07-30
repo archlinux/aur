@@ -1,0 +1,15 @@
+pkgbase = ukui-menus
+	pkgdesc = UKUI menü özellikleri
+	pkgver = v1.1.2+3+g8e73198
+	pkgrel = 1
+	url = https://ukui-desktop.org
+	arch = x86_64
+	groups = ukui
+	license = GPL
+	makedepends = intltool
+	makedepends = python
+	source = git+https://github.com/ukui/ukui-menus.git
+	sha256sums = SKIP
+
+pkgname = ukui-menus
+
