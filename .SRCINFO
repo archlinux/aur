@@ -1,6 +1,6 @@
 pkgbase = openafs-modules
 	pkgdesc = Kernel module for OpenAFS
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = http://www.openafs.org
 	install = openafs-modules.install
@@ -14,8 +14,8 @@ pkgbase = openafs-modules
 	conflicts = openafs-features-libafs
 	conflicts = openafs<1.6.6-2
 	options = !emptydirs
-	source = http://openafs.org/dl/openafs/1.8.0/openafs-1.8.0-src.tar.bz2
-	sha256sums = 63fae6b3a4339e4a40945fae1afb9b99a5e7f8e8dbde668938ab8c4ff569fd7d
+	source = http://openafs.org/dl/openafs/1.8.1/openafs-1.8.1-src.tar.bz2
+	sha256sums = 2f3c13710839510bca985deb6344aeeab72aff3c51b0269e578c7b4ccb8a5638
 
 pkgname = openafs-modules
 
