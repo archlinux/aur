@@ -1,7 +1,7 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=sakemake
-pkgver=1.6.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Configuration-free build system for C++17 executables'
 arch=('x86_64')
