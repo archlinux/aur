@@ -1,11 +1,10 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-gcc-base
-pkgver=4.9.2
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="Cross GCC for the MinGW-w64 cross-compiler (bootstrap)"
 arch=('x86_64')
@@ -15,8 +14,10 @@ groups=('mingw-w64-bootstrap' 'mingw-w64')
 depends=('zlib' 'libmpc' 'ppl' 'cloog' 'mingw-w64-binutils' 'mingw-w64-headers' 'mingw-w64-headers-bootstrap')
 conflicts=('mingw-w64-gcc')
 options=('staticlibs' '!emptydirs')
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2)
-md5sums=('4df8ee253b7f3863ad0b86359cd39c43')
+source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
+validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
+sha256sums=('196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080'
+            'SKIP')
 
 prepare() {
   cd ${srcdir}/gcc-${pkgver}
