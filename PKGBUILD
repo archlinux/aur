@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=sfgui-git
-pkgver=0.3.1.r0.gdd0e1ba
+pkgver=0.3.2.r6.gba1d03a
 pkgrel=1
 pkgdesc="SFGUI (Simple and Fast Graphical User Interface), a C++ GUI library for SFML."
 arch=('i686' 'x86_64')
@@ -33,6 +33,7 @@ build() {
   cd "$srcdir/SFGUI"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DSFML_DIR=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebugInfo .
   make
 }
