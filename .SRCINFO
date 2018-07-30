@@ -1,0 +1,13 @@
+pkgbase = nama
+	pkgdesc = This tool uses nmcli to easily set static ip addresses
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/chn555/nama
+	arch = any
+	license = GPLv3
+	depends = bash
+	source = nama-1.1.tar.gz::https://github.com/chn555/nama/archive/1.1.tar.gz
+	sha256sums = 910ef13759902bfebfe3b0c4451fe3c7f2453918d95d28e14cd3096cb1ba5aa2
+
+pkgname = nama
+
