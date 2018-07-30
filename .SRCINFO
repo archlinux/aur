@@ -1,0 +1,14 @@
+pkgbase = xjwt
+	pkgdesc = Minimal C library for validation of real-world JWTs
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/ScaleFT/libxjwt
+	arch = x86_64
+	license = Apache
+	depends = openssl
+	depends = jansson
+	source = https://github.com/ScaleFT/libxjwt/releases/download/v1.0.3/libxjwt-1.0.3.tar.gz
+	sha256sums = c23488b452be920efbbafe01439269b68edca1b750c63608b005c482beb75f40
+
+pkgname = xjwt
+
