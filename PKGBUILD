@@ -3,7 +3,7 @@
 
 pkgname=doomseeker
 pkgver=1.2
-pkgrel=20180328
+pkgrel=20180730
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
@@ -17,20 +17,27 @@ optdepends=('qt4: A cross-platform application and UI framework'
             'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom'
             'srb2: A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")')
 
-source=("hg+https://bitbucket.org/Doomseeker/doomseeker#revision=5aaddc0"
+source=("hg+https://bitbucket.org/Doomseeker/doomseeker#revision=c2c7f37"
         "doomseeker.desktop"
-        "doomseeker-launch-script.sh")
+        "doomseeker-launch-script.sh"
+        "doomseeker.qt5.11.patch")
 
 sha256sums=('SKIP'
             '64004248a2dd3771292e63717a05e1859f1ffe6d6fd5f16ebfa1427b9a43533f'
-            '96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4')
+            '96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4'
+            'de43c3fe7557079f1937e6c5aef5c01fa3ce4c4bd561db73a0b2a1fe2193bcdb')
 
 _bbdir=doomseeker
+prepare() {
+    cd $srcdir/$pkgname
+    patch -p1 -i "${srcdir}/doomseeker.qt5.11.patch" 
+}
+
 build() {
     cd $srcdir/$_bbdir
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=true -DCMAKE_INSTALL_PREFIX=/usr .. && \
+    cmake -DCMAKE_BUILD_TYPE=Release .. && \
     make -j$(nproc)
 }
 
