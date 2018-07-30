@@ -2,10 +2,10 @@
 
 pkgname=soundhelix
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for creating algorithmic random MIDI music"
 arch=('i686' 'x86_64')
-url="http://www.soundhelix.com/"
+url="https://sourceforge.net/projects/soundhelix/"
 license=('GPL')
 depends=('java-runtime')
 source=("http://downloads.sourceforge.net/project/soundhelix/SoundHelix-"$pkgver"-bin.zip"
