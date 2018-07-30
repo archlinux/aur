@@ -1,0 +1,26 @@
+pkgbase = thanos-xfdesktop-gtk3
+	pkgdesc = A desktop manager for Xfce
+	pkgver = 4.13.2
+	pkgrel = 1
+	url = http://www.xfce.org/
+	arch = i686
+	arch = x86_64
+	groups = xfce4-gtk3
+	license = GPL2
+	makedepends = intltool
+	makedepends = xfce4-dev-tools
+	depends = exo-gtk3
+	depends = garcon-gtk3
+	depends = hicolor-icon-theme
+	depends = libwnck3
+	depends = libxfce4ui-gtk3
+	optdepends = thunar-gtk3
+	provides = xfdesktop
+	conflicts = xfce4-menueditor
+	conflicts = xfdesktop
+	replaces = xfce4-menueditor
+	source = https://git.xfce.org/xfce/xfdesktop/snapshot/xfdesktop-9ec7efe27233962906cc734dec54b5e1c4de3b1f.tar.bz2
+	sha256sums = 2b7806dc6bb9c74cbbd9d7ee71cc71e6384eeb5ee578f0195433391a8164a29c
+
+pkgname = thanos-xfdesktop-gtk3
+
