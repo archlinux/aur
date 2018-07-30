@@ -5,7 +5,7 @@
 
 pkgbase=linux-x205ta
 _srcname=linux-4.17
-pkgver=4.17.3
+pkgver=4.17.10
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -22,6 +22,7 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
   0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
+  0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
 
   https://raw.githubusercontent.com/harryharryharry/x205ta-iso2usb-files/master/brcmfmac43340-sdio.txt
   https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/i915-pm-Be-less-agressive-with-clockfreq-changes-on-Bay-Trail.patch
@@ -29,14 +30,9 @@ source=(
   https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/fix_c-state_patch_v4.16.patch
   https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
 
-# Not sure if we want these...
+# Not sure if we want these... You may want to try Harryharryharrys own patch. If you do then just modify the PKGBUILD
 #  https://github.com/harryharryharry/x205ta-patches/blob/master/4.16-patches/allow-s0i3-suspend-unified-4.16.patch # Patcher calls them dirty hacky.
 #  '9003-brcmfmac-properly-align-buffers-on-certain-platform-swith-64-bit-DMA.patch' # Excluding this patch. Not sure if it helps.
-
-# Old patches
-#  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/rpmb.patch # Not needed anymore, this is fixed in commit https://github.com/torvalds/linux/commit/97548575bef38abd06690a5a6f6816200c7e77f7#diff-97193d232cb936779745c948ee14e56e
-#  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/fix-null-hwmon-info.patch # Fixed in https://github.com/torvalds/linux/commit/e782bc169cd02d3411a6db6ff0c26d7f27f8b81a
-#  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.15-patches/i2c_touch_fix_initialize_delay.patch # This patch does not apply anymore and the logic setting the var value became a lot smarter. Guessing its not needed anymore.
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -44,15 +40,16 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '01d5cc024dcfed615f84fd83be9c248261d8fc2c062520d38397cead6857b596'
+            '41ad005296c7a1b5245a87881f666b3f4d7aa05a6b9409454b2e473d473c4cee'
             'SKIP'
-            'd789446eeeb01238111dccb5dbd739ef3a8a29b2bd1788b1050a7b013623ed44'
+            'de57fb099964ec497c8727ca2fbbcc7319ec241b338bbd89f34ac9f5b5d22b19'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'e3c08f9b91611186e5ec579187ecea2a0143e5c2dc7ffc30ac6ea6e2b6d130fd'
-            '5403dead9161344b2c01027526146a250147680f4a2d32a54d40c55fc1becc8a'
-            'd55e7de60b12bca26ded4c1bb8eb5860a9092374914a201a0f6a0ed2849d099f'
+            '92f848d0e21fbb2400e50d1c1021514893423641e5450896d7b1d88aa880b2b9'
+            'fc3c50ae6bd905608e0533a883ab569fcf54038fb9d6569b391107d9fd00abbc'
+            'bc50c605bd0e1fa7437c21ddef728b83b6de3322b988e14713032993dfa1fc69'
+            '66284102261c4ed53db050e9045c8672ba0e5171884b46e58f6cd417774d8578'
             'aea75c0b07673f701856e3c2a35db33c041fdaf0bd5ef2927fb25b1bce2c2b62'
             '5ad7e021452deffd387a5b81abcd0f608f8141eaab56fbdd162ca0b7966fc3b4'
             '3845aeb3744372b716c668283b23972d76e482d8c69b107e13a13669e5671d06'
@@ -80,6 +77,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/56780
   patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
+
+  # Fix iwd provoking a BUG
+  patch -Np1 -i ../0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
 
   # Here start x205ta patches
   # Refer to https://github.com/harryharryharry/x205ta-patches for harryharryharry's gathered patches
