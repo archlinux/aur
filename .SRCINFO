@@ -1,0 +1,21 @@
+pkgbase = peony
+	pkgdesc = UKUI için dosya Yöneticisi
+	pkgver = v1.1.2+1+g79df4cb
+	pkgrel = 1
+	url = https://ukui-desktop.org
+	arch = x86_64
+	groups = ukui
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = python
+	makedepends = mate-desktop
+	makedepends = pango
+	makedepends = mate-common
+	makedepends = libnotify
+	makedepends = shared-mime-info
+	source = git+https://github.com/ukui/peony.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = peony
+
