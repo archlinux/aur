@@ -4,6 +4,7 @@ pkgbase = python-abjad
 	pkgrel = 2
 	url = https://github.com/Abjad/abjad
 	arch = any
+	groups = abjad
 	license = GPL3
 	makedepends = python-setuptools
 	depends = lilypond
