@@ -2,8 +2,8 @@
 # Contributor: Reotip Sakuraga <reotipfur@gmail.com>
 
 pkgname=doomseeker
-pkgver=1.2
-pkgrel=20180730
+pkgver=r2191+.c2c7f37b1afb+
+pkgrel=1
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
@@ -27,23 +27,27 @@ sha256sums=('SKIP'
             '96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4'
             'de43c3fe7557079f1937e6c5aef5c01fa3ce4c4bd561db73a0b2a1fe2193bcdb')
 
-_bbdir=doomseeker
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+}
+
 prepare() {
     cd $srcdir/$pkgname
     patch -p1 -i "${srcdir}/doomseeker.qt5.11.patch" 
 }
 
 build() {
-    cd $srcdir/$_bbdir
+    cd $srcdir/$pkgname
     mkdir -p build
     cd build
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
-    make -j$(nproc)
+    make
 }
 
 package() {
     mkdir -p $pkgdir/usr/games/doomseeker/engines/
-    cd $srcdir/$_bbdir/build
+    cd $srcdir/$pkgname/build
     install -Dm755 doomseeker "$pkgdir/usr/games/doomseeker"
     for f in libwadseeker.so*; do
         install -Dm755 $f "$pkgdir/usr/games/doomseeker"
