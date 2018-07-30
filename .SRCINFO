@@ -1,0 +1,22 @@
+pkgbase = parchives
+	pkgdesc = UKUI için pencere Yöneticisi
+	pkgver = 1.18.2
+	pkgrel = 1
+	url = http://www.ukui.org/
+	arch = x86_64
+	groups = ukui
+	license = GPL
+	depends = gtk3
+	depends = dconf
+	depends = libarchive
+	depends = file
+	depends = json-glib
+	depends = libnotify
+	depends = zip
+	depends = unzip
+	source = git+https://github.com/liupengluiz/parchives.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = parchives
+
