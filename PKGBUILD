@@ -2,7 +2,7 @@
 # Contributor: Troy Engel <troyengel+arch@gmail.com>
 
 pkgname=xeroxprtdrv
-pkgver=5.20.620.4112
+pkgver=5.20.626.4179
 pkgrel=1
 pkgdesc="Xerox Unix Print Drivers"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ install=${pkgname}.install
 license=('custom')
 options=('emptydirs')
 depends=('gcc-libs' 'libxinerama' 'libxcursor' 'libxdamage' 'libx11'
-         'libxau' 'libxdmcp' 'xorg-xhost' 'sed' 'awk')
-optdepends=('cups>=1.7')
+         'libxau' 'libxdmcp' 'xorg-xhost' 'sed' 'awk' 'lib32-gcc-libs')
+optdepends=('cups')
 
 source=('xeroxprtdrv.license'
         'xerox-prtdrv-xhost-permissions.desktop'
@@ -27,8 +27,8 @@ md5sums=('0a8eb0c1480a6ccc1ddab7cbb5e1bde4'
          'd380002eef6bbbbeb43cd0691123a7d4'
          '1976d9d3e95065820adbe417ec4e5b2d'
          '117637c64980344ca9bb87e8a8f10938')
-md5sums_i686=('ecbba8bad483d83840e286c49bf979d5')
-md5sums_x86_64=('98c308785477574a83171604582883e1')
+md5sums_i686=('cbeb3549ec90ead84813278686476a47')
+md5sums_x86_64=('6fa756571af8edc1dcf2e8e98fb4655d')
 
 prepare() {
     cd "$srcdir"
