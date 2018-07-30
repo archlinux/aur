@@ -4,7 +4,7 @@
 # Contributor: Ray Powell <ray_al@xphoniexx.net>
 
 pkgname=mcomix-git
-pkgver=r1476.cfe02eb
+pkgver=r1481.c8e7481
 pkgrel=1
 pkgdesc="A user-friendly, customizable image viewer specifically designed to handle comic books"
 arch=('any')
@@ -34,8 +34,8 @@ package() {
     mkdir -p ${pkgdir}/usr
     export PYTHONPATH=${pkgdir}/usr/lib/python2.7/site-packages/
     mkdir -p $PYTHONPATH
-    python2 setup.py install --prefix=${pkgdir}/usr --optimize=1 \
-    --single-version-externally-managed --root=/
+    python2 setup.py install --prefix=/usr --optimize=1 \
+    --single-version-externally-managed --root="${pkgdir}/"
 
     install -Dm755 mime/comicthumb ${pkgdir}/usr/bin/comicthumb
     install -Dm644 mime/comicthumb.1.gz ${pkgdir}/usr/share/man/man1/comicthumb.1.gz
