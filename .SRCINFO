@@ -1,0 +1,16 @@
+pkgbase = plasma-potd-spotlight
+	pkgdesc = A POTD data engine for plasma that fetches high resolution wallpapers from Microsoft Spotlight
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Aetf/plasma-potd-spotlight
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = kdeplasma-addons
+	source = plasma-potd-spotlight-1.0.1.tar.gz::https://github.com/Aetf/plasma-potd-spotlight/archive/v1.0.1.tar.gz
+	sha512sums = SKIP
+
+pkgname = plasma-potd-spotlight
+
