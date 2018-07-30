@@ -2,7 +2,7 @@
 # Contributor: Konstantinos Sideris <siderisk at auth dot gr>
 
 pkgname=nheko
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
@@ -13,8 +13,8 @@ license=("GPL3")
 depends=("lmdb" "qt5-multimedia" "qt5-svg" "libsodium" "boost-libs" "hicolor-icon-theme")
 makedepends=("cmake" "fontconfig" "qt5-tools" "git" "boost")
 
-source=(https://github.com/mujx/nheko/archive/v$pkgver.tar.gz)
-sha512sums=('1cfa961031731ba36a853d92ec3b2318b102cd161f5fdd9538057dd770ff6ad7e3a9cc624030e9f51b3ec2e1924b8c34d76a6e76b9b379d1e1b12fdd3502d79d')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mujx/nheko/archive/v$pkgver.tar.gz")
+sha512sums=('829d31aabd32338cb7eb8d15311b43e946b2b42e553894c7c5f76bb1a94cb5bbaa6f454d1910d8e6c4e10df5d2523d998743a39a1cc49850befce6d1897dbe37')
 
 prepare() {
     rm -f "$pkgname-$pkgver"/cmake/FindOlm.cmake
