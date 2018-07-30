@@ -1,0 +1,32 @@
+pkgbase = ukwm
+	pkgdesc = UKUI Pencere Yöneticisi
+	pkgver = v1.1.8+1+gaa7eb3a
+	pkgrel = 1
+	url = https://mate-desktop.org
+	arch = x86_64
+	groups = ukui
+	license = GPL
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = git
+	depends = dconf
+	depends = gobject-introspection-runtime
+	depends = gsettings-desktop-schemas
+	depends = libcanberra
+	depends = startup-notification
+	depends = zenity
+	depends = libsm
+	depends = gnome-desktop
+	depends = upower
+	depends = libxkbcommon-x11
+	depends = ukui-settings-daemon
+	depends = libgudev
+	depends = libinput
+	depends = cogl
+	depends = clutter
+	depends = pipewire
+	source = git+https://github.com/ukui/ukwm.git
+	sha256sums = SKIP
+
+pkgname = ukwm
+
