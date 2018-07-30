@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-npth
+	pkgdesc = New portable threads library (mingw-w64)
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://git.gnupg.org/cgi-bin/gitweb.cgi?p=npth.git
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !libtool
+	source = ftp://ftp.gnupg.org/gcrypt/npth/npth-1.6.tar.bz2
+	source = ftp://ftp.gnupg.org/gcrypt/npth/npth-1.6.tar.bz2.sig
+	sha256sums = 1393abd9adcf0762d34798dc34fdcf4d0d22a8410721e76f1e3afcd1daa4e2d1
+	sha256sums = SKIP
+
+pkgname = mingw-w64-npth
+
