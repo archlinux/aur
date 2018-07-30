@@ -1,8 +1,8 @@
 # Maintainer: now-im <now.im.627@gmail.com>
 
 pkgname=('la-capitaine-icon-theme')
-pkgver=0.5.0
-pkgrel=5
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="La Capitaine is an icon pack — designed to integrate with most desktop environments."
 arch=('any')
 url="https://github.com/keeferrourke/$pkgname"
@@ -10,7 +10,7 @@ license=('GPL3')
 optdepends=('elementary-icon-theme' 'breeze-icons' 'gnome-icon-theme')
 conflicts=('la-capitaine-icon-theme-git')
 source=("https://github.com/keeferrourke/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('5a4a1250ff770b2111db199b5b1cf1ec455572dde84fa34e953b46b50e17775b')
+sha256sums=('7126b24bb1d7b1d1cc9fd13c1b0cfd67e2bccbb9c20071240fe0d06f02c3c8b4')
 
 prepare() {
   cd $pkgname-$pkgver
