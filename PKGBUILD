@@ -11,6 +11,7 @@ license=('GPLv3')
 depends=('bash')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chn555/nama/archive/${pkgver}.tar.gz")
 sha256sums=('910ef13759902bfebfe3b0c4451fe3c7f2453918d95d28e14cd3096cb1ba5aa2')
+source=("$pkgname::git+https://github.com/dylanaraps/neofetch.git")
 
 package() {
   cd "${pkgname}-${pkgver}/"
