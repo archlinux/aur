@@ -1,6 +1,18 @@
---- postgresql-9.4.1/src/Makefile.shlib.orig	2015-02-10 19:14:10.984800000 +0300
-+++ postgresql-9.4.1/src/Makefile.shlib	2015-02-10 19:14:16.554000000 +0300
-@@ -86,7 +86,7 @@
+From f2d760f71d3201219cc342913ecc535f9776946d Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Fri, 27 Jul 2018 12:50:17 +0200
+Subject: [PATCH] Use *.dll.a as extension for import libraries
+
+---
+ src/Makefile.shlib   |  2 +-
+ src/backend/Makefile | 12 ++++++------
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/Makefile.shlib b/src/Makefile.shlib
+index d546ed1f31..b2c2bef2d7 100644
+--- a/src/Makefile.shlib
++++ b/src/Makefile.shlib
+@@ -85,7 +85,7 @@ else
  # Naming convention for dynamically loadable modules
  shlib		= $(NAME)$(DLSUFFIX)
  endif
@@ -9,21 +21,26 @@
  
  ifndef soname
  # additional flags for backend modules
---- postgresql-9.4.1/src/backend/Makefile.orig	2015-02-10 21:01:34.928800000 +0300
-+++ postgresql-9.4.1/src/backend/Makefile	2015-02-10 21:03:43.819000000 +0300
-@@ -79,9 +79,9 @@
+diff --git a/src/backend/Makefile b/src/backend/Makefile
+index 2640834d5f..51f127f0c9 100644
+--- a/src/backend/Makefile
++++ b/src/backend/Makefile
+@@ -80,11 +80,11 @@ ifeq ($(PORTNAME), win32)
  LIBS += -lsecur32
  
  postgres: $(OBJS) $(WIN32RES)
 -	$(CC) $(CFLAGS) $(LDFLAGS) $(LDFLAGS_EX) -Wl,--stack=$(WIN32_STACK_RLIMIT) -Wl,--export-all-symbols -Wl,--out-implib=libpostgres.a $(call expand_subsys,$(OBJS)) $(WIN32RES) $(LIBS) -o $@$(X)
 +	$(CC) $(CFLAGS) $(LDFLAGS) $(LDFLAGS_EX) -Wl,--stack=$(WIN32_STACK_RLIMIT) -Wl,--export-all-symbols -Wl,--out-implib=libpostgres.dll.a $(call expand_subsys,$(OBJS)) $(WIN32RES) $(LIBS) -o $@$(X)
  
--libpostgres.a: postgres ;
-+libpostgres.dll.a: postgres ;
+-# libpostgres.a is actually built in the preceding rule, but we need this to
++# libpostgres.dll.a is actually built in the preceding rule, but we need this to
+ # ensure it's newer than postgres; see notes in src/backend/parser/Makefile
+-libpostgres.a: postgres
++libpostgres.dll.a: postgres
+ 	touch $@
  
  endif # win32
- 
-@@ -207,7 +207,7 @@
+@@ -241,7 +241,7 @@ endif
  endif
  ifeq ($(PORTNAME), win32)
  ifeq ($(MAKE_DLL), true)
@@ -32,7 +49,7 @@
  endif
  endif
  	$(MAKE) -C catalog install-data
-@@ -265,7 +265,7 @@
+@@ -299,7 +299,7 @@ endif
  endif
  ifeq ($(PORTNAME), win32)
  ifeq ($(MAKE_DLL), true)
@@ -41,7 +58,7 @@
  endif
  endif
  	$(MAKE) -C catalog uninstall-data
-@@ -288,7 +288,7 @@
+@@ -324,7 +324,7 @@ ifeq ($(PORTNAME), cygwin)
  	rm -f postgres.dll libpostgres.a
  endif
  ifeq ($(PORTNAME), win32)
@@ -50,3 +67,6 @@
  endif
  
  distclean: clean
+-- 
+2.18.0
+
