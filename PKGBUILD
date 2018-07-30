@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/chn555/nama"
 license=('GPLv3')
 depends=('bash')
-source=("https://github.com/chn555/nama/archive/2.0.0.tar.gz")
+source=("https://github.com/chn555/nama/archive/2.0.1.tar.gz")
 
 md5sums=('SKIP')
 
