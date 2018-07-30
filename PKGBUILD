@@ -3,7 +3,7 @@
 LANG=C
 pkgname=octave-hg
 pkgrel=1
-pkgver=5.0.0r25416.a741730fca5e
+pkgver=5.0.0r25703.7b4e99fbe9d4
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -15,31 +15,29 @@ depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'openmp'
 	 'suitesparse' 'java-environment' 'qscintilla-qt5' 'termcap'
 	'qt5-tools')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gettext'
-	     'transfig' 'epstool' 'texlive-core' 'icoutils')
+	     'transfig' 'epstool' 'texlive-core' 'icoutils' 'git')
 optdepends=('texinfo: for help-support in octave'
 	    'gnuplot: alternative plotting')
 conflicts=('octave')
-provides=("octave=4.2.0")
+provides=("octave=$pkgver")
 options=('!emptydirs' '!makeflags')
-source=(git://git.sv.gnu.org/gnulib)
-md5sums=('SKIP')
-_hgroot=http://hg.savannah.gnu.org/hgweb/
+source=(hg+https://hg.savannah.gnu.org/hgweb/octave git://git.sv.gnu.org/gnulib)
+md5sums=('SKIP'
+         'SKIP')
 _hgrepo=octave
 
 pkgver() {
-  if [ -d ${_hgrepo} ]; then
-      cd ${_hgrepo}
-      hg pull -u
-  else
-    hg clone ${_hgroot}${_hgrepo}
-  fi > /dev/null 2>&1
-  cd "$srcdir"/$_hgrepo
-  _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d []|tr - _)
-  printf "%sr%s.%s" "${_appver}" "$(hg log|head -1|cut -d: -f2|tr -d " ")" "$(hg log|head -1|cut -d: -f3)"
+  cd "$srcdir"/${_hgrepo}
+   _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d []|tr - _)
+ # _appver=5.0.0
+  printf "%sr%s.%s" "${_appver}" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 build() {
-  [[ -d "$srcdir"/${_hgrepo}-local ]] && rm -rf $srcdir/${_hgrepo}-local
+  git submodule init
+  git config submodule.gnulib.url gnulib
+  git submodule update
+  [[ -d "$srcdir"/${_hgrepo}-local ]] && rm -rf "$srcdir"/${_hgrepo}-local
   cp -r "$srcdir"/${_hgrepo} "$srcdir"/${_hgrepo}-local
   cd "$srcdir"/${_hgrepo}-local
   
