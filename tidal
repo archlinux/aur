@@ -1,0 +1,2 @@
+#!/bin/sh
+electron /usr/share/tidal-music-linux-git/main.js
