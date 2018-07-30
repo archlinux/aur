@@ -1,0 +1,12 @@
+pkgbase = ash-ir-dataset-git
+	pkgdesc = An impulse response dataset for binaural synthesis of spatial audio systems on headphones
+	pkgver = r395.f22942d37
+	pkgrel = 1
+	url = https://github.com/ShanonPearce/ASH-IR-Dataset
+	arch = any
+	license = Creative Commons
+	source = git+https://github.com/ShanonPearce/ASH-IR-Dataset.git
+	sha256sums = SKIP
+
+pkgname = ash-ir-dataset-git
+
