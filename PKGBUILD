@@ -1,14 +1,14 @@
 # Maintainer: Aiyion <aur@aiyionpri.me>
 _pkgname=heimdallr
 pkgname=$_pkgname-git
-pkgver=r52.2714d31
+pkgver=r53.080a3de
 pkgrel=1
 pkgdesc="finding public ssh keys with ease"
 arch=('x86_64')
 url="https://github.com/AiyionPrime/heimdallr"
 license=('MIT')
 groups=()
-depends=('curl' 'json-c')
+depends=('curl' 'json-c' 'libssh')
 makedepends=('git')
 checkdepends=()
 optdepends=()
