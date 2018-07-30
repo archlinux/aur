@@ -1,7 +1,7 @@
 pkgbase = python-transip-api
 	pkgdesc = Python implementation of TransIP's API (unofficial)
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/benkonrath/transip-api
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-transip-api
 	depends = python-requests
 	depends = python-suds-jurko
 	source = https://github.com/benkonrath/transip-api/archive/0.4.0.tar.gz
-	md5sums = b1d50e62f61fdeadd94cdbf4288b6ebb
+	sha512sums = 1a0711dc9eaaf4f9b8fccf77293c56ba37110fe2f9f9335f1438baaa018be562ec7b6b49f521e963227c9a12edf0af1c97fff2ef98743c3875d8a5c7fb731b1f
 
 pkgname = python-transip-api
 
