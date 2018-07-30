@@ -9,12 +9,12 @@ arch=('any')
 url="https://github.com/chn555/nama"
 license=('GPLv3')
 depends=('bash')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chn555/nama/archive/${pkgver}.tar.gz")
 source=("$pkgname::git+https://github.com/chn555/nama.git")
 md5sums=('SKIP')
 
+
 package() {
-  cd "${pkgname}/"
+  cd $pkgname
   make DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/nama/LICENSE.md"
 }
