@@ -1,37 +1,29 @@
 pkgbase = kcli
-	pkgdesc = CLI wrapper around libvirt/aws/gcp/kubevirt/openstack/ovirt
-	pkgver = 12.6
-	pkgrel = 2
+	pkgdesc = kcli is a CLI wrapper around libvirt
+	pkgver = 11.10
+	pkgrel = 1
 	url = https://github.com/karmab/kcli
 	arch = any
 	license = Apache
-	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	makedepends = ruby-ronn
 	depends = cdrtools
 	depends = nmap
-	depends = python
-	depends = libvirt-python>=2.0.0
-	depends = python-ovirt-engine-sdk
-	depends = python-docker>=2.0.0
-	depends = python-flask
-	depends = python-iptools
-	depends = python-kubernetes
-	depends = python-netaddr
-	depends = python-pyaml
-	depends = python-prettytable
-	depends = python-boto3
-	depends = python-google-api-python-client
-	depends = python-google-auth-httplib2
-	depends = python-neutronclient
-	depends = python-glanceclient
-	depends = python-keystoneclient
-	depends = python-novaclient
+	depends = python2
+	depends = libvirt-python2>=2.0.0
+	depends = python2-docker>=2.0.0
+	depends = python2-flask
+	depends = python2-iptools
+	depends = python2-kubernetes
+	depends = python2-netaddr
+	depends = python2-pyaml
+	depends = python2-prettytable
 	optdepends = libvirt: locally managed VMs
 	optdepends = qemu: libvirt KVM driver
 	optdepends = docker: interaction with local docker daemon
-	provides = kcli=12.6
-	source = kcli-12.6.tar.gz::https://github.com/karmab/kcli/archive/v12.6.tar.gz
-	sha256sums = 16b069580372d066537ca767aca587a577e3848c67a10cd267bcbb67d9d926b4
+	provides = kcli=11.10
+	source = kcli-11.10.tar.gz::https://github.com/karmab/kcli/archive/v11.10.tar.gz
+	sha256sums = c409a60a8f9e1713db1e34b2afef2b8cb27e90dc3b13504d1dcf409e1404b8d0
 
 pkgname = kcli
 
