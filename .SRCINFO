@@ -5,6 +5,7 @@ pkgbase = ruby-yajl-ruby
 	url = http://github.com/brianmario/yajl-ruby
 	arch = x86_64
 	arch = i686
+	arch = armv7h
 	license = MIT
 	depends = ruby
 	depends = ruby-rdoc
