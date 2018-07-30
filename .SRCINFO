@@ -7,7 +7,7 @@ pkgbase = nama
 	license = GPLv3
 	depends = bash
 	source = nama::git+https://github.com/dylanaraps/neofetch.git
-	sha256sums = 910ef13759902bfebfe3b0c4451fe3c7f2453918d95d28e14cd3096cb1ba5aa2
+	md5sums = SKIP
 
 pkgname = nama
 
