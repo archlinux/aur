@@ -4,13 +4,13 @@
 pkgname=python-cheetah3
 _name=Cheetah3
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python 3-powered template engine and code generator"
 arch=(x86_64)
 url="http://www.cheetahtemplate.org"
 license=(custom)
 depends=(python)
-makedepends=('python-setuptools' 'python-pygments' 'python-markdown')
+makedepends=('python-pygments' 'python-markdown')
 provides=('cheetah3' 'python-cheetah3')
 conflicts=('cheetah3' 'python-cheetah3')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
@@ -24,7 +24,7 @@ build() {
 package() {
   msg "Install..."
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}" || return 1
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   msg2 "Install copyright resources in /usr/share/licenses/${pkgname}..."
   install -Dm644 "${srcdir}/${_name}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
