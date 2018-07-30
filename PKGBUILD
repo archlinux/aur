@@ -1,7 +1,7 @@
-# Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
+# Maintainer: Michael Yang <ohmyarchlinux@pm.me>
 
 pkgname=mingw-w64-fmt-git
-pkgver=4.1.1.r2374.3193460
+pkgver=5.1.0.r36.g0c63d15
 pkgrel=1
 pkgdesc='An open-source formatting library for C++ (mingw-w64)'
 url='http://fmtlib.net'
@@ -11,17 +11,14 @@ makedepends=('git' 'mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-fmt')
 provides=('mingw-w64-fmt')
-source=('git://github.com/fmtlib/fmt.git')
+source=('git+https://github.com/fmtlib/fmt.git')
 sha512sums=('SKIP')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 pkgver() {
-  mkdir -p build
-  cd build
-  version=$(cmake ../fmt | grep Version | cut -d ' ' -f3)
-  cd ../fmt
-  echo "${version}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd fmt
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
@@ -31,7 +28,6 @@ build() {
     ${_arch}-cmake \
       -DFMT_DOC=OFF \
       -DFMT_TEST=OFF \
-      -DCMAKE_BUILD_TYPE=Release \
       ../fmt
     make
     popd
@@ -42,7 +38,6 @@ build() {
       -DFMT_DOC=OFF \
       -DFMT_TEST=OFF \
       -DBUILD_SHARED_LIBS=FALSE \
-      -DCMAKE_BUILD_TYPE=Release \
       ../fmt
     make
     popd
@@ -53,13 +48,13 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    mkdir -p "$pkgdir"/usr/${_arch}/bin
-    mv "$pkgdir"/usr/${_arch}/lib/*.dll "$pkgdir"/usr/${_arch}/bin/
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    mkdir -p "${pkgdir}"/usr/${_arch}/bin
+    mv "${pkgdir}"/usr/${_arch}/lib/*.dll "${pkgdir}"/usr/${_arch}/bin/
+    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
   done
   for _arch in ${_architectures}; do
     cd "${srcdir}/build-${_arch}-static"
     make DESTDIR="${pkgdir}" install
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
 }
