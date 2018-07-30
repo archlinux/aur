@@ -12,6 +12,9 @@ makedepends=(cmake gcc)
 source=("http://trna.ucsc.edu/software/trnascan-se-${pkgver}.tar.gz")
 sha512sums=('4f4fcd4f694c4bf3ff2ff8f531dc7e19668d46dc3017979a8f24a99ecd967e48adbf6a9591ce4fd9f6ceda871ba72a9f32daa6b1001308709c8c66e1f1e4b58f')
 
+prepare() {
+  chmod -R o+xr tRNAscan-SE-2.0/lib/tRNAscanSE/
+}
 
 build() {
   cd tRNAscan-SE-2.0
