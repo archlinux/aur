@@ -1,10 +1,11 @@
-# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Sven Schwedas <sven.schwedas@tao.at>
+# Maintainer: Sven Schwedas <sven dot schwedas at tao dot at>
+# Contributor: Levente Polyak <anthraxx at archlinux dot org>
+# Contributor: William Gathoye <william + aur at gathoye dot be>
 
 pkgname=dh-strip-nondeterminism
-_gitcommit=44531930caaebfbb56700a117c5de28c9d55f17e
-pkgver=0.041
-pkgrel=2
+_gitcommit=0f98d4ba83c2e78cda2bf4b5f4d0ec40cc07538e
+pkgver=0.042
+pkgrel=1
 pkgdesc='Tool for stripping bits of non-deterministic information from files, supports dh'
 url='https://salsa.debian.org/reproducible-builds/strip-nondeterminism'
 arch=('any')
@@ -45,6 +46,9 @@ package() {
   cd ${pkgname}
   make DESTDIR="${pkgdir}" install
   install -Dm 644 README -t "${pkgdir}/usr/share/doc/${pkgname}"
+  rm "${pkgdir}/usr/bin/vendor_perl/strip-nondeterminism"
+  mv "${pkgdir}/usr/bin/vendor_perl/dh_strip_nondeterminism" "${pkgdir}/usr/bin/"
+  rm -r "${pkgdir}/usr/bin/vendor_perl"
 }
 
 # vim: ts=2 sw=2 et:

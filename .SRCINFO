@@ -1,7 +1,7 @@
 pkgbase = dh-strip-nondeterminism
 	pkgdesc = Tool for stripping bits of non-deterministic information from files, supports dh
-	pkgver = 0.041
-	pkgrel = 2
+	pkgver = 0.042
+	pkgrel = 1
 	url = https://salsa.debian.org/reproducible-builds/strip-nondeterminism
 	arch = any
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = dh-strip-nondeterminism
 	provides = strip-nondeterminism
 	conflicts = strip-nondeterminism
 	options = !emptydirs
-	source = dh-strip-nondeterminism::git+https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git#commit=44531930caaebfbb56700a117c5de28c9d55f17e
+	source = dh-strip-nondeterminism::git+https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git#commit=0f98d4ba83c2e78cda2bf4b5f4d0ec40cc07538e
 	validpgpkeys = C2FE4BD271C139B86C533E461E953E27D4311E58
 	validpgpkeys = EF5D84C1838F2EB6D8968C0410378EFC2080080C
 	validpgpkeys = 2F5DAF3FC1F793D94F3D900CA721DA055374AA4F
