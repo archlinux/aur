@@ -7,7 +7,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url='https://www.webvirtmgr.net/'
 license=('Apache')
-depends=('libvirt' 'libvirt-python' 'qemu' 'dnsmasq' 'bridge-utils' 'ebtables' 'dmidecode' 'python2' 'supervisor'
+depends=('libvirt' 'libvirt-python2' 'qemu' 'dnsmasq' 'bridge-utils' 'ebtables' 'dmidecode' 'python2' 'supervisor'
          'websockify')
 makedepends=('git' 'python2-pip')
 options=('!strip' '!emptydirs')
