@@ -3,7 +3,7 @@
 
 pkgname=python-proselint
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 provides=('proselint')
 pkgdesc="A linter for prose"
 arch=('any')
