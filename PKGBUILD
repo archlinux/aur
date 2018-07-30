@@ -5,7 +5,7 @@ pkgbase="python-keras"
 pkgname=("python-keras" "python2-keras")
 _pkgname="keras"
 pkgver="2.2.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="Deep Learning library (convnets, recurrent neural networks, and more)"
 arch=('any')
 url="https://github.com/fchollet/keras"
@@ -40,7 +40,9 @@ build() {
 
 package_python2-keras() {
   depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-h5py' 'python2-yaml')
-  optdepends=('python2-theano' 'cudnn')
+  optdepends=('python2-theano' 'cudnn'
+              'python2-keras-applications: Must Install for python2-keras to work!'
+              'python2-keras-preprocessing: Must Install for python2-keras to work!')
   cd "$srcdir/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --root="$pkgdir"/ --optimize=1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
@@ -48,7 +50,9 @@ package_python2-keras() {
 
 package_python-keras() {
   depends=('python' 'python-numpy' 'python-scipy' 'python-h5py' 'python-yaml')
-  optdepends=('python-theano' 'python-tensorflow' 'cudnn')
+  optdepends=('python-theano' 'python-tensorflow' 'cudnn'
+              'python-keras-applications: Must Install for python-keras to work!'
+              'python-keras-preprocessing: Must Install for python-keras to work!')
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir"/ --optimize=1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"

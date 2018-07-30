@@ -1,7 +1,7 @@
 pkgbase = python-keras
 	pkgdesc = Deep Learning library (convnets, recurrent neural networks, and more)
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fchollet/keras
 	arch = any
 	license = MIT
@@ -31,6 +31,8 @@ pkgname = python-keras
 	optdepends = python-theano
 	optdepends = python-tensorflow
 	optdepends = cudnn
+	optdepends = python-keras-applications: Must Install for python-keras to work!
+	optdepends = python-keras-preprocessing: Must Install for python-keras to work!
 
 pkgname = python2-keras
 	depends = python2
@@ -40,4 +42,6 @@ pkgname = python2-keras
 	depends = python2-yaml
 	optdepends = python2-theano
 	optdepends = cudnn
+	optdepends = python2-keras-applications: Must Install for python2-keras to work!
+	optdepends = python2-keras-preprocessing: Must Install for python2-keras to work!
 
