@@ -1,0 +1,13 @@
+# and another one from FS#26020
+
+--- a/src/video/SDL_yuv_sw.c    2009-10-13 06:07:15.000000000 +0700
++++ b/src/video/SDL_yuv_sw.c    2011-09-20 19:26:30.247742620 +0700
+@@ -89,6 +89,8 @@
+ #include "SDL_yuvfuncs.h"
+ #include "SDL_yuv_sw_c.h"
+ 
++#undef __OPTIMIZE__
++
+ /* The functions used to manipulate software video overlays */
+ static struct private_yuvhwfuncs sw_yuvfuncs = {
+ 	SDL_LockYUV_SW,

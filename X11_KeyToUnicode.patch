@@ -1,0 +1,52 @@
+
+# HG changeset patch
+# User Sam Lantinga <slouken@libsdl.org>
+# Date 1327258041 18000
+# Node ID 900a0fae90ca65cff55a70a17b9ec39d2ddccbcf
+# Parent  5273dfd19a5e8c5736a0d417bd441f704c5355f8
+Fixed bug 1390 - X11_KeyToUnicode
+
+manuel.montezelo 2012-01-22 08:56:18 PST
+
+We had the following bug report at Debian:
+http://bugs.debian.org/376560
+
+Same one in Ubuntu:
+https://bugs.launchpad.net/ubuntu/+source/libsdl1.2/+bug/66217
+
+We've been including a patch since then (attached) to actually export the
+symbol, since 2006.  In the last release the function seems to be there, alive
+and kicking.
+
+It's affecting other people too:
+http://www.garagegames.com/community/forums/viewthread/52287
+
+diff -r 5273dfd19a5e -r 900a0fae90ca src/video/x11/SDL_x11events.c
+--- a/src/video/x11/SDL_x11events.c	Sat Jan 21 12:06:51 2012 -0500
++++ b/src/video/x11/SDL_x11events.c	Sun Jan 22 13:47:21 2012 -0500
+@@ -1246,8 +1246,11 @@
+  * sequences (dead accents, compose key sequences) will not work since the
+  * state has been irrevocably lost.
+  */
++extern DECLSPEC Uint16 SDLCALL X11_KeyToUnicode(SDLKey, SDLMod);
++
+ Uint16 X11_KeyToUnicode(SDLKey keysym, SDLMod modifiers)
+ {
++	static int warning = 0;
+ 	struct SDL_VideoDevice *this = current_video;
+ 	char keybuf[32];
+ 	int i;
+@@ -1255,6 +1258,12 @@
+ 	XKeyEvent xkey;
+ 	Uint16 unicode;
+ 
++	if ( warning ) {
++		warning = 0;
++		fprintf(stderr, "WARNING: Application is using X11_KeyToUnicode().\n");
++		fprintf(stderr, "This is not an official SDL function, please report this as a bug.\n");
++	}
++
+ 	if ( !this || !SDL_Display ) {
+ 		return 0;
+ 	}
+
