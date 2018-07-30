@@ -3,7 +3,8 @@
 _pkgname=abjad-ext-nauert
 pkgname="python-$_pkgname"
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
+groups=('abjad')
 pkgdesc="Abjad quantization extension, based on Paul Nauert's Q-Grids"
 arch=('any')
 url="https://github.com/Abjad/$_pkgname"
