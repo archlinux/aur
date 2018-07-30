@@ -1,7 +1,7 @@
 # Maintainer: Aiyion <aur@aiyionpri.me>
 _pkgname=heimdallr
 pkgname=$_pkgname-git
-pkgver=r50.4b58490
+pkgver=r52.2714d31
 pkgrel=1
 pkgdesc="finding public ssh keys with ease"
 arch=('x86_64')
@@ -39,7 +39,10 @@ build() {
 
 package() {
         cd "$_pkgname"
-        make DESTDIR="$pkgdir/" install
+        make DESTDIR="$pkgdir/" install-bin
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	make doc
+	install -Dm644 heimdallr.1.gz "$pkgdir/usr/share/man/man1/heimdallr.1.gz"
+
 }
 

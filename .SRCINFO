@@ -1,6 +1,6 @@
 pkgbase = heimdallr-git
 	pkgdesc = finding public ssh keys with ease
-	pkgver = r50.4b58490
+	pkgver = r52.2714d31
 	pkgrel = 1
 	url = https://github.com/AiyionPrime/heimdallr
 	arch = x86_64
