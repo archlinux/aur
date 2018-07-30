@@ -2,7 +2,7 @@
 # Contributor: Dylan Araps <dylan.araps@gmail.com>
 
 pkgname=nama
-pkgver=1.1
+pkgver=v1.1
 pkgrel=1
 pkgdesc="This tool uses nmcli to easily set static ip addresses"
 arch=('any')
