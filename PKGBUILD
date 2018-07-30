@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=grcompiler-git
-pkgver=r458.c15fa64
+pkgver=r461.da31ed8
 pkgrel=1
 epoch=
 pkgdesc="The SIL Graphite compiler"
@@ -9,7 +9,7 @@ url="https://github.com/silnrsi/grcompiler"
 license=('custom' 'GPL' 'LGPL' 'CPL')
 categories=()
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
