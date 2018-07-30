@@ -1,0 +1,16 @@
+pkgbase = pixiecore-git
+	pkgdesc = An all-in-one tool for easy netbooting
+	pkgver = r306.870d490
+	pkgrel = 1
+	url = https://github.com/google/netboot
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = pixiecore
+	conflicts = pixiecore
+
+pkgname = pixiecore-git
+
