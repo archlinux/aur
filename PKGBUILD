@@ -1,6 +1,6 @@
 # Maintainer: Yusuke Miyazaki <miyazaki.dev (at) gmail.com>
 pkgname=mackerel-agent
-pkgver=0.55.0
+pkgver=0.56.0
 pkgrel=1
 pkgdesc="A revolutionary new kind of application performance management"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ conflicts=('mackerel-agent-git')
 makedepends=('go')
 backup=('etc/mackerel-agent/mackerel-agent.conf')
 source=("https://github.com/mackerelio/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('24a8dc6eeb453a0607cea0537a5de4b3')
+md5sums=('787fa8b4fd099cf4a19e7e0ee130db03')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
