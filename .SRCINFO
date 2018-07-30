@@ -1,0 +1,17 @@
+pkgbase = ene-git
+	pkgdesc = An experimental end to end email encryption tool
+	pkgver = 0.1.0.56
+	pkgrel = 1
+	url = https://github.com/quininer/ene
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	provides = ene
+	conflicts = ene
+	source = ene::git+https://github.com/quininer/ene
+	sha256sums = SKIP
+
+pkgname = ene-git
+
