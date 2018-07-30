@@ -1,4 +1,4 @@
-pkgbase = nama-git
+pkgbase = nama
 	pkgdesc = This tool uses nmcli to easily set static ip addresses
 	pkgver = 2.0.0
 	pkgrel = 1
@@ -6,8 +6,8 @@ pkgbase = nama-git
 	arch = any
 	license = GPLv3
 	depends = bash
-	source = nama-git::git+https://github.com/chn555/nama.git
+	source = nama::git+https://github.com/chn555/nama.git
 	md5sums = SKIP
 
-pkgname = nama-git
+pkgname = nama
 

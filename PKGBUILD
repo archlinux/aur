@@ -1,7 +1,7 @@
 # Maintainer: Chn Tondovsko <chn566@gmail.com>
 # Contributor: Bigrush <Tom.harpaz98@gmail.com>
 
-pkgname=nama-git
+pkgname=nama
 pkgver=2.0.0
 pkgrel=1
 pkgdesc="This tool uses nmcli to easily set static ip addresses"
