@@ -1,9 +1,10 @@
 pkgbase = python-abjad-ext-cli
 	pkgdesc = Abjad CLI extension
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Abjad/abjad-ext-cli
 	arch = any
+	groups = abjad
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-abjad
