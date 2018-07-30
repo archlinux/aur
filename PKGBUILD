@@ -2,7 +2,7 @@
 # Contributor: Dylan Araps <dylan.araps@gmail.com>
 
 pkgname=nama
-pkgver=v1.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="This tool uses nmcli to easily set static ip addresses"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/chn555/nama"
 license=('GPLv3')
 depends=('bash')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chn555/nama/archive/${pkgver}.tar.gz")
-source=("$pkgname::git+https://github.com/dylanaraps/neofetch.git")
+source=("$pkgname::git+https://github.com/chn555/nama.git")
 md5sums=('SKIP')
 
 package() {

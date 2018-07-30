@@ -6,8 +6,7 @@ pkgbase = nama
 	arch = any
 	license = GPLv3
 	depends = bash
-	source = nama::git+https://github.com/dylanaraps/neofetch.git
+	source = nama::git+https://github.com/chn555/nama.git
 	md5sums = SKIP
 
 pkgname = nama
-
