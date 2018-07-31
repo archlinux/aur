@@ -26,7 +26,7 @@ pkgver(){
 
 package() {
     install -d ${pkgdir}/usr/share/icons
-    cp -r ${gitname}/${gitname}* ${pkgdir}/usr/share/icons/
+    cp -r ${gitname}/* ${pkgdir}/usr/share/icons/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
     rm -rf "$pkgdir/usr/share/icons/README.md"
