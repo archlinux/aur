@@ -9,7 +9,9 @@ pkgdesc="Ansible Container is a tool to build Docker images and orchestrate cont
 arch=('any')
 url="https://github.com/ansible/ansible-container"
 license=('GPL')
-depends=('python-structlog' 'python-six' 'python-jinja' 'python-ruamel-yaml' 'python-pip' 'python-requests' 'python-yaml')
+conflicts=('ansible-container')
+provides=('ansible-container')
+depends=('python-structlog' 'python-six' 'python-jinja' 'python-ruamel-yaml' 'python-pip' 'python-requests' 'python-yaml' 'python-jsonschema' 'python-docker')
 optdepends=('python-docker: building docker containers')
 #checkdepends=('ansible' 'python-pytest' 'docker' 'python-jmespath')
 source=("$_gitname::git+https://github.com/ansible/$_gitname.git#branch=develop")
