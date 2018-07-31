@@ -1,6 +1,7 @@
 # Maintainer: Chris Mustola <chris.mustola at gmail dot com>
 
 pkgname=touchpad_config
+pkgbase="$pkgname-git"
 pkgver=1.0
 pkgrel=1
 pkgdesc="A simple tool that uses xinput to enable Tap to click and natural scrolling on a touchpad"

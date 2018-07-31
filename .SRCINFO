@@ -1,4 +1,4 @@
-pkgbase = touchpad_config
+pkgbase = touchpad_config-git
 	pkgdesc = A simple tool that uses xinput to enable Tap to click and natural scrolling on a touchpad
 	pkgver = 1.0
 	pkgrel = 1
