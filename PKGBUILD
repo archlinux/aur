@@ -1,7 +1,7 @@
 # Maintainer: chenjunyu19 <1335546814@qq.com>
 
 pkgname=deepin-dock-plugin-cmdu-git
-pkgver=r16.b3fa205
+pkgver=r17.9650621
 pkgrel=1
 pkgdesc="深度Linux系统网速任务栏插件，鼠标悬浮显示开机时间、CPU使用率、内存使用率、下载字节、上传字节。"
 arch=('x86_64')
