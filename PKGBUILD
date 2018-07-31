@@ -1,5 +1,5 @@
 pkgname=electrum-ltc-git
-pkgver=3.1.3.1.git20180419.5672ca65
+pkgver=3.2.2.git20180729.062669a0
 pkgrel=1
 pkgdesc='Lightweight Litecoin client'
 arch=(any)
@@ -10,7 +10,6 @@ depends=(python-btchip
          python-ecdsa
          python-jsonrpclib-pelix
          python-matplotlib
-         python-pbkdf2
          python-protobuf
          python-pyaes
          python-pycryptodomex
@@ -27,14 +26,14 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd electrum-ltc
-  printf %s.git%s "$(grep -om1 '[0-9.]*' lib/version.py)" \
+  printf %s.git%s "$(grep -om1 '[0-9.]*' electrum_ltc/version.py)" \
                   "$(git log -1 --format=%cd.%h --date=short | tr -d -)"
 }
 
 build() {
   cd electrum-ltc
-  pyrcc5 icons.qrc >gui/qt/icons_rc.py
-  protoc --proto_path=lib --python_out=lib lib/paymentrequest.proto
+  pyrcc5 icons.qrc >electrum_ltc/gui/qt/icons_rc.py
+  protoc --proto_path=electrum_ltc --python_out=electrum_ltc electrum_ltc/paymentrequest.proto
   contrib/make_locale
   ./setup.py build
 }
