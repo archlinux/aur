@@ -1,0 +1,26 @@
+pkgbase = mingw-w64-crypto++
+	pkgdesc = A free C++ class library of cryptographic schemes (mingw-w64)
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://www.cryptopp.com/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = unzip
+	makedepends = dos2unix
+	depends = mingw-w64-crt
+	noextract = cryptopp700.zip
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://www.cryptopp.com/cryptopp700.zip
+	source = libcrypto++.pc
+	source = cryptopp-5.6.5-cmake.patch
+	source = fix-test-linking.patch
+	sha256sums = a4bc939910edd3d29fb819a6fc0dfdc293f686fa62326f61c56d72d0a366ceb0
+	sha256sums = baea2372d9f490fa79d0431cd4f8eea515501b5553c6b4ed4a1cbbf3879ca5f3
+	sha256sums = 0486178005a7fe8a0659f59d3c4fafafa39d870f6e9f812bcf9131ce4758c914
+	sha256sums = 99e5bb3ba211c6155a19a170b7e498b904bf821f7d2aa46be06d08a87846fa17
+
+pkgname = mingw-w64-crypto++
+
