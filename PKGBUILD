@@ -11,8 +11,8 @@ license=('custom:BSD')
 depends=('python' 'vala' 'glib2' 'ruby-gio2' 'gtk3' 'sqlite' 'gobject-introspection')
 optdepends=('valadoc:        A documentation tool for vala')
 makedepends=('scour')
-source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-
+source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('8d4bc06bca0669b1d6402d9272d024928a9a433addb2acd56924dfae1e1e1184')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
