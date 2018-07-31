@@ -9,6 +9,8 @@ url="https://bitwarden.com"
 license=('GPL')
 groups=('')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
+conflicts=('bitwarden')
+provides=('bitwarden')
 options=('!strip' '!emptydirs')
 source=("https://github.com/bitwarden/desktop/releases/download/v${pkgver}/Bitwarden-${pkgver}-amd64.deb")
 
