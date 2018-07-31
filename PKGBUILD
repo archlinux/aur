@@ -10,7 +10,7 @@ url='https://lutris.net/'
 license=('GPL3')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
          'python-dbus' 'python-gobject' 'python-yaml' 'python-evdev'
-         'lib32-sqlite')
+         'lib32-sqlite', 'cabextract')
 optdepends=(
     'wine: recommended to avoid dependency issues'
     'wine-staging: recommended to avoid dependency issues (Staging patches)'
