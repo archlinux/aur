@@ -1,13 +1,13 @@
 pkgbase = besttrace
 	pkgdesc = IPIP.net 开发的加强版 traceroute，附带链路可视化
-	pkgver = 1.1.5
+	pkgver = 1.2
 	pkgrel = 1
-	url = https://www.ipip.net/download.html#ip_trace
+	url = https://www.ipip.net/download.html
 	arch = x86_64
 	arch = i686
 	license = custom
 	source = https://cdn.ipip.net/17mon/besttrace4linux.zip
-	md5sums = 2b40ca3c811f1e7d34d0c4491ebd8980
+	md5sums = e209a35be256e25289ac7c581d60028d
 
 pkgname = besttrace
 
