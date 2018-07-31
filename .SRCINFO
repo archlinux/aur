@@ -1,0 +1,14 @@
+pkgbase = msm-git
+	pkgdesc = Minecraft Server Manager: A single init script which makes running multiple Minecraft/Bukkit servers easier for us admins.
+	pkgver = 0.9.7.r0.0311691
+	pkgrel = 1
+	url = http://msmhq.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/msmhq/msm.git
+	md5sums = SKIP
+
+pkgname = msm-git
+
