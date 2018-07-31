@@ -1,22 +1,22 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=xfce-polkit
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc='A simple PolicyKit authentication agent for XFCE'
 arch=('x86_64' 'i686')
-url="https://github.com/ncopa/xfce-polkit"
+url='https://github.com/ncopa/xfce-polkit'
 license=(GPL)
 depends=('polkit' 'libxfce4ui')
 provides=('polkit-gnome')
 conflicts=('xfce-polkit-git' 'polkit-gnome')
 source=(https://github.com/ncopa/xfce-polkit/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz
         xfce-polkit.desktop)
-sha256sums=('8947a2582dacad78cfab89b3ee390e1a7810b2457343e6db558d6ee9a872be3a'
-            '03b0974e70b6f02d708a90565f8289433995ae77d69be27f8675d6e7d7c12c89')
+sha512sums=('2f6c2300caad1410f139e9192046a60e4e64954867085d22ab403f7808634cce7a269de05de13bebeda025c9e5251b1c042efc5af1417f0153dec47c616d15ba'
+            '08843b55d193dfdaea9146500936e459a28971fbf5c1b9e045ca1247a319f3e0c030dba1cb58977e87951149993139df25328c14a5a5bf39fe60b35deb2ba433')
 
-build() { 
-  cd "$srcdir/$pkgname-$pkgver"
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
   aclocal
   autoconf
   automake --add-missing
@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver/src/xfce-polkit" "$pkgdir/usr/lib/$pkgname/xfce-polkit"
-  install -Dm644 "$srcdir/xfce-polkit.desktop" "$pkgdir/etc/xdg/autostart/xfce-polkit.desktop"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src/xfce-polkit" "${pkgdir}/usr/lib/${pkgname}/xfce-polkit"
+  install -Dm644 "${srcdir}/xfce-polkit.desktop" "${pkgdir}/etc/xdg/autostart/xfce-polkit.desktop"
 }
