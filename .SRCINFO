@@ -1,7 +1,7 @@
 pkgbase = breeze-hacked-cursor-theme-bin
-	pkgdesc = Breeze Hacked cursor theme.
+	pkgdesc = Breeze Hacked cursor theme
 	pkgver = 2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/
 	arch = any
 	license = GPL
