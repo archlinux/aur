@@ -99,7 +99,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             # Patch form Gentoo
             'c8225c0c14288c21f5cc448afc0f67fc4563517c39a8680af9e659f5b2d8f418'
             'bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562'
-            'fa31a6815332a7fa199915458c80f152f2d6808835d780652675707d3395c091'
+            '1bc5df96750e825a3ef01958df9497d4fbdeb3f25681a3a034e0d4a04b9c3479'
             # Misc Patches
             '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
             '957d777c67756074c8e028d08c1e88e738f881b3a8569e60c5bdd1da6737e305'
