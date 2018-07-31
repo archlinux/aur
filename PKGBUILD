@@ -1,18 +1,19 @@
 # Maintainer: Martynas Janu <martynas.janu at googlemail dot com>
+# Contributor: Benjamin Asbach <archlinux-aur.pkgname@impl.it>
 pkgname=apache-netbeans
-pkgver=9.0rc1
+pkgver=9.0
 pkgrel=5
 pkgdesc="Apache Netbeans IDE development platform"
 arch=('i686' 'x86_64')
 url="https://netbeans.apache.org"
 license=('Apache')
 options=('!strip')
-depends=('jre9-openjdk')
+depends=('java-runtime>=9')
 provides=('apache-netbeans')
 conflicts=('apache-netbeans')
-source=("http://www-eu.apache.org/dist/incubator/netbeans/incubating-netbeans-java/incubating-9.0-rc1/incubating-netbeans-java-9.0-rc1-bin.zip"
+source=("http://www-eu.apache.org/dist/incubator/netbeans/incubating-netbeans-java/incubating-9.0/incubating-netbeans-java-9.0-bin.zip"
         "apache-netbeans.desktop")
-sha256sums=("ef326d72aa5c7c2d34550e07c0ebd08cc74025e04f2548379407648ad8bccd02"
+sha256sums=("f5c2a5b74eea3a6d321f765d20e03c04f78243eb92c4707d80c282a80410c3a3"
             "1f532b1414567911795a5f8f2776452771730bb4a441abd788a6ac3ad097012f")
 
 package() {
