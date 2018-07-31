@@ -2,12 +2,12 @@
 
 pkgname=libpdfium-nojs
 pkgver=3440.r7.a1c1c63d34
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
 license=('BSD')
-depends=('freetype2' 'lcms2' 'libjpeg')
+depends=('freetype2' 'lcms2' 'libjpeg' 'openjpeg2')
 conflicts=('libpdfium-bin')
 provides=('libpdfium')
 makedepends=('git' 'python2' 'gn' 'ninja')
@@ -16,12 +16,14 @@ source=("git+https://pdfium.googlesource.com/pdfium"
 	"git+https://chromium.googlesource.com/chromium/src/build.git"
 	"git+https://chromium.googlesource.com/chromium/buildtools.git"
 	"libpdfium.pc"
+	"openjpeg.patch"
 	)
 
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '7fbbe2baf9a1fed80ad74278e901fa0e')
+         '7fbbe2baf9a1fed80ad74278e901fa0e'
+         '18cb7ae314a40fec21949a5f87bb80d3')
 
 pkgver() {
 
@@ -38,8 +40,8 @@ prepare() {
 
   cd "$srcdir/pdfium"
 
-  ln -s $srcdir/build build
-  ln -s $srcdir/buildtools buildtools
+  ln -sf $srcdir/build build
+  ln -sf $srcdir/buildtools buildtools
 
   # Pdfium is developed alongside Chromium and does not provide releases
   # Upstream recommends using Chromium's dev channels instead
@@ -61,7 +63,7 @@ prepare() {
 
   # Use system provided icu library (unbundling)
   mkdir -p "$srcdir/pdfium/third_party/icu"
-  ln -s "$srcdir/build/linux/unbundle/icu.gn" "$srcdir/pdfium/third_party/icu/BUILD.gn"
+  ln -sf "$srcdir/build/linux/unbundle/icu.gn" "$srcdir/pdfium/third_party/icu/BUILD.gn"
 
   # Download and decode shim header script needed to unbundle icu (gittiles is weird)
   mkdir -p "$srcdir/pdfium/tools/generate_shim_headers/"
@@ -69,6 +71,10 @@ prepare() {
   curl https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT \
     | base64 --decode > "$srcdir/pdfium/tools/generate_shim_headers/generate_shim_headers.py"
   echo "Done."
+
+  # Unbundle openjpeg
+  cd "$srcdir"
+  patch -p2 < "$srcdir/openjpeg.patch"
 
   # Patch BUILD.gn to build a shared library
   cd "$srcdir/pdfium"
