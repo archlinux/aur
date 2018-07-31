@@ -9,7 +9,7 @@ pkgbase = port-protection
 	makedepends = cmake
 	depends = openssl
 	options = !strip
-	source = port-protection.tar.gz::https://github.com/PinkD/PortProtection/archive/1.1.tar.gz
+	source = port-protection-1.1.tar.gz::https://github.com/PinkD/PortProtection/archive/1.1.tar.gz
 	md5sums = e4094aadc55719b4e6c6ef8d30b539a9
 
 pkgname = port-protection

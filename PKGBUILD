@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('openssl')
 makedepends=('cmake')
 options=('!strip')
-source=("$pkgname.tar.gz"::"https://github.com/PinkD/PortProtection/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz"::"https://github.com/PinkD/PortProtection/archive/$pkgver.tar.gz")
 md5sums=('e4094aadc55719b4e6c6ef8d30b539a9')
 
 build() {
