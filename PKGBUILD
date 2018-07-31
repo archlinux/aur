@@ -1,8 +1,8 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=in
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Run a command in a given directory'
 arch=('x86_64')
 url='https://github.com/xyproto/in'
