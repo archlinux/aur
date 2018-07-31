@@ -11,7 +11,7 @@ depends=('xdg-utils' 'awesome-terminal-fonts' 'lib32-gtk2' 'lib32-libpng12')
 source_x86_64=("https://www.quickandeasywebbuilder.com/quick-n-easy-web-builder-5_${pkgver}_i386.deb")
 source=($pkgname.desktop
         $pkgname.png)
-sha512sums=('bcf377d2eb1514d0bc0207849b6c7e5e1cf962bd2e4fab9e080254df8797fd4345375af86aff5718da593e780fd2aeb32b3da449fde85d644a5f398d1cf0ab1e'
+sha512sums=('7512d1c51dc7190c51f73bbb33924e4563e9b6c4d15464da6a88eafec6b34816d946b725e60c8541407044f7181d67f412be65d00e3cd39b1d9d51f0f31e9e08'
          'a240efc6eb01f3bccddcd5bc4dfa0c91f5ad7ec615293a0832a46c117f9c6e321bc3e25c1d38b7e07577980f2bea85a101105a771130023be6683c0386d46262')
 sha512sums_x86_64=('38fce4389ac02b9a4cc0d2e426e51c49e3a175a6cb138853c98f342b28954e4b69da9865ca5ad1ef2fc5b5abe5eab2cf221494fc6411718e116ed48b2bfb2841')
         

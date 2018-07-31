@@ -3,7 +3,7 @@ Name=Quick and Easy Web Builder
 Type=Application
 Categories=Development
 Exec=/opt/quick-n-easy-web-builder-5/qnewb %U
-Icon=quick-n-easy-web-builder
+Icon=quick-n-easy-web-builder-5
 MimeType=text/html;
 Keywords=Text;Editor;Write;Web;Development;
 
