@@ -1,6 +1,6 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 pkgname=mato-icons-git
-pkgver=latest
+pkgver=v1.4.r69.g80ec020
 pkgrel=1
 pkgdesc="Mato is a Material Design inspired icon theme for Linux. It features simple and modern icons based on the official icons."
 arch=('any')
@@ -17,7 +17,13 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+    cd "${pkgname}"
+    make
+}
+
 package() {
-    install -dm 755 "${pkgdir}"/usr/share/icons/Mato
-    cp -dr --no-preserve='ownership' "${pkgname}"/* "${pkgdir}"/usr/share/icons/Mato
+    cd "${pkgname}"
+    export INSTALL_DIR="${pkgdir}/usr/share/icons/"
+    make install
 }
