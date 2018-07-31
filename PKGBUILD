@@ -8,8 +8,8 @@
 
 # Maintainer: wore <wore@foreveralone.tokyo>
 pkgname='msm-git'
-pkgver=0.9.7.r0.0311691
-pkgrel=1
+pkgver=0.0.0
+pkgrel=2
 pkgdesc='Minecraft Server Manager: A single init script which makes running multiple Minecraft/Bukkit servers easier for us admins.'
 arch=('i686' 'x86_64')
 url='http://msmhq.com/'
