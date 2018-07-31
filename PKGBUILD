@@ -65,7 +65,7 @@ _pkgbase=mozc-ut2
 pkgname=fcitx-mozc-ut2
 pkgdesc="Mozc the Japanese Input Method with Mozc UT2 Dictionary (additional dictionary) and uim-mozc (optional)"
 pkgver=2.20.2673.102.20171008
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
@@ -73,6 +73,7 @@ depends=('qt5-base' 'fcitx' 'zinnia')
 makedepends=('python2' 'ruby' 'git' 'ninja' 'clang')
 replaces=('mozc-fcitx' 'fcitx-mozc' 'fcitx-mozc-ut')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'mozc-ut' 'fcitx-mozc' 'mozc-ut2')
+optdepends=('tegaki-models-zinnia-japanese: hand-writing recognition support')
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut2-${_utdicver}.tar.bz2
