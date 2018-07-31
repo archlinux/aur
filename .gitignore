@@ -1,6 +1,7 @@
 syncrepo.sh
 src
 pkg
+archlinux-linux
 *.xz
 *.pkg
 *.sign
