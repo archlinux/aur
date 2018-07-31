@@ -2,7 +2,7 @@
 
 pkgname=cypher-shell-git
 pkgdesc="A command line shell where you can execute Cypher against an instance of Neo4j (install from git)"
-pkgver=neo4j.3.4.5.r7.g31a7bef
+pkgver=3.4.5.r7.g31a7bef
 pkgrel=1
 arch=("any")
 url="https://github.com/neo4j/cypher-shell"
@@ -16,7 +16,7 @@ conflicts=("cypher-shell")
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c 7-
 }
 
 build() {

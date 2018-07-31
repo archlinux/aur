@@ -1,6 +1,6 @@
 pkgbase = cypher-shell-git
 	pkgdesc = A command line shell where you can execute Cypher against an instance of Neo4j (install from git)
-	pkgver = neo4j.3.4.5.r7.g31a7bef
+	pkgver = 3.4.5.r7.g31a7bef
 	pkgrel = 1
 	url = https://github.com/neo4j/cypher-shell
 	arch = any
