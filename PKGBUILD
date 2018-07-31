@@ -3,10 +3,11 @@
 
 pkgname=ufo2otf-git
 pkgver=r9.9025ba2
-pkgrel=1
+pkgrel=2
 pkgdesc="Take UFO font sources and generate OTF’s and webfonts"
 arch=('any')
 url="https://github.com/fonts/${pkgname%-git}"
+provides=("${pkgname%-git}")
 depends=('python2'
          'fontforge')
 makedepends=('git'
