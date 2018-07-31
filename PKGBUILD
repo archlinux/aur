@@ -4,7 +4,7 @@
 # Contributor: Maribu <leonidas200@web.de>
 
 pkgname=lib32-gdbm
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc='GNU database library'
 arch=('x86_64')
