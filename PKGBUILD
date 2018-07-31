@@ -1,20 +1,21 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: Davide Depau <davide@depau.eu>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 _pkgname=onedrive
-pkgname=$_pkgname-git
-pkgver=1.1.1.r2.gc231b13
+pkgname=$_pkgname-abraunegg-git
+pkgver=2.0.2.r7.g2336118
 pkgrel=1
 epoch=1
-pkgdesc='Free OneDrive client written in D'
+pkgdesc="Free OneDrive client written in D - abraunegg's fork"
 arch=('i686' 'x86_64')
-url='https://github.com/skilion/onedrive'
+url='https://github.com/abraunegg/onedrive'
 license=('GPL3')
 depends=('curl' 'gcc-libs' 'glibc' 'sqlite')
 makedepends=('dmd' 'git')
 provides=("onedrive=$pkgver")
 conflicts=('onedrive')
-source=('git+https://github.com/skilion/onedrive.git')
+source=('git+https://github.com/abraunegg/onedrive.git')
 sha256sums=('SKIP')
 
 prepare() {

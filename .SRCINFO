@@ -1,9 +1,9 @@
-pkgbase = onedrive-git
-	pkgdesc = Free OneDrive client written in D
-	pkgver = 1.1.1.r2.gc231b13
+pkgbase = onedrive-abraunegg-git
+	pkgdesc = Free OneDrive client written in D - abraunegg's fork
+	pkgver = 2.0.2.r7.g2336118
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/skilion/onedrive
+	url = https://github.com/abraunegg/onedrive
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -13,10 +13,10 @@ pkgbase = onedrive-git
 	depends = gcc-libs
 	depends = glibc
 	depends = sqlite
-	provides = onedrive=1.1.1.r2.gc231b13
+	provides = onedrive=2.0.2.r7.g2336118
 	conflicts = onedrive
-	source = git+https://github.com/skilion/onedrive.git
+	source = git+https://github.com/abraunegg/onedrive.git
 	sha256sums = SKIP
 
-pkgname = onedrive-git
+pkgname = onedrive-abraunegg-git
 
