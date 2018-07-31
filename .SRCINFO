@@ -1,6 +1,6 @@
 pkgbase = arc-gtk-theme-git
 	pkgdesc = A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell
-	pkgver = 20180114.r23.7ea2861
+	pkgver = 20180715.r3.b12b2e7
 	pkgrel = 1
 	url = https://github.com/nicohood/arc-theme
 	arch = any
@@ -13,6 +13,8 @@ pkgbase = arc-gtk-theme-git
 	optdepends = arc-icon-theme: recommended icon theme
 	optdepends = gtk-engine-murrine: for gtk2 themes
 	optdepends = gnome-themes-standard: for gtk2 themes
+	conflicts = arc-gtk-theme
+	replaces = arc-gtk-theme
 	source = arc-theme::git+https://github.com/nicohood/arc-theme.git
 	validpgpkeys = 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 	sha512sums = SKIP
