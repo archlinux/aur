@@ -3,7 +3,7 @@
 _pkgname=lxqt-qtplugin
 pkgname=$_pkgname-git
 pkgver=0.13.0.3.g73d20ab
-pkgrel=2
+pkgrel=3
 pkgdesc="LXQt platform integration for Qt"
 arch=("i686" "x86_64")
 url="https://lxqt.org"
@@ -11,7 +11,7 @@ license=("GPL2")
 depends=("libdbusmenu-qt5" "libqtxdg-git")
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 optdepends=(
-    "libfm-qt-git: for enhanced file dialog"
+    "libfm-qt-git: for enhanced file dialog (highly recommended)"
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -20,19 +20,19 @@ sha256sums=('SKIP')
 
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
+    cd "$srcdir/$_pkgname"
+    git describe --always | sed "s/-/./g"
 }
 
 build() {
-	mkdir -p build
-	cd build
-	cmake "$srcdir/$_pkgname" \
-		-DCMAKE_INSTALL_PREFIX=/usr
-	make
+    mkdir -p build
+    cd build
+    cmake "$srcdir/$_pkgname" \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    make
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir" install
+    cd build
+    make DESTDIR="$pkgdir" install
 }
