@@ -4,13 +4,14 @@
 pkgname=doomseeker
 pkgver=r2191+.c2c7f37b1afb+
 pkgrel=1
+epoch=1
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
-url="http://doomseeker.drdteam.org/"
-license=("GPL2")
+url="https://doomseeker.drdteam.org/"
+license=("LGPL")
 
 depends=('zlib' 'bzip2' 'qt5-tools' 'qt5-base' 'qt5-multimedia')
-makedepends=('gcc' 'cmake' 'make' 'mercurial')
+makedepends=('cmake' 'mercurial')
 optdepends=('qt4: A cross-platform application and UI framework'
             'zandronum: GZDoom fork supporting client/server multiplayer'
             'odamex: Classic client/server multiplayer fork'
@@ -33,12 +34,12 @@ pkgver() {
 }
 
 prepare() {
-    cd $srcdir/$pkgname
+    cd "$srcdir/$pkgname"
     patch -p1 -i "${srcdir}/doomseeker.qt5.11.patch" 
 }
 
 build() {
-    cd $srcdir/$pkgname
+    cd "$srcdir/$pkgname"
     mkdir -p build
     cd build
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
@@ -46,8 +47,8 @@ build() {
 }
 
 package() {
-    mkdir -p $pkgdir/usr/games/doomseeker/engines/
-    cd $srcdir/$pkgname/build
+    mkdir -p "$pkgdir/usr/games/doomseeker/engines/"
+    cd "$srcdir/$pkgname/build"
     install -Dm755 doomseeker "$pkgdir/usr/games/doomseeker"
     for f in libwadseeker.so*; do
         install -Dm755 $f "$pkgdir/usr/games/doomseeker"
@@ -57,7 +58,7 @@ package() {
         install -Dm755 $f "$pkgdir/usr/games/doomseeker/engines/$f"
     done
     cd ../../
-    install -Dm644 media/icon.png "$pkgdir/usr/share/pixmaps/doomseeker.png"
-    install -Dm755 $srcdir/../doomseeker-launch-script.sh "$pkgdir/usr/bin/doomseeker"
+    install -Dm644 "media/icon.png" "$pkgdir/usr/share/pixmaps/doomseeker.png"
+    install -Dm755 "$srcdir/../doomseeker-launch-script.sh" "$pkgdir/usr/bin/doomseeker"
     install -Dm644 "$srcdir/../doomseeker.desktop" "$pkgdir/usr/share/applications/doomseeker.desktop"
 }
