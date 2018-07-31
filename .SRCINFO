@@ -1,15 +1,15 @@
 pkgbase = mill
 	pkgdesc = shiny new Scala build tool
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = http://www.lihaoyi.com/mill/index.html
 	arch = any
 	license = MIT
 	depends = bash
 	depends = java-environment<9
-	source = mill-0.2.5.sh::https://github.com/lihaoyi/mill/releases/download/0.2.5/0.2.5
-	source = mill-LICENSE::https://raw.githubusercontent.com/lihaoyi/mill/0.2.5/LICENSE
-	md5sums = 66cd247e73b149b84be6bef0c0e29501
+	source = mill-0.2.6.sh::https://github.com/lihaoyi/mill/releases/download/0.2.6/0.2.6
+	source = mill-LICENSE::https://raw.githubusercontent.com/lihaoyi/mill/0.2.6/LICENSE
+	md5sums = c93e55c48caaaec0d94c43c83e42c0e7
 	md5sums = SKIP
 
 pkgname = mill
