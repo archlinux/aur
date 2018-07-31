@@ -1,15 +1,15 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=ossia-score-git
 pkgver=master
-pkgrel=2
-pkgdesc="Ossia Score, an interactive sequencer for the intermedia arts (git master)"
+pkgrel=3
+pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
-url="http://www.ossia.io"
+url="https://ossia.io"
 license=('GPLv3')
 groups=()
 depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-multimedia' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack2')
 makedepends=('git' 'cmake' 'qt5-tools')
-optdepends=('faust' 'lilv')
+optdepends=('faust' 'lilv' 'suil' 'sdl2')
 provides=('ossia-score')
 conflicts=()
 replaces=('i-score')
@@ -39,7 +39,6 @@ build() {
 
 package() {
   cd "$srcdir/build"
-  cmake --build . --target install
+  cmake --build . --target install/strip
   install -D -m644 "$srcdir/$_gitname/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  strip "${pkgdir}/usr/bin/score"
 }
