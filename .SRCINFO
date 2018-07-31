@@ -1,5 +1,5 @@
 pkgbase = translator-git
-	pkgdesc = Translater app that uses Yandex API. Designed for Pantheon
+	pkgdesc = Translater app that uses Yandex API designed for Pantheon. Donate Link: http://bit.do/Translator_Donate
 	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/RapidFingers/Translator
