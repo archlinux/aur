@@ -1,53 +1,33 @@
-# Maintainer: William Turner <willtur.will@gmail.com> 
+# Maintainer: William Turner <willtur.will@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+
 pkgname=afdko
-pkgver=2.5.b65322
-pkgrel=3
+pkgver=2.7.2
+pkgrel=1
 pkgdesc='Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.adobe.com/devnet/opentype/afdko.html'
 license=('custom')
 depends=('python2'
-         'python2-fonttools'
          'python2-booleanoperations'
          'python2-defcon'
          'python2-fontmath'
+         'python2-fonttools'
          'python2-mutatormath'
          'python2-robofab'
+         'python2-wheel'
          'python2-ufonormalizer')
 depends_x86_64=('lib32-glibc')
-source=("http://download.macromedia.com/pub/developer/opentype/FDK.${pkgver/b/}/FDK-25-LINUX.${pkgver##*.}.zip"
-        'use-system-python.patch'
-        'profile.sh'
-        'profile.csh'
-        'EULA')
-sha256sums=('37ca9490b2c273f621a14d76c3af12826a3d734d06cc75c18e8922ebf6104e8d'
-            '77dd9bb0a5d323db3f2cbd3052b6d3bac275bac507dee7b196b647fe6b302169'
-            'af0a77eefbf707879d92fb3dfa1579d3e7002b80936633325b97b60d3833e4c2'
-            'fdc7e7945896963c10d6439828a47ddc1896a8b2cd7eb98dffa409c1a630b200'
-            '050181b88f4e1d455091762371d8a988982806be75b8954f55af6094d60905f4')
+source=("https://github.com/adobe-type-tools/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('d31c68cf0ae2e1760bf557c0b373c9e31811cbaebe2b5fe1c34785c718484d74')
 
-prepare() {
-  cd "${srcdir}/FDK-25-LINUX.${pkgver##*.}"
-
-  # remove things we won't need
-  rm -r \
-    FinishInstall{Linux,OSX,Windows.cmd} \
-    Tools/{osx,win} \
-    Tools/linux/{AFDKO,}Python
-
-  # the bundled python install is a mess, use system
-  patch -p1 -i "${srcdir}/use-system-python.patch"
+build() {
+    cd "${pkgname}-${pkgver}"
+    python2 setup.py -q build
 }
 
 package() {
-  install -d "${pkgdir}/opt"
-  cp -r "${srcdir}/FDK-25-LINUX.${pkgver##*.}" "${pkgdir}/opt/${pkgname}"
-  chown -R root:root "${pkgdir}/opt/${pkgname}"
-
-  # bash/csh profile for paths
-  install -D -m755 "${srcdir}/profile.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
-  install -D -m755 "${srcdir}/profile.csh" "${pkgdir}/etc/profile.d/${pkgname}.csh"
-
-  # license
-  install -D -m644 "${srcdir}/EULA" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
+    cd "${pkgname}-${pkgver}"
+    python2 setup.py -q install --root="$pkgdir" --optimize=1
+    install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
