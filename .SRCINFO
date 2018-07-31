@@ -1,13 +1,13 @@
 pkgbase = gatk
 	pkgdesc = Variant discovery in high-throughput bioinformatics sequencing data
 	pkgver = 4.0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://software.broadinstitute.org/gatk
 	arch = any
 	license = BSD
+	makedepends = gradle
 	depends = java-runtime>=8
-	depends = gradle
 	depends = python
 	source = gatk.sh
 	source = gatk-4.0.2.1.tar.gz::https://github.com/broadinstitute/gatk/archive/4.0.2.1.tar.gz

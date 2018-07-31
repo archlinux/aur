@@ -3,13 +3,14 @@
 
 pkgname=gatk
 pkgver=4.0.2.1
-pkgrel=1
+pkgrel=2
 epoch=2  # New licensing and versioning scheme as produced by the Broad
 pkgdesc="Variant discovery in high-throughput bioinformatics sequencing data"
 arch=('any')
 url=https://software.broadinstitute.org/"${pkgname}"
 license=('BSD')
-depends=('java-runtime>=8' 'gradle' 'python')
+makedepends=('gradle')
+depends=('java-runtime>=8' 'python')
 source=(
   gatk.sh
   "${pkgname}"-"${pkgver}".tar.gz::https://github.com/broadinstitute/"${pkgname}"/archive/"${pkgver}".tar.gz
