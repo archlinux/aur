@@ -10,6 +10,7 @@ url="https://github.com/ansible/ansible-container"
 license=('GPL')
 depends=('python-structlog' 'python-six' 'python-jinja' 'python-ruamel-yaml' 'python-pip' 'python-requests' 'python-yaml')
 optdepends=('python-docker: building docker containers')
+#checkdepends=('ansible' 'python-pytest' 'docker' 'python-jmespath')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ansible/ansible-container/archive/release-$pkgver.tar.gz"
         "fix-pip.patch")
 sha256sums=('9213b4a503c226c56e9f5adf5d78770ed7e3a8259aa5d001e8e1cc6b91126802'
@@ -24,3 +25,8 @@ package() {
   cd "$pkgname-release-$pkgver"
   python setup.py install --root="${pkgdir}"
 }
+
+#check() {
+# cd "$srcdir/$_gitname"
+# pytest
+#}
