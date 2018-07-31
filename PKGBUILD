@@ -8,8 +8,8 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('x86_64')
@@ -26,7 +26,7 @@ depends=('alsa-lib' 'aom' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 
   'libx264.so' 'libx265.so' 'libxvidcore.so'
   'libfdk-aac'
 )
-makedepends=('ffnvcodec-headers' 'ladspa' 'yasm')
+makedepends=('ffnvcodec-headers' 'git' 'ladspa' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=(
   'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -35,13 +35,11 @@ provides=(
           "ffmpeg=$pkgver"
 )
 conflicts=("$_name")
-source=("https://ffmpeg.org/releases/$_name-$pkgver.tar.xz"{,.asc})
-validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('605f5c01c60db35d3b617a79cabb2c7032412be243554602eeed1b628125c0ee'
-            'SKIP')
+source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd $_name-$pkgver
+  cd ffmpeg
 
   ./configure \
     --prefix='/usr' \
@@ -98,13 +96,11 @@ build() {
 }
 
 package() {
-  cd $_name-$pkgver
-
-  make DESTDIR="${pkgdir}" install install-man
-  install -Dm 755 tools/qt-faststart "${pkgdir}"/usr/bin/
+  make DESTDIR="${pkgdir}" -C ffmpeg install install-man
+  install -Dm 755 ffmpeg/tools/qt-faststart "${pkgdir}"/usr/bin/
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
-  install -m 0644 NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
+  install -m 0644 ffmpeg/NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
 }
 
 # vim: ts=2 sw=2 et:
