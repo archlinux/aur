@@ -23,18 +23,18 @@ package() {
   DESTDIR="${pkgdir}/usr/lib"
   LICENSEDIR="${pkgdir}/usr/share/licenses/reaper/"
   mkdir -p "${DESTDIR}"
-  "${srcdir}/reaper_linux_x86_64/install-reaper.sh" --install "${DESTDIR}"
+  cp -R "${srcdir}/reaper_linux_x86_64/REAPER/" "${DESTDIR}"
   cp "${srcdir}/WDL/WDL/swell/libSwell.so" "${DESTDIR}/REAPER"
-
   mkdir "${pkgdir}/usr/bin"
   ln -s /usr/lib/REAPER/reaper "${pkgdir}/usr/bin/reaper"
-  ln -s /usr/lib/REAPER/reaper5 "${pkgdir}/usr/bin/reaper" #(legacy)
+  ln -s /usr/lib/REAPER/reaper "${pkgdir}/usr/bin/reaper5" #(legacy)
 
   install -D -m644 "${srcdir}/reaper_linux_x86_64/REAPER/license.txt" "${LICENSEDIR}/LICENSE"
 
   # desktop integration
   for file in "${srcdir}"/*.desktop; do
 	  sed -i "s#/home/user/pathto#/usr/lib#" $file
+	  sed -i "s#reaper5#reaper#" $file
 	  filename=`basename "${file}"`
 	  install -D -m644 "${file}" "${pkgdir}/usr/share/applications/${filename}"
   done
@@ -44,10 +44,5 @@ package() {
   install -D -m644 reaper.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/reaper.png"
   install -D -m644 reamote.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/reamote.png"
   install -D -m644 application-x-reaper.xml "${pkgdir}/usr/share/mime/packages/application-x-reaper.xml"
-
 }
 
-
-pre_install() {
-	echo "PLEASE NOTE -- REAPER for Linux is an unsupported experimental version."
-}
