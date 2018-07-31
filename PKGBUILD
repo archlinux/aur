@@ -1,9 +1,9 @@
-# Maintainer: dctxmei <dctxmei@gmail.com>
+# Maintainer: Dictator Mei <dctxmei@gmail.com>
 # Maintainer: Jeremy Pope <jpope at jpope dot org> PGP-Key: E00B4261
 pkgname=breeze-hacked-cursor-theme-bin
 pkgver=2.0
-pkgrel=5
-pkgdesc="Breeze Hacked cursor theme."
+pkgrel=6
+pkgdesc="Breeze Hacked cursor theme"
 arch=("any")
 url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
 license=("GPL")
