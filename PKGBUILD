@@ -1,15 +1,16 @@
 # Maintainer: Vojtech Balak <balakvojtech@gmail.com>
 pkgname='shadowfox-updater'
-pkgver=1.5.6
+pkgver=1.5.9
 pkgrel=1
 pkgdesc='An auto-updater for ShadowFox'
 arch=('x86_64')
 url='https://github.com/SrKomodo/shadowfox-updater'
 license=('MIT')
-source=("shadowfox-updater-${pkgver}::https://github.com/SrKomodo/shadowfox-updater/releases/download/v${pkgver}/shadowfox_linux_amd64")
-md5sums=('16b3047194ab4a0e98e2dbc9a3cc6a92')
+source=("${pkgname}_${pkgver}_Linux_x64.tar.gz::https://github.com/SrKomodo/shadowfox-updater/releases/download/v$pkgver/${pkgname}_${pkgver}_Linux_x64.tar.gz")
+md5sums=('e6ccd8113edc4cfa05da8dc4c390032a')
 
 package() {
-    install -dm755 "$pkgdir/usr/bin"
-    install -m755 "shadowfox-updater-$pkgver" "$pkgdir/usr/bin/shadowfox-updater"
+    tar -xf "${pkgname}_${pkgver}_Linux_x64.tar.gz"
+    install -dm 755 "$pkgdir/usr/bin"
+    install -m 755 "shadowfox" "$pkgdir/usr/bin/$pkgname"
 }
