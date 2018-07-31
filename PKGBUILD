@@ -1,6 +1,5 @@
-# Maintainer: Aanok (aanok.aur@gmail.com)
-# Contributor: therealfarfetchd
-pkgname='ripcord'
+# Maintainer: Parker Ellertson (rasputin-machine) <parkerellertson at airmail dot cc>
+pkgname='ripcord-test'
 pkgver=0.2.96.17
 pkgrel=1
 pkgdesc='Qt-based Discord and Slack client'
