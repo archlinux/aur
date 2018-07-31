@@ -1,6 +1,5 @@
 # Maintainer: Oliver Galvin <odg at riseup dot net>
 
-pkgbase=snooscraper-git
 pkgname=snooscraper-git
 pkgver=0.1
 pkgrel=5
