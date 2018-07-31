@@ -1,8 +1,8 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=linphone-desktop-all-git
-pkgver=4.1.1.r415.efa3e107
-pkgrel=3
+pkgver=4.1.1.r506.1f8d8dd7
+pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
 url="https://www.${pkgname%-desktop-all-git}.org/"
@@ -16,7 +16,7 @@ source=("${pkgname%-all-git}::git://git.${pkgname%-desktop-all-git}.org/${pkgnam
         "belle-sip.patch"
         "${pkgname%-desktop-all-git}.patch")
 sha256sums=("SKIP"
-            "346d983f503873811b3a4f72772e5afe4990275526c9e15c1b5cde2ad69a0544"
+            "0a3212622757639905b0d82bcb2b4ebfef11dc7312011c4413334db70ca2e1e6"
             "bc0589eb2739aee429db9c67aa4308fcd817324ef5248b1766efee717798a900"
             "8a365864cfa8c6eb517701bcb2a2a7d51009bf504c104884ed3fbd05a36b3a84"
             "2657947c9311cdb3fd5167526943346bccd05a9433a242a280d9ed7f49b6ae6d")
@@ -47,12 +47,22 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname%-all-git}"
 
+  msg2 "Removing possible possible link in /tmp/linphone-desktop ..."
+  rm -rf "/tmp/${pkgname%-all-git}"
+
+  msg2 "Moving source files to /tmp/linphone-desktop ..."
+  mv "${srcdir}/${pkgname%-all-git}" "/tmp/"
+
   msg2 "Preparing build..."
+  cd "/tmp/${pkgname%-all-git}"
   ./prepare.py -c
   ./prepare.py --list-cmake-variables -DENABLE_RELATIVE_PREFIX=YES
 
   msg2 "Building..."
   make
+
+  msg2 "Leaving installation files as expected..."
+  mv "/tmp/${pkgname%-all-git}" "${srcdir}"
 }
 
 package() {
@@ -65,6 +75,7 @@ package() {
   install -d "${pkgdir}/opt"
   cp -r "OUTPUT/desktop" "${pkgdir}/opt/${pkgname%-all-git}"
 
+  msg2 "Installing icons"
   install -d "${pkgdir}/usr/share"
   mv "${pkgdir}/opt/${pkgname%-all-git}/share/icons" "${pkgdir}/usr/share"
 
