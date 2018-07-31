@@ -29,12 +29,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 
 
 prepare() {
-	cd "$srcdir/squid"
+	cd "$srcdir/squid-git"
 	msg "Preparing Squid..."
 	msg2 "Getting the client_side_request patch..."
 	wget https://raw.githubusercontent.com/bar0metr/squid/master/client_side_request.patch
@@ -48,7 +47,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/squid"
+  cd "$srcdir/squid-git"
 
   PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
   ./configure \
@@ -99,7 +98,7 @@ build() {
 package() {
   cd "$srcdir"
 
-  make -C "squid" DESTDIR="$pkgdir" install
+  make -C "squid-git" DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/squid.pam" "$pkgdir/etc/pam.d/squid"
   install -Dm644 "$srcdir/squid.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/squid.conf"
   install -Dm644 "$srcdir/squid.sysusers" "$pkgdir/usr/lib/sysusers.d/squid.conf"
