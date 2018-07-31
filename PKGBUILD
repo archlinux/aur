@@ -656,17 +656,10 @@ eval "package_linux-pf${CPU+-}$CPU() {
      $(declare -f _package)
      _package
      }"
-source+=(batch_opts)
-pkgname=(linux-pf-broadwell)
-eval "package_linux-pf-broadwell() {
-     $(declare -f _package)
-     _package
-     }"
-md5sums=('5bb13a03274b66b56c85b26682e407d7'
-         'c126c5b7686b06fd3e96f3854167d58c'
-         'bd399198dcdae2f0e6c3f072414e646f'
-         '408a033f1332317f312617704edf9f75'
-         '58cc04349424710e18b206aa7b3d75a9'
-         'a85bfae59eb537b973c388ffadb281ff'
-         'ce6c81ad1ad1f8b333fd6077d47abdaf'
-         '4e9435cb6b127ed64fdc1230c2b96887')
+sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
+            '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
+            '622c9966585723a3a88ccabf83ecb7b64851c6acf9b0dd9862df5885b0d02907'
+            '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
+            'f73ae14d43e4235843cb3b46b4ce64a85a13d1f943c86b23864b3d448bc0ed20'
+            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
