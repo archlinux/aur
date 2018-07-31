@@ -8,7 +8,7 @@ pkgbase = nzbhydra2
 	depends = python2
 	depends = java-runtime-headless=8
 	source = https://github.com/theotherp/nzbhydra2/releases/download/v1.5.2/nzbhydra2-1.5.2-linux.zip
-	source = nzbhydra2wrapper.py-1.5.2-2::https://raw.githubusercontent.com/theotherp/nzbhydra2/master/other/wrapper/nzbhydra2wrapper.py
+	source = nzbhydra2wrapper-1.5.2-2.py::https://raw.githubusercontent.com/theotherp/nzbhydra2/master/other/wrapper/nzbhydra2wrapper.py
 	source = nzbhydra2.service
 	source = nzbhydra2.tmpfiles
 	source = nzbhydra2.sysusers

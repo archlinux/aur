@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python2' 'java-runtime-headless=8')
 
 source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux.zip"
-        "nzbhydra2wrapper.py-${pkgver}-${pkgrel}::https://raw.githubusercontent.com/theotherp/nzbhydra2/master/other/wrapper/nzbhydra2wrapper.py"
+        "nzbhydra2wrapper-${pkgver}-${pkgrel}.py::https://raw.githubusercontent.com/theotherp/nzbhydra2/master/other/wrapper/nzbhydra2wrapper.py"
         'nzbhydra2.service'
         'nzbhydra2.tmpfiles'
         'nzbhydra2.sysusers')
@@ -24,7 +24,7 @@ sha256sums=('031c93c71d4f8d1bf7f7bb7eb91e29f46b4b503467e55db5d298f0e31da9ad4f'
 package() {
     install -d -m 755 "${pkgdir}/usr/lib/nzbhydra2"
     cp -dpr --no-preserve=ownership "${srcdir}/lib" "${srcdir}/readme.md" "${pkgdir}/usr/lib/nzbhydra2"
-    install -D -m 755 "${srcdir}/nzbhydra2wrapper.py-${pkgver}-${pkgrel}" "${pkgdir}/usr/lib/nzbhydra2/nzbhydra2wrapper.py"
+    install -D -m 755 "${srcdir}/nzbhydra2wrapper-${pkgver}-${pkgrel}.py" "${pkgdir}/usr/lib/nzbhydra2/nzbhydra2wrapper.py"
     install -D -m 755 "${srcdir}/nzbhydra2" "${pkgdir}/usr/lib/nzbhydra2"
 
     install -D -m 644 "${srcdir}/nzbhydra2.service" "${pkgdir}/usr/lib/systemd/system/nzbhydra2.service"

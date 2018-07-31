@@ -1,4 +1,4 @@
-nzbhydra2wrapper.py
+nzbhydra2wrapper-*.py
 *.gz
 *.xz
 *.zip
