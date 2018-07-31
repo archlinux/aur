@@ -6,7 +6,7 @@ pkgbase = nama
 	arch = any
 	license = GPLv3
 	depends = bash
-	source = https://github.com/chn555/nama/archive/2.0.1.tar.gz
+	source = nama::git+https://github.com/chn555/nama.git
 	md5sums = SKIP
 
 pkgname = nama
