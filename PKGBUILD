@@ -20,7 +20,7 @@ source=("git+https://github.com/ValveSoftware/openvr.git"
 md5sums=('SKIP'
          '7350517830b1a0038d30c6ad33b4bb39'
          'dfb4306bb93633e467862cd8990e6e79'
-         '910bc58898a88de7e81df32a1b2f19f4')
+         '97bc5ddeee3f2005afdc32b689711131')
 
 pkgver() {
   cd "$srcdir/openvr"
