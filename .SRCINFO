@@ -1,0 +1,15 @@
+pkgbase = emacs-all-the-icons-ivy-git
+	pkgdesc = all-the-icons.el for Ivy/Counsel
+	pkgver = r16.52b3f4a
+	pkgrel = 1
+	url = https://github.com/asok/all-the-icons-ivy
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs-all-the-icons
+	provides = emacs-all-the-icons-ivy.el
+	source = git+https://github.com/asok/all-the-icons-ivy.git
+	md5sums = SKIP
+
+pkgname = emacs-all-the-icons-ivy-git
+
