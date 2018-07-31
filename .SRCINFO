@@ -5,10 +5,13 @@ pkgbase = eagle-tunnel
 	url = https://github.com/eaglexiang/eagle.tunnel.dotnet.core
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = dotnet-sdk
 	depends = dotnet-runtime
 	backup = etc/eagle-tunnel.conf
 	backup = etc/eagle-tunnel-smart.conf
+	source = git+https://github.com/eaglexiang/eagle.tunnel.dotnet.core.git
+	sha256sums = SKIP
 
 pkgname = eagle-tunnel
 

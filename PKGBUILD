@@ -6,25 +6,19 @@ url="https://github.com/eaglexiang/eagle.tunnel.dotnet.core"
 arch=('any')
 license=('MIT')
 depends=('dotnet-runtime')
-makedepends=('dotnet-sdk')
-conflicts=()
-replaces=()
+makedepends=('git' 'dotnet-sdk')
+source=('git+https://github.com/eaglexiang/eagle.tunnel.dotnet.core.git')
+sha256sums=('SKIP')
 backup=('etc/eagle-tunnel.conf' 'etc/eagle-tunnel-smart.conf')
 
-prepare() {
-git clone --recursive https://github.com/eaglexiang/eagle.tunnel.dotnet.core.git
-cd eagle.tunnel.dotnet.core
-git checkout dev
-git pull
-git submodule update
-}
-
 build() {
-cd eagle.tunnel.dotnet.core
+cd "$srcdir/$_pkgname"
+git checkout dev
+git submodule update
 ./build.sh
 }
 
 package() {
-cd eagle.tunnel.dotnet.core
+cd "$srcdir/$_pkgname"
 sudo ./install.sh
 }
