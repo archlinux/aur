@@ -1,0 +1,20 @@
+pkgbase = ansible-container-git
+	pkgdesc = Ansible Container is a tool to build Docker images and orchestrate containers using only Ansible playbooks
+	pkgver = r733.gaef6d24
+	pkgrel = 1
+	url = https://github.com/ansible/ansible-container
+	arch = any
+	license = GPL
+	depends = python-structlog
+	depends = python-six
+	depends = python-jinja
+	depends = python-ruamel-yaml
+	depends = python-pip
+	depends = python-requests
+	depends = python-yaml
+	optdepends = python-docker: building docker containers
+	source = ansible-container::git+https://github.com/ansible/ansible-container.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = ansible-container-git
+
