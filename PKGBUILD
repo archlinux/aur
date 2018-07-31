@@ -2,7 +2,7 @@
 
 pkgname=ginkgo-git
 pkgver=v1.6.0.r0.g3774a09
-pkgrel=1
+pkgrel=2
 pkgdesc="BDD Testing Framework for Go"
 arch=('x86_64')
 url="http://onsi.github.io/ginkgo/"
@@ -33,6 +33,7 @@ build() {
 	export GOPATH="${srcdir}/go"
 	export PATH="$GOPATH/bin:$PATH"
 
+	go get -v github.com/hpcloud/tail
 	go build -ldflags "-s -w" -o bin/ginkgo github.com/onsi/ginkgo/ginkgo
 }
 
