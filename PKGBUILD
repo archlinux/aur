@@ -50,13 +50,9 @@ package() {
     mkdir -p "$pkgdir/usr/games/doomseeker/engines/"
     cd "$srcdir/$pkgname/build"
     install -Dm755 doomseeker "$pkgdir/usr/games/doomseeker"
-    for f in libwadseeker.so*; do
-        install -Dm755 $f "$pkgdir/usr/games/doomseeker"
-    done
+    install -Dm755 -t "$pkgdir/usr/games/doomseeker/" libwadseeker.so*
     cd engines
-    for f in *.so; do
-        install -Dm755 $f "$pkgdir/usr/games/doomseeker/engines/$f"
-    done
+    install -Dm755 -t "$pkgdir/usr/games/doomseeker/engines/" *.so
     cd ../../
     install -Dm644 "media/icon.png" "$pkgdir/usr/share/pixmaps/doomseeker.png"
     install -Dm755 "$srcdir/../doomseeker-launch-script.sh" "$pkgdir/usr/bin/doomseeker"
