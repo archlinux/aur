@@ -1,7 +1,7 @@
 pkgbase = ansible-container
-	pkgdesc = Ansible Container is a tool to build and orchestrate containers using only Ansible playbooks.
+	pkgdesc = Ansible Container is a tool to build Docker images and orchestrate containers using only Ansible playbooks
 	pkgver = 0.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ansible/ansible-container
 	arch = any
 	license = GPL
@@ -12,11 +12,11 @@ pkgbase = ansible-container
 	depends = python-pip
 	depends = python-requests
 	depends = python-yaml
-	depends = python-colorama
-	depends = python-structlog
 	optdepends = python-docker: building docker containers
 	source = ansible-container-0.9.2.tar.gz::https://github.com/ansible/ansible-container/archive/release-0.9.2.tar.gz
-	md5sums = fa3bebf7d0f30771bda3f15075fdd411
+	source = fix-pip.patch
+	sha256sums = 9213b4a503c226c56e9f5adf5d78770ed7e3a8259aa5d001e8e1cc6b91126802
+	sha256sums = fce02ed8dea2662529a9fb780a4b9b6700dca1d61d08194bc53ae043193f9516
 
 pkgname = ansible-container
 
