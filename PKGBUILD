@@ -1,9 +1,10 @@
-# Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
+# Maintainer: Dominik Schrempf <dominik dot schrempf at gmail dot com>
+# Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=transcribe
-pkgver=8.71
+pkgver=8.72
 pkgrel=1
-pkgdesc="software to help transcribe recorded music"
+pkgdesc="music transcription aid"
 arch=('i686' 'x86_64')
 url="http://www.seventhstring.com/xscribe"
 license=('unknown')
