@@ -1,8 +1,8 @@
 # Maintainer: Dictator Mei <dctxmei@gmail.com>
 pkgname=systemd-acpi-nb
 pkgver=1.0
-pkgrel=1
-pkgdesc="systemd acpi for NB"
+pkgrel=2
+pkgdesc="Systemd acpi for NB"
 arch=('any')
 depends=('systemd')
 source=("acpi-nb.conf")

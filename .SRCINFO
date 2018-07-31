@@ -1,7 +1,7 @@
 pkgbase = systemd-acpi-nb
-	pkgdesc = systemd acpi for NB
+	pkgdesc = Systemd acpi for NB
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	depends = systemd
 	source = acpi-nb.conf
