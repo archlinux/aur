@@ -1,5 +1,5 @@
 pkgbase = transcribe
-	pkgdesc = music transcription helper
+	pkgdesc = music transcription aid
 	pkgver = 8.72
 	pkgrel = 1
 	url = http://www.seventhstring.com/xscribe
