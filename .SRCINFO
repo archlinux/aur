@@ -1,0 +1,15 @@
+pkgbase = luxafor-python
+	pkgdesc = Script written to modify the Luxafor USB LED indicator via command line using python.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/vmitchell85/luxafor-python
+	arch = any
+	license = CC0-1.0
+	makedepends = git
+	depends = python2
+	depends = python2-pyusb
+	source = git+https://github.com/vmitchell85/luxafor-python.git
+	md5sums = SKIP
+
+pkgname = luxafor-python
+
