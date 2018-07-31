@@ -20,10 +20,11 @@ git submodule update
 }
 
 build() {
-cd ./src/eagle.tunnel.dotnet.core
+cd eagle.tunnel.dotnet.core
 ./build.sh
 }
 
 package() {
+cd eagle.tunnel.dotnet.core
 ./install.sh
 }
