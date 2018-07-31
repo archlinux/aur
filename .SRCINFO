@@ -1,6 +1,6 @@
 pkgbase = port-protection
 	pkgdesc = A program to protect port with iptables by authorizing client on another port
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/PinkD/PortProtection
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = port-protection
 	makedepends = cmake
 	depends = openssl
 	options = !strip
-	source = port-protection.tar.gz::https://github.com/PinkD/PortProtection/archive/1.0.tar.gz
-	md5sums = a18e0c4bfb61be127e23105737f63619
+	source = port-protection.tar.gz::https://github.com/PinkD/PortProtection/archive/1.1.tar.gz
+	md5sums = e4094aadc55719b4e6c6ef8d30b539a9
 
 pkgname = port-protection
 
