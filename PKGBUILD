@@ -1,6 +1,6 @@
 # Maintainer: zargbell <zargbell@yandex.ru>
 pkgname="aura-git"
-pkgver=2.0.0.r1459.4f208e8
+pkgver=2.0.0.r1465.4c6c481
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
 arch=("x86_64")
@@ -24,10 +24,23 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	mkdir -p bin
-	stack --jobs "$[$(nproc)+1]" --local-bin-path "bin/" install -- aura
+	mkdir -p "aura/bin"
+	stack --jobs "$[$(nproc)+1]" --local-bin-path "aura/bin/" install -- aura
 }
 
 package() {
-	install -Dm755 "${srcdir}/${pkgname}/bin/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+	cd "${srcdir}/${pkgname}/aura"
+
+	# Install binary
+	install -Dm755 "bin/aura" "${pkgdir}/usr/bin/aura"
+
+	# Install man page
+    install -Dm644 "doc/aura.8" "${pkgdir}/usr/share/man/man8/aura.8"
+
+    # Install bash and zsh completions
+    install -Dm644 "doc/completions/bashcompletion.sh" "${pkgdir}/usr/share/bash-completion/completions/aura"
+    install -Dm644 "doc/completions/_aura" "${pkgdir}/usr/share/zsh/site-functions/_aura"
+
+    # Directory for storing {PKGBUILDs, source packages, installed package states}
+    mkdir -p "${pkgdir}/var/cache/aura"/{pkgbuilds,src,states}
 }
