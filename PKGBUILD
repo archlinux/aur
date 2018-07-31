@@ -1,5 +1,5 @@
 pkgname=dokku
-pkgver=0.12.10
+pkgver=0.12.11
 pkgrel=1
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
@@ -14,7 +14,7 @@ depends=(
   'docker'
   'gliderlabs-sigil'
   'go'
-  'herokuish>=0.4.0'
+  'herokuish>=0.4.3'
   'lsb-release'
   'nginx'
   'openbsd-netcat'
@@ -26,7 +26,7 @@ source=(
   "https://github.com/dokku/dokku/archive/v${pkgver}.zip"
   "${pkgname}.install"
 )
-sha256sums=('13deaebf07db417ec4a93c9d9c6b6463a2c79a3ffc5a3a5453574d6fd4d39465'
+sha256sums=('9d6f3082f6671317d9a4fd48290dd7bf89ef4bfbc390948ee0f302345c6e8025'
             'caa9152e782dbeb1f6176fedab3314cdde737e815998393799a67cc24dd32109')
 install=${pkgname}.install
 
