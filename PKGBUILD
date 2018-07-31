@@ -36,10 +36,12 @@ prepare() {
 }
 
 build() {
-        cd "$srcdir/$pkgname-$pkgver"
+	unset CFLAGS
+
+	cd "$srcdir/$pkgname-$pkgver"
 	mkdir ../linux
 	cp -r /usr/src/kernels/4.14.35-1818.0.9.el7uek.x86_64/include/uapi/linux/dtrace ../linux/
-        make HDRPREFIX=../
+        make HDRPREFIX="$srcdir/"
 }
 
 package() {
