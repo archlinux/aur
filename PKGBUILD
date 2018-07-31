@@ -1,14 +1,14 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=("python-tlslite-ng" "python2-tlslite-ng")
 pkgbase="python-tlslite-ng"
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Pure python implementation of SSL and TLS"
 url="https://github.com/tomato42/tlslite-ng"
 arch=('any')
 license=('custom:mixed free licenses')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tomato42/tlslite-ng/archive/v${pkgver}.tar.gz")
-md5sums=('48fbed582b17abdbac24f40cbadc0412')
+md5sums=('45e5b1991037f1e215f79916d8a1cc77')
 
 package_python-tlslite-ng() {
     depends=("python-ecdsa")
