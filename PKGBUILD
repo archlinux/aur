@@ -65,7 +65,7 @@ _pkgbase=mozc-ut2
 pkgname=fcitx-mozc-ut2
 pkgdesc="Mozc the Japanese Input Method with Mozc UT2 Dictionary (additional dictionary) and uim-mozc (optional)"
 pkgver=2.20.2673.102.20171004
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
@@ -83,6 +83,7 @@ source=(
   mod-generate-dictionary.sh
   http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
   http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
+  'fix_failing_build_with_gcc8.patch::https://fars.ee/2is4'
 )
 sha1sums=('SKIP'
           'f4ff3d7b438f23debc629e7f707a822649f5a921'
@@ -92,7 +93,8 @@ sha1sums=('SKIP'
           '9dbf340458bfd0d63f9f6b8787c45222cff6e50e'
           '16574ba571784ff037022ecdab7f62c9d5bb4ce6'
           'afeef31bf3d640f9cc630c2187dbfd4507367d78'
-          '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d')
+          '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
+          '2bad0705a0a09d8d5a79c874b59c485052da2b38')
 
 
 mozcver() {
@@ -129,6 +131,9 @@ prepare() {
   # Apply fcitx patch
   rm unix/fcitx -rf
   patch -Np2 -i "$srcdir/fcitx-mozc-${_fcitxver}.patch"
+
+  # Apply fix failing build with gcc8
+  patch -Np2 -i "$srcdir/fix_failing_build_with_gcc8.patch"
 
 }
 
