@@ -1,0 +1,25 @@
+pkgbase = minder-git
+	pkgdesc = Mind-mapping application designed for Pantheon
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/phase1geo/Minder
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = glib2
+	depends = cairo
+	depends = libgee
+	depends = libxml2
+	provides = minder
+	conflicts = minder
+	source = git+https://github.com/phase1geo/Minder.git
+	md5sums = SKIP
+
+pkgname = minder-git
+
