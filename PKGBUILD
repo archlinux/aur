@@ -1,6 +1,6 @@
 # Maintainer: Bailey Kasin <bailey@gingertechnology.net>
 pkgname=kernel-uek-devel
-pkgver=4.1.12
+pkgver=4.14.35
 pkgrel=1
 pkgdesc="Oracle's Unbreakable Enterprise Kernel development headers"
 arch=('x86_64')
