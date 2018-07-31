@@ -1,0 +1,17 @@
+--- test/triggers/bogus-ioctl.c	2018-07-31 00:22:00.876656446 -0700
++++ test/triggers/bogus-ioctl-fix.c	2018-07-31 00:22:40.804948000 -0700
+@@ -58,12 +58,12 @@
+ 	 * pathname and properties) using various flags and seek offsets.
+ 	 */
+ 	fds[n++] = open(file, O_RDONLY);
+-	fds[n++] = open(file, O_WRONLY);
++	fds[n++] = open(file, O_WRONLY, 0600);
+ 	fds[n++] = open(file, O_RDWR);
+ 
+ 	fds[n++] = open(file, O_RDWR | O_APPEND | O_CREAT | O_DSYNC |
+ 	    O_LARGEFILE | O_NOCTTY | O_NONBLOCK | O_NDELAY | O_RSYNC |
+-	    O_SYNC | O_TRUNC);
++	    O_SYNC | O_TRUNC, 0600);
+ 
+ 	fds[n++] = open(file, O_RDWR);
+ 	(void) lseek(fds[n - 1], 123, SEEK_SET);
