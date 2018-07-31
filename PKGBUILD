@@ -1,4 +1,4 @@
-# Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>
+# Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>, PinkD <443657547@qq.com>
 
 pkgname=port-protection
 _pkgbase=PortProtection
@@ -12,14 +12,12 @@ depends=('openssl')
 makedepends=('cmake')
 options=('!strip')
 source=("$pkgname.tar.gz"::"https://github.com/PinkD/PortProtection/archive/$pkgver.tar.gz")
-md5sums=('a18e0c4bfb61be127e23105737f63619')
+md5sums=('da51349a959fb73abab559efd6d383a4')
 
 build() {
   cd "$srcdir/$_pkgbase-$pkgver"
   mkdir -p build
   cd build
-  unset CFLAGS
-  unset CXXFLAGS
   cmake ..
   make
 }
