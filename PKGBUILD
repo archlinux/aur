@@ -1,6 +1,6 @@
 # Maintainer: Thomas McGrew <tjmcgrew@gmail.com>
 pkgname=dwrandomizer
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 epoch=
 pkgdesc="A Randomizer for Dragon Warrior for NES"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://dwrandomizer.com"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mcgrew/dwrandomizer/archive/$pkgver.tar.gz")
-sha256sums=('1c521005138f3eb72ec0528a8ab07ee46b8ab0cf76342d8ff27c1c9fdcf5261c')
+sha256sums=('f8dc746c01319f1be713168e7f0d6dfe0acf14d307ed54266c6762c2c6c0a181')
 depends=('qt5-base')
 
 prepare() {
