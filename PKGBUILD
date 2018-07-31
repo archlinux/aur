@@ -1,4 +1,5 @@
 # Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>, PinkD <443657547@qq.com>
+# Co-Maintainer: PinkD
 
 pkgname=port-protection
 _pkgbase=PortProtection
