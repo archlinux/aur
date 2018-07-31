@@ -1,7 +1,7 @@
 pkgbase = python-pyensembl
 	pkgdesc = Python interface to ensembl reference genome metadata
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.python.org/pypi/pyensembl
 	arch = any
 	license = Apache
@@ -10,7 +10,7 @@ pkgbase = python-pyensembl
 	makedepends = python2
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = python-pyensembl-1.1.0.tar.gz::https://pypi.python.org/packages/23/2f/398e41dfcaf1ddd4c349f9006de2397e23044c7c9c543840f239af6390e4/pyensembl-1.1.0.tar.gz
+	source = python-pyensembl-1.1.0.tar.gz::https://pypi.io/packages/source/p/pyensembl/pyensembl-1.1.0.tar.gz
 	sha256sums = fe6512f86e29538c22f518828c9cf745ba97ca895dfbf3dfe6a6acdf31f9b5f6
 
 pkgname = python-pyensembl

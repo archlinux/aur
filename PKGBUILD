@@ -4,7 +4,7 @@ _name=pyensembl
 pkgbase='python-pyensembl'
 pkgname=('python-pyensembl' 'python2-pyensembl')
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python interface to ensembl reference genome metadata"
 arch=('any')
 url="https://pypi.python.org/pypi/pyensembl"
@@ -13,7 +13,7 @@ makedepends=(
   'python' 'python-setuptools'
   'python2' 'python2-setuptools')
 options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/23/2f/398e41dfcaf1ddd4c349f9006de2397e23044c7c9c543840f239af6390e4/pyensembl-1.1.0.tar.gz)
+source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
 sha256sums=('fe6512f86e29538c22f518828c9cf745ba97ca895dfbf3dfe6a6acdf31f9b5f6')
 
 prepare() {
