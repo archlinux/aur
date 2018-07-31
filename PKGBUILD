@@ -2,13 +2,13 @@
 _name=scikit-build
 pkgname=python-${_name}
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Improved build system generator for CPython C, C++, Cython and Fortran extensions'
 arch=('any')
 url='https://github.com/scikit-build/scikit-build'
 license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
+depends=('python-setuptools' 'python-wheel' 'python-packaging')
+makedepends=()
 source=("https://github.com/scikit-build/scikit-build/archive/${pkgver}.tar.gz")
 md5sums=('1c918a1379f55d74d5a41bf64a1e6eec')
 

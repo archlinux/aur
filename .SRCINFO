@@ -1,12 +1,13 @@
 pkgbase = python-scikit-build
 	pkgdesc = Improved build system generator for CPython C, C++, Cython and Fortran extensions
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-build/scikit-build
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python
+	depends = python-setuptools
+	depends = python-wheel
+	depends = python-packaging
 	source = https://github.com/scikit-build/scikit-build/archive/0.7.1.tar.gz
 	md5sums = 1c918a1379f55d74d5a41bf64a1e6eec
 
