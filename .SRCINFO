@@ -1,7 +1,7 @@
 pkgbase = lutris
 	pkgdesc = Open Gaming Platform
 	pkgver = 0.4.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lutris.net/
 	arch = any
 	license = GPL3
@@ -15,6 +15,10 @@ pkgbase = lutris
 	depends = python-yaml
 	depends = python-evdev
 	depends = lib32-sqlite
+	depends = cabextract
+	optdepends = wine: recommended to avoid dependency issues
+	optdepends = wine-staging: recommended to avoid dependency issues (Staging patches)
+	optdepends = wine-gaming-nine: recommended to avoid dependency issues (Gallium9 patches)
 	source = https://lutris.net/releases/lutris_0.4.18.1.tar.xz
 	sha256sums = 0c7f4979890f11378813acbd975b0a69905cb777ef87eccf5d179d6911ff4385
 
