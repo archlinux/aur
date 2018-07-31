@@ -61,7 +61,7 @@ package() {
     # Remove cryptest.exe and test files, only needed for check() and bloats the package
     # because cryptest.exe is linked statically.
     rm "${pkgdir}/usr/${_arch}/bin/cryptest.exe"
-    rm -r "${pkgdir}/usr/${_arch}/share/cryptopp/"
+    rm -rf "${pkgdir}/usr/${_arch}/share"
     
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
