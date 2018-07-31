@@ -2,19 +2,19 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: pandada8 <pandada8@gmail.com>
 pkgname=v2ray-git
-pkgver=3.23
-pkgrel=4
+pkgver=3.33
+pkgrel=1
 pkgdesc="A platform for building proxies to bypass network restrictions"
-arch=("x86_64")
+arch=('x86_64')
 url="https://github.com/v2ray/v2ray-core"
-license=("MIT")
+license=('MIT')
 makedepends=("git" "go")
-provides=("v2ray")
-conflicts=("v2ray")
+provides=('v2ray')
+conflicts=('v2ray')
 source=("git+${url}.git"
         "v2ray.service")
 sha512sums=("SKIP"
-            "bebb87f43b3920be8efde9aece9c4305323cd7d3a65a3b2441f0dbd0098c02a18ca89a5b08833eee70482cffae2c8e7b7237bb5a4d1076e3c30d273898e2bedb")
+            "ddc63b48b1f660bf93447c300fca21a30a893b062e87d6ca730326e09f3bac418a1647c0de8544ab8939ff535aa7a537aa62d4ff4373f1b5ed2721844e3b8ab0")
 
 pkgver() {
     git -C v2ray-core describe | sed -e 's/^v//' -e 's/-/./g'
