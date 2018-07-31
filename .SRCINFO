@@ -1,8 +1,9 @@
 pkgbase = besttrace
 	pkgdesc = IPIP.net 开发的加强版 traceroute，附带链路可视化
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ipip.net/download.html
+	install = besttrace.install
 	arch = x86_64
 	arch = i686
 	license = custom
