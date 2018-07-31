@@ -18,5 +18,5 @@ package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir" install
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/nama/LICENSE.md"
-  install -D -m755 nama.sh "${PKG}/usr/bin/nama"
+  install -D -m755 nama "${PKG}/usr/bin/"
 }
