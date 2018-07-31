@@ -6,12 +6,12 @@ pkgver=1.2.2
 pkgrel=1
 pkgdesc="The world's simplest facial recognition api for Python and the command line"
 url="https://github.com/ageitgey/face_recognition"
-depends=('python-click'
-         'python-dlib-cuda'
+depends=('python-click>=6.0'
+         'python-dlib-cuda>=19.3'
          'python-face_recognition_models'
          'python-numpy'
          'python-pillow'
-         'python-scipy')
+         'python-scipy>=0.19.0')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
