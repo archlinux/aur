@@ -1,0 +1,5 @@
+pkg
+src
+V*.tar.gz
+*.tar.xz
+.AURINFO
