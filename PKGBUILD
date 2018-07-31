@@ -1,6 +1,6 @@
 # Maintainer: Christian Bundy <christianbundy@fraction.io> 
 pkgname=patchbay-git
-pkgver=7.13.1.r182.g68110fd
+pkgver=7.13.1.r195.1378d45
 pkgrel=1
 pkgdesc="An alternative Secure Scuttlebutt client interface that is fully compatible with Patchwork "
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=('patchbay')
 conflicts=('patchbay')
 depends=('libsodium' 'gtk2' 'gconf' 'python' 'lib32-gcc-libs')
-makedepends=('nodejs' 'npm')
+makedepends=('nodejs' 'npm' 'git')
 options=(!strip)
 _srcname=patchbay
 
@@ -25,18 +25,11 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${_srcname}"
-
-  # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=linux-git&id=e03e86d03543561336930472671ffa3e8b8e8cbd#n34
-  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//g')"
 }
 
 build() {
     cd "${srcdir}/${_srcname}"
-
-    # https://github.com/ssbc/patchbay/issues/211
-    npm install --save git://github.com/Happy0/ssb-chess#master
-    npm audit fix
-   
     npm ci
     npm run rebuild
 }

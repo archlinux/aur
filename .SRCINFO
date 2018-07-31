@@ -1,6 +1,6 @@
 pkgbase = patchbay-git
 	pkgdesc = An alternative Secure Scuttlebutt client interface that is fully compatible with Patchwork
-	pkgver = 7.13.1.r182.g68110fd
+	pkgver = v7.13.1.r195.1378d45
 	pkgrel = 1
 	url = https://github.com/ssbc/patchbay
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = patchbay-git
 	license = MIT
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = git
 	depends = libsodium
 	depends = gtk2
 	depends = gconf
@@ -20,7 +21,7 @@ pkgbase = patchbay-git
 	source = run.sh
 	source = patchbay.desktop
 	md5sums = SKIP
-	md5sums = fae47b2d8539295743f7946ea07393c4
+	md5sums = 6632351cad7b33d94834e9a37f77f727
 	md5sums = f459479fef0987c5fa81a38b04767ffa
 
 pkgname = patchbay-git
