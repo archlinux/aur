@@ -56,16 +56,16 @@ _bldtype=Release
 #_bldtype=Debug
 
 _mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
-_utdicver=20171004
-_zipcoderel=201709
+_utdicver=20171008
+_zipcoderel=201806
 
 _fcitxver=2.18.2612.102.1
 
 _pkgbase=mozc-ut2
 pkgname=fcitx-mozc-ut2
 pkgdesc="Mozc the Japanese Input Method with Mozc UT2 Dictionary (additional dictionary) and uim-mozc (optional)"
-pkgver=2.20.2673.102.20171004
-pkgrel=3
+pkgver=2.20.2673.102.20171008
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
@@ -86,12 +86,12 @@ source=(
   'fix_failing_build_with_gcc8.patch::https://fars.ee/2is4'
 )
 sha1sums=('SKIP'
-          'f4ff3d7b438f23debc629e7f707a822649f5a921'
-          '9da00ee3e870eb2ad4ecbb42102b1d0f1b93f623'
+          '9f88c5f12b3d9b1190c8ec046c6693483af3ba3f'
+          'e085ab894d415ce318cf91de64f017d505f1d14e'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          '722847f9b2483cfae3da9183dac0d0b608977c71'
-          '9dbf340458bfd0d63f9f6b8787c45222cff6e50e'
-          '16574ba571784ff037022ecdab7f62c9d5bb4ce6'
+          'd884d2d9ddbd6092174f441326805bd09a395b71'
+          '2c577559d0aaef946d221a0aec5ee413186d44e9'
+          '6a6f5b0dce10fe6327d32256f53c28731cb83d2f'
           'afeef31bf3d640f9cc630c2187dbfd4507367d78'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
           '2bad0705a0a09d8d5a79c874b59c485052da2b38')
