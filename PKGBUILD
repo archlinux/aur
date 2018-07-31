@@ -6,7 +6,7 @@ pkgver=2.7.3a4.r0.ec914b7
 pkgrel=1
 pkgdesc='Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files'
 arch=('x86_64')
-url="http://www.adobe.com/devnet/opentype/${pkgname%-git}.html"
+url="https://github.com/adobe-type-tools/${pkgname%-git}"
 license=('custom')
 depends=('python2'
          'python2-booleanoperations'
