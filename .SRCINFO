@@ -1,0 +1,19 @@
+pkgbase = abjad-meta
+	pkgdesc = Meta package for abjad and its extensions: tool for formalized music score control.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Abjad
+	arch = any
+	groups = abjad
+	license = GPL3
+	license = MIT
+	depends = python-abjad
+	depends = python-abjad-ext-book
+	depends = python-abjad-ext-cli
+	depends = python-abjad-ext-ipython
+	depends = python-abjad-ext-nauert
+	depends = python-abjad-ext-rmakers
+	depends = python-abjad-ext-tonality
+
+pkgname = abjad-meta
+
