@@ -1,5 +1,6 @@
 # Maintainer: Oliver Galvin <odg at riseup dot net>
 
+pkgbase=snooscraper-git
 pkgname=snooscraper-git
 pkgver=0.1
 pkgrel=5
@@ -8,6 +9,7 @@ arch=('all')
 url="https://notabug.org/odg/snooscraper"
 license=('GPL')
 depends=('sh' 'curl' 'jq' 'sed' 'grep' 'findutils')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=snooscraper.install

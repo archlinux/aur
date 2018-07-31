@@ -6,6 +6,7 @@ pkgbase = snooscraper-git
 	install = snooscraper.install
 	arch = all
 	license = GPL
+	makedepends = git
 	depends = sh
 	depends = curl
 	depends = jq
