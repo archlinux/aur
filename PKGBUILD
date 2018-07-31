@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=lutris
-pkgver=0.4.18
+pkgver=0.4.18.1
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("https://lutris.net/releases/lutris_${pkgver}.tar.xz")
-sha256sums=('038a179c9403ebdf4a6e5de528dea6a788216df3731063b5c2d25f391054553e')
+sha256sums=('0c7f4979890f11378813acbd975b0a69905cb777ef87eccf5d179d6911ff4385')
 
 package() {
   cd lutris
