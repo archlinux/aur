@@ -1,23 +1,34 @@
+# Maintainer: Andrew Sun <adsun701@gmail.com
+
 pkgname=mingw-w64-geos
-pkgver=3.5.0
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="C++ port of the Java Topology Suite (mingw-w64)"
 arch=('any')
 url="http://trac.osgeo.org/geos/"
 license=('LGPL')
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-configure')
-options=('!buildflags' '!strip' 'staticlibs')
-source=("http://download.osgeo.org/geos/geos-$pkgver.tar.bz2")
-sha256sums=('49982b23bcfa64a53333dab136b82e25354edeb806e5a2e2f5b8aa98b1d0ae02')
+makedepends=('mingw-w64-cmake')
+options=('!emptydirs' '!buildflags' '!strip' 'staticlibs')
+source=("http://download.osgeo.org/geos/geos-${pkgver}.tar.bz2"
+        "geos-3.5.0.patch")
+sha256sums=('045a13df84d605a866602f6020fc6cbf8bf4c42fb50de237a08926e1d7d7652a'
+            '778ea9e73e343396c761e66a67c87b2054a33be629fa94a6243f7bdd7ab68346')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare() {
+  cd "${srcdir}/geos-${pkgver}"
+  patch -Np1 -i "${srcdir}/geos-3.5.0.patch"
+}
+
 build() {
-  cd ${srcdir}/geos-$pkgver
+  cd "${srcdir}/geos-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure
+    ${_arch}-cmake \
+      -DGEOS_ENABLE_INLINE=OFF \
+      ..
     make
     popd
   done
