@@ -26,5 +26,5 @@ cd eagle.tunnel.dotnet.core
 
 package() {
 cd eagle.tunnel.dotnet.core
-./install.sh
+sudo ./install.sh
 }
