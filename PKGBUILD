@@ -1,8 +1,8 @@
 # Maintainer: Dictator Mei <dctxmei@gmail.com>
 pkgname=macchanger-systemd
 pkgver=1.0
-pkgrel=2
-pkgdesc="systemd unit setting a random address while preserving the original NIC vendor bytes"
+pkgrel=3
+pkgdesc="Systemd unit setting a random address while preserving the original NIC vendor bytes"
 arch=('any')
 depends=('macchanger')
 source=("macspoof.service")
