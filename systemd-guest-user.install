@@ -1,0 +1,19 @@
+pre_install() {
+    /usr/sbin/bash -c 'id guest >& /dev/null || useradd -c Guest guest'
+    /usr/sbin/usermod -d /home/guest/ guest >& /dev/null
+    /usr/sbin/chsh -s /bin/sh guest >& /dev/null
+    /usr/sbin/passwd -d guest >& /dev/null
+}
+
+post_install() {
+    /usr/sbin/bash -c 'cp -a /usr/share/guest-configuration/. /home/guest'
+    /usr/sbin/chown -R guest:users /home/guest
+}
+
+post_remove() {
+    /usr/bin/pkill -9 -u guest >& /dev/null
+    /usr/bin/sleep 1
+    /usr/sbin/bash -c 'id guest >& /dev/null && userdel guest'
+    /usr/bin/umount /home/guest >& /dev/null
+    /usr/bin/rm -rf /home/guest
+}
