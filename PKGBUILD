@@ -3,7 +3,7 @@
 
 pkgname=afdko
 pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files'
 arch=('x86_64')
 url='http://www.adobe.com/devnet/opentype/afdko.html'
@@ -16,7 +16,7 @@ depends=('python2'
          'python2-mutatormath'
          'python2-robofab'
          'python2-wheel'
-         'python2-ufonormalizer')
+         'python2-ufonormalizer-git')
 depends_x86_64=('lib32-glibc')
 source=("https://github.com/adobe-type-tools/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('d31c68cf0ae2e1760bf557c0b373c9e31811cbaebe2b5fe1c34785c718484d74')
