@@ -1,0 +1,23 @@
+pkgbase = bitwarden-bin
+	pkgdesc = A secure and free password manager for all of your devices.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bitwarden.com
+	arch = x86_64
+	license = GPL
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nspr
+	depends = nss
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/bitwarden/desktop/releases/download/v1.4.0/Bitwarden-1.4.0-amd64.deb
+	sha512sums = e4dcf90a34bd891ef7ea1e69689402d1222d215c3315db9031d7fda2720c3a1bdbc6b838fe80e51a8126866c4ca3854216d9b8cdfaf8527e95aab56aea13b0b0
+
+pkgname = bitwarden-bin
+
