@@ -65,7 +65,7 @@ _pkgbase=mozc-ut2
 pkgname=fcitx-mozc-ut2
 pkgdesc="Mozc the Japanese Input Method with Mozc UT2 Dictionary (additional dictionary) and uim-mozc (optional)"
 pkgver=2.20.2673.102.20171004
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
@@ -148,20 +148,13 @@ build() {
   done
   msg2 '====================================================='
 
-  # Use Qt4
-  _rcc_loc=`pkg-config QtCore --variable=rcc_location`
-  _qt4dir=${_rcc_loc%%/bin/rcc}
-  _qt4i=`pkg-config --cflags-only-I QtGui`
-  CFLAGS+=" $_qt4i"
-  CXXFLAGS+=" $_qt4i"
-
   msg "Starting make..."
 
   cd "${srcdir}/${_pkgbase}-${pkgver}/src"
 
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/fcitx/fcitx.gyp:fcitx-mozc unix/fcitx/fcitx.gyp:gen_fcitx_mozc_i18n renderer/renderer.gyp:mozc_renderer"
 
-  QTDIR=$_qt4dir GYP_DEFINES="document_dir=/usr/share/licenses/${_pkgbase}" \
+  GYP_DEFINES="document_dir=/usr/share/licenses/${_pkgbase}" \
     python2 build_mozc.py gyp
   python2 build_mozc.py build -c $_bldtype $_targets
 
