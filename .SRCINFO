@@ -1,6 +1,6 @@
 pkgbase = python-minervaboto
 	pkgdesc = A renewal tool for Acervo Minerva
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/erickpires/minervaboto
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-minervaboto
 	depends = python-requests
 	depends = python-beautifulsoup4
 	depends = python-appdirs
-	source = https://pypi.python.org/packages/source/m/minervaboto/minervaboto-1.1.1.tar.gz
-	md5sums = 53d03d01ea2723f1fb9e5da578832281
+	source = https://pypi.python.org/packages/source/m/minervaboto/minervaboto-1.1.2.tar.gz
+	md5sums = d20a5a925b5099cd253be0990c87bb6e
 
 pkgname = python-minervaboto
 
