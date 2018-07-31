@@ -3,7 +3,7 @@
 gitname=Newaita
 author=cbrnix
 pkgname=newaita-icons-git
-pkgver=latest
+pkgver=r218.2a95a1cf
 pkgrel=1
 pkgdesc="Newaita icon theme is a Linux icon theme combining old style and color of material design. If you urgently needed any icon, please write in the comments on the page https://store.kde.org/p/1243493/ If you want support me Paypal: ghostdmn2@gmail.com"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ pkgver(){
 
 package() {
     install -d ${pkgdir}/usr/share/icons
-    cp -r ${gitname}/${gitname}/* ${pkgdir}/usr/share/icons/
+    cp -r ${gitname}/${gitname}* ${pkgdir}/usr/share/icons/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
     rm -rf "$pkgdir/usr/share/icons/README.md"
