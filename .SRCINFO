@@ -1,0 +1,20 @@
+pkgbase = python-jpype
+	pkgdesc = JPype is an effort to allow python programs full access to java class libraries.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/jpype-project/jpype
+	arch = x86_64
+	license = APACHE
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = jpype-0.6.3.tar.gz::https://github.com/jpype-project/jpype/archive/v0.6.3.tar.gz
+	sha512sums = 49664083db6db309c56068ace713059be1fede721c7368fb3fa0ed5cde0aeb6782b2953be9c0d71f8f8028e909e67e525338da0797a5b4bcfc2325614d5849cc
+
+pkgname = python-jpype
+	depends = python
+
+pkgname = python2-jpype
+	depends = python2
+
