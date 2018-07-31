@@ -2,7 +2,7 @@
 
 pkgname=gr-keyfob-git
 pkgver=r15.d7e10aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Transceiver for Hella wireless car key fobs"
 arch=('i686' 'x86_64')
 url="https://github.com/bastibl/gr-keyfob"
@@ -33,4 +33,10 @@ package() {
 	cd "$srcdir/$pkgname/build"
 
 	make DESTDIR="${pkgdir}" install
+
+	if test -d "${pkgdir}"/usr/lib64; then
+		mkdir -p "${pkgdir}"/usr/lib
+		mv -fv "${pkgdir}"/usr/lib64/* "${pkgdir}"/usr/lib/
+		rmdir "${pkgdir}"/usr/lib64
+	fi
 }

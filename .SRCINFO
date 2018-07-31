@@ -1,7 +1,7 @@
 pkgbase = gr-keyfob-git
 	pkgdesc = Transceiver for Hella wireless car key fobs
 	pkgver = r15.d7e10aa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bastibl/gr-keyfob
 	arch = i686
 	arch = x86_64
