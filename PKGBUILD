@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 provides=('funcparserlib')
 makedepends=('python2' 'python2-setuptools' 'python-setuptools')
-source=(http://pypi.python.org/packages/source/f/$pkgbase/$pkgbase-$pkgver.tar.gz)
+source=(https://pypi.python.org/packages/source/f/$pkgbase/$pkgbase-$pkgver.tar.gz)
 md5sums=('3aba546bdad5d0826596910551ce37c0')
 
 prepare() {
