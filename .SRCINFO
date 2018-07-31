@@ -1,0 +1,14 @@
+pkgbase = touchpad_config
+	pkgdesc = A simple tool that uses xinput to enable Tap to click and natural scrolling on a touchpad
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL-3
+	makedepends = gcc
+	depends = xorg-xinput
+	provides = touchpad_config
+	source = touchpad_config::git+https://gitlab.com/Bettehem/touchpad_config.git
+	md5sums = SKIP
+
+pkgname = touchpad_config
+
