@@ -2,7 +2,7 @@
 
 pkgname=perl-data-section
 pkgver=0.200007
-pkgrel=1
+pkgrel=2
 pkgdesc='read multiple hunks of data out of your DATA section'
 arch=(any)
 license=(PerlArtistic GPL)
