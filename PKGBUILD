@@ -6,7 +6,7 @@ pkgbase=linux-zen           # Build stock -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcver=4.17.11-zen1
 pkgver=${_srcver//-/.}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/zen-kernel/zen-kernel/commits/v$_srcver"
 license=(GPL2)
@@ -31,15 +31,25 @@ sha256sums=('SKIP'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
+_kernelname=${pkgbase#linux}
+: ${_kernelname:=-ARCH}
+
 prepare() {
   cd $_srcname
 
-  # Insert patches or cherry-picks here
-
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
-  echo "${pkgbase#linux}" > localversion.10-pkgname
-  echo "-$pkgrel" > localversion.20-pkgrel
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "$_kernelname" > localversion.20-pkgname
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
   msg2 "Setting config..."
   cp ../config .config
@@ -63,7 +73,6 @@ _package() {
   install=linux.install
 
   local kernver="$(<version)"
-  local basekernel="$(<version cut -d. -f1-2)"
 
   cd $_srcname
 
@@ -77,7 +86,7 @@ _package() {
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
-  local extradir="$pkgdir/usr/lib/modules/extramodules-${basekernel}${pkgbase#linux}"
+  local extradir="$pkgdir/usr/lib/modules/extramodules$_kernelname"
   install -Dt "$extradir" -m644 ../version
   ln -sr "$extradir" "$modulesdir/extramodules"
 
@@ -93,7 +102,7 @@ _package() {
   local subst="
     s|%PKGBASE%|$pkgbase|g
     s|%KERNVER%|$kernver|g
-    s|%EXTRAMODULES%|$extramodules|g
+    s|%EXTRAMODULES%|$extradir|g
   "
 
   # hack to allow specifying an initially nonexisting install file
@@ -156,7 +165,7 @@ _package-headers() {
   msg2 "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
-    [[ $arch == */x86/ ]] && continue
+    [[ $arch = */x86/ ]] && continue
     echo "Removing $(basename "$arch")"
     rm -r "$arch"
   done
