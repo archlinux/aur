@@ -1,0 +1,15 @@
+pkgbase = ecap-adapter-sample
+	pkgdesc = The sample contains three basic adapters (minimal,passthru,modifying,async). Include patches for successful compile and use `modifying` adapter to modify the contents of the whole file
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.e-cap.org/archive/ecap_adapter_sample-1.0.0.tar.gz
+	arch = x86_64
+	license = GPL
+	depends = libecap
+	provides = ecap-adapter-sample
+	conflicts = ecap-adapter-sample
+	source = ecap-adapter-sample::http://www.e-cap.org/archive/ecap_adapter_sample-1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ecap-adapter-sample
+
