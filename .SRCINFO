@@ -1,7 +1,7 @@
 pkgbase = nvidia-beta-dkms
 	pkgdesc = NVIDIA driver sources for linux (beta version)
 	pkgver = 396.24
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -14,7 +14,6 @@ pkgbase = nvidia-beta-dkms
 	provides = nvidia=396.24
 	provides = nvidia-dkms
 	conflicts = nvidia
-	options = !strip
 	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/396.24/NVIDIA-Linux-x86_64-396.24-no-compat32.run
 	source = linux-4.16.patch
 	source = linux-4.18-rc1.patch
