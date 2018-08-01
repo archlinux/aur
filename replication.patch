@@ -1,0 +1,3084 @@
+diff --git a/.travis.yml b/.travis.yml
+new file mode 100644
+index 000000000..85c41ecc5
+--- /dev/null
++++ b/.travis.yml
+@@ -0,0 +1,30 @@
++language: c
++compiler: gcc
++
++env:
++  - DEBUG=""
++  - DEBUG="--enable-debug"
++
++script:
++  - git rev-parse --git-dir >/dev/null
++  - git log -1 --format=format:%ci%n | sed -e 's/ [-+].*$//;s/ /T/;s/^/D /' > manifest
++  - echo $(git log -1 --format=format:%H) > manifest.uuid
++  - ./configure --enable-wal-replication ${DEBUG}
++  - make
++  - make testfixture
++  - ./testfixture ./test/walreplication.test
++  - make amalgamation-tarball
++  - tar cfz build-amd64.tar.gz --transform 's|.libs/||g' sqlite3.h sqlite3.pc .libs/libsqlite3.so*
++  - mkdir deploy
++  - mv build-amd64.tar.gz deploy/sqlite-amd64${DEBUG}-$(cat VERSION).tar.gz
++  - \[ -n "$DEBUG" \] || mv sqlite-autoconf-*.tar.gz deploy/sqlite-src-$(cat VERSION).tar.gz
++
++deploy:
++  provider: releases
++  api_key: '$GITHUB_API_KEY'
++  file_glob: true
++  file: 'deploy/*'
++  skip_cleanup: true
++  on:
++    tags: true
++    all_branches: true
+diff --git a/Makefile.in b/Makefile.in
+index 96ef34009..0e369d341 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -416,6 +416,7 @@ TESTSRC = \
+   $(TOP)/src/test_tclvar.c \
+   $(TOP)/src/test_thread.c \
+   $(TOP)/src/test_vfs.c \
++  $(TOP)/src/test_walreplication.c \
+   $(TOP)/src/test_windirent.c \
+   $(TOP)/src/test_wsd.c       \
+   $(TOP)/ext/fts3/fts3_term.c \
+diff --git a/Makefile.msc b/Makefile.msc
+index 43d4a379a..672eb0025 100644
+--- a/Makefile.msc
++++ b/Makefile.msc
+@@ -1476,6 +1476,7 @@ TESTSRC = \
+   $(TOP)\src\test_tclvar.c \
+   $(TOP)\src\test_thread.c \
+   $(TOP)\src\test_vfs.c \
++  $(TOP)/src/test_walreplication.c \
+   $(TOP)\src\test_windirent.c \
+   $(TOP)\src\test_wsd.c \
+   $(TOP)\ext\fts3\fts3_term.c \
+diff --git a/configure b/configure
+index baead2ea3..5ad49cdcf 100755
+--- a/configure
++++ b/configure
+@@ -913,6 +913,8 @@ enable_json1
+ enable_update_limit
+ enable_rtree
+ enable_session
++enable_wal_replication
++enable_replication
+ enable_gcov
+ '
+       ac_precious_vars='build_alias
+@@ -1565,6 +1567,10 @@ Optional Features:
+   --enable-update-limit   Enable the UPDATE/DELETE LIMIT clause
+   --enable-rtree          Enable the RTREE extension
+   --enable-session        Enable the SESSION extension
++  --enable-wal-replication
++                          Enable WAL replication support
++  --enable-replication
++                          Enable WAL replication support
+   --enable-gcov           Enable coverage testing using gcov
+ 
+ Optional Packages:
+@@ -11657,6 +11663,32 @@ if test "${enable_session}" = "yes" ; then
+   OPT_FEATURE_FLAGS="${OPT_FEATURE_FLAGS} -DSQLITE_ENABLE_PREUPDATE_HOOK"
+ fi
+ 
++#########
++# See whether we should enable WAL replication support
++# Check whether --enable-wal-replication was given.
++if test "${enable_wal_replication+set}" = set; then :
++  enableval=$enable_wal_replication; enable_wal_replication=yes
++else
++  enable_wal_replication=no
++fi
++
++if test "${enable_wal_replication}" = "yes" ; then
++  OPT_FEATURE_FLAGS="${OPT_FEATURE_FLAGS} -DSQLITE_ENABLE_WAL_REPLICATION"
++fi
++
++#########
++# See whether we should enable WAL replication support
++# Check whether --enable-replication was given.
++if test "${enable_replication+set}" = set; then :
++  enableval=$enable_replication; enable_replication=yes
++else
++  enable_replication=no
++fi
++
++if test "${enable_replication}" = "yes" ; then
++  OPT_FEATURE_FLAGS="${OPT_FEATURE_FLAGS} -DSQLITE_ENABLE_WAL_REPLICATION"
++fi
++
+ #########
+ # attempt to duplicate any OMITS and ENABLES into the ${OPT_FEATURE_FLAGS} parameter
+ for option in $CFLAGS $CPPFLAGS
+diff --git a/configure.ac b/configure.ac
+index 7089772d1..2e21b47d9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -679,6 +679,24 @@ if test "${enable_session}" = "yes" ; then
+   OPT_FEATURE_FLAGS="${OPT_FEATURE_FLAGS} -DSQLITE_ENABLE_PREUPDATE_HOOK"
+ fi
+ 
++#########
++# See whether we should enable WAL replication support
++AC_ARG_ENABLE(wal-replication, AC_HELP_STRING([--enable-wal-replication],
++      [Enable WAL replication support]),
++      [enable_wal_replication=yes],[enable_wal_replication=no])
++if test "${enable_wal_replication}" = "yes" ; then
++  OPT_FEATURE_FLAGS="${OPT_FEATURE_FLAGS} -DSQLITE_ENABLE_WAL_REPLICATION"
++fi
++
++#########
++# See whether we should enable WAL replication support
++AC_ARG_ENABLE(replication, AC_HELP_STRING([--enable-replication],
++      [Enable WAL replication support]),
++      [enable_replication=yes],[enable_replication=no])
++if test "${enable_replication}" = "yes" ; then
++  OPT_FEATURE_FLAGS="${OPT_FEATURE_FLAGS} -DSQLITE_ENABLE_WAL_REPLICATION"
++fi
++
+ #########
+ # attempt to duplicate any OMITS and ENABLES into the ${OPT_FEATURE_FLAGS} parameter
+ for option in $CFLAGS $CPPFLAGS
+diff --git a/main.mk b/main.mk
+index e5722c582..ef305862d 100644
+--- a/main.mk
++++ b/main.mk
+@@ -346,6 +346,7 @@ TESTSRC = \
+   $(TOP)/src/test_tclvar.c \
+   $(TOP)/src/test_thread.c \
+   $(TOP)/src/test_vfs.c \
++  $(TOP)/src/test_walreplication.c \
+   $(TOP)/src/test_windirent.c \
+   $(TOP)/src/test_wsd.c
+ 
+diff --git a/src/backup.c b/src/backup.c
+index 165144d96..44d9a03d0 100644
+--- a/src/backup.c
++++ b/src/backup.c
+@@ -189,6 +189,24 @@ sqlite3_backup *sqlite3_backup_init(
+     p->iNext = 1;
+     p->isAttached = 0;
+ 
++#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
++    if( p->pSrc ){
++      /* Check that the connection is not in follower WAL replication mode */
++      Pager *pPager = sqlite3BtreePager(p->pSrc);
++      if (sqlite3PagerGetJournalMode(pPager) == PAGER_JOURNALMODE_WAL) {
++        int rc;
++        int bEnabled;
++        sqlite3_wal_replication *pReplication;
++        rc = sqlite3PagerWalReplicationGet(pPager, &bEnabled, &pReplication);
++        assert( rc==SQLITE_OK );
++        if( bEnabled && !pReplication ){
++          sqlite3Error(pDestDb, SQLITE_ERROR);
++          p->pSrc = 0;
++        }
++      }
++    }
++#endif /* SQLITE_ENABLE_WAL_REPLICATION && !SQLITE_OMIT_WAL */
++
+     if( 0==p->pSrc || 0==p->pDest 
+      || checkReadTransaction(pDestDb, p->pDest)!=SQLITE_OK 
+      ){
+diff --git a/src/main.c b/src/main.c
+index 5b6c86709..342f732cb 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -2256,6 +2256,410 @@ int sqlite3Checkpoint(sqlite3 *db, int iDb, int eMode, int *pnLog, int *pnCkpt){
+ }
+ #endif /* SQLITE_OMIT_WAL */
+ 
++#ifdef SQLITE_ENABLE_WAL_REPLICATION
++/*
++** The list of all registered WAL replication implementations.
++**
++** Access to this variable is protected by SQLITE_MUTEX_STATIC_MASTER.
++*/
++static sqlite3_wal_replication *walReplicationList = 0;
++
++/*
++** Locate a WAL replication implementation by name. If no name is given, simply
++** return the first registered implementation, or NULL if no WAL replication
++** implementation is registered.
++*/
++sqlite3_wal_replication *sqlite3_wal_replication_find(const char *zReplication){
++  sqlite3_wal_replication *p = 0;
++#if SQLITE_THREADSAFE
++  sqlite3_mutex *mutex;
++#endif
++#ifndef SQLITE_OMIT_AUTOINIT
++  int rc = sqlite3_initialize();
++  if( rc ) return 0;
++#endif
++#if SQLITE_THREADSAFE
++  mutex = sqlite3MutexAlloc(SQLITE_MUTEX_STATIC_MASTER);
++#endif
++  sqlite3_mutex_enter(mutex);
++
++  for(p=walReplicationList; p; p=p->pNext){
++    if( zReplication==0 ) break;
++    if( strcmp(zReplication, p->zName)==0 ) break;
++  }
++
++  sqlite3_mutex_leave(mutex);
++
++  return p;
++}
++
++/*
++** Unlink a WAL synchronous replication implementation from the linked list.
++*/
++static void walReplicationUnlink(sqlite3_wal_replication *pReplication){
++  assert( sqlite3_mutex_held(sqlite3MutexAlloc(SQLITE_MUTEX_STATIC_MASTER)) );
++  if( pReplication==0 ){
++    /* No-op */
++  }else if( walReplicationList==pReplication ){
++    walReplicationList = pReplication->pNext;
++  }else if( walReplicationList ){
++    sqlite3_wal_replication *p = walReplicationList;
++    while( p->pNext && p->pNext!=pReplication ){
++      p = p->pNext;
++    }
++    if( p->pNext==pReplication ){
++      p->pNext = pReplication->pNext;
++    }
++  }
++}
++
++/*
++** Register a WAL replication implementation. It is harmless to register the
++** same implementation multiple times. The new implementation becomes the
++** default if makeDflt is true.
++*/
++int sqlite3_wal_replication_register(
++  sqlite3_wal_replication *pReplication, int makeDflt){
++#ifndef SQLITE_OMIT_WAL
++  MUTEX_LOGIC( sqlite3_mutex *mutex; )
++#ifndef SQLITE_OMIT_AUTOINIT
++  int rc = sqlite3_initialize();
++  if( rc ) return rc;
++#endif
++#ifdef SQLITE_ENABLE_API_ARMOR
++  if( pReplication==0 ) return SQLITE_MISUSE_BKPT;
++#endif
++
++  MUTEX_LOGIC( mutex = sqlite3MutexAlloc(SQLITE_MUTEX_STATIC_MASTER); )
++  sqlite3_mutex_enter(mutex);
++
++  walReplicationUnlink(pReplication);
++  if( makeDflt || walReplicationList==0 ){
++    pReplication->pNext = walReplicationList;
++    walReplicationList = pReplication;
++  }else{
++    pReplication->pNext = walReplicationList->pNext;
++    walReplicationList->pNext = pReplication;
++  }
++  assert(walReplicationList);
++
++  sqlite3_mutex_leave(mutex);
++
++  return SQLITE_OK;
++#else
++  return SQLITE_ERROR;
++#endif /* SQLITE_OMIT_WAL */
++}
++
++/*
++** Unregister a WAL replication implementation so that it is no longer
++** accessible.
++*/
++int sqlite3_wal_replication_unregister(sqlite3_wal_replication *pReplication){
++#if SQLITE_THREADSAFE
++  sqlite3_mutex *mutex = sqlite3MutexAlloc(SQLITE_MUTEX_STATIC_MASTER);
++#endif
++  sqlite3_mutex_enter(mutex);
++  walReplicationUnlink(pReplication);
++  sqlite3_mutex_leave(mutex);
++  return SQLITE_OK;
++}
++
++/*
++** Check if WAL synchronous replication is enabled on the given schema of the
++** given database connection.
++*/
++int sqlite3_wal_replication_enabled(
++  sqlite3 *db,
++  const char *zSchema,
++  int *pbEnabled,
++  sqlite3_wal_replication **ppReplication
++){
++#ifndef SQLITE_OMIT_WAL
++  int rc = SQLITE_ERROR;
++
++#ifdef SQLITE_ENABLE_API_ARMOR
++  if( !sqlite3SafetyCheckOk(db) ){
++    return SQLITE_MISUSE_BKPT;
++  }
++#endif
++
++  sqlite3_mutex_enter(db->mutex);
++  Btree *pBt = sqlite3DbNameToBtree(db, zSchema);
++  if( pBt ){
++    sqlite3BtreeEnter(pBt);
++    Pager *pPager = sqlite3BtreePager(pBt);
++    assert( pPager );
++    if( sqlite3PagerGetJournalMode(pPager)==PAGER_JOURNALMODE_WAL ){
++      rc = sqlite3PagerWalReplicationGet(pPager, pbEnabled, ppReplication);
++    }
++    sqlite3BtreeLeave(pBt);
++  }
++  sqlite3_mutex_leave(db->mutex);
++
++  return rc;
++#else
++  return SQLITE_ERROR;
++#endif /* !SQLITE_OMIT_WAL */
++}
++
++/*
++** Enable leader WAL replication on the given connection.
++**
++** The zReplication parameter must be the name of a WAL replication
++** implementation previously registered with
++** sqlite3_wal_replication_register. The replication implementation will be
++** notified of WAL lifecycle events, such as begin a write transaction, write
++** new frames to the log, undo a write transaction and end a write transaction.
++**
++** When invoking the hooks defined in the given sqlite3_wal_replication
++** implementation, SQLite will pass them the given custom argument back.
++*/
++int sqlite3_wal_replication_leader(
++  sqlite3 *db, const char *zSchema, const char *zReplication, void *pArg
++){
++#ifndef SQLITE_OMIT_WAL
++  sqlite3_wal_replication *pReplication;
++  int rc = SQLITE_ERROR;
++
++#ifdef SQLITE_ENABLE_API_ARMOR
++  if( !sqlite3SafetyCheckOk(db) ){
++    return SQLITE_MISUSE_BKPT;
++  }
++#endif
++
++  pReplication = sqlite3_wal_replication_find(zReplication);
++
++  if( !pReplication ){
++    /* No WAL replication implementation is registered under the given name */
++    return SQLITE_ERROR;
++  }
++
++  sqlite3_mutex_enter(db->mutex);
++  Btree *pBt = sqlite3DbNameToBtree(db, zSchema);
++  if( pBt ){
++      sqlite3BtreeEnter(pBt);
++      Pager *pPager = sqlite3BtreePager(pBt);
++      assert( pPager );
++      rc = sqlite3PagerWalReplicationSet(pPager, db, 1, pReplication, pArg);
++      if( rc==SQLITE_OK ) {
++        /* Disable checkpointing the WAL on close, since the replication
++        ** implementation should take care of checkpointing explicitly.
++        */
++        int ckpt;
++        rc = sqlite3_db_config(db, SQLITE_DBCONFIG_NO_CKPT_ON_CLOSE, 1, &ckpt);
++      }
++      sqlite3BtreeLeave(pBt);
++  }
++  sqlite3_mutex_leave(db->mutex);
++
++  return rc;
++#else
++  return SQLITE_ERROR;
++#endif /* !SQLITE_OMIT_WAL */
++}
++
++/*
++** Enable follower WAL replication on the given schema on the given connection.
++*/
++int sqlite3_wal_replication_follower(sqlite3 *db, const char *zSchema){
++#ifndef SQLITE_OMIT_WAL
++  int rc = SQLITE_ERROR;
++
++#ifdef SQLITE_ENABLE_API_ARMOR
++  if( !sqlite3SafetyCheckOk(db) ){
++    return SQLITE_MISUSE_BKPT;
++  }
++#endif
++
++  sqlite3_mutex_enter(db->mutex);
++  Btree *pBt = sqlite3DbNameToBtree(db, zSchema);
++  if( pBt ){
++      sqlite3BtreeEnter(pBt);
++      Pager *pPager = sqlite3BtreePager(pBt);
++      assert( pPager );
++      rc = sqlite3PagerWalReplicationSet(pPager, db, 1, 0, 0);
++      if( rc==SQLITE_OK ){
++	/* Disable checkpointing the WAL on close, since the replication
++	** implementation should take care of checkpointing explicitly. */
++	int ckpt;
++	rc = sqlite3_db_config(db, SQLITE_DBCONFIG_NO_CKPT_ON_CLOSE, 1, &ckpt);
++
++        /* Invalidate all current cursors. Trying to create a new cursor will
++        ** also fail when in follower WAL replication mode.
++        */
++	if( rc==SQLITE_OK ){
++	  rc = sqlite3BtreeTripAllCursors(pBt, SQLITE_MISUSE, 0);
++	}
++      }
++      sqlite3BtreeLeave(pBt);
++  }
++  sqlite3_mutex_leave(db->mutex);
++
++  return rc;
++#else
++  return SQLITE_ERROR;
++#endif /* !SQLITE_OMIT_WAL */
++}
++
++/*
++** Disable leader or follower WAL replication on the given schema of the given
++** connection.
++*/
++int sqlite3_wal_replication_none(sqlite3 *db, const char *zSchema){
++#ifndef SQLITE_OMIT_WAL
++  int rc = SQLITE_ERROR;
++
++#ifdef SQLITE_ENABLE_API_ARMOR
++  if( !sqlite3SafetyCheckOk(db) ){
++    return SQLITE_MISUSE_BKPT;
++  }
++#endif
++
++  sqlite3_mutex_enter(db->mutex);
++  Btree *pBt = sqlite3DbNameToBtree(db, zSchema);
++  if( pBt ){
++      sqlite3BtreeEnter(pBt);
++      Pager *pPager = sqlite3BtreePager(pBt);
++      assert( pPager );
++      rc = sqlite3PagerWalReplicationSet(pPager, db, 0, 0, 0);
++      sqlite3BtreeLeave(pBt);
++  }
++  sqlite3_mutex_leave(db->mutex);
++
++  return rc;
++#else
++  return SQLITE_ERROR;
++#endif /* !SQLITE_OMIT_WAL */
++}
++
++/*
++** Write new WAL frames in the context of a replicated transaction.
++**
++** If the isBegin flag is true, also start a new WAL write transaction. If the
++** commit flag true, also commit the transaction.
++**
++** This interface must be called only on connections that have been switched
++** to follower WAL replication mode using sqlite3_wal_replication_follower().
++*/
++int sqlite3_wal_replication_frames(
++  sqlite3 *db,
++  const char *zSchema,
++  int isBegin,
++  int szPage,
++  int nFrame,
++  unsigned *aPgno,
++  void *aPage,
++  unsigned nTruncate,
++  int isCommit
++){
++#ifndef SQLITE_OMIT_WAL
++  int rc = SQLITE_ERROR;
++
++#ifdef SQLITE_ENABLE_API_ARMOR
++  if( !sqlite3SafetyCheckOk(db) ){
++    return SQLITE_MISUSE;
++  }
++#endif
++
++  sqlite3_mutex_enter(db->mutex);
++  Btree *pBt = sqlite3DbNameToBtree(db, zSchema);
++  if( pBt ){
++    sqlite3BtreeEnter(pBt);
++    Pager *pPager = sqlite3BtreePager(pBt);
++    rc = sqlite3PagerWalReplicationFrames(pPager,
++        isBegin, szPage, nFrame, aPgno, aPage, nTruncate, isCommit);
++    sqlite3BtreeLeave(pBt);
++  }
++  sqlite3_mutex_leave(db->mutex);
++
++  return rc;
++#else
++  return SQLITE_ERROR;
++#endif /* SQLITE_OMIT_WAL */
++}
++
++/*
++** Undo WAL changes in the context of a replicated transaction that is
++** being rolled back.
++**
++** This interface must be called only on connections that have been switched to
++** follower WAL replication mode using sqlite3_wal_replication_follower().
++*/
++int sqlite3_wal_replication_undo(sqlite3 *db, const char *zSchema){
++#ifndef SQLITE_OMIT_WAL
++  int rc = SQLITE_ERROR;
++
++#ifdef SQLITE_ENABLE_API_ARMOR
++  if( !sqlite3SafetyCheckOk(db) ){
++    return SQLITE_MISUSE;
++  }
++#endif
++
++  sqlite3_mutex_enter(db->mutex);
++  Btree *pBt = sqlite3DbNameToBtree(db, zSchema);
++  if( pBt ){
++    sqlite3BtreeEnter(pBt);
++    Pager *pPager = sqlite3BtreePager(pBt);
++    assert( pPager );
++    rc = sqlite3PagerWalReplicationUndo(pPager);
++    sqlite3BtreeLeave(pBt);
++  }
++  sqlite3_mutex_leave(db->mutex);
++
++  return rc;
++#else
++  return SQLITE_ERROR;
++#endif /* SQLITE_OMIT_WAL */
++}
++
++/*
++** Checkpoint a database in follower WAL replication mode.
++**
++** This interface must be called only on connections that have been switched
++** to follower replication mode using sqlite3_wal_replication_follower().
++*/
++int sqlite3_wal_replication_checkpoint(
++  sqlite3 *db,
++  const char *zSchema,
++  int eMode,
++  int *pnLog,
++  int *pnCkpt
++){
++#ifndef SQLITE_OMIT_WAL
++  int rc = SQLITE_ERROR;
++  Btree *pBt;
++  Pager *pPager;
++
++#ifdef SQLITE_ENABLE_API_ARMOR
++  if( !sqlite3SafetyCheckOk(db) ){
++    return SQLITE_MISUSE_BKPT;
++  }
++#endif
++
++  /* Initialize the output variables to -1 in case an error occurs. */
++  if( pnLog ) *pnLog = -1;
++  if( pnCkpt ) *pnCkpt = -1;
++
++  sqlite3_mutex_enter(db->mutex);
++  pBt = sqlite3DbNameToBtree(db, zSchema);
++  if( pBt ){
++      sqlite3BtreeEnter(pBt);
++      pPager = sqlite3BtreePager(pBt);
++      assert( pPager );
++      rc = sqlite3PagerWalReplicationCheckpoint(
++          pPager, db, eMode, pnLog, pnCkpt);
++      sqlite3BtreeLeave(pBt);
++  }
++  sqlite3_mutex_leave(db->mutex);
++  return rc;
++
++#else
++  return SQLITE_ERROR;
++#endif /* SQLITE_OMIT_WAL */
++}
++#endif /* SQLITE_ENABLE_WAL_REPLICATION */
++
+ /*
+ ** This function returns true if main-memory should be used instead of
+ ** a temporary file for transient pager files and statement journals.
+diff --git a/src/pager.c b/src/pager.c
+index a5e1edf78..9e03eb20e 100644
+--- a/src/pager.c
++++ b/src/pager.c
+@@ -716,7 +716,12 @@ struct Pager {
+ #ifndef SQLITE_OMIT_WAL
+   Wal *pWal;                  /* Write-ahead log used by "journal_mode=wal" */
+   char *zWal;                 /* File name for write-ahead log */
+-#endif
++#if defined(SQLITE_ENABLE_WAL_REPLICATION)
++  sqlite3_wal_replication* pWalReplication; /* Set when notifying WAL events */
++  void *pWalReplicationArg;                 /* Argument for WAL notifications */
++  u8 bWalReplicationFollower;               /* True when receiving WAL events */
++#endif /* SQLITE_ENABLE_WAL_REPLICATION */
++#endif /* !SQLITE_OMIT_WAL */
+ };
+ 
+ /*
+@@ -2113,6 +2118,16 @@ static int pager_end_transaction(Pager *pPager, int hasMaster, int bCommit){
+   }
+ 
+   if( pagerUseWal(pPager) ){
++#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
++    if( pPager->pWalReplication ){
++      /* Fire the xEnd method of the configured replication interface. The
++      ** method implementation will typically use it to update its internal
++      ** state. The return code is currently ignored. */
++      assert( pPager->pWalReplication->xEnd );
++      pPager->pWalReplication->xEnd(
++          pPager->pWalReplication, pPager->pWalReplicationArg);
++    }
++#endif /* SQLITE_ENABLE_WAL_REPLICATION && !SQLITE_OMIT_WAL */
+     /* Drop the WAL write-lock, if any. Also, if the connection was in 
+     ** locking_mode=exclusive mode but is no longer, drop the EXCLUSIVE 
+     ** lock held on the database file.
+@@ -3149,6 +3164,22 @@ static int pagerRollbackWal(Pager *pPager){
+   **   + Reload page content from the database (if refcount>0).
+   */
+   pPager->dbSize = pPager->dbOrigSize;
++#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
++  if( pPager->pWalReplication ){
++    /* When in leader WAL replication mode fire the xUndo method of the
++    ** replication implementation. The method implementation is typically in
++    ** charge of broadcasting the event to other nodes, and ensure that a quorum
++    ** of them have received the message.
++    **
++    ** The return code is currently ignored, since in any case we want to
++    ** rollback the transaction on this node. The WAL replication implementation
++    ** should ensure graceful recovery after a failure due to loss of quorum.
++    */
++    assert( pPager->pWalReplication->xUndo );
++    pPager->pWalReplication->xUndo(
++        pPager->pWalReplication, pPager->pWalReplicationArg);
++  }
++#endif /* SQLITE_ENABLE_WAL_REPLICATION && !SQLITE_OMIT_WAL */
+   rc = sqlite3WalUndo(pPager->pWal, pagerUndoCallback, (void *)pPager);
+   pList = sqlite3PcacheDirtyList(pPager->pPCache);
+   while( pList && rc==SQLITE_OK ){
+@@ -3175,7 +3206,7 @@ static int pagerWalFrames(
+   Pgno nTruncate,                 /* Database size after this commit */
+   int isCommit                    /* True if this is a commit */
+ ){
+-  int rc;                         /* Return code */
++  int rc = SQLITE_OK;             /* Return code */
+   int nList;                      /* Number of pages in pList */
+   PgHdr *p;                       /* For looping over pages */
+ 
+@@ -3209,9 +3240,52 @@ static int pagerWalFrames(
+   pPager->aStat[PAGER_STAT_WRITE] += nList;
+ 
+   if( pList->pgno==1 ) pager_write_changecounter(pList);
+-  rc = sqlite3WalFrames(pPager->pWal, 
+-      pPager->pageSize, pList, nTruncate, isCommit, pPager->walSyncFlags
+-  );
++#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
++  /* When in leader WAL replication mode fire the xFrames method of the
++  ** configured replication implementation. The method implementation is
++  ** typically in charge of broadcasting the frames to other nodes, and ensure
++  ** that a quorum of them have received the message. */
++  if( pPager->pWalReplication ){
++    assert( pPager->pWalReplication->xFrames );
++
++    /* Allocate a new buffer of replication pages to pass to xFrames. */
++    sqlite3_wal_replication_frame *aFrame;
++    aFrame = (sqlite3_wal_replication_frame*)sqlite3_malloc(
++        sizeof(sqlite3_wal_replication_frame) * (nList));
++    if( aFrame==0 ){
++      rc = SQLITE_NOMEM_BKPT;
++    }else{
++      /* Copy into the replication pages list all data about dirty pages that
++      ** should be written to the write-ahead log. */
++      for(p=pList; p; p=p->pDirty){
++        aFrame->pBuf = p->pData;
++        aFrame->pgno = p->pgno;
++        /* Check if this page already in the WAL. It will serve as a hint to
++        ** implementations of sqlite3_wal_replication.xFrames that optimize
++        ** replication by only sending binary diffs of WAL pages over the
++        ** network, as they can make assumptions about the frames contained
++        ** in the replicated WALs.
++        */
++        sqlite3WalFindFrame(pPager->pWal, p->pgno, &aFrame->iPrev);
++        aFrame++;
++      }
++      aFrame -= nList;
++      rc = pPager->pWalReplication->xFrames(
++          pPager->pWalReplication, pPager->pWalReplicationArg,
++          pPager->pageSize, nList, aFrame, nTruncate, isCommit
++      );
++      /* Release the replication pages buffer. */
++      sqlite3_free(aFrame);
++    }
++  }
++  if( rc==SQLITE_OK ){
++#else
++  {
++#endif /* SQLITE_ENABLE_WAL_REPLICATION && !SQLITE_OMIT_WAL */
++    rc = sqlite3WalFrames(pPager->pWal,
++        pPager->pageSize, pList, nTruncate, isCommit, pPager->walSyncFlags
++    );
++  }
+   if( rc==SQLITE_OK && pPager->pBackup ){
+     for(p=pList; p; p=p->pDirty){
+       sqlite3BackupUpdate(pPager->pBackup, p->pgno, (u8 *)p->pData);
+@@ -4158,8 +4232,13 @@ int sqlite3PagerClose(Pager *pPager, sqlite3 *db){
+     }
+     sqlite3WalClose(pPager->pWal, db, pPager->walSyncFlags, pPager->pageSize,a);
+     pPager->pWal = 0;
++#if defined(SQLITE_ENABLE_WAL_REPLICATION)
++    pPager->pWalReplication = 0;
++    pPager->pWalReplicationArg = 0;
++    pPager->bWalReplicationFollower = 0;
++#endif /* SQLITE_ENABLE_WAL_REPLICATION */
+   }
+-#endif
++#endif /* !SQLITE_OMIT_WAL */
+   pager_reset(pPager);
+   if( MEMDB ){
+     pager_unlock(pPager);
+@@ -4841,7 +4920,12 @@ int sqlite3PagerOpen(
+     memcpy(pPager->zWal, zPathname, nPathname);
+     memcpy(&pPager->zWal[nPathname], "-wal\000", 4+1);
+     sqlite3FileSuffix3(pPager->zFilename, pPager->zWal);
+-#endif
++#ifdef SQLITE_ENABLE_WAL_REPLICAtION
++    pPager->pWalReplication = 0;
++    pPager->pWalReplicationArg = 0;
++    pPager->bWalReplicationFollower = 0;
++#endif /* SQLITE_ENABLE_WAL_REPLICAtION */
++#endif /* !SQLITE_OMIT_WAL */
+     sqlite3DbFree(0, zPathname);
+   }
+   pPager->pVfs = pVfs;
+@@ -5827,12 +5911,41 @@ int sqlite3PagerBegin(Pager *pPager, int exFlag, int subjInMemory){
+         (void)sqlite3WalExclusiveMode(pPager->pWal, 1);
+       }
+ 
+-      /* Grab the write lock on the log file. If successful, upgrade to
+-      ** PAGER_RESERVED state. Otherwise, return an error code to the caller.
+-      ** The busy-handler is not invoked if another connection already
+-      ** holds the write-lock. If possible, the upper layer will call it.
+-      */
+-      rc = sqlite3WalBeginWriteTransaction(pPager->pWal);
++#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
++      if( pPager->pWalReplication ){
++        /* Fire the xBegin method of the configured WAL replication
++        ** implementation. The method implementation is typically responsible of
++        ** checking that this SQLite node is the cluster leader, and to clear
++        ** any dangling transactions on connections in follower WAL replication
++        ** mode that might have been left around after a leadership change.
++        */
++        assert( pPager->pWalReplication->xBegin );
++        rc = pPager->pWalReplication->xBegin(
++            pPager->pWalReplication, pPager->pWalReplicationArg);
++      }
++      if( rc==SQLITE_OK ){
++#else
++      {
++#endif /* SQLITE_ENABLE_WAL_REPLICATION && !SQLITE_OMIT_WAL */
++        /* Grab the write lock on the log file. If successful, upgrade to
++        ** PAGER_RESERVED state. Otherwise, return an error code to the caller.
++        ** The busy-handler is not invoked if another connection already
++        ** holds the write-lock. If possible, the upper layer will call it.
++        */
++        rc = sqlite3WalBeginWriteTransaction(pPager->pWal);
++#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
++        if( rc!=SQLITE_OK && pPager->pWalReplication ){
++          /* Fire the xAbort hook of the configured replication interface. The
++          ** hook implementation logic should typically cleanup any state that
++          ** was set in the xBegin hook. The return code of xAbort is currently
++          ** ignored.
++          */
++          assert( pPager->pWalReplication->xAbort );
++          pPager->pWalReplication->xAbort(
++              pPager->pWalReplication, pPager->pWalReplicationArg);
++        }
++#endif /* SQLITE_ENABLE_WAL_REPLICATION && !SQLITE_OMIT_WAL */
++      }
+     }else{
+       /* Obtain a RESERVED lock on the database file. If the exFlag parameter
+       ** is true, then immediately upgrade this to an EXCLUSIVE lock. The
+@@ -7641,6 +7754,287 @@ int sqlite3PagerSnapshotRecover(Pager *pPager){
+   return rc;
+ }
+ #endif /* SQLITE_ENABLE_SNAPSHOT */
++
++#ifdef SQLITE_ENABLE_WAL_REPLICATION
++/*
++** Get the current WAL replication mode enabled on this pager.
++**
++** If the pager is not in WAL mode, an error is returned.
++**
++** If no WAL replication is enabled, *bpEnabled will be set to 0.
++**
++** If leader WAL replication is enabled, *bpEnabled will be set to 1 and
++** *ppReplication will point the the WAL replication implementation currently in
++** use.
++**
++** If follower WAL replication is enabled, *bpEnabled will be set to 1 and
++** *ppReplication to NULL.
++*/
++int sqlite3PagerWalReplicationGet(
++  Pager *pPager,
++  int *pbEnabled,                         /* OUT: True if replication is on */
++  sqlite3_wal_replication **ppReplication /* OUT: Set for leader replication */
++) {
++  /* Valid input */
++  assert( pPager );
++  assert( pbEnabled );
++  assert( ppReplication );
++
++  /* Current WAL replication mode must be either leader replication, follower
++  ** replication, or no replication at all.
++  */
++  assert( (pPager->pWalReplication!=0 && pPager->bWalReplicationFollower==0)
++       || (pPager->pWalReplication==0 && pPager->bWalReplicationFollower==1)
++       || (pPager->pWalReplication==0 && pPager->bWalReplicationFollower==0)
++  );
++
++  /* The WAL hook replication argument can be set only if leader WAL replication
++  ** is enabled.
++  */
++  assert( pPager->pWalReplication!=0 || pPager->pWalReplicationArg==0 );
++
++  /* We require the database to be in WAL mode */
++  if( pPager->journalMode!=PAGER_JOURNALMODE_WAL ){
++    return SQLITE_ERROR;
++  }
++
++  *pbEnabled = pPager->pWalReplication!=0 || pPager->bWalReplicationFollower==1;
++  *ppReplication = pPager->pWalReplication;
++
++  return SQLITE_OK;
++}
++
++/*
++** Change the pager's WAL replication mode.
++**
++** If this is not a WAL database, return an error.
++**
++** If the bEnable flag is 1 and pReplication is not NULL, then enable leader WAL
++** replication. This pager will fire the various callbacks defined in the
++** sqlite3_wal_replication interface, notifying the pReplication implementation
++** of events such as beginning a write transaction, writing new frames to the
++** write-ahead log, undoing a write transaction and ending a write
++** transaction. The given pArg will be passed back when invoking the hooks
++** defined in the pReplication implementation.
++**
++** If the bEnable flag is 1 and pReplication is NULL, then enable follower WAL
++** replication. This pager will be expected to be used only for replicating WAL
++** events broadcasted by another pager in leader WAL replication mode.
++**
++** If the bEnabled flag is 1 and WAL replication is already enabled on this
++** pager (either leader or follower WAL replication), an error is returned.
++**
++** If the bEnabled flag is 0 and either leader or follower WAL replication is
++** enabled on this pager, the pager will be reset to no WAL
++** replication. Otherwise, if no WAL replication was configured for this pager,
++** an error is returned.
++*/
++int sqlite3PagerWalReplicationSet(
++  Pager *pPager,
++  sqlite3 *db,
++  int bEnable,                           /* True to enable WAL replication */
++  sqlite3_wal_replication *pReplication, /* Leader WAL replication */
++  void *pArg                             /* Leader WAL replication argument */
++){
++  u8 *pTmp;
++  int rc = SQLITE_OK;
++
++  /* Valid input */
++  assert( pPager );
++  assert( bEnable==0 || bEnable==1 );
++  assert( bEnable==1 || pReplication==0 );
++  assert( pReplication!=0 || pArg==0 );
++
++  /* Current WAL replication mode must be either leader replication, follower
++  ** replication, or no replication at all.
++  */
++  assert( (pPager->pWalReplication!=0 && pPager->bWalReplicationFollower==0)
++       || (pPager->pWalReplication==0 && pPager->bWalReplicationFollower==1)
++       || (pPager->pWalReplication==0 && pPager->bWalReplicationFollower==0)
++  );
++
++  /* The WAL replication method argument can be set only if leader WAL
++  ** replication is enabled.
++  */
++  assert( pPager->pWalReplication!=0 || pPager->pWalReplicationArg==0 );
++
++  /* We require the database to be in WAL mode */
++  if( pPager->journalMode!=PAGER_JOURNALMODE_WAL ){
++    return SQLITE_ERROR;
++  }
++
++  if( bEnable ){
++    /* We require WAL replication to be currently disabled */
++    if( pPager->pWalReplication!=0 || pPager->bWalReplicationFollower==1 ){
++      return SQLITE_ERROR;
++    }
++    pPager->bWalReplicationFollower = pReplication == 0;
++    pPager->pWalReplication = pReplication;
++    pPager->pWalReplicationArg = pArg;
++
++    /* In follower mode we also need to manually open the WAL, since it
++    ** won't happen as consequence of regular pager operations.
++    */
++    if( pPager->bWalReplicationFollower && !pPager->pWal ){
++      rc = sqlite3WalOpen(pPager->pVfs,
++        pPager->fd, pPager->zWal, pPager->exclusiveMode,
++        pPager->journalSizeLimit, &pPager->pWal
++      );
++    }
++  }else{
++    /* We require WAL replication to be currently enabled */
++    if( pPager->pWalReplication==0 && pPager->bWalReplicationFollower==0 ){
++      return SQLITE_ERROR;
++    }
++
++    /* In follower mode we also need to manually close the WAL, since it
++    ** won't happen as consequence of regular pager operations.
++    */
++    if( pPager->bWalReplicationFollower ){
++      assert( pPager->pWal );
++      pTmp = (u8 *)pPager->pTmpSpace;
++      sqlite3WalClose(pPager->pWal, db, pPager->walSyncFlags, pPager->pageSize,
++          (db && (db->flags & SQLITE_NoCkptOnClose) ? 0 : pTmp)
++      );
++      pPager->pWal = 0;
++    }
++
++    pPager->bWalReplicationFollower = 0;
++    pPager->pWalReplication = 0;
++    pPager->pWalReplicationArg = 0;
++  }
++
++  return rc;
++}
++
++/*
++** Write new frames into the WAL in the context of a replicated transaction.
++**
++** If the isBegin flag is true, also start a new WAL write transaction. If the
++** commit flag true, also commit the transaction.
++**
++** This interface must be called only on connections in follower WAL replication
++** mode (i.e. pPager->bWalReplicationFollower is set to 1).
++*/
++int sqlite3PagerWalReplicationFrames(
++  Pager *pPager,
++  int isBegin,
++  int szPage,
++  int nFrame,
++  unsigned *aPgno,
++  void *aPage,
++  unsigned nTruncate,
++  int isCommit
++){
++  int rc;
++  int changed;
++  int i;
++  PgHdr* pList;
++
++  /* Make sure we are in follower WAL replication mode */
++  if( pPager->bWalReplicationFollower!=1 ){
++    return SQLITE_ERROR;
++  }
++
++  /* Make sure the page size matches the one set for this pager */
++  if( szPage!=pPager->pageSize ){
++    return SQLITE_ERROR;
++  }
++
++  /* If the isBegin flag is on, start a new WAL write transaction */
++  if( isBegin ){
++    rc = sqlite3WalBeginReadTransaction(pPager->pWal, &changed);
++    if( rc==SQLITE_OK ){
++      rc = sqlite3WalBeginWriteTransaction(pPager->pWal);
++    }
++    if( rc!=SQLITE_OK ){
++      return rc;
++    }
++  }
++
++  /* Create a buffer of nList page headers and link them together
++  ** using the PgHdr->pDirty pointer. */
++  pList = (PgHdr*)sqlite3_malloc(sizeof(PgHdr) * (nFrame));
++  if( pList==0 ){
++    return SQLITE_NOMEM_BKPT;
++  }
++  for (i=0; i<nFrame; i++) {
++    /* Initialize only the PgHdr fields that matter for sqlite3WalFrames, namely
++    ** pData, pDirty, pgno and flags. */
++    pList->pData = aPage + (pPager->pageSize * i);
++    pList->pDirty = i==nFrame-1 ? 0 : pList + 1;
++    pList->pgno = aPgno[i];
++    pList->flags = 0;
++    pList++;
++  }
++  pList -= nFrame;
++
++  /* Write the frames */
++  rc = sqlite3WalFrames(pPager->pWal,
++      pPager->pageSize, pList, nTruncate, isCommit, pPager->walSyncFlags);
++
++  /* Free the page headers buffer */
++  sqlite3_free(pList);
++
++  /* If the commit flag is on, also finalize the transaction */
++  if( rc==SQLITE_OK && isCommit ){
++    rc = sqlite3WalEndWriteTransaction(pPager->pWal);
++    sqlite3WalEndReadTransaction(pPager->pWal);
++  }
++
++  return rc;
++}
++
++/* No-op undo callback for follower WAL replication mode */
++static int pagerNoopUndoCallback(void *pCtx, Pgno iPg) {
++  return SQLITE_OK;
++}
++
++/*
++** Undo WAL changes in the context of a replicated transaction, performing a
++** rollback.
++*/
++int sqlite3PagerWalReplicationUndo(Pager *pPager){
++  int rc;
++
++  /* Make sure we are in follower replication mode */
++  if( pPager->bWalReplicationFollower!=1 ){
++    return SQLITE_ERROR;
++  }
++
++  rc = sqlite3WalUndo(pPager->pWal, pagerNoopUndoCallback, (void *)pPager);
++
++  /* Finalize the transaction */
++  if( rc==SQLITE_OK ){
++    rc = sqlite3WalEndWriteTransaction(pPager->pWal);
++    sqlite3WalEndReadTransaction(pPager->pWal);
++  }
++  return rc;
++}
++
++/*
++** Checkpoint a replicated WAL.
++*/
++int sqlite3PagerWalReplicationCheckpoint(
++  Pager *pPager,
++  sqlite3 *db,
++  int eMode,
++  int *pnLog,
++  int *pnCkpt
++){
++  /* Make sure we are in follower replication mode */
++  if( pPager->bWalReplicationFollower!=1 ){
++    return SQLITE_ERROR;
++  }
++
++  return sqlite3WalCheckpoint(pPager->pWal, db, eMode,
++      (eMode==SQLITE_CHECKPOINT_PASSIVE ? 0 : pPager->xBusyHandler),
++      pPager->pBusyHandlerArg,
++      pPager->walSyncFlags, pPager->pageSize, (u8 *)pPager->pTmpSpace,
++      pnLog, pnCkpt
++  );
++}
++#endif /* SQLITE_ENABLE_WAL_REPLICATION */
+ #endif /* !SQLITE_OMIT_WAL */
+ 
+ #ifdef SQLITE_ENABLE_ZIPVFS
+diff --git a/src/pager.h b/src/pager.h
+index 730e366fb..ca400a853 100644
+--- a/src/pager.h
++++ b/src/pager.h
+@@ -187,6 +187,15 @@ int sqlite3PagerSharedLock(Pager *pPager);
+   int sqlite3PagerSnapshotOpen(Pager *pPager, sqlite3_snapshot *pSnapshot);
+   int sqlite3PagerSnapshotRecover(Pager *pPager);
+ # endif
++#ifdef SQLITE_ENABLE_WAL_REPLICATION
++  int sqlite3PagerWalReplicationGet(Pager*, int*, sqlite3_wal_replication**);
++  int sqlite3PagerWalReplicationSet(Pager*,
++    sqlite3*, int, sqlite3_wal_replication*, void*);
++  int sqlite3PagerWalReplicationFrames(Pager*,
++    int, int, int, unsigned*, void*, unsigned, int);
++  int sqlite3PagerWalReplicationUndo(Pager*);
++  int sqlite3PagerWalReplicationCheckpoint(Pager*, sqlite3*, int, int*, int*);
++#endif /* SQLITE_ENABLE_WAL_REPLICATION */
+ #else
+ # define sqlite3PagerUseWal(x,y) 0
+ #endif
+diff --git a/src/prepare.c b/src/prepare.c
+index c1bd20f16..0e379e6fe 100644
+--- a/src/prepare.c
++++ b/src/prepare.c
+@@ -557,6 +557,24 @@ static int sqlite3Prepare(
+     Btree *pBt = db->aDb[i].pBt;
+     if( pBt ){
+       assert( sqlite3BtreeHoldsMutex(pBt) );
++#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
++       /* Check that the connection is not in follower WAL replication mode */
++      Pager *pPager = sqlite3BtreePager(pBt);
++      if (sqlite3PagerGetJournalMode(pPager) == PAGER_JOURNALMODE_WAL) {
++        int rc2;
++        int bEnabled;
++        sqlite3_wal_replication *pReplication;
++        rc = sqlite3PagerWalReplicationGet(pPager, &bEnabled, &pReplication);
++        assert( rc==SQLITE_OK );
++        if( bEnabled && !pReplication ){
++	  rc = SQLITE_ERROR;
++          const char *zDb = db->aDb[i].zDbSName;
++          sqlite3ErrorWithMsg(
++              db, rc, "database is in follower replication mode: %s", zDb);
++          goto end_prepare;
++	}
++      }
++#endif /* SQLITE_ENABLE_WAL_REPLICATION && !SQLITE_OMIT_WAL */
+       rc = sqlite3BtreeSchemaLocked(pBt);
+       if( rc ){
+         const char *zDb = db->aDb[i].zDbSName;
+diff --git a/src/sqlite.h.in b/src/sqlite.h.in
+index 202155df7..7f7016cef 100644
+--- a/src/sqlite.h.in
++++ b/src/sqlite.h.in
+@@ -503,6 +503,8 @@ int sqlite3_exec(
+ #define SQLITE_IOERR_BEGIN_ATOMIC      (SQLITE_IOERR | (29<<8))
+ #define SQLITE_IOERR_COMMIT_ATOMIC     (SQLITE_IOERR | (30<<8))
+ #define SQLITE_IOERR_ROLLBACK_ATOMIC   (SQLITE_IOERR | (31<<8))
++#define SQLITE_IOERR_NOT_LEADER        (SQLITE_IOERR | (32<<8))
++#define SQLITE_IOERR_LEADERSHIP_LOST   (SQLITE_IOERR | (33<<8))
+ #define SQLITE_LOCKED_SHAREDCACHE      (SQLITE_LOCKED |  (1<<8))
+ #define SQLITE_BUSY_RECOVERY           (SQLITE_BUSY   |  (1<<8))
+ #define SQLITE_BUSY_SNAPSHOT           (SQLITE_BUSY   |  (2<<8))
+@@ -8877,6 +8879,341 @@ int sqlite3_deserialize(
+ #define SQLITE_DESERIALIZE_RESIZEABLE  2 /* Resize using sqlite3_realloc64() */
+ #define SQLITE_DESERIALIZE_READONLY    4 /* Database is read-only */
+ 
++/*
++** CAPI3REF: Write-Ahead Log Replication Frame Object
++** EXPERIMENTAL
++**
++** The sqlite3_wal_replication_frame object represents a new frame about to be
++** appended to the write-ahead log of a [WAL mode] database.
++**
++** When an implementation for the WAL replication interface is provided (using
++** [sqlite3_wal_replication_register]) and [sqlite3_wal_replication_leader]
++** was called on a connection, passing a zReplication parameter matching the
++** registration name of that implementation, this object is used to inform the
++** replication implementation about the content of the new [write-ahead log]
++** frame.
++**
++** See [sqlite3_wal_replication] for additional information.
++*/
++typedef struct sqlite3_wal_replication_frame {
++  void *pBuf;        /* Page content of the WAL frame to be written */
++  unsigned pgno;     /* Page number */
++  unsigned iPrev;    /* Most recent frame also containing pgno, or 0 if new */
++} sqlite3_wal_replication_frame;
++
++/*
++** CAPI3REF: Write-Ahead Log Replication Object
++** EXPERIMENTAL
++**
++** An instance of this structure defines a set of write-ahead log lifecycle
++** hooks that can be used by third party libraries to replicate the
++** [write-ahead log] of a database across all SQLite instances that are part
++** of a cluster.
++**
++** A replication library should set a connection to leader replication mode
++** using [sqlite3_replication_leader]. At that point SQLite will invoke the
++** replication hooks whenever queries in that connection trigger WAL
++** changes. The replication library is then in charge of broadcasting the events
++** to other nodes and wait for a quorum.
++**
++** In case the node running the hook is not the current leader, then
++** [SQLITE_IOERR_NOT_LEADER] should be returned. This means that no broadcast
++** attempt was made at all.
++**
++** In case the node running the hook was the leader when the hook fired but was
++** the deposed half way while broadcasting, then [SQLITE_IOERR_LEADERSHIP_LOST]
++** should be returned. No assumption can be made whether the broadcast was
++** successful or not, and the replication library should take appropriate
++** recovery measures when a new leader gets elected.
++*/
++typedef struct sqlite3_wal_replication sqlite3_wal_replication;
++typedef struct sqlite3_wal_replication {
++  int iVersion;                   /* Structure version number (currently 1) */
++  sqlite3_wal_replication *pNext; /* Next registered WAL sync implementation */
++  const char *zName;              /* Name of this replication implementation */
++  void *pAppData;                 /* Pointer to application-specific data */
++  int (*xBegin)(sqlite3_wal_replication*, void *pArg);
++  int (*xAbort)(sqlite3_wal_replication*, void *pArg);
++  int (*xFrames)(sqlite3_wal_replication*, void *pArg, int szPage, int nFrame,
++      sqlite3_wal_replication_frame *aFrame, unsigned nTruncate, int isCommit);
++  int (*xUndo)(sqlite3_wal_replication*, void *pArg);
++  int (*xEnd)(sqlite3_wal_replication*, void *pArg);
++} sqlite3_wal_replication;
++
++/*
++** CAPI3REF: Write-Ahead Log Replication Objects
++** EXPERIMENTAL
++**
++** A WAL replication is an [sqlite3_wal_replication] object that third-party
++** libraries can use to synchronously replicate the [write-ahed log] of a
++** database across a cluster of SQLite nodes.
++**
++** The sqlite3_wal_replication_find() interface returns a pointer to a WAL
++** replication implementation given its name (names are case sensitive
++** zero-terminated UTF-8 strings).
++**
++** If there is no match, a NULL pointer is returned.
++**
++** If zReplication is NULL then the default WAL replication implementation is
++** returned, or NULL if none is registered.
++**
++** New WAL replication implementations are registered with
++** sqlite3_wal_replication_register(). Each new WAL replication implementation
++** becomes the default one if the makeDflt flag is set.
++**
++** The same WAL replication implementation can be registered multiple times
++** without injury.
++**
++** To make an existing WAL replication implementation into the default one,
++** register it again with the makeDflt flag set. If two different WAL
++** replication implementations with the same name are registered, the behavior
++** is undefined.  If a WAL replication implementation is registered with a name
++** that is NULL or an empty string, then the behavior is undefined.
++**
++** Unregister a WAL replication implementation with the
++** sqlite3_wal_replication_unregister() interface (if the default WAL
++** replication implementation is unregistered, another one is arbitrarily chosen
++** as the new default).
++**
++** The sqlite3_wal_replication_find(), sqlite3_wal_replication_register() and
++** sqlite3_wal_replication_unregister() interfaces is only available when the
++** SQLITE_ENABLE_WAL_REPLICATION compile-time option is used.
++*/
++SQLITE_EXPERIMENTAL sqlite3_wal_replication *sqlite3_wal_replication_find(
++  const char *zReplication);
++SQLITE_EXPERIMENTAL int sqlite3_wal_replication_register(
++  sqlite3_wal_replication *pReplication, int makeDflt);
++SQLITE_EXPERIMENTAL int sqlite3_wal_replication_unregister(
++  sqlite3_wal_replication *pReplication);
++
++/*
++** CAPI3REF: Check if WAL replication is enabled on a connection.
++** EXPERIMENTAL
++**
++** The [sqlite3_wal_replication_enabled(D,S,E,R)] interface checks if WAL
++** replication is enabled for schema S of [database connection] D.
++**
++** The [sqlite3_wal_replication_enabled()] interface returns SQLITE_OK on
++** success or an appropriate [error code] if it fails.
++**
++** In order to succeed, a call to sqlite3_wal_replication_enabled(D,S,E,R)
++** requires that the database connection D is in [WAL mode].
++**
++** On success, the [sqlite3_wal_replication_enabled()] interface sets *E to 1 if
++** WAL replication is enabled for schema S of database D, or to 0 otherwise.
++**
++** If replication is enabled, and schema S of database D is currently performing
++** leader replication (i.e. sqlite3_wal_replication_leader() was called against
++** it), the *R pointer will be set to the sqlite3_wal_replication object
++** currently being used for replicating WAL events.
++**
++** If replication is enabled, and schema S of database D is currently performing
++** follower replication (i.e. sqlite3_wal_replication_follower() was called
++** against it), the *R pointer will be set to NULL.
++**
++** The [sqlite3_wal_replication_enabled()] interface is only available when the
++** SQLITE_ENABLE_WAL_REPLICATION compile-time option is used.
++**/
++SQLITE_EXPERIMENTAL int sqlite3_wal_replication_enabled(
++  sqlite3 *db,                            /* Database handle */
++  const char *zSchema,                    /* Name of attached database (or NULL) */
++  int *pbEnabled,                         /* OUT: True if WAL replication is enabled */
++  sqlite3_wal_replication **ppReplication /* OUT: If leader replication is on */
++);
++
++/*
++** CAPI3REF: Enable leader WAL replication on a connection.
++** EXPERIMENTAL
++**
++** The [sqlite3_wal_replication_leader(D,S,R,A)] interface enables leader
++** write-ahead log replication for schema S of [database connection] D, using
++** the WAL replication implementation registered with name R. Argument A will be
++** passed back to the methods defined by R when WAL-related events occurr on
++** this connection.
++**
++** The [sqlite3_wal_replication_leader()] interface returns SQLITE_OK on success
++** or an appropriate [error code] if it fails.
++**
++** In order to succeed, a call to [sqlite3_wal_replication_leader(D,S,R,A)]
++** requires that a [sqlite3_wal_replication] implementation has been registered
++** under the name R (using the [sqlite3_wal_replication_register()] interface),
++** that the database file for schema S is in [WAL mode], and that no WAL
++** replication is currently enabled for schema S of connection D.
++**
++** After the call returns, leader WAL replication will be enabled for this
++** database and from this point on SQLite will notify the given
++** [sqlite3_wal_replication] implementation whenever a WAL event involving a
++** write transaction occurs (begin, write frames, undo, end). SQLite will block
++** on the particular [sqlite3_wal_replication] hook that was fired. The hook
++** implementation should typically broadcast the WAL-changing event to a number
++** of other nodes and wait for a quorum of them to acknowledge it.
++**
++** The [sqlite3_wal_replication_leader()] interface is only available when the
++** SQLITE_ENABLE_WAL_REPLICATION compile-time option is used.
++*/
++SQLITE_EXPERIMENTAL int sqlite3_wal_replication_leader(
++  sqlite3 *db,                /* Database handle */
++  const char *zSchema,        /* Name of attached database (or NULL) */
++  const char *zReplication,   /* Name of the sqlite3_wal_replication to use */
++  void *pArg                  /* Argument to pass back to replication methods */
++);
++
++/*
++** CAPI3REF: Enable follower WAL replication on a connection.
++** EXPERIMENTAL
++**
++** The [sqlite3_wal_replication_follower(D,S)] interface enables follower
++** write-ahead log replication on schema S of [database connection] D.
++**
++** The [sqlite3_wal_replication_follower()] interface returns SQLITE_OK on
++** success or an appropriate [error code] if it fails.
++**
++** In order to succeed, a call to [sqlite3_wal_replication_follower(D,S)]
++** requires that the database file for schema S is in [WAL mode], and that no
++** WAL replication is currently enabled for schema S of connection D.
++**
++** After the call returns, follower WAL replication will be enabled for this
++** connection. A [sqlite3_wal_replication] implementation configured on another
++** SQLite node should be in charge of "driving" the lifecycle of this
++** connection's WAL. The typical implementation will broadcast to follower
++** SQLite nodes all WAL events received by a leader connection, and wait for a
++** quorum before returning from the relevant WAL hooks (write frames, undo).
++**
++** When a database is in follower WAL replication mode, no backup can be
++** performed on it.
++**
++** The [sqlite3_wal_replication_follower()] interface is only available when the
++** SQLITE_ENABLE_WAL_REPLICATION compile-time option is used.
++*/
++SQLITE_EXPERIMENTAL int sqlite3_wal_replication_follower(
++  sqlite3 *db,                      /* Database handle */
++  const char *zSchema               /* Name of attached database (or NULL) */
++);
++
++/*
++** CAPI3REF: Disable leader or follower WAL replication on a connection.
++** EXPERIMENTAL
++**
++** The [sqlite3_wal_replication_none(D,S)] interface disables leader or follower
++** write-ahead log replication on schema S of [database connection] D.
++**
++** The [sqlite3_wal_replication_none()] interface returns SQLITE_OK on success
++** or an appropriate [error code] if it fails.
++**
++** In order to succeed, a call to [sqlite3_wal_replication_none(D,S)] requires
++** that the database file for schema S is in [WAL mode], and that the given
++** connection was previously configured for leader or follower WAL replication
++** using either [sqlite3_wal_replication_leader()] or
++** [sqlite3_wal_replication_follower()].
++**
++** After the call returns, no WAL replication will be enabled for this
++** connection. If the database was set to leader WAL replication, from this
++** point on SQLite won't invoke any more hooks on the [sqlite3_wal_replication]
++** implementation, for WAL events associated with schema S of [database
++** connection] D.
++**
++** The [sqlite3_wal_replication_none()] interface is only available when the
++** SQLITE_ENABLE_WAL_REPLICATION compile-time option is used.
++*/
++SQLITE_EXPERIMENTAL int sqlite3_wal_replication_none(
++  sqlite3 *db,                      /* Database handle */
++  const char *zSchema               /* Name of attached database (or NULL) */
++);
++
++/*
++** CAPI3REF: Write WAL frames in the context of a replicated transaction.
++** EXPERIMENTAL
++**
++** The [sqlite3_wal_replication_frames(D,S,B,P,N,L,D,T,C)] interface writes new
++** frames into the write-ahead log for schema S of [database connection] D.
++**
++** The [sqlite3_wal_replication_frames()] interface returns SQLITE_OK on success
++** or an appropriate [error code] if it fails.
++**
++** In order to succeed, a call to [sqlite3_wal_replication_frames()] requires
++** that schema S of [database connection] D has been set to follower WAL
++** replication mode using [sqlite3_wal_replication_follower()].
++**
++** The B, P, N, L, D, T, and C parameters contain information about the new
++** frames to append to the write-ahead log. If B is non-zero, then this is the
++** first batch of frames of a new WAL write transaction, and a new transaction
++** will be started. If C is non-zero, then this is the final batch of frames of
++** a WAL write transaction, and a commit will be performed. The P parameter
++** contains the size of each page in bytes, the N parameter contains the number
++** of frames to write, the L parameter is an ordered array of N page numbers
++** (one for each frame to write), and the D parameter is an ordered array of
++** N page data blocks of size P (one for each page number in L).
++**
++** The sqlite3_wal_replication_frames() interface is designed to match the
++** typical use case of a follower SQLite node obtaining the various parameters
++** by sequentially reading a byte stream from a network socket and passing
++** the data to this routine directly without any copy or futher allocation,
++** possibly except for integer encoding/decoding.
++**
++** The [sqlite3_wal_replication_frames()] interface is only available when the
++** SQLITE_ENABLE_WAL_REPLICATION compile-time option is used.
++*/
++SQLITE_EXPERIMENTAL int sqlite3_wal_replication_frames(
++  sqlite3 *db,         /* Database handle */
++  const char *zSchema, /* Name of attached database (or NULL) */
++  int isBegin,         /* Begin flag (for new transactions) */
++  int szPage,          /* Database page-size in bytes */
++  int nFrame,          /* Number of frames to write */
++  unsigned *aPgno,     /* Array of nList page numbers */
++  void *aPage,         /* Array of nList pages, each of szPage bytes */
++  unsigned nTruncate,  /* Truncate flag, used by the WAL */
++  int isCommit         /* Commit flag, used for committing */
++);
++
++/*
++** CAPI3REF: Undo WAL changes in the context of a replicated transaction.
++** EXPERIMENTAL
++**
++** The [sqlite3_wal_replication_undo(D,S)] interface reverts the changes of a
++** WAL write transaction for schema S of [database connection] D.
++**
++** The [sqlite3_wal_replication_undo()] interface returns SQLITE_OK on success
++** or an appropriate [error code] if it fails.
++**
++** In order to succeed, a call to [sqlite3_wal_replication_undo()] requires that
++** schema S of [database connection] D has been set to follower WAL replication
++** mode using [sqlite3_wal_replication_follower()].
++**
++** The [sqlite3_wal_replication_undo()] interface is only available when the
++** SQLITE_ENABLE_WAL_REPLICATION compile-time option is used.
++*/
++SQLITE_EXPERIMENTAL int sqlite3_wal_replication_undo(
++  sqlite3 *db,                      /* Database handle */
++  const char *zSchema               /* Name of attached database (or NULL) */
++);
++
++/*
++** CAPI3REF: Checkpoint a replicated WAL.
++** EXPERIMENTAL
++**
++** The [sqlite3_wal_replication_checkpoint(D,S,M,L,C)] interface checkpoints the
++** replicated WAL for schema S of [database connection] D.
++**
++** The [sqlite3_wal_replication_checkpoint()] interface returns SQLITE_OK on
++** success or an appropriate [error code] if it fails.
++**
++** This interface is meant to be used by WAL replication implementations to
++** perform a checkpoint on a connection in follower replication mode.
++**
++** The parameters have the same meaning as for the [sqlite3_wal_checkpoint_v2]
++** interface.
++**
++** The [sqlite3_wal_replication_checkpoint()] interface is only available when the
++** SQLITE_ENABLE_WAL_REPLICATION compile-time option is used.
++*/
++SQLITE_EXPERIMENTAL int sqlite3_wal_replication_checkpoint(
++  sqlite3 *db,                    /* Database handle */
++  const char *zSchema,            /* Name of attached database (or NULL) */
++  int eMode,                      /* Type of checkpoint */
++  int *pnLog,                     /* OUT: Final number of frames in log */
++  int *pnCkpt                     /* OUT: Final number of checkpointed frames */
++);
++
+ /*
+ ** Undo the hack that converts floating point types to integer for
+ ** builds on processors without floating point support.
+diff --git a/src/test_config.c b/src/test_config.c
+index aa0626ab2..e06ffdd11 100644
+--- a/src/test_config.c
++++ b/src/test_config.c
+@@ -762,6 +762,12 @@ Tcl_SetVar2(interp, "sqlite_options", "mergesort", "1", TCL_GLOBAL_ONLY);
+   Tcl_SetVar2(interp, "sqlite_options", "uri_00_error", "0", TCL_GLOBAL_ONLY);
+ #endif
+ 
++#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
++  Tcl_SetVar2(interp, "sqlite_options", "wal_replication", "1", TCL_GLOBAL_ONLY);
++#else
++  Tcl_SetVar2(interp, "sqlite_options", "wal_replication", "0", TCL_GLOBAL_ONLY);
++#endif
++
+ #define LINKVAR(x) { \
+     static const int cv_ ## x = SQLITE_ ## x; \
+     Tcl_LinkVar(interp, "SQLITE_" #x, (char *)&(cv_ ## x), \
+diff --git a/src/test_tclsh.c b/src/test_tclsh.c
+index 97f7f5d7a..59b0cc49e 100644
+--- a/src/test_tclsh.c
++++ b/src/test_tclsh.c
+@@ -105,6 +105,9 @@ const char *sqlite3TestInit(Tcl_Interp *interp){
+   extern int Zipvfs_Init(Tcl_Interp*);
+ #endif
+   extern int TestExpert_Init(Tcl_Interp*);
++#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
++  extern int Sqlitetestwalreplication_Init(Tcl_Interp*);
++#endif  /* SQLITE_ENABLE_WAL_REPLICATION */
+ 
+   Tcl_CmdInfo cmdInfo;
+ 
+@@ -168,6 +171,11 @@ const char *sqlite3TestInit(Tcl_Interp *interp){
+ #if defined(SQLITE_ENABLE_FTS3) || defined(SQLITE_ENABLE_FTS4)
+   Sqlitetestfts3_Init(interp);
+ #endif
++
++#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
++  Sqlitetestwalreplication_Init(interp);
++#endif  /* SQLITE_ENABLE_WAL_REPLICATION */
++
+   TestExpert_Init(interp);
+ 
+   Tcl_CreateObjCommand(
+diff --git a/src/test_walreplication.c b/src/test_walreplication.c
+new file mode 100644
+index 000000000..bcf854c84
+--- /dev/null
++++ b/src/test_walreplication.c
+@@ -0,0 +1,817 @@
++/*
++** 2018 February 19
++**
++** The author disclaims copyright to this source code.  In place of
++** a legal notice, here is a blessing:
++**
++**    May you do good and not evil.
++**    May you find forgiveness for yourself and forgive others.
++**    May you share freely, never taking more than you give.
++**
++*************************************************************************
++**
++** This file contains code used for testing the SQLite system.
++** None of the code in this file goes into a deliverable build.
++**
++** This file contains a stub implementation of the write-ahead log replication
++** interface. It can be used by tests to exercise the WAL replication APIs
++** exposed by SQLite.
++**
++** This replication implementation is designed for testability and does
++** not involve any actual networking.
++*/
++#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
++
++#if defined(INCLUDE_SQLITE_TCL_H)
++#  include "sqlite_tcl.h"
++#else
++#  include "tcl.h"
++#endif
++
++#include "sqliteInt.h"
++#include "sqlite3.h"
++#include <assert.h>
++
++extern const char *sqlite3ErrName(int);
++
++/* These functions are implemented in test1.c. */
++extern int getDbPointer(Tcl_Interp *, const char *, sqlite3 **);
++
++/* Hold information about a single WAL frame that was passed to the
++** sqlite3_wal_replication.xFrames method implemented in this file.
++**
++** This is used for test assertions.
++*/
++typedef struct testWalReplicationFrameInfo testWalReplicationFrameInfo;
++struct testWalReplicationFrameInfo {
++  unsigned szPage;   /* Number of bytes in the frame's page */
++  unsigned pgno;     /* Page number */
++  unsigned iPrev;    /* Most recent frame also containing pgno, or 0 if new */
++
++  /* Linked list of frame info objects maintained by testWalReplicationFrames,
++  ** head is the newest and tail the oldest. */
++  testWalReplicationFrameInfo* pNext;
++};
++
++/*
++** Global WAL replication context used by this stub implementation of
++** sqlite3_wal_replication_wal. It holds a state variable that captures the current
++** WAL lifecycle phase and it optionally holds a pointer to a connection in
++** follower WAL replication mode.
++*/
++typedef struct testWalReplicationContextType testWalReplicationContextType;
++struct testWalReplicationContextType {
++  int eState;          /* Replication state (IDLE, PENDING, WRITING, etc) */
++  int eFailing;        /* Code of a method that should fail when triggered */
++  int rc;              /* If non-zero, the eFailing method will error */
++  int iFailures;       /* Number of times the eFailing method will error */
++  sqlite3 *db;         /* Follower connection */
++  const char *zSchema; /* Follower schema name */
++
++  /* List of all frames that were passed to the xFrames hook since the last
++  ** context reset.
++  */
++  testWalReplicationFrameInfo *pFrameList;
++};
++static testWalReplicationContextType testWalReplicationContext;
++
++#define STATE_IDLE      0
++#define STATE_PENDING   1
++#define STATE_WRITING   2
++#define STATE_COMMITTED 3
++#define STATE_UNDONE    4
++#define STATE_ERROR     5
++
++#define FAILING_BEGIN  1
++#define FAILING_FRAMES 2
++#define FAILING_UNDO   3
++#define FAILING_END    4
++
++/* Reset the state of the global WAL replication context */
++static void testWalReplicationContextReset() {
++  testWalReplicationFrameInfo *pFrame;
++  testWalReplicationFrameInfo *pFrameNext;
++
++  testWalReplicationContext.eState = STATE_IDLE;
++  testWalReplicationContext.eFailing = 0;
++  testWalReplicationContext.rc = 0;
++  testWalReplicationContext.iFailures = 8192; /* Effetively infinite */
++  testWalReplicationContext.db = 0;
++  testWalReplicationContext.zSchema = 0;
++
++  /* Free all memory allocated for frame info objects */
++  pFrame = testWalReplicationContext.pFrameList;
++  while( pFrame ){
++    pFrameNext = pFrame->pNext;
++    sqlite3_free(pFrame);
++    pFrame = pFrameNext;
++  }
++
++  testWalReplicationContext.pFrameList = 0;
++}
++
++/*
++** A version of sqlite3_wal_replication.xBegin() that transitions the global
++** replication context state to STATE_PENDING.
++*/
++static int testWalReplicationBegin(
++  sqlite3_wal_replication *pReplication, void *pArg
++){
++  int rc = SQLITE_OK;
++  assert( pArg==&testWalReplicationContext );
++  assert( testWalReplicationContext.eState==STATE_IDLE
++       || testWalReplicationContext.eState==STATE_ERROR
++  );
++  if( testWalReplicationContext.eFailing==FAILING_BEGIN
++   && testWalReplicationContext.iFailures>0
++  ){
++    rc = testWalReplicationContext.rc;
++    testWalReplicationContext.iFailures--;
++  }
++  if( rc==SQLITE_OK ){
++    testWalReplicationContext.eState = STATE_PENDING;
++  }
++  return rc;
++}
++
++/*
++** A version of sqlite3_wal_replication.xAbort() that transitions the global
++** replication context state to STATE_IDLE.
++*/
++static int testWalReplicationAbort(
++  sqlite3_wal_replication *pReplication, void *pArg
++){
++  assert( pArg==&testWalReplicationContext );
++  assert( testWalReplicationContext.eState==STATE_PENDING );
++  testWalReplicationContext.eState = STATE_IDLE;
++  return 0;
++}
++
++/*
++** A version of sqlite3_wal_replication.xFrames() that invokes
++** sqlite3_wal_replication_frames() on the follower connection configured in the
++** global test replication context (if present).
++*/
++static int testWalReplicationFrames(
++  sqlite3_wal_replication *pReplication, void *pArg,
++  int szPage, int nFrame, sqlite3_wal_replication_frame *aFrame,
++  unsigned nTruncate, int isCommit
++){
++  int rc = SQLITE_OK;
++  int isBegin = 1;
++  int i;
++  sqlite3_wal_replication_frame *pNext;
++  testWalReplicationFrameInfo *pFrame;
++
++  assert( pArg==&testWalReplicationContext );
++  assert( testWalReplicationContext.eState==STATE_PENDING
++       || testWalReplicationContext.eState==STATE_WRITING
++  );
++
++  /* Save information about these frames */
++  pNext = aFrame;
++  for (i=0; i<nFrame; i++) {
++    pFrame = (testWalReplicationFrameInfo*)(sqlite3_malloc(
++        sizeof(testWalReplicationFrameInfo)));
++    if( !pFrame ){
++	return SQLITE_NOMEM;
++    }
++    pFrame->szPage = szPage;
++    pFrame->pgno = pNext->pgno;
++    pFrame->iPrev = pNext->iPrev;
++    pFrame->pNext = testWalReplicationContext.pFrameList;
++    testWalReplicationContext.pFrameList = pFrame;
++    pNext += 1;
++  }
++
++  if( testWalReplicationContext.eState==STATE_PENDING ){
++    /* If the replication state is STATE_PENDING, it means that this is the
++    ** first batch of frames of a new transaction. */
++    isBegin = 1;
++  }
++  if( testWalReplicationContext.eFailing==FAILING_FRAMES
++   && testWalReplicationContext.iFailures>0
++  ){
++    rc = testWalReplicationContext.rc;
++    testWalReplicationContext.iFailures--;
++  }else if( testWalReplicationContext.db ){
++    unsigned *aPgno;
++    void *aPage;
++    int i;
++
++    aPgno = sqlite3_malloc(sizeof(unsigned) * nFrame);
++    if( !aPgno ){
++      rc = SQLITE_NOMEM;
++    }
++    if( rc==SQLITE_OK ){
++      aPage = (void*)sqlite3_malloc(sizeof(char) * szPage * nFrame);
++    }
++    if( !aPage ){
++      sqlite3_free(aPgno);
++      rc = SQLITE_NOMEM;
++    }
++    if( rc==SQLITE_OK ){
++      for(i=0; i<nFrame; i++){
++	aPgno[i] = aFrame[i].pgno;
++	memcpy(aPage+(szPage*i), aFrame[i].pBuf, szPage);
++      }
++      rc = sqlite3_wal_replication_frames(
++            testWalReplicationContext.db,
++            testWalReplicationContext.zSchema,
++            isBegin, szPage, nFrame, aPgno, aPage, nTruncate, isCommit
++      );
++      sqlite3_free(aPgno);
++      sqlite3_free(aPage);
++    }
++  }
++  if( rc==SQLITE_OK ){
++    if( isCommit ){
++      testWalReplicationContext.eState = STATE_COMMITTED;
++    }else{
++      testWalReplicationContext.eState = STATE_WRITING;
++    }
++  }else{
++    testWalReplicationContext.eState = STATE_ERROR;
++  }
++  return rc;
++}
++
++/*
++** A version of sqlite3_wal_replication.xUndo() that invokes
++** sqlite3_wal_replication_undo() on the follower connection configured in the
++** global test replication context (if present).
++*/
++static int testWalReplicationUndo(
++  sqlite3_wal_replication *pReplication, void *pArg
++){
++  int rc = SQLITE_OK;
++  assert( pArg==&testWalReplicationContext );
++  assert( testWalReplicationContext.eState==STATE_PENDING
++       || testWalReplicationContext.eState==STATE_WRITING
++       || testWalReplicationContext.eState==STATE_ERROR
++  );
++  if( testWalReplicationContext.eFailing==FAILING_UNDO
++   && testWalReplicationContext.iFailures>0
++  ){
++    rc = testWalReplicationContext.rc;
++    testWalReplicationContext.iFailures--;
++  }else if( testWalReplicationContext.db
++         && testWalReplicationContext.eState==STATE_WRITING ){
++    rc = sqlite3_wal_replication_undo(
++        testWalReplicationContext.db,
++        testWalReplicationContext.zSchema
++    );
++  }
++  if( rc==SQLITE_OK ){
++    testWalReplicationContext.eState = STATE_UNDONE;
++  }
++  return rc;
++}
++
++/*
++** A version of sqlite3_wal_replication.xEnd() that transitions the global
++** replication context state to STATE_IDLE.
++*/
++static int testWalReplicationEnd(
++  sqlite3_wal_replication *pReplication, void *pArg
++){
++  int rc = SQLITE_OK;
++  assert( pArg==&testWalReplicationContext );
++  assert( testWalReplicationContext.eState==STATE_PENDING
++       || testWalReplicationContext.eState==STATE_COMMITTED
++       || testWalReplicationContext.eState==STATE_UNDONE
++  );
++  testWalReplicationContext.eState = STATE_IDLE;
++  if( testWalReplicationContext.eFailing==FAILING_END
++   && testWalReplicationContext.iFailures>0
++  ){
++    rc = testWalReplicationContext.rc;
++    testWalReplicationContext.iFailures--;
++  }
++  return rc;
++}
++
++/*
++** This function returns a pointer to the WAL replication implemented in this
++** file.
++*/
++sqlite3_wal_replication *testWalReplication(void){
++  static sqlite3_wal_replication replication = {
++    1,
++    0,
++    "test",
++    0,
++    testWalReplicationBegin,
++    testWalReplicationAbort,
++    testWalReplicationFrames,
++    testWalReplicationUndo,
++    testWalReplicationEnd,
++  };
++  return &replication;
++}
++
++/*
++** This function returns a pointer to the WAL replication implemented in this
++** file, but using a different registration name than testWalRepl.
++**
++** It's used to exercise the WAL replication registration APIs.
++*/
++sqlite3_wal_replication *testWalReplicationAlt(void){
++  static sqlite3_wal_replication replication = {
++    1,
++    0,
++    "test-alt",
++    0,
++    testWalReplicationBegin,
++    testWalReplicationAbort,
++    testWalReplicationFrames,
++    testWalReplicationUndo,
++    testWalReplicationEnd,
++  };
++  return &replication;
++}
++
++/*
++** tclcmd: sqlite3_wal_replication_find ?NAME?
++**
++** Return the name of the default WAL replication implementation, if one is
++** registered, or no result otherwise.
++**
++** If NAME is passed, return NAME if a matching WAL replication implementation
++** is registered, or no result otherwise.
++*/
++static int SQLITE_TCLAPI test_wal_replication_find(
++  void * clientData,
++  Tcl_Interp *interp,
++  int objc,
++  Tcl_Obj *CONST objv[]
++){
++  char *zName;
++  sqlite3_wal_replication *pReplication;
++
++  if( objc!=1 && objc!=2 ){
++    Tcl_WrongNumArgs(interp, 2, objv, "?NAME?");
++    return TCL_ERROR;
++  }
++
++  if( objc==2 ){
++    zName = Tcl_GetString(objv[1]);
++  }
++
++  pReplication = sqlite3_wal_replication_find(zName);
++
++  if( pReplication ){
++    Tcl_AppendResult(interp, pReplication->zName, (char*)0);
++  }
++
++  return TCL_OK;
++}
++
++/*
++** tclcmd: sqlite3_wal_replication_register DEFAULT ?ALT?
++**
++** Register the test write-ahead log replication implementation, with the name
++** "test", making it the default if DEFAULT is 1.
++**
++** If the ALT flag is true, use "test-alt" as registration name.
++*/
++static int SQLITE_TCLAPI test_wal_replication_register(
++  void * clientData,
++  Tcl_Interp *interp,
++  int objc,
++  Tcl_Obj *CONST objv[]
++){
++  int bDefault = 0;
++  int bAlt = 0;
++  sqlite3_wal_replication *pReplication;
++
++  if( objc!=2 && objc!=3 ){
++    Tcl_WrongNumArgs(interp, 3, objv, "DEFAULT ?ALT?");
++    return TCL_ERROR;
++  }
++
++  if( Tcl_GetIntFromObj(interp, objv[1], &bDefault) ){
++    return TCL_ERROR;
++  }
++
++  if( objc==3 ){
++    if( Tcl_GetIntFromObj(interp, objv[2], &bAlt) ){
++      return TCL_ERROR;
++    }
++  }
++
++  if( bAlt==0 ){
++    pReplication = testWalReplication();
++  }else{
++    pReplication = testWalReplicationAlt();
++  }
++
++  sqlite3_wal_replication_register(pReplication, bDefault);
++
++  return TCL_OK;
++}
++
++/*
++** tclcmd: sqlite3_wal_replication_unregister ?ALT?
++**
++** Unregister the test write-ahead log replication implementation.
++**
++** If the ALT flag is true, unregister the alternate implementation.
++*/
++static int SQLITE_TCLAPI test_wal_replication_unregister(
++  void * clientData,
++  Tcl_Interp *interp,
++  int objc,
++  Tcl_Obj *CONST objv[]
++){
++  int bAlt = 0;
++
++  if( objc!=1 && objc!=2 ){
++    Tcl_WrongNumArgs(interp, 2, objv, "?ALT?");
++    return TCL_ERROR;
++  }
++
++  if( objc==2 ){
++    if( Tcl_GetIntFromObj(interp, objv[1], &bAlt) ){
++      return TCL_ERROR;
++    }
++  }
++
++  if( bAlt==0 ){
++    sqlite3_wal_replication_unregister(testWalReplication());
++  }else{
++    sqlite3_wal_replication_unregister(testWalReplicationAlt());
++  }
++  return TCL_OK;
++}
++
++/*
++** tclcmd: sqlite3_wal_replication_error METHOD ERROR ?N?
++**
++** Make the given method of test WAL replication implementation fail with the
++** given error. If N is given, fail only that amount of time and start
++** succeeding again afterwise.
++*/
++static int SQLITE_TCLAPI test_wal_replication_error(
++  void * clientData,
++  Tcl_Interp *interp,
++  int objc,
++  Tcl_Obj *CONST objv[]
++){
++  const char *zMethod;
++  const char *zError;
++  int eFailing;
++  int rc;
++  int iFailures;
++
++  if( objc!=3 && objc!=4 ){
++    Tcl_WrongNumArgs(interp, 3, objv, "METHOD ERROR ?N?");
++    return TCL_ERROR;
++  }
++
++  /* Failing method */
++  zMethod = Tcl_GetString(objv[1]);
++  if( strcmp(zMethod, "xBegin")==0 ){
++    eFailing = FAILING_BEGIN;
++  }else if( strcmp(zMethod, "xFrames")==0 ){
++    eFailing = FAILING_FRAMES;
++  }else if( strcmp(zMethod, "xUndo")==0 ){
++    eFailing = FAILING_UNDO;
++  }else if( strcmp(zMethod, "xEnd")==0 ){
++    eFailing = FAILING_END;
++  }else{
++    Tcl_AppendResult(interp, "unknown WAL replication method", (char*)0);
++    return TCL_ERROR;
++  }
++
++  /* Error code */
++  zError = Tcl_GetString(objv[2]);
++  if( strcmp(zError, "NOT_LEADER")==0 ){
++    rc = SQLITE_IOERR_NOT_LEADER;
++  }else if( strcmp(zError, "LEADERSHIP_LOST")==0 ){
++    rc = SQLITE_IOERR_LEADERSHIP_LOST;
++  }else{
++    Tcl_AppendResult(interp, "unknown error", (char*)0);
++    return TCL_ERROR;
++  }
++
++  testWalReplicationContext.eFailing = eFailing;
++  testWalReplicationContext.rc = rc;
++
++  /* Number of failures */
++  if( objc==4 ){
++    if( Tcl_GetIntFromObj(interp, objv[3], &iFailures) ) return TCL_ERROR;
++    testWalReplicationContext.iFailures = iFailures;
++  }
++  
++  return TCL_OK;
++}
++
++/*
++** tclcmd: sqlite3_wal_replication_frame_info N
++**
++** Return information about the N'th oldest frame that was handled by
++** testWalReplicationFrames since the last global context reset.
++**
++** If N is 0, information about the most recent frame is returned.
++*/
++static int SQLITE_TCLAPI test_wal_replication_frame_info(
++  void * clientData,
++  Tcl_Interp *interp,
++  int objc,
++  Tcl_Obj *CONST objv[]
++){
++  int i;
++  int n;
++  testWalReplicationFrameInfo *pFrame = testWalReplicationContext.pFrameList;
++  char zSzPage[32];
++  char zPgno[32];
++  char zPrev[32];
++
++  if( objc!=2 ){
++    Tcl_WrongNumArgs(interp, 1, objv, "N");
++    return TCL_ERROR;
++  }
++
++  if( Tcl_GetIntFromObj(interp, objv[1], &n) ) return TCL_ERROR;
++
++  for(i=0; i<n; i++){
++    if( !pFrame ){
++      break;
++    }
++    pFrame = pFrame->pNext;
++  }
++
++  if( !pFrame ){
++    Tcl_AppendResult(interp, "no such frame", (char*)0);
++    return TCL_ERROR;
++  }
++
++  sqlite3_snprintf(sizeof(zSzPage), zSzPage, "%d ", pFrame->szPage);
++  sqlite3_snprintf(sizeof(zPgno), zPgno, "%d ", pFrame->pgno);
++  sqlite3_snprintf(sizeof(zPrev), zPrev, "%d", pFrame->iPrev);
++
++  Tcl_AppendResult(interp, zSzPage, zPgno, zPrev, (char*)0);
++
++  return TCL_OK;
++}
++
++/*
++** tclcmd: sqlite3_wal_replication_enabled HANDLE SCHEMA
++**
++** Return "true" if WAL replication is enabled on the given database, "false"
++** otherwise.
++**
++** If leader replication is enabled, the name of the implementation used is also
++** returned.
++*/
++static int SQLITE_TCLAPI test_wal_replication_enabled(
++  void * clientData,
++  Tcl_Interp *interp,
++  int objc,
++  Tcl_Obj *CONST objv[]
++){
++  int rc;
++  sqlite3 *db;
++  const char *zSchema;
++  int bEnabled;
++  sqlite3_wal_replication *pReplication;
++  char *zEnabled;
++  const char *zReplication = 0;
++  char zBuf[32];
++
++  if( objc!=3 ){
++    Tcl_WrongNumArgs(interp, 1, objv, "HANDLE SCHEMA");
++    return TCL_ERROR;
++  }
++
++  if( getDbPointer(interp, Tcl_GetString(objv[1]), &db) ){
++    return TCL_ERROR;
++  }
++  zSchema = Tcl_GetString(objv[2]);
++
++  rc = sqlite3_wal_replication_enabled(db, zSchema, &bEnabled, &pReplication);
++
++  if( rc!=SQLITE_OK ){
++    Tcl_AppendResult(interp, sqlite3ErrName(rc), (char*)0);
++    return TCL_ERROR;
++  }
++
++  if( bEnabled ){
++    zEnabled = "true";
++    if( pReplication ){
++      zReplication = pReplication->zName;
++    }
++  }else{
++    zEnabled = "false";
++  }
++
++  if( zReplication ){
++    sqlite3_snprintf(sizeof(zBuf), zBuf, " %s", zReplication);
++  }else{
++    zBuf[0] = 0;
++  }
++
++  Tcl_AppendResult(interp, zEnabled, zBuf, (char*)0);
++
++  return TCL_OK;
++}
++
++/*
++** tclcmd: sqlite3_wal_replication_leader HANDLE SCHEMA ?NAME?
++**
++** Enable leader WAL replication for the given connection/schema, using the stub
++** WAL replication implementation defined in this file, or the one registered
++** under NAME if given.
++*/
++static int SQLITE_TCLAPI test_wal_replication_leader(
++  void * clientData,
++  Tcl_Interp *interp,
++  int objc,
++  Tcl_Obj *CONST objv[]
++){
++  int rc;
++  sqlite3 *db;
++  const char *zSchema;
++  const char *zReplication = "test";
++  void *pArg = (void*)(&testWalReplicationContext);
++
++  if( objc!=3 && objc!=4 ){
++    Tcl_WrongNumArgs(interp, 4, objv, "HANDLE SCHEMA ?NAME?");
++    return TCL_ERROR;
++  }
++
++  if( getDbPointer(interp, Tcl_GetString(objv[1]), &db) ){
++    return TCL_ERROR;
++  }
++  zSchema = Tcl_GetString(objv[2]);
++
++  if( objc==4 ){
++    zReplication = Tcl_GetString(objv[3]);
++  }
++
++  /* Reset any previous global context state */
++  testWalReplicationContextReset();
++
++  rc = sqlite3_wal_replication_leader(db, zSchema, zReplication, pArg);
++
++  if( rc!=SQLITE_OK ){
++    Tcl_AppendResult(interp, sqlite3ErrName(rc), (char*)0);
++    return TCL_ERROR;
++  }
++
++  return TCL_OK;
++}
++
++/*
++** tclcmd: sqlite3_wal_replication_follower HANDLE SCHEMA
++**
++** Enable follower WAL replication for the given connection/schema. The global
++** test replication context will be set to point to this connection/schema and
++** WAL events will be replicated to it.
++*/
++static int SQLITE_TCLAPI test_wal_replication_follower(
++  void * clientData,
++  Tcl_Interp *interp,
++  int objc,
++  Tcl_Obj *CONST objv[]
++){
++  int rc;
++  sqlite3 *db;
++  const char *zSchema;
++
++  if( objc!=3 ){
++    Tcl_WrongNumArgs(interp, 3, objv, "HANDLE SCHEMA");
++    return TCL_ERROR;
++  }
++
++  if( getDbPointer(interp, Tcl_GetString(objv[1]), &db) ){
++    return TCL_ERROR;
++  }
++  zSchema = Tcl_GetString(objv[2]);
++
++  rc = sqlite3_wal_replication_follower(db, zSchema);
++
++  if( rc!=SQLITE_OK ){
++    Tcl_AppendResult(interp, sqlite3ErrName(rc), (char*)0);
++    return TCL_ERROR;
++  }
++
++  testWalReplicationContext.db = db;
++  testWalReplicationContext.zSchema = zSchema;
++
++  return TCL_OK;
++}
++
++/*
++** tclcmd: sqlite3_wal_replication_none HANDLE SCHEMA
++**
++** Disable leader or follower WAL replication for the given connection/schema.
++*/
++static int SQLITE_TCLAPI test_wal_replication_none(
++  void * clientData,
++  Tcl_Interp *interp,
++  int objc,
++  Tcl_Obj *CONST objv[]
++){
++  int rc;
++  sqlite3 *db;
++  const char *zSchema;
++
++  if( objc!=3 ){
++    Tcl_WrongNumArgs(interp, 3, objv, "HANDLE SCHEMA");
++    return TCL_ERROR;
++  }
++
++  if( getDbPointer(interp, Tcl_GetString(objv[1]), &db) ){
++    return TCL_ERROR;
++  }
++  zSchema = Tcl_GetString(objv[2]);
++
++  rc = sqlite3_wal_replication_none(db, zSchema);
++
++  if( rc!=SQLITE_OK ){
++    Tcl_AppendResult(interp, sqlite3ErrName(rc), (char*)0);
++    return TCL_ERROR;
++  }
++
++  return TCL_OK;
++}
++
++/*
++** tclcmd: sqlite3_wal_replication_checkpoint HANDLE SCHEMA
++**
++** Checkpoint a database in follower WAL replication mode, using the
++** SQLITE_CHECKPOINT_TRUNCATE checkpoint mode.
++*/
++static int SQLITE_TCLAPI test_wal_replication_checkpoint(
++  void * clientData,
++  Tcl_Interp *interp,
++  int objc,
++  Tcl_Obj *CONST objv[]
++){
++  int rc;
++  sqlite3 *db;
++  const char *zSchema;
++  int nLog;
++  int nCkpt;
++
++  if( objc!=3 ){
++    Tcl_WrongNumArgs(interp, 1, objv,
++        "HANDLE SCHEMA");
++    return TCL_ERROR;
++  }
++
++  if( getDbPointer(interp, Tcl_GetString(objv[1]), &db) ){
++    return TCL_ERROR;
++  }
++  zSchema = Tcl_GetString(objv[2]);
++
++  rc = sqlite3_wal_replication_checkpoint(db, zSchema,
++      SQLITE_CHECKPOINT_TRUNCATE, &nLog, &nCkpt);
++
++  if( rc!=SQLITE_OK ){
++    Tcl_AppendResult(interp, sqlite3ErrName(rc), (char*)0);
++    return TCL_ERROR;
++  }
++  if( nLog!=0 ){
++    Tcl_AppendResult(interp, "the WAL was not truncated", (char*)0);
++    return TCL_ERROR;
++  }
++  if( nCkpt!=0 ){
++    Tcl_AppendResult(interp, "only some frames were checkpointed", (char*)0);
++    return TCL_ERROR;
++  }
++
++  return TCL_OK;
++}
++
++/*
++** This routine registers the custom TCL commands defined in this
++** module.  This should be the only procedure visible from outside
++** of this module.
++*/
++int Sqlitetestwalreplication_Init(Tcl_Interp *interp){
++  Tcl_CreateObjCommand(interp, "sqlite3_wal_replication_find",
++          test_wal_replication_find,0,0);
++  Tcl_CreateObjCommand(interp, "sqlite3_wal_replication_register",
++          test_wal_replication_register,0,0);
++  Tcl_CreateObjCommand(interp, "sqlite3_wal_replication_unregister",
++          test_wal_replication_unregister,0,0);
++  Tcl_CreateObjCommand(interp, "sqlite3_wal_replication_error",
++          test_wal_replication_error,0,0);
++  Tcl_CreateObjCommand(interp, "sqlite3_wal_replication_frame_info",
++          test_wal_replication_frame_info,0,0);
++  Tcl_CreateObjCommand(interp, "sqlite3_wal_replication_enabled",
++          test_wal_replication_enabled,0,0);
++  Tcl_CreateObjCommand(interp, "sqlite3_wal_replication_leader",
++          test_wal_replication_leader,0,0);
++  Tcl_CreateObjCommand(interp, "sqlite3_wal_replication_follower",
++          test_wal_replication_follower,0,0);
++  Tcl_CreateObjCommand(interp, "sqlite3_wal_replication_none",
++          test_wal_replication_none,0,0);
++  Tcl_CreateObjCommand(interp, "sqlite3_wal_replication_checkpoint",
++          test_wal_replication_checkpoint,0,0);
++  return TCL_OK;
++}
++#endif /* SQLITE_ENABLE_WAL_REPLICATION */
+diff --git a/test/walreplication.test b/test/walreplication.test
+new file mode 100644
+index 000000000..4aaa804bb
+--- /dev/null
++++ b/test/walreplication.test
+@@ -0,0 +1,718 @@
++# 2018 February 15
++#
++# The author disclaims copyright to this source code.  In place of
++# a legal notice, here is a blessing:
++#
++#    May you do good and not evil.
++#    May you find forgiveness for yourself and forgive others.
++#    May you share freely, never taking more than you give.
++#
++#***********************************************************************
++# This file implements regression tests for SQLite library. The focus
++# of this file are the sqlite3_wal_replication_xxx() APIs.
++#
++
++set testdir [file dirname $argv0]
++source $testdir/tester.tcl
++ifcapable !wal_replication {finish_test; return}
++set testprefix walreplication
++
++proc sqlite3_wal {args} {
++  [lindex $args 0] eval { PRAGMA page_size = 1024 }
++  [lindex $args 0] eval { PRAGMA journal_mode = wal }
++}
++
++proc reset_db2 {} {
++  catch {db2 close}
++  forcedelete test2.db
++  forcedelete test2.db-journal
++  forcedelete test2.db-wal
++  sqlite3 db2 ./test2.db
++}
++
++#----------------------------------------------------------------------------
++# The following block of tests - walreplication-1.* - focus on testing the
++# implementation of the sqlite3_wal_replication_find(),
++# sqlite3_wal_replication_register() and sqlite3_wal_replication_unregister()
++# interfaces.
++
++# Test that by default no WAL replication implementation is registered.
++#
++do_test 1.1 {
++  sqlite3_wal_replication_find
++} {}
++
++# Test registering the stub WAL replication implementation. Since it's the first
++# implementation registered, it becomes the default even if the default flag is
++# off.
++#
++do_test 1.2.1 {
++  sqlite3_wal_replication_register 0
++  sqlite3_wal_replication_find
++} {test}
++do_test 1.2.2 {
++  sqlite3_wal_replication_find test
++} {test}
++
++# Test registering again the stub WAL replication implementation.
++#
++do_test 1.3.1 {
++  sqlite3_wal_replication_register 0
++  sqlite3_wal_replication_find
++} {test}
++do_test 1.3.2 {
++  sqlite3_wal_replication_find test
++} {test}
++
++# Test registering one more time the stub WAL replication implementation, with
++# the default flag on.
++#
++do_test 1.4.1 {
++  sqlite3_wal_replication_register 1
++  sqlite3_wal_replication_find
++} {test}
++do_test 1.4.2 {
++  sqlite3_wal_replication_find test
++} {test}
++
++# Test registering the alternate stub WAL replication implementation, with the
++# default flag off.
++#
++do_test 1.5.1 {
++  sqlite3_wal_replication_register 0 1
++  sqlite3_wal_replication_find
++} {test}
++do_test 1.5.2 {
++  sqlite3_wal_replication_find test-alt
++} {test-alt}
++
++# Test registering again the alternate stub WAL replication implementation, with
++# the default flag on.
++#
++do_test 1.6.1 {
++  sqlite3_wal_replication_register 1 1
++  sqlite3_wal_replication_find
++} {test-alt}
++do_test 1.6.2 {
++  sqlite3_wal_replication_find test-alt
++} {test-alt}
++do_test 1.6.3 {
++  sqlite3_wal_replication_find test
++} {test}
++
++# Test unregistering the alternate stub WAL replication implementation. The
++# other one becomes the new default.
++#
++do_test 1.7.1 {
++  sqlite3_wal_replication_unregister 1
++  sqlite3_wal_replication_find test-alt
++} {}
++do_test 1.7.2 {
++  sqlite3_wal_replication_find
++} {test}
++
++# Test unregistering the stub WAL replication implementation. No registered
++# implementation is left.
++#
++do_test 1.8.1 {
++  sqlite3_wal_replication_unregister
++  sqlite3_wal_replication_find test
++} {}
++do_test 1.8.2 {
++  sqlite3_wal_replication_find
++} {}
++
++#-------------------------------------------------------------------------
++# The following block of tests - walreplication-2.* - focus on testing the
++# implementation of the sqlite3_wal_replication_enabled() interface.
++
++# Test that an error is returned if the database is not in WAL mode.
++#
++do_test 2.1 {
++  execsql { PRAGMA journal_mode = DELETE }
++  list [catch {sqlite3_wal_replication_enabled db main} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that an error is returned if the given schema name does not exist.
++#
++do_test 2.2 {
++  list [catch {sqlite3_wal_replication_enabled db garbage} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that by default no WAL synchronous replication is enabled.
++#
++do_test 2.3 {
++  reset_db
++  sqlite3_wal db
++  sqlite3_wal_replication_enabled db main
++} {false}
++
++#-------------------------------------------------------------------------
++# The following block of tests - walreplication-3.* - focus on testing the
++# implementation of the sqlite3_wal_replication_leader() interface.
++
++# Test that an error is returned if the database is not in WAL mode.
++#
++do_test 3.1 {
++  reset_db
++  execsql { PRAGMA journal_mode = DELETE }
++  list [catch {sqlite3_wal_replication_leader db main} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that an error is returned if the given schema name is invalid.
++#
++do_test 3.2 {
++  list [catch {sqlite3_wal_replication_leader db garbage} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that an error is returned if the given WAL replication name is not
++# registered
++#
++do_test 3.3 {
++  reset_db
++  sqlite3_wal db
++  list [catch {sqlite3_wal_replication_leader db main garbage} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that leader WAL replication is enabled after a successful call.
++#
++do_test 3.4 {
++  sqlite3_wal_replication_register 1
++  sqlite3_wal_replication_leader db main
++  sqlite3_wal_replication_enabled db main
++} {true test}
++
++# Test that trying to enable leader replication twice for the same
++# database results in an error.
++#
++do_test 3.5 {
++  list [catch {sqlite3_wal_replication_leader db main} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that an error is returned if the connection is currently configured for
++# follower WAL replication.
++#
++do_test 3.6 {
++  reset_db
++  sqlite3_wal db
++  sqlite3_wal_replication_follower db main
++  list [catch {sqlite3_wal_replication_leader db main} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that a connection in leader replication mode works transparently from the
++# user point of view, and that regular write queries and rollbacks can be
++# performed.
++#
++do_test 3.7.1 {
++  reset_db
++  sqlite3_wal db
++  sqlite3_wal_replication_leader db main
++  execsql {
++    CREATE TABLE test (n INT);
++    INSERT INTO test(n) VALUES(1);
++    SELECT n FROM test;
++  }
++} {1}
++do_test 3.7.2 {
++  execsql {
++    BEGIN;
++    INSERT INTO test(n) VALUES(2);
++    ROLLBACK;
++    SELECT n FROM test;
++  }
++} {1}
++
++# Test that checkpoint-on-close is disabled for leader connections.
++#
++do_test 3.8 {
++  db close
++  file exists test.db-wal
++} {1}
++
++#-------------------------------------------------------------------------
++# The following block of tests - walreplication-4.* - focus on testing the
++# implementation of the sqlite3_wal_replication_follower() interface.
++
++# Test that an error is returned if the database is not in WAL mode.
++#
++do_test 4.1 {
++  reset_db
++  execsql { PRAGMA journal_mode = DELETE }
++  list [catch {sqlite3_wal_replication_follower db main} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that an error is returned if the given schema name is invalid.
++#
++do_test 4.2 {
++  reset_db
++  list [catch {sqlite3_wal_replication_follower db garbage} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that follower WAL replication is enabled after a successful call.
++#
++do_test 4.3 {
++  reset_db
++  sqlite3_wal db
++  sqlite3_wal_replication_follower db main
++  sqlite3_wal_replication_enabled db main
++} {true}
++
++# Test that trying to enable follower replication twice for the same
++# database results in an error.
++#
++do_test 4.4 {
++  list [catch {sqlite3_wal_replication_follower db main} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that an error is returned if leader WAL replication is enabled.
++#
++do_test 4.5 {
++  reset_db
++  sqlite3_wal db
++  sqlite3_wal_replication_leader db main
++  list [catch {sqlite3_wal_replication_follower db main} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that an error is returned when trying to perform a backup in follower WAL
++# replication mode.
++#
++do_test 4.6 {
++  reset_db
++  sqlite3_wal db
++  execsql { CREATE TABLE test (n INT) }
++  sqlite3_wal_replication_follower db main
++  catch { db2 close }
++  sqlite3 db2 test2.db
++  list [catch {sqlite3_backup B db2 main db main} msg] $msg
++} {1 {sqlite3_backup_init() failed}}
++
++# Test that checkpoint-on-close is disabled for follower connections.
++#
++do_test 4.7 {
++  db close
++  file exists test.db-wal
++} {1}
++
++# Test that an error is returned when trying to perform a query on a connection
++# in follower WAL replication mode.
++#
++do_test 4.8.1 {
++  reset_db
++  sqlite3_wal db
++  sqlite3_wal_replication_follower db main
++  list [catch {db eval {SELECT 1}} msg] $msg
++} {1 {database is in follower replication mode: main}}
++do_test 4.8.2 {
++  # if the connection that is set back to no replication, it can perform queries
++  # again.
++  sqlite3_wal_replication_none db main
++  execsql {SELECT 1}
++} {1}
++
++#-------------------------------------------------------------------------
++# The following block of tests - walreplication-5.* - focus on testing the
++# implementation of the sqlite3_wal_replication_none() interface.
++
++# Test that an error is returned if the database is not in WAL mode.
++#
++do_test 5.1 {
++  reset_db
++  execsql { PRAGMA journal_mode = DELETE }
++  list [catch {sqlite3_wal_replication_none db main} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that an error is returned if the given schema name is invalid.
++#
++do_test 5.2 {
++  list [catch {sqlite3_wal_replication_none db garbage} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that an error is returned if the connection hasn't been configured for
++# either leader or follower WAL replication.
++#
++do_test 5.3 {
++  reset_db
++  sqlite3_wal db
++  list [catch {sqlite3_wal_replication_none db main} msg] $msg
++} {1 SQLITE_ERROR}
++
++# Test that a connection can be set back to no replication after it
++# was set to leader replication.
++#
++do_test 5.4 {
++  reset_db
++  sqlite3_wal db
++  sqlite3_wal_replication_leader db main
++  sqlite3_wal_replication_none db main
++  sqlite3_wal_replication_enabled db main
++} {false}
++
++# Test that a connection can be set back to no replication after it
++# was set to follower replication.
++#
++do_test 5.5 {
++  reset_db
++  sqlite3_wal db
++  sqlite3_wal_replication_follower db main
++  sqlite3_wal_replication_none db main
++  sqlite3_wal_replication_enabled db main
++} {false}
++
++#-------------------------------------------------------------------------
++# The following block of tests - walreplication-6.* - focus on testing the
++# implementation of the sqlite3_replication_frames() and
++# sqlite3_replication_undo() interfaces, by running them against follower
++# connection using the test WAL replication implementation.
++
++# Test that replicated transactions work transparently from the leader
++# connection user's point of view, and that WAL frames are replicated to
++# the leader connection.
++#
++do_test 6.1.1 {
++  reset_db
++  reset_db2
++  sqlite3_wal db
++  sqlite3_wal db2
++  sqlite3_wal_replication_leader db main
++  sqlite3_wal_replication_follower db2 main
++  execsql {
++    CREATE TABLE test (n INT);
++    INSERT INTO test(n) VALUES(1);
++    SELECT n FROM test;
++  }
++} {1}
++do_test 6.1.2 {
++  db close
++  db2 close
++
++  # checkpoint-on-close is disabled for both leader and follower
++  # connections
++  file exists test.db-wal
++  file exists test2.db-wal
++
++  # the content of the WAL is replicated to the follower
++  # connection
++  #
++  set size1 [file size test.db-wal]
++  set size2 [file size test2.db-wal]
++
++  expr {$size1 > 0 && $size1 == $size2 }
++} {1}
++do_test 6.1.3 {
++  # the replicated database contains the expected data
++  sqlite3 db ./test2.db
++  execsql { SELECT n FROM test }
++} {1}
++
++# Test that rolling back a transaction reverts the changes in the
++# follower database as well.
++#
++do_test 6.2.1 {
++  reset_db
++  reset_db2
++  sqlite3_wal db
++  sqlite3_wal db2
++  sqlite3_wal_replication_leader db main
++  sqlite3_wal_replication_follower db2 main
++
++  # Reduce the cache size, so the write transaction below will
++  # have to flush pages and the test replication implementation
++  # will call sqlite3_replication_undo upon rollback.
++  execsql { PRAGMA cache_size = 1}
++
++  execsql {
++    CREATE TABLE test (a TEXT);
++    BEGIN;
++    INSERT INTO test VALUES(randomblob(4000));
++    ROLLBACK;
++  }
++} {}
++do_test 6.2.2 {
++  db close
++  db2 close
++
++  # checkpoint-on-close is disabled for both leader and follower
++  # connections
++  file exists test.db-wal
++  file exists test2.db-wal
++
++  # the content of the WAL is replicated to the follower
++  # connection
++  #
++  set size1 [file size test.db-wal]
++  set size2 [file size test2.db-wal]
++
++  expr {$size1 > 0 && $size1 == $size2 }
++} {1}
++do_test 6.2.3 {
++  # the replicated database was rolled back as well
++  sqlite3 db ./test2.db
++  execsql { SELECT COUNT(a) FROM TEST }
++} {0}
++
++# Test that if the xBegin or xFrame method returns a replication error,
++# then the transaction fails.
++#
++foreach { i method error } {
++1 xBegin  NOT_LEADER
++2 xBegin  LEADERSHIP_LOST
++3 xFrames NOT_LEADER
++4 xFrames LEADERSHIP_LOST
++} {
++  do_test 6.3.$i {
++    reset_db
++    sqlite3_wal db
++    sqlite3_wal_replication_leader db main
++    sqlite3_wal_replication_error $method $error
++    list [catch {db eval {CREATE TABLE test (n INT)}} msg] $msg
++  } {1 {disk I/O error}}
++}
++
++# Test that if the pager fails to begin a WAL write transaction,
++# the xAbort method is fired.
++#
++do_test 6.4.1 {
++  reset_db
++  sqlite3_wal db
++  execsql {
++    CREATE TABLE test (n INT);
++  }
++  sqlite3_wal_replication_leader db main
++  sqlite3 db2 ./test.db
++  db2 eval {
++    BEGIN;
++    INSERT INTO test VALUES(1);
++  }
++
++  # Trying to start a write transaction now fails with
++  # SQLITE_BUSY, and should trigger the xAbort hook.
++  list [catch {db eval {
++    BEGIN;
++    INSERT INTO test VALUES(2);
++  }} msg] $msg
++} {1 {database is locked}}
++do_test 6.4.2 {
++  db eval { ROLLBACK }
++  db2 eval { COMMIT; }
++
++  # Re-trying the failed insert succeeds, as the xAbort
++  # method has reset the state of the global replication.
++  execsql {
++    BEGIN;
++    INSERT INTO test VALUES(2);
++    COMMIT;
++  }
++} {}
++
++# Test that if the xUndo method returns a replication error, the
++# rollback still succeeds.
++#
++foreach { i method error } {
++1 xUndo  NOT_LEADER
++2 xUndo  LEADERSHIP_LOST
++} {
++  do_test 6.5.$i {
++    reset_db
++    sqlite3_wal db
++    sqlite3_wal_replication_leader db main
++    sqlite3_wal_replication_error $method $error
++    execsql {
++      BEGIN;
++      CREATE TABLE test (n INT);
++      ROLLBACK;
++    }
++  } {}
++}
++
++# Test that read transactions don't trigger any WAL replication method.
++#
++do_test 6.7 {
++  reset_db
++  sqlite3_wal db
++  execsql {
++    CREATE TABLE test (n INT);
++    INSERT INTO test(n) VALUES(1);
++  }
++  sqlite3_wal_replication_leader db main
++  sqlite3_wal_replication_error xBegin NOT_LEADER
++  execsql {
++    SELECT n FROM test;
++  }
++} {1}
++
++# Test that the WAL write lock is never acquired if the xBegin replication
++# method fails with SQLITE_IOERR_LEADERSHIP_LOST, and the transaction is
++# automatically rolled back as it normally happens whenever sqlite3PagerBegin
++# returns SQLITE_IOERR.
++#
++do_test 6.8.1 {
++  reset_db
++  sqlite3_wal db
++  execsql {
++    CREATE TABLE test (n INT);
++  }
++  sqlite3_wal_replication_leader db main
++  sqlite3_wal_replication_error xBegin LEADERSHIP_LOST 1
++  list [catch {db eval {
++    BEGIN;
++    INSERT INTO test VALUES(1);
++  }} msg] $msg
++} {1 {disk I/O error}}
++do_test 6.8.2 {
++  # No need to rollback here.
++  execsql {
++    BEGIN;
++    INSERT INTO test VALUES(1);
++    COMMIT;
++  }
++  execsql {
++    SELECT n FROM test;
++  }
++} {1}
++
++# Test that if the xFrames method fails, a new transaction can be executed
++# afterwise.
++#
++do_test 6.9.1 {
++  reset_db
++  sqlite3_wal db
++  execsql {
++    CREATE TABLE test (n INT);
++  }
++  sqlite3_wal_replication_leader db main
++  sqlite3_wal_replication_error xFrames LEADERSHIP_LOST 1
++  list [catch {db eval {
++    BEGIN;
++    INSERT INTO test VALUES(1);
++    COMMIT;
++  }} msg] $msg
++} {1 {disk I/O error}}
++do_test 6.9.2 {
++  execsql {
++    BEGIN;
++    INSERT INTO test VALUES(1);
++    COMMIT;
++  }
++  execsql {
++    SELECT n FROM test;
++  }
++} {1}
++
++# Test that if the xFrames method fails in the context of a pagerStress call, a
++# new transaction can be executed afterwise.
++#
++do_test 6.10.1 {
++  reset_db
++  sqlite3_wal db
++  execsql {
++    CREATE TABLE test (a TEXT);
++  }
++
++  # Reduce the cache size, so the write transaction below will
++  # have to flush pages and call xFrames before the transaction
++  # is committed.
++  execsql { PRAGMA cache_size = 1}
++
++  sqlite3_wal_replication_leader db main
++  sqlite3_wal_replication_error xFrames LEADERSHIP_LOST 1
++
++  # The insert will fail due to the pcache failing to spill dirty pages, and
++  # the transaction is automatically rolled back.
++  list [catch {db eval {
++    BEGIN;
++    INSERT INTO test VALUES(randomblob(4000));
++  }} msg] $msg
++} {1 {disk I/O error}}
++do_test 6.10.2 {
++  execsql {
++    BEGIN;
++    INSERT INTO test VALUES('x');
++    COMMIT;
++  }
++  execsql {
++    SELECT a FROM test;
++  }
++} {x}
++
++# Test that if the xFrames receives information about the most recently written
++# WAL frame associated with a dirty page.
++#
++do_test 6.11.1 {
++  reset_db
++  sqlite3_wal db
++  sqlite3_wal_replication_leader db main
++
++  execsql { CREATE TABLE test (a TEXT) }
++
++  # Exactly two brand new frames were written, so trying to get info about a
++  # third frame fails.
++  list [catch {sqlite3_wal_replication_frame_info 2} msg] $msg
++} {1 {no such frame}}
++do_test 6.11.2 {
++  # Page 1 was written for the first time to the WAL, so the frame's iPrev is 0.
++  sqlite3_wal_replication_frame_info 1
++} {1024 1 0}
++do_test 6.11.3 {
++  # Page 2 was written for the first time to the WAL, so the frame's iPrev is 0.
++  sqlite3_wal_replication_frame_info 0
++} {1024 2 0}
++do_test 6.11.4 {
++  execsql { INSERT INTO test VALUES('x') }
++  # Page 2 has been modified, and it was already present in the WAL as frame 2.
++  sqlite3_wal_replication_frame_info 0
++} {1024 2 2}
++do_test 6.11.5 {
++  execsql { INSERT INTO test VALUES(randomblob(2000)) }
++  # Page 2 has been modified again, and it was already present in the WAL as
++  # frame 3.
++  sqlite3_wal_replication_frame_info 1
++} {1024 2 3}
++do_test 6.11.6 {
++  # Page 3 has been added anew, so it was not present in the WAL.
++  sqlite3_wal_replication_frame_info 0
++} {1024 3 0}
++do_test 6.11.7 {
++  # The WAL has now 6 frames.
++ set size [expr 32 + 6 * (24 + 1024) ]
++  expr {[file size test.db-wal] == $size }
++} {1}
++do_test 6.11.8 {
++  # All those 6 frames were handled by xFrames.
++  list [catch {sqlite3_wal_replication_frame_info 6} msg] $msg
++} {1 {no such frame}}
++do_test 6.11.9 {
++  # Perform a full checkpoint.
++  execsql { PRAGMA wal_checkpoint }
++} {0 6 6}
++do_test 6.11.10 {
++  execsql { DELETE FROM test WHERE a='x' }
++  # Page 2 was modified, but this time iPrev is 0 because the WAL contained no
++  # frame after the checkpoint.
++  sqlite3_wal_replication_frame_info 0
++} {1024 2 0}
++
++#-------------------------------------------------------------------------
++# The following block of tests - walreplication-7.* - focus on testing the
++# implementation of the sqlite3_wal_replication_checkpoint() interface.
++
++# Test checkpointing with connections in follower WAL replication mode.
++#
++do_test 7.1.1 {
++  reset_db
++  sqlite3_wal db
++  execsql {
++    CREATE TABLE test (n INT);
++  }
++  list [catch {sqlite3_wal_replication_checkpoint db main} msg] $msg
++} {1 SQLITE_ERROR}
++do_test 7.1.2 {
++  sqlite3_wal_replication_follower db main
++  sqlite3_wal_replication_checkpoint db main
++
++  file size ./test.db-wal
++} {0}
++
++reset_db
++sqlite3_wal db
++sqlite3_wal_replication_leader db main
++finish_test
