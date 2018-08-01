@@ -14,6 +14,20 @@ license=('GPL')
 
 sha256sums=('SKIP')
 
+prepare() {
+	cd "$srcdir/$_pkgname-$pkgver"
+	msg "Preparing eCAP adapters src..."
+	msg2 "Getting the replacement patch..."
+	wget https://raw.githubusercontent.com/bar0metr/ecap_adapter_sample/master/replacement.patch
+	msg2 "Patching..."
+	patch -p0 -i replacement.patch
+	msg2 "Getting the adapter_async patch..."
+	wget https://raw.githubusercontent.com/bar0metr/ecap_adapter_sample/master/adapter_async.patch
+	msg2 "Patching..."
+	patch -p0 -i adapter_async.patch
+	msg2 "Done!"
+}
+
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   chmod +x ./configure
