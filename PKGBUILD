@@ -2,7 +2,7 @@
 
 pkgname=perl-devel-checkbin
 pkgver=0.04
-pkgrel=3
+pkgrel=4
 pkgdesc='check that a command is available'
 arch=(any)
 license=(PerlArtistic GPL)
