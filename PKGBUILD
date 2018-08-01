@@ -157,9 +157,9 @@ build() {
   # enable $_BATCH_MODE if batch_opts is found in $srcdir
   if [[ -e $srcdir/batch_opts ]] ; then
     source "$srcdir/batch_opts"
-    CPU=${CPU^^}
     # enable cpu optimisations acording to $CPU and enable pkgopt
     if [[ "$CPU" ]] ; then
+      CPU=${CPU^^}
       sed -e "s|# CONFIG_M$CPU is not set|CONFIG_M$CPU=y|" \
           -e '/CONFIG_GENERIC_CPU=y/d' \
           -i "$srcdir/linux-${_basekernel}/.config"
@@ -284,7 +284,12 @@ build() {
       fi
       
   fi  # batch check ends here
-  export CPU
+
+  # only export non-generic
+  if [[ $CPU != GENERIC ]] ; then
+    export CPU
+  fi
+  
   #----------------------------------------
 
   # Strip config of uneeded localversion
@@ -650,12 +655,15 @@ done
 
 if in_array ${source[*]} batch_opts ; then #FIXME bugs updpkgsums
   source batch_opts
-  package[0]=linux-pf${CPU+-}$CPU
+  package[0]=linux-pf${CPU+-}${CPU,,}
 fi
-eval "package_linux-pf${CPU+-}$CPU() {
-     $(declare -f _package)
+
+eval "package_linux-pf${CPU+-$CPU,,}() {
+     $(declare -f "_package")
      _package
      }"
+
+
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
             '622c9966585723a3a88ccabf83ecb7b64851c6acf9b0dd9862df5885b0d02907'
