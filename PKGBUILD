@@ -1,7 +1,7 @@
 _npmname=shrinkpack
-_npmver=0.17.0
+_npmver=0.18.1
 pkgname=nodejs-shrinkpack
-pkgver=0.17.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Fast, resilient, reproducible builds with npm install."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('7824f6c24aa83aa572e353f91a9b038368780b7a8a81ac018b8879f286a53a03')
+sha256sums=('f62b2618a49d49587becc940c9eec8511e2771c3abab77f999b04f86e683e695')
 
 package() {
   cd $srcdir
