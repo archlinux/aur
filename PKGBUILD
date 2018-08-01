@@ -8,13 +8,13 @@ pkgname=(
 	lrexlib-posix
 	lrexlib-tre
 )
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Regular expression libraries for Lua"
 arch=('i686' 'x86_64')
 url="http://rrthomas.github.com/lrexlib/"
 license=('custom')
-makedepends=('luarocks')
+makedepends=('luarocks' 'oniguruma' 'pcre' 'tre')
 provides=('lrexlib')
 source=(
 	"https://luarocks.org/lrexlib-gnu-$pkgver-$pkgrel.src.rock"
@@ -23,19 +23,17 @@ source=(
 	"https://luarocks.org/lrexlib-posix-$pkgver-$pkgrel.src.rock"
 	"https://luarocks.org/lrexlib-tre-$pkgver-$pkgrel.src.rock"
 )
+sha512sums=('9204bdd61b8e7c9e151dc9acd58f0229b65ff7bcbcf16257a7dcb42473f7c55e1076e663e8b90194421955ab865d901543380049ec3a1bcae3cc502a888a8216'
+            '8f8b9dc51e39ddc8a7e0b470dc22700efbb83caf061f73f2b5693db6388dad877604b759e38f429dc2c794b66aa349c440f50d1c3dad9bff8a894be58930d065'
+            '221684896293c247357fd20dc377f4ddab564aebab3b37aa4a67b1ad0ba49ae11a02579236c9733d19716b8a5e23ec2a1c986001188a87c431a7476a6482ae31'
+            'b8a683aa059cf4476a71eb8b13be3299c23cd5e9f2a571ebe83cba03d3037a7b8bf990918ad25cf9543b7f742c21753eab12f953fb34b23bab193474b1d3b132'
+            '1b0b4a9270f26714f4569adbb4d181e3845f69b06406299adc21a4bae2eada23b84c1bb6bca82365e7eba09e54f7212bba165ad20b67f9367d2ea62749a9ac0c')
 noextract=(
 	"lrexlib-gnu-$pkgver-$pkgrel.src.rock"
 	"lrexlib-oniguruma-$pkgver-$pkgrel.src.rock"
 	"lrexlib-pcre-$pkgver-$pkgrel.src.rock"
 	"lrexlib-posix-$pkgver-$pkgrel.src.rock"
 	"lrexlib-tre-$pkgver-$pkgrel.src.rock"
-)
-sha512sums=(
-	'094004723cc6a300377b33b4c9a91d41625b06b622655b4d66f7d7e389ad5729ca07f7343acd8d72f8cc2eacaabae3b0b96572c75a25f0098822994a6965e6f4'
-	'22214e274fcda24f1744444a5461a01481536ed14aab1df91371eae845a5cbbca6ca7df07b3b9859448af354494c9603c659567a90af847c9f986eec1924c90f'
-	'a75837ab50748963b993b623ad648f6f147496767975a59165f72f02fa1edf1f396c37477d84cfd39b622cfe808248b139070fe310a26ca69de04a95c02b22c7'
-	'7cf92da4d12fb6f2a808ce6120eabf8147e35aa2d9df58c6c164478f5d5be70241eb01e95d95cd16e01a1b380c9be62d8d07e0946906cbf2f0e7bb463985fa3c'
-	'798ea42aa4974a30db889addb788f22e058594a10c506aa6371715a97ca85972a9bfedf4026a355c1ae0ff74d650b41847402eb04b82cdc7dda15e770006d01b'
 )
 
 _do_package() {
@@ -66,7 +64,6 @@ package_lrexlib-oniguruma() {
 package_lrexlib-pcre() {
 	pkgdesc="Regular expression library for Lua - PCRE version"
 	depends+=('pcre')
-	conflicts=('lrexlib-pcre5.1')
 
 	_do_package
 }
