@@ -34,12 +34,19 @@ sha256sums=('SKIP'
 prepare() {
   cd $_srcname
 
-  # Insert patches or cherry-picks here
-
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "${pkgbase#linux}" > localversion.10-pkgname
   echo "-$pkgrel" > localversion.20-pkgrel
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
   msg2 "Setting config..."
   cp ../config .config
@@ -156,7 +163,7 @@ _package-headers() {
   msg2 "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
-    [[ $arch == */x86/ ]] && continue
+    [[ $arch = */x86/ ]] && continue
     echo "Removing $(basename "$arch")"
     rm -r "$arch"
   done
