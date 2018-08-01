@@ -3,7 +3,7 @@
 
 pkgname=nteract-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.10.0
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Interactive literate coding notebook"
 url='https://nteract.io'
@@ -20,7 +20,7 @@ install=$pkgname.install
 
 source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v${pkgver}/nteract_${pkgver}_amd64.deb"
         "LICENSE")
-sha256sums=('a763b9fb3f3110f326b0812a0dded0b9761612397a3fd4e2b40c9b697cda9995'
+sha256sums=('b8698d2a0cba0d7dd37e03c773caff83756d57af2e0a63fe035f8068abef85f5'
             '866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71')
 
 package() {
@@ -39,8 +39,8 @@ package() {
   # Place desktop entry and icons
   sed -i 's/opt/usr\/lib/' "${srcdir}/usr/share/applications/${_pkgname}.desktop"
   desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-  install -dm755 "${pkgdir}/usr/share/icons/hicolor/256x256"
-  cp -R "${srcdir}/usr/share/icons/hicolor/0x0/"* "${pkgdir}/usr/share/icons/hicolor/256x256/"
+  install -dm755 "${pkgdir}/usr/share/icons/hicolor/"
+  cp -R "${srcdir}/usr/share/icons/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
 
   # Place license files
   for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
