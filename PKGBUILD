@@ -45,15 +45,15 @@ package() {
     done
     install -d "$pkgdir/usr/lib"
 
-    install -Dm644 build/crypto/libcrypto.a "$pkgdir/usr/lib/crypto/libcrypto.a"
+    # install -Dm644 build/crypto/libcrypto.a "$pkgdir/usr/lib/crypto/libcrypto.a"
     install -Dm755 build/crypto/libcrypto.so "$pkgdir/usr/lib/crypto/libcrypto.so"
 
-    install -Dm644 build/ssl/libssl.a "$pkgdir/usr/lib/ssl/libssl.a"
+    # install -Dm644 build/ssl/libssl.a "$pkgdir/usr/lib/ssl/libssl.a"
     install -Dm755 build/ssl/libssl.so "$pkgdir/usr/lib/ssl/libssl.so"
 
-    install -Dm644 build/decrepit/libdecrepit.a "$pkgdir/usr/lib/decrepit/libdecrepit.a"
+    # install -Dm644 build/decrepit/libdecrepit.a "$pkgdir/usr/lib/decrepit/libdecrepit.a"
     install -Dm755 build/decrepit/libdecrepit.so "$pkgdir/usr/lib/decrepit/libdecrepit.so"
 
-    install -Dm644 build/libboringssl_gtest.a "$pkgdir/usr/lib/libboringssl_gtest.a"
+    # install -Dm644 build/libboringssl_gtest.a "$pkgdir/usr/lib/libboringssl_gtest.a"
     install -Dm755 build/libboringssl_gtest.so "$pkgdir/usr/lib/libboringssl_gtest.so"
 }
