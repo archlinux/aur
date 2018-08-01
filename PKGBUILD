@@ -1,6 +1,6 @@
 _pkgname=moviepy
 pkgname=python-${_pkgname}
-pkgver=0.2.3.2
+pkgver=0.2.3.5
 pkgrel=1
 pkgdesc="Script-based movie editing with python"
 arch=('any')
@@ -13,7 +13,7 @@ optdepens=('python-pygame')
 provides=('python-moviepy-git')
 conflicts=('python-moviepy-git')
 source=(https://github.com/Zulko/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('de0a3804125af7f4ff9d2c8b7c800f5d3d56a2fc42df4592b1c8c168ceba4d89')
+sha256sums=('2c05515f5a3ff4225be192ef560b0328348899a64f566548efe131243eb9eb8d')
 
 package() {
 	 cd "${srcdir}/${_pkgname}-${pkgver}"
