@@ -5,7 +5,7 @@
 # Contributor: moostik <mooostik_at_gmail.com>
 
 pkgname=veusz
-pkgver=3.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A 2D and 3D scientific plotting package, designed to create publication-ready PDF or SVG output"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('python-h5py:  HDF5 support'
             'python-astropy: VO table import and FITS import'
             'ghostscript: for EPS/PS output')
 source=("https://github.com/veusz/veusz/releases/download/veusz-${pkgver}/veusz-${pkgver}.tar.gz")
-sha256sums=('24189cbd46d341b0853a70ced2b80ab9e1efd5cfaf201283ce2ccde1c2937407')
+sha256sums=('30e93dc3d53600b67278a1c3a9f3b3ccb576704517deecd4c0b2df0bb7ab088e')
 
 build() {
   cd "${pkgname}-${pkgver}"
