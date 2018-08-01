@@ -1,5 +1,5 @@
 pkgbase = jpegrescan-git
-	pkgdesc = Losslessly shrink any JPEG file.
+	pkgdesc = Losslessly shrink any JPEG file
 	pkgver = 1.1.0.r14.g4a2fc99
 	pkgrel = 1
 	url = https://github.com/kud/jpegrescan
