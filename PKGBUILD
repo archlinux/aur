@@ -3,11 +3,11 @@
 
 pkgname=getfem++
 _pkgname=getfem
-pkgver=5.1
+pkgver=5.3
 pkgrel=1
 pkgdesc="Generic C++ finite element library."
 arch=('i686' 'x86_64')
-url="http://download.gna.org/getfem/html/homepage/"
+url="http://getfem.org/"
 license=('LGPL3')
 depends=('python2-numpy' 'python2-scipy'
          'boost' 'qhull' 'qd'
@@ -16,8 +16,8 @@ checkdepends=('perl')
 makedepends=('gcc-fortran')
 conflicts=('gmm')
 provides=('getfem++' 'gmm')
-source=("http://download.gna.org/getfem/stable/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('d768ff0da08536e8291d6e85e8600d285efa9e10e939709a810cdcd5935a7203')
+source=("http://download-mirror.savannah.gnu.org/releases/getfem/stable/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('9d10a1379fca69b769c610c0ee93f97d3dcb236d25af9ae4cadd38adf2361749')
 
 prepare(){
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -50,10 +50,7 @@ build() {
     --enable-shared --disable-static \
     --with-pic \
     --enable-qhull \
-    --enable-qd \
     --disable-mumps \
-    --enable-boost \
-    --enable-openmp \
     --enable-superlu \
     --enable-muparser \
     --enable-metis \
@@ -64,7 +61,6 @@ build() {
   make
 }
 
-# For now, the plate test case is failing
 #check() {
   #cd "${srcdir}/${_pkgname}-${pkgver}"
 
