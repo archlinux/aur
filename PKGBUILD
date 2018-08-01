@@ -1,13 +1,13 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=subtle-git
-pkgver=0.11.r21.g7f3b86a
+pkgver=0.11.3224
 pkgrel=1
-pkgdesc='A grid-based manual tiling window manager with a strong focus on easy but customizable look and feel'
+pkgdesc='A grid-based manual tiling window manager.'
 arch=(i686 x86_64)
-url='http://github.com/anatol/subtle'
+url='http://hg.subforge.org/subtle'
 license=(GPL)
-depends=(ruby libxrandr libxft libxpm libxinerama libxtst)
+depends=(ruby libxrandr libxft libxpm libxinerama libxtst ruby-rake)
 makedepends=(git pkg-config)
 provides=(subtle)
 conflicts=(subtle)
