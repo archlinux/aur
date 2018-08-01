@@ -1,5 +1,5 @@
 pkgname=python36
-pkgver=3.6.0
+pkgver=3.6.6
 pkgrel=1
 _pybasever=3.6
 _pymajver=3
@@ -7,13 +7,14 @@ pkgdesc="Major release 3.6 of the Python high-level programming language"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.python.org/"
+conflicts=('python')  # as long as Python 3.6 is arch linux default
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
-makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'hardening-wrapper')
+makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
-source=(http://www.python.org/ftp/python/${_pybasever}.0/Python-${pkgver}.tar.xz)
-sha256sums=('b0c5f904f685e32d9232f7bdcbece9819a892929063b6e385414ad2dd6a23622')
-# Maintainer: Tobias Kunze <rixx@cutebit.de>
+source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
+sha256sums=('d79bc15d456e73a3173a2938f18a17e5149c850ebdedf84a78067f501ee6e16f')
+# Maintainer: Tobias Kunze <r@rixx.de>
 # Based on python33 script from: Rodolphe Breard <packages@what.tf> and Christopher Arndt <chris@chrisarndt.de>
 # Via the python34 adaption of Raphael Michel <mail@raphaelmichel.de>
 
@@ -53,7 +54,7 @@ package() {
   # altinstall: /usr/bin/pythonX.Y but not /usr/bin/python or /usr/bin/pythonX
   make DESTDIR="${pkgdir}" altinstall maninstall
 
-  # Avoid conflicts with the main 'python' package.
+  # Avoid conflicts with the main 'python' package, once Python 3.7 is standard.
   rm "${pkgdir}/usr/lib/libpython${_pymajver}.so"
   rm "${pkgdir}/usr/share/man/man1/python${_pymajver}.1"
 

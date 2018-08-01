@@ -1,6 +1,6 @@
 pkgbase = python36
 	pkgdesc = Major release 3.6 of the Python high-level programming language
-	pkgver = 3.6.0
+	pkgver = 3.6.6
 	pkgrel = 1
 	url = http://www.python.org/
 	arch = i686
@@ -8,10 +8,8 @@ pkgbase = python36
 	license = custom
 	makedepends = tk
 	makedepends = sqlite
-	makedepends = valgrind
 	makedepends = bluez-libs
 	makedepends = mpdecimal
-	makedepends = hardening-wrapper
 	depends = expat
 	depends = bzip2
 	depends = gdbm
@@ -20,9 +18,10 @@ pkgbase = python36
 	depends = zlib
 	optdepends = tk: for tkinter
 	optdepends = sqlite
+	conflicts = python
 	options = !makeflags
-	source = http://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz
-	sha256sums = b0c5f904f685e32d9232f7bdcbece9819a892929063b6e385414ad2dd6a23622
+	source = http://www.python.org/ftp/python/3.6.6/Python-3.6.6.tar.xz
+	sha256sums = d79bc15d456e73a3173a2938f18a17e5149c850ebdedf84a78067f501ee6e16f
 
 pkgname = python36
 
