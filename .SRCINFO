@@ -8,7 +8,6 @@ pkgbase = afew
 	makedepends = python-sphinx
 	depends = python
 	depends = notmuch
-	depends = dbacl
 	depends = python-chardet
 	depends = python-setuptools
 	depends = python-dkim
