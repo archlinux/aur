@@ -1,19 +1,20 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.21.1
+pkgver=1.21.2
 pkgrel=1
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
 license=(MPL2)
-depends=(gtk2 gtk3 libxt startup-notification dbus-glib nss hunspell libvpx libevent)
+depends=(gtk2 gtk3 libxt startup-notification dbus-glib nss libvpx libevent
+         hunspell hunspell-en_US)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm libnotify gtk2 gtk3 wget pulseaudio)
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
-sha256sums=('c78592ec687b4fb03156c2257e88ee32778aa5c0bc7cc364be0ce939a0b14eed')
+sha256sums=('d15015071f1ff8d4d22ede1cde2f2a5705d4a9abb9bf71010f378c8aeeacf8be')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
@@ -60,10 +61,9 @@ END
 # Archlinux specific additions
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --prefix=/usr
-ac_add_options --enable-gold
-ac_add_options --enable-pie
+ac_add_options --enable-linker=gold
 ac_add_options --enable-hardening
-ac_add_options --enable-optimize="-O2"
+ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 
 # Speed up buildtime (thanks bm456)
@@ -130,14 +130,17 @@ package() {
   install -D -m644 /dev/stdin "$_vendorjs" <<END
 // Disable update check
 pref("app.update.enabled", false);
-// But keep search engines updates
-pref("browser.search.update", true);
+// Do not update/overwrite search engines
+pref("browser.search.update", false);
 
 // Use the classical backspace action
 pref("browser.backspace_action", 0);
 
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
+
+// Use system-provided dictionaries
+pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
 // Don't disable our bundled extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
