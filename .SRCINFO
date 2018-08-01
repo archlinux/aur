@@ -1,13 +1,13 @@
 pkgbase = mint
 	pkgdesc = A refreshing language for the front-end web
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/mint-lang/mint
 	arch = x86_64
 	license = MIT
-	noextract = mint-0.1.0-linux
-	source = https://github.com/mint-lang/mint/releases/download/0.1.0/mint-0.1.0-linux
-	sha256sums = 1f536c2b6239e2a151ae0bc21f3897d7563da5075d7208e01eb6f3b6d6bfa5a2
+	noextract = mint-0.2.0-linux
+	source = https://github.com/mint-lang/mint/releases/download/0.2.0/mint-0.2.0-linux
+	sha256sums = 7a43b005b7a08edc877d88143dc60f30c88e2b5043511ff0b9e0baf093281682
 
 pkgname = mint
 
