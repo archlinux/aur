@@ -2,22 +2,22 @@
 
 pkgname=tscdriver
 pkgver=0.2.06
-pkgrel=4
+pkgrel=5
 pkgdesc="Drivers for TSC Printers"
 arch=(x86_64)
 url="http://www.tscprinters.com"
-license=('GPL')
+license=('custom:proprietary')
 depends=(gtk2)
 makedepends=(unzip)
-source_i686=($url/cms/upload/download_en/Linux32_v$pkgver.zip)
-source_x86_64=($url/cms/upload/download_en/Linux64_v$pkgver.zip)
-md5sums_i686=(51b1d2b9e657307b3d7c687effe311e2)
-md5sums_x86_64=(ea523125745496cc2f0de0d8969b15e5)
+source=("Linux64_v$pkgver.zip::$url/EN/DownloadFile/DownloadFileSupport/1103/3174")
+md5sums=('ea523125745496cc2f0de0d8969b15e5')
 
-package() {
+prepare() {
   cd "$srcdir"
   tar xvf "$pkgname-$pkgver-$CARCH.tar.gz"
-  
+}
+
+package() {
   cd "$pkgname-$pkgver"
   mkdir -p "$pkgdir/usr/share/cups/model/tsc-ppds/"
   install -m644 ppd/*.ppd "$pkgdir/usr/share/cups/model/tsc-ppds/"
