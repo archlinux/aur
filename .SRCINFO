@@ -2,7 +2,7 @@
 # Mon Aug 28 06:27:32 UTC 2017
 pkgbase = listen1
 	pkgdesc = One for all free music in China
-	pkgver = v1.2.0
+	pkgver = v1.8.0
 	pkgrel = 1
 	url = https://listen1.github.io/listen1/
 	arch = x86_64
