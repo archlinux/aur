@@ -23,7 +23,7 @@ optdeps=('python-pyroma: check setup.py'
 url="https://github.com/PyCQA/prospector"
 license=('GPL2')
 source=(${url}/archive/${pkgver}.tar.gz)
-md5sums=('33b1ef12a82fb1cc6d07cc6a478795d4')
+md5sums=('a4a73a42bf50a21f84bc94e3d42ca81d')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
