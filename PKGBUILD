@@ -4,7 +4,7 @@ pkgname=icet
 _pkgname=IceT
 pkgver=2.1.1
 _pkgver=${pkgver//./-}
-pkgrel=3
+pkgrel=4
 pkgdesc="High-performance sort-last parallel rendering library"
 arch=('i686' 'x86_64')
 url="http://icet.sandia.gov/"
@@ -29,7 +29,7 @@ build() {
   cmake ../${_pkgname}-${_pkgver} \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/opt/icet \
     -DICET_USE_OPENGL=ON \
     -DICET_USE_MPI=ON
 
