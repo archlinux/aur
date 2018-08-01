@@ -1,7 +1,7 @@
 # Maintainer: Det <nimetonmaili gmail a-dot com>
 
 pkgname=biglybt
-pkgver=1.5.0.0
+pkgver=1.6.0.0
 pkgrel=1
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('desktop-file-utils' 'java-runtime>=9')
 options=('!strip')
 install=$pkgname.install
 source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
-md5sums=('ca39e3616f0a120c3d15622395699cbf')
+md5sums=('93592d97e7e178dc99db86b79d314033')
 
 package() {
   if [[ ! -f /usr/bin/javac ]]; then
