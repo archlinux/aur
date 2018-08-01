@@ -3,7 +3,7 @@
 
 pkgname='pop-gnome-shell-theme-bin'
 pkgver='4.0.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='System76 Pop GNOME Shell Theme'
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
@@ -20,8 +20,8 @@ optdepends=(
   "ttf-fira-mono: Recommended monospace font"
   "ttf-roboto-slab: Recommended font for documents"
 )
-source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gnome-shell-theme/pop-gnome-shell-theme_${pkgver}~1527090140~18.04~5784a89_all.deb")
-sha256sums=('032b8d18bcf1a1a0ee59559e9b698090de0a805b6af49530fee03e4cc69c7eac')
+source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gnome-shell-theme/pop-gnome-shell-theme_${pkgver}~1533053631~18.04~308aade_all.deb")
+sha256sums=('fcad77b90540d319883f2ffcedeb0f78a46d22aff297f1d6532ff58ec1d79ead')
 
 package() {
   cd "${srcdir}"
