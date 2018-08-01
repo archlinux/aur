@@ -28,7 +28,7 @@ provides=('kdenlive')
 conflicts=('kdenlive')
 #source=(${pkgname}::git://anongit.kde.org/kdenlive)
 #source=(git://anongit.kde.org/kdenlive) 
-source=('git://anongit.kde.org/kdenlive#branch=Applications/18.04')
+source=('git://anongit.kde.org/kdenlive#branch=Applications/18.08')
 sha1sums=('SKIP')
 install=$pkgname.install
 #options=(debug !strip)
