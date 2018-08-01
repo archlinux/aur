@@ -11,7 +11,7 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.67.0
 _boostver=${pkgver//./_}
-pkgrel=5
+pkgrel=6
 url='http://www.boost.org/'
 arch=('x86_64')
 license=('custom')
@@ -92,7 +92,7 @@ build() {
       runtime-link=shared \
       link=shared,static \
       toolset=gcc \
-      python=3.6 \
+      python=3.7 \
       cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
       cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
       linkflags="${LDFLAGS}" \
@@ -142,7 +142,7 @@ package_boost-libs() {
    # https://github.com/boostorg/python/issues/203#issuecomment-391477685
    for _lib in python numpy; do
      ln -srL "${pkgdir}"/usr/lib/libboost_${_lib}{27,}.so
-     ln -srL "${pkgdir}"/usr/lib/libboost_${_lib}3{6,}.so
+     ln -srL "${pkgdir}"/usr/lib/libboost_${_lib}3{7,}.so
    done
 
    install -Dm644 "${srcdir}/"${pkgbase}_${_boostver}/LICENSE_1_0.txt \
