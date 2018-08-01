@@ -1,0 +1,22 @@
+pkgbase = ros-melodic-openni-launch
+	pkgdesc = ROS - Drivers for the Microsoft Kinect, Asus Xtion, and Primesense Devices.
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-nodelet
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-openni-camera
+	makedepends = ros-melodic-catkin
+	makedepends = openni
+	depends = ros-melodic-nodelet
+	depends = ros-melodic-roscpp
+	depends = openni
+	source = ros-melodic-openni-launch-1.11.0-0.tar.gz::https://github.com/ros-gbp/openni_camera-release/archive/release/kinetic/openni_launch/1.11.0-0.tar.gz
+	sha256sums = ec0a07c5239ce3b8d9bf6dd9ec13f481341bf36b1f319f55240e9e101e0ee7d6
+
+pkgname = ros-melodic-openni-launch
+
