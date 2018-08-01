@@ -1,0 +1,26 @@
+pkgbase = subtle-hg
+	pkgdesc = A grid-based manual tiling window manager.
+	pkgver = 0.11.3224
+	pkgrel = 1
+	url = http://hg.subforge.org/subtle
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	makedepends = pkg-config
+	depends = ruby
+	depends = libxrandr
+	depends = libxft
+	depends = libxpm
+	depends = libxinerama
+	depends = libxtst
+	depends = ruby-rake
+	provides = subtle
+	conflicts = subtle
+	replaces = subtle-git
+	backup = etc/xdg/subtle/subtle.rb
+	source = hg+http://hg.subforge.org/subtle
+	md5sums = SKIP
+
+pkgname = subtle-hg
+
