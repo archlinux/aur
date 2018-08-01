@@ -2,7 +2,7 @@
 
 pkgname=perl-log-any
 pkgver=1.049
-pkgrel=3
+pkgrel=4
 pkgdesc='Bringing loggers and listeners together'
 arch=(any)
 license=(PerlArtistic GPL)
