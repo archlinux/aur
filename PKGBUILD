@@ -3,7 +3,7 @@
 # Contributor: Kazuo Teramoto <kaz.rag at gmail.com>
 pkgname=afew
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="afew is an initial tagging script for notmuch mail"
 arch=(any)
 url="https://github.com/afewmail/afew"
