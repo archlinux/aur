@@ -1,31 +1,51 @@
 #!/bin/bash
 # default config
 # default build arches
-CPU_ARCHES=(sandybridge skylake broadwell silvermont)
+DEFAULT_CPU_ARCHES=(generic skylake broadwell silvermont)
+
+
+build_pkg()
+{
+    echo 'source+=(batch_opts)' >> PKGBUILD
+    updpkgsums
+    makepkg --cleanbuild
+}
+
+# FIXME maybe check for local changes
+if ! git diff-index --quiet HEAD -- ; then
+    echo 'local changes found, please commit first' >&2
+    echo 'exit'
+    exit 1
+fi
+    
 # load local build script if found to apply gpg settings or alike, if existing
 if [ -e build_pkgs.local ] ; then
     source build_pkgs.local
 fi
-# FIXME maybe check for local changes
+
 # build generic first
 git checkout .
-echo 'source+=(batch_opts)' >> PKGBUILD
-echo : > batch_opts
-updpkgsums
-makepkg -f --cleanbuild
 
-for cpu in ${CPU_ARCHES[*]} ; do
-   git checkout PKGBUILD
-   cat >> PKGBUILD <<EOF
-source+=(batch_opts)
-pkgname=(linux-pf-$cpu)
-eval "package_linux-pf-$cpu() {
-     \$(declare -f _package)
-     _package
-     }"
+for cpu in "${@:-${DEFAULT_CPU_ARCHES[*]}}" ; do
+    git checkout PKGBUILD
+    case $cpu in
+        generic)
+            echo : > batch_opts
+            build_pkg
+            ;;
+        *)       
+            cat >> PKGBUILD <<EOF
+source+=(batch_opts)        
+pkgname=(linux-pf-$cpu)         
+eval "package_linux-pf-$cpu() {         
+     \$(declare -f _package)                            
+     _package   
+     }"                 
 EOF
-    echo "CPU=$cpu" > batch_opts
-    updpkgsums
-    makepkg -f --cleanbuild
+            echo "CPU=$cpu" > batch_opts
+            build_pkg
+            ;;
+    esac
+    git checkout .
 done
-git checkout .
+
