@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-tempreader-widget-git
 _pkgname=plasma5-applets-tempreader-widget
 _gitpkgname=plasma-tempreader
-pkgver=r6.f81aaf2
+pkgver=r7.46172f6
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5 which shows temperature from DS18B20 sensors."
 arch=('i686' 'x86_64')
