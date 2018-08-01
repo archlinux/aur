@@ -1,8 +1,9 @@
-pkgbase=('python-flask-socketio2')
-pkgname=('python-flask-socketio2')
+# Maintainer: ZWindL <zwindl@protonmail.com>
+pkgbase=python-flask-socketio2
+pkgname=python-flask-socketio2
 _module='Flask-SocketIO'
-pkgver='2.9.6'
-pkgrel=1
+pkgver=2.9.6
+pkgrel=2
 pkgdesc="Socket.IO integration for Flask applications"
 url="http://github.com/miguelgrinberg/Flask-SocketIO/"
 depends=('python' 'python-flask12' 'python-socketio')
