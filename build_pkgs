@@ -10,7 +10,7 @@ fi
 # build generic first
 git checkout .
 echo 'source+=(batch_opts)' >> PKGBUILD
-touch batch_opts
+echo : > batch_opts
 updpkgsums
 makepkg -f --cleanbuild
 
