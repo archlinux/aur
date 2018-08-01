@@ -1,7 +1,7 @@
 # Maintainer: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 
 pkgname=peppercarrot-fonts
-pkgver=3.1
+pkgver=4.0
 pkgrel=1
 pkgdesc="Fonts required to correctly view and edit Pepper&Carrot SVGs"
 arch=('any')
@@ -12,12 +12,12 @@ depends=('fontconfig' 'xorg-font-utils'
          # Already packaged OTF fonts
          'otf-pecita' 'otf-yanone-kaffeesatz'
          # Already packaged TTF fonts
-         'ttf-droid-nonlatin-ib' 'ttf-impallari-lobster-font' 'lohit-fonts')
+         'noto-fonts' 'ttf-droid-nonlatin-ib' 'ttf-impallari-lobster-font' 'lohit-fonts')
 conflicts=('peppercarrot-fonts-git')
 provides=('peppercarrot-fonts-git')
 
 source=("https://www.peppercarrot.com/0_sources/0ther/tools/zip/peppercarrot-fonts-$pkgver.zip")
-sha256sums=('1b164f14d0e7db8c4e2559a34c9773c53941027bd601ba05b24f049d70292d9d')
+sha256sums=('235e9c51e02eb9b88e60cc40819e26b4b98c3fdfe222511576d688edcb752c82')
 
 package() {
   local i
@@ -27,6 +27,14 @@ package() {
     case "${filename,,}" in
       pecita*|yanonekaffeesatz*)  ;; # Already packaged OTF
       droidkufi*|lobster*|lohit*) ;; # Already packaged TTF
+
+      notosanssinhala-black*|\
+        notosanssinhala-bold*|\
+        notosanssinhala-light*|\
+        notosanssinhala-medium*|\
+        notosanssinhala-regular*|\
+        notosanssinhala-thin*) ;; # Noto Sans Sinhala is partly available in extra/noto-fonts –
+                                  # the extralight, extraheavy and condensed variants are not
 
       *.otf)       install -Dm644 "${i}" \
                    "${pkgdir}/usr/share/fonts/OTF/${filename}"; ;;
