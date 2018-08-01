@@ -1,8 +1,8 @@
 # Maintainer: Mark Grimes <mgrimes at peculier.com>
 
 pkgname=perl-monitoring-plugin
-pkgver=0.39
-pkgrel=3
+pkgver=0.40
+pkgrel=1
 pkgdesc="The Perl Monitoring::Plugin modules which is used to streamline writing Naemon, Nagios, Icinga or Shinken (and compatible) plugins."
 _dist=Monitoring-Plugin
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'perl-params-validate' 'perl-class-accessor' 'perl-config-tiny' 'perl-math-calc-units')
 options=('!emptydirs' purge)
 source=(https://cpan.metacpan.org/authors/id/N/NI/NIERLEIN/$_dist-$pkgver.tar.gz)
-md5sums=('c786ada6289bda2c4380d3df3b5185d5')
+md5sums=('894135697e46f771b37756ffc7cb9ff9')
 
 # Setup environment to ensure installation in system perl and vender directory
 clean_env() {
