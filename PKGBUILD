@@ -1,6 +1,6 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 pkgname=open-adventure
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Port of the 'Colossal Cave Adventure' text-based adventure game"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 makedepends=('python' 'python-yaml' 'asciidoc')
 conflicts=('advent')
 source=(${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/esr/open-adventure/repository/archive.tar.bz2?ref=${pkgver})
-sha256sums=('cef0d37d65ac8f55c24f73158ae2048db1b8f25df8094ed1f12233842d327b72')
+sha256sums=('6290cbff352f387037a03f90c0a0c9743e6c6a361623678f24e409bcaa41c849')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"-*
