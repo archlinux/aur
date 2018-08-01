@@ -4,7 +4,7 @@ _pkgname='github-desktop'
 pkgname="${_pkgname}-bin"
 pkgver=1.3.1
 gitname="release-${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=(
     52837bbd87e42ff12bdc45bf9f05df5ac329e2f765554b776d8a8ca7b3d2a823
-    52cb9a955b5981bf17fa8f3d529540bd75f1e38c0379c24aec4f84f8758125f1
+    8545ffdcd8685a2d642a733f9dc407b9b269e2c8fd54f30e1eb336c2aff89318
 )
 package() {
     tar xf data.tar.xz -C "${pkgdir}"
