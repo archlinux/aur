@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Actinium
+Comment=Actinium P2P Cryptocurrency
+Exec=/usr/bin/actinium-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/actinium128.png
+MimeType=x-scheme-handler/actinium;
+Categories=Office;
+Name[en_US]=actinium-qt.desktop
