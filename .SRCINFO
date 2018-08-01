@@ -1,13 +1,14 @@
 pkgbase = fstrcmp
 	pkgdesc = A library that is used to make fuzzy comparisons of strings and byte arrays, including multi-byte character strings
 	pkgver = 0.7.D001
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fstrcmp.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = make
 	makedepends = gcc
+	makedepends = ghostscript
 	makedepends = groff
 	makedepends = libtool
 	depends = glibc
