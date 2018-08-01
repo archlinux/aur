@@ -3,7 +3,7 @@
 
 pkgname=carla-git
 pkgver=1.9.9.r0.gc03571a9
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Audio Plugin Host"
 arch=("i686" "x86_64")
@@ -24,7 +24,6 @@ depends=(
     'python-pyqt5'
 )
 makedepends=(
-    'fluidsynth'
     'git'
     'gtk2'
     'gtk3'
@@ -35,7 +34,7 @@ optdepends=(
     'gtk3: LV2 GTK3 UI support'
     'python-pyliblo: OSC control support'
     'python-rdflib: LADSPA-RDF support'
-    'qt4: LV2 QT4 UI support'
+    'qt4: LV2 Qt4 UI support'
     'zynaddsubfx: zynaddsubfx sound banks'
 )
 source=("$pkgname"::"git://github.com/falkTX/Carla.git")
@@ -51,7 +50,6 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   make \
-    DEFAULT_QT=5 \
     MOC_QT5=/usr/bin/moc-qt5 \
     RCC_QT5=/usr/bin/rcc-qt5 \
     UIC_QT5=/usr/bin/uic-qt5
@@ -60,7 +58,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make \
-    DEFAULT_QT=5 \
     MOC_QT5=/usr/bin/moc-qt5 \
     RCC_QT5=/usr/bin/rcc-qt5 \
     UIC_QT5=/usr/bin/uic-qt5 \
