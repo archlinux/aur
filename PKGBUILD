@@ -1,32 +1,24 @@
-# Maintainer: jstoik1 <joshstoik at gmail dot com>
+# Maintainer: Marcouney <fora at mrdc dot fr>
 pkgname=jpegrescan-git
-pkgver=20150822
-pkgrel=2
+_pkgname=jpegrescan
+pkgver=1.1.0.r14.g4a2fc99
+pkgrel=1
 pkgdesc="Losslessly shrink any JPEG file."
 arch=(any)
 url="https://github.com/kud/jpegrescan"
 license=('GPL')
 depends=('perl-file-slurp' 'libjpeg-turbo')
 makedepends=('git')
-source=('jpegrescan::git+git://github.com/kud/jpegrescan.git')
+source=("git+$url.git")
 sha512sums=('SKIP')
 
-_gitname='jpegrescan'
-
-build() {
-  cd "$srcdir"
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-
-  msg 'Starting build...'
+pkgver() {
+  cd "${srcdir}/${_pkgname}/"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-
-  mkdir -p "$pkgdir/usr/bin"
-  cp jpegrescan "$pkgdir/usr/bin"
+  cd "${srcdir}/${_pkgname}/"
+  mkdir -p "${pkgdir}/usr/bin"
+  cp ${_pkgname} "${pkgdir}/usr/bin"
 }
-
-# vim:set ts=2 sw=2 et:
