@@ -1,7 +1,7 @@
 # Contributor: Jishnu Mohan jishnu7 at gmail dot com
 
 pkgname=quilter
-pkgver=1.5.6
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Focus on your writing for any kind of story, even longer ones."
 arch=(any)
@@ -13,11 +13,10 @@ install=quilter.install
 source=(
   "https://github.com/lainsce/quilter/archive/${pkgver}.zip"
 )
-sha256sums=('2f73e30b505d5aa0416a4650df9a7a0ffe5caabf652111c7875363d47fc3074c')
+sha256sums=('400b11c32a345017148b70c4538ef6e0ab248633c52220066593916804938ede')
 
 build () {
   cd $srcdir/$pkgname-$pkgver
-  patch meson.build -i ../../meson.build.patch
   meson build && cd build
   meson configure -Dprefix=${pkgdir}/usr
 }
