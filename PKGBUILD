@@ -10,15 +10,21 @@ makedepends=('git' 'dotnet-sdk')
 source=('git+https://github.com/eaglexiang/eagle.tunnel.dotnet.core.git')
 sha256sums=('SKIP')
 backup=('etc/eagle-tunnel.conf' 'etc/eagle-tunnel-smart.conf')
+install='eagle-tunnel.install'
+
+prepare() {
+cd eagle.tunnel.dotnet.core
+git checkout -b dev origin/dev
+git submodule init
+git submodule update
+}
 
 build() {
-cd "$srcdir/$_pkgname"
-git checkout dev
-git submodule update
+cd eagle.tunnel.dotnet.core
 ./build.sh
 }
 
 package() {
-cd "$srcdir/$_pkgname"
-sudo ./install.sh
+cd eagle.tunnel.dotnet.core
+./install.sh ${pkgdir}
 }

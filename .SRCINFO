@@ -3,6 +3,7 @@ pkgbase = eagle-tunnel
 	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://github.com/eaglexiang/eagle.tunnel.dotnet.core
+	install = eagle-tunnel.install
 	arch = any
 	license = MIT
 	makedepends = git
