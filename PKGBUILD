@@ -2,7 +2,7 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux               # Build stock -arch kernel
+pkgbase=linux               # Build stock kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcver=4.17.11-arch1
 pkgver=${_srcver//-/.}
