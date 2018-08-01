@@ -14,7 +14,7 @@ conflicts=('v2ray')
 source=("git+${url}.git"
         "v2ray.service")
 sha512sums=("SKIP"
-            "ddc63b48b1f660bf93447c300fca21a30a893b062e87d6ca730326e09f3bac418a1647c0de8544ab8939ff535aa7a537aa62d4ff4373f1b5ed2721844e3b8ab0")
+            "2fbdea0017f513d3b806dfc33c6296d8521b3241f46078d0b18a3d6571d8331e5c49ba168522ba924ae9d12837422b36f6aa9dff3d107fb4d5ee087b14a58e6f")
 
 pkgver() {
     git -C v2ray-core describe | sed -e 's/^v//' -e 's/-/./g'
@@ -43,7 +43,7 @@ package() {
     cd v2ray-core
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/v2ray/LICENSE
     install -Dm644 release/config/systemd/v2ray.service ${pkgdir}/usr/lib/systemd/system/v2ray.service
-    sed -i '/ExecStart/c\ExecStart=/usr/bin/env v2ray.location.asset=/etc/v2ray /usr/bin/v2ray -config /etc/v2ray/config.json' "$pkgdir"/usr/lib/systemd/system/v2ray.service
+    sed -i '/ExecStart/c\ExecStart=V2RAY_VMESS_PADDING=1 /usr/bin/env v2ray.location.asset=/etc/v2ray /usr/bin/v2ray -config /etc/v2ray/config.json' "$pkgdir"/usr/lib/systemd/system/v2ray.service
     install -Dm644 release/config/geoip.dat release/config/geosite.dat release/config/*.json -t "$pkgdir"/etc/v2ray/
     install -Dm755 "$GOPATH"/bin/v2ray-custom-linux-64/{v2ray,v2ctl} -t "$pkgdir"/usr/bin/
 

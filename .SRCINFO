@@ -12,7 +12,7 @@ pkgbase = v2ray-git
 	source = git+https://github.com/v2ray/v2ray-core.git
 	source = v2ray.service
 	sha512sums = SKIP
-	sha512sums = ddc63b48b1f660bf93447c300fca21a30a893b062e87d6ca730326e09f3bac418a1647c0de8544ab8939ff535aa7a537aa62d4ff4373f1b5ed2721844e3b8ab0
+	sha512sums = 2fbdea0017f513d3b806dfc33c6296d8521b3241f46078d0b18a3d6571d8331e5c49ba168522ba924ae9d12837422b36f6aa9dff3d107fb4d5ee087b14a58e6f
 
 pkgname = v2ray-git
 
