@@ -1,16 +1,16 @@
 pkgbase=('python-pypugjs')
 pkgname=('python-pypugjs')
 _module='pypugjs'
-pkgver='5.1.0'
+pkgver='5.6.0'
 pkgrel=1
-pkgdesc="PugJS syntax template adapter for Django, Jinja2, Mako and Tornado templates - copy of PyJade with the name changed"
+pkgdesc=" PugJS syntax adapter for Django, Jinja2 and Mako templates"
 url="http://github.com/kakulukia/pypugjs"
 depends=('python' 'python-six')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://github.com/kakulukia/pypugjs/archive/v5.1.0.tar.gz")
-md5sums=('5a8a89ecfbe54eeb1ff6bea37addd52e')
+source=("https://github.com/kakulukia/pypugjs/archive/v5.6.0.tar.gz")
+md5sums=('bbec581ffc9099bcb298fccd6f55de91')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
