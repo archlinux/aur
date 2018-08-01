@@ -1,6 +1,6 @@
 pkgbase = python-prospector
 	pkgdesc = Python static analysis tool
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/PyCQA/prospector
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-prospector
 	makedepends = python-requirements-detector
 	makedepends = python-pylint-common
 	makedepends = python-pylint-plugin-utils
-	source = https://github.com/PyCQA/prospector/archive/1.1.tar.gz
-	md5sums = 33b1ef12a82fb1cc6d07cc6a478795d4
+	source = https://github.com/PyCQA/prospector/archive/1.1.1.tar.gz
+	md5sums = a4a73a42bf50a21f84bc94e3d42ca81d
 
 pkgname = python-prospector
 
