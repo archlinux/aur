@@ -3,15 +3,15 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=xbps
-pkgver=0.52
+pkgver=0.53
 pkgrel=1
 pkgdesc="The X Binary Package System from Void Linux. Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
-url="https://github.com/voidlinux/xbps"
-license=('custom:2-clause-BSD')
+url="https://github.com/void-linux/xbps"
+license=('BSD')
 depends=('ca-certificates' 'libarchive' 'openssl-1.0')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('f9a584d286c28eaf5a00f2e0ea9a8124b2200d50ecb62d26adcabe51f328b551')
+sha256sums=('360b3149141fec46dd6da9019605bcee48ee4d29bffe5aa47a9fd5fa68ccd5f4')
 
 build() {
     cd "${srcdir}"/${pkgname}-${pkgver}
