@@ -10,16 +10,16 @@
 
 pkgname=nvidia-beta-dkms
 pkgver=396.24
-pkgrel=8
+pkgrel=9
 pkgdesc='NVIDIA driver sources for linux (beta version)'
 arch=('x86_64')
 url='http://www.nvidia.com/'
 license=('custom')
-depends=('dkms' 'linux' "nvidia-utils-beta>=${pkgver}" 'libgl')
+depends=('dkms' "nvidia-utils-beta>=${pkgver}" 'libglvnd')
 optdepends=('linux-headers: build the module for Arch kernel'
             'linux-lts-headers: build the module for LTS Arch kernel')
-provides=("nvidia=${pkgver}" 'nvidia-dkms')
-conflicts=('nvidia')
+provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" "nvidia-beta=${pkgver}")
+conflicts=('nvidia' 'nvidia-dkms' 'nvidia-beta')
 _srcname="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_srcname}.run"
         'linux-4.16.patch'
