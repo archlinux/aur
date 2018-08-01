@@ -19,8 +19,8 @@
 
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
-pkgver=18.0a2
-pkgrel=5
+pkgver=18.0a3
+pkgrel=1
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -32,7 +32,7 @@ makedepends=(
   'libvdpau' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm' 'nss-mdns'
   'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'rtmpdump'
   'shairplay' 'smbclient' 'speex' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower'
-  'yajl' 'zip' 'git' 'giflib' 'rapidjson'
+  'yajl' 'zip' 'git' 'giflib' 'rapidjson' 'ghostscript'
 )
 # Found on their respective github release pages. One can check them against
 # what is pulled down when not specifying them in the cmake step.
@@ -53,6 +53,7 @@ _libdvdnav_version="6.0.0-$_codename-$_rtype"-3
 _libdvdread_version="6.0.0-$_codename-$_rtype"-3
 _fmt_version="3.0.1"
 _crossguid_version="8f399e8bd4"
+_fstrcmp_version="0.7.D001"
 source=(
   "${pkgbase%%-*}-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
   "ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
@@ -61,9 +62,9 @@ source=(
   "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/fmt-$_fmt_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
+  "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   'cheat-sse-build.patch'
   'cpuinfo'
-  'fix_fmt_race_condition.patch'
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -72,17 +73,18 @@ noextract=(
   "ffmpeg-$_ffmpeg_version.tar.gz"
   "fmt-$_fmt_version.tar.gz"
   "crossguid-$_crossguid_version.tar.gz"
+  "fstrcmp-$_fstrcmp_version.tar.gz"
 )
-sha256sums=('937d755c638324bf388fc9e971c5d8f90fcc0ab9362f0b15bbad5e47f0bc67d6'
+sha256sums=('f452388b8ce34f9f2d3c002f7e5f28a7b3ad69e8d2be9d775b8ef8f89497d211'
             '0e4980abac7b886e0eb5f4157941947be3c10d616a19bd311dc2f9fd2eb6a631'
             '6af3d4f60e5af2c11ebe402b530c07c8878df1a6cf19372e16c92848d69419a5'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
             'dce62ab75a161dd4353a98364feb166d35e7eea382169d59d9ce842c49c55bad'
             '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
+            'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
-            '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
-            'd4ce2791cbf6fe6a4ea3507816e253a39d6562c7163dbf8ec30f5006484b75fa')
+            '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
@@ -93,8 +95,6 @@ prepare() {
   if [[ "$srcdir" =~ ^\/build.* ]]; then
     patch -Np1 -i "$srcdir/cheat-sse-build.patch"
   fi
-
-  patch -Np1 -i "$srcdir/fix_fmt_race_condition.patch"
 }
 
 build() {
@@ -112,8 +112,10 @@ build() {
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
     -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
     -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz" \
-    -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
     -DENABLE_INTERNAL_FMT=ON \
+    -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
+    -DENABLE_INTERNAL_FSTRCMP=ON \
+    -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
     ../"xbmc-$pkgver-$_codename"
   make
   make preinstall
@@ -159,13 +161,6 @@ package_kodi-pre-release() {
   DESTDIR="$pkgdir" /usr/bin/cmake \
     -DCMAKE_INSTALL_COMPONENT="$_cmp" \
      -P cmake_install.cmake
-  done
-
-  # Licenses
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  for licensef in LICENSE.GPL copying.txt; do
-    mv "$pkgdir/usr/share/doc/kodi/$licensef" \
-      "$pkgdir/usr/share/licenses/$pkgname"
   done
 
   # python2 is being used
