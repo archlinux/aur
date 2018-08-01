@@ -1,7 +1,7 @@
 pkgbase = appgate-sdp
 	pkgdesc = Software Defined Perimeter - GUI client
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cyxtera.com/secure-access/appgate-sdp
 	arch = x86_64
 	license = custom
