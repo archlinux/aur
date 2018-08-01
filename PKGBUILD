@@ -31,7 +31,7 @@ sha512sums=('94cb9007a407c5e4f6354b37f84e811a78ec030f051087c496c94fcf1585adeb6d6
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/lidarr"
   cp -dpr --no-preserve=ownership "${srcdir}/Lidarr/"* "${pkgdir}/usr/lib/lidarr"
-  find "${pkgdir}/usr/lib/lidarr" -type f -exec chmod 644 "{}" ";"
+  chmod -R a=,a+rX,u+w ${pkgdir}/usr/lib/lidarr/
 
   install -D -m 644 "${srcdir}/lidarr.service" "${pkgdir}/usr/lib/systemd/system/lidarr.service"
   install -D -m 644 "${srcdir}/lidarr.sysusers" "${pkgdir}/usr/lib/sysusers.d/lidarr.conf"
