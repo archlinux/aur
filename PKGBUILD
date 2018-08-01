@@ -1,15 +1,18 @@
 # Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 # Contributor: Nicky726 (Nicky726 <at> gmail <dot> com)
 # Contributor: Simon Peter Nicholls (simon <at> mintsource <dot> org)
+#
+# This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
+# If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=selinux-refpolicy-arch
 _reponame=selinux-policy-arch
 _policyname=refpolicy-arch
-pkgver=20180114
+pkgver=20180701
 pkgrel=1
 pkgdesc="Modular SELinux reference policy including headers and docs with Arch Linux patches"
 arch=('any')
-url="https://github.com/TresysTechnology/refpolicy/wiki"
+url="https://github.com/SELinuxProject/refpolicy/wiki"
 license=('GPL2')
 groups=('selinux')
 makedepends=('git' 'python' 'checkpolicy>=2.7' 'semodule-utils')
@@ -17,7 +20,7 @@ depends=('policycoreutils>=2.7')
 optdepends=('linux-hardened: Linux kernel with SELinux support'
             'linux-selinux: Linux kernel with SELinux support')
 install="${pkgname}.install"
-_commit=177e2b6fcd85a5e64d0c8aa059a9b2f56dd0d27e
+_commit=b5d23db635e03cd85897427639e32b7561442616
 source=("git+https://github.com/archlinuxhardened/${_reponame}#commit=${_commit}"
         'config')
 sha256sums=('SKIP'
