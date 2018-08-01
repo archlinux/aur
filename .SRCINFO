@@ -6,7 +6,7 @@ pkgbase = virtualshield-runit-git
 	arch = any
 	license = https://virtualshield.com/legal/eula/
 	depends = virtualshield-git
-	source = virtualshield-runit-git-1.0.tar.gz::https://github.com/wchurch58/virtualshield-runit-git/archive/1.0.tar.gz
+	source = virtualshield-runit-1.0.tar.gz::https://github.com/wchurch58/virtualshield-runit/archive/1.0.tar.gz
 	sha512sums = d662500221a0436f3e142c97e3e5c58e75e640c4fe596f19cc28d9ce9d1edda50f3fd6beba09fa39094d37375a28500c532af3fd0a430ea3681839137c562469
 
 pkgname = virtualshield-runit-git
