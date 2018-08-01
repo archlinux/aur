@@ -2,7 +2,7 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux               # Build stock kernel
+pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcver=4.17.11-arch1
 pkgver=${_srcver//-/.}
@@ -31,13 +31,16 @@ sha256sums=('SKIP'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
+_kernelname=${pkgbase#linux}
+: ${_kernelname:=-ARCH}
+
 prepare() {
   cd $_srcname
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
-  echo "${pkgbase#linux}" > localversion.10-pkgname
-  echo "-$pkgrel" > localversion.20-pkgrel
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "$_kernelname" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
@@ -84,7 +87,7 @@ _package() {
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
-  local extradir="$pkgdir/usr/lib/modules/extramodules-${basever}${pkgbase#linux}"
+  local extradir="$pkgdir/usr/lib/modules/extramodules-$basever$_kernelname"
   install -Dt "$extradir" -m644 ../version
   ln -sr "$extradir" "$modulesdir/extramodules"
 
