@@ -10,7 +10,7 @@
 
 pkgname=nvidia-beta-dkms
 pkgver=396.24
-pkgrel=5
+pkgrel=6
 pkgdesc='NVIDIA driver sources for linux (beta version)'
 arch=('x86_64')
 url='http://www.nvidia.com/'
@@ -24,16 +24,19 @@ options=('!strip')
 install="${pkgname}.install"
 _srcname="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_srcname}.run"
+        'linux-4.16.patch'
         'linux-4.18-rc1.patch')
 sha256sums=('41b80d2a4519ac78ac17c02fec976256d2ba5c9618640d2a9be9cb70685b2a9c'
+            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385'
             '87e0b5312425a56cda82873667563073fd9d2acc7f65d960e14c3eb0f4608ac0')
 
 prepare() {
     # extract the source file
     sh "${_srcname}.run" --extract-only
     
-    # linux 4.18-rc1 fix
+    # patches
     cd "$_srcname"
+    patch -Np1 -i "${srcdir}/linux-4.16.patch"
     patch -Np1 -i "${srcdir}/linux-4.18-rc1.patch"
 
     # update dkms.conf
