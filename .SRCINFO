@@ -1,0 +1,17 @@
+pkgbase = intel-ucode-platomav-git
+	pkgdesc = Microcode update files for Intel CPUs
+	pkgver = r28.360b8e9
+	pkgrel = 1
+	url = https://github.com/platomav/CPUMicrocodes
+	arch = any
+	license = custom
+	makedepends = iucode-tool
+	conflicts = intel-ucode
+	replaces = microcode_ctl
+	source = git+https://github.com/platomav/CPUMicrocodes.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 6983e83ec10c6467fb9101ea496e0443f0574c805907155118e2c9f0bbea97b6
+
+pkgname = intel-ucode-platomav-git
+
