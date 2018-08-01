@@ -1,0 +1,44 @@
+pkgbase = python-scikit-surprise-git
+	pkgdesc = Python scikit for building and analyzing recommender systems
+	pkgver = 1.0.4.r73.g633ab47
+	pkgrel = 1
+	url = https://github.com/NicolasHug/Surprise
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = cython
+	makedepends = cython2
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	source = git+https://github.com/NicolasHug/Surprise
+	sha512sums = SKIP
+
+pkgname = python-scikit-surprise-git
+	depends = python-joblib
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-six
+	optdepends = flake8: code linting to comply with contributing standards
+	optdepends = python-pandas: dataframe handling
+	optdepends = python-pytest: test suite
+	optdepends = python-sphinx: documentation generator
+	optdepends = python-sphinx_rtd_theme: Read The Docs theme for documentation generator
+	optdepends = python-sphinxcontrib-spelling: spelling extension for documentation generator
+	provides = python-scikit-surprise=1.0.4.r73.g633ab47
+	conflicts = python-scikit-surprise
+
+pkgname = python2-scikit-surprise-git
+	depends = python2-joblib
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-six
+	optdepends = python2-flake8: code linting to comply with contributing standards
+	optdepends = python2-pandas: dataframe handling
+	optdepends = python2-pytest: test suite
+	optdepends = python2-sphinx: documentation generator
+	optdepends = python2-sphinx_rtd_theme: Read The Docs theme for documentation generator
+	optdepends = python2-sphinxcontrib-spelling: spelling extension for documentation generator
+	provides = python2-scikit-surprise=1.0.4.r73.g633ab47
+	conflicts = python2-scikit-surprise
