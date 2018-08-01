@@ -1,6 +1,6 @@
 # Maintainer: Vincent Bernardoff <vb AT luminar.eu.org>
 pkgname=boringssl-git
-pkgver=fips.20170615.954.g6ff2ba80b
+pkgver=fips.20170615.1031.g548c27646
 pkgrel=1
 pkgdesc="BoringSSL is a fork of OpenSSL that is designed to meet Google's needs"
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
