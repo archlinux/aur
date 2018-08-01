@@ -1,7 +1,7 @@
 _npmname=npm-check
-_npmver=5.5.2
+_npmver=5.7.1
 pkgname=nodejs-npm-check
-pkgver=5.5.2
+pkgver=5.7.1
 pkgrel=1
 pkgdesc="Check for outdated, incorrect, and unused dependencies."
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs' )
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('6a2cd4bcd5d9f6ebcc0be2ed0a5782feb9106600')
+sha1sums=('1f5da05b02d8fd7b92b3d4303bc8209abe795177')
 
 package() {
   cd $srcdir
