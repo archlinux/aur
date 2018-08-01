@@ -1,0 +1,7 @@
+ffmpeg/
+gas-preprocessor/
+gst-common/
+gst-libav/
+*.pkg.tar
+pkg/
+src/
