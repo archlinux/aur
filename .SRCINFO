@@ -9,6 +9,7 @@ pkgbase = deadbeef-plugin-hdcd-git
 	makedepends = git
 	makedepends = gcc
 	depends = deadbeef
+	depends = libhdcd
 	source = git+https://github.com/bp0/deadbeef-hdcd.git
 	md5sums = SKIP
 
