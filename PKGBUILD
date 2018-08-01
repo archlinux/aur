@@ -2,7 +2,7 @@
 # Contributor: Filippo Squillace <sqoox85@gmail.com>
 
 pkgname=visit
-pkgver=2.13.0
+pkgver=2.13.2
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
@@ -19,10 +19,12 @@ conflicts=('visit-bin' 'visit-build')
 source=("https://portal.nersc.gov/svn/${pkgname}/trunk/releases/${pkgver}/${pkgname}${pkgver}.tar.gz"
         "visit.sh"
         "visit_FindIceT.patch"
+        "fix_type.patch"
         "visit_frontendlauncher.patch")
-sha256sums=('716644b8e78a00ff82691619d4d1e7a914965b6535884890b667b97ba08d6a0f'
+sha256sums=('0cc0e1c8588189433bf850d7abe4416e7d7aace005c31a341b80d13eabf390c8'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a'
+            '9357fef64b4008a1044a804638ab1e2b8ca2faaec0bcc8cd4890fc3469017892'
             '75179bcdcc5881b12e417f402e52b14598ae2f85ea1f78702ce1dc95c9b5198f')
 options=(!emptydirs)
 
@@ -71,6 +73,9 @@ prepare(){
   sed -i 's:<qwt_:<qwt/qwt_:g' \
     gui/QvisStripChart.h gui/QvisStripChart.C
 
+  # Fix type
+  patch databases/Vs/VsStaggeredField.C "${srcdir}/fix_type.patch"
+
   # Netcdf, does not work for now
   #sed -i 's/netcdf_c++/netcdf_c++4/g' CMake/FindNetcdf.cmake
   #sed -i 's/netcdfcpp.h/netcdf/g' databases/S3D/avtS3DFileFormat.C
@@ -102,7 +107,7 @@ build() {
     -DVISIT_CGNS_DIR:PATH=/usr \
     -DVISIT_GDAL_DIR:PATH=/usr \
     -DVISIT_HDF5_DIR:PATH=/usr \
-    -DVISIT_ICET_DIR:PATH=/usr \
+    -DVISIT_ICET_DIR:PATH=/opt/icet/ \
     -DVISIT_JAVA:BOOL=ON \
     -DVISIT_PYTHON_DIR:PATH=/usr -DVISIT_PYTHON_SKIP_INSTALL:BOOL=ON \
     -DVISIT_QT5:BOOL=ON -DVISIT_QT_DIR:PATH=/usr/lib/qt -DVISIT_QT_SKIP_INSTALL:BOOL=ON \

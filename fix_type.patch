@@ -1,0 +1,11 @@
+--- databases/Vs/VsStaggeredField.C	2018-03-21 21:45:51.000000000 +0100
++++ databases/Vs/VsStaggeredField.C.new	2018-07-31 14:04:37.101494634 +0200
+@@ -153,7 +153,7 @@
+ template <class TYPE>
+ std::valarray<int>
+ VsStaggeredField<TYPE>::getOriDisplacements(size_t subBigIndex) const {
+-  return (subBigIndex / this->twoPowSubRes) % 2;
++  return (subBigIndex / static_cast<TYPE>(this->twoPowSubRes)) % 2;
+ }
+ 
+ template <class TYPE>
