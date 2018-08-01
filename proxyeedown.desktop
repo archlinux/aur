@@ -1,0 +1,13 @@
+[Desktop Entry]
+Exec=sudo /opt/proxyeedown/jre1.8.0_181/bin/java -jar /opt/proxyeedown/proxyee-down-2.54/proxyee-down.jar
+GenericName[zh_CN]=百度云下载工具
+GenericName=百度云下载工具
+Icon=/usr/share/icons/proxyeedown.png
+MimeType=
+Name[zh_CN]=proxyeedown
+Name=proxyeedown
+Path=/opt/proxyeedown/proxyee-down-2.54
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
