@@ -15,7 +15,7 @@ pkgbase = virtualshield-git
 	optdepends = virtualshield-runit-git
 	optdepends = virtualshield-openrc-git
 	optdepends = virtualshield-systemd-git
-	source = virtualshield-git-1.0.tar.gz::https://github.com/wchurch58/virtualshield-git/archive/1.0.tar.gz
+	source = virtualshield-1.0.tar.gz::https://github.com/wchurch58/virtualshield/archive/1.0.tar.gz
 	sha512sums = 4c1847d81696ebf6292f0f5ba9547cfdd209de66d1ddac5578398844c22598184f6a733c2a3a31ad0be7912714b48311b3eaf01132cdc475c2dcbda7db64a129
 
 pkgname = virtualshield-git
