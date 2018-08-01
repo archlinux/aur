@@ -1,0 +1,18 @@
+pkgbase = dfshow-git
+	pkgdesc = An interactive directory/file browser written for Unix-like systems.
+	pkgver = 20180801
+	pkgrel = 1
+	url = https://github.com/roberthawdon/dfshow
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	depends = ncurses
+	source = git+https://github.com/roberthawdon/dfshow
+	md5sums = SKIP
+
+pkgname = dfshow-git
+
