@@ -1,8 +1,8 @@
 pkgbase = mitmproxy
 	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
 	pkgver = 3.0.4
-	pkgrel = 1
-	url = http://mitmproxy.org/
+	pkgrel = 2
+	url = https://mitmproxy.org/
 	arch = any
 	license = GPL
 	checkdepends = python-beautifulsoup4
@@ -33,6 +33,10 @@ pkgbase = mitmproxy
 	conflicts = pathod
 	replaces = pathod
 	source = mitmproxy-3.0.4.tar.gz::https://github.com/mitmproxy/mitmproxy/archive/v3.0.4.tar.gz
+	source = https://github.com/mitmproxy/mitmproxy/commit/19ceb6f49a791e51106d1605fb47ff0e3155b434.patch
+	source = https://github.com/mitmproxy/mitmproxy/commit/9979be648750b6983b233ec3a8c3c644d8c332a1.patch
 	sha512sums = a89b0bee6997ce51d23483101755dae9f5300339d65e4975679df5c6b60ff9af94e655651321cd8e831666a04ec5cc24c7af647f3aab913524b6755b47f1f57b
+	sha512sums = 0dff8b425134b6c7dfbe40db039dbeeb5e45785bae55ec08056fd1d700cd1e1166bc2ef86d1378ceef81b6e93f9e094050daa04ed253cc3e33e31c7198f3f00d
+	sha512sums = e40a8e29cfcb88adcdc6c84f7a4ccfc1e90a7576f62f9eaf87aeef4a8eda3d78023684742f2c4c85162509e49466393aa055b9a51c8049a5d9e48735a3410a94
 
 pkgname = mitmproxy
