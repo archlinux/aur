@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GitHub Desktop
+Comment=Extend your GitHub workflow beyond your browser with GitHub Desktop
+Comment[es]=Trabaja con GitHub desde tu escritorio.
+Comment[eu]=GitHub-ekin lan egin zure ordenagailutik.
+Exec=/usr/bin/desktop %U
+Terminal=false
+Type=Application
+Icon=desktop
+Categories=Development;
