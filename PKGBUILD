@@ -31,7 +31,7 @@ sha512sums=('9d1370753a2156520a1254c6ef8d1b3245a110377461b9bd3d6f4ab5cb5081c9482
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/radarr"
   cp -dpr --no-preserve=ownership "${srcdir}/Radarr/"* "${pkgdir}/usr/lib/radarr"
-  find "${pkgdir}/usr/lib/radarr" -type f -exec chmod 644 '{}' ';'
+  chmod -R a=,a+rX,u+w ${pkgdir}/usr/lib/radarr
 
   install -D -m 644 "${srcdir}/radarr.service" "${pkgdir}/usr/lib/systemd/system/radarr.service"
   install -D -m 644 "${srcdir}/radarr.sysusers" "${pkgdir}/usr/lib/sysusers.d/radarr.conf"
