@@ -9,8 +9,8 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=396.24
-pkgrel=9
+pkgver=396.45
+pkgrel=1
 pkgdesc='NVIDIA driver sources for linux (beta version)'
 arch=('x86_64')
 url='http://www.nvidia.com/'
@@ -22,21 +22,19 @@ provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" "nvidia-beta=${pkgver}")
 conflicts=('nvidia' 'nvidia-dkms' 'nvidia-beta')
 _srcname="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_srcname}.run"
-        'linux-4.16.patch'
-        'linux-4.18-rc1.patch')
-sha256sums=('41b80d2a4519ac78ac17c02fec976256d2ba5c9618640d2a9be9cb70685b2a9c'
-            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385'
-            '87e0b5312425a56cda82873667563073fd9d2acc7f65d960e14c3eb0f4608ac0')
+        'linux-4.16.patch')
+sha256sums=('10433ff9b3298109bdc28020341018e8bd4b83595a7e7090614ecf21c0d79c15'
+            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
 prepare() {
     # extract the source file
     sh "${_srcname}.run" --extract-only
     
-    # patches
+    # restore phys_to_dma support
+    # https://bugs.archlinux.org/task/58074
     cd "$_srcname"
     patch -Np1 -i "${srcdir}/linux-4.16.patch"
-    patch -Np1 -i "${srcdir}/linux-4.18-rc1.patch"
-
+    
     # update dkms.conf
     cd kernel
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
