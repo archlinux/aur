@@ -1,9 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
-LANG=C
+
 pkgname=octave-hg
 pkgrel=1
-pkgver=5.0.0r25703.7b4e99fbe9d4
+pkgver=5.0.0r25720.e9f107d31799
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -28,8 +28,7 @@ _hgrepo=octave
 
 pkgver() {
   cd "$srcdir"/${_hgrepo}
-   _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d []|tr - _)
- # _appver=5.0.0
+  _appver=$(awk -F", " '/bugs.html/ {print $2}' configure.ac|tr -d []|tr - _)
   printf "%sr%s.%s" "${_appver}" "$(hg identify -n)" "$(hg identify -i)"
 }
 
