@@ -8,7 +8,7 @@
 
 pkgname=mingw-w64-libssh
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="http://www.libssh.org/"
 license=('LGPL')
@@ -17,8 +17,7 @@ depends=('mingw-w64-libgcrypt' 'mingw-w64-zlib') # use openssl again for 0.8
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-pkg-config' 'doxygen')
 options=(!strip !buildflags staticlibs)
 #cmocka
-source=(https://red.libssh.org/attachments/download/218/libssh-$pkgver.tar.xz
-        https://red.libssh.org/attachments/download/217/libssh-$pkgver.tar.asc
+source=(https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.{xz,asc}
         mingw-as-unix.patch
         mingw-DATADIR-conflict.patch
         mingw-pkgconfig.patch)
