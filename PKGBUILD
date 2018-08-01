@@ -8,13 +8,13 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgbase=systemd-selinux
-pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
+pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
-_commit='f58e62cbbc1c2842881a2a6ab9beda7bcb044a30'
-pkgver=238.133
-pkgrel=4
+_commit='de7436b02badc82200dc127ff190b8155769b8e7'
+pkgver=239.0
+pkgrel=2
 arch=('x86_64')
-url="https://www.github.com/systemd/systemd"
+url='https://www.github.com/systemd/systemd'
 groups=('selinux')
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
@@ -76,22 +76,11 @@ sha512sums=('SKIP'
             '209b01b044877cc986757fa4009a92ea98f480306c2530075d153203c3cd2b3afccab6aacc1453dee8857991e04270572f1700310705d7a0f4d5bed27fab8c67')
 
 _backports=(
-  # nspawn: wait for network namespace creation before interface setup (#8633)
-  '7511655807e90aa33ea7b71991401a79ec36bb41'
-
-  # sd-shutdown improvements #8429
-  # umount: Add more asserts and remove some unused arguments
-  '0494cae03d762eaf2fb7217ee7d70f615dcb5183'
-  # umount: Decide whether to remount read-only earlier
-  '1d62d22d9432d5c4a637002c9a29b20d52f25d9a'
-  # umount: Provide the same mount flags too when remounting read-only
-  '3bc341bee9fc7dfb41a131246b6fb0afd6ff4407'
-  # umount: Try unmounting even if remounting read-only failed
-  '8645ffd12b3cc7b0292acd9e1d691c4fab4cf409'
-  # umount: Don't bother remounting api and ro filesystems read-only
-  'e783b4902f387640bba12496936d01e967545c3c'
-  # shutdown: Reduce log level of unmounts
-  '456b2199f6ef0378da007e71347657bcf83ae465'
+    # nss: do not modify errno when NSS_STATUS_NOTFOUND or NSS_STATUS_SUCCESS
+    # https://github.com/systemd/systemd/pull/9587
+    # https://github.com/systemd/systemd/issues/9585
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=23410
+    06202b9e659e5cc72aeecc5200155b7c012fccbc
 )
 
 _reverts=(
@@ -172,9 +161,8 @@ check() {
   meson test
 }
 
-
 package_systemd-selinux() {
-  pkgdesc="system and service manager with SELinux support"
+  pkgdesc='system and service manager with SELinux support'
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd-selinux' 'libidn' 'lz4' 'pam-selinux' 'libelf' 'libseccomp'
@@ -210,7 +198,7 @@ package_systemd-selinux() {
   rmdir "$pkgdir"/var/log/journal/remote
 
   # runtime libraries shipped with libsystemd
-  install -dm755 libsystemd
+  install -d -m0755 libsystemd
   mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* libsystemd
 
   # manpages shipped with systemd-sysvcompat
@@ -219,20 +207,23 @@ package_systemd-selinux() {
   # executable (symlinks) shipped with systemd-sysvcompat
   rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit}
 
+  # files shipped with systemd-resolvconf
+  rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
+
   # avoid a potential conflict with [core]/filesystem
   rm "$pkgdir"/usr/share/factory/etc/nsswitch.conf
   sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
-  install -m644 ${pkgbase/-selinux}-stable/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
+  install -m0644 ${pkgbase/-selinux}-stable/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
 
   # ship default policy to leave services disabled
   echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
 
   # add mkinitcpio hooks
-  install -Dm644 initcpio-install-systemd "$pkgdir"/usr/lib/initcpio/install/systemd
-  install -Dm644 initcpio-install-udev "$pkgdir"/usr/lib/initcpio/install/udev
-  install -Dm644 initcpio-hook-udev "$pkgdir"/usr/lib/initcpio/hooks/udev
+  install -D -m0644 initcpio-install-systemd "$pkgdir"/usr/lib/initcpio/install/systemd
+  install -D -m0644 initcpio-install-udev "$pkgdir"/usr/lib/initcpio/install/udev
+  install -D -m0644 initcpio-hook-udev "$pkgdir"/usr/lib/initcpio/hooks/udev
 
   # ensure proper permissions for /var/log/journal
   # The permissions are stored with named group by tar, so this works with
@@ -241,45 +232,59 @@ package_systemd-selinux() {
   install -d -o root -g systemd-journal -m 2755 "$pkgdir"/var/log/journal
 
   # match directory owner/group and mode from [extra]/polkit
-  install -d -o root -g 102 -m 750 "$pkgdir"/usr/share/polkit-1/rules.d
+  install -d -o root -g 102 -m 0750 "$pkgdir"/usr/share/polkit-1/rules.d
 
   # add example bootctl configuration
-  install -Dm644 arch.conf "$pkgdir"/usr/share/systemd/bootctl/arch.conf
-  install -Dm644 loader.conf "$pkgdir"/usr/share/systemd/bootctl/loader.conf
-  install -Dm644 splash-arch.bmp "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
+  install -D -m0644 arch.conf "$pkgdir"/usr/share/systemd/bootctl/arch.conf
+  install -D -m0644 loader.conf "$pkgdir"/usr/share/systemd/bootctl/loader.conf
+  install -D -m0644 splash-arch.bmp "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
 
   # pacman hooks
-  install -Dm755 systemd-hook "$pkgdir"/usr/share/libalpm/scripts/systemd-hook
-  install -Dm644 -t "$pkgdir"/usr/share/libalpm/hooks *.hook
+  install -D -m0755 systemd-hook "$pkgdir"/usr/share/libalpm/scripts/systemd-hook
+  install -D -m0644 -t "$pkgdir"/usr/share/libalpm/hooks *.hook
 
   # overwrite the systemd-user PAM configuration with our own
-  install -Dm644 systemd-user.pam "$pkgdir"/etc/pam.d/systemd-user
+  install -D -m0644 systemd-user.pam "$pkgdir"/etc/pam.d/systemd-user
 }
 
 package_libsystemd-selinux() {
-  pkgdesc="systemd client libraries with SELinux support"
+  pkgdesc='systemd client libraries with SELinux support'
   depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz' 'libselinux')
   license=('GPL2')
   provides=('libsystemd.so' 'libudev.so'
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=("${pkgname/-selinux}")
 
-  install -dm755 "$pkgdir"/usr
+  install -d -m0755 "$pkgdir"/usr
   mv libsystemd "$pkgdir"/usr/lib
 }
 
+package_systemd-resolvconf-selinux() {
+  pkgdesc='systemd resolvconf replacement with SELinux support'
+  license=('GPL2')
+  depends=('systemd-selinux')
+  provides=('openresolv' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
+  conflicts=('openresolv' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
+
+  install -d -m0755 "$pkgdir"/usr/bin
+  ln -s resolvectl "$pkgdir"/usr/bin/resolvconf
+
+  install -d -m0755 "$pkgdir"/usr/share/man/man1
+  ln -s resolvectl.1.gz "$pkgdir"/usr/share/man/man1/resolvconf.1.gz
+}
+
 package_systemd-sysvcompat-selinux() {
-  pkgdesc="sysvinit compat for systemd with SELinux support"
+  pkgdesc='sysvinit compat for systemd with SELinux support'
   license=('GPL2')
   conflicts=('sysvinit' "${pkgname/-selinux}" 'selinux-systemd-sysvcompat')
   depends=('systemd-selinux')
   provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
             "selinux-systemd-sysvcompat=${pkgver}-${pkgrel}")
 
-  install -Dm644 -t "$pkgdir"/usr/share/man/man8 \
+  install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
 
-  install -dm755 "$pkgdir"/usr/bin
+  install -d -m0755 "$pkgdir"/usr/bin
   ln -s ../lib/systemd/systemd "$pkgdir"/usr/bin/init
   for tool in runlevel reboot shutdown poweroff halt telinit; do
     ln -s systemctl "$pkgdir"/usr/bin/$tool
