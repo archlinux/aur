@@ -73,7 +73,6 @@ _package() {
   install=linux.install
 
   local kernver="$(<version)"
-  local basever="$(<version cut -d. -f1-2)"
 
   cd $_srcname
 
@@ -87,7 +86,7 @@ _package() {
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
-  local extradir="$pkgdir/usr/lib/modules/extramodules-$basever$_kernelname"
+  local extradir="$pkgdir/usr/lib/modules/extramodules$_kernelname"
   install -Dt "$extradir" -m644 ../version
   ln -sr "$extradir" "$modulesdir/extramodules"
 
@@ -103,7 +102,7 @@ _package() {
   local subst="
     s|%PKGBASE%|$pkgbase|g
     s|%KERNVER%|$kernver|g
-    s|%EXTRAMODULES%|$extramodules|g
+    s|%EXTRAMODULES%|$extradir|g
   "
 
   # hack to allow specifying an initially nonexisting install file
