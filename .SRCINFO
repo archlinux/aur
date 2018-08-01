@@ -1,12 +1,12 @@
 pkgbase = python-prospector
 	pkgdesc = Python static analysis tool
-	pkgver = 0.12.7
+	pkgver = 1.1
 	pkgrel = 1
-	url = https://github.com/landscapeio/prospector
+	url = https://github.com/PyCQA/prospector
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
-	makedepends = pydocstyle
+	makedepends = python-pydocstyle
 	makedepends = python-pep8-naming
 	makedepends = python-mccabe
 	makedepends = python-pycodestyle
@@ -17,11 +17,8 @@ pkgbase = python-prospector
 	makedepends = python-requirements-detector
 	makedepends = python-pylint-common
 	makedepends = python-pylint-plugin-utils
-	makedepends = python-pylint-django
-	makedepends = python-pylint-celery
-	makedepends = python-pylint-flask
-	source = https://github.com/landscapeio/prospector/archive/0.12.7.tar.gz
-	md5sums = SKIP
+	source = https://github.com/PyCQA/prospector/archive/1.1.tar.gz
+	md5sums = 33b1ef12a82fb1cc6d07cc6a478795d4
 
 pkgname = python-prospector
 

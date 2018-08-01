@@ -1,12 +1,12 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=python-prospector
-pkgver=0.12.7
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Python static analysis tool"
 arch=('any')
 makedepends=('python-setuptools'
-             'pydocstyle'
+             'python-pydocstyle'
              'python-pep8-naming'
              'python-mccabe'
              'python-pycodestyle'
@@ -16,16 +16,14 @@ makedepends=('python-setuptools'
              'python-setoptconf'
              'python-requirements-detector'
              'python-pylint-common'
-             'python-pylint-plugin-utils'
-             'python-pylint-django'
-             'python-pylint-celery'
-             'python-pylint-flask')
+             'python-pylint-plugin-utils')
 optdeps=('python-pyroma: check setup.py'
-         'python-vulture: find dead code')
-url="https://github.com/landscapeio/prospector"
+         'python-vulture: find dead code'
+         'python-mypy: optional type checking')
+url="https://github.com/PyCQA/prospector"
 license=('GPL2')
-source=(https://github.com/landscapeio/prospector/archive/${pkgver}.tar.gz)
-md5sums=('SKIP')
+source=(${url}/archive/${pkgver}.tar.gz)
+md5sums=('33b1ef12a82fb1cc6d07cc6a478795d4')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
