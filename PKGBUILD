@@ -2,7 +2,7 @@
 
 pkgname=perl-software-license
 pkgver=0.103013
-pkgrel=1
+pkgrel=2
 pkgdesc='packages that provide templated software licenses'
 arch=(any)
 license=(PerlArtistic GPL)
