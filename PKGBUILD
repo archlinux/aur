@@ -1,11 +1,12 @@
-# Maintainer: Lara Maia <lara@craft.net.br>
+# Maintainer: Agent_Krtek <hermpe@gmail.com>
+# Contributor: Lara Maia <lara@craft.net.br>
 # Contributor: Zuf <kontakt.zuf@gmail.com>
 
 pkgname=anttweakbar
 pkgver=1.16
-pkgrel=7
+pkgrel=8
 pkgdesc="C/C++ lib that allows programmers to quickly add a light and intuitive GUI into graphic apps to interactively tweak their params"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64')
 url="http://anttweakbar.sourceforge.net"
 license=('zlib')
 depends=('gcc-libs' 'glu')
