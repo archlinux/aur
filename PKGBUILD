@@ -1,4 +1,5 @@
-# Maintainer: Sibren Vasse <arch at sibrenvasse dot nl>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Sibren Vasse <arch at sibrenvasse dot nl>
 # Contributor: Matt Welch <matt dot welch at gmail dot com>
 # Contributor: Anish Bhatt <anish at gatech dot edu>
 # Contributor: Det <nimetonmaili gmail a-dot com>
@@ -9,41 +10,38 @@
 
 pkgname=nvidia-beta-dkms
 pkgver=396.24
-pkgrel=3
-pkgdesc="NVIDIA kernel module sources (DKMS) - BETA version"
+pkgrel=4
+pkgdesc='NVIDIA driver sources for linux (beta version)'
 arch=('x86_64')
-url="http://www.nvidia.com/"
-license=('custom:NVIDIA')
+url='http://www.nvidia.com/'
+license=('custom')
 depends=('dkms' 'linux' "nvidia-utils-beta>=${pkgver}" 'libgl')
-optdepends=('linux-headers: Build the module for Arch kernel'
-            'linux-lts-headers: Build the module for LTS Arch kernel')
+optdepends=('linux-headers: build the module for Arch kernel'
+            'linux-lts-headers: build the module for LTS Arch kernel')
 provides=("nvidia=${pkgver}" 'nvidia-dkms')
 conflicts=('nvidia')
 options=('!strip')
-install=${pkgname}.install
-_pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
-source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-drm-control-allow.patch)
+install="${pkgname}.install"
+_srcname="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
+source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_srcname}.run"
+        'linux-4.18-rc1.patch')
 sha256sums=('41b80d2a4519ac78ac17c02fec976256d2ba5c9618640d2a9be9cb70685b2a9c'
             '87e0b5312425a56cda82873667563073fd9d2acc7f65d960e14c3eb0f4608ac0')
 
 prepare() {
-  # Remove previous builds
-  if [[ -d ${_pkg} ]]; then
-    rm -rf ${_pkg}
-  fi
+    # extract the source file
+    sh "${_srcname}.run" --extract-only
+    
+    # linux 4.18-rc1 fix
+    cd "$_srcname"
+    patch -Np1 -i "${srcdir}/linux-4.18-rc1.patch"
 
-  # Extract
-  sh ${_pkg}.run --extract-only
-  cd ${_pkg}/kernel
-  # patches here
-  patch -p2 -i "${srcdir}/drm-control-allow.patch"
-
-  # Update dkms.conf
-  sed -e "s/__VERSION_STRING/${pkgver}/" \
-      -e 's/__JOBS/${&}/' \
-      -e 's/__DKMS_MODULES//' \
-      -e '4iBUILT_MODULE_NAME[0]="nvidia"\
+    # update dkms.conf
+    cd kernel
+    sed -e "s/__VERSION_STRING/${pkgver}/" \
+        -e 's/__JOBS/${&}/' \
+        -e 's/__DKMS_MODULES//' \
+        -e '4iBUILT_MODULE_NAME[0]="nvidia"\
 DEST_MODULE_LOCATION[0]="/kernel/drivers/video"\
 BUILT_MODULE_NAME[1]="nvidia-uvm"\
 DEST_MODULE_LOCATION[1]="/kernel/drivers/video"\
@@ -52,25 +50,23 @@ DEST_MODULE_LOCATION[2]="/kernel/drivers/video"\
 BUILT_MODULE_NAME[3]="nvidia-drm"\
 DEST_MODULE_LOCATION[3]="/kernel/drivers/video"\
 __JOBS=`nproc`'\
-    -i dkms.conf
+        -i dkms.conf
 }
 
 package() {
-  cd ${_pkg}/kernel
-
-  # Create directory structure
-  install -d "${pkgdir}"/usr/lib/modprobe.d/
-  install -d "${pkgdir}"/usr/share/licenses/
-  install -d "${pkgdir}"/usr/src/nvidia-${pkgver}/
-
-  # Install
-  cp -dr --no-preserve=ownership * "${pkgdir}"/usr/src/nvidia-${pkgver}/
-
-  # Link license
-  ln -s /usr/share/licenses/nvidia "${pkgdir}"/usr/share/licenses/${pkgname}
-
-  # Blacklist Nouveau
-  echo "blacklist nouveau" > "${pkgdir}"/usr/lib/modprobe.d/nvidia.conf
+    cd "${_srcname}/kernel"
+    
+    # directories creation
+    install -d "${pkgdir}/usr/lib/modprobe.d/"
+    install -d "${pkgdir}/usr/src/nvidia-${pkgver}/"
+    
+    # install
+    cp -dr --no-preserve='ownership' * "${pkgdir}/usr/src/nvidia-${pkgver}/"
+    
+    # blacklist nouveau driver
+    printf '%s\n' 'blacklist nouveau' > "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
+    
+    # license
+    cd "${srcdir}/${_srcname}"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim: ts=2 sw=2 et:
