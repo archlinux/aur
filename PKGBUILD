@@ -5,7 +5,7 @@
 pkgname=perl-term-extendedcolor
 _cpanname=Term-ExtendedColor
 pkgver=0.224
-pkgrel=5
+pkgrel=6
 pkgdesc="Like Term::ANSIColor, but for the extended colorset"
 url='http://search.cpan.org/dist/Term-ExtendedColor'
 arch=('any')
