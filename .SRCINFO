@@ -1,7 +1,7 @@
 pkgbase = faddeeva-cpp
 	pkgdesc = Faddeeva code to calculate error functions of complex arguments
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cdown/faddeeva
 	arch = any
 	license = MIT
