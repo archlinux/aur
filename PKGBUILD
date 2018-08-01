@@ -2,7 +2,7 @@
 # Contributor: cocreature <moritz.kiefer<at>purelyfunctional<dot>org>
 
 pkgname=carla-git
-pkgver=1.9.8.r54.gebd3f2e5
+pkgver=1.9.9.r0.gc03571a9
 pkgrel=1
 epoch=1
 pkgdesc="Audio Plugin Host"
@@ -45,7 +45,7 @@ changelog='changelog.txt'
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 build() {
