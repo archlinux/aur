@@ -2,7 +2,7 @@
 
 pkgname=dfshow-git
 pkgver=20180801
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive directory/file browser written for Unix-like systems."
 arch=('i686' 'x86_64' 'arm')
 url="https://github.com/roberthawdon/dfshow"
@@ -11,6 +11,7 @@ depends=('ncurses')
 makedepends=('git' 'autoconf' 'automake')
 source=('git+https://github.com/roberthawdon/dfshow')
 md5sums=('SKIP')
+options=('!buildflags' '!makeflags')
 
 pkgver() {
   cd "${srcdir}/dfshow"
