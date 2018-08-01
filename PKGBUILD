@@ -1,8 +1,9 @@
-pkgbase=('python-gdbgui')
-pkgname=('python-gdbgui')
+# Maintainer: ZWindL <zwindl@protonmail.com>
+pkgbase=python-gdbgui
+pkgname=python-gdbgui
 _module='gdbgui'
-pkgver='0.13.0.0'
-pkgrel=2
+pkgver=0.13.0.0
+pkgrel=3
 pkgdesc="browser-based gdb frontend using Flask and JavaScript to visually debug C, C++, Go, or Rust"
 url="https://github.com/cs01/gdbgui"
 depends=('python' 'python-flask12' 'python-flask-compress' 'python-flask-socketio2' 'python-gevent' 'python-pygdbmi' 'python-pygments')
