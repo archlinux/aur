@@ -1,8 +1,9 @@
-pkgbase=('python-flask12')
-pkgname=('python-flask12')
+# Maintainer: ZWindL <zwindl@protonmail.com>
+pkgbase=python-flask12
+pkgname=python-flask12
 _module='Flask'
-pkgver='0.12.4'
-pkgrel=1
+pkgver=0.12.4
+pkgrel=2
 pkgdesc=" The Python micro framework for building web applications"
 url="https://github.com/pallets/flask"
 depends=('python' 'python-werkzeug' 'python-jinja' 'python-itsdangerous' 'python-click')

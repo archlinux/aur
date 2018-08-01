@@ -1,7 +1,7 @@
 pkgbase = python-flask12
 	pkgdesc = The Python micro framework for building web applications
 	pkgver = 0.12.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pallets/flask
 	arch = any
 	license = MIT
