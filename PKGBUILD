@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=subtle-git
-pkgver=0.11.3224
+pkgver=0.11.r21.g7f3b86af
 pkgrel=1
 pkgdesc='A grid-based manual tiling window manager.'
 arch=(i686 x86_64)
@@ -12,13 +12,8 @@ makedepends=(git pkg-config)
 provides=(subtle)
 conflicts=(subtle)
 backup=(etc/xdg/subtle/subtle.rb)
-source=(git+http://github.com/anatol/subtle)
+source=(hg+http://hg.subforge.org/subtle)
 md5sums=('SKIP')
-
-pkgver() {
-  cd subtle
-  git describe --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
 
 prepare() {
   cd subtle
