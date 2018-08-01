@@ -1,6 +1,6 @@
 pkgbase = nama
 	pkgdesc = This tool uses nmcli to easily set static ip addresses
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/chn555/nama
 	arch = any
