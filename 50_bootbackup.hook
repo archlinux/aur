@@ -15,6 +15,5 @@ Target = usr/lib/initcpio/*
 [Action]
 Description = Backup boot partition...
 When = PreTransaction
-Depends = rsync
 Exec = /usr/share/libalpm/scripts/backup-boot-partition pre
 AbortOnFail

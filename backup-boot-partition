@@ -3,8 +3,8 @@
 [[ "$1" != "pre" && "$1" != "post" ]] && exit 1
 [[ -f /etc/pacman-boot-backup.conf ]] && . /etc/pacman-boot-backup.conf
 
-BACKUP_PATH_SRC=$(echo ${BACKUP_PATH_SRC:-/boot} | sed 's#/$##')
-BACKUP_PATH_DEST=$(echo ${BACKUP_PATH_DEST:-/.bootbackup} | sed 's#/$##')/$1
+BACKUP_PATH_DEST=${BACKUP_PATH_DEST:-/.bootbackup}/$1
 
+rm -rf "${BACKUP_PATH_DEST}"
 mkdir -p "${BACKUP_PATH_DEST}"
-/usr/bin/rsync -azq --delete "${BACKUP_PATH_SRC}/" "${BACKUP_PATH_DEST}"
+cp -aT /boot "${BACKUP_PATH_DEST}"

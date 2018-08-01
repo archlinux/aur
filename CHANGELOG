@@ -1,3 +1,8 @@
+v1.4 (2018/08/01):
+- Simplified package by dropping rsync dependency
+    - cp is now used in favor of rsync
+- Removed possibility to customize backup source directory (always backup /boot)
+
 v1.3 (2018/01/14):
 - The hook trigger has been modified to match that of 90-linux.hook
 - The hook names were changed in order to execute not too early/late
@@ -12,4 +17,3 @@ v1.1 (2018/01/05):
 
 v1.0 (2017/12/31):
 - Initial release
-
