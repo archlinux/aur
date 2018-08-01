@@ -1,4 +1,4 @@
-pkgbase = proxyee-down
+pkgbase = proxyeedown
 	pkgdesc = a powerful tool to download things from baidu netdisk
 	pkgver = 2.54
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = proxyee-down
 	md5sums = fb0acaea6fac6d9a0261d361b3f340af
 	md5sums = 5a5087aca873d220b598fd63d5364429
 
-pkgname = proxyee-down
+pkgname = proxyeedown
 

@@ -1,6 +1,6 @@
 # Maintainer: weearc <q19981121@163.com>
 
-pkgname=proxyee-down
+pkgname=proxyeedown
 _pkgname=proxyeedown
 pkgver=2.54
 pkgrel=1
