@@ -60,13 +60,13 @@ package() {
 
   # Fix FS#22552
   ln -sf ../../libpython${_pybasever}m.so \
-    "${pkgdir}/usr/lib/python${_pybasever}/config-${_pybasever}m-x86_64-linux-gnu/libpython${_pybasever}m.so"
+    "${pkgdir}/usr/lib/python${_pybasever}/config-${_pybasever}m-${CARCH}-linux-gnu/libpython${_pybasever}m.so"
 
   # Fix pycairo build
   ln -sf python${_pybasever}m-config "${pkgdir}/usr/bin/python${_pybasever}-config"
 
   # Clean-up reference to build directory
-  sed -i "s|$srcdir/Python-${pkgver}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}m-x86_64-linux-gnu/Makefile"
+  sed -i "s|$srcdir/Python-${pkgver}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}m-${CARCH}-linux-gnu/Makefile"
 
   # License
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
