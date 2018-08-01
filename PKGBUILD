@@ -2,7 +2,7 @@
 
 pkgname=vmir
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Execute .wasm files directly'
 arch=('x86_64')
 url='https://github.com/andoma/vmir'
@@ -11,18 +11,16 @@ makedepends=('clang' 'git')
 source=("git+https://github.com/andoma/vmir.git#commit=b8aebf545cbf570c9e4367cf8f162db457c06bc0"
         'wasm.conf')
 sha256sums=('SKIP'
-            'f2f9a8401e8ab2ded3b655477e8eecc8cb4798178512bf8a15cf2263a572cd16')
+            'b10ca7ae90b202b0e1ffb72cfcdd06a5ab9e304b60ee9831854879c0950bf90c')
 
 prepare() {
   sed -i \
-    's,Need .bc file to parse/run,Please pass a .wasm file as the first argument.,g' \
+    's,Need .bc file to parse/run,Please provide a .wasm file as the first argument.,g' \
     "$pkgname/src/main.c"
 }
 
 build() {
-  cd "$pkgname"
-
-  CC=clang make
+  CC=clang make -C "$pkgname"
 }
 
 package() {
@@ -30,7 +28,6 @@ package() {
 
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  # TODO: Make sure the magic header for WASM is correct
   install -Dm644 "$srcdir/wasm.conf" "$pkgdir/etc/binfmt.d/wasm.conf"
 }
 
