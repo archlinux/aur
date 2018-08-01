@@ -49,8 +49,7 @@ package() {
   # Copy in files and then fix permissions
   install -d -m 755 "${pkgdir}/usr/lib/ombi"
   cp -dpr --no-preserve=ownership "${srcdir}/ombi/"* "${pkgdir}/usr/lib/ombi/"
-  find ${pkgdir}/usr/lib/ombi/ -type f -exec chmod 644 '{}' ';'
-  find ${pkgdir}/usr/lib/ombi/ -type d -exec chmod 755 '{}' ';'
+  chmod -R a=,a+rX,u+w ${pkgdir}/usr/lib/ombi/
   chmod 755 ${pkgdir}/usr/lib/ombi/Ombi
 
   install -D -m 644 "${srcdir}/ombi.service" "${pkgdir}/usr/lib/systemd/system/ombi.service"
