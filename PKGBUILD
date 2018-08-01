@@ -1,16 +1,16 @@
 _npmname=local-npm
-_npmver=1.5.8
+_npmver=2.2.2
 pkgname=nodejs-local-npm
-pkgver=1.5.8
+pkgver=2.2.2
 pkgrel=1
-pkgdesc="Node server that acts as a local npm registry."
+pkgdesc="Local and offline-first npm mirror."
 arch=(any)
-url="https://github.com/nolanlawson/local-npm"
+url="https://github.com/local-npm/local-npm"
 license=('Apache')
 depends=('nodejs' )
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('f4fa8a9485868b45ea7c6d4c34d9dcde93fc01d0')
+sha1sums=('181fff84ff129e7867d4d50b9d1f0f3dc4ea2990')
 
 package() {
   cd $srcdir
