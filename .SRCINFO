@@ -1,0 +1,12 @@
+pkgbase = faddeeva-cpp
+	pkgdesc = Faddeeva code to calculate error functions of complex arguments
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/cdown/faddeeva
+	arch = any
+	license = MIT
+	source = https://github.com/cdown/faddeeva/archive/1.0.tar.gz
+	md5sums = 01f27f1032c2a1508333d4dd7b48d1cb
+
+pkgname = faddeeva-cpp
+
