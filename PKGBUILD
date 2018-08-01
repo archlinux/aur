@@ -24,7 +24,7 @@ prepare() {
     cd "$srcdir/${pkgname%-git}"
     mkdir -p build
     cd build
-    cmake -DBUILD_SHARED_LIBS=1 -GNinja ..
+    cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=1 -GNinja ..
 }
 
 build() {
