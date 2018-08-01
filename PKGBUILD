@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=(alacritty-scrollback-git alacritty-scrollback-terminfo-git)
-pkgver=0.1.0+853+gf50ca1a
+pkgver=0.1.0+891+g23601fb
 pkgrel=1
 arch=(i686 x86_64)
 url=https://github.com/jwilm/alacritty
@@ -27,7 +27,7 @@ check() {
 
 package_alacritty-scrollback-git() {
   pkgdesc='A cross-platform, GPU-accelerated terminal emulator (scrollback branch)'
-  depends=(freetype2 fontconfig xclip)
+  depends=(freetype2 fontconfig libxcursor libxrandr xclip)
   provides=(alacritty)
   conflicts=(alacritty)
 
