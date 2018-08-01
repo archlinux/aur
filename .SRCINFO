@@ -1,7 +1,7 @@
 pkgbase = nvidia-beta-dkms
 	pkgdesc = NVIDIA driver sources for linux (beta version)
 	pkgver = 396.24
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.nvidia.com/
 	install = nvidia-beta-dkms.install
 	arch = x86_64
