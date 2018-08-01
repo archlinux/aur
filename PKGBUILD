@@ -1,7 +1,8 @@
 # Maintainer: Pawel Mosakowski <pawel@mosakowski.net>
 pkgname=appgate-sdp
 conflicts=('appgate-sdp-headless')
-pkgver=4.0.1
+pkgver=4.1.0
+_download_pkgver=4.1.1
 pkgrel=1
 epoch=
 pkgdesc="Software Defined Perimeter - GUI client"
@@ -17,7 +18,7 @@ license=('custom')
 
 # dependecies calculated by namcap
 depends=('gconf' 'libsecret' 'gtk3' 'python' 'nss' 'libxss' 'nodejs' 'dnsmasq')
-source=("https://sdpdownloads.cyxtera.com/files/download/AppGate-SDP-${pkgver}/clients/${pkgname}_${pkgver}_amd64.deb"
+source=("https://sdpdownloads.cyxtera.com/files/download/AppGate-SDP-${_download_pkgver}/clients/${pkgname}_${pkgver}_amd64.deb"
         "appgatedriver.service")
 
 prepare() {
@@ -37,5 +38,5 @@ package() {
     cp -v "$pkgdir/usr/share/doc/appgate/LICENSES.chromium.html.bz2" "$pkgdir/usr/share/licenses/appgate-sdp"
 }
 
-md5sums=('fcc77359e74bd728e2dd74acdaf4dc85'
+md5sums=('424c3def083993c095e4bad0252cb848'
          '002644116e20b2d79fdb36b7677ab4cf')
