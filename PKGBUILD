@@ -4,13 +4,14 @@
 
 _pkgname=sickrage
 pkgname=$_pkgname-pip
-pkgver=9.0.12.r0
+pkgver=9.3.55.r0
 pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
 url="https://github.com/SiCKRAGETV/SickRage"
 license=('GPL3')
 ##makedepends=('python2-virtualenv')
+makedepends=('python2-pip')
 depends=('python2-virtualenv')
 #         'deluge: supported torrent client'
 #         'qbittorrent: supported torrent client'
@@ -32,9 +33,7 @@ md5sums=('eb76e8676e0a2169364cb0041b0fb6f4'
 export PIP_DEFAULT_TIMEOUT=60
 
 pkgver() {
-  #pip2 search $_pkgname | awk '$1 == "sickrage" { gsub("[()]", ""); print $2 ".r0" }'
-  #curl -s https://pypi.python.org/pypi/$_pkgname/json | grep version | head -1 | awk -F: '{ print $2 }' | awk -F'"' '$0=$2 ".r0"'
-  curl -s https://pypi.python.org/pypi/$_pkgname/json | awk -F'"' '$2 == "version" { print $4 ".r0" }'
+  pip2 search $_pkgname | awk '$1 == "'$_pkgname'" { gsub("[()]", ""); print $2 ".r0" }'
 }
 
 package() {
