@@ -5,7 +5,7 @@ _pkg_subver=1722  # see ${srcdir}/Version.txt
 
 pkgname=rimworld
 pkgver=0.18.${_pkg_subver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
 url="http://rimworldgame.com/"
@@ -14,7 +14,7 @@ depends=('glu' 'libxcursor')
 makedepends=('unzip')
 source=(rimworld.desktop
         rimworld.sh)
-sha256sums=('e83c514731904722d96218e82e257467d7af32d938493bb5908cf96c7699cae6'
+sha256sums=('2cae10532b040e6766daf8fc33ecbd123ce2085acb921e30e57216da573879ce'
             'b43669fb221beda0927781b2572861ba50af08d0dcd8abf6011d27dd894f564e')
 if test "$CARCH" == i686; then
   _rimworld_arch=x86
