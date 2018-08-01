@@ -1,6 +1,6 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.6.2
+_oomox_ver=1.6.2.1
 _numix_ver=1.9.0
 _materia_ver=20180311
 _materia_cmt=df30959eb068ef55db18a18ed23a4a1c79129768
@@ -56,7 +56,7 @@ source=(
     "gnome-colors-icon-theme-${_gnome_colors_ver}.tar.gz::https://github.com/themix-project/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_ver}.tar.gz"
     "oomoxify-${_oomoxify_ver}.tar.gz::https://github.com/themix-project/oomoxify/archive/${_oomoxify_ver}.tar.gz"
 )
-md5sums=('483620a4529984ef31020d5647d98837'
+md5sums=('ddc61813a332e068e619cd7cf90d26f2'
          '0769a6c072d8ad7661a16b67a6bcdd48'
          '7da360ebc9303ef388a6ad9dc8e06222'
          'cb669130685dcbf03a8f7f5738c71dc6'
