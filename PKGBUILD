@@ -70,7 +70,7 @@ _package() {
   install=linux.install
 
   local kernver="$(<version)"
-  local basekernel="$(<version cut -d. -f1-2)"
+  local basever="$(<version cut -d. -f1-2)"
 
   cd $_srcname
 
@@ -84,7 +84,7 @@ _package() {
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
-  local extradir="$pkgdir/usr/lib/modules/extramodules-${basekernel}${pkgbase#linux}"
+  local extradir="$pkgdir/usr/lib/modules/extramodules-${basever}${pkgbase#linux}"
   install -Dt "$extradir" -m644 ../version
   ln -sr "$extradir" "$modulesdir/extramodules"
 
