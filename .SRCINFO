@@ -1,0 +1,25 @@
+pkgbase = python-flask12
+	pkgdesc = The Python micro framework for building web applications
+	pkgver = 0.12.4
+	pkgrel = 1
+	url = https://github.com/pallets/flask
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-werkzeug
+	depends = python-jinja
+	depends = python-itsdangerous
+	depends = python-click
+	provides = python-flask
+	conflicts = python-flask
+	source = https://github.com/pallets/flask/releases/download/0.12.4/Flask-0.12.4.tar.gz
+	md5sums = f885afe6dd25e8d48d5ba23f2857687e
+
+pkgname = python-flask12
+	depends = python
+	depends = python-werkzeug
+	depends = python-jinja
+	depends = python-itsdangerous
+	depends = python-click
+
