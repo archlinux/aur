@@ -1,6 +1,6 @@
 # Maintainer: Anatol Pomozov
 
-pkgname=subtle-hg
+pkgname=subtle-git
 pkgver=0.11.r21.g7f3b86af
 pkgrel=1
 pkgdesc='A grid-based manual tiling window manager.'

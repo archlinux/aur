@@ -1,4 +1,4 @@
-pkgbase = subtle-hg
+pkgbase = subtle-git
 	pkgdesc = A grid-based manual tiling window manager.
 	pkgver = 0.11.r21.g7f3b86af
 	pkgrel = 1
@@ -21,5 +21,5 @@ pkgbase = subtle-hg
 	source = hg+http://hg.subforge.org/subtle
 	md5sums = SKIP
 
-pkgname = subtle-hg
+pkgname = subtle-git
 
