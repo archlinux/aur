@@ -2,17 +2,19 @@
 # Contributor: hexchain <i at hexchain.org>
 
 pkgname=tpm2-abrmd-git
-pkgver=2.0.1.r0.80f8966
+pkgver=2.0.1.r1.23a59de
 pkgrel=1
-pkgdesc='TPM2 Access Broker & Resource Manager'
+pkgdesc='TPM2 Access Broker & Resource Management Daemon'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-abrmd'
 license=('BSD')
-depends=('glib2' 'dbus' 'tpm2-tss')
+depends=('dbus' 'glib2' 'tpm2-tss>=2.0.0')
 makedepends=('git' 'autoconf-archive' 'python')
+checkdepends=('cmocka>=1.0.0' # for unit test suite
+              'ibm-sw-tpm2' 'net-tools') # for integration test suite
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+$url.git"
+source=("git+$url.git"
         "tss.sysusers")
 sha256sums=('SKIP'
             '67d89be143dc129a95b0c1a42b3e92367a151289fb6c0655c054fccd62cd9a0e')
@@ -25,8 +27,14 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./bootstrap
-	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --disable-static --with-pic
+	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc
 	make
+}
+
+check() {
+	cd "$srcdir/${pkgname%-git}"
+	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --enable-unit --enable-integration
+	dbus-run-session -- make -k check
 }
 
 package() {
