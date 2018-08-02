@@ -4,7 +4,7 @@
 pkgname=ros-melodic-socketcan-interface
 _pkgname=socketcan_interface
 pkgdesc='Generic CAN interface description with helpers for filtering and driver implementation. Further a socketcan implementation based on boost::asio is included.'
-url="http://wiki.ros.org/${_pkgname}"
+url="http://wiki.ros.org/${_pkgname}?distro=melodic"
 
 pkgver=0.8.0
 pkgrel=1
