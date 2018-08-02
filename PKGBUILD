@@ -2,17 +2,19 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=tpm2-tss-git
-pkgver=2.0.0.r38.91e7bd65
+pkgver=2.0.0.r41.68eb4f15
 pkgrel=1
 pkgdesc='TPM (Trusted Platform Module) 2.0 Software Stack (TSS)'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tss'
 license=('BSD')
 depends=('libgcrypt')
-makedepends=('git' 'autoconf-archive' 'cmocka>=1.0.0')
+makedepends=('git' 'autoconf-archive')
+checkdepends=('cmocka>=1.0.0' # for unit test suite
+              'ibm-sw-tpm2' 'net-tools' 'procps-ng' 'uthash') # for integration test suite
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+$url.git")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,12 +25,13 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./bootstrap
-	./configure --prefix=/usr --enable-unit --disable-static --with-pic
+	./configure --prefix=/usr
 	make
 }
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
+	./configure --prefix=/usr --enable-unit --enable-integration
 	make -k check
 }
 
