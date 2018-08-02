@@ -1,7 +1,7 @@
 # Maintainer: Jonas 'cherti' Große Sundrup <aur@letopolis.de>
 
 pkgname=blinky
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="AUR-helper with minimal hassle"
 arch=(any)
@@ -16,8 +16,8 @@ depends=('python' 'pyalpm' 'python-requests' 'python-termcolor')
 #backup=()
 options=(!emptydirs)
 #install=
-source=('https://github.com/cherti/blinky/archive/v0.5.tar.gz')
-sha256sums=('c9b9986f45bfa855d3ffc9976cd8913733838a8eb797e9a44ea5a0f8ef6615f2')
+source=('https://github.com/cherti/blinky/archive/v0.6.tar.gz')
+sha256sums=('13f33260c54cba16d479c09912bf6e82089f0e8ec7a15877c9e78b4f07e43699')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
