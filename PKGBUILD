@@ -19,7 +19,7 @@ build() {
 	tar -zxvf v${pkgver}.tar.gz
 	mkdir TrenchBroom-${pkgver}/build
 	cd TrenchBroom-${pkgver}/build
-	cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -DwxWidgets_PREFIX=/opt/wxgtk-trenchbroom
+	cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -DwxWidgets_PREFIX=/usr
 	cmake --build . --target TrenchBroom
 }
 

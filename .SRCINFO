@@ -10,7 +10,7 @@ pkgbase = trenchbroom
 	makedepends = pandoc
 	depends = freeimage
 	depends = freetype2
-	depends = wxgtk-trenchbroom
+	depends = wxgtk2-dev
 	depends = mesa
 	depends = libgl
 	depends = freeglut
@@ -19,7 +19,7 @@ pkgbase = trenchbroom
 	depends = glm
 	conflicts = trenchbroom-git
 	source = https://github.com/kduske/TrenchBroom/archive/v2.0.5.tar.gz
-	sha1sums = b3ac0387b1031f0f0276c7d4f6810301dd71a1e9
+	sha1sums = de2133545739adb05037c97e38acae493305cca8
 
 pkgname = trenchbroom
 
