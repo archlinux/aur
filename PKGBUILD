@@ -3,7 +3,7 @@
 
 pkgname=xdg-desktop-portal
 pkgver=0.99
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
 arch=(x86_64)
@@ -21,6 +21,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  sed -i 's/pipewire-0.1/pipewire-0.2/g' configure.ac
   NOCONFIGURE=1 ./autogen.sh
 }
 
