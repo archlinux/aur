@@ -2,10 +2,10 @@
 
 _plug=muvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r141.054045f
+pkgver=v0.1.0.3.g6813396
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=171956'
 license=('GPL')
 depends=('vapoursynth-plugin-havsfunc-git'
@@ -21,8 +21,7 @@ _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; pri
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 package(){
