@@ -26,15 +26,15 @@ build() {
   mkdir -p build
   cd build
   cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-              -DCMAKE_INSTALL_PREFIX=/usr \
-              -DCMAKE_INSTALL_LIBDIR=lib \
-              -DKICAD_USE_OCE=ON \
-              -DOCE_DIR=`dirname $(pacman -Ql oce | grep OCEConfig.cmake | awk '{ print $2 }' )` \
-              -DBUILD_GITHUB_PLUGIN=ON \
-              -DKICAD_SCRIPTING=ON \
-              -DKICAD_SCRIPTING_MODULES=ON \
-              -DKICAD_SCRIPTING_WXPYTHON=OFF \
-              -DKICAD_SCRIPTING_ACTION_MENU=ON
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DKICAD_USE_OCE=ON \
+    -DOCE_DIR=`dirname $(pacman -Ql oce | grep OCEConfig.cmake | awk '{ print $2 }' )` \
+    -DBUILD_GITHUB_PLUGIN=ON \
+    -DKICAD_SCRIPTING=ON \
+    -DKICAD_SCRIPTING_MODULES=ON \
+    -DKICAD_SCRIPTING_WXPYTHON=OFF \
+    -DKICAD_SCRIPTING_ACTION_MENU=ON
 
   make
 }
