@@ -1,7 +1,7 @@
 pkgbase = obs-studio-vaapi
 	pkgdesc = Free, open source software for live streaming and recording
 	pkgver = 21.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com
 	arch = x86_64
 	license = GPL2

@@ -5,7 +5,7 @@
 pkgname=obs-studio-vaapi
 _srcname=obs-studio
 pkgver=21.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
