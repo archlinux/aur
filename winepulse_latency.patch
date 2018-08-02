@@ -11,7 +11,7 @@
  
  static pa_context *pulse_ctx;
  static pa_mainloop *pulse_ml;
-@@ -406,9 +406,9 @@
+@@ -409,9 +409,9 @@
      ss.channels = map.channels;
  
      attr.maxlength = -1;
@@ -24,7 +24,7 @@
  
      stream = pa_stream_new(ctx, "format test stream", &ss, &map);
      if (stream)
-@@ -417,9 +417,9 @@
+@@ -420,9 +420,9 @@
          ret = -1;
      else if (render)
          ret = pa_stream_connect_playback(stream, NULL, &attr,
@@ -36,10 +36,10 @@
      if (ret >= 0) {
          while (pa_mainloop_iterate(ml, 1, &ret) >= 0 &&
                  pa_stream_get_state(stream) == PA_STREAM_CREATING)
-@@ -1767,6 +1767,13 @@
-     /* Uh oh, really low latency requested.. */
-     if (duration <= 2 * period)
-         period /= 2;
+@@ -1789,6 +1789,13 @@
+     period = pulse_def_period[This->dataflow == eCapture];
+     if (duration < 3 * period)
+         duration = 3 * period;
 +    
 +    const char *env = getenv("STAGING_AUDIO_DURATION");
 +    if(env) {
@@ -48,5 +48,5 @@
 +        printf("Set audio duration to %d (STAGING_AUDIO_DURATION).\n", val);
 +    }
  
-     period_bytes = pa_frame_size(&This->ss) * MulDiv(period, This->ss.rate, 10000000);
+     This->period_bytes = pa_frame_size(&This->ss) * MulDiv(period, This->ss.rate, 10000000);
  

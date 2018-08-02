@@ -1,6 +1,6 @@
 pkgbase = wine-osu
 	pkgdesc = A compatibility layer for running Windows programs - Staging branch, optimized for audio low latency on osu! (by ThePooN)
-	pkgver = 3.12
+	pkgver = 3.13
 	pkgrel = 1
 	url = https://blog.thepoon.fr/osuLinuxAudioLatency/
 	arch = x86_64
@@ -135,20 +135,20 @@ pkgbase = wine-osu
 	optdepends = samba
 	optdepends = dosbox
 	options = staticlibs
-	source = https://dl.winehq.org/wine/source/3.x/wine-3.12.tar.xz
-	source = https://dl.winehq.org/wine/source/3.x/wine-3.12.tar.xz.sign
-	source = wine-staging-v3.12.tar.gz::https://github.com/wine-staging/wine-staging/archive/v3.12.tar.gz
+	source = https://dl.winehq.org/wine/source/3.x/wine-3.13.tar.xz
+	source = https://dl.winehq.org/wine/source/3.x/wine-3.13.tar.xz.sign
+	source = wine-staging-v3.13.tar.gz::https://github.com/wine-staging/wine-staging/archive/v3.13.tar.gz
 	source = harmony-fix.diff
 	source = winealsa_latency.patch
 	source = winepulse_latency.patch
 	validpgpkeys = 5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
-	sha512sums = afc76e8975ea780f664de27a17128f730bcbe72a9fad0c01bfe6dcc98c2f98729ccde32e97fe4df2cf98f5d1b254b28f0e7cd380855148c5cfb41dd88f3012a1
+	sha512sums = a07a3d2a19261f9251f165ca4c14871e6ebda4d3f99da16f9fc41f06e80cae3fb50aeab96628c7a739e635e896dbb31c55df8b42c4637a058f9035c664c93a59
 	sha512sums = SKIP
-	sha512sums = 166f991f7c8f59df656f3fb28150a8e26e48d1ff6906b3eccd31cb84524e28efe7e7df00eadc21881940308ccc4b4edebcb2a71bdd03ba3de5beb1cf42e2f058
+	sha512sums = 0124950cc18d566daecc532a432bce27d712f48eaaa9b37bf930e056b460e30a8fb1806aa179f72b44a95dc56963a3dc063b4acb71affb7b8ddff3001fe59b9a
 	sha512sums = b86edf07bfc560f403fdfd5a71f97930ee2a4c3f76c92cc1a0dbb2e107be9db3bed3a727a0430d8a049583c63dd11f5d4567fb7aa69b193997c6da241acc4f2e
 	sha512sums = 8212f4ec07045faa28704035ea6c8173ade503afe3bf94c4ec19e9edb788004579bb37e16c58d92ddc23e9a4de52480437f8486a32d794c5edc59d448db46874
-	sha512sums = 3c5eda2d24892ca6428138bd9f07d5c598b606f9e181533d73556b25aabe41935efb44748cdb65524d7598ceac1bc81d9c9d507b76a15c51f32e34b3cdc3969a
+	sha512sums = 3baaddbb91db84407200e6d33110ac8a6c200781b26b8ba269b16e69faa301479769132f981f76316410e78d31abdebfa45509e30b7bd781ab1ed3a0c344ddbe
 
 pkgname = wine-osu
 
