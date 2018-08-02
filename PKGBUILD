@@ -2,17 +2,19 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=tpm2-tools-git
-pkgver=3.0.2.r629.0e37ed6
-pkgrel=2
+pkgver=3.0.2.r654.e761be7
+pkgrel=1
 pkgdesc='TPM (Trusted Platform Module) 2.0 tools based on TPM2.0-TSS'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tools'
 license=('BSD')
 depends=('tpm2-tss>=2.0.0' 'curl')
-makedepends=('git' 'autoconf-archive')
+makedepends=('git' 'autoconf-archive' 'pandoc')
+checkdepends=('cmocka>=1.0.0' 'tpm2-abrmd>=2.0.0' 'ibm-sw-tpm2' 'python-yaml' 'vim')
+optdepends=('tpm2-abrmd: user space resource manager to swap objects in and out of the limited TPM memory')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+$url.git")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,8 +25,14 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./bootstrap
-	./configure --prefix=/usr --sysconfdir=/etc --disable-static --with-pic
+	./configure --prefix=/usr --sysconfdir=/etc
 	make
+}
+
+check() {
+	cd "$srcdir/${pkgname%-git}"
+	./configure --prefix=/usr --sysconfdir=/etc --enable-unit
+	dbus-run-session -- make -k check
 }
 
 package() {
