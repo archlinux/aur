@@ -1,3 +1,4 @@
+# ex: ts=2 sts=2 sw=2 et
 # Maintainer: yhfudev <yhfudev ta gmail dot com>
 # Contributor: veox <veox ta wemakethings dot net>
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
@@ -7,8 +8,7 @@
 # Contributor: Samuel Tardieu <sam@rfc1149.net>
 
 pkgname=openocd-git
-_gitname=openocd-git
-pkgver=0.9.0.r44.g3edb157
+pkgver=0.10.0.r506.gc04a59286
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
 arch=('i686' 'x86_64' 'arm')
@@ -17,20 +17,17 @@ license=('GPL')
 depends=('libftdi' 'libftdi-compat' 'libusb' 'libusb-compat' 'hidapi' )
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
 options=(!strip)
-install=openocd-git.install
 provides=('openocd')
 conflicts=('openocd')
 
 source=(
-    "${_gitname}::git://git.code.sf.net/p/openocd/code"
-    #"openocd-0.9.0-exit-clean.patch"
-    )
-md5sums=(
-    'SKIP'
-    )
-sha1sums=(
-    'SKIP'
-    )
+  "${pkgname}::git+http://repo.or.cz/openocd.git"
+)
+#	"git+http://repo.or.cz/r/git2cl.git"
+#	"git+http://repo.or.cz/r/jimtcl.git"
+#	"git+http://repo.or.cz/r/libjaylink.git"
+md5sums=('SKIP')
+sha1sums=('SKIP')
 
 # Specify desired features and device support here. A list can be
 # obtained by running ./configure in the source directory.
@@ -71,52 +68,31 @@ _features=(
     #zy1000-master
     )
 
-pkgver_git_bak() {
-    cd "${srcdir}/${pkgname}"
-    local ver="$(git show | grep commit | awk '{print $2}' )"
-    #printf "r%s" "${ver//[[:alpha:]]}"
-    echo ${ver:0:7}
-}
-
-pkgver_git() {
-    cd "${srcdir}/${pkgname}"
-    git describe --tags --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-}
-
-pkgver_svn() {
-    cd "${srcdir}/${pkgname}"
-    #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    local ver="$(svn info | grep Revision | awk '{print $2}' )"
-    #printf "r%s" "${ver//[[:alpha:]]}"
-    echo ${ver:0:7}
-}
-
 pkgver() {
-    pkgver_git
+  cd "${srcdir}/${pkgname}"
+  git describe --tags --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${_gitname}"
-  #patch -p1 <$srcdir/openocd-0.9.0-exit-clean.patch
+  cd "$srcdir/${pkgname}"
 }
 
 build() {
-  cd "$srcdir/${_gitname}"
+  cd "$srcdir/${pkgname}"
 
   ./bootstrap
   ./configure --prefix=/usr \
     --enable-maintainer-mode \
     --disable-werror \
-    ${_features[@]/#/--enable-} \
-    $(NULL)
+    ${_features[@]/#/--enable-}
 
   #make clean
   make
 }
 
 package() {
-  cd "$srcdir/${_gitname}"
+  cd "$srcdir/${pkgname}"
   make DESTDIR=${pkgdir} install
-  rm -rf ${srcdir}/$_gitname-build
+  rm -rf ${srcdir}/$pkgname-build
   rm -rf $pkgdir/usr/share/info/dir
 }
