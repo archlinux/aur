@@ -1,0 +1,20 @@
+pkgbase = ros-melodic-bfl
+	pkgdesc = ROS - This package contains a recent version of the Bayesian Filtering Library (BFL), distributed by the Orocos Project.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://ros.org/wiki/bfl
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = boost
+	makedepends = cppunit
+	depends = ros-melodic-catkin
+	depends = boost
+	depends = cppunit
+	source = ros-melodic-bfl-0.8.0-0.tar.gz::https://github.com/ros-gbp/bfl-release/archive/release/melodic/bfl/0.8.0-0.tar.gz
+	sha256sums = 7cb6d1ea7e4f72fcac46f4b95bb8cfee260a9145300b7a5080f6e2f026ce2760
+
+pkgname = ros-melodic-bfl
+
