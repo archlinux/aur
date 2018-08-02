@@ -4,7 +4,7 @@
 pkgname=ros-melodic-can-msgs
 _pkgname=can_msgs
 pkgdesc='CAN related message types.'
-url="http://wiki.ros.org/${_pkgname}"
+url="http://wiki.ros.org/${_pkgname}?distro=melodic"
 
 pkgver=0.8.0
 pkgrel=1
