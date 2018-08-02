@@ -1,18 +1,24 @@
+# Maintainer: Andrea Girotto <andreagirotto+arch at gmail dot com>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=gotk3-git
-pkgver=20160809
+pkgver=r817.d1d3434
 pkgrel=1
 pkgdesc="Go bindings for GTK3"
 arch=('x86_64' 'i686')
-url="https://github.com/conformal/gotk3"
+url="https://github.com/gotk3/gotk3"
 license=('ISC')
 depends=('go' 'gtk3')
 makedepends=('git')
 conflicts=('gotk3')
 provides=('gotk3')
 options=('!strip' '!emptydirs')
-_gourl=github.com/conformal/gotk3
+_gourl=github.com/gotk3/gotk3
+
+pkgver() {
+  cd "$srcdir/src/$_gourl"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   GOPATH="$srcdir" go get -fix -v -x $_gourl/gtk

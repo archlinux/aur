@@ -1,8 +1,8 @@
 pkgbase = gotk3-git
 	pkgdesc = Go bindings for GTK3
-	pkgver = 20160809
+	pkgver = r817.d1d3434
 	pkgrel = 1
-	url = https://github.com/conformal/gotk3
+	url = https://github.com/gotk3/gotk3
 	arch = x86_64
 	arch = i686
 	license = ISC
