@@ -1,8 +1,8 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=396.24
-pkgrel=5
+pkgver=396.45
+pkgrel=1
 _goodkver=4.17
 _badkver=4.18
 _modver=${_goodkver}-pf
@@ -21,10 +21,8 @@ conflicts=( 'nvidia-96xx' 'nvidia-173xx' 'nvidia-pf-core2' 'nvidia-pf-k8'
  'nvidia-pf-pm' 'nvidia-pf-k7')
 license=('custom')
 options=(!strip)
-source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-        'kernel-4.16.patch')
-md5sums=('a441ff0a17b1db0d27855c6505de379d'
-         '84f1f2ecdccf377fc86323f8ad7b7469')
+source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+md5sums=('165b1f4ccc2db4678f0e7223f3dfc1bc')
 
 
 
@@ -37,7 +35,6 @@ prepare()
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   # patches here
-  patch -Np1 -i "$srcdir"/kernel-4.16.patch
 }
 
 build() {
