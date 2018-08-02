@@ -2,7 +2,7 @@
 # Contributor: Kai Geißdörfer <kai.s.geissdoerfer at campus.tu-berlin.de>
 
 pkgname=ccstudio
-pkgver=8.0.0.00016
+pkgver=8.1.0.00011
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
 arch=('x86_64')
@@ -12,28 +12,24 @@ license=('custom:TSPA')
 makedepends=('glibc')
 
 # Needed for builtin jxBrowser plugin (otherwise exception exit code 127)
-depends=('gconf' 'python2' 'gtk2' 'libxtst' 'nss' 'libxss' 'alsa-lib')
+# lib32-glibc needed for installers of some components (C2000 tools)
+depends=('gconf' 'python2' 'gtk2' 'libxtst' 'nss' 'libxss' 'alsa-lib' 'lib32-glibc')
 
 # Without some ttf fonts installed, UI is ugly
 optdepends=('ttf-dejavu')
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS${pkgver}_linux-x64
-source=("http://software-dl.ti.com/ccs/esd/CCSv8/CCS_8_0_0/exports/${_archive}.tar.gz"
+source=("http://software-dl.ti.com/ccs/esd/CCSv8/CCS_8_1_0/exports/${_archive}.tar.gz"
         "LICENSE"
         "61-msp430uif.rules"
         "71-sd-permissions.rules")
-
-md5sums=('37636805cd4c102872acc3a270daebca'
-         'cf7222e486f8f1d2a0f99d3d946e1f01'
-         '7c570e9f93da6f01986285db81d497ef'
-         'af8a8c199be432919b4ca66106591c25')
 
 install=$pkgname.install
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
-_desktop="Code Composer Studio 8.0.0.desktop"
+_desktop="Code Composer Studio 8.1.0.desktop"
 
 _destdir=opt
 _installdir=installdir
@@ -52,21 +48,12 @@ build() {
     #       but is not fatal. But, when the whole CCS installer is run under fakeroot is 
 
     # Unattented install mode -- preferred (but broken with current version, see below)
-    #./ccs_setup_linux64_${pkgver}.bin --mode unattended --prefix $srcdir/$_installpath
-
-    # GUI installer -- must use because some components fail to get installed (likely because they
-    # suffer from the glibc version incompatibility), but can't specify components on the
-    # command line for unattented install (tried --disable-components with com.ti.xxx syntax
-    # and with CGT_C6000 syntax, nothing works)
-    ./ccs_setup_linux64_${pkgver}.bin --prefix $srcdir/$_installpath
-
-    # Move .desktop out of the dir about to be copied (avoiding rm), and fix path
-    mv "$srcdir/$_installpath/$_desktop" $srcdir/$pkgname.desktop
+    ./ccs_setup_linux64_${pkgver}.bin --mode unattended --prefix $srcdir/$_installpath
 }
 
 package() {
-    sed -i "s#$srcdir/$_installdir##" $srcdir/$pkgname.desktop
-    install -D -m0755 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+    sed -i "s#$srcdir/$_installdir##" "$srcdir/$_installpath/$_desktop"
+    install -D -m0755 "$srcdir/$_installpath/$_desktop" $pkgdir/usr/share/applications/$pkgname.desktop
 
     # Hardlink to avoid time and space overhead
     cp -ral $srcdir/$_installdir/$_destdir $pkgdir/
@@ -78,7 +65,7 @@ package() {
 
     # Extract path to executable from .desktop
     mkdir -p $pkgdir/usr/bin
-    ln -s $(grep 'Exec=' $srcdir/$pkgname.desktop | cut -d'=' -f2) $pkgdir/usr/bin/$pkgname
+    ln -f -s $(grep 'Exec=' "$srcdir/$_installpath/$_desktop" | cut -d'=' -f2) $pkgdir/usr/bin/$pkgname
 
     # Udev rules for hardware
     # NOTE: not installing Blackhawk rules, since it also requires kernel module
@@ -100,3 +87,8 @@ package() {
 
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
+
+sha256sums=('468424bfd7663b33013a9c7ca5e451357e5203c1a06954852f606e78a44e86db'
+            'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
+            '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
+            'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a')
