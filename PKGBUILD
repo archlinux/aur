@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 310007 2017-11-15 14:11:34Z foutrelis $
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Felix Schindler <aur at felixschindler dot net>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Sebastian Nowicki <sebnow@gmail.com>
 # Contributor: Devin Cofer <ranguvar{AT]archlinux[DOT}us>
@@ -15,8 +15,8 @@
 
 pkgname=('llvm39' 'llvm39-libs' 'clang39')
 pkgver=3.9.1
-pkgrel=3
-arch=('x86_64')
+pkgrel=4
+arch=('i686' 'x86_64')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 makedepends=('cmake' 'libffi' 'python2' 'libedit')
@@ -80,9 +80,11 @@ check() {
 }
 
 package_llvm39() {
-  pkgdesc="Low Level Virtual Machine"
-  depends=('llvm39-libs' 'perl')
+  pkgdesc="Low Level Virtual Machine (3.9.x)"
+  depends=("llvm39-libs=$pkgver-$pkgrel" 'perl')
   conflicts=('llvm' 'llvm35')
+  replaces=('llvm' 'llvm35')
+  provides=("llvm=$pkgver-$pkgrel")
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -98,8 +100,10 @@ package_llvm39() {
 }
 
 package_llvm39-libs() {
-  pkgdesc="Low Level Virtual Machine (runtime libraries)"
+  pkgdesc="Low Level Virtual Machine (runtime libraries, 3.9.x)"
   depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses')
+  conflicts=('llvm-libs')
+  provides=("llvm-libs=$pkgver-$pkgrel")
 
   install -d "$pkgdir/usr/lib"
   cp -P "$srcdir"/libLLVM-*.so "$pkgdir/usr/lib/"
@@ -109,11 +113,13 @@ package_llvm39-libs() {
 }
 
 package_clang39() {
-  pkgdesc="C language family frontend for LLVM"
+pkgdesc="C language family frontend for LLVM (3.9.x)"
   url="http://clang.llvm.org/"
   depends=('llvm39-libs' 'gcc' 'libxml2')
   optdepends=('openmp: OpenMP support in clang with -fopenmp')
   conflicts=('clang' 'clang35')
+  replaces=('clang' 'clang35')
+  provides=("clang=$pkgver-$pkgrel")
 
   cd "$srcdir/llvm-$pkgver.src"
 
