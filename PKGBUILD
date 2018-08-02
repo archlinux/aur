@@ -3,6 +3,7 @@
 # Contributor: Benjamin Klettbach <b.klettbach@gmail.com>
 
 pkgname=obs-studio-vaapi
+_srcname=obs-studio
 pkgver=21.1.2
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
@@ -18,20 +19,20 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'luajit: scripting support'
             'python: scripting support'
             'vlc: VLC Media Source support')
-source=($pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
+source=($_srcname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
         "https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/1256.patch")
 sha256sums=('d6eb32d4ff65879945fc19a639b3ae14a55e6034a45b036e00e5f3dbce0e3d4d'
             '2c6f3e8624a05a6f5de1adc2a534ee85d7af6a6d489938702ca141fe1619b0f5')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $_srcname-$pkgver
 
   patch -Np1 -i "${srcdir}/1256.patch"
   sed -i '15i #include <QAction>' UI/frontend-plugins/frontend-tools/scripts.cpp  
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_srcname-$pkgver
 
   mkdir -p build; cd build
 
@@ -42,7 +43,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver/build
+  cd $_srcname-$pkgver/build
 
   make install DESTDIR="$pkgdir"
 }
