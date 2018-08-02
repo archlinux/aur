@@ -1,0 +1,9 @@
+.*
+*~
+*.tar*
+/nextpnr
+/pkg
+/src
+!.SRCINFO
+!.git*
+!.mailmap
