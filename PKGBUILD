@@ -14,7 +14,7 @@ depends=(
 makedepends=(
   'go'
 )
-conflicts=('yay-bin' 'yay-git')
+conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Jguer/yay/archive/v${pkgver}.tar.gz")
 sha1sums=('10137d441ecbd84b4e4e29ffdc9b46993e47571d')
 
