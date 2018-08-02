@@ -2,8 +2,8 @@
 # Contributor : Shawn Dellysse sdellysse@gmail.com
 
 pkgname=parsec-bin
-pkgver=146_18
-pkgrel=5
+pkgver=147
+pkgrel=6
 pkgdesc="Remotely connect to a gaming pc for a low latency remote computing experience"
 url=http://parsec.tv
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('parsec')
 depends=('gtk2' 'libsm' 'gcc-libs' 'libglvnd' 'mesa')
 optdepends=('libva: For hardware accelerated decoding')
 source=("https://s3.amazonaws.com/parsec-build/package/parsec-linux.deb")
-md5sums=('606463260d9ae1efe727457ea1009b4d')
+md5sums=('9f9e2eda656f49ce354e5c9407b8467a')
 package() {
 	mkdir -p $pkgdir/usr/bin
 	mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/apps
