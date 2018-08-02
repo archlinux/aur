@@ -1,39 +1,27 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libjpeg-turbo
-pkgver=1.5.3
+pkgver=2.0.0
 pkgrel=1
 arch=(any)
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (mingw-w64)"
 license=("custom" "GPL")
 depends=(mingw-w64-crt)
-makedepends=(nasm mingw-w64-configure)
+makedepends=(yasm mingw-w64-cmake)
 provides=(mingw-w64-libjpeg)
 conflicts=(mingw-w64-libjpeg mingw-w64-libjpeg6-turbo)
 options=(staticlibs !strip !buildflags)
 url="http://libjpeg-turbo.virtualgl.org"
-source=("http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$pkgver.tar.gz"
-"0001-header-compat.mingw.patch"
-"libjpeg-turbo-1.3.1-libmng-compatibility.patch")
+source=("http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$pkgver.tar.gz")
 validpgpkeys=('7D6293CC6378786E1B5C496885C7044E033FDE16')
-sha1sums=('87ebf4cab2bb27fcb8e7ccb18ec4eb680e1f2c2d'
-          '204f9a62bb7170f54b1a997059fa77b9b02a71ba'
-          '35413e30c3ea18839f4a023283a0bd444136839f')
+sha256sums=('778876105d0d316203c928fd2a0374c8c01f755d0a00b12a1c8934aeccff8868')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-prepare() {
-	cd libjpeg-turbo-$pkgver
-	patch -p1 -i ${srcdir}/0001-header-compat.mingw.patch
-  patch -p1 -i ${srcdir}/libjpeg-turbo-1.3.1-libmng-compatibility.patch
-}
-
 build() {
-  cd libjpeg-turbo-$pkgver
+  cd "$srcdir/libjpeg-turbo-$pkgver"
 	for _arch in ${_architectures}; do
-	unset LDFLAGS
-    mkdir "build-${_arch}" && pushd "build-${_arch}"
-    ${_arch}-configure \
-			--with-jpeg8
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-cmake -DWITH_JPEG8=ON ..
     make
     popd
   done
@@ -41,16 +29,11 @@ build() {
 
 package() {
 	for _arch in ${_architectures}; do
-    cd "${srcdir}/${pkgname#mingw-w64-}-$pkgver/build-${_arch}"
-    make \
-			DESTDIR="$pkgdir" \
-			docdir="/usr/${_arch}/share/doc/libjpeg-turbo" \
-			exampledir="/usr/${_arch}/share/doc/libjpeg-turbo" \
-			install
-    cp "${srcdir}"/libjpeg-turbo-${pkgver}/{jinclude,jpegint,transupp}.h ${pkgdir}/usr/${_arch}/include/
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    cd "$srcdir/libjpeg-turbo-$pkgver/build-${_arch}"
+    make DESTDIR="$pkgdir" install
+    ${_arch}-strip "$pkgdir"/usr/${_arch}/bin/*.exe
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
 
