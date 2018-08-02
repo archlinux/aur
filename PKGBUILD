@@ -18,7 +18,6 @@ sha256sums=('b822d2a70eb273076d7dfde847bd52593d6577503207beb98a43b96855f64250')
 
 ros_makedepends=(
   ros-melodic-message-generation
-  ros-melodic-std-msgs
 )
 makedepends=(cmake ros-build-tools ${ros_makedepends[@]})
 
