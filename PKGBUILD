@@ -4,7 +4,7 @@ _pkgname=system76
 _pkgbase=system76-power
 pkgname=system76-power
 pkgver=75
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
@@ -23,7 +23,7 @@ source=(
   )
 sha1sums=(
   'SKIP'
-  '81feb9123571447e5cd66fc0265798ed14137cee'
+  'da260fc98072a5eabb0adea71674337c55044b1d'
   '5a81fb98c76cab0cd6e958d6776fca852c5ee4e2'
 )
 
