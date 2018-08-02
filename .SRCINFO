@@ -1,0 +1,47 @@
+pkgbase = alice-vision
+	pkgdesc = Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms
+	pkgver = 1.0.r669.g610d1004
+	pkgrel = 1
+	url = http://alicevision.github.io/
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	license = MIT
+	makedepends = boost
+	makedepends = eigen
+	makedepends = ceres-solver
+	makedepends = cuda
+	makedepends = git
+	makedepends = cmake
+	makedepends = magma
+	depends = openblas-lapack
+	depends = gflags
+	depends = glfw-x11
+	depends = alembic
+	depends = boost-libs
+	depends = openexr
+	depends = openimageio
+	depends = opengv
+	depends = flann
+	depends = coin-or-coinutils
+	depends = coin-or-clp
+	depends = coin-or-lemon
+	depends = coin-or-osi
+	depends = google-glog
+	source = alice-vision::git+https://github.com/alicevision/AliceVision.git#branch=develop
+	source = osi_clp::git+https://github.com/alicevision/osi_clp.git
+	source = ute_lib::git+https://github.com/alicevision/uncertaintyTE.git
+	source = geogram::git+https://github.com/alicevision/geogram.git
+	source = cmake_magma.patch
+	source = missing_define.patch
+	source = cmake_ute.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 470da1a79a22ffea8d2c0b6a34abc9e9
+	md5sums = ade01150d6237a52bd62b61ae792398d
+	md5sums = 15a8861c625d80b274282df9791b57a9
+
+pkgname = alice-vision
+
