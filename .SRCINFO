@@ -5,6 +5,7 @@ pkgbase = r-ttr
 	url = https://cran.r-project.org/package=TTR
 	arch = x86_64
 	license = GPL2
+	makedepends = gcc-fortran
 	depends = r
 	depends = r-xts>=0.10.0
 	depends = r-zoo
