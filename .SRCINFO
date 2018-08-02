@@ -1,13 +1,16 @@
 pkgbase = tpm2-abrmd
-	pkgdesc = TPM2 Access Broker & Resource Manager
+	pkgdesc = TPM2 Access Broker & Resource Management Daemon
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tpm2-software/tpm2-abrmd
 	arch = x86_64
 	license = BSD
-	depends = glib2
+	checkdepends = cmocka>=1.0.0
+	checkdepends = ibm-sw-tpm2
+	checkdepends = net-tools
 	depends = dbus
-	depends = tpm2-tss
+	depends = glib2
+	depends = tpm2-tss>=2.0.0
 	source = https://github.com/tpm2-software/tpm2-abrmd/releases/download/2.0.1/tpm2-abrmd-2.0.1.tar.gz
 	source = https://github.com/tpm2-software/tpm2-abrmd/releases/download/2.0.1/tpm2-abrmd-2.0.1.tar.gz.asc
 	source = tss.sysusers
