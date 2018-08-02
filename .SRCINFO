@@ -1,0 +1,22 @@
+pkgbase = hsd-git
+	pkgdesc = Handshake decentralized naming system Daemon & Full Node
+	pkgver = 1.0.0.beta.15.562.g4b04d9a2
+	pkgrel = 1
+	url = http://handshake.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = python2
+	makedepends = gcc
+	makedepends = make
+	makedepends = unbound
+	depends = nodejs
+	provides = hsd
+	conflicts = hsd
+	source = hsd-git::git+https://github.com/handshake-org/hsd.git
+	md5sums = SKIP
+
+pkgname = hsd-git
+
