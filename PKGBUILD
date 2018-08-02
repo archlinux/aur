@@ -1,7 +1,7 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw@gmail.com>
 
 pkgname=luks-tpm
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Utility to manage LUKS keyfiles sealed by the TPM"
 arch=('any')
