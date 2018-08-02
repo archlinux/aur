@@ -23,6 +23,7 @@ prepare() {
   "./$_file" --appimage-extract &>/dev/null
 }
 
+
 package() {
   install -d "$pkgdir"/usr/bin/
   install -d "$pkgdir"/opt/ripcord/
