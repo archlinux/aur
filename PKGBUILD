@@ -5,7 +5,7 @@ pkgver=1.1.1
 pkgrel=1
 pkgdesc="Python static analysis tool"
 arch=('any')
-makedepends=('python-setuptools'
+depends=('python-setuptools'
              'python-pydocstyle'
              'python-pep8-naming'
              'python-mccabe'
