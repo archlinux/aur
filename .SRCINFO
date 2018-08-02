@@ -1,0 +1,16 @@
+pkgbase = pd-aubio-git
+	pkgdesc = Various externals for PureData using the aubio library
+	pkgver = r67.30796dc
+	pkgrel = 1
+	url = https://github.com/aubio/pd-aubio/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = bzip2
+	makedepends = python
+	depends = aubio
+	source = git+https://github.com/aubio/pd-aubio.git
+	sha256sums = SKIP
+
+pkgname = pd-aubio-git
+
