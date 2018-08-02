@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-yasm
+	pkgdesc = A rewrite of NASM to allow for multiple syntax supported (NASM, TASM, GAS, etc.) (mingw-w64)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://www.tortall.net/projects/yasm/
+	arch = any
+	license = BSD
+	license = GPL2
+	license = LGPL2.1
+	license = PerlArtistic
+	makedepends = mingw-w64-configure
+	makedepends = python
+	depends = mingw-w64-crt
+	depends = mingw-w64-wine
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
+	sha1sums = b7574e9f0826bedef975d64d3825f75fbaeef55e
+
+pkgname = mingw-w64-yasm
+
