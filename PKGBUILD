@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://alicevision.github.io/"
 license=('MPL2' 'MIT')
 groups=()
-depends=('openblas-lapack' 'gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog')
+depends=('openblas-lapack' 'gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv-git' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog')
 makedepends=('boost' 'eigen' 'ceres-solver' 'cuda' 'git' 'cmake' 'magma')
 source=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragment}"
         "osi_clp::git+https://github.com/alicevision/osi_clp.git"
