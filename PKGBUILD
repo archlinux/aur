@@ -3,8 +3,8 @@
 # Based on saleae-logic package by Kyle Keen <keenerd@gmail.com>
 
 pkgname=saleae-logic-beta
-pkgver=1.2.28
-pkgrel=2
+pkgver=1.2.29
+pkgrel=1
 pkgdesc="High speed USB logic analyzer."
 arch=('x86_64')
 url="http://www.saleae.com/"
@@ -16,7 +16,7 @@ provides=(saleae-logic)
 source=("http://downloads.saleae.com/logic/$pkgver/Logic+$pkgver+(64-bit).zip"
         "133473-SaleaeLogic.svg"
         "saleae-logic.desktop")
-sha256sums=('e51d2136bef285990949eac00a8c8a7ba19b93f711f94e745360a6612b44f82a'
+sha256sums=('c5cb1bec9f038a9307e1640d81dfaf7e7d53789e69d238e5dbb4b84ad3dc681a'
             '6f5f590c6b29a674b4d2263783430630f271ea296a0ef0ac7787ce081a2b1d9b'
             'cc2a4127af87c8248b08a9cb8d82d542f63cfe77d95478bd469c64fd6722ed7a')
 
