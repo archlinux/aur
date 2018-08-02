@@ -1,0 +1,24 @@
+pkgbase = encrypt-and-sync
+	pkgdesc = A file synchronization utility with client-side encryption support
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://encryptandsync.com
+	arch = any
+	license = GPL3
+	makedepends = python
+	makedepends = python-pip
+	depends = python>=3.5.0
+	depends = python-setuptools
+	depends = python-portalocker
+	depends = python-pycryptodome
+	depends = python-s3m>=1.1.0
+	optdepends = python-pysftp: SFTP support
+	optdepends = python-paramiko: SFTP support
+	optdepends = python-dropbox: Dropbox support
+	optdepends = python-yadisk: Yandex.Disk support
+	optdepends = python-requests: Dropbox, Yandex.Disk support
+	source = https://files.pythonhosted.org/packages/source/e/eas/eas-0.7.2.tar.gz
+	sha256sums = c034a571f8e12dd571b53f1a65deddd38e604d855646178b1883873c2f75bc5b
+
+pkgname = encrypt-and-sync
+
