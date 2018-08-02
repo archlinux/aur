@@ -1,0 +1,17 @@
+post_install() {
+  cat << EOF
+For fresh installs, follow these steps:
+
+Create the database and sample file directory:
+$ sudo install -d -g moonfire-nvr -o moonfire-nvr /var/lib/moonfire-nvr/{,db,sample}
+$ sudo -u moonfire-nvr moonfire-nvr init
+
+Configure the database:
+$ sudo -u moonfire-nvr moonfire-nvr config 2>debug-log
+
+Start and enable the daemon:
+$ sudo systemctl enable --now moonfire-nvr
+
+More details available at <https://github.com/scottlamb/moonfire-nvr/blob/master/guide/install.md>.
+EOF
+}

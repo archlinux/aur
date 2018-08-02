@@ -1,0 +1,22 @@
+[Unit]
+Description=Moonfire NVR
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/moonfire-nvr run \
+  --db-dir=/var/lib/moonfire-nvr/db \
+  --http-addr=0.0.0.0:8080
+Environment=TZ=:/etc/localtime
+Environment=MOONFIRE_FORMAT=google-systemd
+Environment=MOONFIRE_LOG=info
+Environment=RUST_BACKTRACE=1
+Type=simple
+User=moonfire-nvr
+Nice=-20
+Restart=on-abnormal
+CPUAccounting=true
+MemoryAccounting=true
+BlockIOAccounting=true
+
+[Install]
+WantedBy=multi-user.target
