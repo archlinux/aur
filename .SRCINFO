@@ -1,11 +1,15 @@
 pkgbase = tpm2-tss
 	pkgdesc = TPM (Trusted Platform Module) 2.0 Software Stack (TSS)
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tpm2-software/tpm2-tss
 	arch = x86_64
 	license = BSD
-	makedepends = cmocka>=1.0.0
+	checkdepends = cmocka>=1.0.0
+	checkdepends = ibm-sw-tpm2
+	checkdepends = net-tools
+	checkdepends = procps-ng
+	checkdepends = uthash
 	depends = libgcrypt
 	source = https://github.com/tpm2-software/tpm2-tss/releases/download/2.0.0/tpm2-tss-2.0.0.tar.gz
 	source = https://github.com/tpm2-software/tpm2-tss/releases/download/2.0.0/tpm2-tss-2.0.0.tar.gz.asc
