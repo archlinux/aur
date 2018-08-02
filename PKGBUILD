@@ -4,7 +4,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=4.20
+pkgver=5.00
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
@@ -30,10 +30,12 @@ _mplabx_installer="MPLABX-v${pkgver}-linux-installer"
 _mplabcomm_dir="/opt/microchip/mplabcomm"
 
 source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.tar"
-        "LICENSE")
+        "LICENSE"
+        "mplabx-override.conf")
 
-md5sums=('0be93bc5d7db3fd28c98923fa9b0437c'
-         'a34a85b2600a26f1c558bcd14c2444bd')
+md5sums=('95ff99a1c94ff6dfd7fdf50b6a113216'
+         'a34a85b2600a26f1c558bcd14c2444bd'
+         'a476a71af625380a2fd52f82fb5d5492')
 
 backup=("etc/mplab_ide.conf")
 
@@ -125,6 +127,8 @@ EOF
   # Tweak .desktop files for better desktop integration
   echo "StartupWMClass=MPLAB X IDE v${pkgver}" >> "${pkgdir}/usr/share/applications/mplab.desktop"
   echo "StartupWMClass=com-microchip-ipe-ui-ProdProgrammerApp" >> "${pkgdir}/usr/share/applications/mplab_ipe.desktop"
+
+  install -Dm 644 -t "${pkgdir}/usr/lib/systemd/system/systemd-udevd.service.d/" "${srcdir}/mplabx-override.conf"
 
   # Install license files
   install -Dm 644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
