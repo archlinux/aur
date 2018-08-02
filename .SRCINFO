@@ -1,0 +1,36 @@
+pkgbase = obs-studio-vaapi
+	pkgdesc = Free, open source software for live streaming and recording
+	pkgver = 21.1.2
+	pkgrel = 1
+	url = https://obsproject.com
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = libfdk-aac
+	makedepends = libxcomposite
+	makedepends = x264
+	makedepends = vlc
+	makedepends = swig
+	makedepends = python
+	makedepends = luajit
+	depends = ffmpeg
+	depends = jansson
+	depends = libxinerama
+	depends = libxkbcommon-x11
+	depends = qt5-x11extras
+	depends = curl
+	depends = jack
+	depends = gtk-update-icon-cache
+	depends = libva
+	optdepends = libfdk-aac: FDK AAC codec support
+	optdepends = libxcomposite: XComposite capture support
+	optdepends = luajit: scripting support
+	optdepends = python: scripting support
+	optdepends = vlc: VLC Media Source support
+	source = obs-studio-vaapi-21.1.2.tar.gz::https://github.com/jp9000/obs-studio/archive/21.1.2.tar.gz
+	source = https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/1256.patch
+	sha256sums = d6eb32d4ff65879945fc19a639b3ae14a55e6034a45b036e00e5f3dbce0e3d4d
+	sha256sums = 2c6f3e8624a05a6f5de1adc2a534ee85d7af6a6d489938702ca141fe1619b0f5
+
+pkgname = obs-studio-vaapi
+
