@@ -2,7 +2,7 @@
 
 pkgname=todoman
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
 url="https://github.com/pimutils/todoman"

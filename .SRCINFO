@@ -3,7 +3,7 @@
 pkgbase = todoman
 	pkgdesc = A simple CalDav-based todo manager.
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pimutils/todoman
 	arch = any
 	license = ISC
