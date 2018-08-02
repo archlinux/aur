@@ -1,21 +1,18 @@
 #Maintainer: erroneous AT gmail
 pkgname=xlnt
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Cross-platform user-friendly xlsx library for C++14"
 url="https://github.com/tfussell/xlnt"
 license=(MIT)
 makedepends=('cmake>=3.2.0')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz" fix_miniz.patch)
-sha256sums=('b2be158dbf3899b38e8fa28726b366cf8817599425fb1945d6a01d8a88d457fe'
-            '2f44baef580af7ef17a0522b2a0f694477510f8848f375ad5497d7a5ede126f2')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('4430e3821b8fd522e8b2bd02e8cd0367a5c74c02655ef8912e423dfac6d0225b')
+
 arch=('i686' 'x86_64')
 depends=()
 
 prepare(){
-	cd ${pkgname}-${pkgver}
-	patch -p1 < ../fix_miniz.patch
-	cd ..
 	rm -Rf build
 	mkdir build
 	cd build
