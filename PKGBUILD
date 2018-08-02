@@ -2,12 +2,12 @@
 # Contributor: hexchain <i at hexchain.org>
 pkgname=hmcl
 pkgver=3.1.64
-pkgrel=1
+pkgrel=2
 pkgdesc="Hello Minecraft! Launcher, a powerful Minecraft launcher."
 arch=(any)
 license=('GPL3')
 url="https://github.com/mclauncher/HMCL"
-makedepends=('unzip')
+makedepends=('unzip' 'imagemagick')
 depends=('java-openjfx>=8' 'hicolor-icon-theme')
 noextract=("HMCL-$pkgver.jar")
 source=('hmcl-launch-script'
