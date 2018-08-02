@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=fcat-git
-pkgver=r15.8a6af01
+pkgver=r20.773fc64
 pkgrel=1
 pkgdesc="cat implementation in Rust using Linux' splice syscall"
 arch=('x86_64')
@@ -22,6 +22,11 @@ pkgver() {
 build() {
   cd fcat
   cargo build --release
+}
+
+check() {
+  cd fcat
+  cargo test --release
 }
 
 package() {
