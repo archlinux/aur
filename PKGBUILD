@@ -1,8 +1,9 @@
+# Maintainer: Elrondo46 <elrond94@hotmail.com>
 # Maintainer: Serede Sixty Six <serede.dev@gmail.com>
 # Maintainer: Mariusz Libera <mariusz.libera@gmail.com>
 # Contributor: Jakob Nixdorf <flocke [swirly thing] shadowice [dot] org>
 pkgname=conspy
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 pkgdesc="Remote control of Linux virtual consoles"
 url="http://conspy.sourceforge.net/"
@@ -11,7 +12,7 @@ license=('AGPL3')
 depends=('ncurses')
 changelog=ChangeLog
 source=("http://downloads.sourceforge.net/project/conspy/conspy-${pkgver}-${pkgrel}/conspy-${pkgver}.tar.gz")
-md5sums=('8caed1f64a618917d5143a4a5ebb48d8')
+sha256sums=('4e2f05c9e19a6673a323127711ff007f7f9244f3a5c793c2b079eb7fbb113319')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
