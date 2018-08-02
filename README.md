@@ -45,12 +45,14 @@ Usage
 
     luks-tpm [OPTION]... DEVICE ACTION
 
-###Actions
+### Actions
+
   * `temp`: Set a temporary LUKS passphrase
   * `reset`: Regenerate the LUKS TPM key and remove the temporary passphrase
   * `replace`: Replace (overwrite) a LUKS TPM key
 
-###Options
+### Options
+
     -h         Print help
     -m PATH    Mount point for the tmpfs file system used to store TPM keyfiles
                Default: /root/keyfs
