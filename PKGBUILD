@@ -2,7 +2,7 @@
 
 pkgname=('kovri')
 # AUR's stupid pkgver convention prevents hypens
-pkgver=0.1.0_alpha_rc3
+pkgver=0.1.0_alpha
 pkgrel=1
 pkgdesc="Official package for Kovri: a free, decentralized, anonymity technology developed by Monero"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
