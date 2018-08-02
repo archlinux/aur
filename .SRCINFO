@@ -8,6 +8,7 @@ pkgbase = r-quantmod
 	depends = r
 	depends = r-xts>=0.9.0
 	depends = r-zoo
+	depends = r-ttr>=0.2
 	depends = r-curl
 	optdepends = r-dbi
 	optdepends = r-rmysql
