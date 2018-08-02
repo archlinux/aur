@@ -2,16 +2,16 @@
 
 _pkgbase=it87
 pkgname=it87-dkms-git
-pkgver=133.7f59901
+pkgver=148.40bec4b
 pkgrel=1
 pkgdesc="Linux Driver for ITE LPC chips"
 arch=('x86_64' 'i686')
-url="https://github.com/groeck/it87"
+url="https://github.com/bbqlinux/it87"
 license=('GPL')
 depends=('dkms')
 provides=('it87')
 
-source=("$_pkgbase::git+https://github.com/groeck/it87.git"
+source=("$_pkgbase::git+https://github.com/bbqlinux/it87.git"
         "dkms.conf"
         "it87.conf")
 
