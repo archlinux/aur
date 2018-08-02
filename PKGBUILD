@@ -2,7 +2,7 @@
 
 pkgname=haveged-git
 pkgver=1.9.2.r0.g2b60a12
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple entropy daemon"
 arch=('i686' 'x86_64')
 url="http://www.issihosts.com/haveged/"
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd "haveged"
 
-  #autoconf -f
+  autoreconf -fi
   ./configure \
     --prefix="/usr" --bindir="/usr/bin" --sbindir="/usr/bin"
   make
