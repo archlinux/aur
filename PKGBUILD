@@ -7,7 +7,7 @@ pkgver=4.8.7
 pkgrel=2
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 arch=('i686' 'x86_64')
-url="http://qt-project.org/"
+url="https://www.qt.io/"
 license=('GPL3' 'LGPL')
 depends=(
   'mingw-w64-crt'
@@ -23,10 +23,8 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-mariadb-connector-c' 'mingw-w64-postgres
 optdepends=('mingw-w64-postgresql: PostgreSQL driver'
             'mingw-w64-mariadb-connector-c: MariaDB driver')
 options=(!strip !buildflags !libtool staticlibs)
-replaces=("${pkgname/qt4/qt}<=4.8.5")
-conflicts=("${pkgname/qt4/qt}")
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/4.8/${pkgver}/${_pkgfqn}.tar.gz"
+source=("http://download.qt.io/archive/qt/4.8/${pkgver}/${_pkgfqn}.tar.gz"
         'qmake.conf.win32'
         'qmake.conf.win64'
         'qplatformdefs.h'
