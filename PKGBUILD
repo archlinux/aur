@@ -1,10 +1,7 @@
 # Maintainer: Please see AUR page for current maintainer and contact information.
 
-## Note: Sometime the build will break at the first attempt, if so, try again with
-## `makepkg` -e to finish it.
-
 pkgname=brave-git
-pkgver=0.22.0.^3.0.18546.
+pkgver=0.24.1.r236.g7e6875794
 pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
@@ -17,24 +14,22 @@ optdepends=('cups: To print stuff'
             'pepper-flash: Adobe Flash support')
 provides=('brave' 'brave-browser')
 conflicts=('brave')
-source=("$pkgname::git://github.com/brave/browser-laptop.git")
-sha384sums=('SKIP')
+source=('browser-laptop::git://github.com/brave/browser-laptop.git'
+        'brave-launcher'
+        'brave.desktop')
+sha384sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-
-  local relver=$( grep version package.json | cut -d ":" -f 2 | sed -e 's/,//' -e 's/"//g' )
-
-  cd "$startdir/$pkgname"
-
-  local numrev=$( git rev-list --count master )
-
-  printf %s.%s $relver $numrev
+  cd "$srcdir/browser-laptop"
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/browser-laptop"
 
+  npm install home-path buffer-to-vinyl stream-combiner2
   npm install
   CHANNEL=dev npm run build-package
 
@@ -44,149 +39,20 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/browser-laptop"
 
   install -d -m0755 "$pkgdir"/usr/lib
-  cp -a --reflink=auto brave-linux-x64 "$pkgdir/usr/lib/$pkgname"
+  cp -a --reflink=auto brave-linux-x64 "$pkgdir/usr/lib/brave"
 
-  _launcher="$pkgdir/usr/bin/$pkgname"
-  install -Dm0755 /dev/stdin "$_launcher"<<END
-#!/usr/bin/sh
+  install -Dm0755 "$srcdir/brave-launcher" "$pkgdir/usr/bin/brave"
 
-FLAG="--no-sandbox"
-
-if [[ -r /proc/sys/kernel/unprivileged_userns_clone && \$(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n \$(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ]]; then
-	FLAG=""
-fi
-
-exec /usr/lib/$pkgname/brave "\$FLAG" -- "\$@"
-END
-
-  _deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm0755 /dev/stdin "$_deskfile"<<END
-[Desktop Entry]
-Version=1.0
-Name=Brave
-# Only KDE 4 seems to use GenericName, so we reuse the KDE strings.
-# From Ubuntu's language-pack-kde-XX-base packages, version 9.04-20090413.
-GenericName=Web Browser
-GenericName[ar]=متصفح الشبكة
-GenericName[bg]=Уеб браузър
-GenericName[ca]=Navegador web
-GenericName[cs]=WWW prohlížeč
-GenericName[da]=Browser
-GenericName[de]=Web-Browser
-GenericName[el]=Περιηγητής ιστού
-GenericName[en_GB]=Web Browser
-GenericName[es]=Navegador web
-GenericName[et]=Veebibrauser
-GenericName[fi]=WWW-selain
-GenericName[fr]=Navigateur Web
-GenericName[gu]=વેબ બ્રાઉઝર
-GenericName[he]=דפדפן אינטרנט
-GenericName[hi]=वेब ब्राउज़र
-GenericName[hu]=Webböngésző
-GenericName[it]=Browser Web
-GenericName[ja]=ウェブブラウザ
-GenericName[kn]=ಜಾಲ ವೀಕ್ಷಕ
-GenericName[ko]=웹 브라우저
-GenericName[lt]=Žiniatinklio naršyklė
-GenericName[lv]=Tīmekļa pārlūks
-GenericName[ml]=വെബ് ബ്രൌസര്‍
-GenericName[mr]=वेब ब्राऊजर
-GenericName[nb]=Nettleser
-GenericName[nl]=Webbrowser
-GenericName[pl]=Przeglądarka WWW
-GenericName[pt]=Navegador Web
-GenericName[pt_BR]=Navegador da Internet
-GenericName[ro]=Navigator de Internet
-GenericName[ru]=Веб-браузер
-GenericName[sl]=Spletni brskalnik
-GenericName[sv]=Webbläsare
-GenericName[ta]=இணைய உலாவி
-GenericName[th]=เว็บเบราว์เซอร์
-GenericName[tr]=Web Tarayıcı
-GenericName[uk]=Навігатор Тенет
-GenericName[zh_CN]=网页浏览器
-GenericName[zh_HK]=網頁瀏覽器
-GenericName[zh_TW]=網頁瀏覽器
-# Not translated in KDE, from Epiphany 2.26.1-0ubuntu1.
-GenericName[bn]=ওয়েব ব্রাউজার
-GenericName[fil]=Web Browser
-GenericName[hr]=Web preglednik
-GenericName[id]=Browser Web
-GenericName[or]=ଓ୍ବେବ ବ୍ରାଉଜର
-GenericName[sk]=WWW prehliadač
-GenericName[sr]=Интернет прегледник
-GenericName[te]=మహాతల అన్వేషి
-GenericName[vi]=Bộ duyệt Web
-# Gnome and KDE 3 uses Comment.
-Comment=Access the Internet
-Comment[ar]=الدخول إلى الإنترنت
-Comment[bg]=Достъп до интернет
-Comment[bn]=ইন্টারনেটটি অ্যাক্সেস করুন
-Comment[ca]=Accedeix a Internet
-Comment[cs]=Přístup k internetu
-Comment[da]=Få adgang til internettet
-Comment[de]=Internetzugriff
-Comment[el]=Πρόσβαση στο Διαδίκτυο
-Comment[en_GB]=Access the Internet
-Comment[es]=Accede a Internet.
-Comment[et]=Pääs Internetti
-Comment[fi]=Käytä internetiä
-Comment[fil]=I-access ang Internet
-Comment[fr]=Accéder à Internet
-Comment[gu]=ઇંટરનેટ ઍક્સેસ કરો
-Comment[he]=גישה אל האינטרנט
-Comment[hi]=इंटरनेट तक पहुंच स्थापित करें
-Comment[hr]=Pristup Internetu
-Comment[hu]=Internetelérés
-Comment[id]=Akses Internet
-Comment[it]=Accesso a Internet
-Comment[ja]=インターネットにアクセス
-Comment[kn]=ಇಂಟರ್ನೆಟ್ ಅನ್ನು ಪ್ರವೇಶಿಸಿ
-Comment[ko]=인터넷 연결
-Comment[lt]=Interneto prieiga
-Comment[lv]=Piekļūt internetam
-Comment[ml]=ഇന്റര്‍‌നെറ്റ് ആക്‌സസ് ചെയ്യുക
-Comment[mr]=इंटरनेटमध्ये प्रवेश करा
-Comment[nb]=Gå til Internett
-Comment[nl]=Verbinding maken met internet
-Comment[or]=ଇଣ୍ଟର୍ନେଟ୍ ପ୍ରବେଶ କରନ୍ତୁ
-Comment[pl]=Skorzystaj z internetu
-Comment[pt]=Aceder à Internet
-Comment[pt_BR]=Acessar a internet
-Comment[ro]=Accesaţi Internetul
-Comment[ru]=Доступ в Интернет
-Comment[sk]=Prístup do siete Internet
-Comment[sl]=Dostop do interneta
-Comment[sr]=Приступите Интернету
-Comment[sv]=Gå ut på Internet
-Comment[ta]=இணையத்தை அணுகுதல்
-Comment[te]=ఇంటర్నెట్‌ను ఆక్సెస్ చెయ్యండి
-Comment[th]=เข้าถึงอินเทอร์เน็ต
-Comment[tr]=İnternet'e erişin
-Comment[uk]=Доступ до Інтернету
-Comment[vi]=Truy cập Internet
-Comment[zh_CN]=访问互联网
-Comment[zh_HK]=連線到網際網路
-Comment[zh_TW]=連線到網際網路
-StartupNotify=true
-StartupWMClass=brave
-TryExec=brave-git
-Exec=brave-git %U
-Terminal=false
-Icon=brave
-Type=Application
-Categories=Network;WebBrowser;
-MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
-END
+  install -Dm0755 "$srcdir/brave.desktop" "$pkgdir/usr/share/applications/brave.desktop"
 
   install -Dm0644 res/nightly/app.png "$pkgdir"/usr/share/pixmaps/brave.png
 
-  install -Dm0755 LICENSE.txt "$pkgdir"/usr/share/licenses/"$pkgname"/MPL2
+  install -Dm0755 LICENSE.txt "$pkgdir"/usr/share/licenses/brave/MPL2
 
-  cp -a --reflink=auto "$pkgdir"/usr/lib/"$pkgname"/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/"$pkgname"/
+  cp -a --reflink=auto "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/brave/
   ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
 }
 
