@@ -4,10 +4,10 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=mingw-w64-openssl-1.0
-_ver=1.0.2l
+_ver=1.0.2o
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=2
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('any')
 depends=('mingw-w64-zlib')
@@ -21,7 +21,7 @@ source=("http://www.openssl.org/source/openssl-$_ver.tar.gz"{,.asc}
         'openssl-1.0.1-x32.patch'
         'openssl-1.0.2a-parallel-build.patch'
         'openssl-1.0-versioned-symbols.patch')
-sha256sums=('ce07195b659e75f4e1db43552860070061f156a98bb37b672b101ba6e3ddf30c'
+sha256sums=('ec3f5c9714ba0fd45cb4e087301eb1336c317e0d20b575a125050470e8089e4d'
             'SKIP'
             'd38dfc58fe2c3723f2dfa10408394a6e796bd1e7273804cb19c41baf3dcee534'
             '164aa4928b022cc716fac545b4fd69899cb274682aa487100e595abb652adbae'
@@ -67,7 +67,7 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/build-${_arch}"
-    make -j1 INSTALL_PREFIX="${pkgdir}" install
+    make -j1 INSTALL_PREFIX="${pkgdir}" install_sw
 
     # Move some files around
     install -m755 -d "$pkgdir/usr/${_arch}/include/openssl-1.0"
