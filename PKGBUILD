@@ -1,14 +1,14 @@
 # Maintainer: Šarūnas Gliebus <ssharunas at yahoo.co.uk>
 pkgname=boram
-pkgver=0.3.7
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Cross-platform WebM converter"
 arch=('x86_64')
-url="https://github.com/Kagami/boram#readme"
+url="https://github.com/Kagami/boram"
 license=('CC0-1.0')
 depends=('mpv' 'ffmpeg')
 source=(https://github.com/Kagami/boram/releases/download/v$pkgver/$pkgname-v$pkgver-linux-x64.7z)
-md5sums=('9d7791778bc9a3477b216ac3a9b17dbc')
+md5sums=('b5f9bc1f85209ce16eb75522edb58958')
 
 package() {
   mkdir -p "$pkgdir/opt/"
