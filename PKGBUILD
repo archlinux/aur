@@ -55,17 +55,17 @@
 _bldtype=Release
 #_bldtype=Debug
 
-_mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
+_mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 _utdicver=20171008
 _zipcoderel=201806
 
-_fcitxver=2.18.2612.102.1
+_fcitxver=2.23.2815.102.1
 
 _pkgbase=mozc-ut2
 pkgname=fcitx-mozc-ut2
 pkgdesc="Mozc the Japanese Input Method with Mozc UT2 Dictionary (additional dictionary) and uim-mozc (optional)"
-pkgver=2.20.2673.102.20171008
-pkgrel=2
+pkgver=2.23.2815.102.20171008
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
@@ -93,7 +93,7 @@ sha1sums=('SKIP'
           'd884d2d9ddbd6092174f441326805bd09a395b71'
           '2c577559d0aaef946d221a0aec5ee413186d44e9'
           '6a6f5b0dce10fe6327d32256f53c28731cb83d2f'
-          'afeef31bf3d640f9cc630c2187dbfd4507367d78'
+          '63a2b10e7d209c6216e2d912b2629efc44c637ea'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
           '2bad0705a0a09d8d5a79c874b59c485052da2b38')
 
@@ -132,6 +132,7 @@ prepare() {
   # Apply fcitx patch
   rm unix/fcitx -rf
   patch -Np2 -i "$srcdir/fcitx-mozc-${_fcitxver}.patch"
+  rm -rf unix/fcitx5
 
   # Apply fix failing build with gcc8
   patch -Np2 -i "$srcdir/fix_failing_build_with_gcc8.patch"
@@ -153,7 +154,7 @@ build() {
 
   cd "${srcdir}/${_pkgbase}-${pkgver}/src"
 
-  _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/fcitx/fcitx.gyp:fcitx-mozc unix/fcitx/fcitx.gyp:gen_fcitx_mozc_i18n renderer/renderer.gyp:mozc_renderer"
+  _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/fcitx/fcitx.gyp:fcitx-mozc"
 
   GYP_DEFINES="document_dir=/usr/share/licenses/${_pkgbase}" \
     python2 build_mozc.py gyp
