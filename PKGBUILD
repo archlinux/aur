@@ -3,14 +3,14 @@
 
 pkgname=parsec-bin
 pkgver=147_6
-pkgrel=7
+pkgrel=8
 pkgdesc="Remotely connect to a gaming pc for a low latency remote computing experience"
 url=http://parsec.tv
 arch=('x86_64')
 epoch=1
 provides=('parsec')
 conflicts=('parsec')
-depends=('gtk2' 'libsm' 'gcc-libs' 'libglvnd' 'mesa')
+depends=('gcc-libs' 'libglvnd' 'libxext' 'libxcb')
 optdepends=('libva: For hardware accelerated decoding')
 source=("https://s3.amazonaws.com/parsec-build/package/parsec-linux.deb")
 md5sums=('9f9e2eda656f49ce354e5c9407b8467a')
