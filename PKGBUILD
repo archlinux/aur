@@ -1,8 +1,8 @@
 # Maintainer: skydrome <skydrome at@at proton mail dot com>
 
 pkgname=apache-ant-10
-pkgver=1.10.3
-pkgrel=2
+pkgver=1.10.5
+pkgrel=1
 arch=('any')
 url='https://ant.apache.org/'
 pkgdesc='A java-based build tool'
@@ -12,15 +12,17 @@ conflicts=('apache-ant' 'apache-ant-doc')
 depends=('java-environment>=8')
 optdepends=('junit: to use the junit tasks')
 validpgpkeys=('CE8075A251547BEE249BC151A2115AE15F6B8B72') # Stefan Bodewig
-source=("https://www.apache.org/dist/ant/source/apache-ant-${pkgver}-src.tar.bz2"{,.asc}
+
+_url="https://archive.apache.org/dist/ant/source"
+source=("${_url}/apache-ant-${pkgver}-src.tar.bz2"{,.asc}
         'apache-ant.sh'
         'bin_ant'
         'ant.conf')
-sha256sums=('2a01ad07755cf33dd87d0dd3a09bc40a59cd1c0fdb7298a7c398a81d0e3d53f8'
-            'SKIP'
-            '182b9212610790966d3a018d3cbab2e5327dd9fd11dc15dd1f377853216f5718'
-            '29b443ae3af7e246b4ff0b5ec9f023ae95992db1a010a362e70ca7a65a6df461'
-            'b86ce60f61cbd85a9faa61d698b0fc4607f1ff375cd15673aee57f053012eacb')
+sha1sums=($(curl -s ${_url}/apache-ant-${pkgver}-src.tar.bz2.sha1)
+          'SKIP'
+          '5ebe0be58af2876f071f5b9431828adc5a4195a3'
+          '74fa8fe2da22116d5a7d070b82f778946aed9f08'
+          'e3136e2e82883e9ef2d9ec63d7d89afd1de32edc')
 
 prepare() {
     cd "${srcdir}/apache-ant-${pkgver}"
@@ -33,7 +35,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/apache-ant-${pkgver}"
-    export ANT_HOME="${srcdir}/apache-ant-1.10.3/bootstrap"
+    export ANT_HOME="${srcdir}/apache-ant-${pkgver}/bootstrap"
 
     bootstrap/bin/ant -lib lib/optional dist
 }
