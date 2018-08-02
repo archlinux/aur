@@ -5,11 +5,12 @@
 pkgname=obs-studio-vaapi
 _srcname=obs-studio
 pkgver=21.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
 license=('GPL2')
+conflicts=('obs-studio' 'obs-studio-git')
 depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11'
          'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache'
          'libva')
