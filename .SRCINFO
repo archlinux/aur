@@ -1,0 +1,18 @@
+pkgbase = ros-melodic-can-msgs
+	pkgdesc = CAN related message types.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://wiki.ros.org/can_msgs
+	arch = any
+	license = LGPL3
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-std-msgs
+	source = ros_canopen-0.8.0.tar.gz::https://github.com/ros-industrial/ros_canopen/archive/0.8.0.tar.gz
+	sha256sums = b822d2a70eb273076d7dfde847bd52593d6577503207beb98a43b96855f64250
+
+pkgname = ros-melodic-can-msgs
+
