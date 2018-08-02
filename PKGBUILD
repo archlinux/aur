@@ -1,6 +1,7 @@
+# Maintainer: Hui Yiqun(huiyiqun@gmail.com)
 pkgname=xmr-stak-git
-pkgver=r618.2ae7260
-pkgrel=1
+pkgver=r944.c5f0505
+pkgrel=2
 pkgdesc="Unified All-in-one Monero miner"
 arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak"
@@ -24,7 +25,7 @@ prepare() {
 
 build() {
     cd "$srcdir/xmr-stak"
-    CC=/bin/gcc-6 CXX=/bin/g++-6 cmake .
+    CC=/bin/gcc-7 CXX=/bin/g++-7 cmake .
     make
 }
 
