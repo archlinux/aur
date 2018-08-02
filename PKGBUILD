@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-svn
-pkgver=35465
+pkgver=35477
 pkgrel=1
 pkgdesc='Fully-featured word processor from subversion sources'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('asio' 'boost' 'gobject-introspection' 'python2' 'libwpd' 'subversi
 conflicts=('abiword' 'abiword-plugins')
 replaces=('abiword' 'abiword-plugins')
 options=('!makeflags')
-source=("abiword::svn+http://svn.abisource.com/abiword/trunk"
+source=("abiword::svn+http://svn.abisource.com/abiword/trunk#revision=35477"
 	'enchant-2.1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/enchant-2.1.patch?h=packages/abiword'
 	'aiksaurus-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/aiksaurus-plugin.m4?h=packages/abiword' 
 	'command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword')
