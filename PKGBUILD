@@ -7,9 +7,16 @@ arch=('any')
 url="http://willem.engen.nl/projects/disper/"
 license=('GPL')
 depends=('python2')
-source=(http://ppa.launchpad.net/disper-dev/ppa/ubuntu/pool/main/d/disper/disper_${pkgver}.tar.gz)
-md5sums=('4474f6c98078cfab24f49db744eb1e80')
-sha256sums=('7cefe3b9837f304bca6a6622081cf91ecfb23307d5934216d32a12eb2ecb0bd1')
+source=(http://ppa.launchpad.net/disper-dev/ppa/ubuntu/pool/main/d/disper/disper_${pkgver}.tar.gz disper_0.3.1-fix_init.patch )
+md5sums=('4474f6c98078cfab24f49db744eb1e80'
+         'b14b8e21842eda8d13e35a13cf9b84be')
+sha256sums=('7cefe3b9837f304bca6a6622081cf91ecfb23307d5934216d32a12eb2ecb0bd1'
+            'fa9b9098c8252809f02a4b59a49c9079355a60a7c96e37eecfdaf4a619b206e8')
+
+prepare() {
+  cd "$srcdir/disper"
+   patch -p1 <../disper_0.3.1-fix_init.patch
+}
 
 build() {
   cd "$srcdir/disper"
