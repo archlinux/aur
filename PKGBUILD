@@ -2,7 +2,7 @@
 
 pkgname=infonotary-client-software
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="InfoNotary client software - InfoNotary e-Doc Signer and InfoNotary Smart Card Manager."
 arch=('i686' 'x86_64')
 url="http://www.infonotary.com/"
@@ -12,7 +12,7 @@ replaces=(infonotary-scardmanager)
 conflicts=(infonotary-scardmanager)
 optdepends=(
 	'ccid: generic USB Chip/Smart Card Interface Devices driver'
-	'omnikey_ifdokccid-git: driver for OmniKey smart card readers'
+	'omnikey_ifdokccid: driver for OmniKey smart card readers'
 	'bit4id-ipki: driver for T&S DS/2048 (L) smart cards'
 	'pcsclite: smartcard middleware library (pcscd)'
 	'pcsc-tools: smartcard tools (pcsc_scan)'
