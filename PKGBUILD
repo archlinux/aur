@@ -1,40 +1,42 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
-# Contributor: Maxime Gauduin <alucryd@gmail.com>
+# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=temporalsoften2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.1.1.0.g7c72c4d
-pkgrel=2
+pkgver=v1.0.g97e4817
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url='http://forum.doom9.org/showthread.php?t=166769'
-license=('LGPL2.1')
+arch=('x86_64')
+url="https://github.com/dubhater/vapoursynth-${_plug}"
+license=('GPL')
 depends=('vapoursynth')
-makedepends=('git')
+makedepends=('git'
+             'meson'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/alucryd/vapoursynth-${_plug}.git")
-md5sums=('SKIP')
-_gitname="${_plug}"
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
-
+source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
+  cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
 
+prepare() {
+  mkdir -p build
+
+  cd build
+  arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
+
+}
+
 build() {
-  cd "${_gitname}"
-  pwd
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth"
-  make
+  ninja -C build
 }
 
 package(){
-  cd "${_gitname}"
-  make install
-  install -Dm644 temporalsoften2.py "${pkgdir}${_sites_packages}/temporalsoften2.py"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
+  DESTDIR="${pkgdir}" ninja -C build install
+  install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
 
