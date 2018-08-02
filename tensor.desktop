@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Tensor
+GenericName=Matrix Client
+Comment=Cross platform QML Matrix client
+Exec=tensor
+Terminal=false
+Type=Application
+Icon=tensor
+Categories=Network;Chat;
+StartupNotify=true

@@ -1,0 +1,20 @@
+pkgbase = tensor-quiark-git
+	pkgdesc = Quiark’s fork of cross-platform Qt5/QML-based Matrix client
+	pkgver = r369.4b8a041
+	pkgrel = 1
+	url = https://github.com/Quiark/tensor
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = qt5-quickcontrols
+	provides = tensor
+	conflicts = tensor-git
+	source = git+https://github.com/Quiark/tensor.git
+	source = git+https://github.com/Quiark/libqmatrixclient.git
+	source = tensor.desktop
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = 4f03c6d93dce615c02360f3b2ab42e6aee883147
+
+pkgname = tensor-quiark-git
+
