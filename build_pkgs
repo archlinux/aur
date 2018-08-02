@@ -23,10 +23,9 @@ if [ -e build_pkgs.local ] ; then
     source build_pkgs.local
 fi
 
-# build generic first
 git checkout .
 
-for cpu in "${@:-${DEFAULT_CPU_ARCHES[*]}}" ; do
+for cpu in ${*:-${DEFAULT_CPU_ARCHES[*]}} ; do
     git checkout PKGBUILD
     case $cpu in
         generic)
