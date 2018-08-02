@@ -1,13 +1,14 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-git
-pkgver=r9486.28f1209ce
+pkgver=r10854.8e7d6063f
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
 license=('GPL')
-depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl' 'swig' 'wxpython' 'oce' 'ngspice>=27')
+depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python'
+         'glm' 'curl' 'swig' 'wxpython' 'opencascade' 'ngspice>=27')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
@@ -28,7 +29,8 @@ build() {
   cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKICAD_USE_OCE=ON \
+    -DKICAD_USE_OCE=OFF \
+    -DKICAD_USE_OCC=ON \
     -DOCE_DIR=`dirname $(pacman -Ql oce | grep OCEConfig.cmake | awk '{ print $2 }' )` \
     -DBUILD_GITHUB_PLUGIN=ON \
     -DKICAD_SCRIPTING=ON \
