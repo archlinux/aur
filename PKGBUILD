@@ -1,7 +1,7 @@
 # Maintainer: Det <nimetonmaili gmail a-dot com>
 
 pkgname=biglybt-extreme-mod
-pkgver=1.5.0.0b
+pkgver=1.6.0.0b
 _ver=${pkgver/b*}
 pkgrel=1
 pkgdesc="A modded version of the BiglyBT client with multiple spoofing capabilities"
@@ -12,10 +12,10 @@ depends=('desktop-file-utils' 'java-runtime>=9')
 options=('!strip')
 install=$pkgname.install
 source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$_ver/GitHub_BiglyBT_Installer.sh"
-        'http://www.sb-innovation.de/attachments/f41/18697d1523444157-biglybt-extreme-mod-sb-innovation-1-5-0-0-beta-biglybt_1.5.0.0_20180411.zip')
+        'http://www.sb-innovation.de/attachments/f41/18985d1533142616-biglybt-extreme-mod-sb-innovation-1-6-0-0-beta-biglybt_1.6.0.0_20180802.zip')
 noextract=($(basename ${source[1]}))
-md5sums=('ca39e3616f0a120c3d15622395699cbf'
-         'bb8dad378cfce2da81c1300b413a98fa')
+md5sums=('93592d97e7e178dc99db86b79d314033'
+         '796bc8f29a4b8577a745cd6f4890af87')
 
 package() {
   if [[ ! -f /usr/bin/javac ]]; then
