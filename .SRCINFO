@@ -8,6 +8,7 @@ pkgbase = i2pd
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = BSD
 	makedepends = boost
 	makedepends = cmake
