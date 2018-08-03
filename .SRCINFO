@@ -12,6 +12,7 @@ pkgbase = audiveris-git
 	depends = java-runtime<=8
 	depends = tesseract-data-eng
 	optdepends = tesseract-data: For languages other than english
+	provides = audiveris
 	conflicts = audiveris
 	source = audiveris-git::git+https://github.com/Audiveris/audiveris.git
 	source = audiveris

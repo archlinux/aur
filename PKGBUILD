@@ -20,6 +20,7 @@ makedepends=(
 )
 optdepends=('tesseract-data: For languages other than english')
 conflicts=("$_pkgname")
+provides=("$_pkgname")
 source=(
   "$pkgname::git+$url.git"
   "$_pkgname"
