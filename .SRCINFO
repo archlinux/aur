@@ -1,6 +1,6 @@
 pkgbase = go-git
 	pkgdesc = Core compiler tools for the Go programming language
-	pkgver = 1d303a0
+	pkgver = 1.11beta3
 	pkgrel = 1
 	epoch = 1
 	url = http://golang.org/
