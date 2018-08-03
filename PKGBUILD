@@ -21,7 +21,7 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   "https://raw.githubusercontent.com/jbdrthapa/razerblade15/master/razerfiles/touchpad/gpiolib.patch"
-  "https://raw.githubusercontent.com/jbdrthapa/razerblade15/master/razerfiles/touchpad/pinctrl-intel.patch"
+  "https://raw.githubusercontent.com/jbdrthapa/razerblade15/master/razerfiles/touchpad/translation_fix/pinctrl-intel-translation-fix.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -45,7 +45,7 @@ prepare() {
   cp ../config .config
   make olddefconfig
   patch drivers/gpio/gpiolib.c < ../gpiolib.patch
-  patch drivers/pinctrl/intel/pinctrl-intel.c < ../pinctrl-intel.patch
+  patch drivers/pinctrl/intel/pinctrl-intel.c < ../pinctrl-intel-translation-fix.patch
 }
 
 build() {
