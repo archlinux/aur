@@ -6,7 +6,7 @@ pkgname=i2pd-git
 pkgver=2.19.0.r1.gfb229d40
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/PurpleI2P/i2pd"
 license=('BSD')
 depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
@@ -17,6 +17,7 @@ install="${pkgname%%-git}.install"
 backup=("etc/${pkgname%%-git}/${pkgname%%-git}.conf"
         "etc/${pkgname%%-git}/tunnels.conf"
 )
+provides=("${pkgname%%-git}=${pkgver}")
 conflicts=("${pkgname%%-git}")
 
 build() {
