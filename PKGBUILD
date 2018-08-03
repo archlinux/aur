@@ -3,7 +3,7 @@
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 
 pkgname=djgpp-binutils
-pkgver=2.30
+pkgver=2.31.1
 pkgrel=1
 pkgdesc="Binutils for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
@@ -15,9 +15,9 @@ source=("http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz"
 	"binutils-bfd-djgpp.patch"
 	"binutils-djgpp.patch"
 	"lto-discard.patch")
-sha256sums=('6e46b8aeae2f727a36f0bd9505e405768a72218f1796f0d09757d45209871ae6'
-            '81d5e555e52f84f7006ba7e8a888eff9a9590f2e20377396ed143581c723a799'
-            '2ece4649f6bf938945db4d40ce5aa8ce4cf0c7be138af8373daa0220c4936afe'
+sha256sums=('5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86'
+            '13cc73a6042515c16ddfa2e6277d09a0c1de7a33fdb1a106f61ee0bbd665014a'
+            'e968d8630825bed104d9f9b3c5ffe565ab858c5835acdc96f50ed0fccaf9f08a'
             '358cab5b397662718260f41c8a4139c97676600fa5ef9f3aa699bfe27606c434')
 _target="i686-pc-msdosdjgpp"
 
@@ -25,9 +25,10 @@ prepare() {
   cd binutils-${pkgver}
 
   # Apply DJGPP related patches from
-  # ftp://ftp.delorie.com/pub/djgpp/current/v2gnu/bnu2291s.zip
+  # ftp://ftp.delorie.com/pub/djgpp/current/v2gnu/bnu2311s.zip
   patch -Np1 <${srcdir}/binutils-djgpp.patch
   patch -Np1 <${srcdir}/binutils-bfd-djgpp.patch
+  #
   patch -Np2 <${srcdir}/lto-discard.patch
 }
 
