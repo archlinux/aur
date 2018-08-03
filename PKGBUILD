@@ -6,7 +6,7 @@ pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git')
 _pkgname=pamac
 pkgver=v6.5.0.r1.g181ab59
 _pkgver=6.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -38,7 +38,6 @@ build() {
   mkdir -p builddir
   cd builddir
   meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true
-
   # build
   ninja
 }
@@ -58,7 +57,7 @@ package_pamac-aur-git() {
 }
 
 package_pamac-aur-tray-appindicator-git() {
-  pkgdesc="Tray icon using appindicator which feets better in KDE - git version"
+  pkgdesc="Tray icon using appindicator which fits better in KDE - git version"
   conflicts=('pamac-aur-tray-indicator')
   replaces=('pamac-aur-tray-indicator')
   depends=('pamac-aur-git' 'libappindicator-gtk3')
