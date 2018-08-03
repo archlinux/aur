@@ -13,7 +13,7 @@ install=${pkgname}.install
 source=("http://apache.claz.org/zeppelin/zeppelin-$pkgver/zeppelin-$pkgver-bin-all.tgz"
     "apache-zeppelin.service")
 sha512sums=('27b74460a0da5780e273869801fb438c405bd70aaee0679bc9de761371964938859529cb2510e9af18451b2384393562f2eed7988d7619dfd8a5ac73654dd4ca'
-'67133c21176c4ff05b8a5d17802929d2490031df7dc63e1ad2883febb7ec134d197416afb7095a8407243136648360c6137eea799524ab92a52249f8fb29e183')
+'08d8047b764ac465779d6c18a7decfb959da9915f3082e1641732ee1431a7f8f4d823e8d51dad960e71771b8fee8fefd3b6e04a6645468b6d6d4dafb0428cded')
 
 PKGEXT='.pkg.tar' # no need for package compression, which takes too much time
 
