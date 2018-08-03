@@ -4,7 +4,7 @@ pkgname=lmms-beta
 _basever=1.2.0
 _rc=rc6
 pkgver=${_basever}_${_rc}
-pkgrel=2
+pkgrel=3
 pkgdesc='Beta version of the Linux MultiMedia Studio.'
 arch=('x86_64')
 url='https://lmms.io/'
@@ -41,4 +41,9 @@ build() {
 package() {
   cd "$srcdir/lmms"
   make DESTDIR="${pkgdir}" install
+  
+  # Move lib64 files to lib
+  cd "${pkgdir}/usr"
+  mv lib64/* lib/
+  rm -r lib64/
 }
