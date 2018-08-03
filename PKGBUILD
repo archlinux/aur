@@ -3,12 +3,12 @@
 pkgname=starquew
 pkgver=0.1.1
 _buildver=209
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight, web based sequence generator and INDI client written in Python and React."
 arch=("any")
 url="https://github.com/faressoft/terminalizer"
 license=("GPLv3")
-depends=("python" "python-pip" "redis")
+depends=("python" "python-pip" "redis" "ccfits" "opencv")
 optdepends=("nginx")
 install="install"
 
