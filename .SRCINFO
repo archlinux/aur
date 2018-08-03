@@ -1,7 +1,7 @@
 pkgbase = minikube-bin
-	pkgdesc = Minikube is a tool that makes it easy to run Kubernetes locally
+	pkgdesc = A is a tool that makes it easy to run Kubernetes locally
 	pkgver = 0.28.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kubernetes/minikube
 	arch = x86_64
 	license = Apache
