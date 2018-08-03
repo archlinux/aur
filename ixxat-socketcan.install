@@ -1,0 +1,11 @@
+post_upgrade() {
+	depmod -a
+}
+
+post_remove() {
+	post_upgrade
+}
+
+post_install() {
+	post_upgrade
+}
