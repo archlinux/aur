@@ -1,16 +1,16 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=nodejs-terminalizer
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Record your terminal and generate animated gif images"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/faressoft/terminalizer"
 license=("MIT")
-depends=("nodejs" "npm")
+depends=("gconf" "gtk3" "libxss" "nodejs" "npm" "nss")
 source=("https://registry.npmjs.org/${pkgname#nodejs-}/-/${pkgname#nodejs-}-${pkgver}.tgz")
 noextract=("${pkgname#nodejs-}-${pkgver}.tgz")
-sha1sums=("3f0286bd0f4dd32d801c700cad162a3102d20771")
+sha1sums=("969dffecd06babb43f4e85f219e62d192420079b")
 
 package() {
   cd "${srcdir}"
