@@ -1,9 +1,9 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2017.4.7
+_version=2017.4.8
 _build=f1
 _buildtag=20180703
-_randomstring=1d86eef80e0a
+_randomstring=8140fe378247
 _prefix=/opt/UnityLts
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
@@ -42,7 +42,7 @@ source=("${_unitydownloads}/UnitySetup-${_version}${_build}"
         'unity-editor-lts'
         'unity-editor-lts.desktop'
         'unity-editor-lts-icon.png')
-sha1sums=('421ea241c463e63a5004ca82d13ac0725d24aea7'
+sha1sums=('119ec24433cf9e94ead7d62e64b69cec686d5aa5'
           'c2a0643216d9733fe6364ad2036272a92352cf99'
           '359516eed53621b070a2599aefe91a4e62396aba'
           'fddf4861974f88f0565de7f54f7418204e729894')
