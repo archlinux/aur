@@ -4,7 +4,7 @@
 
 pkgname=dwire-debug-git
 _pkgname=dwire-debug
-pkgver=r129.beb3806
+pkgver=r155.d6af573
 pkgrel=1
 pkgdesc="Simple stand-alone debugger for ATtiny 45 and other ATMEL AVR DebugWIRE chips connected directly to an FT232R or similar"
 arch=("i686" "x86_64")
