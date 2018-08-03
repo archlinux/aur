@@ -637,10 +637,11 @@ for _p in linux-pf-headers linux-pf-preset-default ; do
     _package${_p#${pkgbase}}
   }"
 done
-
-if in_array ${source[*]} batch_opts ; then #FIXME bugs updpkgsums
-  source batch_opts
-  package[0]=linux-pf${CPU+-}${CPU,,}
+if [ "$makepkg_version" ] ; then
+  if in_array ${source[*]} batch_opts ; then #FIXME bugs updpkgsums
+    source batch_opts
+    package[0]=linux-pf${CPU+-}${CPU,,}
+  fi
 fi
 
 eval "package_linux-pf${CPU+-$CPU,,}() {
