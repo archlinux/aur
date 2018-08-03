@@ -1,0 +1,16 @@
+pkgbase = freebsd-current-man-pages
+	pkgdesc = The FreeBSD manual pages.
+	pkgver = 12.0
+	pkgrel = 1
+	epoch = 1
+	url = https://www.freebsd.org/cgi/man.cgi
+	arch = x86_64
+	license = BSD
+	provides = freebsd-manpages
+	conflicts = freebsd-manpages
+	conflicts = freebsd-man-pages
+	source = http://ftp.freebsd.org/pub/FreeBSD/snapshots/amd64/amd64/12.0-CURRENT/base.txz
+	sha256sums = 65bfa671fe766678e70d7c625877b3079e7b3205e92d1e6daec8a7299edeac2b
+
+pkgname = freebsd-current-man-pages
+
