@@ -2,7 +2,7 @@
 
 _pkgname=textadept
 pkgname=textadept-bin
-pkgver=9.6
+pkgver=10.0
 pkgrel=1
 pkgdesc="A fast, minimalist and remarkably extensible text editor (binary version)"
 url="http://foicica.com/textadept"
@@ -18,8 +18,8 @@ _arch=x86_64
 source=(http://foicica.com/textadept/download/${_pkgname}_${pkgver}.${_arch}.tgz
         http://foicica.com/textadept/download/${_pkgname}_${pkgver}.modules.zip
         textadept.install)
-sha256sums=('12a09db316d38e36d57596bdfc99327b83ece11b972c32982c044f454232d5db'
-            'b0b008b90b58c15e3d0a21675418f68ec08f8b3db6fbb30cf6b382afcbeb35e1'
+sha256sums=('47f352e86a73e91537e24e40da02dec8a9488581cfe1cf77bc55321fba340c58'
+            '86b45d39d250fd7bcdec69e34fbd802a9b47f107ca24dcf476d59c1976068c70'
             'b2971d4c6743033b16b172c2b208942a4a6082c7bcfb593ae25bff3fbad45b4b')
 [ "$CARCH" = "i686" ] &&
 sha256sums[0]='d2a7021c822aaec243657966f2f7e8dd929afa9dba3182816a8fe35090176964'
@@ -36,7 +36,7 @@ package() {
     # Copy files and directories
     cp -r core lexers modules scripts themes doc *.lua LICENSE \
           $pkgdir/opt/textadept
-    install -m755 textadept textadept-curses textadeptjit textadeptjit-curses \
+    install -m755 textadept textadept-curses \
                   $pkgdir/opt/textadept
     install -m644 src/*.desktop $pkgdir/usr/share/applications/
 
@@ -62,7 +62,7 @@ package() {
 
     # Clean up
     rm $pkgdir/opt/textadept/doc/bombay
-    rm $pkgdir/opt/textadept/modules/yaml/libyaml{.dll,jit.dll,osx.so}
+    # rm $pkgdir/opt/textadept/modules/yaml/libyaml64{.dll,jit.dll,osx.so}
     rm -rf `find $pkgdir -type d -name .hg`
 }
 
