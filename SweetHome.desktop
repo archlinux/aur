@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SweetHome
+Comment=An interior design application that helps you put your furniture in your home on a 2D plan, with a 3D preview.
+Exec=sweethome
+Icon=sweethome
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Development;Documentation;
+MimeType=text/plain;
