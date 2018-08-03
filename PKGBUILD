@@ -4,8 +4,8 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-razerblade-2018 # Stock kernel with touchpad patches built in
-#pkgbase=linux-custom         # Build kernel with a different name
+pkgbase=linux
+pkgname=linux-razerblade-2018
 pkgver=4.17.11
 pkgrel=1
 arch=('x86_64')
@@ -13,7 +13,6 @@ url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
-provides=('linux')
 _srcname="linux-$pkgver-arch$pkgrel"
 source=(
   "https://github.com/archlinux/linux/archive/v$pkgver-arch$pkgrel.tar.gz"
@@ -40,12 +39,13 @@ sha256sums=('SKIP'
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-arch}
 
-
 prepare() {
   cd ${_srcname}
   scripts/setlocalversion --save-scmversion
   cp ../config .config
   make olddefconfig
+  patch drivers/gpio/gpiolib.c < ../gpiolib.patch
+  patch drivers/pinctrl/intel/pinctrl-intel.c < ../pinctrl-intel.patch
 }
 
 build() {
