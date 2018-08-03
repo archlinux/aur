@@ -2,7 +2,7 @@
 
 _pkgname=vet
 pkgname=vet-bin
-pkgver=3.17
+pkgver=3.19
 pkgrel=1
 pkgdesc='Gerrit client using pull request workflow'
 url='https://github.com/Cosium/vet'
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('MIT')
 depends=('glibc')
 source=("${url}/releases/download/${pkgver}/${_pkgname}-linux_x64.deb.zip")
-sha256sums=('026997af47b2fcb23cf7153d6c752f83d931e2356420a59271585765ac172a50')
+sha256sums=('f4e810b9d87679be235c6e8ddfd7b77a2cac6cb69bb991997f2cc5f213036e81')
 
 package() {
   ar x "${_pkgname}".deb
