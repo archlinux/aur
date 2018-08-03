@@ -10,7 +10,7 @@ pkgbase = starquew
 	depends = python-pip
 	depends = redis
 	optdepends = nginx
-	source = https://gulinux.net/downloads/StarQuew/ci-209/StarQuew-0.1.1-b209-Linux.tar.gz
+	source = https://github.com/GuLinux/StarQuew/releases/download/0.1.1/StarQuew-0.1.1-b209-Linux.tar.gz
 	md5sums = c3472786e3520876d83d7acfd2d491c8
 
 pkgname = starquew

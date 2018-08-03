@@ -13,9 +13,9 @@ optdepends=("nginx")
 install="install"
 
 # Daily builds link - expires after 10 builds
-source=("https://gulinux.net/downloads/StarQuew/ci-${_buildver}/StarQuew-${pkgver}-b${_buildver}-Linux.tar.gz")
+# source=("https://gulinux.net/downloads/StarQuew/ci-${_buildver}/StarQuew-${pkgver}-b${_buildver}-Linux.tar.gz")
 # Stable build
-#source=("https://github.com/GuLinux/StarQuew/releases/download/${pkgver}/StarQuew-${pkgver}-${_buildver}-Linux.tar.gz")
+source=("https://github.com/GuLinux/StarQuew/releases/download/${pkgver}/StarQuew-${pkgver}-b${_buildver}-Linux.tar.gz")
 md5sums=('c3472786e3520876d83d7acfd2d491c8')
 
 package() {
