@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-ru
 	pkgdesc = Russian language pack for SeaMonkey
-	pkgver = 2.49.3
+	pkgver = 2.49.4
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.49.3
-	noextract = seamonkey-2.49.3.ru.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.49.3/langpack/seamonkey-2.49.3.ru.langpack.xpi
-	sha256sums = d0a1de13c8e19c07ddb8bbff2f931e0f0182b36ba975b5ee80ce6959d7edfd29
+	depends = seamonkey>=2.49.4
+	noextract = seamonkey-2.49.4.ru.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.49.4/langpack/seamonkey-2.49.4.ru.langpack.xpi
+	sha256sums = 51c8ddb22a4ee432317dac617e78937789a62bc960d64b7b154797707ce518bc
 
 pkgname = seamonkey-i18n-ru
 
