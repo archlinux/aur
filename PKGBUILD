@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-git
-pkgver=3.8.0a0.r101772.e76ac9d4ef
+pkgver=3.8.0a0.r101996.2ebd3813af
 pkgrel=1
 _pybasever=3.8
 _pkgname=cpython
@@ -10,8 +10,8 @@ arch=('i686' 'x86_64')
 license=('custom')
 url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
-makedepends=('tk>=8.6.0' 'sqlite' 'valgrind' 'bluez-libs' 'xz' 'git')
-optdepends=('tk: for tkinter' 'sqlite' 'xz: for lzma' 'libtirpc: for nis')
+makedepends=('tk>=8.6.0' 'sqlite' 'valgrind' 'bluez-libs' 'xz' 'git' 'libnsl')
+optdepends=('tk: for tkinter' 'sqlite' 'xz: for lzma' 'libnsl: for nis')
 options=(debug !strip !makeflags)
 source=("git+https://github.com/python/cpython#branch=master")
 sha256sums=('SKIP')
