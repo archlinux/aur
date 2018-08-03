@@ -1,6 +1,6 @@
 pkgbase = unity-editor-windows
 	pkgdesc = Allows building your Unity projects for the Windows platform
-	pkgver = 2018.2.0f2+20180711
+	pkgver = 2018.2.1f1+20180703
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = unity-editor-windows
 	makedepends = libarchive
 	depends = unity-editor
 	options = !strip
-	source = http://beta.unity3d.com/download/10189b18f56e/UnitySetup-2018.2.0f2
-	sha1sums = a8d71b86c8a8f3bbccdf813c3bc67b3dd92c728d
+	source = http://beta.unity3d.com/download/48afb4a72b1a/UnitySetup-2018.2.1f1
+	sha1sums = ed3906b2607db3b806be153f8062990268af76ac
 
 pkgname = unity-editor-windows
 
