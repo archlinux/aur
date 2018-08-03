@@ -1,8 +1,8 @@
 # Maintainer: Mikuro Kagamine <mikurok@forgecrushing.com>
 
 pkgname=browsh
-pkgver=1.4.10
-pkgrel=2
+pkgver=1.4.12
+pkgrel=1
 pkgdesc='A fully-modern text-based browser, rendering to TTY and browsers'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.brow.sh'
@@ -15,8 +15,8 @@ options=('!strip')
 noextract=("${pkgname}-${pkgver}-an.fx.xpi")
 source=("https://github.com/${pkgname}-org/${pkgname}/archive/v${pkgver}.tar.gz"
 		"https://github.com/${pkgname}-org/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-an.fx.xpi")
-sha512sums=('699dfdb1f5089ad7db9829fb50eff42a3c63b451abcfd79ae3ad9fbac084cdec2d4b87eeea334bd2e77d9d9de92d5dc7b1af2260e8f9b606e20e1ca3088d95a1'
-			'a3024e4de222df2aa1ccf1ab74121d4787d27eaa4d7cd402b1a9e793b17b13465db6a3f7dba0239ef84a45b79619e0b5f85794b79ab4cf83ba1fe87c23efab9c')
+sha512sums=('9b26989f723732240dd52b07f2803a78ada0ee79ddeb4a2541564da554ff0db3539ec9df86ea040ac35d5acd5ab2af587b9f40a99b6a6e852e500a4ca9b0f3ba'
+			'68a6a4d5b97aa7471a63a247c53d50b74f6bcba7c5e727f3aa4bf12f738f93585bcab9f6ad62733ffc34b04108c8b6a7d94b99dc6d823a4f58b6363a1ed114c8')
 
 prepare() {
 	## Go is fussy.

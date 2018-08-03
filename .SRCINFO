@@ -1,7 +1,7 @@
 pkgbase = browsh
 	pkgdesc = A fully-modern text-based browser, rendering to TTY and browsers
-	pkgver = 1.4.10
-	pkgrel = 2
+	pkgver = 1.4.12
+	pkgrel = 1
 	url = https://www.brow.sh
 	arch = x86_64
 	arch = i686
@@ -18,12 +18,12 @@ pkgbase = browsh
 	optdepends = upx: compress binary
 	conflicts = browsh-bin
 	conflicts = browsh-git
-	noextract = browsh-1.4.10-an.fx.xpi
+	noextract = browsh-1.4.12-an.fx.xpi
 	options = !strip
-	source = https://github.com/browsh-org/browsh/archive/v1.4.10.tar.gz
-	source = https://github.com/browsh-org/browsh/releases/download/v1.4.10/browsh-1.4.10-an.fx.xpi
-	sha512sums = 699dfdb1f5089ad7db9829fb50eff42a3c63b451abcfd79ae3ad9fbac084cdec2d4b87eeea334bd2e77d9d9de92d5dc7b1af2260e8f9b606e20e1ca3088d95a1
-	sha512sums = a3024e4de222df2aa1ccf1ab74121d4787d27eaa4d7cd402b1a9e793b17b13465db6a3f7dba0239ef84a45b79619e0b5f85794b79ab4cf83ba1fe87c23efab9c
+	source = https://github.com/browsh-org/browsh/archive/v1.4.12.tar.gz
+	source = https://github.com/browsh-org/browsh/releases/download/v1.4.12/browsh-1.4.12-an.fx.xpi
+	sha512sums = 9b26989f723732240dd52b07f2803a78ada0ee79ddeb4a2541564da554ff0db3539ec9df86ea040ac35d5acd5ab2af587b9f40a99b6a6e852e500a4ca9b0f3ba
+	sha512sums = 68a6a4d5b97aa7471a63a247c53d50b74f6bcba7c5e727f3aa4bf12f738f93585bcab9f6ad62733ffc34b04108c8b6a7d94b99dc6d823a4f58b6363a1ed114c8
 
 pkgname = browsh
 
