@@ -3,22 +3,8 @@
 # PKGBUILD assembled from kernel26
 # Some lines from  kernel26-bfs and kernel26-ck
 # Credits to respective maintainers
-_major=4
-_minor=17
-#_patchlevel=0
-#_subversion=1
-_basekernel=${_major}.${_minor}
-_srcname=linux-${_major}.${_minor}
-pkgbase=linux-pf
-_pfrel=5
-_kernelname=-pf
-_pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
-_pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_CPUSUFFIXES_KBUILD=(
-  CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
-  ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
-  IVYBRIDGE HASWELL BROADWELL SILVERMONT SKYLAKE)
 
+## 
 ### PATCH AND BUILD OPTIONS
 #
 # taken from graysky linux-ck see: https://aur.archlinux.org/packages/linux-ck
@@ -26,11 +12,8 @@ _CPUSUFFIXES_KBUILD=(
 #
 _NUMA_off=yes		# Disable NUMA in kernel config
 
-# batch mode:
-# enable batch mode to stop the pkgbuild from asking you what to do and just use defaults
-_BATCH_MODE=n
-# if $srcdir/batch_opts is found enable $BATCH_MODE and set MARCH to M$CPU
 
+_BATCH_MODE=n # enable batch mode
 
 ### DOCS
 # Starting with the 3.6.6-3 release, this package ships with the kernel-3x-gcc47-x.patch.
@@ -41,8 +24,6 @@ _BATCH_MODE=n
 # http://en.gentoo-wiki.com/wiki/Safe_Cflags/AMD
 # http://www.linuxforge.net/docs/linux/linux-gcc.php 
 # http://gcc.gnu.org/onlinedocs/gcc/i386-and-x86_002d64-Options.html
-
-
 
 # DETAILS FOR using 'make localmodconfig'
 # As of mainline 2.6.32, running with this option will only build the modules that you currently have
@@ -65,6 +46,30 @@ _BATCH_MODE=n
 # Since 99.9% of users do not have multiple CPUs but do have multiple cores in one CPU
 # see, https://bugs.archlinux.org/task/31187
 
+# DETAILS FOR _BATCH_MODE
+# enable batch mode to stop the pkgbuild from asking you what to do
+# either by var or if $srcdir/batch_opts is found
+# use defaults or options defined in batch_opts
+# if $CPU is defined CONFIG_M${CPU,,} is enabled and CONFIG_GENERIC_CPU is disabled.
+###
+
+##
+
+_major=4
+_minor=17
+#_patchlevel=0
+#_subversion=1
+_basekernel=${_major}.${_minor}
+_srcname=linux-${_major}.${_minor}
+pkgbase=linux-pf
+_pfrel=5
+_kernelname=-pf
+_pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
+_pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
+_CPUSUFFIXES_KBUILD=(
+  CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
+  ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
+  IVYBRIDGE HASWELL BROADWELL SILVERMONT SKYLAKE)
 pkgname=('linux-pf')
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
