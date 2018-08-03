@@ -1,13 +1,14 @@
 pkgbase = psi-plus-resources-git
 	pkgdesc = Additional iconsets, themes and sounds for Psi+ (Qt5 build)
-	pkgver = 18.02.05.0.g29029f6
+	pkgver = 18.02.05.2.gc0bfb8a
 	pkgrel = 1
 	url = https://psi-plus.com
 	arch = any
 	license = GPL2
+	makedepends = git
 	depends = psi-plus-git
-	provides = psi-plus-resources=18.02.05.0.g29029f6
-	provides = psi-plus-resources-qt5=18.02.05.0.g29029f6
+	provides = psi-plus-resources=18.02.05.2.gc0bfb8a
+	provides = psi-plus-resources-qt5=18.02.05.2.gc0bfb8a
 	conflicts = psi-plus-resources
 	conflicts = psi-plus-resources-qt5-git
 	options = !strip
