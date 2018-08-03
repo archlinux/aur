@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=qgrep-git
-pkgver=r347.ea1a2a8
+pkgver=r472.68aff6c
 pkgrel=1
 epoch=
 pkgdesc="Fast regular expression grep for source code with incremental index updates."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/zeux/qgrep"
 license=('BSD')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
@@ -22,6 +22,12 @@ install=
 source=("$pkgname::git+https://github.com/zeux/qgrep.git")
 noextract=()
 md5sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  git submodule update --init --recursive
+  sed -i 's/-Werror//' Makefile
+}
 
 pkgver() {
   cd "$srcdir/$pkgname"
