@@ -321,16 +321,10 @@ _package() {
 	            'nvidia-beta-all: NVIDIA drivers for all installed kernels'
 	            'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
   provides=('linux-tomoyo')
-
   replaces=('kernel26-pf')
 
   cd "${srcdir}/linux-${_basekernel}"
 
-  # work around the AUR parser
-  # This allows building cpu-optimized packages with according package names.
-  # Useful for repo maintainers.
-  headers="headers"
-  pkgnameopt="${pkgbase}"		# this MUST be outside the following 'if'
   if [[ "$_PKGOPT" = "y" ]]; then	# package naming according to optimization
     case $CPU in
       CORE2)
@@ -417,11 +411,6 @@ _package() {
         pkgname="${pkgbase}-skylake"
         pkgdesc="${_pkgdesc} 6th Gen Core processors including Skylake."
         ;;
-      default)
-        # Note to me: DO NOT EVER REMOVE THIS. It's for the AUR PKGBUILD parser.
-        pkgname="${pkgbase}"
-        pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)"
-        ;;
     esac
 
 
@@ -434,12 +423,7 @@ _package() {
 
   echo
   echo "    ========================================"
-  msg  "The packages will be named ${pkgnameopt} and"
-  if [[ "$cpuopt" ]]; then
-    msg  "and ${pkgbase}-${headers}-${cpuopt}"
-  else
-    msg  "and ${pkgbase}-${headers}"
-  fi
+  msg  "The packages will be named ${pkgname}"
   msg  "${pkgdesc}"
   echo "    ========================================"
   echo
@@ -623,13 +607,6 @@ _package-preset-default()
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 }
-
-# Work around the AUR parser
-pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
-
-# makepkg -g >>PKGBUILD
-
-
 
 for _p in linux-pf-headers linux-pf-preset-default ; do
   eval "package_${_p}() {
