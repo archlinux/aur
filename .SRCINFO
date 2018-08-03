@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgver = 4.17.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = linux-clear
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.sign
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.11.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.17.11-599
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.17.11-601
 	source = https://downloadmirror.intel.com/27945/eng/microcode-20180703.tgz
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = rtc_nvmem_dont_return_an_error_when_not_enabled.patch::https://git.kernel.org/pub/scm/linux/kernel/git/abelloni/linux.git/patch/?id=c59b3715ac16544f8f68ab7af03f108e339b36aa
