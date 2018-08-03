@@ -63,7 +63,7 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _major=4.17
-pkgver=4.17.11
+pkgver=4.17.12
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
 pkgrel=1
@@ -107,7 +107,7 @@ source=(# mainline kernel patches
         '0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch'
         '0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch')
 
-sha256sums=('db1e84ed4f213b43d50f3373627b2ffcdb3b65f3430f746a38f801554ef3728c'
+sha256sums=('c098e2e4dcb64f8e3fb5cec35e872ff383edefa18532744ddf35bbba829cb5a3'
             'SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '7fa085ae8c7839fe22257bdebfcd1dfb1e60c40e61157972c349634c122ed086'
