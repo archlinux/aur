@@ -3,7 +3,7 @@
 # Contributor: zwergnase <zwergnase@posteo.de>
 
 pkgname=sunvox
-pkgver=1.9.3c
+pkgver=1.9.4b
 pkgrel=1
 pkgdesc="Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker)."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('unzip')
 source=(http://warmplace.ru/soft/sunvox/$pkgname-$pkgver.zip)
-md5sums=('de82f3ce4c2961eed77f3c4ff05e8ebb')
+md5sums=('ba9c94be594d384c544f18d8c794f365')
 
 package() {
 	install -dm755 "${pkgdir}/opt/${pkgname}"
