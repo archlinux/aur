@@ -4,13 +4,13 @@
 pkgname=cquery-git
 _pkgname=cquery
 pkgver=1942.3ac1ff24
-pkgrel=1
+pkgrel=2
 pkgdesc='Low-latency vscode language server for large C++ code-bases, powered by libclang.'
 arch=('x86_64')
 url='https://github.com/cquery-project/cquery/'
 license=('MIT')
 depends=('clang')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 
 source=('git+https://github.com/cquery-project/cquery.git')
 md5sums=(
