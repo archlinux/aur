@@ -2,7 +2,7 @@
 _pkgbase='yuzu'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r5919.5750f6f0
+pkgver=r7580.29f31356
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -17,13 +17,20 @@ source=("$_pkgbase::git+https://github.com/yuzu-emu/yuzu"
         'git+https://github.com/fmtlib/fmt'
 	'git+https://github.com/svn2github/inih'
 	'git+https://github.com/yuzu-emu/unicorn'
-	'git+https://github.com/lz4/lz4')
+	'git+https://github.com/lz4/lz4'
+	'git+https://github.com/ogniK5377/opus'
+	'git+https://github.com/kinetiknz/cubeb'
+	# cubeb submodule dependencies
+	'git+https://github.com/arsenm/sanitizers-cmake')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
 	 'SKIP'
 	 'SKIP'
 	 'SKIP')
@@ -36,7 +43,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_pkgbase"
 	mkdir -p build
-
+	
 	git submodule init
 	git config submodule.boost.url "$srcdir/ext-boost"
 	git config submodule.catch.url "$srcdir/Catch"
@@ -45,12 +52,14 @@ prepare() {
 	git config submodule.fmt.url "$srcdir/fmt"
 	git config submodule.inih.url "$srcdir/inih"
 	git config submodule.unicorn.url "$srcdir/unicorn"
-	git config submodule.lz4.url "$srcdir/lz4"
+	git config submodule.opus.url "$srcdir/opus"
+	git config submodule.cubeb.url "$srcdir/cubeb"
 	git submodule update
+	
 
-	cd externals/dynarmic
-	git config submodule.externals/fmt.url "$srcdir/fmt"
-	git config submodule.externals/xbyak.url "$srcdir/xbyak"
+
+	cd externals/cubeb
+	git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
 	git submodule update
 }
 
@@ -58,13 +67,9 @@ build() {
 	cd "$srcdir/$_pkgbase/build"
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DCMAKE_BUILD_TYPE=Release
+	  -DCMAKE_BUILD_TYPE=Release \
+	  -DBUILD_TESTS=False
 	make
-}
-
-check() {
-	cd "$srcdir/$_pkgbase/build"
-	make test
 }
 
 package_yuzu-git() {
@@ -79,6 +84,15 @@ package_yuzu-qt-git() {
 	            'qt5-wayland: for Wayland support')
 
 	cd "$srcdir/$_pkgbase/build"
+	
+	# screw cubeb and it's shitty cmake
+	mkdir -p "$srcdir/$_pkgbase/include/cubeb"
+	
 	make DESTDIR="$pkgdir/" install
+	
+	# screw cubeb cmake even more
+	rm -r "$pkgdir/usr/lib64"
+	rm -r "$pkgdir/usr/include"
+	
 	rm "$pkgdir/usr/bin/${_pkgbase}-cmd"
 }
