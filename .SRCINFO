@@ -1,0 +1,27 @@
+pkgbase = beersmith
+	pkgdesc = Complete software suite for brewers
+	pkgver = 3.0.9
+	pkgrel = 1
+	url = https://beersmith.com
+	arch = x86_64
+	license = commercial
+	source_x86_64 = https://s3.amazonaws.com/beersmith-3/BeerSmith-3.0.9_amd64.deb
+	sha256sums_x86_64 = ca22f487889beecaa22de6decfd263a76cf7cf92290a6bb4a55b455ba5ae21ea
+
+pkgname = beersmith
+	depends = cairo
+	depends = fontconfig
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libpng
+	depends = libsm
+	depends = libx11
+	depends = libxxf86vm
+	depends = openssl
+	depends = pango
+	depends = webkit2gtk
+	depends = zlib
+
