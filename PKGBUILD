@@ -4,12 +4,13 @@
 _gemname=net-http-pipeline
 pkgname=ruby-$_gemname
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An HTTP/1.1 pipelining implementation atop Net::HTTP'
 arch=(any)
 url='http://docs.seattlerb.org/net-http-pipeline'
 license=()
 depends=(ruby)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
