@@ -3,7 +3,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=('python-grpcio-tools' 'python2-grpcio-tools')
-pkgver=1.11.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Python protobuf generator for GRPC"
 arch=('any')
@@ -16,7 +16,7 @@ noextract=()
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/g/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "${_pkgname}-${pkgver}.tar.gz.sig")
-sha512sums=('e22ac471344d38f25b8bf59e358dc193f6fc19d496e74548e2ccf4fa9809ed6a756c2d3cd998fb026a7164e0271e1955332d29ba42b30b4a5fc998fb7c81662b'
+sha512sums=('a6e56b44b50dbb0cfd3c5987b6a915986e6f5432866f1f435e837f9bebbc4d0e765c9e86adda652aa7d7fdcc5ad807f0efddf95fe1ce9a0b7dffe02d66263173'
             'SKIP')
 
 package_python-grpcio-tools() {
