@@ -2,7 +2,7 @@
 # Contributor: paul2lv [at] gmail dot com
 
 pkgname=fahviewer-beta
-pkgver=7.5.0
+pkgver=7.5.1
 pkgrel=1
 pkgdesc="A Folding@home 3D simulation viewer"
 url="https://foldingathome.org/"
@@ -13,7 +13,7 @@ options=('!docs' '!libtool')
 conflicts=('fahviewer')
 provides=('fahviewer')
 source=(https://download.foldingathome.org/releases/beta/release/fahviewer/debian-stable-64bit/v7.5/fahviewer_${pkgver}-64bit-release.tar.bz2)
-sha256sums=('19d5da645d18a6bc6185a310495123179e3bc979f13cdcbe3966853a44fdd897')
+sha256sums=('edf8e4000fb49055bef80c0a0cf321136ce7564ac347131e1bb82e0cc24d4685')
 
 package() {
 	cd ${srcdir}
