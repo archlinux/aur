@@ -1,6 +1,6 @@
 pkgbase = verticalize-git
 	pkgdesc = Simple tool to verticalize text delimited files.
-	pkgver = r7.903975a
+	pkgver = r9.57f8c91
 	pkgrel = 1
 	url = https://github.com/lindenb/verticalize
 	arch = i686

@@ -1,13 +1,12 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=verticalize-git
-pkgver=r7.903975a
+pkgver=r9.57f8c91
 pkgrel=1
 pkgdesc="Simple tool to verticalize text delimited files."
 arch=('i686' 'x86_64')
 url="https://github.com/lindenb/verticalize"
 license=('MIT')
-depends=('')
 provides=('verticalize')
 conflicts=('verticalize')
 source=(git+https://github.com/lindenb/verticalize.git)
