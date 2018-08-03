@@ -4,9 +4,9 @@
 
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=4.17.11-arch1
+_srcver=4.17.12-arch1
 pkgver=${_srcver//-/.}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/archlinux/linux/commits/v$_srcver"
 license=(GPL2)
