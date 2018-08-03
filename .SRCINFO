@@ -37,6 +37,7 @@ pkgbase = electrum-git
 	optdepends = python-keepkey: KeepKey hardware wallet support
 	optdepends = python-matplotlib: plot transaction history in graphical mode
 	optdepends = python-rpyc: send commands to Electrum Python console from an external script
+	optdepends = python-safet: Archos Safe-T hardware wallet support
 	optdepends = python-trezor: Trezor hardware wallet support
 	optdepends = xdg-utils: update desktop icon
 	optdepends = zbar: QR code reading support

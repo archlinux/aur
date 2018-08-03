@@ -45,6 +45,7 @@ optdepends=('desktop-file-utils: update desktop icon'
             'python-keepkey: KeepKey hardware wallet support'
             'python-matplotlib: plot transaction history in graphical mode'
             'python-rpyc: send commands to Electrum Python console from an external script'
+            'python-safet: Archos Safe-T hardware wallet support'
             'python-trezor: Trezor hardware wallet support'
             'xdg-utils: update desktop icon'
             'zbar: QR code reading support')
