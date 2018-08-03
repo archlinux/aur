@@ -1,14 +1,14 @@
 pkgbase = repacman2
 	pkgdesc = A tool for producing a pacman package from software's existing installation. Fork of repacman-en tool.
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://archlinux.fr/repacman
 	arch = any
 	license = GPL
 	conflicts = repacman
 	conflicts = repacman-en
-	source = repacman2-2.0.tar.gz
-	md5sums = c85a479161e96f71fe4fbd7b2cf1968c
+	source = repacman2-2.0.tar.gz::https://github.com/helixarch/repacman2/archive/2.0.tar.gz
+	sha512sums = 5b4b9ec3dc053329b33b6037dd3e7fe3710528a242e515e7b162bc1de11ccef86df92c5ce79dc3063cf8aacffbbfe78677de44e269067efdf4bb882e5a00a13a
 
 pkgname = repacman2
 
