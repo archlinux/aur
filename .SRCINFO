@@ -1,7 +1,7 @@
 pkgbase = lmms-beta-bin
 	pkgdesc = Beta version of the Linux MultiMedia Studio.
 	pkgver = 1.2.0_rc6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lmms.io/
 	arch = x86_64
 	license = GPL
@@ -30,7 +30,7 @@ pkgbase = lmms-beta-bin
 	source = lmms-beta.desktop
 	sha1sums = e8bcd46a305e0c43a786f8e83b2ecf31413d5cf1
 	sha1sums = 1ac832190a5c3cde4ba1fad3cfe3725dd9c269a5
-	sha1sums = f77c37a31050c94cac403ce9ef6b9074cb96456c
+	sha1sums = 25aa0b71ad0333f8927af1ea0f459424ccbfd723
 
 pkgname = lmms-beta-bin
 
