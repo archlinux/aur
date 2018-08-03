@@ -80,9 +80,9 @@ license=('GPL2')
 options=('!strip')
 makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod' 'elfutils')
 source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}.tar.xz"
-	'config.i686' 'config.x86_64'		# the main kernel config files
-	'linux.preset'			        # standard config files for mkinitcpio ramdisk
-	"${_pfpatchhome}/${_pfpatchname}"	# the -pf patchset
+	      'config.i686' 'config.x86_64'		# the main kernel config files
+	      'linux.preset'			        # standard config files for mkinitcpio ramdisk
+	      "${_pfpatchhome}/${_pfpatchname}"	# the -pf patchset
         "90-linux.hook"
         "60-linux.hook"
        )
@@ -115,9 +115,9 @@ prepare() {
 
   
   if [ "$CARCH" = "x86_64" ]; then
-	cat "${startdir}/config.x86_64" >| .config
+	  cat "${startdir}/config.x86_64" >| .config
   else
-	cat "${startdir}/config.i686" >| .config
+	  cat "${startdir}/config.i686" >| .config
   fi
 
   sed -ri "s|SUBLEVEL = 0|SUBLEVEL = $_pfrel|" Makefile
@@ -130,15 +130,15 @@ prepare() {
   # disable NUMA since 99.9% of users do not have multiple CPUs but do have multiple cores in one CPU
   # see, https://bugs.archlinux.org/task/31187
   if [ -n "$_NUMA_off" ] && [ "${CARCH}" = "x86_64" ]; then
-     sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-      -i -e '/CONFIG_AMD_NUMA=y/d' \
-      -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-      -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-      -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-      -i -e '/CONFIG_NODES_SHIFT=6/d' \
-      -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-      -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-      -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+    sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+        -i -e '/CONFIG_AMD_NUMA=y/d' \
+        -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+        -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+        -i -e '/# CONFIG_NUMA_EMU is not set/d' \
+        -i -e '/CONFIG_NODES_SHIFT=6/d' \
+        -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+        -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+        -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
   fi
 
   # Don't run depmod on 'make install'. We'll do this ourselves in packaging
@@ -173,118 +173,118 @@ build() {
 
   #----------------------------------------
   if [[ "$_BATCH_MODE" != "y" ]]; then		# for batch building
-      echo
-      echo "======================================================="
-      msg "You might be prompted below for some config options"
-      echo "======================================================="
-      echo
-      msg "Hit <Y> to use your running kernel's config"
-      echo "    (needs IKCONFIG and IKCONFIG_PROC)"
-      msg "Hit <L> to run 'make localmodconfig'"
-      msg "Hit <N> (or just <ENTER>) to build an all-inclusive kernel like stock -ARCH"
-      echo "    (warning: it can take a looong time)"
-      echo
-      read answer
-      shopt -s nocasematch
-      if [[ "$answer" = "y" ]]; then
-          if [[ -s /proc/config.gz ]]; then
+    echo
+    echo "======================================================="
+    msg "You might be prompted below for some config options"
+    echo "======================================================="
+    echo
+    msg "Hit <Y> to use your running kernel's config"
+    echo "    (needs IKCONFIG and IKCONFIG_PROC)"
+    msg "Hit <L> to run 'make localmodconfig'"
+    msg "Hit <N> (or just <ENTER>) to build an all-inclusive kernel like stock -ARCH"
+    echo "    (warning: it can take a looong time)"
+    echo
+    read answer
+    shopt -s nocasematch
+    if [[ "$answer" = "y" ]]; then
+      if [[ -s /proc/config.gz ]]; then
 	      msg "Extracting config from /proc/config.gz..."
 	      zcat /proc/config.gz >| ./.config
-          else
-	    msg "running 'sudo modprobe configs'"
-	    sudo modprobe configs
-            if [[ -s /proc/config.gz ]]; then
+      else
+	      msg "running 'sudo modprobe configs'"
+	      sudo modprobe configs
+        if [[ -s /proc/config.gz ]]; then
 	        msg "Extracting config from /proc/config.gz..."
 	        zcat /proc/config.gz >| ./.config
-	    else
-	      msg "You kernel was not compiled with IKCONFIG_PROC."
-	      msg "Attempting to run /usr/bin/modprobed_db recall from modprobe_db..."
-	      if [ -e /usr/bin/modprobed-db ]; then
-	          sudo /usr/bin/modprobed-db recall
 	      else
-	        msg "modprobed-db not installed, running make localmodconfig instead..."
-	        make localmodconfig
-	      fi
-            fi
-          fi
-      elif [[ "$answer" = "l" ]]; then
-          # Copied from kernel26-ck's PKGBUILD
-          msg "Attempting to run /usr/bin/reload_database with sudo from modprobe_db..."
-          if [ -e /usr/bin/modprobed-db ]; then
+	        msg "You kernel was not compiled with IKCONFIG_PROC."
+	        msg "Attempting to run /usr/bin/modprobed_db recall from modprobe_db..."
+	        if [ -e /usr/bin/modprobed-db ]; then
+	          sudo /usr/bin/modprobed-db recall
+	        else
+	          msg "modprobed-db not installed, running make localmodconfig instead..."
+	          make localmodconfig
+	        fi
+        fi
+      fi
+    elif [[ "$answer" = "l" ]]; then
+      # Copied from kernel26-ck's PKGBUILD
+      msg "Attempting to run /usr/bin/reload_database with sudo from modprobe_db..."
+      if [ -e /usr/bin/modprobed-db ]; then
 	      sudo /usr/bin/modprobed-db recall
-          fi
-          msg "Running 'make localmodconfig'..."
-          make localmodconfig
-      else
-        msg "Using stock ARCH kernel .config (with BFS and BFQ)."
       fi
-      
-      # Make some good use of MAKEFLAGS
-      # MAKEFLAGS=`grep -v '#' /etc/makepkg.conf | grep MAKEFLAGS= | sed s/MAKEFLAGS=// | sed s/\"//g`
-      
-      # make prepare
-      
-      # Options for additional configuration
+      msg "Running 'make localmodconfig'..."
+      make localmodconfig
+    else
+      msg "Using stock ARCH kernel .config (with BFS and BFQ)."
+    fi
+    
+    # Make some good use of MAKEFLAGS
+    # MAKEFLAGS=`grep -v '#' /etc/makepkg.conf | grep MAKEFLAGS= | sed s/MAKEFLAGS=// | sed s/\"//g`
+    
+    # make prepare
+    
+    # Options for additional configuration
+    echo
+    msg "Kernel configuration options before build:"
+    echo "    <M> make menuconfig (console menu)"
+    echo "    <N> make nconfig (newer alternative to menuconfig)"
+    echo "    <G> make gconfig (needs gtk)"
+    echo "    <X> make xconfig (needs qt)"
+    echo "    <O> make oldconfig"
+    echo "    <L> make localyesconfig"
+    echo "    <ENTER> to skip configuration and use stock -ARCH defaults"
+    read answer
+    case "$answer" in
+      m) make menuconfig
+	       ;;
+      g) make gconfig
+	       ;;
+      x) make xconfig
+	       ;;
+      n) make nconfig
+	       ;;
+      o) make oldconfig
+         ;;
+      l) make localyesconfig
+	       ;;
+      default)
+	       ;;
+    esac
+    cp -v .config ${startdir}/config.local
+    for _cpusuffix_kbuild in ${_CPUSUFFIXES_KBUILD[@]} ; do
+	    _egrepstring="${_egrepstring}M${_cpusuffix_kbuild}=y|"
+    done
+    CPU=$(egrep "${_egrepstring}CONFIG_GENERIC_CPU=y|M686=y|CONFIG_MNATIVE=y" ./.config)
+    CPU=$(sed -e "s/CONFIG_M\(.*\)=y/\1/" <<<$CPU)
+    CPU=$(sed -e "s/CONFIG_GENERIC_CPU=y/GENERIC/" <<<$CPU)
+    CPU=$(sed -e "s/^686$/GENERIC/" <<<$CPU)
+    cp -f .config ${startdir}/config.$CPU-$CARCH
+    
+    # Give option to rename package according to CPU
+    echo
+    if [[ "$CPU" != "GENERIC" ]]; then
+      lcpu=$(tr '[:upper:]' '[:lower:]' <<< $CPU)
+      lcpu=$(sed -e "s/entium//" <<<$lcpu)
+      echo "=============================================================="
+      msg "An non-generic CPU was selected for this kernel."
       echo
-      msg "Kernel configuration options before build:"
-      echo "    <M> make menuconfig (console menu)"
-      echo "    <N> make nconfig (newer alternative to menuconfig)"
-      echo "    <G> make gconfig (needs gtk)"
-      echo "    <X> make xconfig (needs qt)"
-      echo "    <O> make oldconfig"
-      echo "    <L> make localyesconfig"
-      echo "    <ENTER> to skip configuration and use stock -ARCH defaults"
+      msg "Hit <G>     :  to create a generic package named linux-pf"
+      msg "Hit <ENTER> :  to create a package named after the selected CPU"
+      msg "               (linux-pf-${lcpu} - recommended default)"
+      echo
+      msg "This option affects ONLY the package name. Whether or not the"
+      msg "kernel is optimized was determined at the previous config step."
+      msg "Also note that CPUs newer than CORE2 or K8 will be replaced by"
+      msg "by core2 or k8 respectively in the package name."
+      echo "=============================================================="
       read answer
-      case "$answer" in
-        m) make menuconfig
-	   ;;
-        g) make gconfig
-	   ;;
-        x) make xconfig
-	   ;;
-        n) make nconfig
-	   ;;
-        o) make oldconfig
-           ;;
-        l) make localyesconfig
-	   ;;
-        default)
-	   ;;
-      esac
-      cp -v .config ${startdir}/config.local
-      for _cpusuffix_kbuild in ${_CPUSUFFIXES_KBUILD[@]} ; do
-	_egrepstring="${_egrepstring}M${_cpusuffix_kbuild}=y|"
-      done
-      CPU=$(egrep "${_egrepstring}CONFIG_GENERIC_CPU=y|M686=y|CONFIG_MNATIVE=y" ./.config)
-      CPU=$(sed -e "s/CONFIG_M\(.*\)=y/\1/" <<<$CPU)
-      CPU=$(sed -e "s/CONFIG_GENERIC_CPU=y/GENERIC/" <<<$CPU)
-      CPU=$(sed -e "s/^686$/GENERIC/" <<<$CPU)
-      cp -f .config ${startdir}/config.$CPU-$CARCH
-      
-      # Give option to rename package according to CPU
-      echo
-      if [[ "$CPU" != "GENERIC" ]]; then
-          lcpu=$(tr '[:upper:]' '[:lower:]' <<< $CPU)
-          lcpu=$(sed -e "s/entium//" <<<$lcpu)
-          echo "=============================================================="
-          msg "An non-generic CPU was selected for this kernel."
-          echo
-          msg "Hit <G>     :  to create a generic package named linux-pf"
-          msg "Hit <ENTER> :  to create a package named after the selected CPU"
-          msg "               (linux-pf-${lcpu} - recommended default)"
-          echo
-          msg "This option affects ONLY the package name. Whether or not the"
-          msg "kernel is optimized was determined at the previous config step."
-          msg "Also note that CPUs newer than CORE2 or K8 will be replaced by"
-          msg "by core2 or k8 respectively in the package name."
-          echo "=============================================================="
-          read answer
-          shopt -s nocasematch
-          if [[ "$answer" != "g" ]]; then
+      shopt -s nocasematch
+      if [[ "$answer" != "g" ]]; then
 	      export _PKGOPT=y
-          fi
       fi
-      
+    fi
+    
   fi  # batch check ends here
 
   # only export non-generic
@@ -310,21 +310,21 @@ build() {
 }
 
 _package() {
- _pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
- pkgdesc=${_pkgdesc}
- groups=('base')
- depends=('coreutils' 'linux-firmware' 'kmod>=9-2' 'mkinitcpio>=0.7')
- optdepends=('linux-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.'
-	    'crda: to set the correct wireless channels of your country'
-	    'pm-utils: utilities and scripts for suspend and hibernate power management'
-	    'nvidia-pf: NVIDIA drivers for linux-pf'
-	    'nvidia-beta-all: NVIDIA drivers for all installed kernels'
-	    'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
- provides=('linux-tomoyo')
+  _pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
+  pkgdesc=${_pkgdesc}
+  groups=('base')
+  depends=('coreutils' 'linux-firmware' 'kmod>=9-2' 'mkinitcpio>=0.7')
+  optdepends=('linux-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.'
+	            'crda: to set the correct wireless channels of your country'
+	            'pm-utils: utilities and scripts for suspend and hibernate power management'
+	            'nvidia-pf: NVIDIA drivers for linux-pf'
+	            'nvidia-beta-all: NVIDIA drivers for all installed kernels'
+	            'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
+  provides=('linux-tomoyo')
 
- replaces=('kernel26-pf')
+  replaces=('kernel26-pf')
 
- cd "${srcdir}/linux-${_basekernel}"
+  cd "${srcdir}/linux-${_basekernel}"
 
   # work around the AUR parser
   # This allows building cpu-optimized packages with according package names.
@@ -333,125 +333,125 @@ _package() {
   pkgnameopt="${pkgbase}"		# this MUST be outside the following 'if'
   if [[ "$_PKGOPT" = "y" ]]; then	# package naming according to optimization
     case $CPU in
-     CORE2)
-         pkgname="${pkgbase}-core2"
-         pkgdesc="${_pkgdesc} Intel Core2 optimized."
-         ;;
-     K7)
+      CORE2)
+        pkgname="${pkgbase}-core2"
+        pkgdesc="${_pkgdesc} Intel Core2 optimized."
+        ;;
+      K7)
         pkgname="${pkgbase}-k7"
         pkgdesc="${_pkgdesc} AMD K7 optimized."
         ;;
-     K8)
-         pkgname="${pkgbase}-k8" 
-         pkgdesc="${_pkgdesc} AMD K8 optimized."
-	 ;;
-     K10)
-         pkgname="${pkgbase}-k10"
-	 pkgdesc="§{_pkgdesc} AMD K10 optimized"
-         ;;
-     BARCELONA)
-         pkgname="${pkgbase}-barcelona"
-         pkgdesc="${_pkgdesc} AMD Barcelona optimized."
-	 ;;
-     BOBCAT)
-	 pkgname="${pkgbase}-bobcat"
-	 pkgdesc="${_pkgdesc} AMD Bobcat optimized."
-	 ;;
-     BULLDOZER)
-	 pkgname="${pkgbase}-bulldozer"
-	 pkgdesc="${_pkgdesc} AMD Bulldozer optimized."
-	 ;;
-     PILEDRIVER)
-	 pkgname="${pkgbase}-piledriver"
-	 pkgdesc="${_pkgdesc} AMD Piledriver optimized."
-	 ;;
-     PSC)
-         pkgname="${pkgbase}-psc"
-         pkgdesc="${_pkgdesc} Intel Pentium4/D/Xeon optimized."
-         ;;
-     ATOM)
-         pkgname="${pkgbase}-atom"
-         pkgdesc="${_pkgdesc} Intel Atom optimized."
-         ;;
-     PENTIUMII)
-         pkgname="${pkgbase}-p2"
-         pkgdesc="${_pkgdesc} Intel Pentium2 optimized."
-         ;;
-     PENTIUMIII)
-         pkgname="${pkgbase}-p3"
-         pkgdesc="${_pkgdesc} Intel Pentium3 optimized."
-         ;;
-     PENTIUMM)
-         pkgname="${pkgbase}-pm"
-         pkgdesc="${_pkgdesc} Intel Pentium-M optimized."
-         ;;
-     PENTIUM4)
-         pkgname="${pkgbase}-p4"
-         pkgdesc="${_pkgdesc} Intel Pentium4 optimized."
-         ;;
-     NEHALEM)
-	 pkgname="${pkgbase}-nehalem"
-         pkgdesc="${_pkgdesc} Intel Core Nehalem optimized."
-	 ;;
-     SANDYBRIDGE)
-         pkgname="${pkgbase}-sandybridge"
-         pkgdesc="${_pkgdesc} Intel 2nd Gen Core processors including Sandy Bridge."
-	 ;;
-     IVYBRIDGE)
-         pkgname="${pkgbase}-ivybridge"
-         pkgdesc="${_pkgdesc} Intel 3rd Gen Core processors including Ivy Bridge."
-	 ;;
-     HASWELL)
-         pkgname="${pkgbase}-haswell"
-         pkgdesc="${_pkgdesc} 4th Gen Core processors including Haswell."
-	 ;;
-     BROADWELL)
-         pkgname="${pkgbase}-broadwell"
-         pkgdesc="${_pkgdesc} 5th Gen Core processors including Broadwell."
-	 ;;
-     SILVERMONT)
-         pkgname="${pkgbase}-silvermont"
-         pkgdesc="${_pkgdesc} 6th Gen Core processors including Silvermont."
-	 ;;
-     SKYLAKE)
-       pkgname="${pkgbase}-skylake"
-       pkgdesc="${_pkgdesc} 6th Gen Core processors including Skylake."
-       ;;
-     default)
-       # Note to me: DO NOT EVER REMOVE THIS. It's for the AUR PKGBUILD parser.
-         pkgname="${pkgbase}"
-         pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)"
-         ;;
+      K8)
+        pkgname="${pkgbase}-k8" 
+        pkgdesc="${_pkgdesc} AMD K8 optimized."
+	      ;;
+      K10)
+        pkgname="${pkgbase}-k10"
+	      pkgdesc="§{_pkgdesc} AMD K10 optimized"
+        ;;
+      BARCELONA)
+        pkgname="${pkgbase}-barcelona"
+        pkgdesc="${_pkgdesc} AMD Barcelona optimized."
+	      ;;
+      BOBCAT)
+	      pkgname="${pkgbase}-bobcat"
+	      pkgdesc="${_pkgdesc} AMD Bobcat optimized."
+	      ;;
+      BULLDOZER)
+	      pkgname="${pkgbase}-bulldozer"
+	      pkgdesc="${_pkgdesc} AMD Bulldozer optimized."
+	      ;;
+      PILEDRIVER)
+	      pkgname="${pkgbase}-piledriver"
+	      pkgdesc="${_pkgdesc} AMD Piledriver optimized."
+	      ;;
+      PSC)
+        pkgname="${pkgbase}-psc"
+        pkgdesc="${_pkgdesc} Intel Pentium4/D/Xeon optimized."
+        ;;
+      ATOM)
+        pkgname="${pkgbase}-atom"
+        pkgdesc="${_pkgdesc} Intel Atom optimized."
+        ;;
+      PENTIUMII)
+        pkgname="${pkgbase}-p2"
+        pkgdesc="${_pkgdesc} Intel Pentium2 optimized."
+        ;;
+      PENTIUMIII)
+        pkgname="${pkgbase}-p3"
+        pkgdesc="${_pkgdesc} Intel Pentium3 optimized."
+        ;;
+      PENTIUMM)
+        pkgname="${pkgbase}-pm"
+        pkgdesc="${_pkgdesc} Intel Pentium-M optimized."
+        ;;
+      PENTIUM4)
+        pkgname="${pkgbase}-p4"
+        pkgdesc="${_pkgdesc} Intel Pentium4 optimized."
+        ;;
+      NEHALEM)
+	      pkgname="${pkgbase}-nehalem"
+        pkgdesc="${_pkgdesc} Intel Core Nehalem optimized."
+	      ;;
+      SANDYBRIDGE)
+        pkgname="${pkgbase}-sandybridge"
+        pkgdesc="${_pkgdesc} Intel 2nd Gen Core processors including Sandy Bridge."
+	      ;;
+      IVYBRIDGE)
+        pkgname="${pkgbase}-ivybridge"
+        pkgdesc="${_pkgdesc} Intel 3rd Gen Core processors including Ivy Bridge."
+	      ;;
+      HASWELL)
+        pkgname="${pkgbase}-haswell"
+        pkgdesc="${_pkgdesc} 4th Gen Core processors including Haswell."
+	      ;;
+      BROADWELL)
+        pkgname="${pkgbase}-broadwell"
+        pkgdesc="${_pkgdesc} 5th Gen Core processors including Broadwell."
+	      ;;
+      SILVERMONT)
+        pkgname="${pkgbase}-silvermont"
+        pkgdesc="${_pkgdesc} 6th Gen Core processors including Silvermont."
+	      ;;
+      SKYLAKE)
+        pkgname="${pkgbase}-skylake"
+        pkgdesc="${_pkgdesc} 6th Gen Core processors including Skylake."
+        ;;
+      default)
+        # Note to me: DO NOT EVER REMOVE THIS. It's for the AUR PKGBUILD parser.
+        pkgname="${pkgbase}"
+        pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)"
+        ;;
     esac
 
 
-  if [[ "$pkgname" != "$pkgbase" ]]; then
-    # If optimized build, conflict with generi
-    conflicts=('linux-pf')
-    provides+=(${pkgbase}=$pkgver) 
+    if [[ "$pkgname" != "$pkgbase" ]]; then
+      # If optimized build, conflict with generi
+      conflicts=('linux-pf')
+      provides+=(${pkgbase}=$pkgver) 
+    fi
   fi
- fi
 
   echo
   echo "    ========================================"
   msg  "The packages will be named ${pkgnameopt} and"
   if [[ "$cpuopt" ]]; then
-       msg  "and ${pkgbase}-${headers}-${cpuopt}"
+    msg  "and ${pkgbase}-${headers}-${cpuopt}"
   else
-       msg  "and ${pkgbase}-${headers}"
+    msg  "and ${pkgbase}-${headers}"
   fi
   msg  "${pkgdesc}"
   echo "    ========================================"
   echo
 
- ### package_linux-pf
+  ### package_linux-pf
 
   cd "${srcdir}/linux-${_basekernel}"
 
   KARCH=x86
 
   echo # get kernel version
-   _kernver="$(make LOCALVERSION= kernelrelease)"
+  _kernver="$(make LOCALVERSION= kernelrelease)"
 
   mkdir -p "${pkgdir}"/{usr/lib/modules,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
@@ -475,7 +475,7 @@ _package() {
   # add vmlinux
   install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
   
-# end c/p
+  # end c/p
 }
 
 ### package_linux-pf-headers
@@ -485,13 +485,13 @@ _package-headers() {
   depends=('linux-pf') 
   cd "${srcdir}/linux-${_basekernel}"
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
-# c/p from linux-ARCH
+  # c/p from linux-ARCH
 
   install -dm755 "${_builddir}"
 
   # only install objtool when stack validation is enabled
   if grep -q CONFIG_STACK_VALIDATION=y .config   ; then
-      install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
+    install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
   fi
   
   cd "${srcdir}/${_srcname}"
@@ -501,7 +501,7 @@ _package-headers() {
   mkdir -p "${_builddir}/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia rdma scsi soc sound trace uapi video xen; do
+                media net pcmcia rdma scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${_builddir}/include/"
   done
 
@@ -542,7 +542,7 @@ _package-headers() {
   ### LINE THAT CAUSES MAKEPKG TO END IN AN ERROR
   ###
   if [ -d include/config/dvb/ ]; then
-      install -Dm644 -t "${_builddir}/include/config/dvb/" include/config/dvb/*.h 
+    install -Dm644 -t "${_builddir}/include/config/dvb/" include/config/dvb/*.h 
   fi
   
   # add xfs and shmem for aufs building
@@ -607,16 +607,16 @@ _package-preset-default()
   
   # install pacman hooks
   sed "${_subst}" "${srcdir}"/60-linux.hook |
-      install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
   sed "${_subst}" "${srcdir}"/90-linux.hook |
-      install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
   
   # set correct depmod command for install
   #sed \
-  #  -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-  #  -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-  #  -i "${startdir}/linux.install"
-   sed \
+    #  -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
+    #  -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
+    #  -i "${startdir}/linux.install"
+  sed \
     -e "1s|'linux.*'|'${pkgbase}'|" \
     -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
     -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
@@ -656,3 +656,4 @@ sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'f73ae14d43e4235843cb3b46b4ce64a85a13d1f943c86b23864b3d448bc0ed20'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
+# vim:set ts=2 sw=2 tw=0 et:
