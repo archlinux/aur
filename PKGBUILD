@@ -10,11 +10,11 @@ url="https://github.com/yuzu-emu/yuzu/"
 license=('GPL2')
 makedepends=('git' 'cmake' 'sdl2' 'qt5-base' 'shared-mime-info' 'desktop-file-utils' 'python2')
 source=("$_pkgbase::git+https://github.com/yuzu-emu/yuzu"
-        'git+https://github.com/yuzu-emu/ext-boost'
-        'git+https://github.com/philsquared/Catch'
-        'git+https://github.com/MerryMage/dynarmic'
-        'git+https://github.com/herumi/xbyak'
-        'git+https://github.com/fmtlib/fmt'
+	'git+https://github.com/yuzu-emu/ext-boost'
+	'git+https://github.com/philsquared/Catch'
+	'git+https://github.com/MerryMage/dynarmic'
+	'git+https://github.com/herumi/xbyak'
+	'git+https://github.com/fmtlib/fmt'
 	'git+https://github.com/svn2github/inih'
 	'git+https://github.com/yuzu-emu/unicorn'
 	'git+https://github.com/lz4/lz4'
@@ -23,17 +23,17 @@ source=("$_pkgbase::git+https://github.com/yuzu-emu/yuzu"
 	# cubeb submodule dependencies
 	'git+https://github.com/arsenm/sanitizers-cmake')
 md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP')
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgbase"
@@ -55,8 +55,6 @@ prepare() {
 	git config submodule.opus.url "$srcdir/opus"
 	git config submodule.cubeb.url "$srcdir/cubeb"
 	git submodule update
-	
-
 
 	cd externals/cubeb
 	git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
