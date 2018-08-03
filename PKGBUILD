@@ -18,9 +18,6 @@ _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
   IVYBRIDGE HASWELL BROADWELL SILVERMONT SKYLAKE)
-_CPUSUFFIXES=( core2 k7 k8 k10 barcelona bobcat
-	       bulldozer piledriver psc atom p2 p3 pm p4
-	       nehalem sandybridge ivybridge haswell broadwell silvermont skylake)
 
 ### PATCH AND BUILD OPTIONS
 #
@@ -318,12 +315,8 @@ _package() {
 	    'nvidia-pf: NVIDIA drivers for linux-pf'
 	    'nvidia-beta-all: NVIDIA drivers for all installed kernels'
 	    'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
- provides=(${pkgbase}=$pkgver 'linux-tomoyo')
- # If generic build, then conflict with all optimized ones
- conflicts=()
- for _cpusuffix in $_CPUSUFFIXES ; do
-   conflicts+=(${pkgbase}-${_cpusuffix}) 
- done  
+ provides=('linux-tomoyo')
+
  replaces=('kernel26-pf')
 
  cd "${srcdir}/linux-${_basekernel}"
@@ -427,23 +420,12 @@ _package() {
     esac
 
 
-  # If optimized build, conflict with generic and other optimized ones
-
   if [[ "$pkgname" != "$pkgbase" ]]; then
-	echo pkgname $pkgname
-	cpuopt=$(sed -e "s/linux-pf-//" <<<$pkgnameopt)		# get suffix
-	cpuoptdesc=$(sed -e "s/${_pkgdesc}//" <<<$pkgdesc)	# get description
-	conflicts=(${conflicts[@]/linux-pf-${cpuopt}/})		# remove current
-	conflicts=(${conflicts[@]/linux-pf-headers-${cpuopt}/})	# remove current's headers
-	export cpuopt cpuoptdesc
+    # If optimized build, conflict with generi
+    conflicts=('linux-pf')
+    provides+=(${pkgbase}=$pkgver) 
   fi
-
-  # second batch check ends here
  fi
-
- # Pass conflicts array to linux-pf-headers() BEFORE adding generic linux-pf or headers will conflict
- export _conflicts=${conflicts[@]}
- conflicts=('linux-pf' 'kernel26-pf' ${conflicts[@]})	# add generic packages
 
   echo
   echo "    ========================================"
@@ -496,8 +478,6 @@ _package-headers() {
   pkgname=${pkgbase}-headers
   pkgdesc="Header files and scripts for building modules for linux-pf kernel."
   depends=('linux-pf') 
-  conflicts=( "${pkgbase}"-headers) 
-  provides=( "${pkgbase}-headers=$pkgver" )
   cd "${srcdir}/linux-${_basekernel}"
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 # c/p from linux-ARCH
