@@ -16,6 +16,7 @@ pkgbase = bitwarden-bin
 	depends = nss
 	provides = bitwarden
 	conflicts = bitwarden
+	replaces = bitwarden
 	options = !strip
 	options = !emptydirs
 	source = https://github.com/bitwarden/desktop/releases/download/v1.4.0/Bitwarden-1.4.0-amd64.deb
