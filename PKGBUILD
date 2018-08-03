@@ -2,8 +2,8 @@
 
 pkgname=jfed
 _pkgname=jFed
-pkgver=5.8.0
-pkgrel=2
+pkgver=5.9.0
+pkgrel=1
 pkgdesc="jFed is a Java-based framework  for testbed federation"
 arch=('x86_64')
 url="http://jfed.iminds.be/"
@@ -15,7 +15,7 @@ source=(
     "http://jfed.iminds.be/downloads/stable/installers/${_pkgname}_linux_${pkgver//./_}.deb"
     "jFed-Experimenter.desktop"
     )
-md5sums=('c8c63962349bf52be525c180ac918bb7'
+md5sums=('000b8be8998498bd992c7461dccd7423'
          '9e73fa7a04bf623897057e402f6ac5c6')
 
 package() {
