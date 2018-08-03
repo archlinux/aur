@@ -1,13 +1,15 @@
-# Maintainer: Justus Piater <Justus-dev at Piater dot name>
-pkgname=('syncevolution' 'syncevolution-http')
+# Maintainer: Doron Behar <doron.behar@gmail.com>
+# Contributer: Justus Piater <Justus-dev at Piater dot name>
+
+pkgname=syncevolution-nogui
 pkgver=1.5.3
 pkgrel=1
 pkgdesc="Synchronize PIM data via various protocols"
 arch=('x86_64')
 url="https://syncevolution.org/"
 license=('LGPL')
-depends=('evolution-data-server' 'libgnome-keyring' 'neon' 'openobex' 'python2' 'libunique')
-makedepends=('intltool' 'boost' 'python')
+depends=('libgnome-keyring' 'neon' 'openobex' 'libunique')
+makedepends=('intltool' 'boost' 'python' 'kdelibs')
 #changelog=
 source=("https://download.01.org/syncevolution/syncevolution/sources/syncevolution-$pkgver.tar.gz"
         "$pkgname-$pkgver-sslcert.patch"
@@ -31,35 +33,24 @@ build() {
     ./configure --prefix=/usr                        \
                 --libexecdir=/usr/lib/syncevolution  \
                 --sysconfdir=/etc                    \
+                --enable-maemo                       \
                 --enable-bluetooth                   \
                 --enable-core                        \
+                --enable-cmdline                     \
+                --enable-local-sync                  \
                 --enable-dbus-service                \
                 --enable-notify                      \
                 --enable-notify-compatibility        \
-                --enable-gui                         \
+                --disable-ebook                      \
+                --disable-ecal                       \
+                --enable-kwallet                     \
                 --enable-pbap                        \
+                --enable-sqlite                      \
                 --enable-dav
     make
 }
 
-package_syncevolution() {
+package() {
     cd "$pkgbase-$pkgver"
     make DESTDIR="$pkgdir/" install
-    rm -df "$pkgdir/usr/bin/syncevo-http-server" \
-           "$pkgdir/usr/lib/syncevolution/test"
-}
-
-package_syncevolution-http() {
-    pkgdesc="Synchronize PIM data via various protocols (HTTP server)"
-    arch=('any')
-    depends=('syncevolution'
-             'python2-dbus'
-             'python2-twisted'
-             'python2-gobject2'
-             'python2-pyopenssl'
-             'python2-service-identity')
-    #changelog=
-
-    /usr/bin/install -D "$pkgbase-$pkgver/test/syncevo-http-server.py" \
-                        "$pkgdir/usr/bin/syncevo-http-server"
 }
