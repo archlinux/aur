@@ -1,5 +1,5 @@
 pkgname=pacman-fix-permissions
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="small Python script to fix broken Arch Linux filesystem permissions"
 arch=('any')
