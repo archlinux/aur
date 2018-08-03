@@ -4,12 +4,13 @@
 _gemname=gh
 pkgname=ruby-$_gemname
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='layered github client'
 arch=(any)
 url='http://gh.rkh.im/'
 license=(MIT)
 depends=(ruby ruby-faraday ruby-backports ruby-multi_json ruby-addressable ruby-net-http-persistent ruby-net-http-pipeline)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

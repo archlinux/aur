@@ -1,10 +1,11 @@
 pkgbase = ruby-gh
 	pkgdesc = layered github client
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gh.rkh.im/
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-faraday
 	depends = ruby-backports
