@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=nodejs-terminalizer
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Record your terminal and generate animated gif images"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gconf" "gtk3" "libxss" "nodejs" "npm" "nss")
 source=("https://registry.npmjs.org/${pkgname#nodejs-}/-/${pkgname#nodejs-}-${pkgver}.tgz")
 noextract=("${pkgname#nodejs-}-${pkgver}.tgz")
-sha1sums=("edf035fbb304915260e8cf633c8cb5755d41ee22")
+sha1sums=("81075b433f8e190510aee34325a923fb5cae93ed")
 
 package() {
   cd "${srcdir}"
@@ -21,4 +21,7 @@ package() {
   msg2 "Installing license file in /usr/share/licenses/${pkgname} ..."
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm755 "${pkgdir}/usr/lib/node_modules/terminalizer/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
+  
+  msg2 "Changing permissions to remove the world writable bit set"
+  chmod go-w -R "${pkgdir}"
 }
