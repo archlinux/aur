@@ -5,7 +5,7 @@ pkgdesc='Ledger Hardware Wallet management software'
 pkgbin=ledger-live-desktop
 license=('MIT')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
-pkgver=1.0.7
+pkgver=1.1.0
 pkgrel=1
 arch=('x86_64')
 package="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
@@ -14,7 +14,7 @@ options=(!strip)
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${package}"
 )
-sha512sums_x86_64=(60300009104c30f621c749ecb28c41627bf728b9e74994fc0e7dc76c33f11d7f954e913251d5ac5cdb684c6874bbb617af5012dda6293960b0465cf9fe3af1f1)
+sha512sums_x86_64=(9f075006e355e8bcc9c441c21c9b496ea162eaf47278bcf8234721186920f79da3a1996293cca7789359bf70f6f42530455ce11ec9f5f932c88feb8fad71aeca)
 
 prepare() {
 	gendesk -f -n \
