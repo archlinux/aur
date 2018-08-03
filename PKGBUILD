@@ -2,7 +2,7 @@
 # Contributor: Hervé Bitteur <herve.bitteur@audiveris.com>
 _pkgname=audiveris
 pkgname="${_pkgname}-git"
-pkgver=r4133.0bf682689
+pkgver=5.1.0.rc.r0.g0bf682689
 pkgrel=1
 pkgdesc="Music score OMR engine - current"
 arch=('x86_64')
@@ -26,12 +26,12 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'c697bdc3ff8b6c6e0efc273778f470e26971f250eeab89208688cf2dd2ef0517'
+  '1c0ee49fc9ba9aa5d3dc260e649f0914d68ed8b18b40af2326763842e8d5ff46'
 )
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

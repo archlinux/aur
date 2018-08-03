@@ -1,6 +1,6 @@
 pkgbase = audiveris-git
 	pkgdesc = Music score OMR engine - current
-	pkgver = r4133.0bf682689
+	pkgver = 5.1.0.rc.r0.g0bf682689
 	pkgrel = 1
 	url = https://github.com/Audiveris/audiveris
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = audiveris-git
 	source = audiveris-git::git+https://github.com/Audiveris/audiveris.git
 	source = audiveris
 	sha256sums = SKIP
-	sha256sums = c697bdc3ff8b6c6e0efc273778f470e26971f250eeab89208688cf2dd2ef0517
+	sha256sums = 1c0ee49fc9ba9aa5d3dc260e649f0914d68ed8b18b40af2326763842e8d5ff46
 
 pkgname = audiveris-git
 
