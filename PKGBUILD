@@ -2,7 +2,7 @@
 
 _pkgbase='gtimelog'
 pkgname=gtimelog-collabora-git
-pkgver=r335.4527014
+pkgver=r336.9fa4920
 pkgrel=1
 pkgdesc="A time tracking application: Collabora repository."
 provides=('gtimelog')
@@ -22,10 +22,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgbase"
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$_pkgbase"
 }
 
 build() {
