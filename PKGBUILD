@@ -6,7 +6,7 @@ pkgver=2.82
 pkgrel=1
 arch=('any')
 url="http://bioq5jbcnfopqwvk7qssaxcl7avzeta6mu72jmxjeowflpcrhf6q.b32.i2p/transmission"
-depends=('i2pd' 'openssl-1.0')
+depends=('i2pd' 'openssl-1.0' 'intltool')
 #('curl' 'libidn2' 'libnghttp2' 'libssh2' 'libpsl') # TODO: are these deps transitive?
 makedepends=('git')
 license=('MIT')
