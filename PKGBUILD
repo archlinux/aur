@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-lt
-pkgver=2.49.3
+pkgver=2.49.4
 pkgrel=1
 _lang=lt
 pkgdesc="Lithuanian language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha256sums=('eaa111e36cf541f60cc88f29728cfd142fbe21fdb908742ab5292827b9e0c1e4')
+sha256sums=('3d2e50c71a1a415cb1be63b239bde489da2d6a32fcae0bf78e03144c461a31b2')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
