@@ -1,7 +1,7 @@
 pkgbase = starquew
 	pkgdesc = A lightweight, web based sequence generator and INDI client written in Python and React.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/faressoft/terminalizer
 	install = install
 	arch = any
