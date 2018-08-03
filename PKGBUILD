@@ -11,7 +11,7 @@ _pkgname=clion
 _dlname=CLion
 pkgver=182.3684.76
 _dlver=2018.2
-pkgrel=2
+pkgrel=3
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('x86_64')
 options=(!strip)
@@ -26,6 +26,7 @@ noextract=("${_dlname}-${_dlver}.tar.gz")
 backup=("opt/${pkgbase}/bin/clion64.vmoptions")
 
 build() {
+    rm -rf "${srcdir}/opt"
     mkdir -p "${srcdir}/opt/${pkgbase}"
     bsdtar --strip-components 1 -xf "${_dlname}-${_dlver}.tar.gz" \
            -C "${srcdir}/opt/${pkgbase}"
