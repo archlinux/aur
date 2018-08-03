@@ -1,0 +1,30 @@
+diff -ruN fribidi/test/test-runner.py patched/test/test-runner.py
+--- fribidi/test/test-runner.py	2018-08-03 15:45:55.064198589 +0200
++++ patched/test/test-runner.py	2018-08-03 15:46:13.544532687 +0200
+@@ -14,6 +14,7 @@
+ charset = sys.argv[2]
+ input_file = sys.argv[3]
+ reference_file = sys.argv[4]
++run_with_wine = False
+ 
+ if os.name == 'nt':
+   libpath = os.path.join(os.path.dirname(os.path.realpath(test_exe)),
+@@ -21,10 +22,16 @@
+                          'lib')
+   os.environ['PATH'] = libpath + ';' + os.environ['PATH']
+ 
++if os.environ.get('NEED_WINE') == '1':
++  run_with_wine = True
++
+ try:
+-  output = subprocess.check_output([test_exe, '--test', '--charset', charset, input_file])
++  if run_with_wine:
++    output = subprocess.check_output(['wine', test_exe, '--test', '--charset', charset, input_file])
++  else:
++    output = subprocess.check_output([test_exe, '--test', '--charset', charset, input_file])
+   ref_data = open(reference_file, "rb").read()
+-  if os.name == 'nt':
++  if os.name == 'nt' or run_with_wine:
+     output = output.replace(b'\r\n', b'\n')
+     ref_data = ref_data.replace(b'\r\n', b'\n') 
+   if output != ref_data:
