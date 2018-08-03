@@ -1,0 +1,17 @@
+pkgbase = starquew
+	pkgdesc = A lightweight, web based sequence generator and INDI client written in Python and React.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/faressoft/terminalizer
+	install = install
+	arch = any
+	license = GPLv3
+	depends = python
+	depends = python-pip
+	depends = redis
+	optdepends = nginx
+	source = https://gulinux.net/downloads/StarQuew/ci-209/StarQuew-0.1.1-b209-Linux.tar.gz
+	md5sums = c3472786e3520876d83d7acfd2d491c8
+
+pkgname = starquew
+
