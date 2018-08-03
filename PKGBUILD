@@ -10,7 +10,10 @@ arch=('x86_64')
 url="https://github.com/Takios/download-with-kget"
 license=('MPL2')
 groups=()
-depends=('git')
+depends=(
+	'git'
+	'python-pydbus'
+)
 makedepends=()
 checkdepends=()
 optdepends=()

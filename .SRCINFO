@@ -6,6 +6,7 @@ pkgbase = download-with-kget-native-git
 	arch = x86_64
 	license = MPL2
 	depends = git
+	depends = python-pydbus
 	provides = download-with-kget
 	source = git+https://github.com/Takios/download-with-kget
 	source = Makefile.patch
