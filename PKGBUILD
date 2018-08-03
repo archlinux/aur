@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-libthai
-pkgver=0.1.27
+pkgver=0.1.28
 pkgrel=1
 pkgdesc="Thai language support routines (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-configure' 'libdatrie')
 depends=('mingw-w64-crt' 'mingw-w64-libdatrie')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://linux.thai.net/pub/thailinux/software/libthai/libthai-${pkgver}.tar.xz")
-sha256sums=('1659fa1b7b1d6562102d7feb8c8c3fd94bb2dc5761ed7dbaae4f300e1c03eff6')
+sha256sums=('ffe0a17b4b5aa11b153c15986800eca19f6c93a4025ffa5cf2cab2dcdf1ae911')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
