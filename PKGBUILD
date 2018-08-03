@@ -13,7 +13,7 @@ makedepends=('python')
 source=("https://github.com/hyperledger/indy-crypto/archive/v$pkgver.tar.gz") 
 
 package() {
-  cd $srcdir/indy-crypto-master
+  cd $srcdir/indy-crypto-$pkgver
   cd wrappers/python
   python setup.py install -O1 --root="$pkgdir"
 }
