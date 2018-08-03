@@ -3,7 +3,7 @@ Description=TPM2 Server Implementation by IBM
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/tpm2_server
+ExecStart=/usr/bin/tpm_server
 
 [Install]
 WantedBy=multi-user.target
