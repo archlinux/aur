@@ -1,6 +1,6 @@
 pkgbase = zef
 	pkgdesc = Perl6 Module Management
-	pkgver = 0.4.4
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/ugexe/zef
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = zef
 	makedepends = git
 	depends = perl6
 	options = !purge
-	source = zef-0.4.4.tar.gz::https://codeload.github.com/ugexe/zef/tar.gz/v0.4.4
-	sha256sums = 1bbc418e32b71500efcaa7aee9b2292ae4e13fef8563a319fa8218a32c14d879
+	source = zef-0.4.6.tar.gz::https://codeload.github.com/ugexe/zef/tar.gz/v0.4.6
+	sha256sums = 5aa3b7d20d66a5da8dc07a60ec4cf89ce888ec0ea99dbf877ed25fd05de17030
 
 pkgname = zef
 
