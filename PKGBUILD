@@ -5,7 +5,7 @@
 # or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" '/pkgid/{ sub(".*-","",$4); print $4": "$10 }'
 
 pkgname=google-chrome-dev
-pkgver=69.0.3497.23
+pkgver=70.0.3510.0
 pkgrel=1
 pkgdesc="The popular and trusted web browser by Google (Dev Channel)"
 arch=('x86_64')
@@ -26,13 +26,13 @@ _channel=unstable
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         'eula_text.html'
         "google-chrome-$_channel.sh")
-md5sums=('fca022ad3e1123b317b25c19cffdb459'
+md5sums=('32da2d3fa1fa10e24025957b8692602b'
          'd50d8f0a6940791eabc41c4f64e6a3cf'
          '11b55a3fec7279db32b63e3a0b97dc01')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
-#source[0]="https://dl.google.com/linux/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_69.0.3497.12-1_amd64.deb"
-#md5sums[0]='6b434445661d87c41af3b65f70aa5da4'
+#source[0]="https://dl.google.com/linux/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_69.0.3497.23-1_amd64.deb"
+#md5sums[0]='fca022ad3e1123b317b25c19cffdb459'
 
 package() {
   msg2 "Extracting the data.tar.xz..."
