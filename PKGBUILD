@@ -4,12 +4,13 @@
 _gemname=pusher-client
 pkgname=ruby-$_gemname
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Client for consuming WebSockets from http://pusher.com'
 arch=(any)
 url='http://github.com/pusher/pusher-ruby-client'
 license=(MIT)
 depends=(ruby ruby-websocket ruby-json)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
