@@ -1,5 +1,5 @@
 pkgbase = gdc
-	pkgver = 8.1.1+20180531
+	pkgver = 8.2.0
 	pkgrel = 1
 	url = https://github.com/D-Programming-GDC/GDC
 	arch = i686
@@ -7,12 +7,12 @@ pkgbase = gdc
 	license = GPL
 	makedepends = binutils>=2.26
 	makedepends = git
-	source = https://sources.archlinux.org/other/gcc/gcc-8.1.1-20180531.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.19.tar.bz2
 	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git
 	source = git+https://github.com/D-Programming-GDC/GDMD.git
 	source = paths.diff
-	sha256sums = a92eb923a4368548666acfc619074c76c4f6cdc34c9348f7e7aa56656aaee0d5
+	sha256sums = 196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080
 	sha256sums = d59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8
 	sha256sums = SKIP
 	sha256sums = SKIP
