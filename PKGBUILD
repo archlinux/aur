@@ -4,9 +4,9 @@
 # and https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=hyper-appimage
 
 pkgname=gingko
-pkgver=2.0.11
+pkgver=2.1.5
 pkgrel=1
-pkgdesc='Manage all your JetBrains Projects and Tools'
+pkgdesc='Gingko is a new kind of tool, that lets you shape your ideas with lists, outlines and cards, all in the same clean interface.'
 arch=('x86_64' 'i686')
 url='https://gingko.io/'
 license=('Commercial')
@@ -14,8 +14,6 @@ depends=()
 options=('!strip')
 source=("https://github.com/gingko/client/releases/download/v${pkgver}/gingko-client-${pkgver}-x86_64.AppImage"
         "gingko.desktop")
-sha512sums=('e3f9508579892d1c71f34b132c5f66990d8b2660c081e9dbd61f5ec3e5919ea9f248451b3bf8d7764273522b3a22682907f7cb88ea73aab8866be03bb8dfe778'
-            'c11e9c2541211d0ff43d4ff26fd23f6c64d8bb8008bddbbe174a420a69cc981120c3c5466e47894515fee0dbaccd95309eb61a16ffc3b3193af0609e62b46820')
 
 prepare() {
     chmod +x "${srcdir}/gingko-client-${pkgver}-x86_64.AppImage"
@@ -41,3 +39,5 @@ package() {
   find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
   chmod +x "${pkgdir}/opt/${pkgname}/gingko-client"
 }
+sha512sums=('702dfc2ea70d3e211b683b00301cee4bf47f4158bf350da268b185d0d266ad5d97f388e2e1245ef272df7f42b67c0997618d1b95723b98a56b365e2e541d47b8'
+            'c11e9c2541211d0ff43d4ff26fd23f6c64d8bb8008bddbbe174a420a69cc981120c3c5466e47894515fee0dbaccd95309eb61a16ffc3b3193af0609e62b46820')
