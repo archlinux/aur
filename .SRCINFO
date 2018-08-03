@@ -1,6 +1,6 @@
 pkgbase = icinga2
 	pkgdesc = An open source host, service and network monitoring program
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = http://www.icinga.org
 	install = icinga2.install
@@ -47,10 +47,10 @@ pkgbase = icinga2
 	backup = etc/icinga2/scripts/mail-service-notification.sh
 	backup = etc/icinga2/zones.conf
 	backup = etc/logrotate.d/icinga2
-	source = https://github.com/Icinga/icinga2/archive/v2.9.0.tar.gz
+	source = https://github.com/Icinga/icinga2/archive/v2.9.1.tar.gz
 	source = icinga2.tmpfiles
 	source = icinga2.sysusers
-	sha256sums = 74fe8a14c315f5a01831cca88bd7382a0e6e8ecbb90a1c58054a1bcca622f40d
+	sha256sums = dbc01ee0ac8e981a99b998f17fb87a6c338be7cdbbec7680ad8935c9a638d934
 	sha256sums = 1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c
 	sha256sums = 2f946a33ea50a3c4400a81acd778e6411ffe5e2257a98004288b84a64f382810
 
