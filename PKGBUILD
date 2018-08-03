@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=minc-toolkit-v2
-pkgver=1.9.16
-pkgrel=2
+pkgver=1.9.17
+pkgrel=1
 pkgdesc="Medical Imaging NetCDF Toolkit"
 arch=('any')
 url="https://www.mcgill.ca/bic/software/minc"
