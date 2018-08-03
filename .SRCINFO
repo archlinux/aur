@@ -1,14 +1,14 @@
 pkgbase = icingaweb2-module-grafana
 	pkgdesc = Grafana module for Icinga Web 2 (supports InfluxDB & Graphite)
-	pkgver = 1.2.3
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/Mikesch-mp/icingaweb2-module-grafana
 	arch = any
 	license = GPL
 	depends = icingaweb2
 	optdepends = grafana: rendering of graphs
-	source = icingaweb2-module-grafana-1.2.3.tar.gz::https://github.com/Mikesch-mp/icingaweb2-module-grafana/archive/v1.2.3.tar.gz
-	sha256sums = b2ad2991684df8ee17b3fe48e85ec759fc46c43c44c28027923feb5ca26f162f
+	source = icingaweb2-module-grafana-1.2.5.tar.gz::https://github.com/Mikesch-mp/icingaweb2-module-grafana/archive/v1.2.5.tar.gz
+	sha256sums = 5f42524b22939f4e29184c1ee62dae5d208ec2848e75b8851c8b261fd5efcdda
 
 pkgname = icingaweb2-module-grafana
 
