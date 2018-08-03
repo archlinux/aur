@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Microsoft Teams
+Comment=Desktop version of Microsoft Teams
+Exec=microsoft-teams
+StartupWMClass=microsoft-teams
+Icon=microsoft-teams
+Terminal=false
+Type=Application
+Categories=Network;
+X-Desktop-File-Install-Version=0.22
