@@ -1,9 +1,9 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2018.2.0
-_build=f2
-_buildtag=20180711
-_randomstring=10189b18f56e
+_version=2018.2.1
+_build=f1
+_buildtag=20180703
+_randomstring=48afb4a72b1a
 _prefix=/opt/Unity
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
@@ -18,7 +18,7 @@ license=('custom')
 depends=('unity-editor')
 makedepends=('gtk2' 'libsoup' 'libarchive')
 source=("${_unitydownloads}/UnitySetup-${_version}${_build}")
-sha1sums=('a8d71b86c8a8f3bbccdf813c3bc67b3dd92c728d')
+sha1sums=('ed3906b2607db3b806be153f8062990268af76ac')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
