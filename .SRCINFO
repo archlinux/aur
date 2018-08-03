@@ -1,11 +1,12 @@
 pkgbase = cquery-git
 	pkgdesc = Low-latency vscode language server for large C++ code-bases, powered by libclang.
 	pkgver = 1942.3ac1ff24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cquery-project/cquery/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	depends = clang
 	source = git+https://github.com/cquery-project/cquery.git
 	md5sums = SKIP
