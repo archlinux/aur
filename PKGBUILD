@@ -1,9 +1,9 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 # Contributor: Carl George < arch at cgtx dot us >
 
-pkgname="mkdocs"
-pkgver="0.17.4"
-pkgrel="1"
+pkgname=mkdocs
+pkgver=1.0
+pkgrel=1
 pkgdesc="Project documentation with Markdown."
 arch=("any")
 url="http://www.mkdocs.org"
@@ -19,7 +19,7 @@ depends=(
     )
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.bash_completion")
-sha256sums=('8ac2bacccb21ad9b824121bbed5f97e1eb6635323726cf300e7ca6410bd5f5b0'
+sha256sums=('f731d2164cd6ca2e74dc63787a82aa904534f680f8d4867dc294d14b42f7a802'
             '66edd841378428e23fd617ff046fd8ea50b5cc5b70f3f3d50ac29bd5d33fd11f')
 
 build() {
