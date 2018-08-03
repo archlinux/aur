@@ -1,6 +1,6 @@
 pkgbase = foldingathome-beta
 	pkgdesc = Folding@Home is a distributed computing project which studies protein folding, misfolding, aggregation, and related diseases - beta version.
-	pkgver = 7.5.0
+	pkgver = 7.5.1
 	pkgrel = 1
 	url = https://foldingathome.org/
 	install = foldingathome.install
@@ -15,9 +15,9 @@ pkgbase = foldingathome-beta
 	provides = fahclient
 	conflicts = foldingathome
 	conflicts = fahclient
-	source = https://download.foldingathome.org/releases/beta/release/fahclient/debian-stable-64bit/v7.5/fahclient_7.5.0-64bit-release.tar.bz2
+	source = https://download.foldingathome.org/releases/beta/release/fahclient/debian-stable-64bit/v7.5/fahclient_7.5.1-64bit-release.tar.bz2
 	source = foldingathome.service
-	sha256sums = dcbb21e0838c8b26337dd69e0b72353c6a4542f377571510fe324b35205beff4
+	sha256sums = 69a2562a4bc30bf10e1954bedd8b96aaf57df7eafcfca828f29304fbbbc2521f
 	sha256sums = ad1bb4f104bc3446db7bb91a7d199bfeda5d80e15e08fe17bc69de1c276e2010
 
 pkgname = foldingathome-beta
