@@ -1,6 +1,6 @@
 pkgbase = unity-editor-lts-doc
 	pkgdesc = Unity User Manual and Scripting API Reference.
-	pkgver = 2017.4.6f1+20180703
+	pkgver = 2017.4.7f1+20180703
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = unity-editor-lts-doc
 	makedepends = libarchive
 	depends = unity-editor-lts
 	options = !strip
-	source = http://beta.unity3d.com/download/fbeab28dc46b/UnitySetup-2017.4.6f1
-	sha1sums = 85be018445e9df3ccc59733b2719eb1a8e95123b
+	source = http://beta.unity3d.com/download/1d86eef80e0a/UnitySetup-2017.4.7f1
+	md5sums = b3ae793ba7f9c5d6d334df7763b85049
 
 pkgname = unity-editor-lts-doc
 
