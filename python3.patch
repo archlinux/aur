@@ -1,0 +1,47 @@
+diff --git a/bin/ufo2otf b/bin/ufo2otf
+index fdfa2e6..bfbd9ca 100644
+--- a/bin/ufo2otf
++++ b/bin/ufo2otf
+@@ -25,7 +25,7 @@ from ufo2otf import FontError
+ 
+ def diagnostics():
+     e = FontError()
+-    print e
++    print(e)
+ 
+ def console():
+     from sys import exit
+diff --git a/ufo2otf/__init__.py b/ufo2otf/__init__.py
+index 65f245e..7ade949 100644
+--- a/ufo2otf/__init__.py
++++ b/ufo2otf/__init__.py
+@@ -1,3 +1,3 @@
+ import argparse
+-from compilers import Compiler
+-from diagnostics import diagnostics, FontError
++from .compilers import Compiler
++from .diagnostics import diagnostics, FontError
+diff --git a/ufo2otf/compilers.py b/ufo2otf/compilers.py
+index 2014bfd..f012639 100644
+--- a/ufo2otf/compilers.py
++++ b/ufo2otf/compilers.py
+@@ -4,7 +4,7 @@
+ from os import mkdir
+ from os.path import splitext, dirname, sep, join, exists, basename
+ from subprocess import Popen
+-from diagnostics import diagnostics, known_compilers, FontError
++from .diagnostics import diagnostics, known_compilers, FontError
+ import codecs
+ import re
+ 
+diff --git a/ufo2otf/diagnostics.py b/ufo2otf/diagnostics.py
+index 2271af2..eff7316 100644
+--- a/ufo2otf/diagnostics.py
++++ b/ufo2otf/diagnostics.py
+@@ -158,5 +158,5 @@ class FontError(Exception):
+ if __name__ == "__main__":
+     # This will print diagnostics to stdout
+     e = FontError()
+-    print e
++    print(e)
+ 
