@@ -5,7 +5,6 @@ After=authdaemond.service
 
 [Service]
 Type=forking
-ExecStartPre=/usr/bin/sh -c "[ -d /var/run/courier ] || mkdir -p /var/run/courier && chown courier:courier /var/run/courier"
 ExecStart=/usr/sbin/courier start
 ExecStop=/usr/sbin/courier stop
 

@@ -7,8 +7,8 @@
 # Go read http://www.courier-mta.org/install.html b4 running or building courier
 
 pkgname=courier-mta
-pkgver=0.78.2
-pkgrel=3
+pkgver=0.78.3
+pkgrel=1
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -36,19 +36,19 @@ source=(http://downloads.sourceforge.net/project/courier/courier/${pkgver}/couri
 	webmaild.service
 	courier-courierfilter.service
 	courier-mta.conf)
-sha1sums=('65d7e3c7217874e0343ce0f78fd39361a8d7e0b9'
-          '160f270d8214ac39adc0d1618bc981c59f080adf'
-          '71d07d57d3c211abf267be140ffb074ac2492448'
-          '6b06348e019e8883bcac314169e920f156ed1fa4'
-          '3c6e285fb83aaecab274ea313619cc7a6bf09e05'
-          '74462efddede8262ec047eb21edada596d38732d'
-          'e06cdb4014cb4c953dcedf6319eb31cc72a0c867'
-          '315a26f6c74a9a1bbf9fdc1329095a15db0b5fc6'
-          'd768b9759a2bca407cf225771c49a83428db2a2c'
+sha1sums=('2c4a553462fd982855a1223cd05028c3ccd99779'
+          '9feaa269795a85c1464c104d9268fb266ad1a666'
+          '0344ac948b189cae73d86f4565e40847c44772c9'
+          '920bd35afc0bf6e6ba5cf7b309210be4d2c76e18'
+          '47c289e743d1d513b7181e04bc8cb222ba7d7119'
+          '0c57caa214c3e4da976162e08fd4f575f2976d94'
+          '6cb5d9a472ff374089b0046362db899ffa4379a2'
+          '86a07e4deddca5c1b3d17d2bd59074781a93711a'
+          '20e07d4995d6028ef0a99333b31cc53d202ee6e9'
           'feb094c689a0c37c68f3b0c7e2b88eb5d572209f'
           '7c6e687d1cefe3139274b39c659351a503a3adb3'
-          '94703b7bb090754e78710df42f658407a5c0a798'
-          '2c9a51fac9adb1bfb71a9d2b00e417dba4a0c249'
+          'ecd2a51d62c038cff16558e6377c09f94f201146'
+          '24d07f37ba5150b08f68dc73c0a5e53ae50ee9d5'
           'ba376789c8c5db6a709d2c4657b5bcf090417221')
 
 build() {

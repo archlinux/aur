@@ -5,10 +5,9 @@ After=authdaemond.service
 
 [Service]
 Type=forking
-ExecStartPre=/usr/bin/sh -c "[ -d /var/run/courier ] || mkdir -p /var/run/courier && chown courier:courier /var/run/courier"
 ExecStart=/usr/sbin/imapd-ssl start
 ExecStop=/usr/sbin/imapd-ssl stop
-PIDFile=/var/run/courier/imapd-ssl.pid
+PIDFile=/run/courier/imapd-ssl.pid
 
 [Install]
 WantedBy=multi-user.target

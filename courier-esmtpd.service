@@ -5,10 +5,9 @@ After=authdaemond.service courier-courierfilter.service
 
 [Service]
 Type=forking
-ExecStartPre=/usr/bin/sh -c "[ -d /var/run/courier ] || mkdir -p /var/run/courier && chown courier:courier /var/run/courier"
 ExecStart=/usr/sbin/esmtpd start
 ExecStop=/usr/sbin/esmtpd stop
-PIDFile=/var/run/courier/esmtpd.pid
+PIDFile=/run/courier/esmtpd.pid
 
 [Install]
 WantedBy=multi-user.target
