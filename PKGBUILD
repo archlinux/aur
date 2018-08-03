@@ -2,7 +2,7 @@
 # Contributor: GreaterFire <GreaterFire@protonmail.com>
 pkgname=trojan-git
 pkgver=r237.42f4fe9
-pkgrel=1
+pkgrel=2
 pkgdesc="An unidentifiable mechanism that helps you bypass GFW"
 arch=('x86_64')
 url="https://github.com/trojan-gfw/trojan"
@@ -11,7 +11,7 @@ depends=('boost-libs' 'libmariadbclient')
 optdepends=('ca-certificates: server certificate verification'
             'mariadb: advanced user management')
 makedepends=('git' 'cmake' 'boost' 'openssl' 'libmariadbclient')
-checkdepends=('openssl' 'python2' 'curl')
+checkdepends=('openssl' 'python' 'curl')
 conflicts=('trojan')
 provides=('trojan')
 source=("$pkgname::git+$url")
