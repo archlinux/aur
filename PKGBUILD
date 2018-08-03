@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=nginx-mod-nchan
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 
 _nginxver=1.14.0
@@ -17,7 +17,7 @@ source=(
     https://github.com/slact/nchan/archive/v${pkgver}.tar.gz
 )
 sha256sums=('5d15becbf69aba1fe33f8d416d97edd95ea8919ea9ac519eff9bafebb6022cb5'
-            'c13438c045521d7865f51e4cb842fc0f16758634a8c50c9fee90846a46d60dc9')
+            '7bb3ae57a036afabee1da5e40085b69b3fd68026fcc1d8abc98a8ad9f5dccc44')
 
 build() {
     cd "$srcdir"/nginx-$_nginxver
