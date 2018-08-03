@@ -13,9 +13,8 @@ arch=('x86_64')
 url="https://github.com/SirPatrickCZ/st"
 license=('MIT')
 options=('zipman')
-depends=('libxft')
-makedepends=('git' 'libxext' 'ncurses')
-optdepends=('xorg-fonts-misc')
+depends=('libxft' 'libxext' 'xorg-fonts-misc')
+makedepends=('git' 'ncurses')
 conflicts=('st')
 source=("st::git+https://github.com/SirPatrickCZ/st.git#branch=master")
 md5sums=('SKIP')
@@ -39,4 +38,6 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   make PREFIX=/usr DESTDIR="${pkgdir}" TERMINFO="$pkgdir/usr/share/terminfo" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
 }

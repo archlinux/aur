@@ -6,10 +6,10 @@ pkgbase = st-spcz-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = libxext
 	makedepends = ncurses
 	depends = libxft
-	optdepends = xorg-fonts-misc
+	depends = libxext
+	depends = xorg-fonts-misc
 	conflicts = st
 	options = zipman
 	source = st::git+https://github.com/SirPatrickCZ/st.git#branch=master
