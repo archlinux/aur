@@ -1,6 +1,6 @@
 # Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
 pkgname=arsdk3
-pkgver=3.11.1
+pkgver=3.14.0
 pkgrel=3
 pkgdesc="The SDK for Parrot Bebop drones"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('repo' 'python' 'python2')
 
 prepare() {
 	cd "$srcdir"
-	repo init -u arsdk_manifests -b refs/tags/ARSDK3_version_3_13_1 \
+	repo init -u arsdk_manifests -b refs/tags/ARSDK3_version_${pkgver//./_} \
 			--no-clone-bundle --depth=1
 	repo sync
 }
