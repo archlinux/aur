@@ -1,8 +1,13 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
+#
 # You can find the PGP signing key (573ACDA6) here: https://keybase.io/threema
+#
+# To directly download the key:
+#   curl https://keybase.io/threema/pgp_keys.asc | gpg --import
+#   gpg --lsign E7ADD9914E260E8B35DFB50665FDE935573ACDA6
 pkgname=threema-web
-pkgver=1.8.2
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="The Threema Web client, packaged to run locally on port 4242."
 arch=('x86_64' 'i686')
 url="https://github.com/threema-ch/threema-web"
@@ -18,7 +23,7 @@ source=(
     "threema-web.service"
 )
 sha256sums=(
-    '3089d16d1587d0315ec3ba39194ec1e449070b04bae3f8c32f5e02b7383ba4fc'
+    'f77e8c4be7160ffd9dd8a81b87c746f2b4f1a6ca2675e3bf9a1e978925f04f97'
     'SKIP'  # PGP signature
     '6cb24b36278ef9d5b57d056d5b8428f82b94cb92f7ffc0ef4bc3eb5278488514'
 )
