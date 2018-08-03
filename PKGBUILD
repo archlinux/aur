@@ -4,12 +4,13 @@
 _gemname=typhoeus
 pkgname=ruby-$_gemname-0.6
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel HTTP library on top of libcurl multi.'
 arch=(any)
 url='https://github.com/typhoeus/typhoeus'
 license=(MIT)
 depends=('ruby' 'ruby-ethon>=0.9.0')
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
