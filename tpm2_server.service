@@ -2,7 +2,7 @@
 Description=TPM2 Server Implementation by IBM
 
 [Service]
-Type=forking
+Type=simple
 ExecStart=/usr/bin/tpm2_server
 
 [Install]

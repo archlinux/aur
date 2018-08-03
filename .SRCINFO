@@ -1,18 +1,16 @@
 pkgbase = ibm-sw-tpm2
 	pkgdesc = An implementation of the TCG TPM 2.0 specification by IBM
 	pkgver = 1119
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/ibmswtpm2/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = openssl-1.0
+	depends = openssl
 	source = https://downloads.sourceforge.net/project/ibmswtpm2/ibmtpm1119.tar.gz
-	source = tpm2_server
 	source = tpm2_server.service
 	md5sums = cf20b9080b4692984c8389c5052fe68a
-	md5sums = 3bff9d0e8b2b7b68be2e388d8ca4e2ce
-	md5sums = e64a1c4908f3eea859b25cf291e7848a
+	md5sums = 23239f55ca9fe6522844bc425dcfe2ef
 
 pkgname = ibm-sw-tpm2
 
