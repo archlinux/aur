@@ -1,0 +1,26 @@
+From 8e093738cae24a30b3e11293e5b0de06a04f94c0 Mon Sep 17 00:00:00 2001
+From: SolarAquarion <shlomochoina@gmail.com>
+Date: Fri, 3 Aug 2018 13:06:58 -0400
+Subject: [PATCH] Update system_management.py
+
+---
+ usr/lib/linuxmint/mintMenu/plugins/system_management.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/usr/lib/linuxmint/mintMenu/plugins/system_management.py b/usr/lib/linuxmint/mintMenu/plugins/system_management.py
+index 2d5e1c1..1126aab 100755
+--- a/usr/lib/linuxmint/mintMenu/plugins/system_management.py
++++ b/usr/lib/linuxmint/mintMenu/plugins/system_management.py
+@@ -161,10 +161,10 @@ def do_standard_items( self ):
+ 
+         if ( self.showPackageManager == True ):
+             Button2 = easyButton( "applications-system", self.iconsize, [_("Package Manager")], -1, -1 )
+-            Button2.connect( "clicked", self.ButtonClicked, "synaptic-pkexec" )
++            Button2.connect( "clicked", self.ButtonClicked, "pamac-manager" )
+             Button2.show()
+             self.systemBtnHolder.pack_start( Button2, False, False, 0 )
+-            self.mintMenuWin.setTooltip( Button2, _("Install, remove and upgrade software packages") )
++            self.mintMenuWin.setTooltip( Button2, _("Install, remove, and upgrade software packages") )
+ 
+         if ( self.showControlCenter == True ):
+             Button3 = easyButton( "gtk-preferences", self.iconsize, [_("Control Center")], -1, -1 )

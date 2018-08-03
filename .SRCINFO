@@ -1,0 +1,20 @@
+pkgbase = mintmenu
+	pkgdesc = Mint Menu for MATE
+	pkgver = 5.9.0
+	pkgrel = 1
+	url = https://github.com/linuxmint/mintmenu
+	arch = any
+	license = GPL2
+	depends = mate-panel
+	depends = xdg-utils
+	depends = python2
+	optdepends = mint-translations: translations files
+	optdepends = mate-screensaver: lock screen button
+	optdepends = pamac: package manager button
+	source = https://github.com/linuxmint/mintmenu/archive/5.9.0.tar.gz
+	source = arch-compat.patch
+	sha256sums = c2d2a2e7a84a07c0277440b6ee82e96c4575b6e9c5b2bbdc6dcd2779db13a51a
+	sha256sums = 5bc384c52d437cf00b3824e7cf783de080841f1a34c6f85db0328b13e72c983f
+
+pkgname = mintmenu
+
