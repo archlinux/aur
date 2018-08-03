@@ -4,12 +4,13 @@
 _gemname=launchy
 pkgname=ruby-$_gemname
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Launchy is helper class for launching cross-platform applications in a fire and forget manner.'
 arch=(any)
 url='http://github.com/copiousfreetime/launchy'
 license=(ISC)
 depends=(ruby ruby-addressable)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
