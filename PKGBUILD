@@ -1,9 +1,9 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2017.4.6
+_version=2017.4.7
 _build=f1
 _buildtag=20180703
-_randomstring=fbeab28dc46b
+_randomstring=1d86eef80e0a
 _prefix=/opt/UnityLts
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
@@ -20,7 +20,7 @@ depends=('unity-editor-lts'
          'gzip')
 makedepends=('gtk2' 'libsoup' 'libarchive')
 source=("${_unitydownloads}/UnitySetup-${_version}${_build}")
-sha1sums=('85be018445e9df3ccc59733b2719eb1a8e95123b')
+
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
@@ -49,3 +49,4 @@ package() {
   fi
 }
 
+md5sums=('b3ae793ba7f9c5d6d334df7763b85049')
