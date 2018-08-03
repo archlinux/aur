@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 239226 2017-06-21 09:53:44Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Julian Brost <julian@0x4a42.net>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Rubin Simons <rubin@xs4all.nl>
 
 pkgname=trac
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Trac Integrated SCM & Project Management using Apache & Subversion."
 arch=('any')
@@ -15,7 +15,7 @@ install=trac.install
 source=(http://ftp.edgewall.com/pub/trac/Trac-$pkgver.tar.gz
 	license.txt
 	tracd.service)
-sha256sums=('5ddeca9d2d47093f5791ef7e38ec9aff9c911258b8ba94c85a32ccd9274fc3b6'
+sha256sums=('f373114d0be88f216c47ca31185238780cde898cd7256526a501e95007dd9f90'
             'a0936aa2fab3714eb6a3e8ff64b730576d8a5f81340a0601f006c847761607c4'
             '3f050f1c9367b1b28e18a6ff0088f991676a9fbba3f5177859ce4db64f95ca42')
 

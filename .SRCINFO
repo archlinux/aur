@@ -1,6 +1,6 @@
 pkgbase = trac
 	pkgdesc = Trac Integrated SCM & Project Management using Apache & Subversion.
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = http://trac.edgewall.org/
 	install = trac.install
@@ -11,10 +11,10 @@ pkgbase = trac
 	depends = python2-genshi
 	depends = python2-babel
 	depends = python2-setuptools
-	source = http://ftp.edgewall.com/pub/trac/Trac-1.2.2.tar.gz
+	source = http://ftp.edgewall.com/pub/trac/Trac-1.2.3.tar.gz
 	source = license.txt
 	source = tracd.service
-	sha256sums = 5ddeca9d2d47093f5791ef7e38ec9aff9c911258b8ba94c85a32ccd9274fc3b6
+	sha256sums = f373114d0be88f216c47ca31185238780cde898cd7256526a501e95007dd9f90
 	sha256sums = a0936aa2fab3714eb6a3e8ff64b730576d8a5f81340a0601f006c847761607c4
 	sha256sums = 3f050f1c9367b1b28e18a6ff0088f991676a9fbba3f5177859ce4db64f95ca42
 
