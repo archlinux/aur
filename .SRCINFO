@@ -1,6 +1,6 @@
 pkgbase = unity-editor-lts-windows
 	pkgdesc = Allows building your Unity projects for the Windows platform
-	pkgver = 2017.4.7f1+20180703
+	pkgver = 2017.4.8f1+20180703
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = unity-editor-lts-windows
 	makedepends = libarchive
 	depends = unity-editor-lts
 	options = !strip
-	source = http://beta.unity3d.com/download/1d86eef80e0a/UnitySetup-2017.4.7f1
-	md5sums = b3ae793ba7f9c5d6d334df7763b85049
+	source = http://beta.unity3d.com/download/8140fe378247/UnitySetup-2017.4.8f1
+	sha1sums = 119ec24433cf9e94ead7d62e64b69cec686d5aa5
 
 pkgname = unity-editor-lts-windows
 
