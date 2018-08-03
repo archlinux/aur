@@ -4,7 +4,7 @@ pkgname=(
 	python-rotate-backups
 )
 pkgbase=rotate-backups
-pkgver=5.2
+pkgver=6.0
 pkgrel=1
 pkgdesc="Simple command line interface for backup rotation"
 arch=(any)
@@ -30,7 +30,7 @@ source=(
 	"https://files.pythonhosted.org/packages/source/${pkgbase::1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
 )
 sha256sums=(
-	8afffc2f7a8839753a4aa386eb041f75077cc9cb47b0fad50204bedf3525edf0
+	f342d87ed7e13df132110011985eb781a83ab4a4649c99de4cbd4573950dcc58
 )
 
 prepare() {
@@ -41,9 +41,6 @@ prepare() {
 find_links = file:///dev/null
 index_url = file:///dev/null
 EOF
-
-	# we are using Python 3, so support for Python 2.6 is not needed, remove old version requirement
-	sed -i 's/^simpleeval.*/simpleeval >= 0.8.7/' requirements.txt
 }
 
 build() {

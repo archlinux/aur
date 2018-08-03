@@ -1,6 +1,6 @@
 pkgbase = rotate-backups
 	pkgdesc = Simple command line interface for backup rotation
-	pkgver = 5.2
+	pkgver = 6.0
 	pkgrel = 1
 	url = https://github.com/xolox/python-rotate-backups
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = rotate-backups
 	depends = python-six
 	depends = python-update-dotdee
 	depends = python-verboselogs
-	source = https://files.pythonhosted.org/packages/source/r/rotate-backups/rotate-backups-5.2.tar.gz
-	sha256sums = 8afffc2f7a8839753a4aa386eb041f75077cc9cb47b0fad50204bedf3525edf0
+	source = https://files.pythonhosted.org/packages/source/r/rotate-backups/rotate-backups-6.0.tar.gz
+	sha256sums = f342d87ed7e13df132110011985eb781a83ab4a4649c99de4cbd4573950dcc58
 
 pkgname = rotate-backups
 	depends = python-rotate-backups
