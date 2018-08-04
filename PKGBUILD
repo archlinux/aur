@@ -2,7 +2,7 @@
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=leao
-pkgver=2018.1.0
+pkgver=2018.1.1
 pkgrel=1
 license=('custom')
  
@@ -11,16 +11,16 @@ pkgdesc='O Carnê-leão é o programa para a tributação do Imposto sobre a Ren
 url='http://www.receita.fazenda.gov.br'
  
 
-source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2018/carne-leao/LEAO2018v1.0.zip
+source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2018/carne-leao/LEAO2018v1.1.zip
 	$pkgname.png
         $pkgname.desktop
         $pkgname.install
 		$pkgname)
 
-noextract=(LEAO2018v1.0.zip)
+noextract=(LEAO2018v1.1.zip)
  
 
-md5sums=('584a72244dd343e19986cab77c5e69ba'
+md5sums=('b4029c1a49ed0f524aa6ad998cbb4143'
          '725dc07b10c6debced300e9aa106e8fa'
          'f676220f7e42fd6ae2cd7172cd5807f9'
          'b0a5c911f4a3ce472699aa8b81d21b3d'
@@ -33,7 +33,7 @@ makedepends=('unzip')
 install=$pkgname.install
 
 prepare() {
-  unzip LEAO2018v1.0.zip
+  unzip LEAO2018v1.1.zip
 } 
  
 package() {
