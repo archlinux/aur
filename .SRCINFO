@@ -1,0 +1,18 @@
+pkgbase = xml-security-c-ria
+	pkgdesc = Old version of xml-security-c for digidoc
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://www.id.ee/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = xalan-c
+	provides = xml-security-c=1.7.3
+	conflicts = xml-security-c
+	source = https://installer.id.ee/media/ubuntu/pool/main/x/xml-security-c/xml-security-c_1.7.3.orig.tar.gz
+	source = https://installer.id.ee/media/ubuntu/pool/main/x/xml-security-c/xml-security-c_1.7.3-4build1RIA1.debian.tar.xz
+	sha256sums = e5226e7319d44f6fd9147a13fb853f5c711b9e75bf60ec273a0ef8a190592583
+	sha256sums = 885287896f2a79562070041ea0bbedca3abd61c41806cdf1a3f50a73b3df24c9
+
+pkgname = xml-security-c-ria
+
