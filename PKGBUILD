@@ -1,11 +1,12 @@
-# Maintainer: Yen Chi Hsuan <yan12125@gmail.com>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Yen Chi Hsuan <yan12125@gmail.com>
 # Contributor: Michał Górny <zrchos+arch@gmail.com>
 # Contributor: Ryan Lee <ryan@swyro.com>
 
 pkgname=apache-flex-sdk
 pkgver=4.16.1
-_player_ver=27.0
-pkgrel=1
+_player_ver=30.0
+pkgrel=2
 pkgdesc="The open-source framework for building expressive web and mobile applications"
 arch=('any')
 license=('Apache')
@@ -15,19 +16,13 @@ optdepends=(
     'adobe-air-sdk: for compiling flex projects into AIR apps'
 )
 source=(
-    "https://www.apache.org/dist/flex/$pkgver/binaries/apache-flex-sdk-$pkgver-bin.tar.gz"{,.asc}
-    "https://fpdownload.macromedia.com/get/flashplayer/updaters/${_player_ver%%.*}/playerglobal${_player_ver/./_}.swc"
+    "https://www.apache.org/dist/flex/$pkgver/binaries/apache-flex-sdk-$pkgver-bin.tar.gz"
+    "https://fpdownload.macromedia.com/get/flashplayer/installers/archive/playerglobal/playerglobal${_player_ver/./_}.swc"
     "apache-flex-sdk.sh"
 )
 sha256sums=('17fda7ac8d3e476cad3127f345455ef316acfb87c6f4322e5897bd8d9b09388e'
-            'SKIP'
-            '4e4cbe1a936a25c405f988293033b50a31a00f23ed6e2401ba5563a4e95b8263'
+            'f906e5c9cbb958ec3da5c7eff054627b20eff4ac28a09bee48f6a02618fa3aad'
             '520ae01482825ef28da42c03b3cbadd3d62155ed074d737f3672980f0a97a3fd')
-# Check https://www.apache.org/dist/flex/KEYS for whether a key is really from an Apache developer or not
-validpgpkeys=(
-    'E28487967B092453A2AB8DA9E0F28593AEEAD151'  # Justin Mclean
-    '44998F3E242727E94C4BADEB6B0A7EC905061FC8'  # Piotr Zarzycki
-)
 install=apache-flex-sdk.install
 options=('!strip')
 noextract=('playerglobal11_1.swc')
