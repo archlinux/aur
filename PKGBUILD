@@ -9,7 +9,7 @@
 pkgname=mutter-781835-workaround
 _pkgname=mutter
 pkgver=3.28.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users."
 url="https://git.gnome.org/browse/mutter"
 arch=(x86_64)
@@ -38,13 +38,23 @@ prepare() {
   cd $_pkgname
 
   ## Unmerged performance bits, enable with own risk and merge conflicts yourself
-  # git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
-  # git fetch vanvugt
-
-  ## vanvugt/mutter/tree/super-smooth
-  # git cherry-pick fc872e6c || bash
-  # git cherry-pick 408630b7 || bash
-  # git cherry-pick f6170696 || bash
+  # Multiline comment start, remove the line (and comment end line) below to enable the patches
+  : '
+  ## https://gitlab.gnome.org/GNOME/mutter/merge_requests/70/commits
+  git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
+  git fetch vanvugt
+  git cherry-pick 13870745 || bash
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/98/commits
+  git remote add carlosg https://gitlab.gnome.org/carlosg/mutter.git || true
+  git fetch carlosg
+  git cherry-pick ec813877 || bash
+  git cherry-pick 94f40098 || bash
+  git cherry-pick 161d2540 || bash
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/145/commits
+  git cherry-pick a4b62506 || bash
+  git cherry-pick 2088061a || bash
+  '
+  # Multiline comment end, remove the line above if enabling the patches
 
   # Revert offending commit
   patch -Np1 -i ../revert.patch
