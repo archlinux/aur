@@ -11,7 +11,7 @@ pkgbase = buku
         depends = python-cryptography
         depends = python-urllib3
         source = buku-3.8.tar.gz::https://codeload.github.com/jarun/Buku/tar.gz/v3.8
-	sha256sums = bca35fe1b7dbf88ed3af07e0daa4bc0a736d2f85b3103efcb18d542eebb2eebe
+        sha256sums = bca35fe1b7dbf88ed3af07e0daa4bc0a736d2f85b3103efcb18d542eebb2eebe
 
 pkgname = buku
 

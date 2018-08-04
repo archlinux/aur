@@ -4,7 +4,7 @@
 
 pkgname=buku
 pkgver=3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful command-line bookmark manager."
 arch=('any')
 depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-urllib3')
