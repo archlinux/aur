@@ -1,11 +1,13 @@
 pkgbase = python-astor-git
 	pkgdesc = Read/rewrite/write Python ASTs
-	pkgver = 0.5.r0.ga463ac8
+	pkgver = 0.7.1.r2.g55dd323
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/astor
 	arch = any
 	license = BSD
 	depends = python
+	provides = python-astor
+	conflicts = python-astor
 	options = !emptydirs
 	source = git://github.com/berkerpeksag/astor.git
 	md5sums = SKIP
