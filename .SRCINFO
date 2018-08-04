@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-gtkmm
+	pkgdesc = C++ bindings for GTK+ 2 (mingw-w64)
+	pkgver = 2.24.5
+	pkgrel = 1
+	url = http://www.gtkmm.org/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-gtk2
+	depends = mingw-w64-pangomm
+	depends = mingw-w64-atkmm
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://download.gnome.org/sources/gtkmm/2.24/gtkmm-2.24.5.tar.xz
+	sha256sums = 0680a53b7bf90b4e4bf444d1d89e6df41c777e0bacc96e9c09fc4dd2f5fe6b72
+
+pkgname = mingw-w64-gtkmm
+
