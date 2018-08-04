@@ -1,0 +1,15 @@
+pkgbase = nama-gui
+	pkgdesc = This tool uses nmcli to easily set your network configuration with GUI
+	pkgver = 1.0.2.r0.g8e4c7c4
+	pkgrel = 1
+	url = https://github.com/bigrush/nama-gui
+	arch = any
+	license = GPLv3
+	depends = bash
+	depends = nama
+	depends = zenity
+	source = nama-gui::git+https://github.com/bigrush/nama-gui.git
+	md5sums = SKIP
+
+pkgname = nama-gui
+
