@@ -1,3 +1,4 @@
 post_install() {
-    echo Please re-login or source /etc/profile to use the new \$PATH
+    printf '%s\n' 'The Apache Flex SDK executables are in /opt/apache-flex-sdk/bin'
+    printf '%s\n' 'You need to relogin in order for these files to appear in your PATH'
 }
