@@ -4,14 +4,14 @@
 
 pkgname=libdrm-git
 _realname=libdrm
-pkgver=2.4.91.r10.ga58490de
-pkgrel=1
+pkgver=2.4.93.r0.g87fdbfb6
+pkgrel=2
 pkgdesc="Userspace interface to kernel DRM services, master git version"
 arch=(i686 x86_64)
 license=('custom')
 depends=('libpciaccess')
 makedepends=('libxslt' 'docbook-xsl' 'meson')
-checkdepends=('cairo' 'bcunit-cunit-compat')
+checkdepends=('cairo')
 url="http://dri.freedesktop.org/"
 provides=('libdrm')
 conflicts=('libdrm')
