@@ -1,8 +1,8 @@
 pkgname=mldonkey-ed2kad-daemon-git
-pkgver=3.1.5.250.g06b2c18a
+pkgver=3.1.6.2.gfaac682f
 pkgrel=1
 pkgdesc="A multi-network P2P client. Daemon function, only ED2K/KAD. (GIT Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://mldonkey.sourceforge.net'
 license=('GPL')
 depends=('bzip2'
@@ -11,11 +11,12 @@ depends=('bzip2'
          'file'
          )
 makedepends=('camlp4'
+             'ocaml-num'
              'git'
              )
 conflicts=('mldonkey')
 provides=('mldonkey')
-source=('git+http://repo.or.cz/r/mldonkey.git#branch=next'
+source=('git+http://repo.or.cz/r/mldonkey.git'
         'mldonkey.logrotate'
         'mldonkey.service'
         'mldonkey@.service'
@@ -26,7 +27,7 @@ sha256sums=('SKIP'
             'fe6227ec1a54278226ca6d6a5b0e1bb23224bf7b90e2ea107f014cc9518b0ed3'
             '3a25e71992aa0ab5caabed81b96ebcf313f1d93ccd7a182b1c57bf3f9571b8e8'
             'c970430ca0fb50869dd1bab01b13ef451899455bb9dcaab6956fcab225423012'
-            '24df5cf0b7d87c944408711f552be3a9ff37e1fa42eb2692c3ae23ea40a9d213'
+            '7a7d4d4c9eccadca24cf7970bd26847369c81a16163f8d15923011357e227990'
             'ef14b4c8dcb9e64a1026630463313139171d2682d4ad80965e4a39e5021b93a5'
             )
 install=mldonkey-daemon.install
@@ -48,6 +49,7 @@ build() {
     --disable-rpath \
     --enable-checks \
     --enable-pthread
+
   make depend
   make
   make utils
