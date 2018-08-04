@@ -3,8 +3,8 @@
 
 _pkgname=eruler
 pkgname=$_pkgname-git
-pkgver=0.1.0.r17.7175c00
-pkgrel=1
+pkgver=0.1.0.r18.ef5c032
+pkgrel=2
 pkgdesc="On-Screen Ruler and Measurement Tools using EFL"
 arch=('i686' 'x86_64')
 url="https://www.enlightenment.org/"
@@ -13,7 +13,7 @@ depends=('efl')
 makedepends=('git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/apps/${_pkgname}.git")
+source=("git+https://git.enlightenment.org/apps/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
