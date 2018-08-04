@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-bin
 pkgver=4.8.7.392
-pkgrel=3
+pkgrel=4
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
@@ -15,9 +15,11 @@ makedepends=('w3m')
 provides=('onlyoffice' 'onlyoffice-desktopeditors')
 conflicts=('onlyoffice')
 options=('!strip')
-source=('http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb')
-noextract=('onlyoffice-desktopeditors_amd64.deb')
-sha256sums=('SKIP')
+_srcfile='onlyoffice-desktopeditors_amd64.deb'
+_srcurl="https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-${pkgver%.*}-2/${_srcfile}"
+source=("onlyoffice-desktopeditors-${pkgver}_amd64.deb"::"$_srcurl")
+noextract=("onlyoffice-desktopeditors-${pkgver}_amd64.deb")
+sha256sums=('a41e26595acf91a6ce5b0ff8e354317d37355da479c821e51f8c2a29ac688668')
 
 package() {
     mkdir -p "onlyoffice-${pkgver}"
@@ -25,7 +27,7 @@ package() {
     
     # install bundled files
     msg2 'Installing bundled files...'
-    bsdtar -xf "${srcdir}/onlyoffice-desktopeditors_amd64.deb"
+    bsdtar -xf "${srcdir}/onlyoffice-desktopeditors-${pkgver}_amd64.deb"
     bsdtar -xf data.tar.xz -C "$pkgdir"
     
     # fix permissions
