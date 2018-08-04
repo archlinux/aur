@@ -1,0 +1,46 @@
+pkgbase = gnome-shell-performance
+	pkgdesc = The next generation GNOME Shell
+	pkgver = 3.28.3+1+gc7a82db37
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GnomeShell
+	arch = x86_64
+	groups = gnome
+	license = GPL2
+	makedepends = gtk-doc
+	makedepends = gnome-control-center
+	makedepends = evolution-data-server
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	makedepends = sassc
+	depends = accountsservice
+	depends = gcr
+	depends = gjs
+	depends = gnome-bluetooth
+	depends = upower
+	depends = gnome-session
+	depends = gnome-settings-daemon
+	depends = gnome-themes-extra
+	depends = gsettings-desktop-schemas
+	depends = libcanberra-pulse
+	depends = libcroco
+	depends = libgdm
+	depends = libsecret
+	depends = mutter
+	depends = nm-connection-editor
+	depends = unzip
+	depends = gstreamer
+	depends = libibus
+	optdepends = gnome-control-center: System settings
+	optdepends = evolution-data-server: Evolution calendar integration
+	provides = gnome-shell
+	conflicts = gnome-shell
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=6ed21e1ce0c1011b58452df6cdde42f30dd386c4
+	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
+	source = fix.diff
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 11dcffae170776140b1f0c9bed90b8df70e8d3c6694b60ab40bb46235e3ad755
+
+pkgname = gnome-shell-performance
+
