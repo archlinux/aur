@@ -7,12 +7,12 @@ _player_ver=30.0
 
 pkgname=apache-flex-sdk
 pkgver=4.16.1
-pkgrel=3
+pkgrel=4
 pkgdesc='The open-source framework for building expressive web and mobile applications'
 arch=('any')
 url='https://flex.apache.org/'
 license=('APACHE')
-depends=('bash' 'java-runtime')
+depends=('bash' 'java-environment')
 optdepends=('adobe-air-sdk: for compiling flex projects into AIR apps')
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"

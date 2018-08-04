@@ -1,13 +1,13 @@
 pkgbase = apache-flex-sdk
 	pkgdesc = The open-source framework for building expressive web and mobile applications
 	pkgver = 4.16.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://flex.apache.org/
 	install = apache-flex-sdk.install
 	arch = any
 	license = APACHE
 	depends = bash
-	depends = java-runtime
+	depends = java-environment
 	optdepends = adobe-air-sdk: for compiling flex projects into AIR apps
 	noextract = playerglobal30_0.swc
 	options = !strip
