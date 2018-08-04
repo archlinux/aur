@@ -311,6 +311,13 @@
     Notables changes:
      feat(args, pacman, main): bypass all the key-value flags to pacman as well as bool ones
      fix(pikspect): don't touch write buffer if it's empty
+1.2.15          Bugfix release 1.2.15
+    
+    Notable changes:
+     c3da0e5 fix(build: version_already_installed): use .SRCINFO from
+    ar, not ath (and copy to make sure it's always present)
+     4c6abd3 feat(main): print nice error if `asp` is not installed
+     7ba077c fix(pacman: find_repo_package): correct exception type when looking up package group
 1.2.2           Release 1.2.2
     
      2018-07-24 7f10c9c actionless chore(fish): add completion for new CLI flags
