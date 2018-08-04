@@ -10,7 +10,7 @@ url="https://github.com/lxc/lxd"
 license=('APACHE')
 conflicts=('lxd-lts')
 depends=('lxc' 'squashfs-tools' 'dnsmasq' 'sqlite' 'attr')
-makedepends=('go-pie' 'git')
+makedepends=('go-pie' 'git' 'sed')
 options=('!strip' '!emptydirs')
 optdepends=(
     'lvm2: for lvm2 support'
