@@ -1,0 +1,13 @@
+pkgbase = faiss
+	pkgdesc = A library for efficient similarity search and clustering of dense vectors.
+	pkgver = v1.3.0.r2.g19cea3d
+	pkgrel = 1
+	url = https://github.com/facebookresearch/faiss
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = git+https://github.com/facebookresearch/faiss.git
+	sha256sums = SKIP
+
+pkgname = faiss
+
