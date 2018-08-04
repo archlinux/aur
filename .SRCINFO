@@ -1,6 +1,6 @@
 pkgbase = nama-gui
 	pkgdesc = This tool uses nmcli to easily set your network configuration with GUI
-	pkgver = 1.0.5.r0.g15ef4e6
+	pkgver = 1.0.5.r1.g41c65eb
 	pkgrel = 1
 	url = https://github.com/bigrush/nama-gui
 	arch = any
