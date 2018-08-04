@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-gtkmm3
+	pkgdesc = C++ bindings for GTK+ 3 (mingw-w64)
+	pkgver = 3.22.2
+	pkgrel = 1
+	url = http://www.gtkmm.org/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-gtk3
+	depends = mingw-w64-pangomm
+	depends = mingw-w64-atkmm
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://download.gnome.org/sources/gtkmm/3.22/gtkmm-3.22.2.tar.xz
+	sha256sums = 91afd98a31519536f5f397c2d79696e3d53143b80b75778521ca7b48cb280090
+
+pkgname = mingw-w64-gtkmm3
+
