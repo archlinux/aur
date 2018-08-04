@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/laurentkneip/opengv.git"
         "https://github.com/laurentkneip/opengv/pull/61.patch")
 sha256sums=('SKIP'
-            '75b2c4bffc77590a992c76079da32daa653096f144583a8296ed384dfda3006d')
+            'SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
