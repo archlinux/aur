@@ -1,7 +1,8 @@
-# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Maintainer: Yunhui Fu <yhfudev at gmail dot com>
+# Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 # Contributor: zarra <zarraxx@gmail.com>
 pkgname=pygccxml
-pkgver=1.7.4
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Simple framework to navigate C++ declarations, using Python classes."
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ depends=('gccxml-git' 'python2')
 options=(!strip)
 
 source=("https://github.com/gccxml/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5f5ea231e2661b99588ac5cd413d1be11684bb8601b8df1483078d2f64a3ee25')
+sha256sums=('2fb4e18f7a3ae039a05230ca58f11e1fc925c8643f926a1be481bb4338414a95')
 
 build() {
   cd "${srcdir}/pygccxml-${pkgver}"
