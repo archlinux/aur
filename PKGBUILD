@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-bin
 pkgver=4.8.7.392
-pkgrel=2
+pkgrel=3
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
@@ -14,6 +14,7 @@ depends=('alsa-lib' 'nss' 'libxtst' 'qt5-x11extras' 'qt5-svg' 'gconf' 'libx11'
 makedepends=('w3m')
 provides=('onlyoffice' 'onlyoffice-desktopeditors')
 conflicts=('onlyoffice')
+options=('!strip')
 source=('http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb')
 noextract=('onlyoffice-desktopeditors_amd64.deb')
 sha256sums=('SKIP')
