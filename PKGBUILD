@@ -2,7 +2,7 @@
 
 pkgname=deconz
 arch=('x86_64')
-pkgver=2.05.31
+pkgver=2.05.32
 pkgrel=1
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="http://www.dresden-elektronik.de"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=(https://www.dresden-elektronik.de/deconz/ubuntu/beta/$pkgname-$pkgver-qt5.deb)
 noextract=()
-sha256sums=(96ccc83bc5158fc06c01c593d8ae1e3a559d7eb485c3813c34570f07fba506c2)
+sha256sums=(7a69beb2ea9835426f8988357dca3a4658e34b6596878b53c04db4f047dd9c3f)
 
 package() {
   cd "${srcdir}"
