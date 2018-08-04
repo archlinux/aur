@@ -1,13 +1,13 @@
 # Maintainer: Michiru Saito <urihcim at gmail dot com>
 pkgname=gurashot
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="ID photo creation tool"
 arch=('i686' 'x86_64')
 url='http://app.gura-lang.org/gurashot/'
 license=('unknown')
 install=$pkgname.install
-depends=('gura' 'desktop-file-utils')
+depends=('gura' 'desktop-file-utils' 'wxgtk3' 'oniguruma' 'libyaml' 'libjpeg-turbo' 'libpng' 'cairo')
 makedepends=('unzip')
 source=("https://github.com/gura-app/gurashot/releases/download/v${pkgver}/${pkgname}-${pkgver}.zip"
         "${pkgname}.sh"
