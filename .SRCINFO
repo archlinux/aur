@@ -1,0 +1,65 @@
+pkgbase = openrazer-2018
+	pkgdesc = An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux.
+	pkgver = 2.3.1
+	pkgrel = 2
+	url = https://github.com/jbdrthapa/openrazer
+	arch = any
+	license = GPL2
+	makedepends = make
+	makedepends = python
+	makedepends = python-setuptools
+	source = https://github.com/jbdrthapa/openrazer/archive/master.tar.gz
+	md5sums = cfd2c2bfa31cf9a7b9c7d576a5acc62d
+
+pkgname = python-openrazer-2018
+	pkgdesc = Python library for accessing the Razer daemon from Python.
+	depends = openrazer-daemon
+	depends = python
+	depends = python-dbus
+	depends = python-numpy
+	provides = python-razer
+	provides = python-openrazer
+	conflicts = python-razer
+	replaces = python-razer
+
+pkgname = openrazer-daemon-2018
+	pkgdesc = Userspace daemon that abstracts access to the kernel driver. Provides a DBus service for applications to use.
+	install = openrazer-daemon.install
+	depends = openrazer-driver-dkms-2018
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-setproctitle
+	depends = python-daemonize
+	depends = xautomation
+	depends = xdotool
+	depends = libdbus
+	depends = python-notify2
+	depends = python-pyudev
+	depends = gtk3
+	depends = dbus-glib
+	provides = razer-daemon
+	provides = openrazer-daemon
+	conflicts = razer-daemon
+	replaces = razer-daemon
+
+pkgname = openrazer-driver-dkms-2018
+	pkgdesc = Kernel driver for Razer devices (DKMS-variant)
+	install = openrazer-driver-dkms.install
+	depends = dkms
+	depends = udev
+	provides = OPENRAZER-MODULES
+	provides = razer-driver-dkms
+	provides = openrazer-driver-dkms
+	conflicts = OPENRAZER-MODULES
+	conflicts = razer-driver-dkms
+	replaces = razer-driver-dkms
+
+pkgname = openrazer-meta-2018
+	pkgdesc = Meta package for installing all required openrazer packages.
+	depends = openrazer-driver-dkms
+	depends = openrazer-daemon
+	depends = python-openrazer
+	optdepends = polychromatic: frontend
+	optdepends = razergenie: qt frontend
+	optdepends = razercommander: gtk frontend
+
