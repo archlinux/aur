@@ -18,15 +18,10 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$_gitname"
-	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "$srcdir/$_gitname"
-	git submodule update --init
+	git describe --tags | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
 	cd "$_gitname"
-	install -Dm755 "=" ${pkgdir}/usr/bin
+	install -Dm755 "=" "${pkgdir}/usr/bin/="
 }
