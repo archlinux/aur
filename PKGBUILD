@@ -1,9 +1,9 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=cardano-sl
-pkgver=1.1.1
-_commit=aed0d925b06e0bd1278e26539c445274c52f4b67
-pkgrel=2
+pkgver=1.2.1
+_commit=14f705d5f49fefd54e0552914e965acead0a062f
+pkgrel=1
 pkgdesc='Cryptographic currency implementing Ouroboros PoS protocol'
 arch=('x86_64')
 url='https://github.com/input-output-hk/cardano-sl/'
