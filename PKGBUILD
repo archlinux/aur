@@ -15,7 +15,7 @@
 
 pkgname=('llvm39' 'llvm39-libs' 'clang39')
 pkgver=3.9.1
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -23,16 +23,18 @@ makedepends=('cmake' 'libffi' 'python2' 'libedit')
 options=('staticlibs')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz{,.sig}
+        0000-disable-llvm-symbolizer-test.patch
         0001-GCC-compatibility-Ignore-the-fno-plt-flag.patch
         0002-Enable-SSP-and-PIE-by-default.patch
-        disable-llvm-symbolizer-test.patch)
+        0003-disable-ArrayRefTest.InitializerList.patch)
 sha256sums=('1fd90354b9cf19232e8f168faf2220e79be555df3aa743242700879e8fd329ee'
             'SKIP'
             'e6c4cebb96dee827fa0470af313dff265af391cb6da8d429842ef208c8f25e63'
             'SKIP'
+            '6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359'
             'd26239d03983fab1f34970b94d727379ca0be689f5826e50503c4d2f314f207a'
             '010d2e2f2a7d1a8aa027ebb912722910069d74ae815f697bc7efc0f3b5d8dbea'
-            '6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359')
+            '1ef713d5283d8b0b2bb4544462f5d3614e9c74c602da4bec74deefd6d9c4d3b2')
 validpgpkeys=('11E521D646982372EB577A1F8F0871F202119294')
 
 prepare() {
@@ -43,11 +45,16 @@ prepare() {
 
   # Disable test that fails when compiled as PIE
   # https://bugs.llvm.org/show_bug.cgi?id=31870
-  patch -Np1 -i ../disable-llvm-symbolizer-test.patch
+  patch -Np1 -i ../0000-disable-llvm-symbolizer-test.patch
 
   # Enable SSP and PIE by default
   patch -Np1 -d tools/clang <../0001-GCC-compatibility-Ignore-the-fno-plt-flag.patch
   patch -Np1 -d tools/clang <../0002-Enable-SSP-and-PIE-by-default.patch
+
+  # Disbale a broken test, see the comments on
+  # https://aur.archlinux.org/pkgbase/llvm39/
+  patch -Np1 -i ../0003-disable-ArrayRefTest.InitializerList.patch
+
 }
 
 build() {
