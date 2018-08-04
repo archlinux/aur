@@ -43,6 +43,7 @@ build() {
   mkdir -p "${GOPATH}"
   GOPATH="${GOPATH}" go get "${go_base}" || echo "(ignoring go error)"
   cd "${GOPATH}/src/${go_base}"
+  make deps
   make
 }
 
