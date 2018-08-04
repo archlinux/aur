@@ -10,8 +10,6 @@ pkgbase = ngs-lang
 	makedepends = pandoc
 	makedepends = peg
 	makedepends = uthash
-	provides = ngs-lang
-	conflicts = ngs-lang
 	source = ngs-lang.tar.xz::https://github.com/ngs-lang/ngs/archive/v0.2.4.tar.gz
 	sha256sums = 748a4b44ddb727930ebf8d2280cb18bed7d5f63a3afbc778cca1d29ba891e4bb
 
