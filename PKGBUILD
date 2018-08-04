@@ -1,7 +1,7 @@
 # Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='stratisd'
-pkgver=0.5.3
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='Stratis is a new tool that meets the needs of Red Hat Enterprise Linux (RHEL) users calling for an easily configured, tightly integrated solution for storage that works within the existing Red Hat storage management stack.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   'stratisd-boot.service'
 )
 sha256sums=(
-  '1587c73439b901ef2ac68b54b8e20e9c411462e4f092f9749814521d48fd10dc'
+  'ca0de355c1ae5caa562b3fae5554eb8bae8f1916b3ef7052ec5d88037eaf0458'
   'e12069c231c3f7c6e16b347ffcddb5cf919c9e5105c56a7b9a994e1adc49da25'
   '72ab992ff564d4dd6f0290bd12e973268e45ac0b154e4695796e9737ffed31fe'
   '2143a3f942a3c2975a006c96ec78cf960417943a2425b564f91425f3a50a7ccd'
