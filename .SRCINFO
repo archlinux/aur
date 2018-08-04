@@ -1,7 +1,7 @@
 pkgbase = dpf-plugins-git
 	pkgdesc = Collection of DPF-based plugins by DISTRHO. LV2, LADSPA, dssi and VST.
 	pkgver = r86.0c433e4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://distrho.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dpf-plugins-git
 	depends = projectm
 	provides = dpf-plugins
 	conflicts = dpf-plugins
-	source = dpf-plugins::git://github.com/DISTRHO/DPF-Plugins
+	source = dpf-plugins::git+https://github.com/DISTRHO/DPF-Plugins.git
 	md5sums = SKIP
 
 pkgname = dpf-plugins-git
