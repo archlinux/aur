@@ -11,8 +11,8 @@ pre_install() {
 }
 
 post_install() {
-  echo "Please follow the configuration instructions at
- /usr/lib/taskd/taskd.notes to finish setting up Taskserver."
+  echo ">>> Please follow the configuration instructions at"
+  echo "    /usr/lib/taskd/taskd.notes to finish setting up Taskserver."
 }
 
 pre_upgrade() {
