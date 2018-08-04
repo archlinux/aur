@@ -5,6 +5,9 @@ pre_install() {
   # add taskd user if it doesn't exist
   getent passwd taskd &> /dev/null || \
       useradd --system -m -d /var/lib/taskd -g taskd taskd
+
+  mkdir -p /var/log/taskd
+  chown taskd:taskd /var/log/taskd
 }
 
 post_install() {
