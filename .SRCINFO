@@ -1,0 +1,17 @@
+pkgbase = matcha-git
+	pkgdesc = A read-only web interface for Git repositories
+	pkgver = 0.1.0.r0.gb8269e1
+	pkgrel = 1
+	url = https://github.com/emersion/matcha
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = npm
+	options = !strip
+	options = !emptydirs
+	source = matcha::git+https://github.com/emersion/matcha
+	md5sums = SKIP
+
+pkgname = matcha-git
+
