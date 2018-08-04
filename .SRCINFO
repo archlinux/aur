@@ -1,7 +1,7 @@
 pkgbase = realtimeconfigquickscan-git
 	pkgdesc = Linux configuration checker for systems to be used for real-time audio.
 	pkgver = r26.03e65a4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raboof/realtimeconfigquickscan
 	arch = any
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = realtimeconfigquickscan-git
 	depends = perl-tk
 	provides = realtimeconfigquickscan
 	conflicts = realtimeconfigquickscan
-	source = realtimeconfigquickscan::git://github.com/raboof/realtimeconfigquickscan
+	source = realtimeconfigquickscan::git+https://github.com/raboof/realtimeconfigquickscan.git
 	source = realTimeConfigQuickScan
 	source = QuickScan
 	md5sums = SKIP
