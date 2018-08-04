@@ -1,4 +1,5 @@
 # Maintainer: Dan Beste <Dan.Ray.Beste@gmail.com>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname='black-git'
 pkgver=18.6b2.r0.gff2e5dd
@@ -7,9 +8,11 @@ pkgdesc='Uncompromising code formatter'
 arch=('any')
 url='https://github.com/ambv/black'
 license=('MIT')
-depends=('python-attrs' 'python-click' 'python-toml')
+depends=('python-appdirs' 'python-attrs' 'python-click' 'python-toml')
 makedepends=('python-setuptools')
-source=('git+https://github.com/ambv/black.git')
+provides=("${pkgname/-git}")
+conflicts=("${pkgname/-git}")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
