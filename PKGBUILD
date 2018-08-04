@@ -12,7 +12,7 @@
 
 pkgname="opencv-cuda-git"
 _pkgname="opencv-git"
-pkgver=3.3.1.r145.gfcdd833059
+pkgver=3.4.1.r0.g6ffc48769a
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library compiled with extra modules(opencv_contrib) and CUDA"
 url="http://opencv.org/"
@@ -30,18 +30,18 @@ depends_x86_64=('intel-tbb')
 depends_i686=('intel-tbb')
 depends_armv7h=('intel-tbb')
 makedepends=('git' 'cmake' 'python2-numpy' 'python-numpy' 'mesa'
-             'gcc'
+             'gcc6'
     )
 optdepends=(
             'python-numpy: Python 3 interface'
             'python2-numpy: Python 2 interface'
     )
 options=('staticlibs')
-provides=("opencv" "${_pkgname%-git}")
+provides=(opencv "${_pkgname%-git}")
 conflicts=(opencv "${_pkgname%-git}")
 changelog="ChangeLog"
-source=("${_pkgname%-git}::git+https://github.com/opencv/opencv.git"
-        "${_pkgname%-git}_contrib::git+https://github.com/opencv/opencv_contrib.git"
+source=("${_pkgname%-git}::git+https://github.com/opencv/opencv.git#tag=3.4.1"
+        "${_pkgname%-git}_contrib::git+https://github.com/opencv/opencv_contrib.git#tag=3.4.1"
         "ippicv_linux_20151201.tgz::https://github.com/Itseez/opencv_3rdparty/raw/ippicv/master_20151201/ippicv/ippicv_linux_20151201.tgz"
         'opencv_contrib_sfm_cmake.patch'
         'opencv_gcc6_pch.patch'
@@ -69,6 +69,7 @@ _cmakeopts=('-D WITH_OPENCL=ON'
             '-D BUILD_opencv_python3=ON',
             '-D CMAKE_BUILD_TYPE=Release'
             '-D CMAKE_INSTALL_PREFIX=/usr'
+            '-D CMAKE_INSTALL_LIBDIR=/usr/lib'
             '-D CMAKE_SKIP_RPATH=ON'
             '-D BUILD_NEW_PYTHON_SUPPORT=ON'
             '-D WITH_NVCUVID=ON'
@@ -76,6 +77,7 @@ _cmakeopts=('-D WITH_OPENCL=ON'
             '-D ENABLE_FAST_MATH=ON'
             '-D CUDA_FAST_MATH=ON'
             '-D WITH_CUBLAS=ON'
+            '-D CUDA_HOST_COMPILER=/usr/bin/gcc-6'
             '-D CMAKE_CXX_FLAGS=-std=c++11' #'-D CMAKE_CXX_FLAGS=-std=c++98'; use c++11 because the module sfm depends on ceres-solver which was compiled with c++11; see https://github.com/opencv/opencv_contrib/issues/500
 # Settings for neural network module'
             '-D BUILD_opencv_dnn=ON'
@@ -135,7 +137,7 @@ build() {
         -D OPENCV_EXTRA_MODULES_PATH=$srcdir/${_pkgname%-git}_contrib/modules \
         ..
 
-    make
+    make -j $(nproc)
 }
 
 package() {
