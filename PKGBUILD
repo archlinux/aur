@@ -1,4 +1,5 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: buckket <buckket@cock.li>
+# Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Richard Weber <old-box at outlook dot com>
 # Contributor: Benjamin Hedrich <kiwisauce at pagenotfound dot de>
 # Contributor: Thomas Jost <schnouki at schnouki dot net>
@@ -22,7 +23,7 @@
 
 pkgname=libspotify
 pkgver=12.1.51
-pkgrel=4
+pkgrel=5
 pkgdesc="C API package allowing third-party developers to write applications that utilize the Spotify music streaming service"
 arch=("i686" "x86_64")
 url="https://developer.spotify.com/technologies/libspotify/"
