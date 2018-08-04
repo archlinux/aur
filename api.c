@@ -454,6 +454,26 @@ void* iex_store_check_info(void* vpInfo) {
     return ret;
 }
 
+void* iex_store_misc_info(void* vpInfo) {
+    pthread_t threads[5];
+    void* (*funcs[5]) (void*) = {
+            iex_store_company, iex_store_stats, iex_store_earnings, iex_store_news, iex_store_peers
+    };
+    for (int i = 0; i < 5; i++)
+        if (pthread_create(&threads[i], NULL, funcs[i], vpInfo))
+            EXIT_MSG("Error creating thread!");
+
+    void* ret = vpInfo, * thread_ret = NULL;
+    for (int i = 0; i < 5; i++) {
+        if (pthread_join(threads[i], &thread_ret))
+            EXIT_MSG("Error joining thread!");
+
+        if (thread_ret == NULL)
+            ret = NULL;
+    }
+    return ret;
+}
+
 void* morningstar_store_info(void* vpInfo) {
     Info* symbol_info = vpInfo;
     char today_str[DATE_MAX_LENGTH], five_year_str[DATE_MAX_LENGTH], morningstar_api_string[URL_MAX_LENGTH];
@@ -600,6 +620,14 @@ void* api_store_check_info(void* vpInfo) {
         coinmarketcap_store_info(vpInfo) == NULL)
         return NULL;
     else return vpInfo;
+}
+
+void* api_store_misc_info(void* vpInfo) {
+    Info* pInfo = vpInfo;
+    if (pInfo->api_provider == IEX)
+        return iex_store_misc_info(pInfo);
+
+    return NULL;
 }
 
 void* api_info_array_store_check_data(void* vpPortfolio_Data) {

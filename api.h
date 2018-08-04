@@ -55,7 +55,7 @@ struct info {
 
     /* Company */
     char symbol[SYMBOL_MAX_LENGTH];     // ex. AAPL
-    char name[INFO_TEXT_MAX];           // ex. Apple Inc.
+    char name[NAME_MAX_LENGTH];         // ex. Apple Inc.
     char industry[INFO_TEXT_MAX];       // ex. Computer Hardware
     char website[URL_MAX_LENGTH];       // ex. apple.com
     char description[INFO_TEXT_MAX];    // Paragraph description of company
@@ -274,6 +274,16 @@ void* iex_store_check_info(void* vpInfo);
 /**
  * Designed for threading
  *
+ * Calls the 5 other functions besides those called in iex_store_check_info to store api data in
+ * the Info object pointed to by vpInfo.
+ * @param vpInfo Info*
+ * @return vpInfo on success, NULL on error
+ */
+void* iex_store_misc_info(void* vpInfo);
+
+/**
+ * Designed for threading
+ *
  * Queries Morningstar's API and stores the data in the Info object pointed to by vpInfo. change_1d,
  * change_7d, change_30d, points, and volume_1d are stored.
  * @param vpInfo Info*
@@ -324,6 +334,8 @@ void* api_store_all_info(void* vpInfo);
  * @return vpInfo on success, NULL on error
  */
 void* api_store_check_info(void* vpInfo);
+
+void* api_store_misc_info(void* vpInfo);
 
 /**
  * Fills an Info_Array with check api data. Primarily used for "check" command.
