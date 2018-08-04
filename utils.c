@@ -113,3 +113,48 @@ int is_str_number(const char* string) {
 
     return 1;
 }
+
+double csv_read_next_double(String* pString, size_t* idx) {
+    char string[32];
+    size_t i, j = 0;
+    for (i = *idx; pString->data[i] != ',' && pString->data[i] != '\n' && i < pString->len; i++,
+            j++)
+        string[j] = pString->data[i];
+
+    string[j] = '\0';
+    *idx = i + 1;
+    return strtod(string, NULL);
+}
+
+int csv_goto_next_line(String* pString, size_t* idx) {
+    size_t i;
+    for (i = *idx; i < pString->len; i++) {
+        if (pString->data[i] == '\n') {
+            *idx = i + 1;
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+int csv_goto_next_value(String* pString, size_t* idx) {
+    size_t i;
+    for (i = *idx; i < pString->len; i++) {
+        if (pString->data[i] == ',') {
+            *idx = i + 1;
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+size_t string_get_num_lines(String* pString) {
+    size_t lines = 0, i = 0;
+    while (i++ < pString->len)
+        if (pString->data[i] == '\n')
+            lines++;
+
+    return lines;
+}

@@ -118,4 +118,36 @@ int is_string_json_array(const String* pString);
  */
 int is_str_number(const char* string);
 
+/**
+ * Starting at pString->data[*idx], returns the next double and advances idx to after the next
+ * comma or newline
+ * @param pString String*
+ * @param idx index
+ * @return value as double
+ */
+double csv_read_next_double(String* pString, size_t* idx);
+
+/**
+ * Advances idx past the next newline in pString
+ * @param pString String*
+ * @param idx index
+ * @return 1 if success, 0 if encountered end of string
+ */
+int csv_goto_next_line(String* pString, size_t* idx);
+
+/**
+ * Advances idx to the start of the next value
+ * @param pString String*
+ * @param idx index
+ * @return 1 if success, 0 if encountered end of string
+ */
+int csv_goto_next_value(String* pString, size_t* idx);
+
+/**
+ * Returns the number of lines in a String
+ * @param pString String*
+ * @return size_t number of lines
+ */
+size_t string_get_num_lines(String* pString);
+
 #endif
