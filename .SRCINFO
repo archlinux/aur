@@ -1,0 +1,14 @@
+pkgbase = xcursor-breeze-neutral-git
+	pkgdesc = Neutral fork of KDEs Breeze Cursor
+	pkgver = 7916345
+	pkgrel = 1
+	url = https://github.com/TheScrawl/xcursor-breeze-neutral
+	arch = any
+	makedepends = git
+	depends = libxcursor
+	provides = xcursor-breeze-neutral
+	source = git+https://github.com/TheScrawl/xcursor-breeze-neutral
+	sha256sums = SKIP
+
+pkgname = xcursor-breeze-neutral-git
+
