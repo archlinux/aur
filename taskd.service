@@ -11,7 +11,7 @@ User=taskd
 Group=taskd
 WorkingDirectory=/var/lib/taskd
 PrivateTmp=true
-InaccessibleDirectories=/home /root /boot /opt /mnt /media
+InaccessibleDirectories=/home /root /boot /opt /mnt
 ReadOnlyDirectories=/etc /usr
 
 [Install]
