@@ -11,6 +11,7 @@ pkgbase = esniper-git
 	license = BSD
 	depends = curl
 	depends = openssl
+	provides = esniper
 	source = esniper-git::git+https://git.code.sf.net/p/esniper/git
 	md5sums = SKIP
 

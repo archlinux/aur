@@ -7,6 +7,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'arm')
 url="https://git.code.sf.net/p/esniper/git"
 license=('BSD')
 depends=('curl' 'openssl')
+provides=('esniper')
 source=(
     "${pkgname}::git+https://git.code.sf.net/p/esniper/git"
   )
