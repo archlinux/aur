@@ -6,7 +6,7 @@
 
 pkgname=libticables
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="TI Link Cable Library"
 arch=('i686' 'x86_64')
 url="http://lpg.ticalc.org/prj_tilp/"
@@ -15,7 +15,7 @@ options=('!libtool')
 depends=('libusb' 'glib2')
 install="${pkgname}.install"
 source=("http://downloads.sourceforge.net/project/tilp/tilp2-linux/tilp2-1.18/${pkgname}2-${pkgver}.tar.bz2"
-        "69-${pkgname}.rules")
+        "69-libticables.rules")
 md5sums=('b954d7524c5a35e34651725d4b38fe9c'
          '2e38fe89764f129c567b06afbbdfdcd0')
 
@@ -31,6 +31,6 @@ package() {
   cd "${srcdir}/${pkgname}2-${pkgver}"
 
   make install DESTDIR="${pkgdir}"
-  install -Dm644 "${srcdir}/69-${pkgname}.rules" \
-    "${pkgdir}/etc/udev/rules.d/69-${pkgname}.rules"
+  install -Dm644 "${srcdir}/69-libticables.rules" \
+    "${pkgdir}/usr/lib/udev/rules.d/69-libticables.rules"
 }
