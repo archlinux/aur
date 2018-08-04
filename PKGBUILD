@@ -2,24 +2,29 @@
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 
 pkgname=onlyoffice-bin
-pkgver=4.8.7.392
-pkgrel=4
+pkgver=5.1.27
+pkgrel=1
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
 license=('AGPL3.0')
-depends=('alsa-lib' 'nss' 'libxtst' 'qt5-x11extras' 'qt5-svg' 'gconf' 'libx11'
-         'libxss' 'curl' 'gtkglext' 'cairo' 'libstdc++5' 'ttf-dejavu'
-         'ttf-liberation' 'libcurl-gnutls' 'libcurl-compat')
+depends=('gcc-libs' 'xorg-server' 'libx11' 'libxss' 'gtkglext' 'cairo' 'gconf'
+         'ttf-dejavu' 'ttf-liberation' 'libcurl-gnutls' 'libglvnd' 'gtk2'
+         'gdk-pixbuf2' 'glib2' 'libxml2' 'gtk3' 'qt5-declarative' 'qt5-svg'
+         'qt5-x11extras' 'nss')
 makedepends=('w3m')
+optdepends=('libreoffice: for OpenSymbol fonts'
+            'ttf-carlito: for Carlito fonts'
+            'ttf-ms-fonts: for Microsoft fonts'
+            'otf-takao: for japanese Takao fonts')
 provides=('onlyoffice' 'onlyoffice-desktopeditors')
 conflicts=('onlyoffice')
 options=('!strip')
 _srcfile='onlyoffice-desktopeditors_amd64.deb'
-_srcurl="https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-${pkgver%.*}-2/${_srcfile}"
+_srcurl="https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-${pkgver}/${_srcfile}"
 source=("onlyoffice-desktopeditors-${pkgver}_amd64.deb"::"$_srcurl")
 noextract=("onlyoffice-desktopeditors-${pkgver}_amd64.deb")
-sha256sums=('a41e26595acf91a6ce5b0ff8e354317d37355da479c821e51f8c2a29ac688668')
+sha256sums=('34af31acaa4b55fc6f2f148d60b494e07235409dc9bbe7a24f1e730eb5196e55')
 
 package() {
     mkdir -p "onlyoffice-${pkgver}"
@@ -34,11 +39,6 @@ package() {
     msg2 'Fixing permissions...'
     chmod 755 "$pkgdir"{/opt/,/usr/{,bin/,share/{,applications/}}}
     chmod 755 "${pkgdir}/usr/bin/onlyoffice-desktopeditors"
-    
-    # fix wrong depedency
-    msg2 'Fixing wrong dependency...'
-    ln -sf $(find /usr/lib -maxdepth 1 -type f -name 'libcurl-compat.so.*' | head -n1) \
-        "${pkgdir}/opt/onlyoffice/desktopeditors/converter/libcurl.so.4"
     
     # install icons
     msg2 'Installing icons...'
