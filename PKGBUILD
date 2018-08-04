@@ -5,13 +5,13 @@
 
 _gitname=ctags
 pkgname=universal-ctags-git
-pkgver=0.r5294.cb4476eb
+pkgver=0.r6046.e65e91a2
 pkgrel=1
 pkgdesc="Multilanguage reimplementation of the Unix ctags utility"
 arch=('i686' 'x86_64')
 url="https://ctags.io/"
 license=('GPL')
-depends=('libxml2' 'jansson' 'libyaml' 'bash')
+depends=('libxml2' 'jansson' 'libyaml' 'libseccomp')
 makedepends=('git' 'python-docutils')
 provides=('ctags')
 conflicts=('ctags')
