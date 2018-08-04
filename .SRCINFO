@@ -1,0 +1,19 @@
+pkgbase = ngs-git
+	pkgdesc = Next Generation Shell (NGS)
+	pkgver = 0.2.4.r2.gfe5f135
+	pkgrel = 1
+	url = https://github.com/ngs-lang/ngs
+	arch = x86_64
+	license = GPLv3
+	makedepends = cmake
+	makedepends = git
+	makedepends = pandoc
+	makedepends = peg
+	makedepends = uthash
+	provides = ngs
+	conflicts = ngs
+	source = git+https://github.com/ngs-lang/ngs.git
+	sha256sums = SKIP
+
+pkgname = ngs-git
+
