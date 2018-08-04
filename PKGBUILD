@@ -42,9 +42,9 @@ build() {
   go_base=github.com/lxc/lxd
   mkdir -p "${GOPATH}"
   GOPATH="${GOPATH}" go get "${go_base}" || echo "(ignoring go error)"
-  export CGO_CFLAGS="-I{srcdir}/go/deps/sqlite/ -I{srcdir}/go/deps/dqlite/include/"
-  export CGO_LDFLAGS="-L{srcdir}/go/deps/sqlite/.libs/ -L{srcdir}/go/deps/dqlite/.libs/"
-  export LD_LIBRARY_PATH="{srcdir}/go/deps/sqlite/.libs/:{srcdir}/go/deps/dqlite/.libs/"
+  export CGO_CFLAGS="-I${srcdir}/go/deps/sqlite/ -I${srcdir}/go/deps/dqlite/include/"
+  export CGO_LDFLAGS="-L${srcdir}/go/deps/sqlite/.libs/ -L${srcdir}/go/deps/dqlite/.libs/"
+  export LD_LIBRARY_PATH="${srcdir}/go/deps/sqlite/.libs/:${srcdir}/go/deps/dqlite/.libs/"
   cd "${GOPATH}/src/${go_base}"
   make deps
   make
