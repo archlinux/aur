@@ -1,0 +1,15 @@
+pkgbase = x11clone
+	pkgdesc = View and interact with another X11 server. Can be used in conjunction with ThinLinc.
+	pkgver = 1.8.80.3
+	pkgrel = 1
+	url = https://github.com/x11clone/x11clone
+	arch = x86_64
+	license = GPL2
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = libxfixes
+	source = https://github.com/x11clone/x11clone/releases/download/v1.8.80.3/x11clone-Linux-x86_64-1.8.80.3.tar.gz
+	sha256sums = 261c5454f0a17fd4e04736e55175c5956a87ccf5b19e8135ceb529247cd640e7
+
+pkgname = x11clone
+
