@@ -2,27 +2,22 @@
 # Contributor:
 
 pkgname=mpc-qt
-pkgver=18.03
-pkgrel=2
+pkgver=18.08
+pkgrel=1
 pkgdesc='A clone of Media Player Classic reimplimented in Qt.'
 url='https://github.com/cmdrkotori/mpc-qt'
 arch=('x86_64')
 license=('GPL2')
 depends=('mpv' 'qt5-x11extras')
 makedepends=('git' 'qt5-tools')
-optdepends=('adobe-source-sans-pro-fonts: default font for mpv-stats script'
-            'libva-vdpau-driver: backend for Nvidia and AMD cards'
-            'libva-intel-driver: backend for Intel cards')
-source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('SKIP')
-
-prepare() {
-  cd mpc-qt
-  git submodule update --init --recursive
-}
+optdepends=('libva-vdpau-driver: backend for Nvidia and AMD cards'
+            'libva-intel-driver: backend for Intel cards'
+            'udisks2: to detect available discs')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('c58fd90926773c9da8bdfc1a8e4dba0b95cbc58cee6db9981e8de94fd9534406')
 
 build() {
-  cd mpc-qt
+  cd "${pkgname}-${pkgver}"
   qmake-qt5 PREFIX=/usr mpc-qt.pro \
     QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
     QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
@@ -31,5 +26,5 @@ build() {
 }
 
 package() {
-  make -C mpc-qt INSTALL_ROOT="${pkgdir}" install
+  make -C "${pkgname}-${pkgver}" INSTALL_ROOT="${pkgdir}" install
 }
