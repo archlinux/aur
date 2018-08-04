@@ -1,0 +1,14 @@
+pkgbase = signal-back-bin
+	pkgdesc = Decrypt Signal encrypted backups outside the app
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/xeals/signal-back
+	arch = x86_64
+	license = Apache
+	provides = signal-back
+	conflicts = signal-back-git
+	source = https://github.com/xeals/signal-back/releases/download/v0.1.6/signal-back_linux_amd64
+	sha256sums = 86e98bec2d14b135c7497850c58fa79f80be22735095dc47e3a07e76f7e7ddcf
+
+pkgname = signal-back-bin
+
