@@ -30,20 +30,23 @@ Info* api_info_init(void) {
     Info* pInfo = malloc(sizeof(Info));
     pointer_alloc_check(pInfo);
     *pInfo = (Info) { // Null terminate every string and set every value to EMPTY
-            .symbol[0] = '\0', .name[0] = '\0', .industry[0] = '\0', .website[0] = '\0', .description[0] = '\0',
-            .ceo[0] = '\0', .issue_type[0] = '\0', .sector[0] = '\0', .intraday_time = EMPTY, .price = EMPTY,
-            .marketcap = EMPTY, .volume_1d = EMPTY, .pe_ratio = EMPTY, .div_yield = EMPTY, .revenue = EMPTY,
-            .gross_profit = EMPTY, .cash = EMPTY, .debt = EMPTY, .eps = {EMPTY, EMPTY, EMPTY, EMPTY},
-            .fiscal_period[0][0] = '\0', .fiscal_period[1][0] = '\0', .fiscal_period[2][0] = '\0',
-            .fiscal_period[3][0] = '\0', .eps_year_ago = {EMPTY, EMPTY, EMPTY, EMPTY}, .price_last_close = EMPTY,
-            .price_7d = EMPTY, .price_30d = EMPTY, .points = NULL, .num_points = EMPTY, .articles = NULL,
-            .num_articles = EMPTY, .peers = NULL, .amount = EMPTY, .total_spent = EMPTY, .current_value = 0,
-            .famount[0] = '\0', .ftotal_spent[0] = '\0', .fcurrent_value[0] = '\0', .profit_total = EMPTY,
-            .profit_total_percent = EMPTY, .profit_last_close = EMPTY, .profit_last_close_percent = EMPTY,
-            .profit_7d = EMPTY, .profit_7d_percent = EMPTY, .profit_30d = EMPTY, .profit_30d_percent = EMPTY,
-            .fprofit_total[0] = '\0', .fprofit_total_percent[0] = '\0', .fprofit_last_close[0] = '\0',
-            .fprofit_last_close_percent[0] = '\0', .fprofit_7d[0] = '\0', .fprofit_7d_percent[0] = '\0',
-            .fprofit_30d[0] = '\0', .fprofit_30d_percent[0] = '\0'
+            .api_provider = EMPTY, .symbol[0] = '\0', .name[0] = '\0', .industry[0] = '\0',
+            .website[0] = '\0', .description[0] = '\0', .ceo[0] = '\0', .issue_type[0] = '\0',
+            .sector[0] = '\0', .intraday_time = EMPTY, .price = EMPTY, .marketcap = EMPTY,
+            .volume_1d = EMPTY, .pe_ratio = EMPTY, .div_yield = EMPTY, .revenue = EMPTY,
+            .gross_profit = EMPTY, .cash = EMPTY, .debt = EMPTY, .eps = {EMPTY, EMPTY, EMPTY, EMPTY}
+            , .fiscal_period[0][0] = '\0', .fiscal_period[1][0] = '\0', .fiscal_period[2][0] = '\0',
+            .fiscal_period[3][0] = '\0', .eps_year_ago = {EMPTY, EMPTY, EMPTY, EMPTY},
+            .price_last_close = EMPTY, .price_7d = EMPTY, .price_30d = EMPTY, .points = NULL,
+            .num_points = EMPTY, .articles = NULL, .num_articles = EMPTY, .peers = NULL,
+            .amount = EMPTY, .total_spent = EMPTY, .current_value = 0, .famount[0] = '\0',
+            .ftotal_spent[0] = '\0', .fcurrent_value[0] = '\0', .profit_total = EMPTY,
+            .profit_total_percent = EMPTY, .profit_last_close = EMPTY,
+            .profit_last_close_percent = EMPTY, .profit_7d = EMPTY, .profit_7d_percent = EMPTY,
+            .profit_30d = EMPTY, .profit_30d_percent = EMPTY, .fprofit_total[0] = '\0',
+            .fprofit_total_percent[0] = '\0', .fprofit_last_close[0] = '\0',
+            .fprofit_last_close_percent[0] = '\0', .fprofit_7d[0] = '\0',
+            .fprofit_7d_percent[0] = '\0', .fprofit_30d[0] = '\0', .fprofit_30d_percent[0] = '\0'
     };
     return pInfo;
 }
@@ -118,6 +121,8 @@ void* iex_store_company(void* vpInfo) {
         return NULL;
     }
 
+    symbol_info->api_provider = IEX;
+
     if (json_object_object_get(jobj, "symbol") != NULL)
         strcpy(symbol_info->symbol, json_object_get_string(json_object_object_get(jobj, "symbol")));
     if (json_object_object_get(jobj, "companyName") != NULL)
@@ -156,6 +161,8 @@ void* iex_store_quote(void* vpInfo) {
         return NULL;
     }
 
+    symbol_info->api_provider = IEX;
+
     // If latest price is in extended hours
     if (json_object_get_int64(json_object_object_get(jobj, "extendedPriceTime")) >
         json_object_get_int64(json_object_object_get(jobj, "latestUpdate"))) {
@@ -193,6 +200,8 @@ void* iex_store_stats(void* vpInfo) {
         return NULL;
     }
 
+    symbol_info->api_provider = IEX;
+
     symbol_info->div_yield = json_object_get_double(json_object_object_get(jobj, "dividendYield"));
     symbol_info->revenue = json_object_get_int64(json_object_object_get(jobj, "revenue"));
     symbol_info->gross_profit = json_object_get_int64(json_object_object_get(jobj, "grossProfit"));
@@ -219,6 +228,8 @@ void* iex_store_earnings(void* vpInfo) {
         string_destroy(&pString);
         return NULL;
     }
+
+    symbol_info->api_provider = IEX;
 
     if (json_object_is_type(json_object_object_get(jobj, "earnings"), json_type_array)) { // ETFs don't report earnings
         size_t len = json_object_array_length(json_object_object_get(jobj, "earnings"));
@@ -260,6 +271,8 @@ void* iex_store_chart(void* vpInfo) {
         return NULL;
     }
 
+    symbol_info->api_provider = IEX;
+
     size_t len = json_object_array_length(jobj);
     symbol_info->points = calloc(len + 1, sizeof(double));
     pointer_alloc_check(symbol_info->points);
@@ -298,6 +311,9 @@ void* iex_store_news(void* vpInfo) {
         string_destroy(&pString);
         return NULL;
     }
+
+    symbol_info->api_provider = IEX;
+
     size_t len = json_object_array_length(jobj);
     if (len < (unsigned) symbol_info->num_articles)
         symbol_info->num_articles = (int)len;
@@ -362,6 +378,8 @@ void* iex_store_peers(void* vpInfo) {
         string_destroy(&pString);
         return NULL;
     }
+
+    symbol_info->api_provider = IEX;
 
     size_t len = (int) json_object_array_length(jobj);
     if (len == 0) {
@@ -459,6 +477,8 @@ void* morningstar_store_info(void* vpInfo) {
         return NULL;
     }
 
+    symbol_info->api_provider = MORNINGSTAR;
+
     Json* jobj = json_tokener_parse(pString->data);
     Json* datapoints = json_object_object_get(
             json_object_array_get_idx(json_object_object_get(jobj, "PriceDataList"), 0), "Datapoints");
@@ -500,6 +520,8 @@ void* alphavantage_store_info(void* vpInfo) {
         return NULL;
     }
 
+    symbol_info->api_provider = ALPHAVANTAGE;
+
     size_t len = string_get_num_lines(pString) - 1, idx = 0;
     if (len > 1260) // 5 years
         len = 1260;
@@ -537,6 +559,8 @@ void* coinmarketcap_store_info(void* vpInfo) {
         string_destroy(&pString);
         return NULL;
     }
+
+    symbol_info->api_provider = COINMARKETCAP;
 
     Json* jobj = json_tokener_parse(pString->data);
     Json* data = json_object_array_get_idx(jobj, 0);

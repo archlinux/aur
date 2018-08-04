@@ -8,6 +8,11 @@
 #ifndef TICK_API_H
 #define TICK_API_H
 
+#define IEX 0
+#define MORNINGSTAR 1
+#define ALPHAVANTAGE 2
+#define COINMARKETCAP 3
+
 #define QUARTERS 4
 #define DATE_MAX_LENGTH 16
 #define CELL_MAX_LENGTH 16
@@ -45,6 +50,7 @@ typedef struct info Info;
 typedef struct info_array Info_Array;
 
 struct info {
+    int api_provider;                   // IEX, MORNINGSTAR, ALPHAVANTAGE, COINMARKETCAP
     /** API DATA **/
 
     /* Company */
