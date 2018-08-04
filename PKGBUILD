@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan.marqos@gmail.com>
 pkgname=aptik
-pkgver=18.6
+pkgver=18.8
 pkgrel=1
 pkgdesc="Command-line tool for migrating system settings and data for distributions based on Debian, Arch and Fedora."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('glib2' 'libgee' 'pv')
 makedepends=('git' 'vala')
 provides=(aptik)
 source=("${pkgname}_v${pkgver}.tgz::https://github.com/teejee2008/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('0abafdcffee35e933c8c106b0b48dcdfa234f417950fc23a8ca5755ccb3bb55e')
+sha256sums=('9439d9f0601a799848c786435a51d276acd14d62dea91ab4d91f57994661ab73')
 
 build() {
 	cd "${pkgname}-${pkgver}"
