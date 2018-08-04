@@ -4,14 +4,14 @@
 # Contributor : Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-libdrm-git
-pkgver=2.4.91.r10.ga58490de
+pkgver=2.4.93.r0.g87fdbfb6
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(i686 x86_64)
 license=('custom')
 depends=('libdrm-git' 'lib32-libpciaccess')
-makedepends=('gcc-multilib')
-checkdepends=('lib32-cairo' 'lib32-bcunit' 'bcunit-cunit-compat')
+makedepends=('gcc-multilib' 'meson')
+checkdepends=('lib32-cairo')
 url="http://dri.freedesktop.org/"
 provides=('lib32-libdrm')
 conflicts=('lib32-libdrm')
