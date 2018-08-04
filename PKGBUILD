@@ -1,5 +1,7 @@
+# Maintainer: Ward Segers <w@rdsegers.be>
+
 pkgname=signal-back-git
-pkgver=0.1.0.r0.29fcf29
+pkgver=0.1.6.r0.5b3bce7
 pkgrel=1
 pkgdesc="Decrypt Signal encrypted backups outside the app"
 arch=('i686' 'x86_64')
@@ -22,6 +24,9 @@ prepare() {
   rm -rf -- src/github.com/xeals
   mkdir -p src/github.com/xeals
   mv "$_pkgname" src/github.com/xeals/
+
+  cd src/github.com/xeals/signal-back/
+  git checkout v$pkgver
 }
 
 build() {
