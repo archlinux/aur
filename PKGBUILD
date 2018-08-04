@@ -1,9 +1,8 @@
 # Contributor: Alexandre Bolelli <semeion7@hotmail.com>
 # Maintainer: Alexandre Bolelli <semeion7@hotmail.com>
-# python2-scapy
 
 pkgname=handshake-cracker
-pkgver=45.a776d23
+pkgver=47.1f29cf9
 pkgrel=1
 pkgdesc="Handshake capture with aircrack-ng, test with pyrit, crack with john the ripper using self-builted wordlists."
 arch=('any')
