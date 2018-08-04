@@ -2,7 +2,7 @@
 
 pkgname=speech-denoiser-git
 pkgver=r67.ab14ff4
-pkgrel=2
+pkgrel=3
 pkgdesc="A speech denoise lv2 plugin based on RNNoise library."
 arch=('i686' 'x86_64')
 url="https://github.com/lucianodato/speech-denoiser"
@@ -11,8 +11,8 @@ depends=('glibc')
 makedepends=('git' 'lv2' 'meson')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname%-*}::git://github.com/lucianodato/speech-denoiser.git"
-        "git://github.com/xiph/rnnoise.git")
+source=("${pkgname%-*}::git+https://github.com/lucianodato/speech-denoiser.git"
+        "git+https://github.com/xiph/rnnoise.git")
 md5sums=('SKIP' 'SKIP')
 
 prepare() {
