@@ -6,8 +6,8 @@
 # Contributor: Tomas Strand <tomas at fik1 dot net>
 
 ### NOTICE
-### libspotify is EOL, sources are taken from https://pkgs.rpmfusion.org/repo/pkgs/nonfree/libspotify/ mirror and reuploaded to GitHub. 
-### Checksums they have not been changed.
+### libspotify is EOL, sources are taken from https://mopidy.github.io/libspotify-archive/
+### Checksums have not changed.
 ### 
 ### SPOTIFY DEVS STATEMENT
 ###
@@ -23,7 +23,7 @@
 
 pkgname=libspotify
 pkgver=12.1.51
-pkgrel=5
+pkgrel=6
 pkgdesc="C API package allowing third-party developers to write applications that utilize the Spotify music streaming service"
 arch=("i686" "x86_64")
 url="https://developer.spotify.com/technologies/libspotify/"
@@ -32,14 +32,14 @@ depends=('glibc')
 
 if [ "$CARCH" == "x86_64" ]; then
     SPOTIFY_ARCH="x86_64"
-    source_x86_64=("https://raw.githubusercontent.com/FadeMind/${pkgname}/master/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
+    source_x86_64=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
     md5sums_x86_64=('83efddcc195d6ff12b24c97c767a5e45')
     sha256sums_x86_64=('43a14e0732ba6ae30078fac105d0e2998d04d5f5c396a4968386bc4e22491058')
 fi
 
 if [ "$CARCH" == "i686" ]; then
     SPOTIFY_ARCH="i686"
-    source_i686=("https://raw.githubusercontent.com/FadeMind/${pkgname}/master/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
+    source_i686=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
     md5sums_i686=('04735b890da0b1fc7f1f14e68a5293de')
     sha256sums_i686=('941ab4ba10bcd6ec4e96127afd095a39e11bc955de0882734c97e4f588b155ae')
 fi

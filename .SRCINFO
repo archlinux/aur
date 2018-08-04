@@ -1,15 +1,12 @@
 pkgbase = libspotify
 	pkgdesc = C API package allowing third-party developers to write applications that utilize the Spotify music streaming service
 	pkgver = 12.1.51
-	pkgrel = 5
+	pkgrel = 6
 	url = https://developer.spotify.com/technologies/libspotify/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source_x86_64 = https://raw.githubusercontent.com/FadeMind/libspotify/master/libspotify-12.1.51-Linux-x86_64-release.tar.gz
-	md5sums_x86_64 = 83efddcc195d6ff12b24c97c767a5e45
-	sha256sums_x86_64 = 43a14e0732ba6ae30078fac105d0e2998d04d5f5c396a4968386bc4e22491058
 
 pkgname = libspotify
 
