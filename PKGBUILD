@@ -3,7 +3,7 @@
 USE_DEV=1
 
 pkgname=ns3-hg
-pkgver=r60
+pkgver=r13716
 pkgrel=1
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' )
@@ -18,6 +18,7 @@ depends=(
     'pygccxml'
     'openmpi' # MPI for HPC
     'flex' # for nsc
+    'valgrind'
     )
 makedepends=(
     'mercurial' 'bzr' 'git'
@@ -27,11 +28,12 @@ makedepends=(
     )
 optdepends=(
     'tcpdump' 'wireshark-gtk'
-    'gdb' 'valgrind'
+    'gdb'
     'texlive-bin'
     'python2-sphinx'
     'uncrustify' # utils/check-style.py style check program
     )
+provides=('ns3')
 source=(
     #"https://www.nsnam.org/release/ns-allinone-${pkgver}.tar.bz2"
     "ns3-hg::hg+http://code.nsnam.org/ns-3-allinone"
@@ -60,7 +62,8 @@ pkgver_svn() {
 }
 
 pkgver_hg() {
-    cd "${srcdir}/${pkgname}"
+    #cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/ns3-dev-hg/"
     local ver="$(hg log | grep changeset | head -n 1 | awk '{print $2}' | awk -F: '{print $1}' )"
     printf "r%s" "${ver//[[:alpha:]]}"
 }
@@ -74,10 +77,16 @@ prepare()
     if [ ! "${USE_DEV}" = "0" ]; then
         # setup: bake, netanim, pybindgen, and ns-3-dev
         cd "${srcdir}/${pkgname}"
+
+        sed '1s|^|#!/usr/bin/env python2\n|' -i ${srcdir}/ns3-dev-hg/bindings/python/wscript
     else
         # already include source for netanim, pybindgen, and ns3-xxx
         cd $srcdir/ns-allinone-$pkgver
+
+        sed '1s|^|#!/usr/bin/env python2\n|' -i ns3-$pkgver/bindings/python/wscript
     fi
+
+    #cd ${srcdir}/ns3-dev-hg/ && patch -p1 -i ${srcdir}/ns3-dev-arch-python2.patch && cd -
 
     echo "Fix python(3) for ns3"
     grep -rl '/usr/bin/env python' . \
@@ -94,19 +103,24 @@ prepare()
         ln -sf ../ns3-bake-hg/    bake
         ln -sf ../pybindgen-git/  pybindgen
         echo "Update the .config file ..."
-        ./download.py
+        PYTHON=`which python2` ./download.py
     fi
+
+
+    if [ 1 = 1 ]; then
 
     echo "compile openflow lib support ..."
     cd $srcdir/ns3-openflow-hg
     grep -rl '/usr/bin/env python' . \
         | xargs sed -e 's|/usr/bin/env python$|/usr/bin/env python2|g' -i
     echo "  waf configure ..."
-    ./waf configure
+    PYTHON=`which python2` ./waf configure
     echo "  waf build ..."
-    ./waf build
+    PYTHON=`which python2` ./waf build
+
 
     NUM_CORE=$(cat /proc/cpuinfo | grep processor | wc -l | awk '{print $0 + 1;}')
+
 
     echo "compile click support ..."
     cd $srcdir/ns3-click-git
@@ -119,18 +133,37 @@ prepare()
     cd $srcdir/ns3-brite-hg
     make -j $NUM_CORE
 
-    if [ 0 = 1 ]; then
+
     echo "compile Network Simulation Cradle (NSC) ..."
     cd $srcdir/ns3-nsc-hg
+
+    echo "(NSC) replace python2 ..."
     grep -rl '/usr/bin/env python' . \
         | while read A; do sed -e 's|/usr/bin/env python$|/usr/bin/python2|g' -i $A; done
+    echo "(NSC) replace flex ..."
     sed -e "s|if not conf.CheckLib('fl') or not exe_exists('flex'):|if not conf.CheckLib('fl') and not exe_exists('flex'):|g" -i SConstruct
+    sed -e "s|SConscript('test/SConscript')||g" -i SConstruct
+    echo "(NSC) replace is_function ..."
+    grep -Hr "is_function(" . | awk -F: '{print $1}' | sort | uniq \
+      | while read A; do sed -e 's|is_function(|is_funct(|g' -i $A; done
+    echo "(NSC) replace is_enum ..."
+    grep -Hr "is_enum(" . | awk -F: '{print $1}' | sort | uniq \
+      | while read A; do sed -e 's|is_enum(|is_enumeration(|g' -i $A; done
+
+    echo "(NSC) replace yylex ..."
+    grep -Hr "extern int yylex" . | awk -F: '{print $1}' | sort | uniq \
+      | while read A; do sed -e 's|extern int yylex();||g' -i $A; done
+    sed -e 's|class node_t;|class node_t; extern "C" int yylex();|g' -i globaliser/handle_global.h
+    sed -e 's|#include "parser.tab.hh"|#include "parser.tab.hh"\n#include "handle_global.h"\n|g' -i globaliser/ilex.cc
+
+    echo "(NSC) scons ..."
     #python2 scons.py
-    SHLIBSUFFIX=.so ./scons.py
+    PYTHON=`which python2` SHLIBSUFFIX=.so ./scons.py
+
     fi
 }
 
-build()
+build0()
 {
     if [ ! "${USE_DEV}" = "0" ]; then
         cd "${srcdir}/${pkgname}"
@@ -139,7 +172,7 @@ build()
     fi
 
     echo "Build ns-3 with build.py ..."
-    ./build.py \
+    PYTHON=`which python2` ./build.py \
         --build-options=--progress \
         --qmake-path=/usr/bin/qmake-qt4 \
         -- \
@@ -153,45 +186,64 @@ build()
         --with-nsclick=$srcdir/ns3-click-git \
         --with-openflow=$srcdir/ns3-openflow-hg \
         --with-brite=$srcdir/ns3-brite-hg \
-        #--with-nsc=$srcdir/ns3-nsc-hg \
+        --with-nsc=$srcdir/ns3-nsc-hg \
+        --with-pybindgen=$srcdir/pybindgen-git \
         #--enable-examples \
         #--enable-tests \
         #$(NULL)
+}
 
-
+build()
+{
     if [ ! "${USE_DEV}" = "0" ]; then
         cd "${srcdir}/${pkgname}/ns-3-dev"
     else
         cd $srcdir/ns-allinone-$pkgver/ns-$pkgver
     fi
-    #./waf configure
-    ./waf build
+    echo "Build ns-3 with waf ..."
+    PYTHON=`which python2` ./waf configure \
+        -d release -o build-shared \
+        --prefix=/usr \
+        --libdir=/usr/lib \
+        --with-python=/usr/bin/python2 \
+        --progress \
+        --enable-mpi \
+        --enable-sudo \
+        --with-nsclick=$srcdir/ns3-click-git \
+        --with-openflow=$srcdir/ns3-openflow-hg \
+        --with-brite=$srcdir/ns3-brite-hg \
+        --with-nsc=$srcdir/ns3-nsc-hg \
+        --with-pybindgen=$srcdir/pybindgen-git \
+        #--enable-examples \
+        #--enable-tests \
+        #$(NULL)
+    PYTHON=`which python2` ./waf build
 }
 
 verify_build()
 {
     if [ ! "${USE_DEV}" = "0" ]; then
-        cd "${srcdir}/${pkgname}"
+        cd "${srcdir}/${pkgname}/ns-3-dev"
     else
-        cd $srcdir/ns-allinone-$pkgver
+        cd $srcdir/ns-allinone-$pkgver/ns-$pkgver
     fi
 
     # openflow
     # https://www.nsnam.org/docs/release/3.13/models/html/openflow-switch.html
-    ./waf --run openflow-switch
-    ./waf --run "openflow-switch -v"
+    PYTHON=`which python2` ./waf --run openflow-switch
+    PYTHON=`which python2` ./waf --run "openflow-switch -v"
 
     # NS-3 Click Integration Support
     # https://www.nsnam.org/docs/models/html/click.html
-    ./waf --run nsclick-simple-lan
+    PYTHON=`which python2` ./waf --run nsclick-simple-lan
 
     # brite
     # https://www.nsnam.org/wiki/BRITE_integration_with_ns-3
-    ./waf --run 'brite-generic-example --verbose=1'
+    PYTHON=`which python2` ./waf --run 'brite-generic-example --verbose=1'
 
     # nsc
     # https://www.nsnam.org/docs/models/html/tcp.html?#network-simulation-cradle
-    ./test.py -s ns3-tcp-interoperability
+    PYTHON=`which python2` ./test.py -s ns3-tcp-interoperability
 }
 
 package()
@@ -201,7 +253,7 @@ package()
     else
         cd $srcdir/ns-allinone-$pkgver/ns-$pkgver
     fi
-    ./waf install --destdir=$pkgdir/
+    PYTHON=`which python2` ./waf install --destdir=$pkgdir/
 }
 
 #sha1sums=('59a9a3cfd738c48e17253eb7ed2aaccfc1cc498d' 'SKIP' 'SKIP' 'SKIP')
@@ -213,5 +265,6 @@ md5sums=('SKIP' #c1580dbd9bd1f65b3453cd8956d36ae7
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+    )
 
