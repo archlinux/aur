@@ -1,8 +1,8 @@
 # Maintainer Victor Roest <victor@xirion.net>
 
 pkgname=xcursor-breeze-neutral-git
-pkgver=7916345
-pkgrel=1
+pkgver=r9.08f15b2
+pkgrel=2
 pkgdesc="Neutral fork of KDEs Breeze Cursor"
 url="https://github.com/TheScrawl/xcursor-breeze-neutral"
 makedepends=('git')
@@ -13,8 +13,11 @@ sha256sums=('SKIP')
 arch=(any)
 
 pkgver() {
-    cd ${srcdir}/xcursor-breeze-neutral
-    git rev-parse --short HEAD
+  cd "xcursor-breeze-neutral"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 package() {
