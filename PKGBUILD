@@ -9,7 +9,7 @@
 pkgname=mutter-781835-workaround
 _pkgname=mutter
 pkgver=3.28.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users."
 url="https://git.gnome.org/browse/mutter"
 arch=(x86_64)
@@ -51,6 +51,7 @@ prepare() {
   git cherry-pick 94f40098 || bash
   git cherry-pick 161d2540 || bash
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/145/commits
+  # This causes stutter on Intel iGPU (i7 8550u). Works fine for nv GPU from my experience
   git cherry-pick a4b62506 || bash
   git cherry-pick 2088061a || bash
   '
