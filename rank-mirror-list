@@ -1,0 +1,28 @@
+#!/bin/bash
+
+CONFIG_FILE="/etc/pacman.d/mirrorlist-rankmirrors.conf"
+MIRRORLIST="/etc/pacman.d/mirrorlist.pacnew"
+TMP_FILE="/tmp/mirrorlist"
+
+if [ $(id -u) != 0 ]; then
+	echo "error: you cannot perform this operation unless you are root."
+	exit 1
+fi
+
+source "$CONFIG_FILE"
+if [ -z "$COUNTRY" ]; then
+	echo "error: file $CONFIG_FILE is not configured."
+	exit 2
+fi
+
+if [ -e "$MIRRORLIST" ]; then
+	awk -v RS='\n\n' '/^## '"$COUNTRY"'/{print $0}' "$MIRRORLIST" | awk '/^#Server/{print substr($0, 2)}' > "$TMP_FILE"
+	if [ -s "$TMP_FILE" ]; then
+		rankmirrors "$TMP_FILE" > "/etc/pacman.d/mirrorlist" && rm "$TMP_FILE" "$MIRRORLIST"
+	else
+		echo "error: there is no mirror for country $COUNTRY."
+		exit 3
+	fi
+else
+	echo "Already processed pacnew"
+fi

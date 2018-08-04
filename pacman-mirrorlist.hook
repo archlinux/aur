@@ -1,0 +1,10 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=pacman-mirrorlist
+
+[Action]
+Depends=pacman-contrib
+When=PostTransaction
+Exec=/usr/bin/rank-mirror-list
