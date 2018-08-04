@@ -1,7 +1,7 @@
 #Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgname=fargate-cli
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="CLI for AWS Fargate"
 arch=('i686' 'x86_64')
