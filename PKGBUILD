@@ -2,19 +2,19 @@
 
 pkgname=pingo
 pkgver=0.97.11
-pkgrel=1
+pkgrel=2
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)'
-arch=('i686' 'x86_64')
-url='http://css-ig.net/pingo/'
+arch=('x86_64')
+url='https://css-ig.net/pingo'
 license=('unknown')
 depends=('wine')
+conflicts=('pingo-bin')
 options=('!strip')
 source=('git+https://github.com/dbermond/shellutils.git')
 sha256sums=('SKIP')
+
 _expected_sha256sum='46e64e46a2e11ff9d87b358f78cdd19b0f07e3168e2f2835cce23c5344a20407'
-#_upstream_version="$(printf '%s' "$pkgver" | sed 's|\.||2')"
-_upstream_version="$pkgver"
-_srcfile="pingo-${_upstream_version}.zip"
+_srcfile="pingo-${pkgver}.zip"
 _srcurl='https://css-ig.net/downloads/zip/pingo.zip'
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
@@ -72,6 +72,6 @@ prepare() {
 }
 
 package() {
-    install -D -m755 "shellutils/image/${pkgname}"         "${pkgdir}/usr/bin/${pkgname}"
-    install -D -m644 "${pkgname}-${pkgver}/${pkgname}.exe" "${pkgdir}/usr/share/${pkgname}/${pkgname}.exe"
+    install -D -m755 "shellutils/image/pingo"         -t "${pkgdir}/usr/bin"
+    install -D -m644 "${pkgname}-${pkgver}/pingo.exe" -t "${pkgdir}/usr/share/${pkgname}"
 }
