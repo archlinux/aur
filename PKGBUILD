@@ -2,14 +2,14 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname='black-git'
-pkgver=18.6b2.r0.gff2e5dd
+pkgver=18.6b4.r7.ge94a41f
 pkgrel=1
 pkgdesc='Uncompromising code formatter'
 arch=('any')
 url='https://github.com/ambv/black'
 license=('MIT')
 depends=('python-appdirs' 'python-attrs' 'python-click' 'python-toml')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 provides=("${pkgname/-git}")
 conflicts=("${pkgname/-git}")
 source=("git+$url.git")
@@ -25,12 +25,6 @@ build() {
   cd "${pkgname/-git}"
 
   python setup.py build
-}
-
-check() {
-  cd "${pkgname/-git}"
-
-  python tests/test_black.py
 }
 
 package() {
