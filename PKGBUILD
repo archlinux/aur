@@ -1,7 +1,7 @@
 # Maintainer: Dan Beste <Dan.Ray.Beste@gmail.com>
 
 pkgname='stratis-cli'
-pkgver=0.5.2
+pkgver=0.5.5
 _justbasesver=0.09
 _justbytesver=0.11
 pkgrel=1
@@ -19,7 +19,7 @@ source=(
   "justbytes-${_justbytesver}.tar.gz::https://github.com/mulkieran/justbytes/archive/v${_justbytesver}.tar.gz"
 )
 sha256sums=(
-  '25ee3f9016c6eb8a3cccb2eabaa3f0f799aef72e05dafceeae2f6dd21b0abcf7'
+  'eb14f011d8c02df1be31f36c4f7ba2abb7c35bac4fdae9f2d03b315fbd36a030'
   '623ff8dcc53e491a693f5a2c3caea41c4386fda54368fa30220955a9e1179513'
   '42f800190f89316b921aab15d64caf4e8e67b88c5c4d459b9d788bba116c6210'
 )
