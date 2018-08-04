@@ -12,16 +12,19 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.0_devel.103089.ff6db94c18
+pkgver=18.3.0_devel.103997.c3325097be
 pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
-              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'libclc' 'wayland' 'wayland-protocols' 'meson')
+              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson')
+#  removed libclc from makedepends
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'libclc' 'wayland' 'lm_sensors')
+         'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc')
+# removed liblcl from depends
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-mesa' 'opencl-driver' 'opengl-driver')
+provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-mesa' 'opengl-driver' 'opencl-driver')
+# removed opencl-driver from provides
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
@@ -57,7 +60,6 @@ build () {
        -D gallium-extra-hud=true \
        -D gallium-nine=true \
        -D gallium-omx=bellagio \
-       -D gallium-opencl=icd \
        -D gallium-va=true \
        -D gallium-vdpau=true \
        -D gallium-xa=true \
@@ -72,7 +74,10 @@ build () {
        -D lmsensors=true \
        -D osmesa=gallium \
        -D shared-glapi=true \
-       -D valgrind=false
+       -D gallium-opencl=icd \
+       -D valgrind=false \
+       -D tools=[]
+# remove -D gallium-opencl=icd \
     meson configure _build
     ninja -C _build
 }
@@ -82,6 +87,11 @@ package_mesa-git() {
 
   DESTDIR="$pkgdir" ninja -C _build install
 
+  # https://bugs.freedesktop.org/show_bug.cgi?id=107487
+  # removing those files and the /usr/bin/ folder
+  rm "$pkgdir"/usr/bin/intel_dump_gpu "$pkgdir"/usr/bin/intel_sanitize_gpu  
+  rmdir "$pkgdir"/usr/bin
+  
   # remove files provided by libglvnd
   rm "$pkgdir"/usr/lib/libGLESv{1_CM,2}.so*
    
