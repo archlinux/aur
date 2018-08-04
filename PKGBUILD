@@ -4,8 +4,8 @@
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.28.3+1+gc7a82db37
-pkgrel=1
+pkgver=3.28.3
+pkgrel=2
 pkgdesc="The next generation GNOME Shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -27,11 +27,6 @@ source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
 sha256sums=('SKIP'
             'SKIP'
             '11dcffae170776140b1f0c9bed90b8df70e8d3c6694b60ab40bb46235e3ad755')
-
-pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
-}
 
 prepare() {
   cd $_pkgname
