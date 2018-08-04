@@ -4,11 +4,11 @@
 
 pkgname='lollypop-git'
 _gitname="${pkgname/-git}"
-pkgdesc='Lollypop is a new GNOME music playing application.'
-pkgver=0.9.304.r34.g917656fd
+pkgdesc='Lollypop music player'
+pkgver=0.9.521.r10.g0a37c47f
 pkgrel=1
-url='https://gnumdk.github.io/lollypop-web/'
-arch=('i686' 'x86_64')
+url='https://wiki.gnome.org/Apps/Lollypop'
+arch=('x86_64')
 license=('GPL3')
 makedepends=('git' 'meson' 'ninja')
 depends=(
@@ -27,18 +27,17 @@ optdepends=(
   'gst-plugins-ugly: GStreamer Multimedia Framework Ugly Plugins'
   'kid3-qt: Store covers in tags'
   'libsecret: Last.FM support'
+  'python-pylast: Last.fm integration'
   'python-wikipedia: Wikipedia support'
   'youtube-dl: YouTube playback'
 )
 conflicts=("${_gitname}")
 provides=("${_gitname}")
 source=(
-  "git+https://gitlab.gnome.org/gnumdk/${_gitname}.git"
+  "git+https://gitlab.gnome.org/World/${_gitname}.git"
   "git+https://gitlab.gnome.org/gnumdk/${_gitname}-po.git"
-  "git+https://gitlab.gnome.org/gnumdk/${_gitname}-portal.git" 
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
 )
@@ -46,7 +45,7 @@ sha256sums=(
 pkgver() {
   cd "${_gitname}"
 
-  git describe --tags --long \
+  git describe --tags \
     | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -54,7 +53,7 @@ prepare() {
   cd "${_gitname}"
 
   local -r submodules=(
-  'lollypop-po'
+    'lollypop-po'
   )
 
   for module in "${submodules[@]}"; do
@@ -63,44 +62,16 @@ prepare() {
     git config "submodule.${submodule}.url" "${srcdir}/${module}"
     git submodule update "${submodule}"
   done
-
-  cd ..
-  cd "${_gitname}"
-
-  if [[ -d build ]]; then
-    # This should be removed when 'meson [OPTIONS] ..' can be run
-    # repeatedly without generating an error.
-    rm -rf build
-  fi
-
-  cd ..
-  cd "${_gitname}-portal"
-
-  if [[ -d build ]]; then
-    # This should be removed when 'meson [OPTIONS] ..' can be run
-    # repeatedly without generating an error.
-    rm -rf build
-  fi
 }
 
 build() {
   cd "${_gitname}"
 
   meson build --prefix=/usr
-  
-  cd ..
-  cd "${_gitname}-portal"
-
-  meson build --prefix=/usr
 }
 
 package() {
   cd "${_gitname}"
-
-	DESTDIR="$pkgdir" ninja -C build install
-	
-  cd ..
-  cd "${_gitname}-portal"
 
 	DESTDIR="$pkgdir" ninja -C build install
 }
