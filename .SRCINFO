@@ -1,0 +1,17 @@
+pkgbase = ansible-completion-git
+	pkgdesc = Basic bash completion for Ansible
+	pkgver = r67.40053ed
+	pkgrel = 1
+	url = https://github.com/dysosmus/ansible-completion
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash-completion
+	depends = ansible
+	provides = ansible-completion
+	conflicts = ansible-completion
+	source = ansible-completion-git::git+https://github.com/dysosmus/ansible-completion.git
+	sha256sums = SKIP
+
+pkgname = ansible-completion-git
+
