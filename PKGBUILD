@@ -2,9 +2,9 @@
 
 _pkgname=meld
 pkgname=$_pkgname-git
-pkgver=3.19.0.93.gb98f560a
+pkgver=3.19.0.150.g4629902d
 pkgrel=1
-_realver=3.19.0.93
+_realver=3.19.1
 pkgdesc='Visual diff and merge tool'
 arch=('any')
 url='http://meldmerge.org/'
