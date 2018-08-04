@@ -7,11 +7,10 @@
 # Contributor: SanskritFritz (gmail)
 
 pkgname='rofi-git'
-_gitname='rofi'
-pkgver=1.4.2.r114.gcb36bf3c
+pkgver=1.5.1.r52.g4631ac71
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/DaveDavenport/rofi/'
 license=('MIT')
 depends=(
@@ -20,8 +19,8 @@ depends=(
   'xcb-util' 'xcb-util-wm' 'xcb-util-xrm'
 )
 makedepends=('check' 'git')
-provides=("${_gitname}")
-conflicts=("${_gitname}")
+provides=("${pkgname/-git}")
+conflicts=("${pkgname/-git}")
 source=(
   'git+https://github.com/DaveDavenport/rofi#branch=next'
   'git+https://github.com/sardemff7/libgwater'
@@ -34,14 +33,14 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "$_gitname"
+  cd "${pkgname/-git}"
 
   git describe --long --tags \
     | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$_gitname"
+  cd "${pkgname/-git}"
 
   for module in libgwater libnkutils; do
     local submodule="subprojects/${module}"
@@ -52,7 +51,7 @@ prepare() {
 }
 
 build() {
-  cd "$_gitname"
+  cd "${pkgname/-git}"
 
   autoreconf -i
   ./configure --prefix=/usr --sysconfdir=/etc
@@ -60,13 +59,14 @@ build() {
 }
 
 check() {
-  cd "$_gitname"
+  cd "${pkgname/-git}"
 
-  LC_ALL=C make check
+  #LC_ALL=C
+  make check
 }
 
 package() {
-  cd "$_gitname"
+  cd "${pkgname/-git}"
 
   make install install-man DESTDIR="$pkgdir"
 
