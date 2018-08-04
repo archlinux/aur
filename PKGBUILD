@@ -1,9 +1,9 @@
 # Maintainer: Victor Roest <victor@xirion.net>
 pkgname=dice-roller-git
-pkgver=ced0687
+pkgver=83520b9
 pkgrel=1
 pkgdesc="A python dice rolling application using the standard dice notation"
-url="https://gitlab.xirion.net/victor/dice-roller"
+url="https://gitlab.xirion.net/vroest/dice-roller"
 license=('GPL3')
 depends=('python')
 makedepends=('git' 'python')
@@ -13,7 +13,7 @@ source=(git+https://gitlab.xirion.net/vroest/dice-roller.git)
 sha256sums=('SKIP')
 
 pkgver() {
-    cd dice-roller
+    cd ${srcdir}/dice-roller
     git rev-parse --short HEAD
 }
 
