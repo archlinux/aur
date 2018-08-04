@@ -1,6 +1,6 @@
 pkgbase = python-black
 	pkgdesc = The uncompromising Python code formatter.
-	pkgver = 18.6b1
+	pkgver = 18.6b4
 	pkgrel = 1
 	url = https://github.com/ambv/black
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-black
 	depends = python-click
 	depends = python-toml
 	depends = python-appdirs
-	source = https://files.pythonhosted.org/packages/source/b/black/black-18.6b1.tar.gz
-	sha256sums = 0c07b68fc6fc4df8b09873e81893d7b77d52794fa3431d8843b590bc33956105
+	source = https://files.pythonhosted.org/packages/source/b/black/black-18.6b4.tar.gz
+	sha256sums = 22158b89c1a6b4eb333a1e65e791a3f8b998cf3b11ae094adb2570f31f769a44
 
 pkgname = python-black
 

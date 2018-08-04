@@ -1,7 +1,8 @@
 # Maintainer: James Zhu <jameszhu@berkeley.edu>
+# Contributor: Daniel M. Capella <polycitizen@gmail.com>
 pkgname=python-black
 _name=${pkgname#python-}
-pkgver=18.6b1
+pkgver=18.6b4
 pkgrel=1
 pkgdesc="The uncompromising Python code formatter."
 arch=('any')
@@ -16,9 +17,14 @@ build() {
     python setup.py build
 }
 
+check() {
+  cd black-$pkgver
+  python -m unittest tests/test_black.py
+}
+
 package() {
     cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
-sha256sums=('0c07b68fc6fc4df8b09873e81893d7b77d52794fa3431d8843b590bc33956105')
+sha256sums=('22158b89c1a6b4eb333a1e65e791a3f8b998cf3b11ae094adb2570f31f769a44')
