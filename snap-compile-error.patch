@@ -1,0 +1,26 @@
+diff --git a/glib-core/fl.cpp b/glib-core/fl.cpp
+index 09adb0c..7978a6b 100644
+--- a/glib-core/fl.cpp
++++ b/glib-core/fl.cpp
+@@ -1210,7 +1210,7 @@ void TFile::Copy(const TStr& SrcFNm, const TStr& DstFNm,
+ 
+ 	filesize = lseek(input, 0, SEEK_END);
+ 	lseek(output, filesize - 1, SEEK_SET);
+-	write(output, '\0', 1);
++	write(output, "\0", 1);
+ 
+ 	if((source = mmap(0, filesize, PROT_READ, MAP_SHARED, input, 0)) == (void *) -1) {
+ 		close(input);
+diff --git a/snap-core/table.cpp b/snap-core/table.cpp
+index 3b3f7d0..9ed5512 100644
+--- a/snap-core/table.cpp
++++ b/snap-core/table.cpp
+@@ -781,7 +781,7 @@ PTable TTable::LoadSS(const Schema& S, const TStr& InFNm, TTableContext* Context
+   if (GetMP() && NoStringCols) {
+     // Right now, can load in parallel only in Linux (for mmap) and if
+     // there are no string columns
+-#ifdef GLib_LINUX
++#ifdef GCC_ATOMIC
+     LoadSSPar(T, S, InFNm, RelevantCols, Separator, HasTitleLine);
+ #else
+     LoadSSSeq(T, S, InFNm, RelevantCols, Separator, HasTitleLine);
