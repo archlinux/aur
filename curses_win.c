@@ -174,7 +174,7 @@ void interface_print(const char* symbol) {
         RET_MSG("Invalid symbol.")
     }
 
-    if (symbol_info->points == NULL) { // If a crypto print info to stdout and return
+    if (symbol_info->points == NULL || symbol_info->name[0] == '\0') { // If not IEX print to stdout
         info_print(symbol_info);
         api_info_destroy(&symbol_info);
         return;
