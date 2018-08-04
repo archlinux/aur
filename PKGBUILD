@@ -4,8 +4,8 @@
 
 pkgname=python-pygame
 _name=pygame
-pkgver=1.9.3
-pkgrel=2
+pkgver=1.9.4
+pkgrel=1
 pkgdesc="Python game library"
 arch=('i686' 'x86_64')
 url="http://www.pygame.org"
@@ -16,7 +16,7 @@ provides=('python-pygame')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 
-md5sums=('ac744ea6952b68d5f2b6d02a6d8e836c')
+md5sums=('35123425da093da331a89ec0dcbd1ac4')
 
 package() 
 {
