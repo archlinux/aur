@@ -3,8 +3,8 @@
 # Contributor: stef204 <https://aur.archlinux.org/account/stef204>
 
 pkgname='borgmatic'
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
 arch=('any')
 url='https://torsion.org/borgmatic/'
@@ -17,35 +17,18 @@ source=(
   "${pkgname}.install"
 )
 sha256sums=(
-  'f5ff0e8676637b7ad28b559f70f0fe33d8fa67b2b28e41f078ae71a7869a50d2'
+  'abe7b092cce614f36369a93cdd50b3f4f9d775ccc5e8325acd93a791e767343a'
   '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b'
 )
 
 prepare() {
   cd "${pkgname}"
 
-  # Workaround for borgmatic requiring python-ruamel-yaml <= 15.0. This will
-  # break when  Arch's python-ruamel-yaml version exceeds 15. Long-term a
-  # change should be proposed to address this upstream:
-  #
-  #    https://tree.taiga.io/project/witten-borgmatic/issue/37
-  #
-  # We will welcome patches to maintain compatibility with Arch's
-  # python-ruamel-yaml version if upstream is slow to adopt it.
-  sed -i 's/ruamel.yaml<=0.15/ruamel.yaml<0.16/' setup.py
   sed -i 's#/usr/local/bin/borgmatic#/usr/bin/borgmatic#' sample/systemd/borgmatic.service
 }
 
 check() {
   cd "${pkgname}"
-
-  # Required because borgmatic uses python 3.4, but Arch's default python
-  # version is 3.6. Once borgmatic moves to 3.6 upstream, this workaround
-  # should be removed.
-  #
-  # Again, if patches are required to maintain compatibility with Arch's
-  # python version, we will gladly accept them.
-  sed -i 's/envlist=py34/envlist=py36/' tox.ini
 
   pytest
 }
