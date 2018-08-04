@@ -1,0 +1,12 @@
+print_header() {
+	echo ' >>> Run the install script with `$ cd /usr/sharj/BigBagKbdTrixXKB; sudo ./install-dreymar-xmod.sh`'
+	echo ' >>> Configuration can be done with `$ dreymar-setxkb`'
+}
+
+post_install() {
+	print_header
+}
+
+post_upgrade() {
+	print_header
+}
