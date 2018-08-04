@@ -1,24 +1,23 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
-pkgname=python2-expiringdict
-pkgver=1.1.3
+pkgname=python-expiringdict
+_name=expiringdict
+pkgver=1.1.4
 pkgrel=1
-_libname=expiringdict
 pkgdesc='Dictionary with auto-expiring values for caching purposes'
 url='https://pypi.python.org/pypi/expiringdict'
-depends=('python2')
-license=('Apache2')
+depends=('python')
+license=('APACHE')
 arch=('any')
-source=(http://pypi.python.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
+sha256sums=('9275c3f3aa6cabe394355b6454100eb1cdfe395c6b592c26603a2a0f9e3a0587')
 
 build() {
-    cd "$srcdir/$_libname-$pkgver"
-    python2 setup.py build
+    cd "$srcdir/$_name-$pkgver"
+    python setup.py build
 }
 
 package() {
-    cd "$srcdir/$_libname-$pkgver"
-    python2 setup.py install --root="$pkgdir"
+    cd "$srcdir/$_name-$pkgver"
+    python setup.py install --root="$pkgdir" --skip-build
 }
-
-sha256sums=('08bebdc5e008085e0612bd141d62f837c3f80b8c1880a95e0863100757b55b08')
