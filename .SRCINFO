@@ -18,9 +18,12 @@ pkgbase = git-repo
 	depends = python-gogs-client
 	depends = python-pybitbucket_fork
 	depends = python-attrs
+	conflicts = git-repo-git
 	replaces = git-repo-git
 	source = https://files.pythonhosted.org/packages/source/g/git-repo/git-repo-1.10.3.tar.gz
+	source = setup.patch::https://patch-diff.githubusercontent.com/raw/guyzmo/git-repo/pull/191.patch
 	md5sums = a9439f1aad6fc8c83baafcee0913b3b2
+	md5sums = ef16c46f75fadf808c2ab4c3f047c44e
 
 pkgname = git-repo
 
