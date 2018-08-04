@@ -107,12 +107,13 @@ Once installed, you may read the man page for more information.
 MIT License
 
 Stock information is taken from IEX's free API. Mutual fund and
-over-the-counter information is taken from and Morningstar's free API.
+over-the-counter information is taken from and Morningstar and AlphaVantage's
+free API.
 Cryptocurrency information is taken from Coinmarketcap's free API.
 Please do not abuse the APIs by repeatedly requesting information. Read
 the provided license for more information.
 #### Future Ideas/To-do
-* Look for API to replace Morningstar for MUTF/OTCMKTS data, preferably with
+* Look for API to replace Morningstar/AlphaVantage for MUTF/OTCMKTS data, preferably with
 intraday data (wait for iex v2 probably)
 * DEB/RPM package
 * List whether stock/etf/mutual fund/crypto/etc. in portfolio for less API calls
