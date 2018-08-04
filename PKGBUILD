@@ -7,7 +7,7 @@ pkgdesc="An efficient C++ library for calibrated camera pose computation using g
 arch=('i686' 'x86_64')
 url="https://laurentkneip.github.io/opengv/"
 license=('BSD')
-depends=('boost-libs' 'eigen>=3' 'python2')
+depends=('boost-libs' 'eigen>=3' 'python2-numpy')
 makedepends=('boost' 'cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
