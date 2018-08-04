@@ -2,14 +2,14 @@
 
 pkgname=smsync-git
 _pkgname=smsync
-pkgver=1.3.1
+pkgver=2.0.1
 pkgrel=1
-pkgdesc='smsync (Smart Music Sync) is an easy-to-use command line application for Linux. It helps to keep huge music collections in sync and is also taking care of conversions between different formats'
+pkgdesc="smsync (Smart Music Sync) keeps huge music collections in sync and is taking care of conversions between different file formats. It's an easy-to-use command line application for Linux."
 arch=('x86_64' 'i686')
 url="http://github.com/mipimipi/$_pkgname/"
 license=('GPL3')
-depends=('ffmpeg' 'lame')
-makedepends=('go' 'git')
+depends=('ffmpeg')
+makedepends=('go' 'git' 'sudo')
 source=("git://github.com/mipimipi/$_pkgname.git")
 sha256sums=('SKIP')
 
