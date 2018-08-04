@@ -391,22 +391,11 @@ void* iex_store_peers(void* vpInfo) {
         len = MAX_PEERS;
 
     symbol_info->peers = api_info_array_init_from_length(len);
-    pthread_t threads[len];
-    for (size_t i = 0; i < len; i++) {
+    for (size_t i = 0; i < symbol_info->peers->length; i++)
         strcpy(symbol_info->peers->array[i]->symbol, json_object_get_string(
                 json_object_array_get_idx(jobj, (size_t) i)));
-        if (pthread_create(&threads[i], NULL, api_store_check_info,
-                           symbol_info->peers->array[i]->symbol))
-            EXIT_MSG("Error creating thread!");
-    }
 
-    for (size_t i = 0; i < len; i++) {
-        void* ret = NULL;
-        if (pthread_join(threads[i], &ret))
-            EXIT_MSG("Error joining thread!")
-
-        symbol_info->peers->array[i] = ret;
-    }
+    api_info_array_store_check_data(symbol_info->peers);
 
     json_object_put(jobj);
     string_destroy(&pString);
