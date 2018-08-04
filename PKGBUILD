@@ -3,7 +3,7 @@
 # python2-scapy
 
 pkgname=handshake-cracker
-pkgver=32.55ba7da
+pkgver=45.a776d23
 pkgrel=1
 pkgdesc="Handshake capture with aircrack-ng, test with pyrit, crack with john the ripper using self-builted wordlists."
 arch=('any')
