@@ -2,7 +2,7 @@
 # Contributor: onespaceman
 
 pkgname=menu-calc-git
-pkgver=v1.0.0.r5.g57a78d1
+pkgver=1.0.0.r5.g57a78d1
 pkgrel=1
 epoch=1
 pkgdesc="A calculator for Rofi/dmenu(2)"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$_gitname"
-	git describe --tags | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
