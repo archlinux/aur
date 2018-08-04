@@ -9,7 +9,7 @@
 pkgname=mutter-781835-workaround
 _pkgname=mutter
 pkgver=3.28.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users."
 url="https://git.gnome.org/browse/mutter"
 arch=(x86_64)
@@ -51,6 +51,7 @@ prepare() {
 
   # Port to pipewire 0.2
   git cherry-pick -n 0407a8b33d8c3503fba63ad260984bb08bd6e0dc
+  sed -i 's/pipewire-0.1/pipewire-0.2/g' configure.ac
 
   # https://bugs.archlinux.org/task/51940
   # As of 2018-05-08: Still needed, according to fmuellner
