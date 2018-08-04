@@ -4,7 +4,7 @@ pkgname='sat-libervia-hg'
 _realname=libervia
 _pyjamasname=pyjamas
 venv_pyjama='venv'
-pkgver=0.6.1.r1108.7ec1ba86d38d
+pkgver=0.6.1.r1111.4d1c4bd4931a
 _version=0.6.1
 pkgrel=1
 url="http://salut-a-toi.org/"
@@ -61,7 +61,7 @@ package(){
     mv -v usr/share/doc/libervia "$pkgdir/usr/share/doc/"
     mv -v usr/share/libervia "$pkgdir/usr/share/libervia/"
     mv -v usr/lib/python2.7/site-packages/libervia "$pkgdir/usr/lib/python2.7/site-packages/"
-    mv -v usr/lib/python2.7/site-packages/libervia-0.6.1.1-py2.7.egg-info "$pkgdir/usr/lib/python2.7/site-packages/"
+    mv -v usr/lib/python2.7/site-packages/libervia-0.7.0a2.post1-py2.7.egg-info "$pkgdir/usr/lib/python2.7/site-packages/"
     mv -v usr/lib/python2.7/site-packages/twisted/plugins/* "$pkgdir/usr/lib/python2.7/site-packages/twisted/plugins/"
     mv -v "$srcdir/libervia/html" "$pkgdir/usr/share/libervia/"
     mv -v "$srcdir/libervia/themes" "$pkgdir/usr/share/libervia"
