@@ -1,0 +1,27 @@
+diff --git a/src/module-wx/build.gura b/src/module-wx/build.gura
+index 47c2ea688..e3a610688 100755
+--- a/src/module-wx/build.gura
++++ b/src/module-wx/build.gura
+@@ -684,11 +684,11 @@ if (sys.platform == `mswin) {
+ 	builder.rpmFiles = ['wxGTK3-3.0.3-2.fc27.x86_64']
+ 	builder.debFilesDevel = ['libwxgtk3.0-dev']
+ 	builder.rpmFilesDevel = ['wxGTK3-3.0.3-2.fc27.x86_64']
+-	if (IsExist('wx-config')) {
++	if (IsExist('wx-config-gtk3')) {
+ 		cflags = scope {
+ 			buff = binary()
+ 			os.redirect(nil, buff) {
+-				os.exec('wx-config', '--version=3.0', '--cppflags')
++				os.exec('wx-config-gtk3', '--version=3.0', '--cppflags')
+ 			}
+ 			os.fromnative(buff).strip().split(' '):list
+ 		}
+@@ -696,7 +696,7 @@ if (sys.platform == `mswin) {
+ 		ldflags = scope {
+ 			buff = binary()
+ 			os.redirect(nil, buff) {
+-				os.exec('wx-config', '--version=3.0', '--libs',
++				os.exec('wx-config-gtk3', '--version=3.0', '--libs',
+ 					'xrc,stc,richtext,ribbon,propgrid,aui,gl,html,qa,adv,core,xml,net,base')
+ 			}
+ 			str = os.fromnative(buff).replace('\n', ' ')
