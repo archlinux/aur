@@ -1,0 +1,13 @@
+print_header() {
+	echo ' >>> Run the script using `$ sudo tmk.sh` and follow the prompts.'
+	echo ' >>> To use one of the layouts until you turn off the computer, enter `$ sudo loadkeys tarmakX` (for any of tarmak1-4).'
+	echo ' >>> To set the layout in a persistent way, enter `$ sudo localectl set-keymap tarmakX`'
+}
+
+post_install() {
+	print_header
+}
+
+post_upgrade() {
+	print_header
+}
