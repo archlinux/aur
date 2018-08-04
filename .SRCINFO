@@ -1,7 +1,7 @@
 pkgbase = deepin-wechat
 	pkgdesc = Tencent WeChat Client on Deepin Wine
 	pkgver = 2.6.2.31deepin0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.deepin.com/
 	arch = x86_64
 	license = custom
@@ -10,6 +10,7 @@ pkgbase = deepin-wechat
 	depends = wine
 	depends = xdotool
 	depends = xorg-xwininfo
+	depends = deepin-wine
 	source = https://mirrors.tuna.tsinghua.edu.cn/deepin/pool/non-free/d/deepin.com.wechat/deepin.com.wechat_2.6.2.31deepin0_i386.deb
 	md5sums = c66a173fe6817afd898e0061d9eaf42e
 
