@@ -1,6 +1,6 @@
 pkgbase = singularity-container
 	pkgdesc = Container platform focused on supporting "Mobility of Compute".
-	pkgver = 2.5.1
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = http://singularity.lbl.gov
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = singularity-container
 	depends = libarchive
 	depends = python
 	depends = squashfs-tools
-	source = https://github.com/singularityware/singularity/releases/download/2.5.1/singularity-2.5.1.tar.gz
-	md5sums = 28be3307f4fdc5701bf728855d68f6b0
+	source = https://github.com/singularityware/singularity/releases/download/2.6.0/singularity-2.6.0.tar.gz
+	md5sums = 0aca47ef3220d15c3bec5ac600167379
 
 pkgname = singularity-container
 
