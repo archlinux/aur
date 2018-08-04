@@ -482,6 +482,49 @@ void* morningstar_store_info(void* vpInfo) {
     return vpInfo;
 }
 
+void* alphavantage_store_info(void* vpInfo) {
+    Info* symbol_info = vpInfo;
+    if (symbol_info->symbol[0] == '\0')
+        return NULL;
+
+    char alphavantage_api_string[URL_MAX_LENGTH];
+    sprintf(alphavantage_api_string, "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY"
+                                     "&symbol=%s&apikey=DFUMLJ1ILOM2G7IH&outputsize=full&datatype"
+                                     "=csv", symbol_info->symbol);
+    String* pString = api_curl_data(alphavantage_api_string);
+    if (pString == NULL)
+        return NULL;
+
+    if (pString->data[0] == '{') { // Invalid symbol/error
+        string_destroy(&pString);
+        return NULL;
+    }
+
+    size_t len = string_get_num_lines(pString) - 1, idx = 0;
+    if (len > 1260) // 5 years
+        len = 1260;
+
+    symbol_info->points = calloc(len + 1, sizeof(double));
+    pointer_alloc_check(symbol_info->points);
+
+    csv_goto_next_line(pString, &idx); // skip columns line
+    for (int i = (int) len - 1; i >= 0; i--) {
+        for (size_t j = 0; j < 4; j++)
+            csv_goto_next_value(pString, &idx);
+
+        symbol_info->points[i] = csv_read_next_double(pString, &idx);
+        if (symbol_info->points[i] == 0 && i < (int) len - 1) // API Error
+            symbol_info->points[i] = symbol_info->points[i + 1];
+        csv_goto_next_line(pString, &idx);
+    }
+
+    symbol_info->price = symbol_info->points[len - 1];
+    symbol_info->price_last_close = symbol_info->points[len - 2];
+    symbol_info->price_7d = symbol_info->points[len - 6];
+    symbol_info->price_30d = symbol_info->points[len - 22];
+    return vpInfo;
+}
+
 void* coinmarketcap_store_info(void* vpInfo) {
     Info* symbol_info = vpInfo;
     char coinmarketcap_api_string[URL_MAX_LENGTH];
@@ -518,7 +561,7 @@ void* api_store_all_info(void* vpInfo) {
     if (strlen(pInfo->symbol) > 5) // If symbol length is greater than 5, then it must be a crypto
         return coinmarketcap_store_info(vpInfo);
 
-    if (iex_store_all_info(vpInfo) == NULL && morningstar_store_info(vpInfo) == NULL &&
+    if (iex_store_all_info(vpInfo) == NULL && alphavantage_store_info(vpInfo) == NULL &&
         coinmarketcap_store_info(vpInfo) == NULL)
         return NULL;
     else return vpInfo;
@@ -529,7 +572,7 @@ void* api_store_check_info(void* vpInfo) {
     if (strlen(pInfo->symbol) > 5) // If symbol length is greater than 5, then it must be a crypto
         return coinmarketcap_store_info(vpInfo);
 
-    if (iex_store_check_info(vpInfo) == NULL && morningstar_store_info(vpInfo) == NULL &&
+    if (iex_store_check_info(vpInfo) == NULL && alphavantage_store_info(vpInfo) == NULL &&
         coinmarketcap_store_info(vpInfo) == NULL)
         return NULL;
     else return vpInfo;

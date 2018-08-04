@@ -268,12 +268,22 @@ void* iex_store_check_info(void* vpInfo);
 /**
  * Designed for threading
  *
- * Queries Morningstar's API and stores the data in the Info object pointed to by vpInfo. price, change_1d,
+ * Queries Morningstar's API and stores the data in the Info object pointed to by vpInfo. change_1d,
  * change_7d, change_30d, points, and volume_1d are stored.
  * @param vpInfo Info*
  * @return vpInfo on success, NULL on error
  */
 void* morningstar_store_info(void* vpInfo);
+
+/**
+ * Designed for threading
+ *
+ * Queries AlpvaVantage's API and stores the data in the Info object pointed to by vpInfo. change_1d,
+ * change_7d, change_30d, and points are stored.
+ * @param vpInfo Info*
+ * @return vpInfo on Success, NULL on error
+ */
+void* alphavantage_store_info(void* vpInfo);
 
 /**
  * Designed for threading
