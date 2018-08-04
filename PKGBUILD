@@ -2,7 +2,7 @@
 # Maintainer: Chen Tondovsko <chn566@gmail.com>
 
 pkgname=nama-gui
-pkgver=1.0.2.r0.g8e4c7c4
+pkgver=1.0.5.r0.g15ef4e6
 pkgrel=1
 pkgdesc="This tool uses nmcli to easily set your network configuration with GUI"
 arch=('any')
