@@ -1,4 +1,4 @@
-# Maintaine Victor Roest <victor@xirion.net>
+# Maintainer Victor Roest <victor@xirion.net>
 
 pkgname=xcursor-breeze-neutral-git
 pkgver=7916345
