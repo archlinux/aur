@@ -2,13 +2,13 @@
 # Maintainer: Alexandre Bolelli <semeion7@hotmail.com>
 
 pkgname=handshake-cracker
-pkgver=47.1f29cf9
+pkgver=32.55ba7da
 pkgrel=1
 pkgdesc="Handshake capture with aircrack-ng, test with pyrit, crack with john the ripper using self-builted wordlists."
 arch=('any')
 url='https://github.com/semeion/handshake-cracker'
 license=('GPL3')
-depends=('aircrack-ng' 'wireshark-cli' 'cowpatty' 'mdk3' 'xterm' 'ncurses' 'psmisc' 'gawk'
+depends=('aircrack-ng' 'cowpatty' 'mdk3' 'xterm' 'ncurses' 'psmisc' 'gawk'
          'coreutils' 'glibc' 'sed' 'gzip' 'bzip2' 'unzip' 'wget' 'sudo' 'less' 'john' 'python2' 'python2-lxml')
 makedepends=('git')
 source=('git+https://github.com/semeion/handshake-cracker.git')
