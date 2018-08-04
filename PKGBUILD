@@ -26,7 +26,7 @@ if $build_kernel_modules; then
     makedepends+=("linux-headers>=$_linux_current" "linux-headers<$_linux_next" "linux>=$_linux_current" "linux<$_linux_next")
 fi
 source=("https://github.com/jbdrthapa/openrazer/archive/master.tar.gz")
-md5sums=('cfd2c2bfa31cf9a7b9c7d576a5acc62d')
+md5sums=('SKIP')
 _srcname="openrazer-master"
 
 package_python-openrazer-2018() {
