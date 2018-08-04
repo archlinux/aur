@@ -1,14 +1,14 @@
 # Maintainer: Yunhui Fu <yhfudev@gmail.com>
 pkgname=esniper-git
-pkgver=r413.7771d53
+pkgver=r457.d51959b
 pkgrel=1
 pkgdesc="A simple, lightweight tool for sniping eBay auctions."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'arm')
-url="https://github.com/yhfudev/esniper.git"
+url="https://git.code.sf.net/p/esniper/git"
 license=('BSD')
 depends=('curl' 'openssl')
 source=(
-    "${pkgname}::git+https://github.com/yhfudev/esniper.git"
+    "${pkgname}::git+https://git.code.sf.net/p/esniper/git"
   )
 md5sums=('SKIP')
 
@@ -26,7 +26,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    ./autogen.sh
+    #./autogen.sh
+    autoreconf -if
     ./configure --prefix=/usr
     make
 }
