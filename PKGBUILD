@@ -4,7 +4,7 @@ pkgdesc="ROS - Controller to publish joint state."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-melodic-joint-state-controller'
-pkgver='0.14.0'
+pkgver='0.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-melodic-joint_state_controller-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/joint_state_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e3a287dc521e11e82c73be0c19b8eb34e526a55f58ed5e313b32a9815d6a13cc')
+sha256sums=('d70784524d91288644a8cb23516e437fa2a3e37b1c885ffc9a1668196b9e50e3')
 
 build() {
   # Use ROS environment variables
