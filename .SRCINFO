@@ -1,6 +1,6 @@
 pkgbase = proaudio-meta
-	pkgdesc = Metapackage for useful pro audio software
-	pkgver = 2018.07.05
+	pkgdesc = Metapackage for most useful audio production software
+	pkgver = 2018.08.05
 	pkgrel = 1
 	url = https://github.com/Bleuzen/archlinux-packages
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = proaudio-meta
 	depends = calf
 	depends = tap-plugins
 	depends = zam-plugins
+	depends = guitarix2
+	depends = lmms
 
 pkgname = proaudio-meta
 
