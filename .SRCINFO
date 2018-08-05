@@ -1,7 +1,7 @@
 pkgbase = python-svglib
 	pkgdesc = A pure-Python library for reading and converting SVG files.
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/svglib/0.8.1
 	arch = any
 	license = LGPL
@@ -12,6 +12,11 @@ pkgbase = python-svglib
 	source = xrange.patch
 	sha256sums = 1f8cb633f154b83987e3a906a55cf69c8739c0df5ea4eee024677c3e8fb62f55
 	sha256sums = 21d9f9634ba0c92ee6b21c720978a3825ff92974177cab17e72015c62ec10a47
+
+pkgname = python2-svglib
+	depends = python2
+	depends = python2-reportlab
+	depends = python2-lxml
 
 pkgname = python-svglib
 	depends = python
