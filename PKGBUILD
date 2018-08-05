@@ -1,47 +1,45 @@
-# Maintainer:  <skrylar@UFO>
-pkgname=ingen-git
-pkgver=eb34518
+# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: <skrylar@UFO>
+
+_pkgname=ingen
+pkgname="${_pkgname}-git"
+pkgver=0.5.1.r2733.d35f222a
 pkgrel=1
-epoch=
-pkgdesc="A modular plugin host for Jack and LV2."
+pkgdesc="A modular plugin host for JACK and LV2."
 arch=('i686' 'x86_64')
-url="http://drobilla.net/software/ingen/"
+url="http://drobilla.net/software/${_pkgname}/"
 license=('GPL')
-groups=()
-depends=('lv2>=1.14.0' 'glibmm>=2.14.0' 'lilv>=0.21.5' 'suil-git' 'raul-git' 'ganv-git' 'python2')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("${pkgname}::git+http://git.drobilla.net/cgit.cgi/ingen.git/")
+depends=('alsa-lib' 'ganv' 'jack' 'lilv' 'portaudio' 'suil')
+makedepends=('python')
+optdepends=(
+    'lv2-plugins: various useful LV2 plug-in packages'
+)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+http://git.drobilla.net/cgit.cgi/ingen.git/")
 md5sums=('SKIP')
-noextract=()
+
 
 pkgver() {
-  cd ${pkgname}
-  git rev-parse --short HEAD
-}
+  cd "$srcdir/${_pkgname}"
 
-prepare() {
-  cd "$srcdir/"${pkgname}
-  ./waf configure --prefix=/usr
+  local ver=$(grep ^INGEN_VERSION wscript | cut -f 2 -d "'")
+  local rev=$(git rev-list --count HEAD)
+  local githash=$(git rev-parse --short HEAD)
+  echo "${ver}.r${rev}.${githash}"
 }
 
 build() {
-  cd "$srcdir/"${pkgname}
+  cd "$srcdir/${_pkgname}"
+
+  ./waf configure --prefix=/usr
   ./waf build
 }
 
 package() {
-  cd "$srcdir/"${pkgname}
+  cd "$srcdir/${_pkgname}"
+
   ./waf install --destdir="$pkgdir/"
-  #mv "$pkgdir/"usr/lib64 "$pkgdir/"usr/lib
 }
 
 # vim:set ts=2 sw=2 et:
