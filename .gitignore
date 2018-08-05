@@ -1,0 +1,5 @@
+/amber-theme-git/
+/pkg/
+/src/
+/*.tar
+/*.tar.*
