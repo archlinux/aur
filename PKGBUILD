@@ -2,7 +2,7 @@
 
 pkgname=rocketchat-server-docker
 _pkgname=rocketchat-server
-pkgver=0.67.0
+pkgver=0.68.0
 pkgrel=1
 pkgdesc="An open source web chat platform, docker-compose package for minimal setup."
 arch=("any")
@@ -18,10 +18,10 @@ backup=(
 	"etc/rocketchat-server/docker.env"
 )
 source=(
+	"https://github.com/Timmy1e/rocket.chat-docker/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
 	"createEnvFile.sh"
 	"config.env"
 	"docker.env"
-	"https://github.com/Timmy1e/rocket.chat-docker/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
 	"${_pkgname}.env"
 	"${_pkgname}.install"
 	"${_pkgname}.yml"
@@ -29,10 +29,10 @@ source=(
 )
 noextract=("${_pkgname}-${pkgver}.tar.xz")
 sha512sums=(
+	"c95321e9279982f44a79c4a062bf517d25f30d75aa0f61591c244d8e574223c1ae2a5fbc35e43d5ce4c12de5e464c171b32aeae0a63079c95d53bcdbc5cd4907"
 	"3c7ade4d47f6e8f94a7b2922bbc72d280ff68ed1672747b94f50df579d6071f2b2d6df80448ba4ba1f5bb9aa1517182807292168d4c097ccc5928b46c8eea1cb"
 	"db54d0809ff04e2adaba23c3e80dca95ff13660b342cde89c7bd0df42962f09af563b5405084f477fdc0d59ae4f176e453228a4eb3c1a7e86397579bded43f81"
 	"ffcd88ca7603f732b972bf94f973f94a240c5db0521f5e4b17fcfab7d6773e076ff91c5cbac821e9b99045936daab6f0224f8d8e50b0094d91e577785b19dc39"
-	"101f840d9b72b22c3470dc5180c84855bad9893eefa0196d347b720e1f0308ea7eb40fd7850c944afd9c1ff1ad16e4c90bcfb2b62824425b718669eca95ed744"
 	"897d36d5b0d7a2b8e432db779977c97970b116ab4c3092dd8c6da9d03ecef653e9a1867a8e20618143afd164c3d2632805510962d098b442670210e1d07bb0ee"
 	"5f93f8c593438c3c815e9197996120bc52c45d7b8db94591217925ed4b3a654df241e54363d256a4a94f04f4eee24c8c0069a592626a15487ce9bba6db0a0799"
 	"b7e4e516679c367669d45c93f106455e40e06c17c3766d4a43cb2d5c32ab8f83045c1c19d3041642a2bef5360f51b763fe4e291040515f2505d4c341d1502886"
