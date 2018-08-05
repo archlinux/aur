@@ -1,0 +1,14 @@
+pkgbase = purple-libetpan_mail_check
+	pkgdesc = New mail notifications
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://gitlab.com/vicencb/libetpan_mail_check
+	arch = any
+	license = 0BSD
+	depends = libpurple
+	depends = libetpan
+	source = https://gitlab.com/vicencb/libetpan_mail_check/-/archive/0.0/libetpan_mail_check-0.0.tar.bz2
+	md5sums = SKIP
+
+pkgname = purple-libetpan_mail_check
+
