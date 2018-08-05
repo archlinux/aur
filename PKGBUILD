@@ -33,5 +33,7 @@ package_python2-pox() {
 
   cd "${srcdir}/pox-$pkgver"
   python2 setup.py install --root=${pkgdir} --optimize=1
+
+  mv ${pkgdir}/usr/bin/pox ${pkgdir}/usr/bin/pox2
 }
 
