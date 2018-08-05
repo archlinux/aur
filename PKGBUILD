@@ -4,13 +4,13 @@
 
 _pkgname=lilv
 pkgname="${_pkgname}-git"
-pkgver=0.24.3.r1153.b52c6ff
+pkgver=0.24.3.r1163.9a45b4c
 pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/lilv"
 license=("custom:ISC")
-depends=('sratom' 'python-numpy')
+depends=('lv2' 'python-numpy' 'sratom')
 makedepends=('subversion' 'swig')
 optdepends=(
     "bash-completion: auto-complete words"
@@ -31,11 +31,11 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python waf configure --prefix=/usr \
-                       --configdir=/etc \
-                       --dyn-manifest \
-                       --bindings
-
+  python waf configure \
+    --prefix=/usr \
+    --configdir=/etc \
+    --dyn-manifest \
+    --bindings
   python waf
 }
 
