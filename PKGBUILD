@@ -4,7 +4,7 @@
 pkgname=tclx
 pkgver=8.4.1
 _tclsrcver=8.6.8
-pkgrel=9
+pkgrel=10
 pkgdesc="Provides OS primitives, file scanning, data records etc. for Tcl"
 url="http://tclx.sourceforge.net"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -23,6 +23,7 @@ md5sums=('ac983708f23cf645c07058148f48440c'
 
 build() {
   cd $srcdir/${pkgname}8.4
+  ./configure
 cp /usr/lib/tclConfig.sh $srcdir
   echo "TCL_SRC_DIR=$startdir/tcl$_tclsrcver" >> ../tclConfig.sh
   [ "$NOEXTRACT" == 1 ] || ./configure --prefix=/usr --enable-share \
