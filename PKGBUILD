@@ -2,7 +2,7 @@
 # Contributor: martinjlowm <martin {at} martinjlowm {dot} dk>
 
 pkgname=zuki-themes-git
-pkgver=r142.7cd3804
+pkgver=r220.812237a
 pkgrel=1
 pkgdesc="A selection of themes for GTK3, gnome-shell and more."
 arch=('any')
