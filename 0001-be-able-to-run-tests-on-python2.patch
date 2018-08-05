@@ -1,0 +1,92 @@
+From 2d7f6c41e9290ec42eae860582496f744cdc52bd Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Fri, 3 Aug 2018 11:13:47 -0400
+Subject: [PATCH] be able to run tests on python2
+
+use existing six dependency to access assertRaisesRegexp as assertRaisesRegex
+---
+ mock/tests/testmagicmethods.py |  2 +-
+ mock/tests/testmock.py         | 17 ++++++++++-------
+ 2 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/mock/tests/testmagicmethods.py b/mock/tests/testmagicmethods.py
+index f47a202..a6c280d 100644
+--- a/mock/tests/testmagicmethods.py
++++ b/mock/tests/testmagicmethods.py
+@@ -405,7 +405,7 @@ class TestMockingMagicMethods(unittest.TestCase):
+         mock = MagicMock()
+         def set_setattr():
+             mock.__setattr__ = lambda self, name: None
+-        self.assertRaisesRegex(AttributeError,
++        six.assertRaisesRegex(self, AttributeError,
+             "Attempting to set unsupported magic method '__setattr__'.",
+             set_setattr
+         )
+diff --git a/mock/tests/testmock.py b/mock/tests/testmock.py
+index 66323e9..e9c5fef 100644
+--- a/mock/tests/testmock.py
++++ b/mock/tests/testmock.py
+@@ -205,7 +205,7 @@ class MockTest(unittest.TestCase):
+ 
+         mock = create_autospec(f)
+         mock.side_effect = ValueError('Bazinga!')
+-        self.assertRaisesRegex(ValueError, 'Bazinga!', mock)
++        six.assertRaisesRegex(self, ValueError, 'Bazinga!', mock)
+ 
+     @unittest.skipUnless('java' in sys.platform,
+                           'This test only applies to Jython')
+@@ -501,7 +501,8 @@ class MockTest(unittest.TestCase):
+ 
+                 # this should be allowed
+                 mock.something
+-                self.assertRaisesRegex(
++                six.assertRaisesRegex(
++                    self,
+                     AttributeError,
+                     "Mock object has no attribute 'something_else'",
+                     getattr, mock, 'something_else'
+@@ -520,12 +521,14 @@ class MockTest(unittest.TestCase):
+             mock.x
+             mock.y
+             mock.__something__
+-            self.assertRaisesRegex(
++            six.assertRaisesRegex(
++                self,
+                 AttributeError,
+                 "Mock object has no attribute 'z'",
+                 getattr, mock, 'z'
+             )
+-            self.assertRaisesRegex(
++            six.assertRaisesRegex(
++                self,
+                 AttributeError,
+                 "Mock object has no attribute '__foobar__'",
+                 getattr, mock, '__foobar__'
+@@ -591,13 +594,13 @@ class MockTest(unittest.TestCase):
+ 
+     def test_assert_called_with_message(self):
+         mock = Mock()
+-        self.assertRaisesRegex(AssertionError, 'Not called',
++        six.assertRaisesRegex(self, AssertionError, 'Not called',
+                                 mock.assert_called_with)
+ 
+ 
+     def test_assert_called_once_with_message(self):
+         mock = Mock(name='geoffrey')
+-        self.assertRaisesRegex(AssertionError,
++        six.assertRaisesRegex(self, AssertionError,
+                      r"Expected 'geoffrey' to be called once\.",
+                      mock.assert_called_once_with)
+ 
+@@ -1486,7 +1489,7 @@ class MockTest(unittest.TestCase):
+         second = mopen().readline()
+         self.assertEqual('abc', first)
+         self.assertEqual('abc', second)
+- 
++
+     def test_mock_parents(self):
+         for Klass in Mock, MagicMock:
+             m = Klass()
+-- 
+2.18.0
+
