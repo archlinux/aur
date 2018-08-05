@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=glcapsviewer-git
-pkgver=r118.fb53d2c
+pkgver=r119.7ff8d1f
 pkgrel=1
 pkgdesc='OpenGL Hardware Capability Viewer'
 url='http://www.saschawillems.de/?page_id=771/'
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
             '0d622a96a3bf458726e94cb7a3125dd97db9edd7665a1c4277904f350d3335e4'
             '3ff750cda95917ff93388dd373437b12129427bc33e52343247bf69bf1d24c02'
             '139ceb073a34bea5450ca2b6d7f50523f8986d9f5a6b069d36cf05d03609f352')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cmake')
 depends=('glew' 'glfw' 'qt5-base')
 
 pkgver() {

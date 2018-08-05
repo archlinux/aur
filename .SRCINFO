@@ -1,6 +1,6 @@
 pkgbase = glcapsviewer-git
 	pkgdesc = OpenGL Hardware Capability Viewer
-	pkgver = r118.fb53d2c
+	pkgver = r119.7ff8d1f
 	pkgrel = 1
 	url = http://www.saschawillems.de/?page_id=771/
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = glcapsviewer-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	makedepends = boost
 	depends = glew
 	depends = glfw
 	depends = qt5-base
