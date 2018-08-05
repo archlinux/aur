@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schrempf <dominik.schrempf@gmail.com>
 pkgname=nextcloud-systemd-cron
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 epoch=
 pkgdesc="Systemd service and timer for Nextcloud Cron background jobs (see Nextcloud Arch Wiki entry)."
@@ -17,7 +17,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install="nextcloud-systemd-cron.install"
+install=nextcloud-systemd-cron.install
 changelog=
 source=("nextcloudcron.service"
         "nextcloudcron.timer")
