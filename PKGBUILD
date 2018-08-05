@@ -2,7 +2,7 @@
 
 _target="msp430-elf"
 pkgname=${_target}-gcc
-pkgver=8.1.0
+pkgver=8.2.0
 _islver=0.19
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
@@ -17,7 +17,7 @@ provides=("${_target}-gcc-stage1")
 source=(http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
 sha256sums=('d59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8'
-            '1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153')
+            '196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080')
 
 
 prepare() {
