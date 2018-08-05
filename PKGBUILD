@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://alicevision.github.io/"
 license=('MPL2')
 groups=()
-depends=(alice-vision python python-psutil python-pyside2)
+depends=(alice-vision python python-psutil python-pyside2 qt5-base qt5-quickcontrols2)
 makedepends=(git python-setuptools python-cx_freeze)
 source=("${pkgname}::git+https://github.com/alicevision/meshroom.git${fragment}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"

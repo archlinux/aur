@@ -13,6 +13,8 @@ pkgbase = meshroom
 	depends = python
 	depends = python-psutil
 	depends = python-pyside2
+	depends = qt5-base
+	depends = qt5-quickcontrols2
 	source = meshroom::git+https://github.com/alicevision/meshroom.git#commit=9bd70ed8ace83c6dde174178e17c5147bb50248f
 	source = voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git
 	md5sums = SKIP
