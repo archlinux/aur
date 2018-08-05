@@ -1,8 +1,8 @@
-# Maintainer: physkets <physkets@tutanota.com>
+# Maintainer: physkets <physkets // at // tutanota dot com>
 
 pkgname=fmlib
 pkgver=1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A fortran multiple-precision arithmetic library"
 arch=('x86_64')
 url="https://dmsmith.lmu.build/"
