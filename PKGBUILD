@@ -5,7 +5,7 @@ url='http://ros.org/wiki/rosgraph_msgs'
 
 pkgname='ros-melodic-rosgraph-msgs'
 pkgver='1.11.2'
-_pkgver_patch=0
+_pkgver_patch=1
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -27,9 +27,10 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_comm_msgs-release-release-melodic-rosgraph_msgs-${pkgver}-${_pkgver_patch}"
+#_dir="ros_comm_msgs-release-release-melodic-rosgraph_msgs-${pkgver}-${_pkgver_patch}"
+_dir="ros_comm_msgs-release-release-melodic-rosgraph_msgs"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm_msgs-release/archive/release/melodic/rosgraph_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5aa9e1b1adbf5e86931e771b1a154384485803a73e50804e0c739f83767270c9')
+sha256sums=('cc5dfe2ee766488d8aa0b55e081e9c6c817938e6e77dae09752b8943b93d1d57')
 
 build() {
   # Use ROS environment variables
