@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2_msgs."
 url='http://www.ros.org/wiki/tf2_msgs'
 
 pkgname='ros-melodic-tf2-msgs'
-pkgver='0.6.2'
+pkgver='0.6.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry2-release-release-melodic-tf2_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('334de8b7d41fef37bcdaffb1394e98f5aa25ba585ffd8206d3337e5b1e31e3a2')
+sha256sums=('f72b04ec46ecbb3bffd84d15364fa8c59dc23c9fe0a00f5de2e37948d821bf8c')
 
 build() {
   # Use ROS environment variables
