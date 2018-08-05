@@ -1,7 +1,7 @@
 pkgbase = armagetronad-bzr
 	pkgdesc = A Tron Clone in 3D.
 	pkgver = r1622
-	pkgrel = 5
+	pkgrel = 6
 	url = http://armagetronad.net/
 	arch = x86_64
 	license = GPL
