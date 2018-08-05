@@ -2,7 +2,7 @@
 # Contributors: c0ldcat <firez199984@gmail.com>, KbanKiller
 pkgname=marvin
 pkgver=18.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Intuitive applications and API for chemical sketching, visualization and data exploration"
 arch=('any')
 url="http://www.chemaxon.com"
@@ -12,7 +12,7 @@ filename="marvin_linux_18.18.rpm"
 source=("https://dl.chemaxon.com/marvin/$pkgver/$filename"
 "MarvinSketch.desktop"
 "marvin-sketch-symbolic.svg")
-md5sums=('633614c7b7c7501b1c8de80e28a4ca09'
+md5sums=('dd5b4cbd8b7ada5fd5de62d86e7a775d'
 '63b667e3188ffe688f516848e5db66c6'
 'e6758f94b843b97804112fa0420ba1bb')
 
