@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2 is the second generation of the transform library, which lets
 url='http://www.ros.org/wiki/tf2'
 
 pkgname='ros-melodic-tf2'
-pkgver='0.6.2'
+pkgver='0.6.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry2-release-release-melodic-tf2-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b949c28451e158ca1d2d060b219c102cc0a7cd6299c44c71c39c58fb203df6cf')
+sha256sums=('6e27c4842b75f4a0855ce5768b5b8a0ee3a1f26f061b21c38de83d6e6916b9c1')
 
 build() {
   # Use ROS environment variables
