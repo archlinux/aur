@@ -1,26 +1,25 @@
 pkgbase = daedalus
 	pkgdesc = Cryptocurrency wallet
-	pkgver = 0.9.1
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/input-output-hk/daedalus
 	arch = any
 	license = MIT
 	makedepends = asar
 	makedepends = git
+	makedepends = nodejs-lts-carbon
 	makedepends = npm
 	makedepends = python2
 	depends = cardano-sl
 	depends = electron
-	source = git+https://github.com/input-output-hk/daedalus.git#commit=cd19ef984bce3ff27fd08e792d09c1ecd262716e
+	source = git+https://github.com/input-output-hk/daedalus.git#commit=53caf28e54d5baa86438ec72077c41d504aacd20
 	source = daedalus.desktop
 	source = daedalus.js
 	source = no-check-dev-engines.patch
-	source = use-system-electron.patch
 	sha256sums = SKIP
 	sha256sums = 965733a8cdbd1f983ce66413908da6da1ebfaa9e73e5a949620aa6347d2db294
 	sha256sums = 8e2b172d2ebcf172135d9fffb25b8c2ab0319e9abbbba0f0827381e9bd043cab
-	sha256sums = 43195e9a8073dc9bbf6285d918b4e496d715a5cc5eb0991abb17871724e5358b
-	sha256sums = b91eda12b173fab3c2e0523a2c10556a63852f32c0fd6a4df3db5cb04d03b8ce
+	sha256sums = f59cfbb07ec62a2f9a4f9c34a8b53575e7bdb2c0749e56d4479395adfcacbbdb
 
 pkgname = daedalus
 
