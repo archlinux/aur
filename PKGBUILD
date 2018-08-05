@@ -4,7 +4,7 @@ pkgdesc="ROS - The Kinematics and Dynamics Library (KDL) defines a tree structur
 url='http://ros.org/wiki/kdl_parser'
 
 pkgname='ros-melodic-kdl-parser'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="kdl_parser-release-release-melodic-kdl_parser-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/kdl_parser-release/archive/release/melodic/kdl_parser/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6a0f0427d02d1297d209ab7165118721aaffb3621678e72daf0c57e966a0012f')
+sha256sums=('5931eb562bb310633fedf3c2e40b435cfa6a8d25caddb4077c04932c66c2a8a9')
 
 build() {
   # Use ROS environment variables
