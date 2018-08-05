@@ -1,5 +1,3 @@
-# Maintainer: Rafael Fontenlle <rafaelff@gnome.org>
-
 pkgname=warsaw
 pkgver=1.12.3.11
 pkgrel=2
