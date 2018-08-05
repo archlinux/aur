@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-rviz
 	pkgdesc = ROS - rqt_rviz provides a GUI plugin embedding RViz.
-	pkgver = 0.5.9
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = http://wiki.ros.org/rqt_rviz
 	arch = any
 	license = BSD
@@ -19,8 +19,8 @@ pkgbase = ros-melodic-rqt-rviz
 	depends = ros-melodic-rqt-gui-cpp
 	depends = ros-melodic-rqt-gui
 	depends = boost
-	source = ros-melodic-rqt-rviz-0.5.9-1.tar.gz::https://github.com/ros-gbp/rqt_rviz-release/archive/release/melodic/rqt_rviz/0.5.9-1.tar.gz
-	sha256sums = 12bf708369642fbdc457ac2982bda93fec19653386182ec04b0359f74a0c4461
+	source = ros-melodic-rqt-rviz-0.6.0-0.tar.gz::https://github.com/ros-gbp/rqt_rviz-release/archive/release/melodic/rqt_rviz/0.6.0-0.tar.gz
+	sha256sums = 23e3aa89701e33665c95e1bd0f0df853a52a8bfd433c352071ba9ff597b8ecb7
 
 pkgname = ros-melodic-rqt-rviz
 
