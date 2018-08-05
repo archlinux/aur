@@ -2,7 +2,7 @@
 
 pkgname=ocaml-re2
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="OCaml bindings for RE2, Google's regular expression library"
 arch=('i686' 'x86_64')
@@ -26,5 +26,4 @@ package() {
   install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
   jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
-  mv "${pkgdir}/usr/lib/ocaml/stubslibs" "${pkgdir}/usr/lib/ocaml/stublibs" # bug in opam
 }
