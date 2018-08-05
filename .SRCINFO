@@ -1,0 +1,14 @@
+pkgbase = python-geographiclib
+	pkgdesc = This is a python implementation of the geodesic routines in GeographicLib.
+	pkgver = 1.49
+	pkgrel = 1
+	url = https://geographiclib.sourceforge.io/1.49/python/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/5b/ac/4f348828091490d77899bc74e92238e2b55c59392f21948f296e94e50e2b/geographiclib-1.49.tar.gz
+	sha256sums = 635da648fce80a57b81b28875d103dacf7deb12a3f5f7387ba7d39c51e096533
+
+pkgname = python-geographiclib
+
