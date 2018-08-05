@@ -1,7 +1,7 @@
 # Maintainer: Robert Hawdon <aur at robertianhawdon dot me dot uk>
 
 pkgname=dfshow-git
-pkgver=20180801
+pkgver=20180805
 pkgrel=2
 pkgdesc="An interactive directory/file browser written for Unix-like systems."
 arch=('i686' 'x86_64' 'arm')
@@ -20,10 +20,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/dfshow"
-  aclocal
-  autoheader
-  autoconf
-  automake --add-missing
+  ./bootstrap
   ./configure --prefix=/usr
   make
 }

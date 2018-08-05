@@ -1,6 +1,6 @@
 pkgbase = dfshow-git
 	pkgdesc = An interactive directory/file browser written for Unix-like systems.
-	pkgver = 20180801
+	pkgver = 20180805
 	pkgrel = 2
 	url = https://github.com/roberthawdon/dfshow
 	arch = i686
