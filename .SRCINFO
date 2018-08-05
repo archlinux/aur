@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-gazebo-ros
 	pkgdesc = ROS - Provides ROS plugins that offer message and service publishers for interfacing with Gazebo through ROS.
-	pkgver = 2.8.3
+	pkgver = 2.8.4
 	pkgrel = 1
 	url = http://gazebosim.org/tutorials?cat=connect_ros
 	arch = any
@@ -31,8 +31,9 @@ pkgbase = ros-melodic-gazebo-ros
 	depends = ros-melodic-rosgraph-msgs
 	depends = ros-melodic-gazebo-dev
 	depends = tinyxml
-	source = ros-melodic-gazebo-ros-2.8.3-0.tar.gz::https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/melodic/gazebo_ros/2.8.3-0.tar.gz
-	sha256sums = 757d97c83c95522b07f56a68e1181552ed76b8992e9a0c955a30478790f0a191
+	depends = python2
+	source = ros-melodic-gazebo-ros-2.8.4-0.tar.gz::https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/melodic/gazebo_ros/2.8.4-0.tar.gz
+	sha256sums = fde5c96dfbdfcd8550ae4b731d199348b50955157f0bc114f754c5a55170ca8a
 
 pkgname = ros-melodic-gazebo-ros
 
