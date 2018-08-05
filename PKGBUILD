@@ -4,7 +4,7 @@ pkgdesc="ROS - forward_command_controller."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-melodic-forward-command-controller'
-pkgver='0.14.0'
+pkgver='0.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-melodic-forward_command_controller-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/forward_command_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f7ed82e6f6c7c379ae317c2e3d9f0cba2d9f3cacc7e59e6f9c1c0f8f364b7317')
+sha256sums=('ebf1c1c5b967b11170499737c8df7cd3ed7de0b5ca0fbb2761fb92700da8d0ea')
 
 build() {
   # Use ROS environment variables
