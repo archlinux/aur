@@ -4,10 +4,10 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.3.0.r1370.gc41693301
+pkgver=3.3.0.r1455.g678cedc97
 pkgrel=1
 arch=('any')
-url="https://github.com/spyder-ide/spyder"
+url="https://www.spyder-ide.org/"
 license=('MIT')
 makedepends=('python2-sphinx' 'python2-setuptools' 
              'python-sphinx' 'python-setuptools'
@@ -36,7 +36,7 @@ build() {
 }
 
 package_spyder-git() {
-  pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 2 version)"
+  pkgdesc="The Scientific Python Development Environment (Python 2 version)"
   # Note: 'ipython2-notebook' nor 'jupyter'/'jupyter-nbconvert' contain a Python 2 version of Nbconvert
   # 'icu'
   depends=('python2-jedi'
@@ -56,11 +56,10 @@ package_spyder-git() {
 
            'desktop-file-utils'
            'gtk-update-icon-cache')
+  #'python2-pyside2: Qt-Python bindings'
   optdepends=('python2-matplotlib: 2D/3D plotting'
               'python2-numpy: N-dimensional arrays'
               'python2-pandas: DataFrame and Series support'
-              'python2-pyqt4: Qt-Python bindings'
-              'python2-pyside: Qt-Python bindings'
               'python2-scipy: signal/image processing'
               'python2-sympy: symbolic mathematics'
 
@@ -77,7 +76,7 @@ package_spyder-git() {
 }
 
 package_spyder3-git() {
-  pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 3 version)"
+  pkgdesc="The Scientific Python Development Environment (Python 3 version)"
   # 'icu'
   depends=('jupyter-nbconvert'
            'python-jedi'
@@ -97,11 +96,10 @@ package_spyder3-git() {
 
            'desktop-file-utils'
            'gtk-update-icon-cache')
+  #'pyside2: Qt-Python bindings'
   optdepends=('python-matplotlib: 2D/3D plotting'
               'python-numpy: N-dimensional arrays'
               'python-pandas: DataFrame and Series support'
-              'python-pyqt4: Qt-Python bindings'
-              'python-pyside: Qt-Python bindings'
               'python-scipy: signal/image processing'
               'python-sympy: symbolic mathematics'
 
