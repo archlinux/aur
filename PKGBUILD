@@ -5,13 +5,13 @@ fragment="#commit=9bd70ed8ace83c6dde174178e17c5147bb50248f"
 #fragment="#branch=develop"
 pkgname=${name}
 pkgver=r762.9bd70ed
-pkgrel=2
+pkgrel=3
 pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework."
 arch=('i686' 'x86_64')
 url="http://alicevision.github.io/"
 license=('MPL2')
 groups=()
-depends=(alice-vision python python-psutil python-pyside2 qt5-base qt5-quickcontrols2)
+depends=(alice-vision python python-psutil python-pyside2 qt5-quickcontrols{,2})
 makedepends=(git python-setuptools python-cx_freeze)
 source=("${pkgname}::git+https://github.com/alicevision/meshroom.git${fragment}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"
