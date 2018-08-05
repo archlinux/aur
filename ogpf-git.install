@@ -1,0 +1,9 @@
+post_install() {
+    echo ""
+    echo "To link to this module, use '-logpf' "
+    echo "and in your program, 'USE OGPF' "
+    echo ""
+    echo "Also note that is package will block upgrades to gcc/gfortran"
+    echo "You will have to uninstall it before, and re-install after, any such upgrades"
+    echo "This has been done because Fortran module files are highly dependent on the compiler version"
+}
