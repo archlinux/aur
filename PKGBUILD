@@ -3,7 +3,7 @@
 _pkgname=result
 pkgname=ocaml-${_pkgname}
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Compatibility Result module"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/janestreet/result"
@@ -17,8 +17,6 @@ sha256sums=('47a4a7abca084ac844716b047d4b26eacbd96174034c8836f35cd400e84c8db4')
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  export OPAMROOT="${srcdir}/.opam"
-  opam init -n
   jbuilder build
 }
 
