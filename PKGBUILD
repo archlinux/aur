@@ -1,6 +1,6 @@
 # Maintainer: Clayton Craft <clayton at craftyguy dot net>
 pkgname=grub2-signing-extension
-pkgver=0.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Scripts for signing and verifying grub2 files for grub2's check_signatures feature."
 arch=('any')
@@ -11,8 +11,8 @@ source=(
   "https://github.com/Bandie/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
   "https://github.com/Bandie/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
 sha512sums=(
-  '40415286d3a3e92169fdffd11276420488cf123ae8a2b3c52974be815f90baba1809cac1806bb1af292118491d9d008a42a52542fd580e48582c8b43e43e7a4b'
-  '88c9f51c3a868d054f8e70ef8926e8c7c5984adb412404e202bb0c2e3ccce5f971a301022762364dffb4b317217d00aa5f7c0ad3208d2001fd42eb6d06a7d6f7')
+  '7212dd67a856b50e07464a624d4e7bf364bbb7bbc2d7ab1cbdf4b7a32bf886f4cbbc4e67d1003100f979c971995951e3a7e197a4e208e57f6e445836a4e45704'
+  '0a0413f55dfeba19cce40587936f7cb631752dcf4dff4d1f4d43f5ab5d1ff15e09adf2c886a5143431bf538af3429a18c3ef8f485640a0aa2dd2fa5ec07c2635')
 
 build() {
   cd "$pkgname-$pkgver"
