@@ -1,7 +1,7 @@
 pkgbase = tootstream-git
 	pkgdesc = Text interface for the Mastodon social network
 	pkgver = 0.3.4.r3.gfef1e72
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/magicalraccoon/tootstream
 	arch = any
 	license = MIT
