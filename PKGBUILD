@@ -5,7 +5,7 @@
 _pkgname=lilv
 pkgname="${_pkgname}-git"
 pkgver=0.24.3.r1163.9a45b4c
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library interface to the LV2 plug-in standard"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/lilv"
@@ -13,7 +13,7 @@ license=("custom:ISC")
 depends=('lv2' 'python-numpy' 'sratom')
 makedepends=('subversion' 'swig')
 optdepends=(
-    "bash-completion: auto-complete words"
+    "bash-completion: completion for bash"
     "libsndfile: lv2apply utility"
 )
 provides=("${_pkgname}=${pkgver%.r*}")
@@ -43,5 +43,9 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   python waf install --destdir="${pkgdir}"
+  # license
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # bash completion
+  install -Dm644 utils/lilv.bash_completion -t \
+    "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
 }
