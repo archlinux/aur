@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_gui_py_common provides common functionality for GUI plugins wr
 url='http://ros.org/wiki/qt_gui_py_common'
 
 pkgname='ros-melodic-qt-gui-py-common'
-pkgver='0.3.8'
+pkgver='0.3.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-melodic-qt_gui_py_common-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/melodic/qt_gui_py_common/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a208155d47508382b9ac8f1cb89aac50e51bd01c703de72d2545dad1530da7dc')
+sha256sums=('72cf687b325bd63ff310da723fbedfba692635a9b896dbc95756802a62fbbfc1')
 
 build() {
   # Use ROS environment variables
