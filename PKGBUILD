@@ -21,8 +21,8 @@ install=
 changelog=
 source=("nextcloudcron.service"
         "nextcloudcron.timer")
-md5sums=('17b476ac2a223d8438c6097cd2073528'
-         '2acabd8f016661094567de4b6d1b2914')
+md5sums=('95d8686b2480f1ab73ba5ccd7f672fae'
+         '762473fd2fa1ed27d878d39b94de736c')
 noextract=()
 
 # prepare() {
