@@ -1,7 +1,7 @@
 # Maintainer edu4rdshl
 _pkgname=simpleaur
 pkgname=simpleaur-git
-pkgver=48.d904ffa
+pkgver=49.95f956d
 pkgrel=1
 pkgdesc="simpleaur, a AUR helper that does not require extra dependences."
 arch=('any')
