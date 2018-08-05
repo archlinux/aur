@@ -39,10 +39,6 @@ check() {
   cd "${pkgname/-lang-git}/build"
 
   ctest
-
-  export NGS_DIR='../lib'
-  export NGS_BOOTSTRAP="${NGS_DIR}/bootstrap.ngs"
-  ./ngs ../test.ngs
 }
 
 package() {
