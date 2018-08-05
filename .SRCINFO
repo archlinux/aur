@@ -1,8 +1,9 @@
 pkgbase = xf86-video-sis
 	pkgdesc = X.org SiS video driver
 	pkgver = 0.10.9.r7.ga50b2b3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
+	arch = i686
 	arch = x86_64
 	groups = xorg-drivers
 	license = custom

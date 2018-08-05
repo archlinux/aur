@@ -1,13 +1,13 @@
-# Maintainer: lone_Wolf <lonewolf@xs4all.nl>
+# Maintainer: Lone_Wolf <lonewolf@xs4all.nl>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Porting this to xorg-server 1.20 made possible by : loqs, progandy, regid
 # see https://bbs.archlinux.org/viewtopic.php?id=237632
 
 pkgname=xf86-video-sis
 pkgver=0.10.9.r7.ga50b2b3
-pkgrel=1
+pkgrel=2
 pkgdesc="X.org SiS video driver"
-arch=(x86_64)
+arch=('i686' 'x86_64')
 url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=('glibc')
