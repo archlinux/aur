@@ -1,3 +1,41 @@
+Version 2.28.0 - 02 Aug 2018
+- Fix html appearing in txt summary by default.
+- Remove in-story ad links from adapter_asexstoriescom.
+- adapter_royalroadl site uses relative dates now, including months and years
+  ago.
+- Update plugin & web service html2text included package to fix text <>&
+  output.
+- Fix for corner case screwing up chapter html(attr quotes). Closes #324
+- adapter_webnovelcom: update title selection (#323), thanks Ea
+- Remove accidental file.
+- Change AO3 description blockquote to a div tag.
+- Fix section links in html output(broken in def6b39)
+- Remove Google Plus icon (web service only)
+- Fix base_xenforoforum_adapter bug when no threadmarks.
+- Get fanficauthors.net story URL from existing epubs downloaded from the
+  site.
+- Fix for site change: adapter_wuxiaworldcom
+- Add note to use_threadmark_wordcounts setting--base_xenforo sites'
+  wordcounts ignore words insite Spoiler tags.
+- adapter_wuxiaworldco: Some older stories use a different date format.
+- Fix origtitle/toctitle for mark_new_chapters. Broken in chapter metadata
+  revamp.
+- Fix tocpage links and correct index04 vs index, issue #320.
+- Refactor chapter internals for additional site-specific metadata per
+  chapter.
+- Fix base_xenforo_list for AH & QQ prefered domains.
+- base_xenforoforum: Adding date, words & kwords per chapter metadata
+  (SB/SB/QQ).
+- Whitespace clean up in code (#316) - thanks mcepl
+- Add alternate domains for SB, SV & QQ xenforo adapters.
+- base_xenforoforum: Sum threadmark word counts into numWords(when present).
+  INI option use_threadmark_wordcounts defaults to true.
+- Add ignore_chapter_url_list feature.
+- adapter_trekfanfictionnet: don't set numWords to *character* count.
+- Add adapter_harrypotterfanfictioncom for new version of returned
+  harrypotterfanfiction.com.
+- Add adapter for http://wuxiaworld.co/ (#315) - Thanks cryzed
+
 Version 2.27.0 - 03 Jul 2018
 - Change adapter_storiesonlinenet to https (and derived finestories) - thanks
   davidfor.
@@ -23,38 +61,3 @@ Version 2.27.0 - 03 Jul 2018
 - Site update fixes for adapter_inkbunnynet, thanks GComyn.
 - Fixes for adapter_webnovelcom for site changes.
 - Add status to webnovelcom (#306) - Thanks, rikkitp
-
-Version 2.26.0 - 30 May 2018
-- base_xenforoforum_adapter: exclude threadmarks URL as chapter URL.
-- adapter_webnovelcom - use_pagecache - mostly for debugging.
-- Fix some metadata collection in adapter_webnovelcom.
-- Change adapter_whoficcom to https.
-- Add rating and sitetags to adapter_webnovelcom.
-- Fix date for adapter_gluttonyfictioncom
-- Remove defunct sites thealphagate.com and harrypotterfanfiction.com
-- Adding website_encodings:ignore feature for adapter_wwwnovelallcom.
-- fix chapter names in www.novelall.com - thanks Rikkitp
-- remove unnecessary br around advert in www.novelall.com - thanks Rikkitp
-- Consolidate URL chapter range code and apply to CLI for #302
-- fixes dateUpdated ang datePublished for lightnovelgate (#303) - thanks
-  Rikkitp
-- https for starslibrarynet, abstract protocol a bit for eFiction Base.
-- Clarify some tooltip text and add 'FFF Frozen URL' feature.
-
-Version 2.25.0 - 29 Apr 2018
-- Fix adapter_hpfanficarchivecom to not take author from banner by mistake.
-- New Site www.novelall.com - Thanks rikkitp!
-- Fix downloading illustrated stories from literotica. (#295) - Thanks
-  davidfor
-- Add remove_spoilers & legend_spoilers options to royalroadl.com for Issue
-  #287
-- Fix author URL/Id fetch for adapter_wwwlushstoriescom.
-- Fix www.webnovel.com adapter with volumes (#293) - Thanks rikkitp
-- Added status metadata to wuxiaworld and royalroadl (#289) - Thanks rikkitp
-- Add reformating option fix_excess_space to lightnovelgate (#291) - Thanks
-  rikkitp
-- Change ficwad.com to https.
-- Fixes for tables, add keep_empty_tags,td,th and add to keep_html_attrs
-  colspan,rowspan.
-- Allow domain sufficientvelocity.com for forums.sufficientvelocity.com.
-- Fix for wuxiaworld adapter when image is null (#288) - Thanks rikkitp
