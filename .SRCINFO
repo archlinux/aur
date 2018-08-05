@@ -1,13 +1,13 @@
 pkgbase = hy-git
 	pkgdesc = Python <--> Lisp layer
 	pkgver = 0.15.0.r15.g109c0b0f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hylang.org/
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-rply
-	depends = python-astor
+	depends = python-astor-git
 	depends = python-clint
 	depends = python-args
 	depends = python-setuptools

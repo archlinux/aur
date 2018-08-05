@@ -2,12 +2,12 @@
 pkgname=hy-git
 _gitname=hy
 pkgver=0.15.0.r15.g109c0b0f
-pkgrel=1
+pkgrel=2
 pkgdesc="Python <--> Lisp layer"
 arch=('any')
 url="http://hylang.org/"
 license=('MIT')
-depends=('python' 'python-rply' 'python-astor' 'python-clint' 'python-args' 'python-setuptools' 'python-funcparserlib')
+depends=('python' 'python-rply' 'python-astor-git' 'python-clint' 'python-args' 'python-setuptools' 'python-funcparserlib')
 conflicts=('hy')
 provides=('hy')
 options=(!emptydirs)
