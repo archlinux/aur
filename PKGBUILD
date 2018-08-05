@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_gui_cpp provides the foundation for C++-bindings for qt_gui an
 url='http://ros.org/wiki/qt_gui_cpp'
 
 pkgname='ros-melodic-qt-gui-cpp'
-pkgver='0.3.8'
+pkgver='0.3.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-melodic-qt_gui_cpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/melodic/qt_gui_cpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f6129008dbf1dafc98a5a7d419d04b7feed223a3b5dab5d0fde54d81c07a1c11')
+sha256sums=('503ed11486b3422e0c86e7e9235c53dabdd4384a60a42370984747522f97a744')
 
 build() {
   # Use ROS environment variables
