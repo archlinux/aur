@@ -14,8 +14,7 @@ sha256sums=(8e26cfea24a77cdc0ad7d51ad2df939130ad4c489f28c90fdc6ffc1b0da0a085)
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	# werror=false is required until https://github.com/openzim/libzim/issues/154 is resolved
-	arch-meson build -Dwerror=false
+	arch-meson build
 	ninja -C build
 }
 
