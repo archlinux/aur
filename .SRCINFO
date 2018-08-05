@@ -1,6 +1,6 @@
-pkgbase = hcxtools-git
+pkgbase = hcxtools
 	pkgdesc = Portable solution for capturing wlan traffic and conversion to hashcat and jtr formats
-	pkgver = 4.2.0.r3.g663a091
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/ZerBea/hcxtools
 	arch = i686
@@ -12,10 +12,8 @@ pkgbase = hcxtools-git
 	depends = libpcap
 	depends = zlib
 	depends = openssl
-	provides = hcxtools
-	conflicts = hcxtools
-	source = git+https://github.com/ZerBea/hcxtools
-	md5sums = SKIP
+	source = hcxtools-4.2.0.tar.gz::https://github.com/ZerBea/hcxtools/archive/4.2.0.tar.gz
+	md5sums = d8c67788aeb833783fd057244d933f20
 
-pkgname = hcxtools-git
+pkgname = hcxtools
 
