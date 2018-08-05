@@ -1,9 +1,9 @@
 # Maintainer: chenjunyu19 <1335546814@qq.com>
 
 pkgname=deepin-dock-plugin-cmdu-git
-pkgver=r17.9650621
+pkgver=r18.5440386
 pkgrel=1
-pkgdesc="深度Linux系统网速任务栏插件，鼠标悬浮显示开机时间、CPU使用率、内存使用率、下载字节、上传字节。"
+pkgdesc="A plugin for deepin dock, display uptime, CPU usage, RAM usage and netspeed."
 arch=('x86_64')
 url="https://github.com/sonichy/CMDU_DDE_DOCK"
 depends=('deepin-dock')
