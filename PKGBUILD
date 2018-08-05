@@ -26,13 +26,13 @@ build() {
 }
 
 package() {
-	cd "$srcdir/hooktor-${pkgver}"
+  cd "$srcdir/hooktor-${pkgver}"
 
-	install -dm755 ${pkgdir}/var/lib/hooktor
-	install -dm755 ${pkgdir}/var/lib/hooktor/projects
+  install -dm755 ${pkgdir}/var/lib/hooktor
+  install -dm755 ${pkgdir}/var/lib/hooktor/projects
   install -Dm755 hooktor ${pkgdir}/usr/bin/hooktor
-	install -Dm644 ${srcdir}/hooktor.json ${pkgdir}/etc/hooktor.json
-	install -Dm644 ${srcdir}/hooktor.service ${pkgdir}/usr/lib/systemd/system/hooktor.service
-	install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ${srcdir}/hooktor.json ${pkgdir}/etc/hooktor.json
+  install -Dm644 ${srcdir}/hooktor.service ${pkgdir}/usr/lib/systemd/system/hooktor.service
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
