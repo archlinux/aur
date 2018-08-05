@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_dotgraph provides helpers to work with dot graphs."
 url='http://ros.org/wiki/qt_dotgraph'
 
 pkgname='ros-melodic-qt-dotgraph'
-pkgver='0.3.8'
+pkgver='0.3.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-melodic-qt_dotgraph-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/melodic/qt_dotgraph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0d14511b9ce939bf82b17ad1f08104b2ef8cf2a811f7a8d9ae8c2a7f59a4d407')
+sha256sums=('cab24c07b21bd71bcee81732a8f17ce75f61752f89ae4341099b5a799b0896b5')
 
 build() {
   # Use ROS environment variables

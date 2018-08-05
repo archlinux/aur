@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-qt-dotgraph
 	pkgdesc = ROS - qt_dotgraph provides helpers to work with dot graphs.
-	pkgver = 0.3.8
+	pkgver = 0.3.9
 	pkgrel = 1
 	url = http://ros.org/wiki/qt_dotgraph
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ros-melodic-qt-dotgraph
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-python-qt-binding
 	depends = python2-pydot
-	source = ros-melodic-qt-dotgraph-0.3.8-0.tar.gz::https://github.com/ros-gbp/qt_gui_core-release/archive/release/melodic/qt_dotgraph/0.3.8-0.tar.gz
-	sha256sums = 0d14511b9ce939bf82b17ad1f08104b2ef8cf2a811f7a8d9ae8c2a7f59a4d407
+	source = ros-melodic-qt-dotgraph-0.3.9-0.tar.gz::https://github.com/ros-gbp/qt_gui_core-release/archive/release/melodic/qt_dotgraph/0.3.9-0.tar.gz
+	sha256sums = cab24c07b21bd71bcee81732a8f17ce75f61752f89ae4341099b5a799b0896b5
 
 pkgname = ros-melodic-qt-dotgraph
 
