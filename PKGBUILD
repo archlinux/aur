@@ -4,7 +4,7 @@
 
 pkgname=ocaml-lambda-term
 pkgver=1.13
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross-platform library for manipulating the terminal'
 arch=('i686' 'x86_64')
 url='https://github.com/diml/lambda-term'
@@ -28,6 +28,5 @@ package() {
   install -dm755 "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
   jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/man" "${pkgdir}/usr/share/"
-  mv "${pkgdir}/usr/lib/ocaml/stubslibs" "${pkgdir}/usr/lib/ocaml/stublibs" # bug in opam
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
