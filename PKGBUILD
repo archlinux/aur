@@ -1,7 +1,8 @@
 # Contributor: Vladimir Gorbunov <truedaemon@gmail.com>
 
 pkgbase=python-svglib
-pkgname=('python2-svglib' 'python-svglib')
+pkgname=python-svglib
+# pkgname=('python2-svglib' 'python-svglib')
 _name=svglib
 pkgver=0.8.1
 pkgrel=1
@@ -22,12 +23,12 @@ prepare() {
     patch -Np1 -i "${srcdir}/xrange.patch"
 }
 
-package_python2-svglib() {
-    cd "$srcdir/svglib-$pkgver"
-    depends=('python2' 'python2-reportlab' 'python2-lxml')
-    python2 setup.py install --root="$pkgdir/" --optimize=1
-    mv "${pkgdir}/usr/bin/svg2pdf" "${pkgdir}/usr/bin/svg2pdf-py2"
-}
+# package_python2-svglib() {
+#     cd "$srcdir/svglib-$pkgver"
+#     depends=('python2' 'python2-reportlab' 'python2-lxml')
+#     python2 setup.py install --root="$pkgdir/" --optimize=1
+#     mv "${pkgdir}/usr/bin/svg2pdf" "${pkgdir}/usr/bin/svg2pdf-py2"
+# }
 
 package_python-svglib() {
     cd "$srcdir/svglib-$pkgver"
