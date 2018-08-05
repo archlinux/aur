@@ -4,7 +4,7 @@ pkgdesc="ROS - KDL binding for tf2."
 url='http://ros.org/wiki/tf2'
 
 pkgname='ros-melodic-tf2-kdl'
-pkgver='0.6.2'
+pkgver='0.6.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry2-release-release-melodic-tf2_kdl-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_kdl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('67ac2bc424714a33bdc6d228fc157e92bb79fc5ccaacd50e760013d444b1ff8c')
+sha256sums=('b2e06c3ffa39d7964eaa35aea083dbeab3c2b3584b24e974af421adc4022de42')
 
 build() {
   # Use ROS environment variables
