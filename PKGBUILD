@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_gui provides the infrastructure for an integrated graphical us
 url='http://ros.org/wiki/qt_gui'
 
 pkgname='ros-melodic-qt-gui'
-pkgver='0.3.8'
+pkgver='0.3.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-melodic-qt_gui-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/melodic/qt_gui/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d8a099dcc0461e36d13a05d0e1478cc5a77ca4f8a971463789b366f9a06f5c20')
+sha256sums=('40581cfd4d659d54e954a3ef45f829fe5c2434be537fee2161a17a22bfc68d5c')
 
 build() {
   # Use ROS environment variables
