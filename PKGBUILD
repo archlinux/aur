@@ -2,9 +2,9 @@
 # Maintainer: Dennis Schubert <mail@dennis-schubert.de>
 
 pkgname=ruby-install
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="Installs Ruby, JRuby, Rubinius, MagLev or MRuby."
+pkgdesc="Installs Ruby, JRuby, Rubinius, MRuby or TruffleRuby."
 arch=(any)
 url="https://github.com/postmodern/ruby-install"
 license=('MIT')
@@ -12,7 +12,7 @@ depends=('bash')
 optdepends=('zsh')
 makedepends=('gnupg')
 source=("https://github.com/postmodern/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b3adf199f8cd8f8d4a6176ab605db9ddd8521df8dbb2212f58f7b8273ed85e73')
+sha256sums=('500a8ac84b8f65455958a02bcefd1ed4bfcaeaa2bb97b8f31e61ded5cd0fd70b')
 
 prepare() {
   if gpg --fingerprint 0xB9515E77 >/dev/null 2>&1; then

@@ -1,6 +1,6 @@
 pkgbase = ruby-install
-	pkgdesc = Installs Ruby, JRuby, Rubinius, MagLev or MRuby.
-	pkgver = 0.6.1
+	pkgdesc = Installs Ruby, JRuby, Rubinius, MRuby or TruffleRuby.
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/postmodern/ruby-install
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ruby-install
 	makedepends = gnupg
 	depends = bash
 	optdepends = zsh
-	source = https://github.com/postmodern/ruby-install/archive/v0.6.1.tar.gz
-	sha256sums = b3adf199f8cd8f8d4a6176ab605db9ddd8521df8dbb2212f58f7b8273ed85e73')
+	source = https://github.com/postmodern/ruby-install/archive/v0.7.0.tar.gz
+	sha256sums = 500a8ac84b8f65455958a02bcefd1ed4bfcaeaa2bb97b8f31e61ded5cd0fd70b
 
 pkgname = ruby-install
 
