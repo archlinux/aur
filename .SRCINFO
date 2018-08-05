@@ -1,7 +1,7 @@
 pkgbase = lscolors-git
 	pkgdesc = Colorize the output of the 'ls' shell command via LS_COLORS
-	pkgver = r220.4d5aeed
-	pkgrel = 1
+	pkgver = r246.0e97428
+	pkgrel = 2
 	url = https://github.com/trapd00r/LS_COLORS
 	install = lscolors-git.install
 	arch = any
