@@ -7,7 +7,7 @@ pkgname='ros-melodic-mavros'
 pkgver='0.26.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('GPLv3, LGPLv3, BSD')
 
 ros_makedepends=(ros-melodic-diagnostic-msgs
@@ -34,8 +34,7 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   geographiclib
   boost
-  eigen3
-  geographiclib-tools)
+  eigen3)
 
 ros_depends=(ros-melodic-diagnostic-msgs
   ros-melodic-diagnostic-updater
