@@ -1,12 +1,12 @@
 pkgbase = wtfutil
 	pkgdesc = Personal information dashboard for your terminal
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://wtfutil.com
 	arch = x86_64
 	license = MIT
-	source_x86_64 = https://github.com/senorprogrammer/wtf/releases/download/0.1.1/wtf_0.1.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 40c813eb6f88def4dadc355d366ba630c985b4ed20fe89992c4570b823d86bf2
+	source_x86_64 = https://github.com/senorprogrammer/wtf/releases/download/0.2.0/wtf_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = aa2b6724c8b2322d0e66ac88405c0f07e5a9bdc0dd03c45dff1322f896c3a5bb
 
 pkgname = wtfutil
 
