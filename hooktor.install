@@ -1,0 +1,10 @@
+post_install() {
+  getent group hooktor > /dev/null || groupadd -r hooktor 1>/dev/null
+  getent passwd hooktor > /dev/null || useradd -r -d /var/lib/hooktor -g hooktor -s /bin/false hooktor 1>/dev/null
+  chown -R hooktor:hooktor /var/lib/hooktor
+}
+
+post_remove() {
+  getent passwd hooktor > /dev/null && userdel hooktor 1>/dev/null
+  getent group hooktor > /dev/null && groupdel hooktor 1>/dev/null
+}

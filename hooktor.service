@@ -1,0 +1,12 @@
+[Unit]
+Description=A small webhook reactor
+After=network.target
+
+[Service]
+User=hooktor
+Group=hooktor
+ExecStart=/usr/bin/hooktor /etc/hooktor.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
