@@ -1,8 +1,8 @@
 pkgbase = zukitwo-themes-git
 	pkgdesc = A theme for GTK3, GTK2, Metacity, xfwm4, Gnome Shell and Unity - git version
-	pkgver = 20170126.r152.92f980b
-	pkgrel = 1
-	url = http://gnome-look.org/content/show.php/Zukitwo?content=140562
+	pkgver = v3.28.2.r2.g9652d57
+	pkgrel = 2
+	url = https://github.com/lassekongo83/zuki-themes
 	arch = any
 	license = GPL3
 	makedepends = git

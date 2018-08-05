@@ -2,7 +2,7 @@
 
 pkgname=zukitwo-themes-git
 pkgver=v3.28.2.r2.g9652d57
-pkgrel=1
+pkgrel=2
 pkgdesc="A theme for GTK3, GTK2, Metacity, xfwm4, Gnome Shell and Unity - git version"
 arch=('any')
 url="https://github.com/lassekongo83/zuki-themes"
