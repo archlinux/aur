@@ -2,12 +2,13 @@
 
 pkgname=adriconf
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanded DRI Configurator for the Mesa drivers'
 arch=('i686' 'x86_64')
 url='https://github.com/jlHertel/adriconf/'
 license=('GPL3')
-depends=('mesa' 'gtkmm3' 'boost-libs' 'libxml++' 'libx11' 'libdrm' 'pciutils')
+depends=('gcc-libs' 'gtkmm3' 'glibmm' 'glib2' 'libsigc++' 'boost-libs'
+         'libxml++' 'libx11' 'libglvnd' 'mesa' 'libdrm' 'pciutils')
 makedepends=('cmake' 'boost' 'gettext' 'gtest')
 conflicts=('adriconf-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/jlHertel/adriconf/archive/v${pkgver}.tar.gz"
@@ -38,9 +39,8 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m755 adriconf "${pkgdir}/usr/bin/adriconf"
-    
-    install -D -m644 "${srcdir}/adriconf.desktop" "${pkgdir}/usr/share/applications/adriconf.desktop"
-    
-    install -D -m644 "${srcdir}/adriconf.png" "${pkgdir}/usr/share/pixmaps/adriconf.png"
+    install -D -m755 adriconf -t "${pkgdir}/usr/bin"
+
+    install -D -m644 "${srcdir}/adriconf.desktop" -t "${pkgdir}/usr/share/applications"
+    install -D -m644 "${srcdir}/adriconf.png"     -t "${pkgdir}/usr/share/pixmaps"
 }
