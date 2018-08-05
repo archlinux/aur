@@ -1,0 +1,19 @@
+pkgbase = nosqlbooster-mongodb
+	pkgdesc = Shell-centric GUI tool for MongoDB
+	pkgver = 4.7.0
+	pkgrel = 1
+	url = https://nosqlbooster.com
+	arch = x86_64
+	license = GPL
+	depends = gconf
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	noextract = nsqlb4m.AppImage
+	source = nsqlb4m.AppImage::https://nosqlbooster.com/s3/download/releasesv4/nosqlbooster4mongo-4.7.0.AppImage
+	md5sums = da91339b27d5bdccc404fbdc47c41839
+	sha1sums = 78717b7308c16734623b2be38a822825416e7b0f
+	sha256sums = 4fe6dad993aefbcb1ab47848e8c8c3085873eed0e18370d12e28bccedb9158be
+
+pkgname = nosqlbooster-mongodb
+
