@@ -1,0 +1,13 @@
+pkgbase = pidgin-pending_notifications
+	pkgdesc = Flash a LED on pending notifications
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://gitlab.com/vicencb/pending_notifications
+	arch = any
+	license = 0BSD
+	depends = pidgin
+	source = https://gitlab.com/vicencb/pending_notifications/-/archive/0.0/pending_notifications-0.0.tar.bz2
+	md5sums = SKIP
+
+pkgname = pidgin-pending_notifications
+
