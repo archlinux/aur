@@ -6,7 +6,6 @@ pkgbase = trac
 	install = trac.install
 	arch = any
 	license = BSD
-	makedepends = clearsilver
 	depends = python2
 	depends = python2-genshi
 	depends = python2-babel

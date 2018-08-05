@@ -10,7 +10,6 @@ arch=('any')
 url="http://trac.edgewall.org/"
 license=('BSD')
 depends=(python2 python2-genshi python2-babel python2-setuptools)
-makedepends=(clearsilver)
 install=trac.install
 source=(http://ftp.edgewall.com/pub/trac/Trac-$pkgver.tar.gz
 	license.txt
