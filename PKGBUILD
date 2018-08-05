@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2_eigen."
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-tf2-eigen'
-pkgver='0.6.2'
+pkgver='0.6.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry2-release-release-melodic-tf2_eigen-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_eigen/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('060c24a7b6dd68fd22e92a963927799f8590c6db61d02d92dd53bc239ea7085c')
+sha256sums=('a5b888eb955c7663698c4785092512af3e80cb886d10df3ae3ef5ed6598a67f2')
 
 build() {
   # Use ROS environment variables
