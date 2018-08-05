@@ -1,7 +1,7 @@
 pkgbase = system-tar-and-restore
 	pkgdesc = Backup and Restore your system using tar or Transfer it with rsync
-	pkgver = 6.8
-	pkgrel = 3
+	pkgver = 6.9
+	pkgrel = 1
 	url = https://github.com/tritonas00/system-tar-and-restore
 	install = readme.install
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = system-tar-and-restore
 	optdepends = pigz: multicore compression
 	optdepends = pbzip2: multicore compression
 	optdepends = pxz: multicore compression
-	source = https://github.com/tritonas00/system-tar-and-restore/archive/6.8.tar.gz
-	md5sums = 9bdf77a61dbcf72aaf3e9f9e28566dad
+	source = https://github.com/tritonas00/system-tar-and-restore/archive/6.9.tar.gz
+	md5sums = b74efc99dea2883c98df4ce60763e4aa
 
 pkgname = system-tar-and-restore
 

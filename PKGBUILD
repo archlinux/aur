@@ -1,7 +1,7 @@
 # Maintainer: tritonas00 <tritonas00@gmail.com>
 pkgname=system-tar-and-restore
-pkgver=6.8
-pkgrel=3
+pkgver=6.9
+pkgrel=1
 pkgdesc='Backup and Restore your system using tar or Transfer it with rsync'
 arch=('any')
 license=('GPL')
@@ -12,7 +12,7 @@ optdepends=('gtkdialog: GUI wrapper' 'grub: Grub support' 'dosfstools: UEFI supp
 url="https://github.com/tritonas00/system-tar-and-restore"
 source=("https://github.com/tritonas00/system-tar-and-restore/archive/$pkgver.tar.gz")
 
-md5sums=('9bdf77a61dbcf72aaf3e9f9e28566dad')
+md5sums=('b74efc99dea2883c98df4ce60763e4aa')
 
 install=readme.install
 
