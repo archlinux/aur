@@ -1,20 +1,20 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=adriconf
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='Advanded DRI Configurator for the Mesa drivers'
 arch=('i686' 'x86_64')
 url='https://github.com/jlHertel/adriconf/'
 license=('GPL3')
-depends=('gcc-libs' 'gtkmm3' 'glibmm' 'glib2' 'libsigc++' 'boost-libs'
-         'libxml++' 'libx11' 'libglvnd' 'mesa' 'libdrm' 'pciutils')
+depends=('gcc-libs' 'gtkmm3' 'glibmm' 'gtk3' 'glib2' 'libsigc++' 'boost-libs'
+         'libxml++2.6' 'libx11' 'libglvnd' 'mesa' 'libdrm' 'pciutils')
 makedepends=('cmake' 'boost' 'gettext' 'gtest')
 conflicts=('adriconf-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/jlHertel/adriconf/archive/v${pkgver}.tar.gz"
         'adriconf.desktop'
         'adriconf.png')
-sha256sums=('1d4546e906ddcb45e16a0cf4742360375ff02530e6de126bf91378a1e68e5948'
+sha256sums=('a2487d9e3c4d7fd7b13da5acca12e1342ec8da2cacd0946389133ccb6ae705f7'
             'bcdd0e3de71922741b26932b75f050da16bcc966d0256bf32f942ac715987967'
             '7d5d467bafd07a39fe1590ff399a2ef9d4eb973777369b308f87556bc4e3786d')
 
