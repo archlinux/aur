@@ -1,7 +1,7 @@
 pkgbase = mutter-hide-legacy-decorations
 	pkgdesc = A window manager for GNOME (with a little hack to hide the window decorations on maximized legacy applications)
 	pkgver = 3.28.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.gnome.org/browse/mutter
 	arch = i686
 	arch = x86_64

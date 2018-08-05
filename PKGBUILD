@@ -6,7 +6,7 @@
 pkgname=mutter-hide-legacy-decorations
 _pkgname=mutter
 pkgver=3.28.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME (with a little hack to hide the window decorations on maximized legacy applications)"
 url="https://git.gnome.org/browse/mutter"
 arch=(i686 x86_64)
@@ -39,6 +39,7 @@ prepare() {
 
   # Port to pipewire 0.2
   git cherry-pick -n 0407a8b33d8c3503fba63ad260984bb08bd6e0dc
+  sed -i 's/pipewire-0.1/pipewire-0.2/g' configure.ac
 
   # https://bugs.archlinux.org/task/51940
   # As of 2018-05-08: Still needed, according to fmuellner
