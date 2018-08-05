@@ -1,13 +1,13 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Your Name <linuxboy@fel.hopto.org>
 pkgname=snx
-pkgver=800007107
-pkgrel=2
+pkgver=800008061
+pkgrel=1
 pkgdesc="Check Point SSL Network Extender (vpn client)"
 arch=('x86_64')
 url=""
 license=('GPL')
 groups=()
-depends=('lib32-pam>=1.2.1' 'lib32-libstdc++5>=3.3.6' 'lib32-libx11>=1.6.4')
+depends=('lib32-pam' 'lib32-libstdc++5' 'lib32-libx11')
 makedepends=()
 optdepends=()
 provides=()
@@ -19,7 +19,7 @@ install=snx.install
 changelog=
 source=("https://vpnportal.aktifbank.com.tr/SNX/INSTALL/snx_install.sh")
 noextract=("${source[@]%%::*}")
-md5sums=('17c676d6e0e6f4d53d0e4398c2211db2')
+md5sums=('ccf5c17f2820cc02b13b3460d12c0401')
 
 build() {
     cd "$pkgname-$pkgver"
