@@ -1,8 +1,8 @@
-# Maintainer: physkets <physkets@tutanota.com>
+# Maintainer: physkets <physkets // at // tutanota dot com>
 # Contributor: James Clark <s1127853@sms.ed.ac.uk>
 pkgname=opencoarrays
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A transport layer for coarray Fortran compilers."
 url="http://www.opencoarrays.org/"
 arch=('x86_64' 'i686')
