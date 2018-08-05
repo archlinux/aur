@@ -4,13 +4,14 @@
 _pkgname=setBfree
 pkgname=${_pkgname,,}
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A DSP tonewheel organ emulator"
 arch=('i686' 'x86_64')
 url='http://setbfree.org/'
 license=('GPL')
 depends=('alsa-lib' 'ftgl' 'jack' 'liblo' 'pango' 'ttf-bitstream-vera')
 makedepends=('lv2')
+CFLAGS+=' -DNDEBUG'  # Fix 'WARNING: Package contains reference to $srcdir'
 conflicts=("${pkgname}-git")
 _github_root="https://github.com/pantherb/${_pkgname}"
 _desktop_file_commit='ff15bf2fdb85120c5125deb5debdcabb3969c6a4'
