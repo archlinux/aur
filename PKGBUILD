@@ -1,11 +1,11 @@
 # Maintainer: Chiku < chirantan dot mitra at gmail dot com >
 
 pkgname=zukitwo-themes-git
-pkgver=20170126.r152.92f980b
+pkgver=v3.28.2.r2.g9652d57
 pkgrel=1
 pkgdesc="A theme for GTK3, GTK2, Metacity, xfwm4, Gnome Shell and Unity - git version"
 arch=('any')
-url="http://gnome-look.org/content/show.php/Zukitwo?content=140562"
+url="https://github.com/lassekongo83/zuki-themes"
 license=('GPL3')
 depends=('gtk-engines' 'gtk-engine-murrine')
 optdepends=('gnome-themes-standard: Required for the GTK3 theme'
@@ -21,7 +21,7 @@ _gitname=zukitwo-themes
 
 pkgver() {
   cd "$pkgname"
-  printf "20170126.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
