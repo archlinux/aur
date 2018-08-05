@@ -6,7 +6,7 @@ post_install() {
 
 post_remove() {
   # the cache dir might not be removed, notify the user
-  if [ -d var/cache/pkgfile ]; then
+  if [[ -d var/cache/pkgfile ]]; then
     printf "==> /var/cache/pkgfile has not been removed\n"
   fi
 }
