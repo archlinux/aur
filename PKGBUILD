@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains the ROS bindings for the tf2 library, for b
 url='http://www.ros.org/wiki/tf2_ros'
 
 pkgname='ros-melodic-tf2-ros'
-pkgver='0.6.2'
+pkgver='0.6.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -49,7 +49,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry2-release-release-melodic-tf2_ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('475eda187bb0e1b0a2ddf0c333569717c3ffee6ca02a3b9c31eb5187d88260b7')
+sha256sums=('a92f3b3c050dd41cf658a5f1c0630aa834a888f7f696f25241682319c4ab35b9')
 
 build() {
   # Use ROS environment variables
