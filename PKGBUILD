@@ -2,7 +2,7 @@
 
 pkgname=ocaml-spawn
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small library for spawning sub-processes"
 arch=('x86_64')
 url='https://github.com/janestreet/spawn'
@@ -26,5 +26,4 @@ package() {
   mkdir -p "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
   jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
-  mv "${pkgdir}/usr/lib/ocaml/stubslibs" "${pkgdir}/usr/lib/ocaml/stublibs" # bug in opam
 }
