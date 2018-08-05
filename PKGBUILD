@@ -9,8 +9,8 @@
 ## Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-mainline-vfio               # Build stock -ARCH kernel
-_tag=v4.18-rc7
-pkgver=4.18rc7
+_tag=v4.18-rc8
+pkgver=4.18rc8
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
