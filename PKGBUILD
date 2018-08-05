@@ -1,7 +1,7 @@
 # Maintainer: Alia Skywol <skywol@qq.com>
 pkgname=deepin.com.wechat
 pkgver=2.6.2.31deepin0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Deepin Wine Wechat 2.6.2"
 arch=('i686' 'x86_64')
