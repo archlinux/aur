@@ -1,0 +1,23 @@
+pkgbase = ros-melodic-geographic-msgs
+	pkgdesc = ROS - ROS messages for Geographic Information Systems.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://wiki.ros.org/geographic_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-uuid-msgs
+	makedepends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-uuid-msgs
+	depends = ros-melodic-std-msgs
+	source = ros-melodic-geographic-msgs-0.5.3-0.tar.gz::https://github.com/ros-geographic-info/geographic_info-release/archive/release/melodic/geographic_msgs/0.5.3-0.tar.gz
+	sha256sums = 68d46a359b8eec02f2ee60c6997f9bf3399925e9f93c453839a07125ce8f959f
+
+pkgname = ros-melodic-geographic-msgs
+
