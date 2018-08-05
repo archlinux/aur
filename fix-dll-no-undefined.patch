@@ -1,0 +1,30 @@
+diff -Naur libbs2b-3.1.0.orig/configure.ac libbs2b-3.1.0/configure.ac
+--- libbs2b-3.1.0.orig/configure.ac	2018-08-05 11:25:19.875704349 -0400
++++ libbs2b-3.1.0/configure.ac	2018-08-05 11:31:24.638407134 -0400
+@@ -5,12 +5,13 @@
+ AC_INIT([libbs2b], [3.1.0], [boris_mikhaylov@users.sourceforge.net])
+ AC_CONFIG_AUX_DIR([build-aux])
+ AM_INIT_AUTOMAKE([1.10.1 -Wall foreign subdir-objects
+-                  dist-zip dist-bzip2 dist-lzma])
++                  dist-zip dist-bzip2 dist-xz])
+ AC_CONFIG_SRCDIR([src/bs2b.h])
+ 
+ # Checks for programs.
+ AC_PROG_CXX
+ AC_PROG_CC
++AC_LIBTOOL_WIN32_DLL
+ AC_PROG_LIBTOOL
+ PKG_PROG_PKG_CONFIG
+ 
+diff -Naur libbs2b-3.1.0.orig/src/Makefile.am libbs2b-3.1.0/src/Makefile.am
+--- libbs2b-3.1.0.orig/src/Makefile.am	2018-08-05 11:25:19.755703594 -0400
++++ libbs2b-3.1.0/src/Makefile.am	2018-08-05 11:25:50.055893843 -0400
+@@ -18,7 +18,7 @@
+     $(bs2b_HEADERS)
+ 
+ libbs2b_la_LDFLAGS = \
+-	-lm -version-info 0:0:0
++	-lm -version-info 0:0:0 -no-undefined
+ 
+ libbs2b_la_SOURCES = \
+ 	bs2b.c \
