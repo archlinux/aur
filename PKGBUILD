@@ -1,26 +1,36 @@
-# Maintainer: Sam S <smls75@gmail.com>
+# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
+# Contributor: Sam S <smls75@gmail.com>
 # Contributor: Testuser_01 <arch@nico-siebler.de>
 
 pkgname=lscolors-git
-pkgver=r220.4d5aeed
-pkgrel=1
+_pkgname=LS_COLORS
+pkgver=r246.0e97428
+pkgrel=2
 pkgdesc="Colorize the output of the 'ls' shell command via LS_COLORS"
 url="https://github.com/trapd00r/LS_COLORS"
-arch=('any')
-license=('PerlArtistic')
+arch=("any")
+makedepends=("git")
+license=("PerlArtistic")
 install="$pkgname.install"
-
-_repo=LS_COLORS
-source=("git://github.com/trapd00r/$_repo.git")
-md5sums=("SKIP")
+source=("git://github.com/trapd00r/$_pkgname.git")
+sha256sums=("SKIP")
 
 pkgver() {
-  cd $_repo
+  cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "$_pkgname"
+  dircolors -b LS_COLORS > dircolors.sh
+  dircolors -c LS_COLORS > dircolors.csh
+}
+
 package() {
-  cd $_repo
-  install -D LS_COLORS       "$pkgdir"/usr/share/LS_COLORS
-  install -D README.markdown "$pkgdir"/usr/share/doc/LS_COLOR/README.md
+  cd "$_pkgname"
+
+  install -Dm644 -t "${pkgdir}/usr/share/${_pkgname}/" LS_COLORS
+  install -Dm644 -t "${pkgdir}/usr/share/${_pkgname}/" dircolors.sh
+  install -Dm644 -t "${pkgdir}/usr/share/${_pkgname}/" dircolors.csh
+  install -Dm644 README.markdown "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }

@@ -1,7 +1,11 @@
 function post_install() {
-  echo "  To enable the colors, add the following line to your shell"
-  echo "  start-up script (e.g. ~/.bashrc):"
-  echo '    eval `dircolors -b /usr/share/LS_COLORS`'
+  echo "  To enable the colors, add the following line to your shell's start-up script:"
+  echo
+  echo "  For Bourne shell (e.g. ~/.bashrc or ~/.zshrc):"
+  echo "    . /usr/share/LS_COLORS/dircolors.sh"
+  echo
+  echo "  For C shell (e.g. ~/.cshrc):"
+  echo "    . /usr/share/LS_COLORS/dircolors.csh"
 }
 
 function post_upgrade() {
