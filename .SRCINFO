@@ -1,0 +1,23 @@
+pkgbase = vala-lint-git
+	pkgdesc = Check code-style of Vala code files
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/elementary/vala-lint
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = glib2
+	depends = libgee
+	provides = vala-lint
+	conflicts = vala-lint
+	source = git+https://github.com/elementary/vala-lint.git
+	md5sums = SKIP
+
+pkgname = vala-lint-git
+
