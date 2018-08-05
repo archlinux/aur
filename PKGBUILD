@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Gorbunov <truedaemon@gmail.com>
 pkgname=python-rply-git
 _gitname=rply
-pkgver=v0.7.3.r3.g700daa7
+pkgver=v0.7.6.r1.gb8bf6b1
 pkgrel=1
 pkgdesc="A pure Python Lex/Yacc that works with RPython"
 arch=('any')
@@ -11,6 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 provides=('python-rply')
+conflicts=('python-rply')
 source=("git+https://github.com/alex/rply.git")
 md5sums=("SKIP")
 
