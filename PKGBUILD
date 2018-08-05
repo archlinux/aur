@@ -8,10 +8,6 @@ pkgdesc="CUPS driver for Brother DCP-L2550DW"
 arch=('x86_64')
 url="http://support.brother.com/g/b/producttop.aspx?c=us_ot&lang=en&prod=dcpl2550dw_us"
 license=('unknown')
-makedepends=('perl')
-if test "$CARCH" == x86_64; then
-	makedepends+=(lib32-glibc)
-fi
 _model="DCPL2550DW"
 _revision=1
 
