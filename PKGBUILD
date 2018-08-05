@@ -17,8 +17,8 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
-changelog="nextcloud-systemd-cron.install"
+install="nextcloud-systemd-cron.install"
+changelog=
 source=("nextcloudcron.service"
         "nextcloudcron.timer")
 md5sums=('95d8686b2480f1ab73ba5ccd7f672fae'
