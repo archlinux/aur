@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname='dmon'
-pkgver='0.4.4'
+pkgver='0.4.5'
 pkgrel='2'
 pkgdesc='Toolset for daemonizing and supervising processes'
 arch=('i686' 'x86_64' 'arm')
