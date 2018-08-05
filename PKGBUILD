@@ -2,18 +2,16 @@
 
 _pkgname=setbfree
 pkgname="${_pkgname}-git"
-pkgver=0.8.1
+pkgver=0.8.7.r740.ff15bf2
 pkgrel=1
 pkgdesc="A DSP tonewheel organ emulator"
 arch=('i686' 'x86_64')
 url="http://setbfree.org/"
 license=('GPL')
-depends=('desktop-file-utils' 'ftgl' 'gtk-update-icon-cache' 'jack' 'pango'
-         'ttf-bitstream-vera')
+depends=('alsa-lib' 'ftgl' 'hicolor-icon-theme' 'jack' 'pango' 'ttf-bitstream-vera')
 makedepends=('libicns' 'lv2')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-install="$_pkgname.install"
 source=("$_pkgname::git+https://github.com/pantherb/setBfree.git"
         'x42-whirl.desktop')
 md5sums=('SKIP'
@@ -22,7 +20,8 @@ md5sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  git describe --tags | sed -r 's/^v//;s/-/./g'
+  local ver="$(grep EXPORTED_VERSION= Makefile | cut -f 2 -d =)"
+  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
