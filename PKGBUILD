@@ -1,15 +1,15 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=rtichoke
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A 21 century R console"
 url="https://github.com/randy3k/rtichoke"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('r>=3.4.0' 'python-pygments' 'python-wcwidth')
+depends=('r>=3.4.0' 'python-lineedit' 'python-rapi')
 makedepends=('python-setuptools')
-source=("https://github.com/randy3k/rtichoke/archive/v0.1.1.tar.gz")
-md5sums=('e47995fe5df5440b9b63be00f64bebf6')
+source=("https://github.com/randy3k/rtichoke/archive/v$pkgver.tar.gz")
+sha256sums=('d642c4cd6bd486d499048c5f327221e1beb30d41394057069ae46bc58cd50a57')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -19,9 +19,4 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
-
-#  pydir=$(python -c "from distutils.sysconfig import get_python_lib; \
-#    print(get_python_lib())")
-#  install -m755 "$srcdir"/llvmlite-$pkgver/ffi/libllvmlite.so \
-#    "$pkgdir/$pydir"/llvmlite/binding
 }
