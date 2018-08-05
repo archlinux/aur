@@ -1,8 +1,9 @@
 # Maintainer: Robert Hawdon <aur at robertianhawdon dot me dot uk>
 
-pkgname=dfshow-git
+_pkgname=dfshow
+pkgname=${_pkgname}-git
 pkgver=20180805
-pkgrel=2
+pkgrel=3
 pkgdesc="An interactive directory/file browser written for Unix-like systems."
 arch=('i686' 'x86_64' 'arm')
 url="https://github.com/roberthawdon/dfshow"
@@ -10,7 +11,7 @@ license=('GPL3')
 depends=('ncurses')
 makedepends=('git' 'autoconf' 'automake')
 source=('git+https://github.com/roberthawdon/dfshow')
-md5sums=('SKIP')
+sha1sums=('SKIP')
 options=('!buildflags' '!makeflags')
 
 pkgver() {
