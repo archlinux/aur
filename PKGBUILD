@@ -1,15 +1,15 @@
 # Maintainer: Loic Blot <https://www.unix-experience.fr>
 pkgname=luasandbox-extensions
-pkgver=2017.06.11
-pkgrel=4
+pkgver=2018.06.01
+pkgrel=1
 pkgdesc="Extension packages (sandboxes and modules) for the lua_sandbox project"
-_pkgver="sprint_May29_Jun11"
+_pkgver="sprint2018-6"
 source=("https://github.com/mozilla-services/lua_sandbox_extensions/archive/${_pkgver}.tar.gz")
-sha256sums=('2ddd1015ca828c6e771a0100cf03aa7bc887674dd2d532113fcf0003ef216df5')
+sha256sums=('a4122ae9244c213f7324645ad0b4f15d18423c0960dc86deb032c03f237f570d')
 arch=('i686' 'x86_64')
 license=('MPL')
 makedepends=('cmake' 'parquet-cpp')
-depends=("libluasandbox" "parquet-cpp")
+depends=("libluasandbox>=1.3.0" "parquet-cpp")
 
 _buildroot="release"
 build() {
