@@ -4,7 +4,7 @@ _name=alice-vision
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 _fragment="#branch=develop"
 pkgname=${_name}
-pkgver=1.0.r669.g610d1004
+pkgver=1.0.r692.gf57dfb28
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
@@ -17,17 +17,11 @@ source=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragme
         "osi_clp::git+https://github.com/alicevision/osi_clp.git"
         "ute_lib::git+https://github.com/alicevision/uncertaintyTE.git"
         "geogram::git+https://github.com/alicevision/geogram.git"
-        "cmake_magma.patch"
-        "missing_define.patch"
-        "cmake_ute.patch"
         )
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
-         '470da1a79a22ffea8d2c0b6a34abc9e9'
-         'ade01150d6237a52bd62b61ae792398d'
-         '15a8861c625d80b274282df9791b57a9')
+         'SKIP')
 
 _CMAKE_FLAGS=(
               -DCMAKE_INSTALL_PREFIX=/usr
@@ -54,9 +48,6 @@ prepare() {
   git submodule init
   git config submodule.src/dependencies/osi_clp.url ${srcdir}/osi_clp
   git submodule update
-  git apply ../cmake_magma.patch
-  git apply ../missing_define.patch
-  git apply ../cmake_ute.patch
 }
 
 
