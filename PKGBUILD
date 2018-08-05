@@ -23,21 +23,19 @@ pkgbase=linux-xanmod
 _srcname=linux
 pkgver=4.17.12
 xanmod=8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
-# Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=28e47b8d0cc6511cc8a1022c3592c1269374eb2a
-
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        60-linux.hook  # pacman hook for depmod
        90-linux.hook  # pacman hook for initramfs regeneration
        ${pkgbase}.preset   # standard config files for mkinitcpio ramdisk
        choose-gcc-optimization.sh
+       patches-from-archlinux-stable-git.patch
 )
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
@@ -45,7 +43,8 @@ sha256sums=('230c57bfcb499c09eed9b76b18988dc6a3fdc75c88fbaefdcc13d84feedc14f0'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5')
+            'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
+            '7c4e8370709145c3145c7772033920bbdee151f04038de6f0f936e99ca290eed')
 sha256sums_x86_64=('f8e890eac9779a89009c1e2339f757e9781864df09805211fad005146fe2578b')
 
 _kernelname=${pkgbase#linux}
@@ -63,6 +62,9 @@ prepare() {
   sleep 2
   warning "To change this modify _configuration variable in PKGBUILD"
 
+  # Archlinux patches
+  patch -Np1 -i ../patches-from-archlinux-stable-git.patch
+
   if [ "${_kernelname}" != "" ]; then
     #sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
@@ -70,12 +72,6 @@ prepare() {
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   sed -i "s|# CONFIG_STACK_VALIDATION.*|CONFIG_STACK_VALIDATION=y|" ./.config
-
-  # Archlinux patches
-  # [0] disable USER_NS for non-root users by default
-  # [1] https://bugs.archlinux.org/task/56575
-  # [2] https://nvd.nist.gov/vuln/detail/CVE-2017-8824
-  for n in ${arch_patches[@]} ; do patch -Np1 -i ../$n ; done
 
   # Enable IKCONFIG following Arch's philosophy
   sed -i "s|# CONFIG_IKCONFIG.*|CONFIG_IKCONFIG=y\nCONFIG_IKCONFIG_PROC=y|" ./.config
