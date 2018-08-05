@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=upterm
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('apm' 'git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'upterm.desktop'
         'upterm.js')
-sha256sums=('ccba17096f32accfd656827f1fac1a3e35639f3161265dc17cfd8b7408b88258'
+sha256sums=('4df53fbeffa01881cee9a4ec5379d02469fa9a01f93e1880927bb86724293aed'
             '2d55728dcd4f0b25195474d8676f8994c266f24e8e928ddbb9ff86959c3ac96f'
             '5522f5f78c0686d5e419661f4264e2d2f5f0856582f1494010e457c150f67910')
 
