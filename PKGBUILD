@@ -24,7 +24,7 @@ source=("pcl-${pkgver}.tar.gz"::"https://github.com/PointCloudLibrary/pcl/archiv
         "https://github.com/PointCloudLibrary/pcl/commit/b588c546e8e78bfdd238f0f943236257549107dd.patch")
 sha256sums=('5a102a2fbe2ba77c775bf92c4a5d2e3d8170be53a68c3a76cfc72434ff7b9783' 
             '6d48d5665e393c8f5ef3d8f2ead0c903a5cb63dff0c9aed32975bfb96ab843f2'
-            '6740f62c0448c321f35b36188b410d386664f5b1bb379af242370f1bebb8923d'
+            '501c8da24841eeb6cdf84805841a751b162f7c94b6afe2513a636320e83dd5b7'
             '78610e04b7119a23b8841c656caaa41a28ab26d4820ee1f9616d7abf107fde9f')
 
 prepare() {
