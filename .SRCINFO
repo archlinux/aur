@@ -1,14 +1,14 @@
 pkgbase = hindsight
 	pkgdesc = Hindsight - light weight data processing skeleton
-	pkgver = 0.14.2
+	pkgver = 0.15.0
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	license = MPL
 	makedepends = cmake
 	depends = libluasandbox
-	source = https://github.com/mozilla-services/hindsight/archive/v0.14.2.tar.gz
-	sha256sums = 439d0e7b6adcc74ef50d73e31daa5bb802bbeacd0770daada32f0a5af00f15c0
+	source = https://github.com/mozilla-services/hindsight/archive/v0.15.0.tar.gz
+	sha256sums = 5887a9404400cc7cc90a4d89b1936789117c935104be4169873b95b291a1f030
 
 pkgname = hindsight
 

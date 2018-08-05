@@ -1,14 +1,14 @@
 # Maintainer: Loic Blot <https://www.unix-experience.fr>
 pkgname=hindsight
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Hindsight - light weight data processing skeleton"
 source=("https://github.com/mozilla-services/hindsight/archive/v$pkgver.tar.gz")
-sha256sums=('439d0e7b6adcc74ef50d73e31daa5bb802bbeacd0770daada32f0a5af00f15c0')
+sha256sums=('5887a9404400cc7cc90a4d89b1936789117c935104be4169873b95b291a1f030')
 arch=('i686' 'x86_64')
 license=('MPL')
 makedepends=('cmake')
-depends=("libluasandbox")
+depends=("libluasandbox>=1.3.0")
 
 _buildroot="release"
 build() {
