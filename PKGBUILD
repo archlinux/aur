@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=rabs
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Generic imperative build system"
 arch=('x86_64' 'i686')
@@ -45,5 +45,5 @@ check() {
 
 package() {
 	cd "$pkgname"
-	make PREFIX="$pkgdir/" install
+	make PREFIX="$pkgdir/usr" install
 }

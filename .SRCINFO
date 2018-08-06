@@ -1,7 +1,7 @@
 pkgbase = rabs
 	pkgdesc = Generic imperative build system
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	license = MIT
