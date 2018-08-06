@@ -1,7 +1,7 @@
 # Maintainer: Bryce Chidester <bryce@cobryce.com>
 pkgname=purple-matrix-git
-pkgver=r113.aa005c1
-pkgrel=1
+pkgver=r182.5a7166a
+pkgrel=0
 pkgdesc="Libpurple protocol plugin for matrix."
 arch=('any')
 url="https://github.com/matrix-org/purple-matrix"
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make
+	make MATRIX_NO_E2E=1
 }
 
 
