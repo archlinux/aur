@@ -1,0 +1,27 @@
+pkgbase = dunst-notif-log-git
+	pkgdesc = Dunst with notification logging.
+	pkgver = 1.3.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	makedepends = perl
+	depends = libxinerama
+	depends = libxss
+	depends = pango
+	depends = libnotify
+	depends = gdk-pixbuf2
+	depends = libxdg-basedir
+	depends = libxrandr
+	provides = dunst
+	provides = notification-daemon
+	provides = dunstify
+	conflicts = dunst
+	conflicts = dunstify
+	source = git+https://github.com/paddim8/dunst-pl
+	md5sums = SKIP
+
+pkgname = dunst-notif-log-git
+
