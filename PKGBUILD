@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wireguard-module-git
-pkgver=0.0.20180718.r4.g4cce152
+pkgver=0.0.20180802.r2.gfccd1b0
 pkgrel=1
 pkgdesc="Fast, modern, secure VPN tunnel (kernel module)"
 arch=('i686' 'x86_64')
@@ -30,9 +30,6 @@ build() {
 package() {
   cd "WireGuard/src"
 
-  _kernver=$(pacman -Q linux-headers | grep -Po '(?<= )\d+\.\d+')
-  _extramodules="/usr/lib/modules/extramodules-$_kernver-ARCH"
-
   find './' -name '*.ko' -exec xz -0 --force {} \;
-  install -Dm644 'wireguard.ko.xz' "$pkgdir/$_extramodules/wireguard.ko.xz"
+  install -Dm644 'wireguard.ko.xz' "$pkgdir/usr/lib/modules/extramodules-ARCH/wireguard.ko.xz"
 }
