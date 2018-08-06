@@ -30,7 +30,7 @@ _use_KSM="no"		# "yes":	Enable Kernel SamePage Merging (KSM).
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.17
-_minor=11
+_minor=12
 pkgver=${__basekernel}.${_minor}
 pkgrel=1
 lqxrel=1
@@ -64,7 +64,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.
 
 sha512sums=('4d9de340a26155a89ea8773131c76220cc2057f2b5d031b467b60e8b14c1842518e2d60a863d8c695f0f7640f3f18d43826201984a238dade857b6cef79837db'
             'SKIP'
-            '392ed82cb7d45703f473437ac3190714e303451d6d7e0e29fbe7dd5a328fab058352ba64f0e26e959e419d59596c26fada6a9e030625bbd94f63235fb8659a2f'
+            '8da59aedceb02fa9e717d28dfb9aa64861ee6a5bbe9b893dc99e2e1ed64225703fd1bf6ef363ee35821563363165417f306998635bf2c92f1c3bd58d0d416e96'
             '1bd5b8c37a4cb98e9712e739264f0adf3971b8172712807f4852044cbe9b044b1700d3b8d11551a9923a7aa4328114206c6fc6929d25b1047ba59b9ca5f06876'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
