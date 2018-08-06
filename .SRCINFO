@@ -5,7 +5,6 @@ pkgbase = wsjtx-bin-rpm
 	url = https://physics.princeton.edu/pulsar/k1jt/wsjtx.html
 	arch = x86_64
 	license = GPL-3
-	makedepends = rpmextract
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-serialport
