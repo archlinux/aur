@@ -3,7 +3,7 @@
 _pkgname=tootstream
 pkgname=tootstream-git
 pkgver=0.3.4.r3.gfef1e72
-pkgrel=3
+pkgrel=4
 pkgdesc='Text interface for the Mastodon social network'
 provides=('tootstream')
 conflicts=('tootstream')
@@ -31,6 +31,7 @@ pkgver()
 build()
 {
   cd "${srcdir}/${_pkgname}"
+  sed -i 's/async=True/run_async=True/' src/tootstream/toot.py
   python ./setup.py build
 }
 
