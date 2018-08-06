@@ -1,7 +1,7 @@
 pkgbase = snap-pac-grub
 	pkgdesc = Pacman hook to update GRUB entries for grub-btrfs after snap-pac made snapshots
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	depends = snap-pac
@@ -11,7 +11,7 @@ pkgbase = snap-pac-grub
 	source = grub-mkconfig
 	source = grub-mkconfig.sig
 	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
-	sha256sums = f3ba22ca35d3ee1d6a5ac1ef4211b9baf831dba0b91033f5cff9adac07fb2f4d
+	sha256sums = 1c4e27cc081d1cf9267ab3cecdddbab1cf596e0a3f73b7d5a3e8ab70845e071d
 	sha256sums = SKIP
 	sha256sums = 95b80a8e75cfcb204a0f21e43ee1fd292e74511ae27b99d5b453a7f5b061ca4b
 	sha256sums = SKIP

@@ -9,4 +9,4 @@ Target = *
 Description = Generate GRUB config to let grub-btrfs detect new snapshots
 Depends = grub
 When = PostTransaction
-Exec = /usr/share/libalpm/hooks.bin/snap-pac-grub/grub-mkconfig
+Exec = /usr/share/libalpm/scripts/grub-mkconfig
