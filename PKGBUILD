@@ -1,15 +1,16 @@
-# Maintainer: Johan Reitan (venatux) <johan.reitan@gmail.com>
-# Contributer: Kenneth Lyons (ixjlyons) <ixjlyons@gmail.com>
+# Contributor: Lucki <https://aur.archlinux.org/account/Lucki/>
+# Contributor: Johan Reitan (venatux) <johan.reitan@gmail.com>
+# Contributor: Kenneth Lyons (ixjlyons) <ixjlyons@gmail.com>
 
 pkgname=python-poppler-qt5
 pkgver=0.24.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Python binding to libpoppler-qt5.'
 arch=('any')
 url='https://github.com/wbsoft/python-poppler-qt5'
 license=('LGPL')
 depends=('python-pyqt5' 'poppler-qt5')
-makedepends=('python-sip')
+makedepends=('python-sip' 'sip')
 provides=('python-poppler-qt5')
 conflicts=('python-poppler-qt5')
 source=(https://github.com/wbsoft/python-poppler-qt5/archive/v${pkgver}.tar.gz
