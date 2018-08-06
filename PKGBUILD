@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dash-git
-pkgver=0.5.9.1.r0.gafe0e01
+pkgver=0.5.10.2.r18.g03cbaba
 pkgrel=1
 pkgdesc="A POSIX compliant shell that aims to be as small as possible"
 arch=('i686' 'x86_64')

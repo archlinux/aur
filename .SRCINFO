@@ -1,6 +1,6 @@
 pkgbase = dash-git
 	pkgdesc = A POSIX compliant shell that aims to be as small as possible
-	pkgver = 0.5.9.1.r0.gafe0e01
+	pkgver = 0.5.10.2.r18.g03cbaba
 	pkgrel = 1
 	url = http://gondor.apana.org.au/~herbert/dash/
 	install = dash.install
