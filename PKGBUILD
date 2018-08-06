@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@pm.me>
 
 pkgname=mingw-w64-fmt-git
-pkgver=5.1.0.r36.g0c63d15
+pkgver=5.1.0.r38.g4061a0d
 pkgrel=1
 pkgdesc='An open-source formatting library for C++ (mingw-w64)'
 url='http://fmtlib.net'
