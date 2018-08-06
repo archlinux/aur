@@ -1,7 +1,7 @@
 # Maintainer: Arvedui <arvedui@posteo.de>
 pkgname=radicale-imap-git
 pkgver=r1.04c9baf
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP auth for radicale"
 arch=("any")
 url="https://github.com/Unrud/RadicaleIMAP"
