@@ -1,18 +1,18 @@
-# Maintainer: Fabio Loli <loli_fabio@protonmail.com> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=libav-no-libs
-pkgver=12.2
+pkgver=12.3
 pkgrel=1
 pkgdesc="Open source audio and video processing tools forked from ffmpeg"
 arch=('i686' 'x86_64')
-url="http://www.libav.org/"
+url="https://www.libav.org/"
 license=('LGPL')
 depends=('sdl' 'ffmpeg')
 makedepends=('yasm')
 provides=('libav-no-libs')
 conflicts=('libav' 'libav-no-libs' 'libav-no-libs-git' 'libav-git-no-libs')
 source=("http://libav.org/releases/libav-$pkgver.tar.xz")
-md5sums=('69b5d9de6e4b2fbf6956653f61c7ffe1')
+md5sums=('753ec26481b0582eb737383bd8a350a5')
 
 build() {
   cd "$srcdir/libav-$pkgver"

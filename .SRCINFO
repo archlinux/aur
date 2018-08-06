@@ -1,8 +1,8 @@
 pkgbase = libav-no-libs
 	pkgdesc = Open source audio and video processing tools forked from ffmpeg
-	pkgver = 12.2
+	pkgver = 12.3
 	pkgrel = 1
-	url = http://www.libav.org/
+	url = https://www.libav.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -14,8 +14,8 @@ pkgbase = libav-no-libs
 	conflicts = libav-no-libs
 	conflicts = libav-no-libs-git
 	conflicts = libav-git-no-libs
-	source = http://libav.org/releases/libav-12.2.tar.xz
-	md5sums = 69b5d9de6e4b2fbf6956653f61c7ffe1
+	source = http://libav.org/releases/libav-12.3.tar.xz
+	md5sums = 753ec26481b0582eb737383bd8a350a5
 
 pkgname = libav-no-libs
 
