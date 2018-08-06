@@ -22,12 +22,11 @@ source=(
   "$pkgname-${pkgver/_/-}.tar.gz::https://github.com/Audiveris/$pkgname/archive/${pkgver/_/-}.tar.gz"
   "$pkgname"
 )
-sha256sums=(
-  '1ea51e880c1bb867708ac917801056dd25686389d354d4683eb7ee972811ee1d'
-  '1c0ee49fc9ba9aa5d3dc260e649f0914d68ed8b18b40af2326763842e8d5ff46'
-)
+sha256sums=('1ea51e880c1bb867708ac917801056dd25686389d354d4683eb7ee972811ee1d'
+            '12223d402f4f6719051df7ab4776a82c7326c41f49403d4d1868c5b041678743')
 
 prepare() {
+  msg2 'Replacing git commit request with static commit hash'
   sed -i "s/git rev-parse --short HEAD/echo '0bf68268962228f6993c52e77349fc44e7c17162'/g" "$srcdir/$pkgname-${pkgver/_/-}/build.gradle"
 }
 
@@ -37,16 +36,16 @@ build() {
 }
 
 package() {
-  # extract libraries
+  msg2 'Extracting libraries'
   install -dm755 "$pkgdir/usr/share/java/$pkgname"
   bsdtar -C "$pkgdir/usr/share/java/$pkgname" --strip-components=2 \
     -xf "$srcdir/$pkgname-${pkgver/_/-}/build/distributions/Audiveris.tar" \
     Audiveris/lib/*
   
-  # start script
+  msg2 'Creating starter script'
   install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-  # Javadoc
+  msg2 'Installing JavaDoc'
   install -dm755 "$pkgdir/usr/share/doc"
   cp -r "$srcdir/$pkgname-${pkgver/_/-}/build/docs/javadoc" "$pkgdir/usr/share/doc/$pkgname"
 }

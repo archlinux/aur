@@ -15,7 +15,7 @@ pkgbase = audiveris
 	source = audiveris-5.1.0-rc.tar.gz::https://github.com/Audiveris/audiveris/archive/5.1.0-rc.tar.gz
 	source = audiveris
 	sha256sums = 1ea51e880c1bb867708ac917801056dd25686389d354d4683eb7ee972811ee1d
-	sha256sums = 1c0ee49fc9ba9aa5d3dc260e649f0914d68ed8b18b40af2326763842e8d5ff46
+	sha256sums = 12223d402f4f6719051df7ab4776a82c7326c41f49403d4d1868c5b041678743
 
 pkgname = audiveris
 
