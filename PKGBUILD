@@ -2,7 +2,7 @@
 
 pkgname=python-cothority
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 arch=(any)
 
 pkgdesc='Scalable collective authority prototype'
