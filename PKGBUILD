@@ -3,9 +3,9 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-arena
-pkgver=2.3.13
+pkgver=2.3.14
 pkgrel=1
-arch=("x86_64")
+arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
 license=("GPL")
@@ -23,6 +23,9 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
+
+# Check the ImageMagick version
+_IM_VERSION=$(echo `identify -version` | tr -dc '0-9' | cut -c 1)
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -45,7 +48,7 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
   make CONFIG=release \
-       IM=7
+       IM=$_IM_VERSION
 }
 
 package() {
@@ -53,6 +56,6 @@ package() {
   mkdir -p "$pkgdir/usr/OFX/Plugins"
   make install PLUGINPATH=$pkgdir/usr/OFX/Plugins \
                CONFIG=release \
-               IM=7
+               IM=$_IM_VERSION
 }
 
