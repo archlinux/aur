@@ -1,7 +1,7 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=peat
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Repeat commands!"
 arch=('any')
 url="https://github.com/sjl/peat"
