@@ -16,7 +16,9 @@ depends=('python-cryptography'
 optdepends=("gnupg: pgp signing/verification")
 makedepends=('python' 'python-setuptools' 'git')
 checkdepends=('python-mock')
-source=("git+https://github.com/${pkgname}/${pkgname}.git#tag=${pkgver}")
+source=("git+https://github.com/${pkgname}/${pkgname}.git?signed#tag=${pkgver}")
+
+sha256sums=('SKIP')
 
 validpgpkeys=("903BAB73640EB6D65533EFF3468F122CE8162295"
     # Santiago Torres-Arias (upstream co-maintainer)

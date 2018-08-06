@@ -5,8 +5,10 @@ pkgbase = in-toto
 	url = https://in-toto.io
 	arch = any
 	license = MIT
+	checkdepends = python-mock
 	makedepends = python
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-cryptography
 	depends = python-securesystemslib>=0.10.9
 	depends = python-iso8601
@@ -14,16 +16,10 @@ pkgbase = in-toto
 	depends = python-dateutil
 	depends = python-six
 	optdepends = gnupg: pgp signing/verification
-	source = https://github.com/in-toto/in-toto/releases/download/0.2.2/in-toto-0.2.2.tar.gz
-	source = https://github.com/in-toto/in-toto/releases/download/0.2.2/in-toto-0.2.2.tar.gz.asc
+	source = git+https://github.com/in-toto/in-toto.git?signed#tag=0.2.2
 	validpgpkeys = 903BAB73640EB6D65533EFF3468F122CE8162295
 	validpgpkeys = 8BA69B87D43BE294F23E812089A2AD3C07D962E8
-	md5sums = c4326adb0abf531c7908995c24e13295
-	md5sums = SKIP
-	sha256sums = 9ff9c9ef9471576e1eeefd14e410f054afce9ee6df3727000ae1d68142a26c83
 	sha256sums = SKIP
-	sha512sums = 7614577830c2dfb1db6c13a98f7b4f75d2900ea7047127df01077b0a14c76385c43c2e321554497be9960f7a09bcd9fd8c42de3d5846f40de60ab357925b4aaa
-	sha512sums = SKIP
 
 pkgname = in-toto
 
