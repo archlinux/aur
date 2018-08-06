@@ -3,7 +3,7 @@
 pkgname=system-storage-manager
 _pkgver=1.0
 pkgver=v$_pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc='A single tool to manage your storage'
 arch=('i686' 'x86_64')
 url='https://github.com/system-storage-manager/ssm'

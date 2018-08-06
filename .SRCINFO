@@ -1,7 +1,7 @@
 pkgbase = system-storage-manager
 	pkgdesc = A single tool to manage your storage
 	pkgver = v1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/system-storage-manager/ssm
 	arch = i686
 	arch = x86_64
