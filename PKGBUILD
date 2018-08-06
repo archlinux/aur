@@ -1,7 +1,7 @@
-# Maintainer: Your Name <rajamukherji@gmail.com>
+# Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=rabs
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Generic imperative build system"
 arch=('x86_64' 'i686')
