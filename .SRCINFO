@@ -1,0 +1,20 @@
+pkgbase = creepminer
+	pkgdesc = Burstcoin C++ CPU and GPU Miner
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://github.com/Creepsky/creepMiner
+	install = creepminer.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = xdg-utils
+	depends = openssl-1.0
+	options = strip
+	options = !emptydirs
+	source = https://github.com/Creepsky/creepMiner/releases/download/1.8.3/creepMiner-1.8.3.0-Linux.tar.gz
+	source = creepminer.service
+	sha256sums = 10aef439d282f301a6210a24833ab3f7831f5aba73bb66e11c53eaaf538a46d2
+	sha256sums = 88c88b2bbe1f065c5b905ad9158579ccd8b98aa9b5b6950aaac6f2c4759256ae
+
+pkgname = creepminer
+

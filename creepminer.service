@@ -1,0 +1,14 @@
+[Unit]
+Description=creepMiner
+After=network.target
+
+[Service]
+Type=simple
+Environment=LD_LIBRARY_PATH=$LD_LIBRARY_PATH:lib:/usr/local/lib:$(pwd):$(pwd)/../lib
+Environment=LC_ALL="en_US.UTF-8"
+WorkingDirectory=/opt/creepminer
+ExecStart=/opt/creepminer/creepminer
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

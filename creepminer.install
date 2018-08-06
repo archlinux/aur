@@ -1,0 +1,14 @@
+post_install() {
+  echo "+-------------------------------------------------------------------------------------+"
+  echo "| systemctl --user enable creepminer.service - for autostart when system loads        |"
+  echo "| systemctl --user start creepminer.service - start miner                             |"
+  echo "|                                                                                     |"
+  echo "| Configs located here: ~/.creepMiner/ for each version a new directory               |"
+  echo "|                                                                                     |"
+  echo "| http://127.0.0.1:8124                                                               |"
+  echo "+-------------------------------------------------------------------------------------+"
+}
+
+post_upgrade() {
+  post_install
+}
