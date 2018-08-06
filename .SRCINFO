@@ -1,7 +1,7 @@
 pkgbase = trojan-git
 	pkgdesc = An unidentifiable mechanism that helps you bypass GFW
 	pkgver = r243.0ed7507
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trojan-gfw/trojan
 	arch = x86_64
 	license = GPL3
@@ -14,6 +14,7 @@ pkgbase = trojan-git
 	makedepends = openssl
 	makedepends = libmariadbclient
 	depends = boost-libs
+	depends = openssl
 	depends = libmariadbclient
 	optdepends = ca-certificates: server certificate verification
 	optdepends = mariadb: advanced user management
