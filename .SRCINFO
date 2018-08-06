@@ -1,18 +1,17 @@
 pkgbase = wewechat
 	pkgdesc = Unofficial WeChat client built with React, MobX and Electron.
-	pkgver = 1.1.5
-	pkgrel = 2
+	pkgver = 1.1.7
+	pkgrel = 1
 	url = https://github.com/trazyn/weweChat
 	arch = x86_64
 	license = MIT
-	depends = libappindicator-gtk2
 	depends = gconf
-	depends = libindicator-gtk2
+	depends = libappindicator-gtk2
 	depends = libnotify
 	depends = libxss
 	depends = libxtst
-	source = https://github.com/trazyn/weweChat/releases/download/v1.1.5/wewechat-1.1.5-linux-x86_64.rpm
-	sha1sums = 0b5860e739c5233a2c5698344809313d78725a5a
+	source = https://github.com/trazyn/weweChat/releases/download/v1.1.7/wewechat-1.1.7-linux-x86_64.rpm
+	sha1sums = e3f199164d49944ff09793055dae6bcec903a997
 
 pkgname = wewechat
 
