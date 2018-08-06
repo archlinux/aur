@@ -5,7 +5,7 @@
 
 _pkgbasename=libpcap
 pkgname=lib32-libpcap
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A system-independent interface for user-level packet capture (32-bit)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('lib32-glibc' 'lib32-libnl' 'lib32-libusb' 'sh' "${_pkgbasename}")
 makedepends=('flex')
 source=("http://www.tcpdump.org/release/libpcap-${pkgver}.tar.gz"{,.sig})
-sha256sums=('673dbc69fdc3f5a86fb5759ab19899039a8e5e6c631749e48dcd9c6f0c83541e'
+sha256sums=('2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019'
             'SKIP')
 validpgpkeys=(1F166A5742ABB9E0249A8D30E089DEF1D9C15D0D)
 
