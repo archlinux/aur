@@ -1,12 +1,12 @@
 pkgname=slurp-git
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Select a region in a Wayland compositor'
 arch=('x86_64')
 url='https://github.com/emersion/slurp'
 license=('MIT')
 depends=('cairo' 'wayland')
-makedepends=('git' 'meson' 'scdoc' 'wayland-protcols')
+makedepends=('git' 'meson' 'scdoc' 'wayland-protocols')
 provides=('slurp')
 conflicts=('slurp')
 source=('git://github.com/emersion/slurp')
