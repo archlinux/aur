@@ -1,15 +1,15 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=cronwhip
 pkgver=2015
-pkgrel=3
+pkgrel=5
 pkgdesc='Run missed cronjobs.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/cronwhip"
+url="https://xyne.archlinux.ca/projects/cronwhip"
 depends=(python3 sysvinit-tools)
 source=(
-  http://xyne.archlinux.ca/projects/cronwhip/src/cronwhip-2015.tar.xz
-  http://xyne.archlinux.ca/projects/cronwhip/src/cronwhip-2015.tar.xz.sig
+  https://xyne.archlinux.ca/projects/cronwhip/src/cronwhip-2015.tar.xz
+  https://xyne.archlinux.ca/projects/cronwhip/src/cronwhip-2015.tar.xz.sig
 )
 sha512sums=(
   b6650373d47207e7bee854aa05141b99b593b8575c4291ff5a9aaca0d9225589303ebcd7096bf7e8d608d1a809bfa822ea30671d68eaf9aa8b89a8824ec3884f
