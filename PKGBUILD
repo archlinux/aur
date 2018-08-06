@@ -1,17 +1,19 @@
 # Maintainer: emersion <contact emersion fr>
 pkgname=grim-git
 _pkgname=grim
-pkgver=r13.9853771
+pkgver=r37.1d6c877
 pkgrel=1
 license=('MIT')
 pkgdesc='Grab images from a Wayland compositor'
-makedepends=("meson" "scdoc")
+makedepends=("meson" "scdoc" "git")
 depends=(
 	"pango"
 	"wayland"
+	"wayland-protocols"
+	"libjpeg-turbo"
 )
 arch=("i686" "x86_64")
-url='http://github.com/grim'
+url='http://github.com/emersion/grim'
 source=("${pkgname%-*}::git+https://github.com/emersion/grim.git")
 sha1sums=('SKIP')
 provides=('grim')
