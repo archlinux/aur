@@ -1,0 +1,12 @@
+diff --git a/fftadapter.cpp b/fftadapter.cpp
+index 57e8197..3fb8d86 100644
+--- a/fftadapter.cpp
++++ b/fftadapter.cpp
+@@ -23,6 +23,7 @@
+ 
+ // Included here to allow substitution of a separate implementation .cpp
+ #include <cmath>
++#include <cstring>
+ #include <fftw3.h>
+ 
+ namespace KeyFinder {
