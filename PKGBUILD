@@ -10,10 +10,8 @@ license=('GPL2' 'GPL3')
 url="https://salsa.debian.org/reproducible-builds/reprotest"
 depends=('python-setuptools' 'python' 'python-rstr' 'diffoscope' 'fakeroot' 'python-distro')
 optdepends=(
-    # to enable the shuffle-dirents option
-    'disorderfs'
-    # to show a progress bar during diffoscope
-    'python-progressbar')
+    'disorderfs: to enable the shuffle-dirents option'
+    'python-progressbar: to show a progress bar during diffoscope')
 source=(https://salsa.debian.org/reproducible-builds/reproducible-lfs/raw/master/releases/${pkgname}/${pkgname}_${pkgver}.tar.xz{,.asc})
 sha512sums=('2f3f6c609c18f184b5c1eacd820f439e10432b2bc31f275838b297ce4b90e2657d1d900486412847b5b7fb7ec1c85eb67c3b8f68518d2da9bfb78a53b08bfccc'
             'SKIP')
