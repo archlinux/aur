@@ -2,16 +2,14 @@
 
 _pkgname=OctoPrint
 pkgname=octoprint
-# c55c568bbddf5112facf6aa3a173d500936b6cbf
-pkgver=1.3.8
-pkgrel=8
+pkgver=1.3.9
+pkgrel=1
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(x86_64 armv6h armv7h)
 url="http://octoprint.org/"
 license=('AGPL3')
 depends=(
 		python2-argh
-		python2-babel
 		python2-backports.ssl_match_hostname
 		python2-blinker
 		python2-certifi
@@ -24,8 +22,11 @@ depends=(
 		python2-markdown
 		python2-markupsafe
 		python2-netaddr
+		'python2-netifaces>=0.10.6'
+		'python2-netifaces<0.11'
 		python2-pathtools
 		python2-pkginfo
+		python2-psutil
 		python2-pyasn1
 		python2-pyserial
 		python2-pytz
@@ -34,6 +35,7 @@ depends=(
 		python2-sarge
 		python2-six
 		python2-speaklater
+		python2-tornado
 		python2-urllib3
 		python2-watchdog
 		python2-wrapt
@@ -55,18 +57,13 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/foosel/$_pkgname/archive/$pk
 		octoprint.service
 		octoprint-serve
 		octoprint.conf
-
-		0010-pkginfo.patch
-		0020-click.patch
 		)
 
-sha256sums=('f447d2888004ff85971691a0e0f01d74dec6169b7ac599ec51bf44cfe42f2f92'
+sha256sums=('f3eaf15784e9eb6ae46266b06cbe09f7ff874fb1bf13b1dd2eaca070718e2a6e'
             'bd9b7f989aefb02da1ac414f306861f21f084d886f0283eea11516482b407d65'
             '231685e84b0241a466766c766f8d3ba31efda3238f19e9adedea380e7b861737'
             '08e6ff10fb7f61c40e5770b67e8f7201d02d82d3bd46c5441a7f2b0435fbe9c2'
-            '02be5d5a18febe215809882d96f068092c4474abb4e76d82e4450b860a4e9ef5'
-            '735644dcd6a26eb02cefe1727d41d91c4a1dcb53d0b8a1876fe3fa9abe04eba2'
-            'a3e7a9d816d16c878bb893c1c34815c1f2ecdb9c568a0ef3d8be7dfaa2d12cf2')
+            '02be5d5a18febe215809882d96f068092c4474abb4e76d82e4450b860a4e9ef5')
 
 prepare()
 {
