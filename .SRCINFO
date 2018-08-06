@@ -1,7 +1,7 @@
 pkgbase = relational
 	pkgdesc = Educational tool for relational algebra
 	pkgver = 2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ltworf.github.io/relational/
 	arch = any
 	license = GPL3
