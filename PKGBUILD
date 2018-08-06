@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=70.0.3510.2
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -159,9 +159,9 @@ sha256sums=('97af92b8e056d33c7cae6b1599f02477abaf93105571a5775a8b02588c415e92'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
-            '5530e0c60dcfed5d17c7877d3c717b2b9fb2679c59bfe29a3784dce8b7bdd54b'
+            'ad6f4efe8935234646c69c0b09e6b8549c763f9b7440192705d779dd21559dfd'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
-            '48a42d38899795d4e959c6ec27a5e2288a3db54d3abf99f9caae887402d53988'
+            'fa919283c5ae73baeaa8cb0286e64926cc938a436e756296614b747154c4a777'
             '5b2d18b5b45ffa5d45348a2d38db5c3aec1678d61832872ad8f872a31ba52fe0'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
@@ -214,7 +214,6 @@ sha256sums=('97af92b8e056d33c7cae6b1599f02477abaf93105571a5775a8b02588c415e92'
             '70f49d5b69641669c24d0532fb723b5ef1313a56224f41bf35bf6bb07fc93974'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
-
 
 
 
