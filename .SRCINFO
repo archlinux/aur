@@ -6,6 +6,7 @@ pkgbase = xwmfs
 	arch = x86_64
 	license = GPL2
 	depends = fuse
+	depends = libx11
 	source = git+https://github.com/gerstner-hub/xwmfs.git#tag=v0.82
 	sha256sums = SKIP
 

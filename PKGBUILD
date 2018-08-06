@@ -7,7 +7,7 @@ pkgdesc="X11 Window-Manager file system based on FUSE"
 arch=('x86_64')
 url="https://github.com/gerstner-hub/xwmfs"
 license=('GPL2')
-depends=('fuse')
+depends=('fuse' 'libx11')
 source=("git+https://github.com/gerstner-hub/xwmfs.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
