@@ -4,7 +4,7 @@
 
 pkgname=perl-text-csv-xs
 pkgver=1.36
-pkgrel=1
+pkgrel=2
 pkgdesc="comma-separated values manipulation routines"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
