@@ -2,7 +2,7 @@
 
 pkgname=searx-py3
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine (python3 based)"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
@@ -40,13 +40,13 @@ package() {
   # Generate a random secret key
   sed -i -e "s/ultrasecretkey\" # change this!/`openssl rand -hex 32`\"/g" searx/settings.yml
 
-  python3.6 setup.py install --root=$pkgdir --optimize=1
+  python3.7 setup.py install --root=$pkgdir --optimize=1
   
-  mv $pkgdir/usr/lib/python3.6/site-packages/{README.rst,requirements*,tests,searx}
+  mv $pkgdir/usr/lib/python3.7/site-packages/{README.rst,requirements*,tests,searx}
   
   mkdir -p $pkgdir/etc/searx
-  mv $pkgdir/usr/lib/python3.6/site-packages/searx/settings.yml $pkgdir/etc/searx/
-  ln -s /etc/searx/settings.yml $pkgdir/usr/lib/python3.6/site-packages/searx/settings.yml
+  mv $pkgdir/usr/lib/python3.7/site-packages/searx/settings.yml $pkgdir/etc/searx/
+  ln -s /etc/searx/settings.yml $pkgdir/usr/lib/python3.7/site-packages/searx/settings.yml
 
   install -Dm0644 ../searx.service $pkgdir/usr/lib/systemd/system/searx.service
 }
