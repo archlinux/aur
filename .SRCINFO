@@ -1,7 +1,7 @@
 pkgbase = python-asks
 	pkgdesc = asks - async http
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theelous3/asks
 	arch = any
 	license = MIT
