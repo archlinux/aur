@@ -1,0 +1,13 @@
+pkgbase = python-wtforms-test
+	pkgdesc = Unit test helpers for WTForms based forms
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://wtforms-test.readthedocs.io
+	arch = any
+	license = BSD
+	depends = python-wtforms
+	source = https://pypi.org/packages/source/W/WTForms-Test/WTForms-Test-0.1.1.tar.gz
+	sha256sums = 869ba4c1c334ff3bcf1e3260e8d547b77e8052f4c92f185d3b1e242ab376ef6f
+
+pkgname = python-wtforms-test
+
