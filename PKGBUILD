@@ -5,7 +5,7 @@
 
 _pkgname=plasma-nm
 pkgname=${_pkgname}-light
-pkgver=5.12.5
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='Plasma applet written in QML for managing network connections – lightweight version without modem and OpenConnect'
 arch=(x86_64)
@@ -20,8 +20,7 @@ groups=(plasma)
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("https://download.kde.org/stable/plasma/${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('46bbc3a63b1b1480325eada1ca115f16fee8d03930e92ea8e79947d65e6a96ab'
-            'SKIP')
+sha256sums=('3813e9b557a00352ec9c98d7ee69577913842291bd8b9807c944215e7faf4d61' 'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson

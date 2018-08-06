@@ -1,6 +1,6 @@
 pkgbase = plasma-nm-light
 	pkgdesc = Plasma applet written in QML for managing network connections – lightweight version without modem and OpenConnect
-	pkgver = 5.12.5
+	pkgver = 5.13.4
 	pkgrel = 1
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = x86_64
@@ -37,13 +37,13 @@ pkgbase = plasma-nm-light
 	depends = kdelibs4support
 	provides = plasma-nm
 	conflicts = plasma-nm
-	source = https://download.kde.org/stable/plasma/5.12.5/plasma-nm-5.12.5.tar.xz
-	source = https://download.kde.org/stable/plasma/5.12.5/plasma-nm-5.12.5.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/5.13.4/plasma-nm-5.13.4.tar.xz
+	source = https://download.kde.org/stable/plasma/5.13.4/plasma-nm-5.13.4.tar.xz.sig
 	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 46bbc3a63b1b1480325eada1ca115f16fee8d03930e92ea8e79947d65e6a96ab
+	sha256sums = 3813e9b557a00352ec9c98d7ee69577913842291bd8b9807c944215e7faf4d61
 	sha256sums = SKIP
 
 pkgname = plasma-nm-light
