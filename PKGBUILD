@@ -5,8 +5,8 @@
 # * Stephan Wienczny <stephan@wienczny.de>
 
 pkgname=dbeaver-ce
-pkgver=5.1.3
-pkgrel=2
+pkgver=5.1.4
+pkgrel=1
 pkgdesc="An universal database tool for developers and database administrators. Community Edition"
 arch=('i686' 'x86_64')
 url="https://github.com/dbeaver/dbeaver"
