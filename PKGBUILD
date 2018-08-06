@@ -1,6 +1,8 @@
+# Maintainer: Silvio Ankermann < silvio at booq dot org >
+
 pkgname=python-pydrive
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Drive API made easy.'
 url='https://pypi.python.org/pypi/PyDrive'
 license=('Apache')
