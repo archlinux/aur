@@ -12,7 +12,6 @@ pkgbase = ocaml-batteries
 	depends = ocaml-findlib>=1.5.3
 	depends = ocaml-num>=1.1
 	optdepends = ocaml-bisect
-	optdepends = qcheck
 	options = !strip
 	options = !makeflags
 	source = https://github.com/ocaml-batteries-team/batteries-included/archive/v2.8.0.tar.gz

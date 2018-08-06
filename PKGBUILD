@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 url="https://forge.ocamlcore.org/projects/batteries/"
 license=('LGPL')
 depends=('ocaml>=4.03' 'ocaml-findlib>=1.5.3' 'ocaml-num>=1.1')
-optdepends=('ocaml-bisect' 'qcheck')
+optdepends=('ocaml-bisect')
 makedepends=('ocamlbuild')
 install=ocaml-batteries.install
 source=("https://github.com/ocaml-batteries-team/batteries-included/archive/v${pkgver}.tar.gz")
