@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/gerstner-hub/xwmfs"
 license=('GPL2')
 depends=('fuse')
-source=("git+https://github.com/gerstner-hub/xwmfs.git#tag=v$pkgver")
+source=("git+https://github.com/gerstner-hub/xwmfs.git")
 sha256sums=('SKIP')
 
 pkgver() {
