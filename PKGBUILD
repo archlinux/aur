@@ -1,16 +1,16 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=mimeo
 pkgver=2017.6.6
-pkgrel=1
+pkgrel=3
 pkgdesc='Open files by MIME-type or file name using regular expressions.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/mimeo"
+url="https://xyne.archlinux.ca/projects/mimeo"
 depends=(file python-xdg python3)
 optdepends=('MIME-types: for recognizing more MIME-types')
 source=(
-  http://xyne.archlinux.ca/projects/mimeo/src/mimeo-2017.6.6.tar.xz
-  http://xyne.archlinux.ca/projects/mimeo/src/mimeo-2017.6.6.tar.xz.sig
+  https://xyne.archlinux.ca/projects/mimeo/src/mimeo-2017.6.6.tar.xz
+  https://xyne.archlinux.ca/projects/mimeo/src/mimeo-2017.6.6.tar.xz.sig
 )
 sha512sums=(
   16a379c45f3d56c9cb629e4950fa815242d4e7e5d9265573f808aa7e3199628807d50e7f3e485909d5705f59d436632229580f091d706ea9f436a643a4e1ec42
