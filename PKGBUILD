@@ -4,10 +4,10 @@
 pkgbase=kata-containers
 pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
 pkgver="1.1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers"
 arch=(x86_64)
-url="https://katacontainers.org"
+url="https://katacontainers.io"
 license=('Apache')
 
 __runtime_suffix="+git.bf1cf68-43.1"
