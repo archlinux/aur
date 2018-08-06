@@ -3,7 +3,7 @@
 pkgname=python-purplex
 _pkgname=purplex
 pkgver=0.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Pure Python lexer and parser implementation"
 arch=('any')
 url="https://github.com/mtomwing/purplex"
