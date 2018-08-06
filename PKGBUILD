@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=xandikos-git
-pkgver=0.0.6.r68.ge45de8b
+pkgver=0.0.9.r107.g92651fa
 pkgrel=1
 pkgdesc='Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository (Git version)'
 arch=('any')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd xandikos
-  git describe --long | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match v\* | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
