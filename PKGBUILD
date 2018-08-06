@@ -3,7 +3,7 @@
 # Contributor: Iven Hsu <ivenvd AT gmail>
 
 pkgname=compiz-bzr
-pkgver=4143
+pkgver=4182
 pkgrel=1
 _bzrname=compiz
 _bzrbranch=0.9.13
@@ -11,8 +11,8 @@ pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (development
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
 license=('GPL' 'LGPL' 'MIT')
-depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'metacity' 'glu' 'libsm' 'dconf')
-makedepends=('cmake' 'bzr' 'intltool')
+depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'metacity' 'glu' 'libsm' 'dconf' 'python2-gobject')
+makedepends=('cmake' 'bzr' 'intltool' 'cython2')
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
@@ -26,7 +26,7 @@ source=("${_bzrname}::bzr+http://bazaar.launchpad.net/~compiz-team/${_bzrname}/$
 sha256sums=('SKIP'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
-            '5da38bf4f7fd127a01ce9c68ab66d21fe69086228051073896d3d59c6bc400e8'
+            'fba56d3e5fc8d1b47be2b8eaa6d79f48635daccc26db9b0b88fa281cc50c635e'
             '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61')
 
 pkgver() {
@@ -49,6 +49,7 @@ prepare() {
   # Use Python 2
   find -type f \( -name 'CMakeLists.txt' -or -name '*.cmake' \) -exec sed -e 's/COMMAND python/COMMAND python2/g' -i {} \;
   find compizconfig/ccsm -type f -exec sed -e 's|^#!.*python|#!/usr/bin/env python2|g' -i {} \;
+  sed -i "s/find_program(CYTHON_BIN cython)/find_program(CYTHON_BIN cython2)/g" compizconfig/compizconfig-python/CMakeLists.txt
 
   # Fix incorrect extents for GTK+ tooltips, csd etc
   patch -p1 -i "${srcdir}/gtk-extents.patch"
