@@ -1,7 +1,7 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=checkoutmanager
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Gives you overview and control over your git/hg/bzr/svn checkouts/clones"
 arch=('any')
 url="https://pypi.python.org/pypi/checkoutmanager"
