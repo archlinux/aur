@@ -1,5 +1,5 @@
 pkgbase = scannerl-git
-	pkgdesc = Save your dotfiles once, deploy them everywhere
+	pkgdesc = The modular distributed fingerprinting engine
 	pkgver = 0.38.r0.gc5b1b15
 	pkgrel = 1
 	url = https://github.com/kudelskisecurity/scannerl
