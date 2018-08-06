@@ -2,7 +2,7 @@
 pkgname=('python-fastparquet')
 _module='fastparquet'
 pkgver='0.1.5'
-pkgrel=1
+pkgrel=2
 pkgdesc="A python implementation of the parquet format."
 url="https://github.com/dask/fastparquet"
 checkdepends=('python-pytest'
