@@ -9,7 +9,7 @@
 
 pkgname=ocaml-batteries
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive standard library for OCaml"
 arch=('i686' 'x86_64')
 url="https://forge.ocamlcore.org/projects/batteries/"
