@@ -1,0 +1,27 @@
+pkgbase = rebuild-detector
+	pkgdesc = Pacman hook to automatically detect which packages need to be rebuilt
+	pkgver = 1.0.0
+	pkgrel = 1
+	install = rebuild-detector.install
+	arch = any
+	license = MIT
+	source = rebuild-detector
+	source = rebuild-detector.sig
+	source = rebuild-detector.hook
+	source = rebuild-detector.hook.sig
+	source = rebuild-detector-cleanup
+	source = rebuild-detector-cleanup.sig
+	source = rebuild-detector-cleanup.hook
+	source = rebuild-detector-cleanup.hook.sig
+	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
+	sha256sums = c77f55f6d84a9754e744a547fd64ee1b15906fb45afd127613dddc41a9760547
+	sha256sums = SKIP
+	sha256sums = 85117be08f7c904805de0b58722532caa55dfc2cb31f118d509871f3d40b96ec
+	sha256sums = SKIP
+	sha256sums = 9d5be08cd837a4e6445b1880119896f82596be2bd53cf24b525abab3b90079d0
+	sha256sums = SKIP
+	sha256sums = 5609c9c0812412cee629964eec692e989524d476f69c5125fa1cb846ff5be7e2
+	sha256sums = SKIP
+
+pkgname = rebuild-detector
+

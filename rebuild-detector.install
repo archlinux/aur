@@ -1,0 +1,8 @@
+post_install() {
+  echo ">> Make sure to select which repos to monitor, it will greately speedup the hook."
+  echo ">> export REBUILD_DETECTOR_REPOS='my-aur-repo'"
+}
+
+post_upgrade() {
+  post_install
+}

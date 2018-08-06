@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+# For each of the upgraded packages, detect packages that depend on it
+# and add those to the list of packages to rebuild grouped by repo.
+#
+# Cleanup the upgraded packages themselves from the rebuild-pending list.
+#
+# All repositories are watched by default.
+# Set $REBUILD_DETECTOR_REPOS to a space-separated list to override.
+
+readonly REBUILD_DETECTOR_CACHE_DIR="/var/cache/rebuild-detector"
+mkdir -p "$REBUILD_DETECTOR_CACHE_DIR"
+
+get_installed_pkgs() {
+    printf -v installed '[%s]' "$(gettext installed)"
+    pacman -Sl $REBUILD_DETECTOR_REPOS | awk -v i="$installed" '$NF == i { print $1,$2 }'
+}
+
+detect_depending_pkgs() {
+    parallel --plus --will-cite "pactree -u {#.* } | tail -n +2 | grep '^$1$' >/dev/null && echo {}"
+}
+
+
+tmp=$(mktemp -dt "rebuild-detector-upgrade-hook.XXXXXXXX") || exit
+trap 'rm -rf $tmp' EXIT
+cd "$tmp" || exit
+
+mapfile -t upgraded
+get_installed_pkgs >installed
+
+for pkg in "${upgraded[@]}"; do
+    detect_depending_pkgs "$pkg" <installed >depending
+
+    while read -r repo package; do
+        echo "$package" >>"$REBUILD_DETECTOR_CACHE_DIR/$repo.list"
+    done <depending
+done
+
+shopt -s nullglob
+for list in "$REBUILD_DETECTOR_CACHE_DIR/"*.list; do
+    sort -u "$list" -o "$list"
+done
+
+current_dir="$(cd "$(dirname "$0")"; pwd)"
+for pkg in "${upgraded[@]}"; do
+    echo "$pkg"
+done | "$current_dir/rebuild-detector-cleanup"
+
+exit 0

@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = *
+
+[Action]
+Description = Detect packages that require a rebuild
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/rebuild-detector
+NeedsTargets

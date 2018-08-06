@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Remove
+Target = *
+
+[Action]
+Description = Ensure the removed packages are not present in the rebuild-pending list
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/rebuild-detector-cleanup
+NeedsTargets
