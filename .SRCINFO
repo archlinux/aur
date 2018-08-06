@@ -1,7 +1,7 @@
 pkgbase = python-pytesseract-git
 	pkgdesc = A Python wrapper for Google Tesseract
 	pkgver = c68f978
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/madmaze/pytesseract
 	arch = any
 	license = GPL3
