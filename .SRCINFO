@@ -1,7 +1,7 @@
 pkgbase = ytcc
 	pkgdesc = The YouTube channel checker
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.7.1
+	pkgrel = 1
 	url = https://github.com/woefe/ytcc
 	arch = any
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = ytcc
 	depends = python-dateutil
 	depends = mpv
 	depends = youtube-dl
-	source = https://github.com/woefe/ytcc/archive/v1.7.0.tar.gz
-	sha256sums = f0a77c33089a0fc2e0d949fabce82e7d307a8de3a4f7f563734f2490d98fef9e
+	source = https://github.com/woefe/ytcc/archive/v1.7.1.tar.gz
+	sha256sums = 26a7022d5de49450598df41228c149530c76674d48c80e9dda27dfbe405b4421
 
 pkgname = ytcc
 
