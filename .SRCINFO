@@ -1,6 +1,6 @@
 pkgbase = openttd-jgrpp
 	pkgdesc = OpenTTD with JGR's patch pack.
-	pkgver = 0.26.0
+	pkgver = 0.26.1
 	pkgrel = 1
 	url = http://www.tt-forums.net/viewtopic.php?f=33&t=73469
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = openttd-jgrpp
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = tar
-	source = https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.26.0.tar.gz
-	sha256sums = f1cd34b1ff1e1ccb6922dec1f2f71a50c1555576363d775ba8949ed56766a1d0
+	source = https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.26.1.tar.gz
+	sha256sums = 108f75b16550e22933dba3d04e74f76f13c9e7b3da3f660f4734dbf3cc507bd4
 
 pkgname = openttd-jgrpp
 
