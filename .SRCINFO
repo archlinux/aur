@@ -1,7 +1,7 @@
 pkgbase = python-aiomonitor
 	pkgdesc = aiomonitor adds monitor and python REPL capabilities for asyncio application
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aio-libs/aiomonitor
 	arch = any
 	license = Apache
