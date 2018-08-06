@@ -1,0 +1,15 @@
+pkgbase = rabs
+	pkgdesc = Generic imperative build system
+	pkgver = 1.2.0
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = gc
+	depends = sqlite
+	provides = rabs
+	source = git+https://github.com/wrapl/rabs#tag=v1.2.0
+	md5sums = SKIP
+
+pkgname = rabs
+
