@@ -8,12 +8,12 @@ _hash=g344771db
 pkgrel=3
 pkgdesc='CLI version of Master Password'
 arch=('i686' 'x86_64')
-url='https://ssl.masterpasswordapp.com/'
+url='https://masterpassword.app/'
 license=('GPL3')
 depends=('ncurses' 'json-c' 'libsodium')
 makedepends=('openssl')
 optdepends=('xclip: copy password to clipboard')
-source=("https://masterpasswordapp.com/mpw-${pkgver}-cli-${_relver}-0-${_hash}.tar.gz"{,.sig})
+source=("https://masterpassword.app/mpw-${pkgver}-cli-${_relver}-0-${_hash}.tar.gz"{,.sig})
 sha256sums=('954c07b1713ecc2b30a07bead9c11e6204dd774ca67b5bdf7d2d6ad1c4eec170'
             'SKIP')
 validpgpkeys=('5C2D1D61853F20F2FCDDCCB70EF21226F43EA6BC') # Maarten Billemont
