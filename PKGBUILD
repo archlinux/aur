@@ -6,7 +6,7 @@
 
 pkgbase=linux
 pkgname=linux-razerblade-2018
-pkgver=4.17.11
+pkgver=4.17.12
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"

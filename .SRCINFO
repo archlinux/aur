@@ -1,5 +1,5 @@
-pkgbase = linux-razerblade-2018
-	pkgver = 4.17.11
+pkgbase = linux
+	pkgver = 4.17.12
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -10,15 +10,13 @@ pkgbase = linux-razerblade-2018
 	makedepends = bc
 	makedepends = libelf
 	makedepends = git
-	provides = linux
 	options = !strip
-	source = https://github.com/archlinux/linux/archive/v4.17.11-arch1.tar.gz
+	source = https://github.com/archlinux/linux/archive/v4.17.12-arch1.tar.gz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
-	source = https://raw.githubusercontent.com/jbdrthapa/razerblade15/master/razerfiles/touchpad/gpiolib.patch
-	source = https://raw.githubusercontent.com/jbdrthapa/razerblade15/master/razerfiles/touchpad/pinctrl-intel.patch
+	source = https://raw.githubusercontent.com/jbdrthapa/razerblade15/master/razerfiles/touchpad/translation_fix/pinctrl-intel-translation-fix.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
@@ -28,21 +26,20 @@ pkgbase = linux-razerblade-2018
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = SKIP
-	sha256sums = SKIP
 
-pkgname = linux-razerblade-2018
-	pkgdesc = The Linux-razerblade-2018 kernel and modules
+pkgname = linux
+	pkgdesc = The vanilla Arch Linux kernel with touchpad and other various fixes.
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-razerblade-2018.preset
+	backup = etc/mkinitcpio.d/linux.preset
 
-pkgname = linux-razerblade-2018-headers
-	pkgdesc = Header files and scripts for building modules for Linux-razerblade-2018 kernel
+pkgname = linux-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel
 
-pkgname = linux-razerblade-2018-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-razerblade-2018 kernel
+pkgname = linux-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel
 
