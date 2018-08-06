@@ -17,7 +17,7 @@ optdepends=('flake8: The modular source code checker: pep8, pyflakes and co'
             'yapf: Python style guide checker')
 options=(!emptydirs)
 source=("https://github.com/jorgenschaefer/elpy/archive/${pkgver}.tar.gz")
-md5sums=('d31427c2dfdeed0aac0dee958f8abde3')
+md5sums=('8d7d2da994f8de91b13c577a9ebf173f')
 
 package() {
   cd "${srcdir}/elpy-${pkgver}"
