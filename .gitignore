@@ -1,2 +1,5 @@
+pkg/
+src/
 /.project
 /*.rpm
+/*.pkg.tar.xz
