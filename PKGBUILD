@@ -48,5 +48,5 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -Dm644 "$srcdir/rngd.service" "$pkgdir/usr/lib/systemd/system/rngd.service"
-	install -Dm644 "$srcdir/rngd.conf" "$pkgdir/etc/conf.d/rngd"
+  install -Dm644 "$srcdir/rngd.conf" "$pkgdir/etc/conf.d/rngd"
 }
