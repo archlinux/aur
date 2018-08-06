@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/Creepsky/creepMiner"
 license=('GPL3')
 options=('strip' '!emptydirs')
-depends=('xdg-utils' 'openssl-1.0')
+depends=('openssl-1.0')
 install=creepminer.install
 source=(https://github.com/Creepsky/creepMiner/releases/download/$pkgver/$_realname-$pkgver.0-Linux.tar.gz
 creepminer.service
