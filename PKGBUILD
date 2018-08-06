@@ -7,7 +7,7 @@ pkgname=(qemu-patched qemu-patched-headless qemu-patched-arch-extra qemu-patched
          qemu-patched-block-{iscsi,rbd,gluster} qemu-patched-guest-agent)
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
-pkgver=2.12.0
+pkgver=2.12.1
 pkgrel=4
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
@@ -24,7 +24,7 @@ source=("$url/download/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         audio-improvements.patch
         amd-smt-fixes-v7.patch
         ps2-fixes-v2.patch)
-sha256sums=('e69301f361ff65bf5dabd8a19196aeaa5613c1b5ae1678f0823bdf50e7d5c6fc'
+sha256sums=('33583800e0006cd00b78226b85be5a27c8e3b156bed2e60e83ecbeb7b9b8364f'
             'SKIP'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
             'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
