@@ -1,9 +1,9 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=openfx-gmic
-pkgver=2.3.13
+pkgver=2.3.14
 pkgrel=1
-arch=("x86_64")
+arch=("i686" "x86_64")
 pkgdesc="OpenFX wrapper for the G'MIC framework"
 url="https://github.com/NatronGitHub/openfx-gmic"
 license=('custom:CeCILL-C' 'custom:CeCILLv2')
@@ -14,6 +14,14 @@ source=("$pkgname::git+https://github.com/NatronGitHub/openfx-gmic#tag=Natron-$p
 sha512sums=('SKIP'
             'SKIP')
 
+# Checks whether the environment is 32-bit or 64-bit
+if [ $CARCH == 'x86_64' ]
+then
+  _BITS=64
+else
+  _BITS=32
+fi
+
 prepare() {
   cd "$srcdir/$pkgname"
   git config submodule.openfx.url $srcdir/openfx
@@ -23,7 +31,7 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
   make CONFIG=release \
-       BITS=64
+       BITS=$_BITS
 }
 
 package() {
@@ -31,7 +39,7 @@ package() {
   install -d "$pkgdir/usr/OFX/Plugins"
   make install PLUGINPATH=$pkgdir/usr/OFX/Plugins \
                CONFIG=release \
-               BITS=64
+               BITS=$_BITS
 
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 $srcdir/$pkgname/COPYING "$pkgdir/usr/share/licenses/$pkgname/"
