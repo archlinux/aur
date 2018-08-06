@@ -1,6 +1,6 @@
 pkgbase = scannerl
 	pkgdesc = The modular distributed fingerprinting engine
-	pkgver = 0.38
+	pkgver = 0.42
 	pkgrel = 1
 	url = https://github.com/kudelskisecurity/scannerl
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = scannerl
 	makedepends = git
 	depends = erlang-nox>=20
 	depends = openssh
-	source = git+https://github.com/kudelskisecurity/scannerl.git#tag=v0.38
+	source = git+https://github.com/kudelskisecurity/scannerl.git#tag=v0.42
 	md5sums = SKIP
 
 pkgname = scannerl
