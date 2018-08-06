@@ -1,0 +1,89 @@
+From b82bf06c54f648e2d795b567a5d824f40c27614f Mon Sep 17 00:00:00 2001
+Message-Id: <b82bf06c54f648e2d795b567a5d824f40c27614f.1521136846.git.jan.steffens@gmail.com>
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Thu, 15 Mar 2018 18:57:47 +0100
+Subject: [PATCH] LDAP source: Fix non-debug build
+
+In non-debug builds, WITH_DEBUG is defined but set to 0.
+
+Simplify the use of dump_ldap_entry by making it do nothing in non-debug
+builds.
+---
+ pgp/seahorse-ldap-source.c | 12 ++----------
+ 1 file changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/pgp/seahorse-ldap-source.c b/pgp/seahorse-ldap-source.c
+index 4819c918..0dd72446 100644
+--- a/pgp/seahorse-ldap-source.c
++++ b/pgp/seahorse-ldap-source.c
+@@ -125,35 +125,33 @@ get_ldap_values (LDAP *ld, LDAPMessage *entry, const char *attribute)
+     return (gchar**)g_array_free (array, FALSE);
+ }
+ 
+-#if WITH_DEBUG
+-
+ static void
+ dump_ldap_entry (LDAP *ld, LDAPMessage *res)
+ {
++#if WITH_DEBUG
+     BerElement *pos;
+     gchar **values;
+     gchar **v;
+     char *t;
+     
+     t = ldap_get_dn (ld, res);
+     g_debug ("dn: %s\n", t);
+     ldap_memfree (t);
+     
+     for (t = ldap_first_attribute (ld, res, &pos); t; 
+          t = ldap_next_attribute (ld, res, pos)) {
+              
+         values = get_ldap_values (ld, res, t);
+         for (v = values; *v; v++) 
+             g_debug ("%s: %s\n", t, *v);
+ 
+         g_strfreev (values);
+         ldap_memfree (t);
+     }
+     
+     ber_free (pos, 0);
+-}
+-
+ #endif /* WITH_DEBUG */
++}
+ 
+ static GQuark
+ get_ldap_error_domain ()
+@@ -474,9 +472,7 @@ on_connect_server_info_completed (LDAPMessage *result,
+ 	if (type == LDAP_RES_SEARCH_ENTRY) {
+ 
+ 		g_debug ("Server Info Result");
+-#ifdef WITH_DEBUG
+ 		dump_ldap_entry (closure->ldap, result);
+-#endif
+ 
+ 		/* NOTE: When adding attributes here make sure to add them to kServerAttributes */
+ 		sinfo = g_new0 (LDAPServerInfo, 1);
+@@ -867,9 +863,7 @@ on_search_search_completed (LDAPMessage *result,
+ 	/* An LDAP entry */
+ 	if (type == LDAP_RES_SEARCH_ENTRY) {
+ 		g_debug ("Retrieved Key Entry");
+-#ifdef WITH_DEBUG
+ 		dump_ldap_entry (closure->ldap, result);
+-#endif
+ 
+ 		search_parse_key_from_ldap_entry (self, closure->results,
+ 		                                  closure->ldap, result);
+@@ -1238,9 +1232,7 @@ on_export_search_completed (LDAPMessage *result,
+ 	if (type == LDAP_RES_SEARCH_ENTRY) {
+ 
+ 		g_debug ("Server Info Result");
+-#ifdef WITH_DEBUG
+ 		dump_ldap_entry (closure->ldap, result);
+-#endif
+ 
+ 		key = get_string_attribute (closure->ldap, result, sinfo->key_attr);
+ 
+-- 
+2.16.2
+

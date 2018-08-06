@@ -1,0 +1,28 @@
+pkgbase = seahorse-git
+	pkgdesc = GNOME application for managing PGP keys. Master branch.
+	pkgver = 3.29.90+10+g9496a0d1
+	pkgrel = 3
+	url = https://wiki.gnome.org/Apps/Seahorse
+	arch = x86_64
+	license = GPL
+	makedepends = libldap
+	makedepends = yelp-tools
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = gcr
+	depends = libsecret
+	depends = libsoup
+	depends = gpgme
+	depends = gnome-keyring
+	provides = x11-ssh-askpass
+	conflicts = seahorse
+	source = git+https://gitlab.gnome.org/GNOME/seahorse.git
+	source = 0001-LDAP-source-Fix-non-debug-build.patch
+	sha256sums = SKIP
+	sha256sums = 7c45e55f9d98510e1f9305af71d9a11d66fd15100ed29239493c94d591eb9e98
+
+pkgname = seahorse-git
+
