@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=logrotate-git
-pkgver=3.12.3.r12.g9431582
+pkgver=3.14.0.r18.g829ebc8
 pkgrel=1
 pkgdesc="Rotates system logs automatically"
 arch=('i686' 'x86_64')
@@ -46,12 +46,12 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-	install -Dm644 "$srcdir/logrotate.conf" "$pkgdir/etc/logrotate.conf"
+  install -Dm644 "$srcdir/logrotate.conf" "$pkgdir/etc/logrotate.conf"
   install -dm755 "$pkgdir/etc/logrotate.d"
 
-	install -Dm644 "examples/logrotate.timer" "$pkgdir/usr/lib/systemd/system/logrotate.timer"
-	install -Dm644 "examples/logrotate.service" "$pkgdir/usr/lib/systemd/system/logrotate.service"
+  install -Dm644 "examples/logrotate.timer" "$pkgdir/usr/lib/systemd/system/logrotate.timer"
+  install -Dm644 "examples/logrotate.service" "$pkgdir/usr/lib/systemd/system/logrotate.service"
 
-	install -dm755 "$pkgdir/usr/lib/systemd/system/timers.target.wants"
-	ln -s ../logrotate.timer "$pkgdir/usr/lib/systemd/system/timers.target.wants/logrotate.timer"
+  install -dm755 "$pkgdir/usr/lib/systemd/system/timers.target.wants"
+  ln -s ../logrotate.timer "$pkgdir/usr/lib/systemd/system/timers.target.wants/logrotate.timer"
 }
