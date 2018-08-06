@@ -4,7 +4,7 @@ _use_pycrypto="no"
 _use_pycountry="no"  
 
 pkgname=streamlink-git
-pkgver=0.14.2.r0.g215d7895
+pkgver=0.14.2.r76.ge180adbf
 pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
@@ -48,12 +48,13 @@ build() {
     msg "Using pycountry..."
     export STREAMLINK_USE_PYCOUNTRY="true"
   fi
+  python setup.py build
   python setup.py build_sphinx -b man
 }
 
 check() {
   cd "${pkgname%-*}"
-  python setup.py test || warning "Tests failed"
+  python setup.py test
 }
 
 package() {
