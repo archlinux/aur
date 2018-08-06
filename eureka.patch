@@ -1,31 +1,22 @@
 diff -ru eureka-1.21-source-orig/Makefile eureka-1.21-source/Makefile
 --- eureka-1.21-source-orig/Makefile	2018-01-09 14:05:02.549661357 +0100
 +++ eureka-1.21-source/Makefile	2018-01-09 14:06:03.161776098 +0100
-@@ -26,7 +26,7 @@
- CXXFLAGS=$(OPTIMISE) -Wall -D$(OS)  \
-          -D_THREAD_SAFE -D_REENTRANT
+@@ -22,7 +22,7 @@
+ 
+ CXXFLAGS=$(OPTIMISE) $(WARNINGS) -D_THREAD_SAFE -D_REENTRANT
  
 -LDFLAGS=-L/usr/X11R6/lib
 +LDFLAGS+=-L/usr/X11R6/lib
  
  LIBS= \
       -lfltk_images -lfltk_gl -lfltk  \
-@@ -134,7 +134,8 @@
- stripped: $(PROGRAM)
- 	strip $(STRIP_FLAGS) $(PROGRAM)
+@@ -144,7 +144,8 @@
+ 
+ INSTALL_DIR=$(DESTDIR)$(PREFIX)/share/eureka
  
 -install: stripped
 +install:
 +	install -d $(PREFIX)/bin
- 	install -o root -m 755 $(PROGRAM) $(PREFIX)/bin/
+ 	install -o root -m 755 $(PROGRAM) $(DESTDIR)$(PREFIX)/bin/
  	install -d $(INSTALL_DIR)/games
  	install -d $(INSTALL_DIR)/common
-@@ -147,8 +148,6 @@
- 	install -o root -m 644 games/*.* $(INSTALL_DIR)/games
- 	install -o root -m 644 common/*.* $(INSTALL_DIR)/common
- 	install -o root -m 644 ports/*.* $(INSTALL_DIR)/ports
--	xdg-desktop-menu  install --novendor misc/eureka.desktop
--	xdg-icon-resource install --novendor --size 32 misc/eureka.xpm
- 
- uninstall:
- 	rm -v $(PREFIX)/bin/$(PROGRAM)

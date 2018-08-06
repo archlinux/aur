@@ -1,16 +1,20 @@
 pkgbase = eureka
 	pkgdesc = A map editor for the classic DOOM games
-	pkgver = 1.21
-	pkgrel = 3
-	url = http://eureka-editor.sourceforge.net
+	pkgver = 1.24
+	pkgrel = 1
+	url = http://eureka-editor.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	depends = fltk
-	source = https://download.sourceforge.net/eureka-editor/eureka-121-source.tar.gz
+	source = https://download.sourceforge.net/eureka-editor/eureka-124-source.tar.gz
 	source = eureka.patch
-	sha256sums = 39ce6ce40137be3f8391a513adc533a616fc0a8c5e51c4e4f9cc9912fb71f7a8
-	sha256sums = f2f3f1f7927997a2ddebf1abb477c77d46b7b2c7d7b69fd10f782771eefb176a
+	md5sums = 041e0870a34f0eb43a305e63f1dc32cd
+	md5sums = 5b8ac3ea179cb63fd5351ca544000c57
+	sha1sums = c5c6374fec532d0903b45bc5ce5b806740d6cbc2
+	sha1sums = c32826f72d026661881b619bed222bd0d1492979
+	sha256sums = 75b47eedebc52b17d442988fa0f6e04987c80738defc1cda948db38b1b58312f
+	sha256sums = a009bcd3618c0c3a9dcbb5f8162f25be82884d82f877b1db6106085b3e9e38c1
 
 pkgname = eureka
 
