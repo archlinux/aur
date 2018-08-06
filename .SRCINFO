@@ -1,7 +1,7 @@
 pkgbase = python-cothority
 	pkgdesc = Scalable collective authority prototype
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/cothority/
 	changelog = changelog
 	arch = any
