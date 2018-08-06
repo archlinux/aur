@@ -1,7 +1,7 @@
 pkgbase = butterfly
 	pkgdesc = A sleek web based terminal emulator
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/paradoxxxzero/butterfly
 	arch = any
 	license = GPLv3
