@@ -4,7 +4,7 @@
 
 pkgname=deepin-wechat
 pkgver=2.6.4.38
-pkgrel=2
+pkgrel=3
 pkgdesc="Tencent WeChat Client on Deepin Wine Updated"
 arch=("x86_64")
 url="http://www.deepin.com/"
