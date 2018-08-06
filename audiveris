@@ -1,2 +1,2 @@
 #!/bin/bash
-exec /usr/bin/java -cp "$(find /usr/share/java/audiveris/ -name '*.jar' | paste -s -d:)" Audiveris "$@"
+exec /usr/bin/java -cp "/usr/share/java/audiveris/*" Audiveris "$@"

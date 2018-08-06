@@ -17,7 +17,7 @@ pkgbase = audiveris-git
 	source = audiveris-git::git+https://github.com/Audiveris/audiveris.git
 	source = audiveris
 	sha256sums = SKIP
-	sha256sums = 1c0ee49fc9ba9aa5d3dc260e649f0914d68ed8b18b40af2326763842e8d5ff46
+	sha256sums = 12223d402f4f6719051df7ab4776a82c7326c41f49403d4d1868c5b041678743
 
 pkgname = audiveris-git
 

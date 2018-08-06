@@ -25,10 +25,8 @@ source=(
   "$pkgname::git+$url.git"
   "$_pkgname"
 )
-sha256sums=(
-  'SKIP'
-  '1c0ee49fc9ba9aa5d3dc260e649f0914d68ed8b18b40af2326763842e8d5ff46'
-)
+sha256sums=('SKIP'
+            '12223d402f4f6719051df7ab4776a82c7326c41f49403d4d1868c5b041678743')
 
 pkgver() {
   cd "$pkgname"
@@ -41,16 +39,16 @@ build() {
 }
 
 package() {
-  # extract libraries
+  msg2 'Extracting libraries'
   install -dm755 "$pkgdir/usr/share/java/$_pkgname"
   bsdtar -C "$pkgdir/usr/share/java/$_pkgname" --strip-components=2 \
     -xf "$srcdir/$pkgname/build/distributions/Audiveris.tar" \
     Audiveris/lib/*
   
-  # start script
+  msg2 'Creating starter script'
   install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
-  # Javadoc
+  msg2 'Installing JavaDoc'
   install -dm755 "$pkgdir/usr/share/doc"
   cp -r "$srcdir/$pkgname/build/docs/javadoc" "$pkgdir/usr/share/doc/$_pkgname"
 }
