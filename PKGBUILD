@@ -1,6 +1,6 @@
 pkgname=python-sphinx-issues
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sphinx extension for referencing issues'
 arch=(any)
 url='https://github.com/sloria/sphinx-issues'

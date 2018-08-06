@@ -1,7 +1,7 @@
 pkgbase = python-sphinx-issues
 	pkgdesc = Sphinx extension for referencing issues
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sloria/sphinx-issues
 	arch = any
 	license = MIT
