@@ -1,7 +1,7 @@
 pkgbase = python-pyqos
 	pkgdesc = QoS framework using tc for Python
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Anthony25/pyqos
 	arch = any
 	license = BSD
