@@ -2,7 +2,7 @@
 
 pkgname=bibfix
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Fixes unescaped acronyms in titles in bibtex files"
 arch=(any)
 url="https://github.com/languitar/bibfix"
