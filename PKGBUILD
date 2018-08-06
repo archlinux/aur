@@ -8,7 +8,7 @@
 
 pkgname=courier-mta
 pkgver=0.78.3
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -65,7 +65,7 @@ build() {
     --enable-unicode \
     --enable-workarounds-for-imap-client-bugs \
     --enable-mimetypes=/etc/mime.types \
-    --with-piddir=/var/run/courier \
+    --with-piddir=/run/courier \
     --with-trashquota \
     --with-db=gdbm \
     --with-random=/dev/urandom \
