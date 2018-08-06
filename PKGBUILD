@@ -7,7 +7,7 @@
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
 arch=('any')
@@ -72,7 +72,7 @@ build() {
 check() {
   cd "${pkgname/on-cash/um}-${pkgver/.0}"
 
-  tox -e py36
+  tox -e py37
 }
 
 package() {
