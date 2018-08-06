@@ -4,9 +4,9 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.27.r346.g573963e32f
+pkgver=2.28.r24.g92a4cba760
 pkgrel=1
-pkgdesc='GNU C Library, from git'
+pkgdesc='GNU C Library'
 arch=('i686' 'x86_64')
 url='https://www.gnu.org/software/libc/'
 license=('GPL' 'LGPL')
@@ -18,7 +18,7 @@ makedepends=('git')
 provides=("glibc=${pkgver%%.r*}")
 conflicts=('glibc')
 backup=('etc/gai.conf' 'etc/nscd.conf')
-options=('!strip' 'staticlibs')
+options=('staticlibs')
 install='glibc-git.install'
 source=('git+https://sourceware.org/git/glibc.git'
         'locale-gen'
@@ -110,7 +110,9 @@ package() {
     # We generate these in the post-install with ldconfig -r .
     rm "$pkgdir"/etc/ld.so.cache
 
+    # handle selectively stripping unless debug packages are requested
     if check_option 'debug' n; then
+        options+=('!strip')
         # I use 2> /dev/null for all of these due to many false-positives as it
         # attempts to strip scripts or other unstrippable files.
         find "$pkgdir"/usr/bin -type f -executable -exec strip $STRIP_BINARIES {} + 2> /dev/null || true
