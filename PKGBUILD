@@ -2,7 +2,7 @@
 pkgname=python-pilkit
 _pkgname=pilkit
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of utilities and processors for the Python Imaging Libary"
 arch=('any')
 url="https://github.com/matthewwithanm/pilkit/"
