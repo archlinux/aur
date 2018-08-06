@@ -1,6 +1,6 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=rocketchat-desktop
-pkgver=2.11.0
+pkgver=2.12.0
 _srcname="Rocket.Chat.Electron-$pkgver"
 pkgrel=3
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
@@ -11,10 +11,12 @@ depends=('nss' 'libxss' 'gconf' 'gtk3')
 makedepends=('sed' 'yarn>=0.21.3' 'nodejs>=7.0.0' 'node-gyp' 'python2')
 conflicts=('rocketchat-client-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/$pkgver.tar.gz")
-sha512sums=('660ba9e38d0d319fc18710e47b6979ca907135c9cd893b19df830fa01587956eba833fadd165919e568fe76d8055209f6a13344fb6daf8f094527f84ae7a0ca4')
+sha512sums=('7096828d0aeadef5aed3d23d1492a24c11d51e60d6a0724fbc7e9f1434f8da08d8c4e2eb79391e51bd0b7e2881b26e75394ee00386f85bbb60df5b0bdea11d6b')
 prepare() {
-	sed -i 's/"deb",/"dir"/' "$srcdir/$_srcname/package.json"
-	sed -i '/"rpm"/d' "$srcdir/$_srcname/package.json"
+	sed -i 's/"tar.gz",/"dir"/' "$srcdir/$_srcname/package.json"
+	sed -i '/"deb",/d' "$srcdir/$_srcname/package.json"
+	sed -i '/"rpm",/d' "$srcdir/$_srcname/package.json"
+	sed -i '/"snap"/d' "$srcdir/$_srcname/package.json"
 	sed -i 's|${SNAP}/meta/gui/icon.png|rocketchat-desktop|' "$srcdir/$_srcname/snap/gui/$pkgname.desktop"
 }
 build() {
