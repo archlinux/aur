@@ -1,7 +1,7 @@
 # Maintainer: Arvedui <arvedui@posteo.de>
 pkgname=radicale-dovecot-auth-git
 pkgver=r7.06b95ff
-pkgrel=2
+pkgrel=3
 pkgdesc="Dovecot auth for radicale"
 arch=("any")
 url="https://github.com/Arvedui/radicale-dovecot-auth"
