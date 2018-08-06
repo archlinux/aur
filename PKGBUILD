@@ -3,7 +3,7 @@
 
 pkgname=burstcoin-wallet
 pkgver=2.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="The world's first HDD-mined cryptocurrency using an energy efficient and fair Proof-of-Capacity (PoC) consensus algorithm."
 arch=('i686' 'x86_64')
 url="https://github.com/PoC-Consortium/burstcoin"

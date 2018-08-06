@@ -1,4 +1,8 @@
 post_install() {
+  update-mime-database /usr/share/mime 1> /dev/null
+  update-desktop-database -q
+  xdg-icon-resource forceupdate --theme hicolor
+
   echo "+-------------------------------------------------------------------------------------+"
   echo "| Config: /opt/burstcoin-wallet/conf/brs-default.properties                           |"
   echo "| By default, burst wallet uses MySQL                                                 |"
