@@ -1,6 +1,6 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-common
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=2
 pkgdesc="A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers."
 arch=('any')
@@ -12,15 +12,15 @@ depends=('ignition-math' 'tinyxml2' 'freeimage' 'libutil-linux' 'gts' 'ffmpeg')
 optdepends=()
 conflicts=()
 source=("https://bitbucket.org/ignitionrobotics/ign-common/get/${pkgname}_${pkgver}.tar.bz2")
-sha256sums=('847b60e0e05a49220607e625546ce032be053bec3da2fe4efbf76d6e0382b5c2')
+sha256sums=('SKIP')
 
-_dir="ignitionrobotics-ign-common-21fe175fe91c"
+_dir="ignitionrobotics-ign-common-4d7ed1df80b0"
 
 build() {
   cd "$srcdir/$_dir"
 
-  sed -i -e 's/CODEC_CAP_TRUNCATED/AV_CODEC_CAP_TRUNCATED/g' src/Video.cc
-  sed -i -e 's/CODEC_FLAG_TRUNCATED/AV_CODEC_FLAG_TRUNCATED/g' src/Video.cc
+  # sed -i -e 's/CODEC_CAP_TRUNCATED/AV_CODEC_CAP_TRUNCATED/g' src/Video.cc
+  # sed -i -e 's/CODEC_FLAG_TRUNCATED/AV_CODEC_FLAG_TRUNCATED/g' src/Video.cc
 
   mkdir -p build
   cd build
