@@ -1,8 +1,9 @@
-# Maintainer: Tom Moore <tmoore01 (at) gmail (dot) com>
+# Maintainer: Silvio Fricke <silvio.fricke@gmail.com>
+# Contributor: Tom Moore <tmoore01 (at) gmail (dot) com>
 
 _pkgname=evolution-ews
 pkgname=$_pkgname-git
-pkgver=3.17.2.r1.g93fd330
+pkgver=3.29.90.r001.g2a6cd383
 pkgrel=1
 pkgdesc="MS Exchange integration through Exchange Web Services"
 arch=('i686' 'x86_64')
@@ -17,25 +18,26 @@ provides=('evolution-ews')
 source=(git://git.gnome.org/evolution-ews)
 sha256sums=('SKIP')
 
-build() {
-  cd $srcdir/$_pkgname
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-      --libexecdir=/usr/lib/evolution --disable-static
-  make
-}
-
 pkgver() {
-  cd $srcdir/$_pkgname
-  git describe --long | sed 's/^EVOLUTION_EWS_//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
+        cd $srcdir/$_pkgname
+        git describe --long | awk -F '-' '/-/{ printf "%s.r%3.3d.%s\n", $1, $2, $3 }'
+}
+
+build() {
+        cd $srcdir/$_pkgname
+
+        [ ! -d build ] && mkdir build
+        cd build
+
+        cmake .. -G Ninja \
+                -DCMAKE_INSTALL_PREFIX=/usr \
+                -DLIBEXEC_INSTALL_DIR=/usr/lib/evolution \
+                -DSYSCONF_INSTALL_DIR=/etc
+        ninja
 }
 
 package() {
-  cd $srcdir/_$pkgname
-  make DESTDIR="$pkgdir" install
+        cd $srcdir/$_pkgname/build
+        DESTDIR="$pkgdir" ninja install
 }
 
-package() {
-  cd $srcdir/$_pkgname
-  make DESTDIR="${pkgdir}" install
-  cd "$srcdir"
-}
