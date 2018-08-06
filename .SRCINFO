@@ -1,0 +1,23 @@
+pkgbase = rng-tools-git
+	pkgdesc = Random number generator daemon
+	pkgver = 6.3.1.r21.g4023c8f
+	pkgrel = 1
+	url = https://github.com/nhorman/rng-tools
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	depends = libgcrypt
+	provides = rng-tools
+	conflicts = rng-tools
+	backup = etc/conf.d/rngd
+	source = git+https://github.com/nhorman/rng-tools.git
+	source = rngd.conf::https://git.archlinux.org/svntogit/community.git/plain/trunk/rngd.conf?h=packages/rng-tools
+	source = rngd.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/rngd.service?h=packages/rng-tools
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rng-tools-git
+
