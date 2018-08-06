@@ -1,0 +1,18 @@
+pkgbase = python-rfoo-git
+	pkgver = r10.8688a3e
+	pkgrel = 1
+	url = https://github.com/aaiyer/rfoo
+	arch = any
+	license = Apache
+	makedepends = cython
+	makedepends = git
+	depends = python
+	provides = python-rfoo-git
+	conflicts = python-rfoo-git
+	source = git+https://github.com/aaiyer/rfoo.git
+	source = setup.py.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = python-rfoo-git
+

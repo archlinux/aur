@@ -1,0 +1,26 @@
+diff --git a/setup.py b/setup.py
+index 8d08855..ea0abf1 100644
+--- a/setup.py
++++ b/setup.py
+@@ -35,9 +35,10 @@
+ 
+ import sys
+ 
+-from distutils.core import setup
+-from distutils.extension import Extension
++from setuptools import setup
++from setuptools import Extension
+ from distutils.command.build_ext import build_ext
++from Cython.Build import cythonize
+ 
+ if 'bdist_egg' in sys.argv:
+     sys.stderr.write("""===========================================================
+@@ -53,6 +54,7 @@ and install with:
+ 
+ 
+ ext_modules = [Extension("rfoo.marsh", ["rfoo/marsh.pyx"])]
++ext_modules = cythonize(ext_modules)
+ 
+ 
+ setup(
+
