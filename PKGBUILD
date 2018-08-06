@@ -2,7 +2,7 @@
 _pkgbase='yuzu'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r7580.29f31356
+pkgver=r7653.83ef37ca
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -19,10 +19,12 @@ source=("$_pkgbase::git+https://github.com/yuzu-emu/yuzu"
 	'git+https://github.com/yuzu-emu/unicorn'
 	'git+https://github.com/lz4/lz4'
 	'git+https://github.com/ogniK5377/opus'
+	'git+https://github.com/DarkLordZach/mbedtls'
 	'git+https://github.com/kinetiknz/cubeb'
 	# cubeb submodule dependencies
 	'git+https://github.com/arsenm/sanitizers-cmake')
 md5sums=('SKIP'
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -53,6 +55,7 @@ prepare() {
 	git config submodule.inih.url "$srcdir/inih"
 	git config submodule.unicorn.url "$srcdir/unicorn"
 	git config submodule.opus.url "$srcdir/opus"
+	git config submodule.mbedtls.url "$srcdir/mbedtls"
 	git config submodule.cubeb.url "$srcdir/cubeb"
 	git submodule update
 
@@ -66,7 +69,8 @@ build() {
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DCMAKE_BUILD_TYPE=Release \
-	  -DBUILD_TESTS=False
+	  -DBUILD_TESTS=False \
+	  -DINSTALL_MBEDTLS_HEADERS=False
 	make
 }
 
@@ -91,6 +95,8 @@ package_yuzu-qt-git() {
 	# screw cubeb cmake even more
 	rm -r "$pkgdir/usr/lib64"
 	rm -r "$pkgdir/usr/include"
+	# Yay mbedtls joins the ring
+	rm -r "$pkgdir/usr/lib"
 	
 	rm "$pkgdir/usr/bin/${_pkgbase}-cmd"
 }
