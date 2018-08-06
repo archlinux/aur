@@ -1,7 +1,7 @@
 pkgbase = python-coreschema
 	pkgdesc = Python CoreSchema
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/core-api/python-coreschema
 	arch = any
 	license = BSD
