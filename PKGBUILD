@@ -1,21 +1,21 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=weex-toolkit
-pkgver=1.2.9
-pkgrel=4
+pkgver=1.3.8
+pkgrel=1
 pkgdesc='Apache Weex CLI toolkit'
-arch=(any)
-url='https://github.com/weexteam/weex-toolkit'
+arch=(i686 x86_64)
+url=https://github.com/weexteam/weex-toolkit
 license=(GPL3)
 depends=(nodejs)
 makedepends=(npm)
-conflict=(weex)
+conflicts=(weex)
 options=(!emptydirs !strip)
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha512sums=(490fd9c77fdf7058f2634ad2974c2c52ff09a42991f66393f69c84d7cc7385907ce443d6c4591f4d74be7d1b53444c2364353e9da9a745788b03768c8a9ce87e)
+sha512sums=('f8aa27a626c17e105a00cc1567d225df07e337aff37bfe716d7033a2ef4b324ba75f75304658ddc5f5689a864f7029e27d0fd8afb8305f13f60f6eef34bedf7e')
 
 package() {
-	npm install -g --prefix $pkgdir/usr $srcdir/$pkgname-$pkgver.tgz
-  find $pkgdir/usr -type d -exec chmod 755 {} +
+  npm install -g --prefix "$pkgdir"/usr $pkgname-$pkgver.tgz
+  find "$pkgdir"/usr -type d -exec chmod 755 {} +
 }
