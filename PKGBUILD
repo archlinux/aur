@@ -3,13 +3,13 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-misc
-pkgver=2.3.13
+pkgver=2.3.14
 pkgrel=1
-arch=("x86_64")
+arch=("i686" "x86_64")
 pkgdesc="Miscellaneous OpenFX plugins"
 url="https://github.com/NatronGitHub/openfx-misc"
 license=("GPL")
-makedepends=("git")
+makedepends=("git" "openmp")
 depends=("libgl")
 optdepends=("natron-plugins")
 source=("$pkgname::git+https://github.com/NatronGitHub/openfx-misc#tag=Natron-$pkgver"
@@ -18,6 +18,14 @@ source=("$pkgname::git+https://github.com/NatronGitHub/openfx-misc#tag=Natron-$p
 sha512sums=('SKIP'
             'SKIP'
             'SKIP')
+
+# Checks whether the environment is 32-bit or 64-bit
+if [ $CARCH == 'x86_64' ]
+then
+  _BITS=64
+else
+  _BITS=32
+fi
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -29,7 +37,9 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
   make CONFIG=release \
-       BITS=64
+       CXXFLAGS_ADD=-fopenmp \
+       LDFLAGS_ADD=-fopenmp \
+       BITS=$_BITS
 }
 
 package() {
@@ -37,5 +47,5 @@ package() {
   mkdir -p "$pkgdir/usr/OFX/Plugins"
   make install PLUGINPATH=$pkgdir/usr/OFX/Plugins \
                CONFIG=release \
-               BITS=64
+               BITS=$_BITS
 }
