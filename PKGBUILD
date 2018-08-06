@@ -1,52 +1,60 @@
-# Maintainer: Orlando Arias <orlandoarias at gmail <dot> com>
+# Maintainer: Kelvin Ly <kelvin.ly1618 at gmail <dot> com>
 
 _target=msp430-elf
-pkgname=${_target}-mcu
-pkgver=3.5.0.0
+_tiver=1.205
+pkgname=${_target}-mcu-full
+pkgver=6.0.1.0
 pkgrel=1
-pkgdesc="Header files and linker scripts for MSP430 microcontrollers"
+pkgdesc="Complete set of header files and linker scripts for MSP430 microcontrollers"
 arch=('any')
+conflicts=(
+  'msp430-elf-mcu'
+)
+provides=(
+  'msp430-elf-mcu'
+)
 url="http://www.ti.com/tool/msp430-gcc-opensource"
 license=('custom')
 options=('!strip' 'staticlibs' 'emptydirs')
-source=(http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/exports/msp430-gcc-support-files.zip
+source=(http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/exports/msp430-gcc-support-files-${_tiver}.zip
         license)
-sha256sums=('1e2a0903e6b02d5e8aac2a7297ec0685e95a980b13b937b5c7f24f4cf6015407'
+sha256sums=('1d1d6231bd6571b0470dd298692f1b58ad262e83079ed042d368313270bf4a0c'
             'cd344f1a8da5c24768fbcc3494ad12b9880a82097dfb5a4d63d2a52f2833cc38')
 
 
+# TI changed the directory things get placed into...
+_extractdir=msp430-gcc-support-files/include
+
 build() {
-  cd "${srcdir}/msp430-gcc-support-files"
+  cd "${srcdir}/${_extractdir}"
   # https://sourceware.org/bugzilla/show_bug.cgi?id=17940
   # some linker scripts are missing the necessary debug_line the linker expects
-  for f in *.ld; do
-    echo -n "Modifying linker script ${f}... "
-    sed -i \
-      "s|(\.debug_line)|(\.debug_line \.debug_line\.\* \.debug_line_end)|g" \
-      ${f} 
-    [[ $? = "0" ]] && echo "ok" || echo "fail"
-  done
+  # for f in *.ld; do
+  #   echo -n "Modifying linker script ${f}... "
+  #   sed -i \
+  #     "s|(\.debug_line)|(\.debug_line \.debug_line\.\* \.debug_line_end)|g" \
+  #     ${f} 
+  #   [[ $? = "0" ]] && echo "ok" || echo "fail"
+  # done
 }
 
 package() {
-  cd "${srcdir}/msp430-gcc-support-files"
+  cd "${srcdir}/${_extractdir}"
   
-  # install linker scripts
   # binutils does weird stuff and does not look in lib/ldscripts
   install -dm755 "${pkgdir}/usr/${_target}/lib"
   for f in *.ld; do
     install -m644 ${f} "${pkgdir}/usr/${_target}/lib"
   done
-  
-  # install header files
+
   install -dm755 "${pkgdir}/usr/${_target}/include"
-  for f in *.h; do
+  for f in *.{h,csv}; do
     install -m644 ${f} "${pkgdir}/usr/${_target}/include"
   done
 
   # copy license file
   install -dm755 "${pkgdir}/usr/share/licenses/msp430-elf-mcu"
-  install -m644 ../license "${pkgdir}/usr/share/licenses/msp430-elf-mcu"
+  install -m644 "${srcdir}/license" "${pkgdir}/usr/share/licenses/msp430-elf-mcu"
 }
 
 # vim:set ts=2 sw=2 et:
