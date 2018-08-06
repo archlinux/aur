@@ -6,8 +6,9 @@
 # Contributor: Michel Brabants <michel.linux@tiscali.be>
 pkgname=seahorse-git
 pkgver=3.29.90+10+g9496a0d1
-pkgrel=3
-pkgdesc="GNOME application for managing PGP keys. Master branch."
+pkgrel=4
+pkgdesc="GNOME application for managing encryption keys and passwords in the
+GNOME Keyring."
 url="https://wiki.gnome.org/Apps/Seahorse"
 arch=(x86_64)
 license=(GPL)
