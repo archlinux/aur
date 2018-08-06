@@ -1,7 +1,7 @@
 pkgbase = python-trio
 	pkgdesc = An async/await-native I/O library for humans and snake people
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-trio/trio
 	arch = any
 	license = MIT
