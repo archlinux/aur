@@ -1,6 +1,6 @@
 pkgbase = rakudo-star
 	pkgdesc = Rakudo Perl6 on MoarVM with additional modules
-	pkgver = 2018.04
+	pkgver = 2018.06
 	pkgrel = 2
 	url = http://rakudo.org/
 	arch = i686
