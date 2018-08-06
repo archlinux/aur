@@ -7,7 +7,7 @@
 pkgname=abcde-musicbrainz
 _pkgname=abcde
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line CD ripping, encoding and tagging utility in one go, with default musicbrainz support'
 arch=('any')
 url='https://abcde.einval.com/'
@@ -19,8 +19,8 @@ optdepends=('cdparanoia: Paranoia ripping support'
             'lame: MP3 encoding support'
             'python-eyed3: ID3 tag support'
             'vorbisgain: Ogg Vorbis normalization support')
-provides=('abcde')
-provides=('conflicts')
+provides=(abcde)
+conflicts=(abcde)
 backup=("etc/${_pkgname}.conf")
 source=("https://abcde.einval.com/download/abcde-${pkgver}.tar.gz"{,.sign})
 validpgpkeys=('CEBB52301D617E910390FE16587979573442684E'
