@@ -1,15 +1,15 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pbget
 pkgver=2017.7
-pkgrel=1
+pkgrel=3
 pkgdesc='Retrieve PKGBUILDs and local source files from Git, ABS and the AUR for makepkg.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/pbget"
+url="https://xyne.archlinux.ca/projects/pbget"
 depends=(git pm2ml python3 python3-aur python3-xcgf python3-xcpf)
 source=(
-  http://xyne.archlinux.ca/projects/pbget/src/pbget-2017.7.tar.xz
-  http://xyne.archlinux.ca/projects/pbget/src/pbget-2017.7.tar.xz.sig
+  https://xyne.archlinux.ca/projects/pbget/src/pbget-2017.7.tar.xz
+  https://xyne.archlinux.ca/projects/pbget/src/pbget-2017.7.tar.xz.sig
 )
 sha512sums=(
   bfaf39316d893887b301de551563526f0e8e3848f78c77fd6546d47a3a141e6a57ebe8f0e6827f7f33000d80da5ef99f2f40ee9f888779d05fe43143e72bde6e
