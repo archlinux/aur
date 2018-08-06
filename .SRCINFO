@@ -1,7 +1,7 @@
 pkgbase = notmuch-extract-patch-git
 	pkgdesc = Extract git patchset from notmuch emails
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aaptel/notmuch-extract-patch
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = notmuch-extract-patch-git
 	depends = python
 	provides = notmuch-extract-patch
 	conflicts = notmuch-extract-patch
-	source = git://github.com/aaptel/notmuch-extract-patch
+	source = https://github.com/aaptel/notmuch-extract-patch
 	md5sums = SKIP
 
 pkgname = notmuch-extract-patch-git
