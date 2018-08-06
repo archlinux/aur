@@ -4,15 +4,15 @@
 # Contributor: liberodark
 
 pkgname=natron
-pkgver=2.3.13
-pkgrel=2
+pkgver=2.3.14
+pkgrel=1
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
 url="https://github.com/NatronGitHub/Natron"
 license=("GPL")
-depends=('boost-libs' 'cairo' 'fontconfig' 'glfw-x11' 'openfx-io' 'openfx-misc' 'openmp' 'pixman' 'python2-pyside' 'python2-shiboken' 'qt4')
-makedepends=('boost' 'expat' 'git')
-optdepends=('openfx-arena: Extra OpenFX plugins for Natron, includes text node' 'natron-plugins')
+depends=('boost-libs' 'cairo' 'openfx-arena' 'openfx-gmic' 'openfx-io' 'openfx-misc' 'python2-pyside')
+makedepends=('boost' 'expat' 'git' 'glfw-x11' 'openmp')
+optdepends=('natron-plugins')
 source=("$pkgname::git+https://github.com/NatronGitHub/Natron#tag=$pkgver"
         "git+https://github.com/NatronGitHub/google-breakpad"
         "git+https://github.com/NatronGitHub/google-mock"
@@ -55,10 +55,6 @@ prepare() {
   cd ../..
 
   mv "${srcdir}/config.pri" "${srcdir}/${pkgname%%-*}/config.pri"
-  # Fix for gcc(>=6) build issues
-  sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Gui/Gui.pro
-  sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Engine/Engine.pro
-  sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Tests/Tests.pro
 }
 
 build() {
@@ -83,8 +79,13 @@ build() {
 package() {
   cd "$srcdir/$pkgname/build"
   make INSTALL_ROOT="$pkgdir" install
+  
   install -d "$pkgdir/usr/share/Natron/Plugins/"
   cp -r "$srcdir/$pkgname/Gui/Resources/PyPlugs" \
         "$pkgdir/usr/share/Natron/Plugins/"
+
+  install -d "$pkgdir/etc/profile.d"
+  echo -e "export FONTCONFIG_PATH=/etc/fonts\n" > $pkgdir/etc/profile.d/$pkgname.sh
+  echo -e "setenv FONTCONFIG_PATH /etc/fonts\n" > $pkgdir/etc/profile.d/$pkgname.csh
 }
 
