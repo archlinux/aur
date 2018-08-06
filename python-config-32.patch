@@ -1,15 +1,7 @@
---- Python-3.6.5/Makefile.pre.in.orig	2018-04-21 18:24:27.196678596 -0400
-+++ Python-3.6.5/Makefile.pre.in	2018-04-21 18:28:04.294287278 -0400
-@@ -441,7 +441,7 @@
- # Default target
- all:		@DEF_MAKE_ALL_RULE@
- build_all:	check-clean-src $(BUILDPYTHON) oldsharedmods sharedmods gdbhooks \
--		Programs/_testembed python-config
-+		Programs/_testembed python-config
- 
- # Check that the source is clean when building out of source.
- check-clean-src:
-@@ -1181,13 +1181,13 @@
+diff -Naur Python-3.7.0.orig/Makefile.pre.in Python-3.7.0/Makefile.pre.in
+--- Python-3.7.0.orig/Makefile.pre.in	2018-08-06 11:07:55.945672075 -0400
++++ Python-3.7.0/Makefile.pre.in	2018-08-06 11:14:58.927173361 -0400
+@@ -1206,13 +1206,13 @@
  	fi
  	(cd $(DESTDIR)$(BINDIR); $(LN) -s python$(VERSION)$(EXE) python3$(EXE))
  	-if test "$(VERSION)" != "$(LDVERSION)"; then \
@@ -20,35 +12,28 @@
  		rm -f $(DESTDIR)$(LIBPC)/python-$(LDVERSION).pc; \
  		(cd $(DESTDIR)$(LIBPC); $(LN) -s python-$(VERSION).pc python-$(LDVERSION).pc); \
  	fi
--	-rm -f $(DESTDIR)$(BINDIR)/python3-config
+ 	-rm -f $(DESTDIR)$(BINDIR)/python3-config
 -	(cd $(DESTDIR)$(BINDIR); $(LN) -s python$(VERSION)-config python3-config)
-+	-rm -f $(DESTDIR)$(BINDIR)/python3$(EXE)-config
-+	(cd $(DESTDIR)$(BINDIR); $(LN) -s python$(VERSION)$(EXE)-config python3$(EXE)-config)
++	(cd $(DESTDIR)$(BINDIR); $(LN) -s python$(VERSION)$(EXE)-config python3-config)
  	-rm -f $(DESTDIR)$(LIBPC)/python3.pc
  	(cd $(DESTDIR)$(LIBPC); $(LN) -s python-$(VERSION).pc python3.pc)
  	-rm -f $(DESTDIR)$(BINDIR)/idle3
-@@ -1377,17 +1377,17 @@
- 	-PYTHONPATH=$(DESTDIR)$(LIBDEST) $(RUNSHARED) \
- 		$(PYTHON_FOR_BUILD) -m lib2to3.pgen2.driver $(DESTDIR)$(LIBDEST)/lib2to3/PatternGrammar.txt
- 
--python-config: $(srcdir)/Misc/python-config.in Misc/python-config.sh
-+python-config: $(srcdir)/Misc/python-config.in Misc/python-config.sh
- 	# Substitution happens here, as the completely-expanded BINDIR
- 	# is not available in configure
+@@ -1422,12 +1422,12 @@
+ 	@ # is not available in configure
  	sed -e "s,@EXENAME@,$(BINDIR)/python$(LDVERSION)$(EXE)," < $(srcdir)/Misc/python-config.in >python-config.py
- 	# Replace makefile compat. variable references with shell script compat. ones; $(VAR) -> ${VAR}
+ 	@ # Replace makefile compat. variable references with shell script compat. ones; $(VAR) -> ${VAR}
 -	LC_ALL=C sed -e 's,\$$(\([A-Za-z0-9_]*\)),\$$\{\1\},g' < Misc/python-config.sh >python-config
 +	LC_ALL=C sed -e 's,\$$(\([A-Za-z0-9_]*\)),\$$\{\1\},g' < Misc/python-config.sh >python$(EXE)-config
- 	# On Darwin, always use the python version of the script, the shell
- 	# version doesn't use the compiler customizations that are provided
- 	# in python (_osx_support.py).
- 	if test `uname -s` = Darwin; then \
+ 	@ # On Darwin, always use the python version of the script, the shell
+ 	@ # version doesn't use the compiler customizations that are provided
+ 	@ # in python (_osx_support.py).
+ 	@if test `uname -s` = Darwin; then \
 -		cp python-config.py python-config; \
 +		cp python-config.py python$(EXE)-config; \
  	fi
  
  
-@@ -1448,7 +1448,7 @@
+@@ -1486,7 +1486,7 @@
  	$(INSTALL_SCRIPT) $(srcdir)/Modules/makesetup $(DESTDIR)$(LIBPL)/makesetup
  	$(INSTALL_SCRIPT) $(srcdir)/install-sh $(DESTDIR)$(LIBPL)/install-sh
  	$(INSTALL_SCRIPT) python-config.py $(DESTDIR)$(LIBPL)/python-config.py
@@ -57,21 +42,12 @@
  	@if [ -s Modules/python.exp -a \
  		"`echo $(MACHDEP) | sed 's/^\(...\).*/\1/'`" = "aix" ]; then \
  		echo; echo "Installing support files for building shared extension modules on AIX:"; \
-@@ -1517,7 +1517,7 @@
- 
- # This installs Mac/Lib into the framework
- # Install a number of symlinks to keep software that expects a normal unix
--# install (which includes python-config) happy.
-+# install (which includes python-config) happy.
- frameworkinstallmaclib:
- 	$(LN) -fs "../../../$(PYTHONFRAMEWORK)" "$(DESTDIR)$(LIBPL)/libpython$(LDVERSION).a"
- 	$(LN) -fs "../../../$(PYTHONFRAMEWORK)" "$(DESTDIR)$(LIBPL)/libpython$(LDVERSION).dylib"
-@@ -1653,7 +1653,7 @@
+@@ -1693,7 +1693,7 @@
  		config.cache config.log pyconfig.h Modules/config.c
  	-rm -rf build platform
  	-rm -rf $(PYTHONFRAMEWORKDIR)
 -	-rm -f python-config.py python-config
 +	-rm -f python-config.py python$(EXE)-config
+ 	-rm -f profile-gen-stamp profile-clean-stamp
  
  # Make things extra clean, before making a distribution:
- # remove all generated files, even Makefile[.pre]

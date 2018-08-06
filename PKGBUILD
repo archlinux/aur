@@ -1,15 +1,15 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=lib32-python
-pkgver=3.6.5
+pkgver=3.7.0
 pkgrel=1
-_pybasever=3.6
+_pybasever=3.7
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('x86_64')
 license=('custom')
 url="http://www.python.org/"
-depends=('lib32-expat' 'lib32-bzip2' 'lib32-gdbm' 'lib32-openssl' 'lib32-libffi' 'lib32-zlib' 'lib32-libtirpc' 'python')
-makedepends=('lib32-tk' 'lib32-sqlite' 'valgrind' 'lib32-bluez-libs' 'lib32-llvm')
+depends=('lib32-expat' 'lib32-bzip2' 'lib32-gdbm' 'lib32-openssl' 'lib32-libffi' 'lib32-zlib' 'lib32-libtirpc' 'lib32-libnsl' 'python')
+makedepends=('lib32-tk' 'lib32-xz' 'lib32-sqlite' 'valgrind' 'lib32-bluez-libs' 'lib32-llvm')
 optdepends=('lib32-sqlite'
             'lib32-xz: for lzma'
             'lib32-tk: for tkinter')
@@ -17,11 +17,13 @@ provides=('lib32-python3')
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc}
         "lib32-distutils-sysconfig.patch"
         "python-config-32.patch"
+        "bpo34056-always-return-bytes-from-_HackedGetData.get_data.patch"
         "dont-make-libpython-readonly.patch")
-sha512sums=('6b26fcd296b9bd8e67861eff10d14db7507711ddba947288d16d6def53135c39326b7f969c04bb2b2993f924d9e7ad3f5c5282a3915760bc0885cf0a8ea5eb51'
+sha512sums=('8bb11233fb67ee9ab8ed1b72f8fdc62f66e26a6beaaeb92448bce681cf065269833b1658d3ed2459127f25ba43adb0eab73cf27c59834a2a803fb529b4216739'
             'SKIP'
             '06e7d3985bba098459eed604eeaa77c4c19a52f175c47feeea15d1d680aeea519721ecab851fff6bc2b2315310a220a8e6fd1971140d233156e4412976264bf6'
-            'da035d50c743d404fac4443e2189c20d5f6dcde3777043b3b04c5e84fb0f4382eec6542473e93db4f4efe9de520f71774c0e32adaef9229f66e32e0f1c6dc3f5'
+            'f6119c9fb535e28d19c7500d8ce4859f9fa71738520357f4f7b418af25574380861381e911622b8cb85a21297083a3a96252d01595ba5803374b3f3f09d0e647'
+            '0ec544fa95ba30be03e866d02848f9fa4921304055368609136ac39626df9835bad75506f6d81ef9fdc0ebcc29a9749f84b5b5f4dd75958c9699ade522d51b68'
             '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4')
 validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D')  # Ned Deily (Python release signing key) <nad@python.org>
 
@@ -41,7 +43,10 @@ prepare() {
   sed -i "s|base/lib|base/lib32|g" "${srcdir}/Python-${pkgver}/Lib/distutils/command/install.py"
   sed -i "s|/include|/lib32/python{py_version_short}/include|g" "${srcdir}/Python-${pkgver}/Lib/distutils/command/install.py"
   sed -i "s|prefix)/lib|prefix)/lib32|g" "${srcdir}/Python-${pkgver}/Makefile.pre.in"
-
+  
+  # https://bugs.python.org/issue34056
+  patch -Np1 -i ../bpo34056-always-return-bytes-from-_HackedGetData.get_data.patch
+  
   # FS#45809
   patch -p1 -i "${srcdir}/dont-make-libpython-readonly.patch"
 
@@ -51,7 +56,6 @@ prepare() {
   # Ensure that we are using the system copy of various libraries (expat, zlib, libffi, and libmpdec),
   # rather than copies shipped in the tarball
   rm -r Modules/expat
-  rm -r Modules/zlib
   rm -r Modules/_ctypes/{darwin,libffi}*
   
   # Currently it is impossible to build multilib system mpdecimal module
