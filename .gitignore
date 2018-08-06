@@ -1,0 +1,6 @@
+/*.tar.gz
+/*.tar.gz.sig
+/*.tar.xz
+/pkg/
+/src/
+/xwmfs/
