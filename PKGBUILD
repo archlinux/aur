@@ -3,7 +3,7 @@
 
 pkgname=python-gpy
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Gaussian processes framework in python"
 arch=("any")
 license=("BSD")
@@ -13,6 +13,13 @@ optdepends=('python-plotly' 'ipython' 'python-sphinx' 'python-ipykernel' 'python
 makedepends=('python-setuptools' 'python-numpy')
 source=("https://github.com/SheffieldML/GPy/archive/v${pkgver}.tar.gz")
 sha512sums=("50dc3627a05b9fc2fbc61204cf492e89d5c067da7aca3e738c52cc3c06652aa825e27e66b0a14a2e67e074cd19a75ab564449a762f1de1ba27a02fc986432403")
+
+prepare() {
+    cd "GPy-${pkgver}"
+    
+    # Forcibly update cython for python 3.7
+    find . -name '*.pyx' -exec cython {} \;
+}
 
 build() {
     cd "GPy-${pkgver}"
