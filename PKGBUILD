@@ -7,7 +7,7 @@
 
 pkgbase=pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
-pkgver=5.11.1.r5794.c203fece
+pkgver=5.11.1.r5867.83b42ca0
 _upver=5.11.1
 pkgrel=1
 arch=('i686' 'x86_64')
