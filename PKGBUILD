@@ -2,7 +2,7 @@
 # Contributor: Jan Magnus Brevik <janmbrevik@gmail.com>
 
 pkgname=gpodder-git
-pkgver=3.10.3.r0.gaae92d1c
+pkgver=3.10.3.r61.gea9f0e57
 pkgrel=1
 pkgdesc='A podcast receiver/catcher'
 license=('GPL3')
@@ -35,5 +35,5 @@ package() {
 
     sed -i -e 's|#!/usr/bin/python$|#!/usr/bin/python|' \
         -e 's|#!/usr/bin/env python$|#!/usr/bin/env python|' \
-    $(find $pkgdir/usr/lib/python3.6/site-packages/gpodder/ -name '*.py')
+    $(find $pkgdir/usr/lib/python3.7/site-packages/gpodder/ -name '*.py')
 }
