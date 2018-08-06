@@ -1,6 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgbase=python-pyexecjs
+_name=PyExecJS
 pkgname=('python-pyexecjs' 'python2-pyexecjs')
 pkgver=1.5.0
 pkgrel=1
@@ -14,7 +15,7 @@ optdepends=('v8: Google JavaScript engine'
             'phantomjs: a headless WebKit'
             'spidermonkey: Mozilla JavaScript engine')
 changelog=changelog
-source=(https://pypi.python.org/packages/1c/a0/359e179605bbf3f6c6ed96c44e056eebed39732b67427f30d56e259934f2/PyExecJS-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
 md5sums=('e8d262b4b6fbc4ba6084f1e1c6469d1f')
 
 prepare() {
@@ -41,7 +42,7 @@ package_python-pyexecjs() {
   depends=('python-six')
 
   cd "PyExecJS-$pkgver"
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
@@ -49,6 +50,6 @@ package_python2-pyexecjs() {
   depends=('python2-six')
 
   cd "PyExecJS-$pkgver-python2"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
