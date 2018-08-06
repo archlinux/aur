@@ -1,7 +1,7 @@
 pkgbase = python-telegram-bot
 	pkgdesc = A Python wrapper around the Telegram Bot API
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-telegram-bot/python-telegram-bot
 	arch = any
 	license = LGPL3
