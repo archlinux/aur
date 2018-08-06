@@ -46,15 +46,6 @@ build() {
   export CGO_CFLAGS="-I${srcdir}/go/deps/sqlite/ -I${srcdir}/go/deps/dqlite/include/"
   export CGO_LDFLAGS="-L${srcdir}/go/deps/sqlite/.libs/ -L${srcdir}/go/deps/dqlite/.libs/"
   export LD_LIBRARY_PATH="${srcdir}/go/deps/sqlite/.libs/:${srcdir}/go/deps/dqlite/.libs/"
-  # Fix error "attr/xattr.h: No such file or directory", but only if it's needed
-  if [ -e "/usr/include/attr/xattr.h" ] || [ -L "/usr/include/attr/xattr.h" ] ; then
-      :
-  elif [ -e "/usr/include/sys/xattr.h" ] || [ -L "/usr/include/sys/xattr.h" ] ; then
-        cd "${GOPATH}/src/${go_base}/../"
-        sed -i '/#include <attr\/xattr.h>/c\#include <sys\/xattr.h>' ./lxd/shared/idmap/shift_linux.go
-  else
-      echo "Error: you are using a non-compliant attrs library!"
-  fi
   # Normal execution
   cd "${GOPATH}/src/${go_base}"
   # Fix for error "Missing custom libsqlite3[...]" (pt.2/2)
