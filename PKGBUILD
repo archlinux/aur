@@ -7,7 +7,6 @@ pkgdesc="Major release 3.6 of the Python high-level programming language"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.python.org/"
-conflicts=('python')  # as long as Python 3.6 is arch linux default
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')

@@ -18,7 +18,6 @@ pkgbase = python36
 	depends = zlib
 	optdepends = tk: for tkinter
 	optdepends = sqlite
-	conflicts = python
 	options = !makeflags
 	source = http://www.python.org/ftp/python/3.6.6/Python-3.6.6.tar.xz
 	sha256sums = d79bc15d456e73a3173a2938f18a17e5149c850ebdedf84a78067f501ee6e16f
