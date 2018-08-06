@@ -1,7 +1,7 @@
 # Maintainer: Arvedui <arvedui@posteo.de>
 pkgname=radicale-infcloud-git
 pkgver=r20.972757b
-pkgrel=1
+pkgrel=2
 pkgdesc="Infcloud integration for radicale"
 arch=("any")
 url="https://github.com/Unrud/RadicaleInfCloud"
