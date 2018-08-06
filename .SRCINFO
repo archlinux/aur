@@ -1,7 +1,7 @@
 pkgbase = python3-threaded_servers
 	pkgdesc = Threaded server modules (ThreadedHTTPSServer, ThreadedMulticastServer, Quickserve, Pacserve).
-	pkgver = 2018.4.28
-	pkgrel = 1
+	pkgver = 2018.6
+	pkgrel = 3
 	url = https://xyne.archlinux.ca/projects/python3-threaded_servers
 	arch = any
 	license = GPL
@@ -10,13 +10,13 @@ pkgbase = python3-threaded_servers
 	optdepends = pyalpm: required for the Pacserve module
 	optdepends = python-dbus: Avahi support
 	optdepends = python-gobject: Avahi support
-	source = https://xyne.archlinux.ca/projects/python3-threaded_servers/src/python3-threaded_servers-2018.4.28.tar.xz
-	source = https://xyne.archlinux.ca/projects/python3-threaded_servers/src/python3-threaded_servers-2018.4.28.tar.xz.sig
+	source = https://xyne.archlinux.ca/projects/python3-threaded_servers/src/python3-threaded_servers-2018.6.tar.xz
+	source = https://xyne.archlinux.ca/projects/python3-threaded_servers/src/python3-threaded_servers-2018.6.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
-	md5sums = 401e10b0cd750f638be2f85d34fa7c09
-	md5sums = 6964e1d90afb89b90cad3df4be649555
-	sha512sums = 6d2844bedc965316ccb09f7a49699c577c146426bc022777065d7f725b87fdbfd8e61f6d0a6d935d9bcd6ab61765d4e9a85bdcfd269361ae49e6cab6a5e97940
-	sha512sums = b5afce9df86a3bd8a25d3dc5630decf9f2f5c412d441194d540aafe14f2424225e6388f523098df3667df55a77a19fa2790ee578af11aac25ce318793390fda0
+	md5sums = f48ba4727230b8c0e2371005991a5a15
+	md5sums = c2619f82012db0348039576acc084893
+	sha512sums = c0f03f9e3f870244852d7487530984205fcd84ff83e399094d144dcf721d69eef4797441debada05516a9fafc0df01c5bd988e5e064e9d1e8bcebbcc7f2cf99d
+	sha512sums = be95ef87c10b794e8a454b4e1f7f046b60b6a621cfe67e12a1add0dc53a9c8defeb72e95a114a964cac93f72dcfa172daa406deacd22eb3d1f7a83ddb7915f31
 
 pkgname = python3-threaded_servers
 
