@@ -4,7 +4,7 @@
 # Contributor: |AhIoRoS| < ahioros@gmail.com >
 
 pkgname=tuxguitar
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('unzip' 'zip' 'apache-ant' 'jack' 'fluidsynth' 'java-environment>=8
 optdepends=('fluidsynth')
 source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz
         nogcj.patch)
-sha256sums=('5735aadc7f6ae5c1c612a8e8c0e5f4469bc63ddbb566fbba544f0d71e412a9c7'
+sha256sums=('a9ade566752aa0ac72831a1cd0b18b85d302eca7934e2192ad875f51df755981'
             'bda4bc1b864ecfa27392a145854ee3b5ab20876c2d2bc38bbf85f92ce97fe2bc')
 
 case $CARCH in
