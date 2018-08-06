@@ -1,13 +1,13 @@
 # Maintainer: David Scholl <djscholl at gmail dot com>
 pkgname=audiotools
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of Python-based command-line audio handling programs"
 arch=('i686' 'x86_64')
 url="http://audiotools.sourceforge.net"
 license=('GPL')
-depends=('python-urwid' 'libcdio-paranoia' 'libdvd-audio' 'lame' 'twolame' 
-'vorbis-tools' 'faad2' 'faac' 'opus-tools' 'opusfile' 'libpulse' 'wavpack' 
+depends=('python-urwid' 'libcdio-paranoia' 'libdvd-audio' 'lame' 'twolame'
+'vorbis-tools' 'faad2' 'faac' 'opus-tools' 'opusfile' 'libpulse' 'wavpack'
 'mpg123')
 makedepends=('python-setuptools')
 optdepends=('cdrkit: CD burning without cuesheet support'
@@ -25,7 +25,7 @@ build() {
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  python setup.py install --root=$pkgdir 
+  python setup.py install --root=$pkgdir
   cd docs
   install -d $pkgdir/usr/share/man/man1
   install -d $pkgdir/usr/share/man/man5
