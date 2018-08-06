@@ -1,7 +1,7 @@
 # Maintainer: Dominik Peteler <archlinux@with-h.at>
 
 pkgname=ldap-account-manager
-pkgver=6.2
+pkgver=6.4
 pkgrel=1
 pkgdesc="A webfrontend for managing entries stored in an LDAP directory"
 arch=('any')
@@ -10,6 +10,7 @@ license=('GPL')
 depends=('php>=5.2.4' 'php-ldap' 'openldap>2.0')
 optdepends=('php-mcrypt: Store LDAP password encrypted in the session file'
             'perl'
+            'perl-quota'
             'php-apache: Run LDAP Account Manager on Apache'
             'php-fpm: Run LDAP Account Manager on other webservers')
 options=('!strip')
@@ -17,7 +18,7 @@ source=("http://downloads.sourceforge.net/lam/${pkgname}-${pkgver}.tar.bz2"
         "dont-look-for-alternate-perl.patch"
         "fix-htmldir-and-docdir.patch"
         "apache.example.conf")
-sha256sums=('7dbefaf734bb836a0d9ab88cce41e04c25e2a543c45254d33d94250ac2011f6f'
+sha256sums=('fe3bff5adf6cae8221ff72c64be5557ce6fc35123ad3294753bab85e302b9cc0'
             '013dd520a357ce39e9eda5169d26c73b48d05c7e73c7ce4377f31ace8f4c88a1'
             'dc4afc691a53f5ff46eec4ef25cc3d593d7a5a2dcbcde070d54f6554027822b3'
             '229b281a85770f82f449e1e77ebd26b7583b5bc1266b234c653f2778067b1f34')
