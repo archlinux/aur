@@ -1,7 +1,7 @@
 pkgbase = gazebo
 	pkgdesc = A multi-robot simulator for outdoor environments
-	pkgver = 9.0.0
-	pkgrel = 2
+	pkgver = 9.3.0
+	pkgrel = 1
 	url = http://gazebosim.org/
 	install = gazebo.install
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = gazebo
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
-	makedepends = pkgconf>=0.26
 	depends = boost>=1.40.0
 	depends = curl>=4.0
 	depends = freeglut
@@ -39,10 +38,10 @@ pkgbase = gazebo
 	optdepends = ruby-ronn: Generate manpages
 	optdepends = simbody: Simbody support
 	optdepends = urdfdom: Load URDF files
-	source = http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-9.0.0.tar.bz2
-	source = ogre-1.10.patch
-	sha256sums = 2c29955d476c97dc0ccbb1c8295ec6e8ffe203d7bc6047c1f34433a82ab9215e
-	sha256sums = a1c8a9d181f3de6007361f571a40fd04e780081cd9a9a281d64d316e8cc89892
+	source = https://bitbucket.org/osrf/gazebo/get/gazebo9_9.3.0.tar.bz2
+	source = ogre-1.11.patch
+	sha256sums = ba1acb778b3360af883b5331ab639ebfea395ebceb9d1cd0aaed2bced041a0a5
+	sha256sums = 0544018a614fe6a4caf7554cb6c751fc1e1c82e8035a0c3ddb0178786955ce9a
 
 pkgname = gazebo
 

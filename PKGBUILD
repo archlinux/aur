@@ -5,8 +5,8 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=9.0.0
-pkgrel=2
+pkgver=9.3.0
+pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -26,25 +26,25 @@ optdepends=('bullet: Bullet support'
             'ruby-ronn: Generate manpages'
             'simbody: Simbody support'
             'urdfdom: Load URDF files')
-makedepends=('cmake' 'doxygen' 'pkgconf>=0.26')
+makedepends=('cmake' 'doxygen')
 install="${pkgname}.install"
-source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${pkgname}-${pkgver}.tar.bz2" "ogre-1.10.patch")
-sha256sums=('2c29955d476c97dc0ccbb1c8295ec6e8ffe203d7bc6047c1f34433a82ab9215e'
-            'a1c8a9d181f3de6007361f571a40fd04e780081cd9a9a281d64d316e8cc89892')
+source=("https://bitbucket.org/osrf/gazebo/get/gazebo9_9.3.0.tar.bz2" "ogre-1.11.patch")
+sha256sums=('ba1acb778b3360af883b5331ab639ebfea395ebceb9d1cd0aaed2bced041a0a5'
+            '0544018a614fe6a4caf7554cb6c751fc1e1c82e8035a0c3ddb0178786955ce9a')
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np2 -i "${srcdir}/ogre-1.10.patch"
-}
+ prepare() {
+   cd "${srcdir}/osrf-${pkgname}-33c8adccf084"
+   patch -Np2 -i "${srcdir}/ogre-1.11.patch"
+ }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/osrf-${pkgname}-33c8adccf084"
 
-  sed -i -e 's/CODEC_CAP_TRUNCATED/AV_CODEC_CAP_TRUNCATED/g' gazebo/common/AudioDecoder.cc
-  sed -i -e 's/CODEC_FLAG_TRUNCATED/AV_CODEC_FLAG_TRUNCATED/g' gazebo/common/AudioDecoder.cc
+  # sed -i -e 's/CODEC_CAP_TRUNCATED/AV_CODEC_CAP_TRUNCATED/g' gazebo/common/AudioDecoder.cc
+  # sed -i -e 's/CODEC_FLAG_TRUNCATED/AV_CODEC_FLAG_TRUNCATED/g' gazebo/common/AudioDecoder.cc
   
-  sed -i -e 's/CODEC_CAP_TRUNCATED/AV_CODEC_CAP_TRUNCATED/g' gazebo/common/Video.cc
-  sed -i -e 's/CODEC_FLAG_TRUNCATED/AV_CODEC_FLAG_TRUNCATED/g' gazebo/common/Video.cc
+  # sed -i -e 's/CODEC_CAP_TRUNCATED/AV_CODEC_CAP_TRUNCATED/g' gazebo/common/Video.cc
+  # sed -i -e 's/CODEC_FLAG_TRUNCATED/AV_CODEC_FLAG_TRUNCATED/g' gazebo/common/Video.cc
   mkdir -p build && cd build
 
   # Note: we skip unit tests (else set to TRUE)
@@ -55,7 +55,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/osrf-${pkgname}-33c8adccf084/build"
   make DESTDIR="${pkgdir}" install
 }
 
