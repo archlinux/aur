@@ -3,7 +3,7 @@
 
 pkgname=gpodder-git
 pkgver=3.10.3.r61.gea9f0e57
-pkgrel=1
+pkgrel=2
 pkgdesc='A podcast receiver/catcher'
 license=('GPL3')
 arch=('any')
@@ -28,12 +28,12 @@ pkgver() {
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
+build() {
+    cd "${pkgname%-*}"
+    python setup.py build
+}
+
 package() {
     cd "${pkgname%-*}"
-
     PYTHON=python DESTDIR=${pkgdir} make install
-
-    sed -i -e 's|#!/usr/bin/python$|#!/usr/bin/python|' \
-        -e 's|#!/usr/bin/env python$|#!/usr/bin/env python|' \
-    $(find $pkgdir/usr/lib/python3.7/site-packages/gpodder/ -name '*.py')
 }
