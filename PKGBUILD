@@ -8,7 +8,7 @@ url="https://github.com/ssbc/patchbay"
 license=('MIT')
 provides=('patchbay')
 conflicts=('patchbay')
-depends=('libsodium' 'gtk2' 'gconf' 'python')
+depends=('libsodium' 'gtk2' 'gconf' 'python' 'electron')
 makedepends=('nodejs' 'npm' 'git')
 options=(!strip)
 _srcname=patchbay
@@ -20,7 +20,7 @@ source=(
 )
 
 md5sums=('SKIP'
-         '6632351cad7b33d94834e9a37f77f727'
+         '1f9644b6941ee0dbd55e4cda6a69604e'
          'f459479fef0987c5fa81a38b04767ffa')
 
 pkgver() {
@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_srcname}"
-    npm ci
+    npm ci --only=production
     npm run rebuild
 }
 
