@@ -3,7 +3,7 @@
 pkgname=xwmfs
 pkgver=0.82
 pkgrel=1
-pkgdesc=" X11 Window-Manager file system based on FUSE"
+pkgdesc="X11 Window-Manager file system based on FUSE"
 arch=('x86_64')
 url="https://github.com/gerstner-hub/xwmfs"
 license=('GPL2')
