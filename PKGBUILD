@@ -1,21 +1,21 @@
 # Maintainer: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j8-git
-pkgver=8.07.15.20180505
+pkgver=8.07.16.20180806
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('i686' 'x86_64')
 url='http://www.jsoftware.com'
 license=('GPL3'  'LGPL')
-depends=('xdg-utils' 'qt5-webengine' 'qt5-websockets' 'qt5-multimedia' 'libedit')
+depends=('qt5-webkit' 'qt5-multimedia' 'qt5-svg')
 optdepends=('wget: for web/gethttp addon'
             'expat: for api/expat addon'
             'fftw: for math/fftw addon'
             'lapack: for math/lapack addon')
 source=('jsource.zip::https://github.com/jsoftware/jsource/archive/master.zip'
         'qtide.zip::https://github.com/jsoftware/qtide/archive/master.zip'
-        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j807_env_20180505.tar.gz')
-md5sums=('SKIP' 'SKIP' '45b8d4fcc5b7db1a91c76749bb90db9f')
+        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j807_env_20180806.tar.gz')
+md5sums=('SKIP' 'SKIP' '3489809baa1b10d82652fd656e4d8b16')
 install=j8-git.install
 if [ "${CARCH}" = x86_64 ]; then
 _xarch=x86_64
@@ -37,14 +37,13 @@ echo '#define jplatform "linux"' >> jsrc/jversion.h
 echo '#define jtype "build"' >> jsrc/jversion.h
 echo '#define jlicense "GPL3"' >> jsrc/jversion.h
 echo '#define jbuilder "www.jsoftware.com"' >> jsrc/jversion.h
-sed -i "s@jgit=~/gitdev/jsource@jgit=${srcdir}/jsource-master@" make/jvars.sh
+sed -i "s@jgit=~/git/jsource@jgit=${srcdir}/jsource-master@" make/jvars.sh
 sed -i "s@jbld=~/jbld@jbld=${srcdir}/jsource-master/jbld@" make/jvars.sh
 sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/build_jconsole.sh
 sed -i "s@-l:libedit.so.2@-ledit@" make/build_jconsole.sh
 sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/build_libj.sh
 sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/domake.sh
 sed -i "s@else if(_isnan(@// else if(_isnan(@" jsrc/f2.c
-cp make/jvars.sh ./
 }
 
 build() {
@@ -54,6 +53,7 @@ rm -rf jbld
 mkdir -p jbld/jout
 mkdir jbld/${_jarch}
 cp -r jlibrary/* jbld/${_jarch}
+. make/jvars.sh
 make/build_jconsole.sh ${_jarch}
 make/build_libj.sh ${_jarch}
 # qtide
