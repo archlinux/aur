@@ -1,7 +1,7 @@
 pkgbase = python-multio
 	pkgdesc = multio - an unified async library for curio and trio
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theelous3/multio
 	arch = any
 	license = MIT
