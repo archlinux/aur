@@ -1,0 +1,13 @@
+pkgbase = xwmfs
+	pkgdesc = X11 Window-Manager file system based on FUSE
+	pkgver = 0.82
+	pkgrel = 1
+	url = https://github.com/gerstner-hub/xwmfs
+	arch = x86_64
+	license = GPL2
+	depends = fuse
+	source = git+https://github.com/gerstner-hub/xwmfs.git#tag=v0.82
+	sha256sums = SKIP
+
+pkgname = xwmfs
+
