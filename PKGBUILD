@@ -3,7 +3,7 @@
 pkgname=epfl-menu-git
 _pkgname=epfl-menu
 pkgver=r16.2406823
-pkgrel=4
+pkgrel=5
 
 pkgdesc='Pretty-print the lunch and supper menus at the EPFL'
 arch=(any)
