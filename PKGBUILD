@@ -2,7 +2,7 @@
 
 pkgname='compute-runtime'
 pkgdesc="Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond. Weekly build version."
-pkgver='18.29.11114'
+pkgver='18.30.11148'
 pkgrel=1
 arch=('x86_64')
 url='https://01.org/compute-runtime'
