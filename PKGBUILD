@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=zlib-git
-pkgver=1.2.11.r16.g3c46f5d
+pkgver=1.2.11.r27.g4346a16
 pkgrel=1
 pkgdesc="A massively spiffy yet delicately unobtrusive compression library (git develop branch)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ build() {
   cd "zlib"
 
   ./configure --prefix="/usr"
-	make
+  make
 }
 
 check() {
