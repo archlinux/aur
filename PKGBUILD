@@ -2,7 +2,7 @@
 pkgname=python-globus-sdk
 _pkgname=globus-sdk
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This SDK provides a convenient Pythonic interface to Globus REST APIs, including the Transfer API and the Globus Auth API."
 arch=(any)
 url="https://github.com/globus/globus-sdk-python"
