@@ -1,12 +1,15 @@
 pkgbase = python-tkfontchooser
 	pkgdesc = Font chooser dialog for tkinter
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/tkFontChooser
+	url = https://github.com/j4321/tkFontChooser
 	arch = any
 	license = GPL3
-	source = tkfontchooser-2.0.1.tar.gz::https://github.com/j4321/tkFontChooser/archive/v2.0.1.tar.gz
-	sha512sums = 43073f4b7e57bb1b4e4806a9523693147a304d73bf9ef7ddc67e79baf22d8b0f26cdb89e87a07b84e3dec47b73bd5d10f454b228f49913db23bc1da5b0e73617
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = tkfontchooser-2.0.2.tar.gz::https://github.com/j4321/tkFontChooser/archive/v2.0.2.tar.gz
+	sha512sums = 9ab8499da5deb964bec8e52cbb7d9eb9baff056aca3a9b7bbc3948b00b275a6cf48af5ed50d6f1dbc0560237d97decb6b3dae6038120d4e82f8773f3d9144f14
 
 pkgname = python-tkfontchooser
 	depends = python

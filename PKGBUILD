@@ -1,25 +1,29 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-tkfontchooser' 'python2-tkfontchooser')
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Font chooser dialog for tkinter"
 arch=('any')
-url="https://pypi.python.org/pypi/tkFontChooser"
+url="https://github.com/j4321/tkFontChooser"
 license=('GPL3')
 source=("tkfontchooser-$pkgver.tar.gz::https://github.com/j4321/tkFontChooser/archive/v$pkgver.tar.gz")
-sha512sums=('43073f4b7e57bb1b4e4806a9523693147a304d73bf9ef7ddc67e79baf22d8b0f26cdb89e87a07b84e3dec47b73bd5d10f454b228f49913db23bc1da5b0e73617')
+sha512sums=('9ab8499da5deb964bec8e52cbb7d9eb9baff056aca3a9b7bbc3948b00b275a6cf48af5ed50d6f1dbc0560237d97decb6b3dae6038120d4e82f8773f3d9144f14')
+makedepends=('python' 'python-setuptools' 'python2-setuptools')
+
+build() {
+	cd "${srcdir}/tkFontChooser-${pkgver}"
+  python setup.py build
+}
 
 package_python-tkfontchooser() {
-  makedepends=('python-setuptools')
   depends=('python' 'tk')
   cd "${srcdir}/tkFontChooser-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
 
 package_python2-tkfontchooser() {
-  makedepends=('python2-setuptools')
   depends=('python2' 'tk')
   cd "${srcdir}/tkFontChooser-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
 
