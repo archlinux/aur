@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gst-plugins-ugly-git
-pkgver=1.13.0.1.r5421.g6b03e61b
+pkgver=1.15.0.1.r5492.gc5cddfce
 pkgrel=1
 pkgdesc='GStreamer Multimedia Framework Ugly Plugins (git version)'
 arch=('i686' 'x86_64')
@@ -47,6 +47,11 @@ build() {
     cd "$pkgname"
     
     NOCONFIGURE=1 ./autogen.sh
+    
+    sed -i '/CFLAGS="$CFLAGS/s|-Werror||' configure
+    sed -i '/ERROR_CFLAGS="$ERROR_CFLAGS/s|-Werror||' configure
+    sed -i '/CPPFLAGS="$CPPFLAGS/s|-Werror||' configure
+    sed -i '/ERROR_CXXFLAGS="$ERROR_CXXFLAGS/s|-Werror||' configure
     
     ./configure \
         --prefix='/usr' \
