@@ -3,7 +3,7 @@
  
 pkgname=perl-math-polygon-tree
 _cpanname=Math-Polygon-Tree
-pkgver=0.0691
+pkgver=0.08
 pkgrel=1
 pkgdesc="Fast check if object is inside polygon"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 makedepends=('perl-extutils-makemaker')
 options=('!emptydirs')
 source=(http://www.cpan.org/authors/id/L/LI/LIOSHA/Math-Polygon-Tree-${pkgver}.tar.gz)
-md5sums=('5f7684f8ed4301fbeaf7629af8495ac5')
+md5sums=('06fba76c0a2fd63faf159358a5149397')
  
 build() {
   cd $srcdir/${_cpanname}-${pkgver}
