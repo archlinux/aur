@@ -1,7 +1,7 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 pkgname=nncli
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
 url="https://github.com/djmoch/${pkgname}"
