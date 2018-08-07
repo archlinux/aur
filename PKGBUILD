@@ -3,12 +3,12 @@
 _pkgname=python-wikeddiff
 pkgname=python-wikeddiff-git
 pkgdesc="Visual inline-style difference engine with block move support"
-pkgver=1.2.4
+pkgver=1.2.4.r6.gc164da5
 pkgrel=1
 arch=('any')
 url="https://github.com/lahwaacz/python-wikeddiff"
 license=('GPLv3')
-depends=('python' 'python-namedlist')
+depends=('python')
 makedepends=('git')
 source=('git://github.com/lahwaacz/python-wikeddiff')
 md5sums=('SKIP')
