@@ -9,7 +9,7 @@
 
 pkgname=intel-media-sdk-git
 pkgver=2018.Q2.1.r215.g7885aa1
-pkgrel=3
+pkgrel=4
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb')
 provides=('intel-media-sdk' 'libmfx')
-conflicts=('intel-media-sdk' 'intel-media-server-studio')
+conflicts=('intel-media-sdk' 'intel-media-stack-bin' 'intel-media-server-studio')
 options=('!emptydirs')
 
 prepare() {
