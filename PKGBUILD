@@ -3,7 +3,7 @@
 
 pkgname=python-robobrowser
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="RoboBrowser is a simple, Pythonic library for browsing the web without a standalone web browser."
 arch=('any')
 url="https://github.com/jmcarp/robobrowser"

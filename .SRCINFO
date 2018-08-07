@@ -1,7 +1,7 @@
 pkgbase = python-robobrowser
 	pkgdesc = RoboBrowser is a simple, Pythonic library for browsing the web without a standalone web browser.
 	pkgver = 0.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jmcarp/robobrowser
 	arch = any
 	license = MIT
