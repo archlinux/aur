@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Quoll Writer
+Comment=A writing application that lets you focus on your words
+Exec=/usr/bin/quollwriter
+Icon=quollwriter
+Terminal=false
+Type=Application
+Categories=Office
+
