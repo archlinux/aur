@@ -1,0 +1,15 @@
+pkgbase = lua-html-entities-git
+	pkgdesc = Module for Lua, decoding html entities
+	pkgver = 1.3.0.r2.880a6bd
+	pkgrel = 1
+	url = https://github.com/TiagoDanin/htmlEntities-for-lua
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = lua
+	provides = lua-html-entities
+	source = git+https://github.com/TiagoDanin/htmlEntities-for-lua.git
+	md5sums = SKIP
+
+pkgname = lua-html-entities-git
+
