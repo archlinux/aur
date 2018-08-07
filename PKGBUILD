@@ -1,22 +1,24 @@
 pkgname=faba-icon-theme
-pkgver=4.1.2
+pkgver=4.3
 pkgrel=1
 pkgdesc="A sexy and modern icon theme with Tango influences."
 arch=('any')
-url="https://snwh.org/moka"
+url="https://snwh.org/moka#faba-icon-theme"
 license=('LGPL3' 'CCPL-4.0:by-sa')
 depends=('gtk-update-icon-cache')
+makedepends=('meson')
+options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/moka-project/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('7966a99b8e9098e2474655229093e08c')
-sha512sums=('fd11e0aa1ab3e57ec2bde29a493dd58922759080291e7bd91b53d1395984a33e1e82da606d8e08fd8ce16e82f3709e90b12e5592261e2e450ad54d2a43d49fe4')
+md5sums=('34633c7d146b93abebc96d3dddd52053')
+sha512sums=('eb86df4675d42c67a348466270640b93dde2a93304111a93205c7f1af06a677788d9f1a5bcacabdb60cc1ce9da4b49f29a3c5039109be40fc180cf4fea3f7d1b')
 
 build() {
   cd "$pkgname-$pkgver"
-  bash autogen.sh
-  make
+  arch-meson . build
+  ninja -C build
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
