@@ -8,8 +8,8 @@ pkgdesc="Sexy Git CLI, Inspired by GitHub for Mac™."
 arch=('any')
 url="https://github.com/kennethreitz/legit"
 license=('BSD')
-depends=('python' 'python-gitpython' 'python-clint' 'python-gitdb' 'python-args' 'python-crayons')
-makedepends=('git')
+depends=('python' 'python-gitpython' 'python-clint' 'python-gitdb' 'python-args' 'python-crayons' 'python-click')
+makedepends=('git' 'python-setuptools')
 source=("$pkgname::git+https://github.com/kennethreitz/legit.git")
 md5sums=('SKIP')
 

@@ -6,12 +6,14 @@ pkgbase = legit-git
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-gitpython
 	depends = python-clint
 	depends = python-gitdb
 	depends = python-args
 	depends = python-crayons
+	depends = python-click
 	source = legit-git::git+https://github.com/kennethreitz/legit.git
 	md5sums = SKIP
 
