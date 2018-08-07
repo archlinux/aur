@@ -12,8 +12,8 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.3.0_devel.103997.c3325097be
-pkgrel=2
+pkgver=18.3.0_devel.104034.3dc22381fa
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
@@ -87,11 +87,6 @@ package_mesa-git() {
 
   DESTDIR="$pkgdir" ninja -C _build install
 
-  # https://bugs.freedesktop.org/show_bug.cgi?id=107487
-  # removing those files and the /usr/bin/ folder
-  rm "$pkgdir"/usr/bin/intel_dump_gpu "$pkgdir"/usr/bin/intel_sanitize_gpu  
-  rmdir "$pkgdir"/usr/bin
-  
   # remove files provided by libglvnd
   rm "$pkgdir"/usr/lib/libGLESv{1_CM,2}.so*
    
