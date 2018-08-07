@@ -4,12 +4,12 @@
 pkgname=ssb-patchwork
 _upstream=patchwork
 pkgver=3.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)"
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchwork"
 license=('AGPL3')
-depends=('libxtst' 'libxext' 'libxkbfile' 'gconf' 'libsodium' 'libxss' 'gtk2' 'alsa-lib' 'nss')
+depends=('libxtst' 'libxext' 'libxkbfile' 'gconf' 'libsodium' 'libxss' 'gtk2' 'alsa-lib' 'nss' 'electron')
 makedepends=('nodejs' 'npm')
 options=(!strip)
 source=(
@@ -20,14 +20,14 @@ source=(
 
 sha512sums=(
 '6694ca9d4f9f265813c94bf84c3931e3214eae75e200c23848ef6fb9992b31e85c905463fc4f8e897aa49ad15c29be9a2485900bd11d68545e48f193236fe423'
-'bbcd812b57fbef59993db18e7ac650013afe671846f7ea7b4908e7e664508a034851b336de2593dad11d871e803e55548896d55468339d91d4d4023ea2fe3b08'
+'0df1ea65d60742d82ef04bea84376380cad03d3cd4ffb326374578f9f9954ad326b19fc81162ae838c10ae45acdd236c37731b68ca535cbbe7ddf4b69266c33c'
 '09292ec2f7c02d741cbeb046bd99293f4d144314d0233252dd34a619e1aacbbbf28078677c0871d367240e29aa50d9197bbe0a35e5b14f7ff9a6288c386124f6'
 )
 
 
 build() {
     cd "${srcdir}/${_upstream}-${pkgver}"
-    npm ci
+    npm ci --only=production
 }
 
 package() {
