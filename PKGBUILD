@@ -4,8 +4,8 @@ _target=msp430-elf
 _tiver=1.205
 pkgname=${_target}-mcu
 pkgver=6.0.1.0
-pkgrel=1
-pkgdesc="Header files and linker scripts for MSP430 microcontrollers"
+pkgrel=2
+pkgdesc="Header files, linker scripts, and device description files for MSP430 microcontrollers"
 arch=('any')
 url="http://www.ti.com/tool/msp430-gcc-opensource"
 license=('custom')
@@ -47,6 +47,9 @@ package() {
   for f in *.h; do
     install -m644 ${f} "${pkgdir}/usr/${_target}/include"
   done
+
+  # install device description file
+  install -m644 *.csv "${pkgdir}/usr/${_target}/include"
 
   # copy license file
   install -dm755 "${pkgdir}/usr/share/licenses/msp430-elf-mcu"
