@@ -1,0 +1,16 @@
+pkgbase = perl-net-smtps
+	pkgdesc = SSL/STARTTLS support for Net::SMTP
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://metacpan.org/release/Net-SMTPS
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-authen-sasl
+	depends = perl-io-socket-ssl
+	source = https://www.cpan.org/modules/by-module/Net/Net-SMTPS-0.09.tar.gz
+	sha512sums = 856d7068fe3c41c48048dae564db5d526521753f58ac4ec9b973360991853c3a7b7ea3d3e25b17692601765be522fc5bf1456a0b645325e724a482ec559d5e5f
+
+pkgname = perl-net-smtps
+
