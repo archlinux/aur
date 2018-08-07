@@ -1,7 +1,7 @@
 # Maintainer: sasvari
 pkg="pubs"
 pkgname="$pkg-git"
-pkgver=20180801.c6edacf
+pkgver='0.8.dev2'
 pkgrel=1
 pkgdesc="Your bibliography on the command line"
 arch=(any)
@@ -13,10 +13,11 @@ provides=("pubs")
 source=("git+https://github.com/pubs/pubs.git")
 
 pkgver() {
-	cd "$srcdir/$pkg"
+	#cd "$srcdir/$pkg"
 	#git describe | sed 's/^v//; s/-/.r/; s/-/./'
 	#git rev-parse --short HEAD
-	git log -1 --format=%cd.%h --date=short|tr -d -
+	#git log -1 --format=%cd.%h --date=short|tr -d -
+	cat $srcdir/$pkg/pubs/version.py | awk '{ print $3 }'
 }
 
 build () {
