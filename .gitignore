@@ -1,5 +1,5 @@
 pkg
 src
-V*.tar.gz
-*.tar.xz
+pigpio-*.tar.gz
+python-pigpio-*.tar.xz
 .AURINFO
