@@ -6,7 +6,7 @@
 
 _pkgname=instantclient-odbc
 pkgname=oracle-${_pkgname}
-pkgver=12.2.0.1.0
+pkgver=18.3.0.0.0
 pkgrel=1
 pkgdesc="Additional libraries for enabling ODBC applications with Instant Client"
 arch=('i686' 'x86_64')
@@ -27,14 +27,14 @@ sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2')
 # Add the main file, depending on which architecture we're building for
 case "$CARCH" in
 	i686)
-		source[1]="manual://${_pkgname}-linux-$pkgver.zip"
-		md5sums[1]='6be26ef53189faa8a622fd0a80bb7473'
-		sha256sums[1]='d6794428265756c72074c46d1fcb66f45d79600cb80954d7203c84b9fc0b7055'
+		source[1]="manual://${_pkgname}-linux-${pkgver}dbru.zip"
+		md5sums[1]='04560335608ca889d319c221d95f9bb1'
+		sha256sums[1]='6e16eae942fcee10904fa25fa1a44cad1eec641590f067670c88d12b0284f2de'
 		;;
 	x86_64)
-		source[1]="manual://${_pkgname}-linux.x64-$pkgver.zip"
-		md5sums[1]='a047b8e637624b76b80d07fd8a9f1baf'
-		sha256sums[1]='ead4f196080125114c6eb0c773f516c832bd55435b5eaba2fc9362dd0742f78b'
+		source[1]="manual://${_pkgname}-linux.x64-${pkgver}dbru.zip"
+		md5sums[1]='aba462dba080d60a8fe8b063f583dca9'
+		sha256sums[1]='0972a9557d602f8a42453d368ce4d793ef65fa8309ceb16daaa6d8033d6d5e08'
 		;;
 esac
 
@@ -61,15 +61,17 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	local basedir="$srcdir/instantclient_12_2"
+	local basedir="$srcdir/instantclient_18_3"
+
 	install -d "$pkgdir/usr/lib"
-	install -m 755 -t "$pkgdir/usr/lib" "$basedir/"*.so.*
+	# Copy files but not symlinks
+	install -m 755 -t "$pkgdir/usr/lib" `find "$basedir" -type f -name '*.so*'`
 
 	install -d "$pkgdir/usr/share/oracle"
 	install -m 755 -t "$pkgdir/usr/share/oracle" "$basedir/"*.sh
 
 	install -d "$pkgdir/usr/share/doc/oracle"
-	install -m 644 -t "$pkgdir/usr/share/doc/oracle" "$basedir/"*.htm*
+	install -m 644 -t "$pkgdir/usr/share/doc/oracle" "$basedir/"*README*
 
 	# create required symlinks
 	cd "$pkgdir/usr/lib" || return 1
