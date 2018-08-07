@@ -5,7 +5,7 @@ pkgname=memsource-editor
 _pkg=MemsourceEditor
 _platform=ubuntu-14.04
 pkgver=6.216.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A CAT translation tool, requires Memsource subscription"
 arch=('x86_64')
 license=('custom')
@@ -69,6 +69,11 @@ package() {
     "${srcdir}/build/memsource-editor/MemsourceEditor.desktop"
 
   cp -a ${srcdir}/build/memsource-editor ${pkgdir}/opt
+  
+  find ${pkgdir}/opt -type d | while read _item; do chmod 755 "$_item"; done
+  find ${pkgdir}/opt -type f | while read _item; do chmod 644 "$_item"; done
+  chmod +x ${pkgdir}/opt/memsource-editor/TranslationEditor
+  chmod +x ${pkgdir}/opt/memsource-editor/run.sh
 
   for sz in 16 24 32 36 48 64 96 128 192 256; do
     install -d ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps
