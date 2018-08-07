@@ -3,11 +3,11 @@
 cpaname=Math-Random-Secure
 cpanauthor=FREW
 pkgname='perl-math-random-secure'
-pkgver='0.08'
-pkgrel=2
+pkgver='0.080001'
+pkgrel=1
 pkgdesc='Perl Math::Random::Secure CPAN module - cryptographically-secure, cross-platform replacement for rand()'
 arch=('any')
-url='http://search.cpan.org/dist/${cpaname}/'
+url="http://search.cpan.org/dist/${cpaname}/"
 license=('GPL')
 makedepends=(
     perl-moo
@@ -21,7 +21,7 @@ depends=(perl-any-moose
          perl-module-find)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha512sums=('456c7f8143e616acd2706a8fb04456b0ae53175156e935fe972674b49c20a0b42fdbb2aafc7bce4c4de521fb6b0697235539b37960ec961b2412f4492f6d8736')
+sha512sums=('2092fc01e224ebb438f927f72e835095efdb8790d8f4ef845fc7c4af3e20a05848e7632b0e752221bbe76cebbfa8186638043457ff4f80ff5727a42baec317ce')
 
 build() {
     cd "${srcdir}/${cpaname}-${pkgver}"
