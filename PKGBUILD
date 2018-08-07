@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname='persepolis'
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical front-end for aria2 download manager with lots of features."
 arch=('any')
 url="https://persepolisdm.github.io/"
