@@ -8,7 +8,7 @@
 _srcname=MediaSDK
 pkgname=intel-media-sdk
 pkgver=2018.Q2.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
@@ -46,13 +46,8 @@ build() {
     cmake \
         -G 'Unix Makefiles' \
         -D__GENERATOR:STRING='make' \
-        -DCMAKE_CONFIGURATION_TYPES:STRING='release;debug' \
-        -DCMAKE_BUILD_TYPE:STRING='release' \
         -D__IPP:STRING='e9' \
         -D__TARGET_PLATFORM:STRING='BDW' \
-        -DCMAKE_CXX_FLAGS_RELEASE:STRING="${CXXFLAGS} ${CPPFLAGS}" \
-        -DCMAKE_C_FLAGS_RELEASE:STRING="${CFLAGS} ${CPPFLAGS}" \
-        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
         -DENABLE_DRM:BOOL='ON' \
         -DENABLE_OPENCL:BOOL='ON' \
         -DENABLE_WAYLAND:BOOL='ON' \
