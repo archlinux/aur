@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ipt_ndpi'
-pkgver=1.2_1.7.0.netfilter.239.d21290a
+pkgver=1.2_2.3.0.1262.97099ff
 pkgrel=1
 pkgdesc='nDPI as netfilter extension.'
 arch=('any')
@@ -14,20 +14,18 @@ source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 install="${pkgname}.install"
 _linux_custom="ARCH"
-_kernver="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-'${_linux_custom}'\/$/ {print $2}'`"
+_kernver="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-(.*)-'${_linux_custom}'\/$/ {print $2}'`"
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  ndpi_version=`gawk 'match($0, /pr_info\("xt_ndpi\sv([0-9.]+)\sndpi\s%s\s%s\\\n"/, a) {print a[1]}' ndpi-netfilter/src/main.c`
-  package_version=`gawk 'match($0, /^(AC_INIT)\(\[(libndpi)\]\,\s\[([0-9.]+)\]\)$/, a) {print a[3]}' configure.ac`
-  git_branch=`git rev-parse --abbrev-ref HEAD`
-  git_num=`git log --pretty=oneline | wc -l | tr -d '[[:space:]]'`
-  git_tag=`git log -1 --format=%h`
-  echo -e "${ndpi_version}_${package_version}.${git_branch}.${git_num}.${git_tag}"
+  ndpi_version=`gawk 'match($0, /pr_info\("xt_ndpi\sv([0-9.]+)\sndpi\s%s\"$/, a) {print a[1]}' ndpi-netfilter/src/main.c`
+  git_version=`gawk 'match($0, /^(#define)\s(NDPI_GIT_RELEASE)\s(\")([a-z0-9.-]+)(\")$/, a) {print a[4]}' src/include/ndpi_config.h | sed -e 's/-/./g'`
+  echo -e "${ndpi_version}_${git_version}"
 }
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  git checkout netfilter-2.2
   ./autogen.sh
   cd "src/lib"
   make ndpi_network_list.c.inc
@@ -48,5 +46,4 @@ package() {
   install -Dm755 "ipt/libxt_ndpi.so" "${pkgdir}/usr/lib/iptables/libxt_ndpi.so"
   install -Dm644 "src/xt_ndpi.ko.gz" "${pkgdir}${_kernver}/extra/xt_ndpi.ko.gz"
   install -Dm644 "INSTALL" "${pkgdir}/usr/share/doc/${pkgname}/README"
-  cp -ax "kernel-patch" "${pkgdir}/usr/share/ndpi"
 }
