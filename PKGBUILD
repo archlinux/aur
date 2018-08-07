@@ -2,7 +2,7 @@
 
 _gemname=solargraph
 pkgname=ruby-solargraph
-pkgver=0.23.6
+pkgver=0.24.0
 pkgrel=0
 pkgdesc="A Ruby language server"
 arch=("any")
@@ -33,7 +33,7 @@ noextract=($_gemname-$pkgver.gem)
 license=("MIT")
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=("4b1094c0d01f10063f54a4cc8b031346ac1d13a0dfcc9721dce788bce22e9006")
+sha256sums=("4e33c27f1bd8d6a2eb03ce52ebad96cc54649bf46a4a1039df86f54606e4b8db")
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
