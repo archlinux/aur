@@ -1,6 +1,6 @@
 pkgbase = reaper
 	pkgdesc = digital audio workstation
-	pkgver = 5.95pre2
+	pkgver = 5.95pre3
 	pkgrel = 1
 	url = http://www.reaper.fm
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = reaper
 	depends = gdk-pixbuf2
 	depends = gtk3
 	depends = jack
-	source = https://www.reaper.fm/files/5.x/reaper595pre2_linux_x86_64.tar.xz
+	source = https://www.reaper.fm/files/5.x/reaper595pre3_linux_x86_64.tar.xz
 	source = git+https://github.com/justinfrankel/WDL.git
 	source = https://stash.reaper.fm/30638/reaper-desktop-support.zip
 	sha256sums = eb2a9f26a8a7f5021659bff7809de1642a2d14c6466571fba6d97092847d36a9
