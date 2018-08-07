@@ -3,7 +3,7 @@
 
 pkgname=pybind11
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight header-only library that exposes C++ types in Python and vice versa'
 arch=('any')
 url='http://pybind11.readthedocs.org/'
@@ -55,9 +55,11 @@ build () {
 #}
 
 package() {
+    local _pythonver="$(python --version | sed 's/^Python[[:space:]]//' | grep -o '^[0-9]*\.[0-9]*')"
+    
     # python modules
     cd "${pkgname}-${pkgver}"
-    python setup.py install_lib --install-dir="${pkgdir}/usr/lib/python3.6/site-packages" --optimize='1'
+    python setup.py install_lib --install-dir="${pkgdir}/usr/lib/python${_pythonver}/site-packages" --optimize='1'
     
     # python2 modules
     cd "${srcdir}/${pkgname}-${pkgver}-py2"
@@ -74,10 +76,9 @@ package() {
     
     # manpage
     cd "${srcdir}/${pkgname}-${pkgver}/docs/.build/man"
-    install -D -m644 "${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
-    gzip -9 -n -f "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+    install -D -m644 "${pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
     
     # license
     cd "${srcdir}/${pkgname}-${pkgver}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
