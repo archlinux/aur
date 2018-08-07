@@ -1,7 +1,7 @@
 pkgbase = python-pipsi
 	pkgdesc = Wraps pip and virtualenv to install scripts
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mitsuhiko/pipsi/
 	arch = any
 	license = BSD
