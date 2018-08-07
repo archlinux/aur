@@ -1,4 +1,4 @@
-pkgbase = linux
+pkgbase = linux-razerblade-2018
 	pkgver = 4.17.12
 	pkgrel = 1
 	url = https://www.kernel.org/
@@ -27,19 +27,16 @@ pkgbase = linux
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = SKIP
 
-pkgname = linux
-	pkgdesc = The vanilla Arch Linux kernel with touchpad and other various fixes.
+pkgname = linux-razerblade-2018
+	pkgdesc = The Linux-razerblade-2018 kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.7
+	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux.preset
+	backup = etc/mkinitcpio.d/linux-razerblade-2018.preset
 
-pkgname = linux-headers
-	pkgdesc = Header files and scripts for building modules for Linux kernel
-
-pkgname = linux-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel
+pkgname = linux-razerblade-2018-headers
+	pkgdesc = Header files and scripts for building modules for Linux-razerblade-2018 kernel
 
