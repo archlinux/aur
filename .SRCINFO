@@ -1,0 +1,15 @@
+pkgbase = arm-eabi-4.8
+	pkgdesc = Google's arm-eabi-4.8 toolchain for Android
+	pkgver = r3
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
+	arch = x86_64
+	license = unknown
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = git+https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
+	md5sums = SKIP
+
+pkgname = arm-eabi-4.8
+
