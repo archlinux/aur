@@ -7,8 +7,8 @@ pkgdesc="GStreamer Multimedia Framework Bad Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-depends=('mingw-w64-gstreamer-git' 'mingw-w64-orc')
-makedepends=('git' 'mingw-w64-meson' 'mingw-w64-openh264' 'mingw-w64-nettle' 'mingw-w64-opus' 'mingw-w64-bzip2' 'mingw-w64-libsrtp' 'mingw-w64-vo-aacenc' 'mingw-w64-libkate' 'mingw-w64-librsvg' 'mingw-w64-openjpeg2' 'mingw-w64-opencv' 'mingw-w64-libfdk-aac' 'mingw-w64-librtmp0')
+depends=('mingw-w64-gst-plugins-base-git' 'mingw-w64-orc')
+makedepends=('git' 'mingw-w64-meson' 'mingw-w64-openh264' 'mingw-w64-nettle' 'mingw-w64-opus' 'mingw-w64-bzip2' 'mingw-w64-libsrtp' 'mingw-w64-vo-aacenc' 'mingw-w64-libkate' 'mingw-w64-librsvg' 'mingw-w64-openjpeg2' 'mingw-w64-opencv' 'mingw-w64-libfdk-aac' 'mingw-w64-librtmp0' 'mingw-w64-libwebp' 'mingw-w64-srt')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-plugins-bad')
 
