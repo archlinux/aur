@@ -2,7 +2,7 @@
 
 pkgname=etmtk-git
 pkgver=r1148.d971c97
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage events and tasks using simple text files."
 arch=('any')
 url="http://people.duke.edu/~dgraham/etmtk/"
