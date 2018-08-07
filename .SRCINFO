@@ -1,7 +1,8 @@
 pkgbase = passhole
 	pkgdesc = KeePass CLI + dmenu interface
-	pkgver = r69.5f561f6
+	pkgver = 1.5.0
 	pkgrel = 1
+	url = https://github.com/purdueLUG/passhole
 	arch = any
 	makedepends = python-setuptools
 	makedepends = git
@@ -12,8 +13,8 @@ pkgbase = passhole
 	depends = python-colorama
 	depends = python-pyuserinput-git
 	depends = python-easypysmb
-	source = git+https://github.com/purdueLUG/passhole.git
-	md5sums = SKIP
+	source = https://codeload.github.com/purdueLUG/passhole/tar.gz/v1.5.0
+	md5sums = 322c2c5222eac851a5b2ad65f94ae337
 
 pkgname = passhole
 
