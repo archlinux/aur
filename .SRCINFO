@@ -1,0 +1,17 @@
+pkgbase = levmar-openmp
+	pkgdesc = Levenberg-Marquardt nonlinear least squares algorithms in C/C++ (OpenMP compatible)
+	pkgver = 2.6
+	pkgrel = 3
+	url = http://users.ics.forth.gr/~lourakis/levmar
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = f2c
+	depends = lapack
+	provides = levmar
+	conflicts = levmar
+	source = http://users.ics.forth.gr/~lourakis/levmar/levmar-2.6.tgz
+	md5sums = 16bc34efa1617219f241eef06427f13f
+
+pkgname = levmar-openmp
+
