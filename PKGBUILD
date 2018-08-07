@@ -4,7 +4,7 @@ _gitname=i3lock-fancy
 _branch=dualmonitors
 pkgname=i3lock-fancy-dualmonitors-git
 pkgver=r89.9539878
-pkgrel=1
+pkgrel=2
 pkgdesc="i3lock-color script: blurs background, adds lock icon and text with multihead support."
 arch=('i686' 'x86_64')
 url="https://github.com/meskarune/i3lock-fancy"
@@ -21,5 +21,5 @@ pkgver() {
 }
 package() {
     cd "${srcdir}"/"$_gitname"
-    make install
+    make PREFIX=/usr DESTDIR="$pkgdir" install
 }
