@@ -2,7 +2,7 @@
 
 pkgname=('python-sysv-ipc' 'python2-sysv-ipc')
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='System V IPC primitives (semaphores, shared memory and message queues) for Python'
 arch=('any')
 url='http://semanchuk.com/philip/sysv_ipc/'
