@@ -8,7 +8,7 @@
 _srcname=MediaSDK
 pkgname=intel-media-sdk
 pkgver=2018.Q2.1
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
@@ -24,8 +24,12 @@ makedepends=('cmake' 'libpciaccess' 'libx11' 'libxcb')
 provides=('libmfx')
 conflicts=('intel-media-sdk-git' 'intel-media-stack-bin' 'intel-media-server-studio')
 options=('!emptydirs')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/archive/MediaSDK-${pkgver/.Q/-Q}.tar.gz")
-sha256sums=('cad29f3b034ca40f1a85748a9514bf53e035b432d434ea3e348e05bcb305e932')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/archive/MediaSDK-${pkgver/.Q/-Q}.tar.gz"
+        'intel-media-sdk.conf'
+        'intel-media-sdk.sh')
+sha256sums=('cad29f3b034ca40f1a85748a9514bf53e035b432d434ea3e348e05bcb305e932'
+            '0262233655f54fc1753ea71e36a569f9478c0905e67395246c85ad4a6d9e27c1'
+            'de8c6dd5ac4db49a6d40d94b821bfca4b3480159863b4c1dfa0f21fdd6baeeb0')
 
 prepare() {
     cd "MediaSDK-MediaSDK-${pkgver/.Q/-Q}"
@@ -65,7 +69,7 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    # includes (add 'mfx' folder for ffmpeg compatibility)
+    # headers (add 'mfx' folder for ffmpeg compatibility)
     mkdir -p "${pkgdir}/opt/intel/mediasdk/include/mfx"
     cd "${pkgdir}/opt/intel/mediasdk/include"
     for _header in *.h
@@ -74,6 +78,11 @@ package() {
         ln -sf ../"$_header" "$_header"
         cd ..
     done
+    
+    # ld.so and profile configuration files
+    cd "$srcdir"
+    install -D -m644 intel-media-sdk.conf -t "${pkgdir}/etc/ld.so.conf.d"
+    install -D -m755 intel-media-sdk.sh   -t "${pkgdir}/etc/profile.d"
     
     # license
     cd "${srcdir}/MediaSDK-MediaSDK-${pkgver/.Q/-Q}"
