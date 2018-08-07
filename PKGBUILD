@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-pytest-doctestplus
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pytest plugin that provides advanced features for testing example code in documentation"
 arch=('i686' 'x86_64')
 url="https://github.com/astropy/pytest-doctestplus"
