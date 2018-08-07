@@ -3,7 +3,7 @@
 
 pkgname=deltarpm
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Create deltas between rpms"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -18,6 +18,7 @@ md5sums=('c48086229bdfcf5af890f104231180c6')
 build() {
 	cd "$pkgname-$pkgver"
 	make PYTHONS='python2 python' \
+	     LDFLAGS="${LDFLAGS}"     \
 	     prefix=/usr              \
 	     zlibbundled=''           \
 	     zlibldflags='-lz'        \
@@ -31,10 +32,11 @@ package() {
 	make DESTDIR="$pkgdir/"       \
 	     PYTHONS='python2 python' \
 	     prefix=/usr              \
+	     mandir=/usr/share/man    \
 	     install
 
-	install -D -m644 README      "$pkgdir/usr/share/doc/$pkgname/README"
-	install -D -m644 LICENSE.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE.BSD"
+	install -Dp -m644 README      "$pkgdir/usr/share/doc/$pkgname/README"
+	install -Dp -m644 LICENSE.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE.BSD"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
