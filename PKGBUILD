@@ -6,7 +6,7 @@
 
 _pkgname=instantclient-sdk
 pkgname=oracle-${_pkgname}
-pkgver=12.2.0.1.0
+pkgver=18.3.0.0.0
 pkgrel=1
 pkgdesc="Additional header files for developing Oracle applications with Instant Client"
 arch=('i686' 'x86_64')
@@ -27,14 +27,14 @@ sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2')
 # Add the main file, depending on which architecture we're building for
 case "$CARCH" in
 	i686)
-		source[1]="manual://${_pkgname}-linux-$pkgver.zip"
-		md5sums[1]='a53172101846638c9e8c32af63991130'
-		sha256sums[1]='38aa0c3961d44bec4819e04de1ab0642f2e9ec92dbbad327a7935224c7239d8b'
+		source[1]="manual://${_pkgname}-linux-${pkgver}dbru.zip"
+		md5sums[1]='ecbfbc0f37e9dba4dbedaae64e3edb23'
+		sha256sums[1]='410a73ea64e976b1ba22a31ee08eb7b2f534f073e21c9a24c0b15c2bc7248423'
 		;;
 	x86_64)
-		source[1]="manual://${_pkgname}-linux.x64-$pkgver.zip"
-		md5sums[1]='077fa2f215185377ccb670de9ca1678f'
-		sha256sums[1]='7f404c3573c062ce487a51ac4cfe650c878d7edf8e73b364ec852645ed1098cb'
+		source[1]="manual://${_pkgname}-linux.x64-${pkgver}dbru.zip"
+		md5sums[1]='0878c7839e2863724004833cecc66e82'
+		sha256sums[1]='0195b3a33c37bcb85e2f879624120bdf977fab736c0d8aee10532c9e0295a741'
 		;;
 esac
 
@@ -62,7 +62,7 @@ plain ""
 
 package() {
 	# Put all .h files into /usr/include
-	cd "$srcdir/instantclient_12_2/"
+	cd "$srcdir/instantclient_18_3/"
 	install -d "$pkgdir/usr/include"
 	install -m 644 -t "$pkgdir/usr/include" sdk/include/*.h
 	# But we don't want this one, it is unused and it conflicts with another
