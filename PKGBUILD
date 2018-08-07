@@ -6,7 +6,7 @@ pkgdesc='Brother HL-L2395DW CUPS driver'
 arch=('i686' 'x86_64')
 url='http://www.brother.com'
 license=('GPL')
-depends=('cups' 'perl')
+depends=('cups' 'perl', 'ghostscript')
 source=(http://download.brother.com/welcome/dlf103563/hll2395dwpdrv-$pkgver-1.i386.rpm)
 sha256sums=('522b57c1b024f6860a0d0b22fe7050788b7a30b6be920479dff85865ff937380')
 
