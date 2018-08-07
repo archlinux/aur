@@ -18,15 +18,15 @@
 pkgbase="zfs-linux-hardened-git"
 pkgname=("zfs-linux-hardened-git" "zfs-linux-hardened-git-headers")
 
-pkgver=2018.07.31.r4657.g492f64e94.4.17.11.a.1
+pkgver=2018.08.03.r4665.gc8c308362.4.17.12.a.1
 pkgrel=1
-makedepends=("linux-hardened-headers=4.17.11.a-1" "git")
+makedepends=("linux-hardened-headers=4.17.12.a-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=492f64e941e3d6b947d1cc387a1a380c0c738b09" "upstream-ac09630-Fix-zpl_mount-deadlock.patch")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=c8c308362c2f0a43adbe21a44b3443a27d2c7ca9" "upstream-ac09630-Fix-zpl_mount-deadlock.patch")
 sha256sums=("SKIP" "1799f6f7b2a60a23b66106c9470414628398f6bfc10da3d0f41c548bba6130e8")
 license=("CDDL")
-depends=("kmod" "zfs-utils-common-git=2018.07.31.r4657.g492f64e94" "linux-hardened=4.17.11.a-1")
+depends=("kmod" "zfs-utils-common-git=2018.08.03.r4665.gc8c308362" "linux-hardened=4.17.12.a-1")
 
 build() {
     cd "${srcdir}/zfs"
@@ -34,8 +34,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.9 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.17.11.a-1-hardened/build \
-                --with-linux-obj=/usr/lib/modules/4.17.11.a-1-hardened/build
+                --with-linux=/usr/lib/modules/4.17.12.a-1-hardened/build \
+                --with-linux-obj=/usr/lib/modules/4.17.12.a-1-hardened/build
     make
 }
 
@@ -61,5 +61,5 @@ package_zfs-linux-hardened-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.17.11.a-1-hardened/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.17.12.a-1-hardened/Module.symvers
 }
