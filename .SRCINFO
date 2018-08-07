@@ -1,0 +1,14 @@
+pkgbase = zsh-git-prompt-git
+	pkgdesc = a nice and fast python based zsh-git-prompt (haskell support not packaged)
+	pkgver = v0.3.r129.g11b83ba
+	pkgrel = 1
+	url = https://github.com/starcraftman/zsh-git-prompt.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = python>=2.7.1
+	source = zsh-git-prompt::git+https://github.com/starcraftman/zsh-git-prompt.git#branch=master
+	sha256sums = SKIP
+
+pkgname = zsh-git-prompt-git
+
