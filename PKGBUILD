@@ -1,29 +1,25 @@
-# Maintainer: coderkun <olli AT coderkun DOT de>
+# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Contributor: coderkun <olli@derkun.de>
 
-pkgname=rssowl
+_upname=RSSOwl
+pkgname=${_upname,,}
 pkgver=2.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A java based RSS feed reader with Google Reader synchronization"
-arch=('i686' 'x86_64')
-url="http://rssowl.org/"
+arch=('x86_64')
+url='http://rssowl.org/'
 license=('EPL')
 depends=('java-runtime' 'alsa-lib' 'gtk2' 'gconf' 'hunspell' 'libxt' 'nss')
 install=rssowl.install
-
-if [[ "$CARCH" = "x86_64" ]]; then
-	source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.linux.x86_64.zip")
-	md5sums=('7751803db518b267b0dca121c1532747')
-else
-	source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.linux.x86.zip")
-	md5sums=('7295bbce792dc921ac89781ac717e6f6')
-fi
-source+=("${pkgname}.desktop")
-md5sums+=('8cdc03eb95a959e4196d1995783e24b1')
+source=("https://github.com/${pkgname}/${_upname}/releases/download/${pkgver}/${_upname}.${pkgver}.Linux-x64.zip"
+         "${pkgname}.desktop")
+sha256sums=('ca79aca7f141d30d550f46d47616e5f1d5a816d7496a4cb76dfc7a0c281975d7'
+            '197d0f1ffc59f5046dc455f485b7535ae2143315a498338911eafbf3cc62eb42')
 
 build() {
   cd "${srcdir}/${pkgname}"
 
-  echo -e "#!/bin/sh\n\n/usr/share/${pkgname}/RSSOwl \"\${@}\"" > "${pkgname}"
+  echo -e "#!/bin/sh\n\n/usr/share/${pkgname}/${_upname} \"\${@}\"" > "${pkgname}"
   sed -i -e 's:moz_libdir=.*:moz_libdir=/usr/share/rssowl/xulrunner:' xulrunner/xulrunner
 }
 
