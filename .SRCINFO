@@ -1,6 +1,6 @@
 pkgbase = weechat-python3-git
 	pkgdesc = Weechat compiled with Python3 instead of Python2, experimental
-	pkgver = 1.9.433.g58a6b564e
+	pkgver = 2.2.6140aac
 	pkgrel = 1
 	url = https://github.com/weechat/weechat
 	arch = i686
