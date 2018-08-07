@@ -1,7 +1,7 @@
 pkgbase = confluent-platform
 	pkgdesc = Confluent, founded by the creators of Apache Kafka, delivers a complete execution of Kafka for the Enterprise, to help you run your business in real time.
-	pkgver = 4.1.1
-	pkgrel = 3
+	pkgver = 5.0.0
+	pkgrel = 4
 	url = https://www.confluent.io/
 	install = install_confluent.sh
 	arch = any
@@ -64,9 +64,9 @@ pkgbase = confluent-platform
 	backup = etc/camus/log4j.xml
 	backup = etc/kafka-connect-activemq/ActiveMQSourceConnector.properties
 	backup = etc/kafka-connect-activemq/connect-avro-localhost.properties
-	source = http://packages.confluent.io/archive/4.1/confluent-4.1.1-2.11.tar.gz
+	source = https://packages.confluent.io/archive/5.0/confluent-5.0.0-2.11.tar.gz
 	source = systemd_sysusers.d_confluent.conf
-	sha256sums = e10486e514a92d0e8c70efe23b1671e5b92b7e770542d095c506210699a95e42
+	sha256sums = 2470b0f3b39538effd3cf03e8a989ff98fe32bb9824a3e1b7705528a5488ce81
 	sha256sums = 4562e59618b353ba1d515cc28304ce99acfe46a5e84d0e139731c81486a425c9
 
 pkgname = confluent-platform
