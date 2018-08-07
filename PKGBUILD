@@ -6,7 +6,7 @@
 
 _pkgname=instantclient-sqlplus
 pkgname=oracle-${_pkgname}
-pkgver=12.2.0.1.0
+pkgver=18.3.0.0.0
 pkgrel=1
 pkgdesc="SQL*Plus for Oracle Instant Client"
 arch=('i686' 'x86_64')
@@ -27,14 +27,14 @@ sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2')
 # Add the main file, depending on which architecture we're building for
 case "$CARCH" in
 	i686)
-		source[1]="manual://${_pkgname}-linux-$pkgver.zip"
-		md5sums[1]='3c9a3ec6172f620a065ee8bc68c408bf'
-		sha256sums[1]='c289ceaa6196e44a6e85d7342c9440b25c237018f6a1bdadb72d7cc2075f504c'
+		source[1]="manual://${_pkgname}-linux-${pkgver}dbru.zip"
+		md5sums[1]='b5243e7d5af06ef016ccd195994477fe'
+		sha256sums[1]='205332cd195025dec17f08e1e422ea57b843461609a448685311f71207629395'
 		;;
 	x86_64)
-		source[1]="manual://${_pkgname}-linux.x64-$pkgver.zip"
-		md5sums[1]='93ae87df1d08bb31da57443a416edc8c'
-		sha256sums[1]='d49b2bd97376591ca07e7a836278933c3f251875c215044feac73ba9f451dfc2'
+		source[1]="manual://${_pkgname}-linux.x64-${pkgver}dbru.zip"
+		md5sums[1]='a84ec277d237eed38ac51b7cc4372794'
+		sha256sums[1]='2984881b856399ae4e7231c184790499c0d9b5d7e508beb579cc68ef036f3162'
 		;;
 esac
 
@@ -61,7 +61,7 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	local basedir="$srcdir/instantclient_12_2"
+	local basedir="$srcdir/instantclient_18_3"
 	install -d "$pkgdir/usr/bin"
 	install -d "$pkgdir/usr/lib"
 	install -m 755 -t "$pkgdir/usr/bin" "$basedir/sqlplus"
