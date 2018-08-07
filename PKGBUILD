@@ -7,7 +7,7 @@
 
 _pkgname=instantclient-basic
 pkgname=oracle-${_pkgname}
-pkgver=12.2.0.1.0
+pkgver=18.3.0.0.0
 pkgrel=1
 pkgdesc="Light replacement for the Oracle client (files to run OCI, OCCI and JDBC-OCI programs)"
 arch=('i686' 'x86_64')
@@ -30,14 +30,14 @@ sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
 # Add the main file, depending on which architecture we're building for
 case "$CARCH" in
 	i686)
-		source[2]="manual://${_pkgname}-linux-$pkgver.zip"
-		md5sums[2]='afc84c453dd143d6138baa1faf3e3a52'
-		sha256sums[2]='32f5a53bdaf65e87b176a68fa0097e2a5249952be6f4afc3e0ef80345591a9cf'
+		source[2]="manual://${_pkgname}-linux-${pkgver}dbru.zip"
+		md5sums[2]='bb339d8385202356a33c100f46fa3214'
+		sha256sums[2]='81232ff25843dca58778f7ab9e6b842292dc5ef88db2c51a5eb5ef841c1cefbd'
 		;;
 	x86_64)
-		source[2]="manual://${_pkgname}-linux.x64-$pkgver.zip"
-		md5sums[2]='d9639092e3dea2e023272e52e2bd42da'
-		sha256sums[2]='5015e3c9fba84e009f7519893f798a1622c37d1ae2c55104ff502c52a0fe5194'
+		source[2]="manual://${_pkgname}-linux.x64-${pkgver}dbru.zip"
+		md5sums[2]='8c888729c2d65019498a35395c0595b9'
+		sha256sums[2]='093e660cdaba970a0d6c9951ea435aa1abe71898aaea7ff5ffee4d15b6642f87'
 		;;
 esac
 
@@ -64,11 +64,12 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	cd "$srcdir/instantclient_12_2/"
+	cd "$srcdir/instantclient_18_3/"
 	install -d "$pkgdir/usr/bin"
 	install -d "$pkgdir/usr/lib"
 	install -m 755 -t "$pkgdir/usr/bin" adrci genezi uidrvci
-	install -m 755 -t "$pkgdir/usr/lib" *.so*
+	# Copy files but not symlinks
+	install -m 755 -t "$pkgdir/usr/lib" `find . -type f -name '*.so*'`
 	install -m 644 -t "$pkgdir/usr/lib" *.jar
 
 	# Copy across the script to set environment variables
