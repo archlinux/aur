@@ -1,9 +1,10 @@
+# Maintainer: Pierpaolo Valerio <gondsman@techgeek.co.in>
 # Contributor: Excitable Snowball <excitablesnowball@gmail.com>
 
 pkgbase='python-bokeh'
 pkgname=('python-bokeh' 'python2-bokeh')
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive Web Plotting for Python'
 arch=('any')
 url='http://bokeh.pydata.org/'
