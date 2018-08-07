@@ -1,12 +1,13 @@
 # Maintainer: stef204 < base64 -d c3RlZjIwNEB5YW5kZXguY29tCg== >
 
 pkgname=etmtk-git
-pkgver=r1095.15ede9e
-pkgrel=1
+pkgver=r1148.d971c97
+pkgrel=2
 pkgdesc="Manage events and tasks using simple text files."
 arch=('any')
 url="http://people.duke.edu/~dgraham/etmtk/"
 license=('GPL')
+groups=('modified')
 depends=('tk' 'python-dateutil' 'python-yaml')
 optdepends=('python-icalendar: iCalendar support')
 makedepends=('python-setuptools')
