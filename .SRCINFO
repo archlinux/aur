@@ -1,6 +1,6 @@
 pkgbase = arm-eabi-4.7
 	pkgdesc = Google's arm-eabi-4.7 toolchain for Android
-	pkgver = 1
+	pkgver = r5
 	pkgrel = 1
 	url = https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.7
 	arch = x86_64
