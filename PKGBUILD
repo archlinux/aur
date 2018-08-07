@@ -31,7 +31,7 @@ package_python-anyqt() {
 package_python2-anyqt() {
   depends=('python2-pyqt5')
 
-  cd "${srcdir}/AnyQt-$pkgver"
+  cd "${srcdir}/AnyQt-$pkgver-py2"
   python2 setup.py install --root=${pkgdir} --optimize=1
 }
 
