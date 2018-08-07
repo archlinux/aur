@@ -3,7 +3,7 @@
 pkgname=deskew-hg
 _hgname=app-deskew
 _bbuser=galfar
-pkgrel=1
+pkgrel=2
 pkgver=30.2c46db9991ab
 pkgdesc="deskew is a command-line program which deskews images containing text"
 arch=("any")
@@ -27,5 +27,5 @@ package() {
   chmod +x compile.sh
   # This file just makes a dir. & calls `fpc` as of when I wrote this PKGBUILD
   ./compile.sh
-  install -Dm644 "$srcdir/${_hgname}/Bin/deskew" "$pkgdir/usr/bin/deskew"
+  install -D "$srcdir/${_hgname}/Bin/deskew" "$pkgdir/usr/bin/deskew"
 }
