@@ -23,5 +23,5 @@ package() {
 
   # symlink to fix assets
   install -d "$pkgdir"/usr/share/jupyter
-  ln -s /usr/lib/python3.6/site-packages/jupyterlab "$pkgdir"/usr/share/jupyter/lab
+  ln -s `python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`/jupyterlab "$pkgdir"/usr/share/jupyter/lab
 }
