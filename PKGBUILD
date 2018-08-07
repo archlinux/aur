@@ -3,7 +3,8 @@
 
 pkgbase=(python-linode_api4-git)
 pkgname=(python-linode_api4-git python2-linode_api4-git)
-pkgver=4.1.9b1.r40.gbd9135d
+epoch=1
+pkgver=1.0.2.r2.g9d1509b
 pkgrel=1
 pkgdesc="Bindings for the Linode API v4"
 arch=('any')
