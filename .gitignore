@@ -1,9 +1,17 @@
+# Directories
+pkg/
+src/
+
+# Archives
 *.tar
 *.tar.*
 *.zip
 *.tgz
+
+# Logs
 *.log
 *.log.*
 *.sig
-pkg/
-src/
+
+# Files
+LICENSE

@@ -1,15 +1,24 @@
 pkgbase = acmetool-bin
-	pkgdesc = An easy-to-use command line tool for automatically acquiring certificates from ACME servers - Precompiled cgo binary from official repository
+	pkgdesc = Command line tool for automatically acquiring certificates from ACME servers (official precompiled cgo binary)
 	pkgver = 0.0.67
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hlandau/acme
 	arch = x86_64
 	license = MIT
+	depends = libcap
 	provides = acmetool
 	conflicts = acmetool
 	conflicts = acmetool-git
 	source = acmetool-bin-v0.0.67.tar.gz::https://github.com/hlandau/acme/releases/download/v0.0.67/acmetool-v0.0.67-linux_amd64_cgo.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/hlandau/rilts/master/licences/COPYING.MIT
+	source = acmetool.conf
+	source = acmetool.timer
+	source = acmetool.service
 	sha512sums = 6502616e9bc7ba8905774158b7a007a929ca67ceb6559bce27dbf162ceb38b23424d2c7ee2a89ca9b51575e292b1e4f157d72c48b4d8bd1039dabbd4ef313978
+	sha512sums = 68678af7dbe694b371171c8f19481670590c4fc659a367c8aabfcf8ecbcb9406ce2fa9ae3966bab21a5c447dd5663ee6162148e6dfac87707e0633c35782469e
+	sha512sums = 79133c499779c9610852e5b03e923d5d886cc56f274a73c91d6a27d0c52152975bdd95e3b3ccb4e7dd0e75d8072c1c1c4db54b5620f222297fed12a2fc223386
+	sha512sums = 60dc78a7404101606f6a3e1107c01ca84ab46e391b3085f98695ecdfe01470d38efabcda4c3b0e631d3ff82741c8c565f7f29cec3d40cad9c1eae090efeddfb9
+	sha512sums = bc7d6750d115a0aa19bb73d50252fa4758ebb275bca466a513ddd5c857e9454b6c4c0c5cdaa285a316f81ad50f611ceb154afed81d9a76da737645ffe9129581
 
 pkgname = acmetool-bin
 
