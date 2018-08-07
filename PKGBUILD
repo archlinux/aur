@@ -2,8 +2,8 @@
 pkgname='em-keyboard'
 pkgdesc='Command-line utility for referencing emoji characters by name'
 pkgver='0.0.7'
-pkgrel='2'
-url='https://github.com/kennethreitz'
+pkgrel='3'
+url='https://github.com/kennethreitz/em-keyboard'
 license=('custom:MIT')
 arch=('any')
 depends=('python-docopt' 'python-xerox')
