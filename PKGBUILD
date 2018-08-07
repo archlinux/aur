@@ -1,23 +1,44 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
-pkgname=python-modulemd
-pkgver=1.3.3
+pkgbase=python-smartcols
+pkgname=('python2-smartcols' 'python-smartcols')
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="A python library for manipulation of the proposed module metadata format."
+pkgdesc="Python bindings for util-linux libsmartcols-library."
 arch=("any")
-license=("MIT")
-url="http://modulemd.readthedocs.io/en/latest/"
-depends=("python3")
-source=("https://files.pythonhosted.org/packages/7c/e3/b066246183455e8437774bb4408ef3f61f23adfca52efab6285160299378/modulemd-1.3.3.tar.gz")
-sha256sums=('661a196187d8f69fdee04835ca3a7faae60b7fea9a5c61c8b142c19b6444f08b')
+license=("GPL")
+url="https://github.com/ignatenkobrain/python-smartcols"
+depends=("python" "python2")
+source=("https://github.com/ignatenkobrain/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('88dfe9ee99089b1b84b3476362e6f0be2f89d4420a6cbe7436fbd661f07f29d1')
 
-build() {
-  cd "${srcdir}/${pkgname#python-}-${pkgver}"
-  python3 ./setup.py build
+prepare() {
+	cp -a "${pkgbase}-${pkgver}" "${pkgbase}-${pkgver}-py2"
+	# change python to python2
+	cd "${pkgbase}-${pkgver}-py2"
+	find . -name '*.py' -exec sed -i "s|python|python2|g" {} \;
 }
 
-package() {
-  cd "${srcdir}/${pkgname#python-}-${pkgver}"
-  python3 ./setup.py install --root="${pkgdir}" --optimize=1
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+build() {
+	cd "${srcdir}/${pkgbase}-${pkgver}"
+	python ./setup.py build
+
+	cd "${srcdir}/${pkgbase}-${pkgver}-py2"
+	python2 ./setup.py build
+}
+
+package_python-smartcols() {
+	depends=("python")
+
+	cd "${srcdir}/${pkgbase}-${pkgver}"
+	python ./setup.py install --root="${pkgdir}" --optimize=1
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python2-smartcols() {
+	depends=("python2")
+
+	cd "${srcdir}/${pkgbase}-${pkgver}-py2"
+	python2 ./setup.py install --root="${pkgdir}" --optimize=1
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
