@@ -1,6 +1,6 @@
 pkgbase = protobuf-bin
 	pkgdesc = Protocol Buffers - Google's data interchange format (binary version)
-	pkgver = v3.6.1
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/google/protobuf
 	arch = x86_64
