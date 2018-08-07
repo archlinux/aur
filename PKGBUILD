@@ -1,23 +1,24 @@
 pkgname=moka-icon-theme
-pkgver=5.3.6
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="A stylized Linux desktop icon set, designed to be clear, simple and consistent."
 arch=('any')
 url="https://snwh.org/moka"
 license=('GPL3' 'CCPL-4.0:by-sa')
 depends=('faba-icon-theme')
+makedepends=('meson')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/snwh/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('819b8bf752bbe573ad51e77e3cfe6a85')
-sha512sums=('b5967eab0e06639b515af5d57d03adb0055c202327a45f5656cc08e87444eff7563a8a7e6a20ec28edef112d4ce5709dd413832d0265d1b33d496067d8c68838')
+md5sums=('27d2e54bf33bcb428ece6ff2a97e2b67')
+sha512sums=('3cb6889eae3ddfcad68a05fd6cdf5e92b5d78b965b22df1c289f1e274491be8cb967965cbdf430fe218337994b19592546f3cadf8c39ff5e573d6d7e76648238')
 
 build() {
   cd "$pkgname-$pkgver"
-  bash autogen.sh
-  make
+  arch-meson . build
+  ninja -C build
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
