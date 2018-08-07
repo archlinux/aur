@@ -6,7 +6,7 @@
 # - lucke <lucke at o2 dot pl>
 
 pkgname=weechat-python3-git
-pkgver=1.9.433.g58a6b564e
+pkgver=2.2.6140aac
 pkgrel=1
 pkgdesc="Weechat compiled with Python3 instead of Python2, experimental"
 arch=('i686' 'x86_64')
@@ -31,7 +31,6 @@ build() {
   cmake -Wno-dev "$srcdir/$_gitname" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.6m.so \
         -DENABLE_MAN=ON \
         -DENABLE_DOC=ON \
         -DENABLE_PYTHON3=ON
