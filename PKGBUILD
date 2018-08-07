@@ -2,7 +2,7 @@
 
 _name=ddnet
 pkgname=$_name-git
-pkgver=11.2.1.r0.gaf2d86765
+pkgver=11.3.1.r0.g461a83871
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('x86_64')
