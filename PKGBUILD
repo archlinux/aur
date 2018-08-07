@@ -2,7 +2,7 @@
 
 pkgname=('python-mpld3' 'python2-mpld3')
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='D3 Viewer for Matplotlib'
 arch=('any')
 url='http://mpld3.github.io/'
