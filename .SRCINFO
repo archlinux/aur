@@ -1,14 +1,13 @@
 pkgbase = aggregate
 	pkgdesc = Tool for aggregating CIDR IPv4 networks
-	pkgver = 1.0.2
+	pkgver = 1.6
 	pkgrel = 1
-	url = http://horms.net/projects/aggregate/
+	url = https://ftp.isc.org/isc/aggregate/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	depends = vanessa-logger
-	source = http://horms.net/projects/aggregate/download/aggregate-1.0.2.tar.gz
-	sha256sums = 019dc17498515f470015a427891f8e70f4ec424ab9960e10cdfb6462bec607c0
+	license = MIT
+	source = https://ftp.isc.org/isc/aggregate/aggregate-1.6.tar.gz
+	sha256sums = 166503005cd8722c730e530cc90652ddfa198a25624914c65dffc3eb87ba5482
 
 pkgname = aggregate
 
