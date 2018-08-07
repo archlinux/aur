@@ -5,20 +5,21 @@
 
 pkgname=syslog-ng-nosystemd
 pkgver=3.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 groups=('eudev-base')
-url="http://www.balabit.com/network-security/syslog-ng/"
+url="https://www.syslog-ng.com/products/open-source-log-management/"
 depends=('awk' 'glib2' 'libcap' 'libdbi' 'libnsl' 'udev')
-makedepends=('flex' 'pkg-config' 'libxslt' 'json-c' 'mongo-c-driver' 'librabbitmq-c' 'python')
+makedepends=('flex' 'pkg-config' 'libxslt' 'json-c' 'mongo-c-driver' 'librabbitmq-c' 'python' 'libesmtp')
 optdepends=('logrotate: for rotating log files'
             'json-c: for json-plugin'
             'curl: for the HTTP module'
             'librabbitmq-c: for the AMQP plugin'
             'mongo-c-driver: for the MongoDB plugin'
             'python: for the Python plugin'
+            'libesmtp: for the SMTP plugin'
             'syslog-ng-openrc: syslog-ng openrc initscript')
 provides=("syslog-ng=${pkgver}")
 replaces=('syslog-ng' 'syslog-ng-eudev' 'eventlog')
@@ -52,6 +53,7 @@ build() {
     --disable-spoof-source \
     --enable-ipv6 \
     --enable-sql \
+    --enable-smtp \
     --enable-manpages \
     --with-jsonc=system \
     --with-mongoc=system \
