@@ -1,14 +1,13 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 
 pkgname=logitechmediaserver
-pkgver=7.9.1.arch3
+pkgver=7.9.2.arch2
 pkgrel=1
 pkgdesc='Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Release-Version, if you prefer bleeding edge consider using logitechmediaserver-git instead)'
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/stefansielaff/slimserver'
 license=('GPL' 'custom')
 depends=('perl>=5.26'
-         'perl<5.27'
          'perl-anyevent'
          'perl-archive-zip'
          'perl-cgi'
@@ -31,7 +30,6 @@ depends=('perl>=5.26'
          'perl-lwp-protocol-https'
          'perl-module-build'
          'perl-net-ipv4addr'
-         'perl-net-upnp'
          'perl-path-class'
          'perl-soap-lite'
          'perl-readonly'
@@ -53,20 +51,22 @@ install=install
 source=("slimserver-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "slimserver-vendor-${pkgver}.tar.gz::${url}-vendor/archive/${pkgver}.tar.gz"
         'service')
-sha256sums=('ea107b51120446a53c0536b6b5b283eb31551ed6415070026bf2526abf0145f5'
-            '2852dc0457d21be21d69b8978a950be978e0e5602483862cbe4e838acefa3bd8'
+sha256sums=('11734bb88df1595650ca87e0e2c3cd4dff3ce865c05f84c5d50b4abf8e4305ad'
+            '77e1fe386e68e45e9f420d873ab10f7e018aea6195d2019bfa451ddab6febc02'
             '07208896fed78eb9cb0086360c02f3226ecf1be9a061d55a6f95b9a60b6d6735')
 
 prepare() {
     cd "${srcdir}/slimserver-${pkgver}"
     case $CARCH in
-        x86_64) rm -rf Bin/{arm,armhf}-linux ;;
-        i686) rm -rf Bin/{arm,armhf}-linux ;;
-        arm*) rm -rf Bin/{i386,x86_64}-linux ;;
+        x86_64) rm -rf Bin/{arm,armhf,aarch64}-linux ;;
+        i686) rm -rf Bin/{arm,armhf,aarch64}-linux ;;
+        aarch64) rm -rf Bin/{i386,x86_64,arm,armhf}-linux ;;
+        arm*) rm -rf Bin/{i386,x86_64,aarch64}-linux ;;
     esac
     cd "${srcdir}/slimserver-${pkgver}/CPAN"
     mkdir _PRESERVE
     cp -p --parents URI/Find.pm _PRESERVE
+    cp -pr --parents Net/UPnP* _PRESERVE
     rm -f {AE.pm,AnyEvent.pm,CGI.pm,DBI.pm,Error.pm,EV.pm,JSON/XS.pm,LWP.pm,Readonly.pm,Template.pm,Text/Glob.pm,URI.pm,version.pm}
     rm -rf {AnyEvent,Archive,CGI,common,DBI,DBD,Digest,EV,HTML,HTTP,I18N,Mac,Log,LWP,Net,Path,SOAP,Sub,Template,Test,URI,version,XML,YAML}
     cp -rf _PRESERVE/* .
