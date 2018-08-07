@@ -7,7 +7,6 @@ pkgdesc="Manage events and tasks using simple text files."
 arch=('any')
 url="http://people.duke.edu/~dgraham/etmtk/"
 license=('GPL')
-groups=('modified')
 depends=('tk' 'python-dateutil' 'python-yaml')
 optdepends=('python-icalendar: iCalendar support')
 makedepends=('python-setuptools')
