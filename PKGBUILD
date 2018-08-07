@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/ZerBea/${_bpn}"
 
 pkgver=4.2.0.r21.g3dbf4e6
-pkgrel=2
+pkgrel=3
 
 source=("git+$url")
 md5sums=('SKIP')
@@ -44,5 +44,5 @@ package () {
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_bpn}/${_docfile}"
   done
   
-  install -D -v -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -D -v -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
