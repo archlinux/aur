@@ -12,7 +12,7 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.3.0_devel.103997.c3325097be
+pkgver=18.3.0_devel.104034.3dc22381fa
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -91,11 +91,6 @@ package_lib32-mesa-git () {
 
   DESTDIR="$pkgdir" ninja -C _build install
 
-  # https://bugs.freedesktop.org/show_bug.cgi?id=107487
-  # removing those files and the /usr/bin/ folder
-  rm "$pkgdir"/usr/bin/intel_dump_gpu "$pkgdir"/usr/bin/intel_sanitize_gpu  
-  rmdir "$pkgdir"/usr/bin
-  
   # remove files provided by mesa-git
   rm -rf "$pkgdir"/etc
   rm -rf "$pkgdir"/usr/include
