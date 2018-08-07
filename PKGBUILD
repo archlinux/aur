@@ -1,20 +1,34 @@
+# Maintainer: Christopher Arndt <aur at chrisarndt dot de>
+# Contributor: sebfry <sebfry -at- gmail -dot- com>
+
 pkgname=python-pyqtchart
-pkgver=5.9
-pkgrel=2
+pkgver=5.11.2
+pkgrel=1
 pkgdesc="Python bindings for the Qt Charts library"
 url="https://www.riverbankcomputing.com/software/pyqtchart/"
 depends=('python-pyqt5' 'qt5-charts')
-license=('GPLv3')
-arch=('any')
-source=(https://sourceforge.net/projects/pyqt/files/PyQtChart/PyQtChart-$pkgver/PyQtChart_gpl-$pkgver.tar.gz)
-sha1sums=('b9abda947da2752efdc5268271f9fdf7f942e1dd')
+license=('GPL3')
+arch=('i686' 'x86_64')
+source=("https://sourceforge.net/projects/pyqt/files/PyQtChart/PyQtChart-$pkgver/PyQtChart_gpl-$pkgver.tar.gz")
+sha256sums=('f8d5d44934ef93b5c5f21d56bd05b3d55563a7c79dd5943ea854d1e7cff81e19')
+
+
+build() {
+  cd "$srcdir/PyQtChart_gpl-$pkgver"
+
+  local _pyver=$(python -c 'import sys; print("%i.%i" % sys.version_info[:2])')
+  local _moddir="/usr/lib/python${_pyver}/site-packages/PyQt5"
+
+  python configure.py \
+    --destdir="${_moddir}" \
+    --stubsdir="${_moddir}" \
+    --qtchart-sipdir=/usr/share/sip/PyQt5 \
+    --apidir=/usr/share/qt/qsci
+  make
+}
 
 package() {
-  cd $srcdir/PyQtChart_gpl-$pkgver
-  _moddir=$pkgdir/usr/lib/python3.6/site-packages/PyQt5
-  _sipdir=$pkgdir/usr/share/sip/PyQt5
-  _apidir=$pkgdir/usr/share/qt/qsci
-  mkdir -p $_sipdir
-  python configure.py -d $_moddir --stubsdir=$_moddir -v $_sipdir -a $_apidir
-  make install
+  cd "$srcdir/PyQtChart_gpl-$pkgver"
+
+  make INSTALL_ROOT=${pkgdir} install
 }

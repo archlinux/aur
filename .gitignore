@@ -1,0 +1,6 @@
+pkg
+src
+PyQtChart_gpl-*.tar.gz
+python-pyqtchart-*.pkg.tar.xz
+python-pyqtchart-*.src.tar.gz
+.AURINFO
