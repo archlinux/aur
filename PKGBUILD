@@ -1,7 +1,7 @@
 # Maintainer: Tim Dorohin <tim.dorohin@gmail.com>
 pkgname=quollwriter
 pkgver=2.6.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A writing application that lets you focus on your words"
 arch=('any')
 url="http://quollwriter.com/"
@@ -16,7 +16,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/garybentley/quollwriter/
 noextract=()
 md5sums=('bc02ff27304c20ecaaf81f9fef3f7718'
          '62dde2a6d4a8598d68be19ddddc5f1f1'
-         '5b755d6a06dac0207298cfe11d1ee589')
+         '7afe97650793f17a2c997d1265760411')
 
 build() {
   cd "$pkgname-$pkgver"
