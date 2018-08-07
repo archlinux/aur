@@ -2,28 +2,22 @@
 # Contributor: Dmitry Korzhevin <dkorzhevin at gmail dot com>
 
 pkgname=sportstracker
-pkgver=7.4.0
+pkgver=7.5.0
 pkgrel=1
 pkgdesc="Application for people who want to track their sporting activities"
 arch=('any')
 url="http://www.saring.de/sportstracker/"
 license=('GPL')
-depends=('java-environment' 'java-openjfx')
-source=(http://downloads.sourceforge.net/sportstracker/SportsTracker-$pkgver-bin.zip
-        sportstracker.sh
-        sportstracker.desktop)
-sha1sums=('390bd5b94d2a9ca1214676696f95cd095cb4f050'
-          '14f7feca091a697ad9b0f6ef73bd3a4dd8797c53'
-          '663d2bf00a87c1bddc8bda2c7f6dacd8d869c281')
+source=(sportstracker-$pkgver.deb::https://sourceforge.net/projects/sportstracker/files/SportsTracker/SportsTracker%20$pkgver/Ubuntu/sportstracker-$pkgver.deb/download
+        SportsTracker.sh)
+sha1sums=('b8d6b50af75934b3b6bfcbf7eb2d093ea86d2b9e'
+          'a4a76ec5366656463489fb37f0725a0692b6c2d5')
 
 package() {
-  cd $srcdir/SportsTracker-$pkgver-bin
-
-  install -D -m644 sportstracker-$pkgver.jar $pkgdir/usr/share/java/sportstracker/sportstracker-$pkgver.jar
-  install -m644 lib/*.jar $pkgdir/usr/share/java/sportstracker
-
-  install -D -m755 $srcdir/sportstracker.sh $pkgdir/usr/bin/sportstracker
-
-  install -D -m644 $srcdir/sportstracker.desktop $pkgdir/usr/share/applications/sportstracker.desktop
-  install -D -m644 st-logo-512.png $pkgdir/usr/share/pixmaps/sportstracker.png
+  cd $pkgdir
+  tar xf "$srcdir/data.tar.xz"
+  chmod 755 "$pkgdir/opt"
+  install -D -m644 "$pkgdir/opt/SportsTracker/SportsTracker.desktop" "$pkgdir/usr/share/applications/SportsTracker.desktop"
+  install -D -m644 "$pkgdir/opt/SportsTracker/SportsTracker.png" "$pkgdir/usr/share/pixmaps/SportsTracker.png"
+  install -D -m775 "$srcdir/SportsTracker.sh" "$pkgdir/usr/bin/SportsTracker"
 }
