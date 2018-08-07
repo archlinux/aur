@@ -1,7 +1,7 @@
 # Maintainer: Aetf <aetf@unlimitedcodeworks.xyz>
 pkgname=globus-connect-personal
 _pkgname=globusconnectpersonal
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="Globus Connect Personal turns your laptop or other personal computer into a Globus endpoint with a just a few clicks."
 arch=('x86_64' 'i686')
@@ -12,16 +12,16 @@ depends_i686=('zlib')
 depends_x86_64=('pam')
 optdepends=('tk: for GUI')
 install=$pkgname.install
-source=("https://s3.amazonaws.com/connect.globusonline.org/linux/stable/$_pkgname-$pkgver.tgz"
+source=("https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-$pkgver.tgz"
         "$pkgname.install"
         "$pkgname.service"
         "$pkgname@.service"
         "globusconnect")
-sha256sums=('67cf837720bdb12956482ab970b286dd4163a846c95418d0ce677510bc0ddb5c'
+sha256sums=('78fff2676866fd6a9966f7b7049ceec3b60bfacbf26934380271c842136d9933'
             'e02212562b046dbe6d92e9a0ecd9aead22c6fec85a525a4e7c05451b1d76aec1'
             '211cca27d2e2fa963606d1d29ceb2d71b333cc33de9a85821d5c85aac36a4a9e'
             'a33e11761644011264a467d3ecf90147fed308b33e8915569cc4d65b2089ff2b'
-            'e6414e197cfec5ae219cbf8ea679b279b6ae18d03e9ab8d08dfe3df72f1056cc')
+            'd5fdbd95707bce40f1e6db29f528328eeb03f364aa33d2021a03b01f6174f916')
 
 prepare() {
     cd "$_pkgname-$pkgver"
