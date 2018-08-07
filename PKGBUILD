@@ -1,7 +1,7 @@
 # Maintainer: Aetf <aetf@unlimitedcodeworks.xyz>
 pkgname=python-globus-cli
 _pkgname=globus-cli
-pkgver=1.4.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A command line interface to Globus"
 arch=(any)
@@ -17,7 +17,7 @@ depends=(
     'python-six'
     'python-cryptography')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('4ba52fbe5eed640b3da5ea7ea142c99d0c4c41ce275bb67f76100484186ebde0')
+sha256sums=('ea47eb4bce1b552f72fafbd4e452de12114f7083db725bb3fffae32db679d6f9')
 
 prepare() {
     cd "$srcdir/$_pkgname-$pkgver"
