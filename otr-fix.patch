@@ -1,0 +1,23 @@
+--- src/plugins/generic/otrplugin/src/psiotrplugin.cpp.orig	2018-08-07 10:34:08.066936689 +0800
++++ src/plugins/generic/otrplugin/src/psiotrplugin.cpp	2018-08-07 10:34:27.536937111 +0800
+@@ -589,20 +589,6 @@
+         xml.removeChild(htmlElement);
+     }
+ 
+-    if (m_onlineUsers[account][contact]->encrypted()) {
+-        if (xml.attribute("to").contains("/")) {
+-            // if not a bare jid
+-            htmlElement = xml.ownerDocument().createElementNS("urn:xmpp:hints" ,"no-copy");
+-            xml.appendChild(htmlElement);
+-        }
+-
+-        htmlElement = xml.ownerDocument().createElementNS("urn:xmpp:hints", "no-permanent-store");
+-        xml.appendChild(htmlElement);
+-
+-        htmlElement = xml.ownerDocument().createElementNS("urn:xmpp:carbons:2", "private");
+-        xml.appendChild(htmlElement);
+-    }
+-
+     return false;
+ }
+ 
