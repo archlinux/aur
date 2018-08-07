@@ -4,12 +4,12 @@
 
 pkgname=libopenshot
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A high quality, open-source video editing, animation, and playback library for C++, Python, and Ruby."
 arch=('x86_64')
 url="http://openshot.org/"
 license=('LGPL3')
-depends=('libmagick6' 'ffmpeg' 'libx264' 'libopenshot-audio' 'python' 'jsoncpp' 'qt5-multimedia' 'zeromq')
+depends=('libmagick6' 'ffmpeg' 'x264' 'libopenshot-audio' 'python' 'jsoncpp' 'qt5-multimedia' 'zeromq')
 makedepends=('cmake' 'doxygen' 'swig' 'unittestpp')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/libopenshot/archive/v$pkgver.tar.gz"
 ffmpeg-4.0.patch)
