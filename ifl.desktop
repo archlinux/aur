@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Image for Linux
+Comment=TeraByte Image for Linux
+GenericName=ifl
+Exec=gksu /opt/ifl/imagel
+Icon=ifl
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
+
