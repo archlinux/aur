@@ -1,6 +1,7 @@
-# Maintainer: Orffen <orffen@orffenspace.com>
+# Maintainer: Artjom Simon <artjom.simon@gmail.com>
+# Contributor: Orffen <orffen@orffenspace.com>
 pkgname=otf-metropolis-git
-pkgver=r9.r0.813a838
+pkgver=r9.r8.90d7dcf
 pkgrel=1
 pkgdesc="The Metropolis font, a modern, geometric typeface."
 arch=('any')
@@ -8,7 +9,7 @@ url="https://github.com/chrismsimpson/Metropolis"
 license=('OFL')
 makedepends=('git')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}", 'otf-metropolis')
+conflicts=('otf-metropolis')
 source=('git+https://github.com/chrismsimpson/Metropolis.git')
 md5sums=('SKIP')
 

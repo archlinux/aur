@@ -7,7 +7,6 @@ pkgbase = otf-metropolis-git
 	license = OFL
 	makedepends = git
 	provides = otf-metropolis
-	conflicts = otf-metropolis,
 	conflicts = otf-metropolis
 	source = git+https://github.com/chrismsimpson/Metropolis.git
 	md5sums = SKIP
