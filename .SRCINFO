@@ -1,7 +1,7 @@
 pkgbase = goxel
 	pkgdesc = Open Source 3D voxel editor for Mac, Windows and Linux.
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://guillaumechereau.github.io/goxel/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = goxel
 	makedepends = scons
 	makedepends = pkg-config
 	makedepends = patch
+	makedepends = clang
 	depends = glfw
 	depends = gtk3
 	source = https://github.com/guillaumechereau/goxel/archive/v0.8.0.tar.gz
