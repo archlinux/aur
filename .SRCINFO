@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-libsigsegv
+	pkgdesc = Page fault detection library (mingw-w64)
+	pkgver = 2.12
+	pkgrel = 1
+	url = http://www.gnu.org/software/libsigsegv/
+	arch = any
+	license = GPL2
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://ftp.gnu.org/gnu/libsigsegv/libsigsegv-2.12.tar.gz
+	source = 0001-libsigsegv-2.11-fix-assembly.patch
+	sha1sums = df167811328b050d2b746bec3d88423edc5a8cbf
+	sha1sums = 945d032622103b260b0397b07da8c0f5fdd78d42
+
+pkgname = mingw-w64-libsigsegv
+
