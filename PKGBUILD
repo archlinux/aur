@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/pivy"
-    patch -p1 < "$srcdir/const_char_ptr_fix.patch"
+    patch -p1 < "$srcdir/char_ptr_fix.patch"
 }
 
 package() {
