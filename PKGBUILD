@@ -1,4 +1,4 @@
-# Contributor: Renato Coutinho <renato.coutinho@gmail.com>
+# Maintainer: Renato Coutinho <renato.coutinho@gmail.com>
 pkgbase=python-pydde-git
 pkgname=('python-pydde-git' 'python2-pydde-git')
 pkgver=0.2.2.r13.g602c0aa
