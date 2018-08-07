@@ -4,7 +4,7 @@
 pkgname=python-asdf
 #'python-asdf-doc')
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('i686' 'x86_64')
 url="https://asdf.readthedocs.io/en/latest/"
