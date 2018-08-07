@@ -7,25 +7,28 @@
 # Maintainer: Mike Sampson <mike at sambodata dot com>
 # Maintainer: Mikhail f. Shiryaev <mr<dot>felixoid<at>gmail<dot>com>
 
-pkgname=polysh
+_basename=polysh
+pkgname=python-${_basename}
 pkgver=0.9
 pkgrel=1
 pkgdesc="a tool to aggregate several remote shells into one."
 arch=("any")
-url="https://pypi.org/project/polysh/"
+url="https://pypi.org/project/${_basename}/"
 license=("GPL2")
 depends=("python" "openssh")
 makedepends=("python-setuptools" "python-docutils")
+conflicts=("${_basename}")
+replaces=("${_basename}")
 options=(!emptydirs)
-source=("https://github.com/innogames/polysh/archive/polysh-${pkgver}.tar.gz")
+source=("https://github.com/innogames/${_basename}/archive/${_basename}-${pkgver}.tar.gz")
 sha256sums=("3f45061ad42fd9402fe6629e72e9f3d9f94b9f0b1401e76c3c1f69dcc713d2da")
 
 package() {
   # TODO: fix in upstream
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  cd "${srcdir}/${_basename}-${_basename}-${pkgver}"
   # TODO: implement proper documentation in upstream
   mkdir -p "${pkgdir}/usr/share/man/man1"
-  rst2man README.rst "${pkgdir}/usr/share/man/man1/polysh.1"
+  rst2man README.rst "${pkgdir}/usr/share/man/man1/${_basename}.1"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
