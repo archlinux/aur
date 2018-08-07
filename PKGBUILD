@@ -42,6 +42,7 @@ prepare() {
        #git pull --no-edit up refs/pull/xxxx/head
 
        git pull --no-edit origin refs/pull/4159/head # fixes #4228
+       git pull --no-edit origin refs/pull/4165/head # fixes ringdb test failing
 
        patch -p1 < ../cmake-libsodium.patch
 
