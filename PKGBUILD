@@ -3,45 +3,61 @@
 # Contributor: Peng Zhang <pczhang@gmail.com>
 
 pkgname=alglib
-pkgver=3.10.0
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="A cross-platform numerical analysis and data processing library (third version). Free Version"
 arch=('i686' 'x86_64')
 url="http://www.alglib.net"
 license=('GPL2')
 #depends=('gmp' 'mpfr')
-options=('!staticlibs')
+depends=('gcc-libs')
+makedepends=('cmake')
+options=('staticlibs')
 source=("http://www.alglib.net/translator/re/alglib-${pkgver}.cpp.gpl.zip")
-md5sums=('45a88476d927bd7435178410f62d7a85')
+sha256sums=('b217ebc6bfcbc4d58c87542fbcb6a27637f7a853a3a7851d9a2e0539e55c1a7e')
+
+prepare() {
+    # generate a simple cmake file to build the library since the release
+    # doesn't provide any build system
+    cd ${srcdir}/cpp
+    cat > CMakeLists.txt <<END
+cmake_minimum_required(VERSION 3.0)
+project(alglib VERSION ${pkgver})
+
+file(GLOB SRCS src/*.cpp)
+file(GLOB HEADERS src/*.h)
+
+add_library(alglib_static STATIC \${SRCS})
+set_target_properties(alglib_static PROPERTIES
+    OUTPUT_NAME alglib
+    PUBLIC_HEADER "\${HEADERS}"
+)
+
+add_library(alglib SHARED \${SRCS})
+set_target_properties(alglib PROPERTIES
+    VERSION "\${PROJECT_VERSION}"
+    SOVERSION "\${PROJECT_VERSION_MAJOR}"
+    PUBLIC_HEADER "\${HEADERS}"
+)
+
+include(GNUInstallDirs)
+install(TARGETS alglib alglib_static
+    LIBRARY DESTINATION "\${CMAKE_INSTALL_LIBDIR}"
+    ARCHIVE DESTINATION "\${CMAKE_INSTALL_LIBDIR}"
+    PUBLIC_HEADER DESTINATION "\${CMAKE_INSTALL_INCLUDEDIR}/libalglib"
+)
+install(FILES manual.cpp.html DESTINATION "\${CMAKE_INSTALL_DOCDIR}")
+END
+    mkdir -p build && cd build
+}
 
 build() {
-  cd ${srcdir}/cpp/src
-
-  # make static lib
-  gcc -I. -c *.cpp
-  ar rcs libalglib.a *.o
-
-  # make shared lib
-  rm -f *.o
-  gcc -I. -fPIC -c *.cpp
-  gcc -shared -Wl,-soname,libalglib.so.3 -o libalglib.so.${pkgver} *.o
+    cd ${srcdir}/cpp/build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
+    make VERBOSE=1
 }
 
 package() {
-  cd ${srcdir}/cpp/src
-
-  # install docs
-  install -d ${pkgdir}/usr/share/doc/alglib
-  install ../manual.cpp.html ${pkgdir}/usr/share/doc/alglib
-
-  # install headers
-  install -d ${pkgdir}/usr/include/libalglib
-  install *.h ${pkgdir}/usr/include/libalglib
-
-  # install library
-  install -d ${pkgdir}/usr/lib
-  install libalglib.a ${pkgdir}/usr/lib
-  install libalglib.so.${pkgver} ${pkgdir}/usr/lib
-  ln -s libalglib.so.${pkgver} ${pkgdir}/usr/lib/libalglib.so.3
-  ln -s libalglib.so.${pkgver} ${pkgdir}/usr/lib/libalglib.so
+    cd ${srcdir}/cpp/build
+    make DESTDIR=${pkgdir}/ install
 }
