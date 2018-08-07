@@ -11,7 +11,7 @@ license=('GPL')
 depends=('glibc' 'imagemagick' 'ghostscript')
 makedepends=('texinfo' 'texlive-bin' 'texlive-plainextra')
 checkdepends=('texlive-latexextra') # for a4wide package
-source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha1sums=('db5a892af6cf4119593be3881ac738d695ccc0bc')
 md5sums=('025a6b779eb6ca1c86da71a284e7459f')
 
