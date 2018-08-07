@@ -1,5 +1,5 @@
 pkgname=termtosvg-git
-pkgver=0.5.0.r0.g59081f5
+pkgver=0.5.0.r1.gebccad4
 pkgrel=1
 
 pkgdesc='record terminal sessions as svg animations'
@@ -7,13 +7,13 @@ url='https://github.com/nbedos/termtosvg'
 arch=('any')
 license=('BSD')
 
-depends=('python-pyte')
+depends=('python-pyte' 'python-lxml')
 makedepends=('git' 'python-setuptools')
 
 provides=('termtosvg')
 conflicts=('termtosvg')
 
-source=('git+https://github.com/nbedos/termtosvg')
+source=('git+https://github.com/nbedos/termtosvg#branch=develop')
 
 sha256sums=('SKIP')
 
