@@ -1,10 +1,12 @@
 pkgbase = repocheck-git
 	pkgdesc = Check the status of code repositories under a root directory
-	pkgver = 11.ee48d0e
+	pkgver = 20.ac92bd4
 	pkgrel = 1
 	url = https://github.com/kynikos/repocheck
 	arch = any
 	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	source = git://github.com/kynikos/repocheck.git
 	md5sums = SKIP

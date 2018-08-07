@@ -3,13 +3,14 @@
 _projname=repocheck
 _authname=kynikos
 pkgname=${_projname}-git
-pkgver=11.ee48d0e
+pkgver=20.ac92bd4
 pkgrel=1
 pkgdesc='Check the status of code repositories under a root directory'
 arch=('any')
 url="https://github.com/${_authname}/${_projname}"
 license=('GPL3')
 depends=('python')
+makedepends=('git' 'python-setuptools')
 source=("git://github.com/${_authname}/${_projname}.git")
 md5sums=('SKIP')
 
