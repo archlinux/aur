@@ -2,7 +2,7 @@
 pkgname='python-xerox'
 pkgdesc='Simple copy+paste module for Python'
 pkgver='0.4.1'
-pkgrel='1'
+pkgrel='2'
 url='https://github.com/kennethreitz/xerox'
 license=('custom:MIT')
 arch=('any')
