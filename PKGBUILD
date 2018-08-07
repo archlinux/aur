@@ -1,12 +1,12 @@
 # Maintainer: Pierre-Alexis Ciavaldini <pierre-alexis@ciavaldini.fr>
 
 # maintenance, zip files
-pkgver="0.11.0"
+pkgver="0.11.1"
 pkgrel=1
 # linux32 zip
-sha256sums_i686=("6bf2814f34dd27b08122f200810c7aaba5bc44143f3feab0ee9b96dfa4ae0628")
+sha256sums_i686=("f2a4f69949d1bf589cd5223a07e3e5679cf6c03dabe1d3dc12ce3b9191778a68")
 # linux64 zip
-sha256sums_x86_64=("8c7bf7a9c6b46c2f4a6d7f9958524e7f0deb8dc6bd886c6b9ba732b4235be165")
+sha256sums_x86_64=("0337b285e8e9a6a3d9073bce73d2b89b5a13972575fdb0641a1426710eeb333b")
 
 # info
 pkgname="ethereumwallet-bin"
