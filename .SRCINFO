@@ -14,7 +14,9 @@ pkgbase = python-pivy-git
 	provides = python-pivy
 	conflicts = python-pivy
 	source = pivy::git+https://github.com/FreeCAD/pivy.git
+	source = char_ptr_fix.patch
 	md5sums = SKIP
+	md5sums = 0ba9c4ba4f822ed8f819209c333d5cbc
 
 pkgname = python-pivy-git
 

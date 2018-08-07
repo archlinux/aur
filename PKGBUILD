@@ -11,13 +11,20 @@ depends=('python' 'coin-hg' 'python-pyside2')
 makedepends=('git' 'cmake' 'swig')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('pivy::git+https://github.com/FreeCAD/pivy.git')
+source=('pivy::git+https://github.com/FreeCAD/pivy.git'
+        'char_ptr_fix.patch')
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '0ba9c4ba4f822ed8f819209c333d5cbc')
 
 pkgver() {
     cd "$srcdir/pivy"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$srcdir/pivy"
+    patch -p1 < "$srcdir/const_char_ptr_fix.patch"
 }
 
 package() {
