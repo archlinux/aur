@@ -2,7 +2,7 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=latex2rtf
-pkgver=2.3.16
+pkgver=2.3.17
 pkgrel=1
 pkgdesc="LaTeX to RTF converter"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('glibc' 'imagemagick' 'ghostscript')
 makedepends=('texinfo' 'texlive-bin' 'texlive-plainextra')
 checkdepends=('texlive-latexextra') # for a4wide package
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('79aff771ee014300606560f18fde74c9eb3a250d')
-md5sums=('a7e705af414753c01b04ff15bf4c0af6')
+sha1sums=('db5a892af6cf4119593be3881ac738d695ccc0bc')
+md5sums=('025a6b779eb6ca1c86da71a284e7459f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
