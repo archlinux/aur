@@ -2,13 +2,13 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=isl-git
-pkgver=0.18.766.gf63eea4d
+pkgver=0.20.52.g44534fc7
 pkgrel=1
 pkgdesc="Library for manipulating sets and relations of integer points bounded by linear constraints (development version)"
 arch=('i686' 'x86_64')
 url="http://isl.gforge.inria.fr/"
 depends=('gmp')
-makedepends=('clang')
+makedepends=('clang' 'llvm')
 license=('MIT')
 options=('!libtool')
 provides=('isl')
@@ -26,9 +26,6 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr --with-clang=system
   make
-  cd "$srcdir/${pkgname%-git}/interface"
-  #make isl.py isl-noexceptions.h
-  make isl-noexceptions.h
 }
 
 check() {
@@ -40,10 +37,8 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   make -j1 DESTDIR="$pkgdir/" install
 
-  install -Dm644 "$srcdir/${pkgname%-git}/interface/isl-noexceptions.h" "$pkgdir/usr/include/isl/isl-noexceptions.h"
-
   install -dm755 "$pkgdir/usr/share/gdb/auto-load/usr/lib/"
-  mv "$pkgdir"/{,/usr/share/gdb/auto-load/}usr/lib/libisl.so.15.3.0-gdb.py
+  mv "$pkgdir"/{,/usr/share/gdb/auto-load/}usr/lib/libisl.so.19.1.0-gdb.py
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/isl/LICENSE"
 }
