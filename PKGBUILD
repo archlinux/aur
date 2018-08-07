@@ -1,6 +1,6 @@
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=pdfsizeopt-git
-pkgver=r429.a91903b
+pkgver=r533.dc08a10
 pkgrel=1
 pkgdesc="PDF file size optimizer"
 arch=(any)
@@ -12,9 +12,12 @@ provides=(pdfsizeopt)
 conflicts=(pdfsizeopt-svn)
 replaces=(pdfsizeopt-svn)
 makedepends=('git')
-optdepends=("multivalent-pdf-tools: to optimise cross reference table and object serialisation [use --use-multivalent=true]"
-            "pngout: to optimise the size of PNG parts [use --use-pngout=true]"
-            "jbig2enc: to manage JBIG2 parts [use --use-jbig2=true]")
+optdepends=(
+"ect: to optimise images [use --use-image-optimizer=ECT]"
+"jbig2enc: to manage JBIG2 parts [use --use-jbig2=true]"
+"multivalent-pdf-tools: to optimise cross reference table and object serialisation [use --use-multivalent=true]"
+"pngout: to optimise the size of PNG parts [use --use-pngout=true]"
+)
 source=("git+https://github.com/pts/pdfsizeopt")
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
