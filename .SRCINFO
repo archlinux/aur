@@ -1,7 +1,7 @@
 pkgbase = python-geographiclib
 	pkgdesc = This is a python implementation of the geodesic routines in GeographicLib.
 	pkgver = 1.49
-	pkgrel = 1
+	pkgrel = 2
 	url = https://geographiclib.sourceforge.io/1.49/python/
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=python-geographiclib
 pkgver=1.49
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a python implementation of the geodesic routines in GeographicLib."
 url="https://geographiclib.sourceforge.io/1.49/python/"
 depends=('python')
