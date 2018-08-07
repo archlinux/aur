@@ -1,23 +1,37 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
-pkgname=python-modulemd
-pkgver=1.3.3
+pkgname=libmodulemd-git
+_pkgname=libmodulemd
+pkgver=1.6.1.r5.gefda265
 pkgrel=1
-pkgdesc="A python library for manipulation of the proposed module metadata format."
+pkgdesc="C Library for manipulating module metadata files"
 arch=("any")
 license=("MIT")
-url="http://modulemd.readthedocs.io/en/latest/"
-depends=("python3")
-source=("https://files.pythonhosted.org/packages/7c/e3/b066246183455e8437774bb4408ef3f61f23adfca52efab6285160299378/modulemd-1.3.3.tar.gz")
-sha256sums=('661a196187d8f69fdee04835ca3a7faae60b7fea9a5c61c8b142c19b6444f08b')
+url="https://github.com/fedora-modularity/libmodulemd"
+makedepends=("meson" "ninja" "pkgconfig" "python-gobject" "valgrind")
+source=("${_pkgname}::git+https://github.com/fedora-modularity/libmodulemd.git")
+provides=('libmodulemd')
+conflicts=('libmodulemd')
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${_pkgname}"
+
+	git describe --long --tags | sed -e 's/\([^-]*-g\)/r\1/;s/-/./g' -e 's/libmodulemd.//'
+}
 
 build() {
-  cd "${srcdir}/${pkgname#python-}-${pkgver}"
-  python3 ./setup.py build
+  cd "${srcdir}/${_pkgname}"
+
+  [ -d build ] && rm -rf build
+  meson build --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	--libexecdir="/usr/lib/${_pkgname}" --buildtype=release
+
+  ninja -C build
 }
 
 package() {
-  cd "${srcdir}/${pkgname#python-}-${pkgver}"
-  python3 ./setup.py install --root="${pkgdir}" --optimize=1
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${_pkgname}"
+
+  DESTDIR="$pkgdir" ninja -C build install
 }

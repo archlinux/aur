@@ -1,4 +1,5 @@
 src
 pkg
+libmodulemd
 *tar.gz
 *pkg.tar.xz
