@@ -23,7 +23,7 @@
 
 pkgname=conky-cairo
 pkgver=1.10.8
-pkgrel=2
+pkgrel=1
 pkgdesc='conky - built for nvidia n (tolua++_5.3 in AUR) - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.'
 url='https://github.com/brndnmtthws/conky'
 license=('GPL3' 'BSD')
