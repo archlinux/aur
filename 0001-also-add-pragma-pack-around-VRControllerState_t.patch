@@ -1,0 +1,39 @@
+From 1fd28b735d8abcc3fde9a4f5493407b5c0fcb91e Mon Sep 17 00:00:00 2001
+From: Christoph Haag <christoph.haag@collabora.com>
+Date: Wed, 8 Aug 2018 01:06:29 +0200
+Subject: [PATCH] also add pragma pack around VRControllerState_t
+
+See https://github.com/ValveSoftware/SteamVR-for-Linux/issues/35
+---
+ headers/openvr_capi.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/headers/openvr_capi.h b/headers/openvr_capi.h
+index 66da364..97906eb 100644
+--- a/headers/openvr_capi.h
++++ b/headers/openvr_capi.h
+@@ -1206,6 +1206,11 @@ typedef struct VRControllerAxis_t
+ 	float y;
+ } VRControllerAxis_t;
+ 
++#if defined(__linux__) || defined(__APPLE__) 
++// This structure was originally defined mis-packed on Linux, preserved for 
++// compatibility. 
++#pragma pack( push, 4 )
++#endif
+ typedef struct VRControllerState_t
+ {
+ 	uint32_t unPacketNum;
+@@ -1213,6 +1218,9 @@ typedef struct VRControllerState_t
+ 	uint64_t ulButtonTouched;
+ 	struct VRControllerAxis_t rAxis[5]; //struct vr::VRControllerAxis_t[5]
+ } VRControllerState_t;
++#if defined(__linux__) || defined(__APPLE__) 
++#pragma pack( pop )
++#endif
+ 
+ typedef struct Compositor_OverlaySettings
+ {
+-- 
+2.18.0
+
