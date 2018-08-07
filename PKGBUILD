@@ -9,7 +9,7 @@ url="http://kristianduske.com/trenchbroom"
 license=('GPLv3')
 
 makedepends=('git' 'pandoc')
-depends=('freeimage' 'freetype2' 'wxgtk-trenchbroom' 'mesa' 'libgl' 'freeglut' 'libxxf86vm' 'glew' 'glm')
+depends=('freeimage' 'freetype2' 'wxgtk2-dev' 'mesa' 'libgl' 'freeglut' 'libxxf86vm' 'glew' 'glm')
 conflicts=('trenchbroom')
 
 source=(git://github.com/kduske/TrenchBroom.git)
@@ -18,7 +18,7 @@ sha1sums=('SKIP')
 build() {
 	mkdir TrenchBroom/build
 	cd TrenchBroom/build
-	cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -DwxWidgets_PREFIX=/opt/wxgtk-trenchbroom
+	cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -DwxWidgets_PREFIX=/usr
 	cmake --build . --target TrenchBroom
 }
 
