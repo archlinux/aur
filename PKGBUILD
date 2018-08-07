@@ -2,7 +2,7 @@
 # Contributor: Eric Schulte <[firstname] dot [lastname] at gmx dot com>
 pkgname=feedgnuplot
 pkgver=1.49
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose pipe-oriented plotting tool"
 arch=('any')
 url="https://github.com/dkogan/feedgnuplot"
