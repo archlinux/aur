@@ -10,7 +10,7 @@
 
 _pkgname=gitlab
 pkgname=${_pkgname}-ee
-pkgver=11.0.2
+pkgver=11.1.4
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('x86_64')
@@ -41,7 +41,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/api/v4/projects/gitlab-
         gitlab.logrotate
         "b41b2de702c26bfbbe375c70c48293a75546df42.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/b41b2de702c26bfbbe375c70c48293a75546df42.patch?h=packages/gitlab")
 install='gitlab.install'
-sha512sums=('c4413b59212fb34197d6b2ef8d57635290768ad8f1fc4baa2e2ee0636e58c67965bbbd43dcafca72d9c3ac2c4f1104873b58d183a642f4797aa838211578f687'
+sha512sums=('95fcb76edf04307c3c4af88f99eb71ecacda11c8906b83c58f42872eeee5afc44987ead9e4bf118458866aa0fb05e712388ba31327450934323efba6cdfc350a'
             'e96364b3373420a0704552584264f42fee23d64d44d3f769dffa6b516ea9d4c09873da8b2a279445ae9a09f17f81628815efc83e8d0070b3246e56aa13c02ac6'
             '1104db0397ae5f9a69452ea2a432b837cfaf37d72d063226c2156de5f753b5ae42be1f90292c34f27e251ce3d265ac9c1f79faad1d377c923e7dbc6744100471'
             'bfc98f3890dfbe11a6f7fa3275f2b04b54b8e31455dcf70abfdc7f1021ff9acb1243f7af8381465346cd780bc76fa2b1c80fada860b8c3c87c7c56bb5229c1ee'
@@ -115,7 +115,6 @@ build() {
   msg "Fetching bundled gems..."
   # Gems will be installed into vendor/bundle
 
-  bundle-2.3 config build.nokogiri --use-system-libraries
   bundle-2.3 install --no-cache --deployment --without development test
 
   # We'll temporarily stick this in here so we can build the assets
