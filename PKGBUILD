@@ -10,12 +10,16 @@ makedepends=(autoconf automake boost git pkg-config)
 conflicts=(amule)
 source=(
 git+https://github.com/amule-project/amule.git
-https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/use_xdg-open_as_preview_default.diff
-https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/version_check.diff
+#https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/use_xdg-open_as_preview_default.diff
+#https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/version_check.diff
+https://gitlab.com/palopezv/aur-amule-git-patches/raw/master/amuled@.service
+https://gitlab.com/palopezv/aur-amule-git-patches/raw/master/use_xdg-open_as_preview_default.diff
+https://gitlab.com/palopezv/aur-amule-git-patches/raw/master/version_check.diff
 )
-sha256sums=(SKIP
-            902f8f719c1c02335880621717f23c683da8edbb31add75d3e1267b190e03b9c
-            7bf39a64a723ab3e55ccfef93df2ec9cdd8108e56aa0733a4412755931cb3244)
+sha256sums=('SKIP'
+            'b8ade9930c00c411958758a2f8267c0a56320270fc06b2ee15243a027795745d'
+            '902f8f719c1c02335880621717f23c683da8edbb31add75d3e1267b190e03b9c'
+            '7bf39a64a723ab3e55ccfef93df2ec9cdd8108e56aa0733a4412755931cb3244')
 
 pkgver() {
   cd amule/
