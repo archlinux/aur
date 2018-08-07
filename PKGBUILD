@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Fontana <lo@linux.com>
 pkgname=coredns
 gopkgname='github.com/coredns/coredns'
-pkgver=v1.2.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="CoreDNS is a DNS server that chains plugins"
 makedepends=('go' 'make')
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/coredns/coredns"
 license=('Apache')
 provides=('coredns')
-source=(coredns-${pkgver}.tar.gz::https://github.com/coredns/${pkgname}/archive/${pkgver}.tar.gz
+source=(coredns-${pkgver}.tar.gz::https://github.com/coredns/${pkgname}/archive/v${pkgver}.tar.gz
 https://raw.githubusercontent.com/coredns/deployment/39c9f7ed7640f86fa0fb6ba06a88e9afa830b306/systemd/coredns.service
 https://raw.githubusercontent.com/coredns/deployment/39c9f7ed7640f86fa0fb6ba06a88e9afa830b306/systemd/coredns-sysusers.conf)
 
@@ -23,7 +23,7 @@ prepare() {
   export GOPATH="$srcdir/build"
   rm -rf "$GOPATH/src/$gopkgname"
   mkdir --parents `dirname "$GOPATH/src/$gopkgname"`
-  mv -Tv "$srcdir/$pkgname-${pkgver//v/}" "$GOPATH/src/$gopkgname"
+  mv -Tv "$srcdir/$pkgname-${pkgver}" "$GOPATH/src/$gopkgname"
 }
 
 build() {
