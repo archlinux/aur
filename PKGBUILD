@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ipt_iftag'
-pkgver=6.04d141a
+pkgver=9.abea132
 pkgrel=1
 pkgdesc='Netfilter extension that can operate on groups of interfaces.'
 arch=('any')
@@ -14,7 +14,7 @@ source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 install="${pkgname}.install"
 _linux_custom="ARCH"
-_kernver="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-'${_linux_custom}'\/$/ {print $2}'`"
+_kernver="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-(.*)-'${_linux_custom}'\/$/ {print $2}'`"
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
