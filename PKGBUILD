@@ -1,8 +1,7 @@
-# Maintainer: 
+# Maintainer: Boris Momcilovic <boris.momcilovic@gmail.com>
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Elis Hughes <elishughes@googlemail.com>
 
-pkgbase=pssh
 pkgname=python-pssh
 pkgver=2.3.1
 pkgrel=9
@@ -13,7 +12,7 @@ license=('BSD')
 depends=('openssh' 'python')
 makedepends=('patch')
 changelog=$pkgname.changelog
-source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/parallel-ssh/$pkgbase-$pkgver.tar.gz
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/parallel-ssh/pssh-$pkgver.tar.gz
         Imports-are-absolute-by-default-in-Python3.patch
         pssh-typeerror-str-does-not-support-the-buffer-interface.patch
         pssh-valueerror-the-fd-4-must-be-in-non-blocking-mode.patch
@@ -25,7 +24,7 @@ sha256sums=('539f8d8363b722712310f3296f189d1ae8c690898eca93627fc89a9cb311f6b4'
             '47c1af738d4ba252e9f35c5633da91bae2a2919a7b6b2bf425ee1f090d61c7fe')
 
 prepare() {
-  cd "${srcdir}"/$pkgbase-$pkgver
+  cd "${srcdir}"/pssh-$pkgver
 
 # fix FS#28626 (merged upstream)
   patch -Np1 -i ../Imports-are-absolute-by-default-in-Python3.patch
@@ -38,7 +37,7 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}"/$pkgbase-$pkgver
+  cd "${srcdir}"/pssh-$pkgver
 
   python setup.py install --root "${pkgdir}"
 
