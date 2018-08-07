@@ -1,6 +1,6 @@
 pkgbase = ninja-ide-git
 	pkgdesc = Cross-platform IDE focused on Python application development - latest git pull
-	pkgver = 20180317
+	pkgver = 20180807
 	pkgrel = 1
 	url = http://ninja-ide.org
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ninja-ide-git
 	provides = ninja-ide
 	conflicts = ninja-ide
 	source = ninja-ide-git.desktop
-	md5sums = ac8287a7d40e2584f3191c5784fb7216
+	md5sums = 8501ff78ec0150270be0f48ee87bddb5
 
 pkgname = ninja-ide-git
 
