@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-pytest-astropy
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Metapackage for all the testing machinery used by the Astropy Project"
 arch=('i686' 'x86_64')
 url="https://github.com/astropy/pytest-astropy"
