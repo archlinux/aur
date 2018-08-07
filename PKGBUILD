@@ -23,7 +23,7 @@
 
 pkgname=conky-cairo
 pkgver=1.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc='conky - built for nvidia n (tolua++_5.3 in AUR) - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.'
 url='https://github.com/brndnmtthws/conky'
 license=('GPL3' 'BSD')
@@ -33,7 +33,10 @@ replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky')
 
-depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxnvctrl' 'tolua++_5.3' )
+depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxnvctrl' 'libxinerama' 'tolua++_5.3' )
+
+makedepends=( 'cmake' 'git' )
+
 
 ### NOTE: Install tolua++_5.3 from AUR - one of my other packages besides conkywx weather program
 
@@ -43,8 +46,6 @@ _myopts=1
 case ${_myopts} in
 0)  ### _myopts=0 for git version #####################################
 	_pkgname=conky
-
-	makedepends=('cmake' 'git' )
 
 	source=("git+${url}.git" )
 
@@ -57,10 +58,9 @@ case ${_myopts} in
 1)  ### _myopts=1 for release version #################################
 	_pkgname="conky-${pkgver}"
 
-	makedepends=( 'cmake' )
-
 	source=(${url}/archive/v${pkgver}.tar.gz)
 	md5sums=('SKIP')
+
 esac
 
 
