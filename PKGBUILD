@@ -4,7 +4,7 @@
 
 pkgname=luxrays-hg
 pkgver=3755+.ceb10f796325+
-pkgrel=3
+pkgrel=4
 pkgdesc="Accelerate the ray intersection process by using GPUs"
 arch=('x86_64')
 url="http://www.luxrender.net/"
@@ -33,6 +33,13 @@ pkgver() {
 prepare() {
   cd "$srcdir/luxrays"
 
+  # fix missing lpython link
+  for file in `grep  Boost_LIBRARIES -l -R ` ;do sed -i 's/\${Boost_LIBRARIES}/\${Boost_LIBRARIES} \${PYTHON_LIBRARIES}/' $file; msg2 "Fix missing -lpython in $file" ; done
+  # fix dependency cycle in linker
+  sed -i 's/slg-core/slg-film slg-core/' CMakeLists.txt #tests/luxcoreimplserializationdemo/CMakeLists.txt
+  # supress tests/luxcoreimplserializationdemo
+  sed -i '/luxcoreimplserializationdemo/d' CMakeLists.txt
+ 
   # force python3 for boost
   patch -Np1 < "$srcdir/force_python3.diff" || true
 }
@@ -40,15 +47,12 @@ prepare() {
 build() {
   cd "$srcdir/luxrays"
 
-  cmake . \
+ cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DEMBREE_INCLUDE_PATH=/usr/include/embree-bvh_build \
     -DEMBREE_LIBRARY=/usr/lib/embree-bvh_build/libembree.so.2 \
     -DCMAKE_SKIP_RPATH=ON \
     -DLUXRAYS_DISABLE_OPENCL=OFF
-  # this sucks, but luxrays doesn't seem to honor  CMAKE_*_LINKER_FLAGS
-  # thanks bartus from AUR for the fix
-  for file in `grep lboost_python -l -R ` ;do sed -i 's/$/ -lpython3/' $file ; done
   make
 }
 

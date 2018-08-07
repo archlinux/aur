@@ -1,7 +1,7 @@
 pkgbase = luxrays-hg
 	pkgdesc = Accelerate the ray intersection process by using GPUs
 	pkgver = 3755+.ceb10f796325+
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.luxrender.net/
 	arch = x86_64
 	license = GPL
