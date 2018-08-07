@@ -3,13 +3,13 @@
 pkgbase=python-smartcols
 pkgname=('python2-smartcols' 'python-smartcols')
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for util-linux libsmartcols-library."
 arch=("any")
 license=("GPL")
 url="https://github.com/ignatenkobrain/python-smartcols"
 depends=("python" "python2")
-source=("https://github.com/ignatenkobrain/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("https://github.com/ignatenkobrain/${pkgbase}/archive/v${pkgver}.tar.gz")
 sha256sums=('88dfe9ee99089b1b84b3476362e6f0be2f89d4420a6cbe7436fbd661f07f29d1')
 
 prepare() {

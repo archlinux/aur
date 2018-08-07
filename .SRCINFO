@@ -1,13 +1,13 @@
 pkgbase = python-smartcols
 	pkgdesc = Python bindings for util-linux libsmartcols-library.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ignatenkobrain/python-smartcols
 	arch = any
 	license = GPL
 	depends = python
 	depends = python2
-	source = https://github.com/ignatenkobrain/python2-smartcols/archive/v0.3.0.tar.gz
+	source = https://github.com/ignatenkobrain/python-smartcols/archive/v0.3.0.tar.gz
 	sha256sums = 88dfe9ee99089b1b84b3476362e6f0be2f89d4420a6cbe7436fbd661f07f29d1
 
 pkgname = python2-smartcols
