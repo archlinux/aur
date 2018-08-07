@@ -3,7 +3,7 @@
 
 pkgname='xtables-addons'
 pkgver='3.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Xtables-addons is a set of additional extensions for the Xtables packet filter that is present in the Linux kernel'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -19,7 +19,7 @@ sha256sums=('95580b851c79c0bbc484e0d0ea23f53e5c7f439ad73d509e426598565392690d')
 _linux_custom="ARCH"
 # define '-lts' for linux-lts package
 _linux_localversion=""
-_kernver="`pacman -Ql linux${_linux_localversion} | awk '/(\/modules\/)([0-9.-])+-'${_linux_custom}'\/$/ {print $2}'`"
+_kernver="`pacman -Ql linux${_linux_localversion} | awk '/(\/modules\/)([0-9.-])+-(.*)-'${_linux_custom}'\/$/ {print $2}'`"
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -49,4 +49,5 @@ package() {
   libtool --finish "${pkgdir}/usr/lib"
   mv -f "${pkgdir}"/lib/* "${pkgdir}/usr/lib"
   rmdir "${pkgdir}/lib"
+  rm ${pkgdir}${_kernver}modules.*
 }
