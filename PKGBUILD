@@ -4,8 +4,7 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux
-pkgname=linux-razerblade-2018
+pkgbase=linux-razerblade-2018
 pkgver=4.17.12
 pkgrel=1
 arch=('x86_64')
