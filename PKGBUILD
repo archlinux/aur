@@ -8,13 +8,16 @@ pkgdesc='nDPI as netfilter extension.'
 arch=('any')
 url='https://github.com/vel21ripn/nDPI'
 license=('GPL')
-depends=('linux' 'iptables' 'conntrack-tools')
-makedepends=('git' 'libtool' 'gcc' 'gzip' 'gawk' 'sed')
+depends=('iptables')
+makedepends=('git')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 install="${pkgname}.install"
+# define 'lts' for linux-lts package
 _linux_custom="ARCH"
-_kernver="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-(.*)-'${_linux_custom}'\/$/ {print $2}'`"
+# define '-lts' for linux-lts package
+_linux_localversion=""
+_kernver="`pacman -Ql linux${_linux_localversion} | awk '/(\/modules\/)([0-9.-])+-(.*)-'${_linux_custom}'\/$/ {print $2}'`"
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
