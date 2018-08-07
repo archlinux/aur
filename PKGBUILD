@@ -1,6 +1,6 @@
 # Maintainer: Brad Erhart <brae.04+aur@gmail.com> 
 pkgname=docker-machine-driver-kvm2
-pkgver=0.27.0
+pkgver=0.28.2
 pkgrel=1
 pkgdesc="Minikube-maintained KVM driver for docker-machine"
 url="https://github.com/kubernetes/minikube"
@@ -18,7 +18,7 @@ optdepends=(
 makedepends=()
 
 source=($pkgname_$pkgver::https://github.com/kubernetes/minikube/releases/download/v$pkgver/$pkgname)
-sha256sums=('c186d03a4e7c30d7d94cd585739c4029e9e587b5bd44ac5bbf79a566580cee94')
+sha256sums=('4c89a35657b82899385c5c56515262f293128df0c64bdecc51f4ce66bff954eb')
 
 package() {
   cd "$srcdir"
