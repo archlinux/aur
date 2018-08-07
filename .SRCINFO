@@ -1,6 +1,6 @@
 pkgbase = php-uopz-git
 	pkgdesc = PHP User Operations for Zend
-	pkgver = v5.0.0.r49.g1e81e56
+	pkgver = v5.0.0.r56.ga838df2
 	pkgrel = 1
 	url = https://github.com/krakjoe/uopz
 	arch = i686
