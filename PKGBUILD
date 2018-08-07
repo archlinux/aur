@@ -3,7 +3,7 @@
 
 pkgname=('python-pager' 'python2-pager')
 pkgver=3.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Terminal/console pager module for Python'
 arch=('any')
 url='http://pypi.python.org/pypi/pager'
