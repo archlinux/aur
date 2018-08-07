@@ -1,7 +1,7 @@
 #Maintainer: Jan Koppe <post@jankoppe.de>
 pkgname=pyca
 pkgver=2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Python Capture Agent for Opencast"
 arch=('any')
 url="https://github.com/opencast/pyCA"
@@ -25,6 +25,7 @@ md5sums=('c48f246eff3e33a04310da39c01578bf'
          '2eb31065c6d4deb6888c3b187565add9'
          '4adcf6d8ff3641ad1dd4910a1957c9db'
          'e86a4025da5842d701a12cc258116c66')
+backup=('etc/pyca.conf')
 
 prepare() {
   cd pyCA-"${pkgver}"
