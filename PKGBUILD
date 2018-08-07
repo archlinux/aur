@@ -1,11 +1,11 @@
 pkgname=dnf
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2' 'GPL')
-depends=('libdnf>=0.16.0' 'libcomps>=0.1.8' 'libmodulemd>=1.4.0'
+depends=('libdnf>=0.17.0' 'libcomps>=0.1.8' 'libmodulemd>=1.4.0'
          'librepo>=1.9.0'
          'python' 'python-gobject' 'python-gpgme' 'python-iniparse'
          'python-smartcols'
@@ -16,7 +16,7 @@ backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf")
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname-3.0.1-fallback-to-getuid-if-audit-is-disabled.patch")
-md5sums=('09388161851c018569c2fa51bf7dd9f8'
+md5sums=('ffa210d1ba3508a737ad0efcda356de1'
          '51bbd2fd1ab2c11057c833adecb8b5fa')
 
 prepare() {
