@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-pytest-openfiles
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pytest plugin for detecting file handles that were inadvertently left open at the end of unit tests"
 arch=('i686' 'x86_64')
 url="https://github.com/astropy/pytest-openfiles"
