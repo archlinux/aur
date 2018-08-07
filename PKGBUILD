@@ -3,7 +3,7 @@
 
 pkgname=perl-math-polygon
 _cpanname=Math-Polygon
-pkgver=1.03
+pkgver=1.10
 pkgrel=1
 pkgdesc="polygon mathematics"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=('!emptydirs')
 source=(http://www.cpan.org/authors/id/M/MA/MARKOV/${_cpanname}-${pkgver}.tar.gz) 
-md5sums=('11b20ad4c55744c3cf8e3aa516d1d4fc')
+md5sums=('9d5711e6fe19650301e116f3e5d3c6d0')
 
 build() {
   cd $srcdir/${_cpanname}-${pkgver}
