@@ -15,9 +15,8 @@ makedepends=('git' 'cmake' 'boost' 'gtest' 'qt5-tools')
 
 pkgdesc="Peer-to-peer anonymous digital currency (daemon, CLI wallet, and wallet API library)"
 _upstream=https://github.com/monero-project/monero.git
-source=("$_gitname::git+$_upstream")
-
-md5sums=('SKIP')
+source=("$_gitname::git+$_upstream"
+        "cmake-libsodium.patch")
 
 _builddir=build
 
@@ -41,6 +40,13 @@ prepare() {
        # To apply PRs
        #git remote add up $_upstream
        #git pull --no-edit up refs/pull/xxxx/head
+
+       git pull --no-edit origin refs/pull/4159/head # fixes #4228
+
+       patch -p1 < ../cmake-libsodium.patch
+
+       cd external/miniupnp
+       git pull --no-edit origin refs/pull/3/head # fixes conflict with system miniupnp upon installation
 }
 
 build() {
@@ -140,3 +146,5 @@ package_libmonero-wallet-git() {
         cd $_stagedir
         find usr/{include,lib} -type f -exec install -D -m 755 {} ${pkgdir}/{} \;
 }
+sha256sums=('SKIP'
+            'fceaadde45f7fec587a8ce9456e23ca3d1500bc021aae5fdc7a7872362f8891e')
