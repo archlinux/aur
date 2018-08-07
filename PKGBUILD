@@ -3,7 +3,7 @@
 
 pkgname=mumble-snapshot-jack
 pkgver=1.3.0_2729_g2126495
-pkgrel=1
+pkgrel=2
 pkgdesc="A high quality voice chat program. (jack support)"
 arch=('i686' 'x86_64')
 url="https://www.mumble.info/"
