@@ -1,13 +1,12 @@
 pkgname=squid4
-pkgver=4.1
+pkgver=4.2
 pkgrel=4
-pkgdesc='Full-featured Web proxy cache server with the support SSL, eCAP, iCAP-client. Include patches for normal work with long url`s 
-and CDN.'
+pkgdesc='Full-featured Web proxy cache server with the support SSL, eCAP, iCAP-client. Include patches for normal work with long url`s and CDN.'
 arch=('x86_64')
 url='http://www.squid-cache.org'
 depends=('openssl-1.0' 'libecap' 'pam' 'perl' 'libltdl' 'libcap' 'nettle' 'gnutls' 'libnsl')
 makedepends=('krb5')
-conflicts=('squid')
+conflicts=('squid' 'squid4')
 license=('GPL')
 options=('emptydirs')
 backup=('etc/squid/squid.conf'
@@ -40,10 +39,6 @@ prepare() {
 	wget https://raw.githubusercontent.com/bar0metr/squid/master/client_side_request.patch
 	msg2 "Patching Squid..."
 	patch -p0 -i client_side_request.patch
-	msg2 "Getting the on_unsupported_protocol (bug 4861)..."
-	wget https://raw.githubusercontent.com/bar0metr/squid/master/on_unsupported_protocol.patch
-	msg2 "Patching Squid..."
-	patch -p0 -i on_unsupported_protocol.patch
 	msg2 "Done!"
 }
 
