@@ -2,28 +2,25 @@
 # Contributor: Martchus <martchus@gmx.net>
 
 pkgname=networkmanager-sstp
-pkgver=1.2.4
-pkgrel=2
+pkgver=1.2.6
+pkgrel=1
 pkgdesc="SSTP support for NetworkManager"
 arch=('i686' 'x86_64')
 url="http://sstp-client.sourceforge.net/#Network_Manager_Plugin"
 license=('GPL2')
 depends=('sstp-client' 'nm-connection-editor' 'libsecret')
-optdepends=('ppp')
+optdepends=('ppp>=2.4.6')
 options=()
 makedepends=('git' 'intltool' 'ppp>=2.4.6' 'gawk' 'python')
 provides=('networkmanager-sstp')
 source=("https://github.com/enaess/network-manager-sstp/archive/release-${pkgver}.tar.gz")
-sha1sums=('77fb65a997d42fc04cc4c2aa2ab5e974d9473eb6')
+sha1sums=('2e3654c5293a7513c5365553ca0df1f98b9820d8')
 
 build() {
   pppd_version=(`pppd --version 2>&1 | awk '{print $3}'`)
   cd "${srcdir}/network-manager-sstp-release-${pkgver}"
 
-  autoreconf --install &&
-  intltoolize --force &&
-  autoreconf &&
-  ./configure \
+  ./autogen.sh \
     --prefix=/usr \
     --sysconfdir=/etc \
     --with-pppd-plugin-dir=/usr/lib/pppd/${pppd_version} \
