@@ -2,7 +2,7 @@
 # Contributor: Ian Beringer <ian@ianberinger.com>
 
 pkgname=usbguard-nox
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies without gui'
@@ -15,7 +15,7 @@ source=(
 	"${url}/releases/download/usbguard-${pkgver}/usbguard-${pkgver}.tar.gz.sig"
 	"include.patch")
 sha256sums=(
-	'ec1dbf72fd9622c1556055080d6fdb522d8c22c7b7ab8ef591b45004d5de87a9'
+	'732cc99f9b03632eb558941781c01f869bf96aad7f6976998094b3824d9b7ae2'
 	'SKIP'
 	'3a6ddb78a7f5c01a6a83c0a3337dd79a184ecb8a88d3adce1087e8beb4ca9c3f')
 validpgpkeys=("430C1928960157CC45FA1BEBAA06120530AE0466")
