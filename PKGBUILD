@@ -6,7 +6,7 @@
 _pkgname="solunar"
 pkgname=solunar-git
 _pkgver="latest"
-pkgver=0.1.3b.d20180131.r02956b2
+pkgver=0.1.3b.d20180509.r515db46
 pkgrel=1
 pkgdesc="A simple command-line utility for calculating Sun and Moon rise and set, and related times."
 arch=('i686' 'x86_64')
