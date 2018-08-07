@@ -1,14 +1,14 @@
 pkgbase = python-aiorpcx
 	pkgdesc = A generic asyncio library implementation of RPC suitable for an application that is a client, server or both.
-	pkgver = 0.5.9
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/kyuupichan/aiorpcX/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=3.6
-	source = https://github.com/kyuupichan/aiorpcX/archive/0.5.9.tar.gz
-	sha256sums = 7bc453009b5424b02da43c46d8f022537eaaf523f10c099df3d5eceec5e11426
+	source = https://github.com/kyuupichan/aiorpcX/archive/0.6.2.tar.gz
+	sha256sums = 43cd8246eb6ad6d97398a6cb2439b196a31ad0d91d9ec29a38a6d3007605c1ba
 
 pkgname = python-aiorpcx
 
