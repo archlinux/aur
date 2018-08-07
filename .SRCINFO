@@ -1,0 +1,16 @@
+pkgbase = brother-hll2390dw
+	pkgdesc = Brother HL-L2390DW CUPS driver
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	depends = ghostscript
+	depends = perl
+	source = http://download.brother.com/welcome/dlf103578/hll2390dwpdrv-4.0.0-1.i386.rpm
+	sha256sums = 15215422859886c67f4e23f18d1bafdfe47edf619bcc3c74f84f5bcc6b9d8ea2
+
+pkgname = brother-hll2390dw
+
