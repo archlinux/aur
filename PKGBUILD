@@ -1,7 +1,7 @@
 # Maintainer: desbma
 pkgname=r128gain
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast audio loudness (ReplayGain / R128) scanner & tagger"
 arch=('any')
 url="https://github.com/desbma/${pkgname}"
