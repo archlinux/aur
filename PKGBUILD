@@ -7,10 +7,9 @@
 # intel-seapi will be autodetected by the build system, serving as a makedepend.
 # Currently it will not be a mandatory makedepend.
 
-_srcname=MediaSDK
 pkgname=intel-media-sdk-git
 pkgver=2018.Q2.1.r215.g7885aa1
-pkgrel=1
+pkgrel=2
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -28,21 +27,21 @@ options=('!emptydirs')
 
 prepare() {
     # makepkg does not support cloning git-lfs repositories
-    if [ -d "$_srcname" ] 
+    if [ -d "$pkgname" ] 
     then
-        msg2 "Updating ${_srcname} git repo..."
-        cd "$_srcname"
+        msg2 "Updating ${pkgname} git repo..."
+        cd "$pkgname"
         git pull origin
     else
-        msg2 "Cloning ${_srcname} git repo..."
+        msg2 "Cloning ${pkgname} git repo..."
         git lfs install
-        git clone https://github.com/Intel-Media-SDK/MediaSDK.git
-        cd "$_srcname"
+        git clone https://github.com/Intel-Media-SDK/MediaSDK.git "$pkgname"
+        cd "$pkgname"
     fi
 }
 
 pkgver() {
-    cd "$_srcname"
+    cd "$pkgname"
     
     # git, tags available
     local _prefix='MediaSDK-'
@@ -50,7 +49,7 @@ pkgver() {
 }
 
 build() {
-    cd "$_srcname"
+    cd "$pkgname"
     
     mkdir -p build
     cd build
@@ -79,11 +78,11 @@ build() {
 }
 
 package() {
-    cd "${_srcname}/build"
+    cd "${pkgname}/build"
     
     make DESTDIR="$pkgdir" install
     
     # license
-    cd "${srcdir}/${_srcname}"
+    cd "${srcdir}/${pkgname}"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
