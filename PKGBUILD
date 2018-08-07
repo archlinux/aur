@@ -4,7 +4,7 @@
 _netflow='ipt-netflow'
 pkgname='ipt_netflow'
 pkgver='2.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Netflow as netfilter extension.'
 arch=('any')
 url="https://github.com/aabc/${_netflow}"
@@ -16,8 +16,8 @@ source=("${pkgname}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('90d58ee6363177497c10c5a28c99c14be3b170c4be5492220a552ede9d79afef')
 install="${pkgname}.install"
 _linux_custom="ARCH"
-_kdir="`pacman -Ql linux | awk '/(\/modules\/)([0-9.-])+-'${_linux_custom}'\/$/ {print $2}'`"
-_kver="`pacman -Qe linux | awk '{print $2"-'${_linux_custom}'"}'`"
+_kdir="`pacman -Qe linux | awk '{print "/usr/lib/modules/"$2"-'${_linux_custom}'/"}' | sed 's|\.arch|\-arch|g'`"
+_kver="`pacman -Qe linux | awk '{print $2"-'${_linux_custom}'"}' | sed 's|\.arch|\-arch|g'`"
 
 prepare() {
   cd "${srcdir}/${_netflow}-${pkgver}"
