@@ -9,8 +9,8 @@ arch=('x86_64')
 url="https://github.com/lxc/lxd"
 license=('APACHE')
 conflicts=('lxd-lts')
-depends=('lxc' 'squashfs-tools' 'dnsmasq' 'sqlite' 'attr')
-makedepends=('go-pie' 'git' 'sed')
+depends=('lxc' 'squashfs-tools' 'dnsmasq' 'dqlite-git')
+makedepends=('go-pie' 'git')
 options=('!strip' '!emptydirs')
 optdepends=(
     'lvm2: for lvm2 support'
@@ -42,15 +42,7 @@ build() {
   go_base=github.com/lxc/lxd
   mkdir -p "${GOPATH}"
   GOPATH="${GOPATH}" go get "${go_base}" || echo "(ignoring go error)"
-  # Fix for error "Missing custom libsqlite3[...]" (pt.1/2)
-  export CGO_CFLAGS="-I${srcdir}/go/deps/sqlite/ -I${srcdir}/go/deps/dqlite/include/"
-  export CGO_LDFLAGS="-L${srcdir}/go/deps/sqlite/.libs/ -L${srcdir}/go/deps/dqlite/.libs/"
-  export LD_LIBRARY_PATH="${srcdir}/go/deps/sqlite/.libs/:${srcdir}/go/deps/dqlite/.libs/"
-  # Normal execution
   cd "${GOPATH}/src/${go_base}"
-  # Fix for error "Missing custom libsqlite3[...]" (pt.2/2)
-  make deps
-  # Normal execution
   make
 }
 
