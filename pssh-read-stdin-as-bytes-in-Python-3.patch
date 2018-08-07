@@ -1,0 +1,16 @@
+diff --git a/bin/pssh b/bin/pssh
+index 860bad2..5fe726d 100755
+--- a/bin/pssh
++++ b/bin/pssh
+@@ -65,7 +65,10 @@ def do_pssh(hosts, cmdline, opts):
+     if opts.errdir and not os.path.exists(opts.errdir):
+         os.makedirs(opts.errdir)
+     if opts.send_input:
+-        stdin = sys.stdin.read()
++        if hasattr(sys.stdin, 'buffer'):
++            stdin = sys.stdin.buffer.read()
++        else:
++            stdin = sys.stdin.read()
+     else:
+         stdin = None
+     manager = Manager(opts)

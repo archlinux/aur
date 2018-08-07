@@ -1,0 +1,5 @@
+--- psshlib/askpass_server.py.orig	2012-02-02 17:13:09.000000000 +0100
++++ psshlib/askpass_server.py	2016-01-17 11:43:37.006779012 +0100
+@@ -72 +72 @@
+-            bytes_written = conn.send(buffer)
++            bytes_written = conn.send(buffer.encode())

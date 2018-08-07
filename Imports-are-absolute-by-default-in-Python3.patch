@@ -1,0 +1,26 @@
+From 8afbefc445059be55dfd20785ee81e4533ae3af1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rogut=C4=97s=20Sparnuotos?= <rogutes@googlemail.com>
+Date: Sun, 26 Feb 2012 11:05:48 +0200
+Subject: [PATCH] Imports are absolute by default in Python3.
+
+---
+ psshlib/cli.py |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/psshlib/cli.py b/psshlib/cli.py
+index c14b309..c342cde 100644
+--- a/psshlib/cli.py
++++ b/psshlib/cli.py
+@@ -6,7 +6,8 @@ import os
+ import shlex
+ import sys
+ import textwrap
+-import version
++
++from psshlib import version
+ 
+ _DEFAULT_PARALLELISM = 32
+ _DEFAULT_TIMEOUT     = 0 # "infinity" by default
+-- 
+1.7.9.1
+

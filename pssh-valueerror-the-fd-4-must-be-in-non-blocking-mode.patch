@@ -1,0 +1,6 @@
+--- psshlib/manager.py.orig	2012-02-02 17:13:09.000000000 +0100
++++ psshlib/manager.py	2016-01-17 11:52:13.764088460 +0100
+@@ -4,0 +5 @@
++import fcntl
+@@ -211,0 +213 @@
++        fcntl.fcntl(wakeup_writefd, fcntl.F_SETFL, os.O_NONBLOCK)
