@@ -1,0 +1,20 @@
+pkgbase = ocaml-ocplib-simplex-git
+	pkgdesc = simplex algorithm implementation for solving systems of linear inequalities and optimizing linear objective functions
+	pkgver = r38.g5bee435
+	pkgrel = 1
+	url = https://github.com/OCamlPro-Iguernlala/ocplib-simplex
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = ocaml-findlib
+	makedepends = git
+	depends = ocaml
+	provides = ocaml-ocplib-simplex
+	conflicts = ocaml-ocplib-simplex
+	source = git+https://github.com/OCamlPro-Iguernlala/ocplib-simplex
+	source = fix-makefile-install-target.diff
+	sha256sums = SKIP
+	sha256sums = 273455a20fd9a291956904fe48734d2e602ab07211d6833968f5ca0ecc271a31
+
+pkgname = ocaml-ocplib-simplex-git
+
