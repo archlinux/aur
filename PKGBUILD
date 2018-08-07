@@ -3,11 +3,11 @@
 
 pkgname=buku-git
 _pkgname=buku
-pkgver=1172.33c126a
+pkgver=1382.271390e
 pkgrel=1
 pkgdesc="Powerful command-line bookmark manager."
 arch=('any')
-depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-urllib3')
+depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-urllib3' 'python-certifi')
 conflicts=('buku')
 provides=('buku')
 makedepends=('make')
