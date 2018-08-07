@@ -9,7 +9,7 @@
 
 pkgname=intel-media-sdk-git
 pkgver=2018.Q2.1.r215.g7885aa1
-pkgrel=2
+pkgrel=3
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -57,13 +57,8 @@ build() {
     cmake \
         -G 'Unix Makefiles' \
         -D__GENERATOR:STRING='make' \
-        -DCMAKE_CONFIGURATION_TYPES:STRING='release;debug' \
-        -DCMAKE_BUILD_TYPE:STRING='release' \
         -D__IPP:STRING='e9' \
         -D__TARGET_PLATFORM:STRING='BDW' \
-        -DCMAKE_CXX_FLAGS_RELEASE:STRING="${CXXFLAGS} ${CPPFLAGS}" \
-        -DCMAKE_C_FLAGS_RELEASE:STRING="${CFLAGS} ${CPPFLAGS}" \
-        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
         -DENABLE_DRM:BOOL='ON' \
         -DENABLE_OPENCL:BOOL='ON' \
         -DENABLE_WAYLAND:BOOL='ON' \
