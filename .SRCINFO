@@ -1,0 +1,16 @@
+pkgbase = thunderbolt-software-user-space
+	pkgdesc = Thunderbolt user-space components
+	pkgver = cdd7215
+	pkgrel = 1
+	url = https://github.com/intel/thunderbolt-software-user-space
+	arch = x86_64
+	license = BSD-style
+	makedepends = cmake
+	makedepends = boost
+	makedepends = txt2tags
+	depends = bash
+	source = git+https://github.com/intel/thunderbolt-software-user-space.git
+	md5sums = SKIP
+
+pkgname = thunderbolt-software-user-space
+
