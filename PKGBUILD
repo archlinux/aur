@@ -4,7 +4,7 @@ _pkgname="mitsuba"
 _py3ver=`python3 --version | grep -oP '(?<= )\d\.\d'`
 pkgname="${_pkgname}-git"
 pkgver=v0.5.0.r160.g87efb7d6
-pkgrel=4
+pkgrel=5
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
 license=("GPL3")
@@ -18,7 +18,7 @@ source=("${_pkgname}::git+https://www.mitsuba-renderer.org/repos/mitsuba.git"
         "eigen3.3.1.patch"
         "irawan.bsdf.patch")
 sha256sums=('SKIP'
-            '168f562ead644857a21d5880cc57b5aeb17207068fb9de520d375ccfcba3fc04'
+            '7fe37aa17b35bd5d6b8af5776baa7f6330dc7eaec05195631171c1bfd7694faa'
             '6948f7eede4db6246db8c843e61b37b409d86b56b8f567a770d3431aaa6e4e6d'
             '290f61f85b1e28bd4d9d4ec01f2dd87752550c0534a4d700219c9e89e4e09af4')
 
