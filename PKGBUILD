@@ -8,7 +8,7 @@
 _srcname=MediaSDK
 pkgname=intel-media-sdk
 pkgver=2018.Q2.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('cmake' 'libpciaccess' 'libx11' 'libxcb')
 provides=('libmfx')
-conflicts=('intel-media-sdk-git' 'intel-media-server-studio')
+conflicts=('intel-media-sdk-git' 'intel-media-stack-bin' 'intel-media-server-studio')
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/archive/MediaSDK-${pkgver/.Q/-Q}.tar.gz")
 sha256sums=('cad29f3b034ca40f1a85748a9514bf53e035b432d434ea3e348e05bcb305e932')
