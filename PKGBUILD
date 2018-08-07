@@ -8,12 +8,12 @@
 pkgname=valgrind312
 _pkgname=valgrind
 pkgver=3.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool to help find memory-management problems in programs (version 3.12.0)'
 arch=(i686 x86_64)
 license=(GPL)
 url='http://valgrind.org/'
-depends=('glibc=2.27' 'perl')
+depends=('glibc=2.28' 'perl')
 makedepends=(gdb openmpi)
 optdepends=('openmpi: MPI support')
 options=(!emptydirs)
