@@ -15,7 +15,7 @@ makedepends=('git')
 provides=('solaar')
 conflicts=('solaar')
 install='solaar.install'
-source=('git+https://github.com/pwr/Solaar.git' 'solaar.install')
+source=('git+https://github.com/maxpoulin64/Solaar.git' 'solaar.install')
 md5sums=('SKIP' '4057d7179fe2ae9718b8aac4607a2c47')
 
 pkgver() {
