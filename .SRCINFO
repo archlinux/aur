@@ -8,6 +8,7 @@ pkgbase = perl-gtk2-traymanager
 	license = GPL
 	makedepends = perl-extutils-depends
 	makedepends = perl-extutils-pkgconfig
+	makedepends = python
 	depends = gtk2-perl
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/B/BO/BORUP/Gtk2-TrayManager-0.05.tar.gz
