@@ -2,7 +2,7 @@
 
 pkgname=pyakm
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple GUI to manage arch linux kernels"
 arch=('x86_64')
 url="https://github.com/pssncp142/pyakm"
