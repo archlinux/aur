@@ -1,14 +1,14 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _pkgname=gobeansdb
-_gitcommit=b668197caae4ec7a2ec3447a53bd5506b77d9905
+_gitcommit=7127da29f8e9a4312ee600271e98b29ab6771753
 
 pkgname=gobeansdb-git
-pkgver=0.0.0+1+b668197
+pkgver=0.0.0+2+7127da2
 pkgrel=1
 pkgdesc="High performance distributed object storage server from Douban Inc."
 url="https://github.com/douban/gobeansdb"
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'vgo-git')
 options=('!strip' '!emptydirs')
 arch=('x86_64')
 license=('BSD-3-Clause')
@@ -30,7 +30,7 @@ build() {
   ln -s "${srcdir}/${_pkgname}" "${GOPATH}/src/github.com/douban/gobeansdb"
 
   cd "${GOPATH}/src/github.com/douban/gobeansdb"
-  go install github.com/douban/gobeansdb/gobeansdb
+  vgo install github.com/douban/gobeansdb
 }
 
 package() {
