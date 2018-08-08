@@ -1,11 +1,12 @@
-# Maintainer: Tbsc <me in tbscdev point xyz>
+# Maintainer: PinkCathodeCat <awils_1 atsymbol xsmail dot com>
+# Contributor: Tbsc <me in tbscdev point xyz>
 
 pkgname=ratslap
-pkgver=0.2.0
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Community made Linux drivers for Logitech mice (Currently only G300s)"
 arch=('i686' 'x86_64')
-url="https://gitlab.com/krayon/ratslap"
+url="http://github.com/krayon/$pkgname"
 license=('GPL2')
 depends=('libusb')
 makedepends=('git' 'ctags')
@@ -13,12 +14,12 @@ provides=('ratslap')
 conflicts=('ratslap')
 options=()
 install=
-source=('ratslap::git+https://gitlab.com/krayon/ratslap#tag=0.2.0,branch=master')
+source=("$::git+https://gitlab.com/krayon/$pkgname#tag=$pkgver,branch=master")
 md5sums=('SKIP')
 
 build() {
-	cd "$srcdir/ratslap"
-	make
+	cd "$srcdir/$pkgname"
+        make
 }
 
 check() {
@@ -26,6 +27,6 @@ check() {
 }
 
 package() {
-	cd "$srcdir/ratslap"
-	install -Dm755 "$srcdir/ratslap/ratslap" "${pkgdir}/usr/bin/ratslap"
+        cd "$srcdir/$pkgname"
+	install -Dm755 "$srcdir/$pkgname/$pkgname" "${pkgdir}/usr/bin/ratslap"
 }
