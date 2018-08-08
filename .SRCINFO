@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 1.3.10
+	pkgver = 1.3.12
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = telegram-desktop-dev
 	makedepends = python
 	makedepends = libappindicator-gtk3
 	depends = ffmpeg
+	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	depends = minizip
 	depends = openal
@@ -22,7 +23,7 @@ pkgbase = telegram-desktop-dev
 	optdepends = libnotify: desktop notifications
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.3.10
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.3.12
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
 	source = variant::git+https://github.com/mapbox/variant.git
 	source = GSL::git+https://github.com/Microsoft/GSL.git

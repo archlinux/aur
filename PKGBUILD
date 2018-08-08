@@ -6,13 +6,14 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.3.10
+pkgver=1.3.12
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats' 'openssl')
+depends=('ffmpeg' 'desktop-file-utils' 'hicolor-icon-theme' 'minizip' 'openal'
+         'qt5-base' 'qt5-imageformats' 'openssl')
 makedepends=('cmake' 'git' 'gyp' 'range-v3' 'python' 'libappindicator-gtk3')
 optdepends=('libnotify: desktop notifications')
 provides=('telegram-desktop')
