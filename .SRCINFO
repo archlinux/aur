@@ -1,7 +1,7 @@
 pkgbase = devscripts
 	pkgdesc = Scripts to make the life of a Debian Package maintainer easier
 	pkgver = 2.18.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tracker.debian.org/pkg/devscripts
 	arch = i686
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = devscripts
 	depends = debianutils
 	depends = debhelper
 	depends = perl-timedate
-	optdepends = sensible-utils: for sensible alternative selection
+	depends = sensible-utils
 	options = !makeflags
 	source = devscripts::git+https://anonscm.debian.org/git/collab-maint/devscripts.git#tag=v2.18.3
 	source = fixes.patch

@@ -6,13 +6,13 @@
 
 pkgname=devscripts
 pkgver=2.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/devscripts"
 license=('GPL2')
-depends=('dpkg' 'wget' 'sed' 'perl' 'debianutils' 'debhelper' 'perl-timedate')
-optdepends=('sensible-utils: for sensible alternative selection')
+depends=('dpkg' 'wget' 'sed' 'perl' 'debianutils' 'debhelper' 'perl-timedate'
+         'sensible-utils')
 makedepends=(
     'docbook-xsl'
     'bash-completion'
