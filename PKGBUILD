@@ -56,7 +56,7 @@ prepare() {
   cp ../config .config
   #make olddefconfig
 
-  #make -s kernelrelease > ../version
+  make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 }
 
