@@ -1,0 +1,12 @@
+#!/bin/bash
+
+build () {
+  add_module mlx4_core
+  add_module mlx4_en
+}
+
+help () {
+  cat << EOF
+This hook will just add mlx4_{core,en} modules to initrd. Useful to use Mellanox NICs with mkinitcpio-netconf.
+EOF
+}
