@@ -1,35 +1,51 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=mesen
 _pkgname=Mesen
-pkgver=0.9.4
+pkgver=0.9.6
 pkgrel=1
-pkgdesc="A cross-platform NES/Famicom emulator"
-arch=("x86_64")
-makedepends=("clang")
-depends=("mono" "sdl2")
-url="https://github.com/SourMesen/Mesen"
+pkgdesc='A cross-platform NES/Famicom emulator'
+arch=('x86_64')
+makedepends=('clang' 'gendesk')
+depends=('mono' 'sdl2')
+url='https://github.com/SourMesen/Mesen'
 license=('GPL3')
-source=("https://github.com/SourMesen/Mesen/archive/${pkgver}.tar.gz"
-       "${pkgname}.desktop"
-       "${pkgname}".sh)
-md5sums=('3c7ab85aeadd863cbc50d0172b5925d1'
-         '196970221b064dd78df72500e0df794c'
-         '03f0d1ef2d850712a12858d79bc17ddf')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('d5d3617971a12c88e38edb64a4a1fea33010722f0029894f627e58b0ed148a3a')
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+
+  # Prevent duplicate .desktop from getting created
+  sed -i 's/CreateShortcutFile(desktopFile, mimeTypes);//' GUI.NET/Config/FileAssociationHelper.cs
+
+  gendesk --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "/usr/bin/mesen" -n
+
+  # Invoke using mono in a wrapper, since wine (if installed) would open it otherwise
+  cat > "${pkgname}" << EOF
+#!/bin/sh
+/usr/bin/mono /opt/Mesen/Mesen "\$@"
+EOF
+}
 
 build() {
-    cd ${srcdir}/${_pkgname}-${pkgver} 
-    make
+  cd "${_pkgname}-${pkgver}"
+
+  make
 }
 
 package() {
-    mkdir -p ${pkgdir}/opt/${_pkgname}
-    cd ${srcdir}/${_pkgname}-${pkgver}/GUI.NET/Resources
-    install -Dm644 ${_pkgname}Icon.png "${pkgdir}/opt/${_pkgname}/${_pkgname}.png"
-    cd ${srcdir}/${_pkgname}-${pkgver}/bin/x64/Release 
-    install -Dm755 ${_pkgname}.exe "$pkgdir/opt/${_pkgname}/${_pkgname}"
-    cd ${srcdir}/${_pkgname}-${pkgver}/InteropDLL/obj.x64
-    install -Dm644 lib${_pkgname}Core.x64.dll "${pkgdir}/opt/$_pkgname/lib${_pkgname}Core.dll"
-    cd ${srcdir}
-    install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
+  cd "${_pkgname}-${pkgver}"
+  install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+  cd "${srcdir}/${_pkgname}-${pkgver}/GUI.NET/Resources"
+  install -Dm644 ${_pkgname}Icon.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+
+  cd "${srcdir}/${_pkgname}-${pkgver}/bin/x64/Release"
+  install -Dm755 ${_pkgname}.exe "${pkgdir}/opt/${_pkgname}/${_pkgname}"
+
+  cd "${srcdir}/${_pkgname}-${pkgver}/InteropDLL/obj.x64"
+  install -Dm644 lib${_pkgname}Core.x64.dll "${pkgdir}/usr/lib/lib${_pkgname}Core.dll"
 }
