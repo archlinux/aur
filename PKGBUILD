@@ -2,7 +2,7 @@
 
 pkgname=simplicity-sddm-theme-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple SDDM Theme"
 arch=('any')
 url="https://github.com/gabretana/simplicity-sddm-theme"

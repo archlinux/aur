@@ -1,7 +1,7 @@
 pkgbase = simplicity-sddm-theme-git
 	pkgdesc = Simple SDDM Theme
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gabretana/simplicity-sddm-theme
 	arch = any
 	license = GPL
