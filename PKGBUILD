@@ -1,20 +1,21 @@
 #Maintainer: Alia Skywol <skywol@qq.com>
 
 pkgname=marea-icon-theme
-pkgver=5.2
+pkgver=5.3.2
 pkgrel=1
 pkgdesc="Marea Icons"
 arch=('any')
 url="https://github.com/Marea-Icons/Marea"
 license=('GPL3')
+depends=('gtk-update-icon-cache')
+makedepends=('git')
 replaces=('')
 conflicts=('')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Marea-Icons/Marea/archive/master.tar.gz")
-sha512sums=('e7cd62022f8af6be79ab8008e355d99002d2eeecdfcc8b6e232f97ed3e53d045d943040848130fccb43f070b95ed2fb3fe9e72165022706e6c603157a5bf1fd9')
+source=("git+https://github.com/Marea-Icons/Marea.git")
+sha512sums=('SKIP')
 
 package() {
-  mkdir $pkgname-$pkgver
-  mv Marea-master $pkgname-$pkgver/Marea
   install -dm755 "$pkgdir"/usr/share/icons
-  cp -r $pkgname-$pkgver/Marea "$pkgdir"/usr/share/icons/
+  cp -r Marea "$pkgdir"/usr/share/icons/
+  rm -rf "$pkgdir"/usr/share/icons/Marea/.git
 }

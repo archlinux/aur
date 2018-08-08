@@ -1,12 +1,14 @@
 pkgbase = marea-icon-theme
 	pkgdesc = Marea Icons
-	pkgver = 5.2
+	pkgver = 5.3.2
 	pkgrel = 1
 	url = https://github.com/Marea-Icons/Marea
 	arch = any
 	license = GPL3
-	source = marea-icon-theme-5.2.tar.gz::https://github.com/Marea-Icons/Marea/archive/master.tar.gz
-	sha512sums = e7cd62022f8af6be79ab8008e355d99002d2eeecdfcc8b6e232f97ed3e53d045d943040848130fccb43f070b95ed2fb3fe9e72165022706e6c603157a5bf1fd9
+	makedepends = git
+	depends = gtk-update-icon-cache
+	source = git+https://github.com/Marea-Icons/Marea.git
+	sha512sums = SKIP
 
 pkgname = marea-icon-theme
 
