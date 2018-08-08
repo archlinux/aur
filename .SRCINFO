@@ -1,10 +1,11 @@
 pkgbase = skypeforlinux-preview-bin
 	pkgdesc = Skype for Linux - Preview/Insider Version
 	pkgver = 8.28.76.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.skype.com
 	arch = x86_64
 	license = custom
+	makedepends = patchelf
 	depends = gtk3
 	depends = libxss
 	depends = gconf
@@ -21,8 +22,12 @@ pkgbase = skypeforlinux-preview-bin
 	conflicts = skypeforlinux-beta-bin
 	conflicts = skype
 	replaces = skypeforlinux-bin
+	options = !strip
+	options = staticlibs
 	source = https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_8.28.76.19_amd64.deb
+	source = https://archive.archlinux.org/packages/g/glibc/glibc-2.27-3-x86_64.pkg.tar.xz
 	sha256sums = a83f19f1943898c45f6a7ce500331eb523b2f0f55399f39e2479b567ef2ffd71
+	sha256sums = a9e1b18d7f613be660556dbd6883781e88a0f5113230147e230d3e2f268792dc
 
 pkgname = skypeforlinux-preview-bin
 
