@@ -1,7 +1,7 @@
 # Maintainer: Michiru Saito <urihcim at gmail dot com>
 pkgname=gura
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An iterator-oriented programming language"
 arch=('i686' 'x86_64')
 url='http://www.gura-lang.org/'
@@ -33,7 +33,7 @@ _moddepends=('bzip2'
             'expat'
             'libyaml')
 depends=('readline')
-makedepends=('cmake' 'make' 'gcc' ${_moddepends[@]})
+makedepends=('cmake' ${_moddepends[@]})
 optdepends=(${_moddepends[@]})
 source=("https://github.com/gura-lang/gura/releases/download/v${pkgver}/gura-${pkgver}-src.tar.gz"
         "Value.h.patch"
