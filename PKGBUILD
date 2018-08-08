@@ -4,8 +4,7 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 # Maintainer: Bailey Kasin <bailey@gingertechnology.net>
 
-pkgbase=linux               # Build stock -ARCH kernel
-#pkgbase=linux-custom       # Build kernel with a different name
+pkgbase=threadripper-vfio       # Build kernel with a different name
 _srcver=4.17.13-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
