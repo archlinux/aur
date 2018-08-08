@@ -1,4 +1,5 @@
 # Maintainer: archshift
+# Maintainer: eidheim
 
 _pkgbase=jucipp
 pkgbase=$_pkgbase-git
