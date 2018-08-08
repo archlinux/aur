@@ -2,7 +2,7 @@
 
 pkgname=deconz
 arch=('x86_64')
-pkgver=2.05.32
+pkgver=2.05.34
 pkgrel=1
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="http://www.dresden-elektronik.de"
@@ -26,12 +26,15 @@ install=
 changelog=
 source=(https://www.dresden-elektronik.de/deconz/ubuntu/beta/$pkgname-$pkgver-qt5.deb)
 noextract=()
-sha256sums=(7a69beb2ea9835426f8988357dca3a4658e34b6596878b53c04db4f047dd9c3f)
+sha256sums=(396d75df520566efe50cf99c9b23656a1656f1be7c1f4e0e6ff86a8e23a92e71)
 
 package() {
   cd "${srcdir}"
 
   tar -xJf data.tar.xz -C "${pkgdir}"
+
+  cp -rfv "${pkgdir}/lib" "${pkgdir}/usr"
+  rm -rf "${pkgdir}/lib"
 
   # Remove group write permissions from all files/directories
   chmod -R g-w "${pkgdir}"
