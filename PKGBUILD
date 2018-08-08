@@ -1,6 +1,9 @@
 pkgname=pycharm-community-eap
-pkgver=2018.1
+_buildver=182.3911.3
+_pkgver=2018.2.1
+pkgver=$_pkgver.$_buildver
 pkgrel=1
+epoch=1
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build. Community edition.'
 arch=(any)
 options=('!strip')
@@ -9,8 +12,8 @@ license=(Apache)
 depends=(java-environment)
 provides=(pycharm-community)
 conflicts=(pycharm-community)
-source=("http://download.jetbrains.com/python/pycharm-community-$pkgver.tar.gz"{,.sha256})
-sha256sums=($(cut -f1 -d' ' "pycharm-community-$pkgver.tar.gz.sha256") SKIP)
+source=("https://download.jetbrains.com/python/pycharm-community-$_buildver.tar.gz"{,.sha256})
+sha256sums=($(cut -f1 -d' ' "pycharm-community-$_buildver.tar.gz.sha256") SKIP)
 PKGEXT=${PKGEXT:-'.pkg.tar'}
 
 build() {
@@ -32,7 +35,7 @@ build() {
 package() {
 	cd "$srcdir"
 	mkdir -p "$pkgdir/opt/$pkgname"
-	cp -R "$srcdir/pycharm-community-$pkgver/"* "$pkgdir/opt/$pkgname"
+	cp -R "$srcdir/pycharm-community-$_pkgver/"* "$pkgdir/opt/$pkgname"
 	
 	local vmoptfile=pycharm64
 	if [[ $CARCH = 'i686' ]]; then
