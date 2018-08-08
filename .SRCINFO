@@ -1,0 +1,16 @@
+pkgbase = gobeansdb-git
+	pkgdesc = High performance distributed object storage server from Douban Inc.
+	pkgver = 0.0.0+1+b668197
+	pkgrel = 1
+	url = https://github.com/douban/gobeansdb
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/douban/gobeansdb.git#commit=b668197caae4ec7a2ec3447a53bd5506b77d9905
+	sha256sums = SKIP
+
+pkgname = gobeansdb-git
+
