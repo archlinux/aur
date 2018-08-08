@@ -1,7 +1,7 @@
 # Maintainer: Cody Schafer <dev@codyps.com>
 
-pkgname=hcxtools
-pkgdesc="Portable solution for capturing wlan traffic and conversion to hashcat and jtr formats"
+pkgname=hcxdumptool
+pkgdesc="Small tool to capture packets from wlan devices"
 license=('MIT')
 arch=('i686' 'x86_64')
 
@@ -11,7 +11,7 @@ pkgrel=1
 url="https://github.com/ZerBea/$pkgname"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ZerBea/$pkgname/archive/$pkgver.tar.gz")
 
-md5sums=('6a6ebc3512c849eaba590df481306538')
+md5sums=('2038f03b8ee0918bfab94dffd0873d00')
 
 makedepends=('make' 'gcc')
 
@@ -19,7 +19,11 @@ depends=('curl' 'libpcap' 'zlib' 'openssl')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
-  make
+  # FIXME: this is a hack for the broken build system to ensure rebuilds
+  rm -rf build
+  make DESTDIR=$pkgdir PREFIX=/usr INSTALLDIR=$pkgdir/usr/bin
+  # FIXME: this is a hack for the broken build system to prevent rebuilds
+  touch build
 }
 
 package () {
