@@ -1,11 +1,11 @@
 pkgname=republicanywhere-bin
 pkgver=1.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Republic Anywhere desktop client."
 arch=('x86_64')
 url="republicwireless.com"
 license=('EULA')
-depends=(libappindicator-gtk2)
+depends=(libappindicator-gtk2 gconf)
 source=("http://files.republicwireless.com/public/apps/anywhere/debian/pool/main/r/republicanywhere/republicanywhere_${pkgver}_amd64.deb")
 deb="${source[@]##*/}"
 noextract=($deb)
