@@ -7,7 +7,7 @@ pkgdesc="Modbus RTU master device emulator for PC"
 arch=('x86_64')
 url="https://github.com/maisvendoo/qmaster"
 license=('GPL')
-depends=('qt5-base' 'q5-serialbus')
+depends=('qt5-base' 'qt5-serialbus')
 makedepends=('git' 'gendesk')
 
 source=("git+https://github.com/maisvendoo/qmaster.git")

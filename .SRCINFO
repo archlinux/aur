@@ -8,7 +8,7 @@ pkgbase = qmaster
 	makedepends = git
 	makedepends = gendesk
 	depends = qt5-base
-	depends = q5-serialbus
+	depends = qt5-serialbus
 	source = git+https://github.com/maisvendoo/qmaster.git
 	sha256sums = SKIP
 
