@@ -1,21 +1,29 @@
+# Maintainer: Charlotte Van Petegem <charlotte at vanpetegem dot me>
 # Maintainer: jpate <jkpate@jkpate.net>
 pkgname=praat
-pkgver=6.0.05
+pkgver=6.0.40
 pkgrel=1
 pkgdesc="A tool for 'Doing Phonetics by computer'"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="http://www.fon.hum.uva.nl/praat/"
 license=('GPL')
 depends=( 'alsa-lib' 'gtk2' )
+makedepends=('pkg-config' 'gtk2' 'alsa-lib')
 optdepends=( 'ttf-sil-fonts' )
 
-source_i686=("http://www.fon.hum.uva.nl/praat/praat6005_linux32.tar.gz")
-source_x86_64=("http://www.fon.hum.uva.nl/praat/praat6005_linux64.tar.gz")
+source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
 
-md5sums_x86_64=('9906a68882a98ecda1b25bfd897971ee')
-md5sums_i686=('27a7decd067fd215fe425c68d39ee373')
+md5sums=('d1cf1590b95a254b83148035a263ca74')
 
-package() {
-  install -Dm755  "$srcdir/praat" "$pkgdir/usr/bin/praat"
+prepare() {
+  cp "$srcdir/$pkgname-$pkgver/makefiles/makefile.defs.linux.pulse" "$srcdir/$pkgname-$pkgver/makefile.defs"
 }
 
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make
+}
+
+package() {
+  install -Dm755  "$srcdir/$pkgname-$pkgver/praat" "$pkgdir/usr/bin/praat"
+}
