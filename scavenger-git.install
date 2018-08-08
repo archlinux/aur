@@ -1,0 +1,15 @@
+post_install() {
+  echo "+-------------------------------------------------------------------------------------+"
+  echo "| You have to execute to use it:                                                      |"
+  echo "|   mkdir -p ~/.config/scavenger                                                      |"
+  echo "|   cp /usr/share/scavenger/config.yaml ~/.config/scavenger/config.yaml               |"
+  echo "|                                                                                     |"
+  echo "| systemctl --user enable scavenger.service - for autostart when system loads         |"
+  echo "| systemctl --user start scavenger.service - start miner                              |"
+  echo "| journalctl --user -u scavenger.service -f - see logs                                |"
+  echo "+-------------------------------------------------------------------------------------+"
+}
+
+post_upgrade() {
+  post_install
+}
