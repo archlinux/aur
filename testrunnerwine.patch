@@ -1,30 +1,60 @@
+diff -ruN fribidi/test/meson.build patched/test/meson.build
+--- fribidi/test/meson.build	2018-08-08 11:44:23.532552727 +0200
++++ patched/test/meson.build	2018-08-08 11:42:06.210001912 +0200
+@@ -15,7 +15,16 @@
+   test_name = '@0@_@1@'.format(charset, suffix)
+   input_file = files('test_@0@.input'.format(test_name))
+   reference_file = files('test_@0@.reference'.format(test_name))
+-  test(test_name, test_runner, args: [fribidi, charset, input_file, reference_file])
++  wrapper = ''
++  if meson.is_cross_build() and meson.has_exe_wrapper()
++    #FIXME: How to get the wrapper executable defined in the cross-build file?
++    if host_machine.cpu() == 'i686'
++      wrapper = 'i686-w64-mingw32-wine'
++    else
++      wrapper = 'x86_64-w64-mingw32-wine'
++    endif
++  endif
++  test(test_name, test_runner, args: [wrapper, fribidi, charset, input_file, reference_file])
+ endforeach
+ 
+ subdir('unicode-conformance')
 diff -ruN fribidi/test/test-runner.py patched/test/test-runner.py
---- fribidi/test/test-runner.py	2018-08-03 15:45:55.064198589 +0200
-+++ patched/test/test-runner.py	2018-08-03 15:46:13.544532687 +0200
-@@ -14,6 +14,7 @@
- charset = sys.argv[2]
- input_file = sys.argv[3]
- reference_file = sys.argv[4]
+--- fribidi/test/test-runner.py	2018-08-08 11:47:28.165977986 +0200
++++ patched/test/test-runner.py	2018-08-08 11:32:04.748784989 +0200
+@@ -6,14 +6,16 @@
+ import sys
+ import os
+ 
+-if len(sys.argv) != 5:
+-  raise Exception('Expected 4 command-line arguments: test_exe charset test.input test.reference')
++if len(sys.argv) != 6:
++  raise Exception('Expected 5 command-line arguments: wrapper test_exe charset test.input test.reference')
+ 
+ script = sys.argv[0]
+-test_exe = sys.argv[1]
+-charset = sys.argv[2]
+-input_file = sys.argv[3]
+-reference_file = sys.argv[4]
++wrapper = sys.argv[1]
++test_exe = sys.argv[2]
++charset = sys.argv[3]
++input_file = sys.argv[4]
++reference_file = sys.argv[5]
 +run_with_wine = False
  
  if os.name == 'nt':
    libpath = os.path.join(os.path.dirname(os.path.realpath(test_exe)),
-@@ -21,10 +22,16 @@
-                          'lib')
+@@ -22,9 +24,10 @@
    os.environ['PATH'] = libpath + ';' + os.environ['PATH']
  
-+if os.environ.get('NEED_WINE') == '1':
-+  run_with_wine = True
-+
  try:
 -  output = subprocess.check_output([test_exe, '--test', '--charset', charset, input_file])
-+  if run_with_wine:
-+    output = subprocess.check_output(['wine', test_exe, '--test', '--charset', charset, input_file])
-+  else:
-+    output = subprocess.check_output([test_exe, '--test', '--charset', charset, input_file])
++  output = subprocess.check_output([wrapper, test_exe, '--test', '--charset', charset, input_file])
    ref_data = open(reference_file, "rb").read()
 -  if os.name == 'nt':
-+  if os.name == 'nt' or run_with_wine:
++# FIXME AUR mingw-w64 specific. Needs general solution (custom meson option?)
++  if os.name == 'nt' or os.environ.get('NEED_WINE') == '1':
      output = output.replace(b'\r\n', b'\n')
      ref_data = ref_data.replace(b'\r\n', b'\n') 
    if output != ref_data:

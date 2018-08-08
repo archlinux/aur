@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-fribidi
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)"
 arch=('any')
 license=('LGPL')
@@ -14,7 +14,7 @@ _commit=5b6a16e8da12ae7ff482fbfa5a17b72bd518418f  # tags/v1.0.5^0
 source=("git+https://github.com/fribidi/fribidi#commit=$_commit"
         "testrunnerwine.patch")
 sha256sums=('SKIP'
-            '5a3b01779035608220e6af54d803006295b237a05ddaaf4781ab143317d8ec15')
+            '5bdbddcec6ef0a092d49dacec149b5219da12033b76787b3e65c0f9b338045d7')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
