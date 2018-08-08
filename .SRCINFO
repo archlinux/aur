@@ -1,0 +1,16 @@
+pkgbase = perl-test-deep-fuzzy
+	pkgdesc = Perl package for fuzzy number comparison with Test::Deep
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Deep-Fuzzy
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-test-deep
+	depends = perl-math-round
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KARUPA/Test-Deep-Fuzzy-0.01.tar.gz
+	md5sums = e50e492322e0c62a191aa096bd23ad25
+
+pkgname = perl-test-deep-fuzzy
+
