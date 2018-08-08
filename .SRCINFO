@@ -1,6 +1,6 @@
 pkgbase = scavenger-git
 	pkgdesc = Burstcoin Rust miner
-	pkgver = 1.0.0.beta.r42.g93a00d8
+	pkgver = 1.0.0.beta.r50.gadf8683
 	pkgrel = 1
 	url = https://github.com/PoC-Consortium/scavenger
 	install = scavenger-git.install
@@ -15,7 +15,7 @@ pkgbase = scavenger-git
 	source = git+https://github.com/PoC-Consortium/scavenger.git
 	source = scavenger.service
 	sha256sums = SKIP
-	sha256sums = ba9781bae8ef9beed2c11cb041226d4921565db3839f68d95328e5d8b04bef76
+	sha256sums = 7c48cb91f6b9e9e65fd52ef32fc27d234b82457d9452ff611b23074c19a16595
 
 pkgname = scavenger-git
 

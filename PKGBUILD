@@ -3,7 +3,7 @@
 
 pkgname=scavenger-git
 _realname=scavenger
-pkgver=1.0.0.beta.r42.g93a00d8
+pkgver=1.0.0.beta.r50.gadf8683
 pkgrel=1
 pkgdesc="Burstcoin Rust miner"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('scavenger')
 source=("git+https://github.com/PoC-Consortium/${_realname}.git"
         "${_realname}.service")
 sha256sums=('SKIP'
-            'ba9781bae8ef9beed2c11cb041226d4921565db3839f68d95328e5d8b04bef76')
+            '7c48cb91f6b9e9e65fd52ef32fc27d234b82457d9452ff611b23074c19a16595')
 
 pkgver() {
     cd "${srcdir}/${_realname}"
