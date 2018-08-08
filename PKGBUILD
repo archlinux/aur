@@ -1,8 +1,8 @@
 # Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=xapps-git
-pkgver=1.2.0.r0.ga8d7c4c
-pkgrel=1
+pkgver=1.2.2.r0.gd957699
+pkgrel=2
 pkgdesc="Common library for X-Apps project"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/${pkgname%-git}"
