@@ -1,7 +1,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet-skins
-pkgver=20180203
+pkgver=20180808
 pkgrel=1
 pkgdesc="DDraceNetwork skin database"
 arch=(any)
@@ -12,7 +12,7 @@ provides=('teeworlds-ddnet-skins')
 conflicts=('teeworlds-ddnet-skins')
 replaces=('teeworlds-ddnet-skins')
 source=("$pkgname-$pkgver.zip::https://ddnet.tw/skins/zip/database.zip")
-sha256sums=('810913b0f1422ebb81fd1af8f16acddb0d277d3580fa6d84335be32b62328fc2')
+sha256sums=('bc9dec0801fec08e040091b2e803dac42a0340b348f327a851940ca6a9ae2e59')
 
 prepare() {
   rm -rf $pkgname-$pkgver
@@ -72,6 +72,20 @@ package() {
       "caesar.png"             \
       "chera.png"              \
       "clefairy.png"           \
+      "coala_bluekitty.png"    \
+      "coala_bluestripe.png"   \
+      "coala_cammo.png"        \
+      "coala_cammostripes.png" \
+      "coala_default.png"      \
+      "coala_limekitty.png"    \
+      "coala_pinky.png"        \
+      "coala_redbopp.png"      \
+      "coala_redstripe.png"    \
+      "coala_saddo.png"        \
+      "coala_toptri.png"       \
+      "coala_twinbop.png"      \
+      "coala_twintri.png"      \
+      "coala_warpaint.png"     \
       "demonlimekitty.png"     \
       "dino.png"               \
       "dragon.png"             \
