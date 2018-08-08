@@ -1,21 +1,22 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Maintainer: fusion809 <CONTACT via comments at https://aur.archlinux.org/packages/jucipp>
+# Maintainer: eidheim
 # Contributor: archshift
 
 pkgname=jucipp
-ghub="https://github.com"
-cpp="$ghub/cppit"
+glab="https://gitlab.com"
+cpp="$glab/cppit"
 pkgdesc='A lightweight cross-platform C++ IDE'
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 arch=('x86_64')
 url="$cpp/jucipp"
 license=('MIT')
-depends=('gtksourceviewmm' 'clang' 'aspell' 'lldb' 'boost-libs' 'libgit2' 'ctags')
+depends=('gtksourceviewmm' 'clang' 'aspell-en' 'lldb' 'boost-libs' 'libgit2' 'ctags')
 makedepends=('git' 'cmake' 'pkg-config' 'boost')
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
   "git+$cpp/libclangmm.git"
-  "git+$ghub/eidheim/tiny-process-library")
+  "git+$glab/eidheim/tiny-process-library")
 sha1sums=('SKIP'
           'SKIP'
           'SKIP')
@@ -29,8 +30,8 @@ prepare() {
   cd "$srcdir/$pkgname"
 
   git submodule init
-  git config submodule.libclangmm.url "$srcdir/libclangmm"
-  git config submodule.tiny-process-library.url "$srcdir/tiny-process-library"
+  git config submodule.libclangmm.url "$srcdir/lib/libclangmm"
+  git config submodule.tiny-process-library.url "$srcdir/lib/tiny-process-library"
   git submodule update
 
   mkdir -p build
