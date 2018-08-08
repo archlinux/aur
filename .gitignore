@@ -1,0 +1,6 @@
+.hg/
+src/
+pkg/
+*.tar.*
+*.rpm
+agree_*.html
