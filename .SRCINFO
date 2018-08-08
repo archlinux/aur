@@ -1,11 +1,12 @@
 pkgbase = isl
 	pkgdesc = Library for manipulating sets and relations of integer points bounded by linear constraints
 	pkgver = 0.20
-	pkgrel = 3
+	pkgrel = 4
 	url = http://isl.gforge.inria.fr/
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = gmp
 	conflicts = isl-git
 	conflicts = isl14
