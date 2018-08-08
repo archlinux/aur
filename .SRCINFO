@@ -1,7 +1,7 @@
 pkgbase = plasma5-applet-video-wallpaper
 	pkgdesc = Video wallpaper is a KDE plasma wallpaper / lock screen background plugin to play video files as background.
-	pkgver = VERSION
-	pkgrel = 2
+	pkgver = 0.1
+	pkgrel = 1
 	url = https://store.kde.org/p/1213488/
 	arch = x86_64
 	license = GPL
