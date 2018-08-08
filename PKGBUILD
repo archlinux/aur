@@ -3,7 +3,7 @@
 pkgname='perl-test-version'
 _module='Test-Version'
 _author='P/PL/PLICEASE'
-pkgver='2.05'
+pkgver='2.09'
 pkgrel='1'
 pkgdesc='Check to see that versions in modules are sane.'
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('perl-test-exception')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs' 'purge')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_module-$pkgver.tar.gz")
-sha256sums=('39c0ec02663da0e56962bdafaef6790cf83d12b4d90e8a4cdc971d57d869d63f')
+sha256sums=('9ce1dd2897a5f30e1b7f8966ec66f57d8d8f280f605f28c7ca221fa79aca38e0')
 
 build() {
    (
