@@ -3,7 +3,7 @@
 _pkgname=('linux-gpib')
 pkgname=("$_pkgname-svn")
 pkgver=r1730
-pkgrel=2
+pkgrel=3
 pkgdesc='A support package for GPIB (IEEE 488) hardware -- built from the svn source tree'
 arch=('x86_64')
 url='http://linux-gpib.sourceforge.net/'
@@ -22,8 +22,7 @@ pkgver() {
   printf "r%s" "${ver//[[:alpha:]]}"
 }
 
-_kernmajor="$(pacman -Q linux | sed -r 's/linux ([0-9]*.[0-9]*).*/\1/')"
-_extramodules="/usr/lib/modules/extramodules-${_kernmajor}-ARCH"
+_extramodules=`readlink -e /usr/lib/modules/$(uname -r)/extramodules`
 _buildForPythonVersion=3
 
 md5sums=('SKIP'
@@ -60,8 +59,9 @@ package() {
 
     mkdir -p ${pkgdir}/${_extramodules}
     echo 'g gpib - -' |
-install -Dm644 /dev/stdin "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
-    mv ${pkgdir}/lib/modules/$(uname -r)/gpib ${pkgdir}/${_extramodules}/
+        install -Dm644 /dev/stdin "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
+    cp -a ${pkgdir}/lib/modules/$(uname -r)/* ${pkgdir}/${_extramodules}/.
+    rm -rf ${pkgdir}/lib
     find ${pkgdir} -depth -type d -empty -exec rmdir {} \;
     install -D -m644 "${srcdir}/trunk/${_pkgname}/util/templates/gpib.conf" \
      "${pkgdir}/etc/gpib.conf"
