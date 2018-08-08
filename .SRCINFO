@@ -1,0 +1,14 @@
+pkgbase = ripole-git
+	pkgdesc = OLE2 Attachment extraction tool
+	pkgver = r2.9a5d124
+	pkgrel = 1
+	url = https://github.com/inflex/ripOLE
+	arch = i686
+	arch = x86_64
+	license = BSD
+	conflicts = ripole
+	source = git+https://github.com/inflex/ripOLE.git
+	sha512sums = SKIP
+
+pkgname = ripole-git
+
