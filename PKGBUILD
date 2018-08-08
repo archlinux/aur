@@ -2,14 +2,14 @@
 _modulename=taskwiki
 pkgname=vim-$_modulename
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Proper project management in vim. Standing on the shoulders of vimwiki and Taskwarrior"
 arch=(any)
 url="https://github.com/tbabej/taskwiki"
 license=('MIT')
 groups=()
 depends=('vim' 'python-tasklib' 'task' 'vim' 'vim-vimwiki')
-makedepends=('git')
+makedepends=()
 provides=()
 conflicts=()
 replaces=()
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/master.tar.gz")
-sha256sums=('9d27482056d1c94ec5feb22d8f7d961333e47498ee6779f4874e6fee7630a9b8')
+sha256sums=('425692b75878ae3130e6d6d711612d04a6ddffa7c65a9e0e4cbc76b548354b13')
 package() {
   cd "$srcdir/$_modulename-master"
   installpath="${pkgdir}/usr/share/vim/vimfiles"
