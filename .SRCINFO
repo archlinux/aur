@@ -24,6 +24,7 @@ pkgbase = nikola-git
 	depends = python-requests
 	depends = python-piexif
 	depends = python-markdown
+	depends = python-babel
 	optdepends = python-jinja: for Jinja2 themes
 	optdepends = python-husl: for color mixing features
 	optdepends = python-pyphen: for hyphenation

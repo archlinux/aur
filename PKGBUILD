@@ -14,7 +14,7 @@ depends=('python' 'python-doit' 'python-pygments' 'python-pillow'
          'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
          'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
          'python-blinker' 'python-natsort' 'python-setuptools'
-         'python-requests' 'python-piexif' 'python-markdown')
+         'python-requests' 'python-piexif' 'python-markdown' 'python-babel')
 optdepends=('python-jinja: for Jinja2 themes'
             'python-husl: for color mixing features'
             'python-pyphen: for hyphenation'
