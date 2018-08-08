@@ -1,7 +1,7 @@
 pkgbase = isl
 	pkgdesc = Library for manipulating sets and relations of integer points bounded by linear constraints
 	pkgver = 0.20
-	pkgrel = 2
+	pkgrel = 3
 	url = http://isl.gforge.inria.fr/
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = isl
 	conflicts = isl15
 	conflicts = isl16
 	conflicts = isl17
-	source = http://isl.gforge.inria.fr/isl-0.20.tar.xz
-	sha256sums = a5596a9fb8a5b365cb612e4b9628735d6e67e9178fae134a816ae195017e77aa
+	source = isl::git+http://repo.or.cz/isl.git#tag=isl-0.20
+	sha256sums = SKIP
 
 pkgname = isl
 
