@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-qt-canary-git
-pkgver=r7585.7e834c94
+pkgver=r7717.3d49b3f3
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -22,8 +22,10 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-canary"
         'git+https://github.com/fmtlib/fmt'
         'git+https://github.com/lz4/lz4'
         'git+https://github.com/yuzu-emu/unicorn'
+        'git+https://github.com/DarkLordZach/mbedtls'
         'git+https://github.com/ogniK5377/opus')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -54,6 +56,7 @@ prepare() {
 	git config submodule.fmt.url "$srcdir/fmt"
 	git config submodule.lz4.url "$srcdir/lz4"
 	git config submodule.unicorn.url "$srcdir/unicorn"
+	git config submodule.mbedtls.url "$srcdir/mbedtls"
 	git config submodule.opus.url "$srcdir/opus"
 	git submodule update --init --recursive
 }
@@ -73,10 +76,7 @@ check() {
 }
 
 package() {
-	ln -sf "$srcdir/$_pkgname/externals/cubeb/include" "$srcdir/$_pkgname/include"
 	cd "$srcdir/$_pkgname/build"
 	make DESTDIR="$pkgdir/" install
 	rm "$pkgdir/usr/bin/${_pkgname}-cmd"
-	rm -rf "$pkgdir/usr/lib" "$pkgdir/usr/include/mbedtls"
-	mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
 }
