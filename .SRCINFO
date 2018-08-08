@@ -1,7 +1,7 @@
 pkgbase = python-vint
 	pkgdesc = VimL Linter
 	pkgver = 0.3.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kuniwak/vint/
 	arch = any
 	license = MIT

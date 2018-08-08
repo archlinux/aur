@@ -4,7 +4,7 @@
 pkgname=python-vint
 _pkgname=vint
 pkgver=0.3.19
-pkgrel=1
+pkgrel=2
 pkgdesc="VimL Linter"
 arch=('any')
 makedepends=('python-setuptools')
