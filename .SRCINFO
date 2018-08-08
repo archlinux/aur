@@ -11,6 +11,7 @@ pkgbase = brave-git
 	license = custom:others
 	makedepends = git
 	makedepends = npm
+	makedepends = python2
 	depends = gtk2
 	depends = nss
 	depends = alsa-lib
