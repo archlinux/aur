@@ -1,6 +1,6 @@
 pkgname=typora
 pkgver=0.9.53
-pkgrel=2
+pkgrel=3
 pkgdesc="Typora will give you a seamless experience as both a reader and a writer."
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -11,7 +11,7 @@ source=(
     'typora.sh'
     "https://typora.io/./linux/${pkgname}_${pkgver}_amd64.deb"
 )
-md5sums=('5851ce5475b7526ae0277e739a5ce6f9'
+md5sums=('2bf190ba0c77de908b2127aac4ba6f73'
          '7bf938aa11cc6b8d3dca442e673b057b')
 
 package() {
