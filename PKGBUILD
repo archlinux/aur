@@ -2,7 +2,7 @@
 # Contributor: Fredrik Haikarainen <fredrik.haikarainen@gmail.com>
 
 pkgname=light-git
-pkgver=1.0.r6.g674ada0
+pkgver=1.1.2.r22.g5d5e3c3
 pkgrel=1
 pkgdesc='Program to easily change brightness on backlight-controllers.'
 arch=('i686' 'x86_64')
@@ -21,6 +21,8 @@ pkgver() {
 
 build(){
   cd "$srcdir/light"
+  ./autogen.sh
+  ./configure
   make
 }
 
