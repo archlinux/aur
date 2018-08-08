@@ -13,8 +13,3 @@ package for Arch Linux, providing the following Perl modules:
    Dist::Zilla::Role::ModuleInfo
 
 See https://aur.archlinux.org/packages/perl-dist-zilla-plugins-cjm/.
-
-Note:
-
-   Upstream test t/recommendedprereqs.t will fail, the patch included here was
-   created based on the fork at https://github.com/mla/dist-zilla-plugins-cjm/.
