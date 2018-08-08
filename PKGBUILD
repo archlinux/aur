@@ -1,42 +1,27 @@
-# Maintainer: MattWoelk
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
+# Contributor: MattWoelk
 # Contributor: xsmile <sascha_r gmx de>
 
-_retoken='.*<div id="timecheck" class="hidden">(\w+)<.*'
 pkgname=nessus
-pkgver=7.0.2
+pkgver=7.1.3
 pkgrel=1
-_filename="${pkgname^}-${pkgver}-fc20.x86_64.rpm"
-pkgdesc="Vulnerability scanner"
+pkgdesc="Nessus vulnerability scanner"
 arch=('x86_64')
 depends=('gnupg')
 license=('custom')
 url="https://www.nessus.org"
 install=${pkgname}.install
 
-_gettoken() {
-  token=$(curl -s https://www.tenable.com/products/nessus/select-your-operating-system#tos | \
-          sed -nr "s/${_retoken}/\1/p")
-
-  if [[ "$token" == "" ]]; then
-    echo
-    echo "  -> Could not get the download token, '_retoken' might need an update"
-    exit 1
-  fi
-
-  echo "$token"
-}
-_token=$(_gettoken)
-_pkgurl="https://downloads.nessus.org/nessus3dl.php?file=${_filename}&licence_accept=yes&t=${_token}"
-
-source=("${_filename}::${_pkgurl}"
+# Note: I had to use ipfs because I don't want to redistribute the file on a known server.
+source=("Nessus-7.1.3-fc20.x86_64.rpm::https://gateway.ipfs.io/ipfs/QmSxr3yEsgP5JvnpyNtb7dfcvCJgqoxh7sDWV2fjPs8ZkZ"
         nessus.desktop
         nessus.sh
         LICENSE)
 
-md5sums=('0bbf1879d13a1ddd2667eede1468e553'
-         '388578bf980efe6e6d3f33fcc289543a'
-         '8c5772ac63f97d94475fe03e80d6ba5c'
-         '1db6df5a39009ace46c7ee40141ece1b')
+sha256sums=('abbae32cee99762787e8bbdd009526d35551a27362191d93a292eb078d8c0b25'
+            '8c5e82d609a7290c34cbfa5635012cb66820e4e2c1db2bf5808fc306fcefdc30'
+            '9b8e2c15d86ce7b83806a27bd6685f009ad339f3ea52022b87a75fbd2802ec5a'
+            '089073d03bf83e101b50da858348ace6bb2a553ce2249532d6f5d7ed29182dac')
 
 package() {
   install -Dm755 $pkgname.sh "$pkgdir/etc/profile.d/$pkgname.sh"
