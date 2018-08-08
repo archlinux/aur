@@ -2,7 +2,7 @@
 
 pkgname=mediagoblin-git
 pkgver=0.9.0.r16.gcd465ebf
-pkgrel=1
+pkgrel=2
 pkgdesc='A free software media publishing platform'
 arch=('i686' 'x86_64')
 url='http://mediagoblin.org'
@@ -30,15 +30,13 @@ source=(
   'paste_local.ini'
   'mediagoblin_local.ini'
   'mediagoblin-tmpfiles.conf'
-  'ldap_fix.py'
 )
 sha256sums=('SKIP'
             '2a02c90dcc8f69ac2a072044d3e4281347ed048c2610cb2e11295e4876cfb409'
             'f636d02f86d2dab5ecc901be5b0f7c42366500393f22dfdc7e354ca299fca65a'
             'ac914d60886d9bf53d3f40b8b00a60d46ada1cac9130210e045a4776d898e884'
             '9adf338f5dbfb94ee7ae29433091b6991a1fa39a6135a8295f9f1cc1fde0edc1'
-            'abb6c4c4e54d4372adfe67ab22371ad625505098311955e5ae8e34102b059d47'
-            'a57ce62645cdcc6dc752d5af18350be492df02128e54deac088f4d77874f91e9')
+            'abb6c4c4e54d4372adfe67ab22371ad625505098311955e5ae8e34102b059d47')
 
 pkgver() {
   cd "$srcdir/mediagoblin"
@@ -56,24 +54,21 @@ build() {
 
   ./bootstrap.sh
   ./configure --with-python3
-  make
-  ./bin/easy_install flup typing
-  sed -i "s/registry.has_key(current_theme_name)/current_theme_name in registry/" mediagoblin/tools/theme.py
+  make || make
+  ./bin/easy_install flup
 }
 
 package() {
   cd "$srcdir/mediagoblin"
+  rm -rf .git .gitignore
 
   install -dm755 "$pkgdir"/usr/share/webapps/mediagoblin/
   cp -a . "$pkgdir"/usr/share/webapps/mediagoblin
 
   cd "$pkgdir"/usr/share/webapps/mediagoblin
-
-  rm -rf .git .gitignore
   find . -name '*.pyc' -delete
   find . -type f -exec sed -i "s|$srcdir/mediagoblin|/usr/share/webapps/mediagoblin|g" {} \;
 
-  install -Dm644 "$srcdir/ldap_fix.py" "$pkgdir"/usr/share/webapps/mediagoblin/mediagoblin/plugins/ldap/tools.py
   install -dm755 "$pkgdir"/var/lib/mediagoblin
   install -dm755 "$pkgdir"/etc/webapps/mediagoblin
 
