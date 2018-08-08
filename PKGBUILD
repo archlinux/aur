@@ -1,8 +1,8 @@
-# Maintainer: Mantas Mikulėnas <grawity@gmail.com>
-# Disclaimer: I have no idea if this works, I only packaged it.
+# Maintainer: Ashley Bone <aur DOT ashley DOT bone AT gmail DOT com>
+# Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
 url="http://www.infradead.org/~mchehab/rasdaemon/"
@@ -16,7 +16,7 @@ depends=(
   perl-dbd-sqlite
 )
 source=("https://www.infradead.org/~mchehab/rasdaemon/rasdaemon-$pkgver.tar.bz2")
-sha256sums=('b435ae16be8e1c50b2e57d4d9917f3ea92041ac6ffb5f8c015a8989303e78ca9')
+sha256sums=('f83a13a015541aad543cfaf431533243ca31b37f35239b9dcd92e44047ce99d2')
 # Git tree: http://git.infradead.org/users/mchehab/rasdaemon.git
 
 prepare() {
@@ -31,6 +31,7 @@ build() {
     --prefix=/usr           \
     --sbindir=/usr/bin      \
     --sysconfdir=/etc       \
+	--localstatedir=/var    \
     --enable-aer            \
     --enable-arm            \
     --enable-extlog         \
