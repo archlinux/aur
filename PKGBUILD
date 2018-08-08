@@ -1,6 +1,6 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=jupyter_contrib_nbextensions
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A collection of Jupyter nbextensions'
 arch=(any)
@@ -18,13 +18,13 @@ depends=(
 	jupyter-nbconvert
 	'jupyter_contrib_core>=0.3.3'
 	'jupyter_nbextensions_configurator>=0.4.0'
-	'jupyter_highlight_selected_word>=0.0.10'
+	'jupyter_highlight_selected_word>=0.1.0'
 	'jupyter_latex_envs>=1.3.8'
 )
 makedepends=(python-pip mariadb jq)
 _wheel="$pkgname-$pkgver-py2.py3-none-any.whl"
 source=("$_wheel::https://files.pythonhosted.org/packages/py2.py3/${pkgname::1}/$pkgname/$_wheel" "$pkgname.install")
-sha256sums=('fd26224ed2ff2436da5cef95243e910d581821417ae958f21499d8e5b87687e0'
+sha256sums=('f4893d99fed6be6587cd2c722ef8841556283a697a482288b621b514beda2405'
             'd141d36609422748b0b22b6c432f223bfc92d72359bbccaf709690f7de313e35')
 noextract=("$_wheel")
 install="$pkgname.install"
