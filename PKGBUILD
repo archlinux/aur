@@ -18,7 +18,7 @@ pkgdesc="Convert XBase databases (particularly FoxPro tables) into a format that
 arch=('i686' 'x86_64')
 license=('GPLv3')
 url="https://github.com/kstrauser/pgdbf"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kstrauser/$pkgname/archive/v{$pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kstrauser/$pkgname/archive/v${pkgver}.tar.gz")
 md5sums=('9b42918b9129ff39d737f405e17bd07a')
 
 build() {
