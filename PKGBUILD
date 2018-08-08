@@ -1,6 +1,6 @@
 # Maintainer: Phil Schaf <flying-sheep@web.de>
 pkgname=jupyter_highlight_selected_word
-pkgver=0.0.10
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Jupyter notebook extension that enables highlighting every instance of the current word in the notebook'
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=()
 depends=(python jupyter jupyter-notebook)
 _wheel="$pkgname-$pkgver-py2.py3-none-any.whl"
 source=("$_wheel::https://files.pythonhosted.org/packages/py2.py3/${pkgname::1}/$pkgname/$_wheel")
-md5sums=('022377f8a6b1c2de98fea984ad1898f3')
+sha256sums=('9545dfa9cb057eebe3a5795604dcd3a5294ea18637e553f61a0b67c1b5903c58')
 noextract=("$_wheel")
 
 package() {
