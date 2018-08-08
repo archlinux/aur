@@ -1,7 +1,7 @@
 pkgbase = pacman-cleanup-hook
 	pkgdesc = Pacman hook to cleanup pacman cache, keeps only the latest cache and the currently installed package. No configuration necessary, just install it.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	depends = pacman-contrib
 	source = cleanup.hook
