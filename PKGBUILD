@@ -2,14 +2,14 @@
 
 pkgname=mediagoblin
 pkgver=0.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A free software media publishing platform'
 arch=('i686' 'x86_64')
 url='http://mediagoblin.org'
 license=('AGPL')
 provides=('mediagoblin')
 conflicts=('mediagoblin-git')
-depends=('python' 'python-lxml' 'sqlite' 'python-pillow' 'python-virtualenv' 'npm' 'nodejs')
+depends=('python' 'python-certifi' 'python-lxml' 'sqlite' 'python-pillow' 'python-virtualenv' 'npm' 'nodejs')
 optdepends=(
   'postgresql: to use the postgresql database backend'
   'python-psycopg2: to use the postgresql database backend'
