@@ -8,8 +8,8 @@
 _localepurge=
 
 pkgname=sigil-git
-pkgver=0.9.8.r33.g2cc7fac2
-pkgrel=1
+pkgver=0.9.10.r11.gf60e9d36
+pkgrel=2
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
 url="https://github.com/Sigil-Ebook/Sigil"
@@ -23,7 +23,9 @@ optdepends=('hunspell-en: for English dictionary support'
             'python-cssselect: recommended for plugins'
             'python-cssutils: recommended for plugins'
             'python-pillow: recommended for plugins'
-            'python-regex: recommended for plugins')
+            'python-regex: recommended for plugins'
+            'python-pyqt5: recommended for plugins'
+            'tk: recommended for plugins')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}"::"git+${url}")
@@ -49,6 +51,7 @@ pkgver() {
 build() {
     mkdir -p "${srcdir}/${pkgname%-git}/build"
     cd "${srcdir}/${pkgname%-git}/build"
+
     cmake -G "Unix Makefiles" \
         -DUSE_SYSTEM_LIBS=1 \
         -DSYSTEM_LIBS_REQUIRED=1 \
@@ -56,7 +59,6 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
         -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_SKIP_RPATH=ON ..
     make
 }
