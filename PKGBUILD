@@ -32,7 +32,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=4.17.12-arch1
+_srcver=4.17.13-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _pdsversion=098t
@@ -41,11 +41,11 @@ url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git)
 options=('!strip')
-_srcname=archlinux-linux
-_psd_patch="v${_srcver%-*}+_pds${_pdsversion}.patch"
+_srcname=linux-$_srcver
+_psd_patch="v4.17.12+_pds${_pdsversion}.patch"
 _gcc_more_v='20180509'
 source=(
-  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=v$_srcver"
+  "$_srcname.tar.gz::https://github.com/archlinux/linux/archive/v$_srcver.tar.gz"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -58,7 +58,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('SKIP'
+sha256sums=('d351d9b97594f16ca047d8e87c170de6d41df399a0212eb9c63b6d8a10301c27'
             '2d2c8af71afd4e3689fbb18f8b8df7090f2cc8d4f63ee2f0302fd7d7de6173ab'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
