@@ -14,7 +14,7 @@ provides=('ratslap')
 conflicts=('ratslap')
 options=()
 install=
-source=("$::git+https://gitlab.com/krayon/$pkgname#tag=$pkgver,branch=master")
+source=("$pkgname::git+https://gitlab.com/krayon/$pkgname#tag=$pkgver,branch=master")
 md5sums=('SKIP')
 
 build() {
