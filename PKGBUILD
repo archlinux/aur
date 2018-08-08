@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.17
-_stable=4.17.12
-_patchver=4.17.13
+_stable=4.17.13
+_patchver=4.17.14
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -25,10 +25,6 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
-  0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
-  0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -36,17 +32,13 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '6cc1d02bd481193ed3f4903dacc3b57e0930b882d63944c5d625564faa30d03a'
+            '10fbb9333e48e60c4d94525ed9342730a022cc1dae4705482eb99f651c067b8a'
             'SKIP'
-            '6ed482aa6bb72999434ca34de3081e798d4fc0ac79ec3e57af3a98927348ff99'
+            '5dbfce6d7ea2118919f98493136a9d8c7a09b87e11c2f7d66556d2d4127aff5c'
             'f8e890eac9779a89009c1e2339f757e9781864df09805211fad005146fe2578b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '92f848d0e21fbb2400e50d1c1021514893423641e5450896d7b1d88aa880b2b9'
-            'fc3c50ae6bd905608e0533a883ab569fcf54038fb9d6569b391107d9fd00abbc'
-            'bc50c605bd0e1fa7437c21ddef728b83b6de3322b988e14713032993dfa1fc69'
-            '66284102261c4ed53db050e9045c8672ba0e5171884b46e58f6cd417774d8578')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 _kernelname=${pkgbase#linux}
 
@@ -62,18 +54,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # disable USER_NS for non-root users by default
-  patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-
-  # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
-
-  # https://bugs.archlinux.org/task/56780
-  patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
-
-  # Fix iwd provoking a BUG
-  patch -Np1 -i ../0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
