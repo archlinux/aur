@@ -1,7 +1,7 @@
 pkgbase = qt5-mvvm
 	pkgdesc = A mvvm oriented library for Qt, to create Projects for Widgets and Quick in parallel
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Skycoder42/QtMvvm
 	arch = i686
 	arch = x86_64

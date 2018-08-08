@@ -3,7 +3,7 @@ pkgbase=qt5-mvvm
 pkgname=(qt5-mvvmcore qt5-mvvmwidgets qt5-mvvmquick qt5-mvvmdatasynccore qt5-mvvmdatasyncwidgets qt5-mvvmdatasyncquick qt5-mvvm-doc)
 group=qt5-mvvm
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A mvvm oriented library for Qt, to create Projects for Widgets and Quick in parallel"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtMvvm"
@@ -156,6 +156,7 @@ package_qt5-mvvm-doc() {
 
   cd build/doc
   make INSTALL_ROOT="$pkgdir" install
+  install -Dm644 -t "$pkgdir/usr/share/man/man3" man/man3/*.3
   cd "../../$_pkgfqn/ProjectTemplate"
   find . -type f -exec install -D -m644 "{}" "$pkgdir/usr/share/qtcreator/templates/wizards/projects/qtmvvm/{}" \;
 
