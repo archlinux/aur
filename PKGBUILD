@@ -2,7 +2,7 @@
 # Contributor: burntcookie90 <aur at vishnurajeevan dot com>
 _gitname=i3lock-fancy
 pkgname=i3lock-fancy-git
-pkgver=r136.b81db64
+pkgver=r161.7217cb5
 pkgrel=1
 pkgdesc="i3lock-color script: blurs background, adds lock icon and text, offers dark/light background detection."
 arch=('i686' 'x86_64')
@@ -22,12 +22,8 @@ pkgver() {
   cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 package() {
     cd "${srcdir}/$_gitname"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_gitname/LICENSE"
-    install -dm755 "$pkgdir/usr/share/$_gitname/icons"
-    install -m644 -t "$pkgdir/usr/share/$_gitname/icons" icons/*
-    install -dm755 "$pkgdir/usr/bin"
-    install -Dm755 lock "$pkgdir/usr/share/$_gitname/"
-    ln -s "/usr/share/$_gitname/lock" "$pkgdir/usr/bin/i3lock-fancy"
+    DESTDIR="$pkgdir" make install
 }
