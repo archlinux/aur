@@ -2,7 +2,7 @@
 _pkgbase='yuzu'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r7653.83ef37ca
+pkgver=r7735.fd9da423
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -68,9 +68,7 @@ build() {
 	cd "$srcdir/$_pkgbase/build"
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DCMAKE_BUILD_TYPE=Release \
-	  -DBUILD_TESTS=False \
-	  -DINSTALL_MBEDTLS_HEADERS=False
+	  -DCMAKE_BUILD_TYPE=Release
 	make
 }
 
@@ -91,12 +89,6 @@ package_yuzu-qt-git() {
 	mkdir -p "$srcdir/$_pkgbase/include/cubeb"
 	
 	make DESTDIR="$pkgdir/" install
-	
-	# screw cubeb cmake even more
-	rm -r "$pkgdir/usr/lib64"
-	rm -r "$pkgdir/usr/include"
-	# Yay mbedtls joins the ring
-	rm -r "$pkgdir/usr/lib"
 	
 	rm "$pkgdir/usr/bin/${_pkgbase}-cmd"
 }
