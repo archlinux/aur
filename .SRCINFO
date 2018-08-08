@@ -1,0 +1,16 @@
+pkgbase = perl-b-debug
+	pkgdesc = Perl/CPAN Module B::Debug: Walk Perl syntax tree, printing debug info about ops
+	pkgver = 1.26
+	pkgrel = 1
+	url = https://metacpan.org/release/B-Debug
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RU/RURBAN/B-Debug-1.26.tar.gz
+	md5sums = 260ec0e2c2b18af1d42911bfaf6b7477
+	sha512sums = d15a1b8283a9c9582cebf9d5fdc38289160c601603498eb79d120154c8643a81e256c4afe2ee938c9db04989af0544bdf312d2d0fe5b898b1dcee756d084db6e
+
+pkgname = perl-b-debug
+
