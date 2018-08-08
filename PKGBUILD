@@ -1,6 +1,6 @@
 # Maintainer: Parker Ellertson (rasputin-machine) <parkerellertson at airmail dot cc>
 pkgname='ripcord-test'
-pkgver=0.2.96.17
+pkgver=0.2.96.22
 pkgrel=1
 pkgdesc='Qt-based Discord and Slack client'
 arch=('x86_64')
@@ -10,7 +10,7 @@ validpgpkeys=('ABBAD1CB484F53024CF5868B69332F9203F21F5C')
 
 _file="Ripcord-${pkgver}-${CARCH}.AppImage"
 source=("https://cancel.fm/dl/test/$_file")
-sha256sums=("352e69d2d7ba24db8766d75c2793280a00aa7d4edbbc5ab58015308a5c9b2868")
+sha256sums=("10dcfe2840a9138e976c9a83b24f8f2b23536c26ce78f074f1351fdd6f4b01a0")
 
 # !! AppImage is emptied if symbols are stripped away !!
 options=('!strip')
