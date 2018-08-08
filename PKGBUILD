@@ -10,7 +10,8 @@ license=('GPL')
 depends=('sddm')
 _theme='simplicity'
 _repo='simplicity-sddm-theme'
-source=("git+https://github.com/gabretana/simplicity-sddm-theme.git")
+#source=("git+https://github.com/gabretana/simplicity-sddm-theme.git")
+source=("git+https://gitlab.com/isseigx/simplicity-sddm-theme.git")
 md5sums=('SKIP')
 
 pkgver() {
