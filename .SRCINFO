@@ -1,10 +1,12 @@
 pkgbase = python-toml
 	pkgdesc = Parse and emit TOML
 	pkgver = 0.9.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/uiri/toml
 	arch = any
 	license = MIT
+	makedepends = python
+	makedepends = python2
 	source = https://files.pythonhosted.org/packages/source/t/toml/toml-0.9.4.tar.gz
 	sha256sums = 8e86bd6ce8cc11b9620cb637466453d94f5d57ad86f17e98a98d1f73e3baab2d
 
