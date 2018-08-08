@@ -20,7 +20,7 @@ build() {
   aclocal
   autoconf
   automake --add-missing
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/xfce-polkit
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
