@@ -1,0 +1,16 @@
+pkgbase = dict-freedict-eng-fin
+	pkgdesc = English -> Finnish dictionary for dictd et al. from Freedict.org
+	pkgver = 2018_06_06
+	pkgrel = 1
+	url = http://www.freedict.org/
+	install = dict-freedict-eng-fin.install
+	arch = any
+	license = GPL
+	makedepends = dictd
+	makedepends = freedict-tools
+	optdepends = dictd: dict client and server
+	source = https://download.freedict.org/dictionaries/eng-fin/2018-06-06/freedict-eng-fin-2018-06-06.src.tar.xz
+	sha512sums = a385319d3b99e1d91510ad695e63d2f957621b253f29e3132a66d6102f3da1b7d46cd255e07ad433aafd3bc64a39876a3b1e33a2e1c1b1838f836f63659834fd
+
+pkgname = dict-freedict-eng-fin
+
