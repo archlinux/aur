@@ -1,9 +1,9 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
-_pkgname=('linux-gpib')
+_pkgname='linux-gpib'
 pkgname=("$_pkgname-svn")
-pkgver=r1730
-pkgrel=3
+pkgver=r1755
+pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware -- built from the svn source tree'
 arch=('x86_64')
 url='http://linux-gpib.sourceforge.net/'
@@ -12,58 +12,61 @@ makedepends=('perl' 'python' 'linux-headers' 'bison')
 optdepends=('fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357')
 conflicts=('linux-gpib')
 provides=('linux-gpib')
-#source=("svn://svn.code.sf.net/p/linux-gpib/code/trunk/linux-gpib-kernel" "svn://svn.code.sf.net/p/linux-gpib/code/trunk/linux-gpib-user" "noDev.patch")
-source=("svn://svn.code.sf.net/p/linux-gpib/code/trunk#revision=1730" "noDev.patch")
+source=("${_pkgname}::svn://svn.code.sf.net/p/linux-gpib/code/trunk")
 backup=('etc/gpib.conf')
 
 pkgver() {
-  cd "trunk/$_pkgname"
+  cd "${_kernDir}"
   local ver="$(svnversion)"
   printf "r%s" "${ver//[[:alpha:]]}"
 }
 
+_kernDir="${_pkgname}/${_pkgname}-kernel"
+_userDir="${_pkgname}/${_pkgname}-user"
 _extramodules=`readlink -e /usr/lib/modules/$(uname -r)/extramodules`
-_buildForPythonVersion=3
+_buildForPythonVersion=3 # could also be 2
 
-md5sums=('SKIP'
-         '8c6cb9198ddd029bf6557bf6a7f80c1a')
+md5sums=('SKIP')
 
 prepare() {
-    cd "trunk/${_pkgname}"
-
-    patch -p0 < "../../noDev.patch"
+  cd "${srcdir}/${_kernDir}"
+  ./bootstrap
+  ./configure 
+ 
+  cd "${srcdir}/${_userDir}"
+  ./bootstrap
+  PYTHON=python${_buildForPythonVersion} ./configure \
+    --prefix=/usr \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --disable-guile-binding \
+    --enable-perl-binding \
+    --disable-php-binding \
+    --enable-python-binding \
+    --disable-tcl-binding
 }
 
 
 build() {
-    cd "trunk/${_pkgname}"
+  cd "${srcdir}/${_kernDir}"
+  make
 
-    ./bootstrap
-
-    PYTHON=python${_buildForPythonVersion} ./configure \
-        --prefix=/usr \
-        --bindir=/usr/bin \
-        --sbindir=/usr/bin \
-        --disable-guile-binding \
-        --enable-perl-binding \
-        --disable-php-binding \
-        --enable-python-binding \
-        --disable-tcl-binding
-    make
+  cd "${srcdir}/${_userDir}"
+  make
 }
 
 package() {
-    cd "trunk/${_pkgname}"
-
+    cd "${srcdir}/${_kernDir}"
     MAKEFLAGS="-j1" make INSTALL_MOD_PATH="${pkgdir}" DESTDIR="${pkgdir}" install
-
     mkdir -p ${pkgdir}/${_extramodules}
     echo 'g gpib - -' |
-        install -Dm644 /dev/stdin "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
+install -Dm644 /dev/stdin "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
     cp -a ${pkgdir}/lib/modules/$(uname -r)/* ${pkgdir}/${_extramodules}/.
     rm -rf ${pkgdir}/lib
-    find ${pkgdir} -depth -type d -empty -exec rmdir {} \;
-    install -D -m644 "${srcdir}/trunk/${_pkgname}/util/templates/gpib.conf" \
+
+    cd "${srcdir}/${_userDir}"
+    MAKEFLAGS="-j1" make DESTDIR="${pkgdir}" install
+    install -D -m644 "${srcdir}/${_userDir}/util/templates/gpib.conf" \
      "${pkgdir}/etc/gpib.conf"
 
     msg2 "Now you should do three things:"
@@ -73,3 +76,4 @@ package() {
 }
 
 # vim:ts=4:et:sw=4
+
