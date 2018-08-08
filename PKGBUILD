@@ -59,4 +59,4 @@ EOF
 md5sums=('4a211e89bb4495e1c7c8bb0d6c0c5b7b'
          '3bc1c65e13b6182a9c989835eefc8810'
          '54df9d2f1f19d3c27034cc1a97d1bc67'
-         '949d3f1d444732f7c0a62354b64491ea')
+         '92d7fc301372dd69d9121845c3c95bbf')
