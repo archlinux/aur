@@ -1,12 +1,11 @@
 pkgbase = python-atspi-git
+	pkgdesc = Python 3 bindings for at-spi (with async fixes)
 	pkgver = 2.26.0+0+g813ba13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/pyatspi2
 	arch = any
 	license = GPL2
 	makedepends = python-gobject
-	makedepends = python2-gobject
-	makedepends = at-spi2-core
 	makedepends = gnome-common
 	makedepends = git
 	depends = python-gobject
