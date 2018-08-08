@@ -14,7 +14,7 @@ _srcname=$pkgbase
 _kernel_rel=4.19
 _branch=drm-next
 _kernelname=${pkgbase#linux}
-pkgver=4.19.768424.500775074f88
+pkgver=4.19.769772.824da016fde1
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -29,7 +29,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
         "${pkgbase}.preset")
 
 sha256sums=('SKIP'
-            '2ae729f7f0beb2f3401addbd3fb4dd1a179355ccc76622dea96f7395c89c2e0f'
+            '73af697c8d426db76eda76bc5c21b0ff9ad379428b7e3d0c953d0be4f5aa41a3'
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
