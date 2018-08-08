@@ -2,12 +2,12 @@
 
 pkgname=qmaster
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Modbus RTU master device emulator for PC"
 arch=('x86_64')
 url="https://github.com/maisvendoo/qmaster"
 license=('GPL')
-depends=('qt5-base')
+depends=('qt5-base' 'q5-serialbus')
 makedepends=('git' 'gendesk')
 
 source=("git+https://github.com/maisvendoo/qmaster.git")
