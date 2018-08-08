@@ -22,6 +22,7 @@ pkgbase = skypeforlinux-preview-bin
 	conflicts = skypeforlinux-beta-bin
 	conflicts = skype
 	replaces = skypeforlinux-bin
+	noextract = glibc-2.27-3-x86_64.pkg.tar.xz
 	options = !strip
 	options = staticlibs
 	source = https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_8.28.76.19_amd64.deb

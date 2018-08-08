@@ -20,6 +20,7 @@ source=(
 "https://repo.skype.com/deb/pool/main/s/$_pkgname/${_pkgname}_${pkgver}_amd64.deb"
 "https://archive.archlinux.org/packages/g/glibc/glibc-2.27-3-${CARCH}.pkg.tar.xz"
 )
+noextract=("glibc-2.27-3-${CARCH}.pkg.tar.xz")
 sha256sums=('a83f19f1943898c45f6a7ce500331eb523b2f0f55399f39e2479b567ef2ffd71'
             'a9e1b18d7f613be660556dbd6883781e88a0f5113230147e230d3e2f268792dc')
 
@@ -33,6 +34,7 @@ package() {
   rm -rf "$pkgdir/opt"
   mkdir -p "$_pdir/glibc"
   tar -xJC "$_pdir/glibc" -f "glibc-2.27-3-$CARCH.pkg.tar.xz"
+  rm "$_pdir/glibc/"{.BUILDINFO,.INSTALL,.MTREE,.PKGINFO}
   patchelf --set-interpreter "$_ldir/glibc/usr/lib/ld-linux-x86-64.so.2" "$_pexe"
   patchelf --set-rpath "$_ldir:$_ldir/glibc/usr/lib" "$_pexe"
 }
