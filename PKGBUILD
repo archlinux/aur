@@ -2,7 +2,7 @@
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 pkgname=laternamagica.app
 _pkgname=LaternaMagica 
-pkgrel=1
+pkgrel=2
 pkgver=0.5
 pkgdesc="An image viewer and slideshow application."
 arch=('i686' 'x86_64')
