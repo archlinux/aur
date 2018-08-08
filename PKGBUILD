@@ -5,7 +5,7 @@ _name=ansicolor
 
 pkgname=$_python-ansicolor
 pkgver=0.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A library to produce ansi color output and colored highlighting and diffing"
 depends=('python')
 makedepends=('python-setuptools')
