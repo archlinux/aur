@@ -6,7 +6,7 @@
 _pkgbasename=sdl
 _pkgname=lib32-$_pkgbasename
 pkgname=$_pkgname-hg
-pkgver=1.2.15.r11979.d684a767e240
+pkgver=1.2.15.r12076.3e05d58dc84f
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (32-bit)"
 arch=('x86_64')
@@ -26,14 +26,8 @@ pkgver() {
   cd "SDL/"
   printf "%s.r%s.%s" \
     "$(hg log -r . -T "{latesttag}" | sed 's/^release-//')" \
-    "$(hg identify -n | sed 's/+//')" \
-    "$(hg identify -i | sed 's/+//')"
-}
-
-prepare() {
-  cd "SDL/"
-  # https://bugzilla.libsdl.org/show_bug.cgi?id=1430
-  hg backout --no-commit 5620:ad4ed9f0336f
+    "$(hg identify -n)" \
+    "$(hg identify -i)"
 }
 
 build() {
