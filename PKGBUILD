@@ -2,8 +2,8 @@
 pkgbase=qt5-mvvm
 pkgname=(qt5-mvvmcore qt5-mvvmwidgets qt5-mvvmquick qt5-mvvmdatasynccore qt5-mvvmdatasyncwidgets qt5-mvvmdatasyncquick qt5-mvvm-doc)
 group=qt5-mvvm
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A mvvm oriented library for Qt, to create Projects for Widgets and Quick in parallel"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtMvvm"
@@ -36,7 +36,7 @@ prepare() {
 build() {
   cd build
 
-  qmake "../$_pkgfqn/"
+  qmake "CONFIG+=no_auto_lupdate" "../$_pkgfqn/"
   make qmake_all
   make
   make lrelease
@@ -49,12 +49,15 @@ package_qt5-mvvmcore() {
   make INSTALL_ROOT="$pkgdir" install
   cd ../imports/mvvmcore
   make INSTALL_ROOT="$pkgdir" install
-  cd ../../..
+  cd ../../../tools/settingsgenerator
+  make INSTALL_ROOT="$pkgdir" install
+  cd ../..
 
   # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
   find "$pkgdir/usr/lib" -type f -name '*.prl' \
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
+  install -D -m644 "../$_pkgfqn/qbs/Qt/settingsgenerator/module.qbs" "$pkgdir/usr/share/qbs/modules/Qt/settingsgenerator/module.qbs"
   install -D -m644 "../$_pkgfqn/LICENSE" "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
   install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
 }
@@ -153,6 +156,8 @@ package_qt5-mvvm-doc() {
 
   cd build/doc
   make INSTALL_ROOT="$pkgdir" install
+  cd "../../$_pkgfqn/ProjectTemplate"
+  find . -type f -exec install -D -m644 "{}" "$pkgdir/usr/share/qtcreator/templates/wizards/projects/qtmvvm/{}" \;
 
   # DROP file paths from doc tags
   find "$pkgdir/usr/share/doc/qt" -type f -name '*.tags' \
