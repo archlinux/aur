@@ -1,5 +1,5 @@
 pkgname='python-aiorpcx'
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A generic asyncio library implementation of RPC suitable for an application that is a client, server or both."
 url="https://github.com/kyuupichan/aiorpcX/"
@@ -19,4 +19,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
-sha256sums=('43cd8246eb6ad6d97398a6cb2439b196a31ad0d91d9ec29a38a6d3007605c1ba')
+sha256sums=('af1bfb3cc317826564cea34556331f84f551fbf0f11c490b4f2ee6049e0f082c')
