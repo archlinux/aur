@@ -13,6 +13,7 @@ options=('strip' '!emptydirs')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 install=${pkgname}.install
+conflicts=('scavenger')
 source=("git+https://github.com/PoC-Consortium/${_realname}.git"
         "${_realname}.service")
 sha256sums=('SKIP'
@@ -31,6 +32,12 @@ build() {
 check() {
     cd "${srcdir}/${_realname}"
     cargo test
+}
+
+prepare() {
+    cd "${srcdir}/${_realname}"
+    # disable log in file
+    sed -i "s/logfile_log_level:.*/logfile_log_level: 'Off'/g" config.yaml
 }
 
 package() {

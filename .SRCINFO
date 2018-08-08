@@ -9,6 +9,7 @@ pkgbase = scavenger-git
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
+	conflicts = scavenger
 	options = strip
 	options = !emptydirs
 	source = git+https://github.com/PoC-Consortium/scavenger.git
