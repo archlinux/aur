@@ -19,7 +19,9 @@ depends=('curl' 'libpcap' 'zlib' 'openssl')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
-  make
+  rm -f build
+  make DESTDIR=$pkgdir PREFIX=/usr INSTALLDIR=$pkgdir/usr/bin
+  touch build
 }
 
 package () {
