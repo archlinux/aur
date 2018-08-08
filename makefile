@@ -2,7 +2,7 @@ PREFIX = plasma/wallpapers
 
 .PHONY: install
 install:
-	mkdir $(DESTDIR)$(PREFIX)/VideoWallpaper;
+	mkdir -p $(DESTDIR)$(PREFIX)/VideoWallpaper;
 	cp -r * $(DESTDIR)$(PREFIX)/VideoWallpaper;
 
 .PHONY: uninstall
