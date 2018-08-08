@@ -1,0 +1,20 @@
+pkgbase = pd-jsusfx-git
+	pkgdesc = JSFX for Pd
+	pkgver = 166.2150a49
+	pkgrel = 1
+	url = https://github.com/asb2m10/jsusfx
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = php
+	makedepends = nasm
+	depends = pd
+	provides = pd-jsusfx
+	conflicts = pd-jsusfx
+	source = git+https://github.com/asb2m10/jsusfx.git
+	md5sums = SKIP
+
+pkgname = pd-jsusfx-git
+
