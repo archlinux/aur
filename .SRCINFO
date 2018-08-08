@@ -1,0 +1,16 @@
+pkgbase = perl-curry
+	pkgdesc = Perl/CPAN Module curry: Create automatic curried method call closures for any class or object
+	pkgver = 1.001000
+	pkgrel = 1
+	url = https://metacpan.org/release/curry
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSTROUT/curry-1.001000.tar.gz
+	md5sums = 80feac47010dcc244bac64babfc2be52
+	sha512sums = 1d934ceb64a73784484ac73a529f9f6cdd3cbcaff7175515ddce75bbc7933f2f3105f3a4ef12e33eb82db5792c435e32aae12f64b3e334064db4305910e86d14
+
+pkgname = perl-curry
+
