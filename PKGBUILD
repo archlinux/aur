@@ -1,36 +1,41 @@
-# $Id: PKGBUILD 323417 2018-05-07 09:03:46Z bpiotrowski $
+# Maintainer:  Stephan Springer <buzo+arch@Lini.de>
 # Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: valgrind requires rebuilt with each major glibc version
 
-pkgbase=glibc
-pkgname=(glibc lib32-glibc)
+pkgname=glibc-2.27
 pkgver=2.27
 pkgrel=3
 arch=(x86_64)
+pkgdesc='GNU C Library, version 2.27'
+depends=('linux-api-headers>=4.10' tzdata filesystem)
+optdepends=('gd: for memusagestat')
+backup=(opt/glibc-2.27/etc/gai.conf
+        opt/glibc-2.27/etc/locale.gen
+        opt/glibc-2.27/etc/nscd.conf)
+groups=(base)
+
 url='http://www.gnu.org/software/libc'
 license=(GPL LGPL)
-makedepends=(git gd lib32-gcc-libs)
+makedepends=(git gd)
 options=(!strip staticlibs)
 _commit=23158b08a0908f381459f273a984c6fd328363cb
 #source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
         locale.gen.txt
         locale-gen
-        lib32-glibc.conf
         bz20338.patch)
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8) # Carlos O'Donell
 md5sums=('898cd5656519ffbc3a03fe811dd89e82'
          'SKIP'
          '07ac979b6ab5eeb778d55f041529d623'
          '476e9113489f93b348b21e144b6a8fcf'
-         '6e052f1cb693d5d3203f50f9d4e8c33b'
          'dc0d3ad59aeaaf591b085a77de6e03e9')
 
 prepare() {
-  mkdir -p glibc-build lib32-glibc-build
+  mkdir -p glibc-build
 
   [[ -d glibc-$pkgver ]] && ln -s glibc-$pkgver glibc 
   cd glibc
@@ -86,38 +91,6 @@ build() {
   echo "CC += -D_FORTIFY_SOURCE=2" >> configparms
   echo "CXX += -D_FORTIFY_SOURCE=2" >> configparms
   make
-
-  cd "$srcdir/lib32-glibc-build"
-  export CC="gcc -m32 -mstackrealign"
-  export CXX="g++ -m32 -mstackrealign"
-
-  echo "slibdir=/usr/lib32" >> configparms
-  echo "rtlddir=/usr/lib32" >> configparms
-  echo "sbindir=/usr/bin" >> configparms
-  echo "rootsbindir=/usr/bin" >> configparms
-
-  # remove fortify for building libraries
-  CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
-  CFLAGS=${CFLAGS/-fno-plt/}
-  CXXFLAGS=${CXXFLAGS/-fno-plt/}
-
-  "$srcdir/glibc/configure" \
-      --host=i686-pc-linux-gnu \
-      --libdir=/usr/lib32 \
-      --libexecdir=/usr/lib32 \
-      ${_configure_flags[@]}
-
-  # build libraries with fortify disabled
-  echo "build-programs=no" >> configparms
-  make
-
-  # re-enable fortify for programs
-  sed -i "/build-programs=/s#no#yes#" configparms
-
-  echo "CC += -D_FORTIFY_SOURCE=2" >> configparms
-  echo "CXX += -D_FORTIFY_SOURCE=2" >> configparms
-  make
-
 }
 
 check() {
@@ -130,16 +103,7 @@ check() {
   make check || true
 }
 
-package_glibc() {
-  pkgdesc='GNU C Library'
-  depends=('linux-api-headers>=4.10' tzdata filesystem)
-  optdepends=('gd: for memusagestat')
-  install=glibc.install
-  backup=(etc/gai.conf
-          etc/locale.gen
-          etc/nscd.conf)
-  groups=(base)
-
+package() {
   install -dm755 "$pkgdir/etc"
   touch "$pkgdir/etc/ld.so.conf"
 
@@ -175,37 +139,12 @@ package_glibc() {
       -not -name 'libthread_db-*.so' \
       -name '*-*.so' -type f -exec strip $STRIP_SHARED {} + 2> /dev/null || true
   fi
-}
 
-package_lib32-glibc() {
-  pkgdesc='GNU C Library (32-bit)'
-  depends=("glibc=$pkgver")
-
-  cd lib32-glibc-build
-
-  make install_root="$pkgdir" install
-  rm -rf "$pkgdir"/{etc,sbin,usr/{bin,sbin,share},var}
-
-  # We need to keep 32 bit specific header files
-  find "$pkgdir/usr/include" -type f -not -name '*-32.h' -delete
-
-  # Dynamic linker
-  install -d "$pkgdir/usr/lib"
-  ln -s ../lib32/ld-linux.so.2 "$pkgdir/usr/lib/"
-
-  # Add lib32 paths to the default library search path
-  install -Dm644 "$srcdir/lib32-glibc.conf" "$pkgdir/etc/ld.so.conf.d/lib32-glibc.conf"
-
-  # Symlink /usr/lib32/locale to /usr/lib/locale
-  ln -s ../lib/locale "$pkgdir/usr/lib32/locale"
-
-  if check_option 'debug' n; then
-    find "$pkgdir"/usr/lib32 -name '*.a' -type f -exec strip $STRIP_STATIC {} + 2> /dev/null || true
-    find "$pkgdir"/usr/lib32 \
-      -not -name 'ld-*.so' \
-      -not -name 'libc-*.so' \
-      -not -name 'libpthread-*.so' \
-      -not -name 'libthread_db-*.so' \
-      -name '*-*.so' -type f -exec strip $STRIP_SHARED {} + 2> /dev/null || true
-  fi
+  # Finally move everything to /opt
+  _pkgdir="$pkgdir/opt/glibc-2.27"
+  install -dm755 "$_pkgdir"
+  for dir in etc usr var; do
+      mv "$pkgdir/$dir" "$_pkgdir"
+  done
+  rm -rf "$_pkgdir/usr/share/info"
 }

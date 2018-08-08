@@ -1,42 +1,34 @@
-pkgbase = glibc
+pkgbase = glibc-2.27
+	pkgdesc = GNU C Library, version 2.27
 	pkgver = 2.27
 	pkgrel = 3
 	url = http://www.gnu.org/software/libc
 	arch = x86_64
+	groups = base
 	license = GPL
 	license = LGPL
 	makedepends = git
 	makedepends = gd
-	makedepends = lib32-gcc-libs
+	depends = linux-api-headers>=4.10
+	depends = tzdata
+	depends = filesystem
+	optdepends = gd: for memusagestat
 	options = !strip
 	options = staticlibs
+	backup = opt/glibc-2.27/etc/gai.conf
+	backup = opt/glibc-2.27/etc/locale.gen
+	backup = opt/glibc-2.27/etc/nscd.conf
 	source = https://ftp.gnu.org/gnu/glibc/glibc-2.27.tar.xz
 	source = https://ftp.gnu.org/gnu/glibc/glibc-2.27.tar.xz.sig
 	source = locale.gen.txt
 	source = locale-gen
-	source = lib32-glibc.conf
 	source = bz20338.patch
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
 	md5sums = 898cd5656519ffbc3a03fe811dd89e82
 	md5sums = SKIP
 	md5sums = 07ac979b6ab5eeb778d55f041529d623
 	md5sums = 476e9113489f93b348b21e144b6a8fcf
-	md5sums = 6e052f1cb693d5d3203f50f9d4e8c33b
 	md5sums = dc0d3ad59aeaaf591b085a77de6e03e9
 
-pkgname = glibc
-	pkgdesc = GNU C Library
-	install = glibc.install
-	groups = base
-	depends = linux-api-headers>=4.10
-	depends = tzdata
-	depends = filesystem
-	optdepends = gd: for memusagestat
-	backup = etc/gai.conf
-	backup = etc/locale.gen
-	backup = etc/nscd.conf
-
-pkgname = lib32-glibc
-	pkgdesc = GNU C Library (32-bit)
-	depends = glibc=2.27
+pkgname = glibc-2.27
 
