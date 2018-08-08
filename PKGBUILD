@@ -5,7 +5,7 @@
 _pkgname=KindleUnpack
 pkgname=kindleunpack
 pkgver=0.80
-pkgrel=4
+pkgrel=5
 pkgdesc="Extract text, images and metadata from Kindle/Mobi files"
 arch=('any')
 url="http://www.mobileread.com/forums/showthread.php?t=61986"
