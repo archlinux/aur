@@ -4,7 +4,7 @@
 pkgname=php-pear
 epoch=1
 pkgver=1.10.5
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='PHP Extension and Application Repository'
 url='http://pear.php.net/'
@@ -21,5 +21,5 @@ package() {
 			-d /usr/share/pear \
 			-b /usr/bin
 
-	rm -rf ${pkgdir}/usr/share/pear/.{channels,depdb,depdblock,filemap,lock,registry}
+	rm -rf ${pkgdir}{/usr/share/pear/,/}.{channels,depdb,depdblock,filemap,lock,registry}
 }
