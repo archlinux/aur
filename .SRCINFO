@@ -1,10 +1,11 @@
 pkgbase = thapo-calc
 	pkgdesc = ThApo-Calc (Thanos Apostolou' Calculator) is a simple calculator written in c++
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/ThanosApostolou/thapo-calc
 	arch = x86_64
 	license = GPL3
+	makedepends = meson
 	source = https://gitlab.com/ThanosApostolou/thapo-calc/-/archive/0.2/thapo-calc-0.2.tar.gz
 	md5sums = 538d580e92fa92f694e793e72b509a73
 
