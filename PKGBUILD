@@ -4,9 +4,9 @@
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python2-pytorch" "python-pytorch-cuda" "python2-pytorch-cuda")
 _pkgname="pytorch"
-_commit=200fb22
+_commit=a24163a
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -15,7 +15,6 @@ makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools'
              'python-yaml' 'python2-yaml' 'python-numpy' 'python2-numpy'
              'cmake' 'cuda' 'cudnn' 'git' 'python2-typing')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#commit=$_commit"
-        "git+https://github.com/01org/tbb"
         "git+https://github.com/catchorg/Catch2"
         "git+https://github.com/ARM-software/ComputeLibrary"
         "git+https://github.com/Maratyszcza/FP16"
@@ -66,7 +65,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             '8e845663abbbd78bd4d3fcb8997b85c644a09470b166ed3a95429636670eb4ef')
 
 prepare() {
@@ -75,9 +73,8 @@ prepare() {
   patch -Np1 -i "${srcdir}"/noplt.patch
 
   git submodule init
-  git config submodule."aten/src/ATen/cpu/cpuinfo".url "${srcdir}"/cpuinfo
-  git config submodule."aten/src/ATen/cpu/tbb/tbb_remote".url "${srcdir}"/tbb
-  git config submodule."aten/src/ATen/utils/catch".url "${srcdir}"/Catch2
+  git config submodule."third-party/cpuinfo".url "${srcdir}"/cpuinfo
+  git config submodule."third_party/catch".url "${srcdir}"/Catch2
   git config submodule."third_party/nanopb".url "${srcdir}"/nanopb
   git config submodule."third_party/pybind11".url "${srcdir}"/pybind11
   git config submodule."third_party/nccl".url "${srcdir}"/nccl
