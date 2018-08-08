@@ -7,7 +7,7 @@ pkgbase = perl-geoip
 	arch = x86_64
 	license = GPL
 	depends = geoip
-	provides = Cassandra::Simple
+	provides = cassandra
 	source = https://github.com/maxmind/geoip-api-perl/archive/v1.50.zip
 	md5sums = 32a7c8775d7b7748f9b940c4fa0bc233
 

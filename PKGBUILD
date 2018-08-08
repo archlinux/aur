@@ -10,7 +10,7 @@ url="https://github.com/maxmind/geoip-api-perl"
 source=("https://github.com/maxmind/${_gitname}/archive/v${pkgver}.zip")
 md5sums=('32a7c8775d7b7748f9b940c4fa0bc233')
 depends=('geoip')
-provides=('Cassandra::Simple')
+provides=('cassandra')
 
 build() {
   cd ${_gitname}-${pkgver}
