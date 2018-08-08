@@ -1,5 +1,5 @@
 pkgname=plex-media-player-git
-pkgver=r1156.23446a8
+pkgver=r1165.f2338b5
 pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ license=('GPL')
 url='https://github.com/plexinc/plex-media-player'
 provides=('plex-media-player')
 conflicts=('plex-media-player')
-depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine<5.11' 'qt5-x11extras<5.11' 'qt5-quickcontrols<5.11')
+depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine' 'qt5-x11extras' 'qt5-quickcontrols')
 optdepends=('xorg-xinit: for running plex as a service')
 makedepends=('cmake' 'git')
 source=('git+https://github.com/plexinc/plex-media-player.git'
