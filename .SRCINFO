@@ -1,0 +1,20 @@
+pkgbase = knockd-ipv6
+	pkgdesc = Latest upstream version of knockd with added IPv6 support. Based on community/knockd.
+	pkgver = 0.7.8
+	pkgrel = 1
+	url = http://www.zeroflux.org/projects/knock
+	arch = any
+	license = GPL2
+	makedepends = git
+	provides = knockd
+	conflicts = knockd
+	backup = etc/knockd.conf
+	source = git+https://github.com/Coksnuss/knock.git
+	source = knockd.logrotate
+	source = knockd.service
+	md5sums = SKIP
+	md5sums = 3967caa58c2d1426776b412ea5895725
+	md5sums = a7d28c153484f50985b45eeb0780140b
+
+pkgname = knockd-ipv6
+
