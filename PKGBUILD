@@ -4,7 +4,7 @@
 
 pkgname='perl-event'
 pkgver='1.26'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Event loop processing"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
