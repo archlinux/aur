@@ -4,12 +4,12 @@
 
 pkgname=dsp-git
 _pkgname=dsp
-pkgver=279.700283f
+pkgver=327.42fb208
 pkgrel=1
 pkgdesc="An audio processing program with an interactive mode"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/bmc0/${_pkgname}"
-license=('ISC' 'GPL2' 'LGPL2.1')
+license=('ISC')
 makedepends=('git' 'ladspa')
 depends=('fftw' 'libsndfile' 'ffmpeg' 'alsa-lib' 'libao' 'libmad' 'libpulse' 'zita-convolver' 'libltdl')
 source=("git+https://github.com/bmc0/${_pkgname}.git")
@@ -30,6 +30,4 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	make DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 LICENSE.GPL2 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.GPL2"
-	install -Dm644 LICENSE.LGPL2_1 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.LGPL2_1"
 }
