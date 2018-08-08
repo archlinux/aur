@@ -4,7 +4,7 @@
 pkgname=plasma5-applet-video-wallpaper
 pkgver=VERSION
 pkgrel=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Video wallpaper is a KDE plasma wallpaper / lock screen background plugin to play video files as background."
 arch=('x86_64')
 url="https://store.kde.org/p/1213488/"
@@ -15,6 +15,11 @@ source=("VideoWallpaper.tar.gz::https://store.kde.org/p/1213488/startdownload?fi
 noextract=("${source[@]##*/}")
 md5sums=('e20d978247ba748bc2f6759fa3a96269')
 
+
+
 package() {
+    # remove the previous version
+    rm -rf /home/simon/.local/share/plasma/wallpapers/VideoWallpaper
+    #installing the plugin
     kpackagetool5 -t Plasma/Wallpaper -i VideoWallpaper.tar.gz;
 }
