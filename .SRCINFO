@@ -1,7 +1,7 @@
 pkgbase = python-gdb-tools
 	pkgdesc = Various tools to improve the gdb experience
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vuvova/gdb-tools
 	arch = any
 	license = GPL2

@@ -5,7 +5,7 @@ _name=gdb-tools
 
 pkgname=$_python-${_name}
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Various tools to improve the gdb experience"
 depends=('python')
 makedepends=('python-setuptools')
