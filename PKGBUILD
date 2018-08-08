@@ -2,7 +2,7 @@
 
 _name=ddnet-maps
 pkgname=$_name-git
-pkgver=r1015.g1e5822b
+pkgver=r1049.g454e288b
 pkgrel=1
 pkgdesc="All released maps with configs for a DDraceNetwork server"
 arch=(any)
@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
   cd $_name
-  msg2 "Removing exec premission from files"
+  msg2 "Removing exec permission from files"
   find types/ -type f -exec chmod 644 {} \;
 }
 
