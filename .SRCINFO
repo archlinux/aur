@@ -1,9 +1,8 @@
 pkgbase = pentobi
 	pkgdesc = computer opponent for the board game Blokus
-	pkgver = 14.1
+	pkgver = 15.0
 	pkgrel = 1
 	url = https://pentobi.sourceforge.io
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
@@ -13,10 +12,10 @@ pkgbase = pentobi
 	depends = qt5-base
 	depends = qt5-svg
 	optdepends = kio: KDE thumbnailer
-	source = https://downloads.sourceforge.net/pentobi/pentobi-14.1.tar.xz
-	source = https://downloads.sourceforge.net/pentobi/pentobi-14.1.tar.xz.asc
+	source = https://downloads.sourceforge.net/pentobi/pentobi-15.0.tar.xz
+	source = https://downloads.sourceforge.net/pentobi/pentobi-15.0.tar.xz.asc
 	validpgpkeys = CF7C1AEE933D1A03C6D13FF922922BFEEB0F9942
-	md5sums = d50b934aeb69d8d0a9ec797bfd9ac668
+	md5sums = 85acac0deebea1facdd133c43489d25e
 	md5sums = SKIP
 
 pkgname = pentobi
