@@ -4,7 +4,7 @@
 pkgname=perl-file-homedir
 _cpanname=File-HomeDir
 pkgver=1.004
-pkgrel=1
+pkgrel=2
 pkgdesc="Find your home and other directories on any platform"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -38,6 +38,7 @@ package() {
 
   # remove perllocal.pod and .packlist
   find "$pkgdir" -name '*.pod' -o -name '.packlist' -delete
+  rm -fr "$pkgdir/usr/lib"
 }
 
 # Local Variables:
