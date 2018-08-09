@@ -1,10 +1,14 @@
 post_install() {
-	chown -R http:http /srv/http/gazie
-	chmod -R go+w /srv/http/gazie/data/files
-	chmod -R go+w /srv/http/gazie/library/tcpdf/cache
-	echo "  Gazie installed in /srv/http/gazie.
-    Please enable .htaccess files.
-    Create a mysql database and user and
-	edit /srv/http/gazie/config/config/gconfig.php accordingly.
- 	Now visit localhost/gazie page."
+	chmod -R g+w /usr/share/webapps/gazie/data/files
+	chmod -R g+w /usr/share/webapps/gazie/library/tcpdf/cache
+	echo "  Gazie installed to /usr/share/webapps/gazie.
+    Please enable .htaccess files and alias /usr/share/webapps/gazie to localhost/gazie in your http server.
+    Create a mysql database and user and edit /etc/webapps/gazie/gconfig.php accordingly.
+    Now visit http://localhost/gazie page."
+}
+
+post_upgrade {
+	chmod -R g+w /usr/share/webapps/gazie/data/files
+	chmod -R g+w /usr/share/webapps/gazie/library/tcpdf/cache
+	echo "  Please visit http://localhost/gazie/SETUP.html page."
 }
