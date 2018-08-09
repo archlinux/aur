@@ -1,7 +1,7 @@
 # Maintainer: EHfive <eh5@sokka.cn>
 
 pkgname=pulseaudio-modules-bt-git
-pkgver=r15.dd47c02
+pkgver=r16.d8fa932
 pkgrel=1
 pkgdesc="PulseAudio Bluetooth modules support Sony LDAC Codec(A2DP Source)"
 arch=("i686" "x86_64" "armv7h")
@@ -36,7 +36,7 @@ prepare() {
 build() {
     export CFLAGS=''
     cd "$srcdir/pulseaudio-modules-bt"
-    cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr .
+    cmake -DCMAKE_BUILD_TYPE= -DCMAKE_INSTALL_PREFIX=/usr .
     make
 }
 
