@@ -3,7 +3,7 @@
 pkgname=clipit
 _pkgname=ClipIt
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight GTK+ clipboard manager (fork of Parcellite)"
 arch=('i686' 'x86_64')
 url="https://github.com/CristianHenzel/ClipIt/"
@@ -14,8 +14,15 @@ makedepends=('intltool')
 optdepends=('xdotool: for automatic paste')
 source=("$url/archive/v$pkgver.tar.gz"
 #    "${_pkgname}-${_snapshot}.tar.gz::${url}/archive/${_snapshot}.tar.gz"
+    https://patch-diff.githubusercontent.com/raw/CristianHenzel/ClipIt/pull/90.patch
     )
+md5sums=('d49b9171c0b81269deafab9d6ecc7610'
+         '46e896a385ff9c8fa65c08d5d9d2e5c6')
 
+prepare() {
+  cd $_pkgname-$pkgver
+  patch -p1 -i $srcdir/90.patch
+}
 
 build() {
   cd $_pkgname-$pkgver
@@ -24,6 +31,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
+    --with-gtk3 \
     --enable-appindicator
   make
 }
@@ -33,4 +41,3 @@ package() {
 #  cd "${srcdir}/${_pkgname}-${_snapshot}"
   make DESTDIR=${pkgdir} install
 }
-md5sums=('d49b9171c0b81269deafab9d6ecc7610')
