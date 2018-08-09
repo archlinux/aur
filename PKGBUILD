@@ -4,7 +4,7 @@
 _name=openpyn
 pkgname=openpyn-nordvpn
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Easily connect to and switch between OpenVPN servers hosted by NordVPN"
 provides=('python-openpyn' 'openpyn-nordvpn')
 arch=('any')
