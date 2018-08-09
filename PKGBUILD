@@ -18,7 +18,7 @@ source=(rslsync.service rslsync_user.service rslsync.conf)
 source_arm=("rslsync_arm-${pkgver}.tar.gz::https://download-cdn.resilio.com/stable/linux-arm/resilio-sync_arm.tar.gz")
 source_armv6h=("rslsync_arm-${pkgver}.tar.gz::https://download-cdn.resilio.com/stable/linux-arm/resilio-sync_arm.tar.gz")
 source_armv7h=("rslsync_armhf-${pkgver}.tar.gz::https://download-cdn.resilio.com/stable/linux-armhf/resilio-sync_armhf.tar.gz")
-source_aarch64=("rslsync_armhf-${pkgver}.tar.gz::https://download-cdn.resilio.com/stable/linux-armhf/resilio-sync_armhf.tar.gz")
+source_aarch64=("rslsync_arm64-${pkgver}.tar.gz::https://download-cdn.resilio.com/stable/linux-arm64/resilio-sync_arm64.tar.gz")
 source_i686=("rslsync_i386-${pkgver}.tar.gz::https://download-cdn.resilio.com/stable/linux-i386/resilio-sync_i386.tar.gz")
 source_x86_64=("rslsync_x64-${pkgver}.tar.gz::https://download-cdn.resilio.com/stable/linux-x64/resilio-sync_x64.tar.gz")
 sha256sums=('4483cbe3fff81281666d8fbe8c9b8d7d27c38ba7a3d3752a865f1ab8c1f212db'
@@ -29,7 +29,7 @@ sha256sums_x86_64=('5f73bfefeedf8e042d483d00aa4af93f09a5b7cbd1efaedcbc3a2b966257
 sha256sums_arm=('e66a6f4380db09b2ea08d7e0f3722c0587317fac9c13558817af837a4c5bba7f')
 sha256sums_armv6h=('e66a6f4380db09b2ea08d7e0f3722c0587317fac9c13558817af837a4c5bba7f')
 sha256sums_armv7h=('7b03aad7abe69d02674297f70ce9b1fde87387feb5e873f1b8b3b75d92ec976a')
-sha256sums_aarch64=('7b03aad7abe69d02674297f70ce9b1fde87387feb5e873f1b8b3b75d92ec976a')
+sha256sums_aarch64=('8866b11bc90c0248a1d7d98fbaaad167f9af385a9d6dd3949ca60a425b03e0ae')
 
 
 package() {

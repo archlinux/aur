@@ -28,8 +28,8 @@ pkgbase = rslsync
 	sha256sums_armv6h = e66a6f4380db09b2ea08d7e0f3722c0587317fac9c13558817af837a4c5bba7f
 	source_armv7h = rslsync_armhf-2.6.0.1317.tar.gz::https://download-cdn.resilio.com/stable/linux-armhf/resilio-sync_armhf.tar.gz
 	sha256sums_armv7h = 7b03aad7abe69d02674297f70ce9b1fde87387feb5e873f1b8b3b75d92ec976a
-	source_aarch64 = rslsync_armhf-2.6.0.1317.tar.gz::https://download-cdn.resilio.com/stable/linux-armhf/resilio-sync_armhf.tar.gz
-	sha256sums_aarch64 = 7b03aad7abe69d02674297f70ce9b1fde87387feb5e873f1b8b3b75d92ec976a
+	source_aarch64 = rslsync_arm64-2.6.0.1317.tar.gz::https://download-cdn.resilio.com/stable/linux-arm64/resilio-sync_arm64.tar.gz
+	sha256sums_aarch64 = 8866b11bc90c0248a1d7d98fbaaad167f9af385a9d6dd3949ca60a425b03e0ae
 
 pkgname = rslsync
 
