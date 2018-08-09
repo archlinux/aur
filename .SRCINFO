@@ -1,0 +1,27 @@
+pkgbase = pulseaudio-modules-bt-git
+	pkgdesc = PulseAudio Bluetooth modules support Sony LDAC Codec(A2DP Source)
+	pkgver = 578f583
+	pkgrel = 1
+	url = https://github.com/EHfive/pulseaudio-modules-bt
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	makedepends = cmake>=3.0
+	makedepends = make
+	depends = pulseaudio>=12.0
+	depends = bluez>=5.0
+	depends = bluez-libs>=5.0
+	depends = sbc
+	provides = pulseaudio-bluetooth
+	conflicts = pulseaudio-bluetooth
+	replaces = pulseaudio-bluetooth
+	source = git+https://github.com/EHfive/pulseaudio-modules-bt
+	source = git+https://github.com/pulseaudio/pulseaudio.git
+	source = git+https://android.googlesource.com/platform/external/libldac.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = pulseaudio-modules-bt-git
+
