@@ -1,0 +1,14 @@
+pkgbase = python-simplegeneric
+	pkgdesc = Simple generic functions (similar to Python's own len(), pickle.dump(), etc.)
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://cheeseshop.python.org/pypi/simplegeneric
+	arch = any
+	license = ZPL
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/s/simplegeneric/simplegeneric-0.8.1.zip
+	sha256sums = dc972e06094b9af5b855b3df4a646395e43d1c9d0d39ed345b7393560d0b9173
+
+pkgname = python-simplegeneric
+
