@@ -1,7 +1,7 @@
 pkgbase = python-keras
 	pkgdesc = Deep Learning library (convnets, recurrent neural networks, and more)
 	pkgver = 2.2.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/fchollet/keras
 	arch = any
 	license = MIT
