@@ -2,7 +2,7 @@
 
 _name=ddnet
 pkgname=$_name-git
-pkgver=11.3.1.r0.g461a83871
+pkgver=11.3.1.r11.g0b539df74
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('x86_64')
@@ -79,7 +79,6 @@ package() {
       # Install data files
     install -d -m755 "$pkgdir/usr/share/ddnet/data/"
     cp -r data/* "$pkgdir/usr/share/ddnet/data/"
-    rm -rf "$pkgdir/usr/share/ddnet/data/languages/scripts/"
 
       # Install desktop and icon files
     install -d -m755 "$pkgdir/usr/share/applications/"
