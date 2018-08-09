@@ -1,11 +1,11 @@
 pkgname=openwsman
-pkgver=2.6.5
+pkgver=2.6.6
 pkgrel=1
 pkgdesc="Opensource Implementation of WS-Management"
 arch=('i686' 'x86_64')
 url="https://$pkgname.github.io/"
-license=('BSD')
-depends=('libxml2' 'openssl-1.0' 'sblim-sfcc')
+license=('custom:BSD')
+depends=('curl' 'libxml2' 'openssl' 'sblim-sfcc')
 makedepends=('cmake' 'swig'
              'perl'
              'python'
@@ -18,7 +18,7 @@ backup=("etc/$pkgname/$pkgname.conf"
         "etc/$pkgname/ssleay.cnf"
         "etc/pam.d/$pkgname")
 source=("https://github.com/Openwsman/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('84d066233a0b9d6ef00657dc8241d353')
+md5sums=('c63e46efed6fbd32df053eb24b1943da')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -28,15 +28,19 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"/build
-	export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig/
-	cmake -DCMAKE_BUILD_TYPE=Release           \
-	      -DCMAKE_C_FLAGS=-I/usr/include/openssl-1.0 \
-	      -DCMAKE_INSTALL_PREFIX=/usr          \
-	      -DPACKAGE_ARCHITECTURE=$CARCH        \
-	      -DLIB=lib                            \
-	      -DBUILD_RUBY_GEM=OFF                 \
-	      -DBUILD_JAVA=OFF                     \
+
+	cmake -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_C_FLAGS="$CFLAGS $CPPFLAGS" \
+	      -DCMAKE_CXX_FLAGS="$CFXXLAGS $CPPFLAGS" \
+	      -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DPACKAGE_ARCHITECTURE=$CARCH \
+	      -DLIB=lib \
+	      -DBUILD_PYTHON=OFF \
+	      -DBUILD_PYTHON3=ON \
+	      -DBUILD_RUBY_GEM=OFF \
+	      -DBUILD_JAVA=OFF \
 	..
+
 	make
 }
 
