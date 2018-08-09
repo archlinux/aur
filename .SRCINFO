@@ -14,7 +14,9 @@ pkgbase = gcc6
 	makedepends = libmpc
 	makedepends = doxygen
 	makedepends = subversion
+	makedepends = java-environment-common
 	makedepends = zip
+	makedepends = jdk8-openjdk
 	makedepends = gtk2
 	makedepends = libart-lgpl
 	makedepends = libxtst
@@ -40,4 +42,15 @@ pkgname = gcc6-libs
 	depends = glibc>=2.25
 	options = !emptydirs
 	options = !strip
+
+pkgname = gcc6-fortran
+	pkgdesc = Fortran front-end for GCC
+	depends = gcc6=6.4.1-8
+	options = !emptydirs
+
+pkgname = gcc6-gcj
+	pkgdesc = Java front-end for GCC
+	depends = gcc6=6.4.1-8
+	replaces = gcc-gcj
+	options = !emptydirs
 
