@@ -1,0 +1,29 @@
+pkgbase = gentarium-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gtmcoin.io/
+	install = gentarium-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = gentarium
+	source = gentarium-qt::git+https://github.com/genterium-project/gentarium.git#tag=v1.1.0
+	source = gentarium-qt.desktop
+	source = secp256k1.patch
+	sha256sums = SKIP
+	sha256sums = 4a87b3fa5e5f3bdbee4ec44d786a50264a4bc800e53bef202769663b8131cbf7
+	sha256sums = 127f48f77d3685c9bfea77f7e809d1cca91dcf57845ff85c2f2af7f5a0835e2f
+
+pkgname = gentarium-qt
+
