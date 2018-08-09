@@ -1,0 +1,29 @@
+pkgbase = keybase-git-arm
+	pkgdesc = the Keybase Go client, filesystem, and GUI (built for arm)
+	pkgver = 1.0.27+15115.8169d666e
+	pkgrel = 0
+	url = https://keybase.io
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = go
+	makedepends = yarn
+	makedepends = npm
+	makedepends = git
+	makedepends = rsync
+	makedepends = patch
+	depends = fuse
+	depends = gconf
+	depends = libxss
+	depends = gtk2
+	conflicts = keybase
+	conflicts = keybase-release
+	conflicts = keybase-bin
+	conflicts = keybase-git
+	source = git+https://github.com/keybase/client
+	source = git+https://github.com/keybase/kbfs
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = keybase-git-arm
+
