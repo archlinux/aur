@@ -3,8 +3,8 @@
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='https://picard.musicbrainz.org/'
 license=('GPL')
@@ -15,7 +15,7 @@ optdepends=('chromaprint: fingerprinting'
 makedepends=('python-discid' 'git' 'python-setuptools')
 source=("http://ftp.musicbrainz.org/pub/musicbrainz/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 #source=("git+https://github.com/metabrainz/picard.git#commit=3a41cebdbcff9af9791575d2e555c59201b55902")
-sha256sums=('28498c34700d6140e6ac05199cc32fef6e46b77fd2ec31f151dd9213fa01ea24')
+sha256sums=('9f9a46a8c4ce78516b60b97e97bc1ea787c99b13f44d5c575132825447b7ec5d')
 
 build() {
 	cd "${srcdir}/picard-release-${pkgver}"
