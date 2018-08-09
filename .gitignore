@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!micropad.install
+!.SRCINFO
+!dist/micropad
