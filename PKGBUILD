@@ -15,21 +15,21 @@ optdepends=('alsa-utils: for volume controls')
 makedepends=('git')
 conflicts=('ts-startsession')
 replaces=('ts-startsession')
-source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theshell#branch=blueprint')
+source=("$pkgname-repo"::'git+https://github.com/vicr123/theshell#branch=blueprint')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-repo"
 	echo $(cat version)b
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-repo"
 	qmake "CONFIG+=blueprint" theShell.pro
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-repo"
 	make install INSTALL_ROOT=$pkgdir
 }

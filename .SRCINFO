@@ -24,7 +24,7 @@ pkgbase = theshell-blueprint
 	optdepends = alsa-utils: for volume controls
 	conflicts = ts-startsession
 	replaces = ts-startsession
-	source = theshell-blueprint-8.0b::git+https://github.com/vicr123/theshell#branch=blueprint
+	source = theshell-blueprint-repo::git+https://github.com/vicr123/theshell#branch=blueprint
 	md5sums = SKIP
 
 pkgname = theshell-blueprint
