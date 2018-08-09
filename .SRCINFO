@@ -6,6 +6,9 @@ pkgbase = gazie
 	install = gazie.install
 	arch = any
 	license = GPL
+	depends = mysql-clients
+	depends = php
+	backup = etc/webapps/gazie/gconfig.php
 	source = http://freefr.dl.sourceforge.net/project/gazie/gazie/7.10/gazie7.10.zip
 	md5sums = d0081b7998e029a2632421945b5ce7af
 
