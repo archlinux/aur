@@ -2,7 +2,7 @@
 _pkgname=aiohttp
 pkgname=python-${_pkgname}-gns3
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='http client/server for asyncio (GNS3)'
 arch=('any')
 url="https://aiohttp.readthedocs.io/"
@@ -18,6 +18,7 @@ sha256sums=('a504fc979f897ab776cbbb324443dd0aebd6ba832765fb54770ea2ecb2a6e07b')
 prepare() {
     cd ${_pkgname}-${pkgver}
     sed -i 's/yarl>=0.10.0,<0.11/yarl>=0.10.0,<=0.11/g' setup.py
+    #sed -i 's/asyncio.async/asyncio.ensure_future/' aiohttp/helpers.py
 }
 
 package() {

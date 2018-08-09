@@ -1,7 +1,7 @@
 pkgbase = python-aiohttp-gns3
 	pkgdesc = http client/server for asyncio (GNS3)
 	pkgver = 2.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://aiohttp.readthedocs.io/
 	arch = any
 	groups = gns3
