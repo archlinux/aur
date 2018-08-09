@@ -6,7 +6,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 _srcname=X-Crawl
 pkgname=xcrawl-tiles
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 epoch=
 pkgdesc="Dungeon Crawl Stone Soup Fork developed through a democratic process with graphical tiles and sound support"
@@ -29,7 +29,7 @@ conflicts=()
 backup=()
 options=()
 source=("https://github.com/Vajrapani/X-Crawl/archive/v$pkgver.tar.gz")
-md5sums=('2aef768ebbad2838211b5feba1f770db')
+md5sums=('5134db88ec4ac96a6495304224ff5c26')
 
 prepare() {
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "X-Crawl tiles" --categories "Application;Game" --exec "xcrawl"

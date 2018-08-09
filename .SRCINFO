@@ -1,6 +1,6 @@
 pkgbase = xcrawl-tiles
 	pkgdesc = Dungeon Crawl Stone Soup Fork developed through a democratic process with graphical tiles and sound support
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/Vajrapani/X-Crawl
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = xcrawl-tiles
 	depends = lua51
 	depends = sqlite
 	depends = glu
-	source = https://github.com/Vajrapani/X-Crawl/archive/v1.2.tar.gz
-	md5sums = 2aef768ebbad2838211b5feba1f770db
+	source = https://github.com/Vajrapani/X-Crawl/archive/v1.3.tar.gz
+	md5sums = 5134db88ec4ac96a6495304224ff5c26
 
 pkgname = xcrawl-tiles
 
