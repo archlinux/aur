@@ -1,0 +1,22 @@
+pkgbase = waybar-git
+	pkgdesc = Highly customizable wayland bar for sway or wlroots based compositor.
+	pkgver = r32.03132bd2
+	pkgrel = 1
+	url = https://github.com/Alexays/Waybar/
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	depends = gtkmm3
+	depends = jsoncpp
+	depends = libinput
+	depends = libnl>=3.0
+	depends = libsigc++>=2.0
+	depends = wayland
+	depends = wlroots
+	source = waybar-git::git://github.com/Alexays/Waybar
+	source = meson.build.patch
+	sha1sums = SKIP
+	sha1sums = 36bd667affd6f5e3ca3e15665f7af2ea8438eda7
+
+pkgname = waybar-git
+
