@@ -4,13 +4,15 @@ _pkgname=uberwriter
 pkgname=$_pkgname-git
 pkgver=latest
 pkgrel=1
-pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
-url="http://uberwriter.github.io/uberwriter/"
+pkgdesc='A distraction free Markdown editor for GNU/Linux made with GTK+'
+arch=('any')
+url='http://uberwriter.github.io/uberwriter/'
+license=('GPL3')
 depends=('gtk3'
          'python-pyenchant')
 makedepends=('python-setuptools')
-license=('GPL3')
-arch=('any')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=('git+https://github.com/UberWriter/uberwriter.git'
         'uberwriter.patch')
 sha256sums=('SKIP'
