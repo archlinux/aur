@@ -8,7 +8,8 @@ pkgdesc="GNU Portability Library"
 arch=('any')
 url="http://www.gnu.org/software/gnulib"
 license=('custom')
-provides=('gnulib')
+provides=("gnulib=${pkgver}")
+replaces=("gnulib<=${pkgver}")
 conflicts=('gnulib')
 makedepends=('git')
 source=('git://git.savannah.gnu.org/gnulib.git')
