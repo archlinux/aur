@@ -9,6 +9,7 @@ _printercode=406
 pkgname=("cnijfilter-${_printername}")
 pkgver=3.80
 pkgrel=1
+_pkgrelsources=1
 pkgdesc="Canon ${_printername} series printer driver"
 arch=('x86_64')
 url='https://en.canon-cna.com/support/consumer_products/products/printers/inkjet/pixma_ip_series/pixma_ip7240.aspx'
@@ -26,14 +27,14 @@ package() {
 	patch -Np0 -i $srcdir/all.patch || return 1
 	
 	for dir in $dirs; do
-		cd "${srcdir}/cnijfilter-source-${pkgver}-${pkgrel}/$dir"
+		cd "${srcdir}/cnijfilter-source-${pkgver}-${_pkgrelsources}/$dir"
 		./autogen.sh --prefix=/usr --program-suffix=${_printername} --enable-libpath=/usr/lib/bjlib --enable-binpath=/usr/bin --enable-progpath=/usr/bin || return 1
 		make clean
 		make || return 1
 		make install DESTDIR=${pkgdir} || return 1
 	done;
 	
-	cd ${srcdir}/cnijfilter-source-${pkgver}-${pkgrel}
+	cd ${srcdir}/cnijfilter-source-${pkgver}-${_pkgrelsources}
 	install -d ${pkgdir}/usr/lib/bjlib
 	install -m 755 ${_printercode}/database/* ${pkgdir}/usr/lib/bjlib
 	install -s -m 755 ${_printercode}/libs_bin64/*.so.* ${pkgdir}/usr/lib
