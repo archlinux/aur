@@ -3,7 +3,7 @@
 
 pkgname=perl-net-frame
 pkgver=1.17
-pkgrel=2
+pkgrel=3
 pkgdesc="the base framework for frame crafting"
 _dist=Net-Frame
 arch=('any')
@@ -35,4 +35,5 @@ package() (
   cd "$srcdir/$_dist-$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   ./Build install installdirs=vendor destdir="$pkgdir"
+  rm -fr "$pkgdir/usr/lib"
 )
