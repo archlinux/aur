@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=vcftools
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="A set of tools written in Perl and C++ for working with VCF files"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://vcftools.github.io/"
 license=('LGPL3')
 depends=('perl' 'zlib')
 source=(https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('bfbc50d92262868802d62f595c076b34f8e61a5ecaf48682328dad19defd3e7d')
+sha256sums=('575c13073efe65cbff6e2ab99eef12fe04536f5dc1f98de6674c848ca83cf302')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
