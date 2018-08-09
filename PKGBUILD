@@ -1,7 +1,7 @@
 # Maintainer: Ismael González Valverde <ismgonval@gmail.com>
 
 pkgname=rnr
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Command-line tool to rename multiple files.'
 arch=('x86_64')
