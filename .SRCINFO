@@ -7,7 +7,6 @@ pkgbase = mingw-w64-gf2x
 	license = GPL
 	license = LGPL
 	makedepends = mingw-w64-configure
-	makedepends = wine
 	depends = mingw-w64-crt
 	options = staticlibs
 	options = !buildflags
