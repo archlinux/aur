@@ -1,11 +1,11 @@
+# Maintaner: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Alexander Krylov <kass@tpi.ru>
-# Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=perl-net-netmask
 _cpanname=Net-Netmask
 _module=Net::Netmask
 pkgver=1.9022
-pkgrel=1
+pkgrel=2
 pkgdesc="Parse, manipulate and lookup IP network blocks."
 arch=('any')
 url="https://metacpan.org/release/$_cpanname"
@@ -30,6 +30,7 @@ package() {
   cd "$srcdir/$_cpanname-$pkgver"
   make install DESTDIR="$pkgdir"
   find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+  rm -fr "$pkgdir/usr/lib"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 pkgbase = perl-net-netmask
 	pkgdesc = Parse, manipulate and lookup IP network blocks.
 	pkgver = 1.9022
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Net-Netmask
 	arch = any
 	license = GPL
