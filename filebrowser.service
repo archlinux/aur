@@ -1,0 +1,13 @@
+[Unit]
+Description=File Browser Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/filebrowser-%i.pid
+ExecStart=/usr/bin/filebrowser -c /etc/filebrowser/%i.json
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

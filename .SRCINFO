@@ -11,8 +11,10 @@ pkgbase = filebrowser-git
 	makedepends = yarn
 	provides = filebrowser
 	conflicts = filebrowser
+	source = filebrowser.service
 	source = git+https://github.com/filebrowser/filebrowser.git
-	md5sums = SKIP
+	sha512sums = 2652a8617d5252ed7393b47f70e43eac91083e6b6353b5acab476379bf5ca66b6ef09302bce94bb8cf9f4368ccd4a8b7d34600e686c9a2c15e95a1ca12a23eb6
+	sha512sums = SKIP
 
 pkgname = filebrowser-git
 
