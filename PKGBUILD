@@ -4,7 +4,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.43.1
+pkgver=2.43.4
 pkgrel=1
 pkgdesc="A SVG viewing library (mingw-w64)"
 arch=('any')
@@ -23,8 +23,8 @@ makedepends=('mingw-w64-configure'
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://download.gnome.org/sources/librsvg/${pkgver%.*}/librsvg-${pkgver}.tar.xz"
         "makefile-fix.patch")
-sha256sums=('1d631f21c9150bf408819ed94d29829b509392bc2884f9be3c02ec2ed2d77d87'
-            '7bb1884edf7372892bc9a7f365d7f6ca35af8d166c853c59518f51311d06770b')
+sha256sums=('3aa1eb392fc467aaffa7153fe8586f3e93eedbdfb443ca7d4707663c9d1773bc'
+            'f51066fcfcacdea1500eaf9de5191477097844b1c800bbbb8aac14b9d0749b01')
 
 prepare() {
   cd ${srcdir}
@@ -69,10 +69,10 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/librsvg-${pkgver}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
+    find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip --strip-all {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -r "${pkgdir}/usr/${_arch}/share/doc"
+    find "${pkgdir}/usr/${_arch}" -name '*.a' -exec ${_arch}-strip --strip-debug {} \;
+    rm -r "${pkgdir}/usr/${_arch}/share/"{doc,man}
   done
 }
 
