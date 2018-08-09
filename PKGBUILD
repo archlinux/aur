@@ -3,6 +3,7 @@ _pkgname=filebrowser
 pkgname=filebrowser-git
 pkgver=1.9.0
 pkgrel=1
+pkgdesc="Web File Manager which can be used as a middleware or standalone app"
 arch=('x86_64')
 url="https://github.com/filebrowser/filebrowser"
 license=('Apache')
