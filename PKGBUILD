@@ -1,7 +1,7 @@
 # Contributor: Daniel Kirchner <daniel@ekpyron.org>
 
 pkgname=mingw-w64-boost
-pkgver=1.67.0
+pkgver=1.68.0
 _boostver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-gcc' 'bzip2' 'zlib' 'python2')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
         "boost-mingw.patch")
-sha256sums=('2684c972994ee57fc5632e03bf044746f6eb45d4920c343937a465fd67a5adba'
+sha256sums=('7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7'
             '11a5c39852e0513d871a0f74c2f1224efc602a0404db7cd83190712e49a6d3bc')
 
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
