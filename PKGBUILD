@@ -11,7 +11,7 @@
 
 pkgname=matlab-engine-for-python
 pkgver=9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='MATLAB Engine API for Python'
 arch=('any')
 url='http://www.mathworks.com/help/matlab/matlab-engine-for-python.html'
@@ -51,10 +51,10 @@ EOF
         mv "$srcdir/$_prefix/lib/python3".{"$mat_minor","$py_minor"}
         local egg_info
         egg_info="$(\
-            ls "$_prefix/lib/python3.$py_minor/site-packages/"*"-py3.$mat_minor.egg-info")"
+            ls "$srcdir/$_prefix/lib/python3.$py_minor/site-packages/"*"-py3.$mat_minor.egg-info")"
         mv "$egg_info" "${egg_info%-py3."$mat_minor".egg-info}-py3.$py_minor.egg-info"
         sed -i "s/sys.version_info/(3, $mat_minor, 0)/" \
-            "$_prefix/lib/python3.$py_minor/site-packages/matlab/engine/__init__.py"
+            "$srcdir/$_prefix/lib/python3.$py_minor/site-packages/matlab/engine/__init__.py"
     fi
 }
 
