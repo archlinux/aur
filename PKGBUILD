@@ -69,6 +69,9 @@ install -Dm644 /dev/stdin "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
     install -D -m644 "${srcdir}/${_userDir}/util/templates/gpib.conf" \
      "${pkgdir}/etc/gpib.conf"
 
+    mkdir -p "${pkgdir}/etc/udev/rules.d" 
+    echo 'KERNEL=="gpib[0-9]*", MODE="0660", GROUP="gpib"' > "${pkgdir}/etc/udev/rules.d/31-gpib.rules"
+
     msg2 "Now you should do three things:"
     msg2 "1) Use modprobe to load a gpib kernel module, and/or put it in /etc/modules-load.d/gpib.conf"
     msg2 "2) Configure your gpib adapters and devices in /etc/gpib.conf"
