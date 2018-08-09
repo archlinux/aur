@@ -2,31 +2,26 @@
 
 pkgname=perl-x11-xcb
 _cpanname=X11-XCB
-pkgver=0.16
-pkgrel=5
+pkgver=0.17
+pkgrel=1
 pkgdesc="Perl bindings for libxcb"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/$_cpanname"
 license=('PerlArtistic')
 makedepends=('perl-xs-object-magic' 'perl-extutils-depends' 'libpthread-stubs' 'python'
-	     'perl-module-install' 'perl-extutils-pkgconfig' 'perl-data-dump')
+	     'perl-module-install' 'perl-extutils-pkgconfig' 'perl-data-dump'
+	     'perl-xml-simple' 'perl-xml-descent')
 depends=('libxau' 'libxdmcp' 'perl-mouse' 'perl-mousex-nativetraits' 'perl-try-tiny'
-		'perl-xml-simple' 'perl-xml-descent' 'libxcb' 'xcb-util'
-		'xcb-util-wm')
+		'libxcb' 'xcb-util' 'xcb-util-wm')
+checkdepends=('perl-test-more' 'perl-test-deep' 'perl-test-exception')
 options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/${_cpanname}-${pkgver}.tar.gz"
-	"inc.patch")
-md5sums=('15c56ac74a7412378c26e5d343e19246'
-         'fd779512518f4bf5e8ae9a1596dd201f')
-
-prepare() {
-  cd ${_cpanname}-${pkgver}
-  patch -Np2 -b -z .orig <../inc.patch
-}
+source=("http://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/${_cpanname}-${pkgver}.tar.gz")
+md5sums=('2e576427940e27482114d4aa76fa9973')
 
 build() {
   cd ${_cpanname}-${pkgver}
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  perl Makefile.PL INSTALLDIRS=vendor
+  make || :
   make
 }
 
