@@ -1,7 +1,7 @@
 # Maintainer: livix <gatti.oliver@gmail.com>
 pkgname=gazie
 pkgver=7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Multicompany finance application written in PHP using a MySql database backend for small to medium enterprise."
 arch=('any')
 url="http://gazie.devincentiis.it/"
