@@ -1,11 +1,12 @@
 pkgname=electrum-ltc-git
-pkgver=3.2.2.git20180729.062669a0
+pkgver=3.2.2.git20180806.b93a9bd2
 pkgrel=1
 pkgdesc='Lightweight Litecoin client'
 arch=(any)
 url=https://electrum-ltc.org/
 license=(MIT)
-depends=(python-btchip
+depends=(desktop-file-utils
+         python-btchip
          python-dnspython
          python-ecdsa
          python-jsonrpclib-pelix
