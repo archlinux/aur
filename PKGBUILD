@@ -5,20 +5,22 @@ pkgbase=xgboost-git
 pkgname=('xgboost-git'
          'python-xgboost-git'
          'python2-xgboost-git')
-pkgver=r2965.a073a2c3
+pkgver=r3372.bbb771f3
 pkgrel=1
 url='https://github.com/dmlc/xgboost'
 license=('APACHE')
 source=('git+https://github.com/dmlc/xgboost.git'
         'git+https://github.com/dmlc/dmlc-core'
         'git+https://github.com/dmlc/rabit'
+        'git+https://github.com/NVlabs/cub'
         'python_no_libs.patch')
 makedepends=('python2-setuptools' 'python-setuptools')
 arch=('x86_64')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'dd66a09be68f38fef140c948027e44e3733778e741c84491124b5de8acf6c336')
+            'SKIP'
+            'c10f13abd54197e4b10da7efcb699f290691a0369fc0fa6402f9c8302a3347ea')
 
 pkgver() {
   cd "${_name}"
@@ -30,6 +32,7 @@ prepare() {
   git submodule init
   git config submodule.dmlc-core.url "${srcdir}/dmlc-core"
   git config submodule.rabit.url "${srcdir}/rabit"
+  git config submodule.cub.url "${srcdir}/cub"
   git submodule update
   patch -p1 < "${srcdir}/python_no_libs.patch"
 }

@@ -1,8 +1,8 @@
 diff --git a/python-package/setup.py b/python-package/setup.py
-index 27fc212..5a2b415 100644
+index d4b6aa6b..a96660fa 100644
 --- a/python-package/setup.py
 +++ b/python-package/setup.py
-@@ -5,19 +5,9 @@ import sys
+@@ -5,27 +5,9 @@ import sys
  import os
  from setuptools import setup, find_packages
  # import subprocess
@@ -17,12 +17,20 @@ index 27fc212..5a2b415 100644
 -libpath = {'__file__': libpath_py}
 -exec(compile(open(libpath_py, "rb").read(), libpath_py, 'exec'), libpath, libpath)
 -
--LIB_PATH = [os.path.relpath(libfile, CURRENT_DIR) for libfile in libpath['find_lib_path']()]
+-LIB_PATH = []
+-for libfile in libpath['find_lib_path']():
+-    try:
+-        relpath = os.path.relpath(libfile, CURRENT_DIR)
+-        LIB_PATH.append(relpath)
+-        break  # need only one
+-    except ValueError:
+-        continue
+-
 -print("Install libxgboost from: %s" % LIB_PATH)
  # Please use setup_pip.py for generating and deploying pip installation
  # detailed instruction in setup_pip.py
  setup(name='xgboost',
-@@ -36,7 +26,6 @@ setup(name='xgboost',
+@@ -43,7 +25,6 @@ setup(name='xgboost',
        # this will use MANIFEST.in during install where we specify additional files,
        # this is the golden line
        include_package_data=True,
@@ -31,7 +39,7 @@ index 27fc212..5a2b415 100644
        classifiers=['License :: OSI Approved :: Apache Software License'],
        url='https://github.com/dmlc/xgboost')
 diff --git a/python-package/xgboost/libpath.py b/python-package/xgboost/libpath.py
-index 46d2004..423b39b 100644
+index d87922c0..2752c504 100644
 --- a/python-package/xgboost/libpath.py
 +++ b/python-package/xgboost/libpath.py
 @@ -21,7 +21,8 @@ def find_lib_path():
@@ -43,4 +51,4 @@ index 46d2004..423b39b 100644
 +                os.path.join(curr_path, '../../lib/'),
                  os.path.join(curr_path, './lib/'),
                  os.path.join(sys.prefix, 'xgboost')]
-     if os.name == 'nt':
+     if sys.platform == 'win32':
