@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-http-parser
+	pkgdesc = Parser for HTTP Request/Response written in C (mingw-w64)
+	pkgver = 2.8.1
+	pkgrel = 1
+	url = https://github.com/nodejs/http-parser
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http-parser-2.8.1.tar.gz::https://github.com/nodejs/http-parser/archive/v2.8.1.tar.gz
+	sha512sums = 6f52f543d979f39688ccefae236527a8183929b3d30f5370570107b01cf89d0338b448249a81102b78d31615d2e8f6e7c708f8961f55ece08e7d3a40e5ad0883
+
+pkgname = mingw-w64-http-parser
+
