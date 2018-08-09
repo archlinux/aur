@@ -1,7 +1,7 @@
 pkgbase = perl-net-write
 	pkgdesc = Net::Write - a portable interface to open and send raw data to network
 	pkgver = 1.10
-	pkgrel = 1
+	pkgrel = 3
 	url = https://metacpan.org/release/Net-Write
 	arch = any
 	license = GPL

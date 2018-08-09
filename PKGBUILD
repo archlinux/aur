@@ -5,7 +5,7 @@ pkgname=perl-net-write
 _cpanname=Net-Write
 _module=Net::Write
 pkgver=1.10
-pkgrel=1
+pkgrel=3
 pkgdesc="$_module - a portable interface to open and send raw data to network"
 arch=('any')
 url="https://metacpan.org/release/${_cpanname}"
@@ -30,6 +30,7 @@ package() {
   cd "$srcdir/$_cpanname-$pkgver"
   make install DESTDIR="$pkgdir"
   find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+  rm -fr "$pkgdir/usr/lib"
 }
 
 # vim:set ts=2 sw=2 et:
