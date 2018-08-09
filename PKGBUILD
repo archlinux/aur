@@ -4,7 +4,7 @@
 
 pkgname=obexftp
 pkgver=0.24.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for transfer files to/from any OBEX enabled device"
 arch=('x86_64')
 url="http://dev.zuckschwerdt.org/openobex/wiki/ObexFtp"
