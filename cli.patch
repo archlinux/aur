@@ -1,5 +1,5 @@
---- a/usr/bin/system76-driver-cli	2016-03-05 15:53:48.000000000 -0500
-+++ b/usr/bin/system76-driver-cli	2016-03-05 18:03:49.068840665 -0500
+--- a/system76-driver-cli	2016-03-05 15:53:48.000000000 -0500
++++ b/system76-driver-cli	2016-03-05 18:03:49.068840665 -0500
 @@ -27,6 +27,7 @@
  import logging
  
