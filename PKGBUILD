@@ -1,7 +1,7 @@
 # Maintainer: Joseph Brains <jnbrains@gmail.com>
 _pkgname=gns3-server
 pkgname=${_pkgname}-git
-pkgver=v2.1.8.r3.g17e51fda
+pkgver=v2.1.8.r4.g12e71a29
 pkgrel=1
 pkgdesc='GNS3 network simulator. Server package.'
 arch=('any')
@@ -32,6 +32,7 @@ pkgver() {
 prepare() {
     cd ${srcdir}/${_pkgname}
     sed -i '/^typing/d' requirements.txt
+    find . -type f -exec sed -i -e 's/asyncio.async(/asyncio.ensure_future(/g' {} \;
 }
 
 package() {
