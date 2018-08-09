@@ -10,7 +10,7 @@
 
 pkgname="python-scipy-openblas"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=('i686' 'x86_64')
 url="http://www.scipy.org/"
@@ -32,6 +32,8 @@ build() {
 }
 
 check() {
+  _pyver=$(python -c 'import sys; v = sys.version_info; print(f"{v.major}.{v.minor}")')
+
   # we need to do a temp install so we can import scipy
   # also, the tests must not be run from the scipy source directory
   export BLAS=/usr/lib/libblas.so
@@ -42,7 +44,7 @@ check() {
   cd ${srcdir}/scipy-${pkgver}
   python setup.py config_fc --fcompiler=gnu95 install \
     --prefix=/usr --root=${srcdir}/test --optimize=1
-  export PYTHONPATH=${srcdir}/test/usr/lib/python3.6/site-packages
+  export PYTHONPATH=${srcdir}/test/usr/lib/python${_pyver}/site-packages
   cd ${srcdir}
   python -c "from scipy import test; test('full')"
 }
