@@ -1,5 +1,5 @@
 pkgbase = cnijfilter-ip7200
-	pkgdesc = Canon ip7200 series printer driver
+	pkgdesc = Canon ip7200 series printer driver (built from sources)
 	pkgver = 3.80
 	pkgrel = 1
 	url = https://en.canon-cna.com/support/consumer_products/products/printers/inkjet/pixma_ip_series/pixma_ip7240.aspx
