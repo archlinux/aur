@@ -1,7 +1,7 @@
 pkgbase = asofe
 	pkgdesc = Permissionless financial system employing zero-knowledge security
-	pkgver = 1.0.16
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://asofe.org/
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = asofe
 	makedepends = wget
 	depends = libevent
 	depends = zeromq
-	source = git+https://github.com/TheLightSide/asofe.git#commit=1bbfdaf57c69b2220067128fb9cf9f31f5da24f2
+	source = git+https://github.com/TheLightSide/asofe.git#commit=00b2062479af91fe51d73f5830d60df9575e73f2
 	source = asofed.service
 	sha512sums = SKIP
 	sha512sums = bfc39352e50078c7897ae3b8167f06d152f26c52dc7199ae952bad85b99a9da4f9d25d63edfe52291ad27b6e08b828c5db205eb0dc6091ec3fc75dc2b1bfca19
