@@ -1,3 +1,9 @@
+4.3.27 (2018-08-08 17:15:41)
+
+    Implements most ARM and AArch64 relocation for ELF files,
+    Fixes a slowness during the analysis of file containing big BSS sections,
+    Fixes function pointer signature editor on Linux. 
+
 4.3.26 (2018-07-13 15:02:01)
 
     Fixes missing symbols in some ELF executables,
