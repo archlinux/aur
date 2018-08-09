@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-potrace
+	pkgdesc = Utility for tracing a bitmap (input: PBM,PGM,PPM,BMP; output: EPS,PS,PDF,SVG,DXF,PGM,Gimppath,XFig) (mingw-w64)
+	pkgver = 1.15
+	pkgrel = 1
+	url = http://potrace.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://potrace.sourceforge.net/download/1.15/potrace-1.15.tar.gz
+	source = 001-reaarange-compiler-detect.patch
+	sha256sums = a9b33904ace328340c850a01458199e0064e03ccaaa731bc869a842b1b8d529d
+	sha256sums = 2903ae3c291468b9e30f20bc0ab9f261d0c6922ead8fc641b486290bfa33c187
+
+pkgname = mingw-w64-potrace
+
