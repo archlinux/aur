@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=stf
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='Web application for debugging Android devices'
 arch=(i686 x86_64)
@@ -15,9 +15,9 @@ depends=(nodejs-lts-carbon
          yasm
          pkg-config)
 makedepends=(npm)
-options=(!emptydirs !strip)
+options=(!strip)
 source=(https://github.com/openstf/stf/archive/v$pkgver.tar.gz)
-sha512sums=(f5be802444f5a76a8404858690874998168faea672af0fa89e6af2055c27ee33e35c24ad333bee606fbda653b831bbea2433076ba328c49d69518e44af19edfe)
+sha512sums=('dbd51aeb59a77db235b8a271464f8304ae2882fe10cf4369ea0d606231b1255eb353c8b1bd27cb0ff1f8541b6daa1e9f8b6b05ec989e62e226d01158421d480b')
 
 build() {
   cd stf-$pkgver
@@ -25,9 +25,9 @@ build() {
 }
 
 package() {
-  install -d $pkgdir/usr/{share/stf,share/licenses/stf,bin}
   cd stf-$pkgver
-  cp -a . $pkgdir/usr/share/stf
-  ln -s /usr/share/stf/bin/stf $pkgdir/usr/bin/stf
-  cp LICENSE $pkgdir/usr/share/licenses/stf/LICENSE
+  install -d "$pkgdir"/usr/{share/stf,bin,share/licenses/stf}
+  cp -a . "$pkgdir"/usr/share/stf
+  ln -s /usr/share/stf/bin/stf "$pkgdir"/usr/bin/stf
+  cp LICENSE "$pkgdir"/usr/share/licenses/stf
 }
