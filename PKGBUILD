@@ -6,15 +6,21 @@ pkgdesc="A powerful notepad app that respects your freedoms and runs on everythi
 arch=('x86_64')
 url="https://getmicropad.com"
 license=('MPL2')
-depends=('electron')
-source=("https://github.com/MicroPad/Electron/releases/download/v${pkgver}/${pkgname}-${pkgver}.pacman")
-md5sums=('f1a4287e26cadd94153dd1500c08d1eb')
+depends=('electron<3.0.0')
+source=(
+    "https://github.com/MicroPad/Electron/releases/download/v${pkgver}/${pkgname}-${pkgver}.pacman"
+    "micropad-bin"
+)
+md5sums=(
+    'f1a4287e26cadd94153dd1500c08d1eb'
+    'fb88bf75df0f836b4a6da178be1cb6c2'
+)
 install="micropad.install"
 
 package() {
     # Replace bundled binary to use the community electron package
-    chmod +x ../dist/micropad
-    mv ../dist/micropad opt/micropad/micropad
+    chmod +x "${srcdir}/micropad-bin"
+    mv "${srcdir}/micropad-bin" opt/µPad/micropad
 
     mv opt "${pkgdir}/opt"
     mv usr "${pkgdir}/usr"

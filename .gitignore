@@ -3,4 +3,4 @@
 !PKGBUILD
 !micropad.install
 !.SRCINFO
-!dist/micropad
+!micropad-bin
