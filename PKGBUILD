@@ -3,7 +3,7 @@
 
 pkgname='perl-io-interactive'
 pkgver='1.021'
-pkgrel='1'
+pkgrel='3'
 pkgdesc="Utilities for interactive I/O"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -40,6 +40,7 @@ package() {
   make install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  rm -fr "$pkgdir/usr/lib"
 }
 
 # Local Variables:
