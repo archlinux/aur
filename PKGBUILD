@@ -1,9 +1,9 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=tootle-git
-pkgver=0.1.5+11+g56a7016
+pkgver=0.1.5+15+g6c30b79
 pkgrel=1
-pkgdesc='GTK+ 3 client for Mastodon'
+pkgdesc='GTK+ 3 client for Mastodon (git)'
 arch=(any)
 url=https://github.com/bleakgrey/tootle
 license=(GPL3)
@@ -36,5 +36,5 @@ build() {
 
 package() {
   cd tootle
-  DESTDIR=$pkgdir ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build install
 }
