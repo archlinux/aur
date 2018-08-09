@@ -1,0 +1,8 @@
+post_install() {
+	ln -sf /usr/bin/xvlk.sh /usr/bin/xvlk
+	ln -sf /usr/bin/xvlkc.sh /usr/bin/xvlkc
+}
+
+pre_remove() {
+	rm -f /usr/bin/xvlk /usr/bin/xvlkc
+}
