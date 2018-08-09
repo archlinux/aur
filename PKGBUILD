@@ -10,8 +10,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=68.0.3440.84
-pkgrel=2
+pkgver=68.0.3440.106
+pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
 arch=('x86_64')
@@ -43,7 +43,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-widevine-r2.patch
         chromium-skia-harmony.patch
         chromium-vaapi-r19.patch)
-sha256sums=('1031d167ae18d8a37f9291ff0e9a3dca2337c0fc1031f2c243d0327b14ecc9d9'
+sha256sums=('7021040635a0a0d47f699bdb22e3ef5c91482e4f51b428d1de3016da95f0e698'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'e2c2754536243a60fa70541bbd4121715eccd83caa8f1fb1873bd994cd81f871'
             '98a5c41cf9687c52ee380d2b683c95387334c76254479c347bdb733646dab815'
