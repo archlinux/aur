@@ -6,7 +6,7 @@ pkgver=latest
 pkgrel=1
 pkgdesc="A GTK3 BitTorrent client following the GNOME Human Interface Guidelines"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/FragmentsApp/Fragments"
+url="https://github.com/haecker-felix/Fragments"
 license=('GPL3')
 depends=('gtk3')
 makedepends=('git'
@@ -16,7 +16,7 @@ makedepends=('git'
              'vala')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/FragmentsApp/Fragments.git")
+source=("git+https://github.com/haecker-felix/Fragments.git")
 md5sums=('SKIP')
 
 prepare() {
