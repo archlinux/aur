@@ -2,13 +2,14 @@
 
 pkgname=visidata
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal spreadsheet multitool for discovering and arranging data'
 arch=('any')
 url='http://visidata.org'
 _url='https://github.com/saulpw/visidata/'
 license=('GPLv3')
 depends=('python')
+makedepends=('python-setuptools')
 optdepends=('python-dateutil: for converting string column to datetime'
             'python-openpyxl: for opening .xlsx files'
             'python-h5py: for opening .hdf5 files'
