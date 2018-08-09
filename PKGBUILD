@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=70.0.3510.2
+pkgver=70.0.3514.0
 pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
 )
 
 
-sha256sums=('97af92b8e056d33c7cae6b1599f02477abaf93105571a5775a8b02588c415e92'
+sha256sums=('204987876e9243b607688ff43fcaed4379873d97ffddb953fd1f1963e4294b0a'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -136,7 +136,7 @@ sha256sums=('97af92b8e056d33c7cae6b1599f02477abaf93105571a5775a8b02588c415e92'
             '7beb0f3bbc55960092347767d423415860a3867525f6d1bbb057b3d72fae0618'
             'bcaeeb52d5d17fa9e6d4883cdeef8150f7e6ce440e0fcd3cef17d99f4b5db672'
             'f6a4c02feb5b21f1814d0b835b94a8b6222628ff97800b5411dc86852bfa5883'
-            'b5532de9e402a7d0b12258e9de56722e7eec84dc54cd53b9fe25d62c7354c0af'
+            '5f6f2042b1699a7602a40aac03961e9e7fdec468cb87eadc6a11ff2c1c8bafe9'
             'd64928f6542292b4191a001fc475ef8ea02ea966f5292841ede47a7e70f5d785'
             '0aeb560922cb5d628528fbd33fad23a3d33c3b0caa06a6fa799da2e55741f5cb'
             '1632b2d3b9062e6ec8872b9df180f82a93099a50eda6f15125ffe56dd45beca6'
@@ -155,14 +155,14 @@ sha256sums=('97af92b8e056d33c7cae6b1599f02477abaf93105571a5775a8b02588c415e92'
             '0a148b0a15a63feb08ed79695a80d09ad39db7a3373b217cd499909218b94fda'
             '9465f89adc5b177050fd154b3be459f167fd3e157a1ebc0537b29070f0dbda5d'
             '5a4ec61000266fd623e0a3377210ed324ed62eeba6c61ecd95ffb49d4d20640f'
-            '5a3f944a54d425d0164ebe4ddc71a777806d098aa5845ebbd0fb9f511c622d98'
+            '19d30e8a8c2afd9bcfd2845ebaa7245aff59ad14b1d3a5388522ad8ae48e0c6d'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
             'ad6f4efe8935234646c69c0b09e6b8549c763f9b7440192705d779dd21559dfd'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
             'fa919283c5ae73baeaa8cb0286e64926cc938a436e756296614b747154c4a777'
-            '5b2d18b5b45ffa5d45348a2d38db5c3aec1678d61832872ad8f872a31ba52fe0'
+            '4d1c096914e723133fcd918550b58ae5f7c52a13663ff31a0b8bfc77ad1f8a85'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
             '9d4953a3dc73cb01d9d65ea297ab4b09d47b4daaa5f2291ef35d0784a2f18a4e'
@@ -214,7 +214,6 @@ sha256sums=('97af92b8e056d33c7cae6b1599f02477abaf93105571a5775a8b02588c415e92'
             '70f49d5b69641669c24d0532fb723b5ef1313a56224f41bf35bf6bb07fc93974'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
-
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -343,7 +342,7 @@ patch -Np1 -i ../narnia1.patch
 
 
 
-patch -Np1 -i ../9k.patch
+patch -Np1 -Ri ../9k.patch
 patch -Np1 -i ../048.patch
 
 patch -Np1 -i ../12.patch
