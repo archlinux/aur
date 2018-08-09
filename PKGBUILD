@@ -2,7 +2,7 @@
 pkgname=xde-panel
 cpanname=XDE-Panel
 pkgver=0.01.7
-pkgrel=3
+pkgrel=4
 pkgdesc="PerlPanel wrapper for the X Desktop Environment"
 groups=('xde')
 arch=('any')
@@ -34,7 +34,7 @@ package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
   find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
-  rm -fr "$pkgdir"/usr/lib/perl5/vendor_perl
+  rm -fr "$pkgdir"/usr/lib
 #  find "$pkgdir" -depth -type d -exec rmdir --ignore-fail-on-non-empty '{}' \;
 #  find "$pkgdir" -type d -empty -delete
 #  find "$pkgdir" -type d -empty |while read f; do echo "WARNING: $f is empty!"; done
