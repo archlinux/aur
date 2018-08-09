@@ -4,7 +4,7 @@
 
 pkgname='perl-log-dispatch'
 pkgver='2.67'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Dispatches messages to one or more outputs"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -44,6 +44,7 @@ package() {
   make install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  rm -fr "$pkgdir/usr/lib"
 }
 
 # Local Variables:
