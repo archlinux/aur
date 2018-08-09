@@ -3,11 +3,11 @@
 _gitname=JRomManager
 pkgbase=jrommanager
 pkgname=jrommanager
-pkgver=1.6b20
-pkgrel=2
+pkgver=1.7b24
+pkgrel=3
 pkgdesc='A Rom Manager entirely written in Java and released under GPL v3'
 arch=('any')
-license=('GPL3')
+license=('GPL-2')
 url="https://github.com/optyfr/JRomManager"
 depends=('java-runtime>=8')
 source=("https://github.com/optyfr/${_gitname}/releases/download/${pkgver}/${_gitname}-${pkgver}.zip"
@@ -29,7 +29,7 @@ package() {
 
 # makepkg -g >> PKGBUILD
 
-md5sums=('7bbf941aa5e044a871d3955da5192cf5'
+md5sums=('75843c9a5b984be9884a2eab9fa99c28'
          'feb8697e8eea362a9b6ba5947975dc4c'
          'aa359e0e6eedc95e172355b83b2c6235'
          '33c717e50d5db9ca115bf063313bf1df')
