@@ -1,0 +1,17 @@
+pkgbase = filebrowser-git
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/filebrowser/filebrowser
+	arch = x86_64
+	license = Apache
+	makedepends = dep
+	makedepends = git
+	makedepends = go
+	makedepends = yarn
+	provides = filebrowser
+	conflicts = filebrowser
+	source = git+https://github.com/filebrowser/filebrowser.git
+	md5sums = SKIP
+
+pkgname = filebrowser-git
+
