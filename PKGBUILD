@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-    install -Dm644 "$pkgdir"/etc/$_pkgname
+    install -d "$pkgdir"/etc/$_pkgname
     install -Dm644 "$srcdir"/$_pkgname.service "$pkgdir"/usr/lib/systemd/system/$_pkgname@.service
     install -Dm755 "$GOPATH"/src/github.com/$_pkgname/$_pkgname/$_pkgname "$pkgdir"/usr/bin/$_pkgname
 }
