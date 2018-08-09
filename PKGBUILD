@@ -1,15 +1,15 @@
 # Maintainer: Michael Nussbaum <michaelnussbaum08@gmail.com>
 
 pkgname=firefox-vim-vixen
-pkgver=0.15
-pkgrel=1
+pkgver=0.17
+pkgrel=0
 pkgdesc="An add-on which allows you to navigate Firefox with vim-like bindings"
 url=https://github.com/ueokande/vim-vixen
 arch=("any")
 license=("MIT")
 source=("https://addons.cdn.mozilla.net/user-media/addons/859695/vim_vixen-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
-sha256sums=("9c7a5083173ecbf092e6d9823003e499a80c191220df14037b5693578d4c2090")
+sha256sums=("76cc12a1fb02336a10f71f14102cd0af62b7dcc629b87f3a732bcf6f92bc1e34")
 
 package() {
     install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/vim-vixen@i-beam.org.xpi
