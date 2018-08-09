@@ -1,13 +1,14 @@
 pkgbase = schismtracker
 	pkgdesc = A reimplementation of the Impulse Tracker music editor.
 	pkgver = 20180513
-	pkgrel = 1
+	pkgrel = 2
 	url = http://schismtracker.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = GPL
 	makedepends = git
+	makedepends = python
 	depends = sdl
 	depends = gcc-libs
 	depends = libxv
