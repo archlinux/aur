@@ -1,6 +1,6 @@
 pkgbase = ansible-git
 	pkgdesc = Radically simple IT automation platform
-	pkgver = v2.6.0a1.r248.g0c881c1a83
+	pkgver = v2.6.0a1.r1280.gddf3ba01d2
 	pkgrel = 1
 	url = https://www.ansible.com
 	arch = any
