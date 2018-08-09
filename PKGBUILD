@@ -8,7 +8,8 @@ license=("custom")
 makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt)
 options=(!strip !buildflags staticlibs)
-source=("http://www.bzip.org/${pkgver}/bzip2-${pkgver}.tar.gz"
+#source=("http://www.bzip.org/${pkgver}/bzip2-${pkgver}.tar.gz"
+source=("https://fossies.org/linux/misc/bzip2-${pkgver}.tar.gz"
         "bzip2-1.0.5-autoconfiscated.patch"
         "bzip2-use-cdecl-calling-convention.patch"
         "mingw32-bzip2-1.0.5-slash.patch")
