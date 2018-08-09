@@ -2,7 +2,7 @@
 
 pkgname=xvolkolak
 pkgver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Xvolkolak is an unpacker emulator"
 arch=(x86_64)
 url="http://n10info.blogspot.com/"
@@ -15,9 +15,9 @@ install="$pkgname.install"
 sha256sums=('9c2a704c0134528e9259e414ad5c5d301e637a71f441709bbcd5cb366fc2577a')
 
 package() {
-	mkdir -p "$pkgdir/usr/share/xvlk" "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/share/xvolkolak" "$pkgdir/usr/bin"
 
-	cp -a "${srcdir}/xvlk_lin64_public/base" "$pkgdir/usr/share/xvlk/"
+	cp -a "${srcdir}/xvlk_lin64_public/base" "$pkgdir/usr/share/xvolkolak/"
 
 	cp -a "${srcdir}/xvlk_lin64_public/xvlkc.sh" \
 		"${srcdir}/xvlk_lin64_public/xvlk.sh" "$pkgdir/usr/bin/"
