@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=lazygit
-pkgver=0.1.44
+pkgver=0.1.45
 pkgrel=1
 pkgdesc="A simple terminal UI for git commands"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("glibc")
 makedepends=("go-pie")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jesseduffield/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=("ee22500a8764785db87a5f6cadcec4a74f63a09720bf914b90685ca2456af2fc")
+sha256sums=("1f9c859a6bcdaec844ad615c20a7c0ec17f1ff8e979458e719953e247d7fb149")
 
 build () {
   msg2 "Linking to repository path..."
