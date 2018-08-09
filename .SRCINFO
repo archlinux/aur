@@ -8,7 +8,7 @@ pkgbase = pyznap
 	makedepends = python3
 	depends = python
 	source = pyznap-0.9.1.tar.gz::https://github.com/yboetz/pyznap/archive/v0.9.1.tar.gz
-	md5sums = 4cabfb171611647e85b986d09fc2442c
+	sha256sums = cc548d79b1082218967189e5c2c506cf2720ac5cb4c27850519103b32572f532
 
 pkgname = pyznap
 

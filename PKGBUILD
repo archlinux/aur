@@ -10,7 +10,7 @@ makedepends=('python3' )
 license=('GPLv3')
 arch=('any')
 source=("pyznap-${pkgver}.tar.gz::https://github.com/yboetz/pyznap/archive/v${pkgver}.tar.gz")
-md5sums=('4cabfb171611647e85b986d09fc2442c')
+sha256sums=('cc548d79b1082218967189e5c2c506cf2720ac5cb4c27850519103b32572f532')
 
 build() {
     cd $srcdir/pyznap-0.9.1
