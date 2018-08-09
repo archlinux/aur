@@ -20,7 +20,7 @@ install="micropad.install"
 package() {
     # Replace bundled binary to use the community electron package
     chmod +x "${srcdir}/micropad-bin"
-    mv "${srcdir}/micropad-bin" opt/µPad/micropad
+    cp "${srcdir}/micropad-bin" opt/µPad/micropad
 
     mv opt "${pkgdir}/opt"
     mv usr "${pkgdir}/usr"
