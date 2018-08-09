@@ -4,12 +4,14 @@ pkgname=grokmirror
 pkgver=1.1.0
 pkgrel=2
 pkgdesc='Framework to smartly mirror git repositories'
-url='https://github.com/mricon/grokmirror'
+url='https://git.kernel.org/pub/scm/utils/grokmirror/grokmirror.git'
 arch=('any')
 license=('GPL3')
 depends=('python-setuptools')
-source=("${pkgname}-${pkgver}::https://github.com/mricon/grokmirror/archive/v${pkgver}.tar.gz")
-sha256sums=('c838df4e9f055b269dd9664c554586d05cc91db337f559b3c2318aba24c89354')
+source=(https://git.kernel.org/pub/scm/utils/grokmirror/grokmirror.git/snapshot/grokmirror-${pkgver}.tar.{gz,asc})
+validpgpkeys=('DE0E66E32F1FDD0902666B96E63EDCA9329DD07E') # Konstantin Ryabitsev
+sha256sums=('SKIP'
+            'SKIP')
 
 build() {
     cd "${pkgname}-${pkgver}"
