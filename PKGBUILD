@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=oomox-git
-pkgver=1.7
+pkgver=1.7.0.1
 pkgrel=1
 pkgdesc="Graphical application for generating different color variations
 of Oomox(Numix-based), Materia (ex-Flat-Plat) and Arc themes
@@ -89,6 +89,6 @@ package() {
 	_oomox_gui_dir=${_oomox_dir}/oomox_gui
 
 	cd "${srcdir}/oomox"
-	make DESTDIR="${pkgdir}" PREFIX="${_oomox_dir}" install
+	make DESTDIR="${pkgdir}" APPDIR="${_oomox_dir}" PREFIX="/usr" install
 	python -O -m compileall ${pkgdir}${_oomox_gui_dir} -d ${_oomox_gui_dir}
 }
