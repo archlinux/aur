@@ -1,0 +1,56 @@
+diff -ura cnijfilter-source-3.80-1/backend/src/cnij_backend_common.c cnijfilter-source-3.80-1_patched/backend/src/cnij_backend_common.c
+--- cnijfilter-source-3.80-1/backend/src/cnij_backend_common.c	2012-03-29 05:50:27.000000000 +0100
++++ cnijfilter-source-3.80-1_patched/backend/src/cnij_backend_common.c	2018-08-08 22:51:15.721515633 +0100
+@@ -38,6 +38,7 @@
+ // CUPS Header
+ #include <cups/cups.h>
+ #include <cups/ipp.h>
++#include <cups/ppd.h>
+ 
+ // Header file for CANON
+ #include "cnij_backend_common.h"
+diff -ura cnijfilter-source-3.80-1/cngpij/cngpij/bjcups.c cnijfilter-source-3.80-1_patched/cngpij/cngpij/bjcups.c
+--- cnijfilter-source-3.80-1/cngpij/cngpij/bjcups.c	2012-04-17 04:39:20.000000000 +0100
++++ cnijfilter-source-3.80-1_patched/cngpij/cngpij/bjcups.c	2018-08-08 22:52:24.107765920 +0100
+@@ -21,6 +21,7 @@
+ #include	<config.h>
+ #endif	// HAVE_CONFIG_H
+ 
++#define _IPP_PRIVATE_STRUCTURES 1
+ #include <cups/cups.h>
+ #include <cups/language.h>
+ #include <cups/ppd.h>
+diff -ura cnijfilter-source-3.80-1/cngpijmnt/src/main.c cnijfilter-source-3.80-1_patched/cngpijmnt/src/main.c
+--- cnijfilter-source-3.80-1/cngpijmnt/src/main.c	2012-04-26 10:49:34.000000000 +0100
++++ cnijfilter-source-3.80-1_patched/cngpijmnt/src/main.c	2018-08-08 23:45:18.929408652 +0100
+@@ -21,6 +21,7 @@
+ #include	<config.h>
+ #endif	// HAVE_CONFIG_H
+ 
++#define _IPP_PRIVATE_STRUCTURES 1
+ #include <cups/cups.h>
+ #include <cups/language.h>
+ #include <cups/ppd.h>
+diff -ura cnijfilter-source-3.80-1/cngpijmon/src/bjcupsmon_cups.c cnijfilter-source-3.80-1_patched/cngpijmon/src/bjcupsmon_cups.c
+--- cnijfilter-source-3.80-1/cngpijmon/src/bjcupsmon_cups.c	2012-05-22 10:49:27.000000000 +0100
++++ cnijfilter-source-3.80-1_patched/cngpijmon/src/bjcupsmon_cups.c	2018-08-08 22:53:50.693927746 +0100
+@@ -18,6 +18,7 @@
+  */
+ 
+ /*** Includes ***/
++#define _IPP_PRIVATE_STRUCTURES 1
+ #include <cups/cups.h>
+ #include <cups/ppd.h>
+ #include <cups/language.h>
+diff -ura cnijfilter-source-3.80-1/cnijfilter/src/bjfimage.c cnijfilter-source-3.80-1_patched/cnijfilter/src/bjfimage.c
+--- cnijfilter-source-3.80-1/cnijfilter/src/bjfimage.c	2012-03-22 02:50:19.000000000 +0100
++++ cnijfilter-source-3.80-1_patched/cnijfilter/src/bjfimage.c	2018-08-08 22:57:36.022705896 +0100
+@@ -1574,7 +1574,7 @@
+ 		goto onErr;
+ 	}
+ 
+-	if (setjmp (png_p->jmpbuf))
++	if (setjmp (png_jmpbuf(png_p)))
+ 	{
+ 		png_destroy_read_struct(&png_p, &info_p, (png_infopp)NULL);
+ 		goto onErr;
