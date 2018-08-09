@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-portaudio
 pkgver=190600_20161030
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, cross-platform, open source, audio I/O library. (mingw-w64)"
 arch=('any')
 url="http://www.portaudio.com"
@@ -67,6 +67,10 @@ package() {
     # shared
     cd "${srcdir}/portaudio/build-${_arch}-shared"
     make DESTDIR="${pkgdir}" install
+    
+    # move DLL to bin directory
+    mkdir -p "$pkgdir"/usr/${_arch}/bin
+    find "$pkgdir"/usr/${_arch}/lib -iname '*.dll' -exec mv --target-directory="$pkgdir"/usr/${_arch}/bin {} \;
     
     # strip executables and libraries
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
