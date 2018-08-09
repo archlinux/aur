@@ -1,7 +1,7 @@
 # Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
 
 pkgname=ekho
-pkgver=7.0
+pkgver=7.5
 pkgrel=2
 pkgdesc="Chinese text-to-speech (TTS) software for Cantonese, Mandarin, Zhaoan Hakka, Tibetan, Ngangien and Korean"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libpulse' 'lame' 'festival' 'ncurses' 'espeak')
 source=("http://downloads.sourceforge.net/e-guidedog/ekho-${pkgver}.tar.xz")
 options=(!strip) #We have a lots of non executable data and only 2 executables
-md5sums=('cf0890f265ff40c90328b39c4ddfc746')
+md5sums=('8b88fe5dcf612ef96a4c62fa6c4ff3f6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
