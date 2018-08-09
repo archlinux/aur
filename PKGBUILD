@@ -2,7 +2,7 @@
 _name=requests_download
 pkgname=python-$_name
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Download to a local file using requests'
 arch=('any')
 url="https://github.com/takluyver/$_name"

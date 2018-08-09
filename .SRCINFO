@@ -1,7 +1,7 @@
 pkgbase = python-requests_download
 	pkgdesc = Download to a local file using requests
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/takluyver/requests_download
 	arch = any
 	license = MIT
