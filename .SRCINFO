@@ -1,6 +1,6 @@
 pkgbase = repkg
 	pkgdesc = A tool to manage rebuilding of AUR packages based on their dependencies
-	pkgver = 1.2.3
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Skycoder42/repkg
 	arch = i686
@@ -11,11 +11,11 @@ pkgbase = repkg
 	makedepends = qpmx-qpmsource
 	depends = qt5-base
 	depends = pacman
-	optdepends = trizen: The recommended frontend for the AUR to use with repkg
-	source = repkg-1.2.3::git+https://github.com/Skycoder42/repkg.git#tag=1.2.3
+	optdepends = yay: The recommended frontend for the AUR to use with repkg
+	source = repkg-1.3.0::git+https://github.com/Skycoder42/repkg.git#tag=1.3.0
 	source = repkg.rule
 	sha256sums = SKIP
-	sha256sums = f4b9afd13da458db0ad55e8e1e99565a6485fc60a7745ad816f01f816e5bee22
+	sha256sums = 2e3e26a1f1c82c77320f3042052b3d2c02ac72f1b4672ba5ba3bd7b35b0cf126
 
 pkgname = repkg
 
