@@ -1,0 +1,18 @@
+pkgbase = random-seed-git
+	pkgdesc = random seed manager
+	pkgver = 0.0.1.r16.cba728f
+	pkgrel = 1
+	arch = x86_64
+	license = BSD
+	makedepends = autoconf
+	makedepends = autoconf-archive
+	makedepends = git
+	makedepends = make
+	makedepends = pkg-config
+	provides = random-seed
+	conflicts = random-seed
+	source = git+https://git.alxu.ca/random-seed.git
+	md5sums = SKIP
+
+pkgname = random-seed-git
+
