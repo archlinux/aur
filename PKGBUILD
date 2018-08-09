@@ -1,9 +1,9 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=stf-git
-pkgver=3.3.1+12+g32c9949b
+pkgver=3.4.0+1+gbc6c25bd
 pkgrel=1
-pkgdesc='Web application for debugging Android devices (Git)'
+pkgdesc='Web application for debugging Android devices (git)'
 arch=(i686 x86_64)
 url=https://openstf.io
 license=(Apache)
@@ -17,7 +17,7 @@ depends=(nodejs-lts-carbon
 makedepends=(npm)
 provides=(stf)
 conflicts=(stf)
-options=(!emptydirs !strip)
+options=(!strip)
 source=(git+http://github.com/openstf/stf)
 sha512sums=(SKIP)
 
@@ -32,9 +32,9 @@ build() {
 }
 
 package() {
-  install -d $pkgdir/usr/{share/stf,share/licenses/stf,bin}
   cd stf
-  cp -a . $pkgdir/usr/share/stf
-  ln -s /usr/share/stf/bin/stf $pkgdir/usr/bin/stf
-  cp LICENSE $pkgdir/usr/share/licenses/stf
+  install -d "$pkgdir"/usr/{share/stf,bin,share/licenses/stf}
+  cp -a . "$pkgdir"/usr/share/stf
+  ln -s /usr/share/stf/bin/stf "$pkgdir"/usr/bin/stf
+  cp LICENSE "$pkgdir"/usr/share/licenses/stf
 }
