@@ -3,7 +3,7 @@
 
 pkgname=scavenger-git
 _realname=scavenger
-pkgver=1.0.0.beta.r50.gadf8683
+pkgver=1.0.0.beta.r56.g1e42d9f
 pkgrel=1
 pkgdesc="Burstcoin Rust miner"
 arch=('x86_64')
