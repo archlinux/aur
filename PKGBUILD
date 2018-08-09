@@ -7,31 +7,36 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgbase=gcc6
-pkgname=('gcc6' 'gcc6-libs' 'gcc6-fortran' 'gcc6-gcj')
+pkgname=('gcc6' 'gcc6-libs')
 pkgver=6.4.1
 _ver=6
-_svnrev=262598
+_svnrev=263436
 _islver=0.18
 _cloogver=0.18.4
-pkgrel=7
+pkgrel=8
 pkgdesc="The GNU Compiler Collection (6.x.x)"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url="https://gcc.gnu.org/gcc-6/"
-makedepends=(binutils libmpc doxygen subversion java-environment-common zip jdk8-openjdk gtk2 libart-lgpl libxtst)
+makedepends=(binutils libmpc doxygen subversion zip gtk2 libart-lgpl libxtst)
 checkdepends=('dejagnu' 'inetutils')
 options=(!emptydirs)
 source=(gcc::svn://gcc.gnu.org/svn/gcc/branches/gcc-${_ver}-branch#revision=$_svnrev
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz)
+        http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz
+        glibc2.28-ustat.patch)
 sha512sums=('SKIP'
             '85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94'
-            'd35d67b08ffe13c1a010b65bfe4dd02b0ae013d5b489e330dc950bd3514defca8f734bd37781856dcedf0491ff6122c34eecb4b0fe32a22d7e6bdadea98c8c23')
+            'd35d67b08ffe13c1a010b65bfe4dd02b0ae013d5b489e330dc950bd3514defca8f734bd37781856dcedf0491ff6122c34eecb4b0fe32a22d7e6bdadea98c8c23'
+            'db5d70f6f556c8b17bba89f29487136ce948f82afd064c1715fa1228cfa07e17724f65d3325312d833d2c9bfe37faa85721fa839d4f53c6b6bf1bc3c3e21dafb')
 
 _libdir="/usr/lib/gcc/$CHOST/$pkgver"
 
 prepare() {
   cd gcc
+
+  # Fix build with glibc 2.28, which removes <sys/ustat.h>
+  patch -p0 -i "$srcdir/glibc2.28-ustat.patch"
 
   # Link isl/cloog for in-tree builds
   ln -sf ../isl-${_islver} isl
@@ -45,9 +50,6 @@ prepare() {
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
-
-  # Arch uses python version 3 as default python (for gcc6-gcj).
-  sed -i '1s+python+python2+' libjava/contrib/aot-compile.in
 
   mkdir -p "${srcdir}/gcc-build"
 }
@@ -66,7 +68,7 @@ build() {
       --mandir=/usr/share/man \
       --infodir=/usr/share/info \
       --with-bugurl=https://bugs.archlinux.org/ \
-      --enable-languages=c,c++,fortran,lto,java \
+      --enable-languages=c,c++,lto \
       --enable-shared \
       --enable-threads=posix \
       --enable-libmpx \
@@ -86,8 +88,6 @@ build() {
       --disable-multilib \
       --disable-werror \
       --enable-checking=release \
-      --enable-java-awt=gtk \
-      --with-java-home="$JAVA_HOME" \
       --enable-libgcj-multifile \
       --enable-default-pie \
       --enable-default-ssp \
@@ -112,8 +112,6 @@ package_gcc6-libs() {
 
   for lib in libatomic \
              libcilkrts \
-             libjava \
-             libgfortran \
              libgomp \
              libitm \
              libquadmath \
@@ -195,8 +193,6 @@ package_gcc6() {
   #install -m644 ${srcdir}/gcc-${_snapshot}/gcc-build/libiberty/pic/libiberty.a ${pkgdir}/${_libdir}/
 
   make -C gcc DESTDIR=${pkgdir} install-man install-info
-  rm ${pkgdir}/usr/share/man/man1/gfortran-${_ver}.1
-  rm ${pkgdir}/usr/share/info/gfortran.info
 
   make -C libcpp DESTDIR=${pkgdir} install
   make -C gcc DESTDIR=${pkgdir} install-po
@@ -247,70 +243,4 @@ EOF
   mv ${pkgdir}/usr/lib/*.so* ${pkgdir}/${_libdir}/
   install -Dm755 gcc/cc1     ${pkgdir}/${_libdir}/cc1
   install -Dm755 gcc/cc1plus ${pkgdir}/${_libdir}/cc1plus
-}
-
-package_gcc6-fortran() {
-  pkgdesc="Fortran front-end for GCC"
-  depends=("gcc6=$pkgver-$pkgrel")
-  options=('!emptydirs')
-
-  cd gcc-build
-  make -C $CHOST/libgfortran DESTDIR=$pkgdir install-cafexeclibLTLIBRARIES \
-    install-{toolexeclibDATA,nodist_fincludeHEADERS}
-  make -C $CHOST/libgomp DESTDIR=$pkgdir install-nodist_fincludeHEADERS
-  make -C gcc DESTDIR=$pkgdir fortran.install-common
-  install -Dm755 gcc/f951 $pkgdir/${_libdir}/f951
-
-  ln -s gfortran-6 ${pkgdir}/usr/bin/f95-${_ver}
-
-  # Install Runtime Library Exception
-  install -d ${pkgdir}/usr/share/licenses/$pkgname
-  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/$pkgname/
-}
-
-package_gcc6-gcj() {
-  pkgdesc="Java front-end for GCC"
-  depends=("gcc6=$pkgver-$pkgrel")
-  replaces=('gcc-gcj')
-  options=('!emptydirs')
-
-  # Install libjava.
-  cd gcc-build
-  make -j1 DESTDIR=${pkgdir} install-target-libjava
-
-  # Install java-common.
-  cd gcc
-  make -j1 DESTDIR=${pkgdir} java.install-common java.install-man
-
-  install -m755 jc1       ${pkgdir}/${_libdir}/
-  install -m755 jvgenmain ${pkgdir}/${_libdir}/
-
-  # Remove conflicting files.
-  rm -f ${pkgdir}/usr/lib/gcc/${CHOST}/lib/libgcc_s.so*
-  rm -f ${pkgdir}/${_libdir}/libgcc_s.so*
-  rm ${pkgdir}/${_libdir}/libg{cj,ij}*.so*
-
-  # Rename two files to not conflict to classpath
-  mv ${pkgdir}/usr/share/info/cp-tools.info ${pkgdir}/usr/share/info/cp-tools-gcj.info
-
-  linkdir=`basename $pkgdir/usr/lib/gcj-${pkgver}*`
-  ln -sf $linkdir ${pkgdir}/usr/lib/gcj-${pkgver%.?}
-  ln -sf libgcj-${pkgver}.jar ${pkgdir}/usr/share/java/libgcj-${pkgver%.?}.jar
-  ln -sf libgcj-${pkgver}.jar ${pkgdir}/usr/share/java/libgcj.jar
-  ln -sf libgcj-tools-${pkgver}.jar ${pkgdir}/usr/share/java/libgcj-tools-${pkgver%.?}.jar
-  ln -sf libgcj-tools-${pkgver}.jar ${pkgdir}/usr/share/java/libgcj-tools.jar
-
-  rm ${pkgdir}/${_libdir}/libgcc_eh.a
-  rm ${pkgdir}/${_libdir}/crtbegin.o
-  rm ${pkgdir}/${_libdir}/crtbeginS.o
-  rm ${pkgdir}/${_libdir}/crtbeginT.o
-  rm ${pkgdir}/${_libdir}/crtend.o
-  rm ${pkgdir}/${_libdir}/crtendS.o
-  rm ${pkgdir}/${_libdir}/crtfastmath.o
-  rm ${pkgdir}/${_libdir}/crtprec32.o
-  rm ${pkgdir}/${_libdir}/crtprec64.o
-  rm ${pkgdir}/${_libdir}/crtprec80.o
-  rm ${pkgdir}/${_libdir}/include/unwind.h
-  rm ${pkgdir}/${_libdir}/libgcc.a
-  rm ${pkgdir}/${_libdir}/libgcov.a
 }
