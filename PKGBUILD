@@ -6,22 +6,23 @@
 # installer fails if run headless.
 
 pkgname=ti-ble-sdk
-pkgver=2.02.01.18
+pkgver=2.02.02.25
 pkgrel=1
 pkgdesc="Texas Instruments BLE Stack for CC2640/CC2650/CC1350"
 arch=('x86_64')
 url="http://www.ti.com/tool/ble-stack"
 license=('custom:LPRF')
 
-makedepends=('wine' 'wine-mono' 'wine_gecko')
+makedepends=('wine')
 depends=('python2-lxml')
 optdepends=('ccstudio' 'ti-cgt-arm')
 
-_bundle=ble_sdk_2_02_01_18
+_bundle=ble_sdk_2_02_02_25
 _installer=${_bundle}_setup.exe
 
 # Installer mirrored on IPFS
-_ble_sdk_ipfs_hash=QmRqD824vXr3eEDKEUdRzefZ7UGZXrNjw2VmsSyhgRLiJm
+#_ble_sdk_ipfs_hash=QmRqD824vXr3eEDKEUdRzefZ7UGZXrNjw2VmsSyhgRLiJm
+_ble_sdk_ipfs_hash=QmWzstCsjpLxkTvH3EtihPR2MQiFvcJohfXYVMdnz9YBjH
 
 # Alternatively, to download from TI, you need a download key, which
 # you can get by following the upstram link above and clicking through
@@ -29,8 +30,10 @@ _ble_sdk_ipfs_hash=QmRqD824vXr3eEDKEUdRzefZ7UGZXrNjw2VmsSyhgRLiJm
 
 # This particular version of TI-RTOS is installed by this PKGBUILD
 # because the path patch applies to both of them.
-_tirtos_installer=tirtos_cc13xx_cc26xx_setuplinux_2_20_01_08.bin
-_tirtos_ipfs_hash=QmYfnTW3p4Pk2EybdUaKaemG2a9xQ5keCGbDSQhM4PzFM2
+#_tirtos_installer=tirtos_cc13xx_cc26xx_setuplinux_2_20_01_08.bin
+#_tirtos_ipfs_hash=QmYfnTW3p4Pk2EybdUaKaemG2a9xQ5keCGbDSQhM4PzFM2
+_tirtos_installer=tirtos_cc13xx_cc26xx_setuplinux_2_21_01_08.bin
+_tirtos_ipfs_hash=QmXWp5HwPfawjchpvAmsfAn5553FCZYTXVwps3H29imABN
 
 
 # NOTE: patch is compressed because of AUR's 250KB limit
@@ -40,21 +43,18 @@ source=(# Requires you to open webpage in browser to get download key
         # Alternative source for same file that does not require key and does not 404 after updates
         #"https://gateway.ipfs.io/ipfs/${_ble_sdk_ipfs_hash}/${_installer}"
         # Alternative source via a different IPFS gateway
-        "http://arch.alexeicolin.com:8080/ipfs/${_ble_sdk_ipfs_hash}/${_installer}"
+        #"http://ipfs.alexeicolin.com:8080/ipfs/${_ble_sdk_ipfs_hash}/${_installer}"
+        "http://camus:8080/ipfs/${_ble_sdk_ipfs_hash}/${_installer}"
 
         #"http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/tirtos/2_20_01_08/exports/${_tirtos_installer}"
         # Alternative source for same file
         #"https://gateway.ipfs.io/ipfs/${_tirtos_ipfs_hash}/${_tirtos_installer}"
         # Alternative source via a different IPFS gateway
-        "http://arch.alexeicolin.com:8080/ipfs/${_tirtos_ipfs_hash}/${_tirtos_installer}"
+        #"http://ipfs.alexeicolin.com:8080/ipfs/${_tirtos_ipfs_hash}/${_tirtos_installer}"
+        "http://camus:8080/ipfs/${_tirtos_ipfs_hash}/${_tirtos_installer}"
 
         "fix-paths-for-linux.patch.xz"
         "fix-example-projects-import.patch")
-
-md5sums=('42e5194c59d0a6f097998d4e722cdf30'
-         '6202e939f974623448a48fa834f880aa'
-         '4412ee71f2f7c4959c625a47aa7c2549'
-         '0386ce22fe5884319e9c0de415d74b3c')
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
@@ -84,7 +84,7 @@ build() {
 
     # Fix paths (case, etc), patch generated using, find cmd from the script:
     # https://github.com/jcormier/TI_BLE_CC2650_Linux_Convert
-    patch -p1 -d ${_installpath} < $srcdir/fix-paths-for-linux.patch
+    #patch -p1 -d ${_installpath} < $srcdir/fix-paths-for-linux.patch
     find ${_installpath}/${_bundle} -name "board\.h" | sed -e "p;s/board.h/Board.h/" | xargs -n2 mv
 
     # Patch that makes the example projects importable and buildable:
@@ -93,7 +93,7 @@ build() {
     # * lets the imported copy build without it attempting to modify the source copy
     #   (which is owned by root).
     # TODO: currently, only cc2650lp/simple_broadcaster example is patched
-    patch -p1 -d ${_installpath}/${_bundle} < $srcdir/fix-example-projects-import.patch
+    #patch -p1 -d ${_installpath}/${_bundle} < $srcdir/fix-example-projects-import.patch
 }
 
 package() {
@@ -103,3 +103,8 @@ package() {
 
     install -D -m0644 $srcdir/${_installpath}/${_bundle}/license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
+
+sha256sums=('4dfc4e0b86b94ba2fd97b3774e52a10554351c5ffeb6a8fe138f25240e1322b6'
+            '95f58837d98983bf24bf8717dc5e0ad1c8d132858f7a7fce1b263037f0e86872'
+            '6ebae9f55918381cb15a50a892a141fdcac2e094d2f372e56153a57cc07bff73'
+            '811146541ca17c0f3760a0dc405aa76d0cc67346e536aa020c415634dfd3acc3')
