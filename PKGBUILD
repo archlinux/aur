@@ -4,7 +4,7 @@ pkgname=perl-xml-dumper
 _cpanname=XML-Dumper
 _module=XML::Dumper
 pkgver=0.81
-pkgrel=3
+pkgrel=4
 pkgdesc="$_module - perl module for dumping perl objects from/to XML"
 arch=('any')
 license=('unknown')
@@ -29,6 +29,7 @@ package() {
   cd "$srcdir/$_cpanname-$pkgver"
   make install DESTDIR="$pkgdir"
   find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+  rm -fr "$pkgdir/usr/lib"
 }
 
 # vim:set ts=2 sw=2 et:
