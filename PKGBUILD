@@ -2,7 +2,7 @@
 # Contributor: Peter Simons <simons@cryp.to>
 
 pkgname=nevow
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="web application construction kit written in Python"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 depends=('python2' 'python2-twisted')
 
 source=("https://files.pythonhosted.org/packages/source/n/nevow/Nevow-${pkgver}.tar.gz")
-sha256sums=('ab565b9bccecbafa36446ea8765bec2be7ee7c66a9a8644b3851a13b64432d5e')
+sha256sums=('2299a0d2a0c1312040705599d5d571acfea74df82b968c0b9264f6f45266cf6e')
 
 build(){
     cd "$srcdir/Nevow-$pkgver"
