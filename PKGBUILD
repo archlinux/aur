@@ -24,7 +24,7 @@ depends=('glib2' 'gtk3' 'gtk2' 'qt4' 'qt5-base' 'libappindicator-gtk3'
          'libhangul' 'anthy' 'libchewing' 'librime' 'libxkbcommon' 'wayland')
 optdepends=('brise: Rime schema repository'
             'noto-fonts-cjk: Google Noto CJK fonts')
-source=("srcdir::git+https://gitlab.com/nimf-i18n/nimf#commit=f806f6da86f8b4cf168983467953c9a3be7595d6")
+source=("nimf-master::git+https://gitlab.com/nimf-i18n/nimf#commit=f806f6da86f8b4cf168983467953c9a3be7595d6")
 md5sums=('SKIP')
 
 build() {
