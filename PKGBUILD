@@ -13,7 +13,7 @@ provides=("pulseaudio-bluetooth")
 conflicts=("pulseaudio-bluetooth")
 replaces=("pulseaudio-bluetooth")
 
-source=("git+https://github.com/EHfive/pulseaudio-modules-bt"
+source=("git+https://github.com/EHfive/pulseaudio-modules-bt.git"
         "git+https://github.com/pulseaudio/pulseaudio.git"
         "git+https://android.googlesource.com/platform/external/libldac.git")
 noextract=()
@@ -34,9 +34,9 @@ prepare() {
 }
 
 build() {
-
+    export CFLAGS=''
     cd "$srcdir/pulseaudio-modules-bt"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr .
+    cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr .
     make
 }
 
