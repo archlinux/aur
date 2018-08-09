@@ -4,7 +4,7 @@
 pkgname="perl-convert-color"
 _cpanname="Convert-Color"
 pkgver="0.11"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Color space conversions and named lookups"
 arch=("any")
 url="http://search.cpan.org/~pevans/$_cpanname"
@@ -49,4 +49,5 @@ package() {
 
   # Remove "perllocal.pod" and ".packlist".
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  rm -fr "$pkgdir/usr/lib"
 }
