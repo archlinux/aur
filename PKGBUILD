@@ -11,7 +11,7 @@ license=('custom')
 provides=('gnulib')
 conflicts=('gnulib')
 makedepends=('git')
-source=('git+git://git.sv.gnu.org/gnulib.git')
+source=('git://git.savannah.gnu.org/gnulib.git')
 md5sums=('SKIP')
 
 pkgver() {
