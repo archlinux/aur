@@ -1,6 +1,6 @@
 pkgbase = python-poetry
 	pkgdesc = Python dependency management and packaging made easy
-	pkgver = 0.10.3
+	pkgver = 0.11.4
 	pkgrel = 1
 	url = https://github.com/sdispater/poetry
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-poetry
 	makedepends = python2
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = python-poetry-0.10.3.tar.gz::https://pypi.io/packages/source/p/poetry/poetry-0.10.3.tar.gz
-	sha256sums = ba2ecd69f2ac3d3b35322bb8620365e2beb49adbd5381613f6994b8c684475a2
+	source = python-poetry-0.11.4.tar.gz::https://pypi.io/packages/source/p/poetry/poetry-0.11.4.tar.gz
+	sha256sums = 78d0514fb91fa0ed90f9d7228c2fd0aa3d94fe7961f7dd00013c691fc47164d1
 
 pkgname = python-poetry
 	depends = python
@@ -24,9 +24,10 @@ pkgname = python-poetry
 	depends = python-pkginfo
 	depends = python-pyparsing
 	depends = python-pyrsistent
-	depends = python-requests-toolbelt
 	depends = python-requests
-	depends = python-toml
+	depends = python-requests-toolbelt
+	depends = python-shellingham
+	depends = python-tomlkit
 
 pkgname = python2-poetry
 	depends = python2
@@ -39,7 +40,8 @@ pkgname = python2-poetry
 	depends = python2-pkginfo
 	depends = python2-pyparsing
 	depends = python2-pyrsistent
-	depends = python2-requests-toolbelt
 	depends = python2-requests
-	depends = python2-toml
+	depends = python2-requests-toolbelt
+	depends = python2-shellingham
+	depends = python2-tomlkit
 

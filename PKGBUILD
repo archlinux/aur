@@ -3,7 +3,7 @@
 _name=poetry
 pkgbase='python-poetry'
 pkgname=('python-poetry' 'python2-poetry')
-pkgver=0.10.3
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="Python dependency management and packaging made easy"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=(
   'python2' 'python2-setuptools')
 options=(!emptydirs)
 source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
-sha256sums=('ba2ecd69f2ac3d3b35322bb8620365e2beb49adbd5381613f6994b8c684475a2')
+sha256sums=('78d0514fb91fa0ed90f9d7228c2fd0aa3d94fe7961f7dd00013c691fc47164d1')
 
 prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}
@@ -45,9 +45,11 @@ package_python2-poetry() {
     'python2-pkginfo'
     'python2-pyparsing'
     'python2-pyrsistent'
-    'python2-requests-toolbelt'
     'python2-requests'
-    'python2-toml')
+    'python2-requests-toolbelt'
+    'python2-shellingham'
+    'python2-tomlkit'
+)
 
   cd "${_name}"-"${pkgver}"-py2
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
@@ -66,9 +68,11 @@ package_python-poetry() {
     'python-pkginfo'
     'python-pyparsing'
     'python-pyrsistent'
-    'python-requests-toolbelt'
     'python-requests'
-    'python-toml')
+    'python-requests-toolbelt'
+    'python-shellingham'
+    'python-tomlkit'
+)
 
   cd "${_name}"-"${pkgver}"
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
