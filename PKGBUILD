@@ -10,7 +10,7 @@
 # this PKGBUILD file is in the public domain.
 
 pkgname=nimf
-pkgver=2018.08.06
+pkgver=2018.08.06	# This follows AC_INIT field in configure.ac
 pkgrel=1
 pkgdesc="Nimf is an input method framework."
 arch=('any')
