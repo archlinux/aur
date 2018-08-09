@@ -1,15 +1,15 @@
 pkgbase = pythia
 	pkgdesc = High-energy physics events generator.
 	pkgver = 8.2.35
-	pkgrel = 1
+	pkgrel = 2
 	url = http://home.thep.lu.se/Pythia/
 	install = pythia.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = bash
 	depends = boost
 	depends = boost-libs
+	depends = python
 	optdepends = fastjet: fast jet finding in pp and e+e- collisions
 	optdepends = hepmc: storing collisions from Monte Carlo
 	optdepends = lhapdf: evaluate PDFs from discretised data files
