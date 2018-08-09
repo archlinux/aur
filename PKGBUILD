@@ -1,9 +1,10 @@
-# Maintainer: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 
 pkgname=perl-linux-smaps
 _pkgname=Linux-Smaps
 pkgver=0.13
-pkgrel=4
+pkgrel=5
 pkgdesc='Linux::Smaps - a Perl interface to /proc/PID/smaps'
 arch=('any')
 license=('GPL' 'PerlArtistic')
@@ -23,4 +24,5 @@ build() {
 package() {
   cd $_pkgname-$pkgver
   make INSTALLDIRS=vendor DESTDIR="$pkgdir" install
+  rm -fr "$pkgdir/usr/lib"
 }
