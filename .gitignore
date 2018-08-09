@@ -3,3 +3,4 @@
 pcloud-drive-*
 pkg
 src
+*.orig
