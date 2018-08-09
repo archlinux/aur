@@ -1,15 +1,15 @@
 pkgbase = origin-client-bin
 	pkgdesc = The client tools for the Origin platform that powers OpenShift
-	pkgver = 3.9.0
+	pkgver = 3.10.0
 	pkgrel = 1
 	url = https://github.com/openshift/origin
 	arch = x86_64
 	license = Apache
-	source = bash-completions::https://raw.githubusercontent.com/openshift/origin/191fece/contrib/completions/bash/oc
-	source = zsh-completions::https://raw.githubusercontent.com/openshift/origin/191fece/contrib/completions/zsh/oc
-	source = https://github.com/openshift/origin/releases/download/v3.9.0/openshift-origin-client-tools-v3.9.0-191fece-linux-64bit.tar.gz
-	sha256sums = 54f1f871de93d8090df39153daceb7f660ca5c175a6b4d40392d8401a8c9ec0d
-	sha256sums = 9a6b1f2949e933dd9eac29164f3d14c36efed4a1beb2dc67e9bf7e7fce175487
+	source = bash-completions::https://raw.githubusercontent.com/openshift/origin/dd10d17/contrib/completions/bash/oc
+	source = zsh-completions::https://raw.githubusercontent.com/openshift/origin/dd10d17/contrib/completions/zsh/oc
+	source = https://github.com/openshift/origin/releases/download/v3.10.0/openshift-origin-client-tools-v3.10.0-dd10d17-linux-64bit.tar.gz
+	sha256sums = d8596830429e40f28aa600d3d4154306cb13878046a51c4f30945fa1d8d6b622
+	sha256sums = 941ecbe95114a7eec4070778c06f8555263a26063868cc294baada0c23085158
 	sha256sums = 6ed2fb1579b14b4557e4450a807c97cd1b68a6c727cd1e12deedc5512907222e
 
 pkgname = origin-client-bin

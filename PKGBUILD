@@ -5,8 +5,8 @@
 # Maintainer: Mathias Merscher <archlinux@rheinekopfsache.de>
 
 pkgname=origin-client-bin
-pkgver=3.9.0
-_hash=191fece
+pkgver=3.10.0
+_hash=dd10d17
 pkgrel=1
 pkgdesc="The client tools for the Origin platform that powers OpenShift"
 arch=(x86_64)
@@ -17,9 +17,9 @@ source=("bash-completions::https://raw.githubusercontent.com/openshift/origin/$_
         "zsh-completions::https://raw.githubusercontent.com/openshift/origin/$_hash/contrib/completions/zsh/oc"
         "https://github.com/openshift/origin/releases/download/v$pkgver/openshift-origin-client-tools-v$pkgver-$_hash-linux-64bit.tar.gz")
 
-sha256sums=('d8596830429e40f28aa600d3d4154306cb13878046a51c4f30945fa1d8d6b622'
-            '941ecbe95114a7eec4070778c06f8555263a26063868cc294baada0c23085158'
-            '6ed2fb1579b14b4557e4450a807c97cd1b68a6c727cd1e12deedc5512907222e')
+sha256sums=('cb75b40b16e944837ed43301ad198f2495e710183d0cdb2d913df1c3a7ad5e6d'
+            '8968807fade858027b79ee2dc5f0a9a8b40614584ad3b5b84f36c9c770ddc760'
+            '0f54235127884309d19b23e8e64e347f783efd6b5a94b49bfc4d0bf472efb5b8')
 
 prepare() {
     # Fix zsh completion
