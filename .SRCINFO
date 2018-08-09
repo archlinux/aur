@@ -12,6 +12,7 @@ pkgbase = openwsman
 	makedepends = python
 	makedepends = ruby
 	makedepends = ruby-docs
+	makedepends = ruby-rdoc
 	depends = libxml2
 	depends = openssl-1.0
 	depends = sblim-sfcc
