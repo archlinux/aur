@@ -69,8 +69,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=4.17.11
-pkgrel=3
+_srcver=4.17.11-arch1
+pkgver=${_srcver%-*}
+pkgrel=4
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -87,6 +88,7 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   "http://ck.kolivas.org/patches/4.0/4.17/4.17-ck${_ckpatchversion}/${_ckpatchname}.xz"
+  0001-ARCH_patches-20180809.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -94,12 +96,13 @@ validpgpkeys=(
 )
 sha256sums=('db1e84ed4f213b43d50f3373627b2ffcdb3b65f3430f746a38f801554ef3728c'
             'SKIP'
-            'df83502cba84c1474b69274f26f6b5810332b75bf7a4b8ac99f00afde9ca5fb9'
+            '3453b5c4c7ce4b44f611050f95488e272119539f812dfde0667fe9c66402fd9b'
             '36e326d8a88b4087a3a0ee0d47643fc03baeda487659980d0e9d08791e4c729c'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '6a0e9cce53da8c55161d01920cc02a09a3b70a60f1050ec91fafd9bb59cb6bb4')
+            '6a0e9cce53da8c55161d01920cc02a09a3b70a60f1050ec91fafd9bb59cb6bb4'
+            'f1db9d4b6051e217969ab99d8ddedde4ca48c061d89fe535c04e6b4384506955')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -123,7 +126,7 @@ prepare() {
 
   msg2 "Setting config..."
   cp ../config .config
-  
+
   ### Optionally disable NUMA
   if [ -n "$_NUMAdisable" ]; then
     msg2 "Disabling NUMA from kernel config..."
@@ -201,7 +204,7 @@ _package() {
   #groups=('ck-generic')
 
   local kernver="$(<version)"
-  
+
   cd linux-${pkgver}
 
   msg2 "Installing boot image..."
@@ -329,21 +332,6 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
-}
-
-_package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-  cd $_srcname
-
-  msg2 "Installing documentation..."
-  mkdir -p "$builddir"
-  cp -t "$builddir" -a Documentation
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
