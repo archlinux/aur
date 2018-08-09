@@ -10,9 +10,10 @@ _makenconfig=
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
 # actually run slower with NUMA enabled. Most users will want to set this option
 # to enabled ... in other words, do not use NUMA on a single CPU system.
-# Note: If you are using CUDA devices you need NUMA enabled.
 #
-# See, https://bugs.archlinux.org/task/31187
+# It has been reported that users of CUDA require NUMA to be enabled, therefore
+# if you require CUDA support, be sure the variable below is set to a null
+# See: https://bbs.archlinux.org/viewtopic.php?id=239174
 _NUMAdisable=
 
 # Compile ONLY probed modules
@@ -32,7 +33,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=4.17.13-arch1
+_srcver=4.17.14-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _pdsversion=098t
@@ -58,7 +59,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('d351d9b97594f16ca047d8e87c170de6d41df399a0212eb9c63b6d8a10301c27'
+sha256sums=('2b64674209b4f29a064b8903356108e01ab49e028be062d29eb9fd77ac74056a'
             '2d2c8af71afd4e3689fbb18f8b8df7090f2cc8d4f63ee2f0302fd7d7de6173ab'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -89,10 +90,9 @@ prepare() {
   msg2 "Setting config..."
   cp ../config .config
 
-  ### Optionally disable NUMA for 64-bit kernels only
-  # (x86 kernels do not support NUMA)
+  ### Optionally disable NUMA
   if [ -n "$_NUMAdisable" ]; then
-    msg "Disabling NUMA from kernel config..."
+    msg2 "Disabling NUMA from kernel config..."
     sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
       -i -e '/CONFIG_AMD_NUMA=y/d' \
       -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
@@ -105,9 +105,15 @@ prepare() {
       -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
   fi
 
+  # https://github.com/graysky2/kernel_gcc_patch
+  msg2 "Patching to enabled additional gcc CPU optimizatons..."
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
+
+  make prepare
+
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
-    if [ -n "$_localmodcfg" ]; then
+  if [ -n "$_localmodcfg" ]; then
     msg "If you have modprobed-db installed, running it in recall mode now"
     if [ -e /usr/bin/modprobed-db ]; then
       [[ -x /usr/bin/sudo ]] || {
@@ -119,23 +125,26 @@ prepare() {
     make localmodconfig
   fi
 
+  # do not run `make olddefconfig` as it sets default options
+  yes "" | make config >/dev/null
+
+  make -s kernelrelease > ../version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+
   [[ -z "$_makenconfig" ]] || make nconfig
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
-
-  make -s kernelrelease > ../version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 }
 
 build() {
   cd $_srcname
+
   make bzImage modules
 }
 
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the PDS-mq CPU scheduler"
-  [[ $pkgbase = linux ]] && groups=(base)
   depends=(coreutils linux-firmware kmod mkinitcpio)
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("linux-gc=${pkgver}")
