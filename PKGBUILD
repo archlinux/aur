@@ -2,12 +2,12 @@
 
 pkgname=rng-tools-git
 pkgver=6.3.1.r21.g4023c8f
-pkgrel=1
+pkgrel=2
 pkgdesc="Random number generator daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/nhorman/rng-tools"
 license=('GPL3')
-depends=('glibc' 'libgcrypt')
+depends=('glibc' 'libgcrypt' 'curl' 'libxml2' 'sysfsutils')
 makedepends=('git')
 provides=('rng-tools')
 conflicts=('rng-tools')
@@ -31,8 +31,7 @@ build() {
 
   ./autogen.sh
   ./configure \
-    --prefix="/usr" --sbindir="/usr/bin" \
-    --without-nistbeacon
+    --prefix="/usr" --sbindir="/usr/bin"
   make
 }
 
