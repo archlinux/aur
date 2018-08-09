@@ -1,6 +1,6 @@
 pkgname=plex-media-player-git
 pkgver=r1165.f2338b5
-pkgrel=1
+pkgrel=2
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -28,7 +28,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/plex-media-player/build"
-  cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_BUILD_TYPE='Release' -DCMAKE_SKIP_RPATH=1 -DQTROOT='/usr/share/qt' ..
+  cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_BUILD_TYPE='Release' -DCMAKE_SKIP_RPATH=1 \
+        -DQTROOT='/usr/share/qt' -DLINUX_X11POWER=on ..
   make
 }
 
