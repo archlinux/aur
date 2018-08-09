@@ -6,7 +6,7 @@
 # Contributor: Tavian Barnes <tavianator@tavianator.com>
 # Maintainer: Stefan Schmidt <thrimbor.github@gmail.com>
 
-_target="powerpc-linux-gnu"
+_target="powerpc64-linux-gnu"
 pkgname=${_target}-binutils
 pkgver=2.30
 pkgrel=1
