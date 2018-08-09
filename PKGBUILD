@@ -12,7 +12,8 @@ optdepends=('openbox: to use this theme')
 provides=("${pkgname}=${pkgver}")
 
 source=(
-	'https://dl.opendesktop.org/api/files/downloadfile/id/1460769300/s/c3697f9c3018bd6e4e9ff6dcfba34ece/t/1533756535/u/66397-Surreal.tar.bz2'
+	#'https://dl.opendesktop.org/api/files/download/id/1460769300/66397-Surreal.tar.bz2'
+	'https://www.dropbox.com/s/zkcjzxxu1f35f4t/66397-Surreal.tar.bz2'
 	'osd_tweaks.patch'
 )
 sha512sums=(
