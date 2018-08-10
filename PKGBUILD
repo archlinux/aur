@@ -1,21 +1,20 @@
-# Contributor: Francois Boulogne <fboulogne at april dot org>
-# Maintainer: Francois Boulogne <fboulogne at april dot org>
+# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Contributor: Francois Boulogne <fboulogne@april.org>
 
 pkgname=python-isbntools
-pkgver=4.3.3
+_pyname=${pkgname#python-}
+pkgver=4.3.15
 pkgrel=1
 pkgdesc="Extract, clean, transform, hyphenate and metadata for ISBNs"
 arch=('any')
-url="https://pypi.python.org/pypi/isbntools"
+url="https://pypi.python.org/pypi/${_pyname}"
 license=('LGPL3')
-depends=('python')
+depends=('python' 'python-isbnlib')
 makedepends=('python-setuptools')
-source=(https://pypi.python.org/packages/48/d1/fd06df5d88e040b7b1cbe6c09c880decb205445d60c6de43768ef028c590/isbntools-$pkgver.tar.gz)
-sha256sums=('f6a171be9f15b886ef4afb0fe09fa7c34c7ae1c6ff28d253912972c4fad5387d')
+source=("https://github.com/xlcnd/${_pyname}/archive/v${pkgver}.tar.gz")
+sha256sums=('20b84572a5676313a945cdb66e3f3ef5953b38cf21ae1c1ba6a8b8ba718c253e')
 
 package(){
-  cd "$srcdir/isbntools-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+    cd "${_pyname}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
-
-# vim:ts=2:sw=2:et:
