@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann aka. rne <r dot neumann at homeinfo fullstop de>
 
 pkgname='mcipc-git'
-pkgver=r75.d6af25a
+pkgver=latest
 pkgrel=1
 pkgdesc='Python 3 library and scripts for the RCON and Query protocol'
 arch=('any')
@@ -16,20 +16,18 @@ srcdir='src'
 
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
 prepare() {
     # Clean up build dir.
-    rm -rf mcipc/build
+    rm -rf "${pkgname}/build"
 }
 
 
 package() {
     cd "${srcdir}/${pkgname}"
-
-    # Install python packages to $pkgdir
-    python setup.py install --root ${pkgdir} --optimize=1
+    python setup.py install --root "${pkgdir}" --optimize=1
 }
