@@ -1,49 +1,47 @@
 #!/bin/bash
 #
-# For each of the upgraded packages, detect packages that depend on it
-# and add those to the list of packages to rebuild grouped by repo.
-#
-# Cleanup the upgraded packages themselves from the rebuild-pending list.
-#
-# All repositories are watched by default.
-# Set $REBUILD_DETECTOR_REPOS to a space-separated list to override.
+# Run `ldd` on each binary in /usr/bin and save the broken ones grouped by repo.
+
+shopt -s nullglob
 
 readonly REBUILD_DETECTOR_CACHE_DIR="/var/cache/rebuild-detector"
 mkdir -p "$REBUILD_DETECTOR_CACHE_DIR"
 
+
 get_installed_pkgs() {
     printf -v installed '[%s]' "$(gettext installed)"
-    pacman -Sl $REBUILD_DETECTOR_REPOS | awk -v i="$installed" '$NF == i { print $1,$2 }'
+    pacman -Sl | awk -v i="$installed" '$NF == i { print $1,$2 }'
 }
 
-detect_depending_pkgs() {
-    parallel --plus --will-cite "pactree -u {#.* } | tail -n +2 | grep '^$1$' >/dev/null && echo {}"
+get_binaries() {
+    find -L /usr/bin -type f -print0 | xargs -0 readlink -f
+}
+
+get_broken_pkgs() {
+     parallel --will-cite 'ldd "{}" 2>/dev/null | grep "not found" >/dev/null && pacman -Qo "{}" | cut -d" " -f5'
+}
+
+get_pkg_repo() {
+    grep " $1" installed | cut -d' ' -f1
 }
 
 
-tmp=$(mktemp -dt "rebuild-detector-upgrade-hook.XXXXXXXX") || exit
+tmp=$(mktemp -dt "rebuild-detector.XXXXXXXX") || exit
 trap 'rm -rf $tmp' EXIT
 cd "$tmp" || exit
 
-mapfile -t upgraded
 get_installed_pkgs >installed
+get_binaries | get_broken_pkgs >broken
 
-for pkg in "${upgraded[@]}"; do
-    detect_depending_pkgs "$pkg" <installed >depending
+rm -f "$REBUILD_DETECTOR_CACHE_DIR/"*.list
 
-    while read -r repo package; do
-        echo "$package" >>"$REBUILD_DETECTOR_CACHE_DIR/$repo.list"
-    done <depending
-done
+while read -r pkg; do
+    repo="$(get_pkg_repo "$pkg")"
+    echo "$pkg" >>"$REBUILD_DETECTOR_CACHE_DIR/$repo.list"
+done <broken
 
-shopt -s nullglob
 for list in "$REBUILD_DETECTOR_CACHE_DIR/"*.list; do
     sort -u "$list" -o "$list"
 done
-
-current_dir="$(cd "$(dirname "$0")"; pwd)"
-for pkg in "${upgraded[@]}"; do
-    echo "$pkg"
-done | "$current_dir/rebuild-detector-cleanup"
 
 exit 0
