@@ -12,7 +12,7 @@ depends=(
 )
 
 source=("https://hotchat-dl.iqiyi.com/version/linux/${pkgname}_${pkgver}_amd64.deb")
-md5sums=('558428817e07e33aff2362d457281121')
+md5sums=('05f37341e9ca90676fd94735e0d7c092')
 
 package() {
     cd ${srcdir}
