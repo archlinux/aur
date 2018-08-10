@@ -119,7 +119,7 @@ void on_load_button_clicked(GtkButton* button) {
 
     // If file is not a JSON array (encrypted), show password dialog and return
     if (!is_string_json_array(app.portfolio_string)) {
-        gtk_entry_set_text(GTK_ENTRY("password_entry"), "");
+        gtk_entry_set_text(GTK_ENTRY(GET_OBJECT("password_entry")), "");
         gtk_widget_show(GTK_WIDGET(GET_OBJECT("get_password_dialog")));// Decode
         return;
     }
