@@ -1,0 +1,21 @@
+pkgbase = lua-unix
+	pkgver = 20170920
+	pkgrel = 0
+	url = http://25thandclement.com/~william/projects/lunix.html
+	arch = x86_64
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	source = http://25thandclement.com/~william/projects/releases/lunix-20170920.tgz
+	md5sums = e2ef87e5bfc3432127037c9228305002
+
+pkgname = lua-unix
+	pkgdesc = lua bindings library for common *nix system APIs
+
+pkgname = lua51-unix
+	pkgdesc = lua51 bindings library for common *nix system APIs
+
+pkgname = lua52-unix
+	pkgdesc = lua52 bindings library for common *nix system APIs
+
