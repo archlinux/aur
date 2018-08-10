@@ -1,7 +1,7 @@
 pkgbase = otf-stix
 	pkgdesc = An OpenType font with math support, designed for scientific and engineering printing
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.stixfonts.org
 	arch = any
 	license = custom:OFL
