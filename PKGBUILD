@@ -1,15 +1,17 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=gmmlib-git
-pkgver=r62.1a4cf50
+pkgver=r65.d3e1b05
 pkgrel=1
 pkgdesc='Intel Graphics Memory Management Library (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/gmmlib/'
 license=('MIT')
+depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=('gmmlib')
 conflicts=('gmmlib' 'intel-media-driver-git')
+options=('!emptydirs')
 source=("$pkgname"::'git+https://github.com/intel/gmmlib.git')
 sha256sums=('SKIP')
 
@@ -26,19 +28,15 @@ build() {
     mkdir -p build
     cd build
     
-    if [ "$CARCH" = 'x86_64' ] 
-    then
-        _arch='64'
-        
-    elif [ "$CARCH" = 'i686' ] 
-    then
-        _arch='32'
-    fi
+    [ "$CARCH" = 'i686'   ] && local _arch='32'
+    [ "$CARCH" = 'x86_64' ] && local _arch='64'
     
     cmake \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DRUN_TEST_SUITE:BOOL='ON' \
         -DARCH="$_arch" \
         -Wno-dev \
         ..
@@ -47,20 +45,9 @@ build() {
 }
 
 package() {
-    cd "${pkgname}/Source/inc"
+    cd "${pkgname}/build"
     
-    # includes
-    mkdir -p "${pkgdir}/usr/include/"{common,umKmInc}
-    install -m644 *.h "${pkgdir}/usr/include"
-    cd "${srcdir}/${pkgname}/Source/inc/common"
-    install -m644 *.h "${pkgdir}/usr/include/common"
-    cd "${srcdir}/${pkgname}/Source/inc/umKmInc"
-    install -m644 *.h "${pkgdir}/usr/include/umKmInc"
-    
-    # libraries
-    mkdir -p "${pkgdir}/usr/lib"
-    cd "${srcdir}/${pkgname}/build/Source/GmmLib/"
-    install -m644 *.a "${pkgdir}/usr/lib"
+    make DESTDIR="$pkgdir" install
     
     # license
     cd "${srcdir}/${pkgname}"
