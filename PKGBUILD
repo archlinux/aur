@@ -1,8 +1,8 @@
 # Maintainer: Tomasz Knapik <me@tmkn.org>
 pkgname=buckup
 pkgver=0.1a2
-pkgrel=1
-pkgdesc="Command line tool to create S3 buckups easily."
+pkgrel=2
+pkgdesc="Command line tool to create S3 buckets easily."
 url="https://github.com/torchbox/buckup"
 license=('BSD')
 arch=('any')
