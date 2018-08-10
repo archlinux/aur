@@ -1,4 +1,4 @@
-pkgbase = keepassgtk-git
+pkgbase = keepassgtk
 	pkgdesc = An eye candy password manager for Linux (Keepass v.4)
 	pkgver = 0.9.1.r8.g1f54804
 	pkgrel = 1
