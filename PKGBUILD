@@ -14,9 +14,9 @@ arch=('i686' 'x86_64')
 depends=('gzip' 'zlib' 'lzo' 'xz' 'lz4')
 source=('git+https://github.com/devttys0/sasquatch'
 	'read_fragment_table_n_stack_overflow-fix.patch'
-	'1.patch')
+	)
 sha256sums=('SKIP'
-	'120c2d208085129235bf998b1c22abee19db26120a98174b9beb5edd7b9c84e9' 'SKIP')
+	'120c2d208085129235bf998b1c22abee19db26120a98174b9beb5edd7b9c84e9' )
 
 build() {
     cd ${srcdir}/sasquatch/ 
@@ -25,7 +25,6 @@ build() {
     cd squashfs4.3
     patch -p0 < ../patches/patch0.txt
     cd squashfs-tools
-    patch -p0 < ${srcdir}/1.patch
     patch -p0 -i "${srcdir}/read_fragment_table_n_stack_overflow-fix.patch"
     make
 }
