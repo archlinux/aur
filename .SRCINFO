@@ -1,0 +1,18 @@
+pkgbase = python-savery-git
+	pkgdesc = A X11 Screensaver (and more) that actually does what I want.
+	pkgver = r1.0de2f9b
+	pkgrel = 1
+	url = https://github.com/linuxwhatelse/savery
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = python-xlib
+	depends = python-dbus
+	provides = python-savery
+	source = python-savery::git+https://github.com/linuxwhatelse/savery.git
+	md5sums = SKIP
+
+pkgname = python-savery-git
+
