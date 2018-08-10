@@ -1,7 +1,7 @@
 pkgbase = crawl-tiles
 	pkgdesc = Dungeon Crawl Stone Soup with graphical tiles and sound support
-	pkgver = 0.21.1
-	pkgrel = 2
+	pkgver = 0.22.0
+	pkgrel = 1
 	url = https://crawl.develz.org/
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = crawl-tiles
 	depends = glu
 	provides = crawl
 	conflicts = crawl
-	source = https://github.com/crawl/crawl/archive/0.21.1.tar.gz
-	md5sums = 634808232f0811c7f16594a8c35d8b72
+	source = https://github.com/crawl/crawl/archive/0.22.0.tar.gz
+	md5sums = 097b897d53f42f0ed2aff13ff1746738
 
 pkgname = crawl-tiles
 

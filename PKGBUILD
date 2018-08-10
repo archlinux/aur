@@ -6,8 +6,8 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 _srcname=crawl
 pkgname=crawl-tiles
-pkgver=0.21.1
-pkgrel=2
+pkgver=0.22.0
+pkgrel=1
 epoch=
 pkgdesc="Dungeon Crawl Stone Soup with graphical tiles and sound support"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ conflicts=('crawl')
 backup=()
 options=()
 source=("https://github.com/crawl/$_srcname/archive/$pkgver.tar.gz")
-md5sums=('634808232f0811c7f16594a8c35d8b72')
+md5sums=('097b897d53f42f0ed2aff13ff1746738')
 
 prepare() {
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Crawl tiles" --categories "Application;Game" --exec "crawl"
