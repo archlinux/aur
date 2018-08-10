@@ -1,0 +1,18 @@
+post_install() {
+    # enable cronie service if it's not enabled
+    systemctl is-enabled cronie > /dev/null || sudo systemctl enable cronie
+    # start cronie service if it's not started
+    systemctl is-active cronie > /dev/null || sudo systemctl start cronie
+    # create the crontab file
+    tput setaf 196
+    echo "==> Add the following line to your crontab file by running."
+    echo "$ crontab -e"
+    echo "*/30 * * * * env DISPLAY=:0 /usr/bin/alun"
+    echo "==> Run this command if you don't have a crontab file"
+    echo "$ crontab /etc/alun/crontab"
+    tput sgr0
+}
+
+post_upgrade() {
+    post_install
+}
