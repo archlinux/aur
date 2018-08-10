@@ -2,11 +2,11 @@
 # Contributor: Hubert Maraszek <marach5 at gmail dot com>
 
 pkgname=mp3tag
-pkgver=2.88a
+pkgver=2.89a
 pkgrel=1
 pkgdesc="The universal tag editor."
 arch=('i686' 'x86_64')
-url="http://www.mp3tag.de/en/"
+url="https://www.mp3tag.de/en/"
 license=('custom')
 depends=('wine')
 makedepends=('p7zip')
@@ -14,12 +14,12 @@ source=(mp3tag
         LICENSE
         mp3tag.desktop
         mp3tag.png
-        "http://download.mp3tag.de/mp3tagv${pkgver/./}setup.exe")
+        "https://download.mp3tag.de/mp3tagv${pkgver/./}setup.exe")
 sha256sums=('3fdcabf91b5ec50373d3aaeaf653611613aed39d94d17af50bb6f5a85afff586'
             '18967b634e69d8ccb08383d42a49ced3c0b11c632649a15c3a6a55e3a27f62e9'
             'bc0c7b8a7a9f9ee92dfe2f1880ef5d91920473713b5d60e4afa361d69a446798'
             'a3e09f7cda34bc31b3b5b1d7cf2010c3b17847c141ef5a074472eb72f760f6bf'
-            '16f90d63f4c5d31f9762cc904d4b17da16bb1b7c22c4fcef520911fd010c5624')
+            '13f8435f09e955212e01c0764935cfe17924980ba7f4c0804f30c01e34b64421')
 options=('!strip')
 
 package() {
