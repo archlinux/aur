@@ -1,14 +1,14 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=gnome-shell-extension-freon-git
-pkgver=34.r0.g2d8e169
+pkgver=34.r2.gc8b27ac
 pkgrel=1
 pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down."
 arch=('any')
 url="https://github.com/UshakovVasilii/gnome-shell-extension-freon"
 license=('GPL')
 depends=('dconf' 'gnome-shell' 'lm_sensors')
-makedepends=('git' 'gnome-common' 'intltool')
+makedepends=('git')
 optdepends=(
   'udisks2: optional backend for storage temperature sensors.'
   'hddtemp: optional backend for S.M.A.R.T. temperature sensors.'
@@ -43,4 +43,9 @@ package() {
   find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "${_destdir}" '{}' +
   find -maxdepth 2 \( -iname '*.svg*' \) -exec install -Dm644 -t "${_destdir}/icons" '{}' +
   find -name '*.xml' -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" '{}' +
+  cd locale
+  for locale in */
+    do
+      install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
+    done
 }
