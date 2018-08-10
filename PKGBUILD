@@ -6,7 +6,7 @@
 
 pkgname=root5
 pkgver=5.34.36
-pkgrel=5
+pkgrel=6
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
@@ -33,12 +33,12 @@ optdepends=('gcc-fortran: Enable the Fortran components of ROOT'
 install='root.install'
 options=('!emptydirs')
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
-        'enable_gcc6.patch'
+        'enable_new_gcc.patch'
         'root.sh'
         'rootd'
         'root.xml')
 sha256sums=('fc868e5f4905544c3f392cc9e895ef5571a08e48682e7fe173bd44c0ba0c7dcd'
-            '6129b1bd324fe0438a6f7f28169bffdb9fb0fdc2497edf5014cf2579cd91ec84'
+            'dbaa87782fbd6ad0b41dd1ada6c443b26740f58bd86696d7fadadf84771e6079'
             '9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
             '50c08191a5b281a39aa05ace4feb8d5405707b4c54a5dcba061f954649c38cb0')
@@ -65,7 +65,7 @@ prepare() {
 
     msg2 'Applying patches...'
     ## https://sft.its.cern.ch/jira/browse/ROOT-8180
-    patch -p1 < "${srcdir}/enable_gcc6.patch"
+    patch -p1 < "${srcdir}/enable_new_gcc.patch"
 }
 
 build() {

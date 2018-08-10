@@ -1,7 +1,7 @@
 diff -aur root-old/cint/cint/Module.mk root-new/cint/cint/Module.mk
---- root-old/cint/cint/Module.mk	2017-06-01 16:13:51.675539292 +0200
-+++ root-new/cint/cint/Module.mk	2017-06-01 17:50:36.210716745 +0200
-@@ -165,6 +165,14 @@
+--- root-old/cint/cint/Module.mk	2018-08-10 16:34:34.518890412 +0300
++++ root-new/cint/cint/Module.mk	2018-08-10 16:30:00.989531080 +0300
+@@ -165,6 +165,18 @@
  CINTS2       := $(filter-out $(MODDIRSD)/libstrm.%,$(CINTS2))
  CINTS2       += $(MODDIRSD)/gcc4strm.cxx
  endif
@@ -13,13 +13,20 @@ diff -aur root-old/cint/cint/Module.mk root-new/cint/cint/Module.mk
 +CINTS2       := $(filter-out $(MODDIRSD)/libstrm.%,$(CINTS2))
 +CINTS2       += $(MODDIRSD)/gcc4strm.cxx
 +endif
++ifeq ($(GCC_MAJOR),8)
++CINTS2       := $(filter-out $(MODDIRSD)/libstrm.%,$(CINTS2))
++CINTS2       += $(MODDIRSD)/gcc4strm.cxx
++endif
  ifneq ($(CLANG_MAJOR),)
  CINTS2       := $(filter-out $(MODDIRSD)/libstrm.%,$(CINTS2))
  CINTS2       += $(MODDIRSD)/gcc4strm.cxx
-@@ -207,6 +215,12 @@
+@@ -207,6 +219,15 @@
  ifneq ($(CLANG_MAJOR),)
  IOSENUMA     := $(CINTDIRIOSEN)/iosenum.$(ARCH)3
  else
++ifeq ($(GCC_MAJOR),8)
++IOSENUMA     := $(CINTDIRIOSEN)/iosenum.$(ARCH)3
++else
 +ifeq ($(GCC_MAJOR),7)
 +IOSENUMA     := $(CINTDIRIOSEN)/iosenum.$(ARCH)3
 +else
@@ -29,16 +36,17 @@ diff -aur root-old/cint/cint/Module.mk root-new/cint/cint/Module.mk
  ifeq ($(GCC_MAJOR),5)
  IOSENUMA     := $(CINTDIRIOSEN)/iosenum.$(ARCH)3
  else
-@@ -221,6 +235,8 @@
+@@ -221,6 +242,9 @@
  endif
  endif
  endif
++endif
 +endif
 +endif
  
  # used in the main Makefile
  ALLHDRS     += $(CINTHT) $(CINTINCLUDES)
-@@ -305,7 +321,7 @@
+@@ -305,7 +329,7 @@
  $(MAKECINT):    $(MAKECINTO)
  		$(LD) $(LDFLAGS) -o $@ $(MAKECINTO)
  
@@ -47,24 +55,29 @@ diff -aur root-old/cint/cint/Module.mk root-new/cint/cint/Module.mk
  		$(MAKEDIR)
  		@(if [ ! -r $(IOSENUMA) ]; then \
  			echo "Missing $(IOSENUMA), run: make $(IOSENUMA)"; \
-@@ -355,7 +371,12 @@
+@@ -355,6 +379,15 @@
  ifeq ($(GCC_MAJOR),5)
  $(call stripsrc,$(CINTDIRSD)/gcc4strm.o): CINTCXXFLAGS += -Wno-strict-aliasing
  endif
--
 +ifeq ($(GCC_MAJOR),6)
 +$(call stripsrc,$(CINTDIRSD)/gcc4strm.o): CINTCXXFLAGS += -Wno-strict-aliasing
 +endif
 +ifeq ($(GCC_MAJOR),7)
 +$(call stripsrc,$(CINTDIRSD)/gcc4strm.o): CINTCXXFLAGS += -Wno-strict-aliasing
 +endif
++ifeq ($(GCC_MAJOR),8)
++$(call stripsrc,$(CINTDIRSD)/gcc4strm.o): CINTCXXFLAGS += -Wno-strict-aliasing
++endif
+ 
  
  $(MAKECINTO) $(CINTO): $(CINTCONF) $(ORDER_) $(CINTINCLUDES)
- 
-@@ -389,8 +410,16 @@
+@@ -389,8 +422,20 @@
  ##### configcint.h
  ifeq ($(CPPPREP),)
  # cannot use "CPPPREP?=", as someone might set "CPPPREP="
++ifeq ($(GCC_MAJOR),8)
++  CPPPREP = $(CXX) -std=c++98 -E -C
++else
 +ifeq ($(GCC_MAJOR),7)
 +  CPPPREP = $(CXX) -std=c++98 -E -C
 +else
@@ -75,12 +88,13 @@ diff -aur root-old/cint/cint/Module.mk root-new/cint/cint/Module.mk
  endif
 +endif
 +endif
++endif
  
  include $(CINTCONFMK)
  ##### configcint.h - END
 diff -aur root-old/cmake/modules/SetUpLinux.cmake root-new/cmake/modules/SetUpLinux.cmake
---- root-old/cmake/modules/SetUpLinux.cmake	2017-06-01 16:13:46.998827283 +0200
-+++ root-new/cmake/modules/SetUpLinux.cmake	2017-06-01 17:46:27.478632487 +0200
+--- root-old/cmake/modules/SetUpLinux.cmake	2018-08-10 16:34:28.358831856 +0300
++++ root-new/cmake/modules/SetUpLinux.cmake	2018-08-10 16:32:00.334064883 +0300
 @@ -69,7 +69,11 @@
    set(CMAKE_C_FLAGS_PROFILE          "-g3 -fno-inline -ftest-coverage -fprofile-arcs")
  
@@ -95,8 +109,8 @@ diff -aur root-old/cmake/modules/SetUpLinux.cmake root-new/cmake/modules/SetUpLi
    set(EXPLICITLINK "no") #TODO
  
 diff -aur root-old/config/Makefile.linux root-new/config/Makefile.linux
---- root-old/config/Makefile.linux	2017-06-01 16:14:00.295622865 +0200
-+++ root-new/config/Makefile.linux	2017-06-01 16:33:37.129379961 +0200
+--- root-old/config/Makefile.linux	2018-08-10 16:34:46.048999800 +0300
++++ root-new/config/Makefile.linux	2018-08-10 16:33:14.458122833 +0300
 @@ -62,7 +62,6 @@
  else
  F77LIBS      := $(shell $(F77) -m32 -print-file-name=libgfortran.a)
@@ -106,8 +120,8 @@ diff -aur root-old/config/Makefile.linux root-new/config/Makefile.linux
  
  ifneq ($(findstring g77, $(F77)),)
 diff -aur root-old/config/Makefile.linuxx8664gcc root-new/config/Makefile.linuxx8664gcc
---- root-old/config/Makefile.linuxx8664gcc	2017-06-01 16:14:00.322289790 +0200
-+++ root-new/config/Makefile.linuxx8664gcc	2017-06-01 16:33:37.129379961 +0200
+--- root-old/config/Makefile.linuxx8664gcc	2018-08-10 16:34:46.085666814 +0300
++++ root-new/config/Makefile.linuxx8664gcc	2018-08-10 16:33:46.798434647 +0300
 @@ -71,7 +71,6 @@
  else
  F77LIBS      := $(shell $(F77) -m64 -print-file-name=libgfortran.a)
