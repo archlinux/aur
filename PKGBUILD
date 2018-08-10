@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=vmaf
-pkgver=1.3.7
+pkgver=1.3.9
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('libvmaf')
 conflicts=('vmaf-git' 'libvmaf' 'libvmaf-git')
 replaces=('libvmaf')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Netflix/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('124e7ec03de83f4051f9d6210824f5ca083c7dac9fcf6ed12d196f98849c5d0d')
+sha256sums=('c9e4fc850f66cf959a36c9603cef26c4298eec20d6c26f9482a355c5753c092d')
 
 build() {
     cd "${pkgname}-${pkgver}"
