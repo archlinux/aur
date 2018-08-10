@@ -2,7 +2,7 @@
 _project=sshprint
 pkgname=$_project
 pkgver=2.07
-pkgrel=1
+pkgrel=2
 pkgdesc="A Perl script to print local files on remote printers using SSH"
 arch=('any')
 url="https://github.com/hv15/$_project"
@@ -20,8 +20,10 @@ md5sums=('89c65d8b416e24bf383de6f88063a16c')
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
 
-  perl Build.PL installdirs=vendor destdir="$pkgdir/"
-  perl Build
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+  /usr/bin/perl Build.PL
+  ./Build
 }
 
 package() {
@@ -36,7 +38,8 @@ package() {
 
   # place Perl script and module
   msg2 "Installing library and binary"
-  perl Build install
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  ./Build install installdirs=vendor destdir="$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
