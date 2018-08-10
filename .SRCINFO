@@ -1,11 +1,11 @@
 pkgbase = scanpy
 	pkgdesc = Single-Cell Analysis in Python
-	pkgver = 1.0.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/theislab/scanpy
 	arch = any
 	license = BSD
-	depends = python-anndata>=0.5.8
+	depends = python-anndata>=0.6.2
 	depends = python-matplotlib>=2.2
 	depends = python-pandas>=0.21
 	depends = python-scipy
@@ -18,12 +18,13 @@ pkgbase = scanpy
 	depends = python-natsort
 	depends = python-joblib
 	depends = python-numba
-	optdepends = python-multicoretsne
+	optdepends = python-multicoretsne: Fast t-SNE
+	optdepends = python-louvain-igraph: Louvain clustering
 	provides = scanpy
 	provides = python-scanpy
-	noextract = scanpy-1.0.1-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/scanpy/scanpy-1.0.1-py3-none-any.whl
-	sha256sums = 34eac67035c33f3f392f615fe53622261a613b44d657364973a51a2c947fc94f
+	noextract = scanpy-1.2.2-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/s/scanpy/scanpy-1.2.2-py3-none-any.whl
+	sha256sums = 0bf7f01f5a81cb2e900cc1a6854c19740b1a8de4c28781f5940cf3c0b86295c0
 
 pkgname = scanpy
 
