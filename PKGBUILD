@@ -1,5 +1,6 @@
 # $Id$
 # Maintainer: Joan Figueras <ffigue at gmail dot com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Yoshi2889 <rick.2889 at gmail dot com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -21,9 +22,9 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.17.12
-xanmod=8
-pkgrel=2
+pkgver=4.17.14
+xanmod=9
+pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -39,12 +40,12 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 )
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('230c57bfcb499c09eed9b76b18988dc6a3fdc75c88fbaefdcc13d84feedc14f0'
+sha256sums=('d255b626ad7f3dd019f77c6fe4315a5bc7affc0fd85869e83ade54335eab29c5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
-            '7c4e8370709145c3145c7772033920bbdee151f04038de6f0f936e99ca290eed')
+            'c32caf2f9b76d624ea197a1c9731a0dba4c998cb5989e51e8ce3ce44a2d141c7')
 sha256sums_x86_64=('f8e890eac9779a89009c1e2339f757e9781864df09805211fad005146fe2578b')
 
 _kernelname=${pkgbase#linux}
