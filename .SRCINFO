@@ -1,13 +1,13 @@
 pkgbase = firefox-gesturefy
 	pkgdesc = firefix addon for customizable mouse gesture, which supports over 40 different actions
-	pkgver = 1.2.2
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/gesturefy/
 	arch = any
 	license = GPL
-	noextract = firefox-gesturefy-1.2.2.xpi
-	source = firefox-gesturefy-1.2.2.xpi::https://addons.cdn.mozilla.net/user-media/addons/819184/gesturefy-1.2.2-an+fx-linux.xpi
-	sha256sums = d61a031ffc0649983db6aa54ed5f0de171031706364ec72c5584676c2e826da5
+	noextract = firefox-gesturefy-2.0.1.xpi
+	source = firefox-gesturefy-2.0.1.xpi::https://addons.cdn.mozilla.net/user-media/addons/819184/gesturefy-2.0.1-an+fx-linux.xpi
+	sha256sums = 90ff807e403ce64822f8dc8e7babc12cbe0ff1e0b1424165e5c1f34e8ae58a72
 
 pkgname = firefox-gesturefy
 
