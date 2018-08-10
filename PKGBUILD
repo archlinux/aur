@@ -1,12 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Chee Sing Lee <cheesinglee@gmail.com>
 pkgname=tableau-sdk
 pkgver=9_2_0
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++/Java SDK for creating and publishing extracts to a Tableau Server"
 arch=('i686' 'x86_64')
 url="http://tableau.com/"
@@ -36,20 +31,19 @@ package() {
   mkdir $pkgdir/usr/include
   mkdir $pkgdir/usr/lib
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
+  mkdir -p $pkgdir/etc/ld.so.conf.d/
   if [ $CARCH == i686 ]; then
     cd tableausdk-linux32-9200.15.1201.0018
-    cp -r bin/* $pkgdir/usr/bin/
-    cp -r include/* $pkgdir/usr/include/
     cp -r lib/* $pkgdir/usr/lib/
-    cp -r share/* $pkgdir/usr/share/
   else
     cd tableausdk-linux64-9200.15.1201.0018
-    cp -r bin/* $pkgdir/usr/bin/
-    cp -r include/* $pkgdir/usr/include/
     cp -r lib64/* $pkgdir/usr/lib/
-    cp -r share/* $pkgdir/usr/share/
   fi
+  cp -r bin/* $pkgdir/usr/bin/
+  cp -r include/* $pkgdir/usr/include/
+  cp -r share/* $pkgdir/usr/share/
   cp share/tableausdk-9200.15.1201.0018/LICENSE.txt \
      $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  mkdir -p $pkgdir/etc/ld.so.conf.d
   echo "/usr/lib/tableausdk" > $pkgdir/etc/ld.so.conf.d/tableau-sdk.conf
 }
