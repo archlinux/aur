@@ -6,8 +6,8 @@ pkgbase = otf-stix
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
-	source = https://github.com/stipub/stixfonts/blob/2.0.0/zipfiles/STIXv2.0.0.zip
-	sha256sums = f8a141355690e0a1984a196409d6685f0493413595dec087c77e4bff6721dfd7
+	source = https://github.com/stipub/stixfonts/raw/2.0.0/zipfiles/STIXv2.0.0.zip
+	sha256sums = 0e878b50ac6fbafbee431db4f10aa618efe34451f9922924047a2419a15e6242
 
 pkgname = otf-stix
 

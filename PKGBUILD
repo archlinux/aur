@@ -1,13 +1,13 @@
 pkgname=otf-stix
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An OpenType font with math support, designed for scientific and engineering printing"
 arch=('any')
 url="http://www.stixfonts.org"
 license=('custom:OFL')
 depends=('fontconfig')
-source=("https://github.com/stipub/stixfonts/blob/$pkgver/zipfiles/STIXv$pkgver.zip")
-sha256sums=('f8a141355690e0a1984a196409d6685f0493413595dec087c77e4bff6721dfd7')
+source=("https://github.com/stipub/stixfonts/raw/$pkgver/zipfiles/STIXv$pkgver.zip")
+sha256sums=('0e878b50ac6fbafbee431db4f10aa618efe34451f9922924047a2419a15e6242')
 
 package() {
   cd "$srcdir/STIXv$pkgver"
