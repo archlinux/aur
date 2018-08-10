@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=jupyter_contrib_nbextensions
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of Jupyter nbextensions'
 arch=(any)
 url="https://github.com/ipython-contrib/$pkgname"
@@ -19,7 +19,7 @@ depends=(
 	'jupyter_contrib_core>=0.3.3'
 	'jupyter_nbextensions_configurator>=0.4.0'
 	'jupyter_highlight_selected_word>=0.1.0'
-	'jupyter_latex_envs>=1.3.8'
+	'jupyter_latex_envs>=1.4.0'
 )
 makedepends=(python-pip mariadb jq)
 _wheel="$pkgname-$pkgver-py2.py3-none-any.whl"
