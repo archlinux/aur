@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgbase=rtpengine
 pkgname=('rtpengine' 'rtpengine-dkms')
-pkgver=6.3.1.1
+pkgver=6.4.1.1
 pkgrel=1
 pkgdesc="The Sipwise media proxy for Kamailio"
 url="https://github.com/sipwise/rtpengine"
@@ -42,4 +42,4 @@ package_rtpengine-dkms() {
 
 }
 
-md5sums=('2d7daf290a5fb32ec672e3168166342d')
+md5sums=('a0f210770bda6e6482ff97d2f6f7fab1')
