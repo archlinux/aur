@@ -1,6 +1,6 @@
 pkgbase = lua-unix
 	pkgver = 20170920
-	pkgrel = 0
+	pkgrel = 1
 	url = http://25thandclement.com/~william/projects/lunix.html
 	arch = x86_64
 	license = MIT

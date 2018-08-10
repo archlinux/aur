@@ -3,7 +3,7 @@
 pkgname=(lua-unix lua51-unix lua52-unix)
 _basename=lunix
 pkgver=20170920
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 url='http://25thandclement.com/~william/projects/lunix.html'
 license=('MIT')
@@ -13,7 +13,7 @@ md5sums=('e2ef87e5bfc3432127037c9228305002')
 
 build() {
     cd "$_basename-$pkgver"
-    make prefix=/usr
+    make prefix=/usr all
 }
 
 package_lua-unix() {
