@@ -1,7 +1,7 @@
 # Maintainer: Muhammad Al-Habib Ouadhour <HOuadhour@yandex.com>
 
 pkgname=alun
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A CLI tool that notify the user when there is an update, excluding AUR"
 arch=('any')
@@ -16,8 +16,8 @@ source=(
 "https://github.com/HOuadhour/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.sig"
 )
 sha256sums=(
-'94ca3f986166333eb33de22c383ece67870c68de552a6da5a171a81e1f212100'
-'75f72a9303b07875996e4a69d29510939fc83c05a89349865ede6ef0a632300e'
+'7c1c2640fa8391e32dff0581bb1591c8cf203df2ebcbe5f96446a26644ee4f0e'
+'8833cd055e38d2da997315e3f8d248cbedfacee5f38806b2cb31d1ecea37a026'
 )
 validpgpkeys=('6481A7A3E66A3AA39D0DD7302A60AB408C14BF70')
 
