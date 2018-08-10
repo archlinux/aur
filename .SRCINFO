@@ -8,6 +8,7 @@ pkgbase = telegram-desktop-bin
 	arch = x86_64
 	license = GPL3
 	makedepends = chrpath
+	depends = desktop-file-utils
 	depends = glib2
 	depends = hicolor-icon-theme
 	depends = libdbus

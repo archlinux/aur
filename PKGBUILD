@@ -1,4 +1,4 @@
-# Maintainer:  Giovanni Santini "ItachiSan" <giovannisantini93@yahoo.it>
+# Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Previous maintainer:  agnotek <agnostic.sn [at]gmail.com>
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 
@@ -10,19 +10,20 @@ arch=('i686' 'x86_64')
 url="https://desktop.telegram.org"
 license=('GPL3')
 depends=(
-	'glib2'
-	'hicolor-icon-theme'
-	'libdbus'
-	'libx11'
+    desktop-file-utils
+    glib2
+    hicolor-icon-theme
+    libdbus
+    libx11
 )
 makedepends=(
-	'chrpath'
+    chrpath
 )
 optdepends=(
-	'libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)'
-	'libappindicator-gtk3: to hide Telegram in the tray bar (GTK3-based desktop environment)'
-	'libappindicator-sharp: to hide Telegram in the tray bar (Unity-based desktop environment)'
-	'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
+    'libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)'
+    'libappindicator-gtk3: to hide Telegram in the tray bar (GTK3-based desktop environment)'
+    'libappindicator-sharp: to hide Telegram in the tray bar (Unity-based desktop environment)'
+    'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
 )
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
