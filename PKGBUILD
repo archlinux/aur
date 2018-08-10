@@ -1,12 +1,12 @@
 _pkgname=tagainijisho
 pkgname=${_pkgname}-git
-pkgver=1.0.90.r1763.af52ca3
+pkgver=1.1.90.r1773.dde2ad8
 pkgrel=1
 pkgdesc="Free Japanese dictionary and study assistant (qt5)"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="http://www.tagaini.net/"
 license=('GPL3')
-depends=('qt5-base>=5.4' 'sqlite3>=3.7.9')
+depends=('qt5-base>=5.4' 'qt5-tools' 'sqlite3>=3.7.9')
 makedepends=('cmake>=2.8.12' 'desktop-file-utils')
 conflicts=('tagainijisho')
 source=(
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     _revision=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
-    echo "1.0.90.${_revision}"
+    echo "1.1.90.${_revision}"
 }
 
 build() {
