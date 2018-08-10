@@ -1,7 +1,7 @@
 pkgbase = juiced-git
-	pkgdesc = Set your background to a color, using X11
+	pkgdesc = A lightweight battery warning daemon
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/drkhsh/juiced
 	arch = any
 	license = ISC

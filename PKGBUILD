@@ -1,7 +1,7 @@
 # Maintainer: Mr. Outis <mroutis@protonmail.com>
 pkgname=juiced-git
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight battery warning daemon"
 arch=('any')
 url="https://github.com/drkhsh/${pkgname%-git}"
