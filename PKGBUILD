@@ -2,7 +2,7 @@
 
 pkgname=mspgcc-ti
 pkgver=6.0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU toolchain (as, gcc, g++, ld, gdb) for the TI MSP430 processor"
 arch=('i686' 'x86_64')
 url="http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/index_FDS.html"
