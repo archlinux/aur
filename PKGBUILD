@@ -2,7 +2,7 @@
 pkgname=flips-git
 _pkgname='Flips'
 pkgver=r56.d95c34c
-pkgrel=1
+pkgrel=2
 pkgdesc="Patcher for IPS and BPS files"
 arch=('any')
 url="https://github.com/Alcaro/Flips"
@@ -24,11 +24,8 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  # do not tread warnings as errors
-  sed -e "s/\-Werror//g" -i ./make.sh
-
   # profile=yes --> use profile-guided optimization (requires 100MB training corpus)
-  ./make.sh --profile=no --harden=no
+  CFLAGS=-Wno-error ./make.sh --profile=no --harden=no
 }
 
 package() {
