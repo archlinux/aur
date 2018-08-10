@@ -1,8 +1,8 @@
 # Maintainer: bartus @{aur \at bartus \dot  33mail \dot com}
 pkgname=('radare2-bindings-git' 'radare2-pipe-git')
 basename='radare2-bindings-git'
-pkgver=2.4.1.r3.gfe8bd26
-pkgrel=4
+pkgver=2.8.0.r1.gb0d5faf
+pkgrel=1
 pkgdesc="Language bindings for radare2 (git version)"
 arch=('i686' 'x86_64')
 url="https://radare.org"
@@ -12,11 +12,10 @@ makedepends=('git' 'valabind' 'swig')
 
 source=("${pkgname}::git://github.com/radare/radare2-bindings.git"
         "radare2-pipe-git::git+https://github.com/radare/radare2-r2pipe.git"
-        Makefile.patch
         )
 md5sums=('SKIP'
          'SKIP'
-         'c79cfc6a5650e347e253f132762ef961')
+         )
 
 
 pkgver() {
@@ -26,7 +25,6 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/${basename}
-  git apply ${srcdir}/Makefile.patch
 }
 
 build() {
