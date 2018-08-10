@@ -15,8 +15,8 @@ sha512sums=('aedb0f6b710333d9c5bc474265ad17e181608141e8e2ada504a1f13334bd01abaf2
 
 
 package() {
-  cd "arch-update-${pkgver}"
   # Locate the extension.
+  cd "$(dirname $(find -name 'metadata.json' -print -quit))"
   _extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
   # Copy extension files into place.
