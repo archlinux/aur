@@ -1,6 +1,6 @@
 # Maintainer: Phil Schaf <flying-sheep@web.de>
 pkgname=jupyter_latex_envs
-pkgver=1.3.8
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Jupyter notebook extension which supports (some) LaTeX environments within markdown cells'
 arch=(any)
@@ -9,7 +9,7 @@ license=(BSD)
 makedepends=()
 depends=(python jupyter jupyter-notebook)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('7152ac82845925cd7e92772d11677f4e')
+sha256sums=('b0a83e0cda2d33e61c4b2da94365d2de4dfcdc1ed67abdba3cbe390872cf5231')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
