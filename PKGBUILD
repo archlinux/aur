@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=torrential
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="A simple torrent client for elementary OS"
@@ -9,7 +9,7 @@ url="https://github.com/davidmhewitt/torrential"
 license=(GPL2)
 depends=(curl gtk3 libarchive libevent libunity granite openssl miniupnpc)
 makedepends=(cmake vala)
-source=("$pkgname-$pkgver::git+https://github.com/davidmhewitt/torrential#commit=1b08707354b198d1061260f566cd9f286a5f701c")
+source=("$pkgname-$pkgver::git+https://github.com/davidmhewitt/torrential#commit=70574259eaf41300a65338c6648fb05cb343b594")
 
 prepare() {
 	cd $pkgname-$pkgver
