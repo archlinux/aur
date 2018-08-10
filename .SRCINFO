@@ -1,15 +1,18 @@
 pkgbase = bower-away
 	pkgdesc = Convert your project from Bower to Yarn
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sheerun/bower-away
 	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = jq
 	depends = nodejs
 	noextract = bower-away-1.1.2.tgz
 	source = https://registry.npmjs.org/bower-away/-/bower-away-1.1.2.tgz
+	source = LICENSE
 	sha256sums = e9a3d70b39fe388768f4c2efc931a2f199fc68f90e6c310ea51d02f2d58a6db2
+	sha256sums = 6be9328337c8f17e83b24fbebee8c6258eb364044de0dce7238afde57eaf8ae6
 
 pkgname = bower-away
 
