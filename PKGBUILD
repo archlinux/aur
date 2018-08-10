@@ -5,26 +5,17 @@ pkgdesc="digital audio workstation"
 arch=('x86_64')
 url="http://www.reaper.fm"
 license=('custom')
-depends=('gdk-pixbuf2' 'gtk3' 'jack')
-makedepends=('git')
+depends=('gdk-pixbuf2' 'jack')
 source=("https://www.reaper.fm/files/5.x/${pkgname}${pkgver//.}_linux_x86_64.tar.xz"
-	"git+https://github.com/justinfrankel/WDL.git"
 	'https://stash.reaper.fm/30638/reaper-desktop-support.zip')
 sha256sums=('cbdd47a945a984cc99d3ca781a7cbe1a7bfb51c49a7a434c835cdb9e0a8fc820'
-            'SKIP'
             'c16c8d8d66502852f4948d0c2d3f48f7fd17e598d1f14b05cec54e6cfd8c01b7')
-
-build() {
-  cd "${srcdir}/WDL/WDL/swell"
-  make
-}
 
 package() {
   DESTDIR="${pkgdir}/usr/lib"
   LICENSEDIR="${pkgdir}/usr/share/licenses/reaper/"
   mkdir -p "${DESTDIR}"
   cp -R "${srcdir}/reaper_linux_x86_64/REAPER/" "${DESTDIR}"
-  cp "${srcdir}/WDL/WDL/swell/libSwell.so" "${DESTDIR}/REAPER"
   mkdir "${pkgdir}/usr/bin"
   ln -s /usr/lib/REAPER/reaper "${pkgdir}/usr/bin/reaper"
   ln -s /usr/lib/REAPER/reaper "${pkgdir}/usr/bin/reaper5" #(legacy)
