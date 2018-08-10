@@ -3,7 +3,7 @@
 pkgbase = cplex
 	pkgdesc = A commercial solver for mathematical optimization problems.
 	pkgver = 12.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ibm.com/software/products/de/ibmilogcpleoptistud
 	arch = x86_64
 	license = custom
