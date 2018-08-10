@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=linphone-desktop-all-git
-pkgver=4.1.1.r506.1f8d8dd7
+pkgver=4.1.1.r520.b2e96277
 pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
@@ -12,14 +12,10 @@ makedepends=("cmake" "doxygen" "git" "graphviz" "ladspa" "python-pystache" "yasm
 conflicts=("linphone-dekstop")
 source=("${pkgname%-all-git}::git://git.${pkgname%-desktop-all-git}.org/${pkgname%-all-git}"
         "${pkgname%-desktop-all-git}.desktop"
-        "mediastreamer2.patch"
-        "belle-sip.patch"
-        "${pkgname%-desktop-all-git}.patch")
+        "${pkgname%-all-git}-submodules.patch")
 sha256sums=("SKIP"
             "0a3212622757639905b0d82bcb2b4ebfef11dc7312011c4413334db70ca2e1e6"
-            "bc0589eb2739aee429db9c67aa4308fcd817324ef5248b1766efee717798a900"
-            "8a365864cfa8c6eb517701bcb2a2a7d51009bf504c104884ed3fbd05a36b3a84"
-            "2657947c9311cdb3fd5167526943346bccd05a9433a242a280d9ed7f49b6ae6d")
+            "2896ee561bae9a99277202d715999b1b4b1597da025e11f47570a9c097cee4c9")
 
 prepare() {
   cd "${srcdir}/${pkgname%-all-git}"
@@ -30,9 +26,8 @@ prepare() {
   msg2 "Updating submodules..."
   git submodule update --init --recursive
   
-  patch -Np1 -i "../mediastreamer2.patch"
-  patch -Np1 -i "../belle-sip.patch"
-  patch -Np1 -i "../${pkgname%-desktop-all-git}.patch"
+  #git submodule --quiet foreach --recursive 'git diff --src-prefix=a/${name}/ --dst-prefix=b/${name}/' > submodules.patch
+  patch -Np1 -i "../${pkgname%-all-git}-submodules.patch"
 }
 
 pkgver() {

@@ -1,0 +1,391 @@
+diff --git a/submodules/bcg729/CMakeLists.txt b/submodules/bcg729/CMakeLists.txt
+index cc9116d..2b6fa2b 100644
+--- a/submodules/bcg729/CMakeLists.txt
++++ b/submodules/bcg729/CMakeLists.txt
+@@ -34,8 +34,8 @@ set(PACKAGE_URL "")
+ set(VERSION "${PACKAGE_VERSION}")
+ 
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ option(ENABLE_TESTS "Enable compilation of the tests." NO)
+ 
+ include(GNUInstallDirs)
+diff --git a/submodules/bcmatroska2/CMakeLists.txt b/submodules/bcmatroska2/CMakeLists.txt
+index 2bb6086..d6729f8 100644
+--- a/submodules/bcmatroska2/CMakeLists.txt
++++ b/submodules/bcmatroska2/CMakeLists.txt
+@@ -27,8 +27,8 @@ project(bcmatroska2
+ 	LANGUAGES C
+ )
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ option(CONFIG_EBML_WRITING "Enable EBML file writing support" ON)
+ option(CONFIG_EBML_UNICODE "Enable Unicode support" ON)
+ option(CONFIG_DEBUGCHECKS "Enable internal checks" ON)
+diff --git a/submodules/bctoolbox/CMakeLists.txt b/submodules/bctoolbox/CMakeLists.txt
+index f0e2ce5..9068505 100644
+--- a/submodules/bctoolbox/CMakeLists.txt
++++ b/submodules/bctoolbox/CMakeLists.txt
+@@ -39,12 +39,12 @@ set(PROJECT_VERSION_PATCH ${BCTOOLBOX_VERSION_PATCH})
+ set(PROJECT_VERSION "${BCTOOLBOX_VERSION}")
+ 
+ 
+-option(ENABLE_SHARED "Build shared library." ON)
+-option(ENABLE_STATIC "Build static library." ON)
++option(ENABLE_SHARED "Build shared library." OFF)
++option(ENABLE_STATIC "Build static library." OFF)
+ option(ENABLE_POLARSSL "Enable polarssl support" ON)
+ option(ENABLE_MBEDTLS "Enable mabedtls support" ON)
+ option(ENABLE_DECAF "Enable Elliptic Curve Cryptography support" ON)
+-option(ENABLE_STRICT "Pass strict flags to the compiler" ON)
++option(ENABLE_STRICT "Pass strict flags to the compiler" OFF)
+ option(ENABLE_TESTS_COMPONENT "Enable compilation of tests helper library" ON)
+ option(ENABLE_TESTS "Enable compilation of tests" ON)
+ 
+diff --git a/submodules/bcunit/CMakeLists.txt b/submodules/bcunit/CMakeLists.txt
+index da0f295..756dc04 100644
+--- a/submodules/bcunit/CMakeLists.txt
++++ b/submodules/bcunit/CMakeLists.txt
+@@ -39,8 +39,8 @@ set(PACKAGE_TARNAME "bcunit")
+ set(PACKAGE_URL "")
+ 
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ 
+ option(ENABLE_AUTOMATED "Compile BCUnit automated interface" ON)
+ option(ENABLE_BASIC "Compile BCUnit basic interface" ON)
+diff --git a/submodules/belcard/CMakeLists.txt b/submodules/belcard/CMakeLists.txt
+index 7da4c98..66056f9 100644
+--- a/submodules/belcard/CMakeLists.txt
++++ b/submodules/belcard/CMakeLists.txt
+@@ -26,9 +26,9 @@ project(BELCARD VERSION 1.0.2 LANGUAGES C CXX)
+ 
+ set(BELCARD_SO_VERSION "1")
+ 
+-option(ENABLE_SHARED "Build shared library." ON)
+-option(ENABLE_STATIC "Build static library." ON)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_SHARED "Build shared library." OFF)
++option(ENABLE_STATIC "Build static library." OFF)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ option(ENABLE_TOOLS "Enable compilation of tools." YES)
+ option(ENABLE_UNIT_TESTS "Enable compilation of unit tests." YES)
+ 
+diff --git a/submodules/belle-msrp/CMakeLists.txt b/submodules/belle-msrp/CMakeLists.txt
+index d28d927..9884374 100644
+--- a/submodules/belle-msrp/CMakeLists.txt
++++ b/submodules/belle-msrp/CMakeLists.txt
+@@ -30,9 +30,9 @@ set(BELMSRP_MICRO_VERSION "0")
+ set(BELMSRP_VERSION "${BELMSRP_MAJOR_VERSION}.${BELMSRP_MINOR_VERSION}.${BELMSRP_MICRO_VERSION}")
+ set(BELMSRP_SO_VERSION "1")
+ 
+-option(ENABLE_SHARED "Build shared library." ON)
+-option(ENABLE_STATIC "Build static library." ON)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_SHARED "Build shared library." OFF)
++option(ENABLE_STATIC "Build static library." OFF)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ option(ENABLE_UNIT_TESTS "Enable compilation of unit tests." YES)
+ 
+ macro(apply_compile_flags SOURCE_FILES)
+diff --git a/submodules/belle-sip/CMakeLists.txt b/submodules/belle-sip/CMakeLists.txt
+index 427ba41..36e5fdc 100644
+--- a/submodules/belle-sip/CMakeLists.txt
++++ b/submodules/belle-sip/CMakeLists.txt
+@@ -34,10 +34,10 @@ set(PACKAGE_URL "")
+ set(VERSION "${PACKAGE_VERSION}")
+ 
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ option(ENABLE_RTP_MAP_ALWAYS_IN_SDP "Always include rtpmap in SDP." OFF)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ option(ENABLE_TUNNEL "Enable tunnel support" OFF)
+ option(ENABLE_TESTS "Enable compilation of tests" ON)
+ option(ENABLE_MDNS "Enable multicast DNS" OFF)
+diff --git a/submodules/belr/CMakeLists.txt b/submodules/belr/CMakeLists.txt
+index 38567dd..33762f7 100644
+--- a/submodules/belr/CMakeLists.txt
++++ b/submodules/belr/CMakeLists.txt
+@@ -25,9 +25,9 @@ project(BELR VERSION 0.1.3 LANGUAGES C CXX)
+ 
+ set(BELR_SO_VERSION "1")
+ 
+-option(ENABLE_SHARED "Build shared library." ON)
+-option(ENABLE_STATIC "Build static library." ON)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_SHARED "Build shared library." OFF)
++option(ENABLE_STATIC "Build static library." OFF)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ option(ENABLE_TOOLS "Turn on or off compilation of tools." YES)
+ option(ENABLE_TESTS "Enable compilation of unit tests." YES)
+ 
+diff --git a/submodules/bzrtp/CMakeLists.txt b/submodules/bzrtp/CMakeLists.txt
+index 4a894e6..81917b7 100644
+--- a/submodules/bzrtp/CMakeLists.txt
++++ b/submodules/bzrtp/CMakeLists.txt
+@@ -25,10 +25,10 @@ cmake_minimum_required(VERSION 3.0)
+ project(bzrtp VERSION 1.0.6 LANGUAGES C CXX)
+ 
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ option(ENABLE_ZIDCACHE "Turn on compilation of ZID cache, request sqlite" YES)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ option(ENABLE_TESTS "Enable compilation of unit tests." NO)
+ 
+ 
+diff --git a/submodules/externals/v4l-utils/lib/libv4lconvert/control/libv4lcontrol.c b/submodules/externals/v4l-utils/lib/libv4lconvert/control/libv4lcontrol.c
+index 85d312d6..ad506bf8 100644
+--- a/submodules/externals/v4l-utils/lib/libv4lconvert/control/libv4lcontrol.c
++++ b/submodules/externals/v4l-utils/lib/libv4lconvert/control/libv4lcontrol.c
+@@ -385,7 +385,9 @@ static int v4lcontrol_get_usb_info(struct v4lcontrol_data *data,
+ 		fclose(f);
+ 
+ 		if (s && sscanf(buf, "%*d:%d%c", &minor, &c) == 2 &&
+-		    c == '\n' && minor == minor(st.st_rdev))
++		    c == '\n' 
++                    //&& minor == minor(st.st_rdev)
++)
+ 			break;
+ 	}
+ 	if (i == 256)
+diff --git a/submodules/externals/v4l-utils/utils/libmedia_dev/get_media_devices.c b/submodules/externals/v4l-utils/utils/libmedia_dev/get_media_devices.c
+index 82d51083..689dbca4 100644
+--- a/submodules/externals/v4l-utils/utils/libmedia_dev/get_media_devices.c
++++ b/submodules/externals/v4l-utils/utils/libmedia_dev/get_media_devices.c
+@@ -505,7 +505,7 @@ const char *fget_associated_device(void *opaque,
+ 	struct media_devices *md = opaque;
+ 	struct media_device_entry *md_ptr = md->md_entry;
+ 	struct stat f_status;
+-	unsigned int dev_major, dev_minor;
++	//unsigned int dev_major, dev_minor;
+ 	int i, found = 0;
+ 	char *prev;
+ 
+@@ -517,22 +517,24 @@ const char *fget_associated_device(void *opaque,
+ 		fprintf(stderr, "File descriptor is not a char device\n");
+ 		return NULL;
+ 	}
+-	dev_major = major(f_status.st_rdev);
+-	dev_minor = minor(f_status.st_rdev);
++	//dev_major = major(f_status.st_rdev);
++	//dev_minor = minor(f_status.st_rdev);
+ 
+ 	/* Step 1: Find the seek node */
+ 	for (i = 0; i < md->md_size; i++, md_ptr++) {
+ 		if (last_seek && md_ptr->type == seek_type
+-		    && md_ptr->major == dev_major
+-		    && md_ptr->minor == dev_minor) {
++		    //&& md_ptr->major == dev_major
++		    //&& md_ptr->minor == dev_minor
++        ) {
+ 			found = 1;
+ 			continue;
+ 		}
+ 		if (last_seek && !found)
+ 			continue;
+ 		if (md_ptr->type == seek_type
+-		    && md_ptr->major == dev_major
+-		    && md_ptr->minor == dev_minor)
++		    //&& md_ptr->major == dev_major
++		    //&& md_ptr->minor == dev_minor
++        )
+ 			break;
+ 	}
+ 	if (i == md->md_size)
+@@ -543,8 +545,9 @@ const char *fget_associated_device(void *opaque,
+ 	/* Step 2: find the associated node */
+ 	for (; i < md->md_size && !strcmp(prev, md_ptr->device); i++, md_ptr++) {
+ 		if (last_seek && md_ptr->type == seek_type
+-		    && md_ptr->major == dev_major
+-		    && md_ptr->minor == dev_minor) {
++		    //&& md_ptr->major == dev_major
++		    //&& md_ptr->minor == dev_minor
++        ) {
+ 			found = 1;
+ 			continue;
+ 		}
+diff --git a/submodules/linphone/CMakeLists.txt b/submodules/linphone/CMakeLists.txt
+index 60350bc42..5bd142835 100644
+--- a/submodules/linphone/CMakeLists.txt
++++ b/submodules/linphone/CMakeLists.txt
+@@ -36,10 +36,10 @@ string(REPLACE ";" " " LINPHONE_ALL_LANGS "${LINPHONE_ALL_LANGS_LIST}")
+ 
+ include(CMakeDependentOption)
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ 
+-option(ENABLE_CONSOLE_UI "Turn on or off compilation of console interface." YES)
++option(ENABLE_CONSOLE_UI "Turn on or off compilation of console interface." NO)
+ option(ENABLE_CSHARP_WRAPPER "Build the C# wrapper for Liblinphone." OFF)
+ option(ENABLE_CXX_WRAPPER "Build the C++ wrapper for Liblinphone." YES)
+ option(ENABLE_DAEMON "Enable the linphone daemon interface." YES)
+@@ -50,11 +50,11 @@ option(ENABLE_GTK_UI "Turn on or off compilation of gtk interface." NO)
+ option(ENABLE_JAVADOC "Add a target to generate documentation for Java API" NO)
+ option(ENABLE_LDAP "Enable LDAP support." NO)
+ option(ENABLE_NLS "Build with internationalisation support" YES)
+-option(ENABLE_RELATIVE_PREFIX "Find resources relatively to the installation directory." NO)
++option(ENABLE_RELATIVE_PREFIX "Find resources relatively to the installation directory." YES)
+ option(ENABLE_ROOTCA_DOWNLOAD "Download rootca.pem at build time." YES)
+ option(ENABLE_SOCI_STORAGE "Turn on compilation soci storage, for messages, contacts, history" YES)
+ option(ENABLE_SQLITE_STORAGE "Turn on compilation sqlite storage, for messages, contacts, history" YES)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ option(ENABLE_TOOLS "Turn on or off compilation of tools." YES)
+ option(ENABLE_TUNNEL "Turn on compilation of tunnel support." NO)
+ option(ENABLE_TUTORIALS "Enable compilation of tutorials." YES)
+diff --git a/submodules/mediastreamer2/CMakeLists.txt b/submodules/mediastreamer2/CMakeLists.txt
+index 2052105e..3fe67db7 100644
+--- a/submodules/mediastreamer2/CMakeLists.txt
++++ b/submodules/mediastreamer2/CMakeLists.txt
+@@ -57,15 +57,15 @@ endif()
+ 
+ include(CMakeDependentOption)
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ option(ENABLE_DEBUG_LOGS "Enable the display of traces showing the execution of the library." NO)
+ option(ENABLE_DOC "Enable documentation generation with Doxygen." YES)
+ option(ENABLE_FIXED_POINT "Turn on fixed point computations." ${ENABLE_FIXED_POINT_DEFAULT_VALUE})
+ option(ENABLE_NON_FREE_CODECS "Allow inclusion of non-free codecs in the build." NO)
+ option(ENABLE_PCAP "Enable PCAP support." NO)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
+-option(ENABLE_RELATIVE_PREFIX "Find resources relatively to the installation directory." NO)
++option(ENABLE_STRICT "Build with strict compile options." NO)
++option(ENABLE_RELATIVE_PREFIX "Find resources relatively to the installation directory." YES)
+ option(ENABLE_TOOLS "Turn on or off compilation of tools." YES)
+ option(ENABLE_UNIT_TESTS "Enable compilation of unit tests." YES)
+ 
+diff --git a/submodules/msamr/CMakeLists.txt b/submodules/msamr/CMakeLists.txt
+index ffe27cf..9e41763 100644
+--- a/submodules/msamr/CMakeLists.txt
++++ b/submodules/msamr/CMakeLists.txt
+@@ -34,8 +34,8 @@ set(PACKAGE_URL "")
+ set(VERSION "${PACKAGE_VERSION}")
+ 
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ option(ENABLE_NARROWBAND "Enable AMR narrowband." YES)
+ option(ENABLE_WIDEBAND "Enable AMR wideband." NO)
+ 
+diff --git a/submodules/msopenh264/CMakeLists.txt b/submodules/msopenh264/CMakeLists.txt
+index 479fb2d..7b54fe5 100644
+--- a/submodules/msopenh264/CMakeLists.txt
++++ b/submodules/msopenh264/CMakeLists.txt
+@@ -34,8 +34,8 @@ set(PACKAGE_URL "")
+ set(VERSION "${PACKAGE_VERSION}")
+ 
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ option(ENABLE_DECODER "Enable the openh264 decoder" Yes)
+ 
+ include(GNUInstallDirs)
+diff --git a/submodules/mssilk/CMakeLists.txt b/submodules/mssilk/CMakeLists.txt
+index 69fd638..af32f0f 100644
+--- a/submodules/mssilk/CMakeLists.txt
++++ b/submodules/mssilk/CMakeLists.txt
+@@ -24,8 +24,8 @@ cmake_minimum_required(VERSION 3.0)
+ project(mssilk VERSION 1.1.1 LANGUAGES C)
+ 
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ 
+ 
+ include(GNUInstallDirs)
+diff --git a/submodules/mswasapi/CMakeLists.txt b/submodules/mswasapi/CMakeLists.txt
+index fd5fa92..a08810a 100644
+--- a/submodules/mswasapi/CMakeLists.txt
++++ b/submodules/mswasapi/CMakeLists.txt
+@@ -30,9 +30,9 @@ set(MSWASAPI_MICRO_VERSION "0")
+ set(MSWASAPI_VERSION "${MSWASAPI_MAJOR_VERSION}.${MSWASAPI_MINOR_VERSION}.${MSWASAPI_MICRO_VERSION}")
+ set(MSWASAPI_SO_VERSION "0")
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ 
+ 
+ macro(apply_compile_flags SOURCE_FILES)
+diff --git a/submodules/mswebrtc/CMakeLists.txt b/submodules/mswebrtc/CMakeLists.txt
+index e18a9b5..a2dd8bd 100644
+--- a/submodules/mswebrtc/CMakeLists.txt
++++ b/submodules/mswebrtc/CMakeLists.txt
+@@ -34,8 +34,8 @@ set(PACKAGE_URL "")
+ set(VERSION "${PACKAGE_VERSION}")
+ 
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ option(ENABLE_AEC "Enable the WebRTC echo canceller support." YES)
+ option(ENABLE_AECM "Enable the WebRTC echo canceller for mobile support." YES)
+ option(ENABLE_ISAC "Enable the ISAC audio codec support." YES)
+diff --git a/submodules/msx264/CMakeLists.txt b/submodules/msx264/CMakeLists.txt
+index ba97d92..bb2df76 100644
+--- a/submodules/msx264/CMakeLists.txt
++++ b/submodules/msx264/CMakeLists.txt
+@@ -34,8 +34,8 @@ set(PACKAGE_URL "")
+ set(VERSION "${PACKAGE_VERSION}")
+ 
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ 
+ 
+ include(GNUInstallDirs)
+diff --git a/submodules/ortp/CMakeLists.txt b/submodules/ortp/CMakeLists.txt
+index cb70135..afab793 100644
+--- a/submodules/ortp/CMakeLists.txt
++++ b/submodules/ortp/CMakeLists.txt
+@@ -31,12 +31,12 @@ set(ORTP_VERSION ${PROJECT_VERSION})
+ set(ORTP_SO_VERSION "13") # incremented on January 10, 2017
+ 
+ 
+-option(ENABLE_SHARED "Build shared library." YES)
+-option(ENABLE_STATIC "Build static library." YES)
++option(ENABLE_SHARED "Build shared library." NO)
++option(ENABLE_STATIC "Build static library." NO)
+ option(ENABLE_DOC "Enable documentation generation with Doxygen." YES)
+ option(ENABLE_NTP_TIMESTAMP "Turn on NTP timestamping on packet reception." NO)
+ option(ENABLE_PERF "Disable costly features to reduce cpu consumtion and increase performance." NO)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ option(ENABLE_TESTS "Enable compilation of test programs." NO)
+ option(ENABLE_DEBUG_LOGS "Turn on or off debug level logs." NO)
+ set(WITH_THREAD_STACK_SIZE "0" CACHE STRING "Set thread stack size (0 is the OS default).")
