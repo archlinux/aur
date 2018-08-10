@@ -3,7 +3,7 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=('python-pydicom' 'python2-pydicom')
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Pure python package for working with DICOM files"
 arch=("x86_64")
 url="https://pydicom.github.io/pydicom/stable/index.html"
@@ -47,7 +47,9 @@ check()
 	cd "$srcdir/pydicom-$pkgver"
 	# Test suite has a known issue with Pillow 5 and up
 	# See: https://github.com/pydicom/pydicom/issues/663
+	# Timezone test isn't supposed to run in python 3, but it does
 	# Don't write byte code to prevent a "$srcdir in pkg" error on rebuilds
 	PYTHONDONTWRITEBYTECODE=1 \
-		pytest --deselect=pydicom/tests/test_pillow_pixel_data.py::test_PI_RGB[JPEG_RGB_RGB]
+		pytest --deselect=pydicom/tests/test_pillow_pixel_data.py::test_PI_RGB[JPEG_RGB_RGB] \
+			--deselect pydicom/tests/test_fixes.py::TestTimeZone::test_constructor
 }
