@@ -7,7 +7,7 @@ pkgbase = python-face_recognition
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-click>=6.0
-	depends = python-dlib-cuda>=19.3
+	depends = python-dlib>=19.3
 	depends = python-face_recognition_models
 	depends = python-numpy
 	depends = python-pillow
