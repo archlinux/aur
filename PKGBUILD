@@ -1,8 +1,8 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=linphone-desktop-all-git
-pkgver=4.1.1.r520.b2e96277
-pkgrel=3
+pkgver=4.1.1.r521.c59a68c2
+pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
 url="https://www.${pkgname%-desktop-all-git}.org/"
@@ -26,7 +26,7 @@ prepare() {
   msg2 "Updating submodules..."
   git submodule update --init --recursive
   
-  #git submodule --quiet foreach --recursive 'git diff --src-prefix=a/${name}/ --dst-prefix=b/${name}/' > submodules.patch
+  #Patch generated via: git submodule --quiet foreach --recursive 'git diff --src-prefix=a/${name}/ --dst-prefix=b/${name}/' > submodules.patch
   patch -Np1 -i "../${pkgname%-all-git}-submodules.patch"
 }
 
@@ -73,30 +73,4 @@ package() {
   msg2 "Installing icons"
   install -d "${pkgdir}/usr/share"
   mv "${pkgdir}/opt/${pkgname%-all-git}/share/icons" "${pkgdir}/usr/share"
-
-  #cp -r "OUTPUT/desktop" "${pkgdir}/usr"
-  #Conflicting packages if installed in /usr
-  #bcmatroska2-git
-  #bctoolbox-git
-  #belcard-git
-  #belle-sip-git
-  #belr-git
-  #bzrtp-git
-  #ffmpeg
-  #gsm
-  #libsrtp
-  #libvpx
-  #libxml2
-  #linphone-desktop-git
-  #linphone-git
-  #mbedtls
-  #mediastreamer-git
-  #minizip-git
-  #opus
-  #ortp-git
-  #speex
-  #speexdsp
-  #sqlite
-  #v4l-utils
-  #zlib
 }
