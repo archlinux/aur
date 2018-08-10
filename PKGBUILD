@@ -2,7 +2,7 @@
 
 pkgname=bus-pirate
 pkgver=2.3.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Software and firmware for an open source hacker multi-tool that talks to electronic stuff"
 url="http://dangerousprototypes.com/docs/Bus_Pirate"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('pyqt5-common' 'python2')
 install=$pkgname.install
 source=("https://github.com/greyltc/Bus_Pirate/archive/v${pkgver}.tar.gz" "25_busBirate.rules")
 
-options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
+options=(!strip docs libtool emptydirs !zipman staticlibs)
 md5sums=('1505bf7377d52a4e459ba3a7373e4fb0'
          'd939da558d713e498afc4343bc75ba47')
 
