@@ -10,30 +10,24 @@
 
 _name=geany
 pkgname=mingw-w64-geany
-pkgver=1.27.9681888
+pkgver=1.33.0
 pkgrel=1
 pkgdesc='Fast and lightweight IDE (mingw-w64)'
 arch=('any')
 url='https://www.geany.org/'
 license=('GPL')
-depends=('mingw-w64-crt' 'mingw-w64-gtk2')
-makedepends=('perl-xml-parser' 'setconf' 'intltool' 'mingw-w64-gcc' 'mingw-w64-configure' 'mingw-w64-binutils' 'git')
+depends=('mingw-w64-crt' 'mingw-w64-gtk3')
+makedepends=('python-lxml' 'setconf' 'intltool' 'python' 'mingw-w64-gcc' 'mingw-w64-configure')
 optdepends=('mingw-w64-geany-plugins: various extra features'
-            'mingw-w64-python2')
-
-#source=("https://download.geany.org/${_name}-$pkgver.tar.bz2")
-#sha256sums=('846ff699a5944c5c3c068ae0199d4c13946a668bfc6d03f8c79765667c20cadf')
-
-# current stable version doesn't build so I'm using a more recent commit where the issue is fixed
-source=(${_name}-$pkgver::"git+https://github.com/geany/geany.git#commit=9681888")
-sha256sums=('SKIP')
-
+            'mingw-w64-python')
+source=("https://download.geany.org/${_name}-${pkgver/.0}.tar.bz2")
+sha256sums=('66baaff43f12caebcf0efec9a5533044dc52837f799c73a1fd7312caa86099c2')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd "${_name}-$pkgver"
+  cd "${_name}-${pkgver/.0}"
 
   # Python2 fix
   sed -i '0,/on/s//on2/' data/templates/files/main.py
@@ -54,12 +48,13 @@ prepare() {
 }
 
 build() {
-  cd "${_name}-$pkgver"
+  cd "${_name}-${pkgver/.0}"
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}"
     pushd "build-${_arch}"
     ${_arch}-configure \
         --exec-prefix=/usr/${_arch} \
+        --enable-gtk3 \
         --sysconfdir=/etc \
         --prefix=/usr/${_arch} \
         --disable-html-docs
@@ -69,7 +64,7 @@ build() {
 }
 
 package() {
-  cd "${_name}-$pkgver"
+  cd "${_name}-${pkgver/.0}"
   for _arch in ${_architectures}; do
     pushd "build-${_arch}"
     make DESTDIR="$pkgdir" install
