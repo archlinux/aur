@@ -1,6 +1,6 @@
-pkgbase = keepassgtk
+pkgbase = keepassgtk-git
 	pkgdesc = An eye candy password manager for Linux (Keepass v.4)
-	pkgver = r147.e4e4b34
+	pkgver = 0.9.1.r8.g1f54804
 	pkgrel = 1
 	url = https://github.com/TerminalDotRun/KeepassGtk
 	arch = i686

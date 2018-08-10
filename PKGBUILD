@@ -2,20 +2,20 @@
 
 pkgname=keepassgtk-git
 _gitname=KeepassGtk
-pkgver=r147.e4e4b34
+pkgver=0.9.1.r8.g1f54804
 pkgrel=1
 pkgdesc="An eye candy password manager for Linux (Keepass v.4)"
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/TerminalDotRun/KeepassGtk"
-depends=('gtk3' 'python-pykeepass')
+depends=('gtk3' 'python-pykeepass' 'gobject-introspection')
 makedepends=('git' 'meson' 'ninja')
 source=("git+https://github.com/TerminalDotRun/KeepassGtk.git")
 md5sums=('SKIP')
  
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
