@@ -1,16 +1,17 @@
 pkgbase = perl-test-vars
 	pkgdesc = Detects unused variables
-	pkgver = 0.005
+	pkgver = 0.014
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Test-Vars
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl>=5.10.0
+	makedepends = perl-module-build-tiny
+	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Test-Vars-0.005.tar.gz
-	md5sums = 56a763c785f66e4ae0edd2b4e613dc19
-	sha512sums = 400bd7f7d6afd04ea54c80b2b1928288c0c7c5b2e85fcf440bf25f744d2abad22996bccd8f200753b78dd2ddec0aeacd5b99a353767bcc2169a21106429c3f6d
+	source = https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Test-Vars-0.014.tar.gz
+	md5sums = 8aec7213ad746761000530b6a79432af
+	sha512sums = 25361ab010c5d991e3f955fbc2956fb52c5a31801fbc742b4d7eb02fd56d71eee4314cb515ece8c3fc76ab88bdee4304ccc0762d7f7360bdfd05b05c51ac6314
 
 pkgname = perl-test-vars
 
