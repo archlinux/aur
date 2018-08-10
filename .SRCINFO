@@ -1,6 +1,6 @@
 pkgbase = python-rollbar
 	pkgdesc = Easy and powerful exception tracking with rollbar
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://rollbar.com/docs/notifier/pyrollbar/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-rollbar
 	makedepends = python-setuptools
 	depends = python-requests
 	depends = python-six
-	source = https://github.com/rollbar/pyrollbar/archive/v0.14.1/python-rollbar-0.14.1.tar.gz
-	sha256sums = 70e39870afb76da2653ed03fde1be9813eb0913aaa928bcdcda058e8d3690536
+	source = https://github.com/rollbar/pyrollbar/archive/v0.14.2/python-rollbar-0.14.2.tar.gz
+	sha256sums = beb0f85cf65a24ef80f4be497273b6e66d3f35d80a465c585ac3603408cbef22
 
 pkgname = python-rollbar
 
