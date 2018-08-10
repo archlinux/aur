@@ -1,7 +1,7 @@
 pkgbase = jupyter_nbextensions_configurator
 	pkgdesc = Jupyter serverextension providing configuration interfaces for nbextensions
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jupyter-contrib/jupyter_nbextensions_configurator
 	arch = any
 	license = BSD

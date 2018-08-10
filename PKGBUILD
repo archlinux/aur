@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=jupyter_nbextensions_configurator
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Jupyter serverextension providing configuration interfaces for nbextensions'
 arch=(any)
 url="https://github.com/jupyter-contrib/$pkgname"
