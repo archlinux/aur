@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=blackmagic-decklink-sdk
-pkgver=10.11.1
+pkgver=10.11.2
 pkgrel=1
 pkgdesc='Blackmagic DeckLink SDK'
 arch=('any')
@@ -13,14 +13,14 @@ source=('LICENSE')
 sha256sums=('cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df')
 
 _srcfile="Blackmagic_DeckLink_SDK_${pkgver}.zip"
-_downloadid='d05a346c5fd34a629a38c9eef7c832ef'
-_referid='b8c265582bcf4df49208f80570bf5a14'
+_downloadid='cabdbaac37bd4d1aabd8d7f9c9a40922'
+_referid='d01a5436c67d4fb1afe3e26b751b9d87'
 _srcurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
-_expected_sha256sum='6ce5c8abd16dd54de36111e7bf7db56fec209f6965251cd70927771210a65488'
+_expected_sha256sum='4b312e9f6925e95cba2e5ac597f48eaf09f7534cd29ea2d7a043b299d0afa2b6'
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/68.0.3440.84 \
+                        Chrome/68.0.3440.106 \
                         Safari/537.36"
 _reqjson="{ \
     \"platform\": \"Linux\", \
@@ -111,5 +111,5 @@ package() {
     install -D -m644 *.pdf "${pkgdir}/usr/share/doc/${pkgname}"
     
     # license
-    install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
