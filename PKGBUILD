@@ -5,10 +5,10 @@ pkgver=1.1.1
 pkgrel=1
 pkgdesc="Markdown Editor"
 arch=('x86_64')
-url="http://i38.me/justmd/"
+url="http://www.i38.me/justmd/"
 license=('GPL')
 depends=('xdg-utils')
-source_x86_64=("https://github.com/i38/i38.github.io/raw/master/public/justmd/justmd-linux-x64-v1.1.1.tar.gz")
+source_x86_64=("https://github.com/i38/justmd/releases/download/v1.1.1/justmd-linux-x64-v1.1.1.tar.gz")
 source=($pkgname.desktop
         $pkgname.png)
 sha512sums=('a1f4ab5f4dfc0b10c80b80f6d94473c017debbc291b247c02cbc3bbe8e54b9cea6aa8727b4c58c8197a4e354e85addb44d4b8890c4c326c29f1c4a9aa88267b3'
