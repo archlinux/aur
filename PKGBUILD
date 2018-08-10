@@ -9,14 +9,14 @@
 pkgname=mutter-781835-workaround
 _pkgname=mutter
 pkgver=3.28.3
-pkgrel=7
+pkgrel=8
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users."
 url="https://git.gnome.org/browse/mutter"
 arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
-         gnome-settings-daemon libgudev libinput pipewire 'gnome-shell=3.28.3') # or gnome-shell-performance=3.28.3
+         gnome-settings-daemon libgudev libinput pipewire 'gnome-shell=3.28.3+7+g721ce5403') # or gnome-shell-performance=3.28.3+7+g721ce5403
 makedepends=(intltool gobject-introspection git)
 provides=(mutter)
 conflicts=(mutter)
