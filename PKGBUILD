@@ -9,8 +9,8 @@
 
 pkgname=davinci-resolve
 _pkgname=resolve
-pkgver=14.3
-pkgrel=1
+pkgver=14.3.1
+pkgrel=0
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -19,18 +19,19 @@ depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl
          'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit'
          'qt5-webengine' 'qt5-websockets')
 options=('!strip')
+conflicts=('davinci-resolve-beta' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
 
 if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
   if [ -f $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
     ln -sfn $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
   else
-    msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in ${pkgdir} in your Downloads directory."
+    msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in ${pkgdir} or in your Downloads directory."
     sleep 3
   fi
 fi
 
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('a9847a4590a2097df16e1d34d8e2ae01aba136c9cdaaed6849f61d5793783536')
+sha256sums=('9f00c18881db9922604e184d0a6cbd47a145ec7ebe04aa5043286e9e755e8551')
 
 package() {
 #	msg2 "Did you download the archive manually? If not, this will fail."
