@@ -1,8 +1,8 @@
-1c1
-< project('waybar', 'cpp', 'c', default_options : ['cpp_std=c++17'])
+5c5
+<     default_options : ['cpp_std=c++17'],
 ---
-> project('waybar', 'cpp', 'c', default_options : ['cpp_std=c++17', 'default_library=static'])
-21c21
+>     default_options : ['cpp_std=c++17', 'default_library=static']
+26c26
 < fmt = dependency('fmt', fallback: ['fmtlib', 'fmt_dep'])
 ---
 > fmt = subproject('fmtlib').get_variable('fmt_dep')
