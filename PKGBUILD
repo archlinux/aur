@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-code-git
-pkgver=r3242.07b93fd1
+pkgver=r3258.5b7fbfda
 pkgrel=1
 pkgdesc='The Pantheon Code Editor'
 arch=('x86_64')
