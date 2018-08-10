@@ -2,7 +2,7 @@
 
 pkgname=linphone-desktop-all-git
 pkgver=4.1.1.r520.b2e96277
-pkgrel=1
+pkgrel=2
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
 url="https://www.${pkgname%-desktop-all-git}.org/"
@@ -15,7 +15,7 @@ source=("${pkgname%-all-git}::git://git.${pkgname%-desktop-all-git}.org/${pkgnam
         "${pkgname%-all-git}-submodules.patch")
 sha256sums=("SKIP"
             "0a3212622757639905b0d82bcb2b4ebfef11dc7312011c4413334db70ca2e1e6"
-            "2896ee561bae9a99277202d715999b1b4b1597da025e11f47570a9c097cee4c9")
+            "a37f04a276899944c0c0def3fffe5486c1cd33ede0632c79f1c5daf6e33c2eed")
 
 prepare() {
   cd "${srcdir}/${pkgname%-all-git}"
