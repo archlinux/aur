@@ -92,13 +92,6 @@ package_kodi-git() {
       -P cmake_install.cmake
   done
 
-  # Licenses
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  for licensef in LICENSE.md copying.txt; do
-    mv "$pkgdir/usr/share/doc/kodi/$licensef" \
-      "$pkgdir/usr/share/licenses/$pkgname"
-  done
-
   # python2 is being used
   cd "$pkgdir"
   grep -lR '#!.*python' * | while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
