@@ -2,7 +2,7 @@
 
 pkgname=linphone-desktop-all-git
 pkgver=4.1.1.r522.578e1a27
-pkgrel=2
+pkgrel=3
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
 url="https://www.${pkgname%-desktop-all-git}.org/"
