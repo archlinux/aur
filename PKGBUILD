@@ -5,7 +5,7 @@ arch=(any)
 pkgdesc="Portable library mainly aimed at video game and multimedia programming (mingw-w64)"
 license=("custom")
 depends=(mingw-w64-crt)
-makedepends=(mingw-w64-cmake git mingw-w64-libtheora mingw-w64-physfs mingw-w64-freetype mingw-w64-flac mingw-w64-openal mingw-w64-opusfile mingw-w64-libwebp)
+makedepends=(mingw-w64-cmake git mingw-w64-libtheora mingw-w64-physfs mingw-w64-freetype2 mingw-w64-flac mingw-w64-openal mingw-w64-opusfile mingw-w64-libwebp)
 options=(staticlibs !strip !buildflags)
 url="https://liballeg.org/"
 source=("git://github.com/liballeg/allegro${pkgver%%.*}.git#tag=$pkgver")
