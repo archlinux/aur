@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git' 'kodi-tools-texturepacker-git' 'kodi-dev-git')
 _gitname='xbmc'
-pkgver=18.0a2.r297.gb845d173607
+pkgver=18.0a3.r119.gc074f254087
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -62,7 +62,7 @@ build() {
 
 package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
-  depends=('bluez-libs' 'desktop-file-utils' 'ffmpeg' 'glew'
+  depends=('bluez-libs' 'desktop-file-utils' 'ffmpeg' 'fstrcmp' 'glew'
            'hicolor-icon-theme' 'libcdio' 'libcec' 'libmariadbclient' 'libmicrohttpd'
            'libxrandr' 'libxslt' 'lzo' 'mesa' 'python2-pillow' 'python2-simplejson'
            'smbclient' 'taglib' 'tinyxml' 'xorg-xdpyinfo')
