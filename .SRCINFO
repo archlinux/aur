@@ -1,0 +1,13 @@
+pkgbase = buckup
+	pkgdesc = Command line tool to create S3 buckups easily.
+	pkgver = 0.1a2
+	pkgrel = 1
+	url = https://github.com/torchbox/buckup
+	arch = any
+	license = BSD
+	depends = python-boto3
+	source = https://github.com/torchbox/buckup/archive/v0.1a2.tar.gz
+	md5sums = 9d1d479c17914d4ee851779a1ff392f8
+
+pkgname = buckup
+
