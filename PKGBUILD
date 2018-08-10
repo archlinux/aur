@@ -5,10 +5,10 @@
 
 # Maintainer: Your Name <jkraehemann@gmail.com>
 pkgname=gsequencer
-pkgver=1.4.34
+pkgver=1.4.35
 pkgrel=1
 pkgdesc="Advanced Gtk+ Sequencer"
-arch=('x86_64' 'i386')
+arch=('x86_64' 'i686')
 url="https://nongnu.org/gsequencer"
 license=('GPL3')
 depends=('pcre' 'ladspa' 'dssi' 'lv2' 'libsndfile' 'libsamplerate' 'libinstpatch' 'libpulse' 'gtk2')
@@ -18,7 +18,7 @@ conflicts=('midi2xml')
 source=("https://download.savannah.gnu.org/releases/gsequencer/1.4.x/$pkgname-$pkgver.tar.gz"
         "https://download.savannah.gnu.org/releases/gsequencer/1.4.x/$pkgname-alsa-default.patch")
 noextract=()
-md5sums=('1824ce22d64a5ee7ffcef9d37c74ca30' '65ec508f55ffc2fbab3cbe61276a3f8d')
+md5sums=('7b5d1c4a18638fbee6283f4609d10d5f' '65ec508f55ffc2fbab3cbe61276a3f8d')
 validpgpkeys=()
 
 prepare() {
