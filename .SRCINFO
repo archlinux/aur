@@ -1,7 +1,7 @@
 pkgbase = rnr
-	pkgdesc = Command-line tool to rename multiple files.
+	pkgdesc = A CLI tool to rename files and directories that supports regex.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ChuckDaniels87/rnr
 	arch = x86_64
 	license = MIT

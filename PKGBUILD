@@ -2,8 +2,8 @@
 
 pkgname=rnr
 pkgver=0.2.0
-pkgrel=1
-pkgdesc='Command-line tool to rename multiple files.'
+pkgrel=2
+pkgdesc='A CLI tool to rename files and directories that supports regex.'
 arch=('x86_64')
 url='https://github.com/ChuckDaniels87/rnr'
 license=('MIT')
