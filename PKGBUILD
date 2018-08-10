@@ -1,6 +1,6 @@
 # Maintainer: inso <insomniak.fr@gmail.com>
 pkgname=sakia
-pkgver=0.32.9
+pkgver=0.33.0rc7
 pkgrel=1
 epoch=
 pkgdesc="A Python/Qt client for Duniter network"
@@ -21,10 +21,10 @@ install=
 changelog=
 source=("https://github.com/duniter/sakia/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=("1e6496e51725560a882907b8b8d0671f863f2c506e8ca91b4eb46ff03027245a")
+sha256sums=("1c2a6dc31f7c13d7145ac199a9630289064500b03de41c3d08accc9338850f42")
 validpgpkeys=()
 
-PYENV_PYTHON_VERSION=3.5.3
+PYENV_PYTHON_VERSION=3.5.4
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -37,7 +37,6 @@ prepare() {
         pyenv shell $PYENV_PYTHON_VERSION
         which python
         pip install pyinstaller
-        pip install PyQt5==5.8.2
 	pip install -r requirements.txt
 	rm "$PYENV_ROOT/versions/$PYENV_PYTHON_VERSION/bin/pyuic5"
 }
