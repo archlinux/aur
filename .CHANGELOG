@@ -1,6 +1,34 @@
 Version history
 ===============
 
+0.9.19
+------
+
+2018-08-10
+
+RepForLev: For a highlighted level in the singleplayer browser, you can enter
+the new dialog RepForLev that will offer all replays that start with the
+basename of the highlit level. (If the level file is "mylevel.txt", RepForLev
+will offer all replays that start with "mylevel-".)
+
+lemforum, some backroute fixes: Get Hype, remove flinging backroute. Toccata,
+use Proxima's backroute fix against a solution that takes 30 minutes. Striking
+News, add water pit at the top, different cactus placement at the bottom.
+Behind Bars, save 8/10.
+
+Multiplayer maps: Flopsy's shorter Block Chaos, Harden the Paint. Raymanni's
+Rainbow Road, The Frog-Hotel, Follow the Thread.
+
+Fix #354: Prevent the one-pixel-thick line of graphical garbage at the right
+edge of the map. This line occurred with some noninteger zooms during
+play/editor.
+
+Fix #344: Guideline pieces are selectable from the terrain browser again.
+Depth-2-directories (e.g., "geoo/construction/") are listed as only the second
+directory ("construction/") in the root selection of tile browser.
+
+
+
 0.9.18
 ------
 
