@@ -24,6 +24,7 @@ pkgbase = python-orange
 	depends = python-dill
 	depends = python-pip
 	depends = python-serverfiles
+	depends = python-louvain
 	source = https://github.com/biolab/orange3/archive/3.15.0.tar.gz
 	sha256sums = e3fd38bc393aba34f3154e9c3bdf5b95064ad159616706a9e064dd17256e2b32
 
