@@ -1,5 +1,6 @@
 *.pkg.tar.xz
 *.tar.gz
+*.log
 /pkg/
 /lazygit/
 /src/
