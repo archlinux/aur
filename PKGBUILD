@@ -6,7 +6,7 @@ name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 fragment="#branch=dev"
 pkgname=${name}-git
-pkgver=3.5.dev.2.r9.gf4e2a25
+pkgver=3.5.dev.2.r16.g983b558
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -22,15 +22,13 @@ fi
 install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
         "nvm-export.patch"
-        "sse_sum.patch"
         "${pkgname}.install"
         "vocabulary-tree-64K.bin::https://demuc.de/colmap/vocab_tree-65536.bin"
         "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree-262144.bin"
         "vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree-1048576.bin"
         )
 md5sums=('SKIP'
-         '3c0027625739e972f8af8bea6f557b35'
-         '0102c94336f466f9d5a9716fe2310821'
+         '1542bbbaa7951dbf0b2472354b4b493d'
          'ebb1dc43e014a1e720a06422c6248a40'
          '3521ff3c601596473c6ce5256772f606'
          'e423daecc45d56b749d25eeace9de1c8'
@@ -44,7 +42,6 @@ pkgver() {
 prepare() {
   cd ${srcdir}/${pkgname}
   git apply ${srcdir}/nvm-export.patch
-  git apply ${srcdir}/sse_sum.patch
 }
 
 

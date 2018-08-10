@@ -19,7 +19,7 @@ index c9a65fc..29358b3 100755
 +    //fix white space in nvm path acordingly
 +    std::string image_path_nvm = image_path ;
 +    std::transform(image_path_nvm.begin(), image_path_nvm.end(), image_path_nvm.begin(), [](char ch) {
-+    	return ch == ' ' ? '"' : ch;
++        return ch == ' ' ? '"' : ch;
 +    });
 +
 +    file << JoinPaths(image_path_nvm, image.Name()) << " ";
