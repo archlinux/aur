@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=4.1.r91528.ged647ab79f
-pkgrel=2
+pkgver=4.1.r91592.g87cc7e8d4e
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -37,10 +37,10 @@ makedepends=(
     # AUR:
         'blackmagic-decklink-sdk'
 )
-#makedepends_x86_64=(
-#    # AUR:
-#        'vmaf'
-#)
+makedepends_x86_64=(
+    # AUR:
+        'vmaf'
+)
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
     'ffmpeg-qsv-git' 'ffmpeg-full' 'ffmpeg-full-nvenc' 'ffmpeg-semifull-git' 'libavutil.so'
@@ -80,7 +80,7 @@ build() {
     # set x86_64 specific options
     if [ "$CARCH" = 'x86_64' ] 
     then
-        local _libvmaf='--disable-libvmaf'
+        local _libvmaf='--enable-libvmaf'
         local _cudasdk='--enable-cuda-sdk'
         local _libmfx='--enable-libmfx'
         local _libnpp='--enable-libnpp'
@@ -231,6 +231,6 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m755 tools/qt-faststart  "${pkgdir}/usr/bin/qt-faststart"
-    install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m755 tools/qt-faststart  -t "${pkgdir}/usr/bin"
+    install -D -m644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
