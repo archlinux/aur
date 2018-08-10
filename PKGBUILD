@@ -3,7 +3,7 @@
 # Contributor: Duck Hunt <vaporeon@tfwno.gf>
 
 pkgname=libretro-ppsspp-git
-pkgver=r24191.9c9432e75
+pkgver=r24646.6fe7a9746
 pkgrel=1
 pkgdesc='Sony PlayStation Portable core'
 arch=('x86_64')
