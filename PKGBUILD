@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=linphone-desktop-all-git
-pkgver=4.1.1.r521.c59a68c2
+pkgver=4.1.1.r522.578e1a27
 pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
@@ -9,12 +9,12 @@ url="https://www.${pkgname%-desktop-all-git}.org/"
 license=("GPL2")
 depends=("qt5-base" "qt5-graphicaleffects" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-svg" "qt5-tools")
 makedepends=("cmake" "doxygen" "git" "graphviz" "ladspa" "python-pystache" "yasm")
-conflicts=("linphone-dekstop")
+conflicts=("${pkgname%-all-git}")
 source=("${pkgname%-all-git}::git://git.${pkgname%-desktop-all-git}.org/${pkgname%-all-git}"
         "${pkgname%-desktop-all-git}.desktop"
         "${pkgname%-all-git}-submodules.patch")
 sha256sums=("SKIP"
-            "0a3212622757639905b0d82bcb2b4ebfef11dc7312011c4413334db70ca2e1e6"
+            "87cab988f97e522252f308c6190dd7f2b47c553336e3f0fd839cfd2c23da42ba"
             "2896ee561bae9a99277202d715999b1b4b1597da025e11f47570a9c097cee4c9")
 
 prepare() {
@@ -42,10 +42,10 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname%-all-git}"
 
-  msg2 "Removing possible possible link in /tmp/linphone-desktop ..."
+  msg2 "Removing possible link in ${pkgname%-all-git} ..."
   rm -rf "/tmp/${pkgname%-all-git}"
 
-  msg2 "Moving source files to /tmp/linphone-desktop ..."
+  msg2 "Moving source files to ${pkgname%-all-git} ..."
   mv "${srcdir}/${pkgname%-all-git}" "/tmp/"
 
   msg2 "Preparing build..."
