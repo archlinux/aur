@@ -1,6 +1,6 @@
 pkgbase = flips-git
 	pkgdesc = Patcher for IPS and BPS files
-	pkgver = r55.b653aa9
+	pkgver = r56.d95c34c
 	pkgrel = 1
 	url = https://github.com/Alcaro/Flips
 	install = flips.install
