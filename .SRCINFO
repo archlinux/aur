@@ -1,6 +1,6 @@
 pkgbase = librm
 	pkgdesc = Router Manager library
-	pkgver = v2.0+10+gc114cff
+	pkgver = 2.0+10+gc114cff
 	pkgrel = 1
 	url = https://www.tabos.org/
 	arch = i686

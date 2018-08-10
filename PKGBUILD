@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 
 pkgname=librm
-pkgver=v2.0+10+gc114cff
+pkgver=2.0+10+gc114cff
 pkgrel=1
 pkgdesc="Router Manager library"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 build() {
