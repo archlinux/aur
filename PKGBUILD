@@ -2,7 +2,7 @@
 
 pkgname=flit
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple packaging tool for simple Python packages.'
 arch=('any')
 url="http://$pkgname.readthedocs.io"

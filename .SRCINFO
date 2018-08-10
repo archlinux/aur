@@ -1,7 +1,7 @@
 pkgbase = flit
 	pkgdesc = Simple packaging tool for simple Python packages.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://flit.readthedocs.io
 	arch = any
 	license = BSD
