@@ -16,8 +16,8 @@ license=('custom')
 
 source=('packettracer' 'linguist' 'packettracer.sh')
 source_x86_64=('local://Packet Tracer 7.2 for Linux 64 bit.tar.gz')
-sha512sums=('3fb22457ae4901bd22a8d984da6ae61354fa0c8a1be972a7ab0b48afcb3933bb8c0625dbd4f370fd4da394c8b043724e32ccced93c76f3536fac9defb941ac17'
-	    'bd800d5335e54436f760e4a21a381c5cca4752c864c559ebc302bdcfc9819a3cf76fecc3b1490fdfd18d0f98e14c0886d8c6b7776dd3814af7ade17b9c85d80a'
+sha512sums=('7135a62c5e46d9742eb8bdb5b3b171201243487e3681d152595121cfa1b9e5f3a0f89a6e54f25b7aa4cd2ae87156db4351b992a4988d364ba36c7bd71829c4d2'
+	    'dab1f7f9c77c900a65899f2d795d9df39136de7e6ab1f544c538311012a212edbbb2101741672fdbe729c43e5bef0cb323800aa40b68b0cacf14342a1b040800'
 	    '3f4732213a9ca7c95f742edbdccf4d84c95e1c9e00d3dfa72e79b8039ef86bed29bc5b76586402a233ce3af409c0a56c759c2554e17962c292a6bd333654ce71')
 sha512sums_x86_64=('c5315fece36504ea551b8bcc9abc8c92829b90eb986e6e231cbbb7add981bac3d7d15343efe0a74527a25d768dcb60cf603699528ff3bde42251678ce0f70f6d')
 
@@ -29,7 +29,7 @@ install=pt.install
 package() {
   cd "${srcdir}/"
 
-  mkdir -p "${pkgdir}/usr/share/packettracer/"{art,backgrounds,bin,extensions,help,languages,lib,saves,Sounds,templates}
+  mkdir -p "${pkgdir}/usr/share/packettracer/"{art,backgrounds,bin,extensions,help,languages,saves,Sounds,templates}
 
   cp -r ./art/* "${pkgdir}/usr/share/packettracer/art"
   cp -r ./backgrounds/* "${pkgdir}/usr/share/packettracer/backgrounds"
@@ -39,7 +39,6 @@ package() {
   cp -r ./saves/* "${pkgdir}/usr/share/packettracer/saves"
   cp -r ./Sounds/* "${pkgdir}/usr/share/packettracer/Sounds"
   cp -r ./templates/* "${pkgdir}/usr/share/packettracer/templates"
-  cp -r ./lib/* "${pkgdir}/usr/share/packettracer/lib"
 
   # Help Files that are optinal uncomment to include them (55 MB)
   # cp -r ./help/* "${pkgdir}/usr/share/packettracer/help"
@@ -59,7 +58,7 @@ package() {
   install -D -m644 ./art/pkz.png "${pkgdir}/usr/share/icons/hicolor/48x48/mimetypes/application-x-pkz.png"
 
   # EULA
-  install -D -m644 eula.txt "${pkgdir}/usr/share/licenses/$pkgname/eula.txt"
+  install -D -m644 eula72.txt "${pkgdir}/usr/share/licenses/$pkgname/eula72.txt"
 
   # Shell script to start PT and tell it to use included qt files
   # Arch's QT causes PT to crash when saving!
