@@ -1,0 +1,50 @@
+diff --git a/detok/Makefile b/detok/Makefile
+index 235966a..9c6cdd1 100644
+--- a/detok/Makefile
++++ b/detok/Makefile
+@@ -30,8 +30,7 @@ STRIP	= strip
+ INCLUDES = -I../shared
+ 
+ # Normal Flags:
+-CFLAGS  = -O2 -Wall #-Wextra
+-LDFLAGS = 
++CFLAGS  := $(CFLAGS) -Wall
+ 
+ # Coverage:
+ #CFLAGS  := $(CFLAGS) -fprofile-arcs -ftest-coverage
+diff --git a/romheaders/Makefile b/romheaders/Makefile
+index cdb3d51..bdfa227 100644
+--- a/romheaders/Makefile
++++ b/romheaders/Makefile
+@@ -27,7 +27,7 @@ PROGRAM = romheaders
+ DESTDIR  = /usr/local
+ CC	 ?= gcc
+ STRIP    = strip
+-CFLAGS   = -O2 -Wall -Wextra
++CFLAGS   := $(CFLAGS) -Wall -Wextra
+ INCLUDES = -I../shared
+ 
+ SOURCES = romheaders.c ../shared/classcodes.c
+@@ -37,7 +37,7 @@ SOURCES = romheaders.c ../shared/classcodes.c
+ all: romheaders
+ 
+ romheaders: $(SOURCES)
+-	$(CC) $(CFLAGS) $(INCLUDES) $(SOURCES) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDES) $(SOURCES) -o $@
+ 	$(STRIP) romheaders
+ 
+ clean:
+diff --git a/toke/Makefile b/toke/Makefile
+index 0b9c928..0928d13 100644
+--- a/toke/Makefile
++++ b/toke/Makefile
+@@ -30,8 +30,7 @@ STRIP	= strip
+ INCLUDES = -I../shared
+ 
+ # Normal flags
+-CFLAGS  = -O2 -Wall #-Wextra 
+-LDFLAGS =
++CFLAGS  := $(CFLAGS) -Wall
+ 
+ # Coverage:
+ #CFLAGS  := $(CFLAGS) -fprofile-arcs -ftest-coverage
