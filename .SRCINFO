@@ -22,3 +22,27 @@ pkgbase = alun
 
 pkgname = alun
 
+pkgbase = alun
+	pkgdesc = A CLI tool that notify the user when there is an update, excluding AUR
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/HOuadhour/alun
+	install = alun.install
+	arch = any
+	license = GPL3
+	depends = cronie
+	depends = pacman-contrib
+	depends = libnotify
+	depends = python
+	depends = pacman
+	optdepends = dunst: get notification on i3 WM
+	backup = etc/alun/conf.py
+	backup = etc/alun/crontab
+	source = https://github.com/HOuadhour/alun/releases/download/v1.0.1/alun-1.0.1.tar.gz
+	source = https://github.com/HOuadhour/alun/releases/download/v1.0.1/alun-1.0.1.tar.gz.sig
+	validpgpkeys = 6481A7A3E66A3AA39D0DD7302A60AB408C14BF70
+	sha256sums = 7c1c2640fa8391e32dff0581bb1591c8cf203df2ebcbe5f96446a26644ee4f0e
+	sha256sums = 8833cd055e38d2da997315e3f8d248cbedfacee5f38806b2cb31d1ecea37a026
+
+pkgname = alun
+
