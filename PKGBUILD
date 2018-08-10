@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.28.r24.g92a4cba760
+pkgver=2.28.r46.g2ce7ba7d15
 pkgrel=1
 pkgdesc='GNU C Library'
 arch=('i686' 'x86_64')
@@ -22,9 +22,11 @@ options=('staticlibs')
 install='glibc-git.install'
 source=('git+https://sourceware.org/git/glibc.git'
         'locale-gen'
+        '0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch'
         'bz20338.patch')
 sha256sums=('SKIP'
             '05fbb88877cdddc99ef25e48304d6e5ac236660c20925d461cb4e90ebcb3b7de'
+            '3b764c4e5658486d1f9e98a36043eb51705c4eebc9abe3f9edc5049dd5dcdc47'
             '959d4f41edd004bddd9091c4d8c8c3aa07d79a04bfdb89d59f9f26fe5a74d32a')
 
 pkgver() {
@@ -38,7 +40,12 @@ prepare() {
 
     cd glibc
     # https://sourceware.org/bugzilla/show_bug.cgi?id=20338
-    patch -p1 < ../bz20338.patch
+    patch -p1 -i ../bz20338.patch
+    # revert commit breaking proprietary electron apps for now; this is lld's fault
+    # but it's too serious a regression to break software in the wild until users
+    # have a solution. See https://bugs.archlinux.org/task/59550 and
+    # https://github.com/electron/electron/issues/13972#issuecomment-411532741
+    patch -p1 -i ../0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch
 }
 
 build() {
@@ -66,6 +73,7 @@ build() {
         --with-bugurl=https://bugs.archlinux.org/ \
         --enable-add-ons \
         --enable-bind-now \
+        --enable-cet \
         --enable-lock-elision \
         --enable-multi-arch \
         --enable-stack-protector=strong \
@@ -109,6 +117,9 @@ package() {
 
     # We generate these in the post-install with ldconfig -r .
     rm "$pkgdir"/etc/ld.so.cache
+
+    # Shipped in tzdata
+    rm -f "$pkgdir"/usr/bin/{tzselect,zdump,zic}
 
     # handle selectively stripping unless debug packages are requested
     if check_option 'debug' n; then
