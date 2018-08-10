@@ -1,7 +1,7 @@
 # Maintainer: dryland <dryland718@163.com>
 
 pkgname=reliao
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="爱奇艺之家热聊"
 arch=("x86_64")
