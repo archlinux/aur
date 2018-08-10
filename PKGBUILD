@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=4.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -39,10 +39,10 @@ makedepends=(
     # AUR:
         'blackmagic-decklink-sdk'
 )
-#makedepends_x86_64=(
-#    # AUR:
-#        'vmaf'
-#)
+makedepends_x86_64=(
+    # AUR:
+        'vmaf'
+)
 provides=(
     'ffmpeg' 'ffmpeg-full-nvenc' 'ffmpeg-nvenc' 'ffmpeg-libfdk_aac' 'ffmpeg-decklink'
     'qt-faststart' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
@@ -55,11 +55,16 @@ conflicts=(
 )
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'LICENSE')
+source_x86_64=('vmaf-1.3.9-fix.patch')
 sha256sums=('a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
+sha256sums_x86_64=('4eab61257adfdae2233cf8e5a12bd4d1e551b69711c8b4d14cffdd0f2c85812b')
 
 prepare() {
     cd "${_srcname}-${pkgver}"
+    
+    # fix build with vmaf 1.3.9 (x86_64 only)
+    [ "$CARCH" = 'x86_64' ] && patch -Np1 -i "${srcdir}/vmaf-1.3.9-fix.patch"
     
     # strictly specifying nvcc path is needed if package is installing
     # cuda for the first time (nvcc path will be in $PATH only after relogin)
@@ -72,7 +77,7 @@ build() {
     # set x86_64 specific options
     if [ "$CARCH" = 'x86_64' ] 
     then
-        local _libvmaf='--disable-libvmaf'
+        local _libvmaf='--enable-libvmaf'
         local _cudasdk='--enable-cuda-sdk'
         local _libmfx='--enable-libmfx'
         local _libnpp='--enable-libnpp'
@@ -218,6 +223,6 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m755 tools/qt-faststart  "${pkgdir}/usr/bin/qt-faststart"
-    install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m755 tools/qt-faststart  -t "${pkgdir}/usr/bin"
+    install -D -m644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
