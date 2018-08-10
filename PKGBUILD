@@ -64,7 +64,7 @@ package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
   depends=('bluez-libs' 'desktop-file-utils' 'ffmpeg' 'fstrcmp' 'glew'
            'hicolor-icon-theme' 'libcdio' 'libcec' 'libmariadbclient' 'libmicrohttpd'
-           'libxrandr' 'libxslt' 'lzo' 'mesa' 'python2-pillow' 'python2-simplejson'
+           'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'python2-pillow' 'python2-simplejson'
            'smbclient' 'taglib' 'tinyxml' 'xorg-xdpyinfo')
   optdepends=('gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED'
               'afpfs-ng: Apple shares support'
@@ -72,7 +72,6 @@ package_kodi-git() {
               'python2-pybluez: Bluetooth support'
               'libnfs: NFS shares support'
               'libplist: AirPlay support'
-              'lirc: Remote controller support'
               'lsb-release: log distro information in crashlog'
               'pulseaudio: PulseAudio support'
               'shairplay: AirPlay support'
