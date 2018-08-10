@@ -1,0 +1,13 @@
+pkgbase = juiced-git
+	pkgdesc = Set your background to a color, using X11
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/drkhsh/juiced
+	arch = any
+	license = ISC
+	depends = libnotify
+	source = git+https://github.com/drkhsh/juiced.git
+	sha256sums = SKIP
+
+pkgname = juiced-git
+
