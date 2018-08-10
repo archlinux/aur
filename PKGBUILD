@@ -3,8 +3,8 @@
 # Contributor:  Jeremy Asuncion <jeremyasuncion808@gmail.com>
 
 pkgname=lab
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 pkgdesc="A hub-like tool for GitLab (tagged release)"
 arch=('x86_64')
 url="https://zaquestion.github.io/lab/"
@@ -14,7 +14,7 @@ optdepends=('hub')
 makedepends=('go' 'dep')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/zaquestion/lab/archive/v${pkgver}.tar.gz")
-sha512sums=('e47a3255d3d98640a005e4da2f790db44816e8353861987af327a1a24d0801477a4889814b565f1870afb0508e607775caee7ad6b5d98e448d4d58d64c8d6d37')
+sha512sums=('8cd3598f8e132c42841748f6c8865a1f967a10e36b55a1d873a075b07eff8d20205432a6c44dd7f97dece0715da8f181b42bf60dc632568a735c7390443d3a92')
 _gourl="github.com/zaquestion/${pkgname}"
 
 prepare() {
@@ -32,7 +32,7 @@ build () {
 }
 
 package() {
-	cd "${pkgname%-bin}-${pkgver}"
+    cd "${pkgname%-bin}-${pkgver}"
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
     install -Dm755 lab $pkgdir/usr/bin/lab
 }
