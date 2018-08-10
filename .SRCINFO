@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-tinyxml
 	pkgdesc = Simple, small, C++ XML parser that can be easily integrated into other programs (mingw-w64)
 	pkgver = 2.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.grinninglizard.com/tinyxml
 	arch = any
 	license = zlib
