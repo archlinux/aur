@@ -1,7 +1,7 @@
 # Maintainer : fuero <fuerob@gmail.com>
 pkgname='lazygit-git'
 pkgdesc='A simple terminal UI for git commands'
-pkgver=r320.a8c6f31
+pkgver=r333.f20121c
 pkgrel=1
 _repo_prefix='github.com/jesseduffield'
 _repo_name="${pkgname/-git}"
@@ -10,6 +10,8 @@ license=('MIT')
 arch=('x86_64')
 makedepends=('go-pie' 'git')
 depends=('glibc')
+conflicts=('lazygit')
+provides=('lazygit')
 _commit='master'
 source=("git+https://${_repo_prefix}/${_repo_name}#commit=${_commit}")
 sha512sums=('SKIP')
@@ -34,7 +36,7 @@ clean() {
 
 build () {
   cd "src/${_repo_prefix}/${_repo_name}"
-  go build -i -v -ldflags "-w -s -X main.Rev=${pkgver##*.} -X main.builddate=`date -u +%Y%m%d.%H%M%S`" -o ${_repo_name}.bin
+  go build -x -i -v -ldflags "-X main.Rev=${pkgver##*.} -X main.builddate=`date -u +%Y%m%d.%H%M%S`" -o ${_repo_name}.bin
 }
 
 package () {
