@@ -2,7 +2,7 @@
 
 pkgname=ixxat-socketcan
 pkgver=1.1.148.0
-pkgrel=0
+pkgrel=1
 pkgdesc="SocketCAN driver for IXXAT USB-to-CAN v2"
 arch=('i686' 'x86_64')
 url="https://www.ixxat.com/products/products-industrial/pc-interfaces/pc-can-interfaces/socketcan"
@@ -13,7 +13,7 @@ install=$pkgname.install
 source=("https://www.ixxat.com/docs/librariesprovider8/default-document-library/downloads/other-drivers/socketcan.zip?sfvrsn=c486dcd6_22")
 md5sums=('c42d19b75802691b057a8163606903af')
 
-_extramodules=extramodules-$(uname -r | sed 's/\([0-9]*\.[0-9]*\).*/\1/')-arch
+_extramodules=extramodules-ARCH
 
 build() {
 	make
