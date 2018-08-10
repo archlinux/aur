@@ -20,22 +20,22 @@ options=('!strip')
 source=("https://protonmail.com/download/protonmail-bridge_${_pkgver}-${_pkgrel}_amd64.deb")
 sha256sums=('d4f5cffda8952cbae4a08ae9d69cdce79101c351411cff1c3823c6c40a254ebb')
 
-package() {
-	tar xvJf data.tar.xz -C "$pkgdir"
+prepare() {
+	tar xvJf data.tar.xz
 
-	# Tarball files are owned by UID:1000
-	chown -R root:root "$pkgdir"
+	mv usr/share/applications/Desktop-Bridge.desktop \
+		usr/share/applications/protonmail-bridge.desktop
+	sed -i "s|Icon=/usr/share/icons/protonmail/Desktop-Bridge.svg|Icon=protonmail-bridge|" \
+                usr/share/applications/protonmail-bridge.desktop
 
 	# Don't pollute /usr/share/icons
-	install -D "$pkgdir/usr/share/icons/protonmail/Desktop-Bridge.svg" \
-		"$pkgdir/usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg"
-	rm -rf "$pkgdir/usr/share/icons/protonmail"
+	mv usr/share/icons/protonmail/Desktop-Bridge.svg \
+		usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg
+        rmdir usr/share/icons/protonmail
+}
 
-	# Update desktop entry with appropriate values
-	mv "$pkgdir/usr/share/applications/Desktop-Bridge.desktop" \
-		"$pkgdir/usr/share/applications/protonmail-bridge.desktop" 
-	sed -i "s|Icon=/usr/share/icons/protonmail/Desktop-Bridge.svg|Icon=protonmail-bridge|" "$pkgdir/usr/share/applications/protonmail-bridge.desktop"
-
+package() {
+        cp -r usr/ "$pkgdir"
 	install -Dm644 "$pkgdir"/usr/lib/protonmail/bridge/{eula.txt,LICENSE} \
 		-t "$pkgdir/usr/share/licenses/$pkgname"
 }
