@@ -1,0 +1,13 @@
+pkgbase = compiledb-generator
+	pkgdesc = Tool for generating Clang's JSON Compilation Database files for make-based build systems
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/nickdiego/compiledb-generator
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	source = https://github.com/nickdiego/compiledb-generator/archive/v0.9.2.tar.gz
+	sha256sums = 27e9df13aee55e1414c73002c93280b09d4cbdcfc1ac01741e460f6c72c3ddb7
+
+pkgname = compiledb-generator
+
