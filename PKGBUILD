@@ -1,8 +1,8 @@
 # Maintainer: Eric DeStefano <eric at ericdestefano dot com>
 # Contributor: mortzu
 pkgname=prips
-pkgver=1.0.1-1
-pkgrel=2
+pkgver=1.0.1
+pkgrel=3
 pkgdesc="Prints IP subnet ranges by list or CIDR"
 arch=('x86_64')
 url="http://packages.debian.org/stable/net/prips"
