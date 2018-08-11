@@ -1,6 +1,6 @@
 pkgbase = perl-toml
 	pkgdesc = Perl parser for Tom's Obvious, Minimal Language
-	pkgver = 0.96
+	pkgver = 0.97
 	pkgrel = 1
 	url = https://metacpan.org/release/TOML
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-toml
 	makedepends = perl-module-build-tiny>=0.35
 	depends = perl-toml-parser>=0.04
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/K/KA/KARUPA/TOML-0.96.tar.gz
-	md5sums = 9f41f6dd1c6f015074261ef3a7b8b6f7
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KARUPA/TOML-0.97.tar.gz
+	md5sums = a61b760431cf04f6df5e280fbb3b8932
 
 pkgname = perl-toml
 
