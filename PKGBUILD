@@ -11,17 +11,17 @@ depends=('gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" 'gnome-shell-extensions-git')
-source=("${pkgname}::git+${url}")
+source=("${pkgname%-*}::git+${url}")
 sha512sums=('SKIP')
 _branch=master
 
 prepare() {
-  cd "${pkgname}"
+  cd "${pkgname%-*}"
   git checkout ${_branch}
 }
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname%-*}"
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -37,7 +37,7 @@ package() {
   find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' -or -iname '*.gtkbuilder' -or -iname '*.glade' \) -exec install -Dm644 -t "${_destdir}" '{}' +
   find -maxdepth 2 \( -iname '*.svg*' \) -exec install -Dm644 -t "${_destdir}/images" '{}' +
   find -name '*.xml' -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas" '{}' +
-  cd "${srcdir}/${pkgname}/locale"
+  cd locale
   for locale in */
     do
       install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
