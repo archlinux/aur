@@ -31,6 +31,9 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
+# Arch stock configuration files are directly pulled from a specific trunk
+arch_config_trunk=28e47b8d0cc6511cc8a1022c3592c1269374eb2a
+
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        60-linux.hook  # pacman hook for depmod
        90-linux.hook  # pacman hook for initramfs regeneration
