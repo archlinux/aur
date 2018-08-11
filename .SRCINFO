@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-easyscreencast-git
 	provides = gnome-shell-extension-easyscreencast
 	conflicts = gnome-shell-extension-easyscreencast
 	conflicts = gnome-shell-extensions-git
-	source = gnome-shell-extension-easyscreencast-git::git+https://github.com/EasyScreenCast/EasyScreenCast
+	source = gnome-shell-extension-easyscreencast::git+https://github.com/EasyScreenCast/EasyScreenCast
 	sha512sums = SKIP
 
 pkgname = gnome-shell-extension-easyscreencast-git
