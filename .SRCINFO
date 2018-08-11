@@ -1,5 +1,5 @@
 pkgbase = opencv-cuda
-	pkgdesc = Open Source Computer Vision Library
+	pkgdesc = Open Source Computer Vision Library with CUDA support
 	pkgver = 3.4.2
 	pkgrel = 2
 	url = http://opencv.org/
