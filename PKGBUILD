@@ -71,6 +71,7 @@ _CPUSUFFIXES_KBUILD=(
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
   IVYBRIDGE HASWELL BROADWELL SILVERMONT SKYLAKE)
 pkgname=('linux-pf')
+pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
 pkgrel=1
