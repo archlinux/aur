@@ -1,33 +1,45 @@
-# Maintainer: Patrick José Pereira <positivcheg94@gmail.com>
+# Maintainer: pingplug <pingplug@foxmail.com>
+# Contributr: Patrick José Pereira <positivcheg94@gmail.com>
+
+_commit=1e8aa8002bc3d6afbfc7b733ea4a19864bbeca14  # tags=v2.15.0
 pkgname=librealsense
-pkgver=c8754286
+pkgver=v2.15.0
 pkgrel=1
-pkgdesc="Librealsense is a cross-platform library (Linux, OSX, Windows) for capturing data from the Intel RealSense F200, SR300 and R200 cameras"
-arch=(any)
+pkgdesc="Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300)"
+arch=('x86_64')
 url="https://github.com/IntelRealSense/librealsense"
 license=('Apache')
-makedepends=()
-depends=('git' 'glfw-x11>=3' 'libusb' 'linux-headers')
-optdepends=('qtcreator')
-changelog=''
-source=("git://github.com/IntelRealSense/librealsense")
-md5sums=(SKIP)
-udev_rules="etc/udev/rules.d/99-realsense-libusb.rules"
+makedepends=('cmake' 'linux-lts-headers')
+depends=('glfw-x11' 'gtk3' 'libusb' 'linux-lts')
+source=("git+https://github.com/IntelRealSense/librealsense#commit=${_commit}")
+sha256sums=(SKIP)
 
 pkgver() {
-  cd "$pkgname"
-  git log --pretty=format:'%h' -n 1
+  cd "${srcdir}/${pkgname}"
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd "$pkgname"
-  mkdir build && cd build
-  cmake ../ -DBUILD_EXAMPLES=true
+  cd "${srcdir}/${pkgname}"
+  mkdir -p build && cd build
+  CFLAGS="${CFLAGS} -Wformat" \
+  CXXFLAGS="${CXXFLAGS} -Wformat" \
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_SBINDIR=bin \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=on \
+    -DBUILD_WITH_STATIC_CRT=off \
+    -DBUILD_WITH_OPENMP=on \
+    -DBUILD_EXAMPLES=true
   make
 }
 
 package() {
-  cd "$pkgname/build"
-  sudo make install
-  echo "Maybe kernel patch be necessary !!"
+  cd "${srcdir}/${pkgname}/build"
+  DESTDIR="${pkgdir}" make install
+  cd "${srcdir}/${pkgname}/config"
+  install -Dm644 99-realsense-libusb.rules "${pkgdir}/etc/udev/rules.d/99-realsense-libusb.rules"
 }
