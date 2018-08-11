@@ -1,14 +1,14 @@
 # Maintainer: Lenovsky <lenovsky@pm.me>
 
 pkgname=telegram-desktop-git
-pkgver=1.2.17.r1.gcf9802517
+pkgver=1.3.12.r0.gaeec5d154
 pkgrel=1
 pkgdesc="Official desktop version of Telegram messaging app (dev branch)"
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats' 'openssl')
-makedepends=('cmake' 'gcc7' 'git' 'gyp' 'range-v3' 'python' 'libappindicator-gtk3')
+makedepends=('cmake' 'git' 'gyp' 'range-v3' 'python' 'libappindicator-gtk3')
 optdepends=('libnotify: desktop notifications')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -53,9 +53,6 @@ prepare() {
 
 build() {
     cd "$srcdir/tdesktop"
-    export CC=gcc-7
-    export CXX=g++-7
-    export ASM=gcc-7
     export LANG=en_US.UTF-8
     export GYP_DEFINES="TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME,TDESKTOP_DISABLE_UNITY_INTEGRATION"
     export EXTRA_FLAGS="-Winvalid-pch"
