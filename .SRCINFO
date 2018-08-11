@@ -1,7 +1,7 @@
 pkgbase = cairo-compmgr
 	pkgdesc = A Cairo based composite manager
 	pkgver = 0.3.1
-	pkgrel = 18
+	pkgrel = 19
 	epoch = 2
 	url = https://github.com/gandalfn/Cairo-Composite-Manager
 	arch = i686
