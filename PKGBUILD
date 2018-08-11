@@ -3,7 +3,7 @@
 
 pkgname=emacs-jabber-git
 pkgver=0.8.92.116.g2ef76cf
-pkgrel=1
+pkgrel=2
 pkgdesc="A Jabber client written in emacs lisp"
 arch=('any')
 url="http://emacs-jabber.sourceforge.net/"
@@ -12,9 +12,9 @@ depends=('emacs')
 makedepends=('git')
 provides=('emacs-jabber')
 conflicts=('emacs-jabber')
-source=('git://emacs-jabber.git.sourceforge.net/gitroot/emacs-jabber/emacs-jabber')
-md5sums=('SKIP')
 _gitname=emacs-jabber
+source=("git://${_gitname}.git.sourceforge.net/gitroot/${_gitname}/${_gitname}")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
