@@ -1,7 +1,7 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=pkgfile-git
-pkgver=18
+pkgver=18.2.g6e6150d
 pkgrel=1
 pkgdesc="a pacman .files metadata explorer"
 arch=('x86_64' 'i686')
@@ -21,15 +21,10 @@ pkgver() {
   git describe | sed 's/^v//;s/-/./g'
 }
 
-prepare() {
-  cd pkgfile
-
-  meson build -D buildtype=release
-}
-
 build() {
   cd pkgfile
 
+  arch-meson build
   ninja -C build
 }
 
