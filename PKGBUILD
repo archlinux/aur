@@ -2,7 +2,7 @@
 _pkgname=linux_media
 _gitname=media_build
 pkgname="tbs-$_pkgname-git"
-pkgver=r1103.e109755_4.17.12_arch1_1_ARCH
+pkgver=r1103.e109755_4.17.14_arch1_1_ARCH
 _extramodules=extramodules-ARCH
 pkgrel=1
 pkgdesc="TBS linux open source drivers"
@@ -19,7 +19,6 @@ prepare() {
     git clone https://github.com/tbsdtv/$_gitname.git
     git clone --depth=1 https://github.com/tbsdtv/$_pkgname.git -b latest "$srcdir/media"
 
-    sed -i s/obj-\$\(CONFIG_DVB_DRX39XYJ\)/\#obj-\$\(CONFIG_DVB_DRX39XYJ\)/g "$srcdir/media/drivers/media/dvb-frontends/Makefile"
 }
 
 pkgver() {
