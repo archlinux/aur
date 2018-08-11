@@ -1,0 +1,33 @@
+pkgbase = cadence-riccardocagnasso-git
+	pkgdesc = (Temporary) fork of Cadence with JackNet support. Very experimental. Use with care.
+	pkgver = r1025.21ffee6
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/riccardocagnasso/Cadence
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = a2jmidid
+	makedepends = jack_capture
+	makedepends = libpulse
+	makedepends = pulseaudio-jack
+	makedepends = python-rdflib
+	makedepends = zita-ajbridge
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = jack
+	depends = python-dbus
+	depends = python-pyqt5
+	depends = qt5-svg
+	optdepends = a2jmidid: ALSA to JACK MIDI bridge
+	optdepends = jack_capture: recording via Cadence-Render
+	optdepends = pulseaudio-jack: PulseAudio to JACK bridge
+	optdepends = python-rdflib: LADSPA-RDF support in Carla
+	optdepends = zita-ajbridge: ALSA to JACK bridge
+	provides = cadence
+	conflicts = cadence
+	source = cadence-riccardocagnasso-git::git://github.com/riccardocagnasso/Cadence.git
+	sha256sums = SKIP
+
+pkgname = cadence-riccardocagnasso-git
+
