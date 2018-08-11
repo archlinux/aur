@@ -1,4 +1,6 @@
 # Maintainer : fuero <fuerob@gmail.com>
+# Maintainer : Fredy García <frealgagu at gmail dot com>
+
 pkgname='lazygit-git'
 pkgdesc='A simple terminal UI for git commands'
 pkgver=r380.7323e08
