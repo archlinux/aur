@@ -1,7 +1,7 @@
 # Maintainer: Daniel Wyatt <Daniel.Wyatt at gmail dot com>
 pkgname=brother-hll2395dw
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Brother HL-L2395DW CUPS driver'
 arch=('i686' 'x86_64')
 url='http://www.brother.com'
