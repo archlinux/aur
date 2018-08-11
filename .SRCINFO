@@ -1,0 +1,19 @@
+pkgbase = comptray-py3
+	pkgdesc = Compton toggle for the tray
+	pkgver = 1.0.r0.g2762813
+	pkgrel = 1
+	url = https://gitlab.com/carmelo_/comptray3
+	arch = any
+	license = GPL
+	depends = python
+	depends = gtk3
+	depends = python-gobject
+	depends = python-psutil
+	depends = compton
+	optdepends = compton-conf: GUI configuration for Compton
+	conflicts = comptray
+	source = comptray-py3::git+https://gitlab.com/carmelo_/comptray3.git
+	md5sums = SKIP
+
+pkgname = comptray-py3
+
