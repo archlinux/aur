@@ -2,7 +2,7 @@
 pkgname=kawaii-player
 _pkgname=kawaii_player
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="A powerful Audio/Video manager, multimedia player and portable media server"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('curl' 'ffmpegthumbnailer' 'libnotify' 'libtorrent-rasterbar' 'mpv' 'py
          'python-lxml' 'python-mutagen' 'python-pillow' 'python-pycurl' 'python-pyqt5' 'qt5-webengine' 'sqlite')
 optdepends=('ffmpeg: extract and convert subtitles'
             'mplayer: alternative backend'
-            'xvfb: run in headless mode'
+            'xorg-server-xvfb: run in headless mode'
             'youtube-dl: YouTube support')
 makedepends=('git')
 conflicts=('kawaii-player-git')
