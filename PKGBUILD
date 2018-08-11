@@ -16,8 +16,7 @@ optdepends=(
 )
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" 'gnome-shell-extensions-git')
-install="gschemas.install"
-source=("${pkgname%-*}::git+https://github.com/UshakovVasilii/gnome-shell-extension-freon.git")
+source=("${pkgname%-*}::git+${url}")
 sha512sums=('SKIP')
 _branch=master
 
