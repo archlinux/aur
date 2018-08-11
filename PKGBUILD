@@ -8,7 +8,7 @@ pkgdesc="A free to use program that lets you create and perform real-time audio 
 arch=('i686' 'x86_64')
 url="http://www.vsxu.com/"
 license=('GPL' 'custom')
-depends=('desktop-file-utils' 'glew' 'opencv' 'xdg-utils')
+depends=('desktop-file-utils' 'glew' 'opencv' 'sdl2' 'xdg-utils')
 makedepends=('alsa-lib' 'cmake' 'git' 'jack' 'pulseaudio')
 optdepends=(
   'alsa-lib: ALSA support.'
@@ -16,7 +16,7 @@ optdepends=(
   'pulseaudio: PulseAudio support')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname}::git+https://github.com/vovoid/vsxu.git"
+source=("${pkgname%-*}::git+https://github.com/vovoid/vsxu.git"
         "dependencies::git+https://github.com/vovoid/vsxu-dependencies.git"
         "cal3d::git+https://github.com/vovoid/cal3d.git"
         "freetype2::git+https://github.com/vovoid/freetype2.git"
@@ -35,7 +35,7 @@ sha512sums=('SKIP'
 _branch=master
 
 prepare() {
-  cd "${pkgname}"
+  cd "${pkgname%-*}"
   [[ -d build ]] || mkdir build
   git checkout ${_branch}
   git submodule init
@@ -50,7 +50,7 @@ prepare() {
 }
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname%-*}"
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -58,13 +58,14 @@ pkgver() {
 }
 
 build() {
-  cd "${pkgname}/build"
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  cd "${pkgname%-*}/build"
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+           -DOpenGL_GL_PREFERENCE=GLVND
   make
 }
 
 package() {
-  cd "${pkgname}/build"
+  cd "${pkgname%-*}/build"
   make DESTDIR="${pkgdir}" install
 
   # License.
