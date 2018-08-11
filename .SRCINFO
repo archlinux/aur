@@ -1,0 +1,16 @@
+pkgbase = helmsman-git
+	pkgdesc = Helmsman upstream
+	pkgver = v1.4.0.rc.r0.d7d3aa8
+	pkgrel = 1
+	url = https://github.com/Praqma/helmsman
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = helmsman-git
+	conflicts = helmsman-git
+	source = helmsman::git://github.com/Praqma/helmsman
+	md5sums = SKIP
+
+pkgname = helmsman-git
+
