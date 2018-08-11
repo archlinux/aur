@@ -1,0 +1,14 @@
+pkgbase = python-pycscope
+	pkgdesc = Generates a cscope index of Python source trees
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://github.com/portante/pycscope
+	arch = any
+	license = GPL2
+	depends = python
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/p/pycscope/pycscope-1.2.1.tar.gz
+	md5sums = 89f1e79dbd211d9f8d96881f2e92e1fc
+
+pkgname = python-pycscope
+
