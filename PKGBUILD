@@ -2,9 +2,9 @@
 
 pkgname=perl-file-extattr
 pkgver='1.09'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Perl extension for accessing extended attributes of files"
-arch=('any')
+arch=("i686" "x86_64" "arm")
 url="http://search.cpan.org/dist/File-ExtAttr"
 license=('GPL' 'PerlArtistic')
 options=('!emptydirs')
@@ -44,6 +44,7 @@ check() {
 package() {
   prepare_environment
   make install
+  find "$pkgdir" -type f -name '*.so' -exec strip {} \+
   find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
