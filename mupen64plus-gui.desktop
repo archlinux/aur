@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=mupen64plus-gui
+Comment=Graphical User Interface for Mupen64Plus
+Path=/usr/bin
+Exec=mupen64plus-gui
+Icon=mupen64plus
+Terminal=false
+StartupNotify=false
+Categories=Game;

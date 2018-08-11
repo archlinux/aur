@@ -1,0 +1,22 @@
+pkgbase = mupen64plus-gui-git
+	pkgdesc = Mupen64Plus Graphical User Interface written in Qt5 (git version)
+	pkgver = r162.8077d7d
+	pkgrel = 1
+	url = https://github.com/m64p/mupen64plus-gui/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	depends = qt5-base
+	depends = sdl2
+	depends = zlib
+	provides = mupen64plus-gui
+	conflicts = mupen64plus-gui
+	source = mupen64plus-gui-git::git+https://github.com/m64p/mupen64plus-gui.git
+	source = mupen64plus-gui.desktop
+	sha256sums = SKIP
+	sha256sums = 10aef6fadef59a92cbfd754ee6164b4c34cef43a4de230ef119757f7ea03eeb2
+
+pkgname = mupen64plus-gui-git
+
