@@ -6,7 +6,7 @@
 
 pkgname=consonance
 pkgver=0.5.1
-pkgrel=13
+pkgrel=14
 pkgdesc='Lightweight GTK+ music manager that aims to be fast, bloat-free and light on memory consumption'
 arch=('i686' 'x86_64')
 url='http://sites.google.com/site/consonancemanager'
