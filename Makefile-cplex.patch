@@ -1,0 +1,26 @@
+reverted:
+--- Makefile	2018-08-11 15:37:22.336429002 +0200
++++ Makefile.cplex	2018-08-11 15:40:25.539760367 +0200
+@@ -14,6 +14,8 @@
+ #     along with exactcolors.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ 
++CPLEX_HOME=/usr
++
+ # exactcolors requires one of the following 3 LP solvers: Gurobi, Cplex, or QSopt.
+ # Please set the environment path and uncomment the lines correspondingly.
+ # You might also need to adopt the  LPINCLUDE & LPLIB  paths further below.
+@@ -36,12 +38,8 @@
+ endif
+ 
+ ifneq ($(CPLEXPATH),)
+-PROCESSOR := $(shell uname -p)
+ LPINCLUDE=$(CPLEXPATH)/include/ilcplex
++LPLIB=$(CPLEXPATH)/lib/libcplex.a
+-LPLIB=$(CPLEXPATH)/lib/x86-64_linux/static_pic/libcplex.a
+-ifeq ($(PROCESSOR), i686)
+-LPLIB=$(CPLEXPATH)/lib/x86_linux/static_pic/libcplex.a
+-endif
+ LPSOURCE=lpcplex.o
+ GRBMWIS=
+ GUROBI_FLAG=

@@ -1,0 +1,59 @@
+reverted:
+--- Makefile	2018-08-11 15:40:25.539760367 +0200
++++ Makefile.cpx128	2018-08-11 15:54:28.979751146 +0200
+@@ -103,43 +103,43 @@
+ 	$(AR) rcs libexactcolor.a $(OBJFILES)
+ 
+ color: $(EXACTCOLOR_LIB) $(SEWELL_LIB) $(CBOSSFILES) color_worker
++	$(LD)  $(CFLAGS) -o color $(CBOSSFILES) -lm -lpthread -ldl $(EXACTCOLOR_LDFLAG) $(SEWELL_LDFLAG) $(LPLIB)
+-	$(LD)  $(CFLAGS) -o color $(CBOSSFILES) -lm -lpthread $(EXACTCOLOR_LDFLAG) $(SEWELL_LDFLAG) $(LPLIB)
+ 
+ color_worker: $(EXACTCOLOR_LIB) $(SEWELL_LIB) $(CWORKERFILES)
++	$(CC) $(CFLAGS) -o color_worker $(CWORKERFILES)  -lm -lpthread -ldl $(EXACTCOLOR_LDFLAG) $(SEWELL_LDFLAG) $(LPLIB)
+-	$(CC) $(CFLAGS) -o color_worker $(CWORKERFILES)  -lm -lpthread  $(EXACTCOLOR_LDFLAG) $(SEWELL_LDFLAG) $(LPLIB)
+ 
+ color_jobkiller:  $(EXACTCOLOR_LIB) $(SEWELL_LIB) $(CKILLERFILES)
++	$(CC) $(CFLAGS) -o color_jobkiller $(CKILLERFILES) -lm -lpthread -ldl $(EXACTCOLOR_LDFLAG) $(SEWELL_LDFLAG)  $(LPLIB)
+-	$(CC) $(CFLAGS) -o color_jobkiller $(CKILLERFILES) -lm -lpthread  $(EXACTCOLOR_LDFLAG) $(SEWELL_LDFLAG)  $(LPLIB)
+ 
+ $(SEWELL_LIB): $(SEWELL_DIR)/*[hc] $(SEWELL_DIR)/Makefile
+ 	cd $(SEWELL_DIR) && $(MAKE)
+ 
+ stable: $(EXACTCOLOR_LIB) $(STABFILES)
++	$(CC) $(CFLAGS) -o stable $(STABFILES) $(LPLIB) -lm -lpthread -ldl $(EXACTCOLOR_LDFLAG)
+-	$(CC) $(CFLAGS) -o stable $(STABFILES) $(LPLIB) -lm -lpthread  $(EXACTCOLOR_LDFLAG)
+ 
+ stable_grdy: $(EXACTCOLOR_LIB) $(STABGRDYFILES)
++	$(CC) $(CFLAGS) -o stable_grdy $(STABGRDYFILES) $(LPLIB) -lm -lpthread -ldl $(EXACTCOLOR_LDFLAG)
+-	$(CC) $(CFLAGS) -o stable_grdy $(STABGRDYFILES) $(LPLIB) -lm -lpthread  $(EXACTCOLOR_LDFLAG)
+ 
+ partition: $(EXACTCOLOR_LIB) $(SEWELL_LIB) $(PARTFILES)
++	$(CC) $(CFLAGS) -o partition $(PARTFILES) -lm -lpthread -ldl $(EXACTCOLOR_LDFLAG) $(SEWELL_LIB)  $(LPLIB)
+-	$(CC) $(CFLAGS) -o partition $(PARTFILES) -lm -lpthread  $(EXACTCOLOR_LDFLAG) $(SEWELL_LIB)  $(LPLIB)
+ 
+ complement: $(EXACTCOLOR_LIB) $(SEWELL_LIB) $(COMPFILES)
++	$(CC) $(CFLAGS) -o complement $(COMPFILES) -lm -lpthread -ldl $(EXACTCOLOR_LDFLAG) $(SEWELL_LIB) $(LPLIB)  
+-	$(CC) $(CFLAGS) -o complement $(COMPFILES) -lm -lpthread  $(EXACTCOLOR_LDFLAG) $(SEWELL_LIB) $(LPLIB)  
+ 
+ dsatur: dsatur.o graph.o color.o rounding_mode.o $(EXACTCOLOR_LIB) $(SEWELL_LIB)
++	$(LD) $(CFLAGS) -o dsatur dsatur.o graph.o color.o color_parms.o rounding_mode.o -lm -lpthread -ldl $(EXACTCOLOR_LDFLAG) $(SEWELL_LDFLAG) $(LPLIB)
+-	$(LD) $(CFLAGS) -o dsatur dsatur.o graph.o color.o color_parms.o rounding_mode.o -lm -lpthread $(EXACTCOLOR_LDFLAG) $(SEWELL_LDFLAG) $(LPLIB)
+ 
+ queen: queen.c
++	$(CC) $(CFLAGS) -o queen queen.c -lm -lpthread -ldl
+-	$(CC) $(CFLAGS) -o queen queen.c -lm -lpthread  
+ 
+ test_boss: test_boss.o $(BOSSFILES)
++	$(CC) $(CFLAGS) -o test_boss test_boss.o $(BOSSFILES) -lm -lpthread -ldl
+-	$(CC) $(CFLAGS) -o test_boss test_boss.o $(BOSSFILES) -lm -lpthread  
+ 
+ test_worker: test_worker.o $(BOSSFILES)
++	$(CC) $(CFLAGS) -o test_worker test_worker.o $(BOSSFILES) -lm -lpthread -ldl
+-	$(CC) $(CFLAGS) -o test_worker test_worker.o $(BOSSFILES) -lm -lpthread
+ 
+ test_tell: test_tell.o $(BOSSFILES)
++	$(CC) $(CFLAGS) -o test_tell test_tell.o $(BOSSFILES) -lm -lpthread -ldl
+-	$(CC) $(CFLAGS) -o test_tell test_tell.o $(BOSSFILES) -lm -lpthread  
+ 
+ tags:
+ 	etags *.[hc]

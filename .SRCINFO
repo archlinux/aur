@@ -1,0 +1,18 @@
+pkgbase = exactcolors-git
+	pkgdesc = A library to solve graph colouring and max-weighted stable set problems. Upstream repo by GitHub user heldstephan.
+	pkgver = r180.297c667
+	pkgrel = 1
+	url = https://github.com/heldstephan/exactcolors
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = cplex
+	source = /exactcolors::git+https://github.com/heldstephan/exactcolors.git
+	source = Makefile-cplex.patch
+	source = Makefile-cplex-128.patch
+	md5sums = SKIP
+	md5sums = 4c1854eef1f2499152153d5e06a1ebcc
+	md5sums = 56bc71b1902ce0f07ec01f7e17ef5239
+
+pkgname = exactcolors-git
+
