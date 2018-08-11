@@ -1,6 +1,6 @@
 # Maintainer: Christian Bundy <christianbundy@fraction.io> 
 pkgname=patchbay-git
-pkgver=7.13.1.r201.7e29e0b
+pkgver=7.13.1.r227.fa8ed71
 pkgrel=2
 pkgdesc="An alternative Secure Scuttlebutt client interface that is fully compatible with Patchwork "
 arch=('i686' 'x86_64')
@@ -30,6 +30,9 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_srcname}"
+
+    # https://github.com/ssbc/patchbay/issues/224
+    npm install --save "git+https://github.com/christianbundy/scuttle-invite.git#c4eb0b4a956927109eb176769570647fcc2d42b3"
     npm ci --only=production
     npm run rebuild
 }

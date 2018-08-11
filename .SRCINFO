@@ -1,7 +1,7 @@
 pkgbase = patchbay-git
 	pkgdesc = An alternative Secure Scuttlebutt client interface that is fully compatible with Patchwork
-	pkgver = 7.13.1.r201.7e29e0b
-	pkgrel = 2
+	pkgver = 7.13.1.r227.fa8ed71
+	pkgrel = 1
 	url = https://github.com/ssbc/patchbay
 	arch = i686
 	arch = x86_64
