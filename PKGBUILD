@@ -6,7 +6,7 @@
 pkgname=('mysql55' 'libmysqlclient55' 'mysql-clients55')
 _pkgname=mysql
 pkgbase=mysql55
-pkgver=5.5.59
+pkgver=5.5.61
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition v5.5"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.5/${_pkgname}-${pkgver}.tar
         "mysqld-post.sh"
         "mysqld-tmpfile.conf"
         "mysqld.service")
-sha256sums=('ee920177c9dec770c30b673a21143d5e92a67e8207f9b720d41d51cda05d8513'
+sha256sums=('62a7f8aeb9c6c4d5a127f7254500878d9d172b70ad9639b098f3c01731f1fbf0'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
             '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556')
@@ -80,10 +80,7 @@ package_libmysqlclient55(){
   install -m 755 -d "${pkgdir}/usr/bin"
   install -m 755 scripts/mysql_config "${pkgdir}/usr/bin/"
   install -m 755 -d "${pkgdir}/usr/share/man/man1"
-  for man in mysql_config mysql_client_test_embedded mysqltest_embedded
-  do
-    install -m 644 "${srcdir}/${_pkgname}-${pkgver}/man/${man}.1" "${pkgdir}/usr/share/man/man1/${man}.1"
-  done
+  install -m 644 "${srcdir}/${_pkgname}-${pkgver}/man/mysql_config.1" "${pkgdir}/usr/share/man/man1/"
 }
 
 package_mysql-clients55(){
@@ -129,13 +126,10 @@ package_mysql55(){
 
   # provided by libmysqlclient
   rm "${pkgdir}/usr/bin/mysql_config"
-  rm "${pkgdir}/usr/bin/mysql_client_test_embedded"
   rm "${pkgdir}/usr/bin/mysqltest_embedded"
   rm "${pkgdir}"/usr/lib/libmysql*
   rm -r "${pkgdir}/usr/include/"
   rm "${pkgdir}/usr/share/man/man1/mysql_config.1"
-  rm "${pkgdir}/usr/share/man/man1/mysql_client_test_embedded.1"
-  rm "${pkgdir}/usr/share/man/man1/mysqltest_embedded.1"
 
   # provided by mysql-clients
   rm "${pkgdir}/usr/bin/mysql"
@@ -157,6 +151,5 @@ package_mysql55(){
   rm -r "${pkgdir}/usr/data"
   rm -r "${pkgdir}/usr/mysql-test"
   rm -r "${pkgdir}/usr/sql-bench"
-  rm "${pkgdir}/usr/share/man/man1/mysql-test-run.pl.1"
 }
 
