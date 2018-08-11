@@ -1,6 +1,6 @@
 pkgbase = python-catkin_pkg
 	pkgdesc = catkin package library
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = http://wiki.ros.org/catkin_pkg
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-catkin_pkg
 	provides = python-catkin-pkg
 	conflicts = python2-catkin_pkg
 	conflicts = python-catkin-pkg
-	source = https://files.pythonhosted.org/packages/source/c/catkin_pkg/catkin_pkg-0.4.7.tar.gz
-	md5sums = 92ca21f8cbadc7164d47069f9bf18832
+	source = https://files.pythonhosted.org/packages/source/c/catkin_pkg/catkin_pkg-0.4.8.tar.gz
+	md5sums = fa33b26d1a83896e90d57b9d8487cc4f
 
 pkgname = python-catkin_pkg
 
