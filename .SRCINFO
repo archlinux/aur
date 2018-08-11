@@ -1,7 +1,7 @@
 pkgbase = webkit2gtk-mse
 	pkgdesc = GTK+ Web content engine library - MSE enabled
-	pkgver = 2.20.2
-	pkgrel = 2
+	pkgver = 2.20.4
+	pkgrel = 1
 	url = https://webkitgtk.org/
 	arch = i686
 	arch = x86_64
@@ -32,13 +32,11 @@ pkgbase = webkit2gtk-mse
 	optdepends = gst-libav: nonfree media decoding
 	provides = webkit2gtk
 	conflicts = webkit2gtk
-	source = https://webkitgtk.org/releases/webkitgtk-2.20.2.tar.xz
-	source = https://webkitgtk.org/releases/webkitgtk-2.20.2.tar.xz.asc
-	source = gtk-doc.diff::https://git.archlinux.org/svntogit/packages.git/plain/trunk/gtk-doc.diff?h=packages/webkit2gtk&id=e01bbc2df8214c4e7198ca5e5f6675c1231e7f8b
+	source = https://webkitgtk.org/releases/webkitgtk-2.20.4.tar.xz
+	source = https://webkitgtk.org/releases/webkitgtk-2.20.4.tar.xz.asc
 	validpgpkeys = D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3
-	sha256sums = dffe93a241f03f1c73b369f4e323e4d8f12e39d33d5515948cbf454ca4b526e2
+	sha256sums = cc7dd15505c4f8a75d96deae148a82d7cc9034c7f3cc8a1fe4f969dddd92ae32
 	sha256sums = SKIP
-	sha256sums = 4f116b4508d4501498d1e1483555bc5d4e3f5504c5a2f3ec6a21c646b874cdb4
 
 pkgname = webkit2gtk-mse
 

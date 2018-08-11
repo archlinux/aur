@@ -4,8 +4,8 @@
 
 pkgname=webkit2gtk-mse
 _pkgname=webkit2gtk
-pkgver=2.20.2
-pkgrel=2
+pkgver=2.20.4
+pkgrel=1
 pkgdesc="GTK+ Web content engine library - MSE enabled"
 arch=(i686 x86_64)
 url="https://webkitgtk.org/"
@@ -16,11 +16,9 @@ optdepends=('gtk2: Netscape plugin support'
             'gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
-source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc}
-        "gtk-doc.diff::https://git.archlinux.org/svntogit/packages.git/plain/trunk/gtk-doc.diff?h=packages/webkit2gtk&id=e01bbc2df8214c4e7198ca5e5f6675c1231e7f8b")
-sha256sums=('dffe93a241f03f1c73b369f4e323e4d8f12e39d33d5515948cbf454ca4b526e2'
-            'SKIP'
-            '4f116b4508d4501498d1e1483555bc5d4e3f5504c5a2f3ec6a21c646b874cdb4')
+source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
+sha256sums=('cc7dd15505c4f8a75d96deae148a82d7cc9034c7f3cc8a1fe4f969dddd92ae32'
+            'SKIP')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -28,7 +26,6 @@ conflicts=($_pkgname)
 prepare() {
   mkdir build
   cd webkitgtk-$pkgver
-  patch -Np1 -i "$srcdir/gtk-doc.diff"
   sed -i '1s/python$/&2/' Tools/gtk/generate-gtkdoc
 }
 
