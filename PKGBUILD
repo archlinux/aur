@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname="perl-audio-scan"
 pkgver="1.01"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Fast C metadata and tag reader for all common audio file formats"
 arch=("i686" "x86_64" "arm")
 license=("PerlArtistic" "GPL")
@@ -36,6 +36,7 @@ package() {
   prepare_environment
   make install
   find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
+  find "$pkgdir" -type f -name '*.so' -exec strip {} \+ # 'strip' option doesn't work because files are read-only
 }
 
 # Local Variables:
