@@ -1,5 +1,5 @@
 pkgbase = python-sdnotify
-	pkgdesc = Uncompromising Python code formatter
+	pkgdesc = A pure Python implementation of systemd's service notification protocol (sd_notify)
 	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/bb4242/sdnotify
