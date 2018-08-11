@@ -24,7 +24,7 @@ license=('unknown')
 depends=('cplex')
 makedepends=('git')
 
-source=("$srcdir/$_git_repo::git+https://github.com/heldstephan/exactcolors.git"
+source=("git+https://github.com/heldstephan/exactcolors.git"
         'Makefile-cplex.patch'
         'Makefile-cplex-128.patch')
 
