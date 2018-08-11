@@ -2,7 +2,7 @@
 # Maintainer: Andrey Melentyev <andrey.melentyev@protonmail.com>
 _pkgbase=macbook12-spi-driver
 pkgname=(${_pkgbase}-dkms)
-pkgver=0+git.161
+pkgver=0+git.163
 pkgrel=1
 pkgdesc="Driver for the keyboard, touchpad and touchbar found in newer MacBook (Pro) models"
 arch=('i686' 'x86_64')
