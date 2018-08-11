@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=setBfree
+GenericName=DSP tonewheel organ
+GenericName[fr]=orgue à roues phoniques
+Comment=MIDI-controlled, software synthesizer for JACK and LV2
+Comment[fr]=Synthétiseur logiciel contrôlé par MIDI, pour JACK et LV2
+Icon=setBfree
+Exec=setBfreeUI
+Terminal=false
+Categories=AudioVideo;Audio;
