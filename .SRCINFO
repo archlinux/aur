@@ -1,0 +1,20 @@
+pkgbase = gpgsync
+	pkgdesc = A tool to let users always have up-to-date public keys for other members of their organization.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/firstlookmedia/gpgsync/
+	arch = any
+	license = GPL3
+	depends = python-setuptools
+	depends = python-pyqt5
+	depends = python-nose
+	depends = python-requests
+	depends = python-socks
+	depends = python-packaging
+	depends = python-dateutil
+	depends = gnupg
+	source = gpgsync-0.2.0.tar.gz::https://github.com/firstlookmedia/gpgsync/archive/v0.2.0.tar.gz
+	sha512sums = 74fddb4ff5e63458e1d3e21671674153216941e35fdb93e13a7e73d9a545088037f9577c33b3c90c5a3d0c4373cb3c27430aecddfd9f3e3690b4ee6f82a7233c
+
+pkgname = gpgsync
+
