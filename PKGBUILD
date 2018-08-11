@@ -15,26 +15,28 @@ depends=('python'
          'reflector' 
          'rmlint'
          'pacman-contrib' 
-         'pacutils')
+         'pacutils'
+         'vim')
 
 source=("https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/run.sh"
-        "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/Scripts/ArchNews.py")
+        "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/archNews.py"
+        "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/settings.sh")
 
-md5sums=('f7b5531d8a57c300945fb0c56fc7bd07'
-         'af05a3013904f4e47822164bfece1e3e')
+md5sums=('3f724c052ab9d966b4474f54614a5969'
+         'af05a3013904f4e47822164bfece1e3e'
+         '3b8dfc54bac5b356e20372f9f5e9d0c0')
 
 install_dir="opt/$pkgname"
 symlink_dir="usr/bin"
 
 build() {
     umask 022
-    mkdir -p "$srcdir/$install_dir/Scripts"
+    mkdir -p "$srcdir/$install_dir"
     mkdir -p "$srcdir/$symlink_dir"
 
-    sed -i "s|{{PKG_PATH}}|/${install_dir}|" "$srcdir/run.sh"
-
     install -m 755 "$srcdir/run.sh" $install_dir
-    install -m 755 "$srcdir/ArchNews.py" "$install_dir/Scripts"
+    install -m 755 "$srcdir/archNews.py" "$install_dir"
+    install -m 755 "$srcdir/settings.sh" $install_dir
 }
 
 package() {
