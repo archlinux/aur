@@ -1,0 +1,11 @@
+[Unit]
+Description=Juiced battery daemon
+Documentation=https://github.com/drkhsh/juiced
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/juiced
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
