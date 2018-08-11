@@ -1,7 +1,7 @@
 # Maintainer : fuero <fuerob@gmail.com>
 pkgname='lazygit-git'
 pkgdesc='A simple terminal UI for git commands'
-pkgver=r333.f20121c
+pkgver=r373.8f6329c
 pkgrel=1
 _repo_prefix='github.com/jesseduffield'
 _repo_name="${pkgname/-git}"
