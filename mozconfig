@@ -1,0 +1,38 @@
+ac_add_options --enable-application=browser
+
+ac_add_options --prefix=/usr
+ac_add_options --enable-release
+ac_add_options --enable-gold
+ac_add_options --enable-pie
+ac_add_options --enable-optimize="-O2"
+
+# Branding
+ac_add_options --enable-official-branding
+ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.archlinux
+export MOZILLA_OFFICIAL=1
+export MOZ_TELEMETRY_REPORTING=1
+export MOZ_ADDON_SIGNING=1
+export MOZ_REQUIRE_SIGNING=1
+
+# Keys
+ac_add_options --with-google-api-keyfile="$SOURCE/google-api-key"
+ac_add_options --with-mozilla-api-keyfile="$SOURCE/mozilla-api-key"
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-icu
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
+ac_add_options --enable-system-pixman
+
+# Features
+ac_add_options --enable-startup-notification
+ac_add_options --disable-crashreporter
+ac_add_options --enable-alsa
+ac_add_options --disable-updater
+

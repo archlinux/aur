@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Firefox
+Name=Firefox ESR 52
 GenericName=Web Browser
 GenericName[ar]=متصفح ويب
 GenericName[ast]=Restolador Web
@@ -81,10 +81,10 @@ Comment[uk]=Перегляд сторінок Інтернету
 Comment[vi]=Để duyệt các trang web
 Comment[zh_CN]=浏览互联网
 Comment[zh_TW]=瀏覽網際網路
-Exec=firefox %u
+Exec=firefox-esr52 %u
 Terminal=false
 Type=Application
-Icon=firefox
+Icon=firefox-esr52
 Categories=Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
 StartupNotify=true
@@ -175,7 +175,7 @@ Name[vi]=Mở thẻ mới
 Name[xh]=Vula ithebhu entsha
 Name[zh_CN]=打开新标签页
 Name[zh_TW]=開啟新分頁
-Exec=firefox -new-tab about:newtab
+Exec=firefox-esr52 -new-tab about:newtab
 
 [Desktop Action NewWindow]
 Name=Open new window
@@ -262,7 +262,7 @@ Name[vi]=Mở cửa sổ mới
 Name[xh]=Vula iwindow entsha
 Name[zh_CN]=打开新窗口
 Name[zh_TW]=開啟新視窗
-Exec=firefox -new-window
+Exec=firefox-esr52 -new-window
 
 [Desktop Action NewPrivateWindow]
 Name=New private window
@@ -349,4 +349,4 @@ Name[vi]=Cửa sổ riêng tư mới
 Name[xh]=Ifestile yangasese entsha
 Name[zh_CN]=新建隐私浏览窗口
 Name[zh_TW]=新增隱私視窗
-Exec=firefox -private-window
+Exec=firefox-esr52 -private-window
