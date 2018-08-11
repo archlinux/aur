@@ -3,7 +3,7 @@
 
 _pkgname=sickrage
 pkgname=$_pkgname-git
-pkgver=8.8.4.r85.gb1b4f64e5
+pkgver=9.2.101.r0.g986e796a7
 pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
@@ -27,7 +27,8 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
 install=$pkgname.install
-source=("$pkgname::git://github.com/SiCKRAGETV/SickRage.git"
+#source=("$pkgname::git://github.com/SiCKRAGETV/SickRage.git"
+source=("$pkgname::git+https://git.sickrage.ca/SiCKRAGE/sickrage.git"
         'sickrage.service'
         'sickrage.sysusers'
         'sickrage.tmpfile')
@@ -43,7 +44,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  python2 setup.py build
+  python2 setup.py --quiet build
 }
 
 #check() {
@@ -62,5 +63,7 @@ package() {
   #cd $pkgname
   #python2 setup.py install --prefix=/opt/sickrage/app --install-lib=/opt/sickrage/app --root="$pkgdir" --optimize=1
   cp -rp $pkgname/* "$pkgdir/opt/sickrage/app/"
+
+  warning "If the upgrade fails with \"error: failed to commit transaction (conflicting files)\", then uninstall first"
 }
 
