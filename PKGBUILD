@@ -2,7 +2,7 @@
 _orgname=OpenOrienteering
 _pkgname=mapper
 pkgname=${_orgname,,}-${_pkgname}
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Map drawing program from OpenOrienteering"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
 install=${pkgname}.install
 source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('14debf0c31a3ca5b608154e264007a7582ea87d3466bd7d30527157396ae16d7')
+sha256sums=('11e6f2e93442f217f7373bd737a58a75e8e6da81d4365e12691a8dfdf1f01066')
 
 build() {
   cd ${_pkgname}-${pkgver}
