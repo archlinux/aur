@@ -1,6 +1,6 @@
 pkgbase = xdg-open-server
 	pkgdesc = xdg-open portal for Docker containers
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/kitsunyan/xdg-open-server
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = xdg-open-server
 	depends = libx11
 	depends = xdg-utils
 	optdepends = socat: xdg-open client script support
-	source = xdg-open-server-1.2.tar.gz::https://github.com/kitsunyan/xdg-open-server/archive/v1.2.tar.gz
-	sha256sums = 52393de15b6852109bb3f77073baf8a5e8b117a9d38121cf798b5e6465472d52
+	source = xdg-open-server-1.3.tar.gz::https://github.com/kitsunyan/xdg-open-server/archive/v1.3.tar.gz
+	sha256sums = df9255f5ef1f21fd90cce59e3357dbc747e76b22261e7b1db979c879a1377d80
 
 pkgname = xdg-open-server
 

@@ -1,5 +1,7 @@
+# Maintainer: kitsunyan <`echo a2l0c3VueWFuQGFpcm1haWwuY2MK | base64 -d`>
+
 pkgname=xdg-open-server
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='xdg-open portal for Docker containers'
 arch=('i686' 'x86_64')
@@ -8,7 +10,7 @@ license=('MIT')
 depends=('libx11' 'xdg-utils')
 optdepends=('socat: xdg-open client script support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('52393de15b6852109bb3f77073baf8a5e8b117a9d38121cf798b5e6465472d52')
+sha256sums=('df9255f5ef1f21fd90cce59e3357dbc747e76b22261e7b1db979c879a1377d80')
 
 _make_flags=(PREFIX=/usr SYSCONFDIR=/etc)
 
