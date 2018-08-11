@@ -3,7 +3,7 @@
 pkgname=dbm
 pkgver=0.11.0
 _pkgver=${pkgver}-20080519-114741
-pkgrel=4
+pkgrel=5
 pkgdesc="A little tool to access gdbm files from shell"
 arch=('i686' 'x86_64')
 url="http://www.scylla-charybdis.com/tool.php/${pkgname}"
