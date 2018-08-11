@@ -3,7 +3,7 @@ pkgname=snd-usb-audio-lowlatency-dkms
 _basepkgname=snd-usb-audio-lowlatency
 _srcname=linux-4.17
 pkgver=4.17.14
-pkgrel=1
+pkgrel=2
 pkgdesc="snd-usb-audio kernel module modified for low latency"
 arch=('any')
 url="https://www.kernel.org/"
@@ -22,7 +22,7 @@ validpgpkeys=(
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'bf4d95df98dc6197024bc2a7c8a8ef5fd3b21495298c7a7a5dbd63c159ea9f17'
             '69f325c3af92c4098c9d118b2eab7de76eba691677864f714697bce5f47005e2'
-            '9da83cbdf8d8202507a45c1cd6c29b45b9e4ff483483d9957c711c0120a78fe5')
+            '803a36109e3f0ee55c4f2f1ae32bb4cc27f78b05a4bf758ec52c1b455a5cb026')
 
 prepare() {
   cd "${_srcname}"
