@@ -1,6 +1,6 @@
 pkgbase = libretro-openlara-git
 	pkgdesc = libretro implementation of Classic Tomb Raider open-source engine
-	pkgver = 641.b1e261b
+	pkgver = 647.66a959c
 	pkgrel = 1
 	url = https://github.com/libretro/OpenLara
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer:  Mike Polvere <mic.tjs@gmail.com>
 
 pkgname=libretro-openlara-git
-pkgver=641.b1e261b
+pkgver=647.66a959c
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="libretro implementation of Classic Tomb Raider open-source engine"
