@@ -17,6 +17,7 @@ pkgbase = cabbage
 	makedepends = gtk3
 	makedepends = vim
 	makedepends = dos2unix
+	makedepends = webkit2gtk
 	depends = csound
 	depends = steinberg-vst36
 	provides = cabbage

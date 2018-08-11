@@ -7,7 +7,7 @@ arch=('x86_64')
 url="http://cabbageaudio.com/"
 license=('GPLv3')
 makedepends=('freeglut' 'curl' 'jack' 'libxcomposite' 'libxrandr' 'libxcursor'
-             'libx11' 'libxinerama' 'mesa' 'gtk3' 'vim' 'dos2unix')
+             'libx11' 'libxinerama' 'mesa' 'gtk3' 'vim' 'dos2unix' 'webkit2gtk')
 depends=('csound' 'steinberg-vst36')
 conflicts=('cabbage')
 provides=('cabbage')
@@ -85,7 +85,7 @@ prepare() {
   sed -i "/CabbageBuild\/cabbage.desktop/d" "$b"
 
   dos2unix "${srcdir}/cabbage/Source/Settings/CabbageSettings.cpp"
-  patch -p1 --binary < ../../fix_default_dirs.patch
+  patch -p1 --binary < ../fix_default_dirs.patch
 }
 
 #pkgver() {
