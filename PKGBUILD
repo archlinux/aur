@@ -69,15 +69,16 @@ package() {
 
 	# Cplex headers.
 	install -dm755 "${pkgdir}/usr/include/ilcplex"
-	install -m755  "./cplex/include/ilcplex/"*.h "${pkgdir}/usr/include/ilcplex"
+	install -m644  "./cplex/include/ilcplex/"*.h "${pkgdir}/usr/include/ilcplex"
 
 	# Concert headers.
 	install -dm755 "${pkgdir}/usr/include/ilconcert"
-	install -m755 "./concert/include/ilconcert/"*.h "${pkgdir}/usr/include/ilconcert"
-
+	cp -R "./concert/include/ilconcert/"* "${pkgdir}/usr/include/ilconcert"
+	chmod -R 644 "${pkgdir}/usr/include/ilconcert"
+	
 	# Constraint Optimizer headers.
 	install -dm755 "${pkgdir}/usr/include/ilcp"
-	install -m755 "./cpoptimizer/include/ilcp/"*.h "${pkgdir}/usr/include/ilcp"
+	install -m644 "./cpoptimizer/include/ilcp/"*.h "${pkgdir}/usr/include/ilcp"
 
 	# Install Python2 bindings.
 	cd "./cplex/python/2.7/${_archdir}/"
