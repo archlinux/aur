@@ -22,7 +22,7 @@ source=("https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgna
         "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/archNews.py"
         "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/settings.sh")
 
-md5sums=('6cd84014be4476a45fc1d3b158b0827e'
+md5sums=('443ee82472a1cdd7d49122b491fe31ef'
          'af05a3013904f4e47822164bfece1e3e'
          '3b8dfc54bac5b356e20372f9f5e9d0c0')
 
