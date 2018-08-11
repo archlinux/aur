@@ -31,11 +31,11 @@ depends=(
 install=teamviewer.install
 source_x86_64=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
 source_i686=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
-#source_armv7h=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_armhf.deb")
-source_armv7h=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer-host_13.1.1548_armhf.deb")
+source_armv7h=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer-host_${pkgver}_armhf.deb")
+#source_armv7h=("https://dl.tvcdn.de/download/linux/version_${pkgver%%.*}x/teamviewer-host_13.2.13582_armhf.deb")
 sha256sums_i686=('9b0b1a0bbf7e353436d4e216cf7ca34c65962333e2086e7e42c39d6499ec9d45')
 sha256sums_x86_64=('04a09b016c3df38b7d4583788820c092a249024f26287f952b9c1d059fecca3f')
-sha256sums_armv7h=('d887c4faae3b85542e982dbb8add5271fdeb1da98c669b230d82dd56e04724bf')
+sha256sums_armv7h=('ec506c2f1ee2e598286242d69dcff129816765f70fc5f46da9e59107f531b40c')
 
 prepare() {
 	warning "If the install fails, you need to uninstall previous major version of Teamviewer"
