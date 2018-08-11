@@ -30,9 +30,9 @@ package() {
   mv "${pkgdir}/usr/bin/openlp"{.py,}
 
   #remove tests
-  rm -rf "${pkgdir}/usr/lib/python3.6/site-packages/tests"
+  rm -rf "${pkgdir}/usr/lib/python3.7/site-packages/tests"
 
-  echo "${pkgver}" > "${pkgdir}/usr/lib/python3.6/site-packages/openlp/.version"
+  echo "${pkgver}" > "${pkgdir}/usr/lib/python3.7/site-packages/openlp/.version"
 
   install -Dm0755 "${srcdir}/openlp.sh" "${pkgdir}/etc/profile.d/openlp.sh"
   install -Dm0644 "resources/openlp.desktop" "${pkgdir}/usr/share/applications/openlp.desktop"
