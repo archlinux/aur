@@ -1,0 +1,21 @@
+pkgbase = snd-usb-audio-lowlatency-dkms
+	pkgdesc = snd-usb-audio kernel module modified for low latency
+	pkgver = 4.17.14
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = any
+	license = GPL2
+	depends = dkms
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.14.xz
+	source = dkms.conf
+	source = lowlatency.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13
+	sha256sums = bf4d95df98dc6197024bc2a7c8a8ef5fd3b21495298c7a7a5dbd63c159ea9f17
+	sha256sums = 69f325c3af92c4098c9d118b2eab7de76eba691677864f714697bce5f47005e2
+	sha256sums = 9da83cbdf8d8202507a45c1cd6c29b45b9e4ff483483d9957c711c0120a78fe5
+
+pkgname = snd-usb-audio-lowlatency-dkms
+
