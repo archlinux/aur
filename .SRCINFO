@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-easyscreencast
 	license = GPL3
 	depends = gnome-shell
 	conflicts = gnome-shell-extensions-git
-	source = gnome-shell-extension-easyscreencast::https://github.com/EasyScreenCast/EasyScreenCast/archive/1.0.0.tar.gz
+	source = gnome-shell-extension-easyscreencast.tar.gz::https://github.com/EasyScreenCast/EasyScreenCast/archive/1.0.0.tar.gz
 	sha512sums = 0e82b16e1f7610b4cb2a9632fd7accdeef18e73f5bed42842d005fe08c471a1365598125303e1943f0a7239d966411ff0678bac3fca9718b3f22292ebb13b806
 
 pkgname = gnome-shell-extension-easyscreencast

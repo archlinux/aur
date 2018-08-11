@@ -9,7 +9,7 @@ url="https://github.com/EasyScreenCast/EasyScreenCast"
 license=('GPL3')
 depends=('gnome-shell')
 conflicts=('gnome-shell-extensions-git')
-source=("${pkgname}::${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha512sums=('0e82b16e1f7610b4cb2a9632fd7accdeef18e73f5bed42842d005fe08c471a1365598125303e1943f0a7239d966411ff0678bac3fca9718b3f22292ebb13b806')
 
 package() {
