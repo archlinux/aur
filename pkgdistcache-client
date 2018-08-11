@@ -17,10 +17,12 @@ import time
 
 import avahi
 import dbus
-import dbus.glib
+from dbus.mainloop.glib import DBusGMainLoop
 import requests
 import xdg.BaseDirectory
 from gi.repository import GLib
+
+DBusGMainLoop(set_as_default=True)
 
 colors = {
     'none': '\033[0m',

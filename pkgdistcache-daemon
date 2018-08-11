@@ -14,7 +14,9 @@ import sys
 
 import avahi
 import dbus
-import dbus.glib
+from dbus.mainloop.glib import DBusGMainLoop
+
+DBusGMainLoop(set_as_default=True)
 
 avahi_service = None
 
