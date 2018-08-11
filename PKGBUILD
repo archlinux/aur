@@ -6,7 +6,7 @@
 pkgname=('mysql56' 'libmysqlclient56' 'mysql-clients56')
 _pkgname=mysql
 pkgbase=mysql56
-pkgver=5.6.39
+pkgver=5.6.41
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition v5.6"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.6/${_pkgname}-${pkgver}.tar
         "mysqld-tmpfile.conf"
         "mysqld.service"
         "mysql-srv_buf_size.patch")
-sha256sums=('ab1814b03af77bf88dc381eff558ed2e73e19e8e5a4170a78ba3370cd5da434d'
+sha256sums=('4a223c3daed88f8450fa2fc8fd0e7afe2b1a122dd58b74c4ea6526d6a72563ce'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
             '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556'
@@ -78,7 +78,7 @@ package_libmysqlclient56(){
   pkgdesc="MySQL client libraries, v5.6"
   depends=('zlib' 'bash')
   conflicts=('libmariadbclient')
-  provides=("libmariadbclient=${pkgver}")
+  provides=("libmariadbclient=${pkgver}" "libmysqlclient=${pkgver}")
 
   cd build
   for dir in include libmysql libmysqld libservices
@@ -89,17 +89,14 @@ package_libmysqlclient56(){
   install -m 755 -d "${pkgdir}/usr/bin"
   install -m 755 scripts/mysql_config "${pkgdir}/usr/bin/"
   install -m 755 -d "${pkgdir}/usr/share/man/man1"
-  for man in mysql_config mysql_client_test_embedded mysqltest_embedded
-  do
-    install -m 644 "${srcdir}/${_pkgname}-${pkgver}/man/${man}.1" "${pkgdir}/usr/share/man/man1/${man}.1"
-  done
+  install -m 644 "${srcdir}/${_pkgname}-${pkgver}/man/mysql_config.1" "${pkgdir}/usr/share/man/man1/"
 }
 
 package_mysql-clients56(){
   pkgdesc="MySQL client tools, v5.6"
   depends=('libmysqlclient56' 'jemalloc' 'ncurses')
   conflicts=('mariadb-clients')
-  provides=("mariadb-clients=${pkgver}")
+  provides=("mariadb-clients=${pkgver}" "mysql-clients=${pkgver}")
 
   cd build
   make -C "client" DESTDIR="${pkgdir}" install
@@ -125,7 +122,7 @@ package_mysql56(){
   install="${_pkgname}.install"
   depends=('mysql-clients56' 'libaio' 'perl')
   conflicts=('mariadb')
-  provides=("mariadb=${pkgver}")
+  provides=("mariadb=${pkgver}" "mysql=${pkgver}")
   options=('emptydirs')
 
   cd build
@@ -144,8 +141,6 @@ package_mysql56(){
   rm "${pkgdir}"/usr/lib/libmysql*
   rm -r "${pkgdir}/usr/include/"
   rm "${pkgdir}/usr/share/man/man1/mysql_config.1"
-  rm "${pkgdir}/usr/share/man/man1/mysql_client_test_embedded.1"
-  rm "${pkgdir}/usr/share/man/man1/mysqltest_embedded.1"
 
   # provided by mysql-clients
   rm "${pkgdir}/usr/bin/mysql"
@@ -167,6 +162,5 @@ package_mysql56(){
   rm -r "${pkgdir}/usr/data"
   rm -r "${pkgdir}/usr/mysql-test"
   rm -r "${pkgdir}/usr/sql-bench"
-  rm "${pkgdir}/usr/share/man/man1/mysql-test-run.pl.1"
 }
 
