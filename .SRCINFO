@@ -1,0 +1,20 @@
+pkgbase = simutron-svn
+	pkgdesc = AVR simulator IDE based on simavr
+	pkgver = 292M
+	pkgrel = 1
+	url = https://sourceforge.net/projects/simutron/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = svn
+	makedepends = cmake
+	depends = simavr
+	depends = qt5-base
+	depends = libelf
+	source = simutron-code::svn+https://svn.code.sf.net/p/simutron/code/trunk/
+	source = firmware.patch
+	md5sums = SKIP
+	md5sums = 2305b55755a023ce33fdc2d35e77e050
+
+pkgname = simutron-svn
+
