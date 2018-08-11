@@ -10,8 +10,6 @@
 # dir (usually under /opt/...).
 
 _git_repo='exactcolors'
-_cpx_major=$(pacman -Q cplex | awk '{ print $2 }' | awk -F "." '{ print $1 }')
-_cpx_minor=$(pacman -Q cplex | awk '{ print $2 }' | awk -F "." '{ print $2 }' | awk -F "-" '{ print $1 }')
 
 pkgname='exactcolors-git'
 pkgdesc='A library to solve graph colouring and max-weighted stable set problems. Upstream repo by GitHub user heldstephan.'
@@ -44,10 +42,8 @@ prepare() {
     cd "$srcdir/$_git_repo"
     patch < "$srcdir/Makefile-cplex.patch"
 
-    # Starting from Cplex 12.8 you need to explicitly link -ldl
-    if [[ "$_cpx_major" = "12" && "$_cpx_minor" > "7" ]]; then
-        patch < "$srcdir/Makefile-cplex-128.patch"
-    fi
+    # Patch required for CPLEX >= 12.8 (harmless otherwise)
+    patch < "$srcdir/Makefile-cplex-128.patch"
 }
 
 build() {
