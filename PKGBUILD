@@ -9,22 +9,14 @@
 # PKGBUILD and Makefile.patch to point to the installation
 # dir (usually under /opt/...).
 
-pkgname='exactcolors-git'
-pkgdesc='A library to solve graph colouring and max-weighted stable set problems. Upstream repo by GitHub user heldstephan.'
-
 _git_repo='exactcolors'
 _cpx_major=$(pacman -Q cplex | awk '{ print $2 }' | awk -F "." '{ print $1 }')
 _cpx_minor=$(pacman -Q cplex | awk '{ print $2 }' | awk -F "." '{ print $2 }' | awk -F "-" '{ print $1 }')
 
-pkgver='r180.297c667'
-pkgver() {
-  cd "$srcdir/$_git_repo"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
+pkgname='exactcolors-git'
+pkgdesc='A library to solve graph colouring and max-weighted stable set problems. Upstream repo by GitHub user heldstephan.'
 
+pkgver='r180.297c667'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/heldstephan/exactcolors'
@@ -36,9 +28,17 @@ source=("$srcdir/$_git_repo::git+https://github.com/heldstephan/exactcolors.git"
         'Makefile-cplex.patch'
         'Makefile-cplex-128.patch')
 
-md5sums=('SKIP'
-         '4c1854eef1f2499152153d5e06a1ebcc'
-         '56bc71b1902ce0f07ec01f7e17ef5239')
+sha256sums=('SKIP'
+            '0d0d2a15fc0b2a651dc24b4541476e9fc8bd3b0ed90a6eddbcd18198c28dde8b'
+            'f7eea9471b0f1205969ed3d8986d86ec990713b3a52f2c6a02166cbc9300a672')
+
+pkgver() {
+  cd "$srcdir/$_git_repo"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 prepare() {
     cd "$srcdir/$_git_repo"

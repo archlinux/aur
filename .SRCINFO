@@ -10,9 +10,9 @@ pkgbase = exactcolors-git
 	source = /exactcolors::git+https://github.com/heldstephan/exactcolors.git
 	source = Makefile-cplex.patch
 	source = Makefile-cplex-128.patch
-	md5sums = SKIP
-	md5sums = 4c1854eef1f2499152153d5e06a1ebcc
-	md5sums = 56bc71b1902ce0f07ec01f7e17ef5239
+	sha256sums = SKIP
+	sha256sums = 0d0d2a15fc0b2a651dc24b4541476e9fc8bd3b0ed90a6eddbcd18198c28dde8b
+	sha256sums = f7eea9471b0f1205969ed3d8986d86ec990713b3a52f2c6a02166cbc9300a672
 
 pkgname = exactcolors-git
 
