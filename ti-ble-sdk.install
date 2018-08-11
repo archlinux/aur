@@ -1,0 +1,7 @@
+post_install() {
+	echo ">>> Import example projects from within CCS from /opt/ccstudio/ble_sdk_*/examples"
+	echo ">>> When importing, select "Copy projects to workspace checkmark" in Import dialog"
+	echo ">>> First time after import Rebuild instead of Build, as a precaution"
+	echo ">>> Always build the *_stack project before building the *_app project"
+	echo ">>> Always flash the *_stack project before flashing the *_app project"
+}
