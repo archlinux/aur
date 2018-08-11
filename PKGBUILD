@@ -1,6 +1,6 @@
 pkgname=auracle-git
 _pkgname=auracle
-pkgver=r29.37ad380
+pkgver=r36.752e4ba
 pkgrel=1
 pkgdesc='A flexible client for the AUR'
 arch=('x86_64' 'i686')
@@ -22,7 +22,7 @@ pkgver() {
 build () {
   cd "$_pkgname"
 
-  meson build --prefix /usr -D buildtype=release
+  arch-meson build
   ninja -C build
 }
 
