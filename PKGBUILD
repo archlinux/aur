@@ -1,7 +1,7 @@
 # Maintainer: Mike Polvere <mic.tjs@gmail.com>
 
 pkgname=libretro-pokemini-git
-pkgver=61.36a3f63
+pkgver=64.7e731e4
 pkgrel=1
 pkgdesc="libretro implementation of Pokémon-Mini emu - Obscure nintendo handheld emulator"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
