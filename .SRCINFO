@@ -23,14 +23,16 @@ pkgbase = telegram-desktop-git
 	provides = telegram-desktop
 	conflicts = telegram-desktop
 	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#branch=dev
-	source = GSL::git+https://github.com/Microsoft/GSL.git
-	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
-	source = variant::git+https://github.com/mapbox/variant.git
 	source = Catch::git+https://github.com/philsquared/Catch
+	source = crl::git+https://github.com/telegramdesktop/crl.git
+	source = GSL::git+https://github.com/Microsoft/GSL.git
+	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip
+	source = variant::git+https://github.com/mapbox/variant
 	source = CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop
 	source = tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop
 	source = libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop
 	source = no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

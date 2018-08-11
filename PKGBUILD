@@ -13,15 +13,17 @@ optdepends=('libnotify: desktop notifications')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#branch=dev"
-        "GSL::git+https://github.com/Microsoft/GSL.git"
-        "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
-        "variant::git+https://github.com/mapbox/variant.git"
         "Catch::git+https://github.com/philsquared/Catch"
+        "crl::git+https://github.com/telegramdesktop/crl.git"
+        "GSL::git+https://github.com/Microsoft/GSL.git"
+        "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
+        "variant::git+https://github.com/mapbox/variant"
         "CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop"
         "tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
         "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
         "no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -38,10 +40,11 @@ pkgver() {
 prepare() {
     cd "$srcdir/tdesktop"
     git submodule init
-    git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
-    git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
-    git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
     git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
+    git config submodule.Telegram/ThirdParty/crl.url "$srcdir/crl"
+    git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
+    git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
+    git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
     git submodule update
 
     patch -Np1 -i "$srcdir/tdesktop.patch"
