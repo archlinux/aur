@@ -1,7 +1,7 @@
 # Contributor: Spyros Stathopoulos <foucault.online@gmail.com>
 pkgname=pkgupd-git
 _pkgname=pkgupd
-pkgver=0.38
+pkgver=0.40
 pkgrel=1
 pkgdesc="Checks repositories and AUR for package updates"
 arch=('i686' 'x86_64')
