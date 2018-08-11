@@ -3,7 +3,7 @@
 
 _pkgname=sickrage
 pkgname=$_pkgname-git
-pkgver=9.2.101.r0.g986e796a7
+pkgver=9.3.55.r0.ge233cb683
 pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
@@ -33,7 +33,7 @@ source=("$pkgname::git+https://git.sickrage.ca/SiCKRAGE/sickrage.git"
         'sickrage.sysusers'
         'sickrage.tmpfile')
 md5sums=('SKIP'
-         'eb4e1f9ca758af1adc3c7d93ad4b264f'
+         '09e42acd4948444989ecaa2aaceb5892'
          '6a7db7e14e74072d29e482b06b41dfa7'
          'f7a12df978d649da4e77d88e03f50252')
 
