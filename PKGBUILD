@@ -7,7 +7,7 @@
 
 pkgname=ypserv
 pkgver=4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux NIS Server'
 arch=('i686' 'x86_64')
 url='https://github.com/thkukuk/ypserv'
