@@ -3,7 +3,7 @@
 pkgname='monero-wallet-qt-git'
 _monerover=0.12.3.0
 pkgver=0.12.3.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
@@ -43,6 +43,8 @@ prepare() {
 
     echo "var GUI_VERSION = \"$pkgver\"" > version.js
     echo "var GUI_MONERO_VERSION = \"$_monerover\"" >> version.js
+
+    git pull --no-edit origin refs/pull/1540/head # libsodium linking error
 }
 
 build() {
