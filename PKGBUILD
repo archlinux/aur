@@ -5,7 +5,7 @@
 pkgname=mediathek
 _realname=MediathekView
 pkgver=13.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Offers access to the Mediathek of different german tv stations (ARD, ZDF, Arte, etc.)"
 arch=('any')
 url="https://mediathekview.de"
@@ -15,11 +15,11 @@ optdepends=('mplayer: record streams'
             'flvstreamer: stream flash'
             'vlc: play files directly from mediathek')
 source=(https://download.mediathekview.de/stabil/$_realname-$pkgver.tar.gz
- https://github.com/mediathekview/MediathekView/blob/$pkgver/src/main/resources/mediathek/res/MediathekView.png
+        https://raw.githubusercontent.com/mediathekview/$_realname/$pkgver/src/main/resources/mediathek/res/MediathekView.png
         $pkgname
         $pkgname.desktop)
 md5sums=('7ff4e235b41faf12c00e9c8d11bda2be'
-         '30c2dcf41ab952c1c442d83ed6f4497b'
+         'e629da8d46f9bfe0f45f041197a5af42'
          '461b97eecd40ec40e46b66eb219c92b9'
          'bad6e1fdc948ac0e41b8535509cf944d')
 
@@ -32,6 +32,4 @@ package() {
   install -m755 bin/flv.sh "$pkgdir"/opt/$pkgname/bin/
   install -m644 ../$pkgname.desktop "$pkgdir"/usr/share/applications/
   install -m644 ../$_realname.png "$pkgdir"/usr/share/pixmaps/
-  #install -m644 Anleitung/Kurzanleitung.pdf $pkgdir/usr/share/doc/$pkgname/
-  #cp -R Copyright/* $pkgdir/usr/share/licenses/$pkgname
 }
