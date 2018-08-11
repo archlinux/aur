@@ -17,7 +17,7 @@ optdepends=('raspberrypi-firmware-tools: Raspberry Pi support'
             'libcec: CEC support')
 makedepends=('cmake')
 source=("https://github.com/irtimmer/moonlight-embedded/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('96ede00c10bef08ba6d5f35b37d8e2338fe93ebdfc1212e1a5052310cd978cb4')
+sha256sums=('f78e7de28e190ea21ad567f2c580be384c53fa40f22d2ab8db16487c3e99fc56')
 
 build() {
   mkdir -p build
