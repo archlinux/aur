@@ -1,0 +1,15 @@
+pkgbase = relaxed
+	pkgdesc = Create PDF documents using web technologies
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/RelaxedJS/ReLaXed
+	arch = x86_64
+	license = ISC
+	makedepends = npm
+	depends = nodejs
+	noextract = relaxed-0.1.11.tgz
+	source = https://registry.npmjs.org/relaxedjs/-/relaxedjs-0.1.11.tgz
+	sha256sums = 97a490e324b1c92e0cbcf29a3e7a653bf1f997dbaca74afbaa328189df96bfe3
+
+pkgname = relaxed
+
