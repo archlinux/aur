@@ -1,8 +1,8 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=visidata
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc='A terminal spreadsheet multitool for discovering and arranging data'
 arch=('any')
 url='http://visidata.org'
@@ -18,7 +18,7 @@ provides=("visidata=${pkgver}")
 conflicts=('visidata-git')
 replaces=('visidata-git')
 source=("${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('90a1c2f9b437029b3166b60921d49574d52e1b3bf1baf313a6b4033159490b95')
+sha256sums=('19f07a7ad68bf1af8224fbbc6fe20bd55cf575a2b996119decc241048426c7c3')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
