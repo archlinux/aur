@@ -1,7 +1,7 @@
 pkgbase = juiced-git
 	pkgdesc = A lightweight battery warning daemon
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/drkhsh/juiced
 	arch = any
 	license = ISC
@@ -9,7 +9,7 @@ pkgbase = juiced-git
 	source = git+https://github.com/drkhsh/juiced.git
 	source = juiced.service
 	sha256sums = SKIP
-	sha256sums = c5e15a7d14f8709b3ef82cde3ba15dc2c61ac387940e0c1b94c0bb03376f2288
+	sha256sums = df4d55f17f4f0c683f10f273d64afac4c97f824bbbafb55b668025c3db7479ac
 
 pkgname = juiced-git
 
