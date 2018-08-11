@@ -22,7 +22,7 @@ source=("https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgna
         "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/archNews.py"
         "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/settings.sh")
 
-md5sums=('3f724c052ab9d966b4474f54614a5969'
+md5sums=('6cd84014be4476a45fc1d3b158b0827e'
          'af05a3013904f4e47822164bfece1e3e'
          '3b8dfc54bac5b356e20372f9f5e9d0c0')
 
@@ -33,6 +33,8 @@ build() {
     umask 022
     mkdir -p "$srcdir/$install_dir"
     mkdir -p "$srcdir/$symlink_dir"
+
+    sed -i "s|{{PKG_PATH}}|/${install_dir}|" "$srcdir/run.sh"
 
     install -m 755 "$srcdir/run.sh" $install_dir
     install -m 755 "$srcdir/archNews.py" "$install_dir"
