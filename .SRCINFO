@@ -1,7 +1,7 @@
 pkgbase = gitea
 	pkgdesc = Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language.
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gitea.io
 	arch = x86_64
 	arch = i686

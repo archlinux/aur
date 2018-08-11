@@ -2,7 +2,7 @@
 
 pkgname=gitea
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://gitea.io'
@@ -34,9 +34,9 @@ prepare() {
 
 build() {
   cd ${srcdir}/src/code.gitea.io/${pkgname}
-  # GOPATH="${srcdir}" make clean generate
+  GOPATH="${srcdir}" make clean generate
   GOPATH="${srcdir}" EXTRA_GOFLAGS="-gcflags all=-trimpath=${srcdir} -asmflags all=-trimpath=${srcdir}" \
-  make LDFLAGS="-X \"main.Version=${pkgver}\" -X \"main.Tags=\$(TAGS)\"" GOFLAGS="-v" TAGS="sqlite tidb pam" build
+  make LDFLAGS="-X \"main.Version=${pkgver}\" -X \"main.Tags=\$(TAGS)\"" GOFLAGS="-v" TAGS="bindata sqlite tidb pam" build
 }
 
 package() {
