@@ -2,20 +2,20 @@
 
 pkgname=linphone-desktop-all-git
 pkgver=4.1.1.r522.578e1a27
-pkgrel=3
+pkgrel=4
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
 url="https://www.${pkgname%-desktop-all-git}.org/"
 license=("GPL2")
 depends=("qt5-base" "qt5-graphicaleffects" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-svg" "qt5-tools")
-makedepends=("cmake" "doxygen" "git" "graphviz" "ladspa" "python-pystache" "yasm")
+makedepends=("cmake" "doxygen" "git" "graphviz" "ladspa" "nasm" "python-pystache" "yasm")
 conflicts=("${pkgname%-all-git}")
 source=("${pkgname%-all-git}::git://git.${pkgname%-desktop-all-git}.org/${pkgname%-all-git}"
         "${pkgname%-desktop-all-git}.desktop"
         "${pkgname%-all-git}-submodules.patch")
 sha256sums=("SKIP"
             "346d983f503873811b3a4f72772e5afe4990275526c9e15c1b5cde2ad69a0544"
-            "2896ee561bae9a99277202d715999b1b4b1597da025e11f47570a9c097cee4c9")
+            "8567795fb402655fb4a86efdbe6a14c2d071b3d15a3b9e0ca4946eb128226a74")
 
 prepare() {
   cd "${srcdir}/${pkgname%-all-git}"
@@ -23,7 +23,10 @@ prepare() {
   git submodule sync
   git submodule update --init --recursive
   
-  #Patch generated via: git submodule --quiet foreach --recursive 'git diff --src-prefix=a/${name}/ --dst-prefix=b/${name}/' > submodules.patch
+  #Patch generated via:
+  #git diff --ignore-submodules > ../submodules.patch
+  #git submodule --quiet foreach --recursive 'git diff --src-prefix=a/${name}/ --dst-prefix=b/${name}/' >> ../submodules.patch
+
   patch -Np1 -i "../${pkgname%-all-git}-submodules.patch"
 }
 
@@ -40,7 +43,7 @@ build() {
   cd "${srcdir}/${pkgname%-all-git}"
 
   ./prepare.py -c
-  ./prepare.py --list-cmake-variables -DENABLE_RELATIVE_PREFIX=YES -DCMAKE_INSTALL_RPATH=/opt/linphone-desktop/lib:/opt/linphone-desktop/lib64
+  ./prepare.py --all-codecs
   make
 }
 
