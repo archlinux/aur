@@ -12,7 +12,7 @@ conflicts=('net-speeder')
 source=("git+https://github.com/snooda/net-speeder.git"
         "net-speeder.service")
 sha512sums=('SKIP'
-            '2292ac1212412f82a3d29243109a8868ff6b86dad286a1cb92e9abda59f4bdfaa7d5faebda28a8bb1a551b9536140ab4fd6668da8f2b5cbfe1c2bda44b5808ff')
+            '4c49ae81c1480f4ea2fffbb32b45a8a4ece2c730e250c1c7efadfebf22a94a488982c557a47f13b51091cc7f06b147de4b09208940f1a11c7e8176162f3c2914')
 
 prepare() {
     git -C net-speeder log -1 --format='%cd' --date=short | tr -d -- '-'
@@ -26,5 +26,5 @@ build() {
 
 package() {
     install -Dm755 "$srcdir"/net-speeder/net_speeder "$pkgdir"/usr/bin/net-speeder
-    install -Dm644 "$srcdir"/net-speeder.service "$pkgdir"/usr/lib/systemd/system/net-speeder.service
+    install -Dm644 "$srcdir"/net-speeder.service "$pkgdir"/usr/lib/systemd/system/net-speeder@.service
 }

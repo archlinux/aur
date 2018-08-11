@@ -12,7 +12,7 @@ pkgbase = net-speeder-git
 	source = git+https://github.com/snooda/net-speeder.git
 	source = net-speeder.service
 	sha512sums = SKIP
-	sha512sums = 2292ac1212412f82a3d29243109a8868ff6b86dad286a1cb92e9abda59f4bdfaa7d5faebda28a8bb1a551b9536140ab4fd6668da8f2b5cbfe1c2bda44b5808ff
+	sha512sums = 4c49ae81c1480f4ea2fffbb32b45a8a4ece2c730e250c1c7efadfebf22a94a488982c557a47f13b51091cc7f06b147de4b09208940f1a11c7e8176162f3c2914
 
 pkgname = net-speeder-git
 
