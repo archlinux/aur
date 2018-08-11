@@ -1,7 +1,7 @@
 pkgbase = avahi-gtk2
 	pkgdesc = Multicast/unicast DNS-SD framework (with Gtk2 client apps)
 	pkgver = 0.6.31
-	pkgrel = 15
+	pkgrel = 16
 	url = http://www.avahi.org/
 	install = install
 	arch = i686

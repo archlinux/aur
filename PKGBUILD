@@ -6,7 +6,7 @@
 _pkgname=avahi
 pkgname=avahi-gtk2
 pkgver=0.6.31
-pkgrel=15
+pkgrel=16
 pkgdesc='Multicast/unicast DNS-SD framework (with Gtk2 client apps)'
 url='http://www.avahi.org/'
 license=('LGPL')
