@@ -1,4 +1,4 @@
-# Maintainer: Simon <simon dot hanna at serve-me dot info>
+# Maintainer: Simon <thelinuxguy @ freenode>
 # Contributor: Garrett <floft.net/contact>
 
 pkgname=openlp-bzr
@@ -16,7 +16,7 @@ depends=('python' 'python-pyqt5' 'phonon-qt5'
          'python-beautifulsoup4' 'python-pyenchant'
          'python-alembic' 'mediainfo' 'qt5-multimedia'
          'qt5-webkit' 'qt5-svg' 'python-webob' 'python-requests'
-		 'python-waitress' 'python-websockets'
+		 'python-waitress' 'python-websockets' 'python-qtawesome'
         )
 optdepends=('libreoffice-fresh: display impress presentations'
             'vlc: play multimedia'
