@@ -3,7 +3,7 @@
 
 pkgname=java-gcj-compat
 pkgver=1.0.80
-pkgrel=4
+pkgrel=5
 pkgdesc="Wrapper package to wrap free tools into a java 1.5.0.0 compatible java environment"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -47,9 +47,9 @@ package() {
   mkdir -p ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre/lib
   mkdir -p ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/lib
   mkdir -p ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/include
-  ln -s /usr/share/java/libgcj-4.?.jar ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre/lib/rt.jar
-  ln -s /usr/share/java/libgcj-tools-4.?.jar ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/lib/tools.jar
-  ln -s /usr/lib/gcj-4.?/libjawt.so ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/lib/
+  ln -s /usr/share/java/libgcj-6.?.jar ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre/lib/rt.jar
+  ln -s /usr/share/java/libgcj-tools-6.?.jar ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/lib/tools.jar
+  ln -s /usr/lib/gcj-6.?/libjawt.so ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/lib/
   ln -s /usr/lib/libgcj*.so ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/lib/
   ln -s /usr/lib/libgij.so ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/lib/
   for i in jni.h jni_md.h jawt.h jawt_md.h gcj; do
@@ -62,9 +62,9 @@ package() {
     _arch=i386
   fi
   mkdir -p ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre/lib/${_arch}/{client,server}
-  ln -s /usr/lib/gcj-4.?/libjvm.so ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre/lib/${_arch}/client/
-  ln -s /usr/lib/gcj-4.?/libjvm.so ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre/lib/${_arch}/server/
-  ln -s /usr/lib/gcj-4.?/libjawt.so ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre/lib/${_arch}/
+  ln -s /usr/lib/gcj-6.?/libjvm.so ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre/lib/${_arch}/client/
+  ln -s /usr/lib/gcj-6.?/libjvm.so ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre/lib/${_arch}/server/
+  ln -s /usr/lib/gcj-6.?/libjawt.so ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre/lib/${_arch}/
 
   mkdir -p ${pkgdir}/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre/lib/security
   sed -i -e "s|/etc/pki/tls/cert.pem|${srcdir}/ca-bundle.crt|" generate-cacerts.pl

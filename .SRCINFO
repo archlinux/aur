@@ -1,7 +1,7 @@
 pkgbase = java-gcj-compat
 	pkgdesc = Wrapper package to wrap free tools into a java 1.5.0.0 compatible java environment
 	pkgver = 1.0.80
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.eclipse.org/
 	arch = i686
 	arch = x86_64
