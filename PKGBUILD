@@ -1,29 +1,49 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 # Contributor: Jonathan Liu <net147@gmail.com>
 
-pkgname=python2-jpype1
-pkgver=0.6.2
+pkgbase=python2-jpype1
+pkgname=('python-jpype1' 'python2-jpype1')
+_pkgname=jpype1
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Python to Java bridge, an effort to allow Python programs full access to Java class libraries"
 arch=('x86_64')
-url="https://github.com/originell/jpype"
+url="https://github.com/jpype-project/jpype"
 license=('APACHE')
-depends=('java-environment' 'python2')
-makedepends=('python2-distribute')
+depends=('java-runtime')
+makedepends=('python-setuptools' 'python2-setuptools')
 conflicts=('jpype')
-source=("JPype1-${pkgver}.tar.gz"::"https://github.com/originell/jpype/archive/v${pkgver}.tar.gz")
-sha256sums=('e5a560f97d5248db5871aed7b2cd2bc854e3ebeb524c3eb7204600c048d83e1e')
+source=("JPype1-${pkgver}.tar.gz"::"https://github.com/jpype-project/jpype/archive/v${pkgver}.tar.gz")
+sha256sums=('5c447f4ac2d97f60ee1753fa59dd32ebdc29e16571db9ce2fb7a67362d459e22')
 
-build() { 
-  cd "jpype-${pkgver}"
-  if [[ -d /usr/lib/jvm/java-7-openjdk/include && -d /usr/lib/jvm/java-7-openjdk/include/linux ]]; then
-    CFLAGS="${CFLAGS} -I/usr/lib/jvm/java-7-openjdk/include -I/usr/lib/jvm/java-7-openjdk/include/linux"
-  fi
+prepare() {
+  # Create a copy of the original source to build for specific python versions
+  cp -r "jpype-${pkgver}" "python-${_pkgname}-${pkgver}"
+  cp -r "jpype-${pkgver}" "python2-${_pkgname}-${pkgver}"
+}
+
+build() {
+  cd "${srcdir}/python-${_pkgname}-${pkgver}"
+  echo "Building Python 3.x version"
+  python setup.py build
+
+  cd "${srcdir}/python2-${_pkgname}-${pkgver}"
+  echo "Building Python 2.x version"
   python2 setup.py build
 }
 
-package() {
-  cd "jpype-${pkgver}"
+package_python-jpype1() {
+  depends=('python')
+
+  cd "${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1
+}
+
+package_python2-jpype1() {
+  depends=('python2')
+
+  cd "${pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
