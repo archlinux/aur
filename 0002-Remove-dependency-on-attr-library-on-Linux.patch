@@ -1,0 +1,92 @@
+From c0e14f90a2a6e30a10dddaab6a2d49a3a3d8726d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Tue, 10 Jul 2018 12:07:54 +0200
+Subject: [PATCH 2/2] Remove dependency on attr library on Linux
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ Makefile.PL     | 12 ++----------
+ README          |  6 +++---
+ extattr_linux.h |  4 +++-
+ 3 files changed, 8 insertions(+), 14 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 1694780..d0f8963 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,25 +1,17 @@
+ use lib qw(inc);
+ use ExtUtils::MakeMaker;
+-use Devel::CheckLib;
+ use Cwd;
+ use File::Temp qw/tempdir/;
+ use IO::File;
+ use strict;
+ 
+-# Check whether we have <attr/attributes.h> and <sys/xattr.h> on Linux.
++# Check whether we have <sys/xattr.h> on Linux.
+ # Suggest what the user needs to install, to get these files.
+ 
+-if ($^O eq 'linux') {
+-    check_lib_or_exit(
+-        lib => [qw(attr)]
+-    );
+-}
+-
+ my @DIRS = qw(. /usr/include);
+ if ($^O eq 'linux')
+ {
+     my %headers = (
+-        'attr/attributes.h' => 0,
+         'sys/xattr.h' => 0,
+     );
+     my $incdir;
+@@ -36,7 +28,7 @@ if ($^O eq 'linux')
+     foreach (keys %headers)
+     {
+         if ($headers{$_} == 0) {
+-            warn "<$_> not found; perhaps you need to install libattr-devel";
++            warn "<$_> not found; perhaps you need to install glibc-headers";
+             $missing++;
+         }
+     }
+diff --git a/README b/README
+index 4d40f1d..9c628ae 100644
+--- a/README
++++ b/README
+@@ -42,10 +42,10 @@ use a different file system, e.g.:
+ DEPENDENCIES
+ 
+ On Linux, you will need to install the package that provides
+-the header files <attr/attributes.h> and <sys/xattr.h>. On Fedora
+-you can install these as follows:
++the <sys/xattr.h> header file. On Fedora you can install
++these as follows:
+ 
+-  dnf -y install glibc-headers libattr-devel
++  dnf -y install glibc-headers
+ 
+ This module requires these other modules:
+ 
+diff --git a/extattr_linux.h b/extattr_linux.h
+index 3c5900e..3b099f4 100644
+--- a/extattr_linux.h
++++ b/extattr_linux.h
+@@ -2,8 +2,10 @@
+ #define EXTATTR_LINUX_H
+ 
+ #include <sys/types.h>
+-#include <attr/attributes.h>
+ #include <sys/xattr.h>
++#ifndef ENOATTR
++#  define ENOATTR ENODATA
++#endif
+ 
+ struct hv;
+ 
+-- 
+2.14.4
+

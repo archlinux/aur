@@ -1,0 +1,73 @@
+From fedfb42a5dac5b86894daad5c9372fa4d7ce4d01 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Tue, 10 Jul 2018 11:49:35 +0200
+Subject: [PATCH 1/2] Port Linux to <sys/xattr.h>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+attr-2.4.48 removed <attr/xattr.h> because glibc had been provided
+<sys/xattr.h> with the same declarations for ages.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ Makefile.PL     | 4 ++--
+ README          | 4 ++--
+ extattr_linux.h | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index ee3ba17..1694780 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -6,7 +6,7 @@ use File::Temp qw/tempdir/;
+ use IO::File;
+ use strict;
+ 
+-# Check whether we have <attr/attributes.h> and <attr/xattr.h> on Linux.
++# Check whether we have <attr/attributes.h> and <sys/xattr.h> on Linux.
+ # Suggest what the user needs to install, to get these files.
+ 
+ if ($^O eq 'linux') {
+@@ -20,7 +20,7 @@ if ($^O eq 'linux')
+ {
+     my %headers = (
+         'attr/attributes.h' => 0,
+-        'attr/xattr.h' => 0,
++        'sys/xattr.h' => 0,
+     );
+     my $incdir;
+     my $missing = 0;
+diff --git a/README b/README
+index e45c31e..4d40f1d 100644
+--- a/README
++++ b/README
+@@ -42,10 +42,10 @@ use a different file system, e.g.:
+ DEPENDENCIES
+ 
+ On Linux, you will need to install the package that provides
+-the header files <attr/attributes.h> and <attr/xattr.h>. On Fedora
++the header files <attr/attributes.h> and <sys/xattr.h>. On Fedora
+ you can install these as follows:
+ 
+-  yum -y install libattr-devel
++  dnf -y install glibc-headers libattr-devel
+ 
+ This module requires these other modules:
+ 
+diff --git a/extattr_linux.h b/extattr_linux.h
+index d61deed..3c5900e 100644
+--- a/extattr_linux.h
++++ b/extattr_linux.h
+@@ -3,7 +3,7 @@
+ 
+ #include <sys/types.h>
+ #include <attr/attributes.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ 
+ struct hv;
+ 
+-- 
+2.14.4
+
