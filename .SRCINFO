@@ -9,6 +9,7 @@ pkgbase = cin-git
 	makedepends = nasm
 	makedepends = cmake
 	makedepends = git
+	makedepends = ctags
 	makedepends = libxml2
 	makedepends = perl-xml-libxml
 	makedepends = perl-xml-parser

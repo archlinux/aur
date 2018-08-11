@@ -58,6 +58,7 @@ makedepends=('yasm'
              'nasm'
              'cmake'
              'git'
+             'ctags'
              'libxml2'
              'perl-xml-libxml'
              'perl-xml-parser')
