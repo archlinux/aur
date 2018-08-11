@@ -14,8 +14,7 @@ optdepends=(
   'nvidia-settings: optional backend for nVidia temperature sensors.'
 )
 conflicts=('gnome-shell-extensions-git')
-install="gschemas.install"
-source=("${pkgname}.tar.gz::https://github.com/UshakovVasilii/gnome-shell-extension-freon/archive/EGO-${pkgver}.tar.gz")
+source=("${pkgname}.tar.gz::${url}/archive/EGO-${pkgver}.tar.gz")
 sha512sums=('ede84079e39ba88bf1e9e34d57c0d1e2a979af90ff1b0b228d0bd948a86fcaab07343c49be79e057eaadcc732f5193401ca266fb2384776e927e502b7be69741')
 
 package() {
