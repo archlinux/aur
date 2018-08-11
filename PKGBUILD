@@ -18,15 +18,15 @@
 pkgbase="zfs-linux-zen-git"
 pkgname=("zfs-linux-zen-git" "zfs-linux-zen-git-headers")
 
-pkgver=2018.08.03.r4665.gc8c308362.4.17.13.zen1.1
+pkgver=2018.08.03.r4665.gc8c308362.4.17.14.zen1.1
 pkgrel=1
-makedepends=("linux-zen-headers=4.17.13.zen1-1" "git")
+makedepends=("linux-zen-headers=4.17.14.zen1-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git#commit=c8c308362c2f0a43adbe21a44b3443a27d2c7ca9" "upstream-ac09630-Fix-zpl_mount-deadlock.patch")
 sha256sums=("SKIP" "1799f6f7b2a60a23b66106c9470414628398f6bfc10da3d0f41c548bba6130e8")
 license=("CDDL")
-depends=("kmod" "zfs-utils-common-git=2018.08.03.r4665.gc8c308362" "linux-zen=4.17.13.zen1-1")
+depends=("kmod" "zfs-utils-common-git=2018.08.03.r4665.gc8c308362" "linux-zen=4.17.14.zen1-1")
 
 build() {
     cd "${srcdir}/zfs"
@@ -34,8 +34,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.9 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.17.13-zen1-1-zen/build \
-                --with-linux-obj=/usr/lib/modules/4.17.13-zen1-1-zen/build
+                --with-linux=/usr/lib/modules/4.17.14-zen1-1-zen/build \
+                --with-linux-obj=/usr/lib/modules/4.17.14-zen1-1-zen/build
     make
 }
 
@@ -61,5 +61,5 @@ package_zfs-linux-zen-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.17.13-zen1-1-zen/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.17.14-zen1-1-zen/Module.symvers
 }
