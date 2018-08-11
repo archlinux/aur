@@ -6,7 +6,7 @@
 pkgbase=python-pyface
 pkgname=('python2-pyface' 'python-pyface')
 pkgver=6.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Traits-capable windowing framework"
 arch=('any')
 url="https://github.com/enthought/pyface"
@@ -37,12 +37,11 @@ build() {
 
 package_python2-pyface() {
   depends=('python2-traits')
-  optdepends=('python2-pyqt4: for Qt backend (or python2-pyside)'
-              'python2-pyside: for Qt backend (or python2-pyqt4)'
+  optdepends=('python2-pyqt5: for Qt backend'
               'python2-pygments: for syntax coloring in Qt backend'
               'python2-setuptools: to locate resources inside zip and egg files'
               'ipython2: for IPython widget'
-              'wxpython: for wx backend')
+              'python2-wxpython3: for wx backend')
 
   cd "$srcdir"/pyface-py2-$pkgver
 
@@ -53,11 +52,12 @@ package_python2-pyface() {
 
 package_python-pyface() {
   depends=('python-traits')
-  optdepends=('python-pyqt4: for Qt backend (or python2-pyside)'
-              'python-pyside: for Qt backend (or python2-pyqt4)'
+  optdepends=('python-pyqt5: for Qt backend (or pyside2)'
+              'pyside2: for Qt backend (or python-pyqt5)'
               'python-pygments: for syntax coloring in Qt backend'
               'python-setuptools: to locate resources inside zip and egg files'
-              'ipython: for IPython widget')
+              'ipython: for IPython widget'
+	      'python-wxpython: for wx backend')
 
   cd "$srcdir"/pyface-$pkgver
 
