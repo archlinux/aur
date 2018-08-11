@@ -3,7 +3,6 @@ pkgbase = gnome-shell-extension-easyscreencast
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/EasyScreenCast/EasyScreenCast
-	install = gschemas.install
 	arch = any
 	license = GPL3
 	depends = gnome-shell
