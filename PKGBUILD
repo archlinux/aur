@@ -1,7 +1,7 @@
 # Maintainer: kitsunyan <`echo a2l0c3VueWFuQGFpcm1haWwuY2MK | base64 -d`>
 
 pkgname=postman
-pkgver=6.2.3
+pkgver=6.2.4
 pkgrel=1
 pkgdesc='Build, test, and document your APIs faster'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=(postman-bin)
 source=("postman-$pkgver.zip::https://dl.pstmn.io/download/version/${pkgver}/linux64"
         'remove-updater.patch'
         'https://archive.archlinux.org/packages/e/electron/electron-1.8.4-2-x86_64.pkg.tar.xz')
-sha256sums=('366953da87cd65a4633e949fde1e9d75060c76504702e84bbaf4fec45760ccf5'
+sha256sums=('79d89b92e8e69d0f7080f3fc25cf30108ba2da0b5587b19851d09dd3c2100c3c'
             'eebcce1e81824b61fd64ccb2c08ec2c7c06a0aacdc4fdc14d6b06ecd92ceed8e'
             'dd9c6756bd61abbaae58fdeade5570f771fe8d6f0de14f1e5a710e42f0bf35c2')
 
