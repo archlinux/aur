@@ -5,9 +5,11 @@
 # Contributor:  Pooler                   <https://bitcointalk.org/index.php?action=profile;u=43931>
 
 pkgname=electrum-vtc
-pkgver=3.1.2
+pkgver=3.2.2
 pkgrel=1
 pkgdesc='A simple, powerful, and secure Vertcoin wallet which has no sync time or long waits for the blockchain to download.'
+
+_pkgdl=electrum-VTC-3.2.2-rc2
 
 arch=('any')
 url='https://electrum.vertcoin.org/'
@@ -36,13 +38,13 @@ optdepends=('cython: Compilation support for all hardware wallet dependencies'
 provides=('electrum-vtc')
 conflicts=('electrum-vtc')
 
-source=("Electrum-VTC-$pkgver.tar.gz::https://github.com/vertcoin/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
-        "Electrum-VTC-$pkgver.tar.gz.sig::https://github.com/vertcoin/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz.sig")
+source=("Electrum-VTC-$pkgver.tar.gz::https://github.com/vertcoin/$pkgname/releases/download/$pkgver-rc2/$_pkgdl.tar.gz"
+        "Electrum-VTC-$pkgver.tar.gz.sig::https://github.com/vertcoin/$pkgname/releases/download/$pkgver-rc2/$_pkgdl.tar.gz.sig")
 
 validpgpkeys=('E44EAD1F0BB016963229A6A304E9BCFB4E777CA3'
               '64D9042053AA1391D6C0B4A7425776E2F9E5BAB8')
 
-sha256sums=('2486c4dbf42b7cdfec8e5b56eef09991c5c71f023015b309da709b8d6d63b547'
+sha256sums=('7a01beb0c193c4cf5790c1060440e04612e996e53c4adf85c7ca2d9165d58349'
             'SKIP')
 
 prepare() {
