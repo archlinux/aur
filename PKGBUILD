@@ -2,7 +2,7 @@
 
 pkgname="perl-cache-memcached-fast"
 pkgver="0.25"
-pkgrel='6'
+pkgrel='7'
 pkgdesc="Perl client for memcached, in C language"
 arch=('i686' 'x86_64' 'arm')
 url="http://search.cpan.org/dist/Cache-Memcached-Fast"
@@ -39,6 +39,7 @@ package() {
   prepare_environment
   make install
   find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
+  find "$pkgdir" -type f -name '*.so' -exec strip {} \+ # 'strip' option doesn't work because files are read-only
 }
 
 # Local Variables:
