@@ -1,7 +1,7 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 pkgname=kawaii-player
 _pkgname=kawaii_player
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 _pkgrel=1
 pkgdesc="A powerful Audio/Video manager, multimedia player and portable media server"
@@ -9,13 +9,16 @@ arch=(any)
 url="https://github.com/kanishka-linux/kawaii-player"
 license=('GPL3')
 depends=('curl' 'ffmpegthumbnailer' 'libnotify' 'libtorrent-rasterbar' 'mpv' 'python' 'python-beautifulsoup4' 'python-certifi' 'python-dbus'
-         'python-lxml' 'python-mutagen' 'python-pillow' 'python-pycurl' 'python-pyqt5' 'qt5-webengine' 'sqlite' 'youtube-dl')
-optdepends=('mplayer: alternative backend')
+         'python-lxml' 'python-mutagen' 'python-pillow' 'python-pycurl' 'python-pyqt5' 'qt5-webengine' 'sqlite')
+optdepends=('ffmpeg: extract and convert subtitles'
+            'mplayer: alternative backend'
+            'xvfb: run in headless mode'
+            'youtube-dl: YouTube support')
 makedepends=('git')
 conflicts=('kawaii-player-git')
 install=kawaii-player.install
 source=("https://github.com/kanishka-linux/${pkgname}/releases/download/v${pkgver}-${_pkgrel}/${pkgname}-${pkgver}-${_pkgrel}.tar.bz2")
-md5sums=('c418aa09f4d9886bab49415592b503b1')
+sha256sums=('ec22745a93a19d373d01dc5b46d9575c833a454d41085005bd4b467e70ac52bb')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}-${_pkgrel}
