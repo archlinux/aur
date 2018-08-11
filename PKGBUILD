@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=daedalus
-pkgver=0.10.1
-_commit=53caf28e54d5baa86438ec72077c41d504aacd20
+pkgver=0.11.0
+_commit=a0c906f20b86f38acc3e2d70129d53c9c7dd1d25
 pkgrel=1
 pkgdesc='Cryptocurrency wallet'
 arch=('any')
@@ -17,7 +17,7 @@ source=("git+https://github.com/input-output-hk/daedalus.git#commit=${_commit}"
 sha256sums=('SKIP'
             '965733a8cdbd1f983ce66413908da6da1ebfaa9e73e5a949620aa6347d2db294'
             '8e2b172d2ebcf172135d9fffb25b8c2ab0319e9abbbba0f0827381e9bd043cab'
-            'f59cfbb07ec62a2f9a4f9c34a8b53575e7bdb2c0749e56d4479395adfcacbbdb')
+            '7eae7b06eecb596fd1b3345d8e3cc4c1463ef3c2c8b052bb4f9c906d1f8055f9')
 
 prepare() {
     cd ${pkgname}
@@ -38,7 +38,7 @@ package() {
     appdir=/usr/lib/${pkgname}
     install -Dm644 -t "${pkgdir}${appdir}" package.json
     install -Dm644 -t "${pkgdir}${appdir}/dist/main" dist/main/*
-    install -Dm644 -t "${pkgdir}${appdir}/dist/renderer" dist/renderer/*
+    cp -r dist/renderer "${pkgdir}${appdir}/dist"
 
     asar pack "${pkgdir}${appdir}" "${pkgdir}/usr/lib/daedalus.asar"
     rm -r "${pkgdir}${appdir}"
