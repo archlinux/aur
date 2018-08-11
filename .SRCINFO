@@ -1,0 +1,15 @@
+pkgbase = vim-gnupg-git
+	pkgdesc = Plugin for transparent editing of gpg encrypted files
+	pkgver = 2.6.1.r1.g22cbc6b
+	pkgrel = 1
+	url = https://github.com/jamessan/vim-gnupg
+	arch = any
+	groups = vim-plugins
+	license = GPL2
+	depends = vim
+	conflicts = vim-gnupg
+	source = gnupg::git+https://github.com/jamessan/vim-gnupg.git
+	sha256sums = SKIP
+
+pkgname = vim-gnupg-git
+
