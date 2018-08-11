@@ -11,6 +11,7 @@ url='[% url %]'
 license=('PerlArtistic' 'GPL')
 makedepends=('perl-module-build-tiny')
 depends=('perl-types-serialiser')
+checkdepends=('perl-test-deep-fuzzy')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
