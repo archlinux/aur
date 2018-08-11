@@ -1,11 +1,12 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=rebuild-detector
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Pacman hook to automatically detect which packages need to be rebuilt"
 arch=("any")
 license=("MIT")
+install="rebuild-detector.install"
 source=("rebuild-detector"
         "rebuild-detector.sig"
         "rebuild-detector.hook"

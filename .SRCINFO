@@ -1,7 +1,8 @@
 pkgbase = rebuild-detector
 	pkgdesc = Pacman hook to automatically detect which packages need to be rebuilt
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
+	install = rebuild-detector.install
 	arch = any
 	license = MIT
 	source = rebuild-detector
