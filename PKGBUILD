@@ -3,7 +3,7 @@
 pkgname=caffe-opencl-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (Experimental, OpenCL)"
 arch=('i686' 'x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -14,7 +14,7 @@ depends=(
         'lmdb' 'python' 'boost' 'cython' 'python-numpy' 'python-scipy'
         'python-matplotlib' 'ipython' 'python-h5py' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
-        'python-yaml' 'python-pillow' 'python-six'
+        'python-yaml' 'python-pillow' 'python-six' 'opencl-driver'
     # AUR:
         'openblas-lapack' 'python-leveldb' 'python-scikit-image' 'python-pydotplus' 'viennacl'
     # NOTE:
@@ -30,7 +30,7 @@ source=("${_srcname}"::"git+https://github.com/BVLC/${_srcname}#branch=opencl"
         'python_CMakeLists.patch'
 	'src_caffe_CMakeLists.patch')
 sha256sums=('SKIP'
-            '3c850eb21950c09822a66c97c953599834d48a58665b3c812677c3370575d86e'
+            '7ddb59109d7df3889641eaa4769e6b9e82f96f623b200ecfd8ade7ecfe04f95f'
             'd2974a35b695cfa176da7c26c860d18941de5b85870c42cb104034fec400599c'
             'd1012a6248f10303b56aba04c5dead93988f5ab2e9488dc885f79be4d14b936c')
 

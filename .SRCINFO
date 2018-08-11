@@ -1,7 +1,7 @@
 pkgbase = caffe-opencl-git
 	pkgdesc = A deep learning framework made with expression, speed, and modularity in mind (Experimental, OpenCL)
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://caffe.berkeleyvision.org/
 	arch = i686
 	arch = x86_64
@@ -34,6 +34,7 @@ pkgbase = caffe-opencl-git
 	depends = python-yaml
 	depends = python-pillow
 	depends = python-six
+	depends = opencl-driver
 	depends = openblas-lapack
 	depends = python-leveldb
 	depends = python-scikit-image
@@ -55,7 +56,7 @@ pkgbase = caffe-opencl-git
 	source = python_CMakeLists.patch
 	source = src_caffe_CMakeLists.patch
 	sha256sums = SKIP
-	sha256sums = 3c850eb21950c09822a66c97c953599834d48a58665b3c812677c3370575d86e
+	sha256sums = 7ddb59109d7df3889641eaa4769e6b9e82f96f623b200ecfd8ade7ecfe04f95f
 	sha256sums = d2974a35b695cfa176da7c26c860d18941de5b85870c42cb104034fec400599c
 	sha256sums = d1012a6248f10303b56aba04c5dead93988f5ab2e9488dc885f79be4d14b936c
 
