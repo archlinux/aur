@@ -3,7 +3,7 @@
 pkgbase=('python-rospkg')
 pkgname=('python-rospkg')
 _module='rospkg'
-pkgver='1.1.4'
+pkgver='1.1.7'
 pkgrel=1
 pkgdesc="ROS package library"
 url="http://wiki.ros.org/rospkg"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/r/rospkg/rospkg-${pkgver}.tar.gz")
-md5sums=('4676a379b11f57e4e66b50ed7f3fca1b')
+md5sums=('a5b9c6d6b8e101ff2d29e2335afdadab')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
