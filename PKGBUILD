@@ -13,8 +13,7 @@ depends=('gnome-shell' 'hicolor-icon-theme')
 makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-install="gschemas.install"
-source=("${pkgname%-*}::git+https://github.com/kazysmaster/gnome-shell-extension-lockkeys.git")
+source=("${pkgname%-*}::git+${url}")
 sha512sums=('SKIP')
 _branch=master
 

@@ -3,7 +3,6 @@ pkgbase = gnome-shell-extension-lockkeys-git
 	pkgver = r91.0bf0917
 	pkgrel = 1
 	url = https://github.com/kazysmaster/gnome-shell-extension-lockkeys
-	install = gschemas.install
 	arch = any
 	license = GPL
 	makedepends = git
@@ -11,7 +10,7 @@ pkgbase = gnome-shell-extension-lockkeys-git
 	depends = hicolor-icon-theme
 	provides = gnome-shell-extension-lockkeys
 	conflicts = gnome-shell-extension-lockkeys
-	source = gnome-shell-extension-lockkeys::git+https://github.com/kazysmaster/gnome-shell-extension-lockkeys.git
+	source = gnome-shell-extension-lockkeys::git+https://github.com/kazysmaster/gnome-shell-extension-lockkeys
 	sha512sums = SKIP
 
 pkgname = gnome-shell-extension-lockkeys-git
