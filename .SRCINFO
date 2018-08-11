@@ -1,15 +1,16 @@
 pkgbase = nnn
-	pkgdesc = The missing terminal file browser for X.
-	pkgver = 1.8
+	pkgdesc = The fastest terminal file manager ever written.
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/jarun/nnn
 	arch = i686
 	arch = x86_64
 	license = CUSTOM
+	makedepends = pkgconf
 	depends = ncurses
 	depends = readline
-	source = https://github.com/jarun/nnn/archive/v1.8.tar.gz
-	sha256sums = 65c364a9797178e40ec7ec653b2cfa8e211e556b75250bf72eb5eea57f5e0cdc
+	source = https://github.com/jarun/nnn/archive/v1.9.tar.gz
+	sha256sums = 7ba298a55a579640fe0ae37f553be739957da0c826f532beac46acfb56e2d726
 
 pkgname = nnn
 
