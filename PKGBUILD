@@ -3,12 +3,12 @@
 
 pkgname=vsxu
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free to use program that lets you create and perform real-time audio visual presets."
 arch=('i686' 'x86_64')
 url="http://www.vsxu.com/"
 license=('GPL' 'custom')
-depends=('desktop-file-utils' 'glew' 'libpng' 'opencv' 'xdg-utils')
+depends=('desktop-file-utils' 'glew' 'libpng' 'opencv' 'sdl2' 'xdg-utils')
 makedepends=('alsa-lib' 'cmake' 'git' 'jack' 'pulseaudio')
 optdepends=(
   'alsa-lib: ALSA support.'
@@ -54,7 +54,8 @@ pkgver() {
 
 build() {
   cd "${pkgname}/build"
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr 
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+           -DOpenGL_GL_PREFERENCE=GLVND
   make
 }
 
