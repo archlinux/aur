@@ -10,10 +10,10 @@ license=('Apache')
 makedepends=("dep" "git" "go" "yarn")
 provides=('filebrowser')
 conflicts=('filebrowser')
-source=("filebrowser.service"
-        "git+${url}.git")
-sha512sums=("2652a8617d5252ed7393b47f70e43eac91083e6b6353b5acab476379bf5ca66b6ef09302bce94bb8cf9f4368ccd4a8b7d34600e686c9a2c15e95a1ca12a23eb6"
-            "SKIP")
+source=("git+${url}.git"
+        "filebrowser.service")
+sha512sums=("SKIP"
+            "3b32f4fb7739afd6b2f7aeb372734e69ffe69e9a308a408a3e609b3b734053057f640343cce36110d8354bb132b0612b0fcf747b262aa0066651b39eb86bdbd0")
 
 pkgver() {
     git -C $_pkgname describe --tags | sed -e 's/^v//' -e 's/-/./g'
@@ -33,6 +33,8 @@ build() {
 
 package() {
     install -d "$pkgdir"/etc/$_pkgname
+    install -Dm644 "$srcdir"/$_pkgname.service "$pkgdir"/usr/lib/systemd/system/$_pkgname.service
+    sed -e 's/.pid/-%i.pid/' -e 's/config/%i/' -i filebrowser.service
     install -Dm644 "$srcdir"/$_pkgname.service "$pkgdir"/usr/lib/systemd/system/$_pkgname@.service
     install -Dm755 "$GOPATH"/src/github.com/$_pkgname/$_pkgname/$_pkgname "$pkgdir"/usr/bin/$_pkgname
 }
