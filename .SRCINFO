@@ -1,6 +1,6 @@
 pkgbase = noson-app-git
 	pkgdesc = SONOS controller for Linux platforms
-	pkgver = 3.6.7.r0.g8c832a4
+	pkgver = 3.7.2.r1.g4c99797
 	pkgrel = 1
 	url = https://janbar.github.io/noson-app
 	arch = x86_64
