@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=laditools-git
-pkgver=1.0.r34.g2946670
+pkgver=1.1.0.r10.g2946670
 pkgrel=1
 pkgdesc="Utilities to improve integration and workflow with JACK and LASH."
 arch=('any')
@@ -24,7 +24,7 @@ prepare() {
 pkgver() {
   cd "${pkgname%-*}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
