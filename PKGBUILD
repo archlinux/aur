@@ -20,7 +20,6 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
   0003-Partially-revert-swiotlb-remove-various-exports.patch
   0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
@@ -37,7 +36,6 @@ sha256sums=('SKIP'
             '36e326d8a88b4087a3a0ee0d47643fc03baeda487659980d0e9d08791e4c729c'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '69241df4bd7897eb04db90e4d0a82c6e0b99b806019ba96bb885278ca8da89df'
             '10728f672a83a515af540cafafde62346e9ccc2d14bf74e417fd2693865b1293'
             'a81b612369e78d142ff80ec3adda36b3f94503e5a68d54282c508a112cc8dae0'
             '052a39582f84c52b027c261fcec90325493f4d46f15647c274a58e39145deced'
