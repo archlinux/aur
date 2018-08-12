@@ -2,13 +2,13 @@
 
 _gitname=kleber
 pkgname="${_gitname}-git"
-pkgver=0.7.2.6803523
+pkgver=2.0.1.02643da
 pkgrel=1
 pkgdesc='Kleber command line client for file uploads'
 url='https://kleber.io'
 arch=('any')
-license=('GPL3')
-depends=('bash' 'jq' 'xclip' 'imagemagick')
+license=('BSD-3-Clause')
+depends=('python' 'python-setuptools')
 optdepends=('perl-image-exiftool')
 makedepends=('git')
 provides=('kleber')
@@ -24,7 +24,7 @@ pkgver() {
 
 package() {
   cd ${_gitname}
-  install -Dm755 kleber "${pkgdir}/usr/bin/kleber"
+  python3 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim: ts=2 sw=2
