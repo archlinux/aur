@@ -3,7 +3,7 @@
 # Contributor: stef204 <https://aur.archlinux.org/account/stef204>
 
 pkgname='borgmatic'
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
 arch=('any')
@@ -16,10 +16,8 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://projects.torsion.org/witten/borgmatic/archive/${pkgver}.tar.gz"
   "${pkgname}.install"
 )
-sha256sums=(
-  'abe7b092cce614f36369a93cdd50b3f4f9d775ccc5e8325acd93a791e767343a'
-  '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b'
-)
+sha256sums=('a20d4950bdd9066e2d3be9c80faa80b9597a546bbaedb94382973b6e7a39fa25'
+            '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b')
 
 prepare() {
   cd "${pkgname}"
