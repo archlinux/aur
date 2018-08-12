@@ -1,7 +1,7 @@
 pkgbase = python2-internetarchive
 	pkgdesc = A python interface to archive.org
-	pkgver = 1.7.7
-	pkgrel = 2
+	pkgver = 1.8.1
+	pkgrel = 1
 	url = https://github.com/jjjake/internetarchive
 	arch = any
 	license = AGPL3
@@ -14,8 +14,8 @@ pkgbase = python2-internetarchive
 	depends = python2-six
 	depends = python2-schema
 	depends = python2-backports.csv
-	source = python2-internetarchive-1.7.7.tar.gz::https://github.com/jjjake/internetarchive/archive/v1.7.7.tar.gz
-	md5sums = 666ab9f996427b897a9b5b4a930648de
+	source = python2-internetarchive-1.8.1.tar.gz::https://github.com/jjjake/internetarchive/archive/v1.8.1.tar.gz
+	md5sums = 76dc29fdc8cea59d11090a0b7be7eb1f
 
 pkgname = python2-internetarchive
 
