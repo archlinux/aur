@@ -1,0 +1,14 @@
+pkgbase = pmc-git
+	pkgdesc = Parallel Maximum Clique tool and library
+	pkgver = r20.06594a0
+	pkgrel = 1
+	url = https://github.com/ryanrossi/pmc
+	arch = x86_64
+	license = GPL3
+	source = git+https://github.com/ryanrossi/pmc.git
+	source = pmc_utils.cpp.patch
+	sha256sums = SKIP,
+	sha256sums = dedbe24cbc8d42cab01d712a20af177ab070bd4f0bc566163b695623d509c274
+
+pkgname = pmc-git
+

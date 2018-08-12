@@ -1,0 +1,11 @@
+--- pmc_utils.cpp.orig	2018-08-12 22:03:51.146388564 +0200
++++ pmc_utils.cpp	2018-08-12 22:04:25.149721499 +0200
+@@ -23,7 +23,7 @@
+ 
+ bool fexists(const char *filename) {
+     ifstream ifile(filename);
+-    return ifile;
++    return !ifile.fail();
+ }
+ 
+ void usage(char *argv0) {
