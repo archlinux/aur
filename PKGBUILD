@@ -1,7 +1,7 @@
 # Maintainer: Vivien Maisonneuve <v dot maisonneuve at gmail dot com>
 pkgname='dotploy-git'
 pkgver=0.1.0.r1.ga668677
-pkgrel=2
+pkgrel=3
 pkgdesc='Deploy dotfiles using symlinks'
 arch=('any')
 license=('LGPL')
