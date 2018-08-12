@@ -1,6 +1,6 @@
 # Mantainer: Alberto Santini <alberto dot santini at upf dot edu>
 
-pkgname='discorde'
+pkgname='discorde-git'
 pkgdesc='C and C++ wrapper around Concorde API'
 
 pkgver=r11.349c753

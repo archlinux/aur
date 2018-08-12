@@ -1,4 +1,4 @@
-pkgbase = discorde
+pkgbase = discorde-git
 	pkgdesc = C and C++ wrapper around Concorde API
 	pkgver = r11.349c753
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = discorde
 	source = git+https://github.com/andremaravilha/discorde-tsp.git
 	sha256sums = SKIP
 
-pkgname = discorde
+pkgname = discorde-git
 
